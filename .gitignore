@@ -1,0 +1,20 @@
+# HEMTT build output
+.hemttout/
+
+# Release archives
+releases/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Binary config artifacts
+*.bin
+*.bisign
+*.bikey

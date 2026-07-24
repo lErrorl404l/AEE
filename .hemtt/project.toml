@@ -1,0 +1,26 @@
+name = "Advanced Environment Extension"
+prefix = "aee"
+author = "AEE Team"
+mainprefix = "z"
+
+[files]
+include = [
+    "*.dll",
+    "*.so",
+    "mod.cpp",
+    "meta.cpp",
+    "README.md",
+    "LICENSE",
+    "logo_aee_ca.paa",
+    "logo_aee_co.paa",
+]
+
+[version]
+git_hash = 8
+
+[hemtt.release]
+folder = "@aee"
+
+[hemtt.launch.default]
+workshop = ["450814997"]
+parameters = ["-skipIntro", "-noSplash", "-showScriptErrors", "-filePatching"]
