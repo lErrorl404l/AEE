@@ -1,0 +1,10 @@
+[sqf]
+unused = "Warning"
+undefined = "Warning"
+banned_commands = "Warning"
+[sqf.banned_commands]
+options.ignore = ["addPublicVariableEventHandler", "setVariable"]
+[config.file_type]
+enabled = false
+[stringtables.usage]
+options.ignore_unused = true

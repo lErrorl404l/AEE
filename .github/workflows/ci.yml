@@ -1,0 +1,16 @@
+name: Build
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup HEMTT
+        uses: arma-actions/hemtt@v1
+      - name: Run HEMTT release
+        run: hemtt release
+      - name: Upload Release
+        uses: actions/upload-artifact@v4
+        with:
+          name: aee
+          path: releases/
