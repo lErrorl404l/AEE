@@ -1,8 +1,8 @@
 ---
-title: "Chapter 6 - Testing"
+title: "Testing"
 ---
 
-# Chapter 6 - Testing {#sec-testing}
+# Testing {#sec-testing}
 
 This chapter describes how AEE is verified.
 

@@ -1,8 +1,8 @@
 ---
-title: "Chapter 5 - Development"
+title: "Development"
 ---
 
-# Chapter 5 - Development {#sec-development}
+# Development {#sec-development}
 
 This chapter covers build, release, and the project conventions.
 Testing has its own chapter.

@@ -1,8 +1,8 @@
 ---
-title: "Chapter 2 - Modules"
+title: "Modules"
 ---
 
-# Chapter 2 - Modules {#sec-modules}
+# Modules {#sec-modules}
 
 This page lists the 18 addons and their functions. Each function file is
 `functions/fnc_<name>.sqf`. Functions use the name
