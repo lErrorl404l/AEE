@@ -1,0 +1,92 @@
+AEE Atmospheric Physics Validation
+============================================
+
+Optional libraries: psychrolib=no, metpy=no, pvlib=no
+
+Saturation vapour pressure (Buck 1996 vs Murphy & Koop 2005)
+  Ground truth : Murphy & Koop 2005, J. Chem. Phys. 122, 104503
+  Grid         : T = -40..50 C, step 1 C
+  Max error    : 0.3490 %
+  RMSE         : 0.0841 %
+  Tolerance    : 0.5 % relative
+  Status       : PASS
+  Note         : actual relative error band 0.00-0.35 %; max absolute error 0.026 hPa
+
+Wet bulb (Stull 2011 vs psychrolib ASHRAE)
+  Ground truth : psychrolib GetTWetBulbFromHumRatio, ASHRAE iterative, 101.325 kPa
+  Grid         : T = 0..40 C step 5, RH = 10..100 % step 10
+  Max error    : 0.0000 C
+  RMSE         : 0.0000 C
+  Tolerance    : 1.0 C
+  Status       : SKIP
+  Note         : psychrolib not installed; install with: pip install psychrolib
+
+Wind chill (JAG/TTI vs NWS reference values)
+  Ground truth : NWS wind chill calculator outputs (JAG/TTI formula)
+  Grid         : 3 reference points: (5 C, 2 m/s), (-10 C, 5 m/s), (0 C, 10 m/s)
+  Max error    : 0.3534 C
+  RMSE         : 0.2896 C
+  Tolerance    : 0.5 C
+  Status       : PASS
+  Note         : tolerance covers NWS calculator rounding of the same formula
+
+Solar position (mod model vs pvlib SPA)
+  Ground truth : pvlib solar_position, SPA (Reda & Andreas 2004)
+  Grid         : months 1/4/7/10, days 1/15, hours 6..18, lat -60..60, lon 0
+  Max error    : 0.0000 radiation 0..1
+  RMSE         : 0.0000 radiation 0..1
+  Tolerance    : report only
+  Status       : SKIP
+  Note         : pvlib not installed; install with: pip install pvlib
+
+Air density vs ISA table (dry air)
+  Ground truth : ICAO standard atmosphere table
+  Grid         : z = 0, 1000, 2000, 5000, 11000 m
+  Max error    : 0.0677 %
+  RMSE         : 0.0398 %
+  Tolerance    : 0.5 % relative
+  Status       : PASS
+  Note         : mod formula with RH = 0 reduces to the ideal gas law
+
+Standard-atmosphere lapse rate
+  Ground truth : ICAO standard atmosphere table
+  Grid         : z = 0, 1000, 2000, 5000, 11000 m
+  Max error    : 0.0000 C
+  RMSE         : 0.0000 C
+  Tolerance    : 0.1 C
+  Status       : PASS
+  Note         : T(z) = 15 - 0.0065 z, as in fnc_updateTemperature.sqf
+
+WBGT vs ISO 7243 (Tg = Ta case)
+  Ground truth : ISO 7243: WBGT = 0.7 Tw + 0.3 Ta when Tg = Ta
+  Grid         : T = 0..40 C step 10, RH = 20..100 % step 20, overcast = 1
+  Max error    : 0.0000 C
+  RMSE         : 0.0000 C
+  Tolerance    : 1e-6 C
+  Status       : PASS
+  Note         : overcast = 1 gives Tg = Ta, so the mod formula must reduce to ISO 7243
+
+ISA table vs metpy standard atmosphere
+  Ground truth : metpy.calc.height_to_pressure_std
+  Grid         : z = 0, 1000, 2000, 5000, 11000 m
+  Max error    : 0.0000 %
+  RMSE         : 0.0000 %
+  Tolerance    : 0.5 % relative
+  Status       : SKIP
+  Note         : metpy not installed; install with: pip install metpy
+
+Summary
+--------------------------------------------
+Formula                                        Status  Max error      Tolerance
+Saturation vapour pressure (Buck 1996 vs Murph PASS    0.349 %        0.5 % relative
+Wet bulb (Stull 2011 vs psychrolib ASHRAE)     SKIP    0.000 C        1.0 C
+Wind chill (JAG/TTI vs NWS reference values)   PASS    0.353 C        0.5 C
+Solar position (mod model vs pvlib SPA)        SKIP    0.000 radiation 0..1 report only
+Air density vs ISA table (dry air)             PASS    0.068 %        0.5 % relative
+Standard-atmosphere lapse rate                 PASS    0.000 C        0.1 C
+WBGT vs ISO 7243 (Tg = Ta case)                PASS    0.000 C        1e-6 C
+ISA table vs metpy standard atmosphere         SKIP    0.000 %        0.5 % relative
+
+Checks run: 5 of 8
+Skipped (missing optional library): 3
+Failed: 0
