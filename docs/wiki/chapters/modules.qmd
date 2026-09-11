@@ -12,6 +12,7 @@ This page lists the 18 addons and their functions. Each function file is
 
 The orchestrator. It initialises the mod, registers the EDEN module, updates
 the environment, and reports diagnostics.
+
 | Function | Purpose |
 |---|---|
 | `init` | Initialise the mod at mission start |
@@ -22,6 +23,7 @@ the environment, and reports diagnostics.
 ## atmos
 
 Atmosphere and weather simulation.
+
 | Function | Purpose |
 |---|---|
 | `calculateAirframeIcing` | Calculate airframe icing |
@@ -39,6 +41,7 @@ Atmosphere and weather simulation.
 ## thermal
 
 Temperature and thermal effects.
+
 | Function | Purpose |
 |---|---|
 | `calculateFreezingRain` | Calculate freezing rain |
@@ -51,6 +54,7 @@ Temperature and thermal effects.
 ## ballistics
 
 Air density and ballistics.
+
 | Function | Purpose |
 |---|---|
 | `calculateAirDensity` | Calculate air density |
@@ -61,6 +65,7 @@ Air density and ballistics.
 ## optics
 
 Optics and visibility effects.
+
 | Function | Purpose |
 |---|---|
 | `applyHeatShimmerFX` | Apply heat shimmer effects |
@@ -80,6 +85,7 @@ Optics and visibility effects.
 ## mobility
 
 Vehicle and ground mobility.
+
 | Function | Purpose |
 |---|---|
 | `calculateEnginePower` | Calculate engine power |
@@ -94,6 +100,7 @@ Vehicle and ground mobility.
 ## environmental
 
 Environmental and seasonal effects.
+
 | Function | Purpose |
 |---|---|
 | `calculateAvalancheRisk` | Calculate avalanche risk |
@@ -117,6 +124,7 @@ Environmental and seasonal effects.
 ## maritime
 
 Sea state and tides.
+
 | Function | Purpose |
 |---|---|
 | `calculateCompassDeviation` | Calculate compass deviation |
@@ -126,6 +134,7 @@ Sea state and tides.
 ## physiology
 
 Physiological effects.
+
 | Function | Purpose |
 |---|---|
 | `applyHeatStressHUD` | Apply the heat stress HUD |
@@ -138,6 +147,7 @@ Physiological effects.
 ## radio
 
 Radio propagation.
+
 | Function | Purpose |
 |---|---|
 | `calculateRadioPropagation` | Calculate radio propagation |
@@ -145,6 +155,7 @@ Radio propagation.
 ## fx
 
 Visual and audio effects.
+
 | Function | Purpose |
 |---|---|
 | `applyBreathCondensation` | Apply breath condensation |
@@ -157,6 +168,7 @@ Visual and audio effects.
 ## actions
 
 Player actions and reports.
+
 | Function | Purpose |
 |---|---|
 | `calculateWeatherReport` | Calculate the weather report |
