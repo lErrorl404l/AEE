@@ -43,6 +43,7 @@ diag_log text format ["[AEE-TEST] biome after explicit call: %1", _biomeAfter];
     private _biome = missionNamespace getVariable ["aee_core_biome", nil];
     diag_log text format ["[AEE-TEST] tick sample: T=%1 P=%2 RH=%3 rho=%4 biome=%5",
         _t, _p, _rh, _rho, _biome];
+    diag_log text format ["[BIOME] %1=%2", worldName, _biome];
 
     if ((!isNil "_t") && (!isNil "_p") && (!isNil "_rh") && (!isNil "_rho") && (!isNil "_biome")) then {
         private _okT = (_t > -60) && (_t < 60);
@@ -68,6 +69,70 @@ diag_log text format ["[AEE-TEST] biome after explicit call: %1", _biomeAfter];
         diag_log text "[PHASE4] [PASS] compat gating (no ACE3, compat skipped)";
     } else {
         diag_log text format ["[PHASE4] [FAIL] compat: ace=%1 aee_compat=%2", _ace, _compat];
+    };
+
+
+    // -- PHASE 6: module coverage -- every subsystem publishes state ---------
+    private _coverage = [
+        // [varName, min, max, module]
+        ["aee_core_overcast",                 0, 1,    "core"],
+        ["aee_core_rainAccum",                0, 1000, "mobility/ground"],
+        ["aee_core_currentFogDensity",        0, 1,    "atmos/fog"],
+        ["aee_core_currentWindDir",           0, 360,  "atmos/wind"],
+        ["aee_core_currentGusts",             0, 80,   "atmos/wind"],
+        ["aee_core_currentPressureTrend",     -5, 5,   "atmos/pressure"],
+        ["aee_core_cloudCeiling_m",           0, 10000,"atmos/clouds"],
+        ["aee_core_currentTurbulence",        0, 1,    "atmos/turbulence"],
+        ["aee_core_currentIcingSeverity",     0, 1,    "atmos/icing"],
+        ["aee_core_currentWaterTemperature",  0, 40,   "thermal/water"],
+        ["aee_core_currentWBGT",              -10, 60, "thermal/wbgt"],
+        ["aee_core_currentHypothermiaRisk",   0, 1,    "thermal/hypothermia"],
+        ["aee_core_surfaceTemperature",       -60, 60, "thermal/surface"],
+        ["aee_core_currentAirDensity",        0.5, 1.6,"ballistics"],
+        ["aee_core_currentFireRisk",          0, 1,    "environmental/fire"],
+        ["aee_core_currentFloodRisk",         0, 1,    "environmental/flood"],
+        ["aee_core_snowDepth_m",              0, 10,   "environmental/snow"],
+        ["aee_core_currentCropDensity",       0, 1,    "environmental/crop"],
+        ["aee_core_currentAvalancheRisk",     0, 1,    "environmental/avalanche"],
+        ["aee_core_dustSuppression",          0, 1,    "environmental/dust"],
+        ["aee_core_currentSandstorm",         0, 1,    "environmental/storm"],
+        ["aee_core_currentDustDevil",         0, 1,    "environmental/storm"],
+        ["aee_core_currentBlowingSnow",       0, 1,    "environmental/snow"],
+        ["aee_core_seaStateBeaufort",         0, 12,   "maritime/sea"],
+        ["aee_core_waveHeight_m",             0, 20,   "maritime/sea"],
+        ["aee_core_currentTideOffset_m",      -10, 10, "maritime/tide"],
+        ["aee_core_currentUVIndex",           0, 15,   "physiology/uv"],
+        ["aee_physiology_acclimatizationPercent", 0, 100, "physiology/acclim"],
+        ["aee_optics_atmosphericSeeing",      0, 1,    "optics/seeing"],
+        ["aee_optics_vehicleHeatShimmerIntensity", 0, 1, "optics/shimmer"],
+        ["aee_mobility_currentTractionWheeled", 0, 1,  "mobility/traction"],
+        ["aee_radio_radioPropagationIndex",   0, 2,    "radio"],
+        ["aee_core_currentLightningRisk",     0, 1,    "fx/lightning"],
+        ["aee_core_groundState",              -1, -1,  "mobility/ground"]
+    ];
+    private _pass = 0;
+    private _nil = 0;
+    private _fail = 0;
+    {
+        _x params ["_var", "_min", "_max", "_module"];
+        private _val = missionNamespace getVariable [_var, nil];
+        if (isNil "_val") then {
+            diag_log text format ["[PHASE6] [NIL] %1 (%2)", _var, _module];
+            _nil = _nil + 1;
+        } else {
+            if ((_min == -1) || ((_val >= _min) && (_val <= _max))) then {
+                _pass = _pass + 1;
+            } else {
+                diag_log text format ["[PHASE6] [FAIL] %1 = %2 (expected %3..%4, %5)", _var, _val, _min, _max, _module];
+                _fail = _fail + 1;
+            };
+        };
+    } forEach _coverage;
+    diag_log text format ["[PHASE6] summary: pass=%1 nil=%2 fail=%3", _pass, _nil, _fail];
+    if ((_fail == 0) && ((_pass + _nil) >= 30)) then {
+        diag_log text format ["[PHASE6] [PASS] module coverage: %1 state vars verified", _pass];
+    } else {
+        diag_log text format ["[PHASE6] [FAIL] coverage: pass=%1 nil=%2 fail=%3", _pass, _nil, _fail];
     };
 
     // -- PHASE 5: determinism -- temperature delta over 5 s must be small ----

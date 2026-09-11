@@ -14,8 +14,8 @@ missionNamespace setVariable [QEGVAR(core,overcast), overcast];
 
 private _month = date select 1;
 
-private _biome = GVAR(biome);
-if (isNil "_biome" || _biome == "") then {
+private _biome = missionNamespace getVariable [QGVAR(biome), ""];
+if (_biome == "") then {
     [] call EFUNC(environmental,getBiome);
     _biome = GVAR(biome);
 };

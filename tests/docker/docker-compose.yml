@@ -8,7 +8,6 @@ services:
       - ARMA3_SERVER__SKIP_INSTALL=true
       - ARMA3_SERVER__CONFIG=server.cfg
       - ARMA3_SERVER__PROFILE=aeetest
-      - ARMA3_SERVER__WORLD=Stratis
       - ARMA3_SERVER__PARAMS=-autoInit -noBattlEye -mod=mods/@aee;mods/@cba_a3
       - ARMA3_HEADLESS__CLIENTS=0
       - ARMA3_MODS__LOCAL=false

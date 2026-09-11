@@ -20,11 +20,13 @@ if (isNil "_T_C") exitWith {};
 if (isNil "_RH")  exitWith {};
 
 // ─── Wet-bulb temperature (Stull 2011, accurate ±1 °C for 0–100 %RH, –20–50 °C)
+// SQF atan returns degrees; Stull 2011 needs radians, so each term is
+// converted with the rad operator.
 private _sqrtRHP1 = sqrt (_RH + 8.313659);
-private _Tw = _T_C * atan(0.151977 * _sqrtRHP1)
-    + atan(_T_C + _RH)
-    - atan(_RH - 1.676331)
-    + 0.00391838 * (_RH ^ 1.5) * atan(0.023101 * _RH)
+private _Tw = _T_C * (atan (0.151977 * _sqrtRHP1)) * 0.0174532925
+    + (atan (_T_C + _RH)) * 0.0174532925
+    - (atan (_RH - 1.676331)) * 0.0174532925
+    + 0.00391838 * (_RH ^ 1.5) * (atan (0.023101 * _RH)) * 0.0174532925
     - 4.686035;
 
 // ─── Globe temperature — interpolate sun/shade by overcast

@@ -22,11 +22,14 @@ else
     export ARMA3_SERVER_ROOT="${ARMA3_SERVER_ROOT:-$DOCKER/server}"
 fi
 
-rm -rf "$DOCKER/configs/profiles"
+docker run --rm -v "$DOCKER/configs:/c" alpine rm -rf /c/profiles 2>/dev/null || true
 
 clean_profiles() { docker run --rm -v "$DOCKER/configs:/c" alpine rm -rf /c/profiles 2>/dev/null || true; }
 trap 'docker compose "${COMPOSE_FILES[@]}" down 2>/dev/null || true; clean_profiles' EXIT
 
+# ── Map rotation mode ───────────────────────────────────────────────────────
+# Runs the mission on several worlds and asserts the Koppen biome each
+# world resolves to. Validates environment switching across biomes.
 echo "==> server root: $ARMA3_SERVER_ROOT"
 echo "==> hemtt build"
 (cd "$ROOT" && hemtt build >/dev/null)
@@ -39,6 +42,80 @@ cp "$ROOT"/.hemttout/build/mod.cpp "$MODS/@aee/mod.cpp"
 cp "$ROOT"/.hemttout/build/meta.cpp "$MODS/@aee/meta.cpp"
 
 echo "==> ensure @cba_a3"
+if [ "${1:-}" = "--maps" ]; then
+    echo "==> map rotation test"
+    MAPS=("Stratis:Csa" "Tanoa:Af" "Enoch:Dfb")
+    FAILED=0
+    for entry in "${MAPS[@]}"; do
+        world="${entry%%:*}"
+        expect="${entry##*:}"
+        echo "==> world $world (expect biome $expect)"
+        # the wrapper reads world/mission from env, not config.toml
+        cat > "$DOCKER/docker-compose.$world.yml" << YAMLEOF
+services:
+  aee-test:
+    environment:
+      - ARMA3_SERVER__WORLD=$world
+      - ARMA3_SERVER__MISSION=aee_test.$world
+YAMLEOF
+        cat > "$DOCKER/configs/server.cfg" << CFGEOF
+hostname = "AEE Test";
+password = "";
+passwordAdmin = "";
+maxPlayers = 8;
+persistent = 1;
+loopback = 1;
+kickDuplicate = 0;
+BattlEye = 0;
+verifySignatures = 0;
+class Missions {
+    class AEETest {
+        template = "aee_test.$world";
+        difficulty = "custom";
+    };
+};
+CFGEOF
+        docker compose -f "$DOCKER/docker-compose.yml" -f "$DOCKER/docker-compose.$world.yml" up -d --force-recreate
+        for _ in $(seq 1 36); do
+            if docker compose -f "$DOCKER/docker-compose.yml" -f "$DOCKER/docker-compose.$world.yml" logs 2>/dev/null | grep -q "\[AEE-TEST\] DONE"; then break; fi
+            sleep 5
+        done
+        docker compose -f "$DOCKER/docker-compose.yml" -f "$DOCKER/docker-compose.$world.yml" logs > "$DOCKER/run.$world.log" 2>&1
+        biome=$(grep -oE "\[BIOME\] $world=[A-Za-z]+" "$DOCKER/run.$world.log" | tail -1 | cut -d= -f2)
+        if [ "$biome" = "$expect" ]; then
+            echo "  PASS: $world resolves to $biome (expected $expect)"
+        else
+            echo "  FAIL: $world biome = '${biome:-<none>}' (expected $expect)"
+            FAILED=1
+        fi
+        docker compose -f "$DOCKER/docker-compose.yml" -f "$DOCKER/docker-compose.$world.yml" down 2>/dev/null || true
+        rm -f "$DOCKER/docker-compose.$world.yml"
+        rm -rf "$DOCKER/configs/profiles" 2>/dev/null || true
+    done
+    cat > "$DOCKER/configs/server.cfg" << CFGEOF
+hostname = "AEE Test";
+password = "";
+passwordAdmin = "";
+maxPlayers = 8;
+persistent = 1;
+loopback = 1;
+kickDuplicate = 0;
+BattlEye = 0;
+verifySignatures = 0;
+class Missions {
+    class AEETestStratis { template = "aee_test.Stratis"; difficulty = "custom"; };
+    class AEETestTanoa { template = "aee_test.Tanoa"; difficulty = "custom"; };
+    class AEETestEnoch { template = "aee_test.Enoch"; difficulty = "custom"; };
+};
+CFGEOF
+    if [ "$FAILED" -ne 0 ]; then
+        echo "==> map rotation FAILED"
+        exit 1
+    fi
+    echo "==> map rotation PASS"
+    exit 0
+fi
+
 if [ ! -d "$MODS/@cba_a3" ]; then
     curl -fsSL "https://github.com/CBATeam/CBA_A3/releases/download/${CBA_VERSION}/CBA_A3_${CBA_VERSION}.zip" -o /tmp/cba.zip
     unzip -oq /tmp/cba.zip -d "$MODS"
