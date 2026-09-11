@@ -34,6 +34,50 @@ diag_log text format ["[AEE-TEST] biome before call: %1", _biomeBefore];
 private _biomeAfter = missionNamespace getVariable ["aee_core_biome", "<missing>"];
 diag_log text format ["[AEE-TEST] biome after explicit call: %1", _biomeAfter];
 
+// -- PHASE 8: Koppen classifier — every AEE biome code -----------------------
+// Feeds synthetic monthly climate grids to fnc_classifyBiome and asserts the
+// returned code. The AEE biome table defines 17 codes; the rare subtypes
+// Csc/Cwc/Cfc/Dfd are not in the table (the 18th code is absent from AEE).
+private _koppenCases = [
+    // [code, monthlyTemps °C, monthlyPrecip mm]
+    ["Af",  [26,26,26,26,26,26,26,26,26,26,26,26], [150,150,150,150,150,150,150,150,150,150,150,150]],
+    ["Am",  [24,25,26,27,28,28,28,28,27,26,25,24], [50,50,60,80,150,200,220,220,180,120,70,60]],
+    ["Aw",  [22,23,24,25,26,26,26,26,25,24,23,22], [20,20,30,50,100,150,160,150,100,60,30,25]],
+    ["BWh", [20,23,27,32,37,40,42,41,38,32,26,21], [5,5,5,5,5,5,5,5,5,5,5,5]],
+    ["BWk", [2,6,12,18,24,30,33,32,26,18,10,4],    [5,5,5,5,5,5,5,5,5,5,5,5]],
+    ["BSh", [20,22,25,28,32,35,36,35,33,29,24,20], [32,32,32,32,32,32,32,32,32,32,32,32]],
+    ["BSk", [2,5,10,16,22,28,32,31,26,18,10,4],    [24,24,24,24,24,24,24,24,24,24,24,24]],
+    ["Csa", [12,13,15,18,22,27,30,30,26,21,16,13], [80,70,60,50,40,15,5,8,25,45,65,75]],
+    ["Csb", [10,11,13,15,18,20,21,21,19,16,13,11], [90,80,70,60,50,20,8,10,30,50,70,85]],
+    ["Cfa", [10,12,16,20,24,28,30,30,27,22,16,12], [70,68,65,63,65,68,72,72,70,68,66,68]],
+    ["Cfb", [8,8,10,13,16,19,21,21,18,14,11,8],    [80,78,76,74,75,76,76,76,77,79,80,81]],
+    ["Cwa", [12,14,18,22,26,28,30,30,28,24,18,14], [10,10,15,20,60,120,150,150,120,60,20,12]],
+    ["Dfa", [-5,-3,4,12,18,22,25,24,19,12,4,-2],   [82,80,76,70,68,70,72,74,76,78,80,82]],
+    ["Dfb", [-10,-8,-2,5,11,16,19,18,13,6,-2,-8],  [76,74,72,68,66,68,72,74,76,78,78,78]],
+    ["Dfc", [-20,-18,-12,-4,2,7,11,10,5,-1,-9,-17],[70,68,66,64,62,64,68,70,72,74,74,72]],
+    ["ET",  [-15,-15,-12,-7,-2,2,4,4,1,-3,-8,-13], [78,78,78,76,75,75,76,78,78,80,80,80]],
+    ["EF",  [-30,-28,-25,-20,-15,-10,-8,-9,-12,-18,-24,-28], [40,40,40,40,40,40,40,40,40,40,40,40]]
+];
+private _p8Pass = 0;
+private _p8Fail = 0;
+{
+    _x params ["_code", "_temps", "_precip"];
+    private _got = [_temps, _precip, 0] call aee_environmental_fnc_classifyBiome;
+    if (_got == _code) then {
+        diag_log text format ["[PHASE8] [PASS] %1", _code];
+        _p8Pass = _p8Pass + 1;
+    } else {
+        diag_log text format ["[PHASE8] [FAIL] %1 -> %2", _code, _got];
+        _p8Fail = _p8Fail + 1;
+    };
+} forEach _koppenCases;
+diag_log text format ["[PHASE8] summary: pass=%1 fail=%2 (17 AEE codes; the 18th code Csc/Cwc/Cfc/Dfd is not in the AEE biome table)", _p8Pass, _p8Fail];
+if ((_p8Fail == 0) && (_p8Pass == 17)) then {
+    diag_log text "[PHASE8] [PASS] all 17 Koppen codes classified";
+} else {
+    diag_log text format ["[PHASE8] [FAIL] pass=%1 fail=%2", _p8Pass, _p8Fail];
+};
+
 // -- PHASE 3+4+5: wait 30 s for simulation ticks, then sample ---------------
 [{
     private _t = missionNamespace getVariable ["aee_core_currentTemperature", nil];

@@ -147,6 +147,33 @@ private _maxScore = 0;
     if (_y > _maxScore) then { _biome = _x; _maxScore = _y; };
 } forEach _scores;
 
+// 3d: Koppen refinement — real classifier breaks ties on unmapped worlds.
+// The latitude vote is crude; when two candidates tie, classify each
+// candidate's own climate normals and keep only the self-consistent ones.
+private _tied = [];
+{
+    if (_y == _maxScore && _y > 0) then { _tied pushBack _x; };
+} forEach _scores;
+if (count _tied > 1) then {
+    private _survivors = [];
+    {
+        private _normals = [_x] call aee_environmental_fnc_getClimateNormals;
+        private _meanTemps = [];
+        private _day = _normals select 2;
+        private _night = _normals select 3;
+        private _precip = _normals select 5;
+        for "_m" from 0 to 11 do {
+            _meanTemps pushBack ((_day select _m) + (_night select _m)) / 2;
+        };
+        if (([_meanTemps, _precip, 0] call aee_environmental_fnc_classifyBiome) == _x) then {
+            _survivors pushBack _x;
+        };
+    } forEach _tied;
+    if (_survivors isNotEqualTo [] && !(_biome in _survivors)) then {
+        _biome = _survivors select 0;
+    };
+};
+
 // --- Step 4: Hard fallback ---
 if (_biome == "") then { _biome = "Cfb"; _biomeName = "Oceanic"; };
 
