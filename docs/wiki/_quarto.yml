@@ -1,0 +1,19 @@
+project:
+  type: website
+
+website:
+  title: "AEE Documentation"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - modules.qmd
+      - state-variables.qmd
+      - physics.qmd
+      - development.qmd
+      - support.qmd
+
+format:
+  html:
+    theme: cosmo
+    toc: true

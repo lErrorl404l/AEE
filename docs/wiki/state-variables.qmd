@@ -1,0 +1,123 @@
+---
+title: "State variables"
+---
+
+# State variables
+
+Shared simulation state lives in `aee_core_*` mission variables. Any mod or
+mission script can read them. The variables below are grouped by subsystem.
+
+## Biome
+
+| Variable | Purpose |
+|---|---|
+| `biome` | The current biome code |
+| `biomeName` | The current biome name |
+| `moduleBiomeOverride` | The biome override from the EDEN module |
+
+## Temperature
+
+| Variable | Purpose |
+|---|---|
+| `currentTemperature` | The current air temperature |
+| `surfaceTemperature` | The current surface temperature |
+| `currentWaterTemperature` | The current water temperature |
+| `moduleTempOffset` | The temperature offset from the EDEN module |
+| `thermalCrossoverActive` | Whether thermal crossover is active |
+| `crossoverTimer` | The thermal crossover timer |
+
+## Wind
+
+| Variable | Purpose |
+|---|---|
+| `currentWind` | The current wind vector |
+| `currentWindDir` | The current wind direction |
+| `currentGusts` | The current gust strength |
+| `moduleWindMultiplier` | The wind multiplier from the EDEN module |
+
+## Pressure
+
+| Variable | Purpose |
+|---|---|
+| `currentPressure` | The current pressure |
+| `currentPressureTrend` | The current pressure trend |
+| `pressureReading1` | The first pressure reading |
+| `pressureReading2` | The second pressure reading |
+
+## Humidity and precipitation
+
+| Variable | Purpose |
+|---|---|
+| `currentHumidity` | The current humidity |
+| `overcast` | The current overcast |
+| `rainAccum` | The accumulated rain |
+| `currentFreezingRain` | The current freezing rain |
+| `currentBlowingSnow` | The current blowing snow |
+| `currentSandstorm` | The current sandstorm |
+| `currentDustDevil` | The current dust devil |
+
+## Air density
+
+| Variable | Purpose |
+|---|---|
+| `currentAirDensity` | The current air density |
+
+## Cloud and fog
+
+| Variable | Purpose |
+|---|---|
+| `cloudCeiling_m` | The cloud ceiling in metres |
+| `currentFogDensity` | The current fog density |
+
+## Hydrology
+
+| Variable | Purpose |
+|---|---|
+| `currentWaterLevel` | The current water level |
+| `currentTideOffset_m` | The current tide offset in metres |
+| `currentTideDescription` | The current tide description |
+| `waveHeight_m` | The wave height in metres |
+
+## Sea state
+
+| Variable | Purpose |
+|---|---|
+| `seaStateBeaufort` | The sea state on the Beaufort scale |
+| `seaStateCurrent` | The current sea state |
+| `seaStateDescription` | The sea state description |
+
+## Turbulence
+
+| Variable | Purpose |
+|---|---|
+| `currentTurbulence` | The current turbulence |
+
+## Radiation
+
+| Variable | Purpose |
+|---|---|
+| `currentUVIndex` | The current UV index |
+| `currentWBGT` | The current wet bulb globe temperature |
+
+## Forecast
+
+| Variable | Purpose |
+|---|---|
+| `currentWeatherForecast` | The current weather forecast |
+
+## Environmental
+
+| Variable | Purpose |
+|---|---|
+| `currentCropDensity` | The current crop density |
+| `currentFireRisk` | The current fire risk |
+| `currentFloodRisk` | The current flood risk |
+| `currentIcingSeverity` | The current icing severity |
+| `currentLightningRisk` | The current lightning risk |
+| `currentHypothermiaRisk` | The current hypothermia risk |
+| `dustSuppression` | The current dust suppression |
+| `groundState` | The current ground state |
+| `magneticDeclinationDeg` | The magnetic declination in degrees |
+| `snowDepth_m` | The snow depth in metres |
+| `vehicleHeatShimmerIntensity` | The vehicle heat shimmer intensity |
+| `updateInterval` | The update interval |

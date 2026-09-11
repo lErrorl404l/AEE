@@ -1,0 +1,72 @@
+---
+title: "AEE Documentation"
+---
+
+# Advanced Environment Extension
+
+Advanced Environment Extension (AEE) is a physically accurate environment
+simulation for Arma 3. It models elevation lapse rates, terrain microclimate,
+true air density, Koppen biome classification, thermal and physiological
+effects, optics, mobility, environmental conditions, maritime state, radio
+propagation, and atmospheric events.
+
+The mod is standalone. It requires only CBA_A3. The core addons have no ACE3
+dependency.
+
+Author: [lErrorl404l](https://github.com/lErrorl404l). Licence:
+[GPL-2.0-or-later](https://github.com/lErrorl404l/AEE/blob/main/LICENSE) with a
+PBO-distribution exception.
+
+## Features
+
+- Elevation lapse rates and diurnal temperature cycles.
+- Terrain microclimate, including urban heat islands and water influence.
+- True air density from temperature, pressure, and humidity.
+- Koppen biome classification with seasonal variation.
+- Thermal and physiological effects, including WBGT and acclimatisation.
+- Optics effects, including thermal crossover, mirage, and glare.
+- Vehicle and helicopter mobility, including engine derating and lift.
+- Environmental effects, including foliage, scent, and fire risk.
+- Maritime state, including sea state and tides.
+- Radio propagation for VHF, UHF, and HF bands.
+- Atmospheric events, including lightning, sandstorms, and microbursts.
+
+## Addon structure
+
+The project has 18 addons under `addons/`. The 13 core addons are `main`,
+`core`, `actions`, `atmos`, `ballistics`, `environmental`, `fx`, `maritime`,
+`mobility`, `optics`, `physiology`, `radio`, and `thermal`. The 5 compat
+addons are `compat_ace3`, `compat_acm`, `compat_acre2`, `compat_kat`, and
+`compat_tfar`.
+
+| Addon | Role |
+|---|---|
+| `main` | Bootstrapper |
+| `core` | Orchestrator and shared state |
+| `atmos` | Atmosphere and weather |
+| `thermal` | Temperature and thermal effects |
+| `ballistics` | Air density and ballistics |
+| `optics` | Optics and visibility |
+| `mobility` | Vehicle and ground mobility |
+| `environmental` | Environmental and seasonal effects |
+| `maritime` | Sea state and tides |
+| `physiology` | Physiological effects |
+| `radio` | Radio propagation |
+| `fx` | Visual and audio effects |
+| `actions` | Player actions and reports |
+| `compat_ace3` | ACE3 integration |
+| `compat_acm` | ACM integration |
+| `compat_acre2` | ACRE2 integration |
+| `compat_kat` | KAT integration |
+| `compat_tfar` | TFAR integration |
+
+Build PBO names are `aee_<component>`. For example, the core addon builds to
+`aee_core.pbo`.
+
+## Pages
+
+- [Modules](modules.qmd): per-addon function reference.
+- [State variables](state-variables.qmd): the shared `aee_core_*` variables.
+- [Physics](physics.qmd): the models behind the simulation.
+- [Development](development.qmd): build, test, and release.
+- [Support](support.qmd): help and reporting.
