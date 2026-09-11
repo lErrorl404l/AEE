@@ -12,17 +12,15 @@ website:
     left:
       - text: Home
         href: chapters/introduction.qmd
-      - text: "Chapter 1 - Introduction"
-        href: chapters/introduction.qmd
-      - text: "Chapter 2 - Modules"
+      - text: Modules
         href: chapters/modules.qmd
-      - text: "Chapter 3 - State variables"
+      - text: State variables
         href: chapters/state-variables.qmd
-      - text: "Chapter 4 - Physics"
+      - text: Physics
         href: chapters/physics.qmd
-      - text: "Chapter 5 - Development"
+      - text: Development
         href: chapters/development.qmd
-      - text: "Chapter 6 - Testing"
+      - text: Testing
         href: chapters/testing.qmd
       - text: Support
         href: support.qmd
@@ -41,9 +39,7 @@ website:
 
 format:
   html:
-    theme:
-      light: cosmo
-      dark: cosmo-dark
+    theme: [cosmo, cosmo-dark]
     css: custom.scss
     toc: true
     toc-depth: 3
