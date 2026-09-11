@@ -1,3 +1,10 @@
+# AEE Architecture (superseded)
+
+> Status: historical design record. The README.md is the authoritative
+> description of the current structure. This document predates the modular
+> restructure and its naming (aee_aee_core_*, the ACE3 variable bridge)
+> no longer applies.
+
 # AEE (Ace Environment Extension) — Architecture Plan
 
 **Status**: Planning phase  
