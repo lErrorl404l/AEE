@@ -2,36 +2,42 @@ project:
   type: website
 
 website:
-  title: "AEE Documentation"
+  title: "AEE"
   search: true
   page-footer:
     left: "Advanced Environment Extension - GPL-2.0-or-later"
-    right: "Built with Quarto"
-  navbar:
-    background: primary
-    left:
-      - text: Home
-        href: chapters/introduction.qmd
-      - text: Modules
-        href: chapters/modules.qmd
-      - text: State variables
-        href: chapters/state-variables.qmd
-      - text: Physics
-        href: chapters/physics.qmd
-      - text: Development
-        href: chapters/development.qmd
-      - text: Testing
-        href: chapters/testing.qmd
+    right: "Version 1.0.0"
+  sidebar:
+    style: docked
+    collapse-level: 1
+    contents:
+      - href: index.qmd
+        text: Overview
+      - section: "Chapters"
+        contents:
+          - text: About
+            href: chapters/introduction.qmd
+          - text: Modules
+            href: chapters/modules.qmd
+          - text: State variables
+            href: chapters/state-variables.qmd
+          - text: Physics
+            href: chapters/physics.qmd
+          - text: Development
+            href: chapters/development.qmd
+          - text: Testing
+            href: chapters/testing.qmd
+      - section: "Annexes"
+        contents:
+          - text: Formulas
+            href: annexes/annex-a-formulas.qmd
+          - text: Compatibility
+            href: annexes/annex-b-compat.qmd
+          - text: Variable reference
+            href: annexes/annex-c-variable-reference.qmd
       - text: Support
         href: support.qmd
-      - text: Annexes
-        menu:
-          - text: "Annex A - Formulas"
-            href: annexes/annex-a-formulas.qmd
-          - text: "Annex B - Compatibility matrix"
-            href: annexes/annex-b-compat.qmd
-          - text: "Annex C - Variable reference"
-            href: annexes/annex-c-variable-reference.qmd
+  navbar:
     right:
       - icon: github
         href: https://github.com/lErrorl404l/AEE
