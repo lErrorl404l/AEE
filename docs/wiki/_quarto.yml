@@ -4,6 +4,8 @@ project:
 website:
   title: "AEE"
   favicon: images/favicon.png
+  repo-url: https://github.com/lErrorl404l/AEE
+  repo-actions: [edit, issue]
   search: true
   page-navigation: true
   announcement:
