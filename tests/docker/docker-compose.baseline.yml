@@ -1,0 +1,4 @@
+services:
+  aee-test:
+    environment:
+      - ARMA3_SERVER__PARAMS=-autoInit -noBattlEye -mod=mods/@cba_a3

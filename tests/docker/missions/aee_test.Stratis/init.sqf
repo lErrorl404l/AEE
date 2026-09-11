@@ -9,7 +9,8 @@ diag_log text "[AEE-TEST] mission start";
 private _enabled = missionNamespace getVariable ["aee_core_enabled", -1];
 private _interval = missionNamespace getVariable ["aee_core_updateInterval", -1];
 diag_log text format ["[AEE-TEST] settings: enabled=%1 interval=%2", _enabled, _interval];
-if ((_enabled == true) && (_interval == 5)) then {
+private _enabledNum = if (_enabled isEqualType true) then { [0, 1] select _enabled } else { _enabled };
+if ((_enabledNum == 1) && (_interval == 5)) then {
     diag_log text "[PHASE1] [PASS] settings registered (enabled=true, interval=5)";
 } else {
     diag_log text format ["[PHASE1] [FAIL] settings: enabled=%1 interval=%2", _enabled, _interval];
