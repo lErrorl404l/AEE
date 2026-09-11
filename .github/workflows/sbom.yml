@@ -14,11 +14,11 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - name: Generate CycloneDX SBOM
-        run: python3 tools/make_sbom.py sbom.cdx.json
+        run: python3 tools/make_sbom.py aee.cdx.json
       - name: Upload SBOM artifact
         uses: actions/upload-artifact@v7
         with:
           name: aee-sbom-${{ github.ref_name }}
-          path: sbom.cdx.json
+          path: aee.cdx.json
           if-no-files-found: error
 

@@ -13,7 +13,7 @@ import json
 import sys
 from datetime import datetime, timezone
 
-OUT = sys.argv[1] if len(sys.argv) > 1 else "sbom.cdx.json"
+OUT = sys.argv[1] if len(sys.argv) > 1 else "aee.cdx.json"
 
 CBA_SHA = "6b37925af487eda786ca360300b8fe48ae9c7e33"
 
