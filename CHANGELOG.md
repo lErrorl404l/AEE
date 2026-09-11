@@ -70,4 +70,5 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   and biome state is written to the core namespace.
 - Missing assets: logo references removed from mod.cpp.
 
+[1.0.0]: https://github.com/lErrorl404l/AEE/releases/tag/v1.0.0
 [0.1.0]: https://github.com/lErrorl404l/AEE/releases/tag/v0.1.0

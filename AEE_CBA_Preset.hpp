@@ -1,5 +1,5 @@
 // AEE CBA Settings Preset
-// Balanced defaults for the Ace Environment Extension.
+// Balanced defaults for the Advanced Environment Extension.
 // Place in your mission's description.ext or as a separate CBA preset file.
 //
 // Generated from the addon's initSettings.inc.sqf and config.cpp.

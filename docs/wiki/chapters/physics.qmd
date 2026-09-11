@@ -63,11 +63,11 @@ Buck 1996: saturation vapour pressure
 `e_s = 6.1121 * exp((18.678 - T/234.5) * T/(257.14 + T))`, actual vapour
 pressure `e = e_s * RH / 100`, virtual temperature
 `T_v = T_K / (1 - 0.37802 * e / P)`. See
-[Annex A, Air density](annexes/annex-a-formulas.qmd#eq-air-density) for
+[Annex A, Air density](../annexes/annex-a-formulas.qmd#eq-air-density) for
 the numbered equations.
 
 The full formula set, including wind chill, WBGT, and solar geometry, is
-in [Annex A](annexes/annex-a-formulas.qmd).
+in [Annex A](../annexes/annex-a-formulas.qmd).
 
 ## WBGT
 
