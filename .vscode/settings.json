@@ -1,0 +1,23 @@
+{
+    "files.exclude": {
+        "**/.hemttout": true,
+        "**/include": true,
+        "**/.omo": true
+    },
+    "files.insertFinalNewline": true,
+    "files.autoSave": "onFocusChange",
+    "files.encoding": "utf8",
+    "files.eol": "\n",
+    "editor.rulers": [120],
+    "[sqf]": {
+        "editor.tabSize": 4,
+        "editor.insertSpaces": false
+    },
+    "[cpp]": {
+        "editor.tabSize": 4,
+        "editor.insertSpaces": false
+    },
+    "[markdown]": {
+        "editor.wordWrap": "on"
+    }
+}
