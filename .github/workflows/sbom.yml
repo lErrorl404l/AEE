@@ -16,7 +16,7 @@ jobs:
       - name: Generate CycloneDX SBOM
         run: python3 tools/make_sbom.py sbom.cdx.json
       - name: Upload SBOM artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: aee-sbom-${{ github.ref_name }}
           path: sbom.cdx.json
