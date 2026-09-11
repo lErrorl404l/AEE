@@ -25,6 +25,7 @@ if (_biome == "") then {
 [_biome, _month, _posASL] call EFUNC(thermal,updateTemperature);
 [_biome, _month, _posASL] call EFUNC(atmos,updatePressure);
 [_biome, _month, _posASL] call EFUNC(atmos,updateHumidity);
+[] call FUNC(updateSoilMoisture);
 [] call EFUNC(atmos,updateWind);
 [] call EFUNC(fx,applyWindNoise);
 

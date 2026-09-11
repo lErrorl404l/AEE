@@ -108,6 +108,7 @@ diag_log text format ["[AEE-TEST] biome after explicit call: %1", _biomeAfter];
         ["aee_mobility_currentTractionWheeled", 0, 1,  "mobility/traction"],
         ["aee_radio_radioPropagationIndex",   0, 2,    "radio"],
         ["aee_core_currentLightningRisk",     0, 1,    "fx/lightning"],
+        ["aee_core_soilMoisture",            0, 1,    "core/soil"],
         ["aee_core_groundState",              -1, -1,  "mobility/ground"]
     ];
     private _pass = 0;
@@ -120,11 +121,20 @@ diag_log text format ["[AEE-TEST] biome after explicit call: %1", _biomeAfter];
             diag_log text format ["[PHASE6] [NIL] %1 (%2)", _var, _module];
             _nil = _nil + 1;
         } else {
-            if ((_min == -1) || ((_val >= _min) && (_val <= _max))) then {
+            if (_min == -1) then {
                 _pass = _pass + 1;
             } else {
-                diag_log text format ["[PHASE6] [FAIL] %1 = %2 (expected %3..%4, %5)", _var, _val, _min, _max, _module];
-                _fail = _fail + 1;
+                if (!(_val isEqualType 0)) then {
+                    diag_log text format ["[PHASE6] [NIL] %1 (non-numeric: %2, %3)", _var, _val, _module];
+                    _nil = _nil + 1;
+                } else {
+                    if ((_val >= _min) && (_val <= _max)) then {
+                        _pass = _pass + 1;
+                    } else {
+                        diag_log text format ["[PHASE6] [FAIL] %1 = %2 (expected %3..%4, %5)", _var, _val, _min, _max, _module];
+                        _fail = _fail + 1;
+                    };
+                };
             };
         };
     } forEach _coverage;
@@ -133,6 +143,27 @@ diag_log text format ["[AEE-TEST] biome after explicit call: %1", _biomeAfter];
         diag_log text format ["[PHASE6] [PASS] module coverage: %1 state vars verified", _pass];
     } else {
         diag_log text format ["[PHASE6] [FAIL] coverage: pass=%1 nil=%2 fail=%3", _pass, _nil, _fail];
+    };
+
+
+    // -- PHASE 7: AI-player unit-dependent functions --------------------------
+    private _grp = createGroup [west, true];
+    private _ai = _grp createUnit ["B_Soldier_F", [4200, 4250, 0], [], 0, "NONE"];
+    if (isNull _ai) then {
+        diag_log text "[PHASE7] [FAIL] AI unit spawn failed";
+    } else {
+        [_ai] call aee_optics_fnc_calculateSolarGlare;
+        [_ai] call aee_optics_fnc_calculateSnowBlindness;
+        [_ai] call aee_optics_fnc_calculateVehicleHeatShimmer;
+        [_ai] call aee_ballistics_fnc_calculateCrosswindBallistics;
+        private _glare = missionNamespace getVariable ["aee_optics_solarGlareIntensity", nil];
+        private _shimmer = missionNamespace getVariable ["aee_optics_vehicleHeatShimmerIntensity", nil];
+        private _crosswind = missionNamespace getVariable ["aee_ballistics_crosswind", nil];
+        if ((!isNil "_glare") && (!isNil "_shimmer") && (!isNil "_crosswind")) then {
+            diag_log text format ["[PHASE7] [PASS] AI unit functions: glare=%1 shimmer=%2 crosswind=%3", _glare, _shimmer, _crosswind];
+        } else {
+            diag_log text format ["[PHASE7] [FAIL] AI unit functions nil: glare=%1 shimmer=%2 crosswind=%3", isNil "_glare", isNil "_shimmer", isNil "_crosswind"];
+        };
     };
 
     // -- PHASE 5: determinism -- temperature delta over 5 s must be small ----

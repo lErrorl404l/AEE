@@ -43,12 +43,12 @@ private _risk = (_overcast * 0.3 + _rain * 0.3 + (_RH / 100) * 0.2 + _convective
 private _strike = false;
 private _strikePos = [];
 
-if (_risk > 0.5 && random 1 < _risk * 0.05) then {
+if ((_risk > 0.5) && (([round (time * 10), 301] call EFUNC(core,deterministicRandom)) < (_risk * 0.05))) then {
     private _player = call CBA_fnc_currentUnit;
     if (!isNil "_player" && alive _player) then {
         private _playerPos = getPos _player;
-        private _dist  = 50 + random 250;   // 50-300 m away
-        private _dir   = random 360;
+        private _dist  = 50 + (250 * ([round (time * 10), 302] call EFUNC(core,deterministicRandom)));   // 50-300 m away
+        private _dir   = 360 * ([round (time * 10), 303] call EFUNC(core,deterministicRandom));
         private _testX = (_playerPos#0) + sin _dir * _dist;
         private _testY = (_playerPos#1) + cos _dir * _dist;
         private _testPos = [_testX, _testY];

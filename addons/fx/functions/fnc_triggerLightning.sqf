@@ -53,16 +53,20 @@ _light setLightAmbient [1,1,1];
 _light setLightColor [1,1,1];
 _light setLightAttenuation [0,0,0,0,500,1000];
 
-playSound3D [
-    "A3\Sounds_F\ambient\thunder1.wss",
-    objNull,
-    false,
-    _pos,
-    -1,                          // max-distance (unlimited)
-    2 + random 3,                // volume
-    random 0.5 + 0.75,           // pitch
-    100                          // propagation speed
-];
+// Thunder follows the flash: sound travels ~343 m/s, so delay the roll.
+[{
+    params ["_pos"];
+    playSound3D [
+        "A3\Sounds_F\ambient\thunder1.wss",
+        objNull,
+        false,
+        _pos,
+        -1,                          // max-distance (unlimited)
+        2 + (3 * ([round (time * 10), 201] call EFUNC(core,deterministicRandom))),  // volume
+        0.75 + (0.5 * ([round (time * 10), 202] call EFUNC(core,deterministicRandom))), // pitch
+        343                          // propagation speed (m/s)
+    ];
+}, _pos, 2] call CBA_fnc_waitAndExecute;
 
 [{
     deleteVehicle _this;

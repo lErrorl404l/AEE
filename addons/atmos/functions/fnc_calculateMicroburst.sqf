@@ -28,7 +28,7 @@ private _windSpeed = 0;
 if (_timer > 0) then {
     // Active — decrement timer, keep wind speed
     _timer     = _timer - 1;
-    _windSpeed = missionNamespace getVariable [QGVAR(microburstWindSpeed), 15 + random 15];
+    _windSpeed = missionNamespace getVariable [QGVAR(microburstWindSpeed), 15 + (15 * ([round (time * 10), 101] call EFUNC(core,deterministicRandom)))];
 } else {
     // Check trigger conditions
     private _ambientWind = vectorMagnitude wind;
@@ -36,10 +36,10 @@ if (_timer > 0) then {
         && (_temp > 28)
         && (_RH > 70)
         && (_ambientWind < 3)
-        && random 1 < 0.01
+        && ([round (time * 10), 102] call EFUNC(core,deterministicRandom)) < 0.01
     ) then {
         _timer     = 12;
-        _windSpeed = 15 + random 15;   // 15-30 m/s
+        _windSpeed = 15 + (15 * ([round (time * 10), 103] call EFUNC(core,deterministicRandom)));   // 15-30 m/s
     };
 };
 
