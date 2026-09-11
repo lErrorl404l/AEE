@@ -3,17 +3,51 @@ project:
 
 website:
   title: "AEE Documentation"
+  search: true
+  page-footer:
+    left: "Advanced Environment Extension - GPL-2.0-or-later"
+    right: "Built with Quarto"
   navbar:
+    background: primary
     left:
-      - href: index.qmd
-        text: Home
-      - modules.qmd
-      - state-variables.qmd
-      - physics.qmd
-      - development.qmd
-      - support.qmd
+      - text: Home
+        href: chapters/introduction.qmd
+      - text: "Chapter 1 - Introduction"
+        href: chapters/introduction.qmd
+      - text: "Chapter 2 - Modules"
+        href: chapters/modules.qmd
+      - text: "Chapter 3 - State variables"
+        href: chapters/state-variables.qmd
+      - text: "Chapter 4 - Physics"
+        href: chapters/physics.qmd
+      - text: "Chapter 5 - Development"
+        href: chapters/development.qmd
+      - text: "Chapter 6 - Testing"
+        href: chapters/testing.qmd
+      - text: Support
+        href: support.qmd
+      - text: Annexes
+        menu:
+          - text: "Annex A - Formulas"
+            href: annexes/annex-a-formulas.qmd
+          - text: "Annex B - Compatibility matrix"
+            href: annexes/annex-b-compat.qmd
+          - text: "Annex C - Variable reference"
+            href: annexes/annex-c-variable-reference.qmd
+    right:
+      - icon: github
+        href: https://github.com/lErrorl404l/AEE
+        aria-label: GitHub
 
 format:
   html:
-    theme: cosmo
+    theme:
+      light: cosmo
+      dark: cosmo-dark
+    css: custom.scss
     toc: true
+    toc-depth: 3
+    code-copy: true
+    anchor-sections: true
+    smooth-scroll: true
+    link-external-icon: true

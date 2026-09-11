@@ -1,0 +1,83 @@
+---
+title: "Annex C - Variable reference"
+---
+
+# Annex C - Variable reference
+
+This annex lists the shared simulation state, the settings, and the EDEN
+module fields. Mission scripts can read any `aee_core_*` variable.
+
+## Simulation state
+
+| Variable | Subsystem | Purpose |
+|---|---|---|
+| `biome` | core | Koppen biome code |
+| `biomeName` | core | Biome display name |
+| `cloudCeiling_m` | atmos | Cloud base height in metres |
+| `crossoverTimer` | thermal | Thermal crossover timer |
+| `currentAirDensity` | ballistics | Air density in kg/m3 |
+| `currentBlowingSnow` | environmental | Blowing snow intensity 0..1 |
+| `currentCropDensity` | environmental | Crop density 0..1 |
+| `currentDustDevil` | environmental | Dust devil activity 0..1 |
+| `currentFireRisk` | environmental | Fire spread risk 0..1 |
+| `currentFloodRisk` | environmental | Flash flood risk 0..1 |
+| `currentFogDensity` | atmos | Fog density 0..1 |
+| `currentFreezingRain` | thermal | Freezing rain 0..1 |
+| `currentGusts` | atmos | Gust speed in m/s |
+| `currentHumidity` | atmos | Relative humidity percent |
+| `currentHypothermiaRisk` | thermal | Hypothermia risk 0..1 |
+| `currentIcingSeverity` | atmos | Airframe icing 0..1 |
+| `currentLightningRisk` | atmos | Lightning risk 0..1 |
+| `currentPressure` | atmos | Barometric pressure in hPa |
+| `currentPressureTrend` | atmos | Pressure trend |
+| `currentSandstorm` | environmental | Sandstorm intensity 0..1 |
+| `currentTemperature` | thermal | Air temperature in C |
+| `currentTideDescription` | maritime | Tide description |
+| `currentTideOffset_m` | maritime | Tide offset in metres |
+| `currentTurbulence` | atmos | Turbulence 0..1 |
+| `currentUVIndex` | physiology | UV index |
+| `currentWaterLevel` | mobility | River water level |
+| `currentWaterTemperature` | thermal | Water temperature in C |
+| `currentWBGT` | thermal | Wet bulb globe temperature in C |
+| `currentWeatherForecast` | atmos | Weather forecast text |
+| `currentWind` | atmos | Wind vector |
+| `currentWindDir` | atmos | Wind direction in degrees |
+| `dustSuppression` | environmental | Dust suppression 0..1 |
+| `groundState` | mobility | Ground state |
+| `magneticDeclinationDeg` | maritime | Magnetic declination |
+| `moduleBiomeOverride` | core | Module biome override |
+| `moduleTempOffset` | core | Module temperature offset |
+| `moduleWindMultiplier` | core | Module wind multiplier |
+| `overcast` | core | Engine overcast |
+| `pressureReading1` | atmos | Pressure reading 1 |
+| `pressureReading2` | atmos | Pressure reading 2 |
+| `rainAccum` | core | Rain accumulation |
+| `seaStateBeaufort` | maritime | Sea state on the Beaufort scale |
+| `seaStateCurrent` | maritime | Sea state current |
+| `seaStateDescription` | maritime | Sea state description |
+| `snowDepth_m` | environmental | Snow depth in metres |
+| `soilMoisture` | core | Soil moisture 0..1 |
+| `surfaceTemperature` | thermal | Surface temperature in C |
+| `thermalCrossoverActive` | thermal | Thermal crossover flag |
+| `updateInterval` | core | Update interval in seconds |
+| `vehicleHeatShimmerIntensity` | optics | Heat shimmer 0..1 |
+| `waveHeight_m` | maritime | Wave height in metres |
+
+## Settings
+
+26 settings register under the "AEE Core" category in the CBA settings
+interface. They live in `addons/core/initSettings.inc.sqf` and use
+`CBA_fnc_addSetting`. Titles and descriptions come from the core
+stringtable.
+
+## EDEN module
+
+The module AEE Environment Config exposes these fields:
+
+| Field | Type | Default | Purpose |
+|---|---|---|---|
+| `biomeOverride` | STRING | empty | Force a Koppen biome |
+| `tempOffset` | NUMBER | 0 | Temperature offset in C |
+| `precipBias` | NUMBER | 1 | Rain accumulation multiplier |
+| `windMultiplier` | NUMBER | 1 | Wind multiplier |
+| `updateInterval` | NUMBER | 5 | Update interval in seconds |

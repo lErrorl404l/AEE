@@ -1,11 +1,11 @@
 ---
-title: "Development"
+title: "Chapter 5 - Development"
 ---
 
-# Development
+# Chapter 5 - Development
 
-This page covers build, test, and release. It also summarises the project
-conventions.
+This chapter covers build, release, and the project conventions.
+Testing has its own chapter.
 
 ## Build
 
@@ -29,34 +29,6 @@ hemtt release
 
 Release signs the PBOs and makes the bikey and zip files. It needs a signing
 key for stable signatures.
-
-## Test
-
-Run the physics reference checks with:
-
-```bash
-python3 -m unittest discover -s tools/tests
-```
-
-Run the headless Docker test with:
-
-```bash
-tools/docker_test.sh
-```
-
-The script builds the mod, assembles `@aee`, downloads CBA if needed, and
-runs the Arma 3 dedicated server. It captures the RPT output and verifies the
-phase results.
-
-Run the baseline mode with:
-
-```bash
-tools/docker_test.sh --baseline
-```
-
-Baseline mode runs once without the AEE mod. It reports the mission boot for
-comparison against the modded run. The phases in the baseline are expected to
-fail because no AEE mod is loaded.
 
 ## Continuous integration
 
