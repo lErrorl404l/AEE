@@ -16,7 +16,7 @@ if (!isNil QGVAR(updatePFH)) then {
 };
 
 // Detect base map biome once (first call caches in GVAR(biome))
-call EFUNC(environmental,getBiome);
+[] call EFUNC(environmental,getBiome);
 
 // Register the local environment PFH.
 // Runs on every machine. Core atmospheric state is deterministic (position,

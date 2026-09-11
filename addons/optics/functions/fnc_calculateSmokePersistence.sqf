@@ -17,7 +17,8 @@ Stored in QGVAR(smokeDispersalModifier) for consumption by
 smoke-effect duration systems.
 */
 
-params [["_unit", call CBA_fnc_currentUnit, [objNull]]];
+params [["_unit", objNull, [objNull]]];
+if (isNull _unit) exitWith { 0 };  // no unit on dedicated server
 
 // ─── Inputs ────────────────────────────────────────────────────────────
 private _windSpeed = vectorMagnitude (missionNamespace getVariable [QEGVAR(core,currentWind), [0, 0]]);

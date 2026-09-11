@@ -40,12 +40,12 @@ private _tempDelta = _tAmbient - _prevTemp;
 private _condense = false;
 
 // Primary: humid + cold-ish lens + rapid warming (moved from cold to warm)
-if (_humidity > 0.8 && {_tAmbient > -5 && {_tAmbient < 15 && _tempDelta > 3}}) then {
+if (_humidity > 0.8 && {_tAmbient > -5 && {_tAmbient < 15 && (_tempDelta > 3)}}) then {
     _condense = true;
 };
 
 // Morning dew: 06:00–08:00 with high humidity
-if (_daytime >= 6 && {_daytime <= 8 && _humidity > 0.8}) then {
+if (_daytime >= 6 && {_daytime <= 8 && (_humidity > 0.8)}) then {
     _condense = true;
 };
 
@@ -59,7 +59,7 @@ if (_condense) then {
 
 // ─── Breath-fog component (cold + scope usage) ────────────────────────────
 private _breathFog = 0;
-if (_tAmbient < 0 && _fogTimer > 0) then {
+if (_tAmbient < 0 && (_fogTimer > 0)) then {
     _breathFog = random 0.05;
 };
 

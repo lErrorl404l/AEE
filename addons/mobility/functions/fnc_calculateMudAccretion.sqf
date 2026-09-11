@@ -42,7 +42,7 @@ private _groundState = missionNamespace getVariable [QEGVAR(core,groundState), "
     private _current = _accretion getOrDefault [_netId, 0];
     private _vSpeed = abs speed _x;
 
-    if (_groundState == "Mud" && _vSpeed > 1) then {
+    if (_groundState == "Mud" && (_vSpeed > 1)) then {
         // Accretion: 0.002 per tick while moving on mud
         _current = (_current + 0.002) min 1;
     } else {

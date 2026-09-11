@@ -23,7 +23,8 @@ Also simulates glare flicker from variable lighting under partial cloud.
 Stored in GVAR(snowBlindness).
 */
 
-params [["_unit", call CBA_fnc_currentUnit, [objNull]]];
+params [["_unit", objNull, [objNull]]];
+if (isNull _unit) exitWith { 0 };  // no unit on dedicated server
 
 // ─── Night guard ───────────────────────────────────────────────────────────
 if (sunOrMoon <= 0) exitWith {
@@ -90,7 +91,7 @@ if (_adaption > 0.05) then {
 // ─── Glare flicker under partial cloud ─────────────────────────────────────
 // Variable lighting from moving clouds creates intermittent brightening
 private _glareFlicker = 0;
-if (_overcast > 0.2 && _overcast < 0.5 && _baseBlindness > 0) then {
+if (_overcast > 0.2 && (_overcast < 0.5) && (_baseBlindness > 0)) then {
     _glareFlicker = sin (time * 8) * 0.1 max 0;
 };
 

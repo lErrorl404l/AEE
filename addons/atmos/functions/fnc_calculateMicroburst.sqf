@@ -33,9 +33,9 @@ if (_timer > 0) then {
     // Check trigger conditions
     private _ambientWind = vectorMagnitude wind;
     if (_overcast > 0.8
-        && _temp > 28
-        && _RH > 70
-        && _ambientWind < 3
+        && (_temp > 28)
+        && (_RH > 70)
+        && (_ambientWind < 3)
         && random 1 < 0.01
     ) then {
         _timer     = 12;

@@ -19,7 +19,7 @@ params [["_posASL", [], [[]]]];
 private _groundState = missionNamespace getVariable [QGVAR(groundState), "Normal"];
 
 // ─── Early exit: no snowpack ────────────────────────────────────────────
-if (_groundState != "Snow" && _groundState != "Frozen") exitWith {
+if (_groundState != "Snow" && (_groundState != "Frozen")) exitWith {
     missionNamespace setVariable [QGVAR(currentAvalancheRisk),    0];
     missionNamespace setVariable [QGVAR(currentAvalancheWarning), "None"];
     0

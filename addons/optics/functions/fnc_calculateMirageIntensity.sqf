@@ -20,7 +20,8 @@ Stored in QGVAR(mirageIntensity) for consumption by visual-effect
 and thermal-imaging systems.
 */
 
-params [["_unit", call CBA_fnc_currentUnit, [objNull]]];
+params [["_unit", objNull, [objNull]]];
+if (isNull _unit) exitWith { 0 };  // no unit on dedicated server
 
 // ─── Inputs ────────────────────────────────────────────────────────────
 private _temp        = EGVAR(core,currentTemperature);
@@ -55,7 +56,7 @@ private _aridBiome   = _biome in ["BWh", "BWk", "BSh", "BSk"];
 private _dustyGround = _groundState == "Dusty";
 private _hotEnough   = _surfaceTemp > 35;
 
-if (!_hotEnough || !(_aridBiome || _dustyGround) || _sunElev <= 15) exitWith {
+if (!_hotEnough || (!(_aridBiome || _dustyGround)) || (_sunElev <= 15)) exitWith {
     missionNamespace setVariable [QGVAR(mirageIntensity), 0];
     0
 };

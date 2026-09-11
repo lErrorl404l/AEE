@@ -68,7 +68,7 @@ if (_ascentRate > 500) then {
 };
 
 // Helicopter drop: from below 1000m to above 2500m in one tick
-if (_lastAlt < 1000 && _currentAlt > 2500) then {
+if (_lastAlt < 1000 && (_currentAlt > 2500)) then {
     _rapidAscent = _rapidAscent + 0.3;
 };
 
