@@ -24,8 +24,9 @@ path = "addons/main/script_version.hpp"
 git_hash = 0
 
 [signing]
-# Stable-key flow: hemtt keys generate (run locally, interactive password).
-# Do NOT commit private_key_hash - HEMTT hard-fails encrypted keys in CI.
+# Ephemeral per-release signing (hemtt release generates a throwaway key).
+# No private key file, no private_key_hash - same model as A3SQL.
+# A stable bikey is only needed if a server whitelists the mod by key.
 authority = "aee"
 
 [hemtt.release]
@@ -53,13 +54,15 @@ workshop = ["450814997", "894678801"]
 parameters = ["-skipIntro", "-noSplash", "-showScriptErrors", "-filePatching"]
 
 [hemtt.launch.kat]
-workshop = ["450814997", "773131200"]
+# KAT - Advanced Medical host (2020940806) added for compat testing.
+workshop = ["450814997", "773131200", "2020940806"]
 parameters = ["-skipIntro", "-noSplash", "-showScriptErrors", "-filePatching"]
 
 [hemtt.launch.acm]
+# ACM host workshop ID pending verification; AEE not yet published.
 workshop = ["450814997", "773131200"]
 parameters = ["-skipIntro", "-noSplash", "-showScriptErrors", "-filePatching"]
 
 [hemtt.launch.full]
-workshop = ["450814997", "773131200", "894678801", "1485211835"]
+workshop = ["450814997", "773131200", "894678801", "1485211835", "2020940806"]
 parameters = ["-skipIntro", "-noSplash", "-showScriptErrors", "-filePatching"]
