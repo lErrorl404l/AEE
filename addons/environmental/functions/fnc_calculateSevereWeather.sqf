@@ -12,6 +12,25 @@ Sets QEGVAR(core,currentSandstorm), QEGVAR(core,currentBlowingSnow), QEGVAR(core
 */
 
 // ─── Inputs ──────────────────────────────────────────────────────────────
+// Zeus storm override: while active, force the severe-weather state
+// instead of the natural detection. "clear" forces everything to 0.
+private _overrideType     = missionNamespace getVariable [QEGVAR(core,stormOverrideType), ""];
+private _overrideUntil    = missionNamespace getVariable [QEGVAR(core,stormOverrideUntil), 0];
+private _overridden       = false;
+if ((_overrideType != "") && (time < _overrideUntil)) then {
+    private _intensity = missionNamespace getVariable [QEGVAR(core,stormOverrideIntensity), 0.5];
+    _intensity = _intensity max 0 min 1;
+    private _forcedSand = 0;
+    private _forcedSnow = 0;
+    if (_overrideType == "sandstorm") then { _forcedSand = _intensity; };
+    if (_overrideType == "snowstorm") then { _forcedSnow = _intensity; };
+    missionNamespace setVariable [QEGVAR(core,currentSandstorm),   _forcedSand];
+    missionNamespace setVariable [QEGVAR(core,currentBlowingSnow), _forcedSnow];
+    missionNamespace setVariable [QEGVAR(core,currentDustDevil),   0];
+    _overridden = true;
+};
+if (_overridden) exitWith {};
+
 private _biome       = GVAR(biome);
 private _windSpd     = vectorMagnitude wind;
 private _rain        = rain;
