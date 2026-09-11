@@ -30,3 +30,7 @@ Thumbs.db
 # Python bytecode
 __pycache__/
 *.pyc
+
+# Docker test harness
+/tests/docker/mods/
+/tests/docker/run.log

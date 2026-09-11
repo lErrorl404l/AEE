@@ -1,0 +1,28 @@
+name: Docker Test
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'addons/**'
+      - 'tests/docker/**'
+
+permissions:
+  contents: read
+
+jobs:
+  headless:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: arma-actions/hemtt@v1
+      - name: Headless dedicated-server test
+        run: tools/docker_test.sh
+      - name: Upload test log on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: aee-docker-log
+          path: tests/docker/run.log

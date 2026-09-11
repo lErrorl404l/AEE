@@ -1,0 +1,23 @@
+services:
+  aee-test:
+    image: ghcr.io/brettmayson/arma3server/arma3server:v3
+    platform: linux/amd64
+    network_mode: host
+    environment:
+      - ARMA3_CONFIG_FILE=/arma3/config.toml
+      - ARMA3_SERVER__SKIP_INSTALL=true
+      - ARMA3_SERVER__CONFIG=server.cfg
+      - ARMA3_SERVER__PROFILE=aeetest
+      - ARMA3_SERVER__WORLD=Stratis
+      - ARMA3_SERVER__PARAMS=-autoInit -noBattlEye -mod=mods/@aee;mods/@cba_a3
+      - ARMA3_HEADLESS__CLIENTS=0
+      - ARMA3_MODS__LOCAL=false
+    entrypoint: ["/bin/sh", "/arma3/entrypoint.sh"]
+    volumes:
+      - ./config.toml:/arma3/config.toml
+      - ./entrypoint.sh:/arma3/entrypoint.sh
+      - ./configs:/arma3/server/configs
+      - ./mods:/arma3/server/mods
+      - ./missions:/arma3/server/mpmissions
+      - ${ARMA3_SERVER_ROOT:-./server}:/arma3/server
+    restart: "no"
