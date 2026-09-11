@@ -1,3 +1,4 @@
+PREP(applyFlightTurbulence);
 PREP(calculateEnginePower);
 PREP(calculateHelicopterLift);
 PREP(calculateMudAccretion);
