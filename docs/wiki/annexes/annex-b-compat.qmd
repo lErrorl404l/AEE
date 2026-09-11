@@ -4,7 +4,7 @@ title: "Annex B - Compatibility matrix"
 
 # Annex B - Compatibility matrix {#sec-annex-b}
 
-AEE is standalone. The core addons depend only on CBA. Compatibility
+AEE is standalone. The core addons depend only on `CBA`. Compatibility
 addons load only when their host mod is present. Each compat addon gates
 on its host with `skipWhenMissingDependencies`.
 
@@ -18,12 +18,12 @@ on its host with `skipWhenMissingDependencies`.
 
 ## ACE3 weather
 
-AEE drives the engine weather directly (`setWind`, `setFog`). ACE3's weather
-module reads engine state, so it follows AEE automatically. The ACE3 compat
-addon disables ACE3's own wind, rain, fog, and overcast simulation to avoid
+AEE drives the engine weather directly (`setWind`, `setFog`). `ACE3`'s weather
+module reads engine state, so it follows AEE automatically. The `ACE3` compat
+addon disables `ACE3`'s own wind, rain, fog, and overcast simulation to avoid
 two models fighting.
 
 ## Keybinds
 
-The weather report and altimeter are also available without ACE3 through
+The weather report and altimeter are also available without `ACE3` through
 CBA keybinds, under the AEE category in the CBA keybind settings.

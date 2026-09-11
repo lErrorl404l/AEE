@@ -83,6 +83,28 @@ tools/docker_test.sh --maps
 | Tanoa | Af |
 | Enoch | Dfb |
 
+## Host-mod compatibility
+
+The `--hosts` mode loads each supported host mod with AEE and asserts the
+compat integration produces state. Host mods are not committed to the
+repository; download them from the Steam Workshop and extract them into
+`tests/docker/mods/`:
+
+| Host | Workshop folder | Workshop item |
+|---|---|---|
+| ACE3 | `tests/docker/mods/@ace` | 463939057 |
+| ACRE2 | `tests/docker/mods/@acre2` | 751965892 |
+| TFAR | `tests/docker/mods/@tfar` | 894678801 |
+| KAT Advanced Medical | `tests/docker/mods/@kat_adv_medical` | 2020940806 |
+| ACM | `tests/docker/mods/@acm` | 333310405 |
+
+```bash
+tools/docker_test.sh --hosts
+```
+
+The mode reports a PASS or FAIL per host. Missing mods are listed instead
+of run.
+
 ## Visual verification
 
 ::: {.callout-warning}
