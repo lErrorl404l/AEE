@@ -25,7 +25,7 @@ fi
 rm -rf "$DOCKER/configs/profiles"
 
 clean_profiles() { docker run --rm -v "$DOCKER/configs:/c" alpine rm -rf /c/profiles 2>/dev/null || true; }
-trap 'docker compose -f "$DOCKER/docker-compose.yml" down 2>/dev/null || true; clean_profiles' EXIT
+trap 'docker compose "${COMPOSE_FILES[@]}" down 2>/dev/null || true; clean_profiles' EXIT
 
 echo "==> server root: $ARMA3_SERVER_ROOT"
 echo "==> hemtt build"
@@ -49,27 +49,26 @@ if [ ! -d "$MODS/@cba_a3" ]; then
 fi
 
 BASELINE=0
+COMPOSE_FILES=(-f "$DOCKER/docker-compose.yml")
 if [ "${1:-}" = "--baseline" ]; then
     BASELINE=1
     echo "==> baseline run (no AEE mod)"
-    sed 's|mods/@aee;mods/@cba_a3|mods/@cba_a3|' "$DOCKER/config.toml" > "$DOCKER/config.toml.baseline"
-    mv "$DOCKER/config.toml" "$DOCKER/config.toml.modded"
-    mv "$DOCKER/config.toml.baseline" "$DOCKER/config.toml"
+    COMPOSE_FILES+=(-f "$DOCKER/docker-compose.baseline.yml")
 fi
 
 echo "==> docker compose up"
-docker compose -f "$DOCKER/docker-compose.yml" up -d --force-recreate
+docker compose "${COMPOSE_FILES[@]}" up -d --force-recreate
 
 echo "==> waiting for results (up to 180 s)"
 for _ in $(seq 1 36); do
-    if docker compose -f "$DOCKER/docker-compose.yml" logs 2>/dev/null | grep -q "\[AEE-TEST\] DONE"; then
+    if docker compose "${COMPOSE_FILES[@]}" logs 2>/dev/null | grep -q "\[AEE-TEST\] DONE"; then
         break
     fi
     sleep 5
 done
 
 echo "==> capturing log"
-docker compose -f "$DOCKER/docker-compose.yml" logs > "$DOCKER/run.log" 2>&1
+docker compose "${COMPOSE_FILES[@]}" logs > "$DOCKER/run.log" 2>&1
 
 if [ "$BASELINE" = "1" ]; then
     echo "==> baseline captured to tests/docker/run.log (no verify gate)"
@@ -82,7 +81,5 @@ fi
 
 echo "==> teardown"
 docker compose -f "$DOCKER/docker-compose.yml" down 2>/dev/null || true
-if [ "$BASELINE" = "1" ]; then
-    mv "$DOCKER/config.toml.modded" "$DOCKER/config.toml"
-fi
+
 echo "==> done"
