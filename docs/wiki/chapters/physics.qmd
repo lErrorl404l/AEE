@@ -2,7 +2,7 @@
 title: "Chapter 4 - Physics"
 ---
 
-# Chapter 4 - Physics
+# Chapter 4 - Physics {#sec-physics}
 
 This page describes the models behind the simulation. The models come from
 the SQF implementations.

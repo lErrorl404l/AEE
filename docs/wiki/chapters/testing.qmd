@@ -2,7 +2,7 @@
 title: "Chapter 6 - Testing"
 ---
 
-# Chapter 6 - Testing
+# Chapter 6 - Testing {#sec-testing}
 
 This chapter describes how AEE is verified.
 
@@ -84,6 +84,13 @@ tools/docker_test.sh --maps
 | Enoch | Dfb |
 
 ## Visual verification
+
+::: {.callout-warning}
+## Client required for pixels
+
+The dedicated server has no renderer, so visual effects cannot be
+verified headless.
+:::
 
 The dedicated server has no renderer. Visual effects (heat shimmer, HUD,
 particles, sound) are verified at the state-variable level in phase 6 and

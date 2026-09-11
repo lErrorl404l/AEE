@@ -2,7 +2,7 @@
 title: "Chapter 3 - State variables"
 ---
 
-# Chapter 3 - State variables
+# Chapter 3 - State variables {#sec-state}
 
 Shared simulation state lives in `aee_core_*` mission variables. Any mod or
 mission script can read them. The variables below are grouped by subsystem.

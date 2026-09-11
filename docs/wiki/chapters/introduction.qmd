@@ -65,16 +65,14 @@ Build PBO names are `aee_<component>`. For example, the core addon builds to
 
 ## Chapters and annexes
 
-- [Chapter 2 - Modules](modules.qmd): per-addon function reference.
-- [Chapter 3 - State variables](state-variables.qmd): the shared
-  `aee_core_*` variables.
-- [Chapter 4 - Physics](physics.qmd): the models behind the simulation.
-- [Chapter 5 - Development](development.qmd): build, test, and release.
-- [Chapter 6 - Testing](testing.qmd): verification and the Docker harness.
-- [Annex A - Formulas](../annexes/annex-a-formulas.qmd): the physics
-  formulas.
-- [Annex B - Compatibility matrix](../annexes/annex-b-compat.qmd): compat
-  addons.
-- [Annex C - Variable reference](../annexes/annex-c-variable-reference.qmd):
-  state variables, settings, and module fields.
+- [Chapter 2 - Modules](@sec-modules): per-addon function reference.
+- [Chapter 3 - State variables](@sec-state): the shared `aee_core_*`
+  variables.
+- [Chapter 4 - Physics](@sec-physics): the models behind the simulation.
+- [Chapter 5 - Development](@sec-development): build, test, and release.
+- [Chapter 6 - Testing](@sec-testing): verification and the Docker harness.
+- [Annex A - Formulas](@sec-annex-a): the physics formulas.
+- [Annex B - Compatibility matrix](@sec-annex-b): compat addons.
+- [Annex C - Variable reference](@sec-annex-c): state variables, settings,
+  and module fields.
 - [Support](../support.qmd): help and reporting.
