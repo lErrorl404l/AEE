@@ -1,0 +1,10 @@
+---
+title: "404 - Page not found"
+---
+
+# 404 - Page not found
+
+The page you requested does not exist or has moved.
+
+- [Back to the AEE documentation home](index.qmd)
+- [Report a broken link](https://github.com/lErrorl404l/AEE/issues/new)
