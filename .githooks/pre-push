@@ -1,0 +1,18 @@
+#!/bin/bash
+# aee pre-push hook — full gate
+set -euo pipefail
+ROOT="$(git rev-parse --show-toplevel)"
+FAILED=0
+
+echo "-> hemtt check -p -e"
+(cd "$ROOT" && hemtt check -p -e >/dev/null 2>&1) || FAILED=1
+echo "-> hemtt build"
+(cd "$ROOT" && hemtt build >/dev/null 2>&1) || FAILED=1
+echo "-> python tests"
+(cd "$ROOT" && python3 -m unittest discover -s tools/tests >/dev/null 2>&1) || FAILED=1
+
+if [ "$FAILED" -ne 0 ]; then
+    echo "X pre-push hook failed. Fix issues or use --no-verify."
+    exit 1
+fi
+echo "OK pre-push checks passed"
