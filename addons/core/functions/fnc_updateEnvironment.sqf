@@ -12,6 +12,9 @@ if (!GVAR(enabled)) exitWith {};
 // machine random rolls; divergence there is cosmetic only.
 missionNamespace setVariable [QEGVAR(core,overcast), overcast];
 
+// Deterministic weather progression seed — drives slow weather-quality drift
+[] call FUNC(calculateSeededWeatherProgression);
+
 private _month = date select 1;
 
 private _biome = missionNamespace getVariable [QGVAR(biome), ""];
@@ -24,8 +27,13 @@ if (_biome == "") then {
 // location rather than each independently querying CBA_fnc_currentUnit.
 [_biome, _month, _posASL] call EFUNC(thermal,updateTemperature);
 [_biome, _month, _posASL] call EFUNC(atmos,updatePressure);
+[] call EFUNC(environmental,calculateQNH);
+[] call EFUNC(physiology,calculateHypoxia);
 [_biome, _month, _posASL] call EFUNC(atmos,updateHumidity);
 [] call FUNC(updateSoilMoisture);
+[] call EFUNC(atmos,calculatePrecipitationPhase);
+[] call EFUNC(atmos,calculateHaze);
+[] call EFUNC(environmental,calculateSurfaceWetness);
 [] call EFUNC(atmos,updateWind);
 [] call EFUNC(fx,applyWindNoise);
 
@@ -48,10 +56,12 @@ if (_modulePrecip != 1) then {
 if (GVAR(hydrologyEnabled)) then { call EFUNC(environmental,calculateFreezeThawCycling); };
 [] call EFUNC(environmental,updateSoundPropagation);
 [] call EFUNC(atmos,updateFog);
+[] call EFUNC(environmental,calculateFogBaseAltitude);
 
 // ─── Thermal / Physiological ───────────────────────────────────────────────
 [] call EFUNC(thermal,calculateHeatIndex);
 [] call EFUNC(thermal,calculateHypothermiaRisk);
+[] call EFUNC(thermal,calculateClothingInsulation);
 [] call EFUNC(thermal,calculateFreezingRain);
     [] call EFUNC(thermal,calculateWaterTemperature);
     [] call EFUNC(environmental,calculateFrostOnWindscreens);
@@ -104,6 +114,7 @@ if (GVAR(hydrologyEnabled)) then {
 // ─── Atmospheric events ────────────────────────────────────────────────────
 if (GVAR(atmosphericEventsEnabled)) then {
     [] call EFUNC(atmos,calculateLightning);
+    [] call EFUNC(fx,calculateLightningStrikeEffects);
     [] call EFUNC(environmental,calculateSevereWeather);
     [] call EFUNC(atmos,calculateMicroburst);
     [] call EFUNC(atmos,calculateTurbulence);
@@ -125,6 +136,7 @@ if (GVAR(atmosphericEventsEnabled)) then {
 [] call EFUNC(maritime,calculateTidalPrediction);
 [] call EFUNC(atmos,calculateCloudCeiling);
 [] call EFUNC(environmental,calculateSpaceWeather);
+[] call EFUNC(radio,calculateIonosphericAbsorption);
 if (GVAR(environmentalEnabled)) then {
     [] call EFUNC(environmental,calculateBiologicalAmbient);
     [] call EFUNC(physiology,calculateScentDispersion);

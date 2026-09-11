@@ -9,3 +9,5 @@ PREP(calculateCloudDevelopment);
 PREP(calculateLightning);
 PREP(calculateMicroburst);
 PREP(calculateTurbulence);
+PREP(calculatePrecipitationPhase);
+PREP(calculateHaze);

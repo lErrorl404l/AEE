@@ -4,3 +4,4 @@ PREP(applyVehicleDust);
 PREP(applyWindNoise);
 PREP(triggerLightning);
 PREP(triggerSevereWeatherFX);
+PREP(calculateLightningStrikeEffects);
