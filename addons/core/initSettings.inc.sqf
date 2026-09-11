@@ -196,6 +196,17 @@
     {}
 ] call CBA_fnc_addSetting;
 
+// ── Clothing Insulation ─────────────────────────────────────────────────────
+[
+    QGVAR(clothingInsulation),
+    "SLIDER",
+    [LLSTRING(clothingInsulation_Name), LLSTRING(clothingInsulation_Description)],
+    "AEE Core",
+    [0.5, 2.0, 1.0, 1],
+    true,
+    {}
+] call CBA_fnc_addSetting;
+
 // ── Mud Accretion ──────────────────────────────────────────────────────────
 [
     QGVAR(mudAccretionEnabled),

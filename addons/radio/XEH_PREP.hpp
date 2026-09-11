@@ -1,1 +1,2 @@
 PREP(calculateRadioPropagation);
+PREP(calculateIonosphericAbsorption);

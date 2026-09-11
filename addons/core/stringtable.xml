@@ -81,6 +81,14 @@
             <Original>Biome Transition Radius</Original>
             <English>Biome Transition Radius</English>
         </Key>
+        <Key ID="STR_AEE_Core_clothingInsulation_Description">
+            <Original>Multiplier for clothing insulation. Higher values keep the soldier warmer in cold conditions</Original>
+            <English>Multiplier for clothing insulation. Higher values keep the soldier warmer in cold conditions</English>
+        </Key>
+        <Key ID="STR_AEE_Core_clothingInsulation_Name">
+            <Original>Clothing Insulation</Original>
+            <English>Clothing Insulation</English>
+        </Key>
         <Key ID="STR_AEE_Core_diagnostic_Description">
             <Original>Enable verbose diagnostic logging (diag_log) for environment state changes</Original>
             <English>Enable verbose diagnostic logging (diag_log) for environment state changes</English>

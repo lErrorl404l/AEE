@@ -4,9 +4,11 @@
 // functions/fnc_<name>.sqf file that is compiled at mission start.
 
 PREP(calculateSolarRadiation);
+PREP(calculateSeededWeatherProgression);
 PREP(deterministicRandom);
 PREP(diagnostic);
 PREP(init);
 PREP(moduleInit);
+PREP(moduleStormInit);
 PREP(updateEnvironment);
 PREP(updateSoilMoisture);
