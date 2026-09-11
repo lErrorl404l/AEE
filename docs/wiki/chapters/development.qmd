@@ -27,8 +27,8 @@ Make a release with:
 hemtt release
 ```
 
-Release signs the PBOs and makes the bikey and zip files. It needs a signing
-key for stable signatures.
+Release signs the PBOs with a per-release key and makes the bikey and zip
+files. No private key is required or stored.
 
 ## Continuous integration
 

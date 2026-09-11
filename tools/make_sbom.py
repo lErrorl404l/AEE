@@ -23,7 +23,7 @@ doc = {
     "version": 1,
     "metadata": {
         "timestamp": datetime.now(timezone.utc).isoformat(),
-        "component": {"type": "application", "name": "AEE", "version": "0.1.0"},
+        "component": {"type": "application", "name": "AEE", "version": "1.0.0"},
     },
     "components": [
         {
