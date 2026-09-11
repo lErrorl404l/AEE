@@ -10,7 +10,7 @@ true air density, Koppen biome classification, thermal and physiological
 effects, optics, mobility, environmental conditions, maritime state, radio
 propagation, and atmospheric events.
 
-The mod is standalone. It requires only CBA_A3. The core addons have no ACE3
+The mod is standalone. It requires only `CBA_A3`. The core addons have no `ACE3`
 dependency.
 
 Author: [lErrorl404l](https://github.com/lErrorl404l). Licence:

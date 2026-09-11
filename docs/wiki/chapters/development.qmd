@@ -50,7 +50,7 @@ Functions use the name `aee_<component>_fnc_<name>`. PBOs use the name
 `aee_<component>`. Shared state uses `aee_core_*` mission variables.
 
 Each function file is `functions/fnc_<name>.sqf`. The files are registered in
-`XEH_PREP.hpp` and compiled through CBA XEH. This is the standard ACE3/CBA
+`XEH_PREP.hpp` and compiled through CBA XEH. This is the standard `ACE3`/`CBA`
 pattern.
 
 Localisation uses a per-addon `stringtable.xml`. Keys use the form
