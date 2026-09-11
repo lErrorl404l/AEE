@@ -1,12 +1,11 @@
 name: Docker Test
 
+# On-demand only: the harness mounts a provisioned Arma 3 server install
+# (see tools/docker_test.sh). Provisioning the server on a fresh runner is
+# a ~10 GB steamcmd download, so this runs manually or via API dispatch
+# rather than on every push.
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - 'addons/**'
-      - 'tests/docker/**'
 
 permissions:
   contents: read
