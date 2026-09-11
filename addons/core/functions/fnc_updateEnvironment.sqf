@@ -151,3 +151,8 @@ if (GVAR(opticsEnabled)) then {
 if (GVAR(diagnostic)) then {
     [] call FUNC(diagnostic);
 };
+
+// Notify CBA local event subscribers that the environment state refreshed.
+// Subscribers read the aee_core_* mission variables rather than receiving
+// state in the event payload (the tick publishes ~50 variables).
+["AEE_WeatherUpdated"] call CBA_fnc_localEvent;
