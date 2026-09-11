@@ -1,3 +1,13 @@
+/*-- scss:defaults --*/
+$primary: #1b6f54;
+$link-color: #1b6f54;
+$body-color: #17202a;
+$headings-font-weight: 650;
+$border-radius: .5rem;
+$code-color: #b3344c;
+$code-bg: #f6f8f7;
+
+/*-- scss:rules --*/
 /* AEE wiki - website design system. */
 
 /* ---- Layout ----------------------------------------------------------- */
@@ -84,10 +94,16 @@ main {
 
 .card {
   border: 1px solid var(--bs-border-color, #ddd);
-  border-radius: 0.6rem;
+  border-radius: 0.75rem;
   padding: 1.25rem;
   background: var(--bs-body-bg, #fff);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 .card h3 {

@@ -1,0 +1,18 @@
+color:
+  palette:
+    ink: "#17202a"
+    accent: "#1b6f54"
+    muted: "#5b6b7b"
+  background: white
+  foreground: ink
+  primary: accent
+
+typography:
+  fonts:
+    - family: Inter
+      source: google
+    - family: JetBrains Mono
+      source: google
+  base: Inter
+  headings: Inter
+  monospace: JetBrains Mono

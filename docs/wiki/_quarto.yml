@@ -3,7 +3,9 @@ project:
 
 website:
   title: "AEE"
+  favicon: images/favicon.png
   search: true
+  page-navigation: true
   page-footer:
     left: "Advanced Environment Extension - GPL-2.0-or-later"
     right: "Version 1.0.0"
@@ -42,13 +44,20 @@ website:
       - icon: github
         href: https://github.com/lErrorl404l/AEE
         aria-label: GitHub
+  twitter-card:
+    image: images/social-preview.png
+  open-graph:
+    image: images/social-preview.png
 
 format:
   html:
-    theme: cosmo
+    theme:
+      - cosmo
+      - custom.scss
     filters:
       - auto-dark
-    css: custom.scss
+    breadcrumbs: true
+    highlight-style: github
     toc: true
     toc-depth: 3
     code-copy: true
