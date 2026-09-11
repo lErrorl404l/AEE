@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="Mobility">
+        <Key ID="STR_AEE_Mobility_flightTurbulence_Description">
+            <Original>Apply atmospheric turbulence, gusts, and wind-shear forces to aircraft</Original>
+            <English>Apply atmospheric turbulence, gusts, and wind-shear forces to aircraft</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_flightTurbulence_Name">
+            <Original>Flight Turbulence</Original>
+            <English>Flight Turbulence</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_turbulenceRadius_Description">
+            <Original>Distance from the player or mission centre within which aircraft receive turbulence forces</Original>
+            <English>Distance from the player or mission centre within which aircraft receive turbulence forces</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_turbulenceRadius_Name">
+            <Original>Turbulence Radius</Original>
+            <English>Turbulence Radius</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_turbulenceScale_Description">
+            <Original>Multiplier for the strength of applied turbulence forces (0 = off, 1 = normal, 3 = severe)</Original>
+            <English>Multiplier for the strength of applied turbulence forces (0 = off, 1 = normal, 3 = severe)</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_turbulenceScale_Name">
+            <Original>Turbulence Scale</Original>
+            <English>Turbulence Scale</English>
+        </Key>
+    </Package>
+</Project>
