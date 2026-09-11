@@ -1,4 +1,4 @@
-/* AEE homepage — hero band, feature cards, facts, CTA (same pattern as A3SQL) */
+/* A3SQL homepage — hero band, feature cards, CTA (pattern: quarto.org index.css) */
 
 .hero-banner {
   position: relative;
@@ -7,7 +7,7 @@
 }
 
 body.quarto-light .hero-banner {
-  background-color: rgb(240, 247, 244);
+  background-color: rgb(240, 245, 249);
 }
 
 .hero-banner h1 {
@@ -71,20 +71,6 @@ body.quarto-dark .alt-background {
   margin-top: 0.5rem;
 }
 
-/* Key-facts grid (kept from the AEE design system) */
-.facts {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 0.6rem 1.5rem;
-  padding: 0;
-  list-style: none;
-  margin: 0;
-}
-
-.facts li {
-  padding-left: 0.25rem;
-}
-
 .get-started {
   display: flex;
   justify-content: center;
@@ -95,28 +81,35 @@ body.quarto-dark .alt-background {
   min-width: 240px;
 }
 
-/* AEE brand colour for the primary action button */
+/* Brand colour for the primary action button */
 .btn-action-primary {
-  background-color: #1b6f54;
-  border-color: #1b6f54;
+  background-color: #39729e;
+  border-color: #39729e;
   color: #fff;
 }
 
 .btn-action-primary:hover,
 .btn-action-primary:focus {
-  background-color: #155a43;
-  border-color: #155a43;
+  background-color: #2f5e83;
+  border-color: #2f5e83;
   color: #fff;
 }
 
 .btn-action-secondary {
   background-color: transparent;
-  border-color: #1b6f54;
-  color: #1b6f54;
+  border-color: #39729e;
+  color: #39729e;
 }
 
 .btn-action-secondary:hover,
 .btn-action-secondary:focus {
-  background-color: #1b6f54;
+  background-color: #39729e;
   color: #fff;
+}
+/* Closing CTA band: separate from the features band with a top border */
+.get-started {
+  border-top: 1px solid #dee2e6;
+}
+body.quarto-dark .get-started {
+  border-top: 1px solid #343a40;
 }

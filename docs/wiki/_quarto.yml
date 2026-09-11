@@ -2,7 +2,7 @@ project:
   type: website
 
 website:
-  title: "AEE"
+  title: "AEE Documentation"
   favicon: images/favicon.png
   repo-url: https://github.com/lErrorl404l/AEE
   repo-actions: [edit, issue]
@@ -47,6 +47,17 @@ website:
       - text: Support
         href: support.qmd
   navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - text: "About"
+        href: chapters/introduction.qmd
+      - text: "Modules"
+        href: chapters/modules.qmd
+      - text: "Physics"
+        href: chapters/physics.qmd
+      - text: "Development"
+        href: chapters/development.qmd
     right:
       - icon: github
         href: https://github.com/lErrorl404l/AEE

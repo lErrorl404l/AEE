@@ -15,6 +15,25 @@ Sets:
 */
 
 // ─── Inputs ──────────────────────────────────────────────────────────────
+// Zeus storm override: "thunderstorm" forces the risk, "clear" zeroes it.
+private _overrideType     = missionNamespace getVariable [QEGVAR(core,stormOverrideType), ""];
+private _overrideUntil    = missionNamespace getVariable [QEGVAR(core,stormOverrideUntil), 0];
+private _overridden       = false;
+if ((_overrideType != "") && (time < _overrideUntil)) then {
+    private _overrideIntensity = missionNamespace getVariable [QEGVAR(core,stormOverrideIntensity), 0.5];
+    _overrideIntensity = _overrideIntensity max 0 min 1;
+    if (_overrideType == "clear") then {
+        missionNamespace setVariable [QEGVAR(core,currentLightningRisk), 0];
+        _overridden = true;
+    };
+    if (_overrideType == "thunderstorm") then {
+        missionNamespace setVariable [QEGVAR(core,currentLightningRisk), _overrideIntensity];
+        missionNamespace setVariable [QGVAR(lastTemperature), EGVAR(core,currentTemperature)];
+        _overridden = true;
+    };
+};
+if (_overridden) exitWith {};
+
 private _overcast = overcast;
 private _rain = rain;
 private _RH = EGVAR(core,currentHumidity);
