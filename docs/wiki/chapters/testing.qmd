@@ -17,11 +17,28 @@ and wind chill.
 python3 -m unittest discover -s tools/tests
 ```
 
+## Server installation
+
+The test needs an Arma 3 dedicated server installation. It is not bundled
+with the repository. The dedicated server is free to download:
+
+```bash
+steamcmd +login anonymous +force_install_dir <path> +app_update 233780 validate
+```
+
+Point the test at that installation with the `ARMA3_SERVER_ROOT`
+environment variable. Alternatively, copy or install the server into
+`tests/docker/server` (the default location). The script checks for the
+`arma3server_x64` binary and stops with instructions if it is missing.
+
+The container mounts the server directory read-write. The server writes
+its profile state to a tmpfs, so no root-owned files appear in the
+repository.
+
 ## Headless dedicated-server test
 
 The primary verification runs the mod on an Arma 3 dedicated server in
-Docker. It uses the brettmayson/arma3server image with a local server
-install. The test mission `aee_test.Stratis` runs seven phases:
+Docker. It uses the brettmayson/arma3server image. The test mission `aee_test.Stratis` runs seven phases:
 
 | Phase | Checks |
 |---|---|

@@ -39,3 +39,4 @@ __pycache__/
 
 # Quarto build output
 /docs/wiki/_site/
+/tests/docker/configs/profiles/

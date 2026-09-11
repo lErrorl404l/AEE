@@ -12,6 +12,9 @@ services:
       - ARMA3_HEADLESS__CLIENTS=0
       - ARMA3_MODS__LOCAL=false
     entrypoint: ["/bin/sh", "/arma3/entrypoint.sh"]
+    tmpfs:
+      # server writes its profile state here; keep root-owned files out of the repo
+      - /arma3/server/configs/profiles
     volumes:
       - ./config.toml:/arma3/config.toml
       - ./entrypoint.sh:/arma3/entrypoint.sh
