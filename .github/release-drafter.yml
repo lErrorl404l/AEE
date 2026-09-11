@@ -1,4 +1,4 @@
-# Release Drafter config - auto-generates release notes
+# Release Drafter config — auto-generates release notes
 # https://github.com/release-drafter/release-drafter
 
 name-template: 'v$RESOLVED_VERSION'
