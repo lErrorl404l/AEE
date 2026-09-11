@@ -33,6 +33,6 @@ private _monthFactor = [1.0, 1.3] select ((_month >= 5) && (_month <= 8));
 private _uvIndex = _solarElevation / 90 * 11 * _altBonus * _cloudFactor * _monthFactor;
 _uvIndex = round (_uvIndex max 0 min 11);
 
-missionNamespace setVariable [QGVAR(currentUVIndex), _uvIndex];
+missionNamespace setVariable [QEGVAR(core,currentUVIndex), _uvIndex];
 
 _uvIndex

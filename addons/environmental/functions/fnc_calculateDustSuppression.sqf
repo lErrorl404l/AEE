@@ -30,7 +30,7 @@ if (_rain > 0.1) then {
 
 _suppression = _suppression max 0 min 1;
 
-missionNamespace setVariable [QGVAR(dustSuppression), _suppression];
+missionNamespace setVariable [QEGVAR(core,dustSuppression), _suppression];
 missionNamespace setVariable ["ace_weather_dustSuppression", _suppression];
 
 _suppression

@@ -139,10 +139,10 @@ diag_log text format ["[AEE-TEST] biome after explicit call: %1", _biomeAfter];
         };
     } forEach _coverage;
     diag_log text format ["[PHASE6] summary: pass=%1 nil=%2 fail=%3", _pass, _nil, _fail];
-    if ((_fail == 0) && ((_pass + _nil) >= 30)) then {
+    if ((_fail == 0) && (_pass >= 25)) then {
         diag_log text format ["[PHASE6] [PASS] module coverage: %1 state vars verified", _pass];
     } else {
-        diag_log text format ["[PHASE6] [FAIL] coverage: pass=%1 nil=%2 fail=%3", _pass, _nil, _fail];
+        diag_log text format ["[PHASE6] [FAIL] coverage: pass=%1 nil=%2 fail=%3 (nil should be only condition-gated)", _pass, _nil, _fail];
     };
 
 

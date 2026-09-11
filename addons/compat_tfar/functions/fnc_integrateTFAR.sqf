@@ -15,7 +15,7 @@
 if (!isClass (configFile >> "CfgPatches" >> "task_force_radio")) exitWith {};
 if (!(missionNamespace getVariable ["aee_core_enabled", false])) exitWith {};
 
-private _propIdx = (missionNamespace getVariable ["aee_core_radioPropagationIndex", 0]);
+private _propIdx = (missionNamespace getVariable ["aee_radio_radioPropagationIndex", 0]);
 if (_propIdx <= 0) then { _propIdx = 1.0 };
 
 // propIdx 0.3 → mult 0.58, propIdx 1.0 → mult 1.0, propIdx 2.0 → mult 1.6

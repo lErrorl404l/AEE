@@ -39,4 +39,4 @@ private _floodRisk = switch (true) do {
 };
 
 missionNamespace setVariable [QGVAR(currentWaterLevel), _waterLevel];
-missionNamespace setVariable [QGVAR(currentFloodRisk), _floodRisk];
+missionNamespace setVariable [QEGVAR(core,currentFloodRisk), _floodRisk];

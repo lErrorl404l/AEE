@@ -17,7 +17,7 @@ Four factors are combined:
 
 ponytail: a simple aggregate decay modifier, not a full chemical agent
 transport model.
-Stored in QGVAR(cbrnPersistence).
+Stored in QEGVAR(core,cbrnPersistence).
 */
 
 // ─── Inputs ────────────────────────────────────────────────────────────────
@@ -52,6 +52,6 @@ _solarFactor = _solarFactor max 1.0 min 1.5;
 // ─── Combined ──────────────────────────────────────────────────────────────
 private _modifier = ((_tempFactor + _humidityFactor) / 2) * _windFactor * (_solarFactor / 2);
 
-missionNamespace setVariable [QGVAR(cbrnPersistence), _modifier];
+missionNamespace setVariable [QEGVAR(core,cbrnPersistence), _modifier];
 
 _modifier

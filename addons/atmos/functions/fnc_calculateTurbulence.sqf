@@ -7,7 +7,7 @@ Two components:
   Mechanical   — wind interacting with terrain roughness
   Convective   — thermal activity from hot surfaces and daytime heating
 
-Sets QGVAR(currentTurbulence).
+Sets QEGVAR(core,currentTurbulence).
 */
 
 // ─── Mechanical (terrain-driven) ────────────────────────────────────────
@@ -51,4 +51,4 @@ if (_hour > 8 && (_hour < 18) && (_temp > 25)) then {
 // ─── Sum & clamp ───────────────────────────────────────────────────────
 private _turbulence = (_mechanical + _convective) min 1.0;
 
-missionNamespace setVariable [QGVAR(currentTurbulence), _turbulence];
+missionNamespace setVariable [QEGVAR(core,currentTurbulence), _turbulence];

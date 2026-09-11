@@ -2,7 +2,7 @@
 
 if (!isClass (configFile >> "CfgPatches" >> "kat_circulation")) exitWith {};
 
-private _coreAETemp = (missionNamespace getVariable ["aee_core_coreAETemp", 0]);
+private _coreAETemp = (missionNamespace getVariable ["aee_core_currentTemperature", 0]);
 private _coreBodyTemp = (missionNamespace getVariable ["aee_core_coreBodyTemp", 0]);
 private _bodyFluid = player getVariable ["kat_circulation_bodyFluid", 60];
 private _dehyd = 0;

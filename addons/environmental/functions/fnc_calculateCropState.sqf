@@ -46,4 +46,4 @@ private _cropDensity = switch (_biome) do {
     default     { 0.3 };
 };
 
-missionNamespace setVariable [QGVAR(currentCropDensity), _cropDensity];
+missionNamespace setVariable [QEGVAR(core,currentCropDensity), _cropDensity];

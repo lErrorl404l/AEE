@@ -17,7 +17,8 @@ private _rainAccum = missionNamespace getVariable [QGVAR(rainAccum), 0];
 private _biome     = GVAR(biome);
 
 // ─── Arid biomes — low infiltration, rapid runoff ──────────────────────────
-private _isArid = !isNil "_biome" && _biome in ["BWh","BWk","BSh","BSk"];
+private _isArid = false;
+if (!isNil "_biome") then { _isArid = _biome in ["BWh","BWk","BSh","BSk"]; };
 
 private _risk = 0;
 if (_isArid) then {
