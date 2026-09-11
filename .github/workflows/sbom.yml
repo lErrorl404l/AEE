@@ -1,0 +1,28 @@
+name: SBOM
+
+on:
+  push:
+    tags: ['*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sbom:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate CycloneDX SBOM
+        run: python3 tools/make_sbom.py sbom.cdx.json
+      - name: Upload SBOM artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: aee-sbom-${{ github.ref_name }}
+          path: sbom.cdx.json
+          if-no-files-found: error
+      - name: Attach SBOM to release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: sbom.cdx.json

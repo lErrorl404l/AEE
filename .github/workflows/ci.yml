@@ -1,16 +1,52 @@
 name: Build
 on: [push, pull_request]
 jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate SQF
+        run: python3 tools/sqf_validator.py
+      - name: Validate Config
+        run: python3 tools/config_style_checker.py
+      - name: Check Strings
+        run: python3 tools/check_strings.py
+      - name: Validate Stringtables
+        run: python3 tools/stringtable_validator.py
+      - name: Check for BOM
+        uses: arma-actions/bom-check@v1
+        with:
+          path: addons
+      - name: Lint (sqflint)
+        uses: arma-actions/sqflint@master
+        continue-on-error: true
+      - name: SQFVM validation
+        run: |
+          SQFVM_URL="https://github.com/SQFvm/runtime/releases/download/v2026.04.03-ed9f5f5/sqfvm_linux_x64_gcc.zip"
+          curl -sL "$SQFVM_URL" -o /tmp/sqfvm.zip
+          unzip -q /tmp/sqfvm.zip -d /tmp
+          chmod +x /tmp/sqfvm_linux_x64_gcc/sqfvm
+          mkdir -p "$HOME/.local/bin"
+          cp /tmp/sqfvm_linux_x64_gcc/sqfvm "$HOME/.local/bin/sqfvm"
+          python3 -m tools.sqfvm_checker
+        shell: bash
+
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Setup HEMTT
         uses: arma-actions/hemtt@v1
-      - name: Run HEMTT release
-        run: hemtt release
-      - name: Upload Release
+      - name: Run HEMTT check
+        run: hemtt check -p -e
+      - name: Run HEMTT build
+        run: hemtt build
+      - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: aee
-          path: releases/
+          path: .hemttout/build

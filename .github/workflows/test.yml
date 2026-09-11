@@ -1,0 +1,23 @@
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  physics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Physics reference checks
+        run: python3 -m unittest discover -s tools/tests
+      - name: Python tool validators
+        run: |
+          python3 tools/sqf_validator.py
+          python3 tools/check_strings.py
+          python3 tools/stringtable_validator.py
+          python3 tools/config_style_checker.py

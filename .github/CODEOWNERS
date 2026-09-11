@@ -1,0 +1,3 @@
+# Sensitive paths are owned by the sole maintainer.
+/.github/workflows/ @lErrorl404l
+/SECURITY.md @lErrorl404l
