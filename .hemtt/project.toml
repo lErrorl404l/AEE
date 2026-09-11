@@ -18,14 +18,20 @@ author = "lErrorl404l"
 url = "https://github.com/aee-mod/aee"
 
 [version]
-git_hash = 8
+path = "addons/main/script_version.hpp"
+# 0 = version purely from script_version.hpp, bumped at release time
+# (matches ACE3/ACRE2 practice). 8 = git-hash suffix instead.
+git_hash = 0
 
 [signing]
-version = 3
-authority = "aee_0.1.0"
+# Stable-key flow: hemtt keys generate (run locally, interactive password).
+# Do NOT commit private_key_hash - HEMTT hard-fails encrypted keys in CI.
+authority = "aee"
 
 [hemtt.release]
 folder = "@aee"
+sign = true
+archive = true
 
 [hemtt.dev]
 exclude = ["test"]
