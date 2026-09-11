@@ -35,3 +35,4 @@ __pycache__/
 
 # Fallback server install dir
 /tests/docker/server/
+/tests/docker/run.*.log
