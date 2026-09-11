@@ -33,7 +33,7 @@ private _ceiling = 125 * (_temp - _td);
 if (_overcast < 0.2) then { _ceiling = _ceiling max 5000; };
 
 // Fully overcast + near-saturated — low stratus deck
-if (_overcast > 0.9 && _rh > 95) then { _ceiling = _ceiling min 100; };
+if (_overcast > 0.9 && (_rh > 95)) then { _ceiling = _ceiling min 100; };
 
 // ─── Clamp ───────────────────────────────────────────────────────────────
 _ceiling = 0 max _ceiling min 5000;

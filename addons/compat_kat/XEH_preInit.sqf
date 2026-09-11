@@ -8,7 +8,7 @@ if (is3DEN) exitWith {};
 
 if (hasInterface) then {
     [{
-        call FUNC(integrateKAT);
+        [] call FUNC(integrateKAT);
     }, 5] call CBA_fnc_addPerFrameHandler;
 };
 

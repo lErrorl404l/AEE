@@ -45,13 +45,13 @@ private _state = "Normal";
 if (_surface in ["#gdtsnow","#gdtice","#gdtglacier","#gdttundra"]) then {
     _state = "Snow";
 } else {
-    if (!isNil "_T" && _T < -2 && _rainAccum > 0.05) then {
+    if (!isNil "_T" && (_T < -2) && (_rainAccum > 0.05)) then {
         _state = "Frozen";
     } else {
-        if (_rainAccum > 0.2 && !isNil "_T" && _T > 2) then {
+        if (_rainAccum > 0.2 && (!isNil "_T") && (_T > 2)) then {
             _state = "Mud";
         } else {
-            if (!isNil "_biome" && _biome in ["BWh","BWk","BSh","BSk"] && _windSpeed > 5 && _rainAccum < 0.05) then {
+            if (!isNil "_biome" && (_biome in ["BWh","BWk","BSh","BSk"]) && (_windSpeed > 5) && (_rainAccum < 0.05)) then {
                 _state = "Dusty";
             };
         };

@@ -11,7 +11,8 @@ Sets:     EGVAR(core,currentWind) = [crosswind, downrange]
 Returns:  nothing
 */
 
-params [["_unit", call CBA_fnc_currentUnit, [objNull]]];
+params [["_unit", objNull, [objNull]]];
+if (isNull _unit) exitWith { 0 };  // no unit on dedicated server
 
 // ─── Wind input ──────────────────────────────────────────────────────────
 private _windData = wind;                                   // [speed_mps, direction_deg]

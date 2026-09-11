@@ -2,4 +2,4 @@
 
 if (is3DEN) exitWith {};
 
-call FUNC(init);
+[] call FUNC(init);

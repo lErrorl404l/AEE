@@ -44,7 +44,7 @@ if (_temp > 30 && overcast < 0.3) then {
 
 // Daytime heating gradient
 private _hour = dayTime;
-if (_hour > 8 && _hour < 18 && _temp > 25) then {
+if (_hour > 8 && (_hour < 18) && (_temp > 25)) then {
     _convective = _convective + (0.1 + ((_temp - 25) / 50) * 0.1);   // 0.1-0.2
 };
 

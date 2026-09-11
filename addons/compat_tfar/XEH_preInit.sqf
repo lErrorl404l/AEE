@@ -8,7 +8,7 @@ if (is3DEN) exitWith {};
 
 if (hasInterface) then {
     [{
-        call FUNC(integrateTFAR);
+        [] call FUNC(integrateTFAR);
     }, 5] call CBA_fnc_addPerFrameHandler;
 };
 

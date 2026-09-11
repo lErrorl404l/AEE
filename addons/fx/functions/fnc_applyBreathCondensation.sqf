@@ -15,7 +15,7 @@ if (!EGVAR(core,environmentalEnabled)) exitWith {};
 private _temp      = missionNamespace getVariable [QEGVAR(core,currentTemperature), 20];
 private _windSpeed = vectorMagnitude wind;
 
-if (_temp >= 5 || _windSpeed >= 5) exitWith {};
+if (_temp >= 5 || (_windSpeed >= 5)) exitWith {};
 
 private _player = call CBA_fnc_currentUnit;
 if (isNil "_player" || !alive _player || cameraOn != _player) exitWith {};

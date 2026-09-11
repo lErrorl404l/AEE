@@ -59,7 +59,7 @@ private _risk = switch (true) do {
 };
 
 // ─── Heat stroke overlay — dangerous combination of heat + fluid loss ───
-if (_WBGT > 32 && _deficit > 1.5) then {
+if (_WBGT > 32 && (_deficit > 1.5)) then {
     _risk = _risk + (_WBGT - 32) * 0.03;
 };
 

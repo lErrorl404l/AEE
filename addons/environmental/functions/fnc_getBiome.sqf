@@ -15,11 +15,11 @@ private _BIOME_NAMES = createHashMapFromArray [
 
 // ─── Module override (EDEN/Zeus) ────────────────────────────────────
 // Check for module-placed biome override before running auto-detection
-private _moduleOverride = missionNamespace getVariable [QGVAR(moduleBiomeOverride), ""];
+private _moduleOverride = missionNamespace getVariable [QEGVAR(core,moduleBiomeOverride), ""];
 if (_moduleOverride != "") exitWith {
     private _name = _BIOME_NAMES getOrDefault [_moduleOverride, _moduleOverride];
-    missionNamespace setVariable [QGVAR(biome), _moduleOverride];
-    missionNamespace setVariable [QGVAR(biomeName), _name];
+    missionNamespace setVariable [QEGVAR(core,biome), _moduleOverride];
+    missionNamespace setVariable [QEGVAR(core,biomeName), _name];
 };
 
 // ─── Surface type → biome votes ──────────────────────────────────────
@@ -51,11 +51,11 @@ private _SURFACE_VOTES = createHashMapFromArray [
 ];
 
 // ─── Override check ──────────────────────────────────────────────────
-private _biomeOverride = GVAR(biome);
-if (!isNil "_biomeOverride" && _biomeOverride != "AUTO") exitWith {
-    missionNamespace setVariable [QGVAR(biome), _biomeOverride];
+private _biomeOverride = EGVAR(core,biome);
+if (!isNil "_biomeOverride" && (_biomeOverride != "AUTO")) exitWith {
+    missionNamespace setVariable [QEGVAR(core,biome), _biomeOverride];
     private _name = _BIOME_NAMES getOrDefault [_biomeOverride, _biomeOverride];
-    missionNamespace setVariable [QGVAR(biomeName), _name];
+    missionNamespace setVariable [QEGVAR(core,biomeName), _name];
 };
 
 // ─── Collect signals ─────────────────────────────────────────────────
@@ -77,8 +77,8 @@ private _MAP_BIOMES = createHashMapFromArray [
 ];
 if (_world in _MAP_BIOMES) exitWith {
     private _entry = _MAP_BIOMES get _world;
-    missionNamespace setVariable [QGVAR(biome), _entry select 0];
-    missionNamespace setVariable [QGVAR(biomeName), _entry select 1];
+    missionNamespace setVariable [QEGVAR(core,biome), _entry select 0];
+    missionNamespace setVariable [QEGVAR(core,biomeName), _entry select 1];
 };
 
 // --- Step 2: CfgWorlds description keyword match (weight 5 — immediate return) ---
@@ -95,8 +95,8 @@ if (_desc != "") then {
     if ("snow" in _desc)           then { _biome = "Dfc"; _biomeName = "Subarctic"; };
 };
 if (_biome != "") exitWith {
-    missionNamespace setVariable [QGVAR(biome), _biome];
-    missionNamespace setVariable [QGVAR(biomeName), _biomeName];
+    missionNamespace setVariable [QEGVAR(core,biome), _biome];
+    missionNamespace setVariable [QEGVAR(core,biomeName), _biomeName];
 };
 
 // --- Step 3: Weighted consensus voting (surface + latitude) ---------
@@ -146,7 +146,7 @@ private _maxScore = 0;
 if (_biome == "") then { _biome = "Cfb"; _biomeName = "Oceanic"; };
 
 // --- Store results ---
-missionNamespace setVariable [QGVAR(biome), _biome];
+missionNamespace setVariable [QEGVAR(core,biome), _biome];
 missionNamespace setVariable [QGVAR(biomeName),
     _BIOME_NAMES getOrDefault [_biome, _biome]
 ];

@@ -25,15 +25,15 @@ if (isNil "_temp") then { _temp = 20; };
 private _sandstorm = 0;
 if (!isNil "_biome"
     && _biome in ["BWh","BWk","BSh","BSk"]
-    && _windSpd > 10
-    && _rain < 0.01
+    && (_windSpd > 10)
+    && (_rain < 0.01)
 ) then {
     _sandstorm = (_windSpd / 25) min 1.0;
 };
 
 // ─── Blowing snow / whiteout — snow state + cold + wind > 8 m/s ─────────
 private _blowingSnow = 0;
-if (_groundState == "Snow" && _windSpd > 8 && _temp < 0) then {
+if (_groundState == "Snow" && (_windSpd > 8) && (_temp < 0)) then {
     _blowingSnow = (_windSpd / 20) min 1.0;
 };
 
@@ -42,9 +42,9 @@ if (_groundState == "Snow" && _windSpd > 8 && _temp < 0) then {
 private _dustDevil = 0;
 if (!isNil "_biome"
     && _biome in ["BWh","BWk","BSh","BSk"]
-    && _windSpd > 5
-    && _temp > 30
-    && _overcast < 0.3
+    && (_windSpd > 5)
+    && (_temp > 30)
+    && (_overcast < 0.3)
 ) then {
     _dustDevil = (_windSpd / 15) min 0.8;
 };

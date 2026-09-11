@@ -32,10 +32,10 @@ private _seeing = 0.2;
 
 // ─── Thermal mixing (daytime only) ─────────────────────────────────────────
 if (_daytime) then {
-    if (_temp > 25 && _overcast < 0.3) then {
+    if (_temp > 25 && (_overcast < 0.3)) then {
         _seeing = _seeing + 0.5; // strong shimmer
     } else {
-        if (_temp > 15 && _overcast < 0.5) then {
+        if (_temp > 15 && (_overcast < 0.5)) then {
             _seeing = _seeing + 0.2; // moderate shimmer
         };
     };

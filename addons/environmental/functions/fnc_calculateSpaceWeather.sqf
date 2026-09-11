@@ -102,9 +102,9 @@ private _posASL = getPosASL (call CBA_fnc_currentUnit);
 private _latDeg = abs ((_posASL select 1) / 100000 * 90); // ponytail: rough latitude
 
 private _aurora = _kpIndex > 4
-    && _overcast < 0.3
+    && (_overcast < 0.3)
     && _daytime < 6 || _daytime > 20
-    && _latDeg > 45;
+    && (_latDeg > 45);
 
 // ─── Store ────────────────────────────────────────────────────────────────
 missionNamespace setVariable [QGVAR(solarActivity),              _solarActivity];

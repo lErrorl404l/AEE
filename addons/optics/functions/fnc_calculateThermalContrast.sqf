@@ -21,7 +21,7 @@ private _T = EGVAR(core,currentTemperature);
 private _fog = missionNamespace getVariable [QEGVAR(core,currentFogDensity), 0];
 
 // ─── Extreme heat — gradient flattens ────────────────────────────────────
-if (!isNil "_T" && _T > 35) then {
+if (!isNil "_T" && (_T > 35)) then {
     _contrast = _contrast - ((_T - 35) / 10) * 0.7; // linear to 0.3 at 45 °C
 };
 
@@ -36,7 +36,7 @@ if (_fog > 0) then {
 };
 
 // ─── Cold boost — widened thermal gap ────────────────────────────────────
-if (!isNil "_T" && _T < 5) then {
+if (!isNil "_T" && (_T < 5)) then {
     _contrast = (_contrast * 1.2) min 1.0;
 };
 

@@ -20,7 +20,7 @@ if (isClass (configFile >> "CfgPatches" >> "ace_weather")) then {
 
 if (hasInterface) then {
     [{
-        call FUNC(integrateMedical);
+        [] call FUNC(integrateMedical);
     }, 5] call CBA_fnc_addPerFrameHandler;
 };
 

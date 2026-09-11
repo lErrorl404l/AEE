@@ -29,10 +29,10 @@ private _groundState = missionNamespace getVariable [QEGVAR(core,groundState), "
 private _foliage = missionNamespace getVariable [QEGVAR(environmental,currentFoliageDensity), 0.5];
 
 // ─── Temperature ─────────────────────────────────────────────────────────
-if (!isNil "_T" && _T > 30) then { _risk = _risk + 0.4; };
+if (!isNil "_T" && (_T > 30)) then { _risk = _risk + 0.4; };
 
 // ─── Low humidity ────────────────────────────────────────────────────────
-if (!isNil "_RH" && _RH < 30) then { _risk = _risk + 0.3; };
+if (!isNil "_RH" && (_RH < 30)) then { _risk = _risk + 0.3; };
 
 // ─── Wind ────────────────────────────────────────────────────────────────
 if (_windSpeed > 5) then { _risk = _risk + 0.2; };

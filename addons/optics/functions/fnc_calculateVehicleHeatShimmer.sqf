@@ -14,7 +14,8 @@ Stored in QGVAR(vehicleHeatShimmerIntensity) for consumption by
 visual post-process systems.
 */
 
-params [["_unit", call CBA_fnc_currentUnit, [objNull]]];
+params [["_unit", objNull, [objNull]]];
+if (isNull _unit) exitWith { 0 };  // no unit on dedicated server
 
 if (!EGVAR(core,opticsEnabled)) exitWith {
     missionNamespace setVariable [QGVAR(vehicleHeatShimmerIntensity), 0];

@@ -16,7 +16,7 @@ private _month = date select 1;
 
 private _biome = GVAR(biome);
 if (isNil "_biome" || _biome == "") then {
-    call EFUNC(environmental,getBiome);
+    [] call EFUNC(environmental,getBiome);
     _biome = GVAR(biome);
 };
 
@@ -26,9 +26,9 @@ if (isNil "_biome" || _biome == "") then {
 [_biome, _month, _posASL] call EFUNC(atmos,updatePressure);
 [_biome, _month, _posASL] call EFUNC(atmos,updateHumidity);
 [] call EFUNC(atmos,updateWind);
-call EFUNC(fx,applyWindNoise);
+[] call EFUNC(fx,applyWindNoise);
 
-call EFUNC(ballistics,calculateAirDensity);
+[] call EFUNC(ballistics,calculateAirDensity);
 
 // ─── Derived effects (ground, foliage, sound, fog) ─────────────────────────
 [_posASL] call EFUNC(mobility,updateGroundState);
@@ -43,110 +43,110 @@ if (_modulePrecip != 1) then {
     missionNamespace setVariable [QGVAR(rainAccum), _rainAccum];
 };
 
-call EFUNC(environmental,updateSeasonalFoliage);
+[] call EFUNC(environmental,updateSeasonalFoliage);
 if (GVAR(hydrologyEnabled)) then { call EFUNC(environmental,calculateFreezeThawCycling); };
-call EFUNC(environmental,updateSoundPropagation);
-call EFUNC(atmos,updateFog);
+[] call EFUNC(environmental,updateSoundPropagation);
+[] call EFUNC(atmos,updateFog);
 
 // ─── Thermal / Physiological ───────────────────────────────────────────────
-call EFUNC(thermal,calculateHeatIndex);
-call EFUNC(thermal,calculateHypothermiaRisk);
-call EFUNC(thermal,calculateFreezingRain);
-    call EFUNC(thermal,calculateWaterTemperature);
-    call EFUNC(environmental,calculateFrostOnWindscreens);
-call EFUNC(physiology,calculateUVIndex);
-call EFUNC(physiology,calculateBatteryTemperatureDerating);
-call EFUNC(physiology,calculateDehydrationRisk);
-call EFUNC(physiology,calculateAltitudeAcclimatization);
+[] call EFUNC(thermal,calculateHeatIndex);
+[] call EFUNC(thermal,calculateHypothermiaRisk);
+[] call EFUNC(thermal,calculateFreezingRain);
+    [] call EFUNC(thermal,calculateWaterTemperature);
+    [] call EFUNC(environmental,calculateFrostOnWindscreens);
+[] call EFUNC(physiology,calculateUVIndex);
+[] call EFUNC(physiology,calculateBatteryTemperatureDerating);
+[] call EFUNC(physiology,calculateDehydrationRisk);
+[] call EFUNC(physiology,calculateAltitudeAcclimatization);
 
 // ─── Sensor / Optics ───────────────────────────────────────────────────────
-call EFUNC(optics,calculateThermalContrast);
-call EFUNC(optics,calculateAttenuation);
+[] call EFUNC(optics,calculateThermalContrast);
+[] call EFUNC(optics,calculateAttenuation);
 if (GVAR(opticsEnabled)) then {
-    call EFUNC(optics,calculateMirageIntensity);
-    call EFUNC(optics,calculateSmokePersistence);
-    call EFUNC(optics,calculatePrecipitationVisibility);
-    call EFUNC(optics,calculateSolarGlare);
-    call EFUNC(thermal,calculateThermalCrossover);
-    call EFUNC(optics,calculateDewOnOptics);
-    call EFUNC(optics,calculateSnowBlindness);
+    [] call EFUNC(optics,calculateMirageIntensity);
+    [] call EFUNC(optics,calculateSmokePersistence);
+    [] call EFUNC(optics,calculatePrecipitationVisibility);
+    [] call EFUNC(optics,calculateSolarGlare);
+    [] call EFUNC(thermal,calculateThermalCrossover);
+    [] call EFUNC(optics,calculateDewOnOptics);
+    [] call EFUNC(optics,calculateSnowBlindness);
 };
 
 // ─── Mobility / Operations ─────────────────────────────────────────────────
-call EFUNC(mobility,calculateTraction);
-call EFUNC(mobility,calculateHelicopterLift);
-call EFUNC(environmental,calculateFireSpreadRisk);
+[] call EFUNC(mobility,calculateTraction);
+[] call EFUNC(mobility,calculateHelicopterLift);
+[] call EFUNC(environmental,calculateFireSpreadRisk);
 if (GVAR(enginePowerDegradationEnabled)) then {
     [_posASL] call EFUNC(mobility,calculateEnginePower);
 };
 
 // ─── Ballistics ─────────────────────────────────────────────────────────────
-    call EFUNC(ballistics,calculateCrosswindBallistics);
+    [] call EFUNC(ballistics,calculateCrosswindBallistics);
     [_posASL] call EFUNC(ballistics,calculateCoriolisDeflection);
 // Ammo temp is per-weapon per-unit in ACE3 — stub retained for future
 
 // ─── Radio / Comms ──────────────────────────────────────────────────────────
 if (GVAR(radioPropagationEnabled)) then {
-    call EFUNC(radio,calculateRadioPropagation);
+    [] call EFUNC(radio,calculateRadioPropagation);
 };
 
 // ─── Surface Hydrology ──────────────────────────────────────────────────────
 if (GVAR(hydrologyEnabled)) then {
-    call EFUNC(environmental,calculateSnowAccumulation);
-    call EFUNC(environmental,calculateFlashFloodRisk);
-    call EFUNC(environmental,calculateDustSuppression);
+    [] call EFUNC(environmental,calculateSnowAccumulation);
+    [] call EFUNC(environmental,calculateFlashFloodRisk);
+    [] call EFUNC(environmental,calculateDustSuppression);
 };
-call EFUNC(mobility,calculateRouteDegradation);
-call EFUNC(mobility,calculateSoilBearingStrength);
-call EFUNC(fx,applyVehicleDust);
+[] call EFUNC(mobility,calculateRouteDegradation);
+[] call EFUNC(mobility,calculateSoilBearingStrength);
+[] call EFUNC(fx,applyVehicleDust);
 
 // ─── Atmospheric events ────────────────────────────────────────────────────
 if (GVAR(atmosphericEventsEnabled)) then {
-    call EFUNC(atmos,calculateLightning);
-    call EFUNC(environmental,calculateSevereWeather);
-    call EFUNC(atmos,calculateMicroburst);
-    call EFUNC(atmos,calculateTurbulence);
+    [] call EFUNC(atmos,calculateLightning);
+    [] call EFUNC(environmental,calculateSevereWeather);
+    [] call EFUNC(atmos,calculateMicroburst);
+    [] call EFUNC(atmos,calculateTurbulence);
     [_posASL] call EFUNC(environmental,calculateAvalancheRisk);
-    call EFUNC(atmos,calculateAirframeIcing);
-    call EFUNC(optics,calculateAtmosphericSeeing);
+    [] call EFUNC(atmos,calculateAirframeIcing);
+    [] call EFUNC(optics,calculateAtmosphericSeeing);
 
     // ── FX triggers ────────────────────────────────────────────────────
-    call EFUNC(fx,triggerLightning);
-    call EFUNC(fx,triggerSevereWeatherFX);
+    [] call EFUNC(fx,triggerLightning);
+    [] call EFUNC(fx,triggerSevereWeatherFX);
 };
 
 // ─── Environmental / Seasonal ──────────────────────────────────────────────
-call EFUNC(mobility,calculateRiverWaterLevel);
-call EFUNC(environmental,calculateCropState);
-call EFUNC(atmos,calculateCloudDevelopment);
-call EFUNC(atmos,calculatePressureTrend);
-call EFUNC(environmental,calculateLunarIllumination);
-call EFUNC(maritime,calculateTidalPrediction);
-call EFUNC(atmos,calculateCloudCeiling);
-call EFUNC(environmental,calculateSpaceWeather);
+[] call EFUNC(mobility,calculateRiverWaterLevel);
+[] call EFUNC(environmental,calculateCropState);
+[] call EFUNC(atmos,calculateCloudDevelopment);
+[] call EFUNC(atmos,calculatePressureTrend);
+[] call EFUNC(environmental,calculateLunarIllumination);
+[] call EFUNC(maritime,calculateTidalPrediction);
+[] call EFUNC(atmos,calculateCloudCeiling);
+[] call EFUNC(environmental,calculateSpaceWeather);
 if (GVAR(environmentalEnabled)) then {
-    call EFUNC(environmental,calculateBiologicalAmbient);
-    call EFUNC(physiology,calculateScentDispersion);
-    call EFUNC(maritime,calculateSeaState);
-    call EFUNC(maritime,calculateCompassDeviation);
-    call EFUNC(environmental,calculateCBRNPersistence);
+    [] call EFUNC(environmental,calculateBiologicalAmbient);
+    [] call EFUNC(physiology,calculateScentDispersion);
+    [] call EFUNC(maritime,calculateSeaState);
+    [] call EFUNC(maritime,calculateCompassDeviation);
+    [] call EFUNC(environmental,calculateCBRNPersistence);
 };
 
 // ─── Visual / Gameplay ────────────────────────────────────────────────────
 if (GVAR(opticsEnabled)) then {
-    call EFUNC(optics,calculateRainOnOptics);
-    call EFUNC(optics,calculateVehicleHeatShimmer);
+    [] call EFUNC(optics,calculateRainOnOptics);
+    [] call EFUNC(optics,calculateVehicleHeatShimmer);
 };
-call EFUNC(mobility,calculateMudAccretion);
+[] call EFUNC(mobility,calculateMudAccretion);
 
 // ─── Post-Process Effects & HUD ─────────────────────────────────────────
-call EFUNC(optics,applyRainOnOpticsFX);
-call EFUNC(optics,applyHeatShimmerFX);
-call EFUNC(physiology,applyHeatStressHUD);
+[] call EFUNC(optics,applyRainOnOpticsFX);
+[] call EFUNC(optics,applyHeatShimmerFX);
+[] call EFUNC(physiology,applyHeatStressHUD);
 
 // ─── Breath condensation ───────────────────────────────────────────────────
-call EFUNC(fx,applyBreathCondensation);
-call EFUNC(fx,applyRainVehicleSound);
+[] call EFUNC(fx,applyBreathCondensation);
+[] call EFUNC(fx,applyRainVehicleSound);
 
 if (GVAR(diagnostic)) then {
     [] call FUNC(diagnostic);

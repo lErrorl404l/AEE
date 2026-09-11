@@ -43,7 +43,7 @@ if (_groundState == "Mud") then {
 };
 
 // Also degrade if very humid (soft ground without standing water)
-if (_groundState != "Frozen" && _humidity > 70) then {
+if (_groundState != "Frozen" && (_humidity > 70)) then {
     _degradation = _degradation + 0.005;
 };
 
