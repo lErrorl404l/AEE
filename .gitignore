@@ -34,3 +34,6 @@ __pycache__/
 # Docker test harness
 /tests/docker/mods/
 /tests/docker/run.log
+
+# Fallback server install dir
+/tests/docker/server/
