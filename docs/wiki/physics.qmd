@@ -1,0 +1,106 @@
+---
+title: "Physics"
+---
+
+# Physics
+
+This page describes the models behind the simulation. The models come from
+the SQF implementations.
+
+## Diurnal temperature
+
+Temperature follows a base diurnal sinusoid. The weight is
+`0.5 + 0.5 * sin((dayFraction - 0.25) * 360deg)` over the night and day
+climate normals.
+
+## Lapse rate
+
+Elevation changes temperature at a lapse rate of 0.0065 C per metre. Overcast
+reduces temperature by 4 C per unit. Surface type adds a modifier.
+
+| Surface | Modifier (C) |
+|---|---|
+| Desert | +4 |
+| Sand | +2 |
+| Ice | -5 |
+| Snow | -3 |
+| Coniferous | -2 |
+| Forest | -1.5 |
+
+## Wind chill
+
+Wind chill uses the JAG/TTI formula. It is valid when temperature is at or
+below 10 C and wind speed is above 4.8 km/h.
+
+```
+Twc = 13.12 + 0.6215*T - 11.37*(V*3.6)^0.16 + 0.3965*T*(V*3.6)^0.16
+```
+
+`T` is the air temperature in Celsius. `V` is the wind speed in metres per
+second.
+
+## Air density
+
+Air density uses the Buck 1996 model. Saturation vapour pressure is:
+
+```
+e_s = 6.1121 * exp((18.678 - T/234.5) * T / (257.14 + T))
+```
+
+Actual vapour pressure is `e = e_s * RH / 100`. Virtual temperature is:
+
+```
+T_v = T_K / (1 - 0.37802 * e / P)
+```
+
+Density is `rho = P_Pa / (R_d * T_v)`. The gas constant `R_d` is
+287.05287 J/(kg*K).
+
+## Humidity
+
+Relative humidity uses diurnal modulation.
+
+## Pressure
+
+Pressure is barometric. The model uses pressure trend readings
+(`pressureReading1` and `pressureReading2`) and the ICAO reference altitude.
+
+## Biome classification
+
+Biome uses the Koppen classification. The 18 codes are `Af`, `Am`, `Aw`,
+`BWh`, `BWk`, `BSh`, `BSk`, `Csa`, `Csb`, `Cfa`, `Cfb`, `Cwa`, `Dfa`, `Dfb`,
+`Dfc`, `ET`, and `EF`.
+
+The model resolves the biome in this order:
+
+1. Match the map name first. Stratis and Altis resolve to `Csa`.
+2. Match `CfgWorlds` description keywords.
+3. Use surface type and latitude weighted voting.
+4. Fall back to `Cfb`.
+
+## WBGT
+
+Wet bulb globe temperature (WBGT) drives heat stress in the physiology
+addon.
+
+## Sea state
+
+Sea state uses the Beaufort scale. The model tracks wave height and tide
+prediction, including the tide offset and description.
+
+## Radio propagation
+
+Radio propagation covers the VHF, UHF, and HF bands. Atmospheric effects
+modify the propagation.
+
+## Events
+
+The event system covers lightning, microburst, dust devil, sandstorm,
+blowing snow, avalanche, flash flood, space weather, freeze-thaw, and frost
+on windscreens. Space weather includes solar flares and aurora.
+
+## Deterministic multiplayer
+
+Core atmospheric state is a pure function of position, mission time, and
+engine weather. Every machine computes identical values. No
+`publicVariable` is needed. Event FX vary cosmetically per machine.

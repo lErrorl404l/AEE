@@ -1,0 +1,110 @@
+---
+title: "Development"
+---
+
+# Development
+
+This page covers build, test, and release. It also summarises the project
+conventions.
+
+## Build
+
+Check the project with pedantic mode:
+
+```bash
+hemtt check -p -e
+```
+
+Pedantic mode treats warnings as errors. Build the PBOs with:
+
+```bash
+hemtt build
+```
+
+Make a release with:
+
+```bash
+hemtt release
+```
+
+Release signs the PBOs and makes the bikey and zip files. It needs a signing
+key for stable signatures.
+
+## Test
+
+Run the physics reference checks with:
+
+```bash
+python3 -m unittest discover -s tools/tests
+```
+
+Run the headless Docker test with:
+
+```bash
+tools/docker_test.sh
+```
+
+The script builds the mod, assembles `@aee`, downloads CBA if needed, and
+runs the Arma 3 dedicated server. It captures the RPT output and verifies the
+phase results.
+
+Run the baseline mode with:
+
+```bash
+tools/docker_test.sh --baseline
+```
+
+Baseline mode runs once without the AEE mod. It reports the mission boot for
+comparison against the modded run. The phases in the baseline are expected to
+fail because no AEE mod is loaded.
+
+## Continuous integration
+
+GitHub Actions runs these checks on every push:
+
+- `hemtt check -p -e`
+- `hemtt build`
+- The Python validators and physics tests
+- An SBOM on release tags
+- Release-drafter
+
+The Docker test runs on demand.
+
+## Conventions
+
+### Naming
+
+Functions use the name `aee_<component>_fnc_<name>`. PBOs use the name
+`aee_<component>`. Shared state uses `aee_core_*` mission variables.
+
+Each function file is `functions/fnc_<name>.sqf`. The files are registered in
+`XEH_PREP.hpp` and compiled through CBA XEH. This is the standard ACE3/CBA
+pattern.
+
+Localisation uses a per-addon `stringtable.xml`. Keys use the form
+`STR_AEE_<Component>_<Key>`.
+
+### Settings
+
+AEE registers its settings at mission start with `CBA_fnc_addSetting`. The
+settings live in `addons/core/initSettings.inc.sqf`. All settings appear
+under the category "AEE Core" in the CBA settings UI. There are 26 settings.
+
+### EDEN module
+
+The EDEN module, AEE Environment Config, is placed by mission editors. The
+module is global. It exposes these fields:
+
+- `biomeOverride`
+- `tempOffset`
+- `precipBias`
+- `windMultiplier`
+- `updateInterval`
+
+### Contributing
+
+The project uses trunk-based development. All commits must be signed. A
+pre-commit hook runs `hemtt check -p -e`, `ste-lint`, and `audit`.
+
+See [CONTRIBUTING.md](https://github.com/lErrorl404l/AEE/blob/main/CONTRIBUTING.md)
+for the full guide.
