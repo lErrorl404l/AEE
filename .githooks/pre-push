@@ -1,5 +1,5 @@
 #!/bin/bash
-# aee pre-push hook — full gate
+# aee pre-push hook - full gate (repo-contained)
 set -euo pipefail
 ROOT="$(git rev-parse --show-toplevel)"
 FAILED=0

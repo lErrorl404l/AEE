@@ -1,3 +1,4 @@
+/* SPDX-License-Identifier: GPL-2.0-or-later */
 #define MAINPREFIX z
 #define PREFIX aee
 #define SUBPREFIX addons

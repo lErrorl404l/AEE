@@ -43,7 +43,6 @@ def validate(path):
                 errors.append(f"{rel}: duplicate key '{kid}'")
             seen_keys.add(kid)
 
-            containers = [c.tag for c in key]
     # Done
 
 

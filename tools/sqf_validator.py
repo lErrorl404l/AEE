@@ -111,26 +111,6 @@ def check_file(path):
 
             i += 1
 
-        # Check for missing semicolons after }
-        stripped_line = line.strip()
-        if stripped_line == "}" and lineno < len(lines):
-            next_raw = lines[lineno]  # 0-indexed, lineno is 1-indexed
-            next_stripped = next_raw.strip()
-            if (
-                next_stripped
-                and not next_stripped.startswith(";")
-                and not next_stripped.startswith("//")
-                and not next_stripped.startswith("/*")
-                and not next_stripped.startswith("*")
-            ):
-                # Check if it's a `} else` or `} catch` pattern
-                if not re.match(
-                    r"^\s*\}\s*(else|catch|do|forEach|count|findIf|select|apply|param|for|while|exitWith|case|default|__RULE)\b",
-                    stripped_line,
-                ):
-                    # This might still be valid, so be more lenient
-                    pass
-
     # Report unclosed brackets
     for lineno, col in parens:
         errors.append(f"{rel}:{lineno}: unclosed '('")
