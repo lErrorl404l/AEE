@@ -13,9 +13,9 @@ class CfgPatches {
             "cba_main",
             "cba_xeh"
         };
-        author = "lErrorl404l";
-        authors[] = {"lErrorl404l"};
-        url = "https://github.com/AEE-Dev-Team/aee";
+        author = AUTHOR;
+        authors[] = AUTHORS;
+        url = URL;
         skipWhenMissingDependencies = 1;
         VERSION_CONFIG;
     };

@@ -16,3 +16,9 @@
 #ifdef COMPONENT_BEAUTIFIED
     #define COMPONENT_NAME QUOTE(AEE - COMPONENT_BEAUTIFIED)
 #endif
+
+// Project identity - single source for author and repository.
+// config.cpp references these macros; change here, not in 18 files.
+#define AUTHOR "lErrorl404l"
+#define AUTHORS {AUTHOR}
+#define URL "https://github.com/lErrorl404l/AEE"
