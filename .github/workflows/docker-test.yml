@@ -21,7 +21,7 @@ jobs:
         run: tools/docker_test.sh
       - name: Upload test log on failure
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: aee-docker-log
           path: tests/docker/run.log
