@@ -1,8 +1,16 @@
 #ifndef AEE_SCRIPT_MACROS_HPP
 #define AEE_SCRIPT_MACROS_HPP
 
-// Include CBA's canonical macros (replaced via include/ for HEMTT dev builds)
+// Stock CBA macros (vendored in include/x/cba for HEMTT preprocessing).
 #include "\x\cba\addons\main\script_macros_common.hpp"
+
+// ── Function compilation ────────────────────────────────────────────────────
+// Stock CBA's PREP compiles from the addon root (fnc_<name>.sqf). AEE keeps
+// the ACE3 convention of a functions/ subfolder, so PREP is overridden to
+// compile functions\fnc_<name>.sqf. The defined name (TRIPLES(ADDON,fnc,x))
+// matches FUNC/EFUNC, which HEMTT's L-S29 lint recognises as an assignment.
+#undef PREP
+#define PREP(var1) TRIPLES(ADDON,fnc,var1) = compile preprocessFileLineNumbers QPATHTOF(functions\DOUBLES(fnc,var1).sqf)
 
 // AEE-specific convenience macros
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="Actions">
+        <Key ID="STR_AEE_ACTIONS_Altimeter">
+            <Original>Altimeter</Original>
+            <English>Altimeter</English>
+        </Key>
+        <Key ID="STR_AEE_ACTIONS_WeatherReport">
+            <Original>Weather Report</Original>
+            <English>Weather Report</English>
+        </Key>
+    </Package>
+</Project>

@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="Core">
+        <Key ID="STR_AEE_Core_Arg_biomeOverride">
+            <Original>Biome Override</Original>
+            <English>Biome Override</English>
+        </Key>
+        <Key ID="STR_AEE_Core_Arg_biomeOverride_Desc">
+            <Original>Force a specific Koppen biome (leave empty for auto-detect). Options: Af, Am, Aw, BWh, BWk, BSh, BSk, Csa, Csb, Cfa, Cfb, Dfa, Dfb, Dfc, ET, EF</Original>
+            <English>Force a specific Koppen biome (leave empty for auto-detect). Options: Af, Am, Aw, BWh, BWk, BSh, BSk, Csa, Csb, Cfa, Cfb, Dfa, Dfb, Dfc, ET, EF</English>
+        </Key>
+        <Key ID="STR_AEE_Core_Arg_precipBias">
+            <Original>Precipitation Bias</Original>
+            <English>Precipitation Bias</English>
+        </Key>
+        <Key ID="STR_AEE_Core_Arg_precipBias_Desc">
+            <Original>Multiply rain accumulation. 1.0 = normal, 0.0 = no rain, 2.0 = double</Original>
+            <English>Multiply rain accumulation. 1.0 = normal, 0.0 = no rain, 2.0 = double</English>
+        </Key>
+        <Key ID="STR_AEE_Core_Arg_tempOffset">
+            <Original>Temperature Offset (°C)</Original>
+            <English>Temperature Offset (°C)</English>
+        </Key>
+        <Key ID="STR_AEE_Core_Arg_tempOffset_Desc">
+            <Original>Add a fixed offset to all temperatures</Original>
+            <English>Add a fixed offset to all temperatures</English>
+        </Key>
+        <Key ID="STR_AEE_Core_Arg_updateInterval">
+            <Original>Update Interval (s)</Original>
+            <English>Update Interval (s)</English>
+        </Key>
+        <Key ID="STR_AEE_Core_Arg_updateInterval_Desc">
+            <Original>Seconds between environment updates (default: 5)</Original>
+            <English>Seconds between environment updates (default: 5)</English>
+        </Key>
+        <Key ID="STR_AEE_Core_Arg_windMultiplier">
+            <Original>Wind Multiplier</Original>
+            <English>Wind Multiplier</English>
+        </Key>
+        <Key ID="STR_AEE_Core_Arg_windMultiplier_Desc">
+            <Original>Multiply wind speed. 1.0 = normal, 0.0 = calm, 2.0 = double</Original>
+            <English>Multiply wind speed. 1.0 = normal, 0.0 = calm, 2.0 = double</English>
+        </Key>
+        <Key ID="STR_AEE_Core_Module_Description">
+            <Original>Configure AEE environment simulation parameters for this mission. Place in the mission editor, set attributes, and AEE will use them during initialization.</Original>
+            <English>Configure AEE environment simulation parameters for this mission. Place in the mission editor, set attributes, and AEE will use them during initialization.</English>
+        </Key>
+        <Key ID="STR_AEE_Core_Module_DisplayName">
+            <Original>AEE Environment Config</Original>
+            <English>AEE Environment Config</English>
+        </Key>
+        <Key ID="STR_AEE_Core_airDensityEnabled_Description">
+            <Original>Calculate density altitude and true air density using temperature, pressure, and humidity corrections</Original>
+            <English>Calculate density altitude and true air density using temperature, pressure, and humidity corrections</English>
+        </Key>
+        <Key ID="STR_AEE_Core_airDensityEnabled_Name">
+            <Original>Enable True Air Density</Original>
+            <English>Enable True Air Density</English>
+        </Key>
+        <Key ID="STR_AEE_Core_atmosphericEventsEnabled_Description">
+            <Original>Enable lightning strike risk, severe weather (sandstorm, blizzard, dust devil), microburst downdrafts, low-level turbulence, and avalanche risk in mountain terrain</Original>
+            <English>Enable lightning strike risk, severe weather (sandstorm, blizzard, dust devil), microburst downdrafts, low-level turbulence, and avalanche risk in mountain terrain</English>
+        </Key>
+        <Key ID="STR_AEE_Core_atmosphericEventsEnabled_Name">
+            <Original>Enable Atmospheric Events</Original>
+            <English>Enable Atmospheric Events</English>
+        </Key>
+        <Key ID="STR_AEE_Core_biomeEnabled_Description">
+            <Original>Use Köppen climate classification to differentiate biome types and their weather characteristics</Original>
+            <English>Use Köppen climate classification to differentiate biome types and their weather characteristics</English>
+        </Key>
+        <Key ID="STR_AEE_Core_biomeEnabled_Name">
+            <Original>Enable Köppen Biome Classification</Original>
+            <English>Enable Köppen Biome Classification</English>
+        </Key>
+        <Key ID="STR_AEE_Core_biomeTransitionRadius_Description">
+            <Original>Smoothing radius (m) for biome boundary transitions to avoid hard climatic edges</Original>
+            <English>Smoothing radius (m) for biome boundary transitions to avoid hard climatic edges</English>
+        </Key>
+        <Key ID="STR_AEE_Core_biomeTransitionRadius_Name">
+            <Original>Biome Transition Radius</Original>
+            <English>Biome Transition Radius</English>
+        </Key>
+        <Key ID="STR_AEE_Core_diagnostic_Description">
+            <Original>Enable verbose diagnostic logging (diag_log) for environment state changes</Original>
+            <English>Enable verbose diagnostic logging (diag_log) for environment state changes</English>
+        </Key>
+        <Key ID="STR_AEE_Core_diagnostic_Name">
+            <Original>Diagnostic Logging</Original>
+            <English>Diagnostic Logging</English>
+        </Key>
+        <Key ID="STR_AEE_Core_enabled_Description">
+            <Original>Master switch for the AEE environment simulation module</Original>
+            <English>Master switch for the AEE environment simulation module</English>
+        </Key>
+        <Key ID="STR_AEE_Core_enabled_Name">
+            <Original>Enable AEE Core</Original>
+            <English>Enable AEE Core</English>
+        </Key>
+        <Key ID="STR_AEE_Core_enginePowerDegradationEnabled_Description">
+            <Original>Reduce ground-vehicle engine power in hot+high conditions using density-altitude derating (piston + turbo models); sets QGVAR(enginePowerModifier) and QGVAR(engineTurboModifier)</Original>
+            <English>Reduce ground-vehicle engine power in hot+high conditions using density-altitude derating (piston + turbo models); sets QGVAR(enginePowerModifier) and QGVAR(engineTurboModifier)</English>
+        </Key>
+        <Key ID="STR_AEE_Core_enginePowerDegradationEnabled_Name">
+            <Original>Enable Engine Power Degradation</Original>
+            <English>Enable Engine Power Degradation</English>
+        </Key>
+        <Key ID="STR_AEE_Core_environmentalEnabled_Description">
+            <Original>Enable biological ambient sound intensity, scent dispersion vector, sea state (Beaufort/wave height), and magnetic compass deviation</Original>
+            <English>Enable biological ambient sound intensity, scent dispersion vector, sea state (Beaufort/wave height), and magnetic compass deviation</English>
+        </Key>
+        <Key ID="STR_AEE_Core_environmentalEnabled_Name">
+            <Original>Enable Environmental &amp; Seasonal Effects</Original>
+            <English>Enable Environmental &amp; Seasonal Effects</English>
+        </Key>
+        <Key ID="STR_AEE_Core_humidityEnabled_Description">
+            <Original>Enable relative-humidity tracking and condensation/precipitation calculations</Original>
+            <English>Enable relative-humidity tracking and condensation/precipitation calculations</English>
+        </Key>
+        <Key ID="STR_AEE_Core_humidityEnabled_Name">
+            <Original>Enable Humidity Simulation</Original>
+            <English>Enable Humidity Simulation</English>
+        </Key>
+        <Key ID="STR_AEE_Core_hydrologyEnabled_Description">
+            <Original>Enable snow accumulation/melt and drifting, flash flood risk in arid terrain after heavy rain, and freeze-thaw state cycling with hysteresis</Original>
+            <English>Enable snow accumulation/melt and drifting, flash flood risk in arid terrain after heavy rain, and freeze-thaw state cycling with hysteresis</English>
+        </Key>
+        <Key ID="STR_AEE_Core_hydrologyEnabled_Name">
+            <Original>Enable Ground &amp; Hydrology Effects</Original>
+            <English>Enable Ground &amp; Hydrology Effects</English>
+        </Key>
+        <Key ID="STR_AEE_Core_icaoReferenceAlt_Description">
+            <Original>Reference altitude (m MSL) for the ICAO standard atmosphere baseline</Original>
+            <English>Reference altitude (m MSL) for the ICAO standard atmosphere baseline</English>
+        </Key>
+        <Key ID="STR_AEE_Core_icaoReferenceAlt_Name">
+            <Original>ICAO Reference Altitude</Original>
+            <English>ICAO Reference Altitude</English>
+        </Key>
+        <Key ID="STR_AEE_Core_microclimateRadius_Description">
+            <Original>Radius (m) for local terrain and vegetation microclimate effects (valley cool-air pooling, forest canopy)</Original>
+            <English>Radius (m) for local terrain and vegetation microclimate effects (valley cool-air pooling, forest canopy)</English>
+        </Key>
+        <Key ID="STR_AEE_Core_microclimateRadius_Name">
+            <Original>Microclimate Radius</Original>
+            <English>Microclimate Radius</English>
+        </Key>
+        <Key ID="STR_AEE_Core_mudAccretionEnabled_Description">
+            <Original>Enable mud build-up on vehicle wheels/tracks when driving on muddy terrain</Original>
+            <English>Enable mud build-up on vehicle wheels/tracks when driving on muddy terrain</English>
+        </Key>
+        <Key ID="STR_AEE_Core_mudAccretionEnabled_Name">
+            <Original>Enable Mud Accretion</Original>
+            <English>Enable Mud Accretion</English>
+        </Key>
+        <Key ID="STR_AEE_Core_opticsEnabled_Description">
+            <Original>Enable thermal contrast, mirage/heat haze, smoke dispersal persistence, precipitation visibility reduction, and solar glare from low-elevation sun</Original>
+            <English>Enable thermal contrast, mirage/heat haze, smoke dispersal persistence, precipitation visibility reduction, and solar glare from low-elevation sun</English>
+        </Key>
+        <Key ID="STR_AEE_Core_opticsEnabled_Name">
+            <Original>Enable Optics &amp; Visibility Effects</Original>
+            <English>Enable Optics &amp; Visibility Effects</English>
+        </Key>
+        <Key ID="STR_AEE_Core_precipOrographicEnabled_Description">
+            <Original>Enable orographic-lifting precipitation enhancement on windward slopes</Original>
+            <English>Enable orographic-lifting precipitation enhancement on windward slopes</English>
+        </Key>
+        <Key ID="STR_AEE_Core_precipOrographicEnabled_Name">
+            <Original>Enable Orographic Precipitation</Original>
+            <English>Enable Orographic Precipitation</English>
+        </Key>
+        <Key ID="STR_AEE_Core_radioPropagationEnabled_Description">
+            <Original>Compute atmospheric propagation index (temp inversions, humidity, pressure) for VHF/UHF range effects; sets QGVAR(radioPropagationIndex)</Original>
+            <English>Compute atmospheric propagation index (temp inversions, humidity, pressure) for VHF/UHF range effects; sets QGVAR(radioPropagationIndex)</English>
+        </Key>
+        <Key ID="STR_AEE_Core_radioPropagationEnabled_Name">
+            <Original>Enable Radio Propagation Model</Original>
+            <English>Enable Radio Propagation Model</English>
+        </Key>
+        <Key ID="STR_AEE_Core_referenceAltitude_Description">
+            <Original>Override reference altitude (m MSL) for station pressure calculations. 0 = auto-detect from unit position</Original>
+            <English>Override reference altitude (m MSL) for station pressure calculations. 0 = auto-detect from unit position</English>
+        </Key>
+        <Key ID="STR_AEE_Core_referenceAltitude_Name">
+            <Original>Reference Altitude</Original>
+            <English>Reference Altitude</English>
+        </Key>
+        <Key ID="STR_AEE_Core_tempDiurnalEnabled_Description">
+            <Original>Enable diurnal temperature variation based on solar elevation angle</Original>
+            <English>Enable diurnal temperature variation based on solar elevation angle</English>
+        </Key>
+        <Key ID="STR_AEE_Core_tempDiurnalEnabled_Name">
+            <Original>Enable Diurnal Cycle</Original>
+            <English>Enable Diurnal Cycle</English>
+        </Key>
+        <Key ID="STR_AEE_Core_tempLapseRateEnabled_Description">
+            <Original>Enable elevation-based temperature lapse rate (standard atmosphere ~6.5 °C/km)</Original>
+            <English>Enable elevation-based temperature lapse rate (standard atmosphere ~6.5 °C/km)</English>
+        </Key>
+        <Key ID="STR_AEE_Core_tempLapseRateEnabled_Name">
+            <Original>Enable Lapse Rate</Original>
+            <English>Enable Lapse Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Core_tempLapseRate_Description">
+            <Original>Temperature lapse rate in °C per 1000 m (default: 6.5 °C/km, ICAO standard)</Original>
+            <English>Temperature lapse rate in °C per 1000 m (default: 6.5 °C/km, ICAO standard)</English>
+        </Key>
+        <Key ID="STR_AEE_Core_tempLapseRate_Name">
+            <Original>Lapse Rate</Original>
+            <English>Lapse Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Core_updateInterval_Description">
+            <Original>Simulation update interval in seconds (lower = more frequent updates)</Original>
+            <English>Simulation update interval in seconds (lower = more frequent updates)</English>
+        </Key>
+        <Key ID="STR_AEE_Core_updateInterval_Name">
+            <Original>Update Interval</Original>
+            <English>Update Interval</English>
+        </Key>
+        <Key ID="STR_AEE_Core_urbanHeatIsland_Description">
+            <Original>Magnitude of urban heat-island temperature boost in built-up areas (0 = none, 1 = full)</Original>
+            <English>Magnitude of urban heat-island temperature boost in built-up areas (0 = none, 1 = full)</English>
+        </Key>
+        <Key ID="STR_AEE_Core_urbanHeatIsland_Name">
+            <Original>Urban Heat Island Effect</Original>
+            <English>Urban Heat Island Effect</English>
+        </Key>
+        <Key ID="STR_AEE_Core_waterInfluenceRadius_Description">
+            <Original>Radius (m) over which large water bodies moderate local temperature and humidity</Original>
+            <English>Radius (m) over which large water bodies moderate local temperature and humidity</English>
+        </Key>
+        <Key ID="STR_AEE_Core_waterInfluenceRadius_Name">
+            <Original>Water Body Influence Radius</Original>
+            <English>Water Body Influence Radius</English>
+        </Key>
+        <Key ID="STR_AEE_Core_windEnabled_Description">
+            <Original>Enable dynamic wind simulation with terrain and thermal influences</Original>
+            <English>Enable dynamic wind simulation with terrain and thermal influences</English>
+        </Key>
+        <Key ID="STR_AEE_Core_windEnabled_Name">
+            <Original>Enable Wind Simulation</Original>
+            <English>Enable Wind Simulation</English>
+        </Key>
+        <Key ID="STR_AEE_Core_windGustFrequency_Description">
+            <Original>Relative frequency of gust events (0 = calm, 1 = very gusty)</Original>
+            <English>Relative frequency of gust events (0 = calm, 1 = very gusty)</English>
+        </Key>
+        <Key ID="STR_AEE_Core_windGustFrequency_Name">
+            <Original>Gust Frequency</Original>
+            <English>Gust Frequency</English>
+        </Key>
+        <Key ID="STR_AEE_Core_windTerrainInfluence_Description">
+            <Original>Strength of terrain (ridge channelling, valley funnelling) on wind vectors (0..1)</Original>
+            <English>Strength of terrain (ridge channelling, valley funnelling) on wind vectors (0..1)</English>
+        </Key>
+        <Key ID="STR_AEE_Core_windTerrainInfluence_Name">
+            <Original>Terrain Wind Influence</Original>
+            <English>Terrain Wind Influence</English>
+        </Key>
+    </Package>
+</Project>

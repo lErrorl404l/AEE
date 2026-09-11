@@ -1,0 +1,11 @@
+PREP(updatePressure);
+PREP(updateHumidity);
+PREP(updateWind);
+PREP(updateFog);
+PREP(calculateCloudCeiling);
+PREP(calculatePressureTrend);
+PREP(calculateAirframeIcing);
+PREP(calculateCloudDevelopment);
+PREP(calculateLightning);
+PREP(calculateMicroburst);
+PREP(calculateTurbulence);

@@ -1,0 +1,13 @@
+PREP(applyHeatShimmerFX);
+PREP(applyRainOnOpticsFX);
+PREP(calculateAtmosphericSeeing);
+PREP(calculateAttenuation);
+PREP(calculateDewOnOptics);
+PREP(calculateMirageIntensity);
+PREP(calculatePrecipitationVisibility);
+PREP(calculateRainOnOptics);
+PREP(calculateSmokePersistence);
+PREP(calculateSnowBlindness);
+PREP(calculateSolarGlare);
+PREP(calculateThermalContrast);
+PREP(calculateVehicleHeatShimmer);

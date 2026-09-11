@@ -1,0 +1,17 @@
+PREP(calculateBiologicalAmbient);
+PREP(calculateCropState);
+PREP(calculateDustSuppression);
+PREP(calculateFireSpreadRisk);
+PREP(updateSeasonalFoliage);
+PREP(calculateAvalancheRisk);
+PREP(calculateCBRNPersistence);
+PREP(calculateFlashFloodRisk);
+PREP(calculateFreezeThawCycling);
+PREP(calculateFrostOnWindscreens);
+PREP(calculateLunarIllumination);
+PREP(calculateSevereWeather);
+PREP(calculateSnowAccumulation);
+PREP(calculateSpaceWeather);
+PREP(getBiome);
+PREP(getClimateNormals);
+PREP(updateSoundPropagation);

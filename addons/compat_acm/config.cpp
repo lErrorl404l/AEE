@@ -1,30 +1,24 @@
-#define COMPONENT main
-#define COMPONENT_BEAUTIFIED Main
-#include "\z\aee\addons\main\script_mod.hpp"
-
-// #define DEBUG_MODE_FULL
-// #define DISABLE_COMPILE_CACHE
-
-#ifdef DEBUG_ENABLED_MAIN
-    #define DEBUG_MODE_FULL
-#endif
-
-#include "\z\aee\addons\main\script_macros.hpp"
+#include "script_component.hpp"
 
 class CfgPatches {
-    class aee_main {
+    class ADDON {
         name = COMPONENT_NAME;
         units[] = {};
         weapons[] = {};
         requiredVersion = REQUIRED_VERSION;
         requiredAddons[] = {
-            "A3_Data_F",
+            "aee_main",
+            "aee_core",
+            "acm",
             "cba_main",
             "cba_xeh"
         };
         author = "lErrorl404l";
         authors[] = {"lErrorl404l"};
         url = "https://github.com/AEE-Dev-Team/aee";
+        skipWhenMissingDependencies = 1;
         VERSION_CONFIG;
     };
 };
+
+#include "CfgEventHandlers.hpp"
