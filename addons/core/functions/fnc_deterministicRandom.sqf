@@ -1,7 +1,7 @@
 #include "..\script_component.hpp"
 
 /*
-Deterministic pseudo-random value in [0, 1) from two integer seeds.
+Deterministic pseudo-random value between 0 and 1 from two integer seeds.
 
 A linear congruential generator. Mission time and position are identical
 on every machine, so the same seeds produce the same value everywhere.
