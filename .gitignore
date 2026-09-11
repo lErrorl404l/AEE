@@ -18,3 +18,11 @@ Thumbs.db
 *.bin
 *.bisign
 *.bikey
+
+# HEMTT signing keys
+.biprivatekey
+.hemttprivatekey
+
+# Harness session state
+.omo/
+.opencode/

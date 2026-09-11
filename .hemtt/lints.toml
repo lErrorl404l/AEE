@@ -1,10 +1,30 @@
-[sqf]
-unused = "Warning"
-undefined = "Warning"
-banned_commands = "Warning"
-[sqf.banned_commands]
-options.ignore = ["addPublicVariableEventHandler", "setVariable"]
-[config.file_type]
-enabled = false
-[stringtables.usage]
+[config.c11_file_type]
+options.allow_no_extension = true
+
+[stringtables.l02_usage]
 options.ignore_unused = true
+
+[sqf.s09_banned_command]
+options.ignore = [
+    "addPublicVariableEventHandler",
+]
+
+[sqf.s28_banned_macros]
+options.release = [
+    "DEBUG_MODE_FULL",
+    "DISABLE_COMPILE_CACHE",
+    "ENABLE_PERFORMANCE_COUNTERS",
+]
+
+[sqf.s13_undefined]
+enabled = true
+options.check_orphan_code = true
+
+[sqf.s16_not_private]
+enabled = true
+
+[sqf.s17_var_all_caps]
+options.ignore = [
+    "SLX_*",
+    "AEE_*",
+]
