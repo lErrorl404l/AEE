@@ -7,6 +7,17 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- Scientific validation harness: grid-comparison of the physics formulas
+  against Murphy & Koop 2005, ASHRAE psychrolib, NWS wind-chill values,
+  pvlib SPA, and the ISA table.
+- Real-world weather input: `compat_realweather` reads a `weather.json`
+  written by `tools/weather_fetch.py` (Open-Meteo, no API key).
+- ACE3 Kestrel 4500 populated from AEE state; wind-barb follows the
+  engine wind AEE drives.
+- Zeus/3DEN storm-control module (type, intensity, duration).
+
 ## [1.0.0] - 2026-09-11
 
 ### Added
