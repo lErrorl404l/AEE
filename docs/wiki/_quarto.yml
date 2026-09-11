@@ -64,3 +64,22 @@ format:
     anchor-sections: true
     smooth-scroll: true
     link-external-icon: true
+    # MathJax: number \begin{equation} / \begin{align} environments
+    # automatically (default tags is 'none').
+    include-in-header:
+      - text: |
+          <script>
+          window.MathJax = {
+            tex: {
+              tags: 'ams'
+            }
+          };
+          </script>
+
+crossref:
+  eq-prefix: "Eq."
+  eq-title: "Equation"
+  thm-prefix: "Thm."
+  def-prefix: "Def."
+  exm-prefix: "Ex."
+  labels: arabic

@@ -44,11 +44,30 @@ relative humidity. The state variable is `aee_core_soilMoisture` (0..1).
 
 ## Air density
 
+::: {#def-air-density}
+## Air density
+
+The density of air as a function of pressure, temperature, and humidity.
+It is the core quantity that drives ballistics, engine derating, and
+helicopter lift.
+
+$$
+\rho = \frac{P_{Pa}}{R_d \cdot T_v}, \quad R_d = 287.05287 \, \frac{J}{kg \cdot K}
+$$
+
+where $T_v$ is the virtual temperature (which accounts for humidity) and
+$P_{Pa}$ is the absolute pressure in pascals.
+:::
+
 Buck 1996: saturation vapour pressure
 `e_s = 6.1121 * exp((18.678 - T/234.5) * T/(257.14 + T))`, actual vapour
 pressure `e = e_s * RH / 100`, virtual temperature
-`T_v = T_K / (1 - 0.37802 * e / P)`, density
-`rho = P_Pa / (R_d * T_v)` with `R_d = 287.05287`.
+`T_v = T_K / (1 - 0.37802 * e / P)`. See
+[Annex A, Air density](annexes/annex-a-formulas.qmd#eq-air-density) for
+the numbered equations.
+
+The full formula set, including wind chill, WBGT, and solar geometry, is
+in [Annex A](annexes/annex-a-formulas.qmd).
 
 ## WBGT
 

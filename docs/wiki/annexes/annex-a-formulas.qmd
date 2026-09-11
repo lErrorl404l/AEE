@@ -7,63 +7,109 @@ title: "Annex A - Formulas"
 This annex lists the formulas behind the simulation. All values are SI
 units unless stated.
 
+::: {.hidden}
+$$
+\def\celsius{\mathrm{^\circ C}}
+\def\ms{\mathrm{m\,s^{-1}}}
+\def\hpa{\mathrm{hPa}}
+\def\kmh{\mathrm{km\,h^{-1}}}
+\def\pa{\mathrm{Pa}}
+$$
+:::
+
 ## Saturation vapour pressure (Buck 1996)
 
-$$e_s = 6.1121 \cdot \exp\left(\frac{(18.678 - T/234.5) \cdot T}{257.14 + T}\right)$$
+$$
+e_s = 6.1121 \cdot \exp\left(\frac{(18.678 - T/234.5) \cdot T}{257.14 + T}\right)
+$$ {#eq-buck}
 
-Where `T` is the temperature in Celsius and `e_s` is in hPa.
+Where $T$ is the temperature in $\celsius$ and $e_s$ is in $\hpa$.
 
 ## Actual vapour pressure
 
-$$e = e_s \cdot \frac{RH}{100}$$
+$$
+e = e_s \cdot \frac{RH}{100}
+$$ {#eq-vapour}
 
 ## Virtual temperature
 
-$$T_v = \frac{T_K}{1 - \frac{0.37802 \cdot e}{P}}$$
+$$
+T_v = \frac{T_K}{1 - \frac{0.37802 \cdot e}{P}}
+$$ {#eq-virtual-temp}
 
 ## Air density
 
-$$\rho = \frac{P_{Pa}}{R_d \cdot T_v}, \quad R_d = 287.05287 \, \frac{J}{kg \cdot K}$$
+$$
+\rho = \frac{P_{Pa}}{R_d \cdot T_v}, \quad R_d = 287.05287 \, \frac{J}{kg \cdot K}
+$$ {#eq-air-density}
+
+The density $\rho$ from [@eq-air-density] drives the ballistics model:
+a colder, drier, higher-pressure atmosphere is denser and slows the
+round more.
 
 ## Wet-bulb temperature (Stull 2011)
 
-$$T_w = T \cdot \text{atan}(0.151977 \cdot \sqrt{RH + 8.313659}) + \text{atan}(T + RH) - \text{atan}(RH - 1.676331) + 0.00391838 \cdot RH^{1.5} \cdot \text{atan}(0.023101 \cdot RH) - 4.686035$$
+$$
+T_w = T \cdot \text{atan}(0.151977 \cdot \sqrt{RH + 8.313659}) + \text{atan}(T + RH) - \text{atan}(RH - 1.676331) + 0.00391838 \cdot RH^{1.5} \cdot \text{atan}(0.023101 \cdot RH) - 4.686035
+$$ {#eq-wet-bulb}
 
 The atan terms are in radians. SQF `atan` returns degrees, so each term is
 multiplied by the factor `0.0174532925`.
 
 ## WBGT
 
-$$WBGT = 0.7 \cdot T_w + 0.2 \cdot T_g + 0.1 \cdot T$$
+$$
+WBGT = 0.7 \cdot T_w + 0.2 \cdot T_g + 0.1 \cdot T
+$$ {#eq-wbgt}
 
-The globe temperature `T_g` is `T + 15` in full sun and `T` in full shade,
-interpolated by overcast.
+The globe temperature $T_g$ is $T + 15$ in full sun and $T$ in full shade,
+interpolated by overcast. See [@eq-wet-bulb] for $T_w$.
 
 ## Wind chill (JAG/TTI)
 
-$$T_{wc} = 13.12 + 0.6215 \cdot T - 11.37 \cdot V^{0.16} + 0.3965 \cdot T \cdot V^{0.16}$$
+$$
+T_{wc} = 13.12 + 0.6215 \cdot T - 11.37 \cdot V^{0.16} + 0.3965 \cdot T \cdot V^{0.16}
+$$ {#eq-wind-chill}
 
-Where `V` is wind speed in km/h. Valid below 10 C and above 4.8 km/h.
+Where $V$ is wind speed in $\kmh$. Valid below 10 $\celsius$ and above
+4.8 $\kmh$.
 
 ## Solar declination
 
-$$\delta = 23.45 \cdot \sin\left(\frac{360}{365} \cdot (doy + 284)\right)$$
+$$
+\delta = 23.45 \cdot \sin\left(\frac{360}{365} \cdot (doy + 284)\right)
+$$ {#eq-solar-decl}
 
 ## Solar elevation
 
-$$\sin(\alpha) = \sin(\phi) \cdot \sin(\delta) + \cos(\phi) \cdot \cos(\delta) \cdot \cos(h)$$
+$$
+\sin(\alpha) = \sin(\phi) \cdot \sin(\delta) + \cos(\phi) \cdot \cos(\delta) \cdot \cos(h)
+$$ {#eq-solar-elev}
 
-Where `phi` is latitude and `h` is the hour angle
+Where $\phi$ is latitude and $h$ is the hour angle
 `(local_hour - 12) * 15` degrees. Radiation is `max(0, sin(alpha))`, scaled
-by cloud transmission `1 - 0.75 * overcast`.
+by cloud transmission `1 - 0.75 * overcast`. The declination comes from
+[@eq-solar-decl].
 
 ## Lapse rate
 
-$$\Delta T = -0.0065 \cdot \Delta z$$
+$$
+\Delta T = -0.0065 \cdot \Delta z
+$$ {#eq-lapse}
 
 ## Deterministic random (LCG)
 
-$$x_{n+1} = (x_n \cdot 1103515245 + 12345) \bmod 2^{31}$$
+$$
+x_{n+1} = (x_n \cdot 1103515245 + 12345) \bmod 2^{31}
+$$ {#eq-lcg}
 
 The seed combines mission time and an event salt, so the value is identical
 on every machine.
+
+::: {.callout-important}
+## Determinism guarantee
+
+The LCG in [@eq-lcg] is the reason AEE gives identical results on every
+client: the same seed produces the same value, so stochastic effects
+(scent dispersion, turbulence) resolve identically regardless of machine.
+:::
