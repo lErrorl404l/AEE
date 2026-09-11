@@ -1,5 +1,8 @@
 # Advanced Environment Extension (AEE)
 
+[![CI](https://github.com/lErrorl404l/AEE/actions/workflows/ci.yml/badge.svg)](https://github.com/lErrorl404l/AEE/actions/workflows/ci.yml)
+[![License](https://img.shields.io/badge/license-GPL--2.0--or--later-blue)](LICENSE)
+
 AEE is a physically accurate environment simulation for Arma 3. It models
 elevation lapse rates, terrain microclimate, true air density, Koppen biome
 classification, thermal and physiological effects, optics, mobility,
@@ -9,8 +12,8 @@ events.
 The mod is standalone. It requires only CBA_A3. The core addons have no ACE3
 dependency.
 
-Author: lErrorl404l. Licence: GPL-2.0-or-later with a PBO-distribution
-exception. See LICENSE.
+Author: [lErrorl404l](https://github.com/lErrorl404l). Licence:
+[GPL-2.0-or-later](LICENSE) with a PBO-distribution exception.
 
 ## Features
 
@@ -82,19 +85,19 @@ module is global.
 
 Check the project with pedantic mode:
 
-```
+```bash
 hemtt check -p -e
 ```
 
 Pedantic mode treats warnings as errors. Build the PBOs with:
 
-```
+```bash
 hemtt build
 ```
 
 Make a release with:
 
-```
+```bash
 hemtt release
 ```
 
@@ -102,7 +105,7 @@ Release signs the PBOs and makes the bikey and zip files.
 
 Launch the game with:
 
-```
+```bash
 hemtt launch <profile>
 ```
 
@@ -111,7 +114,7 @@ Workshop IDs are configured in `.hemtt/project.toml`.
 
 Run the physics reference checks with:
 
-```
+```bash
 python3 -m unittest discover -s tools/tests
 ```
 
@@ -148,4 +151,4 @@ A pre-commit hook runs these checks:
 
 Make logical commits. Link each commit to its change rationale.
 
-Report vulnerabilities through SECURITY.md.
+Report vulnerabilities through [SECURITY.md](SECURITY.md).
