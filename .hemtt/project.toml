@@ -15,7 +15,7 @@ include = [
 
 [properties]
 author = "lErrorl404l"
-url = "https://github.com/aee-mod/aee"
+url = "https://github.com/lErrorl404l/AEE"
 
 [version]
 path = "addons/main/script_version.hpp"
