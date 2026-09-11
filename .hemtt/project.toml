@@ -1,6 +1,6 @@
 name = "Advanced Environment Extension"
 prefix = "aee"
-author = "AEE Team"
+author = "lErrorl404l"
 mainprefix = "z"
 
 [files]
@@ -11,16 +11,49 @@ include = [
     "meta.cpp",
     "README.md",
     "LICENSE",
-    "logo_aee_ca.paa",
-    "logo_aee_co.paa",
 ]
+
+[properties]
+author = "lErrorl404l"
+url = "https://github.com/aee-mod/aee"
 
 [version]
 git_hash = 8
 
+[signing]
+version = 3
+authority = "aee_0.1.0"
+
 [hemtt.release]
 folder = "@aee"
 
+[hemtt.dev]
+exclude = ["test"]
+
 [hemtt.launch.default]
 workshop = ["450814997"]
+parameters = ["-skipIntro", "-noSplash", "-showScriptErrors", "-filePatching"]
+
+[hemtt.launch.ace3]
+workshop = ["450814997", "773131200"]
+parameters = ["-skipIntro", "-noSplash", "-showScriptErrors", "-filePatching"]
+
+[hemtt.launch.acre2]
+workshop = ["450814997", "1485211835"]
+parameters = ["-skipIntro", "-noSplash", "-showScriptErrors", "-filePatching"]
+
+[hemtt.launch.tfar]
+workshop = ["450814997", "894678801"]
+parameters = ["-skipIntro", "-noSplash", "-showScriptErrors", "-filePatching"]
+
+[hemtt.launch.kat]
+workshop = ["450814997", "773131200"]
+parameters = ["-skipIntro", "-noSplash", "-showScriptErrors", "-filePatching"]
+
+[hemtt.launch.acm]
+workshop = ["450814997", "773131200"]
+parameters = ["-skipIntro", "-noSplash", "-showScriptErrors", "-filePatching"]
+
+[hemtt.launch.full]
+workshop = ["450814997", "773131200", "894678801", "1485211835"]
 parameters = ["-skipIntro", "-noSplash", "-showScriptErrors", "-filePatching"]
