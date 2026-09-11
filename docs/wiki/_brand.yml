@@ -6,13 +6,3 @@ color:
   background: white
   foreground: ink
   primary: accent
-
-typography:
-  fonts:
-    - family: Inter
-      source: google
-    - family: JetBrains Mono
-      source: google
-  base: Inter
-  headings: Inter
-  monospace: JetBrains Mono
