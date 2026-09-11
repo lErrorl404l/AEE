@@ -1,19 +1,31 @@
 #include "..\script_component.hpp"
 
-params [["_unit", player, [objNull]]];
+/*
+Integrates AEE CBRN persistence with Advanced Combat Medicine (ACM).
 
-if (isNil "acm_cbrn_fnc_contaminationZone") exitWith {};
-if (isNull _unit) exitWith {};
+When AEE's aee_core_cbrnPersistence rises, the local patient is marked
+contaminated with a nerve hazard and the ACM exposure system drives the
+effects. When persistence clears, the contamination and buildup reset.
 
-// Read CBRN persistence from our core (set by fn_calculateCBRNPersistence).
-// Air quality defaults to 1.0 (breathable) — AEE doesn't compute air quality.
-private _contamination = missionNamespace getVariable ["aee_core_cbrnPersistence", 0];
-private _airQuality = 1;
+Requires: ACM (Workshop 3235483358, CfgPatches ACM_main/ACM_cbrn).
+*/
 
-if (_contamination > 0.5) then {
-    [_unit, _contamination] call acm_cbrn_fnc_contaminationZone;
+params [["_unit", objNull, [objNull]]];
+
+if (isNull _unit || !alive _unit) exitWith {};
+if (isNil "ACM_CBRN_fnc_updateExposureEffects") exitWith {};
+
+private _contamination = missionNamespace getVariable [QEGVAR(core,cbrnPersistence), 0];
+private _hazard = "ACM_CBRN_chemical_sarin_";
+
+if (_contamination > 0.01) then {
+    _unit setVariable [(_hazard + "Contaminated_State"), true, true];
+    _unit setVariable [(_hazard + "Exposed_State"), true, true];
+    _unit setVariable ["ACM_CBRN_Chemical_Sarin_Buildup", _contamination * 100];
+} else {
+    _unit setVariable [(_hazard + "Contaminated_State"), false, true];
+    _unit setVariable [(_hazard + "Exposed_State"), false, true];
+    _unit setVariable ["ACM_CBRN_Chemical_Sarin_Buildup", 0];
 };
 
-if (_airQuality < 0.3) then {
-    [_unit, _airQuality] call acm_cbrn_fnc_airQualityZone;
-};
+[_unit, true] call ACM_CBRN_fnc_updateExposureEffects;

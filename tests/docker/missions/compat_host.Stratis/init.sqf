@@ -12,7 +12,7 @@ private _hosts = [
     ["acre_main", "aee_compat_acre2", "ACRE2"],
     ["tfar_core", "aee_compat_tfar", "TFAR"],
     ["kat_circulation", "aee_compat_kat", "KAT"],
-    ["acm", "aee_compat_acm", "ACM"]
+    ["ACM_main", "aee_compat_acm", "ACM"]
 ];
 private _found = false;
 {
