@@ -126,18 +126,6 @@ Koppen biomes, seasonal foliage, snow, crop and fire risk, floods, avalanches, d
 :::
 :::
 
-::: {.content-block .py-4}
-::: {.facts}
-
-- **Standalone** — requires only CBA_A3.
-- **Deterministic** — the same state on every machine.
-- **50 shared** `aee_core_*` state variables.
-- **18 addons**, 5 optional host-mod compatibility layers.
-- **Version 1.0.0** — GPL-2.0-or-later with a PBO-distribution exception.
-
-:::
-:::
-
 ::: {.get-started .alt-background}
 ::: {.content-block .py-5 .grid}
 ::: {.g-start-4 .g-col-6 .g-start-md-5 .g-col-md-3 .pt-1}
