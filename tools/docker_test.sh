@@ -46,6 +46,108 @@ cp "$ROOT"/.hemttout/build/mod.cpp "$MODS/@aee/mod.cpp"
 cp "$ROOT"/.hemttout/build/meta.cpp "$MODS/@aee/meta.cpp"
 
 echo "==> ensure @cba_a3"
+# ── Host-mod compatibility mode ────────────────────────────────────────────
+# Loads each supported host mod (downloaded by the operator into
+# tests/docker/mods/@<folder>) with AEE and asserts the compat integration.
+if [ "${1:-}" = "--hosts" ]; then
+    echo "==> host compatibility test"
+    declare -A HOSTS=(
+        [ace]="mods/@ace"
+        [acre2]="mods/@acre2"
+        [tfar]="mods/@tfar"
+        [kat]="mods/@kat_adv_medical"
+        [acm]="mods/@acm"
+    )
+    FAILED=0
+    MISSING=0
+    for host in ace acre2 tfar kat acm; do
+        moddir="${HOSTS[$host]}"
+        if [ ! -d "$MODS/@${moddir#mods/@}" ]; then
+            echo "  MISSING: $host mod not present at tests/docker/mods/@${moddir#mods/@}"
+            MISSING=1
+            continue
+        fi
+        echo "==> host $host"
+        # the server loads the FIRST template in the Missions class, so
+        # server.cfg must point at the compat mission (same as --maps)
+        cat > "$DOCKER/configs/server.cfg" << CFGEOF
+hostname = "AEE Test";
+password = "";
+passwordAdmin = "";
+maxPlayers = 8;
+persistent = 1;
+loopback = 1;
+kickDuplicate = 0;
+BattlEye = 0;
+verifySignatures = 0;
+class Missions {
+    class AEETest {
+        template = "compat_host.Stratis";
+        difficulty = "custom";
+    };
+};
+CFGEOF
+        cat > "$DOCKER/docker-compose.$host.yml" << YAMLEOF
+services:
+  aee-test:
+    environment:
+      - ARMA3_SERVER__PARAMS=-autoInit -noBattlEye -mod=mods/@aee;mods/@cba_a3;$moddir
+      - ARMA3_SERVER__MISSION=compat_host.Stratis
+YAMLEOF
+        docker compose -f "$DOCKER/docker-compose.yml" -f "$DOCKER/docker-compose.$host.yml" up -d --force-recreate
+        for _ in $(seq 1 36); do
+            if docker compose -f "$DOCKER/docker-compose.yml" -f "$DOCKER/docker-compose.$host.yml" logs 2>/dev/null | grep -q "\[AEE-TEST\] DONE"; then break; fi
+            sleep 5
+        done
+        docker compose -f "$DOCKER/docker-compose.yml" -f "$DOCKER/docker-compose.$host.yml" logs > "$DOCKER/run.$host.log" 2>&1
+        case "$host" in
+            ace)   hostname="ACE3";;
+            acre2) hostname="ACRE2";;
+            tfar)  hostname="TFAR";;
+            kat)   hostname="KAT";;
+            acm)   hostname="ACM";;
+        esac
+        if grep -q "\[HOST\] \[PASS\] $hostname" "$DOCKER/run.$host.log" 2>/dev/null; then
+            echo "  PASS: $host compat integration"
+        elif grep -q "\[HOST\] \[FAIL\]" "$DOCKER/run.$host.log"; then
+            echo "  FAIL: $host - see tests/docker/run.$host.log"
+            FAILED=1
+        else
+            echo "  FAIL: $host - no result (see tests/docker/run.$host.log)"
+            FAILED=1
+        fi
+        docker compose -f "$DOCKER/docker-compose.yml" -f "$DOCKER/docker-compose.$host.yml" down 2>/dev/null || true
+        rm -f "$DOCKER/docker-compose.$host.yml"
+        rm -rf "$DOCKER/configs/profiles" 2>/dev/null || true
+    done
+    cat > "$DOCKER/configs/server.cfg" << CFGEOF
+hostname = "AEE Test";
+password = "";
+passwordAdmin = "";
+maxPlayers = 8;
+persistent = 1;
+loopback = 1;
+kickDuplicate = 0;
+BattlEye = 0;
+verifySignatures = 0;
+class Missions {
+    class AEETestStratis { template = "aee_test.Stratis"; difficulty = "custom"; };
+    class AEETestTanoa { template = "aee_test.Tanoa"; difficulty = "custom"; };
+    class AEETestEnoch { template = "aee_test.Enoch"; difficulty = "custom"; };
+};
+CFGEOF
+    if [ "$MISSING" -ne 0 ]; then
+        echo "==> some host mods are missing. Download from Steam Workshop and extract"
+        echo "    into tests/docker/mods/@<folder>: @ace @acre2 @tfar @kat_adv_medical @acm"
+    fi
+    if [ "$FAILED" -ne 0 ]; then
+        echo "==> host compat FAILED"
+        exit 1
+    fi
+    echo "==> host compat PASS"
+    exit 0
+fi
+
 if [ "${1:-}" = "--maps" ]; then
     echo "==> map rotation test"
     MAPS=("Stratis:Csa" "Tanoa:Af" "Enoch:Dfb")
