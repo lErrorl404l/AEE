@@ -2,8 +2,8 @@
 binary = "./arma3server_x64"
 config = "server.cfg"
 profile = "aeetest"
-world = "Stratis"
-mission = "aee_test.Stratis"
+world = "Tanoa"
+mission = "aee_test.Tanoa"
 limit_fps = 1000
 params = "-autoInit -noBattlEye -mod=mods/@aee;mods/@cba_a3"
 port = 2302

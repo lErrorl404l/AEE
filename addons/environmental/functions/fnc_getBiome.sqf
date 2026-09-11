@@ -51,7 +51,7 @@ private _SURFACE_VOTES = createHashMapFromArray [
 ];
 
 // ─── Override check ──────────────────────────────────────────────────
-private _biomeOverride = EGVAR(core,biome);
+private _biomeOverride = missionNamespace getVariable [QEGVAR(core,biome), nil];
 if (!isNil "_biomeOverride" && (_biomeOverride != "AUTO")) exitWith {
     missionNamespace setVariable [QEGVAR(core,biome), _biomeOverride];
     private _name = _BIOME_NAMES getOrDefault [_biomeOverride, _biomeOverride];
