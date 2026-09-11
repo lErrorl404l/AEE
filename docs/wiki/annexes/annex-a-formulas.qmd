@@ -1,0 +1,69 @@
+---
+title: "Annex A - Formulas"
+---
+
+# Annex A - Formulas
+
+This annex lists the formulas behind the simulation. All values are SI
+units unless stated.
+
+## Saturation vapour pressure (Buck 1996)
+
+$$e_s = 6.1121 \cdot \exp\left(\frac{(18.678 - T/234.5) \cdot T}{257.14 + T}\right)$$
+
+Where `T` is the temperature in Celsius and `e_s` is in hPa.
+
+## Actual vapour pressure
+
+$$e = e_s \cdot \frac{RH}{100}$$
+
+## Virtual temperature
+
+$$T_v = \frac{T_K}{1 - \frac{0.37802 \cdot e}{P}}$$
+
+## Air density
+
+$$\rho = \frac{P_{Pa}}{R_d \cdot T_v}, \quad R_d = 287.05287 \, \frac{J}{kg \cdot K}$$
+
+## Wet-bulb temperature (Stull 2011)
+
+$$T_w = T \cdot \text{atan}(0.151977 \cdot \sqrt{RH + 8.313659}) + \text{atan}(T + RH) - \text{atan}(RH - 1.676331) + 0.00391838 \cdot RH^{1.5} \cdot \text{atan}(0.023101 \cdot RH) - 4.686035$$
+
+The atan terms are in radians. SQF `atan` returns degrees, so each term is
+multiplied by the factor `0.0174532925`.
+
+## WBGT
+
+$$WBGT = 0.7 \cdot T_w + 0.2 \cdot T_g + 0.1 \cdot T$$
+
+The globe temperature `T_g` is `T + 15` in full sun and `T` in full shade,
+interpolated by overcast.
+
+## Wind chill (JAG/TTI)
+
+$$T_{wc} = 13.12 + 0.6215 \cdot T - 11.37 \cdot V^{0.16} + 0.3965 \cdot T \cdot V^{0.16}$$
+
+Where `V` is wind speed in km/h. Valid below 10 C and above 4.8 km/h.
+
+## Solar declination
+
+$$\delta = 23.45 \cdot \sin\left(\frac{360}{365} \cdot (doy + 284)\right)$$
+
+## Solar elevation
+
+$$\sin(\alpha) = \sin(\phi) \cdot \sin(\delta) + \cos(\phi) \cdot \cos(\delta) \cdot \cos(h)$$
+
+Where `phi` is latitude and `h` is the hour angle
+`(local_hour - 12) * 15` degrees. Radiation is `max(0, sin(alpha))`, scaled
+by cloud transmission `1 - 0.75 * overcast`.
+
+## Lapse rate
+
+$$\Delta T = -0.0065 \cdot \Delta z$$
+
+## Deterministic random (LCG)
+
+$$x_{n+1} = (x_n \cdot 1103515245 + 12345) \bmod 2^{31}$$
+
+The seed combines mission time and an event salt, so the value is identical
+on every machine.

@@ -19,7 +19,7 @@ Thumbs.db
 
 # HEMTT signing keys
 .biprivatekey
-.hemttprivatekey
+*.hemttprivatekey
 
 # Harness session state
 .omo/
@@ -36,3 +36,6 @@ __pycache__/
 # Fallback server install dir
 /tests/docker/server/
 /tests/docker/run.*.log
+
+# Quarto build output
+/docs/wiki/_site/

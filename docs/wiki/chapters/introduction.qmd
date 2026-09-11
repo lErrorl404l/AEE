@@ -63,10 +63,18 @@ addons are `compat_ace3`, `compat_acm`, `compat_acre2`, `compat_kat`, and
 Build PBO names are `aee_<component>`. For example, the core addon builds to
 `aee_core.pbo`.
 
-## Pages
+## Chapters and annexes
 
-- [Modules](modules.qmd): per-addon function reference.
-- [State variables](state-variables.qmd): the shared `aee_core_*` variables.
-- [Physics](physics.qmd): the models behind the simulation.
-- [Development](development.qmd): build, test, and release.
-- [Support](support.qmd): help and reporting.
+- [Chapter 2 - Modules](modules.qmd): per-addon function reference.
+- [Chapter 3 - State variables](state-variables.qmd): the shared
+  `aee_core_*` variables.
+- [Chapter 4 - Physics](physics.qmd): the models behind the simulation.
+- [Chapter 5 - Development](development.qmd): build, test, and release.
+- [Chapter 6 - Testing](testing.qmd): verification and the Docker harness.
+- [Annex A - Formulas](../annexes/annex-a-formulas.qmd): the physics
+  formulas.
+- [Annex B - Compatibility matrix](../annexes/annex-b-compat.qmd): compat
+  addons.
+- [Annex C - Variable reference](../annexes/annex-c-variable-reference.qmd):
+  state variables, settings, and module fields.
+- [Support](../support.qmd): help and reporting.

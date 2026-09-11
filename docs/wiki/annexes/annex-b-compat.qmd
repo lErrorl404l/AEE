@@ -1,0 +1,29 @@
+---
+title: "Annex B - Compatibility matrix"
+---
+
+# Annex B - Compatibility matrix
+
+AEE is standalone. The core addons depend only on CBA. Compatibility
+addons load only when their host mod is present. Each compat addon gates
+on its host with `skipWhenMissingDependencies`.
+
+| Compat addon | Host | Integration |
+|---|---|---|
+| `aee_compat_ace3` | ACE3 | Disables ACE3 weather simulation; exposes the weather report and altimeter in the ACE interaction menu; medical integration |
+| `aee_compat_acm` | Advanced Combat Environment (ACM) | Medical integration |
+| `aee_compat_acre2` | ACRE2 | Radio propagation hand-off |
+| `aee_compat_kat` | KAT - Advanced Medical | Circulation and medical effects |
+| `aee_compat_tfar` | TFAR | Radio propagation hand-off |
+
+## ACE3 weather
+
+AEE drives the engine weather directly (`setWind`, `setFog`). ACE3's weather
+module reads engine state, so it follows AEE automatically. The ACE3 compat
+addon disables ACE3's own wind, rain, fog, and overcast simulation to avoid
+two models fighting.
+
+## Keybinds
+
+The weather report and altimeter are also available without ACE3 through
+CBA keybinds, under the AEE category in the CBA keybind settings.

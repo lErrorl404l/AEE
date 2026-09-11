@@ -1,22 +1,83 @@
 ---
-title: "Physics"
+title: "Chapter 4 - Physics"
 ---
 
-# Physics
+# Chapter 4 - Physics
 
 This page describes the models behind the simulation. The models come from
 the SQF implementations.
 
-## Diurnal temperature
+::: {.callout-tip}
+## Determinism
 
-Temperature follows a base diurnal sinusoid. The weight is
-`0.5 + 0.5 * sin((dayFraction - 0.25) * 360deg)` over the night and day
-climate normals.
+Core atmospheric state is a pure function of position, mission time, and
+engine weather. Event rolls (lightning, microburst, space weather) use a
+seeded linear congruential generator, so every machine in a multiplayer
+session computes the same values.
+:::
 
-## Lapse rate
+## Solar radiation and temperature
 
-Elevation changes temperature at a lapse rate of 0.0065 C per metre. Overcast
-reduces temperature by 4 C per unit. Surface type adds a modifier.
+Temperature follows the sun: the diurnal curve is driven by solar elevation,
+computed from the day of year, local hour, and world latitude. Cloud cover
+transmits 25% of radiation at full overcast.
+
+- Elevation lapse rate: 0.0065 C per metre.
+- Overcast cooling: 4 C per unit.
+- Surface-type modifiers: desert +4, sand +2, ice -5, snow -3, coniferous -2,
+  forest -1.5.
+- Wind chill: JAG/TTI formula, valid below 10 C and above 4.8 km/h wind.
+
+## The water cycle
+
+```{mermaid}
+flowchart LR
+    P[Precipitation] --> S[Soil moisture]
+    S --> E[Evaporation]
+    E --> H[Relative humidity]
+    H --> C[Cloud]
+    C --> P
+```
+
+Rain soaks the ground. Temperature and wind dry it. Moist soil raises the
+relative humidity. The state variable is `aee_core_soilMoisture` (0..1).
+
+## Air density
+
+Buck 1996: saturation vapour pressure
+`e_s = 6.1121 * exp((18.678 - T/234.5) * T/(257.14 + T))`, actual vapour
+pressure `e = e_s * RH / 100`, virtual temperature
+`T_v = T_K / (1 - 0.37802 * e / P)`, density
+`rho = P_Pa / (R_d * T_v)` with `R_d = 287.05287`.
+
+## WBGT
+
+Heat index uses the Stull 2011 wet-bulb approximation with the globe
+temperature interpolated between sun and shade by overcast.
+
+::: {.callout-note}
+## SQF atan returns degrees
+
+The Stull formula expects radians. Every atan term is converted with the
+degree-to-radian factor 0.0174532925. Getting this wrong produced WBGT values
+near 973 C.
+:::
+
+## Biome
+
+Koppen classification, 18 codes. Resolution order: map-name match
+(Stratis = Csa, Tanoa = Af, Enoch = Dfb), CfgWorlds description keywords,
+surface-type and latitude voting, then the oceanic fallback Cfb.
+
+## Sea state and tide
+
+Beaufort scale with wave height and a tidal offset and description.
+
+## Events
+
+Lightning, microburst, sandstorm, dust devil, blowing snow, avalanche,
+flash flood, and space weather (solar flares, aurora) roll on deterministic
+chances. Thunder follows the flash after a fixed sound-travel delay.
 
 | Surface | Modifier (C) |
 |---|---|

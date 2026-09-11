@@ -1,0 +1,35 @@
+/* AEE wiki styles - table legibility and responsive layout. */
+
+/* Tables: full width, readable in both light and dark themes. */
+table {
+  width: 100%;
+  margin: 1em 0;
+}
+
+/* Align variable names in code cells to the top so long descriptions wrap. */
+td > code {
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* Compact header row. */
+thead th {
+  white-space: nowrap;
+}
+
+/* Blockquotes used for the callout fallback. */
+blockquote {
+  border-left: 4px solid var(--bs-primary);
+  padding-left: 1em;
+}
+
+/* Code blocks stay horizontally scrollable rather than wrapping. */
+pre {
+  overflow-x: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+  }
+}
