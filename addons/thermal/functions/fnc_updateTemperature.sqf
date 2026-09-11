@@ -11,8 +11,9 @@ private _normals = [_biome] call EFUNC(environmental,getClimateNormals);
 private _tDay   = _normals select 2;
 private _tNight = _normals select 3;
 
-private _dayFraction = dayTime / 24;
-private _diurnalWeight = 0.5 + 0.5 * sin ((_dayFraction - 0.25) * 360);
+// Solar-elevation radiation model (replaces a fixed sinusoid): the sun's
+// height for the date, time and latitude drives the diurnal curve.
+private _diurnalWeight = [overcast] call EFUNC(core,calculateSolarRadiation);
 private _monthIdx = (_month - 1) max 0 min 11;
 private _T_base = (_tNight select _monthIdx)
     + ((_tDay select _monthIdx) - (_tNight select _monthIdx)) * _diurnalWeight;

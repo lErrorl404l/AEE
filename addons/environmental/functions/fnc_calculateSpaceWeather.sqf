@@ -44,9 +44,9 @@ private _flareValue = missionNamespace getVariable [QGVAR(spaceWeatherFlareValue
 switch (_flareState) do {
     case "IDLE": {
         // 5 % chance per tick to trigger when cycle > 0.6
-        if (_solarCycle > 0.6 && random 1 < 0.05) then {
-            _flareValue = _solarCycle * (0.3 + random 0.4);
-            missionNamespace setVariable [QGVAR(spaceWeatherFlareEndTime), time + 7200 + random 14400];
+        if ((_solarCycle > 0.6) && (([round (time * 10), 401] call EFUNC(core,deterministicRandom)) < 0.05)) then {
+            _flareValue = _solarCycle * (0.3 + (0.4 * ([round (time * 10), 402] call EFUNC(core,deterministicRandom))));
+            missionNamespace setVariable [QGVAR(spaceWeatherFlareEndTime), time + 7200 + (14400 * ([round (time * 10), 403] call EFUNC(core,deterministicRandom)))];
             _flareState = "ACTIVE";
         };
     };
@@ -78,7 +78,7 @@ private _flareTimer = switch (_flareState) do {
 
 // ─── Kp geomagnetic index (0–9) ──────────────────────────────────────────
 // Base 1 + 11-yr cycle contribution + flare contribution + noise
-private _kpRaw   = 1 + _solarCycle * 4 + _flareValue + (-1 + random 2);
+private _kpRaw   = 1 + (_solarCycle * 4) + _flareValue + (-1 + (2 * ([round (time * 10), 404] call EFUNC(core,deterministicRandom))));
 private _kpIndex = round (_kpRaw max 0 min 9);
 
 // ─── Geomagnetic description ──────────────────────────────────────────────

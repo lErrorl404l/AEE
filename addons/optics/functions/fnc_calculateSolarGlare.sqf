@@ -27,10 +27,12 @@ if (sunOrMoon <= 0) exitWith {
 };
 
 // ─── Inputs ────────────────────────────────────────────────────────────
-private _sunPos   = getSunPosition;     // [azimuth deg, elevation deg]
+private _sunPos   = getSunPosition;
+if (isNil "_sunPos") then { _sunPos = [0, 0]; };  // no renderer on a dedicated server     // [azimuth deg, elevation deg]
 private _sunAzim  = _sunPos param [0, 0];
 private _sunElev  = _sunPos param [1, 0];
 private _viewDir  = getDirVisual _unit;
+if (_viewDir != _viewDir) then { _viewDir = getDir _unit; };  // NaN check: fresh AI units have no visual direction
 private _overcast = overcast;
 
 if (isNil "_overcast") then { _overcast = 0; };
