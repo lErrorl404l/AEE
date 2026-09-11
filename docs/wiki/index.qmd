@@ -1,145 +1,147 @@
 ---
-title: "AEE - Advanced Environment Extension"
+pagetitle: "AEE"
+page-layout: custom
+section-divs: false
+toc: false
+css: index.css
+editor: source
+description: |
+  Physically accurate environment simulation for Arma 3: atmosphere,
+  temperature, ballistics, optics, mobility, maritime, radio.
+hide-description: true
 ---
 
-::: {.hero}
-# Advanced Environment Extension
+::: {.hero-banner}
+::: {.content-block .py-4}
+::: {.hero-text}
+# AEE
 
-**Physically accurate environment simulation for Arma 3.**
+### Advanced Environment Extension — physically accurate environment simulation for Arma 3
 
-Elevation lapse rates, terrain microclimate, true air density, Koppen
-biomes, thermal and physiological effects, optics, mobility, maritime
-state, radio propagation, and atmospheric events.
+- Elevation lapse rates and diurnal temperature cycles, terrain microclimate, true air density.
+- Thermal and physiological effects, optics, mobility, maritime state, radio propagation, atmospheric events.
+- Standalone: requires only CBA_A3. Deterministic across machines.
 
-::: {.hero-actions}
-[Explore the modules](chapters/modules.qmd){.btn .btn-aee-primary}
-[Start developing](chapters/development.qmd){.btn .btn-aee-ghost}
-[GitHub](https://github.com/lErrorl404l/AEE){.btn .btn-aee-ghost}
+::: {.grid .gap-3 .pb-3 .pt-4}
+::: {.g-col-12 .g-col-sm-4}
+[Explore the modules](chapters/modules.qmd){.btn-action-primary .btn-action .btn .btn-lg .w-100 role="button"}
+:::
+::: {.g-col-12 .g-col-sm-4 .mb-2}
+[Physics](chapters/physics.qmd){.btn-action .btn-secondary .btn .btn-lg .w-100 role="button"}
+:::
+::: {.g-col-12 .g-col-sm-4 .mb-2}
+[Start developing](chapters/development.qmd){.btn-action .btn-secondary .btn .btn-lg .w-100 role="button"}
 :::
 :::
+:::
+:::
+:::
 
-## What AEE models
+::: {.alt-background}
+::: {.content-block .py-4}
+::: {.features}
 
-::: {.cards}
-::: {.card}
+::: {.feature}
 ### Atmosphere
-Pressure, humidity, wind, fog, clouds, turbulence, icing, lightning,
-microbursts, and pressure trends.
-[Module reference](chapters/modules.qmd#sec-modules){.card-link}
+Pressure, humidity, wind, fog, clouds, turbulence, icing, lightning, microbursts, and pressure trends.
+
+::: {.learn-more}
+[Module reference »](chapters/modules.qmd#sec-modules)
+:::
 :::
 
-::: {.card}
+::: {.feature}
 ### Temperature
-Solar-elevation diurnal model, lapse rate, surface effects, wind chill,
-heat index, WBGT, water temperature, and thermal crossover.
-[Physics](chapters/physics.qmd#sec-physics){.card-link}
+Solar-elevation diurnal model, lapse rate, surface effects, wind chill, heat index, WBGT, water temperature, and thermal crossover.
+
+::: {.learn-more}
+[Physics »](chapters/physics.qmd#sec-physics)
+:::
 :::
 
-::: {.card}
+::: {.feature}
 ### Ballistics
-True air density from temperature, pressure, and humidity, with
-crosswind and Coriolis deflection.
-[Formulas](annexes/annex-a-formulas.qmd#sec-annex-a){.card-link}
+True air density from temperature, pressure, and humidity, with crosswind and Coriolis deflection.
+
+::: {.learn-more}
+[Formulas »](annexes/annex-a-formulas.qmd#sec-annex-a)
+:::
 :::
 
-::: {.card}
+::: {.feature}
 ### Optics
-Glare, mirage, thermal contrast, rain and dew on optics, snow blindness,
-heat shimmer, and atmospheric seeing.
-[Module reference](chapters/modules.qmd#sec-modules){.card-link}
+Glare, mirage, thermal contrast, rain and dew on optics, snow blindness, heat shimmer, and atmospheric seeing.
+
+::: {.learn-more}
+[Module reference »](chapters/modules.qmd#sec-modules)
+:::
 :::
 
-::: {.card}
+::: {.feature}
 ### Mobility
-Engine derating, helicopter lift, traction, mud accretion, soil bearing
-strength, and route degradation.
-[Module reference](chapters/modules.qmd#sec-modules){.card-link}
+Engine derating, helicopter lift, traction, mud accretion, soil bearing strength, and route degradation.
+
+::: {.learn-more}
+[Module reference »](chapters/modules.qmd#sec-modules)
+:::
 :::
 
-::: {.card}
-### Environment
-Koppen biomes, seasonal foliage, snow, crop and fire risk, floods,
-avalanches, dust, CBRN persistence, and lunar illumination.
-[Module reference](chapters/modules.qmd#sec-modules){.card-link}
-:::
-
-::: {.card}
+::: {.feature}
 ### Maritime
-Sea state on the Beaufort scale, wave height, tides, and compass
-deviation.
-[Module reference](chapters/modules.qmd#sec-modules){.card-link}
+Sea state on the Beaufort scale, wave height, tides, and compass deviation.
+
+::: {.learn-more}
+[Module reference »](chapters/modules.qmd#sec-modules)
+:::
 :::
 
-::: {.card}
+::: {.feature}
 ### Physiology
-UV index, heat acclimatisation, dehydration, battery derating, scent
-dispersion, and altitude adaptation.
-[Module reference](chapters/modules.qmd#sec-modules){.card-link}
+UV index, heat acclimatisation, dehydration, battery derating, scent dispersion, and altitude adaptation.
+
+::: {.learn-more}
+[Module reference »](chapters/modules.qmd#sec-modules)
+:::
 :::
 
-::: {.card}
+::: {.feature}
 ### Radio
 VHF, UHF, and HF propagation under atmospheric conditions.
-[Module reference](chapters/modules.qmd#sec-modules){.card-link}
+
+::: {.learn-more}
+[Module reference »](chapters/modules.qmd#sec-modules)
 :::
 :::
 
-## Key facts
+::: {.feature}
+### Environment
+Koppen biomes, seasonal foliage, snow, crop and fire risk, floods, avalanches, dust, CBRN persistence, and lunar illumination.
 
+::: {.learn-more}
+[Module reference »](chapters/modules.qmd#sec-modules)
+:::
+:::
+
+:::
+:::
+:::
+
+::: {.content-block .py-4}
 ::: {.facts}
-- Standalone: requires only CBA_A3.
-- Deterministic across machines: the same state on every client.
-- 50 shared `aee_core_*` state variables.
-- 18 addons, 5 of them optional host-mod compatibility layers.
-- Version 1.0.0, GPL-2.0-or-later with a PBO-distribution exception.
+
+- **Standalone** — requires only CBA_A3.
+- **Deterministic** — the same state on every machine.
+- **50 shared** `aee_core_*` state variables.
+- **18 addons**, 5 optional host-mod compatibility layers.
+- **Version 1.0.0** — GPL-2.0-or-later with a PBO-distribution exception.
+
+:::
 :::
 
-::: {.callout-tip}
-## Start here
-
-The [module reference](chapters/modules.qmd#sec-modules) lists every
-function. The [state variables](chapters/state-variables.qmd#sec-state)
-page is the API for mission scripts. [Testing](chapters/testing.qmd#sec-testing)
-describes how the mod is verified, including the Docker harness and the
-AI-unit test.
+::: {.get-started .alt-background}
+::: {.content-block .py-5 .grid}
+::: {.g-start-4 .g-col-6 .g-start-md-5 .g-col-md-3 .pt-1}
+[Get Started](chapters/introduction.qmd){.btn-action-primary .btn-action .btn .btn-lg .w-100 role="button"}
 :::
-
-## Reference
-
-::: {.cards .cards-small}
-::: {.card}
-### Modules
-All 18 addons, every function.
-[Open](chapters/modules.qmd#sec-modules){.card-link}
-:::
-::: {.card}
-### Physics
-The models behind the simulation.
-[Open](chapters/physics.qmd#sec-physics){.card-link}
-:::
-::: {.card}
-### State variables
-The `aee_core_*` API surface.
-[Open](chapters/state-variables.qmd#sec-state){.card-link}
-:::
-::: {.card}
-### Formulas
-Annex A: every equation.
-[Open](annexes/annex-a-formulas.qmd#sec-annex-a){.card-link}
-:::
-::: {.card}
-### Compatibility
-Annex B: host-mod integration.
-[Open](annexes/annex-b-compat.qmd#sec-annex-b){.card-link}
-:::
-::: {.card}
-### Development
-Build, test, and release.
-[Open](chapters/development.qmd#sec-development){.card-link}
-:::
-::: {.card}
-### Support
-Issues, discussions, security.
-[Open](../support.qmd){.card-link}
 :::
 :::
