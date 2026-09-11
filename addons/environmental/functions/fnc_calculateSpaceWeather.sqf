@@ -27,7 +27,7 @@ params [];
 // ─── Date-based solar cycle (11-year approximation) ────────────────────────
 // dateToNumber returns 0.0 at Jan 1 00:00, ~1.0 at Dec 31 24:00
 private _dateArr   = date;
-_dateArr params [["_year", 2024], ["_month", 1], ["_day", 1]];
+_dateArr params [["_year", 2024]];
 
 private _yearFrac   = dateToNumber _dateArr;
 private _dayOfYear  = _yearFrac * 365.25;              // day number within the year

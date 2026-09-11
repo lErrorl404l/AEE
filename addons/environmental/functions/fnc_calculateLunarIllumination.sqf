@@ -19,7 +19,9 @@ if (sunOrMoon > 0) exitWith {
 
 // ─── Parse date ──────────────────────────────────────────────────────────
 private _dateArr = date;
-_dateArr params [["_year", 2024], ["_month", 1], ["_day", 1], ["_hour", 12], ["_minute", 0]];
+private _year  = _dateArr#0;
+private _month = _dateArr#1;
+private _day   = _dateArr#2;
 
 // ─── Continuous day number (integer) ─────────────────────────────────────
 // Algorithm adapted from the task specification:
