@@ -109,7 +109,21 @@ diag_log text format ["[AEE-TEST] biome after explicit call: %1", _biomeAfter];
         ["aee_radio_radioPropagationIndex",   0, 2,    "radio"],
         ["aee_core_currentLightningRisk",     0, 1,    "fx/lightning"],
         ["aee_core_soilMoisture",            0, 1,    "core/soil"],
-        ["aee_core_groundState",              -1, -1,  "mobility/ground"]
+        ["aee_core_groundState",              -1, -1,  "mobility/ground"],
+        ["aee_core_precipitationPhase",       -1, -1,  "atmos/precip"],
+        ["aee_core_snowfallRate",             0, 1,    "atmos/precip"],
+        ["aee_core_currentHaze",              0, 1,    "atmos/haze"],
+        ["aee_core_currentHypoxiaRisk",       0, 1,    "physiology/hypoxia"],
+        ["aee_core_qnh",                      900, 1100, "environmental/qnh"],
+        ["aee_core_pressureAltitude_m",       -1000, 10000, "environmental/qnh"],
+        ["aee_core_ionosphericAbsorption",    0, 1,    "radio/ionosphere"],
+        ["aee_core_lightningIgnition",        -1, -1,  "fx/lightning"],
+        ["aee_core_lastStrikePos",            -1, -1,  "fx/lightning"],
+        ["aee_core_clothingInsulationFactor", 0.5, 2.0, "thermal/clothing"],
+        ["aee_core_surfaceWetness",           0, 1,    "environmental/wetness"],
+        ["aee_core_fogBase_m",                0, 9999, "environmental/fog"],
+        ["aee_core_weatherProgressionSeed",   0, 1,    "core/weather"],
+        ["aee_core_weatherProgression",       0, 1,    "core/weather"]
     ];
     private _pass = 0;
     private _nil = 0;
