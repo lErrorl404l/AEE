@@ -8,7 +8,7 @@ Severe weather event detection based on biome and conditions.
   Dust devil    — Arid biome + hot clear day + light wind
 
 Each severity is 0-1 (0 = none, 1 = severe).
-Sets QGVAR(currentSandstorm), QGVAR(currentBlowingSnow), QGVAR(currentDustDevil).
+Sets QEGVAR(core,currentSandstorm), QEGVAR(core,currentBlowingSnow), QEGVAR(core,currentDustDevil).
 */
 
 // ─── Inputs ──────────────────────────────────────────────────────────────
@@ -50,6 +50,6 @@ if (!isNil "_biome"
 };
 
 // ─── Output ──────────────────────────────────────────────────────────────
-missionNamespace setVariable [QGVAR(currentSandstorm),   _sandstorm];
-missionNamespace setVariable [QGVAR(currentBlowingSnow), _blowingSnow];
-missionNamespace setVariable [QGVAR(currentDustDevil),   _dustDevil];
+missionNamespace setVariable [QEGVAR(core,currentSandstorm),   _sandstorm];
+missionNamespace setVariable [QEGVAR(core,currentBlowingSnow), _blowingSnow];
+missionNamespace setVariable [QEGVAR(core,currentDustDevil),   _dustDevil];

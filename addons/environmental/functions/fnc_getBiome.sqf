@@ -52,10 +52,15 @@ private _SURFACE_VOTES = createHashMapFromArray [
 
 // ─── Override check ──────────────────────────────────────────────────
 private _biomeOverride = missionNamespace getVariable [QEGVAR(core,biome), nil];
-if (!isNil "_biomeOverride" && (_biomeOverride != "AUTO")) exitWith {
-    missionNamespace setVariable [QEGVAR(core,biome), _biomeOverride];
-    private _name = _BIOME_NAMES getOrDefault [_biomeOverride, _biomeOverride];
-    missionNamespace setVariable [QEGVAR(core,biomeName), _name];
+if (isNil "_biomeOverride") then {
+    // no override - continue to auto-detection
+} else {
+    if (_biomeOverride != "AUTO") exitWith {
+        missionNamespace setVariable [QEGVAR(core,biome), _biomeOverride];
+        private _name = _BIOME_NAMES getOrDefault [_biomeOverride, _biomeOverride];
+        missionNamespace setVariable [QEGVAR(core,biomeName), _name];
+        _biomeOverride
+    };
 };
 
 // ─── Collect signals ─────────────────────────────────────────────────
@@ -147,6 +152,6 @@ if (_biome == "") then { _biome = "Cfb"; _biomeName = "Oceanic"; };
 
 // --- Store results ---
 missionNamespace setVariable [QEGVAR(core,biome), _biome];
-missionNamespace setVariable [QGVAR(biomeName),
+missionNamespace setVariable [QEGVAR(core,biomeName),
     _BIOME_NAMES getOrDefault [_biome, _biome]
 ];

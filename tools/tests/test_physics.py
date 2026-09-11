@@ -29,10 +29,14 @@ def wind_chill(t_c, v_ms):
     return 13.12 + 0.6215 * t_c - 11.37 * v_kmh**0.16 + 0.3965 * t_c * v_kmh**0.16
 
 
-def diurnal_weight(day_time):
-    """Mirror of the diurnal sinusoid in fnc_updateTemperature.sqf."""
-    frac = day_time / 24
-    return 0.5 + 0.5 * math.sin((frac - 0.25) * 360 * math.pi / 180)
+def solar_elevation_rad(doy, hour, lat):
+    """Mirror of fnc_calculateSolarRadiation.sqf (solar elevation)."""
+    decl = 23.45 * math.sin((360 / 365) * (doy + 284) * math.pi / 180)
+    hour_angle = (hour - 12) * 15
+    sin_elev = math.sin(math.radians(lat)) * math.sin(math.radians(decl)) + math.cos(
+        math.radians(lat)
+    ) * math.cos(math.radians(decl)) * math.cos(math.radians(hour_angle))
+    return max(0.0, sin_elev)
 
 
 class TestAirDensity(unittest.TestCase):
@@ -64,12 +68,14 @@ class TestTemperature(unittest.TestCase):
         self.assertAlmostEqual(base - 0.0065 * 1000, 13.5, places=3)
         self.assertAlmostEqual(base - 0.0065 * 2000, 7.0, places=3)
 
-    def test_diurnal_weight(self):
-        # Noon (12:00) sits at the diurnal maximum; 06:00 at the midpoint.
-        self.assertAlmostEqual(diurnal_weight(12), 1.0, places=6)
-        self.assertAlmostEqual(diurnal_weight(6), 0.5, places=6)
-        self.assertAlmostEqual(
-            diurnal_weight(0), 0.5 + 0.5 * math.sin(-math.pi / 2), places=6
+    def test_solar_elevation(self):
+        # June solstice at noon on the Tropic of Cancer: sun at zenith.
+        self.assertAlmostEqual(solar_elevation_rad(172, 12, 23.45), 1.0, places=1)
+        # Midnight: sun below horizon, radiation floors at zero.
+        self.assertEqual(solar_elevation_rad(172, 0, 0), 0.0)
+        # Winter: lower noon elevation at 60N than at the equator.
+        self.assertLess(
+            solar_elevation_rad(355, 12, 60), solar_elevation_rad(355, 12, 0)
         )
 
 

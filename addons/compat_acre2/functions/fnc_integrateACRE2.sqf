@@ -20,7 +20,7 @@ private _callback = compile '
 
     private _baseline = [_freq, _mW, _receiverID, _transmitterID] call acre_sys_signal_fnc_getSignalCore;
 
-    private _propIdx = missionNamespace getVariable ["aee_core_radioPropagationIndex", 1];
+    private _propIdx = missionNamespace getVariable ["aee_radio_radioPropagationIndex", 1];
     if (_propIdx <= 0) then { _propIdx = 1.0 };
 
     private _dB_shift = (_propIdx - 1) * 8;

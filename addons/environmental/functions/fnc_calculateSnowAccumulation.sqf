@@ -3,7 +3,7 @@
 /*
 Snow accumulation / melt / drifting model.
 
-Reads and writes QGVAR(snowDepth_m) as a leaky integrator.
+Reads and writes QEGVAR(core,snowDepth_m) as a leaky integrator.
 
   • Accretion:  temp < 0 °C + precipitation → +rain × 0.01 m
   • Melt:       temp > 2 °C                 → –0.02 × temp m
@@ -11,12 +11,12 @@ Reads and writes QGVAR(snowDepth_m) as a leaky integrator.
   • Drift:      wind > 8 m/s + snow > 5 cm → small redistribution
 
 Clamped 0–3.0 m.
-Stored in QGVAR(snowDepth_m) and QGVAR(snowDriftIntensity) (0–1).
+Stored in QEGVAR(core,snowDepth_m) and QGVAR(snowDriftIntensity) (0–1).
 */
 
 private _T = EGVAR(core,currentTemperature);
 
-private _depth = missionNamespace getVariable [QGVAR(snowDepth_m), 0];
+private _depth = missionNamespace getVariable [QEGVAR(core,snowDepth_m), 0];
 
 if (!isNil "_T") then {
     // ─── Accretion ───────────────────────────────────────────────────────
@@ -40,7 +40,7 @@ if (_windSpd > 8 && _depth > 0.05) then {
     _drift = (_windSpd * 0.001) min 1.0;
 };
 
-missionNamespace setVariable [QGVAR(snowDepth_m), _depth];
+missionNamespace setVariable [QEGVAR(core,snowDepth_m), _depth];
 missionNamespace setVariable [QGVAR(snowDriftIntensity), _drift];
 
 if (GVAR(diagnostic)) then {

@@ -16,7 +16,7 @@ with open(LOG, encoding="utf-8", errors="replace") as f:
 passes = re.findall(r"\[PHASE\d+\] \[PASS\][^\n]*", text)
 fails = re.findall(r"\[PHASE\d+\] \[FAIL\][^\n]*", text)
 done = "[AEE-TEST] DONE" in text
-errors = [l for l in text.splitlines() if "Error" in l and "script" in l.lower()]
+errors = [l for l in text.splitlines() if "Error" in l and any(k in l for k in ("script", "variable", "Generic", "position"))]
 
 print(f"phases passed: {len(passes)}")
 for p in passes:

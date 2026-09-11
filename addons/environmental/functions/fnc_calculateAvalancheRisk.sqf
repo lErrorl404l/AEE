@@ -10,7 +10,7 @@ Requires Snow or Frozen ground state.  Risk factors:
   • Rain on snow (lubricates layers)
 
 Sets:
-  QGVAR(currentAvalancheRisk)     — float 0-1
+  QEGVAR(core,currentAvalancheRisk)     — float 0-1
   QGVAR(currentAvalancheWarning)  — "None" / "Low" / "Moderate" / "High" / "Extreme"
 */
 
@@ -20,7 +20,7 @@ private _groundState = missionNamespace getVariable [QGVAR(groundState), "Normal
 
 // ─── Early exit: no snowpack ────────────────────────────────────────────
 if (_groundState != "Snow" && (_groundState != "Frozen")) exitWith {
-    missionNamespace setVariable [QGVAR(currentAvalancheRisk),    0];
+    missionNamespace setVariable [QEGVAR(core,currentAvalancheRisk),    0];
     missionNamespace setVariable [QGVAR(currentAvalancheWarning), "None"];
     0
 };
@@ -87,6 +87,6 @@ private _warning = switch (true) do {
 };
 
 // ─── Output ─────────────────────────────────────────────────────────────
-missionNamespace setVariable [QGVAR(currentAvalancheRisk),    _risk];
+missionNamespace setVariable [QEGVAR(core,currentAvalancheRisk),    _risk];
 missionNamespace setVariable [QGVAR(currentAvalancheWarning), _warning];
 _risk

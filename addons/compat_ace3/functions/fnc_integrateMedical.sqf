@@ -5,8 +5,8 @@ params [["_unit", player, [objNull]]];
 if (isNil "ace_medical_fnc_addDamageToUnit") exitWith {};
 if (isNull _unit) exitWith {};
 
-private _temp = (missionNamespace getVariable ["aee_core_coreAETemp", 0]);
-private _humidity = (missionNamespace getVariable ["aee_core_coreHumidity", 0]);
+private _temp = (missionNamespace getVariable ["aee_core_currentTemperature", 0]);
+private _humidity = (missionNamespace getVariable ["aee_core_currentHumidity", 0]);
 
 // Heat damage to legs
 // ace_medical_fnc_addDamageToUnit signature:

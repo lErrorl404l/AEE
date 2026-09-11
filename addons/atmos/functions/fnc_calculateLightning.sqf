@@ -8,7 +8,7 @@ Risk computed from overcast, rain, humidity, and convective potential
 nearby open position when risk exceeds 0.5 and a probability roll passes.
 
 Sets:
-  QGVAR(currentLightningRisk)   — float 0-1
+  QEGVAR(core,currentLightningRisk)   — float 0-1
   QGVAR(currentLightningStrike) — bool (true = strike this tick)
   QGVAR(lastLightningPos)       — [x,y,z] or [] if none
   QGVAR(lastStrikeTime)         — diag_tickTime of last strike
@@ -70,7 +70,7 @@ if ((_risk > 0.5) && (([round (time * 10), 301] call EFUNC(core,deterministicRan
 };
 
 // ─── Output ──────────────────────────────────────────────────────────────
-missionNamespace setVariable [QGVAR(currentLightningRisk),   _risk];
+missionNamespace setVariable [QEGVAR(core,currentLightningRisk),   _risk];
 missionNamespace setVariable [QGVAR(currentLightningStrike), _strike];
 missionNamespace setVariable [QGVAR(lastLightningPos),       _strikePos];
 missionNamespace setVariable [QGVAR(lastStrikeTime),         [diag_tickTime, missionNamespace getVariable [QGVAR(lastStrikeTime), -1]] select (!_strike)];

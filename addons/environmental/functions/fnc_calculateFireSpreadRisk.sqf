@@ -48,4 +48,4 @@ if (rain > 0) then { _risk = 0; };
 
 _risk = _risk min 1;
 
-missionNamespace setVariable [QGVAR(currentFireRisk), _risk];
+missionNamespace setVariable [QEGVAR(core,currentFireRisk), _risk];
