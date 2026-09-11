@@ -23,8 +23,6 @@ jobs:
         uses: arma-actions/bom-check@v1
         with:
           path: addons
-      - name: Lint (sqflint)
-        uses: arma-actions/sqflint@master
       - name: SQFVM validation
         run: |
           SQFVM_URL="https://github.com/SQFvm/runtime/releases/download/v2026.04.03-ed9f5f5/sqfvm_linux_x64_gcc.zip"

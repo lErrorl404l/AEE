@@ -2,8 +2,7 @@
 
 params [
     ["_biome", "Cfa", [""]],
-    ["_month", 1, [0]],
-    ["_posASL", [], [[]]]
+        ["_posASL", [], [[]]]
 ];
 
 private _normals = [_biome] call EFUNC(environmental,getClimateNormals);

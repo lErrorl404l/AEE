@@ -11,7 +11,7 @@ Risk decays by 50 % per tick so it recedes quickly once rain stops.
 Stored in QGVAR(flashFloodRisk).
 */
 
-params [["_posASL", [], [[]]]];
+
 
 private _rainAccum = missionNamespace getVariable [QGVAR(rainAccum), 0];
 private _biome     = GVAR(biome);
