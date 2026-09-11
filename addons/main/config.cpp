@@ -1,3 +1,4 @@
+/* SPDX-License-Identifier: GPL-2.0-or-later */
 #define COMPONENT main
 #define COMPONENT_BEAUTIFIED Main
 #include "\z\aee\addons\main\script_mod.hpp"

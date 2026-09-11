@@ -1,3 +1,4 @@
+/* SPDX-License-Identifier: GPL-2.0-or-later */
 #ifndef AEE_SCRIPT_MACROS_HPP
 #define AEE_SCRIPT_MACROS_HPP
 

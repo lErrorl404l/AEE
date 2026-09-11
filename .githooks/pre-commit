@@ -1,5 +1,8 @@
 #!/bin/bash
-# aee pre-commit hook — fast checks
+# aee pre-commit hook - fast checks
+# Runs repo-contained gates (hemtt, python tests). The operator's personal
+# rules (ste-lint, audit) run only when present; they are not required for
+# other contributors.
 set -euo pipefail
 ROOT="$(git rev-parse --show-toplevel)"
 FAILED=0
@@ -11,14 +14,15 @@ else
     echo "WARN hemtt not found, skipping"
 fi
 
+RULES="$HOME/.config/opencode/rules"
 CHANGED=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(sqf|hpp|cpp|md)$' || true)
-if [ -n "$CHANGED" ] && [ -f "$HOME/.config/opencode/rules/ste-lint.py" ]; then
+if [ -n "$CHANGED" ] && [ -f "$RULES/ste-lint.py" ]; then
     echo "-> ste-lint on changed files"
-    python3 "$HOME/.config/opencode/rules/ste-lint.py" $CHANGED >/dev/null 2>&1 || FAILED=1
+    python3 "$RULES/ste-lint.py" $CHANGED >/dev/null 2>&1 || FAILED=1
 fi
-if [ -f "$HOME/.config/opencode/rules/audit.py" ]; then
+if [ -f "$RULES/audit.py" ]; then
     echo "-> rules audit"
-    python3 "$HOME/.config/opencode/rules/audit.py" >/dev/null 2>&1 || FAILED=1
+    python3 "$RULES/audit.py" >/dev/null 2>&1 || FAILED=1
 fi
 
 if [ "$FAILED" -ne 0 ]; then

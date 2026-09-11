@@ -30,10 +30,10 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
-- WBGT (Stull 2011) used SQF atan in degrees; the formula needs radians.
-- getSunPosition returns nil on a dedicated server (no renderer); sun
+- WBGT (Stull 2011) used SQF atan in degrees. the formula needs radians.
+- getSunPosition returns nil on a dedicated server (no renderer). sun
   consumers now guard and fall back cleanly.
-- getDirVisual can return NaN for freshly spawned AI; guarded.
+- getDirVisual can return NaN for freshly spawned AI. guarded.
 
 ## [0.1.0] - 2026-09-11
 
@@ -61,7 +61,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
-- Function compilation: no function was compiled before this release; the
+- Function compilation: no function was compiled before this release. the
   mod did not run. Wiring now resolves every function (zero undefined).
 - ACE3 bridge: removed the fake `ace_weather_current*` variable interface.
   AEE drives engine weather; ACE3 reads engine state.
