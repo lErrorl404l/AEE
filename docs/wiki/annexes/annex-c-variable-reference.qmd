@@ -2,7 +2,7 @@
 title: "Annex C - Variable reference"
 ---
 
-# Annex C - Variable reference
+# Annex C - Variable reference {#sec-annex-c}
 
 This annex lists the shared simulation state, the settings, and the EDEN
 module fields. Mission scripts can read any `aee_core_*` variable.

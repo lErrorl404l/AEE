@@ -2,7 +2,7 @@
 title: "Annex B - Compatibility matrix"
 ---
 
-# Annex B - Compatibility matrix
+# Annex B - Compatibility matrix {#sec-annex-b}
 
 AEE is standalone. The core addons depend only on CBA. Compatibility
 addons load only when their host mod is present. Each compat addon gates
