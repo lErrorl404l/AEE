@@ -1,0 +1,41 @@
+name: Cache Cleanup
+
+# Prunes stale GitHub Actions caches. Every lockfile or config change
+# spawns a new cache entry that lingers until evicted. This deletes entries
+# older than 7 days, keeping the cache quota flat.
+#
+# Runs weekly (Monday 03:00 UTC) and on demand via workflow_dispatch.
+
+on:
+  schedule:
+    - cron: "0 3 * * 1"
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  prune:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete caches older than 7 days
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          now=$(date +%s)
+          cutoff=$(( now - 7*24*3600 ))
+          deleted=0
+          kept=0
+          gh api "repos/${{ github.repository }}/actions/caches?per_page=100" \
+            --paginate \
+            --jq '.actions_caches[] | [.id, .created_at, .size_in_bytes, .key] | @tsv' \
+            | while IFS=$'\t' read -r id created size key; do
+                created_ts=$(date -d "$created" +%s)
+                if [ "$created_ts" -lt "$cutoff" ]; then
+                  gh api -X DELETE "repos/${{ github.repository }}/actions/caches/$id" >/dev/null 2>&1 && deleted=$((deleted+1))
+                else
+                  kept=$((kept+1))
+                fi
+              done
+          echo "deleted=$deleted kept=$kept"
