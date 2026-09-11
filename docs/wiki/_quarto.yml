@@ -6,6 +6,11 @@ website:
   favicon: images/favicon.png
   search: true
   page-navigation: true
+  announcement:
+    icon: info-circle
+    dismissable: true
+    content: "AEE 1.0.0 — physically accurate environment simulation for Arma 3"
+    type: primary
   page-footer:
     left: "Advanced Environment Extension - GPL-2.0-or-later"
     right: "Version 1.0.0"
