@@ -15,7 +15,10 @@ LN10 = 2.302585
 
 
 def log10(x):
-    """SQF `log` is the natural log; log10 = ln(x)/ln(10)."""
+    """SQF's log command is base-10 (verified in-game: log 100 = 2).
+
+    Python's math.log is natural log, so log10(x) = ln(x) / ln(10).
+    """
     return math.log(x) / LN10
 
 
