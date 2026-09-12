@@ -34,8 +34,15 @@ if (_WBGT < 18) exitWith {
     0
 };
 
-// ─── Sweat rate (L/hour, linear with WBGT above threshold) ───────────────
-private _sweatRate = 0.3 + (_WBGT - 18) * 0.05;   // 0.3 at 18°C, ~1.15 at 35°C
+// ─── Sweat rate (L/hour) by ISO 7243 WBGT band ───────────────────────────
+// <18 °C safe, 18–23 caution, 23–28 extreme caution, 28–32 danger,
+// >32 very dangerous (heat stroke risk).
+private _sweatRate = switch (true) do {
+    case (_WBGT < 23): { 0.3 };   // caution — light sweating
+    case (_WBGT < 28): { 0.6 };   // extreme caution — moderate sweating
+    case (_WBGT < 32): { 1.0 };   // danger — heavy sweating
+    default            { 1.5 };   // very dangerous — profuse sweating
+};
 private _sweatAmount = _sweatRate * _tickHours;
 
 // Clothing modifier — uniform/vest impairs evaporative cooling
