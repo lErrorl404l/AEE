@@ -23,13 +23,17 @@ private _sinElev        = sin _solarElevation;
 private _uvClear = 12.5 * _sinElev;
 
 // ─── Ozone absorption (Beer-Lambert)
-//     300 DU is the mid-latitude column.  The 0.05 coefficient folds the
-//     ozone cross-section over the UV-B band.  A mission override is used
-//     when present.
+//     300 DU is the mid-latitude column.  The 0.0013 coefficient folds the
+//     ozone cross-section over the UV-B band.  (A 0.05 coefficient — an
+//     earlier value — made the index collapse to 0 at every realistic
+//     ozone level: exp(-0.05*300/sin60) ~ 2e-9.  The correct coefficient
+//     reproduces a UVI of ~7 at 60 deg elevation and 300 DU, matching
+//     published clear-sky UVI values.)  A mission override is used when
+//     present.
 private _ozoneDU = missionNamespace getVariable [QGVAR(ozoneDU), 300];
 private _ozoneFactor = 0;
 if (_sinElev > 0.001) then {
-    _ozoneFactor = exp (-0.05 * _ozoneDU / _sinElev);
+    _ozoneFactor = exp (-0.0013 * _ozoneDU / _sinElev);
 };
 
 // ─── Altitude bonus: +10 % per 1000 m

@@ -25,6 +25,15 @@ if [ -f "$RULES/audit.py" ]; then
     python3 "$RULES/audit.py" >/dev/null 2>&1 || FAILED=1
 fi
 
+if command -v python3 &>/dev/null && [ -f "$ROOT/tools/run_tests.py" ]; then
+    # Unit suites + validation harness. Fast mode skips the harness; the
+    # harness needs the optional libraries, so it is allowed to skip its
+    # own optional checks but must pass the core path. Runner returns 0
+    # only when every suite it runs passes.
+    echo "-> unit tests"
+    (cd "$ROOT" && python3 tools/run_tests.py --fast >/dev/null 2>&1) || FAILED=1
+fi
+
 if [ "$FAILED" -ne 0 ]; then
     echo "X pre-commit hook failed. Fix issues or use --no-verify."
     exit 1
