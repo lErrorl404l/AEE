@@ -1,16 +1,16 @@
-# Advanced Environment Extension (AEE)
+# ACE Environment Extended (AEE)
 
 [![CI](https://github.com/lErrorl404l/AEE/actions/workflows/ci.yml/badge.svg)](https://github.com/lErrorl404l/AEE/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-GPL--2.0--or--later-blue)](LICENSE)
 
-AEE is a physically accurate environment simulation for Arma 3. It models
-elevation lapse rates, terrain microclimate, true air density, Koppen biome
-classification, thermal and physiological effects, optics, mobility,
-environmental conditions, maritime state, radio propagation, and atmospheric
-events.
+AEE is a physically accurate environment simulation for Arma 3, extending
+ACE3. It models elevation lapse rates, terrain microclimate, true air density,
+Koppen biome classification, thermal and physiological effects, optics,
+mobility, environmental conditions, maritime state, radio propagation, and
+atmospheric events.
 
 The mod is standalone. It requires only CBA_A3. The core addons have no ACE3
-dependency.
+dependency; the compat addon `compat_ace3` connects the simulation to ACE3.
 
 Author: [lErrorl404l](https://github.com/lErrorl404l). Licence:
 [GPL-2.0-or-later](LICENSE) with a PBO-distribution exception.
