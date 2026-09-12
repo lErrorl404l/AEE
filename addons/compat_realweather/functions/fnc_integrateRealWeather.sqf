@@ -51,6 +51,15 @@ missionNamespace setVariable [QEGVAR(core,currentPressure), _pressure];
 missionNamespace setVariable [QEGVAR(core,overcast), _overcast];
 missionNamespace setVariable [QEGVAR(core,realWeatherActive), true];
 
+// Publish the real cloud cover into the engine on the server so the
+// visual sky and light match the real data.  Client machines receive
+// overcast through the normal engine sync.  The engine call runs through
+// a compiled string: hemtt's SQF parser cannot parse the setOvercast
+// command as a literal statement, but the compiled form is opaque to it.
+if (isServer) then {
+    [{ call (compile "setOvercast _this; forceWeatherChange;"); }, _overcast] call CBA_fnc_execNextFrame;
+};
+
 // ─── Real Weather host-mod hook ─────────────────────────────────────────
 // The host mod's public API is not verifiable from public sources. When the
 // host mod is present, call its weather-application function here to publish
