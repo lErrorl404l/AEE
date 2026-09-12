@@ -41,7 +41,7 @@ if (_intensity > 0.02) then {
     private _size  = linearConversion [0, 1, _intensity, 1, 3, true];
 
     _mirage setParticleParams [
-        ["\A3\data_f\particleeffects\universal\refract.p3d", 1, 0, 1, 0],
+        ["\A3\data_f\particleeffects\universal\refract.p3d", 1, 0, 1],
         "",
         "Billboard",
         1,                              // sort
