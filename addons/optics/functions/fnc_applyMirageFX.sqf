@@ -53,7 +53,7 @@ if (_intensity > 0.02) then {
         0.1,                            // rubbing
         [_size, _size * 1.5],           // size progression
         [[1, 1, 1, _alpha], [1, 1, 1, _alpha * 0.3], [1, 1, 1, 0]], // colour fade
-        [1000],                         // animSpeed
+        1000,                           // animSpeed (scalar)
         1, 1, "", "", _player, 0, false
     ];
 

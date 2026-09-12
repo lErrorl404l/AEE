@@ -47,7 +47,7 @@ _source setParticleParams [
     0, 2.5, 2, 0.2,            // weight, volume, rubbing, size
     [0.04, 0.12],              // size progression
     [[1,1,1,0.4],[1,1,1,0.1],[1,1,1,0]], // colour fade white
-    [0.5],                     // animSpeed
+    0.5,                      // animSpeed (scalar)
     1,                         // angle
     0,                         // random dir
     "", "",                    // on surface, before destroy

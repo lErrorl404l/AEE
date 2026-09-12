@@ -82,7 +82,7 @@ _dust setParticleParams [
     0.05,                       // rubbing (wind interaction)
     [_size, _size * 1.5],       // size progression
     [_dustColor + [0], _dustColor + [_alpha], _dustColor + [0]], // colour progression
-    [1000],                     // animSpeed
+    1000,                       // animSpeed (scalar)
     1,                          // angle
     0,                          // random dir
     "", "",                     // on surface, before destroy
