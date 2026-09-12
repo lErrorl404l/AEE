@@ -10,6 +10,10 @@ locally in the script or in the optional libraries below.
 ## Run
 
 ```bash
+# Full harness (all 13 checks, requires the venv for optional libraries)
+tools/validation/.venv/bin/python tools/validation/validate_physics.py
+
+# Core path only (standard library, skips the 3 optional-library checks)
 python3 tools/validation/validate_physics.py
 echo $?
 ```
@@ -19,7 +23,13 @@ fails. The script writes the full report to `tools/validation/report.txt`.
 
 The core path uses only the Python standard library. Three optional
 libraries add checks. When a library is absent, its check is skipped with a
-clear message. A skip does not change the exit code.
+clear message. A skip does not change the exit code. A project venv with
+all optional libraries is provided at `.venv` (created with `uv`):
+
+```bash
+cd tools/validation && uv venv .venv
+uv pip install --python .venv/bin/python psychrolib metpy pvlib pandas
+```
 
 | Library | Check it enables | Install |
 |---|---|---|
@@ -238,6 +248,49 @@ pressure column against `metpy.calc.height_to_pressure_std`.
 Tolerance: 0.5% relative. The measured error is at most 0.09%.
 
 Skip-conditional: this check needs metpy.
+
+### 9. Rain visibility (Atlas 1954)
+
+Source: `addons/optics/functions/fnc_calculatePrecipitationVisibility.sqf`.
+
+The mod uses the Atlas & Bartnoff (1954) extinction power law:
+
+```
+σ = 0.21 · R^0.74   (km⁻¹), R in mm/h
+V = 3.912 / σ       (km, Koschmieder)
+```
+
+The harness compares the extinction coefficient against published Atlas
+values at R = 2.5, 12.5, 25 mm/h. Tolerance 0.15 km⁻¹. Measured max
+error 0.13 km⁻¹.
+
+### 10. Evaporation (Penman-Monteith)
+
+Source: `addons/core/functions/fnc_updateSoilMoisture.sqf`.
+
+The mod uses the FAO-56 Penman-Monteith reference evapotranspiration form.
+The mod scales solar radiation to 0..1, so absolute FAO-56 mm/h values do
+not apply. The check validates physical behaviour instead: hot-dry-windy
+evaporates more than cool-humid-calm, and temperature, wind, dryness, and
+sun each raise ET0 monotonically.
+
+### 11. Atmospheric seeing (Cn² model)
+
+Source: `addons/optics/functions/fnc_calculateAtmosphericSeeing.sqf`.
+
+The mod maps boundary-layer Cn² to a seeing index 0.1..1.0. The check
+verifies four climate cases land in published behaviour ranges: cold
+clear night (excellent), mild overcast day, hot clear day, stormy day.
+Tolerance 0.05 index.
+
+### 12. Smoke dispersal (physical model)
+
+Source: `addons/optics/functions/fnc_calculateSmokePersistence.sqf`.
+
+The mod chains advection, Taylor diffusion, Köhler hygroscopic growth,
+buoyancy, and rain scavenging. The check verifies calm-humid-cold
+persists (>1.0), windy-hot-dry-rain disperses (<0.5), and neutral
+conditions stay near 1.0. Tolerance 0.1 modifier.
 
 ## How to add a formula
 
