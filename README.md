@@ -140,7 +140,7 @@ Run the full test sweep (unit suites + physics validation harness) with:
 python3 tools/run_tests.py
 ```
 
-The 170 unit tests mirror every physics model in Python and cover
+The unit tests mirror the core physics models in Python and cover
 reference values, edge cases, and clamps. A pre-commit hook runs them on
 every commit. The headless dedicated-server test in Docker runs the mod
 against real Arma 3 and verifies ten phases (see docs/wiki/chapters/testing.qmd).

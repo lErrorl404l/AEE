@@ -39,9 +39,10 @@ private _lat = ((_ws / 2) - _y) / 100000 * 90;   // rough equirectangular
 _lat = _lat max -90 min 90;
 
 // ─── Coriolis deflection ──────────────────────────────────────────────────
-// δ = 0.0000729 × sin(lat_rad) × range × bulletTime
+// δ = 0.0000729 × sin(lat) × range × bulletTime
 // 0.0000729 ≈ angular velocity of Earth (7.2921e−5) — pre-computed constant
-private _deflection = 0.0000729 * sin (_lat * pi / 180) * _range * _bulletTime;
+// SQF sin takes DEGREES; _lat is already in degrees, so no conversion.
+private _deflection = 0.0000729 * sin _lat * _range * _bulletTime;
 
 missionNamespace setVariable [QGVAR(coriolisDeflection_m), _deflection];
 

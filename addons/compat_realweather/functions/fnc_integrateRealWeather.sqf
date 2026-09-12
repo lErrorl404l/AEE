@@ -39,11 +39,20 @@ private _humidity = _data getVariable "humidityPct";
 private _pressure = _data getVariable "pressureHpa";
 private _overcast = _data getVariable "overcast";
 
+// weather.json is an untrusted mission file.  Range-check every value at
+// the trust boundary before publishing to shared state — a hand-written
+// file with humidityPct = 150 or overcast = 2 would corrupt every derived
+// model (dew point, WBGT, heat index).  Out-of-range values reject the
+// whole file rather than publish partial state.
 if ((isNil "_temp")
     || (isNil "_humidity")
     || (isNil "_pressure")
     || (isNil "_overcast")
-) exitWith {};
+    || !(_temp isEqualType 0) || (_temp < -60) || (_temp > 60)
+    || !(_humidity isEqualType 0) || (_humidity < 0) || (_humidity > 100)
+    || !(_pressure isEqualType 0) || (_pressure < 850) || (_pressure > 1085)
+    || !(_overcast isEqualType 0) || (_overcast < 0) || (_overcast > 1)
+) exitWith { diag_log "[AEE][RealWeather] weather.json rejected: out-of-range or invalid value"; };
 
 missionNamespace setVariable [QEGVAR(core,currentTemperature), _temp];
 missionNamespace setVariable [QEGVAR(core,currentHumidity), _humidity];

@@ -43,7 +43,9 @@ private _distM  = missionNamespace getVariable [QGVAR(radioLinkRangeM), 5000];
 private _txPowerDBm = 37;
 
 // ─── Free-space path loss (Friis) ──────────────────────────────────────────
-private _fspl = (20 * log (_distM / 2.302585)) + (20 * log (_freqHz / 2.302585)) - 147.55;
+// SQF log is the natural log; log10(x) = ln(x) / ln(10) = ln(x) / 2.302585.
+// The division applies to the log RESULT, not the argument.
+private _fspl = ((20 * log _distM) / 2.302585) + ((20 * log _freqHz) / 2.302585) - 147.55;
 
 // ─── Atmospheric corrections (dB) ──────────────────────────────────────────
 private _ductBonus = 0;

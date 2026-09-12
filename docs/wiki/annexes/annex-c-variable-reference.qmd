@@ -6,7 +6,7 @@ title: "Annex C - Variable reference"
 
 This annex lists the shared simulation state, the settings, and the EDEN
 module fields. Mission scripts can read any `aee_*` variable. The tables
-are generated from the macro inventory in the SQF source.
+follow the variable names as written in the SQF source.
 
 ## Simulation state
 
@@ -32,7 +32,6 @@ are generated from the macro inventory in the SQF source.
 | `aee_core_clothingInsulationFactor` | thermal | Clothing insulation 0.5..2.0 |
 | `aee_core_currentPressure` | atmos | Barometric pressure in hPa |
 | `aee_core_currentPressureTrend` | atmos | Pressure trend value |
-| `aee_core_pressureTrendClass` | atmos | WMO trend class (Rising/Falling/Steady) |
 | `aee_core_currentHumidity` | atmos | Relative humidity percent |
 | `aee_core_currentWind` | atmos | Wind vector |
 | `aee_core_currentWindDir` | atmos | Wind direction in degrees |
@@ -131,7 +130,7 @@ are generated from the macro inventory in the SQF source.
 | `aee_core_currentSandstorm` | environmental | Sandstorm intensity 0..1 |
 | `aee_core_currentDustDevil` | environmental | Dust devil activity 0..1 |
 | `aee_core_currentBlowingSnow` | environmental | Blowing snow 0..1 |
-| `aee_core_currentCbrnPersistence` | environmental | CBRN persistence 0.225..2.1 |
+| `aee_core_cbrnPersistence` | environmental | CBRN persistence 0.225..2.1 |
 | `aee_environmental_solarFlareActive` | environmental | Solar flare flag |
 | `aee_environmental_spaceWeatherFlareValue` | environmental | Flare value |
 | `aee_core_biome` | environmental | Koppen biome code |
