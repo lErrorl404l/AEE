@@ -1,43 +1,64 @@
 #include "..\script_component.hpp"
 
 /*
-Airframe icing severity (0–1) for aircraft in supercooled liquid water.
+Airframe icing from supercooled liquid water (LWC), FAR 25 Appendix C
+envelope concept.
 
-Icing risk exists when flying through visible moisture (cloud or
-precipitation) at temperatures between -20 °C and 0 °C.  Severity
-scales with moisture content and peaks between -5 °C and -10 °C.
+Ice accretes while flying through visible moisture (cloud or
+precipitation) at temperatures between -20 °C and 0 °C.  The accretion
+rate scales with liquid water content and the collection efficiency of
+the ice type:
 
-Stored in GVAR(airframeIcing) and GVAR(airframeIcingDetected).
+  Glaze — 0 to -10 °C, wet growth, high collection efficiency
+  Rime  — below -10 °C, dry growth, lower collection efficiency
+
+Ice mass accumulates per tick and drives the 0-1 severity used for
+lift/drag degradation.  Ice sheds when conditions warm or dry out.
+
+Stored in GVAR(airframeIcing)        — float 0-1 severity
+Stored in GVAR(airframeIcingDetected) — bool
+Stored in GVAR(iceAccretion_kg)       — float 0-100 kg
 */
 
 private _temp = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 private _overcast = overcast;
 private _rain = rain;
 
-// ─── Temperature range check — no risk outside -20..0 ──────────────────
-private _severity = 0;
+private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
 
-if (_temp > -20 && _temp < 0) then {
-    // ─── Cloud moisture contribution ────────────────────────────────────
-    if (_overcast > 0.5) then {
-        _severity = _severity + (_overcast - 0.5) * 2 * 0.6;
-    };
+// ─── Liquid water content proxy (FAR 25 App C envelope) ──────────────────
+// Cloud LWC up to ~0.5 g/m3; precipitation adds up to ~2 g/m3.
+private _lwc = (_overcast * 0.5) + (_rain * 2);
 
-    // ─── Precipitation moisture contribution ────────────────────────────
-    if (_rain > 0) then {
-        _severity = _severity + _rain * 2 * 0.8;
-    };
-
-    // ─── Peak icing sweet spot (-5 to -10 °C) ──────────────────────────
-    if (_temp > -10 && _temp < -5) then {
-        _severity = _severity * 1.3;
-    };
+// ─── Collection efficiency by ice type ───────────────────────────────────
+// Glaze (0 to -10 °C): wet growth, high collection.
+// Rime (below -10 °C): dry growth, lower collection.
+private _efficiency = 0;
+if (_temp > -10) then {
+    _efficiency = 0.8;   // glaze
+} else {
+    _efficiency = 0.4;   // rime
 };
 
-_severity = _severity max 0 min 1;
+// ─── Accretion ───────────────────────────────────────────────────────────
+private _iceMass = missionNamespace getVariable [QGVAR(iceAccretion_kg), 0];
+
+if (_temp > -20 && _temp < 0 && (_overcast > 0.5 || _rain > 0)) then {
+    private _icingRate = _lwc * _efficiency * 0.05;   // kg/s
+    _iceMass = _iceMass + (_icingRate * _interval);
+} else {
+    // Shedding — warm or dry air removes ice
+    _iceMass = _iceMass * 0.9;
+};
+
+_iceMass = _iceMass max 0 min 100;
+
+// ─── Performance degradation (0-1) driven by accretion ───────────────────
+private _severity = _iceMass / 100;
 
 private _detected = _severity > 0.01;
 
+missionNamespace setVariable [QGVAR(iceAccretion_kg), _iceMass];
 missionNamespace setVariable [QGVAR(airframeIcing), _severity];
 missionNamespace setVariable [QGVAR(airframeIcingDetected), _detected];
 

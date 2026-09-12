@@ -5,7 +5,10 @@ Severe weather event detection based on biome and conditions.
 
   Sandstorm     — Arid biome + high wind + dry air
   Blowing snow  — Snow-covered ground + cold temps + wind
-  Dust devil    — Arid biome + hot clear day + light wind
+  Dust devil    — Arid biome + hot clear day + wind in the 2-8 m/s band
+
+Dust devils need the 2-8 m/s wind band: calm enough to not be
+shredded, windy enough for vorticity. Strong wind (>10 m/s) destroys them.
 
 Each severity is 0-1 (0 = none, 1 = severe).
 Sets QEGVAR(core,currentSandstorm), QEGVAR(core,currentBlowingSnow), QEGVAR(core,currentDustDevil).
@@ -56,12 +59,14 @@ if (_groundState == "Snow" && (_windSpd > 8) && (_temp < 0)) then {
     _blowingSnow = (_windSpd / 20) min 1.0;
 };
 
-// ─── Dust devil — arid + hot + clear + light wind ───────────────────────
+// ─── Dust devil — arid + hot + clear + wind 2-8 m/s ─────────────────────
+// Real dust devils form in the 2-8 m/s band; strong wind shreds them.
 // More localised — lower severity cap reflects spot nature.
 private _dustDevil = 0;
 if (!isNil "_biome"
     && _biome in ["BWh","BWk","BSh","BSk"]
-    && (_windSpd > 5)
+    && (_windSpd >= 2)
+    && (_windSpd <= 8)
     && (_temp > 30)
     && (_overcast < 0.3)
 ) then {

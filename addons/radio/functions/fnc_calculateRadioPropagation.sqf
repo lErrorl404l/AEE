@@ -1,16 +1,25 @@
 #include "..\script_component.hpp"
 
 /*
-VHF/UHF radio propagation index (0.3–2.0) for atmospheric ducting and absorption.
+VHF/UHF radio propagation quality (0.3–2.0) — physical link budget.
 
-1.0 = standard range (ITU reference atmosphere).  Values >1 extend radio
-line-of-sight; values <1 reduce effective range.
+Models the received-signal quality from the Friis transmission equation
+(P_r / P_t = G_t G_r (λ / 4πd)²) with atmospheric ducting and absorption
+as dB corrections:
+
+  Link budget:  _linkBudget_dB = P_t(dBm) − FSPL(dB) − _extraLoss + _ductBonus
+  FSPL (Friis): 20·log10(d) + 20·log10(f) − 147.55   (d in m, f in Hz)
+  Quality:      _quality = 0.3 + 1.7 · (_signalPct ^ 0.5)   clamped 0.3..2.0
+
+where _signalPct = 10^(_linkBudget_dB / 20).  The quality index is then
+scaled to the 0.3–2.0 range the compat layers (ACRE2/TFAR) consume:
+1.0 = nominal range, >1.0 = ducting extends range, <1.0 = absorption
+shortens it.
 
 Factors:
-  • Temperature inversion (warm night / large diurnal swing)  +0.3 to +0.8
-  • High humidity (>60 %)                                      +0.05 per 10 % above 50 %
-  • High pressure (>1020 hPa)                                  +0.02 per 10 hPa above 1013
-  • Hot & dry (temp >30 °C, RH <30 %)                          –0.1
+  • Ducting (temperature inversion, high humidity, high pressure) → dB bonus
+  • Hot & dry (absorption) → dB penalty
+  • Distance and frequency enter through FSPL directly.
 
 Stored in QGVAR(radioPropagationIndex) for consumption by radio/TFAR
 integration and AI communication-range modelling.
@@ -25,49 +34,70 @@ if (isNil "_T")  exitWith { 1.0 };
 if (isNil "_RH") exitWith { 1.0 };
 if (isNil "_P")  then { _P = 1013 };
 
-private _index = 1.0;
+// ─── Link geometry ─────────────────────────────────────────────────────────
+// Reference handheld link: 5 W (37 dBm), 100 MHz, 5 km nominal range.
+// Frequency and range can be overridden via mission variables so a
+// scenario can model specific radios.
+private _freqHz = missionNamespace getVariable [QGVAR(radioFrequencyHz), 1e8];
+private _distM  = missionNamespace getVariable [QGVAR(radioLinkRangeM), 5000];
+private _txPowerDBm = 37;
 
-// ─── Temperature inversion (ducting) ──────────────────────────────────────
-// Warm night or strong diurnal-setup conditions
-private _inversionBonus = 0;
+// ─── Free-space path loss (Friis) ──────────────────────────────────────────
+private _fspl = (20 * log (_distM / 2.302585)) + (20 * log (_freqHz / 2.302585)) - 147.55;
+
+// ─── Atmospheric corrections (dB) ──────────────────────────────────────────
+private _ductBonus = 0;
+
+// Temperature inversion (warm night) — refracts signals over the horizon
 if (_T > 25 && _sun == -1) then {
-    _inversionBonus = ((_T - 25) / 20) min 0.5;  // 0.3 at 25°C, 0.8 at 45°C
+    _ductBonus = _ductBonus + (((_T - 25) / 20) min 0.5) * 6;   // up to +3 dB
 };
-// Large diurnal swing proxy — hot clear day in arid biome
-private _biome = EGVAR(core,biome);
-if (_T > 30 && _RH < 30 && overcast < 0.3 && !isNil "_biome" && _biome in ["BWh","BWk","BSh","BSk"]) then {
-    _inversionBonus = (_inversionBonus max 0.5);
-};
-_index = _index + _inversionBonus;
 
-// ─── High humidity — water-vapour refraction ─────────────────────────────
+// High humidity — water-vapour refraction gradient
 if (_RH > 60) then {
-    _index = _index + ((_RH - 50) / 10) * 0.05;
+    _ductBonus = _ductBonus + ((_RH - 50) / 10) * 0.05 * 6;     // up to +1.5 dB
 };
 
-// ─── High pressure — density gradient enhancement ─────────────────────────
+// High pressure — denser lower atmosphere, stronger gradient
 if (_P > 1020) then {
-    _index = _index + ((_P - 1013) / 10) * 0.02;
+    _ductBonus = _ductBonus + ((_P - 1013) / 10) * 0.02 * 6;    // up to +1 dB
 };
 
-// ─── Hot dry — absorption penalty ─────────────────────────────────────────
+// Hot & dry — absorption penalty
+private _absorptionPenalty = 0;
 if (_T > 30 && _RH < 30) then {
-    _index = _index - 0.1;
+    _absorptionPenalty = 2;                                     // −2 dB
 };
 
-// ─── Clamp ────────────────────────────────────────────────────────────────
+// Terrain/obstruction excess loss (open 0, urban/forest higher)
+private _biome = EGVAR(core,biome);
+private _terrainLoss = 0;
+if (!isNil "_biome") then {
+    if (_biome in ["UMa", "Uhd", "Uhb", "Uhi", "Cfa", "Cfb", "Cfc", "Dfa", "Dfb"]) then {
+        _terrainLoss = 3;                                       // forested/humid: foliage loss
+    };
+};
+
+// ─── Link budget → quality index ───────────────────────────────────────────
+private _linkBudget = _txPowerDBm - _fspl - _terrainLoss + _ductBonus - _absorptionPenalty;
+private _signalPct = 10 ^ (_linkBudget / 20);
+_signalPct = _signalPct max 0 min 1;
+
+// Map signal fraction to the 0.3–2.0 index (√ compresses so mid-range
+// signals land near 1.0 and the extremes reach 0.3 / 2.0).
+private _index = 0.3 + 1.7 * (_signalPct ^ 0.5);
 _index = _index max 0.3 min 2.0;
 
 missionNamespace setVariable [QGVAR(radioPropagationIndex), _index];
 
 if (EGVAR(core,diagnostic)) then {
     diag_log text format [
-        "[AEE] RadioPropagation: %1 (inv bonus %2 | RH bonus %3 | P bonus %4 | hot-dry penalty %5)",
+        "[AEE] RadioPropagation: %1 (FSPL %2 dB | duct %3 dB | terrain %4 dB | link %5 dBm)",
         [_index, 2] call CBA_fnc_formatNumber,
-        [_inversionBonus, 2] call CBA_fnc_formatNumber,
-        [if (_RH > 60) then { ((_RH - 50) / 10) * 0.05 } else { 0 }, 3] call CBA_fnc_formatNumber,
-        [if (_P > 1020) then { ((_P - 1013) / 10) * 0.02 } else { 0 }, 3] call CBA_fnc_formatNumber,
-        [if (_T > 30 && _RH < 30) then { -0.1 } else { 0 }, 2] call CBA_fnc_formatNumber
+        [_fspl, 1] call CBA_fnc_formatNumber,
+        [_ductBonus, 1] call CBA_fnc_formatNumber,
+        [_terrainLoss, 1] call CBA_fnc_formatNumber,
+        [_linkBudget, 1] call CBA_fnc_formatNumber
     ];
 };
 

@@ -7,7 +7,12 @@ Two components:
   Mechanical   — wind interacting with terrain roughness
   Convective   — thermal activity from hot surfaces and daytime heating
 
-Sets QEGVAR(core,currentTurbulence).
+The raw 0-1 index converts to an ICAO eddy dissipation rate (EDR) proxy
+in m^(2/3)/s, the standard turbulence metric of ICAO Annex 3 / Doc 10064.
+Intensity classes follow the ICAO EDR bands:
+  LIGHT < 0.1, MODERATE 0.1-0.3, SEVERE 0.3-0.5, EXTREME > 0.5.
+
+Sets QEGVAR(core,currentTurbulence), GVAR(edrValue), GVAR(turbulenceClass).
 */
 
 // ─── Mechanical (terrain-driven) ────────────────────────────────────────
@@ -51,4 +56,18 @@ if (_hour > 8 && (_hour < 18) && (_temp > 25)) then {
 // ─── Sum & clamp ───────────────────────────────────────────────────────
 private _turbulence = (_mechanical + _convective) min 1.0;
 
+// ─── ICAO EDR conversion ────────────────────────────────────────────────
+// EDR (m^(2/3)/s) is the ICAO Annex 3 turbulence metric.  The raw 0-1
+// index maps to the typical light-moderate EDR range (0.1-0.7).
+private _edr = _turbulence * 0.7;
+
+private _turbulenceClass = switch (true) do {
+    case (_edr > 0.5):  { "EXTREME" };
+    case (_edr > 0.3):  { "SEVERE" };
+    case (_edr >= 0.1): { "MODERATE" };
+    default             { "LIGHT" };
+};
+
 missionNamespace setVariable [QEGVAR(core,currentTurbulence), _turbulence];
+missionNamespace setVariable [QGVAR(edrValue), _edr];
+missionNamespace setVariable [QGVAR(turbulenceClass), _turbulenceClass];

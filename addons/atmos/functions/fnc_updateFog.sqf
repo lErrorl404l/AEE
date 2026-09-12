@@ -1,9 +1,21 @@
 #include "..\script_component.hpp"
 
-// ─── Fog is globally synchronised in the engine ─────────────────────────
-// Each client receives the same overcast/rain/fog state from the server.
-// We therefore calculate and set fog from the SERVER only, using the base
-// biome climate rather than per-player position.
+/*
+Fog density from biome climate, dew-point spread, wind, and solar
+burn-off, plus a radiational-fog mechanism.
+
+Radiational fog forms on clear nights: the ground cools by long-wave
+radiation loss, chilling the near-surface air to its dew point.  It
+needs a clear sky (low overcast), calm wind, and moist surface air.
+The fog factor ramps slowly over several ticks so it does not pop in.
+
+Fog is globally synchronised in the engine — each client receives the
+same overcast/rain/fog state from the server.  We therefore calculate
+and set fog from the SERVER only, using the base biome climate rather
+than per-player position.
+
+Stored in QEGVAR(core,currentFogDensity).
+*/
 if (!isServer) exitWith {};
 
 private _month = date select 1;
@@ -50,6 +62,24 @@ if (_hour > 7 && _hour < 17) then {
 if (_spread <= 0) then {
     _fogDensity = _fogDensity max 0.3;
 };
+
+// ─── Radiational fog (clear-sky, calm, moist night) ─────────────────────
+// Clear night + calm wind + near-saturated surface air → ground cools
+// by radiation and fog forms.  Ramp slowly so it does not pop in.
+private _RH = missionNamespace getVariable [QEGVAR(core,currentHumidity), _RH_biome];
+private _clearNight = (overcast < 0.2) && (_hour < 6 || _hour > 18);
+private _calm = _windSpeed < 3;
+private _moist = _RH > 90;
+
+private _radFog = missionNamespace getVariable [QGVAR(radiationalFog), 0];
+if (_clearNight && _calm && _moist) then {
+    _radFog = (_radFog + 0.1) min 1;
+} else {
+    _radFog = (_radFog - 0.2) max 0;
+};
+missionNamespace setVariable [QGVAR(radiationalFog), _radFog];
+
+_fogDensity = _fogDensity max (_radFog * 0.8);
 
 _fogDensity = _fogDensity max 0 min 0.8;
 missionNamespace setVariable [QEGVAR(core,currentFogDensity), _fogDensity];

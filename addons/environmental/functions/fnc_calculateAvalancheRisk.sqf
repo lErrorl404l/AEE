@@ -4,7 +4,9 @@
 Avalanche risk index (0-1) for mountainous terrain.
 
 Requires Snow or Frozen ground state.  Risk factors:
-  • Slope angle (estimated from terrain height samples)
+  • Slope angle (estimated from terrain height samples) — risk rises from
+    ~20°, peaks at 30–40°, falls above ~50° (release zones cluster at
+    30–45°; Schweizer et al., 2003)
   • Wind loading  (>8 m/s deposits snow on lee slopes)
   • Temperature spike (rapid warm-up destabilises snowpack)
   • Rain on snow (lubricates layers)
@@ -48,11 +50,9 @@ if (_pos2D isNotEqualTo []) then {
 };
 
 // ─── Risk components ─────────────────────────────────────────────────────
-// Slope: significant risk above 15°, ramps to 0.6 at 45°
-private _baseRisk = 0.1;
-if (_slopeDeg > 15) then {
-    _baseRisk = ((_slopeDeg - 15) / 30) min 0.6;
-};
+// Slope: peak at 35°, zero at 15° and 55° (Schweizer et al., 2003)
+private _slopeRisk = 1 - (abs (_slopeDeg - 35) / 20);
+_slopeRisk = _slopeRisk max 0 min 1;
 
 // Wind loading: >8 m/s deposits drifted snow
 private _windSpd = vectorMagnitude wind;
@@ -75,7 +75,7 @@ if (_groundState == "Snow" && rain > 0) then {
     _rainFactor = (rain * 0.15) min 0.15;
 };
 
-private _risk = (_baseRisk + _windFactor + _tempFactor + _rainFactor) min 1.0;
+private _risk = (_slopeRisk + _windFactor + _tempFactor + _rainFactor) min 1.0;
 
 // ─── Warning level ──────────────────────────────────────────────────────
 private _warning = switch (true) do {
