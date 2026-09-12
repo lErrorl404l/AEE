@@ -1,8 +1,10 @@
 # HEMTT build output
 .hemttout/
+@aee/
 
 # Release archives
 releases/
+*.zip
 
 # IDE
 *.swp
@@ -16,6 +18,7 @@ Thumbs.db
 *.bin
 *.bisign
 *.bikey
+*.sqfc
 
 # HEMTT signing keys
 .biprivatekey
