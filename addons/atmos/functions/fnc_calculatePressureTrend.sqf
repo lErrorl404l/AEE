@@ -3,6 +3,10 @@
 /*
 Barometric pressure tendency via a 3-point ring buffer.
 
+The tendency follows the WMO code 020xx pressure-tendency convention:
+the change in station pressure over the preceding three hours, reported
+as a signed value with a descriptive forecast.
+
 Holds two prior readings (pressureReading1, pressureReading2). Each tick:
   p2 ← p1, p1 ← current
 Then computes change = current - p2.

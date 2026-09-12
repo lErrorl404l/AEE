@@ -3,56 +3,55 @@
 /*
 Route degradation accumulator (0–1) and traction modifier (0.5–1.0).
 
-Tracks cumulative traffic-induced surface wear on unpaved terrain.
+NRMM (NATO Reference Mobility Model) cone-index approach: each vehicle
+passage reduces the soil cone index in proportion to the vehicle ground
+pressure, and the soil recovers exponentially toward its nominal value.
 
-  • Wet/Muddy conditions degrade faster (vehicle churning soft ground).
-  • Snow cover degrades slowly (compacts but hides damage).
-  • Frozen/Normal ground recovers (freeze-thaw heals ruts, or firm
-    surface resists new damage).
+  • Cone index starts at 1.0 (nominal firm soil)
+  • Ground pressure estimated as getMass / 8 (nominal track area)
+  • Recovery ~0.1 % per tick toward 1.0
+  • Passability = current CI / required CI (1.0), clamped 0–1
 
-The degradation feeds a traction modifier:
+The passability feeds the legacy stores:
+    degradation      = 1 − passability
     tractionModifier = 1.0 − (degradation × 0.5)
-so at full degradation (1.0) traction is halved.
 
 This is a global (mission-wide) value — route condition affects all vehicles.
 
-ponytail: scalar accumulator, not a per-tile erosion model.
-Stored in QGVAR(routeDegradation) and QGVAR(tractionModifier).
+ponytail: single global cone index, not a per-tile erosion model.
+Stored in QGVAR(routeConeIndex), QGVAR(routePassability),
+QGVAR(routeDegradation) and QGVAR(tractionModifier).
 */
 
-// ─── Inputs ────────────────────────────────────────────────────────────────
-private _groundState = missionNamespace getVariable [QEGVAR(core,groundState), "Normal"];
-private _humidity    = EGVAR(core,currentHumidity);
+// ─── Load current cone index ───────────────────────────────────────────────
+private _coneIndex = missionNamespace getVariable [QGVAR(routeConeIndex), 1.0];
 
-if (isNil "_humidity") then { _humidity = 50; };
+// ─── Exponential recovery toward nominal 1.0 ───────────────────────────────
+_coneIndex = (_coneIndex * 1.001) min 1.0;
 
-// ─── Load current degradation ──────────────────────────────────────────────
-private _degradation = missionNamespace getVariable [QGVAR(routeDegradation), 0];
-
-// ─── Degradation / recovery per tick ───────────────────────────────────────
-if (_groundState == "Mud") then {
-    _degradation = _degradation + 0.005;
-} else {
-    if (_groundState == "Frozen" || _groundState == "Normal") then {
-        _degradation = _degradation - 0.01;
-    } else {
-        if (_groundState == "Snow") then {
-            _degradation = _degradation + 0.002;
-        };
-    };
-};
-
-// Also degrade if very humid (soft ground without standing water)
-if (_groundState != "Frozen" && (_humidity > 70)) then {
-    _degradation = _degradation + 0.005;
+// ─── Vehicle passage damage ─────────────────────────────────────────────────
+private _player = call CBA_fnc_currentUnit;
+if (!isNil "_player") then {
+    private _vehicles = _player nearEntities [["Car", "Tank", "Motorcycle"], 200];
+    {
+        if (isNull _x) then { continue; };
+        if (abs speed _x < 1) then { continue; };   // parked vehicles do not pass
+        private _groundPressure = (getMass _x) / 8;
+        _coneIndex = _coneIndex - (_groundPressure * 0.00002);
+    } forEach _vehicles;
 };
 
 // ─── Clamp ─────────────────────────────────────────────────────────────────
-_degradation = _degradation max 0 min 1;
+_coneIndex = _coneIndex max 0.1 min 1.0;
 
-// ─── Compute traction modifier ─────────────────────────────────────────────
+// ─── Passability and legacy stores ─────────────────────────────────────────
+private _requiredCI = 1.0;
+private _passability = (_coneIndex / _requiredCI) max 0 min 1;
+private _degradation = 1 - _passability;
 private _tractionModifier = (1 - _degradation * 0.5) max 0.5 min 1.0;
 
+missionNamespace setVariable [QGVAR(routeConeIndex), _coneIndex];
+missionNamespace setVariable [QGVAR(routePassability), _passability];
 missionNamespace setVariable [QGVAR(routeDegradation), _degradation];
 missionNamespace setVariable [QGVAR(tractionModifier), _tractionModifier];
 

@@ -1,5 +1,18 @@
 #include "..\script_component.hpp"
 
+/*
+Relative humidity from biome normals, precipitation, surface type, and
+the diurnal temperature cycle.
+
+RH couples to the diurnal temperature curve: at constant vapour content,
+RH = 100 × e/e_sat(T), so RH falls as temperature rises.  A slow
+exponential moving average of temperature (~24 h) gives the daily mean;
+warm afternoons depress RH and cool nights raise it, matching the
+observed diurnal RH curve.
+
+Stored in QEGVAR(core,currentHumidity).
+*/
+
 params [
     ["_biome", "Cfa", [""]],
     ["_month", 1, [0]],
@@ -9,9 +22,6 @@ params [
 private _normals = [_biome] call EFUNC(environmental,getClimateNormals);
 private _humidityArray = _normals select 4;
 private _RH = _humidityArray select ((_month - 1) max 0 min 11);
-
-// Saturation under overcast or rain
-if (overcast > 0.7 || rain > 0) then { _RH = 100; };
 
 // ─── Position for surface modifier ────────────────────────────────────────
 private _pos2D = [0, 0];
@@ -42,6 +52,22 @@ if (_pos2D isNotEqualTo [0, 0]) then {
     };
 };
 _RH = (_RH + _surfaceMod) max 0 min 100;
+
+// ─── Diurnal coupling ─────────────────────────────────────────────────────
+// Track the daily-mean temperature as a slow exponential moving average
+// (~24 h time constant).  RH scales with the saturation vapour-pressure
+// ratio: warm afternoon → RH drops, cool night → RH rises.
+private _Tnow = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
+private _Tref = missionNamespace getVariable [QGVAR(dailyMeanTemp), _Tnow];
+private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+_Tref = _Tref + ((_Tnow - _Tref) * (_interval / 86400));
+missionNamespace setVariable [QGVAR(dailyMeanTemp), _Tref];
+
+_RH = _RH * (1 + (_Tref - _Tnow) * 0.05);
+_RH = _RH max 0 min 100;
+
+// Saturation under overcast or rain — hard constraint
+if (overcast > 0.7 || rain > 0) then { _RH = 100; };
 
 private _RH_final = round _RH;
 

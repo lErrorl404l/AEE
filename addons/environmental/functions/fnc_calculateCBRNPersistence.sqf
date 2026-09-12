@@ -1,22 +1,19 @@
 #include "..\script_component.hpp"
 
 /*
-Chemical/biological persistence decay modifier (≈0.5–2.0).
+Chemical/biological agent persistence (hours) — Arrhenius / Q10 hydrolysis.
 
-A single aggregate multiplier describing how quickly chemical or biological
-agents break down or disperse in the current environment.
+Decay rate roughly doubles per 10 °C rise (Q10 = 2 rule of thumb for
+hydrolysis). Persistence is the time constant of exponential decay:
 
-  >1.0 = faster decay (warm, windy, sunny)
-  <1.0 = slower decay (cool, humid, calm, overcast)
+  • Temperature   — Q10 scaling: decay rate ×2 per +10 °C
+  • Humidity      — high humidity accelerates hydrolysis (shorter persistence)
+  • Wind          — disperses the agent cloud (shorter persistence)
 
-Four factors are combined:
-  • Temperature   — warm accelerates evaporation/volatilisation
-  • Humidity      — moisture absorbs agents, slowing decay
-  • Wind          — disperses agent cloud, increases effective decay
-  • Solar (UV)    — photochemical breakdown; reduced by overcast
+Base persistence is 24 h at 15 °C, divided by the temperature rate
+multiplier, the humidity factor and the wind factor. The stored value is
+the per-tick exponential decay factor with that time constant.
 
-ponytail: a simple aggregate decay modifier, not a full chemical agent
-transport model.
 Stored in QEGVAR(core,cbrnPersistence).
 */
 
@@ -24,33 +21,27 @@ Stored in QEGVAR(core,cbrnPersistence).
 private _temp_C  = EGVAR(core,currentTemperature);
 private _humidity = EGVAR(core,currentHumidity);
 private _windSpd  = vectorMagnitude wind;
-private _overcast = overcast;
+private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
 
 if (isNil "_temp_C")   then { _temp_C   = 15; };
 if (isNil "_humidity") then { _humidity = 50; };
 
-// ─── Temperature factor ────────────────────────────────────────────────────
-// Warmer → faster decay (volatilisation, evaporation)
-private _tempFactor = 0.3 + (_temp_C + 10) * 0.015;
-_tempFactor = _tempFactor max 0.2 min 1.5;
+// ─── Temperature — Q10 scaling (rate doubles per 10 °C) ────────────────────
+private _basePersistenceH = 24;
+private _rateMultiplier = 2 ^ ((_temp_C - 15) / 10);
+private _persistenceH = _basePersistenceH / _rateMultiplier;
 
-// ─── Humidity factor ───────────────────────────────────────────────────────
-// Moisture absorbs agent, slowing atmospheric decay
-private _humidityFactor = 0.7 + (_humidity / 100) * 0.6;
-_humidityFactor = _humidityFactor max 0.7 min 1.3;
+// ─── Humidity — high humidity accelerates hydrolysis ───────────────────────
+// At 100 %RH persistence ×0.67, at 0 %RH ×2.0
+private _humidityFactor = 1 / (1 + ((_humidity - 50) / 50) * 0.5);
+_persistenceH = _persistenceH * _humidityFactor;
 
-// ─── Wind factor ───────────────────────────────────────────────────────────
-// Wind disperses agent, increasing effective decay
-private _windFactor = 1.0 + (_windSpd / 20);
-_windFactor = _windFactor max 1.0 min 2.0;
+// ─── Wind — disperses the agent cloud ──────────────────────────────────────
+private _windFactor = 1 / (1 + _windSpd * 0.05);
+_persistenceH = _persistenceH * _windFactor;
 
-// ─── Solar (UV) factor ─────────────────────────────────────────────────────
-// UV breaks down agents; overcast reduces the effect
-private _solarFactor = 1.0 + (1 - _overcast) * 0.5;
-_solarFactor = _solarFactor max 1.0 min 1.5;
-
-// ─── Combined ──────────────────────────────────────────────────────────────
-private _modifier = ((_tempFactor + _humidityFactor) / 2) * _windFactor * (_solarFactor / 2);
+// ─── Decay per tick — exponential decay with the scaled time constant ──────
+private _modifier = exp (-(_interval / 3600) / _persistenceH);
 
 missionNamespace setVariable [QEGVAR(core,cbrnPersistence), _modifier];
 

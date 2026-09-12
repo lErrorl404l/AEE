@@ -3,15 +3,18 @@
 /*
 Lightning strike risk index and periodic strike generation.
 
-Risk computed from overcast, rain, humidity, and convective potential
-(temp >25°C or rapid temperature drop).  Strike occurs at a random
+Risk computed from overcast, rain, humidity, convective potential
+(temp >25°C or rapid temperature drop), and the ice-phase gate. Lightning
+needs deep convection with an ice phase in the mixed-phase region
+(-10 to -20°C). Non-inductive charging between graupel and ice crystals
+is the main charge source (Saunders 1993). Strike occurs at a random
 nearby open position when risk exceeds 0.5 and a probability roll passes.
 
 Sets:
-  QEGVAR(core,currentLightningRisk)   — float 0-1
-  QGVAR(currentLightningStrike) — bool (true = strike this tick)
-  QGVAR(lastLightningPos)       — [x,y,z] or [] if none
-  QGVAR(lastStrikeTime)         — diag_tickTime of last strike
+  QEGVAR(core,currentLightningRisk)   - float 0-1
+  QGVAR(currentLightningStrike) - bool (true = strike this tick)
+  QGVAR(lastLightningPos)       - [x,y,z] or [] if none
+  QGVAR(lastStrikeTime)         - diag_tickTime of last strike
 */
 
 // ─── Inputs ──────────────────────────────────────────────────────────────
@@ -56,6 +59,14 @@ missionNamespace setVariable [QGVAR(lastTemperature), _temp];
 
 // ─── Risk index (0-1) ───────────────────────────────────────────────────
 private _risk = (_overcast * 0.3 + _rain * 0.3 + (_RH / 100) * 0.2 + _convective * 0.2) min 1.0;
+
+// ─── Ice-phase gate ─────────────────────────────────────────────────────
+// Deep clouds must reach the mixed-phase region for charge separation.
+// The cloud ceiling gives the cloud top. Below 5500 m the ice phase is
+// weak or absent; at 8000 m it is fully developed.
+private _cloudTop = missionNamespace getVariable [QEGVAR(core,cloudCeiling_m), 0];
+private _iceFactor = ((_cloudTop - 5500) / 2500) min 1 max 0;
+_risk = _risk * _iceFactor;
 
 // ─── Strike generation ──────────────────────────────────────────────────
 // At max risk: 5 %/tick; at threshold (0.5): 2.5 %/tick

@@ -28,8 +28,11 @@ private _T = EGVAR(core,currentTemperature);
 if (isNil "_T") then { _T = 15 };
 
 // ─── Naturally-aspirated engine ──────────────────────────────────────────
-// 50 % loss by 4500 m, 20 % loss by 55 °C
-private _power = 1.0 - ((0 max (_alt - 500)) / 4000) * 0.5 - ((0 max (_T - 15)) / 40) * 0.2;
+// SAE J1349 / ISO 1585 density correction: power derates with the
+// air-density ratio to the power 1.2.  20 % loss by 55 °C.
+private _density = missionNamespace getVariable [QEGVAR(core,currentAirDensity), 1.225];
+private _powerRatio = (_density / 1.225) ^ 1.2;
+private _power = (1.0 - ((0 max (_T - 15)) / 40) * 0.2) * _powerRatio;
 _power = _power max 0.3 min 1.0;
 
 // ─── Turbocharged engine — less altitude-sensitive ───────────────────────
