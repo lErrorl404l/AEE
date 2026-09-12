@@ -101,12 +101,16 @@ private _candidates = _aircraft select {
         if ((_x select 0) == _veh) exitWith { _smooth = _x select 1; };
     } forEach _state;
 
-    // Target gust — wind direction plus random sway, scaled by weather
+    // Target gust — wind direction plus random sway, scaled by weather.
+    // Density scales the FORCE (ASM path only): a thin-air force produces
+    // a smaller acceleration, but a velocity delta (SFM) already is a
+    // velocity — density must not enter it, or thin air would push the
+    // aircraft harder in SFM than in ASM.
     private _sway = (_turbulence * 40) - 20;
     private _dir = _windDir + 180 + _sway;
     private _dirVec = [sin _dir, cos _dir, 0];
     _dirVec set [2, ((random 0.5) - 0.25) * _turbulence];
-    private _mag = _turbulence * _gusts * _densityFactor * _scale * (0.6 + random 0.8);
+    private _mag = _turbulence * _gusts * _scale * (0.6 + random 0.8);
     private _target = _dirVec vectorMultiply _mag;
 
     // Smooth transition — no jitter
@@ -119,7 +123,7 @@ private _candidates = _aircraft select {
     private _isASM = isClass (configOf _veh >> "AdvancedFlightModel");
     if (_isASM) then {
         private _mass = getMass _veh;
-        _veh addForce [_newSmooth vectorMultiply (_mass / 100), [0, 0, 0]];
+        _veh addForce [(_newSmooth vectorMultiply (_densityFactor * _mass / 100)), [0, 0, 0]];
     } else {
         _veh setVelocity ((velocity _veh) vectorAdd _newSmooth);
     };

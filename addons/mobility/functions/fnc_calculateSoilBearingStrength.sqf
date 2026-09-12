@@ -25,7 +25,7 @@ private _bearing = switch (_groundState) do {
     case "Mud":    { 0.4 - ((_rainAccum * 0.2) min 0.4) };
     case "Frozen": { 0.9 };
     case "Dusty":  { 0.7 };
-    case "Snow":   { 0.3 min (_snowDepth / 10) };
+    case "Snow":   { 0.3 - ((_snowDepth / 10) min 0.25) };
     default        { 1.0 }; // Normal
 };
 

@@ -24,8 +24,10 @@ params [];
 private _wind = EGVAR(core,currentWind);
 if (isNil "_wind") exitWith { 0 };
 
-private _windSpeed = _wind select 0;
-private _windDir   = _wind select 1;
+// currentWind is a velocity VECTOR, not [speed, direction].  Speed is the
+// vector magnitude; direction comes from the separate currentWindDir state.
+private _windSpeed = vectorMagnitude _wind;
+private _windDir   = missionNamespace getVariable [QEGVAR(core,currentWindDir), 0];
 
 private _temp       = EGVAR(core,currentTemperature);
 private _humidity   = EGVAR(core,currentHumidity);
@@ -42,10 +44,10 @@ if (!isNil "_temp") then {
 
 // ─── Humidity — moisture traps scent ───────────────────────────────────────
 // Above 70 %RH water films capture polar scent molecules, reducing airborne
-// concentration.
+// concentration.  currentHumidity is 0..100 percent, not a fraction.
 private _humFactor = 1;
 if (!isNil "_humidity") then {
-    _humFactor = 1 - (0 max (_humidity - 0.7) * 1.5);
+    _humFactor = 1 - (0 max (_humidity - 70) * 0.015);
 };
 
 // ─── Rain — washout ────────────────────────────────────────────────────────
@@ -79,6 +81,7 @@ private _intensity = _tempFactor * _humFactor * _rainFactor * _groundFactor * _w
 _intensity = _intensity max 0 min 1;
 
 missionNamespace setVariable [QGVAR(scentDispersionIntensity), _intensity];
-missionNamespace setVariable [QGVAR(scentDispersionDir), _windDir];
+// currentWindDir is the direction the wind comes FROM; scent travels downwind
+missionNamespace setVariable [QGVAR(scentDispersionDir), ((_windDir + 180) mod 360)];
 
 _intensity
