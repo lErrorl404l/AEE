@@ -6,6 +6,11 @@ ADDON = false;
 
 missionNamespace setVariable [QGVAR(isReady), true];
 
+// Persistent ppEffect handles — Arma 2.22 requires the numeric handle
+// from ppEffectCreate (the string-LHS form throws "Type Number,
+// expected Number").  Create once here so every FX call uses the handle.
+[] call FUNC(ppEffectCreate);
+
 AEE_LOG("optics module initialised");
 
 ADDON = true;

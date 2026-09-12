@@ -31,6 +31,10 @@ if (!EGVAR(core,opticsEnabled)) exitWith {};
 private _player = call CBA_fnc_currentUnit;
 if (isNil "_player" || !alive _player || cameraOn != _player) exitWith {};
 
+private _hChroma = missionNamespace getVariable [QGVAR(ppHandle_ChromAberration), -1];
+private _hBlur   = missionNamespace getVariable [QGVAR(ppHandle_DynamicBlur), -1];
+private _hCC     = missionNamespace getVariable [QGVAR(ppHandle_ColorCorrections), -1];
+
 // NVG (1) and thermal (2) views: the sensor produces its own image.
 // Chromatic aberration from atmospheric seeing and heat shimmer, blur
 // from dew/rain on a lens, and colour-correction tints all assume a
@@ -40,38 +44,47 @@ if (isNil "_player" || !alive _player || cameraOn != _player) exitWith {};
 private _visionMode = currentVisionMode _player;
 if (_visionMode == 1 || _visionMode == 2) exitWith {
     if (missionNamespace getVariable [QGVAR(chromaActive), false]) then {
-        "ChromAberration" ppEffectAdjust [0, 0, 0];
-        "ChromAberration" ppEffectCommit 1;
+        _hChroma ppEffectAdjust [0, 0, 0];
+        _hChroma ppEffectCommit 1;
         [{
-            "ChromAberration" ppEffectEnable false;
+            (missionNamespace getVariable [QGVAR(ppHandle_ChromAberration), -1]) ppEffectEnable false;
         }, [], 1.5] call CBA_fnc_waitAndExecute;
         missionNamespace setVariable [QGVAR(chromaActive), false];
     };
     if (missionNamespace getVariable [QGVAR(blurActive), false]) then {
-        "DynamicBlur" ppEffectAdjust [0];
-        "DynamicBlur" ppEffectCommit 1;
+        _hBlur ppEffectAdjust [0];
+        _hBlur ppEffectCommit 1;
         [{
-            "DynamicBlur" ppEffectEnable false;
+            (missionNamespace getVariable [QGVAR(ppHandle_DynamicBlur), -1]) ppEffectEnable false;
         }, [], 1.5] call CBA_fnc_waitAndExecute;
         missionNamespace setVariable [QGVAR(blurActive), false];
     };
     if (missionNamespace getVariable [QGVAR(ccActive), false]) then {
-        "ColorCorrections" ppEffectAdjust [1, 1, 0, [0,0,0,0], [1,1,1,1], [0,0,0,0]];
-        "ColorCorrections" ppEffectCommit 1;
+        _hCC ppEffectAdjust [1, 1, 0, [0,0,0,0], [1,1,1,1], [0,0,0,0]];
+        _hCC ppEffectCommit 1;
         [{
-            "ColorCorrections" ppEffectEnable false;
+            (missionNamespace getVariable [QGVAR(ppHandle_ColorCorrections), -1]) ppEffectEnable false;
         }, [], 1.5] call CBA_fnc_waitAndExecute;
         missionNamespace setVariable [QGVAR(ccActive), false];
     };
 };
 
 // ─── Stored intensities (set by the apply* contributor functions) ─────────
-private _seeingChroma = missionNamespace getVariable [QGVAR(seeingChroma), 0];
+// Defensive: a contributor that stores a string or nil (bad variable state)
+// must not propagate into ppEffectAdjust — "Type Number, expected Number"
+// otherwise fires every tick.  Coerce to numeric with a finite floor.
+private _seeingChroma  = missionNamespace getVariable [QGVAR(seeingChroma), 0];
 private _shimmerChroma = missionNamespace getVariable [QGVAR(shimmerChroma), 0];
+if !(_seeingChroma isEqualType 0) then { _seeingChroma = 0; };
+if !(_shimmerChroma isEqualType 0) then { _shimmerChroma = 0; };
 private _dewBlur     = missionNamespace getVariable [QGVAR(dewBlur), 0];
 private _rainBlur    = missionNamespace getVariable [QGVAR(rainBlur), 0];
 private _glareBlur   = missionNamespace getVariable [QGVAR(glareBlur), 0];
 private _severeBlur  = missionNamespace getVariable [QGVAR(severeWeatherBlur), 0];
+if !(_dewBlur isEqualType 0) then { _dewBlur = 0; };
+if !(_rainBlur isEqualType 0) then { _rainBlur = 0; };
+if !(_glareBlur isEqualType 0) then { _glareBlur = 0; };
+if !(_severeBlur isEqualType 0) then { _severeBlur = 0; };
 private _severeCC    = missionNamespace getVariable [QGVAR(severeWeatherCC), []];
 private _snowCC      = missionNamespace getVariable [QGVAR(snowBlindnessCC), []];
 
@@ -94,24 +107,24 @@ private _chromaActive = missionNamespace getVariable [QGVAR(chromaActive), false
 
 if (_chromaOn) then {
     if (!_chromaActive) then {
-        "ChromAberration" ppEffectEnable true;
+        _hChroma ppEffectEnable true;
         missionNamespace setVariable [QGVAR(chromaActive), true];
     };
     missionNamespace setVariable [QGVAR(chromaGen), (missionNamespace getVariable [QGVAR(chromaGen), 0]) + 1];
     // ChromAberration ppEffectAdjust takes [x, y, strength] — a 3-element
     // array (pixel offset and chromatic strength).  A 6-element array
     // (copied from the pre-arbiter code) throws "6 elements, 3 expected".
-    "ChromAberration" ppEffectAdjust [0, 0, _chroma];
-    "ChromAberration" ppEffectCommit 2;
+    _hChroma ppEffectAdjust [0, 0, _chroma];
+    _hChroma ppEffectCommit 2;
 } else {
     if (_chromaActive && _chromaOff) then {
-        "ChromAberration" ppEffectAdjust [0, 0, 0];
-        "ChromAberration" ppEffectCommit 1;
+        _hChroma ppEffectAdjust [0, 0, 0];
+        _hChroma ppEffectCommit 1;
         private _gen = missionNamespace getVariable [QGVAR(chromaGen), 0];
         [{
             params ["_gen"];
             if (missionNamespace getVariable [QGVAR(chromaGen), 0] == _gen) then {
-                "ChromAberration" ppEffectEnable false;
+                (missionNamespace getVariable [QGVAR(ppHandle_ChromAberration), -1]) ppEffectEnable false;
                 missionNamespace setVariable [QGVAR(chromaActive), false];
             };
         }, [_gen], 1.5] call CBA_fnc_waitAndExecute;
@@ -125,21 +138,21 @@ private _blurActive = missionNamespace getVariable [QGVAR(blurActive), false];
 
 if (_blurOn) then {
     if (!_blurActive) then {
-        "DynamicBlur" ppEffectEnable true;
+        _hBlur ppEffectEnable true;
         missionNamespace setVariable [QGVAR(blurActive), true];
     };
     missionNamespace setVariable [QGVAR(blurGen), (missionNamespace getVariable [QGVAR(blurGen), 0]) + 1];
-    "DynamicBlur" ppEffectAdjust [_blur];
-    "DynamicBlur" ppEffectCommit 2;
+    _hBlur ppEffectAdjust [_blur];
+    _hBlur ppEffectCommit 2;
 } else {
     if (_blurActive && _blurOff) then {
-        "DynamicBlur" ppEffectAdjust [0];
-        "DynamicBlur" ppEffectCommit 1;
+        _hBlur ppEffectAdjust [0];
+        _hBlur ppEffectCommit 1;
         private _gen = missionNamespace getVariable [QGVAR(blurGen), 0];
         [{
             params ["_gen"];
             if (missionNamespace getVariable [QGVAR(blurGen), 0] == _gen) then {
-                "DynamicBlur" ppEffectEnable false;
+                (missionNamespace getVariable [QGVAR(ppHandle_DynamicBlur), -1]) ppEffectEnable false;
                 missionNamespace setVariable [QGVAR(blurActive), false];
             };
         }, [_gen], 1.5] call CBA_fnc_waitAndExecute;
@@ -152,22 +165,22 @@ private _ccActive = missionNamespace getVariable [QGVAR(ccActive), false];
 
 if (_ccOn) then {
     if (!_ccActive) then {
-        "ColorCorrections" ppEffectEnable true;
+        _hCC ppEffectEnable true;
         missionNamespace setVariable [QGVAR(ccActive), true];
     };
     missionNamespace setVariable [QGVAR(ccGen), (missionNamespace getVariable [QGVAR(ccGen), 0]) + 1];
-    "ColorCorrections" ppEffectAdjust _ccParams;
-    "ColorCorrections" ppEffectCommit 2;
+    _hCC ppEffectAdjust _ccParams;
+    _hCC ppEffectCommit 2;
 } else {
     if (_ccActive) then {
         // Fade to neutral over 5 s, then disable if still neutral
-        "ColorCorrections" ppEffectAdjust [1, 1, 0, [0,0,0,0], [1,1,1,1], [0,0,0,0]];
-        "ColorCorrections" ppEffectCommit 5;
+        _hCC ppEffectAdjust [1, 1, 0, [0,0,0,0], [1,1,1,1], [0,0,0,0]];
+        _hCC ppEffectCommit 5;
         private _gen = missionNamespace getVariable [QGVAR(ccGen), 0];
         [{
             params ["_gen"];
             if (missionNamespace getVariable [QGVAR(ccGen), 0] == _gen) then {
-                "ColorCorrections" ppEffectEnable false;
+                (missionNamespace getVariable [QGVAR(ppHandle_ColorCorrections), -1]) ppEffectEnable false;
                 missionNamespace setVariable [QGVAR(ccActive), false];
             };
         }, [_gen], 5.5] call CBA_fnc_waitAndExecute;

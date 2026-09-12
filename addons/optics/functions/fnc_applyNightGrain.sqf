@@ -20,6 +20,8 @@ if (!EGVAR(core,opticsEnabled)) exitWith {};
 private _player = call CBA_fnc_currentUnit;
 if (isNil "_player" || !alive _player || cameraOn != _player) exitWith {};
 
+private _hGrain = missionNamespace getVariable [QGVAR(ppHandle_FilmGrain), -1];
+
 // NVG (vision mode 1) and thermal (2) replace the eye with a sensor that
 // has its own noise floor.  Applying the eye-noise FilmGrain on top of a
 // clean NVG/thermal image destroys the view — the real devices do not have
@@ -30,10 +32,10 @@ private _visionMode = currentVisionMode _player;
 if (_visionMode == 1 || _visionMode == 2) exitWith {
     private _active = missionNamespace getVariable [QGVAR(nightGrainActive), false];
     if (_active) then {
-        "FilmGrain" ppEffectAdjust [0.01, 0.1, 0.5, 0.1, 0.1, true];
-        "FilmGrain" ppEffectCommit 1;
+        _hGrain ppEffectAdjust [0.01, 0.1, 0.5, 0.1, 0.1, true];
+        _hGrain ppEffectCommit 1;
         [{
-            "FilmGrain" ppEffectEnable false;
+            (missionNamespace getVariable [QGVAR(ppHandle_FilmGrain), -1]) ppEffectEnable false;
         }, [], 1.5] call CBA_fnc_waitAndExecute;
         missionNamespace setVariable [QGVAR(nightGrainActive), false];
     };
@@ -77,22 +79,22 @@ private _active = missionNamespace getVariable [QGVAR(nightGrainActive), false];
 
 if (_totalGrain > 0.01) then {
     if (!_active) then {
-        "FilmGrain" ppEffectEnable true;
+        _hGrain ppEffectEnable true;
         missionNamespace setVariable [QGVAR(nightGrainActive), true];
     };
 
     private _grainSize = linearConversion [0, 1, _totalGrain, 0.5, 3.5, true];
     private _intensity = linearConversion [0, 1, _totalGrain, 0.5, 0.7, true];
 
-    "FilmGrain" ppEffectAdjust [0.01, _intensity, _grainSize, 1, 1, true];
-    "FilmGrain" ppEffectCommit 2;
+    _hGrain ppEffectAdjust [0.01, _intensity, _grainSize, 1, 1, true];
+    _hGrain ppEffectCommit 2;
 } else {
     if (_active) then {
-        "FilmGrain" ppEffectAdjust [0.01, 0.1, 0.5, 0.1, 0.1, true];
-        "FilmGrain" ppEffectCommit 1;
+        _hGrain ppEffectAdjust [0.01, 0.1, 0.5, 0.1, 0.1, true];
+        _hGrain ppEffectCommit 1;
 
         [{
-            "FilmGrain" ppEffectEnable false;
+            (missionNamespace getVariable [QGVAR(ppHandle_FilmGrain), -1]) ppEffectEnable false;
         }, [], 1.5] call CBA_fnc_waitAndExecute;
 
         missionNamespace setVariable [QGVAR(nightGrainActive), false];

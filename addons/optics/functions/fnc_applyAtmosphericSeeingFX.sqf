@@ -25,6 +25,7 @@ if (!EGVAR(core,opticsEnabled)) exitWith {};
 private _seeing    = missionNamespace getVariable [QGVAR(atmosphericSeeing), 0.2];
 private _player    = call CBA_fnc_currentUnit;
 if (isNil "_player" || !alive _player || cameraOn != _player) exitWith {};
+if !(_seeing isEqualType 0) then { _seeing = 0.2; };
 
 // Scale: 0.35 = 0, 1.0 = 0.02 (subtle but visible at distance)
 private _chromatic = linearConversion [0.35, 1, _seeing, 0, 0.02, true];
