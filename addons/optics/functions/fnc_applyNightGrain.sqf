@@ -20,6 +20,24 @@ if (!EGVAR(core,opticsEnabled)) exitWith {};
 private _player = call CBA_fnc_currentUnit;
 if (isNil "_player" || !alive _player || cameraOn != _player) exitWith {};
 
+// NVG (vision mode 2) and thermal (3) replace the eye with a sensor that
+// has its own noise floor.  Applying the eye-noise FilmGrain on top of a
+// clean NVG/thermal image destroys the view — the real devices do not have
+// this grain.  In a sensor view, fade and disable any grain that was
+// already active (it may have been applied before the sensor came up).
+private _visionMode = currentVisionMode _player;
+if (_visionMode == 2 || _visionMode == 3) exitWith {
+    private _active = missionNamespace getVariable [QGVAR(nightGrainActive), false];
+    if (_active) then {
+        "FilmGrain" ppEffectAdjust [0.01, 0.1, 0.5, 0.1, 0.1, true];
+        "FilmGrain" ppEffectCommit 1;
+        [{
+            "FilmGrain" ppEffectEnable false;
+        }, [], 1.5] call CBA_fnc_waitAndExecute;
+        missionNamespace setVariable [QGVAR(nightGrainActive), false];
+    };
+};
+
 private _sunOrMoon = sunOrMoon;  // 0 = full night, 1 = full day
 private _rain     = rain;
 private _fog      = missionNamespace getVariable [QEGVAR(core,currentFogDensity), 0];
