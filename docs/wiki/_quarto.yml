@@ -27,6 +27,8 @@ website:
         contents:
           - text: About
             href: chapters/introduction.qmd
+          - text: Getting Started
+            href: chapters/getting-started.qmd
           - text: Modules
             href: chapters/modules.qmd
           - text: State variables
@@ -53,6 +55,8 @@ website:
         text: Home
       - text: "About"
         href: chapters/introduction.qmd
+      - text: "Getting Started"
+        href: chapters/getting-started.qmd
       - text: "Modules"
         href: chapters/modules.qmd
       - text: "Physics"

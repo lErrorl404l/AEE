@@ -1,0 +1,99 @@
+---
+title: "Getting Started"
+---
+
+# Getting Started {#sec-getting-started}
+
+This guide takes you from zero to a working AEE installation in five
+minutes. No prior Arma 3 modding experience is needed.
+
+## Prerequisites
+
+- **Arma 3** (Steam, Windows or Linux).
+- **CBA_A3** (Workshop ID `450814997`). AEE's only dependency.
+- **HEMTT** (optional, for building from source).
+- **Docker** (optional, for automated testing).
+
+## Installation
+
+### Option 1: Steam Workshop (recommended)
+
+1. Subscribe to AEE on the Steam Workshop.
+2. Launch Arma 3. AEE loads automatically with CBA_A3.
+
+### Option 2: Build from source
+
+```bash
+git clone https://github.com/lErrorl404l/AEE.git
+cd AEE
+hemtt build
+```
+
+The built mod appears in `@aee/`. Copy the `@aee` folder to your
+Arma 3 installation directory (or use `hemtt launch` to start the game
+with the mod loaded).
+
+### Option 3: Download a release
+
+Download the latest `@aee.zip` from
+[Releases](https://github.com/lErrorl404l/AEE/releases). Extract it
+into your Arma 3 directory.
+
+## First mission
+
+1. Launch Arma 3 with AEE and CBA_A3 loaded.
+2. Open the **Editor** and place a unit on any map.
+3. Start the mission.
+4. Open the **ACE Arsenal** or **CBA Settings** menu.
+5. Find **AEE Core** under the CBA settings category.
+6. Enable AEE and set the update interval (default: 5 seconds).
+
+AEE computes environment data immediately. You can read the state
+variables from the debug console or via ACE's `ace_common_fnc_getState`.
+
+## Checking it works
+
+Open the debug console and run:
+
+```sqf
+diag_log text format ["Temp: %1, Pressure: %2, Humidity: %3",
+    aee_core_currentTemperature,
+    aee_core_currentPressure,
+    aee_core_currentHumidity];
+```
+
+If you see numeric values (not nil), AEE is running.
+
+## Compatibility
+
+AEE works alongside ACE3, ACRE2, TFAR, KAT, and ACM. Each compat
+addon loads only when its host mod is present. You do not need to
+configure anything --- the compat activates automatically.
+
+| Host mod | What AEE does |
+|---|---|
+| ACE3 | Disables ACE3 weather; AEE drives engine weather directly |
+| ACRE2 | Feeds radio propagation index from atmospheric state |
+| TFAR | Feeds radio propagation index from atmospheric state |
+| KAT | Feeds WBGT and acclimatisation to KAT's medical system |
+| ACM | Feeds CBRN persistence to ACM's contamination state |
+
+## Troubleshooting
+
+**AEE does not load.**
+Check that CBA_A3 is also loaded. AEE requires CBA for XEH and
+settings. Run `diag_log text format ["CBA: %1", isClass (configFile >>
+"Patches" >> "cba_main")]` in the debug console.
+
+**Temperature is nil.**
+Wait a few seconds after mission start. AEE computes the first
+environment data on the second tick (default: 5 seconds). If it
+remains nil, check the RPT for script errors.
+
+**Settings do not appear in CBA.**
+Make sure `aee_core` is loaded. The settings are registered in
+`addons/core/initSettings.inc.sqf` via `CBA_fnc_addSetting`.
+
+**Compatibility addon loads but produces no state.**
+Check the RPT for `[AEE-TEST] [PASS]` lines. Each compat addon
+logs its integration result on mission start.

@@ -38,7 +38,8 @@ repository.
 ## Headless dedicated-server test
 
 The primary verification runs the mod on an Arma 3 dedicated server in
-Docker. It uses the brettmayson/arma3server image. The test mission `aee_test.Stratis` runs seven phases:
+Docker. It uses the brettmayson/arma3server image. The test mission
+`aee_test.Stratis` runs ten phases:
 
 | Phase | Checks |
 |---|---|
@@ -49,6 +50,9 @@ Docker. It uses the brettmayson/arma3server image. The test mission `aee_test.St
 | 5 | Determinism (temperature delta over 5 s) |
 | 6 | Module coverage (state surface of every subsystem) |
 | 7 | AI-unit dependent functions |
+| 8 | Koppen classifier (17 biome codes) |
+| 9 | Edge cases (boundary positions, nil/garbage inputs, extreme values, rapid state changes) |
+| 10 | Performance gate (core functions complete within 1 ms per call) |
 
 ```bash
 tools/docker_test.sh
