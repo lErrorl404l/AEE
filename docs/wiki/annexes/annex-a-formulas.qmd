@@ -113,3 +113,194 @@ The LCG in [@eq-lcg] is the reason AEE gives identical results on every
 client: the same seed produces the same value, so stochastic effects
 (scent dispersion, turbulence) resolve identically regardless of machine.
 :::
+
+## Rain extinction (Atlas 1954)
+
+$$
+\sigma = 0.21 \cdot R^{0.74} \qquad V = \frac{3.912}{\sigma}
+$$ {#eq-atlas-rain}
+
+Where $\sigma$ is the extinction coefficient in $\mathrm{km^{-1}}$, $R$ is
+the rain rate in $\mathrm{mm\,h^{-1}}$ (Arma rain maps to mm/h via
+$R = \text{rain} \cdot 25$), and $V$ is the visual range in kilometres
+(Koschmieder). The visibility modifier is $V/20$, clamped to 0.05..1.
+
+## Evaporation (FAO-56 Penman-Monteith)
+
+$$
+ET_0 = \frac{0.408 \cdot \Delta \cdot R_n + \gamma \cdot \frac{37}{T + 273.15} \cdot u_2 \cdot (e_s - e_a)}{\Delta + \gamma \cdot (1 + 0.34 \cdot u_2)}
+$$ {#eq-penman}
+
+Where $\Delta$ is the slope of the saturation vapour-pressure curve
+($\mathrm{kPa\,^\circ C^{-1}}$), $R_n$ is the net radiation (game-scaled),
+$\gamma$ is the psychrometric constant, $u_2$ is the wind speed at 2 m in
+$\ms$, and $e_s - e_a$ is the vapour-pressure deficit.
+
+## Atmospheric seeing (Cn² boundary layer)
+
+$$
+C_n^2 = C_T^2 \cdot \left(\frac{79 \times 10^{-6} \cdot P}{T^2}\right)^2
+\qquad s = 0.1 + 0.9 \cdot \frac{\log_{10}(C_n^2) + 17}{5}
+$$ {#eq-cn2}
+
+Where $C_T^2$ is the temperature structure parameter (from the ground-air
+delta and absolute temperature), $P$ is pressure in hPa, $T$ is
+temperature in K, and $s$ is the seeing index (0.1..1). Night convection
+drops $C_T^2$ by a factor of 100.
+
+## Smoke dispersal (physical chain)
+
+$$
+M = \frac{1}{1 + 0.12 v} \cdot \frac{1}{1 + 0.5 \tau} \cdot F_{K\ddot{o}hler} \cdot F_{buoyancy} \cdot \frac{1}{1 + 3 R}
+$$ {#eq-smoke}
+
+Where $v$ is wind speed, $\tau$ is turbulence, $F_{K\ddot{o}hler}$ is the
+hygroscopic growth factor (1 above 50 %RH), $F_{buoyancy}$ is the
+buoyancy/inversion factor, and $R$ is the rain rate. The chain combines
+advection, Taylor diffusion, particle growth, buoyancy, and rain washout.
+
+## Fire spread (Rothermel)
+
+$$
+ROS = 0.03 \cdot f \cdot (1 + 0.2 v) \cdot (1 + 0.1 \cdot slope) \cdot e^{-0.05 \cdot m}
+$$ {#eq-rothermel}
+
+Where $f$ is the fuel factor (grass 1.0, forest 0.6), $v$ is wind speed,
+$slope$ is the slope in percent, and $m$ is the fuel moisture. Area grows
+as a circle: perimeter $= 2\pi\sqrt{A/\pi}$.
+
+## Freeze and thaw (Stefan)
+
+$$
+d = 0.05 \cdot \sqrt{FDD} \qquad d = 0.05 \cdot \sqrt{TDD}
+$$ {#eq-stefan}
+
+Where $FDD$ and $TDD$ are the accumulated freezing and thawing
+degree-days. Depth grows with the square root, so a warm spell melts fast
+initially then slows — the physically correct non-linear response.
+
+## CBRN persistence (Arrhenius Q10)
+
+$$
+P(T) = \frac{P_{15}}{2^{(T-15)/10}} \cdot \frac{1}{1 + 0.5 \cdot \frac{RH - 50}{50}} \cdot \frac{1}{1 + 0.05 v}
+$$ {#eq-q10}
+
+Hydrolysis roughly doubles per 10 °C rise (Q10 rule of thumb). $P_{15}$ is
+the reference persistence at 15 °C, $RH$ is relative humidity in percent,
+and $v$ is wind speed.
+
+## Avalanche slope risk
+
+$$
+R_{slope} = 1 - \frac{|slope - 35|}{20}
+$$ {#eq-avalanche}
+
+Clamped to 0..1: risk peaks at 35°, falls to zero at 15° and 55° — the
+published release-zone distribution (Schweizer et al., 2003).
+
+## Harmonic tides
+
+$$
+h(t) = \sum_i A_i \sin(\omega_i t + \phi_i)
+$$ {#eq-tides}
+
+With the four principal constituents: M2 (28.9841 °/h, 1.00 m), S2
+(30.0000 °/h, 0.47 m), K1 (15.0411 °/h, 0.58 m), O1 (13.9430 °/h, 0.42 m).
+The M2-S2 beat produces the spring/neap cycle (about 14.8 days). $t$ is
+hours since a fixed epoch, so the tide is a deterministic function of the
+in-game date.
+
+## Sea state (WMO Beaufort)
+
+$$
+B = \left(\frac{v}{0.836}\right)^{2/3} \qquad H_s = 0.0246 \cdot v^2
+$$ {#eq-beaufort}
+
+Where $v$ is wind speed in $\ms$ and 0.836 m/s is one knot. $B$ is the
+Beaufort number (0..12) and $H_s$ is the significant wave height in metres
+(Pierson-Moskowitz fully-developed sea).
+
+## Turbulence (ICAO EDR)
+
+$$
+EDR = 0.7 \cdot \tau \qquad \text{classes: } <0.1, 0.1\text{-}0.3, 0.3\text{-}0.5, >0.5
+$$ {#eq-edr}
+
+Where $\tau$ is the raw turbulence value (0..1) and $EDR$ is the eddy
+dissipation rate in $\mathrm{m^{2/3}\,s^{-1}}$. The classes map to LIGHT,
+MODERATE, SEVERE, EXTREME per ICAO Annex 3.
+
+## Radio path loss (Friis)
+
+$$
+FSPL = 20\log_{10}(d) + 20\log_{10}(f) - 147.55
+$$ {#eq-friis}
+
+Where $d$ is distance in metres and $f$ is frequency in Hz. The propagation
+index is $0.3 + 1.7\sqrt{signal}$, where signal is the link budget ratio.
+Ducting adds a dB bonus; hot-dry air and terrain add loss.
+
+## Ionospheric absorption (ITU-R P.531)
+
+$$
+A = 0.5 \cdot \left(\frac{3 \times 10^6}{f}\right)^2 \cdot D \cdot \left(1 + \frac{SSN}{100}\right) + flare
+$$ {#eq-p531}
+
+Where $f$ is frequency in Hz, $D$ is the day/night factor (1 day, 0.05
+night), and $SSN$ is the sunspot number. Absorption falls as $1/f^2$ and
+follows the solar zenith angle. Flares add a sudden ionospheric
+disturbance term (Dellinger effect).
+
+## Hypoxia (FAA time of useful consciousness)
+
+$$
+z_{eq} = 44330 \cdot \left(1 - \left(\frac{P}{1013.25}\right)^{0.1903}\right)
+\qquad \text{risk} = \frac{exposure}{TUC}
+$$ {#eq-hypoxia}
+
+The equivalent oxygen altitude $z_{eq}$ comes from the ISA hypsometric
+relation. The TUC table interpolates 6000 m → 1800 s, 7000 m → 240 s,
+8000 m → 120 s, 9000 m → 45 s, 10000 m → 15 s. Below 6000 m the TUC is
+effectively infinite. Risk clamps to 0..1.
+
+## UV index (ISO 17166 / CIE)
+
+$$
+UVI = 12.5 \cdot \sin(\alpha) \cdot e^{-0.0013 \cdot O_3 / \sin(\alpha)} \cdot F_{alt} \cdot F_{cloud} \cdot F_{month}
+$$ {#eq-uv}
+
+Where $\alpha$ is the solar elevation, $O_3$ is the ozone column in Dobson
+units (300 default), $F_{alt}$ adds 10 % per 1000 m, $F_{cloud}$ cuts 70 %
+at full overcast, and $F_{month}$ is the northern-hemisphere summer boost.
+Clamped 0..13.
+
+## Engine power (SAE J1349 density correction)
+
+$$
+\frac{P}{P_0} = \left(\frac{\rho}{1.225}\right)^{1.2}
+$$ {#eq-sae}
+
+The naturally-aspirated power derates with the air-density ratio to the
+power 1.2. The turbocharged model adds an altitude term: 35 % loss by
+9000 m.
+
+## Traction (slip curve)
+
+$$
+F = \mu \cdot W \cdot (1 - e^{-k \cdot s})
+$$ {#eq-traction}
+
+Where $\mu$ is the surface friction coefficient, $W$ is the wheel load,
+$s$ is the slip (0..1), and $k$ is the slip coefficient (8..12 dry).
+Traction degrades smoothly at high slip instead of dropping abruptly.
+
+## River water level (Nash cascade)
+
+A cascade of three serial linear reservoirs smooths rainfall into a
+lagged, peaked hydrograph response instead of an instantaneous one.
+
+## Route degradation (NRMM cone index)
+
+Every vehicle passage reduces the soil cone index in proportion to ground
+pressure; the soil recovers exponentially. Passability is the ratio of the
+current cone index to the required threshold, clamped 0..1.
