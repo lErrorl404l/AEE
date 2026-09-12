@@ -294,3 +294,36 @@
     true,
     {}
 ] call CBA_fnc_addSetting;
+
+// ── Physiology / Heat Stress ────────────────────────────────────────────────
+[
+    QGVAR(physiologyEnabled),
+    "CHECKBOX",
+    [LLSTRING(physiologyEnabled_Name), LLSTRING(physiologyEnabled_Description)],
+    ["AEE Core", "Physiology"],
+    true,
+    true,
+    {}
+] call CBA_fnc_addSetting;
+
+// ── Maritime / Sea State ────────────────────────────────────────────────────
+[
+    QGVAR(maritimeEnabled),
+    "CHECKBOX",
+    [LLSTRING(maritimeEnabled_Name), LLSTRING(maritimeEnabled_Description)],
+    ["AEE Core", "Maritime"],
+    true,
+    true,
+    {}
+] call CBA_fnc_addSetting;
+
+// ── FX / Particles / Sounds ─────────────────────────────────────────────────
+[
+    QGVAR(fxEnabled),
+    "CHECKBOX",
+    [LLSTRING(fxEnabled_Name), LLSTRING(fxEnabled_Description)],
+    ["AEE Core", "FX"],
+    true,
+    true,
+    {}
+] call CBA_fnc_addSetting;
