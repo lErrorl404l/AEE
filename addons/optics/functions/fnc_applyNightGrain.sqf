@@ -32,7 +32,7 @@ private _visionMode = currentVisionMode _player;
 if (_visionMode == 1 || _visionMode == 2) exitWith {
     private _active = missionNamespace getVariable [QGVAR(nightGrainActive), false];
     if (_active) then {
-        _hGrain ppEffectAdjust [0.01, 0.1, 0.5, 0.1, 0.1, true];
+        _hGrain ppEffectAdjust [0.01, 0.1, 0.5, 0.1, 0.1, 1];
         _hGrain ppEffectCommit 1;
         [{
             (missionNamespace getVariable [QGVAR(ppHandle_FilmGrain), -1]) ppEffectEnable false;
@@ -86,11 +86,11 @@ if (_totalGrain > 0.01) then {
     private _grainSize = linearConversion [0, 1, _totalGrain, 0.5, 3.5, true];
     private _intensity = linearConversion [0, 1, _totalGrain, 0.5, 0.7, true];
 
-    _hGrain ppEffectAdjust [0.01, _intensity, _grainSize, 1, 1, true];
+    _hGrain ppEffectAdjust [0.01, _intensity, _grainSize, 1, 1, 1];
     _hGrain ppEffectCommit 2;
 } else {
     if (_active) then {
-        _hGrain ppEffectAdjust [0.01, 0.1, 0.5, 0.1, 0.1, true];
+        _hGrain ppEffectAdjust [0.01, 0.1, 0.5, 0.1, 0.1, 1];
         _hGrain ppEffectCommit 1;
 
         [{
