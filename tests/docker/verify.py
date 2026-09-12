@@ -16,7 +16,27 @@ with open(LOG, encoding="utf-8", errors="replace") as f:
 passes = re.findall(r"\[PHASE\d+\] \[PASS\][^\n]*", text)
 fails = re.findall(r"\[PHASE\d+\] \[FAIL\][^\n]*", text)
 done = "[AEE-TEST] DONE" in text
-errors = [l for l in text.splitlines() if "Error" in l and any(k in l for k in ("script", "variable", "Generic", "position"))]
+
+# Any "Error" line in the server log is a failure — a script error, a
+# ppEffect signature error, a type mismatch, or a malformed call.  The
+# previous filter matched only a few keywords (script/variable/Generic/
+# position) and silently ignored everything else, which let the
+# ChromAberration "6 elements provided, 3 expected" and the particle
+# "Type Array, expected Number" errors pass the gate.  Exclude only the
+# known-benign engine noise lines that are unrelated to AEE.
+_ERROR_BENIGN = (
+    "Warning:",
+    ".wss",
+    ".ogg",
+    ".wav",  # missing sound files (vanilla)
+    "Cannot open object",  # engine asset noise
+    "bison",  # PBO header noise
+)
+errors = [
+    l
+    for l in text.splitlines()
+    if re.search(r"\bError\b", l) and not any(b in l for b in _ERROR_BENIGN)
+]
 
 print(f"phases passed: {len(passes)}")
 for p in passes:

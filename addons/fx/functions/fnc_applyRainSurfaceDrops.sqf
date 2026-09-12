@@ -45,9 +45,14 @@ private _windDrift = wind vectorMultiply 0.3;
 private _drops = "#particlesource" createVehicleLocal position _player;
 missionNamespace setVariable [QGVAR(rainSurfaceDrops), _drops];
 _drops setParticleCircle [_radius, [0, 0, 0]];
-_drops setParticleRandom [0.2, [_radius, _radius, 0], [0, 0, 1], 13, 0.5, [0, 0, 0, 0], 1, 0];
+// setParticleRandom takes 10 elements (wiki: lifeTimeVar, positionVar,
+// moveVelocityVar, rotationVelocityVar, sizeVar, colorVar,
+// directionPeriodVar, directionIntensityVar, angleVar, bounceOnSurfaceVar).
+// The 8-element form shifted the parser and threw "Type Array, expected
+// Number" on the color element.
+_drops setParticleRandom [0.2, [_radius, _radius, 0], [0, 0, 1], 13, 0.5, [0, 0, 0, 0], 1, 0, 45, 0];
 _drops setParticleParams [
-    ["\A3\Data_F_Mark\ParticleEffects\Universal\waterBallonExplode_01", 4, 0, 16, 0],
+    ["\A3\Data_F_Mark\ParticleEffects\Universal\waterBallonExplode_01", 0, 2],
     "",
     "Billboard",
     1,                              // sort

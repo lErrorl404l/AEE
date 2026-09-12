@@ -37,7 +37,9 @@ trap 'docker compose "${COMPOSE_FILES[@]}" down 2>/dev/null || true; clean_profi
 # Runs the mission on several worlds and asserts the Koppen biome each
 # world resolves to. Validates environment switching across biomes.
 echo "==> server root: $ARMA3_SERVER_ROOT"
-echo "==> hemtt build"
+echo "==> hemtt build (clean — removes the incremental cache so a stale"
+echo "    PBO can never slip into the test or a release)"
+rm -rf "$ROOT/.hemttout/build" "$ROOT/.hemttout/bincache" "$ROOT/.hemttout/last_build.hsb"
 (cd "$ROOT" && hemtt build >/dev/null)
 
 echo "==> assemble @aee"

@@ -70,7 +70,7 @@ private _size = 30 + _windSpeed * 2;
 private _alpha = 0.08 * _density;
 
 _dust setParticleParams [
-    ["\A3\data_f\particleeffects\universal\universal.p3d", 16, 12, 8, 0],
+    ["\A3\data_f\ParticleEffects\Universal\Universal.p3d", 0, 2],
     "",
     "billboard",
     1,                          // sort
@@ -83,7 +83,11 @@ _dust setParticleParams [
     [_size, _size * 1.5],       // size progression
     [_dustColor + [0], _dustColor + [_alpha], _dustColor + [0]], // colour progression
     [1000],                     // animSpeed
-    1, 1, "", "", _player
+    1,                          // angle
+    0,                          // random dir
+    "", "",                     // on surface, before destroy
+    _player,                    // attach to
+    0, true                     // bounce, imprecise
 ];
 
 _dust setParticleRandom [

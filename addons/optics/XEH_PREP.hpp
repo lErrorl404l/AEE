@@ -18,3 +18,4 @@ PREP(calculateSolarGlare);
 PREP(calculateThermalContrast);
 PREP(calculateVehicleHeatShimmer);
 PREP(managePostProcess);
+PREP(ppEffectCreate);
