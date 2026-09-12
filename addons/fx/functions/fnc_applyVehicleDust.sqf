@@ -80,7 +80,7 @@ _source setParticleParams [
     0,                                      // rubbing
     [0.2, 0.5, 1],                          // size
     [_startColor, _endColor],               // colour
-    [0.5],                                  // animSpeed
+    0.5,                                    // animSpeed (scalar)
     1,                                      // angle
     0,                                      // random dir
     "", "",                                 // on surface, before destroy

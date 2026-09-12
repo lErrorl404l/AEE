@@ -64,7 +64,7 @@ _drops setParticleParams [
     7.9,                            // rubbing
     [0.05, _animFactor + 0.2],      // size
     [[0.5, 0.5, 0.5, 1], [0.5, 0.5, 0.5, 1]], // colour
-    [2],                            // animSpeed
+    2,                              // animSpeed (scalar)
     1,                              // angle
     0,                              // random dir
     "",                             // on surface
