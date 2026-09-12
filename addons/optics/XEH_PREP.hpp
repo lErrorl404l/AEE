@@ -1,6 +1,11 @@
+PREP(applyAtmosphericSeeingFX);
+PREP(applyDewOnOpticsFX);
 PREP(applyHeatShimmerFX);
+PREP(applyMirageFX);
 PREP(applyNightGrain);
 PREP(applyRainOnOpticsFX);
+PREP(applySnowBlindnessFX);
+PREP(applySolarGlareFX);
 PREP(calculateAtmosphericSeeing);
 PREP(calculateAttenuation);
 PREP(calculateDewOnOptics);
