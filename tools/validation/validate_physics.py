@@ -59,7 +59,7 @@ def air_density(t_c, p_hpa, rh):
 
 
 def wet_bulb_stull(t_c, rh):
-    """Mirror of the Stull 2011 wet bulb in fnc_calculateHeatIndex.sqf.
+    """Mirror of the Stull 2011 wet bulb in fnc_calculateWBGT.sqf.
 
     t_c in Celsius, rh in percent. Returns Celsius.
     """
@@ -74,13 +74,40 @@ def wet_bulb_stull(t_c, rh):
 
 
 def wbgt(t_c, rh, overcast):
-    """Mirror of fnc_calculateHeatIndex.sqf (WBGT).
+    """Mirror of fnc_calculateWBGT.sqf (WBGT).
 
     overcast in 0..1. Returns Celsius.
     """
     tw = wet_bulb_stull(t_c, rh)
     tg = t_c + 15 * (1 - overcast)
     return 0.7 * tw + 0.2 * tg + 0.1 * t_c
+
+
+def heat_index_nws(t_c, rh):
+    """Mirror of fnc_calculateHeatIndex.sqf (NWS Rothfusz 1990).
+
+    t_c in Celsius, rh in percent. Returns apparent temperature in Celsius.
+    """
+    t_f = t_c * 9 / 5 + 32
+    if t_f < 80 or rh < 40:
+        hi_f = 0.5 * (t_f + 61.0 + ((t_f - 68.0) * 1.2) + (rh * 0.094))
+    else:
+        hi_f = (
+            -42.379
+            + 2.04901523 * t_f
+            + 10.14333127 * rh
+            - 0.22475541 * t_f * rh
+            - 6.83783e-3 * (t_f**2)
+            - 5.481717e-2 * (rh**2)
+            + 1.22874e-3 * (t_f**2) * rh
+            + 8.5282e-4 * t_f * (rh**2)
+            - 1.99e-6 * (t_f**2) * (rh**2)
+        )
+    if rh < 13 and 80 <= t_f <= 112:
+        hi_f -= ((13 - rh) / 4) * math.sqrt((17 - abs(t_f - 95)) / 17)
+    if rh > 85 and 80 <= t_f <= 87:
+        hi_f += ((rh - 85) / 10) * ((87 - t_f) / 5)
+    return (hi_f - 32) * 5 / 9
 
 
 def wind_chill_jagtti(t_c, v_ms):
@@ -98,7 +125,7 @@ def wind_chill_jagtti(t_c, v_ms):
 def solar_radiation(doy, hour, lat, overcast):
     """Mirror of fnc_calculateSolarRadiation.sqf.
 
-    doy is the approximate day of year, hour the local clock hour, lat in
+    doy is the exact day of year, hour the local clock hour, lat in
     degrees, overcast in 0..1. Returns the radiation factor in 0..1.
     """
     decl = 23.45 * math.sin(math.radians((360 / 365) * (doy + 284)))
@@ -109,6 +136,17 @@ def solar_radiation(doy, hour, lat, overcast):
     radiation = max(0.0, sin_elev)
     cloud_factor = 1 - 0.75 * overcast
     return min(radiation * cloud_factor, 1.0)
+
+
+def day_of_year_bauleova(year, month, day):
+    """Exact day of year (Bauleova formula) as in fnc_calculateSolarRadiation.sqf.
+
+    Leap years add one day after February. Returns 1..366.
+    """
+    doy = math.floor(275 * month / 9) - 2 * math.floor((month + 9) / 12) + day - 30
+    if month > 2 and (year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)):
+        doy += 1
+    return doy
 
 
 # ─── References ─────────────────────────────────────────────────────────────
@@ -293,7 +331,7 @@ def check_solar_position():
         for day in (1, 15):
             for hour in (6, 9, 12, 15, 18):
                 for lat in (-60, -30, 0, 30, 60):
-                    doy = (month - 1) * 30 + day
+                    doy = day_of_year_bauleova(2024, month, day)
                     mod = solar_radiation(doy, hour, lat, 0.0)
                     elev = solar_elevation_pvlib(lat, 2024, month, day, hour)
                     pv = max(0.0, math.sin(math.radians(elev)))
@@ -373,6 +411,35 @@ def check_wbgt_iso7243():
     }
 
 
+def check_heat_index():
+    """NWS Rothfusz 1990 (mod) vs published NWS reference outputs."""
+    # (T C, RH %, NWS heat index F) — official NWS heat index chart values
+    nws_refs = [
+        (26.7, 40.0, 80.0),  # 80 F, 40 %
+        (26.7, 60.0, 81.0),  # 80 F, 60 %
+        (32.2, 60.0, 100.0),  # 90 F, 60 %
+        (32.2, 70.0, 106.0),  # 90 F, 70 %
+        (37.8, 40.0, 109.0),  # 100 F, 40 %
+    ]
+    errors = []
+    for t_c, rh, hi_f_nws in nws_refs:
+        hi_c_mod = heat_index_nws(t_c, rh)
+        hi_f_mod = hi_c_mod * 9 / 5 + 32
+        errors.append(abs(hi_f_mod - hi_f_nws))
+    max_abs, rmse = compute_stats(errors)
+    return {
+        "name": "Heat index (NWS Rothfusz 1990 vs NWS outputs)",
+        "ground_truth": "NOAA SR-90-23 Rothfusz regression, published NWS heat index values",
+        "grid": "5 reference points: (80 F/40 %), (80 F/60 %), (90 F/60 %), (90 F/70 %), (100 F/40 %)",
+        "tolerance": "1.0 F",
+        "status": "PASS" if max_abs <= 1.0 else "FAIL",
+        "max_abs": max_abs,
+        "rmse": rmse,
+        "unit": "F",
+        "note": "tolerance covers NWS published-value rounding of the same regression",
+    }
+
+
 def check_isa_metpy():
     """Embedded ISA table pressure vs metpy standard atmosphere."""
     if not HAS_METPY:
@@ -436,6 +503,7 @@ def main():
         check_air_density_isa(),
         check_lapse_rate(),
         check_wbgt_iso7243(),
+        check_heat_index(),
         check_isa_metpy(),
     ]
 

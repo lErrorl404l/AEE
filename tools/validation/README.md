@@ -60,7 +60,7 @@ Tolerance: 0.5% relative. The measured error band is 0.00 to 0.35%.
 
 ### 2. Wet bulb (Stull 2011)
 
-Source: `addons/thermal/functions/fnc_calculateHeatIndex.sqf`.
+Source: `addons/thermal/functions/fnc_calculateWBGT.sqf`.
 
 The mod uses the Stull 2011 approximation:
 
@@ -129,8 +129,7 @@ sinElev = sin(lat)*sin(decl) + cos(lat)*cos(decl)*cos(hourAngle)
 radiation = max(0, sinElev) * (1 - 0.75*overcast)
 ```
 
-doy is the approximate day of year `(month-1)*30 + day`, hour is the local
-clock hour, lat is in degrees.
+doy is the exact day of year (Bauleova formula) `floor(275*m/9) - 2*floor((m+9)/12) + d - 30` with a leap-year correction, hour is the local clock hour, lat is in degrees.
 
 Ground truth: pvlib `solar_position`, the SPA algorithm of Reda & Andreas
 2004. The comparison uses longitude 0 and UTC so the local clock hour
@@ -191,7 +190,7 @@ Tolerance: 0.1 C. The formula reproduces the table exactly.
 
 ### 7. WBGT vs ISO 7243
 
-Source: `addons/thermal/functions/fnc_calculateHeatIndex.sqf`.
+Source: `addons/thermal/functions/fnc_calculateWBGT.sqf`.
 
 The mod computes:
 
@@ -206,6 +205,30 @@ Ground truth: ISO 7243. When Tg = Ta, the formula reduces to
 Grid: T = 0 to 40 C step 10, RH = 20 to 100% step 20, overcast = 1.
 
 Tolerance: 1e-6 C. The reduction is exact by construction.
+
+### 7b. Heat index (NWS Rothfusz 1990)
+
+Source: `addons/thermal/functions/fnc_calculateHeatIndex.sqf`.
+
+The mod uses the NOAA SR-90-23 Rothfusz regression (with simple form and
+low/high-RH adjustments) to compute apparent temperature:
+
+```
+HI = -42.379 + 2.04901523*T + 10.14333127*RH - 0.22475541*T*RH
+     - 6.83783e-3*T^2 - 5.481717e-2*RH^2 + 1.22874e-3*T^2*RH
+     + 8.5282e-4*T*RH^2 - 1.99e-6*T^2*RH^2
+```
+
+T and HI are in Fahrenheit (converted internally; the function stores
+Celsius). Below 80 F or below 40% RH the simple form
+`HI = 0.5*(T + 61 + (T-68)*1.2 + RH*0.094)` applies.
+
+Ground truth: published NWS heat index chart values.
+
+Grid: 5 reference points: (80 F/40 %), (80 F/60 %), (90 F/60 %),
+(90 F/70 %), (100 F/40 %).
+
+Tolerance: 1.0 F. The measured max error is 0.88 F, within chart rounding.
 
 ### 8. ISA table vs metpy (cross-check)
 

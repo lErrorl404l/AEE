@@ -66,6 +66,15 @@ WBGT vs ISO 7243 (Tg = Ta case)
   Status       : PASS
   Note         : overcast = 1 gives Tg = Ta, so the mod formula must reduce to ISO 7243
 
+Heat index (NWS Rothfusz 1990 vs NWS outputs)
+  Ground truth : NOAA SR-90-23 Rothfusz regression, published NWS heat index values
+  Grid         : 5 reference points: (80 F/40 %), (80 F/60 %), (90 F/60 %), (90 F/70 %), (100 F/40 %)
+  Max error    : 0.8825 F
+  RMSE         : 0.4717 F
+  Tolerance    : 1.0 F
+  Status       : PASS
+  Note         : tolerance covers NWS published-value rounding of the same regression
+
 ISA table vs metpy standard atmosphere
   Ground truth : metpy.calc.height_to_pressure_std
   Grid         : z = 0, 1000, 2000, 5000, 11000 m
@@ -85,8 +94,9 @@ Solar position (mod model vs pvlib SPA)        SKIP    0.000 radiation 0..1 repo
 Air density vs ISA table (dry air)             PASS    0.068 %        0.5 % relative
 Standard-atmosphere lapse rate                 PASS    0.000 C        0.1 C
 WBGT vs ISO 7243 (Tg = Ta case)                PASS    0.000 C        1e-6 C
+Heat index (NWS Rothfusz 1990 vs NWS outputs)  PASS    0.883 F        1.0 F
 ISA table vs metpy standard atmosphere         SKIP    0.000 %        0.5 % relative
 
-Checks run: 5 of 8
+Checks run: 6 of 9
 Skipped (missing optional library): 3
 Failed: 0

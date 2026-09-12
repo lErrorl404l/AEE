@@ -45,10 +45,11 @@ Temperature and thermal effects.
 | Function | Purpose |
 |---|---|
 | `calculateFreezingRain` | Calculate freezing rain |
-| `calculateHeatIndex` | Calculate the heat index |
+| `calculateHeatIndex` | Calculate the heat index (NWS Rothfusz) |
 | `calculateHypothermiaRisk` | Calculate hypothermia risk |
 | `calculateThermalCrossover` | Calculate thermal crossover |
 | `calculateWaterTemperature` | Calculate water temperature |
+| `calculateWBGT` | Calculate wet-bulb globe temperature |
 | `updateTemperature` | Update temperature |
 
 ## ballistics

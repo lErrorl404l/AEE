@@ -39,8 +39,10 @@ flowchart LR
     C --> P
 ```
 
-Rain soaks the ground. Temperature and wind dry it. Moist soil raises the
-relative humidity. The state variable is `aee_core_soilMoisture` (0..1).
+Rain soaks the ground. Temperature, wind, low humidity, and solar
+radiation dry it (FAO-56 Penman-Monteith reference evapotranspiration).
+Moist soil raises the relative humidity. The state variable is
+`aee_core_soilMoisture` (0..1).
 
 ## Air density
 
