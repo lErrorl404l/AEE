@@ -23,7 +23,8 @@ if (_shimmer > 0.1) then {
         missionNamespace setVariable [QGVAR(shimmerFXActive), true];
     };
 
-    "ChromAberration" ppEffectAdjust [0.01 * _shimmer, 0.01 * _shimmer, true];
+    // 0.04 = visible shimmer at moderate engine heat
+    "ChromAberration" ppEffectAdjust [0.04 * _shimmer, 0.04 * _shimmer, true];
     "ChromAberration" ppEffectCommit 2;
 } else {
     if (_active) then {

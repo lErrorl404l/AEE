@@ -25,8 +25,7 @@ if (isNull _unit) exitWith { 0 };  // no unit on dedicated server
 
 // ─── Inputs ────────────────────────────────────────────────────────────
 private _rainRate  = rain;
-private _fogArray  = missionNamespace getVariable ["ace_fog_currentFog", [0, 0, 0]];
-private _fogValue  = _fogArray param [0, 0];
+private _fogValue  = missionNamespace getVariable [QEGVAR(core,currentFogDensity), 0];
 private _snowDepth = missionNamespace getVariable [QEGVAR(core,snowDepth_m), 0];
 
 if (isNil "_rainRate") then { _rainRate = 0; };
