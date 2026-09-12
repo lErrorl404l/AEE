@@ -163,6 +163,7 @@ if (GVAR(opticsEnabled)) then {
 [] call EFUNC(optics,applySnowBlindnessFX);
 [] call EFUNC(optics,applyDewOnOpticsFX);
 [] call EFUNC(optics,applyAtmosphericSeeingFX);
+[] call EFUNC(optics,managePostProcess);
 [] call EFUNC(physiology,applyHeatStressHUD);
 
 // ─── Breath condensation ───────────────────────────────────────────────────
