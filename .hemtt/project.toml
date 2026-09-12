@@ -11,6 +11,7 @@ include = [
     "meta.cpp",
     "README.md",
     "LICENSE",
+    "logo_aee_ca.paa",
 ]
 
 [properties]

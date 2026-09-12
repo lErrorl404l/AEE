@@ -1,6 +1,5 @@
 # AEE contributors
-
+#
+# CORE TEAM
 lErrorl404l
-
-Contributors:
-- MBarkerUK
+MBarkerUK
