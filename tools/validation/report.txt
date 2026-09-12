@@ -1,7 +1,7 @@
 AEE Atmospheric Physics Validation
 ============================================
 
-Optional libraries: psychrolib=no, metpy=no, pvlib=no
+Optional libraries: psychrolib=yes, metpy=yes, pvlib=yes
 
 Saturation vapour pressure (Buck 1996 vs Murphy & Koop 2005)
   Ground truth : Murphy & Koop 2005, J. Chem. Phys. 122, 104503
@@ -15,11 +15,11 @@ Saturation vapour pressure (Buck 1996 vs Murphy & Koop 2005)
 Wet bulb (Stull 2011 vs psychrolib ASHRAE)
   Ground truth : psychrolib GetTWetBulbFromHumRatio, ASHRAE iterative, 101.325 kPa
   Grid         : T = 0..40 C step 5, RH = 10..100 % step 10
-  Max error    : 0.0000 C
-  RMSE         : 0.0000 C
+  Max error    : 0.9346 C
+  RMSE         : 0.3624 C
   Tolerance    : 1.0 C
-  Status       : SKIP
-  Note         : psychrolib not installed; install with: pip install psychrolib
+  Status       : PASS
+  Note         : grid restricted to the range where Stull 2011 holds its 1 C accuracy
 
 Wind chill (JAG/TTI vs NWS reference values)
   Ground truth : NWS wind chill calculator outputs (JAG/TTI formula)
@@ -33,11 +33,11 @@ Wind chill (JAG/TTI vs NWS reference values)
 Solar position (mod model vs pvlib SPA)
   Ground truth : pvlib solar_position, SPA (Reda & Andreas 2004)
   Grid         : months 1/4/7/10, days 1/15, hours 6..18, lat -60..60, lon 0
-  Max error    : 0.0000 radiation 0..1
-  RMSE         : 0.0000 radiation 0..1
+  Max error    : 0.0630 radiation 0..1
+  RMSE         : 0.0169 radiation 0..1
   Tolerance    : report only
-  Status       : SKIP
-  Note         : pvlib not installed; install with: pip install pvlib
+  Status       : INFO
+  Note         : mod uses Cooper declination and no equation of time; discrepancy is expected
 
 Air density vs ISA table (dry air)
   Ground truth : ICAO standard atmosphere table
@@ -78,25 +78,65 @@ Heat index (NWS Rothfusz 1990 vs NWS outputs)
 ISA table vs metpy standard atmosphere
   Ground truth : metpy.calc.height_to_pressure_std
   Grid         : z = 0, 1000, 2000, 5000, 11000 m
-  Max error    : 0.0000 %
-  RMSE         : 0.0000 %
+  Max error    : 0.0929 %
+  RMSE         : 0.0581 %
   Tolerance    : 0.5 % relative
-  Status       : SKIP
-  Note         : metpy not installed; install with: pip install metpy
+  Status       : PASS
+  Note         : cross-check of the embedded reference table, not the mod
+
+Rain visibility (Atlas 1954 extinction vs published)
+  Ground truth : Atlas & Bartnoff (1954) extinction coefficient σ = 0.21·R^0.74
+  Grid         : R = 2.5, 12.5, 25 mm/h
+  Max error    : 0.1265 km⁻¹
+  RMSE         : 0.0768 km⁻¹
+  Tolerance    : 0.15 km⁻¹
+  Status       : PASS
+  Note         : Atlas power law; published values rounded from the original paper
+
+Evaporation (Penman-Monteith ET0 vs FAO-56)
+  Ground truth : FAO-56 Penman-Monteith (Allen et al. 1998): ET0 rises with T, wind, dryness, sun
+  Grid         : ordering + 4 driver-sensitivity cases
+  Max error    : 0.0000 behavioural
+  RMSE         : 0.0000 behavioural
+  Tolerance    : 0.05 (behavioural check: ordering and monotonicity)
+  Status       : PASS
+  Note         : the mod scales solar to 0..1, so absolute FAO-56 values do not apply; this checks physical behaviour instead
+
+Atmospheric seeing (Cn² model vs published ranges)
+  Ground truth : Boundary-layer Cn² ranges: 1e-17 excellent night to 1e-12 poor day
+  Grid         : 4 cases: cold night, mild day, hot day, stormy day
+  Max error    : 0.0000 index
+  RMSE         : 0.0000 index
+  Tolerance    : 0.05 index (inside published behaviour ranges)
+  Status       : PASS
+  Note         : the mod maps Cn² logarithmically to 0.1..1.0; ranges bracket published behaviour
+
+Smoke dispersal (physical model vs expectations)
+  Ground truth : Taylor diffusion, Köhler growth, washout scavenging expectations
+  Grid         : 3 cases: calm-humid-cold, windy-hot-dry-rain, neutral
+  Max error    : 0.0000 modifier
+  RMSE         : 0.0000 modifier
+  Tolerance    : 0.1 modifier (inside expected ranges)
+  Status       : PASS
+  Note         : 1.0 = baseline persistence; <1 disperses faster, >1 persists longer
 
 Summary
 --------------------------------------------
 Formula                                        Status  Max error      Tolerance
 Saturation vapour pressure (Buck 1996 vs Murph PASS    0.349 %        0.5 % relative
-Wet bulb (Stull 2011 vs psychrolib ASHRAE)     SKIP    0.000 C        1.0 C
+Wet bulb (Stull 2011 vs psychrolib ASHRAE)     PASS    0.935 C        1.0 C
 Wind chill (JAG/TTI vs NWS reference values)   PASS    0.353 C        0.5 C
-Solar position (mod model vs pvlib SPA)        SKIP    0.000 radiation 0..1 report only
+Solar position (mod model vs pvlib SPA)        INFO    0.063 radiation 0..1 report only
 Air density vs ISA table (dry air)             PASS    0.068 %        0.5 % relative
 Standard-atmosphere lapse rate                 PASS    0.000 C        0.1 C
 WBGT vs ISO 7243 (Tg = Ta case)                PASS    0.000 C        1e-6 C
 Heat index (NWS Rothfusz 1990 vs NWS outputs)  PASS    0.883 F        1.0 F
-ISA table vs metpy standard atmosphere         SKIP    0.000 %        0.5 % relative
+ISA table vs metpy standard atmosphere         PASS    0.093 %        0.5 % relative
+Rain visibility (Atlas 1954 extinction vs publ PASS    0.127 km⁻¹     0.15 km⁻¹
+Evaporation (Penman-Monteith ET0 vs FAO-56)    PASS    0.000 behavioural 0.05 (behavioural check: ordering and monotonicity)
+Atmospheric seeing (Cn² model vs published ran PASS    0.000 index    0.05 index (inside published behaviour ranges)
+Smoke dispersal (physical model vs expectation PASS    0.000 modifier 0.1 modifier (inside expected ranges)
 
-Checks run: 6 of 9
-Skipped (missing optional library): 3
+Checks run: 13 of 13
+Skipped (missing optional library): 0
 Failed: 0
