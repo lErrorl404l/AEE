@@ -52,8 +52,11 @@ if (_humidity > 50) then {
 
 // ─── Map Cn² to seeing index (log scale over the Cn² decade range) ─────────
 // Cn² ~1e-17 (excellent night) → 0.1; Cn² ~1e-12 (storm/hot afternoon) → 1.0.
-// log10(x) = ln(x) / ln(10); the log term spans 5 decades of Cn².
-private _logCn2 = (log (_Cn2 max 1e-17)) / 2.302585;
+// SQF log is BASE-10 (log 100 = 2), so log10(Cn²) is `log _Cn2` directly.
+// The earlier /2.302585 conversion was written assuming natural log and
+// inverted the scale — a cool rainy day (Cn² 2.5e-15) saturated seeing to
+// 1.0 (verified via sqfvm: correct value is 0.53).
+private _logCn2 = log (_Cn2 max 1e-17);
 private _seeing = (0.1 + 0.9 * ((_logCn2 + 17) / 5)) min 1;
 _seeing = _seeing max 0.1 min 1.0;
 
