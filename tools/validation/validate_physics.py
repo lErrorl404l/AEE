@@ -198,6 +198,11 @@ def seeing_index_cn2(temp_c, overcast, turbulence, humidity_pct, daytime):
     """Mirror of fnc_calculateAtmosphericSeeing.sqf (Cn² boundary layer).
 
     Returns the seeing index 0.1..1.0 (higher = worse). daytime bool.
+
+    The SQF uses base-10 log for the decade mapping (log 100 = 2), so
+    log10(Cn²) is math.log10 — NOT ln/2.302585.  A previous mirror
+    divided by 2.302585 and validated the broken SQF against itself;
+    a cool rainy day saturated seeing to 1.0 instead of 0.53.
     """
     tg = temp_c + 15 * (1 - overcast)
     c_t2 = 1e-3 * ((tg - temp_c) / 10) * (max(temp_c, 1) / 15)
@@ -208,7 +213,7 @@ def seeing_index_cn2(temp_c, overcast, turbulence, humidity_pct, daytime):
     cn2 = max(cn2, 0) + 1e-14 * max(turbulence, 0)
     if humidity_pct > 50:
         cn2 *= 1 + (humidity_pct - 50) * 0.002
-    log_cn2 = math.log(max(cn2, 1e-17)) / 2.302585
+    log_cn2 = math.log10(max(cn2, 1e-17))
     seeing = min(0.1 + 0.9 * ((log_cn2 + 17) / 5), 1.0)
     return max(0.1, min(1.0, seeing))
 
@@ -645,6 +650,10 @@ def check_seeing_cn2():
         (15.0, 0.5, 0.0, 60.0, True, (0.35, 0.55)),  # mild overcast day
         (30.0, 0.0, 0.0, 45.0, True, (0.45, 0.60)),  # hot clear day
         (25.0, 0.9, 0.8, 80.0, True, (0.55, 0.75)),  # stormy day
+        # Cool rainy day regression: full overcast kills the thermal term,
+        # so seeing must NOT saturate.  A base-10/natural-log confusion
+        # (divided by 2.302585) previously pinned this at 1.0; correct 0.53.
+        (13.7, 1.0, 0.23, 100.0, True, (0.40, 0.65)),
     ]
     errors = []
     for t_c, oc, turb, rh, day, (lo, hi) in cases:
