@@ -168,7 +168,7 @@ follow the variable names as written in the SQF source.
 
 ## Settings
 
-30 settings register in the CBA settings interface: 27 under **AEE Core**
+34 settings register in the CBA settings interface: 31 under **AEE Core**
 in `addons/core/initSettings.inc.sqf` and 3 under **AEE Mobility** in
 `addons/mobility/initSettings.inc.sqf`. All use `CBA_fnc_addSetting`.
 Titles and descriptions come from the per-addon stringtables. See the

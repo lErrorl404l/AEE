@@ -121,6 +121,14 @@
             <Original>Enable Environmental &amp; Seasonal Effects</Original>
             <English>Enable Environmental &amp; Seasonal Effects</English>
         </Key>
+        <Key ID="STR_AEE_Core_fxEnabled_Description">
+            <Original>Enable environmental particles, wind noise, rain sounds, and severe weather visual effects</Original>
+            <English>Enable environmental particles, wind noise, rain sounds, and severe weather visual effects</English>
+        </Key>
+        <Key ID="STR_AEE_Core_fxEnabled_Name">
+            <Original>Enable FX Effects</Original>
+            <English>Enable FX Effects</English>
+        </Key>
         <Key ID="STR_AEE_Core_humidityEnabled_Description">
             <Original>Enable relative-humidity tracking and condensation/precipitation calculations</Original>
             <English>Enable relative-humidity tracking and condensation/precipitation calculations</English>
@@ -145,6 +153,14 @@
             <Original>ICAO Reference Altitude</Original>
             <English>ICAO Reference Altitude</English>
         </Key>
+        <Key ID="STR_AEE_Core_maritimeEnabled_Description">
+            <Original>Enable sea state, wave height, tidal prediction, and magnetic compass deviation</Original>
+            <English>Enable sea state, wave height, tidal prediction, and magnetic compass deviation</English>
+        </Key>
+        <Key ID="STR_AEE_Core_maritimeEnabled_Name">
+            <Original>Enable Maritime Simulation</Original>
+            <English>Enable Maritime Simulation</English>
+        </Key>
         <Key ID="STR_AEE_Core_microclimateRadius_Description">
             <Original>Radius (m) for local terrain and vegetation microclimate effects (valley cool-air pooling, forest canopy)</Original>
             <English>Radius (m) for local terrain and vegetation microclimate effects (valley cool-air pooling, forest canopy)</English>
@@ -168,6 +184,14 @@
         <Key ID="STR_AEE_Core_opticsEnabled_Name">
             <Original>Enable Optics &amp; Visibility Effects</Original>
             <English>Enable Optics &amp; Visibility Effects</English>
+        </Key>
+        <Key ID="STR_AEE_Core_physiologyEnabled_Description">
+            <Original>Enable heat stress, WBGT, wind chill, dehydration, hypoxia, UV index, and scent dispersion</Original>
+            <English>Enable heat stress, WBGT, wind chill, dehydration, hypoxia, UV index, and scent dispersion</English>
+        </Key>
+        <Key ID="STR_AEE_Core_physiologyEnabled_Name">
+            <Original>Enable Physiology Effects</Original>
+            <English>Enable Physiology Effects</English>
         </Key>
         <Key ID="STR_AEE_Core_precipOrographicEnabled_Description">
             <Original>Enable orographic-lifting precipitation enhancement on windward slopes</Original>

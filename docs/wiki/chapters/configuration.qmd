@@ -105,7 +105,10 @@ the rest). Values marked *global* must match across all clients.
 
 | Setting | Type | Default | Global | Purpose |
 |---|---|---|---|---|
-| `aee_core_environmentalEnabled` | CHECKBOX | true | yes | Enable biological ambient sound intensity, scent dispersion, sea state, and magnetic compass deviation. |
+| `aee_core_environmentalEnabled` | CHECKBOX | true | yes | Enable CBRN persistence, biological ambient sound, lunar illumination, and frost. |
+| `aee_core_physiologyEnabled` | CHECKBOX | true | yes | Enable heat stress, WBGT, wind chill, dehydration, hypoxia, UV index, and scent dispersion. |
+| `aee_core_maritimeEnabled` | CHECKBOX | true | yes | Enable sea state, wave height, tidal prediction, and magnetic compass deviation. |
+| `aee_core_fxEnabled` | CHECKBOX | true | yes | Enable environmental particles, wind noise, rain sounds, and severe-weather visual effects. |
 
 ## AEE Mobility
 
