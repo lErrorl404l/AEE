@@ -23,21 +23,31 @@ PBO-distribution exception.
 - Terrain microclimate, including urban heat islands and water influence.
 - True air density from temperature, pressure, and humidity.
 - Koppen biome classification with seasonal variation.
-- Thermal and physiological effects, including WBGT and acclimatisation.
+- WBGT heat stress and altitude acclimatisation.
+- FAA time-of-useful-consciousness hypoxia.
+- ISO 17166 UV index with ozone absorption.
 - Optics effects, including thermal crossover, mirage, and glare.
+- Cn²-based atmospheric seeing.
 - Vehicle and helicopter mobility, including engine derating and lift.
 - Environmental effects, including foliage, scent, and fire risk.
-- Maritime state, including sea state and tides.
-- Radio propagation for VHF, UHF, and HF bands.
-- Atmospheric events, including lightning, sandstorms, and microbursts.
+- Rothermel fire spread.
+- Stefan freeze and thaw depth.
+- FAO-56 Penman-Monteith evaporation.
+- Maritime state, including harmonic tidal constituents (M2/S2/K1/O1).
+- WMO Beaufort sea state.
+- Radio propagation from the Friis equation with ITU-R P.531 ionospheric
+  absorption.
+- ICAO eddy dissipation rate turbulence.
+- Atmospheric events, including lightning, sandstorms, and NWS microburst
+  tiers.
 
 ## Addon structure
 
-The project has 18 addons under `addons/`. The 13 core addons are `main`,
+The project has 19 addons under `addons/`. The 13 core addons are `main`,
 `core`, `actions`, `atmos`, `ballistics`, `environmental`, `fx`, `maritime`,
-`mobility`, `optics`, `physiology`, `radio`, and `thermal`. The 5 compat
-addons are `compat_ace3`, `compat_acm`, `compat_acre2`, `compat_kat`, and
-`compat_tfar`.
+`mobility`, `optics`, `physiology`, `radio`, and `thermal`. The 6 compat
+addons are `compat_ace3`, `compat_acm`, `compat_acre2`, `compat_kat`,
+`compat_realweather`, and `compat_tfar`.
 
 | Addon | Role |
 |---|---|
@@ -58,6 +68,7 @@ addons are `compat_ace3`, `compat_acm`, `compat_acre2`, `compat_kat`, and
 | `compat_acm` | ACM integration |
 | `compat_acre2` | ACRE2 integration |
 | `compat_kat` | KAT integration |
+| `compat_realweather` | Real-weather file integration |
 | `compat_tfar` | TFAR integration |
 
 Build PBO names are `aee_<component>`. For example, the core addon builds to
