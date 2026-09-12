@@ -69,6 +69,17 @@ if (_T > 30 && _RH < 30) then {
     _absorptionPenalty = 2;                                     // −2 dB
 };
 
+// HF ionospheric absorption — D-layer non-deviative absorption (ITU-R
+// P.531, computed by fnc_calculateIonosphericAbsorption) applies to HF
+// skywave links (below 30 MHz).  VHF/UHF line-of-sight links (the Friis
+// default) do not pass through the D-layer, so the penalty is gated on
+// frequency.  This wires the ionospheric state into the link budget
+// instead of leaving it write-only.
+if (_freqHz < 30e6) then {
+    private _ionoAbs = missionNamespace getVariable [QEGVAR(core,ionosphericAbsorption), 0];
+    _absorptionPenalty = _absorptionPenalty + _ionoAbs;
+};
+
 // Terrain/obstruction excess loss (open 0, urban/forest higher)
 private _biome = EGVAR(core,biome);
 private _terrainLoss = 0;
