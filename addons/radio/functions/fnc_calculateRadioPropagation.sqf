@@ -43,9 +43,12 @@ private _distM  = missionNamespace getVariable [QGVAR(radioLinkRangeM), 5000];
 private _txPowerDBm = 37;
 
 // ─── Free-space path loss (Friis) ──────────────────────────────────────────
-// SQF log is the natural log; log10(x) = ln(x) / ln(10) = ln(x) / 2.302585.
-// The division applies to the log RESULT, not the argument.
-private _fspl = ((20 * log _distM) / 2.302585) + ((20 * log _freqHz) / 2.302585) - 147.55;
+// SQF's log command is base-10 (verified in-game: log 100 = 2).  Friis in
+// SQF is therefore 20*log10(d) + 20*log10(f) - 147.55 with NO radix
+// conversion.  (A previous version divided by 2.302585 assuming natural
+// log, which double-converted and produced FSPL -46 dB — caught by the
+// in-game RPT, invisible to the range-checked index.)
+private _fspl = (20 * log _distM) + (20 * log _freqHz) - 147.55;
 
 // ─── Atmospheric corrections (dB) ──────────────────────────────────────────
 private _ductBonus = 0;
