@@ -20,11 +20,14 @@ if ((_enabledNum == 1) && (_interval == 5)) then {
 private _fnEnv = missionNamespace getVariable ["aee_core_fnc_updateEnvironment", nil];
 private _fnBiome = missionNamespace getVariable ["aee_environmental_fnc_getBiome", nil];
 private _fnTemp = missionNamespace getVariable ["aee_thermal_fnc_updateTemperature", nil];
-if ((!isNil "_fnEnv") && (!isNil "_fnBiome") && (!isNil "_fnTemp")) then {
-    diag_log text "[PHASE2] [PASS] functions resolved (core, environmental, thermal)";
+private _fnDust = missionNamespace getVariable ["aee_fx_fnc_applyAtmosphericDust", nil];
+private _fnRain = missionNamespace getVariable ["aee_fx_fnc_applyRainSurfaceDrops", nil];
+private _fnGrain = missionNamespace getVariable ["aee_optics_fnc_applyNightGrain", nil];
+if ((!isNil "_fnEnv") && (!isNil "_fnBiome") && (!isNil "_fnTemp") && (!isNil "_fnDust") && (!isNil "_fnRain") && (!isNil "_fnGrain")) then {
+    diag_log text "[PHASE2] [PASS] functions resolved (core, environmental, thermal, fx, optics)";
 } else {
-    diag_log text format ["[PHASE2] [FAIL] functions nil: core=%1 biome=%2 thermal=%3",
-        isNil "_fnEnv", isNil "_fnBiome", isNil "_fnTemp"];
+    diag_log text format ["[PHASE2] [FAIL] functions nil: core=%1 biome=%2 thermal=%3 dust=%4 rain=%5 grain=%6",
+        isNil "_fnEnv", isNil "_fnBiome", isNil "_fnTemp", isNil "_fnDust", isNil "_fnRain", isNil "_fnGrain"];
 };
 
 // -- diagnostic: does getBiome store a value? --------------------------------

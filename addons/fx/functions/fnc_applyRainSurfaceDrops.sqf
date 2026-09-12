@@ -39,6 +39,9 @@ private _dropInterval = linearConversion [0.1, 1, rain, 0.006, 0.002, true];
 private _animFactor   = linearConversion [0.1, 1, rain, 0.1, 0.2, true];
 private _radius       = 18;
 
+// Wind drift — scale wind vector for gentle horizontal push
+private _windDrift = wind vectorMultiply 0.3;
+
 private _drops = "#particlesource" createVehicleLocal position _player;
 missionNamespace setVariable [QGVAR(rainSurfaceDrops), _drops];
 _drops setParticleCircle [_radius, [0, 0, 0]];
@@ -50,7 +53,7 @@ _drops setParticleParams [
     1,                              // sort
     0.4,                            // lifeTime
     [0, 0, 25],                     // position (above player)
-    [0, 0, 0.5],                   // velocity (falling)
+    _windDrift vectorAdd [0, 0, 0.5], // velocity (falling + wind drift)
     0,                              // weight
     18,                             // volume
     7.9,                            // rubbing
