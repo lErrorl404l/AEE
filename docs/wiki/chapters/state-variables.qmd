@@ -55,9 +55,8 @@ read them. The variables below are grouped by subsystem.
 | Variable | Purpose |
 |---|---|
 | `aee_core_currentPressure` | The current pressure |
-| `aee_core_currentPressureTrend` | The current pressure trend |
-| `aee_core_pressureReading1` | The first pressure reading |
-| `aee_core_pressureReading2` | The second pressure reading |
+| `aee_core_currentPressureTrend` | The current pressure trend (change over 3 h) |
+| `aee_core_pressureHistory` | The time-stamped 3 h pressure ring buffer |
 | `aee_core_qnh` | The QNH pressure corrected to sea level |
 | `aee_core_pressureAltitude_m` | The pressure altitude in metres |
 

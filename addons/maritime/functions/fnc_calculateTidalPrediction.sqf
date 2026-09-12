@@ -89,8 +89,10 @@ private _tideDesc = if (_tideHeight > 1.0) then {
 
 // Spring / neap from M2/S2 alignment: when the two semidiurnal constituents
 // are in phase the tidal range is largest (spring), opposed it is smallest
-// (neap).  The beat period is ~14.8 days.
-private _alignment = abs (sin (((_M2 select 0) - (_S2 select 0)) * _hoursSinceEpoch * (pi / 180)));
+// (neap).  The beat period is ~14.8 days.  Alignment is the cosine of the
+// phase difference (peaks at 1 when in phase; SQF trig takes degrees, so
+// no radian conversion).
+private _alignment = abs (cos (((_M2 select 0) - (_S2 select 0)) * _hoursSinceEpoch + (_phaseM2 - _phaseS2)));
 if (_alignment > 0.9) then {
     _tideDesc = _tideDesc + " (Spring Tide)";
 };

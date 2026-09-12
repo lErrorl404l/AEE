@@ -48,11 +48,16 @@ if (!_realWeather) then {
     [] call EFUNC(atmos,calculatePrecipitationPhase);
     [] call EFUNC(atmos,calculateHaze);
     [] call EFUNC(environmental,calculateSurfaceWetness);
-    [] call EFUNC(atmos,updateWind);
-    [] call EFUNC(fx,applyWindNoise);
 
     [] call EFUNC(ballistics,calculateAirDensity);
 };
+
+// Wind runs in BOTH modes.  updateWind reads the engine wind command and
+// publishes the computed vector and gusts to the shared state and the
+// engine (setWind).  Real-weather mode replaces temperature/pressure/
+// humidity but must not freeze the wind field, so it is not gated.
+[] call EFUNC(atmos,updateWind);
+[] call EFUNC(fx,applyWindNoise);
 
 // ─── Derived effects (ground, foliage, sound, fog) ─────────────────────────
 [_posASL] call EFUNC(mobility,updateGroundState);

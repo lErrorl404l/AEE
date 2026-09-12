@@ -33,7 +33,7 @@ private _vehicle   = vehicle player;
 // ─── Read environment ─────────────────────────────────────────────────────
 private _temp     = missionNamespace getVariable ["aee_core_currentTemperature", 20];
 private _humidity = missionNamespace getVariable ["aee_core_currentHumidity",   50];
-private _overcast = missionNamespace getVariable ["aee_core_currentOvercast",   0];
+private _overcast = missionNamespace getVariable [QEGVAR(core,overcast), 0];
 
 // ─── Not in a vehicle — fast decay ────────────────────────────────────────
 if (_vehicle isEqualTo player) exitWith {

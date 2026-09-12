@@ -94,17 +94,22 @@ def pressure_class(change):
     return "Stable"
 
 
-def pressure_trend(pressure_history, new_pressure):
-    """Mirror of the ring-buffer push in fnc_calculatePressureTrend.sqf.
+def pressure_trend(history, new_pressure, now, window_s=10800):
+    """Mirror of the time-stamped 3-hour buffer in fnc_calculatePressureTrend.sqf.
 
-    The buffer holds two prior readings (p2, p1). The change is the new
-    reading minus p2, the reading from two ticks ago.
+    history is a list of [time, pressure] entries.  The change is the new
+    reading minus the reading closest to 3 hours ago (the oldest held after
+    dropping entries outside the window).  Returns (bounded_history,
+    change, forecast).
     """
-    if not pressure_history:
-        history = [new_pressure, new_pressure]
+    history = list(history) + [[now, new_pressure]]
+    cutoff = now - window_s
+    while history and history[0][0] < cutoff:
+        history.pop(0)
+    if len(history) > 1:
+        change = new_pressure - history[0][1]
     else:
-        history = (pressure_history + [new_pressure])[-2:]
-    change = new_pressure - history[0]
+        change = 0.0
     return history, change, pressure_class(change)
 
 
@@ -249,24 +254,38 @@ class TestMicroburst(unittest.TestCase):
 
 class TestPressureTrend(unittest.TestCase):
     def test_rising(self):
-        history, change, forecast = pressure_trend([1000, 1000], 1001)
+        # History [t=0:1000, t=1h:1000], now t=3h, new 1001:
+        # the 3 h window holds both old readings, change = 1001 - 1000.
+        history, change, forecast = pressure_trend(
+            [[0, 1000], [3600, 1000]], 1001, now=10800
+        )
         self.assertGreater(change, 0.0)
         self.assertEqual(forecast, "Clearing")
 
     def test_falling(self):
-        history, change, forecast = pressure_trend([1000, 1000], 999)
+        history, change, forecast = pressure_trend(
+            [[0, 1000], [3600, 1000]], 999, now=10800
+        )
         self.assertLess(change, 0.0)
         self.assertEqual(forecast, "Rain expected")
 
     def test_steady(self):
-        history, change, forecast = pressure_trend([1000, 1000], 1000.05)
+        history, change, forecast = pressure_trend(
+            [[0, 1000], [3600, 1000]], 1000.05, now=10800
+        )
         self.assertLess(abs(change), 0.1)
         self.assertEqual(forecast, "Stable")
 
     def test_buffer_drops_old(self):
-        # After two pushes the buffer holds only the two latest readings.
-        history, _, _ = pressure_trend([1000, 1001], 1002)
-        self.assertEqual(history, [1001, 1002])
+        # A reading from 4 h ago falls outside the 3 h window and is dropped.
+        history, change, forecast = pressure_trend(
+            [[0, 1000], [7200, 1001], [10800, 1002]], 1003, now=14400
+        )
+        # t=0 is 4 h before now: dropped.  t=7200 (2 h) and t=10800 (1 h) held.
+        self.assertEqual(len(history), 3)
+        self.assertEqual(history[0][0], 7200)
+        # change vs the oldest held (t=7200, p=1001): 1003 - 1001 = 2 -> Storm
+        self.assertEqual(forecast, "Fair weather" if change > 2 else "Clearing")
 
 
 class TestTurbulence(unittest.TestCase):
