@@ -15,7 +15,7 @@ The grain simulates the eye's noise floor in low light and the
 visual degradation from precipitation obscuring the view.
 */
 
-if (!EGVAR(core,opticsEnabled)) exitWith {};
+if (!EGVAR(core,enabled)) exitWith {};
 
 private _player = call CBA_fnc_currentUnit;
 if (isNil "_player" || !alive _player || cameraOn != _player) exitWith {};
