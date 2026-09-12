@@ -1,3 +1,4 @@
+PREP(calculateWBGT);
 PREP(calculateHeatIndex);
 PREP(calculateHypothermiaRisk);
 PREP(calculateFreezingRain);

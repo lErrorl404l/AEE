@@ -7,11 +7,13 @@ Computes a multiplier applied to visual range:
   1.0  = clear (no reduction)
   0.05 = near-zero visibility (heavy rain/snow combined with fog)
 
-Rain rate drives piecewise linear reduction:
-  • 0 mm/h         → 1.0   (no reduction)
-  • 0–2 mm/h       → 1.0–0.6  (light rain)
-  • 2–10 mm/h      → 0.6–0.3  (moderate rain)
-  • >10 mm/h       → 0.3–0.05 (heavy rain)
+Rain rate drives reduction with the Atlas (1954) power law:
+  • Extinction coefficient: σ = 0.21 · R^0.74  (km⁻¹)
+  • Koschmieder visual range: V = 3.912 / σ  (km)
+  • Modifier: V / 20, clamped to [0.05, 1.0]
+
+The Arma 3 rain value is abstract (0..1), not mm/h.  Map it to a rain
+rate with _rainMMH = rain * 25, so 1.0 rain equals 25 mm/h (heavy rain).
 
 Snow cover adds a multiplicative 0.7 penalty.  The result is
 combined with existing fog density (fog takes the tighter bound).
@@ -30,25 +32,21 @@ private _snowDepth = missionNamespace getVariable [QEGVAR(core,snowDepth_m), 0];
 
 if (isNil "_rainRate") then { _rainRate = 0; };
 
-// ─── Rain visibility modifier (piecewise linear) ──────────────────────
+// ─── Rain visibility modifier (Atlas 1954 extinction) ─────────────────
+// Abstract engine rain (0..1) maps to mm/h: 1.0 rain = 25 mm/h heavy rain.
+private _rainMMH = _rainRate * 25;
+
 private _rainMod = 1.0;
 
-if (_rainRate > 0) then {
-    switch (true) do {
-        case (_rainRate <= 2): {
-            // Light: 1.0 → 0.6
-            _rainMod = 1.0 - (_rainRate / 2) * 0.4;
-        };
-        case (_rainRate <= 10): {
-            // Moderate: 0.6 → 0.3
-            _rainMod = 0.6 - ((_rainRate - 2) / 8) * 0.3;
-        };
-        default {
-            // Heavy: 0.3 → 0.05 as rate approaches 30 mm/h
-            _rainMod = 0.3 - ((_rainRate - 10) / 20) * 0.25;
-        };
-    };
-    _rainMod = _rainMod max 0.05;
+if (_rainMMH > 0) then {
+    // Extinction coefficient σ = 0.21 · R^0.74 (km⁻¹), R in mm/h.
+    private _sigma = 0.21 * (_rainMMH ^ 0.74);
+
+    // Koschmieder visual range V = 3.912 / σ (km).
+    private _visualRangeKm = 3.912 / _sigma;
+
+    // Fraction of the 20 km clear-day baseline, clamped.
+    _rainMod = (_visualRangeKm / 20) max 0.05 min 1.0;
 };
 
 // ─── Snow penalty ─────────────────────────────────────────────────────

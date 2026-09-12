@@ -1,14 +1,22 @@
 #include "..\script_component.hpp"
 
 /*
-Heat index using simplified WBGT (Wet-Bulb Globe Temperature) model.
-  WBGT = 0.7 * Tw + 0.2 * Tg + 0.1 * T
+Heat index (apparent temperature) per NWS Rothfusz 1990 (NOAA SR-90-23).
+  HI = -42.379 + 2.04901523*T + 10.14333127*RH - 0.22475541*T*RH
+       - 6.83783e-3*T^2 - 5.481717e-2*RH^2 + 1.22874e-3*T^2*RH
+       + 8.5282e-4*T*RH^2 - 1.99e-6*T^2*RH^2
 
-  Tw — wet-bulb temperature via Stull 2011 approximation
-  Tg — globe temperature (T + 15 in sun, T in shade, interpolated by overcast)
+  T  — dry-bulb temperature in Fahrenheit
+  RH — relative humidity in percent
 
-Stored in GVAR(currentWBGT) for thermal-stress modelling.
-Also sets EGVAR(core,currentHeatIndex) for ACE3 medical potential.
+Simple form below 80 °F or below 40 %RH:
+  HI = 0.5 * (T + 61.0 + ((T - 68.0) * 1.2) + (RH * 0.094))
+
+Adjustments:
+  RH < 13 % and 80 <= T <= 112:  HI -= ((13 - RH) / 4) * sqrt((17 - |T - 95|) / 17)
+  RH > 85 % and 80 <= T <= 87:   HI += ((RH - 85) / 10) * ((87 - T) / 5)
+
+Stored in EGVAR(core,currentHeatIndex) for heat-stress modelling.
 */
 
 if !(EGVAR(core,enabled)) exitWith {};
@@ -19,25 +27,34 @@ private _RH  = EGVAR(core,currentHumidity);
 if (isNil "_T_C") exitWith {};
 if (isNil "_RH")  exitWith {};
 
-// ─── Wet-bulb temperature (Stull 2011, accurate ±1 °C for 0–100 %RH, –20–50 °C)
-// SQF atan returns degrees; Stull 2011 needs radians, so each term is
-// converted with the rad operator.
-private _sqrtRHP1 = sqrt (_RH + 8.313659);
-private _Tw = _T_C * (atan (0.151977 * _sqrtRHP1)) * 0.0174532925
-    + (atan (_T_C + _RH)) * 0.0174532925
-    - (atan (_RH - 1.676331)) * 0.0174532925
-    + 0.00391838 * (_RH ^ 1.5) * (atan (0.023101 * _RH)) * 0.0174532925
-    - 4.686035;
+// ─── Convert to Fahrenheit ────────────────────────────────────────────────
+private _T_F = _T_C * 9 / 5 + 32;
 
-// ─── Globe temperature — interpolate sun/shade by overcast
-//     Full sun (overcast = 0): Tg = T + 15
-//     Full shade (overcast = 1): Tg = T
-private _Tg = _T_C + 15 * (1 - overcast);
+// ─── Simple form — below 80 °F or below 40 %RH ───────────────────────────
+private _HI_F = if (_T_F < 80 || _RH < 40) then {
+    0.5 * (_T_F + 61.0 + ((_T_F - 68.0) * 1.2) + (_RH * 0.094))
+} else {
+    // ─── Full regression (Rothfusz 1990) ────────────────────────────────
+    -42.379 + 2.04901523 * _T_F + 10.14333127 * _RH
+        - 0.22475541 * _T_F * _RH
+        - 6.83783e-3 * (_T_F ^ 2)
+        - 5.481717e-2 * (_RH ^ 2)
+        + 1.22874e-3 * (_T_F ^ 2) * _RH
+        + 8.5282e-4 * _T_F * (_RH ^ 2)
+        - 1.99e-6 * (_T_F ^ 2) * (_RH ^ 2)
+};
 
-// ─── WBGT
-private _WBGT = 0.7 * _Tw + 0.2 * _Tg + 0.1 * _T_C;
+// ─── Adjustments ──────────────────────────────────────────────────────────
+if (_RH < 13 && _T_F >= 80 && _T_F <= 112) then {
+    _HI_F = _HI_F - ((13 - _RH) / 4) * sqrt ((17 - abs (_T_F - 95)) / 17);
+};
+if (_RH > 85 && _T_F >= 80 && _T_F <= 87) then {
+    _HI_F = _HI_F + ((_RH - 85) / 10) * ((87 - _T_F) / 5);
+};
 
-// Store (QGVAR only — ACE3 medical has no heat index system)
-missionNamespace setVariable [QEGVAR(core,currentWBGT), _WBGT];
+// ─── Convert back to Celsius ──────────────────────────────────────────────
+private _HI_C = (_HI_F - 32) * 5 / 9;
 
-_WBGT
+missionNamespace setVariable [QEGVAR(core,currentHeatIndex), _HI_C];
+
+_HI_C

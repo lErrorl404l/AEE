@@ -59,6 +59,7 @@ if (GVAR(hydrologyEnabled)) then { call EFUNC(environmental,calculateFreezeThawC
 [] call EFUNC(environmental,calculateFogBaseAltitude);
 
 // ─── Thermal / Physiological ───────────────────────────────────────────────
+[] call EFUNC(thermal,calculateWBGT);
 [] call EFUNC(thermal,calculateHeatIndex);
 [] call EFUNC(thermal,calculateHypothermiaRisk);
 [] call EFUNC(thermal,calculateClothingInsulation);
