@@ -18,7 +18,7 @@ jobs:
       - name: Validate Stringtables
         run: python3 tools/stringtable_validator.py
       - name: Physics reference checks
-        run: python3 -m unittest discover -s tools/tests
+        run: python3 tools/run_tests.py --fast
       - name: Check for BOM
         uses: arma-actions/bom-check@v1
         with:

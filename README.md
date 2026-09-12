@@ -134,11 +134,16 @@ hemtt launch <profile>
 Profiles are `default`, `ace3`, `acre2`, `tfar`, `kat`, `acm`, and `full`.
 Workshop IDs are configured in `.hemtt/project.toml`.
 
-Run the physics reference checks with:
+Run the full test sweep (unit suites + physics validation harness) with:
 
 ```bash
-python3 -m unittest discover -s tools/tests
+python3 tools/run_tests.py
 ```
+
+The 170 unit tests mirror every physics model in Python and cover
+reference values, edge cases, and clamps. A pre-commit hook runs them on
+every commit. The headless dedicated-server test in Docker runs the mod
+against real Arma 3 and verifies ten phases (see docs/wiki/chapters/testing.qmd).
 
 Localisation uses a per-addon `stringtable.xml`. Keys use the form
 `STR_AEE_<Component>_<Key>`.
@@ -149,7 +154,8 @@ GitHub Actions runs these checks on every push:
 
 - `hemtt check -p -e`
 - `hemtt build`
-- The Python validators and physics tests
+- The unit tests via `tools/run_tests.py`
+- The headless Docker server test (on demand)
 - An SBOM on release tags
 - Release-drafter
 

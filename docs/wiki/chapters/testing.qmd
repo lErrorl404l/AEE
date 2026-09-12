@@ -6,16 +6,26 @@ title: "Testing"
 
 This chapter describes how AEE is verified.
 
-## Physics reference checks
+## Unit tests
 
-The SQF physics model is validated against reference values in Python.
-The checks cover air density (ISA sea level, moist air, high altitude),
-Buck saturation vapour pressure, the lapse rate, the solar diurnal curve,
-and wind chill.
+The SQF physics models are mirrored in Python and validated with `unittest`.
+Six suites cover 170 tests across every module: ballistics, thermal
+(air density, WBGT, heat index, wind chill), mobility (SAE J1349 power,
+slip traction, Nash cascade, NRMM, compass), physiology (hypoxia TUC, UV),
+radio (Friis, ITU-R P.531), environmental (Q10 CBRN, Rothermel, Stefan),
+and atmos (LWC icing, CAPE, EDR, WMO trend). Each test covers reference
+values, edge cases (zero, extremes, clamp bounds), and monotonicity.
+
+The single-command runner executes every suite plus the physics validation
+harness:
 
 ```bash
-python3 -m unittest discover -s tools/tests
+python3 tools/run_tests.py            # full sweep
+python3 tools/run_tests.py --fast     # unit suites only
 ```
+
+The unit tests run in the pre-commit hook, so a formula regression cannot
+be committed.
 
 ## Server installation
 
@@ -48,11 +58,11 @@ Docker. It uses the brettmayson/arma3server image. The test mission
 | 3 | Core state in physical ranges |
 | 4 | Compat gating (no ACE3) |
 | 5 | Determinism (temperature delta over 5 s) |
-| 6 | Module coverage (state surface of every subsystem) |
+| 6 | Module coverage (state surface of every subsystem, 45 variables) |
 | 7 | AI-unit dependent functions |
 | 8 | Koppen classifier (17 biome codes) |
 | 9 | Edge cases (boundary positions, nil/garbage inputs, extreme values, rapid state changes) |
-| 10 | Performance gate (core functions complete within 1 ms per call) |
+| 10 | Performance gate (core functions within per-call budget: 1 ms on-demand, 5 ms for the 5 s update loop) |
 
 ```bash
 tools/docker_test.sh
@@ -108,6 +118,11 @@ tools/docker_test.sh --hosts
 
 The mode reports a PASS or FAIL per host. Missing mods are listed instead
 of run.
+
+ACM ships uppercase PBO filenames. The Arma Linux server canonicalises
+them to lowercase internally and then cannot open the uppercase file on a
+case-sensitive filesystem. The harness creates lowercase symlink aliases
+for the ACM PBOs before the host test, so ACM loads correctly on Linux.
 
 ## Visual verification
 
