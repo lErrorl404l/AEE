@@ -110,6 +110,7 @@ if (GVAR(hydrologyEnabled)) then {
 [] call EFUNC(mobility,calculateRouteDegradation);
 [] call EFUNC(mobility,calculateSoilBearingStrength);
 [] call EFUNC(fx,applyVehicleDust);
+[] call EFUNC(fx,applyAtmosphericDust);
 
 // ─── Atmospheric events ────────────────────────────────────────────────────
 if (GVAR(atmosphericEventsEnabled)) then {
@@ -155,11 +156,13 @@ if (GVAR(opticsEnabled)) then {
 // ─── Post-Process Effects & HUD ─────────────────────────────────────────
 [] call EFUNC(optics,applyRainOnOpticsFX);
 [] call EFUNC(optics,applyHeatShimmerFX);
+[] call EFUNC(optics,applyNightGrain);
 [] call EFUNC(physiology,applyHeatStressHUD);
 
 // ─── Breath condensation ───────────────────────────────────────────────────
 [] call EFUNC(fx,applyBreathCondensation);
 [] call EFUNC(fx,applyRainVehicleSound);
+[] call EFUNC(fx,applyRainSurfaceDrops);
 
 if (GVAR(diagnostic)) then {
     [] call FUNC(diagnostic);
