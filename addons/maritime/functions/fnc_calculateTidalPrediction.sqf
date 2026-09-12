@@ -1,17 +1,26 @@
 #include "..\script_component.hpp"
 
 /*
-Simplified harmonic tide model driven by in-game date and time.
+Harmonic tide model driven by in-game date and time.
 
-Combines lunar and solar tidal constituents:
-  • Moon tide:  1.0 × sin(2π × dayFraction + moonPhase × π)
-  • Sun tide:   0.4 × sin(2π × (dayFraction − 0.5))
+Four standard tidal constituents (degrees/hour angular speeds from the
+Admiralty/NOAA harmonic analysis):
+  M2 (principal lunar semidiurnal): 28.9841°/h, period 12.42 h, amp 1.00 m
+  S2 (principal solar semidiurnal): 30.0000°/h, period 12.00 h, amp 0.47 m
+  K1 (lunisolar diurnal):           15.0411°/h, period 24.07 h, amp 0.58 m
+  O1 (principal lunar diurnal):     13.9430°/h, period 25.82 h, amp 0.42 m
 
-Spring and neap cycles emerge naturally from the alignment of the
-two constituents.  Result is clamped to ±2 m.
+The tide height is the sum of the four constituents:
 
-The tide description encodes the current state (Low / Rising / High / Falling)
-and, where applicable, a spring- or neap-tide modifier.
+  h(t) = Σ Aᵢ · sin(ωᵢ · t − φᵢ)
+
+where t is hours since a fixed epoch (2024-01-01 00:00, so the tide is a
+deterministic function of the in-game date).  M2/S2 beat produces the
+spring/neap cycle naturally (7-day period) — no phase hack needed.
+Result clamped to ±2 m.
+
+The tide description encodes the current state (Low / Rising / High /
+Falling) and, where applicable, a spring- or neap-tide modifier.
 
 Sets  QGVAR(currentTideOffset_m)   — float, −2 to +2
 Sets  QGVAR(currentTideDescription) — string
@@ -23,29 +32,50 @@ params [];
 private _dateArr = date;
 _dateArr params [["_year", 2024], ["_month", 1], ["_day", 1], ["_hour", 12], ["_minute", 0]];
 
-// ─── Day fraction (0–1) ───────────────────────────────────────────────────
-private _dayFraction = (_hour + (_minute / 60)) / 24;
+// ─── Hours since fixed epoch (2024-01-01 00:00) ───────────────────────────
+// Standard 30.6001-day month formula for day-of-year, then ×24 + clock hours.
+private _dayOfYear = floor (275 * _month / 9) - (2 * floor ((_month + 9) / 12)) + _day - 30;
+private _hoursSinceEpoch = ((_year - 2024) * 8760) + ((_dayOfYear - 1) * 24) + _hour + (_minute / 60);
 
-// ─── Days since epoch (approximate) ───────────────────────────────────────
-private _daysSinceEpoch = (_year * 365) + (_month * 30) + _day;
+// ─── Constituent angular speeds (deg/h) and amplitudes (m) ───────────────
+private _M2 = [28.9841, 1.00];
+private _S2 = [30.0000, 0.47];
+private _K1 = [15.0411, 0.58];
+private _O1 = [13.9430, 0.42];
 
-// ─── Moon phase (−1 to 1) ────────────────────────────────────────────────
-// 29.53-day synodic period; sin() returns 0 at new moon, ±1 at full/alignment
-private _moonPhase = sin (360 * (_daysSinceEpoch / 29.53));
+// Phase offsets (deg) at the epoch — approximate, so the tide is stable
+private _phaseM2 = 0; private _phaseS2 = 45; private _phaseK1 = 90; private _phaseO1 = 0;
 
-// ─── Harmonic constituents (sin expects degrees) ─────────────────────────
-private _moonTide = sin ((360 * _dayFraction) + (_moonPhase * 180));
-private _sunTide  = 0.4 * sin (360 * (_dayFraction - 0.5));
+private _tideHeight = 0;
+{
+    _x params ["_speed", "_amp"];
+    private _phase = switch (_forEachIndex) do {
+        case 0: { _phaseM2 };
+        case 1: { _phaseS2 };
+        case 2: { _phaseK1 };
+        default { _phaseO1 };
+    };
+    _tideHeight = _tideHeight + (_amp * sin ((_speed * _hoursSinceEpoch) + _phase));
+} forEach [_M2, _S2, _K1, _O1];
 
-private _tideHeight = (_moonTide + _sunTide) max -2 min 2;
+_tideHeight = _tideHeight max -2 min 2;
 
 // ─── Tide description ─────────────────────────────────────────────────────
-// Approximate slope via forward difference for state detection
-private _eps       = 0.01;
-private _moonTideE = sin ((360 * (_dayFraction + _eps)) + (_moonPhase * 180));
-private _sunTideE  = 0.4 * sin (360 * ((_dayFraction + _eps) - 0.5));
-private _tideE     = (_moonTideE + _sunTideE) max -2 min 2;
-private _slope     = (_tideE - _tideHeight) / _eps;
+// Approximate slope via forward difference for state detection (0.25 h)
+private _eps     = 0.25;
+private _tideE   = 0;
+{
+    _x params ["_speed", "_amp"];
+    private _phase = switch (_forEachIndex) do {
+        case 0: { _phaseM2 };
+        case 1: { _phaseS2 };
+        case 2: { _phaseK1 };
+        default { _phaseO1 };
+    };
+    _tideE = _tideE + (_amp * sin ((_speed * (_hoursSinceEpoch + _eps)) + _phase));
+} forEach [_M2, _S2, _K1, _O1];
+_tideE = _tideE max -2 min 2;
+private _slope = (_tideE - _tideHeight) / _eps;
 
 private _tideDesc = if (_tideHeight > 1.0) then {
     "High"
@@ -57,11 +87,14 @@ private _tideDesc = if (_tideHeight > 1.0) then {
     }
 };
 
-// Spring / neap modifier appended when moon-sun alignment is pronounced
-if (abs _moonPhase > 0.9) then {
+// Spring / neap from M2/S2 alignment: when the two semidiurnal constituents
+// are in phase the tidal range is largest (spring), opposed it is smallest
+// (neap).  The beat period is ~14.8 days.
+private _alignment = abs (sin (((_M2 select 0) - (_S2 select 0)) * _hoursSinceEpoch * (pi / 180)));
+if (_alignment > 0.9) then {
     _tideDesc = _tideDesc + " (Spring Tide)";
 };
-if (abs _moonPhase < 0.2) then {
+if (_alignment < 0.2) then {
     _tideDesc = _tideDesc + " (Neap Tide)";
 };
 

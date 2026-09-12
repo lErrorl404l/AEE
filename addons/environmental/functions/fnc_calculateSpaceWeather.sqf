@@ -93,17 +93,21 @@ private _geoDesc = switch (true) do {
 private _solarActivity = (_solarCycle + _flareValue) min 1;
 
 // ─── Aurora visibility ────────────────────────────────────────────────────
-// Requires: elevated geomagnetic activity, clear sky, nighttime,
-//           high latitude (>45° N/S)
+// Requires: elevated geomagnetic activity, clear sky, nighttime
+// (before 06:00 OR after 20:00 — grouped so the OR binds correctly),
+// and high latitude (>45° N/S).  The world latitude comes from the map
+// config, not a crude Y/100000 approximation (which on a 30 km map
+// never exceeds 27° and would make aurora impossible).
 private _overcast = overcast;
 private _daytime  = dayTime;
 
-private _posASL = getPosASL (call CBA_fnc_currentUnit);
-private _latDeg = abs ((_posASL select 1) / 100000 * 90); // ponytail: rough latitude
+private _worldLat = getNumber (configFile >> "CfgWorlds" >> worldName >> "latitude");
+private _latDeg = abs _worldLat;
+if (_latDeg == 0) then { _latDeg = 45; };  // fallback: temperate, aurora possible at storm level
 
 private _aurora = _kpIndex > 4
     && (_overcast < 0.3)
-    && _daytime < 6 || _daytime > 20
+    && ((_daytime < 6) || (_daytime > 20))
     && (_latDeg > 45);
 
 // ─── Store ────────────────────────────────────────────────────────────────
