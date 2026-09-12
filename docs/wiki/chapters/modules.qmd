@@ -4,7 +4,7 @@ title: "Modules"
 
 # Modules {#sec-modules}
 
-This page lists the 18 addons and their functions. Each function file is
+This page lists the 19 addons and their functions. Each function file is
 `functions/fnc_<name>.sqf`. Functions use the name
 `aee_<component>_fnc_<name>`.
 
@@ -15,10 +15,15 @@ the environment, and reports diagnostics.
 
 | Function | Purpose |
 |---|---|
+| `calculateSeededWeatherProgression` | Compute a deterministic weather quality factor from a seeded LCG |
+| `calculateSolarRadiation` | Calculate the solar radiation factor from date, time and latitude |
+| `deterministicRandom` | Generate a deterministic pseudo-random value from two integer seeds |
+| `diagnostic` | Report diagnostic information |
 | `init` | Initialise the mod at mission start |
 | `moduleInit` | Initialise the EDEN module |
+| `moduleStormInit` | Initialise the storm control EDEN module |
 | `updateEnvironment` | Orchestrate the environment update |
-| `diagnostic` | Report diagnostic information |
+| `updateSoilMoisture` | Update soil moisture and evaporation |
 
 ## atmos
 
@@ -29,8 +34,10 @@ Atmosphere and weather simulation.
 | `calculateAirframeIcing` | Calculate airframe icing |
 | `calculateCloudCeiling` | Calculate the cloud ceiling |
 | `calculateCloudDevelopment` | Calculate cloud development |
+| `calculateHaze` | Calculate atmospheric haze from humidity and dust suppression |
 | `calculateLightning` | Calculate lightning risk |
 | `calculateMicroburst` | Calculate microburst risk |
+| `calculatePrecipitationPhase` | Determine the precipitation phase from wet-bulb temperature |
 | `calculatePressureTrend` | Calculate the pressure trend |
 | `calculateTurbulence` | Calculate turbulence |
 | `updateFog` | Update fog density |
@@ -44,6 +51,7 @@ Temperature and thermal effects.
 
 | Function | Purpose |
 |---|---|
+| `calculateClothingInsulation` | Publish the clothing insulation factor |
 | `calculateFreezingRain` | Calculate freezing rain |
 | `calculateHeatIndex` | Calculate the heat index (NWS Rothfusz) |
 | `calculateHypothermiaRisk` | Calculate hypothermia risk |
@@ -69,8 +77,14 @@ Optics and visibility effects.
 
 | Function | Purpose |
 |---|---|
+| `applyAtmosphericSeeingFX` | Apply the atmospheric seeing post-process |
+| `applyDewOnOpticsFX` | Apply the dew on optics overlay |
 | `applyHeatShimmerFX` | Apply heat shimmer effects |
+| `applyMirageFX` | Apply the mirage refract effect |
+| `applyNightGrain` | Apply night low-light film grain |
 | `applyRainOnOpticsFX` | Apply rain on optics effects |
+| `applySnowBlindnessFX` | Apply the snow blindness overlay |
+| `applySolarGlareFX` | Apply the solar glare veiling effect |
 | `calculateAtmosphericSeeing` | Calculate atmospheric seeing |
 | `calculateAttenuation` | Calculate light attenuation |
 | `calculateDewOnOptics` | Calculate dew on optics |
@@ -82,6 +96,7 @@ Optics and visibility effects.
 | `calculateSolarGlare` | Calculate solar glare |
 | `calculateThermalContrast` | Calculate thermal contrast |
 | `calculateVehicleHeatShimmer` | Calculate vehicle heat shimmer |
+| `managePostProcess` | Manage the shared post-process effects |
 
 ## mobility
 
@@ -89,6 +104,7 @@ Vehicle and ground mobility.
 
 | Function | Purpose |
 |---|---|
+| `applyFlightTurbulence` | Apply per-frame turbulence forces to aircraft |
 | `calculateEnginePower` | Calculate engine power |
 | `calculateHelicopterLift` | Calculate helicopter lift |
 | `calculateMudAccretion` | Calculate mud accretion |
@@ -111,12 +127,16 @@ Environmental and seasonal effects.
 | `calculateDustSuppression` | Calculate dust suppression |
 | `calculateFireSpreadRisk` | Calculate fire spread risk |
 | `calculateFlashFloodRisk` | Calculate flash flood risk |
+| `calculateFogBaseAltitude` | Calculate the fog base altitude from the dewpoint spread |
 | `calculateFreezeThawCycling` | Calculate freeze-thaw cycling |
 | `calculateFrostOnWindscreens` | Calculate frost on windscreens |
 | `calculateLunarIllumination` | Calculate lunar illumination |
+| `calculateQNH` | Calculate QNH and pressure altitude |
 | `calculateSevereWeather` | Calculate severe weather |
 | `calculateSnowAccumulation` | Calculate snow accumulation |
 | `calculateSpaceWeather` | Calculate space weather |
+| `calculateSurfaceWetness` | Calculate surface wetness from wetting and drying |
+| `classifyBiome` | Classify the climate with the Koppen algorithm |
 | `getBiome` | Get the current biome |
 | `getClimateNormals` | Get the climate normals |
 | `updateSeasonalFoliage` | Update seasonal foliage |
@@ -142,6 +162,7 @@ Physiological effects.
 | `calculateAltitudeAcclimatization` | Calculate altitude acclimatisation |
 | `calculateBatteryTemperatureDerating` | Calculate battery temperature derating |
 | `calculateDehydrationRisk` | Calculate dehydration risk |
+| `calculateHypoxia` | Calculate hypoxia risk from oxygen altitude |
 | `calculateScentDispersion` | Calculate scent dispersion |
 | `calculateUVIndex` | Calculate the UV index |
 
@@ -151,6 +172,7 @@ Radio propagation.
 
 | Function | Purpose |
 |---|---|
+| `calculateIonosphericAbsorption` | Calculate HF ionospheric absorption |
 | `calculateRadioPropagation` | Calculate radio propagation |
 
 ## fx
@@ -159,10 +181,15 @@ Visual and audio effects.
 
 | Function | Purpose |
 |---|---|
+| `applyAtmosphericDust` | Apply airborne dust particles |
 | `applyBreathCondensation` | Apply breath condensation |
+| `applyRainSurfaceDrops` | Apply rain surface drop particles |
 | `applyRainVehicleSound` | Apply rain vehicle sound |
 | `applyVehicleDust` | Apply vehicle dust |
 | `applyWindNoise` | Apply wind noise |
+| `calculateLightningStrikeEffects` | Roll lightning fire ignition and publish the strike position |
+| `checkParticleBudget` | Check the particle source budget |
+| `registerParticleSource` | Register a particle source with the budget tracker |
 | `triggerLightning` | Trigger lightning |
 | `triggerSevereWeatherFX` | Trigger severe weather effects |
 
@@ -188,8 +215,11 @@ present.
 
 | Addon | Function | Purpose |
 |---|---|---|
+| `compat_ace3` | `integrateKestrel` | Populate ACE3 weather state for the Kestrel |
 | `compat_ace3` | `integrateMedical` | Integrate ACE3 medical |
 | `compat_acm` | `integrateACM` | Integrate ACM |
+| `compat_acm` | `registerHypoxiaDutyFactor` | Register the hypoxia duty factor with ACM |
 | `compat_acre2` | `integrateACRE2` | Integrate ACRE2 |
 | `compat_kat` | `integrateKAT` | Integrate KAT |
+| `compat_realweather` | `integrateRealWeather` | Read weather.json and publish real values |
 | `compat_tfar` | `integrateTFAR` | Integrate TFAR |

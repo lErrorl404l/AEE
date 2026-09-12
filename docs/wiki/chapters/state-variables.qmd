@@ -4,120 +4,359 @@ title: "State variables"
 
 # State variables {#sec-state}
 
-Shared simulation state lives in `aee_core_*` mission variables. Any mod or
-mission script can read them. The variables below are grouped by subsystem.
+Shared simulation state lives in `aee_core_*` mission variables. Addon-local
+state lives in `aee_<component>_*` variables. Any mod or mission script can
+read them. The variables below are grouped by subsystem.
 
 ## Biome
 
 | Variable | Purpose |
 |---|---|
-| `biome` | The current biome code |
-| `biomeName` | The current biome name |
-| `moduleBiomeOverride` | The biome override from the EDEN module |
+| `aee_core_biome` | The current biome code |
+| `aee_core_biomeName` | The current biome name |
+| `aee_core_moduleBiomeOverride` | The biome override from the EDEN module |
+| `aee_core_biomeEnabled` | Whether biome simulation is enabled |
+| `aee_core_biomeTransitionRadius` | The biome transition radius |
 
 ## Temperature
 
 | Variable | Purpose |
 |---|---|
-| `currentTemperature` | The current air temperature |
-| `surfaceTemperature` | The current surface temperature |
-| `currentWaterTemperature` | The current water temperature |
-| `moduleTempOffset` | The temperature offset from the EDEN module |
-| `thermalCrossoverActive` | Whether thermal crossover is active |
-| `crossoverTimer` | The thermal crossover timer |
+| `aee_core_currentTemperature` | The current air temperature |
+| `aee_core_surfaceTemperature` | The current surface temperature |
+| `aee_core_currentWaterTemperature` | The current water temperature |
+| `aee_core_moduleTempOffset` | The temperature offset from the EDEN module |
+| `aee_core_tempDiurnalEnabled` | Whether the diurnal temperature cycle is enabled |
+| `aee_core_tempLapseRate` | The temperature lapse rate |
+| `aee_core_tempLapseRateEnabled` | Whether the lapse rate is enabled |
+| `aee_core_urbanHeatIsland` | The urban heat island effect |
+| `aee_core_waterInfluenceRadius` | The water influence radius |
+| `aee_core_microclimateRadius` | The microclimate radius |
+| `aee_core_referenceAltitude` | The reference altitude |
+| `aee_core_icaoReferenceAlt` | The ICAO reference altitude |
+| `aee_atmos_dailyMeanTemp` | The daily mean temperature |
+| `aee_atmos_lastTemperature` | The last temperature reading |
 
 ## Wind
 
 | Variable | Purpose |
 |---|---|
-| `currentWind` | The current wind vector |
-| `currentWindDir` | The current wind direction |
-| `currentGusts` | The current gust strength |
-| `moduleWindMultiplier` | The wind multiplier from the EDEN module |
+| `aee_core_currentWind` | The current wind vector |
+| `aee_core_currentWindDir` | The current wind direction |
+| `aee_core_currentGusts` | The current gust strength |
+| `aee_core_moduleWindMultiplier` | The wind multiplier from the EDEN module |
+| `aee_core_windEnabled` | Whether wind simulation is enabled |
+| `aee_core_windGustFrequency` | The wind gust frequency |
+| `aee_core_windTerrainInfluence` | The terrain influence on wind |
+| `aee_fx_windSpeed` | The current wind speed |
 
 ## Pressure
 
 | Variable | Purpose |
 |---|---|
-| `currentPressure` | The current pressure |
-| `currentPressureTrend` | The current pressure trend |
-| `pressureReading1` | The first pressure reading |
-| `pressureReading2` | The second pressure reading |
+| `aee_core_currentPressure` | The current pressure |
+| `aee_core_currentPressureTrend` | The current pressure trend |
+| `aee_core_pressureReading1` | The first pressure reading |
+| `aee_core_pressureReading2` | The second pressure reading |
+| `aee_core_qnh` | The QNH pressure corrected to sea level |
+| `aee_core_pressureAltitude_m` | The pressure altitude in metres |
 
 ## Humidity and precipitation
 
 | Variable | Purpose |
 |---|---|
-| `currentHumidity` | The current humidity |
-| `overcast` | The current overcast |
-| `rainAccum` | The accumulated rain |
-| `currentFreezingRain` | The current freezing rain |
-| `currentBlowingSnow` | The current blowing snow |
-| `currentSandstorm` | The current sandstorm |
-| `currentDustDevil` | The current dust devil |
+| `aee_core_currentHumidity` | The current humidity |
+| `aee_core_overcast` | The current overcast |
+| `aee_core_rainAccum` | The accumulated rain |
+| `aee_core_currentFreezingRain` | The current freezing rain |
+| `aee_core_currentBlowingSnow` | The current blowing snow |
+| `aee_core_currentSandstorm` | The current sandstorm |
+| `aee_core_currentDustDevil` | The current dust devil |
+| `aee_core_humidityEnabled` | Whether humidity simulation is enabled |
+| `aee_core_modulePrecipBias` | The precipitation bias from the EDEN module |
+| `aee_core_precipOrographicEnabled` | Whether orographic precipitation is enabled |
 
 ## Air density
 
 | Variable | Purpose |
 |---|---|
-| `currentAirDensity` | The current air density |
+| `aee_core_currentAirDensity` | The current air density |
+| `aee_core_airDensityEnabled` | Whether air density simulation is enabled |
 
 ## Cloud and fog
 
 | Variable | Purpose |
 |---|---|
-| `cloudCeiling_m` | The cloud ceiling in metres |
-| `currentFogDensity` | The current fog density |
+| `aee_core_cloudCeiling_m` | The cloud ceiling in metres |
+| `aee_core_currentFogDensity` | The current fog density |
+| `aee_core_fogBase_m` | The fog base altitude in metres |
+| `aee_atmos_currentCloudDescription` | The current cloud description |
+| `aee_atmos_currentCloudTrend` | The current cloud trend |
+| `aee_atmos_radiationalFog` | Whether radiational fog is active |
 
 ## Hydrology
 
 | Variable | Purpose |
 |---|---|
-| `currentWaterLevel` | The current water level |
-| `currentTideOffset_m` | The current tide offset in metres |
-| `currentTideDescription` | The current tide description |
-| `waveHeight_m` | The wave height in metres |
+| `aee_core_currentWaterLevel` | The current water level |
+| `aee_core_currentTideOffset_m` | The current tide offset in metres |
+| `aee_core_currentTideDescription` | The current tide description |
+| `aee_core_waveHeight_m` | The wave height in metres |
+| `aee_core_hydrologyEnabled` | Whether hydrology simulation is enabled |
 
 ## Sea state
 
 | Variable | Purpose |
 |---|---|
-| `seaStateBeaufort` | The sea state on the Beaufort scale |
-| `seaStateCurrent` | The current sea state |
-| `seaStateDescription` | The sea state description |
+| `aee_core_seaStateBeaufort` | The sea state on the Beaufort scale |
+| `aee_core_seaStateCurrent` | The current sea state |
+| `aee_core_seaStateDescription` | The sea state description |
+| `aee_maritime_compassDeviation` | The compass deviation |
 
 ## Turbulence
 
 | Variable | Purpose |
 |---|---|
-| `currentTurbulence` | The current turbulence |
+| `aee_core_currentTurbulence` | The current turbulence |
+| `aee_atmos_edrValue` | The eddy dissipation rate |
+| `aee_atmos_turbulenceClass` | The turbulence class |
+| `aee_mobility_turbulenceState` | The turbulence state |
+| `aee_mobility_turbulenceAircraft` | Whether aircraft turbulence is active |
+| `aee_mobility_turbulenceRadius` | The turbulence radius |
+| `aee_mobility_turbulenceScale` | The turbulence scale |
+| `aee_mobility_turbulenceRefresh` | The turbulence refresh interval |
+| `aee_mobility_turbulenceShearTime` | The turbulence shear time |
 
 ## Radiation
 
 | Variable | Purpose |
 |---|---|
-| `currentUVIndex` | The current UV index |
-| `currentWBGT` | The current wet bulb globe temperature |
+| `aee_core_currentUVIndex` | The current UV index |
+| `aee_core_currentSolarRadiation` | The current solar radiation factor |
 
 ## Forecast
 
 | Variable | Purpose |
 |---|---|
-| `currentWeatherForecast` | The current weather forecast |
+| `aee_core_currentWeatherForecast` | The current weather forecast |
+| `aee_core_weatherProgression` | The weather quality factor |
+| `aee_core_weatherProgressionSeed` | The weather progression seed |
+| `aee_core_realWeatherActive` | Whether real weather mode is active |
 
 ## Environmental
 
 | Variable | Purpose |
 |---|---|
-| `currentCropDensity` | The current crop density |
-| `currentFireRisk` | The current fire risk |
-| `currentFloodRisk` | The current flood risk |
-| `currentIcingSeverity` | The current icing severity |
-| `currentLightningRisk` | The current lightning risk |
-| `currentHypothermiaRisk` | The current hypothermia risk |
-| `dustSuppression` | The current dust suppression |
-| `groundState` | The current ground state |
-| `magneticDeclinationDeg` | The magnetic declination in degrees |
-| `snowDepth_m` | The snow depth in metres |
-| `vehicleHeatShimmerIntensity` | The vehicle heat shimmer intensity |
-| `updateInterval` | The update interval |
+| `aee_core_currentCropDensity` | The current crop density |
+| `aee_core_currentFloodRisk` | The current flood risk |
+| `aee_core_currentLightningRisk` | The current lightning risk |
+| `aee_core_dustSuppression` | The current dust suppression |
+| `aee_core_magneticDeclinationDeg` | The magnetic declination in degrees |
+| `aee_core_updateInterval` | The update interval |
+| `aee_core_enabled` | Whether the mod is enabled |
+| `aee_core_isReady` | Whether the mod is ready |
+| `aee_core_diagnostic` | Whether diagnostic reporting is enabled |
+| `aee_core_environmentalEnabled` | Whether environmental simulation is enabled |
+| `aee_core_atmosphericEventsEnabled` | Whether atmospheric events are enabled |
+| `aee_core_moduleUpdateInterval` | The update interval from the EDEN module |
+| `aee_core_updatePFH` | The update per-frame handler |
+| `aee_core_cbrnPersistence` | The CBRN persistence |
+| `aee_core_currentAvalancheRisk` | The current avalanche risk |
+| `aee_environmental_currentAvalancheWarning` | The current avalanche warning |
+| `aee_environmental_currentFoliageDensity` | The current foliage density |
+| `aee_environmental_currentSoundPropagation` | The current sound propagation |
+| `aee_environmental_ambientLux` | The ambient light level |
+| `aee_environmental_auroraVisibility` | The aurora visibility |
+| `aee_environmental_biologicalAmbientIntensity` | The biological ambient intensity |
+| `aee_environmental_flashFloodRisk` | The flash flood risk |
+| `aee_environmental_freezeThawState` | The freeze-thaw state |
+| `aee_environmental_freezeThawDescription` | The freeze-thaw description |
+| `aee_environmental_frostIntensity` | The frost intensity |
+| `aee_fx_atmosphericDust` | The atmospheric dust effect |
+| `aee_fx_breathCondensation` | The breath condensation effect |
+| `aee_fx_rainSurfaceDrops` | The rain surface drop effect |
+| `aee_fx_vehicleDust` | The vehicle dust effect |
+| `aee_fx_particleSources` | The registered particle sources |
+
+## Soil and hydrology
+
+| Variable | Purpose |
+|---|---|
+| `aee_core_soilMoisture` | The soil moisture |
+| `aee_core_surfaceWetness` | The surface wetness |
+
+## Optics
+
+| Variable | Purpose |
+|---|---|
+| `aee_optics_atmosphericSeeing` | The atmospheric seeing quality |
+| `aee_optics_solarGlareIntensity` | The solar glare intensity |
+| `aee_optics_rainOnOptics` | The rain on optics level |
+| `aee_optics_dewOnOptics` | The dew on optics level |
+| `aee_optics_snowBlindness` | The snow blindness level |
+| `aee_optics_mirageIntensity` | The mirage intensity |
+| `aee_core_vehicleHeatShimmerIntensity` | The vehicle heat shimmer intensity |
+| `aee_optics_seeingChroma` | The seeing chromatic aberration |
+| `aee_optics_shimmerChroma` | The shimmer chromatic aberration |
+| `aee_optics_dewBlur` | The dew blur intensity |
+| `aee_optics_rainBlur` | The rain blur intensity |
+| `aee_optics_glareBlur` | The glare blur intensity |
+| `aee_optics_currentThermalContrast` | The current thermal contrast |
+| `aee_optics_currentVisibleAttenuation` | The current visible attenuation |
+| `aee_optics_currentLaserAttenuation` | The current laser attenuation |
+| `aee_optics_precipVisibilityModifier` | The precipitation visibility modifier |
+| `aee_optics_smokeDispersalModifier` | The smoke dispersal modifier |
+| `aee_optics_severeWeatherBlur` | The severe weather blur |
+| `aee_optics_severeWeatherCC` | The severe weather colour correction |
+| `aee_optics_blurActive` | Whether the dynamic blur effect is active |
+| `aee_optics_blurGen` | The dynamic blur effect generation counter |
+| `aee_optics_ccActive` | Whether the colour correction effect is active |
+| `aee_optics_ccGen` | The colour correction effect generation counter |
+| `aee_optics_chromaActive` | Whether the chromatic aberration effect is active |
+| `aee_optics_chromaGen` | The chromatic aberration effect generation counter |
+| `aee_optics_dewPreviousTemp` | The previous temperature for dew tracking |
+| `aee_optics_dewTimer` | The dew accumulation timer |
+| `aee_optics_glareFXActive` | Whether the glare effect is active |
+| `aee_optics_isReady` | Whether the optics addon is ready |
+| `aee_optics_mirageSource` | The mirage particle source |
+| `aee_optics_nightGrainActive` | Whether the night grain effect is active |
+| `aee_optics_snowBlindnessCC` | The snow blindness colour correction parameters |
+| `aee_core_opticsEnabled` | Whether optics simulation is enabled |
+
+## Physiology
+
+| Variable | Purpose |
+|---|---|
+| `aee_physiology_dehydrationRisk` | The dehydration risk |
+| `aee_physiology_hypoxiaRisk` | The hypoxia risk |
+| `aee_physiology_hypoxiaTUC` | The time of useful consciousness |
+| `aee_physiology_acclimatizationPercent` | The altitude acclimatisation |
+| `aee_physiology_uvIndex` | The UV index |
+| `aee_physiology_batteryTemperatureDerating` | The battery temperature derating |
+| `aee_physiology_scentDispersionIntensity` | The scent dispersion intensity |
+| `aee_core_currentHypoxiaRisk` | The current hypoxia risk |
+| `aee_physiology_altitudeState` | The altitude state |
+| `aee_physiology_amsRisk` | The acute mountain sickness risk |
+| `aee_physiology_dehydrationAccum` | The accumulated dehydration |
+| `aee_physiology_hypoxiaExposure` | The accumulated hypoxia exposure |
+| `aee_physiology_ozoneDU` | The ozone column in Dobson units |
+| `aee_physiology_scentDispersionDir` | The scent dispersion direction |
+| `aee_physiology_hudWarningActive` | Whether the HUD warning is active |
+
+## Radio
+
+| Variable | Purpose |
+|---|---|
+| `aee_radio_radioPropagationIndex` | The radio propagation index |
+| `aee_core_ionosphericAbsorption` | The ionospheric absorption |
+| `aee_radio_radioFrequencyHz` | The radio frequency in hertz |
+| `aee_radio_radioLinkRangeM` | The radio link range in metres |
+| `aee_radio_sunspotNumber` | The sunspot number |
+| `aee_radio_frequency` | The operating frequency |
+| `aee_core_radioPropagationEnabled` | Whether radio propagation is enabled |
+
+## Mobility
+
+| Variable | Purpose |
+|---|---|
+| `aee_mobility_tractionForce` | The traction force |
+| `aee_mobility_wheelSlip` | The wheel slip |
+| `aee_mobility_mudAccretion` | The mud accretion |
+| `aee_mobility_routeConeIndex` | The route cone index |
+| `aee_mobility_routePassability` | The route passability |
+| `aee_mobility_riverReservoirs` | The river reservoirs |
+| `aee_mobility_enginePowerModifier` | The engine power modifier |
+| `aee_mobility_engineTurboModifier` | The engine turbo modifier |
+| `aee_core_groundState` | The current ground state |
+| `aee_mobility_currentTractionTracked` | The tracked traction |
+| `aee_mobility_currentTractionWheeled` | The wheeled traction |
+| `aee_mobility_tractionModifier` | The traction modifier |
+| `aee_mobility_routeDegradation` | The route degradation |
+| `aee_mobility_soilBearing` | The soil bearing strength |
+| `aee_mobility_currentLiftRatio` | The current helicopter lift ratio |
+| `aee_mobility_flightTurbulence` | The flight turbulence |
+| `aee_mobility_isReady` | Whether the mobility addon is ready |
+| `aee_core_enginePowerDegradationEnabled` | Whether engine power degradation is enabled |
+| `aee_core_mudAccretionEnabled` | Whether mud accretion is enabled |
+
+## Aviation
+
+| Variable | Purpose |
+|---|---|
+| `aee_core_currentIcingSeverity` | The current icing severity |
+| `aee_atmos_iceAccretion_kg` | The ice accretion in kilograms |
+| `aee_atmos_airframeIcing` | The airframe icing |
+| `aee_atmos_airframeIcingDetected` | Whether airframe icing is detected |
+
+## Severe weather
+
+| Variable | Purpose |
+|---|---|
+| `aee_atmos_microburstWindSpeed` | The microburst wind speed |
+| `aee_atmos_microburstSeverity` | The microburst severity |
+| `aee_environmental_spaceWeatherFlareValue` | The space weather flare value |
+| `aee_environmental_solarFlareActive` | Whether a solar flare is active |
+| `aee_atmos_currentMicroburst` | The current microburst |
+| `aee_atmos_microburstTimer` | The microburst timer |
+| `aee_atmos_capeProxy` | The CAPE proxy |
+| `aee_atmos_currentLightningStrike` | The current lightning strike |
+| `aee_atmos_lastLightningPos` | The last lightning position |
+| `aee_atmos_lastStrikeTime` | The last strike time |
+| `aee_core_lastStrikePos` | The last strike position |
+| `aee_core_lightningIgnition` | Whether lightning ignited a fire |
+| `aee_core_stormOverrideType` | The storm override type |
+| `aee_core_stormOverrideIntensity` | The storm override intensity |
+| `aee_core_stormOverrideUntil` | The storm override expiry time |
+| `aee_environmental_geomagneticDescription` | The geomagnetic description |
+| `aee_environmental_kpIndex` | The Kp index |
+| `aee_environmental_solarActivity` | The solar activity |
+| `aee_environmental_spaceWeatherFlareState` | The space weather flare state |
+| `aee_environmental_spaceWeatherFlareTimer` | The space weather flare timer |
+| `aee_environmental_spaceWeatherFlareEndTime` | The space weather flare end time |
+
+## Air quality
+
+| Variable | Purpose |
+|---|---|
+| `aee_core_currentHaze` | The current haze |
+
+## Snow
+
+| Variable | Purpose |
+|---|---|
+| `aee_core_snowDepth_m` | The snow depth in metres |
+| `aee_core_snowfallRate` | The snowfall rate |
+| `aee_core_precipitationPhase` | The precipitation phase |
+| `aee_core_frozenDepth_m` | The frozen depth in metres |
+| `aee_core_thawDepth_m` | The thaw depth in metres |
+| `aee_core_freezingDegreeDays` | The freezing degree days |
+| `aee_core_thawingDegreeDays` | The thawing degree days |
+| `aee_environmental_snowDriftIntensity` | The snow drift intensity |
+
+## Fire
+
+| Variable | Purpose |
+|---|---|
+| `aee_environmental_fireSpreadRate_mps` | The fire spread rate in metres per second |
+| `aee_environmental_fireArea_m2` | The fire area in square metres |
+| `aee_core_currentFireRisk` | The current fire risk |
+
+## Thermal
+
+| Variable | Purpose |
+|---|---|
+| `aee_core_currentWBGT` | The current wet bulb globe temperature |
+| `aee_core_currentHeatIndex` | The current heat index |
+| `aee_core_currentHypothermiaRisk` | The current hypothermia risk |
+| `aee_core_thermalCrossoverActive` | Whether thermal crossover is active |
+| `aee_core_crossoverTimer` | The thermal crossover timer |
+| `aee_core_clothingInsulation` | The clothing insulation factor |
+| `aee_core_clothingInsulationFactor` | The clothing insulation factor |
+
+## Ballistics
+
+| Variable | Purpose |
+|---|---|
+| `aee_ballistics_coriolisDeflection_m` | The Coriolis deflection in metres |
+| `aee_ballistics_crosswind` | The crosswind |
+| `aee_ballistics_downrangeWind` | The downrange wind |

@@ -39,6 +39,8 @@ Download the latest `@aee.zip` from
 [Releases](https://github.com/lErrorl404l/AEE/releases). Extract it
 into your Arma 3 directory.
 
+The automated Docker test requires the Arma 3 Linux dedicated server.
+
 ## First mission
 
 1. Launch Arma 3 with AEE and CBA_A3 loaded.
@@ -66,17 +68,18 @@ If you see numeric values (not nil), AEE is running.
 
 ## Compatibility
 
-AEE works alongside ACE3, ACRE2, TFAR, KAT, and ACM. Each compat
-addon loads only when its host mod is present. You do not need to
+AEE works alongside ACE3, ACRE2, TFAR, KAT, ACM, and Real Weather. Each
+compat addon loads only when its host mod is present. You do not need to
 configure anything --- the compat activates automatically.
 
 | Host mod | What AEE does |
 |---|---|
-| ACE3 | Disables ACE3 weather; AEE drives engine weather directly |
+| ACE3 | Disables ACE3's weather tick (ace_weather_enabled = false) so AEE's state writes persist; publishes temperature/humidity/overcast/heat-index/WBGT to the ace_weather_current* namespace; maps WBGT and dehydration onto ACE3 medical vitals |
 | ACRE2 | Feeds radio propagation index from atmospheric state |
 | TFAR | Feeds radio propagation index from atmospheric state |
-| KAT | Feeds WBGT and acclimatisation to KAT's medical system |
-| ACM | Feeds CBRN persistence to ACM's contamination state |
+| KAT | Feeds dehydration and hypoxia state to KAT's circulation model |
+| ACM | Feeds CBRN persistence to ACM's contamination state; registers an optional hypoxia duty factor that engages above risk 0.8 |
+| Real Weather | Reads weather.json from the mission folder and overrides the AEE simulation |
 
 ## Troubleshooting
 

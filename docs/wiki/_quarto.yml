@@ -33,8 +33,12 @@ website:
             href: chapters/modules.qmd
           - text: State variables
             href: chapters/state-variables.qmd
+          - text: Configuration
+            href: chapters/configuration.qmd
           - text: Physics
             href: chapters/physics.qmd
+          - text: Integrations
+            href: chapters/integrations.qmd
           - text: Development
             href: chapters/development.qmd
           - text: Testing
