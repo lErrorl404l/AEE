@@ -1,0 +1,67 @@
+[h1]Advanced Environment Extension — Physically Accurate Weather for Arma 3[/h1]
+
+AEE is a physically accurate environment simulation for Arma 3. It models elevation lapse rates, terrain microclimate, true air density, Köppen biome classification, thermal and physiological effects, optics, vehicle mobility, maritime state, radio propagation, and atmospheric events — all grounded in published physics rather than game-style approximations.
+
+The mod is standalone and requires only [url=https://github.com/CBATeam/CBA_A3/releases]CBA A3[/url].
+
+[hr][/hr]
+
+[h2]What AEE does[/h2]
+
+[list]
+[*][b]Atmosphere[/b] — Elevation lapse rates, diurnal temperature cycles, true air density from temperature/pressure/humidity, Köppen biome classification with seasonal variation, orographic precipitation, and WMO 3-hour pressure tendency.
+[*][b]Thermal & physiology[/b] — Wet-bulb globe temperature (ISO 7243 heat-stress categories), NWS heat index, wind chill (JAG/TTI), altitude acclimatisation with time-of-useful-consciousness hypoxia, ISO 17166 UV index with ozone absorption, hypothermia and dehydration risk.
+[*][b]Optics[/b] — Thermal crossover, mirage, solar glare, Cn²-based atmospheric seeing, physical smoke dispersal, rain visibility (Atlas extinction), dew and frost on optics, snow blindness.
+[*][b]Mobility[/b] — SAE J1349 engine derating by air density, slip-curve traction, mud accretion, Nash-cascade river water level, NRMM cone-index route degradation, momentum-theory helicopter lift.
+[*][b]Environmental[/b] — CBRN persistence (Arrhenius Q10), Rothermel fire spread, avalanche risk, Stefan freeze/thaw, flash-flood prediction, surface wetness, scent dispersion.
+[*][b]Maritime[/b] — Harmonic tidal prediction (M2/S2/K1/O1 constituents), WMO Beaufort sea state, Pierson-Moskowitz wave height, magnetic compass deviation.
+[*][b]Radio[/b] — Friis free-space path loss with atmospheric ducting and ITU-R P.531 ionospheric absorption for VHF/UHF/HF.
+[*][b]Atmospheric events[/b] — Lightning (ice-phase gated), sandstorms, dust devils, microbursts (NWS tiers), ICAO eddy-dissipation-rate turbulence, airframe icing.
+[/list]
+
+[h2]Optional integrations[/h2]
+
+[list]
+[*][b]ACE3[/b] — Weather state feeds the Kestrel; heat index and WBGT published; WBGT and dehydration drive ACE3 medical vitals (heart rate, blood flow, pain).
+[*][b]KAT[/b] — Dehydration and hypoxia state feed KAT's circulation model.
+[*][b]ACM[/b] — CBRN persistence drives ACM's contamination state.
+[*][b]ACRE2 / TFAR[/b] — Radio propagation index scales transmission range.
+[*][b]Real Weather[/b] — Reads a [code]weather.json[/code] written by [code]tools/weather_fetch.py[/code] (Open-Meteo, no API key) and overrides the simulation.
+[/list]
+
+[hr][/hr]
+
+[h2]Requirements[/h2]
+
+[list]
+[*][url=https://github.com/CBATeam/CBA_A3/releases]CBA A3[/url] (latest version)
+[*]Arma 3
+[/list]
+
+Compat addons load only when their host mod is present. AEE itself has no ACE3 dependency.
+
+[h2]Installation[/h2]
+
+[list=1]
+[*]Subscribe to this item, or download the latest release from GitHub and unpack [code]@aee[/code] into your Arma 3 directory.
+[*]Launch with: [code]-mod=@cba_a3;@aee[/code]
+[*]Configure via CBA Settings → AEE Core and AEE Mobility categories.
+[/list]
+
+[h2]Mission authors[/h2]
+
+The EDEN module [b]AEE Environment Config[/b] overrides biome, temperature offset, precipitation bias, wind multiplier, and the update interval.
+
+Shared simulation state lives in [code]aee_core_*[/code] mission variables. Any mission script can read the temperature, pressure, humidity, wind, WBGT, sea state, radio propagation index, and the rest of the state surface. See the documentation for the full reference.
+
+[h2]Compatibility and support[/h2]
+
+[list]
+[*][url=https://github.com/lErrorl404l/AEE]GitHub Repository[/url]
+[*][url=https://lerrorl404l.github.io/AEE/]Documentation[/url]
+[*][url=https://github.com/lErrorl404l/AEE/issues]Issue Tracker[/url]
+[/list]
+
+[h2]License[/h2]
+
+GPL-2.0-or-later with a PBO-distribution exception.
