@@ -37,22 +37,28 @@ _source call FUNC(registerParticleSource);
 _source setParticleCircle [0, [0, 0, 0]];
 _source setParticleRandom [0, [0, 0, 0], [0, 0, 0.2], 0, 0.2, [0, 0, 0, 0], 0, 0];
 _source setParticleParams [
-    ["\a3\data_f\ParticleEffects\Universal\Universal", 16, 12, 0, 8],
-    "",
-    "Billboard",
-    1,                          // sort
-    2,                          // lifeTime
-    [0, 0, 0],                 // position (at source origin)
-    [0, 0, 0.2],               // velocity (gentle upward)
-    0, 2.5, 2, 0.2,            // weight, volume, rubbing, size
-    [0.04, 0.12],              // size progression
-    [[1,1,1,0.4],[1,1,1,0.1],[1,1,1,0]], // colour fade white
-    0.5,                      // animSpeed (scalar)
-    1,                         // angle
-    0,                         // random dir
-    "", "",                    // on surface, before destroy
-    _player,                   // attach to
-    0, true                    // bounce, imprecise
+    ["\a3\data_f\ParticleEffects\Universal\Universal", 16, 12, 9, 0], // shape: [path, nth, row, column, loop]
+    "",                          // animationName (obsolete, must be empty)
+    "Billboard",                 // type
+    1,                           // timerPeriod
+    2,                           // lifetime
+    [0, 0, 0],                   // position (at source origin)
+    [0, 0, 0.2],                 // moveVelocity (gentle upward)
+    0,                           // rotationVelocity (number, rotations/s)
+    2.5,                         // weight
+    2,                           // volume
+    0.2,                         // rubbing
+    [0.04, 0.12],                // size progression (array of numbers)
+    [[1,1,1,0.4],[1,1,1,0.1],[1,1,1,0]], // colour fade white (array of RGBA)
+    [0.5],                       // animationPhase (array of numbers)
+    1,                           // randomDirectionPeriod
+    0,                           // randomDirectionIntensity
+    "",                          // onTimer script
+    "",                          // beforeDestroy script
+    _player,                     // object to attach
+    0,                           // angle (radians, optional)
+    true,                        // onSurface (boolean, optional)
+    0.5                          // bounceOnSurface (number, optional)
 ];
 _source setDropInterval 100;   // ponytail: one-shot burst, high interval
 
