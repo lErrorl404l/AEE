@@ -1,12 +1,15 @@
 #include "..\script_component.hpp"
 
 /*
-Vehicle dust kickup effect — per-tick drop particles at wheel positions.
+Vehicle dust kickup effect — #particlesource at vehicle center with lifecycle.
 
 Gate:  GVAR(enabled) && player is driver of a vehicle moving > 5 km/h
 Reads: GVAR(dustSuppression), GVAR(groundState), engine wind vector
-Emits: `drop`-based billboard particles at each wheel position, coloured by
-       ground state, alpha scaled by dust suppression factor.
+Emits: Billboard particles from a source attached to the vehicle,
+       coloured by ground state, alpha scaled by dust suppression factor.
+
+Uses #particlesource with lifecycle management.  Stacking guard
+via QGVAR(vehicleDust) mission variable.
 */
 
 if (!EGVAR(core,enabled)) exitWith {};
@@ -23,6 +26,13 @@ if (_dustSuppression < 0.05) exitWith {};
 
 private _speed = speed _veh;
 if (_speed < 5) exitWith {};
+
+// Guard: skip if existing source is alive (prevents stacking)
+private _existing = missionNamespace getVariable [QGVAR(vehicleDust), objNull];
+if (!isNull _existing && alive _existing) exitWith {};
+
+// Budget check: skip if over particle ceiling
+if !([] call FUNC(checkParticleBudget)) exitWith {};
 
 private _groundState = missionNamespace getVariable [QEGVAR(core,groundState), "Normal"];
 private _windArr = missionNamespace getVariable [QEGVAR(core,currentWind), wind];
@@ -48,43 +58,48 @@ switch (_groundState) do {
     };
 };
 
-// ─── Gather wheel positions (model-space) ───────────────────────────────
-private _wheelPositions = [];
-for "_axle" from 0 to 4 do {
-    for "_side" from 1 to 2 do {
-        private _sel = format ["wheel_%1_%2_geometry", _axle, _side];
-        private _pos = _veh selectionPosition _sel;
-        if (_pos isNotEqualTo [0, 0, 0]) then {
-            _wheelPositions pushBack _pos;
-        };
+// ─── Create particle source attached to vehicle ─────────────────────────
+private _source = "#particlesource" createVehicleLocal getPosASL _veh;
+_source attachTo [_veh, [0, 0, 0]];
+missionNamespace setVariable [QGVAR(vehicleDust), _source];
+_source call FUNC(registerParticleSource);
+
+// Circle covers the vehicle footprint (3m radius for typical vehicles)
+_source setParticleCircle [3, [0, 0, 0]];
+_source setParticleRandom [0.2, [3, 3, 0], [0, 0, 0], 0, 0.3, [0, 0, 0, 0], 0, 0];
+_source setParticleParams [
+    ["\A3\data_f\ParticleEffects\Universal\Universal.p3d", 0, 2],
+    "",
+    "Billboard",
+    1,                                      // sort
+    0.75,                                   // lifeTime (avg of 0.5-1.0)
+    [0, 0, 0],                              // position (relative to vehicle)
+    [-_windX + random 0.5 - 0.25, random 0.5 - 0.25, -0.2], // velocity
+    0,                                      // weight
+    1,                                      // volume
+    0,                                      // rubbing
+    [0.2, 0.5, 1],                          // size
+    [_startColor, _endColor],               // colour
+    [0.5],                                  // animSpeed
+    1,                                      // angle
+    0,                                      // random dir
+    "", "",                                 // on surface, before destroy
+    _veh,                                   // attach to
+    0, true                                 // bounce, imprecise
+];
+
+// Density scales with speed (more dust at higher speeds)
+private _dropInterval = linearConversion [5, 60, _speed, 0.08, 0.02, true];
+_source setDropInterval _dropInterval;
+
+// ─── Auto-cleanup: delete when conditions fail ──────────────────────────
+[_source, _veh] spawn {
+    params ["_source", "_veh"];
+    waitUntil {
+        sleep 1;
+        !alive _source
+        || {speed _veh < 5}
+        || {(call CBA_fnc_currentUnit) != driver _veh}
     };
+    deleteVehicle _source;
 };
-
-if (_wheelPositions isEqualTo []) exitWith {};
-
-// ─── Emit particles ─────────────────────────────────────────────────────
-{
-    drop [
-        "\A3\data_f\ParticleEffects\Universal\Universal.p3d",
-        "Billboard",
-        0.1,                                 // timer period
-        0.5 + random 0.5,                    // life
-        _x,                                  // model-space pos (attached to _veh)
-        [
-            -_windX + random 0.5 - 0.25,
-            random 0.5 - 0.25,
-            -0.1 - random 0.3
-        ],                                   // velocity
-        0,                                   // weight
-        1,                                   // volume
-        0,                                   // rubbing
-        [0.2, 0.5, 1],                      // size
-        [_startColor, _endColor],            // colour
-        [0.5],                               // animation phase
-        0,                                   // random dir period
-        0.5,                                 // random dir intensity
-        "",                                  // on surface
-        "",                                  // before destroy
-        _veh                                 // attach to
-    ];
-} forEach _wheelPositions;
