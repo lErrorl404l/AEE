@@ -1,0 +1,90 @@
+[h1]Version 2.0.0[/h1]
+
+[quote]Physics accuracy pass: every environmental model upgraded to its authoritative published form, a full test programme behind it, and deeper compat with ACE3, KAT, and ACM.[/quote]
+
+[b]Added[/b]
+[list]
+[*]Unit test programme: 183 tests across seven suites mirroring the physics models (reference, edge-case, and monotonicity checks), run by a single command and gated by the pre-commit hook
+[*]Dedicated-server integration test: ten-phase headless verification in Docker (settings, function resolution, state surface, determinism, module coverage, biome resolution, edge cases, performance budget)
+[*]Host-compat integration tests: ACE3, ACRE2, TFAR, KAT, and ACM verified against the real mods in a live server
+[*]Coarse WMM magnetic-declination lookup for the compass
+[/list]
+
+[b]Changed[/b]
+[list]
+[*]Physics models upgraded to authoritative forms: SAE J1349 engine derating, slip-curve traction, Nash-cascade rivers, NRMM route degradation, FAA time-of-useful-consciousness hypoxia, ISO 17166 UV with ozone, Friis radio path loss, ITU-R P.531 ionospheric absorption, Arrhenius Q10 CBRN persistence, Rothermel fire spread, Stefan freeze/thaw, harmonic tides (M2/S2/K1/O1), WMO Beaufort sea state, ICAO eddy-dissipation-rate turbulence, NWS microburst tiers, Cn² atmospheric seeing, Atlas rain extinction, and more
+[*]Precipitation phase now follows the wet-bulb temperature — snow forms well above 0 °C in dry air
+[*]Post-process effects unified under a central arbiter: single owners for chromatic aberration, dynamic blur, and colour corrections, with hysteresis and generation-guarded disables (flicker eliminated)
+[*]Particle effects ported from the drop command to #particlesource with lifecycle management and a source-count budget
+[*]Wind now updates in real-weather mode instead of freezing
+[/list]
+
+[b]Fixed[/b]
+[list]
+[*]UV index ozone coefficient was 40× too strong — UV collapsed to zero at every realistic ozone level
+[*]Friis path loss divided the log argument by ln(10) instead of the result — the radio propagation index was dead at its floor
+[*]Coriolis deflection fed radians to a degrees-expecting sine — ~50× too small
+[*]Tidal spring/neap used the wrong trig function with a spurious radian conversion — the beat stretched to 846 days
+[*]Frost on windscreens read a never-written variable — frost formed on overcast nights
+[*]Pressure trend now reports the true 3-hour WMO window instead of the 5-second tick delta
+[*]weather.json values range-checked at the trust boundary
+[*]Compat fixes: ACRE2 signal callback scale, TFAR multiplier names, KAT body-fluid array corruption, ACM dead code and contamination scaling, ACE3 weather-tick ownership
+[*]Dedicated-server runtime errors: gust undefined headless, malformed-position crashes, garbage-parameter crashes
+[/list]
+
+[b]Removed[/b]
+[list]
+[*]Dead ace_medical_dehydrationRisk write that polluted the ACE3 namespace
+[/list]
+
+[b]Documentation[/b]
+[list]
+[*]Wiki expanded to the current physics surface: configuration chapter (all 30 settings), module and state-variable reference synced to the code, integration chapter per host mod, and annexes covering the upgraded formulas
+[/list]
+
+[hr][/hr]
+
+[h1]Version 1.0.0[/h1]
+
+[quote]First stable release.[/quote]
+
+[b]Added[/b]
+[list]
+[*]CBA utilisation: standalone keybinds, AEE_WeatherUpdated local event, player-killed handling
+[*]Solar-radiation diurnal model following the sun's elevation
+[*]Soil moisture and evaporation water cycle
+[*]Deterministic event state via a seeded LCG
+[*]Thunder follows the flash
+[*]AI-player, map-rotation, and module-coverage test phases
+[/list]
+
+[b]Fixed[/b]
+[list]
+[*]WBGT (Stull 2011) used SQF atan in degrees; the formula needs radians
+[*]getSunPosition returns nil on a dedicated server — guarded
+[*]getDirVisual can return NaN for freshly spawned AI — guarded
+[/list]
+
+[hr][/hr]
+
+[h1]Version 0.1.0[/h1]
+
+[quote]Modular restructure and canonical wiring.[/quote]
+
+[b]Added[/b]
+[list]
+[*]Modular restructure into 18 addons with canonical ACE3/CBA function wiring
+[*]Standalone core with no ACE3 dependency; compat addons gate on their host mod
+[*]Deterministic multiplayer state
+[*]EDEN module (AEE Environment Config)
+[*]Headless dedicated-server test harness
+[*]CI: HEMTT lint, SQF validation, SBOM on release, release-drafter
+[/list]
+
+[b]Fixed[/b]
+[list]
+[*]Function compilation: no function was compiled before this release — the mod did not run
+[*]ACE3 bridge removed the fake ace_weather_current* variable interface
+[*]Dedicated-server runtime errors found by the headless test
+[*]Missing logo assets removed from mod.cpp
+[/list]
