@@ -12,32 +12,40 @@ if (!GVAR(enabled)) exitWith {};
 // machine random rolls; divergence there is cosmetic only.
 missionNamespace setVariable [QEGVAR(core,overcast), overcast];
 
-// Deterministic weather progression seed — drives slow weather-quality drift
-[] call FUNC(calculateSeededWeatherProgression);
+// Real Weather mode: when aee_core_realWeatherActive is set (by the
+// RealWeather compat layer from weather.json), the simulation must NOT
+// recompute temperature/pressure/humidity — it would overwrite the real
+// data. Derived effects (ground, fog, foliage, FX) still run below.
+private _realWeather = missionNamespace getVariable [QEGVAR(core,realWeatherActive), false];
 
-private _month = date select 1;
+if (!_realWeather) then {
+    // Deterministic weather progression seed — drives slow weather-quality drift
+    [] call FUNC(calculateSeededWeatherProgression);
 
-private _biome = missionNamespace getVariable [QGVAR(biome), ""];
-if (_biome == "") then {
-    [] call EFUNC(environmental,getBiome);
-    _biome = GVAR(biome);
+    private _month = date select 1;
+
+    private _biome = missionNamespace getVariable [QGVAR(biome), ""];
+    if (_biome == "") then {
+        [] call EFUNC(environmental,getBiome);
+        _biome = GVAR(biome);
+    };
+
+    // Pass explicit position to update functions so they use the same
+    // location rather than each independently querying CBA_fnc_currentUnit.
+    [_biome, _month, _posASL] call EFUNC(thermal,updateTemperature);
+    [_biome, _month, _posASL] call EFUNC(atmos,updatePressure);
+    [] call EFUNC(environmental,calculateQNH);
+    [] call EFUNC(physiology,calculateHypoxia);
+    [_biome, _month, _posASL] call EFUNC(atmos,updateHumidity);
+    [] call FUNC(updateSoilMoisture);
+    [] call EFUNC(atmos,calculatePrecipitationPhase);
+    [] call EFUNC(atmos,calculateHaze);
+    [] call EFUNC(environmental,calculateSurfaceWetness);
+    [] call EFUNC(atmos,updateWind);
+    [] call EFUNC(fx,applyWindNoise);
+
+    [] call EFUNC(ballistics,calculateAirDensity);
 };
-
-// Pass explicit position to update functions so they use the same
-// location rather than each independently querying CBA_fnc_currentUnit.
-[_biome, _month, _posASL] call EFUNC(thermal,updateTemperature);
-[_biome, _month, _posASL] call EFUNC(atmos,updatePressure);
-[] call EFUNC(environmental,calculateQNH);
-[] call EFUNC(physiology,calculateHypoxia);
-[_biome, _month, _posASL] call EFUNC(atmos,updateHumidity);
-[] call FUNC(updateSoilMoisture);
-[] call EFUNC(atmos,calculatePrecipitationPhase);
-[] call EFUNC(atmos,calculateHaze);
-[] call EFUNC(environmental,calculateSurfaceWetness);
-[] call EFUNC(atmos,updateWind);
-[] call EFUNC(fx,applyWindNoise);
-
-[] call EFUNC(ballistics,calculateAirDensity);
 
 // ─── Derived effects (ground, foliage, sound, fog) ─────────────────────────
 [_posASL] call EFUNC(mobility,updateGroundState);

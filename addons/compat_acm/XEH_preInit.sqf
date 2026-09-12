@@ -8,7 +8,7 @@ if (is3DEN) exitWith {};
 
 if (hasInterface) then {
     [{
-        [] call FUNC(integrateACM);
+        [ACE_player] call FUNC(integrateACM);
     }, 5] call CBA_fnc_addPerFrameHandler;
 };
 

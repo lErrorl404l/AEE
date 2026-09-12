@@ -7,6 +7,12 @@
 
     Propagation index (0.3–2.0) → dB shift (propIdx - 1) × 8 → ±8 dB range.
     Called once from XEH_preInit.  Skips if ACRE2 is not loaded.
+
+    ACRE2 contract: the callback returns [_signalPct 0..1, _signalDBm].
+    The percent must be 0..1 (ACRE2 normalises internally); the dB shift
+    applies to the dBm value, and the percent is recomputed from the
+    shifted dBm across the receiver's sensitivity range.  The baseline
+    from acre_sys_signal_fnc_getSignalCore is [_Px 0..1, _maxSignal dBm].
     No return value.
 */
 
@@ -19,14 +25,21 @@ private _callback = compile '
     params ["_freq", "_mW", "_receiverID", "_transmitterID"];
 
     private _baseline = [_freq, _mW, _receiverID, _transmitterID] call acre_sys_signal_fnc_getSignalCore;
+    _baseline params ["_Px", "_maxSignal"];
 
     private _propIdx = missionNamespace getVariable ["aee_radio_radioPropagationIndex", 1];
     if (_propIdx <= 0) then { _propIdx = 1.0 };
 
     private _dB_shift = (_propIdx - 1) * 8;
 
-    private _signalPct = ((_baseline select 0) + _dB_shift) max 0 min 100;
-    private _signalDBm = (_baseline select 1) + _dB_shift;
+    // Apply the shift in dBm, then recompute the percent over the
+    // receiver sensitivity window (defaults: -110..0 dBm).
+    private _signalDBm = _maxSignal + _dB_shift;
+    private _min = getNumber (configFile >> "CfgRadio" >> "ACRE_BASE_RECEIVER" >> "sensitivityMin");
+    private _max = getNumber (configFile >> "CfgRadio" >> "ACRE_BASE_RECEIVER" >> "sensitivityMax");
+    if (_max - _min == 0) then { _min = -110; _max = 0; };
+
+    private _signalPct = ((_signalDBm - _min) / (_max - _min)) max 0 min 1;
 
     [_signalPct, _signalDBm]
 ';
