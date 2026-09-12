@@ -68,24 +68,28 @@ _source call FUNC(registerParticleSource);
 _source setParticleCircle [3, [0, 0, 0]];
 _source setParticleRandom [0.2, [3, 3, 0], [0, 0, 0], 0, 0.3, [0, 0, 0, 0], 0, 0];
 _source setParticleParams [
-    ["\A3\data_f\ParticleEffects\Universal\Universal.p3d", 16, 12, 0, 8],
-    "",
-    "Billboard",
-    1,                                      // sort
-    0.75,                                   // lifeTime (avg of 0.5-1.0)
-    [0, 0, 0],                              // position (relative to vehicle)
-    [-_windX + random 0.5 - 0.25, random 0.5 - 0.25, -0.2], // velocity
-    0,                                      // weight
-    1,                                      // volume
-    0,                                      // rubbing
-    [0.2, 0.5, 1],                          // size
-    [_startColor, _endColor],               // colour
-    0.5,                                    // animSpeed (scalar)
-    1,                                      // angle
-    0,                                      // random dir
-    "", "",                                 // on surface, before destroy
-    _veh,                                   // attach to
-    0, true                                 // bounce, imprecise
+    ["\A3\data_f\ParticleEffects\Universal\Universal.p3d", 16, 12, 9, 0], // shape: [path, nth, row, column, loop]
+    "",                                      // animationName (obsolete, must be empty)
+    "Billboard",                             // type
+    1,                                       // timerPeriod
+    0.75,                                    // lifetime (avg of 0.5-1.0)
+    [0, 0, 0],                               // position (relative to vehicle)
+    [-_windX + random 0.5 - 0.25, random 0.5 - 0.25, -0.2], // moveVelocity
+    0,                                       // rotationVelocity (number, rotations/s)
+    1,                                       // weight
+    0,                                       // volume
+    0.5,                                     // rubbing
+    [0.2, 0.5, 1],                           // size progression (array of numbers)
+    [_startColor, _endColor],                // colour progression (array of RGBA)
+    [0.5],                                   // animationPhase (array of numbers)
+    1,                                       // randomDirectionPeriod
+    0,                                       // randomDirectionIntensity
+    "",                                      // onTimer script
+    "",                                      // beforeDestroy script
+    _veh,                                    // object to attach
+    0,                                       // angle (radians, optional)
+    true,                                    // onSurface (boolean, optional)
+    0.5                                      // bounceOnSurface (number, optional)
 ];
 
 // Density scales with speed (more dust at higher speeds)

@@ -52,25 +52,28 @@ _drops setParticleCircle [_radius, [0, 0, 0]];
 // Number" on the color element.
 _drops setParticleRandom [0.2, [_radius, _radius, 0], [0, 0, 1], 13, 0.5, [0, 0, 0, 0], 1, 0, 45, 0];
 _drops setParticleParams [
-    ["\A3\Data_F_Mark\ParticleEffects\Universal\waterBallonExplode_01", 16, 12, 0, 8],
-    "",
-    "Billboard",
-    1,                              // sort
-    0.4,                            // lifeTime
-    [0, 0, 25],                     // position (above player)
-    _windDrift vectorAdd [0, 0, 0.5], // velocity (falling + wind drift)
-    0,                              // weight
-    18,                             // volume
-    7.9,                            // rubbing
-    [0.05, _animFactor + 0.2],      // size
-    [[0.5, 0.5, 0.5, 1], [0.5, 0.5, 0.5, 1]], // colour
-    2,                              // animSpeed (scalar)
-    1,                              // angle
-    0,                              // random dir
-    "",                             // on surface
-    "",                             // before destroy
-    _player,                        // attach to
-    0, true                         // bounce, imprecise
+    ["\A3\Data_F_Mark\ParticleEffects\Universal\waterBallonExplode_01", 16, 12, 9, 0], // shape: [path, nth, row, column, loop]
+    "",                          // animationName (obsolete, must be empty)
+    "Billboard",                 // type
+    1,                           // timerPeriod
+    0.4,                         // lifetime
+    [0, 0, 25],                  // position (above player)
+    _windDrift vectorAdd [0, 0, 0.5], // moveVelocity (falling + wind drift)
+    0,                           // rotationVelocity (number, rotations/s)
+    0,                           // weight
+    18,                          // volume
+    7.9,                         // rubbing
+    [0.05, _animFactor + 0.2],   // size progression (array of numbers)
+    [[0.5, 0.5, 0.5, 1], [0.5, 0.5, 0.5, 1]], // colour progression (array of RGBA)
+    [2],                         // animationPhase (array of numbers)
+    1,                           // randomDirectionPeriod
+    0,                           // randomDirectionIntensity
+    "",                          // onTimer script
+    "",                          // beforeDestroy script
+    _player,                     // object to attach
+    0,                           // angle (radians, optional)
+    true,                        // onSurface (boolean, optional)
+    0.5                          // bounceOnSurface (number, optional)
 ];
 _drops setDropInterval _dropInterval;
 

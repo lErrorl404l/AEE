@@ -41,20 +41,28 @@ if (_intensity > 0.02) then {
     private _size  = linearConversion [0, 1, _intensity, 1, 3, true];
 
     _mirage setParticleParams [
-        ["\A3\data_f\particleeffects\universal\refract.p3d", 1, 0, 1],
-        "",
-        "Billboard",
-        1,                              // sort
-        3,                              // lifeTime
-        [0, 0, 0],                      // position
-        [0, 0, 0.5],                   // velocity (rising heat)
-        0,                              // weight
-        1.0,                            // volume
-        0.1,                            // rubbing
-        [_size, _size * 1.5],           // size progression
-        [[1, 1, 1, _alpha], [1, 1, 1, _alpha * 0.3], [1, 1, 1, 0]], // colour fade
-        1000,                           // animSpeed (scalar)
-        1, 1, "", "", _player, 0, false
+        ["\A3\data_f\particleeffects\universal\refract.p3d", 1, 0, 1, 0], // shape: [path, nth, row, column, loop]
+        "",                              // animationName (obsolete, must be empty)
+        "Billboard",                     // type
+        1,                               // timerPeriod
+        3,                               // lifetime
+        [0, 0, 0],                       // position
+        [0, 0, 0.5],                     // moveVelocity (rising heat)
+        0,                               // rotationVelocity (number, rotations/s)
+        1.0,                             // weight
+        0.1,                             // volume
+        0,                               // rubbing
+        [_size, _size * 1.5],            // size progression (array of numbers)
+        [[1, 1, 1, _alpha], [1, 1, 1, _alpha * 0.3], [1, 1, 1, 0]], // colour fade (array of RGBA)
+        [1000],                          // animationPhase (array of numbers)
+        1,                               // randomDirectionPeriod
+        1,                               // randomDirectionIntensity
+        "",                              // onTimer script
+        "",                              // beforeDestroy script
+        _player,                         // object to attach
+        0,                               // angle (radians, optional)
+        false,                           // onSurface (boolean, optional)
+        -1                               // bounceOnSurface (number, optional, -1 = disabled)
     ];
 
     _mirage setParticleRandom [0, [_size, _size, 0], [0, 0, 0], 0, 0, [0, 0, 0, 0], 0, 0];

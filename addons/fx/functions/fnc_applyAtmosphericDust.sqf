@@ -70,24 +70,28 @@ private _size = 30 + _windSpeed * 2;
 private _alpha = 0.08 * _density;
 
 _dust setParticleParams [
-    ["\A3\data_f\ParticleEffects\Universal\Universal.p3d", 16, 12, 0, 8],
-    "",
-    "billboard",
-    1,                          // sort
-    _lifetime,                  // lifeTime
-    [0, 0, 0],                 // position
-    [0, 0, 0],                 // rotationVelocity
-    1,                          // weight (1.275 = sinks slowly)
-    1.0,                        // volume
-    0.05,                       // rubbing (wind interaction)
-    [_size, _size * 1.5],       // size progression
-    [_dustColor + [0], _dustColor + [_alpha], _dustColor + [0]], // colour progression
-    1000,                       // animSpeed (scalar)
-    1,                          // angle
-    0,                          // random dir
-    "", "",                     // on surface, before destroy
-    _player,                    // attach to
-    0, true                     // bounce, imprecise
+    ["\A3\data_f\ParticleEffects\Universal\Universal.p3d", 16, 12, 9, 0], // shape: [path, nth, row, column, loop]
+    "",                          // animationName (obsolete, must be empty)
+    "billboard",                 // type
+    1,                           // timerPeriod
+    _lifetime,                   // lifetime
+    [0, 0, 0],                   // position
+    [0, 0, 0],                   // moveVelocity
+    0,                           // rotationVelocity (number, rotations/s)
+    1,                           // weight (1.275 = sinks slowly)
+    1.0,                         // volume
+    0.05,                        // rubbing (wind interaction)
+    [_size, _size * 1.5],        // size progression (array of numbers)
+    [_dustColor + [0], _dustColor + [_alpha], _dustColor + [0]], // colour progression (array of RGBA)
+    [1000],                      // animationPhase (array of numbers)
+    1,                           // randomDirectionPeriod
+    0,                           // randomDirectionIntensity
+    "",                          // onTimer script
+    "",                          // beforeDestroy script
+    _player,                     // object to attach
+    0,                           // angle (radians, optional)
+    true,                        // onSurface (boolean, optional)
+    0.5                          // bounceOnSurface (number, optional)
 ];
 
 _dust setParticleRandom [
