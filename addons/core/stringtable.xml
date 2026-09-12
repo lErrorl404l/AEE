@@ -178,8 +178,8 @@
             <English>Enable Orographic Precipitation</English>
         </Key>
         <Key ID="STR_AEE_Core_radioPropagationEnabled_Description">
-            <Original>Compute atmospheric propagation index (temp inversions, humidity, pressure) for VHF/UHF range effects; sets QGVAR(radioPropagationIndex)</Original>
-            <English>Compute atmospheric propagation index (temp inversions, humidity, pressure) for VHF/UHF range effects; sets QGVAR(radioPropagationIndex)</English>
+            <Original>Compute radio link quality from the Friis path loss with atmospheric ducting and HF ionospheric absorption; sets QGVAR(radioPropagationIndex)</Original>
+            <English>Compute radio link quality from the Friis path loss with atmospheric ducting and HF ionospheric absorption; sets QGVAR(radioPropagationIndex)</English>
         </Key>
         <Key ID="STR_AEE_Core_radioPropagationEnabled_Name">
             <Original>Enable Radio Propagation Model</Original>

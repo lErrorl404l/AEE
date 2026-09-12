@@ -1,0 +1,82 @@
+---
+title: "Integrations"
+---
+
+# Integrations {#sec-integrations}
+
+The six compat addons connect AEE to host mods. Each addon loads only when
+its host mod is present. Each uses only the host mod's public API. This
+page describes what AEE publishes into each host mod and what it reads.
+
+## compat_ace3
+
+compat_ace3 disables ACE3's own weather tick (`ace_weather_enabled = false`),
+so AEE's state writes persist. It publishes AEE temperature, humidity,
+overcast, and the AEE heat index and WBGT into the `ace_weather_current*`
+state. It maps AEE WBGT and dehydration onto ACE medical vitals:
+
+- `ace_medical_status_fnc_addMedicationAdjustment` adjusts heart rate,
+  peripheral flow, and pain.
+- `ace_medical_status_fnc_setCardiacArrestState` triggers at WBGT above 32
+  with risk above 0.8.
+- `ace_medical_fnc_addDamageToUnit` applies heat exposure with the "burn"
+  damage type.
+
+The weather writes run on every machine (server and clients). The medical
+mapping runs on the local unit only.
+
+`ace_weather_currentHeatIndex` and `ace_weather_currentWBGT` are AEE
+extensions: stock ACE3 defines and reads neither.
+
+Verified against: ACE3 master.
+
+## compat_acm
+
+compat_acm normalises `aee_core_cbrnPersistence` to a 0..1 contamination
+level. The persistence value is a decay modifier in the range 0.225..2.1.
+The addon drives the `ACM_CBRN_chemical_sarin_*` state. Buildup clamps to
+ACM's 0..100 range.
+
+Verified against: ACM 1.4.8.0.
+
+## compat_acre2
+
+compat_acre2 registers an ACRE2 custom signal callback with
+`acre_api_fnc_setCustomSignalFunc`. The callback returns
+`[signalPct 0..1, signalDBm]`. AEE radio propagation becomes a dB shift
+applied to the dBm value. The percent is recomputed over the receiver
+sensitivity window.
+
+Verified against: ACRE2 source.
+
+## compat_kat
+
+compat_kat drives two KAT circulation arrays. `kat_circulation_bodyFluid` is
+a 5-compartment mL array: `[ECB, ECP, SRBC, ISP, total]`. AEE dehydration
+drains the ECP and ISP compartments. Values clamp at or above 100 mL.
+`kat_circulation_bloodGas` is a 6-element array: `[PaCO2, PaO2, SpO2, HCO3,
+pH, EtCO2]`. AEE hypoxia risk maps to a target SpO2 (97 minus 32 times the
+risk, clamped 60..97) and a consistent PaO2. KAT overwrites both arrays
+every vitals tick, so the addon re-applies them from the
+`ace_medical_handleUnitVitals` event, which fires after each KAT write.
+
+Verified against: KAT source v3.2.1.
+
+## compat_realweather
+
+compat_realweather reads `weather.json` from the mission folder. The file
+holds `temperatureC`, `humidityPct`, `pressureHpa`, and `overcast`. The
+addon publishes these values into the `aee_core_*` state. It sets
+`realWeatherActive` to gate AEE's simulation tick. Engine overcast applies
+on the server only.
+
+Verified against: the mission-side weather file format.
+
+## compat_tfar
+
+compat_tfar scales TFAR transmission range from AEE radio propagation. It
+sets the per-unit player variable `tf_sendingDistanceMultiplicator`. The
+scale applies to sending only, so an equal receiving scale does not cancel
+it.
+
+Verified against: TFAR 1.x source.

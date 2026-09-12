@@ -19,14 +19,24 @@ session computes the same values.
 ## Solar radiation and temperature
 
 Temperature follows the sun: the diurnal curve is driven by solar elevation,
-computed from the day of year, local hour, and world latitude. Cloud cover
-transmits 25% of radiation at full overcast.
+computed from the day of year, local hour, and world latitude. The day of
+year uses the exact Bauleova formula with a leap-year correction. Cloud
+cover transmits 25% of radiation at full overcast.
 
 - Elevation lapse rate: 0.0065 C per metre.
 - Overcast cooling: 4 C per unit.
 - Surface-type modifiers: desert +4, sand +2, ice -5, snow -3, coniferous -2,
   forest -1.5.
 - Wind chill: JAG/TTI formula, valid below 10 C and above 4.8 km/h wind.
+
+| Surface | Modifier (C) |
+|---|---|
+| Desert | +4 |
+| Sand | +2 |
+| Ice | -5 |
+| Snow | -3 |
+| Coniferous | -2 |
+| Forest | -1.5 |
 
 ## The water cycle
 
@@ -39,10 +49,15 @@ flowchart LR
     C --> P
 ```
 
-Rain soaks the ground. Temperature, wind, low humidity, and solar
-radiation dry it (FAO-56 Penman-Monteith reference evapotranspiration).
-Moist soil raises the relative humidity. The state variable is
-`aee_core_soilMoisture` (0..1).
+Rain soaks the ground. Evaporation uses the FAO-56 Penman-Monteith
+reference evapotranspiration. Temperature, wind, humidity, and solar
+radiation drive it. Moist soil raises the relative humidity. The state
+variable is `aee_core_soilMoisture` (0..1).
+
+Snow accumulates under a grouped condition: `T<0 && (rain || overcast)`.
+Melt follows the degree-day model at 3 mm per C per day. Freeze and thaw
+use the Stefan solution: the depth is proportional to the square root of
+the accumulated degree-days.
 
 ## Air density
 
@@ -61,20 +76,27 @@ where $T_v$ is the virtual temperature (which accounts for humidity) and
 $P_{Pa}$ is the absolute pressure in pascals.
 :::
 
-Buck 1996: saturation vapour pressure
-`e_s = 6.1121 * exp((18.678 - T/234.5) * T/(257.14 + T))`, actual vapour
-pressure `e = e_s * RH / 100`, virtual temperature
-`T_v = T_K / (1 - 0.37802 * e / P)`. See
-[Annex A, Air density](../annexes/annex-a-formulas.qmd#eq-air-density) for
-the numbered equations.
+The model uses the Buck 1996 vapour pressure with virtual temperature:
 
-The full formula set, including wind chill, WBGT, and solar geometry, is
-in [Annex A](../annexes/annex-a-formulas.qmd).
+1. Saturation vapour pressure:
+   `e_s = 6.1121 * exp((18.678 - T/234.5) * T/(257.14 + T))`.
+2. Actual vapour pressure: `e = e_s * RH / 100`.
+3. Virtual temperature: `T_v = T_K / (1 - 0.37802 * e / P)`.
+4. Density: `rho = P_Pa / (R_d * T_v)`.
 
-## WBGT
+See [Annex A, Air density](../annexes/annex-a-formulas.qmd#eq-air-density)
+for the numbered equations. The full formula set, including wind chill,
+WBGT, and solar geometry, is in
+[Annex A](../annexes/annex-a-formulas.qmd).
 
-Heat index uses the Stull 2011 wet-bulb approximation with the globe
-temperature interpolated between sun and shade by overcast.
+## WBGT and heat index
+
+Two separate quantities describe heat. WBGT uses the Stull 2011 wet-bulb
+approximation with the globe temperature interpolated between sun and shade
+by overcast. It drives thermal stress and maps to the ISO 7243 categories.
+
+The NWS Rothfusz 1990 heat index gives the apparent temperature. It is
+stored separately from WBGT.
 
 ::: {.callout-note}
 ## SQF atan returns degrees
@@ -85,69 +107,6 @@ near 973 C.
 :::
 
 ## Biome
-
-Koppen classification, 18 codes. Resolution order: map-name match
-(Stratis = Csa, Tanoa = Af, Enoch = Dfb), CfgWorlds description keywords,
-surface-type and latitude voting, then the oceanic fallback Cfb.
-
-## Sea state and tide
-
-Beaufort scale with wave height and a tidal offset and description.
-
-## Events
-
-Lightning, microburst, sandstorm, dust devil, blowing snow, avalanche,
-flash flood, and space weather (solar flares, aurora) roll on deterministic
-chances. Thunder follows the flash after a fixed sound-travel delay.
-
-| Surface | Modifier (C) |
-|---|---|
-| Desert | +4 |
-| Sand | +2 |
-| Ice | -5 |
-| Snow | -3 |
-| Coniferous | -2 |
-| Forest | -1.5 |
-
-## Wind chill
-
-Wind chill uses the JAG/TTI formula. It is valid when temperature is at or
-below 10 C and wind speed is above 4.8 km/h.
-
-```
-Twc = 13.12 + 0.6215*T - 11.37*(V*3.6)^0.16 + 0.3965*T*(V*3.6)^0.16
-```
-
-`T` is the air temperature in Celsius. `V` is the wind speed in metres per
-second.
-
-## Air density
-
-Air density uses the Buck 1996 model. Saturation vapour pressure is:
-
-```
-e_s = 6.1121 * exp((18.678 - T/234.5) * T / (257.14 + T))
-```
-
-Actual vapour pressure is `e = e_s * RH / 100`. Virtual temperature is:
-
-```
-T_v = T_K / (1 - 0.37802 * e / P)
-```
-
-Density is `rho = P_Pa / (R_d * T_v)`. The gas constant `R_d` is
-287.05287 J/(kg*K).
-
-## Humidity
-
-Relative humidity uses diurnal modulation.
-
-## Pressure
-
-Pressure is barometric. The model uses pressure trend readings
-(`pressureReading1` and `pressureReading2`) and the ICAO reference altitude.
-
-## Biome classification
 
 Biome uses the Koppen classification. The 18 codes are `Af`, `Am`, `Aw`,
 `BWh`, `BWk`, `BSh`, `BSk`, `Csa`, `Csb`, `Cfa`, `Cfb`, `Cwa`, `Dfa`, `Dfb`,
@@ -160,26 +119,54 @@ The model resolves the biome in this order:
 3. Use surface type and latitude weighted voting.
 4. Fall back to `Cfb`.
 
-## WBGT
+## Sea state and tide
 
-Wet bulb globe temperature (WBGT) drives heat stress in the physiology
-addon.
+Tidal prediction uses four harmonic constituents: M2 (12.42 h), S2
+(12.00 h), K1 (24.07 h), and O1 (25.82 h). Spring and neap tides emerge
+from the M2/S2 beat, which repeats every 14.8 days.
 
-## Sea state
-
-Sea state uses the Beaufort scale. The model tracks wave height and tide
-prediction, including the tide offset and description.
+Sea state uses the WMO Beaufort formula
+`B = (v/0.836)^(2/3)`. The significant wave height comes from the
+Pierson-Moskowitz spectrum.
 
 ## Radio propagation
 
-Radio propagation covers the VHF, UHF, and HF bands. Atmospheric effects
-modify the propagation.
+Radio propagation covers the VHF, UHF, and HF bands. VHF and UHF use the
+Friis free-space path loss equation. Ducting adds a dB bonus to the signal.
+
+HF uses ITU-R P.531 ionospheric absorption. The absorption scales with
+`1/f^2`, the solar zenith angle, and the sunspot number. A Dellinger flare
+term covers sudden ionospheric disturbances.
 
 ## Events
 
 The event system covers lightning, microburst, dust devil, sandstorm,
 blowing snow, avalanche, flash flood, space weather, freeze-thaw, and frost
-on windscreens. Space weather includes solar flares and aurora.
+on windscreens. Thunder follows the flash after a fixed sound-travel delay.
+
+- Lightning gates on an ice-phase factor derived from the cloud ceiling
+  (Saunders 1993).
+- Microburst has an NWS damaging tier at or above 26 m/s.
+- Dust devils form in a 2-8 m/s wind band.
+- Space weather aurora requires Kp > 4, clear sky, night, and latitude
+  above 45 from the world config.
+- CBRN persistence follows Arrhenius Q10 hydrolysis. Decay doubles per
+  10 C rise.
+- Fire spread uses the Rothermel rate-of-spread with growing-circle area.
+- Avalanche risk peaks at a 35 degree slope.
+- Flash flood risk is driven by rainfall intensity (mm/h), antecedent
+  moisture, and terrain.
+
+## Humidity
+
+Relative humidity couples to the diurnal cycle. It falls as temperature
+rises at constant vapour content.
+
+## Pressure
+
+Pressure is barometric. The model uses the WMO 3-hour pressure tendency,
+computed from a pressure history ring buffer, and the ICAO reference
+altitude.
 
 ## Deterministic multiplayer
 

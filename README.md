@@ -21,21 +21,28 @@ Author: [lErrorl404l](https://github.com/lErrorl404l). Licence:
 - Terrain microclimate, including urban heat islands and water influence.
 - True air density from temperature, pressure, and humidity.
 - Koppen biome classification with seasonal variation.
-- Thermal and physiological effects, including WBGT and acclimatisation.
-- Optics effects, including thermal crossover, mirage, and glare.
-- Vehicle and helicopter mobility, including engine derating and lift.
-- Environmental effects, including foliage, scent, and fire risk.
-- Maritime state, including sea state and tides.
-- Radio propagation for VHF, UHF, and HF bands.
+- Thermal and physiological effects, including WBGT, NWS heat index,
+  altitude acclimatisation with time-of-useful-consciousness hypoxia,
+  and ISO 7243 heat-stress categories.
+- Optics effects, including thermal crossover, mirage, glare, Cn²-based
+  atmospheric seeing, and physical smoke dispersal.
+- Vehicle and helicopter mobility, including SAE J1349 engine derating,
+  slip-curve traction, and momentum-theory helicopter lift.
+- Environmental effects, including foliage, scent, CBRN persistence,
+  Rothermel fire spread, avalanche risk, and flash-flood prediction.
+- Maritime state, including harmonic tidal prediction (M2/S2/K1/O1) and
+  WMO Beaufort sea state.
+- Radio propagation from the Friis equation with ITU-R P.531
+  ionospheric absorption.
 - Atmospheric events, including lightning, sandstorms, and microbursts.
 
 ## Structure
 
-The project has 18 addons under `addons/`. The 13 core addons are `main`,
+The project has 19 addons under `addons/`. The 13 core addons are `main`,
 `core`, `actions`, `atmos`, `ballistics`, `environmental`, `fx`, `maritime`,
-`mobility`, `optics`, `physiology`, `radio`, and `thermal`. The 5 compat
-addons are `compat_ace3`, `compat_acm`, `compat_acre2`, `compat_kat`, and
-`compat_tfar`.
+`mobility`, `optics`, `physiology`, `radio`, and `thermal`. The 6 compat
+addons are `compat_ace3`, `compat_acm`, `compat_acre2`, `compat_kat`,
+`compat_realweather`, and `compat_tfar`.
 
 Build PBO names are `aee_<component>`. For example, the core addon builds to
 `aee_core.pbo`.
@@ -63,12 +70,27 @@ CBA settings UI.
 
 The core addons require only CBA_A3. They are standalone.
 
-The five compat addons gate on their host mod. Each uses `requiredAddons` and
+The six compat addons gate on their host mod. Each uses `requiredAddons` and
 `skipWhenMissingDependencies`. A compat addon loads only when its host mod is
-present.
+present. Each compat layer uses only the host mod's public API, verified
+against the host source:
 
-`compat_ace3` disables ACE3 weather simulation. AEE drives engine weather
-directly with `setWind` and `setFog`.
+- `compat_ace3` — publishes AEE temperature/humidity/overcast into ACE
+  weather state and maps AEE thermal/dehydration state onto ACE medical
+  vitals through the public `ace_medical_status_fnc_*` hooks.
+- `compat_acm` — drives ACM CBRN contamination from AEE persistence.
+- `compat_acre2` — registers an ACRE2 custom signal-strength callback
+  driven by AEE radio propagation.
+- `compat_kat` — drives KAT circulation body-fluid compartments from AEE
+  dehydration.
+- `compat_realweather` — reads `weather.json` from the mission folder and
+  publishes the real values into AEE state, gating the simulation.
+- `compat_tfar` — scales TFAR transmission range from AEE radio
+  propagation through the per-unit `tf_sendingDistanceMultiplicator`.
+
+AEE does not drive engine weather directly. It reads engine `overcast`,
+`rain`, and `wind` as inputs and computes its own state from them. Only
+`compat_realweather` writes engine overcast, and only on the server.
 
 ## Multiplayer
 
