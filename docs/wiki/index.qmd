@@ -16,7 +16,7 @@ hide-description: true
 ::: {.hero-text}
 # AEE
 
-### Advanced Environment Extension — physically accurate environment simulation for Arma 3
+### ACE Environment Extended — physically accurate environment simulation for Arma 3
 
 - Elevation lapse rates and diurnal temperature cycles, terrain microclimate, true air density.
 - Thermal and physiological effects, optics, mobility, maritime state, radio propagation, atmospheric events.
