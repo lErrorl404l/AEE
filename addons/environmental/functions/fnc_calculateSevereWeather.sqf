@@ -34,7 +34,7 @@ if ((_overrideType != "") && (time < _overrideUntil)) then {
 };
 if (_overridden) exitWith {};
 
-private _biome       = GVAR(biome);
+private _biome       = EGVAR(core,biome);
 private _windSpd     = vectorMagnitude wind;
 private _rain        = rain;
 private _temp        = EGVAR(core,currentTemperature);

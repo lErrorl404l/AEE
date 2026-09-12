@@ -28,8 +28,9 @@ private _temp        = EGVAR(core,currentTemperature);
 private _overcast    = overcast;
 private _biome       = missionNamespace getVariable [QEGVAR(core,biome), ""];
 private _groundState = missionNamespace getVariable [QEGVAR(core,groundState), "Normal"];
-private _sunPos      = getSunPosition;      // [azimuth deg, elevation deg]
-private _sunElev     = _sunPos param [1, 0];
+// Sun elevation from dayTime (Arma has no getSunPosition command);
+// sine model, peak at noon, horizon at 06:00 / 18:00.
+private _sunElev = (sin (((dayTime / 24) - 0.25) * 360) * 90) max 0;
 
 if (isNil "_temp") exitWith {
     missionNamespace setVariable [QGVAR(mirageIntensity), 0];

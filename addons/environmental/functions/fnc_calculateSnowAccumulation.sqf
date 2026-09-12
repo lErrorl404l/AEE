@@ -49,7 +49,7 @@ if (_windSpd > 8 && _depth > 0.05) then {
 missionNamespace setVariable [QEGVAR(core,snowDepth_m), _depth];
 missionNamespace setVariable [QGVAR(snowDriftIntensity), _drift];
 
-if (GVAR(diagnostic)) then {
+if (EGVAR(core,diagnostic)) then {
     diag_log text format [
         "[AEE] SnowAccum: depth=%1 m drift=%2 (T=%3 °C, wind=%4 m/s)",
         [_depth, 2] call CBA_fnc_formatNumber,

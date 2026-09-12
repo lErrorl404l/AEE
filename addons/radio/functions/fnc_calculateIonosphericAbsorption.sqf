@@ -27,9 +27,11 @@ private _flareValue = missionNamespace getVariable [QEGVAR(environmental,spaceWe
 private _freqFactor = (3e6 / _freq_Hz) ^ 2;
 
 // ─── Solar zenith angle — D-layer ionisation follows the sun ───────────────
-private _sunPos = getSunPosition;
-if (isNil "_sunPos") then { _sunPos = [0, 0]; };  // no renderer on a dedicated server
-private _sunElev = _sunPos param [1, 0];
+// Sun elevation from dayTime (peak at noon, horizon at 06:00 / 18:00), the
+// same sine model fnc_calculateUVIndex uses.  (Arma has no getSunPosition
+// command; sunOrMoon gives day/night only, not an angle.)
+private _dayFraction = dayTime / 24;
+private _sunElev = (sin ((_dayFraction - 0.25) * 360) * 90) max 0;
 private _cosChi = (sin _sunElev) max 0;
 private _dayFactor = [0.05, 1] select (_cosChi > 0);
 

@@ -1,10 +1,21 @@
 #include "..\script_component.hpp"
 
 params [
-    ["_biome", "Cfa", [""]],
-    ["_month", 1, [0]],
-    ["_posASL", [], [[]]]
+    ["_biome", "Cfa"],
+    ["_month", 1],
+    ["_posASL", []]
 ];
+
+// Defensive: garbage params (nil / objNull from test edge cases) must not
+// crash the function.  Coerce to the documented defaults.  (No strict
+// type constraint in params above — a strict [""] check throws before
+// this code can run.)
+if !(_biome isEqualType "") then { _biome = "Cfa"; };
+if !(_month isEqualType 0) then { _month = 1; };
+if !(_posASL isEqualType []) then { _posASL = []; };
+if ((count _posASL) == 1 && {(_posASL select 0) isEqualType []}) then {
+    _posASL = _posASL select 0;
+};
 
 // ─── Base diurnal calculation ──────────────────────────────────────────────
 private _normals = [_biome] call EFUNC(environmental,getClimateNormals);

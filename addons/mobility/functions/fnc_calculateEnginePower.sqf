@@ -15,13 +15,19 @@ Stored in:
 params [["_posASL", [], [[]]]];
 
 private _alt = 0;
-if (_posASL isEqualTo []) then {
+private _pos = _posASL;
+// Accept both a bare position [x, y, z] and a single-element wrapper
+// [[x, y, z]] (some callers pass the array-of-array form).
+if ((count _pos) == 1 && {(_pos select 0) isEqualType []}) then {
+    _pos = _pos select 0;
+};
+if ((count _pos) >= 3) then {
+    _alt = _pos select 2;
+} else {
     private _player = call CBA_fnc_currentUnit;
     if (!isNil "_player") then {
         _alt = (getPosASL _player) select 2;
     };
-} else {
-    _alt = _posASL select 2;
 };
 
 private _T = EGVAR(core,currentTemperature);
