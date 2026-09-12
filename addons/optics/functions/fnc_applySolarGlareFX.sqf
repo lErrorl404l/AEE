@@ -23,8 +23,6 @@ private _intensity = missionNamespace getVariable [QGVAR(solarGlareIntensity), 0
 private _player    = call CBA_fnc_currentUnit;
 if (isNil "_player" || !alive _player || cameraOn != _player) exitWith {};
 
-private _hShafts = missionNamespace getVariable [QGVAR(ppHandle_LightShafts), -1];
-
 private _active = missionNamespace getVariable [QGVAR(glareFXActive), false];
 
 // DynamicBlur: subtle veiling wash at peak glare (arbiter applies it)
@@ -33,21 +31,26 @@ missionNamespace setVariable [QGVAR(glareBlur), [0, _blurAmount] select (_intens
 
 if (_intensity > 0.02) then {
     if (!_active) then {
-        _hShafts ppEffectEnable true;
+        "LightShafts" ppEffectEnable true;
         missionNamespace setVariable [QGVAR(glareFXActive), true];
     };
 
-    // LightShafts: intensity scales the god-ray brightness
+    // LightShafts: intensity scales the god-ray brightness.
+    // LightShafts is an ADVANCED post-process effect (BIS wiki): it cannot
+    // be created by ppEffectCreate (that returns -1), its adjustments are
+    // immediate, and they do NOT require ppEffectCommit.  The string-LHS
+    // form is correct here — the engine provisions the effect itself.
+    // Unlike ChromAberration/DynamicBlur/ColorCorrections/FilmGrain, which
+    // are handle-based in Arma 2.22, the advanced effects still accept the
+    // string name.
     private _shaftBrightness = linearConversion [0, 1, _intensity, 0.01, 0.45, true];
-    _hShafts ppEffectAdjust [0.01, 0.6, _shaftBrightness, 0.89];
-    _hShafts ppEffectCommit 1;
+    "LightShafts" ppEffectAdjust [0.01, 0.6, _shaftBrightness, 0.89];
 } else {
     if (_active) then {
-        _hShafts ppEffectAdjust [0.01, 0.6, 0, 0.89];
-        _hShafts ppEffectCommit 0.5;
+        "LightShafts" ppEffectAdjust [0.01, 0.6, 0, 0.89];
 
         [{
-            (missionNamespace getVariable [QGVAR(ppHandle_LightShafts), -1]) ppEffectEnable false;
+            "LightShafts" ppEffectEnable false;
         }, [], 1] call CBA_fnc_waitAndExecute;
 
         missionNamespace setVariable [QGVAR(glareFXActive), false];
