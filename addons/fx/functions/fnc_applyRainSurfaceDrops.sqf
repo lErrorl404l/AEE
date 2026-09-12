@@ -23,6 +23,10 @@ if (isNil "_player" || !alive _player || cameraOn != _player) exitWith {};
 // Need rain
 if (rain < 0.1) exitWith {};
 
+// Guard: skip if an existing drops source is still alive (prevents stacking)
+private _existing = missionNamespace getVariable [QGVAR(rainSurfaceDrops), objNull];
+if (!isNull _existing && alive _existing) exitWith {};
+
 // ─── Overhead cover check (from TPW rainfx) ─────────────────────────────
 // Cast a ray from eye position straight up 50 m. If it hits something,
 // the player is sheltered and rain drops are suppressed.
@@ -36,6 +40,7 @@ private _animFactor   = linearConversion [0.1, 1, rain, 0.1, 0.2, true];
 private _radius       = 18;
 
 private _drops = "#particlesource" createVehicleLocal position _player;
+missionNamespace setVariable [QGVAR(rainSurfaceDrops), _drops];
 _drops setParticleCircle [_radius, [0, 0, 0]];
 _drops setParticleRandom [0.2, [_radius, _radius, 0], [0, 0, 1], 13, 0.5, [0, 0, 0, 0], 1, 0];
 _drops setParticleParams [

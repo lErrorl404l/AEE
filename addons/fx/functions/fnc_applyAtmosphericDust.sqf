@@ -22,6 +22,10 @@ if (isNil "_player" || !alive _player || cameraOn != _player) exitWith {};
 private _windSpeed = vectorMagnitude wind;
 if (_windSpeed < 5) exitWith {};
 
+// Guard: skip if an existing dust source is still alive (prevents stacking)
+private _existing = missionNamespace getVariable [QGVAR(atmosphericDust), objNull];
+if (!isNull _existing && alive _existing) exitWith {};
+
 // Dust suppression from AEE core (1 = full dust, 0 = suppressed)
 private _dustSuppression = missionNamespace getVariable [QEGVAR(core,dustSuppression), 0.5];
 if (_dustSuppression < 0.05) exitWith {};
@@ -59,6 +63,7 @@ switch (true) do {
 // Spawn atmospheric dust volume around player
 private _dust = "#particlesource" createVehicleLocal getPosASL _player;
 _dust attachTo [_player, [0, 0, 0]];
+missionNamespace setVariable [QGVAR(atmosphericDust), _dust];
 
 private _lifetime = 8 + random 4;
 private _size = 30 + _windSpeed * 2;
