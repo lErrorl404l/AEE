@@ -20,7 +20,7 @@ if (rain < 0.1) exitWith {};
 private _pos = _player modelToWorld [0, 0, 2];
 private _volume = 1;
 private _pitch = 1;
-private _soundPath = "A3\Sounds_F\ambient\rain.wss";
+private _soundPath = "a3\sounds_f\ambient\rain\rain_new_1.wss";
 
 if (rain > 0.5) then {
     _volume = 1.2;

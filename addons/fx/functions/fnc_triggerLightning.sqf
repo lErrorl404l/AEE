@@ -57,7 +57,7 @@ _light setLightAttenuation [0,0,0,0,500,1000];
 [{
     params ["_pos"];
     playSound3D [
-        "A3\Sounds_F\ambient\thunder1.wss",
+        "a3\sounds_f\ambient\thunder\thunder_01.wss",
         objNull,
         false,
         _pos,
