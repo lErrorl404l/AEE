@@ -31,6 +31,39 @@ if (!EGVAR(core,opticsEnabled)) exitWith {};
 private _player = call CBA_fnc_currentUnit;
 if (isNil "_player" || !alive _player || cameraOn != _player) exitWith {};
 
+// NVG (2) and thermal (3) views: the sensor produces its own image.
+// Chromatic aberration from atmospheric seeing and heat shimmer, blur
+// from dew/rain on a lens, and colour-correction tints all assume a
+// glass optic path.  Through a sensor they do not exist.  Fade out any
+// effects already active, then skip the rest of the tick.
+private _visionMode = currentVisionMode _player;
+if (_visionMode == 2 || _visionMode == 3) exitWith {
+    if (missionNamespace getVariable [QGVAR(chromaActive), false]) then {
+        "ChromAberration" ppEffectAdjust [0, 0, 0];
+        "ChromAberration" ppEffectCommit 1;
+        [{
+            "ChromAberration" ppEffectEnable false;
+        }, [], 1.5] call CBA_fnc_waitAndExecute;
+        missionNamespace setVariable [QGVAR(chromaActive), false];
+    };
+    if (missionNamespace getVariable [QGVAR(blurActive), false]) then {
+        "DynamicBlur" ppEffectAdjust [0];
+        "DynamicBlur" ppEffectCommit 1;
+        [{
+            "DynamicBlur" ppEffectEnable false;
+        }, [], 1.5] call CBA_fnc_waitAndExecute;
+        missionNamespace setVariable [QGVAR(blurActive), false];
+    };
+    if (missionNamespace getVariable [QGVAR(ccActive), false]) then {
+        "ColorCorrections" ppEffectAdjust [1, 1, 0, [0,0,0,0], [1,1,1,1], [0,0,0,0]];
+        "ColorCorrections" ppEffectCommit 1;
+        [{
+            "ColorCorrections" ppEffectEnable false;
+        }, [], 1.5] call CBA_fnc_waitAndExecute;
+        missionNamespace setVariable [QGVAR(ccActive), false];
+    };
+};
+
 // ─── Stored intensities (set by the apply* contributor functions) ─────────
 private _seeingChroma = missionNamespace getVariable [QGVAR(seeingChroma), 0];
 private _shimmerChroma = missionNamespace getVariable [QGVAR(shimmerChroma), 0];
