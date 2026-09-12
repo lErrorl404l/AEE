@@ -27,10 +27,14 @@ if (sunOrMoon <= 0) exitWith {
 };
 
 // ─── Inputs ────────────────────────────────────────────────────────────
-private _sunPos   = getSunPosition;
-if (isNil "_sunPos") then { _sunPos = [0, 0]; };  // no renderer on a dedicated server     // [azimuth deg, elevation deg]
-private _sunAzim  = _sunPos param [0, 0];
-private _sunElev  = _sunPos param [1, 0];
+// Sun position from dayTime (Arma has no getSunPosition command).
+// Elevation: sine model, peak at noon, horizon at 06:00/18:00.
+// Azimuth: 0 at 06:00 (east), 180 at noon (south, Arma convention where
+// north = 0), 360 at 18:00 (west).
+private _dayFraction = dayTime / 24;
+private _sunElev  = (sin ((_dayFraction - 0.25) * 360) * 90) max 0;
+private _sunAzim  = ((_dayFraction - 0.25) * 360) mod 360;
+if (_sunAzim < 0) then { _sunAzim = _sunAzim + 360; };
 private _viewDir  = getDirVisual _unit;
 if (_viewDir != _viewDir) then { _viewDir = getDir _unit; };  // NaN check: fresh AI units have no visual direction
 private _overcast = overcast;

@@ -29,6 +29,10 @@ params [
 ];
 
 // ─── Simple latitude from map Y ───────────────────────────────────────────
+// Defensive: a scalar (bad caller) would make `select 1` a zero-divisor
+// crash.  Guard the type so the function degrades to 0 deflection instead.
+if (!(_posASL isEqualType [])) then { _posASL = [0, 0, 0]; };
+if ((count _posASL) < 2) then { _posASL = [0, 0, 0]; };
 private _y   = _posASL select 1;
 private _ws  = worldSize;
 private _lat = ((_ws / 2) - _y) / 100000 * 90;   // rough equirectangular

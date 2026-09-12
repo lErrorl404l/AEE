@@ -29,7 +29,9 @@ fi
 docker run --rm -v "$DOCKER/configs:/c" alpine rm -rf /c/profiles 2>/dev/null || true
 
 clean_profiles() { docker run --rm -v "$DOCKER/configs:/c" alpine rm -rf /c/profiles 2>/dev/null || true; }
-trap 'docker compose "${COMPOSE_FILES[@]}" down 2>/dev/null || true; clean_profiles' EXIT
+# Remove per-host/world compose overlay files left by FAIL paths
+clean_overlays() { rm -f "$DOCKER"/docker-compose.{ace,acre2,tfar,kat,acm,Stratis,Tanoa,Enoch}.yml 2>/dev/null || true; }
+trap 'docker compose "${COMPOSE_FILES[@]}" down 2>/dev/null || true; clean_profiles; clean_overlays' EXIT
 
 # ── Map rotation mode ───────────────────────────────────────────────────────
 # Runs the mission on several worlds and asserts the Koppen biome each
@@ -60,6 +62,16 @@ if [ "${1:-}" = "--hosts" ]; then
     )
     FAILED=0
     MISSING=0
+    # ACM ships uppercase PBO filenames. The Arma Linux server canonicalises
+    # them to lowercase internally, then cannot open the uppercase file on a
+    # case-sensitive filesystem. Create lowercase symlink aliases so the host
+    # test can load ACM on Linux.
+    if [ -d "$MODS/@acm/addons" ]; then
+        (cd "$MODS/@acm/addons" && for f in ACM_*.pbo; do
+            low=$(echo "$f" | tr 'A-Z' 'a-z')
+            [ "$f" != "$low" ] && [ ! -e "$low" ] && ln -s "$f" "$low"
+        done)
+    fi
     for host in ace acre2 tfar kat acm; do
         moddir="${HOSTS[$host]}"
         if [ ! -d "$MODS/@${moddir#mods/@}" ]; then
@@ -70,7 +82,7 @@ if [ "${1:-}" = "--hosts" ]; then
         echo "==> host $host"
         # the server loads the FIRST template in the Missions class, so
         # server.cfg must point at the compat mission (same as --maps)
-        cat > "$DOCKER/configs/server.cfg" << CFGEOF
+        cat >"$DOCKER/configs/server.cfg" <<CFGEOF
 hostname = "AEE Test";
 password = "";
 passwordAdmin = "";
@@ -87,7 +99,7 @@ class Missions {
     };
 };
 CFGEOF
-        cat > "$DOCKER/docker-compose.$host.yml" << YAMLEOF
+        cat >"$DOCKER/docker-compose.$host.yml" <<YAMLEOF
 services:
   aee-test:
     environment:
@@ -99,13 +111,13 @@ YAMLEOF
             if docker compose -f "$DOCKER/docker-compose.yml" -f "$DOCKER/docker-compose.$host.yml" logs 2>/dev/null | grep -q "\[AEE-TEST\] DONE"; then break; fi
             sleep 5
         done
-        docker compose -f "$DOCKER/docker-compose.yml" -f "$DOCKER/docker-compose.$host.yml" logs > "$DOCKER/run.$host.log" 2>&1
+        docker compose -f "$DOCKER/docker-compose.yml" -f "$DOCKER/docker-compose.$host.yml" logs >"$DOCKER/run.$host.log" 2>&1
         case "$host" in
-            ace)   hostname="ACE3";;
-            acre2) hostname="ACRE2";;
-            tfar)  hostname="TFAR";;
-            kat)   hostname="KAT";;
-            acm)   hostname="ACM";;
+        ace) hostname="ACE3" ;;
+        acre2) hostname="ACRE2" ;;
+        tfar) hostname="TFAR" ;;
+        kat) hostname="KAT" ;;
+        acm) hostname="ACM" ;;
         esac
         if grep -q "\[HOST\] \[PASS\] $hostname" "$DOCKER/run.$host.log" 2>/dev/null; then
             echo "  PASS: $host compat integration"
@@ -120,7 +132,7 @@ YAMLEOF
         rm -f "$DOCKER/docker-compose.$host.yml"
         rm -rf "$DOCKER/configs/profiles" 2>/dev/null || true
     done
-    cat > "$DOCKER/configs/server.cfg" << CFGEOF
+    cat >"$DOCKER/configs/server.cfg" <<CFGEOF
 hostname = "AEE Test";
 password = "";
 passwordAdmin = "";
@@ -157,14 +169,14 @@ if [ "${1:-}" = "--maps" ]; then
         expect="${entry##*:}"
         echo "==> world $world (expect biome $expect)"
         # the wrapper reads world/mission from env, not config.toml
-        cat > "$DOCKER/docker-compose.$world.yml" << YAMLEOF
+        cat >"$DOCKER/docker-compose.$world.yml" <<YAMLEOF
 services:
   aee-test:
     environment:
       - ARMA3_SERVER__WORLD=$world
       - ARMA3_SERVER__MISSION=aee_test.$world
 YAMLEOF
-        cat > "$DOCKER/configs/server.cfg" << CFGEOF
+        cat >"$DOCKER/configs/server.cfg" <<CFGEOF
 hostname = "AEE Test";
 password = "";
 passwordAdmin = "";
@@ -186,7 +198,7 @@ CFGEOF
             if docker compose -f "$DOCKER/docker-compose.yml" -f "$DOCKER/docker-compose.$world.yml" logs 2>/dev/null | grep -q "\[AEE-TEST\] DONE"; then break; fi
             sleep 5
         done
-        docker compose -f "$DOCKER/docker-compose.yml" -f "$DOCKER/docker-compose.$world.yml" logs > "$DOCKER/run.$world.log" 2>&1
+        docker compose -f "$DOCKER/docker-compose.yml" -f "$DOCKER/docker-compose.$world.yml" logs >"$DOCKER/run.$world.log" 2>&1
         biome=$(grep -oE "\[BIOME\] $world=[A-Za-z]+" "$DOCKER/run.$world.log" | tail -1 | cut -d= -f2)
         if [ "$biome" = "$expect" ]; then
             echo "  PASS: $world resolves to $biome (expected $expect)"
@@ -198,7 +210,7 @@ CFGEOF
         rm -f "$DOCKER/docker-compose.$world.yml"
         rm -rf "$DOCKER/configs/profiles" 2>/dev/null || true
     done
-    cat > "$DOCKER/configs/server.cfg" << CFGEOF
+    cat >"$DOCKER/configs/server.cfg" <<CFGEOF
 hostname = "AEE Test";
 password = "";
 passwordAdmin = "";
@@ -251,15 +263,18 @@ for _ in $(seq 1 36); do
 done
 
 echo "==> capturing log"
-docker compose "${COMPOSE_FILES[@]}" logs > "$DOCKER/run.log" 2>&1
+docker compose "${COMPOSE_FILES[@]}" logs >"$DOCKER/run.log" 2>&1
 
 if [ "$BASELINE" = "1" ]; then
     echo "==> baseline captured to tests/docker/run.log (no verify gate)"
     echo "    phases in the baseline are expected to FAIL (no AEE loaded)"
 else
     echo "==> verifying"
-    python3 "$DOCKER/verify.py" "$DOCKER/run.log" \
-        || { echo "harness failed; full log at tests/docker/run.log"; exit 1; }
+    python3 "$DOCKER/verify.py" "$DOCKER/run.log" ||
+        {
+            echo "harness failed; full log at tests/docker/run.log"
+            exit 1
+        }
 fi
 
 echo "==> teardown"

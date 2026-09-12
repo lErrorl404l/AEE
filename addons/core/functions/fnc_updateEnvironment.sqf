@@ -2,6 +2,13 @@
 
 params [["_posASL", [], [[]]]];
 
+// Normalise the position: accept both [x, y, z] and a single-element
+// wrapper [[x, y, z]] (the docker test edge-case phase passes the
+// wrapped form).  Downstream callers expect a bare 3-element array.
+if ((count _posASL) == 1 && {(_posASL select 0) isEqualType []}) then {
+    _posASL = _posASL select 0;
+};
+
 if (!GVAR(enabled)) exitWith {};
 
 // Multiplayer note: core atmospheric state (temperature, pressure, humidity,

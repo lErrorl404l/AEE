@@ -5,7 +5,11 @@
 // So we call setWind to make our values propagate to ACE3.
 // We ALSO store in EGVAR(core,currentWind) for internal AEE consumption.
 private _wind = wind;
-private _gusts = gust;
+// gust is an engine weather variable that is undefined on a dedicated
+// server (no local weather simulation). Guard it; the gust field is
+// used for visual/audio FX only, so a zero default is safe.
+private _gusts = 0;
+if (!isNil {gust}) then { _gusts = gust; };
 
 // Apply module wind multiplier (EDEN/Zeus)
 private _moduleMult = missionNamespace getVariable [QEGVAR(core,moduleWindMultiplier), 1];
