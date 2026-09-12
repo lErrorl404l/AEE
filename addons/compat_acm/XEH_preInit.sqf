@@ -12,4 +12,7 @@ if (hasInterface) then {
     }, 5] call CBA_fnc_addPerFrameHandler;
 };
 
+// One-shot registration of the optional hypoxia duty factor (all machines)
+call FUNC(registerHypoxiaDutyFactor);
+
 ADDON = true;

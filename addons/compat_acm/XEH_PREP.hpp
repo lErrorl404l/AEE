@@ -1,1 +1,2 @@
 PREP(integrateACM);
+PREP(registerHypoxiaDutyFactor);

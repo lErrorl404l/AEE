@@ -37,6 +37,13 @@ level. The persistence value is a decay modifier in the range 0.225..2.1.
 The addon drives the `ACM_CBRN_chemical_sarin_*` state. Buildup clamps to
 ACM's 0..100 range.
 
+AEE also registers an optional hypoxia duty factor on ACE's
+`ace_medical_vitals_spo2DutyList`, which ACM reads each vitals tick as a
+breathing-effectiveness multiplier. The factor engages only above AEE
+hypoxia risk 0.8, so it does not double-count ACM's own altitude model.
+ACM has no thermal or dehydration subsystem, so CBRN and the duty factor
+are the full integration surface.
+
 Verified against: ACM 1.4.8.0.
 
 ## compat_acre2
