@@ -1,4 +1,6 @@
+PREP(applyAtmosphericDust);
 PREP(applyBreathCondensation);
+PREP(applyRainSurfaceDrops);
 PREP(applyRainVehicleSound);
 PREP(applyVehicleDust);
 PREP(applyWindNoise);

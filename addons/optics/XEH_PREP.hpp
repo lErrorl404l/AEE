@@ -1,4 +1,5 @@
 PREP(applyHeatShimmerFX);
+PREP(applyNightGrain);
 PREP(applyRainOnOpticsFX);
 PREP(calculateAtmosphericSeeing);
 PREP(calculateAttenuation);
