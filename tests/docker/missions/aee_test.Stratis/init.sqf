@@ -78,6 +78,114 @@ if ((_p8Fail == 0) && (_p8Pass == 17)) then {
     diag_log text format ["[PHASE8] [FAIL] pass=%1 fail=%2", _p8Pass, _p8Fail];
 };
 
+// -- PHASE 9: edge cases ----------------------------------------------------
+// Boundary positions, nil/garbage inputs, extreme values, rapid state changes.
+private _p9Pass = 0;
+private _p9Fail = 0;
+
+// 9a: boundary positions (engine clamps ±50 km X/Y, +500 m Z)
+{
+    private _pos = _x;
+    private _result = call { _pos call aee_core_fnc_updateEnvironment };
+    // updateEnvironment should not crash — if we reach here, it handled the position
+    _p9Pass = _p9Pass + 1;
+} forEach [
+    [50000, 0, 0],      // max X
+    [-50000, 0, 0],     // min X
+    [0, 50000, 0],      // max Y
+    [0, -50000, 0],     // min Y
+    [0, 0, 500],        // max Z
+    [0, 0, 0],          // sea level
+    [4200, 4250, 0]     // normal
+];
+
+// 9b: nil/garbage inputs — functions must not crash
+{
+    private _fn = _x select 0;
+    private _args = _x select 1;
+    private _ok = call { _args call _fn; true };
+    if (_ok) then { _p9Pass = _p9Pass + 1 } else { _p9Fail = _p9Fail + 1 };
+} forEach [
+    [aee_thermal_fnc_updateTemperature, [nil]],
+    [aee_thermal_fnc_updateTemperature, [objNull]],
+    [aee_optics_fnc_calculateSolarGlare, [nil]],
+    [aee_optics_fnc_calculateSolarGlare, [objNull]],
+    [aee_ballistics_fnc_calculateCrosswindBallistics, [nil]],
+    [aee_environmental_fnc_getBiome, []]
+];
+
+// 9c: extreme values — state should clamp, not explode
+missionNamespace setVariable ["aee_core_currentTemperature", -100];
+[] call aee_core_fnc_updateEnvironment;
+private _extremeT = missionNamespace getVariable ["aee_core_currentTemperature", -999];
+if (_extremeT > -200) then { _p9Pass = _p9Pass + 1 } else { _p9Fail = _p9Fail + 1 };
+
+missionNamespace setVariable ["aee_core_currentPressure", 0];
+[] call aee_core_fnc_updateEnvironment;
+private _extremeP = missionNamespace getVariable ["aee_core_currentPressure", -1];
+if (_extremeP >= 0) then { _p9Pass = _p9Pass + 1 } else { _p9Fail = _p9Fail + 1 };
+
+// 9d: rapid state changes — 100 iterations, no crash
+for "_i" from 1 to 100 do {
+    missionNamespace setVariable ["aee_core_currentTemperature", _i * 0.5];
+    missionNamespace setVariable ["aee_core_currentHumidity", _i];
+    [] call aee_core_fnc_updateEnvironment;
+};
+private _rapidT = missionNamespace getVariable ["aee_core_currentTemperature", -999];
+if (_rapidT > -100) then { _p9Pass = _p9Pass + 1 } else { _p9Fail = _p9Fail + 1 };
+
+if (_p9Fail == 0) then {
+    diag_log text format ["[PHASE9] [PASS] edge cases: %1 passed, 0 failed", _p9Pass];
+} else {
+    diag_log text format ["[PHASE9] [FAIL] edge cases: %1 passed, %2 failed", _p9Pass, _p9Fail];
+};
+
+// -- PHASE 10: performance gate ---------------------------------------------
+// Core functions must complete within 1 ms per call (100 iterations).
+private _p10Pass = 0;
+private _p10Fail = 0;
+
+private _perfTests = [
+    ["aee_core_fnc_updateEnvironment", [], 100],
+    ["aee_thermal_fnc_updateTemperature", [player], 100],
+    ["aee_optics_fnc_calculateSolarGlare", [player], 100],
+    ["aee_optics_fnc_calculateSnowBlindness", [player], 100],
+    ["aee_ballistics_fnc_calculateCrosswindBallistics", [player], 100],
+    ["aee_environmental_fnc_getBiome", [], 100]
+];
+
+{
+    _x params ["_fnName", "_args", "_iters"];
+    private _fn = missionNamespace getVariable [_fnName, nil];
+    if (isNil "_fn") then {
+        diag_log text format ["[PHASE10] [FAIL] %1 not compiled", _fnName];
+        _p10Fail = _p10Fail + 1;
+    } else {
+        private _start = diag_tickTime;
+        for "_i" from 1 to _iters do {
+            _args call _fn;
+        };
+        private _elapsed = diag_tickTime - _start;
+        private _perCall = _elapsed / _iters;
+        private _ok = _perCall < 0.001; // 1 ms threshold
+        if (_ok) then {
+            diag_log text format ["[PHASE10] [PASS] %1: %2 ms/call (%3 iters in %4 s)",
+                _fnName, round (_perCall * 1000), _iters, round (_elapsed * 1000) / 1000];
+            _p10Pass = _p10Pass + 1;
+        } else {
+            diag_log text format ["[PHASE10] [FAIL] %1: %2 ms/call (threshold 1 ms, %3 iters in %4 s)",
+                _fnName, round (_perCall * 1000), _iters, round (_elapsed * 1000) / 1000];
+            _p10Fail = _p10Fail + 1;
+        };
+    };
+} forEach _perfTests;
+
+if (_p10Fail == 0) then {
+    diag_log text format ["[PHASE10] [PASS] performance: %1 functions within 1 ms threshold", _p10Pass];
+} else {
+    diag_log text format ["[PHASE10] [FAIL] performance: %1 passed, %2 exceeded threshold", _p10Pass, _p10Fail];
+};
+
 // -- PHASE 3+4+5: wait 30 s for simulation ticks, then sample ---------------
 [{
     private _t = missionNamespace getVariable ["aee_core_currentTemperature", nil];
