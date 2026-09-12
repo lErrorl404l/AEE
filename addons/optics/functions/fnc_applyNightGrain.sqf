@@ -20,13 +20,14 @@ if (!EGVAR(core,opticsEnabled)) exitWith {};
 private _player = call CBA_fnc_currentUnit;
 if (isNil "_player" || !alive _player || cameraOn != _player) exitWith {};
 
-// NVG (vision mode 2) and thermal (3) replace the eye with a sensor that
+// NVG (vision mode 1) and thermal (2) replace the eye with a sensor that
 // has its own noise floor.  Applying the eye-noise FilmGrain on top of a
 // clean NVG/thermal image destroys the view — the real devices do not have
 // this grain.  In a sensor view, fade and disable any grain that was
 // already active (it may have been applied before the sensor came up).
+// Vision modes verified in-game: 0 = normal, 1 = NVG, 2 = thermal.
 private _visionMode = currentVisionMode _player;
-if (_visionMode == 2 || _visionMode == 3) exitWith {
+if (_visionMode == 1 || _visionMode == 2) exitWith {
     private _active = missionNamespace getVariable [QGVAR(nightGrainActive), false];
     if (_active) then {
         "FilmGrain" ppEffectAdjust [0.01, 0.1, 0.5, 0.1, 0.1, true];

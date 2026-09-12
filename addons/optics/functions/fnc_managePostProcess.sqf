@@ -31,13 +31,14 @@ if (!EGVAR(core,opticsEnabled)) exitWith {};
 private _player = call CBA_fnc_currentUnit;
 if (isNil "_player" || !alive _player || cameraOn != _player) exitWith {};
 
-// NVG (2) and thermal (3) views: the sensor produces its own image.
+// NVG (1) and thermal (2) views: the sensor produces its own image.
 // Chromatic aberration from atmospheric seeing and heat shimmer, blur
 // from dew/rain on a lens, and colour-correction tints all assume a
 // glass optic path.  Through a sensor they do not exist.  Fade out any
 // effects already active, then skip the rest of the tick.
+// Vision modes verified in-game: 0 = normal, 1 = NVG, 2 = thermal.
 private _visionMode = currentVisionMode _player;
-if (_visionMode == 2 || _visionMode == 3) exitWith {
+if (_visionMode == 1 || _visionMode == 2) exitWith {
     if (missionNamespace getVariable [QGVAR(chromaActive), false]) then {
         "ChromAberration" ppEffectAdjust [0, 0, 0];
         "ChromAberration" ppEffectCommit 1;
