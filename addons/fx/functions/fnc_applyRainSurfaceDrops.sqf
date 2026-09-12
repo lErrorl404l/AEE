@@ -52,7 +52,7 @@ _drops setParticleCircle [_radius, [0, 0, 0]];
 // Number" on the color element.
 _drops setParticleRandom [0.2, [_radius, _radius, 0], [0, 0, 1], 13, 0.5, [0, 0, 0, 0], 1, 0, 45, 0];
 _drops setParticleParams [
-    ["\A3\Data_F_Mark\ParticleEffects\Universal\waterBallonExplode_01", 0, 2],
+    ["\A3\Data_F_Mark\ParticleEffects\Universal\waterBallonExplode_01", 16, 12, 8],
     "",
     "Billboard",
     1,                              // sort

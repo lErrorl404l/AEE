@@ -37,7 +37,7 @@ _source call FUNC(registerParticleSource);
 _source setParticleCircle [0, [0, 0, 0]];
 _source setParticleRandom [0, [0, 0, 0], [0, 0, 0.2], 0, 0.2, [0, 0, 0, 0], 0, 0];
 _source setParticleParams [
-    ["\a3\data_f\ParticleEffects\Universal\Universal", 0, 2],
+    ["\a3\data_f\ParticleEffects\Universal\Universal", 16, 12, 8],
     "",
     "Billboard",
     1,                          // sort

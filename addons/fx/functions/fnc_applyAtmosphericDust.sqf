@@ -70,7 +70,7 @@ private _size = 30 + _windSpeed * 2;
 private _alpha = 0.08 * _density;
 
 _dust setParticleParams [
-    ["\A3\data_f\ParticleEffects\Universal\Universal.p3d", 0, 2],
+    ["\A3\data_f\ParticleEffects\Universal\Universal.p3d", 16, 12, 8],
     "",
     "billboard",
     1,                          // sort
