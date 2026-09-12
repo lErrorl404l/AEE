@@ -76,6 +76,5 @@ _risk = _risk min 1 max 0;
 _dehydAccum set [_uid, [_deficit, _now, _risk]];
 missionNamespace setVariable [QGVAR(dehydrationAccum), _dehydAccum];
 missionNamespace setVariable [QGVAR(dehydrationRisk), _risk];
-missionNamespace setVariable ["ace_medical_dehydrationRisk", _risk];
 
 _risk
