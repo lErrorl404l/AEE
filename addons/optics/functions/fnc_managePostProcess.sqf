@@ -64,11 +64,14 @@ if (_chromaOn) then {
         missionNamespace setVariable [QGVAR(chromaActive), true];
     };
     missionNamespace setVariable [QGVAR(chromaGen), (missionNamespace getVariable [QGVAR(chromaGen), 0]) + 1];
-    "ChromAberration" ppEffectAdjust [0, 0, _chroma, _chroma, _chroma, _chroma];
+    // ChromAberration ppEffectAdjust takes [x, y, strength] — a 3-element
+    // array (pixel offset and chromatic strength).  A 6-element array
+    // (copied from the pre-arbiter code) throws "6 elements, 3 expected".
+    "ChromAberration" ppEffectAdjust [0, 0, _chroma];
     "ChromAberration" ppEffectCommit 2;
 } else {
     if (_chromaActive && _chromaOff) then {
-        "ChromAberration" ppEffectAdjust [0, 0, 0, 0, 0, 0];
+        "ChromAberration" ppEffectAdjust [0, 0, 0];
         "ChromAberration" ppEffectCommit 1;
         private _gen = missionNamespace getVariable [QGVAR(chromaGen), 0];
         [{
