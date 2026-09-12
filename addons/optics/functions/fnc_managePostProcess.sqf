@@ -44,7 +44,7 @@ private _hCC     = missionNamespace getVariable [QGVAR(ppHandle_ColorCorrections
 private _visionMode = currentVisionMode _player;
 if (_visionMode == 1 || _visionMode == 2) exitWith {
     if (missionNamespace getVariable [QGVAR(chromaActive), false]) then {
-        _hChroma ppEffectAdjust [0, 0, 0];
+        _hChroma ppEffectAdjust [0, 0, false];
         _hChroma ppEffectCommit 1;
         [{
             (missionNamespace getVariable [QGVAR(ppHandle_ChromAberration), -1]) ppEffectEnable false;
@@ -114,11 +114,11 @@ if (_chromaOn) then {
     // ChromAberration ppEffectAdjust takes [x, y, strength] — a 3-element
     // array (pixel offset and chromatic strength).  A 6-element array
     // (copied from the pre-arbiter code) throws "6 elements, 3 expected".
-    _hChroma ppEffectAdjust [0, 0, _chroma];
+    _hChroma ppEffectAdjust [_chroma, _chroma, false];
     _hChroma ppEffectCommit 2;
 } else {
     if (_chromaActive && _chromaOff) then {
-        _hChroma ppEffectAdjust [0, 0, 0];
+        _hChroma ppEffectAdjust [0, 0, false];
         _hChroma ppEffectCommit 1;
         private _gen = missionNamespace getVariable [QGVAR(chromaGen), 0];
         [{
