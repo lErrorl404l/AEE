@@ -30,11 +30,16 @@ private _surfaceTemp = switch (_groundState) do {
 // through zero.  The naive air-vs-surface delta fires at NIGHT too
 // (surface cools to air temp), but a FLIR still sees objects as warm
 // against the cool background — night is when thermal is most useful.
-// Gate on solar elevation (same sine model as fnc_calculateSolarGlare):
-// only within ~10° of the horizon can the gradient collapse.
+//
+// Gate on solar elevation, and do NOT clamp the sine to 0.  A clamped
+// `max 0` makes midnight identical to sunrise (both report 0°), which
+// fires the twilight gate all night and nullifies thermal exactly when
+// it should work best.  Instead the sine must go negative below the
+// horizon, and twilight means the sun is within ~10° of the horizon on
+// EITHER side — dawn and dusk only.
 private _dayFraction = dayTime / 24;
-private _sunElev = (sin ((_dayFraction - 0.25) * 360) * 90) max 0;
-private _inTwilight = _sunElev < 10;
+private _sunElev = sin ((_dayFraction - 0.25) * 360) * 90;
+private _inTwilight = abs _sunElev < 10;
 
 private _delta = abs (_airTemp - _surfaceTemp);
 private _crossoverNow = _inTwilight && _delta <= 1.5;
