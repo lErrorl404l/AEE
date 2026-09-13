@@ -48,7 +48,7 @@ Legend: ✅ verified against source · ⚠️ judgment call (documented)
 ### PVS-31
 | Value | Used | Source | Status |
 |---|---|---|---|
-| sensitivity 110000 | gain = sens/(lux+1) | DS: high-gain thin-film Gen3 | ⚠️ magnitude judgment |
+| sensitivity 2000 µA/lm | gain = sens/(lux+1) | DS: filmless GaAs (L3Harris/Photonis 4G) | ✅ datasheet |
 | noiseFloor 0.03 | noise floor | DS: excellent SNR | ⚠️ magnitude judgment |
 | mtf15 0.65 | contrast | DS: 64-81 lp/mm → ~65% MTF | ✅ derived |
 | phosphorTint [1.1,0.8,1.9,0.9] | colorize | ACE3 white preset | ✅ exact |
@@ -60,7 +60,7 @@ Legend: ✅ verified against source · ⚠️ judgment call (documented)
 ### GEN3
 | Value | Used | Source | Status |
 |---|---|---|---|
-| sensitivity 20000 | gain | DS: Gen3 sensitivity | ⚠️ judgment |
+| sensitivity 1100 µA/lm | gain | DS: GaAs (Photonis ~700-1200) | ✅ datasheet |
 | noiseFloor 0.04 | noise | DS | ⚠️ judgment |
 | mtf15 0.61 | contrast | DS: Elbit MX-10160 61% | ✅ derived |
 | phosphorTint [1.3,1.2,0,0.9] | colorize | ACE3 green preset | ✅ exact |
@@ -72,7 +72,7 @@ Legend: ✅ verified against source · ⚠️ judgment call (documented)
 ### GEN2
 | Value | Used | Source | Status |
 |---|---|---|---|
-| sensitivity 10000 | gain | DS: Gen2 | ⚠️ judgment |
+| sensitivity 550 µA/lm | gain | DS: multialkali Gen2 | ✅ datasheet |
 | noiseFloor 0.08 | noise | DS | ⚠️ judgment |
 | mtf15 0.45 | contrast | DS: 47-54 lp/mm → ~45% | ✅ derived |
 | phosphorTint [1.3,1.2,0,0.9] | colorize | ACE3 green preset | ✅ exact |
@@ -84,7 +84,7 @@ Legend: ✅ verified against source · ⚠️ judgment call (documented)
 ### GEN1
 | Value | Used | Source | Status |
 |---|---|---|---|
-| sensitivity 1000 | gain | DS: Gen1 | ⚠️ judgment |
+| sensitivity 250 µA/lm | gain | DS: S-25 multialkali | ✅ datasheet |
 | noiseFloor 0.15 | noise | DS | ⚠️ judgment |
 | mtf15 0.30 | contrast | DS: 30-40 lp/mm → ~30% | ✅ derived |
 | phosphorTint [1.4,1.3,0,0.9] | colorize | ACE3 green, warmer (P20) | ⚠️ derived from ACE3 |
@@ -118,8 +118,10 @@ multipliers, not physical units.  Each is documented with its reference.
 2. **Blowout cone (30°), range (150m)**.  Chosen thresholds, not derived.
 3. **Grain intensity scale** (noise 0.03..1 → 0..1).  Physics gives the
    shape; the magnitude is engine-tuned.
-4. **Sensitivity magnitudes per tier** (1000..110000).  Relative ratios
-   are datasheet-informed; absolute values are calibration.
+4. **PHOTON_SCALE** (single constant, 500).  Converts µA/lm
+   photocathode sensitivity to a detected-photon count (cathode area × QE
+   × integration time ÷ electron charge).  ONE calibration knob, not four
+   per-tier magic numbers.
 5. **setAperture 20**.  A3TI uses 15-25; 20 is the midpoint.
 6. **Fiber cell counts** (28/42).  SCHOTT datasheet bundle sizes, mapped
    to screen pixels — the mapping constant is calibration.
