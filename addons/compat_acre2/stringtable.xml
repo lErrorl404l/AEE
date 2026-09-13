@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="ACRE2">
+        <Key ID="STR_AEE_COMPAT_ACRE2_signalDBShift_Description">
+            <Original>Maximum dB shift from the propagation index</Original>
+            <English>Maximum dB shift from the propagation index</English>
+        </Key>
+        <Key ID="STR_AEE_COMPAT_ACRE2_signalDBShift_Name">
+            <Original>Signal DB Shift</Original>
+            <English>Signal DB Shift</English>
+        </Key>
+        <Key ID="STR_AEE_COMPAT_ACRE2_signalSensitivityMin_Description">
+            <Original>Receiver sensitivity floor in dBm</Original>
+            <English>Receiver sensitivity floor in dBm</English>
+        </Key>
+        <Key ID="STR_AEE_COMPAT_ACRE2_signalSensitivityMin_Name">
+            <Original>Signal Sensitivity Minimum</Original>
+            <English>Signal Sensitivity Minimum</English>
+        </Key>
+    </Package>
+</Project>

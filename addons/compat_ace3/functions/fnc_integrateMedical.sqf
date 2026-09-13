@@ -40,18 +40,18 @@ private _hr    = 0;
 private _flow  = 0;
 private _pain  = 0;
 
-if (_wbgt > 23 || _risk > 0.3) then {
+if ((_wbgt > (missionNamespace getVariable [QEGVAR(compat_ace3,medicalWBGTThreshold), 0])) || (_risk > (missionNamespace getVariable [QEGVAR(compat_ace3,medicalRiskThreshold), 0]))) then {
     // ISO 7243 bands — heat strain raises heart rate, lowers peripheral flow
     if (_wbgt > 32) then {
         _hr = 30; _flow = -20; _pain = 0.3;              // very dangerous
     } else {
         if (_wbgt > 28) then { _hr = 20; _flow = -15; };  // danger
-        if (_wbgt > 23) then { _hr = 10; _flow = -10; };  // extreme caution
+        if ((_wbgt > (missionNamespace getVariable [QEGVAR(compat_ace3,medicalWBGTThreshold), 0]))) then { _hr = 10; _flow = -10; };  // extreme caution
     };
 
     // Dehydration compounds flow loss (reduced blood volume)
     if (_risk > 0.7) then { _flow = _flow - 15; _pain = _pain max 0.2; };
-    if (_risk > 0.3) then { _flow = _flow - 8; };
+    if ((_risk > (missionNamespace getVariable [QEGVAR(compat_ace3,medicalRiskThreshold), 0]))) then { _flow = _flow - 8; };
 
     [_unit, "AEE_heatStress", 120, 600, _hr, _pain, _flow, 1]
         call ace_medical_status_fnc_addMedicationAdjustment;
@@ -62,17 +62,17 @@ if (_wbgt > 23 || _risk > 0.3) then {
 };
 
 // ─── Heat stroke (cardiac arrest) at extreme WBGT + critical dehydration ──
-if (_wbgt > 32 && _risk > 0.8) then {
+if ((_wbgt > (missionNamespace getVariable [QEGVAR(compat_ace3,medicalHeatStrokeWBGT), 0])) && _risk > 0.8) then {
     [_unit, true] call ace_medical_status_fnc_setCardiacArrestState;
 } else {
     if (missionNamespace getVariable [QGVAR(heatStrokeActive), false]) then {
         [_unit, false] call ace_medical_status_fnc_setCardiacArrestState;
     };
 };
-missionNamespace setVariable [QGVAR(heatStrokeActive), (_wbgt > 32 && _risk > 0.8)];
+missionNamespace setVariable [QGVAR(heatStrokeActive), ((_wbgt > (missionNamespace getVariable [QEGVAR(compat_ace3,medicalHeatStrokeWBGT), 0])) && _risk > 0.8)];
 
 // ─── Heat burn damage (thermal burn — no bleeding, pain 0.7) ──────────────
-if (_temp > 25) then {
-    private _damage = (_temp - 25) * 0.0005;
+if ((_temp > (missionNamespace getVariable [QEGVAR(compat_ace3,medicalBurnTemp), 0]))) then {
+    private _damage = ((_temp - (missionNamespace getVariable [QEGVAR(compat_ace3,medicalBurnTemp), 0])) * (missionNamespace getVariable [QEGVAR(compat_ace3,medicalBurnDamageScale), 0.0005]));
     [_unit, _damage, "LeftLeg", "burn"] call ace_medical_fnc_addDamageToUnit;
 };

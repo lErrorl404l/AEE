@@ -30,14 +30,14 @@ private _callback = compile '
     private _propIdx = missionNamespace getVariable ["aee_radio_radioPropagationIndex", 1];
     if (_propIdx <= 0) then { _propIdx = 1.0 };
 
-    private _dB_shift = (_propIdx - 1) * 8;
+    private _dB_shift = (_propIdx - 1) * (missionNamespace getVariable [QEGVAR(compat_acre2,signalDBShift), 8]);
 
     // Apply the shift in dBm, then recompute the percent over the
     // receiver sensitivity window (defaults: -110..0 dBm).
     private _signalDBm = _maxSignal + _dB_shift;
     private _min = getNumber (configFile >> "CfgRadio" >> "ACRE_BASE_RECEIVER" >> "sensitivityMin");
     private _max = getNumber (configFile >> "CfgRadio" >> "ACRE_BASE_RECEIVER" >> "sensitivityMax");
-    if (_max - _min == 0) then { _min = -110; _max = 0; };
+    if (_max - _min == 0) then { _min = (missionNamespace getVariable [QEGVAR(compat_acre2,signalSensitivityMin), -110]); _max = 0; };
 
     private _signalPct = ((_signalDBm - _min) / (_max - _min)) max 0 min 1;
 

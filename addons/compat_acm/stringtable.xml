@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="ACM">
+        <Key ID="STR_AEE_COMPAT_ACM_CBRNBasePersistence_Description">
+            <Original>Agent persistence in hours at 15 degrees Celsius</Original>
+            <English>Agent persistence in hours at 15 degrees Celsius</English>
+        </Key>
+        <Key ID="STR_AEE_COMPAT_ACM_CBRNBasePersistence_Name">
+            <Original>CBRN Base Persistence</Original>
+            <English>CBRN Base Persistence</English>
+        </Key>
+        <Key ID="STR_AEE_COMPAT_ACM_CBRNContamThreshold_Description">
+            <Original>Normalised contamination that marks a unit contaminated</Original>
+            <English>Normalised contamination that marks a unit contaminated</English>
+        </Key>
+        <Key ID="STR_AEE_COMPAT_ACM_CBRNContamThreshold_Name">
+            <Original>CBRN Contamination Threshold</Original>
+            <English>CBRN Contamination Threshold</English>
+        </Key>
+        <Key ID="STR_AEE_COMPAT_ACM_CBRNMaxBuildup_Description">
+            <Original>Upper limit of the ACM exposure buildup</Original>
+            <English>Upper limit of the ACM exposure buildup</English>
+        </Key>
+        <Key ID="STR_AEE_COMPAT_ACM_CBRNMaxBuildup_Name">
+            <Original>CBRN Maximum Buildup</Original>
+            <English>CBRN Maximum Buildup</English>
+        </Key>
+    </Package>
+</Project>

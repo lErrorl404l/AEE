@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="TFAR">
+        <Key ID="STR_AEE_COMPAT_TFAR_signalMultMax_Description">
+            <Original>Upper limit of the signal multiplier</Original>
+            <English>Upper limit of the signal multiplier</English>
+        </Key>
+        <Key ID="STR_AEE_COMPAT_TFAR_signalMultMax_Name">
+            <Original>Signal Multiplier Maximum</Original>
+            <English>Signal Multiplier Maximum</English>
+        </Key>
+        <Key ID="STR_AEE_COMPAT_TFAR_signalMultMin_Description">
+            <Original>Lower limit of the signal multiplier</Original>
+            <English>Lower limit of the signal multiplier</English>
+        </Key>
+        <Key ID="STR_AEE_COMPAT_TFAR_signalMultMin_Name">
+            <Original>Signal Multiplier Minimum</Original>
+            <English>Signal Multiplier Minimum</English>
+        </Key>
+        <Key ID="STR_AEE_COMPAT_TFAR_signalMultScale_Description">
+            <Original>Sending multiplier scale from the propagation index</Original>
+            <English>Sending multiplier scale from the propagation index</English>
+        </Key>
+        <Key ID="STR_AEE_COMPAT_TFAR_signalMultScale_Name">
+            <Original>Signal Multiplier Scale</Original>
+            <English>Signal Multiplier Scale</English>
+        </Key>
+    </Package>
+</Project>

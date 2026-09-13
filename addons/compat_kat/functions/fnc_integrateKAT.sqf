@@ -39,7 +39,7 @@ private _dehydrationRisk = missionNamespace getVariable ["aee_physiology_dehydra
 
 private _dehyd = 0;
 if (_coreAETemp > 15 || _coreBodyTemp > 37.5 || _dehydrationRisk > 0.2) then {
-    _dehyd = 0.05
+    _dehyd = (missionNamespace getVariable [QEGVAR(compat_kat,fluidDrainBase), 0.05])
         + ((_coreAETemp - 15) max 0) * 0.002
         + ((_coreBodyTemp - 37.5) max 0) * 0.01
         + _dehydrationRisk * 0.03;
@@ -64,7 +64,7 @@ player setVariable ["kat_circulation_bodyFluid", [_ecb, _ecpNew, _srbc, _ispNew,
 private _risk = missionNamespace getVariable ["aee_core_currentHypoxiaRisk", 0];
 
 if (_risk > 0.01) then {
-    private _spo2 = (97 - (_risk * 32)) max 60;            // percent
+    private _spo2 = ((97 - (_risk * (missionNamespace getVariable [QEGVAR(compat_kat,spo2RiskScale), 32]))) max (missionNamespace getVariable [QEGVAR(compat_kat,spo2Floor), 60]));            // percent
     private _pao2 = 33 + ((_spo2 - 60) / 15) * 7;          // 33..40 mmHg
     private _bloodGas = player getVariable ["kat_circulation_bloodGas", [40, 90, 0.96, 24, 7.4, 37]];
     if (_bloodGas isEqualType 0) then { _bloodGas = [40, 90, 0.96, 24, 7.4, 37]; };

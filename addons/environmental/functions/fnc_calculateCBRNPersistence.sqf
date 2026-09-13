@@ -27,7 +27,9 @@ if (isNil "_temp_C")   then { _temp_C   = 15; };
 if (isNil "_humidity") then { _humidity = 50; };
 
 // ─── Temperature — Q10 scaling (rate doubles per 10 °C) ────────────────────
-private _basePersistenceH = GVAR(CBRNBasePersistence);
+// Base persistence lives in compat_acm (ACM loaded) with a 24 h fallback
+// when ACM is absent.
+private _basePersistenceH = missionNamespace getVariable [QEGVAR(compat_acm,CBRNBasePersistence), 24];
 private _rateMultiplier = 2 ^ ((_temp_C - 15) / 10);
 private _persistenceH = _basePersistenceH / _rateMultiplier;
 
