@@ -51,6 +51,14 @@ if command -v python3 &>/dev/null && [ -f "$ROOT/tools/validation/validate_illum
     (cd "$ROOT" && python3 tools/validation/validate_illuminance.py >/dev/null 2>&1) || FAILED=1
 fi
 
+# DoF focus validation — optics physics (hyperfocal, blur circle, DoF band)
+# + state machine behaviour (median aggregation, deadband, hold-on-empty,
+# glide, transient rejection). Stdlib only.
+if command -v python3 &>/dev/null && [ -f "$ROOT/tools/validation/validate_dof.py" ]; then
+    echo "-> DoF focus validation"
+    (cd "$ROOT" && python3 tools/validation/validate_dof.py >/dev/null 2>&1) || FAILED=1
+fi
+
 if [ "$FAILED" -ne 0 ]; then
     echo "X pre-commit hook failed. Fix issues or use --no-verify."
     exit 1
