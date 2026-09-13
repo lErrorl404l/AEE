@@ -606,7 +606,12 @@ private _fan = [
     ];
     if (count _hits > 0) then {
         private _d = _eyePos distance (_hits select 0 select 0);
-        if (_d < _rawTarget || _rawTarget == 0) then { _rawTarget = _d; };
+        // Weapon/hands exclusion zone: the fan hits the operator's own
+        // weapon (0.5-1 m) or body when looking slightly down.  A real
+        // NVG operator focuses PAST the weapon — the ring is set on the
+        // target, not on the muzzle.  Ignore hits under 2 m so the
+        // objective racks to what is actually being looked at.
+        if (_d >= 2 && (_d < _rawTarget || _rawTarget == 0)) then { _rawTarget = _d; };
     };
 } forEach _fan;
 
