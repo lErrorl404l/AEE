@@ -16,5 +16,6 @@ if (!EGVAR(core,opticsEnabled)) exitWith {};
 private _shimmer = missionNamespace getVariable [QGVAR(vehicleHeatShimmerIntensity), 0];
 if !(_shimmer isEqualType 0) then { _shimmer = 0; };
 
-// 0.04 = visible shimmer at moderate engine heat; store 0 below gate so the arbiter can fade
-missionNamespace setVariable [QGVAR(shimmerChroma), if (_shimmer > 0.1) then { 0.04 * _shimmer } else { 0 }];
+// Setting = visible shimmer at moderate engine heat; store 0 below gate so the arbiter can fade
+private _shimmerScale = missionNamespace getVariable [QGVAR(heatShimmerIntensity), 0.04];
+missionNamespace setVariable [QGVAR(shimmerChroma), if (_shimmer > 0.1) then { _shimmerScale * _shimmer } else { 0 }];

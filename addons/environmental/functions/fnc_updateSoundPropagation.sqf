@@ -29,7 +29,7 @@ private _isCalm   = (_windSpeed < 4);
 private _isClear  = (overcast < 0.4);
 
 if (_isNight && _isCalm && _isClear) then {
-    _index = _index + 0.6;   // strong inversion
+    _index = _index + GVAR(InversionBoost);   // strong inversion
 } else {
     if (_isNight && _isCalm) then {
         _index = _index + 0.3;  // moderate (thin cloud cover still traps)
@@ -56,5 +56,5 @@ if (_groundState == "Snow") then {
     _index = _index - 0.25;
 };
 
-_index = _index max 0.3 min 2.0;
+_index = (_index * GVAR(SoundPropagationScale)) max 0.3 min 2.0;
 missionNamespace setVariable [QGVAR(currentSoundPropagation), _index];

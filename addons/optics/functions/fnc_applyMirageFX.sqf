@@ -37,7 +37,7 @@ if (_intensity > 0.02) then {
     private _mirage = "#particlesource" createVehicleLocal _pos;
     _mirage attachTo [_player, [0, 3, 0.5]]; // in front, at ground
 
-    private _alpha = linearConversion [0, 1, _intensity, 0.05, 0.15, true];
+    private _alpha = linearConversion [0, 1, _intensity, 0.05, 0.15, true] * (missionNamespace getVariable [QGVAR(mirageIntensity), 1.0]);
     private _size  = linearConversion [0, 1, _intensity, 1, 3, true];
 
     _mirage setParticleParams [
@@ -66,7 +66,7 @@ if (_intensity > 0.02) then {
     ];
 
     _mirage setParticleRandom [0, [_size, _size, 0], [0, 0, 0], 0, 0, [0, 0, 0, 0], 0, 0];
-    _mirage setDropInterval (0.08 / _intensity);
+    _mirage setDropInterval ((missionNamespace getVariable [QGVAR(mirageDensity), 0.08]) / _intensity);
 
     missionNamespace setVariable [QGVAR(mirageSource), _mirage];
 

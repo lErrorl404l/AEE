@@ -23,6 +23,8 @@ if (isNil "_player" || !alive _player || cameraOn != _player) exitWith {};
 // Need rain
 if (rain < 0.1) exitWith {};
 
+private _density = missionNamespace getVariable [QGVAR(rainDropDensity), 0.006];
+
 // Guard: skip if an existing drops source is still alive (prevents stacking)
 private _existing = missionNamespace getVariable [QGVAR(rainSurfaceDrops), objNull];
 if (!isNull _existing && alive _existing) exitWith {};
@@ -35,7 +37,7 @@ private _highPos = _eyePos vectorAdd [0, 0, 50];
 if (lineIntersects [_eyePos, _highPos]) exitWith {};
 
 // ─── Rain intensity → particle parameters ───────────────────────────────
-private _dropInterval = linearConversion [0.1, 1, rain, 0.006, 0.002, true];
+private _dropInterval = linearConversion [0.1, 1, rain, _density, _density / 3, true];
 private _animFactor   = linearConversion [0.1, 1, rain, 0.1, 0.2, true];
 private _radius       = 18;
 

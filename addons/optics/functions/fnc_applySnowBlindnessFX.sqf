@@ -24,8 +24,9 @@ private _player    = call CBA_fnc_currentUnit;
 if (isNil "_player" || !alive _player || cameraOn != _player) exitWith {};
 
 // Lift brightness and desaturate slightly — simulates dazzle
-private _brightness = linearConversion [0, 1, _blindness, 1, 1.3, true];
-private _contrast   = linearConversion [0, 1, _blindness, 1, 0.85, true];
-private _ccParams   = [_brightness, _contrast, 0, [0, 0, 0, 0], [1, 1, 1, _blindness * 0.1], [0.9, 0.9, 0.9, 0]];
+private _scale        = missionNamespace getVariable [QGVAR(snowBlindnessIntensity), 1.0];
+private _brightness = 1 + (linearConversion [0, 1, _blindness, 0, 0.3, true] * _scale);
+private _contrast   = 1 - (linearConversion [0, 1, _blindness, 0, 0.15, true] * _scale);
+private _ccParams   = [_brightness, _contrast, 0, [0, 0, 0, 0], [1, 1, 1, _blindness * 0.1 * _scale], [0.9, 0.9, 0.9, 0]];
 
 missionNamespace setVariable [QGVAR(snowBlindnessCC), if (_blindness > 0.01) then { _ccParams } else { [] }];

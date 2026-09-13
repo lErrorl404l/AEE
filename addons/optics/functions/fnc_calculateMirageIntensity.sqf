@@ -53,17 +53,19 @@ if (sunOrMoon > 0 && _isAridSurf && _overcast < 0.3) then {
 private _surfaceTemp = _temp + _solarLoading;
 
 // ─── Eligibility ──────────────────────────────────────────────────────
+private _onsetTemp   = missionNamespace getVariable [QGVAR(mirageOnsetTemp), 35];
+private _minSunElev  = missionNamespace getVariable [QGVAR(mirageMinSunElev), 15];
 private _aridBiome   = _biome in ["BWh", "BWk", "BSh", "BSk"];
 private _dustyGround = _groundState == "Dusty";
-private _hotEnough   = _surfaceTemp > 35;
+private _hotEnough   = _surfaceTemp > _onsetTemp;
 
-if (!_hotEnough || (!(_aridBiome || _dustyGround)) || (_sunElev <= 15)) exitWith {
+if (!_hotEnough || (!(_aridBiome || _dustyGround)) || (_sunElev <= _minSunElev)) exitWith {
     missionNamespace setVariable [QGVAR(mirageIntensity), 0];
     0
 };
 
 // ─── Intensity ─────────────────────────────────────────────────────────
-private _intensity = ((_surfaceTemp - 35) / 30) min 1.0;
+private _intensity = ((_surfaceTemp - _onsetTemp) / 30) min 1.0;
 
 // Overcast reduction — cloud cover reduces direct insolation
 _intensity = _intensity * (1 - _overcast);

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="Physiology">
+        <Key ID="STR_AEE_Physiology_AMSOffsetAltitude_Description">
+            <Original>Altitude (m) where acute mountain sickness risk starts</Original>
+            <English>Altitude (m) where acute mountain sickness risk starts</English>
+        </Key>
+        <Key ID="STR_AEE_Physiology_AMSOffsetAltitude_Name">
+            <Original>AMS Onset Altitude</Original>
+            <English>AMS Onset Altitude</English>
+        </Key>
+        <Key ID="STR_AEE_Physiology_HUDWarningThreshold_Description">
+            <Original>Dehydration risk that triggers the HUD warning</Original>
+            <English>Dehydration risk that triggers the HUD warning</English>
+        </Key>
+        <Key ID="STR_AEE_Physiology_HUDWarningThreshold_Name">
+            <Original>HUD Warning Threshold</Original>
+            <English>HUD Warning Threshold</English>
+        </Key>
+        <Key ID="STR_AEE_Physiology_HeatStrokeSensitivity_Description">
+            <Original>Heat-stroke overlay strength per °C above the danger threshold</Original>
+            <English>Heat-stroke overlay strength per °C above the danger threshold</English>
+        </Key>
+        <Key ID="STR_AEE_Physiology_HeatStrokeSensitivity_Name">
+            <Original>Heat Stroke Sensitivity</Original>
+            <English>Heat Stroke Sensitivity</English>
+        </Key>
+        <Key ID="STR_AEE_Physiology_HypoxiaRecovery_Description">
+            <Original>Residual-exposure recovery rate below 6000 m</Original>
+            <English>Residual-exposure recovery rate below 6000 m</English>
+        </Key>
+        <Key ID="STR_AEE_Physiology_HypoxiaRecovery_Name">
+            <Original>Hypoxia Recovery Rate</Original>
+            <English>Hypoxia Recovery Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Physiology_RapidAscentThreshold_Description">
+            <Original>Climb rate (m per tick) that triggers acute mountain sickness</Original>
+            <English>Climb rate (m per tick) that triggers acute mountain sickness</English>
+        </Key>
+        <Key ID="STR_AEE_Physiology_RapidAscentThreshold_Name">
+            <Original>Rapid Ascent Threshold</Original>
+            <English>Rapid Ascent Threshold</English>
+        </Key>
+        <Key ID="STR_AEE_Physiology_RehydrationRate_Description">
+            <Original>Natural rehydration speed (L per hour)</Original>
+            <English>Natural rehydration speed (L per hour)</English>
+        </Key>
+        <Key ID="STR_AEE_Physiology_RehydrationRate_Name">
+            <Original>Rehydration Rate</Original>
+            <English>Rehydration Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Physiology_ScentIntensity_Description">
+            <Original>Scale on scent detectability (0 = off, 1 = normal, 2 = strong)</Original>
+            <English>Scale on scent detectability (0 = off, 1 = normal, 2 = strong)</English>
+        </Key>
+        <Key ID="STR_AEE_Physiology_ScentIntensity_Name">
+            <Original>Scent Intensity</Original>
+            <English>Scent Intensity</English>
+        </Key>
+        <Key ID="STR_AEE_Physiology_SweatRateScale_Description">
+            <Original>Overall heat-stress severity multiplier on sweat rate</Original>
+            <English>Overall heat-stress severity multiplier on sweat rate</English>
+        </Key>
+        <Key ID="STR_AEE_Physiology_SweatRateScale_Name">
+            <Original>Sweat Rate Scale</Original>
+            <English>Sweat Rate Scale</English>
+        </Key>
+    </Package>
+</Project>

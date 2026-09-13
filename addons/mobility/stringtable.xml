@@ -9,6 +9,70 @@
             <Original>Flight Turbulence</Original>
             <English>Flight Turbulence</English>
         </Key>
+        <Key ID="STR_AEE_Mobility_minEnginePower_Description">
+            <Original>Floor on engine power derating from altitude and temperature (0.3 = 30 % minimum power)</Original>
+            <English>Floor on engine power derating from altitude and temperature (0.3 = 30 % minimum power)</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_minEnginePower_Name">
+            <Original>Minimum Engine Power</Original>
+            <English>Minimum Engine Power</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_mudAccretionRate_Description">
+            <Original>Mud build-up rate per 5 s tick while driving on muddy terrain</Original>
+            <English>Mud build-up rate per 5 s tick while driving on muddy terrain</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_mudAccretionRate_Name">
+            <Original>Mud Accretion Rate</Original>
+            <English>Mud Accretion Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_mudDecayRate_Description">
+            <Original>Mud shedding factor per 5 s tick on hard surfaces (1 = no decay)</Original>
+            <English>Mud shedding factor per 5 s tick on hard surfaces (1 = no decay)</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_mudDecayRate_Name">
+            <Original>Mud Decay Rate</Original>
+            <English>Mud Decay Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_rainAccumDecay_Description">
+            <Original>Rain-history decay factor per 5 s tick (lower = faster drying)</Original>
+            <English>Rain-history decay factor per 5 s tick (lower = faster drying)</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_rainAccumDecay_Name">
+            <Original>Rain Accumulation Decay</Original>
+            <English>Rain Accumulation Decay</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_riverResponseRate_Description">
+            <Original>Nash-cascade storage coefficient per 5 s tick; 1/k = reservoir time constant</Original>
+            <English>Nash-cascade storage coefficient per 5 s tick; 1/k = reservoir time constant</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_riverResponseRate_Name">
+            <Original>River Response Rate</Original>
+            <English>River Response Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_routeDamageRate_Description">
+            <Original>Soil cone-index damage per vehicle passage per 5 s tick</Original>
+            <English>Soil cone-index damage per vehicle passage per 5 s tick</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_routeDamageRate_Name">
+            <Original>Route Damage Rate</Original>
+            <English>Route Damage Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_routeRecoveryRate_Description">
+            <Original>Soil recovery factor per 5 s tick toward nominal firm soil</Original>
+            <English>Soil recovery factor per 5 s tick toward nominal firm soil</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_routeRecoveryRate_Name">
+            <Original>Route Recovery Rate</Original>
+            <English>Route Recovery Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_tractionScale_Description">
+            <Original>Multiplier on all surface traction coefficients</Original>
+            <English>Multiplier on all surface traction coefficients</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_tractionScale_Name">
+            <Original>Traction Scale</Original>
+            <English>Traction Scale</English>
+        </Key>
         <Key ID="STR_AEE_Mobility_turbulenceRadius_Description">
             <Original>Distance from the player or mission centre within which aircraft receive turbulence forces</Original>
             <English>Distance from the player or mission centre within which aircraft receive turbulence forces</English>

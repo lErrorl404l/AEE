@@ -20,14 +20,14 @@ private _interval  = missionNamespace getVariable [QEGVAR(core,updateInterval), 
 if (isNil "_rainRate") then { _rainRate = 0; };
 
 // ─── Wetting — rain ──────────────────────────────────────────────────────
-_wetness = _wetness + (_rainRate * 0.05);
+_wetness = _wetness + (_rainRate * GVAR(WettingRate) * (_interval / 5));
 
 // ─── Dew — Magnus dew point (Sonntag 1990, over water) ───────────────────
 // Clear calm night, surface colder than the dew point: dew forms.
 private _gamma = (ln (_humidity / 100)) + (17.62 * _temp / (243.12 + _temp));
 private _dewPoint = 243.12 * _gamma / (17.62 - _gamma);
 if (_temp < _dewPoint && _overcast < 0.3 && _windSpeed < 3) then {
-    _wetness = _wetness + 0.02;
+    _wetness = _wetness + GVAR(DewRate) * (_interval / 5);
 };
 
 // ─── Drying — evaporation, per-hour rate scaled by the tick ──────────────

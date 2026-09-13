@@ -17,17 +17,19 @@ The tide height is the sum of the four constituents:
 where t is hours since a fixed epoch (2024-01-01 00:00, so the tide is a
 deterministic function of the in-game date).  M2/S2 beat produces the
 spring/neap cycle naturally (7-day period) — no phase hack needed.
-Result clamped to ±2 m.
+Result clamped to the configured amplitude.
 
 The tide description encodes the current state (Low / Rising / High /
 Falling) and, where applicable, a spring- or neap-tide modifier.
 
-Sets  QGVAR(currentTideOffset_m)   — float, −2 to +2
+Sets  QGVAR(currentTideOffset_m)   — float, −amp to +amp
 Sets  QGVAR(currentTideDescription) — string
 Returns QGVAR(currentTideOffset_m)
 */
 
 params [];
+
+private _amp = missionNamespace getVariable [QGVAR(tideAmplitude), 2.0];
 
 private _dateArr = date;
 _dateArr params [["_year", 2024], ["_month", 1], ["_day", 1], ["_hour", 12], ["_minute", 0]];
@@ -58,7 +60,7 @@ private _tideHeight = 0;
     _tideHeight = _tideHeight + (_amp * sin ((_speed * _hoursSinceEpoch) + _phase));
 } forEach [_M2, _S2, _K1, _O1];
 
-_tideHeight = _tideHeight max -2 min 2;
+_tideHeight = _tideHeight max -_amp min _amp;
 
 // ─── Tide description ─────────────────────────────────────────────────────
 // Approximate slope via forward difference for state detection (0.25 h)
@@ -74,7 +76,7 @@ private _tideE   = 0;
     };
     _tideE = _tideE + (_amp * sin ((_speed * (_hoursSinceEpoch + _eps)) + _phase));
 } forEach [_M2, _S2, _K1, _O1];
-_tideE = _tideE max -2 min 2;
+_tideE = _tideE max -_amp min _amp;
 private _slope = (_tideE - _tideHeight) / _eps;
 
 private _tideDesc = if (_tideHeight > 1.0) then {

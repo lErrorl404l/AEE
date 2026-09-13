@@ -1,7 +1,7 @@
 #include "..\script_component.hpp"
 
 /*
-Throttle modifiers for ground-vehicle engines (0.3–1.0).
+Throttle modifiers for ground-vehicle engines (minEnginePower–1.0).
 
 Naturally-aspirated power falls with altitude (thinner air) and high
 ambient temperature (lower air density).  Turbocharged engines retain
@@ -39,7 +39,8 @@ if (isNil "_T") then { _T = 15 };
 private _density = missionNamespace getVariable [QEGVAR(core,currentAirDensity), 1.225];
 private _powerRatio = (_density / 1.225) ^ 1.2;
 private _power = (1.0 - ((0 max (_T - 15)) / 40) * 0.2) * _powerRatio;
-_power = _power max 0.3 min 1.0;
+private _minPower = missionNamespace getVariable [QGVAR(minEnginePower), 0.3];
+_power = _power max _minPower min 1.0;
 
 // ─── Turbocharged engine — less altitude-sensitive ───────────────────────
 // 35 % loss by 9000 m; temperature effect same

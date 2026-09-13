@@ -24,5 +24,5 @@ private _player      = call CBA_fnc_currentUnit;
 if (isNil "_player" || !alive _player || cameraOn != _player) exitWith {};
 
 // Blur increases with obscuration — milky lens effect; store 0 below gate so the arbiter can fade
-private _blur = linearConversion [0, 1, _obscuration, 0, 0.4, true];
+private _blur = linearConversion [0, 1, _obscuration, 0, (missionNamespace getVariable [QGVAR(dewBlurMax), 0.4]), true];
 missionNamespace setVariable [QGVAR(dewBlur), [0, _blur] select (_obscuration > 0.01)];

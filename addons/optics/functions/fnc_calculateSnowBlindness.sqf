@@ -44,8 +44,9 @@ if (_snowDepth <= 0) exitWith {
 };
 
 // ─── Base blindness from snow reflectivity ─────────────────────────────────
-// Snow contributes up to 0.1 base blindness at full depth
-private _baseBlindness = (_snowDepth min 0.1) * (1 - _overcast);
+// Snow contributes up to the base setting at full depth
+private _baseMax = missionNamespace getVariable [QGVAR(snowBlindnessBase), 0.1];
+private _baseBlindness = (_snowDepth min _baseMax) * (1 - _overcast);
 
 // ─── Solar elevation factor (peak at noon, zero at horizon) ────────────────
 private _dayFraction    = _daytime / 24;

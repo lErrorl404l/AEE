@@ -15,9 +15,12 @@ traction modifiers, and concealment calculations.
 params [["_posASL", [], [[]]]];
 
 // ─── Rain history (leaky integrator) ──────────────────────────────────
-// Tracks recent precipitation; decays 3 %/tick (half-life ~1.9 min at 5 s ticks)
+// Tracks recent precipitation; decays per 5 s tick (setting rainAccumDecay)
 private _rainAccum = missionNamespace getVariable [QEGVAR(core,rainAccum), 0];
-_rainAccum = (_rainAccum * 0.97) + (rain * 0.03);
+private _decay = missionNamespace getVariable [QGVAR(rainAccumDecay), 0.97];
+private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+private _decayScaled = _decay ^ (_interval / 5);
+_rainAccum = (_rainAccum * _decayScaled) + (rain * (1 - _decayScaled));
 missionNamespace setVariable [QEGVAR(core,rainAccum), _rainAccum];
 
 // ─── Position ─────────────────────────────────────────────────────────

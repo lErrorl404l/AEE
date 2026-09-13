@@ -4,7 +4,8 @@
 Flash-flood risk index (0–1) driven by rainfall intensity (mm/h).
 
 Intensity uses the same rain-to-mm/h mapping as the optics module:
-1.0 engine rain = 25 mm/h. 50 mm/h is flash-flood-producing rain.
+1.0 engine rain = 25 mm/h. The flash-flood threshold is
+flash-flood-producing rain.
 
 Antecedent moisture (accumulated rain) amplifies the response.
 Arid soils have low infiltration — steep catchment response (1.0).
@@ -34,8 +35,8 @@ private _isArid = false;
 if (!isNil "_biome") then { _isArid = _biome in ["BWh","BWk","BSh","BSk"]; };
 private _terrainFactor = [0.5, 1.0] select _isArid;
 
-// ─── Risk — 50 mm/h ~ flash-flood-producing rain ──────────────────────────
-private _risk = (_intensity / 50) * (1 + _antecedent) * _terrainFactor;
+// ─── Risk — the flash-flood threshold is flash-flood-producing rain ───────
+private _risk = (_intensity / GVAR(FlashFloodThreshold)) * (1 + _antecedent) * _terrainFactor;
 
 _risk = _risk max 0 min 1;
 

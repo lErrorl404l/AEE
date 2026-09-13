@@ -71,6 +71,9 @@ private _scavenge = 1 / (1 + _rain * 3);
 // ─── Combine ────────────────────────────────────────────────────────────
 private _modifier = _advection * _diffusion * _humidityFactor * _buoyancy * _scavenge;
 
+// Global scale from settings
+_modifier = _modifier * (missionNamespace getVariable [QGVAR(smokePersistenceScale), 1.0]);
+
 // Clamp
 _modifier = _modifier max 0.2 min 3.0;
 

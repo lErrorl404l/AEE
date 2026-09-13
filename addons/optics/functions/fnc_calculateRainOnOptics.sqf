@@ -29,15 +29,21 @@ if (isNil "_rainRate") then { _rainRate = 0; };
 
 private _droplets = missionNamespace getVariable [QGVAR(rainOnOptics), 0];
 
+// Rates are per-tick; scale by the update interval so behaviour is
+// interval-independent (5 s baseline).
+private _intervalScale = (missionNamespace getVariable [QEGVAR(core,updateInterval), 5]) / 5;
+private _accumRate = (missionNamespace getVariable [QGVAR(rainAccumRate), 0.01]) * _intervalScale;
+private _decayRate = (missionNamespace getVariable [QGVAR(rainDecayRate), 0.02]) * _intervalScale;
+
 if (_rainRate > 0.2) then {
     switch (true) do {
-        case (_rainRate > 10): { _droplets = _droplets + 0.01; };
-        case (_rainRate > 2):  { _droplets = _droplets + 0.005; };
-        default                { _droplets = _droplets + 0.002; };
+        case (_rainRate > 10): { _droplets = _droplets + _accumRate; };
+        case (_rainRate > 2):  { _droplets = _droplets + (_accumRate / 2); };
+        default                { _droplets = _droplets + (_accumRate / 5); };
     };
     _droplets = _droplets min 1;
 } else {
-    _droplets = (_droplets - 0.02) max 0;
+    _droplets = (_droplets - _decayRate) max 0;
 };
 
 missionNamespace setVariable [QGVAR(rainOnOptics), _droplets];

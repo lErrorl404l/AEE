@@ -52,7 +52,7 @@ if (_rainMMH > 0) then {
 // ─── Snow penalty ─────────────────────────────────────────────────────
 // Snow cover scatters and occludes light, adding to visibility loss
 if (_snowDepth > 0) then {
-    _rainMod = _rainMod * 0.7;
+    _rainMod = _rainMod * (missionNamespace getVariable [QGVAR(snowVisibilityPenalty), 0.7]);
 };
 
 // ─── Combine with existing fog ────────────────────────────────────────

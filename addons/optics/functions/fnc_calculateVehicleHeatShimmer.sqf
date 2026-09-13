@@ -50,7 +50,8 @@ if (_engineOn) then {
     private _tempContrast = ((40 - _temp) / 40) max 0.2 min 1;
     // Load factor from speed
     private _load = (_speed / 100) min 1;
-    _intensity = (0.3 + _load * 0.7) * _tempContrast;
+    private _base = missionNamespace getVariable [QGVAR(vehicleShimmerBase), 0.3];
+    _intensity = (_base + _load * (1 - _base)) * _tempContrast;
 };
 
 // Wind disperses the hot-air boundary layer

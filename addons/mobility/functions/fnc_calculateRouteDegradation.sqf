@@ -9,7 +9,7 @@ pressure, and the soil recovers exponentially toward its nominal value.
 
   • Cone index starts at 1.0 (nominal firm soil)
   • Ground pressure estimated as getMass / 8 (nominal track area)
-  • Recovery ~0.1 % per tick toward 1.0
+  • Recovery per 5 s tick toward 1.0 (setting routeRecoveryRate)
   • Passability = current CI / required CI (1.0), clamped 0–1
 
 The passability feeds the legacy stores:
@@ -25,9 +25,12 @@ QGVAR(routeDegradation) and QGVAR(tractionModifier).
 
 // ─── Load current cone index ───────────────────────────────────────────────
 private _coneIndex = missionNamespace getVariable [QGVAR(routeConeIndex), 1.0];
+private _recoveryRate = missionNamespace getVariable [QGVAR(routeRecoveryRate), 1.001];
+private _damageRate = missionNamespace getVariable [QGVAR(routeDamageRate), 0.00002];
+private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
 
 // ─── Exponential recovery toward nominal 1.0 ───────────────────────────────
-_coneIndex = (_coneIndex * 1.001) min 1.0;
+_coneIndex = (_coneIndex * (_recoveryRate ^ (_interval / 5))) min 1.0;
 
 // ─── Vehicle passage damage ─────────────────────────────────────────────────
 private _player = call CBA_fnc_currentUnit;
@@ -37,7 +40,7 @@ if (!isNil "_player") then {
         if (isNull _x) then { continue; };
         if (abs speed _x < 1) then { continue; };   // parked vehicles do not pass
         private _groundPressure = (getMass _x) / 8;
-        _coneIndex = _coneIndex - (_groundPressure * 0.00002);
+        _coneIndex = _coneIndex - (_groundPressure * _damageRate * (_interval / 5));
     } forEach _vehicles;
 };
 

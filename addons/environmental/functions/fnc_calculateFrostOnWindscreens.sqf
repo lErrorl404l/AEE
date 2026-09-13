@@ -10,10 +10,11 @@ Conditions for frost formation:
   • Player is in / on a vehicle
 
 Accumulation:
-  +0.001 per tick while all conditions hold  (~50 ticks ≈ 4 min to max)
+  +frost accumulation rate per tick while all conditions hold
+  (~50 ticks ≈ 4 min to max at the default rate)
 
 Decay:
-  −0.01 / tick when temperature > 2 °C or humidity < 50 %
+  −frost decay rate / tick when temperature > 2 °C or humidity < 50 %
   −0.02 / tick when player is not in a vehicle (fast melt/evaporation)
 
 Reads from missionNamespace (set by other AEE modules):
@@ -29,6 +30,7 @@ params [];
 
 private _intensity = missionNamespace getVariable [QGVAR(frostIntensity), 0];
 private _vehicle   = vehicle player;
+private _interval  = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
 
 // ─── Read environment ─────────────────────────────────────────────────────
 private _temp     = missionNamespace getVariable ["aee_core_currentTemperature", 20];
@@ -44,11 +46,11 @@ if (_vehicle isEqualTo player) exitWith {
 
 // ─── Frost formation ──────────────────────────────────────────────────────
 if (_temp < 1 && _humidity > 70 && _overcast < 0.3) then {
-    _intensity = (_intensity + 0.001) min 1;
+    _intensity = (_intensity + GVAR(FrostAccumRate) * (_interval / 5)) min 1;
 } else {
     // Decay when warm or dry
     if (_temp > 2 || _humidity < 50) then {
-        _intensity = (_intensity - 0.01) max 0;
+        _intensity = (_intensity - GVAR(FrostDecayRate) * (_interval / 5)) max 0;
     };
 };
 

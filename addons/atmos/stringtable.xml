@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="Atmos">
+        <Key ID="STR_AEE_Atmos_icingShedRate_Description">
+            <Original>Fraction of accreted ice removed per tick while shedding conditions hold</Original>
+            <English>Fraction of accreted ice removed per tick while shedding conditions hold</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_icingShedRate_Name">
+            <Original>Icing Shed Rate</Original>
+            <English>Icing Shed Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_lightningConvectionTemp_Description">
+            <Original>Surface temperature above which convective potential is considered high</Original>
+            <English>Surface temperature above which convective potential is considered high</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_lightningConvectionTemp_Name">
+            <Original>Lightning Convection Temperature</Original>
+            <English>Lightning Convection Temperature</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_lightningStrikeChance_Description">
+            <Original>Probability of a lightning strike per tick at maximum risk</Original>
+            <English>Probability of a lightning strike per tick at maximum risk</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_lightningStrikeChance_Name">
+            <Original>Lightning Strike Chance</Original>
+            <English>Lightning Strike Chance</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_maxFogDensity_Description">
+            <Original>Ceiling for the fog density value applied to the engine</Original>
+            <English>Ceiling for the fog density value applied to the engine</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_maxFogDensity_Name">
+            <Original>Maximum Fog Density</Original>
+            <English>Maximum Fog Density</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_maxIceMass_Description">
+            <Original>Ice mass in kilograms that equals full airframe icing severity</Original>
+            <English>Ice mass in kilograms that equals full airframe icing severity</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_maxIceMass_Name">
+            <Original>Maximum Ice Mass</Original>
+            <English>Maximum Ice Mass</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_microburstChance_Description">
+            <Original>Probability of a microburst per tick when all trigger conditions hold</Original>
+            <English>Probability of a microburst per tick when all trigger conditions hold</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_microburstChance_Name">
+            <Original>Microburst Chance</Original>
+            <English>Microburst Chance</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_microburstDuration_Description">
+            <Original>Duration of a microburst in simulation ticks</Original>
+            <English>Duration of a microburst in simulation ticks</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_microburstDuration_Name">
+            <Original>Microburst Duration</Original>
+            <English>Microburst Duration</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_microburstGustMax_Description">
+            <Original>Ceiling of the damaging-gust wind speed in metres per second</Original>
+            <English>Ceiling of the damaging-gust wind speed in metres per second</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_microburstGustMax_Name">
+            <Original>Microburst Gust Maximum</Original>
+            <English>Microburst Gust Maximum</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_microburstTempThreshold_Description">
+            <Original>Surface temperature above which microburst conditions can form</Original>
+            <English>Surface temperature above which microburst conditions can form</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_microburstTempThreshold_Name">
+            <Original>Microburst Temperature Threshold</Original>
+            <English>Microburst Temperature Threshold</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_radFogRampRate_Description">
+            <Original>Radiational-fog density added per tick on clear calm moist nights</Original>
+            <English>Radiational-fog density added per tick on clear calm moist nights</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_radFogRampRate_Name">
+            <Original>Radiational Fog Ramp Rate</Original>
+            <English>Radiational Fog Ramp Rate</English>
+        </Key>
+    </Package>
+</Project>

@@ -27,8 +27,9 @@ private _player    = call CBA_fnc_currentUnit;
 if (isNil "_player" || !alive _player || cameraOn != _player) exitWith {};
 if !(_seeing isEqualType 0) then { _seeing = 0.2; };
 
-// Scale: 0.35 = 0, 1.0 = 0.02 (subtle but visible at distance)
-private _chromatic = linearConversion [0.35, 1, _seeing, 0, 0.02, true];
+// Scale: 0.35 = 0, 1.0 = setting (subtle but visible at distance)
+private _maxChroma = missionNamespace getVariable [QGVAR(seeingFXIntensity), 0.02];
+private _chromatic = linearConversion [0.35, 1, _seeing, 0, _maxChroma, true];
 
 // Store 0 below moderate seeing so the arbiter can fade the effect out
 missionNamespace setVariable [QGVAR(seeingChroma), [0, _chromatic] select (_seeing > 0.35)];

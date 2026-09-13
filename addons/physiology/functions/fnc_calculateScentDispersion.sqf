@@ -77,7 +77,7 @@ if (_windSpeed < 1) then {
 };
 
 // ─── Final intensity ───────────────────────────────────────────────────────
-private _intensity = _tempFactor * _humFactor * _rainFactor * _groundFactor * _windFactor;
+private _intensity = _tempFactor * _humFactor * _rainFactor * _groundFactor * _windFactor * GVAR(ScentIntensity);
 _intensity = _intensity max 0 min 1;
 
 missionNamespace setVariable [QGVAR(scentDispersionIntensity), _intensity];
