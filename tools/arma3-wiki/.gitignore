@@ -1,0 +1,3 @@
+# Cache directory for fetched wiki pages
+cache/
+*.html
