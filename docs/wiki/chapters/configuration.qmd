@@ -248,6 +248,10 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 
 ## AEE Real Weather
 
+This category registers only when the mission provides a `weather.json`
+file. With no file present, the setting does not appear — matching the
+host-mod visibility rule for the other compat addons.
+
 | Setting | Type | Default | Addon | Purpose |
 |---|---|---|---|---|
 | `aee_compat_realweather_enabled` | CHECKBOX | `false` | compat_realweather | Enable real-weather mode. Reads weather.json from the mission folder and overrides AEE's simulated state. |
