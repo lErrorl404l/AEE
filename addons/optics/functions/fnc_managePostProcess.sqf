@@ -41,6 +41,12 @@ private _hCC     = missionNamespace getVariable [QGVAR(ppHandle_ColorCorrections
 // on vision mode 1 internally.
 [] call FUNC(applyNVGTubeModel);
 
+// ─── Thermal vision model ────────────────────────────────────────────────
+// Must run before the vision-mode exit: the thermal model produces its
+// own ColorCorrections, FilmGrain and DynamicBlur for the thermal view.
+// It self-gates on vision mode 2 internally.
+[] call FUNC(applyThermalVision);
+
 // NVG (1) and thermal (2) views: the sensor produces its own image.
 // Chromatic aberration from atmospheric seeing and heat shimmer, blur
 // from dew/rain on a lens, and colour-correction tints all assume a

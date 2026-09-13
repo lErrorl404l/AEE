@@ -7,6 +7,7 @@ PREP(applyNVGTubeModel);
 PREP(applyRainOnOpticsFX);
 PREP(applySnowBlindnessFX);
 PREP(applySolarGlareFX);
+PREP(applyThermalVision);
 PREP(calculateAtmosphericSeeing);
 PREP(calculateAttenuation);
 PREP(calculateDewOnOptics);
