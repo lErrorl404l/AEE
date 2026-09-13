@@ -3,6 +3,7 @@
 ADDON = false;
 
 #include "XEH_PREP.hpp"
+#include "initSettings.inc.sqf"
 
 if (is3DEN) exitWith {};
 

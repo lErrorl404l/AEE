@@ -28,8 +28,8 @@ private _propIdx = (missionNamespace getVariable ["aee_radio_radioPropagationInd
 if (_propIdx <= 0) then { _propIdx = 1.0 };
 
 // propIdx 0.3 → mult 0.58, propIdx 1.0 → mult 1.0, propIdx 2.0 → mult 1.6
-private _mult = ((_propIdx - 1) * 0.6) + 1;
-_mult = _mult max 0.3 min 1.5;
+private _mult = ((_propIdx - 1) * (missionNamespace getVariable [QEGVAR(compat_tfar,signalMultScale), 0.6])) + 1;
+_mult = (_mult max (missionNamespace getVariable [QEGVAR(compat_tfar,signalMultMin), 0.3])) min (missionNamespace getVariable [QEGVAR(compat_tfar,signalMultMax), 1.5]);
 
 // Sending — how far the player's transmissions reach (per-unit variable)
 player setVariable ["tf_sendingDistanceMultiplicator", _mult];

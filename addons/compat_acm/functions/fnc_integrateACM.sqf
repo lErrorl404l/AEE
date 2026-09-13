@@ -26,10 +26,10 @@ private _hazard = "ACM_CBRN_chemical_sarin_";
 // Normalise the decay modifier (0.225..2.1) to a 0..1 contamination level
 private _normalised = ((_contamination - 0.225) / (2.1 - 0.225)) max 0 min 1;
 
-if (_normalised > 0.01) then {
+if ((_normalised > (missionNamespace getVariable [QEGVAR(compat_acm,CBRNContamThreshold), 0.01]))) then {
     _unit setVariable [(_hazard + "Contaminated_State"), true, true];
     _unit setVariable [(_hazard + "Exposed_State"), true, true];
-    _unit setVariable ["ACM_CBRN_Chemical_Sarin_Buildup", (_normalised * 100) min 100];
+    _unit setVariable ["ACM_CBRN_Chemical_Sarin_Buildup", ((_normalised * 100) min (missionNamespace getVariable [QEGVAR(compat_acm,CBRNMaxBuildup), 100]))];
 } else {
     _unit setVariable [(_hazard + "Contaminated_State"), false, true];
     _unit setVariable [(_hazard + "Exposed_State"), false, true];

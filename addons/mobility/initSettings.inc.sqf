@@ -9,7 +9,7 @@
     QGVAR(flightTurbulence),
     "CHECKBOX",
     [LLSTRING(flightTurbulence_Name), LLSTRING(flightTurbulence_Description)],
-    "AEE Mobility",
+    ["AEE Mobility", "Turbulence"],
     true,   // default: enabled
     true,   // global — needs to be same for all clients
     {}
@@ -19,7 +19,7 @@
     QGVAR(turbulenceScale),
     "SLIDER",
     [LLSTRING(turbulenceScale_Name), LLSTRING(turbulenceScale_Description)],
-    "AEE Mobility",
+    ["AEE Mobility", "Turbulence"],
     [0, 3, 1, 1],
     true,
     {}
@@ -29,7 +29,7 @@
     QGVAR(turbulenceRadius),
     "SLIDER",
     [LLSTRING(turbulenceRadius_Name), LLSTRING(turbulenceRadius_Description)],
-    "AEE Mobility",
+    ["AEE Mobility", "Turbulence"],
     [500, 5000, 2000, 0],
     true,
     {}
@@ -40,7 +40,7 @@
     QGVAR(mudAccretionRate),
     "SLIDER",
     [LLSTRING(mudAccretionRate_Name), LLSTRING(mudAccretionRate_Description)],
-    "AEE Mobility",
+    ["AEE Mobility", "Hydrology"],
     [0, 0.02, 0.002, 3],
     true,
     {}
@@ -50,7 +50,7 @@
     QGVAR(mudDecayRate),
     "SLIDER",
     [LLSTRING(mudDecayRate_Name), LLSTRING(mudDecayRate_Description)],
-    "AEE Mobility",
+    ["AEE Mobility", "Hydrology"],
     [0.9, 1, 0.99, 2],
     true,
     {}
@@ -60,7 +60,7 @@
     QGVAR(tractionScale),
     "SLIDER",
     [LLSTRING(tractionScale_Name), LLSTRING(tractionScale_Description)],
-    "AEE Mobility",
+    ["AEE Mobility", "Traction"],
     [0.5, 1.5, 1.0, 1],
     true,
     {}
@@ -71,7 +71,7 @@
     QGVAR(minEnginePower),
     "SLIDER",
     [LLSTRING(minEnginePower_Name), LLSTRING(minEnginePower_Description)],
-    "AEE Mobility",
+    ["AEE Mobility", "Traction"],
     [0.1, 0.8, 0.3, 1],
     true,
     {}
@@ -82,7 +82,7 @@
     QGVAR(routeRecoveryRate),
     "SLIDER",
     [LLSTRING(routeRecoveryRate_Name), LLSTRING(routeRecoveryRate_Description)],
-    "AEE Mobility",
+    ["AEE Mobility", "Route"],
     [1, 1.01, 1.001, 3],
     true,
     {}
@@ -92,7 +92,7 @@
     QGVAR(routeDamageRate),
     "SLIDER",
     [LLSTRING(routeDamageRate_Name), LLSTRING(routeDamageRate_Description)],
-    "AEE Mobility",
+    ["AEE Mobility", "Route"],
     [0, 0.0001, 0.00002, 5],
     true,
     {}
@@ -102,7 +102,7 @@
     QGVAR(riverResponseRate),
     "SLIDER",
     [LLSTRING(riverResponseRate_Name), LLSTRING(riverResponseRate_Description)],
-    "AEE Mobility",
+    ["AEE Mobility", "Hydrology"],
     [0.01, 0.5, 0.1, 2],
     true,
     {}
@@ -112,7 +112,7 @@
     QGVAR(rainAccumDecay),
     "SLIDER",
     [LLSTRING(rainAccumDecay_Name), LLSTRING(rainAccumDecay_Description)],
-    "AEE Mobility",
+    ["AEE Mobility", "Hydrology"],
     [0.9, 1, 0.97, 2],
     true,
     {}

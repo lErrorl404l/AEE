@@ -9,14 +9,6 @@
             <Original>Blowing Snow Wind Threshold</Original>
             <English>Blowing Snow Wind Threshold</English>
         </Key>
-        <Key ID="STR_AEE_Environmental_CBRNBasePersistence_Description">
-            <Original>Agent persistence (h) at 15 °C</Original>
-            <English>Agent persistence (h) at 15 °C</English>
-        </Key>
-        <Key ID="STR_AEE_Environmental_CBRNBasePersistence_Name">
-            <Original>CBRN Base Persistence</Original>
-            <English>CBRN Base Persistence</English>
-        </Key>
         <Key ID="STR_AEE_Environmental_DewRate_Description">
             <Original>Dew contribution to surface wetness per tick</Original>
             <English>Dew contribution to surface wetness per tick</English>

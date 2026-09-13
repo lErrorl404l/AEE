@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="KAT">
+        <Key ID="STR_AEE_COMPAT_KAT_fluidDrainBase_Description">
+            <Original>Base body-fluid drain per tick</Original>
+            <English>Base body-fluid drain per tick</English>
+        </Key>
+        <Key ID="STR_AEE_COMPAT_KAT_fluidDrainBase_Name">
+            <Original>Fluid Drain Base</Original>
+            <English>Fluid Drain Base</English>
+        </Key>
+        <Key ID="STR_AEE_COMPAT_KAT_spo2Floor_Description">
+            <Original>Minimum SpO2 that AEE applies</Original>
+            <English>Minimum SpO2 that AEE applies</English>
+        </Key>
+        <Key ID="STR_AEE_COMPAT_KAT_spo2Floor_Name">
+            <Original>SpO2 Floor</Original>
+            <English>SpO2 Floor</English>
+        </Key>
+        <Key ID="STR_AEE_COMPAT_KAT_spo2RiskScale_Description">
+            <Original>SpO2 drop per unit of hypoxia risk</Original>
+            <English>SpO2 drop per unit of hypoxia risk</English>
+        </Key>
+        <Key ID="STR_AEE_COMPAT_KAT_spo2RiskScale_Name">
+            <Original>SpO2 Risk Scale</Original>
+            <English>SpO2 Risk Scale</English>
+        </Key>
+    </Package>
+</Project>

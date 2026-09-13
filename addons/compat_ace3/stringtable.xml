@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="ACE3">
+        <Key ID="STR_AEE_COMPAT_ACE3_medicalBurnDamageScale_Description">
+            <Original>Damage per degree above the burn threshold</Original>
+            <English>Damage per degree above the burn threshold</English>
+        </Key>
+        <Key ID="STR_AEE_COMPAT_ACE3_medicalBurnDamageScale_Name">
+            <Original>Medical Burn Damage Scale</Original>
+            <English>Medical Burn Damage Scale</English>
+        </Key>
+        <Key ID="STR_AEE_COMPAT_ACE3_medicalBurnTemp_Description">
+            <Original>Air temperature that starts heat-burn damage</Original>
+            <English>Air temperature that starts heat-burn damage</English>
+        </Key>
+        <Key ID="STR_AEE_COMPAT_ACE3_medicalBurnTemp_Name">
+            <Original>Medical Burn Temperature</Original>
+            <English>Medical Burn Temperature</English>
+        </Key>
+        <Key ID="STR_AEE_COMPAT_ACE3_medicalHeatStrokeWBGT_Description">
+            <Original>WBGT that triggers cardiac arrest</Original>
+            <English>WBGT that triggers cardiac arrest</English>
+        </Key>
+        <Key ID="STR_AEE_COMPAT_ACE3_medicalHeatStrokeWBGT_Name">
+            <Original>Medical Heat Stroke WBGT</Original>
+            <English>Medical Heat Stroke WBGT</English>
+        </Key>
+        <Key ID="STR_AEE_COMPAT_ACE3_medicalRiskThreshold_Description">
+            <Original>Dehydration risk above this affects vitals</Original>
+            <English>Dehydration risk above this affects vitals</English>
+        </Key>
+        <Key ID="STR_AEE_COMPAT_ACE3_medicalRiskThreshold_Name">
+            <Original>Medical Risk Threshold</Original>
+            <English>Medical Risk Threshold</English>
+        </Key>
+        <Key ID="STR_AEE_COMPAT_ACE3_medicalWBGTThreshold_Description">
+            <Original>WBGT above this engages heart-rate and flow adjustments</Original>
+            <English>WBGT above this engages heart-rate and flow adjustments</English>
+        </Key>
+        <Key ID="STR_AEE_COMPAT_ACE3_medicalWBGTThreshold_Name">
+            <Original>Medical WBGT Threshold</Original>
+            <English>Medical WBGT Threshold</English>
+        </Key>
+    </Package>
+</Project>

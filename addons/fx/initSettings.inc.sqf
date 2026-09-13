@@ -9,7 +9,7 @@
     QGVAR(vehicleDustIntensity),
     "SLIDER",
     [LLSTRING(vehicleDustIntensity_Name), LLSTRING(vehicleDustIntensity_Description)],
-    "AEE FX",
+    ["AEE FX", "Particles"],
     [0, 2, 1.0, 1],
     true,
     {}
@@ -19,7 +19,7 @@
     QGVAR(vehicleDustDensity),
     "SLIDER",
     [LLSTRING(vehicleDustDensity_Name), LLSTRING(vehicleDustDensity_Description)],
-    "AEE FX",
+    ["AEE FX", "Particles"],
     [0.01, 0.2, 0.08, 2],
     true,
     {}
@@ -30,7 +30,7 @@
     QGVAR(rainDropDensity),
     "SLIDER",
     [LLSTRING(rainDropDensity_Name), LLSTRING(rainDropDensity_Description)],
-    "AEE FX",
+    ["AEE FX", "Particles"],
     [0.001, 0.02, 0.006, 3],
     true,
     {}
@@ -40,7 +40,7 @@
     QGVAR(rainVehicleSoundVolume),
     "SLIDER",
     [LLSTRING(rainVehicleSoundVolume_Name), LLSTRING(rainVehicleSoundVolume_Description)],
-    "AEE FX",
+    ["AEE FX", "Sound"],
     [0, 2, 1.0, 1],
     true,
     {}
@@ -51,7 +51,7 @@
     QGVAR(atmosphericDustIntensity),
     "SLIDER",
     [LLSTRING(atmosphericDustIntensity_Name), LLSTRING(atmosphericDustIntensity_Description)],
-    "AEE FX",
+    ["AEE FX", "Particles"],
     [0, 0.5, 0.08, 2],
     true,
     {}
@@ -62,7 +62,7 @@
     QGVAR(lightningFXChance),
     "SLIDER",
     [LLSTRING(lightningFXChance_Name), LLSTRING(lightningFXChance_Description)],
-    "AEE FX",
+    ["AEE FX", "Events"],
     [0, 0.2, 0.05, 2],
     true,
     {}
@@ -72,7 +72,7 @@
     QGVAR(lightningBrightness),
     "SLIDER",
     [LLSTRING(lightningBrightness_Name), LLSTRING(lightningBrightness_Description)],
-    "AEE FX",
+    ["AEE FX", "Events"],
     [100, 5000, 1000, 0],
     true,
     {}
@@ -82,7 +82,7 @@
     QGVAR(thunderVolume),
     "SLIDER",
     [LLSTRING(thunderVolume_Name), LLSTRING(thunderVolume_Description)],
-    "AEE FX",
+    ["AEE FX", "Sound"],
     [0, 10, 3.5, 1],
     true,
     {}
@@ -92,7 +92,7 @@
     QGVAR(lightningIgnitionChance),
     "SLIDER",
     [LLSTRING(lightningIgnitionChance_Name), LLSTRING(lightningIgnitionChance_Description)],
-    "AEE FX",
+    ["AEE FX", "Events"],
     [0, 0.5, 0.1, 2],
     true,
     {}
@@ -103,7 +103,7 @@
     QGVAR(windNoiseVolume),
     "SLIDER",
     [LLSTRING(windNoiseVolume_Name), LLSTRING(windNoiseVolume_Description)],
-    "AEE FX",
+    ["AEE FX", "Sound"],
     [0, 2, 1.0, 1],
     true,
     {}
@@ -113,7 +113,7 @@
     QGVAR(severeWeatherBlur),
     "SLIDER",
     [LLSTRING(severeWeatherBlur_Name), LLSTRING(severeWeatherBlur_Description)],
-    "AEE FX",
+    ["AEE FX", "Events"],
     [0, 2, 1.0, 1],
     true,
     {}
