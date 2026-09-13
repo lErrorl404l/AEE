@@ -5,6 +5,18 @@
             <Original>Altimeter</Original>
             <English>Altimeter</English>
         </Key>
+        <Key ID="STR_AEE_ACTIONS_DoFFocusIn">
+            <Original>NVG Focus In</Original>
+            <English>NVG Focus In</English>
+        </Key>
+        <Key ID="STR_AEE_ACTIONS_DoFFocusOut">
+            <Original>NVG Focus Out</Original>
+            <English>NVG Focus Out</English>
+        </Key>
+        <Key ID="STR_AEE_ACTIONS_DoFModeToggle">
+            <Original>Toggle NVG Focus Mode</Original>
+            <English>Toggle NVG Focus Mode</English>
+        </Key>
         <Key ID="STR_AEE_ACTIONS_WeatherReport">
             <Original>Weather Report</Original>
             <English>Weather Report</English>

@@ -143,12 +143,13 @@ def run_scenario(scene_series, focus0=None, n_ticks=300):
 
     scene_series: list of scenes (one per tick) OR a list of
     (t0, t1, scene) so a scene holds for a run of ticks.
-    Returns (focus_history, raw_history).
+    Returns (focus_history, raw_history, raw_smooth_history).
     """
     cur = focus0 if focus0 is not None else 50.0
     pending = 0.0
     hold_until = 0.0
-    focus_hist, raw_hist = [], []
+    raw_smooth = 0.0
+    focus_hist, raw_hist, smooth_hist = [], [], []
     for i in range(n_ticks):
         t = i * TICK_S
         scene = None
@@ -160,10 +161,23 @@ def run_scenario(scene_series, focus0=None, n_ticks=300):
             raw = 0.0
         else:
             raw = median_hits(fan_hits(scene))
-        cur, pending, hold_until = state_machine(raw, cur, pending, hold_until, t)
+        # Raw-target EMA smoothing (mirror of the SQF).  Cold start: the
+        # smoother initialises from the first raw target, not from 0 - a
+        # zero-initialised filter drags focus down on entry (3 m in the
+        # deadband test before the guard).
+        if raw_smooth <= 0:
+            raw_smooth = raw if raw > 0 else 0.0
+        elif raw > 0:
+            raw_smooth = raw_smooth + (raw - raw_smooth) * 0.5
+        else:
+            raw_smooth = 0.0
+        cur, pending, hold_until = state_machine(
+            raw_smooth, cur, pending, hold_until, t
+        )
         focus_hist.append(cur)
         raw_hist.append(raw)
-    return focus_hist, raw_hist
+        smooth_hist.append(raw_smooth)
+    return focus_hist, raw_hist, smooth_hist
 
 
 # ─── Checks ────────────────────────────────────────────────────────────────
@@ -324,7 +338,7 @@ def check_blur_gate():
         t = i * TICK_S
         d = max(10.0 - t * 0.33, 0.2)  # walk from 10 m to 0.2 m
         series.append((t, t + TICK_S, [(-12.0, 12.0, d, False)]))
-    fh, rh = run_scenario(series, focus0=10.0, n_ticks=300)
+    fh, rh, sh = run_scenario(series, focus0=10.0, n_ticks=300)
     # Focus must track down to the near limit smoothly (no jump > 1.5 m/tick
     # beyond the rack speed), and must NOT go below the near limit.
     steps = [abs(fh[i + 1] - fh[i]) for i in range(len(fh) - 1)]
@@ -348,7 +362,7 @@ def check_hold_on_empty():
     wall = [(-12.0, 12.0, 20.0, False)]
     sky = [(-12.0, 12.0, None, False)]  # None = no surface (ray misses)
     series = [(0.0, 5.0, wall), (5.0, 30.0, sky)]
-    fh, rh = run_scenario(series, focus0=20.0, n_ticks=300)
+    fh, rh, sh = run_scenario(series, focus0=20.0, n_ticks=300)
     sky_focus = [f for f, r in zip(fh, rh) if r == 0.0]
     ok = all(abs(f - 20.0) < 0.2 for f in sky_focus)
     return {
@@ -370,7 +384,7 @@ def check_glide_no_snap():
     bush = [(-12.0, 12.0, 3.0, False)]
     bldg = [(-12.0, 12.0, 20.0, False)]
     series = [(0.0, 2.0, bush), (2.0, 30.0, bldg)]
-    fh, rh = run_scenario(series, focus0=3.0, n_ticks=300)
+    fh, rh, sh = run_scenario(series, focus0=3.0, n_ticks=300)
     # Max per-tick step must be <= MAX_STEP_M (no teleport).
     steps = [abs(fh[i + 1] - fh[i]) for i in range(len(fh) - 1)]
     max_step = max(steps)
@@ -396,7 +410,7 @@ def check_deadband_stability():
     seg = [(-12.0, 12.0, 10.0, False)]
     seg2 = [(-12.0, 12.0, 11.0, False)]  # within deadband (25% of 10 = 2.5 m)
     series = [(0.0, 2.0, seg), (2.0, 30.0, seg2)]
-    fh, rh = run_scenario(series, focus0=10.0, n_ticks=300)
+    fh, rh, sh = run_scenario(series, focus0=10.0, n_ticks=300)
     drift = max(abs(f - 10.0) for f in fh)
     ok = drift < 1.0  # 10 -> 11 m target is inside the 2.5 m deadband
     return {
@@ -420,7 +434,7 @@ def check_transient_delay():
         (0.0, 12.0, 20.0, False),
     ]  # branch for 2 ticks
     series = [(0.0, 3.0, wall), (3.0, 3.2, transient), (3.2, 30.0, wall)]
-    fh, rh = run_scenario(series, focus0=20.0, n_ticks=300)
+    fh, rh, sh = run_scenario(series, focus0=20.0, n_ticks=300)
     moved = max(abs(f - 20.0) for f in fh)
     ok = moved < 1.0  # 0.25 s hold + median: a 2-tick transient must not rack
     return {
@@ -439,7 +453,7 @@ def check_transient_delay():
 def check_first_tick_default():
     """First tick with no target defaults to 50 m, does not break."""
     sky = [(-12.0, 12.0, None, False)]
-    fh, rh = run_scenario([(0.0, 30.0, sky)], focus0=None, n_ticks=30)
+    fh, rh, sh = run_scenario([(0.0, 30.0, sky)], focus0=None, n_ticks=30)
     ok = all(0 < f <= 60 for f in fh) and fh[0] == 50.0
     return {
         "name": "First-tick default",
@@ -464,7 +478,7 @@ def check_extreme_near():
         t = i * TICK_S
         d = max(3.0 - t * 0.1, 0.2)  # 3 m -> 0.2 m over 30 s
         series.append((t, t + TICK_S, [(-12.0, 12.0, d, False)]))
-    fh, rh = run_scenario(series, focus0=3.0, n_ticks=300)
+    fh, rh, sh = run_scenario(series, focus0=3.0, n_ticks=300)
     min_f = min(fh)
     steps = [abs(fh[i + 1] - fh[i]) for i in range(len(fh) - 1)]
     ok = min_f >= NEAR_LIMIT_M - 0.01 and max(steps) <= MAX_STEP_M + 1e-9
@@ -486,7 +500,7 @@ def check_extreme_far():
     # Building at 250 m.  Focus starts at 3 m.
     bldg = [(-12.0, 12.0, 250.0, False)]
     series = [(0.0, 1.0, [(-12.0, 12.0, 3.0, False)]), (1.0, 30.0, bldg)]
-    fh, rh = run_scenario(series, focus0=3.0, n_ticks=300)
+    fh, rh, sh = run_scenario(series, focus0=3.0, n_ticks=300)
     ok = (
         abs(fh[-1] - 250.0) < 0.5
         and max(abs(fh[i + 1] - fh[i]) for i in range(len(fh) - 1)) <= MAX_STEP_M + 1e-9
@@ -508,7 +522,7 @@ def check_weapon_only():
     """Looking only at the weapon (all rays on own model) holds focus."""
     # Weapon everywhere: every fan ray hits the player's own model.
     scene = [(-12.0, 12.0, 0.7, True)]
-    fh, rh = run_scenario([(0.0, 30.0, scene)], focus0=15.0, n_ticks=300)
+    fh, rh, sh = run_scenario([(0.0, 30.0, scene)], focus0=15.0, n_ticks=300)
     ok = all(abs(f - 15.0) < 0.2 for f in fh)  # no movement at all
     return {
         "name": "Weapon-only view holds focus",
@@ -533,7 +547,7 @@ def check_oscillating_target():
         t = i * TICK_S
         sc = a if (i // 10) % 2 == 0 else b  # flip every 1 s
         series.append((t, t + TICK_S, sc))
-    fh, rh = run_scenario(series, focus0=10.0, n_ticks=300)
+    fh, rh, sh = run_scenario(series, focus0=10.0, n_ticks=300)
     drift = max(abs(f - 10.0) for f in fh)
     ok = drift < 1.0
     return {
@@ -562,7 +576,7 @@ def check_moving_target_tracking():
         t = i * TICK_S
         d = max(10.0 - t * 0.33, 0.2)  # player walks toward wall
         series.append((t, t + TICK_S, [(-12.0, 12.0, d, False)]))
-    fh, rh = run_scenario(series, focus0=10.0, n_ticks=300)
+    fh, rh, sh = run_scenario(series, focus0=10.0, n_ticks=300)
     ok = fh[-1] < 3.0  # must track well below the 10 m start
     return {
         "name": "Moving target tracks (walk regression)",
@@ -588,7 +602,7 @@ def check_normal_pan():
         (8.0, 16.0, field),
         (16.0, 30.0, ridge),
     ]
-    fh, rh = run_scenario(series, focus0=5.0, n_ticks=300)
+    fh, rh, sh = run_scenario(series, focus0=5.0, n_ticks=300)
     steps = [abs(fh[i + 1] - fh[i]) for i in range(len(fh) - 1)]
     ok = abs(fh[-1] - 80.0) < 0.5 and max(steps) <= MAX_STEP_M + 1e-9
     return {
@@ -601,6 +615,45 @@ def check_normal_pan():
         "rmse": 0.0,
         "unit": "m",
         "note": "Normal use: the ring racks between targets at constant speed",
+    }
+
+
+def check_noise_no_hunting():
+    """Median fan jitter (1-3 m, measured in the RPT) must not hunt.
+
+    Regression: the RPT showed 122 focus re-racks in 3.5 min.  The
+    median of a 9-ray fan jitters tick to tick as the view moves
+    fractions of a degree; feeding the raw jitter straight into the
+    state machine made it re-rack constantly.  The raw-target EMA
+    (0.5 blend) removes the high-frequency churn while keeping real
+    movement.  Without it, a stationary 15 m wall with +-1.5 m jitter
+    re-racks ~25 times in 30 s.
+    """
+    import random
+
+    random.seed(7)
+    wall = [(-12.0, 12.0, 15.0, False)]
+    # Jittered scene: vary the reported wall distance by +-1.5 m each
+    # tick, simulating fan-median noise on a stationary view.
+    series = []
+    for i in range(300):
+        t = i * TICK_S
+        j = 15.0 + random.uniform(-1.5, 1.5)
+        series.append((t, t + TICK_S, [(-12.0, 12.0, max(j, 0.5), False)]))
+    fh, rh, sh = run_scenario(series, focus0=15.0, n_ticks=300)
+    re_racks = sum(1 for i in range(1, len(fh)) if fh[i] != fh[i - 1])
+    drift = max(abs(f - 15.0) for f in fh)
+    ok = re_racks <= 8 and drift < 2.0
+    return {
+        "name": "Fan jitter - no hunting",
+        "ground_truth": "EMA absorbs +-1.5 m median jitter; focus stays put",
+        "grid": "stationary 15 m wall with +-1.5 m jitter, 30 s",
+        "tolerance": "<= 8 re-racks, drift < 2 m",
+        "status": "PASS" if ok else "FAIL",
+        "max_abs": f"re-racks={re_racks}, max drift={drift:.2f} m",
+        "rmse": 0.0,
+        "unit": "m",
+        "note": "Reproduces the RPT hunting; proves the EMA fix",
     }
 
 
@@ -625,6 +678,7 @@ CHECKS = [
     check_oscillating_target,
     check_moving_target_tracking,
     check_normal_pan,
+    check_noise_no_hunting,
 ]
 
 

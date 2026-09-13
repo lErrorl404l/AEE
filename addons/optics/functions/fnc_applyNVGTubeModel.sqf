@@ -644,6 +644,25 @@ if (count _hitsArr >= (count _fan) / 2) then {
     _rawTarget = _hitsArr select (floor ((count _hitsArr) / 2));
 };
 
+// ─── Raw-target smoothing ─────────────────────────────────────────────────
+// The median of a 9-ray fan is NOISY: the scene composition shifts tick to
+// tick as the player's view moves fractions of a degree, so the median
+// jumps 1-3 m between ticks.  O3DE's auto-focus reads a single stable
+// depth pixel; feeding it a jittery target makes the state machine re-rack
+// constantly (122 re-racks in one 3.5 min session, measured in the RPT).
+// An exponential moving average removes the high-frequency churn while
+// keeping real movement: the walk-to-wall case drifts ~0.03 m/tick, well
+// within the filter's tracking ability.
+private _rawSmooth = missionNamespace getVariable [QGVAR(nvgFocusRawSmooth), _rawTarget];
+if !(_rawSmooth isEqualType 0 && _rawSmooth > 0) then { _rawSmooth = _rawTarget; };
+if (_rawTarget > 0) then {
+    _rawSmooth = _rawSmooth + (_rawTarget - _rawSmooth) * 0.5;
+} else {
+    _rawSmooth = _rawTarget;   // empty (sky): pass the empty state through
+};
+missionNamespace setVariable [QGVAR(nvgFocusRawSmooth), _rawSmooth];
+_rawTarget = _rawSmooth;
+
 // ─── Focus state machine (O3DE auto-focus pattern) ───────────────────────
 // The raw fan distance still snaps: looking at sky returns no hit, and a
 // bush grazing the centre pixel drags the target for a tick.  O3DE's
@@ -888,6 +907,27 @@ if (!isNull _disp) then {
     _fibers ctrlSetFade (1 - _fiberAlpha);
     _fibers ctrlSetText _fiberTex;
     _fibers ctrlCommit 0;
+
+    // Focus readout (ECOTI HUD style): the ring position as metres plus a
+    // 0-100 m scale bar with a marker at the current focus.  The bar is
+    // logarithmic in display so the 0-25 m patrol band dominates; a 50 m
+    // focus sits mid-bar.  In MANUAL mode this shows the ring value the
+    // player set; in AUTO it shows where the state machine settled.
+    private _focusDisp = _focusDist max 0.25;
+    private _focusText = format ["FOCUS %1m", round _focusDisp];
+    private _barPos = (log (_focusDisp + 1)) / (log 101);   // 0..1 over 0-100 m
+    private _barLen = 24;
+    private _marker = round (_barPos * _barLen);
+    private _bar = "";
+    for "_i" from 0 to _barLen do {
+        _bar = _bar + (["-", "o"] select (_i == _marker));
+    };
+    private _focusCtl = _disp displayCtrl 1002;
+    _focusCtl ctrlSetText _focusText;
+    _focusCtl ctrlCommit 0;
+    private _barCtl = _disp displayCtrl 1003;
+    _barCtl ctrlSetText _bar;
+    _barCtl ctrlCommit 0;
 };
 
 // ─── Eye accommodation (exposure) ───────────────────────────────────────
