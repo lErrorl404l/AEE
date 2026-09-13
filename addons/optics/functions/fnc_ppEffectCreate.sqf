@@ -48,7 +48,10 @@ private _effects = [
     _x params ["_name", "_priority"];
     private _varName = format [QGVAR(ppHandle_%1), _name];
     private _existing = missionNamespace getVariable [_varName, -1];
-    if (_existing >= 0) exitWith {};
+    if (_existing >= 0) exitWith {
+        private _logMsg = format ["%1 kept existing handle=%2", _name, _existing];
+        AEE_LOG_DEBUG(_logMsg);
+    };
     private _handle = ppEffectCreate [_name, _priority];
     // ppEffectCreate returns -1 when the priority is taken; bump until it succeeds
     private _guard = 0;
@@ -57,6 +60,12 @@ private _effects = [
         _handle = ppEffectCreate [_name, _priority];
         _guard = _guard + 1;
     };
-    missionNamespace setVariable [_varName, _handle];
-    diag_log text format ["[AEE] ppEffect handle %1 = %2", _varName, _handle];
+    if (_handle < 0) then {
+        private _logMsg = format ["%1 failed to create after 100 priority bumps", _name];
+        AEE_LOG_ERROR(_logMsg);
+    } else {
+        missionNamespace setVariable [_varName, _handle];
+        private _logMsg = format ["%1 created priority=%2 handle=%3", _name, _priority, _handle];
+        AEE_LOG_INFO(_logMsg);
+    };
 } forEach _effects;

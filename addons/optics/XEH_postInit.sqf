@@ -26,6 +26,7 @@
         [] call FUNC(applyThermalVision);
         [GVAR(sensorPFH)] call CBA_fnc_removePerFrameHandler;
         GVAR(sensorPFH) = nil;
+        AEE_LOG_INFO("sensor PFH stopped (returned to normal vision)");
     };
     // Fade normal-vision optical effects immediately (managePostProcess
     // gates on vision mode internally).
@@ -71,6 +72,8 @@
             if (_vm == 1) then { [] call FUNC(applyNVGTubeModel); };
             if (_vm == 2) then { [] call FUNC(applyThermalVision); };
         }, 0.1] call CBA_fnc_addPerFrameHandler;
+        private _logMsg = format ["sensor PFH started (vision mode %1)", _visionMode];
+        AEE_LOG_INFO(_logMsg);
     };
 }, false] call CBA_fnc_addPlayerEventHandler;
 
@@ -104,3 +107,4 @@
     private _duration = 0.15 + _visibleFire * 0.1;
     missionNamespace setVariable [QGVAR(nvgFlashUntil), CBA_missionTime + _duration];
 }, false] call CBA_fnc_addPlayerEventHandler;
+

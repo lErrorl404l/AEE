@@ -4,6 +4,6 @@ ADDON = false;
 
 #include "XEH_PREP.hpp"
 
-AEE_LOG("actions module initialised");
+AEE_LOG_INFO("actions module initialised");
 
 ADDON = true;

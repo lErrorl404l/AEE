@@ -9,4 +9,4 @@ GVAR(turbulencePFH) = [{
     call FUNC(applyFlightTurbulence);
 }, 0] call CBA_fnc_addPerFrameHandler;
 
-AEE_LOG("flight turbulence PFH started");
+AEE_LOG_INFO("flight turbulence PFH started");

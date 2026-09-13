@@ -12,6 +12,6 @@ missionNamespace setVariable [QGVAR(isReady), true];
 // expected Number").  Create once here so every FX call uses the handle.
 [] call FUNC(ppEffectCreate);
 
-AEE_LOG("optics module initialised");
+AEE_LOG_INFO("optics module initialised");
 
 ADDON = true;

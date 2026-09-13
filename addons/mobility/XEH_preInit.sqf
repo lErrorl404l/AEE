@@ -7,6 +7,6 @@ ADDON = false;
 
 missionNamespace setVariable [QGVAR(isReady), true];
 
-AEE_LOG("mobility module initialised");
+AEE_LOG_INFO("mobility module initialised");
 
 ADDON = true;

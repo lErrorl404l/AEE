@@ -56,6 +56,8 @@ if (currentVisionMode _player != 1) exitWith {
             if (_h >= 0) then {
                 ppEffectDestroy _h;
                 missionNamespace setVariable [_x, -1];
+                private _logMsg = format ["NVG exit: destroyed %1 (was %2)", _x, _h];
+                AEE_LOG_DEBUG(_logMsg);
             };
         } forEach [
             QGVAR(ppHandle_NVG_CC),
@@ -63,6 +65,7 @@ if (currentVisionMode _player != 1) exitWith {
             QGVAR(ppHandle_NVG_Vignette),
             QGVAR(ppHandle_NVG_Grain)
         ];
+        AEE_LOG_INFO("NVG effects torn down (vision mode left)");
 
         // Tear down the tube-face overlay the moment NVG is removed.
         QGVAR(nvgDisplay) cutText ["", "PLAIN"];
@@ -442,6 +445,8 @@ if (_missing) then {
         if (_h >= 0) then {
             ppEffectDestroy _h;
             missionNamespace setVariable [_x, -1];
+            private _logMsg = format ["destroyed NVG handle %1 (was %2)", _x, _h];
+            AEE_LOG_DEBUG(_logMsg);
         };
     } forEach [
         QGVAR(ppHandle_NVG_CC),
@@ -459,6 +464,8 @@ if (_missing) then {
             _guard = _guard + 1;
         };
         missionNamespace setVariable [QGVAR(ppHandle_ChromAberration), _hChroma];
+        private _logMsg = format ["recreated NVG ChromAberration handle=%1", _hChroma];
+        AEE_LOG_DEBUG(_logMsg);
     };
 
     private _handles = [];
@@ -473,6 +480,8 @@ if (_missing) then {
         };
         missionNamespace setVariable [_store, _handle];
         _handles pushBack _handle;
+        private _logMsg = format ["created NVG %1 priority=%2 handle=%3", _name, _priority, _handle];
+        AEE_LOG_DEBUG(_logMsg);
     } forEach [
         ["RadialBlur",       1200, QGVAR(ppHandle_NVG_Vignette)],
         ["DynamicBlur",      4100, QGVAR(ppHandle_NVG_Bloom)],

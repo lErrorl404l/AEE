@@ -51,12 +51,15 @@ if (currentVisionMode _player != 2) exitWith {
             if (_h >= 0) then {
                 ppEffectDestroy _h;
                 missionNamespace setVariable [_x, -1];
+                private _logMsg = format ["thermal exit: destroyed %1 (was %2)", _x, _h];
+                AEE_LOG_DEBUG(_logMsg);
             };
         } forEach [
             QGVAR(ppHandle_Thermal_CC),
             QGVAR(ppHandle_Thermal_Grain),
             QGVAR(ppHandle_Thermal_Blur)
         ];
+        AEE_LOG_INFO("thermal effects torn down (vision mode left)");
 
         missionNamespace setVariable [QGVAR(thermalActive), false];
     };
@@ -93,6 +96,8 @@ if (_hCC < 0 || _hGrain < 0 || _hBlur < 0) then {
         if (_h >= 0) then {
             ppEffectDestroy _h;
             missionNamespace setVariable [_x, -1];
+            private _logMsg = format ["thermal recreate: destroyed %1 (was %2)", _x, _h];
+            AEE_LOG_DEBUG(_logMsg);
         };
     } forEach [
         QGVAR(ppHandle_Thermal_CC),
@@ -112,6 +117,8 @@ if (_hCC < 0 || _hGrain < 0 || _hBlur < 0) then {
         };
         missionNamespace setVariable [_store, _handle];
         _handles pushBack _handle;
+        private _logMsg = format ["created thermal %1 priority=%2 handle=%3", _name, _priority, _handle];
+        AEE_LOG_DEBUG(_logMsg);
     } forEach [
         ["ColorCorrections", 5200, QGVAR(ppHandle_Thermal_CC)],
         ["FilmGrain",       1300, QGVAR(ppHandle_Thermal_Grain)],
@@ -129,11 +136,11 @@ if (_hCC < 0 || _hGrain < 0 || _hBlur < 0) then {
 // stage, like a real FLIR's manual brightness/contrast controls.  It does
 // NOT recolor the palette — the native system owns that.
 //
-// Values match the proven A3TI mod (workshop 2041057379):
-//   brightness 0 = UNCHANGED.  The engine's native thermal is the image;
-//     a value below 0 darkens it toward black (our earlier 0.57 dimmed it
-//     into blackness — the reported "cannot see anything" bug).
-//   contrast 1.2 = A3TI default display contrast.
+// Values match the proven A3TI mod (workshop 2041057379) THERMAL preset:
+//   DEFAULT_TIPP_SETTINGS = [1.16, 0.62, 0, 0]
+//   brightness 1.16 (slight boost; wiki: 0 = black, 1 = unchanged —
+//     our earlier 0.57 and 0.0 both darkened the native image to black)
+//   contrast 0.62 (A3TI thermal display contrast)
 //   weight [1,1,1,0] = NO desaturation (A3TI).  The wiki default
 //     [0.299,0.587,0.114,0] desaturates the native palette to greyscale
 //     — wrong for thermal, whose colour palettes are meaningful.
@@ -141,8 +148,8 @@ if (_hCC < 0 || _hGrain < 0 || _hBlur < 0) then {
 //     through untouched.
 // AGC response is applied via contrast, not brightness: poor conditions
 // (rain, fog, crossover) lower contrast; clean conditions raise it.
-private _brightness = 0.0;
-private _ccContrast = linearConversion [1, 0, _effective, 1.4, 0.4, true];
+private _brightness = 1.16;
+private _ccContrast = linearConversion [1, 0, _effective, 0.62, 0.35, true];
 _hCC ppEffectAdjust [_brightness, _ccContrast, 0, [0,0,0,0], [1,1,1,0], [1,1,1,0]];
 _hCC ppEffectEnable true;
 _hCC ppEffectForceInNVG true;
