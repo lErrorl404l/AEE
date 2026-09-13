@@ -3,7 +3,17 @@
 ADDON = false;
 
 #include "XEH_PREP.hpp"
-#include "initSettings.inc.sqf"
+
+// Register the settings only when the mission provides weather.json.
+// CBA has no way to hide a registered setting at runtime, so the settings
+// must not register at all when the feature is unused — otherwise "AEE
+// Real Weather" appears in the options menu even though nothing can use it
+// (the same visibility rule as a host-mod addon whose dependency is absent).
+// loadFile works at preInit: an empty result means no weather.json.
+private _jsonPresent = (loadFile "weather.json") != "";
+if (_jsonPresent) then {
+    #include "initSettings.inc.sqf"
+};
 
 if (is3DEN) exitWith {};
 
@@ -14,7 +24,7 @@ if (is3DEN) exitWith {};
 // gates AEE's simulation tick.
 // The setting (default off) prevents loadFile from logging "weather.json
 // not found" when the user is not using real-weather mode.
-if (GVAR(enabled)) then {
+if (_jsonPresent && (missionNamespace getVariable [QGVAR(enabled), false])) then {
     [{
         [] call FUNC(integrateRealWeather);
     }, 5] call CBA_fnc_waitAndExecute;
