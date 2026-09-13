@@ -4,5 +4,6 @@ PREP(calculateHypothermiaRisk);
 PREP(calculateFreezingRain);
 PREP(calculateWaterTemperature);
 PREP(calculateThermalCrossover);
+PREP(calculateObjectTemperature);
 PREP(calculateClothingInsulation);
 PREP(updateTemperature);

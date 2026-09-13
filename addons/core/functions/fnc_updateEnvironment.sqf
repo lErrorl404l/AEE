@@ -88,6 +88,7 @@ if (GVAR(hydrologyEnabled)) then { call EFUNC(environmental,calculateFreezeThawC
 [] call EFUNC(thermal,calculateFreezingRain);
     [] call EFUNC(thermal,calculateWaterTemperature);
     [] call EFUNC(environmental,calculateFrostOnWindscreens);
+[] call EFUNC(thermal,calculateObjectTemperature);
 if (GVAR(physiologyEnabled)) then {
     [] call EFUNC(physiology,calculateUVIndex);
     [] call EFUNC(physiology,calculateBatteryTemperatureDerating);
