@@ -63,7 +63,8 @@ if (currentVisionMode _player != 1) exitWith {
             QGVAR(ppHandle_NVG_CC),
             QGVAR(ppHandle_NVG_Bloom),
             QGVAR(ppHandle_NVG_Vignette),
-            QGVAR(ppHandle_NVG_Grain)
+            QGVAR(ppHandle_NVG_Grain),
+            QGVAR(ppHandle_NVG_DoF)
         ];
         AEE_LOG_INFO("NVG effects torn down (vision mode left)");
 
@@ -143,7 +144,13 @@ private _vigStrength = [0.0040, 0.0040, 0.06, 0.06];
 private _bloomBase = 0.04;
 private _bloomScale = 0.04;
 
-if (_hmd find "USP_PVS31" >= 0 || _hmd find "PVS31" >= 0 || _hmd find "USP_PVS_31" >= 0) then {
+// Tier matcher by HMD classname.  Substring tests run most-specific first.
+// The ENVG-II (NVGogglesB_grn_F/blk_F/gry_F, Apex) and panoramic GPNVG-class
+// goggles are modern FILMLESS devices — Gen 4 equivalent, same tube class as
+// the PVS-31A (L3Harris sell sheet / ACE3 generation=4 mapping).  They get
+// the filmless constants, not plain GEN3.
+if (_hmd find "USP_PVS31" >= 0 || _hmd find "PVS31" >= 0 || _hmd find "USP_PVS_31" >= 0
+    || _hmd find "NVGogglesB" >= 0 || _hmd find "GPNVG" >= 0 || _hmd find "NVG_Wide" >= 0) then {
     _tier = "PVS31";
     _sensitivity = 2000;     // filmless GaAs (L3Harris/Photonis 4G)
     _noiseFloor = 0.03;
@@ -155,7 +162,7 @@ if (_hmd find "USP_PVS31" >= 0 || _hmd find "PVS31" >= 0 || _hmd find "USP_PVS_3
     _bloomBase = 0.02;
     _bloomScale = 0.02;
 } else {
-    if (_hmd find "NVGen3" >= 0 || _hmd find "NVGogglesB" >= 0 || _hmd find "NVGoggles_INDEP" >= 0) then {
+    if (_hmd find "NVGen3" >= 0 || _hmd find "NVGoggles_INDEP" >= 0) then {
         _tier = "GEN3";
         _sensitivity = 1100;     // GaAs (Photonis, ~700-1200 µA/lm)
         _noiseFloor = 0.04;
@@ -434,8 +441,9 @@ private _hCC     = missionNamespace getVariable [QGVAR(ppHandle_NVG_CC), -1];
 private _hBloom  = missionNamespace getVariable [QGVAR(ppHandle_NVG_Bloom), -1];
 private _hVig    = missionNamespace getVariable [QGVAR(ppHandle_NVG_Vignette), -1];
 private _hGrain  = missionNamespace getVariable [QGVAR(ppHandle_NVG_Grain), -1];
+private _hDoF    = missionNamespace getVariable [QGVAR(ppHandle_NVG_DoF), -1];
 
-private _missing = (_hCC < 0 || _hBloom < 0 || _hVig < 0 || _hGrain < 0);
+private _missing = (_hCC < 0 || _hBloom < 0 || _hVig < 0 || _hGrain < 0 || _hDoF < 0);
 
 if (_missing) then {
     // Destroy any live handles first so the bump loop can reclaim the
@@ -452,7 +460,8 @@ if (_missing) then {
         QGVAR(ppHandle_NVG_CC),
         QGVAR(ppHandle_NVG_Bloom),
         QGVAR(ppHandle_NVG_Vignette),
-        QGVAR(ppHandle_NVG_Grain)
+        QGVAR(ppHandle_NVG_Grain),
+        QGVAR(ppHandle_NVG_DoF)
     ];
 
     if (_hChroma < 0) then {
@@ -486,9 +495,42 @@ if (_missing) then {
         ["RadialBlur",       1200, QGVAR(ppHandle_NVG_Vignette)],
         ["DynamicBlur",      4100, QGVAR(ppHandle_NVG_Bloom)],
         ["ColorCorrections", 5100, QGVAR(ppHandle_NVG_CC)],
-        ["FilmGrain",        6000, QGVAR(ppHandle_NVG_Grain)]
+        ["FilmGrain",        6000, QGVAR(ppHandle_NVG_Grain)],
+        ["DepthOfField",     868,  QGVAR(ppHandle_NVG_DoF)]
     ];
-    _handles params ["_hVig", "_hBloom", "_hCC", "_hGrain"];
+    _handles params ["_hVig", "_hBloom", "_hCC", "_hGrain", "_hDoF"];
+};
+
+// ─── Depth of field (objective focus) ─────────────────────────────────────
+// A real NVG objective lens has a focus distance: objects at that range are
+// sharp, nearer and farther blur.  The user sets it with the objective focus
+// ring; we model the same by focusing on what the player is looking at.
+//
+// Technique verified from workshop mod TFN NVG Effects (workshop 3682613859):
+// DepthOfField is a real, scriptable player-view effect — the BIS wiki marks
+// it "TBD" but production mods use it with ppEffectForceInNVG true and
+// ppEffectAdjust [blur, distance, 1].  Our previous "not scriptable" note
+// was wrong (camSetFocus is camera-only, but DepthOfField ppEffect works).
+//
+// Focus distance: distance to the cursor target, clamped to a sane range.
+// The blur magnitude scales with how far the object is from the focus plane
+// — larger blur = shallower depth of field (worse optics).  Tiers get
+// different blur strengths: Gen 1/2 objective blur more than Gen 3/4.
+private _focusDist = 50;
+private _focusTarget = cursorTarget;
+if (!isNull _focusTarget) then {
+    _focusDist = (_player distance _focusTarget) max 5 min 500;
+};
+private _dofBlur = switch (_tier) do {
+    case "PVS31": { 1.5 };
+    case "GEN3":  { 2.5 };
+    case "GEN2":  { 4.0 };
+    default      { 5.0 };   // Gen 1: shallow, hard-to-focus objective
+};
+if (_hDoF >= 0) then {
+    _hDoF ppEffectAdjust [_dofBlur, _focusDist, 1];
+    _hDoF ppEffectForceInNVG true;
+    _hDoF ppEffectCommit 0;
 };
 
 // Diagnostics: set aee_optics_nvgDebug = true in the debug console to log
@@ -498,7 +540,7 @@ if (_missing) then {
 // inverse-lux auto-gating response) — the two numbers prove the gate works.
 if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
     diag_log text format [
-        "[AEE] NVG tick | tier=%1 moon=%2 lux=%3 gain=%4 visMode=%5 hmd=%6 | handles CC=%7 chroma=%8 bloom=%9 vig=%10 grain=%11 | CC params %12 | bloom=%13 grain=%14 | blowout=%15",
+        "[AEE] NVG tick | tier=%1 moon=%2 lux=%3 gain=%4 visMode=%5 hmd=%6 | handles CC=%7 chroma=%8 bloom=%9 vig=%10 grain=%11 dof=%12 | CC params %13 | bloom=%14 grain=%15 | blowout=%16 | dofBlur=%17 focusDist=%18",
         _tier,
         _moonLight,
         _lux,
@@ -510,10 +552,13 @@ if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
         _hBloom,
         _hVig,
         _hGrain,
+        _hDoF,
         [_brightness, _mtfEffective, 0, [0,0,0,0], _phosphorTint, _nvgWeight],
         _bloom,
         [_noise, _sharpness, _grainSize, 0.5, 1.0, 0],
-        _blowout
+        _blowout,
+        _dofBlur,
+        _focusDist
     ];
 };
 
