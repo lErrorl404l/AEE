@@ -16,7 +16,7 @@ is engine calibration:
 
   NOT verifiable from physics alone (engine calibration, documented as such):
     - The exact brightness multiplier value (relative, not absolute cd/m^2)
-    - Blowout cone angle / range
+    - Detection range of bright sources (150 m)
     - Grain magnitude scale
 
 Run:  python3 tools/validation/validate_sensors.py

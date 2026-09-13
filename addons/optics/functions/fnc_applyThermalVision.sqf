@@ -185,10 +185,11 @@ if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
     ];
 };
 
-// ─── Depth of field (objective aperture) ─────────────────────────────────
-// Thermal imagers also have fixed-focus optics.  Set the aperture so the
-// engine's DoF gives near-object blur / distant sharpness, matching the
-// sensor's fixed focus plane.  Same proven range as the NVG objective.
-setAperture 20;
+// ─── Eye accommodation (exposure) ───────────────────────────────────────
+// Same as the NVG objective: setAperture is light intake (eye
+// accommodation), not DoF.  Fixed night exposure — the sensor's output
+// display brightness is constant, so the eye's accommodation is too.
+// A3TI-proven night value 15; -1 restores the engine default.
+setAperture 15;
 
 missionNamespace setVariable [QGVAR(thermalActive), true];
