@@ -24,9 +24,20 @@ private _surfaceTemp = switch (_groundState) do {
     default        { _airTemp + 2 * (1 - _overcast) }; // Normal: solar heating
 };
 
-// ─── Crossover when within 1.5 °C ──────────────────────────────────────
+// ─── Crossover only in the twilight window ─────────────────────────────
+// True thermal crossover (isothermal condition) happens when the surface
+// and air equilibrate — at dawn and dusk, when solar heating is passing
+// through zero.  The naive air-vs-surface delta fires at NIGHT too
+// (surface cools to air temp), but a FLIR still sees objects as warm
+// against the cool background — night is when thermal is most useful.
+// Gate on solar elevation (same sine model as fnc_calculateSolarGlare):
+// only within ~10° of the horizon can the gradient collapse.
+private _dayFraction = dayTime / 24;
+private _sunElev = (sin ((_dayFraction - 0.25) * 360) * 90) max 0;
+private _inTwilight = _sunElev < 10;
+
 private _delta = abs (_airTemp - _surfaceTemp);
-private _crossoverNow = _delta <= 1.5;
+private _crossoverNow = _inTwilight && _delta <= 1.5;
 
 // ─── Timer accumulator — sustain for ~1 tick ──────────────────────────
 private _timer = missionNamespace getVariable [QEGVAR(core,crossoverTimer), 0];

@@ -166,6 +166,41 @@ diag_log text format ["[AEE-TEST] biome after explicit call: %1", _biomeAfter];
         };
     };
 
+    // -- PHASE 8: sensor pipeline (headless-safe checks) ----------------------
+    // The NVG/thermal apply functions gate on a camera (client-only), so
+    // visual behaviour cannot be verified headless.  What CAN be verified:
+    //   a) persistent ppEffect handles are idempotent — re-running
+    //      fnc_ppEffectCreate (as happens on every mission load) must NOT
+    //      bump priorities and orphan handles ("Invalid post effect handle"
+    //      on the next mission boundary).  This is a regression test for a
+    //      real bug caught in-game.
+    //   b) the thermal contrast model produces a sane 0..1 value.
+    //   c) the sensor functions resolve.
+    private _hBefore = missionNamespace getVariable ["aee_optics_ppHandle_ColorCorrections", -1];
+    [] call aee_optics_fnc_ppEffectCreate;
+    private _hAfter = missionNamespace getVariable ["aee_optics_ppHandle_ColorCorrections", -1];
+    if (_hBefore >= 0 && _hAfter == _hBefore) then {
+        diag_log text format ["[PHASE8] [PASS] ppEffect handles idempotent (CC=%1 unchanged)", _hAfter];
+    } else {
+        diag_log text format ["[PHASE8] [FAIL] ppEffect handles bumped: before=%1 after=%2", _hBefore, _hAfter];
+    };
+
+    [] call aee_optics_fnc_calculateThermalContrast;
+    private _tc = missionNamespace getVariable ["aee_optics_currentThermalContrast", -1];
+    if (!isNil "_tc" && _tc >= 0 && _tc <= 1) then {
+        diag_log text format ["[PHASE8] [PASS] thermal contrast in range: %1", _tc];
+    } else {
+        diag_log text format ["[PHASE8] [FAIL] thermal contrast out of range: %1", _tc];
+    };
+
+    private _fnNvg = missionNamespace getVariable ["aee_optics_fnc_applyNVGTubeModel", nil];
+    private _fnThermal = missionNamespace getVariable ["aee_optics_fnc_applyThermalVision", nil];
+    if (!isNil "_fnNvg" && !isNil "_fnThermal") then {
+        diag_log text "[PHASE8] [PASS] sensor functions resolved";
+    } else {
+        diag_log text format ["[PHASE8] [FAIL] sensor functions nil: nvg=%1 thermal=%2", isNil "_fnNvg", isNil "_fnThermal"];
+    };
+
     // -- PHASE 5: determinism -- temperature delta over 5 s must be small ----
     private _t1 = missionNamespace getVariable ["aee_core_currentTemperature", -999];
     [{

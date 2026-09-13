@@ -15,6 +15,18 @@
     params ["_unit", "_visionMode"];
     if (_unit != call CBA_fnc_currentUnit) exitWith {};
     if (isNil QGVAR(isReady)) exitWith {};
+    // Real exit to normal vision: the visionMode event is the only place
+    // that knows the exit is genuine (not a transient 0 from weapon raise
+    // or ENVG-II cycling).  Run each sensor's exit block once to destroy
+    // handles and tear down the overlay, then stop the PFH.  Also restore
+    // the engine's default aperture (DoF off) so normal vision is sharp.
+    if (_visionMode == 0 && !isNil QGVAR(sensorPFH)) then {
+        setAperture -1;
+        [] call FUNC(applyNVGTubeModel);
+        [] call FUNC(applyThermalVision);
+        [GVAR(sensorPFH)] call CBA_fnc_removePerFrameHandler;
+        GVAR(sensorPFH) = nil;
+    };
     // Fade normal-vision optical effects immediately (managePostProcess
     // gates on vision mode internally).
     [] call FUNC(managePostProcess);
@@ -41,21 +53,21 @@
             QGVAR(ppHandle_Thermal_Blur)
         ];
     };
-    // Start the fast sensor PFH when entering NVG/thermal.  It self-stops
-    // when the player returns to normal vision.  AGC lag and gating need a
+    // Start the fast sensor PFH when entering NVG/thermal.  The visionMode
+    // event below is the SOLE owner of its lifecycle: it starts on mode > 0
+    // and stops on mode == 0.  Inside the PFH, a transient vision-mode 0
+    // (weapon raise, ADS, ENVG-II mode cycling) just skips the tick — it
+    // must NOT destroy handles or stop the PFH, or the effects die on the
+    // next frame and never recover.  AGC lag and gating need this
     // sub-second tick; the environment PFH only runs every 5 s.
     if (_visionMode > 0 && isNil QGVAR(sensorPFH)) then {
         GVAR(sensorPFH) = [{
             private _player = call CBA_fnc_currentUnit;
             if (isNil "_player" || !alive _player || cameraOn != _player) exitWith {};
             private _vm = currentVisionMode _player;
-            // Leaving NVG/thermal: run each cleanup once, then stop.
-            if (_vm == 0) exitWith {
-                [] call FUNC(applyNVGTubeModel);
-                [] call FUNC(applyThermalVision);
-                [GVAR(sensorPFH)] call CBA_fnc_removePerFrameHandler;
-                GVAR(sensorPFH) = nil;
-            };
+            // Transient 0: skip, do not clean up or stop.  The visionMode
+            // event handles real exits.
+            if (_vm == 0) exitWith {};
             if (_vm == 1) then { [] call FUNC(applyNVGTubeModel); };
             if (_vm == 2) then { [] call FUNC(applyThermalVision); };
         }, 0.1] call CBA_fnc_addPerFrameHandler;
