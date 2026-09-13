@@ -90,3 +90,14 @@ _fogDensity = _fogDensity max (_radFog * 0.8);
 _fogDensity = _fogDensity max 0 min _maxFogDensity;
 missionNamespace setVariable [QEGVAR(core,currentFogDensity), _fogDensity];
 0 setFog [_fogDensity, 0.5, 0];
+
+// ─── Engine fog forecast (trend) ─────────────────────────────────────────
+// fogForecast returns [level, decay, base] — the engine's predicted fog
+// state, which other modules (visibility, NVG haze) can use as a trend.
+// Guard: returns [] in some contexts; fall back to current density.
+private _forecast = fogForecast;
+if (_forecast isEqualType [] && {count _forecast >= 3}) then {
+    missionNamespace setVariable [QEGVAR(core,fogForecast), _forecast];
+} else {
+    missionNamespace setVariable [QEGVAR(core,fogForecast), [_fogDensity, 0.5, 0]];
+};
