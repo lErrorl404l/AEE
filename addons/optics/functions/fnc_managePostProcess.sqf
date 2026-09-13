@@ -35,6 +35,12 @@ private _hChroma = missionNamespace getVariable [QGVAR(ppHandle_ChromAberration)
 private _hBlur   = missionNamespace getVariable [QGVAR(ppHandle_DynamicBlur), -1];
 private _hCC     = missionNamespace getVariable [QGVAR(ppHandle_ColorCorrections), -1];
 
+// ─── NVG tube model ──────────────────────────────────────────────────────
+// Must run before the vision-mode exit: the NVG tube model produces its
+// own FilmGrain inside the NVG view (ppEffectForceInNVG).  It self-gates
+// on vision mode 1 internally.
+[] call FUNC(applyNVGTubeModel);
+
 // NVG (1) and thermal (2) views: the sensor produces its own image.
 // Chromatic aberration from atmospheric seeing and heat shimmer, blur
 // from dew/rain on a lens, and colour-correction tints all assume a
@@ -187,9 +193,3 @@ if (_ccOn) then {
         }, [_gen], 5.5] call CBA_fnc_waitAndExecute;
     };
 };
-
-// ─── NVG tube model ──────────────────────────────────────────────────────
-// Runs after the vision-mode exit above.  The eye effects stay suppressed
-// in NVG, but the tube grain renders inside the NVG view.  Self-gates on
-// vision mode 1.
-[] call FUNC(applyNVGTubeModel);

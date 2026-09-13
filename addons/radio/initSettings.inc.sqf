@@ -4,6 +4,13 @@
 // CBA_fnc_addSetting; titles and descriptions come from the
 // radio stringtable.
 
+// The radio simulation feeds the ACRE2 and TFAR compat layers — its only
+// consumers. Without either host mod the settings and the computed
+// propagation index have no consumer, so they must not register.
+private _hasHost = isClass (configFile >> "CfgPatches" >> "acre_sys_core")
+    || isClass (configFile >> "CfgPatches" >> "task_force_radio");
+if (_hasHost) then {
+
 // ── Propagation ────────────────────────────────────────────────────────────
 [
     QGVAR(txPower),
@@ -24,3 +31,5 @@
     true,
     {}
 ] call CBA_fnc_addSetting;
+
+}; // _hasHost
