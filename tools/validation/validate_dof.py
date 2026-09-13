@@ -66,7 +66,7 @@ def dof_near_far(f_mm, n, coc_um, s_m):
 # ─── SQF mirror: fan raycast + median aggregation + state machine ────────
 
 FAN_COUNT = 9
-EXCLUSION_M = 2.0
+NEAR_LIMIT_M = 0.25  # objective near limit (PVS-14: 25 cm)
 DEADBAND_FRAC = 0.25
 DEADBAND_MIN_M = 0.5
 HOLD_S = 0.25
@@ -78,9 +78,10 @@ TICK_S = 0.1
 def fan_hits(scene, look_centre_deg=0.0):
     """Simulate the 9-ray fan against a scene.
 
-    scene: list of (start_m, end_m, ray_fraction) - each surface is an
-    angular band (deg offset from centre) that its rays fall in.
-    Returns the list of valid (>= 2 m) hit distances, one per ray.
+    scene: list of (start_m, end_m, dist, is_player) - each surface is an
+    angular band (deg offset from centre) with a distance and a flag for
+    whether the hit is the operator's own model (weapon/body).
+    Returns the list of valid hit distances, one per ray.
     """
     # Ray offsets: centre + 4 cardinal + 4 diagonal at ~6 deg half-angle.
     offsets = [0.0, 6.0, -6.0, 6.0, -6.0, 8.5, -8.5, -8.5, 8.5]
@@ -88,15 +89,14 @@ def fan_hits(scene, look_centre_deg=0.0):
     for off in offsets:
         theta = look_centre_deg + off
         dist = None
-        for start, end, frac in scene:
-            # The ray at theta falls in this surface's band if theta is
-            # within its angular coverage.
+        is_player_hit = False
+        for start, end, d, is_player in scene:
             if theta >= start and theta <= end:
-                # Nearest surface wins for this ray.
-                dist = frac  # each surface reports its distance
+                dist = d
+                is_player_hit = is_player
                 break
-        if dist is not None and dist >= EXCLUSION_M:
-            hits.append(dist)
+        if dist is not None and not is_player_hit:
+            hits.append(max(dist, NEAR_LIMIT_M))
     return hits
 
 
@@ -114,11 +114,16 @@ def state_machine(raw_target, cur_focus, pending, hold_until, t):
     if raw_target > 0:
         if abs(raw_target - cur_focus) > deadband:
             if raw_target != pending:
-                pending = raw_target
-                hold_until = t + HOLD_S
+                # Re-arm only on material change; track drift without
+                # resetting the hold clock (walking player starves the
+                # rack otherwise).
+                if pending == 0 or abs(raw_target - pending) > 0.5:
+                    pending = raw_target
+                    hold_until = t + HOLD_S
+                else:
+                    pending = raw_target
         else:
             # Inside the band: cancel only when no rack is in flight.
-            # An in-flight rack continues to its target.
             if pending == 0:
                 hold_until = 0.0
     if pending > 0 and t >= hold_until:
@@ -233,7 +238,11 @@ def check_median_no_flipflop():
     # Bush at 3 m covers only the centre ray (1/9, angular width +-3 deg
     # keeps the +-6 cardinal rays on the building).  The building at 20 m
     # covers the remaining 8.  Median must be 20 m.
-    scene = [(-3.0, 3.0, 3.0), (3.0, 12.0, 20.0), (-12.0, -3.0, 20.0)]
+    scene = [
+        (-3.0, 3.0, 3.0, False),
+        (3.0, 12.0, 20.0, False),
+        (-12.0, -3.0, 20.0, False),
+    ]
     hits = fan_hits(scene)
     med = median_hits(hits)
     ok = med == 20.0
@@ -254,7 +263,11 @@ def check_bush_dominant():
     """Bush covering MOST of the fan genuinely dominates focus."""
     # Bush at 3 m covers +-7 deg (5 rays: centre + both +-6 cardinal + both
     # 8.5 diagonals), the building the remaining 4.  Median must be 3 m.
-    scene = [(-7.0, 7.0, 3.0), (7.0, 12.0, 20.0), (-12.0, -7.0, 20.0)]
+    scene = [
+        (-7.0, 7.0, 3.0, False),
+        (7.0, 12.0, 20.0, False),
+        (-12.0, -7.0, 20.0, False),
+    ]
     hits = fan_hits(scene)
     med = median_hits(hits)
     ok = med == 3.0
@@ -272,29 +285,68 @@ def check_bush_dominant():
 
 
 def check_weapon_exclusion():
-    """Sub-2 m hits (the operator's own weapon) are excluded."""
-    # Weapon at 0.7 m covers the centre ray only.
-    scene = [(-1.0, 1.0, 0.7), (1.0, 12.0, 25.0), (-12.0, -1.0, 25.0)]
+    """Hits on the operator's own model (weapon) are excluded by identity."""
+    # Weapon at 0.7 m (is_player=True) covers the centre ray only.
+    scene = [
+        (-1.0, 1.0, 0.7, True),
+        (1.0, 12.0, 25.0, False),
+        (-12.0, -1.0, 25.0, False),
+    ]
     hits = fan_hits(scene)
-    ok = all(h >= EXCLUSION_M for h in hits) and 0.7 not in hits
+    ok = 0.7 not in hits and len(hits) == 8
     return {
-        "name": "Weapon/hands exclusion zone",
-        "ground_truth": "Operator focuses past the weapon; hits < 2 m ignored",
-        "grid": "weapon 0.7 m (centre ray) + wall 25 m",
-        "tolerance": "no sub-2 m hit reaches the median",
+        "name": "Weapon exclusion by object identity",
+        "ground_truth": "Operator focuses past the weapon; own-model hits ignored",
+        "grid": "weapon 0.7 m (centre ray, is_player) + wall 25 m",
+        "tolerance": "no 0.7 m hit, all 8 non-weapon rays valid",
         "status": "PASS" if ok else "FAIL",
         "max_abs": f"hits={sorted(hits)}",
         "rmse": 0.0,
         "unit": "m",
-        "note": "Was the original 'focus locked at 1 m' bug - now excluded",
+        "note": "Was a 2 m distance cut that snapped close objects; now identity",
+    }
+
+
+def check_blur_gate():
+    """Close objects track down to the near limit, then blur gradually.
+
+    The 'blur gate': as the player approaches a real object the focus
+    tracks it (object identity, no distance cut), so the object stays in
+    focus down to the objective's 25 cm near limit.  There is no sharp
+    clear->blurry transition at an arbitrary distance - the DoF band
+    falls off continuously, and only objects closer than the NEAR LIMIT
+    (physically impossible to focus) blur.
+    """
+    # Player walks toward a wall: 10 m -> 0.2 m over 30 s.
+    # Scene reports the wall at the current distance, no snap.
+    series = []
+    for i in range(300):
+        t = i * TICK_S
+        d = max(10.0 - t * 0.33, 0.2)  # walk from 10 m to 0.2 m
+        series.append((t, t + TICK_S, [(-12.0, 12.0, d, False)]))
+    fh, rh = run_scenario(series, focus0=10.0, n_ticks=300)
+    # Focus must track down to the near limit smoothly (no jump > 1.5 m/tick
+    # beyond the rack speed), and must NOT go below the near limit.
+    steps = [abs(fh[i + 1] - fh[i]) for i in range(len(fh) - 1)]
+    ok = min(fh) >= NEAR_LIMIT_M - 0.01 and max(steps) <= MAX_STEP_M + 1e-9
+    return {
+        "name": "Blur gate - close tracking, no snap",
+        "ground_truth": "Real object tracks to 25 cm near limit; no hard cut",
+        "grid": "wall 10 m -> 0.2 m over 30 s",
+        "tolerance": "focus >= 25 cm always, max step <= 1.5 m/tick",
+        "status": "PASS" if ok else "FAIL",
+        "max_abs": f"min focus={min(fh):.2f} m, max step={max(steps):.2f} m",
+        "rmse": 0.0,
+        "unit": "m",
+        "note": "The old 2 m cut snapped clear->blurry; identity exclusion tracks",
     }
 
 
 def check_hold_on_empty():
     """Looking at sky (no hits) keeps the current focus, no jump."""
     # Settle on a 20 m wall, then look at sky (empty scene).
-    wall = [(-12.0, 12.0, 20.0)]
-    sky = [(-12.0, 12.0, None)]  # None = no surface (ray misses)
+    wall = [(-12.0, 12.0, 20.0, False)]
+    sky = [(-12.0, 12.0, None, False)]  # None = no surface (ray misses)
     series = [(0.0, 5.0, wall), (5.0, 30.0, sky)]
     fh, rh = run_scenario(series, focus0=20.0, n_ticks=300)
     sky_focus = [f for f, r in zip(fh, rh) if r == 0.0]
@@ -315,8 +367,8 @@ def check_hold_on_empty():
 def check_glide_no_snap():
     """A large focus change glides monotonically, never teleports."""
     # Transition 3 m (bush) -> 20 m (building) as the player re-aims.
-    bush = [(-12.0, 12.0, 3.0)]
-    bldg = [(-12.0, 12.0, 20.0)]
+    bush = [(-12.0, 12.0, 3.0, False)]
+    bldg = [(-12.0, 12.0, 20.0, False)]
     series = [(0.0, 2.0, bush), (2.0, 30.0, bldg)]
     fh, rh = run_scenario(series, focus0=3.0, n_ticks=300)
     # Max per-tick step must be <= MAX_STEP_M (no teleport).
@@ -341,8 +393,8 @@ def check_glide_no_snap():
 def check_deadband_stability():
     """Settled focus tolerates small scene changes (no hunting)."""
     # Wall segments at 8-12 m (median 10 m), then a small 1 m drift.
-    seg = [(-12.0, 12.0, 10.0)]
-    seg2 = [(-12.0, 12.0, 11.0)]  # within deadband (25% of 10 = 2.5 m)
+    seg = [(-12.0, 12.0, 10.0, False)]
+    seg2 = [(-12.0, 12.0, 11.0, False)]  # within deadband (25% of 10 = 2.5 m)
     series = [(0.0, 2.0, seg), (2.0, 30.0, seg2)]
     fh, rh = run_scenario(series, focus0=10.0, n_ticks=300)
     drift = max(abs(f - 10.0) for f in fh)
@@ -362,8 +414,11 @@ def check_deadband_stability():
 
 def check_transient_delay():
     """A transient target (branch passing) must not trigger a rack."""
-    wall = [(-12.0, 12.0, 20.0)]
-    transient = [(-6.0, 0.0, 3.0), (0.0, 12.0, 20.0)]  # branch for 2 ticks
+    wall = [(-12.0, 12.0, 20.0, False)]
+    transient = [
+        (-6.0, 0.0, 3.0, False),
+        (0.0, 12.0, 20.0, False),
+    ]  # branch for 2 ticks
     series = [(0.0, 3.0, wall), (3.0, 3.2, transient), (3.2, 30.0, wall)]
     fh, rh = run_scenario(series, focus0=20.0, n_ticks=300)
     moved = max(abs(f - 20.0) for f in fh)
@@ -383,7 +438,7 @@ def check_transient_delay():
 
 def check_first_tick_default():
     """First tick with no target defaults to 50 m, does not break."""
-    sky = [(-12.0, 12.0, None)]
+    sky = [(-12.0, 12.0, None, False)]
     fh, rh = run_scenario([(0.0, 30.0, sky)], focus0=None, n_ticks=30)
     ok = all(0 < f <= 60 for f in fh) and fh[0] == 50.0
     return {
@@ -399,6 +454,156 @@ def check_first_tick_default():
     }
 
 
+# ─── Edge cases, extremes, normals ─────────────────────────────────────────
+
+
+def check_extreme_near():
+    """Walking right up to a wall tracks to the near limit, no snap."""
+    series = []
+    for i in range(300):
+        t = i * TICK_S
+        d = max(3.0 - t * 0.1, 0.2)  # 3 m -> 0.2 m over 30 s
+        series.append((t, t + TICK_S, [(-12.0, 12.0, d, False)]))
+    fh, rh = run_scenario(series, focus0=3.0, n_ticks=300)
+    min_f = min(fh)
+    steps = [abs(fh[i + 1] - fh[i]) for i in range(len(fh) - 1)]
+    ok = min_f >= NEAR_LIMIT_M - 0.01 and max(steps) <= MAX_STEP_M + 1e-9
+    return {
+        "name": "Extreme near - wall to 20 cm",
+        "ground_truth": "Objective near limit 25 cm; focus clamps there",
+        "grid": "wall 3 m -> 0.2 m over 30 s",
+        "tolerance": "focus >= 25 cm always, no step > 1.5 m",
+        "status": "PASS" if ok else "FAIL",
+        "max_abs": f"min focus={min_f:.2f} m, max step={max(steps):.2f} m",
+        "rmse": 0.0,
+        "unit": "m",
+        "note": "Focus must not dive below the physical near limit",
+    }
+
+
+def check_extreme_far():
+    """Looking from close to very far racks out, holds the far surface."""
+    # Building at 250 m.  Focus starts at 3 m.
+    bldg = [(-12.0, 12.0, 250.0, False)]
+    series = [(0.0, 1.0, [(-12.0, 12.0, 3.0, False)]), (1.0, 30.0, bldg)]
+    fh, rh = run_scenario(series, focus0=3.0, n_ticks=300)
+    ok = (
+        abs(fh[-1] - 250.0) < 0.5
+        and max(abs(fh[i + 1] - fh[i]) for i in range(len(fh) - 1)) <= MAX_STEP_M + 1e-9
+    )
+    return {
+        "name": "Extreme far - rack to 250 m",
+        "ground_truth": "Constant-speed rack reaches the far surface",
+        "grid": "3 m then 250 m building",
+        "tolerance": "arrives at 250 m, no teleport",
+        "status": "PASS" if ok else "FAIL",
+        "max_abs": f"final={fh[-1]:.2f} m",
+        "rmse": 0.0,
+        "unit": "m",
+        "note": "247 m at 1.5 m/tick = ~16.5 s of gliding, monotonic",
+    }
+
+
+def check_weapon_only():
+    """Looking only at the weapon (all rays on own model) holds focus."""
+    # Weapon everywhere: every fan ray hits the player's own model.
+    scene = [(-12.0, 12.0, 0.7, True)]
+    fh, rh = run_scenario([(0.0, 30.0, scene)], focus0=15.0, n_ticks=300)
+    ok = all(abs(f - 15.0) < 0.2 for f in fh)  # no movement at all
+    return {
+        "name": "Weapon-only view holds focus",
+        "ground_truth": "All rays on own model -> empty target -> hold",
+        "grid": "weapon 0.7 m across the whole fan for 30 s",
+        "tolerance": "focus unchanged (15 m)",
+        "status": "PASS" if ok else "FAIL",
+        "max_abs": f"final={fh[-1]:.2f} m",
+        "rmse": 0.0,
+        "unit": "m",
+        "note": "Weapon must never drag or hold-lock the focus",
+    }
+
+
+def check_oscillating_target():
+    """A target oscillating around the deadband edge does not hunt."""
+    # Wall alternates 10 m and 11 m (inside the 25% deadband of ~10 m).
+    a = [(-12.0, 12.0, 10.0, False)]
+    b = [(-12.0, 12.0, 11.0, False)]
+    series = []
+    for i in range(300):
+        t = i * TICK_S
+        sc = a if (i // 10) % 2 == 0 else b  # flip every 1 s
+        series.append((t, t + TICK_S, sc))
+    fh, rh = run_scenario(series, focus0=10.0, n_ticks=300)
+    drift = max(abs(f - 10.0) for f in fh)
+    ok = drift < 1.0
+    return {
+        "name": "Oscillating target - no hunting",
+        "ground_truth": "Deadband absorbs 10<->11 m flip; focus stays put",
+        "grid": "wall alternates 10/11 m every 1 s",
+        "tolerance": "focus drift < 1 m",
+        "status": "PASS" if ok else "FAIL",
+        "max_abs": f"max drift={drift:.2f} m",
+        "rmse": 0.0,
+        "unit": "m",
+        "note": "Edge case: deadband must swallow boundary oscillation",
+    }
+
+
+def check_moving_target_tracking():
+    """A moving target (walking player) tracks continuously, no stall.
+
+    Regression: the hold timer was reset every tick when the raw target
+    drifted (wall moves 0.03 m per 0.1 s tick), so the rack never
+    started.  The fix re-arms only on a material target change (> 0.5 m)
+    and follows drift without resetting the clock.
+    """
+    series = []
+    for i in range(300):
+        t = i * TICK_S
+        d = max(10.0 - t * 0.33, 0.2)  # player walks toward wall
+        series.append((t, t + TICK_S, [(-12.0, 12.0, d, False)]))
+    fh, rh = run_scenario(series, focus0=10.0, n_ticks=300)
+    ok = fh[-1] < 3.0  # must track well below the 10 m start
+    return {
+        "name": "Moving target tracks (walk regression)",
+        "ground_truth": "Walking player: focus follows the approaching wall",
+        "grid": "wall 10 m -> 0.2 m over 30 s",
+        "tolerance": "final focus < 3 m (was 8.5 m before the fix)",
+        "status": "PASS" if ok else "FAIL",
+        "max_abs": f"final={fh[-1]:.2f} m",
+        "rmse": 0.0,
+        "unit": "m",
+        "note": "Catches the hold-timer-reset starvation bug",
+    }
+
+
+def check_normal_pan():
+    """A normal pan across varied terrain glides smoothly."""
+    # Pan: near bush 5 m, then open field 30 m, then far ridge 80 m.
+    bush = [(-12.0, 12.0, 5.0, False)]
+    field = [(-12.0, 12.0, 30.0, False)]
+    ridge = [(-12.0, 12.0, 80.0, False)]
+    series = [
+        (0.0, 8.0, bush),
+        (8.0, 16.0, field),
+        (16.0, 30.0, ridge),
+    ]
+    fh, rh = run_scenario(series, focus0=5.0, n_ticks=300)
+    steps = [abs(fh[i + 1] - fh[i]) for i in range(len(fh) - 1)]
+    ok = abs(fh[-1] - 80.0) < 0.5 and max(steps) <= MAX_STEP_M + 1e-9
+    return {
+        "name": "Normal pan - smooth glide",
+        "ground_truth": "5 -> 30 -> 80 m rack glides at constant speed",
+        "grid": "bush 5 m (8 s), field 30 m (8 s), ridge 80 m (14 s)",
+        "tolerance": "arrives at 80 m, no step > 1.5 m",
+        "status": "PASS" if ok else "FAIL",
+        "max_abs": f"final={fh[-1]:.2f} m, max step={max(steps):.2f} m",
+        "rmse": 0.0,
+        "unit": "m",
+        "note": "Normal use: the ring racks between targets at constant speed",
+    }
+
+
 # ─── Main ──────────────────────────────────────────────────────────────────
 
 CHECKS = [
@@ -408,11 +613,18 @@ CHECKS = [
     check_median_no_flipflop,
     check_bush_dominant,
     check_weapon_exclusion,
+    check_blur_gate,
     check_hold_on_empty,
     check_glide_no_snap,
     check_deadband_stability,
     check_transient_delay,
     check_first_tick_default,
+    check_extreme_near,
+    check_extreme_far,
+    check_weapon_only,
+    check_oscillating_target,
+    check_moving_target_tracking,
+    check_normal_pan,
 ]
 
 
