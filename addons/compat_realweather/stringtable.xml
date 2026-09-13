@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="Compat RealWeather">
+        <Key ID="STR_AEE_Compat_RealWeather_enabled_Description">
+            <Original>Enable real-weather mode. Reads weather.json from the mission folder and overrides AEE's simulated state.</Original>
+            <English>Enable real-weather mode. Reads weather.json from the mission folder and overrides AEE's simulated state.</English>
+        </Key>
+        <Key ID="STR_AEE_Compat_RealWeather_enabled_Name">
+            <Original>Enable Real Weather</Original>
+            <English>Enable Real Weather</English>
+        </Key>
+    </Package>
+</Project>
