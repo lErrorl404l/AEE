@@ -716,13 +716,21 @@ private _dofBlur = switch (_tier) do {
     default      { 8.0 };   // Gen 1: shallow, hard-to-focus objective
 };
 if (_hDoF >= 0) then {
-    // Sign convention from TFN: negative blur = far focus (their default),
-    // positive = near focus.  We auto-focus on the look target, so the
-    // sign must flip by which side the target sits: far look -> negative,
-    // near look (< ~10 m, e.g. checking your weapon) -> positive.
-    private _dofSign = if (_focusDist > 10) then { -1 } else { 1 };
-    _hDoF ppEffectAdjust [_dofSign * _dofBlur, _focusDist, 1];
-    _hDoF ppEffectCommit 0;
+    // Blur is NEGATIVE, constant (TFN's far-focus default).  The sign
+    // convention is unverified (research: the wiki marks DepthOfField
+    // TBD; no primary source documents the param semantics), so a sign
+    // flip would be a guess on top of a guess.  Worse, an auto-focus
+    // that flips sign at a 10 m threshold SNAPS the blur +8 -> -8 the
+    // instant the gliding focus crosses the boundary - the snapping the
+    // user saw despite the smooth glide in the RPT.  Constant sign +
+    // varying distance is a continuous function of focus; only the
+    // distance param moves the focus plane.
+    //
+    // Commit 0.1 s: the focus moves ~1.5 m per 0.1 s tick, so each step
+    // eases into the next instead of applying abruptly.  The glide in
+    // the focus value is then matched by a glide in the rendered blur.
+    _hDoF ppEffectAdjust [-_dofBlur, _focusDist, 1];
+    _hDoF ppEffectCommit 0.1;
     _hDoF ppEffectEnable true;
     _hDoF ppEffectForceInNVG true;
 };
