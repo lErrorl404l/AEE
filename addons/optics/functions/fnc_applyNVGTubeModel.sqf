@@ -219,9 +219,13 @@ private _noiseTempFactor = linearConversion [20, 45, _airTemp, 1.0, 1.6, true];
 _noiseFloor = _noiseFloor * _noiseTempFactor;
 
 // ─── Ambient light in lux ────────────────────────────────────────────────
-// moonIntensity 0 = starlight (~0.001 lux), 1 = full moon (~0.25 lux).
-// Linear approximation adequate for the NVG operating range.
-private _lux = 0.001 + _moonLight * 0.249;
+// From the shared illuminance layer (fnc_calculateIlluminance): the
+// validated moonIntensity/overcast/rain lux model, plus client dynamic
+// lux from getLightingAt.  One lux value feeds NVG, thermal, glare and
+// ballistics instead of each module estimating independently.
+private _lux = missionNamespace getVariable [QGVAR(illuminanceLux), 0.001];
+if !(_lux isEqualType 0) then { _lux = 0.001; };
+_lux = _lux max 0.001;
 
 // ─── Gain (automatic gain control) ───────────────────────────────────────
 // Real AGC clamps output brightness at MOB (maximum output brightness)
