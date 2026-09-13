@@ -622,11 +622,19 @@ private _fan = [
     ];
     if (count _hits > 0) then {
         private _d = _eyePos distance (_hits select 0 select 0);
-        // Weapon/hands exclusion zone: the fan hits the operator's own
-        // weapon (0.5-1 m) or body when looking slightly down.  A real
-        // NVG operator focuses PAST the weapon — the ring is set on the
-        // target, not on the muzzle.  Ignore hits under 2 m.
-        if (_d >= 2) then { _hitsArr pushBack _d; };
+        // Weapon/hands exclusion by OBJECT IDENTITY, not distance.  The
+        // weapon and body are part of the player's model, so a hit that
+        // reports the player unit as the intersect (or parent) object is
+        // the operator's own gear - a real NVG operator focuses past it.
+        // A distance cut (the old 2 m floor) snapped close objects from
+        // sharp to blurry the moment they crossed it; object identity
+        // lets a REAL wall at 1 m track down to the objective's ~25 cm
+        // near limit, so the DoF band forms the gradual blur gate.
+        private _hitObj = _hits select 0 select 2;
+        private _hitParent = _hits select 0 select 3;
+        if (_hitObj != _player && _hitParent != _player) then {
+            _hitsArr pushBack (_d max 0.25);   // objective near limit
+        };
     };
 } forEach _fan;
 
@@ -673,10 +681,20 @@ if (_curFocus <= 0) then { _curFocus = 50; };   // first tick, no target yet
 if (_rawTarget > 0) then {
     private _deadband = (_curFocus * 0.25) max 0.5;
     if (abs (_rawTarget - _curFocus) > _deadband) then {
-        // Outside the sharp band: arm a new target unless it changed.
+        // Outside the sharp band: arm a new target.  Re-arm (reset the
+        // hold timer) only when the target CHANGES MATERIALLY.  A
+        // walking player makes the raw target drift every tick (the wall
+        // moves 0.03 m each 0.1 s tick); comparing exact values would
+        // reset the 0.25 s hold every tick and the rack would never
+        // start (found by validate_dof.py's walk-to-wall case).  Track
+        // small drift without resetting the clock.
         if (_rawTarget != _pending) then {
-            _pending = _rawTarget;
-            _holdUntil = CBA_missionTime + 0.25;
+            if (_pending == 0 || abs (_rawTarget - _pending) > 0.5) then {
+                _pending = _rawTarget;
+                _holdUntil = CBA_missionTime + 0.25;
+            } else {
+                _pending = _rawTarget;   // follow drift, keep the clock
+            };
         };
     } else {
         // Inside the band: the ring does not move.  Cancel a PENDING
