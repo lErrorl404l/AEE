@@ -126,7 +126,7 @@ missionNamespace setVariable [QGVAR(ppHandle_Thermal_Blur), _hBlur];
 private _brightness = linearConversion [1, 0, _effective, 1.0, 0.55, true];
 private _ccContrast = linearConversion [1, 0, _effective, 1.15, 0.35, true];
 private _tintWeight = linearConversion [1, 0, _effective, 0.65, 0.1, true];
-_hCC ppEffectAdjust [_brightness, _ccContrast, 0, [0,0,0,0], [0.95, 0.9, 0.8, 1], _tintWeight];
+_hCC ppEffectAdjust [_brightness, _ccContrast, 0, [0,0,0,0], [0.95, 0.9, 0.8, 1], [_tintWeight, _tintWeight, _tintWeight, 0]];
 _hCC ppEffectEnable true;
 _hCC ppEffectForceInNVG false;
 _hCC ppEffectCommit 0;
