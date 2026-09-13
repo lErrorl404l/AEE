@@ -31,9 +31,44 @@ if (!EGVAR(core,opticsEnabled)) exitWith {};
 private _player = call CBA_fnc_currentUnit;
 if (isNil "_player" || !alive _player || cameraOn != _player) exitWith {};
 
+// ─── Persistent handles (recreate if missing/stale) ──────────────────────
+// The engine kills ppEffects on alt-tab, resize, AT sights and at mission
+// load boundaries.  A stored positive handle then refers to a dead effect,
+// and every ppEffectAdjust on it logs "Invalid post effect handle".
+// There is no engine query for "is this handle alive", so the robust
+// pattern is: if the stored value is -1 (or the effect was destroyed in a
+// sensor exit block), recreate here before use.  This mirrors the
+// create-once-recreate-when-missing pattern of the NVG/thermal models.
 private _hChroma = missionNamespace getVariable [QGVAR(ppHandle_ChromAberration), -1];
 private _hBlur   = missionNamespace getVariable [QGVAR(ppHandle_DynamicBlur), -1];
 private _hCC     = missionNamespace getVariable [QGVAR(ppHandle_ColorCorrections), -1];
+
+if (_hChroma < 0 || _hBlur < 0 || _hCC < 0) then {
+    private _effects = [
+        ["ChromAberration", 3000, QGVAR(ppHandle_ChromAberration)],
+        ["DynamicBlur",     4000, QGVAR(ppHandle_DynamicBlur)],
+        ["ColorCorrections", 5000, QGVAR(ppHandle_ColorCorrections)]
+    ];
+    {
+        _x params ["_name", "_priority", "_store"];
+        private _existing = missionNamespace getVariable [_store, -1];
+        if (_existing < 0) then {
+            private _handle = ppEffectCreate [_name, _priority];
+            private _guard = 0;
+            while {_handle < 0 && _guard < 100} do {
+                _priority = _priority + 1;
+                _handle = ppEffectCreate [_name, _priority];
+                _guard = _guard + 1;
+            };
+            missionNamespace setVariable [_store, _handle];
+            private _logMsg = format ["recreated %1 handle=%2 (was missing/stale)", _name, _handle];
+            AEE_LOG_WARN(_logMsg);
+        };
+    } forEach _effects;
+    _hChroma = missionNamespace getVariable [QGVAR(ppHandle_ChromAberration), -1];
+    _hBlur   = missionNamespace getVariable [QGVAR(ppHandle_DynamicBlur), -1];
+    _hCC     = missionNamespace getVariable [QGVAR(ppHandle_ColorCorrections), -1];
+};
 
 // ─── NVG tube model ──────────────────────────────────────────────────────
 // Sensor modes (NVG/thermal) are owned by the fast sensor PFH in
@@ -136,7 +171,12 @@ if (_chromaOn) then {
         [{
             params ["_gen"];
             if (missionNamespace getVariable [QGVAR(chromaGen), 0] == _gen) then {
-                (missionNamespace getVariable [QGVAR(ppHandle_ChromAberration), -1]) ppEffectEnable false;
+                private _h = missionNamespace getVariable [QGVAR(ppHandle_ChromAberration), -1];
+                if (_h >= 0) then {
+                    _h ppEffectEnable false;
+                } else {
+                    AEE_LOG_WARN("chroma fade: handle already -1, skip disable");
+                };
                 missionNamespace setVariable [QGVAR(chromaActive), false];
             };
         }, [_gen], 1.5] call CBA_fnc_waitAndExecute;
@@ -164,7 +204,12 @@ if (_blurOn) then {
         [{
             params ["_gen"];
             if (missionNamespace getVariable [QGVAR(blurGen), 0] == _gen) then {
-                (missionNamespace getVariable [QGVAR(ppHandle_DynamicBlur), -1]) ppEffectEnable false;
+                private _h = missionNamespace getVariable [QGVAR(ppHandle_DynamicBlur), -1];
+                if (_h >= 0) then {
+                    _h ppEffectEnable false;
+                } else {
+                    AEE_LOG_WARN("blur fade: handle already -1, skip disable");
+                };
                 missionNamespace setVariable [QGVAR(blurActive), false];
             };
         }, [_gen], 1.5] call CBA_fnc_waitAndExecute;
@@ -192,7 +237,12 @@ if (_ccOn) then {
         [{
             params ["_gen"];
             if (missionNamespace getVariable [QGVAR(ccGen), 0] == _gen) then {
-                (missionNamespace getVariable [QGVAR(ppHandle_ColorCorrections), -1]) ppEffectEnable false;
+                private _h = missionNamespace getVariable [QGVAR(ppHandle_ColorCorrections), -1];
+                if (_h >= 0) then {
+                    _h ppEffectEnable false;
+                } else {
+                    AEE_LOG_WARN("CC fade: handle already -1, skip disable");
+                };
                 missionNamespace setVariable [QGVAR(ccActive), false];
             };
         }, [_gen], 5.5] call CBA_fnc_waitAndExecute;

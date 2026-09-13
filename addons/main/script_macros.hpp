@@ -26,14 +26,38 @@
 #define AEE_PATH(var1) \z\aee\addons\##var1
 #define AEE_FILE(var1) AEE_PATH(COMPONENT)\##var1
 
-// Logging helpers (mirror ACE3 pattern)
-#define AEE_LOG(msg) diag_log text format ["[AEE] (COMPONENT) %1", msg]
+// ── Leveled logging (consistent across all addons) ────────────────────────
+// Every log line carries [AEE][<addon>][<LEVEL>] so the RPT can be grepped
+// per module:  grep "\[AEE\]\[optics\]" *.rpt
+//
+// Levels:
+//   ERROR  - always logged (even release).  Failures that must not be silent.
+//   WARN   - always logged.  Degraded behaviour that is not fatal.
+//   INFO   - always logged.  Lifecycle events: mode changes, handle create/
+//            destroy, config load.  One line per event, not per tick.
+//   DEBUG  - logged only when aee_core_logDebug is true (runtime flag).
+//   TRACE  - logged only when aee_core_logDebug is true.
+//
+// DEBUG/TRACE are compiled IN (so intermediate variables are always used
+// and the lint stays clean) but gated by the runtime flag.  Set it via
+// debug console:  aee_core_logDebug = true;
+// Per-module:      aee_core_logDebug_optics = true;
+//
+// GUIDANCE (write new code with these):
+//   - one log line per LIFECYCLE event, not per tick (INFO)
+//   - include the handle/object/unit that failed (ERROR)
+//   - per-tick physics values belong in DEBUG, not INFO — never spam
+#define AEE_LOG_ERROR(msg) diag_log text format ["[AEE][%1][ERROR] %2", COMPONENT, msg]
+#define AEE_LOG_WARN(msg) diag_log text format ["[AEE][%1][WARN] %2", COMPONENT, msg]
+#define AEE_LOG_INFO(msg) diag_log text format ["[AEE][%1][INFO] %2", COMPONENT, msg]
+#define AEE_LOG_DEBUG(msg) if (missionNamespace getVariable [QGVAR(logDebug), false] || missionNamespace getVariable ["aee_core_logDebug", false]) then { diag_log text format ["[AEE][%1][DEBUG] %2", COMPONENT, msg]; };
+#define AEE_LOG_TRACE(msg) if (missionNamespace getVariable [QGVAR(logDebug), false] || missionNamespace getVariable ["aee_core_logDebug", false]) then { diag_log text format ["[AEE][%1][TRACE] %2", COMPONENT, msg]; };
 
-// Error helper — breaks on purpose in debug, logs in release
+// ── Error helper — breaks on purpose in debug, logs in release ────────────
 #ifdef DEBUG_MODE_FULL
     #define AEE_ERROR(msg) ERROR(msg)
 #else
-    #define AEE_ERROR(msg) diag_log text format ["[AEE] [ERROR] (COMPONENT) %1", msg]
+    #define AEE_ERROR(msg) AEE_LOG_ERROR(msg)
 #endif
 
 #endif

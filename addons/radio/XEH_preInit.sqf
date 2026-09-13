@@ -5,6 +5,6 @@ ADDON = false;
 #include "XEH_PREP.hpp"
 #include "initSettings.inc.sqf"
 
-AEE_LOG("radio module initialised");
+AEE_LOG_INFO("radio module initialised");
 
 ADDON = true;
