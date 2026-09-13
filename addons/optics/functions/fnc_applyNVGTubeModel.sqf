@@ -679,9 +679,14 @@ if (_rawTarget > 0) then {
             _holdUntil = CBA_missionTime + 0.25;
         };
     } else {
-        // Inside the band: the ring does not move.  Cancel any pending.
-        _pending = 0;
-        _holdUntil = 0;
+        // Inside the band: the ring does not move.  Cancel a PENDING
+        // target only when no rack is in flight.  (An in-flight rack
+        // must continue to its target - cancelling mid-rack is what
+        // left the focus stranded short, found by validate_dof.py's
+        // glide check.)
+        if (_pending == 0) then {
+            _holdUntil = 0;
+        };
     };
 };
 
