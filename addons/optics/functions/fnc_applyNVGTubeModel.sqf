@@ -521,6 +521,18 @@ if (_missing) then {
     AEE_LOG_INFO(_logMsg);
 };
 
+// Re-read the handles from missionNamespace at FUNCTION scope.  The
+// `_handles params` above runs inside the if-block, whose scope shadows
+// the function-scope locals — the adjust section below would otherwise
+// read the stale -1 values and throw "Invalid post effect handle" on
+// every fresh handle (4 handles x 4 calls = the 16 per entry seen in the
+// RPT).  missionNamespace is the single source of truth; always read it
+// after the create block.
+_hVig   = missionNamespace getVariable [QGVAR(ppHandle_NVG_Vignette), -1];
+_hBloom = missionNamespace getVariable [QGVAR(ppHandle_NVG_Bloom), -1];
+_hCC    = missionNamespace getVariable [QGVAR(ppHandle_NVG_CC), -1];
+_hGrain = missionNamespace getVariable [QGVAR(ppHandle_NVG_Grain), -1];
+
 // ─── Depth of field (objective focus) — enhancement only ──────────────────
 // Created in its OWN block so a failure here cannot disturb the essential
 // NVG handles above.  If DepthOfField is unavailable on this build the
