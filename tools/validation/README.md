@@ -379,3 +379,19 @@ if gating: mtf *= (1 - blowout * 0.4)
 Resolution fades to 55% at high noise; Bright Spot Protection reduces
 gated-tube (Gen 3/PVS-31) resolution up to 40% while a bright source is
 in view (Cold Harbour NV terminology).
+
+## Sensor and illuminance harnesses
+
+Two additional stdlib-only harnesses guard the optics/sensor layer:
+
+```bash
+# NVG/thermal physics (AGC, shot noise, MTF, temperature, value audit)
+python3 tools/validation/validate_sensors.py
+
+# Shared illuminance layer (azimuth/elevation conversion, lux bounds,
+# shared-state contract)
+python3 tools/validation/validate_illuminance.py
+```
+
+Both run with only the Python standard library, exit 0 on pass, and are
+wired into `.githooks/pre-commit` and `.github/workflows/ci.yml`.

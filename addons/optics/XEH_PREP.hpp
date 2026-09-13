@@ -11,6 +11,7 @@ PREP(applyThermalVision);
 PREP(calculateAtmosphericSeeing);
 PREP(calculateAttenuation);
 PREP(calculateDewOnOptics);
+PREP(calculateIlluminance);
 PREP(calculateMirageIntensity);
 PREP(calculatePrecipitationVisibility);
 PREP(calculateRainOnOptics);

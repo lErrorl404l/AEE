@@ -42,6 +42,13 @@ if command -v python3 &>/dev/null && [ -f "$ROOT/tools/validation/validate_senso
     (cd "$ROOT" && python3 tools/validation/validate_sensors.py >/dev/null 2>&1) || FAILED=1
 fi
 
+# Illuminance layer validation — azimuth/elevation conversion, lux bounds,
+# shared-state contract. Stdlib only.
+if command -v python3 &>/dev/null && [ -f "$ROOT/tools/validation/validate_illuminance.py" ]; then
+    echo "-> illuminance layer validation"
+    (cd "$ROOT" && python3 tools/validation/validate_illuminance.py >/dev/null 2>&1) || FAILED=1
+fi
+
 if [ "$FAILED" -ne 0 ]; then
     echo "X pre-commit hook failed. Fix issues or use --no-verify."
     exit 1
