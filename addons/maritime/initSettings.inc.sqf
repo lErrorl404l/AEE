@@ -9,7 +9,7 @@
     QGVAR(tideAmplitude),
     "SLIDER",
     [LLSTRING(tideAmplitude_Name), LLSTRING(tideAmplitude_Description)],
-    ["AEE Core", "Maritime"],
+    "AEE Maritime",
     [0.5, 5, 2.0, 1],
     true,
     {}
@@ -20,7 +20,7 @@
     QGVAR(seaStateResponse),
     "SLIDER",
     [LLSTRING(seaStateResponse_Name), LLSTRING(seaStateResponse_Description)],
-    ["AEE Core", "Maritime"],
+    "AEE Maritime",
     [0.1, 0.9, 0.3, 2],
     true,
     {}
