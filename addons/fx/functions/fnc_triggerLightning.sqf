@@ -13,8 +13,14 @@ Sets: nothing (side effect only — visual/audio)
 // ─── Gate ────────────────────────────────────────────────────────────────
 if (!EGVAR(core,atmosphericEventsEnabled)) exitWith {};
 
+private _chance = missionNamespace getVariable [QGVAR(lightningFXChance), 0.05];
+private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+_chance = _chance * (_interval / 5);
+private _brightness = missionNamespace getVariable [QGVAR(lightningBrightness), 1000];
+private _thunderVolume = missionNamespace getVariable [QGVAR(thunderVolume), 3.5];
+
 private _risk = missionNamespace getVariable [QEGVAR(core,currentLightningRisk), 0];
-if (_risk <= 0.8 || random 1 >= 0.05) exitWith {};
+if (_risk <= 0.8 || random 1 >= _chance) exitWith {};
 
 // ─── Pick random position near camera ────────────────────────────────────
 private _camPos = positionCameraToWorld [0,0,0];
@@ -48,25 +54,25 @@ if (!isNil "BIS_fnc_lightning") exitWith {
 
 // ─── Manual: lightpoint + thunder ───────────────────────────────────────
 private _light = "#lightpoint" createVehicleLocal _pos;
-_light setLightBrightness 1000;
+_light setLightBrightness _brightness;
 _light setLightAmbient [1,1,1];
 _light setLightColor [1,1,1];
 _light setLightAttenuation [0,0,0,0,500,1000];
 
 // Thunder follows the flash: sound travels ~343 m/s, so delay the roll.
 [{
-    params ["_pos"];
+    params ["_pos", "_thunderVolume"];
     playSound3D [
         "a3\sounds_f\ambient\thunder\thunder_01.wss",
         objNull,
         false,
         _pos,
         -1,                          // max-distance (unlimited)
-        2 + (3 * ([round (time * 10), 201] call EFUNC(core,deterministicRandom))),  // volume
+        _thunderVolume * (0.5 + ([round (time * 10), 201] call EFUNC(core,deterministicRandom))),  // volume
         0.75 + (0.5 * ([round (time * 10), 202] call EFUNC(core,deterministicRandom))), // pitch
         343                          // propagation speed (m/s)
     ];
-}, _pos, 2] call CBA_fnc_waitAndExecute;
+}, [_pos, _thunderVolume], 2] call CBA_fnc_waitAndExecute;
 
 [{
     deleteVehicle _this;

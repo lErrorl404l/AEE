@@ -43,14 +43,14 @@ private _sweatRate = switch (true) do {
     case (_WBGT < 32): { 1.0 };   // danger — heavy sweating
     default            { 1.5 };   // very dangerous — profuse sweating
 };
-private _sweatAmount = _sweatRate * _tickHours;
+private _sweatAmount = _sweatRate * _tickHours * GVAR(SweatRateScale);
 
 // Clothing modifier — uniform/vest impairs evaporative cooling
 if (!isNull uniformContainer _player) then { _sweatAmount = _sweatAmount + 0.2 * _tickHours; };
 if (!isNull vestContainer _player)        then { _sweatAmount = _sweatAmount + 0.2 * _tickHours; };
 
 // ─── Natural decay — baseline rehydration (drinking, food water) ─────────
-private _naturalDecay = 0.05 * _tickHours;      // 0.05 L/hour
+private _naturalDecay = GVAR(RehydrationRate) * _tickHours;      // L/hour
 
 // ─── Accumulate deficit ──────────────────────────────────────────────────
 _deficit = _deficit + _sweatAmount - _naturalDecay;
@@ -67,7 +67,7 @@ private _risk = switch (true) do {
 
 // ─── Heat stroke overlay — dangerous combination of heat + fluid loss ───
 if (_WBGT > 32 && (_deficit > 1.5)) then {
-    _risk = _risk + (_WBGT - 32) * 0.03;
+    _risk = _risk + (_WBGT - 32) * GVAR(HeatStrokeSensitivity);
 };
 
 _risk = _risk min 1 max 0;

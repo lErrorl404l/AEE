@@ -27,6 +27,9 @@ if (!EGVAR(core,mudAccretionEnabled)) exitWith {
 };
 
 private _accretion = missionNamespace getVariable [QGVAR(mudAccretion), createHashMap];
+private _accretionRate = missionNamespace getVariable [QGVAR(mudAccretionRate), 0.002];
+private _decayRate = missionNamespace getVariable [QGVAR(mudDecayRate), 0.99];
+private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
 private _player = call CBA_fnc_currentUnit;
 
 if (isNil "_player" || !alive _player) exitWith { 0 };
@@ -46,13 +49,13 @@ private _vehicles = _player nearEntities [["Car", "Tank", "Motorcycle"], 200];
     private _mudFactor = parseNumber ((_surface find "Mud" >= 0) || (_surface find "Dirt" >= 0) || (_surface find "Soft" >= 0));
 
     if (_mudFactor > 0) then {
-        // Accretion: 0.002 per tick while moving on mud
+        // Accretion: setting per 5 s tick while moving on mud
         if (_vSpeed > 1) then {
-            _current = (_current + 0.002 * _mudFactor) min 1;
+            _current = (_current + _accretionRate * (_interval / 5) * _mudFactor) min 1;
         };
     } else {
-        // Exponential decay off mud: ~0.99 per tick
-        _current = _current * 0.99;
+        // Exponential decay off mud: setting per 5 s tick
+        _current = _current * (_decayRate ^ (_interval / 5));
     };
 
     _accretion set [_x, _current];

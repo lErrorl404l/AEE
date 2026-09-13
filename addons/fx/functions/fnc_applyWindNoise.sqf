@@ -24,6 +24,8 @@ if (cameraOn != _player) exitWith {};
 private _windSpeed = vectorMagnitude wind;
 if (_windSpeed < 3) exitWith {};
 
+private _volumeScale = missionNamespace getVariable [QGVAR(windNoiseVolume), 1.0];
+
 // ─── Select sound & volume by wind tier ─────────────────────────────────
 private _soundPath = "a3\data_f_curator\sound\cfgsounds\wind1.wss";
 private _volume = 1;
@@ -31,15 +33,15 @@ private _volume = 1;
 switch (true) do {
     case (_windSpeed > 15): {
         _soundPath = "a3\data_f_curator\sound\cfgsounds\wind5.wss";
-        _volume = (_windSpeed / 20) min 1.5;
+        _volume = ((_windSpeed / 20) min 1.5) * _volumeScale;
     };
     case (_windSpeed > 8): {
         _soundPath = "a3\data_f_curator\sound\cfgsounds\wind3.wss";
-        _volume = (_windSpeed / 20) min 1.2;
+        _volume = ((_windSpeed / 20) min 1.2) * _volumeScale;
     };
     default {
         _soundPath = "a3\data_f_curator\sound\cfgsounds\wind1.wss";
-        _volume = 0.5 + (_windSpeed / 20);
+        _volume = (0.5 + (_windSpeed / 20)) * _volumeScale;
     };
 };
 

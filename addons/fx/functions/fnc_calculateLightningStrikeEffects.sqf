@@ -11,10 +11,11 @@ Public: No
 
 private _strikeActive = missionNamespace getVariable [QEGVAR(atmos,currentLightningStrike), false];
 private _strikePos = missionNamespace getVariable [QEGVAR(atmos,lastLightningPos), []];
+private _ignitionChance = missionNamespace getVariable [QGVAR(lightningIgnitionChance), 0.1];
 
 private _ignition = false;
 if (_strikeActive) then {
-    _ignition = ([round (time * 10), 501] call EFUNC(core,deterministicRandom)) < 0.1;
+    _ignition = ([round (time * 10), 501] call EFUNC(core,deterministicRandom)) < _ignitionChance;
 };
 
 missionNamespace setVariable [QEGVAR(core,lightningIgnition), _ignition];

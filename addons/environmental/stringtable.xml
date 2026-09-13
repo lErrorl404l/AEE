@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="Environmental">
+        <Key ID="STR_AEE_Environmental_BlowingSnowWindThreshold_Description">
+            <Original>Wind speed (m/s) that triggers blowing snow</Original>
+            <English>Wind speed (m/s) that triggers blowing snow</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_BlowingSnowWindThreshold_Name">
+            <Original>Blowing Snow Wind Threshold</Original>
+            <English>Blowing Snow Wind Threshold</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_CBRNBasePersistence_Description">
+            <Original>Agent persistence (h) at 15 °C</Original>
+            <English>Agent persistence (h) at 15 °C</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_CBRNBasePersistence_Name">
+            <Original>CBRN Base Persistence</Original>
+            <English>CBRN Base Persistence</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_DewRate_Description">
+            <Original>Dew contribution to surface wetness per tick</Original>
+            <English>Dew contribution to surface wetness per tick</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_DewRate_Name">
+            <Original>Dew Rate</Original>
+            <English>Dew Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_DustDevilTempThreshold_Description">
+            <Original>Air temperature (°C) that allows dust devils</Original>
+            <English>Air temperature (°C) that allows dust devils</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_DustDevilTempThreshold_Name">
+            <Original>Dust Devil Temperature Threshold</Original>
+            <English>Dust Devil Temperature Threshold</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_FlareChance_Description">
+            <Original>Solar-flare trigger chance per tick</Original>
+            <English>Solar-flare trigger chance per tick</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_FlareChance_Name">
+            <Original>Solar Flare Chance</Original>
+            <English>Solar Flare Chance</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_FlareDecayRate_Description">
+            <Original>Solar-flare decay speed per tick</Original>
+            <English>Solar-flare decay speed per tick</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_FlareDecayRate_Name">
+            <Original>Solar Flare Decay Rate</Original>
+            <English>Solar Flare Decay Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_FlareDuration_Description">
+            <Original>Solar-flare hold duration (s)</Original>
+            <English>Solar-flare hold duration (s)</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_FlareDuration_Name">
+            <Original>Solar Flare Duration</Original>
+            <English>Solar Flare Duration</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_FlashFloodThreshold_Description">
+            <Original>Rain rate (mm/h) that counts as flash-flood producing</Original>
+            <English>Rain rate (mm/h) that counts as flash-flood producing</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_FlashFloodThreshold_Name">
+            <Original>Flash Flood Threshold</Original>
+            <English>Flash Flood Threshold</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_FrostAccumRate_Description">
+            <Original>Frost build-up speed per tick</Original>
+            <English>Frost build-up speed per tick</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_FrostAccumRate_Name">
+            <Original>Frost Accumulation Rate</Original>
+            <English>Frost Accumulation Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_FrostDecayRate_Description">
+            <Original>Frost melt speed per tick</Original>
+            <English>Frost melt speed per tick</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_FrostDecayRate_Name">
+            <Original>Frost Decay Rate</Original>
+            <English>Frost Decay Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_InversionBoost_Description">
+            <Original>Sound-range boost on clear calm nights</Original>
+            <English>Sound-range boost on clear calm nights</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_InversionBoost_Name">
+            <Original>Inversion Sound Boost</Original>
+            <English>Inversion Sound Boost</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_MaxSnowDepth_Description">
+            <Original>Maximum snow depth (m)</Original>
+            <English>Maximum snow depth (m)</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_MaxSnowDepth_Name">
+            <Original>Maximum Snow Depth</Original>
+            <English>Maximum Snow Depth</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_SandstormWindThreshold_Description">
+            <Original>Wind speed (m/s) that triggers sandstorms</Original>
+            <English>Wind speed (m/s) that triggers sandstorms</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_SandstormWindThreshold_Name">
+            <Original>Sandstorm Wind Threshold</Original>
+            <English>Sandstorm Wind Threshold</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_SnowAccretionRate_Description">
+            <Original>Snow depth gain per tick per unit rain</Original>
+            <English>Snow depth gain per tick per unit rain</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_SnowAccretionRate_Name">
+            <Original>Snow Accretion Rate</Original>
+            <English>Snow Accretion Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_SoundPropagationScale_Description">
+            <Original>Global sound-range multiplier</Original>
+            <English>Global sound-range multiplier</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_SoundPropagationScale_Name">
+            <Original>Sound Propagation Scale</Original>
+            <English>Sound Propagation Scale</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_WettingRate_Description">
+            <Original>Surface wetting speed per tick per unit rain</Original>
+            <English>Surface wetting speed per tick per unit rain</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_WettingRate_Name">
+            <Original>Surface Wetting Rate</Original>
+            <English>Surface Wetting Rate</English>
+        </Key>
+    </Package>
+</Project>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="Maritime">
+        <Key ID="STR_AEE_Maritime_seaStateResponse_Description">
+            <Original>Weight given to the current wind when smoothing the sea state; higher values build the sea faster</Original>
+            <English>Weight given to the current wind when smoothing the sea state; higher values build the sea faster</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_seaStateResponse_Name">
+            <Original>Sea State Response</Original>
+            <English>Sea State Response</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_tideAmplitude_Description">
+            <Original>Half-range of the predicted tide height in metres</Original>
+            <English>Half-range of the predicted tide height in metres</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_tideAmplitude_Name">
+            <Original>Tide Amplitude</Original>
+            <English>Tide Amplitude</English>
+        </Key>
+    </Package>
+</Project>

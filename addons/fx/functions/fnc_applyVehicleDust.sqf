@@ -24,6 +24,9 @@ if (_player != driver _veh) exitWith {};
 private _dustSuppression = missionNamespace getVariable [QEGVAR(core,dustSuppression), 0.5];
 if (_dustSuppression < 0.05) exitWith {};
 
+private _intensity = missionNamespace getVariable [QGVAR(vehicleDustIntensity), 1.0];
+private _density = missionNamespace getVariable [QGVAR(vehicleDustDensity), 0.08];
+
 private _speed = speed _veh;
 if (_speed < 5) exitWith {};
 
@@ -39,22 +42,23 @@ private _windArr = missionNamespace getVariable [QEGVAR(core,currentWind), wind]
 private _windX = (_windArr select 0) * 0.5;
 
 // ─── Colour palette by ground state ─────────────────────────────────────
-// Alpha is weighted by dustSuppression (1 = no suppression = full dust).
-private _startColor = [0.7, 0.6, 0.4, 0.3 * _dustSuppression];
-private _endColor   = [0.7, 0.6, 0.4, 0.1 * _dustSuppression];
+// Alpha is weighted by dustSuppression (1 = no suppression = full dust)
+// and scaled by the vehicleDustIntensity setting.
+private _startColor = [0.7, 0.6, 0.4, 0.3 * _dustSuppression * _intensity];
+private _endColor   = [0.7, 0.6, 0.4, 0.1 * _dustSuppression * _intensity];
 
 switch (_groundState) do {
     case "Mud": {
-        _startColor = [0.4, 0.3, 0.2, 0.4 * _dustSuppression];
-        _endColor   = [0.4, 0.3, 0.2, 0.15 * _dustSuppression];
+        _startColor = [0.4, 0.3, 0.2, 0.4 * _dustSuppression * _intensity];
+        _endColor   = [0.4, 0.3, 0.2, 0.15 * _dustSuppression * _intensity];
     };
     case "Snow": {
-        _startColor = [1, 1, 1, 0.3 * _dustSuppression];
-        _endColor   = [1, 1, 1, 0.1 * _dustSuppression];
+        _startColor = [1, 1, 1, 0.3 * _dustSuppression * _intensity];
+        _endColor   = [1, 1, 1, 0.1 * _dustSuppression * _intensity];
     };
     case "Dusty": {
-        _startColor = [0.8, 0.7, 0.5, 0.5 * _dustSuppression];
-        _endColor   = [0.8, 0.7, 0.5, 0.2 * _dustSuppression];
+        _startColor = [0.8, 0.7, 0.5, 0.5 * _dustSuppression * _intensity];
+        _endColor   = [0.8, 0.7, 0.5, 0.2 * _dustSuppression * _intensity];
     };
 };
 
@@ -93,7 +97,7 @@ _source setParticleParams [
 ];
 
 // Density scales with speed (more dust at higher speeds)
-private _dropInterval = linearConversion [5, 60, _speed, 0.08, 0.02, true];
+private _dropInterval = linearConversion [5, 60, _speed, _density, _density / 4, true];
 _source setDropInterval _dropInterval;
 
 // ─── Auto-cleanup: delete when conditions fail ──────────────────────────

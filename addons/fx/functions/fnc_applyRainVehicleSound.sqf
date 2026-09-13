@@ -17,16 +17,18 @@ private _veh = vehicle _player;
 if (_veh == _player) exitWith {};
 if (rain < 0.1) exitWith {};
 
+private _volumeScale = missionNamespace getVariable [QGVAR(rainVehicleSoundVolume), 1.0];
+
 private _pos = _player modelToWorld [0, 0, 2];
 private _volume = 1;
 private _pitch = 1;
 private _soundPath = "a3\sounds_f\ambient\rain\rain_new_1.wss";
 
 if (rain > 0.5) then {
-    _volume = 1.2;
+    _volume = 1.2 * _volumeScale;
     _pitch = 0.9 + random 0.2;
 } else {
-    _volume = 0.8 + random 0.4;
+    _volume = (0.8 + random 0.4) * _volumeScale;
     _pitch = 1 + random 0.2;
 };
 

@@ -45,19 +45,23 @@ private _sunOrMoon = sunOrMoon;  // 0 = full night, 1 = full day
 private _rain     = rain;
 private _fog      = missionNamespace getVariable [QEGVAR(core,currentFogDensity), 0];
 
+private _nightGrainMax = missionNamespace getVariable [QGVAR(nightGrainMax), 0.7];
+private _rainGrainMax  = missionNamespace getVariable [QGVAR(rainGrainMax), 0.4];
+private _fogGrainMax   = missionNamespace getVariable [QGVAR(fogGrainMax), 0.15];
+
 // ─── Calculate grain intensity (0 = clean, 1 = maximum noise) ───────────
-// Night contributes up to 0.7 grain; rain contributes up to 0.3;
-// fog adds a small amount of haze grain.
+// Night contributes up to the night maximum; rain contributes up to the
+// rain maximum; fog adds a small amount of haze grain.
 private _nightGrain = 0;
 private _rainGrain  = 0;
 private _fogGrain   = 0;
 
 if (_sunOrMoon < 0.5) then {
     // Night: more grain as it gets darker
-    _nightGrain = linearConversion [0.5, 0, _sunOrMoon, 0, 0.7, true];
+    _nightGrain = linearConversion [0.5, 0, _sunOrMoon, 0, _nightGrainMax, true];
     // Rain at night is much worse
     if (_rain > 0.4) then {
-        _rainGrain = linearConversion [0.4, 1, _rain, 0, 0.4, true];
+        _rainGrain = linearConversion [0.4, 1, _rain, 0, _rainGrainMax, true];
     };
 } else {
     // Daytime: grain only from heavy rain or dense fog
@@ -68,7 +72,7 @@ if (_sunOrMoon < 0.5) then {
 
 // Fog contributes a uniform haze
 if (_fog > 0.1) then {
-    _fogGrain = linearConversion [0.1, 0.8, _fog, 0, 0.15, true];
+    _fogGrain = linearConversion [0.1, 0.8, _fog, 0, _fogGrainMax, true];
 };
 
 private _totalGrain = (_nightGrain + _rainGrain + _fogGrain) min 1;

@@ -9,7 +9,8 @@ Method:
   2. Beaufort number: B = (v / 0.836)^(2/3)  (WMO, v in m/s)
      — 0.836 m/s = 1 knot, and B = round(v_kn^(2/3)).  The previous
      sqrt(knots^1.5) = knots^0.75 hit force 12 at ~27 kt instead of 64.
-  3. Exponential smoothing: new = prev×0.7 + raw×0.3 (sea builds slowly)
+  3. Exponential smoothing: new = prev×(1−w) + raw×w, where w is the
+     configured response weight (sea builds slowly at the default 0.3)
   4. Wave height: significant wave height from the Pierson–Moskowitz
      fully-developed sea approximation H_s ≈ 0.025 × v² (v in m/s),
      clamped to the Beaufort characteristic range.
@@ -23,6 +24,8 @@ Stored in:
 
 params [];
 
+private _response = missionNamespace getVariable [QGVAR(seaStateResponse), 0.3];
+
 private _wind = EGVAR(core,currentWind);
 if (isNil "_wind") exitWith { 0 };
 
@@ -35,7 +38,7 @@ _beaufort = _beaufort max 0 min 12;
 
 // ─── Exponential smoothing — wind needs duration to build sea ──────────────
 private _prev   = missionNamespace getVariable [QEGVAR(core,seaStateCurrent), _beaufort];
-private _smooth = (_prev * 0.7) + (_beaufort * 0.3);
+private _smooth = (_prev * (1 - _response)) + (_beaufort * _response);
 _smooth = _smooth max 0 min 12;
 private _beaufortInt = round _smooth;
 

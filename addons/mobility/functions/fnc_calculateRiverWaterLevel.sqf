@@ -29,7 +29,9 @@ private _biomeFactor = switch (true) do {
 };
 
 // ─── Nash cascade — three serial linear reservoirs ─────────────────────────
-private _k = 0.1;   // storage coefficient; 1/k = reservoir time constant
+private _k = missionNamespace getVariable [QGVAR(riverResponseRate), 0.1];   // storage coefficient; 1/k = reservoir time constant
+private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+_k = _k * (_interval / 5);
 private _reservoirs = missionNamespace getVariable [QGVAR(riverReservoirs), [0, 0, 0]];
 private _r1 = _reservoirs select 0;
 private _r2 = _reservoirs select 1;

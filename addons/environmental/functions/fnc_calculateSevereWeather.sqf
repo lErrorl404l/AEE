@@ -8,7 +8,8 @@ Severe weather event detection based on biome and conditions.
   Dust devil    — Arid biome + hot clear day + wind in the 2-8 m/s band
 
 Dust devils need the 2-8 m/s wind band: calm enough to not be
-shredded, windy enough for vorticity. Strong wind (>10 m/s) destroys them.
+shredded, windy enough for vorticity. Strong wind (above the sandstorm
+threshold) destroys them.
 
 Each severity is 0-1 (0 = none, 1 = severe).
 Sets QEGVAR(core,currentSandstorm), QEGVAR(core,currentBlowingSnow), QEGVAR(core,currentDustDevil).
@@ -43,19 +44,19 @@ private _groundState = missionNamespace getVariable [QGVAR(groundState), "Normal
 
 if (isNil "_temp") then { _temp = 20; };
 
-// ─── Sandstorm — arid + dry + wind > 10 m/s ─────────────────────────────
+// ─── Sandstorm — arid + dry + wind above the threshold ──────────────────
 private _sandstorm = 0;
 if (!isNil "_biome"
     && _biome in ["BWh","BWk","BSh","BSk"]
-    && (_windSpd > 10)
+    && (_windSpd > GVAR(SandstormWindThreshold))
     && (_rain < 0.01)
 ) then {
     _sandstorm = (_windSpd / 25) min 1.0;
 };
 
-// ─── Blowing snow / whiteout — snow state + cold + wind > 8 m/s ─────────
+// ─── Blowing snow / whiteout — snow state + cold + wind above threshold ──
 private _blowingSnow = 0;
-if (_groundState == "Snow" && (_windSpd > 8) && (_temp < 0)) then {
+if (_groundState == "Snow" && (_windSpd > GVAR(BlowingSnowWindThreshold)) && (_temp < 0)) then {
     _blowingSnow = (_windSpd / 20) min 1.0;
 };
 
@@ -67,7 +68,7 @@ if (!isNil "_biome"
     && _biome in ["BWh","BWk","BSh","BSk"]
     && (_windSpd >= 2)
     && (_windSpd <= 8)
-    && (_temp > 30)
+    && (_temp > GVAR(DustDevilTempThreshold))
     && (_overcast < 0.3)
 ) then {
     _dustDevil = (_windSpd / 15) min 0.8;

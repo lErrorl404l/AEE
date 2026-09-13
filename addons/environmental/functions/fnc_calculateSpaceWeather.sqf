@@ -6,7 +6,8 @@ and aurora visibility.
 
 Computes:
   • Solar cycle activity from astronomical date (0–1)
-  • Solar flare state machine: IDLE → ACTIVE (2–6 hr game time) → DECAYING
+  • Solar flare state machine: IDLE → ACTIVE (0.5–1.5 × flare duration)
+    → DECAYING
   • Kp geomagnetic index (0–9) from cycle + flare contribution + noise
   • Aurora visibility from Kp, overcast, nighttime, and latitude
 
@@ -40,13 +41,14 @@ private _solarCycle = (sin (360 * _totalDays / 4018) + 1) / 2; // 0–1
 
 private _flareState = missionNamespace getVariable [QGVAR(spaceWeatherFlareState), "IDLE"];
 private _flareValue = missionNamespace getVariable [QGVAR(spaceWeatherFlareValue), 0];
+private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
 
 switch (_flareState) do {
     case "IDLE": {
-        // 5 % chance per tick to trigger when cycle > 0.6
-        if ((_solarCycle > 0.6) && (([round (time * 10), 401] call EFUNC(core,deterministicRandom)) < 0.05)) then {
+        // Flare chance per tick to trigger when cycle > 0.6
+        if ((_solarCycle > 0.6) && (([round (time * 10), 401] call EFUNC(core,deterministicRandom)) < (GVAR(FlareChance) * (_interval / 5)))) then {
             _flareValue = _solarCycle * (0.3 + (0.4 * ([round (time * 10), 402] call EFUNC(core,deterministicRandom))));
-            missionNamespace setVariable [QGVAR(spaceWeatherFlareEndTime), time + 7200 + (14400 * ([round (time * 10), 403] call EFUNC(core,deterministicRandom)))];
+            missionNamespace setVariable [QGVAR(spaceWeatherFlareEndTime), time + GVAR(FlareDuration) * (0.5 + ([round (time * 10), 403] call EFUNC(core,deterministicRandom)))];
             _flareState = "ACTIVE";
         };
     };
@@ -60,7 +62,7 @@ switch (_flareState) do {
     };
 
     case "DECAYING": {
-        _flareValue = _flareValue - 0.05;
+        _flareValue = _flareValue - GVAR(FlareDecayRate) * (_interval / 5);
         if (_flareValue <= 0) then {
             _flareValue  = 0;
             _flareState  = "IDLE";

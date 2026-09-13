@@ -1,7 +1,8 @@
 #include "..\script_component.hpp"
 
 /*
-VHF/UHF radio propagation quality (0.3–2.0) — physical link budget.
+VHF/UHF radio propagation quality (0.3 to the configured ceiling) —
+physical link budget.
 
 Models the received-signal quality from the Friis transmission equation
 (P_r / P_t = G_t G_r (λ / 4πd)²) with atmospheric ducting and absorption
@@ -9,7 +10,7 @@ as dB corrections:
 
   Link budget:  _linkBudget_dB = P_t(dBm) − FSPL(dB) − _extraLoss + _ductBonus
   FSPL (Friis): 20·log10(d) + 20·log10(f) − 147.55   (d in m, f in Hz)
-  Quality:      _quality = 0.3 + 1.7 · (_signalPct ^ 0.5)   clamped 0.3..2.0
+  Quality:      _quality = 0.3 + 1.7 · (_signalPct ^ 0.5)   clamped 0.3..ceiling
 
 where _signalPct = 10^(_linkBudget_dB / 20).  The quality index is then
 scaled to the 0.3–2.0 range the compat layers (ACRE2/TFAR) consume:
@@ -35,12 +36,13 @@ if (isNil "_RH") exitWith { 1.0 };
 if (isNil "_P")  then { _P = 1013 };
 
 // ─── Link geometry ─────────────────────────────────────────────────────────
-// Reference handheld link: 5 W (37 dBm), 100 MHz, 5 km nominal range.
-// Frequency and range can be overridden via mission variables so a
-// scenario can model specific radios.
+// Reference handheld link: configured transmit power, 100 MHz, 5 km
+// nominal range. Frequency and range can be overridden via mission
+// variables so a scenario can model specific radios.
 private _freqHz = missionNamespace getVariable [QGVAR(radioFrequencyHz), 1e8];
 private _distM  = missionNamespace getVariable [QGVAR(radioLinkRangeM), 5000];
-private _txPowerDBm = 37;
+private _txPowerDBm = missionNamespace getVariable [QGVAR(txPower), 37];
+private _propRange  = missionNamespace getVariable [QGVAR(propagationRange), 2.0];
 
 // ─── Free-space path loss (Friis) ──────────────────────────────────────────
 // SQF's log command is base-10 (verified in-game: log 100 = 2).  Friis in
@@ -102,7 +104,7 @@ _signalPct = _signalPct max 0 min 1;
 // Map signal fraction to the 0.3–2.0 index (√ compresses so mid-range
 // signals land near 1.0 and the extremes reach 0.3 / 2.0).
 private _index = 0.3 + 1.7 * (_signalPct ^ 0.5);
-_index = _index max 0.3 min 2.0;
+_index = _index max 0.3 min _propRange;
 
 missionNamespace setVariable [QGVAR(radioPropagationIndex), _index];
 

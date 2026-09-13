@@ -50,11 +50,16 @@ if (_daytime >= 6 && {_daytime <= 8 && (_humidity > 0.8)}) then {
 };
 
 // ─── Accumulate / decay fog timer ─────────────────────────────────────────
-// +0.05 per tick while condensing, -0.02 per tick when clearing
+// Rates are per-tick; scale by the update interval so behaviour is
+// interval-independent (5 s baseline).
+private _intervalScale = (missionNamespace getVariable [QEGVAR(core,updateInterval), 5]) / 5;
+private _accumRate = (missionNamespace getVariable [QGVAR(dewAccumRate), 0.05]) * _intervalScale;
+private _decayRate = (missionNamespace getVariable [QGVAR(dewDecayRate), 0.02]) * _intervalScale;
+
 if (_condense) then {
-    _fogTimer = (_fogTimer + 0.05) min 1;
+    _fogTimer = (_fogTimer + _accumRate) min 1;
 } else {
-    _fogTimer = (_fogTimer - 0.02) max 0;
+    _fogTimer = (_fogTimer - _decayRate) max 0;
 };
 
 // ─── Breath-fog component (cold + scope usage) ────────────────────────────

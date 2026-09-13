@@ -10,7 +10,7 @@ hydrolysis). Persistence is the time constant of exponential decay:
   • Humidity      — high humidity accelerates hydrolysis (shorter persistence)
   • Wind          — disperses the agent cloud (shorter persistence)
 
-Base persistence is 24 h at 15 °C, divided by the temperature rate
+Base persistence is configurable at 15 °C, divided by the temperature rate
 multiplier, the humidity factor and the wind factor. The stored value is
 the per-tick exponential decay factor with that time constant.
 
@@ -27,7 +27,7 @@ if (isNil "_temp_C")   then { _temp_C   = 15; };
 if (isNil "_humidity") then { _humidity = 50; };
 
 // ─── Temperature — Q10 scaling (rate doubles per 10 °C) ────────────────────
-private _basePersistenceH = 24;
+private _basePersistenceH = GVAR(CBRNBasePersistence);
 private _rateMultiplier = 2 ^ ((_temp_C - 15) / 10);
 private _persistenceH = _basePersistenceH / _rateMultiplier;
 

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="Radio">
+        <Key ID="STR_AEE_Radio_propagationRange_Description">
+            <Original>Ceiling of the radio propagation quality index</Original>
+            <English>Ceiling of the radio propagation quality index</English>
+        </Key>
+        <Key ID="STR_AEE_Radio_propagationRange_Name">
+            <Original>Propagation Range</Original>
+            <English>Propagation Range</English>
+        </Key>
+        <Key ID="STR_AEE_Radio_txPower_Description">
+            <Original>Reference handheld transmit power in dBm used in the link budget</Original>
+            <English>Reference handheld transmit power in dBm used in the link budget</English>
+        </Key>
+        <Key ID="STR_AEE_Radio_txPower_Name">
+            <Original>Transmit Power</Original>
+            <English>Transmit Power</English>
+        </Key>
+    </Package>
+</Project>

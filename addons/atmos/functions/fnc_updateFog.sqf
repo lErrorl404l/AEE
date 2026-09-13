@@ -31,6 +31,12 @@ private _RH_arr = _normals select 4;
 private _T_biome = ((_tDay select (_month - 1)) + (_tNight select (_month - 1))) / 2;
 private _RH_biome = _RH_arr select (_month - 1);
 
+// ─── Settings ─────────────────────────────────────────────────────────────
+private _maxFogDensity = missionNamespace getVariable [QGVAR(maxFogDensity), 0.8];
+private _interval      = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+private _rampRate      = missionNamespace getVariable [QGVAR(radFogRampRate), 0.1];
+_rampRate = _rampRate * (_interval / 5);
+
 // Dew point — full Magnus formula (Sonntag 1990, over water, -45°C to 80°C)
 //   γ = ln(RH/100) + b·T/(c+T)
 //   Td = c·γ / (b-γ)
@@ -73,7 +79,7 @@ private _moist = _RH > 90;
 
 private _radFog = missionNamespace getVariable [QGVAR(radiationalFog), 0];
 if (_clearNight && _calm && _moist) then {
-    _radFog = (_radFog + 0.1) min 1;
+    _radFog = (_radFog + _rampRate) min 1;
 } else {
     _radFog = (_radFog - 0.2) max 0;
 };
@@ -81,6 +87,6 @@ missionNamespace setVariable [QGVAR(radiationalFog), _radFog];
 
 _fogDensity = _fogDensity max (_radFog * 0.8);
 
-_fogDensity = _fogDensity max 0 min 0.8;
+_fogDensity = _fogDensity max 0 min _maxFogDensity;
 missionNamespace setVariable [QEGVAR(core,currentFogDensity), _fogDensity];
 0 setFog [_fogDensity, 0.5, 0];

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="FX">
+        <Key ID="STR_AEE_FX_atmosphericDustIntensity_Description">
+            <Original>Alpha of airborne dust particles</Original>
+            <English>Alpha of airborne dust particles</English>
+        </Key>
+        <Key ID="STR_AEE_FX_atmosphericDustIntensity_Name">
+            <Original>Atmospheric Dust Intensity</Original>
+            <English>Atmospheric Dust Intensity</English>
+        </Key>
+        <Key ID="STR_AEE_FX_lightningBrightness_Description">
+            <Original>Brightness of the lightning flash lightpoint</Original>
+            <English>Brightness of the lightning flash lightpoint</English>
+        </Key>
+        <Key ID="STR_AEE_FX_lightningBrightness_Name">
+            <Original>Lightning Brightness</Original>
+            <English>Lightning Brightness</English>
+        </Key>
+        <Key ID="STR_AEE_FX_lightningFXChance_Description">
+            <Original>Chance of a visual lightning strike per 5 s tick at high risk</Original>
+            <English>Chance of a visual lightning strike per 5 s tick at high risk</English>
+        </Key>
+        <Key ID="STR_AEE_FX_lightningFXChance_Name">
+            <Original>Lightning FX Chance</Original>
+            <English>Lightning FX Chance</English>
+        </Key>
+        <Key ID="STR_AEE_FX_lightningIgnitionChance_Description">
+            <Original>Chance that a lightning strike starts a fire</Original>
+            <English>Chance that a lightning strike starts a fire</English>
+        </Key>
+        <Key ID="STR_AEE_FX_lightningIgnitionChance_Name">
+            <Original>Lightning Ignition Chance</Original>
+            <English>Lightning Ignition Chance</English>
+        </Key>
+        <Key ID="STR_AEE_FX_rainDropDensity_Description">
+            <Original>Rain-splash particle density (drop interval at light rain)</Original>
+            <English>Rain-splash particle density (drop interval at light rain)</English>
+        </Key>
+        <Key ID="STR_AEE_FX_rainDropDensity_Name">
+            <Original>Rain Drop Density</Original>
+            <English>Rain Drop Density</English>
+        </Key>
+        <Key ID="STR_AEE_FX_rainVehicleSoundVolume_Description">
+            <Original>Volume of rain-on-vehicle-roof ambience</Original>
+            <English>Volume of rain-on-vehicle-roof ambience</English>
+        </Key>
+        <Key ID="STR_AEE_FX_rainVehicleSoundVolume_Name">
+            <Original>Rain Vehicle Sound Volume</Original>
+            <English>Rain Vehicle Sound Volume</English>
+        </Key>
+        <Key ID="STR_AEE_FX_severeWeatherBlur_Description">
+            <Original>Blur intensity scale during severe weather</Original>
+            <English>Blur intensity scale during severe weather</English>
+        </Key>
+        <Key ID="STR_AEE_FX_severeWeatherBlur_Name">
+            <Original>Severe Weather Blur</Original>
+            <English>Severe Weather Blur</English>
+        </Key>
+        <Key ID="STR_AEE_FX_thunderVolume_Description">
+            <Original>Thunder volume</Original>
+            <English>Thunder volume</English>
+        </Key>
+        <Key ID="STR_AEE_FX_thunderVolume_Name">
+            <Original>Thunder Volume</Original>
+            <English>Thunder Volume</English>
+        </Key>
+        <Key ID="STR_AEE_FX_vehicleDustDensity_Description">
+            <Original>Vehicle dust particle density (drop interval at low speed)</Original>
+            <English>Vehicle dust particle density (drop interval at low speed)</English>
+        </Key>
+        <Key ID="STR_AEE_FX_vehicleDustDensity_Name">
+            <Original>Vehicle Dust Density</Original>
+            <English>Vehicle Dust Density</English>
+        </Key>
+        <Key ID="STR_AEE_FX_vehicleDustIntensity_Description">
+            <Original>Alpha scale on vehicle dust kickup</Original>
+            <English>Alpha scale on vehicle dust kickup</English>
+        </Key>
+        <Key ID="STR_AEE_FX_vehicleDustIntensity_Name">
+            <Original>Vehicle Dust Intensity</Original>
+            <English>Vehicle Dust Intensity</English>
+        </Key>
+        <Key ID="STR_AEE_FX_windNoiseVolume_Description">
+            <Original>Wind ambience volume scale</Original>
+            <English>Wind ambience volume scale</English>
+        </Key>
+        <Key ID="STR_AEE_FX_windNoiseVolume_Name">
+            <Original>Wind Noise Volume</Original>
+            <English>Wind Noise Volume</English>
+        </Key>
+    </Package>
+</Project>

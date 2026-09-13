@@ -17,7 +17,7 @@ lift/drag degradation.  Ice sheds when conditions warm or dry out.
 
 Stored in GVAR(airframeIcing)        — float 0-1 severity
 Stored in GVAR(airframeIcingDetected) — bool
-Stored in GVAR(iceAccretion_kg)       — float 0-100 kg
+Stored in GVAR(iceAccretion_kg)       — float 0 to the configured maximum
 */
 
 private _temp = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
@@ -25,6 +25,11 @@ private _overcast = overcast;
 private _rain = rain;
 
 private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+
+// ─── Settings ─────────────────────────────────────────────────────────────
+private _maxIceMass = missionNamespace getVariable [QGVAR(maxIceMass), 100];
+private _shedRate   = missionNamespace getVariable [QGVAR(icingShedRate), 0.9];
+_shedRate = _shedRate ^ (_interval / 5);   // per-tick multiplier scales with interval
 
 // ─── Liquid water content proxy (FAR 25 App C envelope) ──────────────────
 // Cloud LWC up to ~0.5 g/m3; precipitation adds up to ~2 g/m3.
@@ -48,13 +53,13 @@ if (_temp > -20 && _temp < 0 && (_overcast > 0.5 || _rain > 0)) then {
     _iceMass = _iceMass + (_icingRate * _interval);
 } else {
     // Shedding — warm or dry air removes ice
-    _iceMass = _iceMass * 0.9;
+    _iceMass = _iceMass * _shedRate;
 };
 
-_iceMass = _iceMass max 0 min 100;
+_iceMass = _iceMass max 0 min _maxIceMass;
 
 // ─── Performance degradation (0-1) driven by accretion ───────────────────
-private _severity = _iceMass / 100;
+private _severity = _iceMass / _maxIceMass;
 
 private _detected = _severity > 0.01;
 

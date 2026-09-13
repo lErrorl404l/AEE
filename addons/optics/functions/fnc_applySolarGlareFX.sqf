@@ -26,7 +26,7 @@ if (isNil "_player" || !alive _player || cameraOn != _player) exitWith {};
 private _active = missionNamespace getVariable [QGVAR(glareFXActive), false];
 
 // DynamicBlur: subtle veiling wash at peak glare (arbiter applies it)
-private _blurAmount = linearConversion [0, 1, _intensity, 0, 0.2, true];
+private _blurAmount = linearConversion [0, 1, _intensity, 0, (missionNamespace getVariable [QGVAR(glareBlurMax), 0.2]), true];
 missionNamespace setVariable [QGVAR(glareBlur), [0, _blurAmount] select (_intensity > 0.02)];
 
 if (_intensity > 0.02) then {
@@ -43,7 +43,7 @@ if (_intensity > 0.02) then {
     // Unlike ChromAberration/DynamicBlur/ColorCorrections/FilmGrain, which
     // are handle-based in Arma 2.22, the advanced effects still accept the
     // string name.
-    private _shaftBrightness = linearConversion [0, 1, _intensity, 0.01, 0.45, true];
+    private _shaftBrightness = linearConversion [0, 1, _intensity, 0.01, 0.45, true] * (missionNamespace getVariable [QGVAR(solarGlareIntensity), 1.0]);
     "LightShafts" ppEffectAdjust [0.01, 0.6, _shaftBrightness, 0.89];
 } else {
     if (_active) then {

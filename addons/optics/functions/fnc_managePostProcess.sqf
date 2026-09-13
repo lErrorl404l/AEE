@@ -89,7 +89,8 @@ private _severeCC    = missionNamespace getVariable [QGVAR(severeWeatherCC), []]
 private _snowCC      = missionNamespace getVariable [QGVAR(snowBlindnessCC), []];
 
 // ─── Resolve per effect ────────────────────────────────────────────────────
-private _chroma = (_seeingChroma + _shimmerChroma) min 0.06;
+private _chromaCap = missionNamespace getVariable [QGVAR(chromaCap), 0.06];
+private _chroma = (_seeingChroma + _shimmerChroma) min _chromaCap;
 private _blur   = (_dewBlur max _rainBlur) max (_glareBlur max _severeBlur);
 
 // ColorCorrections: severe weather wins the single slot when active,

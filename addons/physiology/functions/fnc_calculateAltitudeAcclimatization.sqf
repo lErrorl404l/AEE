@@ -4,7 +4,8 @@
 Altitude acclimatization and Acute Mountain Sickness (AMS) risk (0–1).
 
 Tracks cumulative time spent in altitude zones and detects rapid ascents
-(>150 m/tick or helicopter-drop scenarios) for AMS onset modelling.
+(above the rapid-ascent threshold or helicopter-drop scenarios) for AMS
+onset modelling.
 
 Acclimatization is tracked in HOURS of altitude exposure.  Full
 adaptation takes ~14 days (336 h) of cumulative time above 2000 m,
@@ -67,23 +68,25 @@ if (_above3000) then {
 // ─── Ascent rate detection ───────────────────────────────────────────────
 private _rapidAscent = 0;
 private _ascentRate = _currentAlt - _lastAlt;
+private _rapidAscentThreshold = GVAR(RapidAscentThreshold);
+private _amsOffset = GVAR(AMSOffsetAltitude);
 
 // Realistic rapid climb: >150 m per 5 s tick = >30 m/s sustained climb
-if (_ascentRate > 150) then {
-    _rapidAscent = (_ascentRate / 150) * 0.2;
+if (_ascentRate > _rapidAscentThreshold) then {
+    _rapidAscent = (_ascentRate / _rapidAscentThreshold) * 0.2;
 };
 
-// Helicopter drop: from below 1000m to above 2500m in one tick
-if (_lastAlt < 1000 && (_currentAlt > 2500)) then {
+// Helicopter drop: from below 1000m to above the AMS onset altitude in one tick
+if (_lastAlt < 1000 && (_currentAlt > _amsOffset)) then {
     _rapidAscent = _rapidAscent + 0.3;
 };
 
 // ─── AMS risk formula ────────────────────────────────────────────────────
 private _baseAMS = 0;
 
-if (_currentAlt > 2500) then {
-    // Altitude-scaled base risk: 0 at 2500m, 0.375 at 4000m
-    _baseAMS = (_currentAlt - 2500) / 4000;
+if (_currentAlt > _amsOffset) then {
+    // Altitude-scaled base risk: 0 at the AMS onset altitude, 0.375 at 4000m
+    _baseAMS = (_currentAlt - _amsOffset) / 4000;
 
     // Unacclimatised penalty — risk scales inversely with acclimatization;
     // first 48 h (2 days) of partial adaptation halve the risk

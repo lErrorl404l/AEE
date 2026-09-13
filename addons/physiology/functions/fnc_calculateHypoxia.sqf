@@ -63,7 +63,7 @@ if (_eqAlt > 6000) then {
 } else {
     // Below 6000 m the body recovers slowly.  Residual exposure shortens the
     // next onset if the unit climbs again.
-    _exposure = (_exposure - _tickSeconds * 0.1) max 0;
+    _exposure = (_exposure - _tickSeconds * GVAR(HypoxiaRecovery)) max 0;
 };
 
 // ─── Risk: exposure relative to the TUC ──────────────────────────────────

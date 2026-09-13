@@ -14,23 +14,24 @@ and GVAR(wheelSlip) for the slip-curve state.
 
 private _groundState = missionNamespace getVariable [QEGVAR(core,groundState), "Normal"];
 private _rainAccum = missionNamespace getVariable [QEGVAR(core,rainAccum), 0];
+private _tractionScale = missionNamespace getVariable [QGVAR(tractionScale), 1.0];
 
 // ─── Base values per ground state ────────────────────────────────────────
-private _wheeled = switch (_groundState) do {
+private _wheeled = (switch (_groundState) do {
     case "Snow":   { 0.2  };
     case "Mud":    { 0.35 };
     case "Frozen": { 0.4  };
     case "Dusty":  { 0.5  };
     default        { 0.85 }; // Normal
-};
+}) * _tractionScale;
 
-private _tracked = switch (_groundState) do {
+private _tracked = (switch (_groundState) do {
     case "Snow":   { 0.5  };
     case "Mud":    { 0.6  };
     case "Frozen": { 0.65 };
     case "Dusty":  { 0.7  };
     default        { 0.9  }; // Normal
-};
+}) * _tractionScale;
 
 // ─── Rain reduces wheeled traction (lubricated surface) ──────────────────
 if (_rainAccum > 0) then {

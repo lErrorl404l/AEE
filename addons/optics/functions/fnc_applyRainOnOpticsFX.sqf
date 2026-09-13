@@ -18,4 +18,5 @@ private _accum  = missionNamespace getVariable [QGVAR(rainOnOptics), 0];
 private _player = call CBA_fnc_currentUnit;
 
 // Store 0 below gate so the arbiter can fade the effect out
-missionNamespace setVariable [QGVAR(rainBlur), if (_accum > 0.05 && cameraOn == _player) then { _accum * 0.3 } else { 0 }];
+private _blurScale = missionNamespace getVariable [QGVAR(rainBlurScale), 0.3];
+missionNamespace setVariable [QGVAR(rainBlur), if (_accum > 0.05 && cameraOn == _player) then { _accum * _blurScale } else { 0 }];

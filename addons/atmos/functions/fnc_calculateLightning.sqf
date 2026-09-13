@@ -4,7 +4,8 @@
 Lightning strike risk index and periodic strike generation.
 
 Risk computed from overcast, rain, humidity, convective potential
-(temp >25°C or rapid temperature drop), and the ice-phase gate. Lightning
+(temp above the configured threshold or rapid temperature drop), and the
+ice-phase gate. Lightning
 needs deep convection with an ice phase in the mixed-phase region
 (-10 to -20°C). Non-inductive charging between graupel and ice crystals
 is the main charge source (Saunders 1993). Strike occurs at a random
@@ -45,6 +46,12 @@ private _temp = EGVAR(core,currentTemperature);
 if (isNil "_RH")   then { _RH = 50; };
 if (isNil "_temp") then { _temp = 20; };
 
+// ─── Settings ─────────────────────────────────────────────────────────────
+private _convectionTemp = missionNamespace getVariable [QGVAR(lightningConvectionTemp), 25];
+private _interval       = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+private _strikeChance   = missionNamespace getVariable [QGVAR(lightningStrikeChance), 0.05];
+_strikeChance = _strikeChance * (_interval / 5);
+
 // ─── Convective potential ────────────────────────────────────────────────
 // Elevated surface temp OR rapid cooling between ticks indicates
 // unstable air capable of producing Cb clouds.
@@ -52,7 +59,7 @@ private _lastTemp = missionNamespace getVariable [QGVAR(lastTemperature), _temp]
 private _tempDrop = (_lastTemp - _temp) max 0;
 
 private _convective = 0;
-if (_temp > 25)     then { _convective = 1; };
+if (_temp > _convectionTemp) then { _convective = 1; };
 if (_tempDrop > 3)  then { _convective = _convective max 0.8; };
 
 missionNamespace setVariable [QGVAR(lastTemperature), _temp];
@@ -69,11 +76,11 @@ private _iceFactor = ((_cloudTop - 5500) / 2500) min 1 max 0;
 _risk = _risk * _iceFactor;
 
 // ─── Strike generation ──────────────────────────────────────────────────
-// At max risk: 5 %/tick; at threshold (0.5): 2.5 %/tick
+// At max risk: configured chance per tick; at threshold (0.5): half that
 private _strike = false;
 private _strikePos = [];
 
-if ((_risk > 0.5) && (([round (time * 10), 301] call EFUNC(core,deterministicRandom)) < (_risk * 0.05))) then {
+if ((_risk > 0.5) && (([round (time * 10), 301] call EFUNC(core,deterministicRandom)) < (_risk * _strikeChance))) then {
     private _player = call CBA_fnc_currentUnit;
     if (!isNil "_player" && alive _player) then {
         private _playerPos = getPos _player;

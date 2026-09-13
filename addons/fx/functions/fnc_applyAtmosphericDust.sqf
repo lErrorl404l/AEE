@@ -30,6 +30,8 @@ if (!isNull _existing && alive _existing) exitWith {};
 private _dustSuppression = missionNamespace getVariable [QEGVAR(core,dustSuppression), 0.5];
 if (_dustSuppression < 0.05) exitWith {};
 
+private _intensity = missionNamespace getVariable [QGVAR(atmosphericDustIntensity), 0.08];
+
 // Rain suppresses airborne dust
 private _rain = rain;
 if (_rain > 0.3) exitWith {};
@@ -67,7 +69,7 @@ missionNamespace setVariable [QGVAR(atmosphericDust), _dust];
 
 private _lifetime = 8 + random 4;
 private _size = 30 + _windSpeed * 2;
-private _alpha = 0.08 * _density;
+private _alpha = _intensity * _density;
 
 _dust setParticleParams [
     ["\A3\data_f\ParticleEffects\Universal\Universal.p3d", 16, 12, 9, 0], // shape: [path, nth, row, column, loop]

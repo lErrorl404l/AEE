@@ -11,17 +11,19 @@ ISO 7243 WBGT categories:
   >32 very dangerous (heat stroke risk).
 
 Shows a persistent severity-coloured warning when the WBGT category is 1 or
-higher, or when dehydration risk > 0.3.  The warning names the category,
-the WBGT value, and the dehydration risk percentage.  Clears when the
-category drops to 0 AND risk falls back to 0.3 or below, using a flag
-(QGVAR(hudWarningActive)) to avoid spamming titleText every tick.
+higher, or when dehydration risk exceeds the HUD warning threshold.  The
+warning names the category, the WBGT value, and the dehydration risk
+percentage.  Clears when the category drops to 0 AND risk falls back to the
+threshold or below, using a flag (QGVAR(hudWarningActive)) to avoid spamming
+titleText every tick.
 */
 
-if (!EGVAR(core,environmentalEnabled)) exitWith {};
+if (!EGVAR(core,physiologyEnabled)) exitWith {};
 
 private _risk   = missionNamespace getVariable [QGVAR(dehydrationRisk), 0];
 private _WBGT   = missionNamespace getVariable [QEGVAR(core,currentWBGT), 15];
 private _active = missionNamespace getVariable [QGVAR(hudWarningActive), false];
+private _warnThreshold = GVAR(HUDWarningThreshold);
 
 private _cat = switch (true) do {
     case (_WBGT >= 32): { 4 };   // very dangerous
@@ -31,7 +33,7 @@ private _cat = switch (true) do {
     default             { 0 };   // safe
 };
 
-private _show = (_cat >= 1 || _risk > 0.3);
+private _show = (_cat >= 1 || _risk > _warnThreshold);
 
 if (_show) then {
     if (!_active) then {
@@ -53,7 +55,7 @@ if (_show) then {
             "<t color='%1' size='1.2'>%2</t><br/><t color='#cccccc' size='0.9'>WBGT: %3°C</t>",
             _colour, _name, round _WBGT
         ];
-        if (_risk > 0.3) then {
+        if (_risk > _warnThreshold) then {
             _text = _text + format [
                 "<br/><t color='#cccccc' size='0.9'>Dehydration risk: %1%2</t>",
                 floor (_risk * 100), "%"

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="Optics">
+        <Key ID="STR_AEE_Optics_chromaCap_Description">
+            <Original>Ceiling on chromatic aberration from seeing and heat shimmer</Original>
+            <English>Ceiling on chromatic aberration from seeing and heat shimmer</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_chromaCap_Name">
+            <Original>Chromatic Aberration Cap</Original>
+            <English>Chromatic Aberration Cap</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_dewAccumRate_Description">
+            <Original>Dew build-up speed per tick while condensing</Original>
+            <English>Dew build-up speed per tick while condensing</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_dewAccumRate_Name">
+            <Original>Dew Accumulation Rate</Original>
+            <English>Dew Accumulation Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_dewBlurMax_Description">
+            <Original>Lens-fog blur ceiling from condensation on optics</Original>
+            <English>Lens-fog blur ceiling from condensation on optics</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_dewBlurMax_Name">
+            <Original>Dew Blur Maximum</Original>
+            <English>Dew Blur Maximum</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_dewDecayRate_Description">
+            <Original>Dew clearing speed per tick when conditions clear</Original>
+            <English>Dew clearing speed per tick when conditions clear</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_dewDecayRate_Name">
+            <Original>Dew Decay Rate</Original>
+            <English>Dew Decay Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_fogGrainMax_Description">
+            <Original>Fog haze grain added to the night grain effect</Original>
+            <English>Fog haze grain added to the night grain effect</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_fogGrainMax_Name">
+            <Original>Fog Grain Maximum</Original>
+            <English>Fog Grain Maximum</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_glareBlurMax_Description">
+            <Original>Veiling blur at peak solar glare</Original>
+            <English>Veiling blur at peak solar glare</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_glareBlurMax_Name">
+            <Original>Glare Blur Maximum</Original>
+            <English>Glare Blur Maximum</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_heatShimmerIntensity_Description">
+            <Original>Chromatic aberration from engine heat shimmer</Original>
+            <English>Chromatic aberration from engine heat shimmer</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_heatShimmerIntensity_Name">
+            <Original>Heat Shimmer Intensity</Original>
+            <English>Heat Shimmer Intensity</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_mirageDensity_Description">
+            <Original>Particle density of the heat-haze field</Original>
+            <English>Particle density of the heat-haze field</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_mirageDensity_Name">
+            <Original>Mirage Density</Original>
+            <English>Mirage Density</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_mirageIntensity_Description">
+            <Original>Scale on mirage particle alpha</Original>
+            <English>Scale on mirage particle alpha</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_mirageIntensity_Name">
+            <Original>Mirage Intensity</Original>
+            <English>Mirage Intensity</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_mirageMinSunElev_Description">
+            <Original>Sun angle gate for mirage, in degrees</Original>
+            <English>Sun angle gate for mirage, in degrees</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_mirageMinSunElev_Name">
+            <Original>Mirage Minimum Sun Elevation</Original>
+            <English>Mirage Minimum Sun Elevation</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_mirageOnsetTemp_Description">
+            <Original>Surface temperature at which mirage starts, in degrees Celsius</Original>
+            <English>Surface temperature at which mirage starts, in degrees Celsius</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_mirageOnsetTemp_Name">
+            <Original>Mirage Onset Temperature</Original>
+            <English>Mirage Onset Temperature</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_nightGrainMax_Description">
+            <Original>Night noise floor, the perceived darkness of night vision</Original>
+            <English>Night noise floor, the perceived darkness of night vision</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_nightGrainMax_Name">
+            <Original>Night Grain Maximum</Original>
+            <English>Night Grain Maximum</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_rainAccumRate_Description">
+            <Original>Droplet build-up speed per tick during rain</Original>
+            <English>Droplet build-up speed per tick during rain</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_rainAccumRate_Name">
+            <Original>Rain Accumulation Rate</Original>
+            <English>Rain Accumulation Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_rainBlurScale_Description">
+            <Original>Rain-on-lens blur multiplier</Original>
+            <English>Rain-on-lens blur multiplier</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_rainBlurScale_Name">
+            <Original>Rain Blur Scale</Original>
+            <English>Rain Blur Scale</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_rainDecayRate_Description">
+            <Original>Droplet clearing speed per tick when rain stops</Original>
+            <English>Droplet clearing speed per tick when rain stops</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_rainDecayRate_Name">
+            <Original>Rain Decay Rate</Original>
+            <English>Rain Decay Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_rainGrainMax_Description">
+            <Original>Rain-on-eye noise at night</Original>
+            <English>Rain-on-eye noise at night</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_rainGrainMax_Name">
+            <Original>Rain Grain Maximum</Original>
+            <English>Rain Grain Maximum</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_seeingFXIntensity_Description">
+            <Original>Long-range shimmer strength from atmospheric seeing</Original>
+            <English>Long-range shimmer strength from atmospheric seeing</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_seeingFXIntensity_Name">
+            <Original>Seeing Effect Intensity</Original>
+            <English>Seeing Effect Intensity</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_smokePersistenceScale_Description">
+            <Original>Global smoke-duration multiplier</Original>
+            <English>Global smoke-duration multiplier</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_smokePersistenceScale_Name">
+            <Original>Smoke Persistence Scale</Original>
+            <English>Smoke Persistence Scale</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_snowBlindnessBase_Description">
+            <Original>Base dazzle from bright snow</Original>
+            <English>Base dazzle from bright snow</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_snowBlindnessBase_Name">
+            <Original>Snow Blindness Base</Original>
+            <English>Snow Blindness Base</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_snowBlindnessIntensity_Description">
+            <Original>Scale on the snow blindness dazzle overlay</Original>
+            <English>Scale on the snow blindness dazzle overlay</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_snowBlindnessIntensity_Name">
+            <Original>Snow Blindness Intensity</Original>
+            <English>Snow Blindness Intensity</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_snowVisibilityPenalty_Description">
+            <Original>Visibility loss from snow cover</Original>
+            <English>Visibility loss from snow cover</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_snowVisibilityPenalty_Name">
+            <Original>Snow Visibility Penalty</Original>
+            <English>Snow Visibility Penalty</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_solarGlareIntensity_Description">
+            <Original>Scale on god-ray brightness from solar glare</Original>
+            <English>Scale on god-ray brightness from solar glare</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_solarGlareIntensity_Name">
+            <Original>Solar Glare Intensity</Original>
+            <English>Solar Glare Intensity</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_vehicleShimmerBase_Description">
+            <Original>Idle-engine shimmer floor</Original>
+            <English>Idle-engine shimmer floor</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_vehicleShimmerBase_Name">
+            <Original>Vehicle Shimmer Base</Original>
+            <English>Vehicle Shimmer Base</English>
+        </Key>
+    </Package>
+</Project>
