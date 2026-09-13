@@ -80,3 +80,26 @@ pre-commit hook runs `hemtt check -p -e`, `ste-lint`, and `audit`.
 
 See [CONTRIBUTING.md](https://github.com/lErrorl404l/AEE/blob/main/CONTRIBUTING.md)
 for the full guide.
+
+### Verify techniques against workshop source, not only the wiki
+
+The BIS wiki is incomplete for some scripting topics. It marks the
+`DepthOfField` post-process effect as "TBD" with no parameter table, and
+states `camSetFocus` works only on `camCreate` cameras. Both are true of
+the wiki, but the first is misleading: production workshop mods use
+`DepthOfField` in the player view with `ppEffectForceInNVG true`.
+
+The lesson: before declaring a rendering or scripting feature
+impossible, search the Steam Workshop for a mod that does it and read its
+source. Real implementations beat a wiki placeholder every time. TFN NVG
+Effects (workshop 3682613859) proved the NVG depth-of-field technique
+that this project now uses. KtweaK's NVG (workshop 3711042620) shows a
+distance-based dynamicBlur alternative.
+
+Technique sources referenced in this project:
+
+| Feature | Workshop reference | Technique |
+|---|---|---|
+| NVG depth of field | TFN NVG Effects (3682613859) | `DepthOfField` ppEffect, `ppEffectForceInNVG true`, `ppEffectAdjust [blur, dist, 1]` |
+| Distance-aware blur | KtweaK's NVG (3711042620) | `dynamicBlur` scaled by range factor |
+| Thermal/CC params | A3TI (2041057379) | `DEFAULT_TIPP_SETTINGS` brightness/contrast |
