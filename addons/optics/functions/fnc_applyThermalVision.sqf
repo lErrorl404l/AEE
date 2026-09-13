@@ -41,32 +41,22 @@ if (isNil "_player" || !alive _player || cameraOn != _player) exitWith {};
 if (currentVisionMode _player != 2) exitWith {
     private _active = missionNamespace getVariable [QGVAR(thermalActive), false];
     if (_active) then {
-        private _hCC = missionNamespace getVariable [QGVAR(ppHandle_Thermal_CC), -1];
-        if (_hCC >= 0) then {
-            _hCC ppEffectAdjust [1, 1, 0, [0,0,0,0], [1,1,1,1], [0,0,0,0]];
-            _hCC ppEffectCommit 1;
-        };
-        [{
-            (missionNamespace getVariable [QGVAR(ppHandle_Thermal_CC), -1]) ppEffectEnable false;
-        }, [], 2] call CBA_fnc_waitAndExecute;
-
-        private _hGrain = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Grain), -1];
-        if (_hGrain >= 0) then {
-            _hGrain ppEffectAdjust [0.01, 0.1, 0.5, 0.1, 0.1, 1];
-            _hGrain ppEffectCommit 1;
-        };
-        [{
-            (missionNamespace getVariable [QGVAR(ppHandle_Thermal_Grain), -1]) ppEffectEnable false;
-        }, [], 1.5] call CBA_fnc_waitAndExecute;
-
-        private _hBlur = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Blur), -1];
-        if (_hBlur >= 0) then {
-            _hBlur ppEffectAdjust [0];
-            _hBlur ppEffectCommit 1;
-        };
-        [{
-            (missionNamespace getVariable [QGVAR(ppHandle_Thermal_Blur), -1]) ppEffectEnable false;
-        }, [], 1.5] call CBA_fnc_waitAndExecute;
+        // Destroy handles on exit and reset to -1.  The engine can kill
+        // ppEffects (alt-tab, resize) leaving stale positive handle
+        // numbers; those then fail every subsequent call with "Invalid
+        // post effect handle".  Resetting to -1 forces a clean recreate
+        // on next entry.
+        {
+            private _h = missionNamespace getVariable [_x, -1];
+            if (_h >= 0) then {
+                ppEffectDestroy _h;
+                missionNamespace setVariable [_x, -1];
+            };
+        } forEach [
+            QGVAR(ppHandle_Thermal_CC),
+            QGVAR(ppHandle_Thermal_Grain),
+            QGVAR(ppHandle_Thermal_Blur)
+        ];
 
         missionNamespace setVariable [QGVAR(thermalActive), false];
     };
@@ -86,33 +76,49 @@ _contrast = 0 max _contrast min 1;
 private _crossover = missionNamespace getVariable [QEGVAR(core,thermalCrossoverActive), false];
 private _effective = [_contrast, 0.05] select _crossover;
 
-// ─── Recreate all thermal handles every tick ──────────────────────────────
-// ACE3 pattern: ppEffectCreate each tick prevents the engine from
-// killing effects on alt-tab, resize, AT sights, etc.  Priorities sit
-// above the NVG handles (5100/1200/4100) so the two never collide.
+// ─── Thermal handles (create once, recreate only when missing) ───────────
+// Same pattern as the NVG model: handles are created once on entry and
+// only recreated when the engine killed them (alt-tab, resize, AT sights).
+// Never on a timer — rebuilding live effects every tick leaves stale
+// handles, climbs priorities, and spams "Invalid post effect handle".
+// Priorities sit above the NVG handles so the two never collide.
 // A -1 handle (priority taken) bumps until it succeeds.
-private _handles = [];
-{
-    _x params ["_name", "_priority"];
-    private _handle = ppEffectCreate [_name, _priority];
-    private _guard = 0;
-    while {_handle < 0 && _guard < 100} do {
-        _priority = _priority + 1;
-        _handle = ppEffectCreate [_name, _priority];
-        _guard = _guard + 1;
-    };
-    _handles pushBack _handle;
-} forEach [
-    ["ColorCorrections", 5200],
-    ["FilmGrain", 1300],
-    ["DynamicBlur", 4200]
-];
-_handles params ["_hCC", "_hGrain", "_hBlur"];
+private _hCC    = missionNamespace getVariable [QGVAR(ppHandle_Thermal_CC), -1];
+private _hGrain = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Grain), -1];
+private _hBlur  = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Blur), -1];
 
-// Store handles for the exit block (fade-out on leaving thermal)
-missionNamespace setVariable [QGVAR(ppHandle_Thermal_CC), _hCC];
-missionNamespace setVariable [QGVAR(ppHandle_Thermal_Grain), _hGrain];
-missionNamespace setVariable [QGVAR(ppHandle_Thermal_Blur), _hBlur];
+if (_hCC < 0 || _hGrain < 0 || _hBlur < 0) then {
+    {
+        private _h = missionNamespace getVariable [_x, -1];
+        if (_h >= 0) then {
+            ppEffectDestroy _h;
+            missionNamespace setVariable [_x, -1];
+        };
+    } forEach [
+        QGVAR(ppHandle_Thermal_CC),
+        QGVAR(ppHandle_Thermal_Grain),
+        QGVAR(ppHandle_Thermal_Blur)
+    ];
+
+    private _handles = [];
+    {
+        _x params ["_name", "_priority", "_store"];
+        private _handle = ppEffectCreate [_name, _priority];
+        private _guard = 0;
+        while {_handle < 0 && _guard < 100} do {
+            _priority = _priority + 1;
+            _handle = ppEffectCreate [_name, _priority];
+            _guard = _guard + 1;
+        };
+        missionNamespace setVariable [_store, _handle];
+        _handles pushBack _handle;
+    } forEach [
+        ["ColorCorrections", 5200, QGVAR(ppHandle_Thermal_CC)],
+        ["FilmGrain",       1300, QGVAR(ppHandle_Thermal_Grain)],
+        ["DynamicBlur",     4200, QGVAR(ppHandle_Thermal_Blur)]
+    ];
+    _handles params ["_hCC", "_hGrain", "_hBlur"];
+};
 
 // ─── ColorCorrections (brightness, contrast, display tint) ────────────────
 // Params: [brightness, contrast, offset, blend, colorize, weight]
@@ -140,7 +146,7 @@ _hCC ppEffectCommit 0;
 private _noise     = linearConversion [1, 0, _effective, 0.08, 0.6, true];
 private _sharpness = linearConversion [1, 0, _effective, 3, 10, true];
 private _grainSize = linearConversion [1, 0, _effective, 1, 2.5, true];
-_hGrain ppEffectAdjust [_noise, _sharpness, _grainSize, 0.5, 1.0, 1];
+_hGrain ppEffectAdjust [_noise, _sharpness, _grainSize, 0.5, 1.0, 0];
 _hGrain ppEffectEnable true;
 _hGrain ppEffectForceInNVG false;
 _hGrain ppEffectCommit 0;
@@ -153,5 +159,22 @@ _hBlur ppEffectAdjust [_blur];
 _hBlur ppEffectEnable true;
 _hBlur ppEffectForceInNVG false;
 _hBlur ppEffectCommit 0;
+
+// Diagnostics: set aee_optics_nvgDebug = true in the debug console to log
+// every thermal tick's handles and params to the .rpt.
+if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
+    diag_log text format [
+        "[AEE] Thermal tick | visMode=%1 contrast=%2 crossover=%3 | handles CC=%4 grain=%5 blur=%6 | CC params %7 | grain=%8 blur=%9",
+        currentVisionMode _player,
+        _contrast,
+        _crossover,
+        _hCC,
+        _hGrain,
+        _hBlur,
+        [_brightness, _ccContrast, 0, [0,0,0,0], [0.95, 0.9, 0.8, 1], [_tintWeight, _tintWeight, _tintWeight, 0]],
+        [_noise, _sharpness, _grainSize, 0.5, 1.0, 0],
+        _blur
+    ];
+};
 
 missionNamespace setVariable [QGVAR(thermalActive), true];

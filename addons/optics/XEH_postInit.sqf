@@ -1,0 +1,94 @@
+#include "script_component.hpp"
+
+// Apply post-process effects immediately when the player's vision mode
+// changes (putting on / removing NVGs or thermal).
+//
+// The environment PFH in core (fnc_updateEnvironment) drives
+// managePostProcess but only every `updateInterval` seconds (default 5).
+// Without this handler there is a visible delay between putting on NVGs
+// and the filter appearing.  ACE3 uses the same "visionMode" player
+// event (addons/nightvision/XEH_postInit.sqf) to start its NVG PFH the
+// instant the mode flips.
+//
+// The handler only runs on the local machine: effects are client-side.
+["visionMode", {
+    params ["_unit", "_visionMode"];
+    if (_unit != call CBA_fnc_currentUnit) exitWith {};
+    if (isNil QGVAR(isReady)) exitWith {};
+    // Fade normal-vision optical effects immediately (managePostProcess
+    // gates on vision mode internally).
+    [] call FUNC(managePostProcess);
+    // Reset sensor handles to -1 on entry.  The engine can kill ppEffects
+    // (alt-tab, resize) leaving stale positive handle numbers that fail
+    // every call with "Invalid post effect handle".  Forcing -1 makes the
+    // first sensor tick recreate them cleanly.
+    if (_visionMode == 1) then {
+        {
+            missionNamespace setVariable [_x, -1];
+        } forEach [
+            QGVAR(ppHandle_NVG_CC),
+            QGVAR(ppHandle_NVG_Bloom),
+            QGVAR(ppHandle_NVG_Vignette),
+            QGVAR(ppHandle_NVG_Grain)
+        ];
+    };
+    if (_visionMode == 2) then {
+        {
+            missionNamespace setVariable [_x, -1];
+        } forEach [
+            QGVAR(ppHandle_Thermal_CC),
+            QGVAR(ppHandle_Thermal_Grain),
+            QGVAR(ppHandle_Thermal_Blur)
+        ];
+    };
+    // Start the fast sensor PFH when entering NVG/thermal.  It self-stops
+    // when the player returns to normal vision.  AGC lag and gating need a
+    // sub-second tick; the environment PFH only runs every 5 s.
+    if (_visionMode > 0 && isNil QGVAR(sensorPFH)) then {
+        GVAR(sensorPFH) = [{
+            private _player = call CBA_fnc_currentUnit;
+            if (isNil "_player" || !alive _player || cameraOn != _player) exitWith {};
+            private _vm = currentVisionMode _player;
+            // Leaving NVG/thermal: run each cleanup once, then stop.
+            if (_vm == 0) exitWith {
+                [] call FUNC(applyNVGTubeModel);
+                [] call FUNC(applyThermalVision);
+                [GVAR(sensorPFH)] call CBA_fnc_removePerFrameHandler;
+                GVAR(sensorPFH) = nil;
+            };
+            if (_vm == 1) then { [] call FUNC(applyNVGTubeModel); };
+            if (_vm == 2) then { [] call FUNC(applyThermalVision); };
+        }, 0.1] call CBA_fnc_addPerFrameHandler;
+    };
+}, false] call CBA_fnc_addPlayerEventHandler;
+
+// Muzzle flash / explosive flash response for NVG.
+// A fired round with a high visibleFire value blooms or gates the tube.
+// Follows the ACE3 pattern (nightvision/fnc_onFiredPlayer): read the
+// ammo's visibleFire from CfgAmmo, discount suppressed weapons, and stamp
+// a short window that fnc_applyNVGTubeModel reads as a blowout source.
+// The event is local — only the shooter's own view is affected.
+["fired", {
+    params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile"];
+    if (_unit != call CBA_fnc_currentUnit) exitWith {};
+    if (currentVisionMode _unit != 1) exitWith {};
+    if (_weapon == "throw" || _weapon == "put") exitWith {};
+
+    private _visibleFire = getNumber (configFile >> "CfgAmmo" >> _ammo >> "visibleFire");
+    if (_visibleFire <= 0) exitWith {};
+
+    // Suppressor reduces the visible flash.
+    private _silencer = (_unit weaponAccessories _weapon) select 0;
+    if (_silencer != "") then {
+        _visibleFire = _visibleFire * (getNumber (configFile >> "CfgWeapons" >> _silencer >> "ItemInfo" >> "AmmoCoef" >> "visibleFire"));
+    };
+
+    // Cap so sustained automatic fire does not keep the tube permanently
+    // blinded; a single large flash (AT, grenade) can still fully blow it.
+    _visibleFire = _visibleFire min 5;
+    if (_visibleFire < 1.5) exitWith {};
+
+    // Duration scales with flash intensity: brighter = longer window.
+    private _duration = 0.15 + _visibleFire * 0.1;
+    missionNamespace setVariable [QGVAR(nvgFlashUntil), CBA_missionTime + _duration];
+}, false] call CBA_fnc_addPlayerEventHandler;
