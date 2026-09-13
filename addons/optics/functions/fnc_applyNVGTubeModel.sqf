@@ -584,20 +584,36 @@ if (_hDoF < 0) then {
 // Geometry mode FIRE: hits everything with bullet collision - sandbags,
 // bushes, walls, terrain.  GEOM missed the low sandbag in testing.
 //
-// Fan spread ~1.5 deg half-angle (about the size of the objective's
-// centre-weighted view): centre ray + up/down/left/right offsets.
+// Fan spread ~6 deg half-angle (~12 deg total, the centre-weighted view of
+// a real 40 deg NVG objective).  1.5 deg was far too tight: at 10 m the
+// cone is only 0.26 m wide, so an object even slightly off screen-centre
+// was missed and the focus never moved until the operator forced the
+// target dead-centre.  6 deg at 10 m is ~1 m - a wall or bush the player
+// is actually looking at is caught without pin-point aiming.
 private _eyePos = eyePos _player;
 private _lookDir = vectorDir _player;
-private _spread = 300 * (tan 1.5);   // offset at the 300 m end
+private _spread = 300 * (tan 6);      // offset at the 300 m end
 private _upVec   = vectorUp _player;
 private _rightVec = _lookDir vectorCrossProduct _upVec;
-private _rawTarget = 0;              // 0 = no hit this tick
+// ─── Fan raycast, MEDIAN aggregation ─────────────────────────────────────
+// Each fan ray returns its nearest hit; the raw target is the MEDIAN of
+// the valid hits, not the minimum.  Nearest-hit aggregation flip-flops:
+// a bush at 3 m covering part of the fan beats the building at 20 m, so
+// the focus racks to the bush, then to the building when the bush leaves
+// the fan, then back.  The median is the DOMINANT surface distance of
+// the target area — a single near outlier cannot drag it.  If fewer
+// than half the rays hit (open sky through the fan), treat as empty.
+private _hitsArr = [];
 private _fan = [
     _lookDir,
     _lookDir vectorAdd (_upVec vectorMultiply _spread),
     _lookDir vectorAdd (_upVec vectorMultiply (-_spread)),
     _lookDir vectorAdd (_rightVec vectorMultiply _spread),
-    _lookDir vectorAdd (_rightVec vectorMultiply (-_spread))
+    _lookDir vectorAdd (_rightVec vectorMultiply (-_spread)),
+    _lookDir vectorAdd ((_upVec vectorAdd _rightVec) vectorMultiply _spread),
+    _lookDir vectorAdd ((_upVec vectorAdd _rightVec) vectorMultiply (-_spread)),
+    _lookDir vectorAdd ((_upVec vectorAdd _rightVec vectorMultiply (-1)) vectorMultiply _spread),
+    _lookDir vectorAdd ((_upVec vectorAdd _rightVec vectorMultiply (-1)) vectorMultiply (-_spread))
 ];
 {
     private _end = _eyePos vectorAdd (_x vectorMultiply 300);
@@ -609,11 +625,16 @@ private _fan = [
         // Weapon/hands exclusion zone: the fan hits the operator's own
         // weapon (0.5-1 m) or body when looking slightly down.  A real
         // NVG operator focuses PAST the weapon — the ring is set on the
-        // target, not on the muzzle.  Ignore hits under 2 m so the
-        // objective racks to what is actually being looked at.
-        if (_d >= 2 && (_d < _rawTarget || _rawTarget == 0)) then { _rawTarget = _d; };
+        // target, not on the muzzle.  Ignore hits under 2 m.
+        if (_d >= 2) then { _hitsArr pushBack _d; };
     };
 } forEach _fan;
+
+private _rawTarget = 0;
+if (count _hitsArr >= (count _fan) / 2) then {
+    _hitsArr sort true;
+    _rawTarget = _hitsArr select (floor ((count _hitsArr) / 2));
+};
 
 // ─── Focus state machine (O3DE auto-focus pattern) ───────────────────────
 // The raw fan distance still snaps: looking at sky returns no hit, and a
@@ -629,12 +650,17 @@ private _fan = [
 //  2. DEADBAND: do not move while |target - current| < deadband.
 //     Hyperfocal behaviour: at focus distance F, objects within the DoF
 //     band are acceptably sharp, so the ring should not hunt for them.
-//     Deadband = 15 % of current focus, min 0.5 m (matches the CoC band).
-//  3. DELAY: hold a new target 0.15 s before moving, so a transient hit
+//     Deadband = 25 % of current focus, min 0.5 m.  Wider than before
+//     (15 %) because the median target already averages the fan; the
+//     band now absorbs small scene changes (a fence entering the edge
+//     of the fan) so the ring does not re-rack for them.
+//  3. DELAY: hold a new target 0.25 s before moving, so a transient hit
 //     (a branch passing the centre pixel) does not rack the ring.
 //  4. CONSTANT SPEED: the ring turns at a fixed rate while you move it.
-//     40 m/s lens-group travel: a 4 m shift (sandbag to bush) settles in
-//     0.1 s, a 100 m shift glides over ~2.5 s.  Snap when within one step.
+//     15 m/s lens-group travel: a 5 m shift (sandbag to bush) settles in
+//     ~0.3 s, a 100 m shift glides over ~7 s.  Slower than before
+//     (40 m/s) so a large rack reads as a deliberate ring turn, not a
+//     snap.  Snap when within one step.
 //
 // State persists in missionNamespace: current focus, pending target and
 // its hold-until time.
@@ -645,12 +671,12 @@ if !(_curFocus isEqualType 0 && _curFocus > 0) then { _curFocus = _rawTarget; };
 if (_curFocus <= 0) then { _curFocus = 50; };   // first tick, no target yet
 
 if (_rawTarget > 0) then {
-    private _deadband = (_curFocus * 0.15) max 0.5;
+    private _deadband = (_curFocus * 0.25) max 0.5;
     if (abs (_rawTarget - _curFocus) > _deadband) then {
         // Outside the sharp band: arm a new target unless it changed.
         if (_rawTarget != _pending) then {
             _pending = _rawTarget;
-            _holdUntil = CBA_missionTime + 0.15;
+            _holdUntil = CBA_missionTime + 0.25;
         };
     } else {
         // Inside the band: the ring does not move.  Cancel any pending.
@@ -661,7 +687,7 @@ if (_rawTarget > 0) then {
 
 if (_pending > 0 && CBA_missionTime >= _holdUntil) then {
     private _step = _pending - _curFocus;
-    private _maxStep = 4;               // 40 m/s at 0.1 s tick
+    private _maxStep = 1.5;               // 15 m/s at 0.1 s tick
     if (abs _step > _maxStep) then {
         _step = _maxStep * ([1, -1] select (_step < 0));
     };
