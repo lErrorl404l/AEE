@@ -29,6 +29,12 @@ import sys
 
 # ─── SQF mirrors ────────────────────────────────────────────────────────────
 
+# Photocathode luminous sensitivity, µA/lm (Wikipedia "Image intensifier"):
+# Gen 1 S-25 ~250, Gen 2 ~550, Gen 3 GaAs ~1100, filmless 4G ~2000.
+# Ratios are physics; the absolute photon scale is the calibration knob.
+SENSITIVITY = {"GEN1": 250.0, "GEN2": 550.0, "GEN3": 1100.0, "PVS31": 2000.0}
+PHOTON_SCALE = 500.0  # mirrors AEE_PHOTON_SCALE in the SQF
+
 
 def linear_conversion(from_min, from_max, value, to_min, to_max, clamped=True):
     """Mirror of the SQF linearConversion command."""
@@ -132,15 +138,24 @@ def check_gain_reduction_ratio():
 def check_shot_noise_poisson():
     """Shot noise must follow SNR = sqrt(N): noise(0.001) >> noise(0.25).
 
-    The SQF uses 1/sqrt(N+1), so the ratio is sqrt((N_moon+1)/(N_star+1)).
+    The SQF uses 1/sqrt(N+1) with N = lux*sensitivity*PHOTON_SCALE.
     """
-    n_star = shot_noise(0.001, 10000)  # N=10,   SNR~3.2
-    n_moon = shot_noise(0.25, 10000)  # N=2500, SNR~50
-    ratio = n_star / n_moon
-    expected = math.sqrt(2501.0 / 11.0)
-    err = abs(ratio - expected) / expected
-    assert err < 1e-6, f"noise ratio {ratio} vs {expected}"
-    return err
+
+    def noise(sens, lux):
+        n = lux * sens * PHOTON_SCALE
+        return 1.0 / math.sqrt(n + 1)
+
+    for tier, sens in SENSITIVITY.items():
+        n_star = noise(sens, 0.001)
+        n_moon = noise(sens, 0.25)
+        ratio = n_star / n_moon
+        # noise = 1/sqrt(N+1); ratio = sqrt((N_moon+1)/(N_star+1))
+        expected = math.sqrt(
+            (0.25 * sens * PHOTON_SCALE + 1) / (0.001 * sens * PHOTON_SCALE + 1)
+        )
+        err = abs(ratio - expected) / expected
+        assert err < 1e-6, f"{tier}: noise ratio {ratio} vs {expected}"
+    return 0.0
 
 
 def check_temperature_gain_range():
@@ -347,6 +362,29 @@ def check_mtf_monotonic_in_source():
     return 0.0
 
 
+def check_sensitivity_datasheet():
+    """Per-tier photocathode sensitivity in the SQF must match the
+    datasheet µA/lm values (Wikipedia "Image intensifier").  This blocks
+    regression to arbitrary scales whose ratios are wrong."""
+    src = _read_nvg_source()
+    found = {}
+    for tier_name in ("PVS31", "GEN3", "GEN2", "GEN1"):
+        m = re.search(rf'_tier = "{tier_name}";\s*_sensitivity = ([0-9.]+);', src)
+        assert m, f"{tier_name} sensitivity not found"
+        found[tier_name] = float(m.group(1))
+
+    for tier, expected in SENSITIVITY.items():
+        got = found[tier]
+        assert abs(got - expected) < 1e-6, (
+            f"{tier} sensitivity {got} != datasheet {expected} µA/lm"
+        )
+    # ratios must be preserved (physics)
+    assert found["PVS31"] / found["GEN1"] > 7.5  # ~8x
+    assert found["GEN3"] / found["GEN1"] > 4.0  # ~4.4x
+    assert found["GEN2"] / found["GEN1"] > 2.0  # ~2.2x
+    return 0.0
+
+
 # ─── Runner ────────────────────────────────────────────────────────────────
 
 
@@ -371,6 +409,7 @@ def main():
         ("Noise floor clamp 0.03..1", check_noise_floor_bounds, "abs", "0"),
         ("Values within wiki/ACE3 bands", check_values_in_range, "abs", "0"),
         ("MTF mapping not inverted", check_mtf_monotonic_in_source, "abs", "0"),
+        ("Sensitivity = datasheet µA/lm", check_sensitivity_datasheet, "abs", "0"),
     ]
 
     lines = [

@@ -122,7 +122,15 @@ private _tier = "AUTO";
 //   Wiki default 0.005; >= ~0.02 causes visible "drunk doubling".
 //   NVG objectives are achromatic multi-element designs corrected for
 //   600-900nm.  Tiers sit at 0.002-0.008 (subtle edge fringing only).
-private _sensitivity = 10000;
+// Sensitivity = photocathode luminous sensitivity in µA/lm (datasheet
+// values, Wikipedia "Image intensifier": Gen 1 S-25 ~250, Gen 2 ~550,
+// Gen 3 GaAs ~1100, filmless 4G/PVS-31 ~2000).  The RATIOS are physics.
+// The absolute scale is converted to a detected-photon count by
+// PHOTON_SCALE — a single calibration constant (cathode area × quantum
+// efficiency × integration time ÷ electron charge), NOT per-tier magic
+// numbers.  Tuning is one knob, not four.
+#define AEE_PHOTON_SCALE 500
+private _sensitivity = 550;
 private _noiseFloor = 0.15;
 private _mtf15 = 0.45;
 private _phosphorTint = [1.3, 1.2, 0.0, 0.9];
@@ -134,7 +142,7 @@ private _bloomScale = 0.04;
 
 if (_hmd find "USP_PVS31" >= 0 || _hmd find "PVS31" >= 0 || _hmd find "USP_PVS_31" >= 0) then {
     _tier = "PVS31";
-    _sensitivity = 110000;
+    _sensitivity = 2000;     // filmless GaAs (L3Harris/Photonis 4G)
     _noiseFloor = 0.03;
     _mtf15 = 0.65;
     _phosphorTint = [1.1, 0.8, 1.9, 0.9];
@@ -146,7 +154,7 @@ if (_hmd find "USP_PVS31" >= 0 || _hmd find "PVS31" >= 0 || _hmd find "USP_PVS_3
 } else {
     if (_hmd find "NVGen3" >= 0 || _hmd find "NVGogglesB" >= 0 || _hmd find "NVGoggles_INDEP" >= 0) then {
         _tier = "GEN3";
-        _sensitivity = 20000;
+        _sensitivity = 1100;     // GaAs (Photonis, ~700-1200 µA/lm)
         _noiseFloor = 0.04;
         _mtf15 = 0.61;
         _phosphorTint = [1.3, 1.2, 0.0, 0.9];
@@ -158,7 +166,7 @@ _chromaStrength = 0.004;
     } else {
         if (_hmd find "NVGen2" >= 0 || _hmd find "NVGoggles_OPFOR" >= 0) then {
             _tier = "GEN2";
-            _sensitivity = 10000;
+            _sensitivity = 550;      // multialkali Gen 2
             _noiseFloor = 0.08;
             _mtf15 = 0.45;
             _phosphorTint = [1.3, 1.2, 0.0, 0.9];
@@ -170,7 +178,7 @@ _chromaStrength = 0.006;
         } else {
             if (_hmd find "GEN1" >= 0 || _hmd find "NVGoggles" >= 0) then {
                 _tier = "GEN1";
-                _sensitivity = 1000;
+                _sensitivity = 250;      // S-25 multialkali
                 _noiseFloor = 0.15;
                 _mtf15 = 0.30;
                 _phosphorTint = [1.4, 1.3, 0.0, 0.9];
@@ -249,7 +257,7 @@ missionNamespace setVariable [QGVAR(nvgGain), _gain];
 // noiseFloor = 1/SNR_mid × 2 (doubled for MCP excess noise factor,
 // typically 1.2-1.5 for Gen 3, higher for Gen 1/2 without ion barrier).
 // The noise floor represents the irreducible noise at full moonlight.
-private _photonCount = _lux * _sensitivity;
+private _photonCount = _lux * _sensitivity * AEE_PHOTON_SCALE;
 private _shotNoise = 1 / sqrt(_photonCount + 1);
 private _noise = _noiseFloor + (1 - _noiseFloor) * _shotNoise;
 _noise = 0.03 max _noise min 1;
