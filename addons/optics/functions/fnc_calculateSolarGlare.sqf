@@ -31,14 +31,28 @@ if (sunOrMoon <= 0) exitWith {
 };
 
 // ─── Inputs ────────────────────────────────────────────────────────────
-// Sun position from dayTime (Arma has no getSunPosition command).
-// Elevation: sine model, peak at noon, horizon at 06:00/18:00.
-// Azimuth: 0 at 06:00 (east), 180 at noon (south, Arma convention where
-// north = 0), 360 at 18:00 (west).
-private _dayFraction = dayTime / 24;
-private _sunElev  = (sin ((_dayFraction - 0.25) * 360) * 90) max 0;
-private _sunAzim  = ((_dayFraction - 0.25) * 360) mod 360;
-if (_sunAzim < 0) then { _sunAzim = _sunAzim + 360; };
+// Sun position from the shared illuminance layer (fnc_calculateIlluminance):
+// the engine's OWN sun/moon vector via getLighting, converted to azimuth
+// and elevation.  This replaces the old dayTime sine approximation — the
+// engine's light direction is real data, verified by docker probe (vector
+// points FROM the light; elevation is sign-flipped to give sun elevation).
+private _sunAzim  = missionNamespace getVariable [QGVAR(lightAzimuth), -1];
+private _sunElev  = missionNamespace getVariable [QGVAR(lightElevation), -1];
+private _sunValid = (_sunAzim >= 0 && _sunElev >= 0);
+if (_sunValid) then {
+    // Engine vector points FROM the sun; the sun is the opposite direction,
+    // so elevation is negated.  The probe showed vector z ≈ -0.88 → sun
+    // elevation ≈ +61.8° (a plausible summer afternoon sun).
+    _sunElev = -_sunElev;
+} else {
+    // Fallback if the illuminance layer has not run yet this tick:
+    // the old sine model (dayTime-based), identical shape to the
+    // original code so glare never blanks between ticks.
+    private _dayFraction = dayTime / 24;
+    _sunElev = (sin ((_dayFraction - 0.25) * 360) * 90) max 0;
+    _sunAzim = ((_dayFraction - 0.25) * 360) mod 360;
+    if (_sunAzim < 0) then { _sunAzim = _sunAzim + 360; };
+};
 private _viewDir  = getDirVisual _unit;
 if (_viewDir != _viewDir) then { _viewDir = getDir _unit; };  // NaN check: fresh AI units have no visual direction
 private _overcast = overcast;

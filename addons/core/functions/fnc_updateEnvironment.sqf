@@ -97,6 +97,10 @@ if (GVAR(physiologyEnabled)) then {
 };
 
 // ─── Sensor / Optics ───────────────────────────────────────────────────────
+// Shared illuminance layer: the engine's real scene light (getLightingAt)
+// sampled at the player position.  Runs unconditionally so NVG, thermal,
+// glare, and ballistics all consume one authoritative lux value.
+[_posASL] call EFUNC(optics,calculateIlluminance);
 [] call EFUNC(optics,calculateThermalContrast);
 [] call EFUNC(optics,calculateAttenuation);
 if (GVAR(opticsEnabled)) then {

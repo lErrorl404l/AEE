@@ -383,6 +383,12 @@ if (_p10Fail == 0) then {
         _p11Fail = _p11Fail + 1;
     };
 
+    // 11c2: night illuminance probe — engine light values for lux calibration
+    private _globNight = getLighting;
+    private _litNight = getLightingAt _ai;
+    diag_log text format ["[PROBE-LIGHT] NIGHT getLighting=%1", str _globNight];
+    diag_log text format ["[PROBE-LIGHT] NIGHT getLightingAt(unit)=%1", str _litNight];
+
     // 11d: glareFXActive must be false when intensity is 0
     private _active = missionNamespace getVariable ["aee_optics_glareFXActive", true];
     if (!_active) then {
@@ -437,6 +443,40 @@ if (_p10Fail == 0) then {
         diag_log text format ["[PHASE11] [PASS] time-skip transitions: %1 passed", _p11Pass];
     } else {
         diag_log text format ["[PHASE11] [FAIL] time-skip transitions: %1 passed, %2 failed", _p11Pass, _p11Fail];
+    };
+
+    // -- PHASE 12: illuminance probe — engine light values for lux calibration --
+    // Captures getLighting / getLightingAt at day.  getLightingAt returns
+    // [] on a LOGIC (verified) and works on a real UNIT; on a headless
+    // server the lighting engine is frozen (same values day/night — it
+    // only advances per client camera).  The unit probe validates the
+    // command contract; getLighting supplies the real sun vector.
+    private _litDayUnit = getLightingAt _ai;
+    private _globDay = getLighting;
+    diag_log text format ["[PROBE-LIGHT] DAY  getLightingAt(unit)=%1", str _litDayUnit];
+    diag_log text format ["[PROBE-LIGHT] DAY  getLighting=%1", str _globDay];
+
+    private _p12Pass = 0;
+    private _p12Fail = 0;
+    if (count _litDayUnit == 4) then {
+        diag_log text format ["[PHASE12] [PASS] day getLightingAt(unit) 4 elements = %1", str _litDayUnit];
+        _p12Pass = _p12Pass + 1;
+    } else {
+        diag_log text format ["[PHASE12] [FAIL] day getLightingAt(unit) = %1", str _litDayUnit];
+        _p12Fail = _p12Fail + 1;
+    };
+    if (count _globDay >= 3) then {
+        diag_log text format ["[PHASE12] [PASS] day getLighting 3+ elements = %1", str _globDay];
+        _p12Pass = _p12Pass + 1;
+    } else {
+        diag_log text format ["[PHASE12] [FAIL] day getLighting = %1", str _globDay];
+        _p12Fail = _p12Fail + 1;
+    };
+
+    if (_p12Fail == 0) then {
+        diag_log text format ["[PHASE12] [PASS] illuminance probes: %1 passed", _p12Pass];
+    } else {
+        diag_log text format ["[PHASE12] [FAIL] illuminance probes: %1 passed, %2 failed", _p12Pass, _p12Fail];
     };
 
     // -- PHASE 5: determinism -- temperature delta over 5 s must be small ----

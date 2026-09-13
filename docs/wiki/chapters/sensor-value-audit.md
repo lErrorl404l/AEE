@@ -143,3 +143,25 @@ multipliers, not physical units.  Each is documented with its reference.
 | grain 0.08..0.6 | sensor noise | A3TI 0.5 default | ⚠️ judgment |
 | blur 0..0.35 | IR scatter | A3TI 0.25 | ⚠️ judgment |
 | crossover twilight <10° | isothermal gate | solar model | ✅ derived |
+## Illuminance layer (fnc_calculateIlluminance.sqf)
+
+The shared light-data source consumed by NVG, thermal and glare.  Two
+engine commands feed it, verified by docker probe (PHASE12):
+
+| Value | Source | Engine proof |
+|---|---|---|
+| lightDirection / azimuth / elevation | `getLighting` (no-arg) | docker probe: `[color, 84987.1, [0.0255,0.472,-0.881], 0]` — 4 elements on dedicated server |
+| starsVisibility | `getLighting` (no-arg) | same probe |
+| ambient lux (moon model) | moonIntensity/overcast/rain | physics model, validated |
+| dynamic lux (client) | `getLightingAt _unit` | probe: works on a UNIT, returns [] on a logic |
+
+Engine caveats discovered by probe (documented, not guessed):
+- `getLighting` ambientBrightness is FROZEN on a headless server (lighting
+  advances only per client camera) — NOT usable as the lux source there.
+- `getLightingAt` requires a real unit, and is client-NV dependent
+  (BIS tracker T156930).
+- The engine vector points FROM the light: elevation is negated for the
+  sun's true elevation (probe z=-0.881 → sun ≈ +61.8°).
+
+Glare now consumes the engine sun vector (lightAzimuth/lightElevation)
+with a dayTime-sine fallback if the illuminance layer has not run yet.
