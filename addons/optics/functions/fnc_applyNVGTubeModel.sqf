@@ -573,43 +573,106 @@ if (_hDoF < 0) then {
 // flip by how the player's look distance relates to the focus plane.
 // Tiers get different blur strengths: Gen 1/2 objective blurs more than
 // filmless Gen 3/4 (deeper depth of field).
-// Focus distance from a raycast along the view vector.  cursorTarget
-// returns objNull for vegetation (bushes, trees) and some terrain, so a
-// focus that relies on it never adjusts for half the scene.  A geometry
-// raycast hits everything the eye can see: objects, vegetation, terrain.
-private _focusDist = 50;
+// Focus distance from a FAN of raycasts across the target area.
+// Single-ray focus is wrong twice over: the centre ray slips past low
+// objects (a 0.5 m sandbag at eye height is missed, a taller bush is
+// hit), and any gap between clustered objects shoots the focus to the
+// 300 m background.  A tight fan around the view vector returns the
+// NEAREST surface in the target area, so a close cluster holds focus
+// instead of snapping away and back.
+//
+// Geometry mode FIRE: hits everything with bullet collision - sandbags,
+// bushes, walls, terrain.  GEOM missed the low sandbag in testing.
+//
+// Fan spread ~1.5 deg half-angle (about the size of the objective's
+// centre-weighted view): centre ray + up/down/left/right offsets.
 private _eyePos = eyePos _player;
-private _lookEnd = _eyePos vectorAdd (vectorDir _player vectorMultiply 300);
-private _hits = lineIntersectsSurfaces [
-    _eyePos, _lookEnd, _player, objNull, true, 1, "GEOM", "NONE"
+private _lookDir = vectorDir _player;
+private _spread = 300 * (tan 1.5);   // offset at the 300 m end
+private _upVec   = vectorUp _player;
+private _rightVec = _lookDir vectorCrossProduct _upVec;
+private _rawTarget = 0;              // 0 = no hit this tick
+private _fan = [
+    _lookDir,
+    _lookDir vectorAdd (_upVec vectorMultiply _spread),
+    _lookDir vectorAdd (_upVec vectorMultiply (-_spread)),
+    _lookDir vectorAdd (_rightVec vectorMultiply _spread),
+    _lookDir vectorAdd (_rightVec vectorMultiply (-_spread))
 ];
-if (count _hits > 0) then {
-    _focusDist = (_eyePos distance (_hits select 0 select 0)) max 2 min 300;
-} else {
-    // Nothing within 300 m (open sky): focus at the horizon plane.
-    _focusDist = 300;
+{
+    private _end = _eyePos vectorAdd (_x vectorMultiply 300);
+    private _hits = lineIntersectsSurfaces [
+        _eyePos, _end, _player, objNull, true, 1, "FIRE", "NONE"
+    ];
+    if (count _hits > 0) then {
+        private _d = _eyePos distance (_hits select 0 select 0);
+        if (_d < _rawTarget || _rawTarget == 0) then { _rawTarget = _d; };
+    };
+} forEach _fan;
+
+// ─── Focus state machine (O3DE auto-focus pattern) ───────────────────────
+// The raw fan distance still snaps: looking at sky returns no hit, and a
+// bush grazing the centre pixel drags the target for a tick.  O3DE's
+// DepthOfFieldReadBackFocusDepthPass is the canonical anti-breathing
+// design, and the physics is the real NVG objective: a MANUAL ring with
+// 25 cm->infinity travel, hyperfocal ~12-24 m (f/1.2, 27 mm, CoC
+// 25-50 um).  We reproduce that mechanism, not a camera autofocus:
+//
+//  1. HOLD-ON-EMPTY: no ray hit (sky) keeps the current focus.  A real
+//     ring does not fly to infinity when you look up; it stays where you
+//     set it.  This kills the "snaps away and back" artefact.
+//  2. DEADBAND: do not move while |target - current| < deadband.
+//     Hyperfocal behaviour: at focus distance F, objects within the DoF
+//     band are acceptably sharp, so the ring should not hunt for them.
+//     Deadband = 15 % of current focus, min 0.5 m (matches the CoC band).
+//  3. DELAY: hold a new target 0.15 s before moving, so a transient hit
+//     (a branch passing the centre pixel) does not rack the ring.
+//  4. CONSTANT SPEED: the ring turns at a fixed rate while you move it.
+//     40 m/s lens-group travel: a 4 m shift (sandbag to bush) settles in
+//     0.1 s, a 100 m shift glides over ~2.5 s.  Snap when within one step.
+//
+// State persists in missionNamespace: current focus, pending target and
+// its hold-until time.
+private _curFocus = missionNamespace getVariable [QGVAR(nvgFocusCur), _rawTarget];
+private _pending  = missionNamespace getVariable [QGVAR(nvgFocusPending), 0];
+private _holdUntil = missionNamespace getVariable [QGVAR(nvgFocusHoldUntil), 0];
+if !(_curFocus isEqualType 0 && _curFocus > 0) then { _curFocus = _rawTarget; };
+if (_curFocus <= 0) then { _curFocus = 50; };   // first tick, no target yet
+
+if (_rawTarget > 0) then {
+    private _deadband = (_curFocus * 0.15) max 0.5;
+    if (abs (_rawTarget - _curFocus) > _deadband) then {
+        // Outside the sharp band: arm a new target unless it changed.
+        if (_rawTarget != _pending) then {
+            _pending = _rawTarget;
+            _holdUntil = CBA_missionTime + 0.15;
+        };
+    } else {
+        // Inside the band: the ring does not move.  Cancel any pending.
+        _pending = 0;
+        _holdUntil = 0;
+    };
 };
 
-// ─── Focus smoothing (objective ring inertia) ────────────────────────────
-// The raw raycast distance snaps between hits: two wall segments at 8 m
-// and 14 m make the focus teleport, and looking from object to ground
-// jumps it instantly.  A real objective ring has mechanical inertia — the
-// operator turns it and the focus plane glides.  Exponential moving
-// average on the focus distance gives the same continuous motion.
-//
-// Blend per 0.1 s tick: 0.35 moves ~90 % of the way in ~0.5 s (fast
-// enough to feel responsive, slow enough to remove the snap).  The stored
-// value persists across ticks in missionNamespace so the smoothing is
-// continuous for the whole NVG session.
-private _prevFocus = missionNamespace getVariable [QGVAR(nvgFocusSmooth), _focusDist];
-if !(_prevFocus isEqualType 0) then { _prevFocus = _focusDist; };
-private _focusBlend = 0.35;
-_focusDist = _prevFocus + (_focusDist - _prevFocus) * _focusBlend;
-missionNamespace setVariable [QGVAR(nvgFocusSmooth), _focusDist];
+if (_pending > 0 && CBA_missionTime >= _holdUntil) then {
+    private _step = _pending - _curFocus;
+    private _maxStep = 4;               // 40 m/s at 0.1 s tick
+    if (abs _step > _maxStep) then {
+        _step = _maxStep * ([1, -1] select (_step < 0));
+    };
+    _curFocus = _curFocus + _step;
+    if (abs (_pending - _curFocus) < 0.1) then {
+        _curFocus = _pending;           // settle exactly
+        _pending = 0;
+        _holdUntil = 0;
+    };
+};
 
-// Focus is steady once the movement between ticks falls below 0.1 m.
-// Log the settle state so the debug dump can show when it converges.
-private _focusSettled = abs (_focusDist - _prevFocus) < 0.1;
+missionNamespace setVariable [QGVAR(nvgFocusCur), _curFocus];
+missionNamespace setVariable [QGVAR(nvgFocusPending), _pending];
+missionNamespace setVariable [QGVAR(nvgFocusHoldUntil), _holdUntil];
+private _focusDist = _curFocus;
+private _focusSettled = (_pending == 0);
 private _dofBlur = switch (_tier) do {
     case "PVS31": { 3.0 };
     case "GEN3":  { 4.0 };
@@ -635,7 +698,7 @@ if (_hDoF >= 0) then {
 // inverse-lux auto-gating response) — the two numbers prove the gate works.
 if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
     diag_log text format [
-        "[AEE] NVG tick | tier=%1 moon=%2 lux=%3 gain=%4 visMode=%5 hmd=%6 | handles CC=%7 chroma=%8 bloom=%9 vig=%10 grain=%11 dof=%12 | CC params %13 | bloom=%14 grain=%15 | blowout=%16 | dofBlur=%17 focusDist=%18 settled=%19",
+        "[AEE] NVG tick | tier=%1 moon=%2 lux=%3 gain=%4 visMode=%5 hmd=%6 | handles CC=%7 chroma=%8 bloom=%9 vig=%10 grain=%11 dof=%12 | CC params %13 | bloom=%14 grain=%15 | blowout=%16 | dofBlur=%17 focus=%18 settled=%19 raw=%20 pending=%21",
         _tier,
         _moonLight,
         _lux,
@@ -654,7 +717,9 @@ if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
         _blowout,
         _dofBlur,
         _focusDist,
-        _focusSettled
+        _focusSettled,
+        _rawTarget,
+        _pending
     ];
 };
 

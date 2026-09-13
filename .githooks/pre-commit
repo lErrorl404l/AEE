@@ -15,7 +15,9 @@ else
 fi
 
 RULES="$HOME/.config/opencode/rules"
-CHANGED=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(sqf|hpp|cpp|md)$' || true)
+# ste-lint is a prose linter (ASD-STE100 writing rules): it gates markdown
+# only.  SQF/hpp/cpp are code, checked by hemtt.
+CHANGED=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(md|markdown)$' || true)
 if [ -n "$CHANGED" ] && [ -f "$RULES/ste-lint.py" ]; then
     echo "-> ste-lint on changed files"
     python3 "$RULES/ste-lint.py" $CHANGED >/dev/null 2>&1 || FAILED=1
