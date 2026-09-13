@@ -129,18 +129,21 @@ if (_hCC < 0 || _hGrain < 0 || _hBlur < 0) then {
 // stage, like a real FLIR's manual brightness/contrast controls.  It does
 // NOT recolor the palette — the native system owns that.
 //
-// brightness: AGC-clamped output.  Poor contrast = dim image (the
-//   sensor has little signal to amplify).
-// contrast:   low contrast = washed-out image.  At crossover the scene
-//   is nearly uniform, so contrast collapses toward flat grey.
-// colorize:   neutral [1,1,1,0] — alpha 0 = no desaturation, so the
-//   engine's native palette passes through untouched.  Verified against
-//   the A3TI mod (workshop 2041057379) and the vanilla thermalMode
-//   config system.
-// weight:     standard desaturation weights (BIS wiki default).
-private _brightness = linearConversion [1, 0, _effective, 1.0, 0.55, true];
-private _ccContrast = linearConversion [1, 0, _effective, 1.15, 0.35, true];
-_hCC ppEffectAdjust [_brightness, _ccContrast, 0, [0,0,0,0], [1,1,1,0], [0.299, 0.587, 0.114, 0]];
+// Values match the proven A3TI mod (workshop 2041057379):
+//   brightness 0 = UNCHANGED.  The engine's native thermal is the image;
+//     a value below 0 darkens it toward black (our earlier 0.57 dimmed it
+//     into blackness — the reported "cannot see anything" bug).
+//   contrast 1.2 = A3TI default display contrast.
+//   weight [1,1,1,0] = NO desaturation (A3TI).  The wiki default
+//     [0.299,0.587,0.114,0] desaturates the native palette to greyscale
+//     — wrong for thermal, whose colour palettes are meaningful.
+//   colorize [1,1,1,0]: alpha 0 = no desaturation, native palette passes
+//     through untouched.
+// AGC response is applied via contrast, not brightness: poor conditions
+// (rain, fog, crossover) lower contrast; clean conditions raise it.
+private _brightness = 0.0;
+private _ccContrast = linearConversion [1, 0, _effective, 1.4, 0.4, true];
+_hCC ppEffectAdjust [_brightness, _ccContrast, 0, [0,0,0,0], [1,1,1,0], [1,1,1,0]];
 _hCC ppEffectEnable true;
 _hCC ppEffectForceInNVG true;
 _hCC ppEffectCommit 0;
@@ -151,9 +154,11 @@ _hCC ppEffectCommit 0;
 // Noise scales inversely with contrast: poor conditions (rain, fog,
 // crossover) mean fewer usable IR photons and a noisier image.  Grain
 // is coarse and sharp at high noise, fine and soft at low noise.
-private _noise     = linearConversion [1, 0, _effective, 0.08, 0.6, true];
-private _sharpness = linearConversion [1, 0, _effective, 3, 10, true];
-private _grainSize = linearConversion [1, 0, _effective, 1, 2.5, true];
+// Sharpness/grainSize stay near the proven A3TI values (0.75 / 1.5) and
+// drift only mildly with conditions; intensity carries the signal.
+private _noise     = linearConversion [1, 0, _effective, 0.05, 0.3, true];
+private _sharpness = linearConversion [1, 0, _effective, 0.75, 1.5, true];
+private _grainSize = linearConversion [1, 0, _effective, 1.5, 2.0, true];
 _hGrain ppEffectAdjust [_noise, _sharpness, _grainSize, 0.5, 1.0, 0];
 _hGrain ppEffectEnable true;
 _hGrain ppEffectForceInNVG true;
@@ -179,7 +184,7 @@ if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
         _hCC,
         _hGrain,
         _hBlur,
-        [_brightness, _ccContrast, 0, [0,0,0,0], [1,1,1,0], [0.299, 0.587, 0.114, 0]],
+        [_brightness, _ccContrast, 0, [0,0,0,0], [1,1,1,0], [1,1,1,0]],
         [_noise, _sharpness, _grainSize, 0.5, 1.0, 0],
         _blur
     ];

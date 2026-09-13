@@ -86,6 +86,25 @@ if (!isNull _unit && {hasInterface}) then {
     };
 };
 
+// ─── IR weapon light (ACE3 SPIR/DBAL, vanilla IR) ─────────────────────────
+// The player's own IR illuminator adds NIR photons to the scene, which the
+// tube detects even though the light is invisible to the eye.  We read the
+// ENGINE's weapon-light state (isFlashlightOn) — the same action ACE3's
+// keybind drives ("GunLightOn") — so ANY mod's IR light works with no
+// classnames.  The IR contribution raises lux, which the AGC and photon
+// models respond to naturally: brighter image, lower gain, less noise.
+// Magnitude: a typical weapon IR illuminator floods the near scene with
+// the equivalent of ~0.01 lux of NIR at 5-10 m (1/10 full-moon); this
+// brings a starlit scene up to a workable level without overdriving.
+private _currentWeapon = currentWeapon _unit;
+private _irLux = 0;
+if (!isNull _unit && hasInterface && _currentWeapon != "") then {
+    if (_unit isFlashlightOn _currentWeapon) then { _irLux = 0.01; };
+    if (isLightOn _unit && _irLux == 0) then { _irLux = 0.005; };
+    _dynamicLux = _dynamicLux + _irLux;
+    missionNamespace setVariable [QGVAR(irLightLux), _irLux];
+};
+
 private _totalLux = _ambientLux + _dynamicLux;
 
 // ─── Night detection ──────────────────────────────────────────────────────
@@ -100,5 +119,6 @@ missionNamespace setVariable [QGVAR(lightAzimuth), _lightAzimuth];
 missionNamespace setVariable [QGVAR(lightElevation), _lightElevation];
 missionNamespace setVariable [QGVAR(lightIsNight), _isNight];
 missionNamespace setVariable [QGVAR(starsVisibility), _stars];
+missionNamespace setVariable [QGVAR(irLightLux), _irLux];
 
 _totalLux
