@@ -13,15 +13,20 @@ if (!isNil {gust}) then { _gusts = gust; };
 
 // Apply module wind multiplier (EDEN/Zeus)
 private _moduleMult = missionNamespace getVariable [QEGVAR(core,moduleWindMultiplier), 1];
-if (_moduleMult != 1) then { _wind = [_wind#0 * _moduleMult, _wind#1 * _moduleMult]; };
+
+// Only call setWind when the multiplier actually changes the vector.
+// Calling setWind every tick (even with the same values) resets the
+// engine's natural gust cycle and can cause visual artefacts during
+// skip-time or rapid weather transitions.
+if (_moduleMult != 1) then {
+    _wind = [_wind#0 * _moduleMult, _wind#1 * _moduleMult];
+    setWind [_wind select 0, _wind select 1, false];
+};
 
 // Compute wind direction in meteorological convention (degrees from north, wind FROM)
 // ACE3 uses: windDir = (wind#0 atan2 wind#1) + 180
 private _windDir = ((_wind select 0) atan2 (_wind select 1)) + 180;
 if (_windDir >= 360) then { _windDir = _windDir - 360; };
-
-// Push to Arma engine so ACE3 ballistics/wind deflection picks it up
-setWind [_wind select 0, _wind select 1, false];
 
 // Store for our own functions
 missionNamespace setVariable [QEGVAR(core,currentWind), _wind];

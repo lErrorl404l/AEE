@@ -49,6 +49,19 @@ private _nightGrainMax = missionNamespace getVariable [QGVAR(nightGrainMax), 0.7
 private _rainGrainMax  = missionNamespace getVariable [QGVAR(rainGrainMax), 0.4];
 private _fogGrainMax   = missionNamespace getVariable [QGVAR(fogGrainMax), 0.15];
 
+// ─── Force-disable in clear daylight ────────────────────────────────────
+// If time was skipped or conditions changed fast, the ppEffect can linger
+// from a previous night tick.  Force it off immediately when sun is high.
+private _active = missionNamespace getVariable [QGVAR(nightGrainActive), false];
+if (_active && _sunOrMoon > 0.6 && _rain <= 0.2 && _fog <= 0.1) exitWith {
+    _hGrain ppEffectAdjust [0.01, 0.1, 0.5, 0.1, 0.1, 1];
+    _hGrain ppEffectCommit 0.5;
+    [{
+        (missionNamespace getVariable [QGVAR(ppHandle_FilmGrain), -1]) ppEffectEnable false;
+    }, [], 0.75] call CBA_fnc_waitAndExecute;
+    missionNamespace setVariable [QGVAR(nightGrainActive), false];
+};
+
 // ─── Calculate grain intensity (0 = clean, 1 = maximum noise) ───────────
 // Night contributes up to the night maximum; rain contributes up to the
 // rain maximum; fog adds a small amount of haze grain.
@@ -79,7 +92,7 @@ private _totalGrain = (_nightGrain + _rainGrain + _fogGrain) min 1;
 
 // ─── Apply FilmGrain ppEffect ───────────────────────────────────────────
 // Parameters: [intensity, grainSize, pixelSize, grainIntensity2, grainIntensity3, inversion]
-private _active = missionNamespace getVariable [QGVAR(nightGrainActive), false];
+_active = missionNamespace getVariable [QGVAR(nightGrainActive), false];
 
 if (_totalGrain > 0.01) then {
     if (!_active) then {

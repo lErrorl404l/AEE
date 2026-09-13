@@ -49,6 +49,9 @@ private _hCC     = missionNamespace getVariable [QGVAR(ppHandle_ColorCorrections
 // Vision modes verified in-game: 0 = normal, 1 = NVG, 2 = thermal.
 private _visionMode = currentVisionMode _player;
 if (_visionMode == 1 || _visionMode == 2) exitWith {
+    // NVG tube model uses separate ppEffect handles (NVG_CC, NVG_Bloom, NVG_Vignette)
+    // and separate state variables (nvgGrainActive). This block only fades the
+    // regular optical-path effects. No conflict.
     if (missionNamespace getVariable [QGVAR(chromaActive), false]) then {
         _hChroma ppEffectAdjust [0, 0, false];
         _hChroma ppEffectCommit 1;
