@@ -1,0 +1,11 @@
+AEE illuminance layer validation
+========================================
+[PASS] illuminance: azimuth cardinal points  (max_err=0.0000deg, tol=1.0deg)
+[PASS] illuminance: elevation angles  (max_err=0.0000deg, tol=0.5deg)
+[PASS] illuminance: probe sun elevation plausible  (max_err=0.0055deg, tol=5.0deg)
+[PASS] illuminance: lux operating bounds  (max_err=0.2490lx, tol=0.05lx)
+[PASS] illuminance: lux monotonic in weather  (max_err=0.1930lx, tol=0.01lx)
+[PASS] illuminance: shared-state contract  (max_err=0.0000, tol=0.0)
+
+Checks run: 6
+Failed: 0
