@@ -9,7 +9,7 @@
     QGVAR(txPower),
     "SLIDER",
     [LLSTRING(txPower_Name), LLSTRING(txPower_Description)],
-    ["AEE Core", "Radio"],
+    "AEE Radio",
     [20, 50, 37, 0],
     true,
     {}
@@ -19,7 +19,7 @@
     QGVAR(propagationRange),
     "SLIDER",
     [LLSTRING(propagationRange_Name), LLSTRING(propagationRange_Description)],
-    ["AEE Core", "Radio"],
+    "AEE Radio",
     [0.5, 3, 2.0, 1],
     true,
     {}

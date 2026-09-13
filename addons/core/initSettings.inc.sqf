@@ -12,7 +12,7 @@
     QGVAR(enabled),
     "CHECKBOX",
     [LLSTRING(enabled_Name), LLSTRING(enabled_Description)],
-    "AEE Core",
+    "AEE",
     true,   // default: enabled
     true,   // global — needs to be same for all clients
     {}
@@ -23,7 +23,7 @@
     QGVAR(updateInterval),
     "SLIDER",
     [LLSTRING(updateInterval_Name), LLSTRING(updateInterval_Description)],
-    "AEE Core",
+    "AEE",
     [1, 60, 5, 0],
     true,
     {}
@@ -34,7 +34,7 @@
     QGVAR(tempLapseRateEnabled),
     "CHECKBOX",
     [LLSTRING(tempLapseRateEnabled_Name), LLSTRING(tempLapseRateEnabled_Description)],
-    ["AEE Core", "Temperature"],
+    ["AEE", "Thermal"],
     true,
     true,
     {}
@@ -44,7 +44,7 @@
     QGVAR(tempLapseRate),
     "SLIDER",
     [LLSTRING(tempLapseRate_Name), LLSTRING(tempLapseRate_Description)],
-    ["AEE Core", "Temperature"],
+    ["AEE", "Thermal"],
     [0, 15, 6.5, 1],
     true,
     {}
@@ -54,7 +54,7 @@
     QGVAR(tempDiurnalEnabled),
     "CHECKBOX",
     [LLSTRING(tempDiurnalEnabled_Name), LLSTRING(tempDiurnalEnabled_Description)],
-    ["AEE Core", "Temperature"],
+    ["AEE", "Thermal"],
     true,
     true,
     {}
@@ -65,7 +65,7 @@
     QGVAR(windEnabled),
     "CHECKBOX",
     [LLSTRING(windEnabled_Name), LLSTRING(windEnabled_Description)],
-    ["AEE Core", "Wind"],
+    ["AEE", "Atmosphere"],
     true,
     true,
     {}
@@ -75,7 +75,7 @@
     QGVAR(windTerrainInfluence),
     "SLIDER",
     [LLSTRING(windTerrainInfluence_Name), LLSTRING(windTerrainInfluence_Description)],
-    ["AEE Core", "Wind"],
+    ["AEE", "Atmosphere"],
     [0, 1, 0.6, 1],
     true,
     {}
@@ -85,7 +85,7 @@
     QGVAR(windGustFrequency),
     "SLIDER",
     [LLSTRING(windGustFrequency_Name), LLSTRING(windGustFrequency_Description)],
-    ["AEE Core", "Wind"],
+    ["AEE", "Atmosphere"],
     [0, 1, 0.3, 1],
     true,
     {}
@@ -96,7 +96,7 @@
     QGVAR(humidityEnabled),
     "CHECKBOX",
     [LLSTRING(humidityEnabled_Name), LLSTRING(humidityEnabled_Description)],
-    ["AEE Core", "Humidity"],
+    ["AEE", "Atmosphere"],
     true,
     true,
     {}
@@ -106,7 +106,7 @@
     QGVAR(precipOrographicEnabled),
     "CHECKBOX",
     [LLSTRING(precipOrographicEnabled_Name), LLSTRING(precipOrographicEnabled_Description)],
-    ["AEE Core", "Humidity"],
+    ["AEE", "Atmosphere"],
     true,
     true,
     {}
@@ -117,7 +117,7 @@
     QGVAR(airDensityEnabled),
     "CHECKBOX",
     [LLSTRING(airDensityEnabled_Name), LLSTRING(airDensityEnabled_Description)],
-    ["AEE Core", "Air Density"],
+    ["AEE", "Atmosphere"],
     true,
     true,
     {}
@@ -127,7 +127,7 @@
     QGVAR(icaoReferenceAlt),
     "SLIDER",
     [LLSTRING(icaoReferenceAlt_Name), LLSTRING(icaoReferenceAlt_Description)],
-    ["AEE Core", "Air Density"],
+    ["AEE", "Atmosphere"],
     [-500, 5000, 0, 0],
     true,
     {}
@@ -138,7 +138,7 @@
     QGVAR(biomeEnabled),
     "CHECKBOX",
     [LLSTRING(biomeEnabled_Name), LLSTRING(biomeEnabled_Description)],
-    ["AEE Core", "Biome"],
+    ["AEE", "Biome"],
     true,
     true,
     {}
@@ -148,7 +148,7 @@
     QGVAR(biomeTransitionRadius),
     "SLIDER",
     [LLSTRING(biomeTransitionRadius_Name), LLSTRING(biomeTransitionRadius_Description)],
-    ["AEE Core", "Biome"],
+    ["AEE", "Biome"],
     [500, 50000, 5000, 0],
     true,
     {}
@@ -159,7 +159,7 @@
     QGVAR(microclimateRadius),
     "SLIDER",
     [LLSTRING(microclimateRadius_Name), LLSTRING(microclimateRadius_Description)],
-    ["AEE Core", "Microclimate"],
+    ["AEE", "Microclimate"],
     [10, 2000, 200, 0],
     true,
     {}
@@ -169,7 +169,7 @@
     QGVAR(urbanHeatIsland),
     "SLIDER",
     [LLSTRING(urbanHeatIsland_Name), LLSTRING(urbanHeatIsland_Description)],
-    ["AEE Core", "Microclimate"],
+    ["AEE", "Microclimate"],
     [0, 1, 0.5, 1],
     true,
     {}
@@ -179,7 +179,7 @@
     QGVAR(waterInfluenceRadius),
     "SLIDER",
     [LLSTRING(waterInfluenceRadius_Name), LLSTRING(waterInfluenceRadius_Description)],
-    ["AEE Core", "Microclimate"],
+    ["AEE", "Microclimate"],
     [100, 10000, 1000, 0],
     true,
     {}
@@ -190,7 +190,7 @@
     QGVAR(referenceAltitude),
     "SLIDER",
     [LLSTRING(referenceAltitude_Name), LLSTRING(referenceAltitude_Description)],
-    "AEE Core",
+    "AEE",
     [-500, 8000, 0, 0],
     true,
     {}
@@ -201,7 +201,7 @@
     QGVAR(clothingInsulation),
     "SLIDER",
     [LLSTRING(clothingInsulation_Name), LLSTRING(clothingInsulation_Description)],
-    "AEE Core",
+    "AEE",
     [0.5, 2.0, 1.0, 1],
     true,
     {}
@@ -212,7 +212,7 @@
     QGVAR(mudAccretionEnabled),
     "CHECKBOX",
     [LLSTRING(mudAccretionEnabled_Name), LLSTRING(mudAccretionEnabled_Description)],
-    ["AEE Core", "Mud"],
+    ["AEE", "Mobility"],
     true,
     true,
     {}
@@ -223,7 +223,7 @@
     QGVAR(diagnostic),
     "CHECKBOX",
     [LLSTRING(diagnostic_Name), LLSTRING(diagnostic_Description)],
-    "AEE Core",
+    "AEE",
     false,
     false,
     {}
@@ -234,7 +234,7 @@
     QGVAR(radioPropagationEnabled),
     "CHECKBOX",
     [LLSTRING(radioPropagationEnabled_Name), LLSTRING(radioPropagationEnabled_Description)],
-    ["AEE Core", "Radio / Comms"],
+    ["AEE", "Radio"],
     true,
     true,
     {}
@@ -245,7 +245,7 @@
     QGVAR(enginePowerDegradationEnabled),
     "CHECKBOX",
     [LLSTRING(enginePowerDegradationEnabled_Name), LLSTRING(enginePowerDegradationEnabled_Description)],
-    ["AEE Core", "Vehicle Performance"],
+    ["AEE", "Mobility"],
     true,
     true,
     {}
@@ -256,7 +256,7 @@
     QGVAR(opticsEnabled),
     "CHECKBOX",
     [LLSTRING(opticsEnabled_Name), LLSTRING(opticsEnabled_Description)],
-    ["AEE Core", "Optics / Visibility"],
+    ["AEE", "Optics"],
     true,
     true,
     {}
@@ -267,7 +267,7 @@
     QGVAR(hydrologyEnabled),
     "CHECKBOX",
     [LLSTRING(hydrologyEnabled_Name), LLSTRING(hydrologyEnabled_Description)],
-    ["AEE Core", "Ground / Hydrology"],
+    ["AEE", "Environmental"],
     true,
     true,
     {}
@@ -278,7 +278,7 @@
     QGVAR(atmosphericEventsEnabled),
     "CHECKBOX",
     [LLSTRING(atmosphericEventsEnabled_Name), LLSTRING(atmosphericEventsEnabled_Description)],
-    ["AEE Core", "Atmospheric Events"],
+    ["AEE", "Atmos"],
     true,
     true,
     {}
@@ -289,7 +289,7 @@
     QGVAR(environmentalEnabled),
     "CHECKBOX",
     [LLSTRING(environmentalEnabled_Name), LLSTRING(environmentalEnabled_Description)],
-    ["AEE Core", "Environmental"],
+    ["AEE", "Environmental"],
     true,
     true,
     {}
@@ -300,7 +300,7 @@
     QGVAR(physiologyEnabled),
     "CHECKBOX",
     [LLSTRING(physiologyEnabled_Name), LLSTRING(physiologyEnabled_Description)],
-    ["AEE Core", "Physiology"],
+    ["AEE", "Physiology"],
     true,
     true,
     {}
@@ -311,7 +311,7 @@
     QGVAR(maritimeEnabled),
     "CHECKBOX",
     [LLSTRING(maritimeEnabled_Name), LLSTRING(maritimeEnabled_Description)],
-    ["AEE Core", "Maritime"],
+    ["AEE", "Maritime"],
     true,
     true,
     {}
@@ -322,7 +322,7 @@
     QGVAR(fxEnabled),
     "CHECKBOX",
     [LLSTRING(fxEnabled_Name), LLSTRING(fxEnabled_Description)],
-    ["AEE Core", "FX"],
+    ["AEE", "FX"],
     true,
     true,
     {}
