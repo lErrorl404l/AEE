@@ -494,11 +494,15 @@ if (_missing) then {
 // Diagnostics: set aee_optics_nvgDebug = true in the debug console to log
 // every tick's handles and params to the .rpt.  ppEffectCreate returns -1
 // when the priority is taken — a -1 handle means the effect did not apply.
+// gain and lux are the AGC inputs: gain must fall as lux rises (the
+// inverse-lux auto-gating response) — the two numbers prove the gate works.
 if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
     diag_log text format [
-        "[AEE] NVG tick | tier=%1 moon=%2 visMode=%3 hmd=%4 | handles CC=%5 chroma=%6 bloom=%7 vig=%8 grain=%9 | CC params %10 | bloom=%11 grain=%12 | blowout=%13",
+        "[AEE] NVG tick | tier=%1 moon=%2 lux=%3 gain=%4 visMode=%5 hmd=%6 | handles CC=%7 chroma=%8 bloom=%9 vig=%10 grain=%11 | CC params %12 | bloom=%13 grain=%14 | blowout=%15",
         _tier,
         _moonLight,
+        _lux,
+        _gain,
         currentVisionMode _player,
         _hmd,
         _hCC,
