@@ -36,16 +36,12 @@ private _hBlur   = missionNamespace getVariable [QGVAR(ppHandle_DynamicBlur), -1
 private _hCC     = missionNamespace getVariable [QGVAR(ppHandle_ColorCorrections), -1];
 
 // ─── NVG tube model ──────────────────────────────────────────────────────
-// Must run before the vision-mode exit: the NVG tube model produces its
-// own FilmGrain inside the NVG view (ppEffectForceInNVG).  It self-gates
-// on vision mode 1 internally.
-[] call FUNC(applyNVGTubeModel);
-
-// ─── Thermal vision model ────────────────────────────────────────────────
-// Must run before the vision-mode exit: the thermal model produces its
-// own ColorCorrections, FilmGrain and DynamicBlur for the thermal view.
-// It self-gates on vision mode 2 internally.
-[] call FUNC(applyThermalVision);
+// Sensor modes (NVG/thermal) are owned by the fast sensor PFH in
+// XEH_postInit (0.1 s tick, started by the visionMode event).  They are
+// NOT called here: the 5 s environment tick is too slow for AGC lag and
+// gating.  This function only manages the normal-vision optical path.
+// The vision-mode exit below still fades normal-vision effects when the
+// player enters a sensor mode.
 
 // NVG (1) and thermal (2) views: the sensor produces its own image.
 // Chromatic aberration from atmospheric seeing and heat shimmer, blur
