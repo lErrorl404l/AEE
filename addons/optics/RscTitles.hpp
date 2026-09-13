@@ -1,4 +1,5 @@
 class RscPicture;
+class RscText;
 
 class RscTitles {
     class GVAR(nvgTitle) {
@@ -39,6 +40,39 @@ class RscTitles {
                 y = "safeZoneY";
                 w = "safeZoneH";
                 h = "safeZoneH";
+            };
+            // Focus readout below the tube face (ECOTI HUD style, verified
+            // from FPANO ECOTI workshop source): the focus ring position as
+            // a distance in metres plus a scale bar.  Real NVGs have no
+            // readout - the operator reads the ring markings - but a game
+            // needs to show the value the physics is using.  The bar spans
+            // 0-100 m (log display, dominated by the 0-25 m patrol band)
+            // with a tick at the current focus.
+            class NVGFocusText: RscText {
+                idc = 1002;
+                text = "FOCUS 15m";
+                style = 2;
+                shadow = 1;
+                font = "PuristaMedium";
+                sizeEx = "0.014 * safezoneH";
+                colorText[] = {0.45, 0.85, 0.35, 1};
+                x = "safeZoneX + (safeZoneW - safeZoneH) / 2 - safeZoneH * 0.10";
+                y = "safeZoneY + safeZoneH * 1.02";
+                w = "safeZoneH * 0.20";
+                h = "0.020 * safezoneH";
+            };
+            class NVGFocusBar: RscText {
+                idc = 1003;
+                text = "|----o----------------------|";
+                style = 2;
+                shadow = 1;
+                font = "PuristaMedium";
+                sizeEx = "0.012 * safezoneH";
+                colorText[] = {0.45, 0.85, 0.35, 0.8};
+                x = "safeZoneX + (safeZoneW - safeZoneH) / 2 - safeZoneH * 0.12";
+                y = "safeZoneY + safeZoneH * 1.045";
+                w = "safeZoneH * 0.24";
+                h = "0.018 * safezoneH";
             };
         };
     };
