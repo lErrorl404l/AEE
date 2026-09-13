@@ -151,9 +151,9 @@ if (_hCC < 0 || _hGrain < 0 || _hBlur < 0) then {
 private _brightness = 1.16;
 private _ccContrast = linearConversion [1, 0, _effective, 0.62, 0.35, true];
 _hCC ppEffectAdjust [_brightness, _ccContrast, 0, [0,0,0,0], [1,1,1,0], [1,1,1,0]];
+_hCC ppEffectCommit 0;
 _hCC ppEffectEnable true;
 _hCC ppEffectForceInNVG true;
-_hCC ppEffectCommit 0;
 
 // ─── FilmGrain (sensor noise) ─────────────────────────────────────────────
 // Params: [intensity, sharpness, grainSize, grainIntensity2,
@@ -167,18 +167,18 @@ private _noise     = linearConversion [1, 0, _effective, 0.05, 0.3, true];
 private _sharpness = linearConversion [1, 0, _effective, 0.75, 1.5, true];
 private _grainSize = linearConversion [1, 0, _effective, 1.5, 2.0, true];
 _hGrain ppEffectAdjust [_noise, _sharpness, _grainSize, 0.5, 1.0, 0];
+_hGrain ppEffectCommit 0;
 _hGrain ppEffectEnable true;
 _hGrain ppEffectForceInNVG true;
-_hGrain ppEffectCommit 0;
 
 // ─── DynamicBlur (IR scatter) ─────────────────────────────────────────────
 // Rain scatters and fog absorbs LWIR, smearing the image.  At crossover
 // the mushy uniform scene adds to the blur.  Clean conditions: no blur.
 private _blur = linearConversion [1, 0, _effective, 0.0, 0.35, true];
 _hBlur ppEffectAdjust [_blur];
+_hBlur ppEffectCommit 0;
 _hBlur ppEffectEnable true;
 _hBlur ppEffectForceInNVG true;
-_hBlur ppEffectCommit 0;
 
 // Diagnostics: set aee_optics_nvgDebug = true in the debug console to log
 // every thermal tick's handles and params to the .rpt.

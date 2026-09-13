@@ -514,6 +514,11 @@ if (_missing) then {
         ["FilmGrain",        6000, QGVAR(ppHandle_NVG_Grain)]
     ];
     _handles params ["_hVig", "_hBloom", "_hCC", "_hGrain"];
+    // One INFO line per entry so a failed create (-1) is visible without
+    // the per-tick debug flag: the essential handles must all be >= 0 or
+    // the image degrades to vanilla and the adjusts spam the RPT.
+    private _logMsg = format ["NVG handles created: vig=%1 bloom=%2 cc=%3 grain=%4 chroma=%5", _hVig, _hBloom, _hCC, _hGrain, _hChroma];
+    AEE_LOG_INFO(_logMsg);
 };
 
 // ─── Depth of field (objective focus) — enhancement only ──────────────────
@@ -550,25 +555,33 @@ if (_hDoF < 0) then {
 // ppEffectAdjust [blur, distance, 1].  Our previous "not scriptable" note
 // was wrong (camSetFocus is camera-only, but DepthOfField ppEffect works).
 //
-// Focus distance: distance to the cursor target, clamped to a sane range.
-// The blur magnitude scales with how far the object is from the focus plane
-// — larger blur = shallower depth of field (worse optics).  Tiers get
-// different blur strengths: Gen 1/2 objective blur more than Gen 3/4.
+// Params follow TFN's proven values: blur 1..10 (5 default), focus distance
+// in metres (7 default), third value 1.  Blur sign flips near/far in TFN
+// (negative = far focus); we use negative for far, positive for near and
+// flip by how the player's look distance relates to the focus plane.
+// Tiers get different blur strengths: Gen 1/2 objective blurs more than
+// filmless Gen 3/4 (deeper depth of field).
 private _focusDist = 50;
 private _focusTarget = cursorTarget;
 if (!isNull _focusTarget) then {
-    _focusDist = (_player distance _focusTarget) max 5 min 500;
+    _focusDist = (_player distance _focusTarget) max 2 min 300;
 };
 private _dofBlur = switch (_tier) do {
-    case "PVS31": { 1.5 };
-    case "GEN3":  { 2.5 };
-    case "GEN2":  { 4.0 };
-    default      { 5.0 };   // Gen 1: shallow, hard-to-focus objective
+    case "PVS31": { 3.0 };
+    case "GEN3":  { 4.0 };
+    case "GEN2":  { 6.0 };
+    default      { 8.0 };   // Gen 1: shallow, hard-to-focus objective
 };
 if (_hDoF >= 0) then {
-    _hDoF ppEffectAdjust [_dofBlur, _focusDist, 1];
-    _hDoF ppEffectForceInNVG true;
+    // Sign convention from TFN: negative blur = far focus (their default),
+    // positive = near focus.  We auto-focus on the look target, so the
+    // sign must flip by which side the target sits: far look -> negative,
+    // near look (< ~10 m, e.g. checking your weapon) -> positive.
+    private _dofSign = if (_focusDist > 10) then { -1 } else { 1 };
+    _hDoF ppEffectAdjust [_dofSign * _dofBlur, _focusDist, 1];
     _hDoF ppEffectCommit 0;
+    _hDoF ppEffectEnable true;
+    _hDoF ppEffectForceInNVG true;
 };
 
 // Diagnostics: set aee_optics_nvgDebug = true in the debug console to log
@@ -607,10 +620,13 @@ if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
 // _chromaStrength is the per-channel sample spacing (BIS wiki).  The
 // default is 0.005; values >= ~0.02 visibly split R/G/B into a "drunk
 // doubling".  Tiers stay at 0.002-0.008: subtle edge fringing only.
+// Command order follows TFN NVG Effects: adjust, COMMIT, then
+// ForceInNVG.  Forcing a fresh, uncommitted handle throws "Invalid post
+// effect handle" — commit makes the handle live first.
 _hChroma ppEffectAdjust [_chromaStrength, _chromaStrength, false];
+_hChroma ppEffectCommit 0;
 _hChroma ppEffectEnable true;
 _hChroma ppEffectForceInNVG true;
-_hChroma ppEffectCommit 0;
 
 // ─── ColorCorrections (phosphor tint + brightness + contrast) ───────────
 // Params: [brightness, contrast, offset, blend, colorize, weight]
@@ -628,15 +644,15 @@ _hChroma ppEffectCommit 0;
 // weight: desaturation RGB weights, non-zero.  [6, 1, 1, 0] = ACE3 green,
 //   [1, 1, 6, 0] = ACE3 white.  [0,0,0,0] disables the effect.
 _hCC ppEffectAdjust [_brightness, _mtfEffective, 0, [0,0,0,0], _phosphorTint, _nvgWeight];
+_hCC ppEffectCommit 0;
 _hCC ppEffectEnable true;
 _hCC ppEffectForceInNVG true;
-_hCC ppEffectCommit 0;
 
 // ─── DynamicBlur (blooming / halos from bright sources) ──────────────────
 _hBloom ppEffectAdjust [_bloom];
+_hBloom ppEffectCommit 0;
 _hBloom ppEffectEnable true;
 _hBloom ppEffectForceInNVG true;
-_hBloom ppEffectCommit 0;
 
 // ─── RadialBlur (optical edge degradation) ───────────────────────────────
 // NVG optics are sharpest at centre, softest at edges.  MTF drops
@@ -648,15 +664,15 @@ _hBloom ppEffectCommit 0;
 //   Do NOT scale power above ~0.01: RadialBlur power 0.5 with a small
 //   offset smears the whole image into black.
 _hVig ppEffectAdjust _vigStrength;
+_hVig ppEffectCommit 0;
 _hVig ppEffectEnable true;
 _hVig ppEffectForceInNVG true;
-_hVig ppEffectCommit 0;
 
 // ─── FilmGrain (shot noise - the NVG aesthetic) ──────────────────────────
 _hGrain ppEffectAdjust [_noise, _sharpness, _grainSize, 0.5, 1.0, 0];
+_hGrain ppEffectCommit 0;
 _hGrain ppEffectEnable true;
 _hGrain ppEffectForceInNVG true;
-_hGrain ppEffectCommit 0;
 
 // ─── Tube face display (mask + fiber-optic bundle) ───────────────────────
 // Show the circular tube overlay.  The mask's transparent centre lets the
