@@ -39,6 +39,11 @@ if (currentVisionMode _player != 1) exitWith {
         }, [], 1.5] call CBA_fnc_waitAndExecute;
         missionNamespace setVariable [QGVAR(nvgGrainActive), false];
     };
+    // Clear stale tube state so diagnostics and scripts do not read
+    // values from a previous NVG session.
+    missionNamespace setVariable [QGVAR(nvgTubeTier), "NONE"];
+    missionNamespace setVariable [QGVAR(nvgGain), 0];
+    missionNamespace setVariable [QGVAR(nvgNoise), 0];
 };
 
 // ─── Ambient light input ─────────────────────────────────────────────────
