@@ -187,3 +187,9 @@ if (_ccOn) then {
         }, [_gen], 5.5] call CBA_fnc_waitAndExecute;
     };
 };
+
+// ─── NVG tube model ──────────────────────────────────────────────────────
+// Runs after the vision-mode exit above.  The eye effects stay suppressed
+// in NVG, but the tube grain renders inside the NVG view.  Self-gates on
+// vision mode 1.
+[] call FUNC(applyNVGTubeModel);

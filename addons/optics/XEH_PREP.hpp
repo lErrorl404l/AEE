@@ -3,6 +3,7 @@ PREP(applyDewOnOpticsFX);
 PREP(applyHeatShimmerFX);
 PREP(applyMirageFX);
 PREP(applyNightGrain);
+PREP(applyNVGTubeModel);
 PREP(applyRainOnOpticsFX);
 PREP(applySnowBlindnessFX);
 PREP(applySolarGlareFX);

@@ -31,6 +31,15 @@ private _RH  = EGVAR(core,currentHumidity);
 private _P   = EGVAR(core,currentPressure);
 private _sun = sunOrMoon;
 
+// The propagation index feeds only the ACRE2 and TFAR compat layers.
+// Without either host mod there is no consumer, so exit early with the
+// neutral index 1.0 rather than computing a dead value every tick.
+if (!isClass (configFile >> "CfgPatches" >> "acre_sys_core")
+    && !isClass (configFile >> "CfgPatches" >> "task_force_radio")) exitWith {
+    missionNamespace setVariable [QGVAR(radioPropagationIndex), 1.0];
+    1.0
+};
+
 if (isNil "_T")  exitWith { 1.0 };
 if (isNil "_RH") exitWith { 1.0 };
 if (isNil "_P")  then { _P = 1013 };
