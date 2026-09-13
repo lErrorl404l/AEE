@@ -28,7 +28,12 @@ if (_moduleMult != 1) then {
 private _windDir = ((_wind select 0) atan2 (_wind select 1)) + 180;
 if (_windDir >= 360) then { _windDir = _windDir - 360; };
 
+// Wind strength (m/s magnitude) — scalar form of the vector for modules
+// that only need intensity (scent dispersal, glare, sound).
+private _windStr = vectorMagnitude _wind;
+
 // Store for our own functions
 missionNamespace setVariable [QEGVAR(core,currentWind), _wind];
 missionNamespace setVariable [QEGVAR(core,currentGusts), _gusts];
 missionNamespace setVariable [QEGVAR(core,currentWindDir), _windDir];
+missionNamespace setVariable [QEGVAR(core,currentWindStr), _windStr];

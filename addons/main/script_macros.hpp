@@ -47,11 +47,15 @@
 //   - one log line per LIFECYCLE event, not per tick (INFO)
 //   - include the handle/object/unit that failed (ERROR)
 //   - per-tick physics values belong in DEBUG, not INFO — never spam
-#define AEE_LOG_ERROR(msg) diag_log text format ["[AEE][%1][ERROR] %2", COMPONENT, msg]
-#define AEE_LOG_WARN(msg) diag_log text format ["[AEE][%1][WARN] %2", COMPONENT, msg]
-#define AEE_LOG_INFO(msg) diag_log text format ["[AEE][%1][INFO] %2", COMPONENT, msg]
-#define AEE_LOG_DEBUG(msg) if (missionNamespace getVariable [QGVAR(logDebug), false] || missionNamespace getVariable ["aee_core_logDebug", false]) then { diag_log text format ["[AEE][%1][DEBUG] %2", COMPONENT, msg]; };
-#define AEE_LOG_TRACE(msg) if (missionNamespace getVariable [QGVAR(logDebug), false] || missionNamespace getVariable ["aee_core_logDebug", false]) then { diag_log text format ["[AEE][%1][TRACE] %2", COMPONENT, msg]; };
+// COMPONENT is a bare identifier (optics, thermal, ...) — stringify it with
+// QUOTE() so the log tag reads "[AEE][optics]" not "[AEE][any]" (the latter
+// is what format prints when the identifier is evaluated as an undefined
+// variable).
+#define AEE_LOG_ERROR(msg) diag_log text format ["[AEE][%1][ERROR] %2", QUOTE(COMPONENT), msg]
+#define AEE_LOG_WARN(msg) diag_log text format ["[AEE][%1][WARN] %2", QUOTE(COMPONENT), msg]
+#define AEE_LOG_INFO(msg) diag_log text format ["[AEE][%1][INFO] %2", QUOTE(COMPONENT), msg]
+#define AEE_LOG_DEBUG(msg) if (missionNamespace getVariable [QGVAR(logDebug), false] || missionNamespace getVariable ["aee_core_logDebug", false]) then { diag_log text format ["[AEE][%1][DEBUG] %2", QUOTE(COMPONENT), msg]; };
+#define AEE_LOG_TRACE(msg) if (missionNamespace getVariable [QGVAR(logDebug), false] || missionNamespace getVariable ["aee_core_logDebug", false]) then { diag_log text format ["[AEE][%1][TRACE] %2", QUOTE(COMPONENT), msg]; };
 
 // ── Error helper — breaks on purpose in debug, logs in release ────────────
 #ifdef DEBUG_MODE_FULL
