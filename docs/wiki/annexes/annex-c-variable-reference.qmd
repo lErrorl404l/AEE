@@ -168,7 +168,12 @@ follow the variable names as written in the SQF source.
 
 ## Settings
 
-34 settings register in the CBA settings interface: 31 under **AEE Core**
+114 settings register in the CBA settings interface, all under the single
+**AEE** parent category with per-module subcategories: General (5),
+Thermal (3), Atmosphere (7), Biome (2), Microclimate (3), Mobility (9),
+Optics (24), Physiology (9), Environmental (22), Atmos (11), Maritime (3),
+Radio (3), FX (12), and Real Weather (1). See the Configuration chapter for
+the full table.
 in `addons/core/initSettings.inc.sqf` and 3 under **AEE Mobility** in
 `addons/mobility/initSettings.inc.sqf`. All use `CBA_fnc_addSetting`.
 Titles and descriptions come from the per-addon stringtables. See the
