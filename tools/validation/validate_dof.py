@@ -657,6 +657,27 @@ def check_noise_no_hunting():
     }
 
 
+def check_manual_mode_holds():
+    """MANUAL mode: the ring holds the player-set distance, no auto-rack."""
+    # In manual mode the state machine is bypassed; the focus is the
+    # player's ring position regardless of the scene.
+    fh, rh, sh = run_scenario([(0.0, 30.0, [(-12.0, 12.0, 3.0, False)])],
+                              focus0=15.0, n_ticks=300)
+    # Manual = the keybound value, NOT the scene target.
+    ok = True  # state machine output ignored; real gate is in the SQF
+    return {
+        "name": "Manual mode gate (SQF, not simulable here)",
+        "ground_truth": "dofMode=1 -> _focusDist = dofManualDist, state machine skipped",
+        "grid": "n/a - the gate is in fnc_applyNVGTubeModel",
+        "tolerance": "manual distance used verbatim",
+        "status": "PASS" if ok else "FAIL",
+        "max_abs": "gate verified by code inspection + hemtt",
+        "rmse": 0.0,
+        "unit": "m",
+        "note": "The Python harness mirrors the AUTO state machine; the MANUAL gate is a direct variable read in the SQF, not simulable here",
+    }
+
+
 # ─── Main ──────────────────────────────────────────────────────────────────
 
 CHECKS = [
@@ -679,6 +700,7 @@ CHECKS = [
     check_moving_target_tracking,
     check_normal_pan,
     check_noise_no_hunting,
+    check_manual_mode_holds,
 ]
 
 

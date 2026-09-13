@@ -744,7 +744,19 @@ if (_pending > 0 && CBA_missionTime >= _holdUntil) then {
 missionNamespace setVariable [QGVAR(nvgFocusCur), _curFocus];
 missionNamespace setVariable [QGVAR(nvgFocusPending), _pending];
 missionNamespace setVariable [QGVAR(nvgFocusHoldUntil), _holdUntil];
-private _focusDist = _curFocus;
+// ─── Mode gate: MANUAL vs AUTO ───────────────────────────────────────────
+// dofMode (missionNamespace, set by the actions keybind): 0 = AUTO (the
+// O3DE state machine above), 1 = MANUAL (the player's ring position from
+// the Focus In/Out keybinds).  Real NVGs are manual-focus; auto is the
+// convenience mode.  In MANUAL the ring holds where the player set it -
+// moving closer/further passes objects through the plane naturally.
+private _dofMode = missionNamespace getVariable ["aee_optics_dofMode", 0];
+private _focusDist = if (_dofMode == 1) then {
+    private _manual = missionNamespace getVariable ["aee_optics_dofManualDist", 15];
+    _manual max 0.25 min 300
+} else {
+    _curFocus
+};
 private _focusSettled = (_pending == 0);
 private _dofBlur = switch (_tier) do {
     case "PVS31": { 3.0 };
