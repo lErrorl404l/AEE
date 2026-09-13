@@ -577,6 +577,27 @@ if (count _hits > 0) then {
     // Nothing within 300 m (open sky): focus at the horizon plane.
     _focusDist = 300;
 };
+
+// ─── Focus smoothing (objective ring inertia) ────────────────────────────
+// The raw raycast distance snaps between hits: two wall segments at 8 m
+// and 14 m make the focus teleport, and looking from object to ground
+// jumps it instantly.  A real objective ring has mechanical inertia — the
+// operator turns it and the focus plane glides.  Exponential moving
+// average on the focus distance gives the same continuous motion.
+//
+// Blend per 0.1 s tick: 0.35 moves ~90 % of the way in ~0.5 s (fast
+// enough to feel responsive, slow enough to remove the snap).  The stored
+// value persists across ticks in missionNamespace so the smoothing is
+// continuous for the whole NVG session.
+private _prevFocus = missionNamespace getVariable [QGVAR(nvgFocusSmooth), _focusDist];
+if !(_prevFocus isEqualType 0) then { _prevFocus = _focusDist; };
+private _focusBlend = 0.35;
+_focusDist = _prevFocus + (_focusDist - _prevFocus) * _focusBlend;
+missionNamespace setVariable [QGVAR(nvgFocusSmooth), _focusDist];
+
+// Focus is steady once the movement between ticks falls below 0.1 m.
+// Log the settle state so the debug dump can show when it converges.
+private _focusSettled = abs (_focusDist - _prevFocus) < 0.1;
 private _dofBlur = switch (_tier) do {
     case "PVS31": { 3.0 };
     case "GEN3":  { 4.0 };
@@ -602,7 +623,7 @@ if (_hDoF >= 0) then {
 // inverse-lux auto-gating response) — the two numbers prove the gate works.
 if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
     diag_log text format [
-        "[AEE] NVG tick | tier=%1 moon=%2 lux=%3 gain=%4 visMode=%5 hmd=%6 | handles CC=%7 chroma=%8 bloom=%9 vig=%10 grain=%11 dof=%12 | CC params %13 | bloom=%14 grain=%15 | blowout=%16 | dofBlur=%17 focusDist=%18",
+        "[AEE] NVG tick | tier=%1 moon=%2 lux=%3 gain=%4 visMode=%5 hmd=%6 | handles CC=%7 chroma=%8 bloom=%9 vig=%10 grain=%11 dof=%12 | CC params %13 | bloom=%14 grain=%15 | blowout=%16 | dofBlur=%17 focusDist=%18 settled=%19",
         _tier,
         _moonLight,
         _lux,
@@ -620,7 +641,8 @@ if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
         [_noise, _sharpness, _grainSize, 0.5, 1.0, 0],
         _blowout,
         _dofBlur,
-        _focusDist
+        _focusDist,
+        _focusSettled
     ];
 };
 
