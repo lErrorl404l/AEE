@@ -18,7 +18,11 @@ post-process or HUD glare overlay systems.
 */
 
 params [["_unit", objNull, [objNull]]];
-if (isNull _unit) exitWith { 0 };  // no unit on dedicated server
+if (isNull _unit) then { _unit = call CBA_fnc_currentUnit; };
+if (isNull _unit) exitWith {
+    missionNamespace setVariable [QGVAR(solarGlareIntensity), 0];
+    0
+};
 
 // ─── Night check ──────────────────────────────────────────────────────
 if (sunOrMoon <= 0) exitWith {

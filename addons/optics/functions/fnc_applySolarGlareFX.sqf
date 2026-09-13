@@ -54,5 +54,6 @@ if (_intensity > 0.02) then {
         }, [], 1] call CBA_fnc_waitAndExecute;
 
         missionNamespace setVariable [QGVAR(glareFXActive), false];
+        missionNamespace setVariable [QGVAR(glareBlur), 0];
     };
 };

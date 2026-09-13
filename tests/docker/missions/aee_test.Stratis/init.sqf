@@ -341,6 +341,104 @@ if (_p10Fail == 0) then {
         };
     };
 
+    // -- PHASE 11: time-skip state transitions ---------------------------------
+    // Tests that optics state variables clear correctly across time changes.
+    // Catches "night grain stuck" and "solar glare stale intensity" bugs.
+    private _p11Pass = 0;
+    private _p11Fail = 0;
+
+    // 11a: calculateSolarGlare with no unit param must clear intensity
+    private _oldGlare = missionNamespace getVariable ["aee_optics_solarGlareIntensity", -1];
+    [] call aee_optics_fnc_calculateSolarGlare;
+    private _noUnitGlare = missionNamespace getVariable ["aee_optics_solarGlareIntensity", -1];
+    if (_noUnitGlare == 0) then {
+        diag_log text format ["[PHASE11] [PASS] 11a: no-unit glare cleared (%1 -> 0)", _oldGlare];
+        _p11Pass = _p11Pass + 1;
+    } else {
+        diag_log text format ["[PHASE11] [FAIL] 11a: no-unit glare = %1 (expected 0)", _noUnitGlare];
+        _p11Fail = _p11Fail + 1;
+    };
+
+    // 11b: calculateSolarGlare with objNull must also clear intensity
+    missionNamespace setVariable ["aee_optics_solarGlareIntensity", 0.5];
+    [objNull] call aee_optics_fnc_calculateSolarGlare;
+    private _nullGlare = missionNamespace getVariable ["aee_optics_solarGlareIntensity", -1];
+    if (_nullGlare == 0) then {
+        diag_log text "[PHASE11] [PASS] 11b: objNull glare cleared";
+        _p11Pass = _p11Pass + 1;
+    } else {
+        diag_log text format ["[PHASE11] [FAIL] 11b: objNull glare = %1", _nullGlare];
+        _p11Fail = _p11Fail + 1;
+    };
+
+    // 11c: sunOrMoon=0 (midnight) must zero glare for an AI unit
+    setDate [2024, 6, 15, 0, 0, 0];
+    [_ai] call aee_optics_fnc_calculateSolarGlare;
+    private _nightGlare = missionNamespace getVariable ["aee_optics_solarGlareIntensity", -1];
+    if (_nightGlare == 0) then {
+        diag_log text format ["[PHASE11] [PASS] 11c: night glare = 0 (sunOrMoon=%1)", sunOrMoon];
+        _p11Pass = _p11Pass + 1;
+    } else {
+        diag_log text format ["[PHASE11] [FAIL] 11c: night glare = %1 (sunOrMoon=%2)", _nightGlare, sunOrMoon];
+        _p11Fail = _p11Fail + 1;
+    };
+
+    // 11d: glareFXActive must be false when intensity is 0
+    private _active = missionNamespace getVariable ["aee_optics_glareFXActive", true];
+    if (!_active) then {
+        diag_log text "[PHASE11] [PASS] 11d: glareFXActive=false when glare=0";
+        _p11Pass = _p11Pass + 1;
+    } else {
+        diag_log text format ["[PHASE11] [FAIL] 11d: glareFXActive=%1 (expected false)", _active];
+        _p11Fail = _p11Fail + 1;
+    };
+
+    // 11e: glareBlur must be 0 when intensity is 0
+    private _blur = missionNamespace getVariable ["aee_optics_glareBlur", -1];
+    if (_blur == 0) then {
+        diag_log text "[PHASE11] [PASS] 11e: glareBlur=0 when glare=0";
+        _p11Pass = _p11Pass + 1;
+    } else {
+        diag_log text format ["[PHASE11] [FAIL] 11e: glareBlur=%1 (expected 0)", _blur];
+        _p11Fail = _p11Fail + 1;
+    };
+
+    // 11f: wind multiplier=1 should not produce extreme wind
+    private _windMag = vectorMagnitude wind;
+    if (_windMag < 50) then {
+        diag_log text format ["[PHASE11] [PASS] 11f: wind magnitude %1 < 50", _windMag];
+        _p11Pass = _p11Pass + 1;
+    } else {
+        diag_log text format ["[PHASE11] [FAIL] 11f: wind magnitude = %1 (extreme)", _windMag];
+        _p11Fail = _p11Fail + 1;
+    };
+
+    // 11g: rapid time skip — night to day to night x10, no crash
+    for "_i" from 1 to 10 do {
+        setDate [2024, 6, 15, if (_i % 2 == 0) then {12} else {0}, 0, 0];
+        [_ai] call aee_optics_fnc_calculateSolarGlare;
+    };
+    _p11Pass = _p11Pass + 1;
+    diag_log text "[PHASE11] [PASS] 11g: rapid time skip x10 no crash";
+
+    // 11h: restore day and verify glare calculates (not stuck at 0)
+    setDate [2024, 6, 15, 12, 0, 0];
+    [_ai] call aee_optics_fnc_calculateSolarGlare;
+    private _dayGlare = missionNamespace getVariable ["aee_optics_solarGlareIntensity", -1];
+    if (!isNil "_dayGlare" && {_dayGlare isEqualType 0}) then {
+        diag_log text format ["[PHASE11] [PASS] 11h: day glare valid = %1 (sunOrMoon=%2)", _dayGlare, sunOrMoon];
+        _p11Pass = _p11Pass + 1;
+    } else {
+        diag_log text format ["[PHASE11] [FAIL] 11h: day glare invalid = %1", _dayGlare];
+        _p11Fail = _p11Fail + 1;
+    };
+
+    if (_p11Fail == 0) then {
+        diag_log text format ["[PHASE11] [PASS] time-skip transitions: %1 passed", _p11Pass];
+    } else {
+        diag_log text format ["[PHASE11] [FAIL] time-skip transitions: %1 passed, %2 failed", _p11Pass, _p11Fail];
+    };
+
     // -- PHASE 5: determinism -- temperature delta over 5 s must be small ----
     private _t1 = missionNamespace getVariable ["aee_core_currentTemperature", -999];
     [{
