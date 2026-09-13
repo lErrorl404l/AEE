@@ -203,6 +203,17 @@ _chromaStrength = 0.006;
 };
 missionNamespace setVariable [QGVAR(nvgTubeTier), _tier];
 
+// Log tier detection once per NVG session (INFO, not per-tick): the hmd
+// classname and resolved tier tell us immediately whether the device was
+// recognised.  "AUTO" means the classname matched nothing — the effects
+// still run but with the default (GEN2-ish) constants.
+private _tierLogKey = format ["%1_%2", _hmd, _tier];
+if (missionNamespace getVariable [QGVAR(nvgTierLogged), ""] != _tierLogKey) then {
+    missionNamespace setVariable [QGVAR(nvgTierLogged), _tierLogKey];
+    private _logMsg = format ["NVG tier: hmd=%1 -> %2", _hmd, _tier];
+    AEE_LOG_INFO(_logMsg);
+};
+
 // ─── Temperature coupling ─────────────────────────────────────────────────
 // Tube performance degrades with temperature.  Photocathode quantum
 // efficiency and MCP gain both fall in cold; dark current rises in heat
@@ -441,9 +452,15 @@ private _hCC     = missionNamespace getVariable [QGVAR(ppHandle_NVG_CC), -1];
 private _hBloom  = missionNamespace getVariable [QGVAR(ppHandle_NVG_Bloom), -1];
 private _hVig    = missionNamespace getVariable [QGVAR(ppHandle_NVG_Vignette), -1];
 private _hGrain  = missionNamespace getVariable [QGVAR(ppHandle_NVG_Grain), -1];
-private _hDoF    = missionNamespace getVariable [QGVAR(ppHandle_NVG_DoF), -1];
 
-private _missing = (_hCC < 0 || _hBloom < 0 || _hVig < 0 || _hGrain < 0 || _hDoF < 0);
+// DepthOfField is ENHANCEMENT-ONLY: if the engine refuses to create it
+// (returns -1 — this can happen if the effect is unavailable on this
+// build), it must NOT trigger recreation of the essential handles.  A
+// permanent -1 DoF handle in the _missing check would destroy and
+// recreate CC/bloom/vignette/grain every 0.1 s tick, leaving the image
+// vanilla and flooding the RPT with "Invalid post effect handle".
+// DoF gets its own create-if-missing block further down.
+private _missing = (_hCC < 0 || _hBloom < 0 || _hVig < 0 || _hGrain < 0);
 
 if (_missing) then {
     // Destroy any live handles first so the bump loop can reclaim the
@@ -460,8 +477,7 @@ if (_missing) then {
         QGVAR(ppHandle_NVG_CC),
         QGVAR(ppHandle_NVG_Bloom),
         QGVAR(ppHandle_NVG_Vignette),
-        QGVAR(ppHandle_NVG_Grain),
-        QGVAR(ppHandle_NVG_DoF)
+        QGVAR(ppHandle_NVG_Grain)
     ];
 
     if (_hChroma < 0) then {
@@ -495,10 +511,32 @@ if (_missing) then {
         ["RadialBlur",       1200, QGVAR(ppHandle_NVG_Vignette)],
         ["DynamicBlur",      4100, QGVAR(ppHandle_NVG_Bloom)],
         ["ColorCorrections", 5100, QGVAR(ppHandle_NVG_CC)],
-        ["FilmGrain",        6000, QGVAR(ppHandle_NVG_Grain)],
-        ["DepthOfField",     868,  QGVAR(ppHandle_NVG_DoF)]
+        ["FilmGrain",        6000, QGVAR(ppHandle_NVG_Grain)]
     ];
-    _handles params ["_hVig", "_hBloom", "_hCC", "_hGrain", "_hDoF"];
+    _handles params ["_hVig", "_hBloom", "_hCC", "_hGrain"];
+};
+
+// ─── Depth of field (objective focus) — enhancement only ──────────────────
+// Created in its OWN block so a failure here cannot disturb the essential
+// NVG handles above.  If DepthOfField is unavailable on this build the
+// handle stays -1 and the feature is silently skipped (one WARN line).
+private _hDoF = missionNamespace getVariable [QGVAR(ppHandle_NVG_DoF), -1];
+if (_hDoF < 0) then {
+    private _dofPrio = 868;   // TFN NVG Effects proven priority
+    _hDoF = ppEffectCreate ["DepthOfField", _dofPrio];
+    private _guard = 0;
+    while {_hDoF < 0 && _guard < 100} do {
+        _dofPrio = _dofPrio + 1;
+        _hDoF = ppEffectCreate ["DepthOfField", _dofPrio];
+        _guard = _guard + 1;
+    };
+    missionNamespace setVariable [QGVAR(ppHandle_NVG_DoF), _hDoF];
+    if (_hDoF >= 0) then {
+        private _logMsg = format ["created NVG DepthOfField priority=%1 handle=%2", _dofPrio, _hDoF];
+        AEE_LOG_INFO(_logMsg);
+    } else {
+        AEE_LOG_WARN("DepthOfField unavailable on this build - NVG DoF disabled");
+    };
 };
 
 // ─── Depth of field (objective focus) ─────────────────────────────────────
