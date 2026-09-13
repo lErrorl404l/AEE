@@ -298,9 +298,16 @@ private _blowoutNow = 0;
     if (_isBright) then {
         private _dirTo = _eye vectorFromTo (getPosASL _x);
         private _ang = acos ((_viewDir vectorDotProduct _dirTo) max -1 min 1);
-        if (_ang < 30) then {
+        // Gate triggers when the source enters the tube's FOV.  AN/AVS-9
+        // FOV is 40° circular (DTIC ADA426388, NASA 20030063076, Elbit
+        // datasheet) — half-angle 20°.
+        if (_ang < 20) then {
             private _dist = _eye distance (getPosASL _x);
-            private _intensity = (1 - _ang / 30) * (1 - (_dist / 150));
+            // Illuminance at the photocathode follows the inverse square
+            // law: E = I/d².  Gate intensity scales with the light that
+            // actually reaches the tube.  Normalised so a dead-centre
+            // source at 10 m is ~1.0; at 150 m it is ~0.004 (negligible).
+            private _intensity = (1 - _ang / 20) * (100 / (_dist * _dist));
             _blowoutNow = _blowoutNow max _intensity;
         };
     };
@@ -587,12 +594,21 @@ if (!isNull _disp) then {
     _fibers ctrlCommit 0;
 };
 
-// ─── Depth of field (objective aperture) ─────────────────────────────────
-// The NVG objective is a fast lens (AN/AVS-9: 25 mm F/1.23).  A fast
-// aperture gives a shallow depth of field around the fixed focus plane
-// (hyperfocal ~20-28 m): near objects blur, distant stay sharp.  The
-// engine's DoF is driven by setAperture; A3TI's proven night range is
-// 15-25 (workshop 2041057379).  -1 disables.  Re-applied every tick in
-// case the engine resets it.
-setAperture 20;
+// ─── Eye accommodation (exposure) ───────────────────────────────────────
+// setAperture is the camera's eye-accommodation aperture — LIGHT INTAKE,
+// not depth of field (BIS wiki: "Sets custom eye accommodation camera
+// aperture"; Namikaze calibration: 50 = daylight outdoor, 30 = daylight
+// indoor, <20 = very bright scene suitable for night).
+//
+// The phosphor screen output is AGC-clamped to a constant MOB regardless
+// of scene brightness (Elbit MX-10160: 2.8-4.2 fL held across 1-20 fc),
+// so the eye looking at the tube sees a constant-brightness display.  The
+// exposure is therefore a FIXED night value, not dynamic.  A3TI proves 15
+// works in-game (workshop 2041057379).  -1 restores the engine default.
+//
+// True depth of field (distance-based blur) is camSetFocus — camera-only
+// (camCreate), not available on the player view.  The engine's player-view
+// DoF is not scriptable; the RadialBlur edge softening approximates the
+// objective's focus behaviour instead.
+setAperture 15;
 missionNamespace setVariable [QGVAR(nvgGrainActive), true];

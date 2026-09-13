@@ -115,14 +115,20 @@ multipliers, not physical units.  Each is documented with its reference.
 1. **Brightness magnitude** (0.65..1.0 band).  The wiki anchor is
    1.0 = unchanged; 0.65 is ACE3's proven floor.  The exact value at a
    given lux is calibration.
-2. **Blowout cone (30°), range (150m)**.  Chosen thresholds, not derived.
+2. **Blowout cone (20° half-angle)**.  Derived: AN/AVS-9 FOV is 40°
+   circular (DTIC ADA426388, NASA 20030063076, Elbit datasheet), so the
+   gate cone matches the tube FOV.  Detection range 150m remains calibration.
 3. **Grain intensity scale** (noise 0.03..1 → 0..1).  Physics gives the
    shape; the magnitude is engine-tuned.
 4. **PHOTON_SCALE** (single constant, 500).  Converts µA/lm
    photocathode sensitivity to a detected-photon count (cathode area × QE
    × integration time ÷ electron charge).  ONE calibration knob, not four
    per-tier magic numbers.
-5. **setAperture 20**.  A3TI uses 15-25; 20 is the midpoint.
+5. **setAperture 15** (eye accommodation, night).  Derived: BIS wiki
+   calibration (50 = daylight outdoor, 30 = indoor, <20 = night).
+   A3TI-proven 15.  NOTE: setAperture is light intake, NOT depth of field.
+   True player-view DoF is not scriptable (camSetFocus is camera-only);
+   RadialBlur approximates focus behaviour.
 6. **Fiber cell counts** (28/42).  SCHOTT datasheet bundle sizes, mapped
    to screen pixels — the mapping constant is calibration.
 
