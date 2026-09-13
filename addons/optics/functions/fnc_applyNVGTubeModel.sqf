@@ -561,10 +561,21 @@ if (_hDoF < 0) then {
 // flip by how the player's look distance relates to the focus plane.
 // Tiers get different blur strengths: Gen 1/2 objective blurs more than
 // filmless Gen 3/4 (deeper depth of field).
+// Focus distance from a raycast along the view vector.  cursorTarget
+// returns objNull for vegetation (bushes, trees) and some terrain, so a
+// focus that relies on it never adjusts for half the scene.  A geometry
+// raycast hits everything the eye can see: objects, vegetation, terrain.
 private _focusDist = 50;
-private _focusTarget = cursorTarget;
-if (!isNull _focusTarget) then {
-    _focusDist = (_player distance _focusTarget) max 2 min 300;
+private _eyePos = eyePos _player;
+private _lookEnd = _eyePos vectorAdd (vectorDir _player vectorMultiply 300);
+private _hits = lineIntersectsSurfaces [
+    _eyePos, _lookEnd, _player, objNull, true, 1, "GEOM", "NONE"
+];
+if (count _hits > 0) then {
+    _focusDist = (_eyePos distance (_hits select 0 select 0)) max 2 min 300;
+} else {
+    // Nothing within 300 m (open sky): focus at the horizon plane.
+    _focusDist = 300;
 };
 private _dofBlur = switch (_tier) do {
     case "PVS31": { 3.0 };
@@ -623,11 +634,15 @@ if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
 // Command order follows TFN NVG Effects: adjust, COMMIT, then
 // ForceInNVG.  Forcing a fresh, uncommitted handle throws "Invalid post
 // effect handle" — commit makes the handle live first.
+// MARKER (one-shot): identify which block the entry errors come from.
+private _markerMsg = format ["NVG adjust block start: chroma=%1 cc=%2 bloom=%3 vig=%4 grain=%5 dof=%6", _hChroma, _hCC, _hBloom, _hVig, _hGrain, _hDoF];
+AEE_LOG_INFO(_markerMsg);
 _hChroma ppEffectAdjust [_chromaStrength, _chromaStrength, false];
 _hChroma ppEffectCommit 0;
 _hChroma ppEffectEnable true;
 _hChroma ppEffectForceInNVG true;
-
+AEE_LOG_INFO("NVG adjust block done: chroma applied");
+AEE_LOG_INFO("NVG adjust: CC");
 // ─── ColorCorrections (phosphor tint + brightness + contrast) ───────────
 // Params: [brightness, contrast, offset, blend, colorize, weight]
 //
@@ -647,12 +662,14 @@ _hCC ppEffectAdjust [_brightness, _mtfEffective, 0, [0,0,0,0], _phosphorTint, _n
 _hCC ppEffectCommit 0;
 _hCC ppEffectEnable true;
 _hCC ppEffectForceInNVG true;
+AEE_LOG_INFO("NVG adjust: bloom");
 
 // ─── DynamicBlur (blooming / halos from bright sources) ──────────────────
 _hBloom ppEffectAdjust [_bloom];
 _hBloom ppEffectCommit 0;
 _hBloom ppEffectEnable true;
 _hBloom ppEffectForceInNVG true;
+AEE_LOG_INFO("NVG adjust: vig");
 
 // ─── RadialBlur (optical edge degradation) ───────────────────────────────
 // NVG optics are sharpest at centre, softest at edges.  MTF drops
@@ -667,12 +684,14 @@ _hVig ppEffectAdjust _vigStrength;
 _hVig ppEffectCommit 0;
 _hVig ppEffectEnable true;
 _hVig ppEffectForceInNVG true;
+AEE_LOG_INFO("NVG adjust: grain");
 
 // ─── FilmGrain (shot noise - the NVG aesthetic) ──────────────────────────
 _hGrain ppEffectAdjust [_noise, _sharpness, _grainSize, 0.5, 1.0, 0];
 _hGrain ppEffectCommit 0;
 _hGrain ppEffectEnable true;
 _hGrain ppEffectForceInNVG true;
+AEE_LOG_INFO("NVG adjust: all applied");
 
 // ─── Tube face display (mask + fiber-optic bundle) ───────────────────────
 // Show the circular tube overlay.  The mask's transparent centre lets the
