@@ -318,3 +318,64 @@ use Pa and Kelvin. The script converts at the comparison boundary:
 - psychrolib SI uses Pa for pressure. The script passes 101325 Pa for
   101.325 kPa.
 - The ISA table stores hPa. The mod formula converts to Pa internally.
+## Sensor pipeline (NVG/Thermal)
+
+`validate_sensors.py` mirrors the physics equations in
+`addons/optics/functions/fnc_applyNVGTubeModel.sqf` and validates them
+against published references.  It uses only the Python standard library.
+
+### 13. AGC gain (inverse-lux)
+
+Source: `fnc_applyNVGTubeModel.sqf` lines 233-234.
+
+```
+gain = min(sensitivity / (lux + 1), sensitivity)
+```
+
+Real AGC reduces gain inversely with input illuminance until the MOB
+clamp (Elbit MX-10160: 2.8-4.2 fL held across 1-20 fc input; US4952793A
+auto-gating patent).  Check verifies the exact formula and the ~1.25x
+gain ratio across the 0.001-0.25 lux moon range.
+
+### 14. Shot noise (Poisson)
+
+Source: lines 252-254.
+
+```
+noise = noise_floor + (1 - noise_floor) * 1/sqrt(N+1),  N = lux*sensitivity
+```
+
+Photon arrival is Poisson: SNR = sqrt(N).  Check verifies the ratio
+between starlight and full-moon noise is sqrt((N_moon+1)/(N_star+1)).
+
+### 15. Temperature gain rolloff (MIL-PRF-49428F)
+
+Source: lines 202-205.
+
+Peaks at 20 C (1.0), falls to 0.7 at -30 C (cathode/MCP gain loss) and
+0.85 at 45 C (thermal saturation).  MIL-PRF-49428F operating range
+-51..+49 C with reduced performance at the extremes.
+
+### 16. Brightness mapping
+
+Source: line 362.
+
+```
+brightness = linearConversion [0.001, 0.25, lux, 0.65, 1.0, true]
+```
+
+1.0 = unchanged (BIS wiki anchor), 0.65 = ACE3-proven visible floor.
+Check verifies monotonic rise with lux, bounded 0.65..1.0.
+
+### 17. MTF degradation + BSP gating penalty
+
+Source: lines 334-337.
+
+```
+mtf = linearConversion [0, 1, noise, mtf15, mtf15*0.55, true]
+if gating: mtf *= (1 - blowout * 0.4)
+```
+
+Resolution fades to 55% at high noise; Bright Spot Protection reduces
+gated-tube (Gen 3/PVS-31) resolution up to 40% while a bright source is
+in view (Cold Harbour NV terminology).

@@ -120,21 +120,29 @@ if (_hCC < 0 || _hGrain < 0 || _hBlur < 0) then {
     _handles params ["_hCC", "_hGrain", "_hBlur"];
 };
 
-// ─── ColorCorrections (brightness, contrast, display tint) ────────────────
+// ─── ColorCorrections (display gain/contrast) ────────────────────────────
 // Params: [brightness, contrast, offset, blend, colorize, weight]
+//
+// The ENGINE renders the native thermal image — IR radiance mapped through
+// the device's own palette (white/black/green/red/orange-hot, cycled by the
+// engine's TI mode key).  Our ColorCorrections is the display gain/level
+// stage, like a real FLIR's manual brightness/contrast controls.  It does
+// NOT recolor the palette — the native system owns that.
 //
 // brightness: AGC-clamped output.  Poor contrast = dim image (the
 //   sensor has little signal to amplify).
 // contrast:   low contrast = washed-out image.  At crossover the scene
 //   is nearly uniform, so contrast collapses toward flat grey.
-// colorize:   warm-white display tint (white-hot FLIR look).  The
-//   weight drops with contrast, draining the image to neutral grey.
+// colorize:   neutral [1,1,1,0] — alpha 0 = no desaturation, so the
+//   engine's native palette passes through untouched.  Verified against
+//   the A3TI mod (workshop 2041057379) and the vanilla thermalMode
+//   config system.
+// weight:     standard desaturation weights (BIS wiki default).
 private _brightness = linearConversion [1, 0, _effective, 1.0, 0.55, true];
 private _ccContrast = linearConversion [1, 0, _effective, 1.15, 0.35, true];
-private _tintWeight = linearConversion [1, 0, _effective, 0.65, 0.1, true];
-_hCC ppEffectAdjust [_brightness, _ccContrast, 0, [0,0,0,0], [0.95, 0.9, 0.8, 1], [_tintWeight, _tintWeight, _tintWeight, 0]];
+_hCC ppEffectAdjust [_brightness, _ccContrast, 0, [0,0,0,0], [1,1,1,0], [0.299, 0.587, 0.114, 0]];
 _hCC ppEffectEnable true;
-_hCC ppEffectForceInNVG false;
+_hCC ppEffectForceInNVG true;
 _hCC ppEffectCommit 0;
 
 // ─── FilmGrain (sensor noise) ─────────────────────────────────────────────
@@ -148,7 +156,7 @@ private _sharpness = linearConversion [1, 0, _effective, 3, 10, true];
 private _grainSize = linearConversion [1, 0, _effective, 1, 2.5, true];
 _hGrain ppEffectAdjust [_noise, _sharpness, _grainSize, 0.5, 1.0, 0];
 _hGrain ppEffectEnable true;
-_hGrain ppEffectForceInNVG false;
+_hGrain ppEffectForceInNVG true;
 _hGrain ppEffectCommit 0;
 
 // ─── DynamicBlur (IR scatter) ─────────────────────────────────────────────
@@ -157,7 +165,7 @@ _hGrain ppEffectCommit 0;
 private _blur = linearConversion [1, 0, _effective, 0.0, 0.35, true];
 _hBlur ppEffectAdjust [_blur];
 _hBlur ppEffectEnable true;
-_hBlur ppEffectForceInNVG false;
+_hBlur ppEffectForceInNVG true;
 _hBlur ppEffectCommit 0;
 
 // Diagnostics: set aee_optics_nvgDebug = true in the debug console to log
@@ -171,10 +179,16 @@ if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
         _hCC,
         _hGrain,
         _hBlur,
-        [_brightness, _ccContrast, 0, [0,0,0,0], [0.95, 0.9, 0.8, 1], [_tintWeight, _tintWeight, _tintWeight, 0]],
+        [_brightness, _ccContrast, 0, [0,0,0,0], [1,1,1,0], [0.299, 0.587, 0.114, 0]],
         [_noise, _sharpness, _grainSize, 0.5, 1.0, 0],
         _blur
     ];
 };
+
+// ─── Depth of field (objective aperture) ─────────────────────────────────
+// Thermal imagers also have fixed-focus optics.  Set the aperture so the
+// engine's DoF gives near-object blur / distant sharpness, matching the
+// sensor's fixed focus plane.  Same proven range as the NVG objective.
+setAperture 20;
 
 missionNamespace setVariable [QGVAR(thermalActive), true];

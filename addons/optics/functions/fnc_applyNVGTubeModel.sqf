@@ -331,7 +331,9 @@ missionNamespace setVariable [QGVAR(nvgBlowout), _blowout];
 // the tube, photocathode voltage is reduced to protect it, which LOWERS
 // RESOLUTION.  Gated tubes (Gen 3, PVS-31) lose up to 40 % contrast while
 // gating; un-gated Gen 1/2 keep full MTF (they bloom instead).
-private _mtfEffective = linearConversion [1, 0, _noise, _mtf15, _mtf15 * 0.55, true];
+// Input range is [0, 1] noise: 0 (full moon, low noise) = full MTF,
+// 1 (starlight, high noise) = degraded toward 55 %.
+private _mtfEffective = linearConversion [0, 1, _noise, _mtf15, _mtf15 * 0.55, true];
 if (_blowout > 0 && (_tier == "GEN3" || _tier == "PVS31")) then {
     _mtfEffective = _mtfEffective * (1 - _blowout * 0.4);
 };
@@ -576,4 +578,13 @@ if (!isNull _disp) then {
     _fibers ctrlSetText _fiberTex;
     _fibers ctrlCommit 0;
 };
+
+// ─── Depth of field (objective aperture) ─────────────────────────────────
+// The NVG objective is a fast lens (AN/AVS-9: 25 mm F/1.23).  A fast
+// aperture gives a shallow depth of field around the fixed focus plane
+// (hyperfocal ~20-28 m): near objects blur, distant stay sharp.  The
+// engine's DoF is driven by setAperture; A3TI's proven night range is
+// 15-25 (workshop 2041057379).  -1 disables.  Re-applied every tick in
+// case the engine resets it.
+setAperture 20;
 missionNamespace setVariable [QGVAR(nvgGrainActive), true];

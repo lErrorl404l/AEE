@@ -34,6 +34,14 @@ if command -v python3 &>/dev/null && [ -f "$ROOT/tools/run_tests.py" ]; then
     (cd "$ROOT" && python3 tools/run_tests.py --fast >/dev/null 2>&1) || FAILED=1
 fi
 
+# Sensor physics validation — stdlib only, always run. Verifies the NVG/
+# thermal equations against published references and audits every tunable
+# value against its documented wiki/ACE3 band.
+if command -v python3 &>/dev/null && [ -f "$ROOT/tools/validation/validate_sensors.py" ]; then
+    echo "-> sensor physics validation"
+    (cd "$ROOT" && python3 tools/validation/validate_sensors.py >/dev/null 2>&1) || FAILED=1
+fi
+
 if [ "$FAILED" -ne 0 ]; then
     echo "X pre-commit hook failed. Fix issues or use --no-verify."
     exit 1

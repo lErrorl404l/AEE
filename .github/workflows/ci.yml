@@ -19,6 +19,8 @@ jobs:
         run: python3 tools/stringtable_validator.py
       - name: Physics reference checks
         run: python3 tools/run_tests.py --fast
+      - name: Sensor physics validation
+        run: python3 tools/validation/validate_sensors.py
       - name: Check for BOM
         uses: arma-actions/bom-check@v1
         with:
