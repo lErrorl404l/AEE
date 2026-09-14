@@ -98,18 +98,21 @@ def fan_hits(scene, look_centre_deg=0.0):
     Returns the list of valid [dist, weight] hits, one per ray.
     """
     # Ray offsets: centre + 4 cardinal + 4 diagonal at the screen-space
-    # half-angle (11.3 deg on 16:9), with Gaussian falloff weights.
+    # half-angle (11.3 deg on 16:9).  Centre-DECISIVE weights: one centre
+    # hit (16) beats all eight background rays (2 each cardinal, 1 each
+    # diagonal = 12), so looking at an object focuses it even when the
+    # surrounding scene is farther.
     h = FOCUS_HALF_DEG
     rays = [
-        (0.0, 1.00),
-        (h, 0.45),
-        (-h, 0.45),
-        (h, 0.45),
-        (-h, 0.45),
-        (h * 1.414, 0.20),
-        (-h * 1.414, 0.20),
-        (-h * 1.414, 0.20),
-        (h * 1.414, 0.20),
+        (0.0, 16),
+        (h, 2),
+        (-h, 2),
+        (h, 2),
+        (-h, 2),
+        (h * 1.414, 1),
+        (-h * 1.414, 1),
+        (-h * 1.414, 1),
+        (h * 1.414, 1),
     ]
     hits = []
     for off, w in rays:
@@ -129,15 +132,15 @@ def fan_hits(scene, look_centre_deg=0.0):
 def median_hits(hits):
     """Mirror of the SQF: WEIGHTED median of valid hits; empty if < half.
 
-    Each [dist, weight] hit expands by round(weight*4) copies; the median
-    of the expanded array is the centre-weighted dominant surface.
+    Each [dist, weight] hit expands by weight copies (16/2/1); the median
+    of the expanded array is the centre-decisive dominant surface.
     """
     if len(hits) < FAN_COUNT / 2:
         return 0.0
     hits.sort(key=lambda h: h[0])
     weighted = []
     for d, w in hits:
-        weighted.extend([d] * int(round(w * 4)))
+        weighted.extend([d] * int(w))
     return weighted[len(weighted) // 2]
 
 
@@ -287,10 +290,16 @@ def check_dof_band_moves():
 
 
 def check_median_no_flipflop():
-    """Bush covering part of the fan must NOT drag focus off the building."""
-    # Bush at 3 m covers only the centre ray (1/9, angular width +-3 deg
-    # keeps the +-6 cardinal rays on the building).  The building at 20 m
-    # covers the remaining 8.  Median must be 20 m.
+    """Centre object wins (operator is looking at it); no flip-flop.
+
+    Centre-DECISIVE weights: a bush exactly at screen centre (weight 16)
+    beats the building behind it (weights 2+2+1+1 on the cardinals/
+    diagonals that catch it = 12) because the operator IS looking at the
+    bush.  This is correct: no zoom needed, the centre ray decides.
+    The bush must then HOLD focus (no flip-flop) as the fan jitters.
+    """
+    # Bush at 3 m exactly at centre (+-3 deg covers the centre ray only),
+    # building at 20 m behind it covering the rest.
     scene = [
         (-3.0, 3.0, 3.0, False),
         (3.0, 12.0, 20.0, False),
@@ -298,17 +307,17 @@ def check_median_no_flipflop():
     ]
     hits = fan_hits(scene)
     med = median_hits(hits)
-    ok = med == 20.0
+    ok = med == 3.0  # centre decisive: what you look at wins
     return {
-        "name": "Median aggregation - no flip-flop",
-        "ground_truth": "Dominant surface (building, 8/9 rays) wins over centre-only bush (1/9)",
-        "grid": "bush 3 m (1 ray, +-3 deg) in front of building 20 m (8 rays)",
-        "tolerance": "median == 20 m",
+        "name": "Centre-decisive - no flip-flop",
+        "ground_truth": "Centre object (16) beats background (12): looking at it focuses it",
+        "grid": "bush 3 m at centre in front of building 20 m",
+        "tolerance": "median == 3 m (the centred bush)",
         "status": "PASS" if ok else "FAIL",
-        "max_abs": f"median={med} m, hits={sorted(hits)}",
+        "max_abs": f"median={med} m, weighted hits={sorted(hits)}",
         "rmse": 0.0,
         "unit": "m",
-        "note": "Nearest-hit would return 3 m and flip-flop as the bush enters/leaves",
+        "note": "The centre ray is what the operator aims; it must win without zoom",
     }
 
 
