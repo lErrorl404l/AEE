@@ -49,7 +49,9 @@ class RscTitles {
             // centred so the circle is not elliptical.
             class NVGMask: RscPicture {
                 idc = 1000;
-                text = QPATHTOF(data\nvg_mask_2048.paa);
+                // Default = single tube; the SQF sets single/dual/quad per
+                // device when the display opens (fnc_applyNVGTubeModel).
+                text = QPATHTOF(data\nvg_mask_single_2048.paa);
                 x = "safeZoneX + (safeZoneW - safeZoneH) / 2";
                 y = "safeZoneY";
                 w = "safeZoneH";
