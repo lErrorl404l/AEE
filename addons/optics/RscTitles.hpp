@@ -56,8 +56,11 @@ class RscTitles {
                 font = "PuristaMedium";
                 sizeEx = "0.014 * safezoneH";
                 colorText[] = {0.45, 0.85, 0.35, 1};
+                // Inside the tube face, near its bottom edge.  The mask
+                // occupies safeZoneY..safeZoneY+safeZoneH, so 0.90 puts
+                // the text just above the mask rim - visible, not clipped.
                 x = "safeZoneX + (safeZoneW - safeZoneH) / 2 - safeZoneH * 0.10";
-                y = "safeZoneY + safeZoneH * 1.02";
+                y = "safeZoneY + safeZoneH * 0.90";
                 w = "safeZoneH * 0.20";
                 h = "0.020 * safezoneH";
             };
@@ -70,7 +73,7 @@ class RscTitles {
                 sizeEx = "0.012 * safezoneH";
                 colorText[] = {0.45, 0.85, 0.35, 0.8};
                 x = "safeZoneX + (safeZoneW - safeZoneH) / 2 - safeZoneH * 0.12";
-                y = "safeZoneY + safeZoneH * 1.045";
+                y = "safeZoneY + safeZoneH * 0.915";
                 w = "safeZoneH * 0.24";
                 h = "0.018 * safezoneH";
             };

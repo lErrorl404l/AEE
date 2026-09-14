@@ -74,6 +74,20 @@ MAX_STEP_M = 1.5  # 15 m/s at 0.1 s tick
 SETTLE_M = 0.1
 TICK_S = 0.1
 
+# Screen-space fan spread (mirror of the SQF).  The focus target area is
+# 15 % of the player's horizontal view, converted to a world half-angle
+# via the aspect ratio:
+#   tan(hFOV/2) = tan(vFOV/2) * aspect,  vFOV from fovTop = 0.75
+#   focus_half = atan(tan(hFOV/2) * 0.15)
+# Default 16:9 -> 11.3 deg half-angle (was a fixed 6 deg, which is only
+# ~8 % of screen and too small on ultrawide).
+import math as _math
+
+_FOV_TOP = 0.75
+_ASPECT = 16.0 / 9.0
+_H_FOV_TAN = _math.tan(_math.atan(_FOV_TOP)) * _ASPECT
+FOCUS_HALF_DEG = _math.degrees(_math.atan(_H_FOV_TAN * 0.15))
+
 
 def fan_hits(scene, look_centre_deg=0.0):
     """Simulate the 9-ray fan against a scene.
@@ -83,8 +97,10 @@ def fan_hits(scene, look_centre_deg=0.0):
     whether the hit is the operator's own model (weapon/body).
     Returns the list of valid hit distances, one per ray.
     """
-    # Ray offsets: centre + 4 cardinal + 4 diagonal at ~6 deg half-angle.
-    offsets = [0.0, 6.0, -6.0, 6.0, -6.0, 8.5, -8.5, -8.5, 8.5]
+    # Ray offsets: centre + 4 cardinal + 4 diagonal at the screen-space
+    # half-angle (11.3 deg on 16:9).
+    h = FOCUS_HALF_DEG
+    offsets = [0.0, h, -h, h, -h, h * 1.414, -h * 1.414, -h * 1.414, h * 1.414]
     hits = []
     for off in offsets:
         theta = look_centre_deg + off
@@ -275,12 +291,12 @@ def check_median_no_flipflop():
 
 def check_bush_dominant():
     """Bush covering MOST of the fan genuinely dominates focus."""
-    # Bush at 3 m covers +-7 deg (5 rays: centre + both +-6 cardinal + both
-    # 8.5 diagonals), the building the remaining 4.  Median must be 3 m.
+    # Bush at 3 m covers +-12 deg (centre + both 11.3 cardinals + both 16
+    # diagonals = 5+ rays), the building the remaining 4.  Median = 3 m.
     scene = [
-        (-7.0, 7.0, 3.0, False),
-        (7.0, 12.0, 20.0, False),
-        (-12.0, -7.0, 20.0, False),
+        (-12.0, 12.0, 3.0, False),
+        (12.0, 18.0, 20.0, False),
+        (-18.0, -12.0, 20.0, False),
     ]
     hits = fan_hits(scene)
     med = median_hits(hits)
@@ -288,7 +304,7 @@ def check_bush_dominant():
     return {
         "name": "Dominant near object focuses",
         "ground_truth": "Bush covering 5+ rays is the target area's dominant surface",
-        "grid": "bush 3 m (5 rays) dominates building 20 m (4 rays)",
+        "grid": "bush 3 m (+-12 deg, 5+ rays) dominates building 20 m",
         "tolerance": "median == 3 m",
         "status": "PASS" if ok else "FAIL",
         "max_abs": f"median={med} m, hits={sorted(hits)}",
@@ -300,18 +316,20 @@ def check_bush_dominant():
 
 def check_weapon_exclusion():
     """Hits on the operator's own model (weapon) are excluded by identity."""
-    # Weapon at 0.7 m (is_player=True) covers the centre ray only.
+    # Weapon at 0.7 m (is_player=True) covers the centre ray only; the wall
+    # is wide enough (+-18 deg) that every offset ray of the screen-space
+    # fan (11.3/16 deg) lands on it.
     scene = [
         (-1.0, 1.0, 0.7, True),
-        (1.0, 12.0, 25.0, False),
-        (-12.0, -1.0, 25.0, False),
+        (1.0, 18.0, 25.0, False),
+        (-18.0, -1.0, 25.0, False),
     ]
     hits = fan_hits(scene)
     ok = 0.7 not in hits and len(hits) == 8
     return {
         "name": "Weapon exclusion by object identity",
         "ground_truth": "Operator focuses past the weapon; own-model hits ignored",
-        "grid": "weapon 0.7 m (centre ray, is_player) + wall 25 m",
+        "grid": "weapon 0.7 m (centre ray, is_player) + wall 25 m (+-18 deg)",
         "tolerance": "no 0.7 m hit, all 8 non-weapon rays valid",
         "status": "PASS" if ok else "FAIL",
         "max_abs": f"hits={sorted(hits)}",
@@ -661,8 +679,9 @@ def check_manual_mode_holds():
     """MANUAL mode: the ring holds the player-set distance, no auto-rack."""
     # In manual mode the state machine is bypassed; the focus is the
     # player's ring position regardless of the scene.
-    fh, rh, sh = run_scenario([(0.0, 30.0, [(-12.0, 12.0, 3.0, False)])],
-                              focus0=15.0, n_ticks=300)
+    fh, rh, sh = run_scenario(
+        [(0.0, 30.0, [(-12.0, 12.0, 3.0, False)])], focus0=15.0, n_ticks=300
+    )
     # Manual = the keybound value, NOT the scene target.
     ok = True  # state machine output ignored; real gate is in the SQF
     return {

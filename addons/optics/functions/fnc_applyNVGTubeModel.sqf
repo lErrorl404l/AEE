@@ -584,15 +584,28 @@ if (_hDoF < 0) then {
 // Geometry mode FIRE: hits everything with bullet collision - sandbags,
 // bushes, walls, terrain.  GEOM missed the low sandbag in testing.
 //
-// Fan spread ~6 deg half-angle (~12 deg total, the centre-weighted view of
-// a real 40 deg NVG objective).  1.5 deg was far too tight: at 10 m the
-// cone is only 0.26 m wide, so an object even slightly off screen-centre
-// was missed and the focus never moved until the operator forced the
-// target dead-centre.  6 deg at 10 m is ~1 m - a wall or bush the player
-// is actually looking at is caught without pin-point aiming.
+// Fan spread is SCREEN-SPACE, not a fixed world angle: it covers ~15 % of
+// the player's horizontal view, the central region the eye actually
+// focuses on.  A fixed 6 deg world angle is wrong on ultrawide (21:9)
+// where 15 % of screen is ~14.7 deg, and too wide on 4:3 where it is
+// ~6.8 deg.  Convert via the player's aspect ratio:
+//   tan(hFOV/2) = tan(vFOV/2) * aspect,  vFOV from fovTop (0.75 default)
+//   focus_half = atan(tan(hFOV/2) * 0.15)
+// getResolution #4 = screen aspect (width/height).  Fall back to 16:9
+// if the query returns 0 (headless or pre-init).
 private _eyePos = eyePos _player;
-private _lookDir = vectorDir _player;
-private _spread = 300 * (tan 6);      // offset at the 300 m end
+// vectorDirVisual = where the EYES look (free-look / head direction).
+// vectorDir would be the body direction - free-looking at a lamp post
+// would not move the focus fan.  The fan must track the eye, the same
+// as the blowout cone at line 304.
+private _lookDir = vectorDirVisual _player;
+private _aspect = getResolution select 4;
+if (_aspect <= 0) then { _aspect = 16.0 / 9.0; };
+private _fovTop = getNumber (configFile >> "CfgDifficulties" >> "Base" >> "fovTop");
+if (_fovTop <= 0) then { _fovTop = 0.75; };
+private _hFovTan = tan (atan _fovTop) * _aspect;
+private _focusHalfDeg = atan (_hFovTan * 0.15);   // 15 % of screen width
+private _spread = 300 * (tan _focusHalfDeg);      // offset at the 300 m end
 private _upVec   = vectorUp _player;
 private _rightVec = _lookDir vectorCrossProduct _upVec;
 // ─── Fan raycast, MEDIAN aggregation ─────────────────────────────────────

@@ -32,15 +32,17 @@
 
 // Manual ring: hold the key to rack in or out.  Rack speed ~10 m/s,
 // matching the ring-turn feel.  Stored distance is clamped to the
-// objective's 0.25 m near limit and 300 m far limit.
+// objective's 0.25 m near limit and 300 m far limit.  The 6th arg is
+// the default KEYBIND [key, [shift, ctrl, alt]] - [0, [false,false,false]]
+// means unbound by default (the player assigns it in Configure Addons).
 ["AEE", "DoFFocusIn", [LLSTRING(DoFFocusIn), "NVG manual focus: rack nearer"], {
     private _d = missionNamespace getVariable ["aee_optics_dofManualDist", 15];
     _d = (_d - 1) max 0.25;
     missionNamespace setVariable ["aee_optics_dofManualDist", _d];
-}, {}, [false, false, false]] call CBA_fnc_addKeybind;
+}, {}, [0, [false, false, false]]] call CBA_fnc_addKeybind;
 
 ["AEE", "DoFFocusOut", [LLSTRING(DoFFocusOut), "NVG manual focus: rack farther"], {
     private _d = missionNamespace getVariable ["aee_optics_dofManualDist", 15];
     _d = (_d + 1) min 300;
     missionNamespace setVariable ["aee_optics_dofManualDist", _d];
-}, {}, [false, false, false]] call CBA_fnc_addKeybind;
+}, {}, [0, [false, false, false]]] call CBA_fnc_addKeybind;
