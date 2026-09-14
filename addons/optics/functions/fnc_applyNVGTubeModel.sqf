@@ -159,6 +159,10 @@ private _dofModeDefault = 1;    // manual by default: real NVGs are manual
 private _dofNearLimit = 0.25;
 private _dofDefaultDist = 15;   // hyperfocal mid-band
 private _dofMaxDist = 300;
+// Tube count -> mask silhouette.  Real devices: PVS-14 monocular (1 tube),
+// PVS-31A/DTNVS/ENVG-II binocular (2 tubes), GPNVG-18 panoramic quad (4
+// tubes).  The mask is set on the NVGMask control when the display opens.
+private _tubeCount = 1;
 
 // Tier matcher by HMD classname.  Substring tests run most-specific first.
 // The ENVG-II (NVGogglesB_grn_F/blk_F/gry_F, Apex) and panoramic GPNVG-class
@@ -183,6 +187,7 @@ if (_hmd find "USP_PVS31" >= 0 || _hmd find "PVS31" >= 0 || _hmd find "USP_PVS_3
     _dofModeDefault = parseNumber ((_hmd find "NVGogglesB_grn_F") < 0);
     _dofNearLimit = 0.45;
     _dofDefaultDist = 20;   // PVS-31A/GPNVG ring, hyperfocal for f/1.4
+    _tubeCount = [4, 2] select ((_hmd find "GPNVG" >= 0 || _hmd find "NVG_Wide" >= 0) isEqualTo false);
 } else {
     if (_hmd find "NVGen3" >= 0 || _hmd find "NVGoggles_INDEP" >= 0) then {
         _tier = "GEN3";
@@ -805,12 +810,41 @@ if (_rawTarget > 0) then {
 };
 
 if (_pending > 0 && CBA_missionTime >= _holdUntil) then {
-    private _step = _pending - _curFocus;
-    private _maxStep = 1.5;               // 15 m/s at 0.1 s tick
-    if (abs _step > _maxStep) then {
-        _step = _maxStep * ([1, -1] select (_step < 0));
+    // ─── Lens rack in LENS-TRAVEL space (constant ring angular rate) ─────
+    // A real NVG objective is a smooth helical focus ring, ~270 deg over
+    // the full throw, no detent (friction-held).  The operator turns it
+    // at a roughly CONSTANT angular velocity; the cam maps angle to lens
+    // travel LINEARLY.  Focus distance is NOT linear in lens travel:
+    // thin lens 1/f = 1/s + 1/s' -> lens travel x = f^2/(s-f) for
+    // object distance s (f = 27 mm objective, ATN PVS-14 spec).
+    //
+    //   s = 0.25 m -> x = 3.3 mm   (throw near end)
+    //   s = 3 m    -> x = 0.24 mm
+    //   s = 143 m  -> x = 0.005 mm
+    //
+    // So a constant x-rate sweeps focus distance NON-linearly: fast at
+    // distance (tiny x covers huge s), slow up close (most of the throw
+    // is the 0.25-3 m region).  That is the real feel: near->far, the
+    // ring sweeps the near region slowly then "reaches" the far setting;
+    // far->near, the first tick jumps the focus far before settling.
+    //
+    // Rack speed: a deliberate full-range twist is ~0.5 s (0.3-1 s
+    // bracket, forum-sourced).  The throw (x range) is device-specific:
+    // x_throw = f^2/(near-f), so PVS-14 (0.25 m near) is 3.3 mm and
+    // PVS-31A/GPNVG (0.45 m near) is ~1.7 mm - the GPNVG ring is finer
+    // per degree.  xStep per 0.1 s tick = throw / 5 (full range in 0.5 s).
+    private _focalLen = 0.027;                            // objective f, m
+    private _f2 = _focalLen * _focalLen;                  // 0.000729
+    private _xNow = _f2 / (_curFocus - _focalLen);
+    private _xTgt = _f2 / (_pending - _focalLen);
+    private _throw = _f2 / (_dofNearLimit - _focalLen);   // device throw
+    private _xStep = _throw / 5;                          // ~0.5 s full range
+    private _xMove = _xTgt - _xNow;
+    if (abs _xMove > _xStep) then {
+        _xMove = _xStep * ([1, -1] select (_xMove < 0));
     };
-    _curFocus = _curFocus + _step;
+    private _xNew = _xNow + _xMove;
+    _curFocus = _focalLen + _f2 / _xNew;
     if (abs (_pending - _curFocus) < 0.1) then {
         _curFocus = _pending;           // settle exactly
         _pending = 0;
@@ -995,6 +1029,7 @@ private _fiberTex = switch (_tier) do {
     case "GEN2": { QPATHTOF(data\nvg_fibers_gen2_1024.paa) };
     default { "" };
 };
+private _disp = uiNamespace getVariable [QGVAR(titleDisplay), displayNull];
 if !(missionNamespace getVariable [QGVAR(nvgDisplayUp), false]) then {
     // Open the display on a dedicated layer via BIS_fnc_rscLayer - the
     // ACE3 weather-HUD pattern (fnc_displayWindInfo.sqf, proven visible
@@ -1004,8 +1039,21 @@ if !(missionNamespace getVariable [QGVAR(nvgDisplayUp), false]) then {
     // through BIS_fnc_rscLayer so it sits above the NVG post-process.
     (["aee_optics_nvg_title"] call BIS_fnc_rscLayer) cutRsc [QGVAR(nvgTitle), "PLAIN", 1, false];
     missionNamespace setVariable [QGVAR(nvgDisplayUp), true];
+    // Set the per-device tube silhouette on the mask control.  The mask
+    // PAA has the tube circles transparent and a SEMI-TRANSPARENT dark
+    // border outside (alpha ~200): the dim NVG scene shows through around
+    // the tubes, simulating peripheral awareness - not a hard black void
+    // (real goggles leave your periphery as faint shapes).  single/dual/
+    // quad match the device's tube count.
+    private _maskTex = switch (_tubeCount) do {
+        case 2:  { QPATHTOF(data\nvg_mask_dual_2048.paa) };
+        case 4:  { QPATHTOF(data\nvg_mask_quad_2048.paa) };
+        default { QPATHTOF(data\nvg_mask_single_2048.paa) };
+    };
+    private _maskCtl = _disp displayCtrl 1000;
+    _maskCtl ctrlSetText _maskTex;
+    _maskCtl ctrlCommit 0;
 };
-private _disp = uiNamespace getVariable [QGVAR(titleDisplay), displayNull];
 if (!isNull _disp) then {
     private _fibers = _disp displayCtrl 1001;
     _fibers ctrlSetFade (1 - _fiberAlpha);

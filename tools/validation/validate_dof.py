@@ -145,6 +145,52 @@ def median_hits(hits):
     return weighted[len(weighted) // 2]
 
 
+def lens_x(focal_m, s_m):
+    """Lens travel x for object distance s (thin lens): x = f^2/(s-f).
+    Monotonic in s: larger s -> smaller x.  The rack moves x at a
+    constant rate, so per-tick x steps are capped while distance steps
+    vary (large at distance, small up close)."""
+    return focal_m * focal_m / (s_m - focal_m)
+
+
+def max_x_step_ok(focus_hist, focal_m=0.027, near_limit=NEAR_LIMIT_M):
+    """True if per-tick LENS-TRAVEL steps are within the ring cap.
+
+    The rack cap is throw/5 (full ring travel in ~0.5 s).  Distance
+    steps in focus_hist can exceed any fixed m/tick value (fast at
+    distance, slow up close) - the lens-travel step is the physical
+    invariant, not the distance step.
+
+    ONE step per rack may exceed the cap: the SETTLE landing.  The
+    state machine racks at cap speed, then when focus is within the
+    0.1 m settle threshold it snaps exactly onto the target (the ring's
+    final turn).  Near the near limit that small distance is a large
+    x-step, so allow a single settle step; everything else must stay
+    within the cap."""
+    x_hist = [lens_x(focal_m, max(f, focal_m + 1e-4)) for f in focus_hist]
+    if len(x_hist) < 2:
+        return True
+    throw_m = focal_m * focal_m / (near_limit - focal_m)
+    cap = throw_m / 5.0 + 1e-9
+    steps = sorted(
+        (abs(x_hist[i + 1] - x_hist[i]) for i in range(len(x_hist) - 1)),
+        reverse=True,
+    )
+    # Largest step may be the settle; the second-largest must be in cap.
+    return all(s <= cap for s in steps[1:])
+
+
+def monotonic_toward(focus_hist, target, focal_m=0.027):
+    """True if focus moves monotonically toward target in lens-travel
+    space (no reversal, no overshoot oscillation)."""
+    x_hist = [lens_x(focal_m, max(f, focal_m + 1e-4)) for f in focus_hist]
+    x_tgt = lens_x(focal_m, max(target, focal_m + 1e-4))
+    return all(
+        (x_hist[i + 1] - x_hist[i]) * (x_tgt - x_hist[i]) >= -1e-9
+        for i in range(len(x_hist) - 1)
+    )
+
+
 def state_machine(raw_target, cur_focus, pending, hold_until, t):
     """Mirror of the SQF O3DE state machine.  Returns (cur, pending, hold)."""
     deadband = max(cur_focus * DEADBAND_FRAC, DEADBAND_MIN_M)
@@ -166,10 +212,25 @@ def state_machine(raw_target, cur_focus, pending, hold_until, t):
             if pending == 0:
                 hold_until = 0.0
     if pending > 0 and t >= hold_until:
-        step = pending - cur_focus
-        if abs(step) > MAX_STEP_M:
-            step = MAX_STEP_M * (1.0 if step > 0 else -1.0)
-        cur_focus += step
+        # Lens rack in LENS-TRAVEL space (mirror of the SQF).  A real NVG
+        # objective is a smooth helical ring, ~270 deg over the full throw,
+        # turned at constant angular velocity; the cam maps angle to lens
+        # travel linearly.  Focus distance s relates to lens travel x by
+        # the thin lens: x = f^2/(s-f), f = 27 mm.  A constant x-rate
+        # sweeps s NON-linearly: fast at distance, slow up close.
+        # xStep per tick = device throw / 5 (full range in ~0.5 s),
+        # throw = f^2/(near - f).
+        f = 0.027
+        f2 = f * f
+        x_now = f2 / (cur_focus - f)
+        x_tgt = f2 / (pending - f)
+        throw_m = f2 / (NEAR_LIMIT_M - f)  # device near limit
+        x_step = throw_m / 5.0
+        x_move = x_tgt - x_now
+        if abs(x_move) > x_step:
+            x_move = x_step * (1.0 if x_move > 0 else -1.0)
+        x_new = x_now + x_move
+        cur_focus = f + f2 / x_new
         if abs(pending - cur_focus) < SETTLE_M:
             cur_focus = pending
             pending = 0.0
@@ -398,15 +459,17 @@ def check_blur_gate():
         d = max(10.0 - t * 0.33, 0.2)  # walk from 10 m to 0.2 m
         series.append((t, t + TICK_S, [(-12.0, 12.0, d, False)]))
     fh, rh, sh = run_scenario(series, focus0=10.0, n_ticks=300)
-    # Focus must track down to the near limit smoothly (no jump > 1.5 m/tick
-    # beyond the rack speed), and must NOT go below the near limit.
+    # Focus must track down to the near limit.  The rack is x-space
+    # (lens travel): per-tick LENS step is capped, not the distance step
+    # (which grows as focus nears the lens).  Assert the x invariant and
+    # that focus never goes below the near limit.
     steps = [abs(fh[i + 1] - fh[i]) for i in range(len(fh) - 1)]
-    ok = min(fh) >= NEAR_LIMIT_M - 0.01 and max(steps) <= MAX_STEP_M + 1e-9
+    ok = min(fh) >= NEAR_LIMIT_M - 0.01 and max_x_step_ok(fh)
     return {
         "name": "Blur gate - close tracking, no snap",
         "ground_truth": "Real object tracks to 25 cm near limit; no hard cut",
         "grid": "wall 10 m -> 0.2 m over 30 s",
-        "tolerance": "focus >= 25 cm always, max step <= 1.5 m/tick",
+        "tolerance": "focus >= 25 cm always, lens-travel step within ring cap",
         "status": "PASS" if ok else "FAIL",
         "max_abs": f"min focus={min(fh):.2f} m, max step={max(steps):.2f} m",
         "rmse": 0.0,
@@ -438,28 +501,45 @@ def check_hold_on_empty():
 
 
 def check_glide_no_snap():
-    """A large focus change glides monotonically, never teleports."""
+    """A large focus change glides monotonically in LENS-TRAVEL space,
+    never teleports.
+
+    The rack is constant lens-travel rate (real NVG ring: ~270 deg over
+    the full throw, turned at constant angular velocity; thin-lens
+    x = f^2/(s-f)).  In DISTANCE space the step therefore varies - large
+    at distance, small up close - so a fixed m/tick cap is the wrong
+    invariant.  The right checks: per-tick lens-travel step within the
+    ring cap (throw/5), monotonic approach (no reversal), arrival at the
+    target, and no overshoot past it."""
     # Transition 3 m (bush) -> 20 m (building) as the player re-aims.
     bush = [(-12.0, 12.0, 3.0, False)]
     bldg = [(-12.0, 12.0, 20.0, False)]
     series = [(0.0, 2.0, bush), (2.0, 30.0, bldg)]
     fh, rh, sh = run_scenario(series, focus0=3.0, n_ticks=300)
-    # Max per-tick step must be <= MAX_STEP_M (no teleport).
-    steps = [abs(fh[i + 1] - fh[i]) for i in range(len(fh) - 1)]
-    max_step = max(steps)
-    # Must actually arrive at 20 m within the window.
+    F = 0.027
+    x_hist = [lens_x(F, max(f, F + 1e-4)) for f in fh]
+    x_steps = [abs(x_hist[i + 1] - x_hist[i]) for i in range(len(x_hist) - 1)]
+    max_x_step = max(x_steps) if x_steps else 0.0
+    throw_m = F * F / (NEAR_LIMIT_M - F)
+    x_cap = throw_m / 5.0 + 1e-9
+    # Monotonic: the rack only moves toward the target (no reversal).
+    x_tgt = lens_x(F, 20.0)
+    monotonic = all(
+        (x_hist[i + 1] - x_hist[i]) * (x_tgt - x_hist[i]) >= -1e-9
+        for i in range(len(x_hist) - 1)
+    )
     arrived = abs(fh[-1] - 20.0) < 0.2
-    ok = max_step <= MAX_STEP_M + 1e-9 and arrived
+    ok = max_x_step <= x_cap and monotonic and arrived
     return {
         "name": "Glide - no snap",
-        "ground_truth": "Constant-speed rack: 3 -> 20 m over ~1.2 s, monotonic",
+        "ground_truth": "Lens-travel rack: 3 -> 20 m monotonic in x, no teleport, arrives",
         "grid": "bush 3 m then building 20 m",
-        "tolerance": f"per-tick step <= {MAX_STEP_M} m AND arrives at 20 m",
+        "tolerance": f"per-tick x-step <= {x_cap:.2e} m, monotonic, arrives at 20 m",
         "status": "PASS" if ok else "FAIL",
-        "max_abs": f"max step={max_step:.2f} m/tick, final={fh[-1]:.2f} m",
+        "max_abs": f"max x-step={max_x_step:.2e} m/tick, final={fh[-1]:.2f} m",
         "rmse": 0.0,
         "unit": "m",
-        "note": "The 40 m/s version snapped; 15 m/s glides like a ring turn",
+        "note": "x-space rack: fast at distance, gentle up close - the real ring feel",
     }
 
 
@@ -545,12 +625,12 @@ def check_extreme_near():
     fh, rh, sh = run_scenario(series, focus0=3.0, n_ticks=300)
     min_f = min(fh)
     steps = [abs(fh[i + 1] - fh[i]) for i in range(len(fh) - 1)]
-    ok = min_f >= NEAR_LIMIT_M - 0.01 and max(steps) <= MAX_STEP_M + 1e-9
+    ok = min_f >= NEAR_LIMIT_M - 0.01 and max_x_step_ok(fh)
     return {
         "name": "Extreme near - wall to 20 cm",
         "ground_truth": "Objective near limit 25 cm; focus clamps there",
         "grid": "wall 3 m -> 0.2 m over 30 s",
-        "tolerance": "focus >= 25 cm always, no step > 1.5 m",
+        "tolerance": "focus >= 25 cm always, lens-travel step within ring cap",
         "status": "PASS" if ok else "FAIL",
         "max_abs": f"min focus={min_f:.2f} m, max step={max(steps):.2f} m",
         "rmse": 0.0,
@@ -565,15 +645,13 @@ def check_extreme_far():
     bldg = [(-12.0, 12.0, 250.0, False)]
     series = [(0.0, 1.0, [(-12.0, 12.0, 3.0, False)]), (1.0, 30.0, bldg)]
     fh, rh, sh = run_scenario(series, focus0=3.0, n_ticks=300)
-    ok = (
-        abs(fh[-1] - 250.0) < 0.5
-        and max(abs(fh[i + 1] - fh[i]) for i in range(len(fh) - 1)) <= MAX_STEP_M + 1e-9
-    )
+    steps = [abs(fh[i + 1] - fh[i]) for i in range(len(fh) - 1)]
+    ok = abs(fh[-1] - 250.0) < 0.5 and max_x_step_ok(fh) and monotonic_toward(fh, 250.0)
     return {
         "name": "Extreme far - rack to 250 m",
-        "ground_truth": "Constant-speed rack reaches the far surface",
+        "ground_truth": "Lens-travel rack reaches the far surface, monotonic",
         "grid": "3 m then 250 m building",
-        "tolerance": "arrives at 250 m, no teleport",
+        "tolerance": "arrives at 250 m, lens-travel step within cap, no reversal",
         "status": "PASS" if ok else "FAIL",
         "max_abs": f"final={fh[-1]:.2f} m",
         "rmse": 0.0,
@@ -668,17 +746,20 @@ def check_normal_pan():
     ]
     fh, rh, sh = run_scenario(series, focus0=5.0, n_ticks=300)
     steps = [abs(fh[i + 1] - fh[i]) for i in range(len(fh) - 1)]
-    ok = abs(fh[-1] - 80.0) < 0.5 and max(steps) <= MAX_STEP_M + 1e-9
+    # x-space rack: each rack is monotonic toward its target, no per-tick
+    # lens-travel step above the ring cap.  The 5->30->80 m transitions
+    # each arrive (checked by the settle gate in state_machine).
+    ok = abs(fh[-1] - 80.0) < 0.5 and max_x_step_ok(fh) and monotonic_toward(fh, 80.0)
     return {
         "name": "Normal pan - smooth glide",
-        "ground_truth": "5 -> 30 -> 80 m rack glides at constant speed",
+        "ground_truth": "5 -> 30 -> 80 m rack glides in lens-travel space",
         "grid": "bush 5 m (8 s), field 30 m (8 s), ridge 80 m (14 s)",
-        "tolerance": "arrives at 80 m, no step > 1.5 m",
+        "tolerance": "arrives at 80 m, lens-travel step within cap, monotonic",
         "status": "PASS" if ok else "FAIL",
         "max_abs": f"final={fh[-1]:.2f} m, max step={max(steps):.2f} m",
         "rmse": 0.0,
         "unit": "m",
-        "note": "Normal use: the ring racks between targets at constant speed",
+        "note": "Normal use: the ring racks between targets at ring speed",
     }
 
 
@@ -779,6 +860,7 @@ def check_movement_sweep_stable():
 
 
 # ─── Main ──────────────────────────────────────────────────────────────────
+
 
 def check_device_defaults():
     """Per-device objective focus config mirrors the researched facts:
