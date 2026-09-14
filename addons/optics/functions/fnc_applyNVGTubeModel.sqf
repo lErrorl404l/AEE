@@ -233,6 +233,29 @@ _chromaStrength = 0.006;
 };
 missionNamespace setVariable [QGVAR(nvgTubeTier), _tier];
 
+// ─── Tube-edge vignette (lens rim) — PHYSICS-derived, not ACE3's tuning ──
+// RadialBlur offset = "relative size of un-blurred centre" in screen
+// units.  The lens-edge falloff must put the un-blurred centre AT the
+// tube rim, so the blur starts exactly where the glass meets the
+// housing.  Our mask is a safeZoneH square centred on screen; the tube
+// circle radius is a fraction of that square.  Convert to screen units:
+//   offsetY = radius_frac * (square_H / screen_H)  = radius_frac (16:9)
+//   offsetX = radius_frac * (square_W / screen_W)  = radius_frac / aspect
+// ACE3's bluRadius (0.15/0.26) is their tuning for their mask geometry,
+// not a physics value - the proof-of-concept, not the source.  These are
+// derived from OUR mask circles so the blur sits on OUR lens rim.
+private _tubeRadius = switch (_tubeCount) do {
+    case 2:  { 0.40 };
+    case 4:  { 0.24 };
+    default { 0.44 };
+};
+private _vigAspect = getResolution select 4;
+if (_vigAspect <= 0) then { _vigAspect = 16.0 / 9.0; };
+private _vigOffY = _tubeRadius;
+private _vigOffX = _tubeRadius / _vigAspect;
+_vigStrength set [2, _vigOffX];
+_vigStrength set [3, _vigOffY];
+
 // Log tier detection once per NVG session (INFO, not per-tick): the hmd
 // classname and resolved tier tell us immediately whether the device was
 // recognised.  "AUTO" means the classname matched nothing — the effects
