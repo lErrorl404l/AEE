@@ -619,28 +619,34 @@ private _focusHalfDeg = atan ((tan _hFovLive) * 0.15);   // 15 % of screen
 private _spread = 300 * (tan _focusHalfDeg);      // offset at the 300 m end
 private _upVec   = vectorUp _player;
 private _rightVec = _lookDir vectorCrossProduct _upVec;
-// ─── Fan raycast, MEDIAN aggregation ─────────────────────────────────────
-// Each fan ray returns its nearest hit; the raw target is the MEDIAN of
-// the valid hits, not the minimum.  Nearest-hit aggregation flip-flops:
-// a bush at 3 m covering part of the fan beats the building at 20 m, so
-// the focus racks to the bush, then to the building when the bush leaves
-// the fan, then back.  The median is the DOMINANT surface distance of
-// the target area — a single near outlier cannot drag it.  If fewer
-// than half the rays hit (open sky through the fan), treat as empty.
+// ─── Fan raycast, CENTRE-WEIGHTED median (gradual falloff) ──────────────
+// The fan is not a hard circle: each ray contributes by how far it sits
+// from the centre (Gaussian falloff).  Centre ray weight 1.0, cardinals
+// ~0.5, diagonals ~0.25 - so the target area fades out toward its edge
+// instead of abruptly stopping.  The raw target is the WEIGHTED MEDIAN of
+// the hits: the dominant surface near the centre wins (a single edge
+// outlier cannot drag it), but an object at the fan edge still counts
+// weakly rather than being excluded by a hard radius.
+//
+// Weights (normalised to the centre):
+//   centre 1.00, cardinal 0.45, diagonal 0.20  (Gaussian sigma ~half-spread)
+// The weighted median is computed by expanding each hit by its weight in
+// the sorted array and taking the middle element.
 private _hitsArr = [];
 private _fan = [
-    _lookDir,
-    _lookDir vectorAdd (_upVec vectorMultiply _spread),
-    _lookDir vectorAdd (_upVec vectorMultiply (-_spread)),
-    _lookDir vectorAdd (_rightVec vectorMultiply _spread),
-    _lookDir vectorAdd (_rightVec vectorMultiply (-_spread)),
-    _lookDir vectorAdd ((_upVec vectorAdd _rightVec) vectorMultiply _spread),
-    _lookDir vectorAdd ((_upVec vectorAdd _rightVec) vectorMultiply (-_spread)),
-    _lookDir vectorAdd ((_upVec vectorAdd _rightVec vectorMultiply (-1)) vectorMultiply _spread),
-    _lookDir vectorAdd ((_upVec vectorAdd _rightVec vectorMultiply (-1)) vectorMultiply (-_spread))
+    [_lookDir, 1.00],
+    [_lookDir vectorAdd (_upVec vectorMultiply _spread), 0.45],
+    [_lookDir vectorAdd (_upVec vectorMultiply (-_spread)), 0.45],
+    [_lookDir vectorAdd (_rightVec vectorMultiply _spread), 0.45],
+    [_lookDir vectorAdd (_rightVec vectorMultiply (-_spread)), 0.45],
+    [_lookDir vectorAdd ((_upVec vectorAdd _rightVec) vectorMultiply _spread), 0.20],
+    [_lookDir vectorAdd ((_upVec vectorAdd _rightVec) vectorMultiply (-_spread)), 0.20],
+    [_lookDir vectorAdd ((_upVec vectorAdd _rightVec vectorMultiply (-1)) vectorMultiply _spread), 0.20],
+    [_lookDir vectorAdd ((_upVec vectorAdd _rightVec vectorMultiply (-1)) vectorMultiply (-_spread)), 0.20]
 ];
 {
-    private _end = _eyePos vectorAdd (_x vectorMultiply 300);
+    _x params ["_rayDir", "_rayWeight"];
+    private _end = _eyePos vectorAdd (_rayDir vectorMultiply 300);
     private _hits = lineIntersectsSurfaces [
         _eyePos, _end, _player, objNull, true, 1, "FIRE", "NONE"
     ];
@@ -657,30 +663,43 @@ private _fan = [
         private _hitObj = _hits select 0 select 2;
         private _hitParent = _hits select 0 select 3;
         if (_hitObj != _player && _hitParent != _player) then {
-            _hitsArr pushBack (_d max 0.25);   // objective near limit
+            _hitsArr pushBack [(_d max 0.25), _rayWeight];   // [dist, weight]
         };
     };
 } forEach _fan;
 
 private _rawTarget = 0;
 if (count _hitsArr >= (count _fan) / 2) then {
+    // Sort by distance, expand by weight, take the weighted median.
     _hitsArr sort true;
-    _rawTarget = _hitsArr select (floor ((count _hitsArr) / 2));
+    private _weighted = [];
+    {
+        _x params ["_d", "_w"];
+        for "_i" from 1 to (round (_w * 4)) do { _weighted pushBack _d; };
+    } forEach _hitsArr;
+    _rawTarget = _weighted select (floor ((count _weighted) / 2));
 };
 
-// ─── Raw-target smoothing ─────────────────────────────────────────────────
-// The median of a 9-ray fan is NOISY: the scene composition shifts tick to
-// tick as the player's view moves fractions of a degree, so the median
-// jumps 1-3 m between ticks.  O3DE's auto-focus reads a single stable
-// depth pixel; feeding it a jittery target makes the state machine re-rack
-// constantly (122 re-racks in one 3.5 min session, measured in the RPT).
-// An exponential moving average removes the high-frequency churn while
-// keeping real movement: the walk-to-wall case drifts ~0.03 m/tick, well
-// within the filter's tracking ability.
+// ─── Raw-target smoothing (CONDITIONAL) ─────────────────────────────────
+// The median of a 9-ray fan is noisy: the scene composition shifts tick to
+// tick as the view moves fractions of a degree, so the median jumps 1-3 m
+// between ticks.  A full EMA removes that jitter but ALSO delays genuine
+// target changes - measured 0.69 s of rack latency in the RPT (the user's
+// 'slight delay').  Conditional filter: smooth only while the target is
+// within the current deadband (jitter suppression); a target change LARGER
+// than the deadband passes straight through, so a real re-aim responds on
+// the next tick instead of easing in over several.
 private _rawSmooth = missionNamespace getVariable [QGVAR(nvgFocusRawSmooth), _rawTarget];
 if !(_rawSmooth isEqualType 0 && _rawSmooth > 0) then { _rawSmooth = _rawTarget; };
 if (_rawTarget > 0) then {
-    _rawSmooth = _rawSmooth + (_rawTarget - _rawSmooth) * 0.5;
+    private _curForFilter = missionNamespace getVariable [QGVAR(nvgFocusCur), _rawTarget];
+    if !(_curForFilter isEqualType 0 && _curForFilter > 0) then { _curForFilter = _rawTarget; };
+    private _fDeadband = (_curForFilter * 0.25) max 0.5;
+    if (abs (_rawTarget - _curForFilter) > _fDeadband) then {
+        _rawSmooth = _rawTarget;          // big change: pass through, respond now
+    } else {
+        _rawSmooth = _rawSmooth + (_rawTarget - _rawSmooth) * 0.5;   // jitter only
+    };
 } else {
     _rawSmooth = _rawTarget;   // empty (sky): pass the empty state through
 };

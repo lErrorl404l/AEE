@@ -1,5 +1,19 @@
 class RscPicture;
-class RscText;
+
+// RscText needs a FULL base definition, not a forward declaration.  An
+// empty parent class gives the control no type, so it never renders (the
+// focus HUD was invisible for exactly this reason).  Definition mirrors
+// FPANO ECOTI's working HUD (workshop 3725008325) and the vanilla default.
+class RscText {
+    type = 0;
+    idc = -1;
+    style = 0;
+    shadow = 1;
+    font = "PuristaMedium";
+    sizeEx = "0.02 * safezoneH";
+    colorText[] = {1, 1, 1, 1};
+    colorBackground[] = {0, 0, 0, 0};
+};
 
 class RscTitles {
     class GVAR(nvgTitle) {
