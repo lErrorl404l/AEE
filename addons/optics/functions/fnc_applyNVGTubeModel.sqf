@@ -69,7 +69,7 @@ if (currentVisionMode _player != 1) exitWith {
         AEE_LOG_INFO("NVG effects torn down (vision mode left)");
 
         // Tear down the tube-face overlay the moment NVG is removed.
-        QGVAR(nvgDisplay) cutText ["", "PLAIN"];
+        (["aee_optics_nvg_title"] call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
         missionNamespace setVariable [QGVAR(nvgDisplayUp), false];
 
         missionNamespace setVariable [QGVAR(nvgGrainActive), false];
@@ -742,16 +742,17 @@ if (_rawTarget > 0) then {
     private _deadband = (_curFocus * 0.25) max 0.5;
     if (abs (_rawTarget - _curFocus) > _deadband) then {
         // Outside the sharp band: arm a new target.  Re-arm (reset the
-        // hold timer) only when the target CHANGES MATERIALLY.  A
-        // walking player makes the raw target drift every tick (the wall
-        // moves 0.03 m each 0.1 s tick); comparing exact values would
-        // reset the 0.25 s hold every tick and the rack would never
-        // start (found by validate_dof.py's walk-to-wall case).  Track
-        // small drift without resetting the clock.
+        // hold timer) only when the target CHANGES MATERIALLY - a
+        // movement-induced sweep (walking parallax moves the median 1-3 m
+        // per tick) must NOT re-arm every tick, or the focus racks
+        // constantly while moving (measured: 20 % of ticks had focus
+        // moving with a stable raw).  The re-arm threshold scales with
+        // the deadband: small at close focus, proportional at distance.
         if (_rawTarget != _pending) then {
-            if (_pending == 0 || abs (_rawTarget - _pending) > 0.5) then {
+            private _rearm = _deadband * 0.4;
+            if (_pending == 0 || abs (_rawTarget - _pending) > _rearm) then {
                 _pending = _rawTarget;
-                _holdUntil = CBA_missionTime + 0.1;   // transient rejection, not delay
+                _holdUntil = CBA_missionTime + 0.2;   // transient rejection
             } else {
                 _pending = _rawTarget;   // follow drift, keep the clock
             };
@@ -951,7 +952,13 @@ private _fiberTex = switch (_tier) do {
     default { "" };
 };
 if !(missionNamespace getVariable [QGVAR(nvgDisplayUp), false]) then {
-    QGVAR(nvgDisplay) cutRsc [QGVAR(nvgTitle), "PLAIN", 0, false, false];
+    // Open the display on a dedicated layer via BIS_fnc_rscLayer - the
+    // ACE3 weather-HUD pattern (fnc_displayWindInfo.sqf, proven visible
+    // over NVG).  The old 5-arg cutRsc call was malformed (cutRsc takes
+    // [config, type, layer, speed] - the 5th arg does not exist) so the
+    // display never rendered its text controls.  The layer name routes
+    // through BIS_fnc_rscLayer so it sits above the NVG post-process.
+    (["aee_optics_nvg_title"] call BIS_fnc_rscLayer) cutRsc [QGVAR(nvgTitle), "PLAIN", 1, false];
     missionNamespace setVariable [QGVAR(nvgDisplayUp), true];
 };
 private _disp = uiNamespace getVariable [QGVAR(titleDisplay), displayNull];
