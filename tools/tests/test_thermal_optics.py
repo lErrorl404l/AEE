@@ -391,6 +391,31 @@ def second_sun_brightness(radiation):
     return max(0.0, min(1.0, radiation))
 
 
+def clothing_ti_scale(insulation, air_temp_c):
+    """Mirror of fnc_applyClothingThermal tiScale.
+
+    Thermal resistance of clothing = insulation + ambient term.  The
+    ambient term shifts by up to ±0.5 across -15..45 C (0.5*(T-15)/30,
+    clamped ±0.5): cold ambient + heavy insulation -> wearer stays warm
+    (TI warm); cold + light clothing -> TI cold; hot ambient -> hot.
+    """
+    ambient = max(-0.5, min(0.5, 0.5 * (air_temp_c - 15) / 30))
+    return insulation + ambient
+
+
+def clothing_ti_material(ti_scale):
+    """Mirror of the material selection.
+
+    > 0.7 -> hot rvmat (reads hot), < 0.35 -> cold rvmat (reads cold),
+    else "" (keep the item's own TI texture).
+    """
+    if ti_scale >= 0.7:
+        return "hot"
+    if ti_scale < 0.35:
+        return "cold"
+    return ""
+
+
 # ─── Thermal crossover mirror (fnc_calculateThermalCrossover.sqf) ──────────
 
 
@@ -1234,6 +1259,52 @@ class TestSecondSun(unittest.TestCase):
         self.assertGreaterEqual(second_sun_brightness(0), 0)
 
 
+class TestClothingThermal(unittest.TestCase):
+    """Per-item clothing TI override from physics (insulation + ambient)."""
+
+    def test_cold_ambient_light_clothing(self):
+        # 5 C, light clothing (insulation 0.2): reads cold.
+        s = clothing_ti_scale(0.2, 5)
+        self.assertEqual(clothing_ti_material(s), "cold")
+
+    def test_cold_ambient_heavy_insulation(self):
+        # 5 C, heavy winter kit (0.8): 0.8 - 0.17 = 0.63 -> warm but not
+        # in the "hot" band (0.7+).  The wearer stays warm (above 0.35),
+        # which is the physical point: insulation keeps body heat in.
+        s = clothing_ti_scale(0.8, 5)
+        self.assertGreater(s, 0.35)  # not cold
+        self.assertEqual(clothing_ti_material(s), "")  # neutral band
+
+    def test_cold_ambient_insulation_keeps_warm(self):
+        # Even at -15 C, full winter kit: 0.8 - 0.5 = 0.3 -> borderline.
+        s = clothing_ti_scale(0.8, -15)
+        self.assertGreaterEqual(clothing_ti_material(s), "")  # never hot
+
+    def test_hot_ambient_everything_hot(self):
+        # 45 C, light clothing: 0.2 + 0.5 = 0.7 -> hot.
+        s = clothing_ti_scale(0.2, 45)
+        self.assertEqual(clothing_ti_material(s), "hot")
+
+    def test_neutral_keeps_own_ti(self):
+        # 15 C, moderate insulation: no override (keep item's own TI).
+        s = clothing_ti_scale(0.5, 15)
+        self.assertEqual(clothing_ti_material(s), "")
+
+    def test_scale_monotonic_in_insulation(self):
+        self.assertLess(clothing_ti_scale(0.2, 15), clothing_ti_scale(0.8, 15))
+
+    def test_scale_monotonic_in_ambient(self):
+        self.assertLess(clothing_ti_scale(0.5, 0), clothing_ti_scale(0.5, 30))
+
+    def test_rvmats_exist(self):
+        # The two override materials must exist in the addon data folder.
+        import os
+
+        data_dir = _REPO_ROOT / "addons" / "optics" / "data"
+        self.assertTrue((data_dir / "ti_cloth_cold.rvmat").exists())
+        self.assertTrue((data_dir / "ti_cloth_hot.rvmat").exists())
+
+
 class TestThermalCrossover(unittest.TestCase):
     """Diurnal thermal crossover — isothermal condition at dawn/dusk."""
 
@@ -1899,18 +1970,33 @@ class TestSQFSync(unittest.TestCase):
             "physics-driven second sun (TI sun term)",
         )
 
+    def test_clothing_thermal_constants(self):
+        self._assert_in_sqf(
+            "fnc_applyClothingThermal.sqf",
+            [
+                "setObjectMaterial [_x, _material]",
+                "ti_cloth_cold.rvmat",
+                "ti_cloth_hot.rvmat",
+                "allUnits",
+                "clothingInsulation",
+                "abs (_tiScale - _lastScale) < 0.05",
+            ],
+            "per-item clothing TI override",
+        )
+
     def test_infantry_thermal_config(self):
-        # The static config: humans glow (mFact 1, tBody 32), vehicles have
-        # the engine's OWN heat model disabled (afMax 0, mfMax 0) so AEE's
-        # physics is the sole heat source via setVehicleTIPars.
+        # The static config: humans glow (mFact 1, tBody 32), vehicles get REAL
+        # thermal caps (afMax 70, mfMax 50 - not 0, which the engine reads
+        # as unset and falls back to vanilla 200).  AEE's physics drives
+        # the per-part heat (engine/wheels) via setVehicleTIPars on top.
         cfg = (_REPO_ROOT / "addons" / "optics" / "config.cpp").read_text(
             encoding="utf-8"
         )
         for frag in [
             "mFact = 1",
             "tBody = 32",
-            "afMax = 0",
-            "mfMax = 0",
+            "afMax = 70",
+            "mfMax = 50",
             "htMin = 60",
             "htMax = 300",
         ]:

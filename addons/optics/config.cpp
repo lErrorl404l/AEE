@@ -46,18 +46,23 @@ class CfgVehicles {
     class All;
     class AllVehicles: All {
         htMin = 60;    // exhaust/manifold hot-spots half-life
-        htMax = 300;   // body panels half-life
-        // The ENGINE's own heat model is disabled for vehicles: AEE drives
-        // every vehicle's heat state from its physics model via
-        // setVehicleTIPars (fnc_applyEngineThermal), which computes the
-        // surface temperature from solar, ambient, wind, engine and exhaust
-        // heat every tick.  A non-zero afMax/mfMax would make the engine's
-        // static timer model ADD a second heat curve on top of ours,
-        // double-driving the image (vehicles warming too fast).  With the
-        // static maxima at zero, our setVehicleTIPars values are the sole
-        // heat source and the image tracks our physics exactly.
-        afMax = 0;    // static alive-heat model OFF (physics drives)
-        mfMax = 0;    // static moving-heat model OFF (physics drives)
+        htMax = 300;   // body panels half-life: ~5 min warm/cool, matching
+                       // the physics model's engine tau.  Real sheet-metal
+                       // bodies have low thermal mass and high surface area,
+                       // so they warm AND cool visibly within minutes.
+                       // Vanilla/ACE 1800 (30 min) is tuned for the engine
+                       // block's IR DETECTABILITY — too slow for how a
+                       // parked body LOOKS.  (ACE3's own comment: engine
+                       // start warms the whole model at htMax rate.)
+        afMax = 70;   // max alive temperature C (real sun+engine surface
+                       // cap).  Vanilla 200 is unrealistic.  NOT 0: the
+                       // engine reads 0 as unset/default in some paths, so
+                       // 0 does not disable the alive-heat model — it falls
+                       // back to vanilla 200 (the fast warm-up report).
+                       // A real cap is the physical answer: the body heats
+                       // toward 70 C, and our setVehicleTIPars drives the
+                       // PART heat (engine/wheels/weapon) on top.
+        mfMax = 50;   // max moving temperature C (tyres/brakes)
         mFact = 0.0;
         tBody = 0;
     };
