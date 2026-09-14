@@ -416,6 +416,44 @@ def clothing_ti_material(ti_scale):
     return ""
 
 
+def building_thermal_mass(material_paths):
+    """Mirror of fnc_applyBuildingThermal material weighting.
+
+    Classifies a building's dominant material from its rvmat paths.
+    Heavy mass (concrete/brick/stone/rock/block) stays cold -> swap all
+    surfaces (coldFactor 1.0).  Metal/glass/plastic dominant -> responds
+    to sun -> swap half (0.5).  Returns the swap fraction.
+    """
+    metal = 0
+    heavy = 0
+    for p in material_paths:
+        m = p[-40:].lower()
+        if any(k in m for k in ["metal", "glass", "plastic", "steel"]):
+            metal += 1
+        if any(k in m for k in ["concrete", "brick", "stone", "rock", "block"]):
+            heavy += 1
+    if heavy > 0 and metal == 0:
+        return 1.0
+    if metal > heavy:
+        return 0.5
+    return 1.0
+
+
+def clothing_material_kind(material_path):
+    """Mirror of the per-selection material classification.
+
+    "cloth"  -> swap to our cold/hot TI material (cloth dominant).
+    "metal"  -> keep engine thermal (solar-warm helmet/plate/optics).
+    "other"  -> unknown: swap (safe cloth assumption).
+    """
+    m = material_path[-40:].lower()
+    if any(k in m for k in ["cloth", "fabric", "leather", "wool", "cotton"]):
+        return "cloth"
+    if any(k in m for k in ["metal", "glass", "plastic", "steel"]):
+        return "metal"
+    return "other"
+
+
 # ─── Thermal crossover mirror (fnc_calculateThermalCrossover.sqf) ──────────
 
 
@@ -1305,6 +1343,54 @@ class TestClothingThermal(unittest.TestCase):
         self.assertTrue((data_dir / "ti_cloth_hot.rvmat").exists())
 
 
+class TestBuildingThermal(unittest.TestCase):
+    """Building material weighting — concrete stays cold, metal responds."""
+
+    def test_concrete_building_full_cold(self):
+        # Concrete/block building: heavy mass, swap everything.
+        mats = ["a3\\structures_f\\data\\wall_block_concrete.rvmat"] * 4
+        self.assertAlmostEqual(building_thermal_mass(mats), 1.0, places=6)
+
+    def test_metal_building_half_cold(self):
+        # Metal/glass dominant: responds to sun, swap half.
+        mats = ["a3\\data\\metal_wall.rvmat"] * 3 + ["a3\\data\\glass.rvmat"]
+        self.assertAlmostEqual(building_thermal_mass(mats), 0.5, places=6)
+
+    def test_mixed_default_full(self):
+        # Unknown materials: default to full cold (safe baseline).
+        mats = ["a3\\structures_f\\data\\generic.rvmat"] * 3
+        self.assertAlmostEqual(building_thermal_mass(mats), 1.0, places=6)
+
+    def test_empty_no_buildings(self):
+        self.assertAlmostEqual(building_thermal_mass([]), 1.0, places=6)
+
+
+class TestClothingMaterial(unittest.TestCase):
+    """Per-selection material classification — cloth swaps, metal keeps."""
+
+    def test_cloth_swaps(self):
+        for p in [
+            "a3\\characters_f\\data\\basicbody_cloth.rvmat",
+            "a3\\characters_f\\data\\uniform_fabric.rvmat",
+            "a3\\characters_f\\data\\leather_vest.rvmat",
+            "a3\\characters_f\\data\\wool_cap.rvmat",
+        ]:
+            self.assertEqual(clothing_material_kind(p), "cloth", p)
+
+    def test_metal_keeps_engine_thermal(self):
+        for p in [
+            "a3\\characters_f\\data\\helmet_metal.rvmat",
+            "a3\\characters_f\\data\\optic_glass.rvmat",
+            "a3\\characters_f\\data\\plate_steel.rvmat",
+            "a3\\characters_f\\data\\goggle_plastic.rvmat",
+        ]:
+            self.assertEqual(clothing_material_kind(p), "metal", p)
+
+    def test_unknown_defaults_to_swap(self):
+        self.assertEqual(clothing_material_kind("a3\\data\\generic.rvmat"), "other")
+        self.assertEqual(clothing_material_kind(""), "other")
+
+
 class TestThermalCrossover(unittest.TestCase):
     """Diurnal thermal crossover — isothermal condition at dawn/dusk."""
 
@@ -1982,6 +2068,20 @@ class TestSQFSync(unittest.TestCase):
                 "abs (_tiScale - _lastScale) < 0.05",
             ],
             "per-item clothing TI override",
+        )
+
+    def test_building_thermal_constants(self):
+        self._assert_in_sqf(
+            "fnc_applyBuildingThermal.sqf",
+            [
+                "setObjectMaterial [_selections select _i, _material]",
+                "ti_cloth_cold.rvmat",
+                "nearObjects [\"House\", 300]",
+                "getObjectMaterials _obj",
+                "tiBldgSaved",
+                "abs (_airTemp - _lastTemp) < 2",
+            ],
+            "per-building TI material swap",
         )
 
     def test_infantry_thermal_config(self):

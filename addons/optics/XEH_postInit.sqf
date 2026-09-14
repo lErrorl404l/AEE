@@ -25,6 +25,8 @@
         [] call FUNC(applyNVGTubeModel);
         [] call FUNC(applyThermalVision);
         ["EXIT"] call FUNC(applySecondSun);
+        ["EXIT"] call FUNC(applyClothingThermal);
+        ["EXIT"] call FUNC(applyBuildingThermal);
         [GVAR(sensorPFH)] call CBA_fnc_removePerFrameHandler;
         GVAR(sensorPFH) = nil;
         AEE_LOG_INFO("sensor PFH stopped (returned to normal vision)");
@@ -60,6 +62,9 @@
         ["ENTER"] call FUNC(applySecondSun);
         // Clothing thermal: apply per-item TI overrides to nearby units.
         ["ENTER"] call FUNC(applyClothingThermal);
+        // Building thermal: swap building materials to a cold TI rvmat so
+        // buildings read cold at night (they bake red=128 in vanilla).
+        ["ENTER"] call FUNC(applyBuildingThermal);
     };
     // Start the fast sensor PFH when entering NVG/thermal.  The visionMode
     // event below is the SOLE owner of its lifecycle: it starts on mode > 0
@@ -82,6 +87,7 @@
                 [] call FUNC(applyEngineThermal);
                 ["TICK"] call FUNC(applySecondSun);
                 ["TICK"] call FUNC(applyClothingThermal);
+                ["TICK"] call FUNC(applyBuildingThermal);
             };
         }, 0.1] call CBA_fnc_addPerFrameHandler;
         private _logMsg = format ["sensor PFH started (vision mode %1)", _visionMode];

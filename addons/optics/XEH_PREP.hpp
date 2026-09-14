@@ -1,4 +1,5 @@
 PREP(applyAtmosphericSeeingFX);
+PREP(applyBuildingThermal);
 PREP(applyClothingThermal);
 PREP(applyDewOnOpticsFX);
 PREP(applyEngineThermal);
