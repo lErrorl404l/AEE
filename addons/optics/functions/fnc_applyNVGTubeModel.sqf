@@ -619,30 +619,27 @@ private _focusHalfDeg = atan ((tan _hFovLive) * 0.15);   // 15 % of screen
 private _spread = 300 * (tan _focusHalfDeg);      // offset at the 300 m end
 private _upVec   = vectorUp _player;
 private _rightVec = _lookDir vectorCrossProduct _upVec;
-// ─── Fan raycast, CENTRE-WEIGHTED median (gradual falloff) ──────────────
-// The fan is not a hard circle: each ray contributes by how far it sits
-// from the centre (Gaussian falloff).  Centre ray weight 1.0, cardinals
-// ~0.5, diagonals ~0.25 - so the target area fades out toward its edge
-// instead of abruptly stopping.  The raw target is the WEIGHTED MEDIAN of
-// the hits: the dominant surface near the centre wins (a single edge
-// outlier cannot drag it), but an object at the fan edge still counts
-// weakly rather than being excluded by a hard radius.
+// ─── Fan raycast, CENTRE-DECISIVE weighted median ────────────────────────
+// What the operator LOOKS AT (the centre ray) must win.  The research
+// (O3DE auto-focus) uses a single centre sample; the fan exists only to
+// catch low objects the centre misses and to average.  Weights are
+// therefore centre-DECISIVE: one centre hit (weight 16) beats all eight
+// background rays (2 each cardinal, 1 each diagonal = 12 total), so
+// looking at an object focuses it even when the surrounding scene is
+// farther.  Zoom no longer needed to make the object fill the fan.
 //
-// Weights (normalised to the centre):
-//   centre 1.00, cardinal 0.45, diagonal 0.20  (Gaussian sigma ~half-spread)
-// The weighted median is computed by expanding each hit by its weight in
-// the sorted array and taking the middle element.
+// Gaussian-like falloff from centre: 16 / 2 / 1 (centre/cardinal/diag).
 private _hitsArr = [];
 private _fan = [
-    [_lookDir, 1.00],
-    [_lookDir vectorAdd (_upVec vectorMultiply _spread), 0.45],
-    [_lookDir vectorAdd (_upVec vectorMultiply (-_spread)), 0.45],
-    [_lookDir vectorAdd (_rightVec vectorMultiply _spread), 0.45],
-    [_lookDir vectorAdd (_rightVec vectorMultiply (-_spread)), 0.45],
-    [_lookDir vectorAdd ((_upVec vectorAdd _rightVec) vectorMultiply _spread), 0.20],
-    [_lookDir vectorAdd ((_upVec vectorAdd _rightVec) vectorMultiply (-_spread)), 0.20],
-    [_lookDir vectorAdd ((_upVec vectorAdd _rightVec vectorMultiply (-1)) vectorMultiply _spread), 0.20],
-    [_lookDir vectorAdd ((_upVec vectorAdd _rightVec vectorMultiply (-1)) vectorMultiply (-_spread)), 0.20]
+    [_lookDir, 16],
+    [_lookDir vectorAdd (_upVec vectorMultiply _spread), 2],
+    [_lookDir vectorAdd (_upVec vectorMultiply (-_spread)), 2],
+    [_lookDir vectorAdd (_rightVec vectorMultiply _spread), 2],
+    [_lookDir vectorAdd (_rightVec vectorMultiply (-_spread)), 2],
+    [_lookDir vectorAdd ((_upVec vectorAdd _rightVec) vectorMultiply _spread), 1],
+    [_lookDir vectorAdd ((_upVec vectorAdd _rightVec) vectorMultiply (-_spread)), 1],
+    [_lookDir vectorAdd ((_upVec vectorAdd _rightVec vectorMultiply (-1)) vectorMultiply _spread), 1],
+    [_lookDir vectorAdd ((_upVec vectorAdd _rightVec vectorMultiply (-1)) vectorMultiply (-_spread)), 1]
 ];
 {
     _x params ["_rayDir", "_rayWeight"];
@@ -671,11 +668,12 @@ private _fan = [
 private _rawTarget = 0;
 if (count _hitsArr >= (count _fan) / 2) then {
     // Sort by distance, expand by weight, take the weighted median.
+    // Weights are small ints (16/2/1) so the expansion is cheap.
     _hitsArr sort true;
     private _weighted = [];
     {
         _x params ["_d", "_w"];
-        for "_i" from 1 to (round (_w * 4)) do { _weighted pushBack _d; };
+        for "_i" from 1 to _w do { _weighted pushBack _d; };
     } forEach _hitsArr;
     _rawTarget = _weighted select (floor ((count _weighted) / 2));
 };

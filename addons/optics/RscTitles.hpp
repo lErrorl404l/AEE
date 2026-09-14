@@ -69,7 +69,10 @@ class RscTitles {
                 shadow = 1;
                 font = "PuristaMedium";
                 sizeEx = "0.014 * safezoneH";
-                colorText[] = {0.45, 0.85, 0.35, 1};
+                // WHITE, not green: the engine tints the whole NVG view
+                // green (phosphor screen), so a green readout is invisible
+                // against it.  White stands out on the dark tube face.
+                colorText[] = {1, 1, 1, 1};
                 // Inside the tube face, near its bottom edge.  The mask
                 // occupies safeZoneY..safeZoneY+safeZoneH, so 0.90 puts
                 // the text just above the mask rim - visible, not clipped.
@@ -85,7 +88,7 @@ class RscTitles {
                 shadow = 1;
                 font = "PuristaMedium";
                 sizeEx = "0.012 * safezoneH";
-                colorText[] = {0.45, 0.85, 0.35, 0.8};
+                colorText[] = {1, 1, 1, 0.8};
                 x = "safeZoneX + (safeZoneW - safeZoneH) / 2 - safeZoneH * 0.12";
                 y = "safeZoneY + safeZoneH * 0.915";
                 w = "safeZoneH * 0.24";
