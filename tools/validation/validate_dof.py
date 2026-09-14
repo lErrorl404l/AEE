@@ -177,14 +177,20 @@ def state_machine(raw_target, cur_focus, pending, hold_until, t):
     return cur_focus, pending, hold_until
 
 
-def run_scenario(scene_series, focus0=None, n_ticks=300):
+def run_scenario(scene_series, focus0=None, n_ticks=300, default_dist=15.0):
     """Run the state machine over a time series of scenes.
 
     scene_series: list of scenes (one per tick) OR a list of
     (t0, t1, scene) so a scene holds for a run of ticks.
     Returns (focus_history, raw_history, raw_smooth_history).
+
+    default_dist is the per-device hyperfocal default the ring sits at
+    on the first frame (15 m PVS-14 class, 20 m PVS-31A/GPNVG).  The
+    SQF cold-starts from this, NOT from the first fan raw target
+    (which read ~300 m on frame one and glided down - the 300 m start
+    bug).
     """
-    cur = focus0 if focus0 is not None else 50.0
+    cur = focus0 if focus0 is not None else default_dist
     pending = 0.0
     hold_until = 0.0
     raw_smooth = 0.0
@@ -504,20 +510,25 @@ def check_transient_delay():
 
 
 def check_first_tick_default():
-    """First tick with no target defaults to 50 m, does not break."""
+    """First tick with no target defaults to the device hyperfocal (15 m),
+    not the far background.  The old behaviour initialised focus from the
+    first fan raw target, which read ~300 m on the first frame and glided
+    down over seconds - the 'starts off at 300m' bug.  A real operator's
+    ring sits at the hyperfocal default when they first put the goggles
+    on."""
     sky = [(-12.0, 12.0, None, False)]
     fh, rh, sh = run_scenario([(0.0, 30.0, sky)], focus0=None, n_ticks=30)
-    ok = all(0 < f <= 60 for f in fh) and fh[0] == 50.0
+    ok = all(0 < f <= 60 for f in fh) and fh[0] == 15.0
     return {
         "name": "First-tick default",
-        "ground_truth": "No target yet -> 50 m, then hold (empty sky)",
+        "ground_truth": "No target yet -> hyperfocal 15 m (device default), then hold (empty sky)",
         "grid": "open sky from tick 0",
-        "tolerance": "focus == 50 m and stays finite",
+        "tolerance": "focus == 15 m and stays finite",
         "status": "PASS" if ok else "FAIL",
         "max_abs": f"first={fh[0]} m last={fh[-1]} m",
         "rmse": 0.0,
         "unit": "m",
-        "note": "Guards against 0/infinity on the first frame",
+        "note": "Guards against 0/infinity and the 300 m cold-start on the first frame",
     }
 
 
@@ -742,6 +753,7 @@ def check_movement_sweep_stable():
     deadband (40 % of it), so movement drift is absorbed.
     """
     import random
+
     random.seed(11)
     # Player walks: scene distance oscillates 10-13 m (parallax sweep)
     # around a base 12 m target - a genuine near-constant aim.
@@ -752,7 +764,7 @@ def check_movement_sweep_stable():
         series.append((t, t + TICK_S, [(-12.0, 12.0, max(d, 0.5), False)]))
     fh, rh, sh = run_scenario(series, focus0=12.0, n_ticks=300)
     re_racks = sum(1 for i in range(1, len(fh)) if fh[i] != fh[i - 1])
-    ok = re_racks <= 10   # aim is near-constant; focus must not chase
+    ok = re_racks <= 10  # aim is near-constant; focus must not chase
     return {
         "name": "Movement sweep - no re-rack",
         "ground_truth": "Walking parallax sweeps the median 1-3 m; focus holds",
@@ -768,6 +780,61 @@ def check_movement_sweep_stable():
 
 # ─── Main ──────────────────────────────────────────────────────────────────
 
+def check_device_defaults():
+    """Per-device objective focus config mirrors the researched facts:
+    PVS-14 class manual 0.25 m near limit / 15 m hyperfocal default,
+    PVS-31A/GPNVG manual 0.45 m / 20 m, ENVG-II fusion AUTO (only
+    device with real autofocus).  Sources: DHS TechNote, L3Harris and
+    Elbit sell sheets, operator manuals."""
+    devs = {
+        # hmd substring -> (mode_default, near_limit, default_dist)
+        "NVGoggles": (1, 0.25, 15.0),  # PVS-14 class
+        "NVGoggles_INDEP": (1, 0.25, 15.0),  # Gen 3 monocular
+        "NVGoggles_OPFOR": (1, 0.25, 15.0),  # Gen 2 monocular
+        "NVGogglesB_blk_F": (1, 0.45, 20.0),  # PVS-31A class
+        "NVGogglesB_grn_F": (0, 0.45, 20.0),  # ENVG-II fusion: AUTO
+        "GPNVG": (1, 0.45, 20.0),  # panoramic quad
+        "NVG_Wide": (1, 0.45, 20.0),  # panoramic quad
+    }
+    ok = True
+    for hmd, exp in devs.items():
+        # Mirror of the SQF matcher
+        if any(
+            s in hmd
+            for s in [
+                "USP_PVS31",
+                "PVS31",
+                "USP_PVS_31",
+                "NVGogglesB",
+                "GPNVG",
+                "NVG_Wide",
+            ]
+        ):
+            mode = 0 if "NVGogglesB_grn_F" in hmd else 1
+            near, dist = 0.45, 20.0
+        elif any(s in hmd for s in ["NVGen3", "NVGoggles_INDEP"]):
+            mode, near, dist = 1, 0.25, 15.0
+        elif any(s in hmd for s in ["NVGen2", "NVGoggles_OPFOR"]):
+            mode, near, dist = 1, 0.25, 15.0
+        else:
+            mode, near, dist = 1, 0.25, 15.0
+        got = (mode, near, dist)
+        if got != exp:
+            ok = False
+            print(f"        MISMATCH {hmd}: got {got} expected {exp}")
+    return {
+        "name": "Per-device focus defaults",
+        "ground_truth": "Real NVG manual-focus with researched near limits; ENVG-II auto",
+        "grid": "classname matcher -> (mode, near limit m, default focus m)",
+        "tolerance": "exact match to researched device table",
+        "status": "PASS" if ok else "FAIL",
+        "max_abs": "7 devices checked",
+        "rmse": 0.0,
+        "unit": "m",
+        "note": "PVS-14/7/15/DTNVS 0.25 m; PVS-31A/GPNVG 0.45 m; ENVG-II autofocus",
+    }
+
+
 CHECKS = [
     check_hyperfocal,
     check_blur_continuous,
@@ -781,6 +848,7 @@ CHECKS = [
     check_deadband_stability,
     check_transient_delay,
     check_first_tick_default,
+    check_device_defaults,
     check_extreme_near,
     check_extreme_far,
     check_weapon_only,
