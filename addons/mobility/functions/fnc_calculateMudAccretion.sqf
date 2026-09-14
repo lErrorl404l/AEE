@@ -41,7 +41,11 @@ private _vehicles = _player nearEntities [["Car", "Tank", "Motorcycle"], 200];
 {
     if (isNull _x) then { continue; };
 
-    private _current = _accretion getOrDefault [_x, 0];
+    // Keys must be strings — SQF hashmaps reject Object references.
+    // Value: [accretion, objectRef] so cleanup can check the stored ref.
+    private _vKey = str _x;
+    private _entry = _accretion getOrDefault [_vKey, [0, _x]];
+    private _current = _entry select 0;
     private _vSpeed = abs speed _x;
 
     // Per-vehicle surface under the vehicle
@@ -58,13 +62,17 @@ private _vehicles = _player nearEntities [["Car", "Tank", "Motorcycle"], 200];
         _current = _current * (_decayRate ^ (_interval / 5));
     };
 
-    _accretion set [_x, _current];
+    _accretion set [_vKey, [_current, _x]];
 } forEach _vehicles;
 
 // ─── Stale entry cleanup ──────────────────────────────────────────────────
 {
-    if (isNull _x) then {
-        _accretion deleteAt _x;
+    private _entry = _accretion getOrDefault [_x, []];
+    if (count _entry > 1) then {
+        private _ref = _entry select 1;
+        if (isNull _ref || {!alive _ref}) then {
+            _accretion deleteAt _x;
+        };
     };
 } forEach (keys _accretion);
 
