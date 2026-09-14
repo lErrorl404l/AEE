@@ -21,7 +21,7 @@
  *
  * Cost: the swap is a one-shot state change per physics change (throttled
  * to 0.05 in tiScale), NOT per-frame.  All units are scanned because there
- * is no reason for a range limit — a one-shot swap across the whole unit
+ * is no reason for a range limit: a one-shot swap across the whole unit
  * list is cheap, and a 150 m radius would leave far targets at vanilla
  * baked thermal for no physical reason.
  *
@@ -111,12 +111,43 @@ private _applied = 0;
     } forEach _selections;
     if (_already) then { continue; };
 
-    private _oldMats = getObjectMaterials _obj;
+    // ─── Material weighting (gear vs cloth) ────────────────────────────
+    // Equipment materials respond to solar loading differently.  Metal,
+    // glass and plastic (helmets, optics, armour plates, goggles) have
+    // low thermal mass: they track ambient + sun quickly and read WARMER
+    // than cloth.  Cloth/fabric holds body heat but also insulates.  We
+    // read each selection's rvmat and only apply the cold swap to cloth-
+    // dominant surfaces; metal/glass selections keep the engine's own
+    // thermal (they should read slightly warm from solar, not forced
+    // cold).  This gives the real per-item look: helmet warm, cloth cold,
+    // the same differentiation the vanilla baked TI already shows for
+    // chest rigs vs clothing: but physics-driven.
+    private _mats = getObjectMaterials _obj;
+    private _swapSelections = [];
     {
-        _obj setObjectMaterial [_x, _material];
+        private _sel = _x;
+        private _m = toLower (_mats select _sel);
+        // Cloth/leather/fabric dominant -> swap to our material.
+        // Metal/glass/plastic -> keep engine thermal (solar-warm).
+        if (_m find "cloth" >= 0 || _m find "fabric" >= 0 || _m find "leather" >= 0
+            || _m find "wool" >= 0 || _m find "cotton" >= 0) then {
+            _swapSelections pushBack _sel;
+        } else {
+            if (_m == "" || _m find "metal" < 0 && _m find "glass" < 0 && _m find "plastic" < 0) then {
+                // Unknown material: swap (safe baseline: cloth assumption).
+                _swapSelections pushBack _sel;
+            };
+        };
     } forEach _selections;
-    _saved pushBack [_obj, _oldMats, _selections];
-    _applied = _applied + 1;
+
+    if (_swapSelections isNotEqualTo []) then {
+        private _oldMats = getObjectMaterials _obj;
+        {
+            _obj setObjectMaterial [_x, _material];
+        } forEach _swapSelections;
+        _saved pushBack [_obj, _oldMats, _swapSelections];
+        _applied = _applied + 1;
+    };
 } forEach (allUnits);
 
 missionNamespace setVariable [QGVAR(tiClothSaved), _saved];
