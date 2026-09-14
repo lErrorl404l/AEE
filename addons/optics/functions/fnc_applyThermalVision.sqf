@@ -79,6 +79,32 @@ _contrast = 0 max _contrast min 1;
 private _crossover = missionNamespace getVariable [QEGVAR(core,thermalCrossoverActive), false];
 private _effective = [_contrast, 0.05] select _crossover;
 
+// ─── Pan smear (detector readout artifact) ────────────────────────────────
+// Real uncooled microbolometers have a row-by-row readout cycle.  Fast
+// panning smears hot sources horizontally across detector rows.  We
+// approximate this with turn-rate from the player's look direction delta.
+private _prevDir = missionNamespace getVariable [QGVAR(thermalPrevDir), getDir _player];
+private _dir = getDir _player;
+private _dirDelta = abs (_dir - _prevDir);
+if (_dirDelta > 180) then { _dirDelta = 360 - _dirDelta; };
+missionNamespace setVariable [QGVAR(thermalPrevDir), _dir];
+private _panSmear = if (diag_deltaTime > 0) then {
+    linearConversion [0, 90, _dirDelta / diag_deltaTime, 0.0, 0.04, true]
+} else { 0 };
+
+// ─── Thermal window effects (fog/rain on lens) ────────────────────────────
+// Fog scatters LWIR through Mie scattering; rain absorbs it through the
+// water film on the lens.  Both degrade the thermal image by adding blur.
+private _fogDensity = missionNamespace getVariable [QEGVAR(core,currentFogDensity), 0];
+if !(_fogDensity isEqualType 0) then { _fogDensity = 0; };
+private _windowBlur = 0;
+if (_fogDensity > 0.1) then {
+    _windowBlur = _windowBlur + linearConversion [0.1, 0.8, _fogDensity, 0.0, 0.2, true];
+};
+if (rain > 0.1) then {
+    _windowBlur = _windowBlur + linearConversion [0.1, 1.0, rain, 0.0, 0.15, true];
+};
+
 // ─── Thermal handles (create once, recreate only when missing) ───────────
 // Same pattern as the NVG model: handles are created once on entry and
 // only recreated when the engine killed them (alt-tab, resize, AT sights).
@@ -174,7 +200,11 @@ _hGrain ppEffectForceInNVG true;
 // ─── DynamicBlur (IR scatter) ─────────────────────────────────────────────
 // Rain scatters and fog absorbs LWIR, smearing the image.  At crossover
 // the mushy uniform scene adds to the blur.  Clean conditions: no blur.
-private _blur = linearConversion [1, 0, _effective, 0.0, 0.35, true];
+// Ceiling kept LOW: DynamicBlur at 0.2+ reads as dimming/flicker because
+// the engine re-renders the native thermal frame underneath, and the
+// blur gate oscillates with mouse micro-movement.
+private _blur = linearConversion [1, 0, _effective, 0.0, 0.15, true];
+_blur = (_blur + _panSmear + _windowBlur) min 0.25;
 _hBlur ppEffectAdjust [_blur];
 _hBlur ppEffectCommit 0;
 _hBlur ppEffectEnable true;
