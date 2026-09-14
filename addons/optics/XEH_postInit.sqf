@@ -24,6 +24,7 @@
         setAperture -1;
         [] call FUNC(applyNVGTubeModel);
         [] call FUNC(applyThermalVision);
+        ["EXIT"] call FUNC(applySecondSun);
         [GVAR(sensorPFH)] call CBA_fnc_removePerFrameHandler;
         GVAR(sensorPFH) = nil;
         AEE_LOG_INFO("sensor PFH stopped (returned to normal vision)");
@@ -53,6 +54,10 @@
             QGVAR(ppHandle_Thermal_Grain),
             QGVAR(ppHandle_Thermal_Blur)
         ];
+        // Second sun: create the physics-driven fake sun for the engine's
+        // thermal sun term (buildings/terrain can only be sun-heated, not
+        // driven per-object).  Cleaned up on mode 0 below.
+        ["ENTER"] call FUNC(applySecondSun);
     };
     // Start the fast sensor PFH when entering NVG/thermal.  The visionMode
     // event below is the SOLE owner of its lifecycle: it starts on mode > 0
@@ -70,7 +75,11 @@
             // event handles real exits.
             if (_vm == 0) exitWith {};
             if (_vm == 1) then { [] call FUNC(applyNVGTubeModel); };
-            if (_vm == 2) then { [] call FUNC(applyThermalVision); };
+            if (_vm == 2) then {
+                [] call FUNC(applyThermalVision);
+                [] call FUNC(applyEngineThermal);
+                ["TICK"] call FUNC(applySecondSun);
+            };
         }, 0.1] call CBA_fnc_addPerFrameHandler;
         private _logMsg = format ["sensor PFH started (vision mode %1)", _visionMode];
         AEE_LOG_INFO(_logMsg);

@@ -344,6 +344,53 @@ def mtf_effective(mtf15, noise, blowout=0.0, gated=True, rain=0.0):
     return mtf
 
 
+# ─── Engine thermal drive mirrors (fnc_applyEngineThermal.sqf) ─────────────
+# These map AEE's physics state into the engine's thermal controls:
+# setVehicleTIPars (per-vehicle heat 0..1) and setTIParameter (display
+# window).  The engine owns the render pass; we supply the input heat and
+# the AGC window, exactly like a real FLIR's gain/level controls.
+
+
+def engine_heat_fraction(surface_temp_c, air_temp_c):
+    """Mirror of the engine heat FRACTION pushed to setVehicleTIPars.
+
+    The physics surface temperature (air + solar + engine heat + exhaust
+    + wind cooling, computed by fnc_calculateObjectTemperature) maps to the
+    engine's 0..1 heat scale: ambient = 0, +50 C = 1.  Clamped to the
+    engine's range.  Environment-driven — sun, wind, engine state all move
+    the value; no static timers.
+    """
+    frac = (surface_temp_c - air_temp_c) / 50.0
+    return max(0.0, min(1.0, frac))
+
+
+def vehicle_wheel_heat(speed_ms):
+    """Mirror of wheel heat from friction (speed/30 capped at 1)."""
+    return min(1.0, speed_ms / 30.0)
+
+
+def ti_output_window(scene_max_heat):
+    """Mirror of the setTIParameter AGC window mapping.
+
+    A real FLIR auto-gain scales to the hottest thing in the scene:
+    start = 0 (cold = dark), width = 0.9/maxHeat so the hottest object
+    maps near full bright without clipping.  When nothing is hot the
+    floor keeps the window wide enough to resolve small differences.
+    """
+    mh = max(0.2, min(1.0, scene_max_heat))
+    return 0.0, max(0.35, min(1.0, 0.9 / mh))
+
+
+def second_sun_brightness(radiation):
+    """Mirror of fnc_applySecondSun: the engine's thermal SUN term.
+
+    The fake sun's brightness follows our real solar radiation model:
+    0 (night) -> no sun term (buildings cold), 1 (day) -> full engine
+    sun-heating of the TI red channel.  Clamped 0..1.
+    """
+    return max(0.0, min(1.0, radiation))
+
+
 # ─── Thermal crossover mirror (fnc_calculateThermalCrossover.sqf) ──────────
 
 
@@ -1095,6 +1142,98 @@ class TestMTFEffective(unittest.TestCase):
         self.assertAlmostEqual(mtf_rain, mtf_clear * 0.6, places=4)
 
 
+class TestEngineThermalDrive(unittest.TestCase):
+    """setVehicleTIPars heat fraction + setTIParameter AGC window."""
+
+    def test_ambient_vehicle_zero_heat(self):
+        # Vehicle at air temp (cold parked at night): 0 heat (dark).
+        self.assertAlmostEqual(engine_heat_fraction(17, 17), 0.0, places=6)
+
+    def test_running_engine_bright(self):
+        # Running engine: +40 C over ambient -> 0.8 heat fraction.
+        self.assertAlmostEqual(engine_heat_fraction(57, 17), 0.8, places=6)
+
+    def test_sun_warmed_vehicle(self):
+        # Solar absorption +15 C over ambient (0.7*15) -> 0.3 heat.
+        self.assertAlmostEqual(engine_heat_fraction(32, 17), 0.3, places=6)
+
+    def test_hot_engine_caps_at_one(self):
+        # +50 C or more -> clamped at 1.0.
+        self.assertAlmostEqual(engine_heat_fraction(100, 17), 1.0, places=6)
+
+    def test_engine_heat_bounds(self):
+        for t in [0, 5, 17, 40, 80, 120]:
+            for a in [0, 15, 30, 45]:
+                h = engine_heat_fraction(t, a)
+                self.assertGreaterEqual(h, 0.0)
+                self.assertLessEqual(h, 1.0)
+
+    def test_heat_tracks_ambient(self):
+        # Same surface, hotter ambient -> LESS heat (ambient is the zero).
+        self.assertLess(engine_heat_fraction(40, 35), engine_heat_fraction(40, 15))
+
+    def test_wheel_heat_scales_with_speed(self):
+        self.assertAlmostEqual(vehicle_wheel_heat(0), 0.0, places=6)
+        self.assertAlmostEqual(vehicle_wheel_heat(15), 0.5, places=6)
+        self.assertAlmostEqual(vehicle_wheel_heat(30), 1.0, places=6)
+        self.assertAlmostEqual(vehicle_wheel_heat(60), 1.0, places=6)  # capped
+
+    def test_agc_window_hot_scene(self):
+        # Scene with a hot engine (max heat 0.8): width 0.9/0.8 = 1.125
+        # capped at 1.0, start 0 -> full range.
+        s, w = ti_output_window(0.8)
+        self.assertAlmostEqual(s, 0.0, places=6)
+        self.assertAlmostEqual(w, 1.0, places=6)
+
+    def test_agc_window_warm_scene(self):
+        # Scene max 0.5: width 0.9/0.5 = 1.8 capped at 1.0.
+        s, w = ti_output_window(0.5)
+        self.assertAlmostEqual(w, 1.0, places=6)
+
+    def test_agc_window_cold_scene_floor(self):
+        # Empty cold scene (max ~0.05, clamped to 0.2 floor):
+        # width 0.9/0.2 = 4.5 capped at 1.0; start 0 (cold = dark).
+        s, w = ti_output_window(0.05)
+        self.assertAlmostEqual(s, 0.0, places=6)
+        self.assertAlmostEqual(w, 1.0, places=6)
+
+    def test_agc_window_monotonic(self):
+        # Hotter scene -> narrower width (less gain needed).
+        _, w_hot = ti_output_window(0.9)
+        _, w_cold = ti_output_window(0.3)
+        self.assertLessEqual(w_hot, w_cold)
+
+    def test_agc_window_bounds(self):
+        for mh in [0, 0.05, 0.2, 0.5, 0.8, 1.0, 5.0, -1.0]:
+            s, w = ti_output_window(mh)
+            self.assertAlmostEqual(s, 0.0, places=6)
+            self.assertGreaterEqual(w, 0.35)
+            self.assertLessEqual(w, 1.0)
+
+
+class TestSecondSun(unittest.TestCase):
+    """Physics-driven engine thermal SUN term (buildings/terrain)."""
+
+    def test_night_no_sun_term(self):
+        # Radiation 0 (night): fake sun off -> buildings render cold.
+        self.assertAlmostEqual(second_sun_brightness(0), 0.0, places=6)
+
+    def test_day_full_sun_term(self):
+        # Radiation 1 (clear midday): full sun-heating of TI red channel.
+        self.assertAlmostEqual(second_sun_brightness(1), 1.0, places=6)
+
+    def test_overcast_attenuates(self):
+        # Overcast mid-day: partial sun term.
+        self.assertAlmostEqual(second_sun_brightness(0.5), 0.5, places=6)
+
+    def test_clamped_out_of_range(self):
+        self.assertAlmostEqual(second_sun_brightness(-0.2), 0.0, places=6)
+        self.assertAlmostEqual(second_sun_brightness(1.5), 1.0, places=6)
+
+    def test_never_negative(self):
+        self.assertGreaterEqual(second_sun_brightness(0), 0)
+
+
 class TestThermalCrossover(unittest.TestCase):
     """Diurnal thermal crossover — isothermal condition at dawn/dusk."""
 
@@ -1729,6 +1868,57 @@ class TestSQFSync(unittest.TestCase):
             ["_mtf15 * 0.55", "_blowout * 0.4", "1 - rain * 0.5"],
             "MTF degradation",
         )
+
+    # ── Engine thermal drive (fnc_applyEngineThermal.sqf) ──
+    def test_engine_thermal_constants(self):
+        self._assert_in_sqf(
+            "fnc_applyEngineThermal.sqf",
+            [
+                'setTIParameter ["OutputRangeStart", _outStart]',
+                'setTIParameter ["OutputRangeWidth", _outWidth]',
+                "setVehicleTIPars [_engineHeat, _wheelHeat, 0]",
+                "_speed / 30",
+                "(_surfaceTemp - _airTemp) / 50",
+                "0.9 / _sceneMaxHeat",
+                "tiSceneMaxHeat",
+                "abs (_outStart - _lastStart) > 0.01",
+            ],
+            "engine thermal drive (TI pars + scene AGC window)",
+        )
+
+    def test_second_sun_constants(self):
+        self._assert_in_sqf(
+            "fnc_applySecondSun.sqf",
+            [
+                "#lightpoint",
+                "setLightDayLight true",
+                "currentSolarRadiation",
+                "setLightBrightness _radiation",
+                "createVehicleLocal",
+            ],
+            "physics-driven second sun (TI sun term)",
+        )
+
+    def test_infantry_thermal_config(self):
+        # The static config: humans glow (mFact 1, tBody 32), vehicles have
+        # the engine's OWN heat model disabled (afMax 0, mfMax 0) so AEE's
+        # physics is the sole heat source via setVehicleTIPars.
+        cfg = (_REPO_ROOT / "addons" / "optics" / "config.cpp").read_text(
+            encoding="utf-8"
+        )
+        for frag in [
+            "mFact = 1",
+            "tBody = 32",
+            "afMax = 0",
+            "mfMax = 0",
+            "htMin = 60",
+            "htMax = 300",
+        ]:
+            self.assertIn(
+                frag,
+                cfg,
+                f"config.cpp missing {frag} — infantry/vehicle thermal override",
+            )
 
     # ── Object temperature (fnc_calculateObjectTemperature.sqf) ──
     def test_object_temp_taus(self):
