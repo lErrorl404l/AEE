@@ -374,18 +374,41 @@ private _blowoutNow = 0;
     if (isLightOn _x) then { _isBright = true; };
     if (_x isKindOf "F_40_White") then { _isBright = true; };
     if (_isBright) then {
-        private _dirTo = _eye vectorFromTo (getPosASL _x);
+        private _srcPos = getPosASL _x;
+        private _dirTo = _eye vectorFromTo _srcPos;
         private _ang = acos ((_viewDir vectorDotProduct _dirTo) max -1 min 1);
+        // Occlusion: the light must physically reach the photocathode.
+        // A lamp behind a wall cannot gate a real tube — the photons are
+        // absorbed.  (The previous model assumed every source in the cone
+        // contributes regardless of what is between it and the eye, which
+        // gated through walls and caused the flicker.)  The eye-to-source
+        // ray must be clear of blocking geometry.
+        private _clear = true;
+        private _occHits = lineIntersectsSurfaces [
+            _eye, _srcPos, _player, _x, true, 1, "FIRE", "NONE"
+        ];
+        if (count _occHits > 0) then { _clear = false; };
         // Gate triggers when the source enters the tube's FOV.  AN/AVS-9
         // FOV is 40° circular (DTIC ADA426388, NASA 20030063076, Elbit
-        // datasheet) — half-angle 20°.
-        if (_ang < 20) then {
-            private _dist = _eye distance (getPosASL _x);
-            // Illuminance at the photocathode follows the inverse square
-            // law: E = I/d².  Gate intensity scales with the light that
-            // actually reaches the tube.  Normalised so a dead-centre
-            // source at 10 m is ~1.0; at 150 m it is ~0.004 (negligible).
-            private _intensity = (1 - _ang / 20) * (100 / (_dist * _dist));
+        // datasheet) — half-angle 20°.  Hysteresis: trigger at 20° but
+        // only release beyond 25°, so a trembling hand or slow pan does
+        // not flicker the gate at the cone edge.  The tube "remembers"
+        // the source while it is near the FOV edge.
+        private _gateHalf = 20;
+        private _releaseHalf = 25;
+        if (_clear && _ang < _releaseHalf) then {
+            // Inverse-square illuminance at the photocathode, normalised
+            // so a dead-centre source at 10 m is ~1.0.  The gate scales
+            // with the light that actually reaches the tube.  Within the
+            // hysteresis band (20-25°) the intensity fades to a floor so
+            // the release is continuous, not a hard on/off.
+            private _dist = _eye distance _srcPos;
+            private _coneScale = if (_ang < _gateHalf) then {
+                (1 - _ang / _gateHalf)
+            } else {
+                0.05 * (1 - (_ang - _gateHalf) / (_releaseHalf - _gateHalf));
+            };
+            private _intensity = _coneScale * (100 / (_dist * _dist));
             _blowoutNow = _blowoutNow max _intensity;
         };
     };
