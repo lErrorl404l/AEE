@@ -58,6 +58,8 @@
         // thermal sun term (buildings/terrain can only be sun-heated, not
         // driven per-object).  Cleaned up on mode 0 below.
         ["ENTER"] call FUNC(applySecondSun);
+        // Clothing thermal: apply per-item TI overrides to nearby units.
+        ["ENTER"] call FUNC(applyClothingThermal);
     };
     // Start the fast sensor PFH when entering NVG/thermal.  The visionMode
     // event below is the SOLE owner of its lifecycle: it starts on mode > 0
@@ -79,6 +81,7 @@
                 [] call FUNC(applyThermalVision);
                 [] call FUNC(applyEngineThermal);
                 ["TICK"] call FUNC(applySecondSun);
+                ["TICK"] call FUNC(applyClothingThermal);
             };
         }, 0.1] call CBA_fnc_addPerFrameHandler;
         private _logMsg = format ["sensor PFH started (vision mode %1)", _visionMode];
