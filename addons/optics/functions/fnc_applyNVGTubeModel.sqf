@@ -601,10 +601,21 @@ private _eyePos = eyePos _player;
 private _lookDir = vectorDirVisual _player;
 private _aspect = getResolution select 4;
 if (_aspect <= 0) then { _aspect = 16.0 / 9.0; };
-private _fovTop = getNumber (configFile >> "CfgDifficulties" >> "Base" >> "fovTop");
-if (_fovTop <= 0) then { _fovTop = 0.75; };
-private _hFovTan = tan (atan _fovTop) * _aspect;
-private _focusHalfDeg = atan (_hFovTan * 0.15);   // 15 % of screen width
+// Live camera FOV via CBA (ACE3-proven): returns [hFOV, zoom] for the
+// CURRENT view, so it follows the player's FOV slider, weapon zoom, and
+// borderless-window aspect changes.  A static fovTop from config ignores
+// all three.  Fall back to the config value if CBA is absent (should not
+// happen - AEE requires CBA).
+private _cbaFov = [1.0, 0.0];
+if !(isNil "CBA_fnc_getFov") then { _cbaFov = [1.0] call CBA_fnc_getFov; };
+_cbaFov params ["_hFovLive", "_zoomLive"];
+if (_hFovLive <= 0) then {
+    // Fallback: horizontal FOV from fovTop config + aspect.
+    private _fovTop = getNumber (configFile >> "CfgDifficulties" >> "Base" >> "fovTop");
+    if (_fovTop <= 0) then { _fovTop = 0.75; };
+    _hFovLive = atan ((tan (atan _fovTop)) * _aspect);
+};
+private _focusHalfDeg = atan ((tan _hFovLive) * 0.15);   // 15 % of screen
 private _spread = 300 * (tan _focusHalfDeg);      // offset at the 300 m end
 private _upVec   = vectorUp _player;
 private _rightVec = _lookDir vectorCrossProduct _upVec;
@@ -723,7 +734,7 @@ if (_rawTarget > 0) then {
         if (_rawTarget != _pending) then {
             if (_pending == 0 || abs (_rawTarget - _pending) > 0.5) then {
                 _pending = _rawTarget;
-                _holdUntil = CBA_missionTime + 0.25;
+                _holdUntil = CBA_missionTime + 0.1;   // transient rejection, not delay
             } else {
                 _pending = _rawTarget;   // follow drift, keep the clock
             };
@@ -792,7 +803,7 @@ if (_hDoF >= 0) then {
     // eases into the next instead of applying abruptly.  The glide in
     // the focus value is then matched by a glide in the rendered blur.
     _hDoF ppEffectAdjust [-_dofBlur, _focusDist, 1];
-    _hDoF ppEffectCommit 0.1;
+    _hDoF ppEffectCommit 0.15;
     _hDoF ppEffectEnable true;
     _hDoF ppEffectForceInNVG true;
 };
