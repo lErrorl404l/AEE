@@ -69,7 +69,8 @@ FAN_COUNT = 9
 NEAR_LIMIT_M = 0.25  # objective near limit (PVS-14: 25 cm)
 DEADBAND_FRAC = 0.25
 DEADBAND_MIN_M = 0.5
-HOLD_S = 0.1
+HOLD_S = 0.2
+REARM_FRAC = 0.4  # re-arm threshold = deadband * this
 MAX_STEP_M = 1.5  # 15 m/s at 0.1 s tick
 SETTLE_M = 0.1
 TICK_S = 0.1
@@ -150,10 +151,12 @@ def state_machine(raw_target, cur_focus, pending, hold_until, t):
     if raw_target > 0:
         if abs(raw_target - cur_focus) > deadband:
             if raw_target != pending:
-                # Re-arm only on material change; track drift without
-                # resetting the hold clock (walking player starves the
-                # rack otherwise).
-                if pending == 0 or abs(raw_target - pending) > 0.5:
+                # Re-arm (reset the hold clock) only on a MATERIAL change
+                # scaled to the deadband; movement-induced sweep (1-3 m)
+                # must not re-arm every tick.  Track drift without
+                # resetting (walking player starves the rack otherwise).
+                rearm = deadband * REARM_FRAC
+                if pending == 0 or abs(raw_target - pending) > rearm:
                     pending = raw_target
                     hold_until = t + HOLD_S
                 else:
@@ -729,6 +732,40 @@ def check_manual_mode_holds():
     }
 
 
+def check_movement_sweep_stable():
+    """Movement parallax (raw sweeps 1-3 m) must NOT re-rack constantly.
+
+    Regression: the RPT showed 20 % of ticks with focus moving while the
+    raw was stable, and focus swinging 0.6-159 m.  Walking parallax makes
+    the median sweep 1-3 m per tick; the old fixed 0.5 m re-arm threshold
+    re-armed every tick.  The re-arm threshold now scales with the
+    deadband (40 % of it), so movement drift is absorbed.
+    """
+    import random
+    random.seed(11)
+    # Player walks: scene distance oscillates 10-13 m (parallax sweep)
+    # around a base 12 m target - a genuine near-constant aim.
+    series = []
+    for i in range(300):
+        t = i * TICK_S
+        d = 12.0 + 1.5 * __import__("math").sin(i / 6.0) + random.uniform(-0.8, 0.8)
+        series.append((t, t + TICK_S, [(-12.0, 12.0, max(d, 0.5), False)]))
+    fh, rh, sh = run_scenario(series, focus0=12.0, n_ticks=300)
+    re_racks = sum(1 for i in range(1, len(fh)) if fh[i] != fh[i - 1])
+    ok = re_racks <= 10   # aim is near-constant; focus must not chase
+    return {
+        "name": "Movement sweep - no re-rack",
+        "ground_truth": "Walking parallax sweeps the median 1-3 m; focus holds",
+        "grid": "12 m target with +-1.5 m parallax sweep + noise, 30 s",
+        "tolerance": "<= 10 focus changes (was ~20 % of ticks)",
+        "status": "PASS" if ok else "FAIL",
+        "max_abs": f"re-racks={re_racks}",
+        "rmse": 0.0,
+        "unit": "m",
+        "note": "Catches the movement-induced re-racking from the RPT",
+    }
+
+
 # ─── Main ──────────────────────────────────────────────────────────────────
 
 CHECKS = [
@@ -752,6 +789,7 @@ CHECKS = [
     check_normal_pan,
     check_noise_no_hunting,
     check_manual_mode_holds,
+    check_movement_sweep_stable,
 ]
 
 
