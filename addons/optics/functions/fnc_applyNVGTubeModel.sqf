@@ -144,6 +144,22 @@ private _vigStrength = [0.0040, 0.0040, 0.06, 0.06];
 private _bloomBase = 0.04;
 private _bloomScale = 0.04;
 
+// ─── Per-device objective-focus config (researched, not guessed) ─────────
+// Real NVGs are MANUAL-focus: the operator sets the objective once and the
+// image is sharp from the near limit to infinity (hyperfocal behaviour),
+// not a camera-style racking band.  Only the ENVG family has real
+// autofocus.  Sources: DHS TechNote, L3Harris/Elbit sell sheets, operator
+// manuals (near limits: PVS-14/7 0.25 m, PVS-31A & GPNVG 0.45 m).
+//   dofModeDefault: 0 = AUTO (state machine), 1 = MANUAL (ring)
+//   dofNearLimit:   objective near focus limit, metres
+//   dofDefaultDist: where the ring sits when the player first puts the
+//                   goggles on - hyperfocal (~12-24 m at f/1.2 27 mm,
+//                   CoC 25-50 um), 15 m mid-range.  Not 300 m.
+private _dofModeDefault = 1;    // manual by default: real NVGs are manual
+private _dofNearLimit = 0.25;
+private _dofDefaultDist = 15;   // hyperfocal mid-band
+private _dofMaxDist = 300;
+
 // Tier matcher by HMD classname.  Substring tests run most-specific first.
 // The ENVG-II (NVGogglesB_grn_F/blk_F/gry_F, Apex) and panoramic GPNVG-class
 // goggles are modern FILMLESS devices — Gen 4 equivalent, same tube class as
@@ -161,6 +177,12 @@ if (_hmd find "USP_PVS31" >= 0 || _hmd find "PVS31" >= 0 || _hmd find "USP_PVS_3
     _vigStrength = [0.0025, 0.0025, 0.06, 0.06];
     _bloomBase = 0.02;
     _bloomScale = 0.02;
+    // Objective focus: PVS-31A/GPNVG manual with 0.45 m near limit;
+    // the ENVG-II fusion goggle (NVGogglesB_grn_F) is the autofocus
+    // member of the family (L3Harris ENVG autofocus objective).
+    _dofModeDefault = parseNumber ((_hmd find "NVGogglesB_grn_F") < 0);
+    _dofNearLimit = 0.45;
+    _dofDefaultDist = 20;   // PVS-31A/GPNVG ring, hyperfocal for f/1.4
 } else {
     if (_hmd find "NVGen3" >= 0 || _hmd find "NVGoggles_INDEP" >= 0) then {
         _tier = "GEN3";
@@ -173,6 +195,9 @@ _chromaStrength = 0.004;
     _vigStrength = [0.0030, 0.0030, 0.06, 0.06];
     _bloomBase = 0.03;
     _bloomScale = 0.03;
+        _dofModeDefault = 1;     // PVS-14-style manual, 0.25 m near limit
+        _dofNearLimit = 0.25;
+        _dofDefaultDist = 15;
     } else {
         if (_hmd find "NVGen2" >= 0 || _hmd find "NVGoggles_OPFOR" >= 0) then {
             _tier = "GEN2";
@@ -732,11 +757,21 @@ _rawTarget = _rawSmooth;
 //
 // State persists in missionNamespace: current focus, pending target and
 // its hold-until time.
-private _curFocus = missionNamespace getVariable [QGVAR(nvgFocusCur), _rawTarget];
+// Cold start: the ring sits at the device's hyperfocal default, NOT at
+// the first fan target.  On the first tick the fan often reads the far
+// background (the eye hasn't settled on anything yet), which used to
+// initialise focus at ~300 m and then glide down for several seconds -
+// the "starts off at 300m" the user saw.  The device default is where a
+// real operator's ring sits when they first put the goggles on.
+private _dofInitialised = missionNamespace getVariable [QGVAR(nvgFocusInit), false];
+private _curFocus = missionNamespace getVariable [QGVAR(nvgFocusCur), _dofDefaultDist];
 private _pending  = missionNamespace getVariable [QGVAR(nvgFocusPending), 0];
 private _holdUntil = missionNamespace getVariable [QGVAR(nvgFocusHoldUntil), 0];
-if !(_curFocus isEqualType 0 && _curFocus > 0) then { _curFocus = _rawTarget; };
-if (_curFocus <= 0) then { _curFocus = 50; };   // first tick, no target yet
+if !(_curFocus isEqualType 0 && _curFocus > 0) then { _curFocus = _dofDefaultDist; };
+if (!_dofInitialised) then {
+    _curFocus = _dofDefaultDist;
+    missionNamespace setVariable [QGVAR(nvgFocusInit), true];
+};
 
 if (_rawTarget > 0) then {
     private _deadband = (_curFocus * 0.25) max 0.5;
@@ -789,15 +824,24 @@ missionNamespace setVariable [QGVAR(nvgFocusHoldUntil), _holdUntil];
 // ─── Mode gate: MANUAL vs AUTO ───────────────────────────────────────────
 // dofMode (missionNamespace, set by the actions keybind): 0 = AUTO (the
 // O3DE state machine above), 1 = MANUAL (the player's ring position from
-// the Focus In/Out keybinds).  Real NVGs are manual-focus; auto is the
-// convenience mode.  In MANUAL the ring holds where the player set it -
-// moving closer/further passes objects through the plane naturally.
-private _dofMode = missionNamespace getVariable ["aee_optics_dofMode", 0];
+// the Focus In/Out keybinds).  Real NVGs are manual-focus (the ring sits
+// at a hyperfocal distance and everything from the near limit to
+// infinity is sharp); the ENVG family adds autofocus.  The DEFAULT is
+// per-device (from the researched config above): most goggles start in
+// MANUAL at their hyperfocal ring position; only the ENVG-II fusion
+// goggle starts in AUTO.  In MANUAL the ring holds where the player set
+// it - moving closer/further passes objects through the plane naturally.
+private _dofModeSet = missionNamespace getVariable ["aee_optics_dofModeSet", false];
+if (!_dofModeSet) then {
+    missionNamespace setVariable ["aee_optics_dofMode", _dofModeDefault];
+    missionNamespace setVariable ["aee_optics_dofModeSet", true];
+};
+private _dofMode = missionNamespace getVariable ["aee_optics_dofMode", _dofModeDefault];
 private _focusDist = if (_dofMode == 1) then {
-    private _manual = missionNamespace getVariable ["aee_optics_dofManualDist", 15];
-    _manual max 0.25 min 300
+    private _manual = missionNamespace getVariable ["aee_optics_dofManualDist", _dofDefaultDist];
+    _manual max _dofNearLimit min _dofMaxDist
 } else {
-    _curFocus
+    _curFocus max _dofNearLimit min _dofMaxDist
 };
 private _focusSettled = (_pending == 0);
 private _dofBlur = switch (_tier) do {

@@ -65,7 +65,7 @@ class RscTitles {
             class NVGFocusText: RscText {
                 idc = 1002;
                 text = "FOCUS 15m";
-                style = 2;
+                style = 2;   // centre-aligned
                 shadow = 1;
                 font = "PuristaMedium";
                 sizeEx = "0.014 * safezoneH";
@@ -73,25 +73,26 @@ class RscTitles {
                 // green (phosphor screen), so a green readout is invisible
                 // against it.  White stands out on the dark tube face.
                 colorText[] = {1, 1, 1, 1};
-                // Inside the tube face, near its bottom edge.  The mask
-                // occupies safeZoneY..safeZoneY+safeZoneH, so 0.90 puts
-                // the text just above the mask rim - visible, not clipped.
-                x = "safeZoneX + (safeZoneW - safeZoneH) / 2 - safeZoneH * 0.10";
-                y = "safeZoneY + safeZoneH * 0.90";
-                w = "safeZoneH * 0.20";
+                // Inside the tube face, bottom CENTRE of the screen.  The
+                // mask occupies safeZoneY..safeZoneY+safeZoneH centred on
+                // the screen width, so a control spanning the tube width
+                // with centre style sits unambiguously at the bottom-centre.
+                x = "safeZoneX + (safeZoneW - safeZoneH) / 2 - safeZoneH * 0.17";
+                y = "safeZoneY + safeZoneH * 0.88";
+                w = "safeZoneH * 0.34";
                 h = "0.020 * safezoneH";
             };
             class NVGFocusBar: RscText {
                 idc = 1003;
                 text = "|----o----------------------|";
-                style = 2;
+                style = 2;   // centre-aligned
                 shadow = 1;
                 font = "PuristaMedium";
                 sizeEx = "0.012 * safezoneH";
                 colorText[] = {1, 1, 1, 0.8};
-                x = "safeZoneX + (safeZoneW - safeZoneH) / 2 - safeZoneH * 0.12";
-                y = "safeZoneY + safeZoneH * 0.915";
-                w = "safeZoneH * 0.24";
+                x = "safeZoneX + (safeZoneW - safeZoneH) / 2 - safeZoneH * 0.17";
+                y = "safeZoneY + safeZoneH * 0.90";
+                w = "safeZoneH * 0.34";
                 h = "0.018 * safezoneH";
             };
         };
