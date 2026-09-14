@@ -11,7 +11,7 @@ triggering false positives.
 Stored in GVAR(thermalCrossoverActive) (bool) and GVAR(surfaceTemperature).
 */
 
-private _airTemp = missionNamespace getVariable [QEGVAR(core,currentTemperature), missionNamespace getVariable [QEGVAR(core,currentTemperature), 15]];
+private _airTemp = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 private _groundState = missionNamespace getVariable [QEGVAR(core,groundState), "Normal"];
 private _overcast = overcast;
 
