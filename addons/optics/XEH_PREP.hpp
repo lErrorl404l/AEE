@@ -1,10 +1,12 @@
 PREP(applyAtmosphericSeeingFX);
 PREP(applyDewOnOpticsFX);
+PREP(applyEngineThermal);
 PREP(applyHeatShimmerFX);
 PREP(applyMirageFX);
 PREP(applyNightGrain);
 PREP(applyNVGTubeModel);
 PREP(applyRainOnOpticsFX);
+PREP(applySecondSun);
 PREP(applySnowBlindnessFX);
 PREP(applySolarGlareFX);
 PREP(applyThermalVision);
