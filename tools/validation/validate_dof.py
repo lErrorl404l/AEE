@@ -95,14 +95,24 @@ def fan_hits(scene, look_centre_deg=0.0):
     scene: list of (start_m, end_m, dist, is_player) - each surface is an
     angular band (deg offset from centre) with a distance and a flag for
     whether the hit is the operator's own model (weapon/body).
-    Returns the list of valid hit distances, one per ray.
+    Returns the list of valid [dist, weight] hits, one per ray.
     """
     # Ray offsets: centre + 4 cardinal + 4 diagonal at the screen-space
-    # half-angle (11.3 deg on 16:9).
+    # half-angle (11.3 deg on 16:9), with Gaussian falloff weights.
     h = FOCUS_HALF_DEG
-    offsets = [0.0, h, -h, h, -h, h * 1.414, -h * 1.414, -h * 1.414, h * 1.414]
+    rays = [
+        (0.0, 1.00),
+        (h, 0.45),
+        (-h, 0.45),
+        (h, 0.45),
+        (-h, 0.45),
+        (h * 1.414, 0.20),
+        (-h * 1.414, 0.20),
+        (-h * 1.414, 0.20),
+        (h * 1.414, 0.20),
+    ]
     hits = []
-    for off in offsets:
+    for off, w in rays:
         theta = look_centre_deg + off
         dist = None
         is_player_hit = False
@@ -112,16 +122,23 @@ def fan_hits(scene, look_centre_deg=0.0):
                 is_player_hit = is_player
                 break
         if dist is not None and not is_player_hit:
-            hits.append(max(dist, NEAR_LIMIT_M))
+            hits.append([max(dist, NEAR_LIMIT_M), w])
     return hits
 
 
 def median_hits(hits):
-    """Mirror of the SQF: median of valid hits; empty if < half the fan."""
+    """Mirror of the SQF: WEIGHTED median of valid hits; empty if < half.
+
+    Each [dist, weight] hit expands by round(weight*4) copies; the median
+    of the expanded array is the centre-weighted dominant surface.
+    """
     if len(hits) < FAN_COUNT / 2:
         return 0.0
-    s = sorted(hits)
-    return s[len(s) // 2]
+    hits.sort(key=lambda h: h[0])
+    weighted = []
+    for d, w in hits:
+        weighted.extend([d] * int(round(w * 4)))
+    return weighted[len(weighted) // 2]
 
 
 def state_machine(raw_target, cur_focus, pending, hold_until, t):
@@ -177,14 +194,20 @@ def run_scenario(scene_series, focus0=None, n_ticks=300):
             raw = 0.0
         else:
             raw = median_hits(fan_hits(scene))
-        # Raw-target EMA smoothing (mirror of the SQF).  Cold start: the
-        # smoother initialises from the first raw target, not from 0 - a
-        # zero-initialised filter drags focus down on entry (3 m in the
-        # deadband test before the guard).
-        if raw_smooth <= 0:
-            raw_smooth = raw if raw > 0 else 0.0
-        elif raw > 0:
-            raw_smooth = raw_smooth + (raw - raw_smooth) * 0.5
+        # Conditional EMA (mirror of the SQF): smooth only while the
+        # target is within the deadband of current focus (jitter
+        # suppression); a larger change passes straight through so a
+        # real re-aim responds on the next tick, not after the filter
+        # eases it in (measured 0.69 s rack latency before this).
+        if raw > 0:
+            fdead = max(cur * DEADBAND_FRAC, DEADBAND_MIN_M)
+            if abs(raw - cur) > fdead:
+                raw_smooth = raw  # big change: pass through
+            else:
+                if raw_smooth <= 0:
+                    raw_smooth = raw  # cold start
+                else:
+                    raw_smooth = raw_smooth + (raw - raw_smooth) * 0.5
         else:
             raw_smooth = 0.0
         cur, pending, hold_until = state_machine(
