@@ -15,6 +15,34 @@ dependency; the compat addon `compat_ace3` connects the simulation to ACE3.
 Author: [lErrorl404l](https://github.com/lErrorl404l). Licence:
 [GPL-2.0-or-later](LICENSE) with a PBO-distribution exception.
 
+## Quick Start
+
+### Install from Release
+
+1. Download the latest release from
+   [Releases](https://github.com/lErrorl404l/AEE/releases).
+2. Extract the `.zip` into your Arma 3 `@AEE` folder (or any name you
+   prefer).
+3. Launch Arma 3 with `-mod=@CBA_A3;@AEE` in your launch parameters, or
+   enable both in the Arma 3 launcher.
+4. AEE loads automatically. No Zeus or editor setup is required for the
+   core simulation. Place the `AEE Environment Config` module in the
+   editor to customise settings.
+
+### Compatibility Addons
+
+The six compat addons load only when their host mod is present. Install
+the ones you need:
+
+| Addon | Host Mod | Purpose |
+|-------|----------|---------|
+| `compat_ace3` | ACE3 | Maps AEE state onto ACE medical and weather |
+| `compat_acre2` | ACRE2 | Custom radio signal-strength callback |
+| `compat_tfar` | TFAR | Scales transmission range |
+| `compat_kat` | KAT | Drives KAT circulation from AEE dehydration |
+| `compat_acm` | ACM | Drives CBRN contamination from AEE persistence |
+| `compat_realweather` | Real Weather | Reads `weather.json` and publishes into AEE |
+
 ## Features
 
 - Elevation lapse rates and diurnal temperature cycles.
