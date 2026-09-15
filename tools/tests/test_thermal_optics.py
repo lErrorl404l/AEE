@@ -2512,16 +2512,20 @@ class TestSQFSync(unittest.TestCase):
 
     def test_shared_eye_state_constants(self):
         # The shared eye-state foundation: one cached computation per frame
-        # (eyePos + eyeDirection), consumed by every eye-space system.
+        # (eyePos + state-aware direction), consumed by every eye-space
+        # system.  Direction is state-aware (KtweaK's NVG pattern): turret
+        # uses weaponDirection, on foot uses the view centre.
         self._assert_in_sqf(
             "fnc_getEyeState.sqf",
             [
                 "diag_frameNo",
                 "eyePos _unit",
-                "eyeDirection _unit",
+                "screenToWorldDirection [0.5, 0.5]",
+                "weaponDirection (currentWeapon _veh)",
+                "turretUnit [0]) isEqualTo _unit",
                 "missionNamespace setVariable [QGVAR(eyeState), [_frame, [_eye, _fwd, _up]]]",
             ],
-            "shared eye-state foundation",
+            "shared eye-state foundation (state-aware direction)",
         )
 
     def test_eye_state_consumers(self):
@@ -2534,10 +2538,14 @@ class TestSQFSync(unittest.TestCase):
             ("fnc_applyRainDroplets.sqf", "droplets"),
         ]:
             src = _read_sqf(fname)
-            self.assertIn("call FUNC(getEyeState)", src,
-                          f"{ctx} must consume the shared eye state")
-            self.assertNotIn("= eyePos ", src,
-                             f"{ctx} must not recompute eyePos directly")
+            self.assertIn(
+                "call FUNC(getEyeState)",
+                src,
+                f"{ctx} must consume the shared eye state",
+            )
+            self.assertNotIn(
+                "= eyePos ", src, f"{ctx} must not recompute eyePos directly"
+            )
 
     def test_solar_radiation_uses_daytime(self):
         # The solar model must read the LIVE clock (dayTime), not
