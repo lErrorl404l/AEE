@@ -354,6 +354,22 @@ def mtf_effective(mtf15, noise, blowout=0.0, gated=True, rain=0.0):
     return mtf
 
 
+def nvg_bloom(bloom_base, bloom_scale, moon_light, blowout, rain):
+    """Mirror of the NVG bloom (halo) model.
+
+    bloom = base + scale*moonLight + blowout*scale*2
+    rain multiplies by (1 + rain*2) - drop scatter.
+    Clear-condition veiling glare floor: +0.02 (2 %), the low end of the
+    published 2-5 % veiling-glare ratio for real tubes.  A faint glow
+    over the whole image that caps maximum contrast, independent of rain.
+    """
+    b = bloom_base + bloom_scale * moon_light
+    b = b + blowout * bloom_scale * 2
+    b = b * (1.0 + rain * 2.0)
+    b = b + 0.02
+    return max(0.0, min(1.0, b))
+
+
 # ─── Engine thermal drive mirrors (fnc_applyEngineThermal.sqf) ─────────────
 # These map AEE's physics state into the engine's thermal controls:
 # setVehicleTIPars (per-vehicle heat 0..1) and setTIParameter (display
@@ -1333,6 +1349,34 @@ class TestNVGBrightness(unittest.TestCase):
     def test_clamped_out_of_range(self):
         self.assertEqual(nvg_brightness(0.0001), 0.65)
         self.assertEqual(nvg_brightness(10.0), 1.0)
+
+
+class TestNVGBloom(unittest.TestCase):
+    """NVG halo + clear-condition veiling glare floor."""
+
+    def test_clear_condition_veiling_glare_floor(self):
+        # Even with no moon, no blowout, no rain, real tubes have a 2 %
+        # veiling glare floor (phosphor light reflected to the photocathode).
+        b = nvg_bloom(0.04, 0.04, moon_light=0.0, blowout=0.0, rain=0.0)
+        self.assertAlmostEqual(b, 0.04 + 0.02, places=6)
+
+    def test_veiling_glare_independent_of_rain(self):
+        # The floor is present in clear AND rainy conditions (it adds on
+        # top of the rain-scaled bloom, it is not the rain term).
+        clear = nvg_bloom(0.04, 0.04, 0.0, 0.0, 0.0)
+        rainy = nvg_bloom(0.04, 0.04, 0.0, 0.0, 1.0)
+        self.assertGreater(rainy, clear)
+        self.assertGreaterEqual(clear, 0.02)  # floor present when clear
+
+    def test_bloom_scales_with_blowout(self):
+        low = nvg_bloom(0.04, 0.04, 0.0, blowout=0.0, rain=0.0)
+        high = nvg_bloom(0.04, 0.04, 0.0, blowout=1.0, rain=0.0)
+        self.assertGreater(high, low)
+
+    def test_bloom_bounded(self):
+        b = nvg_bloom(0.05, 0.05, 1.0, blowout=1.0, rain=1.0)
+        self.assertLessEqual(b, 1.0)
+        self.assertGreaterEqual(b, 0.0)
 
 
 class TestMTFEffective(unittest.TestCase):
@@ -2348,6 +2392,13 @@ class TestSQFSync(unittest.TestCase):
             "fnc_applyNVGTubeModel.sqf",
             ["_mtf15 * 0.55", "_blowout * 0.4", "1 - rain * 0.5"],
             "MTF degradation",
+        )
+
+    def test_nvg_veiling_glare_floor(self):
+        self._assert_in_sqf(
+            "fnc_applyNVGTubeModel.sqf",
+            ["_bloom = _bloom + 0.02"],
+            "clear-condition veiling glare floor",
         )
 
     # ── Engine thermal drive (fnc_applyEngineThermal.sqf) ──
