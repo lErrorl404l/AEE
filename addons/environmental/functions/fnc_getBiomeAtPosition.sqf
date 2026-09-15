@@ -13,7 +13,16 @@
 //   0: Position ASL [x, y, z]
 // Return: Koppen code string
 
-params ["_posASL"];
+params [
+    ["_posASL", [], [[]]]
+];
+
+// Headless servers have no current unit, so updateEnvironment passes [].
+// Fall back to the map-detected biome (fnc_getBiome result) instead of
+// failing on the empty position.
+if (count _posASL < 3) exitWith {
+    missionNamespace getVariable [QEGVAR(core,biome), "Cfb"]
+};
 
 private _pos2D = [_posASL select 0, _posASL select 1];
 private _elevation = _posASL select 2;

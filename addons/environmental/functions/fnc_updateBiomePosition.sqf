@@ -14,12 +14,15 @@
 params ["_posASL"];
 
 // ─── Check for global override ────────────────────────────────────────
-private _override = QGVAR(biomeOverride) call CBA_fnc_getSetting;
+// CBA settings are exposed as missionNamespace variables under the
+// setting name. Read directly (CBA_fnc_getSetting is not in all CBA
+// builds). Default "AUTO" = auto-detect.
+private _override = missionNamespace getVariable [QGVAR(biomeOverride), "AUTO"];
 if (_override != "AUTO") exitWith {
-    private _current = GVAR(biome);
+    private _current = missionNamespace getVariable [QEGVAR(core,biome), ""];
     if (_current != _override) then {
-        GVAR(biome) = _override;
-        GVAR(biomeName) = [_override] call EFUNC(environmental,getBiomeName);
+        missionNamespace setVariable [QEGVAR(core,biome), _override];
+        missionNamespace setVariable [QEGVAR(core,biomeName), [_override] call EFUNC(environmental,getBiomeName)];
     };
 };
 
@@ -27,8 +30,8 @@ if (_override != "AUTO") exitWith {
 private _newBiome = [_posASL] call EFUNC(environmental,getBiomeAtPosition);
 
 // ─── Update if changed ────────────────────────────────────────────────
-private _current = GVAR(biome);
+private _current = missionNamespace getVariable [QEGVAR(core,biome), ""];
 if (_newBiome != _current) then {
-    GVAR(biome) = _newBiome;
-    GVAR(biomeName) = [_newBiome] call EFUNC(environmental,getBiomeName);
+    missionNamespace setVariable [QEGVAR(core,biome), _newBiome];
+    missionNamespace setVariable [QEGVAR(core,biomeName), [_newBiome] call EFUNC(environmental,getBiomeName)];
 };
