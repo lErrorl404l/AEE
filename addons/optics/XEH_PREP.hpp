@@ -8,6 +8,7 @@ PREP(applyHeatShimmerFX);
 PREP(applyMirageFX);
 PREP(applyNightGrain);
 PREP(applyNVGTubeModel);
+PREP(applyRainDroplets);
 PREP(applyRainOnOpticsFX);
 PREP(applySecondSun);
 PREP(applySnowBlindnessFX);

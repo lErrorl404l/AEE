@@ -1,0 +1,94 @@
+#include "..\script_component.hpp"
+/*
+ * Rain droplets on the NVG objective lens, via the engine's particle
+ * system (NOT a texture overlay).
+ *
+ * Real raindrops landing on the objective sit a few cm in front of the
+ * eye, slightly out of the DoF near-limit, and drift with gravity.  The
+ * engine renders this with a particle source: billboards that face the
+ * player, shaped by the base game's own raindrop model/texture
+ * (a3\data_f\RainDrop.p3d + raindrop3.paa — the real droplet assets,
+ * not a custom overlay).
+ *
+ * The particle source is attached to the player, positioned just in
+ * front of the objective, and the DROP INTERVAL is driven by the live
+ * `rain` value: dry = no particles (source deleted), heavy rain =
+ * frequent drops.  Droplet weight is small and wind influence (rubbing)
+ * is 0 so drops stay on the lens rather than blowing away — the correct
+ * physics for droplets on glass.
+ *
+ * Prototype: the visible result depends on engine particle rendering
+ * near the camera (near-clip plane, scale, occlusion by the NVG model).
+ * If it reads as floating dots rather than lens droplets, this function
+ * is reverted — the physics degradation (blur + Mie noise) remains the
+ * honest ceiling.  NOT a static overlay: gated, animated, engine assets.
+ *
+ * Wired in XEH_postInit: ENTER on vision mode 1/2, TICK per frame, EXIT
+ * on mode 0 (deletes the source).
+ */
+params ["_mode"];
+
+if (!hasInterface) exitWith { 0 };
+
+private _src = missionNamespace getVariable [QGVAR(rainDropSource), objNull];
+
+// ─── EXIT: destroy the source ─────────────────────────────────────────────
+if (_mode == "EXIT") then {
+    if (!isNull _src) then {
+        deleteVehicle _src;
+        missionNamespace setVariable [QGVAR(rainDropSource), objNull];
+    };
+    0
+};
+
+private _player = call CBA_fnc_currentUnit;
+if (isNil "_player" || !alive _player || cameraOn != _player) exitWith { 0 };
+
+// ─── Gate on rain ─────────────────────────────────────────────────────────
+private _rain = rain;
+if !(_rain isEqualType 0) then { _rain = 0; };
+if (_rain < 0.1) then {
+    if (!isNull _src) then {
+        deleteVehicle _src;
+        missionNamespace setVariable [QGVAR(rainDropSource), objNull];
+    };
+    0
+};
+
+// ─── Create the source once, then drive the drop interval ────────────────
+if (isNull _src) then {
+    _src = "#particlesource" createVehicleLocal (getPosASL _player);
+    _src setParticleCircle [0.004, [0.004, 0.004, 0.004]];
+    _src setParticleRandom [0.1, [0.002, 0.002, 0], [0, 0, 0], 0, 0, [0, 0, 0, 0], 0, 0];
+    _src setParticleParams [
+        ["\A3\data_f\RainDrop.p3d", 1, 0, 1],   // shape (engine asset)
+        "",                                       // animation (none)
+        "Billboard",                              // type (faces player)
+        1,                                        // timer period (s)
+        1.5,                                      // lifetime (s)
+        [0, 0.07, 0.02],                          // position: ~7 cm in front of eye
+        [0, 0, -0.002],                           // moveVelocity: tiny gravity drift
+        0,                                        // rotation velocity
+        0.0001,                                   // weight (negligible)
+        0.00001,                                  // volume (droplet)
+        0,                                        // rubbing: NO wind influence (on glass)
+        [0.0012, 0.0015],                         // size: ~1-1.5 mm droplet
+        [[0.9, 0.9, 1.0, 0.35], [0.9, 0.9, 1.0, 0.2]],  // color: translucent, fades
+        [1],                                      // anim phase
+        0, 0,                                     // random direction (none — fixed lens)
+        "", "",                                   // onTimer, beforeDestroy
+        _player,                                  // attach to player (param 18)
+        0,                                        // angle
+        false,                                    // onSurface
+        -1,                                       // bounce disabled
+        [],                                       // emissive
+        [0, 0, 1]                                 // vectorDir (up)
+    ];
+    missionNamespace setVariable [QGVAR(rainDropSource), _src];
+};
+
+// Drop interval scales with rain: heavy rain = droplets every ~0.1 s,
+// light rain = ~0.5 s.  cl_basic reference interval 0.2 s at moderate.
+private _interval = 0.5 / (_rain + 0.2);
+_src setDropInterval (_interval max 0.05);
+_interval
