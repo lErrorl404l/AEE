@@ -9,6 +9,14 @@
  * one whose TI stage references a cold texture makes it render cold, the
  * same mechanism the clothing override and A3TI use.
  *
+ * COLD TEXTURE: ti_cold.paa is a warm grey (red ~72, not pure black).
+ * In white-hot mode a pure-black TI texture reads as black holes, which
+ * reads as "black hot" even though the polarity is white-hot.  A dim
+ * grey cold floor presents cold surfaces the way a real FLIR does: cold
+ * ground is a dark grey, not empty black.  The physics second sun still
+ * warms buildings through the red channel in daylight (radiation * 13
+ * on top of the ~72 floor), so the day/night contrast is preserved.
+ *
  * This mirrors fnc_applyClothingThermal for buildings: same per-class
  * thermal-selection discovery, same one-shot swap, same EXIT restore.
  * Buildings within the sensor radius get the cold TI material; the
@@ -28,7 +36,14 @@ if (_mode == "EXIT") then {
         _x params ["_o", "_oldMats", "_thermalSelections"];
         if (!isNull _o) then {
             {
-                _o setObjectMaterial [_x, _oldMats select _x];
+                // getObjectMaterials can return fewer entries than the
+                // texture selections that were swapped.  Out-of-bounds
+                // select returns nil, which setObjectMaterial rejects
+                // ("Type Any, expected String").  Skip selections with
+                // no recorded material instead of restoring nil.
+                if (_x < count _oldMats && {(_oldMats select _x) isEqualType ""}) then {
+                    _o setObjectMaterial [_x, _oldMats select _x];
+                };
             } forEach _thermalSelections;
         };
     } forEach _saved;
