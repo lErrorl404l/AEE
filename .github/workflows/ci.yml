@@ -37,7 +37,7 @@ jobs:
       - name: Setup HEMTT
         uses: arma-actions/hemtt@v1
       - name: Cache HEMTT
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/.hemtt/cache
           key: hemtt-${{ hashFiles('.hemtt/**/*') }}
@@ -64,7 +64,7 @@ jobs:
       - name: Setup HEMTT
         uses: arma-actions/hemtt@v1
       - name: Cache HEMTT
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/.hemtt/cache
           key: hemtt-${{ hashFiles('.hemtt/**/*') }}
