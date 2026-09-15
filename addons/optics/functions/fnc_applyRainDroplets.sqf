@@ -60,8 +60,14 @@ private _eye = eyePos _player;
 private _camDir = getCameraViewDirection _player;
 private _dist = 0.4 + random 0.3;
 private _pos = ASLToATL (_eye vectorAdd (_camDir vectorMultiply _dist));
-private _size = 0.002 + random 0.002;
-private _lifetime = 0.1 + random 0.15;
+// Size and brightness must punch through the NVG/thermal post-processing:
+// at low lux the FilmGrain reaches 0.3 + rain*0.5 (near max at rain 1),
+// and the ColorCorrections dims faint detail.  A 3 mm 0.6-alpha spec was
+// invisible under that noise (the "still cannot see them" report).  The
+// droplet reads as a bright refractive glint on the lens: larger
+// (4-8 mm) and near-opaque so it clears the grain floor.
+private _size = 0.004 + random 0.004;
+private _lifetime = 0.15 + random 0.2;
 
 if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
     diag_log text format ["[AEE] rain drop: rain=%1 pos=%2 size=%3", _rain, _pos, _size];
@@ -79,8 +85,8 @@ drop [
     1,                      // weight
     0,                      // volume
     0,                      // rubbing: no wind (on the lens)
-    [_size],                // droplet size
-    [[1, 1, 1, 0.6]],       // colour: translucent white (refraction)
+    [_size],                // droplet size (4-8 mm: clears the grain floor)
+    [[1.2, 1.2, 1.4, 0.85]],// colour: bright refractive glint, near-opaque
     [0],                    // anim phase
     0,                      // random dir
     0,
