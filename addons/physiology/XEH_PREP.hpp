@@ -6,3 +6,6 @@ PREP(calculateScentDispersion);
 PREP(calculateUVIndex);
 PREP(calculateHypoxia);
 PREP(applyHeatStressHUD);
+PREP(calculateSleepPressure);
+PREP(calculateFatigueFactor);
+PREP(updateFatigueState);

@@ -738,6 +738,89 @@ if (_p10Fail == 0) then {
         diag_log text format ["[PHASE16] [FAIL] propellant temp model: %1 passed, %2 failed", _p16Pass, _p16Fail];
     };
 
+    // -- PHASE 17: Borbely sleep/fatigue model (#29) ------------------------
+    // Pure maths, runs headless.  Checks the two-process model against the
+    // published anchors: Daan 1984 time constants, Dijk & Czeisler 1995
+    // circadian phase (peak wake drive in the evening, NOT 6:00), Van
+    // Dongen 2003 lapse threshold, Dawson & Reid 1997 BAC equivalence.
+    private _p17Pass = 0;
+    private _p17Fail = 0;
+    private _fnSP = missionNamespace getVariable ["aee_physiology_fnc_calculateSleepPressure", nil];
+    private _fnFF = missionNamespace getVariable ["aee_physiology_fnc_calculateFatigueFactor", nil];
+    if (isNil "_fnSP" || isNil "_fnFF") then {
+        diag_log text "[PHASE17] [FAIL] sleep model functions not compiled";
+        _p17Fail = _p17Fail + 1;
+    } else {
+        // Case 1: 18.2 h awake -> Process S at 63.2% of S_max (Daan 1984).
+        private _sp1 = [18.2, 0, 12, false] call _fnSP;
+        _sp1 params ["_s", "_c", "_sleepiness"];
+        if (abs (_s - 0.632) < 0.02) then {
+            diag_log text format ["[PHASE17] [PASS] S after 18.2 h awake = %1", _s];
+            _p17Pass = _p17Pass + 1;
+        } else {
+            diag_log text format ["[PHASE17] [FAIL] S after 18.2 h awake = %1 (expected ~0.632)", _s];
+            _p17Fail = _p17Fail + 1;
+        };
+
+        // Case 2: circadian wake drive peaks in the evening, not 6:00.
+        private _sp18 = [24, 0, 18, false] call _fnSP;
+        private _sp06 = [24, 0, 6, false] call _fnSP;
+        private _c18 = _sp18 select 1;
+        private _c06 = _sp06 select 1;
+        if (_c18 > _c06) then {
+            diag_log text format ["[PHASE17] [PASS] evening wake drive %1 > 6:00 %2", _c18, _c06];
+            _p17Pass = _p17Pass + 1;
+        } else {
+            diag_log text format ["[PHASE17] [FAIL] evening wake drive %1 NOT > 6:00 %2", _c18, _c06];
+            _p17Fail = _p17Fail + 1;
+        };
+
+        // Case 3: 24 h awake -> factor ~0.59 (0.10% BAC equivalence).
+        private _ff24 = [0.9, 0.9, 0.0, 24] call _fnFF;
+        if (_ff24 > 0.5 && _ff24 < 0.65) then {
+            diag_log text format ["[PHASE17] [PASS] 24 h awake factor = %1 (BAC ~0.10% band)", _ff24];
+            _p17Pass = _p17Pass + 1;
+        } else {
+            diag_log text format ["[PHASE17] [FAIL] 24 h awake factor = %1 (expected 0.5-0.65)", _ff24];
+            _p17Fail = _p17Fail + 1;
+        };
+
+        // Case 4: 48 h awake floors at 0.30.
+        private _ff48 = [1.0, 1.0, 0.0, 48] call _fnFF;
+        if (abs (_ff48 - 0.30) < 0.01) then {
+            diag_log text format ["[PHASE17] [PASS] 48 h awake factor = %1 (floor)", _ff48];
+            _p17Pass = _p17Pass + 1;
+        } else {
+            diag_log text format ["[PHASE17] [FAIL] 48 h awake factor = %1 (expected 0.30)", _ff48];
+            _p17Fail = _p17Fail + 1;
+        };
+
+        // Case 5: fatigue state accumulator runs and stores vars.
+        private _fnUS = missionNamespace getVariable ["aee_physiology_fnc_updateFatigueState", nil];
+        if (!isNil "_fnUS") then {
+            missionNamespace setVariable ["aee_physiology_wakefulnessHours", 0];
+            missionNamespace setVariable ["aee_physiology_sleepHours", 0];
+            [] call _fnUS;
+            private _wake = missionNamespace getVariable ["aee_physiology_wakefulnessHours", -1];
+            private _fatigue = missionNamespace getVariable ["aee_physiology_fatigueFactor", -1];
+            if (_wake >= 0 && _fatigue > 0 && _fatigue <= 1) then {
+                diag_log text format ["[PHASE17] [PASS] fatigue state: wake=%1 factor=%2", _wake, _fatigue];
+                _p17Pass = _p17Pass + 1;
+            } else {
+                diag_log text format ["[PHASE17] [FAIL] fatigue state: wake=%1 factor=%2", _wake, _fatigue];
+                _p17Fail = _p17Fail + 1;
+            };
+        } else {
+            diag_log text "[PHASE17] [FAIL] updateFatigueState not compiled";
+            _p17Fail = _p17Fail + 1;
+        };
+    };
+    if (_p17Fail == 0) then {
+        diag_log text format ["[PHASE17] [PASS] sleep/fatigue model: %1 checks passed", _p17Pass];
+    } else {
+        diag_log text format ["[PHASE17] [FAIL] sleep/fatigue model: %1 passed, %2 failed", _p17Pass, _p17Fail];
+    };
+
     // -- PHASE 5: determinism -- temperature delta over 5 s must be small ----
     // PHASE11 deliberately disturbed the clock (midnight/noon skips).  The
     // temperature model is stateless and recomputes on each 5 s env tick,
