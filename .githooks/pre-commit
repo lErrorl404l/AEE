@@ -56,6 +56,13 @@ if command -v python3 &>/dev/null && [ -f "$ROOT/tools/validation/validate_dof.p
     (cd "$ROOT" && python3 tools/validation/validate_dof.py >/dev/null 2>&1) || FAILED=1
 fi
 
+# Astronomical validation — lunar illuminance (Krisciunas & Schaefer 1991),
+# NELM (Garstang/Bortle), DEF Stan 61-027 night classification. Stdlib only.
+if command -v python3 &>/dev/null && [ -f "$ROOT/tools/validation/validate_astronomical.py" ]; then
+    echo "-> astronomical validation"
+    (cd "$ROOT" && python3 tools/validation/validate_astronomical.py >/dev/null 2>&1) || FAILED=1
+fi
+
 if [ "$FAILED" -ne 0 ]; then
     echo "X pre-commit hook failed. Fix issues or use --no-verify."
     exit 1
