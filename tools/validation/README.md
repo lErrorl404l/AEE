@@ -382,7 +382,7 @@ in view (Cold Harbour NV terminology).
 
 ## Sensor and illuminance harnesses
 
-Two additional stdlib-only harnesses guard the optics/sensor layer:
+Additional stdlib-only harnesses guard the optics/sensor layer:
 
 ```bash
 # NVG/thermal physics (AGC, shot noise, MTF, temperature, value audit)
@@ -391,7 +391,11 @@ python3 tools/validation/validate_sensors.py
 # Shared illuminance layer (azimuth/elevation conversion, lux bounds,
 # shared-state contract)
 python3 tools/validation/validate_illuminance.py
+
+# Astronomical models (lunar illuminance vs Krisciunas & Schaefer 1991,
+# NELM vs Garstang/Bortle, DEF Stan 61-027 night classification)
+python3 tools/validation/validate_astronomical.py
 ```
 
-Both run with only the Python standard library, exit 0 on pass, and are
+All run with only the Python standard library, exit 0 on pass, and are
 wired into `.githooks/pre-commit` and `.github/workflows/ci.yml`.
