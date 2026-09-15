@@ -1,31 +1,36 @@
-[h1]Version 1.0.0 — Initial Release[/h1]
+[h1]Version 1.1.0 — NODs Physics Overhaul[/h1]
 
-[quote]ACE Environment Extended (AEE) is a physically accurate environment simulation for Arma 3, extending ACE3. This is the first Workshop release.[/quote]
+[quote]Physics-based thermal vision and NVG sensor model. Everything the engine lets us drive is driven from real physics; what it cannot express is documented as a hard limit rather than faked.[/quote]
 
-[b]Added[/b]
+[b]Thermal[/b]
 [list]
-[*]Physically accurate atmosphere: elevation lapse rates, diurnal temperature cycles, true air density, Koppen biome classification, orographic precipitation, WMO 3-hour pressure tendency
-[*]Thermal and physiological models: wet-bulb globe temperature (ISO 7243 heat-stress categories), NWS heat index, JAG/TTI wind chill, altitude acclimatisation with time-of-useful-consciousness hypoxia, ISO 17166 UV index with ozone absorption, hypothermia and dehydration risk
-[*]Optics: thermal crossover, mirage, solar glare, Cn²-based atmospheric seeing, physical smoke dispersal, Atlas rain extinction, dew and frost on optics, snow blindness — all unified under a single post-process arbiter (no flicker)
-[*]Mobility: SAE J1349 engine derating, slip-curve traction, mud accretion, Nash-cascade river water level, NRMM cone-index route degradation, momentum-theory helicopter lift
-[*]Environmental: Arrhenius Q10 CBRN persistence, Rothermel fire spread, avalanche risk, Stefan freeze/thaw, flash-flood prediction, surface wetness, scent dispersion
-[*]Maritime: harmonic tidal prediction (M2/S2/K1/O1), WMO Beaufort sea state, Pierson-Moskowitz wave height, magnetic compass deviation
-[*]Radio: Friis free-space path loss with atmospheric ducting, ITU-R P.531 ionospheric absorption
-[*]Atmospheric events: lightning, sandstorms, dust devils, microbursts, ICAO eddy-dissipation-rate turbulence, airframe icing
-[*]Real-world weather input: reads a weather.json written by tools/weather_fetch.py (Open-Meteo, no API key)
+[*]Per-object temperature model wired into the renderer: thermal inertia per material (metal 120 s, concrete 600 s, vegetation 300 s, human 60 s), vehicle cold-start engine and exhaust curves, clothing insulation and metabolic heat, ground temperatures per surface
+[*]Conduction and radiant coupling between objects (0.3/d², bounded), burning objects at combustion temperature, vehicle damage-state heat (engine, fuel, destroyed)
+[*]Per-selection vehicle gradient: engine bay and exhaust warm, body cold, glass reflects the sky
+[*]Scene contrast from the vehicle-only temperature average, NETD noise floor with range and humidity terms
+[*]Engine display driven from physics: per-vehicle heat state, fixed display baseline with blowout-guard auto-gain (pan-freeze + ease), second sun scaled to real solar radiation
+[*]Weapon barrel heat and exhaust signatures
 [/list]
 
-[b]Integrations[/b]
+[b]NVG[/b]
 [list]
-[*]ACE3: weather state feeds the Kestrel; heat index and WBGT published; WBGT and dehydration drive ACE3 medical vitals
-[*]KAT: dehydration and hypoxia state feed KAT's circulation model
-[*]ACM: CBRN persistence drives ACM's contamination state
-[*]ACRE2 / TFAR: radio propagation index scales transmission range
+[*]Per-tier sensor model: sensitivity, noise floor, MTF, phosphor persistence (P43/P20/P45), Poisson shot noise, veiling glare
+[*]Auto-gating: gated tubes darken on bright sources (Gen 3, PVS-31), ungated tubes bloom (Gen 1/2)
+[*]Physics focus: terrain raycast, rolling-median smoothing, noise-floor deadband, settle watchdog, thin-lens rack
+[*]Battery drain per tier with temperature derating and low-battery indicators
+[*]Rain physics: Mie scatter, gating feedback, discrete on-lens droplets, smoothed weather transitions
+[/list]
+
+[b]Shared foundations[/b]
+[list]
+[*]Eye-state: one cached per-frame eye position and gaze vector, consumed by every eye-space system
+[*]Smoothed weather: EMA foundation with real meteorological time constants
+[*]PiP: all scope types receive AEE physics automatically
 [/list]
 
 [b]Testing[/b]
 [list]
-[*]183 unit tests mirroring the physics models, run by a single command
-[*]Ten-phase dedicated-server integration test in Docker
-[*]Five-host compat verification against the real mods in a live server
+[*]278 physics tests with drift-lock against the SQF source, plus the full 461-test discovery
+[*]Dedicated-server integration test: 12 phases, zero failures
+[*]HEMTT pedantic lint gate clean
 [/list]
