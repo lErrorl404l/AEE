@@ -85,6 +85,7 @@
             if (_vm == 2) then {
                 [] call FUNC(applyThermalVision);
                 [] call FUNC(applyEngineThermal);
+                [] call FUNC(applyWeaponBarrelHeat);
                 ["TICK"] call FUNC(applySecondSun);
                 ["TICK"] call FUNC(applyClothingThermal);
                 ["TICK"] call FUNC(applyBuildingThermal);
@@ -104,8 +105,14 @@
 ["fired", {
     params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile"];
     if (_unit != call CBA_fnc_currentUnit) exitWith {};
-    if (currentVisionMode _unit != 1) exitWith {};
     if (_weapon == "throw" || _weapon == "put") exitWith {};
+
+    // Barrel heat accumulates on every shot regardless of vision mode —
+    // the barrel warms whether or not the shooter is watching through a
+    // tube.  The thermal PFH swaps the weapon material while hot.
+    [_weapon, _ammo] call FUNC(applyWeaponBarrelHeat);
+
+    if (currentVisionMode _unit != 1) exitWith {};
 
     private _visibleFire = getNumber (configFile >> "CfgAmmo" >> _ammo >> "visibleFire");
     if (_visibleFire <= 0) exitWith {};
