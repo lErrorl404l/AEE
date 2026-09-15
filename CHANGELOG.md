@@ -110,6 +110,10 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 - Dead `ace_medical_dehydrationRisk` write (ACE3 has no such variable; it
   polluted the ace_medical_ namespace).
+- SQFVM check from CI: its parser is incompatible with CBA-macro code
+  (false positives on `getOrDefault`/`keys`/`createHashMap` and config
+  syntax); the authoritative validators are the HEMTT lint gate and the
+  repo SQF validator.
 
 ### Documentation
 
