@@ -35,6 +35,15 @@ private _cat = switch (true) do {
 
 private _show = (_cat >= 1 || _risk > _warnThreshold);
 
+// Fatigue factor from the Borbely model (0.30..1.0).  Shown when it drops
+// below 0.85 (roughly 16-18 h awake), so the soldier sees the onset of
+// impairment before it is severe.
+private _fatigue = missionNamespace getVariable [QGVAR(fatigueFactor), 1.0];
+private _fatigueWarn = _fatigue < 0.85;
+if (_fatigueWarn) then {
+    _show = true;
+};
+
 if (_show) then {
     if (!_active) then {
         private _name = switch (_cat) do {
@@ -59,6 +68,12 @@ if (_show) then {
             _text = _text + format [
                 "<br/><t color='#cccccc' size='0.9'>Dehydration risk: %1%2</t>",
                 floor (_risk * 100), "%"
+            ];
+        };
+        if (_fatigueWarn) then {
+            _text = _text + format [
+                "<br/><t color='#ff9900' size='0.9'>Fatigue: %1%2 effective</t>",
+                floor (_fatigue * 100), "%"
             ];
         };
         titleText [_text, "PLAIN DOWN", 0.5, true, true];

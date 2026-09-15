@@ -98,6 +98,11 @@ if (GVAR(physiologyEnabled)) then {
     // both raw risks are fresh here.  Neither accumulator reads its own
     // output risk, so writing the amplified value back is safe.
     [] call EFUNC(physiology,applyCrossSensitivity);
+    // Fatigue/sleep state (Borbely two-process model) accumulates on the
+    // same tick cadence.  Guards on fatigueEnabled internally.
+    if (missionNamespace getVariable [QEGVAR(physiology,fatigueEnabled), true]) then {
+        [] call EFUNC(physiology,updateFatigueState);
+    };
 };
 
 // ─── Sensor / Optics ───────────────────────────────────────────────────────
