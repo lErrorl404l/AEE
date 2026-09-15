@@ -10,6 +10,17 @@ Run: python3 -m unittest tools/tests/test_biome.py
 
 import math
 import unittest
+from pathlib import Path
+
+# Repo root: tools/tests/ -> up two levels.
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+_ENV = _REPO_ROOT / "addons" / "environmental" / "functions"
+
+
+def _read_sqf(name):
+    """Read an SQF function file.  The drift-lock tests read the SOURCE so a
+    constant change in SQF fails the mirror tests until re-synced."""
+    return (_ENV / name).read_text(encoding="utf-8")
 
 
 # ─── Mirror of fnc_getBiomeAtPosition.sqf ──────────────────────────────
@@ -242,6 +253,62 @@ KNOWN_MAP_BIOMES = {
 
 
 # ─── Tests ─────────────────────────────────────────────────────────────
+
+
+class TestSQFSync(unittest.TestCase):
+    """SQF source must contain the constants the Python mirrors rely on."""
+
+    def _assert_in_sqf(self, filename, fragments, context):
+        text = _read_sqf(filename)
+        missing = [f for f in fragments if f not in text]
+        self.assertFalse(
+            missing,
+            f"{filename}: {context} changed/missing in SQF: {missing}. "
+            f"Re-sync the Python mirror in test_biome.py.",
+        )
+
+    # ── Latitude bands (fnc_getBiomeAtPosition.sqf) ──
+    def test_latitude_bands(self):
+        self._assert_in_sqf(
+            "fnc_getBiomeAtPosition.sqf",
+            [
+                "case (_lat < 10)",
+                "case (_lat < 23.5)",
+                "case (_lat < 35)",
+                "case (_lat < 50)",
+                "case (_lat < 66.5)",
+            ],
+            "Koppen latitude bands",
+        )
+
+    def test_latitude_fallback(self):
+        self._assert_in_sqf(
+            "fnc_getBiomeAtPosition.sqf",
+            ["if (_lat == 0) then { _lat = 40; }"],
+            "temperate latitude fallback",
+        )
+
+    # ── Elevation lapse rate (fnc_getBiomeAtPosition.sqf) ──
+    def test_lapse_rate(self):
+        self._assert_in_sqf(
+            "fnc_getBiomeAtPosition.sqf",
+            ["_elevation / 1000 * 6.5"],
+            "ICAO 6.5 C/km lapse rate",
+        )
+
+    # ── Tier 1 direct map (fnc_getBiomeAtPosition.sqf) ──
+    def test_direct_map_entries(self):
+        self._assert_in_sqf(
+            "fnc_getBiomeAtPosition.sqf",
+            [
+                '"#GdtDesert",   "BWh"',
+                '"#GdtJungle",   "Af"',
+                '"#GdtTundra",   "ET"',
+                '"#GdtIce",      "EF"',
+                '"#GdtPrairie",  "BSk"',
+            ],
+            "Tier 1 direct surface map",
+        )
 
 
 class TestLatitudeBand(unittest.TestCase):
