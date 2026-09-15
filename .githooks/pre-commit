@@ -1,8 +1,6 @@
 #!/bin/bash
 # aee pre-commit hook - fast checks
-# Runs repo-contained gates (hemtt, python tests). The operator's personal
-# rules (ste-lint, audit) run only when present; they are not required for
-# other contributors.
+# Runs repo-contained gates (hemtt, ste-lint, tests, validations).
 set -euo pipefail
 ROOT="$(git rev-parse --show-toplevel)"
 FAILED=0
@@ -14,17 +12,16 @@ else
     echo "WARN hemtt not found, skipping"
 fi
 
-RULES="$HOME/.config/opencode/rules"
+STE_LINT=""
+if [ -f "$ROOT/tools/ste-lint.py" ]; then
+    STE_LINT="$ROOT/tools/ste-lint.py"
+fi
 # ste-lint is a prose linter (ASD-STE100 writing rules): it gates markdown
 # only.  SQF/hpp/cpp are code, checked by hemtt.
 CHANGED=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(md|markdown)$' || true)
-if [ -n "$CHANGED" ] && [ -f "$RULES/ste-lint.py" ]; then
+if [ -n "$CHANGED" ] && [ -n "$STE_LINT" ]; then
     echo "-> ste-lint on changed files"
-    python3 "$RULES/ste-lint.py" $CHANGED >/dev/null 2>&1 || FAILED=1
-fi
-if [ -f "$RULES/audit.py" ]; then
-    echo "-> rules audit"
-    python3 "$RULES/audit.py" >/dev/null 2>&1 || FAILED=1
+    python3 "$STE_LINT" $CHANGED >/dev/null 2>&1 || FAILED=1
 fi
 
 if command -v python3 &>/dev/null && [ -f "$ROOT/tools/run_tests.py" ]; then

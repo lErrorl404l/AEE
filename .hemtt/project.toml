@@ -30,6 +30,10 @@ git_hash = 0
 # A stable bikey is only needed if a server whitelists the mod by key.
 authority = "aee"
 
+[hemtt.publish]
+description = ".hemtt/workshop.md"
+changelog = ".hemtt/changelog.md"
+
 [hemtt.release]
 folder = "aee"
 sign = true

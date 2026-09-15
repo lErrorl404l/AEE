@@ -42,7 +42,7 @@ if (_visionMode == 1 || _visionMode == 2) exitWith {
 };
 
 private _sunOrMoon = sunOrMoon;  // 0 = full night, 1 = full day
-private _rain     = rain;
+private _rain     = ([] call FUNC(getSmoothedWeather)) select 0;
 private _fog      = missionNamespace getVariable [QEGVAR(core,currentFogDensity), 0];
 
 private _nightGrainMax = missionNamespace getVariable [QGVAR(nightGrainMax), 0.7];

@@ -46,3 +46,7 @@ __pycache__/
 /docs/wiki/_site/
 /tests/docker/configs/profiles/
 sensor_report.txt
+tools/validation/report.txt
+
+# Local Arma 3 server path override for docker_test.sh (machine-specific)
+tests/docker/server_root
