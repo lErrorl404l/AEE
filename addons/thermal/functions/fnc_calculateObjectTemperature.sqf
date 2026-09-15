@@ -47,12 +47,17 @@ GVAR(avgVehicleTemp), GVAR(avgInfantryTemp), and GVAR(avgGroundTemp).
 */
 
 params [
-    ["_center", objNull, [objNull]],
+    ["_center", objNull, [objNull, []]],
     ["_radius", 100, [0]],
     ["_maxObjects", 50, [0]]
 ];
 
-// Defensive: nil center falls back to the current unit
+// Defensive: nil center falls back to the current unit.
+// Accepts BOTH objNull and [] (the env PFH and the calibration sweep call
+// with bare `[] call`, which passes an empty array; the [objNull] type
+// filter rejected it with "Type Array, expected Object").  After the
+// fallback, _center is always the unit or objNull.
+if (_center isEqualType []) then { _center = objNull; };
 if (isNull _center) then {
     _center = call CBA_fnc_currentUnit;
 };
