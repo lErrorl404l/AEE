@@ -2507,6 +2507,18 @@ class TestSQFSync(unittest.TestCase):
             addon="thermal",
         )
 
+    def test_object_temp_radiative_floor(self):
+        # REGRESSION (10-54 sweep): the old `max _airTemp` clamp erased the
+        # day-time solar gain whenever wind cooling exceeded it (a sunlit
+        # vehicle read exactly air temp), and blocked real night cooling.
+        # The floor is now air - 5 C (radiative-equilibrium bound).
+        self._assert_in_sqf(
+            "fnc_calculateObjectTemperature.sqf",
+            ["_target max (_airTemp - 5)", "_groundTarget max (_airTemp - 5)"],
+            "radiative-equilibrium floor (not air)",
+            addon="thermal",
+        )
+
     def test_object_temp_taus(self):
         self._assert_in_sqf(
             "fnc_calculateObjectTemperature.sqf",

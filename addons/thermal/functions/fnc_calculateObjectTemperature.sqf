@@ -121,7 +121,12 @@ if (count _hits > 0) then { _groundTarget = _airTemp; };
 
 // Convective cooling pulls the ground toward air temperature
 _groundTarget = _groundTarget - _windSpeed * 2;
-_groundTarget = _groundTarget max _airTemp;
+// Radiative-equilibrium floor: a surface exposed to wind and clear sky
+// genuinely sits slightly BELOW air at night (radiative + advective
+// loss).  The old `max _airTemp` clamp was wrong twice: it killed the
+// day-time solar gain when wind cooling exceeded it, and it prevented
+// real night cooling.  The floor is air - 5 C, not air.
+_groundTarget = _groundTarget max (_airTemp - 5);
 
 // Ground thermal inertia: exponential approach to the target.  The
 // step is the wall-clock delta since the last tick, clamped so a long
@@ -241,7 +246,11 @@ private _infantryCount = 0;
 
         // Convective cooling pulls the surface toward air temperature.
         _target = _target - _windSpeed * 2;
-        _target = _target max _airTemp;
+        // Radiative-equilibrium floor (air - 5 C, not air): the OLD
+        // `max _airTemp` erased the day-time solar gain whenever wind
+        // cooling exceeded it (a sunlit vehicle read exactly air temp in
+        // the 10-54 calibration sweep), and blocked real night cooling.
+        _target = _target max (_airTemp - 5);
     };
 
     // Radiant temperature: lower emissivity radiates less heat.
