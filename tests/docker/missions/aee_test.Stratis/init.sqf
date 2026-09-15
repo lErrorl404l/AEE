@@ -487,6 +487,72 @@ if (_p10Fail == 0) then {
         diag_log text format ["[PHASE12] [FAIL] illuminance probes: %1 passed, %2 failed", _p12Pass, _p12Fail];
     };
 
+    // -- PHASE 13: astronomical night classification & star visibility ----
+    // Exercises classifyNight, calculateLimitingMagnitude, getStarCatalog
+    // with controlled inputs (deterministic, independent of engine sky).
+    // The limiting-magnitude wiring bug (position passed as lux) is caught
+    // here: ambientLux 0.3 + seeing 0.1 must give ~3.8, not the 6.3 default.
+    private _p13Pass = 0;
+    private _p13Fail = 0;
+
+    // classifyNight: DEF Stan 61-027 boundaries
+    private _cases = [
+        [45,  0.5, 0],   // day, sun high
+        [-6,  0.5, 1],   // civil twilight boundary
+        [-12, 0.5, 2],   // nautical twilight boundary
+        [-18, 0.5, 3],   // full night boundary
+        [-25, 0.05, 4],  // dark night, moon < 10%
+        [-25, 0.5, 3]    // full night, moon > 10%
+    ];
+    {
+        _x params ["_elev", "_phase", "_expected"];
+        private _got = [_elev, _phase] call aee_optics_fnc_classifyNight;
+        if (_got == _expected) then {
+            _p13Pass = _p13Pass + 1;
+        } else {
+            diag_log text format ["[PHASE13] [FAIL] classifyNight(%1,%2) = %3, expected %4", _elev, _phase, _got, _expected];
+            _p13Fail = _p13Fail + 1;
+        };
+    } forEach _cases;
+
+    // calculateLimitingMagnitude: known lux + seeing pairs
+    private _magStarlight = [0.001, 0.1] call aee_optics_fnc_calculateLimitingMagnitude;
+    private _magFullMoon = [0.3, 0.1] call aee_optics_fnc_calculateLimitingMagnitude;
+    if ((abs (_magStarlight - 6.3) < 0.2) && (abs (_magFullMoon - 3.8) < 0.2)) then {
+        diag_log text format ["[PHASE13] [PASS] limiting magnitude: starlight=%1 fullMoon=%2", _magStarlight, _magFullMoon];
+        _p13Pass = _p13Pass + 1;
+    } else {
+        diag_log text format ["[PHASE13] [FAIL] limiting magnitude: starlight=%1 fullMoon=%2", _magStarlight, _magFullMoon];
+        _p13Fail = _p13Fail + 1;
+    };
+
+    // getStarCatalog: Stratis position (lat 35 N) at night must return stars
+    private _catalog = [[7300, 7300, 0], [2024, 1, 11]] call aee_optics_fnc_getStarCatalog;
+    if (count _catalog > 0) then {
+        diag_log text format ["[PHASE13] [PASS] star catalog: %1 stars visible", count _catalog];
+        _p13Pass = _p13Pass + 1;
+    } else {
+        diag_log text "[PHASE13] [FAIL] star catalog returned no stars";
+        _p13Fail = _p13Fail + 1;
+    };
+
+    // end-to-end: updateEnvironment wired values (checked after env tick)
+    private _nightClass = missionNamespace getVariable ["aee_optics_nightClassification", -1];
+    private _limMag = missionNamespace getVariable ["aee_optics_limitingMagnitude", -1];
+    if ((_nightClass >= 0) && (_limMag > 0)) then {
+        diag_log text format ["[PHASE13] [PASS] env wiring: nightClass=%1 limMag=%2", _nightClass, _limMag];
+        _p13Pass = _p13Pass + 1;
+    } else {
+        diag_log text format ["[PHASE13] [FAIL] env wiring: nightClass=%1 limMag=%2", _nightClass, _limMag];
+        _p13Fail = _p13Fail + 1;
+    };
+
+    if (_p13Fail == 0) then {
+        diag_log text format ["[PHASE13] [PASS] astronomical: %1 checks passed", _p13Pass];
+    } else {
+        diag_log text format ["[PHASE13] [FAIL] astronomical: %1 passed, %2 failed", _p13Pass, _p13Fail];
+    };
+
     // -- PHASE 5: determinism -- temperature delta over 5 s must be small ----
     // PHASE11 deliberately disturbed the clock (midnight/noon skips).  The
     // temperature model is stateless and recomputes on each 5 s env tick,

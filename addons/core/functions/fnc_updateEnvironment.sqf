@@ -176,8 +176,10 @@ if (GVAR(atmosphericEventsEnabled)) then {
 private _sunElev = missionNamespace getVariable [QEGVAR(core,currentSunElevation), -90];
 private _moonPhase = missionNamespace getVariable [QEGVAR(environmental,lunarPhase), 0];
 [_sunElev, _moonPhase] call EFUNC(optics,classifyNight);
-private _posASL2D = [_posASL select 0, _posASL select 1, 0];
-[_posASL2D] call EFUNC(optics,calculateLimitingMagnitude);
+private _ambientLux = missionNamespace getVariable [QEGVAR(optics,ambientLux), 0.001];
+private _seeing = missionNamespace getVariable [QEGVAR(optics,atmosphericSeeing), 0.5];
+[_ambientLux, _seeing] call EFUNC(optics,calculateLimitingMagnitude);
+private _posASL2D = if (count _posASL >= 3) then { [_posASL select 0, _posASL select 1, 0] } else { [0, 0, 0] };
 [_posASL2D, date] call EFUNC(optics,getStarCatalog);
 if (GVAR(maritimeEnabled)) then {
     [] call EFUNC(maritime,calculateTidalPrediction);
