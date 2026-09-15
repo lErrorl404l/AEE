@@ -37,59 +37,32 @@ if (!hasInterface) exitWith { 0 };
 private _player = call CBA_fnc_currentUnit;
 if (isNil "_player" || !alive _player || cameraOn != _player) exitWith { 0 };
 
-// ─── 1. Display gain (AGC) from the SCENE temperature range ───────────────
-// A real FLIR auto-gain scales the display to what is actually in view:
-// the coldest part maps to dark, the hottest part maps near full bright,
-// and everything in between spreads across the screen.  This is driven by
-// the ENVIRONMENT — a cold night scene with only a warm engine reads with
-// the engine bright and everything else dark; a hot day with sun-warmed
-// vehicles reads everything brighter.  No static values.
+// ─── 1. Display baseline (FIXED, not adaptive) ────────────────────────────
+// A thermal display's gain/level must be STABLE or the operator cannot
+// compare hot vs cold across a scene: an auto-exposure layer that re-maps
+// as the view changes reads as a "flashlight" / "something is leaching in"
+// and makes every 1:1 comparison impossible (the user's exact report).
+// Real military thermals offer a fixed gain+level; AGC exists but is a
+// deliberate mode, not the default.
 //
-// We compute the scene's hottest heat fraction from the vehicles we drive
-// (section 2 runs first in the real flow? No — section 2 runs after; so
-// gather the max heat here in the same pass).  To keep this simple and
-// stateless, read the hottest heat fraction we LAST applied from
-// missionNamespace (updated by section 2), falling back to a sane 0.5
-// (a half-warm scene) on the first tick.
-private _sceneMaxHeat = missionNamespace getVariable [QGVAR(tiSceneMaxHeat), 0.5];
-if !(_sceneMaxHeat isEqualType 0) then { _sceneMaxHeat = 0.5; };
-_sceneMaxHeat = _sceneMaxHeat max 0.2 min 1;
-
-// Output window: start 0 (cold = dark, physically right for a cool night)
-// and width so the scene's hottest object maps near full bright without
-// clipping.  width = 0.9 / maxHeat, capped at 1.0.  When nothing is hot
-// (all vehicles ambient), maxHeat ~ 0 -> floor keeps the window wide
-// enough to still resolve small differences (the NETD floor).
-//
-// AGC RESPONSE TIME: a real FLIR auto-gain takes ~1-2 s to re-map after a
-// scene change (the histogram is integrated over a window, not per-frame).
-// An instant window chases every pan and reads as an "auto contrast" that
-// makes it hard to compare hot vs cold across the view.  We EMA the
-// applied window toward the target with a ~2 s time constant, so the
-// display adapts to a NEW scene slowly but holds steady while looking
-// around.  The user report "zooming out changes how bright things look"
-// was this: the window was reacting per-frame.
+// The engine's own output mapping is already the physics pass: thermalValue
+// (0..1) -> brightness.  The window (OutputRangeStart/Width) is only a
+// display baseline.  We lock it to start=0 (cold = dark), width=1 (full
+// range) ONCE on ENTER, so the image is deterministic and all separation
+// comes from per-object thermalValue (vehicles via setVehicleTIPars,
+// people/buildings via material swaps).  The physics below does the work;
+// the window must not fight it.
 private _outStart = 0.0;
-private _outTarget = (0.9 / _sceneMaxHeat) min 1.0 max 0.35;
+private _outWidth = 1.0;
 
-// EMA toward target: tau 2 s, tick-driven.  Converges in ~4-5 s.
-private _outWidth = missionNamespace getVariable [QGVAR(tiOutWidth), _outTarget];
-if !(_outWidth isEqualType 0 && _outWidth > 0) then { _outWidth = _outTarget; };
-if (diag_deltaTime > 0) then {
-    private _a = diag_deltaTime / (diag_deltaTime + 2.0);
-    _outWidth = _outWidth + (_outTarget - _outWidth) * _a;
-};
-
-// Only call when the window actually changes: setTIParameter forces a
-// histogram update, and spamming it every tick is wasted work and can
-// cause visible flicker.  Store the last-applied window in missionNamespace.
-private _lastStart = missionNamespace getVariable [QGVAR(tiOutStart), -1];
-private _lastWidth = missionNamespace getVariable [QGVAR(tiOutWidth), -1];
-if (abs (_outStart - _lastStart) > 0.01 || abs (_outWidth - _lastWidth) > 0.01) then {
+// Apply once (guard: only call when not already applied this session).
+private _tiBaseSet = missionNamespace getVariable [QGVAR(tiBaseSet), false];
+if !(_tiBaseSet isEqualType true) then { _tiBaseSet = false; };
+if (!_tiBaseSet) then {
     setTIParameter ["OutputRangeStart", _outStart];
     setTIParameter ["OutputRangeWidth", _outWidth];
-    missionNamespace setVariable [QGVAR(tiOutStart), _outStart];
-    missionNamespace setVariable [QGVAR(tiOutWidth), _outWidth];
+    missionNamespace setVariable [QGVAR(tiBaseSet), true];
+    AEE_LOG_INFO("thermal display baseline locked: start=0 width=1");
 };
 
 // ─── 2. Per-vehicle heat state from our physics model ─────────────────────

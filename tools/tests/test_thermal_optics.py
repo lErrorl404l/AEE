@@ -456,23 +456,17 @@ def vehicle_wheel_heat(speed_ms):
 
 
 def ti_output_window(scene_max_heat):
-    """Mirror of the setTIParameter AGC window TARGET mapping.
+    """Mirror of the setTIParameter display baseline (FIXED).
 
-    A real FLIR auto-gain scales to the hottest thing in the scene:
-    start = 0 (cold = dark), width = 0.9/maxHeat so the hottest object
-    maps near full bright without clipping.  When nothing is hot the
-    floor keeps the window wide enough to resolve small differences.
-    Returns the TARGET width; the applied window EMA-approaches it over
-    ~2 s so the display does not re-contrast on every pan.
+    The window is locked once on ENTER: start=0 (cold = dark), width=1
+    (full range).  It NEVER adapts to the scene - a stable baseline lets
+    the operator compare hot vs cold, and all separation comes from
+    per-object thermalValue (vehicles via setVehicleTIPars, people and
+    buildings via material swaps).  The old scene-driven AGC EMA read as
+    a "flashlight / something is leaching in"; a fixed gain is the real
+    military default.
     """
-    mh = max(0.2, min(1.0, scene_max_heat))
-    return 0.0, max(0.35, min(1.0, 0.9 / mh))
-
-
-def agc_ema(prev, target, dt, tau=2.0):
-    """Mirror of the AGC response-time EMA (tau ~2 s, real FLIR)."""
-    a = dt / (dt + tau)
-    return prev + (target - prev) * a
+    return 0.0, 1.0
 
 
 def second_sun_brightness(radiation):
@@ -1342,57 +1336,24 @@ class TestEngineThermalDrive(unittest.TestCase):
         self.assertAlmostEqual(s, 0.0, places=6)
         self.assertAlmostEqual(w, 1.0, places=6)
 
-    def test_agc_window_warm_scene(self):
-        # Scene max 0.5: width 0.9/0.5 = 1.8 capped at 1.0.
-        s, w = ti_output_window(0.5)
-        self.assertAlmostEqual(w, 1.0, places=6)
-
-    def test_agc_window_cold_scene_floor(self):
-        # Empty cold scene (max ~0.05, clamped to 0.2 floor):
-        # width 0.9/0.2 = 4.5 capped at 1.0; start 0 (cold = dark).
-        s, w = ti_output_window(0.05)
-        self.assertAlmostEqual(s, 0.0, places=6)
-        self.assertAlmostEqual(w, 1.0, places=6)
-
-    def test_agc_window_monotonic(self):
-        # Hotter scene -> narrower width (less gain needed).
-        _, w_hot = ti_output_window(0.9)
-        _, w_cold = ti_output_window(0.3)
-        self.assertLessEqual(w_hot, w_cold)
+    def test_agc_window_fixed_baseline(self):
+        # The window is FIXED: start=0, width=1, regardless of scene.
+        # A stable baseline is the real military default - auto-exposure
+        # that re-maps as you pan reads as a "flashlight in the face"
+        # and makes hot-vs-cold comparison impossible.
+        for c in [0, 0.05, 0.3, 0.5, 0.9, 1.0]:
+            s, w = ti_output_window(c)
+            self.assertAlmostEqual(s, 0.0, places=6)
+            self.assertAlmostEqual(w, 1.0, places=6)
 
     def test_agc_window_bounds(self):
+        # Fixed baseline always in valid display range.
         for c in [0, 0.1, 0.5, 0.9, 1.0, 5.0, -1.0]:
             s, w = ti_output_window(c)
             self.assertGreaterEqual(s, 0.0)
             self.assertLessEqual(s, 0.5)
             self.assertGreaterEqual(w, 0.35)
             self.assertLessEqual(w, 1.0)
-
-    def test_agc_ema_converges_slowly(self):
-        # Real FLIR AGC adapts over ~2 s, not per-frame.  After 0.5 s the
-        # window is most of the way to target but not there yet.
-        w = 0.35
-        target = 1.0
-        for _ in range(50):  # 50 ticks at 10 ms = 0.5 s
-            w = agc_ema(w, target, 0.01)
-        # Analytic: 1 - (1-0.35)*exp(-0.5/2) = 0.4938.  Moving but not
-        # arrived — a real FLIR AGC adapts over ~2 s, not per-frame.
-        self.assertAlmostEqual(w, 1 - 0.65 * math.exp(-0.5 / 2), places=3)
-        self.assertLess(w, 0.9)  # not yet arrived (slow response)
-        # Full 5 s more: total 5.5 s -> 1 - 0.65*exp(-5.5/2) = 0.958.
-        for _ in range(500):
-            w = agc_ema(w, target, 0.01)
-        self.assertAlmostEqual(w, 1 - 0.65 * math.exp(-5.5 / 2), places=3)
-
-    def test_agc_ema_holds_steady_when_looking_around(self):
-        # A transient scene change (one bright object entering view) must
-        # only shift the window slightly — the EMA absorbs it.
-        w = 0.8
-        target_normal = 0.8
-        target_flash = 0.5  # bright object momentarily in view
-        w = agc_ema(w, target_flash, 0.01)
-        w = agc_ema(w, target_normal, 0.01)
-        self.assertAlmostEqual(w, 0.8, delta=0.05)
 
 
 class TestSecondSun(unittest.TestCase):
@@ -2284,11 +2245,11 @@ class TestSQFSync(unittest.TestCase):
                 "setVehicleTIPars [_engineHeat, _wheelHeat, _exhaustHeat]",
                 "_speed / 30",
                 "(_surfaceTemp - _airTemp) / 50",
-                "0.9 / _sceneMaxHeat",
-                "tiSceneMaxHeat",
-                "abs (_outStart - _lastStart) > 0.01",
+                "tiBaseSet",
+                "private _outStart = 0.0",
+                "private _outWidth = 1.0",
             ],
-            "engine thermal drive (TI pars + scene AGC window)",
+            "engine thermal drive (TI pars + FIXED display baseline)",
         )
 
     def test_engine_thermal_damage_constants(self):
@@ -2339,7 +2300,9 @@ class TestSQFSync(unittest.TestCase):
                 "setObjectMaterial [_selections select _i, _material]",
                 "ti_cloth_cold.rvmat",
                 'allMissionObjects ""',
-                'nearObjects ["House", 300]',
+                "vehicles - [player]",
+                'nearObjects ["House", _viewDist]',
+                'nearObjects ["Building", _viewDist]',
                 "getObjectMaterials _obj",
                 "tiBldgSaved",
                 "abs (_airTemp - _lastTemp) < 2",
