@@ -145,6 +145,23 @@
 ] call CBA_fnc_addSetting;
 
 [
+    QGVAR(biomeOverride),
+    "LIST",
+    [LLSTRING(biomeOverride_Name), LLSTRING(biomeOverride_Description)],
+    ["AEE", "Biome"],
+    [
+        ["AUTO","Af","Am","Aw","BSh","BSk","BWk","BWh","Csa","Csb","Cfa","Cfb","Cwa","Dfa","Dfb","Dfc","ET","EF"],
+        ["Auto-detect","Af — Tropical Rainforest","Am — Monsoon Tropical","Aw — Tropical Savanna",
+         "BSh — Hot Semi-Arid","BSk — Cold Semi-Arid","BWk — Cold Desert","BWh — Hot Desert",
+         "Csa — Hot Mediterranean","Csb — Warm Mediterranean","Cfa — Humid Subtropical",
+         "Cfb — Oceanic","Cwa — Monsoon Subtropical","Dfa — Hot Continental",
+         "Dfb — Humid Continental","Dfc — Subarctic","ET — Tundra","EF — Ice Cap"]
+    ],
+    0,
+    {}
+] call CBA_fnc_addSetting;
+
+[
     QGVAR(biomeTransitionRadius),
     "SLIDER",
     [LLSTRING(biomeTransitionRadius_Name), LLSTRING(biomeTransitionRadius_Description)],
