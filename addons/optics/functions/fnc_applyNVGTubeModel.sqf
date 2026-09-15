@@ -87,8 +87,11 @@ if (currentVisionMode _player != 1) exitWith {
 
 // ─── Ambient light input ─────────────────────────────────────────────────
 // moonIntensity: engine variable, 0..1 based on moon phase.
-// Same source ACE3 uses. Subtracts overcast and rain.
-private _moonLight = 0 max (moonIntensity - ((overcast * .8) min .275) - (rain * .5));
+// Same source ACE3 uses. Subtracts overcast and rain (smoothed weather:
+// raw overcast/rain step abruptly and snap the tube gain; the EMA eases).
+private _rainS = ([] call FUNC(getSmoothedWeather)) select 0;
+private _overcastS = ([] call FUNC(getSmoothedWeather)) select 1;
+private _moonLight = 0 max (moonIntensity - ((_overcastS * .8) min .275) - (_rainS * .5));
 
 // ─── Tube tier by HMD classname ──────────────────────────────────────────
 // Substring tests run most-specific first.  "NVGoggles" is a substring of
@@ -344,8 +347,10 @@ private _noise = _noiseFloor + (1 - _noiseFloor) * _shotNoise;
 // equally with the signal, degrading SNR.  Heavy rain can drop SNR
 // 60-80% (research: SNR reduction ∝ rain_intensity × drop_density ×
 // forward_scatter_coefficient).  Model as an additive noise floor increase.
-if (rain > 0.2) then {
-    private _mieNoise = rain * 0.35;   // heavy rain: +35% noise floor
+// _rainS is declared at the top (ambient light section) - the shared
+// weather foundation, one EMA per frame.
+if (_rainS > 0.2) then {
+    private _mieNoise = _rainS * 0.35;   // heavy rain: +35% noise floor
     _noise = (_noise + _mieNoise) min 1;
 };
 
@@ -478,8 +483,9 @@ private _glowIntensityNow = 0;
             // bad weather reduces auto-gating because less light reaches
             // the tube.
             private _dist = _eye distance _srcPos;
-            private _rainExt = if (rain > 0.1) then { rain * 30 / 4343 } else { 0 };
-            private _fogExt = if (fog > 0.3) then { (fog / 0.5) ^ 2 * 40 / 4343 min 300 / 4343 } else { 0 };
+            private _rainExt = if (_rainS > 0.1) then { _rainS * 30 / 4343 } else { 0 };
+            private _fogS2 = ([] call FUNC(getSmoothedWeather)) select 2;
+            private _fogExt = if (_fogS2 > 0.3) then { (_fogS2 / 0.5) ^ 2 * 40 / 4343 min 300 / 4343 } else { 0 };
             private _extinction = _rainExt + _fogExt;
             private _transmission = if (_extinction > 0) then { exp (-_extinction * _dist) } else { 1 };
             private _coneScale = if (_ang < _gateHalf) then {
@@ -506,8 +512,8 @@ private _glowIntensityNow = 0;
 // scatter is bright enough to partially gate.  At rain > 0.8, the gate
 // is effectively locked on (the gain reduction makes the image unusable
 // anyway for distant targets).
-if (rain > 0.5) then {
-    private _rainGateFloor = (rain - 0.5) * 2;   // 0 at rain=0.5, 1 at rain=1.0
+if (_rainS > 0.5) then {
+    private _rainGateFloor = (_rainS - 0.5) * 2;   // 0 at rain=0.5, 1 at rain=1.0
     _blowoutNow = _blowoutNow max (_rainGateFloor * 0.6);
 };
 
@@ -622,7 +628,7 @@ if (_blowout > 0 && (_tier == "GEN3" || _tier == "PVS31")) then {
 // to 50% of clear-air value — the image degrades from sharp to mushy.
 // This is separate from the localized drops on the lens (Mie is a
 // volume effect, drops are a surface effect).
-if (rain > 0.2) then {
+if (_rainS > 0.2) then {
     private _mieFactor = 1 - rain * 0.5;   // heavy rain: 60% MTF
     _mtfEffective = _mtfEffective * _mieFactor;
 };

@@ -101,8 +101,9 @@ private _windowBlur = 0;
 if (_fogDensity > 0.1) then {
     _windowBlur = _windowBlur + linearConversion [0.1, 0.8, _fogDensity, 0.0, 0.2, true];
 };
-if (rain > 0.1) then {
-    _windowBlur = _windowBlur + linearConversion [0.1, 1.0, rain, 0.0, 0.15, true];
+private _rainS = ([] call FUNC(getSmoothedWeather)) select 0;
+if (_rainS > 0.1) then {
+    _windowBlur = _windowBlur + linearConversion [0.1, 1.0, _rainS, 0.0, 0.15, true];
 };
 
 // ─── Thermal handles (create once, recreate only when missing) ───────────
