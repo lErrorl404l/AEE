@@ -21,7 +21,11 @@ private _date = date;
 private _year = _date#0; private _month = _date#1; private _day = _date#2;
 private _doy = floor (275 * _month / 9) - (2 * floor ((_month + 9) / 12)) + _day - 30; // Bauleova formula
 if (_month > 2 && (_year mod 4 == 0 && (_year mod 100 != 0 || _year mod 400 == 0))) then { _doy = _doy + 1; }; // leap year
-private _hour = (_date#3) + (time / 3600);                    // local hour fraction
+// Current in-game hour from dayTime (0..24) — the canonical source.  The
+// old date#3 + time/3600 combined the mission START hour with elapsed
+// time, which drifts and misbehaves when the mission clock is skipped or
+// the mission runs long.  dayTime is the live clock.
+private _hour = dayTime;
 private _lat = getNumber (configFile >> "CfgWorlds" >> worldName >> "latitude");
 if (_lat == 0) then { _lat = 40; };
 

@@ -75,4 +75,11 @@ _sun setLightBrightness _radiation;
 _sun setLightAmbient [0.5, 0.5, 0.5];
 _sun setLightAttenuation [1e10, 1, 0, 0];
 
+// Debug: log the actual radiation the engine's sun term sees, with the
+// date/time inputs, so an inverted day/night reading is traceable.
+if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
+    diag_log text format ["[AEE] SecondSun: rad=%1 dayTime=%2 date=%3",
+        _radiation, dayTime, date];
+};
+
 _radiation
