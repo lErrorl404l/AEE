@@ -2448,15 +2448,18 @@ class TestSQFSync(unittest.TestCase):
         )
 
     def test_rain_droplet_constants(self):
-        # Rain droplets must use a BILLBOARD texture (raindrop3.paa), not
-        # a .p3d shape.  Using a .p3d for a Billboard makes the engine try
-        # to load it as geometry ("No geometry and no visual shape while
-        # trying to check property cratercolor" — the exact RPT error).
-        # Case-sensitive: a3 lowercase.
+        # Rain droplets must use a PROCEDURAL billboard texture, NOT the
+        # engine's raindrop .paa (which the engine ShapeLoads as a model
+        # and crashes on: "preNLOD format in object a3\data_f\raindrop3.paa",
+        # application terminated).  The engine raindrop textures are
+        # reserved for its internal rain system.  Procedural = no file,
+        # cannot crash.  Also not a .p3d shape (Billboard-only: a .p3d for
+        # a Billboard gives "No geometry and no visual shape while trying
+        # to check property cratercolor").
         self._assert_in_sqf(
             "fnc_applyRainDroplets.sqf",
             [
-                "\\a3\\data_f\\raindrop3.paa",
+                "#(argb,8,8,3)color(0.75,0.85,1,0.30)",
                 '"Billboard"',
                 '"#particlesource"',
                 "setParticleCircle",
@@ -2465,7 +2468,7 @@ class TestSQFSync(unittest.TestCase):
                 "setDropInterval",
                 "deleteVehicle _src",
             ],
-            "rain droplets on objective (billboard, engine texture)",
+            "rain droplets on objective (billboard, procedural texture)",
         )
 
     def test_solar_radiation_uses_daytime(self):
