@@ -51,18 +51,20 @@ def hypoxia_risk(eq_alt_m, exposure_s):
 def cross_sensitivity(dehydration, hypoxia, scale=1.0, enabled=True):
     """Mirror of fnc_applyCrossSensitivity.sqf.
 
-    Dehydration amplifies hypoxia susceptibility (1.0 at 0% .. 1.6 at
-    100%), hypoxia amplifies dehydration (1.0 at 0% .. 1.4 at 100%).
-    Scale interpolates the coupling strength between 1.0 (none) and the
-    full literature cap.  Returns [effectiveDehydration, effectiveHypoxia].
+    Dehydration amplifies hypoxia impact (1.0 at 0% .. 1.25 at 100%,
+    Gopinathan 1988 cognitive-decrement anchor), hypoxia amplifies
+    dehydration (1.0 at 0% .. 1.3 at 100%, altitude diuresis +
+    respiratory loss anchor, Anand 1996).  Scale interpolates the
+    coupling strength between 1.0 (none) and the full literature cap.
+    Returns [effectiveDehydration, effectiveHypoxia].
     """
     if not enabled or scale <= 0:
         return [dehydration, hypoxia]
     dehydration = max(0.0, min(1.0, dehydration))
     hypoxia = max(0.0, min(1.0, hypoxia))
-    hyp_amp_full = 1.0 + (1.6 - 1.0) * dehydration  # 1.0..1.6
+    hyp_amp_full = 1.0 + (1.25 - 1.0) * dehydration  # 1.0..1.25
     hyp_amp = 1.0 + (hyp_amp_full - 1.0) * scale
-    deh_amp_full = 1.0 + (1.4 - 1.0) * hypoxia  # 1.0..1.4
+    deh_amp_full = 1.0 + (1.3 - 1.0) * hypoxia  # 1.0..1.3
     deh_amp = 1.0 + (deh_amp_full - 1.0) * scale
     eff_hypoxia = min(1.0, hypoxia * hyp_amp)
     eff_dehydration = min(1.0, dehydration * deh_amp)
@@ -143,11 +145,11 @@ class TestCrossSensitivity(unittest.TestCase):
         self.assertAlmostEqual(eff_deh, 0.0, places=6)
 
     def test_half_dehydration_amplifies_hypoxia(self):
-        # 50% dehydration + 50% hypoxia: hypoxia amplifier = 1.3,
-        # dehydration amplifier = 1.2 (issue validation: 65% / 60%).
+        # 50% dehydration + 50% hypoxia: hypoxia amplifier = 1.125,
+        # dehydration amplifier = 1.15.
         eff_deh, eff_hyp = cross_sensitivity(0.5, 0.5)
-        self.assertAlmostEqual(eff_hyp, 0.65, places=6)
-        self.assertAlmostEqual(eff_deh, 0.60, places=6)
+        self.assertAlmostEqual(eff_hyp, 0.5 * 1.125, places=6)
+        self.assertAlmostEqual(eff_deh, 0.5 * 1.15, places=6)
 
     def test_full_both_clamped(self):
         # 100% dehydration + 100% hypoxia: both clamp to 1.0.
@@ -156,8 +158,8 @@ class TestCrossSensitivity(unittest.TestCase):
         self.assertEqual(eff_hyp, 1.0)
 
     def test_amplifier_bounds(self):
-        # At full dehydration the hypoxia amplifier is 1.6; at full
-        # hypoxia the dehydration amplifier is 1.4.
+        # At full dehydration the hypoxia amplifier is 1.25; at full
+        # hypoxia the dehydration amplifier is 1.3.
         _, eff_hyp = cross_sensitivity(1.0, 0.0)
         self.assertEqual(eff_hyp, 0.0)  # hypoxia risk 0 stays 0
         eff_deh, _ = cross_sensitivity(0.0, 1.0)
@@ -165,10 +167,10 @@ class TestCrossSensitivity(unittest.TestCase):
 
     def test_half_dehydration_full_hypoxia(self):
         # 50% dehydration + 100% hypoxia: hypoxia clamped 1.0, dehydration
-        # 0.5 * 1.4 = 0.7 (full hypoxia -> dehydration amplifier 1.4).
+        # 0.5 * 1.3 = 0.65 (full hypoxia -> dehydration amplifier 1.3).
         eff_deh, eff_hyp = cross_sensitivity(0.5, 1.0)
         self.assertEqual(eff_hyp, 1.0)
-        self.assertAlmostEqual(eff_deh, 0.7, places=6)
+        self.assertAlmostEqual(eff_deh, 0.65, places=6)
 
     def test_disabled_no_change(self):
         # Coupling disabled: identical to current behaviour.
@@ -186,10 +188,10 @@ class TestCrossSensitivity(unittest.TestCase):
 
     def test_half_scale_half_strength(self):
         # Scale 0.5: half the coupling.  Dehydration 0.5 -> amplifier
-        # 1.15 (between 1.0 and 1.3); hypoxia 0.5 -> amplifier 1.1.
+        # 1.0625 (between 1.0 and 1.125); hypoxia 0.5 -> amplifier 1.075.
         eff_deh, eff_hyp = cross_sensitivity(0.5, 0.5, scale=0.5)
-        self.assertAlmostEqual(eff_hyp, 0.5 * 1.15, places=6)
-        self.assertAlmostEqual(eff_deh, 0.5 * 1.1, places=6)
+        self.assertAlmostEqual(eff_hyp, 0.5 * 1.0625, places=6)
+        self.assertAlmostEqual(eff_deh, 0.5 * 1.075, places=6)
 
     def test_monotonic_in_both(self):
         # Effective hypoxia rises with dehydration; effective dehydration
@@ -230,7 +232,7 @@ class TestSQFSyncPhysiology(unittest.TestCase):
     def test_cross_sensitivity_constants(self):
         self._assert_in_sqf(
             "fnc_applyCrossSensitivity.sqf",
-            ["1.6", "1.4", "linearConversion", "min 1"],
+            ["1.25", "1.3", "linearConversion", "min 1"],
             "cross-sensitivity amplifiers",
         )
 

@@ -607,8 +607,9 @@ if (_p10Fail == 0) then {
 
     // -- PHASE 15: dehydration-hypoxia cross-sensitivity (issue #40) --------
     // applyCrossSensitivity is pure maths (no hasInterface gate), so it runs
-    // headless.  Seed the risk variables, call it, and assert the issue's
-    // validation cases: 50/50 -> 65/60, 0% dehydration no amplification,
+    // headless.  Seed the risk variables, call it, and assert the anchored
+    // cases: 50/50 -> 56.25/57.5 (caps 1.25 hypoxia / 1.3 dehydration,
+    // Gopinathan 1988 + Anand 1996), 0% dehydration no amplification,
     // both at 100% clamp to 1.0, disabled = no change.
     private _p15Pass = 0;
     private _p15Fail = 0;
@@ -617,17 +618,17 @@ if (_p10Fail == 0) then {
         diag_log text "[PHASE15] [FAIL] applyCrossSensitivity not compiled";
         _p15Fail = _p15Fail + 1;
     } else {
-        // Case 1: 50% dehydration + 50% hypoxia -> 65% hypoxia, 60% dehydration.
+        // Case 1: 50% dehydration + 50% hypoxia -> 56.25% hypoxia, 57.5% dehydration.
         missionNamespace setVariable ["aee_physiology_dehydrationRisk", 0.5];
         missionNamespace setVariable ["aee_core_currentHypoxiaRisk", 0.5];
         [] call _fnCross;
         private _effDeh = missionNamespace getVariable ["aee_physiology_dehydrationRisk", -1];
         private _effHyp = missionNamespace getVariable ["aee_core_currentHypoxiaRisk", -1];
-        if (abs (_effHyp - 0.65) < 0.01 && abs (_effDeh - 0.60) < 0.01) then {
+        if (abs (_effHyp - 0.5625) < 0.01 && abs (_effDeh - 0.575) < 0.01) then {
             diag_log text format ["[PHASE15] [PASS] 50/50 coupling: hyp=%1 deh=%2", _effHyp, _effDeh];
             _p15Pass = _p15Pass + 1;
         } else {
-            diag_log text format ["[PHASE15] [FAIL] 50/50 coupling: hyp=%1 deh=%2 (expected 0.65/0.60)",
+            diag_log text format ["[PHASE15] [FAIL] 50/50 coupling: hyp=%1 deh=%2 (expected 0.5625/0.575)",
                 _effHyp, _effDeh];
             _p15Fail = _p15Fail + 1;
         };
