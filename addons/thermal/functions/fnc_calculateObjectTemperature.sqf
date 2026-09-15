@@ -234,6 +234,32 @@ private _infantryCount = 0;
     // Thermal inertia: exponential approach to the equilibrium target.
     _currentTemp = _currentTemp + (_target - _currentTemp) * (1 - exp (-_dt / _tau));
 
+    // ─── Burning / incendiary damage ───────────────────────────────────
+    // An object on fire burns at 600-800 C (combustion), saturating the
+    // thermal signature regardless of ambient.  The engine signals fire
+    // via damage: incendiary rounds and fire effects push damage toward
+    // 1.0 while the object still exists (a destroyed wreck also smoulders
+    // for a while).  Detect: damage >= 0.7 (heavy/fire damage) OR the
+    // vehicle's fuel/engine hitpoints at critical damage (burning fuel).
+    private _isBurning = false;
+    if (damage _obj >= 0.7) then { _isBurning = true; };
+    if (_obj isKindOf "AllVehicles") then {
+        {
+            if (_x select 2 >= 0.7) then {
+                private _hp = toLower (_x select 0);
+                if (_hp find "fuel" >= 0 || _hp find "engine" >= 0) then {
+                    _isBurning = true;
+                };
+            };
+        } forEach (getAllHitPointsDamage _obj);
+    };
+    if (_isBurning) then {
+        // Combustion temperature: the surface reads near-saturated.
+        // 600 C above ambient on the ~50 C heat scale = saturated.  The
+        // current temp rises toward it with the object's inertia.
+        _target = _airTemp + 600;
+    };
+
     // Fog scatters IR: dense fog pulls the apparent temperature toward
     // ambient.  The physical temperature (and averages) stay unattenuated.
     private _reportedTemp = _currentTemp + (_airTemp - _currentTemp) * _fog * 0.5;
@@ -251,6 +277,66 @@ private _infantryCount = 0;
         };
     };
 } forEach _objects;
+
+// ─── Conduction / radiant coupling between nearby objects ─────────────────
+// A hot object (running engine, exhaust, fire) transfers heat to objects
+// close to it: the radiator heats the air around the engine bay, a parked
+// car beside a running one warms slowly, a burning vehicle heats
+// everything within metres.  Real thermodynamics: heat flows from hot to
+// cold, faster when the temperature difference is larger and the gap
+// smaller.  The engine has no per-surface conduction model, so this is a
+// proximity term on the per-object equilibrium: each object receives a
+// small share of a nearby hotter object's surplus, scaled by 1/distance.
+//
+// One pass over the stored state: for each object with a hot neighbour
+// (within 10 m, at least 5 C warmer), pull its temperature up a little.
+// The effect is small per tick (heat takes time to transfer) and bounded
+// so it cannot destabilise the solve.  Hot sources are gathered once.
+private _hotSources = [];
+{
+    _x params ["_nKey", "_nVal"];
+    if (count _nVal < 5) then { continue; };
+    private _nObj = _nVal select 4;
+    if (isNull _nObj || !alive _nObj) then { continue; };
+    private _nTemp = _nVal select 0;
+    if !(_nTemp isEqualType 0) then { continue; };
+    _hotSources pushBack [_nKey, _nObj, _nTemp];
+} forEach (keys _thermalState);
+
+{
+    _x params ["_oKey", "_oVal"];
+    if (count _oVal < 5) then { continue; };
+    private _oObj = _oVal select 4;
+    if (isNull _oObj || !alive _oObj) then { continue; };
+    private _oTemp = _oVal select 0;
+    if !(_oTemp isEqualType 0) then { continue; };
+
+    // Sum the coupling from hot neighbours.
+    private _coupling = 0;
+    {
+        _x params ["_nKey", "_nObj", "_nTemp"];
+        if (_nKey == _oKey) then { continue; };
+        if (_nTemp <= _oTemp + 5) then { continue; };   // not hot enough
+        private _d = _oObj distance _nObj;
+        if (_d > 10) then { continue; };
+        // Radiant transfer ~ (1/d^2) scaled: a hot neighbour 2 m away
+        // with 40 C surplus contributes ~3 C; 8 m away ~0.2 C; 80 C
+        // surplus at 3 m ~2.7 C.  The coupling only nudges, never
+        // dominates (the surplus is spread over distance^2 and the
+        // result is bounded).
+        private _surplus = _nTemp - _oTemp;
+        private _share = (_surplus * (0.3 / (_d * _d))) min 4;
+        _coupling = _coupling + _share;
+    } forEach _hotSources;
+
+    // Apply: bounded to a few degrees per tick (heat transfer is slow),
+    // then re-store.  The inertia next tick smooths it.
+    if (_coupling > 0.05) then {
+        _coupling = _coupling min 5;
+        _oVal set [0, _oTemp + _coupling];
+        _thermalState set [_oKey, _oVal];
+    };
+} forEach (keys _thermalState);
 
 // ─── Stale entry cleanup ──────────────────────────────────────────────────
 // Keys are strings; the object reference is stored as element 4 of the value.
