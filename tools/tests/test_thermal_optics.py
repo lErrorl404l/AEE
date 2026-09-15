@@ -2495,6 +2495,18 @@ class TestSQFSync(unittest.TestCase):
             addon="thermal",
         )
 
+    def test_object_temp_dt_override(self):
+        # The calibration sweep steps the clock by the hour but the model
+        # clamps dt to 30 s (safe for the real 5 s env PFH).  Without an
+        # override, the vehicle never warms through the day in the sweep.
+        # The _dtOverride param simulates the real elapsed time directly.
+        self._assert_in_sqf(
+            "fnc_calculateObjectTemperature.sqf",
+            ['["_dtOverride", -1, [0]]', "if (_dtOverride >= 0) then {"],
+            "dt override for calibration",
+            addon="thermal",
+        )
+
     def test_object_temp_taus(self):
         self._assert_in_sqf(
             "fnc_calculateObjectTemperature.sqf",
