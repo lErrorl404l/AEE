@@ -244,14 +244,23 @@ private _infantryCount = 0;
     private _isBurning = false;
     if (damage _obj >= 0.7) then { _isBurning = true; };
     if (_obj isKindOf "AllVehicles") then {
-        {
-            if (_x select 2 >= 0.7) then {
-                private _hp = toLower (_x select 0);
-                if (_hp find "fuel" >= 0 || _hp find "engine" >= 0) then {
-                    _isBurning = true;
+        // getAllHitPointsDamage returns [names[], selections[], damages[]]
+        // — three parallel arrays, NOT [name, selection, damage] triples.
+        // Each _x is a STRING (the hitpoint name); the damage is at the
+        // same index in the damages array.
+        private _hpData = getAllHitPointsDamage _obj;
+        if (count _hpData >= 3 && {count (_hpData select 0) > 0}) then {
+            private _hpNames = _hpData select 0;
+            private _hpDamages = _hpData select 2;
+            for "_i" from 0 to (count _hpNames - 1) do {
+                if ((_hpDamages select _i) >= 0.7) then {
+                    private _hp = toLower (_hpNames select _i);
+                    if (_hp find "fuel" >= 0 || _hp find "engine" >= 0) then {
+                        _isBurning = true;
+                    };
                 };
             };
-        } forEach (getAllHitPointsDamage _obj);
+        };
     };
     if (_isBurning) then {
         // Combustion temperature: the surface reads near-saturated.

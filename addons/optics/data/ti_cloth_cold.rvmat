@@ -9,12 +9,12 @@ PixelShaderID="NormalMapSpecularMap";
 VertexShaderID="NormalMap";
 class Stage1
 {
-	texture="aee\addons\optics\data\ti_cold.paa";
+	texture="z\aee\addons\optics\data\ti_cold.paa";
 	uvSource="tex";
 };
 class Stage2
 {
-	texture="aee\addons\optics\data\ti_cold.paa";
+	texture="z\aee\addons\optics\data\ti_cold.paa";
 	uvSource="tex";
 };
 class Stage3

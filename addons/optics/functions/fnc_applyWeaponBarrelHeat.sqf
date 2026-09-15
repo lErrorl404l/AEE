@@ -71,12 +71,15 @@ if (_weaponObj == "") exitWith { 0 };
         private _textures = getObjectTextures _player;
         // Weapon selections are the later ones (hands/weapon render last);
         // find the one whose material mentions the weapon's class name.
+        // getObjectTextures returns STRINGS (texture paths) — the index is
+        // _forEachIndex, not _x (comparing a string to count was the bug).
         private _mats = getObjectMaterials _player;
         private _found = -1;
         {
-            if (_x < count _mats) then {
-                private _m = toLower (_mats select _x);
-                if (_m find "weapon" >= 0 || _m find _weaponObj >= 0) exitWith { _found = _x; };
+            private _sel = _forEachIndex;
+            if (_sel < count _mats) then {
+                private _m = toLower (_mats select _sel);
+                if (_m find "weapon" >= 0 || _m find _weaponObj >= 0) exitWith { _found = _sel; };
             };
         } forEach _textures;
         _selIdx = _found;
