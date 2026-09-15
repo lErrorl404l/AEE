@@ -390,7 +390,7 @@ def engine_heat_fraction(
     The physics surface temperature (air + solar + engine heat + exhaust
     + wind cooling, computed by fnc_calculateObjectTemperature) maps to the
     engine's 0..1 heat scale: ambient = 0, +50 C = 1.  Clamped to the
-    engine's range.  Environment-driven — sun, wind, engine state all move
+    engine's range.  Environment-driven - sun, wind, engine state all move
     the value; no static timers.
 
     Damage-state thermal: destroyed/burning (body or fuel >= 0.95, or not
@@ -560,7 +560,7 @@ def building_thermal_mass(material_paths):
 def glass_reflection_material(solar_radiation, cold_mat, hot_mat):
     """Mirror of the glass/window reflection swap.
 
-    Glass does not transmit LWIR — it reflects the scene.  Night
+    Glass does not transmit LWIR - it reflects the scene.  Night
     (radiation <= 0.3) reflects cold sky -> cold material; daylight
     reflects the sun -> hot material.  Same solar value as the second
     sun, so the two stay consistent.
@@ -665,7 +665,7 @@ def focus_state_machine(
 ):
     """Simulate the focus chain over a raw-distance sequence.
 
-    Returns (focus_series, settled_series) — one entry per tick.
+    Returns (focus_series, settled_series) - one entry per tick.
     Mirrors the SQF: median-of-3 -> deadband gate -> pending+hold ->
     lens-travel rack at throw/5 per tick -> settle watchdog.
     """
@@ -805,7 +805,7 @@ class TestVehicleColdStart(unittest.TestCase):
         )
 
     def test_engine_heat_plateau(self):
-        # After 900s (3τ): ~38°C — approaching the 40°C plateau.
+        # After 900s (3τ): ~38°C - approaching the 40°C plateau.
         self.assertGreater(vehicle_engine_heat(900), 38)
         self.assertLess(vehicle_engine_heat(900), 40)
 
@@ -1009,7 +1009,7 @@ class TestNETDNoise(unittest.TestCase):
 
 
 class TestThermalBlur(unittest.TestCase):
-    """Thermal DynamicBlur + pan smear — flicker guards."""
+    """Thermal DynamicBlur + pan smear - flicker guards."""
 
     def test_clear_conditions_no_blur(self):
         # Full contrast (clear) → zero blur.
@@ -1078,7 +1078,7 @@ class TestBatteryDerating(unittest.TestCase):
 
 
 class TestAmbientLux(unittest.TestCase):
-    """Moon lux model — real full-moon illuminance is ~0.1-0.3 lux."""
+    """Moon lux model - real full-moon illuminance is ~0.1-0.3 lux."""
 
     def test_full_moon_clear_sky(self):
         # Full moon, no cloud/rain -> 0.25 lux.
@@ -1173,7 +1173,7 @@ class TestTwilight(unittest.TestCase):
 
 
 class TestExtinction(unittest.TestCase):
-    """Beer-Lambert extinction — ITU-R rain/fog coefficients."""
+    """Beer-Lambert extinction - ITU-R rain/fog coefficients."""
 
     def test_clear_air_no_extinction(self):
         self.assertAlmostEqual(extinction_per_m(0, 0), 0.0, places=9)
@@ -1188,7 +1188,7 @@ class TestExtinction(unittest.TestCase):
 
     def test_extreme_fog_never_exceeds_300_dBkm_cap(self):
         # The 300 dB/km cap needs fog=1.37 (above the engine's max ~1.0),
-        # so real fog never hits it — but the cap is a guard for modded
+        # so real fog never hits it - but the cap is a guard for modded
         # weather that exceeds 1.0.  Assert the cap code exists and the
         # value stays bounded.
         self.assertLessEqual(extinction_per_m(0, 5.0), 300.0 / 4343.0)
@@ -1612,7 +1612,7 @@ class TestClothingThermal(unittest.TestCase):
 
 
 class TestBuildingThermal(unittest.TestCase):
-    """Building material weighting — concrete stays cold, metal responds."""
+    """Building material weighting - concrete stays cold, metal responds."""
 
     def test_concrete_building_full_cold(self):
         # Concrete/block building: heavy mass, swap everything.
@@ -1634,7 +1634,7 @@ class TestBuildingThermal(unittest.TestCase):
 
 
 class TestClothingMaterial(unittest.TestCase):
-    """Per-selection material classification — cloth swaps, metal keeps."""
+    """Per-selection material classification - cloth swaps, metal keeps."""
 
     def test_cloth_swaps(self):
         for p in [
@@ -1744,7 +1744,7 @@ class TestGlassReflection(unittest.TestCase):
 
 
 class TestThermalCrossover(unittest.TestCase):
-    """Diurnal thermal crossover — isothermal condition at dawn/dusk."""
+    """Diurnal thermal crossover - isothermal condition at dawn/dusk."""
 
     def test_midday_no_crossover(self):
         # Sun high, no twilight gate.
@@ -1806,7 +1806,7 @@ class TestSolarGlare(unittest.TestCase):
 
 
 class TestFocusRawMedian(unittest.TestCase):
-    """Rolling-median focus smoothing — kills single-tick outliers."""
+    """Rolling-median focus smoothing - kills single-tick outliers."""
 
     def test_single_tick_outlier_killed(self):
         # A 137 m spike between stable 125 m samples must NOT move focus.
@@ -1833,7 +1833,7 @@ class TestFocusRawMedian(unittest.TestCase):
         self.assertAlmostEqual(out[2], 28.2, places=1)
         # At the 14.0 dip: median of [52.8, 28.3, 14.0] = 28.3.
         self.assertAlmostEqual(out[4], 28.3, places=1)
-        # The final 12.2 is a SINGLE sample — the median of
+        # The final 12.2 is a SINGLE sample - the median of
         # [28.3, 28.3, 12.2] is 28.3, so the ring holds ~28 until 12.2
         # is sustained for 3 ticks.  That is the anti-hopping guarantee.
         self.assertAlmostEqual(out[7], 28.3, places=1)
@@ -1879,7 +1879,7 @@ class TestFocusStateMachine(unittest.TestCase):
 
     def test_rpt_bounce_tracks_to_target(self):
         # The exact RPT sequence: the ring must settle on the LAST
-        # SUSTAINED target (12.2 m, present for 4 consecutive ticks) —
+        # SUSTAINED target (12.2 m, present for 4 consecutive ticks) -
         # not the earlier 28 m which was transient.  The median+state
         # machine must filter the bounce and track to 12.2.
         focuses, settled = focus_state_machine(self.RPT_BOUNCE)
@@ -1894,7 +1894,7 @@ class TestFocusStateMachine(unittest.TestCase):
         self.assertTrue(settled[-1])
 
     def test_sky_holds_focus(self):
-        # Sky (0 raw) must NOT move the ring — HOLD-ON-EMPTY.
+        # Sky (0 raw) must NOT move the ring - HOLD-ON-EMPTY.
         seq = [30.0, 30.2, 0.0, 0.0, 0.0, 30.1]
         focuses, _ = focus_state_machine(seq)
         # During sky the focus stays ~30.
@@ -1909,7 +1909,7 @@ class TestFocusStateMachine(unittest.TestCase):
     def test_watchdog_snaps_stale_pending(self):
         # A huge target jump (2 m -> 148 m) must rack fully.  The ring
         # completes within the 0.5 s full-range rack + 0.2 s hold; the
-        # watchdog (1.5 s) is the absolute bound — if the rack somehow
+        # watchdog (1.5 s) is the absolute bound - if the rack somehow
         # stalled, the ring snaps to the target and cannot freeze.
         seq = [2.0] * 5 + [148.0] * 15
         focuses, settled = focus_state_machine(seq)
@@ -1920,7 +1920,7 @@ class TestFocusStateMachine(unittest.TestCase):
         # Rapid re-aiming (target changes every 0.6 s = 6 ticks) with
         # realistic hold: the ring tracks each target before the next
         # arrives.  It must NEVER be frozen mid-rack when the target is
-        # stable — and always reach a stable target.
+        # stable - and always reach a stable target.
         import random
 
         random.seed(7)
@@ -1941,7 +1941,7 @@ class TestFocusStateMachine(unittest.TestCase):
         # While racking the NEAR region (0.5 m -> 3 m), lens travel is
         # large (x = f^2/(s-f): 0.5 m->3 m spans ~1.7 mm of the 3.3 mm
         # throw) so the ring must move every tick until settled.  Far
-        # jumps (28->80) complete in one tick — lens travel there is
+        # jumps (28->80) complete in one tick - lens travel there is
         # sub-micron, which is correct thin-lens physics.
         seq = [0.5] * 5 + [3.0] * 25
         focuses, _ = focus_state_machine(seq, near_limit=0.45)
@@ -2049,7 +2049,7 @@ def terrain_focus_distance(eye, ray_dir, terrain_h, flat_only=False):
 
 
 class TestTerrainFocus(unittest.TestCase):
-    """NVG focus terrain fallback — the fan-ray geometry."""
+    """NVG focus terrain fallback - the fan-ray geometry."""
 
     EYE = (0.0, 0.0, 1.7)  # standing eye, 1.7 m above flat ground
 
@@ -2448,27 +2448,25 @@ class TestSQFSync(unittest.TestCase):
         )
 
     def test_rain_droplet_constants(self):
-        # Rain droplets must use a PROCEDURAL billboard texture, NOT the
-        # engine's raindrop .paa (which the engine ShapeLoads as a model
-        # and crashes on: "preNLOD format in object a3\data_f\raindrop3.paa",
-        # application terminated).  The engine raindrop textures are
-        # reserved for its internal rain system.  Procedural = no file,
-        # cannot crash.  Also not a .p3d shape (Billboard-only: a .p3d for
-        # a Billboard gives "No geometry and no visual shape while trying
-        # to check property cratercolor").
+        # Rain droplets use the PROVEN TPW RAINFX recipe: the engine's
+        # Refract particle texture with a one-shot drop command.  NOT the
+        # raindrop .paa (engine ShapeLoads it as a model and crashes:
+        # "preNLOD format in object a3\data_f\raindrop3.paa"), NOT a .p3d
+        # shape (Billboard gives cratercolor error), NOT a procedural
+        # string (the particle shape slot rejects it: "LODShape::Preload:
+        # shape '#(...)' not found").  Refract is real, ships in base game,
+        # used in production by TPW RAINFX.
         self._assert_in_sqf(
             "fnc_applyRainDroplets.sqf",
             [
-                "#(argb,8,8,3)color(0.75,0.85,1,0.30)",
+                "drop [",
+                "ParticleEffects\\Universal\\Refract",
                 '"Billboard"',
-                '"#particlesource"',
-                "setParticleCircle",
-                "setParticleRandom",
-                "setParticleParams",
-                "setDropInterval",
-                "deleteVehicle _src",
+                "getCameraViewDirection _player",
+                "_rain * 0.5",
+                "random 0.001",
             ],
-            "rain droplets on objective (billboard, procedural texture)",
+            "rain droplets on objective (Refract billboard, one-shot drop)",
         )
 
     def test_solar_radiation_uses_daytime(self):
@@ -2532,7 +2530,7 @@ class TestSQFSync(unittest.TestCase):
             "mfMax = 50",
             "class AllVehicles: All",
         ]:
-            self.assertIn(frag, cfg, f"config.cpp missing {frag} — map-wide caps")
+            self.assertIn(frag, cfg, f"config.cpp missing {frag} - map-wide caps")
 
     def test_infantry_thermal_config(self):
         # The static config: humans glow (mFact 1, tBody 32), vehicles get REAL
@@ -2553,7 +2551,7 @@ class TestSQFSync(unittest.TestCase):
             self.assertIn(
                 frag,
                 cfg,
-                f"config.cpp missing {frag} — infantry/vehicle thermal override",
+                f"config.cpp missing {frag} - infantry/vehicle thermal override",
             )
 
     # ── Object temperature (fnc_calculateObjectTemperature.sqf) ──
