@@ -351,7 +351,14 @@ def mtf_effective(mtf15, noise, blowout=0.0, gated=True, rain=0.0):
 # the AGC window, exactly like a real FLIR's gain/level controls.
 
 
-def engine_heat_fraction(surface_temp_c, air_temp_c):
+def engine_heat_fraction(
+    surface_temp_c,
+    air_temp_c,
+    damage_engine=0.0,
+    damage_fuel=0.0,
+    damage_body=0.0,
+    alive=True,
+):
     """Mirror of the engine heat FRACTION pushed to setVehicleTIPars.
 
     The physics surface temperature (air + solar + engine heat + exhaust
@@ -359,9 +366,88 @@ def engine_heat_fraction(surface_temp_c, air_temp_c):
     engine's 0..1 heat scale: ambient = 0, +50 C = 1.  Clamped to the
     engine's range.  Environment-driven — sun, wind, engine state all move
     the value; no static timers.
+
+    Damage-state thermal: destroyed/burning (body or fuel >= 0.95, or not
+    alive) saturates at 1.0; a damaged engine adds +0.5 heat at full
+    damage (coolant loss, friction); fuel damage adds +0.2 fire-risk heat.
     """
+    if not alive or damage_body >= 0.95 or damage_fuel >= 0.95:
+        return 1.0
     frac = (surface_temp_c - air_temp_c) / 50.0
-    return max(0.0, min(1.0, frac))
+    frac = max(0.0, min(1.0, frac))
+    frac = min(1.0, frac + damage_engine * 0.5)
+    frac = min(1.0, frac + damage_fuel * 0.2)
+    return frac
+
+
+def exhaust_heat_fraction(
+    engine_run_time,
+    air_temp_c,
+    engine_on=False,
+    engine_heat=0.0,
+    alive=True,
+    damage_body=0.0,
+):
+    """Mirror of the exhaust heat (weapon TI slot).
+
+    exhaustTemp = air + 200*(1-exp(-runTime/60))  (tau 60 s).
+    Mapped (T-air)/50 clamped 0..1.  Engine on but no run time yet:
+    floor = engine heat (a running vehicle always has a warm exhaust).
+    Destroyed: saturated.
+    """
+    if not alive or damage_body >= 0.95:
+        return 1.0
+    if engine_run_time > 0:
+        ex = air_temp_c + 200 * (1 - math.exp(-engine_run_time / 60))
+        return max(0.0, min(1.0, (ex - air_temp_c) / 50.0))
+    if engine_on:
+        return max(engine_heat, 0.3)
+    return 0.0
+
+
+def conduction_coupling(
+    obj_temp,
+    hot_neighbours,
+    distance_scale=0.3,
+    max_share=4.0,
+    min_delta=5.0,
+    max_range=10.0,
+):
+    """Mirror of the conduction/radiant coupling term.
+
+    hot_neighbours: list of (neighbour_temp, distance) for objects within
+    range that are at least min_delta warmer than obj_temp.
+    share = min(surplus * (distance_scale / d^2), max_share), summed,
+    bounded to 5 C total.  0 if no hot neighbour close enough.
+    """
+    coupling = 0.0
+    for n_temp, d in hot_neighbours:
+        if n_temp <= obj_temp + min_delta:
+            continue
+        if d > max_range:
+            continue
+        surplus = n_temp - obj_temp
+        share = min(surplus * (distance_scale / (d * d)), max_share)
+        coupling += share
+    if coupling <= 0.05:
+        return 0.0
+    return min(coupling, 5.0)
+
+
+def burning_temperature(
+    air_temp_c, damage, is_vehicle=False, fuel_damage=0.0, engine_damage=0.0
+):
+    """Mirror of the burning/incendiary thermal term.
+
+    Object on fire (damage >= 0.7, or vehicle fuel/engine hitpoint >= 0.7)
+    burns at 600 C above ambient (combustion).  Returns the target temp.
+    """
+    burning = damage >= 0.7
+    if is_vehicle:
+        burning = burning or fuel_damage >= 0.7 or engine_damage >= 0.7
+    if burning:
+        return air_temp_c + 600
+    return air_temp_c
 
 
 def vehicle_wheel_heat(speed_ms):
@@ -370,15 +456,23 @@ def vehicle_wheel_heat(speed_ms):
 
 
 def ti_output_window(scene_max_heat):
-    """Mirror of the setTIParameter AGC window mapping.
+    """Mirror of the setTIParameter AGC window TARGET mapping.
 
     A real FLIR auto-gain scales to the hottest thing in the scene:
     start = 0 (cold = dark), width = 0.9/maxHeat so the hottest object
     maps near full bright without clipping.  When nothing is hot the
     floor keeps the window wide enough to resolve small differences.
+    Returns the TARGET width; the applied window EMA-approaches it over
+    ~2 s so the display does not re-contrast on every pan.
     """
     mh = max(0.2, min(1.0, scene_max_heat))
     return 0.0, max(0.35, min(1.0, 0.9 / mh))
+
+
+def agc_ema(prev, target, dt, tau=2.0):
+    """Mirror of the AGC response-time EMA (tau ~2 s, real FLIR)."""
+    a = dt / (dt + tau)
+    return prev + (target - prev) * a
 
 
 def second_sun_brightness(radiation):
@@ -1267,11 +1361,38 @@ class TestEngineThermalDrive(unittest.TestCase):
         self.assertLessEqual(w_hot, w_cold)
 
     def test_agc_window_bounds(self):
-        for mh in [0, 0.05, 0.2, 0.5, 0.8, 1.0, 5.0, -1.0]:
-            s, w = ti_output_window(mh)
-            self.assertAlmostEqual(s, 0.0, places=6)
+        for c in [0, 0.1, 0.5, 0.9, 1.0, 5.0, -1.0]:
+            s, w = ti_output_window(c)
+            self.assertGreaterEqual(s, 0.0)
+            self.assertLessEqual(s, 0.5)
             self.assertGreaterEqual(w, 0.35)
             self.assertLessEqual(w, 1.0)
+
+    def test_agc_ema_converges_slowly(self):
+        # Real FLIR AGC adapts over ~2 s, not per-frame.  After 0.5 s the
+        # window is most of the way to target but not there yet.
+        w = 0.35
+        target = 1.0
+        for _ in range(50):  # 50 ticks at 10 ms = 0.5 s
+            w = agc_ema(w, target, 0.01)
+        # Analytic: 1 - (1-0.35)*exp(-0.5/2) = 0.4938.  Moving but not
+        # arrived — a real FLIR AGC adapts over ~2 s, not per-frame.
+        self.assertAlmostEqual(w, 1 - 0.65 * math.exp(-0.5 / 2), places=3)
+        self.assertLess(w, 0.9)  # not yet arrived (slow response)
+        # Full 5 s more: total 5.5 s -> 1 - 0.65*exp(-5.5/2) = 0.958.
+        for _ in range(500):
+            w = agc_ema(w, target, 0.01)
+        self.assertAlmostEqual(w, 1 - 0.65 * math.exp(-5.5 / 2), places=3)
+
+    def test_agc_ema_holds_steady_when_looking_around(self):
+        # A transient scene change (one bright object entering view) must
+        # only shift the window slightly — the EMA absorbs it.
+        w = 0.8
+        target_normal = 0.8
+        target_flash = 0.5  # bright object momentarily in view
+        w = agc_ema(w, target_flash, 0.01)
+        w = agc_ema(w, target_normal, 0.01)
+        self.assertAlmostEqual(w, 0.8, delta=0.05)
 
 
 class TestSecondSun(unittest.TestCase):
@@ -1295,6 +1416,70 @@ class TestSecondSun(unittest.TestCase):
 
     def test_never_negative(self):
         self.assertGreaterEqual(second_sun_brightness(0), 0)
+
+
+class TestVehicleDamageThermal(unittest.TestCase):
+    """Damage-state thermal: damaged parts run hotter, destroyed saturates."""
+
+    def test_undamaged_cold_vehicle(self):
+        # Parked, engine off, ambient: reads cold.
+        self.assertAlmostEqual(engine_heat_fraction(17.8, 17.8), 0.0, places=6)
+
+    def test_damaged_engine_runs_hotter(self):
+        # Engine at 40% damage adds +0.2 heat even if surface is ambient.
+        h = engine_heat_fraction(17.8, 17.8, damage_engine=0.4)
+        self.assertAlmostEqual(h, 0.2, places=6)
+
+    def test_full_engine_damage_adds_half(self):
+        h = engine_heat_fraction(17.8, 17.8, damage_engine=1.0)
+        self.assertAlmostEqual(h, 0.5, places=6)
+
+    def test_fuel_damage_adds_fire_risk(self):
+        h = engine_heat_fraction(17.8, 17.8, damage_fuel=0.5)
+        self.assertAlmostEqual(h, 0.1, places=6)
+
+    def test_destroyed_saturates(self):
+        for kwargs in [
+            dict(damage_body=0.95),
+            dict(damage_fuel=0.95),
+            dict(alive=False),
+        ]:
+            self.assertAlmostEqual(
+                engine_heat_fraction(17.8, 17.8, **kwargs), 1.0, places=6
+            )
+
+    def test_never_exceeds_one(self):
+        h = engine_heat_fraction(80, 17.8, damage_engine=1.0, damage_fuel=1.0)
+        self.assertLessEqual(h, 1.0)
+
+    def test_exhaust_warms_with_run_time(self):
+        # Idling 60 s: exhaustTemp = air + 200*(1-e^-1) = +126 C -> 1.0
+        # (over the +50 C full-scale).  Idling 5 s: +15 C -> 0.3.
+        self.assertAlmostEqual(exhaust_heat_fraction(60, 17.8), 1.0, places=6)
+        h5 = exhaust_heat_fraction(5, 17.8)
+        self.assertAlmostEqual(h5, 200 * (1 - math.exp(-5 / 60)) / 50, places=4)
+        self.assertGreater(h5, 0.2)
+
+    def test_exhaust_cold_when_engine_off(self):
+        self.assertAlmostEqual(exhaust_heat_fraction(0, 17.8), 0.0, places=6)
+
+    def test_exhaust_floor_when_engine_on(self):
+        # Engine on, no run time yet: floor = engine heat (min 0.3).
+        self.assertAlmostEqual(
+            exhaust_heat_fraction(0, 17.8, engine_on=True, engine_heat=0.5),
+            0.5,
+            places=6,
+        )
+        self.assertAlmostEqual(
+            exhaust_heat_fraction(0, 17.8, engine_on=True, engine_heat=0.1),
+            0.3,
+            places=6,
+        )
+
+    def test_exhaust_destroyed_saturates(self):
+        self.assertAlmostEqual(
+            exhaust_heat_fraction(0, 17.8, damage_body=0.95), 1.0, places=6
+        )
 
 
 class TestClothingThermal(unittest.TestCase):
@@ -1389,6 +1574,69 @@ class TestClothingMaterial(unittest.TestCase):
     def test_unknown_defaults_to_swap(self):
         self.assertEqual(clothing_material_kind("a3\\data\\generic.rvmat"), "other")
         self.assertEqual(clothing_material_kind(""), "other")
+
+
+class TestConductionCoupling(unittest.TestCase):
+    """Heat transfer between nearby objects (radiant, 1/d^2)."""
+
+    def test_close_hot_neighbour_warms(self):
+        # Hot engine (40 C surplus) 2 m away -> strong coupling.
+        c = conduction_coupling(20, [(60, 2.0)])
+        self.assertGreater(c, 2.0)
+
+    def test_far_neighbour_weak(self):
+        # Same surplus 8 m away -> weak but present.
+        near = conduction_coupling(20, [(60, 2.0)])
+        far = conduction_coupling(20, [(60, 8.0)])
+        self.assertGreater(near, far * 5)
+
+    def test_not_hot_enough_no_coupling(self):
+        # Neighbour only 3 C warmer (below 5 C min delta): none.
+        self.assertAlmostEqual(conduction_coupling(20, [(23, 2.0)]), 0.0, places=6)
+
+    def test_out_of_range_no_coupling(self):
+        self.assertAlmostEqual(conduction_coupling(20, [(60, 15.0)]), 0.0, places=6)
+
+    def test_coupling_bounded(self):
+        # Many hot neighbours cannot blow the temperature up.
+        hot = [(100, 1.0)] * 5
+        self.assertLessEqual(conduction_coupling(20, hot), 5.0)
+
+    def test_coupling_monotonic_with_temp(self):
+        c1 = conduction_coupling(20, [(40, 3.0)])
+        c2 = conduction_coupling(20, [(80, 3.0)])
+        self.assertGreater(c2, c1)
+
+
+class TestBurningThermal(unittest.TestCase):
+    """Burning objects saturate at combustion temperature."""
+
+    def test_undamaged_not_burning(self):
+        self.assertAlmostEqual(burning_temperature(17.8, 0.2), 17.8, places=6)
+
+    def test_heavy_damage_burns(self):
+        self.assertAlmostEqual(burning_temperature(17.8, 0.8), 617.8, places=6)
+
+    def test_vehicle_fuel_damage_burns(self):
+        self.assertAlmostEqual(
+            burning_temperature(17.8, 0.3, is_vehicle=True, fuel_damage=0.9),
+            617.8,
+            places=6,
+        )
+
+    def test_vehicle_engine_damage_burns(self):
+        self.assertAlmostEqual(
+            burning_temperature(17.8, 0.3, is_vehicle=True, engine_damage=0.85),
+            617.8,
+            places=6,
+        )
+
+    def test_vehicle_damage_below_threshold_stays(self):
+        self.assertAlmostEqual(
+            burning_temperature(17.8, 0.5, is_vehicle=True, fuel_damage=0.5),
+            17.8,
+            places=6,
+        )
 
 
 class TestThermalCrossover(unittest.TestCase):
@@ -2033,7 +2281,7 @@ class TestSQFSync(unittest.TestCase):
             [
                 'setTIParameter ["OutputRangeStart", _outStart]',
                 'setTIParameter ["OutputRangeWidth", _outWidth]',
-                "setVehicleTIPars [_engineHeat, _wheelHeat, 0]",
+                "setVehicleTIPars [_engineHeat, _wheelHeat, _exhaustHeat]",
                 "_speed / 30",
                 "(_surfaceTemp - _airTemp) / 50",
                 "0.9 / _sceneMaxHeat",
@@ -2041,6 +2289,20 @@ class TestSQFSync(unittest.TestCase):
                 "abs (_outStart - _lastStart) > 0.01",
             ],
             "engine thermal drive (TI pars + scene AGC window)",
+        )
+
+    def test_engine_thermal_damage_constants(self):
+        self._assert_in_sqf(
+            "fnc_applyEngineThermal.sqf",
+            [
+                "getAllHitPointsDamage _x",
+                "_damageEngine * 0.5",
+                "_damageFuel * 0.2",
+                "_damageBody >= 0.95",
+                "200 * (1 - exp (-_engineRunTime / 60))",
+                "_engineRunTime / 60",
+            ],
+            "damage-state + exhaust thermal",
         )
 
     def test_second_sun_constants(self):
@@ -2076,7 +2338,7 @@ class TestSQFSync(unittest.TestCase):
             [
                 "setObjectMaterial [_selections select _i, _material]",
                 "ti_cloth_cold.rvmat",
-                "nearObjects [\"House\", 300]",
+                'nearObjects ["House", 300]',
                 "getObjectMaterials _obj",
                 "tiBldgSaved",
                 "abs (_airTemp - _lastTemp) < 2",
@@ -2112,6 +2374,35 @@ class TestSQFSync(unittest.TestCase):
             "fnc_calculateObjectTemperature.sqf",
             ["120", "600", "300", "60", "1800"],
             "thermal inertia taus (metal/concrete/vegetation/human/acclim)",
+            addon="thermal",
+        )
+
+    def test_conduction_coupling_constants(self):
+        self._assert_in_sqf(
+            "fnc_calculateObjectTemperature.sqf",
+            [
+                "_hotSources",
+                "0.3 / (_d * _d)",
+                "_surplus * (0.3 / (_d * _d))",
+                "_d > 10",
+                "min 4",
+                "_coupling min 5",
+                "_nTemp <= _oTemp + 5",
+            ],
+            "conduction/radiant coupling",
+            addon="thermal",
+        )
+
+    def test_burning_thermal_constants(self):
+        self._assert_in_sqf(
+            "fnc_calculateObjectTemperature.sqf",
+            [
+                "damage _obj >= 0.7",
+                "_x select 2 >= 0.7",
+                "_airTemp + 600",
+                "_isBurning",
+            ],
+            "burning/incendiary saturation",
             addon="thermal",
         )
 
