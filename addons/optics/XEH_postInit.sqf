@@ -27,6 +27,7 @@
         ["EXIT"] call FUNC(applySecondSun);
         ["EXIT"] call FUNC(applyClothingThermal);
         ["EXIT"] call FUNC(applyBuildingThermal);
+        ["EXIT"] call FUNC(applyRainDroplets);
         [GVAR(sensorPFH)] call CBA_fnc_removePerFrameHandler;
         GVAR(sensorPFH) = nil;
         AEE_LOG_INFO("sensor PFH stopped (returned to normal vision)");
@@ -65,6 +66,8 @@
         // Building thermal: swap building materials to a cold TI rvmat so
         // buildings read cold at night (they bake red=128 in vanilla).
         ["ENTER"] call FUNC(applyBuildingThermal);
+        // Rain droplets on the objective: particle source, engine assets.
+        ["ENTER"] call FUNC(applyRainDroplets);
     };
     // Start the fast sensor PFH when entering NVG/thermal.  The visionMode
     // event below is the SOLE owner of its lifecycle: it starts on mode > 0
@@ -100,6 +103,7 @@
                 ["TICK"] call FUNC(applySecondSun);
                 ["TICK"] call FUNC(applyClothingThermal);
                 ["TICK"] call FUNC(applyBuildingThermal);
+                ["TICK"] call FUNC(applyRainDroplets);
             };
         }, 0.1] call CBA_fnc_addPerFrameHandler;
         private _logMsg = format ["sensor PFH started (vision mode %1)", _visionMode];
