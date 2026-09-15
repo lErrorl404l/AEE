@@ -91,7 +91,9 @@ if (isNull _src) then {
         1,                                        // weight
         0,                                        // volume
         0,                                        // rubbing: no wind (on lens)
-        [0.008, 0.008],                           // size: 8 mm droplet on the lens
+        [0.05, 0.08],                             // size: 5-8 cm (ACE3 uses 0.1
+                                                  //   and it IS visible; 8 mm was
+                                                  //   lost in the NVG grain)
         [[1, 1, 1, 1], [1, 1, 1, 0.8]],           // colour: bright, near-opaque
         [0],                                      // anim phase
         0,                                        // random dir
