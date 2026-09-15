@@ -2447,6 +2447,27 @@ class TestSQFSync(unittest.TestCase):
             "physics-driven second sun (TI sun term, A3TI-scaled)",
         )
 
+    def test_rain_droplet_constants(self):
+        # Rain droplets must use a BILLBOARD texture (raindrop3.paa), not
+        # a .p3d shape.  Using a .p3d for a Billboard makes the engine try
+        # to load it as geometry ("No geometry and no visual shape while
+        # trying to check property cratercolor" — the exact RPT error).
+        # Case-sensitive: a3 lowercase.
+        self._assert_in_sqf(
+            "fnc_applyRainDroplets.sqf",
+            [
+                "\\a3\\data_f\\raindrop3.paa",
+                '"Billboard"',
+                '"#particlesource"',
+                "setParticleCircle",
+                "setParticleRandom",
+                "setParticleParams",
+                "setDropInterval",
+                "deleteVehicle _src",
+            ],
+            "rain droplets on objective (billboard, engine texture)",
+        )
+
     def test_solar_radiation_uses_daytime(self):
         # The solar model must read the LIVE clock (dayTime), not
         # date#3 + time/3600 (mission-start hour + elapsed, which drifts
