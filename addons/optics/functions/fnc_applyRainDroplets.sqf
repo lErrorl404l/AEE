@@ -106,8 +106,11 @@ if (isNull _src) then {
 // ─── Reposition to the camera eye every tick ──────────────────────────────
 // World-space emitter parked a few cm in front of the eye, following the
 // camera direction so droplets sit on the lens wherever the player looks.
-private _eye = eyePos _player;
-private _camDir = getCameraViewDirection _player;
+// Consumes the SHARED eye state (fnc_getEyeState) - the single source of
+// truth for eye position + gaze vector, cached once per frame.
+private _eyeState = [_player] call FUNC(getEyeState);
+private _eye = _eyeState select 0;
+private _camDir = _eyeState select 1;
 _src setPosASL (_eye vectorAdd (_camDir vectorMultiply 0.1));
 
 // Drop interval scales with rain: heavy rain = ~0.1 s, light = ~0.5 s.

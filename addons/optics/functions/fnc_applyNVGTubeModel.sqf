@@ -418,7 +418,7 @@ if (_battery < 0.3) then {
 // The value decays exponentially: instant rise (gate/bloom engage fast),
 // tier-dependent recovery (Gen 1 blooms linger for seconds, gated Gen 3
 // recovers in ~100 ms).
-private _eye = eyePos _player;
+private _eye = ([_player] call FUNC(getEyeState)) select 0;
 private _viewDir = vectorDirVisual _player;
 // Dynamic bright-source detection — NO hardcoded classnames.  Any object
 // whose simulation is a light emitter qualifies, so vanilla and every mod
@@ -927,7 +927,7 @@ if (_hDoF < 0) then {
 //   focus_half = atan(tan(hFOV/2) * 0.15)
 // getResolution #4 = screen aspect (width/height).  Fall back to 16:9
 // if the query returns 0 (headless or pre-init).
-private _eyePos = eyePos _player;
+private _eyePos = ([_player] call FUNC(getEyeState)) select 0;
 // vectorDirVisual = where the EYES look (free-look / head direction).
 // vectorDir would be the body direction - free-looking at a lamp post
 // would not move the focus fan.  The fan must track the eye, the same
