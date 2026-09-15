@@ -2482,6 +2482,19 @@ class TestSQFSync(unittest.TestCase):
             )
 
     # ── Object temperature (fnc_calculateObjectTemperature.sqf) ──
+    def test_object_temp_params_accept_empty_array(self):
+        # The env PFH and calibration sweep call calculateObjectTemperature
+        # with bare `[] call`, which passes an EMPTY array.  The old
+        # [objNull] type filter rejected it ("Type Array, expected Object",
+        # RPT 10-03-09).  The params now accept [] and the fallback maps
+        # it to objNull -> currentUnit.
+        self._assert_in_sqf(
+            "fnc_calculateObjectTemperature.sqf",
+            ['["_center", objNull, [objNull, []]]'],
+            "empty-array call compatibility",
+            addon="thermal",
+        )
+
     def test_object_temp_taus(self):
         self._assert_in_sqf(
             "fnc_calculateObjectTemperature.sqf",
