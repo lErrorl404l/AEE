@@ -1678,6 +1678,31 @@ class TestClothingThermal(unittest.TestCase):
         self.assertTrue((data_dir / "ti_cloth_hot.rvmat").exists())
 
 
+def test_ti_texture_polarity(self):
+    # The TI textures encode the cold/hot floor in the red channel.
+    # In white-hot mode: pure black reads as black holes (the "black
+    # hot" report), so cold is a dim grey, not black.  Hot is white.
+    # Decode the DXT1 PAA with armaio and check the red channel mean.
+    from armaio.paa._format import PaaFile
+
+    data_dir = _REPO_ROOT / "addons" / "optics" / "data"
+
+    def _red_mean(name):
+        with open(data_dir / name, "rb") as fh:
+            pf = PaaFile.read(fh)
+        px = pf.mipmaps[0].decode(pf.format)
+        return float(px[:, :, 0].mean())
+
+    cold_r = _red_mean("ti_cold.paa")
+    hot_r = _red_mean("ti_hot.paa")
+    # Cold: warm grey floor (dim but visible), not pure black.
+    self.assertGreater(cold_r, 40, "cold TI texture must not be pure black")
+    self.assertLess(cold_r, 140, "cold TI texture must stay dim (below half)")
+    # Hot: near-white so hot objects saturate in white-hot mode.
+    self.assertGreater(hot_r, 200, "hot TI texture must be near-white")
+    self.assertGreater(hot_r, cold_r, "hot texture must be brighter than cold")
+
+
 class TestBuildingThermal(unittest.TestCase):
     """Building material weighting - concrete stays cold, metal responds."""
 
