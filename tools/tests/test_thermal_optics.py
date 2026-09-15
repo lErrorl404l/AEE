@@ -2338,6 +2338,7 @@ class TestSQFSync(unittest.TestCase):
             [
                 "setObjectMaterial [_selections select _i, _material]",
                 "ti_cloth_cold.rvmat",
+                'allMissionObjects ""',
                 'nearObjects ["House", 300]',
                 "getObjectMaterials _obj",
                 "tiBldgSaved",
@@ -2345,6 +2346,21 @@ class TestSQFSync(unittest.TestCase):
             ],
             "per-building TI material swap",
         )
+
+    def test_mapwide_thermal_caps(self):
+        # Config-level caps on the ROOT class cover every object (including
+        # map geometry with no selections) at load, zero runtime cost.
+        cfg = (_REPO_ROOT / "addons" / "optics" / "config.cpp").read_text(
+            encoding="utf-8"
+        )
+        for frag in [
+            "class All {",
+            "afMax = 70",
+            "htMax = 300",
+            "mfMax = 50",
+            "class AllVehicles: All",
+        ]:
+            self.assertIn(frag, cfg, f"config.cpp missing {frag} — map-wide caps")
 
     def test_infantry_thermal_config(self):
         # The static config: humans glow (mFact 1, tBody 32), vehicles get REAL

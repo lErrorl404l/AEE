@@ -43,8 +43,14 @@ class CfgVehicles {
         mFact = 1;   // metabolism has full influence
         tBody = 32;  // skin surface temperature, C
     };
-    class All;
-    class AllVehicles: All {
+    // MAP-WIDE THERMAL CAPS: applied at the ROOT so every object inherits
+    // a realistic thermal ceiling, including map-embedded buildings and
+    // statics that have no hiddenSelections (setObjectMaterial cannot
+    // reach them).  Vanilla afMax 200 C lets the engine bake any object
+    // hot at midnight; capping at the root stops that map-wide with zero
+    // runtime cost (config, not per-frame).  Units (Man) and animals
+    // override with metabolism (mFact/tBody) and are unaffected.
+    class All {
         htMin = 60;    // exhaust/manifold hot-spots half-life
         htMax = 300;   // body panels half-life: ~5 min warm/cool, matching
                        // the physics model's engine tau.  Real sheet-metal
@@ -52,18 +58,18 @@ class CfgVehicles {
                        // so they warm AND cool visibly within minutes.
                        // Vanilla/ACE 1800 (30 min) is tuned for the engine
                        // block's IR DETECTABILITY — too slow for how a
-                       // parked body LOOKS.  (ACE3's own comment: engine
-                       // start warms the whole model at htMax rate.)
+                       // parked body LOOKS.
         afMax = 70;   // max alive temperature C (real sun+engine surface
                        // cap).  Vanilla 200 is unrealistic.  NOT 0: the
                        // engine reads 0 as unset/default in some paths, so
                        // 0 does not disable the alive-heat model — it falls
                        // back to vanilla 200 (the fast warm-up report).
-                       // A real cap is the physical answer: the body heats
-                       // toward 70 C, and our setVehicleTIPars drives the
-                       // PART heat (engine/wheels/weapon) on top.
         mfMax = 50;   // max moving temperature C (tyres/brakes)
         mFact = 0.0;
         tBody = 0;
+    };
+    class AllVehicles: All {
+        // Vehicles inherit the root caps; this keeps the class explicit
+        // for compatibility with mods that expect it here (ACE3 pattern).
     };
 };

@@ -133,3 +133,17 @@
     missionNamespace setVariable [QGVAR(nvgFlashUntil), CBA_missionTime + _duration];
 }, false] call CBA_fnc_addPlayerEventHandler;
 
+// ─── Map-wide thermal boot pass ───────────────────────────────────────────
+// Pull EVERYTHING at mission start: one scan of all objects with material
+// selections, swapping them to the cold baseline immediately.  This covers
+// the whole map in one pass — no per-frame near-player LOD, no object
+// left at baked engine defaults.  The config-level caps (class All:
+// afMax 70, htMax 300) handle objects WITHOUT selections (map-embedded
+// geometry) at load; this pass handles objects WITH selections (placed
+// buildings, vehicles, statics) up front.
+//
+// Cost: one-time, at boot.  The near-player TICK in the thermal PFH still
+// exists for objects spawned later (dynamic spawns) — this is the eager
+// complement, not a replacement.
+[] call FUNC(applyBuildingThermal);
+
