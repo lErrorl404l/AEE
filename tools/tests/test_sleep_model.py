@@ -32,7 +32,7 @@ TAU_D = 4.2
 S_MAX = 1.0
 S_MIN = 0.0
 AMP = 0.12
-PHI = 9.0  # phase such that peak wake drive is at ~18:00
+PHI = 12.0  # wake-drive peak at ~18:00 (sinusoid peaks at phi + 6)
 
 WAKEFULNESS_THRESHOLD = 15.84
 K = 0.05
@@ -46,7 +46,8 @@ def sleep_pressure(hours_awake, sleep_hours, local_hour, sleeping):
         process_s = S_MIN + (S_MAX - S_MIN) * math.exp(-sleep_hours / TAU_D)
     else:
         process_s = S_MAX - (S_MAX - S_MIN) * math.exp(-hours_awake / TAU_S)
-    process_c = AMP * math.sin(2 * math.pi * (local_hour - PHI) / 24)
+    # SQF sin() takes degrees; the mirror converts to radians.
+    process_c = AMP * math.sin(math.radians(360 * (local_hour - PHI) / 24))
     return process_s, process_c, process_s - process_c
 
 
@@ -93,6 +94,23 @@ class TestProcessC(unittest.TestCase):
         s, c18, _ = sleep_pressure(24, 0, 18, False)
         s, c06, _ = sleep_pressure(24, 0, 6, False)
         self.assertGreater(c18, c06)
+
+    def test_wake_drive_peaks_at_1800(self):
+        # The sinusoid peaks at phi + 6 = 18:00.  C(18) must be the
+        # maximum over the day (catches a wrong phi constant).
+        c_peak = max(sleep_pressure(24, 0, h, False)[1] for h in range(0, 24))
+        s, c18, _ = sleep_pressure(24, 0, 18, False)
+        self.assertAlmostEqual(c18, c_peak, places=6)
+
+    def test_full_cycle_value(self):
+        # Sanity: C must be a real oscillation in [-A, +A], not a tiny
+        # near-zero slope.  Catches the radians-vs-degrees SQF bug.
+        s, c06, _ = sleep_pressure(24, 0, 6, False)  # trough: -90 deg
+        s, c18, _ = sleep_pressure(24, 0, 18, False)  # peak: +90 deg
+        # The oscillation spans the full [-A, A] range.
+        self.assertAlmostEqual(c06, -AMP, places=6)
+        self.assertAlmostEqual(c18, AMP, places=6)
+        self.assertGreater(abs(c18 - c06), 0.2)
 
     def test_amplitude_within_published_range(self):
         # Published amplitude 0.1-0.15; the mod uses 0.12.
@@ -168,8 +186,8 @@ class TestSQFSyncSleep(unittest.TestCase):
     def test_sleep_pressure_constants(self):
         self._assert_in_sqf(
             "fnc_calculateSleepPressure.sqf",
-            ["18.2", "4.2", "0.12", "9.0", "S_min"],
-            "Borbely process S/C constants",
+            ["18.2", "4.2", "0.12", "12.0", "360 *", "sin"],
+            "Borbely process S/C constants, degrees sin, 18:00 peak",
         )
 
     def test_fatigue_factor_constants(self):

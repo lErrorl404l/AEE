@@ -30,12 +30,16 @@ peak in the LATE AFTERNOON / EARLY EVENING, the "wake maintenance zone"
 
   A    = 0.12   circadian amplitude (0.1-0.15 published range, Skeldon
                 2014; simplified sinusoid)
-  phi  = 9      phase such that the peak is at ~18:00 local (09:00 +
-                quarter-day).  The issue spec's 6:00 is the peak of
-                sleep PROPENSITY, not wake drive — using it here with a
-                positive sign would put peak wake drive at 6:00, which
-                is the circadian LOW.  The 18:00 peak matches the
-                published wake-maintenance zone.
+  phi  = 12     phase such that the wake-drive peak is at ~18:00.  The
+                sinusoid sin(360*(t - phi)/24) peaks at t = phi + 6, so
+                phi = 12 gives the 18:00 peak that matches the published
+                wake-maintenance zone (Dijk & Czeisler 1995; Shekleton
+                et al. 2013: maximal circadian drive for alertness in
+                the early evening 6-10 pm).  The issue spec's 6:00 is
+                the peak of sleep PROPENSITY, not wake drive — using it
+                here with a positive sign would put peak wake drive at
+                6:00, which is the circadian LOW.  The 18:00 peak
+                matches the published wake-maintenance zone.
 
 Sleepiness = S - C (sleep pressure minus circadian wake drive).
 A high value means sleepy.
@@ -60,7 +64,7 @@ private _S_MAX = 1.0;
 private _S_MIN = 0.0;
 private _AMP   = missionNamespace getVariable [QGVAR(circadianAmplitude), 0.12];
 if !(_AMP isEqualType 0) then { _AMP = 0.12; };
-private _PHI   = 9.0;
+private _PHI   = 12.0;
 
 // ─── Process S ────────────────────────────────────────────────────────────
 private _processS = if (_sleeping) then {
@@ -73,7 +77,9 @@ private _processS = if (_sleeping) then {
 };
 
 // ─── Process C (circadian wake drive, peak ~18:00) ────────────────────────
-private _processC = _AMP * sin (2 * pi * (_localHour - _PHI) / 24);
+// SQF sin() takes DEGREES, not radians.  A full circadian cycle is 360
+// degrees per 24 h, so the phase argument is 360 * (t - phi) / 24.
+private _processC = _AMP * sin (360 * (_localHour - _PHI) / 24);
 
 // ─── Sleepiness ───────────────────────────────────────────────────────────
 private _sleepiness = _processS - _processC;

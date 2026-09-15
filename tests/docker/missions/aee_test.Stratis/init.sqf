@@ -763,15 +763,18 @@ if (_p10Fail == 0) then {
         };
 
         // Case 2: circadian wake drive peaks in the evening, not 6:00.
+        // Amplitude must reach the full ~0.12 range (a radians/degrees
+        // bug makes it a tiny near-zero slope that still satisfies the
+        // inequality — this check catches that).
         private _sp18 = [24, 0, 18, false] call _fnSP;
         private _sp06 = [24, 0, 6, false] call _fnSP;
         private _c18 = _sp18 select 1;
         private _c06 = _sp06 select 1;
-        if (_c18 > _c06) then {
-            diag_log text format ["[PHASE17] [PASS] evening wake drive %1 > 6:00 %2", _c18, _c06];
+        if ((_c18 > _c06) && {abs _c18 > 0.07} && {abs _c06 > 0.07}) then {
+            diag_log text format ["[PHASE17] [PASS] evening wake drive %1 > 6:00 %2 (full amplitude)", _c18, _c06];
             _p17Pass = _p17Pass + 1;
         } else {
-            diag_log text format ["[PHASE17] [FAIL] evening wake drive %1 NOT > 6:00 %2", _c18, _c06];
+            diag_log text format ["[PHASE17] [FAIL] circadian: C18=%1 C06=%2 (need C18>C06 and |C|>0.07)", _c18, _c06];
             _p17Fail = _p17Fail + 1;
         };
 
