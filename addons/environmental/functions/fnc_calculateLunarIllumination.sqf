@@ -42,9 +42,20 @@ private _raw   = _daysSinceRef / 29.530588853;
 private _phase = _raw - floor _raw;
 if (_phase < 0) then { _phase = _phase + 1; };
 
+// Store phase for downstream consumers (classifyNight, NVG, etc.)
+missionNamespace setVariable [QGVAR(lunarPhase), _phase];
+
 // ─── Illumination fraction (0 = new, 1 = full) ──────────────────────────
-// SQF's cos() takes degrees, so 2π rad → 360°
+// Lambert sphere: SQF's cos() takes degrees, so 2pi rad = 360 deg
 private _illumination = (1 - cos (360 * _phase)) / 2;
+
+// Baldet (1993) opposition surge: the Moon is brighter near full than
+// a Lambert sphere predicts.  Peak ~30% enhancement at zero phase
+// angle (full moon), Gaussian width ~15 deg (Shevchenko & Shaporev
+// 1996).  Phase angle = 0 at full, 180 at new.
+private _phaseAngle = abs (180 * (1 - 2 * _phase));
+private _surge = 1 + 0.30 * exp (-(_phaseAngle ^ 2) / 450);
+_illumination = _illumination * _surge;
 
 // ─── Overcast attenuation ────────────────────────────────────────────────
 private _overcast = overcast;

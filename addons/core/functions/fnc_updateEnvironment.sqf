@@ -168,6 +168,17 @@ if (GVAR(atmosphericEventsEnabled)) then {
 [] call EFUNC(atmos,calculateCloudDevelopment);
 [] call EFUNC(atmos,calculatePressureTrend);
 [] call EFUNC(environmental,calculateLunarIllumination);
+
+// ─── Night classification & star visibility (after lunar phase computed) ──
+// DEF Stan 61-027 night zones depend on sun elevation and moon phase.
+// calculateLunarIllumination stores moonPhase; sunElevation is set by
+// the solar model.  classifyNight must run after both are available.
+private _sunElev = missionNamespace getVariable [QEGVAR(core,currentSunElevation), -90];
+private _moonPhase = missionNamespace getVariable [QEGVAR(environmental,lunarPhase), 0];
+[_sunElev, _moonPhase] call EFUNC(optics,classifyNight);
+private _posASL2D = [_posASL select 0, _posASL select 1, 0];
+[_posASL2D] call EFUNC(optics,calculateLimitingMagnitude);
+[_posASL2D, date] call EFUNC(optics,getStarCatalog);
 if (GVAR(maritimeEnabled)) then {
     [] call EFUNC(maritime,calculateTidalPrediction);
 };
