@@ -2530,10 +2530,11 @@ class TestSQFSync(unittest.TestCase):
 
     def test_eye_state_consumers(self):
         # Every eye-space system must consume the shared foundation, not
-        # recompute eyePos independently (the drift that caused the HEAD
-        # memory-point bug).
+        # recompute eye position or direction independently (the drift that
+        # caused the HEAD memory-point bug and the separate vectorDirVisual
+        # calls in the focus fan / blowout cone).
         for fname, ctx in [
-            ("fnc_applyNVGTubeModel.sqf", "NVG"),
+            ("fnc_applyNVGTubeModel.sqf", "NVG tube"),
             ("fnc_calculateIlluminance.sqf", "illuminance"),
             ("fnc_applyRainDroplets.sqf", "droplets"),
         ]:
@@ -2545,6 +2546,16 @@ class TestSQFSync(unittest.TestCase):
             )
             self.assertNotIn(
                 "= eyePos ", src, f"{ctx} must not recompute eyePos directly"
+            )
+            self.assertNotIn(
+                "vectorDirVisual _player",
+                src,
+                f"{ctx} must not recompute the eye direction",
+            )
+            self.assertNotIn(
+                "vectorUp _player",
+                src,
+                f"{ctx} must not recompute the up vector",
             )
 
     def test_solar_radiation_uses_daytime(self):
