@@ -7,7 +7,7 @@ exact formulas in the SQF source so that any drift breaks the tests.
 
 Covers:
   - DEF Stan 61-027 night classification (classifyNight)
-  - Baldet opposition surge (calculateLunarIllumination)
+  - Krisciunas & Schaefer (1991) lunar illuminance (calculateLunarIllumination)
   - Naked-eye limiting magnitude (calculateLimitingMagnitude)
   - Star catalogue coordinate transform (getStarCatalog)
 
@@ -57,26 +57,21 @@ def classify_night(sun_elev, moon_phase):
             return 3
 
 
-# ─── Baldet opposition surge mirrors ───────────────────────────────────────
+# ─── Krisciunas & Schaefer (1991) lunar illumination mirrors ───────────────
 
 
-def baldet_lunar_illumination(phase):
-    """Mirror of fnc_calculateLunarIllumination.sqf Baldet correction.
+def ks_lunar_lux(phase):
+    """Mirror of fnc_calculateLunarIllumination.sqf (K&S 1991 magnitude law).
 
-    Standard Lambert: illumination = (1 - cos(360*phase)) / 2
-    Baldet (1993): adds ~30% opposition surge near full moon.
     Phase angle = |180 * (1 - 2*phase)| degrees (0 at full, 180 at new).
-    Surge = 1 + 0.30 * exp(-phaseAngle^2 / 450).
+    Moon magnitude: m = -12.73 + 0.026|alpha| + 4e-9 * alpha^4.
+    Illuminance:    E = 10^(-0.4 * (m + 14.18)) lux.
+    The mod adds a 0.001 lux starlight floor and clamps to [0, 300].
     """
-    illumination = (1 - math.cos(math.radians(360 * phase))) / 2
     phase_angle = abs(180 * (1 - 2 * phase))
-    surge = 1 + 0.30 * math.exp(-(phase_angle**2) / 450)
-    return illumination * surge
-
-
-def lambert_lunar_illumination(phase):
-    """Standard Lambert sphere without Baldet correction (baseline)."""
-    return (1 - math.cos(math.radians(360 * phase))) / 2
+    moon_mag = -12.73 + 0.026 * phase_angle + 4e-9 * (phase_angle**4)
+    lux = 10 ** (-0.4 * (moon_mag + 14.18))
+    return max(0.0, min(300.0, 0.001 + lux))
 
 
 # ─── Limiting magnitude mirrors ────────────────────────────────────────────
@@ -125,23 +120,23 @@ class TestSQFSync(unittest.TestCase):
     def test_lunar_phase_constants(self):
         self._assert_in_sqf(
             "fnc_calculateLunarIllumination.sqf",
-            ["29.530588853", "8777", "(1 - cos (360 * _phase)) / 2"],
-            "synodic month, reference new moon, Lambert sphere",
+            ["29.530588853", "8777"],
+            "synodic month and reference new moon",
             addon="environmental",
         )
 
-    def test_baldet_surge_constants(self):
+    def test_ks_magnitude_law(self):
         self._assert_in_sqf(
             "fnc_calculateLunarIllumination.sqf",
-            ["abs (180 * (1 - 2 * _phase))", "0.30 * exp", "450"],
-            "Baldet opposition surge",
+            ["-12.73", "0.026", "4e-9", "14.18"],
+            "Krisciunas & Schaefer magnitude law",
             addon="environmental",
         )
 
     def test_lux_scale_constants(self):
         self._assert_in_sqf(
             "fnc_calculateLunarIllumination.sqf",
-            ["0.001 + _illumination * 0.299", "0 max _lux min 300"],
+            ["0.001 + _lux", "_lux max 0 min 300"],
             "lunar lux scale",
             addon="environmental",
         )
@@ -219,63 +214,61 @@ class TestClassifyNight(unittest.TestCase):
         self.assertEqual(classify_night(-23, 0.80), 3)
 
 
-class TestBaldetLunarIllumination(unittest.TestCase):
-    """Baldet (1993) opposition surge on lunar illumination."""
+class TestLunarIllumination(unittest.TestCase):
+    """Krisciunas & Schaefer (1991) lunar illuminance in lux."""
 
-    def test_new_moon_zero(self):
-        """New moon (phase=0) → zero illumination."""
-        self.assertAlmostEqual(baldet_lunar_illumination(0.0), 0.0, places=6)
+    def test_new_moon_starlight_floor(self):
+        """New moon (phase=0) → starlight floor ~0.001 lux."""
+        lux = ks_lunar_lux(0.0)
+        self.assertGreaterEqual(lux, 0.001)
+        self.assertLess(lux, 0.002)
 
-    def test_full_moon_above_lambert(self):
-        """Full moon (phase=0.5) → Baldet surge makes it brighter than Lambert."""
-        baldet = baldet_lunar_illumination(0.5)
-        lambert = lambert_lunar_illumination(0.5)
-        self.assertAlmostEqual(lambert, 1.0, places=6)
-        self.assertGreater(baldet, lambert)
+    def test_full_moon_matches_published(self):
+        """Full moon (phase=0.5) → ~0.26 lux, the published K&S value."""
+        lux = ks_lunar_lux(0.5)
+        self.assertGreater(lux, 0.20)
+        self.assertLess(lux, 0.35)
 
-    def test_full_moon_surge_magnitude(self):
-        """Full moon surge should be ~30% above Lambert = ~1.30."""
-        baldet = baldet_lunar_illumination(0.5)
-        self.assertAlmostEqual(baldet, 1.30, places=2)
+    def test_quarter_moon_matches_published(self):
+        """Quarter moon (phase=0.25) → ~0.025 lux, the published value."""
+        lux = ks_lunar_lux(0.25)
+        self.assertGreater(lux, 0.01)
+        self.assertLess(lux, 0.05)
 
-    def test_first_quarter(self):
-        """First quarter (phase=0.25) → ~0.5 illumination, minimal surge."""
-        baldet = baldet_lunar_illumination(0.25)
-        lambert = lambert_lunar_illumination(0.25)
-        self.assertAlmostEqual(lambert, 0.5, places=4)
-        # Surge at 90 deg phase angle is small
-        self.assertGreater(baldet, lambert)
-        self.assertLess(baldet, 0.6)
-
-    def test_last_quarter(self):
+    def test_last_quarter_symmetric(self):
         """Last quarter (phase=0.75) → symmetric with first quarter."""
-        self.assertAlmostEqual(
-            baldet_lunar_illumination(0.75), baldet_lunar_illumination(0.25), places=6
-        )
+        self.assertAlmostEqual(ks_lunar_lux(0.75), ks_lunar_lux(0.25), places=6)
 
     def test_crescent_moon(self):
-        """Crescent (phase=0.125) → low illumination, moderate surge."""
-        illum = baldet_lunar_illumination(0.125)
-        self.assertGreater(illum, 0.0)
-        self.assertLess(illum, 0.3)
+        """Crescent (phase=0.125) → low illuminance."""
+        lux = ks_lunar_lux(0.125)
+        self.assertGreater(lux, 0.001)
+        self.assertLess(lux, 0.01)
 
     def test_gibbous_moon(self):
-        """Gibbous (phase=0.375) → high illumination, moderate surge."""
-        illum = baldet_lunar_illumination(0.375)
-        self.assertGreater(illum, 0.7)
-        self.assertLess(illum, 1.3)
+        """Gibbous (phase=0.375) → high illuminance, below full moon."""
+        lux = ks_lunar_lux(0.375)
+        self.assertGreater(lux, 0.05)
+        self.assertLess(lux, ks_lunar_lux(0.5))
 
-    def test_surge_symmetric_around_full(self):
-        """Surge is symmetric around full moon."""
-        self.assertAlmostEqual(
-            baldet_lunar_illumination(0.45), baldet_lunar_illumination(0.55), places=6
-        )
-
-    def test_surges_peaks_near_full(self):
-        """Peak surge is within 5% of phase=0.5."""
-        vals = [(p / 100, baldet_lunar_illumination(p / 100)) for p in range(0, 101)]
+    def test_peak_at_full_moon(self):
+        """Peak illuminance is at phase=0.5 (full moon)."""
+        vals = [(p / 100, ks_lunar_lux(p / 100)) for p in range(0, 101)]
         peak_phase = max(vals, key=lambda x: x[1])
         self.assertAlmostEqual(peak_phase[0], 0.5, places=1)
+
+    def test_monotonic_rise_to_full(self):
+        """Illuminance rises monotonically from new to full moon."""
+        prev = ks_lunar_lux(0.0)
+        for p in range(1, 51):
+            current = ks_lunar_lux(p / 100)
+            self.assertGreater(current, prev)
+            prev = current
+
+    def test_lux_never_negative(self):
+        """Illuminance stays non-negative across all phases."""
+        for p in range(0, 101):
+            self.assertGreaterEqual(ks_lunar_lux(p / 100), 0.0)
 
 
 class TestLimitingMagnitude(unittest.TestCase):
