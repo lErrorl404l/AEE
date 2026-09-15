@@ -49,17 +49,21 @@ if (_rain < 0.1) exitWith { 0 };
 // drops per tick (heavy rain ~0.5/s visible as an intermittent spec).
 if (random 1 > (_rain * 0.5)) exitWith { 0 };
 
-// ─── Droplet position: ~4-8 cm in front of the eye ───────────────────────
-// Follows the camera direction so the spec sits on the lens regardless of
-// where the player looks.  World ASL position, one-shot drop.
+// ─── Droplet position: ~0.4-0.7 m in front of the eye ────────────────────
+// NOT at 5-8 cm: drops that close sit inside the camera near clip plane
+// and the player's own head/goggle geometry, so they are culled before
+// render (the "not visible" report).  TPW puts drops at 1-3 m (their
+// windscreen is a world object); ours have no surface, so we place them
+// at 0.4-0.7 m - past the near plane, past the head mesh, still reading
+// as small lens specs when sized at a few mm.
 private _eye = eyePos _player;
 private _camDir = getCameraViewDirection _player;
-private _dist = 0.05 + random 0.03;
+private _dist = 0.4 + random 0.3;
 private _pos = _eye vectorAdd (_camDir vectorMultiply _dist);
 
-// Droplet size: ~1-2 mm at 5-8 cm (real on-lens droplet).
-private _size = 0.001 + random 0.001;
-private _lifetime = 0.03 + random 0.04;
+// Droplet size: ~2-4 mm at 0.4-0.7 m (subtends ~0.3 deg, a visible spec).
+private _size = 0.002 + random 0.002;
+private _lifetime = 0.1 + random 0.15;
 
 drop [
     ["\A3\data_f\ParticleEffects\Universal\Refract", 1, 0, 1],
