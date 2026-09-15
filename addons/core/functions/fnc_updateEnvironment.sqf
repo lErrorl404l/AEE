@@ -93,6 +93,11 @@ if (GVAR(physiologyEnabled)) then {
     [] call EFUNC(physiology,calculateBatteryTemperatureDerating);
     [] call EFUNC(physiology,calculateDehydrationRisk);
     [] call EFUNC(physiology,calculateAltitudeAcclimatization);
+    // Cross-sensitivity runs after both accumulators have their current
+    // values.  calculateHypoxia runs earlier in this tick (line 44), so
+    // both raw risks are fresh here.  Neither accumulator reads its own
+    // output risk, so writing the amplified value back is safe.
+    [] call EFUNC(physiology,applyCrossSensitivity);
 };
 
 // ─── Sensor / Optics ───────────────────────────────────────────────────────

@@ -605,6 +605,68 @@ if (_p10Fail == 0) then {
         diag_log text format ["[PHASE14] [FAIL] thermal restore guard: %1 passed, %2 failed", _p14Pass, _p14Fail];
     };
 
+    // -- PHASE 15: dehydration-hypoxia cross-sensitivity (issue #40) --------
+    // applyCrossSensitivity is pure maths (no hasInterface gate), so it runs
+    // headless.  Seed the risk variables, call it, and assert the issue's
+    // validation cases: 50/50 -> 65/60, 0% dehydration no amplification,
+    // both at 100% clamp to 1.0, disabled = no change.
+    private _p15Pass = 0;
+    private _p15Fail = 0;
+    private _fnCross = missionNamespace getVariable ["aee_physiology_fnc_applyCrossSensitivity", nil];
+    if (isNil "_fnCross") then {
+        diag_log text "[PHASE15] [FAIL] applyCrossSensitivity not compiled";
+        _p15Fail = _p15Fail + 1;
+    } else {
+        // Case 1: 50% dehydration + 50% hypoxia -> 65% hypoxia, 60% dehydration.
+        missionNamespace setVariable ["aee_physiology_dehydrationRisk", 0.5];
+        missionNamespace setVariable ["aee_core_currentHypoxiaRisk", 0.5];
+        [] call _fnCross;
+        private _effDeh = missionNamespace getVariable ["aee_physiology_dehydrationRisk", -1];
+        private _effHyp = missionNamespace getVariable ["aee_core_currentHypoxiaRisk", -1];
+        if (abs (_effHyp - 0.65) < 0.01 && abs (_effDeh - 0.60) < 0.01) then {
+            diag_log text format ["[PHASE15] [PASS] 50/50 coupling: hyp=%1 deh=%2", _effHyp, _effDeh];
+            _p15Pass = _p15Pass + 1;
+        } else {
+            diag_log text format ["[PHASE15] [FAIL] 50/50 coupling: hyp=%1 deh=%2 (expected 0.65/0.60)",
+                _effHyp, _effDeh];
+            _p15Fail = _p15Fail + 1;
+        };
+
+        // Case 2: 0% dehydration + 50% hypoxia -> no amplification.
+        missionNamespace setVariable ["aee_physiology_dehydrationRisk", 0];
+        missionNamespace setVariable ["aee_core_currentHypoxiaRisk", 0.5];
+        [] call _fnCross;
+        _effHyp = missionNamespace getVariable ["aee_core_currentHypoxiaRisk", -1];
+        if (abs (_effHyp - 0.5) < 0.01) then {
+            diag_log text format ["[PHASE15] [PASS] 0/50 coupling: hyp=%1 (no amplification)", _effHyp];
+            _p15Pass = _p15Pass + 1;
+        } else {
+            diag_log text format ["[PHASE15] [FAIL] 0/50 coupling: hyp=%1 (expected 0.5)", _effHyp];
+            _p15Fail = _p15Fail + 1;
+        };
+
+        // Case 3: both at 100% -> both clamp to 1.0.
+        missionNamespace setVariable ["aee_physiology_dehydrationRisk", 1.0];
+        missionNamespace setVariable ["aee_core_currentHypoxiaRisk", 1.0];
+        [] call _fnCross;
+        _effDeh = missionNamespace getVariable ["aee_physiology_dehydrationRisk", -1];
+        _effHyp = missionNamespace getVariable ["aee_core_currentHypoxiaRisk", -1];
+        if (abs (_effDeh - 1.0) < 0.01 && abs (_effHyp - 1.0) < 0.01) then {
+            diag_log text "[PHASE15] [PASS] 100/100 coupling: both clamped to 1.0";
+            _p15Pass = _p15Pass + 1;
+        } else {
+            diag_log text format ["[PHASE15] [FAIL] 100/100 coupling: deh=%1 hyp=%2 (expected 1.0/1.0)",
+                _effDeh, _effHyp];
+            _p15Fail = _p15Fail + 1;
+        };
+    };
+
+    if (_p15Fail == 0) then {
+        diag_log text format ["[PHASE15] [PASS] cross-sensitivity: %1 checks passed", _p15Pass];
+    } else {
+        diag_log text format ["[PHASE15] [FAIL] cross-sensitivity: %1 passed, %2 failed", _p15Pass, _p15Fail];
+    };
+
     // -- PHASE 5: determinism -- temperature delta over 5 s must be small ----
     // PHASE11 deliberately disturbed the clock (midnight/noon skips).  The
     // temperature model is stateless and recomputes on each 5 s env tick,

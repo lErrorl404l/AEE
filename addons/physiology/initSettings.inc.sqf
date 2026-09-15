@@ -81,6 +81,27 @@
     {}
 ] call CBA_fnc_addSetting;
 
+// ── Cross-sensitivity (dehydration <-> hypoxia) ───────────────────────────
+[
+    QGVAR(crossSensitivityEnabled),
+    "CHECKBOX",
+    [LLSTRING(CrossSensitivityEnabled_Name), LLSTRING(CrossSensitivityEnabled_Description)],
+    ["AEE Physiology", "Coupling"],
+    true,
+    true,
+    {}
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(crossSensitivityScale),
+    "SLIDER",
+    [LLSTRING(CrossSensitivityScale_Name), LLSTRING(CrossSensitivityScale_Description)],
+    ["AEE Physiology", "Coupling"],
+    [0, 2, 1.0, 1],
+    true,
+    {}
+] call CBA_fnc_addSetting;
+
 // ── Scent ──────────────────────────────────────────────────────────────────
 [
     QGVAR(ScentIntensity),
