@@ -418,8 +418,9 @@ if (_battery < 0.3) then {
 // The value decays exponentially: instant rise (gate/bloom engage fast),
 // tier-dependent recovery (Gen 1 blooms linger for seconds, gated Gen 3
 // recovers in ~100 ms).
-private _eye = ([_player] call FUNC(getEyeState)) select 0;
-private _viewDir = vectorDirVisual _player;
+private _eyeState = [_player] call FUNC(getEyeState);
+private _eye = _eyeState select 0;
+private _viewDir = _eyeState select 1;
 // Dynamic bright-source detection — NO hardcoded classnames.  Any object
 // whose simulation is a light emitter qualifies, so vanilla and every mod
 // (lamp packs, IR strobes, vehicle lights) works without a compat list.
@@ -927,12 +928,13 @@ if (_hDoF < 0) then {
 //   focus_half = atan(tan(hFOV/2) * 0.15)
 // getResolution #4 = screen aspect (width/height).  Fall back to 16:9
 // if the query returns 0 (headless or pre-init).
-private _eyePos = ([_player] call FUNC(getEyeState)) select 0;
-// vectorDirVisual = where the EYES look (free-look / head direction).
-// vectorDir would be the body direction - free-looking at a lamp post
-// would not move the focus fan.  The fan must track the eye, the same
-// as the blowout cone at line 304.
-private _lookDir = vectorDirVisual _player;
+private _focusEye = [_player] call FUNC(getEyeState);
+private _eyePos = _focusEye select 0;
+// The focus fan must track where the EYES look, not the body: free-looking
+// at a lamp post would not move a body-direction fan.  Consumes the shared
+// eye state (state-aware: turret = weapon-aligned, on foot = view centre),
+// the same source as the blowout cone.
+private _lookDir = _focusEye select 1;
 private _aspect = getResolution select 4;
 if (_aspect <= 0) then { _aspect = 16.0 / 9.0; };
 // Live camera FOV via CBA (ACE3-proven): returns [hFOV, zoom] for the
@@ -951,7 +953,7 @@ if (_hFovLive <= 0) then {
 };
 private _focusHalfDeg = atan ((tan _hFovLive) * 0.15);   // 15 % of screen
 private _spread = 300 * (tan _focusHalfDeg);      // offset at the 300 m end
-private _upVec   = vectorUp _player;
+private _upVec   = _focusEye select 2;
 private _rightVec = _lookDir vectorCrossProduct _upVec;
 // ─── Fan raycast, CENTRE-DECISIVE weighted median ────────────────────────
 // What the operator LOOKS AT (the centre ray) must win.  The research
