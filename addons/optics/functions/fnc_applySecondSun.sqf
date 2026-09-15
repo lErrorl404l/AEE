@@ -59,27 +59,34 @@ if (_mode == "ENTER") then {
     };
 };
 
-// ─── TICK: brightness = physics solar radiation ──────────────────────────
-// 0 = no sun (night) -> no sun term, buildings cold.
-// 1 = full sun       -> full engine sun-heating of the TI red channel.
-// Overcast already folded into currentSolarRadiation.
+// ─── TICK: brightness = physics radiation, scaled to engine range ─────────
+// A3TI (the reference for this mechanism) uses STATIC brightness 13 in all
+// TI modes.  The engine's thermal sun term expects lightpoint brightness
+// in that order of magnitude; a value in 0..1 is ~30x below the visible
+// threshold, so the sun term does nothing and buildings fall back to their
+// baked alive-heat (the white at night).  We keep the PHYSICS-CORRECT
+// day/night variation but scale into the engine's working range:
+// brightness = radiation * 13, so full sun = 13 (A3TI-equivalent) and
+// night = 0 (no sun term — our improvement over their always-on 13).
 private _radiation = missionNamespace getVariable [QEGVAR(core,currentSolarRadiation), 0];
 if !(_radiation isEqualType 0) then { _radiation = 0; };
 _radiation = _radiation max 0 min 1;
+private _lightBrightness = _radiation * 13;
 
 // Attach to the camera so the light direction follows the view (the TI
-// sun term is directional).  Constant-brightness light; the engine
+// sun term is directional).  A3TI attenuation: far range 150, so the sun
+// term reaches the whole scene.  Constant-brightness light; the engine
 // multiplies it through the thermal pass.
 _sun attachTo [_player, [0, 0, 0], "head"];
-_sun setLightBrightness _radiation;
+_sun setLightBrightness _lightBrightness;
 _sun setLightAmbient [0.5, 0.5, 0.5];
-_sun setLightAttenuation [1e10, 1, 0, 0];
+_sun setLightAttenuation [1e10, 150, 0, 0];
 
-// Debug: log the actual radiation the engine's sun term sees, with the
-// date/time inputs, so an inverted day/night reading is traceable.
+// Debug: log the radiation and the scaled brightness the engine's sun term
+// sees, with dayTime, so day/night behaviour is traceable.
 if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
-    diag_log text format ["[AEE] SecondSun: rad=%1 dayTime=%2 date=%3",
-        _radiation, dayTime, date];
+    diag_log text format ["[AEE] SecondSun: rad=%1 brightness=%2 dayTime=%3 date=%4",
+        _radiation, _lightBrightness, dayTime, date];
 };
 
 _radiation
