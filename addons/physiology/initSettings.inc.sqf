@@ -112,3 +112,24 @@
     true,
     {}
 ] call CBA_fnc_addSetting;
+
+// ── Fatigue / sleep ────────────────────────────────────────────────────────
+[
+    QGVAR(fatigueEnabled),
+    "CHECKBOX",
+    [LLSTRING(FatigueEnabled_Name), LLSTRING(FatigueEnabled_Description)],
+    ["AEE Physiology", "Fatigue"],
+    true,
+    true,
+    {}
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(circadianAmplitude),
+    "SLIDER",
+    [LLSTRING(CircadianAmplitude_Name), LLSTRING(CircadianAmplitude_Description)],
+    ["AEE Physiology", "Fatigue"],
+    [0.05, 0.2, 0.12, 3],
+    true,
+    {}
+] call CBA_fnc_addSetting;
