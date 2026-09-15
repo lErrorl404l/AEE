@@ -37,6 +37,12 @@ def check_file(path):
     brackets = []  # [
     braces = []  # {
 
+    # Block-comment state persists ACROSS lines: a /* opens on one line
+    # and */ may close several lines later.  Resetting it per line made
+    # the validator count parens inside multi-line comments as code —
+    # false errors on fnc_applyEngineThermal / fnc_applySecondSun prose.
+    in_block_comment = False
+
     for lineno, raw in enumerate(lines, 1):
         line = raw.rstrip("\n").rstrip("\r")
 
@@ -46,7 +52,6 @@ def check_file(path):
         # Track if we're inside a string
         in_string_sq = False  # 'single quoted'
         in_string_dq = False  # "double quoted"
-        in_block_comment = False
 
         # Check for tab
         if "\t" in line:

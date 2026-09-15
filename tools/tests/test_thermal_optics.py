@@ -2398,7 +2398,9 @@ class TestSQFSync(unittest.TestCase):
             "fnc_calculateObjectTemperature.sqf",
             [
                 "damage _obj >= 0.7",
-                "_x select 2 >= 0.7",
+                "_hpDamages select _i",
+                "_hpNames select _i",
+                "getAllHitPointsDamage",
                 "_airTemp + 600",
                 "_isBurning",
             ],
