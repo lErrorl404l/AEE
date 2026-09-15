@@ -9,6 +9,7 @@ PREP(applyMirageFX);
 PREP(applyNightGrain);
 PREP(applyNVGTubeModel);
 PREP(applyRainDroplets);
+PREP(getEyeState);
 PREP(applyRainOnOpticsFX);
 PREP(applySecondSun);
 PREP(applySnowBlindnessFX);

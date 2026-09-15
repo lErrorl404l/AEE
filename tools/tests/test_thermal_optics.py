@@ -495,6 +495,20 @@ def ti_output_window(scene_max_heat):
     return 0.0, 1.0
 
 
+def eye_state_position(eye, cam_dir, offset=0.1):
+    """Mirror of the shared eye-state placement used by eye-space systems.
+
+    The eye-space anchor: eye position + camera direction * offset.
+    This is the canonical pattern (rain droplets, glare, illuminance all
+    consume the shared fnc_getEyeState foundation).
+    """
+    return (
+        eye[0] + cam_dir[0] * offset,
+        eye[1] + cam_dir[1] * offset,
+        eye[2] + cam_dir[2] * offset,
+    )
+
+
 def second_sun_brightness(radiation):
     """Mirror of fnc_applySecondSun: engine thermal SUN term brightness.
 
@@ -1743,6 +1757,32 @@ class TestGlassReflection(unittest.TestCase):
         self.assertEqual(glass_reflection_material(2.0, "c", "h"), "h")
 
 
+class TestEyeState(unittest.TestCase):
+    """Shared eye-state foundation: one anchor, consumed by all systems."""
+
+    def test_eye_anchor_position(self):
+        # Eye at origin, looking straight ahead (X): 10cm ahead.
+        p = eye_state_position((0, 0, 1.7), (1, 0, 0), 0.1)
+        self.assertAlmostEqual(p[0], 0.1, places=6)
+        self.assertAlmostEqual(p[1], 0.0, places=6)
+        self.assertAlmostEqual(p[2], 1.7, places=6)
+
+    def test_eye_looking_up(self):
+        # Looking straight up: 10cm above the eye.
+        p = eye_state_position((0, 0, 1.7), (0, 0, 1), 0.1)
+        self.assertAlmostEqual(p[2], 1.8, places=6)
+
+    def test_eye_diagonal(self):
+        # Diagonal gaze: x and z both shift by 0.1/sqrt(2).
+        import math
+
+        d = 0.1 / math.sqrt(2)
+        p = eye_state_position((5, 5, 2), (0.707, 0, 0.707), 0.1)
+        self.assertAlmostEqual(p[0], 5 + d, places=4)
+        self.assertAlmostEqual(p[2], 2 + d, places=4)
+        self.assertAlmostEqual(p[1], 5.0, places=4)
+
+
 class TestThermalCrossover(unittest.TestCase):
     """Diurnal thermal crossover - isothermal condition at dawn/dusk."""
 
@@ -2465,11 +2505,39 @@ class TestSQFSync(unittest.TestCase):
                 "setParticleParams",
                 "setDropInterval",
                 "setPosASL (_eye vectorAdd (_camDir vectorMultiply 0.1))",
-                "getCameraViewDirection _player",
-                "eyePos _player",
+                "call FUNC(getEyeState)",
             ],
             "rain droplets on objective (eye-repositioned Refract emitter)",
         )
+
+    def test_shared_eye_state_constants(self):
+        # The shared eye-state foundation: one cached computation per frame
+        # (eyePos + eyeDirection), consumed by every eye-space system.
+        self._assert_in_sqf(
+            "fnc_getEyeState.sqf",
+            [
+                "diag_frameNo",
+                "eyePos _unit",
+                "eyeDirection _unit",
+                "missionNamespace setVariable [QGVAR(eyeState), [_frame, [_eye, _fwd, _up]]]",
+            ],
+            "shared eye-state foundation",
+        )
+
+    def test_eye_state_consumers(self):
+        # Every eye-space system must consume the shared foundation, not
+        # recompute eyePos independently (the drift that caused the HEAD
+        # memory-point bug).
+        for fname, ctx in [
+            ("fnc_applyNVGTubeModel.sqf", "NVG"),
+            ("fnc_calculateIlluminance.sqf", "illuminance"),
+            ("fnc_applyRainDroplets.sqf", "droplets"),
+        ]:
+            src = _read_sqf(fname)
+            self.assertIn("call FUNC(getEyeState)", src,
+                          f"{ctx} must consume the shared eye state")
+            self.assertNotIn("= eyePos ", src,
+                             f"{ctx} must not recompute eyePos directly")
 
     def test_solar_radiation_uses_daytime(self):
         # The solar model must read the LIVE clock (dayTime), not

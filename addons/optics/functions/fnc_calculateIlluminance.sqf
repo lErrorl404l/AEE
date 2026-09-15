@@ -178,7 +178,9 @@ if (!isNull _unit && hasInterface && _currentWeapon != "") then {
 // Performance: nearestObjects is O(n) in the search radius; 100 m keeps
 // the candidate set small.  The scan runs once per tick on the client.
 if (!isNull _unit && hasInterface) then {
-    private _eye = eyePos _unit;
+    // Shared eye state: single source of truth for eye position (cached
+    // once per frame; every eye-space system consumes it).
+    private _eye = ([_unit] call FUNC(getEyeState)) select 0;
 
     // ─── Atmospheric extinction coefficient (Beer-Lambert) ────────────
     // γ (per metre) derived from rain and fog intensities.  At the
