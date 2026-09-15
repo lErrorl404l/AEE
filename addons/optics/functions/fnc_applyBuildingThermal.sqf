@@ -40,18 +40,43 @@ private _player = call CBA_fnc_currentUnit;
 if (isNil "_player" || !alive _player || cameraOn != _player) exitWith { 0 };
 
 // ─── Throttle ─────────────────────────────────────────────────────────────
-// The swap is one-shot state; only rescan when ambient changes materially.
-// COLD-START: on the first ENTER (tiBldgLastTemp = -999) the swap ALWAYS
-// applies — everything starts at the cold baseline, never at baked engine
-// defaults.  This is the "start at nothing, warm from physics" design: a
-// midnight load shows all buildings cold, and the physics second sun warms
-// them in daylight.
+// The swap is one-shot state; only rescan the expensive BUILDING list when
+// ambient changes materially.  COLD-START: on the first ENTER
+// (tiBldgLastTemp = -999) the swap ALWAYS applies — everything starts at
+// the cold baseline, never at baked engine defaults.  This is the "start
+// at nothing, warm from physics" design: a midnight load shows all
+// buildings cold, and the physics second sun warms them in daylight.
+//
+// VEHICLES are NOT throttled by ambient: they are few, and a vehicle that
+// spawns AFTER the boot pass (editor-placed, player-created, mission
+// scripted) must get the cold swap immediately — gating it on a 2 C
+// ambient change leaves it at baked white forever.  The building scan is
+// expensive (near-player radius); vehicles are a short list, so check them
+// every tick.
 private _airTemp = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 if !(_airTemp isEqualType 0) then { _airTemp = 15; };
 private _lastTemp = missionNamespace getVariable [QGVAR(tiBldgLastTemp), -999];
 if (!(_lastTemp isEqualType 0)) then { _lastTemp = -999; };
-if (abs (_airTemp - _lastTemp) < 2) exitWith { 0 };
-missionNamespace setVariable [QGVAR(tiBldgLastTemp), _airTemp];
+private _ambientChanged = abs (_airTemp - _lastTemp) >= 2;
+if (_ambientChanged) then {
+    missionNamespace setVariable [QGVAR(tiBldgLastTemp), _airTemp];
+};
+
+// Build the object list: vehicles ALWAYS (new spawns need the swap now),
+// buildings only when ambient changed (expensive near-player scan).
+private _objects = [];
+if (_ambientChanged) then {
+    if (_mode == "ENTER") then {
+        _objects = allMissionObjects "";
+    } else {
+        private _viewDist = (getObjectViewDistance select 0) max 300;
+        _objects = (_player nearObjects ["House", _viewDist])
+            + (_player nearObjects ["Building", _viewDist]);
+    };
+};
+// Vehicles are always in the list regardless of the throttle — a newly
+// spawned vehicle must not sit at baked white until the ambient moves.
+_objects = _objects + (vehicles - [player]);
 
 // ─── Apply to nearby buildings AND vehicles ───────────────────────────────
 // Cold TI material: the same ti_cloth_cold.rvmat (real TI texture, correct
@@ -90,19 +115,6 @@ private _applied = 0;
 // missed — the 0-swapped report was likely the class filter missing
 // the actual building parent class.
 //
-// MAP-WIDE BOOT: allMissionObjects "" pulls EVERY object in the mission
-// (placed + spawned + map-embedded statics that exist as objects).  This
-// is one pass at boot — no per-frame near-player LOD, nothing left at
-// baked defaults.  For the per-frame TICK the nearPlayer query is used
-// (cheaper for the moving player); for ENTER/boot the full list is used
-// so the whole map is baseline-corrected immediately.
-private _objects = if (_mode == "ENTER") then {
-    allMissionObjects ""
-} else {
-    (vehicles - [player])
-        + (_player nearObjects ["House", 300])
-        + (_player nearObjects ["Building", 300])
-};
 {
     if (isNull _x) then { continue; };
     private _obj = _x;
