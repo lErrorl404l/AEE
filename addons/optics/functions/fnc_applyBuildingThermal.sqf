@@ -108,6 +108,12 @@ private _materialHot = "\z\aee\addons\optics\data\ti_cloth_hot.rvmat";
 private _saved = missionNamespace getVariable [QGVAR(tiBldgSaved), []];
 private _applied = 0;
 
+// Solar radiation (0..1) drives the glass reflection: night -> cold
+// (reflects dark sky), daylight -> hot (reflects the sun).  Same value
+// the second sun uses, so the two stay consistent.
+private _solarRadiation = missionNamespace getVariable [QEGVAR(core,currentSolarRadiation), 0];
+if !(_solarRadiation isEqualType 0) then { _solarRadiation = 0; };
+
 // A3TI pattern: vehicles + units.  Buildings come from nearObjects.
 // nearObjects matches the class AND its subclasses: "House" covers
 // HouseBase-derived buildings; "Building" covers the rest (some mods
@@ -148,7 +154,7 @@ private _applied = 0;
     // model selection name and assign the matching TI material:
     //   engine/exhaust/radiator/motor/turret -> HOT (drives with engine)
     //   wheel/tyre/track                      -> HOT (friction, dynamic)
-    //   glass/window                          -> keep engine thermal
+    //   glass/window                          -> reflects scene (solar)
     //   body/other                            -> COLD (parked reads cold)
     // The engine slot of setVehicleTIPars already drives the engine-area
     // brightness on top; this material gradient makes the AREA visibly
@@ -181,7 +187,13 @@ private _applied = 0;
             };
             if (_sn find "glass" >= 0 || _sn find "window" >= 0
                 || _sn find "light" >= 0) then {
-                _mat = "";                        // keep engine thermal
+                // Glass does not transmit LWIR — it REFLECTS the scene.
+                // At night it reflects cold sky (dark); in daylight it
+                // reflects the sun (bright).  Drive it from the same
+                // solar radiation the second sun uses: night -> cold
+                // material, day -> hot material.  This is the real
+                // mirror effect, physics-driven.
+                _mat = [_material, _materialHot] select (_solarRadiation > 0.3);
             };
         };
         if (_mat != "") then { _swapMats pushBack [_sel, _mat]; };
