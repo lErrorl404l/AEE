@@ -46,3 +46,4 @@ __pycache__/
 /docs/wiki/_site/
 /tests/docker/configs/profiles/
 sensor_report.txt
+tools/validation/report.txt
