@@ -145,5 +145,5 @@
 // Cost: one-time, at boot.  The near-player TICK in the thermal PFH still
 // exists for objects spawned later (dynamic spawns) — this is the eager
 // complement, not a replacement.
-[] call FUNC(applyBuildingThermal);
+["ENTER"] call FUNC(applyBuildingThermal);
 
