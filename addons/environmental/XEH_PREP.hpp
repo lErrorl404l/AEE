@@ -17,5 +17,8 @@ PREP(calculateSurfaceWetness);
 PREP(calculateFogBaseAltitude);
 PREP(classifyBiome);
 PREP(getBiome);
+PREP(getBiomeAtPosition);
+PREP(getBiomeName);
 PREP(getClimateNormals);
+PREP(updateBiomePosition);
 PREP(updateSoundPropagation);
