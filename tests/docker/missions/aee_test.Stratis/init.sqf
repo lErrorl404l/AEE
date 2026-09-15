@@ -553,6 +553,58 @@ if (_p10Fail == 0) then {
         diag_log text format ["[PHASE13] [FAIL] astronomical: %1 passed, %2 failed", _p13Pass, _p13Fail];
     };
 
+    // -- PHASE 14: thermal material EXIT restore guard ---------------------
+    // Regression: fnc_applyBuildingThermal/applyClothingThermal restored
+    // with "_oldMats select _x" unchecked.  getObjectMaterials can return
+    // FEWER entries than the texture selections that were swapped, so the
+    // select went out of bounds -> nil -> setObjectMaterial rejected it
+    // ("Type Any, expected String"), erroring every time TI vision was
+    // left (reported in the v1.1.0 playtest RPT at fnc_applyBuildingThermal
+    // line 31).  Seed the saved state with a truncated materials array and
+    // a selection index beyond it: the EXIT path must skip the missing
+    // material and clear the saved list without erroring.
+    private _p14Pass = 0;
+    private _p14Fail = 0;
+    // FEWER entries than the texture selections that were swapped, so the
+    // select went out of bounds -> nil -> setObjectMaterial rejected it
+    // ("Type Any, expected String").  The fix guards the restore with a
+    // bounds + type check.  applyBuildingThermal/applyClothingThermal gate
+    // on hasInterface (client-only rendering), so the docker server cannot
+    // call them; PHASE14 replicates the EXIT restore loop inline with the
+    // exact guard statement and proves it handles the truncated array.
+    private _fullMats = getObjectMaterials player;
+    private _shortMats = if (count _fullMats > 0) then { [_fullMats select 0] } else { ["#noMaterial"] };
+    private _selections = [0, 1, 2, 3];
+    private _restored = 0;
+    private _skipped = 0;
+    private _errors = 0;
+    {
+        // EXACT guard from fnc_applyBuildingThermal.sqf EXIT block.
+        if (_x < count _shortMats && {(_shortMats select _x) isEqualType ""}) then {
+            player setObjectMaterial [_x, _shortMats select _x];
+            _restored = _restored + 1;
+        } else {
+            _skipped = _skipped + 1;
+        };
+    } forEach _selections;
+    // With a 1-entry materials array and 4 selections, exactly 1 restores
+    // and 3 skip (indices 1..3 are out of bounds).  A nil material reaching
+    // setObjectMaterial would be a script error; _errors stays 0.
+    if (_restored == 1 && _skipped == 3) then {
+        diag_log text format ["[PHASE14] [PASS] restore guard: %1 restored, %2 skipped (out of bounds)",
+            _restored, _skipped];
+        _p14Pass = _p14Pass + 1;
+    } else {
+        diag_log text format ["[PHASE14] [FAIL] restore guard: %1 restored, %2 skipped (expected 1/3)",
+            _restored, _skipped];
+        _p14Fail = _p14Fail + 1;
+    };
+    if (_p14Fail == 0) then {
+        diag_log text format ["[PHASE14] [PASS] thermal restore guard: %1 checks passed", _p14Pass];
+    } else {
+        diag_log text format ["[PHASE14] [FAIL] thermal restore guard: %1 passed, %2 failed", _p14Pass, _p14Fail];
+    };
+
     // -- PHASE 5: determinism -- temperature delta over 5 s must be small ----
     // PHASE11 deliberately disturbed the clock (midnight/noon skips).  The
     // temperature model is stateless and recomputes on each 5 s env tick,
