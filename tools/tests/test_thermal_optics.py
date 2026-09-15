@@ -2448,25 +2448,25 @@ class TestSQFSync(unittest.TestCase):
         )
 
     def test_rain_droplet_constants(self):
-        # Rain droplets use the PROVEN TPW RAINFX recipe: the engine's
-        # Refract particle texture with a one-shot drop command.  NOT the
-        # raindrop .paa (engine ShapeLoads it as a model and crashes:
-        # "preNLOD format in object a3\data_f\raindrop3.paa"), NOT a .p3d
-        # shape (Billboard gives cratercolor error), NOT a procedural
-        # string (the particle shape slot rejects it: "LODShape::Preload:
-        # shape '#(...)' not found").  Refract is real, ships in base game,
-        # used in production by TPW RAINFX.
+        # Rain droplets use the PROVEN TPW goggles recipe: a head-attached
+        # #particlesource emitter with the engine's Refract particle class
+        # via setParticleParams.  NOT a raw drop (fails: "NOID refract.p3d
+        # #cloudlet" - Refract is a cloudlet class), NOT the raindrop .paa
+        # (engine ShapeLoads it and crashes), NOT a procedural string (the
+        # shape slot rejects it).
         self._assert_in_sqf(
             "fnc_applyRainDroplets.sqf",
             [
-                "drop [",
+                '"#particlesource" createVehicleLocal',
+                "attachTo [_logic, [0, 0, 0]]",
+                'attachTo [_player, [0, 0, 0], "HEAD"]',
                 "ParticleEffects\\Universal\\Refract",
                 '"Billboard"',
-                "getCameraViewDirection _player",
-                "_rain * 0.5",
-                "random 0.001",
+                "setParticleParams",
+                "setDropInterval",
+                "_logic",
             ],
-            "rain droplets on objective (Refract billboard, one-shot drop)",
+            "rain droplets on objective (head-attached Refract emitter)",
         )
 
     def test_solar_radiation_uses_daytime(self):

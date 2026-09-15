@@ -2,38 +2,55 @@
 /*
  * Rain droplets on the objective lens (NVG or thermal).
  *
- * Proven recipe: TPW RAINFX (workshop 2586787720, tpw_rainfx.sqf) drops
- * refractive droplets on vehicle windscreens with:
+ * PROVEN RECIPE (TPW RAINFX, workshop 2586787720, tpw_rainfx.sqf lines
+ * 79-89 — the goggles emitter):
  *
- *   drop [["\A3\data_f\ParticleEffects\Universal\Refract",1,0,1],
- *         "", "Billboard", 1, 0.05, _pos, [0,0,0],
- *         1, 1, 0, 0, [_size], [[1,1,1,0.6]], [0], 0, 0, "", "", ""];
+ *   _gograinemitter = "#particlesource" createVehicleLocal [0,0,0];
+ *   _logic = "logic" createVehicleLocal [0,0,0];
+ *   _gograinemitter attachto [_logic,[0,0,0]];
+ *   _logic attachto [player,[0,0,0],"HEAD"];
+ *   _gograinemitter setParticleParams [["\A3\data_f\ParticleEffects\
+ *     Universal\Refract",1,0,1], "", "Billboard", 1, 0.05, [0,0,0],
+ *     [0,0,0], 1, 1, 0, 0, [0.1], [[1,1,1,1]], [0], 0, 0, "", "", _logic];
+ *   _gograinemitter setDropInterval _int;
  *
- * THREE lessons from our failed attempts (all committed history):
- *  1. A .p3d shape is only for SpaceObject particles: Billboard needs a
- *     TEXTURE as the first array element.  There is no RainDrop.p3d.
- *  2. The engine's raindrop3.paa CRASHES the game when referenced as a
- *     particle shape (ShapeLoad preNLOD format, unrecoverable).
- *  3. A procedural #(argb,...) string is REJECTED as a particle shape:
- *     "LODShape::Preload: shape '#(...)' not found / Cannot open object".
- *     Procedural works in rvmats, NOT in the particle shape slot.
+ * WHY THIS AND NOT drop: the raw `drop` command with the Refract shape
+ * fails with "NOID refract.p3d #cloudlet" — Refract is a CLOUDLET class
+ * and can only be emitted through setParticleParams on a #particlesource,
+ * not the one-shot drop.  TPW's windscreen drops use drop (their own
+ * generic path); their GOGGLES fx uses the emitter below.  We need the
+ * goggles path.
  *
- * The engine's Refract texture (a3\data_f\ParticleEffects\Universal\
- * Refract, resolves to Refract.p3d + refract_ca.paa) is the real, proven
- * refractive particle: it ships in the base game, TPW uses it in
- * production, and it cannot crash.  We use the SAME drop command, placing
- * droplets a few cm in front of the eye so they read as on-lens specs.
+ * Three more lessons from our failed attempts (all in commit history):
+ *  1. The engine raindrop3.paa CRASHES the game when used as a particle
+ *     shape (ShapeLoad preNLOD format, unrecoverable).
+ *  2. A procedural #(argb,...) string is REJECTED in the shape slot
+ *     ("LODShape::Preload: shape '#(...)' not found").
+ *  3. A bare drop with Refract gives "NOID refract.p3d #cloudlet".
  *
- * One droplet per tick (the sensor PFH runs at 10 Hz), gated by rain:
- * dry = no drops.  A drop is a one-shot (timerPeriod 1, lifetime 0.05),
- * so nothing persists and no source object needs cleanup.
+ * The emitter is attached to a logic on the player's HEAD memory point,
+ * so droplets track the head exactly and stay on the lens regardless of
+ * where the player looks.  Position is memory-point-relative [0,0,0].
  */
 params ["_mode"];
 
 if (!hasInterface) exitWith { 0 };
 
-// ─── EXIT: nothing to clean up (drops are one-shot) ───────────────────────
-if (_mode == "EXIT") exitWith { 0 };
+private _src = missionNamespace getVariable [QGVAR(rainDropSource), objNull];
+private _logic = missionNamespace getVariable [QGVAR(rainDropLogic), objNull];
+
+// ─── EXIT: destroy source + logic ─────────────────────────────────────────
+if (_mode == "EXIT") then {
+    if (!isNull _src) then {
+        deleteVehicle _src;
+        missionNamespace setVariable [QGVAR(rainDropSource), objNull];
+    };
+    if (!isNull _logic) then {
+        deleteVehicle _logic;
+        missionNamespace setVariable [QGVAR(rainDropLogic), objNull];
+    };
+    0
+};
 
 private _player = call CBA_fnc_currentUnit;
 if (isNil "_player" || !alive _player || cameraOn != _player) exitWith { 0 };
@@ -41,58 +58,54 @@ if (isNil "_player" || !alive _player || cameraOn != _player) exitWith { 0 };
 // ─── Gate on rain ─────────────────────────────────────────────────────────
 private _rain = rain;
 if !(_rain isEqualType 0) then { _rain = 0; };
-if (_rain < 0.1) exitWith { 0 };
-
-// ─── Droplet density from rain intensity ──────────────────────────────────
-// Light rain: one drop every few ticks.  Heavy rain: one per tick.
-// TPW uses density = rain*50 per second; at 10 Hz we scale to ~0.5*rain
-// drops per tick (heavy rain ~0.5/s visible as an intermittent spec).
-if (random 1 > (_rain * 0.5)) exitWith { 0 };
-
-// ─── Droplet position: ~0.4-0.7 m in front of the eye ────────────────────
-// NOT at 5-8 cm: drops that close sit inside the camera near clip plane
-// and the player's own head/goggle geometry, so they are culled before
-// render (the "not visible" report).  TPW puts drops at 1-3 m (their
-// windscreen is a world object); ours have no surface, so we place them
-// at 0.4-0.7 m - past the near plane, past the head mesh, still reading
-// as small lens specs when sized at a few mm.
-private _eye = eyePos _player;
-private _camDir = getCameraViewDirection _player;
-private _dist = 0.4 + random 0.3;
-private _pos = ASLToATL (_eye vectorAdd (_camDir vectorMultiply _dist));
-// Size and brightness must punch through the NVG/thermal post-processing:
-// at low lux the FilmGrain reaches 0.3 + rain*0.5 (near max at rain 1),
-// and the ColorCorrections dims faint detail.  A 3 mm 0.6-alpha spec was
-// invisible under that noise (the "still cannot see them" report).  The
-// droplet reads as a bright refractive glint on the lens: larger
-// (4-8 mm) and near-opaque so it clears the grain floor.
-private _size = 0.004 + random 0.004;
-private _lifetime = 0.15 + random 0.2;
-
-if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
-    diag_log text format ["[AEE] rain drop: rain=%1 pos=%2 size=%3", _rain, _pos, _size];
+if (_rain < 0.1) then {
+    if (!isNull _src) then {
+        deleteVehicle _src;
+        missionNamespace setVariable [QGVAR(rainDropSource), objNull];
+    };
+    if (!isNull _logic) then {
+        deleteVehicle _logic;
+        missionNamespace setVariable [QGVAR(rainDropLogic), objNull];
+    };
+    0
 };
 
-drop [
-    ["\A3\data_f\ParticleEffects\Universal\Refract", 1, 0, 1],
-    "",
-    "Billboard",
-    1,
-    _lifetime,
-    _pos,
-    [0, 0, 0],
-    1,                      // rotation velocity
-    1,                      // weight
-    0,                      // volume
-    0,                      // rubbing: no wind (on the lens)
-    [_size],                // droplet size (4-8 mm: clears the grain floor)
-    [[1.2, 1.2, 1.4, 0.85]],// colour: bright refractive glint, near-opaque
-    [0],                    // anim phase
-    0,                      // random dir
-    0,
-    "",                     // onTimer
-    "",                     // beforeDestroy
-    ""                      // object (unattached world drop)
-];
+// ─── Create the head-attached emitter once, then drive the interval ───────
+if (isNull _src) then {
+    _src = "#particlesource" createVehicleLocal [0, 0, 0];
+    _logic = "logic" createVehicleLocal [0, 0, 0];
+    _src attachTo [_logic, [0, 0, 0]];
+    _logic attachTo [_player, [0, 0, 0], "HEAD"];
 
-1
+    _src setParticleCircle [0.004, [0.004, 0.004, 0.004]];
+    _src setParticleRandom [0, [0.002, 0.002, 0], [0, 0, 0], 0, 0, [0, 0, 0, 0], 0, 0];
+    _src setParticleParams [
+        ["\A3\data_f\ParticleEffects\Universal\Refract", 1, 0, 1],
+        "",                                       // animation
+        "Billboard",                              // type: faces camera
+        1,                                        // timer period (s)
+        0.3,                                      // lifetime (s)
+        [0, 0, 0],                                // pos: HEAD memory point relative
+        [0, 0, 0],                                // moveVelocity: none (on lens)
+        1,                                        // rotation velocity
+        1,                                        // weight
+        0,                                        // volume
+        0,                                        // rubbing: no wind (on lens)
+        [0.008, 0.008],                           // size: 8 mm droplet on the lens
+        [[1, 1, 1, 1], [1, 1, 1, 0.8]],           // colour: bright, near-opaque
+        [0],                                      // anim phase
+        0,                                        // random dir
+        0,
+        "",                                       // onTimer
+        "",                                       // beforeDestroy
+        _logic                                    // object: HEAD-attached logic
+    ];
+
+    missionNamespace setVariable [QGVAR(rainDropSource), _src];
+    missionNamespace setVariable [QGVAR(rainDropLogic), _logic];
+};
+
+// Drop interval scales with rain: heavy rain = ~0.1 s, light = ~0.5 s.
+private _interval = 0.5 / (_rain + 0.2);
+_src setDropInterval (_interval max 0.05);
+_interval
