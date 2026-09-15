@@ -16,6 +16,19 @@ Run: python3 -m unittest tools.tests.test_astronomical -v
 
 import math
 import unittest
+from pathlib import Path
+
+# Repo root: tools/tests/ -> up two levels.
+_REPO_ROOT = Path(__file__).resolve().parents[2]
+_OPTICS = _REPO_ROOT / "addons" / "optics" / "functions"
+_ENV = _REPO_ROOT / "addons" / "environmental" / "functions"
+
+
+def _read_sqf(name, addon="optics"):
+    """Read an SQF function file.  The drift-lock tests read the SOURCE so a
+    constant change in SQF fails the mirror tests until re-synced."""
+    base = _OPTICS if addon == "optics" else _ENV
+    return (base / name).read_text(encoding="utf-8")
 
 
 # ─── DEF Stan 61-027 night classification mirrors ──────────────────────────
@@ -86,6 +99,60 @@ def calculate_limiting_magnitude(ambient_lux, seeing):
 # ═══════════════════════════════════════════════════════════════════════════
 # Test classes
 # ═══════════════════════════════════════════════════════════════════════════
+
+
+class TestSQFSync(unittest.TestCase):
+    """SQF source must contain the constants the Python mirrors rely on."""
+
+    def _assert_in_sqf(self, filename, fragments, context, addon="optics"):
+        text = _read_sqf(filename, addon)
+        missing = [f for f in fragments if f not in text]
+        self.assertFalse(
+            missing,
+            f"{filename}: {context} changed/missing in SQF: {missing}. "
+            f"Re-sync the Python mirror in test_astronomical.py.",
+        )
+
+    # ── Night classification (fnc_classifyNight.sqf) ──
+    def test_classify_thresholds(self):
+        self._assert_in_sqf(
+            "fnc_classifyNight.sqf",
+            ["> -6", "> -12", "> -18", "< 0.10"],
+            "DEF Stan twilight thresholds",
+        )
+
+    # ── Lunar illumination (fnc_calculateLunarIllumination.sqf) ──
+    def test_lunar_phase_constants(self):
+        self._assert_in_sqf(
+            "fnc_calculateLunarIllumination.sqf",
+            ["29.530588853", "8777", "(1 - cos (360 * _phase)) / 2"],
+            "synodic month, reference new moon, Lambert sphere",
+            addon="environmental",
+        )
+
+    def test_baldet_surge_constants(self):
+        self._assert_in_sqf(
+            "fnc_calculateLunarIllumination.sqf",
+            ["abs (180 * (1 - 2 * _phase))", "0.30 * exp", "450"],
+            "Baldet opposition surge",
+            addon="environmental",
+        )
+
+    def test_lux_scale_constants(self):
+        self._assert_in_sqf(
+            "fnc_calculateLunarIllumination.sqf",
+            ["0.001 + _illumination * 0.299", "0 max _lux min 300"],
+            "lunar lux scale",
+            addon="environmental",
+        )
+
+    # ── Limiting magnitude (fnc_calculateLimitingMagnitude.sqf) ──
+    def test_limiting_magnitude_constants(self):
+        self._assert_in_sqf(
+            "fnc_calculateLimitingMagnitude.sqf",
+            ["6.5 - log (_ambientLux / 0.001", "0.2 + 1.3", "0.9"],
+            "NELM baseline and seeing penalty",
+        )
 
 
 class TestClassifyNight(unittest.TestCase):
