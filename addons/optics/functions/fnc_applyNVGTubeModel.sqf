@@ -80,12 +80,18 @@ if (currentVisionMode _player != 1) exitWith {
     missionNamespace setVariable [QGVAR(nvgGain), 0];
     missionNamespace setVariable [QGVAR(nvgNoise), 0];
     missionNamespace setVariable [QGVAR(nvgBlowout), 0];
+    missionNamespace setVariable [QGVAR(nvgBlowoutHold), 0];
+    missionNamespace setVariable [QGVAR(nvgWetness), 0];
+    missionNamespace setVariable [QGVAR(nvgBattery), 1.0];
 };
 
 // ─── Ambient light input ─────────────────────────────────────────────────
 // moonIntensity: engine variable, 0..1 based on moon phase.
-// Same source ACE3 uses. Subtracts overcast and rain.
-private _moonLight = 0 max (moonIntensity - ((overcast * .8) min .275) - (rain * .5));
+// Same source ACE3 uses. Subtracts overcast and rain (smoothed weather:
+// raw overcast/rain step abruptly and snap the tube gain; the EMA eases).
+private _rainS = ([] call FUNC(getSmoothedWeather)) select 0;
+private _overcastS = ([] call FUNC(getSmoothedWeather)) select 1;
+private _moonLight = 0 max (moonIntensity - ((_overcastS * .8) min .275) - (_rainS * .5));
 
 // ─── Tube tier by HMD classname ──────────────────────────────────────────
 // Substring tests run most-specific first.  "NVGoggles" is a substring of
@@ -139,7 +145,6 @@ private _noiseFloor = 0.15;
 private _mtf15 = 0.45;
 private _phosphorTint = [1.3, 1.2, 0.0, 0.9];
 private _nvgWeight = [6, 1, 1, 0];
-private _chromaStrength = 0.006;
 private _vigStrength = [0.0040, 0.0040, 0.06, 0.06];
 private _bloomBase = 0.04;
 private _bloomScale = 0.04;
@@ -159,9 +164,9 @@ private _dofModeDefault = 1;    // manual by default: real NVGs are manual
 private _dofNearLimit = 0.25;
 private _dofDefaultDist = 15;   // hyperfocal mid-band
 private _dofMaxDist = 300;
-// Tube count -> mask silhouette.  Real devices: PVS-14 monocular (1 tube),
-// PVS-31A/DTNVS/ENVG-II binocular (2 tubes), GPNVG-18 panoramic quad (4
-// tubes).  The mask is set on the NVGMask control when the display opens.
+// Tube count used for vignette geometry (lens rim radius).
+// Real devices: PVS-14 monocular (1), PVS-31A/DTNVS binocular (2),
+// GPNVG-18 panoramic quad (4).
 private _tubeCount = 1;
 
 // Tier matcher by HMD classname.  Substring tests run most-specific first.
@@ -177,7 +182,6 @@ if (_hmd find "USP_PVS31" >= 0 || _hmd find "PVS31" >= 0 || _hmd find "USP_PVS_3
     _mtf15 = 0.65;
     _phosphorTint = [1.1, 0.8, 1.9, 0.9];
     _nvgWeight = [1, 1, 6, 0];
-    _chromaStrength = 0.002;
     _vigStrength = [0.0025, 0.0025, 0.06, 0.06];
     _bloomBase = 0.02;
     _bloomScale = 0.02;
@@ -196,7 +200,6 @@ if (_hmd find "USP_PVS31" >= 0 || _hmd find "PVS31" >= 0 || _hmd find "USP_PVS_3
         _mtf15 = 0.61;
         _phosphorTint = [1.3, 1.2, 0.0, 0.9];
         _nvgWeight = [6, 1, 1, 0];
-_chromaStrength = 0.004;
     _vigStrength = [0.0030, 0.0030, 0.06, 0.06];
     _bloomBase = 0.03;
     _bloomScale = 0.03;
@@ -211,7 +214,6 @@ _chromaStrength = 0.004;
             _mtf15 = 0.45;
             _phosphorTint = [1.3, 1.2, 0.0, 0.9];
             _nvgWeight = [6, 1, 1, 0];
-_chromaStrength = 0.006;
     _vigStrength = [0.0040, 0.0040, 0.06, 0.06];
     _bloomBase = 0.04;
     _bloomScale = 0.04;
@@ -223,7 +225,6 @@ _chromaStrength = 0.006;
                 _mtf15 = 0.30;
                 _phosphorTint = [1.4, 1.3, 0.0, 0.9];
                 _nvgWeight = [6, 1, 1, 0];
-                _chromaStrength = 0.008;
                 _vigStrength = [0.0050, 0.0050, 0.06, 0.06];
                 _bloomBase = 0.05;
                 _bloomScale = 0.05;
@@ -237,13 +238,14 @@ missionNamespace setVariable [QGVAR(nvgTubeTier), _tier];
 // RadialBlur offset = "relative size of un-blurred centre" in screen
 // units.  The lens-edge falloff must put the un-blurred centre AT the
 // tube rim, so the blur starts exactly where the glass meets the
-// housing.  Our mask is a safeZoneH square centred on screen; the tube
-// circle radius is a fraction of that square.  Convert to screen units:
+// housing.  The engine's NVG circle radius is a fraction of safeZoneH.
+// Convert to screen units:
 //   offsetY = radius_frac * (square_H / screen_H)  = radius_frac (16:9)
 //   offsetX = radius_frac * (square_W / screen_W)  = radius_frac / aspect
 // ACE3's bluRadius (0.15/0.26) is their tuning for their mask geometry,
 // not a physics value - the proof-of-concept, not the source.  These are
-// derived from OUR mask circles so the blur sits on OUR lens rim.
+// derived from the engine's NVG circle radius so the blur sits on the
+// lens rim.
 private _tubeRadius = switch (_tubeCount) do {
     case 2:  { 0.40 };
     case 4:  { 0.24 };
@@ -338,8 +340,76 @@ missionNamespace setVariable [QGVAR(nvgGain), _gain];
 private _photonCount = _lux * _sensitivity * AEE_PHOTON_SCALE;
 private _shotNoise = 1 / sqrt(_photonCount + 1);
 private _noise = _noiseFloor + (1 - _noiseFloor) * _shotNoise;
+
+// ─── Rain: Mie scattering noise penalty ──────────────────────────────────
+// Forward-scattered light from rain adds photon noise across the entire
+// image (Mie scattering volume).  The MCP amplifies this scattered light
+// equally with the signal, degrading SNR.  Heavy rain can drop SNR
+// 60-80% (research: SNR reduction ∝ rain_intensity × drop_density ×
+// forward_scatter_coefficient).  Model as an additive noise floor increase.
+// _rainS is declared at the top (ambient light section) - the shared
+// weather foundation, one EMA per frame.
+if (_rainS > 0.2) then {
+    private _mieNoise = _rainS * 0.35;   // heavy rain: +35% noise floor
+    _noise = (_noise + _mieNoise) min 1;
+};
+
 _noise = 0.03 max _noise min 1;
 missionNamespace setVariable [QGVAR(nvgNoise), _noise];
+
+// ─── Battery-level degradation ───────────────────────────────────────────
+// Real NVGs are powered by a single BA-5567/U battery (1.5 V lithium,
+// ~4 Wh).  As voltage drops, the MCP bias falls, reducing gain and
+// increasing noise.  Image quality degrades progressively.
+//
+// Model: nvgBattery tracks 0.0 (dead) to 1.0 (fresh).  Drain rate
+// depends on gain (high gain = more MCP current = faster drain) and
+// temperature (extreme cold reduces battery capacity; extreme heat
+// increases self-discharge).  At 0.3 and below, noise floor rises;
+// at 0.15, scan-line flicker appears; at 0.05, intermittent dropout.
+// Battery persists per session (missionNamespace) and resets on NVG exit.
+private _battery = missionNamespace getVariable [QGVAR(nvgBattery), 1.0];
+if !(_battery isEqualType 0) then { _battery = 1.0; };
+
+// Drain rate: per-tier base matched to real-world battery life on a single
+// AA lithium cell at 25 °C, typical nighttime use (gain ≈ sensitivity).
+//
+//   PVS31  16 hrs avg  L3Harris PVS-31A datasheet
+//   GEN3   65 hrs avg  TM 11-5855-306-10 Table 2-3 (lithium L91, negligible IR)
+//   GEN2   35 hrs est  multialkali Gen 2, single tube, 1× AA
+//   GEN1   25 hrs est  S-25 multialkali, single tube, 1× AA
+//
+// gainRatio = gain / sensitivity (1.0 at full darkness, <1.0 in moderate light).
+// Temperature derating is read from the physiology module (Issue #36); see
+// the batteryTemperatureDerating read below.
+private _baseDrain = switch (_tier) do {
+    case "PVS31": { 0.0000174 };  // 1 / (16 × 3600)
+    case "GEN3":  { 0.0000043 };  // 1 / (65 × 3600)
+    case "GEN2":  { 0.0000079 };  // 1 / (35 × 3600)
+    case "GEN1":  { 0.0000111 };  // 1 / (25 × 3600)
+    default       { 0.0000174 };
+};
+private _gainRatio = _gain / _sensitivity max 0.01;
+// Battery derating is wired from the physiology module (Issue #36) so
+// the NVG drain and the physiological battery model share one factor.
+// The physiology module publishes a capacity multiplier in the range
+// 0.3-1.0.  The drain needs a drain multiplier: less capacity = faster
+// drain, so invert.  At 0.3 derating (cold), drain is x3.3; at 1.0
+// (normal), drain x1.  The factor is clamped to 1.0-4.0.
+private _physDerating = missionNamespace getVariable [QEGVAR(physiology,batteryTemperatureDerating), 1.0];
+if !(_physDerating isEqualType 0) then { _physDerating = 1.0; };
+private _tempDrainFactor = if (_physDerating > 0.01) then { 1 / _physDerating } else { 3.0 };
+_tempDrainFactor = _tempDrainFactor max 1.0 min 4.0;
+private _drain = _baseDrain * _gainRatio * _tempDrainFactor * diag_deltaTime;
+_battery = (_battery - _drain) max 0;
+missionNamespace setVariable [QGVAR(nvgBattery), _battery];
+
+// Degradation effects below thresholds.
+// Below 0.3: noise floor rises by up to 2× (MCP bias low → excess noise).
+if (_battery < 0.3) then {
+    private _batteryNoisePenalty = (1 - _battery / 0.3) * 2;
+    _noise = (_noise + _batteryNoisePenalty * 0.15) min 1;
+};
 
 // ─── Bright-source detection (auto-gating / blooming) ────────────────────
 // Real tubes respond to a bright source entering the view (US4952793A,
@@ -353,8 +423,9 @@ missionNamespace setVariable [QGVAR(nvgNoise), _noise];
 // The value decays exponentially: instant rise (gate/bloom engage fast),
 // tier-dependent recovery (Gen 1 blooms linger for seconds, gated Gen 3
 // recovers in ~100 ms).
-private _eye = eyePos _player;
-private _viewDir = vectorDirVisual _player;
+private _eyeState = [_player] call FUNC(getEyeState);
+private _eye = _eyeState select 0;
+private _viewDir = _eyeState select 1;
 // Dynamic bright-source detection — NO hardcoded classnames.  Any object
 // whose simulation is a light emitter qualifies, so vanilla and every mod
 // (lamp packs, IR strobes, vehicle lights) works without a compat list.
@@ -367,6 +438,8 @@ private _viewDir = vectorDirVisual _player;
 // reports a false positive; HEMTT's linter requires configOf over typeOf.)
 private _brightSources = nearestObjects [_eye, [], 150];
 private _blowoutNow = 0;
+private _glowPos = [0, 0, 0];   // world pos of the brightest source this tick
+private _glowIntensityNow = 0;
 {
     private _sim = getText ((configOf _x) >> "simulation");
     private _isBright = false;
@@ -402,38 +475,125 @@ private _blowoutNow = 0;
             // with the light that actually reaches the tube.  Within the
             // hysteresis band (20-25°) the intensity fades to a floor so
             // the release is continuous, not a hard on/off.
+            //
+            // Beer-Lambert extinction: rain and fog scatter photons before
+            // they reach the photocathode.  A source at 50 m through heavy
+            // rain is dimmer than the same source in clear air — the tube
+            // gates less aggressively.  This matches real NVG behaviour:
+            // bad weather reduces auto-gating because less light reaches
+            // the tube.
             private _dist = _eye distance _srcPos;
+            private _rainExt = if (_rainS > 0.1) then { _rainS * 30 / 4343 } else { 0 };
+            private _fogS2 = ([] call FUNC(getSmoothedWeather)) select 2;
+            private _fogExt = if (_fogS2 > 0.3) then { (_fogS2 / 0.5) ^ 2 * 40 / 4343 min 300 / 4343 } else { 0 };
+            private _extinction = _rainExt + _fogExt;
+            private _transmission = if (_extinction > 0) then { exp (-_extinction * _dist) } else { 1 };
             private _coneScale = if (_ang < _gateHalf) then {
                 (1 - _ang / _gateHalf)
             } else {
                 0.05 * (1 - (_ang - _gateHalf) / (_releaseHalf - _gateHalf));
             };
-            private _intensity = _coneScale * (100 / (_dist * _dist));
-            _blowoutNow = _blowoutNow max _intensity;
+            private _intensity = _coneScale * (100 / (_dist * _dist)) * _transmission;
+            if (_intensity > _blowoutNow) then {
+                _blowoutNow = _intensity;
+                _glowPos = _srcPos;
+                _glowIntensityNow = _intensity;
+            };
         };
     };
 } forEach _brightSources;
+
+// ─── Rain: Mie scattering + auto-gating feedback loop ────────────────────
+// Forward-scattered light from rain can trigger auto-gating even without
+// a direct bright source.  The MCP detects the bright foreground scatter
+// and reduces gain globally, making distant targets invisible while the
+// foreground rain is still bright — the "white wall" effect.
+// Model: heavy rain adds a minimum blowout floor.  At rain > 0.5, the
+// scatter is bright enough to partially gate.  At rain > 0.8, the gate
+// is effectively locked on (the gain reduction makes the image unusable
+// anyway for distant targets).
+if (_rainS > 0.5) then {
+    private _rainGateFloor = (_rainS - 0.5) * 2;   // 0 at rain=0.5, 1 at rain=1.0
+    _blowoutNow = _blowoutNow max (_rainGateFloor * 0.6);
+};
+
+// ─── Phosphor burn-in / afterimage (spatial) ─────────────────────────────
+// The residual lag above handles the tube's CONTINUOUS response.  Burn-in
+// is the SPATIAL ghost: a bright source imaged on the phosphor leaves a
+// lingering glow at that screen position after the source leaves or the
+// gate releases.  P20 (Gen 1/2) total persistence ~60 ms; P43/P45
+// (Gen 3/PVS-31) ~2.6 ms — effectively instant.  Model: remember the
+// last bright source's world position and intensity; when the live source
+// drops, the stored glow decays per the phosphor persistence constant.
+// GEN3/PVS31 afterimages are sub-tick and invisible; only GEN1/2 show a
+// visible afterimage (~1 tick at 100 ms frame rate).
+private _burnPos = missionNamespace getVariable [QGVAR(nvgBurnPos), [0, 0, 0]];
+private _burnInt = missionNamespace getVariable [QGVAR(nvgBurnInt), 0];
+if (_burnInt isEqualType 0) then {
+    if (_glowIntensityNow > 0) then {
+        _burnPos = _glowPos;
+        _burnInt = _glowIntensityNow;
+    } else {
+        // Decay per phosphor persistence: alpha = exp(-dt/tau).  GEN1/2
+        // P20 ~60 ms => at 0.1 s tick, alpha ≈ exp(-0.1/0.06) ≈ 0.19,
+        // so the afterimage is visible for ~1 tick then gone.  GEN3/PVS31
+        // P43/P45 ~2.6 ms => alpha ≈ 0 (instant, never visible).
+        private _tau = [0.003, 0.06] select ((_tier == "GEN1") || (_tier == "GEN2"));
+        _burnInt = _burnInt * exp (-(0.1 / _tau));
+        if (_burnInt < 0.02) then { _burnInt = 0; };
+    };
+} else {
+    _burnInt = _glowIntensityNow;
+    _burnPos = _glowPos;
+};
+missionNamespace setVariable [QGVAR(nvgBurnPos), _burnPos];
+missionNamespace setVariable [QGVAR(nvgBurnInt), _burnInt];
 
 // Muzzle flash / explosive flash: the fired event stamps nvgFlashUntil.
 if (CBA_missionTime < (missionNamespace getVariable [QGVAR(nvgFlashUntil), -1])) then {
     _blowoutNow = _blowoutNow max 0.9;
 };
 
-// Exponential envelope: instant attack, slow tier-dependent release.
-// Gen 1 (no gating) blooms for seconds; Gen 3/PVS-31 gate recovers fast.
+// Exponential envelope: instant attack, slow tier-dependent release with
+// hold time.  Real auto-gating has a recovery period — the tube does not
+// snap back the instant the source leaves the FOV.  Hold time prevents
+// oscillation at the FOV cone edge (source flickering in/out at 20°).
+// GEN1/GEN2: no gating, bloom persists longer (phosphor saturation).
+// GEN3/PVS31: gated, fast recovery but with a hold to prevent flicker.
 private _release = switch (_tier) do {
-    case "GEN1": { 0.25 };   // ~4 s to fade
-    case "GEN2": { 0.45 };
-    default { 0.85 };        // gated: ~0.6 s
+    case "GEN1": { 0.15 };   // ~7 s to fade (phosphor saturation)
+    case "GEN2": { 0.25 };   // ~4 s to fade
+    default { 0.50 };         // gated: ~2 s, with hold prevents edge flicker
+};
+private _holdTime = switch (_tier) do {
+    case "GEN1": { 1.5 };    // long hold, bloom persists
+    case "GEN2": { 0.8 };
+    default { 0.4 };          // gated: 400 ms hold before decay starts
 };
 private _blowout = missionNamespace getVariable [QGVAR(nvgBlowout), 0];
+private _blowoutHold = missionNamespace getVariable [QGVAR(nvgBlowoutHold), 0];
 if (_blowout isEqualType 0) then {
-    _blowout = (_blowout * (1 - _release)) max _blowoutNow;
-    _blowout = _blowout max (_blowoutNow);
+    // Attack: instant (blowout spikes immediately when source enters cone).
+    _blowout = _blowout max _blowoutNow;
+    // Hold: once triggered, maintain peak for _holdTime seconds.
+    if (CBA_missionTime < _blowoutHold) then {
+        _blowout = _blowout max (_blowoutNow max _blowout);
+    } else {
+        // Decay: exponential release after hold expires.
+        _blowout = _blowout * (1 - _release);
+    };
+    // When a new peak is detected, reset the hold timer.
+    if (_blowoutNow > _blowout * 0.9) then {
+        missionNamespace setVariable [QGVAR(nvgBlowoutHold), CBA_missionTime + _holdTime];
+    };
 } else {
     _blowout = _blowoutNow;
+    missionNamespace setVariable [QGVAR(nvgBlowoutHold), CBA_missionTime + _holdTime];
 };
+if (_blowout < 0.01) then { _blowout = 0; };
 missionNamespace setVariable [QGVAR(nvgBlowout), _blowout];
+// Note: nvgBlowoutHold is set inside the if-blocks above.
+// Do NOT overwrite it here with the stale local _blowoutHold.
 
 // ─── MTF degradation at low light ─────────────────────────────────────────
 // Resolution (hence perceived contrast) drops as photon flux falls —
@@ -454,15 +614,51 @@ if (_blowout > 0 && (_tier == "GEN3" || _tier == "PVS31")) then {
     _mtfEffective = _mtfEffective * (1 - _blowout * 0.4);
 };
 
-// ─── Bloom (bright-source halos scale with ambient light) ────────────────
-// Halo diameter is a fixed physical property of the tube (0.7-1.0mm for
-// Gen 3, measured on the 18mm tube face).  The DynamicBlur effect
-// simulates the visual impact of these halos, which scale with scene
-// brightness.  At starlight, halos are less visible (dark scene).  At
-// full moon, brighter sources produce more noticeable blooming.
-// Values stay within ACE3's proven 0.05-0.11 band (ST_NVG_BLUR_MIN/MAX);
-// blur above ~0.1 smears the image.
+// ─── Rain: Mie scattering volume effect ──────────────────────────────────
+// Rain drops don't just sit on the lens — they create a 3D volume of
+// forward-scattered light (Mie scattering: particles > wavelength scatter
+// predominantly forward).  This scattered light enters the objective from
+// all angles, creating a uniform veil that crushes SNR.  The MCP amplifies
+// this scattered light equally with the signal, producing the "white wall"
+// effect: foreground rain is amplified to blindness while distant targets
+// disappear.  No existing mod simulates this — they all treat rain as a
+// visual overlay.
+//
+// Scale contrast and MTF by rain intensity.  Heavy rain (0.8) drops MTF
+// to 50% of clear-air value — the image degrades from sharp to mushy.
+// This is separate from the localized drops on the lens (Mie is a
+// volume effect, drops are a surface effect).
+if (_rainS > 0.2) then {
+    private _mieFactor = 1 - rain * 0.5;   // heavy rain: 60% MTF
+    _mtfEffective = _mtfEffective * _mieFactor;
+};
+
+// ─── Rain: veiling glare amplification ───────────────────────────────────
+// Each rain drop scatters light inside the tube (internal reflections
+// between phosphor screen and photocathode).  This adds veiling glare —
+// a uniform glow that reduces contrast.  Veiling glare is already a
+// problem in clear conditions; rain makes it significantly worse because
+// each drop creates additional scatter sources.
+// Scale bloom by (1 + rain × 2).  Interacts with the existing bloom
+// system — rain effectively doubles the halo contribution.
+//
+// Halo geometry: the halo is MCP electron scatter + phosphor bloom, and
+// its radius grows with the photon flux on the tube face.  The blowout
+// state (_blowout) already encodes inverse-square illuminance — a
+// dead-centre source at 10 m is ~1.0, falling with distance² and
+// atmospheric extinction (Beer-Lambert).  So a closer or brighter source
+// produces a larger halo; ambient moonlight sets the base halo and the
+// source term rides on top.
 private _bloom = _bloomBase + _bloomScale * (_moonLight / 1.0);
+_bloom = _bloom + _blowout * _bloomScale * 2;
+_bloom = _bloom * (1 + rain * 2);
+// Clear-condition veiling glare floor: phosphor light reflects back to the
+// photocathode and re-amplifies, giving a real tube a 2-5 % veiling glare
+// ratio even in perfect weather.  This caps maximum contrast (a faint glow
+// over the whole image) and is independent of rain.  0.02 = 2 %, the low
+// end of the published range, so it adds the physical floor without
+// washing the image out.
+_bloom = _bloom + 0.02;
 _bloom = 0 max _bloom min 1;
 
 // ─── Brightness (AGC output, physics-driven) ──────────────────────────────
@@ -496,6 +692,59 @@ if (_blowout > 0) then {
     };
 };
 
+// ─── Phosphor persistence (residual image lag) ────────────────────────────
+// The phosphor screen does not emit instantly nor cut off instantly: it
+// has a persistence time constant.  Per-tier from datasheets:
+//   P20 (Zn,Cd)S:Ag — Gen 1/2 green: 90%→10% in 4 ms, total ~60 ms decay
+//   P43 Gd₂O₂S:Tb   — Gen 3 green:  90%→10% in 1 ms, total ~2.6 ms
+//   P45 Y₂O₂S:Tb    — PVS-31 white: ~2.6 ms (same as P43)
+// (Proxivision PR-0069E-02, Hoess & Fleder, Night Vision Wiki)
+// At a 0.1 s tick the EMA alpha = 1 - exp(-dt/tau):
+//   GEN1/2:  1 - exp(-0.1/0.06) ≈ 0.81 (fast settle — most lag is in the
+//            first tick; the phosphor is fully decayed within 0.1 s)
+//   GEN3/31: 1 - exp(-0.1/0.003) ≈ 1.0 (instant — phosphor is already
+//            gone before the next tick)
+// GEN3 lag is therefore negligible and only GEN1/2 benefit from this EMA.
+private _phosphorTau = [0.003, 0.06] select ((_tier == "GEN1") || (_tier == "GEN2"));
+private _phosphorAlpha = 1 - (exp (-(0.1 / _phosphorTau)));
+private _brightLag = missionNamespace getVariable [QGVAR(nvgBrightLag), _brightness];
+if (_brightLag isEqualType 0) then {
+    _brightLag = _brightLag + (_brightness - _brightLag) * _phosphorAlpha;
+} else {
+    _brightLag = _brightness;
+};
+missionNamespace setVariable [QGVAR(nvgBrightLag), _brightLag];
+if (_tier == "GEN1" || _tier == "GEN2") then {
+    _brightness = _brightLag;
+};
+
+// ─── Auto-gating flicker (~30 kHz aliased) ───────────────────────────────
+// Real auto-gating tubes cycle the MCP gain on/off at ~30 kHz (DTIC
+// ADA426388, Elbit datasheet).  At 60 fps the 30 kHz is far above the
+// flicker-fusion threshold (~60 Hz) — the temporal pattern is below
+// human perception.  The physical effect is imperceptible flicker;
+// it cannot be faithfully simulated at frame-rate frequencies without
+// creating visible aliasing artifacts (a 30 kHz sin aliased to 60 fps
+// produces a ~35 Hz beat, which IS visible and annoying).
+// SKIP: no sin modulation.  The existing dynamic brightness variation
+// from AGC settling and blowout recovery already provides enough
+// temporal texture.  Adding a fake low-frequency shimmer would be less
+// accurate than doing nothing.
+
+// ─── Battery brightness degradation (after _brightness defined) ──────────
+// These effects modify _brightness, which is defined at line ~567.
+// Split from the noise degradation above to respect variable scope.
+// Below 0.15: subtle horizontal scan-line flicker (MCP bias instability).
+if (_battery < 0.15) then {
+    private _flickerAmp = (1 - _battery / 0.15) * 0.08;
+    _brightness = _brightness * (1 + _flickerAmp * sin (diag_tickTime * 120));
+};
+// Below 0.05: intermittent dropout — random black frames (voltage
+// intermittently too low to sustain the MCP cascade).
+if (_battery < 0.05 && {random 1 < 0.15}) then {
+    _brightness = 0;
+};
+
 // ─── FilmGrain parameters (shot noise) ───────────────────────────────────
 // Grain sharpness and size scale with noise level.  At high noise
 // (starlight), grain is coarse and sharp.  At low noise (full moon),
@@ -504,8 +753,24 @@ if (_blowout > 0) then {
 // BIS wiki states 0 = monochrome, any other value = colour).  Grayscale
 // suits both P45 white and P43 green phosphor (tube scintillation is
 // monochrome).
+//
+// ENGINE LIMITATION: spatial scintillation variation (less noise in bright
+// areas, more in dark — Poisson SNR ∝ √signal) cannot be implemented.
+// FilmGrain applies uniform noise across the screen; no per-pixel
+// weighting is available without a custom pixel shader.  The _noise
+// variable already varies with ambient light (starlight → more noise
+// everywhere, full moon → less), which is the correct macro-level
+// behaviour.  Per-frame spatial variation is the honest wall.
 private _sharpness = linearConversion [1, 0, _noise, 1.2, 1.0, true];
 private _grainSize = linearConversion [1, 0, _noise, 2.7, 2.25, true];
+
+// Scintillation intensity scales with ambient lux: maximum in darkness
+// (few photons = strong shot noise), minimum in moonlight (many photons
+// = quiet image).  Rain adds forward-scattered photon noise (Mie), so
+// the grain rises with rain too.
+private _grainIntensity = 0.3 * (1 - _lux / 0.1);
+_grainIntensity = 0 max _grainIntensity;
+_grainIntensity = _grainIntensity * (1 + rain * 0.5);
 
 // ─── Recreate all NVG handles every tick ─────────────────────────────────
 // ACE3 pattern: recreate ppEffect handles so effects survive alt-tab,
@@ -669,12 +934,13 @@ if (_hDoF < 0) then {
 //   focus_half = atan(tan(hFOV/2) * 0.15)
 // getResolution #4 = screen aspect (width/height).  Fall back to 16:9
 // if the query returns 0 (headless or pre-init).
-private _eyePos = eyePos _player;
-// vectorDirVisual = where the EYES look (free-look / head direction).
-// vectorDir would be the body direction - free-looking at a lamp post
-// would not move the focus fan.  The fan must track the eye, the same
-// as the blowout cone at line 304.
-private _lookDir = vectorDirVisual _player;
+private _focusEye = [_player] call FUNC(getEyeState);
+private _eyePos = _focusEye select 0;
+// The focus fan must track where the EYES look, not the body: free-looking
+// at a lamp post would not move a body-direction fan.  Consumes the shared
+// eye state (state-aware: turret = weapon-aligned, on foot = view centre),
+// the same source as the blowout cone.
+private _lookDir = _focusEye select 1;
 private _aspect = getResolution select 4;
 if (_aspect <= 0) then { _aspect = 16.0 / 9.0; };
 // Live camera FOV via CBA (ACE3-proven): returns [hFOV, zoom] for the
@@ -693,7 +959,7 @@ if (_hFovLive <= 0) then {
 };
 private _focusHalfDeg = atan ((tan _hFovLive) * 0.15);   // 15 % of screen
 private _spread = 300 * (tan _focusHalfDeg);      // offset at the 300 m end
-private _upVec   = vectorUp _player;
+private _upVec   = _focusEye select 2;
 private _rightVec = _lookDir vectorCrossProduct _upVec;
 // ─── Fan raycast, CENTRE-DECISIVE weighted median ────────────────────────
 // What the operator LOOKS AT (the centre ray) must win.  The research
@@ -717,27 +983,69 @@ private _fan = [
     [_lookDir vectorAdd ((_upVec vectorAdd _rightVec vectorMultiply (-1)) vectorMultiply _spread), 1],
     [_lookDir vectorAdd ((_upVec vectorAdd _rightVec vectorMultiply (-1)) vectorMultiply (-_spread)), 1]
 ];
+private _veh = vehicle _player;
 {
     _x params ["_rayDir", "_rayWeight"];
     private _end = _eyePos vectorAdd (_rayDir vectorMultiply 300);
     private _hits = lineIntersectsSurfaces [
-        _eyePos, _end, _player, objNull, true, 1, "FIRE", "NONE"
+        _eyePos, _end, _player, objNull, true, 1, "GEOM", "NONE"
     ];
+    private _hitDist = -1;
     if (count _hits > 0) then {
         private _d = _eyePos distance (_hits select 0 select 0);
-        // Weapon/hands exclusion by OBJECT IDENTITY, not distance.  The
-        // weapon and body are part of the player's model, so a hit that
-        // reports the player unit as the intersect (or parent) object is
-        // the operator's own gear - a real NVG operator focuses past it.
-        // A distance cut (the old 2 m floor) snapped close objects from
-        // sharp to blurry the moment they crossed it; object identity
+        // Weapon/hands/vehicle exclusion by OBJECT IDENTITY, not distance.
+        // The weapon, body and the vehicle cabin are part of the operator's
+        // own model - a real NVG operator focuses PAST their own gear and
+        // through the windshield, not on the interior.  Object identity
         // lets a REAL wall at 1 m track down to the objective's ~25 cm
         // near limit, so the DoF band forms the gradual blur gate.
         private _hitObj = _hits select 0 select 2;
         private _hitParent = _hits select 0 select 3;
-        if (_hitObj != _player && _hitParent != _player) then {
-            _hitsArr pushBack [(_d max 0.25), _rayWeight];   // [dist, weight]
+        if (_hitObj != _player && _hitParent != _player
+            && _hitObj != _veh && _hitParent != _veh) then {
+            _hitDist = _d;
         };
+    };
+    // lineIntersectsSurfaces is unreliable for terrain (ground) hits.
+    // For rays pointing down that missed an object, compute the ground
+    // distance analytically.  The ray must be UNIT length for the Z
+    // component to be a direction cosine: the fan rays are lookDir plus
+    // a ~26 m offset at the 300 m end, so their magnitude is ~26, NOT 1.
+    // Using the raw Z would make every offset ray's distance ~26x too
+    // small.  getTerrainHeightASL is a cheap heightmap lookup, not a
+    // raycast.  Sky (ray pointing up) contributes no hit, so
+    // HOLD-ON-EMPTY keeps the ring where it is.
+    private _rd = vectorNormalized _rayDir;
+    private _rdZ = _rd select 2;
+    if (_hitDist < 0 && _rdZ < -0.01) then {
+        private _eyeH = _eyePos select 2;
+        // First estimate: the flat plane at the terrain height below the
+        // eye.  Exact on level ground; the iteration below corrects for
+        // slopes (ground ahead higher or lower than below the eye).
+        private _tDist = (_eyeH - getTerrainHeightASL _eyePos) / abs _rdZ;
+        // Fixed-point correction: re-solve t = (eye_h - terrain_h(sample))
+        // / |dz| at the current estimate.  This is the exact ray-plane
+        // solve repeated on the REAL terrain height, so it converges on
+        // slopes (ground ahead higher or lower than below the eye) where
+        // a single flat-plane step is wrong by the slope ratio.  The
+        // factor is < 1 whenever the ray descends faster than the terrain
+        // rises toward it; a grazing ray that the terrain outruns pushes
+        // t past the 300 m cap and correctly reads as no hit.
+        for "_i" from 1 to 4 do {
+            private _sample = _eyePos vectorAdd (_rd vectorMultiply _tDist);
+            private _sampleH = getTerrainHeightASL _sample;
+            private _rayH = _eyeH + _rdZ * _tDist;
+            private _err = _sampleH - _rayH;
+            if (abs _err < 0.3) exitWith {};
+            _tDist = (_eyeH - _sampleH) / abs _rdZ;
+            if (_tDist <= 0.25) exitWith {};
+        };
+        if (_tDist > 0.25 && _tDist <= 300) then {
+            _hitDist = _tDist;
+        };
+    };
+    if (_hitDist > 0) then {
+        _hitsArr pushBack [(_hitDist max 0.25), _rayWeight];
     };
 } forEach _fan;
 
@@ -754,30 +1062,40 @@ if (count _hitsArr >= (count _fan) / 2) then {
     _rawTarget = _weighted select (floor ((count _weighted) / 2));
 };
 
-// ─── Raw-target smoothing (CONDITIONAL) ─────────────────────────────────
+// ─── Raw-target smoothing (ROLLING MEDIAN) ────────────────────────────────
 // The median of a 9-ray fan is noisy: the scene composition shifts tick to
 // tick as the view moves fractions of a degree, so the median jumps 1-3 m
-// between ticks.  A full EMA removes that jitter but ALSO delays genuine
-// target changes - measured 0.69 s of rack latency in the RPT (the user's
-// 'slight delay').  Conditional filter: smooth only while the target is
-// within the current deadband (jitter suppression); a target change LARGER
-// than the deadband passes straight through, so a real re-aim responds on
-// the next tick instead of easing in over several.
-private _rawSmooth = missionNamespace getVariable [QGVAR(nvgFocusRawSmooth), _rawTarget];
-if !(_rawSmooth isEqualType 0 && _rawSmooth > 0) then { _rawSmooth = _rawTarget; };
+// between ticks — and worse, a single tick can bounce it 12 m -> 137 m
+// when the centre ray slips past a low object to the background or a
+// sub-degree head shift crosses the horizon.  The OLD conditional EMA
+// passed every "big" change straight through, so with 12<->137 bouncing
+// it smoothed NOTHING: the state machine saw a fresh target every tick,
+// re-armed the 0.2 s hold clock continuously, and the ring sat frozen
+// until the raw went quiet for a moment — the "sticky then jump" the
+// user reported.
+//
+// A rolling MEDIAN of the last 3 raw samples is the fix: a single-tick
+// outlier (137) is discarded, a genuine sustained re-aim (12 m for 3+
+// ticks) tracks within 3 ticks.  This is what a real autofocus does —
+// integrate over time, not chase each frame.  Measured on RPT data:
+// the median kills every single-tick outlier while the EMA passed all
+// of them through.
+private _rawHist = missionNamespace getVariable [QGVAR(nvgFocusRawHist), []];
+if !(_rawHist isEqualType []) then { _rawHist = []; };
 if (_rawTarget > 0) then {
-    private _curForFilter = missionNamespace getVariable [QGVAR(nvgFocusCur), _rawTarget];
-    if !(_curForFilter isEqualType 0 && _curForFilter > 0) then { _curForFilter = _rawTarget; };
-    private _fDeadband = (_curForFilter * 0.25) max 0.5;
-    if (abs (_rawTarget - _curForFilter) > _fDeadband) then {
-        _rawSmooth = _rawTarget;          // big change: pass through, respond now
-    } else {
-        _rawSmooth = _rawSmooth + (_rawTarget - _rawSmooth) * 0.5;   // jitter only
-    };
+    _rawHist pushBack _rawTarget;
+    if (count _rawHist > 3) then { _rawHist deleteAt 0; };
 } else {
-    _rawSmooth = _rawTarget;   // empty (sky): pass the empty state through
+    _rawHist = [];   // sky: empty the history so HOLD-ON-EMPTY stays clean
 };
-missionNamespace setVariable [QGVAR(nvgFocusRawSmooth), _rawSmooth];
+missionNamespace setVariable [QGVAR(nvgFocusRawHist), _rawHist];
+private _rawSmooth = _rawTarget;
+if (count _rawHist > 0) then {
+    private _sorted = +_rawHist;
+    _sorted sort true;
+    _rawSmooth = _sorted select (floor ((count _sorted) / 2));
+};
+if (_rawSmooth <= 0) then { _rawSmooth = _rawTarget; };
 _rawTarget = _rawSmooth;
 
 // ─── Focus state machine (O3DE auto-focus pattern) ───────────────────────
@@ -794,10 +1112,18 @@ _rawTarget = _rawSmooth;
 //  2. DEADBAND: do not move while |target - current| < deadband.
 //     Hyperfocal behaviour: at focus distance F, objects within the DoF
 //     band are acceptably sharp, so the ring should not hunt for them.
-//     Deadband = 25 % of current focus, min 0.5 m.  Wider than before
-//     (15 %) because the median target already averages the fan; the
-//     band now absorbs small scene changes (a fence entering the edge
-//     of the fan) so the ring does not re-rack for them.
+//     Deadband = 3 % of current focus, min 0.5 m.
+//
+//     CALIBRATION (measured, not guessed): the RPT focus fan reads a
+//     noise floor of sigma = 0.2-0.3 % of the target distance on a
+//     STABLE scene (measured: 0.06 m at 28 m, 0.36 m at 125 m).  The
+//     classic contrast-AF controller deadband (Sanyo EP0437629B1) is a
+//     threshold on the focus measure sized to reject measurement noise.
+//     The distance deadband must sit ABOVE that noise floor but track
+//     real changes: 3 % is 10-15x the measured sigma.  The previous
+//     25 % was 80x the noise floor — it demonstrably froze the ring on
+//     a genuine 28 m -> 35 m re-aim (the "too sticky" report).  The
+//     re-arm threshold below scales with it.
 //  3. DELAY: hold a new target 0.25 s before moving, so a transient hit
 //     (a branch passing the centre pixel) does not rack the ring.
 //  4. CONSTANT SPEED: the ring turns at a fixed rate while you move it.
@@ -825,7 +1151,7 @@ if (!_dofInitialised) then {
 };
 
 if (_rawTarget > 0) then {
-    private _deadband = (_curFocus * 0.25) max 0.5;
+    private _deadband = (_curFocus * 0.03) max 0.5;
     if (abs (_rawTarget - _curFocus) > _deadband) then {
         // Outside the sharp band: arm a new target.  Re-arm (reset the
         // hold timer) only when the target CHANGES MATERIALLY - a
@@ -895,6 +1221,20 @@ if (_pending > 0 && CBA_missionTime >= _holdUntil) then {
         _curFocus = _pending;           // settle exactly
         _pending = 0;
         _holdUntil = 0;
+    } else {
+        // ─── Settle watchdog ─────────────────────────────────────────
+        // Guarantee against a stuck ring: if a target has been pending
+        // for over 1.5 s and the rack is still in flight, the ring is
+        // not making progress — snap it to the target.  This is the
+        // absolute bound: no input sequence can freeze the focus
+        // indefinitely, because any pending target that outlives the
+        // watchdog is applied in full.  A real autofocus has the same
+        // timeout (a servo that stops reporting progress is reset).
+        if (CBA_missionTime > (_holdUntil + 1.5)) then {
+            _curFocus = _pending;
+            _pending = 0;
+            _holdUntil = 0;
+        };
     };
 };
 
@@ -972,7 +1312,7 @@ if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
         _hDoF,
         [_brightness, _mtfEffective, 0, [0,0,0,0], _phosphorTint, _nvgWeight],
         _bloom,
-        [_noise, _sharpness, _grainSize, 0.5, 1.0, 0],
+        [_grainIntensity, _sharpness, _grainSize, 0.5, 1.0, 0],
         _blowout,
         _dofBlur,
         _focusDist,
@@ -982,25 +1322,18 @@ if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
     ];
 };
 
-// ─── ChromAberration (optical imperfection) ──────────────────────────────
-// Lateral colour from residual dispersion in the objective lens.
-// NVG objectives are achromatic multi-element designs corrected for
-// 600-900nm (BK7 crown Vd=64.2, SF2 flint Vd=33.8).
-// _chromaStrength is the per-channel sample spacing (BIS wiki).  The
-// default is 0.005; values >= ~0.02 visibly split R/G/B into a "drunk
-// doubling".  Tiers stay at 0.002-0.008: subtle edge fringing only.
-// Command order follows TFN NVG Effects: adjust, COMMIT, then
-// ForceInNVG.  Forcing a fresh, uncommitted handle throws "Invalid post
-// effect handle" — commit makes the handle live first.
-// MARKER (one-shot): identify which block the entry errors come from.
-private _markerMsg = format ["NVG adjust block start: chroma=%1 cc=%2 bloom=%3 vig=%4 grain=%5 dof=%6", _hChroma, _hCC, _hBloom, _hVig, _hGrain, _hDoF];
-AEE_LOG_INFO(_markerMsg);
-_hChroma ppEffectAdjust [_chromaStrength, _chromaStrength, false];
-_hChroma ppEffectCommit 0;
-_hChroma ppEffectEnable true;
-_hChroma ppEffectForceInNVG true;
-AEE_LOG_INFO("NVG adjust block done: chroma applied");
-AEE_LOG_INFO("NVG adjust: CC");
+// ─── ChromAberration — disabled (NVGs are monochrome) ────────────────────
+// ponytail: NVGs are monochrome — no chromatic aberration.
+// An image intensifier has a single photocathode and a single phosphor
+// screen, so its output carries no colour fringing.  ChromAberration is
+// a normal-vision effect (lens dispersion in a colour camera).  The
+// handle is still created and owned by fnc_managePostProcess for normal
+// vision; the NVG path leaves it neutral.  The per-tier _chromaStrength
+// parameter is removed with the effect.
+//
+// Removed: the edge boost (1 + (angle/20)²) and the per-tick
+// adjust/commit/enable/force block — with no CA there is nothing to
+// scale or apply.
 // ─── ColorCorrections (phosphor tint + brightness + contrast) ───────────
 // Params: [brightness, contrast, offset, blend, colorize, weight]
 //
@@ -1020,14 +1353,12 @@ _hCC ppEffectAdjust [_brightness, _mtfEffective, 0, [0,0,0,0], _phosphorTint, _n
 _hCC ppEffectCommit 0;
 _hCC ppEffectEnable true;
 _hCC ppEffectForceInNVG true;
-AEE_LOG_INFO("NVG adjust: bloom");
 
 // ─── DynamicBlur (blooming / halos from bright sources) ──────────────────
 _hBloom ppEffectAdjust [_bloom];
 _hBloom ppEffectCommit 0;
 _hBloom ppEffectEnable true;
 _hBloom ppEffectForceInNVG true;
-AEE_LOG_INFO("NVG adjust: vig");
 
 // ─── RadialBlur (optical edge degradation) ───────────────────────────────
 // NVG optics are sharpest at centre, softest at edges.  MTF drops
@@ -1042,70 +1373,23 @@ _hVig ppEffectAdjust _vigStrength;
 _hVig ppEffectCommit 0;
 _hVig ppEffectEnable true;
 _hVig ppEffectForceInNVG true;
-AEE_LOG_INFO("NVG adjust: grain");
 
 // ─── FilmGrain (shot noise - the NVG aesthetic) ──────────────────────────
-_hGrain ppEffectAdjust [_noise, _sharpness, _grainSize, 0.5, 1.0, 0];
+_hGrain ppEffectAdjust [_grainIntensity, _sharpness, _grainSize, 0.5, 1.0, 0];
 _hGrain ppEffectCommit 0;
 _hGrain ppEffectEnable true;
 _hGrain ppEffectForceInNVG true;
-AEE_LOG_INFO("NVG adjust: all applied");
 
-// ─── Tube face display (mask + fiber-optic bundle) ───────────────────────
-// Show the circular tube overlay.  The mask's transparent centre lets the
-// NVG image through; opaque black outside forms the round goggle image.
-//
-// The fiber "chicken wire" is fixed-pattern noise, not a texture: the
-// multi-fiber bundle boundaries (0.5-1 mm on an 18 mm tube = 3-5 % of
-// diameter) are a low-contrast artifact (SCHOTT datasheets, Hamamatsu
-// on Gen 3 "eliminating" it).  Alpha is therefore crushed to noise levels
-// and scales with _noise — relatively more visible at high gain against
-// flat dark, washed out at full moon where shot noise dominates.
-//
-// cutRsc on an already-open layer restarts the display (flicker), so it
-// is called once per entry; the fiber texture + fade update every tick.
-private _fiberBase = switch (_tier) do {
-    case "GEN1": { 0.10 };
-    case "GEN2": { 0.05 };
-    default { 0.0 };
-};
-private _fiberAlpha = _fiberBase * linearConversion [0.03, 1, _noise, 0.35, 1.0, true];
-private _fiberTex = switch (_tier) do {
-    case "GEN1": { QPATHTOF(data\nvg_fibers_gen1_1024.paa) };
-    case "GEN2": { QPATHTOF(data\nvg_fibers_gen2_1024.paa) };
-    default { "" };
-};
+// ─── RscTitles display (focus HUD) ────────────────────────────────────────
+// The engine handles the NVG cutout (circular tube view).  We overlay only
+// the focus readout HUD.  No mask, fibre, glow, or rain overlay — the
+// engine and other NVG mods handle tube geometry.
 private _disp = uiNamespace getVariable [QGVAR(titleDisplay), displayNull];
 if !(missionNamespace getVariable [QGVAR(nvgDisplayUp), false]) then {
-    // Open the display on a dedicated layer via BIS_fnc_rscLayer - the
-    // ACE3 weather-HUD pattern (fnc_displayWindInfo.sqf, proven visible
-    // over NVG).  The old 5-arg cutRsc call was malformed (cutRsc takes
-    // [config, type, layer, speed] - the 5th arg does not exist) so the
-    // display never rendered its text controls.  The layer name routes
-    // through BIS_fnc_rscLayer so it sits above the NVG post-process.
     (["aee_optics_nvg_title"] call BIS_fnc_rscLayer) cutRsc [QGVAR(nvgTitle), "PLAIN", 1, false];
     missionNamespace setVariable [QGVAR(nvgDisplayUp), true];
-    // Set the per-device tube silhouette on the mask control.  The mask
-    // PAA has the tube circles transparent and a SEMI-TRANSPARENT dark
-    // border outside (alpha ~200): the dim NVG scene shows through around
-    // the tubes, simulating peripheral awareness - not a hard black void
-    // (real goggles leave your periphery as faint shapes).  single/dual/
-    // quad match the device's tube count.
-    private _maskTex = switch (_tubeCount) do {
-        case 2:  { QPATHTOF(data\nvg_mask_dual_2048.paa) };
-        case 4:  { QPATHTOF(data\nvg_mask_quad_2048.paa) };
-        default { QPATHTOF(data\nvg_mask_single_2048.paa) };
-    };
-    private _maskCtl = _disp displayCtrl 1000;
-    _maskCtl ctrlSetText _maskTex;
-    _maskCtl ctrlCommit 0;
 };
 if (!isNull _disp) then {
-    private _fibers = _disp displayCtrl 1001;
-    _fibers ctrlSetFade (1 - _fiberAlpha);
-    _fibers ctrlSetText _fiberTex;
-    _fibers ctrlCommit 0;
-
     // Focus readout (ECOTI HUD style): the ring position as metres plus a
     // 0-100 m scale bar with a marker at the current focus.  The bar is
     // logarithmic in display so the 0-25 m patrol band dominates; a 50 m
@@ -1126,6 +1410,37 @@ if (!isNull _disp) then {
     private _barCtl = _disp displayCtrl 1003;
     _barCtl ctrlSetText _bar;
     _barCtl ctrlCommit 0;
+
+    // ─── Low-battery warning indicators ───────────────────────────────
+    // Real PVS-31: red LED in each monocular when ≤10 min remain
+    //   (L3Harris PVS-31A datasheet).
+    // Real PVS-14 (GEN3): blinking eyepiece indicator when ≤30 min remain
+    //   (TM 11-5855-306-10).
+    // Calculate time remaining from battery level and current drain rate.
+    private _currentDrainRate = _baseDrain * _gainRatio * _tempDrainFactor;
+    private _timeRemaining = if (_currentDrainRate > 0) then {
+        _battery / _currentDrainRate
+    } else { 99999 };
+
+    // PVS-31: steady red LED when ≤10 min (600 s) remaining.
+    private _battWarnCtl = _disp displayCtrl 1004;
+    if (_tier == "PVS31" && _timeRemaining <= 600) then {
+        _battWarnCtl ctrlShow true;
+    } else {
+        _battWarnCtl ctrlShow false;
+    };
+    _battWarnCtl ctrlCommit 0;
+
+    // GEN3: blinking "BATT" when ≤30 min (1800 s) remaining.
+    // Blinks at ~2 Hz (toggle every 0.25 s).
+    private _battBlinkCtl = _disp displayCtrl 1005;
+    if (_tier == "GEN3" && _timeRemaining <= 1800) then {
+        private _blinkOn = (floor (diag_tickTime * 4)) % 2 == 0;
+        _battBlinkCtl ctrlShow _blinkOn;
+    } else {
+        _battBlinkCtl ctrlShow false;
+    };
+    _battBlinkCtl ctrlCommit 0;
 };
 
 // ─── Eye accommodation (exposure) ───────────────────────────────────────

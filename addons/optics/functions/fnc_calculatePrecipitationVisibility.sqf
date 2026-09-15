@@ -26,7 +26,7 @@ params [["_unit", objNull, [objNull]]];
 if (isNull _unit) exitWith { 0 };  // no unit on dedicated server
 
 // ─── Inputs ────────────────────────────────────────────────────────────
-private _rainRate  = rain;
+private _rainRate  = ([] call FUNC(getSmoothedWeather)) select 0;
 private _fogValue  = missionNamespace getVariable [QEGVAR(core,currentFogDensity), 0];
 private _snowDepth = missionNamespace getVariable [QEGVAR(core,snowDepth_m), 0];
 

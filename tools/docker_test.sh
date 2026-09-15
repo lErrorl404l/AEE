@@ -15,16 +15,24 @@ MODS="$DOCKER/mods"
 CBA_VERSION="v3.19.0"
 
 # The Arma 3 server installation is provided by the tester, not bundled.
-# Point ARMA3_SERVER_ROOT at your own Arma 3 dedicated server directory
-# (e.g. a steamcmd install), or leave it to bootstrap tests/docker/server
-# yourself. Nothing machine-specific is hardcoded.
+# Resolution order (no machine-specific path is committed):
+#   1. $ARMA3_SERVER_ROOT if set (explicit override)
+#   2. tests/docker/server_root if present (a gitignored one-line local
+#      override, so each machine points at its own server without editing
+#      this script)
+#   3. tests/docker/server (bundled/bootstrap default)
+if [ -z "${ARMA3_SERVER_ROOT:-}" ] && [ -f "$DOCKER/server_root" ]; then
+    ARMA3_SERVER_ROOT="$(head -n1 "$DOCKER/server_root" | tr -d '[:space:]')"
+fi
 export ARMA3_SERVER_ROOT="${ARMA3_SERVER_ROOT:-$DOCKER/server}"
 if [ ! -x "$ARMA3_SERVER_ROOT/arma3server_x64" ]; then
     echo "ERROR: no Arma 3 server at ARMA3_SERVER_ROOT=$ARMA3_SERVER_ROOT"
-    echo "  Install the Arma 3 dedicated server there (steamcmd app 233780),"
-    echo "  or set ARMA3_SERVER_ROOT to your existing server directory."
+    echo "  Install the Arma 3 dedicated server (steamcmd app 233780) there,"
+    echo "  set ARMA3_SERVER_ROOT, or write the path into"
+    echo "  tests/docker/server_root (gitignored)."
     exit 1
 fi
+echo "==> server root: $ARMA3_SERVER_ROOT"
 
 docker run --rm -v "$DOCKER/configs:/c" alpine rm -rf /c/profiles 2>/dev/null || true
 

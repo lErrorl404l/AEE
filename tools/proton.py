@@ -2,7 +2,7 @@
 Proton/AEE tooling — Steam library discovery, Arma 3 path helpers, Wine↔Linux path translation.
 
 Usage:
-    from tools.proton import find_arma3, find_sqfvm, wine_to_linux, linux_to_wine
+    from tools.proton import find_arma3, wine_to_linux, linux_to_wine
 
     a3 = find_arma3()
     print(a3["path"])           # /ext/SteamLibrary/steamapps/common/Arma 3
@@ -167,31 +167,6 @@ def find_proton_binary() -> str | None:
     return None
 
 
-# ── SQFVM discovery ──────────────────────────────────────────────────
-
-
-def find_sqfvm() -> str | None:
-    """Locate sqfvm binary."""
-    # common locations
-    candidates = [
-        Path.home() / ".local/bin/sqfvm.bin",
-        Path.home() / ".local/bin/sqfvm",
-        "/usr/local/bin/sqfvm.bin",
-        "/usr/local/bin/sqfvm",
-        "/usr/bin/sqfvm.bin",
-        "/usr/bin/sqfvm",
-    ]
-    for c in candidates:
-        if c.is_file():
-            return str(c.resolve())
-
-    # PATH fallback
-    found = shutil.which("sqfvm") or shutil.which("sqfvm.bin")
-    if found:
-        return found
-    return None
-
-
 # ── Path translation ─────────────────────────────────────────────────
 
 
@@ -262,9 +237,6 @@ def report() -> str:
 
     proton = find_proton_binary()
     lines.append(f"  Proton/Wine:     {proton or 'NOT FOUND'}")
-
-    sqfvm = find_sqfvm()
-    lines.append(f"  SQFVM:           {sqfvm or 'NOT FOUND'}")
 
     pfx = arma3_wine_prefix()
     lines.append(f"  Wine prefix:     {pfx or 'N/A'}")

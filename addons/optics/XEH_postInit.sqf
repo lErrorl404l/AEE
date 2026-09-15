@@ -24,6 +24,10 @@
         setAperture -1;
         [] call FUNC(applyNVGTubeModel);
         [] call FUNC(applyThermalVision);
+        ["EXIT"] call FUNC(applySecondSun);
+        ["EXIT"] call FUNC(applyClothingThermal);
+        ["EXIT"] call FUNC(applyBuildingThermal);
+        ["EXIT"] call FUNC(applyRainDroplets);
         [GVAR(sensorPFH)] call CBA_fnc_removePerFrameHandler;
         GVAR(sensorPFH) = nil;
         AEE_LOG_INFO("sensor PFH stopped (returned to normal vision)");
@@ -53,6 +57,20 @@
             QGVAR(ppHandle_Thermal_Grain),
             QGVAR(ppHandle_Thermal_Blur)
         ];
+        // Rain droplets on the objective: particle source, engine assets.
+        // Mode-INDEPENDENT: rain lands on the lens whether NVG or thermal,
+        // so the source is created on ANY vision-mode entry (not just
+        // thermal).  The TICK below drives the drop interval for both.
+        ["ENTER"] call FUNC(applyRainDroplets);
+        // Second sun: create the physics-driven fake sun for the engine's
+        // thermal sun term (buildings/terrain can only be sun-heated, not
+        // driven per-object).  Cleaned up on mode 0 below.
+        ["ENTER"] call FUNC(applySecondSun);
+        // Clothing thermal: apply per-item TI overrides to nearby units.
+        ["ENTER"] call FUNC(applyClothingThermal);
+        // Building thermal: swap building materials to a cold TI rvmat so
+        // buildings read cold at night (they bake red=128 in vanilla).
+        ["ENTER"] call FUNC(applyBuildingThermal);
     };
     // Start the fast sensor PFH when entering NVG/thermal.  The visionMode
     // event below is the SOLE owner of its lifecycle: it starts on mode > 0
@@ -69,8 +87,31 @@
             // Transient 0: skip, do not clean up or stop.  The visionMode
             // event handles real exits.
             if (_vm == 0) exitWith {};
+            // Rain droplets on the objective: mode-independent physics (rain
+            // lands on the lens whether it is NVG or thermal).  Run before
+            // the mode-specific branches so both get the source.
+            ["TICK"] call FUNC(applyRainDroplets);
             if (_vm == 1) then { [] call FUNC(applyNVGTubeModel); };
-            if (_vm == 2) then { [] call FUNC(applyThermalVision); };
+            if (_vm == 2) then {
+                // Thermal optics are parfocal: LWIR wavelength is ~10x
+                // visible, so the depth of field is so deep that real FLIR
+                // sights need NO focus mechanism (fixed at the factory).
+                // Kill the NVG DoF effect so its last focus value (e.g.
+                // PVS-31's 20 m ring) does not leak into the thermal view
+                // as a fixed focus blur.
+                private _hDof = missionNamespace getVariable [QGVAR(ppHandle_NVG_DoF), -1];
+                if (_hDof >= 0) then {
+                    ppEffectDestroy _hDof;
+                    missionNamespace setVariable [QGVAR(ppHandle_NVG_DoF), -1];
+                };
+                [] call FUNC(applyThermalVision);
+                [] call FUNC(applyEngineThermal);
+                [] call FUNC(applyWeaponBarrelHeat);
+                ["TICK"] call FUNC(applySecondSun);
+                ["TICK"] call FUNC(applyClothingThermal);
+                ["TICK"] call FUNC(applyBuildingThermal);
+                ["TICK"] call FUNC(applyRainDroplets);
+            };
         }, 0.1] call CBA_fnc_addPerFrameHandler;
         private _logMsg = format ["sensor PFH started (vision mode %1)", _visionMode];
         AEE_LOG_INFO(_logMsg);
@@ -86,8 +127,14 @@
 ["fired", {
     params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile"];
     if (_unit != call CBA_fnc_currentUnit) exitWith {};
-    if (currentVisionMode _unit != 1) exitWith {};
     if (_weapon == "throw" || _weapon == "put") exitWith {};
+
+    // Barrel heat accumulates on every shot regardless of vision mode —
+    // the barrel warms whether or not the shooter is watching through a
+    // tube.  The thermal PFH swaps the weapon material while hot.
+    [_weapon, _ammo] call FUNC(applyWeaponBarrelHeat);
+
+    if (currentVisionMode _unit != 1) exitWith {};
 
     private _visibleFire = getNumber (configFile >> "CfgAmmo" >> _ammo >> "visibleFire");
     if (_visibleFire <= 0) exitWith {};
@@ -107,4 +154,18 @@
     private _duration = 0.15 + _visibleFire * 0.1;
     missionNamespace setVariable [QGVAR(nvgFlashUntil), CBA_missionTime + _duration];
 }, false] call CBA_fnc_addPlayerEventHandler;
+
+// ─── Map-wide thermal boot pass ───────────────────────────────────────────
+// Pull EVERYTHING at mission start: one scan of all objects with material
+// selections, swapping them to the cold baseline immediately.  This covers
+// the whole map in one pass — no per-frame near-player LOD, no object
+// left at baked engine defaults.  The config-level caps (class All:
+// afMax 70, htMax 300) handle objects WITHOUT selections (map-embedded
+// geometry) at load; this pass handles objects WITH selections (placed
+// buildings, vehicles, statics) up front.
+//
+// Cost: one-time, at boot.  The near-player TICK in the thermal PFH still
+// exists for objects spawned later (dynamic spawns) — this is the eager
+// complement, not a replacement.
+["ENTER"] call FUNC(applyBuildingThermal);
 
