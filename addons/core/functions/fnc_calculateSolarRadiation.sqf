@@ -37,6 +37,12 @@ private _radiation = _sinElev max 0;
 private _cloudFactor = 1 - (0.75 * _overcast);
 private _result = (_radiation * _cloudFactor) min 1;
 
+// Sun elevation in degrees (asin returns degrees in Arma).  Exposed for the
+// NVG twilight model: the twilight sky glow is a function of how far the
+// sun is BELOW the horizon, which the radiation value (max 0) cannot give.
+private _sunElevation = asin (_sinElev max -1 min 1);
+missionNamespace setVariable [QEGVAR(core,currentSunElevation), _sunElevation];
+
 // Store for soil moisture, UV and other consumers
 missionNamespace setVariable [QEGVAR(core,currentSolarRadiation), _result];
 

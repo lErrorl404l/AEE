@@ -87,7 +87,43 @@ if (_lightLen > 0.001) then {
 private _cloudLoss = (overcast * 0.85) min 0.85;
 private _cloudTransmission = 1 - _cloudLoss;
 private _moonLight = 0 max ((moonIntensity * _cloudTransmission) - (rain * 0.5));
-private _ambientLux = 0.001 + _moonLight * 0.249;
+
+// ─── Twilight glow (NVG-relevant sky light) ──────────────────────────────
+// Image intensifiers respond to VISIBLE + near-infrared, and the twilight
+// sky glow (scattered sunlight) is huge: ~400 lux at the horizon, ~3 lux
+// at civil twilight end (-6 deg), ~0.008 lux at nautical (-12 deg),
+// ~0.0008 lux at astronomical (-18 deg).  The moonlight model alone does
+// NOT capture this, so NVG would not dim through dawn or brighten through
+// dusk.  The sun elevation comes from the verified solar model.
+//
+// Fit: lux = 10 ^ (2.6 - 0.3 * |elevation|) for the sun below the horizon.
+//   elevation  0  -> 10^2.6  = 398 lux
+//   elevation -6  -> 10^0.8  =  6.3 lux
+//   elevation -12 -> 10^-1.0 =  0.10 lux
+//   elevation -18 -> 10^-2.8 = 0.0016 lux (falls below the starlight floor)
+// Above the horizon it is daylight and NVG is not used, so the term only
+// applies when the sun is at or below the horizon.
+private _sunElev = missionNamespace getVariable [QEGVAR(core,currentSunElevation), -90];
+if !(_sunElev isEqualType 0) then { _sunElev = -90; };
+private _twilightLux = 0;
+if (_sunElev <= 0) then {
+    _twilightLux = 10 ^ (2.6 - 0.3 * (abs _sunElev));
+};
+
+// ─── Starlight floor (SKYBOX COMPATIBILITY HOOK) ────────────────────────
+// The 0.001 lux starlight baseline represents the assumed moonless night
+// sky.  Skybox mods (brighter starfields, Milky Way, enhanced airglow)
+// replace the rendered sky WITHOUT touching our lux model, so their
+// brighter sky would otherwise be amplified at the standard-starlight
+// gain (over-bright).  Read a live missionNamespace variable so any mod
+// can raise the assumed starlight: a brighter sky -> higher lux -> NVG
+// gains down -> the brighter sky renders correctly, not blown out.
+//   set aee_optics_starlightLux = 0.01;  // a 10x brighter night sky
+// Default 0.001 = standard clear-sky starlight.
+private _starlightLux = missionNamespace getVariable [QGVAR(starlightLux), 0.001];
+if !(_starlightLux isEqualType 0 && _starlightLux > 0) then { _starlightLux = 0.001; };
+
+private _ambientLux = _starlightLux + (_moonLight * 0.249) + _twilightLux;
 
 // ─── Dynamic lux (client only) ───────────────────────────────────────────
 // Two sources: (1) IR weapon light from the player, (2) nearby environmental
