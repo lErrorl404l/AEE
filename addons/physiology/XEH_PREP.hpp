@@ -1,4 +1,5 @@
 PREP(calculateAltitudeAcclimatization);
+PREP(applyCrossSensitivity);
 PREP(calculateBatteryTemperatureDerating);
 PREP(calculateDehydrationRisk);
 PREP(calculateScentDispersion);
