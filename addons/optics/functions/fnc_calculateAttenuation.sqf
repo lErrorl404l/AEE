@@ -25,9 +25,10 @@ private _groundState = missionNamespace getVariable [QEGVAR(core,groundState), "
 private _fog = missionNamespace getVariable [QEGVAR(core,currentFogDensity), 0];
 
 // ─── Rain ────────────────────────────────────────────────────────────────
-if (rain > 0) then {
-    _laserAtten  = _laserAtten  - (rain * 0.3);
-    _visibleAtten = _visibleAtten - (rain * 0.4);
+private _rainS = ([] call FUNC(getSmoothedWeather)) select 0;
+if (_rainS > 0) then {
+    _laserAtten  = _laserAtten  - (_rainS * 0.3);
+    _visibleAtten = _visibleAtten - (_rainS * 0.4);
 };
 
 // ─── Fog ─────────────────────────────────────────────────────────────────
@@ -48,7 +49,8 @@ if (!isNil "_RH" && _RH > 80) then {
 };
 
 // ─── Heavy overcast (visible only) ───────────────────────────────────────
-if (overcast > 0.8) then {
+private _overcastS = ([] call FUNC(getSmoothedWeather)) select 1;
+if (_overcastS > 0.8) then {
     _visibleAtten = _visibleAtten * 0.85;
 };
 

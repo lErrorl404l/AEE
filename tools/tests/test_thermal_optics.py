@@ -512,14 +512,23 @@ def eye_state_position(eye, cam_dir, offset=0.1):
     """Mirror of the shared eye-state placement used by eye-space systems.
 
     The eye-space anchor: eye position + camera direction * offset.
-    This is the canonical pattern (rain droplets, glare, illuminance all
-    consume the shared fnc_getEyeState foundation).
+    Consumed by rain droplets, glare, illuminance.
     """
     return (
         eye[0] + cam_dir[0] * offset,
         eye[1] + cam_dir[1] * offset,
         eye[2] + cam_dir[2] * offset,
     )
+
+
+def weather_ema(prev, raw, dt, tau):
+    """Mirror of the per-variable weather EMA (fnc_getSmoothedWeather).
+
+    alpha = dt / (dt + tau); y += alpha * (raw - y).
+    Physical taus: rain 120 s, overcast 300 s, fog 900 s (meteorology).
+    """
+    a = dt / (dt + tau)
+    return prev + (raw - prev) * a
 
 
 def second_sun_brightness(radiation):
@@ -1801,6 +1810,50 @@ class TestGlassReflection(unittest.TestCase):
         self.assertEqual(glass_reflection_material(2.0, "c", "h"), "h")
 
 
+class TestWeatherSmoothing(unittest.TestCase):
+    """Weather EMA: physical time constants, no single-frame snap."""
+
+    def test_rain_tau_2min(self):
+        # Rain tau 120 s: after 120 s a step is ~63 % done (1 - e^-1).
+        import math
+
+        y = 0.0
+        for _ in range(1200):  # 120 s at 0.1 s ticks
+            y = weather_ema(y, 1.0, 0.1, 120)
+        self.assertAlmostEqual(y, 1 - math.exp(-1), delta=0.02)
+
+    def test_overcast_tau_5min(self):
+        # Overcast tau 300 s: after 300 s ~63 % done.
+        import math
+
+        y = 0.0
+        for _ in range(3000):
+            y = weather_ema(y, 1.0, 0.1, 300)
+        self.assertAlmostEqual(y, 1 - math.exp(-1), delta=0.02)
+
+    def test_no_single_frame_snap(self):
+        # A full step (0 -> 1) must NOT jump in one frame: after one 0.1 s
+        # tick the value moves by <1 %.
+        y = weather_ema(0.0, 1.0, 0.1, 120)
+        self.assertLess(y, 0.01)
+
+    def test_fog_tau_15min(self):
+        # Fog tau 900 s (dissipation).
+        import math
+
+        y = 0.0
+        for _ in range(9000):
+            y = weather_ema(y, 1.0, 0.1, 900)
+        self.assertAlmostEqual(y, 1 - math.exp(-1), delta=0.02)
+
+    def test_converges_to_raw(self):
+        # Steady state: smoothed converges to the raw value (no bias).
+        y = 0.0
+        for _ in range(20000):
+            y = weather_ema(y, 0.7, 0.1, 120)
+        self.assertAlmostEqual(y, 0.7, places=3)
+
+
 class TestEyeState(unittest.TestCase):
     """Shared eye-state foundation: one anchor, consumed by all systems."""
 
@@ -2380,8 +2433,9 @@ class TestSQFSync(unittest.TestCase):
                 "_starlightLux + (_moonLight * 0.249) + _twilightLux",
                 "_cloudLoss",
                 "_cloudTransmission",
-                "overcast * 0.85) min 0.85",
-                "rain * 0.5",
+                "_overcastS * 0.85) min 0.85",
+                "_rainS * 0.5",
+                "call FUNC(getSmoothedWeather)",
                 "4 * pi * _dist * _dist",
                 "exp (-_gamma * _dist)",
                 "currentSunElevation",
@@ -2407,8 +2461,8 @@ class TestSQFSync(unittest.TestCase):
     def test_illuminance_extinction_constants(self):
         self._assert_in_sqf(
             "fnc_calculateIlluminance.sqf",
-            ["rain * 30", "4343", "40 * (fog / 0.5) ^ 2", "min 300"],
-            "rain/fog extinction",
+            ["_rainS * 30", "4343", "40 * (_fogS / 0.5) ^ 2", "min 300"],
+            "smoothed rain/fog extinction",
         )
 
     def test_nvg_gain_model(self):
@@ -2434,7 +2488,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_applyNVGTubeModel.sqf",
             [
                 "_noiseFloor + (1 - _noiseFloor) * _shotNoise",
-                "rain * 0.35",
+                "_rainS * 0.35",
                 "0.03 max _noise min 1",
             ],
             "combined noise floor + rain Mie",
@@ -2576,6 +2630,60 @@ class TestSQFSync(unittest.TestCase):
             ],
             "shared eye-state foundation (state-aware direction)",
         )
+
+    def test_smoothed_weather_constants(self):
+        # The weather smoothing foundation: physical time constants
+        # (rain 120 s, overcast 300 s, fog 900 s) from meteorology, one
+        # cached EMA per frame.  Prevents the single-frame brightness snap
+        # when the engine's rain/overcast step abruptly.
+        self._assert_in_sqf(
+            "fnc_getSmoothedWeather.sqf",
+            [
+                "diag_frameNo",
+                "_tauRain",
+                "_tauOvercast",
+                "_tauFog",
+                "120",
+                "300",
+                "900",
+                "missionNamespace setVariable [QGVAR(weatherEMA), _prev]",
+            ],
+            "smoothed weather foundation (physical taus)",
+        )
+
+    def test_no_raw_weather_in_brightness_paths(self):
+        # Every brightness/visibility consumer must read the SMOOTHED
+        # weather, not raw `rain`/`overcast`/`fog` (which step abruptly and
+        # snap the display).  Only the droplet physics reads raw rain
+        # (instant response is correct there).
+        for fname, ctx in [
+            ("fnc_applyNVGTubeModel.sqf", "NVG tube"),
+            ("fnc_calculateIlluminance.sqf", "illuminance"),
+            ("fnc_applyNightGrain.sqf", "night grain"),
+            ("fnc_applyThermalVision.sqf", "thermal vision"),
+            ("fnc_calculateAttenuation.sqf", "attenuation"),
+            ("fnc_calculateAtmosphericSeeing.sqf", "seeing"),
+            ("fnc_calculateMirageIntensity.sqf", "mirage"),
+        ]:
+            src = _read_sqf(fname)
+            self.assertIn(
+                "call FUNC(getSmoothedWeather)",
+                src,
+                f"{ctx} must consume the smoothed weather",
+            )
+            # No raw `rain`/`overcast`/`fog` variable reads (assignments
+            # inside getSmoothedWeather are the only legitimate ones; this
+            # checks the consumers).  Comments are stripped first so a
+            # mention in prose ("fog > 0.5") does not false-positive.
+            src_code = "\n".join(
+                ln for ln in src.splitlines() if not ln.strip().startswith("//")
+            )
+            for raw in ["(rain ", "(rain)", "(overcast ", "(fog "]:
+                self.assertNotIn(
+                    raw,
+                    src_code,
+                    f"{ctx} must not read raw {raw.strip('(')} directly",
+                )
 
     def test_eye_state_consumers(self):
         # Every eye-space system must consume the shared foundation, not

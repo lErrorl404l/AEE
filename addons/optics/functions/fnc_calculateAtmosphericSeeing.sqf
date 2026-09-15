@@ -25,7 +25,7 @@ Stored in QGVAR(atmosphericSeeing). Lower = better.
 private _turbulence = missionNamespace getVariable [QEGVAR(core,currentTurbulence), 0];
 private _temp       = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 private _humidity   = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
-private _overcast   = overcast;
+private _overcast   = ([] call FUNC(getSmoothedWeather)) select 1;
 private _daytime    = sunOrMoon == 1;
 
 // ─── Thermal convection Cn² (daytime boundary-layer heating) ───────────────

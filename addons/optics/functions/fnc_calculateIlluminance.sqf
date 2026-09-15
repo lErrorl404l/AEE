@@ -84,9 +84,18 @@ if (_lightLen > 0.001) then {
 // NOTE: min/max bind LOOSER than arithmetic in SQF, so the cap MUST be
 // parenthesised: "1 - (x min 0.85)" would parse as "(1 - x) min 0.85"
 // and give 0.85 transmission in clear sky (a 15 % loss for no reason).
-private _cloudLoss = (overcast * 0.85) min 0.85;
+// Smoothed weather: the engine's rain/overcast can step abruptly (mission
+// script, weather clear).  Reading them raw makes the NVG display SNAP to
+// a new brightness in one frame (the user report: "as soon as rain stops
+// it snaps straight away to a higher brightness").  The shared weather
+// foundation EMA-eases them over ~5 s so weather transitions look real.
+private _weather = [] call FUNC(getSmoothedWeather);
+private _rainS = _weather select 0;
+private _overcastS = _weather select 1;
+
+private _cloudLoss = (_overcastS * 0.85) min 0.85;
 private _cloudTransmission = 1 - _cloudLoss;
-private _moonLight = 0 max ((moonIntensity * _cloudTransmission) - (rain * 0.5));
+private _moonLight = 0 max ((moonIntensity * _cloudTransmission) - (_rainS * 0.5));
 
 // ─── Twilight glow (NVG-relevant sky light) ──────────────────────────────
 // Image intensifiers respond to VISIBLE + near-infrared, and the twilight
@@ -196,17 +205,18 @@ if (!isNull _unit && hasInterface) then {
     // Fog: the engine `fog` value (0-1) approximates visibility.  Dense
     // fog (fog > 0.5, vis < 200 m) can exceed 100 dB/km.  We use a
     // simplified Kim model: γ_fog ≈ 10^(1.7 - 2.0 × vis_km) for vis < 1 km.
-    private _rainExtinction = if (rain > 0.1) then {
+    private _rainExtinction = if (_rainS > 0.1) then {
         // Rain attenuation: 0-30 dB/km mapped from rain 0-1
-        private _dBkm = rain * 30;
+        private _dBkm = _rainS * 30;
         _dBkm / 4343   // convert dB/km to per-metre: γ = dB_km / (10/ln(10) × 1000)
     } else { 0 };
 
     // Fog: use `fog` variable if available, estimate from overcast + humidity.
-    private _fogExtinction = if (fog > 0.3) then {
+    private _fogS = _weather select 2;
+    private _fogExtinction = if (_fogS > 0.3) then {
         // Fog attenuation: exponential ramp.  fog=0.5 → ~40 dB/km,
         // fog=1.0 → ~300 dB/km (ITU-R P.1817-1 dense fog limit).
-        private _dBkm = 40 * (fog / 0.5) ^ 2;
+        private _dBkm = 40 * (_fogS / 0.5) ^ 2;
         _dBkm = _dBkm min 300;
         _dBkm / 4343
     } else { 0 };
