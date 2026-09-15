@@ -89,9 +89,20 @@ private _applied = 0;
 // use Building as the base).  Both are queried so no building type is
 // missed — the 0-swapped report was likely the class filter missing
 // the actual building parent class.
-private _objects = (vehicles - [player])
-    + (_player nearObjects ["House", 300])
-    + (_player nearObjects ["Building", 300]);
+//
+// MAP-WIDE BOOT: allMissionObjects "" pulls EVERY object in the mission
+// (placed + spawned + map-embedded statics that exist as objects).  This
+// is one pass at boot — no per-frame near-player LOD, nothing left at
+// baked defaults.  For the per-frame TICK the nearPlayer query is used
+// (cheaper for the moving player); for ENTER/boot the full list is used
+// so the whole map is baseline-corrected immediately.
+private _objects = if (_mode == "ENTER") then {
+    allMissionObjects ""
+} else {
+    (vehicles - [player])
+        + (_player nearObjects ["House", 300])
+        + (_player nearObjects ["Building", 300])
+};
 {
     if (isNull _x) then { continue; };
     private _obj = _x;
