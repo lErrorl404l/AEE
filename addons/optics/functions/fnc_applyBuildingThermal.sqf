@@ -48,14 +48,22 @@ if (!(_lastTemp isEqualType 0)) then { _lastTemp = -999; };
 if (abs (_airTemp - _lastTemp) < 2) exitWith { 0 };
 missionNamespace setVariable [QGVAR(tiBldgLastTemp), _airTemp];
 
-// ─── Apply to nearby buildings ────────────────────────────────────────────
+// ─── Apply to nearby buildings AND vehicles ───────────────────────────────
 // Cold TI material: the same ti_cloth_cold.rvmat (real TI texture, correct
 // shader/flag set).  Buildings get swapped to it so they read cold; the
 // physics second sun adds warmth through the red channel in daylight.
 //
-// MATERIAL WEIGHTING: the swap target depends on the building's actual
-// material, read from getObjectMaterials (the rvmat path).  Thermal mass
-// and solar response differ:
+// Vehicles too: setVehicleTIPars only drives the engine/wheels/weapon
+// PARTS.  The vehicle BODY thermal comes from its baked TI texture
+// (red=128 in the shared default), which reads white through the AGC
+// window even when parked cold.  Swapping the body material to cold TI
+// makes a parked vehicle read cold like buildings — the A3TI pattern
+// (they swap vehicles + allUnits; the parked-MRAP-white report is the
+// body's baked TI).
+//
+// MATERIAL WEIGHTING: the swap target depends on the actual material,
+// read from getObjectMaterials (the rvmat path).  Thermal mass and solar
+// response differ:
 //   concrete/brick/stone/rock   -> high thermal mass, stays cold (strong)
 //   wood/fabric/tarpaulin       -> mid mass, moderate
 //   metal/glass/plastic         -> low mass, responds to sun (weakest cold)
@@ -63,16 +71,21 @@ missionNamespace setVariable [QGVAR(tiBldgLastTemp), _airTemp];
 // cold/hot textures are per-material variants; for now the base cold
 // texture is used for all, and the material factor throttles how many
 // selections are swapped (a high-mass building swaps more surfaces = reads
-// colder overall).  This is a first pass: per-material TI textures are
+// colder overall).  This is a first pass — per-material TI textures are
 // the upgrade path (ponytail: one cold TI texture, material factor only).
 private _material = "\z\aee\addons\optics\data\ti_cloth_cold.rvmat";
+private _materialHot = "\z\aee\addons\optics\data\ti_cloth_hot.rvmat";
 private _saved = missionNamespace getVariable [QGVAR(tiBldgSaved), []];
 private _applied = 0;
 
-private _buildings = _player nearObjects ["House", 300];
+// A3TI pattern: vehicles + units.  Buildings come from nearObjects.
+// Vehicles swapped here (bodies cold when parked); units handled by
+// fnc_applyClothingThermal.
+private _objects = (vehicles - [player]) + (_player nearObjects ["House", 300]);
 {
     if (isNull _x) then { continue; };
     private _obj = _x;
+    private _isVehicle = _obj isKindOf "AllVehicles";
 
     // Per-class thermal selections, cached.  Men use all texture
     // selections; buildings use the same discovery (A3TI pattern).
@@ -95,6 +108,52 @@ private _buildings = _player nearObjects ["House", 300];
     } forEach _selections;
     if (_already) then { continue; };
 
+    // ─── Per-selection thermal gradient (VEHICLES) ─────────────────────
+    // A real vehicle has a temperature GRADIENT: the engine bay/exhaust
+    // runs hot, the body panels stay cool, the wheels warm from friction,
+    // the glass reads differently.  We classify each selection by its
+    // model selection name and assign the matching TI material:
+    //   engine/exhaust/radiator/motor/turret -> HOT (drives with engine)
+    //   wheel/tyre/track                      -> HOT (friction, dynamic)
+    //   glass/window                          -> keep engine thermal
+    //   body/other                            -> COLD (parked reads cold)
+    // The engine slot of setVehicleTIPars already drives the engine-area
+    // brightness on top; this material gradient makes the AREA visibly
+    // hotter than the body — the parked-MRAP-white was a uniform body.
+    //
+    // Selection names come from the model config (hiddenSelections order
+    // matches getObjectTextures index).
+    private _selNames = [];
+    if (_isVehicle) then {
+        _selNames = getArray (configOf _obj >> "hiddenSelections");
+        if (_selNames isEqualTo []) then {
+            // Fallback: selectionNames from the model.
+            _selNames = selectionNames _obj;
+        };
+    };
+    private _swapMats = [];  // [selectionIndex, material]
+    {
+        private _sel = _x;
+        private _mat = _material;   // default cold
+        if (_isVehicle && _sel < count _selNames) then {
+            private _sn = toLower (_selNames select _sel);
+            if (_sn find "engine" >= 0 || _sn find "exhaust" >= 0
+                || _sn find "radiator" >= 0 || _sn find "motor" >= 0
+                || _sn find "turret" >= 0 || _sn find "intake" >= 0) then {
+                _mat = _materialHot;             // engine area: hot
+            };
+            if (_sn find "wheel" >= 0 || _sn find "tyre" >= 0
+                || _sn find "track" >= 0) then {
+                _mat = _materialHot;             // wheels: friction heat
+            };
+            if (_sn find "glass" >= 0 || _sn find "window" >= 0
+                || _sn find "light" >= 0) then {
+                _mat = "";                        // keep engine thermal
+            };
+        };
+        if (_mat != "") then { _swapMats pushBack [_sel, _mat]; };
+    } forEach _selections;
+
     // ─── Material/colour weighting ─────────────────────────────────────
     // Read the building's dominant material from its rvmat paths and
     // classify thermal mass.  Concrete/brick: heavy, stays cold.  Metal/
@@ -115,24 +174,36 @@ private _buildings = _player nearObjects ["House", 300];
         };
     } forEach _mats;
 
-    private _swapCount = count _selections;
-    // Heavy-mass building: swap everything (reads coldest).  Metal/glass
-    // dominant: swap half the surfaces (responds to sun, reads less cold).
-    if (_heavyCount > 0 && _metalCount == 0) then {
-        _swapCount = count _selections;   // full cold
-    } else {
-        if (_metalCount > _heavyCount) then {
-            _swapCount = ceil (count _selections / 2);
-        };
-    };
-
+    // ─── Apply ─────────────────────────────────────────────────────────
+    // Vehicles: use the per-selection gradient (engine area hot, body
+    // cold, glass unchanged).  Buildings: mass-weighted count of the
+    // cold material (concrete full, metal half).
     private _oldMats = getObjectMaterials _obj;
-    for "_i" from 0 to (_swapCount - 1) do {
-        _obj setObjectMaterial [_selections select _i, _material];
+    if (_isVehicle && _swapMats isNotEqualTo []) then {
+        {
+            _x params ["_selIdx", "_selMat"];
+            _obj setObjectMaterial [_selIdx, _selMat];
+        } forEach _swapMats;
+        _saved pushBack [_obj, _oldMats, _selections];
+        _applied = _applied + 1;
+    } else {
+        private _swapCount = count _selections;
+        // Heavy-mass building: swap everything (reads coldest).  Metal/
+        // glass dominant: swap half (responds to sun, reads less cold).
+        if (_heavyCount > 0 && _metalCount == 0) then {
+            _swapCount = count _selections;   // full cold
+        } else {
+            if (_metalCount > _heavyCount) then {
+                _swapCount = ceil (count _selections / 2);
+            };
+        };
+        for "_i" from 0 to (_swapCount - 1) do {
+            _obj setObjectMaterial [_selections select _i, _material];
+        };
+        _saved pushBack [_obj, _oldMats, _selections];
+        _applied = _applied + 1;
     };
-    _saved pushBack [_obj, _oldMats, _selections];
-    _applied = _applied + 1;
-} forEach _buildings;
+} forEach _objects;
 
 missionNamespace setVariable [QGVAR(tiBldgSaved), _saved];
 _applied
