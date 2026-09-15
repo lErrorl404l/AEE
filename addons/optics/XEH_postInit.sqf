@@ -84,6 +84,10 @@
             // Transient 0: skip, do not clean up or stop.  The visionMode
             // event handles real exits.
             if (_vm == 0) exitWith {};
+            // Rain droplets on the objective: mode-independent physics (rain
+            // lands on the lens whether it is NVG or thermal).  Run before
+            // the mode-specific branches so both get the source.
+            ["TICK"] call FUNC(applyRainDroplets);
             if (_vm == 1) then { [] call FUNC(applyNVGTubeModel); };
             if (_vm == 2) then {
                 // Thermal optics are parfocal: LWIR wavelength is ~10x
