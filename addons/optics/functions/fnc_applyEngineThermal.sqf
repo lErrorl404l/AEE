@@ -37,32 +37,75 @@ if (!hasInterface) exitWith { 0 };
 private _player = call CBA_fnc_currentUnit;
 if (isNil "_player" || !alive _player || cameraOn != _player) exitWith { 0 };
 
-// ─── 1. Display baseline (FIXED, not adaptive) ────────────────────────────
-// A thermal display's gain/level must be STABLE or the operator cannot
-// compare hot vs cold across a scene: an auto-exposure layer that re-maps
-// as the view changes reads as a "flashlight" / "something is leaching in"
-// and makes every 1:1 comparison impossible (the user's exact report).
-// Real military thermals offer a fixed gain+level; AGC exists but is a
-// deliberate mode, not the default.
+// ─── 1. Display window: faithful pass-through + stable blowout guard ──────
+// ENGINE CONSTRAINT (verified): the window maps
+//     output = OutputRangeStart + thermalValue * OutputRangeWidth
+// with width > 0 && width < 1 and start >= 0.  It can only COMPRESS and
+// OFFSET - it CANNOT stretch a narrow band to full range (that would need
+// width > 1 or start < 0, both rejected by the engine).  So a true
+// contrast-boosting AGC is IMPOSSIBLE here; the engine's own thermalValue
+// is already the normalized scene mapping, and start=0/width=1 passes it
+// through faithfully (the maximum contrast the engine allows).
 //
-// The engine's own output mapping is already the physics pass: thermalValue
-// (0..1) -> brightness.  The window (OutputRangeStart/Width) is only a
-// display baseline.  We lock it to start=0 (cold = dark), width=1 (full
-// range) ONCE on ENTER, so the image is deterministic and all separation
-// comes from per-object thermalValue (vehicles via setVehicleTIPars,
-// people/buildings via material swaps).  The physics below does the work;
-// the window must not fight it.
-private _outStart = 0.0;
-private _outWidth = 1.0;
+// What the window CAN usefully do is BLOWOUT PREVENTION: when a very hot
+// object (a running engine at full heat) would saturate the top of the
+// range, narrow the width so it maps to ~0.9 and the rest of the scene
+// keeps its relative contrast.  When nothing is near saturation, width
+// stays 1.0 (no change).
+//
+// STABILITY (the old AGC's fatal flaw): an auto-window that re-maps every
+// frame reads as a "flashlight / exposure keeps adjusting" and makes
+// hot-vs-cold comparison impossible.  Two guards fix that:
+//   - FREEZE while panning: if the gaze is moving fast, hold the window.
+//     A real FLIR locks its AGC during a sweep and re-evaluates when the
+//     view settles.
+//   - EASE when settled: a slow EMA (~1.5 s), not a per-frame jump.
+// start is ALWAYS 0 - we never lift the black level (the "flashlight in
+// the face" the user saw came from start=0.5, never from width).
+private _eyeState = [_player] call FUNC(getEyeState);
+private _fwd = _eyeState select 1;
 
-// Apply once (guard: only call when not already applied this session).
-private _tiBaseSet = missionNamespace getVariable [QGVAR(tiBaseSet), false];
-if !(_tiBaseSet isEqualType true) then { _tiBaseSet = false; };
-if (!_tiBaseSet) then {
+// Gaze angular velocity: angle between this frame's forward and the last.
+private _prevFwd = missionNamespace getVariable [QGVAR(agcPrevFwd), _fwd];
+if !(_prevFwd isEqualType [] && {count _prevFwd == 3}) then { _prevFwd = _fwd; };
+private _cosA = (_prevFwd vectorDotProduct _fwd) max -1 min 1;
+private _angVel = (acos _cosA) / (diag_deltaTime max 0.001);   // rad/s
+missionNamespace setVariable [QGVAR(agcPrevFwd), _fwd];
+
+// Freeze threshold: ~25 deg/s (0.44 rad/s).  Below = settled, adapt.
+// Above = sweeping, hold the window steady.
+private _settled = _angVel < 0.44;
+
+// Blowout guard: narrow only when the scene's hottest object would clip.
+// _sceneMaxHeat is the max engineHeat we applied to any vehicle this
+// frame (set by section 2 below); 0.05 floor for an all-cold scene.
+private _sceneMaxHeat = missionNamespace getVariable [QGVAR(tiSceneMaxHeat), 0.5];
+if !(_sceneMaxHeat isEqualType 0) then { _sceneMaxHeat = 0.5; };
+private _outStart = 0.0;
+private _targetWidth = if (_sceneMaxHeat > 0.9) then {
+    (0.9 / _sceneMaxHeat) min 1.0 max 0.35
+} else {
+    1.0
+};
+
+// Applied width: hold while panning, ease toward target when settled.
+private _outWidth = missionNamespace getVariable [QGVAR(tiOutWidth), _targetWidth];
+if !(_outWidth isEqualType 0 && _outWidth > 0) then { _outWidth = _targetWidth; };
+if (_settled && diag_deltaTime > 0) then {
+    private _a = diag_deltaTime / (diag_deltaTime + 1.5);
+    _outWidth = _outWidth + (_targetWidth - _outWidth) * _a;
+};
+missionNamespace setVariable [QGVAR(tiOutWidth), _outWidth];
+
+// Apply only when the value changed materially (setTIParameter forces a
+// histogram update; no need to spam it).
+private _lastW = missionNamespace getVariable [QGVAR(tiAppliedWidth), -1];
+private _lastS = missionNamespace getVariable [QGVAR(tiAppliedStart), -1];
+if (abs (_outWidth - _lastW) > 0.01 || abs (_outStart - _lastS) > 0.01) then {
     setTIParameter ["OutputRangeStart", _outStart];
     setTIParameter ["OutputRangeWidth", _outWidth];
-    missionNamespace setVariable [QGVAR(tiBaseSet), true];
-    AEE_LOG_INFO("thermal display baseline locked: start=0 width=1");
+    missionNamespace setVariable [QGVAR(tiAppliedWidth), _outWidth];
+    missionNamespace setVariable [QGVAR(tiAppliedStart), _outStart];
 };
 
 // ─── 2. Per-vehicle heat state from our physics model ─────────────────────

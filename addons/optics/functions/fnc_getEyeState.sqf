@@ -34,14 +34,32 @@ if (isNull _unit) exitWith { [getPosASLVisual _unit, [0, 0, 1], [0, 1, 0]] };
 
 private _frame = diag_frameNo;
 private _cache = missionNamespace getVariable [QGVAR(eyeState), []];
-if (count _cache >= 3 && {_cache select 0 == _frame}) exitWith {
+// Cache layout is [_frame, [_eye, _fwd, _up]] = 2 elements.  Guard on 2.
+if (count _cache >= 2 && {_cache select 0 == _frame}) exitWith {
     _cache select 1
 };
 
 private _eye = eyePos _unit;
 private _eyeDir = eyeDirection _unit;
-private _fwd = _eyeDir select 0;
-private _up = _eyeDir select 1;
+// eyeDirection's return shape is ambiguous across engine states: it is
+// documented as the eye direction vector, and empirically can come back
+// either as a flat 3-vector [x,y,z] (the eye forward) or as a 2-element
+// [forward, up].  Handle BOTH; a scalar reaching vectorCrossProduct later
+// raises "Type Number, expected Array" (the bug this guards).
+private _fwd = vectorDir _unit;
+private _up = vectorUp _unit;
+if (_eyeDir isEqualType [] && {count _eyeDir == 3}) then {
+    // Flat vector form: the whole thing is the eye forward.
+    _fwd = _eyeDir;
+} else {
+    if (_eyeDir isEqualType [] && {count _eyeDir == 2}) then {
+        // [forward, up] form.
+        private _f = _eyeDir select 0;
+        private _u = _eyeDir select 1;
+        if (_f isEqualType [] && {count _f == 3}) then { _fwd = _f; };
+        if (_u isEqualType [] && {count _u == 3}) then { _up = _u; };
+    };
+};
 
 // ─── State-aware forward vector ───────────────────────────────────────────
 // The eye POSITION is always eyePos, but the correct LOOK vector depends
@@ -69,10 +87,8 @@ if (_inTurret) then {
 
 // Cheap safe-guard: if the vectors are degenerate (broken camera state),
 // fall back to the unit's own orientation.
-if (_fwd isEqualTo [0, 0, 0] || {_up isEqualTo [0, 0, 0]}) then {
-    _fwd = vectorDir _unit;
-    _up = vectorUp _unit;
-};
+if !(_fwd isEqualType [] && {count _fwd == 3}) then { _fwd = vectorDir _unit; };
+if !(_up isEqualType [] && {count _up == 3}) then { _up = vectorUp _unit; };
 
 missionNamespace setVariable [QGVAR(eyeState), [_frame, [_eye, _fwd, _up]]];
 [_eye, _fwd, _up]

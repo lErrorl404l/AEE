@@ -482,17 +482,30 @@ def vehicle_wheel_heat(speed_ms):
 
 
 def ti_output_window(scene_max_heat):
-    """Mirror of the setTIParameter display baseline (FIXED).
+    """Mirror of the thermal display window (blowout guard, stable).
 
-    The window is locked once on ENTER: start=0 (cold = dark), width=1
-    (full range).  It NEVER adapts to the scene - a stable baseline lets
-    the operator compare hot vs cold, and all separation comes from
-    per-object thermalValue (vehicles via setVehicleTIPars, people and
-    buildings via material swaps).  The old scene-driven AGC EMA read as
-    a "flashlight / something is leaching in"; a fixed gain is the real
-    military default.
+    start is ALWAYS 0 (never lift the black level - the "flashlight"
+    came from start=0.5).  width is a faithful pass-through (1.0) UNLESS
+    a hot object would saturate: then narrow to 0.9/maxHeat so it maps to
+    ~0.9 and the rest of the scene keeps relative contrast.  The engine
+    window can only COMPRESS (width<=1) and OFFSET (start>=0); it cannot
+    stretch, so this is the most useful thing it can do.
     """
+    mh = max(0.05, min(1.0, scene_max_heat))
+    if mh > 0.9:
+        return 0.0, max(0.35, min(1.0, 0.9 / mh))
     return 0.0, 1.0
+
+
+def agc_settled(ang_vel_rad_s, threshold=0.44):
+    """Mirror of the AGC pan-freeze gate.  Below ~25 deg/s = settled."""
+    return ang_vel_rad_s < threshold
+
+
+def agc_ema(prev, target, dt, tau=1.5):
+    """Mirror of the AGC ease (tau ~1.5 s) when settled."""
+    a = dt / (dt + tau)
+    return prev + (target - prev) * a
 
 
 def eye_state_position(eye, cam_dir, offset=0.1):
@@ -1467,24 +1480,55 @@ class TestEngineThermalDrive(unittest.TestCase):
         self.assertAlmostEqual(s, 0.0, places=6)
         self.assertAlmostEqual(w, 1.0, places=6)
 
-    def test_agc_window_fixed_baseline(self):
-        # The window is FIXED: start=0, width=1, regardless of scene.
-        # A stable baseline is the real military default - auto-exposure
-        # that re-maps as you pan reads as a "flashlight in the face"
-        # and makes hot-vs-cold comparison impossible.
-        for c in [0, 0.05, 0.3, 0.5, 0.9, 1.0]:
+    def test_agc_window_no_blowout_full_width(self):
+        # No hot object (max heat <= 0.9): faithful pass-through, width=1.
+        for c in [0, 0.05, 0.3, 0.5, 0.9]:
             s, w = ti_output_window(c)
             self.assertAlmostEqual(s, 0.0, places=6)
             self.assertAlmostEqual(w, 1.0, places=6)
 
+    def test_agc_window_blowout_narrows(self):
+        # A saturated hot object (>0.9): narrow to 0.9/maxHeat so it maps
+        # to ~0.9 and the rest keeps relative contrast.
+        s, w = ti_output_window(1.0)
+        self.assertAlmostEqual(w, 0.9, places=6)
+        s2, w2 = ti_output_window(0.95)
+        self.assertAlmostEqual(w2, 0.9 / 0.95, places=4)
+
+    def test_agc_start_always_zero(self):
+        # start is ALWAYS 0 - the "flashlight" came from lifting the black
+        # level (start=0.5); we never do that.
+        for c in [0, 0.3, 0.9, 1.0, 5.0]:
+            s, _ = ti_output_window(c)
+            self.assertAlmostEqual(s, 0.0, places=6)
+
     def test_agc_window_bounds(self):
-        # Fixed baseline always in valid display range.
         for c in [0, 0.1, 0.5, 0.9, 1.0, 5.0, -1.0]:
             s, w = ti_output_window(c)
             self.assertGreaterEqual(s, 0.0)
             self.assertLessEqual(s, 0.5)
             self.assertGreaterEqual(w, 0.35)
             self.assertLessEqual(w, 1.0)
+
+    def test_agc_freezes_while_panning(self):
+        # Fast pan (>25 deg/s): not settled, window held.
+        self.assertFalse(agc_settled(1.0))  # ~57 deg/s
+        self.assertFalse(agc_settled(0.5))  # ~29 deg/s
+        # Slow / still: settled, window may adapt.
+        self.assertTrue(agc_settled(0.3))  # ~17 deg/s
+        self.assertTrue(agc_settled(0.0))  # still
+
+
+def test_agc_eases_when_settled(self):
+    # A settled view eases toward target over ~1.5 s, not instantly.
+    w = 1.0
+    target = 0.5
+    for _ in range(50):  # 0.5 s at 10 ms
+        w = agc_ema(w, target, 0.01)
+    # Analytic: target + (start-target)*exp(-0.5/1.5) = 0.8587
+    self.assertAlmostEqual(w, target + (1.0 - target) * math.exp(-0.5 / 1.5), places=3)
+    self.assertLess(w, 1.0)  # moved
+    self.assertGreater(w, target)  # not yet arrived (eased)
 
 
 class TestSecondSun(unittest.TestCase):
@@ -2451,11 +2495,13 @@ class TestSQFSync(unittest.TestCase):
                 "setVehicleTIPars [_engineHeat, _wheelHeat, _exhaustHeat]",
                 "_speed / 30",
                 "(_surfaceTemp - _airTemp) / 50",
-                "tiBaseSet",
+                "tiSceneMaxHeat",
                 "private _outStart = 0.0",
-                "private _outWidth = 1.0",
+                "0.9 / _sceneMaxHeat",
+                "_angVel < 0.44",
+                "tiAppliedWidth",
             ],
-            "engine thermal drive (TI pars + FIXED display baseline)",
+            "engine thermal drive (TI pars + stable blowout-guard AGC)",
         )
 
     def test_engine_thermal_damage_constants(self):
@@ -2520,9 +2566,12 @@ class TestSQFSync(unittest.TestCase):
             [
                 "diag_frameNo",
                 "eyePos _unit",
+                "eyeDirection _unit",
                 "screenToWorldDirection [0.5, 0.5]",
                 "weaponDirection (currentWeapon _veh)",
                 "turretUnit [0]) isEqualTo _unit",
+                "count _eyeDir == 3",
+                "count _eyeDir == 2",
                 "missionNamespace setVariable [QGVAR(eyeState), [_frame, [_eye, _fwd, _up]]]",
             ],
             "shared eye-state foundation (state-aware direction)",
