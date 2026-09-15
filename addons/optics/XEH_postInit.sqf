@@ -83,6 +83,17 @@
             if (_vm == 0) exitWith {};
             if (_vm == 1) then { [] call FUNC(applyNVGTubeModel); };
             if (_vm == 2) then {
+                // Thermal optics are parfocal: LWIR wavelength is ~10x
+                // visible, so the depth of field is so deep that real FLIR
+                // sights need NO focus mechanism (fixed at the factory).
+                // Kill the NVG DoF effect so its last focus value (e.g.
+                // PVS-31's 20 m ring) does not leak into the thermal view
+                // as a fixed focus blur.
+                private _hDof = missionNamespace getVariable [QGVAR(ppHandle_NVG_DoF), -1];
+                if (_hDof >= 0) then {
+                    ppEffectDestroy _hDof;
+                    missionNamespace setVariable [QGVAR(ppHandle_NVG_DoF), -1];
+                };
                 [] call FUNC(applyThermalVision);
                 [] call FUNC(applyEngineThermal);
                 [] call FUNC(applyWeaponBarrelHeat);
