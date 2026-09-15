@@ -38,7 +38,12 @@ if (_mode == "EXIT") then {
         _x params ["_o", "_oldMats", "_thermalSelections"];
         if (!isNull _o) then {
             {
-                _o setObjectMaterial [_x, _oldMats select _x];
+                // getObjectMaterials can return fewer entries than the
+                // thermal selections that were swapped.  Out-of-bounds
+                // select returns nil, which setObjectMaterial rejects.
+                if (_x < count _oldMats && {(_oldMats select _x) isEqualType ""}) then {
+                    _o setObjectMaterial [_x, _oldMats select _x];
+                };
             } forEach _thermalSelections;
         };
     } forEach _saved;

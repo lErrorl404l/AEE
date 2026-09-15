@@ -2739,6 +2739,7 @@ class TestSQFSync(unittest.TestCase):
                 "allUnits",
                 "clothingInsulation",
                 "abs (_tiScale - _lastScale) < 0.05",
+                "_x < count _oldMats",
             ],
             "per-item clothing TI override",
         )
@@ -2759,6 +2760,7 @@ class TestSQFSync(unittest.TestCase):
                 "vehicles - [player]",
                 "currentSolarRadiation",
                 "select (_solarRadiation > 0.3)",
+                "_x < count _oldMats",
             ],
             "per-building TI material swap",
         )
