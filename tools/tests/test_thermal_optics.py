@@ -201,22 +201,32 @@ def battery_derating(temp_c):
 # ─── fnc_applyNVGTubeModel.sqf) ─────────────────────────────────────────────
 
 
-def ambient_lux(moon_intensity, overcast=0.0, rain=0.0):
-    """Mirror of the moon lux model in fnc_calculateIlluminance.
+def ambient_lux(
+    moon_intensity, overcast=0.0, rain=0.0, sun_elev_deg=-90.0, starlight=0.001
+):
+    """Mirror of the lux model in fnc_calculateIlluminance.
 
     cloudTransmission = 1 - min(overcast*0.85, 0.85)   (multiplicative)
     moonLight = max(0, moonIntensity*cloudTransmission - rain*0.5)
-    ambientLux = 0.001 + moonLight * 0.249
+    twilightLux = 10^(2.6 - 0.3*|sunElev|) when the sun is below horizon
+    ambientLux = starlight + moonLight*0.249 + twilightLux
 
     Full moon (1.0) clear sky -> 0.25 lux (real full-moon illuminance).
     Overcast is a MULTIPLICATIVE transmission loss (the engine does not
-    pre-attenuate moonIntensity for clouds — ACE3 applies its own
+    pre-attenuate moonIntensity for clouds - ACE3 applies its own
     (1 - overcast) factor); heavy overcast blocks ~85 % of moonlight.
-    Heavy rain halves the remainder.  The 0.001 floor is starlight.
+    Heavy rain halves the remainder.
+    starlight is the moonless-night floor (default 0.001).  It is a live
+    missionNamespace hook (aee_optics_starlightLux) so skybox mods can
+    raise the assumed night-sky brightness; a brighter sky -> higher lux
+    -> NVG gains down, rendering the brighter sky correctly.
+    Twilight glow (sun below horizon) adds the scattered-sunlight sky
+    light: ~6.3 lux at -6 deg, ~0.1 at -12, ~0.0016 at -18.
     """
     trans = 1.0 - min(overcast * 0.85, 0.85)
     moon = max(0.0, moon_intensity * trans - rain * 0.5)
-    return 0.001 + moon * 0.249
+    twilight = 10.0 ** (2.6 - 0.3 * abs(sun_elev_deg)) if sun_elev_deg <= 0 else 0.0
+    return starlight + moon * 0.249 + twilight
 
 
 def extinction_per_m(rain, fog):
@@ -1096,6 +1106,54 @@ class TestAmbientLux(unittest.TestCase):
     def test_half_moon_half_lux(self):
         # Half moon, clear: ~0.125 lux (midway to full moon).
         self.assertAlmostEqual(ambient_lux(0.5), 0.1255, places=4)
+
+
+class TestTwilight(unittest.TestCase):
+    """Twilight sky glow drives NVG dimming at dawn/dusk."""
+
+    def test_deep_night_unchanged(self):
+        # Sun at -90 (deep night): twilight ~0, starlight floor only.
+        self.assertAlmostEqual(ambient_lux(0.0, sun_elev_deg=-90), 0.001, places=4)
+
+    def test_civil_twilight(self):
+        # Sun at -6 (civil twilight end): ~6.3 lux dominates the moon term.
+        lux = ambient_lux(0.0, sun_elev_deg=-6)
+        self.assertAlmostEqual(lux, 0.001 + 10 ** (2.6 - 0.3 * 6), places=3)
+
+    def test_horizon_sunset(self):
+        # Sun at horizon: ~398 lux (bright twilight).
+        lux = ambient_lux(0.0, sun_elev_deg=0)
+        self.assertGreater(lux, 100)
+
+    def test_daylight_no_twilight_term(self):
+        # Sun above horizon: daylight, no twilight term (NVG not used).
+        self.assertAlmostEqual(ambient_lux(0.0, sun_elev_deg=30), 0.001, places=4)
+
+    def test_twilight_monotonic(self):
+        # Lower sun (more negative) -> darker.
+        self.assertLess(
+            ambient_lux(0, sun_elev_deg=-12), ambient_lux(0, sun_elev_deg=-3)
+        )
+
+    def test_astronomical_dusk_near_starlight(self):
+        # Sun at -18 (astronomical end): ~0.0016 lux, near the starlight floor.
+        lux = ambient_lux(0.0, sun_elev_deg=-18)
+        self.assertLess(lux, 0.01)
+        self.assertGreater(lux, 0.001)
+
+    def test_starlight_hook_raises_floor(self):
+        # A skybox mod raises aee_optics_starlightLux -> the whole night
+        # floor rises, so the NVG gains down for the brighter sky.
+        base = ambient_lux(0.0)
+        bright = ambient_lux(0.0, starlight=0.01)
+        self.assertAlmostEqual(bright, base * 10, places=4)
+
+    def test_starlight_hook_stacks_with_moon(self):
+        # Starlight + moonlight are additive; raising starlight shifts the
+        # full-moon night too.
+        base = ambient_lux(0.5)
+        bright = ambient_lux(0.5, starlight=0.01)
+        self.assertAlmostEqual(bright - base, 0.009, places=4)
 
 
 class TestExtinction(unittest.TestCase):
@@ -2191,16 +2249,32 @@ class TestSQFSync(unittest.TestCase):
         self._assert_in_sqf(
             "fnc_calculateIlluminance.sqf",
             [
-                "0.001 + _moonLight * 0.249",
+                "_starlightLux + (_moonLight * 0.249) + _twilightLux",
                 "_cloudLoss",
                 "_cloudTransmission",
                 "overcast * 0.85) min 0.85",
                 "rain * 0.5",
                 "4 * pi * _dist * _dist",
                 "exp (-_gamma * _dist)",
+                "currentSunElevation",
+                "10 ^ (2.6 - 0.3 * (abs _sunElev))",
+                "starlightLux",
             ],
-            "moon lux / cloud transmission / inverse-square / Beer-Lambert",
+            "moon lux / cloud / twilight / starlight hook / inverse-square",
         )
+
+    def test_solar_model_exposes_sun_elevation(self):
+        # The solar model must expose currentSunElevation for the twilight
+        # term (radiation is max 0, so it cannot give the below-horizon angle).
+        cfg = (
+            _REPO_ROOT
+            / "addons"
+            / "core"
+            / "functions"
+            / "fnc_calculateSolarRadiation.sqf"
+        ).read_text(encoding="utf-8")
+        self.assertIn("currentSunElevation", cfg)
+        self.assertIn("asin (_sinElev", cfg)
 
     def test_illuminance_extinction_constants(self):
         self._assert_in_sqf(
