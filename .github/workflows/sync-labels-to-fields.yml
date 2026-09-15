@@ -1,0 +1,175 @@
+name: Sync Labels to Project Fields
+
+on:
+  issues:
+    types: [labeled, unlabeled]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: read
+      projects: write
+    steps:
+      - name: Sync labels to project board fields
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const issue = context.payload.issue;
+            const labels = issue.labels.map(l => l.name);
+
+            // Map labels to field values
+            const priorityMap = {
+              'P0-critical': 'P0-critical',
+              'P1-high': 'P1-high',
+              'P2-medium': 'P2-medium',
+              'P3-low': 'P3-low'
+            };
+            const effortMap = {
+              'effort/XS': 'XS',
+              'effort/S': 'S',
+              'effort/M': 'M',
+              'effort/L': 'L',
+              'effort/XL': 'XL'
+            };
+            const typeMap = {
+              'type/feat': 'feat',
+              'type/fix': 'fix',
+              'type/research': 'research',
+              'type/improvement': 'improvement'
+            };
+            const phaseMap = {
+              'phase/1-baseline': '1-Baseline',
+              'phase/2-expansion': '2-Expansion',
+              'phase/3-frontier': '3-Frontier'
+            };
+
+            // Find project item for this issue
+            const projectNumber = 2;
+            const owner = 'lErrorl404l';
+
+            // Get project ID
+            const projectQuery = `query($owner: String!, $number: Int!) {
+              organization(login: $owner) {
+                projectV2(number: $number) { id }
+              }
+            }`;
+            const projectResult = await github.graphql(projectQuery, {
+              owner,
+              number: projectNumber
+            });
+            const projectId = projectResult.organization.projectV2.id;
+
+            // Find the item for this issue
+            const itemQuery = `query($projectId: ID!, $issueId: ID!) {
+              node(id: $projectId) {
+                ... on ProjectV2 {
+                  items(first: 100) {
+                    nodes {
+                      id
+                      content {
+                        __typename
+                        ... on Issue { id }
+                      }
+                    }
+                  }
+                }
+              }
+            }`;
+            const itemResult = await github.graphql(itemQuery, {
+              projectId,
+              issueId: issue.node_id
+            });
+
+            const item = itemResult.node.items.nodes.find(
+              n => n.content.__typename === 'Issue' && n.content.id === issue.node_id
+            );
+            if (!item) {
+              console.log('Issue not found in project board');
+              return;
+            }
+            const itemId = item.id;
+
+            // Get field IDs and option IDs
+            const fieldsQuery = `query($projectId: ID!) {
+              node(id: $projectId) {
+                ... on ProjectV2 {
+                  fields(first: 20) {
+                    nodes {
+                      ... on ProjectV2SingleSelectField {
+                        id
+                        name
+                        options { id name }
+                      }
+                    }
+                  }
+                }
+              }
+            }`;
+            const fieldsResult = await github.graphql(fieldsQuery, { projectId });
+
+            const fieldMap = {};
+            for (const field of fieldsResult.node.fields.nodes) {
+              if (field.options) {
+                const optionMap = {};
+                for (const opt of field.options) {
+                  optionMap[opt.name] = opt.id;
+                }
+                fieldMap[field.name] = { id: field.id, options: optionMap };
+              }
+            }
+
+            // Determine values from labels
+            const updates = [];
+            for (const [label, value] of Object.entries(priorityMap)) {
+              if (labels.includes(label)) updates.push({ field: 'Priority', value });
+            }
+            for (const [label, value] of Object.entries(effortMap)) {
+              if (labels.includes(label)) updates.push({ field: 'Effort', value });
+            }
+            for (const [label, value] of Object.entries(typeMap)) {
+              if (labels.includes(label)) updates.push({ field: 'Work Type', value });
+            }
+            for (const [label, value] of Object.entries(phaseMap)) {
+              if (labels.includes(label)) updates.push({ field: 'Phase', value });
+            }
+
+            // If no matching labels found, clear the fields
+            if (updates.length === 0) {
+              console.log('No matching labels found, skipping');
+              return;
+            }
+
+            // Update each field
+            for (const update of updates) {
+              const fieldInfo = fieldMap[update.field];
+              if (!fieldInfo) {
+                console.log(`Field ${update.field} not found`);
+                continue;
+              }
+              const optionId = fieldInfo.options[update.value];
+              if (!optionId) {
+                console.log(`Option ${update.value} not found in field ${update.field}`);
+                continue;
+              }
+
+              const mutation = `mutation($projectId: ID!, $itemId: ID!, $fieldId: ID!, $optionId: String!) {
+                updateProjectV2ItemFieldValue(input: {
+                  projectId: $projectId
+                  itemId: $itemId
+                  fieldId: $fieldId
+                  value: { singleSelectOptionId: $optionId }
+                }) {
+                  projectV2Item { id }
+                }
+              }`;
+
+              await github.graphql(mutation, {
+                projectId,
+                itemId,
+                fieldId: fieldInfo.id,
+                optionId
+              });
+              console.log(`Set ${update.field} = ${update.value}`);
+            }
