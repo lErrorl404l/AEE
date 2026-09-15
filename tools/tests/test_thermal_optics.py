@@ -2305,7 +2305,8 @@ class TestSQFSync(unittest.TestCase):
                 'nearObjects ["Building", _viewDist]',
                 "getObjectMaterials _obj",
                 "tiBldgSaved",
-                "abs (_airTemp - _lastTemp) < 2",
+                "abs (_airTemp - _lastTemp) >= 2",
+                "vehicles - [player]",
             ],
             "per-building TI material swap",
         )
