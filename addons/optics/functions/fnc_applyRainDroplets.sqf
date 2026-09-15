@@ -31,6 +31,13 @@ params ["_mode"];
 if (!hasInterface) exitWith { 0 };
 
 private _src = missionNamespace getVariable [QGVAR(rainDropSource), objNull];
+// Billboard type: the FIRST array element is the TEXTURE, not a .p3d shape.
+// A .p3d shape is only for SpaceObject particles — using one for a
+// Billboard made the engine try to load it as geometry ("No geometry and
+// no visual shape while trying to check property cratercolor", the exact
+// RPT error).  The real droplet texture is the engine's own raindrop3.paa
+// (from data_f, used by RainDrops.rvmat).  Case-sensitive: a3 lowercase.
+private _shape = ["\a3\data_f\raindrop3.paa", 1, 0, 1, 1];
 
 // ─── EXIT: destroy the source ─────────────────────────────────────────────
 if (_mode == "EXIT") then {
@@ -61,7 +68,7 @@ if (isNull _src) then {
     _src setParticleCircle [0.004, [0.004, 0.004, 0.004]];
     _src setParticleRandom [0.1, [0.002, 0.002, 0], [0, 0, 0], 0, 0, [0, 0, 0, 0], 0, 0];
     _src setParticleParams [
-        ["\A3\data_f\RainDrop.p3d", 1, 0, 1],   // shape (engine asset)
+        _shape,                                   // billboard texture (raindrop3.paa)
         "",                                       // animation (none)
         "Billboard",                              // type (faces player)
         1,                                        // timer period (s)
