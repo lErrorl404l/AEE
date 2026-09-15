@@ -59,11 +59,13 @@ if (random 1 > (_rain * 0.5)) exitWith { 0 };
 private _eye = eyePos _player;
 private _camDir = getCameraViewDirection _player;
 private _dist = 0.4 + random 0.3;
-private _pos = _eye vectorAdd (_camDir vectorMultiply _dist);
-
-// Droplet size: ~2-4 mm at 0.4-0.7 m (subtends ~0.3 deg, a visible spec).
+private _pos = ASLToATL (_eye vectorAdd (_camDir vectorMultiply _dist));
 private _size = 0.002 + random 0.002;
 private _lifetime = 0.1 + random 0.15;
+
+if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
+    diag_log text format ["[AEE] rain drop: rain=%1 pos=%2 size=%3", _rain, _pos, _size];
+};
 
 drop [
     ["\A3\data_f\ParticleEffects\Universal\Refract", 1, 0, 1],
