@@ -470,13 +470,17 @@ def ti_output_window(scene_max_heat):
 
 
 def second_sun_brightness(radiation):
-    """Mirror of fnc_applySecondSun: the engine's thermal SUN term.
+    """Mirror of fnc_applySecondSun: engine thermal SUN term brightness.
 
-    The fake sun's brightness follows our real solar radiation model:
-    0 (night) -> no sun term (buildings cold), 1 (day) -> full engine
-    sun-heating of the TI red channel.  Clamped 0..1.
+    The engine's thermal sun term expects lightpoint brightness in the
+    A3TI range (~13, their static value).  A 0..1 value is ~30x below
+    the visible threshold, so it does nothing and buildings fall back
+    to baked alive-heat.  We scale physics radiation (0..1) into that
+    range: brightness = radiation * 13.  Night (0) -> no sun term;
+    full day -> A3TI-equivalent 13.
     """
-    return max(0.0, min(1.0, radiation))
+    r = max(0.0, min(1.0, radiation))
+    return r * 13.0
 
 
 def clothing_ti_scale(insulation, air_temp_c):
@@ -1375,19 +1379,24 @@ class TestSecondSun(unittest.TestCase):
         self.assertAlmostEqual(second_sun_brightness(0), 0.0, places=6)
 
     def test_day_full_sun_term(self):
-        # Radiation 1 (clear midday): full sun-heating of TI red channel.
-        self.assertAlmostEqual(second_sun_brightness(1), 1.0, places=6)
+        # Radiation 1 (clear midday): A3TI-equivalent full sun term (13).
+        self.assertAlmostEqual(second_sun_brightness(1), 13.0, places=6)
 
     def test_overcast_attenuates(self):
-        # Overcast mid-day: partial sun term.
-        self.assertAlmostEqual(second_sun_brightness(0.5), 0.5, places=6)
+        # Overcast mid-day: partial sun term (0.5 * 13 = 6.5).
+        self.assertAlmostEqual(second_sun_brightness(0.5), 6.5, places=6)
 
     def test_clamped_out_of_range(self):
         self.assertAlmostEqual(second_sun_brightness(-0.2), 0.0, places=6)
-        self.assertAlmostEqual(second_sun_brightness(1.5), 1.0, places=6)
+        self.assertAlmostEqual(second_sun_brightness(1.5), 13.0, places=6)
 
     def test_never_negative(self):
         self.assertGreaterEqual(second_sun_brightness(0), 0)
+
+    def test_scale_matches_a3ti_ceiling(self):
+        # Full sun must equal A3TI's static 13 (their reference value) so
+        # the engine's sun term is actually above the visible threshold.
+        self.assertAlmostEqual(second_sun_brightness(1.0), 13.0, places=6)
 
 
 class TestVehicleDamageThermal(unittest.TestCase):
@@ -2305,10 +2314,12 @@ class TestSQFSync(unittest.TestCase):
                 "#lightpoint",
                 "setLightDayLight true",
                 "currentSolarRadiation",
-                "setLightBrightness _radiation",
+                "setLightBrightness _lightBrightness",
                 "createVehicleLocal",
+                "_radiation * 13",
+                "setLightAttenuation [1e10, 150",
             ],
-            "physics-driven second sun (TI sun term)",
+            "physics-driven second sun (TI sun term, A3TI-scaled)",
         )
 
     def test_solar_radiation_uses_daytime(self):
