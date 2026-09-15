@@ -49,7 +49,8 @@ GVAR(avgVehicleTemp), GVAR(avgInfantryTemp), and GVAR(avgGroundTemp).
 params [
     ["_center", objNull, [objNull, []]],
     ["_radius", 100, [0]],
-    ["_maxObjects", 50, [0]]
+    ["_maxObjects", 50, [0]],
+    ["_dtOverride", -1, [0]]
 ];
 
 // Defensive: nil center falls back to the current unit.
@@ -160,7 +161,17 @@ private _infantryCount = 0;
     private _currentTemp = if (_hasState) then { _state select 0 } else { _airTemp };
     private _engineRunTime = if (_hasState) then { _state select 1 } else { 0 };
     private _acclimatisation = if (_hasState) then { _state select 3 } else { 33 };
-    private _dt = if (_hasState) then { ((_now - (_state select 2)) max diag_deltaTime) min 30 } else { 0 };
+    // Elapsed time since the last solve.  Real-time path: the env PFH runs
+    // every 5 s, so dt is 5 s (clamped 30 s max for safety after long
+    // pauses).  CALIBRATION path: _dtOverride (>= 0) simulates the real
+    // elapsed time directly, so the 24 h sweep can step the clock by the
+    // hour and still exercise the full exponential inertia curve (the
+    // 30 s clamp would otherwise freeze the vehicle at its night temp).
+    private _dt = if (_dtOverride >= 0) then {
+        _dtOverride
+    } else {
+        if (_hasState) then { ((_now - (_state select 2)) max diag_deltaTime) min 30 } else { 0 }
+    };
 
     private _target = _airTemp;
     private _emissivity = 0.95;
