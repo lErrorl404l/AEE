@@ -73,6 +73,14 @@
             <Original>Enable Köppen Biome Classification</Original>
             <English>Enable Köppen Biome Classification</English>
         </Key>
+        <Key ID="STR_AEE_Core_biomeOverride_Description">
+            <Original>Force a specific Koppen biome globally. Auto-detect uses surface type, latitude, and elevation.</Original>
+            <English>Force a specific Koppen biome globally. Auto-detect uses surface type, latitude, and elevation.</English>
+        </Key>
+        <Key ID="STR_AEE_Core_biomeOverride_Name">
+            <Original>Biome Override</Original>
+            <English>Biome Override</English>
+        </Key>
         <Key ID="STR_AEE_Core_biomeTransitionRadius_Description">
             <Original>Smoothing radius (m) for biome boundary transitions to avoid hard climatic edges</Original>
             <English>Smoothing radius (m) for biome boundary transitions to avoid hard climatic edges</English>

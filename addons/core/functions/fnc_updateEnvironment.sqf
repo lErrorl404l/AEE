@@ -31,11 +31,10 @@ if (!_realWeather) then {
 
     private _month = date select 1;
 
-    private _biome = missionNamespace getVariable [QGVAR(biome), ""];
-    if (_biome == "") then {
-        [] call EFUNC(environmental,getBiome);
-        _biome = GVAR(biome);
-    };
+    // Per-position biome detection — updates aee_core_biome based on
+    // surface type, latitude, and elevation at the player's position.
+    [_posASL] call EFUNC(environmental,updateBiomePosition);
+    private _biome = GVAR(biome);
 
     // Pass explicit position to update functions so they use the same
     // location rather than each independently querying CBA_fnc_currentUnit.
