@@ -668,6 +668,76 @@ if (_p10Fail == 0) then {
         diag_log text format ["[PHASE15] [FAIL] cross-sensitivity: %1 passed, %2 failed", _p15Pass, _p15Fail];
     };
 
+    // -- PHASE 16: propellant-temperature muzzle-velocity model (#31) ------
+    // Pure maths (no hasInterface gate), runs headless.  Checks the
+    // sensitivity cascade (fps/degF per ammo) and the MV correction
+    // (normalised to the ammo's own initSpeed, 21 degC NATO reference).
+    // The ACE3 double-count guard must not trigger here (docker has no
+    // ACE3 advanced ballistics), so the correction is a real value.
+    private _p16Pass = 0;
+    private _p16Fail = 0;
+    private _fnSens = missionNamespace getVariable ["aee_ballistics_fnc_calculatePropellantSensitivity", nil];
+    private _fnCorr = missionNamespace getVariable ["aee_ballistics_fnc_calculateMuzzleVelocityCorrection", nil];
+    if (isNil "_fnSens" || isNil "_fnCorr") then {
+        diag_log text "[PHASE16] [FAIL] propellant functions not compiled";
+        _p16Fail = _p16Fail + 1;
+    } else {
+        // Case 1: 5.56 NATO is military ball powder (1.5 fps/degF).
+        private _c556 = ["B_556x45_Ball"] call _fnSens;
+        if (abs (_c556 - 1.5) < 0.01) then {
+            diag_log text format ["[PHASE16] [PASS] 5.56 sensitivity = %1 fps/degF", _c556];
+            _p16Pass = _p16Pass + 1;
+        } else {
+            diag_log text format ["[PHASE16] [FAIL] 5.56 sensitivity = %1 (expected 1.5)", _c556];
+            _p16Fail = _p16Fail + 1;
+        };
+
+        // Case 2: .338 Norma match is temperature-stable (0.3 fps/degF).
+        private _c338 = ["B_338_NM_Ball"] call _fnSens;
+        if (abs (_c338 - 0.3) < 0.01) then {
+            diag_log text format ["[PHASE16] [PASS] .338 sensitivity = %1 fps/degF", _c338];
+            _p16Pass = _p16Pass + 1;
+        } else {
+            diag_log text format ["[PHASE16] [FAIL] .338 sensitivity = %1 (expected 0.3)", _c338];
+            _p16Fail = _p16Fail + 1;
+        };
+
+        // Case 3: unknown ammo -> central 1.0 fps/degF.
+        private _cUnk = ["B_999x999_Ball"] call _fnSens;
+        if (abs (_cUnk - 1.0) < 0.01) then {
+            diag_log text format ["[PHASE16] [PASS] unknown sensitivity = %1 (central default)", _cUnk];
+            _p16Pass = _p16Pass + 1;
+        } else {
+            diag_log text format ["[PHASE16] [FAIL] unknown sensitivity = %1 (expected 1.0)", _cUnk];
+            _p16Fail = _p16Fail + 1;
+        };
+
+        // Case 4: 5.56 at 21 degC -> correction exactly 1.0.
+        private _corrRef = ["B_556x45_Ball", 21] call _fnCorr;
+        if (abs (_corrRef - 1.0) < 0.01) then {
+            diag_log text format ["[PHASE16] [PASS] 5.56 @ 21 degC correction = %1", _corrRef];
+            _p16Pass = _p16Pass + 1;
+        } else {
+            diag_log text format ["[PHASE16] [FAIL] 5.56 @ 21 degC correction = %1 (expected 1.0)", _corrRef];
+            _p16Fail = _p16Fail + 1;
+        };
+
+        // Case 5: 5.56 at -30 degC -> correction < 1.0 (cold powder slower).
+        private _corrCold = ["B_556x45_Ball", -30] call _fnCorr;
+        if (_corrCold < 1.0 && _corrCold > 0.85) then {
+            diag_log text format ["[PHASE16] [PASS] 5.56 @ -30 degC correction = %1", _corrCold];
+            _p16Pass = _p16Pass + 1;
+        } else {
+            diag_log text format ["[PHASE16] [FAIL] 5.56 @ -30 degC correction = %1 (expected < 1.0)", _corrCold];
+            _p16Fail = _p16Fail + 1;
+        };
+    };
+    if (_p16Fail == 0) then {
+        diag_log text format ["[PHASE16] [PASS] propellant temp model: %1 checks passed", _p16Pass];
+    } else {
+        diag_log text format ["[PHASE16] [FAIL] propellant temp model: %1 passed, %2 failed", _p16Pass, _p16Fail];
+    };
+
     // -- PHASE 5: determinism -- temperature delta over 5 s must be small ----
     // PHASE11 deliberately disturbed the clock (midnight/noon skips).  The
     // temperature model is stateless and recomputes on each 5 s env tick,
