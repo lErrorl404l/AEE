@@ -152,13 +152,23 @@ if !(_airTemp isEqualType 0) then { _airTemp = 15; };
     private _damageEngine = 0;
     private _damageFuel = 0;
     private _damageBody = 0;
-    {
-        _x params ["_hpName", "_hpSelection", "_hpDamage"];
-        private _hn = toLower _hpName;
-        if (_hn find "engine" >= 0) then { _damageEngine = _damageEngine max _hpDamage; };
-        if (_hn find "fuel" >= 0 || _hn find "tank" >= 0) then { _damageFuel = _damageFuel max _hpDamage; };
-        if (_hn find "body" >= 0 || _hn find "hull" >= 0) then { _damageBody = _damageBody max _hpDamage; };
-    } forEach (getAllHitPointsDamage _x);
+    // getAllHitPointsDamage returns [names[], selections[], damages[]] —
+    // three parallel arrays, NOT [name, selection, damage] triples.  Each
+    // element of the names array is a STRING; the matching damage is at
+    // the same index in the damages array.  Destructuring the flat array
+    // as triples read a String where a Number was expected (tolower error).
+    private _hpData = getAllHitPointsDamage _x;
+    if (count _hpData >= 3 && {count (_hpData select 0) > 0}) then {
+        private _hpNames = _hpData select 0;
+        private _hpDamages = _hpData select 2;
+        for "_i" from 0 to (count _hpNames - 1) do {
+            private _hn = toLower (_hpNames select _i);
+            private _hpDamage = _hpDamages select _i;
+            if (_hn find "engine" >= 0) then { _damageEngine = _damageEngine max _hpDamage; };
+            if (_hn find "fuel" >= 0 || _hn find "tank" >= 0) then { _damageFuel = _damageFuel max _hpDamage; };
+            if (_hn find "body" >= 0 || _hn find "hull" >= 0) then { _damageBody = _damageBody max _hpDamage; };
+        };
+    };
 
     // Destroyed or burning: the whole vehicle is at combustion temperature.
     if (!alive _x || _damageBody >= 0.95 || _damageFuel >= 0.95) then {
