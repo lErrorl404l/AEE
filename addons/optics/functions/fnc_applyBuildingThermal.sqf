@@ -84,9 +84,14 @@ private _saved = missionNamespace getVariable [QGVAR(tiBldgSaved), []];
 private _applied = 0;
 
 // A3TI pattern: vehicles + units.  Buildings come from nearObjects.
-// Vehicles swapped here (bodies cold when parked); units handled by
-// fnc_applyClothingThermal.
-private _objects = (vehicles - [player]) + (_player nearObjects ["House", 300]);
+// nearObjects matches the class AND its subclasses: "House" covers
+// HouseBase-derived buildings; "Building" covers the rest (some mods
+// use Building as the base).  Both are queried so no building type is
+// missed — the 0-swapped report was likely the class filter missing
+// the actual building parent class.
+private _objects = (vehicles - [player])
+    + (_player nearObjects ["House", 300])
+    + (_player nearObjects ["Building", 300]);
 {
     if (isNull _x) then { continue; };
     private _obj = _x;
@@ -212,10 +217,11 @@ private _objects = (vehicles - [player]) + (_player nearObjects ["House", 300]);
 
 // Diagnostic: confirms the cold baseline applies in-game (the Eden-vs-game
 // question).  If _applied stays 0 in-game but buildings show warm, the
-// engine's alive-heat model is overriding the swap.
+// engine's alive-heat model is overriding the swap.  The object count
+// separates 'no buildings found' from 'buildings found but skipped'.
 if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
-    diag_log text format ["[AEE] Building thermal: %1 objects swapped cold (T=%2)",
-        _applied, round _airTemp];
+    diag_log text format ["[AEE] Building thermal: %1 found, %2 swapped cold (T=%3)",
+        count _objects, _applied, round _airTemp];
 };
 
 missionNamespace setVariable [QGVAR(tiBldgSaved), _saved];
