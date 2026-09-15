@@ -27,6 +27,17 @@ _BALLISTICS = _REPO_ROOT / "addons" / "ballistics" / "functions"
 # fps/degF -> m/s per degC (1 degC = 1.8 degF; 1 fps = 0.3048 m/s)
 MPS_PER_DEGC_PER_FPS_DEGF = 0.3048 * 1.8  # 0.5486
 
+# Real vanilla CfgMagazines initSpeed per ammo class (verified against
+# weapons_f config): the SQF reads these at runtime, the mirrors must too.
+INIT_SPEED = {
+    "B_556x45_Ball": 920,  # 30Rnd_556x45_Stanag
+    "B_762x51_Ball": 850,  # 20Rnd_762x51_Mag
+    "B_9x21_Ball": 370,  # 30Rnd_9x21_Mag
+    "B_545x39_Ball": 880,  # 30Rnd_545x39
+    "B_127x108_Ball": 820,  # 5Rnd_127x108_Mag
+    "B_65x39_Caseless": 800,  # 30Rnd_65x39_caseless_mag
+}
+
 # Literature-anchored coefficients (fps/degF)
 TEMP_STABLE = 0.3  # Hodgdon Extreme / RL16-class, match powders
 SINGLE_BASE = 0.7  # extruded nitrocellulose
@@ -47,7 +58,6 @@ def propellant_sensitivity(ammo):
         "B_9x21_Ball": DOUBLE_BASE,
         "B_545x39_Ball": MILITARY_BALL,
         "B_65x39_Caseless": TEMP_STABLE,
-        "B_338_NM_Ball": TEMP_STABLE,
         "B_127x108_Ball": MILITARY_BALL,
         "B_127x99_Ball": MILITARY_BALL,
     }
@@ -102,7 +112,10 @@ class TestSensitivityCascade(unittest.TestCase):
         self.assertAlmostEqual(propellant_sensitivity("B_9x21_Ball"), 1.2, places=4)
 
     def test_temperature_stable_match(self):
-        # .338 Norma match: temperature-stable powder ~0.3 fps/degF.
+        # .338 Norma match: temp-stable powder via the CALIBER FALLBACK
+        # (B_338_NM_Ball is not in the table — it is a Marksmen-DLC class,
+        # not vanilla).  Coefficient assumed within the published
+        # temp-stable range; not primary-data-verified per cartridge.
         self.assertAlmostEqual(propellant_sensitivity("B_338_NM_Ball"), 0.3, places=4)
 
     def test_unknown_ammo_central_default(self):
@@ -135,47 +148,65 @@ class TestMuzzleVelocityCorrection(unittest.TestCase):
 
     def test_556_reference_temp_no_change(self):
         # 5.56 at 21 degC: correction exactly 1.0.
-        corr, _ = muzzle_velocity_correction("B_556x45_Ball", 905, 21.0)
+        corr, _ = muzzle_velocity_correction(
+            "B_556x45_Ball", INIT_SPEED["B_556x45_Ball"], 21.0
+        )
         self.assertAlmostEqual(corr, 1.0, places=6)
 
     def test_556_cold_reduces_mv(self):
-        # -30 degC: ~0.091%/degC * -51 = -4.6% -> correction ~0.954.
-        corr, _ = muzzle_velocity_correction("B_556x45_Ball", 905, -30.0)
+        # -30 degC at the real 920 m/s: ~0.954 (docker PHASE16 verifies the
+        # SQF produces 0.954379 with the real config).
+        corr, _ = muzzle_velocity_correction(
+            "B_556x45_Ball", INIT_SPEED["B_556x45_Ball"], -30.0
+        )
         mps_per_c = 1.5 * MPS_PER_DEGC_PER_FPS_DEGF
-        pct = mps_per_c / 905 * 100
+        pct = mps_per_c / INIT_SPEED["B_556x45_Ball"] * 100
         expected = 1 + (pct * (-30 - 21)) / 100
         self.assertAlmostEqual(corr, expected, places=6)
-        self.assertGreater(corr, 0.90)
-        self.assertLess(corr, 0.98)
+        self.assertAlmostEqual(corr, 0.9544, places=3)
 
     def test_556_hot_increases_mv(self):
-        # +50 degC: +2.7% -> correction ~1.027.
-        corr, _ = muzzle_velocity_correction("B_556x45_Ball", 905, 50.0)
+        # +50 degC: +2.6% -> correction ~1.026.
+        corr, _ = muzzle_velocity_correction(
+            "B_556x45_Ball", INIT_SPEED["B_556x45_Ball"], 50.0
+        )
         self.assertGreater(corr, 1.01)
         self.assertLess(corr, 1.05)
 
     def test_9mm_larger_relative_shift(self):
-        # Same 1.2 fps/degF powder, but 400 m/s pistol: the RELATIVE shift
-        # is larger than a 905 m/s rifle with the same coefficient.
-        pistol = muzzle_velocity_correction("B_9x21_Ball", 400, 50.0)[0]
-        rifle_at_12 = muzzle_velocity_correction("B_9x21_Ball", 905, 50.0)[0]
+        # Same 1.2 fps/degF powder, but 370 m/s pistol: the RELATIVE shift
+        # is larger than a 920 m/s rifle with the same coefficient.
+        pistol = muzzle_velocity_correction(
+            "B_9x21_Ball", INIT_SPEED["B_9x21_Ball"], 50.0
+        )[0]
+        rifle_at_12 = muzzle_velocity_correction(
+            "B_9x21_Ball", INIT_SPEED["B_556x45_Ball"], 50.0
+        )[0]
         self.assertGreater(abs(pistol - 1.0), abs(rifle_at_12 - 1.0))
 
     def test_military_ball_vs_match_at_heat(self):
         # At +50 degC the temperature-stable .338 shifts less than the
         # military ball 5.56: this is the "no bias" requirement.
-        match = muzzle_velocity_correction("B_338_NM_Ball", 900, 50.0)[0]
-        military = muzzle_velocity_correction("B_556x45_Ball", 905, 50.0)[0]
+        match = muzzle_velocity_correction(
+            "B_338_NM_Ball", INIT_SPEED["B_556x45_Ball"], 50.0
+        )[0]
+        military = muzzle_velocity_correction(
+            "B_556x45_Ball", INIT_SPEED["B_556x45_Ball"], 50.0
+        )[0]
         self.assertLess(abs(match - 1.0), abs(military - 1.0))
 
     def test_clamp_upper(self):
         # Extreme heat, slow round, sensitive powder: clamp at 1.15.
-        corr, _ = muzzle_velocity_correction("B_9x21_Ball", 300, 95.0)
+        corr, _ = muzzle_velocity_correction(
+            "B_9x21_Ball", INIT_SPEED["B_9x21_Ball"], 110.0
+        )
         self.assertAlmostEqual(corr, 1.15, places=6)
 
     def test_clamp_lower(self):
         # Extreme cold, slow round: clamp at 0.85.
-        corr, _ = muzzle_velocity_correction("B_9x21_Ball", 300, -60.0)
+        corr, _ = muzzle_velocity_correction(
+            "B_9x21_Ball", INIT_SPEED["B_9x21_Ball"], -70.0
+        )
         self.assertAlmostEqual(corr, 0.85, places=6)
 
     def test_no_mv_data_no_correction(self):
@@ -187,13 +218,27 @@ class TestMuzzleVelocityCorrection(unittest.TestCase):
         # ACE3 advanced ballistics active: no-op (ACE3 applies its own
         # per-ammo table).  This prevents compounding the correction.
         corr, _ = muzzle_velocity_correction(
-            "B_556x45_Ball", 905, 50.0, ace_advbal=True
+            "B_556x45_Ball", INIT_SPEED["B_556x45_Ball"], 50.0, ace_advbal=True
         )
         self.assertEqual(corr, 1.0)
 
     def test_reference_is_nato_epvat(self):
         # The zero-crossing is at 21 degC (AEP-97 / STANAG 4823).
         self.assertEqual(REF_TEMP_C, 21.0)
+
+    def test_real_vanilla_init_speeds(self):
+        # The mirror table must match the real vanilla CfgMagazines
+        # initSpeed values (weapons_f config, verified at authoring time).
+        # These are what the SQF reads at runtime; wrong values here would
+        # make the mirror diverge from the game silently.
+        self.assertEqual(INIT_SPEED["B_556x45_Ball"], 920)  # 30Rnd_556x45_Stanag
+        self.assertEqual(INIT_SPEED["B_762x51_Ball"], 850)  # 20Rnd_762x51_Mag
+        self.assertEqual(INIT_SPEED["B_9x21_Ball"], 370)  # 30Rnd_9x21_Mag
+        self.assertEqual(INIT_SPEED["B_545x39_Ball"], 880)  # 30Rnd_545x39
+        self.assertEqual(INIT_SPEED["B_127x108_Ball"], 820)  # 5Rnd_127x108_Mag
+        self.assertEqual(
+            INIT_SPEED["B_65x39_Caseless"], 800
+        )  # 30Rnd_65x39_caseless_mag
 
 
 class TestSQFSyncPropellant(unittest.TestCase):

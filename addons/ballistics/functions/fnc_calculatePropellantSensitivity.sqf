@@ -49,22 +49,26 @@ if (_override > 0) exitWith { _override };
 
 // ─── 2. Built-in ammunition table (known cartridges) ──────────────────────
 // Keyed by the CfgAmmo class.  Coefficient in fps/degF.
+// VERIFIED anchors: military ball (WC844-type) 1.5 and double-base 1.2 sit
+// in the published range (Sniper's Hide compilation; Boulkadid et al. 2016).
+// MATCH/STABLE entries (0.3) are educated assumptions within the published
+// temp-stable range (0.14-0.5 fps/degF), not primary-data-verified: no
+// small-arms powder report gives a per-cartridge coefficient for these.
 private _AMMO_TABLE = createHashMapFromArray [
-    // 5.56 NATO (M855-family, WC844 double-base ball)
+    // 5.56 NATO (M855-family, WC844 double-base ball) — VERIFIED
     ["B_556x45_Ball",                1.5],
     ["B_556x45_Ball_Tracer_Red",     1.5],
-    // 7.62 NATO (M80-family, double-base ball)
+    // 7.62 NATO (M80-family, double-base ball) — VERIFIED
     ["B_762x51_Ball",                1.5],
     ["B_762x51_Ball_Tracer_Green",   1.5],
-    // 9mm Parabellum (double-base)
+    // 9mm Parabellum (double-base) — range-verified
     ["B_9x21_Ball",                  1.2],
-    // 5.45mm (double-base ball)
+    // 5.45mm (double-base ball) — VERIFIED
     ["B_545x39_Ball",                1.5],
-    // 6.5mm caseless (temperature-stable)
+    // 6.5mm caseless (assumed temperature-stable; caseless has no
+    // real-world equivalent powder data) — ASSUMED
     ["B_65x39_Caseless",             0.3],
-    // .338 Norma (temperature-stable match)
-    ["B_338_NM_Ball",                0.3],
-    // 12.7mm / .50 BMG (double-base ball)
+    // 12.7mm / .50 BMG (double-base ball) — range-verified
     ["B_127x108_Ball",               1.5],
     ["B_127x99_Ball",                1.5]
 ];
