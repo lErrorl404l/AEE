@@ -2311,6 +2311,20 @@ class TestSQFSync(unittest.TestCase):
             "physics-driven second sun (TI sun term)",
         )
 
+    def test_solar_radiation_uses_daytime(self):
+        # The solar model must read the LIVE clock (dayTime), not
+        # date#3 + time/3600 (mission-start hour + elapsed, which drifts
+        # when the clock is skipped or the mission runs long).
+        cfg = (
+            _REPO_ROOT
+            / "addons"
+            / "core"
+            / "functions"
+            / "fnc_calculateSolarRadiation.sqf"
+        ).read_text(encoding="utf-8")
+        self.assertIn("private _hour = dayTime", cfg)
+        self.assertNotIn("(_date#3) + (time / 3600)", cfg)
+
     def test_clothing_thermal_constants(self):
         self._assert_in_sqf(
             "fnc_applyClothingThermal.sqf",
