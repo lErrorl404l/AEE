@@ -57,6 +57,11 @@
             QGVAR(ppHandle_Thermal_Grain),
             QGVAR(ppHandle_Thermal_Blur)
         ];
+        // Rain droplets on the objective: particle source, engine assets.
+        // Mode-INDEPENDENT: rain lands on the lens whether NVG or thermal,
+        // so the source is created on ANY vision-mode entry (not just
+        // thermal).  The TICK below drives the drop interval for both.
+        ["ENTER"] call FUNC(applyRainDroplets);
         // Second sun: create the physics-driven fake sun for the engine's
         // thermal sun term (buildings/terrain can only be sun-heated, not
         // driven per-object).  Cleaned up on mode 0 below.
@@ -66,8 +71,6 @@
         // Building thermal: swap building materials to a cold TI rvmat so
         // buildings read cold at night (they bake red=128 in vanilla).
         ["ENTER"] call FUNC(applyBuildingThermal);
-        // Rain droplets on the objective: particle source, engine assets.
-        ["ENTER"] call FUNC(applyRainDroplets);
     };
     // Start the fast sensor PFH when entering NVG/thermal.  The visionMode
     // event below is the SOLE owner of its lifecycle: it starts on mode > 0
