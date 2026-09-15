@@ -1,0 +1,60 @@
+name: Release Body From Changelog
+
+# The release-drafter aggregates PR titles by label.  When a tag is pushed
+# directly (release cycle) the draft has no PR context, so its body can be
+# empty.  The CHANGELOG is the source of truth for release notes: this
+# workflow overwrites the published release body with the changelog section
+# for the tagged version.  Guarantees every release carries the real notes,
+# regardless of how the tag was created.
+#
+# Triggered on any v* tag push.  Requires a token with contents: read
+# (checkout) and contents: write (gh release edit).
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  sync-body:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Extract changelog section for this tag
+        id: extract
+        run: |
+          # Tag v1.1.0 -> version "1.1.0" (strip the leading v).
+          VER="${GITHUB_REF_NAME#v}"
+          echo "version: $VER"
+          # Capture the section from "## [VER]" up to the next "## [".
+          awk -v ver="$VER" '
+            /^## \[/ {
+              if (found) exit
+              if ($0 ~ "^## \\[" ver "\\]") found=1
+              next
+            }
+            found { print }
+          ' CHANGELOG.md > /tmp/notes.md
+          # Prepend the version header so the release title makes sense.
+          { echo "## [$VER]"; cat /tmp/notes.md; } > /tmp/release_notes.md
+          echo "--- extracted notes ---"
+          head -8 /tmp/release_notes.md
+          wc -l /tmp/release_notes.md
+
+      - name: Update release body
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release edit "$GITHUB_REF_NAME" --notes-file /tmp/release_notes.md
+            echo "release body synced from CHANGELOG for $GITHUB_REF_NAME"
+          else
+            echo "release $GITHUB_REF_NAME does not exist yet; nothing to update"
+          fi

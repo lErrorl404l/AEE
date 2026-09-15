@@ -9,20 +9,25 @@ categories:
     labels:
       - 'feature'
       - 'enhancement'
+      - 'type/feat'
   - title: 'Bug Fixes'
     labels:
       - 'fix'
       - 'bugfix'
       - 'bug'
+      - 'type/bug'
   - title: 'Documentation'
     labels:
       - 'documentation'
       - 'docs'
+      - 'type/docs'
   - title: 'Maintenance'
     labels:
       - 'chore'
       - 'refactor'
       - 'ci'
+      - 'ops'
+      - 'type/chore'
 
 change-template: '- $TITLE (#$NUMBER)'
 change-title-escapes: '\<*_&'
@@ -36,10 +41,12 @@ version-resolver:
   major:
     labels:
       - 'major'
+      - 'type/major'
   minor:
     labels:
       - 'feature'
       - 'enhancement'
+      - 'type/feat'
   patch:
     labels:
       - 'fix'
@@ -49,4 +56,8 @@ version-resolver:
       - 'chore'
       - 'refactor'
       - 'ci'
+      - 'ops'
+      - 'type/bug'
+      - 'type/docs'
+      - 'type/chore'
   default: patch
