@@ -41,6 +41,11 @@ if (isNil "_player" || !alive _player || cameraOn != _player) exitWith { 0 };
 
 // ─── Throttle ─────────────────────────────────────────────────────────────
 // The swap is one-shot state; only rescan when ambient changes materially.
+// COLD-START: on the first ENTER (tiBldgLastTemp = -999) the swap ALWAYS
+// applies — everything starts at the cold baseline, never at baked engine
+// defaults.  This is the "start at nothing, warm from physics" design: a
+// midnight load shows all buildings cold, and the physics second sun warms
+// them in daylight.
 private _airTemp = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 if !(_airTemp isEqualType 0) then { _airTemp = 15; };
 private _lastTemp = missionNamespace getVariable [QGVAR(tiBldgLastTemp), -999];
@@ -204,6 +209,14 @@ private _objects = (vehicles - [player]) + (_player nearObjects ["House", 300]);
         _applied = _applied + 1;
     };
 } forEach _objects;
+
+// Diagnostic: confirms the cold baseline applies in-game (the Eden-vs-game
+// question).  If _applied stays 0 in-game but buildings show warm, the
+// engine's alive-heat model is overriding the swap.
+if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
+    diag_log text format ["[AEE] Building thermal: %1 objects swapped cold (T=%2)",
+        _applied, round _airTemp];
+};
 
 missionNamespace setVariable [QGVAR(tiBldgSaved), _saved];
 _applied
