@@ -1,38 +1,39 @@
 # ACE Environment Extended (AEE)
 
 [![CI](https://github.com/lErrorl404l/AEE/actions/workflows/ci.yml/badge.svg)](https://github.com/lErrorl404l/AEE/actions/workflows/ci.yml)
-[![License](https://img.shields.io/badge/license-GPL--2.0--or--later-blue)](LICENSE)
+[![Licence](https://img.shields.io/badge/Licence-GPL--2.0--or--later-blue)](LICENSE)
+[![Issues](https://img.shields.io/github/issues/lErrorl404l/AEE)](https://github.com/lErrorl404l/AEE/issues)
+[![Project Board](https://img.shields.io/badge/Project_Board-tracker-blue)](https://github.com/orgs/lErrorl404l/projects/2)
 
-AEE is a physically accurate environment simulation for Arma 3, extending
-ACE3. It models elevation lapse rates, terrain microclimate, true air density,
-Koppen biome classification, thermal and physiological effects, optics,
-mobility, environmental conditions, maritime state, radio propagation, and
-atmospheric events.
+---
 
-The mod is standalone. It requires only CBA_A3. The core addons have no ACE3
-dependency; the compat addon `compat_ace3` connects the simulation to ACE3.
+## What AEE Does
 
-Author: [lErrorl404l](https://github.com/lErrorl404l). Licence:
-[GPL-2.0-or-later](LICENSE) with a PBO-distribution exception.
+AEE is a physically accurate environment simulation for Arma 3.
+It extends ACE3 with models for atmosphere, thermal and optical effects, physiology, mobility, environmental conditions, maritime state, and radio propagation.
+Each model uses published physics and public standards.
+
+The mod is standalone. It requires only CBA_A3.
+The core addons have no ACE3 dependency.
+The compat addon `compat_ace3` connects the simulation to ACE3.
+
+Author: [lErrorl404l](https://github.com/lErrorl404l).
+Licence: [GPL-2.0-or-later](LICENSE) with a PBO-distribution exception.
+
+---
 
 ## Quick Start
 
 ### Install from Release
 
-1. Download the latest release from
-   [Releases](https://github.com/lErrorl404l/AEE/releases).
-2. Extract the `.zip` into your Arma 3 `@AEE` folder (or any name you
-   prefer).
-3. Launch Arma 3 with `-mod=@CBA_A3;@AEE` in your launch parameters, or
-   enable both in the Arma 3 launcher.
-4. AEE loads automatically. No Zeus or editor setup is required for the
-   core simulation. Place the `AEE Environment Config` module in the
-   editor to customise settings.
+1. Download the latest release from [Releases](https://github.com/lErrorl404l/AEE/releases).
+2. Extract the `.zip` into your Arma 3 `@AEE` folder (or any name you prefer).
+3. Launch Arma 3 with `-mod=@CBA_A3;@AEE` in your launch parameters, or enable both in the Arma 3 launcher.
+4. AEE loads automatically. No Zeus or editor setup is required for the core simulation. Place the `AEE Environment Config` module in the editor to customise settings.
 
 ### Compatibility Addons
 
-The six compat addons load only when their host mod is present. Install
-the ones you need:
+The six compat addons load only when their host mod is present. Install the ones you need:
 
 | Addon | Host Mod | Purpose |
 |-------|----------|---------|
@@ -43,93 +44,115 @@ the ones you need:
 | `compat_acm` | ACM | Drives CBRN contamination from AEE persistence |
 | `compat_realweather` | Real Weather | Reads `weather.json` and publishes into AEE |
 
+---
+
 ## Features
+
+### Atmosphere
 
 - Elevation lapse rates and diurnal temperature cycles.
 - Terrain microclimate, including urban heat islands and water influence.
 - True air density from temperature, pressure, and humidity.
 - Koppen biome classification with seasonal variation.
-- Thermal and physiological effects, including WBGT, NWS heat index,
-  altitude acclimatisation with time-of-useful-consciousness hypoxia,
-  and ISO 7243 heat-stress categories.
-- Optics effects, including thermal crossover, mirage, glare, Cn²-based
-  atmospheric seeing, and physical smoke dispersal.
-- Vehicle and helicopter mobility, including SAE J1349 engine derating,
-  slip-curve traction, and momentum-theory helicopter lift.
-- Environmental effects, including foliage, scent, CBRN persistence,
-  Rothermel fire spread, avalanche risk, and flash-flood prediction.
-- Maritime state, including harmonic tidal prediction (M2/S2/K1/O1) and
-  WMO Beaufort sea state.
-- Radio propagation from the Friis equation with ITU-R P.531
-  ionospheric absorption.
 - Atmospheric events, including lightning, sandstorms, and microbursts.
+
+### Thermal and Optics
+
+- Thermal crossover, mirage, and glare.
+- Cn²-based atmospheric seeing and physical smoke dispersal.
+
+### Physiology
+
+- WBGT, NWS heat index, and ISO 7243 heat-stress categories.
+- Altitude acclimatisation with time-of-useful-consciousness hypoxia.
+
+### Mobility
+
+- Vehicle and helicopter mobility.
+- SAE J1349 engine derating, slip-curve traction, and momentum-theory helicopter lift.
+
+### Environmental
+
+- Foliage, scent, and CBRN persistence.
+- Rothermel fire spread, avalanche risk, and flash-flood prediction.
+
+### Maritime
+
+- Harmonic tidal prediction (M2/S2/K1/O1).
+- WMO Beaufort sea state.
+
+### Radio
+
+- Radio propagation from the Friis equation.
+- ITU-R P.531 ionospheric absorption.
+
+---
+
+## Roadmap
+
+AEE develops in three phases.
+The [project board](https://github.com/orgs/lErrorl404l/projects/2) tracks the 36 issues across them.
+
+1. Phase 1 Baseline.
+2. Phase 2 Expansion.
+3. Phase 3 Frontier.
+
+---
 
 ## Structure
 
-The project has 19 addons under `addons/`. The 13 core addons are `main`,
-`core`, `actions`, `atmos`, `ballistics`, `environmental`, `fx`, `maritime`,
-`mobility`, `optics`, `physiology`, `radio`, and `thermal`. The 6 compat
-addons are `compat_ace3`, `compat_acm`, `compat_acre2`, `compat_kat`,
-`compat_realweather`, and `compat_tfar`.
+The project has 19 addons under `addons/`.
 
-Build PBO names are `aee_<component>`. For example, the core addon builds to
-`aee_core.pbo`.
+The 13 core addons are `main`, `core`, `actions`, `atmos`, `ballistics`, `environmental`, `fx`, `maritime`, `mobility`, `optics`, `physiology`, `radio`, and `thermal`.
+
+The 6 compat addons are `compat_ace3`, `compat_acm`, `compat_acre2`, `compat_kat`, `compat_realweather`, and `compat_tfar`.
+
+Build PBO names are `aee_<component>`. For example, the core addon builds to `aee_core.pbo`.
+
+---
 
 ## Naming Conventions
 
-Functions use the name `aee_<component>_fnc_<name>`. For example,
-`aee_core_fnc_init`.
+Functions use the name `aee_<component>_fnc_<name>`. For example, `aee_core_fnc_init`.
 
-Shared simulation state lives in `aee_core_*` mission variables. Any mod or
-mission script can read them.
+Shared simulation state lives in `aee_core_*` mission variables. Any mod or mission script can read them.
 
-Each function file is `functions/fnc_<name>.sqf`. The files are registered in
-`XEH_PREP.hpp` and compiled through CBA XEH
-(`Extended_PreInit_EventHandlers`). This is the standard ACE3/CBA pattern.
+Each function file is `functions/fnc_<name>.sqf`. The files are registered in `XEH_PREP.hpp` and compiled through CBA XEH (`Extended_PreInit_EventHandlers`). This is the standard ACE3/CBA pattern.
+
+---
 
 ## Settings
 
-AEE registers its settings at mission start with `CBA_fnc_addSetting`. The
-settings live in `addons/core/initSettings.inc.sqf`, which is included from
-`XEH_preInit.sqf`. All settings appear under the category "AEE Core" in the
-CBA settings UI.
+AEE registers its settings at mission start with `CBA_fnc_addSetting`. The settings live in `addons/core/initSettings.inc.sqf`, which is included from `XEH_preInit.sqf`. All settings appear under the category "AEE Core" in the CBA settings UI.
+
+---
 
 ## Dependencies
 
 The core addons require only CBA_A3. They are standalone.
 
-The six compat addons gate on their host mod. Each uses `requiredAddons` and
-`skipWhenMissingDependencies`. A compat addon loads only when its host mod is
-present. Each compat layer uses only the host mod's public API, verified
-against the host source:
+The six compat addons gate on their host mod. Each uses `requiredAddons` and `skipWhenMissingDependencies`. A compat addon loads only when its host mod is present. Each compat layer uses only the host mod's public API, verified against the host source:
 
-- `compat_ace3` — publishes AEE temperature/humidity/overcast into ACE
-  weather state and maps AEE thermal/dehydration state onto ACE medical
-  vitals through the public `ace_medical_status_fnc_*` hooks.
-- `compat_acm` — drives ACM CBRN contamination from AEE persistence.
-- `compat_acre2` — registers an ACRE2 custom signal-strength callback
-  driven by AEE radio propagation.
-- `compat_kat` — drives KAT circulation body-fluid compartments from AEE
-  dehydration.
-- `compat_realweather` — reads `weather.json` from the mission folder and
-  publishes the real values into AEE state, gating the simulation.
-- `compat_tfar` — scales TFAR transmission range from AEE radio
-  propagation through the per-unit `tf_sendingDistanceMultiplicator`.
+- `compat_ace3`: publishes AEE temperature, humidity, and overcast into ACE weather state. It maps AEE thermal and dehydration state onto ACE medical vitals through the public `ace_medical_status_fnc_*` hooks.
+- `compat_acm`: drives ACM CBRN contamination from AEE persistence.
+- `compat_acre2`: registers an ACRE2 custom signal-strength callback driven by AEE radio propagation.
+- `compat_kat`: drives KAT circulation body-fluid compartments from AEE dehydration.
+- `compat_realweather`: reads `weather.json` from the mission folder and publishes the real values into AEE state, gating the simulation.
+- `compat_tfar`: scales TFAR transmission range from AEE radio propagation through the per-unit `tf_sendingDistanceMultiplicator`.
 
-AEE does not drive engine weather directly. It reads engine `overcast`,
-`rain`, and `wind` as inputs and computes its own state from them. Only
-`compat_realweather` writes engine overcast, and only on the server.
+AEE does not drive engine weather directly. It reads engine `overcast`, `rain`, and `wind` as inputs and computes its own state from them. Only `compat_realweather` writes engine overcast, and only on the server.
+
+---
 
 ## Multiplayer
 
-Core atmospheric state is deterministic. It is a function of position,
-mission time, and engine weather. Every machine computes identical values.
-No `publicVariable` is needed.
+Core atmospheric state is deterministic. It is a function of position, mission time, and engine weather. Every machine computes identical values. No `publicVariable` is needed.
 
 Event FX, such as lightning, dust, and sound, vary cosmetically per machine.
 
-The EDEN module, AEE Environment Config, is placed by mission editors. The
-module is global.
+The EDEN module, AEE Environment Config, is placed by mission editors. The module is global.
+
+---
 
 ## Build and Test
 
@@ -159,22 +182,19 @@ Launch the game with:
 hemtt launch <profile>
 ```
 
-Profiles are `default`, `ace3`, `acre2`, `tfar`, `kat`, `acm`, and `full`.
-Workshop IDs are configured in `.hemtt/project.toml`.
+Profiles are `default`, `ace3`, `acre2`, `tfar`, `kat`, `acm`, and `full`. Workshop IDs are configured in `.hemtt/project.toml`.
 
-Run the full test sweep (unit suites + physics validation harness) with:
+Run the full test sweep (unit suites and physics validation harness) with:
 
 ```bash
 python3 tools/run_tests.py
 ```
 
-The unit tests mirror the core physics models in Python and cover
-reference values, edge cases, and clamps. A pre-commit hook runs them on
-every commit. The headless dedicated-server test in Docker runs the mod
-against real Arma 3 and verifies ten phases (see docs/wiki/chapters/testing.qmd).
+The unit tests mirror the core physics models in Python. They cover reference values, edge cases, and clamps. A pre-commit hook runs them on every commit. The headless dedicated-server test in Docker runs the mod against real Arma 3 and verifies ten phases (see docs/wiki/chapters/testing.qmd).
 
-Localisation uses a per-addon `stringtable.xml`. Keys use the form
-`STR_AEE_<Component>_<Key>`.
+Localisation uses a per-addon `stringtable.xml`. Keys use the form `STR_AEE_<Component>_<Key>`.
+
+---
 
 ## Continuous Integration
 
@@ -187,13 +207,15 @@ GitHub Actions runs these checks on every push:
 - An SBOM on release tags
 - Release-drafter
 
+---
+
 ## Verification
 
-The recommended in-game test is a headless Linux dedicated server in Docker.
-Run missions that write `diag_log` output. Diff the baseline logs against the
-patched logs.
+The recommended in-game test is a headless Linux dedicated server in Docker. Run missions that write `diag_log` output. Diff the baseline logs against the patched logs.
 
 This is the primary validation path for mission authors and contributors.
+
+---
 
 ## Contributing
 
@@ -208,3 +230,9 @@ A pre-commit hook runs these checks:
 Make logical commits. Link each commit to its change rationale.
 
 Report vulnerabilities through [SECURITY.md](SECURITY.md).
+
+---
+
+## Licence
+
+AEE is released under [GPL-2.0-or-later](LICENSE) with a PBO-distribution exception.
