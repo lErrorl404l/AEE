@@ -527,6 +527,17 @@ def building_thermal_mass(material_paths):
     return 1.0
 
 
+def glass_reflection_material(solar_radiation, cold_mat, hot_mat):
+    """Mirror of the glass/window reflection swap.
+
+    Glass does not transmit LWIR — it reflects the scene.  Night
+    (radiation <= 0.3) reflects cold sky -> cold material; daylight
+    reflects the sun -> hot material.  Same solar value as the second
+    sun, so the two stay consistent.
+    """
+    return [cold_mat, hot_mat][solar_radiation > 0.3]
+
+
 def clothing_material_kind(material_path):
     """Mirror of the per-selection material classification.
 
@@ -1600,6 +1611,27 @@ class TestBurningThermal(unittest.TestCase):
         )
 
 
+class TestGlassReflection(unittest.TestCase):
+    """Glass reflects the scene: cold at night, hot in daylight."""
+
+    def test_night_glass_is_cold(self):
+        # Radiation 0 (midnight): reflects cold sky -> cold material.
+        self.assertEqual(glass_reflection_material(0, "cold", "hot"), "cold")
+
+    def test_day_glass_is_hot(self):
+        # Radiation 1 (noon): reflects the sun -> hot material.
+        self.assertEqual(glass_reflection_material(1.0, "cold", "hot"), "hot")
+
+    def test_threshold_boundary(self):
+        # 0.3 boundary: at 0.3 (night) cold, above 0.3 hot.
+        self.assertEqual(glass_reflection_material(0.3, "c", "h"), "c")
+        self.assertEqual(glass_reflection_material(0.31, "c", "h"), "h")
+
+    def test_negative_and_overshoot(self):
+        self.assertEqual(glass_reflection_material(-1, "c", "h"), "c")
+        self.assertEqual(glass_reflection_material(2.0, "c", "h"), "h")
+
+
 class TestThermalCrossover(unittest.TestCase):
     """Diurnal thermal crossover — isothermal condition at dawn/dusk."""
 
@@ -2307,6 +2339,8 @@ class TestSQFSync(unittest.TestCase):
                 "tiBldgSaved",
                 "abs (_airTemp - _lastTemp) >= 2",
                 "vehicles - [player]",
+                "currentSolarRadiation",
+                "select (_solarRadiation > 0.3)",
             ],
             "per-building TI material swap",
         )
