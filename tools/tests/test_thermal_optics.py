@@ -2453,20 +2453,22 @@ class TestSQFSync(unittest.TestCase):
         # via setParticleParams.  NOT a raw drop (fails: "NOID refract.p3d
         # #cloudlet" - Refract is a cloudlet class), NOT the raindrop .paa
         # (engine ShapeLoads it and crashes), NOT a procedural string (the
-        # shape slot rejects it).
+        # shape slot rejects it).  The emitter is WORLD-SPACE and
+        # repositioned to the camera eye each tick - the old HEAD memory
+        # point attachment put particles behind the camera (invisible).
         self._assert_in_sqf(
             "fnc_applyRainDroplets.sqf",
             [
                 '"#particlesource" createVehicleLocal',
-                "attachTo [_logic, [0, 0, 0]]",
-                'attachTo [_player, [0, 0, 0], "HEAD"]',
                 "ParticleEffects\\Universal\\Refract",
                 '"Billboard"',
                 "setParticleParams",
                 "setDropInterval",
-                "_logic",
+                "setPosASL (_eye vectorAdd (_camDir vectorMultiply 0.1))",
+                "getCameraViewDirection _player",
+                "eyePos _player",
             ],
-            "rain droplets on objective (head-attached Refract emitter)",
+            "rain droplets on objective (eye-repositioned Refract emitter)",
         )
 
     def test_solar_radiation_uses_daytime(self):
