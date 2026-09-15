@@ -645,6 +645,13 @@ if (rain > 0.2) then {
 private _bloom = _bloomBase + _bloomScale * (_moonLight / 1.0);
 _bloom = _bloom + _blowout * _bloomScale * 2;
 _bloom = _bloom * (1 + rain * 2);
+// Clear-condition veiling glare floor: phosphor light reflects back to the
+// photocathode and re-amplifies, giving a real tube a 2-5 % veiling glare
+// ratio even in perfect weather.  This caps maximum contrast (a faint glow
+// over the whole image) and is independent of rain.  0.02 = 2 %, the low
+// end of the published range, so it adds the physical floor without
+// washing the image out.
+_bloom = _bloom + 0.02;
 _bloom = 0 max _bloom min 1;
 
 // ─── Brightness (AGC output, physics-driven) ──────────────────────────────
