@@ -1610,6 +1610,52 @@ private _p29Pass = 0;
         diag_log text format ["[PHASE29] [FAIL] sea-surface temperature feed: %1 passed, %2 failed", _p29Pass, _p29Fail];
     };
 
+    // -- PHASE 30: aurora + Kp driver (#112) --------------------------------
+    // The space-weather model computes Kp from the solar cycle; the aurora
+    // gate needs Kp > 4, clear sky, night, and an observer poleward of the
+    // oval edge.  The docker server can seed Kp high, but latitude comes
+    // from the world config (Stratis is ~37 deg N - below the auroral
+    // oval even at Kp 9), so the full visible-aurora path cannot fire on
+    // the test world.  This asserts the model plumbing: Kp state exists,
+    // the aurora function runs, and the intensity is bounded (0 at
+    // sub-auroral latitude, which is the CORRECT physics for Stratis).
+    private _p30Pass = 0;
+    private _p30Fail = 0;
+    private _fnSW = missionNamespace getVariable ["aee_environmental_fnc_calculateSpaceWeather", nil];
+    if (isNil "_fnSW") then {
+        diag_log text "[PHASE30] [FAIL] space weather function not compiled";
+        _p30Fail = _p30Fail + 1;
+    } else {
+        // Seed a strong storm state and run the model.
+        missionNamespace setVariable ["aee_core_currentTemperature", 10];
+        missionNamespace setVariable ["aee_core_currentHumidity", 50];
+        missionNamespace setVariable ["aee_core_currentPressure", 1013];
+        missionNamespace setVariable ["aee_core_overcast", 0];
+        [] call _fnSW;
+
+        private _kp = missionNamespace getVariable ["aee_environmental_kpIndex", -1];
+        private _intensity = missionNamespace getVariable ["aee_environmental_auroraIntensity", -1];
+        if (_kp >= 0 && _kp <= 9) then {
+            diag_log text format ["[PHASE30] [PASS] Kp index computed: %1", _kp];
+            _p30Pass = _p30Pass + 1;
+        } else {
+            diag_log text format ["[PHASE30] [FAIL] Kp out of range: %1", _kp];
+            _p30Fail = _p30Fail + 1;
+        };
+        if (_intensity >= 0 && _intensity <= 1) then {
+            diag_log text format ["[PHASE30] [PASS] aurora intensity bounded: %1", _intensity];
+            _p30Pass = _p30Pass + 1;
+        } else {
+            diag_log text format ["[PHASE30] [FAIL] aurora intensity out of range: %1", _intensity];
+            _p30Fail = _p30Fail + 1;
+        };
+    };
+    if (_p30Fail == 0) then {
+        diag_log text format ["[PHASE30] [PASS] aurora Kp driver: %1 checks passed", _p30Pass];
+    } else {
+        diag_log text format ["[PHASE30] [FAIL] aurora Kp driver: %1 passed, %2 failed", _p30Pass, _p30Fail];
+    };
+
     // -- PHASE 5: determinism -- temperature delta over 5 s must be small ----
     // PHASE11 deliberately disturbed the clock (midnight/noon skips).  The
     // temperature model is stateless and recomputes on each 5 s env tick,

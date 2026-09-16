@@ -94,12 +94,17 @@ private _geoDesc = switch (true) do {
 // ─── Solar activity (background + flare for radio propagation) ────────────
 private _solarActivity = (_solarCycle + _flareValue) min 1;
 
-// ─── Aurora visibility ────────────────────────────────────────────────────
+// ─── Aurora visibility and intensity (issue #112) ─────────────────────────
+// NOAA SWPC Kp-to-latitude relationship: the auroral oval expands
+// equatorward as Kp rises.
+//   Kp 0-1: poleward of 65 deg    Kp 3: 60-65
+//   Kp 5:   55-60                  Kp 7: 50-55
+//   Kp 9:   below 50
+// The observer's magnetic latitude comes from the map config.  Intensity
+// (0-1) rises with Kp and is brightest near the oval centre.
+//
 // Requires: elevated geomagnetic activity, clear sky, nighttime
-// (before 06:00 OR after 20:00 — grouped so the OR binds correctly),
-// and high latitude (>45° N/S).  The world latitude comes from the map
-// config, not a crude Y/100000 approximation (which on a 30 km map
-// never exceeds 27° and would make aurora impossible).
+// (before 06:00 OR after 20:00 — grouped so the OR binds correctly).
 private _overcast = overcast;
 private _daytime  = dayTime;
 
@@ -107,10 +112,23 @@ private _worldLat = getNumber (configFile >> "CfgWorlds" >> worldName >> "latitu
 private _latDeg = abs _worldLat;
 if (_latDeg == 0) then { _latDeg = 45; };  // fallback: temperate, aurora possible at storm level
 
+// Equatorward limit of the oval by Kp (interpolated from the NOAA bands).
+private _kpBand = (_kpIndex min 9) / 1.0;   // 0..9
+private _ovalLimit = 65 - (_kpBand * 1.7);  // Kp 0 -> 65, Kp 9 -> ~49.7
 private _aurora = _kpIndex > 4
     && (_overcast < 0.3)
     && ((_daytime < 6) || (_daytime > 20))
-    && (_latDeg > 45);
+    && (_latDeg > _ovalLimit);
+
+// Intensity: rises with Kp beyond the threshold, strongest at high Kp.
+// The observer sees the oval's outer edge: brightest when Kp is high
+// and the oval edge is nearest the observer's latitude.
+private _auroraIntensity = 0;
+if (_aurora) then {
+    private _kpExcess = ((_kpIndex - 4) / 5) max 0 min 1;      // 0 at Kp 5, 1 at Kp 9
+    private _latProximity = (1 - ((_latDeg - _ovalLimit) / 10)) max 0 min 1;
+    _auroraIntensity = (_kpExcess * 0.6 + _latProximity * 0.4) max 0 min 1;
+};
 
 // ─── Store ────────────────────────────────────────────────────────────────
 missionNamespace setVariable [QGVAR(solarActivity),              _solarActivity];
@@ -118,6 +136,7 @@ missionNamespace setVariable [QGVAR(kpIndex),                    _kpIndex];
 missionNamespace setVariable [QGVAR(solarFlareActive),           _flareState != "IDLE"];
 missionNamespace setVariable [QGVAR(geomagneticDescription),     _geoDesc];
 missionNamespace setVariable [QGVAR(auroraVisibility),           _aurora];
+missionNamespace setVariable [QGVAR(auroraIntensity),           _auroraIntensity];
 missionNamespace setVariable [QGVAR(spaceWeatherFlareState),     _flareState];
 missionNamespace setVariable [QGVAR(spaceWeatherFlareTimer),     _flareTimer];
 missionNamespace setVariable [QGVAR(spaceWeatherFlareValue),     _flareValue];
