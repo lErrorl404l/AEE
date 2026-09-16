@@ -63,6 +63,13 @@ if command -v python3 &>/dev/null && [ -f "$ROOT/tools/validation/validate_astro
     (cd "$ROOT" && python3 tools/validation/validate_astronomical.py >/dev/null 2>&1) || FAILED=1
 fi
 
+# CBA settings cross-reference — reads that no addon produces, and settings
+# read with the wrong addon prefix, fail the commit. Stdlib only.
+if command -v python3 &>/dev/null && [ -f "$ROOT/tools/validation/validate_cba_settings.py" ]; then
+    echo "-> cba settings cross-reference"
+    (cd "$ROOT" && python3 tools/validation/validate_cba_settings.py >/dev/null 2>&1) || FAILED=1
+fi
+
 if [ "$FAILED" -ne 0 ]; then
     echo "X pre-commit hook failed. Fix issues or use --no-verify."
     exit 1

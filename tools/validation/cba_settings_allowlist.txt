@@ -1,0 +1,20 @@
+# Allowlist for validate_cba_settings.py
+#
+# Each line names an aee_ variable that is read but not produced in
+# addons/, with the reason.  Entries are intentional knobs, test hooks,
+# or producers tracked by another issue.  Remove a line when its
+# producer lands: the validator will fail the build until then.
+#
+# Format:  aee_addon_leaf  reason
+
+aee_core_coreBodyTemp  body-temp model not built yet; KAT falls back to default 37 (issue #64)
+aee_environmental_rainRateOverride  docker test override hook (written in tests/docker mission)
+aee_optics_nvgDebug  debug console knob (documented in fnc_applyNVGTubeModel.sqf)
+aee_optics_rainDropColor  debug console knob (documented in fnc_applyRainDroplets.sqf)
+aee_optics_starlightLux  tuning knob (documented in fnc_calculateIlluminance.sqf)
+aee_optics_titleDisplay  uiNamespace RscTitles display handle, written by the display layer
+aee_physiology_ozoneDU  ozone-column producer pending (issue #35 cross-addon wiring)
+aee_radio_frequency  radio frequency producer pending (issue #35 cross-addon wiring)
+aee_radio_radioFrequencyHz  radio frequency producer pending (issue #35 cross-addon wiring)
+aee_radio_radioLinkRangeM  radio link range producer pending (issue #35 cross-addon wiring)
+aee_radio_sunspotNumber  sunspot producer pending (issue #35 cross-addon wiring)

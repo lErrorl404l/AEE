@@ -40,7 +40,7 @@ private _windSpd     = vectorMagnitude wind;
 private _rain        = rain;
 private _temp        = EGVAR(core,currentTemperature);
 private _overcast    = overcast;
-private _groundState = missionNamespace getVariable [QGVAR(groundState), "Normal"];
+private _groundState = missionNamespace getVariable [QEGVAR(core,groundState), "Normal"];
 
 if (isNil "_temp") then { _temp = 20; };
 

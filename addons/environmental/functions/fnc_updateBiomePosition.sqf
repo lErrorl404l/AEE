@@ -17,7 +17,7 @@ params ["_posASL"];
 // CBA settings are exposed as missionNamespace variables under the
 // setting name. Read directly (CBA_fnc_getSetting is not in all CBA
 // builds). Default "AUTO" = auto-detect.
-private _override = missionNamespace getVariable [QGVAR(biomeOverride), "AUTO"];
+private _override = missionNamespace getVariable [QEGVAR(core,biomeOverride), "AUTO"];
 if (_override != "AUTO") exitWith {
     private _current = missionNamespace getVariable [QEGVAR(core,biome), ""];
     if (_current != _override) then {

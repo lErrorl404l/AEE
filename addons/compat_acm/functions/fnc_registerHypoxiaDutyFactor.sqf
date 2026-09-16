@@ -28,7 +28,7 @@ if (isNil "ace_medical_vitals_fnc_addSpO2DutyFactor") exitWith {};
 // Scaled duty factor: 1.0 below risk 0.8, down to 0.65 at risk 1.0
 // (matching the KAT compat's SpO2 floor of 65 at full risk).
 private _dutyFactor = {
-    private _risk = missionNamespace getVariable [QEGVAR(physiology,hypoxiaRisk), 0];
+    private _risk = missionNamespace getVariable [QEGVAR(core,currentHypoxiaRisk), 0];
     if (_risk <= 0.8) then { 1.0 } else { 1 - ((_risk - 0.8) / 0.2) * 0.35 }
 };
 
