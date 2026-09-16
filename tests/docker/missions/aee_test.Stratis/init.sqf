@@ -1111,6 +1111,78 @@ if (_p10Fail == 0) then {
     };
 
     // -- PHASE 23: cold-weather human performance model (#23) ----------------
+    // -- PHASE 22: atmospheric refraction (#16) ------------------------------
+    // ITU-R P.453 refractivity, surface gradient, k-factor, ducting, and
+    // mirage type.  Pure maths, runs headless.  Seeds T/RH/P and checks
+    // four cases.
+    private _p22Pass = 0;
+    private _p22Fail = 0;
+    private _fnRefr = missionNamespace getVariable ["aee_atmos_fnc_calculateRefraction", nil];
+    if (isNil "_fnRefr") then {
+        diag_log text "[PHASE22] [FAIL] refraction function not compiled";
+        _p22Fail = _p22Fail + 1;
+    } else {
+        // Case 1: standard atmosphere.  T=15, RH=50, P=1013 -> k ~ 1.33,
+        // condition "Standard".
+        missionNamespace setVariable ["aee_core_currentTemperature", 15];
+        missionNamespace setVariable ["aee_core_currentHumidity", 50];
+        missionNamespace setVariable ["aee_core_currentPressure", 1013];
+        [] call _fnRefr;
+        private _k1 = missionNamespace getVariable ["aee_atmos_refractionK", -1];
+        private _c1 = missionNamespace getVariable ["aee_atmos_refractionCondition", ""];
+        if (abs (_k1 - 1.33) < 0.1 && _c1 == "Standard") then {
+            diag_log text format ["[PHASE22] [PASS] standard atmosphere: k=%1 condition=%2", _k1, _c1];
+            _p22Pass = _p22Pass + 1;
+        } else {
+            diag_log text format ["[PHASE22] [FAIL] standard atmosphere: k=%1 condition=%2 (expected ~1.33, Standard)", _k1, _c1];
+            _p22Fail = _p22Fail + 1;
+        };
+
+        // Case 2: high humidity.  T=25, RH=95, P=1010 -> N > 350.
+        missionNamespace setVariable ["aee_core_currentTemperature", 25];
+        missionNamespace setVariable ["aee_core_currentHumidity", 95];
+        missionNamespace setVariable ["aee_core_currentPressure", 1010];
+        [] call _fnRefr;
+        private _n2 = missionNamespace getVariable ["aee_atmos_refractivityN", -1];
+        if (_n2 > 350) then {
+            diag_log text format ["[PHASE22] [PASS] high humidity: N=%1", _n2];
+            _p22Pass = _p22Pass + 1;
+        } else {
+            diag_log text format ["[PHASE22] [FAIL] high humidity: N=%1 (expected > 350)", _n2];
+            _p22Fail = _p22Fail + 1;
+        };
+
+        // Case 3: cold dry air.  T=-10, RH=30, P=1030 -> sub-refraction.
+        missionNamespace setVariable ["aee_core_currentTemperature", -10];
+        missionNamespace setVariable ["aee_core_currentHumidity", 30];
+        missionNamespace setVariable ["aee_core_currentPressure", 1030];
+        [] call _fnRefr;
+        private _c3 = missionNamespace getVariable ["aee_atmos_refractionCondition", ""];
+        if (_c3 == "Sub-refraction") then {
+            diag_log text format ["[PHASE22] [PASS] cold dry air: condition=%1", _c3];
+            _p22Pass = _p22Pass + 1;
+        } else {
+            diag_log text format ["[PHASE22] [FAIL] cold dry air: condition=%1 (expected Sub-refraction)", _c3];
+            _p22Fail = _p22Fail + 1;
+        };
+
+        // Case 4: refractivity range.  N is typically 250-400 for the
+        // Earth atmosphere across the seeded states.
+        private _n4 = missionNamespace getVariable ["aee_atmos_refractivityN", -1];
+        if (_n4 > 250 && _n4 < 400) then {
+            diag_log text format ["[PHASE22] [PASS] refractivity range: N=%1", _n4];
+            _p22Pass = _p22Pass + 1;
+        } else {
+            diag_log text format ["[PHASE22] [FAIL] refractivity range: N=%1 (expected 250-400)", _n4];
+            _p22Fail = _p22Fail + 1;
+        };
+    };
+    if (_p22Fail == 0) then {
+        diag_log text format ["[PHASE22] [PASS] atmospheric refraction: %1 checks passed", _p22Pass];
+    } else {
+        diag_log text format ["[PHASE22] [FAIL] atmospheric refraction: %1 passed, %2 failed", _p22Pass, _p22Fail];
+    };
+
     // Wind chill (Osczevski-Bluestein), manual dexterity (Heus/Daanen),
     // frostbite time (Tikuisis-Osczevski), TB MED 508 danger category.
     // Pure maths, runs headless.  Seeds temperature and wind (m/s) and
