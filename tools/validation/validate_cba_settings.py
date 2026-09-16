@@ -30,6 +30,7 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 ADDONS = REPO_ROOT / "addons"
+TESTS = REPO_ROOT / "tests"
 ALLOWLIST = Path(__file__).resolve().parent / "cba_settings_allowlist.txt"
 ANNEX_C = REPO_ROOT / "docs" / "wiki" / "annexes" / "annex-c-variable-reference.qmd"
 PREFIX = "aee"
@@ -121,6 +122,28 @@ def scan():
     return declared, reads, writes
 
 
+def scan_tests():
+    """Reads/writes in the docker test missions.
+
+    The missions seed state and read computed output with literal variable
+    names.  A read that no addon produces and the test does not seed is a
+    stale test (the aee_mobility_currentWaterLevel class fixed in #83).
+    """
+    test_reads = {}
+    test_writes = {}
+    for sqf in sorted(TESTS.rglob("*.sqf")):
+        text = strip_comments(sqf.read_text(encoding="utf-8", errors="replace"))
+        rel = str(sqf.relative_to(REPO_ROOT))
+        for kind, lit, macro in _CALL.findall(text):
+            if not lit:
+                continue  # tests use literal names only
+            if "_fnc_" in lit:
+                continue  # function handle lookups, not data variables
+            bucket = test_reads if kind == "getVariable" else test_writes
+            bucket.setdefault(lit, []).append(rel)
+    return test_reads, test_writes
+
+
 def load_allowlist():
     """Read name -> reason for intentional dead reads."""
     allowed = {}
@@ -137,6 +160,7 @@ def load_allowlist():
 def main():
     strict = "--strict" in sys.argv
     declared, reads, writes = scan()
+    test_reads, test_writes = scan_tests()
     allowed = load_allowlist()
 
     # A produced name containing %1 is a format template: the real variables
@@ -168,6 +192,13 @@ def main():
         else:
             dead_read.append((name, reads[name]))
 
+    # Test mission reads must resolve against addon-produced state OR the
+    # test's own seeds.  A read that is neither is a stale test assertion
+    # (the aee_mobility_currentWaterLevel class: renamed producer, old test).
+    stale_test = sorted(
+        n for n in test_reads if not is_produced(n) and n not in test_writes
+    )
+
     dead_setting = sorted(n for n in declared if n not in reads)
     orphan = sorted(
         n for n in writes if n not in reads and n not in declared and "%1" not in n
@@ -195,6 +226,11 @@ def main():
     for name in dead_setting:
         print(f"DEAD SETTING  {name}  (declared in {declared[name]})")
 
+    for name in stale_test:
+        print(f"STALE TEST    {name}")
+        for f in sorted(set(test_reads[name])):
+            print(f"              read by {f} (no producer in addons, not a test seed)")
+
     for name in orphan:
         print(f"ORPHAN WRITE  {name}  (written in {writes[name][0]})")
 
@@ -211,13 +247,15 @@ def main():
     print(
         f"{len(wrong_prefix)} wrong prefix, {len(dead_read)} dead reads, "
         f"{len(dead_setting)} dead settings, {len(orphan)} orphan writes, "
-        f"{len(allowed_hit)} allowed, {len(undocumented)} undocumented"
+        f"{len(allowed_hit)} allowed, {len(undocumented)} undocumented, "
+        f"{len(stale_test)} stale test reads"
     )
 
     if (
         wrong_prefix
         or dead_read
         or undocumented
+        or stale_test
         or (strict and (dead_setting or orphan))
     ):
         return 1
