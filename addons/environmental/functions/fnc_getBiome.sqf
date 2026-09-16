@@ -22,163 +22,112 @@ if (_moduleOverride != "") exitWith {
     missionNamespace setVariable [QEGVAR(core,biomeName), _name];
 };
 
-// ─── Surface type → biome votes ──────────────────────────────────────
-// Each entry: [biomeCode, weight] where biome gets one vote per sample
-// Higher weight = stronger signal for that biome from this surface type
-private _SURFACE_VOTES = createHashMapFromArray [
-    ["#GdtForest",       [["Cfb",3], ["Dfb",2], ["Dfc",1]]],
-    ["#GdtConiferous",   [["Dfb",3], ["Dfc",2]]],
-    ["#GdtGrass",        [["Cfb",2], ["BSk",2], ["Dfb",1]]],
-    ["#GdtGrassLand",    [["Cfb",2], ["BSk",2], ["Dfb",1]]],
-    ["#GdtPrairie",      [["BSk",3], ["Dfb",1]]],
-    ["#GdtJungle",       [["Af",3],  ["Am",2]]],
-    ["#GdtRainForest",   [["Af",3],  ["Am",2]]],
-    ["#GdtDesert",       [["BWh",3], ["BWk",2], ["BSh",1]]],
-    ["#GdtSand",         [["BWh",3], ["BWk",2]]],
-    ["#GdtDunes",        [["BWh",3], ["BSh",1]]],
-    ["#GdtTundra",       [["ET",3],  ["Dfc",2]]],
-    ["#GdtSnow",         [["Dfc",3], ["ET",2]]],
-    ["#GdtIce",          [["EF",3],  ["ET",2]]],
-    ["#GdtGlacier",      [["EF",3],  ["ET",1]]],
-    ["#GdtSwamp",        [["Af",2],  ["Cfb",1]]],
-    ["#GdtMarsh",        [["Af",2],  ["Cfb",1]]],
-    ["#GdtVineyard",     [["Csa",3], ["Cfa",1]]],
-    ["#GdtOrchard",      [["Cfb",2], ["Cfa",1]]],
-    ["#GdtField",        [["Cfb",2], ["Dfb",1]]],
-    ["#GdtCrop",         [["Cfb",2], ["Dfb",1]]],
-    ["#GdtRock",         [["Dfb",1], ["Dfc",1]]],
-    ["#GdtMountain",     [["Dfc",2], ["ET",1]]]
-];
+// ─── One-time cache ─────────────────────────────────────────────────
+// The map biome is a static property of the world: latitude, water
+// fraction, terrain signals and the fused verdict never change mid-
+// mission (only the module override can force a biome).  The first call
+// runs the full latitude-climate + terrain-scan + fusion; every later
+// call returns the cached verdict in microseconds.  This keeps repeated
+// calls (and the PHASE10 perf gate) cheap.
+private _cached = missionNamespace getVariable [QGVAR(biomeCached), nil];
+if (_cached isNotEqualTo nil) then { _cached } else {
 
-// ─── Override check ──────────────────────────────────────────────────
-private _biomeOverride = missionNamespace getVariable [QEGVAR(core,biome), nil];
-if (isNil "_biomeOverride") then {
-    // no override - continue to auto-detection
-} else {
-    if (_biomeOverride != "AUTO") exitWith {
-        missionNamespace setVariable [QEGVAR(core,biome), _biomeOverride];
-        private _name = _BIOME_NAMES getOrDefault [_biomeOverride, _biomeOverride];
-        missionNamespace setVariable [QEGVAR(core,biomeName), _name];
-        _biomeOverride
-    };
-};
-
-// ─── Collect signals ─────────────────────────────────────────────────
-private _world = worldName;
-private _biome = "";
-private _biomeName = "";
-
-// --- Step 1: Exact map name match (weight 10 — immediate return) ----
-private _MAP_BIOMES = createHashMapFromArray [
-    ["Altis",     ["Csa", "Hot Mediterranean"]],  ["Stratis",   ["Csa", "Hot Mediterranean"]],
-    ["Tanoa",     ["Af",  "Tropical Rainforest"]], ["Lingor",    ["Af",  "Tropical Rainforest"]],
-    ["Enoch",     ["Dfb", "Humid Continental"]],  ["Livonia",   ["Dfb", "Humid Continental"]],
-    ["Chernarus", ["Dfb", "Humid Continental"]],  ["chernarus_summer", ["Dfb", "Humid Continental"]],
-    ["Takistan",  ["BSk", "Cold Semi-Arid"]],     ["Malden",    ["Csa", "Hot Mediterranean"]],
-    ["Sahrani",   ["Aw",  "Tropical Savanna"]],   ["Kujari",    ["BSh", "Hot Semi-Arid"]],
-    ["Weferlingen", ["Cfb", "Oceanic"]],           ["CamLaoNam", ["Am",  "Monsoon Tropical"]],
-    ["Xcam_taolao",["Am",  "Monsoon Tropical"]],  ["Isladuala", ["Af",  "Tropical Rainforest"]],
-    ["Caribou",   ["Dfc", "Subarctic"]],           ["tem_anizay",["BWh", "Hot Desert"]]
-];
-if (_world in _MAP_BIOMES) exitWith {
-    private _entry = _MAP_BIOMES get _world;
-    missionNamespace setVariable [QEGVAR(core,biome), _entry select 0];
-    missionNamespace setVariable [QEGVAR(core,biomeName), _entry select 1];
-};
-
-// --- Step 2: CfgWorlds description keyword match (weight 5 — immediate return) ---
-private _cfg = configFile >> "CfgWorlds" >> _world;
-private _desc = toLower (getText (_cfg >> "description"));
-if (_desc != "") then {
-    if ("tropical" in _desc)       then { _biome = "Af";  _biomeName = "Tropical Rainforest"; };
-    if ("desert" in _desc)         then { _biome = "BWh"; _biomeName = "Hot Desert"; };
-    if ("arid" in _desc)           then { _biome = "BSh"; _biomeName = "Hot Semi-Arid"; };
-    if ("temperate" in _desc)      then { _biome = "Cfb"; _biomeName = "Oceanic"; };
-    if ("mediterranean" in _desc)  then { _biome = "Csa"; _biomeName = "Hot Mediterranean"; };
-    if ("continental" in _desc)    then { _biome = "Dfb"; _biomeName = "Humid Continental"; };
-    if ("arctic" in _desc)         then { _biome = "ET";  _biomeName = "Tundra"; };
-    if ("snow" in _desc)           then { _biome = "Dfc"; _biomeName = "Subarctic"; };
-};
-if (_biome != "") exitWith {
-    missionNamespace setVariable [QEGVAR(core,biome), _biome];
-    missionNamespace setVariable [QEGVAR(core,biomeName), _biomeName];
-};
-
-// --- Step 3: Weighted consensus voting (surface + latitude) ---------
-// Only reached if steps 1 and 2 found nothing
-private _scores = createHashMapFromArray []; // biome code -> total weight
-
-// 3a: Surface type scan — 8 samples in a star pattern
-private _ws = worldSize;
-for "_i" from 0 to 7 do {
-    private _angle = _i * 45;
-    private _dist = _ws * (0.25 + random 0.25); // 25%-50% from center
-    private _pos = [
-        (_ws / 2) + (sin _angle * _dist),
-        (_ws / 2) + (cos _angle * _dist)
-    ];
-    // Bounds check
-    if (_pos#0 >= 0 && _pos#0 <= _ws && _pos#1 >= 0 && _pos#1 <= _ws) then {
-        private _type = toLower (surfaceType _pos);
-        private _votes = _SURFACE_VOTES getOrDefault [_type, []];
-        { _scores set [_x#0, (_scores getOrDefault [_x#0, 0]) + (_x#1 * 7)]; } forEach _votes;
-    };
-};
-
-// 3b: Latitude vote (weight 3 per vote)
-private _lat = abs getNumber (_cfg >> "latitude");
+// ─── Dynamic biome detection (issue #123) ────────────────────────────
+// Fully data-driven: the biome is CLASSIFIED from the map's own facts,
+// never looked up by map name or description keyword.  Four independent
+// evidence channels are fused:
+//
+//   A. Latitude climate: the map's latitude (config) + water fraction
+//      drive a 12-month climatology (fnc_getLatitudeClimate); the real
+//      Koppen rules (fnc_classifyBiome) classify it.  This is the
+//      climate-consistent verdict (Af..EF).
+//   B. Terrain signal scan (fnc_scanTerrainSignals): surface textures,
+//      indicator vegetation (model-path species), structures, elevation
+//      from the map's own CfgSurfaces/objects — facts, no names.
+//
+// Fusion: the climate verdict from A is the primary class; the terrain
+// signals from B adjust it — a climate that says "desert" is confirmed
+// or refuted by actual cactus/sand evidence, and a map with palms at a
+// temperate latitude is re-voted tropical by the strongest signal
+// (indicator species).  The latitude climate keeps every vote inside a
+// physically consistent band.
+private _lat = abs getNumber (configFile >> "CfgWorlds" >> worldName >> "latitude");
 if (_lat == 0) then { _lat = 40; };
-private _latVotes = switch (true) do {
-    case (_lat < 10):    { [["Af",3],  ["Am",2],  ["Aw",1]] };
-    case (_lat < 23.5):  { [["Aw",3],  ["BSh",2], ["Am",1]] };
-    case (_lat < 30):    { [["BWh",3], ["BSh",2], ["Csa",1]] };
-    case (_lat < 35):    { [["Csa",3], ["BSh",2], ["BWh",1]] };
-    case (_lat < 45):    { [["Cfa",3], ["Csa",2], ["Cfb",1]] };
-    case (_lat < 50):    { [["Cfb",3], ["Dfb",2], ["Cfa",1]] };
-    case (_lat < 55):    { [["Dfb",3], ["Cfb",2], ["Dfc",1]] };
-    case (_lat < 66.5):  { [["Dfb",3], ["Dfc",2], ["ET",1]]  };
-    default              { [["ET",3],  ["Dfc",2], ["EF",1]]  };
-};
-{ _scores set [_x#0, (_scores getOrDefault [_x#0, 0]) + (_x#1 * 3)]; } forEach _latVotes;
 
-// 3c: Pick winner
-private _maxScore = 0;
+// Run the one-time terrain scan if it has not happened yet (it may have
+// been triggered earlier by another consumer).
+if (isNil {missionNamespace getVariable [QGVAR(terrainScanDone), nil]}) then {
+    [] call FUNC(scanTerrainSignals);
+};
+private _signals = missionNamespace getVariable [QGVAR(terrainSignals), [createHashMap, createHashMap, createHashMap, 0, 0, 0]];
+_signals params ["_surfaceScores", "_vegScores", "_structScores", "_waterFrac", "_meanElev", "_elevMax"];
+if (isNil "_surfaceScores") then { _surfaceScores = createHashMap; };
+if (isNil "_vegScores") then { _vegScores = createHashMap; };
+if (isNil "_structScores") then { _structScores = createHashMap; };
+
+// ─── Channel A: climate verdict (Koppen from latitude climatology) ──
+private _normals = [_lat, _waterFrac] call FUNC(getLatitudeClimate);
+private _tDay = _normals select 2;
+private _tNight = _normals select 3;
+private _precip = _normals select 5;
+private _meanTemps = [];
+for "_m" from 0 to 11 do {
+    _meanTemps pushBack (((_tDay select _m) + (_tNight select _m)) / 2);
+};
+private _climateBiome = [_meanTemps, _precip, 0] call FUNC(classifyBiome);
+if (_climateBiome == "") then { _climateBiome = "Cfb"; };
+
+// ─── Channel B: terrain evidence fusion ─────────────────────────────
+// The climate verdict is PRIMARY; terrain signals REFINE it within the
+// climate's plausible thermal band, they do not override it.  A conifer
+// signal can move Dfb -> Dfc (boreal), but cannot flip a temperate
+// climate to tropical (that would need the climate itself to be
+// tropical).  Weighted: climate 10, vegetation 8 (strongest signal),
+// surface 4, structure 3 - deliberately less than the climate so the
+// physical band stays the anchor.
+private _scores = createHashMap;
+_scores set [_climateBiome, 10];
 {
-    if (_y > _maxScore) then { _biome = _x; _maxScore = _y; };
+    _scores set [_x#0, (_scores getOrDefault [_x#0, 0]) + (_x#1 * 8)];
+} forEach _vegScores;
+{
+    _scores set [_x#0, (_scores getOrDefault [_x#0, 0]) + (_x#1 * 4)];
+} forEach _surfaceScores;
+{
+    _scores set [_x#0, (_scores getOrDefault [_x#0, 0]) + (_x#1 * 3)];
+} forEach _structScores;
+
+// Elevation refinement: high terrain genuinely shifts the climate
+// (lapse rate ~6.5 C/km, Koppen altitude rule).  A 1500 m+ mean elevation
+// forces the subarctic/tundra verdicts hard enough to override a
+// temperate climate anchor — mountains are colder than their latitude
+// suggests.  Weight 15 beats the climate anchor's 10.
+if (_meanElev > 1500) then {
+    _scores set ["Dfc", (_scores getOrDefault ["Dfc", 0]) + 15];
+    _scores set ["ET",  (_scores getOrDefault ["ET",  0]) + 8];
+};
+
+// ─── Pick winner ────────────────────────────────────────────────────
+private _bestCode = "";
+private _bestScore = 0;
+{
+    if (_y > _bestScore) then { _bestCode = _x; _bestScore = _y; };
 } forEach _scores;
 
-// 3d: Koppen refinement — real classifier breaks ties on unmapped worlds.
-// The latitude vote is crude; when two candidates tie, classify each
-// candidate's own climate normals and keep only the self-consistent ones.
-private _tied = [];
-{
-    if (_y == _maxScore && _y > 0) then { _tied pushBack _x; };
-} forEach _scores;
-if (count _tied > 1) then {
-    private _survivors = [];
-    {
-        private _normals = [_x] call aee_environmental_fnc_getClimateNormals;
-        private _meanTemps = [];
-        private _day = _normals select 2;
-        private _night = _normals select 3;
-        private _precip = _normals select 5;
-        for "_m" from 0 to 11 do {
-            _meanTemps pushBack ((_day select _m) + (_night select _m)) / 2;
-        };
-        if (([_meanTemps, _precip, 0] call aee_environmental_fnc_classifyBiome) == _x) then {
-            _survivors pushBack _x;
-        };
-    } forEach _tied;
-    if (_survivors isNotEqualTo [] && !(_biome in _survivors)) then {
-        _biome = _survivors select 0;
-    };
+if (_bestCode == "") then { _bestCode = "Cfb"; };
+private _bestName = _BIOME_NAMES getOrDefault [_bestCode, _bestCode];
+
+missionNamespace setVariable [QEGVAR(core,biome), _bestCode];
+missionNamespace setVariable [QEGVAR(core,biomeName), _bestName];
+
+if (EGVAR(core,diagnostic)) then {
+    diag_log text format [
+        "[AEE] Biome dynamic: %1 (%2) lat=%3 water=%4 elev=%5 | climate=%6 veg=%7",
+        _bestCode, _bestName, _lat, _waterFrac, _meanElev,
+        _climateBiome, count _vegScores
+    ];
 };
 
-// --- Step 4: Hard fallback ---
-if (_biome == "") then { _biome = "Cfb"; _biomeName = "Oceanic"; };
-
-// --- Store results ---
-missionNamespace setVariable [QEGVAR(core,biome), _biome];
-missionNamespace setVariable [QEGVAR(core,biomeName),
-    _BIOME_NAMES getOrDefault [_biome, _biome]
-];
+missionNamespace setVariable [QGVAR(biomeCached), _bestCode];
+_bestCode
+};

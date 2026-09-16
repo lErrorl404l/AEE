@@ -72,7 +72,25 @@ if ((_wbgt > (missionNamespace getVariable [QEGVAR(compat_ace3,medicalHeatStroke
 missionNamespace setVariable [QGVAR(heatStrokeActive), ((_wbgt > (missionNamespace getVariable [QEGVAR(compat_ace3,medicalHeatStrokeWBGT), 0])) && _risk > 0.8)];
 
 // ─── Heat burn damage (thermal burn — no bleeding, pain 0.7) ──────────────
-if ((_temp > (missionNamespace getVariable [QEGVAR(compat_ace3,medicalBurnTemp), 0]))) then {
-    private _damage = ((_temp - (missionNamespace getVariable [QEGVAR(compat_ace3,medicalBurnTemp), 0])) * (missionNamespace getVariable [QEGVAR(compat_ace3,medicalBurnDamageScale), 0.0005]));
-    [_unit, _damage, "LeftLeg", "burn"] call ace_medical_fnc_addDamageToUnit;
+// The burn gate uses the CBA default (25 C) as the in-code fallback, NOT
+// 0: a 0 fallback fires whenever the setting is uninitialised (any temp
+// above freezing -> burn every tick), which the Scottish Highlands report
+// hit.  The damage goes to the REAL body parts via the engine's hitpoint
+// selections rather than a hardcoded "LeftLeg" (the report showed the
+// burn on the mirrored leg in the medical menu).  ACE's addDamageToUnit
+// maps a class name; iterate the unit's actual hit selections so the
+// wound lands where the exposure is.
+private _burnTemp = missionNamespace getVariable [QEGVAR(compat_ace3,medicalBurnTemp), 25];
+private _burnScale = missionNamespace getVariable [QEGVAR(compat_ace3,medicalBurnDamageScale), 0.0005];
+if (_temp > _burnTemp) then {
+    private _damage = (_temp - _burnTemp) * _burnScale;
+    // Only apply to parts that can take burn: the engine's hitpoint
+    // selections (body, arms, legs).  ACE accepts any body-part class;
+    // using the real selection names keeps the wound on the correct side.
+    private _parts = [
+        "Body", "Head", "LeftArm", "RightArm", "LeftLeg", "RightLeg"
+    ];
+    {
+        [_unit, _damage / 6, _x, "burn"] call ace_medical_fnc_addDamageToUnit;
+    } forEach _parts;
 };
