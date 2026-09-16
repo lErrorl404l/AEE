@@ -91,6 +91,20 @@ def calculate_limiting_magnitude(ambient_lux, seeing):
     return max(2.0, min(7.0, m_lim))
 
 
+# ─── Star catalog sort mirror ──────────────────────────────────────────────
+
+
+def sort_visible_by_altitude(stars):
+    """Mirror of the sort in fnc_getStarCatalog.sqf.
+
+    Each star is [name, altitude, azimuth, magnitude].  The SQF sorts a
+    keyed copy with the altitude first, descending, so the highest
+    altitude is element 0.  Sorting the raw items would order by the name
+    string instead (issue #54).
+    """
+    return sorted(stars, key=lambda s: s[1], reverse=True)
+
+
 # ═══════════════════════════════════════════════════════════════════════════
 # Test classes
 # ═══════════════════════════════════════════════════════════════════════════
@@ -147,6 +161,30 @@ class TestSQFSync(unittest.TestCase):
             "fnc_calculateLimitingMagnitude.sqf",
             ["6.5 - log (_ambientLux / 0.001", "0.2 + 1.3", "0.9"],
             "NELM baseline and seeing penalty",
+        )
+
+    # ── Star catalog sort order (fnc_getStarCatalog.sqf) ──
+    def test_star_catalog_sorts_by_altitude(self):
+        """The visible-star sort must key on altitude, not the name (#54)."""
+        text = _read_sqf("fnc_getStarCatalog.sqf")
+        self.assertNotIn(
+            "_visible sort false",
+            text,
+            "fnc_getStarCatalog.sqf: alphabetical sort restored (issue #54)",
+        )
+        self._assert_in_sqf(
+            "fnc_getStarCatalog.sqf",
+            ["[(_x select 1), _x]", "_keyed sort true"],
+            "altitude-keyed descending sort",
+        )
+
+    def test_star_catalog_has_no_fabricated_canopus_b(self):
+        """Canopus_b is not a BSC5 entry and must not reappear (#55)."""
+        text = _read_sqf("fnc_getStarCatalog.sqf")
+        self.assertNotIn(
+            "Canopus_b",
+            text,
+            "fnc_getStarCatalog.sqf: fabricated Canopus_b star restored (issue #55)",
         )
 
 
@@ -399,6 +437,41 @@ class TestStarCatalogVisibility(unittest.TestCase):
         """Star on the meridian (ha=0) has azimuth 0 or 180."""
         az = self._azimuth(30.0, 50.0, 0)
         self.assertTrue(abs(az) < 1 or abs(az - 180) < 1 or abs(az - 360) < 1)
+
+
+class TestStarCatalogSortOrder(unittest.TestCase):
+    """Visible stars are sorted by altitude, highest first (issue #54)."""
+
+    def test_sorted_descending_by_altitude(self):
+        stars = [
+            ["Sirius", 12.0, 180.0, -1.46],
+            ["Vega", 74.0, 90.0, 0.03],
+            ["Polaris", 52.0, 0.0, 2.02],
+            ["Canopus", 31.0, 200.0, -0.74],
+        ]
+        alts = [s[1] for s in sort_visible_by_altitude(stars)]
+        self.assertEqual(alts, sorted(alts, reverse=True))
+
+    def test_highest_altitude_first(self):
+        stars = [
+            ["Sirius", 12.0, 180.0, -1.46],
+            ["Vega", 74.0, 90.0, 0.03],
+            ["Polaris", 52.0, 0.0, 2.02],
+        ]
+        self.assertEqual(sort_visible_by_altitude(stars)[0][0], "Vega")
+
+    def test_not_alphabetical(self):
+        """Regression for #54: the result must not be name-ordered."""
+        stars = [
+            ["Arcturus", 20.0, 180.0, -0.05],
+            ["Betelgeuse", 80.0, 170.0, 0.42],
+            ["Vega", 50.0, 90.0, 0.03],
+        ]
+        names = [s[0] for s in sort_visible_by_altitude(stars)]
+        self.assertNotEqual(names, sorted(names))
+
+    def test_empty_catalog(self):
+        self.assertEqual(sort_visible_by_altitude([]), [])
 
 
 if __name__ == "__main__":
