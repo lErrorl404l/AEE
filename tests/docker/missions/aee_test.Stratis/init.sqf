@@ -991,7 +991,7 @@ if (_p10Fail == 0) then {
         _p20Fail = _p20Fail + 1;
     } else {
         [] call _fnRiver;
-        private _wl = missionNamespace getVariable ["aee_mobility_currentWaterLevel", -1];
+        private _wl = missionNamespace getVariable ["aee_core_currentWaterLevel", -1];
         // With zero outflow and +1.5 m tide, water level should be ~1.5.
         if (_wl > 1.0 && _wl < 2.0) then {
             diag_log text format ["[PHASE20] [PASS] tide raises river level to %1 m", _wl];
@@ -1261,6 +1261,74 @@ if (_p10Fail == 0) then {
         diag_log text format ["[PHASE23] [PASS] cold-weather performance model: %1 checks passed", _p23Pass];
     } else {
         diag_log text format ["[PHASE23] [FAIL] cold-weather performance model: %1 passed, %2 failed", _p23Pass, _p23Fail];
+    };
+
+    // -- PHASE 24: weather report wiring (#83) ------------------------------
+    // The player-facing weather report must consume the computed core state:
+    // cold category, sea state, QNH, and hazard lines all appear when the
+    // underlying variables are set.
+    private _p24Pass = 0;
+    private _p24Fail = 0;
+    private _fnReport = missionNamespace getVariable ["aee_actions_fnc_calculateWeatherReport", nil];
+    if (isNil "_fnReport") then {
+        diag_log text "[PHASE24] [FAIL] weather report function not compiled";
+        _p24Fail = _p24Fail + 1;
+    } else {
+        // Case 1: cold state present -> report names it.
+        missionNamespace setVariable ["aee_core_currentTemperature", -12];
+        missionNamespace setVariable ["aee_core_coldDangerCategory", "Severe"];
+        missionNamespace setVariable ["aee_core_windChillTemp", -20];
+        missionNamespace setVariable ["aee_core_dexterityPercent", 0.4];
+        private _r1 = [] call _fnReport;
+        if (_r1 find "Severe" >= 0 && _r1 find "Cold:" >= 0) then {
+            diag_log text "[PHASE24] [PASS] report shows cold danger category";
+            _p24Pass = _p24Pass + 1;
+        } else {
+            diag_log text format ["[PHASE24] [FAIL] report missing cold line: %1", _r1];
+            _p24Fail = _p24Fail + 1;
+        };
+
+        // Case 2: sea state + tide present -> report names them.
+        missionNamespace setVariable ["aee_core_seaStateBeaufort", 5];
+        missionNamespace setVariable ["aee_core_waveHeight_m", 2.5];
+        missionNamespace setVariable ["aee_core_currentTideDescription", "Spring High"];
+        missionNamespace setVariable ["aee_core_currentTideOffset_m", 1.2];
+        private _r2 = [] call _fnReport;
+        if (_r2 find "Sea State: 5" >= 0 && _r2 find "Spring High" >= 0) then {
+            diag_log text "[PHASE24] [PASS] report shows sea state and tide";
+            _p24Pass = _p24Pass + 1;
+        } else {
+            diag_log text format ["[PHASE24] [FAIL] report missing sea state line: %1", _r2];
+            _p24Fail = _p24Fail + 1;
+        };
+
+        // Case 3: hazards present -> report lists them.
+        missionNamespace setVariable ["aee_core_currentAvalancheRisk", 0.8];
+        missionNamespace setVariable ["aee_environmental_flashFloodRisk", 0.7];
+        private _r3 = [] call _fnReport;
+        if (_r3 find "Hazards:" >= 0 && _r3 find "Avalanche Severe" >= 0 && _r3 find "Flash Flood Severe" >= 0) then {
+            diag_log text "[PHASE24] [PASS] report lists hazards";
+            _p24Pass = _p24Pass + 1;
+        } else {
+            diag_log text format ["[PHASE24] [FAIL] report missing hazards: %1", _r3];
+            _p24Fail = _p24Fail + 1;
+        };
+
+        // Case 4: QNH present -> report shows altimetry.
+        missionNamespace setVariable ["aee_core_qnh", 1005];
+        private _r4 = [] call _fnReport;
+        if (_r4 find "QNH: 1005" >= 0) then {
+            diag_log text "[PHASE24] [PASS] report shows QNH";
+            _p24Pass = _p24Pass + 1;
+        } else {
+            diag_log text format ["[PHASE24] [FAIL] report missing QNH: %1", _r4];
+            _p24Fail = _p24Fail + 1;
+        };
+    };
+    if (_p24Fail == 0) then {
+        diag_log text format ["[PHASE24] [PASS] weather report wiring: %1 checks passed", _p24Pass];
+    } else {
+        diag_log text format ["[PHASE24] [FAIL] weather report wiring: %1 passed, %2 failed", _p24Pass, _p24Fail];
     };
 
     // -- PHASE 5: determinism -- temperature delta over 5 s must be small ----
