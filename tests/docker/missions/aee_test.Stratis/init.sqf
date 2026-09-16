@@ -972,6 +972,78 @@ if (_p10Fail == 0) then {
         diag_log text format ["[PHASE19] [FAIL] magnetic anomaly detection: %1 passed, %2 failed", _p19Pass, _p19Fail];
     };
 
+    // -- PHASE 20: tide integration (#38) ------------------------------------
+    // Verifies tidal offset flows into river water level and flash flood
+    // risk (compound flooding).  Pure state-seeding, no engine deps.
+    private _p20Pass = 0;
+    private _p20Fail = 0;
+
+    // --- Tide + river water level ---
+    // Seed tide offset to +1.5 m (spring high tide).
+    missionNamespace setVariable ["aee_core_currentTideOffset_m", 1.5];
+    // Seed river reservoirs to zero (dry baseline).
+    missionNamespace setVariable ["aee_mobility_riverReservoirs", [0, 0, 0]];
+
+    // Call river water level.
+    private _fnRiver = missionNamespace getVariable ["aee_mobility_fnc_calculateRiverWaterLevel", nil];
+    if (isNil "_fnRiver") then {
+        diag_log text "[PHASE20] [FAIL] river water level function not compiled";
+        _p20Fail = _p20Fail + 1;
+    } else {
+        [] call _fnRiver;
+        private _wl = missionNamespace getVariable ["aee_mobility_currentWaterLevel", -1];
+        // With zero outflow and +1.5 m tide, water level should be ~1.5.
+        if (_wl > 1.0 && _wl < 2.0) then {
+            diag_log text format ["[PHASE20] [PASS] tide raises river level to %1 m", _wl];
+            _p20Pass = _p20Pass + 1;
+        } else {
+            diag_log text format ["[PHASE20] [FAIL] tide + river level = %1 m (expected ~1.5)", _wl];
+            _p20Fail = _p20Fail + 1;
+        };
+    };
+
+    // --- Tide + flash flood risk (compound flooding) ---
+    // Seed rain rate to 0.8 (20 mm/h), accum to 0.5.
+    // Override rain since engine rain is 0 in docker.
+    missionNamespace setVariable ["aee_environmental_rainRateOverride", 0.8];
+    missionNamespace setVariable ["aee_environmental_rainAccum", 0.5];
+    // Set flash flood threshold if not already set.
+    private _ffThresh = missionNamespace getVariable ["aee_environmental_FlashFloodThreshold", 15];
+    missionNamespace setVariable ["aee_environmental_FlashFloodThreshold", _ffThresh];
+
+    private _fnFlood = missionNamespace getVariable ["aee_environmental_fnc_calculateFlashFloodRisk", nil];
+    if (isNil "_fnFlood") then {
+        diag_log text "[PHASE20] [FAIL] flash flood risk function not compiled";
+        _p20Fail = _p20Fail + 1;
+    } else {
+        // Case A: tide = 0 (no compound factor).  Risk = intensity/threshold * (1+accum) * terrain.
+        missionNamespace setVariable ["aee_core_currentTideOffset_m", 0];
+        [] call _fnFlood;
+        private _riskA = missionNamespace getVariable ["aee_environmental_flashFloodRisk", -1];
+
+        // Case B: tide = 1.5 (compound factor ~1.4).  Risk should be higher.
+        missionNamespace setVariable ["aee_core_currentTideOffset_m", 1.5];
+        [] call _fnFlood;
+        private _riskB = missionNamespace getVariable ["aee_environmental_flashFloodRisk", -1];
+
+        if (_riskB > _riskA && _riskB > 0 && _riskB <= 1) then {
+            diag_log text format ["[PHASE20] [PASS] compound flooding: no-tide=%1, high-tide=%2", _riskA, _riskB];
+            _p20Pass = _p20Pass + 1;
+        } else {
+            diag_log text format ["[PHASE20] [FAIL] compound flooding: no-tide=%1, high-tide=%2", _riskA, _riskB];
+            _p20Fail = _p20Fail + 1;
+        };
+    };
+
+    // Clean up seeded state.
+    missionNamespace setVariable ["aee_core_currentTideOffset_m", 0];
+
+    if (_p20Fail == 0) then {
+        diag_log text format ["[PHASE20] [PASS] tide integration: %1 checks passed", _p20Pass];
+    } else {
+        diag_log text format ["[PHASE20] [FAIL] tide integration: %1 passed, %2 failed", _p20Pass, _p20Fail];
+    };
+
     // -- PHASE 5: determinism -- temperature delta over 5 s must be small ----
     // PHASE11 deliberately disturbed the clock (midnight/noon skips).  The
     // temperature model is stateless and recomputes on each 5 s env tick,

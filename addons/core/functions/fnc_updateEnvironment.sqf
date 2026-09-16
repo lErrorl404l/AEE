@@ -149,6 +149,11 @@ if (GVAR(radioPropagationEnabled)) then {
 };
 
 // ─── Surface Hydrology ──────────────────────────────────────────────────────
+// Tidal prediction must run before river water level and flash flood,
+// because those functions read the tide offset set here.
+if (GVAR(maritimeEnabled)) then {
+    [] call EFUNC(maritime,calculateTidalPrediction);
+};
 if (GVAR(hydrologyEnabled)) then {
     [] call EFUNC(environmental,calculateSnowAccumulation);
     [] call EFUNC(environmental,calculateFlashFloodRisk);
@@ -198,9 +203,6 @@ private _seeing = missionNamespace getVariable [QEGVAR(optics,atmosphericSeeing)
 [_ambientLux, _seeing] call EFUNC(optics,calculateLimitingMagnitude);
 private _posASL2D = if (count _posASL >= 3) then { [_posASL select 0, _posASL select 1, 0] } else { [0, 0, 0] };
 [_posASL2D, date] call EFUNC(optics,getStarCatalog);
-if (GVAR(maritimeEnabled)) then {
-    [] call EFUNC(maritime,calculateTidalPrediction);
-};
 [] call EFUNC(atmos,calculateCloudCeiling);
 [] call EFUNC(environmental,calculateSpaceWeather);
 [] call EFUNC(radio,calculateIonosphericAbsorption);
