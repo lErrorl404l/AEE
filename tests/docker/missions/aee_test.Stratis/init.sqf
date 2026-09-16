@@ -912,6 +912,66 @@ if (_p10Fail == 0) then {
         diag_log text format ["[PHASE18] [FAIL] shooter stability model: %1 passed, %2 failed", _p18Pass, _p18Fail];
     };
 
+    // -- PHASE 19: magnetic anomaly detection (#18) --------------------------
+    // Dipole model: B = M/(4πr³) × √(1+3cos²θ).  Pure maths, runs headless.
+    // Verifies 1/r³ falloff and the dipole field pattern.
+    private _p19Pass = 0;
+    private _p19Fail = 0;
+    private _fnMag = missionNamespace getVariable ["aee_core_fnc_calculateMagneticAnomaly", nil];
+    if (isNil "_fnMag") then {
+        diag_log text "[PHASE19] [FAIL] magnetic anomaly function not compiled";
+        _p19Fail = _p19Fail + 1;
+    } else {
+        // Case 1: 10 m above a 1000 A·m² dipole (vehicle-sized).
+        // B = M/(4πr³) × √(1+3cos²θ).  Directly above: cosθ=1, √4=2.
+        private _b1 = [[0, 0, 10], [0, 0, 0], 1000] call _fnMag;
+        private _expected1 = (1000 / (4 * pi * 1000)) * 2 * 1e9;
+        if (abs (_b1 - _expected1) < 1) then {
+            diag_log text format ["[PHASE19] [PASS] 10 m dipole = %1 nT", _b1];
+            _p19Pass = _p19Pass + 1;
+        } else {
+            diag_log text format ["[PHASE19] [FAIL] 10 m dipole = %1 nT (expected %2)", _b1, _expected1];
+            _p19Fail = _p19Fail + 1;
+        };
+
+        // Case 2: 1/r³ falloff — doubling distance → 1/8 field.
+        private _b2 = [[0, 0, 20], [0, 0, 0], 1000] call _fnMag;
+        if (abs (_b2 - _b1 / 8) < 0.5) then {
+            diag_log text format ["[PHASE19] [PASS] 20 m = %1 nT (1/8 of 10 m)", _b2];
+            _p19Pass = _p19Pass + 1;
+        } else {
+            diag_log text format ["[PHASE19] [FAIL] 20 m = %1 nT (expected %2)", _b2, _b1 / 8];
+            _p19Fail = _p19Fail + 1;
+        };
+
+        // Case 3: Sensor inside source (<0.1 m) → 0 nT (guard).
+        private _b3 = [[0, 0, 0.05], [0, 0, 0], 1000] call _fnMag;
+        if (_b3 == 0) then {
+            diag_log text "[PHASE19] [PASS] sensor inside source = 0 nT";
+            _p19Pass = _p19Pass + 1;
+        } else {
+            diag_log text format ["[PHASE19] [FAIL] sensor inside source = %1 nT (expected 0)", _b3];
+            _p19Fail = _p19Fail + 1;
+        };
+
+        // Case 4: Larger dipole (steel structure, 10000 A·m²) at 5 m.
+        // cosθ=1, √4=2.
+        private _b4 = [[0, 0, 5], [0, 0, 0], 10000] call _fnMag;
+        private _expected4 = (10000 / (4 * pi * 125)) * 2 * 1e9;
+        if (abs (_b4 - _expected4) < 10) then {
+            diag_log text format ["[PHASE19] [PASS] 5 m large dipole = %1 nT", _b4];
+            _p19Pass = _p19Pass + 1;
+        } else {
+            diag_log text format ["[PHASE19] [FAIL] 5 m large dipole = %1 nT (expected %2)", _b4, _expected4];
+            _p19Fail = _p19Fail + 1;
+        };
+    };
+    if (_p19Fail == 0) then {
+        diag_log text format ["[PHASE19] [PASS] magnetic anomaly detection: %1 checks passed", _p19Pass];
+    } else {
+        diag_log text format ["[PHASE19] [FAIL] magnetic anomaly detection: %1 passed, %2 failed", _p19Pass, _p19Fail];
+    };
+
     // -- PHASE 5: determinism -- temperature delta over 5 s must be small ----
     // PHASE11 deliberately disturbed the clock (midnight/noon skips).  The
     // temperature model is stateless and recomputes on each 5 s env tick,
