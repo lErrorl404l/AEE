@@ -400,8 +400,11 @@ private _physDerating = missionNamespace getVariable [QEGVAR(physiology,batteryT
 if !(_physDerating isEqualType 0) then { _physDerating = 1.0; };
 private _tempDrainFactor = if (_physDerating > 0.01) then { 1 / _physDerating } else { 3.0 };
 _tempDrainFactor = _tempDrainFactor max 1.0 min 4.0;
-private _drain = _baseDrain * _gainRatio * _tempDrainFactor * diag_deltaTime;
-_battery = (_battery - _drain) max 0;
+// Opt-in (issue #36): battery drain is hardcore, defaults OFF.
+if (missionNamespace getVariable [QGVAR(nvgBatteryEnabled), false]) then {
+    private _drain = _baseDrain * _gainRatio * _tempDrainFactor * diag_deltaTime;
+    _battery = (_battery - _drain) max 0;
+};
 missionNamespace setVariable [QGVAR(nvgBattery), _battery];
 
 // Degradation effects below thresholds.

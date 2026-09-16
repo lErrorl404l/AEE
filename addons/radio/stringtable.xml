@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="AEE">
     <Package name="Radio">
+        <Key ID="STR_AEE_Radio_batteryDeratingEnabled_Description">
+            <Original>Scale effective transmit power by the physiology battery temperature derating</Original>
+            <English>Scale effective transmit power by the physiology battery temperature derating</English>
+        </Key>
+        <Key ID="STR_AEE_Radio_batteryDeratingEnabled_Name">
+            <Original>Battery Temperature Derating</Original>
+            <English>Battery Temperature Derating</English>
+        </Key>
         <Key ID="STR_AEE_Radio_propagationRange_Description">
             <Original>Ceiling of the radio propagation quality index</Original>
             <English>Ceiling of the radio propagation quality index</English>
