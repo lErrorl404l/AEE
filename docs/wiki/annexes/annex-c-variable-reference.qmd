@@ -28,6 +28,14 @@ follow the variable names as written in the SQF source.
 | `aee_core_currentWBGT` | thermal | Wet bulb globe temperature in C |
 | `aee_core_currentHeatIndex` | thermal | NWS heat index in C |
 | `aee_core_currentHypothermiaRisk` | thermal | Hypothermia risk 0..1 |
+| `aee_core_avgInfantryTemp` | thermal | Average infantry temperature |
+| `aee_core_avgVehicleTemp` | thermal | Average vehicle temperature |
+| `aee_core_coldDangerCategory` | thermal | Cold danger category |
+| `aee_core_windChillTemp` | thermal | Wind chill temperature |
+| `aee_core_dexterityPercent` | thermal | Manual dexterity 0..1 |
+| `aee_core_frostbiteMinutes` | thermal | Time to frostbite in minutes |
+| `aee_core_currentFreezingRain` | thermal | Freezing rain intensity |
+| `aee_core_currentIcingSeverity` | thermal | Icing severity 0..1 |
 | `aee_core_thermalCrossoverActive` | thermal | Thermal crossover flag |
 | `aee_core_clothingInsulationFactor` | thermal | Clothing insulation 0.5..2.0 |
 | `aee_core_currentPressure` | atmos | Barometric pressure in hPa |
@@ -41,6 +49,9 @@ follow the variable names as written in the SQF source.
 | `aee_core_cloudCeiling_m` | atmos | Cloud base height in metres |
 | `aee_core_precipitationPhase` | atmos | Phase (rain/sleet/snow/freezing_rain) |
 | `aee_core_snowfallRate` | atmos | Snowfall rate |
+| `aee_core_fogBase_m` | atmos | Fog base altitude in metres |
+| `aee_core_fogForecast` | atmos | Fog forecast |
+| `aee_core_currentHaze` | atmos | Haze intensity 0..1 |
 | `aee_core_currentTurbulence` | atmos | Turbulence 0..1 |
 | `aee_core_currentIcingSeverity` | atmos | Airframe icing 0..1 |
 | `aee_core_currentLightningRisk` | atmos | Lightning risk 0..1 |
@@ -73,6 +84,19 @@ follow the variable names as written in the SQF source.
 | `aee_optics_dewBlur` | optics | Dew blur |
 | `aee_optics_rainBlur` | optics | Rain blur |
 | `aee_optics_glareBlur` | optics | Glare blur |
+| `aee_optics_currentLaserAttenuation` | optics | Laser attenuation |
+| `aee_optics_currentVisibleAttenuation` | optics | Visible attenuation |
+| `aee_optics_currentThermalNoise` | optics | Thermal noise |
+| `aee_optics_dynamicLux` | optics | Dynamic lux contribution |
+| `aee_optics_irLightLux` | optics | IR light lux |
+| `aee_optics_lightDirection` | optics | Light direction |
+| `aee_optics_lightIsNight` | optics | Night flag |
+| `aee_optics_nightClassification` | optics | Night class |
+| `aee_optics_starsVisibility` | optics | Star visibility |
+| `aee_optics_visibleStars` | optics | Visible star count |
+| `aee_optics_nvgNoise` | optics | NVG noise |
+| `aee_optics_nvgTubeTier` | optics | NVG tube tier |
+| `aee_optics_nvgWetness` | optics | NVG wetness |
 
 ### Physiology
 
@@ -87,6 +111,9 @@ follow the variable names as written in the SQF source.
 | `aee_physiology_batteryTemperatureDerating` | physiology | Battery derating 0.3..1 |
 | `aee_physiology_scentDispersionIntensity` | physiology | Scent dispersion 0..1 |
 | `aee_physiology_scentDispersionDir` | physiology | Scent downwind direction |
+| `aee_physiology_amsRisk` | physiology | Acute mountain sickness risk |
+| `aee_physiology_sleepState` | physiology | Sleep state |
+| `aee_physiology_sleepiness` | physiology | Sleepiness 0..1 |
 
 ### Radio
 
@@ -112,6 +139,14 @@ follow the variable names as written in the SQF source.
 | `aee_mobility_riverReservoirs` | mobility | Nash cascade reservoir state |
 | `aee_core_groundState` | mobility | Ground state |
 | `aee_core_currentWaterLevel` | mobility | River water level |
+| `aee_mobility_currentLiftRatio` | mobility | Helicopter lift ratio |
+| `aee_mobility_currentTractionTracked` | mobility | Tracked traction 0..1 |
+| `aee_mobility_currentTractionWheeled` | mobility | Wheeled traction 0..1 |
+| `aee_mobility_routeDegradation` | mobility | Route degradation |
+| `aee_mobility_soilBearing` | mobility | Soil bearing strength |
+| `aee_mobility_tractionModifier` | mobility | Traction modifier |
+| `aee_mobility_turbulencePFH` | mobility | Turbulence PFH handle |
+| `aee_mobility_isReady` | mobility | Mobility module ready flag |
 
 ### Environmental
 
@@ -133,6 +168,19 @@ follow the variable names as written in the SQF source.
 | `aee_core_cbrnPersistence` | environmental | CBRN persistence 0.225..2.1 |
 | `aee_environmental_solarFlareActive` | environmental | Solar flare flag |
 | `aee_environmental_spaceWeatherFlareValue` | environmental | Flare value |
+| `aee_environmental_auroraVisibility` | environmental | Aurora visibility |
+| `aee_environmental_kpIndex` | environmental | Kp index |
+| `aee_environmental_solarActivity` | environmental | Solar activity |
+| `aee_environmental_geomagneticDescription` | environmental | Geomagnetic description |
+| `aee_environmental_spaceWeatherFlareTimer` | environmental | Flare timer |
+| `aee_environmental_flashFloodRisk` | environmental | Flash flood risk 0..1 |
+| `aee_environmental_groundFrostPresent` | environmental | Ground frost flag |
+| `aee_environmental_groundFrostIntensity` | environmental | Ground frost 0..1 |
+| `aee_environmental_snowDriftIntensity` | environmental | Snow drift 0..1 |
+| `aee_environmental_freezeThawDescription` | environmental | Freeze-thaw description |
+| `aee_environmental_currentAvalancheWarning` | environmental | Avalanche warning |
+| `aee_environmental_currentSoundPropagation` | environmental | Sound propagation 0..1 |
+| `aee_environmental_biologicalAmbientIntensity` | environmental | Biological ambient |
 | `aee_core_biome` | environmental | Koppen biome code |
 
 ### Maritime
@@ -146,6 +194,7 @@ follow the variable names as written in the SQF source.
 | `aee_core_currentTideOffset_m` | maritime | Tide offset in metres |
 | `aee_core_currentTideDescription` | maritime | Tide description |
 | `aee_core_magneticDeclinationDeg` | maritime | Compass deviation in degrees |
+| `aee_maritime_compassDeviation` | maritime | Compass deviation (maritime namespace) |
 
 ### Aviation and severe weather
 
@@ -156,6 +205,20 @@ follow the variable names as written in the SQF source.
 | `aee_atmos_edrValue` | atmos | ICAO EDR value |
 | `aee_atmos_turbulenceClass` | atmos | LIGHT/MODERATE/SEVERE/EXTREME |
 | `aee_atmos_iceAccretion_kg` | atmos | Ice mass in kg |
+| `aee_atmos_airframeIcing` | atmos | Airframe icing 0..1 |
+| `aee_atmos_airframeIcingDetected` | atmos | Airframe icing flag |
+| `aee_atmos_capeProxy` | atmos | CAPE proxy for convection |
+| `aee_atmos_currentCloudDescription` | atmos | Cloud layer description |
+| `aee_atmos_currentCloudTrend` | atmos | Cloud trend |
+| `aee_atmos_currentMicroburst` | atmos | Microburst severity |
+| `aee_atmos_mirageType` | atmos | Mirage type |
+| `aee_atmos_refractionAngle` | atmos | Refraction angle |
+| `aee_atmos_refractionCondition` | atmos | Refraction regime |
+| `aee_atmos_refractionK` | atmos | K-factor (4/3 earth) |
+| `aee_atmos_refractivityGradient` | atmos | Refractivity gradient |
+| `aee_atmos_refractivityN` | atmos | Refractivity in N-units |
+| `aee_ballistics_downrangeWind` | ballistics | Downrange wind component |
+| `aee_ballistics_muzzleVelocityCorrection` | ballistics | MV correction 0.85..1.15 |
 
 ### Module overrides
 
@@ -165,6 +228,13 @@ follow the variable names as written in the SQF source.
 | `aee_core_moduleTempOffset` | core | EDEN temperature offset |
 | `aee_core_modulePrecipBias` | core | EDEN rain multiplier |
 | `aee_core_moduleWindMultiplier` | core | EDEN wind multiplier |
+| `aee_core_moduleUpdateInterval` | core | EDEN update interval |
+| `aee_core_weatherProgressionSeed` | core | Seeded weather progression |
+| `aee_core_qnh` | core | QNH pressure setting |
+| `aee_core_pressureAltitude_m` | core | Pressure altitude in metres |
+| `aee_core_isReady` | core | Core module ready flag |
+| `aee_core_lastStrikePos` | core | Last lightning strike position |
+| `aee_core_lightningIgnition` | core | Lightning ignition flag |
 
 ## Settings
 
