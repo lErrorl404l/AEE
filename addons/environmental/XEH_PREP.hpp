@@ -8,6 +8,7 @@ PREP(calculateCBRNPersistence);
 PREP(calculateFlashFloodRisk);
 PREP(calculateFreezeThawCycling);
 PREP(calculateFrostOnWindscreens);
+PREP(detectGroundFrost);
 PREP(calculateLunarIllumination);
 PREP(calculateSevereWeather);
 PREP(calculateSnowAccumulation);
