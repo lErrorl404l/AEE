@@ -29,6 +29,17 @@ def main():
         "tools/tests/test_environmental.py",
         "tools/tests/test_atmos.py",
         "tools/tests/test_maritime.py",
+        "tools/tests/test_thermal_optics.py",
+        "tools/tests/test_astronomical.py",
+        "tools/tests/test_biome.py",
+        "tools/tests/test_biome_dynamic.py",
+        "tools/tests/test_propellant_temp.py",
+        "tools/tests/test_sleep_model.py",
+        "tools/tests/test_shooter_stability.py",
+        "tools/tests/test_cold_weather.py",
+        "tools/tests/test_dynamics.py",
+        "tools/tests/test_trajectories.py",
+        "tools/tests/test_compat.py",
     ]
     # Only run suites that exist (module suites are added incrementally).
     existing = [s for s in suites if os.path.exists(os.path.join(ROOT, s))]

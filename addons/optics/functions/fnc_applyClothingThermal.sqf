@@ -122,6 +122,15 @@ private _applied = 0;
     // cold).  This gives the real per-item look: helmet warm, cloth cold,
     // the same differentiation the vanilla baked TI already shows for
     // chest rigs vs clothing: but physics-driven.
+    //
+    // UNKNOWN materials keep the engine's own thermal.  The old code
+    // treated "unknown" as "assume cloth, swap" — a hardcoded-assumption
+    // bug (issue #123): third-party uniforms whose rvmats use mod-specific
+    // paths (ZuluCustomG3\data\g2\g2_pants.rvmat, uksf_flag_fbr.rvmat)
+    // match neither the cloth nor the metal/glass/plastic keywords, so
+    // EVERY selection was swapped to AEE's near-black ti_cloth_cold.rvmat
+    // and the whole uniform rendered dark.  Unknown = leave the engine's
+    // thermal alone; only KNOWN cloth is swapped.
     private _mats = getObjectMaterials _obj;
     private _swapSelections = [];
     {
@@ -129,14 +138,10 @@ private _applied = 0;
         private _m = toLower (_mats select _sel);
         // Cloth/leather/fabric dominant -> swap to our material.
         // Metal/glass/plastic -> keep engine thermal (solar-warm).
+        // Unknown -> keep engine thermal (safe: never force a swap).
         if (_m find "cloth" >= 0 || _m find "fabric" >= 0 || _m find "leather" >= 0
             || _m find "wool" >= 0 || _m find "cotton" >= 0) then {
             _swapSelections pushBack _sel;
-        } else {
-            if (_m == "" || _m find "metal" < 0 && _m find "glass" < 0 && _m find "plastic" < 0) then {
-                // Unknown material: swap (safe baseline: cloth assumption).
-                _swapSelections pushBack _sel;
-            };
         };
     } forEach _selections;
 
