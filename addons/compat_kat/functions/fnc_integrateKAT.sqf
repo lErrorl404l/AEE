@@ -65,7 +65,11 @@ private _risk = missionNamespace getVariable ["aee_core_currentHypoxiaRisk", 0];
 
 if (_risk > 0.01) then {
     private _spo2 = ((97 - (_risk * (missionNamespace getVariable [QEGVAR(compat_kat,spo2RiskScale), 32]))) max (missionNamespace getVariable [QEGVAR(compat_kat,spo2Floor), 60]));            // percent
-    private _pao2 = 33 + ((_spo2 - 60) / 15) * 7;          // 33..40 mmHg
+    // PaO2 across the SpO2 span 60..97 -> 33..40 mmHg.  The divisor is the
+    // SpO2 SPAN (37), not 15: a 15 gave 50 mmHg at SpO2 97, which KAT's
+    // dissociation curve would read as ~85 % SpO2 and pull the value back
+    // down, defeating the mapping (found by the compat mirror tests).
+    private _pao2 = 33 + ((_spo2 - 60) / 37) * 7;          // 33..40 mmHg
     private _bloodGas = player getVariable ["kat_circulation_bloodGas", [40, 90, 0.96, 24, 7.4, 37]];
     if (_bloodGas isEqualType 0) then { _bloodGas = [40, 90, 0.96, 24, 7.4, 37]; };
 

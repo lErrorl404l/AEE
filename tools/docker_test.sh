@@ -77,10 +77,14 @@ if [ "${1:-}" = "--hosts" ]; then
     # case-sensitive filesystem. Create lowercase symlink aliases so the host
     # test can load ACM on Linux.
     if [ -d "$MODS/@acm/addons" ]; then
+        # Create lowercase symlink aliases idempotently.  The `|| true`
+        # guards the last ln -s under set -euo pipefail: when every
+        # symlink already exists the final test returns 1, which would
+        # abort the whole host loop.
         (cd "$MODS/@acm/addons" && for f in ACM_*.pbo; do
             low=$(echo "$f" | tr 'A-Z' 'a-z')
             [ "$f" != "$low" ] && [ ! -e "$low" ] && ln -s "$f" "$low"
-        done)
+        done) || true
     fi
     for host in ace acre2 tfar kat acm; do
         moddir="${HOSTS[$host]}"
@@ -129,11 +133,11 @@ YAMLEOF
         kat) hostname="KAT" ;;
         acm) hostname="ACM" ;;
         esac
-        if grep -q "\[HOST\] \[PASS\] $hostname" "$DOCKER/run.$host.log" 2>/dev/null; then
-            echo "  PASS: $host compat integration"
-        elif grep -q "\[HOST\] \[FAIL\]" "$DOCKER/run.$host.log"; then
+        if grep -q "\[HOST\] \[FAIL\]" "$DOCKER/run.$host.log" 2>/dev/null; then
             echo "  FAIL: $host - see tests/docker/run.$host.log"
             FAILED=1
+        elif grep -q "\[HOST\] \[PASS\] $hostname" "$DOCKER/run.$host.log" 2>/dev/null; then
+            echo "  PASS: $host compat integration"
         else
             echo "  FAIL: $host - no result (see tests/docker/run.$host.log)"
             FAILED=1
