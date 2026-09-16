@@ -130,7 +130,10 @@ if (GVAR(physiologyEnabled)) then {
 // Shared illuminance layer: the engine's real scene light (getLightingAt)
 // sampled at the player position.  Runs unconditionally so NVG, thermal,
 // glare, and ballistics all consume one authoritative lux value.
+// Space weather must run BEFORE the illuminance layer: the aurora
+// intensity feeds the ambient lux the NVG chain consumes (issue #112).
 BEGIN_COUNTER(optics);
+[] call EFUNC(environmental,calculateSpaceWeather);
 [_posASL] call EFUNC(optics,calculateIlluminance);
 [] call EFUNC(optics,calculateThermalContrast);
 [] call EFUNC(optics,calculateAttenuation);
@@ -233,7 +236,6 @@ private _seeing = missionNamespace getVariable [QEGVAR(optics,atmosphericSeeing)
 private _posASL2D = if (count _posASL >= 3) then { [_posASL select 0, _posASL select 1, 0] } else { [0, 0, 0] };
 [_posASL2D, date] call EFUNC(optics,getStarCatalog);
 [] call EFUNC(atmos,calculateCloudCeiling);
-[] call EFUNC(environmental,calculateSpaceWeather);
 [] call EFUNC(radio,calculateIonosphericAbsorption);
 if (GVAR(environmentalEnabled)) then {
     [] call EFUNC(environmental,calculateBiologicalAmbient);
