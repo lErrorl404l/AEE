@@ -18,3 +18,5 @@ aee_radio_frequency  radio frequency producer pending (issue #35 cross-addon wir
 aee_radio_radioFrequencyHz  radio frequency producer pending (issue #35 cross-addon wiring)
 aee_radio_radioLinkRangeM  radio link range producer pending (issue #35 cross-addon wiring)
 aee_radio_sunspotNumber  sunspot producer pending (issue #35 cross-addon wiring)
+aee_compat_acm_hypoxiaDutyFactor  external API name passed to ACE3 addSpO2DutyFactor, not an AEE variable
+aee_optics_nvgTitle  RscTitles config class name, not a runtime variable

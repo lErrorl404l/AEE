@@ -31,6 +31,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[2]
 ADDONS = REPO_ROOT / "addons"
 ALLOWLIST = Path(__file__).resolve().parent / "cba_settings_allowlist.txt"
+ANNEX_C = REPO_ROOT / "docs" / "wiki" / "annexes" / "annex-c-variable-reference.qmd"
 PREFIX = "aee"
 
 _CALL = re.compile(
@@ -98,15 +99,24 @@ def scan():
             bucket = reads if kind == "getVariable" else writes
             bucket.setdefault(name, []).append(rel)
 
-        # A macro that is NOT the first argument of a get/setVariable call is
-        # passed to a helper (which may write it) or used as a bare value.
-        # Count those as produced so dynamic writes are not false-flagged.
+        # Bare-form macros (not the first argument of get/setVariable):
+        # an assignment like "GVAR(x) = ..." writes; a value use like
+        # "[GVAR(x)] call" or "isNil QGVAR(x)" reads.  Separate the two
+        # so bare-written handles (PFH ids) are not false-flagged.
+        # initSettings declarations are not uses: skip the file entirely.
+        is_decl_file = sqf.name == "initSettings.inc.sqf"
         for match in _MACRO.finditer(text):
+            if is_decl_file:
+                continue
             before = text[max(0, match.start() - 32) : match.start()]
             if re.search(r"(?:get|set)Variable\s*\[\s*$", before):
                 continue
+            after = text[match.end() : match.end() + 3]
             name = resolve(match.group()[match.group().index("(") + 1 : -1], addon)
-            writes.setdefault(name, []).append(rel)
+            if re.match(r"\s*=", after):
+                writes.setdefault(name, []).append(rel)
+            else:
+                reads.setdefault(name, []).append(rel)
 
     return declared, reads, writes
 
@@ -132,7 +142,7 @@ def main():
     # A produced name containing %1 is a format template: the real variables
     # are composed at run time (e.g. format [QGVAR(ppHandle_%1), _name]).
     # Any read whose name matches a template prefix is satisfied by it.
-    templates = [n for n in writes if "%1" in n]
+    templates = [n for n in set(reads) | set(writes) if "%1" in n]
     dynamic = [t[: t.index("%1")] for t in templates]
 
     def is_produced(name):
@@ -163,6 +173,11 @@ def main():
         n for n in writes if n not in reads and n not in declared and "%1" not in n
     )
 
+    # Every orphan write must be documented in Annex C.  The annex is the
+    # contract: a write with no reader is either API (documented) or dead.
+    annex_doc = ANNEX_C.read_text(encoding="utf-8")
+    undocumented = [n for n in orphan if f"`{n}`" not in annex_doc]
+
     allowed_hit = [n for n, _ in dead_read if n in allowed]
     dead_read = [(n, r) for n, r in dead_read if n not in allowed]
 
@@ -186,6 +201,9 @@ def main():
     for name in sorted(allowed_hit):
         print(f"ALLOWED       {name}  ({allowed[name]})")
 
+    for name in undocumented:
+        print(f"UNDOCUMENTED  {name}  (write with no reader; add to Annex C or delete)")
+
     print(
         f"\n{len(declared)} settings, {len(reads)} read names, "
         f"{len(writes)} produced names"
@@ -193,10 +211,15 @@ def main():
     print(
         f"{len(wrong_prefix)} wrong prefix, {len(dead_read)} dead reads, "
         f"{len(dead_setting)} dead settings, {len(orphan)} orphan writes, "
-        f"{len(allowed_hit)} allowed"
+        f"{len(allowed_hit)} allowed, {len(undocumented)} undocumented"
     )
 
-    if wrong_prefix or dead_read or (strict and (dead_setting or orphan)):
+    if (
+        wrong_prefix
+        or dead_read
+        or undocumented
+        or (strict and (dead_setting or orphan))
+    ):
         return 1
     return 0
 
