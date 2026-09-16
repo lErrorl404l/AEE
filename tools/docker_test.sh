@@ -45,6 +45,10 @@ trap 'docker compose "${COMPOSE_FILES[@]}" down 2>/dev/null || true; clean_profi
 # Runs the mission on several worlds and asserts the Koppen biome each
 # world resolves to. Validates environment switching across biomes.
 echo "==> server root: $ARMA3_SERVER_ROOT"
+# A previous container run leaves root-owned profile state on the host
+# mount (the server runs as root).  That dir blocks the hemtt build walk,
+# so clean it BEFORE the build, not just in the EXIT trap.
+clean_profiles
 echo "==> hemtt build (clean — removes the incremental cache so a stale"
 echo "    PBO can never slip into the test or a release)"
 rm -rf "$ROOT/.hemttout/build" "$ROOT/.hemttout/bincache" "$ROOT/.hemttout/last_build.hsb"
