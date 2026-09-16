@@ -89,6 +89,14 @@
             <Original>Scent Intensity</Original>
             <English>Scent Intensity</English>
         </Key>
+        <Key ID="STR_AEE_Physiology_StabilityEnabled_Description">
+            <Original>Toggle the shooter stability index (cold/heat/fatigue) and ACE3 sway integration</Original>
+            <English>Toggle the shooter stability index (cold/heat/fatigue) and ACE3 sway integration</English>
+        </Key>
+        <Key ID="STR_AEE_Physiology_StabilityEnabled_Name">
+            <Original>Shooter Stability</Original>
+            <English>Shooter Stability</English>
+        </Key>
         <Key ID="STR_AEE_Physiology_SweatRateScale_Description">
             <Original>Overall heat-stress severity multiplier on sweat rate</Original>
             <English>Overall heat-stress severity multiplier on sweat rate</English>
