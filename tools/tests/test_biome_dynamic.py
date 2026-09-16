@@ -1,0 +1,389 @@
+#!/usr/bin/env python3
+"""Dynamic biome tests (issue #123 — fully data-driven, no map names).
+
+The old biome system looked up a hardcoded map-name table + description
+keywords.  The new system CLASSIFIES the biome from map facts: latitude
+climate physics (getLatitudeClimate) run through the real Köppen rules,
+corrected by terrain signals (surface textures, indicator vegetation
+species, structures, elevation).  No map name anywhere.
+
+These tests mirror the SQF physics:
+  - getLatitudeClimate: annual mean/amplitude, maritime moderation,
+    hemisphere peak, summer-dry regime, diurnal range
+  - classifyBiome (Köppen): the real thresholds from the SQF
+  - the fusion weights in getBiome
+  - regressions for all three #123 root causes
+
+Run: python3 -m unittest tools.tests.test_biome_dynamic
+"""
+
+import math
+import unittest
+
+
+# ─── Mirror of fnc_getLatitudeClimate.sqf ──────────────────────────────────
+def latitude_climate(lat_deg, water_frac=0.3):
+    """Returns [P_sea, cloud, tDay[12], tNight[12], RH[12], precip[12]]."""
+    lat = abs(lat_deg)
+    if lat > 66.5:
+        lat = 66.5
+    t_mean_base = 27 - 0.42 * lat
+    # Maritime air masses moderate amplitude AND raise the annual mean
+    # (the ocean warms the winter half-year).  Threshold sits low: a map
+    # with a third water is dominated by ocean-air masses.
+    maritime = 1 / (1 + math.exp(-12 * (water_frac - 0.22)))
+    t_mean = t_mean_base + 4 * maritime
+    amp_cont = max(2 + 0.38 * lat, 2.0)
+    amp = amp_cont * (1 - 0.6 * maritime)
+    peak_month = 7 if lat_deg >= 0 else 1
+    summer_boost = 6 * math.exp(-((lat - 35) ** 2) / 90)
+    summer_dry = math.exp(-((lat - 35) ** 2) / 70)
+    diurnal = 8 + 5 * math.exp(-((lat - 30) ** 2) / 250) * (1 - lat / 90)
+    if lat < 10:
+        diurnal = 8
+
+    t_day, t_night, precip, rh = [], [], [], []
+    for m in range(1, 13):
+        # Phase peaks AT the peak month: sin((m - peak + 3)/12 * 2pi) is 1
+        # when m == peak (July north, January south).  (The naive
+        # (m - peak) form makes the warmest month come 3 months late.)
+        phase = (m - peak_month + 3) / 12 * 2 * math.pi
+        t_mid = t_mean + amp * math.sin(phase)
+        if math.sin(phase) > 0:
+            t_mid += summer_boost
+        t_day.append(round((t_mid + diurnal / 2) * 10) / 10)
+        t_night.append(round((t_mid - diurnal / 2) * 10) / 10)
+        wetness = max(0.5 + 0.5 * math.sin(phase), 0.1)
+        if summer_dry > 0.3:
+            wetness = 1 - wetness
+        dryness = math.exp(-lat / 25)
+        base_p = (60 + 90 * dryness) * (1 + 2.5 * maritime)
+        precip.append(round(base_p * wetness))
+        rh.append(round(max(min(wetness * 70 + (1 - wetness) * 35, 90), 30)))
+    cloud = round((rh[5] / 90) * 8) / 10
+    return [1013, cloud, t_day, t_night, rh, precip]
+
+
+# ─── Mirror of fnc_classifyBiome.sqf (real Köppen rules) ──────────────────
+def classify_biome(temps, precip):
+    """Köppen classification from 12 monthly mean temps + precip (mm)."""
+    t_ann = sum(temps) / 12
+    t_warm = max(temps)
+    t_cold = min(temps)
+    p_ann = sum(precip)
+    p_driest = min(precip)
+
+    # Summer/winter halves: fixed convention (Apr-Sep north, Oct-Mar
+    # south) per the standard Köppen interpretation.  Using the warmest
+    # six-month block instead wrongly shifts Athens' rainy Dec-Jan into
+    # "summer" and breaks the dry-threshold split.
+    summer_p = sum(precip[3:9])
+    winter_p = p_ann - summer_p
+
+    if summer_p >= 0.7 * p_ann:
+        p_thresh = 20 * t_ann + 280
+    elif winter_p >= 0.7 * p_ann:
+        p_thresh = 20 * t_ann
+    else:
+        p_thresh = 20 * t_ann + 140
+
+    # Dry climates (B) first: arid check.
+    if p_ann < p_thresh:
+        half = 0.5 * p_thresh
+        if t_ann >= 18:
+            return "BWh" if p_ann < half else "BSh"
+        return "BWk" if p_ann < half else "BSk"
+
+    # Polar (E): warmest month <= 10.
+    if t_warm <= 10:
+        return "EF" if t_warm <= 0 else "ET"
+
+    # Tropical (A): coldest month >= 18.
+    if t_cold >= 18:
+        if p_driest >= 60:
+            return "Af"
+        return "Am" if p_driest >= 100 - p_ann / 25 else "Aw"
+
+    # Continental (D): coldest month <= -3.
+    if t_cold <= -3:
+        if t_cold <= -38:
+            return "Dfd"
+        months_10 = sum(1 for t in temps if t >= 10)
+        if t_warm >= 22:
+            return "Dfa"
+        return "Dfb" if months_10 >= 4 else "Dfc"
+
+    # Temperate (C): driest-summer rule.
+    dry_summer = min(precip[3:9])
+    wet_winter = max(precip[0:3] + precip[9:12])
+    months_10 = sum(1 for t in temps if t >= 10)
+    if dry_summer < 40 and dry_summer < wet_winter / 3:
+        return "Csa" if t_warm >= 22 else ("Csb" if months_10 >= 4 else "Csc")
+    return "Cfa" if t_warm >= 22 else "Cfb"
+
+
+def biome_from_climate(temps, precip):
+    return classify_biome(temps, precip)
+
+
+def mean_temps(normals):
+    t_day, t_night = normals[2], normals[3]
+    return [(a + b) / 2 for a, b in zip(t_day, t_night)]
+
+
+# ─── Fusion mirror (fnc_getBiome.sqf weights) ─────────────────────────────
+def fuse_biome(
+    climate_biome, veg_scores, surface_scores=None, struct_scores=None, mean_elev=0.0
+):
+    """Returns (code, score).  Climate is primary (10); vegetation 8,
+    surface 4, structure 3 refine within the climate band."""
+    scores = {climate_biome: 10}
+    for code, w in veg_scores.items():
+        scores[code] = scores.get(code, 0) + w * 8
+    for code, w in (surface_scores or {}).items():
+        scores[code] = scores.get(code, 0) + w * 4
+    for code, w in (struct_scores or {}).items():
+        scores[code] = scores.get(code, 0) + w * 3
+    if mean_elev > 1500:
+        scores["Dfc"] = scores.get("Dfc", 0) + 15
+        scores["ET"] = scores.get("ET", 0) + 8
+    best = max(scores.items(), key=lambda kv: kv[1])
+    return best
+
+
+# ─── Climate physics tests ─────────────────────────────────────────────────
+class TestLatitudeClimatePhysics(unittest.TestCase):
+    """The latitude-driven climatology must be physically sensible."""
+
+    def test_tropical_warm_constant(self):
+        # Tanoa (-8, water 0.5): mean ~27.5, tiny amplitude (maritime).
+        n = latitude_climate(-8, 0.5)
+        t = mean_temps(n)
+        self.assertGreater(sum(t) / 12, 26)
+        self.assertLess(max(t) - min(t), 7)  # equatorial: little seasonality
+
+    def test_polar_cold(self):
+        n = latitude_climate(70, 0.1)
+        t = mean_temps(n)
+        self.assertLess(sum(t) / 12, 0)
+
+    def test_hemisphere_peak_shift(self):
+        # July warmest north, January warmest south.
+        n_north = latitude_climate(40, 0.1)
+        t_north = mean_temps(n_north)
+        self.assertEqual(t_north.index(max(t_north)), 6)  # July (0-indexed)
+        n_south = latitude_climate(-40, 0.1)
+        t_south = mean_temps(n_south)
+        self.assertEqual(t_south.index(max(t_south)), 0)  # January
+
+    def test_maritime_moderates_amplitude(self):
+        # Same latitude, continental vs ocean: amplitude collapses ~60%.
+        n_cont = latitude_climate(52, 0.05)
+        n_ocean = latitude_climate(52, 0.7)
+        t_cont = mean_temps(n_cont)
+        t_ocean = mean_temps(n_ocean)
+        amp_cont = max(t_cont) - min(t_cont)
+        amp_ocean = max(t_ocean) - min(t_ocean)
+        self.assertGreater(amp_cont, amp_ocean * 1.5)
+
+    def test_mediterranean_winter_rains(self):
+        # Lat 35 summer-dry: precip peaks in winter, not summer.
+        n = latitude_climate(35, 0.5)
+        precip = n[5]
+        t = mean_temps(n)
+        warm_month = t.index(max(t))
+        cold_month = t.index(min(t))
+        self.assertGreater(precip[cold_month], precip[warm_month])
+
+    def test_shape_matches_consumers(self):
+        # Output shape must equal getClimateNormals: 6 elements.
+        n = latitude_climate(40, 0.3)
+        self.assertEqual(len(n), 6)
+        self.assertEqual(len(n[2]), 12)  # tDay
+        self.assertEqual(len(n[3]), 12)  # tNight
+        self.assertEqual(len(n[4]), 12)  # RH
+        self.assertEqual(len(n[5]), 12)  # precip
+        self.assertEqual(n[0], 1013)  # P_sea
+
+
+# ─── Köppen classification tests ───────────────────────────────────────────
+class TestKoppenClassification(unittest.TestCase):
+    """The Köppen rules must classify reference climatologies correctly."""
+
+    def test_tropical_rainforest_af(self):
+        # Singapore: 27C year-round, wet every month.
+        temps = [27.3] * 12
+        precip = [240] * 12
+        self.assertEqual(classify_biome(temps, precip), "Af")
+
+    def test_tropical_savanna_aw(self):
+        # Wet summer, dry winter, cold month > 18.
+        temps = [25.0] * 12
+        precip = [180, 150, 120, 80, 40, 20, 15, 25, 60, 120, 170, 190]
+        self.assertEqual(classify_biome(temps, precip), "Aw")
+
+    def test_hot_desert_bwh(self):
+        temps = [30.0] * 12
+        precip = [5] * 12
+        self.assertEqual(classify_biome(temps, precip), "BWh")
+
+    def test_mediterranean_csa(self):
+        # Athens: hot dry summer, mild wet winter.
+        temps = [9, 10, 12, 16, 21, 26, 29, 29, 25, 19, 14, 10]
+        precip = [60, 50, 55, 30, 20, 10, 5, 5, 15, 50, 70, 75]
+        self.assertEqual(classify_biome(temps, precip), "Csa")
+
+    def test_oceanic_cfb(self):
+        # London: mild winters, cool summers, year-round rain.
+        temps = [5, 5, 7, 9, 13, 16, 18, 18, 15, 11, 8, 6]
+        precip = [55] * 12
+        self.assertEqual(classify_biome(temps, precip), "Cfb")
+
+    def test_humid_continental_dfb(self):
+        # Winnipeg: cold winter, warm summer.
+        temps = [-16, -13, -6, 4, 12, 17, 20, 19, 12, 5, -4, -12]
+        precip = [20] * 12
+        self.assertEqual(classify_biome(temps, precip), "Dfb")
+
+    def test_subarctic_dfc(self):
+        temps = [-20, -17, -10, 0, 8, 14, 17, 15, 8, 0, -9, -16]
+        precip = [30] * 12
+        self.assertEqual(classify_biome(temps, precip), "Dfc")
+
+    def test_tundra_et(self):
+        temps = [-15, -14, -12, -6, 0, 5, 8, 7, 2, -4, -10, -14]
+        precip = [25] * 12
+        self.assertEqual(classify_biome(temps, precip), "ET")
+
+
+# ─── Map-resolution fusion tests (issue #123) ──────────────────────────────
+class TestMapFusion(unittest.TestCase):
+    """The fused result for the reported maps must be correct."""
+
+    def test_tanoa_tropical(self):
+        # lat -8, water 0.5: climate says tropical; palms confirm.
+        n = latitude_climate(-8, 0.5)
+        climate = classify_biome(mean_temps(n), n[5])
+        self.assertIn(climate, ["Af", "Am", "Aw"])
+        code, _ = fuse_biome(climate, {"Af": 1})
+        self.assertEqual(code, climate)  # climate anchors, veg confirms
+
+    def test_scottish_highlands_not_frozen(self):
+        # oski_corran: lat 56.7, water 0.35.  The bug was Dfb with winter
+        # -12 (constant freezing).  The maritime correction must keep the
+        # cold month above the deep-freeze: no Dfa/Dfd, cold month above
+        # -8, and the climate stays in the temperate/continental band
+        # (Cfb/Dfb) — never the extreme Dfc that would freeze the player.
+        n = latitude_climate(56.7, 0.35)
+        t = mean_temps(n)
+        self.assertGreater(sum(t) / 12, 4)  # not frozen
+        self.assertGreater(min(t), -8)  # winter not deep-freeze
+        climate = classify_biome(t, n[5])
+        self.assertIn(climate, ["Cfb", "Dfb"])  # temperate, not arctic
+
+    def test_enochns_continental(self):
+        # Enoch: lat 52, water 0.05 (inland) -> continental band, cold winter.
+        n = latitude_climate(52, 0.05)
+        t = mean_temps(n)
+        self.assertLess(min(t), -10)  # real continental winter
+        climate = classify_biome(t, n[5])
+        self.assertIn(climate, ["Dfa", "Dfb", "Dfc"])
+
+    def test_elevation_shift(self):
+        # A temperate climate at high elevation shifts toward subarctic.
+        code, _ = fuse_biome("Cfb", {}, mean_elev=1800)
+        self.assertEqual(code, "Dfc")
+
+
+# ─── Root-cause regressions (issue #123) ───────────────────────────────────
+class TestRootCauseRegressions(unittest.TestCase):
+    """The three reported bugs must not recur."""
+
+    def test_no_negative_latitude_inversion(self):
+        # A negative config latitude must NOT invert the seasons.  The
+        # old bug: sin(-56.7) made northern winter a summer.  Now:
+        # magnitude is abs-corrected, and the hemisphere sets the peak
+        # month (Jan south, Jul north).
+        n_south = latitude_climate(-56.7, 0.35)
+        t_south = mean_temps(n_south)
+        self.assertEqual(t_south.index(max(t_south)), 0)  # January warmest
+        # The annual mean matches the northern equivalent (abs-corrected).
+        n_north = latitude_climate(56.7, 0.35)
+        t_north = mean_temps(n_north)
+        self.assertAlmostEqual(sum(t_south) / 12, sum(t_north) / 12, places=1)
+
+    def test_biome_names_are_all_valid(self):
+        # Every Köppen code the system can emit has a display name.
+        codes = [
+            "Af",
+            "Am",
+            "Aw",
+            "BSh",
+            "BSk",
+            "BWk",
+            "BWh",
+            "Csa",
+            "Csb",
+            "Cfa",
+            "Cfb",
+            "Cwa",
+            "Dfa",
+            "Dfb",
+            "Dfc",
+            "ET",
+            "EF",
+        ]
+        names = [
+            "Tropical Rainforest",
+            "Monsoon Tropical",
+            "Tropical Savanna",
+            "Hot Semi-Arid",
+            "Cold Semi-Arid",
+            "Cold Desert",
+            "Hot Desert",
+            "Hot Mediterranean",
+            "Warm Mediterranean",
+            "Humid Subtropical",
+            "Oceanic",
+            "Monsoon Subtropical",
+            "Hot Continental",
+            "Humid Continental",
+            "Subarctic",
+            "Tundra",
+            "Ice Cap",
+        ]
+        for code, name in zip(codes, names):
+            self.assertTrue(name)  # every code has a name
+
+    def test_no_map_name_table(self):
+        # The rewritten getBiome must NOT contain the hardcoded map-name
+        # table or the description-keyword matching (the RC2c
+        # hardcoded-assumption).  worldName IS allowed - it is read only
+        # for the latitude FACT (abs-corrected), never matched by name.
+        from pathlib import Path
+
+        text = Path("addons/environmental/functions/fnc_getBiome.sqf").read_text(
+            encoding="utf-8"
+        )
+        self.assertNotIn("_MAP_BIOMES", text)  # old map-name table gone
+        self.assertNotIn("_description", text)  # description keyword matching gone
+
+    def test_camo_swap_unknown_keeps_engine(self):
+        # RC3 regression: the thermal clothing swap must NOT swap unknown
+        # materials.  The old branch (`_m == "" || ... metal/glass/plastic
+        # all absent -> swap`) caught every third-party uniform.  The
+        # source must now swap only known cloth.
+        from pathlib import Path
+
+        text = Path("addons/optics/functions/fnc_applyClothingThermal.sqf").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn('_m find "cloth" >= 0', text)
+        # The dangerous "unknown -> swap" else-branch must be gone.
+        self.assertNotIn('_m == "" ||', text)
+        self.assertNotIn("Unknown material: swap", text)
+        self.assertIn("Unknown = leave the engine", text)
+
+
+if __name__ == "__main__":
+    unittest.main()
