@@ -15,7 +15,7 @@
     QGVAR(CBRNBasePersistence),
     "SLIDER",
     [LLSTRING(CBRNBasePersistence_Name), LLSTRING(CBRNBasePersistence_Description)],
-    "AEE ACM",
+    ["AEE", "Compat - ACM"],
     [6, 72, 24, 0],
     true,
     {}
@@ -25,7 +25,7 @@
     QGVAR(CBRNContamThreshold),
     "SLIDER",
     [LLSTRING(CBRNContamThreshold_Name), LLSTRING(CBRNContamThreshold_Description)],
-    "AEE ACM",
+    ["AEE", "Compat - ACM"],
     [0, 0.1, 0.01, 3],
     true,
     {}
@@ -35,7 +35,7 @@
     QGVAR(CBRNMaxBuildup),
     "SLIDER",
     [LLSTRING(CBRNMaxBuildup_Name), LLSTRING(CBRNMaxBuildup_Description)],
-    "AEE ACM",
+    ["AEE", "Compat - ACM"],
     [50, 150, 100, 0],
     true,
     {}

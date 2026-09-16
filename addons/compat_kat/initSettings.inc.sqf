@@ -15,7 +15,7 @@
     QGVAR(fluidDrainBase),
     "SLIDER",
     [LLSTRING(fluidDrainBase_Name), LLSTRING(fluidDrainBase_Description)],
-    "AEE KAT",
+    ["AEE", "Compat - KAT"],
     [0, 0.2, 0.05, 3],
     true,
     {}
@@ -26,7 +26,7 @@
     QGVAR(spo2RiskScale),
     "SLIDER",
     [LLSTRING(spo2RiskScale_Name), LLSTRING(spo2RiskScale_Description)],
-    "AEE KAT",
+    ["AEE", "Compat - KAT"],
     [10, 50, 32, 0],
     true,
     {}
@@ -36,7 +36,7 @@
     QGVAR(spo2Floor),
     "SLIDER",
     [LLSTRING(spo2Floor_Name), LLSTRING(spo2Floor_Description)],
-    "AEE KAT",
+    ["AEE", "Compat - KAT"],
     [50, 90, 60, 0],
     true,
     {}

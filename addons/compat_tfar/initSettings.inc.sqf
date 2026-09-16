@@ -15,7 +15,7 @@
     QGVAR(signalMultScale),
     "SLIDER",
     [LLSTRING(signalMultScale_Name), LLSTRING(signalMultScale_Description)],
-    "AEE TFAR",
+    ["AEE", "Compat - TFAR"],
     [0, 2, 0.6, 2],
     true,
     {}
@@ -25,7 +25,7 @@
     QGVAR(signalMultMin),
     "SLIDER",
     [LLSTRING(signalMultMin_Name), LLSTRING(signalMultMin_Description)],
-    "AEE TFAR",
+    ["AEE", "Compat - TFAR"],
     [0.1, 1, 0.3, 2],
     true,
     {}
@@ -35,7 +35,7 @@
     QGVAR(signalMultMax),
     "SLIDER",
     [LLSTRING(signalMultMax_Name), LLSTRING(signalMultMax_Description)],
-    "AEE TFAR",
+    ["AEE", "Compat - TFAR"],
     [1, 3, 1.5, 2],
     true,
     {}
