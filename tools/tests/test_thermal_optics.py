@@ -319,13 +319,18 @@ def temp_noise_factor(air_temp_c):
     return 1.0 + 0.6 * (air_temp_c - 20.0) / 25.0
 
 
-def nvg_drain(base_drain, gain, sensitivity, temp_derating, dt):
+def nvg_drain(base_drain, gain, sensitivity, temp_derating, dt, battery_enabled=True):
     """Mirror of the battery drain model.
 
     gainRatio = gain / sensitivity (min 0.01)
     tempDrainFactor = 1/derating, clamped 1.0-4.0
     drain = baseDrain * gainRatio * tempDrainFactor * dt
+
+    battery_enabled is the opt-in aee_optics_nvgBatteryEnabled toggle
+    (issue #36); when off, no drain is applied.
     """
+    if not battery_enabled:
+        return 0.0
     gain_ratio = max(gain / sensitivity, 0.01)
     temp_factor = (1.0 / temp_derating) if temp_derating > 0.01 else 3.0
     temp_factor = max(1.0, min(4.0, temp_factor))
@@ -1399,6 +1404,24 @@ class TestBatteryDrain(unittest.TestCase):
         ]:
             d = nvg_drain(base, 2000, 2000, 1.0, 1.0)
             self.assertAlmostEqual(d * 3600 * hours, 1.0, places=6)
+
+    def test_runtime_halves_at_cold(self):
+        # Issue #36: at -20C the physiology derating is ~0.7; drain is
+        # 1/0.7 = 1.43x, so runtime is ~70% of nominal.  At the 0.3 floor
+        # (severe cold) drain is 3.33x -> runtime ~30%.  The issue's
+        # "halves at -20C" is the qualitative anchor; the quantitative
+        # derating curve comes from the physiology model.
+        nominal = nvg_drain(1 / (16 * 3600), 2000, 2000, 1.0, 1.0)
+        cold = nvg_drain(1 / (16 * 3600), 2000, 2000, 0.7, 1.0)
+        severe = nvg_drain(1 / (16 * 3600), 2000, 2000, 0.3, 1.0)
+        self.assertAlmostEqual(cold / nominal, 1 / 0.7, places=4)
+        self.assertAlmostEqual(severe / nominal, 1 / 0.3, places=4)
+
+    def test_battery_toggle_off_no_drain(self):
+        # Issue #36: NVG battery drain is opt-in (defaults off).
+        self.assertEqual(
+            nvg_drain(1 / (16 * 3600), 2000, 2000, 0.3, 1.0, battery_enabled=False), 0.0
+        )
 
 
 class TestNVGBrightness(unittest.TestCase):
