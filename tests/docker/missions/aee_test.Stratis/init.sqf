@@ -1566,6 +1566,50 @@ if (_p10Fail == 0) then {
         diag_log text format ["[PHASE28] [FAIL] cold-weather dehydration: %1 passed, %2 failed", _p28Pass, _p28Fail];
     };
 
+// -- PHASE 29: sea-surface temperature feed (#37) ---------------------------
+// The SST model is deterministic (latitude + month + air temperature),
+// so its bounds are assertable on the headless server.  The evaporation
+// duct itself is SHF-only physics locked by the Python mirror
+// (test_radio.py TestEvaporationDuct) and requires a host radio mod
+// (ACRE2/TFAR) for the in-game index - the default docker run has none.
+private _p29Pass = 0;
+    private _p29Fail = 0;
+    private _fnSST = missionNamespace getVariable ["aee_maritime_fnc_calculateSeaSurfaceTemperature", nil];
+    if (isNil "_fnSST") then {
+        diag_log text "[PHASE29] [FAIL] sea-surface temperature function not compiled";
+        _p29Fail = _p29Fail + 1;
+    } else {
+        // Case 1: SST is a finite number in a plausible range (0-35 C
+        // for any latitude/month in the test environment).
+        missionNamespace setVariable ["aee_core_currentTemperature", 15];
+        private _sst = [] call _fnSST;
+        if (!isNil "_sst" && _sst isEqualType 0 && _sst > 0 && _sst < 35) then {
+            diag_log text format ["[PHASE29] [PASS] sea-surface temperature = %1 C", _sst];
+            _p29Pass = _p29Pass + 1;
+        } else {
+            diag_log text format ["[PHASE29] [FAIL] SST out of range: %1", _sst];
+            _p29Fail = _p29Fail + 1;
+        };
+
+        // Case 2: a warm air input raises SST above a cold air input
+        // (coupling weight pulls toward the air temperature).
+        missionNamespace setVariable ["aee_core_currentTemperature", 28];
+        private _sstWarm = [] call _fnSST;
+        if (_sstWarm > _sst) then {
+            diag_log text format ["[PHASE29] [PASS] SST responds to air: %1 -> %2", _sst, _sstWarm];
+            _p29Pass = _p29Pass + 1;
+        } else {
+            diag_log text format ["[PHASE29] [FAIL] SST %1 not above %2 for warmer air", _sstWarm, _sst];
+            _p29Fail = _p29Fail + 1;
+        };
+    };
+
+    if (_p29Fail == 0) then {
+        diag_log text format ["[PHASE29] [PASS] sea-surface temperature feed: %1 checks passed", _p29Pass];
+    } else {
+        diag_log text format ["[PHASE29] [FAIL] sea-surface temperature feed: %1 passed, %2 failed", _p29Pass, _p29Fail];
+    };
+
     // -- PHASE 5: determinism -- temperature delta over 5 s must be small ----
     // PHASE11 deliberately disturbed the clock (midnight/noon skips).  The
     // temperature model is stateless and recomputes on each 5 s env tick,
