@@ -1110,7 +1110,6 @@ if (_p10Fail == 0) then {
         diag_log text format ["[PHASE21] [FAIL] ground frost detection: %1 passed, %2 failed", _p21Pass, _p21Fail];
     };
 
-    // -- PHASE 23: cold-weather human performance model (#23) ----------------
     // -- PHASE 22: atmospheric refraction (#16) ------------------------------
     // ITU-R P.453 refractivity, surface gradient, k-factor, ducting, and
     // mirage type.  Pure maths, runs headless.  Seeds T/RH/P and checks
@@ -1183,7 +1182,7 @@ if (_p10Fail == 0) then {
         diag_log text format ["[PHASE22] [FAIL] atmospheric refraction: %1 passed, %2 failed", _p22Pass, _p22Fail];
     };
 
-    // Wind chill (Osczevski-Bluestein), manual dexterity (Heus/Daanen),
+    // -- PHASE 23: cold-weather human performance model (#23) ----------------
     // frostbite time (Tikuisis-Osczevski), TB MED 508 danger category.
     // Pure maths, runs headless.  Seeds temperature and wind (m/s) and
     // checks the four published anchors.
