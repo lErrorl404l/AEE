@@ -1044,6 +1044,154 @@ if (_p10Fail == 0) then {
         diag_log text format ["[PHASE20] [FAIL] tide integration: %1 passed, %2 failed", _p20Pass, _p20Fail];
     };
 
+    // -- PHASE 21: ground frost detection (#8) ------------------------------
+    // Magnus dew-point model -> terrain frost.  Pure maths, runs headless.
+    // Seeds the environmental state and checks the four frost gates.
+    private _p21Pass = 0;
+    private _p21Fail = 0;
+    private _fnFrost = missionNamespace getVariable ["aee_environmental_fnc_detectGroundFrost", nil];
+    if (isNil "_fnFrost") then {
+        diag_log text "[PHASE21] [FAIL] ground frost function not compiled";
+        _p21Fail = _p21Fail + 1;
+    } else {
+        // Case 1: cold, humid, clear, calm -> frost, intensity > 0.5.
+        missionNamespace setVariable ["aee_core_currentTemperature", -5];
+        missionNamespace setVariable ["aee_core_currentHumidity", 90];
+        missionNamespace setVariable ["aee_core_currentWindStr", 1];
+        missionNamespace setVariable ["aee_core_overcast", 0];
+        private _i1 = [] call _fnFrost;
+        private _present1 = missionNamespace getVariable ["aee_environmental_groundFrostPresent", false];
+        if (_i1 > 0.5 && _present1) then {
+            diag_log text format ["[PHASE21] [PASS] frost at -5 degC/90%%RH/clear/calm = %1", _i1];
+            _p21Pass = _p21Pass + 1;
+        } else {
+            diag_log text format ["[PHASE21] [FAIL] frost at -5 degC/90%%RH/clear/calm = %1 (present=%2)", _i1, _present1];
+            _p21Fail = _p21Fail + 1;
+        };
+
+        // Case 2: too warm -> no frost.
+        missionNamespace setVariable ["aee_core_currentTemperature", 5];
+        private _i2 = [] call _fnFrost;
+        if (_i2 == 0) then {
+            diag_log text format ["[PHASE21] [PASS] no frost at 5 degC = %1", _i2];
+            _p21Pass = _p21Pass + 1;
+        } else {
+            diag_log text format ["[PHASE21] [FAIL] no frost at 5 degC = %1 (expected 0)", _i2];
+            _p21Fail = _p21Fail + 1;
+        };
+
+        // Case 3: cloudy -> no frost.
+        missionNamespace setVariable ["aee_core_currentTemperature", -5];
+        missionNamespace setVariable ["aee_core_overcast", 0.8];
+        private _i3 = [] call _fnFrost;
+        if (_i3 == 0) then {
+            diag_log text format ["[PHASE21] [PASS] no frost when cloudy = %1", _i3];
+            _p21Pass = _p21Pass + 1;
+        } else {
+            diag_log text format ["[PHASE21] [FAIL] no frost when cloudy = %1 (expected 0)", _i3];
+            _p21Fail = _p21Fail + 1;
+        };
+
+        // Case 4: windy -> no frost.
+        missionNamespace setVariable ["aee_core_overcast", 0];
+        missionNamespace setVariable ["aee_core_currentWindStr", 10];
+        private _i4 = [] call _fnFrost;
+        if (_i4 == 0) then {
+            diag_log text format ["[PHASE21] [PASS] no frost when windy = %1", _i4];
+            _p21Pass = _p21Pass + 1;
+        } else {
+            diag_log text format ["[PHASE21] [FAIL] no frost when windy = %1 (expected 0)", _i4];
+            _p21Fail = _p21Fail + 1;
+        };
+    };
+    if (_p21Fail == 0) then {
+        diag_log text format ["[PHASE21] [PASS] ground frost detection: %1 checks passed", _p21Pass];
+    } else {
+        diag_log text format ["[PHASE21] [FAIL] ground frost detection: %1 passed, %2 failed", _p21Pass, _p21Fail];
+    };
+
+    // -- PHASE 23: cold-weather human performance model (#23) ----------------
+    // Wind chill (Osczevski-Bluestein), manual dexterity (Heus/Daanen),
+    // frostbite time (Tikuisis-Osczevski), TB MED 508 danger category.
+    // Pure maths, runs headless.  Seeds temperature and wind (m/s) and
+    // checks the four published anchors.
+    private _p23Pass = 0;
+    private _p23Fail = 0;
+    private _fnCold = missionNamespace getVariable ["aee_physiology_fnc_calculateColdWeatherPerformance", nil];
+    if (isNil "_fnCold") then {
+        diag_log text "[PHASE23] [FAIL] cold weather function not compiled";
+        _p23Fail = _p23Fail + 1;
+    } else {
+        missionNamespace setVariable ["aee_physiology_coldWeatherEnabled", true];
+
+        // Case 1: mild cold.  T = 0, wind = 10 km/h -> WCT ~ -3,
+        // dexterity > 80 %, frostbite > 60 min.
+        missionNamespace setVariable ["aee_core_currentTemperature", 0];
+        missionNamespace setVariable ["aee_core_currentWindStr", 10 / 3.6];
+        [] call _fnCold;
+        private _wct1 = missionNamespace getVariable ["aee_core_windChillTemp", -999];
+        private _dex1 = missionNamespace getVariable ["aee_core_dexterityPercent", -1];
+        private _fb1 = missionNamespace getVariable ["aee_core_frostbiteMinutes", -1];
+        if (abs (_wct1 - (-3)) < 1.5 && _dex1 > 80 && _fb1 > 60) then {
+            diag_log text format ["[PHASE23] [PASS] mild cold: WCT=%1 dex=%2 frostbite=%3", _wct1, _dex1, _fb1];
+            _p23Pass = _p23Pass + 1;
+        } else {
+            diag_log text format ["[PHASE23] [FAIL] mild cold: WCT=%1 dex=%2 frostbite=%3 (expected ~-3, >80, >60)", _wct1, _dex1, _fb1];
+            _p23Fail = _p23Fail + 1;
+        };
+
+        // Case 2: moderate cold.  T = -10, wind = 30 km/h -> WCT ~ -20,
+        // dexterity ~ 50 %, frostbite ~ 10 min.
+        missionNamespace setVariable ["aee_core_currentTemperature", -10];
+        missionNamespace setVariable ["aee_core_currentWindStr", 30 / 3.6];
+        [] call _fnCold;
+        private _wct2 = missionNamespace getVariable ["aee_core_windChillTemp", -999];
+        private _dex2 = missionNamespace getVariable ["aee_core_dexterityPercent", -1];
+        private _fb2 = missionNamespace getVariable ["aee_core_frostbiteMinutes", -1];
+        if (abs (_wct2 - (-20)) < 3 && _dex2 > 40 && _dex2 < 60 && _fb2 > 5 && _fb2 < 20) then {
+            diag_log text format ["[PHASE23] [PASS] moderate cold: WCT=%1 dex=%2 frostbite=%3", _wct2, _dex2, _fb2];
+            _p23Pass = _p23Pass + 1;
+        } else {
+            diag_log text format ["[PHASE23] [FAIL] moderate cold: WCT=%1 dex=%2 frostbite=%3 (expected ~-20, ~50, ~10)", _wct2, _dex2, _fb2];
+            _p23Fail = _p23Fail + 1;
+        };
+
+        // Case 3: severe cold.  T = -20, wind = 40 km/h -> WCT ~ -35,
+        // dexterity < 30 %, frostbite < 5 min, category "increased".
+        missionNamespace setVariable ["aee_core_currentTemperature", -20];
+        missionNamespace setVariable ["aee_core_currentWindStr", 40 / 3.6];
+        [] call _fnCold;
+        private _wct3 = missionNamespace getVariable ["aee_core_windChillTemp", -999];
+        private _dex3 = missionNamespace getVariable ["aee_core_dexterityPercent", -1];
+        private _fb3 = missionNamespace getVariable ["aee_core_frostbiteMinutes", -1];
+        private _cat3 = missionNamespace getVariable ["aee_core_coldDangerCategory", ""];
+        if (abs (_wct3 - (-35)) < 5 && _dex3 < 30 && _fb3 < 5 && _cat3 == "increased") then {
+            diag_log text format ["[PHASE23] [PASS] severe cold: WCT=%1 dex=%2 frostbite=%3 cat=%4", _wct3, _dex3, _fb3, _cat3];
+            _p23Pass = _p23Pass + 1;
+        } else {
+            diag_log text format ["[PHASE23] [FAIL] severe cold: WCT=%1 dex=%2 frostbite=%3 cat=%4 (expected ~-35, <30, <5, increased)", _wct3, _dex3, _fb3, _cat3];
+            _p23Fail = _p23Fail + 1;
+        };
+
+        // Case 4: warm, no wind chill.  T = 15, wind = 10 km/h -> WCT = T.
+        missionNamespace setVariable ["aee_core_currentTemperature", 15];
+        missionNamespace setVariable ["aee_core_currentWindStr", 10 / 3.6];
+        [] call _fnCold;
+        private _wct4 = missionNamespace getVariable ["aee_core_windChillTemp", -999];
+        if (abs (_wct4 - 15) < 0.5) then {
+            diag_log text format ["[PHASE23] [PASS] warm no wind chill: WCT=%1", _wct4];
+            _p23Pass = _p23Pass + 1;
+        } else {
+            diag_log text format ["[PHASE23] [FAIL] warm no wind chill: WCT=%1 (expected 15)", _wct4];
+            _p23Fail = _p23Fail + 1;
+        };
+    };
+    if (_p23Fail == 0) then {
+        diag_log text format ["[PHASE23] [PASS] cold-weather performance model: %1 checks passed", _p23Pass];
+    } else {
+        diag_log text format ["[PHASE23] [FAIL] cold-weather performance model: %1 passed, %2 failed", _p23Pass, _p23Fail];
+    };
+
     // -- PHASE 5: determinism -- temperature delta over 5 s must be small ----
     // PHASE11 deliberately disturbed the clock (midnight/noon skips).  The
     // temperature model is stateless and recomputes on each 5 s env tick,
