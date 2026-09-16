@@ -22,7 +22,7 @@ Stored in QGVAR(flashFloodRisk).
 
 
 private _rainRate  = missionNamespace getVariable [QGVAR(rainRateOverride), rain];
-private _rainAccum = missionNamespace getVariable [QGVAR(rainAccum), 0];
+private _rainAccum = missionNamespace getVariable [QEGVAR(core,rainAccum), 0];
 private _biome     = EGVAR(core,biome);
 
 if (isNil "_rainRate") then { _rainRate = 0; };
