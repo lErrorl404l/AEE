@@ -73,6 +73,14 @@
             <Original>Frost Decay Rate</Original>
             <English>Frost Decay Rate</English>
         </Key>
+        <Key ID="STR_AEE_Environmental_GroundFrostEnabled_Description">
+            <Original>Enable ground frost detection on terrain surfaces</Original>
+            <English>Enable ground frost detection on terrain surfaces</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_GroundFrostEnabled_Name">
+            <Original>Ground Frost Enabled</Original>
+            <English>Ground Frost Enabled</English>
+        </Key>
         <Key ID="STR_AEE_Environmental_InversionBoost_Description">
             <Original>Sound-range boost on clear calm nights</Original>
             <English>Sound-range boost on clear calm nights</English>
