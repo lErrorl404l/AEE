@@ -29,7 +29,6 @@ integration and AI communication-range modelling.
 private _T   = EGVAR(core,currentTemperature);
 private _RH  = EGVAR(core,currentHumidity);
 private _P   = EGVAR(core,currentPressure);
-private _sun = sunOrMoon;
 
 // The propagation index feeds only the ACRE2 and TFAR compat layers.
 // Without either host mod there is no consumer, so exit early with the
@@ -75,22 +74,62 @@ if (_batteryDerate < 1.0 && (missionNamespace getVariable [QGVAR(batteryDerating
 // in-game RPT, invisible to the range-checked index.)
 private _fspl = (20 * log _distM) + (20 * log _freqHz) - 147.55;
 
-// ─── Atmospheric corrections (dB) ──────────────────────────────────────────
+// ─── Evaporation duct (issue #37) ─────────────────────────────────────────
+// The evaporation duct is an SHF phenomenon (1-40 GHz, best 10-18 GHz):
+// a strong humidity gradient just above the sea traps radar/satcom links
+// and extends range 3-10x.  VHF/UHF tactical radios (30-300 MHz) are
+// largely UNAFFECTED - links below the duct's cutoff frequency get NO
+// bonus.  This replaces the old flat temperature/humidity/pressure
+// heuristic, which applied a dB bonus to every band regardless of the
+// physics.
+//
+// Modified refractivity deficit (N-units): the duct is driven by the
+// sea-air water-vapour deficit.  The sea surface is saturated (RH 100%);
+// the air above carries less vapour.  From the definition
+//   N = 77.6 p/T + 3.73e5 e/T^2,
+// the deficit is dN = 3.73e5 * (esat(SST) - e_air) / T^2.  Verified
+// anchors: tropics dN~14 (tall duct, low cutoff), Gulf dN~8, North Sea
+// dN~2 (weak duct, high cutoff).
+//
+// Duct height (Paulus-Jeske): a stable air-sea gradient (warm air over
+// cold sea) raises the duct; delta = clamp(1.5 + (T - SST) * 2.5, 3, 25)
+// metres (world mean ~13 m, tropics to 40 m, North Sea 5-6 m).
+//
+// Hall cutoff: lambda_max = 2.5e-3 * sqrt(dN/H - 0.157) * H^1.5,
+// f_min = c / lambda_max.  Below f_min the duct is too small for the
+// wavelength: no trapping.  (Verified: H=13, dN=10 -> 3.27 GHz.)
 private _ductBonus = 0;
+private _sst = missionNamespace getVariable [QEGVAR(core,seaSurfaceTemperature), nil];
+if (!isNil "_sst" && _sst isEqualType 0) then {
+    private _delta = 1.5 + ((_T - _sst) * 2.5);
+    _delta = _delta max 3 min 25;
 
-// Temperature inversion (warm night) — refracts signals over the horizon
-if (_T > 25 && _sun == -1) then {
-    _ductBonus = _ductBonus + (((_T - 25) / 20) min 0.5) * 6;   // up to +3 dB
-};
+    // Saturated vapour pressure at the sea surface (Buck), and ambient
+    // vapour pressure from RH.  Convert the deficit to N-units.
+    private _esatSea = 6.1121 * exp ((18.678 - (_sst / 234.5)) * (_sst / (257.14 + _sst)));
+    private _esatAir = 6.1121 * exp ((18.678 - (_T / 234.5)) * (_T / (257.14 + _T)));
+    private _eAir = (_RH / 100) * _esatAir;
+    private _dn = 3.73e5 * ((_esatSea - _eAir) * 0.1) / ((_T + 273.15) ^ 2);
+    if (_dn < 0) then { _dn = 0 };
 
-// High humidity — water-vapour refraction gradient
-if (_RH > 60) then {
-    _ductBonus = _ductBonus + ((_RH - 50) / 10) * 0.05 * 6;     // up to +1.5 dB
-};
-
-// High pressure — denser lower atmosphere, stronger gradient
-if (_P > 1020) then {
-    _ductBonus = _ductBonus + ((_P - 1013) / 10) * 0.02 * 6;    // up to +1 dB
+    // Hall cutoff: duct traps only wavelengths small enough to fit.
+    private _lam = 2.5e-3 * (sqrt ((_dn / _delta) - 0.157)) * (_delta ^ 1.5);
+    if !(isNil "_lam" || _lam <= 0) then {
+        private _fMinHz = 3e8 / _lam;
+        if (_freqHz >= _fMinHz) then {
+            // Range extension 3-10x (cap 150 km), attenuation 0.3 dB/km
+            // beyond the ~44.8 km over-the-horizon limit.
+            private _ductFactor = ((_delta / 13) max 0.3) min 2.5;
+            _ductBonus = 6 * _ductFactor;                   // up to +15 dB
+            private _rangeKm = _distM / 1000;
+            if (_rangeKm > 44.8) then {
+                // Attenuation beyond the OTH limit, clamped so the duct
+                // never becomes a net penalty (it either extends range
+                // or is neutral, per the ducting validation).
+                _ductBonus = (_ductBonus - (_rangeKm * 0.3)) max 0;
+            };
+        };
+    };
 };
 
 // Hot & dry — absorption penalty
