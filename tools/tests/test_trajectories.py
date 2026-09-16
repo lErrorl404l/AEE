@@ -12,6 +12,7 @@ protocols and NATO TRMSF 4370 environmental testing.
 Run: python3 -m unittest tools.tests.test_trajectories
 """
 
+import math
 import unittest
 
 import numpy as np
@@ -43,19 +44,63 @@ def sweat_rate_l_per_h(wbgt):
     return 1.5
 
 
+def _esat_kpa(t_c):
+    """Buck saturation vapour pressure (kPa) - mirrors the SQF."""
+    return 0.61094 * math.exp((17.625 * t_c) / (243.04 + t_c))
+
+
+def cold_respiratory_loss_l_per_h(temp_c, exertion=1.0):
+    """Issue #92: respiratory water loss from the water-vapour deficit.
+
+    Lung air is saturated at body temperature (6.28 kPa); cold dry air
+    holds far less, so each breath nets water out.  Anchored to the
+    verified rest rates (Freund & Sawka 1996 Table 9-2; Zielinski &
+    Przybylski 2012): 0.010 L/h at 25 C (deficit 3.1 kPa), 0.020 L/h at
+    -20 C, scaled by exertion (rest 1x, walk 2x, run 3x).
+    """
+    deficit = max(0.0, 6.28 - _esat_kpa(temp_c))
+    return 0.010 * (deficit / 3.1) * exertion
+
+
+def cold_diuresis_l_per_h(temp_c):
+    """Issue #92: conservative cold diuresis below 10 C (max 0.01 L/h).
+
+    The 0.5-1.5 L/day figure in the original spec is NOT supported by
+    primary literature (self-limiting, debated); this uses a conservative
+    0.24 L/day at severe cold.
+    """
+    if temp_c >= 10:
+        return 0.0
+    return 0.01 * ((10 - temp_c) / 20)
+
+
 def dehydration_step(
-    deficit, wbgt, tick_hours, sweat_scale=1.0, rehydrate_l_per_h=0.05, clothed=False
+    deficit,
+    wbgt,
+    tick_hours,
+    sweat_scale=1.0,
+    rehydrate_l_per_h=0.05,
+    clothed=False,
+    temp_c=25.0,
+    exertion=1.0,
 ):
     """One stateful tick of the SQF model.
 
-    Returns new water deficit in litres.  Below 18 C the deficit decays
-    (10% per tick) and risk resets to 0.
+    Returns new water deficit in litres.  Above 18 C WBGT the ISO 7243
+    sweat bands drive the loss; below 18 C the cold branch (respiratory
+    loss + diuresis, issue #92) applies.  Natural rehydration applies to
+    both.
     """
-    if wbgt < 18:
-        return max(0.0, deficit - deficit * 0.1)
-    amount = sweat_rate_l_per_h(wbgt) * tick_hours * sweat_scale
-    if clothed:
-        amount += 0.2 * tick_hours * 2  # uniform + vest
+    amount = 0.0
+    if wbgt >= 18:
+        amount = sweat_rate_l_per_h(wbgt) * tick_hours * sweat_scale
+        if clothed:
+            amount += 0.2 * tick_hours * 2  # uniform + vest
+    else:
+        amount = (
+            cold_respiratory_loss_l_per_h(temp_c, exertion)
+            + cold_diuresis_l_per_h(temp_c)
+        ) * tick_hours
     amount -= rehydrate_l_per_h * tick_hours
     return max(0.0, deficit + amount)
 
@@ -213,14 +258,43 @@ class TestHotAltitudeCoupling(unittest.TestCase):
         self.assertGreater(risk, 0.0)
         self.assertLessEqual(risk, 1.0)
 
-    def test_dehydration_decays_below_thermoneutral(self):
-        # Below 18 C WBGT the deficit decays 10% per tick (geometric, so
-        # it approaches 0 but never reaches it exactly).
-        deficit = 3.0
-        for _ in range(20):  # 5 h at 10 C WBGT (no heat stress)
-            deficit = dehydration_step(deficit, 10.0, 0.25)
-        self.assertLess(deficit, 0.4, "deficit did not decay in the cold")
-        self.assertGreaterEqual(deficit, 0.0)
+    def test_dehydration_accumulates_in_cold(self):
+        # Issue #92: below 18 C WBGT the deficit NO LONGER decays.  Cold
+        # air is dry - humidifying it to body conditions costs water every
+        # breath - so a marching soldier accumulates deficit at -20 C
+        # even though WBGT is 8 C.  (Pre-#92 the model reported zero
+        # dehydration in the cold, the documented limitation of PR #90.)
+        # At -10 C rest the loss is ~0.049 L/h, marginally under the 0.05
+        # L/h rehydration default, so no deficit accumulates - the
+        # physically correct boundary.  Severe cold (-20 C) crosses it.
+        deficit = 0.0
+        for _ in range(24):  # 6 h march at -20 C, 15 min ticks
+            deficit = dehydration_step(deficit, 8.0, 0.25, temp_c=-20.0, exertion=2)
+        self.assertGreater(deficit, 0.0, "cold march produced no dehydration")
+        self.assertLess(deficit, 1.0, "6 h cold march fully dehydrated")
+
+    def test_cold_loss_scales_with_cold(self):
+        # Deeper cold = drier air = more respiratory loss.
+        mild = sum(cold_respiratory_loss_l_per_h(t, 1) for t in [0, 1, 2, 3]) / 4
+        severe = sum(cold_respiratory_loss_l_per_h(t, 1) for t in [-10, -9, -8, -7]) / 4
+        self.assertGreater(severe, mild)
+
+    def test_cold_loss_scales_with_exertion(self):
+        rest = cold_respiratory_loss_l_per_h(-10, 1)
+        run = cold_respiratory_loss_l_per_h(-10, 3)
+        self.assertAlmostEqual(run, rest * 3, places=6)
+
+    def test_respiratory_anchor_matches_literature(self):
+        # Verified anchors: ~0.010 L/h at 25 C, ~0.020 L/h at -20 C.
+        self.assertAlmostEqual(cold_respiratory_loss_l_per_h(25, 1), 0.010, places=3)
+        self.assertAlmostEqual(cold_respiratory_loss_l_per_h(-20, 1), 0.020, places=3)
+
+    def test_diuresis_conservative(self):
+        # Max 0.01 L/h (0.24 L/day) at severe cold - well under the
+        # unverified 0.5-1.5 L/day figure.
+        self.assertEqual(cold_diuresis_l_per_h(10), 0.0)
+        self.assertEqual(cold_diuresis_l_per_h(-10), 0.01)
+        self.assertEqual(cold_diuresis_l_per_h(25), 0.0)
 
     def test_cross_sensitivity_amplifies_at_altitude(self):
         # 12 h hot patrol -> deficit ~1.5 L -> risk ~0.375.  At 3000 m the
