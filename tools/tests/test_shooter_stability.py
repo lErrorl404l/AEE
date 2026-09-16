@@ -56,7 +56,7 @@ def fatigue_factor_hours(wake_hours):
         return 0.85 + (0.6 - 0.85) * (wake_hours - 24) / (48 - 24)
     if wake_hours <= 72:
         return 0.6 + (0.35 - 0.6) * (wake_hours - 48) / (72 - 48)
-    return 0.3
+    return 0.35
 
 
 def stability(cold_c, wbgt, wake_hours):
@@ -139,9 +139,9 @@ class TestFatigueFactor(unittest.TestCase):
         self.assertAlmostEqual(fatigue_factor_hours(24), 0.85, places=4)
 
     def test_73h_anchor(self):
-        # 73 h: ~0.3 (Tharion 2003 shot group x3.35).
+        # 73 h: 0.35 (Tharion 2003 shot group x3.35; continuity with 48-72h segment).
         f = fatigue_factor_hours(73)
-        self.assertAlmostEqual(f, 0.3, places=2)
+        self.assertAlmostEqual(f, 0.35, places=2)
 
     def test_monotonic(self):
         f16 = fatigue_factor_hours(16)
