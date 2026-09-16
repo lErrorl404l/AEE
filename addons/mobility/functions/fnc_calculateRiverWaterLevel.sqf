@@ -47,7 +47,12 @@ private _outflow = _r3 * _k;
 missionNamespace setVariable [QGVAR(riverReservoirs), [_r1, _r2, _r3]];
 
 // ─── Water level proportional to outflow ───────────────────────────────────
-private _waterLevel = _outflow max 0;
+// Tidal offset: high tide raises the base level, low tide lowers it.
+// Full amplitude at coast, zero upstream.  The tidal reach parameter
+// (metres from coast where tidal influence reaches) is configurable.
+private _tideOffset = EGVAR(core,currentTideOffset_m);
+if (isNil "_tideOffset") then { _tideOffset = 0; };
+private _waterLevel = (_outflow + _tideOffset) max 0;
 
 private _floodRisk = switch (true) do {
     case (_waterLevel > 0.5): { "Severe" };
