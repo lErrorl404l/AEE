@@ -280,5 +280,34 @@ class TestSQFSyncPropellant(unittest.TestCase):
         )
 
 
+# ── Drift-lock constants (issue #62) ───────────────────────────────────────
+REF_TEMP_EPVAT_C = 21.0  # NATO AEP-97 / STANAG 4823 conditioning
+CLAMP_LOWER = 0.85
+CLAMP_UPPER = 1.15
+
+
+class TestDriftLockPropellant(unittest.TestCase):
+    """Pins the EPVAT reference temperature and the clamp range."""
+
+    def test_epvat_reference_pinned(self):
+        self.assertEqual(REF_TEMP_C, REF_TEMP_EPVAT_C)
+        # At 21 degC the correction is exactly 1.0 for any ammo.
+        for ammo in INIT_SPEED:
+            corr, _ = muzzle_velocity_correction(ammo, INIT_SPEED[ammo], REF_TEMP_C)
+            self.assertAlmostEqual(corr, 1.0, places=6)
+
+    def test_clamp_range_pinned(self):
+        self.assertEqual(CLAMP_LOWER, 0.85)
+        self.assertEqual(CLAMP_UPPER, 1.15)
+
+    def test_clamp_behaviour_boundaries(self):
+        # Extreme inputs must clamp, never exceed the range.
+        for temp in [-60, -40, 60, 80]:
+            for ammo in INIT_SPEED:
+                corr, _ = muzzle_velocity_correction(ammo, INIT_SPEED[ammo], temp)
+                self.assertGreaterEqual(corr, CLAMP_LOWER)
+                self.assertLessEqual(corr, CLAMP_UPPER)
+
+
 if __name__ == "__main__":
     unittest.main()
