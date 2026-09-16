@@ -162,8 +162,13 @@ BEGIN_COUNTER(ballistics);
 END_COUNTER(ballistics);
 
 // ─── Radio / Comms ──────────────────────────────────────────────────────────
+// Sea-surface temperature feeds the evaporation-duct model (issue #37);
+// compute it before the propagation index reads it.
 BEGIN_COUNTER(radio);
 if (GVAR(radioPropagationEnabled)) then {
+    if (GVAR(maritimeEnabled)) then {
+        [] call EFUNC(maritime,calculateSeaSurfaceTemperature);
+    };
     [] call EFUNC(radio,calculateRadioPropagation);
 };
 END_COUNTER(radio);

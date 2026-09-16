@@ -193,6 +193,7 @@ follow the variable names as written in the SQF source.
 | `aee_core_seaStateDescription` | maritime | Beaufort label |
 | `aee_core_waveHeight_m` | maritime | Wave height in metres |
 | `aee_core_currentTideOffset_m` | maritime | Tide offset in metres |
+| `aee_core_seaSurfaceTemperature` | maritime | Sea-surface temperature (evaporation-duct feed) |
 | `aee_core_currentTideDescription` | maritime | Tide description |
 | `aee_core_magneticDeclinationDeg` | maritime | Compass deviation in degrees |
 | `aee_maritime_compassDeviation` | maritime | Compass deviation (maritime namespace) |
