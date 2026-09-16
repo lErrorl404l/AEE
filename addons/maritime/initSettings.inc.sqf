@@ -25,3 +25,17 @@
     true,
     {}
 ] call CBA_fnc_addSetting;
+
+// ── Sea-surface temperature (issue #37) ────────────────────────────────────
+// Coupling weight between the air temperature and the latitude-seasonal
+// climatology.  Low = high thermal inertia (sea stays near its climate
+// baseline); high = the sea follows the air quickly.
+[
+    QGVAR(seaCouplingWeight),
+    "SLIDER",
+    [LLSTRING(seaCouplingWeight_Name), LLSTRING(seaCouplingWeight_Description)],
+    ["AEE Maritime", "Sea"],
+    [0, 1, 0.5, 2],
+    true,
+    {}
+] call CBA_fnc_addSetting;

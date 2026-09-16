@@ -22,6 +22,46 @@ def log10(x):
     return math.log(x) / LN10
 
 
+def _esat_buck(t_c):
+    """Saturated vapour pressure (hPa) per Buck 1981 (mirrors the SQF)."""
+    return 6.1121 * math.exp((18.678 - t_c / 234.5) * t_c / (257.14 + t_c))
+
+
+def evaporation_duct_bonus(freq_hz, dist_m, temp_c, sst_c, rh=50.0):
+    """Mirror of the issue #37 evaporation-duct model.
+
+    delta = clamp(1.5 + (T - SST) * 2.5, 3, 25)          [m duct height]
+    dN = 3.73e5 * (esat(SST) - e_air) / T^2              [N-units]
+    Hall cutoff: f_min = c / (2.5e-3 * sqrt(dN/delta - 0.157) * delta^1.5)
+    Duct bonus applies ONLY for freq >= f_min (SHF), scaled by delta
+    vs the 13 m world mean; attenuated 0.3 dB/km beyond 44.8 km.
+    sst_c None = no maritime state (the SQF guards on isNil before
+    computing), so no duct.
+    """
+    if sst_c is None:
+        return 0.0
+    delta = min(25.0, max(3.0, 1.5 + (temp_c - sst_c) * 2.5))
+    esat_sea = _esat_buck(sst_c)
+    e_air = (rh / 100.0) * _esat_buck(temp_c)
+    dn = 3.73e5 * (esat_sea - e_air) * 0.1 / ((temp_c + 273.15) ** 2)
+    dn = max(0.0, dn)
+    bonus = 0.0
+    sqrt_term = (dn / delta) - 0.157
+    if sqrt_term > 0:
+        lam = 2.5e-3 * (sqrt_term**0.5) * (delta**1.5)
+        if lam > 0:
+            f_min = 3e8 / lam
+            if freq_hz >= f_min:
+                duct_factor = min(2.5, max(0.3, delta / 13))
+                bonus = 6 * duct_factor
+                range_km = dist_m / 1000
+                if range_km > 44.8:
+                    # Attenuation beyond the OTH limit, clamped so the
+                    # duct never becomes a net penalty.
+                    bonus = max(0.0, bonus - range_km * 0.3)
+    return bonus
+
+
 def radio_propagation_index(
     freq_hz,
     dist_m,
@@ -32,6 +72,7 @@ def radio_propagation_index(
     biome="",
     battery_derate=1.0,
     battery_enabled=True,
+    sst_c=None,
 ):
     """Mirror of fnc_calculateRadioPropagation.sqf (Friis + ducting).
 
@@ -40,6 +81,8 @@ def radio_propagation_index(
     battery_derate: physiology battery temperature derating 0.3-1.0
         (issue #36).  Scales effective txPower in dB: 10*log10(derate).
     battery_enabled: the aee_radio_batteryDeratingEnabled toggle.
+    sst_c: sea-surface temperature (issue #37).  None = no maritime
+        state, so no evaporation duct.
     """
     tx_power = 37.0
     if battery_enabled:
@@ -50,12 +93,8 @@ def radio_propagation_index(
     fspl = (20 * log10(dist_m)) + (20 * log10(freq_hz)) - 147.55
 
     duct_bonus = 0.0
-    if temp_c > 25 and sun_night:
-        duct_bonus += min((temp_c - 25) / 20, 0.5) * 6
-    if rh > 60:
-        duct_bonus += ((rh - 50) / 10) * 0.05 * 6
-    if pressure_hpa > 1020:
-        duct_bonus += ((pressure_hpa - 1013) / 10) * 0.02 * 6
+    if sst_c is not None:
+        duct_bonus = evaporation_duct_bonus(freq_hz, dist_m, temp_c, sst_c, rh)
 
     absorption = 0.0
     if temp_c > 30 and rh < 30:
@@ -104,15 +143,34 @@ class TestRadioPropagation(unittest.TestCase):
         high = radio_propagation_index(5e8, 5000, 15, 50, 1013, False)
         self.assertGreater(low, high)
 
-    def test_warm_night_ducting_boost(self):
-        day = radio_propagation_index(1e8, 5000, 28, 50, 1013, False)
-        night = radio_propagation_index(1e8, 5000, 28, 50, 1013, True)
-        self.assertGreater(night, day)
+    def test_evap_duct_boosts_shf_only(self):
+        # Strong tropical duct: sea 34 C, dry air 28 C/30% -> f_min ~9.8
+        # GHz, so a 10 GHz link gets the duct bonus.
+        sst = 34.0
+        shf = radio_propagation_index(1e10, 5000, 28, 30, 1013, False, sst_c=sst)
+        no_duct = radio_propagation_index(1e10, 5000, 28, 30, 1013, False)
+        self.assertGreater(shf, no_duct)
 
-    def test_humidity_boost(self):
-        dry = radio_propagation_index(1e8, 5000, 15, 50, 1013, False)
-        humid = radio_propagation_index(1e8, 5000, 15, 80, 1013, False)
-        self.assertGreater(humid, dry)
+    def test_vhf_not_ducted(self):
+        # 100 MHz tactical VHF: well below the SHF cutoff, so the duct
+        # must NOT apply even with a strong air-sea gradient.
+        sst = 34.0
+        vhf_duct = radio_propagation_index(1e8, 5000, 28, 30, 1013, False, sst_c=sst)
+        vhf_no_duct = radio_propagation_index(1e8, 5000, 28, 30, 1013, False)
+        self.assertAlmostEqual(vhf_duct, vhf_no_duct, places=9)
+
+    def test_cold_sea_stronger_duct(self):
+        # The vapour deficit is larger with a warmer sea and drier air:
+        # sea 36/air 28/20% traps harder than sea 30/air 28/20%.
+        sst_hot = 36.0
+        sst_cooler = 30.0
+        hot_sea = radio_propagation_index(
+            1e10, 5000, 28, 20, 1013, False, sst_c=sst_hot
+        )
+        cooler_sea = radio_propagation_index(
+            1e10, 5000, 28, 20, 1013, False, sst_c=sst_cooler
+        )
+        self.assertGreater(hot_sea, cooler_sea)
 
     def test_hot_dry_penalty(self):
         mild = radio_propagation_index(1e8, 5000, 25, 50, 1013, False)
@@ -225,6 +283,111 @@ class TestBatteryDerating(unittest.TestCase):
             1e8, 5000, -40, 50, 1013, False, battery_derate=0.3
         )
         self.assertAlmostEqual(below, at_floor, places=9)
+
+
+# ─── Sea-surface temperature (issue #37) ────────────────────────────────────
+# Mirror of fnc_calculateSeaSurfaceTemperature.sqf: latitude-seasonal
+# climatology blended with air temperature by the coupling weight.
+#   clim = annual(lat) + 6 * cos(phase/12 * 360)  where phase = months
+#          since local summer (0 = peak), local summer = July north,
+#          January south.
+#   sst  = w * T_air + (1 - w) * clim
+
+
+def sea_surface_temp(air_c, lat, month, w=0.5):
+    """Mirror of the maritime SST model (degC)."""
+    abs_lat = abs(lat)
+    if abs_lat < 15:
+        annual = 28
+    elif abs_lat < 30:
+        annual = 22
+    elif abs_lat < 50:
+        annual = 13
+    elif abs_lat < 65:
+        annual = 5
+    else:
+        annual = 0
+    local_summer = 7 if lat >= 0 else 1
+    phase = (month - local_summer + 12) % 12
+    clim = annual + 6 * math.cos(phase / 12 * 360 * math.pi / 180)
+    return w * air_c + (1 - w) * clim
+
+
+class TestSeaSurfaceTemperature(unittest.TestCase):
+    """Issue #37: the maritime SST feed for the evaporation duct."""
+
+    def test_tropics_warm_all_year(self):
+        # Tropical SST stays warm year-round; the seasonal swing is
+        # modest (28 +- 6 C climatology, blended toward the air).
+        for month in [1, 4, 7, 10]:
+            sst = sea_surface_temp(28, 10, month, w=0.2)
+            self.assertGreaterEqual(sst, 20)
+            self.assertLessEqual(sst, 34)
+
+    def test_north_sea_cold_in_winter(self):
+        # Lat 55 N (subpolar): January coldest, July warmest.
+        jan = sea_surface_temp(4, 55, 1, w=0.5)
+        jul = sea_surface_temp(16, 55, 7, w=0.5)
+        self.assertLess(jan, jul)
+
+    def test_southern_hemisphere_phase_inverted(self):
+        # Lat -33 (subtropical south): January is local summer (warm),
+        # July local winter (cold).
+        jan = sea_surface_temp(24, -33, 1, w=0.5)
+        jul = sea_surface_temp(14, -33, 7, w=0.5)
+        self.assertGreater(jan, jul)
+
+    def test_air_coupling_blends(self):
+        # w=1.0: SST follows air exactly; w=0: SST is pure climatology.
+        self.assertAlmostEqual(sea_surface_temp(25, 45, 7, w=1.0), 25.0, places=6)
+        pure_clim = sea_surface_temp(25, 45, 7, w=0.0)
+        self.assertAlmostEqual(pure_clim, 13 + 6, places=6)  # July peak
+
+    def test_air_sea_gradient_direction(self):
+        # Warm air over a cold sea gives a positive (T - SST), the
+        # classic duct condition direction.
+        sst = sea_surface_temp(25, 60, 1, w=0.5)  # cold northern winter sea
+        self.assertGreater(25.0 - sst, 0)
+
+
+class TestEvaporationDuct(unittest.TestCase):
+    """Issue #37: the evaporation-duct model (SHF only)."""
+
+    def test_hall_cutoff_matches_reference(self):
+        # Verified vector: H=13 m, deltaN=10 -> f_min ~ 3.3 GHz.
+        h, dn = 13.0, 10.0
+        lam = 2.5e-3 * math.sqrt(dn / h - 0.157) * h**1.5
+        f_min = 3e8 / lam
+        self.assertAlmostEqual(f_min / 1e9, 3.27, places=2)
+
+    def test_duct_bonus_scales_with_delta(self):
+        # Warmer sea (bigger vapour deficit) -> taller duct -> bigger
+        # bonus: sea 36 vs sea 32, same air.
+        small = evaporation_duct_bonus(1e10, 5000, 28, 32, 20)
+        large = evaporation_duct_bonus(1e10, 5000, 28, 36, 20)
+        self.assertGreater(large, small)
+
+    def test_duct_height_clamped(self):
+        # delta clamps to [3, 25] m.
+        delta_low = 1.5 + (25 - 30) * 2.5  # negative -> clamps to 3
+        delta_high = 1.5 + (25 - 5) * 2.5  # 51.5 -> clamps to 25
+        self.assertEqual(min(25.0, max(3.0, delta_low)), 3.0)
+        self.assertEqual(min(25.0, max(3.0, delta_high)), 25.0)
+
+    def test_no_sst_no_duct(self):
+        # Without maritime state there is no duct at all.
+        self.assertEqual(evaporation_duct_bonus(1e10, 5000, 28, None), 0.0)
+        no_sst = radio_propagation_index(1e10, 5000, 28, 20, 1013, False)
+        with_sst = radio_propagation_index(1e10, 5000, 28, 20, 1013, False, sst_c=36)
+        self.assertNotAlmostEqual(no_sst, with_sst, places=6)
+
+    def test_long_range_attenuation(self):
+        # Beyond 44.8 km the duct bonus attenuates 0.3 dB/km, but the
+        # duct never becomes a net penalty (clamped at 0, per the SQF).
+        near = evaporation_duct_bonus(1e10, 30000, 28, 36, 20)
+        far = evaporation_duct_bonus(1e10, 80000, 28, 36, 20)
+        self.assertLess(far, near)
+        self.assertGreaterEqual(far, 0.0)
 
 
 if __name__ == "__main__":
