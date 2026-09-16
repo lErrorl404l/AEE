@@ -1480,6 +1480,43 @@ if (_p10Fail == 0) then {
         diag_log text format ["[PHASE26] [FAIL] ammo temperature model: %1 passed, %2 failed", _p26Pass, _p26Fail];
     };
 
+    // -- PHASE 27: performance counter plumbing (#97) -------------------------
+    // The counter macros are compile-time gated.  The docker build is a
+    // PRODUCTION build (counters disabled), so this asserts the graceful
+    // no-counters path AND that the dump function itself runs without error.
+    // The dev-build per-addon dump is covered by the Python mirror tests
+    // (test_perf_counters.py) and a manual hemtt check -D run.
+    private _p27Pass = 0;
+    private _p27Fail = 0;
+    private _fnDump = missionNamespace getVariable ["aee_core_fnc_dumpPerformanceCounters", nil];
+    if (isNil "_fnDump") then {
+        diag_log text "[PHASE27] [FAIL] dumpPerformanceCounters not compiled";
+        _p27Fail = _p27Fail + 1;
+    } else {
+        // Production build: no counters -> graceful message, no error.
+        private _err = [] call _fnDump;
+        if (isNil "_err") then {
+            diag_log text "[PHASE27] [PASS] counter dump runs in production (no counters)";
+            _p27Pass = _p27Pass + 1;
+        } else {
+            diag_log text format ["[PHASE27] [FAIL] counter dump errored: %1", _err];
+            _p27Fail = _p27Fail + 1;
+        };
+        // The gated macros leave no counter state behind.
+        if (isNil "aee_perfCounters") then {
+            diag_log text "[PHASE27] [PASS] no counter state in production build";
+            _p27Pass = _p27Pass + 1;
+        } else {
+            diag_log text "[PHASE27] [FAIL] counter state leaked into production";
+            _p27Fail = _p27Fail + 1;
+        };
+    };
+    if (_p27Fail == 0) then {
+        diag_log text format ["[PHASE27] [PASS] performance counter plumbing: %1 checks passed", _p27Pass];
+    } else {
+        diag_log text format ["[PHASE27] [FAIL] performance counter plumbing: %1 passed, %2 failed", _p27Pass, _p27Fail];
+    };
+
     // -- PHASE 5: determinism -- temperature delta over 5 s must be small ----
     // PHASE11 deliberately disturbed the clock (midnight/noon skips).  The
     // temperature model is stateless and recomputes on each 5 s env tick,

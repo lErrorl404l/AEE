@@ -1,4 +1,5 @@
 #include "..\script_component.hpp"
+#include "\z\aee\addons\main\script_debug.hpp"
 
 params [["_posASL", [], [[]]]];
 
@@ -10,6 +11,8 @@ if ((count _posASL) == 1 && {(_posASL select 0) isEqualType []}) then {
 };
 
 if (!GVAR(enabled)) exitWith {};
+
+BEGIN_COUNTER(updateEnvironment);
 
 // Multiplayer note: core atmospheric state (temperature, pressure, humidity,
 // wind, density) is a deterministic function of position, mission time and
@@ -27,17 +30,22 @@ private _realWeather = missionNamespace getVariable [QEGVAR(core,realWeatherActi
 
 if (!_realWeather) then {
     // Deterministic weather progression seed — drives slow weather-quality drift
+    BEGIN_COUNTER(weatherProgression);
     [] call FUNC(calculateSeededWeatherProgression);
+    END_COUNTER(weatherProgression);
 
     private _month = date select 1;
 
     // Per-position biome detection — updates aee_core_biome based on
     // surface type, latitude, and elevation at the player's position.
+    BEGIN_COUNTER(biomePosition);
     [_posASL] call EFUNC(environmental,updateBiomePosition);
+    END_COUNTER(biomePosition);
     private _biome = GVAR(biome);
 
     // Pass explicit position to update functions so they use the same
     // location rather than each independently querying CBA_fnc_currentUnit.
+    BEGIN_COUNTER(thermoAtmos);
     [_biome, _month, _posASL] call EFUNC(thermal,updateTemperature);
     [_biome, _month, _posASL] call EFUNC(atmos,updatePressure);
     [] call EFUNC(environmental,calculateQNH);
@@ -47,8 +55,11 @@ if (!_realWeather) then {
     [] call EFUNC(atmos,calculatePrecipitationPhase);
     [] call EFUNC(atmos,calculateHaze);
     [] call EFUNC(environmental,calculateSurfaceWetness);
+    END_COUNTER(thermoAtmos);
 
+    BEGIN_COUNTER(airDensity);
     [] call EFUNC(ballistics,calculateAirDensity);
+    END_COUNTER(airDensity);
 };
 
 // Wind runs in BOTH modes.  updateWind reads the engine wind command and
@@ -100,6 +111,7 @@ if (GVAR(physiologyEnabled)) then {
     [] call EFUNC(physiology,applyCrossSensitivity);
     // Fatigue/sleep state (Borbely two-process model) accumulates on the
     // same tick cadence.  Guards on fatigueEnabled internally.
+    BEGIN_COUNTER(physiology);
     if (missionNamespace getVariable [QEGVAR(physiology,fatigueEnabled), true]) then {
         [] call EFUNC(physiology,updateFatigueState);
     };
@@ -111,12 +123,14 @@ if (GVAR(physiologyEnabled)) then {
     if (missionNamespace getVariable [QEGVAR(physiology,fatigueEnabled), true]) then {
         [] call EFUNC(physiology,calculateShooterStability);
     };
+    END_COUNTER(physiology);
 };
 
 // ─── Sensor / Optics ───────────────────────────────────────────────────────
 // Shared illuminance layer: the engine's real scene light (getLightingAt)
 // sampled at the player position.  Runs unconditionally so NVG, thermal,
 // glare, and ballistics all consume one authoritative lux value.
+BEGIN_COUNTER(optics);
 [_posASL] call EFUNC(optics,calculateIlluminance);
 [] call EFUNC(optics,calculateThermalContrast);
 [] call EFUNC(optics,calculateAttenuation);
@@ -129,28 +143,35 @@ if (GVAR(opticsEnabled)) then {
     [] call EFUNC(optics,calculateDewOnOptics);
     [] call EFUNC(optics,calculateSnowBlindness);
 };
+END_COUNTER(optics);
 
 // ─── Mobility / Operations ─────────────────────────────────────────────────
+BEGIN_COUNTER(mobility);
 [] call EFUNC(mobility,calculateTraction);
 [] call EFUNC(mobility,calculateHelicopterLift);
 [] call EFUNC(environmental,calculateFireSpreadRisk);
 if (GVAR(enginePowerDegradationEnabled)) then {
     [_posASL] call EFUNC(mobility,calculateEnginePower);
 };
+END_COUNTER(mobility);
 
 // ─── Ballistics ─────────────────────────────────────────────────────────────
+BEGIN_COUNTER(ballistics);
     [] call EFUNC(ballistics,calculateCrosswindBallistics);
     [_posASL] call EFUNC(ballistics,calculateCoriolisDeflection);
-// Ammo temp is per-weapon per-unit in ACE3 — stub retained for future
+END_COUNTER(ballistics);
 
 // ─── Radio / Comms ──────────────────────────────────────────────────────────
+BEGIN_COUNTER(radio);
 if (GVAR(radioPropagationEnabled)) then {
     [] call EFUNC(radio,calculateRadioPropagation);
 };
+END_COUNTER(radio);
 
 // ─── Surface Hydrology ──────────────────────────────────────────────────────
 // Tidal prediction must run before river water level and flash flood,
 // because those functions read the tide offset set here.
+BEGIN_COUNTER(hydrology);
 if (GVAR(maritimeEnabled)) then {
     [] call EFUNC(maritime,calculateTidalPrediction);
 };
@@ -165,8 +186,10 @@ if (GVAR(fxEnabled)) then {
     [] call EFUNC(fx,applyVehicleDust);
     [] call EFUNC(fx,applyAtmosphericDust);
 };
+END_COUNTER(hydrology);
 
 // ─── Atmospheric events ────────────────────────────────────────────────────
+BEGIN_COUNTER(atmosEvents);
 if (GVAR(atmosphericEventsEnabled)) then {
     [] call EFUNC(atmos,calculateLightning);
     [] call EFUNC(environmental,calculateSevereWeather);
@@ -183,6 +206,7 @@ if (GVAR(atmosphericEventsEnabled)) then {
         [] call EFUNC(fx,triggerSevereWeatherFX);
     };
 };
+END_COUNTER(atmosEvents);
 
 // ─── Environmental / Seasonal ──────────────────────────────────────────────
 [] call EFUNC(mobility,calculateRiverWaterLevel);
@@ -254,3 +278,5 @@ if (GVAR(diagnostic)) then {
 // Subscribers read the aee_core_* mission variables rather than receiving
 // state in the event payload (the tick publishes ~50 variables).
 ["AEE_WeatherUpdated"] call CBA_fnc_localEvent;
+
+END_COUNTER(updateEnvironment);
