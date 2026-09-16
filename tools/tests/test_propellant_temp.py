@@ -309,5 +309,106 @@ class TestDriftLockPropellant(unittest.TestCase):
                 self.assertLessEqual(corr, CLAMP_UPPER)
 
 
+# ─── Ammo temperature tracker (issue #94) ──────────────────────────────────
+# Mirror of fnc_calculateAmmoTemperature.sqf: lazy first-order relaxation
+# toward ambient (+ solar soak), with per-shot propellant heat.
+
+
+def ammo_temp(
+    ambient_c,
+    prev_temp,
+    dt_s,
+    tau=600.0,
+    shot_energy_j=0.0,
+    heat_per_j=0.0001,
+    sun_elev=0.0,
+    overcast=1.0,
+    fresh=False,
+):
+    """Mirror of the per-weapon ammo temperature tracker.
+
+    soakAmbient = ambient + 8 * sunFactor * skyFactor
+    A FRESH weapon inits at soakAmbient (already sun-warmed); a warm
+    weapon relaxes toward it.
+    temp = soakAmbient + (prevTemp - soakAmbient) * exp(-dt/tau)
+    + shot_energy_j * heat_per_j
+    """
+    sun_factor = max(0.0, min(1.0, sun_elev / 45.0))
+    sky_factor = max(0.1, 1.0 - overcast)
+    soak = 8.0 * sun_factor * sky_factor
+    soak_ambient = ambient_c + soak
+    prev = soak_ambient if fresh else prev_temp
+    temp = soak_ambient + (prev - soak_ambient) * math.exp(-dt_s / max(tau, 30.0))
+    if shot_energy_j > 0:
+        temp += shot_energy_j * heat_per_j
+    return temp
+
+
+class TestAmmoTemperature(unittest.TestCase):
+    """Issue #94: per-weapon ammo temp tracking."""
+
+    def test_init_at_ambient(self):
+        # Fresh state: no previous temp -> ambient.
+        t = ammo_temp(21.0, 21.0, 0.0)
+        self.assertAlmostEqual(t, 21.0, places=4)
+
+    def test_cold_start_decays_to_ambient(self):
+        # Ammo at 50 C in a -20 C environment: relaxes down.
+        t0 = ammo_temp(-20.0, 50.0, 0.0)
+        t_short = ammo_temp(-20.0, 50.0, 300.0)  # 5 min
+        t_long = ammo_temp(-20.0, 50.0, 3600.0)  # 1 h
+        self.assertAlmostEqual(t0, 50.0, places=4)
+        self.assertLess(t_short, t0)
+        self.assertLess(t_long, t_short)
+        # 1 h at tau 600 -> within ~0.25% of ambient.
+        self.assertAlmostEqual(t_long, -20.0, delta=0.5)
+
+    def test_relaxation_is_first_order(self):
+        # After one tau (600 s) the gap closes by 63%.
+        t = ammo_temp(21.0, -30.0, 600.0)
+        gap = 21.0 - t
+        self.assertAlmostEqual(gap / 51.0, math.exp(-1.0), places=3)
+
+    def test_solar_soak_heats_above_ambient(self):
+        # Full sun (elev 45, clear): soak ambient is +8 C.
+        t_full_sun = ammo_temp(20.0, 20.0, 3600.0, sun_elev=45.0, overcast=0.0)
+        self.assertAlmostEqual(t_full_sun, 28.0, places=1)
+        # Night: no soak.
+        t_night = ammo_temp(20.0, 20.0, 3600.0, sun_elev=-90.0, overcast=0.0)
+        self.assertAlmostEqual(t_night, 20.0, places=2)
+
+    def test_shot_heat_raises_temp(self):
+        # 5.56 NATO: ~1800 J per shot * 0.0001 = +0.18 C per shot.
+        t = ammo_temp(21.0, 21.0, 0.0, shot_energy_j=1800.0)
+        self.assertAlmostEqual(t, 21.0 + 0.18, places=4)
+        # A 30-round mag of sustained fire adds ~5.4 C.
+        t_30 = ammo_temp(21.0, 21.0, 0.0, shot_energy_j=1800.0 * 30)
+        self.assertAlmostEqual(t_30, 21.0 + 0.18 * 30, places=3)
+
+    def test_no_shot_no_heat(self):
+        t = ammo_temp(21.0, 21.0, 0.0, shot_energy_j=0.0)
+        self.assertAlmostEqual(t, 21.0, places=6)
+
+    def test_fresh_weapon_inits_at_soak_ambient(self):
+        # A fresh weapon in full sun starts already sun-warmed (soak +8).
+        t = ammo_temp(20.0, 0.0, 0.0, sun_elev=45.0, overcast=0.0, fresh=True)
+        self.assertAlmostEqual(t, 28.0, places=4)
+        # Fresh at night: no soak.
+        t_night = ammo_temp(20.0, 0.0, 0.0, sun_elev=-90.0, overcast=0.0, fresh=True)
+        self.assertAlmostEqual(t_night, 20.0, places=4)
+
+    def test_cold_ammo_reduces_mv(self):
+        # -20 C ammo via the propellant model: correction below 1.0.
+        corr_cold, _ = muzzle_velocity_correction("B_556x45_Ball", 920, -20)
+        corr_warm, _ = muzzle_velocity_correction("B_556x45_Ball", 920, 21)
+        self.assertLess(corr_cold, corr_warm)
+
+    def test_sustained_fire_raises_mv(self):
+        # Hot ammo (sustained fire) gives a higher correction than cold.
+        corr_hot, _ = muzzle_velocity_correction("B_556x45_Ball", 920, 35)
+        corr_cold, _ = muzzle_velocity_correction("B_556x45_Ball", 920, 0)
+        self.assertGreater(corr_hot, corr_cold)
+
+
 if __name__ == "__main__":
     unittest.main()
