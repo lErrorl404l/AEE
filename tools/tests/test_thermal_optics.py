@@ -13,6 +13,11 @@ import os
 import unittest
 from pathlib import Path
 
+# Cross-model consistency: the optics moon term must stay consistent with
+# the verified lunar illuminance model (Krisciunas & Schaefer 1991) in
+# test_astronomical.py.
+from tools.tests.test_astronomical import ks_lunar_lux
+
 # Repo root: tools/tests/ -> up two levels.
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 _OPTICS = _REPO_ROOT / "addons" / "optics" / "functions"
@@ -1119,6 +1124,32 @@ class TestAmbientLux(unittest.TestCase):
     def test_full_moon_clear_sky(self):
         # Full moon, no cloud/rain -> 0.25 lux.
         self.assertAlmostEqual(ambient_lux(1.0), 0.25, places=6)
+
+    def test_moon_term_matches_verified_lunar_model(self):
+        # Cross-model lock: NVG uses the ENGINE moonIntensity term
+        # (moonLight * 0.249).  The verified lunar model (Krisciunas &
+        # Schaefer 1991, in fnc_calculateLunarIllumination) computes lux
+        # from the phase angle.  The two must stay within a 10% envelope
+        # at every phase so the NVG display and the astronomical model
+        # do not diverge.  (Exact equality is NOT expected: the optics
+        # constant is calibrated to ACE3's 0.25 lux full-moon anchor.)
+        # Engine moonIntensity is 1.0 at full moon, 0.09 at quarter, 0
+        # at new (Arma folds phase + elevation into it).
+        cases = [
+            (1.0, 0.5),  # full moon
+            (0.09, 0.25),  # first quarter
+            (0.09, 0.75),  # last quarter
+            (0.0, 0.0),  # new moon
+        ]
+        for moon_intensity, phase in cases:
+            optics_lux = ambient_lux(moon_intensity)
+            verified_lux = ks_lunar_lux(phase)
+            self.assertLess(
+                abs(optics_lux - verified_lux) / max(verified_lux, 1e-6),
+                0.10,
+                msg=f"moonIntensity {moon_intensity}: optics {optics_lux:.4f} "
+                f"vs verified {verified_lux:.4f} diverged >10%",
+            )
 
     def test_starlight_floor(self):
         # No moon (new moon / moon below horizon) -> 0.001 lux floor.
