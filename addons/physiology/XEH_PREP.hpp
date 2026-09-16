@@ -10,4 +10,5 @@ PREP(calculateSleepPressure);
 PREP(calculateFatigueFactor);
 PREP(updateFatigueState);
 PREP(calculateShooterStability);
+PREP(calculateColdWeatherPerformance);
 PREP(integrateSwayFactor);
