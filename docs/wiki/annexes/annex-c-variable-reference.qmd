@@ -114,6 +114,9 @@ follow the variable names as written in the SQF source.
 | `aee_physiology_amsRisk` | physiology | Acute mountain sickness risk |
 | `aee_physiology_sleepState` | physiology | Sleep state |
 | `aee_physiology_sleepiness` | physiology | Sleepiness 0..1 |
+| `aee_physiology_diveStates` | physiology | Per-UID ZH-L16C dive state (issue #118): 16x N2 + 16x He tissue loads, gas mix, depth, DCS accumulator |
+| `aee_physiology_diveMix` | physiology | External breathing-gas hook (issue #118): [fN2, fHe, fO2] set by diving addons |
+| `aee_physiology_diveGradientFactor` | physiology | Buhlmann gradient factor (CBA setting, 0.5-1.0) |
 
 ### Radio
 
