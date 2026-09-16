@@ -13,7 +13,6 @@ Returns QGVAR(ambientLux).
 
 // ─── Daytime guard ───────────────────────────────────────────────────────
 if (sunOrMoon > 0) exitWith {
-    missionNamespace setVariable [QGVAR(ambientLux), 0];
     0
 };
 
@@ -67,5 +66,6 @@ _lux = 0.001 + _lux;
 _lux = _lux max 0 min 300;
 
 // ─── Store & return ──────────────────────────────────────────────────────
-missionNamespace setVariable [QGVAR(ambientLux), _lux];
+// The optics illuminance model owns ambientLux (aee_optics_ambientLux);
+// this module only feeds moonPhase into night classification.
 _lux

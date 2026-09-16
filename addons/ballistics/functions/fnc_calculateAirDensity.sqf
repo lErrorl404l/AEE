@@ -24,7 +24,6 @@ private _P_Pa = _P_hPa * 100;
 private _R_d = 287.05287;  // J/(kg·K)
 private _rho = _P_Pa / (_R_d * _T_v);  // kg/m³
 
-// Store
-missionNamespace setVariable [QGVAR(currentAirDensity), _rho];
-// Also pipe into ACE3 ballistics so bullet drag reflects local density
+// Store.  Core namespace is the single source: mobility (engine power,
+// helicopter lift, turbulence) and ACE3 ballistics read it from there.
 missionNamespace setVariable [QEGVAR(core,currentAirDensity), _rho];
