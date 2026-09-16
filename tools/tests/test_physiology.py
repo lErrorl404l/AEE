@@ -279,5 +279,42 @@ class TestUVIndex(unittest.TestCase):
             self.assertLessEqual(uv_index(elev, 300, 8000, 0, 6, is_summer=True), 13)
 
 
+# ── Drift-lock caps (issue #62) ────────────────────────────────────────────
+DEHYDRATION_AMPLIFIES_HYPOXIA_CAP = 1.25  # Gopinathan 1988
+HYPOXIA_AMPLIFIES_DEHYDRATION_CAP = 1.3  # Anand 1996
+
+
+class TestDriftLockCrossSensitivity(unittest.TestCase):
+    """Pins the cross-sensitivity caps AND their behavioural consequence."""
+
+    def test_caps_are_pinned(self):
+        self.assertEqual(DEHYDRATION_AMPLIFIES_HYPOXIA_CAP, 1.25)
+        self.assertEqual(HYPOXIA_AMPLIFIES_DEHYDRATION_CAP, 1.3)
+
+    def test_cap_behaviour(self):
+        # The caps live on the AMPLIFIERS (visible where the min-1 clamp
+        # does not mask them).  At 50% both risks: hypoxia amplifier hits
+        # 1.125, dehydration amplifier 1.15 (linear 1.0..cap by the risk).
+        eff_deh, eff_hyp = cross_sensitivity(0.5, 0.5)
+        self.assertAlmostEqual(eff_hyp, 0.5 * 1.125, places=4)
+        self.assertAlmostEqual(eff_deh, 0.5 * 1.15, places=4)
+        # Full scale, full risk: the min-1 clamp saturates the output.
+        eff_deh, eff_hyp = cross_sensitivity(1.0, 1.0)
+        self.assertAlmostEqual(eff_hyp, 1.0, places=4)
+        self.assertAlmostEqual(eff_deh, 1.0, places=4)
+        # Half coupling: the amplifier itself is half-way to the cap,
+        # then applied to the risk.
+        eff_deh, eff_hyp = cross_sensitivity(0.5, 0.5, scale=0.5)
+        self.assertAlmostEqual(eff_hyp, 0.5 * 1.0625, places=4)  # amp 1.0625
+        self.assertAlmostEqual(eff_deh, 0.5 * 1.075, places=4)  # amp 1.075
+
+    def test_sqf_caps(self):
+        text = (_PHYSIOLOGY / "fnc_applyCrossSensitivity.sqf").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("1.25", text)
+        self.assertIn("1.3", text)
+
+
 if __name__ == "__main__":
     unittest.main()
