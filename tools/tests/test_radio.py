@@ -23,13 +23,30 @@ def log10(x):
 
 
 def radio_propagation_index(
-    freq_hz, dist_m, temp_c, rh, pressure_hpa, sun_night, biome=""
+    freq_hz,
+    dist_m,
+    temp_c,
+    rh,
+    pressure_hpa,
+    sun_night,
+    biome="",
+    battery_derate=1.0,
+    battery_enabled=True,
 ):
     """Mirror of fnc_calculateRadioPropagation.sqf (Friis + ducting).
 
     sun_night: True when the sun is down (sunOrMoon == -1).
     biome: the AEE biome code, used for the terrain-loss list.
+    battery_derate: physiology battery temperature derating 0.3-1.0
+        (issue #36).  Scales effective txPower in dB: 10*log10(derate).
+    battery_enabled: the aee_radio_batteryDeratingEnabled toggle.
     """
+    tx_power = 37.0
+    if battery_enabled:
+        derate = max(0.3, min(1.0, battery_derate))
+        if derate < 1.0:
+            tx_power += 10 * log10(derate)
+
     fspl = (20 * log10(dist_m)) + (20 * log10(freq_hz)) - 147.55
 
     duct_bonus = 0.0
@@ -51,7 +68,7 @@ def radio_propagation_index(
     if biome in ["UMa", "Uhd", "Uhb", "Uhi", "Cfa", "Cfb", "Cfc", "Dfa", "Dfb"]:
         terrain_loss = 3
 
-    link_budget = 37 - fspl - terrain_loss + duct_bonus - absorption
+    link_budget = tx_power - fspl - terrain_loss + duct_bonus - absorption
     signal_pct = 10 ** (link_budget / 20)
     signal_pct = max(0.0, min(1.0, signal_pct))
     index = 0.3 + 1.7 * (signal_pct**0.5)
@@ -152,6 +169,62 @@ class TestIonosphericAbsorption(unittest.TestCase):
     def test_clamped_0_10(self):
         self.assertEqual(ionospheric_absorption(1e6, 90, 300, True, 5), 10.0)
         self.assertGreaterEqual(ionospheric_absorption(3e6, -90, 0, False, 0), 0.0)
+
+
+class TestBatteryDerating(unittest.TestCase):
+    """Issue #36: cold batteries derate radio effective transmit power."""
+
+    def test_cold_battery_drops_signal(self):
+        # -20 C battery derating (~0.7): -1.55 dB tx power.  The link
+        # budget drops, so the propagation index must fall.
+        warm = radio_propagation_index(
+            1e8, 5000, 20, 50, 1013, False, battery_derate=1.0
+        )
+        cold = radio_propagation_index(
+            1e8, 5000, -20, 50, 1013, False, battery_derate=0.7
+        )
+        self.assertLess(cold, warm, "cold battery did not reduce signal")
+        # Derating 0.7 -> tx -1.55 dB -> signal_pct scales by
+        # 10^(-1.55/20) = 0.837.  The index is sqrt-compressed, so the
+        # index ratio is (0.3 + 1.7*sqrt(0.837*s)) / (0.3 + 1.7*sqrt(s)).
+        s = 10 ** ((37 - (20 * log10(5000) + 20 * log10(1e8) - 147.55)) / 20)
+        ratio = (0.3 + 1.7 * (0.837 * s) ** 0.5) / (0.3 + 1.7 * s**0.5)
+        self.assertAlmostEqual(cold / warm, ratio, places=4)
+
+    def test_severe_cold_battery_floor(self):
+        # Derating clamped to 0.3 in the SQF; at that floor tx power loses
+        # 5.2 dB.  Signal still works (no dead radio) but much weaker.
+        severe = radio_propagation_index(
+            1e8, 5000, -30, 50, 1013, False, battery_derate=0.3
+        )
+        normal = radio_propagation_index(
+            1e8, 5000, 20, 50, 1013, False, battery_derate=1.0
+        )
+        self.assertLess(severe, normal)
+
+    def test_toggle_off_ignores_derating(self):
+        # With the CBA toggle off, a cold battery changes nothing.
+        cold_on = radio_propagation_index(
+            1e8, 5000, -20, 50, 1013, False, battery_derate=0.7
+        )
+        cold_off = radio_propagation_index(
+            1e8, 5000, -20, 50, 1013, False, battery_derate=0.7, battery_enabled=False
+        )
+        warm = radio_propagation_index(
+            1e8, 5000, 20, 50, 1013, False, battery_derate=1.0
+        )
+        self.assertAlmostEqual(cold_off, warm, places=9)
+        self.assertLess(cold_on, warm)
+
+    def test_derating_out_of_range_clamped(self):
+        # Derating outside 0.3-1.0 clamps (mirror matches the SQF clamp).
+        below = radio_propagation_index(
+            1e8, 5000, -40, 50, 1013, False, battery_derate=0.1
+        )
+        at_floor = radio_propagation_index(
+            1e8, 5000, -40, 50, 1013, False, battery_derate=0.3
+        )
+        self.assertAlmostEqual(below, at_floor, places=9)
 
 
 if __name__ == "__main__":

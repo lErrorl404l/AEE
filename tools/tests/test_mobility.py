@@ -30,6 +30,21 @@ def engine_power_ratio(density_kgm3):
     return (density_kgm3 / 1.225) ** 1.2
 
 
+def crank_success(battery_derate):
+    """Mirror of the cold-start gate in fnc_calculateEnginePower.sqf (#36).
+
+    Battery capacity derating 0.3-1.0 (physiology).  Below 0.5 the engine
+    fails to start (cold-soak); 0.5-0.7 scales cranking 0.2-1.0; above
+    0.7 starts reliably.
+    """
+    d = max(0.3, min(1.0, battery_derate))
+    if d < 0.5:
+        return 0.0
+    if d < 0.7:
+        return 0.2 + (d - 0.5) / 0.2 * 0.8
+    return 1.0
+
+
 def traction_force(mu, wheel_load, slip):
     """Mirror of fnc_calculateTraction.sqf (Bekker slip curve, k = 10).
 
@@ -143,6 +158,36 @@ class TestEnginePower(unittest.TestCase):
         self.assertLess(engine_power_ratio(0.8), engine_power_ratio(0.9))
         self.assertLess(engine_power_ratio(0.9), engine_power_ratio(1.0))
         self.assertLess(engine_power_ratio(1.0), engine_power_ratio(1.1))
+
+
+class TestColdStartBattery(unittest.TestCase):
+    """Issue #36: cold battery gates engine cranking."""
+
+    def test_warm_battery_starts(self):
+        self.assertEqual(crank_success(1.0), 1.0)
+        self.assertEqual(crank_success(0.9), 1.0)
+
+    def test_cold_soak_fails(self):
+        # Below 0.5 derating the engine cannot crank.
+        self.assertEqual(crank_success(0.4), 0.0)
+        self.assertEqual(crank_success(0.3), 0.0)
+
+    def test_marginal_band_scales(self):
+        # 0.5-0.7 scales 0.2-1.0 linearly.
+        self.assertAlmostEqual(crank_success(0.5), 0.2, places=6)
+        self.assertAlmostEqual(crank_success(0.6), 0.6, places=6)
+        self.assertAlmostEqual(crank_success(0.7), 1.0, places=6)
+
+    def test_monotonic(self):
+        prev = -1.0
+        for d in [x / 100 for x in range(30, 101, 5)]:
+            c = crank_success(d)
+            self.assertGreaterEqual(c, prev)
+            prev = c
+
+    def test_clamped_out_of_range(self):
+        self.assertEqual(crank_success(0.1), crank_success(0.3))
+        self.assertEqual(crank_success(1.5), crank_success(1.0))
 
 
 class TestTraction(unittest.TestCase):

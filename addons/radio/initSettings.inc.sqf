@@ -11,6 +11,19 @@ private _hasHost = isClass (configFile >> "CfgPatches" >> "acre_sys_core")
     || isClass (configFile >> "CfgPatches" >> "task_force_radio");
 if (_hasHost) then {
 
+// ── Battery derating (issue #36) ──────────────────────────────────────────
+// The txPower derating applies whenever physiology publishes a battery
+// temperature derating, independent of any host radio mod.
+[
+    QGVAR(batteryDeratingEnabled),
+    "CHECKBOX",
+    [LLSTRING(batteryDeratingEnabled_Name), LLSTRING(batteryDeratingEnabled_Description)],
+    ["AEE Radio", "Link"],
+    true,
+    true,
+    {}
+] call CBA_fnc_addSetting;
+
 // ── Propagation ────────────────────────────────────────────────────────────
 [
     QGVAR(txPower),
