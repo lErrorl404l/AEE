@@ -81,5 +81,13 @@
             <Original>Radiational Fog Ramp Rate</Original>
             <English>Radiational Fog Ramp Rate</English>
         </Key>
+        <Key ID="STR_AEE_Atmos_refractionEnabled_Description">
+            <Original>Enable atmospheric refraction, ducting, and mirage classification</Original>
+            <English>Enable atmospheric refraction, ducting, and mirage classification</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_refractionEnabled_Name">
+            <Original>Refraction Enabled</Original>
+            <English>Refraction Enabled</English>
+        </Key>
     </Package>
 </Project>

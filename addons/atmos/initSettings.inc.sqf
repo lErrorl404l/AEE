@@ -107,3 +107,14 @@
     true,
     {}
 ] call CBA_fnc_addSetting;
+
+// ── Refraction ────────────────────────────────────────────────────────────
+[
+    QGVAR(refractionEnabled),
+    "CHECKBOX",
+    [LLSTRING(refractionEnabled_Name), LLSTRING(refractionEnabled_Description)],
+    ["AEE Atmos", "Refraction"],
+    true,
+    true,
+    {}
+] call CBA_fnc_addSetting;

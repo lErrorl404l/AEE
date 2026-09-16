@@ -11,3 +11,4 @@ PREP(calculateMicroburst);
 PREP(calculateTurbulence);
 PREP(calculatePrecipitationPhase);
 PREP(calculateHaze);
+PREP(calculateRefraction);
