@@ -41,12 +41,19 @@ private _flow  = 0;
 private _pain  = 0;
 
 if ((_wbgt > (missionNamespace getVariable [QEGVAR(compat_ace3,medicalWBGTThreshold), 0])) || (_risk > (missionNamespace getVariable [QEGVAR(compat_ace3,medicalRiskThreshold), 0]))) then {
-    // ISO 7243 bands — heat strain raises heart rate, lowers peripheral flow
+    // ISO 7243 bands — heat strain raises heart rate, lowers peripheral flow.
+    // Exclusive cascade: the strongest matching band wins.  A sequential
+    // pair of ifs here let the extreme-caution band OVERWRITE the danger
+    // band (WBGT 28-32 silently produced the 23-28 values) — the danger
+    // band was unreachable.  Fixed with if/elseif.
     if (_wbgt > 32) then {
         _hr = 30; _flow = -20; _pain = 0.3;              // very dangerous
     } else {
-        if (_wbgt > 28) then { _hr = 20; _flow = -15; };  // danger
-        if ((_wbgt > (missionNamespace getVariable [QEGVAR(compat_ace3,medicalWBGTThreshold), 0]))) then { _hr = 10; _flow = -10; };  // extreme caution
+        if (_wbgt > 28) then {
+            _hr = 20; _flow = -15;                       // danger
+        } else {
+            if ((_wbgt > (missionNamespace getVariable [QEGVAR(compat_ace3,medicalWBGTThreshold), 0]))) then { _hr = 10; _flow = -10; };  // extreme caution
+        };
     };
 
     // Dehydration compounds flow loss (reduced blood volume)
