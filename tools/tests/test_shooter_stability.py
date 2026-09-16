@@ -231,5 +231,80 @@ class TestSQFSyncStability(unittest.TestCase):
         )
 
 
+# ── Drift-lock breakpoints (issue #62) ─────────────────────────────────────
+# Each constant pins a literature anchor AND its behavioural consequence.  If
+# a threshold silently shifts in the SQF, the value pin fails; if the mirror
+# drifts from the SQF, the source-sync fragment pin fails.
+COLD_UPPER = 15.0  # Heus 1995: manual dexterity onset
+COLD_LOWER = 8.0  # Fox 1967: severe impairment
+COLD_FLOOR = 0.3  # floor factor below the severe band
+HEAT_TLV = 29.0  # ACGIH 2022 TLV, moderate work
+HEAT_LIMIT = 42.0  # Hancock & Vasmatzidis 2003: vigilance limit
+HEAT_FLOOR = 0.6
+FATIGUE_ONSET = 16.0  # Tikuisis 2004: no measurable loss below this
+FATIGUE_24H = 24.0
+FATIGUE_48H = 48.0
+FATIGUE_72H = 72.0
+FATIGUE_FLOOR = 0.35  # continuous with the 48-72h segment end (issue #63)
+
+
+class TestDriftLockBreakpoints(unittest.TestCase):
+    """Pins the piecewise breakpoints AND their behavioural consequences."""
+
+    def test_cold_breakpoints(self):
+        # At the onset: full stability.  Just below: penalty begins.
+        self.assertAlmostEqual(cold_factor(COLD_UPPER), 1.0, places=4)
+        self.assertAlmostEqual(cold_factor(COLD_UPPER + 0.1), 1.0, places=4)
+        self.assertLess(cold_factor(COLD_UPPER - 0.1), 1.0)
+        # At the severe band: 0.6 exactly (not the floor).
+        self.assertAlmostEqual(cold_factor(COLD_LOWER), 0.6, places=4)
+        # Deep cold approaches the floor and never goes below it.
+        self.assertAlmostEqual(cold_factor(-20), COLD_FLOOR, places=4)
+        self.assertGreaterEqual(cold_factor(-50), COLD_FLOOR)
+
+    def test_heat_breakpoints(self):
+        # Below the TLV: no vigilance penalty.  At the limit: floor.
+        self.assertAlmostEqual(heat_factor(HEAT_TLV), 1.0, places=4)
+        self.assertAlmostEqual(heat_factor(HEAT_TLV - 0.1), 1.0, places=4)
+        self.assertLess(heat_factor(HEAT_TLV + 0.1), 1.0)
+        self.assertAlmostEqual(heat_factor(HEAT_LIMIT), HEAT_FLOOR, places=4)
+        self.assertAlmostEqual(heat_factor(HEAT_LIMIT + 10), HEAT_FLOOR, places=4)
+
+    def test_fatigue_breakpoints(self):
+        # Full stability below the onset; each segment starts where the
+        # previous one ended (continuity, no steps).
+        self.assertAlmostEqual(fatigue_factor_hours(FATIGUE_ONSET), 1.0, places=4)
+        self.assertAlmostEqual(fatigue_factor_hours(FATIGUE_24H), 0.85, places=4)
+        self.assertAlmostEqual(fatigue_factor_hours(FATIGUE_48H), 0.6, places=4)
+        self.assertAlmostEqual(
+            fatigue_factor_hours(FATIGUE_72H), FATIGUE_FLOOR, places=4
+        )
+        self.assertAlmostEqual(fatigue_factor_hours(80), FATIGUE_FLOOR, places=4)
+        # Continuity: no step at any breakpoint.
+        for b in [16.0, 24.0, 48.0, 72.0]:
+            self.assertAlmostEqual(
+                fatigue_factor_hours(b),
+                fatigue_factor_hours(b + 0.001),
+                places=2,
+                msg=f"step discontinuity at {b}h",
+            )
+
+    def test_sqf_breakpoint_values(self):
+        # The SQF must contain the exact anchor values, not just the
+        # linearConversion ranges.  A shifted floor or limit fails here.
+        text = (_PHYSIOLOGY / "fnc_calculateShooterStability.sqf").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("1.0, 0.6", text)  # cold 15->8 to 0.6
+        self.assertIn("0.6, 0.3", text)  # cold 8->-10 to 0.3 floor
+        self.assertIn("29, 42", text)  # heat TLV->vigilance limit
+        self.assertIn("1.0, 0.85", text)  # fatigue 16->24
+        self.assertIn("0.85, 0.6", text)  # fatigue 24->48
+        self.assertIn("0.6, 0.35", text)  # fatigue 48->72
+        self.assertIn(
+            "default                 { _fatigue = 0.35; }", text
+        )  # floor (issue #63)
+
+
 if __name__ == "__main__":
     unittest.main()
