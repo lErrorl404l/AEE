@@ -12,3 +12,6 @@ PREP(updateFatigueState);
 PREP(calculateShooterStability);
 PREP(calculateColdWeatherPerformance);
 PREP(integrateSwayFactor);
+PREP(zh16cStep);
+PREP(getDiveState);
+PREP(updateDiveState);

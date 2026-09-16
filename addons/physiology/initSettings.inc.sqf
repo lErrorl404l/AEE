@@ -155,3 +155,24 @@
     true,
     {}
 ] call CBA_fnc_addSetting;
+
+// ── Diving (ZH-L16C, issue #118) ─────────────────────────────────────────
+[
+    QGVAR(diveEnabled),
+    "CHECKBOX",
+    [LLSTRING(DiveEnabled_Name), LLSTRING(DiveEnabled_Description)],
+    ["AEE Physiology", "Diving"],
+    true,
+    true,
+    {}
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(diveGradientFactor),
+    "SLIDER",
+    [LLSTRING(DiveGradientFactor_Name), LLSTRING(DiveGradientFactor_Description)],
+    ["AEE Physiology", "Diving"],
+    [0.5, 1.0, 1.0, 2],
+    true,
+    {}
+] call CBA_fnc_addSetting;
