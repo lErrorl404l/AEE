@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="Ballistics">
+        <Key ID="STR_AEE_Ballistics_ammoHeatPerShotJ_Description">
+            <Original>Propellant heat added per joule of round energy (degC per shot)</Original>
+            <English>Propellant heat added per joule of round energy (degC per shot)</English>
+        </Key>
+        <Key ID="STR_AEE_Ballistics_ammoHeatPerShotJ_Name">
+            <Original>Shot Heat Per Joule</Original>
+            <English>Shot Heat Per Joule</English>
+        </Key>
+        <Key ID="STR_AEE_Ballistics_ammoTempTimeConstant_Description">
+            <Original>Time constant of the per-weapon ammo temperature relaxation toward ambient (seconds)</Original>
+            <English>Time constant of the per-weapon ammo temperature relaxation toward ambient (seconds)</English>
+        </Key>
+        <Key ID="STR_AEE_Ballistics_ammoTempTimeConstant_Name">
+            <Original>Ammo Temperature Time Constant</Original>
+            <English>Ammo Temperature Time Constant</English>
+        </Key>
+    </Package>
+</Project>

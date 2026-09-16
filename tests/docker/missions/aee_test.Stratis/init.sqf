@@ -1419,6 +1419,67 @@ if (_p10Fail == 0) then {
         diag_log text format ["[PHASE25] [FAIL] battery derating wiring: %1 passed, %2 failed", _p25Pass, _p25Fail];
     };
 
+    // -- PHASE 26: ammo temperature tracking (#94) ---------------------------
+    // The per-weapon ammo temperature model is stateful and time-based.  The
+    // docker server cannot meaningfully simulate a 10-minute relaxation, so
+    // the checks pin the STATELESS parts: fresh init at ambient, solar soak,
+    // and shot heat (all pure maths with zero elapsed time).
+    private _p26Pass = 0;
+    private _p26Fail = 0;
+    private _fnAmmoTemp = missionNamespace getVariable ["aee_ballistics_fnc_calculateAmmoTemperature", nil];
+    if (isNil "_fnAmmoTemp") then {
+        diag_log text "[PHASE26] [FAIL] ammo temperature function not compiled";
+        _p26Fail = _p26Fail + 1;
+    } else {
+        // The tracker keys state per-unit.  Headless servers have no local
+        // player, so create an AI unit to hold the per-weapon state.
+        private _grp = createGroup sideLogic;
+        private _unit = _grp createUnit ["B_Soldier_F", [4200, 4250, 0], [], 0, "NONE"];
+        missionNamespace setVariable ["aee_core_currentTemperature", 5];
+        missionNamespace setVariable ["aee_core_currentSunElevation", -90];
+        missionNamespace setVariable ["aee_core_overcast", 1];
+        private _t1 = [_unit, "hgun_Pistol_heavy_01_F"] call _fnAmmoTemp;
+        if (abs (_t1 - 5) < 0.5) then {
+            diag_log text format ["[PHASE26] [PASS] fresh ammo at ambient = %1", _t1];
+            _p26Pass = _p26Pass + 1;
+        } else {
+            diag_log text format ["[PHASE26] [FAIL] fresh ammo temp %1 (expected ~5)", _t1];
+            _p26Fail = _p26Fail + 1;
+        };
+
+        // Case 2: solar soak must push the ammo temp ABOVE the ambient read.
+        // The env PFH recomputes sun elevation every 5 s and can overwrite
+        // the seed mid-test, so assert the direction (soak > ambient),
+        // not an exact 13 C.
+        missionNamespace setVariable ["aee_core_currentSunElevation", 45];
+        missionNamespace setVariable ["aee_core_overcast", 0];
+        private _t2 = [_unit, "arifle_MX_F"] call _fnAmmoTemp;
+        private _amb2 = missionNamespace getVariable ["aee_core_currentTemperature", 5];
+        if (_t2 > _amb2 + 0.5) then {
+            diag_log text format ["[PHASE26] [PASS] solar soak: %1 C above ambient %2", _t2, _amb2];
+            _p26Pass = _p26Pass + 1;
+        } else {
+            diag_log text format ["[PHASE26] [FAIL] solar soak temp %1 not above ambient %2", _t2, _amb2];
+            _p26Fail = _p26Fail + 1;
+        };
+
+        // Case 3: shot heat raises temp proportionally to round energy.
+        private _t3_base = [_unit, "arifle_MX_F"] call _fnAmmoTemp;
+        private _t3 = [_unit, "arifle_MX_F", 1800] call _fnAmmoTemp;
+        if (_t3 > _t3_base) then {
+            diag_log text format ["[PHASE26] [PASS] shot heat raises ammo temp: %1 -> %2", _t3_base, _t3];
+            _p26Pass = _p26Pass + 1;
+        } else {
+            diag_log text format ["[PHASE26] [FAIL] shot heat did not raise temp: %1 -> %2", _t3_base, _t3];
+            _p26Fail = _p26Fail + 1;
+        };
+    };
+    if (_p26Fail == 0) then {
+        diag_log text format ["[PHASE26] [PASS] ammo temperature model: %1 checks passed", _p26Pass];
+    } else {
+        diag_log text format ["[PHASE26] [FAIL] ammo temperature model: %1 passed, %2 failed", _p26Pass, _p26Fail];
+    };
+
     // -- PHASE 5: determinism -- temperature delta over 5 s must be small ----
     // PHASE11 deliberately disturbed the clock (midnight/noon skips).  The
     // temperature model is stateless and recomputes on each 5 s env tick,
