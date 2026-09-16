@@ -8,6 +8,7 @@ PREP(calculateSolarRadiation);
 PREP(calculateSeededWeatherProgression);
 PREP(deterministicRandom);
 PREP(diagnostic);
+PREP(dumpPerformanceCounters);
 PREP(init);
 PREP(moduleInit);
 PREP(moduleStormInit);
