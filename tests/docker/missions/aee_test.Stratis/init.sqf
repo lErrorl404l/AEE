@@ -1656,6 +1656,70 @@ private _p29Pass = 0;
         diag_log text format ["[PHASE30] [FAIL] aurora Kp driver: %1 passed, %2 failed", _p30Pass, _p30Fail];
     };
 
+    // -- PHASE 31: ZH-L16C diving model (#118) ------------------------------
+    // The stateful per-player PFH needs a real underwater player, which the
+    // headless server cannot provide.  This phase drives the pure SQF
+    // functions directly with seeded depth profiles and asserts the physics:
+    // fresh baseline, 30 m loading, NDL against the published table, and the
+    // ceiling after a deco dive.
+    private _p31Pass = 0;
+    private _p31Fail = 0;
+    private _fnStep = missionNamespace getVariable ["aee_physiology_fnc_zh16cStep", nil];
+    if (isNil "_fnStep") then {
+        diag_log text "[PHASE31] [FAIL] zh16cStep not compiled";
+        _p31Fail = _p31Fail + 1;
+    } else {
+        // Case 1: fresh baseline = N2 surface equilibrium in all 16 comps.
+        private _fresh = ([0, 0.79, 0, [], 1.0] call _fnStep) select 0;
+        private _baselineOK = true;
+        for "_i" from 0 to 15 do {
+            if (abs ((_fresh select _i) - 0.74047) > 0.01) then { _baselineOK = false; };
+            if ((_fresh select (16 + _i)) != 0) then { _baselineOK = false; };
+        };
+        if (_baselineOK) then {
+            diag_log text "[PHASE31] [PASS] fresh baseline = N2 surface equilibrium";
+            _p31Pass = _p31Pass + 1;
+        } else {
+            diag_log text "[PHASE31] [FAIL] fresh baseline wrong";
+            _p31Fail = _p31Fail + 1;
+        };
+
+        // Case 2: NDL at 30 m air ~ 17 min (published ZH-L16C table).
+        // The SQF step integrates 1 second per call, so 17 min = 1020
+        // calls.  At 17 min the ceiling must still be ~0 (just inside
+        // NDL); 25 min (1500 calls) must push it positive.
+        private _t17 = _fresh;
+        for "_i" from 1 to 1020 do { _t17 = ([30, 0.79, 0, _t17, 1.0] call _fnStep) select 0; };
+        private _c17 = ([30, 0.79, 0, _t17, 1.0] call _fnStep) select 1;
+        private _t25 = _fresh;
+        for "_i" from 1 to 1500 do { _t25 = ([30, 0.79, 0, _t25, 1.0] call _fnStep) select 0; };
+        private _c25 = ([30, 0.79, 0, _t25, 1.0] call _fnStep) select 1;
+        if (_c17 <= 0.5 && _c25 > 0.5) then {
+            diag_log text format ["[PHASE31] [PASS] NDL at 30 m between 17 and 25 min (c17=%1 c25=%2)", _c17, _c25];
+            _p31Pass = _p31Pass + 1;
+        } else {
+            diag_log text format ["[PHASE31] [FAIL] NDL at 30 m: c17=%1 c25=%2 (expected ~0 then >0)", _c17, _c25];
+            _p31Fail = _p31Fail + 1;
+        };
+
+        // Case 3: ceiling after 20 min at 40 m is positive.
+        private _t40 = _fresh;
+        for "_i" from 1 to 1200 do { _t40 = ([40, 0.79, 0, _t40, 1.0] call _fnStep) select 0; };
+        private _c40 = ([40, 0.79, 0, _t40, 1.0] call _fnStep) select 1;
+        if (_c40 > 0) then {
+            diag_log text format ["[PHASE31] [PASS] ceiling after 40 m dive = %1 m", _c40];
+            _p31Pass = _p31Pass + 1;
+        } else {
+            diag_log text format ["[PHASE31] [FAIL] ceiling after 40 m dive = %1 (expected > 0)", _c40];
+            _p31Fail = _p31Fail + 1;
+        };
+    };
+    if (_p31Fail == 0) then {
+        diag_log text format ["[PHASE31] [PASS] ZH-L16C diving model: %1 checks passed", _p31Pass];
+    } else {
+        diag_log text format ["[PHASE31] [FAIL] ZH-L16C diving model: %1 passed, %2 failed", _p31Pass, _p31Fail];
+    };
+
     // -- PHASE 5: determinism -- temperature delta over 5 s must be small ----
     // PHASE11 deliberately disturbed the clock (midnight/noon skips).  The
     // temperature model is stateless and recomputes on each 5 s env tick,
