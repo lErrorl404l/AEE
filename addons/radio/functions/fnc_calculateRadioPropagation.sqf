@@ -53,6 +53,20 @@ private _distM  = missionNamespace getVariable [QGVAR(radioLinkRangeM), 5000];
 private _txPowerDBm = missionNamespace getVariable [QGVAR(txPower), 37];
 private _propRange  = missionNamespace getVariable [QGVAR(propagationRange), 2.0];
 
+// ─── Battery temperature derating (issue #36) ──────────────────────────────
+// Cold Li-ion cells deliver less power: the physiology model publishes a
+// capacity multiplier 0.3-1.0 (aee_physiology_batteryTemperatureDerating).
+// A derated battery cuts effective transmit power: in dBm the loss is
+// 10*log10(derating).  At 0.7 (about -20 C) that is -1.55 dB; at 0.3
+// (severe cold) -5.2 dB.  The signal fraction follows as sqrt of the
+// linear power ratio, so a 0.7 battery transmits at ~84% of nominal range.
+private _batteryDerate = missionNamespace getVariable [QEGVAR(physiology,batteryTemperatureDerating), 1.0];
+if !(_batteryDerate isEqualType 0) then { _batteryDerate = 1.0; };
+_batteryDerate = _batteryDerate max 0.3 min 1.0;
+if (_batteryDerate < 1.0 && (missionNamespace getVariable [QGVAR(batteryDeratingEnabled), true])) then {
+    _txPowerDBm = _txPowerDBm + (10 * log _batteryDerate);
+};
+
 // ─── Free-space path loss (Friis) ──────────────────────────────────────────
 // SQF's log command is base-10 (verified in-game: log 100 = 2).  Friis in
 // SQF is therefore 20*log10(d) + 20*log10(f) - 147.55 with NO radix
