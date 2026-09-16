@@ -131,7 +131,7 @@ if (abs (_outWidth - _lastW) > 0.01 || abs (_outStart - _lastS) > 0.01) then {
 //
 // Read QGVAR(thermalState): key str object, value [temp, engineRunTime,
 // now, acclimatisation, obj].  temp is the equilibrium surface temp C.
-private _thermalState = missionNamespace getVariable [QGVAR(thermalState), createHashMap];
+private _thermalState = missionNamespace getVariable [QEGVAR(thermal,thermalState), createHashMap];
 private _vehicles = _player nearEntities [["Car", "Tank", "Motorcycle", "Helicopter", "Plane", "Ship"], 150];
 private _airTemp = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 if !(_airTemp isEqualType 0) then { _airTemp = 15; };

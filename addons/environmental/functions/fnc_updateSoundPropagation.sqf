@@ -51,7 +51,7 @@ private _foliageDensity = missionNamespace getVariable [QGVAR(currentFoliageDens
 _index = _index - (_foliageDensity * 0.15);
 
 // ─── Snow cover absorption ─────────────────────────────────────────────
-private _groundState = missionNamespace getVariable [QGVAR(groundState), "Normal"];
+private _groundState = missionNamespace getVariable [QEGVAR(core,groundState), "Normal"];
 if (_groundState == "Snow") then {
     _index = _index - 0.25;
 };
