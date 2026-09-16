@@ -395,7 +395,31 @@ python3 tools/validation/validate_illuminance.py
 # Astronomical models (lunar illuminance vs Krisciunas & Schaefer 1991,
 # NELM vs Garstang/Bortle, DEF Stan 61-027 night classification)
 python3 tools/validation/validate_astronomical.py
+
+# CBA settings cross-reference (reads no addon produces, wrong addon
+# prefix, dead settings, orphan writes)
+python3 tools/validation/validate_cba_settings.py
 ```
 
 All run with only the Python standard library, exit 0 on pass, and are
 wired into `.githooks/pre-commit` and `.github/workflows/ci.yml`.
+
+## CBA settings validator
+
+`validate_cba_settings.py` scans every `.sqf` in `addons/` and resolves
+the `GVAR/QGVAR/EGVAR/QEGVAR` macros against the owning addon.  It
+reports four classes:
+
+| Class | Meaning | Fatal by default |
+|---|---|---|
+| WRONG PREFIX | read as `aee_X_n`, only `aee_Y_n` is produced | yes |
+| DEAD READ | read as `aee_X_n`, nothing produces leaf `n` | yes |
+| DEAD SETTING | declared with `CBA_fnc_addSetting`, never read | no (use `--strict`) |
+| ORPHAN WRITE | written, never read | no (use `--strict`) |
+
+Intentional knobs (debug console toggles, test override hooks, producers
+tracked by another issue) live in `cba_settings_allowlist.txt`; the
+validator reports them as ALLOWED and they do not fail the build.  Remove
+a line when its producer lands.  Template writes like
+`format [QGVAR(ppHandle_%1), _name]` are resolved as dynamic prefixes, so
+dynamically-created variables are not false-flagged.
