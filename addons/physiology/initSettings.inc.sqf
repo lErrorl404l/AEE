@@ -144,3 +144,14 @@
     true,
     {}
 ] call CBA_fnc_addSetting;
+
+// ── Cold weather ───────────────────────────────────────────────────────────
+[
+    QGVAR(coldWeatherEnabled),
+    "CHECKBOX",
+    [LLSTRING(ColdWeatherEnabled_Name), LLSTRING(ColdWeatherEnabled_Description)],
+    ["AEE Physiology", "Cold Weather"],
+    true,
+    true,
+    {}
+] call CBA_fnc_addSetting;

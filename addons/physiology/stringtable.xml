@@ -17,6 +17,14 @@
             <Original>Circadian Amplitude</Original>
             <English>Circadian Amplitude</English>
         </Key>
+        <Key ID="STR_AEE_Physiology_ColdWeatherEnabled_Description">
+            <Original>Toggle the wind chill, dexterity and frostbite model (Osczevski-Bluestein, Heus/Daanen, Tikuisis-Osczevski)</Original>
+            <English>Toggle the wind chill, dexterity and frostbite model (Osczevski-Bluestein, Heus/Daanen, Tikuisis-Osczevski)</English>
+        </Key>
+        <Key ID="STR_AEE_Physiology_ColdWeatherEnabled_Name">
+            <Original>Cold Weather Performance</Original>
+            <English>Cold Weather Performance</English>
+        </Key>
         <Key ID="STR_AEE_Physiology_CrossSensitivityEnabled_Description">
             <Original>Dehydration and hypoxia amplify each other. Dehydrated personnel lose useful consciousness faster at altitude; hypoxia accelerates fluid loss</Original>
             <English>Dehydration and hypoxia amplify each other. Dehydrated personnel lose useful consciousness faster at altitude; hypoxia accelerates fluid loss</English>
