@@ -170,6 +170,7 @@ follow the variable names as written in the SQF source.
 | `aee_environmental_solarFlareActive` | environmental | Solar flare flag |
 | `aee_environmental_spaceWeatherFlareValue` | environmental | Flare value |
 | `aee_environmental_auroraVisibility` | environmental | Aurora visibility |
+| `aee_environmental_auroraIntensity` | environmental | Aurora intensity 0..1 |
 | `aee_environmental_kpIndex` | environmental | Kp index |
 | `aee_environmental_solarActivity` | environmental | Solar activity |
 | `aee_environmental_geomagneticDescription` | environmental | Geomagnetic description |
