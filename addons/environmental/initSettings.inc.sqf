@@ -28,6 +28,16 @@
     {}
 ] call CBA_fnc_addSetting;
 
+[
+    QGVAR(groundFrostEnabled),
+    "CHECKBOX",
+    [LLSTRING(GroundFrostEnabled_Name), LLSTRING(GroundFrostEnabled_Description)],
+    ["AEE Environmental", "Hydrology"],
+    true,
+    true,
+    {}
+] call CBA_fnc_addSetting;
+
 // ── Snow ───────────────────────────────────────────────────────────────────
 [
     QGVAR(SnowAccretionRate),
