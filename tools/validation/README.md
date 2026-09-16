@@ -414,8 +414,16 @@ reports four classes:
 |---|---|---|
 | WRONG PREFIX | read as `aee_X_n`, only `aee_Y_n` is produced | yes |
 | DEAD READ | read as `aee_X_n`, nothing produces leaf `n` | yes |
+| STALE TEST | docker test reads `aee_X_n` that no addon produces and the test does not seed | yes |
+| UNDOCUMENTED | orphan write not listed in Annex C | yes |
 | DEAD SETTING | declared with `CBA_fnc_addSetting`, never read | no (use `--strict`) |
 | ORPHAN WRITE | written, never read | no (use `--strict`) |
+
+The docker test missions (`tests/docker/missions/`) are scanned for literal
+variable reads.  A test read that resolves against neither addon-produced
+state nor the test's own seeds is a stale assertion: the producer was
+renamed and the test was not updated.  This class was a real defect
+(`aee_mobility_currentWaterLevel` in PHASE20, fixed in #83).
 
 Intentional knobs (debug console toggles, test override hooks, producers
 tracked by another issue) live in `cba_settings_allowlist.txt`; the
