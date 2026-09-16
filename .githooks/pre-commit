@@ -70,6 +70,14 @@ if command -v python3 &>/dev/null && [ -f "$ROOT/tools/validation/validate_cba_s
     (cd "$ROOT" && python3 tools/validation/validate_cba_settings.py >/dev/null 2>&1) || FAILED=1
 fi
 
+# Oracle validation (JSP 939 VV&A) — ISO 9613-1 absorption, ICAO density,
+# NWS heat index, WBGT weighting vs pythermalcomfort (skips when absent).
+# Stdlib core path always runs.
+if command -v python3 &>/dev/null && [ -f "$ROOT/tools/validation/validate_oracles.py" ]; then
+    echo "-> oracle validation"
+    (cd "$ROOT" && python3 tools/validation/validate_oracles.py >/dev/null 2>&1) || FAILED=1
+fi
+
 if [ "$FAILED" -ne 0 ]; then
     echo "X pre-commit hook failed. Fix issues or use --no-verify."
     exit 1
