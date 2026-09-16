@@ -1517,6 +1517,55 @@ if (_p10Fail == 0) then {
         diag_log text format ["[PHASE27] [FAIL] performance counter plumbing: %1 passed, %2 failed", _p27Pass, _p27Fail];
     };
 
+    // -- PHASE 28: cold-weather dehydration (#92) ----------------------------
+    // Below 18 C WBGT the model now accumulates deficit from respiratory
+    // water loss + cold diuresis instead of decaying to zero.  The state
+    // is per-UID with a real-time clock and reads CBA_fnc_currentUnit,
+    // which is not deterministically drivable on the headless server -
+    // the accumulation math is locked by the Python mirror
+    // (tools/tests/test_trajectories.py TestHotAltitudeCoupling + the
+    // TestColdDehydration helpers).  This phase asserts the function
+    // compiles and runs without error in the cold branch.
+    private _p28Pass = 0;
+    private _p28Fail = 0;
+    private _fnDehyd = missionNamespace getVariable ["aee_physiology_fnc_calculateDehydrationRisk", nil];
+    if (isNil "_fnDehyd") then {
+        diag_log text "[PHASE28] [FAIL] calculateDehydrationRisk not compiled";
+        _p28Fail = _p28Fail + 1;
+    } else {
+        missionNamespace setVariable ["aee_core_updateInterval", 5];
+        missionNamespace setVariable ["aee_physiology_dehydrationAccum", createHashMap];
+
+        // Cold case: WBGT 8, T -20 -> cold branch must run clean.
+        missionNamespace setVariable ["aee_core_currentWBGT", 8];
+        missionNamespace setVariable ["aee_core_currentTemperature", -20];
+        private _rCold = [] call _fnDehyd;
+        if (isNil "_rCold") then {
+            diag_log text "[PHASE28] [FAIL] cold branch returned nil";
+            _p28Fail = _p28Fail + 1;
+        } else {
+            diag_log text format ["[PHASE28] [PASS] cold branch runs clean (return %1)", _rCold];
+            _p28Pass = _p28Pass + 1;
+        };
+
+        // Heat case: WBGT 25 -> heat branch must also run clean.
+        missionNamespace setVariable ["aee_core_currentWBGT", 25];
+        missionNamespace setVariable ["aee_core_currentTemperature", 25];
+        private _rWarm = [] call _fnDehyd;
+        if (isNil "_rWarm") then {
+            diag_log text "[PHASE28] [FAIL] heat branch returned nil";
+            _p28Fail = _p28Fail + 1;
+        } else {
+            diag_log text format ["[PHASE28] [PASS] heat branch runs clean (return %1)", _rWarm];
+            _p28Pass = _p28Pass + 1;
+        };
+    };
+    if (_p28Fail == 0) then {
+        diag_log text format ["[PHASE28] [PASS] cold-weather dehydration: %1 checks passed", _p28Pass];
+    } else {
+        diag_log text format ["[PHASE28] [FAIL] cold-weather dehydration: %1 passed, %2 failed", _p28Pass, _p28Fail];
+    };
+
     // -- PHASE 5: determinism -- temperature delta over 5 s must be small ----
     // PHASE11 deliberately disturbed the clock (midnight/noon skips).  The
     // temperature model is stateless and recomputes on each 5 s env tick,
