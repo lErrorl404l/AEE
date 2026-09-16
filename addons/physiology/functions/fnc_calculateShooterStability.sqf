@@ -97,7 +97,7 @@ if (_wakeHours > 16) then {
         case (_wakeHours <= 24): { _fatigue = linearConversion [16, 24, _wakeHours, 1.0, 0.85, true]; };
         case (_wakeHours <= 48): { _fatigue = linearConversion [24, 48, _wakeHours, 0.85, 0.6, true]; };
         case (_wakeHours <= 72): { _fatigue = linearConversion [48, 72, _wakeHours, 0.6, 0.35, true]; };
-        default                 { _fatigue = 0.3; };
+        default                 { _fatigue = 0.35; };
     };
 };
 _fatigue = _fatigue max 0.3 min 1.0;
