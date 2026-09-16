@@ -41,6 +41,22 @@
             <Original>Cross-Sensitivity Scale</Original>
             <English>Cross-Sensitivity Scale</English>
         </Key>
+        <Key ID="STR_AEE_Physiology_DiveEnabled_Description">
+            <Original>Enable the Buhlmann ZH-L16C decompression model for diving</Original>
+            <English>Enable the Buhlmann ZH-L16C decompression model for diving</English>
+        </Key>
+        <Key ID="STR_AEE_Physiology_DiveEnabled_Name">
+            <Original>Diving Physiology</Original>
+            <English>Diving Physiology</English>
+        </Key>
+        <Key ID="STR_AEE_Physiology_DiveGradientFactor_Description">
+            <Original>Buhlmann gradient factor for the ascent ceiling (0.5 conservative, 1.0 pure ZHL-16C)</Original>
+            <English>Buhlmann gradient factor for the ascent ceiling (0.5 conservative, 1.0 pure ZHL-16C)</English>
+        </Key>
+        <Key ID="STR_AEE_Physiology_DiveGradientFactor_Name">
+            <Original>Diving Gradient Factor</Original>
+            <English>Diving Gradient Factor</English>
+        </Key>
         <Key ID="STR_AEE_Physiology_FatigueEnabled_Description">
             <Original>Toggle the Borbely two-process sleep/fatigue model</Original>
             <English>Toggle the Borbely two-process sleep/fatigue model</English>
