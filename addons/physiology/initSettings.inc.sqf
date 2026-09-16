@@ -133,3 +133,14 @@
     true,
     {}
 ] call CBA_fnc_addSetting;
+
+// ── Shooter stability ──────────────────────────────────────────────────────
+[
+    QGVAR(stabilityEnabled),
+    "CHECKBOX",
+    [LLSTRING(StabilityEnabled_Name), LLSTRING(StabilityEnabled_Description)],
+    ["AEE Physiology", "Stability"],
+    true,
+    true,
+    {}
+] call CBA_fnc_addSetting;
