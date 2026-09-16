@@ -310,6 +310,17 @@ class TestSQFSync(unittest.TestCase):
             "Tier 1 direct surface map",
         )
 
+    # ── Tier 2 wetland candidates (fnc_getBiomeAtPosition.sqf) ──
+    def test_wetland_candidates(self):
+        self._assert_in_sqf(
+            "fnc_getBiomeAtPosition.sqf",
+            [
+                '["#GdtSwamp", switch (_latBand) do {',
+                '["#GdtMarsh", switch (_latBand) do {',
+            ],
+            "Tier 2 wetland surface candidates",
+        )
+
 
 class TestLatitudeBand(unittest.TestCase):
     """Validate latitude → Koppen zone mapping."""
@@ -467,6 +478,49 @@ class TestTier2GrassByLatitude(unittest.TestCase):
 
     def test_grass_temperate(self):
         self.assertEqual(get_biome_at_position("#GdtGrass", 45, 0), "Cfb")
+
+
+class TestTier2WetlandByLatitude(unittest.TestCase):
+    """Validate Tier 2 swamp/marsh disambiguation by latitude (issue #56).
+
+    Swamp and marsh share one candidate table.  On a weight tie the first
+    listed candidate wins, so band C returns Cfa.
+    """
+
+    def test_swamp_tropical(self):
+        # Band A: Af(3), Am(2) → Af
+        self.assertEqual(get_biome_at_position("#GdtSwamp", 5, 0), "Af")
+
+    def test_swamp_subtropical(self):
+        # Band B: BSh(2), Cfa(1) → BSh
+        self.assertEqual(get_biome_at_position("#GdtSwamp", 30, 0), "BSh")
+
+    def test_swamp_temperate(self):
+        # Band C: Cfa(2), Cfb(2) → Cfa (first on tie)
+        self.assertEqual(get_biome_at_position("#GdtSwamp", 45, 0), "Cfa")
+
+    def test_swamp_continental(self):
+        # Band D: Dfb(2), Dfc(1) → Dfb
+        self.assertEqual(get_biome_at_position("#GdtSwamp", 55, 0), "Dfb")
+
+    def test_swamp_polar(self):
+        # Band E: Dfc(2), ET(1) → Dfc
+        self.assertEqual(get_biome_at_position("#GdtSwamp", 70, 0), "Dfc")
+
+    def test_marsh_tropical(self):
+        self.assertEqual(get_biome_at_position("#GdtMarsh", 5, 0), "Af")
+
+    def test_marsh_subtropical(self):
+        self.assertEqual(get_biome_at_position("#GdtMarsh", 30, 0), "BSh")
+
+    def test_marsh_temperate(self):
+        self.assertEqual(get_biome_at_position("#GdtMarsh", 45, 0), "Cfa")
+
+    def test_marsh_continental(self):
+        self.assertEqual(get_biome_at_position("#GdtMarsh", 55, 0), "Dfb")
+
+    def test_marsh_polar(self):
+        self.assertEqual(get_biome_at_position("#GdtMarsh", 70, 0), "Dfc")
 
 
 class TestTier2SnowByLatitude(unittest.TestCase):

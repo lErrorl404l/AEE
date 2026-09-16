@@ -1,7 +1,7 @@
 #include "..\script_component.hpp"
 
 /*
-Brightest 50 stars with apparent magnitudes and equatorial coordinates.
+Brightest 49 stars with apparent magnitudes and equatorial coordinates.
 
 Catalog data: Yale Bright Star Catalogue (BSC5), Fifth Edition.
 Positions are J2000.0 epoch.  Precession to current date is handled
@@ -23,7 +23,7 @@ params [
 ];
 
 // ─── Star catalog: [name, RA_deg, Dec_deg, Vmag] ─────────────────────────
-// RA and Dec in degrees (J2000.0).  Top 50 by apparent V magnitude.
+// RA and Dec in degrees (J2000.0).  Top 49 by apparent V magnitude.
 // Source: Yale Bright Star Catalogue, Fifth Edition (BSC5).
 private _catalog = [
     ["Sirius",          101.2872,  -16.7161, -1.46],
@@ -44,7 +44,6 @@ private _catalog = [
     ["Spica",          201.2983,  -11.1613,  0.97],
     ["Pollux",         116.3289,   28.0262,  1.14],
     ["Fomalhaut",      344.4126,  -29.6222,  1.16],
-    ["Canopus_b",       95.9880,  -52.6957,  1.25],
     ["Deneb",          310.3580,   45.2803,  1.25],
     ["Mimosa",         191.9303,  -59.6887,  1.25],
     ["Regulus",        152.0930,   11.9672,  1.35],
@@ -166,8 +165,13 @@ private _visible = [];
     };
 } forEach _catalog;
 
-// Sort by altitude (highest first)
-_visible sort false;
+// Sort by altitude, highest first.  The boolean form of sort orders by
+// the first element of each item, so sort a keyed copy that carries the
+// altitude first, then restore the [name, altitude, azimuth, magnitude]
+// shape.  Sorting the raw items would order by the name string instead.
+private _keyed = _visible apply { [(_x select 1), _x] };
+_keyed sort true;
+_visible = _keyed apply { _x select 1 };
 
 missionNamespace setVariable [QGVAR(visibleStars), _visible];
 
