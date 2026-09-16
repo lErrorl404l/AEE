@@ -12,7 +12,7 @@
     QGVAR(enabled),
     "CHECKBOX",
     [LLSTRING(enabled_Name), LLSTRING(enabled_Description)],
-    "AEE",
+    ["AEE", "Core"],
     true,   // default: enabled
     true,   // global — needs to be same for all clients
     {}
@@ -23,7 +23,7 @@
     QGVAR(updateInterval),
     "SLIDER",
     [LLSTRING(updateInterval_Name), LLSTRING(updateInterval_Description)],
-    "AEE",
+    ["AEE", "Core"],
     [1, 60, 5, 0],
     true,
     {}
@@ -207,7 +207,7 @@
     QGVAR(referenceAltitude),
     "SLIDER",
     [LLSTRING(referenceAltitude_Name), LLSTRING(referenceAltitude_Description)],
-    "AEE",
+    ["AEE", "Core"],
     [-500, 8000, 0, 0],
     true,
     {}
@@ -218,7 +218,7 @@
     QGVAR(clothingInsulation),
     "SLIDER",
     [LLSTRING(clothingInsulation_Name), LLSTRING(clothingInsulation_Description)],
-    "AEE",
+    ["AEE", "Thermal"],
     [0.5, 2.0, 1.0, 1],
     true,
     {}
@@ -240,7 +240,7 @@
     QGVAR(diagnostic),
     "CHECKBOX",
     [LLSTRING(diagnostic_Name), LLSTRING(diagnostic_Description)],
-    "AEE",
+    ["AEE", "Core"],
     false,
     false,
     {}
@@ -295,7 +295,7 @@
     QGVAR(atmosphericEventsEnabled),
     "CHECKBOX",
     [LLSTRING(atmosphericEventsEnabled_Name), LLSTRING(atmosphericEventsEnabled_Description)],
-    ["AEE", "Atmos"],
+    ["AEE", "Atmosphere"],
     true,
     true,
     {}

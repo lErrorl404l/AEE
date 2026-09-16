@@ -10,7 +10,7 @@
     QGVAR(enabled),
     "CHECKBOX",
     [LLSTRING(enabled_Name), LLSTRING(enabled_Description)],
-    "AEE Real Weather",
+    ["AEE", "Compat - Real Weather"],
     false,
     true,
     {}
