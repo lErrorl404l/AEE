@@ -824,6 +824,94 @@ if (_p10Fail == 0) then {
         diag_log text format ["[PHASE17] [FAIL] sleep/fatigue model: %1 passed, %2 failed", _p17Pass, _p17Fail];
     };
 
+    // -- PHASE 18: shooter stability model (#30) ----------------------------
+    // Pure maths, runs headless.  Seeds the environmental + fatigue state
+    // and checks the stability index against the literature anchors.
+    private _p18Pass = 0;
+    private _p18Fail = 0;
+    private _fnStab = missionNamespace getVariable ["aee_physiology_fnc_calculateShooterStability", nil];
+    if (isNil "_fnStab") then {
+        diag_log text "[PHASE18] [FAIL] shooter stability function not compiled";
+        _p18Fail = _p18Fail + 1;
+    } else {
+        // Case 1: ideal conditions -> stability ~1.0.
+        missionNamespace setVariable ["aee_core_currentTemperature", 25];
+        missionNamespace setVariable ["aee_core_currentWBGT", 20];
+        missionNamespace setVariable ["aee_physiology_wakefulnessHours", 8];
+        private _s1 = [] call _fnStab;
+        if (_s1 > 0.95 && _s1 <= 1.0) then {
+            diag_log text format ["[PHASE18] [PASS] ideal stability = %1", _s1];
+            _p18Pass = _p18Pass + 1;
+        } else {
+            diag_log text format ["[PHASE18] [FAIL] ideal stability = %1 (expected ~1.0)", _s1];
+            _p18Fail = _p18Fail + 1;
+        };
+
+        // Case 2: severe cold (-20 degC) -> cube root of 0.3 floor ~0.67.
+        missionNamespace setVariable ["aee_core_currentTemperature", -20];
+        private _s2 = [] call _fnStab;
+        private _expected2 = 0.3 ^ (1 / 3);
+        if (abs (_s2 - _expected2) < 0.05) then {
+            diag_log text format ["[PHASE18] [PASS] -20 degC stability = %1", _s2];
+            _p18Pass = _p18Pass + 1;
+        } else {
+            diag_log text format ["[PHASE18] [FAIL] -20 degC stability = %1 (expected ~%2)", _s2, _expected2];
+            _p18Fail = _p18Fail + 1;
+        };
+
+        // Case 3: heat only (WBGT 45) -> cube root of 0.6 floor ~0.84.
+        missionNamespace setVariable ["aee_core_currentTemperature", 25];
+        missionNamespace setVariable ["aee_core_currentWBGT", 45];
+        private _s3 = [] call _fnStab;
+        private _expected3 = 0.6 ^ (1 / 3);
+        if (abs (_s3 - _expected3) < 0.05) then {
+            diag_log text format ["[PHASE18] [PASS] WBGT 45 stability = %1", _s3];
+            _p18Pass = _p18Pass + 1;
+        } else {
+            diag_log text format ["[PHASE18] [FAIL] WBGT 45 stability = %1 (expected ~%2)", _s3, _expected3];
+            _p18Fail = _p18Fail + 1;
+        };
+
+        // Case 4: combined severe (cold + heat + 80 h awake) -> < 0.4.
+        missionNamespace setVariable ["aee_core_currentTemperature", -20];
+        missionNamespace setVariable ["aee_core_currentWBGT", 45];
+        missionNamespace setVariable ["aee_physiology_wakefulnessHours", 80];
+        private _s4 = [] call _fnStab;
+        if (_s4 < 0.4) then {
+            diag_log text format ["[PHASE18] [PASS] worst-case stability = %1", _s4];
+            _p18Pass = _p18Pass + 1;
+        } else {
+            diag_log text format ["[PHASE18] [FAIL] worst-case stability = %1 (expected < 0.4)", _s4];
+            _p18Fail = _p18Fail + 1;
+        };
+
+        // Case 5: ACE3 sway integration — graceful when ACE3 absent (docker
+        // has no ACE3; the player's client does).  The function must
+        // return false without erroring, and the ACE3 sway factor list
+        // must stay untouched.
+        private _fnSway = missionNamespace getVariable ["aee_physiology_fnc_integrateSwayFactor", nil];
+        if (!isNil "_fnSway") then {
+            private _registered = [] call _fnSway;
+            private _swayFactors = missionNamespace getVariable ["ace_common_swayFactorsMultiplier", []];
+            if (_registered == false && count _swayFactors == 0) then {
+                diag_log text "[PHASE18] [PASS] sway integration degrades gracefully without ACE3";
+                _p18Pass = _p18Pass + 1;
+            } else {
+                diag_log text format ["[PHASE18] [FAIL] sway integration: registered=%1 factors=%2",
+                    _registered, count _swayFactors];
+                _p18Fail = _p18Fail + 1;
+            };
+        } else {
+            diag_log text "[PHASE18] [FAIL] integrateSwayFactor not compiled";
+            _p18Fail = _p18Fail + 1;
+        };
+    };
+    if (_p18Fail == 0) then {
+        diag_log text format ["[PHASE18] [PASS] shooter stability model: %1 checks passed", _p18Pass];
+    } else {
+        diag_log text format ["[PHASE18] [FAIL] shooter stability model: %1 passed, %2 failed", _p18Pass, _p18Fail];
+    };
+
     // -- PHASE 5: determinism -- temperature delta over 5 s must be small ----
     // PHASE11 deliberately disturbed the clock (midnight/noon skips).  The
     // temperature model is stateless and recomputes on each 5 s env tick,

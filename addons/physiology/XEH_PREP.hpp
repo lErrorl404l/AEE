@@ -9,3 +9,5 @@ PREP(applyHeatStressHUD);
 PREP(calculateSleepPressure);
 PREP(calculateFatigueFactor);
 PREP(updateFatigueState);
+PREP(calculateShooterStability);
+PREP(integrateSwayFactor);
