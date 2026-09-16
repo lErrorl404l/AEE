@@ -207,14 +207,20 @@ def battery_derating(temp_c):
 
 
 def ambient_lux(
-    moon_intensity, overcast=0.0, rain=0.0, sun_elev_deg=-90.0, starlight=0.001
+    moon_intensity,
+    overcast=0.0,
+    rain=0.0,
+    sun_elev_deg=-90.0,
+    starlight=0.001,
+    aurora_intensity=0.0,
 ):
     """Mirror of the lux model in fnc_calculateIlluminance.
 
     cloudTransmission = 1 - min(overcast*0.85, 0.85)   (multiplicative)
     moonLight = max(0, moonIntensity*cloudTransmission - rain*0.5)
     twilightLux = 10^(2.6 - 0.3*|sunElev|) when the sun is below horizon
-    ambientLux = starlight + moonLight*0.249 + twilightLux
+    auroraLux = 0.03 * auroraIntensity  (issue #112, green 557.7 nm)
+    ambientLux = starlight + moonLight*0.249 + twilightLux + auroraLux
 
     Full moon (1.0) clear sky -> 0.25 lux (real full-moon illuminance).
     Overcast is a MULTIPLICATIVE transmission loss (the engine does not
@@ -227,11 +233,15 @@ def ambient_lux(
     -> NVG gains down, rendering the brighter sky correctly.
     Twilight glow (sun below horizon) adds the scattered-sunlight sky
     light: ~6.3 lux at -6 deg, ~0.1 at -12, ~0.0016 at -18.
+    Aurora adds up to 0.03 lux at full intensity (a Kp 7-9 storm) -
+    the green emission sits in the NVG tube's peak sensitivity, so the
+    added photons brighten the image like moonlight.
     """
     trans = 1.0 - min(overcast * 0.85, 0.85)
     moon = max(0.0, moon_intensity * trans - rain * 0.5)
     twilight = 10.0 ** (2.6 - 0.3 * abs(sun_elev_deg)) if sun_elev_deg <= 0 else 0.0
-    return starlight + moon * 0.249 + twilight
+    aurora = 0.03 * max(0.0, min(1.0, aurora_intensity))
+    return starlight + moon * 0.249 + twilight + aurora
 
 
 def extinction_per_m(rain, fog):
@@ -1159,6 +1169,38 @@ class TestAmbientLux(unittest.TestCase):
     def test_starlight_floor(self):
         # No moon (new moon / moon below horizon) -> 0.001 lux floor.
         self.assertAlmostEqual(ambient_lux(0.0), 0.001, places=6)
+
+    def test_aurora_adds_lux(self):
+        # A Kp 7-9 storm (aurora intensity 1.0) adds 0.03 lux to a
+        # moonless night: the green 557.7 nm emission feeds the NVG tube.
+        self.assertAlmostEqual(ambient_lux(0.0, aurora_intensity=1.0), 0.031, places=6)
+
+    def test_aurora_scales_with_intensity(self):
+        # Half-intensity aurora adds half the lux; none adds nothing.
+        self.assertAlmostEqual(
+            ambient_lux(0.0, aurora_intensity=0.5), 0.001 + 0.015, places=6
+        )
+        self.assertAlmostEqual(ambient_lux(0.0, aurora_intensity=0.0), 0.001, places=6)
+
+    def test_aurora_intensity_clamped(self):
+        # Out-of-range intensity clamps (mirror matches the SQF clamp).
+        self.assertEqual(
+            ambient_lux(0.0, aurora_intensity=2.0),
+            ambient_lux(0.0, aurora_intensity=1.0),
+        )
+        self.assertEqual(
+            ambient_lux(0.0, aurora_intensity=-1.0),
+            ambient_lux(0.0, aurora_intensity=0.0),
+        )
+
+    def test_aurora_brightens_nvg_scene(self):
+        # A moonless clear night under a strong aurora is brighter than
+        # the same night without one - the NVG AGC sees more photons.
+        no_aurora = ambient_lux(0.0, overcast=0.0)
+        with_aurora = ambient_lux(0.0, overcast=0.0, aurora_intensity=1.0)
+        self.assertGreater(with_aurora, no_aurora)
+        # 30x the starlight floor - a genuinely brighter image.
+        self.assertGreater(with_aurora / max(no_aurora, 1e-9), 30.0)
 
     def test_overcast_reduces_moon(self):
         # Full moon behind heavy overcast: cloud loss 0.8*0.85 = 0.68,

@@ -279,5 +279,107 @@ class TestSurfaceWetness(unittest.TestCase):
         self.assertEqual(surface_wetness(0.0, 0, 30, -10, 0.5, 5, 3600), 0.0)
 
 
+# ─── Aurora model (issue #112) ──────────────────────────────────────────────
+# Mirror of the aurora block in fnc_calculateSpaceWeather.sqf: NOAA SWPC
+# Kp-to-latitude relationship (oval expands equatorward as Kp rises) and
+# the intensity model (rises with Kp beyond the threshold, strongest when
+# the observer's latitude is near the oval edge).
+
+
+def aurora_oval_limit(kp):
+    """Equatorward latitude limit of the auroral oval by Kp.
+
+    Kp 0-1 -> 65 deg, Kp 9 -> ~49.7 deg (NOAA SWPC bands, interpolated).
+    """
+    return 65.0 - (min(kp, 9) * 1.7)
+
+
+def aurora_intensity(kp, lat_deg, overcast, day_time):
+    """Mirror of the SQF aurora gate + intensity (0-1, 0 = no aurora).
+
+    Requires: Kp > 4, clear sky (< 0.3 overcast), night (before 06:00 or
+    after 20:00), and the observer poleward of the oval limit.
+    Intensity: 0.6 * (Kp excess over 4) + 0.4 * (latitude proximity to
+    the oval edge), clamped 0-1.
+    """
+    kp_idx = round(max(0.0, min(9.0, kp)))
+    if kp_idx <= 4:
+        return 0.0
+    if overcast >= 0.3:
+        return 0.0
+    if 6 <= day_time <= 20:
+        return 0.0
+    limit = aurora_oval_limit(kp_idx)
+    if lat_deg <= limit:
+        return 0.0
+    kp_excess = max(0.0, min(1.0, (kp_idx - 4) / 5.0))
+    lat_proximity = max(0.0, min(1.0, 1.0 - (lat_deg - limit) / 10.0))
+    return max(0.0, min(1.0, kp_excess * 0.6 + lat_proximity * 0.4))
+
+
+class TestAurora(unittest.TestCase):
+    """Issue #112: Kp-driven aurora visibility and intensity."""
+
+    def test_oval_limit_matches_noaa_bands(self):
+        # Kp 0 -> 65, Kp 3 -> ~60, Kp 5 -> ~56.5, Kp 7 -> ~53, Kp 9 -> ~49.7.
+        self.assertAlmostEqual(aurora_oval_limit(0), 65.0, places=4)
+        self.assertAlmostEqual(aurora_oval_limit(3), 65 - 5.1, places=4)
+        self.assertAlmostEqual(aurora_oval_limit(5), 65 - 8.5, places=4)
+        self.assertAlmostEqual(aurora_oval_limit(7), 65 - 11.9, places=4)
+        self.assertAlmostEqual(aurora_oval_limit(9), 65 - 15.3, places=4)
+
+    def test_kp5_visible_55_60(self):
+        # Test vector: Kp 5 -> oval edge in the 55-60 deg band.  The
+        # observer must be POLEWARD of the edge (Kp5 limit is 56.5), so
+        # lat 58/60 are visible, lat 50 is not.
+        for lat in [58, 60]:
+            self.assertGreater(
+                aurora_intensity(5, lat, 0, 2),
+                0.0,
+                msg=f"Kp5 not visible at {lat} deg",
+            )
+        self.assertEqual(aurora_intensity(5, 50, 0, 2), 0.0)  # too far south
+
+    def test_kp9_visible_below_50(self):
+        # Kp 9 -> oval limit ~49.7 deg: lat 50 (just poleward) is
+        # visible (test vector: oval extends below 50).
+        self.assertGreater(aurora_intensity(9, 50, 0, 2), 0.0)
+
+    def test_quiet_kp_no_aurora(self):
+        for kp in [0, 1, 2, 3, 4]:
+            self.assertEqual(aurora_intensity(kp, 70, 0, 2), 0.0)
+
+    def test_clouds_block_aurora(self):
+        self.assertEqual(aurora_intensity(7, 65, 0.5, 2), 0.0)
+
+    def test_daylight_blocks_aurora(self):
+        # Night gate: before 06:00 or after 20:00.  Noon blocks; 21:00
+        # is night (visible).  A dawn hour (05:00) is also night.
+        self.assertEqual(aurora_intensity(7, 65, 0, 12), 0.0)
+        self.assertGreater(aurora_intensity(7, 65, 0, 21), 0.0)
+
+    def test_intensity_rises_with_kp(self):
+        lo = aurora_intensity(5, 70, 0, 2)
+        hi = aurora_intensity(8, 70, 0, 2)
+        self.assertGreater(hi, lo)
+
+    def test_intensity_bounded(self):
+        for kp in range(5, 10):
+            for lat in [50, 55, 60, 65, 70]:
+                i = aurora_intensity(kp, lat, 0, 2)
+                self.assertGreaterEqual(i, 0.0)
+                self.assertLessEqual(i, 1.0)
+
+    def test_nvg_brightens_under_aurora(self):
+        # The illuminance mirror (test_thermal_optics.ambient_lux) must
+        # respond to the aurora intensity: 30x the starlight floor at
+        # full intensity.  Cross-module integration lock.
+        from tools.tests.test_thermal_optics import ambient_lux
+
+        floor = ambient_lux(0.0)
+        bright = ambient_lux(0.0, aurora_intensity=1.0)
+        self.assertGreater(bright / max(floor, 1e-9), 30.0)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -132,7 +132,20 @@ if (_sunElev <= 0) then {
 private _starlightLux = missionNamespace getVariable [QGVAR(starlightLux), 0.001];
 if !(_starlightLux isEqualType 0 && _starlightLux > 0) then { _starlightLux = 0.001; };
 
-private _ambientLux = _starlightLux + (_moonLight * 0.249) + _twilightLux;
+// ─── Aurora light (issue #112) ─────────────────────────────────────────────
+// A bright aurora (Kp 7-9) adds real light to the night sky, peaking at
+// ~0.5-1.0 lux in the zenith but sky-integrated over the visible scene
+// ~0.01-0.05 lux.  The green 557.7 nm emission sits in the NVG tube's
+// peak sensitivity band, so the added lux brightens the image exactly
+// like moonlight does: the AGC sees more photons, gain drops, noise
+// falls.  Wired here (the shared lux source) means limiting magnitude,
+// night classification, and every illuminance consumer inherit it
+// automatically.  Scaled by the space-weather aurora intensity (0-1).
+private _auroraIntensity = missionNamespace getVariable [QEGVAR(environmental,auroraIntensity), 0];
+if !(_auroraIntensity isEqualType 0 && _auroraIntensity > 0) then { _auroraIntensity = 0; };
+private _auroraLux = 0.03 * (_auroraIntensity min 1 max 0);
+
+private _ambientLux = _starlightLux + (_moonLight * 0.249) + _twilightLux + _auroraLux;
 
 // ─── Dynamic lux (client only) ───────────────────────────────────────────
 // Two sources: (1) IR weapon light from the player, (2) nearby environmental
