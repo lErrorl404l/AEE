@@ -103,6 +103,14 @@ if (GVAR(physiologyEnabled)) then {
     if (missionNamespace getVariable [QEGVAR(physiology,fatigueEnabled), true]) then {
         [] call EFUNC(physiology,updateFatigueState);
     };
+    // Shooter stability index from cold/heat/fatigue.  Reads the fatigue
+    // state set above, so it runs after updateFatigueState on this tick.
+    // Crosswind is NOT a stability factor: it deflects the round, not the
+    // shooter (handled by the ballistics module).  Stored for the ACE3
+    // sway factor and for external consumers.
+    if (missionNamespace getVariable [QEGVAR(physiology,fatigueEnabled), true]) then {
+        [] call EFUNC(physiology,calculateShooterStability);
+    };
 };
 
 // ─── Sensor / Optics ───────────────────────────────────────────────────────
