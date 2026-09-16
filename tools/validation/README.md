@@ -404,6 +404,37 @@ python3 tools/validation/validate_cba_settings.py
 All run with only the Python standard library, exit 0 on pass, and are
 wired into `.githooks/pre-commit` and `.github/workflows/ci.yml`.
 
+## Oracle validation (JSP 939 VV&A)
+
+`validate_oracles.py` is the VALIDATION layer (formula matches reality as an
+integrated system) on top of `validate_physics.py`'s VERIFICATION (code
+matches formula).  Per JSP 939 Modelling & Simulation practice, tolerance
+bands are the acceptance criteria.
+
+| Check | Oracle | Tolerance | Optional lib |
+|---|---|---|---|
+| ISO 9613-1 atmospheric absorption | standard formula, corrected refs 2.60/12.59 dB/km (issue #80) | 0.05 dB/km | none |
+| Air density vs ICAO Std Atm | Doc 7488 / ISO 2533 table | 0.5 % rel | none |
+| NWS heat index | official 90 F/70 % -> 105.9 F check value | 0.5 F | none |
+| WBGT weighting | pythermalcomfort ISO 7243 wbgt() | 0.06 C | pythermalcomfort (SKIP when absent) |
+
+Notes:
+- The ISO 9613-1 check guards the issue #80 defect: the original
+  hand-computed references (4.164 / 130.217 dB/km) were wrong; the
+  verified values are 2.60 / 12.59 dB/km.  The oracle formula uses the
+  water-vapour fraction (not percent) in the relaxation frequencies.
+- The wet-bulb-vs-psychrolib and ISA-vs-metpy oracles already live in
+  `validate_physics.py` (checks #2 and #7) and are not duplicated here.
+- pythermalcomfort's wet-bulb is itself Stull, so the WBGT check shares
+  the Tw input and validates the 0.7/0.2/0.1 aggregation at overcast=1
+  (the mod's ISO 7243 Tg=Ta reduction).
+
+Run with the optional oracle library:
+
+```bash
+tools/validation/.venv/bin/python tools/validation/validate_oracles.py
+```
+
 ## CBA settings validator
 
 `validate_cba_settings.py` scans every `.sqf` in `addons/` and resolves
