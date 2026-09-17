@@ -216,6 +216,7 @@ follow the variable names as written in the SQF source.
 | `aee_atmos_airframeIcing` | atmos | Airframe icing 0..1 |
 | `aee_atmos_airframeIcingDetected` | atmos | Airframe icing flag |
 | `aee_atmos_capeProxy` | atmos | CAPE proxy for convection |
+| `aee_atmos_localWindCache` | atmos | Per-frame local wind diagnostic: [local, minS, terrainS, buildingS, canyonS, frame] |
 | `aee_atmos_currentCloudDescription` | atmos | Cloud layer description |
 | `aee_atmos_currentCloudTrend` | atmos | Cloud trend |
 | `aee_atmos_currentMicroburst` | atmos | Microburst severity |
