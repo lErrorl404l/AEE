@@ -16,13 +16,21 @@ Sets QEGVAR(core,currentTurbulence), GVAR(edrValue), GVAR(turbulenceClass).
 */
 
 // ─── Mechanical (terrain-driven) ────────────────────────────────────────
-private _windSpd = vectorMagnitude wind;
+// Local wind (issue #136): the spatial field at the player's position —
+// building wake, terrain lee recirculation, canyon suppression, crest
+// acceleration — replaces the single global vector for the mechanical
+// term.  A lee-side recirculation (0.2-0.4x global) is calmer; a ridge
+// crest speed-up (up to 1.4x) is rougher.
+private _player = call CBA_fnc_currentUnit;
+private _posASL = [0, 0, 0];
+if (!isNil "_player") then { _posASL = getPosASL _player; };
+private _localWind = [_posASL, _posASL param [2, 0]] call FUNC(getLocalWind);
+private _windSpd = vectorMagnitude _localWind;
 private _mechanical = 0;
 
 if (_windSpd > 5) then {
     // Resolve surface roughness from ground type
     private _roughness = 0.4;    // default
-    private _player = call CBA_fnc_currentUnit;
     if (!isNil "_player") then {
         private _pos2D = getPos _player;
         private _type = toLower (surfaceType _pos2D);

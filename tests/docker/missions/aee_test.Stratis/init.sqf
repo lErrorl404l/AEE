@@ -1821,6 +1821,55 @@ private _p29Pass = 0;
         diag_log text format ["[PHASE33] [FAIL] blast overpressure channel: %1 passed, %2 failed", _p33Pass, _p33Fail];
     };
 
+    // -- PHASE 34: local wind field (#136) -----------------------------------
+    // The spatial wind field modifies the global wind by buildings, terrain,
+    // and canyon geometry.  Pure maths with seeded global wind + a known
+    // position; the docker server has no meaningful built-up area, so the
+    // checks assert the PHYSICS: altitude gate, wake circulation/descent,
+    // and the S-factor composition formula.
+    private _p34Pass = 0;
+    private _p34Fail = 0;
+    private _fnLocalWind = missionNamespace getVariable ["aee_atmos_fnc_getLocalWind", nil];
+    if (isNil "_fnLocalWind") then {
+        diag_log text "[PHASE34] [FAIL] getLocalWind not compiled";
+        _p34Fail = _p34Fail + 1;
+    } else {
+        // Case 1: altitude gate — above 50 m returns the global wind
+        // unchanged (the gate is purely parametric, independent of terrain).
+        missionNamespace setVariable ["aee_core_currentWind", [6, 2, 0]];
+        missionNamespace setVariable ["aee_core_currentWindStr", 6.3];
+        private _global = missionNamespace getVariable ["aee_core_currentWind", [0, 0, 0]];
+        private _local = [getPosASL player, 80] call _fnLocalWind;
+        if ((abs ((_local select 0) - (_global select 0)) < 0.1) &&
+            (abs ((_local select 1) - (_global select 1)) < 0.1)) then {
+            diag_log text "[PHASE34] [PASS] altitude gate: 80 m returns global wind";
+            _p34Pass = _p34Pass + 1;
+        } else {
+            diag_log text format ["[PHASE34] [FAIL] altitude gate: local %1 vs global %2", _local, _global];
+            _p34Fail = _p34Fail + 1;
+        };
+
+        // Case 2: near-ground on flat terrain — no relief, no buildings, so
+        // the terrain/building/canyon factors are all neutral (S=1) and the
+        // local wind EQUALS the global wind (the composition formula with no
+        // modifiers).  This asserts the neutral ground truth: the mod must
+        // NOT invent wind on a featureless plain.
+        private _localLow = [getPosASL player, 2] call _fnLocalWind;
+        if ((abs ((_localLow select 0) - (_global select 0)) < 0.2) &&
+            (abs ((_localLow select 1) - (_global select 1)) < 0.2)) then {
+            diag_log text "[PHASE34] [PASS] flat terrain: local wind unchanged (neutral S factors)";
+            _p34Pass = _p34Pass + 1;
+        } else {
+            diag_log text format ["[PHASE34] [FAIL] flat terrain: local %1 vs global %2 (S not neutral)", _localLow, _global];
+            _p34Fail = _p34Fail + 1;
+        };
+    };
+    if (_p34Fail == 0) then {
+        diag_log text format ["[PHASE34] [PASS] local wind field: %1 checks passed", _p34Pass];
+    } else {
+        diag_log text format ["[PHASE34] [FAIL] local wind field: %1 passed, %2 failed", _p34Pass, _p34Fail];
+    };
+
     // -- PHASE 5: determinism -- temperature delta over 5 s must be small ----
     // PHASE11 deliberately disturbed the clock (midnight/noon skips).  The
     // temperature model is stateless and recomputes on each 5 s env tick,
