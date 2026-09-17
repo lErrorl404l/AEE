@@ -110,7 +110,6 @@
                 ["TICK"] call FUNC(applySecondSun);
                 ["TICK"] call FUNC(applyClothingThermal);
                 ["TICK"] call FUNC(applyBuildingThermal);
-                ["TICK"] call FUNC(applyRainDroplets);
             };
         }, 0.1] call CBA_fnc_addPerFrameHandler;
         private _logMsg = format ["sensor PFH started (vision mode %1)", _visionMode];
