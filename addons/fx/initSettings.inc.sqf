@@ -118,3 +118,16 @@
     true,
     {}
 ] call CBA_fnc_addSetting;
+
+// ── Blast injury channel (issue #132) ──────────────────────────────────────
+// Kingery-Bulmash overpressure + Bowen pressure-impulse injury, applied
+// via the explosion event hook.  Default on; disable for arcade settings.
+[
+    QGVAR(blastInjuryEnabled),
+    "CHECKBOX",
+    [LLSTRING(blastInjuryEnabled_Name), LLSTRING(blastInjuryEnabled_Description)],
+    ["AEE FX", "Events"],
+    true,
+    true,
+    {}
+] call CBA_fnc_addSetting;

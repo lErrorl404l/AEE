@@ -236,6 +236,13 @@ follow the variable names as written in the SQF source.
 | `aee_core_moduleTempOffset` | core | EDEN temperature offset |
 | `aee_core_modulePrecipBias` | core | EDEN rain multiplier |
 | `aee_core_moduleWindMultiplier` | core | EDEN wind multiplier |
+
+### Explosions
+
+| Variable | Subsystem | Purpose |
+|---|---|---|
+| `aee_fx_blastOverpressureKpa` | fx | Last explosion incident overpressure in kPa (Kingery-Bulmash) |
+| `aee_fx_blastInjury` | fx | Last explosion injury vector [eardrum, lungThresh, lung1, lung50, lung99, throw] |
 | `aee_core_moduleUpdateInterval` | core | EDEN update interval |
 | `aee_core_weatherProgressionSeed` | core | Seeded weather progression |
 | `aee_core_qnh` | core | QNH pressure setting |

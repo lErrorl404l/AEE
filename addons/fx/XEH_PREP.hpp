@@ -4,6 +4,8 @@ PREP(applyRainSurfaceDrops);
 PREP(applyRainVehicleSound);
 PREP(applyVehicleDust);
 PREP(applyWindNoise);
+PREP(calculateBlastInjury);
+PREP(calculateBlastOverpressure);
 PREP(checkParticleBudget);
 PREP(registerParticleSource);
 PREP(triggerLightning);
