@@ -1480,6 +1480,11 @@ if (_p10Fail == 0) then {
         diag_log text format ["[PHASE26] [FAIL] ammo temperature model: %1 passed, %2 failed", _p26Pass, _p26Fail];
     };
 
+    // Free the sideLogic group so later phases can create their own
+    // (sideLogic has a hard group limit; leaked groups break seeding).
+    deleteVehicle _unit;
+    deleteGroup _grp;
+
     // -- PHASE 27: performance counter plumbing (#97) -------------------------
     // The counter macros are compile-time gated.  The docker build is a
     // PRODUCTION build (counters disabled), so this asserts the graceful
@@ -1933,6 +1938,94 @@ private _p29Pass = 0;
     } else {
         diag_log text format ["[PHASE35] [FAIL] barrel thermal expansion: %1 passed, %2 failed", _p35Pass, _p35Fail];
     };
+
+    // Free the sideLogic group for later phases (sideLogic group limit).
+    deleteVehicle _unit;
+    deleteGroup _grp;
+
+    // -- PHASE 36: wet/ice traction (#133) ------------------------------------
+    // Hydroplaning, black ice, and brake fade.  The stateful brake model
+    // needs a vehicle + seeded env state; the stateless hydroplane/black-ice
+    // parts are checked against the spec anchors.
+    private _p36Pass = 0;
+    private _p36Fail = 0;
+    private _fnWet = missionNamespace getVariable ["aee_mobility_fnc_calculateWetTraction", nil];
+    if (isNil "_fnWet") then {
+        diag_log text "[PHASE36] [FAIL] wet traction function not compiled";
+        _p36Fail = _p36Fail + 1;
+    } else {
+        // Vehicle for the wet-traction model.  Vehicles cannot belong to
+        // a sideLogic group — createVehicle directly (no group needed).
+        private _veh = createVehicle ["C_Hatchback_01_F", [4200, 4250, 0], [], 0, "NONE"];
+
+        // Case 1: dry warm road -> mu high (0.7-0.9), no hydroplane.
+        missionNamespace setVariable ["aee_core_surfaceWetness", 0];
+        missionNamespace setVariable ["aee_core_precipitationPhase", "none"];
+        missionNamespace setVariable ["aee_core_avgGroundTemp", 15];
+        [_veh, 1200, 15, false] call _fnWet;
+        private _mu1 = missionNamespace getVariable ["aee_mobility_muSurface", -1];
+        if (_mu1 > 0.7) then {
+            diag_log text format ["[PHASE36] [PASS] dry road mu = %1", _mu1];
+            _p36Pass = _p36Pass + 1;
+        } else {
+            diag_log text format ["[PHASE36] [FAIL] dry road mu = %1 (expected > 0.7)", _mu1];
+            _p36Fail = _p36Fail + 1;
+        };
+
+        // Case 2: black ice gating — below-freezing road + rain + wetness
+        // must drop mu to the 0.1-0.15 ice floor.
+        missionNamespace setVariable ["aee_core_surfaceWetness", 0.5];
+        missionNamespace setVariable ["aee_core_precipitationPhase", "freezing_rain"];
+        missionNamespace setVariable ["aee_core_avgGroundTemp", -2];
+        [_veh, 1200, 15, false] call _fnWet;
+        private _mu2 = missionNamespace getVariable ["aee_mobility_muSurface", -1];
+        if (_mu2 <= 0.15) then {
+            diag_log text format ["[PHASE36] [PASS] black ice mu = %1 (ice floor)", _mu2];
+            _p36Pass = _p36Pass + 1;
+        } else {
+            diag_log text format ["[PHASE36] [FAIL] black ice mu = %1 (expected <= 0.15)", _mu2];
+            _p36Fail = _p36Fail + 1;
+        };
+
+        // Case 3: hydroplaning floor — wet road at high speed approaches
+        // the 0.05-0.1 hydroplane floor (V_cr 32 psi default = 56.7 mph ~
+        // 25.3 m/s; 30 m/s is past V_cr).
+        missionNamespace setVariable ["aee_core_surfaceWetness", 1];
+        missionNamespace setVariable ["aee_core_precipitationPhase", "rain"];
+        missionNamespace setVariable ["aee_core_avgGroundTemp", 10];
+        [_veh, 1200, 30, false] call _fnWet;
+        private _mu3 = missionNamespace getVariable ["aee_mobility_muSurface", -1];
+        if (_mu3 <= 0.15) then {
+            diag_log text format ["[PHASE36] [PASS] hydroplaning floor mu = %1 at 30 m/s", _mu3];
+            _p36Pass = _p36Pass + 1;
+        } else {
+            diag_log text format ["[PHASE36] [FAIL] hydroplaning mu = %1 (expected <= 0.15)", _mu3];
+            _p36Fail = _p36Fail + 1;
+        };
+
+        // Case 4: brake fade — repeated braking heats the rotors and
+        // lowers brake mu (stateful; seeded cold then several brake events).
+        [_veh, 2000, 25, true] call _fnWet;
+        private _mu4a = missionNamespace getVariable ["aee_mobility_brakeMu", -1];
+        private _temp4a = missionNamespace getVariable ["aee_mobility_brakeTempC", -1];
+        [_veh, 2000, 25, true] call _fnWet;
+        private _mu4b = missionNamespace getVariable ["aee_mobility_brakeMu", -1];
+        if (_mu4b <= _mu4a) then {
+            diag_log text format ["[PHASE36] [PASS] brake fade mu %1 -> %2 (temp %3)", _mu4a, _mu4b, _temp4a];
+            _p36Pass = _p36Pass + 1;
+        } else {
+            diag_log text format ["[PHASE36] [FAIL] brake mu rose %1 -> %2 (fade should drop it)", _mu4a, _mu4b];
+            _p36Fail = _p36Fail + 1;
+        };
+    };
+    if (_p36Fail == 0) then {
+        diag_log text format ["[PHASE36] [PASS] wet/ice traction: %1 checks passed", _p36Pass];
+    } else {
+        diag_log text format ["[PHASE36] [FAIL] wet/ice traction: %1 passed, %2 failed", _p36Pass, _p36Fail];
+    };
+
+    // Free the test vehicle.
+    deleteVehicle _veh;
 
     // -- PHASE 5: determinism -- temperature delta over 5 s must be small ----
     // PHASE11 deliberately disturbed the clock (midnight/noon skips).  The
