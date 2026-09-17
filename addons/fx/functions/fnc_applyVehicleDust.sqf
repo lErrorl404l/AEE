@@ -62,6 +62,14 @@ switch (_groundState) do {
     };
 };
 
+// ─── State-coupled physics (issue #150) ──────────────────────────────────
+// weight/volume/rubbing/bounce from the material table + AEE state:
+// air density scales drag (thin air: dust travels farther), ground state
+// sets restitution (hardpack bounces, mud absorbs, snow fluffs), wind
+// couples the advection.
+private _physics = ["dust", getPosASL _veh] call FUNC(particleState);
+_physics params ["_weight", "_volume", "_rubbing", "_bounce", "_matColour"];
+
 // ─── Create particle source attached to vehicle ─────────────────────────
 private _source = "#particlesource" createVehicleLocal getPosASL _veh;
 _source attachTo [_veh, [0, 0, 0]];
@@ -80,9 +88,9 @@ _source setParticleParams [
     [0, 0, 0],                               // position (relative to vehicle)
     [-_windX + random 0.5 - 0.25, random 0.5 - 0.25, -0.2], // moveVelocity
     0,                                       // rotationVelocity (number, rotations/s)
-    1,                                       // weight
-    0,                                       // volume
-    0.5,                                     // rubbing
+    _weight,                                 // weight (material: dust 1.0)
+    _volume,                                 // volume (drag, density-scaled)
+    _rubbing,                                // rubbing (wind coupling)
     [0.2, 0.5, 1],                           // size progression (array of numbers)
     [_startColor, _endColor],                // colour progression (array of RGBA)
     [0.5],                                   // animationPhase (array of numbers)
@@ -93,7 +101,7 @@ _source setParticleParams [
     _veh,                                    // object to attach
     0,                                       // angle (radians, optional)
     true,                                    // onSurface (boolean, optional)
-    0.5                                      // bounceOnSurface (number, optional)
+    _bounce                                  // bounceOnSurface (number, optional)
 ];
 
 // Density scales with speed (more dust at higher speeds)
