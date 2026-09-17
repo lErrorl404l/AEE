@@ -1870,6 +1870,70 @@ private _p29Pass = 0;
         diag_log text format ["[PHASE34] [FAIL] local wind field: %1 passed, %2 failed", _p34Pass, _p34Fail];
     };
 
+    // -- PHASE 35: barrel thermal expansion (#130) ---------------------------
+    // Per-unit stateful model.  The docker server cannot meaningfully wait
+    // through cooling taus, so the checks pin the STATELESS math: shot heat,
+    // POI shift from temperature, and cold-bore bias decay.
+    private _p35Pass = 0;
+    private _p35Fail = 0;
+    private _fnBarrel = missionNamespace getVariable ["aee_ballistics_fnc_calculateBarrelState", nil];
+    if (isNil "_fnBarrel") then {
+        diag_log text "[PHASE35] [FAIL] barrel state function not compiled";
+        _p35Fail = _p35Fail + 1;
+    } else {
+        private _grp = createGroup sideLogic;
+        private _unit = _grp createUnit ["B_Soldier_F", [4210, 4250, 0], [], 0, "NONE"];
+        private _unit2 = _grp createUnit ["B_Soldier_F", [4215, 4250, 0], [], 0, "NONE"];
+        private _unit3 = _grp createUnit ["B_Soldier_F", [4220, 4250, 0], [], 0, "NONE"];
+
+        // Case 1: fresh rifle barrel, 30 rounds -> ~30 C above ambient.
+        missionNamespace setVariable ["aee_core_currentTemperature", 15];
+        private _t1 = [_unit, "arifle_MX_F", true, 30] call _fnBarrel;
+        private _temp1 = missionNamespace getVariable ["aee_ballistics_barrelTempC", 0];
+        if (_temp1 > 40 && _temp1 < 50) then {
+            diag_log text format ["[PHASE35] [PASS] 30 rounds rifle: barrel = %1 C", _temp1];
+            _p35Pass = _p35Pass + 1;
+        } else {
+            diag_log text format ["[PHASE35] [FAIL] 30 rounds rifle: barrel = %1 C (expected ~45)", _temp1];
+            _p35Fail = _p35Fail + 1;
+        };
+
+        // Case 2: same ambient, hot barrel (30 rounds) shifts POI above a
+        // FRESH cold barrel on a SEPARATE unit.  Both at 15 C ambient.
+        private _poiHot = missionNamespace getVariable ["aee_ballistics_barrelPOIShiftMrad", 0];
+        [_unit2, "arifle_MX_F", true, 30] call _fnBarrel;
+        private _poiHot2 = missionNamespace getVariable ["aee_ballistics_barrelPOIShiftMrad", 0];
+        [_unit3, "arifle_MX_F", false, 0] call _fnBarrel;
+        private _poiCold = missionNamespace getVariable ["aee_ballistics_barrelPOIShiftMrad", 0];
+        if (_poiHot > 0 && _poiHot2 > _poiCold) then {
+            diag_log text format ["[PHASE35] [PASS] POI shift: hot %1 vs cold %2 mrad", _poiHot2, _poiCold];
+            _p35Pass = _p35Pass + 1;
+        } else {
+            diag_log text format ["[PHASE35] [FAIL] POI hot %1 not above cold %2", _poiHot2, _poiCold];
+            _p35Fail = _p35Fail + 1;
+        };
+
+        // Case 3: cold-bore bias only on the first shots of a COLD barrel
+        // (_unit3 was only READ in case 2, never fired — it is cold).
+        missionNamespace setVariable ["aee_core_currentTemperature", 15];
+        [_unit3, "arifle_MX_F", true, 1] call _fnBarrel;
+        private _cbFirst = missionNamespace getVariable ["aee_ballistics_barrelColdBore", 0];
+        [_unit3, "arifle_MX_F", true, 5] call _fnBarrel;
+        private _cbFifth = missionNamespace getVariable ["aee_ballistics_barrelColdBore", 0];
+        if (_cbFirst > 0 && _cbFifth == 0) then {
+            diag_log text format ["[PHASE35] [PASS] cold-bore: shot1=%1 mrad, shot6=%2", _cbFirst, _cbFifth];
+            _p35Pass = _p35Pass + 1;
+        } else {
+            diag_log text format ["[PHASE35] [FAIL] cold-bore shot1=%1 shot6=%2 (expected >0 then 0)", _cbFirst, _cbFifth];
+            _p35Fail = _p35Fail + 1;
+        };
+    };
+    if (_p35Fail == 0) then {
+        diag_log text format ["[PHASE35] [PASS] barrel thermal expansion: %1 checks passed", _p35Pass];
+    } else {
+        diag_log text format ["[PHASE35] [FAIL] barrel thermal expansion: %1 passed, %2 failed", _p35Pass, _p35Fail];
+    };
+
     // -- PHASE 5: determinism -- temperature delta over 5 s must be small ----
     // PHASE11 deliberately disturbed the clock (midnight/noon skips).  The
     // temperature model is stateless and recomputes on each 5 s env tick,
