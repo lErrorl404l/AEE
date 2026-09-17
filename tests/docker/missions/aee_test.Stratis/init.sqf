@@ -1758,6 +1758,69 @@ private _p29Pass = 0;
         diag_log text format ["[PHASE32] [FAIL] vision-driven view distance: %1 passed, %2 failed", _p32Pass, _p32Fail];
     };
 
+    // -- PHASE 33: blast overpressure channel (#132) --------------------------
+    // Kingery-Bulmash (Swisdak 1994) overpressure and Bowen (1968) injury.
+    // The SQF functions are pure maths, deterministic headless.
+    private _p33Pass = 0;
+    private _p33Fail = 0;
+    private _fnOP = missionNamespace getVariable ["aee_fx_fnc_calculateBlastOverpressure", nil];
+    private _fnInj = missionNamespace getVariable ["aee_fx_fnc_calculateBlastInjury", nil];
+    if (isNil "_fnOP" || isNil "_fnInj") then {
+        diag_log text "[PHASE33] [FAIL] blast functions not compiled";
+        _p33Fail = _p33Fail + 1;
+    } else {
+        // Case 1: 1 kg TNT at Z=1 -> 1353.7 kPa (KB anchor).
+        private _r1 = [1, 1] call _fnOP;
+        _r1 params ["_p1", "_td1"];
+        if (abs (_p1 - 1353.7) / 1353.7 < 0.05) then {
+            diag_log text format ["[PHASE33] [PASS] KB Z=1: %1 kPa (anchor 1353.7)", round _p1];
+            _p33Pass = _p33Pass + 1;
+        } else {
+            diag_log text format ["[PHASE33] [FAIL] KB Z=1: %1 kPa (anchor 1353.7)", round _p1];
+            _p33Fail = _p33Fail + 1;
+        };
+
+        // Case 2: 7 kg at 3.73 m (M107 lung-99 KB distance) -> ~300 kPa.
+        private _r2 = [7, 3.73] call _fnOP;
+        _r2 params ["_p2"];
+        if (_p2 > 250 && _p2 < 350) then {
+            diag_log text format ["[PHASE33] [PASS] M107 lung-99 distance: %1 kPa (300 band)", round _p2];
+            _p33Pass = _p33Pass + 1;
+        } else {
+            diag_log text format ["[PHASE33] [FAIL] M107 lung-99: %1 kPa (expected 250-350)", round _p2];
+            _p33Fail = _p33Fail + 1;
+        };
+
+        // Case 3: Bowen injury at that pressure -> lung-99 ~1.0, eardrum ~1.0.
+        private _r3 = [300, 10] call _fnInj;
+        _r3 params ["_ear", "_lt", "_l1", "_l50", "_l99", "_thr"];
+        if (_l99 > 0.8 && _ear > 0.8) then {
+            diag_log text format ["[PHASE33] [PASS] 300 kPa 10 ms: lung99=%1 ear=%2", _l99, _ear];
+            _p33Pass = _p33Pass + 1;
+        } else {
+            diag_log text format ["[PHASE33] [FAIL] 300 kPa 10 ms: lung99=%1 ear=%2 (expected both >0.8)", _l99, _ear];
+            _p33Fail = _p33Fail + 1;
+        };
+
+        // Case 4: far field (Z=10, ~15 kPa) -> no serious injury.
+        private _r4 = [1, 10] call _fnOP;
+        _r4 params ["_p4"];
+        private _r5 = [_p4, 5] call _fnInj;
+        _r5 params ["_ear5", "_lt5", "_l15", "_l505", "_l995", "_thr5"];
+        if (_l995 < 0.1 && _p4 < 25) then {
+            diag_log text format ["[PHASE33] [PASS] far field: %1 kPa lung99=%2 (no injury)", round _p4, _l995];
+            _p33Pass = _p33Pass + 1;
+        } else {
+            diag_log text format ["[PHASE33] [FAIL] far field: %1 kPa lung99=%2", round _p4, _l995];
+            _p33Fail = _p33Fail + 1;
+        };
+    };
+    if (_p33Fail == 0) then {
+        diag_log text format ["[PHASE33] [PASS] blast overpressure channel: %1 checks passed", _p33Pass];
+    } else {
+        diag_log text format ["[PHASE33] [FAIL] blast overpressure channel: %1 passed, %2 failed", _p33Pass, _p33Fail];
+    };
+
     // -- PHASE 5: determinism -- temperature delta over 5 s must be small ----
     // PHASE11 deliberately disturbed the clock (midnight/noon skips).  The
     // temperature model is stateless and recomputes on each 5 s env tick,

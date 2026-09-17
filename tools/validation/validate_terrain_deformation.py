@@ -68,21 +68,45 @@ def ejecta_rim_height(crater_depth: float, rim_ratio: float = 0.1) -> float:
     return rim_ratio * crater_depth
 
 
+def _swisdak_log_pressure(z):
+    """Swisdak (1994) simplified Kingery-Bulmash incident pressure fit.
+
+    Returns the log-polynomial value L such that P_kPa = exp(L), with the
+    polynomial in ln(Z).  Mirrors addons/fx/functions/fnc_calculateBlastOverpressure.sqf
+    and the kingery-bulmash pip package (_KB helper: exp(sum(A_i ln(Z)^i))).
+    """
+    if z < 0.2:
+        # Very close: cap at the practical near-field ceiling (~1 MPa).
+        return math.log(1000.0)
+    if z < 2.9:
+        a, b, c, d, e = 7.2106, -2.1069, -0.3229, 0.1117, 0.0685
+        lnz = math.log(z)
+        return a + b * lnz + c * lnz**2 + d * lnz**3 + e * lnz**4
+    if z < 23.8:
+        a, b, c, d, e = 7.5938, -3.0523, 0.40977, 0.0261, -0.01267
+        lnz = math.log(z)
+        return a + b * lnz + c * lnz**2 + d * lnz**3 + e * lnz**4
+    if z < 198.5:
+        a, b = 6.0536, -1.4066
+        lnz = math.log(z)
+        return a + b * lnz
+    return math.log(20.0)  # far-field floor (~20 kPa)
+
+
 def blast_wave_overpressure(mass_tnt_kg: float, distance_m: float) -> float:
     """
-    Kingery-Bulmash overpressure estimation.
-    Simplified: P = 0.84 * (W^(1/3) / Z)^3
-    where Z = distance / W^(1/3)
+    Kingery-Bulmash incident overpressure (Swisdak 1994 simplified fits).
 
-    Source: Kingery & Bulmash (1964), "Airblast Parameters"
+    P_so in Pa, from the scaled distance Z = R / W^(1/3).  The fit returns
+    kPa via exp(polynomial-in-ln-Z); this wrapper converts to Pa.  The
+    original cubic approximation over-stated pressure at range by roughly
+    an order of magnitude and scaled purely inverse-cube; the KB fits
+    reproduce the published curve to within a few percent.
     """
     if distance_m <= 0:
         return float("inf")
-    cube_root_mass = mass_tnt_kg ** (1.0 / 3.0)
-    z = distance_m / cube_root_mass
-    if z < 0.1:
-        return 1e6  # Very close, cap at 1 MPa
-    return 0.84 * ((cube_root_mass / z) ** 3) * 1e6  # Pa
+    z = distance_m / (mass_tnt_kg ** (1.0 / 3.0))
+    return math.exp(_swisdak_log_pressure(z)) * 1000.0
 
 
 def test_crater_radius():
@@ -121,27 +145,40 @@ def test_crater_depth():
 
 
 def test_blast_overpressure():
-    """Test overpressure decreases with distance."""
-    mass = 100.0  # 100 kg TNT
-    p1 = blast_wave_overpressure(mass, 10.0)
-    p2 = blast_wave_overpressure(mass, 50.0)
-    p3 = blast_wave_overpressure(mass, 100.0)
+    """Test overpressure follows the Kingery-Bulmash curve.
 
-    if p1 <= p2 or p2 <= p3:
+    Anchors (Swisdak 1994 / the issue #132 research, in kPa at the scaled
+    distance Z = R/W^(1/3)): Z=1 -> 1353.7, Z=2 -> 283.7, Z=5 -> 43.2,
+    Z=10 -> 14.9 kPa.  The previous cubic approximation failed these by a
+    wide margin (it treated 1 kg at 1 m as 0.84 MPa and scaled inverse
+    cube, which is not the KB falloff).
+    """
+    anchors = [
+        (1.0, 1353.7e3),
+        (2.0, 283.7e3),
+        (5.0, 43.2e3),
+        (10.0, 14.9e3),
+    ]
+    all_pass = True
+    for z, expected_pa in anchors:
+        # Z=z with 1 kg TNT: distance = z * 1^(1/3) = z metres.
+        result = blast_wave_overpressure(1.0, z)
+        # KB fits are accurate to ~5%; allow 15% for the simplified form.
+        if abs(result - expected_pa) / expected_pa > 0.15:
+            print(
+                f"FAIL: Z={z} -> {result / 1e3:.1f} kPa, expected {expected_pa / 1e3:.1f} kPa"
+            )
+            all_pass = False
+
+    # Monotonic falloff at fixed mass.
+    p1 = blast_wave_overpressure(100.0, 10.0)
+    p2 = blast_wave_overpressure(100.0, 50.0)
+    p3 = blast_wave_overpressure(100.0, 100.0)
+    if not (p1 > p2 > p3):
         print(f"FAIL: overpressure not decreasing: {p1:.0f} > {p2:.0f} > {p3:.0f}")
-        return False
+        all_pass = False
 
-    # Check inverse cube law (approximately)
-    ratio_1_2 = p1 / p2
-    expected_ratio = (50.0 / 10.0) ** 3  # 125
-    error = abs(ratio_1_2 - expected_ratio) / expected_ratio * 100
-    if error > 10:
-        print(
-            f"FAIL: overpressure ratio {ratio_1_2:.1f}, expected ~{expected_ratio:.1f} ({error:.1f}% error)"
-        )
-        return False
-
-    return True
+    return all_pass
 
 
 # ============================================================================
