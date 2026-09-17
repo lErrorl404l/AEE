@@ -172,3 +172,27 @@
     true,
     {}
 ] call CBA_fnc_addSetting;
+
+// ── Avalanche slab model (#134) ────────────────────────────────────────────
+// McClung & Schaerer shear-stress parameters.  Slab density and depth
+// define tau = rho·g·h·sin(psi); the weak-layer strength is scaled from
+// the snowpack quality.
+[
+    QGVAR(slabDensity),
+    "SLIDER",
+    [LLSTRING(slabDensity_Name), LLSTRING(slabDensity_Description)],
+    ["AEE Environmental", "Snow"],
+    [100, 400, 300, 0],
+    true,
+    {}
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(slabDepth),
+    "SLIDER",
+    [LLSTRING(slabDepth_Name), LLSTRING(slabDepth_Description)],
+    ["AEE Environmental", "Snow"],
+    [0.1, 2, 1.0, 1],
+    true,
+    {}
+] call CBA_fnc_addSetting;

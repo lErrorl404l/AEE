@@ -129,5 +129,21 @@
             <Original>Surface Wetting Rate</Original>
             <English>Surface Wetting Rate</English>
         </Key>
+        <Key ID="STR_AEE_Environmental_slabDensity_Description">
+            <Original>Snow slab density in kg/m3 for the McClung shear-stress model</Original>
+            <English>Snow slab density in kg/m3 for the McClung shear-stress model</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_slabDensity_Name">
+            <Original>Slab Density</Original>
+            <English>Slab Density</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_slabDepth_Description">
+            <Original>Snow slab depth in metres for the McClung shear-stress model</Original>
+            <English>Snow slab depth in metres for the McClung shear-stress model</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_slabDepth_Name">
+            <Original>Slab Depth</Original>
+            <English>Slab Depth</English>
+        </Key>
     </Package>
 </Project>
