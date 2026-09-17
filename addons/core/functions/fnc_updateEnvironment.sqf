@@ -211,6 +211,10 @@ if (GVAR(atmosphericEventsEnabled)) then {
     [] call EFUNC(atmos,calculateMicroburst);
     [] call EFUNC(atmos,calculateTurbulence);
     [_posASL] call EFUNC(environmental,calculateAvalancheRisk);
+    // Seasonal concealment: foliage/crop/snow -> concealment factor,
+    // published for the future camo (#119) and AI-detection (#74) links.
+    [_posASL, "STAND"] call EFUNC(environmental,calculateConcealment);
+    [_posASL] call EFUNC(environmental,calculateIceLoad);
     [] call EFUNC(atmos,calculateAirframeIcing);
     [] call EFUNC(optics,calculateAtmosphericSeeing);
 
