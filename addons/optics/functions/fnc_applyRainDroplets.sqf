@@ -111,7 +111,47 @@ if (isNull _src) then {
 private _eyeState = [_player] call FUNC(getEyeState);
 private _eye = _eyeState select 0;
 private _camDir = _eyeState select 1;
+private _eyeVel = _eyeState select 3;
 _src setPosASL (_eye vectorAdd (_camDir vectorMultiply 0.1));
+
+// ─── Eye-velocity matching (issue #152) ────────────────────────────────────
+// A droplet ON the lens is stationary in EYE space: its world velocity
+// must EQUAL the eye's velocity (co-move), or any head/camera movement
+// smears it off the lens within its 0.3 s lifetime (the visible flicker
+// the players reported).  Concrete case: strafe sideways at 2 m/s with
+// eyeVel=(2,0,0); a glued drop needs world velocity (2,0,0) to stay on
+// the lens — zero velocity leaves it behind, -eyeVel sends it the wrong
+// way (3x the drift).  setParticleParams is the only way to set
+// moveVelocity (no per-tick velocity command), so re-apply the params
+// each tick with moveVelocity = eyeVel.  Fresh drops spawn already glued
+// to the eye; old drops (max 0.3 s) age out naturally.
+_src setParticleParams [
+    ["\A3\data_f\ParticleEffects\Universal\Refract", 1, 0, 1],
+    "",                                       // animation
+    "Billboard",                              // type: faces camera
+    1,                                        // timer period (s)
+    0.3,                                      // lifetime (s)
+    [0, 0, 0],                                // pos: relative to emitter
+    _eyeVel,                                  // moveVelocity: co-move with eye
+    1,                                        // rotation velocity
+    1,                                        // weight
+    0,                                        // volume
+    0,                                        // rubbing: no wind (on lens)
+    [0.05, 0.08],                             // size: 5-8 cm
+    missionNamespace getVariable [QGVAR(rainDropColor),
+        if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
+            [[1, 0, 1, 1], [1, 0, 1, 0.8]]
+        } else {
+            [[1, 1, 1, 1], [1, 1, 1, 0.8]]
+        }
+    ],
+    [0],                                      // anim phase
+    0,                                        // random dir
+    0,
+    "",                                       // onTimer
+    "",                                       // beforeDestroy
+    objNull                                   // object: none (world emitter)
+];
 
 // Drop interval scales with rain: heavy rain = ~0.1 s, light = ~0.5 s.
 private _interval = 0.5 / (_rain + 0.2);
