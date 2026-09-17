@@ -6,4 +6,5 @@ PREP(calculateRiverWaterLevel);
 PREP(calculateRouteDegradation);
 PREP(calculateSoilBearingStrength);
 PREP(calculateTraction);
+PREP(calculateWetTraction);
 PREP(updateGroundState);

@@ -54,6 +54,15 @@ if (_wheelSpeed > 0.1) then {
 private _k = 10;
 private _slipFactor = 1 - exp(-_k * _slip);
 
+// Wet/ice continuum (issue #133): hydroplaning, black ice, brake fade
+// reduce the surface friction below the dry value.  Per-vehicle, uses
+// speed + mass + braking state.
+[_veh, getMass _veh, _groundSpeed, false] call FUNC(calculateWetTraction);
+private _wetMu = missionNamespace getVariable [QGVAR(muSurface), 1.0];
+if !(_wetMu isEqualType 0) then { _wetMu = 1.0; };
+_wheeled = _wheeled * _wetMu;
+_tracked = _tracked * _wetMu;
+
 _wheeled = _wheeled * _slipFactor;
 _tracked = _tracked * _slipFactor;
 
