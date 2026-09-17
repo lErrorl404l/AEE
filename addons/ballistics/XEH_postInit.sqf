@@ -33,6 +33,9 @@ ADDON = false;
     // Track + read the ammo temperature, then feed it to the correction.
     private _ammoTemp = [_unit, _weapon, _energyJ] call FUNC(calculateAmmoTemperature);
 
+    // Barrel thermal state: temperature + POI shift (issue #130).
+    [_unit, _weapon, true] call FUNC(calculateBarrelState);
+
     // ACE3 advanced ballistics owns the correction; write our tracked
     // temperature into ACE3's per-weapon variable so its table uses AEE's
     // live value (Option C).  Otherwise feed our own correction.
