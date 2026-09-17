@@ -173,6 +173,10 @@ follow the variable names as written in the SQF source.
 | `aee_environmental_fireArea_m2` | environmental | Fire area in m2 |
 | `aee_core_currentFloodRisk` | environmental | Flash flood risk 0..1 |
 | `aee_core_currentAvalancheRisk` | environmental | Avalanche risk 0..1 |
+| `aee_environmental_currentAvalancheStability` | environmental | McClung stability index S (strength/shear stress) |
+| `aee_environmental_avalancheBurialSurvival` | environmental | Burial survival curve [[0,0.97],[15,0.93],[35,0.30],[90,0.03]] |
+| `aee_environmental_iceThicknessCm` | environmental | Stefan-grown ice thickness in cm |
+| `aee_environmental_iceSafeKg` | environmental | Gold safe load P = 3.5·h² in kg |
 | `aee_core_snowDepth_m` | environmental | Snow depth in metres |
 | `aee_core_frozenDepth_m` | environmental | Frozen depth in metres |
 | `aee_core_thawDepth_m` | environmental | Thaw depth in metres |
