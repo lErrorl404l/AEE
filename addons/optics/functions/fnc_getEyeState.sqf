@@ -9,6 +9,16 @@
  *   forward - the camera look vector (unit length)
  *   up      - the camera up vector (parallax/roll correct)
  *
+ * Plus, for effects whose particles must stay glued to the eye (rain
+ * droplets on the lens), the eye VELOCITY:
+ *
+ *   eyeVel  - eye displacement between frames / dt, m/s (world space)
+ *
+ * A droplet on a lens is stationary in EYE space: its world velocity must
+ * cancel the eye's motion.  Computing eyeVel here keeps it consistent for
+ * every consumer (one source of truth), instead of each effect deriving
+ * its own velocity from stale positions.
+ *
  * Previously each system computed these independently - duplicated code
  * that drifted (the rain-droplet bug: attaching to the static HEAD memory
  * point instead of the eye was one such drift).  This function is the
@@ -30,17 +40,32 @@
 params ["_unit"];
 
 if (isNil "_unit") then { _unit = call CBA_fnc_currentUnit; };
-if (isNull _unit) exitWith { [getPosASLVisual _unit, [0, 0, 1], [0, 1, 0]] };
+if (isNull _unit) exitWith { [getPosASLVisual _unit, [0, 0, 1], [0, 1, 0], [0, 0, 0]] };
 
 private _frame = diag_frameNo;
 private _cache = missionNamespace getVariable [QGVAR(eyeState), []];
-// Cache layout is [_frame, [_eye, _fwd, _up]] = 2 elements.  Guard on 2.
+// Cache layout is [_frame, [_eye, _fwd, _up, _eyeVel]] = 2 elements.
+// Guard on 2 and matching frame.
 if (count _cache >= 2 && {_cache select 0 == _frame}) exitWith {
     _cache select 1
 };
 
 private _eye = eyePos _unit;
 private _eyeDir = eyeDirection _unit;
+
+// Eye velocity: displacement from the PREVIOUS frame's eye position over
+// the frame time, world-space m/s.  The first-ever call has no baseline
+// (velocity 0).  Stored separately so a slow caller (PFH) still gets a
+// stable velocity without racing the per-frame cache.
+private _eyeVel = [0, 0, 0];
+private _prevEye = missionNamespace getVariable [QGVAR(eyeStatePrev), nil];
+private _prevTime = missionNamespace getVariable [QGVAR(eyeStatePrevTime), diag_tickTime];
+if (!isNil "_prevEye") then {
+    private _dt = diag_tickTime - _prevTime;
+    if (_dt > 0.01) then {
+        _eyeVel = (_eye vectorDiff _prevEye) vectorMultiply (1 / _dt);
+    };
+};
 // eyeDirection's return shape is ambiguous across engine states: it is
 // documented as the eye direction vector, and empirically can come back
 // either as a flat 3-vector [x,y,z] (the eye forward) or as a 2-element
@@ -90,5 +115,9 @@ if (_inTurret) then {
 if !(_fwd isEqualType [] && {count _fwd == 3}) then { _fwd = vectorDir _unit; };
 if !(_up isEqualType [] && {count _up == 3}) then { _up = vectorUp _unit; };
 
-missionNamespace setVariable [QGVAR(eyeState), [_frame, [_eye, _fwd, _up]]];
-[_eye, _fwd, _up]
+// Store this frame's eye + time as the baseline for the NEXT frame's
+// velocity, and the 4-element state in the per-frame cache.
+missionNamespace setVariable [QGVAR(eyeStatePrev), _eye];
+missionNamespace setVariable [QGVAR(eyeStatePrevTime), diag_tickTime];
+missionNamespace setVariable [QGVAR(eyeState), [_frame, [_eye, _fwd, _up, _eyeVel]]];
+[_eye, _fwd, _up, _eyeVel]

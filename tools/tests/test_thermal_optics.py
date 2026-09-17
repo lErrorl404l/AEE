@@ -521,6 +521,45 @@ def eye_state_position(eye, cam_dir, offset=0.1):
     )
 
 
+def eye_velocity(prev_eye, now_eye, dt):
+    """Mirror of the eye-velocity computation in fnc_getEyeState (#152).
+
+    World-space m/s: displacement over the frame time.
+    """
+    return (
+        (now_eye[0] - prev_eye[0]) / dt,
+        (now_eye[1] - prev_eye[1]) / dt,
+        (now_eye[2] - prev_eye[2]) / dt,
+    )
+
+
+def droplet_world_velocity(eye_vel):
+    """Mirror of the rain-droplet moveVelocity: co-moves with the eye.
+
+    A drop on the lens is stationary in EYE space, so its world velocity
+    EQUALS the eye's velocity (issue #152).  The spec's -eyeVel was a
+    sign error: -eyeVel sends the drop AWAY from the eye (3x drift).
+    """
+    return (eye_vel[0], eye_vel[1], eye_vel[2])
+
+
+def droplet_eye_relative(eye, cam_dir, offset, eye_vel, dt):
+    """Where a drop sits relative to the eye after dt, WITH the fix.
+
+    The drop spawns at eye + camDir*offset with world velocity -eyeVel.
+    After dt the eye has moved to eye + eyeVel*dt; the drop has moved to
+    spawn + (-eyeVel)*dt.  Because both moved by the same amount, the
+    eye-relative offset stays EXACTLY at the spawn offset: the drop is
+    glued to the eye position (linear-translation perfect).
+    """
+    spawn = eye_state_position(eye, cam_dir, offset)
+    drop_now = tuple(
+        spawn[i] + droplet_world_velocity(eye_vel)[i] * dt for i in range(3)
+    )
+    eye_now = tuple(eye[i] + eye_vel[i] * dt for i in range(3))
+    return tuple(drop_now[i] - eye_now[i] for i in range(3))
+
+
 def weather_ema(prev, raw, dt, tau):
     """Mirror of the per-variable weather EMA (fnc_getSmoothedWeather).
 
@@ -1880,6 +1919,91 @@ class TestEyeState(unittest.TestCase):
         self.assertAlmostEqual(p[1], 5.0, places=4)
 
 
+class TestRainDropletEyeVelocity(unittest.TestCase):
+    """Issue #152: droplets must cancel eye velocity to stay on the lens.
+
+    The particle emitter follows the eye each tick, but each spawned drop
+    has zero WORLD velocity and stays at its absolute spawn point — any
+    head/camera motion smears it off the lens within its 0.3 s lifetime.
+    The fix: moveVelocity = -eyeVel keeps the drop stationary in eye space.
+    """
+
+    def test_eye_velocity_from_displacement(self):
+        # 5 deg head turn over 0.1 s at 1.7 m eye height moves the eye
+        # ~0.15 m.  Velocity = displacement / dt.
+        prev = (0.0, 0.0, 1.7)
+        now = (0.15, 0.0, 1.55)
+        v = eye_velocity(prev, now, 0.1)
+        self.assertAlmostEqual(v[0], 1.5, places=6)  # m/s
+        self.assertAlmostEqual(v[1], 0.0, places=6)
+        self.assertAlmostEqual(v[2], -1.5, places=6)
+
+    def test_droplet_velocity_matches_eye(self):
+        # A drop on the lens has world velocity = +eyeVel (co-moves).
+        v = eye_velocity((0, 0, 1.7), (0.15, 0, 1.55), 0.1)
+        drop_v = droplet_world_velocity(v)
+        self.assertAlmostEqual(drop_v[0], 1.5, places=6)
+        self.assertAlmostEqual(drop_v[2], -1.5, places=6)
+
+    def test_drop_stays_glued_during_head_turn(self):
+        # The bug: with ZERO drop velocity, a 5 deg turn over 0.1 s
+        # displaces the drop 0.15 m relative to the eye (off the lens).
+        # With -eyeVel it stays within 1 cm of its eye-relative point.
+        import math
+
+        eye = (0.0, 0.0, 1.7)
+        cam_dir = (1.0, 0.0, 0.0)  # looking straight ahead
+        offset = 0.1
+        dt = 0.1
+        # 5 deg head turn: eye swings ~0.15 m sideways, slight drop.
+        angle = math.radians(5)
+        eye_now = (math.sin(angle) * 1.7, 0.0, 1.7 - (1.7 * (1 - math.cos(angle))))
+        v = eye_velocity(eye, eye_now, dt)
+
+        fixed = droplet_eye_relative(eye, cam_dir, offset, v, dt)
+        # Without the fix (drop velocity 0), the drop lags the eye by
+        # eyeVel*dt = the full 0.15 m displacement.
+        spawn = eye_state_position(eye, cam_dir, offset)
+        eye_now_pos = tuple(eye[i] + v[i] * dt for i in range(3))
+        lag = tuple(spawn[i] - eye_now_pos[i] for i in range(3))
+        # Without the fix the drop lags by the eye displacement minus the
+        # spawn offset: ~4.8 cm at a 5 deg turn — far outside a lens.
+        self.assertGreater(abs(lag[0]), 0.04, "without fix the drop should lag")
+        # With the fix: the eye-relative offset is unchanged.
+        for i in range(3):
+            self.assertAlmostEqual(fixed[i], offset * cam_dir[i], places=3)
+
+    def test_head_still_drop_parallax(self):
+        # Head still (zero eye velocity): the drop stays exactly at spawn.
+        v = (0.0, 0.0, 0.0)
+        fixed = droplet_eye_relative((0, 0, 1.7), (1, 0, 0), 0.1, v, 0.1)
+        self.assertAlmostEqual(fixed[0], 0.1, places=6)
+        self.assertAlmostEqual(fixed[2], 0.0, places=6)
+
+    def test_sqf_has_velocity_cancel(self):
+        # Source drift-lock: the fix must be present in the SQF.
+        from pathlib import Path
+
+        text = Path("addons/optics/functions/fnc_applyRainDroplets.sqf").read_text(
+            encoding="utf-8"
+        )
+        # moveVelocity must be eyeVel (co-move), not -eyeVel (a sign error
+        # that would send drops AWAY from the eye) and not a static 0.
+        self.assertIn("co-move with eye", text)
+        self.assertIn("_eyeVel,", text)
+        self.assertNotIn("vectorMultiply -1", text)
+
+        eye_state = Path("addons/optics/functions/fnc_getEyeState.sqf").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("eyeStatePrev", eye_state)
+
+        post = Path("addons/optics/XEH_postInit.sqf").read_text(encoding="utf-8")
+        # The duplicate droplet call in the thermal branch must be gone:
+        # exactly ONE tick call (the unconditional one before the branches).
+        self.assertEqual(post.count('["TICK"] call FUNC(applyRainDroplets)'), 1)
+
+
 class TestThermalCrossover(unittest.TestCase):
     """Diurnal thermal crossover - isothermal condition at dawn/dusk."""
 
@@ -2626,7 +2750,9 @@ class TestSQFSync(unittest.TestCase):
                 "turretUnit [0]) isEqualTo _unit",
                 "count _eyeDir == 3",
                 "count _eyeDir == 2",
-                "missionNamespace setVariable [QGVAR(eyeState), [_frame, [_eye, _fwd, _up]]]",
+                "missionNamespace setVariable [QGVAR(eyeState), [_frame, [_eye, _fwd, _up, _eyeVel]]]",
+                "eyeStatePrev",
+                "eyeStatePrevTime",
             ],
             "shared eye-state foundation (state-aware direction)",
         )
