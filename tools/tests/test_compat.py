@@ -352,5 +352,98 @@ class TestCompatRealWeather(unittest.TestCase):
         self.assertTrue(realweather_validate(60, 100, 1085, 1))
 
 
+class TestThresholdGatePattern(unittest.TestCase):
+    """Issue #154 pattern 1: no getVariable-fallback-0 in medical gates.
+
+    The #123 burn defect was one gate with a `0` fallback.  The audit
+    found the SAME pattern in all four compat_ace3 gates (heart rate,
+    cardiac arrest) — uninitialised settings made "any value fires".
+    These drift-locks pin the fix: thresholds are resolved once with
+    real defaults, never read inline with a 0 fallback.
+    """
+
+    def test_no_fallback_zero_gates(self):
+        from pathlib import Path
+
+        text = Path("addons/compat_ace3/functions/fnc_integrateMedical.sqf").read_text(
+            encoding="utf-8"
+        )
+        self.assertNotIn("medicalWBGTThreshold), 0]", text)
+        self.assertNotIn("medicalRiskThreshold), 0]", text)
+        self.assertNotIn("medicalHeatStrokeWBGT), 0]", text)
+        self.assertNotIn("medicalBurnTemp), 0]", text)
+
+    def test_resolved_thresholds_present(self):
+        from pathlib import Path
+
+        text = Path("addons/compat_ace3/functions/fnc_integrateMedical.sqf").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("medicalWBGTThreshold), 23]", text)
+        self.assertIn("medicalRiskThreshold), 0.3]", text)
+        self.assertIn("medicalHeatStrokeWBGT), 32]", text)
+        self.assertIn("medicalBurnTemp), 25]", text)
+        # The gates must use the resolved locals.
+        self.assertIn("_wbgt > _wbgtThreshold", text)
+        self.assertIn("_risk > _riskThreshold", text)
+        self.assertIn("_wbgt > _heatStrokeWBGT", text)
+
+    def test_uninitialised_settings_do_not_fire(self):
+        # The mirror default 23/0.3/32: WBGT 10, risk 0.1 (below all
+        # thresholds) must produce zero vitals even though the values are
+        # above a hypothetical 0 fallback.
+        hr, flow, pain, cardiac, burn = ace3_medical_map(10, 0.1, 20)
+        self.assertEqual((hr, flow, pain), (0, 0, 0))
+        self.assertFalse(cardiac)
+        self.assertEqual(burn, 0.0)
+
+
+class TestWorldLatitudePattern(unittest.TestCase):
+    """Issue #154 pattern 3: one latitude source, hemisphere-preserved.
+
+    The mod had 3-4 inconsistent latitude reads (solar used abs, space
+    weather raw, Coriolis a map-Y guess).  These drift-locks pin the
+    shared getWorldLatitude source and its consumers.
+    """
+
+    def test_shared_source_exists(self):
+        from pathlib import Path
+
+        text = Path("addons/core/functions/fnc_getWorldLatitude.sqf").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("CfgWorlds", text)
+        self.assertIn("[_signed, abs _signed]", text)
+
+    def test_coriolis_uses_shared_source(self):
+        from pathlib import Path
+
+        text = Path(
+            "addons/ballistics/functions/fnc_calculateCoriolisDeflection.sqf"
+        ).read_text(encoding="utf-8")
+        self.assertIn("getWorldLatitude", text)
+        # The map-Y equirectangular guess must be gone.
+        self.assertNotIn("/ 100000 * 90", text)
+
+    def test_magnitude_consumers_use_shared_source(self):
+        from pathlib import Path
+
+        solar = Path("addons/core/functions/fnc_calculateSolarRadiation.sqf").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("getWorldLatitude", solar)
+        self.assertIn("select 1", solar)  # magnitude
+
+        biome = Path("addons/environmental/functions/fnc_getBiome.sqf").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("getWorldLatitude", biome)
+
+        space = Path(
+            "addons/environmental/functions/fnc_calculateSpaceWeather.sqf"
+        ).read_text(encoding="utf-8")
+        self.assertIn("getWorldLatitude", space)
+
+
 if __name__ == "__main__":
     unittest.main()
