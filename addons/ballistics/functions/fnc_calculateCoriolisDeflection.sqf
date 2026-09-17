@@ -28,15 +28,14 @@ params [
     ["_bulletTime", 1.0,    [0]]
 ];
 
-// ─── Simple latitude from map Y ───────────────────────────────────────────
-// Defensive: a scalar (bad caller) would make `select 1` a zero-divisor
-// crash.  Guard the type so the function degrades to 0 deflection instead.
+// ─── World latitude (shared source, issue #154 pattern 3) ────────────────
+// Single source of truth from CfgWorlds.  The signed value carries the
+// hemisphere (deflection direction flips across the equator); the old
+// map-Y equirectangular guess ignored CfgWorlds latitude entirely and
+// could differ from the solar model by tens of degrees on custom maps.
 if (!(_posASL isEqualType [])) then { _posASL = [0, 0, 0]; };
 if ((count _posASL) < 2) then { _posASL = [0, 0, 0]; };
-private _y   = _posASL select 1;
-private _ws  = worldSize;
-private _lat = ((_ws / 2) - _y) / 100000 * 90;   // rough equirectangular
-_lat = _lat max -90 min 90;
+private _lat = ([] call EFUNC(core,getWorldLatitude)) select 0;  // signed
 
 // ─── Coriolis deflection ──────────────────────────────────────────────────
 // δ = 0.0000729 × sin(lat) × range × bulletTime

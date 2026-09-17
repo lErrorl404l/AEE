@@ -35,23 +35,44 @@ private _temp = missionNamespace getVariable ["aee_core_currentTemperature", 15]
 private _wbgt = missionNamespace getVariable ["aee_core_currentWBGT", 15];
 private _risk = missionNamespace getVariable ["aee_physiology_dehydrationRisk", 0];
 
+// ─── Resolved thresholds (issue #154, pattern 1) ───────────────────────────
+// The CBA settings can be uninitialised at the first tick.  A fallback of
+// 0 turns every gate into "any value above 0 fires" — the #123 burn defect.
+// Resolve each threshold ONCE with its real default (the CBA default), so
+// every gate below uses a sane value, never 0.
+private _wbgtThreshold = missionNamespace getVariable [QEGVAR(compat_ace3,medicalWBGTThreshold), 23];
+private _riskThreshold = missionNamespace getVariable [QEGVAR(compat_ace3,medicalRiskThreshold), 0.3];
+private _heatStrokeWBGT = missionNamespace getVariable [QEGVAR(compat_ace3,medicalHeatStrokeWBGT), 32];
+private _burnTemp = missionNamespace getVariable [QEGVAR(compat_ace3,medicalBurnTemp), 25];
+if !(_wbgtThreshold isEqualType 0) then { _wbgtThreshold = 23; };
+if !(_riskThreshold isEqualType 0) then { _riskThreshold = 0.3; };
+if !(_heatStrokeWBGT isEqualType 0) then { _heatStrokeWBGT = 32; };
+if !(_burnTemp isEqualType 0) then { _burnTemp = 25; };
+
 // ─── Heat stress vitals (WBGT → heart rate / flow) ─────────────────────────
 private _hr    = 0;
 private _flow  = 0;
 private _pain  = 0;
 
-if ((_wbgt > (missionNamespace getVariable [QEGVAR(compat_ace3,medicalWBGTThreshold), 0])) || (_risk > (missionNamespace getVariable [QEGVAR(compat_ace3,medicalRiskThreshold), 0]))) then {
-    // ISO 7243 bands — heat strain raises heart rate, lowers peripheral flow
+if ((_wbgt > _wbgtThreshold) || (_risk > _riskThreshold)) then {
+    // ISO 7243 bands — heat strain raises heart rate, lowers peripheral flow.
+    // Exclusive cascade: the strongest matching band wins.  A sequential
+    // pair of ifs here let the extreme-caution band OVERWRITE the danger
+    // band (WBGT 28-32 silently produced the 23-28 values) — the danger
+    // band was unreachable.  Fixed with if/elseif.
     if (_wbgt > 32) then {
         _hr = 30; _flow = -20; _pain = 0.3;              // very dangerous
     } else {
-        if (_wbgt > 28) then { _hr = 20; _flow = -15; };  // danger
-        if ((_wbgt > (missionNamespace getVariable [QEGVAR(compat_ace3,medicalWBGTThreshold), 0]))) then { _hr = 10; _flow = -10; };  // extreme caution
+        if (_wbgt > 28) then {
+            _hr = 20; _flow = -15;                       // danger
+        } else {
+            if (_wbgt > _wbgtThreshold) then { _hr = 10; _flow = -10; };  // extreme caution
+        };
     };
 
     // Dehydration compounds flow loss (reduced blood volume)
     if (_risk > 0.7) then { _flow = _flow - 15; _pain = _pain max 0.2; };
-    if ((_risk > (missionNamespace getVariable [QEGVAR(compat_ace3,medicalRiskThreshold), 0]))) then { _flow = _flow - 8; };
+    if (_risk > _riskThreshold) then { _flow = _flow - 8; };
 
     [_unit, "AEE_heatStress", 120, 600, _hr, _pain, _flow, 1]
         call ace_medical_status_fnc_addMedicationAdjustment;
@@ -62,14 +83,14 @@ if ((_wbgt > (missionNamespace getVariable [QEGVAR(compat_ace3,medicalWBGTThresh
 };
 
 // ─── Heat stroke (cardiac arrest) at extreme WBGT + critical dehydration ──
-if ((_wbgt > (missionNamespace getVariable [QEGVAR(compat_ace3,medicalHeatStrokeWBGT), 0])) && _risk > 0.8) then {
+if ((_wbgt > _heatStrokeWBGT) && _risk > 0.8) then {
     [_unit, true] call ace_medical_status_fnc_setCardiacArrestState;
 } else {
     if (missionNamespace getVariable [QGVAR(heatStrokeActive), false]) then {
         [_unit, false] call ace_medical_status_fnc_setCardiacArrestState;
     };
 };
-missionNamespace setVariable [QGVAR(heatStrokeActive), ((_wbgt > (missionNamespace getVariable [QEGVAR(compat_ace3,medicalHeatStrokeWBGT), 0])) && _risk > 0.8)];
+missionNamespace setVariable [QGVAR(heatStrokeActive), ((_wbgt > _heatStrokeWBGT) && _risk > 0.8)];
 
 // ─── Heat burn damage (thermal burn — no bleeding, pain 0.7) ──────────────
 // The burn gate uses the CBA default (25 C) as the in-code fallback, NOT
@@ -80,7 +101,6 @@ missionNamespace setVariable [QGVAR(heatStrokeActive), ((_wbgt > (missionNamespa
 // burn on the mirrored leg in the medical menu).  ACE's addDamageToUnit
 // maps a class name; iterate the unit's actual hit selections so the
 // wound lands where the exposure is.
-private _burnTemp = missionNamespace getVariable [QEGVAR(compat_ace3,medicalBurnTemp), 25];
 private _burnScale = missionNamespace getVariable [QEGVAR(compat_ace3,medicalBurnDamageScale), 0.0005];
 if (_temp > _burnTemp) then {
     private _damage = (_temp - _burnTemp) * _burnScale;
