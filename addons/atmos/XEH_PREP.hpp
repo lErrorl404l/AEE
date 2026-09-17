@@ -12,3 +12,4 @@ PREP(calculateTurbulence);
 PREP(calculatePrecipitationPhase);
 PREP(calculateHaze);
 PREP(calculateRefraction);
+PREP(getLocalWind);

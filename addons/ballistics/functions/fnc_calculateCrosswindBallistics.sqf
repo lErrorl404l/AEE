@@ -15,9 +15,17 @@ params [["_unit", objNull, [objNull]]];
 if (isNull _unit) exitWith { 0 };  // no unit on dedicated server
 
 // ─── Wind input ──────────────────────────────────────────────────────────
-private _windData = wind;                                   // [speed_mps, direction_deg]
-private _windSpd  = _windData param [0, 0];
-private _windDir  = _windData param [1, 0];                 // meteorological: wind comes FROM
+// Local wind (issue #136): the spatial field at the shooter's position
+// (building wake, terrain lee, canyon) replaces the single global vector.
+// The global engine wind feeds the local model; getLocalWind applies the
+// terrain/building/canyon modifiers and returns the local easterly/
+// northerly vector.
+private _pos = getPosASL _unit;
+private _localWind = [_pos, _pos param [2, 0]] call EFUNC(atmos,getLocalWind);
+private _windSpd  = vectorMagnitude _localWind;
+private _windDir  = (_localWind select 0) atan2 (_localWind select 1);
+_windDir = _windDir + 180;                    // meteorological: wind comes FROM
+if (_windDir >= 360) then { _windDir = _windDir - 360; };
 
 // ─── Player's aiming direction ───────────────────────────────────────────
 private _wDir = _unit weaponDirection currentWeapon _unit;
