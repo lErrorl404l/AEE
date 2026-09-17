@@ -193,5 +193,13 @@
             <Original>Vehicle Shimmer Base</Original>
             <English>Vehicle Shimmer Base</English>
         </Key>
+        <Key ID="STR_AEE_Optics_viewDistanceEnabled_Description">
+            <Original>Drive the engine view distance from the physics visibility state (fog, haze, rain, night sensitivity, acuity). Mostly lowers view distance in weather - a performance gain</Original>
+            <English>Drive the engine view distance from the physics visibility state (fog, haze, rain, night sensitivity, acuity). Mostly lowers view distance in weather - a performance gain</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_viewDistanceEnabled_Name">
+            <Original>Vision-Driven View Distance</Original>
+            <English>Vision-Driven View Distance</English>
+        </Key>
     </Package>
 </Project>

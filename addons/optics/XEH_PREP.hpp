@@ -32,4 +32,5 @@ PREP(calculateVehicleHeatShimmer);
 PREP(classifyNight);
 PREP(getStarCatalog);
 PREP(managePostProcess);
+PREP(calculateViewDistance);
 PREP(ppEffectCreate);
