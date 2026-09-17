@@ -2,6 +2,14 @@
 
 params [["_biome", "Cfa", [""]]];
 
+// Latitude-driven normals take precedence: getBiome publishes the map's
+// actual 12-month climatology (from latitude + water fraction) when it
+// runs its dynamic classification.  The static per-biome table below is
+// the fallback for module-override maps (an explicit EDEN override keeps
+// the table's climate) and for any caller before getBiome has run.
+private _latNormals = missionNamespace getVariable [QGVAR(climateNormals), []];
+if (_latNormals isNotEqualTo []) exitWith { _latNormals };
+
 private _return = [];
 
 switch (_biome) do {

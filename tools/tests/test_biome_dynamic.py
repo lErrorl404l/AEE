@@ -384,6 +384,39 @@ class TestRootCauseRegressions(unittest.TestCase):
         self.assertNotIn("Unknown material: swap", text)
         self.assertIn("Unknown = leave the engine", text)
 
+    def test_climate_consumers_use_latitude_normals(self):
+        # The 4 climate consumers (temperature, pressure, humidity, fog)
+        # must get the map's latitude-driven climatology, not the static
+        # per-biome table.  getBiome publishes QGVAR(climateNormals) from
+        # fnc_getLatitudeClimate; getClimateNormals prefers it.  A Cfb at
+        # 66 N (Norway) must NOT receive the 35 N Cfb table.
+        from pathlib import Path
+
+        get_biome = Path("addons/environmental/functions/fnc_getBiome.sqf").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("QGVAR(climateNormals)", get_biome)
+        self.assertIn("getLatitudeClimate", get_biome)
+
+        get_normals = Path(
+            "addons/environmental/functions/fnc_getClimateNormals.sqf"
+        ).read_text(encoding="utf-8")
+        self.assertIn("QGVAR(climateNormals)", get_normals)
+        self.assertIn(
+            "if (_latNormals isNotEqualTo []) exitWith { _latNormals }", get_normals
+        )
+
+        # Every consumer must call getClimateNormals (the dispatcher), not
+        # reach around it with its own static data.
+        for fn in [
+            "addons/atmos/functions/fnc_updateHumidity.sqf",
+            "addons/atmos/functions/fnc_updateFog.sqf",
+            "addons/atmos/functions/fnc_updatePressure.sqf",
+            "addons/thermal/functions/fnc_updateTemperature.sqf",
+        ]:
+            text = Path(fn).read_text(encoding="utf-8")
+            self.assertIn("getClimateNormals", text, f"{fn} bypasses the dispatcher")
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -70,6 +70,10 @@ private _normals = [_lat, _waterFrac] call FUNC(getLatitudeClimate);
 private _tDay = _normals select 2;
 private _tNight = _normals select 3;
 private _precip = _normals select 5;
+// Publish the latitude-driven normals so the 4 climate consumers
+// (temperature, pressure, humidity, fog) use the map's actual climate
+// instead of the static per-biome table — the "facts, not names" fix.
+missionNamespace setVariable [QGVAR(climateNormals), _normals];
 private _meanTemps = [];
 for "_m" from 0 to 11 do {
     _meanTemps pushBack (((_tDay select _m) + (_tNight select _m)) / 2);
