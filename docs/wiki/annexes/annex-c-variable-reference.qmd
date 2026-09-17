@@ -231,6 +231,9 @@ follow the variable names as written in the SQF source.
 | `aee_atmos_refractivityN` | atmos | Refractivity in N-units |
 | `aee_ballistics_downrangeWind` | ballistics | Downrange wind component |
 | `aee_ballistics_muzzleVelocityCorrection` | ballistics | MV correction 0.85..1.15 |
+| `aee_ballistics_barrelTempC` | ballistics | Weapon barrel temperature in degC |
+| `aee_ballistics_barrelPOIShiftMrad` | ballistics | Elevation POI shift from barrel heat (mrad, positive = up) |
+| `aee_ballistics_barrelColdBore` | ballistics | 1 when the cold-bore first-shot bias applies |
 
 ### Module overrides
 
