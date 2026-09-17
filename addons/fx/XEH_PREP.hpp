@@ -11,3 +11,5 @@ PREP(registerParticleSource);
 PREP(triggerLightning);
 PREP(triggerSevereWeatherFX);
 PREP(calculateLightningStrikeEffects);
+PREP(particleMaterial);
+PREP(particleState);
