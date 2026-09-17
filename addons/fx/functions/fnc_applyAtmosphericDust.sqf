@@ -71,6 +71,14 @@ private _lifetime = 8 + random 4;
 private _size = 30 + _windSpeed * 2;
 private _alpha = _intensity * _density;
 
+// ─── State coupling (issue #150) ────────────────────────────────────────
+// Thin air drags less: scale the smoke volume by the density ratio so
+// at altitude the haze drifts farther before dissipating.
+private _rho = missionNamespace getVariable [QEGVAR(core,currentAirDensity), 1.225];
+if !(_rho isEqualType 0) then { _rho = 1.225; };
+_rho = _rho max 0.1 min 1.5;
+private _smokeVolume = 1.0 * (1.225 / _rho);
+
 _dust setParticleParams [
     ["\A3\data_f\ParticleEffects\Universal\Universal.p3d", 16, 12, 9, 0], // shape: [path, nth, row, column, loop]
     "",                          // animationName (obsolete, must be empty)
@@ -81,7 +89,7 @@ _dust setParticleParams [
     [0, 0, 0],                   // moveVelocity
     0,                           // rotationVelocity (number, rotations/s)
     1,                           // weight (1.275 = sinks slowly)
-    1.0,                         // volume
+    _smokeVolume,                // volume (drag, density-scaled)
     0.05,                        // rubbing (wind interaction)
     [_size, _size * 1.5],        // size progression (array of numbers)
     [_dustColor + [0], _dustColor + [_alpha], _dustColor + [0]], // colour progression (array of RGBA)
