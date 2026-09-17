@@ -97,6 +97,8 @@ def scan():
         # Direct getVariable/setVariable calls.
         for kind, lit, macro in _CALL.findall(text):
             name = lit if lit else resolve(macro[macro.index("(") + 1 : -1], addon)
+            if "_fnc_" in name:
+                continue  # PREP-registered function handles are always produced
             bucket = reads if kind == "getVariable" else writes
             bucket.setdefault(name, []).append(rel)
 

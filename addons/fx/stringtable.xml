@@ -9,6 +9,14 @@
             <Original>Atmospheric Dust Intensity</Original>
             <English>Atmospheric Dust Intensity</English>
         </Key>
+        <Key ID="STR_AEE_FX_blastInjuryEnabled_Description">
+            <Original>Apply Kingery-Bulmash overpressure and Bowen pressure-impulse injury on explosions (eardrum, lung, tertiary throw)</Original>
+            <English>Apply Kingery-Bulmash overpressure and Bowen pressure-impulse injury on explosions (eardrum, lung, tertiary throw)</English>
+        </Key>
+        <Key ID="STR_AEE_FX_blastInjuryEnabled_Name">
+            <Original>Blast Injury</Original>
+            <English>Blast Injury</English>
+        </Key>
         <Key ID="STR_AEE_FX_lightningBrightness_Description">
             <Original>Brightness of the lightning flash lightpoint</Original>
             <English>Brightness of the lightning flash lightpoint</English>
