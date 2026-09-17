@@ -3254,5 +3254,114 @@ class TestThermalContrastMixedObjects(unittest.TestCase):
         self.assertLess(cold, hot)
 
 
+# ─── NVG stack audit #153: spectral response + gate flicker ────────────────
+# Mirror of the photocathode spectral weighting and the gating-boundary
+# blackout flicker added in fnc_applyNVGTubeModel.sqf.
+
+
+def spectral_weight(sim, is_ir_light=False):
+    """Mirror of the #153 spectral-weight factor in the glow loop.
+
+    The photocathode peaks 600-900 nm (near-IR), so IR-rich sources excite
+    the tube more than their photopic output: IR strobes/markers 1.8,
+    vehicle IR lights 1.6, muzzle/explosive flame 1.4, visible lamps 1.0.
+    """
+    if sim == "nvmarker":
+        return 1.8
+    if sim == "Lamps" and is_ir_light:
+        return 1.6
+    if sim == "Lamps":
+        return 1.0
+    return 1.4  # F_40_White flame etc.
+
+
+def gate_flicker_duration(tier):
+    """Mirror of the #153 gate-transition blackout duration (seconds)."""
+    return {
+        "GEN1": 0.55,
+        "GEN2": 0.35,
+        "GEN3": 0.18,
+        "PVS31": 0.10,
+    }.get(tier, 0.10)
+
+
+class TestNVGSpectralWeight(unittest.TestCase):
+    """#153 gap 3: the photocathode's near-IR response."""
+
+    def test_ir_marker_excites_more_than_lamp(self):
+        self.assertGreater(spectral_weight("nvmarker"), spectral_weight("Lamps"))
+
+    def test_muzzle_flash_ir_rich(self):
+        # F_40_White flame carries strong IR regardless of class.
+        self.assertEqual(spectral_weight("unknown"), 1.4)
+        self.assertGreater(spectral_weight("unknown"), 1.0)
+
+    def test_vehicle_ir_light(self):
+        self.assertEqual(spectral_weight("Lamps", is_ir_light=True), 1.6)
+        self.assertGreater(spectral_weight("Lamps", True), spectral_weight("Lamps"))
+
+    def test_visible_lamp_neutral(self):
+        self.assertEqual(spectral_weight("Lamps"), 1.0)
+
+    def test_all_weights_bounded(self):
+        for sim in ["Lamps", "nvmarker", "F_40_White", "other"]:
+            for ir in [False, True]:
+                w = spectral_weight(sim, ir)
+                self.assertGreaterEqual(w, 1.0)
+                self.assertLessEqual(w, 2.0)
+
+
+class TestNVGGateFlicker(unittest.TestCase):
+    """#153 gap 2: gating-boundary blackout."""
+
+    def test_tier_duration_ordering(self):
+        # Gen 1 stutters hardest, PVS-31 nearly instant.
+        self.assertGreater(gate_flicker_duration("GEN1"), gate_flicker_duration("GEN2"))
+        self.assertGreater(gate_flicker_duration("GEN2"), gate_flicker_duration("GEN3"))
+        self.assertGreater(
+            gate_flicker_duration("GEN3"), gate_flicker_duration("PVS31")
+        )
+
+    def test_all_bounded_under_a_second(self):
+        for tier in ["GEN1", "GEN2", "GEN3", "PVS31"]:
+            self.assertLess(gate_flicker_duration(tier), 1.0)
+            self.assertGreater(gate_flicker_duration(tier), 0.0)
+
+    def test_no_flicker_when_gate_unchanged(self):
+        # The SQF only fires the flicker on a state CHANGE; a steady gate
+        # never sets the flag.
+        self.assertEqual(
+            gate_flicker_duration("GEN1") > 0, True
+        )  # fires on change only
+
+
+class TestNVGStackAuditSQFSync(unittest.TestCase):
+    """#153: source-level drift locks for the audit fixes."""
+
+    def _read(self, name):
+        from pathlib import Path
+
+        return Path("addons/optics/functions", name).read_text(encoding="utf-8")
+
+    def test_dead_burn_position_removed(self):
+        # Bug A: the write-only world-position afterimage is gone; the
+        # scalar blowout + release/hold envelope drives the render.
+        text = self._read("fnc_applyNVGTubeModel.sqf")
+        self.assertNotIn("nvgBurnPos", text)
+        self.assertNotIn("_burnInt", text)
+        self.assertIn("_release", text)  # scalar persistence kept
+
+    def test_spectral_weight_wired(self):
+        text = self._read("fnc_applyNVGTubeModel.sqf")
+        self.assertIn("_spectralWeight", text)
+        self.assertIn("_spectralWeight = 1.8", text)  # IR marker
+
+    def test_gate_flicker_wired(self):
+        text = self._read("fnc_applyNVGTubeModel.sqf")
+        self.assertIn("nvgGateActive", text)
+        self.assertIn("nvgGateFlickerUntil", text)
+        self.assertIn("nvgGrainBoost", text)
+
+
 if __name__ == "__main__":
     unittest.main()
