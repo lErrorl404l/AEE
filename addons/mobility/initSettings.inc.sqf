@@ -117,3 +117,34 @@
     true,
     {}
 ] call CBA_fnc_addSetting;
+
+// ── Brake fade (issue #133) ────────────────────────────────────────────────
+[
+    QGVAR(brakeCoolingTau),
+    "SLIDER",
+    [LLSTRING(brakeCoolingTau_Name), LLSTRING(brakeCoolingTau_Description)],
+    ["AEE Mobility", "Traction"],
+    [100, 900, 450, 0],
+    true,
+    {}
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(brakeRotorMassKg),
+    "SLIDER",
+    [LLSTRING(brakeRotorMassKg_Name), LLSTRING(brakeRotorMassKg_Description)],
+    ["AEE Mobility", "Traction"],
+    [4, 40, 16, 1],
+    true,
+    {}
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(brakeHeatFraction),
+    "SLIDER",
+    [LLSTRING(brakeHeatFraction_Name), LLSTRING(brakeHeatFraction_Description)],
+    ["AEE Mobility", "Traction"],
+    [0.1, 1, 0.6, 2],
+    true,
+    {}
+] call CBA_fnc_addSetting;

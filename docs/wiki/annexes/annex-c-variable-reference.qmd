@@ -156,6 +156,9 @@ follow the variable names as written in the SQF source.
 | `aee_mobility_turbulencePFH` | mobility | Turbulence PFH handle |
 | `aee_mobility_isReady` | mobility | Mobility module ready flag |
 | `aee_mobility_crankSuccess` | mobility | Cold-start crank probability 0..1 |
+| `aee_mobility_muSurface` | mobility | Combined wet/ice/brake surface friction 0..1 |
+| `aee_mobility_brakeTempC` | mobility | Brake rotor temperature in C |
+| `aee_mobility_brakeMu` | mobility | Brake friction coefficient (fade) 0..1 |
 
 ### Environmental
 
