@@ -4,6 +4,7 @@ PREP(calculateDustSuppression);
 PREP(calculateFireSpreadRisk);
 PREP(updateSeasonalFoliage);
 PREP(calculateAvalancheRisk);
+PREP(calculateIceLoad);
 PREP(calculateCBRNPersistence);
 PREP(calculateFlashFloodRisk);
 PREP(calculateFreezeThawCycling);
