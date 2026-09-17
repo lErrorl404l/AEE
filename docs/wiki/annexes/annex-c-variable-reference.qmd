@@ -111,6 +111,10 @@ follow the variable names as written in the SQF source.
 | `aee_core_currentHypoxiaRisk` | physiology | Hypoxia risk 0..1 |
 | `aee_physiology_hypoxiaTUC` | physiology | Time of useful consciousness in seconds |
 | `aee_physiology_acclimatizationPercent` | physiology | Altitude acclimatisation 0..100 |
+| `aee_physiology_gLoad` | physiology | Measured Gz load (1 = standing) |
+| `aee_physiology_gLocStage` | physiology | G-LOC stage 0 none / 1 greyout / 2 blackout / 3 LOC |
+| `aee_physiology_gLocTolerance` | physiology | Current G-LOC tolerance in G |
+| `aee_physiology_altitudeDCSRisk` | physiology | Altitude DCS risk 0..1 (ZH-L16C R-ratio) |
 | `aee_physiology_uvIndex` | physiology | UV index 0..13 |
 | `aee_core_currentUVIndex` | physiology | UV index (core alias) |
 | `aee_physiology_batteryTemperatureDerating` | physiology | Battery derating 0.3..1 |

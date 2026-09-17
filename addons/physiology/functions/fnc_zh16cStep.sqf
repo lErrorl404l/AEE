@@ -25,7 +25,7 @@ Output: [newTissues, ceilingM]  - updated state and the controlling
         ceiling depth (metres, positive down)
 */
 
-params [["_depthM", 0, [0]], ["_fN2", 0.79, [0]], ["_fHe", 0, [0]], ["_tissues", [], [[]]], ["_gf", 1, [0]]];
+params [["_depthM", 0, [0]], ["_fN2", 0.79, [0]], ["_fHe", 0, [0]], ["_tissues", [], [[]]], ["_gf", 1, [0]], ["_pAmbOverride", -1, [0]]];
 
 // Fresh state = N2 equilibrium at the surface breathing air:
 // PN2 = (1 - 0.0627) * 0.79 = 0.74047 bar in every compartment.  A diver
@@ -55,7 +55,15 @@ private _bHe = [0.4245, 0.5747, 0.6527, 0.7223, 0.7582, 0.7957, 0.8279, 0.8553,
 
 // ─── Ambient and inspired pressures ───────────────────────────────────────
 private _pH2O = 0.0627;                    // water vapour, Bühlmann value
-private _pAmb = (_depthM / 10) + 1;        // 10 m per bar, +1 surface
+// Ambient pressure: normally derived from depth (diving, 10 m per bar,
+// +1 surface).  Issue #135 (altitude DCS) passes an explicit barometric
+// pressure BELOW 1 bar — the same tissue code then solves hypobaric
+// supersaturation instead of hyperbaric loading.
+private _pAmb = if (_pAmbOverride > 0) then {
+    _pAmbOverride
+} else {
+    (_depthM / 10) + 1
+};
 private _pInspiredN2 = (_pAmb - _pH2O) * _fN2;
 private _pInspiredHe = (_pAmb - _pH2O) * _fHe;
 
