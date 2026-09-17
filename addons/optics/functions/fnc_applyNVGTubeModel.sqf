@@ -341,6 +341,16 @@ private _photonCount = _lux * _sensitivity * AEE_PHOTON_SCALE;
 private _shotNoise = 1 / sqrt(_photonCount + 1);
 private _noise = _noiseFloor + (1 - _noiseFloor) * _shotNoise;
 
+// Gating blackout flicker (gap 2, #153): while a gate transition is
+// active, the scan-line collapse reads as a noise burst.  Raise the
+// noise floor toward the visible-collapse level for the flicker window.
+if (CBA_missionTime < (missionNamespace getVariable [QGVAR(nvgGateFlickerUntil), 0])) then {
+    private _flicker = missionNamespace getVariable [QGVAR(nvgGrainBoost), 0];
+    if (_flicker == 1) then {
+        _noise = _noise max 0.85;
+    };
+};
+
 // ─── Rain: Mie scattering noise penalty ──────────────────────────────────
 // Forward-scattered light from rain adds photon noise across the entire
 // image (Mie scattering volume).  The MCP amplifies this scattered light
@@ -441,14 +451,29 @@ private _viewDir = _eyeState select 1;
 // reports a false positive; HEMTT's linter requires configOf over typeOf.)
 private _brightSources = nearestObjects [_eye, [], 150];
 private _blowoutNow = 0;
-private _glowPos = [0, 0, 0];   // world pos of the brightest source this tick
-private _glowIntensityNow = 0;
 {
     private _sim = getText ((configOf _x) >> "simulation");
     private _isBright = false;
-    if (_sim == "Lamps" || _sim == "nvmarker") then { _isBright = true; };
+    // Spectral weight: the photocathode is a near-IR device (600-900 nm
+    // peak, ELBIT/TNVC datasheets).  IR-rich sources excite it MORE than
+    // their photopic (green-weighted) luminous output suggests.  Muzzle
+    // flash (hot flame: strong IR), IR strobes/markers (785-850 nm), and
+    // vehicle IR lights are the military's "IR signature" exploit — a
+    // source the naked eye sees dimly can saturate the tube.
+    private _spectralWeight = 1.0;
+    if (_sim == "Lamps" || _sim == "nvmarker") then {
+        _isBright = true;
+        if (_sim == "nvmarker") then { _spectralWeight = 1.8; };  // IR strobe/marker
+    };
     if (isLightOn _x) then { _isBright = true; };
-    if (_x isKindOf "F_40_White") then { _isBright = true; };
+    if (_x isKindOf "F_40_White") then {
+        _isBright = true;
+        _spectralWeight = 1.4;   // muzzle/explosive flame: strong IR
+    };
+    // Vehicle IR lights (headlights in IR mode) are lamps in the IR band.
+    if (_sim == "Lamps" && {getNumber ((configOf _x) >> "irLight") == 1}) then {
+        _spectralWeight = 1.6;
+    };
     if (_isBright) then {
         private _srcPos = getPosASL _x;
         private _dirTo = _eye vectorFromTo _srcPos;
@@ -496,11 +521,9 @@ private _glowIntensityNow = 0;
             } else {
                 0.05 * (1 - (_ang - _gateHalf) / (_releaseHalf - _gateHalf));
             };
-            private _intensity = _coneScale * (100 / (_dist * _dist)) * _transmission;
+            private _intensity = _coneScale * (100 / (_dist * _dist)) * _transmission * _spectralWeight;
             if (_intensity > _blowoutNow) then {
                 _blowoutNow = _intensity;
-                _glowPos = _srcPos;
-                _glowIntensityNow = _intensity;
             };
         };
     };
@@ -520,37 +543,16 @@ if (_rainS > 0.5) then {
     _blowoutNow = _blowoutNow max (_rainGateFloor * 0.6);
 };
 
-// ─── Phosphor burn-in / afterimage (spatial) ─────────────────────────────
-// The residual lag above handles the tube's CONTINUOUS response.  Burn-in
-// is the SPATIAL ghost: a bright source imaged on the phosphor leaves a
-// lingering glow at that screen position after the source leaves or the
-// gate releases.  P20 (Gen 1/2) total persistence ~60 ms; P43/P45
-// (Gen 3/PVS-31) ~2.6 ms — effectively instant.  Model: remember the
-// last bright source's world position and intensity; when the live source
-// drops, the stored glow decays per the phosphor persistence constant.
-// GEN3/PVS31 afterimages are sub-tick and invisible; only GEN1/2 show a
-// visible afterimage (~1 tick at 100 ms frame rate).
-private _burnPos = missionNamespace getVariable [QGVAR(nvgBurnPos), [0, 0, 0]];
-private _burnInt = missionNamespace getVariable [QGVAR(nvgBurnInt), 0];
-if (_burnInt isEqualType 0) then {
-    if (_glowIntensityNow > 0) then {
-        _burnPos = _glowPos;
-        _burnInt = _glowIntensityNow;
-    } else {
-        // Decay per phosphor persistence: alpha = exp(-dt/tau).  GEN1/2
-        // P20 ~60 ms => at 0.1 s tick, alpha ≈ exp(-0.1/0.06) ≈ 0.19,
-        // so the afterimage is visible for ~1 tick then gone.  GEN3/PVS31
-        // P43/P45 ~2.6 ms => alpha ≈ 0 (instant, never visible).
-        private _tau = [0.003, 0.06] select ((_tier == "GEN1") || (_tier == "GEN2"));
-        _burnInt = _burnInt * exp (-(0.1 / _tau));
-        if (_burnInt < 0.02) then { _burnInt = 0; };
-    };
-} else {
-    _burnInt = _glowIntensityNow;
-    _burnPos = _glowPos;
-};
-missionNamespace setVariable [QGVAR(nvgBurnPos), _burnPos];
-missionNamespace setVariable [QGVAR(nvgBurnInt), _burnInt];
+// ─── Phosphor persistence ─────────────────────────────────────────────────
+// Phosphor burn-in / afterimage: a bright source imaged on the phosphor
+// leaves a lingering glow after the source leaves or the gate releases.
+// P20 (Gen 1/2) total persistence ~60 ms; P43/P45 (Gen 3/PVS-31) ~2.6 ms —
+// effectively instant.  The SPATIAL afterimage (a world-position ghost
+// that would need eye-velocity cancellation — the #152 smear class) was
+// removed as dead code: it was written but never consumed, and a
+// world-position sprite does not track the eye.  The persistence is
+// modelled scalarly by the release/hold envelope below (GEN1/GEN2 slow
+// release, GEN3/PVS31 fast), which drives the render.
 
 // Muzzle flash / explosive flash: the fired event stamps nvgFlashUntil.
 if (CBA_missionTime < (missionNamespace getVariable [QGVAR(nvgFlashUntil), -1])) then {
@@ -597,6 +599,34 @@ if (_blowout < 0.01) then { _blowout = 0; };
 missionNamespace setVariable [QGVAR(nvgBlowout), _blowout];
 // Note: nvgBlowoutHold is set inside the if-blocks above.
 // Do NOT overwrite it here with the stale local _blowoutHold.
+
+// ─── Gating blackout flicker (gap 2, #153) ────────────────────────────────
+// A real tube at the gating boundary shows a transient stutter: when a
+// bright source crosses the 20-25 deg hysteresis edge the AGC fights the
+// transition and the image flickers (scan-line collapse, classic Gen 1,
+// gated Gen 3 at low light).  The hysteresis prevents oscillation but not
+// the single transition artefact.  Model: detect a gate-state change (a
+// source entering/exiting the cone) and inject a brief noise burst scaled
+// by tier — Gen 1 stutters hardest, PVS-31 nearly none.
+private _wasGated = missionNamespace getVariable [QGVAR(nvgGateActive), false];
+private _isGated = _blowoutNow > 0.15;
+missionNamespace setVariable [QGVAR(nvgGateActive), _isGated];
+if (_isGated != _wasGated) then {
+    private _stutter = switch (_tier) do {
+        case "GEN1": { 0.55 };   // classic Gen 1: strong blackout flicker
+        case "GEN2": { 0.35 };
+        case "GEN3": { 0.18 };   // gated Gen 3: brief
+        default     { 0.10 };    // PVS-31 filmless: near-instant recovery
+    };
+    missionNamespace setVariable [QGVAR(nvgGateFlickerUntil), CBA_missionTime + _stutter];
+};
+// While the flicker is active, raise the noise floor (scan-line collapse
+// reads as grain/blackout).
+if (CBA_missionTime < (missionNamespace getVariable [QGVAR(nvgGateFlickerUntil), 0])) then {
+    missionNamespace setVariable [QGVAR(nvgGrainBoost), 1];
+} else {
+    missionNamespace setVariable [QGVAR(nvgGrainBoost), 0];
+};
 
 // ─── MTF degradation at low light ─────────────────────────────────────────
 // Resolution (hence perceived contrast) drops as photon flux falls —
