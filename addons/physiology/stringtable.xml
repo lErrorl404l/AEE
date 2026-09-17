@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="AEE">
     <Package name="Physiology">
+        <Key ID="STR_AEE_Physiology_AGSM_Description">
+            <Original>The pilot performs the anti-G straining maneuver (adds 3.1 G tolerance)</Original>
+            <English>The pilot performs the anti-G straining maneuver (adds 3.1 G tolerance)</English>
+        </Key>
+        <Key ID="STR_AEE_Physiology_AGSM_Name">
+            <Original>AGSM (Straining)</Original>
+            <English>AGSM (Straining)</English>
+        </Key>
         <Key ID="STR_AEE_Physiology_AMSOffsetAltitude_Description">
             <Original>Altitude (m) where acute mountain sickness risk starts</Original>
             <English>Altitude (m) where acute mountain sickness risk starts</English>
@@ -65,6 +73,22 @@
             <Original>Fatigue Model</Original>
             <English>Fatigue Model</English>
         </Key>
+        <Key ID="STR_AEE_Physiology_GSuit_Description">
+            <Original>Pilot wears a G-suit (adds 1.5 G tolerance)</Original>
+            <English>Pilot wears a G-suit (adds 1.5 G tolerance)</English>
+        </Key>
+        <Key ID="STR_AEE_Physiology_GSuit_Name">
+            <Original>G-Suit</Original>
+            <English>G-Suit</English>
+        </Key>
+        <Key ID="STR_AEE_Physiology_GlocEnabled_Description">
+            <Original>Enable the G-LOC and altitude DCS physiology model</Original>
+            <English>Enable the G-LOC and altitude DCS physiology model</English>
+        </Key>
+        <Key ID="STR_AEE_Physiology_GlocEnabled_Name">
+            <Original>G-LOC and Altitude DCS</Original>
+            <English>G-LOC and Altitude DCS</English>
+        </Key>
         <Key ID="STR_AEE_Physiology_HUDWarningThreshold_Description">
             <Original>Dehydration risk that triggers the HUD warning</Original>
             <English>Dehydration risk that triggers the HUD warning</English>
@@ -112,6 +136,14 @@
         <Key ID="STR_AEE_Physiology_ScentIntensity_Name">
             <Original>Scent Intensity</Original>
             <English>Scent Intensity</English>
+        </Key>
+        <Key ID="STR_AEE_Physiology_SeatReclined_Description">
+            <Original>Reclined seat (adds 0.5 G tolerance)</Original>
+            <English>Reclined seat (adds 0.5 G tolerance)</English>
+        </Key>
+        <Key ID="STR_AEE_Physiology_SeatReclined_Name">
+            <Original>Reclined Seat</Original>
+            <English>Reclined Seat</English>
         </Key>
         <Key ID="STR_AEE_Physiology_StabilityEnabled_Description">
             <Original>Toggle the shooter stability index (cold/heat/fatigue) and ACE3 sway integration</Original>

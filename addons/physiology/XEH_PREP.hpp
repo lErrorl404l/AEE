@@ -15,3 +15,7 @@ PREP(integrateSwayFactor);
 PREP(zh16cStep);
 PREP(getDiveState);
 PREP(updateDiveState);
+PREP(calculateBarometricPressure);
+PREP(calculateAltitudeDCS);
+PREP(calculateGLOC);
+PREP(getGLoad);

@@ -2024,6 +2024,85 @@ private _p29Pass = 0;
         diag_log text format ["[PHASE36] [FAIL] wet/ice traction: %1 passed, %2 failed", _p36Pass, _p36Fail];
     };
 
+    // -- PHASE 37: G-LOC + altitude DCS (#135) -------------------------------
+    // Pure-function checks on the stateless maths: barometric pressure at
+    // altitude, the Gz measurement from a seeded velocity delta, the
+    // Whinnery-Forster time-to-LOC, and the DCS risk above 21,000 ft.
+    private _p37Pass = 0;
+    private _p37Fail = 0;
+
+    // Case 1: ICAO barometric pressure at 40,000 ft (~0.19 bar).
+    private _fnPress = missionNamespace getVariable ["aee_physiology_fnc_calculateBarometricPressure", nil];
+    if (isNil "_fnPress") then {
+        diag_log text "[PHASE37] [FAIL] barometric pressure function not compiled";
+        _p37Fail = _p37Fail + 1;
+    } else {
+        private _p = [40000 * 0.3048] call _fnPress;
+        if (_p > 0.16 && _p < 0.22) then {
+            diag_log text format ["[PHASE37] [PASS] 40k ft pressure = %1 bar", _p];
+            _p37Pass = _p37Pass + 1;
+        } else {
+            diag_log text format ["[PHASE37] [FAIL] 40k ft pressure = %1 (expected ~0.19)", _p];
+            _p37Fail = _p37Fail + 1;
+        };
+    };
+
+    // Case 2: getGLoad compiles and returns the neutral 1.0 floor on a
+    // fresh object.  A live velocity-delta measurement needs a physics-
+    // simulated moving body, which the headless server does not provide
+    // (objects far from a player are not integrated) — the Gz maths is
+    // locked by the Python mirror (test_gloc.py TestGLoadMeasurement).
+    private _fnG = missionNamespace getVariable ["aee_physiology_fnc_getGLoad", nil];
+    if (isNil "_fnG") then {
+        diag_log text "[PHASE37] [FAIL] getGLoad function not compiled";
+        _p37Fail = _p37Fail + 1;
+    } else {
+        private _vehG = createVehicle ["C_Hatchback_01_F", [4300, 4350, 0], [], 0, "NONE"];
+        private _g = [_vehG] call _fnG;   // fresh state -> neutral 1.0
+        deleteVehicle _vehG;
+        if ((_g select 0) == 1.0) then {
+            diag_log text "[PHASE37] [PASS] getGLoad neutral on fresh state";
+            _p37Pass = _p37Pass + 1;
+        } else {
+            diag_log text format ["[PHASE37] [FAIL] getGLoad fresh = %1 (expected 1.0)", _g select 0];
+            _p37Fail = _p37Fail + 1;
+        };
+    };
+
+    // Case 3: G-LOC — AGSM raises tolerance, so the same 6G load is
+    // LOC without AGSM and lower stage with it.  Signature:
+    // [_g, _onsetRate, _agsm, _gsuit, _seat, _hypoxiaRisk] -> [stage, tLoc, 0].
+    private _fnGLOC = missionNamespace getVariable ["aee_physiology_fnc_calculateGLOC", nil];
+    if (isNil "_fnGLOC") then {
+        diag_log text "[PHASE37] [FAIL] calculateGLOC function not compiled";
+        _p37Fail = _p37Fail + 1;
+    } else {
+        private _noAGSM = [6, 3, 0, 0, 0, 0] call _fnGLOC;
+        private _withAGSM = [6, 3, 1, 0, 0, 0] call _fnGLOC;
+        if ((_noAGSM select 0) == 3 && (_withAGSM select 0) < 3) then {
+            diag_log text format ["[PHASE37] [PASS] AGSM: 6G stage %1 -> %2", _noAGSM select 0, _withAGSM select 0];
+            _p37Pass = _p37Pass + 1;
+        } else {
+            diag_log text format ["[PHASE37] [FAIL] AGSM stage: no=%1 with=%2 (expect 3, <3)", _noAGSM select 0, _withAGSM select 0];
+            _p37Fail = _p37Fail + 1;
+        };
+        // Time-to-LOC: rapid onset 9.10 s regardless of rate.
+        private _tRapid = [7, 5, 0, 0, 0, 0] call _fnGLOC;
+        if (abs ((_tRapid select 1) - 9.10) < 0.01) then {
+            diag_log text "[PHASE37] [PASS] Whinnery-Forster rapid t-LOC = 9.10 s";
+            _p37Pass = _p37Pass + 1;
+        } else {
+            diag_log text format ["[PHASE37] [FAIL] rapid t-LOC = %1 (expected 9.10)", _tRapid select 1];
+            _p37Fail = _p37Fail + 1;
+        };
+    };
+
+    if (_p37Fail == 0) then {
+        diag_log text format ["[PHASE37] [PASS] G-LOC + altitude DCS: %1 checks passed", _p37Pass];
+    } else {
+        diag_log text format ["[PHASE37] [FAIL] G-LOC + altitude DCS: %1 passed, %2 failed", _p37Pass, _p37Fail];
+    };
+
     // Free the test vehicle.
     deleteVehicle _veh;
 

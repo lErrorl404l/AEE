@@ -176,3 +176,44 @@
     true,
     {}
 ] call CBA_fnc_addSetting;
+
+// ── G-LOC and altitude physiology (issue #135) ─────────────────────────────
+[
+    QGVAR(glocEnabled),
+    "CHECKBOX",
+    [LLSTRING(GlocEnabled_Name), LLSTRING(GlocEnabled_Description)],
+    ["AEE Physiology", "G-LOC"],
+    true,
+    true,
+    {}
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(agsmAvailable),
+    "CHECKBOX",
+    [LLSTRING(AGSM_Name), LLSTRING(AGSM_Description)],
+    ["AEE Physiology", "G-LOC"],
+    true,
+    true,
+    {}
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(gsuitEquipped),
+    "CHECKBOX",
+    [LLSTRING(GSuit_Name), LLSTRING(GSuit_Description)],
+    ["AEE Physiology", "G-LOC"],
+    false,
+    true,
+    {}
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(seatReclined),
+    "CHECKBOX",
+    [LLSTRING(SeatReclined_Name), LLSTRING(SeatReclined_Description)],
+    ["AEE Physiology", "G-LOC"],
+    false,
+    true,
+    {}
+] call CBA_fnc_addSetting;
