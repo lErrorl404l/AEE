@@ -97,6 +97,8 @@ follow the variable names as written in the SQF source.
 | `aee_optics_nvgNoise` | optics | NVG noise |
 | `aee_optics_nvgTubeTier` | optics | NVG tube tier |
 | `aee_optics_nvgWetness` | optics | NVG wetness |
+| `aee_optics_viewDistanceTarget` | optics | Vision-driven view distance target in metres (issue #138) |
+| `aee_optics_viewDistanceSigma` | optics | Total atmospheric extinction sigma for the view-distance driver |
 
 ### Physiology
 

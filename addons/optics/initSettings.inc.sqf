@@ -251,3 +251,17 @@
     true,
     {}
 ] call CBA_fnc_addSetting;
+
+// ── Vision-driven view distance (issue #138) ──────────────────────────────
+// Drives the engine's view distance from the physics visibility state
+// (fog, haze, rain, NELM, acuity).  Defaults ON; disable to keep the
+// player's own view distance setting.
+[
+    QGVAR(viewDistanceEnabled),
+    "CHECKBOX",
+    [LLSTRING(viewDistanceEnabled_Name), LLSTRING(viewDistanceEnabled_Description)],
+    ["AEE Optics", "Visibility"],
+    true,
+    true,
+    {}
+] call CBA_fnc_addSetting;

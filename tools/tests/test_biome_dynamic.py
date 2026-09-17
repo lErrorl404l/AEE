@@ -397,6 +397,11 @@ class TestRootCauseRegressions(unittest.TestCase):
         )
         self.assertIn("QGVAR(climateNormals)", get_biome)
         self.assertIn("getLatitudeClimate", get_biome)
+        # Regression: `private _x = getVariable [..., nil]` does not bind
+        # the local in SQF -> "Undefined variable" every tick.  The cached
+        # read must use a string sentinel.
+        self.assertNotIn('biomeCached", nil]', get_biome)
+        self.assertIn('QGVAR(biomeCached), ""]', get_biome)
 
         get_normals = Path(
             "addons/environmental/functions/fnc_getClimateNormals.sqf"

@@ -148,6 +148,13 @@ if (GVAR(opticsEnabled)) then {
 };
 END_COUNTER(optics);
 
+// Vision-driven view distance (issue #138): client-only, applies the
+// physics visibility state to the local view distance.  Runs at the tick
+// cadence with a 500 m deadband + ramp, so 5 s is smooth.
+if (missionNamespace getVariable [QEGVAR(optics,viewDistanceEnabled), true]) then {
+    [] call EFUNC(optics,calculateViewDistance);
+};
+
 // ─── Mobility / Operations ─────────────────────────────────────────────────
 BEGIN_COUNTER(mobility);
 [] call EFUNC(mobility,calculateTraction);
