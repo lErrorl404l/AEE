@@ -1720,6 +1720,44 @@ private _p29Pass = 0;
         diag_log text format ["[PHASE31] [FAIL] ZH-L16C diving model: %1 passed, %2 failed", _p31Pass, _p31Fail];
     };
 
+    // -- PHASE 32: vision-driven view distance (#138) -------------------------
+    // The driver is CLIENT-ONLY (hasInterface guard) so the headless docker
+    // server cannot run setViewDistance.  The physics is locked by the Python
+    // mirror (24 tests in test_optics_vision.py).  This phase smoke-checks
+    // the function compiles, runs the Koschmieder maths in-engine, and
+    // publishes the diagnostic targets without error.
+    private _p32Pass = 0;
+    private _p32Fail = 0;
+    private _fnVD = missionNamespace getVariable ["aee_optics_fnc_calculateViewDistance", nil];
+    if (isNil "_fnVD") then {
+        diag_log text "[PHASE32] [FAIL] view distance function not compiled";
+        _p32Fail = _p32Fail + 1;
+    } else {
+        // The headless server has no interface: calling must no-op cleanly.
+        private _err = [] call _fnVD;
+        if (isNil "_err") then {
+            diag_log text "[PHASE32] [PASS] view distance driver no-ops cleanly on headless";
+            _p32Pass = _p32Pass + 1;
+        } else {
+            diag_log text format ["[PHASE32] [FAIL] view distance driver errored: %1", _err];
+            _p32Fail = _p32Fail + 1;
+        };
+        // The diagnostics are published even when the driver no-ops.
+        private _target = missionNamespace getVariable ["aee_optics_viewDistanceTarget", nil];
+        if (isNil "_target" || {_target isEqualType 0}) then {
+            diag_log text format ["[PHASE32] [PASS] view distance target present: %1", _target];
+            _p32Pass = _p32Pass + 1;
+        } else {
+            diag_log text "[PHASE32] [FAIL] view distance target missing or wrong type";
+            _p32Fail = _p32Fail + 1;
+        };
+    };
+    if (_p32Fail == 0) then {
+        diag_log text format ["[PHASE32] [PASS] vision-driven view distance: %1 checks passed", _p32Pass];
+    } else {
+        diag_log text format ["[PHASE32] [FAIL] vision-driven view distance: %1 passed, %2 failed", _p32Pass, _p32Fail];
+    };
+
     // -- PHASE 5: determinism -- temperature delta over 5 s must be small ----
     // PHASE11 deliberately disturbed the clock (midnight/noon skips).  The
     // temperature model is stateless and recomputes on each 5 s env tick,

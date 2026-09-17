@@ -29,8 +29,11 @@ if (_moduleOverride != "") exitWith {
 // runs the full latitude-climate + terrain-scan + fusion; every later
 // call returns the cached verdict in microseconds.  This keeps repeated
 // calls (and the PHASE10 perf gate) cheap.
-private _cached = missionNamespace getVariable [QGVAR(biomeCached), nil];
-if (_cached isNotEqualTo nil) then { _cached } else {
+// The getVariable default must NOT be nil: `private _x = nil` does not
+// bind the local in SQF, so the next line's `_cached` reads as undefined
+// and errors every tick.  Use a string sentinel.
+private _cached = missionNamespace getVariable [QGVAR(biomeCached), ""];
+if (_cached isNotEqualTo "") then { _cached } else {
 
 // ─── Dynamic biome detection (issue #123) ────────────────────────────
 // Fully data-driven: the biome is CLASSIFIED from the map's own facts,
