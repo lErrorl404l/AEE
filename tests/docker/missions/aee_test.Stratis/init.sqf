@@ -2154,6 +2154,56 @@ private _p29Pass = 0;
         diag_log text format ["[PHASE38] [FAIL] frozen lakes + avalanche: %1 passed, %2 failed", _p38Pass, _p38Fail];
     };
 
+    // -- PHASE 39: seasonal concealment (#137) -------------------------------
+    // The concealment chain (vegetation -> concealment -> camo -> detection)
+    // was missing.  The function reads published foliage/crop/snow state +
+    // the surface at a position.  Docker can seed the state and assert the
+    // factor; the surfaceType lookup needs a real map position, so the
+    // checks use the AI unit's own ground (Stratis grassland -> bare floor).
+    private _p39Pass = 0;
+    private _p39Fail = 0;
+    private _fnConceal = missionNamespace getVariable ["aee_environmental_fnc_calculateConcealment", nil];
+    if (isNil "_fnConceal") then {
+        diag_log text "[PHASE39] [FAIL] concealment function not compiled";
+        _p39Fail = _p39Fail + 1;
+    } else {
+        private _unit = player;
+        // The spawn surface is not controllable from the mission (Stratis
+        // varies), so the stance/surface branches are Python-locked
+        // (test_concealment.py: 0.5/0.2/0.05 stance, summer/winter forest).
+        // The docker asserts what is surface-INDEPENDENT: the factor is a
+        // bounded 0..1 and snow lowers it.
+        [getPosASL _unit, "PRONE"] call _fnConceal;
+        private _c1 = missionNamespace getVariable ["aee_environmental_concealmentFactor", -1];
+        if (_c1 >= 0.0 && _c1 <= 1.0) then {
+            diag_log text format ["[PHASE39] [PASS] concealment bounded = %1", _c1];
+            _p39Pass = _p39Pass + 1;
+        } else {
+            diag_log text format ["[PHASE39] [FAIL] concealment %1 out of 0..1", _c1];
+            _p39Fail = _p39Fail + 1;
+        };
+
+        // Snow penalty: seed snow depth, concealment must drop.
+        [getPosASL _unit, "STAND"] call _fnConceal;
+        private _c0 = missionNamespace getVariable ["aee_environmental_concealmentFactor", -1];
+        missionNamespace setVariable ["aee_core_snowDepth_m", 0.5];
+        [getPosASL _unit, "STAND"] call _fnConceal;
+        private _cSnow = missionNamespace getVariable ["aee_environmental_concealmentFactor", -1];
+        missionNamespace setVariable ["aee_core_snowDepth_m", 0];
+        if (_cSnow <= _c0 + 0.001) then {
+            diag_log text format ["[PHASE39] [PASS] snow does not increase concealment: %1 -> %2", _c0, _cSnow];
+            _p39Pass = _p39Pass + 1;
+        } else {
+            diag_log text format ["[PHASE39] [FAIL] snow raised concealment %1 -> %2", _c0, _cSnow];
+            _p39Fail = _p39Fail + 1;
+        };
+    };
+    if (_p39Fail == 0) then {
+        diag_log text format ["[PHASE39] [PASS] seasonal concealment: %1 checks passed", _p39Pass];
+    } else {
+        diag_log text format ["[PHASE39] [FAIL] seasonal concealment: %1 passed, %2 failed", _p39Pass, _p39Fail];
+    };
+
     // Free the test vehicle.
     deleteVehicle _veh;
 
