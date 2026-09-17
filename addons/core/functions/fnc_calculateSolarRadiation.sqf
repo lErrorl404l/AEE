@@ -26,13 +26,13 @@ if (_month > 2 && (_year mod 4 == 0 && (_year mod 100 != 0 || _year mod 400 == 0
 // time, which drifts and misbehaves when the mission clock is skipped or
 // the mission runs long.  dayTime is the live clock.
 private _hour = dayTime;
-// abs: a negative latitude value (some map authors publish the Southern
-// Hemisphere convention or a plain error) would INVERT the seasons —
-// sin(-56.7) makes northern winter look like summer.  Latitude magnitude
-// drives max sun elevation; the declination term carries the season, so
-// the sign must never flip the curve (issue #123 RC2b, Scottish
-// Highlands map sets latitude = -56.702).
-private _lat = abs getNumber (configFile >> "CfgWorlds" >> worldName >> "latitude");
+// Latitude magnitude from the shared source.  A negative latitude value
+// (some map authors publish the Southern Hemisphere convention or a plain
+// error) would INVERT the seasons — sin(-56.7) makes northern winter look
+// like summer.  The magnitude drives max sun elevation; the declination
+// term carries the season, so the sign must never flip the curve (issue
+// #123 RC2b, Scottish Highlands map sets latitude = -56.702).
+private _lat = ([] call FUNC(getWorldLatitude)) select 1;  // magnitude
 if (_lat == 0) then { _lat = 40; };
 
 private _decl = 23.45 * sin ((360 / 365) * (_doy + 284));
