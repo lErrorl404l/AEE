@@ -7,14 +7,11 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [1.1.1] - 2026-09-18
 
-### Fixed
-
-- Latitude climate computed the seasonal phase in radians but fed SQF's
-  degree-based `sin`: the annual temperature cycle collapsed, so
-  high-latitude maps (Scottish Highlands, lat 56.7) classified as Tundra
-  and drove the ambient temperature to freezing (#178). The three `sin`
-  calls now convert the phase to degrees, restoring the real seasonal
-  curve (Dfb, warmest month 19.6 C).
+> Fixes the defects found in field testing: high-latitude maps now get
+> their real seasonal climate instead of Tundra, world latitude feeds
+> every consumer from one source, ACE3 air temperature no longer
+> double-lapses, heat-stress medication and burn damage no longer stack
+> on time skips, and the density readout shows true values.
 
 ### Fixed
 
@@ -32,6 +29,36 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   emitter is eye-velocity-cancelling, so droplets stay fixed to the lens.
 - Coriolis deflection now reads one shared latitude source instead of
   guessing from map Y, matching the solar model's hemisphere sign (#154).
+- Latitude climate computed the seasonal phase in radians but fed SQF's
+  degree-based `sin`: the annual temperature cycle collapsed, so
+  high-latitude maps (Scottish Highlands, lat 56.7) classified as Tundra
+  and drove the ambient temperature to freezing (#178). The three `sin`
+  calls now convert the phase to degrees, restoring the real seasonal
+  curve (Dfb, warmest month 19.6 C).
+- ACE3 air temperature read -37 C at altitude (#181): the compat wrote the
+  lapse-adjusted temperature into `ace_weather_currentTemperature`, and
+  ACE3's `calculateTemperatureAtHeight` applies its own 6.5 C/km lapse,
+  so the lapse double-counted. The compat now publishes the un-lapsed
+  base temperature and re-asserts `ace_weather_enabled = false` every
+  tick, because a mission CBA settings hash can re-enable ACE3's weather
+  model after preInit.
+- Heat-stress medication stacked without limit: ACE3's
+  `addMedicationAdjustment` appends an entry instead of replacing it, so
+  re-adding every 5 s tick compounded the vitals adjustment. The compat
+  now adds once on the clear-to-hot transition and removes its own entry
+  directly on clear.
+- Diagnostic density always read `0001` (#177): `CBA_fnc_formatNumber`
+  takes `[number, integer width, decimal places]`, and the calls passed
+  the decimal width in the integer slot. Fixed at the three call sites.
+- Thermal-burn wounds appeared instantly on a night-to-day time skip: the
+  burn gate fired every 5 s tick while the air exceeded the threshold, so
+  a skip that jumped past 25 C compounded burn damage in a single tick.
+  The gate now requires 60 s of sustained exposure before any damage,
+  matching the heat-stress transition-guard pattern.
+
+## [1.1.0] - 2026-09-15
+
+### Added
 
 ## [1.1.0] - 2026-09-15
 
