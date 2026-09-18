@@ -20,5 +20,4 @@ PREP(getBiome);
 PREP(getClimateNormals);
 PREP(getLatitudeClimate);
 PREP(scanTerrainSignals);
-PREP(updateBiomePosition);
 PREP(updateSoundPropagation);
