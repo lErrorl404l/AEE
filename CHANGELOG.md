@@ -5,6 +5,34 @@ All notable changes to this project are documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.1] - 2026-09-18
+
+### Fixed
+
+- Latitude climate computed the seasonal phase in radians but fed SQF's
+  degree-based `sin`: the annual temperature cycle collapsed, so
+  high-latitude maps (Scottish Highlands, lat 56.7) classified as Tundra
+  and drove the ambient temperature to freezing (#178). The three `sin`
+  calls now convert the phase to degrees, restoring the real seasonal
+  curve (Dfb, warmest month 19.6 C).
+
+### Fixed
+
+- Player thermal bug from the Scottish Highlands report (#123): the four
+  `compat_ace3` heat gates read CBA settings with a `0` fallback, which
+  fired every gate when the settings were uninitialised. Thresholds now
+  resolve once with their real defaults, and the WBGT band cascade no
+  longer lets the extreme-caution band overwrite the danger band (#154).
+- Biome case-mismatch and latitude inversion (#123): surface keys no
+  longer collide with `#GdtGrass` uppercase keys, and the seasonal solar
+  curve uses the absolute world latitude instead of the negative value
+  from southern-hemisphere maps. Climate normals are now latitude-driven
+  from first principles (Köppen classification).
+- Rain-on-optics droplets no longer smear across the view (#152): the
+  emitter is eye-velocity-cancelling, so droplets stay fixed to the lens.
+- Coriolis deflection now reads one shared latitude source instead of
+  guessing from map Y, matching the solar model's hemisphere sign (#154).
+
 ## [1.1.0] - 2026-09-15
 
 ### Added
