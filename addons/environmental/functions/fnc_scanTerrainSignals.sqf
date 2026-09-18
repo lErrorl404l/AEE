@@ -109,6 +109,8 @@ private _SURFACE_VOTES = [
 private _surfaceScores = createHashMap;
 private _vegScores = createHashMap;
 private _structScores = createHashMap;
+private _vegCount = 0;
+private _structCount = 0;
 private _waterCount = 0;
 private _sampleCount = 0;
 private _elevSum = 0;
@@ -126,7 +128,7 @@ for "_x" from 1 to 8 do {
             private _type = toLower (surfaceType _pos);
             private _votes = _surfaceLookup getOrDefault [_type, []];
             {
-                _surfaceScores set [_x#0, (_surfaceScores getOrDefault [_x#0, 0]) + (_x#1 * 10)];
+                _surfaceScores set [_x#0, (_surfaceScores getOrDefault [_x#0, 0]) + (_x#1)];
             } forEach _votes;
         };
         private _elev = getTerrainHeightASL _pos;
@@ -148,8 +150,9 @@ for "_x" from 1 to 8 do {
             _x params ["_keyword", "_votes"];
             if (_model find _keyword >= 0) then {
                 {
-                    _vegScores set [_x#0, (_vegScores getOrDefault [_x#0, 0]) + (_x#1 * 20)];
+                    _vegScores set [_x#0, (_vegScores getOrDefault [_x#0, 0]) + (_x#1)];
                 } forEach _votes;
+                _vegCount = _vegCount + 1;
             };
         } forEach _VEG_RULES;
     };
@@ -159,8 +162,9 @@ for "_x" from 1 to 8 do {
             _x params ["_keyword", "_votes"];
             if (_model find _keyword >= 0) then {
                 {
-                    _structScores set [_x#0, (_structScores getOrDefault [_x#0, 0]) + (_x#1 * 10)];
+                    _structScores set [_x#0, (_structScores getOrDefault [_x#0, 0]) + (_x#1)];
                 } forEach _votes;
+                _structCount = _structCount + 1;
             };
         } forEach _STRUCT_RULES;
     };
@@ -171,6 +175,26 @@ private _waterFrac = _waterCount / (_sampleCount max 1);
 
 // 4. Elevation stats.
 private _meanElev = _elevSum / (_sampleCount max 1);
+
+// 5. Coverage-normalise the evidence channels.  Each stored score is the
+//    AVERAGE vote weight per sample, i.e. weight x coverage fraction:
+//    a surface covering half the map with vote weight 2 stores 1.0, a
+//    full-coverage palm (weight 3) stores 3.0.  The fusion then applies
+//    the documented channel weights (veg 8, surface 4, struct 3) against
+//    the climate anchor (10): incidental signals stay below the anchor,
+//    full-coverage indicator species (24) are the ADR's documented
+//    override.  The scan MUST NOT pre-scale (the old *10/*20 combined
+//    with the fusion *8/*4/*3 made terrain 40-160x the anchor and broke
+//    the climate-primary contract, issue #184).
+{
+    _surfaceScores set [_x, _y / (_sampleCount max 1)];
+} forEach _surfaceScores;
+{
+    _vegScores set [_x, _y / (_vegCount max 1)];
+} forEach _vegScores;
+{
+    _structScores set [_x, _y / (_structCount max 1)];
+} forEach _structScores;
 
 private _signals = [_surfaceScores, _vegScores, _structScores, _waterFrac, _meanElev, _elevMax];
 missionNamespace setVariable [QGVAR(terrainSignals), _signals];

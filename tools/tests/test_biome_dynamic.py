@@ -33,8 +33,13 @@ def latitude_climate(lat_deg, water_frac=0.3):
     # with a third water is dominated by ocean-air masses.
     maritime = 1 / (1 + math.exp(-12 * (water_frac - 0.22)))
     t_mean = t_mean_base + 4 * maritime
-    amp_cont = max(2 + 0.38 * lat, 2.0)
-    amp = amp_cont * (1 - 0.6 * maritime)
+    # Annual amplitude: the documented model A(lat) = 1.4 + 0.405*|lat| is
+    # the FULL peak-to-trough range (Minsk at 54 N: 25.1 C swing).  The
+    # sin() term needs HALF that (the amplitude about the mean).  Feeding
+    # the full range in produced a ~2x seasonal swing, pushing mid-latitude
+    # maps into Dfa instead of Dfb (issue #184).
+    amp_full = max(1.4 + 0.405 * lat, 2.0)
+    amp = (amp_full / 2) * (1 - 0.6 * maritime)
     peak_month = 7 if lat_deg >= 0 else 1
     summer_boost = 6 * math.exp(-((lat - 35) ** 2) / 90)
     summer_dry = math.exp(-((lat - 35) ** 2) / 70)
@@ -53,10 +58,12 @@ def latitude_climate(lat_deg, water_frac=0.3):
             t_mid += summer_boost
         t_day.append(round((t_mid + diurnal / 2) * 10) / 10)
         t_night.append(round((t_mid - diurnal / 2) * 10) / 10)
-        wetness = max(0.5 + 0.5 * math.sin(phase), 0.1)
+        # Dry-season floor: the model's own dryness factor, not a flat 0.1.
+        # A flat 10% floor overdried tropical wet seasons (Tanoa -> Am).
+        dryness = math.exp(-lat / 25)
+        wetness = max(0.5 + 0.5 * math.sin(phase), dryness)
         if summer_dry > 0.3:
             wetness = 1 - wetness
-        dryness = math.exp(-lat / 25)
         base_p = (60 + 90 * dryness) * (1 + 2.5 * maritime)
         precip.append(round(base_p * wetness))
         rh.append(round(max(min(wetness * 70 + (1 - wetness) * 35, 90), 30)))
@@ -283,9 +290,12 @@ class TestMapFusion(unittest.TestCase):
 
     def test_enochns_continental(self):
         # Enoch: lat 52, water 0.05 (inland) -> continental band, cold winter.
+        # Real anchor: Minsk (53.9 N) January mean -6.6 C.  The corrected
+        # amplitude (half of A = 1.4 + 0.405*lat) gives ~-4.8 here; the
+        # old 2x-amplitude bug gave -17, and the -10 bound was locking it.
         n = latitude_climate(52, 0.05)
         t = mean_temps(n)
-        self.assertLess(min(t), -10)  # real continental winter
+        self.assertLess(min(t), -2)  # real continental winter (below freezing)
         climate = classify_biome(t, n[5])
         self.assertIn(climate, ["Dfa", "Dfb", "Dfc"])
 
