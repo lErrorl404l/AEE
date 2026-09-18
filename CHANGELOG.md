@@ -9,6 +9,15 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Latitude climate computed the seasonal phase in radians but fed SQF's
+  degree-based `sin`: the annual temperature cycle collapsed, so
+  high-latitude maps (Scottish Highlands, lat 56.7) classified as Tundra
+  and drove the ambient temperature to freezing (#178). The three `sin`
+  calls now convert the phase to degrees, restoring the real seasonal
+  curve (Dfb, warmest month 19.6 C).
+
+### Fixed
+
 - Player thermal bug from the Scottish Highlands report (#123): the four
   `compat_ace3` heat gates read CBA settings with a `0` fallback, which
   fired every gate when the settings were uninitialised. Thresholds now
