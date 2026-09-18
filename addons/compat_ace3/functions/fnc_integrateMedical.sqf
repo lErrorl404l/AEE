@@ -118,16 +118,33 @@ missionNamespace setVariable [QGVAR(heatStrokeActive), ((_wbgt > _heatStrokeWBGT
 // burn on the mirrored leg in the medical menu).  ACE's addDamageToUnit
 // maps a class name; iterate the unit's actual hit selections so the
 // wound lands where the exposure is.
+//
+// The gate requires a MINIMUM SUSTAINED exposure before any damage:
+// a night->day time skip jumps the temperature past the threshold in one
+// tick, and the old gate then compounded burn damage on every 5 s tick
+// (the reported "burns appear on time skip").  Real skin burns need a
+// thermal dose (temperature x time), so a single tick crossing the
+// threshold must not wound the unit.  12 ticks at the 5 s PFH interval
+// = 60 s of continuous heat above the threshold.
 private _burnScale = missionNamespace getVariable [QEGVAR(compat_ace3,medicalBurnDamageScale), 0.0005];
+private _burnExposureTicksRequired = 12;
+private _burnExposureTicks = missionNamespace getVariable [QGVAR(burnExposureTicks), 0];
+
 if (_temp > _burnTemp) then {
-    private _damage = (_temp - _burnTemp) * _burnScale;
-    // Only apply to parts that can take burn: the engine's hitpoint
-    // selections (body, arms, legs).  ACE accepts any body-part class;
-    // using the real selection names keeps the wound on the correct side.
-    private _parts = [
-        "Body", "Head", "LeftArm", "RightArm", "LeftLeg", "RightLeg"
-    ];
-    {
-        [_unit, _damage / 6, _x, "burn"] call ace_medical_fnc_addDamageToUnit;
-    } forEach _parts;
+    _burnExposureTicks = _burnExposureTicks + 1;
+    if (_burnExposureTicks >= _burnExposureTicksRequired) then {
+        private _damage = (_temp - _burnTemp) * _burnScale;
+        // Only apply to parts that can take burn: the engine's hitpoint
+        // selections (body, arms, legs).  ACE accepts any body-part class;
+        // using the real selection names keeps the wound on the correct side.
+        private _parts = [
+            "Body", "Head", "LeftArm", "RightArm", "LeftLeg", "RightLeg"
+        ];
+        {
+            [_unit, _damage / 6, _x, "burn"] call ace_medical_fnc_addDamageToUnit;
+        } forEach _parts;
+    };
+} else {
+    _burnExposureTicks = 0;
 };
+missionNamespace setVariable [QGVAR(burnExposureTicks), _burnExposureTicks];
