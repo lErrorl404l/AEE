@@ -29,6 +29,13 @@ private _monthIdx = (_month - 1) max 0 min 11;
 private _T_base = (_tNight select _monthIdx)
     + ((_tDay select _monthIdx) - (_tNight select _monthIdx)) * _diurnalWeight;
 
+// Publish the UN-LAPSED base temperature for the ACE3 compat handoff
+// (issue #181).  ACE's ace_weather_fnc_calculateTemperatureAtHeight applies
+// its OWN 6.5 C/km lapse to ace_weather_currentTemperature on read, so the
+// value written there must be the base BEFORE the elevation term below —
+// writing the lapse-adjusted currentTemperature double-counts altitude.
+missionNamespace setVariable [QEGVAR(core,currentTemperatureBase), _T_base];
+
 // ─── Position ─────────────────────────────────────────────────────────────
 private _pos2D = [0, 0];
 if (_posASL isEqualTo []) then {
