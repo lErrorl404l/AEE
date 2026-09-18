@@ -25,9 +25,15 @@
 //     Am if driest month ≥ 100 − P_ann/25.
 //     Aw otherwise.
 //   Continental (D): T_coldest ≤ −3 and T_warmest > 10.
-//     Dfd if T_coldest ≤ −38.
-//     Dfa if T_warmest ≥ 22.
-//     Dfb if ≥4 months ≥ 10 °C, else Dfc.
+//     Second letter by the same summer/winter test as C:
+//       Ds (dry summer): driest summer month < 40 mm and < ⅓ of the
+//         wettest winter month (continental Mediterranean: Ankara Dsa).
+//       Dw (dry winter): wettest summer month ≥ 10 × driest winter
+//         month (monsoon continental: Beijing Dwa, Harbin Dwb).
+//       Df (humid): otherwise (the original four codes).
+//     Third letter: d if T_coldest ≤ −38, a if T_warmest ≥ 22, b if ≥4
+//       months ≥ 10 °C, else c.  So Df -> Dfa/Dfb/Dfc/Dfd; Ds ->
+//       Dsa/Dsb/Dsc/Dsd; Dw -> Dwa/Dwb/Dwc/Dwd.
 //   Temperate (C): −3 < T_coldest < 18.
 //     Cs (Mediterranean): driest summer month < 40 mm and < ⅓ of the
 //       wettest winter month.  Csa if T_warmest ≥ 22, Csb if ≥4 months
@@ -154,33 +160,55 @@ if (_T_coldest >= 18) exitWith {
 private _months10 = 0;
 { if (_x >= 10) then { _months10 = _months10 + 1; }; } forEach _monthlyTemps;
 
+// ─── Summer/winter precipitation sets from the warm half-year ─────────────
+// Shared by the Continental (D) and Temperate (C) branches.  The warm
+// half-year is the 6 consecutive warmest months (start _bestStart, found
+// above for the arid threshold).
+private _driestSummer = 1e9;
+private _wettestSummer = -1e9;
+private _driestWinter = 1e9;
+private _wettestWinter = -1e9;
+for "_k" from 0 to 5 do {
+    private _pS = _monthlyPrecip select ((_bestStart + _k) mod 12);
+    private _pW = _monthlyPrecip select ((_bestStart + 6 + _k) mod 12);
+    if (_pS < _driestSummer) then { _driestSummer = _pS; };
+    if (_pS > _wettestSummer) then { _wettestSummer = _pS; };
+    if (_pW < _driestWinter) then { _driestWinter = _pW; };
+    if (_pW > _wettestWinter) then { _wettestWinter = _pW; };
+};
+// Second-letter test: s = dry summer (Mediterranean), w = dry winter
+// (monsoon), f = fully humid.  Identical criteria for D and C.
+private _drySummer = (_driestSummer < 40) && (_driestSummer < _wettestWinter / 3);
+private _dryWinter = _wettestSummer >= 10 * _driestWinter;
+
 // ─── Continental (D) vs Temperate (C) ─────────────────────────────────────
 if (_T_coldest <= -3) then {
-    // Continental
-    if (_T_coldest <= -38) then {
-        "Dfd"
+    // Continental.  Third letter: d (coldest <= -38, severe), a (warmest
+    // >= 22), b (>= 4 months >= 10), c (1-3 months >= 10).
+    private _dThird = if (_T_coldest <= -38) then {
+        "d"
     } else {
         if (_T_warmest >= 22) then {
-            "Dfa"
+            "a"
         } else {
-            ["Dfc", "Dfb"] select (_months10 >= 4)
+            if (_months10 >= 4) then { "b" } else { "c" }
+        };
+    };
+    if (_drySummer) then {
+        // Continental dry-summer (Ds): Ankara Dsa, alpine Dsb/Dsc.
+        "Ds" + _dThird
+    } else {
+        if (_dryWinter) then {
+            // Continental dry-winter (Dw): Beijing Dwa, Harbin Dwb.
+            "Dw" + _dThird
+        } else {
+            // Continental fully humid (Df): the original four codes.
+            "Df" + _dThird
         };
     };
 } else {
-    // Temperate — summer/winter month sets from the warm half-year
-    private _driestSummer = 1e9;
-    private _wettestSummer = -1e9;
-    private _driestWinter = 1e9;
-    private _wettestWinter = -1e9;
-    for "_k" from 0 to 5 do {
-        private _pS = _monthlyPrecip select ((_bestStart + _k) mod 12);
-        private _pW = _monthlyPrecip select ((_bestStart + 6 + _k) mod 12);
-        if (_pS < _driestSummer) then { _driestSummer = _pS; };
-        if (_pS > _wettestSummer) then { _wettestSummer = _pS; };
-        if (_pW < _driestWinter) then { _driestWinter = _pW; };
-        if (_pW > _wettestWinter) then { _wettestWinter = _pW; };
-    };
-    if (_driestSummer < 40 && _driestSummer < _wettestWinter / 3) then {
+    // Temperate
+    if (_drySummer) then {
         // Mediterranean (Cs)
         if (_T_warmest >= 22) then {
             "Csa"
@@ -188,7 +216,7 @@ if (_T_coldest <= -3) then {
             ["Csc", "Csb"] select (_months10 >= 4)
         };
     } else {
-        if (_wettestSummer >= 10 * _driestWinter) then {
+        if (_dryWinter) then {
             // Dry winter (Cw)
             if (_T_warmest >= 22) then {
                 "Cwa"
