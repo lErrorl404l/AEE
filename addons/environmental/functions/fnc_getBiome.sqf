@@ -95,14 +95,17 @@ if (_climateBiome == "") then { _climateBiome = "Cfb"; };
 private _scores = createHashMap;
 _scores set [_climateBiome, 10];
 {
-    _scores set [_x#0, (_scores getOrDefault [_x#0, 0]) + (_x#1 * 8)];
-} forEach _vegScores;
+    private _code = _x;
+    _scores set [_code, (_scores getOrDefault [_code, 0]) + ((_vegScores get _code) * 8)];
+} forEach (keys _vegScores);
 {
-    _scores set [_x#0, (_scores getOrDefault [_x#0, 0]) + (_x#1 * 4)];
-} forEach _surfaceScores;
+    private _code = _x;
+    _scores set [_code, (_scores getOrDefault [_code, 0]) + ((_surfaceScores get _code) * 4)];
+} forEach (keys _surfaceScores);
 {
-    _scores set [_x#0, (_scores getOrDefault [_x#0, 0]) + (_x#1 * 3)];
-} forEach _structScores;
+    private _code = _x;
+    _scores set [_code, (_scores getOrDefault [_code, 0]) + ((_structScores get _code) * 3)];
+} forEach (keys _structScores);
 
 // Elevation refinement: high terrain genuinely shifts the climate
 // (lapse rate ~6.5 C/km, Koppen altitude rule).  A 1500 m+ mean elevation

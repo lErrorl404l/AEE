@@ -422,6 +422,31 @@ class TestRootCauseRegressions(unittest.TestCase):
             text = Path(fn).read_text(encoding="utf-8")
             self.assertIn("getClimateNormals", text, f"{fn} bypasses the dispatcher")
 
+    def test_fusion_iterates_keys_not_pairs(self):
+        # #180: on Tanoa the terrain scan yields populated HashMaps, and
+        # `forEach` over a HashMap iterates the KEYS (Strings), not
+        # [code, weight] pairs.  The old `_x#0` on a String errored
+        # ("Type String, expected Array") on every map whose scan found
+        # signals.  Stratis never hit it because its score maps stayed
+        # empty.  The fusion must iterate `keys` and read weights with
+        # `get`.
+        from pathlib import Path
+
+        text = Path("addons/environmental/functions/fnc_getBiome.sqf").read_text(
+            encoding="utf-8"
+        )
+        # The three score maps are HashMaps: keys = biome codes.
+        self.assertIn("forEach (keys _vegScores)", text)
+        self.assertIn("forEach (keys _surfaceScores)", text)
+        self.assertIn("forEach (keys _structScores)", text)
+        self.assertIn("_vegScores get _code", text)
+        self.assertIn("_surfaceScores get _code", text)
+        self.assertIn("_structScores get _code", text)
+        # No raw `forEach _x` treating a HashMap element as a pair.
+        self.assertNotIn("} forEach _vegScores;", text)
+        self.assertNotIn("} forEach _surfaceScores;", text)
+        self.assertNotIn("} forEach _structScores;", text)
+
 
 if __name__ == "__main__":
     unittest.main()
