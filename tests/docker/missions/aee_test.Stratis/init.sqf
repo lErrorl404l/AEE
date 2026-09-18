@@ -213,7 +213,11 @@ if (_p10Fail == 0) then {
     private _biome = missionNamespace getVariable ["aee_core_biome", nil];
     diag_log text format ["[AEE-TEST] tick sample: T=%1 P=%2 RH=%3 rho=%4 biome=%5",
         _t, _p, _rh, _rho, _biome];
-    diag_log text format ["[BIOME] %1=%2", worldName, _biome];
+    // Map-wide biome verdict from the getBiome cache.  aee_core_biome
+    // is overwritten by per-position detection during the tick wait
+    // (issue #184), so read the classification cache instead.
+    private _mapBiome = missionNamespace getVariable ["aee_environmental_biomeCached", "<none>"];
+    diag_log text format ["[BIOME] %1=%2", worldName, _mapBiome];
 
     if ((!isNil "_t") && (!isNil "_p") && (!isNil "_rh") && (!isNil "_rho") && (!isNil "_biome")) then {
         private _okT = (_t > -60) && (_t < 60);
