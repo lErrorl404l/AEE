@@ -54,7 +54,14 @@ private _hr    = 0;
 private _flow  = 0;
 private _pain  = 0;
 
-if ((_wbgt > _wbgtThreshold) || (_risk > _riskThreshold)) then {
+// State guard: ACE's addMedicationAdjustment APPENDS an entry (pushBack),
+// it does not replace.  Re-adding every 5 s tick while hot would stack
+// entries and compound the vitals adjustment.  Add once on the
+// clear->hot transition only.
+private _heatActive = ((_wbgt > _wbgtThreshold) || (_risk > _riskThreshold));
+private _wasHeatActive = missionNamespace getVariable [QGVAR(heatStressAdjustmentActive), false];
+
+if (_heatActive) then {
     // ISO 7243 bands — heat strain raises heart rate, lowers peripheral flow.
     // Exclusive cascade: the strongest matching band wins.  A sequential
     // pair of ifs here let the extreme-caution band OVERWRITE the danger
@@ -74,12 +81,22 @@ if ((_wbgt > _wbgtThreshold) || (_risk > _riskThreshold)) then {
     if (_risk > 0.7) then { _flow = _flow - 15; _pain = _pain max 0.2; };
     if (_risk > _riskThreshold) then { _flow = _flow - 8; };
 
-    [_unit, "AEE_heatStress", 120, 600, _hr, _pain, _flow, 1]
-        call ace_medical_status_fnc_addMedicationAdjustment;
+    if (!_wasHeatActive) then {
+        [_unit, "AEE_heatStress", 120, 600, _hr, _pain, _flow, 1]
+            call ace_medical_status_fnc_addMedicationAdjustment;
+        missionNamespace setVariable [QGVAR(heatStressAdjustmentActive), true];
+    };
 } else {
-    // Conditions clear — expire the adjustment (maxTimeInSystem 0)
-    [_unit, "AEE_heatStress", 120, 0, 0, 0, 0, 1]
-        call ace_medical_status_fnc_addMedicationAdjustment;
+    // Conditions clear — remove OUR entries directly.  ACE rejects
+    // maxTimeInSystem <= 0 (its addMedicationAdjustment exits with a
+    // warning), so the old "expire with 0" call never worked and spammed
+    // the RPT every tick.  There is no removal API; filter the array.
+    if (_wasHeatActive) then {
+        private _medications = _unit getVariable ["ace_medical_status_medications", []];
+        _medications = _medications select {(_x select 0) != "AEE_heatStress"};
+        _unit setVariable ["ace_medical_status_medications", _medications, true];
+        missionNamespace setVariable [QGVAR(heatStressAdjustmentActive), false];
+    };
 };
 
 // ─── Heat stroke (cardiac arrest) at extreme WBGT + critical dehydration ──
