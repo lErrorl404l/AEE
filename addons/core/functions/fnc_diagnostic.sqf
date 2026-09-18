@@ -13,5 +13,8 @@ diag_log text format [
     [_T, 1] call CBA_fnc_formatNumber,
     [_P, 1] call CBA_fnc_formatNumber,
     [_RH, 0] call CBA_fnc_formatNumber,
-    [_rho, 4] call CBA_fnc_formatNumber
+    // CBA_fnc_formatNumber is [number, integerWidth, decimalPlaces].
+    // Passing 4 as the 2nd arg padded the integer to 4 digits ("0001");
+    // the density needs 4 DECIMAL places (issue #177).
+    [_rho, 0, 4] call CBA_fnc_formatNumber
 ];
