@@ -7,9 +7,8 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [1.1.1] - 2026-09-18
 
-> AEE is a physically accurate environment simulation for Arma 3. This
-> release fixes the temperature model defects found in field testing with
-> ACE3 and ACM: the latitude climate phase, the double-lapse air
+> This release fixes the temperature model defects found in field testing
+> with ACE3 and ACM: the latitude climate phase, the double-lapse air
 > temperature, heat-stress medication stacking, the burn gate on time
 > skips, and the diagnostic density display.
 
