@@ -58,8 +58,14 @@ private _tMeanBase = 27 - 0.42 * _lat;
 // maritime moderation).
 private _maritime = 1 / (1 + exp (-12 * (_waterFrac - 0.22)));
 private _tMean = _tMeanBase + 4 * _maritime;
-private _ampCont = (2 + 0.38 * _lat) max 2.0;
-private _amp = _ampCont * (1 - 0.6 * _maritime);
+// Annual amplitude: the documented model A(lat) = 1.4 + 0.405*|lat| is
+// the FULL peak-to-trough range (Minsk at 54 N: 25.1 C swing).  The
+// sin() term below needs HALF that - the amplitude about the mean - so
+// the range is halved here.  Feeding the full range in produced a ~2x
+// seasonal swing (Enoch min -17 / max 26 vs real Minsk -6.6 / 18.5),
+// pushing mid-latitude maps into Dfa instead of Dfb (issue #184).
+private _ampFull = (1.4 + 0.405 * _lat) max 2.0;
+private _amp = (_ampFull / 2) * (1 - 0.6 * _maritime);
 
 // Hemisphere: peak month is July (7) north, January (1) south.
 private _peakMonth = [1, 7] select (_latDeg >= 0);
@@ -104,9 +110,14 @@ for "_m" from 1 to 12 do {
 
     // Wet season: summer convection normally; INVERTED under the
     // subtropical high (Mediterranean winter rains).
-    private _wetness = (0.5 + 0.5 * (sin _phaseDeg)) max 0.1;
-    if (_summerDry > 0.3) then { _wetness = 1 - _wetness; };
+    // Dry-season floor: the model's own dryness factor, not a flat 0.1.
+    // A flat 10% floor overdried tropical wet seasons (Tanoa -> Am: dry
+    // month 36 mm vs real Port Vila ~100 mm; Af needs driest >= 60 mm).
+    // exp(-lat/25) keeps wet tropics at ~50% of wet-season rain year-round
+    // (Port Vila ~179 mm) and lets genuinely dry latitudes fall low.
     private _dryness = exp (-_lat / 25);
+    private _wetness = (0.5 + 0.5 * (sin _phaseDeg)) max _dryness;
+    if (_summerDry > 0.3) then { _wetness = 1 - _wetness; };
     private _baseP = (60 + 90 * _dryness) * (1 + 2.5 * _maritime);
     _precip pushBack (round (_baseP * _wetness));
 
