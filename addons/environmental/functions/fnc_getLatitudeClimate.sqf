@@ -87,9 +87,15 @@ for "_m" from 1 to 12 do {
     // when m == peak (July north, January south) and -1 six months later.
     // A naive (m - peak)/12 * 2pi makes the warmest month come 3 months
     // LATE (October north) - a real bug caught by the dynamic biome tests.
+    // SQF trig takes DEGREES: the phase is computed in radians (2*pi), so
+    // it must be converted before sin — feeding radians straight in made
+    // sin(pi/2) = sin(1.57 deg) = 0.027 instead of 1, collapsing the
+    // annual cycle to near-flat and classifying high-latitude maps as
+    // Tundra (issue #178).
     private _phase = (_m - _peakMonth + 3) / 12 * 2 * pi;
-    private _tMid = _tMean + _amp * (sin _phase);
-    if ((sin _phase) > 0) then { _tMid = _tMid + _summerBoost; };
+    private _phaseDeg = _phase * 180 / pi;
+    private _tMid = _tMean + _amp * (sin _phaseDeg);
+    if ((sin _phaseDeg) > 0) then { _tMid = _tMid + _summerBoost; };
 
     private _tD = _tMid + _diurnal / 2;
     private _tN = _tMid - _diurnal / 2;
@@ -98,7 +104,7 @@ for "_m" from 1 to 12 do {
 
     // Wet season: summer convection normally; INVERTED under the
     // subtropical high (Mediterranean winter rains).
-    private _wetness = (0.5 + 0.5 * (sin _phase)) max 0.1;
+    private _wetness = (0.5 + 0.5 * (sin _phaseDeg)) max 0.1;
     if (_summerDry > 0.3) then { _wetness = 1 - _wetness; };
     private _dryness = exp (-_lat / 25);
     private _baseP = (60 + 90 * _dryness) * (1 + 2.5 * _maritime);
