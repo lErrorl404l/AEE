@@ -19,6 +19,31 @@
   emitter is eye-velocity-cancelling, so droplets stay fixed to the lens.
 - Coriolis deflection now reads one shared latitude source instead of
   guessing from map Y, matching the solar model's hemisphere sign (#154).
+- Scottish Highlands classified ET/Tundra instead of Dfb (#178): the
+  seasonal climate phase was computed in radians and fed to SQF `sin`,
+  which takes degrees, collapsing the annual temperature cycle. The three
+  call sites now convert the phase to degrees, so high-latitude maps keep
+  a real seasonal swing (Dfb, warmest month ~19.6 C on oski_corran).
+- ACE3 air temperature read -37 C at altitude (#181): the compat wrote the
+  lapse-adjusted temperature into `ace_weather_currentTemperature`, and
+  ACE3's `calculateTemperatureAtHeight` applies its own 6.5 C/km lapse,
+  so the lapse double-counted. The compat now publishes the un-lapsed base
+  temperature and re-asserts `ace_weather_enabled = false` every tick,
+  because a mission CBA settings hash can re-enable ACE3's weather model
+  after preInit.
+- Heat-stress medication stacked without limit: ACE3's
+  `addMedicationAdjustment` appends an entry instead of replacing it, so
+  re-adding every 5 s tick compounded the vitals adjustment. The compat
+  now adds once on the clear-to-hot transition and removes its own entry
+  directly on clear.
+- Diagnostic density always read `0001` (#177): `CBA_fnc_formatNumber`
+  takes `[number, integer width, decimal places]`, and the calls passed
+  the decimal width in the integer slot. Fixed at the three call sites.
+- Thermal-burn wounds appeared instantly on a night-to-day time skip: the
+  burn gate fired every 5 s tick while the air exceeded the threshold, so
+  a skip that jumped past 25 C compounded burn damage in a single tick.
+  The gate now requires 60 s of sustained exposure before any damage,
+  matching the heat-stress transition-guard pattern.
 
 ## [1.1.0]
 
