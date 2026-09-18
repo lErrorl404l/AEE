@@ -1,16 +1,25 @@
 #include "..\script_component.hpp"
 
 // ─── Biome name table (shared by override and final lookup) ──────────
+// The full 30-code Koppen set: 5 main groups, second letter s/w/f
+// precipitation, third letter a/b/c/d temperature (AR 70-38 uses this
+// Koppen (1931) structure for its military operating environments).
 private _BIOME_NAMES = createHashMapFromArray [
     ["Af", "Tropical Rainforest"], ["Am", "Monsoon Tropical"],
     ["Aw", "Tropical Savanna"],    ["BSh", "Hot Semi-Arid"],
     ["BSk", "Cold Semi-Arid"],     ["BWk", "Cold Desert"],
     ["BWh", "Hot Desert"],         ["Csa", "Hot Mediterranean"],
-    ["Csb", "Warm Mediterranean"], ["Cfa", "Humid Subtropical"],
-    ["Cfb", "Oceanic"],            ["Cwa", "Monsoon Subtropical"],
+    ["Csb", "Warm Mediterranean"], ["Csc", "Cool Mediterranean"],
+    ["Cfa", "Humid Subtropical"],  ["Cfb", "Oceanic"],
+    ["Cfc", "Subpolar Oceanic"],   ["Cwa", "Monsoon Subtropical"],
+    ["Cwb", "Subtropical Highland"], ["Cwc", "Cool Subtropical Highland"],
+    ["Dsa", "Dry-Summer Continental"], ["Dsb", "Cool Dry-Summer Continental"],
+    ["Dsc", "Subarctic Dry-Summer"], ["Dsd", "Severe Subarctic Dry-Summer"],
+    ["Dwa", "Monsoon Continental"], ["Dwb", "Cool Monsoon Continental"],
+    ["Dwc", "Subarctic Monsoon"],  ["Dwd", "Severe Subarctic Monsoon"],
     ["Dfa", "Hot Continental"],    ["Dfb", "Humid Continental"],
-    ["Dfc", "Subarctic"],          ["ET", "Tundra"],
-    ["EF", "Ice Cap"]
+    ["Dfc", "Subarctic"],          ["Dfd", "Severe Subarctic"],
+    ["ET", "Tundra"],              ["EF", "Ice Cap"]
 ];
 
 // ─── Module override (EDEN/Zeus) ────────────────────────────────────

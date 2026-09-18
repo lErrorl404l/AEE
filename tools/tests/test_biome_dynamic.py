@@ -30,9 +30,13 @@ def latitude_climate(lat_deg, water_frac=0.3):
     t_mean_base = 27 - 0.42 * lat
     # Maritime air masses moderate amplitude AND raise the annual mean
     # (the ocean warms the winter half-year).  Threshold sits low: a map
-    # with a third water is dominated by ocean-air masses.
+    # with a third water is dominated by ocean-air masses.  The +5 C
+    # coefficient is anchored to the Scottish Highlands (Aviemore 57.2 N:
+    # latitude base 3.2 C, real mean 7.7 C, +4.5 C lift at waterFrac
+    # ~0.35); the old +4 C left the mean 1.2 C low, dropping
+    # high-latitude oceanic maps to Cfc instead of Cfb (issue #184).
     maritime = 1 / (1 + math.exp(-12 * (water_frac - 0.22)))
-    t_mean = t_mean_base + 4 * maritime
+    t_mean = t_mean_base + 5 * maritime
     # Annual amplitude: the documented model A(lat) = 1.4 + 0.405*|lat| is
     # the FULL peak-to-trough range (Minsk at 54 N: 25.1 C swing).  The
     # sin() term needs HALF that (the amplitude about the mean).  Feeding
@@ -113,20 +117,34 @@ def classify_biome(temps, precip):
 
     # Continental (D): coldest month <= -3.
     if t_cold <= -3:
-        if t_cold <= -38:
-            return "Dfd"
+        # Second letter by the same summer/winter test as C.
+        dry_summer = min(precip[3:9])
+        wet_winter = max(precip[0:3] + precip[9:12])
+        wet_summer = max(precip[3:9])
+        dry_winter = min(precip[0:3] + precip[9:12])
         months_10 = sum(1 for t in temps if t >= 10)
-        if t_warm >= 22:
-            return "Dfa"
-        return "Dfb" if months_10 >= 4 else "Dfc"
+        third = (
+            "d"
+            if t_cold <= -38
+            else ("a" if t_warm >= 22 else ("b" if months_10 >= 4 else "c"))
+        )
+        if dry_summer < 40 and dry_summer < wet_winter / 3:
+            return "Ds" + third  # continental Mediterranean: Ankara Dsa
+        if wet_summer >= 10 * dry_winter:
+            return "Dw" + third  # monsoon continental: Beijing Dwa
+        return "Df" + third  # fully humid: Dfa/Dfb/Dfc/Dfd
 
     # Temperate (C): driest-summer rule.
     dry_summer = min(precip[3:9])
     wet_winter = max(precip[0:3] + precip[9:12])
+    wet_summer = max(precip[3:9])
+    dry_winter = min(precip[0:3] + precip[9:12])
     months_10 = sum(1 for t in temps if t >= 10)
     if dry_summer < 40 and dry_summer < wet_winter / 3:
         return "Csa" if t_warm >= 22 else ("Csb" if months_10 >= 4 else "Csc")
-    return "Cfa" if t_warm >= 22 else "Cfb"
+    if wet_summer >= 10 * dry_winter:
+        return "Cwa" if t_warm >= 22 else ("Cwb" if months_10 >= 4 else "Cwc")
+    return "Cfa" if t_warm >= 22 else ("Cfb" if months_10 >= 4 else "Cfc")
 
 
 def biome_from_climate(temps, precip):
@@ -170,9 +188,15 @@ class TestLatitudeClimatePhysics(unittest.TestCase):
         self.assertLess(max(t) - min(t), 7)  # equatorial: little seasonality
 
     def test_polar_cold(self):
+        # 70 N clamps to 66.5 (polar night regime).  Annual mean must be
+        # cold, near freezing.  Real anchor: Rovaniemi at 66.5 N has
+        # annual mean +0.9 C (Jan -10, Jul +15).  The corrected maritime
+        # coefficient (+5 C) gives +0.04 here; the old +4 C gave -0.17,
+        # slightly too cold.  The < 2 C bound keeps "cold" without
+        # over-constraining against the real near-zero mean.
         n = latitude_climate(70, 0.1)
         t = mean_temps(n)
-        self.assertLess(sum(t) / 12, 0)
+        self.assertLess(sum(t) / 12, 2)
 
     def test_hemisphere_peak_shift(self):
         # July warmest north, January warmest south.
@@ -261,6 +285,46 @@ class TestKoppenClassification(unittest.TestCase):
         temps = [-15, -14, -12, -6, 0, 5, 8, 7, 2, -4, -10, -14]
         precip = [25] * 12
         self.assertEqual(classify_biome(temps, precip), "ET")
+
+    def test_monsoon_continental_dwa(self):
+        # Beijing: cold dry winter (Jan mean -3.7), hot humid summer
+        # (Jul 26.2, 185 mm), wettest summer >= 10x driest winter.
+        temps = [-3.7, -0.7, 5.8, 13.9, 20.0, 24.4, 26.2, 24.8, 20.0, 13.1, 4.6, -1.5]
+        precip = [2.6, 5.9, 9.0, 26.3, 33.1, 77.7, 185.2, 159.7, 45.5, 21.8, 7.4, 2.8]
+        self.assertEqual(classify_biome(temps, precip), "Dwa")
+
+    def test_dry_summer_continental_dsa(self):
+        # Continental Mediterranean: cold winter (<= -3), hot dry summer,
+        # wettest winter > 3x driest summer month.
+        temps = [-5, -4, 2, 10, 17, 22, 25, 24, 18, 10, 2, -3]
+        precip = [40, 35, 40, 45, 40, 20, 10, 8, 15, 30, 35, 40]
+        self.assertEqual(classify_biome(temps, precip), "Dsa")
+
+    def test_subpolar_oceanic_cfc(self):
+        # Torshavn: cool year-round, wet every month, no dry season,
+        # fewer than 4 months >= 10 C.
+        temps = [1.7, 1.8, 2.7, 4.4, 7.0, 9.3, 11.0, 11.1, 8.9, 6.1, 3.6, 2.2]
+        precip = [141, 95, 132, 89, 63, 57, 71, 96, 119, 147, 135, 155]
+        self.assertEqual(classify_biome(temps, precip), "Cfc")
+
+    def test_severe_subarctic_dfd(self):
+        # Oymyakon: extreme winter (Jan -46), short mild summer.
+        temps = [
+            -46.4,
+            -42.0,
+            -31.3,
+            -14.2,
+            -1.7,
+            9.4,
+            14.8,
+            11.2,
+            2.5,
+            -10.9,
+            -32.2,
+            -42.5,
+        ]
+        precip = [9, 9, 6, 8, 20, 35, 48, 38, 25, 15, 12, 8]
+        self.assertEqual(classify_biome(temps, precip), "Dfd")
 
 
 # ─── Map-resolution fusion tests (issue #123) ──────────────────────────────

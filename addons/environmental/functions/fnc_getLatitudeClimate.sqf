@@ -51,13 +51,18 @@ private _tMeanBase = 27 - 0.42 * _lat;
 // capacity delays cooling), so the effective mean rises with water
 // fraction - this is what separates London (Cfb, mean 11) from Winnipeg
 // (Dfb, mean 3) at similar latitude.  Maritime = logistic(waterFrac),
-// shifting the mean up to +4 C and collapsing the amplitude ~60%.
+// shifting the mean up to +5 C and collapsing the amplitude ~60%.
 // The threshold sits low (waterFrac 0.3 ~ fully maritime): a map with a
 // third of its area water is dominated by ocean-air masses (warm-current
 // climates like the British Isles have modest land fractions but strong
-// maritime moderation).
+// maritime moderation).  The +5 C coefficient is anchored to the
+// Scottish Highlands (Aviemore, 57.2 N): the latitude base 27 - 0.42*lat
+// gives 3.2 C, the real annual mean is 7.7 C - a +4.5 C maritime lift at
+// waterFrac ~0.35.  The earlier +4 C coefficient left the mean 1.2 C
+// low, dropping high-latitude oceanic maps to Cfc instead of Cfb
+// (issue #184).
 private _maritime = 1 / (1 + exp (-12 * (_waterFrac - 0.22)));
-private _tMean = _tMeanBase + 4 * _maritime;
+private _tMean = _tMeanBase + 5 * _maritime;
 // Annual amplitude: the documented model A(lat) = 1.4 + 0.405*|lat| is
 // the FULL peak-to-trough range (Minsk at 54 N: 25.1 C swing).  The
 // sin() term below needs HALF that - the amplitude about the mean - so
