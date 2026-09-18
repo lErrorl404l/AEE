@@ -7,10 +7,11 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [1.1.1] - 2026-09-18
 
-> This release fixes the temperature model defects found in field testing
-> with ACE3 and ACM: the latitude climate phase, the double-lapse air
-> temperature, heat-stress medication stacking, the burn gate on time
-> skips, and the diagnostic density display.
+> Fixes the defects found in field testing: high-latitude maps now get
+> their real seasonal climate instead of Tundra, world latitude feeds
+> every consumer from one source, ACE3 air temperature no longer
+> double-lapses, heat-stress medication and burn damage no longer stack
+> on time skips, and the density readout shows true values.
 
 ### Fixed
 
