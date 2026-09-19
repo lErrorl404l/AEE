@@ -6,7 +6,7 @@
     QGVAR(nvgBatteryEnabled),
     "CHECKBOX",
     [LLSTRING(nvgBatteryEnabled_Name), LLSTRING(nvgBatteryEnabled_Description)],
-    ["AEE NVG", "Intensity"],
+    ["AEE Night Vision", "Intensity"],
     false,
     true,
     {}

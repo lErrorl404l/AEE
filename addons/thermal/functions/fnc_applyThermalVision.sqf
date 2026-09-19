@@ -239,9 +239,9 @@ _hVig ppEffectCommit 0;
 _hVig ppEffectEnable true;
 _hVig ppEffectForceInNVG true;
 
-// Diagnostics: set aee_optics_nvgDebug = true in the debug console to log
+// Diagnostics: set aee_nightvision_nvgDebug = true in the debug console to log
 // every thermal tick's handles and params to the .rpt.
-if (missionNamespace getVariable [QEGVAR(optics,nvgDebug), false]) then {
+if (missionNamespace getVariable [QEGVAR(nightvision,nvgDebug), false]) then {
     diag_log text format [
         "[AEE] Thermal tick | visMode=%1 contrast=%2 crossover=%3 | handles CC=%4 grain=%5 blur=%6 | CC params %7 | grain=%8 blur=%9",
         currentVisionMode _player,

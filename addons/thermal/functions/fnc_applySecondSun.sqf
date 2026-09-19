@@ -84,7 +84,7 @@ _sun setLightAttenuation [1e10, 150, 0, 0];
 
 // Debug: log the radiation and the scaled brightness the engine's sun term
 // sees, with dayTime, so day/night behaviour is traceable.
-if (missionNamespace getVariable [QEGVAR(optics,nvgDebug), false]) then {
+if (missionNamespace getVariable [QEGVAR(nightvision,nvgDebug), false]) then {
     diag_log text format ["[AEE] SecondSun: rad=%1 brightness=%2 dayTime=%3 date=%4",
         _radiation, _lightBrightness, dayTime, date];
 };

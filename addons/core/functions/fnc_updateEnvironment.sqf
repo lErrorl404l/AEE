@@ -270,7 +270,7 @@ if (GVAR(opticsEnabled)) then {
 // ─── Post-Process Effects & HUD ─────────────────────────────────────────
 [] call EFUNC(optics,applyRainOnOpticsFX);
 [] call EFUNC(optics,applyHeatShimmerFX);
-[] call EFUNC(nvg,applyNightGrain);
+[] call EFUNC(nightvision,applyNightGrain);
 [] call EFUNC(optics,applyMirageFX);
 [] call EFUNC(optics,applySolarGlareFX);
 [] call EFUNC(optics,applySnowBlindnessFX);

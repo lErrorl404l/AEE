@@ -69,7 +69,7 @@ if (currentVisionMode _player != 1) exitWith {
         AEE_LOG_INFO("NVG effects torn down (vision mode left)");
 
         // Tear down the tube-face overlay the moment NVG is removed.
-        (["aee_optics_nvg_title"] call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
+        (["aee_nightvision_nvg_title"] call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
         missionNamespace setVariable [QGVAR(nvgDisplayUp), false];
 
         missionNamespace setVariable [QGVAR(nvgGrainActive), false];
@@ -1323,7 +1323,7 @@ if (_hDoF >= 0) then {
     _hDoF ppEffectForceInNVG true;
 };
 
-// Diagnostics: set aee_nvg_nvgDebug = true in the debug console to log
+// Diagnostics: set aee_nightvision_nvgDebug = true in the debug console to log
 // every tick's handles and params to the .rpt.  ppEffectCreate returns -1
 // when the priority is taken — a -1 handle means the effect did not apply.
 // gain and lux are the AGC inputs: gain must fall as lux rises (the
@@ -1419,7 +1419,7 @@ _hGrain ppEffectForceInNVG true;
 // engine and other NVG mods handle tube geometry.
 private _disp = uiNamespace getVariable [QGVAR(titleDisplay), displayNull];
 if !(missionNamespace getVariable [QGVAR(nvgDisplayUp), false]) then {
-    (["aee_optics_nvg_title"] call BIS_fnc_rscLayer) cutRsc [QGVAR(nvgTitle), "PLAIN", 1, false];
+    (["aee_nightvision_nvg_title"] call BIS_fnc_rscLayer) cutRsc [QGVAR(nvgTitle), "PLAIN", 1, false];
     missionNamespace setVariable [QGVAR(nvgDisplayUp), true];
 };
 if (!isNull _disp) then {

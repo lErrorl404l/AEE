@@ -22,7 +22,7 @@
     // the engine's default aperture (DoF off) so normal vision is sharp.
     if (_visionMode == 0 && !isNil QGVAR(sensorPFH)) then {
         setAperture -1;
-        [] call EFUNC(nvg,applyNVGTubeModel);
+        [] call EFUNC(nightvision,applyNVGTubeModel);
         [] call EFUNC(thermal,applyThermalVision);
         ["EXIT"] call EFUNC(thermal,applySecondSun);
         ["EXIT"] call EFUNC(thermal,applyClothingThermal);
@@ -43,10 +43,10 @@
         {
             missionNamespace setVariable [_x, -1];
         } forEach [
-            QEGVAR(nvg,ppHandle_NVG_CC),
-            QEGVAR(nvg,ppHandle_NVG_Bloom),
-            QEGVAR(nvg,ppHandle_NVG_Vignette),
-            QEGVAR(nvg,ppHandle_NVG_Grain)
+            QEGVAR(nightvision,ppHandle_NVG_CC),
+            QEGVAR(nightvision,ppHandle_NVG_Bloom),
+            QEGVAR(nightvision,ppHandle_NVG_Vignette),
+            QEGVAR(nightvision,ppHandle_NVG_Grain)
         ];
     };
     if (_visionMode == 2) then {
@@ -92,7 +92,7 @@
             // lands on the lens whether it is NVG or thermal).  Run before
             // the mode-specific branches so both get the source.
             ["TICK"] call EFUNC(thermal,applyRainDroplets);
-            if (_vm == 1) then { [] call EFUNC(nvg,applyNVGTubeModel); };
+            if (_vm == 1) then { [] call EFUNC(nightvision,applyNVGTubeModel); };
             if (_vm == 2) then {
                 // Thermal optics are parfocal: LWIR wavelength is ~10x
                 // visible, so the depth of field is so deep that real FLIR
@@ -100,10 +100,10 @@
                 // Kill the NVG DoF effect so its last focus value (e.g.
                 // PVS-31's 20 m ring) does not leak into the thermal view
                 // as a fixed focus blur.
-                private _hDof = missionNamespace getVariable [QEGVAR(nvg,ppHandle_NVG_DoF), -1];
+                private _hDof = missionNamespace getVariable [QEGVAR(nightvision,ppHandle_NVG_DoF), -1];
                 if (_hDof >= 0) then {
                     ppEffectDestroy _hDof;
-                    missionNamespace setVariable [QEGVAR(nvg,ppHandle_NVG_DoF), -1];
+                    missionNamespace setVariable [QEGVAR(nightvision,ppHandle_NVG_DoF), -1];
                 };
                 // Scene-adaptive AGC (issue #196): compute the scene's
                 // radiance window from the physics state BEFORE the
@@ -158,7 +158,7 @@
 
     // Duration scales with flash intensity: brighter = longer window.
     private _duration = 0.15 + _visibleFire * 0.1;
-    missionNamespace setVariable [QEGVAR(nvg,nvgFlashUntil), CBA_missionTime + _duration];
+    missionNamespace setVariable [QEGVAR(nightvision,nvgFlashUntil), CBA_missionTime + _duration];
 }, false] call CBA_fnc_addPlayerEventHandler;
 
 // ─── Map-wide thermal boot pass ───────────────────────────────────────────

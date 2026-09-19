@@ -22,7 +22,7 @@ from tools.tests.test_astronomical import ks_lunar_lux
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 _OPTICS = _REPO_ROOT / "addons" / "optics" / "functions"
 _THERMAL = _REPO_ROOT / "addons" / "thermal" / "functions"
-_NVG = _REPO_ROOT / "addons" / "nvg" / "functions"
+_NVG = _REPO_ROOT / "addons" / "nightvision" / "functions"
 
 
 def _read_sqf(name, addon="optics"):
@@ -30,7 +30,7 @@ def _read_sqf(name, addon="optics"):
     constant change in SQF fails the mirror tests until re-synced."""
     if addon == "thermal":
         base = _THERMAL
-    elif addon == "nvg":
+    elif addon == "nightvision":
         base = _NVG
     else:
         base = _OPTICS
@@ -342,7 +342,7 @@ def nvg_drain(base_drain, gain, sensitivity, temp_derating, dt, battery_enabled=
     tempDrainFactor = 1/derating, clamped 1.0-4.0
     drain = baseDrain * gainRatio * tempDrainFactor * dt
 
-    battery_enabled is the opt-in aee_optics_nvgBatteryEnabled toggle
+    battery_enabled is the opt-in aee_nightvision_nvgBatteryEnabled toggle
     (issue #36); when off, no drain is applied.
     """
     if not battery_enabled:
@@ -2736,7 +2736,7 @@ class TestSQFSync(unittest.TestCase):
                 "from 1 to 4",
             ],
             "terrain fallback geometry",
-            addon="nvg",
+            addon="nightvision",
         )
 
     def test_focus_median_and_watchdog(self):
@@ -2751,7 +2751,7 @@ class TestSQFSync(unittest.TestCase):
                 "_curFocus * 0.03",
             ],
             "rolling median filter / settle watchdog / deadband",
-            addon="nvg",
+            addon="nightvision",
         )
 
     def test_focus_vehicle_exclusion(self):
@@ -2759,7 +2759,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_applyNVGTubeModel.sqf",
             ["vehicle _player", "_hitObj != _veh && _hitParent != _veh"],
             "vehicle cabin exclusion",
-            addon="nvg",
+            addon="nightvision",
         )
 
     # ── NVG tube / illuminance (fnc_applyNVGTubeModel.sqf,
@@ -2808,7 +2808,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_applyNVGTubeModel.sqf",
             ["_sensitivity / (_lux + 1)", "min _sensitivity"],
             "AGC gain model",
-            addon="nvg",
+            addon="nightvision",
         )
 
     def test_nvg_shot_noise_model(self):
@@ -2820,7 +2820,7 @@ class TestSQFSync(unittest.TestCase):
                 "_lux * _sensitivity * AEE_PHOTON_SCALE",
             ],
             "Poisson shot noise",
-            addon="nvg",
+            addon="nightvision",
         )
 
     def test_nvg_noise_floor_model(self):
@@ -2832,7 +2832,7 @@ class TestSQFSync(unittest.TestCase):
                 "0.03 max _noise min 1",
             ],
             "combined noise floor + rain Mie",
-            addon="nvg",
+            addon="nightvision",
         )
 
     def test_nvg_temp_factors(self):
@@ -2844,7 +2844,7 @@ class TestSQFSync(unittest.TestCase):
                 "20, 45, _airTemp, 1.0, 1.6",
             ],
             "temperature gain/noise factors",
-            addon="nvg",
+            addon="nightvision",
         )
 
     def test_nvg_battery_drain_model(self):
@@ -2858,7 +2858,7 @@ class TestSQFSync(unittest.TestCase):
                 "0.0000111",
             ],
             "battery drain rates",
-            addon="nvg",
+            addon="nightvision",
         )
 
     def test_nvg_brightness_model(self):
@@ -2866,7 +2866,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_applyNVGTubeModel.sqf",
             ["0.001, 0.25, _lux, 0.65, 1.0"],
             "AGC output brightness",
-            addon="nvg",
+            addon="nightvision",
         )
 
     def test_nvg_mtf_model(self):
@@ -2874,7 +2874,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_applyNVGTubeModel.sqf",
             ["_mtf15 * 0.55", "_blowout * 0.4", "1 - rain * 0.5"],
             "MTF degradation",
-            addon="nvg",
+            addon="nightvision",
         )
 
     def test_nvg_veiling_glare_floor(self):
@@ -2882,7 +2882,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_applyNVGTubeModel.sqf",
             ["_bloom = _bloom + 0.02"],
             "clear-condition veiling glare floor",
-            addon="nvg",
+            addon="nightvision",
         )
 
     # ── Engine thermal drive (fnc_applyEngineThermal.sqf) ──
@@ -3022,9 +3022,9 @@ class TestSQFSync(unittest.TestCase):
         # snap the display).  Only the droplet physics reads raw rain
         # (instant response is correct there).
         for fname, ctx, addon in [
-            ("fnc_applyNVGTubeModel.sqf", "NVG tube", "nvg"),
+            ("fnc_applyNVGTubeModel.sqf", "NVG tube", "nightvision"),
             ("fnc_calculateIlluminance.sqf", "illuminance", "optics"),
-            ("fnc_applyNightGrain.sqf", "night grain", "nvg"),
+            ("fnc_applyNightGrain.sqf", "night grain", "nightvision"),
             ("fnc_applyThermalVision.sqf", "thermal vision", "thermal"),
             ("fnc_calculateAttenuation.sqf", "attenuation", "optics"),
             ("fnc_calculateAtmosphericSeeing.sqf", "seeing", "optics"),
@@ -3056,7 +3056,7 @@ class TestSQFSync(unittest.TestCase):
         # caused the HEAD memory-point bug and the separate vectorDirVisual
         # calls in the focus fan / blowout cone).
         for fname, ctx, addon in [
-            ("fnc_applyNVGTubeModel.sqf", "NVG tube", "nvg"),
+            ("fnc_applyNVGTubeModel.sqf", "NVG tube", "nightvision"),
             ("fnc_calculateIlluminance.sqf", "illuminance", "optics"),
             ("fnc_applyRainDroplets.sqf", "droplets", "thermal"),
         ]:
@@ -3475,9 +3475,9 @@ class TestNVGStackAuditSQFSync(unittest.TestCase):
     def _read(self, name):
         from pathlib import Path
 
-        # NVG functions moved to the aee_nvg addon (three-system split).
+        # NVG functions moved to the aee_nightvision addon (three-system split).
         base = (
-            "addons/nvg"
+            "addons/nightvision"
             if name.startswith("fnc_applyNVG") or name.startswith("fnc_applyNight")
             else "addons/optics"
         )
