@@ -140,5 +140,63 @@ class TestSourcedConstants(unittest.TestCase):
         self.assertIn("Köhler", text)
 
 
+class TestTwoNodeSolver(unittest.TestCase):
+    """Drift-locks for the #191 two-node SQF solver: the sourced Gagge
+    physiology constants must survive porting from the Python mirror."""
+
+    def test_two_node_file_exists_and_registered(self):
+        from pathlib import Path
+
+        fn = Path("addons/thermal/functions/fnc_solveTwoNodeSelection.sqf")
+        self.assertTrue(fn.exists())
+        prep = Path("addons/thermal/XEH_PREP.hpp").read_text(encoding="utf-8")
+        self.assertIn("solveTwoNodeSelection", prep)
+
+    def test_gagge_physiology_constants(self):
+        text = Path("addons/thermal/functions/fnc_solveTwoNodeSelection.sqf").read_text(
+            encoding="utf-8"
+        )
+        # Blood-flow coupling: K_min 5.28, blood cp 4186.
+        self.assertIn("5.28", text)
+        self.assertIn("4186", text)
+        # Vasodilation/constriction signals at the neutral skin 33.7.
+        self.assertIn("33.7", text)
+        # Blood flow capped at 14.4 (240 ml/min/m2 max vasodilation).
+        self.assertIn("14.4", text)
+        # Shivering gain 19.4 with core/skin cold signals.
+        self.assertIn("19.4", text)
+        self.assertIn("36.8", text)
+        # Gagge convection correlation (not the McAdams inert form).
+        self.assertIn("8.6", text)
+
+    def test_two_node_physics_patterns(self):
+        text = Path("addons/thermal/functions/fnc_solveTwoNodeSelection.sqf").read_text(
+            encoding="utf-8"
+        )
+        # Analytic core solve (linear residual) - the damped 2x2 Newton
+        # oscillated (traced to 1363 C).
+        self.assertIn("Analytic core solution", text)
+        self.assertIn("_qGen + _qShiv * _area", text)
+        # Shivering uses the PERSISTENT core, never the iterating value.
+        self.assertIn("_tCore0", text)
+        # Bolton 1980 saturation pressure.
+        self.assertIn("17.67", text)
+        self.assertIn("611.2", text)
+        # Lewis relation for the evaporative path.
+        self.assertIn("16.5", text)
+        # Asymmetric transient: wet skin cools slower (x1.5).
+        self.assertIn("1.5", text)
+
+    def test_inert_conduction_not_l_char(self):
+        text = Path("addons/thermal/functions/fnc_solveTwoNodeSelection.sqf").read_text(
+            encoding="utf-8"
+        )
+        # The #124 audit bug: conduction must use L_cond (wall thickness),
+        # not L_char (convection plate dim).
+        self.assertIn("_lCond", text)
+        self.assertIn("_lChar", text)
+        self.assertIn("Fourier", text)
+
+
 if __name__ == "__main__":
     unittest.main()
