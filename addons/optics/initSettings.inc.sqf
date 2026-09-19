@@ -238,20 +238,6 @@
     {}
 ] call CBA_fnc_addSetting;
 
-// ── NVG battery drain (issue #36) ──────────────────────────────────────────
-// Opt-in: battery drain + temperature derating is hardcore (battery dies
-// mid-op), so it defaults OFF.  When enabled, the drain rate is scaled
-// by the physiology battery temperature derating.
-[
-    QGVAR(nvgBatteryEnabled),
-    "CHECKBOX",
-    [LLSTRING(nvgBatteryEnabled_Name), LLSTRING(nvgBatteryEnabled_Description)],
-    ["AEE Optics", "Intensity"],
-    false,
-    true,
-    {}
-] call CBA_fnc_addSetting;
-
 // ── Vision-driven view distance (issue #138) ──────────────────────────────
 // Drives the engine's view distance from the physics visibility state
 // (fog, haze, rain, NELM, acuity).  Defaults ON; disable to keep the
@@ -267,15 +253,5 @@
 ] call CBA_fnc_addSetting;
 
 // ── Thermal polarity (issue #196) ─────────────────────────────────────────
-// White-hot (0) is the military default; black-hot (1) reads like a
-// conventional photograph and is preferred for extended night viewing.
-// Matches the AN/PAS-13 polarity toggle.
-[
-    QGVAR(thermalPolarity),
-    "LIST",
-    [LLSTRING(thermalPolarity_Name), LLSTRING(thermalPolarity_Description)],
-    ["AEE Optics", "Thermal"],
-    [[0, 1], ["White hot", "Black hot"], 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+// Moved to aee_thermal/initSettings.inc.sqf with the rest of the thermal
+// pipeline (white-hot default, black-hot user-selectable per FM 3-22.9).

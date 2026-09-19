@@ -11,8 +11,3 @@ class Stage1
     texture = "#(rgb,8,8,3)color(0.066667,0.066667,0.066667,1)";
     uvSource = "tex";
 };
-class StageTI
-{
-    texture = "#(argb,8,8,3)color(0.066667,0.066667,0.066667,1,TI)";
-    uvSource = "tex";
-};

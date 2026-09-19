@@ -22,12 +22,18 @@ from tools.tests.test_astronomical import ks_lunar_lux
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 _OPTICS = _REPO_ROOT / "addons" / "optics" / "functions"
 _THERMAL = _REPO_ROOT / "addons" / "thermal" / "functions"
+_NVG = _REPO_ROOT / "addons" / "nvg" / "functions"
 
 
 def _read_sqf(name, addon="optics"):
     """Read an SQF function file.  The drift-lock tests read the SOURCE so a
     constant change in SQF fails the mirror tests until re-synced."""
-    base = _OPTICS if addon == "optics" else _THERMAL
+    if addon == "thermal":
+        base = _THERMAL
+    elif addon == "nvg":
+        base = _NVG
+    else:
+        base = _OPTICS
     return (base / name).read_text(encoding="utf-8")
 
 
@@ -1852,33 +1858,39 @@ class TestClothingThermal(unittest.TestCase):
         self.assertIn("setObjectMaterial", text)
         self.assertIn("ti_grey_", text)
         self.assertIn("QPATHTOF(data\\ti_grey_", text)
-        # The 16 band rvmats must exist with a StageTI carrying the
-        # procedural physics colour - the verified TI render path
-        # (issue #196).  Names are the white-hot grey percent.
+        # The 16 band rvmats must exist with a procedural physics colour
+        # - the MKK-proven render path (issue #196).  Names are the
+        # white-hot grey percent.  The rvmats deliberately have NO
+        # StageTI: the engine falls back to the diffuse (Stage1) for the
+        # TI image, and setObjectTexture paints that diffuse with the
+        # physics colour.  A StageTI would multiply the flat band colour
+        # by the model's per-vertex thermaltop gain, reproducing the
+        # engine's baked gradient.
         shipped = {round(n / 15.0 * 100) for n in range(16)}
         for pct in shipped:
             f = data_dir / f"ti_grey_{pct:02d}.rvmat"
             self.assertTrue(f.exists(), f"missing {f.name}")
             rv = f.read_text(encoding="utf-8")
-            self.assertIn("class StageTI", rv)
+            self.assertNotIn("class StageTI", rv)
+            self.assertIn("class Stage1", rv)
             self.assertIn("color(", rv)
-            self.assertIn(",TI)", rv)  # the TI-channel procedural form
 
 
 def test_ti_texture_polarity(self):
-    # The band rvmats encode the white-hot floor/ceiling in the TI stage.
-    # In white-hot mode: ti_grey_00 is pure black (cold window floor),
-    # ti_grey_100 is pure white (hot ceiling).  The 0..100 grey-percent
-    # naming IS the polarity: brightness rises monotonically with the
-    # band, and the StageTI procedural colour matches the band value.
+    # The band rvmats encode the white-hot floor/ceiling in the diffuse
+    # Stage1 colour (the MKK-proven no-StageTI form - the engine renders
+    # the diffuse in TI mode).  In white-hot mode: ti_grey_00 is pure
+    # black (cold window floor), ti_grey_100 is pure white (hot ceiling).
+    # The 0..100 grey-percent naming IS the polarity: brightness rises
+    # monotonically with the band, equal RGB channels (no hue).
     import re
 
     data_dir = _REPO_ROOT / "addons" / "thermal" / "data"
 
     def _ti_brightness(name):
         rv = (data_dir / name).read_text(encoding="utf-8")
-        m = re.search(r"color\(([0-9.]+),([0-9.]+),([0-9.]+),1,TI\)", rv)
-        self.assertIsNotNone(m, f"{name} lacks the TI-stage colour")
+        m = re.search(r"color\(([0-9.]+),([0-9.]+),([0-9.]+),1\)", rv)
+        self.assertIsNotNone(m, f"{name} lacks the Stage1 colour")
         r, g, b = (float(x) for x in m.groups())
         self.assertEqual(r, g)  # white-hot: equal channels, no hue
         self.assertEqual(g, b)
@@ -2159,7 +2171,7 @@ class TestRainDropletEyeVelocity(unittest.TestCase):
         # Source drift-lock: the fix must be present in the SQF.
         from pathlib import Path
 
-        text = Path("addons/optics/functions/fnc_applyRainDroplets.sqf").read_text(
+        text = Path("addons/thermal/functions/fnc_applyRainDroplets.sqf").read_text(
             encoding="utf-8"
         )
         # moveVelocity must be eyeVel (co-move), not -eyeVel (a sign error
@@ -2176,7 +2188,9 @@ class TestRainDropletEyeVelocity(unittest.TestCase):
         post = Path("addons/optics/XEH_postInit.sqf").read_text(encoding="utf-8")
         # The duplicate droplet call in the thermal branch must be gone:
         # exactly ONE tick call (the unconditional one before the branches).
-        self.assertEqual(post.count('["TICK"] call FUNC(applyRainDroplets)'), 1)
+        self.assertEqual(
+            post.count('["TICK"] call EFUNC(thermal,applyRainDroplets)'), 1
+        )
 
 
 class TestThermalCrossover(unittest.TestCase):
@@ -2671,6 +2685,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_applyThermalVision.sqf",
             ["0.0, 0.15, true", "min 0.25", "0.0, 0.04, true"],
             "blur span / ceiling / pan-smear cap",
+            addon="thermal",
         )
 
     def test_thermal_window_constants(self):
@@ -2678,6 +2693,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_applyThermalVision.sqf",
             ["0.1, 0.8", "0.0, 0.2", "0.1, 1.0", "0.0, 0.15"],
             "fog/rain window blur",
+            addon="thermal",
         )
 
     def test_thermal_crossover_floor(self):
@@ -2685,6 +2701,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_applyThermalVision.sqf",
             ["0.05", "linearConversion [1, 0, _effective, 0.62, 0.35, true]"],
             "crossover floor / AGC contrast mapping",
+            addon="thermal",
         )
 
     # ── NVG focus (fnc_applyNVGTubeModel.sqf) ──
@@ -2700,6 +2717,7 @@ class TestSQFSync(unittest.TestCase):
                 "from 1 to 4",
             ],
             "terrain fallback geometry",
+            addon="nvg",
         )
 
     def test_focus_median_and_watchdog(self):
@@ -2714,6 +2732,7 @@ class TestSQFSync(unittest.TestCase):
                 "_curFocus * 0.03",
             ],
             "rolling median filter / settle watchdog / deadband",
+            addon="nvg",
         )
 
     def test_focus_vehicle_exclusion(self):
@@ -2721,6 +2740,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_applyNVGTubeModel.sqf",
             ["vehicle _player", "_hitObj != _veh && _hitParent != _veh"],
             "vehicle cabin exclusion",
+            addon="nvg",
         )
 
     # ── NVG tube / illuminance (fnc_applyNVGTubeModel.sqf,
@@ -2769,6 +2789,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_applyNVGTubeModel.sqf",
             ["_sensitivity / (_lux + 1)", "min _sensitivity"],
             "AGC gain model",
+            addon="nvg",
         )
 
     def test_nvg_shot_noise_model(self):
@@ -2780,6 +2801,7 @@ class TestSQFSync(unittest.TestCase):
                 "_lux * _sensitivity * AEE_PHOTON_SCALE",
             ],
             "Poisson shot noise",
+            addon="nvg",
         )
 
     def test_nvg_noise_floor_model(self):
@@ -2791,6 +2813,7 @@ class TestSQFSync(unittest.TestCase):
                 "0.03 max _noise min 1",
             ],
             "combined noise floor + rain Mie",
+            addon="nvg",
         )
 
     def test_nvg_temp_factors(self):
@@ -2802,6 +2825,7 @@ class TestSQFSync(unittest.TestCase):
                 "20, 45, _airTemp, 1.0, 1.6",
             ],
             "temperature gain/noise factors",
+            addon="nvg",
         )
 
     def test_nvg_battery_drain_model(self):
@@ -2815,6 +2839,7 @@ class TestSQFSync(unittest.TestCase):
                 "0.0000111",
             ],
             "battery drain rates",
+            addon="nvg",
         )
 
     def test_nvg_brightness_model(self):
@@ -2822,6 +2847,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_applyNVGTubeModel.sqf",
             ["0.001, 0.25, _lux, 0.65, 1.0"],
             "AGC output brightness",
+            addon="nvg",
         )
 
     def test_nvg_mtf_model(self):
@@ -2829,6 +2855,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_applyNVGTubeModel.sqf",
             ["_mtf15 * 0.55", "_blowout * 0.4", "1 - rain * 0.5"],
             "MTF degradation",
+            addon="nvg",
         )
 
     def test_nvg_veiling_glare_floor(self):
@@ -2836,6 +2863,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_applyNVGTubeModel.sqf",
             ["_bloom = _bloom + 0.02"],
             "clear-condition veiling glare floor",
+            addon="nvg",
         )
 
     # ── Engine thermal drive (fnc_applyEngineThermal.sqf) ──
@@ -2853,6 +2881,7 @@ class TestSQFSync(unittest.TestCase):
                 "tiAppliedWidth",
             ],
             "engine AGC display window (physics-driven scene max heat)",
+            addon="thermal",
         )
 
     def test_engine_thermal_damage_constants(self):
@@ -2867,6 +2896,7 @@ class TestSQFSync(unittest.TestCase):
                 "str _x",
             ],
             "scene max heat from the physics thermal state (dead saturates, decays 30 s)",
+            addon="thermal",
         )
 
     def test_second_sun_constants(self):
@@ -2882,6 +2912,7 @@ class TestSQFSync(unittest.TestCase):
                 "setLightAttenuation [1e10, 150",
             ],
             "physics-driven second sun (TI sun term, A3TI-scaled)",
+            addon="thermal",
         )
 
     def test_rain_droplet_constants(self):
@@ -2902,9 +2933,10 @@ class TestSQFSync(unittest.TestCase):
                 "setParticleParams",
                 "setDropInterval",
                 "setPosASL (_eye vectorAdd (_camDir vectorMultiply 0.1))",
-                "call FUNC(getEyeState)",
+                "call EFUNC(optics,getEyeState)",
             ],
             "rain droplets on objective (eye-repositioned Refract emitter)",
+            addon="thermal",
         )
 
     def test_shared_eye_state_constants(self):
@@ -2955,18 +2987,18 @@ class TestSQFSync(unittest.TestCase):
         # weather, not raw `rain`/`overcast`/`fog` (which step abruptly and
         # snap the display).  Only the droplet physics reads raw rain
         # (instant response is correct there).
-        for fname, ctx in [
-            ("fnc_applyNVGTubeModel.sqf", "NVG tube"),
-            ("fnc_calculateIlluminance.sqf", "illuminance"),
-            ("fnc_applyNightGrain.sqf", "night grain"),
-            ("fnc_applyThermalVision.sqf", "thermal vision"),
-            ("fnc_calculateAttenuation.sqf", "attenuation"),
-            ("fnc_calculateAtmosphericSeeing.sqf", "seeing"),
-            ("fnc_calculateMirageIntensity.sqf", "mirage"),
+        for fname, ctx, addon in [
+            ("fnc_applyNVGTubeModel.sqf", "NVG tube", "nvg"),
+            ("fnc_calculateIlluminance.sqf", "illuminance", "optics"),
+            ("fnc_applyNightGrain.sqf", "night grain", "nvg"),
+            ("fnc_applyThermalVision.sqf", "thermal vision", "thermal"),
+            ("fnc_calculateAttenuation.sqf", "attenuation", "optics"),
+            ("fnc_calculateAtmosphericSeeing.sqf", "seeing", "optics"),
+            ("fnc_calculateMirageIntensity.sqf", "mirage", "optics"),
         ]:
-            src = _read_sqf(fname)
+            src = _read_sqf(fname, addon)
             self.assertIn(
-                "call FUNC(getSmoothedWeather)",
+                "getSmoothedWeather",
                 src,
                 f"{ctx} must consume the smoothed weather",
             )
@@ -2989,14 +3021,14 @@ class TestSQFSync(unittest.TestCase):
         # recompute eye position or direction independently (the drift that
         # caused the HEAD memory-point bug and the separate vectorDirVisual
         # calls in the focus fan / blowout cone).
-        for fname, ctx in [
-            ("fnc_applyNVGTubeModel.sqf", "NVG tube"),
-            ("fnc_calculateIlluminance.sqf", "illuminance"),
-            ("fnc_applyRainDroplets.sqf", "droplets"),
+        for fname, ctx, addon in [
+            ("fnc_applyNVGTubeModel.sqf", "NVG tube", "nvg"),
+            ("fnc_calculateIlluminance.sqf", "illuminance", "optics"),
+            ("fnc_applyRainDroplets.sqf", "droplets", "thermal"),
         ]:
-            src = _read_sqf(fname)
+            src = _read_sqf(fname, addon)
             self.assertIn(
-                "call FUNC(getEyeState)",
+                "getEyeState",
                 src,
                 f"{ctx} must consume the shared eye state",
             )
@@ -3032,7 +3064,7 @@ class TestSQFSync(unittest.TestCase):
         self._assert_in_sqf(
             "fnc_applyClothingThermal.sqf",
             [
-                '["", "", "EXIT"] call EFUNC(thermal,applySelectionThermal)',
+                '["", "", "EXIT"] call FUNC(applySelectionThermal)',
                 "applySelectionThermal",
                 "allUnits",
                 "hiddenSelections",
@@ -3042,13 +3074,14 @@ class TestSQFSync(unittest.TestCase):
                 "QGVAR(tiSelections_",
             ],
             "per-item clothing solved by the per-selection thermal substrate",
+            addon="thermal",
         )
 
     def test_building_thermal_constants(self):
         self._assert_in_sqf(
             "fnc_applyBuildingThermal.sqf",
             [
-                '["", "", "EXIT"] call EFUNC(thermal,applySelectionThermal)',
+                '["", "", "EXIT"] call FUNC(applySelectionThermal)',
                 "applySelectionThermal",
                 'allMissionObjects ""',
                 "vehicles - [player]",
@@ -3060,6 +3093,7 @@ class TestSQFSync(unittest.TestCase):
                 "QGVAR(tiBldgSelections_",
             ],
             "per-building thermal solved by the per-selection substrate",
+            addon="thermal",
         )
 
     def test_mapwide_thermal_caps(self):
@@ -3407,7 +3441,13 @@ class TestNVGStackAuditSQFSync(unittest.TestCase):
     def _read(self, name):
         from pathlib import Path
 
-        return Path("addons/optics/functions", name).read_text(encoding="utf-8")
+        # NVG functions moved to the aee_nvg addon (three-system split).
+        base = (
+            "addons/nvg"
+            if name.startswith("fnc_applyNVG") or name.startswith("fnc_applyNight")
+            else "addons/optics"
+        )
+        return Path(base, "functions", name).read_text(encoding="utf-8")
 
     def test_dead_burn_position_removed(self):
         # Bug A: the write-only world-position afterimage is gone; the
