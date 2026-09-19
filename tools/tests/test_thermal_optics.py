@@ -3071,12 +3071,13 @@ class TestSQFSync(unittest.TestCase):
 
     def test_shared_eye_state_constants(self):
         # The shared eye-state foundation: one cached computation per frame
-        # (camera origin + state-aware direction), consumed by every
-        # eye-space system.  Direction is state-aware (KtweaK's NVG
-        # pattern): turret uses weaponDirection, on foot uses
-        # positionCameraToWorld (the canonical freelook-tracked camera -
+        # (camera origin + camera view direction), consumed by every
+        # eye-space system.  The look vector is the TRUE camera in every
+        # state via positionCameraToWorld: on foot, in a turret (the sight
+        # IS the camera), and under freelook (the camera follows the head).
         # screenToWorldDirection does NOT update during freelook in every
-        # render state, BIKI Killzone_Kid note).
+        # render state (BIKI Killzone_Kid note), and weaponDirection pins
+        # to the gun so turret freelook changes nothing (issue #204).
         self._assert_in_sqf(
             "fnc_getEyeState.sqf",
             [
@@ -3085,8 +3086,6 @@ class TestSQFSync(unittest.TestCase):
                 "eyeDirection _unit",
                 "AGLToASL (positionCameraToWorld [0, 0, 0])",
                 "positionCameraToWorld [0, 0, 100]",
-                "weaponDirection (currentWeapon _veh)",
-                "turretUnit [0]) isEqualTo _unit",
                 "count _eyeDir == 3",
                 "count _eyeDir == 2",
                 "missionNamespace setVariable [QGVAR(eyeState), [_frame, [_eye, _fwd, _up, _eyeVel]]]",

@@ -101,37 +101,19 @@ if (_eyeDir isEqualType [] && {count _eyeDir == 3}) then {
 };
 
 // ─── State-aware forward vector ───────────────────────────────────────────
-// The eye POSITION is always eyePos, but the correct LOOK vector depends
-// on the player state.  Verified against KtweaK's NVG (fn_sampleLighting),
-// the closest shipping analogue to our eye-space systems:
-//   - In a turret: the optics align to the WEAPON, not the head.  Use the
-//     turret's weaponDirection (the gunner's aim).
-//   - On foot / passenger: use the camera view centre, which is the true
-//     look vector (screenToWorldDirection [0.5, 0.5] = the crosshair).
-// getCameraViewDirection is close on foot but tracks the head in a
-// turret, which is wrong for a weapon-aligned optic.
-private _veh = vehicle _unit;
-private _inTurret = (_veh isNotEqualTo _unit)
-    && {count (allTurrets [_veh, false]) > 0}
-    && {(_veh turretUnit [0]) isEqualTo _unit};
-
-if (_inTurret) then {
-    private _weaponDir = _veh weaponDirection (currentWeapon _veh);
-    if (_weaponDir isNotEqualTo [0, 0, 0]) then { _fwd = vectorNormalized _weaponDir; };
-} else {
-    // positionCameraToWorld is the canonical freelook-tracked camera:
-    // [0,0,0] = the actual camera origin (moves with freelook head-pose
-    // and vehicle camera), [0,0,100] = a point 100 m along the camera's
-    // view.  The vector between them IS the live view direction.
-    // screenToWorldDirection [0.5, 0.5] returns the direction to the
-    // screen centre but from a projection that does NOT update during
-    // freelook in every render state (Killzone_Kid BIKI note: "if you
-    // need centre of screen direction, use positionCameraToWorld").
-    private _camPos = positionCameraToWorld [0, 0, 0];
-    private _camAim = positionCameraToWorld [0, 0, 100];
-    if (_camPos isNotEqualTo [0, 0, 0] && {_camAim isNotEqualTo [0, 0, 0]}) then {
-        _fwd = vectorNormalized (_camAim vectorDiff _camPos);
-    };
+// The LOOK vector is the true camera view in EVERY state: on foot, in a
+// vehicle turret, and in freelook.  positionCameraToWorld [0,0,100] is a
+// point 100 m along the live camera view — in a gunner sight it aligns
+// to the weapon (the sight IS the camera), under freelook it follows the
+// head, in a driver/passenger seat it follows the free camera.  This is
+// the canonical freelook-tracked pair (Killzone_Kid BIKI note: "if you
+// need centre of screen direction, use positionCameraToWorld").
+// The old weaponDirection special-case pinned the vector to the gun,
+// so freelook inside a turret changed nothing (issue #204).
+private _camPos = positionCameraToWorld [0, 0, 0];
+private _camAim = positionCameraToWorld [0, 0, 100];
+if (_camPos isNotEqualTo [0, 0, 0] && {_camAim isNotEqualTo [0, 0, 0]}) then {
+    _fwd = vectorNormalized (_camAim vectorDiff _camPos);
 };
 
 // Cheap safe-guard: if the vectors are degenerate (broken camera state),
