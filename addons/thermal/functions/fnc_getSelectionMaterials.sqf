@@ -42,11 +42,11 @@ params [
 if (isNull _obj || _selName == "") exitWith { "ground" };
 
 private _cacheKey = format ["%1|%2", typeOf _obj, _selName];
-private _cached = GVAR(selMaterialCache) getOrDefault [_cacheKey, ""];
+private _cached = (missionNamespace getVariable [QGVAR(selMaterialCache), createHashMap]) getOrDefault [_cacheKey, ""];
 if (_cached != "") exitWith { _cached };
 
 if (isNil QGVAR(selMaterialCache)) then {
-    GVAR(selMaterialCache) = createHashMap;
+    missionNamespace setVariable [QGVAR(selMaterialCache), createHashMap];
 };
 
 private _class = "";
@@ -104,5 +104,5 @@ if (_class == "") then {
     _class = _obj call EFUNC(material,getObjectMaterial);
 };
 
-GVAR(selMaterialCache) set [_cacheKey, _class];
+(missionNamespace getVariable [QGVAR(selMaterialCache), createHashMap]) set [_cacheKey, _class];
 _class
