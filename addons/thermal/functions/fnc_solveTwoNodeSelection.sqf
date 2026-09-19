@@ -60,6 +60,19 @@ Physics (all sourced - issue #189 audit standards):
   Radiation: q_rad = eps * sigma * (T_sk^4 - MRT^4) vs the mean
     radiant temperature (ISO 7726), NOT air temp.
 
+  Water immersion (issue #193): an immersed surface exchanges with
+    WATER, not air.  Boutelier, Bougues & Timbal 1977 (partitional
+    calorimetry, 17 nude subjects): still water hc = 43 W/m2K
+    thermoneutral / 54 cold+shivering; stirred water
+    hc = 272.9*v^0.5 neutral / 497.1*v^0.65 cold.  Flat-plate
+    correlations OVER-predict (body shape factor), so the measured
+    values are used.  The exchange target becomes the WATER
+    temperature, not air or the air-side MRT.
+  Rain wettedness (issue #193): rain is EXTERNAL water, not regulated
+    sweat.  A rain-impacted surface is driven toward full wet
+    (wettedness = rain/0.3 capped 1) regardless of the sweat rate,
+    saturating the evaporative path.
+
   Inertia (asymmetric transient): one exponential step toward the
     joint equilibrium.  Heating tau = m*cp/(h*A + k_coupling).
     Cooling tau lengthened x1.5 when the evaporative path is active
@@ -89,8 +102,13 @@ Arguments:
   17: ground temp (NUMBER, C) - for the MRT
   18: is human (BOOL) - use Gagge physiology
   19: conduction length (NUMBER, m) - block wall thickness
-  20: evaporative path on (BOOL)
-  21: time step (NUMBER, s)
+20: evaporative path on (BOOL)
+   21: time step (NUMBER, s)
+   22: water speed (NUMBER, m/s) - 0 = not immersed; >0 selects the
+       water convection branch (Boutelier 1977)
+   23: water temperature (NUMBER, C) - the exchange target when
+       immersed; -1 = no water
+   24: rain rate (NUMBER, 0..1) - external wettedness driver
 
 Return:
   [coreTempC, skinTempC]
@@ -118,7 +136,10 @@ params [
     ["_isHuman", false, [true]],
     ["_lCond", 0.05, [0]],
     ["_evapOn", true, [true]],
-    ["_dt", 5, [0]]
+    ["_dt", 5, [0]],
+    ["_waterSpeed", 0, [0]],
+    ["_tWater", -1, [0]],
+    ["_rain", 0, [0]]
 ];
 
 // ─── Saturation vapour pressure (Bolton 1980) ──────────────────────────────
@@ -131,11 +152,30 @@ private _psat = {
 };
 
 // ─── Convection coefficient ────────────────────────────────────────────────
+// WATER OVERRIDE (issue #193): an immersed surface exchanges with WATER,
+// not air.  Boutelier, Bougues & Timbal 1977 (partitional calorimetry,
+// 17 nude subjects): still water hc = 43 W/m2K thermoneutral, 54 cold+
+// shivering; stirred water hc = 272.9*v^0.5 neutral, 497.1*v^0.65 cold.
+// The flat-plate correlations OVER-predict (body shape factor), so the
+// MEASURED values are used.  Water speed > 0 selects the immersion
+// branch; the exchange target becomes the water temperature.
 private _h = 0;
-if (_isHuman) then {
-    // Gagge 1986: h = max(3.0 natural, 8.6*v^0.53 forced)
-    _h = (3.0) max (8.6 * ((_wind max 0.1) ^ 0.53));
+if (_waterSpeed > 0 && _tWater >= -50) then {
+    private _shivering = if (_isHuman) then { (_tCore0 < 35.5) } else { false };
+    if (_waterSpeed <= 0) then {
+        _h = [43.0, 54.0] select _shivering;
+    } else {
+        _h = if (_shivering) then {
+            497.1 * (_waterSpeed ^ 0.65)
+        } else {
+            272.9 * (_waterSpeed ^ 0.5)
+        };
+    };
 } else {
+    if (_isHuman) then {
+        // Gagge 1986: h = max(3.0 natural, 8.6*v^0.53 forced)
+        _h = (3.0) max (8.6 * ((_wind max 0.1) ^ 0.53));
+    } else {
     // Churchill-Usagi n=3 superposition of McAdams forced + Incropera
     // natural (Table 9.3).
     private _hF = 5.7 + 3.8 * (_wind max 0);
@@ -166,6 +206,7 @@ if (_isHuman) then {
         _hN = _nuC * _kAir / (_lChar max 0.05);
     };
     _h = (_hF ^ 3 + _hN ^ 3) ^ (1 / 3);
+    };
 };
 
 // ─── Coupling conductance (W/K) ────────────────────────────────────────────
@@ -184,6 +225,10 @@ private _cond = _kCoupling;  // inert path constant conductance
 // ─── Radiation vs MRT (ISO 7726) ──────────────────────────────────────────
 private _mrtK = (0.5 * ((_tGround + 273.15) ^ 4) + 0.5 * ((_tAir + 273.15) ^ 4)) ^ 0.25;
 private _tAirK = _tAir + 273.15;
+// Immersion exchange target (issue #193): an immersed surface exchanges
+// against the WATER temperature directly, not air or the air-side MRT.
+private _exchK = if (_waterSpeed > 0 && _tWater >= -50) then { _tWater + 273.15 } else { _tAirK };
+private _exchMrtK = if (_waterSpeed > 0 && _tWater >= -50) then { _tWater + 273.15 } else { _mrtK };
 private _sigma = 5.670374419e-8;
 private _skinEps = (_skinClass call FUNC(getMaterialThermal)) select 0;
 private _skinAlpha = (_skinClass call FUNC(getMaterialThermal)) select 1;
@@ -221,8 +266,8 @@ for "_i" from 1 to 12 do {
     _tCr = _tSk + (_qGen + _qShiv * _area - _qResp * _area) / (_kCoupling + 1e-6);
     // Skin residual.
     private _tsAbs = _tSk + 273.15;
-    private _conv = _h * (_tsAbs - _tAirK);
-    private _rad = _skinEps * _sigma * ((_tsAbs ^ 4) - (_mrtK ^ 4));
+    private _conv = _h * (_tsAbs - _exchK);
+    private _rad = _skinEps * _sigma * ((_tsAbs ^ 4) - (_exchMrtK ^ 4));
     // Evaporative (endothermic) path: wettedness x Lewis x vapour deficit.
     _w = 0;
     if (_isHuman && _evapOn) then {
@@ -237,6 +282,12 @@ for "_i" from 1 to 12 do {
         private _eMax = ((_pSkT - _pAT) max 0) / 0.68;  // r_ea nude ~0.68 torr m2/W
         _w = if (_eMax > 0) then { 0.06 + 0.94 * ((_eRsw / _eMax) min 1) } else { 0.06 };
         _w = _w min 1;
+    };
+    // Rain-forced wettedness (issue #193): rain is EXTERNAL water, not
+    // regulated sweat.  A rain-impacted surface is driven toward full
+    // wet regardless of the sweat rate; saturates at high rain rates.
+    if (_rain > 0) then {
+        _w = (_w max ((_rain / 0.3) min 1)) min 1;
     };
     private _hE = 16.5 * _h;  // Lewis relation (K/kPa)
     private _pSkK = (_tSk call _psat) / 1000;  // kPa
