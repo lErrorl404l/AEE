@@ -11,7 +11,7 @@ aee_core_coreBodyTemp  body-temp model not built yet; KAT falls back to default 
 aee_environmental_rainRateOverride  docker test override hook (written in tests/docker mission)
 aee_nightvision_nvgDebug  debug console knob (documented in fnc_applyNVGTubeModel.sqf)
 aee_thermal_rainDropColor  debug console knob (documented in fnc_applyRainDroplets.sqf)
-aee_optics_starlightLux  tuning knob (documented in fnc_calculateIlluminance.sqf)
+aee_core_starlightLux  tuning knob (documented in fnc_calculateIlluminance.sqf)
 aee_nightvision_titleDisplay  uiNamespace RscTitles display handle, written by the display layer
 aee_physiology_ozoneDU  ozone-column producer pending (issue #35 cross-addon wiring)
 aee_radio_frequency  radio frequency producer pending (issue #35 cross-addon wiring)

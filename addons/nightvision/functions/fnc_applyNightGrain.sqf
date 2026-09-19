@@ -42,12 +42,12 @@ if (_visionMode == 1 || _visionMode == 2) exitWith {
 };
 
 private _sunOrMoon = sunOrMoon;  // 0 = full night, 1 = full day
-private _rain     = ([] call EFUNC(optics,getSmoothedWeather)) select 0;
+private _rain     = ([] call EFUNC(core,getSmoothedWeather)) select 0;
 private _fog      = missionNamespace getVariable [QEGVAR(core,currentFogDensity), 0];
 
-private _nightGrainMax = missionNamespace getVariable [QEGVAR(optics,nightGrainMax), 0.7];
-private _rainGrainMax  = missionNamespace getVariable [QEGVAR(optics,rainGrainMax), 0.4];
-private _fogGrainMax   = missionNamespace getVariable [QEGVAR(optics,fogGrainMax), 0.15];
+private _nightGrainMax = missionNamespace getVariable [QGVAR(nightGrainMax), 0.7];
+private _rainGrainMax  = missionNamespace getVariable [QGVAR(rainGrainMax), 0.4];
+private _fogGrainMax   = missionNamespace getVariable [QGVAR(fogGrainMax), 0.15];
 
 // ─── Force-disable in clear daylight ────────────────────────────────────
 // If time was skipped or conditions changed fast, the ppEffect can linger

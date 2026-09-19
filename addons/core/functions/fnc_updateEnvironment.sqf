@@ -134,7 +134,7 @@ if (GVAR(physiologyEnabled)) then {
 // intensity feeds the ambient lux the NVG chain consumes (issue #112).
 BEGIN_COUNTER(optics);
 [] call EFUNC(environmental,calculateSpaceWeather);
-[_posASL] call EFUNC(optics,calculateIlluminance);
+[_posASL] call EFUNC(core,calculateIlluminance);
 [] call EFUNC(optics,calculateThermalContrast);
 [] call EFUNC(optics,calculateAttenuation);
 if (GVAR(opticsEnabled)) then {
@@ -241,7 +241,7 @@ END_COUNTER(atmosEvents);
 private _sunElev = missionNamespace getVariable [QEGVAR(core,currentSunElevation), -90];
 private _moonPhase = missionNamespace getVariable [QEGVAR(environmental,lunarPhase), 0];
 [_sunElev, _moonPhase] call EFUNC(optics,classifyNight);
-private _ambientLux = missionNamespace getVariable [QEGVAR(optics,ambientLux), 0.001];
+private _ambientLux = missionNamespace getVariable [QEGVAR(core,ambientLux), 0.001];
 private _seeing = missionNamespace getVariable [QEGVAR(optics,atmosphericSeeing), 0.5];
 [_ambientLux, _seeing] call EFUNC(optics,calculateLimitingMagnitude);
 private _posASL2D = if (count _posASL >= 3) then { [_posASL select 0, _posASL select 1, 0] } else { [0, 0, 0] };

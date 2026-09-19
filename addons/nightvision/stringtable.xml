@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="AEE">
     <Package name="NVG">
+        <Key ID="STR_AEE_NightVision_fogGrainMax_Description">
+            <Original>Fog haze grain added to the night grain effect</Original>
+            <English>Fog haze grain added to the night grain effect</English>
+        </Key>
+        <Key ID="STR_AEE_NightVision_fogGrainMax_Name">
+            <Original>Fog Grain Maximum</Original>
+            <English>Fog Grain Maximum</English>
+        </Key>
+        <Key ID="STR_AEE_NightVision_nightGrainMax_Description">
+            <Original>Night noise floor, the perceived darkness of night vision</Original>
+            <English>Night noise floor, the perceived darkness of night vision</English>
+        </Key>
+        <Key ID="STR_AEE_NightVision_nightGrainMax_Name">
+            <Original>Night Grain Maximum</Original>
+            <English>Night Grain Maximum</English>
+        </Key>
         <Key ID="STR_AEE_NightVision_nvgBatteryEnabled_Description">
             <Original>Enable NVG battery drain; the drain rate scales with the physiology battery temperature derating (hardcore)</Original>
             <English>Enable NVG battery drain; the drain rate scales with the physiology battery temperature derating (hardcore)</English>
@@ -8,6 +24,14 @@
         <Key ID="STR_AEE_NightVision_nvgBatteryEnabled_Name">
             <Original>NVG Battery Drain</Original>
             <English>NVG Battery Drain</English>
+        </Key>
+        <Key ID="STR_AEE_NightVision_rainGrainMax_Description">
+            <Original>Rain-on-eye noise at night</Original>
+            <English>Rain-on-eye noise at night</English>
+        </Key>
+        <Key ID="STR_AEE_NightVision_rainGrainMax_Name">
+            <Original>Rain Grain Maximum</Original>
+            <English>Rain Grain Maximum</English>
         </Key>
     </Package>
 </Project>

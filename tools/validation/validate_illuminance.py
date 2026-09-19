@@ -153,7 +153,7 @@ def check_state_contract():
         "..",
         "..",
         "addons",
-        "optics",
+        "core",
         "functions",
         "fnc_calculateIlluminance.sqf",
     )

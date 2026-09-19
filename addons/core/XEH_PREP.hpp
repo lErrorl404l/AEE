@@ -15,3 +15,6 @@ PREP(moduleInit);
 PREP(moduleStormInit);
 PREP(updateEnvironment);
 PREP(updateSoilMoisture);
+PREP(getEyeState);
+PREP(getSmoothedWeather);
+PREP(calculateIlluminance);

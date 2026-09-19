@@ -18,35 +18,8 @@
     {}
 ] call CBA_fnc_addSetting;
 
-[
-    QGVAR(nightGrainMax),
-    "SLIDER",
-    [LLSTRING(nightGrainMax_Name), LLSTRING(nightGrainMax_Description)],
-    ["AEE Optics", "Intensity"],
-    [0, 1, 0.7, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
 
-[
-    QGVAR(rainGrainMax),
-    "SLIDER",
-    [LLSTRING(rainGrainMax_Name), LLSTRING(rainGrainMax_Description)],
-    ["AEE Optics", "Intensity"],
-    [0, 1, 0.4, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
 
-[
-    QGVAR(fogGrainMax),
-    "SLIDER",
-    [LLSTRING(fogGrainMax_Name), LLSTRING(fogGrainMax_Description)],
-    ["AEE Optics", "Intensity"],
-    [0, 1, 0.15, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
 
 [
     QGVAR(mirageIntensity),
