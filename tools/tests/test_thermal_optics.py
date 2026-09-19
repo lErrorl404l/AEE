@@ -2895,9 +2895,24 @@ class TestSQFSync(unittest.TestCase):
                 "nearEntities",
                 "str _x",
             ],
-            "scene max heat from the physics thermal state (dead saturates, decays 30 s)",
+            "damage/burning saturates the AGC scene-max guard",
             addon="thermal",
         )
+
+    def test_config_level_thermal_model(self):
+        # Issue #196: the ENGINE's TI model is configured per class in
+        # CfgVehicles (the ACE-thermals lever).  Material swaps cannot
+        # change the engine's dynamic thermal component; this config does.
+        cfg = (_REPO_ROOT / "addons" / "thermal" / "config.cpp").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("class AllVehicles: All", cfg)
+        for param in ["htMin", "htMax", "afMax", "mfMax", "mFact", "tBody"]:
+            self.assertIn(param, cfg, f"{param} missing from CfgVehicles thermal model")
+        # Humans have metabolism; vehicles have none (parked = ambient).
+        self.assertIn("class Man: Land", cfg)
+        self.assertIn("tBody = 36.8", cfg)
+        self.assertIn("mFact = 0", cfg)
 
     def test_second_sun_constants(self):
         self._assert_in_sqf(
