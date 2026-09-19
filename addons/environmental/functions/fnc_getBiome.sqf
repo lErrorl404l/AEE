@@ -126,12 +126,36 @@ if (_meanElev > 1500) then {
     _scores set ["ET",  (_scores getOrDefault ["ET",  0]) + 8];
 };
 
-// ─── Pick winner ────────────────────────────────────────────────────
+// ─── Pick winner with confidence gate ─────────────────────────────
+// TERCOM/DSMAC position-fixing doctrine (innovation gate): the terrain
+// refinement is accepted only when UNAMBIGUOUS - the winner must clear
+// the runner-up by the peak-to-sidelobe ratio.  An ambiguous match
+// (two signals nearly tied) is rejected, never forced: the climate
+// anchor holds.  Ratio 1.4: a full-coverage indicator species (24 vs
+// anchor 10) passes at 2.4; a moderate signal (12 vs 10) abstains at
+// 1.2; the elevation override (15 vs 10) passes at 1.5.
+private _marginRatio = 1.4;
 private _bestCode = "";
 private _bestScore = 0;
+private _secondScore = 0;
 {
-    if (_y > _bestScore) then { _bestCode = _x; _bestScore = _y; };
-} forEach _scores;
+    private _s = _scores get _x;
+    if (_s > _bestScore) then {
+        _secondScore = _bestScore;
+        _bestScore = _s;
+        _bestCode = _x;
+    } else {
+        if (_s > _secondScore) then { _secondScore = _s; };
+    };
+} forEach (keys _scores);
+
+// Ambiguous match: the winner did not clear the runner-up by the
+// ratio, so the terrain evidence does not justify moving off the
+// climate anchor.  Abstain (keep the anchor) rather than force a
+// weak match - the doctrine's "reject, never override" rule.
+if (_bestCode != _climateBiome && {_bestScore < (_secondScore * _marginRatio)}) then {
+    _bestCode = _climateBiome;
+};
 
 if (_bestCode == "") then { _bestCode = "Cfb"; };
 private _bestName = _BIOME_NAMES getOrDefault [_bestCode, _bestCode];

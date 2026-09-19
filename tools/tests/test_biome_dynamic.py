@@ -175,7 +175,12 @@ def fuse_biome(
     climate_biome, veg_scores, surface_scores=None, struct_scores=None, mean_elev=0.0
 ):
     """Returns (code, score).  Climate is primary (10); vegetation 8,
-    surface 4, structure 3 refine within the climate band."""
+    surface 4, structure 3 refine within the climate band.
+
+    Peak-to-sidelobe confidence gate (TERCOM/DSMAC doctrine): the
+    terrain refinement is accepted only when the winner unambiguously
+    clears the runner-up by the ratio (1.4); an ambiguous match is
+    rejected and the climate anchor holds."""
     scores = {climate_biome: 10}
     for code, w in veg_scores.items():
         scores[code] = scores.get(code, 0) + w * 8
@@ -186,8 +191,19 @@ def fuse_biome(
     if mean_elev > 1500:
         scores["Dfc"] = scores.get("Dfc", 0) + 15
         scores["ET"] = scores.get("ET", 0) + 8
-    best = max(scores.items(), key=lambda kv: kv[1])
-    return best
+    codes = list(scores.keys())
+    best_code = max(codes, key=lambda c: scores[c])
+    best_score = scores[best_code]
+    others = [scores[c] for c in codes if c != best_code]
+    # Single candidate (climate and terrain agree): no runner-up to
+    # gate against, so the winner stands.
+    if not others:
+        return (best_code, best_score)
+    second_score = max(others)
+    margin_ratio = 1.4
+    if best_code != climate_biome and best_score < second_score * margin_ratio:
+        return (climate_biome, scores[climate_biome])
+    return (best_code, best_score)
 
 
 # ─── Climate physics tests ─────────────────────────────────────────────────
@@ -425,6 +441,36 @@ class TestMapFusion(unittest.TestCase):
         self.assertIn(
             classify_biome(mean_temps(n_eno), n_eno[5]), ["Dfa", "Dfb", "Dfc"]
         )
+
+    # ─── Fusion confidence gate (peak-to-sidelobe, TERCOM doctrine) ───
+    def test_fusion_full_coverage_indicator_overrides(self):
+        # A full-coverage indicator species (weight 3 -> 24 after the
+        # veg channel 8x) clears the climate anchor (10) by the ratio:
+        # 24/10 = 2.4 >= 1.4, so the terrain wins.
+        code, score = fuse_biome("Cfb", {"Dfc": 3.0})
+        self.assertEqual(code, "Dfc")
+
+    def test_fusion_moderate_signal_abstains(self):
+        # A moderate vegetation signal (12 vs anchor 10: ratio 1.2 < 1.4)
+        # must NOT move off the climate anchor - the match is ambiguous,
+        # so the system abstains and the climate verdict holds.
+        code, score = fuse_biome("Cfb", {"Dfc": 1.5})
+        self.assertEqual(code, "Cfb")
+        self.assertEqual(score, 10)
+
+    def test_fusion_near_tie_abstains(self):
+        # Two competing terrain signals nearly tied (20 vs 18: ratio
+        # 1.11 < 1.4) - the terrain evidence is ambiguous, so the
+        # climate anchor wins rather than either signal.
+        code, _ = fuse_biome("Cfb", {"Dfc": 2.5, "Dfb": 2.25})
+        self.assertEqual(code, "Cfb")
+
+    def test_fusion_elevation_override_preserved(self):
+        # The documented elevation override (Dfc +15 vs anchor 10:
+        # ratio 1.5 >= 1.4) still passes the gate - mountains are
+        # colder than their latitude suggests.
+        code, _ = fuse_biome("Cfb", {}, mean_elev=1800)
+        self.assertEqual(code, "Dfc")
 
 
 # ─── Root-cause regressions (issue #123) ───────────────────────────────────
