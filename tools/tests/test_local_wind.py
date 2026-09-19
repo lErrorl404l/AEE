@@ -238,7 +238,7 @@ class TestSQFSync(unittest.TestCase):
     def test_sqf_has_all_four_mechanisms(self):
         from pathlib import Path
 
-        text = Path("addons/atmos/functions/fnc_getLocalWind.sqf").read_text(
+        text = Path("addons/atmos/functions/wind/fnc_getLocalWind.sqf").read_text(
             encoding="utf-8"
         )
         self.assertIn("Jackson-Hunt", text)
@@ -249,7 +249,7 @@ class TestSQFSync(unittest.TestCase):
     def test_sqf_validation_anchors(self):
         from pathlib import Path
 
-        text = Path("addons/atmos/functions/fnc_getLocalWind.sqf").read_text(
+        text = Path("addons/atmos/functions/wind/fnc_getLocalWind.sqf").read_text(
             encoding="utf-8"
         )
         # Spec anchors present in the physics.
@@ -261,7 +261,7 @@ class TestSQFSync(unittest.TestCase):
     def test_sqf_composition_min(self):
         from pathlib import Path
 
-        text = Path("addons/atmos/functions/fnc_getLocalWind.sqf").read_text(
+        text = Path("addons/atmos/functions/wind/fnc_getLocalWind.sqf").read_text(
             encoding="utf-8"
         )
         self.assertIn("_terrainS min _buildingS) min _canyonS", text)

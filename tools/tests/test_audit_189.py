@@ -19,17 +19,17 @@ from pathlib import Path
 
 # Files hardened in the #189 Phase 1 sweep.  No bare EGVAR reads allowed.
 HARDENED_FILES = [
-    "addons/thermal/functions/fnc_calculateFreezingRain.sqf",
-    "addons/thermal/functions/fnc_calculateHeatIndex.sqf",
-    "addons/thermal/functions/fnc_calculateWBGT.sqf",
-    "addons/environmental/functions/fnc_calculateBiologicalAmbient.sqf",
-    "addons/environmental/functions/fnc_calculateCBRNPersistence.sqf",
-    "addons/environmental/functions/fnc_calculateFireSpreadRisk.sqf",
-    "addons/environmental/functions/fnc_calculateSevereWeather.sqf",
-    "addons/environmental/functions/fnc_calculateSnowAccumulation.sqf",
-    "addons/optics/functions/fnc_calculateAttenuation.sqf",
-    "addons/optics/functions/fnc_calculateMirageIntensity.sqf",
-    "addons/optics/functions/fnc_calculateSmokePersistence.sqf",
+    "addons/thermal/functions/environment/fnc_calculateFreezingRain.sqf",
+    "addons/thermal/functions/environment/fnc_calculateHeatIndex.sqf",
+    "addons/thermal/functions/environment/fnc_calculateWBGT.sqf",
+    "addons/environmental/functions/warnings/fnc_calculateBiologicalAmbient.sqf",
+    "addons/environmental/functions/warnings/fnc_calculateCBRNPersistence.sqf",
+    "addons/environmental/functions/warnings/fnc_calculateFireSpreadRisk.sqf",
+    "addons/environmental/functions/warnings/fnc_calculateSevereWeather.sqf",
+    "addons/environmental/functions/terrain/fnc_calculateSnowAccumulation.sqf",
+    "addons/optics/functions/sensor/fnc_calculateAttenuation.sqf",
+    "addons/optics/functions/sensor/fnc_calculateMirageIntensity.sqf",
+    "addons/optics/functions/sensor/fnc_calculateSmokePersistence.sqf",
 ]
 
 # A bare read looks like `EGVAR(core,currentTemperature)` or
@@ -63,7 +63,7 @@ class TestSafeReadPattern(unittest.TestCase):
 
     def test_hardened_reads_carry_defaults(self):
         # Spot-check that the converted sites have a default argument.
-        wbgt = Path("addons/thermal/functions/fnc_calculateWBGT.sqf").read_text(
+        wbgt = Path("addons/thermal/functions/environment/fnc_calculateWBGT.sqf").read_text(
             encoding="utf-8"
         )
         self.assertIn(
@@ -79,7 +79,7 @@ class TestSourcedConstants(unittest.TestCase):
 
     def test_heat_index_noaa_steadman(self):
         # NOAA/NWS heat index equation (Rothfusz 1990), all coefficients.
-        text = Path("addons/thermal/functions/fnc_calculateHeatIndex.sqf").read_text(
+        text = Path("addons/thermal/functions/environment/fnc_calculateHeatIndex.sqf").read_text(
             encoding="utf-8"
         )
         for coeff in (
@@ -97,7 +97,7 @@ class TestSourcedConstants(unittest.TestCase):
 
     def test_wbgt_stull_2011(self):
         # Stull 2011 wet-bulb constants + ISO 7243 weighting.
-        text = Path("addons/thermal/functions/fnc_calculateWBGT.sqf").read_text(
+        text = Path("addons/thermal/functions/environment/fnc_calculateWBGT.sqf").read_text(
             encoding="utf-8"
         )
         for const in (
@@ -113,28 +113,28 @@ class TestSourcedConstants(unittest.TestCase):
 
     def test_fire_spread_rothermel_1972(self):
         text = Path(
-            "addons/environmental/functions/fnc_calculateFireSpreadRisk.sqf"
+            "addons/environmental/functions/warnings/fnc_calculateFireSpreadRisk.sqf"
         ).read_text(encoding="utf-8")
         self.assertIn("Rothermel (1972)", text)
         self.assertIn("0.03 * _fuelFactor", text)
 
     def test_cbrn_q10_scaling(self):
         text = Path(
-            "addons/environmental/functions/fnc_calculateCBRNPersistence.sqf"
+            "addons/environmental/functions/warnings/fnc_calculateCBRNPersistence.sqf"
         ).read_text(encoding="utf-8")
         self.assertIn("Q10", text)
         self.assertIn("per +10", text)
 
     def test_thermal_contrast_flir_fom(self):
         text = Path(
-            "addons/optics/functions/fnc_calculateThermalContrast.sqf"
+            "addons/optics/functions/sensor/fnc_calculateThermalContrast.sqf"
         ).read_text(encoding="utf-8")
         self.assertIn("8 °C", text)  # delta-T full-contrast figure of merit
         self.assertIn("0.05", text)  # microbolometer NETD
 
     def test_smoke_taylor_and_kohler(self):
         text = Path(
-            "addons/optics/functions/fnc_calculateSmokePersistence.sqf"
+            "addons/optics/functions/sensor/fnc_calculateSmokePersistence.sqf"
         ).read_text(encoding="utf-8")
         self.assertIn("Taylor", text)
         self.assertIn("Köhler", text)
@@ -147,13 +147,13 @@ class TestTwoNodeSolver(unittest.TestCase):
     def test_two_node_file_exists_and_registered(self):
         from pathlib import Path
 
-        fn = Path("addons/thermal/functions/fnc_solveTwoNodeSelection.sqf")
+        fn = Path("addons/thermal/functions/solver/fnc_solveTwoNodeSelection.sqf")
         self.assertTrue(fn.exists())
         prep = Path("addons/thermal/XEH_PREP.hpp").read_text(encoding="utf-8")
         self.assertIn("solveTwoNodeSelection", prep)
 
     def test_gagge_physiology_constants(self):
-        text = Path("addons/thermal/functions/fnc_solveTwoNodeSelection.sqf").read_text(
+        text = Path("addons/thermal/functions/solver/fnc_solveTwoNodeSelection.sqf").read_text(
             encoding="utf-8"
         )
         # Blood-flow coupling: K_min 5.28, blood cp 4186.
@@ -170,7 +170,7 @@ class TestTwoNodeSolver(unittest.TestCase):
         self.assertIn("8.6", text)
 
     def test_two_node_physics_patterns(self):
-        text = Path("addons/thermal/functions/fnc_solveTwoNodeSelection.sqf").read_text(
+        text = Path("addons/thermal/functions/solver/fnc_solveTwoNodeSelection.sqf").read_text(
             encoding="utf-8"
         )
         # Analytic core solve (linear residual) - the damped 2x2 Newton
@@ -188,7 +188,7 @@ class TestTwoNodeSolver(unittest.TestCase):
         self.assertIn("1.5", text)
 
     def test_inert_conduction_not_l_char(self):
-        text = Path("addons/thermal/functions/fnc_solveTwoNodeSelection.sqf").read_text(
+        text = Path("addons/thermal/functions/solver/fnc_solveTwoNodeSelection.sqf").read_text(
             encoding="utf-8"
         )
         # The #124 audit bug: conduction must use L_cond (wall thickness),
@@ -206,7 +206,7 @@ class TestWaterThermal(unittest.TestCase):
     def test_boutelier_water_coefficients(self):
         from pathlib import Path
 
-        text = Path("addons/thermal/functions/fnc_solveTwoNodeSelection.sqf").read_text(
+        text = Path("addons/thermal/functions/solver/fnc_solveTwoNodeSelection.sqf").read_text(
             encoding="utf-8"
         )
         # Boutelier, Bougues & Timbal 1977 (partitional calorimetry):
@@ -221,7 +221,7 @@ class TestWaterThermal(unittest.TestCase):
     def test_immersion_exchange_target_is_water(self):
         from pathlib import Path
 
-        text = Path("addons/thermal/functions/fnc_solveTwoNodeSelection.sqf").read_text(
+        text = Path("addons/thermal/functions/solver/fnc_solveTwoNodeSelection.sqf").read_text(
             encoding="utf-8"
         )
         # An immersed surface exchanges against the WATER temperature,
@@ -233,7 +233,7 @@ class TestWaterThermal(unittest.TestCase):
     def test_rain_forces_wettedness(self):
         from pathlib import Path
 
-        text = Path("addons/thermal/functions/fnc_solveTwoNodeSelection.sqf").read_text(
+        text = Path("addons/thermal/functions/solver/fnc_solveTwoNodeSelection.sqf").read_text(
             encoding="utf-8"
         )
         # Rain is EXTERNAL water (not regulated sweat): drives the wet
@@ -244,7 +244,7 @@ class TestWaterThermal(unittest.TestCase):
     def test_immersion_detected_native(self):
         from pathlib import Path
 
-        text = Path("addons/thermal/functions/fnc_applySelectionThermal.sqf").read_text(
+        text = Path("addons/thermal/functions/display/fnc_applySelectionThermal.sqf").read_text(
             encoding="utf-8"
         )
         # Immersion via native engine state: getPosASL z < 0 (submerged)
@@ -264,7 +264,7 @@ class TestWetGroundThermal(unittest.TestCase):
         from pathlib import Path
 
         text = Path(
-            "addons/thermal/functions/fnc_calculateGroundTemperature.sqf"
+            "addons/thermal/functions/ground/fnc_calculateGroundTemperature.sqf"
         ).read_text(encoding="utf-8")
         # The wrapper delegates to the node stack (issue #198) - the
         # stack is the ground model now.
@@ -274,7 +274,7 @@ class TestWetGroundThermal(unittest.TestCase):
         self.assertIn("classifyBySurfaceType", text)
         # The moisture/evaporative physics moved to the node stack.
         stack = Path(
-            "addons/thermal/functions/fnc_calculateGroundNodeStack.sqf"
+            "addons/thermal/functions/ground/fnc_calculateGroundNodeStack.sqf"
         ).read_text(encoding="utf-8")
         self.assertIn("QEGVAR(core,soilMoisture)", stack)
         self.assertIn("_kSat", stack)
@@ -287,7 +287,7 @@ class TestWetGroundThermal(unittest.TestCase):
         from pathlib import Path
 
         text = Path(
-            "addons/thermal/functions/fnc_calculateGroundNodeStack.sqf"
+            "addons/thermal/functions/ground/fnc_calculateGroundNodeStack.sqf"
         ).read_text(encoding="utf-8")
         # The node-stack cell state carries the moisture axis: keyed by
         # position grid cell + material (a wet road and a dry road are
@@ -297,7 +297,7 @@ class TestWetGroundThermal(unittest.TestCase):
         self.assertIn("QGVAR(groundNodeStack)", text)
         # The old single-node cache is gone from the wrapper.
         wrapper = Path(
-            "addons/thermal/functions/fnc_calculateGroundTemperature.sqf"
+            "addons/thermal/functions/ground/fnc_calculateGroundTemperature.sqf"
         ).read_text(encoding="utf-8")
         self.assertNotIn("groundTempCache", wrapper)
         self.assertNotIn("_cacheKey = [_material, _moisture]", wrapper)
@@ -328,7 +328,7 @@ class TestGroundNodeStack(unittest.TestCase):
         from pathlib import Path
 
         text = Path(
-            "addons/thermal/functions/fnc_calculateGroundNodeStack.sqf"
+            "addons/thermal/functions/ground/fnc_calculateGroundNodeStack.sqf"
         ).read_text(encoding="utf-8")
         # PREP registered.
         prep = Path("addons/thermal/XEH_PREP.hpp").read_text(encoding="utf-8")
@@ -350,7 +350,7 @@ class TestGroundNodeStack(unittest.TestCase):
         from pathlib import Path
 
         text = Path(
-            "addons/thermal/functions/fnc_calculateGroundNodeStack.sqf"
+            "addons/thermal/functions/ground/fnc_calculateGroundNodeStack.sqf"
         ).read_text(encoding="utf-8")
         # Johansen 1975 LOGARITHMIC Kersten (not the linear frozen form).
         self.assertIn("0.7 * (log _sr)", text)
@@ -394,7 +394,7 @@ class TestFrostThermal(unittest.TestCase):
         # The ground wrapper applies the frost tier on the node-stack
         # surface temp.
         wrapper = Path(
-            "addons/thermal/functions/fnc_calculateGroundTemperature.sqf"
+            "addons/thermal/functions/ground/fnc_calculateGroundTemperature.sqf"
         ).read_text(encoding="utf-8")
         self.assertIn("calculateFrostState", wrapper)
         self.assertIn("_frost select 0", wrapper)
@@ -406,7 +406,7 @@ class TestFrostThermal(unittest.TestCase):
     def test_frost_physics_patterns(self):
         from pathlib import Path
 
-        text = Path("addons/thermal/functions/fnc_calculateFrostState.sqf").read_text(
+        text = Path("addons/thermal/functions/ground/fnc_calculateFrostState.sqf").read_text(
             encoding="utf-8"
         )
         # Latent heat of fusion (IAPWS-95 / Incropera).

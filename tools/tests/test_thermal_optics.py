@@ -28,7 +28,10 @@ _CORE = _REPO_ROOT / "addons" / "core" / "functions"
 
 def _read_sqf(name, addon="optics"):
     """Read an SQF function file.  The drift-lock tests read the SOURCE so a
-    constant change in SQF fails the mirror tests until re-synced."""
+    constant change in SQF fails the mirror tests until re-synced.  The
+    file may live in a categorised subfolder (issue #203), so a recursive
+    search of the module's functions tree is used - the function NAME is
+    flat (aee_X_fnc_<name>) regardless of its organisational folder."""
     if addon == "thermal":
         base = _THERMAL
     elif addon == "nightvision":
@@ -37,7 +40,11 @@ def _read_sqf(name, addon="optics"):
         base = _CORE
     else:
         base = _OPTICS
-    return (base / name).read_text(encoding="utf-8")
+    if (base / name).exists():
+        return (base / name).read_text(encoding="utf-8")
+    for f in base.rglob(name):
+        return f.read_text(encoding="utf-8")
+    raise FileNotFoundError(f"{name} not found under {base}")
 
 
 # ─── Object temperature model mirrors ───────────────────────────────────────
@@ -1842,6 +1849,7 @@ class TestClothingThermal(unittest.TestCase):
             / "addons"
             / "thermal"
             / "functions"
+            / "display"
             / "fnc_applySelectionThermal.sqf"
         )
         text = fn.read_text(encoding="utf-8")
@@ -2174,9 +2182,9 @@ class TestRainDropletEyeVelocity(unittest.TestCase):
         # Source drift-lock: the fix must be present in the SQF.
         from pathlib import Path
 
-        text = Path("addons/thermal/functions/fnc_applyRainDroplets.sqf").read_text(
-            encoding="utf-8"
-        )
+        text = Path(
+            "addons/thermal/functions/display/fnc_applyRainDroplets.sqf"
+        ).read_text(encoding="utf-8")
         # moveVelocity must be eyeVel (co-move), not -eyeVel (a sign error
         # that would send drops AWAY from the eye) and not a static 0.
         self.assertIn("co-move with eye", text)
@@ -3484,11 +3492,15 @@ class TestNVGStackAuditSQFSync(unittest.TestCase):
 
         # NVG functions moved to the aee_nightvision addon (three-system split).
         base = (
-            "addons/nightvision"
+            Path("addons/nightvision", "functions")
             if name.startswith("fnc_applyNVG") or name.startswith("fnc_applyNight")
-            else "addons/optics"
+            else Path("addons/optics", "functions")
         )
-        return Path(base, "functions", name).read_text(encoding="utf-8")
+        if (base / name).exists():
+            return (base / name).read_text(encoding="utf-8")
+        for f in base.rglob(name):
+            return f.read_text(encoding="utf-8")
+        raise FileNotFoundError(f"{name} not found under {base}")
 
     def test_dead_burn_position_removed(self):
         # Bug A: the write-only world-position afterimage is gone; the

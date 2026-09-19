@@ -166,7 +166,7 @@ class TestSQFSync(unittest.TestCase):
         self.assertIn("calculateConcealment", update)
 
         sqf = Path(
-            "addons/environmental/functions/fnc_calculateConcealment.sqf"
+            "addons/environmental/functions/terrain/fnc_calculateConcealment.sqf"
         ).read_text(encoding="utf-8")
         # Must read the existing density state.
         self.assertIn("currentFoliageDensity", sqf)

@@ -27,6 +27,16 @@ from pathlib import Path
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 _PHYSIOLOGY = _REPO_ROOT / "addons" / "physiology" / "functions"
 
+def _read_recursive(base, name):
+    """Read an SQF function file, resolving categorised subfolders (issue
+    #203).  The function NAME is flat (aee_<mod>_fnc_<name>)."""
+    if (base / name).exists():
+        return (base / name).read_text(encoding="utf-8")
+    for f in base.rglob(name):
+        return f.read_text(encoding="utf-8")
+    raise FileNotFoundError(f"{name} not found under {base}")
+
+
 
 def cold_factor(ambient_c):
     """Mirror of the cold piecewise curve in fnc_calculateShooterStability."""
@@ -196,7 +206,7 @@ class TestSQFSyncStability(unittest.TestCase):
     """SQF source must contain the constants the Python mirrors rely on."""
 
     def _assert_in_sqf(self, filename, fragments, context):
-        text = (_PHYSIOLOGY / filename).read_text(encoding="utf-8")
+        text = _read_recursive(_PHYSIOLOGY, filename)
         missing = [f for f in fragments if f not in text]
         self.assertFalse(
             missing,
@@ -292,9 +302,7 @@ class TestDriftLockBreakpoints(unittest.TestCase):
     def test_sqf_breakpoint_values(self):
         # The SQF must contain the exact anchor values, not just the
         # linearConversion ranges.  A shifted floor or limit fails here.
-        text = (_PHYSIOLOGY / "fnc_calculateShooterStability.sqf").read_text(
-            encoding="utf-8"
-        )
+        text = _read_recursive(_PHYSIOLOGY, "fnc_calculateShooterStability.sqf")
         self.assertIn("1.0, 0.6", text)  # cold 15->8 to 0.6
         self.assertIn("0.6, 0.3", text)  # cold 8->-10 to 0.3 floor
         self.assertIn("29, 42", text)  # heat TLV->vigilance limit
