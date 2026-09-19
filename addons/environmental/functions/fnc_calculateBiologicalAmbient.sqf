@@ -12,7 +12,7 @@ Stored in GVAR(biologicalAmbientIntensity).
 
 params [];
 
-private _temp  = EGVAR(core,currentTemperature);
+private _temp  = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 private _biome = missionNamespace getVariable [QEGVAR(core,biome), "Cfb"];
 private _month  = date select 1;
 

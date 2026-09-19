@@ -18,8 +18,8 @@ Stored in QEGVAR(core,cbrnPersistence).
 */
 
 // ─── Inputs ────────────────────────────────────────────────────────────────
-private _temp_C  = EGVAR(core,currentTemperature);
-private _humidity = EGVAR(core,currentHumidity);
+private _temp_C  = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
+private _humidity = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
 private _windSpd  = vectorMagnitude wind;
 private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
 

@@ -400,7 +400,7 @@ private _hotSources = [];
         // hemisphere (F ~0.5), a warm engine a modest radiator (F ~0.05).
         private _hotK = _nTemp + 273.15;
         private _coldK = _oTemp + 273.15;
-        private _fView = if (_nTemp > 300) then { 0.5 } else { 0.05 };
+        private _fView = [0.05, 0.5] select (_nTemp > 300);
         private _qRad = _fView * 0.9 * 5.670374419e-8 * ((_hotK ^ 4) - (_coldK ^ 4));
         private _share = _qRad / 10;   // h ~10 W/m2K (windy ambient)
         _coupling = _coupling + _share;
