@@ -55,6 +55,7 @@ if (currentVisionMode _player != 2) exitWith {
                 AEE_LOG_DEBUG(_logMsg);
             };
         } forEach [
+            QGVAR(ppHandle_Thermal_Vignette),
             QGVAR(ppHandle_Thermal_CC),
             QGVAR(ppHandle_Thermal_Grain),
             QGVAR(ppHandle_Thermal_Blur)
@@ -113,11 +114,12 @@ if (_rainS > 0.1) then {
 // handles, climbs priorities, and spams "Invalid post effect handle".
 // Priorities sit above the NVG handles so the two never collide.
 // A -1 handle (priority taken) bumps until it succeeds.
+private _hVig   = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Vignette), -1];
 private _hCC    = missionNamespace getVariable [QGVAR(ppHandle_Thermal_CC), -1];
 private _hGrain = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Grain), -1];
 private _hBlur  = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Blur), -1];
 
-if (_hCC < 0 || _hGrain < 0 || _hBlur < 0) then {
+if (_hVig < 0 || _hCC < 0 || _hGrain < 0 || _hBlur < 0) then {
     {
         private _h = missionNamespace getVariable [_x, -1];
         if (_h >= 0) then {
@@ -127,6 +129,7 @@ if (_hCC < 0 || _hGrain < 0 || _hBlur < 0) then {
             AEE_LOG_DEBUG(_logMsg);
         };
     } forEach [
+        QGVAR(ppHandle_Thermal_Vignette),
         QGVAR(ppHandle_Thermal_CC),
         QGVAR(ppHandle_Thermal_Grain),
         QGVAR(ppHandle_Thermal_Blur)
@@ -147,14 +150,26 @@ if (_hCC < 0 || _hGrain < 0 || _hBlur < 0) then {
         private _logMsg = format ["created thermal %1 priority=%2 handle=%3", _name, _priority, _handle];
         AEE_LOG_DEBUG(_logMsg);
     } forEach [
-        ["ColorCorrections", 5200, QGVAR(ppHandle_Thermal_CC)],
-        ["FilmGrain",       1300, QGVAR(ppHandle_Thermal_Grain)],
-        ["DynamicBlur",     4200, QGVAR(ppHandle_Thermal_Blur)]
+        ["RadialBlur",      1300, QGVAR(ppHandle_Thermal_Vignette)],
+        ["DynamicBlur",     4200, QGVAR(ppHandle_Thermal_Blur)],
+        ["FilmGrain",       5100, QGVAR(ppHandle_Thermal_Grain)],
+        ["ColorCorrections", 5200, QGVAR(ppHandle_Thermal_CC)]
     ];
-    _handles params ["_hCC", "_hGrain", "_hBlur"];
-    private _logMsg = format ["thermal ppEffects created: CC=%1 grain=%2 blur=%3", _hCC, _hGrain, _hBlur];
+    _handles params ["_hVig", "_hBlur", "_hGrain", "_hCC"];
+    private _logMsg = format ["thermal ppEffects created: vig=%1 blur=%2 grain=%3 CC=%4", _hVig, _hBlur, _hGrain, _hCC];
     AEE_LOG_INFO(_logMsg);
 };
+
+// Re-read the handles from missionNamespace at FUNCTION scope.  The
+// `_handles params` above runs inside the if-block, whose scope shadows
+// the function-scope locals — the adjust section below would otherwise
+// read stale -1 values and throw "Invalid post effect handle".  This is
+// the NVG model's pattern (missionNamespace is the single source of
+// truth after the create block).
+_hVig   = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Vignette), -1];
+_hBlur  = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Blur), -1];
+_hGrain = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Grain), -1];
+_hCC    = missionNamespace getVariable [QGVAR(ppHandle_Thermal_CC), -1];
 
 // ─── ColorCorrections (display gain/contrast) ────────────────────────────
 // Params: [brightness, contrast, offset, blend, colorize, weight]
@@ -212,6 +227,16 @@ _hBlur ppEffectAdjust [_blur];
 _hBlur ppEffectCommit 0;
 _hBlur ppEffectEnable true;
 _hBlur ppEffectForceInNVG true;
+
+// ─── RadialBlur (ocular vignette) ──────────────────────────────────────────
+// Real FLIR oculars edge-darken like NVG: the objective tube vignettes the
+// image.  The strength is subtle (the sensor image is far more uniform
+// than an image-intensifier tube) and drifts slightly with conditions.
+private _vigStrength = [0.06, 0.09, 0.0, 0.9, 0.0, 0.12];
+_hVig ppEffectAdjust _vigStrength;
+_hVig ppEffectCommit 0;
+_hVig ppEffectEnable true;
+_hVig ppEffectForceInNVG true;
 
 // Diagnostics: set aee_optics_nvgDebug = true in the debug console to log
 // every thermal tick's handles and params to the .rpt.

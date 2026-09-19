@@ -53,6 +53,7 @@
         {
             missionNamespace setVariable [_x, -1];
         } forEach [
+            QEGVAR(thermal,ppHandle_Thermal_Vignette),
             QEGVAR(thermal,ppHandle_Thermal_CC),
             QEGVAR(thermal,ppHandle_Thermal_Grain),
             QEGVAR(thermal,ppHandle_Thermal_Blur)

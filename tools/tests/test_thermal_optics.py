@@ -2696,6 +2696,25 @@ class TestSQFSync(unittest.TestCase):
             addon="thermal",
         )
 
+    def test_thermal_post_process_layering(self):
+        # The ppEffect stack must mirror the real FLIR sensor chain
+        # (issue #196): atmospheric blur applies first, sensor noise
+        # (NETD grain) second, display gain/contrast last.  Lower
+        # priority = applied first (BIS wiki base order).  The old order
+        # put grain BELOW blur, so DynamicBlur smeared the sensor noise.
+        self._assert_in_sqf(
+            "fnc_applyThermalVision.sqf",
+            [
+                '["RadialBlur",      1300, QGVAR(ppHandle_Thermal_Vignette)]',
+                '["DynamicBlur",     4200, QGVAR(ppHandle_Thermal_Blur)]',
+                '["FilmGrain",       5100, QGVAR(ppHandle_Thermal_Grain)]',
+                '["ColorCorrections", 5200, QGVAR(ppHandle_Thermal_CC)]',
+                "ppEffectForceInNVG true",
+            ],
+            "FLIR layering: blur -> grain -> CC, vignette below, grain ABOVE blur",
+            addon="thermal",
+        )
+
     def test_thermal_crossover_floor(self):
         self._assert_in_sqf(
             "fnc_applyThermalVision.sqf",
