@@ -547,20 +547,26 @@ class TestRootCauseRegressions(unittest.TestCase):
         self.assertNotIn("_description", text)  # description keyword matching gone
 
     def test_camo_swap_unknown_keeps_engine(self):
-        # RC3 regression: the thermal clothing swap must NOT swap unknown
-        # materials.  The old branch (`_m == "" || ... metal/glass/plastic
-        # all absent -> swap`) caught every third-party uniform.  The
-        # source must now swap only known cloth.
+        # RC3 regression + #124 migration: the clothing thermal path must
+        # not break third-party uniforms.  The old keyword branch
+        # (`_m find "cloth" >= 0`) is GONE - the #124 migration replaced
+        # rvmat swaps with the per-selection substrate, which classifies
+        # via the #96 detector chain and leaves unknown materials at the
+        # engine default.  The dangerous "unknown -> swap" else-branch is
+        # gone; the substrate's safe fallback is present.
         from pathlib import Path
 
         text = Path("addons/optics/functions/fnc_applyClothingThermal.sqf").read_text(
             encoding="utf-8"
         )
-        self.assertIn('_m find "cloth" >= 0', text)
-        # The dangerous "unknown -> swap" else-branch must be gone.
+        self.assertNotIn('_m find "cloth" >= 0', text)
         self.assertNotIn('_m == "" ||', text)
         self.assertNotIn("Unknown material: swap", text)
-        self.assertIn("Unknown = leave the engine", text)
+        # The substrate path must be used instead.
+        self.assertIn("EFUNC(thermal,applySelectionThermal)", text)
+        # And the scrapped rvmat override names must not be referenced.
+        self.assertNotIn("ti_cloth_cold.rvmat", text)
+        self.assertNotIn("ti_cloth_hot.rvmat", text)
 
     def test_climate_consumers_use_latitude_normals(self):
         # The 4 climate consumers (temperature, pressure, humidity, fog)

@@ -29,8 +29,8 @@ if (isNull _unit) exitWith { 0 };  // no unit on dedicated server
 
 // ─── Inputs ────────────────────────────────────────────────────────────
 private _windSpeed = vectorMagnitude (missionNamespace getVariable [QEGVAR(core,currentWind), [0, 0]]);
-private _humidity  = EGVAR(core,currentHumidity);
-private _temp      = EGVAR(core,currentTemperature);
+private _humidity  = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
+private _temp      = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 private _rain      = rain;
 private _turbulence = missionNamespace getVariable [QEGVAR(core,currentTurbulence), 0];
 

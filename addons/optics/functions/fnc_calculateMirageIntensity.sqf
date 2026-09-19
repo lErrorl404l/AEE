@@ -24,7 +24,7 @@ params [["_unit", objNull, [objNull]]];
 if (isNull _unit) exitWith { 0 };  // no unit on dedicated server
 
 // ─── Inputs ────────────────────────────────────────────────────────────
-private _temp        = EGVAR(core,currentTemperature);
+private _temp        = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 private _overcast    = ([] call FUNC(getSmoothedWeather)) select 1;
 private _biome       = missionNamespace getVariable [QEGVAR(core,biome), ""];
 private _groundState = missionNamespace getVariable [QEGVAR(core,groundState), "Normal"];

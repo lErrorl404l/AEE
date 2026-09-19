@@ -1,24 +1,31 @@
 #include "..\script_component.hpp"
 /*
- * Handheld weapon barrel heat.
+ * Handheld weapon barrel heat (issue #124 migration).
  *
  * The wiki-documented TI mechanism: the ALPHA channel of a weapon's TI
- * texture is "barrel heat".  The baked texture shows a static barrel, but
- * a real barrel WARMS as rounds are fired: sustained fire heats a steel
- * barrel to 100-300 C, cooling over ~1-2 min after the last shot.  A hot
- * barrel is one of the most visible handheld signatures in thermal.
+ * texture is "barrel heat".  A real barrel WARMS as rounds are fired:
+ * sustained fire heats a steel barrel to 100-300 C, cooling over ~1-2
+ * min after the last shot.  A hot barrel is one of the most visible
+ * handheld signatures in thermal.
  *
  * Mechanism: the Fired EH (XEH_postInit) calls ["fired"] here to
- * accumulate heat; the thermal PFH calls ["tick"] per frame to decay it
- * and swap the weapon's material to a hot-TI variant while hot.  The
- * weapon model is attached to the unit, so getObjectTextures on the unit
- * includes the weapon selections.
+ * accumulate heat; the thermal PFH calls ["tick"] per frame to decay
+ * it and drive the per-selection thermal substrate (issue #124), which
+ * paints the weapon selection with the FLIR white-hot procedural
+ * colour.  The weapon model is attached to the unit, so getObjectTextures
+ * on the unit includes the weapon selections.
+ *
+ * This REPLACES the old ti_cloth_hot/cold.rvmat material swap (the
+ * #123 bug class): the substrate solves the barrel temperature from
+ * physics (q_internal = rounds-deposited heat, inertia from real mass)
+ * and renders it as greyscale radiance, not a swapped material.
  *
  * Multiplayer: local per shooter, correct (thermal is per-client).
  *
- * Materials: reuse ti_cloth_hot/cold.rvmat (real TI textures).  The swap
- * is throttled by a heat-state change guard like the other material
- * systems.
+ * The 0..1 heat state maps to an internal flux: at full heat the barrel
+ * sits ~300 C above ambient in equilibrium (the documented sustained-fire
+ * range), which the substrate's lumped-capacity solve turns into a
+ * physically-grounded surface temperature with the correct time constant.
  */
 params ["_weapon", ["_ammo", ""]];
 
@@ -41,9 +48,9 @@ if (_ammo != "") then {
     0
 };
 
-// ─── Tick: decay and swap the weapon material ─────────────────────────────
-// Steel barrel cools with a ~90 s time constant: the barrel loses heat to
-// air and the gun's own mass.  Exponential decay.
+// ─── Tick: decay and drive the substrate ──────────────────────────────────
+// Steel barrel cools with a ~90 s time constant: the barrel loses heat
+// to air and the gun's own mass.  Exponential decay.
 private _player = call CBA_fnc_currentUnit;
 if (isNil "_player" || !alive _player) exitWith { 0 };
 if (diag_deltaTime > 0) then {
@@ -51,44 +58,38 @@ if (diag_deltaTime > 0) then {
     missionNamespace setVariable [QGVAR(barrelHeat), _heat];
 };
 
-// Only swap when the heat crosses a threshold (avoid thrash).
+// Only drive when there is any heat (avoid wasted work when cold).
+if (_heat < 0.001) exitWith { 0 };
+
+// Find the weapon selection on the unit model.  The weapon is attached;
+// getObjectTextures on the unit includes it.  Cache the selection NAME
+// per weapon class.
 private _weaponObj = currentWeapon _player;
 if (_weaponObj == "") exitWith { 0 };
-
-    // Material: hot above 0.4, cold below 0.15, keep own between.
-    private _material = if (_heat > 0.4) then {
-        "\z\aee\addons\optics\data\ti_cloth_hot.rvmat"
-    } else {
-        ["", "\z\aee\addons\optics\data\ti_cloth_cold.rvmat"] select (_heat < 0.15)
-    };
-    if (_material == "") exitWith { 0 };
-
-    // Find the weapon selection on the unit model.  The weapon is
-    // attached; getObjectTextures on the unit includes it.  Cache the
-    // selection index per weapon class.
-    private _selIdx = missionNamespace getVariable [format [QGVAR(barrelSel_%1), _weaponObj], -1];
-    if (_selIdx < 0) then {
-        private _textures = getObjectTextures _player;
-        // Weapon selections are the later ones (hands/weapon render last);
-        // find the one whose material mentions the weapon's class name.
-        // getObjectTextures returns STRINGS (texture paths) — the index is
-        // _forEachIndex, not _x (comparing a string to count was the bug).
-        private _mats = getObjectMaterials _player;
-        private _found = -1;
-        {
-            private _sel = _forEachIndex;
-            if (_sel < count _mats) then {
-                private _m = toLower (_mats select _sel);
-                if (_m find "weapon" >= 0 || _m find _weaponObj >= 0) exitWith { _found = _sel; };
+private _selName = missionNamespace getVariable [format [QGVAR(barrelSel_%1), _weaponObj], ""];
+if (_selName == "") then {
+    private _textures = getObjectTextures _player;
+    private _mats = getObjectMaterials _player;
+    private _found = "";
+    {
+        private _sel = _forEachIndex;
+        if (_sel < count _mats) then {
+            private _m = toLower (_mats select _sel);
+            if (_m find "weapon" >= 0 || _m find _weaponObj >= 0) exitWith {
+                private _names = selectionNames _player;
+                if (_sel < count _names) then { _found = _names select _sel; };
             };
-        } forEach _textures;
-        _selIdx = _found;
-        missionNamespace setVariable [format [QGVAR(barrelSel_%1), _weaponObj], _selIdx];
-    };
-    if (_selIdx < 0) exitWith { 0 };
+        };
+    } forEach _textures;
+    _selName = _found;
+    missionNamespace setVariable [format [QGVAR(barrelSel_%1), _weaponObj], _selName];
+};
+if (_selName == "") exitWith { 0 };
 
-    // Change guard: skip if already at this material.
-    private _cur = (getObjectMaterials _player) select _selIdx;
-    if (_cur == _material) exitWith { 0 };
-    _player setObjectMaterial [_selIdx, _material];
-    1
+// Internal flux: full heat -> ~300 C above ambient in equilibrium.
+// Converted per unit area; the substrate's lumped-capacity solve uses
+// the weapon's real mass (getMass) for the correct thermal time constant.
+private _qInternal = _heat * 7000;   // W/m2: heat=1 -> ~300 C barrel (sustained fire)
+
+[_player, _selName, "", _qInternal, 0.3] call EFUNC(thermal,applySelectionThermal);
+0

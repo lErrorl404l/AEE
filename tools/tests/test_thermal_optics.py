@@ -1805,12 +1805,28 @@ class TestClothingThermal(unittest.TestCase):
         self.assertLess(clothing_ti_scale(0.5, 0), clothing_ti_scale(0.5, 30))
 
     def test_rvmats_exist(self):
-        # The two override materials must exist in the addon data folder.
+        # Issue #124: the rvmat TI swap is scrapped.  The per-selection
+        # thermal substrate paints procedural colours via setObjectTexture,
+        # so the ti_cloth_cold/hot.rvmat override materials must NOT exist
+        # (their deletion is the point - no third-party rvmat can break).
         import os
 
         data_dir = _REPO_ROOT / "addons" / "optics" / "data"
-        self.assertTrue((data_dir / "ti_cloth_cold.rvmat").exists())
-        self.assertTrue((data_dir / "ti_cloth_hot.rvmat").exists())
+        self.assertFalse((data_dir / "ti_cloth_cold.rvmat").exists())
+        self.assertFalse((data_dir / "ti_cloth_hot.rvmat").exists())
+        # The substrate that replaced them must exist and expose the
+        # per-selection apply path.
+        fn = (
+            _REPO_ROOT
+            / "addons"
+            / "thermal"
+            / "functions"
+            / "fnc_applySelectionThermal.sqf"
+        )
+        text = fn.read_text(encoding="utf-8")
+        self.assertIn("setObjectTexture", text)
+        self.assertIn("solveSelectionTemperature", text)
+        self.assertIn("getSelectionMaterials", text)
 
 
 def test_ti_texture_polarity(self):
@@ -2791,8 +2807,6 @@ class TestSQFSync(unittest.TestCase):
             [
                 'setTIParameter ["OutputRangeStart", _outStart]',
                 'setTIParameter ["OutputRangeWidth", _outWidth]',
-                "setVehicleTIPars [_engineHeat, _wheelHeat, _exhaustHeat]",
-                "_speed / 30",
                 "(_surfaceTemp - _airTemp) / 50",
                 "tiSceneMaxHeat",
                 "private _outStart = 0.0",
@@ -2800,21 +2814,21 @@ class TestSQFSync(unittest.TestCase):
                 "_angVel < 0.44",
                 "tiAppliedWidth",
             ],
-            "engine thermal drive (TI pars + stable blowout-guard AGC)",
+            "engine AGC display window (physics-driven scene max heat)",
         )
 
     def test_engine_thermal_damage_constants(self):
         self._assert_in_sqf(
             "fnc_applyEngineThermal.sqf",
             [
-                "getAllHitPointsDamage _x",
-                "_damageEngine * 0.5",
-                "_damageFuel * 0.2",
-                "_damageBody >= 0.95",
-                "200 * (1 - exp (-_engineRunTime / 60))",
-                "_engineRunTime / 60",
+                "thermalState",
+                "(_surfaceTemp - _airTemp) / 50",
+                "if (!alive _x) then { _sceneMax = 1",
+                "0.2 * (diag_deltaTime / 30)",
+                "nearEntities",
+                "str _x",
             ],
-            "damage-state + exhaust thermal",
+            "scene max heat from the physics thermal state (dead saturates, decays 30 s)",
         )
 
     def test_second_sun_constants(self):
@@ -2980,36 +2994,34 @@ class TestSQFSync(unittest.TestCase):
         self._assert_in_sqf(
             "fnc_applyClothingThermal.sqf",
             [
-                "setObjectMaterial [_x, _material]",
-                "ti_cloth_cold.rvmat",
-                "ti_cloth_hot.rvmat",
+                '["", "", "EXIT"] call EFUNC(thermal,applySelectionThermal)',
+                "applySelectionThermal",
                 "allUnits",
-                "clothingInsulation",
-                "abs (_tiScale - _lastScale) < 0.05",
-                "_x < count _oldMats",
+                "hiddenSelections",
+                "getObjectTextures _obj",
+                "fGround = 0.2",
+                "fGround = 0.7",
+                "QGVAR(tiSelections_",
             ],
-            "per-item clothing TI override",
+            "per-item clothing solved by the per-selection thermal substrate",
         )
 
     def test_building_thermal_constants(self):
         self._assert_in_sqf(
             "fnc_applyBuildingThermal.sqf",
             [
-                "setObjectMaterial [_selections select _i, _material]",
-                "ti_cloth_cold.rvmat",
+                '["", "", "EXIT"] call EFUNC(thermal,applySelectionThermal)',
+                "applySelectionThermal",
                 'allMissionObjects ""',
                 "vehicles - [player]",
                 'nearObjects ["House", _viewDist]',
                 'nearObjects ["Building", _viewDist]',
-                "getObjectMaterials _obj",
-                "tiBldgSaved",
                 "abs (_airTemp - _lastTemp) >= 2",
-                "vehicles - [player]",
-                "currentSolarRadiation",
-                "select (_solarRadiation > 0.3)",
-                "_x < count _oldMats",
+                "_qInternal = 770",
+                "_qInternal = 280",
+                "QGVAR(tiBldgSelections_",
             ],
-            "per-building TI material swap",
+            "per-building thermal solved by the per-selection substrate",
         )
 
     def test_mapwide_thermal_caps(self):
@@ -3079,13 +3091,24 @@ class TestSQFSync(unittest.TestCase):
         # REGRESSION (10-54 sweep): the old `max _airTemp` clamp erased the
         # day-time solar gain whenever wind cooling exceeded it (a sunlit
         # vehicle read exactly air temp), and blocked real night cooling.
-        # The floor is now air - 5 C (radiative-equilibrium bound).
+        # The per-object solver no longer carries a ground clamp at all:
+        # the ground temperature now comes from the per-position energy
+        # balance in fnc_calculateGroundTemperature, which exchanges
+        # radiation against the SKY (Swinbank 1963) - the honest
+        # radiative-equilibrium floor.  The object solver delegates.
         self._assert_in_sqf(
             "fnc_calculateObjectTemperature.sqf",
-            ["_target max (_airTemp - 5)", "_groundTarget max (_airTemp - 5)"],
-            "radiative-equilibrium floor (not air)",
+            ["calculateGroundTemperature", "private _groundTarget"],
+            "ground temperature delegated to the per-position energy balance",
             addon="thermal",
         )
+        # The old per-class gain table and the manual wind/shade clamp are
+        # GONE - the solver does convection, radiation and cloud itself.
+        from pathlib import Path
+
+        text = _read_sqf("fnc_calculateObjectTemperature.sqf", "thermal")
+        self.assertNotIn("_groundTarget max (_airTemp - 5)", text)
+        self.assertNotIn("_groundGain", text)
 
     def test_object_temp_taus(self):
         self._assert_in_sqf(
@@ -3096,18 +3119,25 @@ class TestSQFSync(unittest.TestCase):
         )
 
     def test_conduction_coupling_constants(self):
+        # #124 audit: the coupling is REAL Stefan-Boltzmann radiant
+        # exchange (4th power), not the old linear surplus/d^2.  A fire
+        # (600 C) radiates ~100x more than a warm engine and reaches
+        # everything within 10 m (large-area emitter), so the view
+        # factor is large for fires, small for warm engines.
         self._assert_in_sqf(
             "fnc_calculateObjectTemperature.sqf",
             [
                 "_hotSources",
-                "0.3 / (_d * _d)",
-                "_surplus * (0.3 / (_d * _d))",
+                "5.670374419e-8",
+                "_hotK ^ 4",
+                "_coldK ^ 4",
+                "_fView",
+                "_nTemp > 300",
                 "_d > 10",
-                "min 4",
-                "_coupling min 5",
-                "_nTemp <= _oTemp + 5",
+                "min 5",
+                "_coupling > 0.05",
             ],
-            "conduction/radiant coupling",
+            "radiant coupling (Stefan-Boltzmann 4th power)",
             addon="thermal",
         )
 
@@ -3140,25 +3170,23 @@ class TestSQFSync(unittest.TestCase):
         )
 
     def test_ground_gains(self):
+        # The per-class ground-gain table (5-15 C offsets per surface
+        # type) was removed in the #124 audit: the ground temperature is
+        # now solved per-position with the full energy balance in
+        # fnc_calculateGroundTemperature (material alpha, convection,
+        # sky radiation, thermal stamps).  The object solver delegates to
+        # it and no longer carries a manual per-class gain.
         self._assert_in_sqf(
             "fnc_calculateObjectTemperature.sqf",
-            [
-                "#gdtdesert",
-                "#gdtsand",
-                "#gdtice",
-                "#gdtsnow",
-                "#gdtconiferous",
-                "#gdtforest",
-                "{ 15 };",
-                "{ 10 };",
-                "{ -2 };",
-                "{  2 };",
-                "{  3 };",
-                "{  5 }",
-            ],
-            "ground surface solar gains",
+            ["calculateGroundTemperature", "private _groundTarget"],
+            "ground delegated to the per-position solve",
             addon="thermal",
         )
+        from pathlib import Path
+
+        text = _read_sqf("fnc_calculateObjectTemperature.sqf", "thermal")
+        self.assertNotIn("#gdtdesert", text)
+        self.assertNotIn("#gdtsnow", text)
 
     def test_insulation_and_metabolic(self):
         self._assert_in_sqf(
