@@ -14,6 +14,7 @@ PREP(getSelectionMaterials);
 PREP(applySelectionThermal);
 PREP(calculateMRT);
 PREP(calculateGlobeTemperature);
+PREP(calculateGroundNodeStack);
 PREP(calculateGroundTemperature);
 PREP(addGroundStamp);
 PREP(getGroundStampOffset);
