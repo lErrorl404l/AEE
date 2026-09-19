@@ -232,7 +232,8 @@ _hBlur ppEffectForceInNVG true;
 // Real FLIR oculars edge-darken like NVG: the objective tube vignettes the
 // image.  The strength is subtle (the sensor image is far more uniform
 // than an image-intensifier tube) and drifts slightly with conditions.
-private _vigStrength = [0.06, 0.09, 0.0, 0.9, 0.0, 0.12];
+// Params: [blurX, blurY, offsetX, offsetY] - the NVG-model form.
+private _vigStrength = [0.0040, 0.0040, 0.06, 0.06];
 _hVig ppEffectAdjust _vigStrength;
 _hVig ppEffectCommit 0;
 _hVig ppEffectEnable true;
