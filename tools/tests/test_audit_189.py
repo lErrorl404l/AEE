@@ -305,5 +305,67 @@ class TestWetGroundThermal(unittest.TestCase):
         self.assertIn("K_DRY + m * (K_SAT - K_DRY)", text)
 
 
+class TestGroundNodeStack(unittest.TestCase):
+    """Issue #198 - full-depth ground node-stack: the 4-layer vertical
+    diffusion solve (Noah LSM geometry, Crank-Nicolson tridiagonal)
+    replacing the single-node equilibrium with a persistent soil
+    temperature profile."""
+
+    def test_node_stack_solver_wired(self):
+        from pathlib import Path
+
+        text = Path(
+            "addons/thermal/functions/fnc_calculateGroundNodeStack.sqf"
+        ).read_text(encoding="utf-8")
+        # PREP registered.
+        prep = Path("addons/thermal/XEH_PREP.hpp").read_text(encoding="utf-8")
+        self.assertIn("PREP(calculateGroundNodeStack)", prep)
+        # Noah 4-layer geometry: dz 0.10/0.30/0.60/1.00 (Mitchell 2005).
+        self.assertIn("[0.10, 0.30, 0.60, 1.00]", text)
+        # Crank-Nicolson (unconditionally stable - Noah/CLM scheme).
+        self.assertIn("Crank-Nicolson", text)
+        # Persistence: per-position node temperatures.
+        self.assertIn("QGVAR(groundNodeStack)", text)
+        self.assertIn("_cell", text)
+        # Fixed-temperature bottom boundary (Noah TBOT).
+        self.assertIn("annualMeanAirTemp", text)
+
+    def test_node_stack_physics_patterns(self):
+        from pathlib import Path
+
+        text = Path(
+            "addons/thermal/functions/fnc_calculateGroundNodeStack.sqf"
+        ).read_text(encoding="utf-8")
+        # Johansen 1975 LOGARITHMIC Kersten (not the linear frozen form).
+        self.assertIn("0.7 * (log _sr)", text)
+        self.assertIn("Kersten", text)
+        # van de Griend & Owe surface resistance: 10 s/m wet.
+        self.assertIn("10 + (1990", text)
+        # FAO-56 evaporative draw present.
+        self.assertIn("_qEvap", text)
+        # Surface half-cell transient: finite-volume dT = q*dt*2/(rho*cp*dz),
+        # NOT the steady-state gradient (the mirror caught this as a 100x bug).
+        self.assertIn("_dt * 2 / (_rho * _cp", text)
+
+    def test_node_stack_mirror_exists(self):
+        from pathlib import Path
+
+        text = Path("tools/tests/test_ground_node_stack.py").read_text(encoding="utf-8")
+        # Sourced constants.
+        self.assertIn("ALPHA_DRY", text)
+        self.assertIn("ALPHA_SAT", text)
+        self.assertIn("surface_resistance", text)
+        self.assertIn("10.0", text)  # RS wet (van de Griend & Owe)
+        self.assertIn("2000.0", text)  # RS dry (Fuchs & Tanner)
+        self.assertIn("FC = 0.25", text)
+        # Noah geometry.
+        self.assertIn("0.10, 0.30, 0.60, 1.00", text)
+        # Crank-Nicolson tridiagonal.
+        self.assertIn("Crank-Nicolson", text)
+        # Campbell & Norman amplitude attenuation anchors (skin depth).
+        self.assertIn("0.425", text)  # 10 cm -> 42.5%
+        self.assertIn("0.014", text)  # 50 cm -> 1.4%
+
+
 if __name__ == "__main__":
     unittest.main()
