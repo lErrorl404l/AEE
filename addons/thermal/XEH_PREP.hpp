@@ -19,3 +19,4 @@ PREP(addGroundStamp);
 PREP(getGroundStampOffset);
 PREP(applyGroundContactStamps);
 PREP(solarElevation);
+PREP(solveTwoNodeSelection);
