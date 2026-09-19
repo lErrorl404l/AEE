@@ -172,9 +172,29 @@ if (_mode == "EXIT") then {
             ] call FUNC(solveTwoNodeSelection);
             _tNew = _two select 1;      // skin temp - what FLIR sees
         } else {
-            _tNew = [
-                _obj, _sel, _tAir, _wind, _solar, _exposure, _qInternal, _tCurrent, _fGround
-            ] call FUNC(solveSelectionTemperature);
+            // ─── Inert objects (vehicles, buildings): two-node path ────────
+            // The single-node surface solve is OBSOLETE - the two-node
+            // solver subsumes it with isHuman=false.  The physics is
+            // BETTER: _qInternal (engine 770 / wheels 280 W/m2) enters
+            // the CORE node and conducts through the panel wall to the
+            // skin - a vehicle panel does not generate heat, it
+            // conducts engine heat from inside.  This is the correct
+            // model and it removes the NaN-prone single-node Newton.
+            private _matClass = [_obj, _sel] call FUNC(getSelectionMaterials);
+            private _area = 6;                    // default panel area (m2)
+            private _lCond = 0.008;               // 8mm panel/block wall (m)
+            private _qGenCore = _qInternal * _area;
+            private _two = [
+                _obj, _sel,
+                _matClass, _matClass,
+                _tAir, _wind, _solar, _exposure,
+                50, 20,                          // core/skin mass (kg, lumped panel)
+                _area, _lCond * 10,              // area, convection plate dim
+                _tCurrent, _tCurrent,
+                _qGenCore,                       // engine heat into the CORE (W)
+                "vertical", 0.5, _tCurrent, false, _lCond, false, 5
+            ] call FUNC(solveTwoNodeSelection);
+            _tNew = _two select 1;               // skin temp - what FLIR sees
         };
 
         // Persist for the next tick's inertia term.  NaN-guard the
@@ -200,6 +220,20 @@ if (_mode == "EXIT") then {
         private _eps = _mat select 0;
         private _tApparent = (_tNew + 273.15) * (_eps ^ 0.25) - 273.15;
         private _b = ((_tApparent + 40) / 190) max 0 min 1;   // -40..150 C window
+        // TRACE: log the full pipeline every call so a bad value is
+        // visible even if `finite` does not flag it.  Throttled to the
+        // first 20 calls per object to keep the RPT readable.
+        private _traceKey = format ["%1_%2", _obj, _sel];
+        private _traceN = missionNamespace getVariable [QGVAR(traceCount), createHashMap];
+        private _n = _traceN getOrDefault [_traceKey, 0];
+        if (_n < 20) then {
+            _traceN set [_traceKey, _n + 1];
+            missionNamespace setVariable [QGVAR(traceCount), _traceN];
+            diag_log format [
+                "[AEE][TRACE] obj=%1 sel=%2 mat=%3 eps=%4 tNew=%5 tApparent=%6 b=%7 finite_b=%8",
+                _obj, _sel, _mat, _eps, _tNew, _tApparent, _b, finite _b
+            ];
+        };
         // NaN guard: SQF NaN comparisons are false (NaN != NaN is also
         // false in SQF), so max/min AND a self-compare CANNOT clamp a
         // NaN - it would emit "#(rgb,8,8,3)color(scalar NaN,..)" and
