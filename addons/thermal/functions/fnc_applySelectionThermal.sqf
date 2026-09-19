@@ -50,18 +50,27 @@ Arguments:
 params ["_obj", "_selection", ["_mode", ""], ["_qInternal", 0, [0]], ["_fGround", 0.5, [0]]];
 
 if (_mode == "EXIT") then {
-    // ─── EXIT: restore every saved texture ──────────────────────────────────
+    // ─── EXIT: restore every saved texture AND material ─────────────────────
     // Runs BEFORE the object guard: the EXIT path is global (restores every
     // saved object), so callers may invoke it with a dummy object, e.g.
     // fnc_applyBuildingThermal's mode-off handler calls ["", "", "EXIT"].
+    //
+    // The material restore is mandatory: the TI band rvmat (StageTI = the
+    // physics colour) replaces the object's real material while TI is
+    // active.  Restoring it returns the day view, damage states and any
+    // modded multi-stage material to the player who had TI enabled - the
+    // swap is CLIENT-LOCAL, so other players' views were never changed.
     private _saved = missionNamespace getVariable [QGVAR(selThermalSaved), []];
     {
-        _x params ["_o", "_oldTexs", "_selNames"];
+        _x params ["_o", "_oldTexs", "_oldMats", "_selNames"];
         if (!isNull _o) then {
             private _selIdx = 0;
             {
                 if (_selIdx < count _oldTexs && {(_oldTexs select _selIdx) isEqualType ""}) then {
                     _o setObjectTexture [_selIdx, _oldTexs select _selIdx];
+                };
+                if (_selIdx < count _oldMats && {(_oldMats select _selIdx) isEqualType ""}) then {
+                    _o setObjectMaterial [_selIdx, _oldMats select _selIdx];
                 };
                 _selIdx = _selIdx + 1;
             } forEach _selNames;
@@ -89,12 +98,15 @@ if (_mode == "EXIT") then {
         _selNames = selectionNames _obj;
     };
 
-    // Save originals once per object per pass (first apply).
+    // Save originals once per object per pass (first apply).  Materials
+    // are captured too: the TI band rvmat replaces them while thermal is
+    // active, and EXIT restores them.
     private _saved = missionNamespace getVariable [QGVAR(selThermalSaved), []];
     private _alreadySaved = _saved findIf { (_x select 0) == _obj };
     if (_alreadySaved < 0) then {
         private _oldTexs = getObjectTextures _obj;
-        _saved pushBack [_obj, _oldTexs, _selNames];
+        private _oldMats = getObjectMaterials _obj;
+        _saved pushBack [_obj, _oldTexs, _oldMats, _selNames];
         missionNamespace setVariable [QGVAR(selThermalSaved), _saved];
     };
 
@@ -299,6 +311,31 @@ if (_mode == "EXIT") then {
         private _colour = format ["#(rgb,8,8,3)color(%1,%1,%1,1)", _b];
 
         _obj setObjectTexture [_idx, _colour];
+
+        // ─── TI band material swap (issue #196, verified mechanism) ────────
+        // Arma's TI mode renders the rvmat's StageTI, NOT the diffuse - so
+        // setObjectTexture alone is invisible in thermal view wherever the
+        // original rvmat defines a TI stage (all vehicles, buildings,
+        // weapons).  The verified, supported path (Object Builder template
+        // #(argb,8,8,3)color(...,TI); BI forum weapon-rvmat examples) is to
+        // swap the material to an rvmat whose StageTI carries the physics
+        // colour.  We ship 16 pre-baked band rvmats, each named by the grey
+        // it renders - ti_grey_00.rvmat (black, the cold window floor)
+        // through ti_grey_100.rvmat (white, the hot ceiling) - and quantise
+        // the computed brightness to the nearest band (a 0.066 brightness
+        // step is invisible on FLIR).  The engine's dynamic temperature
+        // model MULTIPLIES the TI stage output, so applyEngineThermal
+        // neutralises the vehicle heat state (setVehicleTIPars [0,0,0])
+        // while we paint - otherwise our radiance would be double-modulated.
+        //
+        // Mod compatibility: setObjectMaterial is CLIENT-LOCAL - only the
+        // player with TI active sees the band material; every other client
+        // keeps the original (day view, damage states, modded multi-stage
+        // materials intact).  The TI user's originals are captured on first
+        // apply and restored on EXIT (above).
+        private _band = round (_b * 15) min 15 max 0;
+        private _bandPct = round ((_band / 15) * 100) min 100 max 0;
+        _obj setObjectMaterial [_idx, format [QPATHTOF(data\ti_grey_%1.rvmat), _bandPct]];
     } forEach _selNames;
 };
 
