@@ -1,13 +1,13 @@
 #include "..\script_component.hpp"
 
 // Read current weather state
-private _T_C = EGVAR(core,currentTemperature);
-private _P_hPa = EGVAR(core,currentPressure);
-private _RH = EGVAR(core,currentHumidity);
+private _T_C = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
+private _P_hPa = missionNamespace getVariable [QEGVAR(core,currentPressure), 1013];
+private _RH = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
 
-if (isNil "_T_C") exitWith {};
-if (isNil "_P_hPa") exitWith {};
-if (isNil "_RH") then { _RH = 50; };
+if !(_T_C isEqualType 0) then { _T_C = 15; };
+if !(_P_hPa isEqualType 0) then { _P_hPa = 1013; };
+if !(_RH isEqualType 0) then { _RH = 50; };
 
 // Step 1 — Saturation vapor pressure (Buck 1996)
 private _e_s = 6.1121 * exp((18.678 - _T_C / 234.5) * _T_C / (257.14 + _T_C));

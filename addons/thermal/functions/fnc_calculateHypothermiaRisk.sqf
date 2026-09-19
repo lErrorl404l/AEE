@@ -10,8 +10,8 @@ Factors: wind-chill adjusted temperature, rain accumulation, ground state.
 Stored in GVAR(currentHypothermiaRisk).
 */
 
-private _T_C = EGVAR(core,currentTemperature);
-if (isNil "_T_C") exitWith { 0 };
+private _T_C = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
+if !(_T_C isEqualType 0) then { _T_C = 15; };
 
 // No risk above 15 °C
 if (_T_C > 15) exitWith { 0 };

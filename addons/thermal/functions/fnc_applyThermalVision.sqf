@@ -55,6 +55,7 @@ if (currentVisionMode _player != 2) exitWith {
                 AEE_LOG_DEBUG(_logMsg);
             };
         } forEach [
+            QGVAR(ppHandle_Thermal_Vignette),
             QGVAR(ppHandle_Thermal_CC),
             QGVAR(ppHandle_Thermal_Grain),
             QGVAR(ppHandle_Thermal_Blur)
@@ -69,7 +70,7 @@ if (currentVisionMode _player != 2) exitWith {
 // Defensive: a nil or non-numeric stored contrast (bad variable state)
 // must not propagate into ppEffectAdjust — "Type Number, expected Number"
 // otherwise fires every tick.  Default to full contrast.
-private _contrast = missionNamespace getVariable [QGVAR(currentThermalContrast), 1];
+private _contrast = missionNamespace getVariable [QEGVAR(optics,currentThermalContrast), 1];
 if !(_contrast isEqualType 0) then { _contrast = 1; };
 _contrast = 0 max _contrast min 1;
 
@@ -101,7 +102,7 @@ private _windowBlur = 0;
 if (_fogDensity > 0.1) then {
     _windowBlur = _windowBlur + linearConversion [0.1, 0.8, _fogDensity, 0.0, 0.2, true];
 };
-private _rainS = ([] call FUNC(getSmoothedWeather)) select 0;
+private _rainS = ([] call EFUNC(optics,getSmoothedWeather)) select 0;
 if (_rainS > 0.1) then {
     _windowBlur = _windowBlur + linearConversion [0.1, 1.0, _rainS, 0.0, 0.15, true];
 };
@@ -113,11 +114,12 @@ if (_rainS > 0.1) then {
 // handles, climbs priorities, and spams "Invalid post effect handle".
 // Priorities sit above the NVG handles so the two never collide.
 // A -1 handle (priority taken) bumps until it succeeds.
+private _hVig   = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Vignette), -1];
 private _hCC    = missionNamespace getVariable [QGVAR(ppHandle_Thermal_CC), -1];
 private _hGrain = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Grain), -1];
 private _hBlur  = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Blur), -1];
 
-if (_hCC < 0 || _hGrain < 0 || _hBlur < 0) then {
+if (_hVig < 0 || _hCC < 0 || _hGrain < 0 || _hBlur < 0) then {
     {
         private _h = missionNamespace getVariable [_x, -1];
         if (_h >= 0) then {
@@ -127,6 +129,7 @@ if (_hCC < 0 || _hGrain < 0 || _hBlur < 0) then {
             AEE_LOG_DEBUG(_logMsg);
         };
     } forEach [
+        QGVAR(ppHandle_Thermal_Vignette),
         QGVAR(ppHandle_Thermal_CC),
         QGVAR(ppHandle_Thermal_Grain),
         QGVAR(ppHandle_Thermal_Blur)
@@ -147,12 +150,26 @@ if (_hCC < 0 || _hGrain < 0 || _hBlur < 0) then {
         private _logMsg = format ["created thermal %1 priority=%2 handle=%3", _name, _priority, _handle];
         AEE_LOG_DEBUG(_logMsg);
     } forEach [
-        ["ColorCorrections", 5200, QGVAR(ppHandle_Thermal_CC)],
-        ["FilmGrain",       1300, QGVAR(ppHandle_Thermal_Grain)],
-        ["DynamicBlur",     4200, QGVAR(ppHandle_Thermal_Blur)]
+        ["RadialBlur",      1300, QGVAR(ppHandle_Thermal_Vignette)],
+        ["DynamicBlur",     4200, QGVAR(ppHandle_Thermal_Blur)],
+        ["FilmGrain",       5100, QGVAR(ppHandle_Thermal_Grain)],
+        ["ColorCorrections", 5200, QGVAR(ppHandle_Thermal_CC)]
     ];
-    _handles params ["_hCC", "_hGrain", "_hBlur"];
+    _handles params ["_hVig", "_hBlur", "_hGrain", "_hCC"];
+    private _logMsg = format ["thermal ppEffects created: vig=%1 blur=%2 grain=%3 CC=%4", _hVig, _hBlur, _hGrain, _hCC];
+    AEE_LOG_INFO(_logMsg);
 };
+
+// Re-read the handles from missionNamespace at FUNCTION scope.  The
+// `_handles params` above runs inside the if-block, whose scope shadows
+// the function-scope locals — the adjust section below would otherwise
+// read stale -1 values and throw "Invalid post effect handle".  This is
+// the NVG model's pattern (missionNamespace is the single source of
+// truth after the create block).
+_hVig   = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Vignette), -1];
+_hBlur  = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Blur), -1];
+_hGrain = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Grain), -1];
+_hCC    = missionNamespace getVariable [QGVAR(ppHandle_Thermal_CC), -1];
 
 // ─── ColorCorrections (display gain/contrast) ────────────────────────────
 // Params: [brightness, contrast, offset, blend, colorize, weight]
@@ -211,9 +228,20 @@ _hBlur ppEffectCommit 0;
 _hBlur ppEffectEnable true;
 _hBlur ppEffectForceInNVG true;
 
-// Diagnostics: set aee_optics_nvgDebug = true in the debug console to log
+// ─── RadialBlur (ocular vignette) ──────────────────────────────────────────
+// Real FLIR oculars edge-darken like NVG: the objective tube vignettes the
+// image.  The strength is subtle (the sensor image is far more uniform
+// than an image-intensifier tube) and drifts slightly with conditions.
+// Params: [blurX, blurY, offsetX, offsetY] - the NVG-model form.
+private _vigStrength = [0.0040, 0.0040, 0.06, 0.06];
+_hVig ppEffectAdjust _vigStrength;
+_hVig ppEffectCommit 0;
+_hVig ppEffectEnable true;
+_hVig ppEffectForceInNVG true;
+
+// Diagnostics: set aee_nightvision_nvgDebug = true in the debug console to log
 // every thermal tick's handles and params to the .rpt.
-if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
+if (missionNamespace getVariable [QEGVAR(nightvision,nvgDebug), false]) then {
     diag_log text format [
         "[AEE] Thermal tick | visMode=%1 contrast=%2 crossover=%3 | handles CC=%4 grain=%5 blur=%6 | CC params %7 | grain=%8 blur=%9",
         currentVisionMode _player,

@@ -238,20 +238,6 @@
     {}
 ] call CBA_fnc_addSetting;
 
-// ── NVG battery drain (issue #36) ──────────────────────────────────────────
-// Opt-in: battery drain + temperature derating is hardcore (battery dies
-// mid-op), so it defaults OFF.  When enabled, the drain rate is scaled
-// by the physiology battery temperature derating.
-[
-    QGVAR(nvgBatteryEnabled),
-    "CHECKBOX",
-    [LLSTRING(nvgBatteryEnabled_Name), LLSTRING(nvgBatteryEnabled_Description)],
-    ["AEE Optics", "Intensity"],
-    false,
-    true,
-    {}
-] call CBA_fnc_addSetting;
-
 // ── Vision-driven view distance (issue #138) ──────────────────────────────
 // Drives the engine's view distance from the physics visibility state
 // (fog, haze, rain, NELM, acuity).  Defaults ON; disable to keep the
@@ -265,3 +251,7 @@
     true,
     {}
 ] call CBA_fnc_addSetting;
+
+// ── Thermal polarity (issue #196) ─────────────────────────────────────────
+// Moved to aee_thermal/initSettings.inc.sqf with the rest of the thermal
+// pipeline (white-hot default, black-hot user-selectable per FM 3-22.9).

@@ -69,7 +69,7 @@ if (currentVisionMode _player != 1) exitWith {
         AEE_LOG_INFO("NVG effects torn down (vision mode left)");
 
         // Tear down the tube-face overlay the moment NVG is removed.
-        (["aee_optics_nvg_title"] call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
+        (["aee_nightvision_nvg_title"] call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
         missionNamespace setVariable [QGVAR(nvgDisplayUp), false];
 
         missionNamespace setVariable [QGVAR(nvgGrainActive), false];
@@ -89,8 +89,8 @@ if (currentVisionMode _player != 1) exitWith {
 // moonIntensity: engine variable, 0..1 based on moon phase.
 // Same source ACE3 uses. Subtracts overcast and rain (smoothed weather:
 // raw overcast/rain step abruptly and snap the tube gain; the EMA eases).
-private _rainS = ([] call FUNC(getSmoothedWeather)) select 0;
-private _overcastS = ([] call FUNC(getSmoothedWeather)) select 1;
+private _rainS = ([] call EFUNC(optics,getSmoothedWeather)) select 0;
+private _overcastS = ([] call EFUNC(optics,getSmoothedWeather)) select 1;
 private _moonLight = 0 max (moonIntensity - ((_overcastS * .8) min .275) - (_rainS * .5));
 
 // ─── Tube tier by HMD classname ──────────────────────────────────────────
@@ -299,7 +299,7 @@ _noiseFloor = _noiseFloor * _noiseTempFactor;
 // validated moonIntensity/overcast/rain lux model, plus client dynamic
 // lux from getLightingAt.  One lux value feeds NVG, thermal, glare and
 // ballistics instead of each module estimating independently.
-private _lux = missionNamespace getVariable [QGVAR(illuminanceLux), 0.001];
+private _lux = missionNamespace getVariable [QEGVAR(optics,illuminanceLux), 0.001];
 if !(_lux isEqualType 0) then { _lux = 0.001; };
 _lux = _lux max 0.001;
 
@@ -436,7 +436,7 @@ if (_battery < 0.3) then {
 // The value decays exponentially: instant rise (gate/bloom engage fast),
 // tier-dependent recovery (Gen 1 blooms linger for seconds, gated Gen 3
 // recovers in ~100 ms).
-private _eyeState = [_player] call FUNC(getEyeState);
+private _eyeState = [_player] call EFUNC(optics,getEyeState);
 private _eye = _eyeState select 0;
 private _viewDir = _eyeState select 1;
 // Dynamic bright-source detection — NO hardcoded classnames.  Any object
@@ -512,7 +512,7 @@ private _blowoutNow = 0;
             // the tube.
             private _dist = _eye distance _srcPos;
             private _rainExt = if (_rainS > 0.1) then { _rainS * 30 / 4343 } else { 0 };
-            private _fogS2 = ([] call FUNC(getSmoothedWeather)) select 2;
+            private _fogS2 = ([] call EFUNC(optics,getSmoothedWeather)) select 2;
             private _fogExt = if (_fogS2 > 0.3) then { (_fogS2 / 0.5) ^ 2 * 40 / 4343 min 300 / 4343 } else { 0 };
             private _extinction = _rainExt + _fogExt;
             private _transmission = if (_extinction > 0) then { exp (-_extinction * _dist) } else { 1 };
@@ -967,7 +967,7 @@ if (_hDoF < 0) then {
 //   focus_half = atan(tan(hFOV/2) * 0.15)
 // getResolution #4 = screen aspect (width/height).  Fall back to 16:9
 // if the query returns 0 (headless or pre-init).
-private _focusEye = [_player] call FUNC(getEyeState);
+private _focusEye = [_player] call EFUNC(optics,getEyeState);
 private _eyePos = _focusEye select 0;
 // The focus fan must track where the EYES look, not the body: free-looking
 // at a lamp post would not move a body-direction fan.  Consumes the shared
@@ -1323,7 +1323,7 @@ if (_hDoF >= 0) then {
     _hDoF ppEffectForceInNVG true;
 };
 
-// Diagnostics: set aee_optics_nvgDebug = true in the debug console to log
+// Diagnostics: set aee_nightvision_nvgDebug = true in the debug console to log
 // every tick's handles and params to the .rpt.  ppEffectCreate returns -1
 // when the priority is taken — a -1 handle means the effect did not apply.
 // gain and lux are the AGC inputs: gain must fall as lux rises (the
@@ -1419,7 +1419,7 @@ _hGrain ppEffectForceInNVG true;
 // engine and other NVG mods handle tube geometry.
 private _disp = uiNamespace getVariable [QGVAR(titleDisplay), displayNull];
 if !(missionNamespace getVariable [QGVAR(nvgDisplayUp), false]) then {
-    (["aee_optics_nvg_title"] call BIS_fnc_rscLayer) cutRsc [QGVAR(nvgTitle), "PLAIN", 1, false];
+    (["aee_nightvision_nvg_title"] call BIS_fnc_rscLayer) cutRsc [QGVAR(nvgTitle), "PLAIN", 1, false];
     missionNamespace setVariable [QGVAR(nvgDisplayUp), true];
 };
 if (!isNull _disp) then {

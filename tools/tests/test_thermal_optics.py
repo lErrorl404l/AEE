@@ -22,12 +22,18 @@ from tools.tests.test_astronomical import ks_lunar_lux
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 _OPTICS = _REPO_ROOT / "addons" / "optics" / "functions"
 _THERMAL = _REPO_ROOT / "addons" / "thermal" / "functions"
+_NVG = _REPO_ROOT / "addons" / "nightvision" / "functions"
 
 
 def _read_sqf(name, addon="optics"):
     """Read an SQF function file.  The drift-lock tests read the SOURCE so a
     constant change in SQF fails the mirror tests until re-synced."""
-    base = _OPTICS if addon == "optics" else _THERMAL
+    if addon == "thermal":
+        base = _THERMAL
+    elif addon == "nightvision":
+        base = _NVG
+    else:
+        base = _OPTICS
     return (base / name).read_text(encoding="utf-8")
 
 
@@ -336,7 +342,7 @@ def nvg_drain(base_drain, gain, sensitivity, temp_derating, dt, battery_enabled=
     tempDrainFactor = 1/derating, clamped 1.0-4.0
     drain = baseDrain * gainRatio * tempDrainFactor * dt
 
-    battery_enabled is the opt-in aee_optics_nvgBatteryEnabled toggle
+    battery_enabled is the opt-in aee_nightvision_nvgBatteryEnabled toggle
     (issue #36); when off, no drain is applied.
     """
     if not battery_enabled:
@@ -391,10 +397,41 @@ def nvg_bloom(bloom_base, bloom_scale, moon_light, blowout, rain):
 
 
 # ─── Engine thermal drive mirrors (fnc_applyEngineThermal.sqf) ─────────────
-# These map AEE's physics state into the engine's thermal controls:
-# setVehicleTIPars (per-vehicle heat 0..1) and setTIParameter (display
-# window).  The engine owns the render pass; we supply the input heat and
-# the AGC window, exactly like a real FLIR's gain/level controls.
+# The engine's TI pipeline is TWO-STAGE (issue #196, verified): the rvmat
+# StageTI provides the BASE image and the engine's dynamic temperature
+# model MULTIPLIES it.  AEE now paints the full per-selection radiance
+# into the StageTI via the band-material swap (fnc_applySelectionThermal),
+# so setVehicleTIPars is NEUTRALISED to [0,0,0] - any non-zero engine heat
+# state would double-modulate our colour (crush a cold selection to black,
+# over-brighten a hot one).  setTIParameter (display window) remains the
+# engine-side gain/level control, exactly like a real FLIR's controls.
+
+
+def ti_band_material(brightness):
+    """Mirror of the band-material lookup in fnc_applySelectionThermal.
+
+    The physics radiance maps to brightness b (0..1) through the scene
+    AGC, then to one of 16 pre-baked rvmats named by their grey percent:
+    ti_grey_00.rvmat (black, cold floor) .. ti_grey_100.rvmat (white,
+    hot ceiling).  The lookup must always resolve to a shipped file:
+        band = round(b * 15) clamped 0..15
+        pct  = round((band / 15) * 100) clamped 0..100
+    """
+    band = max(0, min(15, round(brightness * 15)))
+    return max(0, min(100, round((band / 15) * 100)))
+
+
+def engine_scene_max(alive=True, surface_temp_c=17.8, air_temp_c=17.8):
+    """Mirror of the SQF scene-max pass in fnc_applyEngineThermal.
+
+    The AGC blowout guard reads the scene's hottest fraction from the
+    physics thermal state (ambient = 0, +50 C = 1 on the engine scale).
+    A destroyed/burning vehicle saturates it: `if (!alive _x) then {
+    _sceneMax = 1; }`.  A live ambient vehicle contributes ~0."""
+    if not alive:
+        return 1.0
+    frac = (surface_temp_c - air_temp_c) / 50.0
+    return max(0.05, min(1.0, frac))
 
 
 def engine_heat_fraction(
@@ -405,25 +442,15 @@ def engine_heat_fraction(
     damage_body=0.0,
     alive=True,
 ):
-    """Mirror of the engine heat FRACTION pushed to setVehicleTIPars.
+    """Neutralised: the engine heat state is FORCED to zero.
 
-    The physics surface temperature (air + solar + engine heat + exhaust
-    + wind cooling, computed by fnc_calculateObjectTemperature) maps to the
-    engine's 0..1 heat scale: ambient = 0, +50 C = 1.  Clamped to the
-    engine's range.  Environment-driven - sun, wind, engine state all move
-    the value; no static timers.
-
-    Damage-state thermal: destroyed/burning (body or fuel >= 0.95, or not
-    alive) saturates at 1.0; a damaged engine adds +0.5 heat at full
-    damage (coolant loss, friction); fuel damage adds +0.2 fire-risk heat.
+    Kept as a mirror of the neutralisation contract - a non-zero heat
+    state would double-modulate the band-material radiance.  The SQF
+    neutralisation loop skips dead vehicles (they keep their state; the
+    scene-max pass saturates their AGC guard instead), so this returns 0
+    for any live vehicle and leaves dead vehicles to engine_scene_max.
     """
-    if not alive or damage_body >= 0.95 or damage_fuel >= 0.95:
-        return 1.0
-    frac = (surface_temp_c - air_temp_c) / 50.0
-    frac = max(0.0, min(1.0, frac))
-    frac = min(1.0, frac + damage_engine * 0.5)
-    frac = min(1.0, frac + damage_fuel * 0.2)
-    return frac
+    return 0.0
 
 
 def exhaust_heat_fraction(
@@ -1582,40 +1609,36 @@ class TestMTFEffective(unittest.TestCase):
 
 
 class TestEngineThermalDrive(unittest.TestCase):
-    """setVehicleTIPars heat fraction + setTIParameter AGC window."""
+    """Band-material swap + setVehicleTIPars neutralisation + AGC window."""
 
-    def test_ambient_vehicle_zero_heat(self):
-        # Vehicle at air temp (cold parked at night): 0 heat (dark).
+    def test_neutralised_heat_state(self):
+        # The engine heat state is FORCED to zero so the band-material
+        # radiance is not double-modulated.  Any live vehicle -> 0.
         self.assertAlmostEqual(engine_heat_fraction(17, 17), 0.0, places=6)
+        self.assertAlmostEqual(engine_heat_fraction(57, 17), 0.0, places=6)
+        self.assertAlmostEqual(engine_heat_fraction(32, 17), 0.0, places=6)
+        self.assertAlmostEqual(engine_heat_fraction(100, 17), 0.0, places=6)
+        self.assertAlmostEqual(engine_heat_fraction(40, 35), 0.0, places=6)
 
-    def test_running_engine_bright(self):
-        # Running engine: +40 C over ambient -> 0.8 heat fraction.
-        self.assertAlmostEqual(engine_heat_fraction(57, 17), 0.8, places=6)
+    def test_band_material_endpoints(self):
+        # Brightness 0 (cold window floor) -> ti_grey_00 (black).
+        self.assertEqual(ti_band_material(0.0), 0)
+        # Brightness 1 (hot ceiling) -> ti_grey_100 (white).
+        self.assertEqual(ti_band_material(1.0), 100)
 
-    def test_sun_warmed_vehicle(self):
-        # Solar absorption +15 C over ambient (0.7*15) -> 0.3 heat.
-        self.assertAlmostEqual(engine_heat_fraction(32, 17), 0.3, places=6)
+    def test_band_material_quantises_to_16_levels(self):
+        # The 16 shipped rvmats: pct must be in the exact set produced by
+        # the file generator (round(b*100) for b = n/15).
+        shipped = {round(n / 15.0 * 100) for n in range(16)}
+        self.assertEqual(len(shipped), 16)
+        for b in [0.05, 0.1, 0.2, 0.333, 0.5, 0.7, 0.9, 0.95]:
+            self.assertIn(ti_band_material(b), shipped)
 
-    def test_hot_engine_caps_at_one(self):
-        # +50 C or more -> clamped at 1.0.
-        self.assertAlmostEqual(engine_heat_fraction(100, 17), 1.0, places=6)
-
-    def test_engine_heat_bounds(self):
-        for t in [0, 5, 17, 40, 80, 120]:
-            for a in [0, 15, 30, 45]:
-                h = engine_heat_fraction(t, a)
-                self.assertGreaterEqual(h, 0.0)
-                self.assertLessEqual(h, 1.0)
-
-    def test_heat_tracks_ambient(self):
-        # Same surface, hotter ambient -> LESS heat (ambient is the zero).
-        self.assertLess(engine_heat_fraction(40, 35), engine_heat_fraction(40, 15))
-
-    def test_wheel_heat_scales_with_speed(self):
-        self.assertAlmostEqual(vehicle_wheel_heat(0), 0.0, places=6)
-        self.assertAlmostEqual(vehicle_wheel_heat(15), 0.5, places=6)
-        self.assertAlmostEqual(vehicle_wheel_heat(30), 1.0, places=6)
-        self.assertAlmostEqual(vehicle_wheel_heat(60), 1.0, places=6)  # capped
+    def test_band_material_bounds(self):
+        for b in [-1.0, 0.0, 0.5, 1.0, 2.0]:
+            p = ti_band_material(b)
+            self.assertGreaterEqual(p, 0)
+            self.assertLessEqual(p, 100)
 
     def test_agc_window_hot_scene(self):
         # Scene with a hot engine (max heat 0.8): width 0.9/0.8 = 1.125
@@ -1704,42 +1727,37 @@ class TestSecondSun(unittest.TestCase):
 
 
 class TestVehicleDamageThermal(unittest.TestCase):
-    """Damage-state thermal: damaged parts run hotter, destroyed saturates."""
+    """Damage-state thermal (issue #196): neutralised heat state, damage
+    saturates the scene-max AGC guard instead.
 
-    def test_undamaged_cold_vehicle(self):
-        # Parked, engine off, ambient: reads cold.
-        self.assertAlmostEqual(engine_heat_fraction(17.8, 17.8), 0.0, places=6)
+    The old physics->setVehicleTIPars drive (damage scaled the 0..1 heat
+    fraction) is GONE: setVehicleTIPars is forced to [0,0,0] so the band
+    material carries the full radiance unmodulated.  A destroyed/burning
+    vehicle now saturates the AGC scene-max (tiSceneMaxHeat -> 1), which
+    widens the display window guard - the FLIR-correct behaviour."""
 
-    def test_damaged_engine_runs_hotter(self):
-        # Engine at 40% damage adds +0.2 heat even if surface is ambient.
-        h = engine_heat_fraction(17.8, 17.8, damage_engine=0.4)
-        self.assertAlmostEqual(h, 0.2, places=6)
-
-    def test_full_engine_damage_adds_half(self):
-        h = engine_heat_fraction(17.8, 17.8, damage_engine=1.0)
-        self.assertAlmostEqual(h, 0.5, places=6)
-
-    def test_fuel_damage_adds_fire_risk(self):
-        h = engine_heat_fraction(17.8, 17.8, damage_fuel=0.5)
-        self.assertAlmostEqual(h, 0.1, places=6)
-
-    def test_destroyed_saturates(self):
+    def test_heat_state_neutralised_for_all_damage(self):
+        # A damaged vehicle still gets setVehicleTIPars [0,0,0]: the band
+        # material carries the radiance, the engine must not multiply it.
         for kwargs in [
+            dict(damage_engine=0.4),
+            dict(damage_engine=1.0),
+            dict(damage_fuel=0.5),
             dict(damage_body=0.95),
-            dict(damage_fuel=0.95),
             dict(alive=False),
         ]:
-            self.assertAlmostEqual(
-                engine_heat_fraction(17.8, 17.8, **kwargs), 1.0, places=6
-            )
+            h = engine_heat_fraction(17.8, 17.8, **kwargs)
+            self.assertEqual(h, 0.0)
 
-    def test_never_exceeds_one(self):
-        h = engine_heat_fraction(80, 17.8, damage_engine=1.0, damage_fuel=1.0)
-        self.assertLessEqual(h, 1.0)
+    def test_destroyed_saturates_scene_max(self):
+        # The SQF scene-max pass: a dead/burning vehicle sets _sceneMax=1
+        # (mirror of `if (!alive _x) then { _sceneMax = 1; }`), which the
+        # AGC blowout guard uses to widen the window.
+        self.assertEqual(engine_scene_max(alive=False), 1.0)
 
     def test_exhaust_warms_with_run_time(self):
-        # Idling 60 s: exhaustTemp = air + 200*(1-e^-1) = +126 C -> 1.0
-        # (over the +50 C full-scale).  Idling 5 s: +15 C -> 0.3.
+        # Exhaust heat still feeds the WEAPON TI slot in the band material
+        # path via the physics temperature, not setVehicleTIPars.
         self.assertAlmostEqual(exhaust_heat_fraction(60, 17.8), 1.0, places=6)
         h5 = exhaust_heat_fraction(5, 17.8)
         self.assertAlmostEqual(h5, 200 * (1 - math.exp(-5 / 60)) / 50, places=4)
@@ -1811,7 +1829,7 @@ class TestClothingThermal(unittest.TestCase):
         # (their deletion is the point - no third-party rvmat can break).
         import os
 
-        data_dir = _REPO_ROOT / "addons" / "optics" / "data"
+        data_dir = _REPO_ROOT / "addons" / "thermal" / "data"
         self.assertFalse((data_dir / "ti_cloth_cold.rvmat").exists())
         self.assertFalse((data_dir / "ti_cloth_hot.rvmat").exists())
         # The substrate that replaced them must exist and expose the
@@ -1825,33 +1843,65 @@ class TestClothingThermal(unittest.TestCase):
         )
         text = fn.read_text(encoding="utf-8")
         self.assertIn("setObjectTexture", text)
-        self.assertIn("solveSelectionTemperature", text)
+        self.assertIn("solveTwoNodeSelection", text)
+        self.assertNotIn("solveSelectionTemperature", text)  # single-node killed
         self.assertIn("getSelectionMaterials", text)
+        # Real FLIR pipeline (issue #196): band radiance + scene AGC,
+        # NOT the old fixed-window T*eps^0.25 mapping.
+        self.assertIn("calculateBandRadiance", text)
+        self.assertIn("agcRadMin", text)
+        self.assertNotIn("tApparent = (_tNew + 273.15) * (_eps ^ 0.25)", text)
+        # TI-stage material swap (issue #196): setObjectTexture alone is
+        # invisible in thermal mode (the engine renders StageTI, not the
+        # diffuse).  The band-material swap is the verified mechanism -
+        # the diffuse fallback only worked on TI-less models like the UAV.
+        self.assertIn("setObjectMaterial", text)
+        self.assertIn("ti_grey_", text)
+        self.assertIn("QPATHTOF(data\\ti_grey_", text)
+        # The 16 band rvmats must exist with a procedural physics colour
+        # - the MKK-proven render path (issue #196).  Names are the
+        # white-hot grey percent.  The rvmats deliberately have NO
+        # StageTI: the engine falls back to the diffuse (Stage1) for the
+        # TI image, and setObjectTexture paints that diffuse with the
+        # physics colour.  A StageTI would multiply the flat band colour
+        # by the model's per-vertex thermaltop gain, reproducing the
+        # engine's baked gradient.
+        shipped = {round(n / 15.0 * 100) for n in range(16)}
+        for pct in shipped:
+            f = data_dir / f"ti_grey_{pct:02d}.rvmat"
+            self.assertTrue(f.exists(), f"missing {f.name}")
+            rv = f.read_text(encoding="utf-8")
+            self.assertNotIn("class StageTI", rv)
+            self.assertIn("class Stage1", rv)
+            self.assertIn("color(", rv)
 
 
 def test_ti_texture_polarity(self):
-    # The TI textures encode the cold/hot floor in the red channel.
-    # In white-hot mode: pure black reads as black holes (the "black
-    # hot" report), so cold is a dim grey, not black.  Hot is white.
-    # Decode the DXT1 PAA with armaio and check the red channel mean.
-    from armaio.paa._format import PaaFile
+    # The band rvmats encode the white-hot floor/ceiling in the diffuse
+    # Stage1 colour (the MKK-proven no-StageTI form - the engine renders
+    # the diffuse in TI mode).  In white-hot mode: ti_grey_00 is pure
+    # black (cold window floor), ti_grey_100 is pure white (hot ceiling).
+    # The 0..100 grey-percent naming IS the polarity: brightness rises
+    # monotonically with the band, equal RGB channels (no hue).
+    import re
 
-    data_dir = _REPO_ROOT / "addons" / "optics" / "data"
+    data_dir = _REPO_ROOT / "addons" / "thermal" / "data"
 
-    def _red_mean(name):
-        with open(data_dir / name, "rb") as fh:
-            pf = PaaFile.read(fh)
-        px = pf.mipmaps[0].decode(pf.format)
-        return float(px[:, :, 0].mean())
+    def _ti_brightness(name):
+        rv = (data_dir / name).read_text(encoding="utf-8")
+        m = re.search(r"color\(([0-9.]+),([0-9.]+),([0-9.]+),1\)", rv)
+        self.assertIsNotNone(m, f"{name} lacks the Stage1 colour")
+        r, g, b = (float(x) for x in m.groups())
+        self.assertEqual(r, g)  # white-hot: equal channels, no hue
+        self.assertEqual(g, b)
+        return r
 
-    cold_r = _red_mean("ti_cold.paa")
-    hot_r = _red_mean("ti_hot.paa")
-    # Cold: warm grey floor (dim but visible), not pure black.
-    self.assertGreater(cold_r, 40, "cold TI texture must not be pure black")
-    self.assertLess(cold_r, 140, "cold TI texture must stay dim (below half)")
-    # Hot: near-white so hot objects saturate in white-hot mode.
-    self.assertGreater(hot_r, 200, "hot TI texture must be near-white")
-    self.assertGreater(hot_r, cold_r, "hot texture must be brighter than cold")
+    cold = _ti_brightness("ti_grey_00.rvmat")
+    hot = _ti_brightness("ti_grey_100.rvmat")
+    # Cold floor: black (0).  Hot ceiling: white (1).  Hot > cold.
+    self.assertAlmostEqual(cold, 0.0, places=6)
+    self.assertAlmostEqual(hot, 1.0, places=6)
+    self.assertGreater(hot, cold)
 
 
 class TestBuildingThermal(unittest.TestCase):
@@ -2121,7 +2171,7 @@ class TestRainDropletEyeVelocity(unittest.TestCase):
         # Source drift-lock: the fix must be present in the SQF.
         from pathlib import Path
 
-        text = Path("addons/optics/functions/fnc_applyRainDroplets.sqf").read_text(
+        text = Path("addons/thermal/functions/fnc_applyRainDroplets.sqf").read_text(
             encoding="utf-8"
         )
         # moveVelocity must be eyeVel (co-move), not -eyeVel (a sign error
@@ -2138,7 +2188,9 @@ class TestRainDropletEyeVelocity(unittest.TestCase):
         post = Path("addons/optics/XEH_postInit.sqf").read_text(encoding="utf-8")
         # The duplicate droplet call in the thermal branch must be gone:
         # exactly ONE tick call (the unconditional one before the branches).
-        self.assertEqual(post.count('["TICK"] call FUNC(applyRainDroplets)'), 1)
+        self.assertEqual(
+            post.count('["TICK"] call EFUNC(thermal,applyRainDroplets)'), 1
+        )
 
 
 class TestThermalCrossover(unittest.TestCase):
@@ -2633,6 +2685,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_applyThermalVision.sqf",
             ["0.0, 0.15, true", "min 0.25", "0.0, 0.04, true"],
             "blur span / ceiling / pan-smear cap",
+            addon="thermal",
         )
 
     def test_thermal_window_constants(self):
@@ -2640,6 +2693,26 @@ class TestSQFSync(unittest.TestCase):
             "fnc_applyThermalVision.sqf",
             ["0.1, 0.8", "0.0, 0.2", "0.1, 1.0", "0.0, 0.15"],
             "fog/rain window blur",
+            addon="thermal",
+        )
+
+    def test_thermal_post_process_layering(self):
+        # The ppEffect stack must mirror the real FLIR sensor chain
+        # (issue #196): atmospheric blur applies first, sensor noise
+        # (NETD grain) second, display gain/contrast last.  Lower
+        # priority = applied first (BIS wiki base order).  The old order
+        # put grain BELOW blur, so DynamicBlur smeared the sensor noise.
+        self._assert_in_sqf(
+            "fnc_applyThermalVision.sqf",
+            [
+                '["RadialBlur",      1300, QGVAR(ppHandle_Thermal_Vignette)]',
+                '["DynamicBlur",     4200, QGVAR(ppHandle_Thermal_Blur)]',
+                '["FilmGrain",       5100, QGVAR(ppHandle_Thermal_Grain)]',
+                '["ColorCorrections", 5200, QGVAR(ppHandle_Thermal_CC)]',
+                "ppEffectForceInNVG true",
+            ],
+            "FLIR layering: blur -> grain -> CC, vignette below, grain ABOVE blur",
+            addon="thermal",
         )
 
     def test_thermal_crossover_floor(self):
@@ -2647,6 +2720,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_applyThermalVision.sqf",
             ["0.05", "linearConversion [1, 0, _effective, 0.62, 0.35, true]"],
             "crossover floor / AGC contrast mapping",
+            addon="thermal",
         )
 
     # ── NVG focus (fnc_applyNVGTubeModel.sqf) ──
@@ -2662,6 +2736,7 @@ class TestSQFSync(unittest.TestCase):
                 "from 1 to 4",
             ],
             "terrain fallback geometry",
+            addon="nightvision",
         )
 
     def test_focus_median_and_watchdog(self):
@@ -2676,6 +2751,7 @@ class TestSQFSync(unittest.TestCase):
                 "_curFocus * 0.03",
             ],
             "rolling median filter / settle watchdog / deadband",
+            addon="nightvision",
         )
 
     def test_focus_vehicle_exclusion(self):
@@ -2683,6 +2759,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_applyNVGTubeModel.sqf",
             ["vehicle _player", "_hitObj != _veh && _hitParent != _veh"],
             "vehicle cabin exclusion",
+            addon="nightvision",
         )
 
     # ── NVG tube / illuminance (fnc_applyNVGTubeModel.sqf,
@@ -2731,6 +2808,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_applyNVGTubeModel.sqf",
             ["_sensitivity / (_lux + 1)", "min _sensitivity"],
             "AGC gain model",
+            addon="nightvision",
         )
 
     def test_nvg_shot_noise_model(self):
@@ -2742,6 +2820,7 @@ class TestSQFSync(unittest.TestCase):
                 "_lux * _sensitivity * AEE_PHOTON_SCALE",
             ],
             "Poisson shot noise",
+            addon="nightvision",
         )
 
     def test_nvg_noise_floor_model(self):
@@ -2753,6 +2832,7 @@ class TestSQFSync(unittest.TestCase):
                 "0.03 max _noise min 1",
             ],
             "combined noise floor + rain Mie",
+            addon="nightvision",
         )
 
     def test_nvg_temp_factors(self):
@@ -2764,6 +2844,7 @@ class TestSQFSync(unittest.TestCase):
                 "20, 45, _airTemp, 1.0, 1.6",
             ],
             "temperature gain/noise factors",
+            addon="nightvision",
         )
 
     def test_nvg_battery_drain_model(self):
@@ -2777,6 +2858,7 @@ class TestSQFSync(unittest.TestCase):
                 "0.0000111",
             ],
             "battery drain rates",
+            addon="nightvision",
         )
 
     def test_nvg_brightness_model(self):
@@ -2784,6 +2866,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_applyNVGTubeModel.sqf",
             ["0.001, 0.25, _lux, 0.65, 1.0"],
             "AGC output brightness",
+            addon="nightvision",
         )
 
     def test_nvg_mtf_model(self):
@@ -2791,6 +2874,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_applyNVGTubeModel.sqf",
             ["_mtf15 * 0.55", "_blowout * 0.4", "1 - rain * 0.5"],
             "MTF degradation",
+            addon="nightvision",
         )
 
     def test_nvg_veiling_glare_floor(self):
@@ -2798,6 +2882,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_applyNVGTubeModel.sqf",
             ["_bloom = _bloom + 0.02"],
             "clear-condition veiling glare floor",
+            addon="nightvision",
         )
 
     # ── Engine thermal drive (fnc_applyEngineThermal.sqf) ──
@@ -2815,6 +2900,7 @@ class TestSQFSync(unittest.TestCase):
                 "tiAppliedWidth",
             ],
             "engine AGC display window (physics-driven scene max heat)",
+            addon="thermal",
         )
 
     def test_engine_thermal_damage_constants(self):
@@ -2828,8 +2914,24 @@ class TestSQFSync(unittest.TestCase):
                 "nearEntities",
                 "str _x",
             ],
-            "scene max heat from the physics thermal state (dead saturates, decays 30 s)",
+            "damage/burning saturates the AGC scene-max guard",
+            addon="thermal",
         )
+
+    def test_config_level_thermal_model(self):
+        # Issue #196: the ENGINE's TI model is configured per class in
+        # CfgVehicles (the ACE-thermals lever).  Material swaps cannot
+        # change the engine's dynamic thermal component; this config does.
+        cfg = (_REPO_ROOT / "addons" / "thermal" / "config.cpp").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("class AllVehicles: All", cfg)
+        for param in ["htMin", "htMax", "afMax", "mfMax", "mFact", "tBody"]:
+            self.assertIn(param, cfg, f"{param} missing from CfgVehicles thermal model")
+        # Humans have metabolism; vehicles have none (parked = ambient).
+        self.assertIn("class Man: Land", cfg)
+        self.assertIn("tBody = 36.8", cfg)
+        self.assertIn("mFact = 0", cfg)
 
     def test_second_sun_constants(self):
         self._assert_in_sqf(
@@ -2844,6 +2946,7 @@ class TestSQFSync(unittest.TestCase):
                 "setLightAttenuation [1e10, 150",
             ],
             "physics-driven second sun (TI sun term, A3TI-scaled)",
+            addon="thermal",
         )
 
     def test_rain_droplet_constants(self):
@@ -2864,9 +2967,10 @@ class TestSQFSync(unittest.TestCase):
                 "setParticleParams",
                 "setDropInterval",
                 "setPosASL (_eye vectorAdd (_camDir vectorMultiply 0.1))",
-                "call FUNC(getEyeState)",
+                "call EFUNC(optics,getEyeState)",
             ],
             "rain droplets on objective (eye-repositioned Refract emitter)",
+            addon="thermal",
         )
 
     def test_shared_eye_state_constants(self):
@@ -2917,18 +3021,18 @@ class TestSQFSync(unittest.TestCase):
         # weather, not raw `rain`/`overcast`/`fog` (which step abruptly and
         # snap the display).  Only the droplet physics reads raw rain
         # (instant response is correct there).
-        for fname, ctx in [
-            ("fnc_applyNVGTubeModel.sqf", "NVG tube"),
-            ("fnc_calculateIlluminance.sqf", "illuminance"),
-            ("fnc_applyNightGrain.sqf", "night grain"),
-            ("fnc_applyThermalVision.sqf", "thermal vision"),
-            ("fnc_calculateAttenuation.sqf", "attenuation"),
-            ("fnc_calculateAtmosphericSeeing.sqf", "seeing"),
-            ("fnc_calculateMirageIntensity.sqf", "mirage"),
+        for fname, ctx, addon in [
+            ("fnc_applyNVGTubeModel.sqf", "NVG tube", "nightvision"),
+            ("fnc_calculateIlluminance.sqf", "illuminance", "optics"),
+            ("fnc_applyNightGrain.sqf", "night grain", "nightvision"),
+            ("fnc_applyThermalVision.sqf", "thermal vision", "thermal"),
+            ("fnc_calculateAttenuation.sqf", "attenuation", "optics"),
+            ("fnc_calculateAtmosphericSeeing.sqf", "seeing", "optics"),
+            ("fnc_calculateMirageIntensity.sqf", "mirage", "optics"),
         ]:
-            src = _read_sqf(fname)
+            src = _read_sqf(fname, addon)
             self.assertIn(
-                "call FUNC(getSmoothedWeather)",
+                "getSmoothedWeather",
                 src,
                 f"{ctx} must consume the smoothed weather",
             )
@@ -2951,14 +3055,14 @@ class TestSQFSync(unittest.TestCase):
         # recompute eye position or direction independently (the drift that
         # caused the HEAD memory-point bug and the separate vectorDirVisual
         # calls in the focus fan / blowout cone).
-        for fname, ctx in [
-            ("fnc_applyNVGTubeModel.sqf", "NVG tube"),
-            ("fnc_calculateIlluminance.sqf", "illuminance"),
-            ("fnc_applyRainDroplets.sqf", "droplets"),
+        for fname, ctx, addon in [
+            ("fnc_applyNVGTubeModel.sqf", "NVG tube", "nightvision"),
+            ("fnc_calculateIlluminance.sqf", "illuminance", "optics"),
+            ("fnc_applyRainDroplets.sqf", "droplets", "thermal"),
         ]:
-            src = _read_sqf(fname)
+            src = _read_sqf(fname, addon)
             self.assertIn(
-                "call FUNC(getEyeState)",
+                "getEyeState",
                 src,
                 f"{ctx} must consume the shared eye state",
             )
@@ -2994,7 +3098,7 @@ class TestSQFSync(unittest.TestCase):
         self._assert_in_sqf(
             "fnc_applyClothingThermal.sqf",
             [
-                '["", "", "EXIT"] call EFUNC(thermal,applySelectionThermal)',
+                '["", "", "EXIT"] call FUNC(applySelectionThermal)',
                 "applySelectionThermal",
                 "allUnits",
                 "hiddenSelections",
@@ -3004,13 +3108,14 @@ class TestSQFSync(unittest.TestCase):
                 "QGVAR(tiSelections_",
             ],
             "per-item clothing solved by the per-selection thermal substrate",
+            addon="thermal",
         )
 
     def test_building_thermal_constants(self):
         self._assert_in_sqf(
             "fnc_applyBuildingThermal.sqf",
             [
-                '["", "", "EXIT"] call EFUNC(thermal,applySelectionThermal)',
+                '["", "", "EXIT"] call FUNC(applySelectionThermal)',
                 "applySelectionThermal",
                 'allMissionObjects ""',
                 "vehicles - [player]",
@@ -3022,6 +3127,7 @@ class TestSQFSync(unittest.TestCase):
                 "QGVAR(tiBldgSelections_",
             ],
             "per-building thermal solved by the per-selection substrate",
+            addon="thermal",
         )
 
     def test_mapwide_thermal_caps(self):
@@ -3369,7 +3475,13 @@ class TestNVGStackAuditSQFSync(unittest.TestCase):
     def _read(self, name):
         from pathlib import Path
 
-        return Path("addons/optics/functions", name).read_text(encoding="utf-8")
+        # NVG functions moved to the aee_nightvision addon (three-system split).
+        base = (
+            "addons/nightvision"
+            if name.startswith("fnc_applyNVG") or name.startswith("fnc_applyNight")
+            else "addons/optics"
+        )
+        return Path(base, "functions", name).read_text(encoding="utf-8")
 
     def test_dead_burn_position_removed(self):
         # Bug A: the write-only world-position afterimage is gone; the

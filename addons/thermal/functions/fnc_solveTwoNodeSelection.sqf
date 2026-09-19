@@ -109,6 +109,8 @@ Arguments:
    23: water temperature (NUMBER, C) - the exchange target when
        immersed; -1 = no water
    24: rain rate (NUMBER, 0..1) - external wettedness driver
+   25: blood fraction (NUMBER, 0..1) - scales skin blood flow for
+       shock vasoconstriction (issue #196); 1 = full blood volume
 
 Return:
   [coreTempC, skinTempC]
@@ -139,7 +141,8 @@ params [
     ["_dt", 5, [0]],
     ["_waterSpeed", 0, [0]],
     ["_tWater", -1, [0]],
-    ["_rain", 0, [0]]
+    ["_rain", 0, [0]],
+    ["_bloodFrac", 1, [0]]
 ];
 
 // ─── Saturation vapour pressure (Bolton 1980) ──────────────────────────────
@@ -223,8 +226,22 @@ private _kCoupling = if (_isHuman) then {
 private _cond = _kCoupling;  // inert path constant conductance
 
 // ─── Radiation vs MRT (ISO 7726) ──────────────────────────────────────────
-private _mrtK = (0.5 * ((_tGround + 273.15) ^ 4) + 0.5 * ((_tAir + 273.15) ^ 4)) ^ 0.25;
+// The mean radiant temperature is the ground hemisphere below and the
+// SKY hemisphere above (issue #196).  A clear night sky is a cold
+// radiative sink - the Swinbank (1963) clear-sky correlation
+// (T_sky = 0.0552 * T_air^1.5, K; R = 5.31e-13 * T^6 W/m2) puts it
+// ~3 K below air at 15 C air and ~35 K below at -5 C - so a
+// high-emissivity surface radiates to it and cools BELOW air
+// temperature (NASA: radiation to the sky dominates convection at
+// night).  This is TOTAL-longwave exchange (the heat-transfer MRT,
+// ISO 7726), which is what the surface energy balance needs.  The
+// sensor-side 8-14 um band sky is far colder still (-20 to -40 C,
+// Tebo 1965) - that belongs in fnc_calculateBandRadiance, not here.
+// Overcast lifts the sky temperature toward air.
 private _tAirK = _tAir + 273.15;
+private _skyK = 0.0552 * (_tAirK ^ 1.5);
+_skyK = _skyK + (_tAirK - _skyK) * (overcast max 0 min 1);
+private _mrtK = (0.5 * ((_tGround + 273.15) ^ 4) + 0.5 * (_skyK ^ 4)) ^ 0.25;
 // Immersion exchange target (issue #193): an immersed surface exchanges
 // against the WATER temperature directly, not air or the air-side MRT.
 private _exchK = if (_waterSpeed > 0 && _tWater >= -50) then { _tWater + 273.15 } else { _tAirK };
@@ -249,6 +266,14 @@ for "_i" from 1 to 12 do {
         private _cSig = (33.7 - _tSk) max 0;
         private _mBl = (6.3 + 200 * _wSig) / (1 + 0.5 * _cSig);
         _mBl = (_mBl min 14.4) max 0.5;
+        // Shock vasoconstriction (issue #196): blood loss reduces skin
+        // perfusion DIRECTLY, before any temperature signal - the
+        // classic cold-extremities sign with a defended core.  The Gagge
+        // sigmoid above is pure temperature drive; scaling it by blood
+        // volume makes a haemorrhaging soldier's skin decouple from the
+        // core (cold limbs) while the core holds temperature.  At 40%
+        // blood left the skin flow is cut ~2/3 (ATLS shock physiology).
+        _mBl = _mBl * (0.3 + 0.7 * (_bloodFrac max 0 min 1));
         _kCoupling = (5.28 + 4186 * _mBl / 3600) * _area;
     } else {
         _kCoupling = _cond;

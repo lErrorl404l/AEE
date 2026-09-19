@@ -68,7 +68,7 @@ if (isNil "_player" || !alive _player || cameraOn != _player) exitWith { 0 };
 //   - EASE when settled: a slow EMA (~1.5 s), not a per-frame jump.
 // start is ALWAYS 0 - we never lift the black level (the "flashlight in
 // the face" the user saw came from start=0.5, never from width).
-private _eyeState = [_player] call FUNC(getEyeState);
+private _eyeState = [_player] call EFUNC(optics,getEyeState);
 private _fwd = _eyeState select 1;
 
 // Gaze angular velocity: angle between this frame's forward and the last.
@@ -115,6 +115,36 @@ if (abs (_outWidth - _lastW) > 0.01 || abs (_outStart - _lastS) > 0.01) then {
     missionNamespace setVariable [QGVAR(tiAppliedStart), _outStart];
 };
 
+// ─── Ambient state (declared here: used by the per-vehicle heat pass
+// below AND the scene-max pass after it) ───────────────────────────────────
+private _airTemp = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
+if !(_airTemp isEqualType 0) then { _airTemp = 15; };
+
+// ─── Per-vehicle heat state: NEUTRALISE the engine's thermal model ────────
+// (issue #196).  The engine's TI pipeline is TWO-STAGE: the rvmat StageTI
+// provides the BASE image, and the engine's dynamic temperature model
+// MULTIPLIES it (verified: "the TI stage texture sets the ceiling and the
+// spatial pattern; the temperature model sets the gain" - BIKI thermal
+// imaging research).  AEE now paints the full per-selection radiance into
+// the StageTI via the band material swap (fnc_applySelectionThermal), so
+// the engine's own per-vehicle heat state must be NEUTRAL to that base -
+// any non-zero setVehicleTIPars would double-modulate our colour (crush a
+// cold selection to black, over-brighten a hot one).
+//
+// So setVehicleTIPars is forced to [0,0,0] on every vehicle in range while
+// AEE paints.  The engine's GLOBAL model (ambient, sun, second-sun,
+// damage) still applies uniformly - that is the same gain for every
+// object and the scene AGC absorbs it.
+private _vehRange = 150;
+{
+    if (isNull _x || !alive _x) then { continue; };
+    if !(_x isKindOf "AllVehicles") then { continue; };
+    private _lastPars = _x getVariable [QGVAR(tiLastPars), [-1, -1, -1]];
+    if (_lastPars isEqualTo [0, 0, 0]) then { continue; };
+    _x setVehicleTIPars [0, 0, 0];
+    _x setVariable [QGVAR(tiLastPars), [0, 0, 0]];
+} forEach (_player nearEntities [["Car", "Tank", "Motorcycle", "Helicopter", "Plane", "Ship"], _vehRange]);
+
 // ─── Scene max heat from the physics model ─────────────────────────────────
 // The per-selection substrate (applyBuildingThermal) paints vehicle and
 // building selections from the physics surface temperature.  The AGC
@@ -123,9 +153,6 @@ if (abs (_outWidth - _lastW) > 0.01 || abs (_outStart - _lastS) > 0.01) then {
 // solves from.  ambient = 0, ambient + 50 C = 1 on the engine's scale.
 private _thermalState = missionNamespace getVariable [QEGVAR(thermal,thermalState), createHashMap];
 private _vehicles = _player nearEntities [["Car", "Tank", "Motorcycle", "Helicopter", "Plane", "Ship"], 150];
-private _airTemp = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
-if !(_airTemp isEqualType 0) then { _airTemp = 15; };
-
 private _sceneMax = 0.05;
 {
     if (isNull _x || !alive _x) then { continue; };

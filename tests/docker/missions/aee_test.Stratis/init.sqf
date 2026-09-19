@@ -1403,11 +1403,11 @@ if (_p10Fail == 0) then {
         diag_log text "[PHASE25] [FAIL] NVG tube model not compiled";
         _p25Fail = _p25Fail + 1;
     } else {
-        missionNamespace setVariable ["aee_optics_nvgBatteryEnabled", false];
-        missionNamespace setVariable ["aee_optics_nvgBattery", 1.0];
+        missionNamespace setVariable ["aee_nightvision_nvgBatteryEnabled", false];
+        missionNamespace setVariable ["aee_nightvision_nvgBattery", 1.0];
         missionNamespace setVariable ["aee_physiology_batteryTemperatureDerating", 0.3];
         [] call _fnNVG;
-        private _batt = missionNamespace getVariable ["aee_optics_nvgBattery", -1];
+        private _batt = missionNamespace getVariable ["aee_nightvision_nvgBattery", -1];
         if (_batt == 1.0) then {
             diag_log text "[PHASE25] [PASS] NVG battery drain opt-in respected (off = no drain)";
             _p25Pass = _p25Pass + 1;
