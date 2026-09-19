@@ -19,7 +19,12 @@ private _windSpeed = vectorMagnitude wind;
 if (_temp >= 5 || (_windSpeed >= 5)) exitWith {};
 
 private _player = call CBA_fnc_currentUnit;
-if (isNil "_player" || !alive _player || cameraOn != _player) exitWith {};
+// Run in the player's own view: on foot (cameraOn == player) or in
+// the player's vehicle (pilot/passenger/gunner - cameraOn is the
+// vehicle).  Skip spectator/UAV-terminal/external cameras.
+private _veh = vehicle _player;
+if (isNil "_player" || !alive _player) exitWith {};
+if (cameraOn != _player && {cameraOn != _veh}) exitWith {};
 
 // Guard: skip if existing source is alive (prevents stacking)
 private _existing = missionNamespace getVariable [QGVAR(breathCondensation), objNull];

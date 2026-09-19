@@ -21,7 +21,12 @@ if (!EGVAR(core,opticsEnabled)) exitWith {};
 
 private _obscuration = missionNamespace getVariable [QGVAR(dewOnOptics), 0];
 private _player      = call CBA_fnc_currentUnit;
-if (isNil "_player" || !alive _player || cameraOn != _player) exitWith {};
+// Run in the player's own view: on foot (cameraOn == player) or in
+// the player's vehicle (pilot/passenger/gunner - cameraOn is the
+// vehicle).  Skip spectator/UAV-terminal/external cameras.
+private _veh = vehicle _player;
+if (isNil "_player" || !alive _player) exitWith {};
+if (cameraOn != _player && {cameraOn != _veh}) exitWith {};
 
 // Blur increases with obscuration — milky lens effect; store 0 below gate so the arbiter can fade
 private _blur = linearConversion [0, 1, _obscuration, 0, (missionNamespace getVariable [QGVAR(dewBlurMax), 0.4]), true];

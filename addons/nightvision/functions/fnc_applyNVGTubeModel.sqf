@@ -30,7 +30,14 @@ Sets:    QGVAR(nvgGain), QGVAR(nvgNoise), QGVAR(nvgTubeTier),
 */
 
 private _player = call CBA_fnc_currentUnit;
-if (isNil "_player" || !alive _player || cameraOn != _player) exitWith {};
+// Run in the player's own view only: first-person on foot (cameraOn ==
+// _player) OR any vehicle seat the player occupies (pilot, passenger,
+// gunner - cameraOn is the player's vehicle).  Skip external cameras
+// (spectator, UAV terminal, map) so the tube model does not render
+// over a camera that is not the operator's own view.
+private _guardVeh = vehicle _player;
+if (isNil "_player" || !alive _player) exitWith {};
+if (cameraOn != _player && {cameraOn != _guardVeh}) exitWith {};
 
 // Vision modes verified in-game: 0 = normal, 1 = NVG, 2 = thermal.
 // The tube model runs only in NVG.  Leaving NVG fades every NVG effect

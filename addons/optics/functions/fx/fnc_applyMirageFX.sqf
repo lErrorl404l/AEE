@@ -23,7 +23,12 @@ if (!EGVAR(core,opticsEnabled)) exitWith {};
 
 private _intensity = missionNamespace getVariable [QGVAR(mirageIntensity), 0];
 private _player    = call CBA_fnc_currentUnit;
-if (isNil "_player" || !alive _player || cameraOn != _player) exitWith {};
+// Run in the player's own view: on foot (cameraOn == player) or in
+// the player's vehicle (pilot/passenger/gunner - cameraOn is the
+// vehicle).  Skip spectator/UAV-terminal/external cameras.
+private _veh = vehicle _player;
+if (isNil "_player" || !alive _player) exitWith {};
+if (cameraOn != _player && {cameraOn != _veh}) exitWith {};
 
 // Guard: skip if existing mirage source is alive (prevents stacking)
 private _existing = missionNamespace getVariable [QGVAR(mirageSource), objNull];

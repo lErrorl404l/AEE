@@ -24,7 +24,12 @@ if (!EGVAR(core,opticsEnabled)) exitWith {};
 
 private _seeing    = missionNamespace getVariable [QGVAR(atmosphericSeeing), 0.2];
 private _player    = call CBA_fnc_currentUnit;
-if (isNil "_player" || !alive _player || cameraOn != _player) exitWith {};
+// Run in the player's own view: on foot (cameraOn == player) or in
+// the player's vehicle (pilot/passenger/gunner - cameraOn is the
+// vehicle).  Skip spectator/UAV-terminal/external cameras.
+private _veh = vehicle _player;
+if (isNil "_player" || !alive _player) exitWith {};
+if (cameraOn != _player && {cameraOn != _veh}) exitWith {};
 if !(_seeing isEqualType 0) then { _seeing = 0.2; };
 
 // Scale: 0.35 = 0, 1.0 = setting (subtle but visible at distance)

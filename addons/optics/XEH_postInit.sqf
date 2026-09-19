@@ -83,7 +83,12 @@
     if (_visionMode > 0 && isNil QGVAR(sensorPFH)) then {
         GVAR(sensorPFH) = [{
             private _player = call CBA_fnc_currentUnit;
-            if (isNil "_player" || !alive _player || cameraOn != _player) exitWith {};
+            private _veh = vehicle _player;
+            // Run in the player's own view: on foot (cameraOn == player)
+            // or in the player's vehicle (pilot/passenger/gunner).  Skip
+            // spectator/UAV-terminal/external cameras.
+            if (isNil "_player" || !alive _player) exitWith {};
+            if (cameraOn != _player && {cameraOn != _veh}) exitWith {};
             private _vm = currentVisionMode _player;
             // Transient 0: skip, do not clean up or stop.  The visionMode
             // event handles real exits.
