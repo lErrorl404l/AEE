@@ -1823,7 +1823,7 @@ class TestClothingThermal(unittest.TestCase):
         # (their deletion is the point - no third-party rvmat can break).
         import os
 
-        data_dir = _REPO_ROOT / "addons" / "optics" / "data"
+        data_dir = _REPO_ROOT / "addons" / "thermal" / "data"
         self.assertFalse((data_dir / "ti_cloth_cold.rvmat").exists())
         self.assertFalse((data_dir / "ti_cloth_hot.rvmat").exists())
         # The substrate that replaced them must exist and expose the
@@ -1866,28 +1866,30 @@ class TestClothingThermal(unittest.TestCase):
 
 
 def test_ti_texture_polarity(self):
-    # The TI textures encode the cold/hot floor in the red channel.
-    # In white-hot mode: pure black reads as black holes (the "black
-    # hot" report), so cold is a dim grey, not black.  Hot is white.
-    # Decode the DXT1 PAA with armaio and check the red channel mean.
-    from armaio.paa._format import PaaFile
+    # The band rvmats encode the white-hot floor/ceiling in the TI stage.
+    # In white-hot mode: ti_grey_00 is pure black (cold window floor),
+    # ti_grey_100 is pure white (hot ceiling).  The 0..100 grey-percent
+    # naming IS the polarity: brightness rises monotonically with the
+    # band, and the StageTI procedural colour matches the band value.
+    import re
 
-    data_dir = _REPO_ROOT / "addons" / "optics" / "data"
+    data_dir = _REPO_ROOT / "addons" / "thermal" / "data"
 
-    def _red_mean(name):
-        with open(data_dir / name, "rb") as fh:
-            pf = PaaFile.read(fh)
-        px = pf.mipmaps[0].decode(pf.format)
-        return float(px[:, :, 0].mean())
+    def _ti_brightness(name):
+        rv = (data_dir / name).read_text(encoding="utf-8")
+        m = re.search(r"color\(([0-9.]+),([0-9.]+),([0-9.]+),1,TI\)", rv)
+        self.assertIsNotNone(m, f"{name} lacks the TI-stage colour")
+        r, g, b = (float(x) for x in m.groups())
+        self.assertEqual(r, g)  # white-hot: equal channels, no hue
+        self.assertEqual(g, b)
+        return r
 
-    cold_r = _red_mean("ti_cold.paa")
-    hot_r = _red_mean("ti_hot.paa")
-    # Cold: warm grey floor (dim but visible), not pure black.
-    self.assertGreater(cold_r, 40, "cold TI texture must not be pure black")
-    self.assertLess(cold_r, 140, "cold TI texture must stay dim (below half)")
-    # Hot: near-white so hot objects saturate in white-hot mode.
-    self.assertGreater(hot_r, 200, "hot TI texture must be near-white")
-    self.assertGreater(hot_r, cold_r, "hot texture must be brighter than cold")
+    cold = _ti_brightness("ti_grey_00.rvmat")
+    hot = _ti_brightness("ti_grey_100.rvmat")
+    # Cold floor: black (0).  Hot ceiling: white (1).  Hot > cold.
+    self.assertAlmostEqual(cold, 0.0, places=6)
+    self.assertAlmostEqual(hot, 1.0, places=6)
+    self.assertGreater(hot, cold)
 
 
 class TestBuildingThermal(unittest.TestCase):
