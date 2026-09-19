@@ -107,9 +107,40 @@ if (_mode == "EXIT") then {
         private _stateKey = format ["%1|%2", str _obj, _sel];
         private _tCurrent = missionNamespace getVariable [QGVAR(selTemperature), createHashMap] getOrDefault [_stateKey, _tAir];
 
-        private _tNew = [
-            _obj, _sel, _tAir, _wind, _solar, _exposure, _qInternal, _tCurrent, _fGround
-        ] call FUNC(solveSelectionTemperature);
+        // ─── Two-node path (issue #191) ─────────────────────────────────────
+        // Core-bearing selections solve core+skin coupled (Gagge
+        // two-node), NOT the single-node surface-only balance.  The
+        // human path is wired now - the Gagge model is fully validated
+        // against its published set points.  Engine and building-mass
+        // two-node stay on the surface path until their fitted models
+        // land: the engine needs a per-engine coolant-loop fit
+        // (Bohac 1996 / Jarrier 2000 lumped-RC, no canonical constants),
+        // and building mass needs the ISO 52016 envelope+mass topology.
+        private _tNew = _tAir;
+        if (_obj isKindOf "CAManBase") then {
+            private _mrt = [getPosASL _obj, _fGround] call FUNC(calculateMRT);
+            // 1 met = 58.2 W/m2 over DuBois 1.8258 m2 = 106.3 W TOTAL
+            // (Gagge, native vanilla resting metabolism - no ACM
+            // dependency).  qGen is TOTAL W, matching the W/K coupling
+            // in the core balance.
+            private _qMet = 58.2 * 1.8258;
+            private _two = [
+                _obj, _sel,
+                "human", "human",       // core class, skin class
+                _tAir, _wind, _solar, _exposure,
+                0.9 * 70, 0.1 * 70,     // core/skin mass: 90/10 split of 70 kg
+                1.8258,                 // DuBois area (m2)
+                0.15,                   // convection plate dim (m)
+                _tCurrent, _tCurrent,   // core/skin current temps
+                _qMet,                  // qGen: resting metabolism (W)
+                "vertical", 0.5, _mrt, true, 0.05, true, 5
+            ] call FUNC(solveTwoNodeSelection);
+            _tNew = _two select 1;      // skin temp - what FLIR sees
+        } else {
+            _tNew = [
+                _obj, _sel, _tAir, _wind, _solar, _exposure, _qInternal, _tCurrent, _fGround
+            ] call FUNC(solveSelectionTemperature);
+        };
 
         // Persist for the next tick's inertia term.
         private _selMap = missionNamespace getVariable [QGVAR(selTemperature), createHashMap];
