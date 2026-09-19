@@ -540,7 +540,7 @@ class TestRootCauseRegressions(unittest.TestCase):
         # for the latitude FACT (abs-corrected), never matched by name.
         from pathlib import Path
 
-        text = Path("addons/environmental/functions/fnc_getBiome.sqf").read_text(
+        text = Path("addons/environmental/functions/biome/fnc_getBiome.sqf").read_text(
             encoding="utf-8"
         )
         self.assertNotIn("_MAP_BIOMES", text)  # old map-name table gone
@@ -556,7 +556,7 @@ class TestRootCauseRegressions(unittest.TestCase):
         # gone; the substrate's safe fallback is present.
         from pathlib import Path
 
-        text = Path("addons/thermal/functions/fnc_applyClothingThermal.sqf").read_text(
+        text = Path("addons/thermal/functions/display/fnc_applyClothingThermal.sqf").read_text(
             encoding="utf-8"
         )
         self.assertNotIn('_m find "cloth" >= 0', text)
@@ -576,7 +576,7 @@ class TestRootCauseRegressions(unittest.TestCase):
         # 66 N (Norway) must NOT receive the 35 N Cfb table.
         from pathlib import Path
 
-        get_biome = Path("addons/environmental/functions/fnc_getBiome.sqf").read_text(
+        get_biome = Path("addons/environmental/functions/biome/fnc_getBiome.sqf").read_text(
             encoding="utf-8"
         )
         self.assertIn("QGVAR(climateNormals)", get_biome)
@@ -588,7 +588,7 @@ class TestRootCauseRegressions(unittest.TestCase):
         self.assertIn('QGVAR(biomeCached), ""]', get_biome)
 
         get_normals = Path(
-            "addons/environmental/functions/fnc_getClimateNormals.sqf"
+            "addons/environmental/functions/climatology/fnc_getClimateNormals.sqf"
         ).read_text(encoding="utf-8")
         self.assertIn("QGVAR(climateNormals)", get_normals)
         self.assertIn(
@@ -598,10 +598,10 @@ class TestRootCauseRegressions(unittest.TestCase):
         # Every consumer must call getClimateNormals (the dispatcher), not
         # reach around it with its own static data.
         for fn in [
-            "addons/atmos/functions/fnc_updateHumidity.sqf",
-            "addons/atmos/functions/fnc_updateFog.sqf",
-            "addons/atmos/functions/fnc_updatePressure.sqf",
-            "addons/thermal/functions/fnc_updateTemperature.sqf",
+            "addons/atmos/functions/state/fnc_updateHumidity.sqf",
+            "addons/atmos/functions/state/fnc_updateFog.sqf",
+            "addons/atmos/functions/state/fnc_updatePressure.sqf",
+            "addons/thermal/functions/environment/fnc_updateTemperature.sqf",
         ]:
             text = Path(fn).read_text(encoding="utf-8")
             self.assertIn("getClimateNormals", text, f"{fn} bypasses the dispatcher")
@@ -616,7 +616,7 @@ class TestRootCauseRegressions(unittest.TestCase):
         # `get`.
         from pathlib import Path
 
-        text = Path("addons/environmental/functions/fnc_getBiome.sqf").read_text(
+        text = Path("addons/environmental/functions/biome/fnc_getBiome.sqf").read_text(
             encoding="utf-8"
         )
         # The three score maps are HashMaps: keys = biome codes.

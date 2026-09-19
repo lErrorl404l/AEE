@@ -28,6 +28,16 @@ import unittest
 #   returns [signalPct, signalDBm]
 
 
+def _read_env_biome():
+    """Read fnc_getBiome.sqf from its categorised subfolder (issue #203)."""
+    from pathlib import Path
+
+    base = Path("addons/environmental/functions")
+    for f in base.rglob("fnc_getBiome.sqf"):
+        return f.read_text(encoding="utf-8")
+    raise FileNotFoundError("fnc_getBiome.sqf not found")
+
+
 def acre2_signal(prop_idx, max_signal_dbm, db_shift=8.0, sens_min=-110.0, sens_max=0.0):
     """Mirror of the ACRE2 custom signal callback."""
     prop_idx = 1.0 if prop_idx <= 0 else prop_idx
@@ -452,13 +462,11 @@ class TestWorldLatitudePattern(unittest.TestCase):
         self.assertIn("getWorldLocation", solar)
         self.assertIn("select 1", solar)  # magnitude
 
-        biome = Path("addons/environmental/functions/fnc_getBiome.sqf").read_text(
-            encoding="utf-8"
-        )
+        biome = _read_env_biome()
         self.assertIn("getWorldLocation", biome)
 
         space = Path(
-            "addons/environmental/functions/fnc_calculateSpaceWeather.sqf"
+            "addons/environmental/functions/climatology/fnc_calculateSpaceWeather.sqf"
         ).read_text(encoding="utf-8")
         self.assertIn("getWorldLocation", space)
 
@@ -467,7 +475,7 @@ class TestWorldLatitudePattern(unittest.TestCase):
         ).read_text(encoding="utf-8")
         self.assertIn("getWorldLocation", compass)
 
-        star = Path("addons/optics/functions/fnc_getStarCatalog.sqf").read_text(
+        star = Path("addons/optics/functions/sensor/fnc_getStarCatalog.sqf").read_text(
             encoding="utf-8"
         )
         self.assertIn("getWorldLocation", star)

@@ -20,6 +20,16 @@ _REPO_ROOT = Path(__file__).resolve().parents[2]
 _ENVIRONMENTAL = _REPO_ROOT / "addons" / "environmental" / "functions"
 
 
+def _read_env(name):
+    """Read an SQF function file, resolving categorised subfolders (issue
+    #203).  The function NAME is flat (aee_environmental_fnc_<name>)."""
+    if (_ENVIRONMENTAL / name).exists():
+        return (_ENVIRONMENTAL / name).read_text(encoding="utf-8")
+    for f in _ENVIRONMENTAL.rglob(name):
+        return f.read_text(encoding="utf-8")
+    raise FileNotFoundError(f"{name} not found under {_ENVIRONMENTAL}")
+
+
 def dew_point_magnus(temp_c, rh_pct):
     """Mirror of the Magnus dew-point formula (Alduchov & Eskridge 1996).
 
@@ -138,7 +148,7 @@ class TestSQFSyncGroundFrost(unittest.TestCase):
     """SQF source must contain the constants the Python mirror relies on."""
 
     def _assert_in_sqf(self, filename, fragments, context):
-        text = (_ENVIRONMENTAL / filename).read_text(encoding="utf-8")
+        text = _read_env(filename)
         missing = [f for f in fragments if f not in text]
         self.assertFalse(
             missing,

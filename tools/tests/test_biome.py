@@ -16,11 +16,21 @@ from pathlib import Path
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 _ENV = _REPO_ROOT / "addons" / "environmental" / "functions"
 
+def _read_recursive(base, name):
+    """Read an SQF function file, resolving categorised subfolders (issue
+    #203).  The function NAME is flat (aee_<mod>_fnc_<name>)."""
+    if (base / name).exists():
+        return (base / name).read_text(encoding="utf-8")
+    for f in base.rglob(name):
+        return f.read_text(encoding="utf-8")
+    raise FileNotFoundError(f"{name} not found under {base}")
+
+
 
 def _read_sqf(name):
     """Read an SQF function file.  The drift-lock tests read the SOURCE so a
     constant change in SQF fails the mirror tests until re-synced."""
-    return (_ENV / name).read_text(encoding="utf-8")
+    return _read_recursive(_ENV, name)
 
 
 # ─── Mirror of fnc_getBiomeAtPosition.sqf ──────────────────────────────

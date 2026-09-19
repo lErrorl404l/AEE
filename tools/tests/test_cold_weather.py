@@ -27,6 +27,16 @@ from pathlib import Path
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 _PHYSIOLOGY = _REPO_ROOT / "addons" / "physiology" / "functions"
 
+def _read_recursive(base, name):
+    """Read an SQF function file, resolving categorised subfolders (issue
+    #203).  The function NAME is flat (aee_<mod>_fnc_<name>)."""
+    if (base / name).exists():
+        return (base / name).read_text(encoding="utf-8")
+    for f in base.rglob(name):
+        return f.read_text(encoding="utf-8")
+    raise FileNotFoundError(f"{name} not found under {base}")
+
+
 # Piecewise-linear dexterity anchors (WCT degC -> dexterity %).  The SQF
 # uses the equivalent closed form 90 + 2*WCT with a 10 % floor.
 _DEXTERITY_ANCHORS = [
@@ -208,9 +218,7 @@ class TestSQFSyncColdWeather(unittest.TestCase):
     """SQF source must contain the constants the Python mirror relies on."""
 
     def _assert_in_sqf(self, fragments, context):
-        text = (_PHYSIOLOGY / "fnc_calculateColdWeatherPerformance.sqf").read_text(
-            encoding="utf-8"
-        )
+        text = _read_recursive(_PHYSIOLOGY, "fnc_calculateColdWeatherPerformance.sqf")
         missing = [f for f in fragments if f not in text]
         self.assertFalse(
             missing,

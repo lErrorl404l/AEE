@@ -16,6 +16,16 @@ _PHYSIOLOGY = (
 )
 
 
+def _read_physiology(name):
+    """Read an SQF function file, resolving categorised subfolders (issue
+    #203).  The function NAME is flat (aee_physiology_fnc_<name>)."""
+    if (_PHYSIOLOGY / name).exists():
+        return (_PHYSIOLOGY / name).read_text(encoding="utf-8")
+    for f in _PHYSIOLOGY.rglob(name):
+        return f.read_text(encoding="utf-8")
+    raise FileNotFoundError(f"{name} not found under {_PHYSIOLOGY}")
+
+
 def equivalent_altitude(pressure_hpa):
     """Mirror of the ISA hypsometric relation in fnc_calculateHypoxia.sqf."""
     return 44330 * (1 - (pressure_hpa / 1013.25) ** 0.1903)
@@ -207,7 +217,7 @@ class TestSQFSyncPhysiology(unittest.TestCase):
     """SQF source must contain the constants the Python mirrors rely on."""
 
     def _assert_in_sqf(self, filename, fragments, context):
-        text = (_PHYSIOLOGY / filename).read_text(encoding="utf-8")
+        text = _read_physiology(filename)
         missing = [f for f in fragments if f not in text]
         self.assertFalse(
             missing,
@@ -309,9 +319,7 @@ class TestDriftLockCrossSensitivity(unittest.TestCase):
         self.assertAlmostEqual(eff_deh, 0.5 * 1.075, places=4)  # amp 1.075
 
     def test_sqf_caps(self):
-        text = (_PHYSIOLOGY / "fnc_applyCrossSensitivity.sqf").read_text(
-            encoding="utf-8"
-        )
+        text = _read_physiology("fnc_applyCrossSensitivity.sqf")
         self.assertIn("1.25", text)
         self.assertIn("1.3", text)
 
