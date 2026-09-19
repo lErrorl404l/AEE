@@ -3,24 +3,24 @@
 /*
 Magnetic declination at the player's current location.
 
-A full IGRF/WMM spherical-harmonic model is not appropriate here: Arma 3
-maps have no true geographic coordinates, so latitude and longitude are
-ESTIMATED from the map offset (map centre → 0°, edges → ±40°).  At that
-coordinate resolution a geocentric dipole degenerates (points near the
-dipole equator return ±170° garbage), so the audit accepted a COARSE
-LOOKUP GRID instead.
-
-This is a coarse longitude-band table of the real WMM 2020 declination,
-interpolated across longitude bands, with a small latitude adjustment.
-It reproduces the correct SIGN and rough magnitude at the key test points:
+A full IGRF/WMM spherical-harmonic model is not appropriate here: the
+declination is taken from a coarse longitude-band lookup grid of the
+real WMM 2020 values, interpolated across longitude bands with a small
+latitude adjustment.  It reproduces the correct SIGN and rough
+magnitude at the key test points:
   New York (40N, 74W) −13°, London (51N, 0E) +1°, Tokyo (35N, 139E) −8°,
   Sydney (34S, 151E) +12°.
 
+The longitude and latitude come from the shared geolocation source
+(fnc_getWorldLocation, issue #179), which reads CfgWorlds directly.
+The old code ESTIMATED longitude from map X offset - the WMM table was
+keyed to a guessed band, wrong on every real map.
+
 Method:
-  1. Get player position via CBA_fnc_currentUnit
-  2. Estimate longitude from X relative to map centre:
-     lon ≈ ((x − worldSize/2) / (worldSize/2)) × 40°
-  3. Look up the declination for that longitude band, adjusted by latitude.
+  1. Read the world's declared longitude and latitude from
+     fnc_getWorldLocation (single source of truth, #179)
+  2. Look up the declination for that longitude band, adjusted by
+     latitude.
 
 Declination (deg east, from WMM 2020 at ~45 N, interpolated across lon):
   −180°: +10   −120°: +12   −80°: −13   −20°: −5   0°: +1
@@ -35,16 +35,16 @@ params [];
 private _unit = call CBA_fnc_currentUnit;
 if (isNil "_unit") exitWith { 0 };
 
-private _pos   = getPos _unit;
-private _x     = _pos select 0;   // easting (Arma: x=east, y=north)
-private _y     = _pos select 1;   // northing
-private _ws    = worldSize;
-private _xCent = _x - (_ws / 2);
-
-// ─── Estimate longitude from map offset ────────────────────────────────────
-// Map centre → 0°; edges → ±40°.
-private _lonDeg = (_xCent / (_ws / 2)) * 40;
-_lonDeg = _lonDeg max -180 min 180;
+// ─── Longitude from the shared geolocation source ──────────────────────────
+// The old code ESTIMATED longitude from map X offset (map centre → 0°,
+// edges → ±40°), which is wrong whenever the map's declared CfgWorlds
+// longitude is not its centre (every real map).  The WMM declination
+// table was therefore keyed to a guessed band.  #179: read the real
+// CfgWorlds longitude from fnc_getWorldLocation, the single source.
+// The per-position micro-offset is dropped - at the map's 1-40° scale
+// it is noise, and the anchor must come from CfgWorlds, not X.
+private _lonDeg = ([] call EFUNC(core,getWorldLocation)) select 2;
+if !(_lonDeg isEqualType 0) then { _lonDeg = 0; };
 
 // ─── Coarse WMM declination table (deg east vs longitude) ─────────────────
 // [lonDeg, declDeg] pairs from WMM 2020 at ~45 N latitude
@@ -83,8 +83,9 @@ if (_lonDeg <= (_table#0)#0) then {
 
 // ─── Latitude adjustment — declination magnitude grows toward the poles ────
 // Weak effect: ±2° across the usable band, so the table values hold near 45 N.
-private _latDeg = ((_y - (_ws / 2)) / (_ws / 2)) * 40;
-_latDeg = _latDeg max -80 min 80;
+private _loc = [] call EFUNC(core,getWorldLocation);
+private _latDeg = _loc select 1;   // magnitude from the shared source
+if (_latDeg == 0) then { _latDeg = 40; };  // temperate default
 _declination = _declination + ((_latDeg - 45) * 0.05);
 
 _declination = _declination max -30 min 30;

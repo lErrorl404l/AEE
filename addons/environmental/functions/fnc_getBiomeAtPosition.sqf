@@ -56,7 +56,7 @@ if (_surface in _DIRECT_MAP) exitWith {
 // Latitude magnitude from the shared source (issue #154 pattern 3).
 // Peel 2007: A = all months >18°C, B = arid, C = 1–3 months <10°C,
 // D = 1–3 months <0°C (or <−3°C Kottek), E = all months <10°C.
-private _lat = ([] call EFUNC(core,getWorldLatitude)) select 1;
+private _lat = ([] call EFUNC(core,getWorldLocation)) select 1;
 if (_lat == 0) then { _lat = 40; }; // fallback: temperate default
 
 // Latitude band → primary Koppen zone

@@ -26,17 +26,30 @@ if (_month > 2 && (_year mod 4 == 0 && (_year mod 100 != 0 || _year mod 400 == 0
 // time, which drifts and misbehaves when the mission clock is skipped or
 // the mission runs long.  dayTime is the live clock.
 private _hour = dayTime;
-// Latitude magnitude from the shared source.  A negative latitude value
-// (some map authors publish the Southern Hemisphere convention or a plain
-// error) would INVERT the seasons — sin(-56.7) makes northern winter look
-// like summer.  The magnitude drives max sun elevation; the declination
-// term carries the season, so the sign must never flip the curve (issue
-// #123 RC2b, Scottish Highlands map sets latitude = -56.702).
-private _lat = ([] call FUNC(getWorldLatitude)) select 1;  // magnitude
+// Latitude magnitude from the shared source (fnc_getWorldLocation,
+// issue #179).  The magnitude drives max sun elevation; the declination
+// term carries the season, so the sign never affects the curve.  The
+// source normalises the BIS inverted sign to the true geographic
+// convention, and the #123 RC2b Scottish Highlands case (CfgWorlds
+// latitude = -56.702) resolves to magnitude 56.7 N correctly.
+private _loc = [] call FUNC(getWorldLocation);
+private _lat = _loc select 1;  // magnitude
 if (_lat == 0) then { _lat = 40; };
 
 private _decl = 23.45 * sin ((360 / 365) * (_doy + 284));
-private _hourAngle = (_hour - 12) * 15;
+// Hour angle with longitude correction (issue #179).  The old formula
+// (_hour - 12) * 15 pinned solar noon to 12:00 game time on every map;
+// a map off the prime meridian peaks earlier or later by its real
+// longitude.  Solar noon offset from the UTM zone central meridian:
+//   hourAngle = (hour - 12) * 15 + (lon - zoneMeridian)
+// in degrees, where the zone meridian is the standard
+//   zoneMeridian = (zone - 1) * 6 - 180 + 3
+// (Stratis: zone 35 -> meridian 27 E, lon 16.48 -> noon ~12:42;
+//  oski_corran: zone 30 -> meridian -3, lon -5.22 -> noon ~12:09).
+private _lon = _loc select 2;
+private _zone = _loc select 3;
+private _zoneMeridian = if (_zone > 0) then { (_zone - 1) * 6 - 177 } else { 0 };
+private _hourAngle = (_hour - 12) * 15 + (_lon - _zoneMeridian);
 private _sinElev = (sin _lat) * (sin _decl) + (cos _lat) * (cos _decl) * (cos _hourAngle);
 
 private _radiation = _sinElev max 0;
