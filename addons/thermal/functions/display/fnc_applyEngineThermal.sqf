@@ -120,29 +120,58 @@ if (abs (_outWidth - _lastW) > 0.01 || abs (_outStart - _lastS) > 0.01) then {
 private _airTemp = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 if !(_airTemp isEqualType 0) then { _airTemp = 15; };
 
-// ─── Per-vehicle heat state: NEUTRALISE the engine's thermal model ────────
-// (issue #196).  The engine's TI pipeline is TWO-STAGE: the rvmat StageTI
-// provides the BASE image, and the engine's dynamic temperature model
-// MULTIPLIES it (verified: "the TI stage texture sets the ceiling and the
-// spatial pattern; the temperature model sets the gain" - BIKI thermal
-// imaging research).  AEE now paints the full per-selection radiance into
-// the StageTI via the band material swap (fnc_applySelectionThermal), so
-// the engine's own per-vehicle heat state must be NEUTRAL to that base -
-// any non-zero setVehicleTIPars would double-modulate our colour (crush a
-// cold selection to black, over-brighten a hot one).
+// ─── Per-vehicle heat state: physics -> engine thermal (issue #196) ────────
+// The engine's dynamic temperature model is a LIVE lever on the Ti image
+// (in-game proven: vehicles darken when the second sun's heat term drops,
+// and setVehicleTIPars is the per-vehicle heat input).  The old
+// NEUTRALISATION (forcing [0,0,0]) was based on the band-material theory
+// that AEE painted the StageTI itself - but StageTI is a heat-receptiveness
+// COEFFICIENT, not the image, so the band swap never reached the render.
+// The result was: vehicles had NO heat input, the second sun saturated the
+// scene to flat white, and per-vehicle contrast vanished.
 //
-// So setVehicleTIPars is forced to [0,0,0] on every vehicle in range while
-// AEE paints.  The engine's GLOBAL model (ambient, sun, second-sun,
-// damage) still applies uniformly - that is the same gain for every
-// object and the scene AGC absorbs it.
+// Drive setVehicleTIPars from AEE physics instead: the per-selection
+// temperatures written by applySelectionThermal (selTemperature, keyed
+// "obj|selection").  Engine selections feed the engine channel, wheels the
+// wheels channel, weapons the weapon channel - mapped to the engine's
+// 0..1 scale (ambient = 0, ambient + 50 C = 1).  This makes the physics
+// reach the Ti image through the lever that actually works.
+private _selTemps = missionNamespace getVariable [QGVAR(selTemperature), createHashMap];
 private _vehRange = 150;
 {
     if (isNull _x || !alive _x) then { continue; };
     if !(_x isKindOf "AllVehicles") then { continue; };
+    private _objKey = str _x;
+    private _engineC = -1e10;
+    private _wheelC = -1e10;
+    private _weaponC = -1e10;
+    {
+        _x params ["_sel", "_t"];
+        if !(_t isEqualType 0 && {finite _t}) then { continue; };
+        private _ls = toLower _sel;
+        if (_ls find "engine" >= 0 || {_ls find "motor" >= 0}) then {
+            if (_t > _engineC) then { _engineC = _t; };
+        };
+        if (_ls find "wheel" >= 0 || {_ls find "tyre" >= 0} || {_ls find "tire" >= 0}) then {
+            if (_t > _wheelC) then { _wheelC = _t; };
+        };
+        if (_ls find "weapon" >= 0 || {_ls find "turret" >= 0} || {_ls find "barrel" >= 0}) then {
+            if (_t > _weaponC) then { _weaponC = _t; };
+        };
+    } forEach (_selTemps getOrDefault [_objKey, []]);
+
+    // Engine-scale fraction: (T - ambient) / 50, clamped 0..1.
+    private _fEngine = ((_engineC - _airTemp) / 50) max 0 min 1;
+    private _fWheels = ((_wheelC - _airTemp) / 50) max 0 min 1;
+    private _fWeapon = ((_weaponC - _airTemp) / 50) max 0 min 1;
+    if (_engineC <= -1e9 && _wheelC <= -1e9 && _weaponC <= -1e9) then { continue; };
+
+    // Apply only when the state changed materially (setVehicleTIPars is
+    // cheap but pointless to spam on an idle vehicle).
     private _lastPars = _x getVariable [QGVAR(tiLastPars), [-1, -1, -1]];
-    if (_lastPars isEqualTo [0, 0, 0]) then { continue; };
-    _x setVehicleTIPars [0, 0, 0];
-    _x setVariable [QGVAR(tiLastPars), [0, 0, 0]];
+    if (_lastPars isEqualTo [_fEngine, _fWheels, _fWeapon]) then { continue; };
+    _x setVehicleTIPars [_fEngine, _fWheels, _fWeapon];
+    _x setVariable [QGVAR(tiLastPars), [_fEngine, _fWheels, _fWeapon]];
 } forEach (_player nearEntities [["Car", "Tank", "Motorcycle", "Helicopter", "Plane", "Ship"], _vehRange]);
 
 // ─── Scene max heat from the physics model ─────────────────────────────────
