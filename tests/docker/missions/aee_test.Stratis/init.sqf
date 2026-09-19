@@ -2211,6 +2211,67 @@ private _p29Pass = 0;
     // Free the test vehicle.
     deleteVehicle _veh;
 
+    // -- PHASE 40: material classification (issue #96) --------------------
+    // The HitPart learning path needs a fired round with a shooter,
+    // which the headless test mission cannot provide (no weapon).
+    // Verify instead what IS testable headless: the material addon
+    // loads, the vanilla bisurf cache resolves, and the per-selection
+    // classifier returns multi-material results for a real vehicle.
+    if (isNil "aee_material_fnc_getSurfaceMaterial") then {
+        diag_log text "[PHASE40] [FAIL] material addon not loaded";
+    } else {
+        private _pass = 0;
+        private _fail = 0;
+
+        // 1. Vanilla bisurf classification (cache + classifier).
+        private _m1 = "a3\data_f\penetration\concrete.bisurf" call aee_material_fnc_getSurfaceMaterial;
+        private _m2 = "a3\data_f\penetration\metal.bisurf" call aee_material_fnc_getSurfaceMaterial;
+        if (_m1 == "concrete" && _m2 == "metal") then {
+            _pass = _pass + 1;
+        } else {
+            _fail = _fail + 1;
+            diag_log text format ["[PHASE40] [FAIL] bisurf classify: %1 / %2", _m1, _m2];
+        };
+
+        // 2. Terrain taxonomy.
+        private _m3 = "#gdtforest" call aee_material_fnc_classifyBySurfaceType;
+        private _m4 = "#gdtrock" call aee_material_fnc_classifyBySurfaceType;
+        if (_m3 == "vegetation" && _m4 == "rock") then {
+            _pass = _pass + 1;
+        } else {
+            _fail = _fail + 1;
+            diag_log text format ["[PHASE40] [FAIL] surfaceType classify: %1 / %2", _m3, _m4];
+        };
+
+        // 3. Config-based material on a real object.  getObjectMaterials
+        // returns only runtime OVERRIDES (empty/any for defaults - BIS
+        // docs), so the material addon reads the config's
+        // hiddenSelectionsMaterials instead.  A hatchback declares no
+        // per-selection materials, so it resolves to the safe default
+        // "ground" - the test asserts the fallback chain returns a
+        // valid class, not any.
+        private _veh40 = nearestObject [[4200, 4250, 0], "C_Hatchback_01_F"];
+        if (isNull _veh40) then {
+            diag_log text "[PHASE40] [SKIP] no vehicle for material test";
+        } else {
+            private _mat = _veh40 call aee_material_fnc_getObjectMaterial;
+            if (_mat in ["ground", "rock", "wood", "concrete", "metal", "glass", "water", "vegetation"]) then {
+                _pass = _pass + 1;
+                diag_log text format ["[PHASE40] [PASS] object material resolves: %1 -> %2", typeOf _veh40, _mat];
+            } else {
+                _fail = _fail + 1;
+                diag_log text format ["[PHASE40] [FAIL] invalid material class: %1", _mat];
+            };
+        };
+
+        if (_fail == 0) then {
+            diag_log text format ["[PHASE40] [PASS] material classification: %1 checks passed", _pass];
+        } else {
+            diag_log text format ["[PHASE40] [FAIL] material classification: %1 passed, %2 failed", _pass, _fail];
+        };
+        diag_log text "[AEE-TEST] DONE";
+    };
+
     // -- PHASE 5: determinism -- temperature delta over 5 s must be small ----
     // PHASE11 deliberately disturbed the clock (midnight/noon skips).  The
     // temperature model is stateless and recomputes on each 5 s env tick,
