@@ -16,6 +16,7 @@ PREP(calculateMRT);
 PREP(calculateGlobeTemperature);
 PREP(calculateGroundNodeStack);
 PREP(calculateGroundTemperature);
+PREP(calculateFrostState);
 PREP(addGroundStamp);
 PREP(getGroundStampOffset);
 PREP(applyGroundContactStamps);

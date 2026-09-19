@@ -266,28 +266,41 @@ class TestWetGroundThermal(unittest.TestCase):
         text = Path(
             "addons/thermal/functions/fnc_calculateGroundTemperature.sqf"
         ).read_text(encoding="utf-8")
-        # Reads the existing soil-moisture state (never fabricates).
-        self.assertIn("QEGVAR(core,soilMoisture)", text)
-        # Johansen Kersten interpolation between dry and saturated k.
-        self.assertIn("_kSat", text)
-        self.assertIn("_moisture * (_kSat - _k)", text)
-        # FAO-56 evaporative draw with bare-soil surface resistance.
-        self.assertIn("_evapW", text)
-        self.assertIn("_rs", text)
-        # Manabe bucket: WK = 0.75 * FC.
-        self.assertIn("0.75 * 0.25", text)
+        # The wrapper delegates to the node stack (issue #198) - the
+        # stack is the ground model now.
+        self.assertIn("calculateGroundNodeStack", text)
+        self.assertIn("_stack select 0", text)  # surface node = layer 1
+        # Material classification still happens here (never fabricates).
+        self.assertIn("classifyBySurfaceType", text)
+        # The moisture/evaporative physics moved to the node stack.
+        stack = Path(
+            "addons/thermal/functions/fnc_calculateGroundNodeStack.sqf"
+        ).read_text(encoding="utf-8")
+        self.assertIn("QEGVAR(core,soilMoisture)", stack)
+        self.assertIn("_kSat", stack)
+        self.assertIn("_kDry + (_ke * (_kSat - _kDry))", stack)
+        self.assertIn("_qEvap", stack)
+        self.assertIn("_rs", stack)
+        self.assertIn("0.75 * 0.25", stack)
 
     def test_wet_cache_keyed_by_moisture(self):
         from pathlib import Path
 
         text = Path(
+            "addons/thermal/functions/fnc_calculateGroundNodeStack.sqf"
+        ).read_text(encoding="utf-8")
+        # The node-stack cell state carries the moisture axis: keyed by
+        # position grid cell + material (a wet road and a dry road are
+        # different states).
+        self.assertIn("_cell", text)
+        self.assertIn("_material", text)
+        self.assertIn("QGVAR(groundNodeStack)", text)
+        # The old single-node cache is gone from the wrapper.
+        wrapper = Path(
             "addons/thermal/functions/fnc_calculateGroundTemperature.sqf"
         ).read_text(encoding="utf-8")
-        # The cache key is the [material, moisture] PAIR - a wet road
-        # and a dry road are different states.
-        self.assertIn("_cacheKey = [_material, _moisture]", text)
-        self.assertIn("getOrDefault [_cacheKey, nil]", text)
-        self.assertIn("_cached set [_cacheKey, _ts]", text)
+        self.assertNotIn("groundTempCache", wrapper)
+        self.assertNotIn("_cacheKey = [_material, _moisture]", wrapper)
 
     def test_wet_ground_mirror_exists(self):
         from pathlib import Path
@@ -327,8 +340,11 @@ class TestGroundNodeStack(unittest.TestCase):
         # Persistence: per-position node temperatures.
         self.assertIn("QGVAR(groundNodeStack)", text)
         self.assertIn("_cell", text)
-        # Fixed-temperature bottom boundary (Noah TBOT).
-        self.assertIn("annualMeanAirTemp", text)
+        # Fixed-temperature bottom boundary (Noah TBOT) as a native
+        # slow EMA of air (30-day tau), never a fabricated state read.
+        self.assertIn("_dt / 2592000", text)
+        self.assertIn("_tBot", text)
+        self.assertNotIn("annualMeanAirTemp", text)
 
     def test_node_stack_physics_patterns(self):
         from pathlib import Path
@@ -365,6 +381,65 @@ class TestGroundNodeStack(unittest.TestCase):
         # Campbell & Norman amplitude attenuation anchors (skin depth).
         self.assertIn("0.425", text)  # 10 cm -> 42.5%
         self.assertIn("0.014", text)  # 50 cm -> 1.4%
+
+
+class TestFrostThermal(unittest.TestCase):
+    """Issue #195 - frost/ice phase-change: 0C pin with latent-heat
+    release (334 kJ/kg), frost deposition (Magnus over ice frost point),
+    and frost emissivity (near-blackbody) feeding the FLIR contrast."""
+
+    def test_frost_state_wired(self):
+        from pathlib import Path
+
+        # The ground wrapper applies the frost tier on the node-stack
+        # surface temp.
+        wrapper = Path(
+            "addons/thermal/functions/fnc_calculateGroundTemperature.sqf"
+        ).read_text(encoding="utf-8")
+        self.assertIn("calculateFrostState", wrapper)
+        self.assertIn("_frost select 0", wrapper)
+
+        # The frost function is PREP-registered.
+        prep = Path("addons/thermal/XEH_PREP.hpp").read_text(encoding="utf-8")
+        self.assertIn("calculateFrostState", prep)
+
+    def test_frost_physics_patterns(self):
+        from pathlib import Path
+
+        text = Path("addons/thermal/functions/fnc_calculateFrostState.sqf").read_text(
+            encoding="utf-8"
+        )
+        # Latent heat of fusion (IAPWS-95 / Incropera).
+        self.assertIn("334e3", text)
+        # Magnus over ICE (frost point, not Bolton water).
+        self.assertIn("22.46", text)
+        self.assertIn("272.62", text)
+        # The pin holds at 0C while film releases latent heat.
+        self.assertIn("_tSurfAdjusted = 0", text)
+        self.assertIn("_dm", text)
+        # Frost emissivity near-blackbody.
+        self.assertIn("0.97", text)
+        # Film mass state persisted per grid cell.
+        self.assertIn("GVAR(frostState)", text)
+        self.assertIn("_filmMass", text)
+
+    def test_frost_mirror_exists(self):
+        from pathlib import Path
+
+        text = Path("tools/tests/test_frost.py").read_text(encoding="utf-8")
+        # Sourced constants.
+        self.assertIn("L_FUS", text)
+        self.assertIn("334e3", text)
+        self.assertIn("22.46", text)  # Magnus over ice
+        self.assertIn("272.62", text)
+        # Hayashi 1977 density curve.
+        self.assertIn("650.0", text)
+        self.assertIn("0.277", text)
+        # Leoni 2016 growth cap (0.1..3 mm/h).
+        self.assertIn("0.1", text)
+        self.assertIn("3.0", text)
+        # Emissivity anchors.
+        self.assertIn("0.97", text)
 
 
 if __name__ == "__main__":
