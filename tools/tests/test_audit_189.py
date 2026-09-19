@@ -198,5 +198,62 @@ class TestTwoNodeSolver(unittest.TestCase):
         self.assertIn("Fourier", text)
 
 
+class TestWaterThermal(unittest.TestCase):
+    """Drift-locks for the #193 water interaction branch: the measured
+    Boutelier water coefficients and the immersion wiring must survive
+    porting from the Python mirror (test_water_thermal.py)."""
+
+    def test_boutelier_water_coefficients(self):
+        from pathlib import Path
+
+        text = Path("addons/thermal/functions/fnc_solveTwoNodeSelection.sqf").read_text(
+            encoding="utf-8"
+        )
+        # Boutelier, Bougues & Timbal 1977 (partitional calorimetry):
+        # still water 43 (neutral) / 54 (cold+shivering) W/m2K; stirred
+        # water 272.9*v^0.5 / 497.1*v^0.65.
+        self.assertIn("43.0", text)
+        self.assertIn("54.0", text)
+        self.assertIn("272.9", text)
+        self.assertIn("497.1", text)
+        self.assertIn("Boutelier", text)
+
+    def test_immersion_exchange_target_is_water(self):
+        from pathlib import Path
+
+        text = Path("addons/thermal/functions/fnc_solveTwoNodeSelection.sqf").read_text(
+            encoding="utf-8"
+        )
+        # An immersed surface exchanges against the WATER temperature,
+        # not air or the air-side MRT.
+        self.assertIn("_exchK", text)
+        self.assertIn("_exchMrtK", text)
+        self.assertIn("_tWater", text)
+
+    def test_rain_forces_wettedness(self):
+        from pathlib import Path
+
+        text = Path("addons/thermal/functions/fnc_solveTwoNodeSelection.sqf").read_text(
+            encoding="utf-8"
+        )
+        # Rain is EXTERNAL water (not regulated sweat): drives the wet
+        # state up, saturating at high rates.
+        self.assertIn("_rain", text)
+        self.assertIn("_rain / 0.3", text)
+
+    def test_immersion_detected_native(self):
+        from pathlib import Path
+
+        text = Path("addons/thermal/functions/fnc_applySelectionThermal.sqf").read_text(
+            encoding="utf-8"
+        )
+        # Immersion via native engine state: getPosASL z < 0 (submerged)
+        # + surfaceIsWater - no fabricated water-speed state.
+        self.assertIn("getPosASL _obj", text)
+        self.assertIn("surfaceIsWater", text)
+        self.assertIn("currentWaterTemperature", text)
+        self.assertNotIn("currentWaterSpeed", text)
+
+
 if __name__ == "__main__":
     unittest.main()
