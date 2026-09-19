@@ -38,7 +38,7 @@ if (_overridden) exitWith {};
 private _biome       = EGVAR(core,biome);
 private _windSpd     = vectorMagnitude wind;
 private _rain        = rain;
-private _temp        = EGVAR(core,currentTemperature);
+private _temp        = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 private _overcast    = overcast;
 private _groundState = missionNamespace getVariable [QEGVAR(core,groundState), "Normal"];
 
@@ -48,7 +48,7 @@ if (isNil "_temp") then { _temp = 20; };
 private _sandstorm = 0;
 if (!isNil "_biome"
     && _biome in ["BWh","BWk","BSh","BSk"]
-    && (_windSpd > GVAR(SandstormWindThreshold))
+    && (_windSpd > missionNamespace getVariable [QGVAR(SandstormWindThreshold), 10])
     && (_rain < 0.01)
 ) then {
     _sandstorm = (_windSpd / 25) min 1.0;
@@ -56,7 +56,7 @@ if (!isNil "_biome"
 
 // ─── Blowing snow / whiteout — snow state + cold + wind above threshold ──
 private _blowingSnow = 0;
-if (_groundState == "Snow" && (_windSpd > GVAR(BlowingSnowWindThreshold)) && (_temp < 0)) then {
+if (_groundState == "Snow" && (_windSpd > missionNamespace getVariable [QGVAR(BlowingSnowWindThreshold), 8]) && (_temp < 0)) then {
     _blowingSnow = (_windSpd / 20) min 1.0;
 };
 
@@ -68,7 +68,7 @@ if (!isNil "_biome"
     && _biome in ["BWh","BWk","BSh","BSk"]
     && (_windSpd >= 2)
     && (_windSpd <= 8)
-    && (_temp > GVAR(DustDevilTempThreshold))
+    && (_temp > missionNamespace getVariable [QGVAR(DustDevilTempThreshold), 30])
     && (_overcast < 0.3)
 ) then {
     _dustDevil = (_windSpd / 15) min 0.8;

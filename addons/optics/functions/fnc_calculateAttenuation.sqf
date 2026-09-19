@@ -20,7 +20,7 @@ Stored in GVAR(currentLaserAttenuation) and GVAR(currentVisibleAttenuation).
 private _laserAtten  = 1.0;
 private _visibleAtten = 1.0;
 
-private _RH = EGVAR(core,currentHumidity);
+private _RH = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
 private _groundState = missionNamespace getVariable [QEGVAR(core,groundState), "Normal"];
 private _fog = missionNamespace getVariable [QEGVAR(core,currentFogDensity), 0];
 

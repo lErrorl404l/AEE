@@ -21,8 +21,8 @@ Stored in EGVAR(core,currentHeatIndex) for heat-stress modelling.
 
 if !(EGVAR(core,enabled)) exitWith {};
 
-private _T_C = EGVAR(core,currentTemperature);
-private _RH  = EGVAR(core,currentHumidity);
+private _T_C = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
+private _RH  = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
 
 if (isNil "_T_C") exitWith {};
 if (isNil "_RH")  exitWith {};
