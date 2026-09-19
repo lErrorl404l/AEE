@@ -120,66 +120,30 @@ if (abs (_outWidth - _lastW) > 0.01 || abs (_outStart - _lastS) > 0.01) then {
 private _airTemp = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 if !(_airTemp isEqualType 0) then { _airTemp = 15; };
 
-// ─── Per-vehicle heat state: physics -> engine thermal (issue #196) ───────
-// The engine renders a vehicle's thermal image from its HEAT STATE
-// (setVehicleTIPars [engine, wheels, weapon], each 0..1 on the engine's
-// scale: ambient = 0, ambient + 50 C = 1).  The old surface path
-// abandoned this lever in the #124 migration; the result was that every
-// vehicle rendered from the engine's BAKED thermal state - white-hot at
-// midnight regardless of actual temperature.  Driving the state from
-// AEE's two-node per-selection temperatures makes the physics visible in
-// EVERY thermal device (nods, turrets, drones, vehicle optics): a cold
-// parked truck reads dark, a hot engine bay reads bright, and the whole
-// vehicle responds to sun, wind and ambient through the same physics as
-// the per-selection solve.
+// ─── Per-vehicle heat state: NEUTRALISE the engine's thermal model ────────
+// (issue #196).  The engine's TI pipeline is TWO-STAGE: the rvmat StageTI
+// provides the BASE image, and the engine's dynamic temperature model
+// MULTIPLIES it (verified: "the TI stage texture sets the ceiling and the
+// spatial pattern; the temperature model sets the gain" - BIKI thermal
+// imaging research).  AEE now paints the full per-selection radiance into
+// the StageTI via the band material swap (fnc_applySelectionThermal), so
+// the engine's own per-vehicle heat state must be NEUTRAL to that base -
+// any non-zero setVehicleTIPars would double-modulate our colour (crush a
+// cold selection to black, over-brighten a hot one).
 //
-// Engine/wheels/weapon temperatures come from the two-node state map
-// (thermal fnc_applySelectionThermal, keyed "obj|selection").  Selections
-// matching engine/motor drive the engine channel; wheel/tyre drive the
-// wheels channel; the vehicle weapon (turret) drives the weapon channel.
-// A vehicle with no matches (no engine selection in the map) keeps the
-// default 0 - the engine's own ambient baseline.
-private _selTemps = missionNamespace getVariable [QEGVAR(thermal,selTemperature), createHashMap];
-private _engineMax = 0.0;
-private _wheelMax = 0.0;
-private _weaponMax = 0.0;
+// So setVehicleTIPars is forced to [0,0,0] on every vehicle in range while
+// AEE paints.  The engine's GLOBAL model (ambient, sun, second-sun,
+// damage) still applies uniformly - that is the same gain for every
+// object and the scene AGC absorbs it.
+private _vehRange = 150;
 {
     if (isNull _x || !alive _x) then { continue; };
     if !(_x isKindOf "AllVehicles") then { continue; };
-    private _objKey = str _x;
-    private _engineC = -1e10;
-    private _wheelC = -1e10;
-    private _weaponC = -1e10;
-    {
-        _x params ["_sel", "_t"];
-        if !(_t isEqualType 0 && {finite _t}) then { continue; };
-        private _ls = toLower _sel;
-        if (_ls find "engine" >= 0 || {_ls find "motor" >= 0}) then {
-            if (_t > _engineC) then { _engineC = _t; };
-        };
-        if (_ls find "wheel" >= 0 || {_ls find "tyre" >= 0} || {_ls find "tire" >= 0}) then {
-            if (_t > _wheelC) then { _wheelC = _t; };
-        };
-        if (_ls find "weapon" >= 0 || {_ls find "turret" >= 0} || {_ls find "barrel" >= 0}) then {
-            if (_t > _weaponC) then { _weaponC = _t; };
-        };
-    } forEach (_selTemps getOrDefault [_objKey, []]);
-
-    // Engine-scale fraction: (T - ambient) / 50, clamped 0..1.
-    private _fEngine = ((_engineC - _airTemp) / 50) max 0 min 1;
-    private _fWheels = ((_wheelC - _airTemp) / 50) max 0 min 1;
-    private _fWeapon = ((_weaponC - _airTemp) / 50) max 0 min 1;
-    if (_engineC > -1e9) then { _engineMax = _engineMax max _fEngine; };
-    if (_wheelC > -1e9) then { _wheelMax = _wheelMax max _fWheels; };
-    if (_weaponC > -1e9) then { _weaponMax = _weaponMax max _fWeapon; };
-
-    // Apply only when the state changed materially (setVehicleTIPars is
-    // cheap but pointless to spam on an idle vehicle).
     private _lastPars = _x getVariable [QGVAR(tiLastPars), [-1, -1, -1]];
-    if (_lastPars isEqualTo [_fEngine, _fWheels, _fWeapon]) then { continue; };
-    _x setVehicleTIPars [_fEngine, _fWheels, _fWeapon];
-    _x setVariable [QGVAR(tiLastPars), [_fEngine, _fWheels, _fWeapon]];
-} forEach (_player nearEntities [["Car", "Tank", "Motorcycle", "Helicopter", "Plane", "Ship"], 150]);
+    if (_lastPars isEqualTo [0, 0, 0]) then { continue; };
+    _x setVehicleTIPars [0, 0, 0];
+    _x setVariable [QGVAR(tiLastPars), [0, 0, 0]];
+} forEach (_player nearEntities [["Car", "Tank", "Motorcycle", "Helicopter", "Plane", "Ship"], _vehRange]);
 
 // ─── Scene max heat from the physics model ─────────────────────────────────
 // The per-selection substrate (applyBuildingThermal) paints vehicle and
@@ -204,14 +168,6 @@ private _sceneMax = 0.05;
     // Damage/burning state still saturates the signature.
     if (!alive _x) then { _sceneMax = 1; };
 } forEach _vehicles;
-
-// Feed the scene max from the per-selection physics heat (the hottest
-// engine/wheel/weapon channel across vehicles), matching the engine's
-// scale (ambient = 0, ambient + 50 C = 1).  A hot engine bay in the
-// physics state must saturate the AGC guard the same way a damage state
-// does - otherwise the display window compresses a scene the physics
-// already sees as hot.
-_sceneMax = _sceneMax max (_engineMax max _wheelMax max _weaponMax);
 
 // Decay the scene max toward ambient over ~30 s so the gain relaxes when
 // the hot source leaves view (a FLIR does not hold max gain forever).

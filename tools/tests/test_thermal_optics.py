@@ -391,10 +391,41 @@ def nvg_bloom(bloom_base, bloom_scale, moon_light, blowout, rain):
 
 
 # ─── Engine thermal drive mirrors (fnc_applyEngineThermal.sqf) ─────────────
-# These map AEE's physics state into the engine's thermal controls:
-# setVehicleTIPars (per-vehicle heat 0..1) and setTIParameter (display
-# window).  The engine owns the render pass; we supply the input heat and
-# the AGC window, exactly like a real FLIR's gain/level controls.
+# The engine's TI pipeline is TWO-STAGE (issue #196, verified): the rvmat
+# StageTI provides the BASE image and the engine's dynamic temperature
+# model MULTIPLIES it.  AEE now paints the full per-selection radiance
+# into the StageTI via the band-material swap (fnc_applySelectionThermal),
+# so setVehicleTIPars is NEUTRALISED to [0,0,0] - any non-zero engine heat
+# state would double-modulate our colour (crush a cold selection to black,
+# over-brighten a hot one).  setTIParameter (display window) remains the
+# engine-side gain/level control, exactly like a real FLIR's controls.
+
+
+def ti_band_material(brightness):
+    """Mirror of the band-material lookup in fnc_applySelectionThermal.
+
+    The physics radiance maps to brightness b (0..1) through the scene
+    AGC, then to one of 16 pre-baked rvmats named by their grey percent:
+    ti_grey_00.rvmat (black, cold floor) .. ti_grey_100.rvmat (white,
+    hot ceiling).  The lookup must always resolve to a shipped file:
+        band = round(b * 15) clamped 0..15
+        pct  = round((band / 15) * 100) clamped 0..100
+    """
+    band = max(0, min(15, round(brightness * 15)))
+    return max(0, min(100, round((band / 15) * 100)))
+
+
+def engine_scene_max(alive=True, surface_temp_c=17.8, air_temp_c=17.8):
+    """Mirror of the SQF scene-max pass in fnc_applyEngineThermal.
+
+    The AGC blowout guard reads the scene's hottest fraction from the
+    physics thermal state (ambient = 0, +50 C = 1 on the engine scale).
+    A destroyed/burning vehicle saturates it: `if (!alive _x) then {
+    _sceneMax = 1; }`.  A live ambient vehicle contributes ~0."""
+    if not alive:
+        return 1.0
+    frac = (surface_temp_c - air_temp_c) / 50.0
+    return max(0.05, min(1.0, frac))
 
 
 def engine_heat_fraction(
@@ -405,25 +436,15 @@ def engine_heat_fraction(
     damage_body=0.0,
     alive=True,
 ):
-    """Mirror of the engine heat FRACTION pushed to setVehicleTIPars.
+    """Neutralised: the engine heat state is FORCED to zero.
 
-    The physics surface temperature (air + solar + engine heat + exhaust
-    + wind cooling, computed by fnc_calculateObjectTemperature) maps to the
-    engine's 0..1 heat scale: ambient = 0, +50 C = 1.  Clamped to the
-    engine's range.  Environment-driven - sun, wind, engine state all move
-    the value; no static timers.
-
-    Damage-state thermal: destroyed/burning (body or fuel >= 0.95, or not
-    alive) saturates at 1.0; a damaged engine adds +0.5 heat at full
-    damage (coolant loss, friction); fuel damage adds +0.2 fire-risk heat.
+    Kept as a mirror of the neutralisation contract - a non-zero heat
+    state would double-modulate the band-material radiance.  The SQF
+    neutralisation loop skips dead vehicles (they keep their state; the
+    scene-max pass saturates their AGC guard instead), so this returns 0
+    for any live vehicle and leaves dead vehicles to engine_scene_max.
     """
-    if not alive or damage_body >= 0.95 or damage_fuel >= 0.95:
-        return 1.0
-    frac = (surface_temp_c - air_temp_c) / 50.0
-    frac = max(0.0, min(1.0, frac))
-    frac = min(1.0, frac + damage_engine * 0.5)
-    frac = min(1.0, frac + damage_fuel * 0.2)
-    return frac
+    return 0.0
 
 
 def exhaust_heat_fraction(
@@ -1582,40 +1603,36 @@ class TestMTFEffective(unittest.TestCase):
 
 
 class TestEngineThermalDrive(unittest.TestCase):
-    """setVehicleTIPars heat fraction + setTIParameter AGC window."""
+    """Band-material swap + setVehicleTIPars neutralisation + AGC window."""
 
-    def test_ambient_vehicle_zero_heat(self):
-        # Vehicle at air temp (cold parked at night): 0 heat (dark).
+    def test_neutralised_heat_state(self):
+        # The engine heat state is FORCED to zero so the band-material
+        # radiance is not double-modulated.  Any live vehicle -> 0.
         self.assertAlmostEqual(engine_heat_fraction(17, 17), 0.0, places=6)
+        self.assertAlmostEqual(engine_heat_fraction(57, 17), 0.0, places=6)
+        self.assertAlmostEqual(engine_heat_fraction(32, 17), 0.0, places=6)
+        self.assertAlmostEqual(engine_heat_fraction(100, 17), 0.0, places=6)
+        self.assertAlmostEqual(engine_heat_fraction(40, 35), 0.0, places=6)
 
-    def test_running_engine_bright(self):
-        # Running engine: +40 C over ambient -> 0.8 heat fraction.
-        self.assertAlmostEqual(engine_heat_fraction(57, 17), 0.8, places=6)
+    def test_band_material_endpoints(self):
+        # Brightness 0 (cold window floor) -> ti_grey_00 (black).
+        self.assertEqual(ti_band_material(0.0), 0)
+        # Brightness 1 (hot ceiling) -> ti_grey_100 (white).
+        self.assertEqual(ti_band_material(1.0), 100)
 
-    def test_sun_warmed_vehicle(self):
-        # Solar absorption +15 C over ambient (0.7*15) -> 0.3 heat.
-        self.assertAlmostEqual(engine_heat_fraction(32, 17), 0.3, places=6)
+    def test_band_material_quantises_to_16_levels(self):
+        # The 16 shipped rvmats: pct must be in the exact set produced by
+        # the file generator (round(b*100) for b = n/15).
+        shipped = {round(n / 15.0 * 100) for n in range(16)}
+        self.assertEqual(len(shipped), 16)
+        for b in [0.05, 0.1, 0.2, 0.333, 0.5, 0.7, 0.9, 0.95]:
+            self.assertIn(ti_band_material(b), shipped)
 
-    def test_hot_engine_caps_at_one(self):
-        # +50 C or more -> clamped at 1.0.
-        self.assertAlmostEqual(engine_heat_fraction(100, 17), 1.0, places=6)
-
-    def test_engine_heat_bounds(self):
-        for t in [0, 5, 17, 40, 80, 120]:
-            for a in [0, 15, 30, 45]:
-                h = engine_heat_fraction(t, a)
-                self.assertGreaterEqual(h, 0.0)
-                self.assertLessEqual(h, 1.0)
-
-    def test_heat_tracks_ambient(self):
-        # Same surface, hotter ambient -> LESS heat (ambient is the zero).
-        self.assertLess(engine_heat_fraction(40, 35), engine_heat_fraction(40, 15))
-
-    def test_wheel_heat_scales_with_speed(self):
-        self.assertAlmostEqual(vehicle_wheel_heat(0), 0.0, places=6)
-        self.assertAlmostEqual(vehicle_wheel_heat(15), 0.5, places=6)
-        self.assertAlmostEqual(vehicle_wheel_heat(30), 1.0, places=6)
-        self.assertAlmostEqual(vehicle_wheel_heat(60), 1.0, places=6)  # capped
+    def test_band_material_bounds(self):
+        for b in [-1.0, 0.0, 0.5, 1.0, 2.0]:
+            p = ti_band_material(b)
+            self.assertGreaterEqual(p, 0)
+            self.assertLessEqual(p, 100)
 
     def test_agc_window_hot_scene(self):
         # Scene with a hot engine (max heat 0.8): width 0.9/0.8 = 1.125
@@ -1704,42 +1721,37 @@ class TestSecondSun(unittest.TestCase):
 
 
 class TestVehicleDamageThermal(unittest.TestCase):
-    """Damage-state thermal: damaged parts run hotter, destroyed saturates."""
+    """Damage-state thermal (issue #196): neutralised heat state, damage
+    saturates the scene-max AGC guard instead.
 
-    def test_undamaged_cold_vehicle(self):
-        # Parked, engine off, ambient: reads cold.
-        self.assertAlmostEqual(engine_heat_fraction(17.8, 17.8), 0.0, places=6)
+    The old physics->setVehicleTIPars drive (damage scaled the 0..1 heat
+    fraction) is GONE: setVehicleTIPars is forced to [0,0,0] so the band
+    material carries the full radiance unmodulated.  A destroyed/burning
+    vehicle now saturates the AGC scene-max (tiSceneMaxHeat -> 1), which
+    widens the display window guard - the FLIR-correct behaviour."""
 
-    def test_damaged_engine_runs_hotter(self):
-        # Engine at 40% damage adds +0.2 heat even if surface is ambient.
-        h = engine_heat_fraction(17.8, 17.8, damage_engine=0.4)
-        self.assertAlmostEqual(h, 0.2, places=6)
-
-    def test_full_engine_damage_adds_half(self):
-        h = engine_heat_fraction(17.8, 17.8, damage_engine=1.0)
-        self.assertAlmostEqual(h, 0.5, places=6)
-
-    def test_fuel_damage_adds_fire_risk(self):
-        h = engine_heat_fraction(17.8, 17.8, damage_fuel=0.5)
-        self.assertAlmostEqual(h, 0.1, places=6)
-
-    def test_destroyed_saturates(self):
+    def test_heat_state_neutralised_for_all_damage(self):
+        # A damaged vehicle still gets setVehicleTIPars [0,0,0]: the band
+        # material carries the radiance, the engine must not multiply it.
         for kwargs in [
+            dict(damage_engine=0.4),
+            dict(damage_engine=1.0),
+            dict(damage_fuel=0.5),
             dict(damage_body=0.95),
-            dict(damage_fuel=0.95),
             dict(alive=False),
         ]:
-            self.assertAlmostEqual(
-                engine_heat_fraction(17.8, 17.8, **kwargs), 1.0, places=6
-            )
+            h = engine_heat_fraction(17.8, 17.8, **kwargs)
+            self.assertEqual(h, 0.0)
 
-    def test_never_exceeds_one(self):
-        h = engine_heat_fraction(80, 17.8, damage_engine=1.0, damage_fuel=1.0)
-        self.assertLessEqual(h, 1.0)
+    def test_destroyed_saturates_scene_max(self):
+        # The SQF scene-max pass: a dead/burning vehicle sets _sceneMax=1
+        # (mirror of `if (!alive _x) then { _sceneMax = 1; }`), which the
+        # AGC blowout guard uses to widen the window.
+        self.assertEqual(engine_scene_max(alive=False), 1.0)
 
     def test_exhaust_warms_with_run_time(self):
-        # Idling 60 s: exhaustTemp = air + 200*(1-e^-1) = +126 C -> 1.0
-        # (over the +50 C full-scale).  Idling 5 s: +15 C -> 0.3.
+        # Exhaust heat still feeds the WEAPON TI slot in the band material
+        # path via the physics temperature, not setVehicleTIPars.
         self.assertAlmostEqual(exhaust_heat_fraction(60, 17.8), 1.0, places=6)
         h5 = exhaust_heat_fraction(5, 17.8)
         self.assertAlmostEqual(h5, 200 * (1 - math.exp(-5 / 60)) / 50, places=4)
@@ -1833,6 +1845,24 @@ class TestClothingThermal(unittest.TestCase):
         self.assertIn("calculateBandRadiance", text)
         self.assertIn("agcRadMin", text)
         self.assertNotIn("tApparent = (_tNew + 273.15) * (_eps ^ 0.25)", text)
+        # TI-stage material swap (issue #196): setObjectTexture alone is
+        # invisible in thermal mode (the engine renders StageTI, not the
+        # diffuse).  The band-material swap is the verified mechanism -
+        # the diffuse fallback only worked on TI-less models like the UAV.
+        self.assertIn("setObjectMaterial", text)
+        self.assertIn("ti_grey_", text)
+        self.assertIn("QPATHTOF(data\\ti_grey_", text)
+        # The 16 band rvmats must exist with a StageTI carrying the
+        # procedural physics colour - the verified TI render path
+        # (issue #196).  Names are the white-hot grey percent.
+        shipped = {round(n / 15.0 * 100) for n in range(16)}
+        for pct in shipped:
+            f = data_dir / f"ti_grey_{pct:02d}.rvmat"
+            self.assertTrue(f.exists(), f"missing {f.name}")
+            rv = f.read_text(encoding="utf-8")
+            self.assertIn("class StageTI", rv)
+            self.assertIn("color(", rv)
+            self.assertIn(",TI)", rv)  # the TI-channel procedural form
 
 
 def test_ti_texture_polarity(self):
