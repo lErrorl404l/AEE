@@ -59,5 +59,17 @@ if (_material == "") then {
 private _stack = [_pos, _material] call FUNC(calculateGroundNodeStack);
 private _ts = _stack select 0;
 
+// ─── Frost phase-change tier (issue #195) ─────────────────────────────────
+// A wet film on the surface pins at 0C while it releases latent heat;
+// frost deposits and changes the LWIR emissivity.  Returns the
+// frost-adjusted surface temperature and a frost flag the thermal
+// contrast consumer reads.  The pin only engages below 0C with film.
+private _wind = EGVAR(core,currentWind);
+if !(_wind isEqualType []) then { _wind = [0, 0, 0]; };
+private _rh = EGVAR(core,currentHumidity);
+if (isNil "_rh") then { _rh = 50; };
+private _frost = [_pos, _ts, _tAir, vectorMagnitude _wind, _rh / 100, rain] call FUNC(calculateFrostState);
+_ts = _frost select 0;
+
 // Per-position thermal stamp (boot print, tyre track, shade patch).
 (_ts + ([_pos] call FUNC(getGroundStampOffset)))
