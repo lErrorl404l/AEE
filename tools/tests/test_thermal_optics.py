@@ -1805,12 +1805,28 @@ class TestClothingThermal(unittest.TestCase):
         self.assertLess(clothing_ti_scale(0.5, 0), clothing_ti_scale(0.5, 30))
 
     def test_rvmats_exist(self):
-        # The two override materials must exist in the addon data folder.
+        # Issue #124: the rvmat TI swap is scrapped.  The per-selection
+        # thermal substrate paints procedural colours via setObjectTexture,
+        # so the ti_cloth_cold/hot.rvmat override materials must NOT exist
+        # (their deletion is the point - no third-party rvmat can break).
         import os
 
         data_dir = _REPO_ROOT / "addons" / "optics" / "data"
-        self.assertTrue((data_dir / "ti_cloth_cold.rvmat").exists())
-        self.assertTrue((data_dir / "ti_cloth_hot.rvmat").exists())
+        self.assertFalse((data_dir / "ti_cloth_cold.rvmat").exists())
+        self.assertFalse((data_dir / "ti_cloth_hot.rvmat").exists())
+        # The substrate that replaced them must exist and expose the
+        # per-selection apply path.
+        fn = (
+            _REPO_ROOT
+            / "addons"
+            / "thermal"
+            / "functions"
+            / "fnc_applySelectionThermal.sqf"
+        )
+        text = fn.read_text(encoding="utf-8")
+        self.assertIn("setObjectTexture", text)
+        self.assertIn("solveSelectionTemperature", text)
+        self.assertIn("getSelectionMaterials", text)
 
 
 def test_ti_texture_polarity(self):
@@ -2791,8 +2807,6 @@ class TestSQFSync(unittest.TestCase):
             [
                 'setTIParameter ["OutputRangeStart", _outStart]',
                 'setTIParameter ["OutputRangeWidth", _outWidth]',
-                "setVehicleTIPars [_engineHeat, _wheelHeat, _exhaustHeat]",
-                "_speed / 30",
                 "(_surfaceTemp - _airTemp) / 50",
                 "tiSceneMaxHeat",
                 "private _outStart = 0.0",
@@ -2800,21 +2814,21 @@ class TestSQFSync(unittest.TestCase):
                 "_angVel < 0.44",
                 "tiAppliedWidth",
             ],
-            "engine thermal drive (TI pars + stable blowout-guard AGC)",
+            "engine AGC display window (physics-driven scene max heat)",
         )
 
     def test_engine_thermal_damage_constants(self):
         self._assert_in_sqf(
             "fnc_applyEngineThermal.sqf",
             [
-                "getAllHitPointsDamage _x",
-                "_damageEngine * 0.5",
-                "_damageFuel * 0.2",
-                "_damageBody >= 0.95",
-                "200 * (1 - exp (-_engineRunTime / 60))",
-                "_engineRunTime / 60",
+                "thermalState",
+                "(_surfaceTemp - _airTemp) / 50",
+                "if (!alive _x) then { _sceneMax = 1",
+                "0.2 * (diag_deltaTime / 30)",
+                "nearEntities",
+                "str _x",
             ],
-            "damage-state + exhaust thermal",
+            "scene max heat from the physics thermal state (dead saturates, decays 30 s)",
         )
 
     def test_second_sun_constants(self):
@@ -2980,36 +2994,34 @@ class TestSQFSync(unittest.TestCase):
         self._assert_in_sqf(
             "fnc_applyClothingThermal.sqf",
             [
-                "setObjectMaterial [_x, _material]",
-                "ti_cloth_cold.rvmat",
-                "ti_cloth_hot.rvmat",
+                '["", "", "EXIT"] call EFUNC(thermal,applySelectionThermal)',
+                "applySelectionThermal",
                 "allUnits",
-                "clothingInsulation",
-                "abs (_tiScale - _lastScale) < 0.05",
-                "_x < count _oldMats",
+                "hiddenSelections",
+                "getObjectTextures _obj",
+                "fGround = 0.2",
+                "fGround = 0.7",
+                "QGVAR(tiSelections_",
             ],
-            "per-item clothing TI override",
+            "per-item clothing solved by the per-selection thermal substrate",
         )
 
     def test_building_thermal_constants(self):
         self._assert_in_sqf(
             "fnc_applyBuildingThermal.sqf",
             [
-                "setObjectMaterial [_selections select _i, _material]",
-                "ti_cloth_cold.rvmat",
+                '["", "", "EXIT"] call EFUNC(thermal,applySelectionThermal)',
+                "applySelectionThermal",
                 'allMissionObjects ""',
                 "vehicles - [player]",
                 'nearObjects ["House", _viewDist]',
                 'nearObjects ["Building", _viewDist]',
-                "getObjectMaterials _obj",
-                "tiBldgSaved",
                 "abs (_airTemp - _lastTemp) >= 2",
-                "vehicles - [player]",
-                "currentSolarRadiation",
-                "select (_solarRadiation > 0.3)",
-                "_x < count _oldMats",
+                "_qInternal = 770",
+                "_qInternal = 280",
+                "QGVAR(tiBldgSelections_",
             ],
-            "per-building TI material swap",
+            "per-building thermal solved by the per-selection substrate",
         )
 
     def test_mapwide_thermal_caps(self):
