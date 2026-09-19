@@ -3083,7 +3083,7 @@ class TestSQFSync(unittest.TestCase):
                 "diag_frameNo",
                 "eyePos _unit",
                 "eyeDirection _unit",
-                "positionCameraToWorld [0, 0, 0]",
+                "AGLToASL (positionCameraToWorld [0, 0, 0])",
                 "positionCameraToWorld [0, 0, 100]",
                 "weaponDirection (currentWeapon _veh)",
                 "turretUnit [0]) isEqualTo _unit",
