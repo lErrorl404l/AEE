@@ -96,12 +96,11 @@ private _zRad = _zA * _T / 3600 * pi / 180;
 private _thetaRad = _thetaA * _T / 3600 * pi / 180;
 
 // ─── Player latitude (radians) ────────────────────────────────────────────
-// World latitude comes from CfgWorlds (decimal degrees, north positive),
-// not the position Y axis: map Y is metres, not degrees.  Same source as
-// fnc_getBiomeAtPosition.
-private _world = worldName;
-private _cfg = configFile >> "CfgWorlds" >> _world;
-private _lat = abs getNumber (_cfg >> "latitude");
+// World latitude magnitude from the shared geolocation source (issue
+// #179), not a direct CfgWorlds read or the position Y axis: map Y is
+// metres, not degrees.  The source normalises the BIS inverted sign and
+// returns the magnitude for consumers like this one.
+private _lat = ([] call EFUNC(core,getWorldLocation)) select 1;
 if (_lat == 0) then { _lat = 40; }; // fallback: temperate default
 private _latRad = _lat * pi / 180;
 

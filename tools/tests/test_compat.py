@@ -399,21 +399,38 @@ class TestThresholdGatePattern(unittest.TestCase):
 
 
 class TestWorldLatitudePattern(unittest.TestCase):
-    """Issue #154 pattern 3: one latitude source, hemisphere-preserved.
+    """Issue #179: one geolocation source, true geographic sign.
 
     The mod had 3-4 inconsistent latitude reads (solar used abs, space
-    weather raw, Coriolis a map-Y guess).  These drift-locks pin the
-    shared getWorldLatitude source and its consumers.
+    weather raw, Coriolis a map-Y guess) and no longitude or mapZone
+    source at all.  These drift-locks pin the shared getWorldLocation
+    source and its consumers.  getWorldLatitude is REMOVED (issue #179):
+    every consumer calls getWorldLocation and selects the element it
+    needs, and the BIS inverted latitude sign is corrected at the source
+    (positive = north).
     """
 
     def test_shared_source_exists(self):
         from pathlib import Path
 
-        text = Path("addons/core/functions/fnc_getWorldLatitude.sqf").read_text(
+        text = Path("addons/core/functions/fnc_getWorldLocation.sqf").read_text(
             encoding="utf-8"
         )
         self.assertIn("CfgWorlds", text)
-        self.assertIn("[_signed, abs _signed]", text)
+        self.assertIn("[_signed, abs _signed, _lon, _zone]", text)
+        # The BIS inverted convention must be corrected here (negate).
+        self.assertIn("-getNumber", text)
+
+    def test_old_latitude_function_removed(self):
+        from pathlib import Path
+
+        # #179 deletes getWorldLatitude - there is ONE source.
+        self.assertFalse(
+            Path("addons/core/functions/fnc_getWorldLatitude.sqf").exists(),
+            "getWorldLatitude must be removed - use getWorldLocation",
+        )
+        prep = Path("addons/core/XEH_PREP.hpp").read_text(encoding="utf-8")
+        self.assertNotIn("getWorldLatitude", prep)
 
     def test_coriolis_uses_shared_source(self):
         from pathlib import Path
@@ -421,7 +438,8 @@ class TestWorldLatitudePattern(unittest.TestCase):
         text = Path(
             "addons/ballistics/functions/fnc_calculateCoriolisDeflection.sqf"
         ).read_text(encoding="utf-8")
-        self.assertIn("getWorldLatitude", text)
+        self.assertIn("getWorldLocation", text)
+        self.assertIn("select 0", text)  # signed = true geographic sign
         # The map-Y equirectangular guess must be gone.
         self.assertNotIn("/ 100000 * 90", text)
 
@@ -431,18 +449,44 @@ class TestWorldLatitudePattern(unittest.TestCase):
         solar = Path("addons/core/functions/fnc_calculateSolarRadiation.sqf").read_text(
             encoding="utf-8"
         )
-        self.assertIn("getWorldLatitude", solar)
+        self.assertIn("getWorldLocation", solar)
         self.assertIn("select 1", solar)  # magnitude
 
         biome = Path("addons/environmental/functions/fnc_getBiome.sqf").read_text(
             encoding="utf-8"
         )
-        self.assertIn("getWorldLatitude", biome)
+        self.assertIn("getWorldLocation", biome)
 
         space = Path(
             "addons/environmental/functions/fnc_calculateSpaceWeather.sqf"
         ).read_text(encoding="utf-8")
-        self.assertIn("getWorldLatitude", space)
+        self.assertIn("getWorldLocation", space)
+
+        compass = Path(
+            "addons/maritime/functions/fnc_calculateCompassDeviation.sqf"
+        ).read_text(encoding="utf-8")
+        self.assertIn("getWorldLocation", compass)
+
+        star = Path("addons/optics/functions/fnc_getStarCatalog.sqf").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("getWorldLocation", star)
+        # No direct CfgWorlds latitude read may remain outside the source.
+        self.assertNotIn('>> "latitude"', star)
+
+    def test_only_one_direct_latitude_read(self):
+        # #179: the ONLY direct CfgWorlds latitude read is the shared
+        # source itself.  Count across all addons.
+        from pathlib import Path
+
+        count = 0
+        for fn in Path("addons").rglob("*.sqf"):
+            text = fn.read_text(encoding="utf-8", errors="replace")
+            if '>> "latitude"' in text:
+                count += 1
+        self.assertEqual(
+            count, 1, "exactly one direct CfgWorlds latitude read (getWorldLocation)"
+        )
 
 
 if __name__ == "__main__":

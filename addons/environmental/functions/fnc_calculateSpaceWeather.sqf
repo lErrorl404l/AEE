@@ -108,7 +108,7 @@ private _solarActivity = (_solarCycle + _flareValue) min 1;
 private _overcast = overcast;
 private _daytime  = dayTime;
 
-private _worldLat = ([] call EFUNC(core,getWorldLatitude)) select 1;
+private _worldLat = ([] call EFUNC(core,getWorldLocation)) select 1;
 private _latDeg = _worldLat;
 if (_latDeg == 0) then { _latDeg = 45; };  // fallback: temperate, aurora possible at storm level
 

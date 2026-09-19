@@ -28,14 +28,17 @@ params [
     ["_bulletTime", 1.0,    [0]]
 ];
 
-// ─── World latitude (shared source, issue #154 pattern 3) ────────────────
-// Single source of truth from CfgWorlds.  The signed value carries the
-// hemisphere (deflection direction flips across the equator); the old
-// map-Y equirectangular guess ignored CfgWorlds latitude entirely and
-// could differ from the solar model by tens of degrees on custom maps.
+// ─── World latitude (shared source, issue #179) ───────────────────────────
+// Single source of truth from CfgWorlds.  fnc_getWorldLocation returns
+// the TRUE geographic sign (positive = north, negative = south) - the
+// BIS inverted convention is corrected at the source, so sin(lat) here
+// deflects the physically correct way: right in the north, left in the
+// south.  The old code fed the raw CfgWorlds value (positive = south)
+// straight into sin(), so every northern-hemisphere map (Stratis =
+// -35.097 in CfgWorlds, i.e. 35 N) deflected as if southern.
 if (!(_posASL isEqualType [])) then { _posASL = [0, 0, 0]; };
 if ((count _posASL) < 2) then { _posASL = [0, 0, 0]; };
-private _lat = ([] call EFUNC(core,getWorldLatitude)) select 0;  // signed
+private _lat = ([] call EFUNC(core,getWorldLocation)) select 0;  // true geographic sign (positive north)
 
 // ─── Coriolis deflection ──────────────────────────────────────────────────
 // δ = 0.0000729 × sin(lat) × range × bulletTime
