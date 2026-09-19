@@ -255,5 +255,55 @@ class TestWaterThermal(unittest.TestCase):
         self.assertNotIn("currentWaterSpeed", text)
 
 
+class TestWetGroundThermal(unittest.TestCase):
+    """Issue #194 - wet-ground physics: moisture-dependent conductivity
+    (Johansen 1975), evaporative draw (FAO-56 Penman-Monteith, Manabe
+    bucket), and the [material, moisture] cache axis."""
+
+    def test_wet_ground_solver_wired(self):
+        from pathlib import Path
+
+        text = Path(
+            "addons/thermal/functions/fnc_calculateGroundTemperature.sqf"
+        ).read_text(encoding="utf-8")
+        # Reads the existing soil-moisture state (never fabricates).
+        self.assertIn("QEGVAR(core,soilMoisture)", text)
+        # Johansen Kersten interpolation between dry and saturated k.
+        self.assertIn("_kSat", text)
+        self.assertIn("_moisture * (_kSat - _k)", text)
+        # FAO-56 evaporative draw with bare-soil surface resistance.
+        self.assertIn("_evapW", text)
+        self.assertIn("_rs", text)
+        # Manabe bucket: WK = 0.75 * FC.
+        self.assertIn("0.75 * 0.25", text)
+
+    def test_wet_cache_keyed_by_moisture(self):
+        from pathlib import Path
+
+        text = Path(
+            "addons/thermal/functions/fnc_calculateGroundTemperature.sqf"
+        ).read_text(encoding="utf-8")
+        # The cache key is the [material, moisture] PAIR - a wet road
+        # and a dry road are different states.
+        self.assertIn("_cacheKey = [_material, _moisture]", text)
+        self.assertIn("getOrDefault [_cacheKey, nil]", text)
+        self.assertIn("_cached set [_cacheKey, _ts]", text)
+
+    def test_wet_ground_mirror_exists(self):
+        from pathlib import Path
+
+        text = Path("tools/tests/test_wet_ground.py").read_text(encoding="utf-8")
+        # Sourced constants present.
+        self.assertIn("K_DRY", text)
+        self.assertIn("K_SAT", text)
+        self.assertIn("RS_WET", text)
+        self.assertIn("RS_DRY", text)
+        self.assertIn("FC = 0.25", text)
+        # The wet-bulb anchor is the primary Stull 2011 formula.
+        self.assertIn("0.151977", text)
+        # Johansen Kersten interpolation.
+        self.assertIn("K_DRY + m * (K_SAT - K_DRY)", text)
+
+
 if __name__ == "__main__":
     unittest.main()
