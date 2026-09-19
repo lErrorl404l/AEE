@@ -9,6 +9,10 @@ keyword.
 
 ## Context
 
+This ADR builds on the engine-anchor convention of [ADR-001](ADR-001-engine-anchors.md):
+the biome is derived from engine-exposed facts, and the terrain
+refinement is applied through the confidence gate defined here.
+
 Issue #123 exposed three hardcoded-assumption defects in the released
 code. The most brittle was the biome system: a hardcoded table of 17 map
 names mapped each known world to a biome, and a description-keyword
