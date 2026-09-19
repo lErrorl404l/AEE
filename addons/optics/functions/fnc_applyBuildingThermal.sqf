@@ -133,7 +133,7 @@ if !(_solarRadiation isEqualType 0) then { _solarRadiation = 0; };
                 _fGround = 0.2;         // roof sees mostly sky
             };
         };
-        [_obj, _selIdx, "", _qInternal, _fGround] call EFUNC(thermal,applySelectionThermal);
+        [_obj, (_selNames select _selIdx), "", _qInternal, _fGround] call EFUNC(thermal,applySelectionThermal);
         _applied = _applied + 1;
     } forEach _selections;
 } forEach _objects;
