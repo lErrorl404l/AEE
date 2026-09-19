@@ -15,9 +15,9 @@ energy balance every AEE surface uses:
   alpha * G = h * (Ts - Ta) + eps * sigma * (Ts^4 - Ta^4)
 
 solved to convergence (Newton, radiation included - the term that caps
-high-temperature elevation).  This is the same solve as
-fnc_solveSelectionTemperature; the object solver calls it per surface
-class instead of carrying a unit-mixing constant.
+high-temperature elevation).  This is the solar branch of the ground
+and object energy balance; the per-selection solve lives in the
+two-node solver (solveTwoNodeSelection).
 
 Input:
   0: solar absorptance (NUMBER 0..1)

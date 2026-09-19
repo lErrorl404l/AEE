@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="NVG">
+        <Key ID="STR_AEE_NightVision_nvgBatteryEnabled_Description">
+            <Original>Enable NVG battery drain; the drain rate scales with the physiology battery temperature derating (hardcore)</Original>
+            <English>Enable NVG battery drain; the drain rate scales with the physiology battery temperature derating (hardcore)</English>
+        </Key>
+        <Key ID="STR_AEE_NightVision_nvgBatteryEnabled_Name">
+            <Original>NVG Battery Drain</Original>
+            <English>NVG Battery Drain</English>
+        </Key>
+    </Package>
+</Project>

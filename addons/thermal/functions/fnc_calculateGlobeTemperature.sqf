@@ -39,17 +39,17 @@ Input:  none (reads EGVAR(core,...) state: temperature, wind, solar,
 Output: globe temperature Tg in degrees C (number)
 */
 
-if !(EGVAR(core,enabled)) exitWith { EGVAR(core,currentTemperature) };
+if !(missionNamespace getVariable [QEGVAR(core,enabled), true]) exitWith { missionNamespace getVariable [QEGVAR(core,currentTemperature), 15] };
 
-private _tAir = EGVAR(core,currentTemperature);
-if (isNil "_tAir") exitWith { _tAir };
+private _tAir = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
+if !(_tAir isEqualType 0) then { _tAir = 15; };
 
 private _mrt = [] call FUNC(calculateMRT);
-private _wind = EGVAR(core,currentWind);
+private _wind = missionNamespace getVariable [QEGVAR(core,currentWind), [0, 0, 0]];
 if !(_wind isEqualType []) then { _wind = [0, 0, 0]; };
 private _windSpd = vectorMagnitude _wind;
-private _solar = EGVAR(core,currentSolarFlux);
-if (isNil "_solar") then { _solar = 0; };
+private _solar = missionNamespace getVariable [QEGVAR(core,currentSolarFlux), 0];
+if !(_solar isEqualType 0) then { _solar = 0; };
 
 private _h = 5.7 + (3.8 * _windSpd);            // McAdams W/m2K
 private _sigma = 5.670374419e-8;             // CODATA 2022

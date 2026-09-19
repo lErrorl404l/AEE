@@ -31,8 +31,8 @@ Output: ground surface temperature in degrees C (number)
 
 params [["_pos", [], [[]]], ["_material", "", [""]]];
 
-private _tAir = EGVAR(core,currentTemperature);
-if (isNil "_tAir") exitWith { _tAir };
+private _tAir = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
+if !(_tAir isEqualType 0) then { _tAir = 15; };
 
 if (_pos isEqualTo []) then {
     private _unit = call CBA_fnc_currentUnit;
@@ -64,10 +64,10 @@ private _ts = _stack select 0;
 // frost deposits and changes the LWIR emissivity.  Returns the
 // frost-adjusted surface temperature and a frost flag the thermal
 // contrast consumer reads.  The pin only engages below 0C with film.
-private _wind = EGVAR(core,currentWind);
+private _wind = missionNamespace getVariable [QEGVAR(core,currentWind), [0, 0, 0]];
 if !(_wind isEqualType []) then { _wind = [0, 0, 0]; };
-private _rh = EGVAR(core,currentHumidity);
-if (isNil "_rh") then { _rh = 50; };
+private _rh = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
+if !(_rh isEqualType 0) then { _rh = 50; };
 private _frost = [_pos, _ts, _tAir, vectorMagnitude _wind, _rh / 100, rain] call FUNC(calculateFrostState);
 _ts = _frost select 0;
 

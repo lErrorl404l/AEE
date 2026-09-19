@@ -91,5 +91,5 @@ if (_selName == "") exitWith { 0 };
 // the weapon's real mass (getMass) for the correct thermal time constant.
 private _qInternal = _heat * 7000;   // W/m2: heat=1 -> ~300 C barrel (sustained fire)
 
-[_player, _selName, "", _qInternal, 0.3] call EFUNC(thermal,applySelectionThermal);
+[_player, _selName, "", _qInternal, 0.3] call FUNC(applySelectionThermal);
 0

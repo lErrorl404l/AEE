@@ -26,7 +26,7 @@ if (!hasInterface) exitWith { 0 };
 
 // ─── EXIT: restore every saved texture ───────────────────────────────────
 if (_mode == "EXIT") then {
-    ["", "", "EXIT"] call EFUNC(thermal,applySelectionThermal);   // restore all saved
+    ["", "", "EXIT"] call FUNC(applySelectionThermal);   // restore all saved
     0
 };
 
@@ -108,6 +108,30 @@ if !(_solarRadiation isEqualType 0) then { _solarRadiation = 0; };
     // persists the per-selection temperature for the inertia term.
     private _qInternal = 0;
     private _fGround = 0.5;
+    // ─── Engine residual heat (issue #196) ──────────────────────────────
+    // A real vehicle's engine block keeps tens of kelvin for about an
+    // hour after shutdown; the hood/grille warm slowly as the block
+    // cools (transient thermal signature literature).  The per-selection
+    // solve must NOT cut engine heat the instant the engine stops - the
+    // classic "everything cold the second the ignition is off" look.
+    // Engine run time is accumulated while running and decays with
+    // tau = 300 s after shutdown (same model as calculateObjectTemperature):
+    // the internal heat gain scales with the residual, so a truck parked
+    // for an hour reads ambient while one stopped for a minute still
+    // glows.  Dead vehicles keep their residual (no further running).
+    private _now = diag_tickTime;
+    private _lastRT = _obj getVariable [QGVAR(engineRunTimeLast), _now];
+    private _dtRT = ((_now - _lastRT) max 0) min 30;
+    private _engRT = _obj getVariable [QGVAR(engineRunTime), 0];
+    if !(_engRT isEqualType 0) then { _engRT = 0; };
+    if (isEngineOn _obj) then {
+        _engRT = _engRT + _dtRT;
+    } else {
+        _engRT = _engRT * exp (-_dtRT / 300);
+    };
+    _obj setVariable [QGVAR(engineRunTimeLast), _now];
+    _obj setVariable [QGVAR(engineRunTime), _engRT];
+    private _heatFrac = 1 - exp (-_engRT / 300);
     {
         private _selIdx = _x;
         if (_selIdx < count _selNames) then {
@@ -117,8 +141,11 @@ if !(_solarRadiation isEqualType 0) then { _solarRadiation = 0; };
             if (_sn find "engine" >= 0 || _sn find "exhaust" >= 0
                 || _sn find "radiator" >= 0 || _sn find "motor" >= 0
                 || _sn find "turret" >= 0 || _sn find "intake" >= 0) then {
-                _qInternal = 770;       // engine area: ~+40 C at 2 m/s wind
-                                        // (q = h*dT + eps*sig*(T^4-MRT^4), verified)
+                _qInternal = 770 * _heatFrac;   // engine area: ~+40 C at
+                                                // 2 m/s wind, scaled by
+                                                // residual engine heat
+                                                // (q = h*dT + eps*sig*
+                                                // (T^4-MRT^4), verified)
             };
             if (_sn find "wheel" >= 0 || _sn find "tyre" >= 0
                 || _sn find "track" >= 0) then {
@@ -133,13 +160,13 @@ if !(_solarRadiation isEqualType 0) then { _solarRadiation = 0; };
                 _fGround = 0.2;         // roof sees mostly sky
             };
         };
-        [_obj, _selIdx, "", _qInternal, _fGround] call EFUNC(thermal,applySelectionThermal);
+        [_obj, (_selNames select _selIdx), "", _qInternal, _fGround] call FUNC(applySelectionThermal);
         _applied = _applied + 1;
     } forEach _selections;
 } forEach _objects;
 
 // Diagnostic: confirms the physics baseline applies in-game.
-if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
+if (missionNamespace getVariable [QEGVAR(nightvision,nvgDebug), false]) then {
     diag_log text format ["[AEE] Building thermal: %1 found, %2 selections painted (T=%3)",
         count _objects, _applied, round _airTemp];
 };

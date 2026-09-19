@@ -62,10 +62,10 @@ Output: MRT in degrees C (number)
 params [["_pos", [], [[]]], ["_fGround", 0.5, [0]]];
 _fGround = _fGround max 0.05 min 0.9;
 
-if !(EGVAR(core,enabled)) exitWith { missionNamespace getVariable [QEGVAR(core,currentTemperature), 15] };
+if !(missionNamespace getVariable [QEGVAR(core,enabled), true]) exitWith { missionNamespace getVariable [QEGVAR(core,currentTemperature), 15] };
 
 private _tAir = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
-if (isNil "_tAir") exitWith { _tAir };
+if !(_tAir isEqualType 0) then { _tAir = 15; };
 
 private _tGround = [_pos] call FUNC(calculateGroundTemperature);
 
