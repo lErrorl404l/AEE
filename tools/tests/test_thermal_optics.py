@@ -2753,18 +2753,61 @@ class TestSQFSync(unittest.TestCase):
         # (NETD grain) second, display gain/contrast last.  Lower
         # priority = applied first (BIS wiki base order).  The old order
         # put grain BELOW blur, so DynamicBlur smeared the sensor noise.
+        # Issue #204: thermal FilmGrain was at 5100, colliding with the
+        # NVG ColorCorrections at 5100 ("Cannot create custom post
+        # effect(type: 7), PE with same priority(5100) already exist" in
+        # the RPT) - whichever module created second failed and its
+        # adjust loop spammed "Invalid post effect handle".  Moved to
+        # 6500, above the NVG band (1200-6000), so every effect type has
+        # its own priority band (the A3TI/MKK proven ladder pattern).
         self._assert_in_sqf(
             "fnc_applyThermalVision.sqf",
             [
                 '["RadialBlur",      1300, QGVAR(ppHandle_Thermal_Vignette)]',
                 '["DynamicBlur",     4200, QGVAR(ppHandle_Thermal_Blur)]',
-                '["FilmGrain",       5100, QGVAR(ppHandle_Thermal_Grain)]',
+                '["FilmGrain",       6500, QGVAR(ppHandle_Thermal_Grain)]',
                 '["ColorCorrections", 5200, QGVAR(ppHandle_Thermal_CC)]',
                 "ppEffectForceInNVG true",
             ],
             "FLIR layering: blur -> grain -> CC, vignette below, grain ABOVE blur",
             addon="thermal",
         )
+
+    def test_thermal_priority_no_collision_with_nvg(self):
+        # Issue #204: the NVG ColorCorrections (5100) and the thermal
+        # FilmGrain (5100) collided - "PE with same priority(5100)
+        # already exist" - breaking whichever module created second and
+        # spamming "Invalid post effect handle".  Every ppEffect priority
+        # across optics (3000/4000/5000), NVG (1200/4100/5100/6000/868)
+        # and thermal (1300/4200/6500/5200) must be unique.
+        import re
+        from pathlib import Path
+
+        root = Path(__file__).resolve().parents[2]
+        files = [
+            "addons/optics/functions/vision/fnc_managePostProcess.sqf",
+            "addons/nightvision/functions/fnc_applyNVGTubeModel.sqf",
+            "addons/thermal/functions/display/fnc_applyThermalVision.sqf",
+        ]
+        seen = {}
+        for rel in files:
+            text = (root / rel).read_text(encoding="utf-8")
+            for m in re.finditer(r'\["(\w+)",\s*(\d+)', text):
+                eff, prio = m.group(1), int(m.group(2))
+                if prio in seen:
+                    self.fail(
+                        f"priority collision: {seen[prio]} and "
+                        f"{rel}:{eff} both at {prio}"
+                    )
+                seen[prio] = f"{rel}:{eff}"
+        # DoF is created separately (priority 868) - include it.
+        nvg = (root / files[1]).read_text(encoding="utf-8")
+        dof_m = re.search(r"private _dofPrio = (\d+)", nvg)
+        if dof_m is None:
+            self.fail("DoF priority not found in NVG tube model")
+        dof = int(dof_m.group(1))
+        if dof in seen:
+            self.fail(f"DoF {dof} collides with {seen[dof]}")
 
     def test_thermal_crossover_floor(self):
         self._assert_in_sqf(
