@@ -52,6 +52,15 @@ if (count _cache >= 2 && {_cache select 0 == _frame}) exitWith {
 
 private _eye = eyePos _unit;
 private _eyeDir = eyeDirection _unit;
+// The eye POSITION must also track the camera for freelook-sensitive
+// effects (focus fan, blowout cone, rain droplets).  eyePos follows the
+// head model, which does NOT move with freelook.  The camera origin
+// (positionCameraToWorld [0,0,0]) is where the actual view comes from
+// and moves with freelook / vehicle camera.  Use it when it is valid.
+private _camOrigin = positionCameraToWorld [0, 0, 0];
+if (_camOrigin isNotEqualTo [0, 0, 0]) then {
+    _eye = _camOrigin;
+};
 
 // Eye velocity: displacement from the PREVIOUS frame's eye position over
 // the frame time, world-space m/s.  The first-ever call has no baseline
@@ -105,9 +114,19 @@ if (_inTurret) then {
     private _weaponDir = _veh weaponDirection (currentWeapon _veh);
     if (_weaponDir isNotEqualTo [0, 0, 0]) then { _fwd = vectorNormalized _weaponDir; };
 } else {
-    // screenToWorldDirection [0.5, 0.5] = the exact centre of the view.
-    private _screenDir = screenToWorldDirection [0.5, 0.5];
-    if (_screenDir isNotEqualTo [0, 0, 0]) then { _fwd = _screenDir; };
+    // positionCameraToWorld is the canonical freelook-tracked camera:
+    // [0,0,0] = the actual camera origin (moves with freelook head-pose
+    // and vehicle camera), [0,0,100] = a point 100 m along the camera's
+    // view.  The vector between them IS the live view direction.
+    // screenToWorldDirection [0.5, 0.5] returns the direction to the
+    // screen centre but from a projection that does NOT update during
+    // freelook in every render state (Killzone_Kid BIKI note: "if you
+    // need centre of screen direction, use positionCameraToWorld").
+    private _camPos = positionCameraToWorld [0, 0, 0];
+    private _camAim = positionCameraToWorld [0, 0, 100];
+    if (_camPos isNotEqualTo [0, 0, 0] && {_camAim isNotEqualTo [0, 0, 0]}) then {
+        _fwd = vectorNormalized (_camAim vectorDiff _camPos);
+    };
 };
 
 // Cheap safe-guard: if the vectors are degenerate (broken camera state),

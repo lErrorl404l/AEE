@@ -83,11 +83,18 @@ private _effective = [_contrast, 0.05] select _crossover;
 // ─── Pan smear (detector readout artifact) ────────────────────────────────
 // Real uncooled microbolometers have a row-by-row readout cycle.  Fast
 // panning smears hot sources horizontally across detector rows.  We
-// approximate this with turn-rate from the player's look direction delta.
-private _prevDir = missionNamespace getVariable [QGVAR(thermalPrevDir), getDir _player];
-private _dir = getDir _player;
-private _dirDelta = abs (_dir - _prevDir);
-if (_dirDelta > 180) then { _dirDelta = 360 - _dirDelta; };
+// approximate this with turn-rate from the CAMERA look direction delta.
+// The body heading (getDir) does NOT track freelook or turret traverse —
+// the camera direction does.  Consume the shared eye state (the same
+// screenToWorldDirection / weaponDirection source as the NVG focus) so
+// freelook and vehicle turrets smear correctly.
+private _eyeState = [_player] call EFUNC(core,getEyeState);
+private _lookDir = _eyeState select 1;
+private _prevDir = missionNamespace getVariable [QGVAR(thermalPrevDir), _lookDir];
+private _dir = _lookDir;
+private _dirDelta = _prevDir vectorDotProduct _dir;
+_dirDelta = ((_dirDelta max -1) min 1);
+_dirDelta = acos _dirDelta;   // angular change in degrees
 missionNamespace setVariable [QGVAR(thermalPrevDir), _dir];
 private _panSmear = if (diag_deltaTime > 0) then {
     linearConversion [0, 90, _dirDelta / diag_deltaTime, 0.0, 0.04, true]
