@@ -462,3 +462,51 @@ validator reports them as ALLOWED and they do not fail the build.  Remove
 a line when its producer lands.  Template writes like
 `format [QGVAR(ppHandle_%1), _name]` are resolved as dynamic prefixes, so
 dynamically-created variables are not false-flagged.
+
+## Cross-module reference validator
+
+`validate_cross_module.py` catches the scope-rename bug class that
+`validate_cba_settings.py` cannot see.  After the `nvg` to `nightvision`
+rename, references to resources and state owned by OTHER modules kept the
+local `QGVAR`/`GVAR` form.  Such a reference resolves to the wrong
+namespace silently - always `-1`, `nil`, or not-found - and the engine
+produces no error.  It just does nothing.  Three real defects had this
+root cause: `nvgTitle` (`cutRsc`), `titleDisplay` (uiNamespace onLoad),
+and `ppHandle_ChromAberration` (ppEffect handles).
+
+The invariant: a `QGVAR`/`GVAR` own-scope reference in module X must name
+something DECLARED in module X.  If the same name is declared only in a
+different module Y, module X must use the `QEGVAR`/`EGVAR` cross-module
+form.
+
+Recognised declaration forms, per module:
+
+| Form | Example |
+|---|---|
+| ppEffectCreate store arg | `["ChromAberration", 3000, QGVAR(ppHandle_ChromAberration)]` |
+| literal setVariable | `missionNamespace setVariable [QGVAR(x), _v]` |
+| cross-module write | `missionNamespace setVariable [QEGVAR(optics,x), _v]` (declares `x` in optics) |
+| config resource | `class GVAR(nvgTitle)` in `config.cpp` or any `.hpp` |
+| uiNamespace onLoad | `with uiNamespace do {GVAR(titleDisplay) = ...}` in `RscTitles.hpp` |
+| initSettings key | `QGVAR(name)` in `initSettings.inc.sqf` |
+
+Run modes:
+
+```bash
+# Exit 0/1 - fail the build when a cross-module scope bug exists
+python3 tools/validation/validate_cross_module.py
+
+# Audit mode - list EVERY read reference found, classified:
+#   valid-cross-module   QEGVAR read (explicit cross-module)
+#   valid-shared         own-scope read of a name others also write
+#   valid-self           purely local (own ppEffect handles etc.)
+#   FLAGGED              own-scope read of a name owned elsewhere
+python3 tools/validation/validate_cross_module.py --report
+```
+
+`--report` exists so the validator's own coverage is visible: a reference
+that the scanner cannot see (for example a resource referenced through a
+macro parameter) is absent from the list, and that absence is the signal
+to extend the scanner.  Both modes exit 1 when a flag exists.  The script
+uses only the Python standard library and is wired into the pre-commit
+hook and CI.
