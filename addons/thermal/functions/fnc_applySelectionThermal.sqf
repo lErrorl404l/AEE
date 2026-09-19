@@ -181,8 +181,16 @@ if (_mode == "EXIT") then {
         // stored value too: a NaN persisted here would poison the state
         // forever (every later tick reads it back as _tCurrent).  The
         // `finite` command is the only reliable SQF NaN check - NaN
-        // comparisons are all false.
-        if !(finite _tNew) then { _tNew = _tAir; };
+        // comparisons are all false.  A NaN here means a state read
+        // returned nil upstream (the #189 class).  Log the inputs so a
+        // recurrence is diagnosable, then fall back to ambient.
+        if !(finite _tNew) then {
+            diag_log format [
+                "[AEE] NaN tNew: obj=%1 sel=%2 tAir=%3 tCurrent=%4 qInternal=%5 mode=%6",
+                _obj, _sel, _tAir, _tCurrent, _qInternal, _mode
+            ];
+            _tNew = _tAir;
+        };
         private _selMap = missionNamespace getVariable [QGVAR(selTemperature), createHashMap];
         _selMap set [_stateKey, _tNew];
         missionNamespace setVariable [QGVAR(selTemperature), _selMap];
@@ -198,7 +206,13 @@ if (_mode == "EXIT") then {
         // the engine rejects the texture.  The `finite` command is the
         // only reliable check.  A NaN here means a state read returned
         // nil upstream (the #189 class); fall back to ambient.
-        if !(finite _b) then { _b = 0; };
+        if !(finite _b) then {
+            diag_log format [
+                "[AEE] NaN brightness: obj=%1 sel=%2 tNew=%3 eps=%4 tApparent=%5",
+                _obj, _sel, _tNew, _eps, _tApparent
+            ];
+            _b = 0;
+        };
         private _colour = format ["#(rgb,8,8,3)color(%1,%1,%1,1)", _b];
 
         _obj setObjectTexture [_idx, _colour];
