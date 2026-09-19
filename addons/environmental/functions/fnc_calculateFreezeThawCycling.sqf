@@ -26,7 +26,8 @@ Stores:
 
 params [];
 
-private _temp = EGVAR(core,currentTemperature);
+private _temp = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
+if !(_temp isEqualType 0) then { _temp = 15; };
 if (isNil "_temp") exitWith {
     missionNamespace setVariable [QGVAR(freezeThawState), 1.0];
     missionNamespace setVariable [QGVAR(freezeThawDescription), "Thawed"];

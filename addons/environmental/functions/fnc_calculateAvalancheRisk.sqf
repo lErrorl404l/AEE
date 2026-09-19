@@ -70,8 +70,8 @@ private _tau = _rho * 9.81 * _slabH * sin _psi;              // Pa
 
 // Weak-layer strength scales with snowpack quality: cold dry snow is
 // strong, warm/rain/wind-weakened snow is weak.
-private _temp = EGVAR(core,currentTemperature);
-if (isNil "_temp") then { _temp = 0; };
+private _temp = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
+if !(_temp isEqualType 0) then { _temp = 15; };
 private _quality = 1.0;
 if (_temp > 0)  then { _quality = _quality - 0.4; };         // warm weakens
 if (rain > 0)   then { _quality = _quality - 0.3; };         // rain lubricates

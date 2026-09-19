@@ -14,8 +14,8 @@ Initialises from air temperature on first call.
 Stored in GVAR(currentWaterTemperature).
 */
 
-private _T_C = EGVAR(core,currentTemperature);
-if (isNil "_T_C") exitWith {};
+private _T_C = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
+if !(_T_C isEqualType 0) then { _T_C = 15; };
 
 private _prevWaterTemp = missionNamespace getVariable [QEGVAR(core,currentWaterTemperature), _T_C];
 private _waterTemp = (_prevWaterTemp * 0.95) + (_T_C * 0.05);

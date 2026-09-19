@@ -43,8 +43,8 @@ private _risk = (_intensity / GVAR(FlashFloodThreshold)) * (1 + _antecedent) * _
 
 // ─── Compound flooding — high tide prevents drainage to sea ──────────────
 // Tide offset > 0.5 m raises flood risk by up to 50% at spring high tide.
-private _tideOffset = EGVAR(core,currentTideOffset_m);
-if (isNil "_tideOffset") then { _tideOffset = 0; };
+private _tideOffset = missionNamespace getVariable [QEGVAR(core,currentTideOffset_m), 0];
+if !(_tideOffset isEqualType 0) then { _tideOffset = 0; };
 private _compoundFactor = if (_tideOffset > 0.5) then {
     linearConversion [0.5, 2.0, _tideOffset, 1.0, 1.5] max 1.0 min 1.5
 } else { 1.0 };
