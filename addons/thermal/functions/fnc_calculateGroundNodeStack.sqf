@@ -47,7 +47,8 @@ Output: [layerTemps] array of 4 temperatures (C), node depths
 
 params [["_pos", [], [[]]], ["_material", "", [""]]];
 
-private _tAir = EGVAR(core,currentTemperature);
+private _tAir = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
+if !(_tAir isEqualType 0) then { _tAir = 15; };
 if (isNil "_tAir") exitWith { [15, 15, 15, 15] };
 
 if (_pos isEqualTo []) then {
@@ -74,8 +75,17 @@ if (_material == "") then {
 private _state = missionNamespace getVariable [QGVAR(groundNodeStack), createHashMap];
 if (isNil "_state") then { _state = createHashMap; };
 private _cell = format ["%1_%2_%3", floor ((_pos select 0) / 5), floor ((_pos select 1) / 5), _material];
-private _last = _state getOrDefault [_cell, nil];
-private _dt = 5;
+private _last = _state getOrDefault [_cell, []];
+// Real elapsed time since this cell last advanced (diag_tickTime delta,
+// clamped 0.1..600 s).  The stack is time-integrated, not per-call: the
+// first caller in a tick advances by the real interval, subsequent
+// callers in the same tick advance ~0 and read the SAME state.  This
+// makes delegation safe (MRT, object solver and stamps all call the
+// ground temp per tick without triple-advancing the physics).
+private _now = diag_tickTime;
+private _dt = if (count _last == 6) then {
+    ((_now - (_last select 5)) max 0.1) min 600
+} else { 5 };
 
 // ─── Layer geometry (Noah 4-layer, Mitchell 2005) ─────────────────────────
 private _dz = [0.10, 0.30, 0.60, 1.00];
@@ -88,8 +98,7 @@ private _dz = [0.10, 0.30, 0.60, 1.00];
 private _props = [_material] call FUNC(getMaterialThermal);
 _props params ["_eps", "_alphaSurf", "_rho", "_cp", "_kDry"];
 private _kSat = 2.14;  // saturated soil k (de Vries / Wessolek 2022)
-private _moistTop = EGVAR(core,soilMoisture);
-if (isNil "_moistTop") then { _moistTop = 0.2; };
+private _moistTop = missionNamespace getVariable [QEGVAR(core,soilMoisture), 0.2];
 if !(_moistTop isEqualType 0) then { _moistTop = 0.2; };
 _moistTop = _moistTop max 0 min 1;
 private _moist = [_moistTop, 0.30, 0.32, 0.32];  // deep layers near FC (0.25-0.32)
@@ -115,7 +124,8 @@ private _alpha = [];
 } forEach _dz;
 
 // ─── Node temperatures: persist or seed ───────────────────────────────────
-// State is [_t1.._t4, _tBot]: the 4 layer temps plus the TBOT anchor.
+// State is [_t1.._t4, _tBot, _lastTick]: the 4 layer temps, the TBOT
+// anchor, and the last-advance timestamp (real elapsed time).
 // TBOT is the deep-soil annual-mean anchor.  It must NOT track hourly
 // air (the shallow-limit error the stack exists to fix) - it is a slow
 // EMA of the air temperature with a 30-day time constant, persisted
@@ -123,7 +133,7 @@ private _alpha = [];
 // without long history; the EMA then drifts it over the run).
 private _T = [];
 private _tBot = _tAir;
-if (!isNil "_last" && {count _last == 5}) then {
+if (count _last == 6) then {
     _T = _last select [0, 4];
     _tBot = _last select 4;
 } else {
@@ -134,11 +144,11 @@ if (!isNil "_last" && {count _last == 5}) then {
 _tBot = _tBot + ((_tAir - _tBot) * (_dt / 2592000));
 
 // ─── Surface forcing (the top BC, W/m2) ───────────────────────────────────
-private _wind = EGVAR(core,currentWind);
+private _wind = missionNamespace getVariable [QEGVAR(core,currentWind), [0, 0, 0]];
 if !(_wind isEqualType []) then { _wind = [0, 0, 0]; };
 private _windSpd = vectorMagnitude _wind;
-private _solar = EGVAR(core,currentSolarFlux);
-if (isNil "_solar") then { _solar = 0; };
+private _solar = missionNamespace getVariable [QEGVAR(core,currentSolarFlux), 0];
+if !(_solar isEqualType 0) then { _solar = 0; };
 private _overcast = overcast;
 private _h = 5.7 + (3.8 * _windSpd);            // McAdams, W/m2K
 private _sigma = 5.670374419e-8;             // CODATA 2022
@@ -177,7 +187,7 @@ if (_moistTop > 0.02) then {
 // forcing flux; the bottom node is the fixed TBOT anchor.
 // Crank-Nicolson: (I - r*D) * T_new = (I + r*D) * T_old + source
 // r = alpha*dt/(2*dz^2) for the CN half-step.
-private _fluxSurf = (_alphaSurf * (_solar max 0)) + (_eps * _sigma * ((_T select 0 + 273.15) ^ 4) - (_eps * _sigma * (_tSkyK ^ 4))) - (_h * ((_T select 0) - _tAir)) - _qEvap;
+private _fluxSurf = (_alphaSurf * (_solar max 0)) + (_eps * _sigma * (((_T select 0) + 273.15) ^ 4) - (_eps * _sigma * (_tSkyK ^ 4))) - (_h * ((_T select 0) - _tAir)) - _qEvap;
 // Surface half-cell transient: dT = q*dt*2/(rho_cp*dz) (finite volume,
 // NOT the steady-state gradient - caught in the mirror as a 100x bug).
 private _T0new = (_T select 0) + (_fluxSurf * _dt * 2 / (_rho * _cp * (_dz select 0)));
@@ -242,9 +252,11 @@ _tNew set [2, _x select 1];
 _tNew set [3, _tBot];
 
 // ─── Persist and return ───────────────────────────────────────────────────
-// State is [_t1.._t4, _tBot]: the 4 layer temps plus the TBOT anchor so
-// the slow annual-mean EMA survives across ticks.
+// State is [_t1.._t4, _tBot, _lastTick]: the 4 layer temps, the TBOT
+// anchor (the slow annual-mean EMA), and the last-advance timestamp so
+// the next call advances by real elapsed time.
 _tNew pushBack _tBot;
+_tNew pushBack _now;
 _state set [_cell, _tNew];
 missionNamespace setVariable [QGVAR(groundNodeStack), _state];
 
