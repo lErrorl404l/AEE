@@ -265,3 +265,17 @@
     true,
     {}
 ] call CBA_fnc_addSetting;
+
+// ── Thermal polarity (issue #196) ─────────────────────────────────────────
+// White-hot (0) is the military default; black-hot (1) reads like a
+// conventional photograph and is preferred for extended night viewing.
+// Matches the AN/PAS-13 polarity toggle.
+[
+    QGVAR(thermalPolarity),
+    "LIST",
+    [LLSTRING(thermalPolarity_Name), LLSTRING(thermalPolarity_Description)],
+    ["AEE Optics", "Thermal"],
+    [[0, 1], ["White hot", "Black hot"], 0],
+    true,
+    {}
+] call CBA_fnc_addSetting;

@@ -104,6 +104,12 @@
                     ppEffectDestroy _hDof;
                     missionNamespace setVariable [QGVAR(ppHandle_NVG_DoF), -1];
                 };
+                // Scene-adaptive AGC (issue #196): compute the scene's
+                // radiance window from the physics state BEFORE the
+                // per-selection passes read it.  A real FLIR re-evaluates
+                // its gain continuously from the scene histogram; this is
+                // the same per-frame evaluation.
+                [] call EFUNC(thermal,updateThermalAGC);
                 [] call FUNC(applyThermalVision);
                 [] call FUNC(applyEngineThermal);
                 [] call FUNC(applyWeaponBarrelHeat);
