@@ -124,6 +124,28 @@ if (_mode == "EXIT") then {
             // dependency).  qGen is TOTAL W, matching the W/K coupling
             // in the core balance.
             private _qMet = 58.2 * 1.8258;
+
+            // ─── Water immersion state (issue #193) ──────────────────────────
+            // Immersion = below the water surface at a water position.
+            // getPosASL z negative = submerged; surfaceIsWater confirms
+            // the position is a water body.  Water temperature from the
+            // core state (fnc_calculateWaterTemperature, leaky
+            // integrator toward air).  Water speed: no native current
+            // state exists - still water (speed 0) is the honest
+            // default, giving the Boutelier still-water coefficient.
+            private _waterSpeed = 0;
+            private _tWater = -1;
+            private _posASL = getPosASL _obj;
+            if ((_posASL select 2) < 0) then {
+                if (surfaceIsWater _posASL) then {
+                    _tWater = missionNamespace getVariable [QEGVAR(core,currentWaterTemperature), _tAir];
+                };
+            };
+            // Rain rate (0..1) from the engine's built-in rain command - the
+            // native weather state, external wettedness driver for the
+            // evaporative path.
+            private _rain = rain;
+
             private _two = [
                 _obj, _sel,
                 "human", "human",       // core class, skin class
@@ -133,7 +155,8 @@ if (_mode == "EXIT") then {
                 0.15,                   // convection plate dim (m)
                 _tCurrent, _tCurrent,   // core/skin current temps
                 _qMet,                  // qGen: resting metabolism (W)
-                "vertical", 0.5, _mrt, true, 0.05, true, 5
+                "vertical", 0.5, _mrt, true, 0.05, true, 5,
+                _waterSpeed, _tWater, _rain
             ] call FUNC(solveTwoNodeSelection);
             _tNew = _two select 1;      // skin temp - what FLIR sees
         } else {
