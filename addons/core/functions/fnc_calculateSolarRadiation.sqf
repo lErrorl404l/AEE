@@ -56,6 +56,18 @@ private _radiation = _sinElev max 0;
 private _cloudFactor = 1 - (0.75 * _overcast);
 private _result = (_radiation * _cloudFactor) min 1;
 
+// ─── Solar flux in W/m2 (issue #124 audit) ───────────────────────────────
+// The 0..1 factor is sin(elevation) x cloud attenuation.  The real flux
+// is that factor scaled by the clear-sky hemispherical irradiance:
+//   G = G0 * factor,  G0 = 1000 W/m2
+// ASTM G173-23 gives 1001.92 W/m2 clear-sky hemispherical at AM1.5, so
+// 1000 is the engineering standard value.  This is the quantity every
+// thermal surface solve needs (q_solar = alpha * G), and the OLD code
+// wrongly multiplied the 0..1 factor by a magic 15 and treated the
+// result as degrees Celsius - 196x too big at noon (audit 2026-09-19).
+missionNamespace setVariable [QEGVAR(core,currentSolarFlux), _result * 1000];
+missionNamespace setVariable [QEGVAR(core,currentSolarRadiation), _result];
+
 // Sun elevation in degrees (asin returns degrees in Arma).  Exposed for the
 // NVG twilight model: the twilight sky glow is a function of how far the
 // sun is BELOW the horizon, which the radiation value (max 0) cannot give.

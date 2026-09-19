@@ -17,12 +17,18 @@ uses, extended per selection with the material registry):
   q_conv   = h * (Ts - Tair)                  [W/m2]
     h       = 5.7 + 3.8 * w                   [W/m2K] McAdams forced+free
               (w = wind m/s; Energies 2022, IES VE)
-  q_rad    = eps * sigma * (Ts^4 - Tair^4)    [W/m2]
+  q_rad    = eps * sigma * (Ts^4 - MRT^4)     [W/m2]
     sigma   = 5.670374419e-8                  [W/m2K4] CODATA 2022
+    MRT     = mean radiant temperature (ISO 7726) - the area-weighted
+              temperature of the surrounding SURFACES (ground, sky,
+              nearby objects), NOT the air temperature.  On a sunny
+              day the ground and nearby vehicles sit far above air, so
+              a surface keeps gaining radiation until it approaches
+              MRT.  This is the black-globe correction (issue #124).
   q_internal = engine / friction contribution [W/m2] (per selection)
 
   Equilibrium (q_solar + q_internal balances losses):
-    Ts,eq solves alpha*G + q_int = h*(Ts-Tair) + eps*sigma*(Ts^4-Tair^4)
+    Ts,eq solves alpha*G + q_int = h*(Ts-Tair) + eps*sigma*(Ts^4-MRT^4)
     iterated to convergence (simple fixed-point, 8 iterations).
 
   Inertia (lumped capacity - the user's mass/insulation refinement):
@@ -58,7 +64,8 @@ params [
     ["_solar", 0, [0]],
     ["_exposure", 1, [0]],
     ["_qInternal", 0, [0]],
-    ["_tCurrent", 15, [0]]
+    ["_tCurrent", 15, [0]],
+    ["_fGround", 0.5, [0]]
 ];
 if (isNull _obj) exitWith { _tAir };
 
@@ -93,6 +100,16 @@ private _area = 2 * ((_dims select 0) * (_dims select 1) + (_dims select 0) * (_
 // ─── Convection coefficient (McAdams) ────────────────────────────────────
 private _h = 5.7 + 3.8 * (_wind max 0);
 
+// ─── Mean radiant temperature (ISO 7726) ──────────────────────────────────
+// The radiation term exchanges against MRT (the surrounding SURFACES),
+// not the air temperature.  On a sunny day the ground and nearby
+// vehicles sit far above air, so a surface keeps gaining radiation
+// until it approaches MRT.  The ground view factor is per selection:
+// a tyre/undercarriage sees mostly ground (0.7), a roof mostly sky
+// (0.3), a standing soldier 0.5.
+private _mrt = [getPosASL _obj, _fGround] call FUNC(calculateMRT);
+private _tMrtAbs = _mrt + 273.15;
+
 // ─── Equilibrium temperature (fixed-point iteration) ─────────────────────
 private _sigma = 5.670374419e-8;
 private _tAbs = _tAir + 273.15;
@@ -101,7 +118,7 @@ private _qTotal = _alpha * (_solar max 0) * (_exposure max 0 min 1) + (_qInterna
 
 for "_i" from 1 to 8 do {
     private _conv = _h * (_ts - _tAbs);
-    private _rad = _eps * _sigma * (_ts ^ 4 - _tAbs ^ 4);
+    private _rad = _eps * _sigma * (_ts ^ 4 - _tMrtAbs ^ 4);
     private _f = _qTotal - _conv - _rad;   // residual: drive to 0
     private _df = -(_h + 4 * _eps * _sigma * _ts ^ 3);  // d(residual)/dTs
     if (_df == 0) then { break; };

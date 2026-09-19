@@ -3079,13 +3079,24 @@ class TestSQFSync(unittest.TestCase):
         # REGRESSION (10-54 sweep): the old `max _airTemp` clamp erased the
         # day-time solar gain whenever wind cooling exceeded it (a sunlit
         # vehicle read exactly air temp), and blocked real night cooling.
-        # The floor is now air - 5 C (radiative-equilibrium bound).
+        # The per-object solver no longer carries a ground clamp at all:
+        # the ground temperature now comes from the per-position energy
+        # balance in fnc_calculateGroundTemperature, which exchanges
+        # radiation against the SKY (Swinbank 1963) - the honest
+        # radiative-equilibrium floor.  The object solver delegates.
         self._assert_in_sqf(
             "fnc_calculateObjectTemperature.sqf",
-            ["_target max (_airTemp - 5)", "_groundTarget max (_airTemp - 5)"],
-            "radiative-equilibrium floor (not air)",
+            ["calculateGroundTemperature", "private _groundTarget"],
+            "ground temperature delegated to the per-position energy balance",
             addon="thermal",
         )
+        # The old per-class gain table and the manual wind/shade clamp are
+        # GONE - the solver does convection, radiation and cloud itself.
+        from pathlib import Path
+
+        text = _read_sqf("fnc_calculateObjectTemperature.sqf", "thermal")
+        self.assertNotIn("_groundTarget max (_airTemp - 5)", text)
+        self.assertNotIn("_groundGain", text)
 
     def test_object_temp_taus(self):
         self._assert_in_sqf(
@@ -3096,18 +3107,25 @@ class TestSQFSync(unittest.TestCase):
         )
 
     def test_conduction_coupling_constants(self):
+        # #124 audit: the coupling is REAL Stefan-Boltzmann radiant
+        # exchange (4th power), not the old linear surplus/d^2.  A fire
+        # (600 C) radiates ~100x more than a warm engine and reaches
+        # everything within 10 m (large-area emitter), so the view
+        # factor is large for fires, small for warm engines.
         self._assert_in_sqf(
             "fnc_calculateObjectTemperature.sqf",
             [
                 "_hotSources",
-                "0.3 / (_d * _d)",
-                "_surplus * (0.3 / (_d * _d))",
+                "5.670374419e-8",
+                "_hotK ^ 4",
+                "_coldK ^ 4",
+                "_fView",
+                "_nTemp > 300",
                 "_d > 10",
-                "min 4",
-                "_coupling min 5",
-                "_nTemp <= _oTemp + 5",
+                "min 5",
+                "_coupling > 0.05",
             ],
-            "conduction/radiant coupling",
+            "radiant coupling (Stefan-Boltzmann 4th power)",
             addon="thermal",
         )
 
@@ -3140,25 +3158,23 @@ class TestSQFSync(unittest.TestCase):
         )
 
     def test_ground_gains(self):
+        # The per-class ground-gain table (5-15 C offsets per surface
+        # type) was removed in the #124 audit: the ground temperature is
+        # now solved per-position with the full energy balance in
+        # fnc_calculateGroundTemperature (material alpha, convection,
+        # sky radiation, thermal stamps).  The object solver delegates to
+        # it and no longer carries a manual per-class gain.
         self._assert_in_sqf(
             "fnc_calculateObjectTemperature.sqf",
-            [
-                "#gdtdesert",
-                "#gdtsand",
-                "#gdtice",
-                "#gdtsnow",
-                "#gdtconiferous",
-                "#gdtforest",
-                "{ 15 };",
-                "{ 10 };",
-                "{ -2 };",
-                "{  2 };",
-                "{  3 };",
-                "{  5 }",
-            ],
-            "ground surface solar gains",
+            ["calculateGroundTemperature", "private _groundTarget"],
+            "ground delegated to the per-position solve",
             addon="thermal",
         )
+        from pathlib import Path
+
+        text = _read_sqf("fnc_calculateObjectTemperature.sqf", "thermal")
+        self.assertNotIn("#gdtdesert", text)
+        self.assertNotIn("#gdtsnow", text)
 
     def test_insulation_and_metabolic(self):
         self._assert_in_sqf(

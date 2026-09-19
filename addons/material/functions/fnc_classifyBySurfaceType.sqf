@@ -15,10 +15,11 @@ Arguments:
   0: surface type (STRING) - the `#gdt...` engine value, lower-cased
 
 Return Value:
-  STRING - ground, rock, wood, concrete, metal, glass, water,
+  STRING - ground, rock, wood, concrete, asphalt, metal, glass, water,
   vegetation, or "ground" for unknown
 
 Example:
+  "#gdtasphalt" call aee_material_fnc_classifyBySurfaceType -> "asphalt"
   "#gdtconcrete" call aee_material_fnc_classifyBySurfaceType -> "concrete"
 */
 
@@ -33,6 +34,12 @@ private _material = switch (true) do {
     case (_surface in ["#gdtrock", "#gdtmountain", "#gdtgravel"]): { "rock" };
     // Desert/sand/dunes: loose ground.
     case (_surface in ["#gdtdesert", "#gdtdunes", "#gdtsand", "#gdtprairie"]): { "ground" };
+    // Paved surfaces: asphalt roads, concrete/sidewalk.  The engine
+    // CfgSurfaces defines GdtAsphalt and GdtConcrete (SurfRoadTarmac,
+    // SurfRoadConcrete); tarmac absorbs far more solar than soil, so it
+    // must NOT fall through to ground (issue #124 per-position ground).
+    case (_surface in ["#gdtasphalt", "#gdttarmac", "#gdtroad"]): { "asphalt" };
+    case (_surface in ["#gdtconcrete", "#gdtsidewalk"]): { "concrete" };
     // Vegetation: grass, forest, jungle, crop, vineyard, orchard.
     case (_surface in ["#gdtgrass", "#gdtgrassland", "#gdtforest", "#gdtjungle",
         "#gdtrainforest", "#gdtconiferous", "#gdtcrop", "#gdtfield",

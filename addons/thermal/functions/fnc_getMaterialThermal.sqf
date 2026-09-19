@@ -14,6 +14,7 @@ Every value traces to a published source - no invented numbers:
   rubber (tyre)     0.95  0.90         1314       1898     0.22     Guo et al. 2023; FLIR T505002
   plastic (ABS)     0.95  0.50         1040       1506     0.17     Thermtest; FLIR T505002
   concrete          0.92  0.60         2300       880      1.4      Incropera
+  asphalt           0.88  0.90         2300       900      1.5      Li 2015; Hoehne (NSF); Kim & Lee 2024 (albedo 0.05-0.15)
   wood              0.88  0.60         700        1700     0.15     Incropera
   leather           0.78  0.50         1000       1500     0.18     FLIR T505002
   vegetation        0.98  0.60         300        2000     0.20     Incropera (foliage)
@@ -55,6 +56,7 @@ if (isNil QGVAR(materialThermal)) then {
         ["rubber",   [0.95, 0.90, 1314, 1898, 0.22]],
         ["plastic",  [0.95, 0.50, 1040, 1506, 0.17]],
         ["concrete", [0.92, 0.60, 2300, 880,  1.4]],
+        ["asphalt",  [0.88, 0.90, 2300, 900,  1.5]],
         ["wood",     [0.88, 0.60,  700, 1700, 0.15]],
         ["leather",  [0.78, 0.50, 1000, 1500, 0.18]],
         ["vegetation",[0.98, 0.60, 300, 2000, 0.20]],
