@@ -41,7 +41,7 @@ if (currentVisionMode _player != 1) exitWith {
         // ChromAberration is a shared handle (owned by managePostProcess in
         // normal mode).  Fade it to neutral here so it does not linger into
         // thermal; managePostProcess re-owns it in normal mode.
-        private _hChroma = missionNamespace getVariable [QGVAR(ppHandle_ChromAberration), -1];
+        private _hChroma = missionNamespace getVariable [QEGVAR(optics,ppHandle_ChromAberration), -1];
         if (_hChroma >= 0) then {
             _hChroma ppEffectAdjust [0, 0, false];
             _hChroma ppEffectCommit 0;
@@ -821,7 +821,7 @@ _grainIntensity = _grainIntensity * (1 + rain * 0.5);
 //
 // ChromAberration is shared with fnc_managePostProcess (priority 3000):
 // reuse its handle instead of creating a second effect at that priority.
-private _hChroma = missionNamespace getVariable [QGVAR(ppHandle_ChromAberration), -1];
+private _hChroma = missionNamespace getVariable [QEGVAR(optics,ppHandle_ChromAberration), -1];
 private _hCC     = missionNamespace getVariable [QGVAR(ppHandle_NVG_CC), -1];
 private _hBloom  = missionNamespace getVariable [QGVAR(ppHandle_NVG_Bloom), -1];
 private _hVig    = missionNamespace getVariable [QGVAR(ppHandle_NVG_Vignette), -1];
@@ -862,7 +862,7 @@ if (_missing) then {
             _prio = _prio + 1;
             _guard = _guard + 1;
         };
-        missionNamespace setVariable [QGVAR(ppHandle_ChromAberration), _hChroma];
+        missionNamespace setVariable [QEGVAR(optics,ppHandle_ChromAberration), _hChroma];
         private _logMsg = format ["recreated NVG ChromAberration handle=%1", _hChroma];
         AEE_LOG_DEBUG(_logMsg);
     };
@@ -1417,9 +1417,9 @@ _hGrain ppEffectForceInNVG true;
 // The engine handles the NVG cutout (circular tube view).  We overlay only
 // the focus readout HUD.  No mask, fibre, glow, or rain overlay — the
 // engine and other NVG mods handle tube geometry.
-private _disp = uiNamespace getVariable [QGVAR(titleDisplay), displayNull];
+private _disp = uiNamespace getVariable [QEGVAR(optics,titleDisplay), displayNull];
 if !(missionNamespace getVariable [QGVAR(nvgDisplayUp), false]) then {
-    (["aee_nightvision_nvg_title"] call BIS_fnc_rscLayer) cutRsc [QGVAR(nvgTitle), "PLAIN", 1, false];
+    (["aee_nightvision_nvg_title"] call BIS_fnc_rscLayer) cutRsc [QEGVAR(optics,nvgTitle), "PLAIN", 1, false];
     missionNamespace setVariable [QGVAR(nvgDisplayUp), true];
 };
 if (!isNull _disp) then {

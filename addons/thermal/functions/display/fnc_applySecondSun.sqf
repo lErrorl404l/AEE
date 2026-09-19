@@ -86,6 +86,16 @@ _sun setLightBrightness _lightBrightness;
 _sun setLightAmbient [0.5, 0.5, 0.5];
 _sun setLightAttenuation [1e10, 150, 0, 0];
 
+// Trace the sun term every 5 s so day/night behaviour is verifiable in
+// the RPT without the nvgDebug flag (issue #204: 'second sun on at night'
+// report).  Throttled to one line per 5 s.
+private _lastTrace = missionNamespace getVariable [QGVAR(sunTraceTime), -1];
+if (diag_tickTime - _lastTrace > 5) then {
+    missionNamespace setVariable [QGVAR(sunTraceTime), diag_tickTime];
+    diag_log format ["[AEE] SecondSun: rad=%1 bright=%2 dayTime=%3",
+        _radiation, _lightBrightness, dayTime];
+};
+
 // Debug: log the radiation and the scaled brightness the engine's sun term
 // sees, with dayTime, so day/night behaviour is traceable.
 if (missionNamespace getVariable [QEGVAR(nightvision,nvgDebug), false]) then {
