@@ -152,7 +152,7 @@ if (_hVig < 0 || _hCC < 0 || _hGrain < 0 || _hBlur < 0) then {
     } forEach [
         ["RadialBlur",      1300, QGVAR(ppHandle_Thermal_Vignette)],
         ["DynamicBlur",     4200, QGVAR(ppHandle_Thermal_Blur)],
-        ["FilmGrain",       5100, QGVAR(ppHandle_Thermal_Grain)],
+        ["FilmGrain",       6500, QGVAR(ppHandle_Thermal_Grain)],
         ["ColorCorrections", 5200, QGVAR(ppHandle_Thermal_CC)]
     ];
     _handles params ["_hVig", "_hBlur", "_hGrain", "_hCC"];
@@ -212,7 +212,9 @@ private _sharpness = linearConversion [1, 0, _effective, 0.75, 1.5, true];
 private _grainSize = linearConversion [1, 0, _effective, 1.5, 2.0, true];
 _hGrain ppEffectAdjust [_noise, _sharpness, _grainSize, 0.5, 1.0, 0];
 _hGrain ppEffectCommit 0;
-_hGrain ppEffectEnable true;
+if (_hGrain >= 0) then {
+    _hGrain ppEffectEnable true;
+};
 _hGrain ppEffectForceInNVG true;
 
 // ─── DynamicBlur (IR scatter) ─────────────────────────────────────────────
