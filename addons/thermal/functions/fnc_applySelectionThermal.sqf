@@ -177,7 +177,12 @@ if (_mode == "EXIT") then {
             ] call FUNC(solveSelectionTemperature);
         };
 
-        // Persist for the next tick's inertia term.
+        // Persist for the next tick's inertia term.  NaN-guard the
+        // stored value too: a NaN persisted here would poison the state
+        // forever (every later tick reads it back as _tCurrent).  The
+        // `finite` command is the only reliable SQF NaN check - NaN
+        // comparisons are all false.
+        if !(finite _tNew) then { _tNew = _tAir; };
         private _selMap = missionNamespace getVariable [QGVAR(selTemperature), createHashMap];
         _selMap set [_stateKey, _tNew];
         missionNamespace setVariable [QGVAR(selTemperature), _selMap];
@@ -187,6 +192,13 @@ if (_mode == "EXIT") then {
         private _eps = _mat select 0;
         private _tApparent = (_tNew + 273.15) * (_eps ^ 0.25) - 273.15;
         private _b = ((_tApparent + 40) / 190) max 0 min 1;   // -40..150 C window
+        // NaN guard: SQF NaN comparisons are false (NaN != NaN is also
+        // false in SQF), so max/min AND a self-compare CANNOT clamp a
+        // NaN - it would emit "#(rgb,8,8,3)color(scalar NaN,..)" and
+        // the engine rejects the texture.  The `finite` command is the
+        // only reliable check.  A NaN here means a state read returned
+        // nil upstream (the #189 class); fall back to ambient.
+        if !(finite _b) then { _b = 0; };
         private _colour = format ["#(rgb,8,8,3)color(%1,%1,%1,1)", _b];
 
         _obj setObjectTexture [_idx, _colour];
