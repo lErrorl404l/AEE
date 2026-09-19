@@ -72,7 +72,19 @@ if (_mode == "EXIT") then {
     if (isNull _obj || {!hasInterface}) exitWith { 0 };
 
     // ─── Solve and apply ──────────────────────────────────────────────────
-    private _selNames = if (_selection == "") then { [] } else { [_selection] };
+    // The selection arg is a NAME (string), an INDEX (number from the
+    // callers' hiddenSelections loop), or "" (all selections).  A
+    // number-vs-string comparison throws in SQF, so resolve the type
+    // before the empty check.
+    private _selNames = [];
+    if (_selection isEqualType 0) then {
+        private _allSels = selectionNames _obj;
+        if (_selection >= 0 && {_selection < count _allSels}) then {
+            _selNames = [_allSels select _selection];
+        };
+    } else {
+        _selNames = if (_selection == "") then { [] } else { [_selection] };
+    };
     if (_selNames isEqualTo []) then {
         _selNames = selectionNames _obj;
     };

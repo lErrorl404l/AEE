@@ -100,7 +100,7 @@ private _applied = 0;
                 _fGround = 0.7;
             };
         };
-        [_obj, _selIdx, "", 0, _fGround] call EFUNC(thermal,applySelectionThermal);
+        [_obj, (_selNames select _selIdx), "", 0, _fGround] call EFUNC(thermal,applySelectionThermal);
         _applied = _applied + 1;
     } forEach _selections;
 } forEach (allUnits);
