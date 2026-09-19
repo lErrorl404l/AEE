@@ -46,6 +46,10 @@ private _material = switch (true) do {
         "#gdtvineyard", "#gdtorchard"]): { "vegetation" };
     // Wetland: swamp/marsh - waterlogged ground.
     case (_surface in ["#gdtswamp", "#gdtmarsh"]): { "water" };
+    // Open water: the engine surface classes for sea/lake/river.  A
+    // surfaceType at sea returns the water class, NOT land.
+    case (_surface in ["#gdtsea", "#gdtocean", "#gdtlake", "#gdtriver",
+        "#gdtwater"]): { "water" };
     // Anything else: neutral ground.
     default { "ground" };
 };

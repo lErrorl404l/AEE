@@ -1825,7 +1825,8 @@ class TestClothingThermal(unittest.TestCase):
         )
         text = fn.read_text(encoding="utf-8")
         self.assertIn("setObjectTexture", text)
-        self.assertIn("solveSelectionTemperature", text)
+        self.assertIn("solveTwoNodeSelection", text)
+        self.assertNotIn("solveSelectionTemperature", text)  # single-node killed
         self.assertIn("getSelectionMaterials", text)
 
 

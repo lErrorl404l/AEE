@@ -87,6 +87,20 @@ private _dt = if (count _last == 6) then {
     ((_now - (_last select 5)) max 0.1) min 600
 } else { 5 };
 
+// ─── Water branch: a position at sea/lake/river is NOT a soil column. ─────
+// Water is well-mixed at the surface-node scale: the surface temperature
+// IS the water temperature (currentWaterTemperature, produced by
+// fnc_calculateWaterTemperature each env tick), with no soil diffusion,
+// no frost pin, no within-soil evaporation.  The cell state is persisted
+// as all-equal water temps so the next caller reads the same value.
+if (_material == "water" || {surfaceIsWater [_pos select 0, _pos select 1]}) then {
+    private _tWater = missionNamespace getVariable [QEGVAR(core,currentWaterTemperature), _tAir];
+    if !(_tWater isEqualType 0) then { _tWater = _tAir; };
+    _state set [_cell, [_tWater, _tWater, _tWater, _tWater, _tWater, _now]];
+    missionNamespace setVariable [QGVAR(groundNodeStack), _state];
+    [_tWater, _tWater, _tWater, _tWater, _tWater, _now]
+};
+
 // ─── Layer geometry (Noah 4-layer, Mitchell 2005) ─────────────────────────
 private _dz = [0.10, 0.30, 0.60, 1.00];
 

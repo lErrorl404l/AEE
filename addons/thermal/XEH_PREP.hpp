@@ -9,7 +9,6 @@ PREP(calculateClothingInsulation);
 PREP(updateTemperature);
 PREP(getMaterialThermal);
 PREP(getSolarAbsorptance);
-PREP(solveSelectionTemperature);
 PREP(getSelectionMaterials);
 PREP(applySelectionThermal);
 PREP(calculateMRT);
