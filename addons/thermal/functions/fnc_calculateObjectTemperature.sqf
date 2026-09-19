@@ -80,6 +80,9 @@ private _airTemp = missionNamespace getVariable [QEGVAR(core,currentTemperature)
 if (isNil "_airTemp") then { _airTemp = 15; };
 private _windSpeed = vectorMagnitude wind;
 private _solar = [overcast] call EFUNC(core,calculateSolarRadiation);
+// Real solar FLUX in W/m2 (issue #124 audit): the factor is
+// sin(elevation) x cloud; the flux is that x 1000 W/m2 (ASTM G173).
+private _solarFlux = missionNamespace getVariable [QEGVAR(core,currentSolarFlux), _solar * 1000];
 private _fog = missionNamespace getVariable [QEGVAR(core,currentFogDensity), 0];
 if (isNil "_fog") then { _fog = 0; };
 
@@ -95,42 +98,21 @@ private _thermalState = missionNamespace getVariable [QGVAR(thermalState), creat
 private _now = diag_tickTime;
 
 // ─── Ground temperature ───────────────────────────────────────────────────
-private _groundType = toLower (surfaceType (getPos _center));
-private _groundGain = switch (true) do {
-    case (_groundType == "#gdtdesert"):     { 15 };
-    case (_groundType == "#gdtsand"):       { 10 };
-    case (_groundType == "#gdtice"):        { -2 };
-    case (_groundType == "#gdtsnow"):       { -2 };
-    case (_groundType == "#gdtconiferous"): {  2 };
-    case (_groundType == "#gdtforest"):     {  3 };
-    default                                 {  5 }; // grass
-};
-private _groundTau = switch (true) do {
-    case (_groundType == "#gdtconiferous"): { 300 }; // vegetation
-    case (_groundType == "#gdtforest"):     { 300 }; // vegetation
-    default                                 { 600 }; // rock, sand, ice: slow
-};
-
-// Shade at the centre position: cast a ray straight up
+// Per-position ground solve (issue #124).  The old per-class gain table
+// (a 5-15 C offset hack per surface type) and the manual wind/shade
+// re-application are gone: the real solver does the full energy balance
+// per material (asphalt absorbs far more than grass - alpha from the
+// material registry), handles cloud via the flux, and adds thermal
+// stamps.  The only thing kept here is the object's own inertia toward
+// the ground it stands on (a vehicle on hot asphalt warms through its
+// tyres - see _groundTau below).
 private _centerASL = getPosASL _center;
-private _eyePos = _centerASL vectorAdd [0, 0, 1.5];
-private _abovePos = _eyePos vectorAdd [0, 0, 6];
-private _hits = lineIntersectsSurfaces [_eyePos, _abovePos, objNull, objNull, true, 1, "GEOM", "NONE"];
-private _groundTarget = _airTemp + _groundGain * _solar;
-if (count _hits > 0) then { _groundTarget = _airTemp; };
-
-// Convective cooling pulls the ground toward air temperature
-_groundTarget = _groundTarget - _windSpeed * 2;
-// Radiative-equilibrium floor: a surface exposed to wind and clear sky
-// genuinely sits slightly BELOW air at night (radiative + advective
-// loss).  The old `max _airTemp` clamp was wrong twice: it killed the
-// day-time solar gain when wind cooling exceeded it, and it prevented
-// real night cooling.  The floor is air - 5 C, not air.
-_groundTarget = _groundTarget max (_airTemp - 5);
+private _groundTarget = [_centerASL] call FUNC(calculateGroundTemperature);
 
 // Ground thermal inertia: exponential approach to the target.  The
 // step is the wall-clock delta since the last tick, clamped so a long
 // pause cannot teleport the temperature.
+private _groundTau = 600;  // generic ground: slow (rock/sand); vegetation is 300 in the solver
 private _groundState = _thermalState getOrDefault ["ground", [_airTemp, _now]];
 private _groundTemp = _groundState select 0;
 private _groundDt = ((_now - (_groundState select 1)) max diag_deltaTime) min 30;
@@ -196,31 +178,77 @@ private _infantryCount = 0;
         // ambient.  High insulation (arctic) keeps the surface warm.
         _target = _acclimatisation - (_acclimatisation - _airTemp) * (1 - _insulation);
 
-        // Metabolic heat from movement: idle 0, walk 20, run 60, sprint 120 W.
-        private _vSpeed = abs speed _obj;
-        private _metabolicHeat = switch (true) do {
-            case (_vSpeed > 6):   { 120 };
-            case (_vSpeed > 3):   {  60 };
-            case (_vSpeed > 0.5): {  20 };
-            default               {   0 };
+        // ─── Blood and body-state thermals (issue #124) ──────────────────
+        // Real physiology drives the surface temperature a thermal imager
+        // sees.  Three states, each with cited physics:
+        //
+        // 1. DEAD (not alive): metabolism stops (basal ~100 W gone).
+        //    The body cools toward ambient by Newton's law of cooling
+        //    with a long tau - forensic post-mortem cooling (Henssge
+        //    nomogram, Marshall & Hoare 1962): a clothed body loses
+        //    ~1 C/h initially, slowing as it approaches ambient.  The
+        //    SURFACE (what FLIR sees) cools faster than the core but
+        //    reads warm for hours.  tau 7200 s = ~1 C/h.
+        // 2. DYING (alive, blood loss): hypovolaemic shock drives
+        //    peripheral vasoconstriction - blood moves centrally, the
+        //    skin/limb surface cools (classic cold-extremities sign).
+        //    Metabolic heat and the surface base both scale down with
+        //    blood volume (ACE ace_medical_bloodVolume, 6.0 L full).
+        // 3. HEALTHY: normal metabolic heat from movement (below).
+        private _isDead = !alive _obj;
+        private _bloodVol = _obj getVariable ["ace_medical_bloodVolume", 6.0];
+        if !(_bloodVol isEqualType 0) then { _bloodVol = 6.0; };
+        private _bloodFrac = (_bloodVol max 0 min 6) / 6.0;  // 0..1
+        // Shock threshold: below ~40% blood volume the circulation
+        // fails (compensated -> decompensated shock, ATLS).
+        private _shock = linearConversion [0.4, 0.0, _bloodFrac, 0, 1, true];
+
+        if (_isDead) then {
+            // No metabolism.  The corpse surface relaxes toward ambient
+            // with forensic cooling (tau 7200 s ≈ 1 C/h - Henssge).
+            _target = _airTemp;
+            _tau = 7200;
+            // Solar still warms the exposed surface (a corpse in sun
+            // doesn't stay cold), scaled to the corpse's surface.
+            if (!_inShade) then { _target = _target + ((1 - _insulation) * (([0.6, _solarFlux, 0.95, _airTemp, _windSpeed] call FUNC(solarElevation)))); };
+        } else {
+            // Metabolic heat from movement: idle 0, walk 20, run 60,
+            // sprint 120 W - SCALED by blood fraction (a bleeding man
+            // cannot generate full sprint heat) and suppressed entirely
+            // by shock.
+            private _vSpeed = abs speed _obj;
+            private _metabolicHeat = switch (true) do {
+                case (_vSpeed > 6):   { 120 };
+                case (_vSpeed > 3):   {  60 };
+                case (_vSpeed > 0.5): {  20 };
+                default               {   0 };
+            };
+            _metabolicHeat = _metabolicHeat * _bloodFrac * (1 - _shock * 0.8);
+            _target = _target + _metabolicHeat * 0.05;
+
+            // The surface base erodes with shock: cold extremities as
+            // blood moves centrally (ATLS shock physiology).
+            _target = _target - _shock * 8;
+
+            // Solar gain on exposed skin, scaled by the exposed fraction.
+            if (!_inShade) then { _target = _target + ((1 - _insulation) * (([0.6, _solarFlux, 0.95, _airTemp, _windSpeed] call FUNC(solarElevation)))); };
+
+            // Wind chill: convective cooling on exposed areas only.
+            _target = _target - _windSpeed * 2 * (1 - _insulation);
+
+            // Body response slows as circulation fails: a healthy man
+            // responds in ~60 s, a shocked body in minutes.
+            _tau = 60 + _shock * 300;
         };
-        _target = _target + _metabolicHeat * 0.05;
-
-        // Solar gain on exposed skin, scaled by the exposed fraction.
-        if (!_inShade) then { _target = _target + _solar * 0.6 * 15 * (1 - _insulation); };
-
-        // Wind chill: convective cooling on exposed areas only.
-        _target = _target - _windSpeed * 2 * (1 - _insulation);
 
         _emissivity = 0.95; // clothing surface (fabric)
-        _tau = 60;          // human body: fast response
     } else {
         _isVehicle = _obj isKindOf "LandVehicle" || _obj isKindOf "Air" || _obj isKindOf "Ship";
         if (_isVehicle) then {
             // Metal body: strong solar absorption, low thermal mass.
             _emissivity = 0.9;
             _tau = 120;
-            if (!_inShade) then { _target = _target + _solar * 0.7 * 15; };
+            if (!_inShade) then { _target = _target + ([0.7, _solarFlux, 0.9, _airTemp, _windSpeed] call FUNC(solarElevation)); };
 
             if (isEngineOn _obj) then {
                 // Engine running: accumulate run time and warm the body.
@@ -241,7 +269,7 @@ private _infantryCount = 0;
             // Painted static weapon: paint lowers solar absorption.
             _emissivity = 0.92;
             _tau = 120;
-            if (!_inShade) then { _target = _target + _solar * 0.6 * 15; };
+            if (!_inShade) then { _target = _target + ([0.6, _solarFlux, 0.92, _airTemp, _windSpeed] call FUNC(solarElevation)); };
         };
 
         // Convective cooling pulls the surface toward air temperature.
@@ -301,6 +329,12 @@ private _infantryCount = 0;
     _thermalState set [_objKey, [_currentTemp, _engineRunTime, _now, _acclimatisation, _obj]];
     _results pushBack [_obj, round (_reportedTemp * 10) / 10];
 
+    // Ground thermal painting (issue #124): vehicles lay tyre/stamp
+    // patches, a parked-then-driven vehicle leaves a cool shade patch,
+    // soldiers leave boot-print heat.  Cheap - one contact stamp per
+    // tracked object per tick, and the ground solve adds it back.
+    _obj call FUNC(applyGroundContactStamps);
+
     if (_isInfantry) then {
         _infantrySum = _infantrySum + _currentTemp;
         _infantryCount = _infantryCount + 1;
@@ -312,20 +346,20 @@ private _infantryCount = 0;
     };
 } forEach _objects;
 
-// ─── Conduction / radiant coupling between nearby objects ─────────────────
+// ─── Radiant coupling between nearby objects (issue #124 audit) ───────────
 // A hot object (running engine, exhaust, fire) transfers heat to objects
 // close to it: the radiator heats the air around the engine bay, a parked
-// car beside a running one warms slowly, a burning vehicle heats
-// everything within metres.  Real thermodynamics: heat flows from hot to
-// cold, faster when the temperature difference is larger and the gap
-// smaller.  The engine has no per-surface conduction model, so this is a
-// proximity term on the per-object equilibrium: each object receives a
-// small share of a nearby hotter object's surplus, scaled by 1/distance.
+// car beside a running one warms slowly, a burning vehicle radiates
+// enough to cook everything within metres.  Real heat flow is
+// Stefan-Boltzmann radiant exchange to the fourth power (a fire at
+// 600 C radiates ~100x more than a warm engine at 100 C), so the old
+// linear `surplus / d^2` model under-radiated fires and over-coupled
+// warm neighbours.
 //
 // One pass over the stored state: for each object with a hot neighbour
-// (within 10 m, at least 5 C warmer), pull its temperature up a little.
-// The effect is small per tick (heat takes time to transfer) and bounded
-// so it cannot destabilise the solve.  Hot sources are gathered once.
+// (within 10 m, at least 5 C warmer), pull its temperature up by the
+// radiant share.  The effect is bounded so it cannot destabilise the
+// solve.  Hot sources are gathered once.
 private _hotSources = [];
 {
     _x params ["_nKey", "_nVal"];
@@ -353,13 +387,22 @@ private _hotSources = [];
         if (_nTemp <= _oTemp + 5) then { continue; };   // not hot enough
         private _d = _oObj distance _nObj;
         if (_d > 10) then { continue; };
-        // Radiant transfer ~ (1/d^2) scaled: a hot neighbour 2 m away
-        // with 40 C surplus contributes ~3 C; 8 m away ~0.2 C; 80 C
-        // surplus at 3 m ~2.7 C.  The coupling only nudges, never
-        // dominates (the surplus is spread over distance^2 and the
-        // result is bounded).
-        private _surplus = _nTemp - _oTemp;
-        private _share = (_surplus * (0.3 / (_d * _d))) min 4;
+
+        // REAL radiant exchange (issue #124 audit): the old linear
+        // `_surplus * (0.3 / d^2)` was wrong twice.  Radiant flux is
+        // Stefan-Boltzmann to the FOURTH power:
+        //   q = F_ij * eps * sigma * (T1^4 - T2^4)     [W/m2]
+        // and the receiving surface's temperature elevation is q / h.
+        // A fire (600 C) radiates ~100x more than a warm engine (100 C)
+        // and, being a large-area emitter, does NOT fall off as 1/d^2
+        // over the 10 m reach - it cooks everything nearby.  The view
+        // factor F captures that: a burning vehicle is a near-blackbody
+        // hemisphere (F ~0.5), a warm engine a modest radiator (F ~0.05).
+        private _hotK = _nTemp + 273.15;
+        private _coldK = _oTemp + 273.15;
+        private _fView = [0.05, 0.5] select (_nTemp > 300);
+        private _qRad = _fView * 0.9 * 5.670374419e-8 * ((_hotK ^ 4) - (_coldK ^ 4));
+        private _share = _qRad / 10;   // h ~10 W/m2K (windy ambient)
         _coupling = _coupling + _share;
     } forEach _hotSources;
 

@@ -18,7 +18,7 @@ Stores:
   QGVAR(fireArea_m2)            — integrated fire area
 */
 
-private _RH = EGVAR(core,currentHumidity);
+private _RH = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
 private _windSpeed = vectorMagnitude wind;
 private _groundState = missionNamespace getVariable [QEGVAR(core,groundState), "Normal"];
 private _rainAccum = missionNamespace getVariable [QEGVAR(core,rainAccum), 0];

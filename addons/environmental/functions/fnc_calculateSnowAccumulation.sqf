@@ -18,15 +18,18 @@ Clamped 0–max snow depth.
 Stored in QEGVAR(core,snowDepth_m) and QGVAR(snowDriftIntensity) (0–1).
 */
 
-private _T = EGVAR(core,currentTemperature);
+private _T = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
 
 private _depth = missionNamespace getVariable [QEGVAR(core,snowDepth_m), 0];
 
+private _accretionRate = missionNamespace getVariable [QGVAR(SnowAccretionRate), 0.01];
+private _maxSnowDepth = missionNamespace getVariable [QGVAR(MaxSnowDepth), 3.0];
+
 if (!isNil "_T") then {
     // ─── Accretion — cold AND moisture (precipitation or heavy overcast) ──
     if (_T < 0 && (rain > 0 || overcast > 0.7)) then {
-        _depth = _depth + (rain * GVAR(SnowAccretionRate) * (_interval / 5));
+        _depth = _depth + (rain * _accretionRate * (_interval / 5));
     };
 
     // ─── Melt — degree-day melt ~3 mm per °C per day, scaled to tick ──────
@@ -37,7 +40,7 @@ if (!isNil "_T") then {
     // 0–2 °C: stall (no change)
 };
 
-_depth = _depth max 0 min GVAR(MaxSnowDepth);
+_depth = _depth max 0 min _maxSnowDepth;
 
 // ─── Wind drifting ────────────────────────────────────────────────────────
 private _windSpd = vectorMagnitude wind;

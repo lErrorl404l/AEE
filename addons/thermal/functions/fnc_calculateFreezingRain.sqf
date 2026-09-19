@@ -12,7 +12,7 @@ Sets GVAR(currentFreezingRain)  — bool
 Sets GVAR(currentIcingSeverity) — float 0–1
 */
 
-private _T_C = EGVAR(core,currentTemperature);
+private _T_C = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 private _rain = rain;
 
 if (isNil "_T_C")  exitWith {};
