@@ -38,7 +38,7 @@ Physics (all sourced - issue #189 audit standards):
     equilibrium - feeding it the solve value makes shivering positive
     feedback and the fixed point explodes (traced to 1363 C).
 
-  Respiratory loss (Gagge 1986): 
+  Respiratory loss (Gagge 1986):
     C_res = 0.0014*M*(34 - T_db), E_res = 0.0023*M*(44 - p_a)
     [W/m2, p_a in torr] - breathing carries heat before circulation.
 
