@@ -26,7 +26,7 @@ if (!hasInterface) exitWith { 0 };
 
 // ─── EXIT: restore every saved texture ───────────────────────────────────
 if (_mode == "EXIT") then {
-    ["", "", "EXIT"] call EFUNC(thermal,applySelectionThermal);   // restore all saved
+    ["", "", "EXIT"] call FUNC(applySelectionThermal);   // restore all saved
     0
 };
 
@@ -160,13 +160,13 @@ if !(_solarRadiation isEqualType 0) then { _solarRadiation = 0; };
                 _fGround = 0.2;         // roof sees mostly sky
             };
         };
-        [_obj, (_selNames select _selIdx), "", _qInternal, _fGround] call EFUNC(thermal,applySelectionThermal);
+        [_obj, (_selNames select _selIdx), "", _qInternal, _fGround] call FUNC(applySelectionThermal);
         _applied = _applied + 1;
     } forEach _selections;
 } forEach _objects;
 
 // Diagnostic: confirms the physics baseline applies in-game.
-if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
+if (missionNamespace getVariable [QEGVAR(optics,nvgDebug), false]) then {
     diag_log text format ["[AEE] Building thermal: %1 found, %2 selections painted (T=%3)",
         count _objects, _applied, round _airTemp];
 };

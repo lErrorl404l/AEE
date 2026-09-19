@@ -556,14 +556,14 @@ class TestRootCauseRegressions(unittest.TestCase):
         # gone; the substrate's safe fallback is present.
         from pathlib import Path
 
-        text = Path("addons/optics/functions/fnc_applyClothingThermal.sqf").read_text(
+        text = Path("addons/thermal/functions/fnc_applyClothingThermal.sqf").read_text(
             encoding="utf-8"
         )
         self.assertNotIn('_m find "cloth" >= 0', text)
         self.assertNotIn('_m == "" ||', text)
         self.assertNotIn("Unknown material: swap", text)
         # The substrate path must be used instead.
-        self.assertIn("EFUNC(thermal,applySelectionThermal)", text)
+        self.assertIn("FUNC(applySelectionThermal)", text)
         # And the scrapped rvmat override names must not be referenced.
         self.assertNotIn("ti_cloth_cold.rvmat", text)
         self.assertNotIn("ti_cloth_hot.rvmat", text)

@@ -86,7 +86,7 @@ if (isNull _src) then {
         // [1,0,1,1] or yellow [1,1,0,1]) to make droplets unmistakable
         // against the green NVG image while verifying the emitter works.
         missionNamespace getVariable [QGVAR(rainDropColor),
-            if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
+            if (missionNamespace getVariable [QEGVAR(optics,nvgDebug), false]) then {
                 [[1, 0, 1, 1], [1, 0, 1, 0.8]]
             } else {
                 [[1, 1, 1, 1], [1, 1, 1, 0.8]]
@@ -108,7 +108,7 @@ if (isNull _src) then {
 // camera direction so droplets sit on the lens wherever the player looks.
 // Consumes the SHARED eye state (fnc_getEyeState) - the single source of
 // truth for eye position + gaze vector, cached once per frame.
-private _eyeState = [_player] call FUNC(getEyeState);
+private _eyeState = [_player] call EFUNC(optics,getEyeState);
 private _eye = _eyeState select 0;
 private _camDir = _eyeState select 1;
 private _eyeVel = _eyeState select 3;
@@ -139,7 +139,7 @@ _src setParticleParams [
     0,                                        // rubbing: no wind (on lens)
     [0.05, 0.08],                             // size: 5-8 cm
     missionNamespace getVariable [QGVAR(rainDropColor),
-        if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
+        if (missionNamespace getVariable [QEGVAR(optics,nvgDebug), false]) then {
             [[1, 0, 1, 1], [1, 0, 1, 0.8]]
         } else {
             [[1, 1, 1, 1], [1, 1, 1, 0.8]]

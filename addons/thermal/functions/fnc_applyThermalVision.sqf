@@ -69,7 +69,7 @@ if (currentVisionMode _player != 2) exitWith {
 // Defensive: a nil or non-numeric stored contrast (bad variable state)
 // must not propagate into ppEffectAdjust — "Type Number, expected Number"
 // otherwise fires every tick.  Default to full contrast.
-private _contrast = missionNamespace getVariable [QGVAR(currentThermalContrast), 1];
+private _contrast = missionNamespace getVariable [QEGVAR(optics,currentThermalContrast), 1];
 if !(_contrast isEqualType 0) then { _contrast = 1; };
 _contrast = 0 max _contrast min 1;
 
@@ -101,7 +101,7 @@ private _windowBlur = 0;
 if (_fogDensity > 0.1) then {
     _windowBlur = _windowBlur + linearConversion [0.1, 0.8, _fogDensity, 0.0, 0.2, true];
 };
-private _rainS = ([] call FUNC(getSmoothedWeather)) select 0;
+private _rainS = ([] call EFUNC(optics,getSmoothedWeather)) select 0;
 if (_rainS > 0.1) then {
     _windowBlur = _windowBlur + linearConversion [0.1, 1.0, _rainS, 0.0, 0.15, true];
 };
@@ -215,7 +215,7 @@ _hBlur ppEffectForceInNVG true;
 
 // Diagnostics: set aee_optics_nvgDebug = true in the debug console to log
 // every thermal tick's handles and params to the .rpt.
-if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
+if (missionNamespace getVariable [QEGVAR(optics,nvgDebug), false]) then {
     diag_log text format [
         "[AEE] Thermal tick | visMode=%1 contrast=%2 crossover=%3 | handles CC=%4 grain=%5 blur=%6 | CC params %7 | grain=%8 blur=%9",
         currentVisionMode _player,
