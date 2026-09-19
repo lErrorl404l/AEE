@@ -141,18 +141,23 @@ def combined_h(wind, dT, L_char, orientation):
     return (h_f**3 + h_n**3) ** (1.0 / 3.0)
 
 
-def gagge_blood_flow(t_sk, t_cr):
+def gagge_blood_flow(t_sk, t_cr, blood_frac=1.0):
     """Gagge 1986 skin blood flow (L/(h·m2)):
     m_bl = (6.3 + 200·W_sig)/(1 + 0.5·C_sig)
     W_sig = max(0, T_sk - 33.7) (vasodilation)
     C_sig = max(0, 33.7 - T_sk) (vasoconstriction)
     Capped at 14.4 L/(h·m2) (240 ml/min/m2 max vasodilation, from the
     segment research: skin blood flow 240 vasodilated at 35C, 105
-    neutral at 30C = 6.3 L/(h·m2)) and floored at 0.5."""
+    neutral at 30C = 6.3 L/(h·m2)) and floored at 0.5.
+    Shock vasoconstriction (issue #196): blood loss scales skin
+    perfusion directly (before any temperature signal) - the classic
+    cold-extremities sign with a defended core.  blood_frac 0..1,
+    matching the SQF `_mBl * (0.3 + 0.7 * _bloodFrac)`."""
     w_sig = max(0.0, t_sk - T_SK_NEUTRAL)
     c_sig = max(0.0, T_SK_NEUTRAL - t_sk)
     m_bl = (6.3 + 200.0 * w_sig) / (1.0 + 0.5 * c_sig)
-    return min(max(m_bl, 0.5), 14.4)
+    m_bl = min(max(m_bl, 0.5), 14.4)
+    return m_bl * (0.3 + 0.7 * max(0.0, min(blood_frac, 1.0)))
 
 
 def gagge_evaporative(t_sk, t_cr, t_air, rh, h_c, v_bl):
@@ -211,6 +216,7 @@ def solve_two_node(
     L_cond=0.05,
     evap_on=True,
     n_steps=1,
+    blood_frac=1.0,
 ):
     """Core/skin coupled solve.
 
@@ -250,7 +256,7 @@ def solve_two_node(
     # find the JOINT fixed point where both dTc/dt = 0 and the skin
     # balance hold, then apply one transient step.
     if is_human:
-        m_bl = gagge_blood_flow(t_skin0, t_core0)  # L/(h·m2)
+        m_bl = gagge_blood_flow(t_skin0, t_core0, blood_frac)  # L/(h·m2)
         cpl = C_P_BL * m_bl / 3600.0  # W/(m2·K)
         k_coupling = (K_MIN + cpl) * area
     else:
@@ -276,7 +282,7 @@ def solve_two_node(
     for _ in range(12):
         # Blood flow updates with the current skin temp (Gagge sigmoid).
         if is_human:
-            m_bl = gagge_blood_flow(t_sk, t_cr)
+            m_bl = gagge_blood_flow(t_sk, t_cr, blood_frac)
             cpl = C_P_BL * m_bl / 3600.0
             k_coupling = (K_MIN + cpl) * area
         else:
@@ -486,6 +492,72 @@ class TestTwoNodeSolve(unittest.TestCase):
         self.assertGreater(q_shiv, 1.0)  # shivering must engage
         self.assertGreater(tc, 35.5)  # core held above 35.5 by shivering
         self.assertLess(ts, 33.7)  # skin constricted below neutral
+
+    def test_shock_vasoconstriction_cold_extremities(self):
+        # Issue #196: blood loss vasoconstricts the skin BEFORE any
+        # temperature signal - the classic cold-extremities sign with a
+        # defended core.  A soldier at 30% blood volume (blood_frac 0.3)
+        # must read COLDER skin on FLIR than a healthy one while the
+        # core holds: the skin blood flow is scaled by blood volume, so
+        # the skin decouples from the core's heat.  Same environment for
+        # both runs; only blood_frac differs.
+        human = MATERIALS["human"]
+        healthy = solve_two_node(
+            core=human,
+            skin=human,
+            t_air=20,
+            wind=0.5,
+            solar=0,
+            exposure=0.5,
+            m_core=50,
+            m_skin=20,
+            area=A_D,
+            L_char=0.15,
+            t_core0=36.8,
+            t_skin0=33.7,
+            q_gen=MET * A_D,
+            orientation="vertical",
+            rh=0.5,
+            dt=5,
+            t_ground=20,
+            is_human=True,
+            L_cond=0.05,
+            n_steps=600,
+            blood_frac=1.0,
+        )
+        shocked = solve_two_node(
+            core=human,
+            skin=human,
+            t_air=20,
+            wind=0.5,
+            solar=0,
+            exposure=0.5,
+            m_core=50,
+            m_skin=20,
+            area=A_D,
+            L_char=0.15,
+            t_core0=36.8,
+            t_skin0=33.7,
+            q_gen=MET * A_D,
+            orientation="vertical",
+            rh=0.5,
+            dt=5,
+            t_ground=20,
+            is_human=True,
+            L_cond=0.05,
+            n_steps=600,
+            blood_frac=0.3,
+        )
+        # Skin flow at blood_frac 0.3: scaled by (0.3 + 0.7*0.3) = 0.51.
+        self.assertLess(
+            gagge_blood_flow(33.7, 36.8, 0.3), gagge_blood_flow(33.7, 36.8, 1.0)
+        )
+        # Shocked skin reads colder than healthy skin (FLIR visible).
+        self.assertLess(shocked[1], healthy[1])
+        # Core still defended: shock vasoconstriction redirects blood
+        # centrally, it does not cool the core outright.
+        self.assertGreater(shocked[0], 35.5)
+        self.assertGreater(shocked[0], shocked[1])
 
     def test_engine_core_above_skin(self):
         # Idle engine: q_gen 4600 W over 6 m2, block 90C cooling to ambient
