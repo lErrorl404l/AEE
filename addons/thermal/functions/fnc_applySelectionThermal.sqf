@@ -137,6 +137,25 @@ if (_mode == "EXIT") then {
             // in the core balance.
             private _qMet = 58.2 * 1.8258;
 
+            // ─── Blood-volume physiology (issue #196) ────────────────────────
+            // VO2 - and so metabolic heat - is FLAT until DO2crit, the
+            // oxygen-delivery limit, then collapses.  DO2crit is reached
+            // at ~50% blood volume loss (Guyton & Hall; ATLS class III
+            // starts at 30% loss, class IV at 40%): above the limit the
+            // circulation delivers oxygen and heat production holds at
+            // basal; below it the body falls back to anaerobic ATP
+            // (Seekamp 1999) and heat production falls toward zero.  A
+            // corpse makes none at all.  The old surface path scaled
+            // metabolism linearly from the first drop of blood - the
+            // physiology says it holds until DO2crit.  (ACE
+            // ace_medical_bloodVolume, 6.0 L full; vanilla fallback.)
+            private _bloodVol = _obj getVariable ["ace_medical_bloodVolume", 6.0];
+            if !(_bloodVol isEqualType 0) then { _bloodVol = 6.0; };
+            private _bloodFrac = (_bloodVol max 0 min 6) / 6.0;
+            private _metabFrac = if (_bloodFrac >= 0.5) then { 1 } else { _bloodFrac / 0.5 };
+            if (!alive _obj) then { _metabFrac = 0; };
+            _qMet = _qMet * _metabFrac;
+
             // ─── Water immersion state (issue #193) ──────────────────────────
             // Immersion = below the water surface at a water position.
             // getPosASL z negative = submerged; surfaceIsWater confirms
@@ -168,7 +187,7 @@ if (_mode == "EXIT") then {
                 _tCurrent, _tCurrent,   // core/skin current temps
                 _qMet,                  // qGen: resting metabolism (W)
                 "vertical", 0.5, _mrt, true, 0.05, true, 5,
-                _waterSpeed, _tWater, _rain
+                _waterSpeed, _tWater, _rain, _bloodFrac
             ] call FUNC(solveTwoNodeSelection);
             _tNew = _two select 1;      // skin temp - what FLIR sees
         } else {
