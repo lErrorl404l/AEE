@@ -1897,6 +1897,34 @@ class TestClothingThermal(unittest.TestCase):
             self.assertNotIn("class StageTI", rv)
             self.assertIn("class Stage1", rv)
             self.assertIn("color(", rv)
+            # The TI image falls back to the DIFFUSE (no StageTI present).
+            # The diffuse must carry the band grey - a diffuse of
+            # {1,1,1,1} (white) made every swapped object render
+            # white-hot in TI regardless of the physics brightness
+            # (issue #204, in-game proven: everything white except the
+            # un-swapped terrain).  Extract both the diffuse and the
+            # Stage1 texture grey and require they match.
+            import re
+
+            def _first_grey(pattern: str) -> float:
+                m = re.search(pattern, rv)
+                if m is None:
+                    self.fail(f"pattern {pattern} not found in {f.name}")
+                return float(m.group(1))
+
+            expected = pct / 100.0
+            self.assertAlmostEqual(
+                _first_grey(r"diffuse\[\]\s*=\s*\{([\d.]+),"),
+                expected,
+                places=2,
+                msg=f"{f.name} diffuse must carry band grey {expected}",
+            )
+            self.assertAlmostEqual(
+                _first_grey(r"color\(([\d.]+),"),
+                expected,
+                places=2,
+                msg=f"{f.name} Stage1 grey must match band {expected}",
+            )
 
 
 def test_ti_texture_polarity(self):
