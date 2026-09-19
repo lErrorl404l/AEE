@@ -11,7 +11,7 @@
  * 13, scaled by our radiation).
  *
  * USAGE (debug console, LOCAL):
- *   aee_optics_nvgDebug = true;
+ *   aee_nightvision_nvgDebug = true;
  *   [] execVM "tools\sweep_thermal.sqf";
  *
  * Logs [AEE_SWEEP] lines; analyse with tools/analyze_thermal_sweep.py.

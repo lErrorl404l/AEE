@@ -1,4 +1,4 @@
-aee_optics_nvgDebug = true;
+aee_nightvision_nvgDebug = true;
 if !(isNil "aee_optics_sweepPFH") then {
     [aee_optics_sweepPFH] call CBA_fnc_removePerFrameHandler;
 };

@@ -9,15 +9,24 @@
 
 aee_core_coreBodyTemp  body-temp model not built yet; KAT falls back to default 37 (issue #64)
 aee_environmental_rainRateOverride  docker test override hook (written in tests/docker mission)
-aee_optics_nvgDebug  debug console knob (documented in fnc_applyNVGTubeModel.sqf)
-aee_optics_rainDropColor  debug console knob (documented in fnc_applyRainDroplets.sqf)
+aee_nightvision_nvgDebug  debug console knob (documented in fnc_applyNVGTubeModel.sqf)
+aee_thermal_rainDropColor  debug console knob (documented in fnc_applyRainDroplets.sqf)
 aee_optics_starlightLux  tuning knob (documented in fnc_calculateIlluminance.sqf)
-aee_optics_titleDisplay  uiNamespace RscTitles display handle, written by the display layer
+aee_nightvision_titleDisplay  uiNamespace RscTitles display handle, written by the display layer
 aee_physiology_ozoneDU  ozone-column producer pending (issue #35 cross-addon wiring)
 aee_radio_frequency  radio frequency producer pending (issue #35 cross-addon wiring)
 aee_radio_radioFrequencyHz  radio frequency producer pending (issue #35 cross-addon wiring)
 aee_radio_radioLinkRangeM  radio link range producer pending (issue #35 cross-addon wiring)
 aee_radio_sunspotNumber  sunspot producer pending (issue #35 cross-addon wiring)
 aee_compat_acm_hypoxiaDutyFactor  external API name passed to ACE3 addSpO2DutyFactor, not an AEE variable
-aee_optics_nvgTitle  RscTitles config class name, not a runtime variable
+aee_nightvision_nvgTitle  RscTitles config class name, not a runtime variable
 aee_physiology_diveMix  external breathing-gas hook (issue #118); set by diving addons (e.g. ADE) to [fN2, fHe, fO2]
+aee_nightvision_ppHandle_FilmGrain  dynamic ppEffect handle: written via setVariable [_store, _handle] in the create loop (validator cannot trace the opaque _store)
+aee_nightvision_ppHandle_NVG_Bloom  dynamic ppEffect handle: written via setVariable [_store, _handle] in the create loop
+aee_nightvision_ppHandle_NVG_CC  dynamic ppEffect handle: written via setVariable [_store, _handle] in the create loop
+aee_nightvision_ppHandle_NVG_Grain  dynamic ppEffect handle: written via setVariable [_store, _handle] in the create loop
+aee_nightvision_ppHandle_NVG_Vignette  dynamic ppEffect handle: written via setVariable [_store, _handle] in the create loop
+aee_thermal_ppHandle_Thermal_Blur  dynamic ppEffect handle: written via setVariable [_store, _handle] in the create loop
+aee_thermal_ppHandle_Thermal_CC  dynamic ppEffect handle: written via setVariable [_store, _handle] in the create loop
+aee_thermal_ppHandle_Thermal_Grain  dynamic ppEffect handle: written via setVariable [_store, _handle] in the create loop
+aee_thermal_ppHandle_Thermal_Vignette  dynamic ppEffect handle: written via setVariable [_store, _handle] in the create loop

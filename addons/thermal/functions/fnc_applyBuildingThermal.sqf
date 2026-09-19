@@ -166,7 +166,7 @@ if !(_solarRadiation isEqualType 0) then { _solarRadiation = 0; };
 } forEach _objects;
 
 // Diagnostic: confirms the physics baseline applies in-game.
-if (missionNamespace getVariable [QEGVAR(optics,nvgDebug), false]) then {
+if (missionNamespace getVariable [QEGVAR(nightvision,nvgDebug), false]) then {
     diag_log text format ["[AEE] Building thermal: %1 found, %2 selections painted (T=%3)",
         count _objects, _applied, round _airTemp];
 };

@@ -53,7 +53,7 @@ def main() -> int:
 
     rows = parse_rpt(Path(args.rpt))
     if not rows:
-        print("No [AEE_SWEEP] lines found.  Set aee_optics_nvgDebug and run the sweep.")
+        print("No [AEE_SWEEP] lines found.  Set aee_nightvision_nvgDebug and run the sweep.")
         return 1
 
     print(f"{'hour':>4} {'rad':>7} {'bright':>7} {'air':>6} {'objT':>7}")

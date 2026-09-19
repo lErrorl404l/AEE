@@ -235,7 +235,7 @@ import re
 NVG_SQF = os.path.join(
     os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
     "addons",
-    "optics",
+    "nightvision",
     "functions",
     "fnc_applyNVGTubeModel.sqf",
 )
