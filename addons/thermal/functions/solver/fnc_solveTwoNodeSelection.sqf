@@ -280,13 +280,26 @@ for "_i" from 1 to 12 do {
     };
     // Respiratory loss (Gagge 1986), p_a in torr.
     private _pA = (_tAir call _psat) * _rh / 133.322;
-    private _qResp = 0.0014 * 58.2 * (34 - _tAir) + 0.0023 * 58.2 * (44 - _pA);
+    // Respiratory loss (Gagge 1986) is HUMAN physiology - a vehicle
+    // panel does not breathe.  Applied to inert objects it drains heat
+    // from an object that has no metabolic source (wrong direction).
+    private _qResp = 0;
+    if (_isHuman) then {
+        _qResp = 0.0014 * 58.2 * (34 - _tAir) + 0.0023 * 58.2 * (44 - _pA);
+    };
     // Shivering (Gagge): 19.4 * C_sig * C_core_sig, from the PERSISTENT
     // core (t_core0) - never the iterating equilibrium (feedback
-    // explosion traced to 1363 C).
-    private _cSig2 = (33.7 - _tSk) max 0;
-    private _cCoreSig = (36.8 - _tCore0) max 0;
-    private _qShiv = 19.4 * _cSig2 * _cCoreSig;
+    // explosion traced to 1363 C).  HUMAN ONLY: a cold parked vehicle
+    // at midnight was receiving q_shiv ~6400 W/m2 (c_sig 16.7 x c_core
+    // 19.8) - 38 kW into a 6 m2 panel, 360x a human's resting
+    // metabolism - and climbed chaotically to 36-40 C (the in-game
+    // 'everything white at midnight' report).  A vehicle cannot shiver.
+    private _qShiv = 0;
+    if (_isHuman) then {
+        private _cSig2 = (33.7 - _tSk) max 0;
+        private _cCoreSig = (36.8 - _tCore0) max 0;
+        _qShiv = 19.4 * _cSig2 * _cCoreSig;
+    };
     // Analytic core solution (linear residual).
     _tCr = _tSk + (_qGen + _qShiv * _area - _qResp * _area) / (_kCoupling + 1e-6);
     // Skin residual.

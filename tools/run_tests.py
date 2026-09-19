@@ -53,6 +53,15 @@ def main():
         "tools/tests/test_ice_avalanche.py",
         "tools/tests/test_concealment.py",
         "tools/tests/test_gloc.py",
+        "tools/tests/test_two_node.py",
+        "tools/tests/test_sqf_two_node.py",
+        "tools/tests/test_ground_node_stack.py",
+        "tools/tests/test_water_thermal.py",
+        "tools/tests/test_wet_ground.py",
+        "tools/tests/test_audit_189.py",
+        "tools/tests/test_frost.py",
+        "tools/tests/test_geolocation.py",
+        "tools/tests/test_material.py",
     ]
     # Only run suites that exist (module suites are added incrementally).
     existing = [s for s in suites if os.path.exists(os.path.join(ROOT, s))]
