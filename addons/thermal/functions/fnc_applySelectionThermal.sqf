@@ -41,13 +41,19 @@ Arguments:
   0: object (OBJECT)
   1: selection name (STRING) - "" for whole-object fallback
   2: mode (STRING, optional) - "EXIT" restores saved textures
+  3: internal heat (NUMBER, optional, W/m2) - engine/exhaust/friction
+     per selection, default 0 (solar + ambient only)
+  4: ground view factor (NUMBER, optional, 0..1) - the MRT ground
+     weight for the radiation term; a tyre sees ~0.7 ground, a roof
+     ~0.3, a standing soldier 0.5
 */
-params ["_obj", "_selection", ["_mode", ""]];
+params ["_obj", "_selection", ["_mode", ""], ["_qInternal", 0, [0]], ["_fGround", 0.5, [0]]];
 
-if (isNull _obj || {!hasInterface}) exitWith { 0 };
-
-// ─── EXIT: restore every saved texture ────────────────────────────────────
 if (_mode == "EXIT") then {
+    // ─── EXIT: restore every saved texture ──────────────────────────────────
+    // Runs BEFORE the object guard: the EXIT path is global (restores every
+    // saved object), so callers may invoke it with a dummy object, e.g.
+    // fnc_applyBuildingThermal's mode-off handler calls ["", "", "EXIT"].
     private _saved = missionNamespace getVariable [QGVAR(selThermalSaved), []];
     {
         _x params ["_o", "_oldTexs", "_selNames"];
@@ -62,61 +68,63 @@ if (_mode == "EXIT") then {
         };
     } forEach _saved;
     missionNamespace setVariable [QGVAR(selThermalSaved), []];
-};
+} else {
+    if (isNull _obj || {!hasInterface}) exitWith { 0 };
 
-// ─── Solve and apply ──────────────────────────────────────────────────────
-private _selNames = if (_selection == "") then { [] } else { [_selection] };
-if (_selNames isEqualTo []) then {
-    _selNames = selectionNames _obj;
-};
-
-// Save originals once per object per pass (first apply).
-private _saved = missionNamespace getVariable [QGVAR(selThermalSaved), []];
-private _alreadySaved = _saved findIf { (_x select 0) == _obj };
-if (_alreadySaved < 0) then {
-    private _oldTexs = getObjectTextures _obj;
-    _saved pushBack [_obj, _oldTexs, _selNames];
-    missionNamespace setVariable [QGVAR(selThermalSaved), _saved];
-};
-
-// Ambient + wind + solar from the core environment state.
-private _tAir = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
-private _wind = vectorMagnitude (missionNamespace getVariable [QEGVAR(core,currentWind), [0,0,0]]);
-private _solar = missionNamespace getVariable [QEGVAR(core,currentSolarFlux), 0];
-
-{
-    private _sel = _x;
-    private _idx = (selectionNames _obj) find _sel;
-    if (_idx < 0) then { continue; };
-
-    // Shade exposure: roof/upper selections get full sun, lower panels
-    // less (self-shadow).  Refined by the object's existing shade ray.
-    private _exposure = 1;
-    if (_sel find "wheel" >= 0 || {_sel find "undercarriage" >= 0}) then {
-        _exposure = 0.15;   // tyres/undercarriage: mostly self-shadowed
+    // ─── Solve and apply ──────────────────────────────────────────────────
+    private _selNames = if (_selection == "") then { [] } else { [_selection] };
+    if (_selNames isEqualTo []) then {
+        _selNames = selectionNames _obj;
     };
 
-    // Current per-selection temperature from the object solver state.
-    private _stateKey = format ["%1|%2", str _obj, _sel];
-    private _tCurrent = missionNamespace getVariable [QGVAR(selTemperature), createHashMap] getOrDefault [_stateKey, _tAir];
+    // Save originals once per object per pass (first apply).
+    private _saved = missionNamespace getVariable [QGVAR(selThermalSaved), []];
+    private _alreadySaved = _saved findIf { (_x select 0) == _obj };
+    if (_alreadySaved < 0) then {
+        private _oldTexs = getObjectTextures _obj;
+        _saved pushBack [_obj, _oldTexs, _selNames];
+        missionNamespace setVariable [QGVAR(selThermalSaved), _saved];
+    };
 
-    private _tNew = [
-        _obj, _sel, _tAir, _wind, _solar, _exposure, 0, _tCurrent
-    ] call FUNC(solveSelectionTemperature);
+    // Ambient + wind + solar from the core environment state.
+    private _tAir = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
+    private _wind = vectorMagnitude (missionNamespace getVariable [QEGVAR(core,currentWind), [0,0,0]]);
+    private _solar = missionNamespace getVariable [QEGVAR(core,currentSolarFlux), 0];
 
-    // Persist for the next tick's inertia term.
-    private _selMap = missionNamespace getVariable [QGVAR(selTemperature), createHashMap];
-    _selMap set [_stateKey, _tNew];
-    missionNamespace setVariable [QGVAR(selTemperature), _selMap];
+    {
+        private _sel = _x;
+        private _idx = (selectionNames _obj) find _sel;
+        if (_idx < 0) then { continue; };
 
-    // FLIR white-hot: apparent temperature with emissivity correction.
-    private _mat = ([_obj, _sel] call FUNC(getSelectionMaterials)) call FUNC(getMaterialThermal);
-    private _eps = _mat select 0;
-    private _tApparent = (_tNew + 273.15) * (_eps ^ 0.25) - 273.15;
-    private _b = ((_tApparent + 40) / 190) max 0 min 1;   // -40..150 C window
-    private _colour = format ["#(rgb,8,8,3)color(%1,%1,%1,1)", _b];
+        // Shade exposure: roof/upper selections get full sun, lower panels
+        // less (self-shadow).  Refined by the object's existing shade ray.
+        private _exposure = 1;
+        if (_sel find "wheel" >= 0 || {_sel find "undercarriage" >= 0}) then {
+            _exposure = 0.15;   // tyres/undercarriage: mostly self-shadowed
+        };
 
-    _obj setObjectTexture [_idx, _colour];
-} forEach _selNames;
+        // Current per-selection temperature from the object solver state.
+        private _stateKey = format ["%1|%2", str _obj, _sel];
+        private _tCurrent = missionNamespace getVariable [QGVAR(selTemperature), createHashMap] getOrDefault [_stateKey, _tAir];
+
+        private _tNew = [
+            _obj, _sel, _tAir, _wind, _solar, _exposure, _qInternal, _tCurrent, _fGround
+        ] call FUNC(solveSelectionTemperature);
+
+        // Persist for the next tick's inertia term.
+        private _selMap = missionNamespace getVariable [QGVAR(selTemperature), createHashMap];
+        _selMap set [_stateKey, _tNew];
+        missionNamespace setVariable [QGVAR(selTemperature), _selMap];
+
+        // FLIR white-hot: apparent temperature with emissivity correction.
+        private _mat = ([_obj, _sel] call FUNC(getSelectionMaterials)) call FUNC(getMaterialThermal);
+        private _eps = _mat select 0;
+        private _tApparent = (_tNew + 273.15) * (_eps ^ 0.25) - 273.15;
+        private _b = ((_tApparent + 40) / 190) max 0 min 1;   // -40..150 C window
+        private _colour = format ["#(rgb,8,8,3)color(%1,%1,%1,1)", _b];
+
+        _obj setObjectTexture [_idx, _colour];
+    } forEach _selNames;
+};
 
 0
