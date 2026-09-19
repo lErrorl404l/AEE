@@ -305,3 +305,55 @@ ColorCorrections + grain + blur + refresh-rate settings for that optic.
 Per-vehicle config profiles (class MKK_TI in the vehicle's CfgVehicles)
 provide the same overrides per vehicle class.  The active profile is
 selected by the player's current optics/vehicle, not globally.
+## AEE's priority collision (the 5100 error, issue #204)
+
+Our ladder vs the proven A3TI/MKK ladder:
+
+| Effect type | Proven (A3TI/MKK) | AEE (current) |
+|---|---|---|
+| ChromAberration | 200/205 | 3000 (optics), shared |
+| DynamicBlur | 500/505 | 4000/4100/4200 |
+| FilmGrain | 2000/2005 | **5100** (thermal), 6000 (NVG) |
+| ColorCorrections | 2500/2505 | 5000/5100/5200 |
+| ColorInversion | 2501/2510 | (unused) |
+| RadialBlur | 1200/1300 | 1200/1300 |
+
+The RPT error "Cannot create custom post effect(type: 7), PE with same
+priority(5100) already exist" is the NVG `ColorCorrections` at 5100
+colliding with the thermal `FilmGrain` at 5100 when both modules are
+live.  The proven ladder keeps each effect type in its own band with
+LARGE gaps (200 → 500 → 2000 → 2500 → 2510), so the bump-loop never
+needs to climb.
+
+Fix direction: adopt the proven per-type bands and stop reusing the
+optics 3000/4000/5000 handles across modules.
+
+## Summary: the complete proven thermal stack
+
+The proven thermal rendering pipeline (A3TI/MKK), in order:
+
+1. Detect the active optic/vehicle config: `OpticsIn >> visionMode`
+   and `thermalMode[]` give the supported modes.
+2. On mode entry: `disableTIEquipment true` on the vehicle (kill the
+   vanilla TI channel so it does not fight ours).
+3. Base channel: DTV (0) for WHOT/BHOT thermal, NVG (1) for fusion.
+   The engine TI mode (2) is never used.
+4. `setAperture 15` at night (exposure boost), `-1` by day.
+5. Second sun lightpoint: brightness 13 (TI) / 0.8 (fusion),
+   `setLightDayLight`, attenuation `[10e10, 150, 4.3e-5, 4.3e-5]`,
+   ambient `[0.5, 0.5, 0.5]`.
+6. Object highlight: `setObjectTexture` + `setObjectMaterial` on the
+   thermal selections (all textures for Man; config override /
+   textureSources / all-but-MFD for vehicles) with a red procedural
+   texture (thermal) or EmissiveWhite (fusion).
+7. ppEffects over the base channel:
+   ChromAberration(205) → DynamicBlur(505) → FilmGrain(2005) →
+   ColorCorrections(2505, the spectrum matrix) → [ColorInversion(2510)
+   for BHOT].  Fusion effects additionally get
+   `ppEffectForceInNVG true`.
+8. `setTIParameter ["MaxResolution", ...]` per-FOV for sensor
+   pixelation; FilmGrain intensity re-jittered on a refresh-rate PFH
+   for the sensor-update flicker.
+9. Cleanup: destroy ALL created effects + delete the second sun +
+   restore object textures/materials + `setAperture -1` on mode exit
+   or context change.
