@@ -55,9 +55,11 @@ if (missionNamespace getVariable [QGVAR(glocEnabled), true]) then {
         // AGSM (active) — a simple auto-threshold: the player holds the
         // sustained G with their own control, modelled as the AGSM boost
         // being available at will.  G-suit + seat are config-derived.
-        private _agsm = missionNamespace getVariable [QGVAR(agsmAvailable), true];
-        private _gsuit = missionNamespace getVariable [QGVAR(gsuitEquipped), false];
-        private _reclined = missionNamespace getVariable [QGVAR(seatReclined), false];
+        // These are BOOLEAN toggles from the settings; the GLOC solver
+        // takes numeric 0..1 factors, so coerce with parseNumber.
+        private _agsm = parseNumber (missionNamespace getVariable [QGVAR(agsmAvailable), true]);
+        private _gsuit = parseNumber (missionNamespace getVariable [QGVAR(gsuitEquipped), false]);
+        private _reclined = parseNumber (missionNamespace getVariable [QGVAR(seatReclined), false]);
         private _hypoxRisk = missionNamespace getVariable [QEGVAR(core,currentHypoxiaRisk), 0];
         private _glocRes = [_gLevel, 3, _agsm, _gsuit, _reclined, _hypoxRisk] call FUNC(calculateGLOC);
         private _stage = _glocRes select 0;
