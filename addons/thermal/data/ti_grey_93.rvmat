@@ -1,5 +1,5 @@
 ambient[] = {1,1,1,1};
-diffuse[] = {1,1,1,1};
+diffuse[] = {0.933333,0.933333,0.933333,1};
 forcedDiffuse[] = {0,0,0,0};
 emmisive[] = {0,0,0,0};
 specular[] = {0,0,0,0};
