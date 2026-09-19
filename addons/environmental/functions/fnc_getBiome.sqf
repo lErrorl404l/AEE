@@ -63,7 +63,7 @@ if (_cached isNotEqualTo "") then { _cached } else {
 // temperate latitude is re-voted tropical by the strongest signal
 // (indicator species).  The latitude climate keeps every vote inside a
 // physically consistent band.
-private _lat = ([] call EFUNC(core,getWorldLatitude)) select 1;  // magnitude
+private _lat = ([] call EFUNC(core,getWorldLocation)) select 1;  // magnitude
 if (_lat == 0) then { _lat = 40; };
 
 // Run the one-time terrain scan if it has not happened yet (it may have

@@ -9,7 +9,7 @@ PREP(calculateSeededWeatherProgression);
 PREP(deterministicRandom);
 PREP(diagnostic);
 PREP(dumpPerformanceCounters);
-PREP(getWorldLatitude);
+PREP(getWorldLocation);
 PREP(init);
 PREP(moduleInit);
 PREP(moduleStormInit);
