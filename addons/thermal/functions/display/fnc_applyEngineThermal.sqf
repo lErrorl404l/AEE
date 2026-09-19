@@ -41,7 +41,12 @@ params [""];
 if (!hasInterface) exitWith { 0 };
 
 private _player = call CBA_fnc_currentUnit;
-if (isNil "_player" || !alive _player || cameraOn != _player) exitWith { 0 };
+// Run in the player's own view: on foot (cameraOn == player) or in
+// the player's vehicle (pilot/passenger/gunner - cameraOn is the
+// vehicle).  Skip spectator/UAV-terminal/external cameras.
+private _veh = vehicle _player;
+if (isNil "_player" || !alive _player) exitWith { 0 };
+if (cameraOn != _player && {cameraOn != _veh}) exitWith { 0 };
 
 // ─── Display window: faithful pass-through + stable blowout guard ──────────
 // ENGINE CONSTRAINT (verified): the window maps

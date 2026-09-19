@@ -19,7 +19,11 @@ if (!EGVAR(core,enabled)) exitWith {};
 
 private _player = call CBA_fnc_currentUnit;
 if (isNil "_player" || !alive _player) exitWith {};
-if (cameraOn != _player) exitWith {};
+// Run in the player's own view: on foot (cameraOn == player) or in
+// the player's vehicle (pilot/passenger/gunner - cameraOn is the
+// vehicle).  Skip spectator/UAV-terminal/external cameras.
+private _veh = vehicle _player;
+if (cameraOn != _player && {cameraOn != _veh}) exitWith {};
 
 private _windSpeed = vectorMagnitude wind;
 if (_windSpeed < 3) exitWith {};
