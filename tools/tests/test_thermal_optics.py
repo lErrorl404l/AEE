@@ -452,15 +452,21 @@ def engine_heat_fraction(
     damage_body=0.0,
     alive=True,
 ):
-    """Neutralised: the engine heat state is FORCED to zero.
+    """Mirror of the physics -> setVehicleTIPars drive in
+    fnc_applyEngineThermal.
 
-    Kept as a mirror of the neutralisation contract - a non-zero heat
-    state would double-modulate the band-material radiance.  The SQF
-    neutralisation loop skips dead vehicles (they keep their state; the
-    scene-max pass saturates their AGC guard instead), so this returns 0
-    for any live vehicle and leaves dead vehicles to engine_scene_max.
+    The engine's dynamic temperature model is a LIVE lever on the Ti
+    image (in-game proven).  setVehicleTIPars is driven from AEE physics:
+    (T - ambient) / 50 clamped 0..1, the engine's scale.  The old
+    NEUTRALISATION (forcing 0) was based on the band-material theory that
+    StageTI was painted by AEE - but StageTI is a heat-receptiveness
+    COEFFICIENT, not the image, so the band swap never reached the render
+    and the neutralisation left vehicles with NO heat input.
     """
-    return 0.0
+    if not alive:
+        return 0.0
+    frac = (surface_temp_c - air_temp_c) / 50.0
+    return max(0.0, min(1.0, frac))
 
 
 def exhaust_heat_fraction(
@@ -631,14 +637,14 @@ def second_sun_brightness(radiation):
     """Mirror of fnc_applySecondSun: engine thermal SUN term brightness.
 
     The engine's thermal sun term expects lightpoint brightness in the
-    A3TI range (~13, their static value).  A 0..1 value is ~30x below
-    the visible threshold, so it does nothing and buildings fall back
-    to baked alive-heat.  We scale physics radiation (0..1) into that
-    range: brightness = radiation * 13.  Night (0) -> no sun term;
-    full day -> A3TI-equivalent 13.
+    A3TI order of magnitude.  A3TI used static 13, which SATURATES the
+    scene to flat white and masks per-vehicle heat (in-game proven) - so
+    we scale into a NON-SATURATING range: brightness = radiation * 6.
+    Night (0) -> no sun term; full day -> half A3TI, enough to heat
+    terrain/buildings while vehicles keep their setVehicleTIPars contrast.
     """
     r = max(0.0, min(1.0, radiation))
-    return r * 13.0
+    return r * 6.0
 
 
 def clothing_ti_scale(insulation, air_temp_c):
@@ -1619,16 +1625,17 @@ class TestMTFEffective(unittest.TestCase):
 
 
 class TestEngineThermalDrive(unittest.TestCase):
-    """Band-material swap + setVehicleTIPars neutralisation + AGC window."""
+    """Physics -> setVehicleTIPars drive + AGC window."""
 
-    def test_neutralised_heat_state(self):
-        # The engine heat state is FORCED to zero so the band-material
-        # radiance is not double-modulated.  Any live vehicle -> 0.
+    def test_physics_driven_heat_state(self):
+        # setVehicleTIPars is driven from AEE physics: (T - ambient)/50
+        # clamped 0..1.  The old forced-zero neutralisation is gone - it
+        # was based on the StageTI-painting theory that proved wrong.
         self.assertAlmostEqual(engine_heat_fraction(17, 17), 0.0, places=6)
-        self.assertAlmostEqual(engine_heat_fraction(57, 17), 0.0, places=6)
-        self.assertAlmostEqual(engine_heat_fraction(32, 17), 0.0, places=6)
-        self.assertAlmostEqual(engine_heat_fraction(100, 17), 0.0, places=6)
-        self.assertAlmostEqual(engine_heat_fraction(40, 35), 0.0, places=6)
+        self.assertAlmostEqual(engine_heat_fraction(67, 17), 1.0, places=6)
+        self.assertAlmostEqual(engine_heat_fraction(32, 17), 0.3, places=6)
+        self.assertAlmostEqual(engine_heat_fraction(100, 17), 1.0, places=6)
+        self.assertAlmostEqual(engine_heat_fraction(40, 35), 0.1, places=6)
 
     def test_band_material_endpoints(self):
         # Brightness 0 (cold window floor) -> ti_grey_00 (black).
@@ -1716,24 +1723,27 @@ class TestSecondSun(unittest.TestCase):
         self.assertAlmostEqual(second_sun_brightness(0), 0.0, places=6)
 
     def test_day_full_sun_term(self):
-        # Radiation 1 (clear midday): A3TI-equivalent full sun term (13).
-        self.assertAlmostEqual(second_sun_brightness(1), 13.0, places=6)
+        # Radiation 1 (clear midday): half A3TI's 13 (6) - enough to heat
+        # terrain/buildings without saturating vehicles to flat white.
+        self.assertAlmostEqual(second_sun_brightness(1), 6.0, places=6)
 
     def test_overcast_attenuates(self):
-        # Overcast mid-day: partial sun term (0.5 * 13 = 6.5).
-        self.assertAlmostEqual(second_sun_brightness(0.5), 6.5, places=6)
+        # Overcast mid-day: partial sun term (0.5 * 6 = 3.0).
+        self.assertAlmostEqual(second_sun_brightness(0.5), 3.0, places=6)
 
     def test_clamped_out_of_range(self):
         self.assertAlmostEqual(second_sun_brightness(-0.2), 0.0, places=6)
-        self.assertAlmostEqual(second_sun_brightness(1.5), 13.0, places=6)
+        self.assertAlmostEqual(second_sun_brightness(1.5), 6.0, places=6)
 
     def test_never_negative(self):
         self.assertGreaterEqual(second_sun_brightness(0), 0)
 
-    def test_scale_matches_a3ti_ceiling(self):
-        # Full sun must equal A3TI's static 13 (their reference value) so
-        # the engine's sun term is actually above the visible threshold.
-        self.assertAlmostEqual(second_sun_brightness(1.0), 13.0, places=6)
+    def test_scale_does_not_saturate(self):
+        # Full sun = 6 (half A3TI's 13).  A3TI's full-strength sun
+        # saturates the scene to flat white and masks per-vehicle heat
+        # (in-game proven); 6 keeps terrain/buildings warm without
+        # drowning the setVehicleTIPars contrast.
+        self.assertAlmostEqual(second_sun_brightness(1.0), 6.0, places=6)
 
 
 class TestVehicleDamageThermal(unittest.TestCase):
@@ -1746,18 +1756,20 @@ class TestVehicleDamageThermal(unittest.TestCase):
     vehicle now saturates the AGC scene-max (tiSceneMaxHeat -> 1), which
     widens the display window guard - the FLIR-correct behaviour."""
 
-    def test_heat_state_neutralised_for_all_damage(self):
-        # A damaged vehicle still gets setVehicleTIPars [0,0,0]: the band
-        # material carries the radiance, the engine must not multiply it.
+    def test_heat_state_physics_driven_regardless_of_damage(self):
+        # setVehicleTIPars is driven from AEE physics for every live
+        # vehicle - damage does not zero it (the physics carries the
+        # heat; damage saturates the scene-max guard instead).  Dead
+        # vehicles keep their state (the drive loop skips them).
         for kwargs in [
             dict(damage_engine=0.4),
             dict(damage_engine=1.0),
             dict(damage_fuel=0.5),
             dict(damage_body=0.95),
-            dict(alive=False),
         ]:
-            h = engine_heat_fraction(17.8, 17.8, **kwargs)
-            self.assertEqual(h, 0.0)
+            h = engine_heat_fraction(37.8, 17.8, **kwargs)
+            self.assertAlmostEqual(h, 0.4, places=6)
+        self.assertEqual(engine_heat_fraction(17.8, 17.8, alive=False), 0.0)
 
     def test_destroyed_saturates_scene_max(self):
         # The SQF scene-max pass: a dead/burning vehicle sets _sceneMax=1
@@ -2955,7 +2967,7 @@ class TestSQFSync(unittest.TestCase):
                 "currentSolarRadiation",
                 "setLightBrightness _lightBrightness",
                 "createVehicleLocal",
-                "_radiation * 13",
+                "_radiation * 6",
                 "setLightAttenuation [1e10, 150",
             ],
             "physics-driven second sun (TI sun term, A3TI-scaled)",

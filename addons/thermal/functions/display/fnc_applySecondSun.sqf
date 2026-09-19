@@ -61,17 +61,21 @@ if (_mode == "ENTER") then {
 
 // ─── TICK: brightness = physics radiation, scaled to engine range ─────────
 // A3TI (the reference for this mechanism) uses STATIC brightness 13 in all
-// TI modes.  The engine's thermal sun term expects lightpoint brightness
-// in that order of magnitude; a value in 0..1 is ~30x below the visible
-// threshold, so the sun term does nothing and buildings fall back to their
-// baked alive-heat (the white at night).  We keep the PHYSICS-CORRECT
-// day/night variation but scale into the engine's working range:
-// brightness = radiation * 13, so full sun = 13 (A3TI-equivalent) and
-// night = 0 (no sun term — our improvement over their always-on 13).
+// TI modes, which SATURATES the scene to flat white - it masks per-object
+// heat (in-game proven: the whole image darkens when this drops, and
+// vehicles lose all contrast at 13).  A3TI wanted everything warm (its
+// fusion look); we want CONTRAST.  The engine's thermal sun term expects
+// lightpoint brightness in that order of magnitude; a value in 0..1 is
+// ~30x below the visible threshold, so the sun term does nothing and
+// buildings fall back to their baked alive-heat.  We keep the
+// PHYSICS-CORRECT day/night variation but scale into a NON-SATURATING
+// range: brightness = radiation * 6, so full sun = 6 (half A3TI - enough
+// to heat terrain/buildings, low enough that vehicles keep their
+// setVehicleTIPars contrast) and night = 0 (no sun term).
 private _radiation = missionNamespace getVariable [QEGVAR(core,currentSolarRadiation), 0];
 if !(_radiation isEqualType 0) then { _radiation = 0; };
 _radiation = _radiation max 0 min 1;
-private _lightBrightness = _radiation * 13;
+private _lightBrightness = _radiation * 6;
 
 // Attach to the camera so the light direction follows the view (the TI
 // sun term is directional).  A3TI attenuation: far range 150, so the sun
