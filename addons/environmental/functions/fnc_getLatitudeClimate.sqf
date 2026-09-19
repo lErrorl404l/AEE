@@ -62,7 +62,17 @@ private _tMeanBase = 27 - 0.42 * _lat;
 // low, dropping high-latitude oceanic maps to Cfc instead of Cfb
 // (issue #184).
 private _maritime = 1 / (1 + exp (-12 * (_waterFrac - 0.22)));
-private _tMean = _tMeanBase + 5 * _maritime;
+// Subtropical high (Hadley cell descending branch): a sharp belt at
+// ~31 N/S brings BOTH warm dry air (adiabatic warming, clear skies) and
+// suppressed convection.  Without it the model cannot produce the
+// world's desert belt — Cairo/Baghdad/Kandahar classify Csa instead of
+// BWh (found by the CUP workshop-map rotation).  The single `hadley`
+// factor drives the +6.0 C warming and the precip * (1 - 0.92*hadley)
+// aridity.  It is zero at the equator, at the poles, and on maritime
+// maps (the ocean breaks the high).  Cairo (30 N): +5.2 C, *0.20
+// precip — real 22 C, 25 mm/yr (BWh).
+private _hadley = exp (-((_lat - 31) ^ 2) / (2 * 25)) * (1 - _maritime);
+private _tMean = _tMeanBase + 5 * _maritime + 6.0 * _hadley;
 // Annual amplitude: the documented model A(lat) = 1.4 + 0.405*|lat| is
 // the FULL peak-to-trough range (Minsk at 54 N: 25.1 C swing).  The
 // sin() term below needs HALF that - the amplitude about the mean - so
@@ -123,7 +133,9 @@ for "_m" from 1 to 12 do {
     private _dryness = exp (-_lat / 25);
     private _wetness = (0.5 + 0.5 * (sin _phaseDeg)) max _dryness;
     if (_summerDry > 0.3) then { _wetness = 1 - _wetness; };
-    private _baseP = (60 + 90 * _dryness) * (1 + 2.5 * _maritime);
+    // Subtropical-high aridity: the descending branch suppresses
+    // convection in the 25-38 N/S belt (Sahara, Arabian, Afghan).
+    private _baseP = (60 + 90 * _dryness) * (1 + 2.5 * _maritime) * (1 - 0.92 * _hadley);
     _precip pushBack (round (_baseP * _wetness));
 
     // RH: high when precip high and temp low (capacity), min 30%.

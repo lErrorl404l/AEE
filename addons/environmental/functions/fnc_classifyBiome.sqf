@@ -191,7 +191,7 @@ if (_T_coldest <= -3) then {
         if (_T_warmest >= 22) then {
             "a"
         } else {
-            if (_months10 >= 4) then { "b" } else { "c" }
+            ["c", "b"] select (_months10 >= 4)
         };
     };
     if (_drySummer) then {

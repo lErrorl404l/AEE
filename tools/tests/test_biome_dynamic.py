@@ -37,6 +37,17 @@ def latitude_climate(lat_deg, water_frac=0.3):
     # high-latitude oceanic maps to Cfc instead of Cfb (issue #184).
     maritime = 1 / (1 + math.exp(-12 * (water_frac - 0.22)))
     t_mean = t_mean_base + 5 * maritime
+    # Subtropical high (Hadley cell descending branch): a sharp belt at
+    # ~31 N/S brings BOTH warm dry air (adiabatic warming, clear skies)
+    # and suppressed convection.  Without it the model cannot produce the
+    # world's desert belt — Cairo/Baghdad/Kandahar classify Csa instead
+    # of BWh (found by the CUP workshop-map rotation).  The single
+    # `hadley` factor drives the +6.0 C warming and the precip
+    # * (1 - 0.92*hadley) aridity.  It is zero at the equator, at the
+    # poles, and on maritime maps (the ocean breaks the high).  Cairo
+    # (30 N): +5.2 C, *0.20 precip — real 22 C, 25 mm/yr (BWh).
+    hadley = math.exp(-((lat - 31) ** 2) / (2 * 5**2)) * (1 - maritime)
+    t_mean = t_mean + 6.0 * hadley
     # Annual amplitude: the documented model A(lat) = 1.4 + 0.405*|lat| is
     # the FULL peak-to-trough range (Minsk at 54 N: 25.1 C swing).  The
     # sin() term needs HALF that (the amplitude about the mean).  Feeding
@@ -69,6 +80,9 @@ def latitude_climate(lat_deg, water_frac=0.3):
         if summer_dry > 0.3:
             wetness = 1 - wetness
         base_p = (60 + 90 * dryness) * (1 + 2.5 * maritime)
+        # Subtropical-high aridity: the descending branch suppresses
+        # convection in the 25-38 N/S belt (Sahara, Arabian, Afghan).
+        base_p = base_p * (1 - 0.92 * hadley)
         precip.append(round(base_p * wetness))
         rh.append(round(max(min(wetness * 70 + (1 - wetness) * 35, 90), 30)))
     cloud = round((rh[5] / 90) * 8) / 10
@@ -367,6 +381,50 @@ class TestMapFusion(unittest.TestCase):
         # A temperate climate at high elevation shifts toward subarctic.
         code, _ = fuse_biome("Cfb", {}, mean_elev=1800)
         self.assertEqual(code, "Dfc")
+
+    def test_afghan_desert_arid(self):
+        # Takistan/Zargabad (lat 34, water 0.05): real Afghanistan is
+        # BWh/BSk desert (~250 mm/yr at Kandahar).  The #184 climate
+        # model had no subtropical aridity, so 34 N classified Csa
+        # (Mediterranean) and every Afghan map got olive trees instead
+        # of sand (found by the CUP workshop-map rotation).  The Hadley
+        # descending-branch term must push 30-35 N continental into the
+        # arid (B) band.
+        n = latitude_climate(34, 0.05)
+        t = mean_temps(n)
+        climate = classify_biome(t, n[5])
+        self.assertEqual(climate[0], "B")  # arid, not temperate
+        self.assertLess(sum(n[5]), 450)  # annual precip stays desert-low
+
+    def test_cairo_hot_desert(self):
+        # Cairo (lat 30, water 0.02): BWh, 22 C mean, 25 mm/yr.  The
+        # Hadley warming must lift the annual mean past the 18 C BWh/BSk
+        # boundary while the aridity keeps precip in the desert band.
+        n = latitude_climate(30, 0.02)
+        t = mean_temps(n)
+        self.assertGreater(sum(t) / 12, 18)  # hot, not cold desert
+        climate = classify_biome(t, n[5])
+        self.assertIn(climate, ["BWh", "BSh"])
+
+    def test_mediterranean_stays_temperate(self):
+        # Athens (lat 38, water 0.25): Csa.  The Hadley belt must fade by
+        # 38 N (peak 31 N, sigma 5) so the Mediterranean keeps its
+        # temperate classification - the aridity must not reach it.
+        n = latitude_climate(38, 0.25)
+        t = mean_temps(n)
+        climate = classify_biome(t, n[5])
+        self.assertEqual(climate, "Csa")
+
+    def test_hadley_fades_poleward(self):
+        # The Hadley term is a sharp 25-38 N belt.  It must be zero by
+        # 45 N: London (51.5 N) and Enoch (45-54 N) keep their maritime
+        # temperate / continental climates untouched.
+        n_lon = latitude_climate(51.5, 0.35)
+        self.assertEqual(classify_biome(mean_temps(n_lon), n_lon[5]), "Cfb")
+        n_eno = latitude_climate(54, 0.0)
+        self.assertIn(
+            classify_biome(mean_temps(n_eno), n_eno[5]), ["Dfa", "Dfb", "Dfc"]
+        )
 
 
 # ─── Root-cause regressions (issue #123) ───────────────────────────────────
