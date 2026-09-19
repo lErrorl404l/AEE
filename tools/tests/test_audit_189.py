@@ -383,5 +383,64 @@ class TestGroundNodeStack(unittest.TestCase):
         self.assertIn("0.014", text)  # 50 cm -> 1.4%
 
 
+class TestFrostThermal(unittest.TestCase):
+    """Issue #195 - frost/ice phase-change: 0C pin with latent-heat
+    release (334 kJ/kg), frost deposition (Magnus over ice frost point),
+    and frost emissivity (near-blackbody) feeding the FLIR contrast."""
+
+    def test_frost_state_wired(self):
+        from pathlib import Path
+
+        # The ground wrapper applies the frost tier on the node-stack
+        # surface temp.
+        wrapper = Path(
+            "addons/thermal/functions/fnc_calculateGroundTemperature.sqf"
+        ).read_text(encoding="utf-8")
+        self.assertIn("calculateFrostState", wrapper)
+        self.assertIn("_frost select 0", wrapper)
+
+        # The frost function is PREP-registered.
+        prep = Path("addons/thermal/XEH_PREP.hpp").read_text(encoding="utf-8")
+        self.assertIn("calculateFrostState", prep)
+
+    def test_frost_physics_patterns(self):
+        from pathlib import Path
+
+        text = Path("addons/thermal/functions/fnc_calculateFrostState.sqf").read_text(
+            encoding="utf-8"
+        )
+        # Latent heat of fusion (IAPWS-95 / Incropera).
+        self.assertIn("334e3", text)
+        # Magnus over ICE (frost point, not Bolton water).
+        self.assertIn("22.46", text)
+        self.assertIn("272.62", text)
+        # The pin holds at 0C while film releases latent heat.
+        self.assertIn("_tSurfAdjusted = 0", text)
+        self.assertIn("_dm", text)
+        # Frost emissivity near-blackbody.
+        self.assertIn("0.97", text)
+        # Film mass state persisted per grid cell.
+        self.assertIn("GVAR(frostState)", text)
+        self.assertIn("_filmMass", text)
+
+    def test_frost_mirror_exists(self):
+        from pathlib import Path
+
+        text = Path("tools/tests/test_frost.py").read_text(encoding="utf-8")
+        # Sourced constants.
+        self.assertIn("L_FUS", text)
+        self.assertIn("334e3", text)
+        self.assertIn("22.46", text)  # Magnus over ice
+        self.assertIn("272.62", text)
+        # Hayashi 1977 density curve.
+        self.assertIn("650.0", text)
+        self.assertIn("0.277", text)
+        # Leoni 2016 growth cap (0.1..3 mm/h).
+        self.assertIn("0.1", text)
+        self.assertIn("3.0", text)
+        # Emissivity anchors.
+        self.assertIn("0.97", text)
+
+
 if __name__ == "__main__":
     unittest.main()
