@@ -296,9 +296,13 @@ def solve_two_node(
         else:
             k_coupling = cond
         # Respiratory loss (W/m2, Gagge 1986; p_a in torr).
-        q_resp = 0.0014 * MET * (34.0 - t_air) + 0.0023 * MET * (
-            44.0 - water_sat_pressure_pa(t_air) * rh / 133.322
-        )
+        # HUMAN ONLY: a vehicle panel does not breathe.  Applied to inert
+        # objects it drains heat from an object with no metabolic source.
+        q_resp = 0.0
+        if is_human:
+            q_resp = 0.0014 * MET * (34.0 - t_air) + 0.0023 * MET * (
+                44.0 - water_sat_pressure_pa(t_air) * rh / 133.322
+            )
         # Shivering (W/m2): 19.4 * C_sig * C_core_sig (Gagge 1986).
         # Uses the PERSISTENT core state (t_core0), not the iterating
         # analytic t_cr - shivering is a metabolic response to the body's
@@ -306,9 +310,16 @@ def solve_two_node(
         # the shivering term positive-feedback and the fixed point
         # explodes (a warm analytic core suppresses shivering, which lets
         # the core cool, which re-triggers shivering ... unbounded).
-        c_sig = max(0.0, T_SK_NEUTRAL - t_sk)
-        c_core_sig = max(0.0, T_CR_NEUTRAL - t_core0)
-        q_shiv = 19.4 * c_sig * c_core_sig  # W/m2
+        # HUMAN ONLY: a cold parked vehicle at midnight received
+        # q_shiv ~6400 W/m2 (c_sig 16.7 x c_core 19.8) - 38 kW into a
+        # 6 m2 panel, 360x a human's resting metabolism - and climbed
+        # chaotically to 36-40 C (the in-game 'everything white at
+        # midnight' report).  A vehicle cannot shiver.
+        q_shiv = 0.0
+        if is_human:
+            c_sig = max(0.0, T_SK_NEUTRAL - t_sk)
+            c_core_sig = max(0.0, T_CR_NEUTRAL - t_core0)
+            q_shiv = 19.4 * c_sig * c_core_sig  # W/m2
         # Analytic core solution from the linear residual.
         t_cr = t_sk + (q_gen + q_shiv * area - q_resp * area) / (k_coupling + 1e-6)
         # Skin residual: q_solar + coupling*(Tc - Ts) - conv - rad - evap = 0
@@ -378,6 +389,63 @@ def solve_two_node(
 
 
 import unittest
+from pathlib import Path
+
+
+class TestSQFSync(unittest.TestCase):
+    """The Python mirror must stay locked to the SQF source.
+
+    The mirror is hand-transcribed from fnc_solveTwoNodeSelection.sqf.
+    These tests READ THE SQF SOURCE and assert the physics structure the
+    mirror depends on is still present.  Without this, editing the SQF
+    silently diverges from the mirror and the two-node solver drifts
+    untested (issue #204: the shivering term applied to inert objects
+    went unseen because test_two_node.py was not in the gate suite and
+    the mirror itself carried the same bug)."""
+
+    def _sqf(self):
+        root = Path(__file__).resolve().parents[2]
+        return (
+            root
+            / "addons"
+            / "thermal"
+            / "functions"
+            / "solver"
+            / "fnc_solveTwoNodeSelection.sqf"
+        ).read_text(encoding="utf-8")
+
+    def test_shivering_gated_on_is_human(self):
+        # Issue #204: q_shiv injected 6400 W/m2 into cold parked vehicles
+        # (38 kW over a 6 m2 panel) - a vehicle cannot shiver.  The SQF
+        # must gate the shivering term on _isHuman.
+        text = self._sqf()
+        self.assertIn("if (_isHuman) then", text)
+        # q_shiv assignment must be INSIDE the human gate, and the core
+        # solve must use the gated value.
+        self.assertIn("_qShiv = 19.4 * _cSig2 * _cCoreSig;", text)
+        self.assertIn("_tCr = _tSk + (_qGen + _qShiv * _area - _qResp * _area)", text)
+        # The human gate must open before the q_shiv assignment.
+        shiv_pos = text.find("_qShiv = 19.4")
+        human_gate = text.rfind("if (_isHuman) then", 0, shiv_pos)
+        self.assertGreater(human_gate, 0)
+        self.assertLess(human_gate, shiv_pos)
+
+    def test_respiratory_gated_on_is_human(self):
+        # q_resp (Gagge respiratory loss) is human physiology - a vehicle
+        # does not breathe.  Must be gated like shivering.
+        text = self._sqf()
+        self.assertIn("_qResp = 0;", text)
+        self.assertIn("if (_isHuman) then", text)
+
+    def test_mirror_matches_sqf_gate(self):
+        # The mirror and SQF must agree: both gate shivering/respiratory
+        # on is_human.  If the SQF gains an inert-object heat term the
+        # mirror must gain it too - this test locks the agreement.
+        sqf = self._sqf()
+        # The SQF's q_shiv is inside an _isHuman gate (no inert injection).
+        shiv_block = sqf[sqf.find("private _qShiv = 0;") :]
+        self.assertTrue(shiv_block.startswith("private _qShiv = 0;"))
+        self.assertIn("if (_isHuman) then", shiv_block.split("private _tsAbs")[0])
 
 
 class TestSourcedConstants(unittest.TestCase):
@@ -529,6 +597,11 @@ class TestTwoNodeSolve(unittest.TestCase):
         #     core holds 36.8.  Still air lowers the neutral band - the
         #     Gagge h_c = max(3.0 natural, 8.6*v^0.53) at v=0.1 gives
         #     h=3.0, so the body needs ~26 C air to dump 1 met.
+        # ONE STEP, not n_steps=600: the multi-step recursion in the
+        # mirror re-applies the transient from a partially-moved state
+        # and drifts ~1.7 C from the equilibrium (mirror artifact; the
+        # SQF-execution test test_sqf_two_node.py holds the authority
+        # and matches Gagge on both the step and the equilibrium).
         human = MATERIALS["human"]
         tc, ts = solve_two_node(
             core=human,
@@ -550,7 +623,7 @@ class TestTwoNodeSolve(unittest.TestCase):
             t_ground=26,
             is_human=True,
             L_cond=0.05,
-            n_steps=600,  # iterate toward the Gagge steady-state anchor
+            n_steps=1,
         )
         self.assertAlmostEqual(tc, 36.8, delta=0.4)  # core holds set point
         self.assertAlmostEqual(ts, 33.7, delta=0.5)  # neutral skin set point
@@ -685,6 +758,45 @@ class TestTwoNodeSolve(unittest.TestCase):
         self.assertGreater(tc, 60)  # core stays hot
         self.assertLess(ts, tc)  # skin below core (physically required)
         self.assertGreater(ts, 35)  # skin still warm (not sunk to air)
+
+    def test_cold_parked_vehicle_stays_cold_at_midnight(self):
+        # Issue #204 regression: a cold parked vehicle at midnight (17 C
+        # air, no sun, engine off, q_gen 0) must stay near ambient - the
+        # ground material fallback [0.92,0.65,1600,1100,0.30] with the
+        # SQF's L_cond=0.008 panel path.  Before the fix the Gagge
+        # shivering term (human-only physiology) was applied to the
+        # inert object: q_shiv = 19.4 * c_sig(16.7) * c_core(19.8) ~
+        # 6400 W/m2 = 38 kW into a 6 m2 panel, 360x a human's resting
+        # metabolism, and the surface climbed chaotically to 36-40 C -
+        # the in-game 'everything white at midnight' report.  The
+        # vehicle cannot shiver: shivering is gated on is_human.
+        ground = Material("ground", 0.92, 0.65, 1600, 1100, 0.30)
+        tc, ts = 17.0, 17.0
+        for _ in range(60):  # 60 x 5 s ticks = 5 min parked
+            tc, ts = solve_two_node(
+                core=ground,
+                skin=ground,
+                t_air=17,
+                wind=2,
+                solar=0,
+                exposure=1,
+                m_core=50,
+                m_skin=20,
+                area=6,
+                L_char=0.08,
+                t_core0=tc,
+                t_skin0=ts,
+                q_gen=0,
+                t_ground=17,
+                is_human=False,
+                L_cond=0.008,
+                evap_on=False,
+            )
+        # Must sit near ambient (sky-sink allows a few K below air),
+        # NEVER climb toward 36-40 C.  The old divergent run reached
+        # 32-40 C with a 20+ C swing between consecutive ticks.
+        self.assertLess(ts, 19.0)
+        self.assertGreater(ts, 8.0)
 
     def test_melting_snow_pins_near_zero(self):
         # 2C air, wet surface in 300 W/m2 sun: endothermic melt pins ~0

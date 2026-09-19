@@ -330,9 +330,9 @@ class TestGroundNodeStack(unittest.TestCase):
         text = Path(
             "addons/thermal/functions/ground/fnc_calculateGroundNodeStack.sqf"
         ).read_text(encoding="utf-8")
-        # PREP registered.
+        # PREP registered (PREPS(ground,...) since the #203 subfolder split).
         prep = Path("addons/thermal/XEH_PREP.hpp").read_text(encoding="utf-8")
-        self.assertIn("PREP(calculateGroundNodeStack)", prep)
+        self.assertIn("PREPS(ground,calculateGroundNodeStack)", prep)
         # Noah 4-layer geometry: dz 0.10/0.30/0.60/1.00 (Mitchell 2005).
         self.assertIn("[0.10, 0.30, 0.60, 1.00]", text)
         # Crank-Nicolson (unconditionally stable - Noah/CLM scheme).
