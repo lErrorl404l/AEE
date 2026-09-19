@@ -35,12 +35,12 @@ if (_object isKindOf "Static" || _object isKindOf "Building") then {
 // 2. Config hiddenSelectionsMaterials (per-selection, declared).
 private _cfgObj = configOf _object;
 private _selMats = getArray (_cfgObj >> "hiddenSelectionsMaterials");
-if (count _selMats > 0) then {
+if (_selMats isNotEqualTo []) then {
     // Classify the first real material path; majority vote if many.
     private _votes = createHashMap;
     {
         private _mat = toLower _x;
-        if (_mat != "" && {_mat isNotEqualTo "any"}) then {
+        if (_mat != "" && _mat isNotEqualTo "any") then {
             private _cls = _mat call FUNC(getSurfaceMaterial);
             _votes set [_cls, (_votes getOrDefault [_cls, 0]) + 1];
         };
