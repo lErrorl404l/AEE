@@ -23,6 +23,19 @@ Research across thermal, armour, materials, and vehicles repeatedly found the sa
 
 4. Anchor mapping is cached per class (selection-name lists) and applied one-shot on state change, never per-frame — the existing throttled-swap pattern.
 
+## The Three Mechanisms (each verified by research)
+
+| Mechanism | What it controls | Example |
+|---|---|---|
+| PBO path override | Baked textures, terrain layers, default TI | Replace `A3\data_f\default.rvmat` → every fallback object (last-loaded wins) |
+| Config override | Materials for known classes | `class Land_Rock_01_F : Land_Rock_01_F { hiddenSelectionsMaterials[] = { ... }; }` |
+| Runtime anchors | Per-component state | Wheel heat model → that wheel's selection index → `setObjectMaterial [_selIdx, _material]` |
+
+The runtime-anchor row is proven in the shipped code (`setObjectMaterial`
+in `fnc_applyWeaponBarrelHeat`, `fnc_applyBuildingThermal`). The PBO
+path and config rows are the replacement-material mechanisms the
+material library (#124) and baked-control (#128) work ship through.
+
 ## Consequences
 
 - **Good**: Full control of baked textures (rocks, buildings, terrain) via path override; per-component vehicle behaviour via selection anchors; zero per-mod compat for appearance/thermal (the baseline-requirement goal).
