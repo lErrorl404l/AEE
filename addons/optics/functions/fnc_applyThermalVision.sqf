@@ -152,6 +152,8 @@ if (_hCC < 0 || _hGrain < 0 || _hBlur < 0) then {
         ["DynamicBlur",     4200, QGVAR(ppHandle_Thermal_Blur)]
     ];
     _handles params ["_hCC", "_hGrain", "_hBlur"];
+    private _logMsg = format ["thermal ppEffects created: CC=%1 grain=%2 blur=%3", _hCC, _hGrain, _hBlur];
+    AEE_LOG_INFO(_logMsg);
 };
 
 // ─── ColorCorrections (display gain/contrast) ────────────────────────────

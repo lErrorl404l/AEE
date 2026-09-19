@@ -1828,6 +1828,11 @@ class TestClothingThermal(unittest.TestCase):
         self.assertIn("solveTwoNodeSelection", text)
         self.assertNotIn("solveSelectionTemperature", text)  # single-node killed
         self.assertIn("getSelectionMaterials", text)
+        # Real FLIR pipeline (issue #196): band radiance + scene AGC,
+        # NOT the old fixed-window T*eps^0.25 mapping.
+        self.assertIn("calculateBandRadiance", text)
+        self.assertIn("agcRadMin", text)
+        self.assertNotIn("tApparent = (_tNew + 273.15) * (_eps ^ 0.25)", text)
 
 
 def test_ti_texture_polarity(self):

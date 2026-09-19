@@ -21,3 +21,5 @@ PREP(getGroundStampOffset);
 PREP(applyGroundContactStamps);
 PREP(solarElevation);
 PREP(solveTwoNodeSelection);
+PREP(calculateBandRadiance);
+PREP(updateThermalAGC);

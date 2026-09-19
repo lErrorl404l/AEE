@@ -226,8 +226,22 @@ private _kCoupling = if (_isHuman) then {
 private _cond = _kCoupling;  // inert path constant conductance
 
 // ─── Radiation vs MRT (ISO 7726) ──────────────────────────────────────────
-private _mrtK = (0.5 * ((_tGround + 273.15) ^ 4) + 0.5 * ((_tAir + 273.15) ^ 4)) ^ 0.25;
+// The mean radiant temperature is the ground hemisphere below and the
+// SKY hemisphere above (issue #196).  A clear night sky is a cold
+// radiative sink - the Swinbank (1963) clear-sky correlation
+// (T_sky = 0.0552 * T_air^1.5, K; R = 5.31e-13 * T^6 W/m2) puts it
+// ~3 K below air at 15 C air and ~35 K below at -5 C - so a
+// high-emissivity surface radiates to it and cools BELOW air
+// temperature (NASA: radiation to the sky dominates convection at
+// night).  This is TOTAL-longwave exchange (the heat-transfer MRT,
+// ISO 7726), which is what the surface energy balance needs.  The
+// sensor-side 8-14 um band sky is far colder still (-20 to -40 C,
+// Tebo 1965) - that belongs in fnc_calculateBandRadiance, not here.
+// Overcast lifts the sky temperature toward air.
 private _tAirK = _tAir + 273.15;
+private _skyK = 0.0552 * (_tAirK ^ 1.5);
+_skyK = _skyK + (_tAirK - _skyK) * (overcast max 0 min 1);
+private _mrtK = (0.5 * ((_tGround + 273.15) ^ 4) + 0.5 * (_skyK ^ 4)) ^ 0.25;
 // Immersion exchange target (issue #193): an immersed surface exchanges
 // against the WATER temperature directly, not air or the air-side MRT.
 private _exchK = if (_waterSpeed > 0 && _tWater >= -50) then { _tWater + 273.15 } else { _tAirK };

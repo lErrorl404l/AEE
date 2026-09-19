@@ -234,11 +234,41 @@ if (_mode == "EXIT") then {
         _selMap set [_stateKey, _tNew];
         missionNamespace setVariable [QGVAR(selTemperature), _selMap];
 
-        // FLIR white-hot: apparent temperature with emissivity correction.
+        // ─── FLIR display mapping (issue #196) ─────────────────────────────
+        // Real FLIR reads BAND RADIANCE, not temperature: the sensor
+        // signal is the Planck integral over 8-14 um with an emissivity
+        // and reflection term (FLIR T810442), and the display maps the
+        // SCENE's actual radiance window onto the full grey range via
+        // scene-adaptive AGC (linear with 1% tail rejection, IIR-smoothed
+        // - FLIR Camera Adjustments app note).  The old `T * eps^0.25`
+        // with a fixed -40..150 C window was the wrong physics twice: the
+        // eps^0.25 form is total-power Stefan-Boltzmann, not band-limited
+        // radiance, and the fixed window rendered every night scene white
+        // (a few-kelvin spread across 190 C of range).
+        //
+        // The AGC window is computed per frame by fnc_updateThermalAGC
+        // (called from the sensor tick before this pass) from the same
+        // per-selection temperature state this loop writes.  The window
+        // is in RADIANCE units, so the selection's radiance maps through
+        // it directly.
         private _mat = ([_obj, _sel] call FUNC(getSelectionMaterials)) call FUNC(getMaterialThermal);
         private _eps = _mat select 0;
-        private _tApparent = (_tNew + 273.15) * (_eps ^ 0.25) - 273.15;
-        private _b = ((_tApparent + 40) / 190) max 0 min 1;   // -40..150 C window
+        private _rad = [_tNew, _eps, _tAir, _fGround, _tCurrent] call FUNC(calculateBandRadiance);
+        private _agcMin = missionNamespace getVariable [QGVAR(agcRadMin), -1];
+        private _agcMax = missionNamespace getVariable [QGVAR(agcRadMax), -1];
+        // Fallback window (first frames / no AGC yet): the radiance of
+        // the old -40..150 C span - identical behaviour to the previous
+        // fixed window until the AGC warms up.
+        if (!(_agcMin isEqualType 0) || !(_agcMax isEqualType 0) || _agcMin >= _agcMax) then {
+            _agcMin = [-40, _eps, _tAir, _fGround, _tCurrent] call FUNC(calculateBandRadiance);
+            _agcMax = [150, _eps, _tAir, _fGround, _tCurrent] call FUNC(calculateBandRadiance);
+        };
+        private _b = ((_rad - _agcMin) / ((_agcMax - _agcMin) max 1e-6)) max 0 min 1;
+        // Polarity: white-hot (hot = white) is the system default - the
+        // AN/PAS-13 initialises white hot.  Black-hot (hot = black) is a
+        // user-selectable alternative; FM 3-22.9 Appendix H states
+        // polarity choice is user preference, not doctrine.
+        if (GVAR(thermalPolarity) == 1) then { _b = 1 - _b; };
         // TRACE: log the full pipeline every call so a bad value is
         // visible even if `finite` does not flag it.  Throttled to the
         // first 20 calls per object to keep the RPT readable.
@@ -249,8 +279,8 @@ if (_mode == "EXIT") then {
             _traceN set [_traceKey, _n + 1];
             missionNamespace setVariable [QGVAR(traceCount), _traceN];
             diag_log format [
-                "[AEE][TRACE] obj=%1 sel=%2 mat=%3 eps=%4 tNew=%5 tApparent=%6 b=%7 finite_b=%8",
-                _obj, _sel, _mat, _eps, _tNew, _tApparent, _b, finite _b
+                "[AEE][TRACE] obj=%1 sel=%2 mat=%3 eps=%4 tNew=%5 rad=%6 agc=%7..%8 b=%9 finite_b=%10",
+                _obj, _sel, _mat, _eps, _tNew, _rad, _agcMin, _agcMax, _b, finite _b
             ];
         };
         // NaN guard: SQF NaN comparisons are false (NaN != NaN is also
@@ -261,8 +291,8 @@ if (_mode == "EXIT") then {
         // nil upstream (the #189 class); fall back to ambient.
         if !(finite _b) then {
             diag_log format [
-                "[AEE] NaN brightness: obj=%1 sel=%2 tNew=%3 eps=%4 tApparent=%5",
-                _obj, _sel, _tNew, _eps, _tApparent
+                "[AEE] NaN brightness: obj=%1 sel=%2 tNew=%3 eps=%4 rad=%5",
+                _obj, _sel, _tNew, _eps, _rad
             ];
             _b = 0;
         };

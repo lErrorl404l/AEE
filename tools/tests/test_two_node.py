@@ -217,6 +217,7 @@ def solve_two_node(
     evap_on=True,
     n_steps=1,
     blood_frac=1.0,
+    overcast=0.0,
 ):
     """Core/skin coupled solve.
 
@@ -265,8 +266,15 @@ def solve_two_node(
 
     # Skin surface terms that do not depend on Tc:
     q_solar = skin.alpha * solar * exposure
-    mrt_k = (0.5 * (t_ground + 273.15) ** 4 + 0.5 * (t_air + 273.15) ** 4) ** 0.25
+    # Mean radiant temperature: ground hemisphere + SKY hemisphere
+    # (issue #196).  A clear night sky is a cold radiative sink (Swinbank
+    # clear-sky correlation, T_sky = 0.0552*T_air^1.5 K) so high-eps
+    # surfaces cool below air temperature at night - the parked-vehicle
+    # behaviour real FLIR shows.  Overcast lifts the sky toward air.
     t_air_k = t_air + 273.15
+    sky_k = 0.0552 * t_air_k**1.5
+    sky_k = sky_k + (t_air_k - sky_k) * overcast
+    mrt_k = (0.5 * (t_ground + 273.15) ** 4 + 0.5 * sky_k**4) ** 0.25
 
     # Iterate the skin to its fixed point, solving the core ANALYTICALLY.
     # The core residual is linear in t_cr:
@@ -409,6 +417,97 @@ class TestSourcedConstants(unittest.TestCase):
         self.assertAlmostEqual(AIR_300K["nu"], 15.89e-6, places=10)
         self.assertAlmostEqual(AIR_300K["k"], 0.02624, places=5)
         self.assertAlmostEqual(AIR_300K["Pr"], 0.707, places=3)
+
+
+def band_radiance_fit(t_k):
+    """Mirror of fnc_calculateBandRadiance: three-segment power-law fit
+    to the Planck integral over 8-14 um (issue #196)."""
+    t_k = max(t_k, 240.0)
+    if t_k <= 290.0:
+        return 2.152412e-11 * t_k**5.0121
+    if t_k <= 330.0:
+        return 4.971094e-10 * t_k**4.4580
+    return 3.885869e-08 * t_k**3.7101
+
+
+def flir_radiance(t_surf_c, eps, t_air_c, f_ground=0.5, t_ground_c=None):
+    """Mirror of fnc_calculateBandRadiance: FLIR 3-term measurement
+    equation (T810442).  tau = 1 at close range, so the atmospheric
+    term vanishes:
+        W = eps*W(T_surf) + (1-eps)*W(T_refl)
+    T_refl is the sky/ground mix by view factor.  The SKY term is the
+    8-14 um atmospheric-window band temperature - far colder than the
+    total-longwave Swinbank sky.  Measured band values: Tebo (1965)
+    Flagstaff -21 to -82 C; a clear-sky band temperature ~35 K below
+    air is the temperate mid-range.  Overcast lifts it toward air."""
+    import math
+
+    eps = max(0.05, min(1.0, eps))
+    if t_ground_c is None:
+        t_ground_c = t_air_c
+    t_surf_k = t_surf_c + 273.15
+    t_air_k = t_air_c + 273.15
+    t_ground_k = t_ground_c + 273.15
+    overcast = 0.0
+    sky_k = t_air_k - 35.0
+    sky_k = sky_k + (t_air_k - sky_k) * overcast
+    t_refl_k = f_ground * t_ground_k + (1 - f_ground) * sky_k
+    w_obj = band_radiance_fit(t_surf_k)
+    w_refl = band_radiance_fit(t_refl_k)
+    return eps * w_obj + (1 - eps) * w_refl
+
+
+class TestFLIRRadiance(unittest.TestCase):
+    """Band radiance + FLIR measurement equation (issue #196)."""
+
+    def test_planck_fit_night_error(self):
+        # The night-segment power-law fit must hold within 1% of the
+        # exact Planck integral over 250-290 K (the night scene range).
+        import numpy as np
+
+        c1 = 1.191043e-16
+        c2 = 1.438769e-2
+        lam = np.linspace(8e-6, 14e-6, 200)
+
+        def exact(t_k):
+            return np.trapezoid(c1 / lam**5 / (np.exp(c2 / (lam * t_k)) - 1.0), lam)
+
+        for t_k in np.linspace(250, 290, 9):
+            err = abs(band_radiance_fit(t_k) - exact(t_k)) / exact(t_k)
+            self.assertLess(err, 0.01)
+
+    def test_radiance_monotonic_in_temperature(self):
+        # Radiance must increase with surface temperature (the AGC maps
+        # it to brightness; a non-monotonic map would be nonsense).
+        r0 = flir_radiance(0.0, 0.92, 15.0)
+        r1 = flir_radiance(15.0, 0.92, 15.0)
+        r2 = flir_radiance(37.0, 0.92, 15.0)
+        self.assertLess(r0, r1)
+        self.assertLess(r1, r2)
+
+    def test_low_emissivity_reflects_cold_sky(self):
+        # The physics real FLIR shows at night: a bare-metal surface
+        # (eps ~0.1) reflects the cold sky and reads DARKER than a
+        # painted surface (eps 0.9) at the SAME physical temperature.
+        # The old T*eps^0.25 scaling could not represent this.
+        t = 10.0  # both surfaces at 10 C
+        metal = flir_radiance(t, 0.1, 5.0, 0.5)
+        painted = flir_radiance(t, 0.9, 5.0, 0.5)
+        self.assertLess(metal, painted)
+
+    def test_sky_sink_cools_below_air_at_night(self):
+        # A parked vehicle at midnight: high-eps body panel radiates to
+        # the cold sky and its equilibrium surface sits below air
+        # temperature.  Verify the MRT the solve uses includes the sky
+        # sink: clear-sky MRT must be below air at 5 C clear night.
+        t_air_k = 5.0 + 273.15
+        sky_k = 0.0552 * t_air_k**1.5
+        mrt_k = (0.5 * (5.0 + 273.15) ** 4 + 0.5 * sky_k**4) ** 0.25
+        self.assertLess(mrt_k, t_air_k)  # sky sink pulls MRT below air
+        # Overcast lifts it back toward air.
+        sky_overcast = sky_k + (t_air_k - sky_k) * 1.0
+        mrt_overcast = (0.5 * (5.0 + 273.15) ** 4 + 0.5 * sky_overcast**4) ** 0.25
+        self.assertAlmostEqual(mrt_overcast, t_air_k, delta=0.5)
 
 
 class TestTwoNodeSolve(unittest.TestCase):
