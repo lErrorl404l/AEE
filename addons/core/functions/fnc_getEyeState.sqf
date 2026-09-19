@@ -27,11 +27,12 @@
  *
  * eyePos is the canonical eye anchor: it accounts for stance and head
  * pose (prone = low, leaning = offset) and is what the game's own camera
- * uses in first person.  The LOOK vector is state-aware, matching
- * KtweaK's NVG (fn_sampleLighting): in a turret the optics align to the
- * weapon (weaponDirection), on foot to the view centre
- * (screenToWorldDirection [0.5, 0.5]).  getCameraViewDirection tracks the
- * head, which is wrong for a weapon-aligned optic.
+ * uses in first person.  The ORIGIN is overridden by the live camera
+ * position (positionCameraToWorld [0,0,0], AGL-converted to ASL) so
+ * freelook and vehicle cameras move every effect with them.  The LOOK
+ * vector is state-aware, matching KtweaK's NVG (fn_sampleLighting): in a
+ * turret the optics align to the weapon (weaponDirection), on foot to the
+ * camera aim (positionCameraToWorld [0,0,100]).
  *
  * Cached per tick in missionNamespace so N consumers cost 1 eyePos call.
  * The cache is keyed by diag_frameNo: stale entries are recomputed, so
@@ -57,7 +58,11 @@ private _eyeDir = eyeDirection _unit;
 // head model, which does NOT move with freelook.  The camera origin
 // (positionCameraToWorld [0,0,0]) is where the actual view comes from
 // and moves with freelook / vehicle camera.  Use it when it is valid.
-private _camOrigin = positionCameraToWorld [0, 0, 0];
+// NOTE: positionCameraToWorld returns AGL, but eyePos and every raycast
+// consumer (lineIntersectsSurfaces in the NVG focus) use ASL.  Convert
+// with AGLToASL or the focus ray fires from the wrong height and the
+// auto-focus stops tracking (issue #204, 'focus is not updating').
+private _camOrigin = AGLToASL (positionCameraToWorld [0, 0, 0]);
 if (_camOrigin isNotEqualTo [0, 0, 0]) then {
     _eye = _camOrigin;
 };
