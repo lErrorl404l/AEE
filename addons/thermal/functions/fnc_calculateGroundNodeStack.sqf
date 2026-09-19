@@ -27,7 +27,10 @@ Boundary conditions:
   Top:    the surface energy balance (solar + sky longwave - emitted -
           sensible - latent) as a finite-volume flux on the surface
           half-cell - the same balance every AEE surface uses.
-  Bottom: FIXED temperature (Noah TBOT approach) = annual-mean air,
+  Bottom: FIXED temperature (Noah TBOT approach) = the long-run air
+  mean, computed natively as a slow EMA (30-day tau) persisted per
+  cell - NOT a fresh air read (the deep anchor must not ride the
+  diurnal cycle).
           applied at the deepest node.
 
 Moisture is PER LAYER (the soilMoisture scalar from fnc_updateSoilMoisture
@@ -112,18 +115,23 @@ private _alpha = [];
 } forEach _dz;
 
 // ─── Node temperatures: persist or seed ───────────────────────────────────
+// State is [_t1.._t4, _tBot]: the 4 layer temps plus the TBOT anchor.
+// TBOT is the deep-soil annual-mean anchor.  It must NOT track hourly
+// air (the shallow-limit error the stack exists to fix) - it is a slow
+// EMA of the air temperature with a 30-day time constant, persisted
+// per cell.  No state exists?  Seed at current air (the best estimate
+// without long history; the EMA then drifts it over the run).
 private _T = [];
-if (!isNil "_last" && {count _last == 4}) then {
-    _T = +_last;
+private _tBot = _tAir;
+if (!isNil "_last" && {count _last == 5}) then {
+    _T = _last select [0, 4];
+    _tBot = _last select 4;
 } else {
-    // Seed: linear from air temperature to the TBOT anchor (annual mean
-    // air).  The deep nodes carry the seasonal anchor; the surface
-    // starts at air temperature and the first tick drives it toward
-    // the diurnal equilibrium.
-    private _tBot = EGVAR(core,annualMeanAirTemp);
-    if (isNil "_tBot") then { _tBot = _tAir; };
     _T = [_tAir, (_tAir + _tBot) / 2, (_tAir + _tBot * 2) / 3, _tBot];
 };
+// Slow EMA toward the long-run air mean (30-day tau).  The deep anchor
+// must not ride the diurnal cycle - it integrates the seasonal signal.
+_tBot = _tBot + ((_tAir - _tBot) * (_dt / 2592000));
 
 // ─── Surface forcing (the top BC, W/m2) ───────────────────────────────────
 private _wind = EGVAR(core,currentWind);
@@ -181,55 +189,62 @@ _tNew set [0, _T0new];
 private _r = [];
 {
     _r pushBack ((_alpha select _forEachIndex) * _dt / (2 * ((_dz select _forEachIndex) ^ 2)));
-} forEach [0, 1, 2];
+} forEach [0, 1];
 
-// Forward half-step (explicit part of CN) on interior nodes.
+// Forward half-step (explicit part of CN) on the interior nodes (1,2).
+// Node 0 is the surface (updated explicitly by the flux); node 3 is the
+// FIXED bottom boundary (_tBot) - never solved, matching the mirror's
+// d[-1] = t_bot pin.
 private _tMid = +_T;
 {
-    private _i = _forEachIndex + 1;  // nodes 1..3
+    private _i = _forEachIndex + 1;  // nodes 1..2
     private _a = _r select _forEachIndex;
     private _above = _T select (_i - 1);
-    private _below = _T select (_i + 1);
+    private _below = if (_i == 2) then { _tBot } else { _T select (_i + 1) };
     _tMid set [_i, (_T select _i) + (_a * ((_below - (2 * (_T select _i)) + _above)))];
-} forEach [0, 1, 2];
+} forEach [0, 1];
 
 // Backward half-step (implicit part of CN): solve the tridiagonal
-// (I - r*D) T_new = T_mid.  Thomas algorithm for the 3 interior nodes.
-private _aDiag = [0, 0, 0];  // sub-diagonal
-private _bDiag = [0, 0, 0];  // diagonal
-private _cDiag = [0, 0, 0];  // super-diagonal
-private _dVec = [0, 0, 0];   // RHS
+// (I - r*D) T_new = T_mid.  Thomas algorithm for the 2 interior nodes
+// (1,2); node 3 stays the fixed TBOT anchor.
+private _aDiag = [0, 0];  // sub-diagonal
+private _bDiag = [0, 0];  // diagonal
+private _cDiag = [0, 0];  // super-diagonal
+private _dVec = [0, 0];   // RHS
 {
-    private _i = _forEachIndex;  // 0..2 = interior node index (1..3)
+    private _i = _forEachIndex;  // 0..1 = interior node index (1..2)
     _bDiag set [_i, 1 + (2 * (_r select _i))];
     _dVec set [_i, (_tMid select (_i + 1))];
     if (_i > 0) then { _aDiag set [_i, -(_r select _i)]; };
-    if (_i < 2) then { _cDiag set [_i, -(_r select _i)]; };
-} forEach [0, 1, 2];
+    if (_i < 1) then { _cDiag set [_i, -(_r select _i)]; };
+} forEach [0, 1];
 
 // Thomas algorithm
-private _cpT = [0, 0, 0];
-private _dpT = [0, 0, 0];
+private _cpT = [0, 0];
+private _dpT = [0, 0];
 _cpT set [0, (_cDiag select 0) / (_bDiag select 0)];
 _dpT set [0, (_dVec select 0) / (_bDiag select 0)];
-for "_i" from 1 to 2 do {
+for "_i" from 1 to 1 do {
     private _m = (_bDiag select _i) - ((_aDiag select _i) * (_cpT select (_i - 1)));
     if (_m == 0) then { _m = 1e-6; };
-    _cp set [_i, (_cDiag select _i) / _m];
+    _cpT set [_i, (_cDiag select _i) / _m];
     _dpT set [_i, ((_dVec select _i) - ((_aDiag select _i) * (_dpT select (_i - 1)))) / _m];
 };
-private _x = [0, 0, 0];
-_x set [2, _dpT select 2];
-for "_i" from 1 to 0 step -1 do {
+private _x = [0, 0];
+_x set [1, _dpT select 1];
+for "_i" from 0 to 0 step -1 do {
     _x set [_i, (_dpT select _i) - ((_cpT select _i) * (_x select (_i + 1)))];
 };
 
-// Write back interior nodes; bottom stays the fixed TBOT anchor.
+// Write back interior nodes; the bottom node stays the fixed TBOT anchor.
 _tNew set [1, _x select 0];
 _tNew set [2, _x select 1];
-_tNew set [3, _x select 2];
+_tNew set [3, _tBot];
 
 // ─── Persist and return ───────────────────────────────────────────────────
+// State is [_t1.._t4, _tBot]: the 4 layer temps plus the TBOT anchor so
+// the slow annual-mean EMA survives across ticks.
+_tNew pushBack _tBot;
 _state set [_cell, _tNew];
 missionNamespace setVariable [QGVAR(groundNodeStack), _state];
 
