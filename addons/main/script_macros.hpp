@@ -13,6 +13,13 @@
 #undef PREP
 #define PREP(var1) TRIPLES(ADDON,fnc,var1) = compile preprocessFileLineNumbers QPATHTOF(functions\DOUBLES(fnc,var1).sqf)
 
+// PREPS(var2,var1): compile functions\<var2>\fnc_<var1>.sqf - the
+// subfolder variant of PREP for categorised function trees (issue #203).
+// Subfolders are purely organisational (PBOs flatten the path), so the
+// function name stays flat (aee_X_fnc_<var1>) and callers use FUNC as
+// normal.  The define name matches FUNC/EFUNC for HEMTT L-S29.
+#define PREPS(var2,var1) TRIPLES(ADDON,fnc,var1) = compile preprocessFileLineNumbers QPATHTOF(functions\var2\DOUBLES(fnc,var1).sqf)
+
 // AEE-specific convenience macros
 
 // Path construction helpers (complement CBA's QUOTE/QPATHTOF/QGVAR)

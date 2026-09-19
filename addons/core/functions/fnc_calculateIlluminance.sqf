@@ -127,7 +127,7 @@ if (_sunElev <= 0) then {
 // gain (over-bright).  Read a live missionNamespace variable so any mod
 // can raise the assumed starlight: a brighter sky -> higher lux -> NVG
 // gains down -> the brighter sky renders correctly, not blown out.
-//   set aee_optics_starlightLux = 0.01;  // a 10x brighter night sky
+//   set aee_core_starlightLux = 0.01;  // a 10x brighter night sky
 // Default 0.001 = standard clear-sky starlight.
 private _starlightLux = missionNamespace getVariable [QGVAR(starlightLux), 0.001];
 if !(_starlightLux isEqualType 0 && _starlightLux > 0) then { _starlightLux = 0.001; };

@@ -23,6 +23,7 @@ _REPO_ROOT = Path(__file__).resolve().parents[2]
 _OPTICS = _REPO_ROOT / "addons" / "optics" / "functions"
 _THERMAL = _REPO_ROOT / "addons" / "thermal" / "functions"
 _NVG = _REPO_ROOT / "addons" / "nightvision" / "functions"
+_CORE = _REPO_ROOT / "addons" / "core" / "functions"
 
 
 def _read_sqf(name, addon="optics"):
@@ -32,6 +33,8 @@ def _read_sqf(name, addon="optics"):
         base = _THERMAL
     elif addon == "nightvision":
         base = _NVG
+    elif addon == "core":
+        base = _CORE
     else:
         base = _OPTICS
     return (base / name).read_text(encoding="utf-8")
@@ -234,7 +237,7 @@ def ambient_lux(
     (1 - overcast) factor); heavy overcast blocks ~85 % of moonlight.
     Heavy rain halves the remainder.
     starlight is the moonless-night floor (default 0.001).  It is a live
-    missionNamespace hook (aee_optics_starlightLux) so skybox mods can
+    missionNamespace hook (aee_core_starlightLux) so skybox mods can
     raise the assumed night-sky brightness; a brighter sky -> higher lux
     -> NVG gains down, rendering the brighter sky correctly.
     Twilight glow (sun below horizon) adds the scattered-sunlight sky
@@ -1338,7 +1341,7 @@ class TestTwilight(unittest.TestCase):
         self.assertGreater(lux, 0.001)
 
     def test_starlight_hook_raises_floor(self):
-        # A skybox mod raises aee_optics_starlightLux -> the whole night
+        # A skybox mod raises aee_core_starlightLux -> the whole night
         # floor rises, so the NVG gains down for the brighter sky.
         base = ambient_lux(0.0)
         bright = ambient_lux(0.0, starlight=0.01)
@@ -2180,7 +2183,7 @@ class TestRainDropletEyeVelocity(unittest.TestCase):
         self.assertIn("_eyeVel,", text)
         self.assertNotIn("vectorMultiply -1", text)
 
-        eye_state = Path("addons/optics/functions/fnc_getEyeState.sqf").read_text(
+        eye_state = Path("addons/core/functions/fnc_getEyeState.sqf").read_text(
             encoding="utf-8"
         )
         self.assertIn("eyeStatePrev", eye_state)
@@ -2781,6 +2784,7 @@ class TestSQFSync(unittest.TestCase):
                 "starlightLux",
             ],
             "moon lux / cloud / twilight / starlight hook / inverse-square",
+            addon="core",
         )
 
     def test_solar_model_exposes_sun_elevation(self):
@@ -2801,6 +2805,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_calculateIlluminance.sqf",
             ["_rainS * 30", "4343", "40 * (_fogS / 0.5) ^ 2", "min 300"],
             "smoothed rain/fog extinction",
+            addon="core",
         )
 
     def test_nvg_gain_model(self):
@@ -2967,7 +2972,7 @@ class TestSQFSync(unittest.TestCase):
                 "setParticleParams",
                 "setDropInterval",
                 "setPosASL (_eye vectorAdd (_camDir vectorMultiply 0.1))",
-                "call EFUNC(optics,getEyeState)",
+                "call EFUNC(core,getEyeState)",
             ],
             "rain droplets on objective (eye-repositioned Refract emitter)",
             addon="thermal",
@@ -2994,6 +2999,7 @@ class TestSQFSync(unittest.TestCase):
                 "eyeStatePrevTime",
             ],
             "shared eye-state foundation (state-aware direction)",
+            addon="core",
         )
 
     def test_smoothed_weather_constants(self):
@@ -3014,6 +3020,7 @@ class TestSQFSync(unittest.TestCase):
                 "missionNamespace setVariable [QGVAR(weatherEMA), _prev]",
             ],
             "smoothed weather foundation (physical taus)",
+            addon="core",
         )
 
     def test_no_raw_weather_in_brightness_paths(self):
@@ -3023,7 +3030,7 @@ class TestSQFSync(unittest.TestCase):
         # (instant response is correct there).
         for fname, ctx, addon in [
             ("fnc_applyNVGTubeModel.sqf", "NVG tube", "nightvision"),
-            ("fnc_calculateIlluminance.sqf", "illuminance", "optics"),
+            ("fnc_calculateIlluminance.sqf", "illuminance", "core"),
             ("fnc_applyNightGrain.sqf", "night grain", "nightvision"),
             ("fnc_applyThermalVision.sqf", "thermal vision", "thermal"),
             ("fnc_calculateAttenuation.sqf", "attenuation", "optics"),
@@ -3057,7 +3064,7 @@ class TestSQFSync(unittest.TestCase):
         # calls in the focus fan / blowout cone).
         for fname, ctx, addon in [
             ("fnc_applyNVGTubeModel.sqf", "NVG tube", "nightvision"),
-            ("fnc_calculateIlluminance.sqf", "illuminance", "optics"),
+            ("fnc_calculateIlluminance.sqf", "illuminance", "core"),
             ("fnc_applyRainDroplets.sqf", "droplets", "thermal"),
         ]:
             src = _read_sqf(fname, addon)

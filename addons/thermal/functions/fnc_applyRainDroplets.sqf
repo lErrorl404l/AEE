@@ -108,7 +108,7 @@ if (isNull _src) then {
 // camera direction so droplets sit on the lens wherever the player looks.
 // Consumes the SHARED eye state (fnc_getEyeState) - the single source of
 // truth for eye position + gaze vector, cached once per frame.
-private _eyeState = [_player] call EFUNC(optics,getEyeState);
+private _eyeState = [_player] call EFUNC(core,getEyeState);
 private _eye = _eyeState select 0;
 private _camDir = _eyeState select 1;
 private _eyeVel = _eyeState select 3;

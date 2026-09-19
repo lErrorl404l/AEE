@@ -66,6 +66,6 @@ _lux = 0.001 + _lux;
 _lux = _lux max 0 min 300;
 
 // ─── Store & return ──────────────────────────────────────────────────────
-// The optics illuminance model owns ambientLux (aee_optics_ambientLux);
+// The optics illuminance model owns ambientLux (aee_core_ambientLux);
 // this module only feeds moonPhase into night classification.
 _lux

@@ -33,14 +33,6 @@
             <Original>Dew Decay Rate</Original>
             <English>Dew Decay Rate</English>
         </Key>
-        <Key ID="STR_AEE_Optics_fogGrainMax_Description">
-            <Original>Fog haze grain added to the night grain effect</Original>
-            <English>Fog haze grain added to the night grain effect</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_fogGrainMax_Name">
-            <Original>Fog Grain Maximum</Original>
-            <English>Fog Grain Maximum</English>
-        </Key>
         <Key ID="STR_AEE_Optics_glareBlurMax_Description">
             <Original>Veiling blur at peak solar glare</Original>
             <English>Veiling blur at peak solar glare</English>
@@ -89,14 +81,6 @@
             <Original>Mirage Onset Temperature</Original>
             <English>Mirage Onset Temperature</English>
         </Key>
-        <Key ID="STR_AEE_Optics_nightGrainMax_Description">
-            <Original>Night noise floor, the perceived darkness of night vision</Original>
-            <English>Night noise floor, the perceived darkness of night vision</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_nightGrainMax_Name">
-            <Original>Night Grain Maximum</Original>
-            <English>Night Grain Maximum</English>
-        </Key>
         <Key ID="STR_AEE_Optics_rainAccumRate_Description">
             <Original>Droplet build-up speed per tick during rain</Original>
             <English>Droplet build-up speed per tick during rain</English>
@@ -120,14 +104,6 @@
         <Key ID="STR_AEE_Optics_rainDecayRate_Name">
             <Original>Rain Decay Rate</Original>
             <English>Rain Decay Rate</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_rainGrainMax_Description">
-            <Original>Rain-on-eye noise at night</Original>
-            <English>Rain-on-eye noise at night</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_rainGrainMax_Name">
-            <Original>Rain Grain Maximum</Original>
-            <English>Rain Grain Maximum</English>
         </Key>
         <Key ID="STR_AEE_Optics_seeingFXIntensity_Description">
             <Original>Long-range shimmer strength from atmospheric seeing</Original>

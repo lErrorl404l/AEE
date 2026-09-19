@@ -36,8 +36,8 @@ if (sunOrMoon <= 0) exitWith {
 // and elevation.  This replaces the old dayTime sine approximation — the
 // engine's light direction is real data, verified by docker probe (vector
 // points FROM the light; elevation is sign-flipped to give sun elevation).
-private _sunAzim  = missionNamespace getVariable [QGVAR(lightAzimuth), -1];
-private _sunElev  = missionNamespace getVariable [QGVAR(lightElevation), -1];
+private _sunAzim  = missionNamespace getVariable [QEGVAR(core,lightAzimuth), -1];
+private _sunElev  = missionNamespace getVariable [QEGVAR(core,lightElevation), -1];
 private _sunValid = (_sunAzim >= 0 && _sunElev >= 0);
 if (_sunValid) then {
     // Engine vector points FROM the sun; the sun is the opposite direction,

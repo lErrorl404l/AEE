@@ -68,7 +68,7 @@ if (isNil "_player" || !alive _player || cameraOn != _player) exitWith { 0 };
 //   - EASE when settled: a slow EMA (~1.5 s), not a per-frame jump.
 // start is ALWAYS 0 - we never lift the black level (the "flashlight in
 // the face" the user saw came from start=0.5, never from width).
-private _eyeState = [_player] call EFUNC(optics,getEyeState);
+private _eyeState = [_player] call EFUNC(core,getEyeState);
 private _fwd = _eyeState select 1;
 
 // Gaze angular velocity: angle between this frame's forward and the last.

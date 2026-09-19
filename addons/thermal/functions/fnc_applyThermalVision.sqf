@@ -102,7 +102,7 @@ private _windowBlur = 0;
 if (_fogDensity > 0.1) then {
     _windowBlur = _windowBlur + linearConversion [0.1, 0.8, _fogDensity, 0.0, 0.2, true];
 };
-private _rainS = ([] call EFUNC(optics,getSmoothedWeather)) select 0;
+private _rainS = ([] call EFUNC(core,getSmoothedWeather)) select 0;
 if (_rainS > 0.1) then {
     _windowBlur = _windowBlur + linearConversion [0.1, 1.0, _rainS, 0.0, 0.15, true];
 };
