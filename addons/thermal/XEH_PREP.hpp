@@ -10,6 +10,7 @@ PREPS(environment,updateTemperature);
 PREPS(surface,getMaterialThermal);
 PREPS(surface,getSolarAbsorptance);
 PREPS(surface,getSelectionMaterials);
+PREPS(surface,calculateGroundTemperature);
 PREPS(display,applySelectionThermal);
 PREPS(environment,calculateMRT);
 PREPS(environment,calculateGlobeTemperature);

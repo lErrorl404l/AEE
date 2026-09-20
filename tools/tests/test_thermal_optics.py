@@ -3418,6 +3418,36 @@ class TestSQFSync(unittest.TestCase):
         self.assertIn("_massScale", callee)
         self.assertIn("_skinMass = (0.1 * 70) * (_massScale", callee)
 
+    def test_ground_temperature_by_surface(self):
+        # Issue #204: the position-based ground temperature - asphalt
+        # and concrete stay warmer than soil at night (thermal mass).
+        # This is the achievable "terrain painting" (the RV engine has no
+        # setTerrainTexture; the satellite layer is baked into the map).
+        self._assert_in_sqf(
+            "fnc_calculateGroundTemperature.sqf",
+            [
+                "surfaceType _pos",
+                'case "asphalt"',
+                'case "concrete"',
+                'case "rock"',
+                'case "sand"',
+                'case "grass_short"',
+                "currentSolarRadiation",
+                "_nightWeight = 1 - _radiation",
+            ],
+            "position-based ground temperature (surface thermal mass)",
+            addon="thermal",
+        )
+
+    def test_thermal_selections_fallback_not_empty(self):
+        # Issue #204: a vehicle whose textureSources produce nothing
+        # (empty textures) must fall through to the all-but-MFD fallback -
+        # caching an EMPTY list left the MRAP permanently unpainted
+        # (heat ramped to 1 in the state, parts never rendered).
+        text = _read_sqf("fnc_getThermalSelections.sqf", "thermal")
+        self.assertIn("if (_selections isEqualTo []) then", text)
+        self.assertIn('["mfd", _x, false] call BIS_fnc_inString', text)
+
     def test_mapwide_thermal_caps(self):
         # map geometry with no selections) at load, zero runtime cost.
         cfg = (_REPO_ROOT / "addons" / "optics" / "config.cpp").read_text(
