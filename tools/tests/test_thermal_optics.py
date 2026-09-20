@@ -3102,12 +3102,11 @@ class TestSQFSync(unittest.TestCase):
 
     def test_second_sun_constants(self):
         # Issue #204: the second sun tracks the solar radiation (the TI
-        # sun term).  Peak is the A3TI-proven 13 (DEFAULT_SECONDSUN_
-        # BRIGHTNESS) scaled by radiation with a dawn/dusk floor.  A
-        # CONSTANT 13 at midnight made the engine-TI terrain glow
-        # white-hot (the 'cold tyres on white ground' report - the
-        # vehicles were correctly dark, the terrain was over-heated).
-        # Attenuation is the A3TI [10e10, 150, 4.3e-5, 4.3e-5].
+        # sun term) AND the REAL sun's azimuth - morning thermals heat
+        # the east faces of objects, afternoon the west.  Peak is the
+        # A3TI-proven 13 (DEFAULT_SECONDSUN_BRIGHTNESS) scaled by
+        # radiation with a dawn/dusk floor.  At night the moon bearing
+        # drives the dim reflected term.
         self._assert_in_sqf(
             "fnc_applySecondSun.sqf",
             [
@@ -3118,8 +3117,11 @@ class TestSQFSync(unittest.TestCase):
                 "createVehicleLocal",
                 "private _lightBrightness = 13 * _radiation max 0.15",
                 "setLightAttenuation [10e10, 150, 4.3e-5, 4.3e-5]",
+                "currentSunAzimuth",
+                "currentMoonAzimuth",
+                "getRelPos [150, _azimuth]",
             ],
-            "constant sensor-illumination second sun (A3TI 13)",
+            "sun-direction-tracking second sun (real solar bearing)",
             addon="thermal",
         )
 
@@ -3511,6 +3513,30 @@ class TestSQFSync(unittest.TestCase):
         detector = _read_sqf("fnc_getSelectionMaterials.sqf", "thermal")
         self.assertIn("getHitPointMaterials", detector)
         self.assertIn("_hpMap getOrDefault", detector)
+
+    def test_texture_path_classification_order(self):
+        # Issue #204: the texture path contains the VEHICLE NAME, which
+        # pollutes the keywords (APC_Tracked_01_body has 'track',
+        # Heli_Light_01_ext has 'light', acc_pointer has 'int').  The
+        # classifier must check the PART signals first (metal _body/_ext/
+        # hull, rubber wheel/tyre) before the ambiguous words, so the
+        # APC and heli hulls read metal, not rubber/glass.
+        sqf = _read_sqf("fnc_getSelectionMaterials.sqf", "thermal")
+        # The metal-body check comes FIRST in the chain.
+        body_pos = sqf.find('_tl find "_body"')
+        glass_pos = sqf.find('_tl find "glass"')
+        track_pos = sqf.find('_tl find "track"')
+        int_pos = sqf.find('_tl find "int"')
+        # metal body check must precede the glass/light check
+        self.assertGreater(body_pos, 0)
+        self.assertGreater(glass_pos, 0)
+        self.assertLess(body_pos, glass_pos)
+        # 'track' must NOT be in the rubber check (the vehicle name
+        # APC_Tracked_01 contains it).
+        self.assertNotIn('_tl find "track"', sqf)
+        # interior must be the _int suffix, not bare 'int' (acc_pointer).
+        self.assertIn('_tl find "_int"', sqf)
+        self.assertNotIn('if (_tl find "int" >= 0)', sqf)
 
     def test_mapwide_thermal_caps(self):
         # map geometry with no selections) at load, zero runtime cost.
