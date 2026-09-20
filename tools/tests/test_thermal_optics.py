@@ -2788,6 +2788,7 @@ class TestSQFSync(unittest.TestCase):
             "addons/optics/functions/vision/fnc_managePostProcess.sqf",
             "addons/nightvision/functions/fnc_applyNVGTubeModel.sqf",
             "addons/thermal/functions/display/fnc_applyThermalVision.sqf",
+            "addons/thermal/functions/fusion/fnc_applyFusionPP.sqf",
         ]
         seen = {}
         for rel in files:
@@ -3606,6 +3607,125 @@ class TestNVGStackAuditSQFSync(unittest.TestCase):
         self.assertIn("nvgGateActive", text)
         self.assertIn("nvgGateFlickerUntil", text)
         self.assertIn("nvgGrainBoost", text)
+
+
+class TestFusionPipeline(unittest.TestCase):
+    """Fusion (Track B ENVG-B, issue #204): the emissive overlay over
+    the NVG base, driven by the same physics + AGC state as the thermal
+    display.  Locked against the SQF source and the shipped rvmats."""
+
+    def test_fusion_emissive_bands_shipped(self):
+        # 16 pre-baked fusion emissive bands, grey * 500 (band_100 =
+        # the A3TI full-white emissive 500), matching the thermal band
+        # names so the quantisation is shared.
+        import re
+        from pathlib import Path
+
+        data_dir = Path(__file__).resolve().parents[2] / "addons" / "thermal" / "data"
+        bands = {
+            "00": 0,
+            "07": 0.066667,
+            "13": 0.133333,
+            "20": 0.2,
+            "27": 0.266667,
+            "33": 0.333333,
+            "40": 0.4,
+            "47": 0.466667,
+            "53": 0.533333,
+            "60": 0.6,
+            "67": 0.666667,
+            "73": 0.733333,
+            "80": 0.8,
+            "87": 0.866667,
+            "93": 0.933333,
+            "100": 1.0,
+        }
+        for pct, grey in bands.items():
+            f = data_dir / f"fusion_emissive_{pct}.rvmat"
+            self.assertTrue(f.exists(), f"missing {f.name}")
+            text = f.read_text(encoding="utf-8")
+            expected = grey * 500.0
+            m = re.search(r"emmisive\[\]\s*=\s*\{([\d.]+)", text)
+            if m is None:
+                self.fail(f"emissive missing in {f.name}")
+            self.assertAlmostEqual(
+                float(m.group(1)),
+                expected,
+                places=3,
+                msg=f"{f.name} emissive must be grey*500 ({expected})",
+            )
+
+    def test_fusion_uses_same_physics_state(self):
+        # The overlay reads the SAME selTemperature + AGC window as the
+        # thermal display, so fusion and thermal agree on what is hot.
+        self._assert_in_sqf(
+            "fnc_applyFusionOverlay.sqf",
+            [
+                "QGVAR(selTemperature)",
+                "QGVAR(agcRadMin)",
+                "QGVAR(agcRadMax)",
+                "fusion_emissive_%1",
+                "calculateBandRadiance",
+            ],
+            "fusion overlay shares the thermal physics state",
+            addon="thermal",
+        )
+
+    def test_fusion_pp_force_in_nvg(self):
+        # Every fusion effect must render ONLY over the NVG base frame.
+        self._assert_in_sqf(
+            "fnc_applyFusionPP.sqf",
+            [
+                "ppEffectForceInNVG true",
+                "FilmGrain",
+                "2005",
+                "ColorCorrections",
+                "2505",
+            ],
+            "fusion PP stack: grain 2005, CC 2505, ForceInNVG",
+            addon="thermal",
+        )
+
+    def test_fusion_dispatch_after_nvg_tube(self):
+        # The sensor tick runs the tube model first, then the fusion
+        # overlay on top (composited over the I2 image).
+        self._assert_in_sqf(
+            "XEH_postInit.sqf",
+            [
+                "applyNVGTubeModel",
+                "isFusionCapable",
+                "applyFusionPP",
+                "applyFusionOverlay",
+                "fusionMode",
+            ],
+            "fusion wired into the vision-mode-1 dispatch",
+            addon="optics",
+        )
+
+    def test_fusion_teardown_on_exit(self):
+        # Leaving NVG destroys the fusion PP handles.
+        self._assert_in_sqf(
+            "XEH_postInit.sqf",
+            ["cycleFusionMode", "sensor PFH stopped"],
+            "fusion teardown on normal-vision exit",
+            addon="optics",
+        )
+
+    def _assert_in_sqf(self, filename, fragments, context, addon="optics"):
+        from pathlib import Path
+
+        root = Path(__file__).resolve().parents[2]
+        # fusion functions live in functions/fusion/ (subfolder)
+        if "Fusion" in filename:
+            path = root / "addons" / addon / "functions" / "fusion" / filename
+        else:
+            path = root / "addons" / addon / filename
+        text = path.read_text(encoding="utf-8")
+        missing = [f for f in fragments if f not in text]
+        self.assertFalse(
+            missing,
+            f"{filename}: {context} changed/missing in SQF: {missing}.",
+        )
 
 
 if __name__ == "__main__":

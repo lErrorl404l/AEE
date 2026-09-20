@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="AEE">
     <Package name="Thermal">
+        <Key ID="STR_AEE_Thermal_fusionAlwaysOn_Description">
+            <Original>Render the thermal fusion overlay over any NVG, even without a thermal-capable headset.</Original>
+            <English>Render the thermal fusion overlay over any NVG, even without a thermal-capable headset.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_fusionAlwaysOn_Name">
+            <Original>Fusion Always On</Original>
+            <English>Fusion Always On</English>
+        </Key>
         <Key ID="STR_AEE_Thermal_thermalPolarity_Description">
             <Original>White hot (hot = white) is the system default (AN/PAS-13 initialises white hot). Black hot (hot = black) is a user-selectable alternative - FM 3-22.9 states polarity is user preference</Original>
             <English>White hot (hot = white) is the system default (AN/PAS-13 initialises white hot). Black hot (hot = black) is a user-selectable alternative - FM 3-22.9 states polarity is user preference</English>

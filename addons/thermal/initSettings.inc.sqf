@@ -13,3 +13,18 @@
     true,
     {}
 ] call CBA_fnc_addSetting;
+
+// ── Fusion (issue #204, Track B ENVG-B) ───────────────────────────────────
+// Off: fusion only on TI-capable headsets (visionMode includes "TI").
+// On:  fusion renders over ANY NVG, thermal source or not (the A3TI
+// approach - its fusion modes are offered whenever an optic has thermal
+// and the current vanilla mode is NVG).
+[
+    QGVAR(fusionAlwaysOn),
+    "CHECKBOX",
+    [LLSTRING(fusionAlwaysOn_Name), LLSTRING(fusionAlwaysOn_Description)],
+    ["AEE Thermal", "Fusion"],
+    false,
+    true,
+    {}
+] call CBA_fnc_addSetting;

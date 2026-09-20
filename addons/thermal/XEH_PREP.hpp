@@ -30,3 +30,7 @@ PREPS(display,applyBuildingThermal);
 PREPS(display,applyClothingThermal);
 PREPS(display,applyWeaponBarrelHeat);
 PREPS(display,applyRainDroplets);
+PREPS(fusion,isFusionCapable);
+PREPS(fusion,applyFusionOverlay);
+PREPS(fusion,applyFusionPP);
+PREPS(fusion,cycleFusionMode);
