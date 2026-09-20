@@ -276,11 +276,11 @@ if (_mode == "EXIT") then {
             _agcMax = [150, _eps, _tAir, _fGround, _tCurrent] call FUNC(calculateBandRadiance);
         };
         private _b = ((_rad - _agcMin) / ((_agcMax - _agcMin) max 1e-6)) max 0 min 1;
-        // Polarity: white-hot (hot = white) is the system default - the
-        // AN/PAS-13 initialises white hot.  Black-hot (hot = black) is a
-        // user-selectable alternative; FM 3-22.9 Appendix H states
-        // polarity choice is user preference, not doctrine.
-        if (GVAR(thermalPolarity) == 1) then { _b = 1 - _b; };
+        // Polarity (WHOT/BHOT) is applied by a ColorInversion ppEffect in
+        // fnc_applyThermalVision (the proven A3TI/MKK mechanism) - NOT a
+        // brightness flip here.  A `_b = 1-_b` flip of the band index
+        // never reached the rendered image for StageTI-baked objects (the
+        // 'WHOT/BHOT no visual difference' report, issue #204).
         // TRACE: log the full pipeline every call so a bad value is
         // visible even if `finite` does not flag it.  Throttled to the
         // first 20 calls per object to keep the RPT readable.
@@ -308,34 +308,51 @@ if (_mode == "EXIT") then {
             ];
             _b = 0;
         };
-        private _colour = format ["#(rgb,8,8,3)color(%1,%1,%1,1)", _b];
+
+        // ─── Heat-colour texture paint (issue #204, MKK mechanism) ────────
+        // The vanilla TI mode renders the material's Stage1 TEXTURE.  The
+        // proven thermal mods (MKK 3753145363 fnc_setThermalMaterials,
+        // A3TI 2041057379 fn_setObjects) paint the heat as a procedural
+        // colour via setObjectTexture - a WHOT-red base [1,0.10,0.20]
+        // scaled by the heat state, quantised to N levels to stop the
+        // engine re-creating the texture every refresh.  The original
+        // material is KEPT (MKK THERMAL_RED default: texture only, no
+        // material swap) so damage states and modded multi-stage materials
+        // survive.
+        //
+        // The old approach swapped the material to grey-band rvmats with a
+        // grey Stage1: the grey composited over the vanilla TI rendered
+        // flat and never carried the heat colour into the image (the
+        // 'WHOT/BHOT no visual difference' report).  The heat colour
+        // replaces it - the same quantisation, now with the correct colour
+        // in the texture the TI pass actually reads.
+        //
+        // WHOT (brightness): hot = red.  The base colour scales with the
+        // AGC-normalised radiance; polarity (BHOT) is applied by a
+        // ColorInversion ppEffect in fnc_applyThermalVision, NOT a
+        // brightness flip here - a flip of the band index never reached
+        // the rendered image for StageTI-baked objects.
+        // Quantise to 32 levels (MKK TI_VEHICLE_HEAT_TEXTURE_LEVELS) so a
+        // 0.066 heat step is invisible but the texture is not recreated
+        // on every tick (the engine re-paints the procedural texture
+        // each time the value changes).
+        private _levels = 32;
+        private _qb = (round ((_b max 0 min 1) * (_levels - 1))) / (_levels - 1);
+        private _heatCol = [
+            1.0 * _qb,
+            0.10 * _qb,
+            0.20 * _qb
+        ];
+        private _colour = format [
+            "#(rgb,8,8,3)color(%1,%2,%3,1)",
+            _heatCol select 0,
+            _heatCol select 1,
+            _heatCol select 2
+        ];
 
         _obj setObjectTexture [_idx, _colour];
-
-        // ─── TI band material swap (issue #196, verified mechanism) ────────
-        // Arma's TI mode renders the rvmat's StageTI, NOT the diffuse - so
-        // setObjectTexture alone is invisible in thermal view wherever the
-        // original rvmat defines a TI stage (all vehicles, buildings,
-        // weapons).  The verified, supported path (Object Builder template
-        // #(argb,8,8,3)color(...,TI); BI forum weapon-rvmat examples) is to
-        // swap the material to an rvmat whose StageTI carries the physics
-        // colour.  We ship 16 pre-baked band rvmats, each named by the grey
-        // it renders - ti_grey_00.rvmat (black, the cold window floor)
-        // through ti_grey_100.rvmat (white, the hot ceiling) - and quantise
-        // the computed brightness to the nearest band (a 0.066 brightness
-        // step is invisible on FLIR).  The engine's dynamic temperature
-        // model MULTIPLIES the TI stage output, so applyEngineThermal
-        // neutralises the vehicle heat state (setVehicleTIPars [0,0,0])
-        // while we paint - otherwise our radiance would be double-modulated.
-        //
-        // Mod compatibility: setObjectMaterial is CLIENT-LOCAL - only the
-        // player with TI active sees the band material; every other client
-        // keeps the original (day view, damage states, modded multi-stage
-        // materials intact).  The TI user's originals are captured on first
-        // apply and restored on EXIT (above).
-        private _band = round (_b * 15) min 15 max 0;
-        private _bandPct = round ((_band / 15) * 100) min 100 max 0;
-        _obj setObjectMaterial [_idx, format [QPATHTOF(data\ti_grey_%1.rvmat), _bandPct]];
+        // No setObjectMaterial: the original material (with its own
+        // StageTI or Stage1) stays, so the heat colour renders over it.
     } forEach _selNames;
 };
 
