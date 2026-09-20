@@ -1324,10 +1324,12 @@ if (_hDoF >= 0) then {
     // Commit 0.1 s: the focus moves ~1.5 m per 0.1 s tick, so each step
     // eases into the next instead of applying abruptly.  The glide in
     // the focus value is then matched by a glide in the rendered blur.
-    _hDoF ppEffectAdjust [-_dofBlur, _focusDist, 1];
-    _hDoF ppEffectCommit 0.15;
-    _hDoF ppEffectEnable true;
-    _hDoF ppEffectForceInNVG true;
+    if (_hDoF >= 0) then {
+        _hDoF ppEffectAdjust [-_dofBlur, _focusDist, 1];
+        _hDoF ppEffectCommit 0.15;
+        _hDoF ppEffectEnable true;
+        _hDoF ppEffectForceInNVG true;
+    };
 };
 
 // Diagnostics: set aee_nightvision_nvgDebug = true in the debug console to log
@@ -1389,16 +1391,20 @@ if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
 //   P20 peak ~550nm (yellow-green): warmer green.
 // weight: desaturation RGB weights, non-zero.  [6, 1, 1, 0] = ACE3 green,
 //   [1, 1, 6, 0] = ACE3 white.  [0,0,0,0] disables the effect.
-_hCC ppEffectAdjust [_brightness, _mtfEffective, 0, [0,0,0,0], _phosphorTint, _nvgWeight];
-_hCC ppEffectCommit 0;
-_hCC ppEffectEnable true;
-_hCC ppEffectForceInNVG true;
+if (_hCC >= 0) then {
+    _hCC ppEffectAdjust [_brightness, _mtfEffective, 0, [0,0,0,0], _phosphorTint, _nvgWeight];
+    _hCC ppEffectCommit 0;
+    _hCC ppEffectEnable true;
+    _hCC ppEffectForceInNVG true;
+};
 
 // ─── DynamicBlur (blooming / halos from bright sources) ──────────────────
-_hBloom ppEffectAdjust [_bloom];
-_hBloom ppEffectCommit 0;
-_hBloom ppEffectEnable true;
-_hBloom ppEffectForceInNVG true;
+if (_hBloom >= 0) then {
+    _hBloom ppEffectAdjust [_bloom];
+    _hBloom ppEffectCommit 0;
+    _hBloom ppEffectEnable true;
+    _hBloom ppEffectForceInNVG true;
+};
 
 // ─── RadialBlur (optical edge degradation) ───────────────────────────────
 // NVG optics are sharpest at centre, softest at edges.  MTF drops
@@ -1409,16 +1415,20 @@ _hBloom ppEffectForceInNVG true;
 //   power ~0.0025-0.005, offset ~0.06 = 6% of screen un-blurred).
 //   Do NOT scale power above ~0.01: RadialBlur power 0.5 with a small
 //   offset smears the whole image into black.
-_hVig ppEffectAdjust _vigStrength;
-_hVig ppEffectCommit 0;
-_hVig ppEffectEnable true;
-_hVig ppEffectForceInNVG true;
+if (_hVig >= 0) then {
+    _hVig ppEffectAdjust _vigStrength;
+    _hVig ppEffectCommit 0;
+    _hVig ppEffectEnable true;
+    _hVig ppEffectForceInNVG true;
+};
 
 // ─── FilmGrain (shot noise - the NVG aesthetic) ──────────────────────────
-_hGrain ppEffectAdjust [_grainIntensity, _sharpness, _grainSize, 0.5, 1.0, 0];
-_hGrain ppEffectCommit 0;
-_hGrain ppEffectEnable true;
-_hGrain ppEffectForceInNVG true;
+if (_hGrain >= 0) then {
+    _hGrain ppEffectAdjust [_grainIntensity, _sharpness, _grainSize, 0.5, 1.0, 0];
+    _hGrain ppEffectCommit 0;
+    _hGrain ppEffectEnable true;
+    _hGrain ppEffectForceInNVG true;
+};
 
 // ─── RscTitles display (focus HUD) ────────────────────────────────────────
 // The engine handles the NVG cutout (circular tube view).  We overlay only
