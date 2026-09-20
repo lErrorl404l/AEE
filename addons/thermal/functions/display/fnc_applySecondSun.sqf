@@ -75,7 +75,13 @@ if (_mode == "ENTER") then {
 private _radiation = missionNamespace getVariable [QEGVAR(core,currentSolarRadiation), 0];
 if !(_radiation isEqualType 0) then { _radiation = 0; };
 _radiation = _radiation max 0 min 1;
-private _lightBrightness = _radiation * 6;
+// Proven sensor-illumination boost (A3TI DEFAULT_SECONDSUN_BRIGHTNESS =
+// 13, MKK createLight): the second sun is a CONSTANT light that makes
+// the TI scene render, day OR night - it is a sensor constant, not a
+// physics sun.  Our old `radiation * 6` modulation dimmed it to nothing
+// at night, so the thermal image lost its illumination.  The A3TI
+// attenuation is [10e10, 150, 4.3e-5, 4.3e-5].
+private _lightBrightness = 13;
 
 // Attach to the camera so the light direction follows the view (the TI
 // sun term is directional).  A3TI attenuation: far range 150, so the sun
@@ -84,7 +90,7 @@ private _lightBrightness = _radiation * 6;
 _sun attachTo [_player, [0, 0, 0], "head"];
 _sun setLightBrightness _lightBrightness;
 _sun setLightAmbient [0.5, 0.5, 0.5];
-_sun setLightAttenuation [1e10, 150, 0, 0];
+_sun setLightAttenuation [10e10, 150, 4.3e-5, 4.3e-5];
 
 // Trace the sun term every 5 s so day/night behaviour is verifiable in
 // the RPT without the nvgDebug flag (issue #204: 'second sun on at night'

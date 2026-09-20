@@ -63,7 +63,8 @@ if (currentVisionMode _player != 2) exitWith {
             QGVAR(ppHandle_Thermal_Vignette),
             QGVAR(ppHandle_Thermal_CC),
             QGVAR(ppHandle_Thermal_Grain),
-            QGVAR(ppHandle_Thermal_Blur)
+            QGVAR(ppHandle_Thermal_Blur),
+            QGVAR(ppHandle_Thermal_Inversion)
         ];
         AEE_LOG_INFO("thermal effects torn down (vision mode left)");
 
@@ -130,8 +131,9 @@ private _hVig   = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Vignette)
 private _hCC    = missionNamespace getVariable [QGVAR(ppHandle_Thermal_CC), -1];
 private _hGrain = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Grain), -1];
 private _hBlur  = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Blur), -1];
+private _hInv   = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Inversion), -1];
 
-if (_hVig < 0 || _hCC < 0 || _hGrain < 0 || _hBlur < 0) then {
+if (_hVig < 0 || _hCC < 0 || _hGrain < 0 || _hBlur < 0 || _hInv < 0) then {
     {
         private _h = missionNamespace getVariable [_x, -1];
         if (_h >= 0) then {
@@ -144,7 +146,8 @@ if (_hVig < 0 || _hCC < 0 || _hGrain < 0 || _hBlur < 0) then {
         QGVAR(ppHandle_Thermal_Vignette),
         QGVAR(ppHandle_Thermal_CC),
         QGVAR(ppHandle_Thermal_Grain),
-        QGVAR(ppHandle_Thermal_Blur)
+        QGVAR(ppHandle_Thermal_Blur),
+        QGVAR(ppHandle_Thermal_Inversion)
     ];
 
     private _handles = [];
@@ -165,10 +168,18 @@ if (_hVig < 0 || _hCC < 0 || _hGrain < 0 || _hBlur < 0) then {
         ["RadialBlur",      1300, QGVAR(ppHandle_Thermal_Vignette)],
         ["DynamicBlur",     4200, QGVAR(ppHandle_Thermal_Blur)],
         ["FilmGrain",       6500, QGVAR(ppHandle_Thermal_Grain)],
-        ["ColorCorrections", 5200, QGVAR(ppHandle_Thermal_CC)]
+        ["ColorCorrections", 5200, QGVAR(ppHandle_Thermal_CC)],
+        // ColorInversion: the proven BHOT mechanism (A3TI 2501, MKK 2510,
+        // workshop 2041057379 / 3753145363).  Inverts the WHOLE rendered
+        // frame - hot becomes black, cold becomes white - which the old
+        // `_b = 1-_b` band flip never achieved for StageTI-baked objects.
+        // Created unconditionally; enabled only when thermalPolarity == 1
+        // (see the adjust section).  Priority 6600, above the thermal CC
+        // (5200) so it inverts the graded image, below nothing else uses.
+        ["ColorInversion", 6600, QGVAR(ppHandle_Thermal_Inversion)]
     ];
-    _handles params ["_hVig", "_hBlur", "_hGrain", "_hCC"];
-    private _logMsg = format ["thermal ppEffects created: vig=%1 blur=%2 grain=%3 CC=%4", _hVig, _hBlur, _hGrain, _hCC];
+    _handles params ["_hVig", "_hBlur", "_hGrain", "_hCC", "_hInv"];
+    private _logMsg = format ["thermal ppEffects created: vig=%1 blur=%2 grain=%3 CC=%4 inv=%5", _hVig, _hBlur, _hGrain, _hCC, _hInv];
     AEE_LOG_INFO(_logMsg);
 };
 
@@ -182,6 +193,7 @@ _hVig   = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Vignette), -1];
 _hBlur  = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Blur), -1];
 _hGrain = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Grain), -1];
 _hCC    = missionNamespace getVariable [QGVAR(ppHandle_Thermal_CC), -1];
+_hInv   = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Inversion), -1];
 
 // ─── ColorCorrections (display gain/contrast) ────────────────────────────
 // Params: [brightness, contrast, offset, blend, colorize, weight]
@@ -204,12 +216,42 @@ _hCC    = missionNamespace getVariable [QGVAR(ppHandle_Thermal_CC), -1];
 //     through untouched.
 // AGC response is applied via contrast, not brightness: poor conditions
 // (rain, fog, crossover) lower contrast; clean conditions raise it.
+// The colour grade is the PROVEN WHOT spectrum matrix (A3TI
+// 2041057379, MKK 3753145363 - identical values): the 4-element
+// [3.84,-0.46,-2.72,-0.06] + 7-element [0,0,0.02,0,0,0,1.55] make the
+// thermal image read as WHOT (strong red emphasis).  Our old plain
+// gain/contrast CC ([1,1,1,0] weight) never produced the thermal look.
 private _brightness = 1.16;
 private _ccContrast = linearConversion [1, 0, _effective, 0.62, 0.35, true];
-_hCC ppEffectAdjust [_brightness, _ccContrast, 0, [0,0,0,0], [1,1,1,0], [1,1,1,0]];
+_hCC ppEffectAdjust [
+    _brightness, _ccContrast, 0.04,
+    [0, 0, 0, 0],
+    [1, 1, 1, 0],
+    [3.84, -0.46, -2.72, -0.06],
+    [0, 0, 0.02, 0, 0, 0, 1.55]
+];
 _hCC ppEffectCommit 0;
 _hCC ppEffectEnable true;
 _hCC ppEffectForceInNVG true;
+
+// ─── ColorInversion (BHOT polarity, proven mechanism) ─────────────────────
+// BHOT = the SAME thermal image inverted by a ColorInversion ppEffect
+// (A3TI 2501, MKK 2510).  The old `_b = 1-_b` band flip never reached
+// the rendered image for StageTI-baked objects; the inversion inverts
+// the actual frame.  Enabled only when thermalPolarity == 1 (black
+// hot); disabled otherwise.
+private _polarity = missionNamespace getVariable [QGVAR(thermalPolarity), 0];
+if (!(_polarity isEqualType 0)) then { _polarity = 0; };
+if (_hInv >= 0) then {
+    if (_polarity == 1) then {
+        _hInv ppEffectAdjust [1, 1, 1];
+        _hInv ppEffectCommit 0;
+        _hInv ppEffectEnable true;
+        _hInv ppEffectForceInNVG true;
+    } else {
+        _hInv ppEffectEnable false;
+    };
+};
 
 // ─── FilmGrain (sensor noise) ─────────────────────────────────────────────
 // Params: [intensity, sharpness, grainSize, grainIntensity2,

@@ -1874,13 +1874,20 @@ class TestClothingThermal(unittest.TestCase):
         self.assertIn("calculateBandRadiance", text)
         self.assertIn("agcRadMin", text)
         self.assertNotIn("tApparent = (_tNew + 273.15) * (_eps ^ 0.25)", text)
-        # TI-stage material swap (issue #196): setObjectTexture alone is
-        # invisible in thermal mode (the engine renders StageTI, not the
-        # diffuse).  The band-material swap is the verified mechanism -
-        # the diffuse fallback only worked on TI-less models like the UAV.
-        self.assertIn("setObjectMaterial", text)
-        self.assertIn("ti_grey_", text)
-        self.assertIn("QPATHTOF(data\\ti_grey_", text)
+        # Heat-colour texture paint (issue #204, MKK mechanism): the
+        # vanilla TI mode renders the material's Stage1 TEXTURE, so the
+        # heat is painted as a procedural colour via setObjectTexture - a
+        # WHOT-red base scaled by the AGC-normalised brightness.  The
+        # original material is KEPT (no setObjectMaterial in the paint
+        # step - MKK THERMAL_RED default), so damage states and modded
+        # multi-stage materials survive.  The old grey-band material swap
+        # rendered flat and never carried the heat colour into the image
+        # (the 'WHOT/BHOT no visual difference' report).
+        self.assertIn("setObjectTexture", text)
+        self.assertIn("#(rgb,8,8,3)color(", text)
+        self.assertIn("0.10 * _qb", text)  # WHOT-red base G channel
+        self.assertIn("0.20 * _qb", text)  # WHOT-red base B channel
+        self.assertNotIn("setObjectMaterial [_idx,", text)
         # The 16 band rvmats must exist with a procedural physics colour
         # - the MKK-proven render path (issue #196).  Names are the
         # white-hot grey percent.  The rvmats deliberately have NO
@@ -2818,6 +2825,61 @@ class TestSQFSync(unittest.TestCase):
             addon="thermal",
         )
 
+    def test_thermal_heat_colour_texture(self):
+        # Issue #204 (MKK mechanism): the heat is painted as a procedural
+        # WHOT-red colour via setObjectTexture - the vanilla TI mode
+        # renders the Stage1 TEXTURE, not a swapped material's diffuse.
+        self._assert_in_sqf(
+            "fnc_applySelectionThermal.sqf",
+            [
+                "#(rgb,8,8,3)color(",
+                "0.10 * _qb",
+                "0.20 * _qb",
+                "private _levels = 32",
+                "setObjectTexture [_idx, _colour]",
+                "// No setObjectMaterial",
+            ],
+            "heat-colour texture paint (MKK WHOT-red, 32 levels)",
+            addon="thermal",
+        )
+
+    def test_thermal_whot_spectrum_cc(self):
+        # Issue #204: the WHOT spectrum CC matrix (A3TI 2041057379 and
+        # MKK 3753145363 use the IDENTICAL values) makes the thermal
+        # image read as WHOT.  The old plain gain/contrast CC never
+        # produced the thermal look.
+        self._assert_in_sqf(
+            "fnc_applyThermalVision.sqf",
+            ["[3.84, -0.46, -2.72, -0.06]", "[0, 0, 0.02, 0, 0, 0, 1.55]", "0.04"],
+            "WHOT spectrum colour grade",
+            addon="thermal",
+        )
+
+    def test_thermal_bhot_color_inversion(self):
+        # Issue #204: BHOT = a ColorInversion ppEffect (A3TI 2501, MKK
+        # 2510).  The old `_b = 1-_b` flip never reached the image for
+        # StageTI-baked objects.  The inversion is created unconditionally
+        # and enabled only when thermalPolarity == 1.
+        self._assert_in_sqf(
+            "fnc_applyThermalVision.sqf",
+            [
+                "ColorInversion",
+                "6600",
+                "ppHandle_Thermal_Inversion",
+                "_polarity == 1",
+                "_hInv ppEffectEnable true",
+                "_hInv ppEffectEnable false",
+            ],
+            "ColorInversion BHOT polarity (proven mechanism)",
+            addon="thermal",
+        )
+
+    def test_thermal_polarity_flip_removed(self):
+        # The polarity flip in the paint step must be GONE - BHOT is the
+        # ColorInversion now.
+        text = _read_sqf("fnc_applySelectionThermal.sqf", "thermal")
+        self.assertNotIn("_b = 1 - _b", text)
+
     # ── NVG focus (fnc_applyNVGTubeModel.sqf) ──
     def test_focus_ray_geometry_constants(self):
         self._assert_in_sqf(
@@ -3031,6 +3093,13 @@ class TestSQFSync(unittest.TestCase):
         self.assertIn("mFact = 0", cfg)
 
     def test_second_sun_constants(self):
+        # Proven sensor-illumination boost (issue #204): A3TI
+        # DEFAULT_SECONDSUN_BRIGHTNESS = 13, MKK createLight.  The second
+        # sun is a CONSTANT light that makes the TI scene render, day OR
+        # night - a sensor constant, not a physics sun.  The old
+        # `radiation * 6` modulation dimmed it to nothing at night so the
+        # thermal image lost its illumination.  Attenuation is the A3TI
+        # [10e10, 150, 4.3e-5, 4.3e-5].
         self._assert_in_sqf(
             "fnc_applySecondSun.sqf",
             [
@@ -3039,10 +3108,10 @@ class TestSQFSync(unittest.TestCase):
                 "currentSolarRadiation",
                 "setLightBrightness _lightBrightness",
                 "createVehicleLocal",
-                "_radiation * 6",
-                "setLightAttenuation [1e10, 150",
+                "private _lightBrightness = 13",
+                "setLightAttenuation [10e10, 150, 4.3e-5, 4.3e-5]",
             ],
-            "physics-driven second sun (TI sun term, A3TI-scaled)",
+            "constant sensor-illumination second sun (A3TI 13)",
             addon="thermal",
         )
 
