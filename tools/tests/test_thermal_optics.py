@@ -3388,6 +3388,36 @@ class TestSQFSync(unittest.TestCase):
         self.assertIn("_qInternal * _waveHeat", text)
         self.assertIn("(3 - (2 * _waveHeat))", text)
 
+    def test_loadout_thermal_inertia(self):
+        # Issue #204: every carried item (uniform, vest, backpack,
+        # helmet, goggles, weapon + contents) has its own thermal
+        # inertia.  A full backpack warms and cools SLOWER than an empty
+        # one (content mass drives the skin-mass time constant).
+        self._assert_in_sqf(
+            "fnc_calculateUnitLoadoutThermal.sqf",
+            [
+                "uniform _unit",
+                "vest _unit",
+                "backpack _unit",
+                "uniformItems _unit",
+                "vestItems _unit",
+                "backpackItems _unit",
+                "_contentMass",
+                "_inertia = 1 / (1 + (_mass / _refMass))",
+                "_matFactor",
+                "QGVAR(loadoutThermal)",
+            ],
+            "unit loadout thermal inertia (bag contents drive mass)",
+            addon="thermal",
+        )
+        text = _read_sqf("fnc_applyClothingThermal.sqf", "thermal")
+        self.assertIn("calculateUnitLoadoutThermal", text)
+        self.assertIn("_loadoutFlux", text)
+        # The mass scale is applied in the callee's solve.
+        callee = _read_sqf("fnc_applySelectionThermal.sqf", "thermal")
+        self.assertIn("_massScale", callee)
+        self.assertIn("_skinMass = (0.1 * 70) * (_massScale", callee)
+
     def test_mapwide_thermal_caps(self):
         # map geometry with no selections) at load, zero runtime cost.
         cfg = (_REPO_ROOT / "addons" / "optics" / "config.cpp").read_text(

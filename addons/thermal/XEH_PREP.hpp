@@ -33,6 +33,7 @@ PREPS(display,applyRainDroplets);
 PREPS(display,getThermalSelections);
 PREPS(display,calculateVehicleHeat);
 PREPS(display,applyContactConduction);
+PREPS(display,calculateUnitLoadoutThermal);
 PREPS(fusion,isFusionCapable);
 PREPS(fusion,applyFusionOverlay);
 PREPS(fusion,applyFusionPP);

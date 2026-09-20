@@ -47,7 +47,7 @@ Arguments:
      weight for the radiation term; a tyre sees ~0.7 ground, a roof
      ~0.3, a standing soldier 0.5
 */
-params ["_obj", "_selection", ["_mode", ""], ["_qInternal", 0, [0]], ["_fGround", 0.5, [0]]];
+params ["_obj", "_selection", ["_mode", ""], ["_qInternal", 0, [0]], ["_fGround", 0.5, [0]], ["_massScale", 1, [0]]];
 
 if (_mode == "EXIT") then {
     // ─── EXIT: restore every saved texture AND material ─────────────────────
@@ -189,11 +189,17 @@ if (_mode == "EXIT") then {
             // evaporative path.
             private _rain = rain;
 
+            // The loadout flux scales the skin mass: a carried item with
+            // more thermal inertia (a full backpack) warms and cools
+            // slower - the skin-mass time constant grows with the
+            // carried mass (issue #204).
+            private _skinMass = (0.1 * 70) * (_massScale max 0.2 min 3);
+
             private _two = [
                 _obj, _sel,
                 "human", "human",       // core class, skin class
                 _tAir, _wind, _solar, _exposure,
-                0.9 * 70, 0.1 * 70,     // core/skin mass: 90/10 split of 70 kg
+                0.9 * 70, _skinMass,    // core/skin mass (loadout-scaled)
                 1.8258,                 // DuBois area (m2)
                 0.15,                   // convection plate dim (m)
                 _tCurrent, _tCurrent,   // core/skin current temps
