@@ -230,16 +230,18 @@ _hInv   = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Inversion), -1];
 // vanilla TI image.
 private _brightness = 1.16;
 private _ccContrast = linearConversion [1, 0, _effective, 0.62, 0.35, true];
-_hCC ppEffectAdjust [
-    _brightness, _ccContrast, 0,
-    [0, 0, 0, 0],
-    [1, 1, 1, 0],
-    [0.33, 0.33, 0.33, 0],
-    [0, 0, 0, 0, 0, 0, 4]
-];
-_hCC ppEffectCommit 0;
-_hCC ppEffectEnable true;
-_hCC ppEffectForceInNVG true;
+if (_hCC >= 0) then {
+        _hCC ppEffectAdjust [
+            _brightness, _ccContrast, 0,
+            [0, 0, 0, 0],
+            [1, 1, 1, 0],
+            [0.33, 0.33, 0.33, 0],
+            [0, 0, 0, 0, 0, 0, 4]
+        ];
+        _hCC ppEffectCommit 0;
+        _hCC ppEffectEnable true;
+        _hCC ppEffectForceInNVG true;
+    };
 
 // ─── ColorInversion (BHOT polarity, proven mechanism) ─────────────────────
 // BHOT = the SAME thermal image inverted by a ColorInversion ppEffect
@@ -279,12 +281,12 @@ if (_hInv >= 0) then {
 private _noise     = linearConversion [1, 0, _effective, 0.05, 0.3, true];
 private _sharpness = linearConversion [1, 0, _effective, 0.75, 1.5, true];
 private _grainSize = linearConversion [1, 0, _effective, 1.5, 2.0, true];
-_hGrain ppEffectAdjust [_noise, _sharpness, _grainSize, 0.5, 1.0, 0];
-_hGrain ppEffectCommit 0;
 if (_hGrain >= 0) then {
-    _hGrain ppEffectEnable true;
-};
-_hGrain ppEffectForceInNVG true;
+        _hGrain ppEffectAdjust [_noise, _sharpness, _grainSize, 0.5, 1.0, 0];
+        _hGrain ppEffectCommit 0;
+        _hGrain ppEffectEnable true;
+        _hGrain ppEffectForceInNVG true;
+    };
 
 // ─── DynamicBlur (IR scatter) ─────────────────────────────────────────────
 // Rain scatters and fog absorbs LWIR, smearing the image.  At crossover
@@ -294,10 +296,12 @@ _hGrain ppEffectForceInNVG true;
 // blur gate oscillates with mouse micro-movement.
 private _blur = linearConversion [1, 0, _effective, 0.0, 0.15, true];
 _blur = (_blur + _panSmear + _windowBlur) min 0.25;
-_hBlur ppEffectAdjust [_blur];
-_hBlur ppEffectCommit 0;
-_hBlur ppEffectEnable true;
-_hBlur ppEffectForceInNVG true;
+if (_hBlur >= 0) then {
+        _hBlur ppEffectAdjust [_blur];
+        _hBlur ppEffectCommit 0;
+        _hBlur ppEffectEnable true;
+        _hBlur ppEffectForceInNVG true;
+    };
 
 // ─── RadialBlur (ocular vignette) ──────────────────────────────────────────
 // Real FLIR oculars edge-darken like NVG: the objective tube vignettes the
@@ -305,10 +309,12 @@ _hBlur ppEffectForceInNVG true;
 // than an image-intensifier tube) and drifts slightly with conditions.
 // Params: [blurX, blurY, offsetX, offsetY] - the NVG-model form.
 private _vigStrength = [0.0040, 0.0040, 0.06, 0.06];
-_hVig ppEffectAdjust _vigStrength;
-_hVig ppEffectCommit 0;
-_hVig ppEffectEnable true;
-_hVig ppEffectForceInNVG true;
+if (_hVig >= 0) then {
+        _hVig ppEffectAdjust _vigStrength;
+        _hVig ppEffectCommit 0;
+        _hVig ppEffectEnable true;
+        _hVig ppEffectForceInNVG true;
+    };
 
 // Diagnostics: set aee_nightvision_nvgDebug = true in the debug console to log
 // every thermal tick's handles and params to the .rpt.

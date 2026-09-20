@@ -95,24 +95,30 @@ if (_visionMode == 1 || _visionMode == 2) exitWith {
     // and separate state variables (nvgGrainActive). This block only fades the
     // regular optical-path effects. No conflict.
     if (missionNamespace getVariable [QGVAR(chromaActive), false]) then {
-        _hChroma ppEffectAdjust [0, 0, false];
-        _hChroma ppEffectCommit 1;
+        if (_hChroma >= 0) then {
+            _hChroma ppEffectAdjust [0, 0, false];
+            _hChroma ppEffectCommit 1;
+        };
         [{
             (missionNamespace getVariable [QGVAR(ppHandle_ChromAberration), -1]) ppEffectEnable false;
         }, [], 1.5] call CBA_fnc_waitAndExecute;
         missionNamespace setVariable [QGVAR(chromaActive), false];
     };
     if (missionNamespace getVariable [QGVAR(blurActive), false]) then {
-        _hBlur ppEffectAdjust [0];
-        _hBlur ppEffectCommit 1;
+        if (_hBlur >= 0) then {
+            _hBlur ppEffectAdjust [0];
+            _hBlur ppEffectCommit 1;
+        };
         [{
             (missionNamespace getVariable [QGVAR(ppHandle_DynamicBlur), -1]) ppEffectEnable false;
         }, [], 1.5] call CBA_fnc_waitAndExecute;
         missionNamespace setVariable [QGVAR(blurActive), false];
     };
     if (missionNamespace getVariable [QGVAR(ccActive), false]) then {
-        _hCC ppEffectAdjust [1, 1, 0, [0,0,0,0], [1,1,1,1], [0,0,0,0]];
-        _hCC ppEffectCommit 1;
+        if (_hCC >= 0) then {
+            _hCC ppEffectAdjust [1, 1, 0, [0,0,0,0], [1,1,1,1], [0,0,0,0]];
+            _hCC ppEffectCommit 1;
+        };
         [{
             (missionNamespace getVariable [QGVAR(ppHandle_ColorCorrections), -1]) ppEffectEnable false;
         }, [], 1.5] call CBA_fnc_waitAndExecute;
@@ -158,7 +164,7 @@ private _chromaOff = _chroma < 0.005;
 private _chromaActive = missionNamespace getVariable [QGVAR(chromaActive), false];
 
 if (_chromaOn) then {
-    if (!_chromaActive) then {
+    if (!_chromaActive && _hChroma >= 0) then {
         _hChroma ppEffectEnable true;
         missionNamespace setVariable [QGVAR(chromaActive), true];
     };
@@ -166,8 +172,10 @@ if (_chromaOn) then {
     // ChromAberration ppEffectAdjust takes [x, y, strength] — a 3-element
     // array (pixel offset and chromatic strength).  A 6-element array
     // (copied from the pre-arbiter code) throws "6 elements, 3 expected".
-    _hChroma ppEffectAdjust [_chroma, _chroma, false];
-    _hChroma ppEffectCommit 2;
+    if (_hChroma >= 0) then {
+        _hChroma ppEffectAdjust [_chroma, _chroma, false];
+        _hChroma ppEffectCommit 2;
+    };
 } else {
     if (_chromaActive && _chromaOff) then {
         _hChroma ppEffectAdjust [0, 0, false];
@@ -194,13 +202,15 @@ private _blurOff = _blur < 0.005;
 private _blurActive = missionNamespace getVariable [QGVAR(blurActive), false];
 
 if (_blurOn) then {
-    if (!_blurActive) then {
+    if (!_blurActive && _hBlur >= 0) then {
         _hBlur ppEffectEnable true;
         missionNamespace setVariable [QGVAR(blurActive), true];
     };
     missionNamespace setVariable [QGVAR(blurGen), (missionNamespace getVariable [QGVAR(blurGen), 0]) + 1];
-    _hBlur ppEffectAdjust [_blur];
-    _hBlur ppEffectCommit 2;
+    if (_hBlur >= 0) then {
+        _hBlur ppEffectAdjust [_blur];
+        _hBlur ppEffectCommit 2;
+    };
 } else {
     if (_blurActive && _blurOff) then {
         _hBlur ppEffectAdjust [0];
@@ -226,13 +236,15 @@ private _ccOn = count _ccParams > 0;
 private _ccActive = missionNamespace getVariable [QGVAR(ccActive), false];
 
 if (_ccOn) then {
-    if (!_ccActive) then {
+    if (!_ccActive && _hCC >= 0) then {
         _hCC ppEffectEnable true;
         missionNamespace setVariable [QGVAR(ccActive), true];
     };
     missionNamespace setVariable [QGVAR(ccGen), (missionNamespace getVariable [QGVAR(ccGen), 0]) + 1];
-    _hCC ppEffectAdjust _ccParams;
-    _hCC ppEffectCommit 2;
+    if (_hCC >= 0) then {
+        _hCC ppEffectAdjust _ccParams;
+        _hCC ppEffectCommit 2;
+    };
 } else {
     if (_ccActive) then {
         // Fade to neutral over 5 s, then disable if still neutral

@@ -37,8 +37,10 @@ private _visionMode = currentVisionMode _player;
 if (_visionMode == 1 || _visionMode == 2) exitWith {
     private _active = missionNamespace getVariable [QGVAR(nightGrainActive), false];
     if (_active) then {
-        _hGrain ppEffectAdjust [0.01, 0.1, 0.5, 0.1, 0.1, 1];
-        _hGrain ppEffectCommit 1;
+        if (_hGrain >= 0) then {
+            _hGrain ppEffectAdjust [0.01, 0.1, 0.5, 0.1, 0.1, 1];
+            _hGrain ppEffectCommit 1;
+        };
         [{
             (missionNamespace getVariable [QGVAR(ppHandle_FilmGrain), -1]) ppEffectEnable false;
         }, [], 1.5] call CBA_fnc_waitAndExecute;
@@ -59,8 +61,10 @@ private _fogGrainMax   = missionNamespace getVariable [QGVAR(fogGrainMax), 0.15]
 // from a previous night tick.  Force it off immediately when sun is high.
 private _active = missionNamespace getVariable [QGVAR(nightGrainActive), false];
 if (_active && _sunOrMoon > 0.6 && _rain <= 0.2 && _fog <= 0.1) exitWith {
-    _hGrain ppEffectAdjust [0.01, 0.1, 0.5, 0.1, 0.1, 1];
-    _hGrain ppEffectCommit 0.5;
+    if (_hGrain >= 0) then {
+        _hGrain ppEffectAdjust [0.01, 0.1, 0.5, 0.1, 0.1, 1];
+        _hGrain ppEffectCommit 0.5;
+    };
     [{
         (missionNamespace getVariable [QGVAR(ppHandle_FilmGrain), -1]) ppEffectEnable false;
     }, [], 0.75] call CBA_fnc_waitAndExecute;
@@ -100,7 +104,7 @@ private _totalGrain = (_nightGrain + _rainGrain + _fogGrain) min 1;
 _active = missionNamespace getVariable [QGVAR(nightGrainActive), false];
 
 if (_totalGrain > 0.01) then {
-    if (!_active) then {
+    if (!_active && _hGrain >= 0) then {
         _hGrain ppEffectEnable true;
         missionNamespace setVariable [QGVAR(nightGrainActive), true];
     };
@@ -108,12 +112,16 @@ if (_totalGrain > 0.01) then {
     private _grainSize = linearConversion [0, 1, _totalGrain, 0.5, 3.5, true];
     private _intensity = linearConversion [0, 1, _totalGrain, 0.5, 0.7, true];
 
-    _hGrain ppEffectAdjust [0.01, _intensity, _grainSize, 1, 1, 1];
-    _hGrain ppEffectCommit 2;
+    if (_hGrain >= 0) then {
+        _hGrain ppEffectAdjust [0.01, _intensity, _grainSize, 1, 1, 1];
+        _hGrain ppEffectCommit 2;
+    };
 } else {
     if (_active) then {
-        _hGrain ppEffectAdjust [0.01, 0.1, 0.5, 0.1, 0.1, 1];
-        _hGrain ppEffectCommit 1;
+        if (_hGrain >= 0) then {
+            _hGrain ppEffectAdjust [0.01, 0.1, 0.5, 0.1, 0.1, 1];
+            _hGrain ppEffectCommit 1;
+        };
 
         [{
             (missionNamespace getVariable [QGVAR(ppHandle_FilmGrain), -1]) ppEffectEnable false;

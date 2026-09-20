@@ -83,6 +83,8 @@ def main():
         failed += run(
             f"{python} {os.path.join(ROOT, 'tools/validation/validate_physics.py')}"
         )
+        print("\n--- Post-process effect safety audit ---")
+        failed += run(f"{python} tools/validation/audit_pp_effects.py")
 
     if failed:
         print("\nFAILED: one or more test suites exited non-zero.")
