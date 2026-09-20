@@ -357,3 +357,33 @@ The proven thermal rendering pipeline (A3TI/MKK), in order:
 9. Cleanup: destroy ALL created effects + delete the second sun +
    restore object textures/materials + `setAperture -1` on mode exit
    or context change.
+
+## Terrain thermal - the definitive answer (issue #204)
+
+Deep-dived cfgworlds and the terrain data for Stratis:
+
+- cfgworlds (map_stratis.pbo config.bin, 127 KB) has NO thermal/TI
+  field.  The terrain config is: mapSize, satellite texture, env maps,
+  lighting, clutter.  Nothing thermal.
+- The satellite texture (s_satout_co.paa) is a static 512x512 baked
+  image (mean RGB 127,118,93 - the island's terrain colours).  The
+  engine's TI pass maps THIS through its thermal palette.
+- There is no scriptable terrain re-texture: no setTerrainTexture in
+  the RV engine, setObjectTexture does not work on terrain, and
+  cfgworlds cannot declare a thermal override.
+
+The terrain's thermal appearance is therefore:
+  satellite colours -> engine TI palette -> sun term (our second sun)
+The ground cannot be painted.  The achievable equivalent is what the
+mod does:
+
+  fnc_calculateGroundTemperature: position-based ground temperature
+  from surfaceType (asphalt stays warmer than soil at night).  Used by
+  the contact conduction (a vehicle's tyres conduct to the warmer
+  tarmac, a prone soldier to the ground beneath them).
+
+The 'no heat transfer to/from ground' observation: the terrain is a
+baked texture, not an object with a temperature - it cannot conduct to
+objects.  The surface-based ground temperature is the closest
+physical model: the ground has a temperature at each position, and
+objects touching it exchange heat through the contact term.
