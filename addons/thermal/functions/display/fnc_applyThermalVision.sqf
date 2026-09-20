@@ -249,6 +249,14 @@ if (_hInv >= 0) then {
         _hInv ppEffectEnable true;
         _hInv ppEffectForceInNVG true;
     } else {
+        // The ACE pattern: a freshly-created ColorInversion may default
+        // to ENABLED with an uninitialised (inverting) state, so
+        // disabling alone does not neutralise it - adjust to the neutral
+        // [0,0,0] (no inversion), commit, THEN disable.  Without this
+        // the barrel rendered black-hot even with thermalPolarity 0
+        // (issue #204, the 'BHOT is on but should not be' report).
+        _hInv ppEffectAdjust [0, 0, 0];
+        _hInv ppEffectCommit 0;
         _hInv ppEffectEnable false;
     };
 };

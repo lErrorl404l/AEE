@@ -2859,7 +2859,11 @@ class TestSQFSync(unittest.TestCase):
         # Issue #204: BHOT = a ColorInversion ppEffect (A3TI 2501, MKK
         # 2510).  The old `_b = 1-_b` flip never reached the image for
         # StageTI-baked objects.  The inversion is created unconditionally
-        # and enabled only when thermalPolarity == 1.
+        # and enabled only when thermalPolarity == 1.  When DISABLED it
+        # must be adjusted to the neutral [0,0,0] BEFORE disabling - a
+        # freshly-created ColorInversion can default to enabled with an
+        # inverting state (the 'BHOT is on but should not be' report:
+        # the barrel turned black when hot).
         self._assert_in_sqf(
             "fnc_applyThermalVision.sqf",
             [
@@ -2868,6 +2872,7 @@ class TestSQFSync(unittest.TestCase):
                 "ppHandle_Thermal_Inversion",
                 "_polarity == 1",
                 "_hInv ppEffectEnable true",
+                "_hInv ppEffectAdjust [0, 0, 0]",
                 "_hInv ppEffectEnable false",
             ],
             "ColorInversion BHOT polarity (proven mechanism)",
