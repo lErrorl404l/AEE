@@ -112,7 +112,51 @@ if (_hs isNotEqualTo []) then {
 // are named.
 if (_class == "" && _rvmat != "" && _rvmat isNotEqualTo "any") then {
     private _text = toLowerANSI preprocessFile _rvmat;
-    if (_text != "") then {
+    if (_text == "") then {
+        // BINARY rvmat (the vanilla game ships compiled rvmats -
+        // "raP" magic; preprocessFile returns empty).  The material
+        // signal survives in the Stage1 TEXTURE PATH, which
+        // getObjectTextures returns at runtime as readable text.  The
+        // texture path carries the material keyword (offroad_01_EXT_co
+        // = metal exterior, offroad_01_GLASS = glass, *_int = interior,
+        // *_wheel/tyre = rubber).
+        private _texPath = (getObjectTextures _obj) param [_idx, ""];
+        if (_texPath == "") then {
+            _texPath = getText (configOf _obj >> "hiddenSelectionsTextures" >> format ["%1", _idx]);
+        };
+private _tl = toLower _texPath;
+        if (_tl != "") then {
+            // Explicit material keywords from the texture path (the
+            // model's own part names - dynamic per model, not the
+            // selection-name heuristic).
+            if (_tl find "glass" >= 0 || {_tl find "window" >= 0} || {_tl find "screen" >= 0} || {_tl find "light" >= 0}) then {
+                _class = "glass";
+            } else {
+                if (_tl find "wheel" >= 0 || {_tl find "tyre" >= 0} || {_tl find "tire" >= 0} || {_tl find "track" >= 0}) then {
+                    _class = "rubber";
+                } else {
+                    if (_tl find "engine" >= 0 || {_tl find "motor" >= 0} || {_tl find "radiator" >= 0}) then {
+                        _class = "engine";
+                    } else {
+                        if (_tl find "int" >= 0) then {
+                            _class = "plastic";   // interior trim
+                        } else {
+                            if (_tl find "wood" >= 0) then { _class = "wood"; };
+                        };
+                    };
+                };
+            };
+            // DEFAULT for vehicle exterior parts (the survey: ext/body/
+            // door/hood/roof textures are metal - bright red TI maps).
+            // A binary rvmat with no explicit keyword and no interior/
+            // glass/wheel marker is a metal panel.  This is what makes
+            // the Offroad/MRAP hulls read as metal instead of ground.
+            if (_class == "" && !(_obj isKindOf "Man")) then {
+                _class = "metal";
+            };
+        };
+    } else {
+        // TEXT rvmat: parse the rendering properties.
         // Emissive: lights, displays, heated elements - the material
         // glows (a strong thermal signature even cold).
         if (_text find "emmisive" >= 0) then {
@@ -148,6 +192,20 @@ if (_class == "" && _rvmat != "" && _rvmat isNotEqualTo "any") then {
                 _class = "rubber";
             };
         };
+    };
+};
+
+// ─── 1c. Hit-point verification (issue #204) ──────────────────────────────
+// The vehicle's DAMAGE MODEL guarantees what its parts are: HitLFWheel
+// can only exist on a wheel, HitEngine on the engine, HitGlass on
+// glass.  The hit-point map (cached per class) is the engine's own
+// part labels - more authoritative than a texture path.  Consult it
+// before the name-matching fallback.
+if (_class == "" && {_obj isKindOf "AllVehicles"}) then {
+    private _hpMap = [_obj] call FUNC(getHitPointMaterials);
+    if (count _hpMap > 0) then {
+        private _hpMat = _hpMap getOrDefault [_selName, ""];
+        if (_hpMat != "") then { _class = _hpMat; };
     };
 };
 
