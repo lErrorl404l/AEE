@@ -37,6 +37,7 @@ PREPS(display,calculateVehicleHeat);
 PREPS(display,applyContactConduction);
 PREPS(display,applyRadiativeExchange);
 PREPS(display,applyExhaustHeat);
+PREPS(display,applyImpactHeat);
 PREPS(display,calculateUnitLoadoutThermal);
 PREPS(fusion,isFusionCapable);
 PREPS(fusion,applyFusionOverlay);
