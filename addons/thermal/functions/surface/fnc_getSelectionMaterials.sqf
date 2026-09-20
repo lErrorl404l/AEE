@@ -112,14 +112,18 @@ if (_hs isNotEqualTo []) then {
 // are named.
 if (_class == "" && _rvmat != "" && _rvmat isNotEqualTo "any") then {
     private _text = toLowerANSI preprocessFile _rvmat;
-    if (_text == "") then {
-        // BINARY rvmat (the vanilla game ships compiled rvmats -
-        // "raP" magic; preprocessFile returns empty).  The material
-        // signal survives in the Stage1 TEXTURE PATH, which
-        // getObjectTextures returns at runtime as readable text.  The
-        // texture path carries the material keyword (offroad_01_EXT_co
-        // = metal exterior, offroad_01_GLASS = glass, *_int = interior,
-        // *_wheel/tyre = rubber).
+    // Binary rvmat detection: the vanilla game ships compiled rvmats
+    // ("raP" magic bytes - the RV binary config format).  preprocessFile
+    // returns the raw bytes, which contain no text keywords, so the
+    // TEXT branch would find nothing and the part would fall to ground.
+    // Detect the magic and route to the texture-path classification.
+    private _isBinary = (_text find "rap" >= 0) || {_text find "staget1" < 0 && _text find "ambient[]" < 0};
+    if (_text == "" || _isBinary) then {
+        // BINARY rvmat: the material signal survives in the Stage1
+        // TEXTURE PATH, which getObjectTextures returns at runtime as
+        // readable text.  The texture path carries the material keyword
+        // (offroad_01_EXT_co = metal exterior, offroad_01_GLASS = glass,
+        // *_int = interior, *_wheel/tyre = rubber).
         private _texPath = (getObjectTextures _obj) param [_idx, ""];
         if (_texPath == "") then {
             _texPath = getText (configOf _obj >> "hiddenSelectionsTextures" >> format ["%1", _idx]);
