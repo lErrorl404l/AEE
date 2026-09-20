@@ -63,24 +63,10 @@ private _applied = 0;
     if (isNull _x || !alive _x) then { continue; };
     private _obj = _x;
 
-    // Per-class thermal selections, cached (A3TI fn_getThermalSelections).
-    private _cacheKey = format [QGVAR(tiSelections_%1), typeOf _obj];
-    private _selections = missionNamespace getVariable [_cacheKey, []];
-
-    if (count _selections == 0) then {
-        // Men: all texture selections are thermal-eligible (A3TI pattern).
-        _selections = [];
-        {
-            _selections pushBack _forEachIndex;
-        } forEach (getObjectTextures _obj);
-        missionNamespace setVariable [_cacheKey, _selections];
-    };
-
+    // Dynamic thermal-selection discovery (issue #204): Men = all
+    // texture slots, cached per class.  No static name matching.
+    private _selections = [_obj] call FUNC(getThermalSelections);
     if (count _selections == 0) then { continue; };
-
-    // Selection names for per-selection classification (for fGround).
-    private _selNames = getArray (configOf _obj >> "hiddenSelections");
-    if (_selNames isEqualTo []) then { _selNames = selectionNames _obj; };
 
     // ─── Per-selection substrate solve + FLIR paint ────────────────────
     // Each selection: the substrate reads the material via the #96
@@ -89,23 +75,31 @@ private _applied = 0;
     // reads the selection's own texture for solar absorptance (NASA
     // TP-2005-212792), and solves the lumped-capacity energy balance
     // with the unit's real mass.  q_internal = 0 (no engine heat on a
-    // person); fGround 0.5 (standing soldier).
+    // person); the ground view factor comes from the MATERIAL (metal on
+    // the feet sees ground, glass/plastic on the head sees sky) - the
+    // dynamic equivalent of the old name-based fGround.
     {
         private _selIdx = _x;
         private _fGround = 0.5;
-        if (_selIdx < count _selNames) then {
-            private _sn = toLower (_selNames select _selIdx);
-            // Headgear/goggles/glasses face mostly sky; feet/legs see
-            // ground; the body is split.  Refined by the material solve.
-            if (_sn find "head" >= 0 || _sn find "helmet" >= 0 || _sn find "glass" >= 0
-                || _sn find "goggle" >= 0) then {
-                _fGround = 0.2;
-            };
-            if (_sn find "foot" >= 0 || _sn find "leg" >= 0 || _sn find "boot" >= 0) then {
-                _fGround = 0.7;
-            };
+        // Selection NAME for the material detector (it keys on names).
+        private _selName = if (_obj isKindOf "Man") then {
+            private _names = selectionNames _obj;
+            if (_selIdx < count _names) then { _names select _selIdx } else { "" }
+        } else {
+            private _hs = getArray (configOf _obj >> "hiddenSelections");
+            if (_selIdx < count _hs) then { _hs select _selIdx } else { "" }
         };
-        [_obj, (_selNames select _selIdx), "", 0, _fGround] call FUNC(applySelectionThermal);
+        if (_selName == "") then { continue; };
+        // Material-driven view factor: low-k (glass, plastic, goggles)
+        // faces mostly sky; rubber/leather (boots) sees mostly ground.
+        private _matClass = [_obj, _selName] call FUNC(getSelectionMaterials);
+        private _matDef = _matClass call FUNC(getMaterialThermal);
+        private _k = _matDef select 4;
+        if !(_k isEqualType 0) then { _k = 0; };
+        if (_k <= 1.5) then { _fGround = 0.2; };
+        if (_k >= 0.2 && _k <= 2.0) then { _fGround = 0.7; };
+
+        [_obj, _selName, "", 0, _fGround] call FUNC(applySelectionThermal);
         _applied = _applied + 1;
     } forEach _selections;
 } forEach (allUnits);

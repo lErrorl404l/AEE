@@ -41,25 +41,21 @@ private _agcMax = missionNamespace getVariable [QGVAR(agcRadMax), -1];
 private _objects = _player nearObjects 300;
 {
     private _obj = _x;
-    private _isMan = _obj isKindOf "Man";
-    // Thermal selections: all textures for Men (uniforms have no
-    // hiddenSelections), all-but-MFD for vehicles (A3TI/MKK pattern).
-    private _selNames = if (_isMan) then {
-        (getObjectTextures _obj) apply { _forEachIndex };
-    } else {
-        private _hs = getArray (configOf _obj >> "hiddenSelections");
-        private _sel = [];
-        {
-            if !(["mfd", _x, false] call BIS_fnc_inString) then {
-                _sel pushBack _forEachIndex;
-            };
-        } forEach _hs;
-        _sel
-    };
+    // Shared dynamic discovery (issue #204): Man = all texture slots,
+    // vehicle = config override > textureSources > all-but-MFD.  The
+    // single source of truth so fusion and thermal agree on every part.
+    private _selIdxs = [_obj] call FUNC(getThermalSelections);
+    private _hs = getArray (configOf _obj >> "hiddenSelections");
 
     {
         private _idx = _x;
-        private _selName = if (_isMan) then { _x } else { _selNames select _forEachIndex };
+        private _selName = if (_obj isKindOf "Man") then {
+            private _names = selectionNames _obj;
+            if (_idx < count _names) then { _names select _idx } else { "" }
+        } else {
+            if (_idx < count _hs) then { _hs select _idx } else { "" }
+        };
+        if (_selName == "") then { continue; };
         private _stateKey = format ["%1|%2", _obj, _selName];
         private _tNew = _selMap getOrDefault [_stateKey, -999];
         if (_tNew <= -900) then { continue; };
@@ -81,5 +77,5 @@ private _objects = _player nearObjects 300;
         private _band = round (_b * 15) min 15 max 0;
         private _bandPct = round ((_band / 15) * 100) min 100 max 0;
         _obj setObjectMaterial [_idx, format [QPATHTOF(data\fusion_emissive_%1.rvmat), _bandPct]];
-    } forEach _selNames;
+    } forEach _selIdxs;
 } forEach _objects;
