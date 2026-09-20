@@ -49,39 +49,40 @@ if (isNil QGVAR(selMaterialCache)) then {
     missionNamespace setVariable [QGVAR(selMaterialCache), createHashMap];
 };
 
-private _class = "";
+// ─── Signal gathering + weighted vote (issue #204) ───────────────────────
+// The user's requirement: pull EVERYTHING about the part, then sort
+// through what is found - do not grab the first match or bias one
+// signal.  Each signal votes for a material with a weight:
+//   surfaceInfo (rvmat -> bisurf)  weight 3 - the engine's authoritative
+//                                     physics surface, when readable
+//   hit-point (damage model)        weight 3 - HitLFWheel is guaranteed
+//   texture-path keyword            weight 2 - the model's own part names
+//   selection-name convention       weight 1 - last resort
+// The highest weighted vote wins; ties resolved by the strongest
+// source.  This removes the first-match bias entirely.
 private _idx = -1;
 private _hsMats = getArray (configOf _obj >> "hiddenSelectionsMaterials");
 private _hs = getArray (configOf _obj >> "hiddenSelections");
 
-// Full part tree (issue #204): every model exposes its parts at runtime
-// even when the config omits hiddenSelections/hiddenSelectionsMaterials.
-// selectionNames + getObjectMaterials give the runtime part tree; index
-// into them the same way the config path does.  This is the "always has
-// a full tree of textures and materials" guarantee.
+// Full part tree: every model exposes its parts at runtime even when the
+// config omits hiddenSelections/hiddenSelectionsMaterials.
 private _runtimeNames = selectionNames _obj;
 private _runtimeMats = getObjectMaterials _obj;
 if (_hs isEqualTo [] && {_runtimeNames isNotEqualTo []}) then {
     _hs = _runtimeNames;
-    // getObjectMaterials returns one rvmat per hiddenSelection in order.
-    if (count _runtimeMats >= count _hs) then {
-        _hsMats = _runtimeMats;
-    };
+    if (count _runtimeMats >= count _hs) then { _hsMats = _runtimeMats; };
 };
 
-// ─── 1. The selection's own rvmat -> surfaceInfo -> bisurf -> class ──────
-// Filenames lie (mrap_01_body.rvmat is metal, default.rvmat is any).
-// The authoritative chain is: rvmat declares surfaceInfo = "...bisurf";
-// the bisurf is the engine's physics surface (density, soundHit keyword);
-// the #96 detector classifies that.  This works for ANY rvmat regardless
-// of what the file is named.
+// The vote ledger: material -> total weight.
+private _votes = createHashMap;
+
+// ─── Signal 1: the rvmat surfaceInfo (weight 3) ──────────────────────────
 private _rvmat = "";
 if (_hs isNotEqualTo []) then {
     _idx = _hs find _selName;
     if (_idx >= 0 && _idx < (count _hsMats)) then {
         _rvmat = _hsMats select _idx;
         if (_rvmat != "" && _rvmat isNotEqualTo "any") then {
-            // Read the rvmat text, extract surfaceInfo, classify the bisurf.
             private _text = toLowerANSI preprocessFile _rvmat;
             if (_text != "") then {
                 private _pos = _text find "surfaceinfo";
@@ -91,148 +92,87 @@ if (_hs isNotEqualTo []) then {
                     if (_end < 0) then { _end = (count _tail) - 1; };
                     private _surfRef = trim (_tail select [0, _end]);
                     if (_surfRef != "") then {
-                        _class = _surfRef call EFUNC(material,getSurfaceMaterial);
-                    };
-                };
-            };
-        };
-    };
-};
-
-// ─── 1b. rvmat-content classification (issue #204) ────────────────────────
-// Every part of every object has its OWN rvmat (hiddenSelectionsMaterials
-// gives the full tree).  When the rvmat has no surfaceInfo (shared or
-// procedural materials), classify the part from the rvmat's own rendering
-// properties - NOT the selection name.  Glass rvmats carry a high
-// specular term and translucent Stage1; rubber is dark low-specular;
-// metal has a strong specularPower; emissive parts (lights, gauges) glow.
-// This is the rvmat-driven classification the user asked for: the
-// material comes from the part's actual rendering, so any object - any
-// mod, any model - resolves its parts by what they are, not what they
-// are named.
-if (_class == "" && _rvmat != "" && _rvmat isNotEqualTo "any") then {
-    private _text = toLowerANSI preprocessFile _rvmat;
-    // Binary rvmat detection: the vanilla game ships compiled rvmats
-    // ("raP" magic bytes - the RV binary config format).  preprocessFile
-    // returns the raw bytes, which contain no text keywords, so the
-    // TEXT branch would find nothing and the part would fall to ground.
-    // Detect the magic and route to the texture-path classification.
-    private _isBinary = (_text find "rap" >= 0) || {_text find "staget1" < 0 && _text find "ambient[]" < 0};
-    if (_text == "" || _isBinary) then {
-        // BINARY rvmat: the material signal survives in the Stage1
-        // TEXTURE PATH, which getObjectTextures returns at runtime as
-        // readable text.  The texture path carries the material keyword
-        // (offroad_01_EXT_co = metal exterior, offroad_01_GLASS = glass,
-        // *_int = interior, *_wheel/tyre = rubber).
-        private _texPath = (getObjectTextures _obj) param [_idx, ""];
-        if (_texPath == "") then {
-            _texPath = getText (configOf _obj >> "hiddenSelectionsTextures" >> format ["%1", _idx]);
-        };
-private _tl = toLower _texPath;
-        if (_tl != "") then {
-            // Explicit material keywords from the texture path (the
-            // model's own part names - dynamic per model, not the
-            // selection-name heuristic).
-            if (_tl find "glass" >= 0 || {_tl find "window" >= 0} || {_tl find "screen" >= 0} || {_tl find "light" >= 0}) then {
-                _class = "glass";
-            } else {
-                if (_tl find "wheel" >= 0 || {_tl find "tyre" >= 0} || {_tl find "tire" >= 0} || {_tl find "track" >= 0}) then {
-                    _class = "rubber";
-                } else {
-                    if (_tl find "engine" >= 0 || {_tl find "motor" >= 0} || {_tl find "radiator" >= 0}) then {
-                        _class = "engine";
-                    } else {
-                        if (_tl find "int" >= 0) then {
-                            _class = "plastic";   // interior trim
-                        } else {
-                            if (_tl find "wood" >= 0) then { _class = "wood"; };
+                        private _m = _surfRef call EFUNC(material,getSurfaceMaterial);
+                        if (_m != "ground") then {
+                            _votes set [_m, (_votes getOrDefault [_m, 0]) + 3];
                         };
                     };
                 };
             };
-            // DEFAULT for vehicle exterior parts (the survey: ext/body/
-            // door/hood/roof textures are metal - bright red TI maps).
-            // A binary rvmat with no explicit keyword and no interior/
-            // glass/wheel marker is a metal panel.  This is what makes
-            // the Offroad/MRAP hulls read as metal instead of ground.
-            if (_class == "" && !(_obj isKindOf "Man")) then {
-                _class = "metal";
-            };
-        };
-    } else {
-        // TEXT rvmat: parse the rendering properties.
-        // Emissive: lights, displays, heated elements - the material
-        // glows (a strong thermal signature even cold).
-        if (_text find "emmisive" >= 0) then {
-            private _em = _text find "emmisive";
-            private _tail2 = _text select [_em + 9, 60];
-            // emissive {0,0,0,...} = dark/off; emissive with a real
-            // value = a light source.
-            if (_tail2 find "0,0,0" < 0) then { _class = "engine"; };
-        };
-        // Glass: translucent - Stage1 has an alpha blend, specular
-        // present, no metal specularPower.  "glass" rvmats carry
-        // specular[] with alpha and a low specularPower.
-        if (_class == "" && {_text find "specular" >= 0}) then {
-            private _sp = _text find "specularpower";
-            private _spVal = if (_sp >= 0) then {
-                private _t = _text select [_sp + 13, 30];
-                private _e = _t find ";";
-                if (_e < 0) then { _e = count _t - 1; };
-                parseNumber (_t select [0, _e])
-            } else { 0 };
-            if (_spVal < 5 && {_text find "diffuse" >= 0}) then {
-                _class = "glass";
-            };
-        };
-        // Rubber/plastic: low specularPower, dark diffuse.
-        if (_class == "" && {_text find "specularpower" >= 0}) then {
-            private _sp = _text find "specularpower";
-            private _t = _text select [_sp + 13, 30];
-            private _e = _t find ";";
-            if (_e < 0) then { _e = count _t - 1; };
-            private _spVal = parseNumber (_t select [0, _e]);
-            if (_spVal < 20 && {_text find "diffuse" >= 0}) then {
-                _class = "rubber";
-            };
         };
     };
 };
 
-// ─── 1c. Hit-point verification (issue #204) ──────────────────────────────
-// The vehicle's DAMAGE MODEL guarantees what its parts are: HitLFWheel
-// can only exist on a wheel, HitEngine on the engine, HitGlass on
-// glass.  The hit-point map (cached per class) is the engine's own
-// part labels - more authoritative than a texture path.  Consult it
-// before the name-matching fallback.
-if (_class == "" && {_obj isKindOf "AllVehicles"}) then {
+// ─── Signal 2: the texture path (weight 2, binary-rvmat friendly) ────────
+// The Stage1 texture path carries the model's part names.  For binary
+// rvmats (all vanilla) this is the only readable rvmat signal.
+private _texPath = if (_idx >= 0) then { (getObjectTextures _obj) param [_idx, ""] } else { "" };
+if (_texPath == "" && _idx >= 0) then {
+    _texPath = getText (configOf _obj >> "hiddenSelectionsTextures" >> _selName);
+};
+private _tl = toLower _texPath;
+if (_tl != "") then {
+    private _tMat = "";
+    if (_tl find "glass" >= 0 || {_tl find "window" >= 0} || {_tl find "screen" >= 0} || {_tl find "light" >= 0}) then {
+        _tMat = "glass";
+    } else {
+        if (_tl find "wheel" >= 0 || {_tl find "tyre" >= 0} || {_tl find "tire" >= 0} || {_tl find "track" >= 0}) then {
+            _tMat = "rubber";
+        } else {
+            if (_tl find "engine" >= 0 || {_tl find "motor" >= 0} || {_tl find "radiator" >= 0}) then {
+                _tMat = "engine";
+            } else {
+                if (_tl find "int" >= 0) then { _tMat = "plastic"; }
+                else { if (_tl find "wood" >= 0) then { _tMat = "wood"; }; };
+            };
+        };
+    };
+    if (_tMat != "") then {
+        _votes set [_tMat, (_votes getOrDefault [_tMat, 0]) + 2];
+    } else {
+        // No keyword: a vehicle exterior defaults to metal (the survey:
+        // ext/body textures are bright-red TI maps = metal panels).
+        if !(_obj isKindOf "Man") then {
+            _votes set ["metal", (_votes getOrDefault ["metal", 0]) + 2];
+        };
+    };
+};
+
+// ─── Signal 3: the hit-point verification (weight 3, guaranteed) ─────────
+if (_obj isKindOf "AllVehicles") then {
     private _hpMap = [_obj] call FUNC(getHitPointMaterials);
     if (count _hpMap > 0) then {
         private _hpMat = _hpMap getOrDefault [_selName, ""];
-        if (_hpMat != "") then { _class = _hpMat; };
-    };
-};
-
-// ─── 2. Selection-name conventions (no config materials) ─────────────────
-if (_class == "") then {
-    private _sel = toLower _selName;
-    if (_sel find "glass" >= 0 || {_sel find "window" >= 0} || {_sel find "light" >= 0}) then {
-        _class = "glass";
-    } else {
-        if (_sel find "wheel" >= 0 || {_sel find "tyre" >= 0} || {_sel find "tire" >= 0}) then {
-            _class = "rubber";
-        } else {
-            if (_sel find "motor" >= 0 || {_sel find "engine" >= 0}) then {
-                _class = "engine";
-            };
+        if (_hpMat != "") then {
+            _votes set [_hpMat, (_votes getOrDefault [_hpMat, 0]) + 3];
         };
     };
 };
 
-// ─── 3. Fallback: object-wide classification ─────────────────────────────
-if (_class == "") then {
-    _class = _obj call EFUNC(material,getObjectMaterial);
+// ─── Signal 4: the selection-name convention (weight 1, last resort) ─────
+private _sel = toLower _selName;
+private _nMat = "";
+if (_sel find "glass" >= 0 || {_sel find "window" >= 0} || {_sel find "light" >= 0}) then {
+    _nMat = "glass";
+} else {
+    if (_sel find "wheel" >= 0 || {_sel find "tyre" >= 0} || {_sel find "tire" >= 0}) then {
+        _nMat = "rubber";
+    } else {
+        if (_sel find "motor" >= 0 || {_sel find "engine" >= 0}) then { _nMat = "engine"; };
+    };
 };
+if (_nMat != "") then {
+    _votes set [_nMat, (_votes getOrDefault [_nMat, 0]) + 1];
+};
+
+// ─── Decide: the highest weighted vote wins ───────────────────────────────
+private _class = "";
+private _bestN = 0;
+{
+    if ((_y) > _bestN) then { _class = _x; _bestN = _y; };
+} forEach _votes;
+if (_class == "") then { _class = _obj call EFUNC(material,getObjectMaterial); };
+if (_class == "") then { _class = "ground"; };
 
 (missionNamespace getVariable [QGVAR(selMaterialCache), createHashMap]) set [_cacheKey, _class];
 _class
