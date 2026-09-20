@@ -141,6 +141,10 @@
                 ["TICK"] call EFUNC(thermal,applySecondSun);
                 ["TICK"] call EFUNC(thermal,applyClothingThermal);
                 ["TICK"] call EFUNC(thermal,applyBuildingThermal);
+                // Contact conduction: heat exchange between the operator
+                // and what they touch (vehicle interior, prone ground).
+                // Runs after the object solves so both sides have temps.
+                [] call EFUNC(thermal,applyContactConduction);
             };
         }, 0.1] call CBA_fnc_addPerFrameHandler;
         private _logMsg = format ["sensor PFH started (vision mode %1)", _visionMode];

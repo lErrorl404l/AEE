@@ -3357,6 +3357,37 @@ class TestSQFSync(unittest.TestCase):
             addon="thermal",
         )
 
+    def test_contact_conduction(self):
+        # Issue #204: object-to-object contact conduction.  A warm object
+        # touching a cold one transfers heat (and vice versa) - the
+        # road/ground, building/earth, operator/vehicle boundaries blend
+        # instead of a hard thermal edge.
+        self._assert_in_sqf(
+            "fnc_applyContactConduction.sqf",
+            [
+                "boundingBoxReal",
+                "modelToWorld",
+                "QGVAR(selTemperature)",
+                "_fluxAB = (-20 * _dT)",
+                "_fluxBA = -_fluxAB",
+                "nearObjects 40",
+                "QGVAR(contactLastT)",
+            ],
+            "object-to-object contact conduction (blend adjacent surfaces)",
+            addon="thermal",
+        )
+
+    def test_vehicle_heat_gradient_wave(self):
+        # Issue #204: heat spreads gradually across the vehicle's parts
+        # (MKK wave-spread) - the block heats first, the hull follows,
+        # NOT a uniform glow.  Each selection's flux is scaled by its
+        # phase across the part list.
+        text = _read_sqf("fnc_applyBuildingThermal.sqf", "thermal")
+        self.assertIn("_selectionPhase", text)
+        self.assertIn("_waveHeat", text)
+        self.assertIn("_qInternal * _waveHeat", text)
+        self.assertIn("(3 - (2 * _waveHeat))", text)
+
     def test_mapwide_thermal_caps(self):
         # map geometry with no selections) at load, zero runtime cost.
         cfg = (_REPO_ROOT / "addons" / "optics" / "config.cpp").read_text(

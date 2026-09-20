@@ -32,6 +32,7 @@ PREPS(display,applyWeaponBarrelHeat);
 PREPS(display,applyRainDroplets);
 PREPS(display,getThermalSelections);
 PREPS(display,calculateVehicleHeat);
+PREPS(display,applyContactConduction);
 PREPS(fusion,isFusionCapable);
 PREPS(fusion,applyFusionOverlay);
 PREPS(fusion,applyFusionPP);

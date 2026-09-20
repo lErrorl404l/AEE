@@ -101,41 +101,66 @@ if !(_solarRadiation isEqualType 0) then { _solarRadiation = 0; };
     private _isMoving = (abs (speed _obj)) > 1.5 || {vectorMagnitude (velocity _obj) > 0.5};
     private _heatTrend = _obj getVariable [QGVAR(vehicleHeatTrend), 0];
 
+    // Selection names resolved from the indices the discovery returns.
+    // getSelectionMaterials keys on NAMES - passing the raw index threw
+    // "Type Number, expected String" (issue #204, the RPT error).
+    private _hs = getArray (configOf _obj >> "hiddenSelections");
+    private _selCount = count _selNames;
     {
         private _selIdx = _x;
-        if (_selIdx < count _selNames) then {
-            private _selName = _selNames select _selIdx;
-            // Material physics: the conductivity k decides how the
-            // vehicle heat reaches this part's skin.
-            private _matClass = [_obj, _selName] call FUNC(getSelectionMaterials);
-            private _matDef = _matClass call FUNC(getMaterialThermal);
-            private _k = _matDef select 4;
-            if !(_k isEqualType 0) then { _k = 0; };
-
-            // Heat flux (W/m2): the vehicle heat drives metal (high k)
-            // hard, low-k parts (glass, plastic) stay cool.  Metal
-            // conducts the block heat; rubber friction-heats when moving.
-            private _qInternal = _vehicleHeat * 770 * (_k / 50);
-            private _fGround = 0.5;
-            if (_k <= 1.5) then {
-                // Low-k: glass/plastic/wood - reflect sky, minimal
-                // conduction (the LWIR mirror result).
-                _fGround = 0.2;
-            };
-            if (_k >= 0.2 && _k <= 2.0) then {
-                // Rubber/tyre band (k ~0.22): friction heat when moving.
-                if (_isMoving) then {
-                    _qInternal = _qInternal + 280;
-                };
-                _fGround = 0.7;   // tyres see mostly ground
-            };
-            // Rising heat warms the conductive path faster (engine
-            // warming up); falling heat lingers in high-mass metal.
-            if (_heatTrend > 0) then { _qInternal = _qInternal * 1.15; };
-
-            [_obj, _selName, "", _qInternal, _fGround] call FUNC(applySelectionThermal);
-            _applied = _applied + 1;
+        private _selName = if (_obj isKindOf "Man") then {
+            private _names = selectionNames _obj;
+            if (_selIdx < count _names) then { _names select _selIdx } else { "" }
+        } else {
+            if (_selIdx < count _hs) then { _hs select _selIdx } else { "" }
         };
+        if (_selName == "") then { continue; };
+        // Material physics: the conductivity k decides how the
+        // vehicle heat reaches this part's skin.
+        private _matClass = [_obj, _selName] call FUNC(getSelectionMaterials);
+        private _matDef = _matClass call FUNC(getMaterialThermal);
+        private _k = _matDef select 4;
+        if !(_k isEqualType 0) then { _k = 0; };
+
+        // Heat flux (W/m2): the vehicle heat drives metal (high k)
+        // hard, low-k parts (glass, plastic) stay cool.  Metal
+        // conducts the block heat; rubber friction-heats when moving.
+        private _qInternal = _vehicleHeat * 770 * (_k / 50);
+        private _fGround = 0.5;
+        if (_k <= 1.5) then {
+            // Low-k: glass/plastic/wood - reflect sky, minimal
+            // conduction (the LWIR mirror result).
+            _fGround = 0.2;
+        };
+        if (_k >= 0.2 && _k <= 2.0) then {
+            // Rubber/tyre band (k ~0.22): friction heat when moving.
+            if (_isMoving) then {
+                _qInternal = _qInternal + 280;
+            };
+            _fGround = 0.7;   // tyres see mostly ground
+        };
+        // Heat GRADIENT across the parts (MKK wave-spread, issue #204):
+        // the block heats first, the heat spreads gradually through the
+        // hull as the vehicle warms - NOT a uniform glow.  The selection
+        // phase (position across the part list) delays parts further
+        // from the source until the heat builds; the smootherstep
+        // (_heat^2 * (3 - 2*heat)) softens the edge like real diffusion.
+        private _selectionPhase = if (_selCount > 1) then {
+            _forEachIndex / (_selCount - 1)
+        } else { 0 };
+        private _waveDelay = ((_selectionPhase max 0 min 1) * 0.8) min 0.95;
+        private _waveHeat = if (_heatTrend < 0) then {
+            (_vehicleHeat / (1 - _waveDelay)) min 1
+        } else {
+            (((_vehicleHeat - _waveDelay) / (1 - _waveDelay)) max 0) min 1
+        };
+        _waveHeat = _waveHeat * _waveHeat * (3 - (2 * _waveHeat));
+        // Rising heat warms the conductive path faster (engine warming
+        // up); falling heat lingers in high-mass metal.
+        if (_heatTrend > 0) then { _qInternal = _qInternal * 1.15; };
+
+        [_obj, _selName, "", _qInternal * _waveHeat, _fGround] call FUNC(applySelectionThermal);
+        _applied = _applied + 1;
     } forEach _selNames;
 } forEach _objects;
 

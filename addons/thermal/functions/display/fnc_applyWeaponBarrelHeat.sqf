@@ -107,5 +107,35 @@ if (_selName == "") exitWith { 0 };
 // the weapon's real mass (getMass) for the correct thermal time constant.
 private _qInternal = _heat * 7000;   // W/m2: heat=1 -> ~300 C barrel (sustained fire)
 
-[_player, _selName, "", _qInternal, 0.3] call FUNC(applySelectionThermal);
-0
+// ─── Hand-placement gradient (issue #204) ─────────────────────────────────
+// A held weapon warms from BOTH the firing chamber AND the hands - the
+// grip (rear) and foregrip (front) conduct body heat (~32 C skin) into
+// the metal, and the heat spreads gradually along the weapon.  The
+// barrel/critical parts get the firing flux; the grip parts get a body
+// heat term that decays with distance from the hand.  The gradient is a
+// wave (MKK pattern) across the weapon's selections: the hand-contact
+// point warms first, the heat spreads down the weapon as it persists.
+private _weaponSels = [_player] call FUNC(getThermalSelections);
+private _wNames = selectionNames _player;
+private _wCount = count _weaponSels;
+private _applied = 0;
+{
+    private _wIdx = _x;
+    private _wName = if (_wIdx < count _wNames) then { _wNames select _wIdx } else { "" };
+    if (_wName == "") then { continue; };
+    // Body-heat term: the grip (hand contact) warms the weapon from the
+    // operator's skin.  Hand placement = the weapon's critical selection
+    // (the one the material scan found).  Heat falls off along the
+    // selection order from the grip point.
+    private _phase = if (_wCount > 1) then { _forEachIndex / (_wCount - 1) } else { 0.5 };
+    private _gripHeat = 600 * (1 - (_phase * 0.7));   // W/m2, hand at rear
+    // Combine: firing flux on the weapon's critical selection (matched
+    // by NAME - the dynamic discovery's index may differ from the
+    // material-scan index), body heat on the grip.
+    private _partFlux = [_qInternal, 0] select (_wName != _selName);
+    private _flux = _partFlux + _gripHeat;
+    [_player, _wName, "", _flux, 0.3] call FUNC(applySelectionThermal);
+    _applied = _applied + 1;
+} forEach _weaponSels;
+
+_applied
