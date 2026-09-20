@@ -75,18 +75,22 @@ if (_mode == "ENTER") then {
 private _radiation = missionNamespace getVariable [QEGVAR(core,currentSolarRadiation), 0];
 if !(_radiation isEqualType 0) then { _radiation = 0; };
 _radiation = _radiation max 0 min 1;
-// Proven sensor-illumination boost (A3TI DEFAULT_SECONDSUN_BRIGHTNESS =
-// 13, MKK createLight): the second sun is a CONSTANT light that makes
-// the TI scene render, day OR night - it is a sensor constant, not a
-// physics sun.  Our old `radiation * 6` modulation dimmed it to nothing
-// at night, so the thermal image lost its illumination.  The A3TI
-// attenuation is [10e10, 150, 4.3e-5, 4.3e-5].
-private _lightBrightness = 13;
+// Second sun (TI sun term, issue #204): the engine's TI mode renders
+// the terrain's heat from the SUN term - day ground is warm, night
+// ground is cold.  The second sun must TRACK the solar radiation so the
+// terrain darkens at night: a constant brightness 13 at midnight made
+// the ground glow white-hot (the 'cold tyres on white ground' report -
+// the vehicles were correctly dark, the terrain was over-heated).
+// The peak is the A3TI-proven 13 (DEFAULT_SECONDSUN_BRIGHTNESS) scaled
+// by the radiation, with a floor so the scene never fully loses its
+// illumination at dawn/dusk.  The A3TI attenuation is
+// [10e10, 150, 4.3e-5, 4.3e-5].
+private _lightBrightness = 13 * _radiation max 0.15;
 
 // Attach to the camera so the light direction follows the view (the TI
 // sun term is directional).  A3TI attenuation: far range 150, so the sun
-// term reaches the whole scene.  Constant-brightness light; the engine
-// multiplies it through the thermal pass.
+// term reaches the whole scene.  The brightness follows the physics sun;
+// the engine multiplies it through the thermal pass.
 _sun attachTo [_player, [0, 0, 0], "head"];
 _sun setLightBrightness _lightBrightness;
 _sun setLightAmbient [0.5, 0.5, 0.5];

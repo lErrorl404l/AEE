@@ -3093,13 +3093,13 @@ class TestSQFSync(unittest.TestCase):
         self.assertIn("mFact = 0", cfg)
 
     def test_second_sun_constants(self):
-        # Proven sensor-illumination boost (issue #204): A3TI
-        # DEFAULT_SECONDSUN_BRIGHTNESS = 13, MKK createLight.  The second
-        # sun is a CONSTANT light that makes the TI scene render, day OR
-        # night - a sensor constant, not a physics sun.  The old
-        # `radiation * 6` modulation dimmed it to nothing at night so the
-        # thermal image lost its illumination.  Attenuation is the A3TI
-        # [10e10, 150, 4.3e-5, 4.3e-5].
+        # Issue #204: the second sun tracks the solar radiation (the TI
+        # sun term).  Peak is the A3TI-proven 13 (DEFAULT_SECONDSUN_
+        # BRIGHTNESS) scaled by radiation with a dawn/dusk floor.  A
+        # CONSTANT 13 at midnight made the engine-TI terrain glow
+        # white-hot (the 'cold tyres on white ground' report - the
+        # vehicles were correctly dark, the terrain was over-heated).
+        # Attenuation is the A3TI [10e10, 150, 4.3e-5, 4.3e-5].
         self._assert_in_sqf(
             "fnc_applySecondSun.sqf",
             [
@@ -3108,7 +3108,7 @@ class TestSQFSync(unittest.TestCase):
                 "currentSolarRadiation",
                 "setLightBrightness _lightBrightness",
                 "createVehicleLocal",
-                "private _lightBrightness = 13",
+                "private _lightBrightness = 13 * _radiation max 0.15",
                 "setLightAttenuation [10e10, 150, 4.3e-5, 4.3e-5]",
             ],
             "constant sensor-illumination second sun (A3TI 13)",
