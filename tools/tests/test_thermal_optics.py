@@ -3465,6 +3465,28 @@ class TestSQFSync(unittest.TestCase):
         self.assertIn('_class = "glass"', text)
         self.assertIn('_class = "rubber"', text)
 
+    def test_hit_point_material_verification(self):
+        # Issue #204: the vehicle DAMAGE MODEL guarantees part materials.
+        # HitLFWheel can only exist on a wheel, HitEngine on the engine -
+        # verified across vanilla (Offroad: HitLFWheel/HitEngine/HitGlass/
+        # HitHull) AND RHS (M109: HitLTrack/HitEngine/HitTurret) - the
+        # naming is a consistent engine standard.
+        text = _read_sqf("fnc_getHitPointMaterials.sqf", "thermal")
+        self.assertIn("getAllHitPointsDamage", text)
+        self.assertIn('_hp find "wheel"', text)
+        self.assertIn('_hp find "engine"', text)
+        self.assertIn('_hp find "fuel"', text)
+        self.assertIn('_hp find "glass"', text)
+        self.assertIn('_hp find "turret"', text)
+        self.assertIn('_hp find "track"', text)
+        self.assertIn('_mat = "rubber"', text)
+        self.assertIn('_mat = "engine"', text)
+        self.assertIn('_mat = "metal"', text)
+        # The detector consults the hit-point map before name-matching.
+        detector = _read_sqf("fnc_getSelectionMaterials.sqf", "thermal")
+        self.assertIn("getHitPointMaterials", detector)
+        self.assertIn("_hpMap getOrDefault", detector)
+
     def test_mapwide_thermal_caps(self):
         # map geometry with no selections) at load, zero runtime cost.
         cfg = (_REPO_ROOT / "addons" / "optics" / "config.cpp").read_text(
