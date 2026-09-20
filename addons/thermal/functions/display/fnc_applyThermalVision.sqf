@@ -306,7 +306,7 @@ if (missionNamespace getVariable [QEGVAR(nightvision,nvgDebug), false]) then {
         _hCC,
         _hGrain,
         _hBlur,
-        [_brightness, _ccContrast, 0, [0,0,0,0], [1,1,1,0], [1,1,1,0]],
+        [_brightness, _ccContrast, 0.04, [0,0,0,0], [1,1,1,0], [3.84,-0.46,-2.72,-0.06], [0,0,0.02,0,0,0,1.55]],
         [_noise, _sharpness, _grainSize, 0.5, 1.0, 0],
         _blur
     ];
