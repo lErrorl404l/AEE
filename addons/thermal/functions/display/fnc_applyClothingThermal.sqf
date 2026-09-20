@@ -68,6 +68,21 @@ private _applied = 0;
     private _selections = [_obj] call FUNC(getThermalSelections);
     if (count _selections == 0) then { continue; };
 
+    // Loadout thermal (issue #204): every carried item - uniform, vest,
+    // helmet, goggles, backpack and contents (mags, grenades, radios) -
+    // has its own mass and material, so its temperature delta from the
+    // body scales with the item's thermal inertia.  A FULL backpack
+    // (more mass) warms and cools SLOWER than an empty one.  The map is
+    // selection-name -> flux multiplier; cached per unit.
+    private _loadout = missionNamespace getVariable [QGVAR(loadoutThermalCache), createHashMap];
+    private _loadoutKey = str _obj;
+    private _loadoutMap = _loadout getOrDefault [_loadoutKey, createHashMap];
+    if (count _loadoutMap == 0) then {
+        _loadoutMap = [_obj] call FUNC(calculateUnitLoadoutThermal);
+        _loadout set [_loadoutKey, _loadoutMap];
+        missionNamespace setVariable [QGVAR(loadoutThermalCache), _loadout];
+    };
+
     // ─── Per-selection substrate solve + FLIR paint ────────────────────
     // Each selection: the substrate reads the material via the #96
     // detector chain (hiddenSelectionsMaterials -> rvmat surfaceInfo ->
@@ -99,7 +114,13 @@ private _applied = 0;
         if (_k <= 1.5) then { _fGround = 0.2; };
         if (_k >= 0.2 && _k <= 2.0) then { _fGround = 0.7; };
 
-        [_obj, _selName, "", 0, _fGround] call FUNC(applySelectionThermal);
+        // Loadout flux: the carried item's thermal inertia scales the
+        // body's heat reaching this selection.  A heavy backpack warms
+        // slower (lower flux); metal gear (mags, radios) warms fast.
+        private _loadoutFlux = _loadoutMap getOrDefault [format ["%1|%2", _obj, _selName], 1];
+        if !(_loadoutFlux isEqualType 0) then { _loadoutFlux = 1; };
+
+        [_obj, _selName, "", 0, _fGround, _loadoutFlux] call FUNC(applySelectionThermal);
         _applied = _applied + 1;
     } forEach _selections;
 } forEach (allUnits);
