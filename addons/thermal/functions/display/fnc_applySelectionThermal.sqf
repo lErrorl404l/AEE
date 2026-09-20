@@ -291,8 +291,8 @@ if (_mode == "EXIT") then {
             _traceN set [_traceKey, _n + 1];
             missionNamespace setVariable [QGVAR(traceCount), _traceN];
             diag_log format [
-                "[AEE][TRACE] obj=%1 sel=%2 mat=%3 eps=%4 tNew=%5 rad=%6 agc=%7..%8 b=%9 finite_b=%10",
-                _obj, _sel, _mat, _eps, _tNew, _rad, _agcMin, _agcMax, _b, finite _b
+                "[AEE][TRACE] obj=%1 sel=%2 mat=%3 eps=%4 tNew=%5 rad=%6 agc=%7..%8 b=%9 qInt=%10 finite_b=%11",
+                _obj, _sel, _mat, _eps, _tNew, _rad, _agcMin, _agcMax, _b, _qInternal, finite _b
             ];
         };
         // NaN guard: SQF NaN comparisons are false (NaN != NaN is also

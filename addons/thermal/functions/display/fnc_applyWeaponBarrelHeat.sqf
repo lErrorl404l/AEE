@@ -63,7 +63,10 @@ if (_heat < 0.001) exitWith { 0 };
 
 // Find the weapon selection on the unit model.  The weapon is attached;
 // getObjectTextures on the unit includes it.  Cache the selection NAME
-// per weapon class.
+// per weapon class.  The match is DYNAMIC (issue #204): the weapon's own
+// class string in its material (works for any weapon), falling back to
+// the shared thermal-selection discovery when the class match fails (a
+// modded weapon whose material does not embed the class).
 private _weaponObj = currentWeapon _player;
 if (_weaponObj == "") exitWith { 0 };
 private _selName = missionNamespace getVariable [format [QGVAR(barrelSel_%1), _weaponObj], ""];
@@ -75,12 +78,25 @@ if (_selName == "") then {
         private _sel = _forEachIndex;
         if (_sel < count _mats) then {
             private _m = toLower (_mats select _sel);
-            if (_m find "weapon" >= 0 || _m find _weaponObj >= 0) exitWith {
+            // Dynamic: the weapon's class appears in its own material
+            // path.  "weapon" is a structural fallback for vanilla.
+            if (_m find _weaponObj >= 0 || _m find "weapon" >= 0) exitWith {
                 private _names = selectionNames _player;
                 if (_sel < count _names) then { _found = _names select _sel; };
             };
         };
     } forEach _textures;
+    if (_found == "") then {
+        // Modded weapon with no class/material marker: fall back to the
+        // dynamic discovery and take the first selection (the weapon is
+        // the only part this path heats).
+        private _selList = [_player] call FUNC(getThermalSelections);
+        if (count _selList > 0) then {
+            private _names = selectionNames _player;
+            private _i = _selList select 0;
+            if (_i < count _names) then { _found = _names select _i; };
+        };
+    };
     _selName = _found;
     missionNamespace setVariable [format [QGVAR(barrelSel_%1), _weaponObj], _selName];
 };

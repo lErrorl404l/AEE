@@ -70,15 +70,20 @@ if (_ambientChanged) then {
 };
 _objects = _objects + (vehicles - [player]);
 
-// ─── Apply: per-selection substrate solve per object ──────────────────────
-// Each object's thermal selections get the physics solve + FLIR paint.
-// Selection names come from the model config (hiddenSelections order
-// matches getObjectTextures index).  The substrate reads the per-
-// selection material from hiddenSelectionsMaterials via the #96
-// detector and solves solar/convection/radiation + inertia with the
-// object's real mass.  Engine/wheel selections get an internal heat
-// term; glass reflects the scene (its solve with emissivity 0.9 paints
-// near-ambient, the correct LWIR mirror result).
+// ─── Apply: per-selection substrate solve per object (issue #204) ────────
+// Selection discovery is DYNAMIC (fnc_getThermalSelections: Man = all
+// texture slots, vehicle = config override > textureSources > all
+// hiddenSelections except MFD).  The old static name-matching
+// ("engine"/"wheel"/"camo") failed on modded or differently-named
+// vehicles, so the engine and wheel parts never got painted.
+//
+// The vehicle heat is a SINGLE 0..1 value (fnc_calculateVehicleHeat,
+// MKK model): engine running or moving warms toward 1 over 120 s, a
+// running engine starts at 0.65 (a warm block, not cold).  Each
+// selection receives heat DISTRIBUTED BY ITS MATERIAL PHYSICS - the
+// conductivity k from getMaterialThermal (metal 50 conducts the
+// engine heat to the skin, rubber 0.22 friction-heats when moving,
+// glass 1.1 stays cold) - so every part heats correctly, no names.
 private _applied = 0;
 private _solarRadiation = missionNamespace getVariable [QEGVAR(core,currentSolarRadiation), 0];
 if !(_solarRadiation isEqualType 0) then { _solarRadiation = 0; };
@@ -87,87 +92,51 @@ if !(_solarRadiation isEqualType 0) then { _solarRadiation = 0; };
     if (isNull _x) then { continue; };
     private _obj = _x;
 
-    // Per-class thermal selections, cached.  Buildings use the A3TI
-    // discovery (all texture selections).
-    private _cacheKey = format [QGVAR(tiBldgSelections_%1), typeOf _obj];
-    private _selections = missionNamespace getVariable [_cacheKey, []];
+    // Dynamic thermal-selection discovery (cached per class).
+    private _selNames = [_obj] call FUNC(getThermalSelections);
+    if (count _selNames == 0) then { continue; };
 
-    if (count _selections == 0) then {
-        _selections = [];
-        {
-            _selections pushBack _forEachIndex;
-        } forEach (getObjectTextures _obj);
-        missionNamespace setVariable [_cacheKey, _selections];
-    };
+    // Single per-vehicle heat value (MKK model) + motion state.
+    private _vehicleHeat = [_obj] call FUNC(calculateVehicleHeat);
+    private _isMoving = (abs (speed _obj)) > 1.5 || {vectorMagnitude (velocity _obj) > 0.5};
+    private _heatTrend = _obj getVariable [QGVAR(vehicleHeatTrend), 0];
 
-    if (count _selections == 0) then { continue; };
-
-    // Selection names for the per-selection classification.
-    private _selNames = getArray (configOf _obj >> "hiddenSelections");
-    if (_selNames isEqualTo []) then { _selNames = selectionNames _obj; };
-
-    // ─── Per-selection solve + FLIR paint ─────────────────────────────
-    // Each selection: material from the #96 detector chain, q_internal
-    // for engine/wheel areas, ground view factor by selection name.
-    // The substrate applies the procedural white-hot colour and
-    // persists the per-selection temperature for the inertia term.
-    private _qInternal = 0;
-    private _fGround = 0.5;
-    // ─── Engine residual heat (issue #196) ──────────────────────────────
-    // A real vehicle's engine block keeps tens of kelvin for about an
-    // hour after shutdown; the hood/grille warm slowly as the block
-    // cools (transient thermal signature literature).  The per-selection
-    // solve must NOT cut engine heat the instant the engine stops - the
-    // classic "everything cold the second the ignition is off" look.
-    // Engine run time is accumulated while running and decays with
-    // tau = 300 s after shutdown (same model as calculateObjectTemperature):
-    // the internal heat gain scales with the residual, so a truck parked
-    // for an hour reads ambient while one stopped for a minute still
-    // glows.  Dead vehicles keep their residual (no further running).
-    private _now = diag_tickTime;
-    private _lastRT = _obj getVariable [QGVAR(engineRunTimeLast), _now];
-    private _dtRT = ((_now - _lastRT) max 0) min 30;
-    private _engRT = _obj getVariable [QGVAR(engineRunTime), 0];
-    if !(_engRT isEqualType 0) then { _engRT = 0; };
-    if (isEngineOn _obj) then {
-        _engRT = _engRT + _dtRT;
-    } else {
-        _engRT = _engRT * exp (-_dtRT / 300);
-    };
-    _obj setVariable [QGVAR(engineRunTimeLast), _now];
-    _obj setVariable [QGVAR(engineRunTime), _engRT];
-    private _heatFrac = 1 - exp (-_engRT / 300);
     {
         private _selIdx = _x;
         if (_selIdx < count _selNames) then {
-            private _sn = toLower (_selNames select _selIdx);
-            _qInternal = 0;
-            _fGround = 0.5;
-            if (_sn find "engine" >= 0 || _sn find "exhaust" >= 0
-                || _sn find "radiator" >= 0 || _sn find "motor" >= 0
-                || _sn find "turret" >= 0 || _sn find "intake" >= 0) then {
-                _qInternal = 770 * _heatFrac;   // engine area: ~+40 C at
-                                                // 2 m/s wind, scaled by
-                                                // residual engine heat
-                                                // (q = h*dT + eps*sig*
-                                                // (T^4-MRT^4), verified)
+            private _selName = _selNames select _selIdx;
+            // Material physics: the conductivity k decides how the
+            // vehicle heat reaches this part's skin.
+            private _matClass = [_obj, _selName] call FUNC(getSelectionMaterials);
+            private _matDef = _matClass call FUNC(getMaterialThermal);
+            private _k = _matDef select 4;
+            if !(_k isEqualType 0) then { _k = 0; };
+
+            // Heat flux (W/m2): the vehicle heat drives metal (high k)
+            // hard, low-k parts (glass, plastic) stay cool.  Metal
+            // conducts the block heat; rubber friction-heats when moving.
+            private _qInternal = _vehicleHeat * 770 * (_k / 50);
+            private _fGround = 0.5;
+            if (_k <= 1.5) then {
+                // Low-k: glass/plastic/wood - reflect sky, minimal
+                // conduction (the LWIR mirror result).
+                _fGround = 0.2;
             };
-            if (_sn find "wheel" >= 0 || _sn find "tyre" >= 0
-                || _sn find "track" >= 0) then {
-                _qInternal = 280;       // wheels: friction ~+15 C at 2 m/s
-                _fGround = 0.7;         // tyres see mostly ground
+            if (_k >= 0.2 && _k <= 2.0) then {
+                // Rubber/tyre band (k ~0.22): friction heat when moving.
+                if (_isMoving) then {
+                    _qInternal = _qInternal + 280;
+                };
+                _fGround = 0.7;   // tyres see mostly ground
             };
-            if (_sn find "glass" >= 0 || _sn find "window" >= 0
-                || _sn find "light" >= 0) then {
-                _fGround = 0.2;         // glass reflects mostly sky
-            };
-            if (_sn find "roof" >= 0) then {
-                _fGround = 0.2;         // roof sees mostly sky
-            };
+            // Rising heat warms the conductive path faster (engine
+            // warming up); falling heat lingers in high-mass metal.
+            if (_heatTrend > 0) then { _qInternal = _qInternal * 1.15; };
+
+            [_obj, _selName, "", _qInternal, _fGround] call FUNC(applySelectionThermal);
+            _applied = _applied + 1;
         };
-        [_obj, (_selNames select _selIdx), "", _qInternal, _fGround] call FUNC(applySelectionThermal);
-        _applied = _applied + 1;
-    } forEach _selections;
+    } forEach _selNames;
 } forEach _objects;
 
 // Diagnostic: confirms the physics baseline applies in-game.

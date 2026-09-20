@@ -3266,23 +3266,28 @@ class TestSQFSync(unittest.TestCase):
         self.assertNotIn("(_date#3) + (time / 3600)", cfg)
 
     def test_clothing_thermal_constants(self):
+        # Issue #204: dynamic discovery + material-driven view factor.
         self._assert_in_sqf(
             "fnc_applyClothingThermal.sqf",
             [
                 '["", "", "EXIT"] call FUNC(applySelectionThermal)',
                 "applySelectionThermal",
                 "allUnits",
-                "hiddenSelections",
-                "getObjectTextures _obj",
+                "FUNC(getThermalSelections)",
+                "FUNC(getSelectionMaterials)",
                 "fGround = 0.2",
                 "fGround = 0.7",
-                "QGVAR(tiSelections_",
             ],
-            "per-item clothing solved by the per-selection thermal substrate",
+            "per-item clothing: dynamic discovery + material view factor",
             addon="thermal",
         )
 
     def test_building_thermal_constants(self):
+        # Issue #204: dynamic discovery + per-material heat distribution.
+        # The old static name-matching ("engine"/"wheel") failed on modded
+        # vehicles.  Selections come from fnc_getThermalSelections (all
+        # parts, no names), heat from fnc_calculateVehicleHeat (MKK model),
+        # distributed by the material conductivity k.
         self._assert_in_sqf(
             "fnc_applyBuildingThermal.sqf",
             [
@@ -3293,16 +3298,66 @@ class TestSQFSync(unittest.TestCase):
                 'nearObjects ["House", _viewDist]',
                 'nearObjects ["Building", _viewDist]',
                 "abs (_airTemp - _lastTemp) >= 2",
-                "_qInternal = 770",
-                "_qInternal = 280",
-                "QGVAR(tiBldgSelections_",
+                "FUNC(getThermalSelections)",
+                "FUNC(calculateVehicleHeat)",
+                "_qInternal = _vehicleHeat * 770 * (_k / 50)",
+                "_qInternal = _qInternal + 280",
+                "QGVAR(vehicleHeatTrend)",
             ],
-            "per-building thermal solved by the per-selection substrate",
+            "per-building thermal: dynamic discovery + material heat",
+            addon="thermal",
+        )
+        # The static name-matching must be GONE - no _sn find calls.
+        text = _read_sqf("fnc_applyBuildingThermal.sqf", "thermal")
+        self.assertNotIn('_sn find "engine"', text)
+        self.assertNotIn('_sn find "wheel"', text)
+        self.assertNotIn("engineRunTime", text)
+
+    def test_dynamic_thermal_selection_discovery(self):
+        # Issue #204: selections are discovered dynamically (MKK pattern)
+        # - Man = all texture slots, vehicle = config override >
+        # textureSources > all-but-MFD.  NO static name matching.
+        self._assert_in_sqf(
+            "fnc_getThermalSelections.sqf",
+            [
+                'isKindOf "Man"',
+                "getObjectTextures _object",
+                "MKK_TI",
+                "A3TI_ThermalSelections",
+                "textureSources",
+                "BIS_fnc_returnChildren",
+                "BIS_fnc_inString",
+                "QGVAR(thermalSelectionsCache)",
+            ],
+            "dynamic thermal-selection discovery (cached per class)",
+            addon="thermal",
+        )
+        text = _read_sqf("fnc_getThermalSelections.sqf", "thermal")
+        self.assertNotIn('find "engine"', text)
+        self.assertNotIn('find "wheel"', text)
+
+    def test_vehicle_heat_model_constants(self):
+        # Issue #204: the MKK single-value heat model - engine running or
+        # moving warms toward 1, a running engine starts at 0.65, cooldown
+        # after a delay.  The old engineRunTime model warmed so slowly
+        # nothing ever showed.
+        self._assert_in_sqf(
+            "fnc_calculateVehicleHeat.sqf",
+            [
+                "_warmupTime = 120",
+                "_cooldownTime = 320",
+                "_cooldownDelay = 120",
+                "_initialRunning = 0.65",
+                "isEngineOn _vehicle",
+                "QGVAR(vehicleHeatState)",
+                "QGVAR(vehicleHeatTrend)",
+                "[AEE][HEAT]",
+            ],
+            "vehicle heat model (MKK constants + diagnostic trace)",
             addon="thermal",
         )
 
     def test_mapwide_thermal_caps(self):
-        # Config-level caps on the ROOT class cover every object (including
         # map geometry with no selections) at load, zero runtime cost.
         cfg = (_REPO_ROOT / "addons" / "optics" / "config.cpp").read_text(
             encoding="utf-8"
