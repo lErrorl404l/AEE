@@ -71,5 +71,19 @@ if !(_rh isEqualType 0) then { _rh = 50; };
 private _frost = [_pos, _ts, _tAir, vectorMagnitude _wind, _rh / 100, rain] call FUNC(calculateFrostState);
 _ts = _frost select 0;
 
+// ─── Thermal shadow (issue #204) ──────────────────────────────────────────
+// Shadowed ground is COOLER than sunlit ground in real LWIR: the direct
+// solar loading is blocked, leaving only diffuse sky radiation.  A
+// building's or tree's shadow reads a few degrees below the sunlit
+// equilibrium.  The shadow raycast is cheap (one lineIntersectsSurfaces,
+// cached per 5 m cell per frame) and only applies when there is sun.
+if ([_pos] call FUNC(isPositionShadowed)) then {
+    // The shadow depression scales with the solar loading: ~2 C per
+    // 100 W/m2 of blocked direct sun (a clear-day building shadow).
+    private _flux = missionNamespace getVariable [QEGVAR(core,currentSolarFlux), 0];
+    if !(_flux isEqualType 0) then { _flux = 0; };
+    _ts = _ts - (_flux * 0.02);
+};
+
 // Per-position thermal stamp (boot print, tyre track, shade patch).
 (_ts + ([_pos] call FUNC(getGroundStampOffset)))

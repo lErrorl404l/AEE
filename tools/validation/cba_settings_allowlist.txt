@@ -35,3 +35,4 @@ aee_optics_titleDisplay  uiNamespace onLoad resource in optics RscTitles.hpp; re
 aee_thermal_ppHandle_Thermal_Inversion  dynamic ppEffect handle: written via setVariable [_store, _handle] in the create loop
 aee_thermal_thermalSelectionsCache  dynamic cache key: written via format [QGVAR(thermalSelectionsCache_%1), typeOf] in fnc_getThermalSelections
 aee_thermal_hitPointMaterials  dynamic cache key: written via format [QGVAR(hitPointMaterials_%1), typeOf] in fnc_getHitPointMaterials
+aee_thermal_shadowCache  dynamic cache key: written via QGVAR(shadowCache) with per-cell keys in fnc_isPositionShadowed

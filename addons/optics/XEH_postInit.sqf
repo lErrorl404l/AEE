@@ -145,6 +145,16 @@
                 // and what they touch (vehicle interior, prone ground).
                 // Runs after the object solves so both sides have temps.
                 [] call EFUNC(thermal,applyContactConduction);
+                // Radiative exchange (issue #204): a hot object heats the
+                // objects around it (a hot barrel heats the weapon from
+                // inside out, a burning wreck heats everything nearby) -
+                // Stefan-Boltzmann view-factor transfer.
+                [] call EFUNC(thermal,applyRadiativeExchange);
+                // Exhaust / emission heat (issue #204): a firing muzzle
+                // or running engine expels hot gas that warms the ground
+                // and air around it (muzzle blast over a prone shooter's
+                // floor, jet afterburner heating the tarmac).
+                [] call EFUNC(thermal,applyExhaustHeat);
             };
         }, 0.1] call CBA_fnc_addPerFrameHandler;
         private _logMsg = format ["sensor PFH started (vision mode %1)", _visionMode];

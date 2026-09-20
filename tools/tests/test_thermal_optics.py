@@ -3429,32 +3429,25 @@ class TestSQFSync(unittest.TestCase):
         self.assertIn("_skinMass = (0.1 * 70) * (_massScale", callee)
 
     def test_ground_temperature_by_surface(self):
-        # Issue #204: the position-based ground temperature - asphalt
-        # and concrete stay warmer than soil at night (thermal mass).
-        # This is the achievable "terrain painting" (the RV engine has no
-        # setTerrainTexture; the satellite layer is baked into the map).
-        # The surfaceType prefix (#gdt / gdt) is stripped - without it
-        # every surface fell to the default 0 deviation and the terrain
-        # heat was flat (the 'no heat transfer to/from ground' report).
+        # Issue #204: the ground temperature - the node-stack wrapper
+        # classifies the surfaceType (#gdt prefix handled by the material
+        # module) so asphalt stays warmer than soil at night, adds the
+        # frost phase-change and the thermal-shadow depression, then the
+        # per-position stamp.  The terrain cannot be re-textured (no
+        # setTerrainTexture), so this position-based temperature is the
+        # achievable "terrain painting".
         self._assert_in_sqf(
             "fnc_calculateGroundTemperature.sqf",
             [
-                "surfaceType _pos",
-                'find "#gdt" == 0',
-                'case "asphalt"',
-                'case "concrete"',
-                'case "rock"',
-                'case "sand"',
-                'case "grass_short"',
-                'case "grassshort"',
-                'case "grasstall"',
-                'case "reddirt"',
-                'case "mud"',
-                'case "cliff"',
-                "currentSolarRadiation",
-                "_nightWeight = 1 - _radiation",
+                "surfaceType [_pos select 0, _pos select 1]",
+                "classifyBySurfaceType",
+                "calculateGroundNodeStack",
+                "calculateFrostState",
+                "isPositionShadowed",
+                "currentSolarFlux",
+                "getGroundStampOffset",
             ],
-            "position-based ground temperature (surface thermal mass)",
+            "ground temperature (node stack + frost + shadow + stamp)",
             addon="thermal",
         )
 
@@ -3517,6 +3510,7 @@ class TestSQFSync(unittest.TestCase):
     def test_texture_path_classification_order(self):
         # Issue #204: the texture path contains the VEHICLE NAME, which
         # pollutes the keywords (APC_Tracked_01_body has 'track',
+        # pollutes the keywords (APC_Tracked_01_body has 'track',
         # Heli_Light_01_ext has 'light', acc_pointer has 'int').  The
         # classifier must check the PART signals first (metal _body/_ext/
         # hull, rubber wheel/tyre) before the ambiguous words, so the
@@ -3537,6 +3531,61 @@ class TestSQFSync(unittest.TestCase):
         # interior must be the _int suffix, not bare 'int' (acc_pointer).
         self.assertIn('_tl find "_int"', sqf)
         self.assertNotIn('if (_tl find "int" >= 0)', sqf)
+
+    def test_radiative_exchange(self):
+        # Issue #204: a hot object heats the objects around it (a hot
+        # barrel heats the weapon from inside out) - Stefan-Boltzmann
+        # view-factor transfer between nearby objects.
+        self._assert_in_sqf(
+            "fnc_applyRadiativeExchange.sqf",
+            [
+                "nearObjects 30",
+                "_sigma",
+                "^ 4",
+                "_F = 1 / (1 + ((_d * _d)",
+                "applySelectionThermal",
+                "QGVAR(radiativeLastT)",
+            ],
+            "radiative exchange (Stefan-Boltzmann view factor)",
+            addon="thermal",
+        )
+
+    def test_exhaust_heat_field(self):
+        # Issue #204: a firing muzzle or running engine expels hot gas
+        # that warms the ground and air around it (muzzle blast over a
+        # prone shooter's floor, jet afterburner heating the tarmac).
+        self._assert_in_sqf(
+            "fnc_applyExhaustHeat.sqf",
+            [
+                "QGVAR(barrelHeat)",
+                "addGroundStamp",
+                "isEngineOn _veh",
+                "nearObjects 3",
+                "modelToWorld",
+            ],
+            "exhaust/emission heat field (muzzle + engine)",
+            addon="thermal",
+        )
+
+    def test_thermal_shadow(self):
+        # Issue #204: shadowed ground is cooler than sunlit ground (the
+        # direct solar loading is blocked) - a raycast toward the sun.
+        self._assert_in_sqf(
+            "fnc_isPositionShadowed.sqf",
+            [
+                "lineIntersectsSurfaces",
+                "currentSunAzimuth",
+                "currentSunElevation",
+                "QGVAR(shadowCache)",
+                "diag_frameNo",
+            ],
+            "thermal shadow detection (sun raycast)",
+            addon="thermal",
+        )
+        # The ground wrapper applies the shadow depression.
+        ground = _read_sqf("fnc_calculateGroundTemperature.sqf", "thermal")
+        self.assertIn("isPositionShadowed", ground)
+        self.assertIn("currentSolarFlux", ground)
 
     def test_mapwide_thermal_caps(self):
         # map geometry with no selections) at load, zero runtime cost.
