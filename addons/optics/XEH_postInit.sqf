@@ -28,6 +28,9 @@
         ["EXIT"] call EFUNC(thermal,applyClothingThermal);
         ["EXIT"] call EFUNC(thermal,applyBuildingThermal);
         ["EXIT"] call EFUNC(thermal,applyRainDroplets);
+        // Fusion teardown: destroy the fusion PP handles so the overlay
+        // does not leak into normal vision.
+        [0] call EFUNC(thermal,cycleFusionMode);
         [GVAR(sensorPFH)] call CBA_fnc_removePerFrameHandler;
         GVAR(sensorPFH) = nil;
         AEE_LOG_INFO("sensor PFH stopped (returned to normal vision)");
@@ -97,7 +100,21 @@
             // lands on the lens whether it is NVG or thermal).  Run before
             // the mode-specific branches so both get the source.
             ["TICK"] call EFUNC(thermal,applyRainDroplets);
-            if (_vm == 1) then { [] call EFUNC(nightvision,applyNVGTubeModel); };
+            if (_vm == 1) then {
+                [] call EFUNC(nightvision,applyNVGTubeModel);
+                // Fusion (Track B ENVG-B): when the headset is
+                // fusion-capable (TI in visionMode, or the CBA
+                // aee_thermal_fusionAlwaysOn override) and the operator
+                // has fusion mode on, overlay the physics-driven emissive
+                // thermal on the NVG base.  The overlay runs AFTER the
+                // tube model so it composites on top of the I2 image.
+                if ([] call EFUNC(thermal,isFusionCapable)) then {
+                    if (missionNamespace getVariable [QEGVAR(thermal,fusionMode), 1] == 1) then {
+                        [] call EFUNC(thermal,applyFusionPP);
+                        [] call EFUNC(thermal,applyFusionOverlay);
+                    };
+                };
+            };
             if (_vm == 2) then {
                 // Thermal optics are parfocal: LWIR wavelength is ~10x
                 // visible, so the depth of field is so deep that real FLIR

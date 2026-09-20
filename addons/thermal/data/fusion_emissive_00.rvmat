@@ -1,0 +1,14 @@
+ambient[] = {20,20,20,1};
+diffuse[] = {0,0,0,1};
+forcedDiffuse[] = {0,0,0,0};
+emmisive[] = {0.0000,0.0000,0.0000,0.0000};
+specular[] = {0,0,0,0};
+specularPower = 1;
+renderFlags[] = {"AlwaysInShadow"};
+PixelShaderID = "Normal";
+VertexShaderID = "Basic";
+class Stage1
+{
+    texture = "#(rgb,8,8,3)color(0.0,0.0,0.0,1)";
+    uvSource = "tex";
+};
