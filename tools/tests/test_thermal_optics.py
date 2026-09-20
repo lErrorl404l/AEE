@@ -3458,20 +3458,22 @@ class TestSQFSync(unittest.TestCase):
 
     def test_selection_material_full_part_tree(self):
         # Issue #204: every object exposes its full part tree.  The
-        # material detector reads hiddenSelectionsMaterials (the rvmat
-        # per part), falls back to the RUNTIME part tree (selectionNames
-        # + getObjectMaterials) when config omits it, and classifies a
-        # part WITHOUT surfaceInfo from the rvmat's own rendering
-        # properties (emissive, specularPower, diffuse) - never just the
-        # selection name.
+        # material detector gathers ALL signals and votes by weight
+        # (the user's requirement: pull everything, then sort through
+        # what is found - no first-match bias):
+        #   surfaceInfo rvmat (3), hit-point map (3), texture-path
+        #   keyword (2), selection name (1).
         text = _read_sqf("fnc_getSelectionMaterials.sqf", "thermal")
         self.assertIn("selectionNames _obj", text)
         self.assertIn("getObjectMaterials _obj", text)
         self.assertIn("hiddenSelectionsMaterials", text)
-        self.assertIn('_text find "emmisive"', text)
-        self.assertIn('_text find "specularpower"', text)
-        self.assertIn('_class = "glass"', text)
-        self.assertIn('_class = "rubber"', text)
+        self.assertIn("private _votes = createHashMap", text)
+        self.assertIn("_votes set", text)
+        self.assertIn("+ 3", text)  # surfaceInfo + hit-point weight
+        self.assertIn("+ 2", text)  # texture-path weight
+        self.assertIn("+ 1", text)  # selection-name weight
+        self.assertIn("getHitPointMaterials", text)
+        self.assertIn("_bestN", text)
 
     def test_hit_point_material_verification(self):
         # Issue #204: the vehicle DAMAGE MODEL guarantees part materials.
