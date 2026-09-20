@@ -216,19 +216,26 @@ _hInv   = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Inversion), -1];
 //     through untouched.
 // AGC response is applied via contrast, not brightness: poor conditions
 // (rain, fog, crossover) lower contrast; clean conditions raise it.
-// The colour grade is the PROVEN WHOT spectrum matrix (A3TI
-// 2041057379, MKK 3753145363 - identical values): the 4-element
-// [3.84,-0.46,-2.72,-0.06] + 7-element [0,0,0.02,0,0,0,1.55] make the
-// thermal image read as WHOT (strong red emphasis).  Our old plain
-// gain/contrast CC ([1,1,1,0] weight) never produced the thermal look.
+// The colour grade is the PROVEN A3TI WHOT spectrum (2041057379):
+//   [_BRT, _CNT, 0, [0,0,0,_ALPHA], [1,1,1,_SAT], [0.33,0.33,0.33,0],
+//    [0,0,0,0,0,0,4]]
+// The tint is NEUTRAL GREY (0.33,0.33,0.33) - it grades the scene to
+// WHOT without inverting any channel.  The 7-element blend matrix
+// [0,0,0,0,0,0,4] lifts the luminance.  The OLD [3.84,-0.46,-2.72,
+// -0.06] (copied from MKK) has NEGATIVE green and blue channels - it
+// INVERTS those channels, so a hot barrel rendered BLACK in WHOT and
+// the whole scene flipped with polarity (issue #204: 'the barrel is
+// still black', 'the screen is blinding white in BHOT').  MKK's matrix
+// only suits its own red-painted isotherm textures, not the engine's
+// vanilla TI image.
 private _brightness = 1.16;
 private _ccContrast = linearConversion [1, 0, _effective, 0.62, 0.35, true];
 _hCC ppEffectAdjust [
-    _brightness, _ccContrast, 0.04,
+    _brightness, _ccContrast, 0,
     [0, 0, 0, 0],
     [1, 1, 1, 0],
-    [3.84, -0.46, -2.72, -0.06],
-    [0, 0, 0.02, 0, 0, 0, 1.55]
+    [0.33, 0.33, 0.33, 0],
+    [0, 0, 0, 0, 0, 0, 4]
 ];
 _hCC ppEffectCommit 0;
 _hCC ppEffectEnable true;
@@ -314,7 +321,7 @@ if (missionNamespace getVariable [QEGVAR(nightvision,nvgDebug), false]) then {
         _hCC,
         _hGrain,
         _hBlur,
-        [_brightness, _ccContrast, 0.04, [0,0,0,0], [1,1,1,0], [3.84,-0.46,-2.72,-0.06], [0,0,0.02,0,0,0,1.55]],
+        [_brightness, _ccContrast, 0, [0,0,0,0], [1,1,1,0], [0.33,0.33,0.33,0], [0,0,0,0,0,0,4]],
         [_noise, _sharpness, _grainSize, 0.5, 1.0, 0],
         _blur
     ];

@@ -2844,14 +2844,17 @@ class TestSQFSync(unittest.TestCase):
         )
 
     def test_thermal_whot_spectrum_cc(self):
-        # Issue #204: the WHOT spectrum CC matrix (A3TI 2041057379 and
-        # MKK 3753145363 use the IDENTICAL values) makes the thermal
-        # image read as WHOT.  The old plain gain/contrast CC never
-        # produced the thermal look.
+        # Issue #204: the WHOT spectrum CC grade.  The proven A3TI
+        # values (2041057379) use a NEUTRAL GREY tint [0.33,0.33,0.33]
+        # with the 7-element blend [0,0,0,0,0,0,4] - it grades to WHOT
+        # WITHOUT inverting any channel.  The old MKK matrix
+        # [3.84,-0.46,-2.72,-0.06] has NEGATIVE green/blue - it
+        # INVERTED the channels, so the hot barrel rendered black in
+        # WHOT and the scene flipped with polarity.
         self._assert_in_sqf(
             "fnc_applyThermalVision.sqf",
-            ["[3.84, -0.46, -2.72, -0.06]", "[0, 0, 0.02, 0, 0, 0, 1.55]", "0.04"],
-            "WHOT spectrum colour grade",
+            ["[0.33, 0.33, 0.33, 0]", "[0, 0, 0, 0, 0, 0, 4]"],
+            "WHOT spectrum colour grade (neutral tint, no inversion)",
             addon="thermal",
         )
 
