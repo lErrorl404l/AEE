@@ -178,6 +178,16 @@
     // tube.  The thermal PFH swaps the weapon material while hot.
     [_weapon, _ammo] call EFUNC(thermal,applyWeaponBarrelHeat);
 
+    // The emission POINT (issue #204): the projectile's position at
+    // firing IS the muzzle - where the round and the hot gas come from.
+    // Store it so the exhaust heat warms the ground exactly at the
+    // barrel end, not a hardcoded offset.  Decays with the barrel heat.
+    if (!isNull _projectile) then {
+        private _muzzlePos = getPosASL _projectile;
+        missionNamespace setVariable [QEGVAR(thermal,muzzlePos), _muzzlePos];
+        missionNamespace setVariable [QEGVAR(thermal,muzzleTime), diag_tickTime];
+    };
+
     if (currentVisionMode _unit != 1) exitWith {};
 
     private _visibleFire = getNumber (configFile >> "CfgAmmo" >> _ammo >> "visibleFire");
@@ -213,3 +223,19 @@
 // complement, not a replacement.
 ["ENTER"] call EFUNC(thermal,applyBuildingThermal);
 
+
+// ─── Projectile impact residual heat (issue #204) ─────────────────────────
+// The HitPart global event fires on EVERY projectile impact with
+// [projectile, shooter, instigator, selection, ammo, vector, radius,
+// surface, direct].  Each impact lays a warm stamp at the bullet hole -
+// the round arrives hot (friction + the barrel it passed through) and
+// transfers that heat into the surface.  Listener is cheap: one event
+// per impact, stamps only.
+["hitPart", {
+    params ["_projectile", "_shooter", "_instigator", "_selection", "_ammo"];
+    if (isNil "_projectile" || {isNull _projectile}) exitWith {};
+    if (isNil "_ammo") then { _ammo = ""; };
+    // Only stamp impacts near the player (the thermal field is local).
+    if ((getPosASL _projectile) distance (getPosASL (call CBA_fnc_currentUnit)) > 150) exitWith {};
+    [_projectile, _ammo] call EFUNC(thermal,applyImpactHeat);
+}] call CBA_fnc_addEventHandler;

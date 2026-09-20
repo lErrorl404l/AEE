@@ -38,13 +38,21 @@ private _applied = 0;
 
 // ─── 1. Muzzle blast (firing weapon) ──────────────────────────────────────
 // The weapon's barrel heat is the firing state.  A hot barrel means hot
-// gas has been expelled recently; the plume warms the ground ~2 m in
-// front of the muzzle and any object there.
+// gas has been expelled recently; the plume warms the ground at the
+// BARREL END and any object there.  The emission point is the real
+// muzzle - captured by the Fired EH from the projectile's position (the
+// round and the hot gas come from the same place).  Falls back to a
+// position in front of the player only if no shot was captured.
 private _weaponHeat = missionNamespace getVariable [QGVAR(barrelHeat), 0];
 if !(_weaponHeat isEqualType 0) then { _weaponHeat = 0; };
 if (_weaponHeat > 0.1) then {
-    private _muzzlePos = _player modelToWorld [0, 1.2, 0.6];   // muzzle-ish
-    // Ground stamp: hot gas warms the ground in front of the muzzle.
+    private _muzzlePos = missionNamespace getVariable [QEGVAR(thermal,muzzlePos), []];
+    private _muzzleT = missionNamespace getVariable [QEGVAR(thermal,muzzleTime), -999];
+    private _nowT = diag_tickTime;
+    if (count _muzzlePos < 3 || {_nowT - _muzzleT > 10}) then {
+        _muzzlePos = _player modelToWorld [0, 1.2, 0.6];   // fallback
+    };
+    // Ground stamp: hot gas warms the ground exactly at the barrel end.
     private _stampOffset = _weaponHeat * 6;   // ~+6 C at full heat
     [_muzzlePos, _stampOffset, 15] call FUNC(addGroundStamp);
     // Nearby objects within the blast cone get a short radiative kick.

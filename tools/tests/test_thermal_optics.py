@@ -3562,10 +3562,37 @@ class TestSQFSync(unittest.TestCase):
                 "isEngineOn _veh",
                 "nearObjects 3",
                 "modelToWorld",
+                "muzzlePos",
+                "muzzleTime",
             ],
             "exhaust/emission heat field (muzzle + engine)",
             addon="thermal",
         )
+
+    def test_impact_residual_heat(self):
+        # Issue #204: a bullet hole carries residual heat from the
+        # projectile (the round arrives hot and transfers into the
+        # surface).  The HitPart event + the stamp at the impact point.
+        self._assert_in_sqf(
+            "fnc_applyImpactHeat.sqf",
+            [
+                "getPosASL _projectile",
+                'CfgAmmo',
+                '>> "hit"',
+                "addGroundStamp",
+                "nearObjects 2",
+                "applySelectionThermal",
+            ],
+            "projectile impact residual heat (bullet hole)",
+            addon="thermal",
+        )
+        # The HitPart listener is wired in the optics postInit.
+        post = (
+            Path(__file__).resolve().parents[2]
+            / "addons" / "optics" / "XEH_postInit.sqf"
+        ).read_text(encoding="utf-8")
+        self.assertIn('["hitPart"', post)
+        self.assertIn("applyImpactHeat", post)
 
     def test_thermal_shadow(self):
         # Issue #204: shadowed ground is cooler than sunlit ground (the

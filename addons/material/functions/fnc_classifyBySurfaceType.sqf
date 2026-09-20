@@ -26,6 +26,26 @@ Example:
 params [["_surface", "", [""]]];
 _surface = toLower _surface;
 
+// ─── Dynamic first (issue #204): the engine's own material keyword ───────
+// A custom or modded surface (GdtStratisConcrete, GdtCustomAsphalt...)
+// has a CfgSurfaces entry whose soundHit/soundEnviron field carries the
+// PHYSICAL material keyword - the map maker's own classification, no
+// static naming required.  Try the config lookup FIRST (it also reads
+// the .bisurf file when the config class is absent), and only fall back
+// to the static switch below for the known #gdt* primitives.  Without
+// this, GdtStratisConcrete fell through to 'ground' and the concrete
+// never warmed from muzzle flash or sun (the user's report).
+private _dynamicMat = "";
+if (_surface != "") then {
+    // The surface may come as "#gdtconcrete" (with #) or the bare class
+    // "GdtStratisConcrete" (surfaceType returns the bare name at runtime
+    // in some builds).  Try both forms.
+    private _clean = _surface;
+    if (_clean find "#gdt" == 0) then { _clean = _clean select [4, (count _clean) - 4]; };
+    _dynamicMat = _clean call EFUNC(material,getSurfaceMaterial);
+};
+if (_dynamicMat != "" && _dynamicMat != "ground") exitWith { _dynamicMat };
+
 private _material = switch (true) do {
     // Snow/ice/glacier/tundra: frozen ground.
     case (_surface in ["#gdtsnow", "#gdtice", "#gdtglacier"]): { "ground" };
