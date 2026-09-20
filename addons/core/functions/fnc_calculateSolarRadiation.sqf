@@ -74,6 +74,32 @@ missionNamespace setVariable [QEGVAR(core,currentSolarRadiation), _result];
 private _sunElevation = asin (_sinElev max -1 min 1);
 missionNamespace setVariable [QEGVAR(core,currentSunElevation), _sunElevation];
 
+// ─── Solar azimuth (issue #204) ──────────────────────────────────────────
+// The sun's bearing (degrees east of north) so the TI second sun can
+// follow the REAL sun direction - morning thermals heat the east faces
+// of objects, afternoon heats the west.  The standard solar azimuth:
+//   az = atan2(sin(HA), cos(HA)*sin(lat) - tan(decl)*cos(lat))
+// with the conventional sign (east-of-north, negative in the morning).
+private _haRad = _hourAngle * (pi / 180);
+private _latRad = _lat * (pi / 180);
+private _declRad = _decl * (pi / 180);
+// SQF atan2 is the binary operator: y atan2 x (returns degrees).
+private _azN = (sin _haRad) atan2 (
+    (cos _haRad * sin _latRad) - (tan _declRad * cos _latRad)
+);
+private _azimuth = _azN + 180;   // 0..360 east of north
+if (_azimuth >= 360) then { _azimuth = _azimuth - 360; };
+missionNamespace setVariable [QEGVAR(core,currentSunAzimuth), _azimuth];
+
+// Also expose the moon direction (the TI second sun at night, when the
+// moon's position matters for the reflected term).  The moon follows the
+// same celestial mechanics at the lunar declination - approximate with
+// the sun position inverted + 12 h (the moon's phase offset is handled
+// by the radiation model, not the direction).
+private _moonAzimuth = _azimuth + 180;
+if (_moonAzimuth >= 360) then { _moonAzimuth = _moonAzimuth - 360; };
+missionNamespace setVariable [QEGVAR(core,currentMoonAzimuth), _moonAzimuth];
+
 // Store for soil moisture, UV and other consumers
 missionNamespace setVariable [QEGVAR(core,currentSolarRadiation), _result];
 

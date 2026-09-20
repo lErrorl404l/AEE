@@ -108,22 +108,36 @@ if (_hs isNotEqualTo []) then {
 // rvmats (all vanilla) this is the only readable rvmat signal.
 private _texPath = if (_idx >= 0) then { (getObjectTextures _obj) param [_idx, ""] } else { "" };
 if (_texPath == "" && _idx >= 0) then {
-    _texPath = getText (configOf _obj >> "hiddenSelectionsTextures" >> _selName);
+    // hiddenSelectionsTextures is keyed by INDEX, not name - indexing
+    // by the selection NAME threw "'hiddenSelectionsTextures/' is not a
+    // class" (issue #204, the RPT warning).  Select by the array index.
+    private _hst = getArray (configOf _obj >> "hiddenSelectionsTextures");
+    if (_idx < count _hst) then { _texPath = _hst select _idx; };
 };
 private _tl = toLower _texPath;
 if (_tl != "") then {
     private _tMat = "";
-    if (_tl find "glass" >= 0 || {_tl find "window" >= 0} || {_tl find "screen" >= 0} || {_tl find "light" >= 0}) then {
-        _tMat = "glass";
+    // Order matters: the texture path contains the VEHICLE NAME, which
+    // can pollute the keywords (APC_Tracked_01_body has 'track',
+    // Heli_Light_01_ext has 'light').  Check the PART-specific signals
+    // first - a metal body panel (_ext/_body/_hull) or a wheel/tyre -
+    // before the ambiguous generic words.  'light' is glass only for a
+    // light-fixture texture, not a vehicle named Light.
+    if (_tl find "_body" >= 0 || {_tl find "_ext" >= 0} || {_tl find "hull" >= 0}) then {
+        _tMat = "metal";
     } else {
-        if (_tl find "wheel" >= 0 || {_tl find "tyre" >= 0} || {_tl find "tire" >= 0} || {_tl find "track" >= 0}) then {
+        if (_tl find "wheel" >= 0 || {_tl find "tyre" >= 0} || {_tl find "tire" >= 0}) then {
             _tMat = "rubber";
         } else {
-            if (_tl find "engine" >= 0 || {_tl find "motor" >= 0} || {_tl find "radiator" >= 0}) then {
-                _tMat = "engine";
+            if (_tl find "glass" >= 0 || {_tl find "window" >= 0} || {_tl find "screen" >= 0} || {_tl find "_light_co" >= 0}) then {
+                _tMat = "glass";
             } else {
-                if (_tl find "int" >= 0) then { _tMat = "plastic"; }
-                else { if (_tl find "wood" >= 0) then { _tMat = "wood"; }; };
+                if (_tl find "engine" >= 0 || {_tl find "motor" >= 0} || {_tl find "radiator" >= 0}) then {
+                    _tMat = "engine";
+                } else {
+                    if (_tl find "_int" >= 0) then { _tMat = "plastic"; }
+                    else { if (_tl find "wood" >= 0) then { _tMat = "wood"; }; };
+                };
             };
         };
     };

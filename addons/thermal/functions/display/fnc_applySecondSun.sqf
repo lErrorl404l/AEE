@@ -87,11 +87,22 @@ _radiation = _radiation max 0 min 1;
 // [10e10, 150, 4.3e-5, 4.3e-5].
 private _lightBrightness = 13 * _radiation max 0.15;
 
-// Attach to the camera so the light direction follows the view (the TI
-// sun term is directional).  A3TI attenuation: far range 150, so the sun
-// term reaches the whole scene.  The brightness follows the physics sun;
-// the engine multiplies it through the thermal pass.
-_sun attachTo [_player, [0, 0, 0], "head"];
+// The TI sun term is DIRECTIONAL (issue #204): a real scene heats the
+// faces of objects facing the sun - morning thermals warm the east
+// faces, afternoon the west.  The second sun must follow the REAL sun's
+// bearing, not sit at the camera.  Position the lightpoint 150 m along
+// the sun's azimuth (from the core solar position model) so the light
+// direction from the scene matches the sun.  At night the moon bearing
+// drives the (dim) reflected term.
+private _azimuth = missionNamespace getVariable [QEGVAR(core,currentSunAzimuth), 180];
+if !(_azimuth isEqualType 0) then { _azimuth = 180; };
+if (_radiation <= 0.02) then {
+    private _moonAz = missionNamespace getVariable [QEGVAR(core,currentMoonAzimuth), _azimuth];
+    if (_moonAz isEqualType 0) then { _azimuth = _moonAz; };
+};
+private _sunPos = (_player getRelPos [150, _azimuth]) vectorAdd [0, 0, 20];
+_sun setPosASL (AGLToASL _sunPos);
+
 _sun setLightBrightness _lightBrightness;
 _sun setLightAmbient [0.5, 0.5, 0.5];
 _sun setLightAttenuation [10e10, 150, 4.3e-5, 4.3e-5];
