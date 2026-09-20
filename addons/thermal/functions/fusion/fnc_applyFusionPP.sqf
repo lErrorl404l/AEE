@@ -42,18 +42,18 @@ if (_hGrain < 0 || _hCC < 0) exitWith {};
 
 // ─── Grain: light sensor noise on the thermal overlay (NETD) ─────────────
 // The microbolometer channel has its own noise floor, independent of the
-// I2 tube grain.  Low intensity - the fusion image is already noisy from
-// the base tube; we add a touch of thermal-channel noise.
-_hGrain ppEffectAdjust [0.15, 0.75, 1.5, 0.25, 0.42, true];
+// I2 tube grain.  A3TI fusion values (workshop 3725008325):
+//   [_GRAIN, 0.75, 1.5, 0.25, 0, true]  (IRNV WHOT case -2)
+_hGrain ppEffectAdjust [0.5, 2.51, 1.67, 0.5, 1.1, true];
 _hGrain ppEffectCommit 0;
 _hGrain ppEffectEnable true;
 _hGrain ppEffectForceInNVG true;
 
 // ─── ColourCorrections: white-hot tint on the overlay ────────────────────
-// The emissive bands glow white already; the CC softens the blend so the
-// overlay sits ON the NVG image instead of over-powering it.  Slight
-// brightness lift, neutral colour (white-hot fusion).
-_hCC ppEffectAdjust [1.0, 1.0, 0.0, [0, 0, 0, 0], [1, 1, 1, 0], [1, 1, 1, 0]];
+// A3TI fusion values (workshop 3725008325, IRNV WHOT case -2):
+//   [_BRT, _CNT, 0, [0,0,0,_ALPHA], [1,1,1,0], [1,1,1,0]]
+// with DEFAULT_TIPP_SETTINGS = [1.16, 0.62, 0, 0].
+_hCC ppEffectAdjust [1.16, 0.62, 0, [0, 0, 0, 0], [1, 1, 1, 0], [1, 1, 1, 0]];
 _hCC ppEffectCommit 0;
 _hCC ppEffectEnable true;
 _hCC ppEffectForceInNVG true;

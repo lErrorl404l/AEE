@@ -1,5 +1,5 @@
 ambient[] = {20,20,20,1};
-diffuse[] = {0,0,0,1};
+diffuse[] = {0.005,0.005,0.005,0};
 forcedDiffuse[] = {0,0,0,0};
 emmisive[] = {366.6665,366.6665,366.6665,366.6665};
 specular[] = {0,0,0,0};
@@ -9,6 +9,6 @@ PixelShaderID = "Normal";
 VertexShaderID = "Basic";
 class Stage1
 {
-    texture = "#(rgb,8,8,3)color(0.733333,0.733333,0.733333,1)";
+    texture = "#(rgb,8,8,3)color(1,1,1,1)";
     uvSource = "tex";
 };
