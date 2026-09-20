@@ -28,9 +28,10 @@
         ["EXIT"] call EFUNC(thermal,applyClothingThermal);
         ["EXIT"] call EFUNC(thermal,applyBuildingThermal);
         ["EXIT"] call EFUNC(thermal,applyRainDroplets);
-        // Fusion teardown: destroy the fusion PP handles so the overlay
-        // does not leak into normal vision.
+        // Fusion teardown: destroy the fusion PP handles and the diet
+        // sun so the overlay does not leak into normal vision.
         [0] call EFUNC(thermal,cycleFusionMode);
+        ["EXIT"] call EFUNC(thermal,applyFusionSun);
         [GVAR(sensorPFH)] call CBA_fnc_removePerFrameHandler;
         GVAR(sensorPFH) = nil;
         AEE_LOG_INFO("sensor PFH stopped (returned to normal vision)");
@@ -111,6 +112,7 @@
                 if ([] call EFUNC(thermal,isFusionCapable)) then {
                     if (missionNamespace getVariable [QEGVAR(thermal,fusionMode), 1] == 1) then {
                         [] call EFUNC(thermal,applyFusionPP);
+                        ["ON"] call EFUNC(thermal,applyFusionSun);
                         [] call EFUNC(thermal,applyFusionOverlay);
                     };
                 };

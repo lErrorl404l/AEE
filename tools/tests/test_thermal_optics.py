@@ -3654,6 +3654,16 @@ class TestFusionPipeline(unittest.TestCase):
                 places=3,
                 msg=f"{f.name} emissive must be grey*500 ({expected})",
             )
+            # Pink guard (issue #204): the Stage1 texture must be pure
+            # white (1,1,1,1), never grey.  A grey Stage1 composited over
+            # the green NVG base tints the scene pink/magenta - the user
+            # reported "very very pink".  The emissive carries the heat;
+            # the texture stays white (A3TI TI_white.paa = 255,255,255).
+            self.assertIn(
+                "color(1,1,1,1)",
+                text,
+                f"{f.name} Stage1 must be pure white (pink fix, #204)",
+            )
 
     def test_fusion_uses_same_physics_state(self):
         # The overlay reads the SAME selTemperature + AGC window as the
@@ -3703,12 +3713,30 @@ class TestFusionPipeline(unittest.TestCase):
         )
 
     def test_fusion_teardown_on_exit(self):
-        # Leaving NVG destroys the fusion PP handles.
+        # Leaving NVG destroys the fusion PP handles and the diet sun.
         self._assert_in_sqf(
             "XEH_postInit.sqf",
-            ["cycleFusionMode", "sensor PFH stopped"],
+            ["cycleFusionMode", "applyFusionSun", "sensor PFH stopped"],
             "fusion teardown on normal-vision exit",
             addon="optics",
+        )
+
+    def test_fusion_diet_sun(self):
+        # A3TI creates a diet sun (brightness 0.8, dayLight false) to
+        # light the EmissiveWhite objects over the dark NVG scene -
+        # without it the emissive rvmat renders black (the I2 base is
+        # near-black at night).
+        self._assert_in_sqf(
+            "fnc_applyFusionSun.sqf",
+            [
+                "setLightBrightness 0.8",
+                "setLightDayLight false",
+                "setLightAttenuation",
+                "setLightAmbient",
+                "setPosASL",
+            ],
+            "fusion diet sun lights the emissive overlay",
+            addon="thermal",
         )
 
     def _assert_in_sqf(self, filename, fragments, context, addon="optics"):
