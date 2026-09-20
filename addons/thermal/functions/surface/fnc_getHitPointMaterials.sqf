@@ -66,14 +66,21 @@ for "_i" from 0 to (count _hpNames - 1) do {
             if (_hp find "glass" >= 0 || {_hp find "window" >= 0} || {_hp find "windshield" >= 0}) then {
                 _mat = "glass";
             } else {
-                if (_hp find "turret" >= 0 || {_hp find "gun" >= 0} || {_hp find "missile" >= 0}) then {
-                    _mat = "metal";   // weapon systems (also covers
-                                      // Hit_Turret_Glass - glass turret
-                                      // optics read metal-ish, and the
-                                      // turret itself is the target)
+                // Aircraft: main/tail rotor = metal blades, avionics =
+                // the instrument stack (plastic/glass housing).
+                if (_hp find "rotor" >= 0) then {
+                    _mat = "metal";
                 } else {
-                    if (_hp find "track" >= 0) then {
-                        _mat = "metal";   // tank tracks: steel
+                    if (_hp find "avionics" >= 0) then {
+                        _mat = "plastic";
+                    } else {
+                        if (_hp find "turret" >= 0 || {_hp find "gun" >= 0} || {_hp find "missile" >= 0}) then {
+                            _mat = "metal";   // weapon systems
+                        } else {
+                            if (_hp find "track" >= 0) then {
+                                _mat = "metal";   // tank tracks: steel
+                            };
+                        };
                     };
                 };
             };
