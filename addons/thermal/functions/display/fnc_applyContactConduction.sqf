@@ -67,12 +67,10 @@ if (_veh != _player) then {
 
 // ─── Prone on the ground: conduct to the ground ───────────────────────────
 if (_contactTemp < -900 && {stance _player == "PRONE"}) then {
-    // The ground at night tracks the air temperature (the substrate's
-    // fGround view factor already models the ground/sky radiation
-    // split); the prone body presses into it, so the contact is direct.
-    private _air = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
-    if !(_air isEqualType 0) then { _air = 15; };
-    _contactTemp = _air;
+    // The ground temperature at the position (issue #204): the
+    // surface-specific value - asphalt stays warmer than soil at night.
+    // The prone body presses into it, so the contact is direct.
+    _contactTemp = [getPosASL _player] call FUNC(calculateGroundTemperature);
     // Clothing reduces the contact: still a strong path through the
     // pressed clothing, but less than bare skin.
     _contactConductance = 40;

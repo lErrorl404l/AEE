@@ -79,7 +79,13 @@ if (_custom isNotEqualTo []) then {
             };
         } forEach _textureSources;
         _selections = _selections select { _x < count _selectionNames };
-    } else {
+    };
+    // If textureSources produced nothing (empty textures, or none
+    // declared), fall through to the all-but-MFD fallback - caching an
+    // EMPTY list would leave the vehicle permanently unpainted (the
+    // MRAP bug: heat ramped to 1 in the state but the parts never
+    // rendered, issue #204).
+    if (_selections isEqualTo []) then {
         // 3. Fallback: all hiddenSelections except MFD/display screens.
         {
             if !(["mfd", _x, false] call BIS_fnc_inString) then {
