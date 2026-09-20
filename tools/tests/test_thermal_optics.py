@@ -3448,6 +3448,23 @@ class TestSQFSync(unittest.TestCase):
         self.assertIn("if (_selections isEqualTo []) then", text)
         self.assertIn('["mfd", _x, false] call BIS_fnc_inString', text)
 
+    def test_selection_material_full_part_tree(self):
+        # Issue #204: every object exposes its full part tree.  The
+        # material detector reads hiddenSelectionsMaterials (the rvmat
+        # per part), falls back to the RUNTIME part tree (selectionNames
+        # + getObjectMaterials) when config omits it, and classifies a
+        # part WITHOUT surfaceInfo from the rvmat's own rendering
+        # properties (emissive, specularPower, diffuse) - never just the
+        # selection name.
+        text = _read_sqf("fnc_getSelectionMaterials.sqf", "thermal")
+        self.assertIn("selectionNames _obj", text)
+        self.assertIn("getObjectMaterials _obj", text)
+        self.assertIn("hiddenSelectionsMaterials", text)
+        self.assertIn('_text find "emmisive"', text)
+        self.assertIn('_text find "specularpower"', text)
+        self.assertIn('_class = "glass"', text)
+        self.assertIn('_class = "rubber"', text)
+
     def test_mapwide_thermal_caps(self):
         # map geometry with no selections) at load, zero runtime cost.
         cfg = (_REPO_ROOT / "addons" / "optics" / "config.cpp").read_text(
