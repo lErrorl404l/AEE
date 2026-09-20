@@ -53,7 +53,14 @@ params [""];
 private _selTemps = missionNamespace getVariable [QGVAR(selTemperature), createHashMap];
 private _airTemp = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 if !(_airTemp isEqualType 0) then { _airTemp = 15; };
-private _groundTemp = missionNamespace getVariable [QEGVAR(core,avgGroundTemp), _airTemp];
+// The ground term in the AGC window: the position-based ground
+// temperature (surfaceType - asphalt stays warmer than soil at night),
+// falling back to the global average.  The operator's thermal contrast
+// is set by the ground they are standing on (issue #204).
+private _groundTemp = [getPosASL player] call FUNC(calculateGroundTemperature);
+if !(_groundTemp isEqualType 0) then {
+    _groundTemp = missionNamespace getVariable [QEGVAR(core,avgGroundTemp), _airTemp];
+};
 if !(_groundTemp isEqualType 0) then { _groundTemp = _airTemp; };
 
 // Gather scene radiances: every selection's temperature through the

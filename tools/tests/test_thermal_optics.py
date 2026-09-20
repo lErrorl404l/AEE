@@ -3431,15 +3431,24 @@ class TestSQFSync(unittest.TestCase):
         # and concrete stay warmer than soil at night (thermal mass).
         # This is the achievable "terrain painting" (the RV engine has no
         # setTerrainTexture; the satellite layer is baked into the map).
+        # The surfaceType prefix (#gdt / gdt) is stripped - without it
+        # every surface fell to the default 0 deviation and the terrain
+        # heat was flat (the 'no heat transfer to/from ground' report).
         self._assert_in_sqf(
             "fnc_calculateGroundTemperature.sqf",
             [
                 "surfaceType _pos",
+                'find "#gdt" == 0',
                 'case "asphalt"',
                 'case "concrete"',
                 'case "rock"',
                 'case "sand"',
                 'case "grass_short"',
+                'case "grassshort"',
+                'case "grasstall"',
+                'case "reddirt"',
+                'case "mud"',
+                'case "cliff"',
                 "currentSolarRadiation",
                 "_nightWeight = 1 - _radiation",
             ],

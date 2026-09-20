@@ -79,7 +79,45 @@ if (_contactTemp < -900 && {stance _player == "PRONE"}) then {
 // Standing on the ground: footwear is the contact (already modelled by
 // the fGround view factor in the substrate - no extra flux).
 
-if (_contactTemp < -900) exitWith { 0 };
+// ─── Vehicle tyre-ground conduction (issue #204) ──────────────────────────
+// The user's 'no heat transfer to/from ground': the ground is not an
+// object (it is the baked terrain), so the AABB object pass cannot
+// exchange with it.  Add the dedicated term: the player's vehicle tyres
+// conduct to the GROUND TEMPERATURE beneath them (position-based -
+// asphalt stays warmer than soil at night).  Each rubber/tyre selection
+// exchanges heat with the ground it sits on.
+private _applied = 0;
+if (_veh != _player) then {
+    private _groundT = [getPosASL _veh] call FUNC(calculateGroundTemperature);
+    private _selMap = missionNamespace getVariable [QGVAR(selTemperature), createHashMap];
+    private _vehSels = [_veh] call FUNC(getThermalSelections);
+    private _vehNames = selectionNames _veh;
+    {
+        private _vIdx = _x;
+        private _vName = if (_vIdx < count _vehNames) then { _vehNames select _vIdx } else { "" };
+        if (_vName == "") then { continue; };
+        // Only the tyre/wheel selections conduct to the ground (rubber
+        // sits on it).  Identified by the material (rubber k ~0.22).
+        private _matClass = [_veh, _vName] call FUNC(getSelectionMaterials);
+        private _matDef = _matClass call FUNC(getMaterialThermal);
+        private _k = _matDef select 4;
+        if !(_k isEqualType 0) then { _k = 0; };
+        if (_k >= 0.1 && _k <= 2.0) then {
+            private _tireT = _selMap getOrDefault [format ["%1|%2", _veh, _vName], -999];
+            if (_tireT > -900) then {
+                private _dT = _tireT - _groundT;
+                // The tyre and ground converge: the tyre conducts to the
+                // ground (or the warm tarmac heats the tyre).  h ~30
+                // W/m2K for rubber-earth contact.
+                private _flux = (-30 * _dT) max -2000 min 2000;
+                [_veh, _vName, "", _flux, 0.7] call FUNC(applySelectionThermal);
+                _applied = _applied + 1;
+            };
+        };
+    } forEach _vehSels;
+};
+
+if (_contactTemp < -900) exitWith { _applied };
 
 // ─── Apply: pull the body's skin toward the contact surface ──────────────
 // For each body selection, the flux is h * (T_skin - T_surface).  We do
@@ -90,7 +128,6 @@ if (_contactTemp < -900) exitWith { 0 };
 private _selMap = missionNamespace getVariable [QGVAR(selTemperature), createHashMap];
 private _bodySels = [_player] call FUNC(getThermalSelections);
 private _names = selectionNames _player;
-private _applied = 0;
 {
     private _idx = _x;
     private _name = if (_idx < count _names) then { _names select _idx } else { "" };
