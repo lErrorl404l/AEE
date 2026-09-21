@@ -175,4 +175,4 @@ if (_engCal > 0) then {
 private _engMass = getNumber (configFile >> "CfgAmmo" >> _ammo >> "hit") * 0.5;
 if (_engMass > 0) then { _mass = _engMass; };
 
-[_mv, _bc1, _bc7, _base select 0, _mass, if (_bc7 > 0) then { 7 } else { 1 }]
+[_mv, _bc1, _bc7, _base select 0, _mass, [1, 7] select (_bc7 > 0)]

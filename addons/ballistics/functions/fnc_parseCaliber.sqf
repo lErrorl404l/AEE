@@ -88,10 +88,17 @@ private _CALIBERS = [
 //   "NNxNN" (caliber x case): the leading NN is the mm diameter.
 //   "NNN" (3-digit): 45/50/338/300 -> hundredths of an inch -> mm;
 //                   556/762/545/127 -> the mm diameter, decimal dropped.
-// Extract the numeric tokens via regex (the clean form: [match, pos]).
-private _matches = _n regexFind "[0-9]+";
+// Extract the numeric tokens (the first digit run in the name).
+private _matches = _n splitString "0123456789";
 private _num = "";
-if (count _matches > 0) then { _num = _matches select 0 select 0; };
+if (count _matches > 1) then {
+    // The first digit run sits between the first two non-digit splits.
+    private _before = _matches select 0;
+    private _after = _matches select 1;
+    private _start = (count _before);
+    private _len = (count _n) - _start - (count _after);
+    if (_len > 0) then { _num = _n select [_start, _len]; };
+};
 if (_num == "") exitWith { [0, "", 0] };
 
 private _val = parseNumber _num;
