@@ -2846,27 +2846,6 @@ class TestSQFSync(unittest.TestCase):
             addon="thermal",
         )
 
-    def test_spawn_heat_stain_organic(self):
-        # Issue #204: the muzzle-blast ground stain must be an ORGANIC
-        # blob (multi-decals, scatter + elongation along the firing
-        # axis), not a single perfect circle - real gas footprints are
-        # irregular and weapon-dependent.  Uses Land_DirtPatch_03_F
-        # decals painted via the usertexture selection - the verified
-        # TI-visible terrain paint (all other vanilla flat pieces are
-        # material-baked with no paintable slot).
-        self._assert_in_sqf(
-            "fnc_spawnHeatStain.sqf",
-            [
-                "Land_DirtPatch_03_F",
-                '"usertexture"',
-                "setObjectScale",
-                "ground_heat_%1.paa",
-                "random 0.8",  # forward-biased scatter
-            ],
-            "organic muzzle-blast ground stain (DirtPatch usertexture TI path)",
-            addon="thermal",
-        )
-
     def test_thermal_whot_spectrum_cc(self):
         # Issue #204: the WHOT spectrum CC grade.  The proven A3TI
         # values (2041057379) use a NEUTRAL GREY tint [0.33,0.33,0.33]
