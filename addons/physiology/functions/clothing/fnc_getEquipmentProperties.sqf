@@ -37,12 +37,14 @@ private _uniformProps = [_unit] call FUNC(getClothingInsulation);   // [clo, alp
 private _uniformClo = _uniformProps select 0;
 private _uniformNir = _uniformProps select 2;
 
-// The vest + helmet + backpack classnames (the slot disambiguates the
-// item type: headgear/vest are CfgWeapons classes, backpacks are
-// CfgVehicles classes - but classification needs only the name).
+// The vest + helmet + backpack + goggles classnames (the slot
+// disambiguates the item type: headgear/vest are CfgWeapons classes,
+// backpacks are CfgVehicles classes, goggles are CfgGlasses - but
+// classification needs only the name).
 private _vestItem = vest _unit;
 private _helmetItem = headgear _unit;
 private _packItem = backpack _unit;
+private _goggleItem = goggles _unit;
 
 // ─── Vest: NIJ-armour plate carriers dominate armour/weight ──────────────
 // Historical flak (M-1951/52, M-69, M-12) were unrated soft nylon;
@@ -281,13 +283,83 @@ if (_packItem != "") then {
 // command: 0..1 of the pack's max capacity).
 private _packContents = load (unitBackpack _unit);
 
-// Combine: weight sums (incl. the pack contents), armour = max (the
-// vest dominates), NIR is the uniform-dominant average, clo sums.
+// ─── Goggles (CfgGlasses): eyewear / facewear / respirators ───────────────
+// The goggles slot carries ballistic eyewear (MIL-PRF-31013/32432,
+// ~30-130 g), balaclavas/bandannas/facemasks (~50-150 g, fleece ~0.3
+// clo), respirators (M50 0.86 kg CBRN Cap 1) and face protection.
+// Weight and face-armour from equipment-library.md (eyewear/facewear
+// table).
+private _goggleDef = [0.05, 0, 0.40, 0.02];
+private _goggle = _goggleDef;
+if (_goggleItem != "") then {
+    private _g = toLower _goggleItem;
+    _goggle = switch (true) do {
+        // CBRN respirators: M50 0.86 kg, FM12 0.79, PMK-3 0.96.  The
+        // mask is the heaviest goggles-slot item and adds face armour.
+        case (_g find "m50" >= 0 ||
+              _g find "m40" >= 0 ||
+              _g find "m42" >= 0 ||
+              _g find "fm12" >= 0 ||
+              _g find "fm50" >= 0 ||
+              _g find "c50" >= 0 ||
+              _g find "s10" >= 0 ||
+              _g find "gp-5" >= 0 ||
+              _g find "gp-7" >= 0 ||
+              _g find "pmk" >= 0 ||
+              _g find "respirator" >= 0): { [0.86, 1, 0.10, 0.08] };
+        // Face shields / mandibles / visors (frag to NIJ IIIA).
+        case (_g find "mandible" >= 0 ||
+              _g find "faceshield" >= 0 ||
+              _g find "visor" >= 0 ||
+              _g find "mfs" >= 0):       { [0.30, 2, 0.10, 0.04] };
+        // Balaclava / bandanna / shemagh / gaiter / scarf / hood
+        // (face + neck cold protection, ~0.3 clo).  G_Bandanna_* and
+        // G_Balaclava_* are the vanilla families.
+        case (_g find "balaclava" >= 0 ||
+              _g find "bandanna" >= 0 ||
+              _g find "shemag" >= 0 ||
+              _g find "gaiter" >= 0 ||
+              _g find "scarf" >= 0 ||
+              _g find "hood" >= 0 ||
+              _g find "lowprofile" >= 0): { [0.10, 0, 0.40, 0.30] };
+        // Ballistic eyewear: ESS/Revision/Oakley/Wiley X (~30-130 g),
+        // MIL-PRF-31013/32432.  Clear lenses keep NIR transmissive.
+        // G_Combat, G_Tactical_* are the vanilla ballistic families.
+        case (_g find "ess" >= 0 ||
+              _g find "sawfly" >= 0 ||
+              _g find "locust" >= 0 ||
+              _g find "stingerhawk" >= 0 ||
+              _g find "mframe" >= 0 ||
+              _g find "crossbow" >= 0 ||
+              _g find "landops" >= 0 ||
+              _g find "wiley" >= 0 ||
+              _g find "combat" >= 0 ||
+              _g find "tactical" >= 0 ||
+              _g find "spectacles" >= 0 ||
+              _g find "sport" >= 0):     { [0.10, 1, 0.35, 0.01] };
+        // Sunglasses (shades, aviator, lady, squares): no armour,
+        // dark lenses cut NIR reflectance.
+        case (_g find "shades" >= 0 ||
+              _g find "aviator" >= 0 ||
+              _g find "lady" >= 0 ||
+              _g find "squares" >= 0):   { [0.03, 0, 0.10, 0.01] };
+        // Goggles: the generic eyewear slot + diving masks.
+        case (_g find "goggle" >= 0 ||
+              _g find "glasses" >= 0 ||
+              _g find "diving" >= 0):    { [0.10, 1, 0.35, 0.01] };
+        default                           { _goggleDef };
+    };
+};
+
+// Combine: weight sums (incl. the pack contents + goggles), armour =
+// max (the vest dominates), NIR is the uniform-dominant average, clo
+// sums.
 private _weight = (_vest select 0) + (_helmet select 0) + (_pack select 0)
-    + _packContents + 4.0;   // +base uniform weight
-private _armor = (_vest select 1) max (_helmet select 1);
+    + _packContents + (_goggle select 0) + 4.0;   // +base uniform weight
+private _armor = (_vest select 1) max (_helmet select 1) max (_goggle select 1);
 private _nir = (_uniformNir + (_vest select 2) * 0.3 + (_helmet select 2) * 0.2
-    + (_pack select 2) * 0.1) / 1.6;
-private _clo = _uniformClo + (_vest select 3) + (_helmet select 3) + (_pack select 3);
+    + (_pack select 2) * 0.1 + (_goggle select 2) * 0.1) / 1.7;
+private _clo = _uniformClo + (_vest select 3) + (_helmet select 3) + (_pack select 3)
+    + (_goggle select 3);
 
 [_weight, _armor, _nir, _clo]
