@@ -7,6 +7,7 @@ PREPS(warnings,calculateAvalancheRisk);
 PREPS(terrain,calculateConcealment);
 PREPS(terrain,calculateIceLoad);
 PREPS(warnings,calculateCBRNPersistence);
+PREPS(warnings,getCbrnProtection);
 PREPS(warnings,calculateFlashFloodRisk);
 PREPS(terrain,calculateFreezeThawCycling);
 PREPS(terrain,calculateFrostOnWindscreens);
