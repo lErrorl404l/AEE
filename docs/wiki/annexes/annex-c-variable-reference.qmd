@@ -100,6 +100,7 @@ follow the variable names as written in the SQF source.
 | `aee_nightvision_nvgGateActive` | nightvision | NVG auto-gate state this frame (true = a bright source is gating) |
 | `aee_nightvision_nvgGateFlickerUntil` | nightvision | Mission time until the gate-transition blackout flicker ends |
 | `aee_nightvision_nvgGrainBoost` | nightvision | 1 while gate flicker active (noise floor raised), 0 otherwise |
+| `aee_nightvision_nvgTubeOnTime` | nightvision | Mission time the tube was first powered on - drives the warm-up dark-current curve (#153 gap 4) |
 | `aee_optics_viewDistanceTarget` | optics | Vision-driven view distance target in metres (issue #138) |
 | `aee_optics_viewDistanceSigma` | optics | Total atmospheric extinction sigma for the view-distance driver |
 

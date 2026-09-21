@@ -276,6 +276,20 @@ if (missionNamespace getVariable [QGVAR(nvgTierLogged), ""] != _tierLogKey) then
     AEE_LOG_INFO(_logMsg);
 };
 
+// ─── Gen 1 image erosion (gap 5, #153) ───────────────────────────────────
+// Gen 1 tubes have edge-to-centre brightness falloff and pincushion
+// distortion - the image erodes toward the edges.  The vignette already
+// models rim darkness; this adds the Gen 1 CHARACTER: a stronger edge
+// falloff (the electron-optics aberration) that reads as image erosion.
+// PVS-31/Gen 3 filmless tubes are essentially flat field - no erosion.
+private _erosionFactor = switch (_tier) do {
+    case "GEN1": { 2.5 };   // strong pincushion falloff
+    case "GEN2": { 1.3 };   // mild - second-gen electron optics improve
+    default { 1.0 };         // Gen 3 / PVS-31: flat field, no erosion
+};
+_vigStrength set [0, (_vigStrength select 0) * _erosionFactor];
+_vigStrength set [1, (_vigStrength select 1) * _erosionFactor];
+
 // ─── Temperature coupling ─────────────────────────────────────────────────
 // Tube performance degrades with temperature.  Photocathode quantum
 // efficiency and MCP gain both fall in cold; dark current rises in heat
@@ -300,6 +314,26 @@ _sensitivity = _sensitivity * _tempGainFactor;
 // 20 °C to 45 °C.
 private _noiseTempFactor = linearConversion [20, 45, _airTemp, 1.0, 1.6, true];
 _noiseFloor = _noiseFloor * _noiseTempFactor;
+
+// ─── Tube warm-up (gap 4, #153) ──────────────────────────────────────────
+// Real tubes have a warm-up curve: MCP current raises the tube
+// temperature over the first minutes, which raises dark current (a
+// brighter noise floor), then stabilises at thermal equilibrium.
+// Model: dark current scales (1 - exp(-t/tau)) toward +25% over the
+// warm-up window.  A cold-start tube reads noisier for the first
+// minutes - most visible in the Gen 1 / Gen 2 noise floor.
+private _warmupTau = switch (_tier) do {
+    case "GEN1": { 120 };   // Gen 1: slow MCP warm-up, ~4 min to 63%
+    case "GEN2": { 90 };
+    default { 60 };          // Gen 3 / PVS-31: fast, ~1 min (filmless MCP)
+};
+private _tubeOnTime = missionNamespace getVariable [QGVAR(nvgTubeOnTime), -1];
+if (_tubeOnTime < 0) then {
+    _tubeOnTime = CBA_missionTime;
+    missionNamespace setVariable [QGVAR(nvgTubeOnTime), _tubeOnTime];
+};
+private _warmupFrac = 1 - (exp (-((CBA_missionTime - _tubeOnTime) / _warmupTau)));
+_noiseFloor = _noiseFloor * (1 + 0.25 * _warmupFrac);
 
 // ─── Ambient light in lux ────────────────────────────────────────────────
 // From the shared illuminance layer (fnc_calculateIlluminance): the
