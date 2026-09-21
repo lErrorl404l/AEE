@@ -7,17 +7,17 @@ hot gas vents forward and sideways from the muzzle device, the shape is
 irregular, and it depends on the weapon, the gas volume, the barrel, and
 the muzzle brake - then it grows, fades, and dissipates.
 
-The object-decal route (Land_DirtPatch_03_F) FAILED: those decals
-render as terrain-surface projections that the TI pass ignores, so the
-heat paint never reached the thermal image (bullet holes and footprints
-show because the engine draws them through its OWN decal renderer,
-which TI reads).
+Render path (verified in-game): road-LOD proxy planes.  The runway
+pieces (runway_beton_F.p3d) are land_decal class objects - the engine
+decals that render into the terrain surface pass the TI mode samples
+(bullet holes and footprints use the same path).  Object decals
+(Land_DirtPatch_03_F) and particles (drop) do NOT enter that pass;
+the road decals DO.
 
-This version uses the SAME renderer the engine uses for persistent
-ground marks: a `drop` billboard with onSurface, rendered flat on the
-terrain via the UniversalOnSurface particle family.  Painted with our
-feathered heat tile + WHOT-red colour, it enters the TI pass like a
-bullet hole.
+Each stain is 3-5 runway_beton proxy planes, randomly scattered and
+rotated, elongated along the firing axis (the gas vent direction),
+painted with the feathered heat tile.  The blob fades through the tile
+levels over its lifetime, then deletes itself.
 
 The physics side (fnc_applyExhaustHeat -> addGroundStamp) is separate
 and unchanged: it warms the ground temperature field.  This is the
@@ -47,54 +47,64 @@ if (_fLen < 0.01) then {
 } else {
     _facing = _facing vectorMultiply (1 / _fLen);
 };
+private _perp = [-(_facing select 1), _facing select 0, 0];
 
 // Blob size grows with intensity and gas scale: more gas = wider,
 // longer footprint.  Muzzle devices vent forward + sideways, so the
 // stain is longer along the axis than across it.
 private _lenScale = 0.6 + 1.4 * _intensity * _gasScale;
+private _widthScale = 0.4 + 0.7 * _intensity;
 
-// 3-5 decals, random scatter + rotation, elongated forward.  Each is a
-// drop-billboard laid flat on the surface - the TI-visible renderer.
+// Heat band for this intensity (8 tile levels).
+private _heatLevel = round ((1 - _intensity) * 7);
+
+// 3-5 proxy planes, random scatter + rotation, elongated forward.
 private _count = 3 + (floor random 3);
-private _tile = format ["\z\aee\addons\thermal\data\ground\ground_heat_%1.paa", round ((1 - _intensity) * 7)];
+private _decals = [];
 for "_i" from 0 to (_count - 1) do {
     // Scatter: forward-biased (gas vents forward), sideways spread.
     private _fwd = (random 0.8) * _lenScale;
-    private _side = ((random 1.4) - 0.7) * _lenScale;
-    private _perp = [-(_facing select 1), _facing select 0, 0];
+    private _side = ((random 1.4) - 0.7) * _widthScale;
     private _offset = (_facing vectorMultiply _fwd) vectorAdd (_perp vectorMultiply _side);
     private _dPos = _pos vectorAdd _offset;
     _dPos set [2, 0];
 
-    // drop (ParticleArray): the color element carries the WHOT red
-    // fading out; onSurface lays it flat on the terrain like the
-    // engine's own ground decals (bullet holes, mine waves).
-    private _life = 8 + 12 * _intensity;
-    private _size = (0.5 + random 0.6) * (_lenScale min 2);
-    drop [
-        [_tile, 1, 0, 1, 0],           // texture, ntieth, index, count, loop
-        "",                            // animationName
-        "Billboard",                   // particleType
-        0.5,                           // timerPeriod
-        _life,                         // lifetime
-        _dPos,                         // position
-        [0, 0, 0],                     // moveVelocity
-        0,                             // rotationVelocity
-        1,                             // weight
-        1,                             // volume
-        0.5,                           // rubbing
-        [_size, _size],                // size over life
-        [[1, 0.10, 0.20, 0.9], [1, 0.10, 0.20, 0]],  // color: WHOT-red fade
-        [1000, 0],                     // animationSpeed
-        0,                             // randomDirectionPeriod
-        0,                             // randomDirectionIntensity
-        "",                            // onTimerScript
-        "",                            // beforeDestroyScript
-        objNull,                       // object
-        0,                             // angle
-        true,                          // onSurface: lay flat on terrain
-        0                              // bounceOnSurface: no bounce
-    ];
+    private _decal = createSimpleObject ["a3\roads_f\runway\runway_beton_F.p3d", _dPos];
+    _decal setDir (random 360);
+    // Varying scale per decal -> the irregular blob edge.
+    private _s = (0.5 + random 0.6) * (_lenScale min 2);
+    _decal setObjectScale _s;
+    _decal setObjectTexture [0, format ["\z\aee\addons\thermal\data\ground\ground_heat_%1.paa", _heatLevel]];
+    _decals pushBack _decal;
 };
 
-[]
+// Fade over time: cooler tiles as the gas dissipates, then delete.
+// Total life scales with intensity (bigger blast = longer-lived mark).
+private _life = 8 + 12 * _intensity;
+private _steps = 8;
+private _stepTime = _life / _steps;
+for "_s" from 1 to _steps do {
+    [
+        {
+            params ["_decals", "_level"];
+            {
+                if (!isNull _x) then {
+                    _x setObjectTexture [0, format ["\z\aee\addons\thermal\data\ground\ground_heat_%1.paa", _level]];
+                };
+            } forEach _decals;
+        },
+        [_decals, (_heatLevel + _s) min 7],
+        _stepTime * _s
+    ] call CBA_fnc_waitAndExecute;
+};
+
+[
+    {
+        params ["_decals"];
+        { if (!isNull _x) then { deleteVehicle _x }; } forEach _decals;
+    },
+    [_decals],
+    _life + 1
+] call CBA_fnc_waitAndExecute;
+
+_decals
