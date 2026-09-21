@@ -1,1 +1,2 @@
 PREP(penetrationGate);
+PREP(getVehicleArmour);
