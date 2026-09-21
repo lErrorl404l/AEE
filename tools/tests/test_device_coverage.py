@@ -27,6 +27,13 @@ OPTIC_SRC = (
 ).read_text(encoding="utf-8")
 INV = Path("/tmp/equip_extract/device_inventory.txt")
 
+# The device inventory is extracted from the INSTALLED workshop mods
+# (A3TI, TFN, GPNVG etc) - a local artefact, not in CI.  When it is
+# absent the coverage check skips; the device values are still verified
+# by test_device_values.
+if not INV.exists():
+    raise unittest.SkipTest("device inventory not extracted (local-only check)")
+
 # Known noise: config base classes, non-device classes that matched the
 # inventory regex (animations, weapon base classes, unit classes), and
 # OPAQUE mod-maker names that carry no device-family signal (A3TI's
