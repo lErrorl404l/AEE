@@ -60,7 +60,7 @@ class TestInsulationResolver(unittest.TestCase):
         for kw in (
             "acu",
             "cu_",
-            "g3_",
+            "g3",
             "m88",
             "bdu",
             "flora",
@@ -82,6 +82,124 @@ class TestInsulationResolver(unittest.TestCase):
         # A uniform with no family keyword is a combat uniform, not a
         # light shirt - the safe default is 0.75 clo.
         self.assertIn("{ [0.75, 0.70, 0.40, 0.35, 0.93] }", INS)
+
+    def test_camo_patterns_classified(self):
+        # The complete global camo inventory (Camopedia 1152-pattern
+        # dump + the 2010-2026 wave): every pattern name maps to the
+        # combat tier.  Missing keywords fail the gate.
+        src = INS
+        for kw in (
+            "mtp",
+            "btp",
+            "dpm",
+            "multicam",
+            "ocp",
+            "ucp",
+            "m81",
+            "erdl",
+            "marpat",
+            "aor",
+            "dcu",
+            "chocolate",
+            "flecktarn",
+            "tropentarn",
+            "vegetato",
+            "m90",
+            "m05",
+            "pantera",
+            "splinter",
+            "alpen",
+            "lizard",
+            "ttsko",
+            "vsr",
+            "emr",
+            "klmk",
+            "partizan",
+            "surak",
+            "tigerstripe",
+            "tiger",
+            "auscam",
+            "cadpat",
+            "pencott",
+            "atacs",
+            "kryptek",
+            "reed",
+            "woodland",
+            "olive",
+            "brushstroke",
+            "denison",
+            "duck",
+            "jigsaw",
+            "oakleaf",
+            "berezka",
+            "strichtarn",
+            "raindrop",
+            "frogskin",
+            "amoeba",
+            "mottled",
+            "spotted",
+            "pixel",
+            "digital",
+            "mountain",
+            "rocky",
+            "desert",
+            "leopard",
+            "rhodesian",
+            "splinter",
+            "blotch",
+            "splotch",
+            "spot",
+            "stripe",
+            "leaf",
+            "dots",
+            "geometric",
+            "puzzle",
+            "waves",
+            "vertical",
+            "maze",
+            "cellular",
+        ):
+            self.assertIn(
+                f'"{kw}"', src, f"camo-pattern keyword {kw} missing from the classifier"
+            )
+
+    def test_modern_patterns_classified(self):
+        # The 2010-2026 universal-pattern wave (researched): UK MTP,
+        # US OCP/OEF-CP/Scorpion W2, German Multitarn, CADPAT MT,
+        # AMCU, Multiterreno, US4CES, VKPO, MM-25, M-18, M2017, etc.
+        src = INS
+        for kw in (
+            "mtp",
+            "multitarn",
+            "multiterreno",
+            "amcu",
+            "scorpion",
+            "oef",
+            "us4ces",
+            "vkpo",
+            "izlom",
+            "mm14",
+            "mm25",
+            "ratnik",
+            "m18",
+            "m23",
+            "m2017",
+            "loreng",
+            "tiuna",
+            "patriot",
+            "spec4ce",
+        ):
+            self.assertIn(
+                f'"{kw}"',
+                src,
+                f"modern-pattern keyword {kw} missing from the classifier",
+            )
+
+    def test_displayname_signal(self):
+        # The displayName carries the garment type for mods whose
+        # classnames are opaque (the Zulu/UKSF verification).
+        self.assertIn("displayName", INS)
+        self.assertIn("toLower (_uniform", INS)
 
 
 class TestNvgContrast(unittest.TestCase):

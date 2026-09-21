@@ -70,13 +70,17 @@ while {isClass _candidate && _depth < 16} do {
     _depth = _depth + 1;
 };
 
-// Classname family classification.  The family keywords cover the
-// vanilla AND the major mod conventions (verified against RHS USAF/
-// AFRF uniforms: acu/cu/g3/m88/flora/emr = combat, afghanka/6sh122/
-// gorka = winter, abu/flcu = flight, wet/diver, ghillie).  Any
-// uniform class that still carries no family keyword is the generic
-// combat tier (0.75) - the safe default for a uniform.
-private _uni = toLower _uniform;
+// Classname + DISPLAYNAME family classification.  The displayName is
+// the player-facing string (configFile >> CfgWeapons >> class >>
+// displayName) - it carries the garment-type keywords every mod uses,
+// including mods whose CLASSNAMES are opaque (e.g. Zulu's
+// avteg_unione_uniform = "[AvTEG] Uniform (1)", UKSF G3, Winter
+// Parka).  The family keywords cover vanilla + the verified major mod
+// conventions (RHS acu/cu/g3/m88/flora/emr, afghanka/6sh122/gorka,
+// abu/flcu; Zulu/UKSF G3/Smock/Parka).  The combined string is
+// classified, so a uniform with a combat classname AND a winter
+// displayName resolves to the displayName's garment type.
+private _uni = toLower (_uniform + " " + getText (configFile >> "CfgWeapons" >> _uniform >> "displayName"));
 private _res = switch (true) do {
     case (_uni find "ghillie" >= 0):  { [1.20, 0.70, 0.45, 0.30, 0.93] };
     case (_uni find "wet" >= 0 ||
@@ -87,7 +91,16 @@ private _res = switch (true) do {
           _uni find "gorka" >= 0 ||
           _uni find "6sh122" >= 0 ||
           _uni find "afghanka" >= 0 ||
-          _uni find "klmk" >= 0):     { [2.50, 0.55, 0.45, 0.15, 0.93] };
+          _uni find "klmk" >= 0 ||
+          _uni find "cold" >= 0 ||
+          // winter snow patterns + insulating garments
+          _uni find "snow" >= 0 ||
+          _uni find "schneetarn" >= 0 ||
+          _uni find "overwhite" >= 0 ||
+          _uni find "ecwcs" >= 0 ||
+          _uni find "anorak" >= 0 ||
+          _uni find "fleece" >= 0 ||
+          _uni find "insulat" >= 0):     { [2.50, 0.55, 0.45, 0.15, 0.93] };
     case (_uni find "flight" >= 0 ||
           _uni find "pilot" >= 0 ||
           _uni find "abu" >= 0 ||
@@ -96,7 +109,7 @@ private _res = switch (true) do {
           _uni find "fatigues" >= 0 ||
           _uni find "acu" >= 0 ||
           _uni find "cu_" >= 0 ||
-          _uni find "g3_" >= 0 ||
+          _uni find "g3" >= 0 ||
           _uni find "m93" >= 0 ||
           _uni find "m88" >= 0 ||
           _uni find "bdu" >= 0 ||
@@ -104,7 +117,134 @@ private _res = switch (true) do {
           _uni find "emr" >= 0 ||
           _uni find "sso" >= 0 ||
           _uni find "vdv" >= 0 ||
-          _uni find "frog" >= 0):     { [0.75, 0.80, 0.40, 0.35, 0.93] };
+          _uni find "frog" >= 0 ||
+          _uni find "smock" >= 0 ||
+          // camo-pattern names: a camouflage pattern IS a combat
+          // uniform.  The complete global inventory (Camopedia index,
+          // verified): UK MTP/BTP/DPM, US Multicam/OCP/UCP/ERDL/
+          // MARPAT/AOR/DCU/chocolate-chip, Europe Flecktarn/
+          // Tropentarn/Vegetato/M90/M05/wz.93/Pantera/Splinter/
+          // Alpenflage/Lizard, Russia TTsKO/VSR/EMR/Flora/KLMK/
+          // Gorka/Partizan/Surak/Recon, Asia Tigerstripe/AUSCAM/
+          // CADPAT, commercial PenCott/ATACS/Kryptek.
+          _uni find "mtp" >= 0 ||
+          _uni find "btp" >= 0 ||
+          _uni find "dpm" >= 0 ||
+          _uni find "multicam" >= 0 ||
+          _uni find "mcam" >= 0 ||
+          _uni find "ocp" >= 0 ||
+          _uni find "ucp" >= 0 ||
+          _uni find "m81" >= 0 ||
+          _uni find "erdl" >= 0 ||
+          _uni find "marpat" >= 0 ||
+          _uni find "aor" >= 0 ||
+          _uni find "dcu" >= 0 ||
+          _uni find "chocolate" >= 0 ||
+          _uni find "flecktarn" >= 0 ||
+          _uni find "tropentarn" >= 0 ||
+          _uni find "vegetato" >= 0 ||
+          _uni find "m90" >= 0 ||
+          _uni find "m05" >= 0 ||
+          _uni find "pantera" >= 0 ||
+          _uni find "splinter" >= 0 ||
+          _uni find "alpen" >= 0 ||
+          _uni find "lizard" >= 0 ||
+          _uni find "ttsko" >= 0 ||
+          _uni find "vsr" >= 0 ||
+          _uni find "emr" >= 0 ||
+          _uni find "klmk" >= 0 ||
+          _uni find "partizan" >= 0 ||
+          _uni find "surak" >= 0 ||
+          _uni find "tigerstripe" >= 0 ||
+          _uni find "tiger" >= 0 ||
+          _uni find "auscam" >= 0 ||
+          _uni find "cadpat" >= 0 ||
+          _uni find "pencott" >= 0 ||
+          _uni find "atacs" >= 0 ||
+          _uni find "kryptek" >= 0 ||
+          _uni find "reed" >= 0 ||
+          _uni find "woodland" >= 0 ||
+          // the complete camo inventory (Camopedia 1152-pattern dump):
+          // brushstroke, denison, duck, jigsaw, oakleaf, berezka/birch,
+          // strichtarn, raindrop, frogskin, amoeba, spotted/mottled,
+          // digital/pixelated, mountain/rocky, desert/tan, tiger/leopard
+          _uni find "brushstroke" >= 0 ||
+          _uni find "denison" >= 0 ||
+          _uni find "duck" >= 0 ||
+          _uni find "jigsaw" >= 0 ||
+          _uni find "oakleaf" >= 0 ||
+          _uni find "berezka" >= 0 ||
+          _uni find "birch" >= 0 ||
+          _uni find "strichtarn" >= 0 ||
+          _uni find "raindrop" >= 0 ||
+          _uni find "frogskin" >= 0 ||
+          _uni find "amoeba" >= 0 ||
+          _uni find "mottled" >= 0 ||
+          _uni find "spotted" >= 0 ||
+          _uni find "pixel" >= 0 ||
+          _uni find "digital" >= 0 ||
+          // the modern (2010-2026) universal patterns: the
+          // Multicam-family successors adopted worldwide
+          _uni find "multitarn" >= 0 ||
+          _uni find "multiterreno" >= 0 ||
+          _uni find "amcu" >= 0 ||
+          _uni find "scorpion" >= 0 ||
+          _uni find "oef" >= 0 ||
+          _uni find "us4ces" >= 0 ||
+          _uni find "vkpo" >= 0 ||
+          _uni find "izlom" >= 0 ||
+          _uni find "mm14" >= 0 ||
+          _uni find "mm25" >= 0 ||
+          _uni find "ratnik" >= 0 ||
+          _uni find "m18" >= 0 ||
+          _uni find "m23" >= 0 ||
+          _uni find "m2017" >= 0 ||
+          _uni find "loreng" >= 0 ||
+          _uni find "tiuna" >= 0 ||
+          _uni find "patriot" >= 0 ||
+          _uni find "spec4ce" >= 0 ||
+          _uni find "mountain" >= 0 ||
+          _uni find "rocky" >= 0 ||
+          _uni find "desert" >= 0 ||
+          _uni find "tan" >= 0 ||
+          _uni find "leopard" >= 0 ||
+          _uni find "rhodesian" >= 0 ||
+          _uni find "splinter" >= 0 ||
+          // generic pattern descriptors (all combat): blotch/splotch,
+          // spot/spotted, stripe/stripes, leaf/leaves, dots, geometric,
+          // puzzle, waves, vertical stripes, maze, cellular
+          _uni find "blotch" >= 0 ||
+          _uni find "splotch" >= 0 ||
+          _uni find "spot" >= 0 ||
+          _uni find "stripe" >= 0 ||
+          _uni find "leaf" >= 0 ||
+          _uni find "dots" >= 0 ||
+          _uni find "geometric" >= 0 ||
+          _uni find "puzzle" >= 0 ||
+          _uni find "waves" >= 0 ||
+          _uni find "vertical" >= 0 ||
+          _uni find "maze" >= 0 ||
+          _uni find "cellular" >= 0 ||
+          // civilian/military garment types that are combat-wear:
+          // coverall, jumpsuit, overalls, smock, fatigues, field
+          _uni find "coverall" >= 0 ||
+          _uni find "jumpsuit" >= 0 ||
+          _uni find "overall" >= 0 ||
+          // solid colours: an olive/khaki/tan uniform is a combat
+          // uniform (the global standard field colour, e.g. RHS GREF
+          // nat_olive, the Israeli/Olive-field nations)
+          _uni find "olive" >= 0 ||
+          // the final combat fallback: any name still carrying a
+          // pattern/camo marker IS a combat uniform (country-prefixed
+          // generic names, language variants: camuflaje/tarn/tenue,
+          // "national guard pattern" etc - all from the Camopedia dump)
+          _uni find "pattern" >= 0 ||
+          _uni find "camo" >= 0 ||
+          _uni find "camuflaje" >= 0 ||
+          _uni find "camuflado" >= 0 ||
+          _uni find "tarn" >= 0 ||
+          _uni find "tenue" >= 0 ||
+          _uni find "uniform" >= 0):   { [0.75, 0.80, 0.40, 0.35, 0.93] };
     default                           { [0.75, 0.70, 0.40, 0.35, 0.93] };
 };
 
