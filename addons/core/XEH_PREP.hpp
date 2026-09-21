@@ -17,5 +17,6 @@ PREP(updateEnvironment);
 PREP(updateSoilMoisture);
 PREP(getEyeState);
 PREP(getSmoothedWeather);
+PREP(handleCollisionDamage);
 PREP(readState);
 PREP(calculateIlluminance);
