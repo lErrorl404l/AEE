@@ -29,7 +29,9 @@ fades objects at the fog range; matching view distance to it makes them
 consistent and avoids streaming churn.
 
 Input:  none (reads the shared state)
-Output: none (applies setViewDistance on the local player)
+Output: none (applies setViewDistance + setObjectViewDistance on the
+        local player - object distance follows terrain at 1/2, the BI
+        guidance for the "CPU killer" lever, issue #139)
 
 Caveat: script-driven per client, so this runs on each machine's own
 view distance.  Hosts (dedicated server) have no camera; the function
@@ -114,6 +116,38 @@ if (_new != _current) then {
             _t = _t + 0.1;
         };
         setViewDistance (round _to);
+    };
+};
+
+// ─── Object view distance (issue #139) ───────────────────────────────────
+// BI's Performance Optimisation page names OBJECT view distance "the CPU
+// killer" - the dominant cost at range, and their guidance is to set it
+// to 1/3 to 1/2 of terrain view distance.  AEE drives terrain distance
+// from physics (above); this drives object distance to follow, so the
+// engine does not render object detail the eye cannot resolve anyway.
+// The two-parameter form also sets shadow distance (the shadow impact
+// table range 50-200 m maps to ~25% of object distance).
+private _objTarget = (_target * 0.5) min 2000;   // 1/2 terrain, cap 2 km
+private _objCurrent = getObjectViewDistance select 0;
+private _newObj = if ((abs (_objTarget - _objCurrent)) > 200) then {
+    _objCurrent + ((_objTarget - _objCurrent) min 200 max -200)
+} else {
+    _objCurrent
+};
+if (_newObj != _objCurrent) then {
+    _newObj spawn {
+        params ["_to"];
+        private _from = getObjectViewDistance select 0;
+        private _t = 0;
+        while {_t < 4} do {
+            setObjectViewDistance [
+                round (_from + ((_to - _from) * (_t / 4))),
+                round (_to * 0.25)
+            ];
+            sleep 0.1;
+            _t = _t + 0.1;
+        };
+        setObjectViewDistance [round _to, round (_to * 0.25)];
     };
 };
 
