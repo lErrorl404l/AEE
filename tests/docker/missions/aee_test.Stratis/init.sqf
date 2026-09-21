@@ -22,7 +22,7 @@ private _fnBiome = missionNamespace getVariable ["aee_environmental_fnc_getBiome
 private _fnTemp = missionNamespace getVariable ["aee_thermal_fnc_updateTemperature", nil];
 private _fnDust = missionNamespace getVariable ["aee_fx_fnc_applyAtmosphericDust", nil];
 private _fnRain = missionNamespace getVariable ["aee_fx_fnc_applyRainSurfaceDrops", nil];
-private _fnGrain = missionNamespace getVariable ["aee_optics_fnc_applyNightGrain", nil];
+private _fnGrain = missionNamespace getVariable ["aee_nightvision_fnc_applyNightGrain", nil];
 if ((!isNil "_fnEnv") && (!isNil "_fnBiome") && (!isNil "_fnTemp") && (!isNil "_fnDust") && (!isNil "_fnRain") && (!isNil "_fnGrain")) then {
     diag_log text "[PHASE2] [PASS] functions resolved (core, environmental, thermal, fx, optics)";
 } else {
@@ -1398,7 +1398,7 @@ if (_p10Fail == 0) then {
 
     // Case 3: NVG battery drain opt-in.  With the toggle off (default),
     // a cold battery must not drain the NVG battery.
-    private _fnNVG = missionNamespace getVariable ["aee_optics_fnc_applyNVGTubeModel", nil];
+    private _fnNVG = missionNamespace getVariable ["aee_nightvision_fnc_applyNVGTubeModel", nil];
     if (isNil "_fnNVG") then {
         diag_log text "[PHASE25] [FAIL] NVG tube model not compiled";
         _p25Fail = _p25Fail + 1;
