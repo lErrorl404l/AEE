@@ -51,9 +51,10 @@ private _perp = [-(_facing select 1), _facing select 0, 0];
 
 // Blob size grows with intensity and gas scale: more gas = wider,
 // longer footprint.  Muzzle devices vent forward + sideways, so the
-// stain is longer along the axis than across it.
-private _lenScale = 0.6 + 1.4 * _intensity * _gasScale;
-private _widthScale = 0.4 + 0.7 * _intensity;
+// stain is longer along the axis than across it.  These are METRE
+// offsets (the pieces are ~15m natural, scaled ~0.2..0.45).
+private _lenScale = 0.8 + 1.6 * _intensity * _gasScale;
+private _widthScale = 0.5 + 0.8 * _intensity;
 
 // Heat band for this intensity (8 tile levels).
 private _heatLevel = round ((1 - _intensity) * 7);
@@ -72,7 +73,7 @@ for "_i" from 0 to (_count - 1) do {
     private _decal = createSimpleObject ["a3\roads_f\runway\runway_beton_F.p3d", _dPos];
     _decal setDir (random 360);
     // Varying scale per decal -> the irregular blob edge.
-    private _s = (0.5 + random 0.6) * (_lenScale min 2);
+    private _s = (0.25 + random 0.3) * (0.6 + _lenScale * 0.5);   // ~0.15..0.45 scale = 2..7m tiles
     _decal setObjectScale _s;
     _decal setObjectTexture [0, format ["\z\aee\addons\thermal\data\ground\ground_heat_%1.paa", _heatLevel]];
     _decals pushBack _decal;
