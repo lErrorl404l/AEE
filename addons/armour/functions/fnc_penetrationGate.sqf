@@ -69,7 +69,7 @@ private _protectionMM = if (_unit isKindOf "Man") then {
     // [uniform, vest, helmet, goggle, pack, combined] - each entry
     // [weight, armor NIJ 0..3, nir, clo].
     private _equip = [_unit] call EFUNC(physiology,getEquipmentProperties);
-    private _hitSlot = if (_selection == "head" || {_selection == "neck"}) then {
+    private _hitSlot = if (_selection == "head" || _selection == "neck") then {
         _equip select 2   // the helmet
     } else {
         _equip select 1   // the vest (torso)
