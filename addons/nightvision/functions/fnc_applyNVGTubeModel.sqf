@@ -105,7 +105,6 @@ private _moonLight = 0 max (moonIntensity - ((_overcastS * .8) min .275) - (_rai
 // "NVGoggles_OPFOR", "NVGogglesB_*" and "NVGoggles_INDEP".  The broad
 // Gen 1 test must come last or it swallows every other tier.
 private _hmd = hmd _player;
-private _tier = "AUTO";
 
 // Per-tier tube constants derived from measured datasheets.
 //
@@ -147,7 +146,6 @@ private _tier = "AUTO";
 // efficiency × integration time ÷ electron charge), NOT per-tier magic
 // numbers.  Tuning is one knob, not four.
 #define AEE_PHOTON_SCALE 500
-private _sensitivity = 550;
 private _noiseFloor = 0.15;
 private _mtf15 = 0.45;
 private _phosphorTint = [1.3, 1.2, 0.0, 0.9];
@@ -171,10 +169,7 @@ private _dofModeDefault = 1;    // manual by default: real NVGs are manual
 private _dofNearLimit = 0.25;
 private _dofDefaultDist = 15;   // hyperfocal mid-band
 private _dofMaxDist = 300;
-// Tube count used for vignette geometry (lens rim radius).
-// Real devices: PVS-14 monocular (1), PVS-31A/DTNVS binocular (2),
-// GPNVG-18 panoramic quad (4).
-private _tubeCount = 1;
+// Tube count comes from the device classifier (the vignette geometry).
 
 // ─── Device properties (issue #215) ─────────────────────────────────────
 // The device classifier resolves the HMD's researched tube physics
@@ -184,7 +179,7 @@ private _tubeCount = 1;
 // generation it returns.  The tube resolution (lp/mm) scales the MTF:
 // a 64 lp/mm PVS-14 resolves finer than a 28 lp/mm PVS-7 (the MTF at
 // 15 lp/mm is the published contrast-transfer anchor).
-private _dev = [_unit] call FUNC(getNvgDeviceProperties);
+private _dev = [_player] call FUNC(getNvgDeviceProperties);
 private _tier = _dev select 0;
 private _sensitivity = _dev select 1;
 private _tubeCount = _dev select 4;
@@ -247,7 +242,7 @@ missionNamespace setVariable [QGVAR(nvgTubeTier), _tier];
 // lower-resolution tube (28 lp/mm PVS-7, 30 lp/mm Gen 1) resolves less
 // contrast at the same spatial frequency.  The ratio is linear against
 // the reference 64 lp/mm (the published GEN3 anchor).
-private _mtf15 = _mtf15 * (([64.0, _resLpmm] select (_resLpmm > 0)) / 64.0);
+_mtf15 = _mtf15 * (([64.0, _resLpmm] select (_resLpmm > 0)) / 64.0);
 _mtf15 = _mtf15 max 0.15 min 0.65;
 
 // ─── Tube-edge vignette (lens rim) — PHYSICS-derived, not ACE3's tuning ──
