@@ -5,3 +5,6 @@ PREP(calculateCrosswindBallistics);
 PREP(calculateMuzzleVelocityCorrection);
 PREP(calculatePropellantSensitivity);
 PREP(calculateBarrelState);
+PREP(getAmmoProperties);
+PREP(getWeaponProperties);
+PREP(calculateBallisticDrag);
