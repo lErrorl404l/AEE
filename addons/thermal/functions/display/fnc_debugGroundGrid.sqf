@@ -1,30 +1,24 @@
 #include "..\..\script_component.hpp"
 /*
-In-game feathered ground-tile test (issue #204).
+In-game TI-visible ground-tile test (issue #204).
 
-Spawns a 5x5 grid of Land_DirtPatch_03_F decals around the player,
-each painted with a feathered heat tile (ground_heat_XX.paa) at a
-smooth radial gradient: hot at the centre, cold at the edge.  The
-feathered alpha of each tile should blend with its neighbours - the
-transition reads as a continuous ramp, not a grid seam.
+Spawns a 5x5 grid of drop-billboard ground decals (the engine's own
+surface-decal renderer - the same one bullet holes and footprints use,
+which the TI pass reads).  Each tile is painted with a feathered heat
+tile at a smooth radial gradient: hot at the centre, cold at the edge.
+
+The object-decal route (Land_DirtPatch_03_F) failed because those
+render as terrain projections the TI pass ignores.  This tests whether
+the drop-billboard path enters the thermal image.
 
 Usage (debug console):
     [] call aee_thermal_fnc_debugGroundGrid;
-
-Cleans up after _lifetime seconds.
 */
 params [["_lifetime", 60, [0]], ["_radius", 12, [0]], ["_grid", 5, [0]]];
 private _centre = getPosATL player;
 _centre set [2, 0];
 
-private _tiles = [];
 private _step = (2 * _radius) / (_grid - 1);
-private _tileScale = _step * 1.3;   // overlap: feathered edges blend
-private _heatTiles = [];
-for "_i" from 0 to 7 do {
-    _heatTiles pushBack format ["\z\aee\addons\thermal\data\ground\ground_heat_%1.paa", _i];
-};
-
 for "_y" from 0 to (_grid - 1) do {
     for "_x" from 0 to (_grid - 1) do {
         private _dx = (_x - (_grid - 1) / 2) * _step;
@@ -33,27 +27,35 @@ for "_y" from 0 to (_grid - 1) do {
         // radial heat: distance from centre -> 0 hot .. 1 cold
         private _dist = sqrt (_dx * _dx + _dy * _dy) / _radius;
         private _heat = round (7 * (_dist min 1));
-        private _tile = createVehicle ["Land_DirtPatch_03_F", _pos, [], 0, "CAN_COLLIDE"];
-        _tile setDir (random 360);
-        _tile setObjectScale _tileScale;
-        // TI-readable material FIRST (same as fnc_spawnHeatStain): the
-        // decal's own StageTI would render cold grey in the TI pass and
-        // hide the painted tile.  The FPN rvmat's white Stage1 lets the
-        // heat tile show, perlinNoise Stage2 adds the mottle.
-        _tile setObjectMaterial [0, "\z\aee\addons\thermal\data\ti_fpn.rvmat"];
-        _tile setObjectTexture [0, _heatTiles select _heat];
-        _tiles pushBack _tile;
+        private _tile = format ["\z\aee\addons\thermal\data\ground\ground_heat_%1.paa", _heat];
+        private _size = _step * 1.3;   // overlap: feathered edges blend
+        drop [
+            [_tile, 1, 0, 1, 0],
+            "",
+            "Billboard",
+            0.5,
+            _lifetime,
+            _pos,
+            [0, 0, 0],
+            0,
+            1,
+            1,
+            0.5,
+            [_size, _size],
+            [[1, 0.10, 0.20, 0.9], [1, 0.10, 0.20, 0]],
+            [1000, 0],
+            0,
+            0,
+            "",
+            "",
+            objNull,
+            0,
+            true,
+            0
+        ];
     };
 };
 
-systemChat format ["AEE ground grid: %1 tiles at heat %2..%3", count _tiles, _heatTiles select 0, _heatTiles select 7];
+systemChat format ["AEE ground grid: %1x%1 tiles, radius %2m", _grid, _radius];
 
-[
-    {
-        params ["_tiles"];
-        { if (!isNull _x) then { deleteVehicle _x }; } forEach _tiles;
-        systemChat "AEE ground grid: cleaned up";
-    },
-    [_tiles],
-    _lifetime
-] call CBA_fnc_waitAndExecute;
+[]
