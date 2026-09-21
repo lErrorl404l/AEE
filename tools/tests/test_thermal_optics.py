@@ -2707,7 +2707,9 @@ class TestSQFSync(unittest.TestCase):
 
     # ── Thermal contrast (fnc_calculateThermalContrast.sqf) ──
     def test_contrast_span_is_8(self):
-        self._assert_in_sqf("fnc_calculateThermalContrast.sqf", ["/ 8"], "delta-T span", addon="thermal")
+        self._assert_in_sqf(
+            "fnc_calculateThermalContrast.sqf", ["/ 8"], "delta-T span", addon="thermal"
+        )
 
     def test_contrast_attenuation_constants(self):
         self._assert_in_sqf(
@@ -3625,6 +3627,8 @@ class TestSQFSync(unittest.TestCase):
             "fnc_isPositionShadowed.sqf",
             [
                 "lineIntersectsSurfaces",
+                '"GEOM", "NONE"',
+                "returnUnique",
                 "currentSunAzimuth",
                 "currentSunElevation",
                 "QGVAR(shadowCache)",

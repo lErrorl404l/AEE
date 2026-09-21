@@ -73,8 +73,8 @@ private _hits = lineIntersectsSurfaces [
     _origin, _end,
     objNull, objNull,
     true, 1,    // geometry LOD, max results
-    "GEOM",
-    true
+    "GEOM", "NONE",
+    true        // returnUnique (2.10+)
 ];
 private _shadowed = count _hits > 0;
 if (_shadowed && {count _hits > 0}) then {

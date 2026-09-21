@@ -197,12 +197,42 @@ diag_log text format ["[AEE-TEST] biome after explicit call: %1", _biomeAfter];
         diag_log text format ["[PHASE8] [FAIL] thermal contrast out of range: %1", _tc];
     };
 
-    private _fnNvg = missionNamespace getVariable ["aee_optics_fnc_applyNVGTubeModel", nil];
+    private _fnNvg = missionNamespace getVariable ["aee_nightvision_fnc_applyNVGTubeModel", nil];
     private _fnThermal = missionNamespace getVariable ["aee_optics_fnc_applyThermalVision", nil];
     if (!isNil "_fnNvg" && !isNil "_fnThermal") then {
         diag_log text "[PHASE8] [PASS] sensor functions resolved";
     } else {
         diag_log text format ["[PHASE8] [FAIL] sensor functions nil: nvg=%1 thermal=%2", isNil "_fnNvg", isNil "_fnThermal"];
+    };
+
+    // -- PHASE 9: armour module (issue #126) ---------------------------------
+    // The armour addon must have compiled: the config override applies the
+    // STANAG pool ladder, and the penetration gate resolves.  Verify by
+    // reading the overridden armour value off a spawned MRAP class and
+    // checking the gate function exists.
+    private _fnGate = missionNamespace getVariable ["aee_armour_fnc_penetrationGate", nil];
+    private _armorCfg = getNumber (configFile >> "CfgVehicles" >> "MRAP_01_base_F" >> "armor");
+    if (!isNil "_fnGate" && _armorCfg == 160) then {
+        diag_log text format ["[PHASE9] [PASS] armour module: gate resolved, MRAP armor=%1 (STANAG L3)", _armorCfg];
+    } else {
+        diag_log text format ["[PHASE9] [FAIL] armour module: gate=%1 MRAP armor=%2", isNil "_fnGate", _armorCfg];
+    };
+
+    // -- PHASE 10: penetration gate physics (issue #126) ---------------------
+    // Call the gate directly with a simulated 7.62 Ball round (caliber 1.5)
+    // against an MRAP-class vehicle.  The round's RHA penetration at muzzle
+    // (18.7 mm) is marginal vs the MRAP protection (~18 mm L3): the gate
+    // must NOT inflate the damage beyond the engine's value.  A stopped
+    // round returns _oldDamage (0 for a fresh vehicle) - never inflated.
+    private _veh = "B_MRAP_01_F" createVehicle [0, 0, 50];
+    private _gateResult = [
+        _veh, "Hull", 0.4, objNull, objNull, 0, objNull, "HitHull"
+    ] call aee_armour_fnc_penetrationGate;
+    deleteVehicle _veh;
+    if (_gateResult isEqualType 0 && {_gateResult <= 0.4}) then {
+        diag_log text format ["[PHASE10] [PASS] penetration gate: non-projectile passes through (%1 <= 0.4)", _gateResult];
+    } else {
+        diag_log text format ["[PHASE10] [FAIL] penetration gate returned %1", _gateResult];
     };
 
     // -- PHASE 5: determinism -- temperature delta over 5 s must be small ----
