@@ -17,16 +17,15 @@ ADDON = false;
     if (_projectile isEqualTo objNull) exitWith {};
 
     // Round kinetic energy (J): E = 0.5*m*v^2.  Mass from CfgAmmo; the
-    // velocity from the magazine's initSpeed (falls back to a 5.56 NATO
-    // baseline when the class cannot be resolved).
+    // velocity from the REAL BALLISTICS DATABASE (issue #167): the
+    // weapon's real MV at its real barrel (M4A1 862, M16A4 940 m/s -
+    // the seed's measured values, NOT the game's initSpeed which is a
+    // balance value).  Falls back to a 5.56 NATO baseline when the
+    // class cannot be resolved.
     private _mass = getNumber (configFile >> "CfgAmmo" >> _ammo >> "hit") * 0.5;
     if (_mass <= 0) then { _mass = 4.0 / 1000; };          // ~4 g baseline
-    private _initSpeed = 905;
-    {
-        if (getText (configFile >> "CfgMagazines" >> configName _x >> "ammo") == _ammo) exitWith {
-            _initSpeed = getNumber (configFile >> "CfgMagazines" >> configName _x >> "initSpeed");
-        };
-    } forEach ((configFile >> "CfgMagazines") call BIS_fnc_returnChildren);
+    private _weaponProps = [_weapon] call FUNC(getWeaponProperties);
+    private _initSpeed = _weaponProps select 6;   // the real MV at this barrel
     if (_initSpeed <= 0) then { _initSpeed = 905; };
     private _energyJ = 0.5 * _mass * (_initSpeed ^ 2);
 
