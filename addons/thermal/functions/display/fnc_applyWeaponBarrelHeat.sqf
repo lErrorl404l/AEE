@@ -32,8 +32,7 @@ params ["_weapon", ["_ammo", ""]];
 if (!hasInterface) exitWith { 0 };
 
 // Heat state: 0..1 barrel heat, persisted in missionNamespace.
-private _heat = missionNamespace getVariable [QGVAR(barrelHeat), 0];
-if !(_heat isEqualType 0) then { _heat = 0; };
+private _heat = [QGVAR(barrelHeat), 0, 1] call EFUNC(core,readState);
 
 // ─── Fired: add heat per round ────────────────────────────────────────────
 // Each round adds ~0.05 heat (a 30-round mag takes the barrel from cold

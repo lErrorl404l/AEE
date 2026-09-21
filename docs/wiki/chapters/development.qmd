@@ -56,6 +56,45 @@ pattern.
 Localisation uses a per-addon `stringtable.xml`. Keys use the form
 `STR_AEE_<Component>_<Key>`.
 
+### Shared state reads
+
+State is read from `missionNamespace` with `QGVAR`/`QEGVAR` keys. Every
+read must type-guard against a missing or garbage value - an unguarded
+`getVariable [key, 0]` fallback is the #154 bug class (a nil read that
+a code path treats as "gate off", silently disabling a system).
+
+Use `aee_core_fnc_readState` for the guarded read:
+
+```sqf
+private _heat = [QGVAR(barrelHeat), 0.3, 1, true] call EFUNC(core,readState);
+```
+
+Arguments: key, default, type (0 any / 1 number / 2 string / 3 array /
+4 bool), and the `_neverZero` flag. Pass `true` for the last argument
+when the value is a GATE - a 0 result is replaced by the default so a
+missing state cannot silently kill the system it gates.
+
+### Per-frame cache convention
+
+An expensive per-frame read (eye position, illuminance, smoothed
+weather) is computed once per frame and cached by `diag_frameNo`, with
+N consumers reading the cached value. The `getEyeState` and
+`getSmoothedWeather` functions are the models:
+
+```sqf
+private _frame = diag_frameNo;
+private _cache = missionNamespace getVariable [QGVAR(cacheName), []];
+if (count _cache >= 2 && {(_cache select 0) == _frame}) exitWith {
+    _cache select 1
+};
+// ... compute ...
+missionNamespace setVariable [QGVAR(cacheName), [_frame, _result]];
+_result
+```
+
+New systems that read an expensive state once per frame should follow
+this pattern instead of recomputing per consumer.
+
 ### Settings
 
 AEE registers its settings at mission start with `CBA_fnc_addSetting`. The
