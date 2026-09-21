@@ -1,0 +1,16 @@
+// Heat-level 06 tile material (issue #204).
+// TI colour in ambient/diffuse - the TI pass reads the material colour,
+// not the Stage1 texture.  Band 06/7, q=0.86.
+ambient[]={0.8571428571428571,0.08571428571428572,0.17142857142857143,1};
+diffuse[]={0.8571428571428571,0.08571428571428572,0.17142857142857143,1};
+forcedDiffuse[]={0.8571428571428571,0.08571428571428572,0.17142857142857143,0};
+emmisive[]={0,0,0,0};
+specular[]={0,0,0,0};
+specularPower=1;
+PixelShaderID="Normal";
+VertexShaderID="Basic";
+class Stage1
+{
+    texture="#(rgb,8,8,3)color(0.8571428571428571,0.08571428571428572,0.17142857142857143,1)";
+    uvSource="tex";
+};
