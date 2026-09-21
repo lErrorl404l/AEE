@@ -1468,9 +1468,9 @@ if (_hGrain >= 0) then {
 // The engine handles the NVG cutout (circular tube view).  We overlay only
 // the focus readout HUD.  No mask, fibre, glow, or rain overlay — the
 // engine and other NVG mods handle tube geometry.
-private _disp = uiNamespace getVariable [QEGVAR(optics,titleDisplay), displayNull];
+private _disp = uiNamespace getVariable [QGVAR(titleDisplay), displayNull];
 if !(missionNamespace getVariable [QGVAR(nvgDisplayUp), false]) then {
-    (["aee_nightvision_nvg_title"] call BIS_fnc_rscLayer) cutRsc [QEGVAR(optics,nvgTitle), "PLAIN", 1, false];
+    (["aee_nightvision_nvg_title"] call BIS_fnc_rscLayer) cutRsc [QGVAR(nvgTitle), "PLAIN", 1, false];
     missionNamespace setVariable [QGVAR(nvgDisplayUp), true];
 };
 if (!isNull _disp) then {

@@ -63,9 +63,9 @@ class TestSafeReadPattern(unittest.TestCase):
 
     def test_hardened_reads_carry_defaults(self):
         # Spot-check that the converted sites have a default argument.
-        wbgt = Path("addons/thermal/functions/environment/fnc_calculateWBGT.sqf").read_text(
-            encoding="utf-8"
-        )
+        wbgt = Path(
+            "addons/thermal/functions/environment/fnc_calculateWBGT.sqf"
+        ).read_text(encoding="utf-8")
         self.assertIn(
             "missionNamespace getVariable [QEGVAR(core,currentTemperature), 15]", wbgt
         )
@@ -79,9 +79,9 @@ class TestSourcedConstants(unittest.TestCase):
 
     def test_heat_index_noaa_steadman(self):
         # NOAA/NWS heat index equation (Rothfusz 1990), all coefficients.
-        text = Path("addons/thermal/functions/environment/fnc_calculateHeatIndex.sqf").read_text(
-            encoding="utf-8"
-        )
+        text = Path(
+            "addons/thermal/functions/environment/fnc_calculateHeatIndex.sqf"
+        ).read_text(encoding="utf-8")
         for coeff in (
             "42.379",
             "2.04901523",
@@ -97,9 +97,9 @@ class TestSourcedConstants(unittest.TestCase):
 
     def test_wbgt_stull_2011(self):
         # Stull 2011 wet-bulb constants + ISO 7243 weighting.
-        text = Path("addons/thermal/functions/environment/fnc_calculateWBGT.sqf").read_text(
-            encoding="utf-8"
-        )
+        text = Path(
+            "addons/thermal/functions/environment/fnc_calculateWBGT.sqf"
+        ).read_text(encoding="utf-8")
         for const in (
             "0.151977",
             "8.313659",
@@ -127,7 +127,7 @@ class TestSourcedConstants(unittest.TestCase):
 
     def test_thermal_contrast_flir_fom(self):
         text = Path(
-            "addons/optics/functions/sensor/fnc_calculateThermalContrast.sqf"
+            "addons/thermal/functions/sensor/fnc_calculateThermalContrast.sqf"
         ).read_text(encoding="utf-8")
         self.assertIn("8 °C", text)  # delta-T full-contrast figure of merit
         self.assertIn("0.05", text)  # microbolometer NETD
@@ -153,9 +153,9 @@ class TestTwoNodeSolver(unittest.TestCase):
         self.assertIn("solveTwoNodeSelection", prep)
 
     def test_gagge_physiology_constants(self):
-        text = Path("addons/thermal/functions/solver/fnc_solveTwoNodeSelection.sqf").read_text(
-            encoding="utf-8"
-        )
+        text = Path(
+            "addons/thermal/functions/solver/fnc_solveTwoNodeSelection.sqf"
+        ).read_text(encoding="utf-8")
         # Blood-flow coupling: K_min 5.28, blood cp 4186.
         self.assertIn("5.28", text)
         self.assertIn("4186", text)
@@ -170,9 +170,9 @@ class TestTwoNodeSolver(unittest.TestCase):
         self.assertIn("8.6", text)
 
     def test_two_node_physics_patterns(self):
-        text = Path("addons/thermal/functions/solver/fnc_solveTwoNodeSelection.sqf").read_text(
-            encoding="utf-8"
-        )
+        text = Path(
+            "addons/thermal/functions/solver/fnc_solveTwoNodeSelection.sqf"
+        ).read_text(encoding="utf-8")
         # Analytic core solve (linear residual) - the damped 2x2 Newton
         # oscillated (traced to 1363 C).
         self.assertIn("Analytic core solution", text)
@@ -188,9 +188,9 @@ class TestTwoNodeSolver(unittest.TestCase):
         self.assertIn("1.5", text)
 
     def test_inert_conduction_not_l_char(self):
-        text = Path("addons/thermal/functions/solver/fnc_solveTwoNodeSelection.sqf").read_text(
-            encoding="utf-8"
-        )
+        text = Path(
+            "addons/thermal/functions/solver/fnc_solveTwoNodeSelection.sqf"
+        ).read_text(encoding="utf-8")
         # The #124 audit bug: conduction must use L_cond (wall thickness),
         # not L_char (convection plate dim).
         self.assertIn("_lCond", text)
@@ -206,9 +206,9 @@ class TestWaterThermal(unittest.TestCase):
     def test_boutelier_water_coefficients(self):
         from pathlib import Path
 
-        text = Path("addons/thermal/functions/solver/fnc_solveTwoNodeSelection.sqf").read_text(
-            encoding="utf-8"
-        )
+        text = Path(
+            "addons/thermal/functions/solver/fnc_solveTwoNodeSelection.sqf"
+        ).read_text(encoding="utf-8")
         # Boutelier, Bougues & Timbal 1977 (partitional calorimetry):
         # still water 43 (neutral) / 54 (cold+shivering) W/m2K; stirred
         # water 272.9*v^0.5 / 497.1*v^0.65.
@@ -221,9 +221,9 @@ class TestWaterThermal(unittest.TestCase):
     def test_immersion_exchange_target_is_water(self):
         from pathlib import Path
 
-        text = Path("addons/thermal/functions/solver/fnc_solveTwoNodeSelection.sqf").read_text(
-            encoding="utf-8"
-        )
+        text = Path(
+            "addons/thermal/functions/solver/fnc_solveTwoNodeSelection.sqf"
+        ).read_text(encoding="utf-8")
         # An immersed surface exchanges against the WATER temperature,
         # not air or the air-side MRT.
         self.assertIn("_exchK", text)
@@ -233,9 +233,9 @@ class TestWaterThermal(unittest.TestCase):
     def test_rain_forces_wettedness(self):
         from pathlib import Path
 
-        text = Path("addons/thermal/functions/solver/fnc_solveTwoNodeSelection.sqf").read_text(
-            encoding="utf-8"
-        )
+        text = Path(
+            "addons/thermal/functions/solver/fnc_solveTwoNodeSelection.sqf"
+        ).read_text(encoding="utf-8")
         # Rain is EXTERNAL water (not regulated sweat): drives the wet
         # state up, saturating at high rates.
         self.assertIn("_rain", text)
@@ -244,9 +244,9 @@ class TestWaterThermal(unittest.TestCase):
     def test_immersion_detected_native(self):
         from pathlib import Path
 
-        text = Path("addons/thermal/functions/display/fnc_applySelectionThermal.sqf").read_text(
-            encoding="utf-8"
-        )
+        text = Path(
+            "addons/thermal/functions/display/fnc_applySelectionThermal.sqf"
+        ).read_text(encoding="utf-8")
         # Immersion via native engine state: getPosASL z < 0 (submerged)
         # + surfaceIsWater - no fabricated water-speed state.
         self.assertIn("getPosASL _obj", text)
@@ -406,9 +406,9 @@ class TestFrostThermal(unittest.TestCase):
     def test_frost_physics_patterns(self):
         from pathlib import Path
 
-        text = Path("addons/thermal/functions/ground/fnc_calculateFrostState.sqf").read_text(
-            encoding="utf-8"
-        )
+        text = Path(
+            "addons/thermal/functions/ground/fnc_calculateFrostState.sqf"
+        ).read_text(encoding="utf-8")
         # Latent heat of fusion (IAPWS-95 / Incropera).
         self.assertIn("334e3", text)
         # Magnus over ICE (frost point, not Bolton water).

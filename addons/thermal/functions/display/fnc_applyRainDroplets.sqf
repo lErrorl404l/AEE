@@ -91,7 +91,7 @@ if (isNull _src) then {
         // [1,0,1,1] or yellow [1,1,0,1]) to make droplets unmistakable
         // against the green NVG image while verifying the emitter works.
         missionNamespace getVariable [QGVAR(rainDropColor),
-            if (missionNamespace getVariable [QEGVAR(nightvision,nvgDebug), false]) then {
+            if (missionNamespace getVariable [QGVAR(thermalDebug), false]) then {
                 [[1, 0, 1, 1], [1, 0, 1, 0.8]]
             } else {
                 [[1, 1, 1, 1], [1, 1, 1, 0.8]]
@@ -144,7 +144,7 @@ _src setParticleParams [
     0,                                        // rubbing: no wind (on lens)
     [0.05, 0.08],                             // size: 5-8 cm
     missionNamespace getVariable [QGVAR(rainDropColor),
-        if (missionNamespace getVariable [QEGVAR(nightvision,nvgDebug), false]) then {
+        if (missionNamespace getVariable [QGVAR(thermalDebug), false]) then {
             [[1, 0, 1, 1], [1, 0, 1, 0.8]]
         } else {
             [[1, 1, 1, 1], [1, 1, 1, 0.8]]

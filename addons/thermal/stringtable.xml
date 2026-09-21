@@ -9,6 +9,14 @@
             <Original>Fusion Always On</Original>
             <English>Fusion Always On</English>
         </Key>
+        <Key ID="STR_AEE_Thermal_thermalDebug_Description">
+            <Original>Log thermal system diagnostics (second sun, building paint, AGC) to the RPT. Thermal's own debug flag - not nightvision's.</Original>
+            <English>Log thermal system diagnostics (second sun, building paint, AGC) to the RPT. Thermal's own debug flag - not nightvision's.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_thermalDebug_Name">
+            <Original>Thermal Diagnostics</Original>
+            <English>Thermal Diagnostics</English>
+        </Key>
         <Key ID="STR_AEE_Thermal_thermalFPN_Description">
             <Original>Add fixed-pattern noise (static spatial mottle) over painted thermal objects - the perlinNoise detail stage real LWIR sensors show on top of the temporal FilmGrain.</Original>
             <English>Add fixed-pattern noise (static spatial mottle) over painted thermal objects - the perlinNoise detail stage real LWIR sensors show on top of the temporal FilmGrain.</English>

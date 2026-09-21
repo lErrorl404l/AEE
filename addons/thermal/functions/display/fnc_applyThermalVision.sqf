@@ -76,7 +76,7 @@ if (currentVisionMode _player != 2) exitWith {
 // Defensive: a nil or non-numeric stored contrast (bad variable state)
 // must not propagate into ppEffectAdjust — "Type Number, expected Number"
 // otherwise fires every tick.  Default to full contrast.
-private _contrast = missionNamespace getVariable [QEGVAR(optics,currentThermalContrast), 1];
+private _contrast = missionNamespace getVariable [QGVAR(currentThermalContrast), 1];
 if !(_contrast isEqualType 0) then { _contrast = 1; };
 _contrast = 0 max _contrast min 1;
 
@@ -318,7 +318,7 @@ if (_hVig >= 0) then {
 
 // Diagnostics: set aee_nightvision_nvgDebug = true in the debug console to log
 // every thermal tick's handles and params to the .rpt.
-if (missionNamespace getVariable [QEGVAR(nightvision,nvgDebug), false]) then {
+if (missionNamespace getVariable [QGVAR(thermalDebug), false]) then {
     diag_log text format [
         "[AEE] Thermal tick | visMode=%1 contrast=%2 crossover=%3 | handles CC=%4 grain=%5 blur=%6 | CC params %7 | grain=%8 blur=%9",
         currentVisionMode _player,
