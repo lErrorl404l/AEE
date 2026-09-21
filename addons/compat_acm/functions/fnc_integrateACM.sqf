@@ -23,8 +23,13 @@ if (isNil "ACM_CBRN_fnc_updateExposureEffects") exitWith {};
 private _contamination = missionNamespace getVariable [QEGVAR(core,cbrnPersistence), 0];
 private _hazard = "ACM_CBRN_chemical_sarin_";
 
-// Normalise the decay modifier (0.225..2.1) to a 0..1 contamination level
+// Normalise the decay modifier (0.225..2.1) to a 0..1 contamination level.
+// The unit's CBRN kit (issue #119, the respirator + suit in the gear
+// slots) blocks part of the agent: a full kit scales the exposure by
+// 0.05, no kit by 1.0.
 private _normalised = ((_contamination - 0.225) / (2.1 - 0.225)) max 0 min 1;
+private _protection = [_unit] call EFUNC(environmental,getCbrnProtection);
+_normalised = _normalised * (1 - _protection);
 
 if ((_normalised > (missionNamespace getVariable [QEGVAR(compat_acm,CBRNContamThreshold), 0.01]))) then {
     _unit setVariable [(_hazard + "Contaminated_State"), true, true];

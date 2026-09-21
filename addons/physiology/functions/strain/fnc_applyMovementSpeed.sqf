@@ -47,45 +47,58 @@ private _fatigue = missionNamespace getVariable [QGVAR(fatigueFactor), 1.0];
 if !(_fatigue isEqualType 0) then { _fatigue = 1.0; };
 _fatigue = _fatigue max 0.3 min 1.0;
 
-// The carried load + insulation: the equipment library's per-slot
-// signature.  The combined entry (index 5) holds the summed weight
-// (uniform + vest + helmet + goggles + pack + contents) in kg and the
-// combined clo.  A 30 kg combat load slows the soldier (the issue #119
-// library feeds #212).  Light patrol ~15 kg -> full speed, overloaded
-// ~45 kg -> 0.85.
+// The carried load: the equipment library's per-slot signature.  The
+// combined entry (index 5) holds the summed weight (uniform + vest +
+// helmet + goggles + pack + contents) in kg.  A 30 kg combat load
+// slows the soldier (the issue #119 library feeds #212).  Light patrol
+// ~15 kg -> full speed, overloaded ~45 kg -> 0.85.
 private _equip = [_unit] call FUNC(getEquipmentProperties);
 private _combined = _equip select 5;
 private _load = _combined select 0;
-private _clo = _combined select 3;
 
 // Clothing insulation shifts the felt wind chill toward the air
 // temperature (the wind-chill index is for exposed skin; clo 1.0 is a
 // full combat ensemble).  The insulation correction is a simple
 // exponential: at clo 0.75 (combat uniform) the soldier feels ~65 % of
-// the wind-chill deficit; at clo 2.5 (winter parka) ~15 %.  The unit's
-// own dexterity is computed from the felt temperature.  The dexterity
-// curve is 90 + 2*WCT (Heus 1995), floor 10, on the same 0..100 scale
-// the cold-weather model publishes.
+// the wind-chill deficit; at clo 2.5 (winter parka) ~15 %.
 private _airTemp = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 if !(_airTemp isEqualType 0) then { _airTemp = 15; };
 private _wct = missionNamespace getVariable [QEGVAR(core,windChillTemp), _airTemp];
 if !(_wct isEqualType 0) then { _wct = _airTemp; };
-private _feltWct = _airTemp + (_wct - _airTemp) * (exp (-_clo));
 
-// Gloves (worn with the uniform - no separate engine slot) protect the
-// hands specifically, and dexterity is a HAND function.  The Daanen
-// 2009 dexterity equations are WCET-based; glove insulation (Gonzalez
-// 1998 measured: light 0.86, heavy 1.05, mitten 1.46 clo) raises the
-// hand's effective temperature, so a gloved soldier keeps more manual
-// dexterity at the same wind chill.  At heavy glove insulation the
-// dexterity floor rises from 10 toward ~35 (a gloved hand stays
-// workable in cold that would numb a bare one).
+// Dexterity is a HAND function.  The hand feels its OWN temperature -
+// the wind chill insulated by the handwear (Gonzalez 1998 measured:
+// light duty glove 0.86 clo, heavy duty 1.05, Arctic mitten 1.46).
 private _gloveClo = [_unit] call FUNC(getGloveProperties);
-private _dexterity = (90 + 2 * _feltWct) max 10 min 100;
-if (_gloveClo > 0.1) then {
-    _dexterity = _dexterity + (_gloveClo * 15) min 25;
-    _dexterity = _dexterity max 35 min 100;
+private _handWct = _airTemp + (_wct - _airTemp) * (exp (-_gloveClo));
+
+// Cold-exposure duration: Daanen 2009 (Ind Health 47:262) - manual
+// dexterity loss = 0.162 x WCET x exposure^0.38.  The loss grows
+// sub-linearly with how long the hand has been cold.  Accumulate the
+// exposure on the 1 s coupling loop; reset when the hand warms.
+private _exposure = _unit getVariable [QGVAR(coldExposureSec), 0];
+if (_handWct < 0) then {
+    _unit setVariable [QGVAR(coldExposureSec), _exposure + 1];
+    _exposure = _exposure + 1;
+} else {
+    _unit setVariable [QGVAR(coldExposureSec), 0];
+    _exposure = 0;
 };
+private _exposureMin = _exposure / 60;
+private _daanenLoss = 0.162 * (0 max -_handWct) * (_exposureMin ^ 0.38);
+
+// Glove thickness penalty (Bensel 1993): even in warmth, thick gloves
+// cost fine motor control - test time rises linearly with thickness,
+// grip anchor -31 % at 3.1 mm.  Thickness maps from the handwear clo
+// (light ~1 mm, heavy ~2 mm, mitten ~3.5 mm); bare hands have none.
+private _benselLoss = if (_gloveClo > 0.1) then {
+    linearConversion [0.86, 1.46, _gloveClo, 1.0, 3.5, true] * 10
+} else { 0 };
+
+// Net dexterity: the Heus 1995 curve on the HAND temperature, minus
+// the Daanen cold-exposure loss and the Bensel glove penalty.  The
+// floor is 10 (severely numb), ceiling 100 (warm, bare).
+private _dexterity = ((90 + 2 * _handWct) - _daanenLoss - _benselLoss) max 10 min 100;
 
 // Each factor maps to a speed multiplier; the weakest governs.
 private _fatigueSpeed = linearConversion [0.3, 1.0, _fatigue, 0.75, 1.0, true];

@@ -65,6 +65,7 @@ def main():
         "tools/tests/test_material.py",
         "tools/tests/test_equipment_classifier.py",
         "tools/tests/test_device_values.py",
+        "tools/tests/test_cbrn.py",
     ]
     # Only run suites that exist (module suites are added incrementally).
     existing = [s for s in suites if os.path.exists(os.path.join(ROOT, s))]
