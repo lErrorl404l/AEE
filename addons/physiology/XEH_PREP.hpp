@@ -14,6 +14,7 @@ PREPS(strain,calculateColdWeatherPerformance);
 PREPS(strain,integrateSwayFactor);
 PREPS(strain,applyMovementSpeed);
 PREPS(clothing,getClothingInsulation);
+PREPS(clothing,getNirPerSelection);
 PREPS(clothing,getNvgContrast);
 PREPS(state,zh16cStep);
 PREPS(dive,getDiveState);
