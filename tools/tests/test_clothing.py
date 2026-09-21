@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Clothing insulation + camouflage tests (issue #119).
 
-Locks the researched clothing physics in fnc_getClothingInsulation and
+Locks the researched clothing physics in fnc_getCamouflageProperties and
 fnc_getNvgContrast: the per-uniform config values (ASHRAE 55 / ISO
 11079 clo, DLA NIR reflectance), the classname-family fallback, the
 CfgWeapons-inheritance walk (the modded-uniform mechanism), and the NVG
@@ -13,7 +13,7 @@ from pathlib import Path
 
 REPO = Path(__file__).parents[2]
 INS = (
-    REPO / "addons/physiology/functions/clothing/fnc_getClothingInsulation.sqf"
+    REPO / "addons/physiology/functions/clothing/fnc_getCamouflageProperties.sqf"
 ).read_text(encoding="utf-8")
 NVG = (REPO / "addons/physiology/functions/clothing/fnc_getNvgContrast.sqf").read_text(
     encoding="utf-8"
@@ -47,41 +47,68 @@ class TestInsulationResolver(unittest.TestCase):
 
     def test_classname_family_fallback(self):
         # The dynamic fallback for uniforms without a config entry.
+        # The camo patterns classify in the camouflage classifier; the
+        # garment types (winter/flight/combat) classify insulation in
+        # the uniform classifier.
+        uni = (
+            REPO / "addons/physiology/functions/clothing/fnc_getUniformProperties.sqf"
+        ).read_text(encoding="utf-8")
         for kw in ("ghillie", "winter", "flight", "combat"):
-            self.assertIn(f'"{kw}"', INS)
+            self.assertIn(f'"{kw}"', uni)
         self.assertIn("toLower", INS)
 
     def test_rhs_uniforms_classified(self):
         # Verified against the installed RHS USAF/AFRF uniform configs:
         # every rhs_uniform_* item must hit a family tier, never the
-        # default light-shirt guess.  The family keywords in the source
-        # cover the RHS conventions.
+        # default light-shirt guess.  The CAMO-PATTERN words live in the
+        # camouflage classifier; the GARMENT-TYPE words (acu, g3, m88,
+        # bdu, frog, abu, sso, vdv, g2/g4) classify insulation in the
+        # uniform classifier.
         src = INS
+        uni = (
+            REPO / "addons/physiology/functions/clothing/fnc_getUniformProperties.sqf"
+        ).read_text(encoding="utf-8")
         for kw in (
             "acu",
             "cu_",
             "g3",
+            "g2",
+            "g4",
+            "m93",
             "m88",
             "bdu",
-            "flora",
-            "emr",
+            "frog",
+            "abu",
+            "flcu",
             "sso",
             "vdv",
-            "frog",
             "afghanka",
             "6sh122",
             "gorka",
-            "abu",
-            "flcu",
+            "klmk",
         ):
             self.assertIn(
-                f'"{kw}"', src, f"RHS family keyword {kw} missing from the classifier"
+                f'"{kw}"',
+                uni,
+                f"RHS garment keyword {kw} missing from the insulation classifier",
+            )
+        for kw in ("flora", "emr"):
+            self.assertIn(
+                f'"{kw}"',
+                src,
+                f"RHS pattern keyword {kw} missing from the camouflage classifier",
             )
 
     def test_default_is_combat_tier(self):
-        # A uniform with no family keyword is a combat uniform, not a
-        # light shirt - the safe default is 0.75 clo.
-        self.assertIn("{ [0.75, 0.70, 0.40, 0.35, 0.93] }", INS)
+        # An unclassified uniform defaults to the light-shirt tier
+        # (0.50 clo); a combat uniform is caught by the garment/pattern
+        # tier (0.75).  The default lives in the uniform insulation
+        # classifier (the camouflage classifier carries the pattern
+        # default).
+        uni = (
+            REPO / "addons/physiology/functions/clothing/fnc_getUniformProperties.sqf"
+        ).read_text(encoding="utf-8")
+        self.assertIn("default                                     { 0.50 }", uni)
 
     def test_camo_patterns_classified(self):
         # The complete global camo inventory (Camopedia 1152-pattern
@@ -238,9 +265,13 @@ class TestEquipmentLibrary(unittest.TestCase):
     carry the family signal.  These tests lock the researched IRL
     families (equipment-library.md) to their classifier tiers."""
 
+    CLOTH = REPO / "addons/physiology/functions/clothing"
     EQ = (
-        REPO / "addons/physiology/functions/clothing/fnc_getEquipmentProperties.sqf"
-    ).read_text(encoding="utf-8")
+        (CLOTH / "fnc_getVestProperties.sqf").read_text(encoding="utf-8")
+        + (CLOTH / "fnc_getHelmetProperties.sqf").read_text(encoding="utf-8")
+        + (CLOTH / "fnc_getPackProperties.sqf").read_text(encoding="utf-8")
+        + (CLOTH / "fnc_getEquipmentProperties.sqf").read_text(encoding="utf-8")
+    )
 
     def test_vest_classification(self):
         # The family fallback covers vanilla + RHS + historical vests.
@@ -315,10 +346,10 @@ class TestEquipmentLibrary(unittest.TestCase):
         # ADA619773), 6B47 ~1.0 kg (Wikipedia), steel helmets unrated
         # (1.2 kg family mean), ECH 1.05 kg (USMC PIS).
         src = self.EQ
-        self.assertIn("{ [1.9, 2, 0.40, 0.06] }", src)   # PASGT
-        self.assertIn("{ [1.0, 2, 0.40, 0.06] }", src)   # 6B47
+        self.assertIn("{ [1.9, 2, 0.40, 0.06] }", src)  # PASGT
+        self.assertIn("{ [1.0, 2, 0.40, 0.06] }", src)  # 6B47
         self.assertIn("{ [1.05, 2, 0.40, 0.06] }", src)  # ECH
-        self.assertIn("{ [1.2, 0, 0.40, 0.04] }", src)   # steel, unrated
+        self.assertIn("{ [1.2, 0, 0.40, 0.04] }", src)  # steel, unrated
 
     def test_backpack_classification(self):
         src = self.EQ
@@ -353,10 +384,15 @@ class TestEquipmentLibrary(unittest.TestCase):
         self.assertNotIn("_fnResolve", src)
 
     def test_combine_weight_armour_nir_clo(self):
+        # The orchestrator combines the per-slot tuples: weight sums,
+        # armour = max, NIR averaged, clo sums.
         src = self.EQ
-        self.assertIn("_weight", src)
-        self.assertIn("_armor = (_vest select 1) max", src)
-        self.assertIn("_clo = _uniformClo", src)
+        self.assertIn("getUniformProperties", src)
+        self.assertIn("getVestProperties", src)
+        self.assertIn("getHelmetProperties", src)
+        self.assertIn("getPackProperties", src)
+        self.assertIn("_combined", src)
+        self.assertIn("_combined set [2", src)
 
 
 class TestEquipmentMath(unittest.TestCase):
@@ -373,6 +409,6 @@ class TestEquipmentMath(unittest.TestCase):
     def test_helmet_family_tier_mapping(self):
         # A 6B47 classname must hit the Russian aramid tier.
         src = (
-            REPO / "addons/physiology/functions/clothing/fnc_getEquipmentProperties.sqf"
+            REPO / "addons/physiology/functions/clothing/fnc_getHelmetProperties.sqf"
         ).read_text(encoding="utf-8")
         self.assertIn('"6b47"', src)

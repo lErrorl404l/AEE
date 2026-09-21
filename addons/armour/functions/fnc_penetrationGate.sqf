@@ -63,13 +63,23 @@ private _penMM = ((_speed / 1000) * _caliber * 15) max 0;
 // uses the equipment library's vest NIJ level (issue #119) - a plate
 // carrier (NIJ III) stops rifle ball, an unprotected soldier does not.
 private _protectionMM = if (_unit isKindOf "Man") then {
+    // The per-slot equipment library (issue #119): the protection
+    // depends on WHERE the round hits.  A head hit faces the helmet's
+    // armour; a torso hit faces the vest's.  The library returns
+    // [uniform, vest, helmet, goggle, pack, combined] - each entry
+    // [weight, armor NIJ 0..3, nir, clo].
     private _equip = [_unit] call EFUNC(physiology,getEquipmentProperties);
-    private _nij = _equip select 1;   // 0 none, 1 IIA, 2 IIIA, 3 III+plates
+    private _hitSlot = if (_selection == "head" || {_selection == "neck"}) then {
+        _equip select 2   // the helmet
+    } else {
+        _equip select 1   // the vest (torso)
+    };
+    private _nij = _hitSlot select 1;
     switch (_nij) do {
         case 3: { 20 };   // ESAPI plates: stops rifle ball + 7.62 AP
         case 2: { 10 };   // IIIA soft: stops pistol + fragments
         case 1: { 6 };    // IIA soft: stops pistol only
-        default { 3 };    // no vest: soft tissue
+        default { 3 };    // no armour on that slot: soft tissue
     };
 } else {
     private _armorPool = getNumber (configOf _unit >> "armor");

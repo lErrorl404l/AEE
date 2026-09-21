@@ -2,7 +2,7 @@
 /*
 Per-selection NIR reflectance (issue #119, the rvmat material split).
 
-The uniform NIR (fnc_getClothingInsulation) covers the BODY.  But the
+The uniform NIR (fnc_getCamouflageProperties) covers the BODY.  But the
 player model's selections have different materials - a plate carrier
 has cloth pouches, metal magazine pouches, plastic buckles - and each
 reflects NIR differently.  The NVG sees the AVERAGE of the visible

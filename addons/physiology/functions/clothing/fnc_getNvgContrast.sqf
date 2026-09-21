@@ -11,7 +11,7 @@ hole against the NIR-bright background.
   C_eff      = C * (1 - camo_coeff)
   P_detect   = 1 / (1 + (N50/N)^k)
 
-The uniform's NIR reflectance comes from fnc_getClothingInsulation.
+The uniform's NIR reflectance comes from fnc_getCamouflageProperties.
 The result feeds the NVG visibility (the optics module reads it to
 scale the soldier's brightness in the NVG tube).
 
@@ -25,8 +25,8 @@ Returns the NVG contrast coefficient 0..1:
 params [["_unit", player, [objNull]]];
 if (isNull _unit) exitWith { 0.0 };
 
-private _clothing = [_unit] call FUNC(getClothingInsulation);
-private _nirUniform = _clothing select 2;
+private _camo = [_unit] call FUNC(getCamouflageProperties);
+private _nirUniform = _camo select 1;
 
 // The per-selection NIR (uniform + vest + helmet materials, area-
 // weighted) is the signature the NVG tube ACTUALLY sees - a plate
