@@ -217,3 +217,17 @@
     true,
     {}
 ] call CBA_fnc_addSetting;
+
+// ── Stamina-to-animation coupling (issue #212) ─────────────────────────────
+// Couples the physiology state (fatigue, cold, load) to movement speed via
+// setAnimSpeedCoef - an exhausted/hypothermic/overloaded soldier moves
+// slower.  ACE3 advanced fatigue owns its own coef and is guarded.
+[
+    QGVAR(movementSpeed),
+    "CHECKBOX",
+    [LLSTRING(MovementSpeed_Name), LLSTRING(MovementSpeed_Description)],
+    ["AEE Physiology", "Movement"],
+    true,
+    true,
+    {}
+] call CBA_fnc_addSetting;

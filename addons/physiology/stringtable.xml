@@ -113,6 +113,14 @@
             <Original>Hypoxia Recovery Rate</Original>
             <English>Hypoxia Recovery Rate</English>
         </Key>
+        <Key ID="STR_AEE_Physiology_MovementSpeed_Description">
+            <Original>Couple fatigue, cold and carried load to movement speed via setAnimSpeedCoef - an exhausted, hypothermic or overloaded soldier moves slower (issue #212)</Original>
+            <English>Couple fatigue, cold and carried load to movement speed via setAnimSpeedCoef - an exhausted, hypothermic or overloaded soldier moves slower (issue #212)</English>
+        </Key>
+        <Key ID="STR_AEE_Physiology_MovementSpeed_Name">
+            <Original>Movement Speed Coupling</Original>
+            <English>Movement Speed Coupling</English>
+        </Key>
         <Key ID="STR_AEE_Physiology_RapidAscentThreshold_Description">
             <Original>Climb rate (m per tick) that triggers acute mountain sickness</Original>
             <English>Climb rate (m per tick) that triggers acute mountain sickness</English>

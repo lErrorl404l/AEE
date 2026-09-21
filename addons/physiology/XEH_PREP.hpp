@@ -12,6 +12,7 @@ PREPS(state,updateFatigueState);
 PREPS(strain,calculateShooterStability);
 PREPS(strain,calculateColdWeatherPerformance);
 PREPS(strain,integrateSwayFactor);
+PREPS(strain,applyMovementSpeed);
 PREPS(state,zh16cStep);
 PREPS(dive,getDiveState);
 PREPS(dive,updateDiveState);

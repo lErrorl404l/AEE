@@ -2314,6 +2314,25 @@ private _p29Pass = 0;
         diag_log text format ["[PHASE42] [FAIL] penetration gate returned %1", _gateResult];
     };
 
+    // -- PHASE 43: stamina-to-animation coupling (issue #212) ----------------
+    private _fnMove = missionNamespace getVariable ["aee_physiology_fnc_applyMovementSpeed", nil];
+    if (!isNil "_fnMove") then {
+        diag_log text "[PHASE43] [PASS] movement-speed function resolved";
+    } else {
+        diag_log text "[PHASE43] [FAIL] movement-speed function nil";
+    };
+
+    // -- PHASE 44: movement-speed factor bounds (issue #212) ------------------
+    // Fresh state -> factor near 1.0; the coupling clamps to 0.75..1.0.
+    missionNamespace setVariable ["aee_physiology_fatigueFactor", 1.0];
+    missionNamespace setVariable ["aee_core_dexterityPercent", 1.0];
+    private _coef = [player] call aee_physiology_fnc_applyMovementSpeed;
+    if (_coef isEqualType 0 && {_coef >= 0.75} && {_coef <= 1.0}) then {
+        diag_log text format ["[PHASE44] [PASS] movement-speed factor in range: %1", _coef];
+    } else {
+        diag_log text format ["[PHASE44] [FAIL] movement-speed factor out of range: %1", _coef];
+    };
+
 diag_log text "[AEE-TEST] DONE";
         }, [_t1], 5] call CBA_fnc_waitAndExecute;
     }, [], 7] call CBA_fnc_waitAndExecute;
