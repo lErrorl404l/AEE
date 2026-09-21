@@ -240,6 +240,16 @@ NVG_SQF = os.path.join(
     "fnc_applyNVGTubeModel.sqf",
 )
 
+# The per-tier sensitivity lives in the DEVICE CLASSIFIER (issue #215):
+# [generation, sensitivity, resolution, weightKg, tubeCount, fovDeg].
+NVG_DEV_SQF = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+    "addons",
+    "nightvision",
+    "functions",
+    "fnc_getNvgDeviceProperties.sqf",
+)
+
 # Ranges from the BIS wiki Post_Process_Effects tables and ACE3 ST_NVG_*.
 # (name, min, max, source)
 VALUE_RANGES = [
@@ -363,14 +373,17 @@ def check_mtf_monotonic_in_source():
 
 
 def check_sensitivity_datasheet():
-    """Per-tier photocathode sensitivity in the SQF must match the
-    datasheet µA/lm values (Wikipedia "Image intensifier").  This blocks
-    regression to arbitrary scales whose ratios are wrong."""
-    src = _read_nvg_source()
+    """Per-tier photocathode sensitivity in the DEVICE CLASSIFIER must
+    match the datasheet µA/lm values (Wikipedia "Image intensifier").
+    This blocks regression to arbitrary scales whose ratios are wrong.
+    The classifier tiers carry [generation, sensitivity, ...] tuples."""
+    with open(NVG_DEV_SQF, encoding="utf-8", errors="replace") as fh:
+        dev_src = fh.read()
     found = {}
     for tier_name in ("PVS31", "GEN3", "GEN2", "GEN1"):
-        m = re.search(rf'_tier = "{tier_name}";\s*_sensitivity = ([0-9.]+);', src)
-        assert m, f"{tier_name} sensitivity not found"
+        # The tier is a quoted string; the sensitivity is the next number.
+        m = re.search(rf'\["{tier_name}", ([0-9.]+),', dev_src)
+        assert m, f"{tier_name} sensitivity not found in the device classifier"
         found[tier_name] = float(m.group(1))
 
     for tier, expected in SENSITIVITY.items():
