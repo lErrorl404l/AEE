@@ -1,23 +1,20 @@
 #include "..\..\script_component.hpp"
 /*
-Organic muzzle-blast ground stain (issue #204) - TI-visible version.
+Organic muzzle-blast ground stain (issue #204) - WORKING mechanism.
+
+The terrain paint is Land_DirtPatch_03_F decals + setObjectTexture
+["usertexture", tile] - the decal's engine-projected texture hook,
+verified in-game to read differently in thermals from the ground.
 
 A real muzzle blast does NOT leave a perfect circular heat mark.  The
 hot gas vents forward and sideways from the muzzle device, the shape is
 irregular, and it depends on the weapon, the gas volume, the barrel, and
 the muzzle brake - then it grows, fades, and dissipates.
 
-Render path (verified in-game): road-LOD proxy planes.  The runway
-pieces (runway_beton_F.p3d) are land_decal class objects - the engine
-decals that render into the terrain surface pass the TI mode samples
-(bullet holes and footprints use the same path).  Object decals
-(Land_DirtPatch_03_F) and particles (drop) do NOT enter that pass;
-the road decals DO.
-
-Each stain is 3-5 runway_beton proxy planes, randomly scattered and
-rotated, elongated along the firing axis (the gas vent direction),
-painted with the feathered heat tile.  The blob fades through the tile
-levels over its lifetime, then deletes itself.
+Each stain is 3-5 DirtPatch decals, randomly scattered and rotated,
+elongated along the firing axis (the gas vent direction), painted with
+the feathered heat tile.  The blob fades through the tile levels over
+its lifetime, then deletes itself.
 
 The physics side (fnc_applyExhaustHeat -> addGroundStamp) is separate
 and unchanged: it warms the ground temperature field.  This is the
@@ -49,17 +46,17 @@ if (_fLen < 0.01) then {
 };
 private _perp = [-(_facing select 1), _facing select 0, 0];
 
-// Blob size grows with intensity and gas scale: more gas = wider,
-// longer footprint.  Muzzle devices vent forward + sideways, so the
-// stain is longer along the axis than across it.  These are METRE
-// offsets (the pieces are ~15m natural, scaled ~0.2..0.45).
+// Blob size in METRES: more gas = wider, longer footprint.  Muzzle
+// devices vent forward + sideways, so the stain is longer along the
+// axis than across it.
 private _lenScale = 0.8 + 1.6 * _intensity * _gasScale;
 private _widthScale = 0.5 + 0.8 * _intensity;
 
 // Heat band for this intensity (8 tile levels).
 private _heatLevel = round ((1 - _intensity) * 7);
 
-// 3-5 proxy planes, random scatter + rotation, elongated forward.
+// 3-5 DirtPatch decals, random scatter + rotation, elongated forward.
+// Scale ~0.25..0.5 (2.5..5m pieces at the 10m natural size).
 private _count = 3 + (floor random 3);
 private _decals = [];
 for "_i" from 0 to (_count - 1) do {
@@ -70,12 +67,11 @@ for "_i" from 0 to (_count - 1) do {
     private _dPos = _pos vectorAdd _offset;
     _dPos set [2, 0];
 
-    private _decal = createSimpleObject ["a3\roads_f\runway\runway_beton_F.p3d", _dPos];
+    private _decal = createVehicle ["Land_DirtPatch_03_F", _dPos, [], 0, "CAN_COLLIDE"];
     _decal setDir (random 360);
-    // Varying scale per decal -> the irregular blob edge.
-    private _s = (0.25 + random 0.3) * (0.6 + _lenScale * 0.5);   // ~0.15..0.45 scale = 2..7m tiles
+    private _s = (0.25 + random 0.25) * (0.6 + _lenScale * 0.3);
     _decal setObjectScale _s;
-    _decal setObjectTexture [0, format ["\z\aee\addons\thermal\data\ground\ground_heat_%1.paa", _heatLevel]];
+    _decal setObjectTexture ["usertexture", format ["\z\aee\addons\thermal\data\ground\ground_heat_%1.paa", _heatLevel]];
     _decals pushBack _decal;
 };
 
@@ -90,7 +86,7 @@ for "_s" from 1 to _steps do {
             params ["_decals", "_level"];
             {
                 if (!isNull _x) then {
-                    _x setObjectTexture [0, format ["\z\aee\addons\thermal\data\ground\ground_heat_%1.paa", _level]];
+                    _x setObjectTexture ["usertexture", format ["\z\aee\addons\thermal\data\ground\ground_heat_%1.paa", _level]];
                 };
             } forEach _decals;
         },
