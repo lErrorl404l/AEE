@@ -116,16 +116,19 @@ if (_T < 5) then {
 _contrast = _contrast max 0 min 1;
 
 // ─── NETD-based noise floor ───────────────────────────────────────────────
-// NETD 0.05 °C for a modern uncooled microbolometer.  Noise grows with
-// range squared: the atmospheric path adds scintillation and absorption
-// noise.  Range is the sensor's working range, proxied by the engine
-// view distance; a dedicated server has no player, so fall back to
-// 1000 m.
+// NETD (Noise Equivalent Temperature Difference) is the device's
+// sensitivity: ~0.025 C cooled InSb/MCT, ~0.05 C uncooled microbolometer
+// (issue #215: the thermal device classifier resolves the mounted
+// device's researched NETD).  Noise grows with range squared: the
+// atmospheric path adds scintillation and absorption noise.  Range is
+// the sensor's working range, proxied by the engine view distance; a
+// dedicated server has no player, so fall back to 1000 m.
 private _range = viewDistance;
 if !(_range isEqualType 0) then { _range = 1000; };
 _range = _range max 100 min 5000;
 
-private _netd = 0.05;
+private _netd = ([player, (vehicle player)] call EFUNC(thermal,getThermalDeviceProperties)) select 0;
+if !(_netd isEqualType 0) then { _netd = 0.05; };
 private _noise = _netd * ((_range / 1000) ^ 2);
 _noise = _noise * (1 + _humidity * 0.5);
 _noise = _noise max 0 min 1;

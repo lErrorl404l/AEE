@@ -19,6 +19,7 @@ PREPS(sensor,calculateSolarGlare);
 PREPS(sensor,calculateVehicleHeatShimmer);
 PREPS(sensor,classifyNight);
 PREPS(sensor,getStarCatalog);
+PREPS(sensor,getOpticProperties);
 PREPS(vision,managePostProcess);
 PREPS(vision,calculateViewDistance);
 PREPS(vision,ppEffectCreate);

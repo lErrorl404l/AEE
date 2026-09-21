@@ -8,6 +8,7 @@ PREPS(solver,calculateObjectTemperature);
 PREPS(surface,calculateClothingInsulation);
 PREPS(environment,updateTemperature);
 PREPS(sensor,calculateThermalContrast);
+PREPS(sensor,getThermalDeviceProperties);
 PREPS(surface,getMaterialThermal);
 PREPS(surface,getSolarAbsorptance);
 PREPS(surface,getSelectionMaterials);
