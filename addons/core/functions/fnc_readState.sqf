@@ -37,7 +37,7 @@ if (_type == 3) then { _ok = _val isEqualType []; };
 if (_type == 4) then { _ok = _val isEqualType true; };
 if !(_ok) exitWith { _default };
 
-if (_neverZero && {_val isEqualType 0} && {_val == 0}) exitWith { _default };
-if (_neverZero && {_val isEqualType []} && {count _val == 0}) exitWith { _default };
+if (_neverZero && _val isEqualType 0 && _val == 0) exitWith { _default };
+if (_neverZero && _val isEqualType [] && count _val == 0) exitWith { _default };
 
 _val
