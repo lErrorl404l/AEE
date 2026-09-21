@@ -127,9 +127,19 @@ private _range = viewDistance;
 if !(_range isEqualType 0) then { _range = 1000; };
 _range = _range max 100 min 5000;
 
-private _netd = ([player, (vehicle player)] call EFUNC(thermal,getThermalDeviceProperties)) select 0;
+private _dev = [player, (vehicle player)] call EFUNC(thermal,getThermalDeviceProperties);
+private _netd = _dev select 0;
 if !(_netd isEqualType 0) then { _netd = 0.05; };
 private _noise = _netd * ((_range / 1000) ^ 2);
+
+// Detector resolution: a low-res detector samples the scene coarsely,
+// adding spatial noise on top of the NETD floor.  The reference is the
+// 640x480 uncooled class (the normalised detector area scales the
+// noise up for a smaller array).
+private _resX = _dev select 1;
+if !(_resX isEqualType 0) then { _resX = 640; };
+_noise = _noise * (640 / (_resX max 1));
+
 _noise = _noise * (1 + _humidity * 0.5);
 _noise = _noise max 0 min 1;
 
