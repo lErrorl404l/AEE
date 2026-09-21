@@ -344,3 +344,14 @@
     true,
     {}
 ] call CBA_fnc_addSetting;
+
+// ── Collision diagnostics (issue #172) ────────────────────────────────────
+[
+    QGVAR(collisionDebug),
+    "CHECKBOX",
+    [LLSTRING(collisionDebug_Name), LLSTRING(collisionDebug_Description)],
+    ["AEE", "FX"],
+    false,
+    true,
+    {}
+] call CBA_fnc_addSetting;

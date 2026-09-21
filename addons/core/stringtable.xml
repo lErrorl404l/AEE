@@ -97,6 +97,14 @@
             <Original>Clothing Insulation</Original>
             <English>Clothing Insulation</English>
         </Key>
+        <Key ID="STR_AEE_Core_collisionDebug_Description">
+            <Original>Log vehicle collision impact energy and damage scaling to the RPT (issue #172)</Original>
+            <English>Log vehicle collision impact energy and damage scaling to the RPT (issue #172)</English>
+        </Key>
+        <Key ID="STR_AEE_Core_collisionDebug_Name">
+            <Original>Collision Damage Diagnostics</Original>
+            <English>Collision Damage Diagnostics</English>
+        </Key>
         <Key ID="STR_AEE_Core_diagnostic_Description">
             <Original>Enable verbose diagnostic logging (diag_log) for environment state changes</Original>
             <English>Enable verbose diagnostic logging (diag_log) for environment state changes</English>
