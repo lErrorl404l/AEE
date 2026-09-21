@@ -89,7 +89,7 @@ private _AMMO_FAMILIES = createHashMapFromArray [
     ["12gauge",[470, 0.711, 400, 0.508, 300, 0.060, 0, 18.5, 28.3, 1]]
 ];
 private _base = _AMMO_FAMILIES get _family;
-if (isNil "_base") exitWith { [_ammo, 0, 0] call FUNC(getAmmoProperties) };   // fallback
+if (isNil "_base") exitWith { [_ammo] call FUNC(getAmmoProperties) };   // fallback
 
 // ─── The velocity-length curve ───────────────────────────────────────────
 private _refMV = _base select 0;
