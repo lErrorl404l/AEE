@@ -48,8 +48,11 @@ in a few hits, and an MBT survives rifle/HEI.  Per-class:
   truck:             L2/L3 (unarmoured cab, cargo flatbed)
   MRAP:              L2/L3 (stops rifle ball, dies to AP/12.7)
   IFV/APC:           L4/L5 (stops 12.7, dies to 25mm/AP/ATGM)
-  MBT:               L6 (only APFSDS/ATGM-class defeats)
+MBT:               L6 (only APFSDS/ATGM-class defeats)
 */
+
+#include "CfgEventHandlers.hpp"
+
 class CfgVehicles {
     // --- STANAG L1: light skin (kept near vanilla) -----------------------
     class Car_F;                   // base class
