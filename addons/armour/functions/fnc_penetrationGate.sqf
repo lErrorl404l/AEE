@@ -82,14 +82,27 @@ private _protectionMM = if (_unit isKindOf "Man") then {
         default { 3 };    // no armour on that slot: soft tissue
     };
 } else {
-    private _armorPool = getNumber (configOf _unit >> "armor");
-    switch (true) do {
-        case (_armorPool >= 1000): { 100 };  // MBT: ~L6 (APFSDS-class)
-        case (_armorPool >= 500):  { 45 };   // IFV/APC tracked: ~L4/L5
-        case (_armorPool >= 300):  { 32 };   // IFV/APC wheeled: ~L4
-        case (_armorPool >= 130):  { 18 };   // MRAP: ~L3
-        case (_armorPool >= 70):   { 8 };    // truck: ~L2
-        default                   { 4 };    // light skin: ~L1
+    // The real armour database (issue #168): the STANAG 4569 level and
+    // the RHA-equivalent thickness from the researched vehicle table.
+    // The database is authoritative when it resolves the class; the
+    // armour-pool ladder is the fallback for unresolved classes.
+    private _vehArmour = [_unit] call FUNC(getVehicleArmour);
+    private _rha = _vehArmour select 1;
+    if (_rha > 0) then {
+        // The researched RHA equivalent: L2 ~20 mm, L4 ~60 mm,
+        // L5 ~120 mm, L6 ~650 mm.  The gate compares the round's
+        // penetration against this.
+        _rha
+    } else {
+        private _armorPool = getNumber (configOf _unit >> "armor");
+        switch (true) do {
+            case (_armorPool >= 1000): { 100 };  // MBT: ~L6 (APFSDS-class)
+            case (_armorPool >= 500):  { 45 };   // IFV/APC tracked: ~L4/L5
+            case (_armorPool >= 300):  { 32 };   // IFV/APC wheeled: ~L4
+            case (_armorPool >= 130):  { 18 };   // MRAP: ~L3
+            case (_armorPool >= 70):   { 8 };    // light protected: ~L2
+            default                    { 4 };    // soft skin
+        };
     };
 };
 

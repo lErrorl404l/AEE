@@ -70,6 +70,7 @@ def main():
         "tools/tests/test_device_wiring.py",
         "tools/tests/test_ammo_database.py",
         "tools/tests/test_ballistic_drag.py",
+        "tools/tests/test_armour_database.py",
     ]
     # Only run suites that exist (module suites are added incrementally).
     existing = [s for s in suites if os.path.exists(os.path.join(ROOT, s))]
