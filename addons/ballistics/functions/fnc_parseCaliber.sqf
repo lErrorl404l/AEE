@@ -74,14 +74,18 @@ private _CALIBERS = [
     [20.0,  "20mm",        ["20mm", "20x102"]]
 ];
 
+// Layer 1 result (empty = no alias matched; the numeric conversion follows).
+private _aliasResult = [];
 {
+    private _caliberRow = _x;        // [caliberMm, canonicalName, aliases]
     private _aliases = _x select 2;
     {
         if (_n find _x >= 0) exitWith {
-            [_x select 0, _x select 1, 1]
+            _aliasResult = [_caliberRow select 0, _caliberRow select 1, 1];
         };
     } forEach _aliases;
 } forEach _CALIBERS;
+if (_aliasResult isNotEqualTo []) exitWith { _aliasResult };
 
 // ─── Layer 2: the numeric conversion ─────────────────────────────────────
 // A numeric token in the name, interpreted in the implied units:

@@ -12,3 +12,5 @@ PREP(deriveCartridge);
 PREP(measureBarrel);
 PREP(parseCaliber);
 PREP(matchTokens);
+PREP(getBulletShape);
+PREP(calculateBallisticCoefficient);

@@ -60,25 +60,17 @@ if (_tempC <= -900) then {
     if !(_tempC isEqualType 0) then { _tempC = 21; };
 };
 
-// ─── Ammo muzzle velocity from the REAL BALLISTICS DATABASE ─────────────
-// The real MV at the real barrel (issue #167: M4A1 862, M16A4 940,
-// the seed's measured values) replaces the game's CfgMagazines
-// initSpeed - the correction is normalised to the REAL velocity, not a
-// balance value.  Falls back to a 5.56 NATO baseline when the weapon
-// class cannot be resolved.
+// ─── Ammo muzzle velocity from CfgMagazines (initSpeed) ─────────────────
+// initSpeed lives on the magazine; resolve the first magazine whose ammo
+// class matches.  BIS_fnc_returnChildren yields config entries, so read
+// the class name with configName before indexing.  The correction is
+// normalised to the game's initSpeed (the round's actual flight velocity),
+// NOT the database MV - the temperature ratio is what matters, and the
+// game value is the consistent reference the Fired EH applies.
 private _initSpeed = 0;
 {
     if (getText (configFile >> "CfgMagazines" >> configName _x >> "ammo") == _ammo) exitWith {
-        // The firing weapon is unknown here (the correction is called
-        // with the ammo only), so the database resolves the ammo's
-        // cartridge MV at the reference barrel (the seed's ammo-level
-        // real MV; the weapon-level MV lives in the Fired EH).
-        private _ammoMV = ([_ammo] call FUNC(getAmmoProperties)) select 0;
-        if (_ammoMV > 0) then {
-            _initSpeed = _ammoMV;
-        } else {
-            _initSpeed = getNumber (configFile >> "CfgMagazines" >> configName _x >> "initSpeed");
-        };
+        _initSpeed = getNumber (configFile >> "CfgMagazines" >> configName _x >> "initSpeed");
     };
 } forEach ((configFile >> "CfgMagazines") call BIS_fnc_returnChildren);
 if (_initSpeed <= 0) exitWith { _initSpeed = 0; 1.0 };   // no MV data: no correction

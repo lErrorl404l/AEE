@@ -145,12 +145,12 @@ def main():
     lines.append("// AUTO-GENERATED from the ABE seed (issue #167).")
     lines.append("// Do not edit by hand - run tools/validation/gen_weapon_table.py")
     lines.append("// Source: real_weapons.tsv (2,295 real weapons).")
-    lines.append("// Each family: [barrelM, mvAtBarrel, twistM, pressureMPa] anchors")
-    lines.append("// (the barrel-length -> MV curve, the seed's measured values).")
-    lines.append("private _WEAPONS = createHashMapFromArray [")
+    lines.append("// Flat rows: [family, barrelM, mvAtBarrel, twistM, pressureMPa]")
+    lines.append("// (the barrel-length -> MV curve anchors, one row per point).")
+    lines.append("private _WEAPON_ROWS = [")
     for fam, anchors in sorted(weapons.items()):
-        arr = json.dumps(anchors)
-        lines.append(f'    ["{fam}", {arr}],')
+        for b, mv, tw, pr in anchors:
+            lines.append(f'    ["{fam}", {b}, {mv}, {tw}, {pr}],')
     lines.append("];")
     lines.append("")
     # The family keyword list (the classifier scan, longest first).
@@ -161,7 +161,7 @@ def main():
     lines.append("")
 
     src = OUT.read_text(encoding="utf-8")
-    start = src.find("private _WEAPONS = createHashMapFromArray [")
+    start = src.find("private _WEAPON_ROWS = [")
     end = src.find("// ─── The family resolution")
     if start < 0 or end < 0:
         raise SystemExit("splice markers not found in the SQF")

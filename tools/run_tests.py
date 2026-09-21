@@ -71,6 +71,7 @@ def main():
         "tools/tests/test_ammo_database.py",
         "tools/tests/test_ballistic_drag.py",
         "tools/tests/test_interior_ballistics.py",
+        "tools/tests/test_ballistic_coefficient.py",
         "tools/tests/test_armour_database.py",
         "tools/tests/test_derivation.py",
     ]
