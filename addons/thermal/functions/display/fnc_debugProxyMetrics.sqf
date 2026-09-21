@@ -1,35 +1,45 @@
 #include "..\..\script_component.hpp"
 /*
-Proxy-plane metrics diagnostic (issue #204) - v3.
+Proxy-plane metrics diagnostic (issue #204) - v4.
 
-road_W10_L9 is 10x9m (ideal tile) but texBefore=[] - road decals have
-NO texture selection, setObjectTexture cannot paint them.  Their
-material is baked into the model at the decal level.
+Road decals are fully material-baked: runway_beton and road_W10_L9 both
+report tex=[] AND mats=[] - no texture or material slot is scriptable.
+The terrain overlay needs a piece with SWAPPABLE materials (the FPN
+object test proved material swaps render in TI).
 
-This tests setObjectMaterial instead: swap the piece's material to the
-FPN rvmat (white Stage1 + perlinNoise Stage2 - the material the object
-FPN test proved renders in TI).  If the swap applies and shows white +
-mottle in TI, the material-swap route is the terrain overlay: spawn
-road_W10_L9 pieces, swap to a heat-colour rvmat, done.
-
-The rvmat's ambient/diffuse IS the heat colour - no texture slot needed.
+Candidates: Land_ClutterCutter_large_F (the crater mods' decal) and a
+flat Land_ object.  This spawns each, measures it, and reports
+getObjectTextures + getObjectMaterials so we see which one can be
+painted or material-swapped.
 
 Usage (debug console):
     [] call aee_thermal_fnc_debugProxyMetrics;
 */
 private _pos = player modelToWorld [0, 3, 0];
 _pos set [2, 0];
-private _plane = createSimpleObject ["a3\roads_f\Test_RoadsA\road_W10_L9.p3d", _pos];
-private _mats = getObjectMaterials _plane;
-private _matCount = count _mats;
-// swap every material slot to the FPN rvmat
+private _candidates = ["Land_ClutterCutter_large_F", "Land_HelipadSquare_F", "Land_Runway_20_F"];
 {
-    if (_x isEqualType "") then {
-        _plane setObjectMaterial [_forEachIndex, "\z\aee\addons\thermal\data\ti_fpn.rvmat"];
+    private _cls = _x;
+    private _obj = objNull;
+    if (_cls find ".p3d" >= 0) then {
+        _obj = createSimpleObject [_cls, _pos];
+    } else {
+        _obj = createVehicle [_cls, _pos, [], 0, "NONE"];
     };
-} forEach _mats;
-private _matsAfter = getObjectMaterials _plane;
-systemChat format ["AEE metrics: road_W10_L9 mats=%1 after=%2", _matCount, _matsAfter];
-diag_log format ["[AEE][METRICS] road_W10_L9 matCount=%1 matsBefore=%2 matsAfter=%3", _matCount, _mats, _matsAfter];
+    if (!isNull _obj) then {
+        private _bb = boundingBoxReal _obj;
+        private _size = [(_bb select 1 select 0) - (_bb select 0 select 0),
+                         (_bb select 1 select 1) - (_bb select 0 select 1),
+                         (_bb select 1 select 2) - (_bb select 0 select 2)];
+        private _texs = getObjectTextures _obj;
+        private _mats = getObjectMaterials _obj;
+        systemChat format ["AEE metrics: %1 size=%2x%3 tex=%4 mats=%5", _cls, _size select 0, _size select 1, count _texs, count _mats];
+        diag_log format ["[AEE][METRICS] %1 size=%2 tex=%3 mats=%4", _cls, _size, _texs, _mats];
+        deleteVehicle _obj;
+    } else {
+        systemChat format ["AEE metrics: %1 FAILED to spawn", _cls];
+        diag_log format ["[AEE][METRICS] %1 spawn FAILED", _cls];
+    };
+} forEach _candidates;
 
 []
