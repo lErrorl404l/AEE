@@ -79,6 +79,9 @@ private _horizonM = 1000 * sqrt (2 * 6371 * (_eyeRel / 1000));   // km -> m
 // 11.3 km, the horizon) confirms the driver must NOT hard-cap at the
 // human-detection range.  Johnson is documented in the issue and left
 // to the player's optics; the driver caps by horizon and clarity only.
+// (Optic magnification does NOT extend the scene caps: a scope does not
+// see through fog or beyond the horizon - it resolves what is already
+// within them.  The driver is scene physics, not target resolution.)
 private _acuityM = 1e6;
 
 // ─── Night sensitivity ───────────────────────────────────────────────────

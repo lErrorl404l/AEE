@@ -179,78 +179,76 @@ private _tubeCount = 1;
 // ─── Device properties (issue #215) ─────────────────────────────────────
 // The device classifier resolves the HMD's researched tube physics
 // [generation, sensitivity, resolution, weightKg, tubeCount, fovDeg].
-// The generation sets the tier (which picks the model's per-tier
-// constants below); the sensitivity and tube count feed the photon
-// model and vignette geometry directly.
+// It is the TIER AUTHORITY - the generation, sensitivity and tube
+// count come from it, and the per-tier constants below key off the
+// generation it returns.  The tube resolution (lp/mm) scales the MTF:
+// a 64 lp/mm PVS-14 resolves finer than a 28 lp/mm PVS-7 (the MTF at
+// 15 lp/mm is the published contrast-transfer anchor).
 private _dev = [_unit] call FUNC(getNvgDeviceProperties);
 private _tier = _dev select 0;
 private _sensitivity = _dev select 1;
 private _tubeCount = _dev select 4;
+private _resLpmm = _dev select 2;
 
-// Tier matcher by HMD classname.  Substring tests run most-specific first.
-// The ENVG-II (NVGogglesB_grn_F/blk_F/gry_F, Apex) and panoramic GPNVG-class
-// goggles are modern FILMLESS devices — Gen 4 equivalent, same tube class as
-// the PVS-31A (L3Harris sell sheet / ACE3 generation=4 mapping).  They get
-// the filmless constants, not plain GEN3.
-if (_hmd find "USP_PVS31" >= 0 || _hmd find "PVS31" >= 0 || _hmd find "USP_PVS_31" >= 0
-    || _hmd find "NVGogglesB" >= 0 || _hmd find "GPNVG" >= 0 || _hmd find "NVG_Wide" >= 0) then {
-    _tier = "PVS31";
-    _sensitivity = 2000;     // filmless GaAs (L3Harris/Photonis 4G)
-    _noiseFloor = 0.03;
-    _mtf15 = 0.65;
-    _phosphorTint = [1.1, 0.8, 1.9, 0.9];
-    _nvgWeight = [1, 1, 6, 0];
-    _vigStrength = [0.0025, 0.0025, 0.06, 0.06];
-    _bloomBase = 0.02;
-    _bloomScale = 0.02;
-    // Objective focus: PVS-31A/GPNVG manual with 0.45 m near limit;
-    // the ENVG-II fusion goggle (NVGogglesB_grn_F) is the autofocus
-    // member of the family (L3Harris ENVG autofocus objective).
-    _dofModeDefault = parseNumber ((_hmd find "NVGogglesB_grn_F") < 0);
-    _dofNearLimit = 0.45;
-    _dofDefaultDist = 20;   // PVS-31A/GPNVG ring, hyperfocal for f/1.4
-    _tubeCount = [4, 2] select ((_hmd find "GPNVG" >= 0 || _hmd find "NVG_Wide" >= 0) isEqualTo false);
-} else {
-    if (_hmd find "NVGen3" >= 0 || _hmd find "NVGoggles_INDEP" >= 0) then {
-        _tier = "GEN3";
-        _sensitivity = 1100;     // GaAs (Photonis, ~700-1200 µA/lm)
+// Per-tier constants keyed off the classifier's generation.  The
+// noise floor (tube SNR), MTF (resolution), phosphor tint, vignette
+// and bloom follow the generation; the filmless PVS-31 class and the
+// panaramic GPNVG (quad) are the modern ceiling.
+switch (_tier) do {
+    case "PVS31": {
+        _noiseFloor = 0.03;
+        _mtf15 = 0.65;
+        _phosphorTint = [1.1, 0.8, 1.9, 0.9];
+        _nvgWeight = [1, 1, 6, 0];
+        _vigStrength = [0.0025, 0.0025, 0.06, 0.06];
+        _bloomBase = 0.02;
+        _bloomScale = 0.02;
+        // PVS-31A/GPNVG manual with 0.45 m near limit; the ENVG-II
+        // fusion goggle (NVGogglesB_grn_F) is the autofocus member.
+        _dofModeDefault = parseNumber ((_hmd find "NVGogglesB_grn_F") < 0);
+        _dofNearLimit = 0.45;
+        _dofDefaultDist = 20;   // hyperfocal for f/1.4
+    };
+    case "GEN3": {
         _noiseFloor = 0.04;
         _mtf15 = 0.61;
         _phosphorTint = [1.3, 1.2, 0.0, 0.9];
         _nvgWeight = [6, 1, 1, 0];
-    _vigStrength = [0.0030, 0.0030, 0.06, 0.06];
-    _bloomBase = 0.03;
-    _bloomScale = 0.03;
+        _vigStrength = [0.0030, 0.0030, 0.06, 0.06];
+        _bloomBase = 0.03;
+        _bloomScale = 0.03;
         _dofModeDefault = 1;     // PVS-14-style manual, 0.25 m near limit
         _dofNearLimit = 0.25;
         _dofDefaultDist = 15;
-    } else {
-        if (_hmd find "NVGen2" >= 0 || _hmd find "NVGoggles_OPFOR" >= 0) then {
-            _tier = "GEN2";
-            _sensitivity = 550;      // multialkali Gen 2
-            _noiseFloor = 0.08;
-            _mtf15 = 0.45;
-            _phosphorTint = [1.3, 1.2, 0.0, 0.9];
-            _nvgWeight = [6, 1, 1, 0];
-    _vigStrength = [0.0040, 0.0040, 0.06, 0.06];
-    _bloomBase = 0.04;
-    _bloomScale = 0.04;
-        } else {
-            if (_hmd find "GEN1" >= 0 || _hmd find "NVGoggles" >= 0) then {
-                _tier = "GEN1";
-                _sensitivity = 250;      // S-25 multialkali
-                _noiseFloor = 0.15;
-                _mtf15 = 0.30;
-                _phosphorTint = [1.4, 1.3, 0.0, 0.9];
-                _nvgWeight = [6, 1, 1, 0];
-                _vigStrength = [0.0050, 0.0050, 0.06, 0.06];
-                _bloomBase = 0.05;
-                _bloomScale = 0.05;
-            };
-        };
+    };
+    case "GEN2": {
+        _noiseFloor = 0.08;
+        _mtf15 = 0.45;
+        _phosphorTint = [1.3, 1.2, 0.0, 0.9];
+        _nvgWeight = [6, 1, 1, 0];
+        _vigStrength = [0.0040, 0.0040, 0.06, 0.06];
+        _bloomBase = 0.04;
+        _bloomScale = 0.04;
+    };
+    default {   // GEN1 and the AUTO fallback
+        _noiseFloor = 0.15;
+        _mtf15 = 0.30;
+        _phosphorTint = [1.4, 1.3, 0.0, 0.9];
+        _nvgWeight = [6, 1, 1, 0];
+        _vigStrength = [0.0050, 0.0050, 0.06, 0.06];
+        _bloomBase = 0.05;
+        _bloomScale = 0.05;
     };
 };
 missionNamespace setVariable [QGVAR(nvgTubeTier), _tier];
+
+// The device's actual tube resolution scales the MTF: MTF at 15 lp/mm
+// is the published contrast anchor for a 64 lp/mm Gen 3 tube.  A
+// lower-resolution tube (28 lp/mm PVS-7, 30 lp/mm Gen 1) resolves less
+// contrast at the same spatial frequency.  The ratio is linear against
+// the reference 64 lp/mm (the published GEN3 anchor).
+private _mtf15 = _mtf15 * (([64.0, _resLpmm] select (_resLpmm > 0)) / 64.0);
+_mtf15 = _mtf15 max 0.15 min 0.65;
 
 // ─── Tube-edge vignette (lens rim) — PHYSICS-derived, not ACE3's tuning ──
 // RadialBlur offset = "relative size of un-blurred centre" in screen
