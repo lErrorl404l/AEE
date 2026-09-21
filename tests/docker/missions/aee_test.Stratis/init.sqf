@@ -2269,8 +2269,7 @@ private _p29Pass = 0;
         } else {
             diag_log text format ["[PHASE40] [FAIL] material classification: %1 passed, %2 failed", _pass, _fail];
         };
-        diag_log text "[AEE-TEST] DONE";
-    };
+            };
 
     // -- PHASE 5: determinism -- temperature delta over 5 s must be small ----
     // PHASE11 deliberately disturbed the clock (midnight/noon skips).  The
@@ -2289,7 +2288,33 @@ private _p29Pass = 0;
             } else {
                 diag_log text format ["[PHASE5] [FAIL] delta over 5 s = %1", _delta];
             };
-            diag_log text "[AEE-TEST] DONE";
+                // -- PHASE 41: armour module (issue #126) --------------------------------
+    // The armour addon must have compiled: the config override applies the
+    // STANAG pool ladder, and the penetration gate resolves.
+    private _fnGate = missionNamespace getVariable ["aee_armour_fnc_penetrationGate", nil];
+    private _armorCfg = getNumber (configFile >> "CfgVehicles" >> "MRAP_01_base_F" >> "armor");
+    if (!isNil "_fnGate" && _armorCfg == 160) then {
+        diag_log text format ["[PHASE41] [PASS] armour module: gate resolved, MRAP armor=%1 (STANAG L3)", _armorCfg];
+    } else {
+        diag_log text format ["[PHASE41] [FAIL] armour module: gate=%1 MRAP armor=%2", isNil "_fnGate", _armorCfg];
+    };
+
+    // -- PHASE 42: penetration gate physics (issue #126) ---------------------
+    // Non-projectile damage must pass through untouched (the collision
+    // path is separate).  A fresh vehicle at 0 damage returns _oldDamage
+    // (0) - the ACE3 double-count rule.
+    private _veh = "B_MRAP_01_F" createVehicle [0, 0, 50];
+    private _gateResult = [
+        _veh, "Hull", 0.4, objNull, objNull, 0, objNull, "HitHull"
+    ] call aee_armour_fnc_penetrationGate;
+    deleteVehicle _veh;
+    if (_gateResult isEqualType 0 && {_gateResult <= 0.4}) then {
+        diag_log text format ["[PHASE42] [PASS] penetration gate: non-projectile passes through (%1 <= 0.4)", _gateResult];
+    } else {
+        diag_log text format ["[PHASE42] [FAIL] penetration gate returned %1", _gateResult];
+    };
+
+diag_log text "[AEE-TEST] DONE";
         }, [_t1], 5] call CBA_fnc_waitAndExecute;
     }, [], 7] call CBA_fnc_waitAndExecute;
 }, [], 30] call CBA_fnc_waitAndExecute;
