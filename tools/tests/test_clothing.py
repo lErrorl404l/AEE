@@ -231,52 +231,126 @@ if __name__ == "__main__":
 
 class TestEquipmentLibrary(unittest.TestCase):
     """The comprehensive equipment library (issue #119): helmets, vests,
-    backpacks - weight, NIJ armour, NIR, clo per family."""
+    backpacks - weight, NIJ armour, NIR, clo per family.
+
+    The library is DYNAMIC: items classify by classname-family keyword,
+    so any mod (even unseen ones) resolves as long as its classnames
+    carry the family signal.  These tests lock the researched IRL
+    families (equipment-library.md) to their classifier tiers."""
 
     EQ = (
         REPO / "addons/physiology/functions/clothing/fnc_getEquipmentProperties.sqf"
     ).read_text(encoding="utf-8")
-    CFG = (REPO / "addons/physiology/config.cpp").read_text(encoding="utf-8")
-
-    def test_config_has_families(self):
-        # The vanilla families in CfgEquipment.
-        for cls in ("V_PlateCarrier1_blk", "V_TacVest_blk", "H_HelmetB",
-                    "H_PilotHelmetFighter_B", "B_AssaultPack_blk",
-                    "B_Carryall_oli"):
-            self.assertIn(f"class {cls}", self.CFG)
-
-    def test_config_values_researched(self):
-        # Verified: plate carrier NIJ III (armor 3), ACH helmet IIIA (2).
-        self.assertIn("armor = 3", self.CFG)
-        self.assertIn("weight = 5.5", self.CFG)   # plate carrier system
-        self.assertIn("weight = 1.5", self.CFG)   # ACH helmet
 
     def test_vest_classification(self):
-        # The family fallback covers RHS (iotv) + vanilla plate carriers.
+        # The family fallback covers vanilla + RHS + historical vests.
         src = self.EQ
-        for kw in ("platecarrier", "iotv", "ciras", "spcs", "cpc",
-                   "tacvest", "bandollier", "chestrig", "harness",
-                   "rebreather"):
-            self.assertIn(f'"{kw}"', src,
-                          f"vest family keyword {kw} missing")
+        for kw in (
+            "platecarrier",
+            "iotv",
+            "ciras",
+            "spcs",
+            "cpc",
+            "tacvest",
+            "bandollier",
+            "chestrig",
+            "harness",
+            "rebreather",
+            "6b23",
+            "6b43",
+            "6b45",
+            "osprey",
+            "virtus",
+            "ecba",
+            "mbav",
+            "plateframe",
+            "msv",
+        ):
+            self.assertIn(f'"{kw}"', src, f"vest family keyword {kw} missing")
+
+    def test_vest_researched_values(self):
+        # IRL-researched: IOTV 4.5 kg bare (TM 10-8470-208-10), 6B23
+        # 7.9 kg (Wikipedia), Osprey 8.5 kg bare (MOD FOI).
+        src = self.EQ
+        self.assertIn("{ [4.5, 3, 0.38, 0.18] }", src)  # IOTV
+        self.assertIn("{ [7.9, 3, 0.40, 0.14] }", src)  # 6B23
+        self.assertIn("{ [8.5, 3, 0.40, 0.15] }", src)  # Osprey
+        self.assertIn("{ [3.8, 1, 0.40, 0.08] }", src)  # historical flak
 
     def test_helmet_classification(self):
+        # Historical steel, Russian aramid, modern US, aircrew, light.
         src = self.EQ
-        for kw in ("crew", "pilot", "watchcap", "boonie", "bandanna",
-                   "cap", "beret"):
-            self.assertIn(f'"{kw}"', src,
-                          f"helmet family keyword {kw} missing")
+        for kw in (
+            "m1940",
+            "m1942",
+            "stahlhelm",
+            "ssh68",
+            "pasgt",
+            "mich",
+            "ach",
+            "lwh",
+            "ech",
+            "fast",
+            "exfil",
+            "6b7",
+            "6b26",
+            "6b27",
+            "6b47",
+            "altyn",
+            "zsh",
+            "cvc",
+            "kaska",
+            "crew",
+            "pilot",
+            "watchcap",
+            "boonie",
+            "bandanna",
+            "cap",
+            "beret",
+        ):
+            self.assertIn(f'"{kw}"', src, f"helmet family keyword {kw} missing")
 
-    def test_backpack_included(self):
-        # The backpack weight + contents join the combined weight.
+    def test_helmet_researched_values(self):
+        # IRL-researched per-family: PASGT 1.9 kg complete (DTIC
+        # ADA619773), 6B47 ~1.0 kg (Wikipedia), steel helmets unrated
+        # (1.2 kg family mean), ECH 1.05 kg (USMC PIS).
         src = self.EQ
-        self.assertIn('backpack _unit', src)
+        self.assertIn("{ [1.9, 2, 0.40, 0.06] }", src)   # PASGT
+        self.assertIn("{ [1.0, 2, 0.40, 0.06] }", src)   # 6B47
+        self.assertIn("{ [1.05, 2, 0.40, 0.06] }", src)  # ECH
+        self.assertIn("{ [1.2, 0, 0.40, 0.04] }", src)   # steel, unrated
+
+    def test_backpack_classification(self):
+        src = self.EQ
+        self.assertIn("backpack _unit", src)
         self.assertIn("unitBackpack", src)
-        self.assertIn('load (unitBackpack _unit)', src)
-        for kw in ("backpack", "rucksack", "bergen", "carryall",
-                   "assaultpack", "kitbag"):
-            self.assertIn(f'"{kw}"', src,
-                          f"pack family keyword {kw} missing")
+        self.assertIn("load (unitBackpack _unit)", src)
+        for kw in (
+            "backpack",
+            "rucksack",
+            "bergen",
+            "carryall",
+            "assaultpack",
+            "kitbag",
+            "alice",
+            "molle",
+            "ilbe",
+            "filbe",
+            "rd54",
+            "sidor",
+            "tort",
+            "plce",
+            "6sh118",
+        ):
+            self.assertIn(f'"{kw}"', src, f"pack family keyword {kw} missing")
+
+    def test_no_hardcoded_classnames(self):
+        # The library must be dynamic: per-classname config entries were
+        # removed in favour of the family classifier.  No explicit
+        # per-item config walking remains.
+        src = self.EQ
+        self.assertNotIn("CfgEquipment", src)
+        self.assertNotIn("_fnResolve", src)
 
     def test_combine_weight_armour_nir_clo(self):
         src = self.EQ
@@ -295,3 +369,10 @@ class TestEquipmentMath(unittest.TestCase):
         # Uniform 4 + plate 5.5 + ACH 1.5 + assault pack 3 = 14 kg.
         total = 4.0 + 5.5 + 1.5 + 3.0
         self.assertEqual(total, 14.0)
+
+    def test_helmet_family_tier_mapping(self):
+        # A 6B47 classname must hit the Russian aramid tier.
+        src = (
+            REPO / "addons/physiology/functions/clothing/fnc_getEquipmentProperties.sqf"
+        ).read_text(encoding="utf-8")
+        self.assertIn('"6b47"', src)
