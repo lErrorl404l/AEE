@@ -99,15 +99,31 @@ if (_mode == "EXIT") then {
     };
 
     // Save originals once per object per pass (first apply).  Materials
-    // are captured too: the TI band rvmat replaces them while thermal is
-    // active, and EXIT restores them.
+    // are captured too: the FPN rvmat replaces them while thermal is
+    // active (issue #204 - perlinNoise Stage2 FPN over the painted heat
+    // colour), and EXIT restores them.  Texture-only when FPN is off.
     private _saved = missionNamespace getVariable [QGVAR(selThermalSaved), []];
     private _alreadySaved = _saved findIf { (_x select 0) == _obj };
+    private _fpnEnabled = missionNamespace getVariable [QGVAR(thermalFPN), true];
     if (_alreadySaved < 0) then {
         private _oldTexs = getObjectTextures _obj;
         private _oldMats = getObjectMaterials _obj;
         _saved pushBack [_obj, _oldTexs, _oldMats, _selNames];
         missionNamespace setVariable [QGVAR(selThermalSaved), _saved];
+        // FPN material swap (client-local, once per object per pass):
+        // the perlinNoise Stage2 multiplies over the painted heat colour.
+        // Skipped when the object has no material slots (ground/terrain
+        // cannot take a material swap - the proxy-plane overlay is the
+        // terrain path).  Only slots with a string material are swapped
+        // (matches the EXIT restore guard below).
+        if (_fpnEnabled && {count _oldMats > 0}) then {
+            private _fpnMat = "\z\aee\addons\thermal\data\ti_fpn.rvmat";
+            {
+                if (_x isEqualType "") then {
+                    _obj setObjectMaterial [_forEachIndex, _fpnMat];
+                };
+            } forEach _oldMats;
+        };
     };
 
     // Ambient + wind + solar from the core environment state.
@@ -357,8 +373,11 @@ if (_mode == "EXIT") then {
         ];
 
         _obj setObjectTexture [_idx, _colour];
-        // No setObjectMaterial: the original material (with its own
-        // StageTI or Stage1) stays, so the heat colour renders over it.
+        // The material stays the object's own (or the FPN rvmat when the
+        // thermalFPN setting is on - see the save block).  setObjectTexture
+        // replaces the Stage1 texture of whatever material is current, so
+        // the heat colour renders over Stage1 and (with FPN) the perlinNoise
+        // Stage2 multiplies over it.
     } forEach _selNames;
 };
 

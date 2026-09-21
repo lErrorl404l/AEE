@@ -28,3 +28,19 @@
     true,
     {}
 ] call CBA_fnc_addSetting;
+
+// ── Fixed-pattern noise (issue #204, FPN) ────────────────────────────────
+// Real LWIR sensors show a static spatial mottle (fixed-pattern noise)
+// over the thermal image, independent of the temporal FilmGrain.  On:
+// painted thermal objects get the ti_fpn.rvmat material (perlinNoise
+// Stage2 multiplying the painted heat colour).  The material swap is
+// client-local and restored on thermal EXIT.
+[
+    QGVAR(thermalFPN),
+    "CHECKBOX",
+    [LLSTRING(thermalFPN_Name), LLSTRING(thermalFPN_Description)],
+    ["AEE Thermal", "Display"],
+    true,
+    true,
+    {}
+] call CBA_fnc_addSetting;
