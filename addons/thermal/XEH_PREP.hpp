@@ -12,6 +12,7 @@ PREPS(surface,getSolarAbsorptance);
 PREPS(surface,getSelectionMaterials);
 PREPS(surface,getHitPointMaterials);
 PREPS(display,applySelectionThermal);
+PREPS(display,debugApplyFPN);
 PREPS(environment,calculateMRT);
 PREPS(environment,calculateGlobeTemperature);
 PREPS(ground,calculateGroundNodeStack);
