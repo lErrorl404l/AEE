@@ -189,8 +189,8 @@ diag_log text format ["[AEE-TEST] biome after explicit call: %1", _biomeAfter];
         diag_log text format ["[PHASE8] [FAIL] ppEffect handles bumped: before=%1 after=%2", _hBefore, _hAfter];
     };
 
-    [] call aee_optics_fnc_calculateThermalContrast;
-    private _tc = missionNamespace getVariable ["aee_optics_currentThermalContrast", -1];
+    [] call aee_thermal_fnc_calculateThermalContrast;
+    private _tc = missionNamespace getVariable ["aee_thermal_currentThermalContrast", -1];
     if (!isNil "_tc" && _tc >= 0 && _tc <= 1) then {
         diag_log text format ["[PHASE8] [PASS] thermal contrast in range: %1", _tc];
     } else {

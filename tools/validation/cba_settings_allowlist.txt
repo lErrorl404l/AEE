@@ -30,8 +30,6 @@ aee_thermal_ppHandle_Thermal_Blur  dynamic ppEffect handle: written via setVaria
 aee_thermal_ppHandle_Thermal_CC  dynamic ppEffect handle: written via setVariable [_store, _handle] in the create loop
 aee_thermal_ppHandle_Thermal_Grain  dynamic ppEffect handle: written via setVariable [_store, _handle] in the create loop
 aee_thermal_ppHandle_Thermal_Vignette  dynamic ppEffect handle: written via setVariable [_store, _handle] in the create loop
-aee_optics_nvgTitle  config resource class (RscTitles) read cross-module by nightvision cutRsc [QEGVAR(optics,nvgTitle)]; produced in optics/config, not a mission variable
-aee_optics_titleDisplay  uiNamespace onLoad resource in optics RscTitles.hpp; read cross-module by nightvision getVariable [QEGVAR(optics,titleDisplay)]; produced in optics config, not a mission variable
 aee_thermal_ppHandle_Thermal_Inversion  dynamic ppEffect handle: written via setVariable [_store, _handle] in the create loop
 aee_thermal_thermalSelectionsCache  dynamic cache key: written via format [QGVAR(thermalSelectionsCache_%1), typeOf] in fnc_getThermalSelections
 aee_thermal_hitPointMaterials  dynamic cache key: written via format [QGVAR(hitPointMaterials_%1), typeOf] in fnc_getHitPointMaterials
