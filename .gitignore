@@ -50,3 +50,4 @@ tools/validation/report.txt
 
 # Local Arma 3 server path override for docker_test.sh (machine-specific)
 tests/docker/server_root
+
