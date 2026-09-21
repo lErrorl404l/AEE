@@ -37,11 +37,15 @@ _surface = toLower _surface;
 // never warmed from muzzle flash or sun (the user's report).
 private _dynamicMat = "";
 if (_surface != "") then {
-    // The surface may come as "#gdtconcrete" (with #) or the bare class
-    // "GdtStratisConcrete" (surfaceType returns the bare name at runtime
-    // in some builds).  Try both forms.
+    // The surface may come as "#gdtconcrete" (with #) or the class
+    // "gdtsstratisconcrete" (lowercased).  The CfgSurfaces classes are
+    // Gdt* WITH the prefix - keep it for the config lookup (the bare
+    // stripped name misses the config class and the bisurf fallback
+    // fires on a non-path, warning 'Script X not found').  Only the
+    // leading # is removed.
     private _clean = _surface;
     if (_clean find "#gdt" == 0) then { _clean = _clean select [4, (count _clean) - 4]; };
+    if (_clean find "gdt" == 0) then { _clean = _clean; };   // keep Gdt prefix
     _dynamicMat = _clean call EFUNC(material,getSurfaceMaterial);
 };
 if (_dynamicMat != "" && _dynamicMat != "ground") exitWith { _dynamicMat };
@@ -70,6 +74,22 @@ private _material = switch (true) do {
     // surfaceType at sea returns the water class, NOT land.
     case (_surface in ["#gdtsea", "#gdtocean", "#gdtlake", "#gdtriver",
         "#gdtwater"]): { "water" };
+    // Custom / modded surfaces (issue #204): GdtStratisConcrete,
+    // GdtCustomAsphalt, stratisdrygrass... The map's own surface names
+    // often embed the material keyword.  Match by CONTAINS - the
+    // material class is in the name (GdtStratisCONCRETE = concrete,
+    // GdtStratisDRYGRASS = grass).  This is the dynamic, no-static-
+    // naming fallback for surfaces the CfgSurfaces soundHit lookup
+    // could not resolve.
+    case ("concrete" in _surface): { "concrete" };
+    case ("asphalt" in _surface || {"tarmac" in _surface} || {"road" in _surface}): { "asphalt" };
+    case ("gravel" in _surface || {"pebble" in _surface}): { "rock" };
+    case ("rock" in _surface || {"stone" in _surface} || {"cliff" in _surface}): { "rock" };
+    case ("grass" in _surface || {"meadow" in _surface} || {"field" in _surface}): { "vegetation" };
+    case ("forest" in _surface || {"wood" in _surface} || {"jungle" in _surface}): { "vegetation" };
+    case ("sand" in _surface || {"dune" in _surface} || {"desert" in _surface}): { "ground" };
+    case ("mud" in _surface || {"swamp" in _surface} || {"marsh" in _surface}): { "water" };
+    case ("snow" in _surface || {"ice" in _surface} || {"glacier" in _surface}): { "ground" };
     // Anything else: neutral ground.
     default { "ground" };
 };

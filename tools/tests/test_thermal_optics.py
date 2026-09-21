@@ -3428,6 +3428,23 @@ class TestSQFSync(unittest.TestCase):
         self.assertIn("_massScale", callee)
         self.assertIn("_skinMass = (0.1 * 70) * (_massScale", callee)
 
+    def test_custom_surface_classification(self):
+        # Issue #204: custom/modded surfaces (GdtStratisConcrete,
+        # GdtStratisDryGrass) must classify by the embedded material
+        # keyword - no static naming, no 'Script not found' warning
+        # (the bare name must NOT reach preprocessFile).
+        root = Path(__file__).resolve().parents[2]
+        mat_dir = root / "addons" / "material" / "functions"
+        text = (mat_dir / "fnc_classifyBySurfaceType.sqf").read_text(
+            encoding="utf-8")
+        self.assertIn('"concrete" in _surface', text)
+        self.assertIn('"grass" in _surface', text)
+        self.assertIn('"asphalt" in _surface', text)
+        self.assertIn("getSurfaceMaterial", text)
+        surf = (mat_dir / "fnc_getSurfaceMaterial.sqf").read_text(
+            encoding="utf-8")
+        self.assertIn('in _surfId || {"/" in _surfId}', surf)  # path guard
+
     def test_ground_temperature_by_surface(self):
         # Issue #204: the ground temperature - the node-stack wrapper
         # classifies the surfaceType (#gdt prefix handled by the material
