@@ -51,8 +51,8 @@ if (_uniform != "") then {
         || _u find "chemical" >= 0);
 };
 
-if (_hasMask && _hasSuit) then { 0.95 } else {
-    if (_hasMask) then { 0.75 } else {
-        if (_hasSuit) then { 0.60 } else { 0.0 }
-    }
-}
+// The three protection tiers as a lookup, indexed by [hasMask, hasSuit]
+// (SQF booleans are 0/1): none 0.0, suit-only 0.60, mask-only 0.75,
+// full kit 0.95.  The tiers are the researched figures (equipment-
+// library.md CBRN section: M50 JSGPM CBRN Cap 1, JSLIST 24 h profile).
+[[0.0, 0.60], [0.75, 0.95]] select _hasMask select _hasSuit

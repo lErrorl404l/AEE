@@ -36,11 +36,10 @@ class TestCbrnProtection(unittest.TestCase):
             self.assertIn(f'"{kw}"', FNC, f"suit keyword {kw} missing")
 
     def test_protection_tiers(self):
-        # Full kit 0.95, mask alone 0.75, suit alone 0.60, none 0.0.
-        self.assertIn("{ 0.95 }", FNC)
-        self.assertIn("{ 0.75 }", FNC)
-        self.assertIn("{ 0.60 }", FNC)
-        self.assertIn("{ 0.0 }", FNC)
+        # The lookup table: none 0.0, suit-only 0.60, mask-only 0.75,
+        # full kit 0.95.
+        self.assertIn("[[0.0, 0.60], [0.75, 0.95]]", FNC)
+        self.assertIn("select _hasMask select _hasSuit", FNC)
 
     def test_uses_gear_slots(self):
         # Reads the goggles slot (mask) + uniform (suit).
