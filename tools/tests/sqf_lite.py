@@ -142,6 +142,9 @@ class Assign:
     expr: Any
 
 
+BINARY_COMMANDS = {"getVariable", "isEqualType"}
+
+
 @dataclass
 class ExprStmt:
     expr: Any
@@ -152,6 +155,17 @@ class If:
     cond: Any
     then: list
     els: list
+
+
+class ExitSignal(Exception):
+    """Raised by `if (cond) exitWith {value}` - stops the program and
+    returns the exit value (issue #162: fnc_readState uses exitWith)."""
+
+
+@dataclass
+class ExitWith:
+    cond: Any
+    value: list
 
 
 @dataclass
@@ -239,9 +253,19 @@ class SqfParser:
             return Params(specs)
         if t.value == "if":
             self.next()
-            self.expect("(")
-            cond = self.parse_expr()
-            self.expect(")")
+            # SQF allows `if !(cond)` - the condition may start with a
+            # unary operator before the opening paren (issue #162)
+            if self.peekv() in ("!", "-"):
+                cond = self.parse_unary()
+            else:
+                self.expect("(")
+                cond = self.parse_expr()
+                self.expect(")")
+            if self.peekv() == "exitWith":
+                self.next()
+                value = self.parse_block()
+                self.optional_semi()
+                return ExitWith(cond, value)
             self.expect("then")
             then = self.parse_block()
             els = []
@@ -435,6 +459,14 @@ class SqfParser:
                 self.next()
                 right = self.parse_unary()
                 left = MaxMin(t.value, left, right)
+            elif t.value in BINARY_COMMANDS:
+                # binary command form: NS getVariable [k, d] - the
+                # left operand is the namespace, the command's arg is
+                # the right expression.  Resolved as Call(cmd,
+                # [left, argArray]) (issue #162).
+                cmd = self.next().value
+                right = self.parse_postfix()
+                left = Call(Var(cmd), Arr([left, right]))
             else:
                 return left
 
@@ -623,11 +655,19 @@ class SqfRuntime:
 
     def run(self, stmts: list) -> Any:
         result = None
-        for s in stmts:
-            result = self.exec_stmt(s)
+        try:
+            for s in stmts:
+                result = self.exec_stmt(s)
+        except ExitSignal as e:
+            result = e.args[0] if e.args else None
         return result
 
     def exec_stmt(self, s: Any) -> Any:
+        if isinstance(s, ExitWith):
+            # if (cond) exitWith {value} - a top-level exit
+            if self.eval(s.cond):
+                raise ExitSignal(self.run(s.value))
+            return None
         if isinstance(s, Assign):
             self.set(s.name, self.eval(s.expr))
             return None
