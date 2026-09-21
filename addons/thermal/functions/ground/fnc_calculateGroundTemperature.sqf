@@ -86,4 +86,27 @@ if ([_pos] call FUNC(isPositionShadowed)) then {
 };
 
 // Per-position thermal stamp (boot print, tyre track, shade patch).
-(_ts + ([_pos] call FUNC(getGroundStampOffset)))
+private _stampOffset = [_pos] call FUNC(getGroundStampOffset);
+private _result = _ts + _stampOffset;
+
+// ─── Ground heat diagnostic (issue #204) ──────────────────────────────────
+// Trace the ground temperature chain so the RPT proves the physics:
+// surface class, equilibrium, stamp offset, stamp count.  Throttled to
+// one line per 5 s per position cell so a session shows the ground heat
+// without spamming.  The 'still no heat on the ground' report needs
+// this visibility - was the stamp laid? was it read? what temp?
+private _traceKey = format ["%1_%2_%3", QGVAR(groundTraceT),
+        round ((_pos select 0) / 5), round ((_pos select 1) / 5)];
+private _nowT = diag_tickTime;
+private _lastT = missionNamespace getVariable [_traceKey, -999];
+if (_nowT - _lastT >= 5) then {
+    missionNamespace setVariable [_traceKey, _nowT];
+    private _stampCount = count (missionNamespace getVariable [QGVAR(groundStamps), []]);
+    private _surfNow = surfaceType [_pos select 0, _pos select 1];
+    diag_log format [
+        "[AEE][GROUND] surf=%1 mat=%2 tEq=%3 stamp=%4 (count %5) tFinal=%6",
+        _surfNow, _material, _ts, _stampOffset, _stampCount, _result
+    ];
+};
+
+_result
