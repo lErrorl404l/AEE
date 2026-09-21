@@ -50,10 +50,17 @@ if (isClass _surfaceConfig) then {
 } else {
     // 3. Read the bisurf file directly.  The engine resolves the path
     //    case-insensitively; preprocessFile returns the text as-is.
-    private _text = toLowerANSI preprocessFile _surfId;
-    _text = _text regexReplace ["[^a-z0-9]", ""];
-    private _idx = 8 + (_text find "soundhit");
-    _keyword = _text select [_idx, SOUNDHIT_SEARCH_LEN];
+    //    GUARD: only a real file path is read - a bare class name
+    //    (surfaceType returns e.g. 'GdtStratisConcrete' which may not
+    //    be in CfgSurfaces AND is not a file) must NOT be passed to
+    //    preprocessFile, or it warns 'Script X not found' (issue #204,
+    //    the 'Script stratisconcrete not found' RPT error).
+    if ("\\" in _surfId || {"/" in _surfId} || {".bisurf" in _surfId}) then {
+        private _text = toLowerANSI preprocessFile _surfId;
+        _text = _text regexReplace ["[^a-z0-9]", ""];
+        private _idx = 8 + (_text find "soundhit");
+        _keyword = _text select [_idx, SOUNDHIT_SEARCH_LEN];
+    };
 };
 
 // 4. Classify the keyword into an AEE material class.
