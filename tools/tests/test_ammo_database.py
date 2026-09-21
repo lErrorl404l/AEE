@@ -178,13 +178,15 @@ class TestBallisticWiring(unittest.TestCase):
         self.assertIn("measureBarrel", post)
         self.assertIn("deriveCartridge", post)
 
-    def test_mv_correction_uses_real_mv(self):
-        # The MV correction reads the ammo database real MV.
+    def test_mv_correction_uses_initSpeed(self):
+        # The MV correction normalises to the game's initSpeed (the
+        # round's actual flight velocity) - the temperature ratio is
+        # what matters, the database MV lives in the Fired EH.
         mv = (
             REPO
             / "addons/ballistics/functions/fnc_calculateMuzzleVelocityCorrection.sqf"
         ).read_text(encoding="utf-8")
-        self.assertIn("getAmmoProperties", mv)
+        self.assertIn("initSpeed", mv)
 
 
 if __name__ == "__main__":

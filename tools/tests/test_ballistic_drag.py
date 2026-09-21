@@ -154,6 +154,51 @@ class TestG1DragTable(unittest.TestCase):
             self.assertIn(anchor, sqf, f"G7 anchor {anchor} missing from SQF")
 
 
+class TestAllDragModels(unittest.TestCase):
+    """The complete JBM/BRL drag-model set: G1, G2, G5, G6, G7, G8."""
+
+    def test_g2_anchors(self):
+        # G2 (10-deg cone-cylinder-boattail): 0.2303@0, peak 0.4114@1.075.
+        sqf = (
+            REPO / "addons/ballistics/functions/fnc_calculateBallisticDrag.sqf"
+        ).read_text(encoding="utf-8")
+        for anchor in ("0.2303", "0.4114"):
+            self.assertIn(anchor, sqf, f"G2 anchor {anchor} missing")
+
+    def test_g5_anchors(self):
+        # G5 (short 7.5-deg boat-tail): 0.1710@0, peak 0.4406@1.40.
+        sqf = (
+            REPO / "addons/ballistics/functions/fnc_calculateBallisticDrag.sqf"
+        ).read_text(encoding="utf-8")
+        for anchor in ("0.1710", "0.4406"):
+            self.assertIn(anchor, sqf, f"G5 anchor {anchor} missing")
+
+    def test_g6_anchors(self):
+        # G6 (flat-base long-ogive): 0.2617@0, peak 0.4497@1.15.
+        sqf = (
+            REPO / "addons/ballistics/functions/fnc_calculateBallisticDrag.sqf"
+        ).read_text(encoding="utf-8")
+        for anchor in ("0.2617", "0.4497"):
+            self.assertIn(anchor, sqf, f"G6 anchor {anchor} missing")
+
+    def test_g8_anchors(self):
+        # G8 (flat-base secant-ogive): 0.2105@0, peak 0.4493@1.075.
+        sqf = (
+            REPO / "addons/ballistics/functions/fnc_calculateBallisticDrag.sqf"
+        ).read_text(encoding="utf-8")
+        for anchor in ("0.2105", "0.4493"):
+            self.assertIn(anchor, sqf, f"G8 anchor {anchor} missing")
+
+    def test_all_six_models_registered(self):
+        # The kernel selects all six by the dragModel.
+        sqf = (
+            REPO / "addons/ballistics/functions/fnc_calculateBallisticDrag.sqf"
+        ).read_text(encoding="utf-8")
+        self.assertIn("switch (_dragModel) do", sqf)
+        for m in ("case 2:", "case 5:", "case 6:", "case 7:", "case 8:"):
+            self.assertIn(m, sqf)
+
+
 class TestOrganisationCrossCheck(unittest.TestCase):
     """The kernel's airFriction-equivalent must reproduce ACE3's shipped
     values (ACE3 derives them from the Applied Ballistics library)."""
