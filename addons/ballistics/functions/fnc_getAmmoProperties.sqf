@@ -1,28 +1,31 @@
 #include "..\script_component.hpp"
 /*
-Ammunition database (issue #167).
+Ammunition database - the hierarchical keyword matcher (issue #167).
 
 Resolves the REAL ballistic properties of a round from its CfgAmmo
-classname (or a cartridge-family keyword) and returns
-[realMV, bcG1, bcG7, caliberMm, projectileMassG, dragModel]:
+classname and returns [realMV, bcG1, bcG7, caliberMm, massG, dragModel].
 
-  realMV       - the real muzzle velocity (m/s) at the REFERENCE barrel
-  bcG1 / bcG7  - the ballistic coefficient in the G1 / G7 drag standard
-  caliberMm    - the bullet diameter (mm)
-  projectileMassG - the bullet mass (g)
-  dragModel    - 1 = G1, 7 = G7 (which drag function the BC uses)
+The matcher works like the equipment library (clothing etc): keyword
+layers that go DEEPER when they match, BASE level otherwise.
+
+  Layer 1 - CALIBER:  the cartridge signal (556x45, 762x51, 545x39,
+    9x19, 127x99, 300blk ...) selects the caliber's base values.
+  Layer 2 - PROJECTILE: the specific round name (M855, M855A1, M995,
+    Mk262, M80, M118LR, 7N22 ...) overrides the base with the round's
+    own researched MV + BC.  A 5.56 M855 and a 5.56 Mk262 are
+    DIFFERENT rounds - each has its own values under the 5.56 caliber.
+  Layer 3 - TYPE: the round-type modifier (subsonic, AP, tracer)
+    further adjusts (a subsonic round flies slower, a tracer slightly
+    slower).
+
+If a layer does not match, the round stays at the previous layer's
+base - the generic caliber values.  This is the "if there is more
+information it goes deeper, if not it is base level" behaviour.
 
 Values are VERIFIED from the researched ammunition tables (issue #167
 sources: NATO EPVAT / STANAG 4172/2310, MIL-C-50/MIL-DTL-10190E, Soviet
-ballistics, Applied Ballistics ABDOC, Hornady/CCI manufacturer specs)
-and cross-checked against the ABE real-weapons seed data (the #167
-verification pipeline).  Every entry carries its researched anchor.
-
-The database is DYNAMIC: the ammo classname's cartridge signal
-(556x45, 762x51, 545x39, 127x99 ...) keys the family; the round type
-(Ball/Tracer/AP/HEIAP from the classname suffix) selects the variant.
-A round AEE has never seen falls back to the cartridge family defaults
-with a documented "unverified" flag.
+ballistics, Applied Ballistics ABDOC) and cross-checked against the
+ABE real-weapons seed (ir_ammo.tsv per-projectile BCs).
 
 Arguments:
   0: ammo (STRING, the CfgAmmo classname, default "")
@@ -30,85 +33,146 @@ Arguments:
 Returns [realMV, bcG1, bcG7, caliberMm, massG, dragModel].
 */
 params [["_ammo", "", [""]]];
-if (_ammo == "") exitWith { [905, 0.307, 0, 5.56, 4.0, 1] };
+if (_ammo == "") exitWith { [948, 0.307, 0.151, 5.56, 4.0, 7] };
 
-// Round-type flags from the classname suffix (the vanilla conventions:
-// Ball, Ball_Tracer_*, Tracer_*, AP, HEIAP, SLAP, APDS, Caseless).
+// The match signal: the classname PLUS the readable displayName (the
+// ACE arsenal name - "5.56mm M855A1" carries the same projectile
+// signal the mod's opaque classname hides).  The displayName comes
+// from the first magazine using this ammo (the engine's readable name).
 private _a = toLower _ammo;
-private _isAP  = (_a find "_ap" >= 0 || _a find "apds" >= 0 || _a find "slap" >= 0 || _a find "hei" >= 0);
-private _isTracer = (_a find "tracer" >= 0);
+private _disp = "";
+{
+    if (getText (configFile >> "CfgMagazines" >> configName _x >> "ammo") == _ammo) exitWith {
+        _disp = toLower (getText (configFile >> "CfgMagazines" >> configName _x >> "displayName"));
+    };
+} forEach ((configFile >> "CfgMagazines") call BIS_fnc_returnChildren);
+_a = _a + " " + _disp;
 
-// ─── Cartridge families (the researched table) ────────────────────────────
-// [realMV, bcG1, bcG7, caliberMm, massG, dragModel]
-// MV is the REAL published value at the reference barrel length (given
-// in the comment).  BC from the round's published coefficient.
-private _res = switch (true) do {
-    // ── 5.56 NATO (STANAG 4172) ──
-    // M193: 993 m/s @ 20" (0.243 G1).  M855: 948 @ 20" (0.307 G1, the
-    // seed cross-check 0.307).  M855A1 EPR: 961 @ 20" (0.308 G1).
-    case (_a find "556x45" >= 0): {
-        if (_isAP) then { [961, 0.308, 0, 5.56, 4.0, 1] } else {
-            [948, 0.307, 0, 5.56, 4.0, 1]
-        }
-    };
-    // ── 5.45 Soviet (7N6/7N10) ──
-    // 7N6 53gr: 880 m/s @ 16.3" (0.300 G1, BRL measured).
-    case (_a find "545x39" >= 0):  { [880, 0.300, 0.168, 5.45, 3.4, 7] };
-    // ── 7.62 NATO (STANAG 2310) ──
-    // M80 147gr: 838 @ 22" (0.393 G1).  M61 AP 145gr: 833 (0.419).
-    // M118LR 175gr: 786 @ 24" (0.496 G1).  M993 AP 128gr: 930 (0.43).
-    case (_a find "762x51" >= 0): {
-        if (_isAP) then { [930, 0.430, 0.359, 7.62, 8.3, 1] } else {
-            [838, 0.393, 0, 7.62, 9.5, 1]
-        }
-    };
-    // ── 7.62 Soviet (M67/M43) ──
-    // M67 123gr: 733 m/s @ 16.3" (0.300 G1).
-    case (_a find "762x39" >= 0):  { [710, 0.279, 0, 7.62, 8.0, 1] };
-    // ── 7.62x54R (LPS/7N1) ──
-    // LPS 148gr: 820 m/s @ 27.5" (0.377 G1).
-    case (_a find "762x54" >= 0):  { [820, 0.377, 0, 7.62, 9.6, 1] };
-    // ── 9mm Parabellum (CIP 235 MPa) ──
-    // 124gr FMJ: 351 m/s @ 4" (0.149 G1).
-    case (_a find "9x21" >= 0 ||
-          _a find "9x19" >= 0):    { [351, 0.149, 0, 9.01, 8.0, 1] };
-    // ── 6.5 caseless (the A3 fictional round, real analogue 6.5 Grendel
-    //    per the research: 123gr 790 m/s @ 24", 0.500 G1) ──
-    case (_a find "65x39" >= 0 ||
-          _a find "6.5" >= 0):     { [790, 0.500, 0.196, 6.71, 7.8, 7] };
-    // ── .50 BMG (MIL-DTL-10190E) ──
-    // M33 660gr: 885 m/s @ 45" (0.670 G1; seed cross-check 0.67 G7).
-    // M903 SLAP: ~1219 m/s (the saboted round).
-    case (_a find "127x99" >= 0): {
-        if (_a find "slap" >= 0) then { [1219, 0.670, 0, 12.7, 23.3, 1] } else {
-            [885, 0.670, 0, 12.7, 42.8, 1]
-        }
-    };
-    // ── 12.7 Soviet (B-32 API) ──
-    // B-32 744gr API: 818 m/s @ 40" (0.600 G1).
-    case (_a find "127x108" >= 0): { [818, 0.600, 0.340, 12.7, 48.2, 7] };
-    // ── .338 (the Marksmen DLC, .338 Lapua Mag / Norma) ──
-    // 250gr: 899 m/s @ 24" (0.756 G1, ABDOC116).  LWMMG .338 NM.
-    case (_a find "338" >= 0):     { [899, 0.756, 0, 8.58, 16.2, 1] };
-    // ── .300 (the Marksmen DLC, .300 Win Mag / BLK) ──
-    case (_a find "300" >= 0 ||
-          _a find "93x64" >= 0):   { [902, 0.439, 0, 7.82, 11.7, 1] };
-    // ── 12 gauge (shotgun, the smoothbore slug) ──
-    // 1oz slug: 470 m/s (0.060 G1, the shotgun's low-BC slug).
-    case (_a find "127x76" >= 0 ||
-          _a find "12gauge" >= 0 ||
-          _a find "pellet" >= 0):  { [470, 0.060, 0, 18.5, 28.3, 1] };
-    // ── The vanilla heavy cannon rounds (25mm / 30mm / 40mm, the
-    //    autocannon class - real APFSDS/HE) ──
-    case (_a find "25mm" >= 0 ||
-          _a find "30mm" >= 0):    { [1100, 0.450, 0, 30.0, 350.0, 1] };
-    // ── Default: the AEE M855 baseline with the unverified flag ──
-    default                         { [905, 0.307, 0, 5.56, 4.0, 1] };
+// ─── Layer 1: the CALIBER base ───────────────────────────────────────────
+// [caliberMm, massG, refMV at the reference barrel, bcG1, bcG7, drag].
+// The generic caliber values are the researched family anchors; the
+// projectile layer overrides them.  The classname is parsed FIRST
+// (fnc_parseCaliber: the alias + numeric-conversion matcher - 9x19 =
+// 9mm, 45acp = .45 in = 11.43 mm, 300 BLK = 7.62 mm); the fast switch
+// below handles the common forms, and the parser's conversion catches
+// the names the switch misses.
+private _parsed = [_ammo] call FUNC(parseCaliber);
+private _base = [5.56, 4.0, 948, 0.307, 0.151, 7];
+switch (true) do {
+    case (_a find "556x45" >= 0 || _a find "5.56" >= 0):  { _base = [5.56, 4.0, 948, 0.307, 0.151, 7]; };
+    case (_a find "545x39" >= 0 || _a find "5.45" >= 0):  { _base = [5.45, 3.4, 880, 0.300, 0.168, 7]; };
+    case (_a find "762x51" >= 0 || _a find "7.62x51" >= 0): { _base = [7.62, 9.5, 838, 0.393, 0.200, 7]; };
+    case (_a find "762x39" >= 0 || _a find "7.62x39" >= 0): { _base = [7.62, 8.0, 710, 0.279, 0, 1]; };
+    case (_a find "762x54" >= 0 || _a find "7.62x54" >= 0): { _base = [7.62, 9.6, 820, 0.377, 0.200, 7]; };
+    case (_a find "9x21" >= 0 || _a find "9x19" >= 0 || _a find "9mm" >= 0): { _base = [9.01, 8.0, 351, 0.149, 0, 1]; };
+    case (_a find "127x99" >= 0 || _a find "12.7x99" >= 0 || _a find "50bmg" >= 0): { _base = [12.7, 42.8, 885, 0.670, 0.340, 7]; };
+    case (_a find "127x108" >= 0 || _a find "12.7x108" >= 0): { _base = [12.7, 48.2, 818, 0.600, 0.340, 7]; };
+    case (_a find "338" >= 0):                               { _base = [8.58, 16.2, 899, 0.756, 0.320, 7]; };
+    case (_a find "300blk" >= 0 || _a find "300_blackout" >= 0): { _base = [7.82, 8.1, 675, 0.338, 0, 1]; };
+    case (_a find "65x39" >= 0 || _a find "6.5" >= 0 || _a find "6arc" >= 0 || _a find "68spc" >= 0): { _base = [6.71, 7.8, 790, 0.500, 0.196, 7]; };
+    case (_a find "45acp" >= 0 || _a find "11.43" >= 0): { _base = [11.48, 14.9, 255, 0.163, 0, 1]; };
+    case (_a find "127x76" >= 0 || _a find "12gauge" >= 0): { _base = [18.5, 28.3, 470, 0.060, 0, 1]; };
+    case (_a find "762x25" >= 0 || _a find "7.62x25" >= 0): { _base = [7.62, 5.5, 488, 0.159, 0, 1]; };
+    case (_a find "57x28" >= 0 || _a find "5.7x28" >= 0):    { _base = [5.7, 2.0, 715, 0.233, 0, 1]; };
+    case (_a find "9x18" >= 0):       { _base = [9.27, 6.1, 315, 0.140, 0, 1]; };
+    default                                                  { _base = [5.56, 4.0, 948, 0.307, 0.151, 7]; };
 };
 
-// The tracer rounds fly slightly slower than ball (the tracer element
-// shifts the balance); the vanilla convention carries no real MV so the
-// family value stands, with a documented -1 % tracer correction.
-if (_isTracer) then { _res set [0, (_res select 0) * 0.99]; };
+// The parser override: if it resolved a caliber the switch missed
+// (the numeric-conversion names - 45acp = .45 in = 11.43 mm, 300 =
+// 7.62 mm), the base adopts the parsed caliber's values.  The switch
+// values are keyed by the canonical name.
+if ((_parsed select 2) > 0 && (_parsed select 0) != (_base select 0)) then {
+    private _pCal = _parsed select 1;
+    _base = switch (true) do {
+        case (_pCal == "5.56x45"):   { [5.56, 4.0, 948, 0.307, 0.151, 7]; };
+        case (_pCal == "5.45x39"):   { [5.45, 3.4, 880, 0.300, 0.168, 7]; };
+        case (_pCal == "7.62x51"):   { [7.62, 9.5, 838, 0.393, 0.200, 7]; };
+        case (_pCal == "7.62x39"):   { [7.62, 8.0, 710, 0.279, 0, 1]; };
+        case (_pCal == "7.62x54R"):  { [7.62, 9.6, 820, 0.377, 0.200, 7]; };
+        case (_pCal == "9mm"):       { [9.01, 8.0, 351, 0.149, 0, 1]; };
+        case (_pCal == ".50 BMG"):   { [12.7, 42.8, 885, 0.670, 0.340, 7]; };
+        case (_pCal == "12.7x108"):  { [12.7, 48.2, 818, 0.600, 0.340, 7]; };
+        case (_pCal == ".338 LM"):   { [8.58, 16.2, 899, 0.756, 0.320, 7]; };
+        case (_pCal == ".300 BLK"):  { [7.82, 8.1, 675, 0.338, 0, 1]; };
+        case (_pCal == "6.5 Grendel"): { [6.71, 7.8, 790, 0.500, 0.196, 7]; };
+        case (_pCal == ".45 ACP"):   { [11.48, 14.9, 255, 0.163, 0, 1]; };
+        case (_pCal == "12 Gauge"):  { [18.5, 28.3, 470, 0.060, 0, 1]; };
+        default                      { _base };
+    };
+};
 
-_res
+// ─── Layer 2: the PROJECTILE (the specific round overrides the base) ─────
+// Each is [name keyword, mv, bcG1, bcG7, massG].  MOST SPECIFIC FIRST.
+private _PROJ = [
+    // 5.56
+    ["m855a1", 961, 0.308, 0.152, 4.0], ["m995", 1013, 0.310, 0.310, 4.0],
+    ["mk262", 838, 0.362, 0.197, 5.0], ["mk318", 915, 0.307, 0.151, 4.0],
+    ["m855", 948, 0.307, 0.151, 4.0], ["m193", 993, 0.243, 0.118, 3.6],
+    ["ss109", 948, 0.307, 0.151, 4.0], ["tsx", 940, 0.280, 0, 4.0],
+    // 5.45
+    ["7n22", 890, 0, 0.174, 3.7], ["7n10", 880, 0, 0.176, 3.6],
+    ["7n6", 880, 0, 0.168, 3.4],
+    // 7.62 NATO
+    ["m118lr", 786, 0.496, 0.243, 11.3], ["mk316", 786, 0.496, 0.243, 11.3],
+    ["mk319", 860, 0.377, 0.377, 8.4], ["m993", 930, 0.430, 0.359, 8.3],
+    ["m80", 838, 0.393, 0.200, 9.5], ["m61", 833, 0.419, 0.218, 9.4],
+    // 7.62x39
+    ["m67", 733, 0.300, 0, 8.0], ["m43", 710, 0.294, 0, 7.9],
+    // 7.62x54R
+    ["7n1", 830, 0.400, 0.200, 9.8], ["lps", 820, 0.377, 0.200, 9.6],
+    // .50 BMG
+    ["slap", 1219, 0.670, 0.670, 23.3], ["amax", 882, 1.050, 0.560, 48.6],
+    ["m33", 885, 0.670, 0.340, 42.8], ["m903", 1219, 0.670, 0.670, 23.3],
+    // 12.7x108
+    ["b32", 818, 0.600, 0.340, 48.2],
+    // .338
+    ["250gr", 899, 0.756, 0.320, 16.2], ["300gr", 823, 0.605, 0.265, 19.4],
+    // .300 BLK
+    ["220otmsub", 320, 0.608, 0.235, 14.3], ["125otm", 675, 0.338, 0, 8.1],
+    ["115umc", 700, 0.300, 0, 7.5],
+    // 9mm (weight + type)
+    ["147fmj", 305, 0.155, 0, 9.5], ["147jhp", 300, 0.150, 0, 9.5],
+    ["124fmj", 351, 0.149, 0, 8.0], ["124jhp", 340, 0.145, 0, 8.0],
+    ["115fmj", 365, 0.145, 0, 7.5], ["115jhp", 355, 0.140, 0, 7.5],
+    ["135ftx", 330, 0.152, 0, 8.7], ["98frang", 390, 0.120, 0, 6.4],
+    // .45 ACP
+    ["230fmj", 255, 0.163, 0, 14.9], ["230ftx", 260, 0.165, 0, 14.9],
+    ["230hp", 250, 0.160, 0, 14.9], ["200fmj", 275, 0.150, 0, 13.0],
+    ["200hp", 270, 0.148, 0, 13.0], ["185fmj", 290, 0.145, 0, 12.0],
+    ["185hp", 285, 0.142, 0, 12.0], ["185ftx", 295, 0.148, 0, 12.0]
+];
+
+private _mv = _base select 2;
+private _bc1 = _base select 3;
+private _bc7 = _base select 4;
+private _mass = _base select 1;
+{
+    if (_a find (_x select 0) >= 0) exitWith {
+        _mv = _x select 1;
+        _bc1 = _x select 2;
+        _bc7 = _x select 3;
+        _mass = _x select 4;
+    };
+} forEach _PROJ;
+
+// ─── Layer 3: the TYPE modifiers ─────────────────────────────────────────
+// A subsonic round flies below ~340 m/s; a tracer slightly slower.
+if (_a find "sub" >= 0 && _mv > 400) then { _mv = 320; };
+if (_a find "tracer" >= 0) then { _mv = _mv * 0.99; };
+
+// ─── The engine-measured bullet (the physical anchor) ────────────────────
+// The engine exposes the bullet's own physical data in CfgAmmo: the
+// caliber (the diameter the engine uses for penetration) and the hit
+// (the kinetic-energy proxy for the mass).  These are the MEASURED
+// bullet - the closest the engine has to the model's bullet.  The
+// database's researched diameter/mass stand when the engine value is
+// missing (a rocket/shell without a caliber).
+private _engCal = getNumber (configFile >> "CfgAmmo" >> _ammo >> "caliber");
+if (_engCal > 0) then {
+    _base set [0, _engCal];   // the engine's bullet diameter overrides
+};
+private _engMass = getNumber (configFile >> "CfgAmmo" >> _ammo >> "hit") * 0.5;
+if (_engMass > 0) then { _mass = _engMass; };
+
+[_mv, _bc1, _bc7, _base select 0, _mass, if (_bc7 > 0) then { 7 } else { 1 }]

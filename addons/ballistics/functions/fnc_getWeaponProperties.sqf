@@ -36,7 +36,10 @@ Returns [barrelM, twistM, pressureMPa, moa, cyclicRpm, massKg, realMV].
 params [["_weapon", "", [""]]];
 if (_weapon == "") exitWith { [0.368, 0.178, 430, 2.5, 800, 3.5, 862] };
 
-private _w = toLower _weapon;
+// The match signal: the classname PLUS the readable displayName (the
+// ACE arsenal name - "HK416A5 5.56mm" carries the family signal the
+// mod's opaque classname hides).
+private _w = toLower (_weapon + " " + getText (configFile >> "CfgWeapons" >> _weapon >> "displayName"));
 
 // The weapon family -> real analogue.  The realMV is the measured
 // muzzle velocity at the weapon's real barrel (the seed's per-weapon
