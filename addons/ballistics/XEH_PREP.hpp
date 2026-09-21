@@ -10,3 +10,5 @@ PREP(getWeaponProperties);
 PREP(calculateBallisticDrag);
 PREP(deriveCartridge);
 PREP(measureBarrel);
+PREP(parseCaliber);
+PREP(matchTokens);
