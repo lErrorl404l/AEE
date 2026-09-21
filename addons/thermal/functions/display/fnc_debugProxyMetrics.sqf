@@ -1,15 +1,18 @@
 #include "..\..\script_component.hpp"
 /*
-Proxy-plane metrics diagnostic (issue #204) - v2.
+Proxy-plane metrics diagnostic (issue #204) - v3.
 
-runway_beton_F is 40x80m with NO texture selection (textures=[]) - it
-renders its own baked concrete and ignores setObjectTexture, and at
-any sane tile scale it is still a giant slab.
+road_W10_L9 is 10x9m (ideal tile) but texBefore=[] - road decals have
+NO texture selection, setObjectTexture cannot paint them.  Their
+material is baked into the model at the decal level.
 
-The road_W10_L9 pieces (10x9m) DO have texture selections (road_ca.paa
-+ road.rvmat).  This spawns one, measures it, paints the mid heat tile,
-and reads back getObjectTextures to verify the paint applies.  If it
-paints, these are the terrain-overlay tile proxy.
+This tests setObjectMaterial instead: swap the piece's material to the
+FPN rvmat (white Stage1 + perlinNoise Stage2 - the material the object
+FPN test proved renders in TI).  If the swap applies and shows white +
+mottle in TI, the material-swap route is the terrain overlay: spawn
+road_W10_L9 pieces, swap to a heat-colour rvmat, done.
+
+The rvmat's ambient/diffuse IS the heat colour - no texture slot needed.
 
 Usage (debug console):
     [] call aee_thermal_fnc_debugProxyMetrics;
@@ -17,14 +20,16 @@ Usage (debug console):
 private _pos = player modelToWorld [0, 3, 0];
 _pos set [2, 0];
 private _plane = createSimpleObject ["a3\roads_f\Test_RoadsA\road_W10_L9.p3d", _pos];
-private _bb = boundingBoxReal _plane;
-private _size = [(_bb select 1 select 0) - (_bb select 0 select 0),
-                 (_bb select 1 select 1) - (_bb select 0 select 1),
-                 (_bb select 1 select 2) - (_bb select 0 select 2)];
-private _texsBefore = getObjectTextures _plane;
-_plane setObjectTexture [0, "\z\aee\addons\thermal\data\ground\ground_heat_04.paa"];
-private _texsAfter = getObjectTextures _plane;
-systemChat format ["AEE metrics: road_W10_L9 size %1x%2, tex before=%3 after=%4", _size select 0, _size select 1, _texsBefore, _texsAfter];
-diag_log format ["[AEE][METRICS] road_W10_L9 size=%1 texBefore=%2 texAfter=%3", _size, _texsBefore, _texsAfter];
+private _mats = getObjectMaterials _plane;
+private _matCount = count _mats;
+// swap every material slot to the FPN rvmat
+{
+    if (_x isEqualType "") then {
+        _plane setObjectMaterial [_forEachIndex, "\z\aee\addons\thermal\data\ti_fpn.rvmat"];
+    };
+} forEach _mats;
+private _matsAfter = getObjectMaterials _plane;
+systemChat format ["AEE metrics: road_W10_L9 mats=%1 after=%2", _matCount, _matsAfter];
+diag_log format ["[AEE][METRICS] road_W10_L9 matCount=%1 matsBefore=%2 matsAfter=%3", _matCount, _mats, _matsAfter];
 
 []
