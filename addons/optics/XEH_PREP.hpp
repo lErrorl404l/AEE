@@ -15,7 +15,7 @@ PREPS(sensor,calculateRainOnOptics);
 PREPS(sensor,calculateSmokePersistence);
 PREPS(sensor,calculateSnowBlindness);
 PREPS(sensor,calculateSolarGlare);
-PREPS(sensor,calculateThermalContrast);
+
 PREPS(sensor,calculateVehicleHeatShimmer);
 PREPS(sensor,classifyNight);
 PREPS(sensor,getStarCatalog);

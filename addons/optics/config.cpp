@@ -21,7 +21,7 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
-#include "RscTitles.hpp"
+
 
 // ─── Engine thermal overrides (realistic heat scales) ─────────────────────
 // The vanilla engine's thermal scale is wildly optimistic: default afMax

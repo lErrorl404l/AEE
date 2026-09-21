@@ -44,3 +44,16 @@
     true,
     {}
 ] call CBA_fnc_addSetting;
+
+// ── Thermal diagnostics (issue #203, standalone decoupling) ─────────────
+// Thermal's own debug flag - previously borrowed nightvision's nvgDebug,
+// a cross-module coupling that blocked thermal as a standalone addon.
+[
+    QGVAR(thermalDebug),
+    "CHECKBOX",
+    [LLSTRING(thermalDebug_Name), LLSTRING(thermalDebug_Description)],
+    ["AEE Thermal", "Diagnostics"],
+    false,
+    true,
+    {}
+] call CBA_fnc_addSetting;

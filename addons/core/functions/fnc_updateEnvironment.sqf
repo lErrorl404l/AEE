@@ -135,7 +135,7 @@ if (GVAR(physiologyEnabled)) then {
 BEGIN_COUNTER(optics);
 [] call EFUNC(environmental,calculateSpaceWeather);
 [_posASL] call EFUNC(core,calculateIlluminance);
-[] call EFUNC(optics,calculateThermalContrast);
+[] call EFUNC(thermal,calculateThermalContrast);
 [] call EFUNC(optics,calculateAttenuation);
 if (GVAR(opticsEnabled)) then {
     [] call EFUNC(optics,calculateMirageIntensity);
