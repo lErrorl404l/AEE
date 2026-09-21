@@ -29,13 +29,6 @@ FNC_PACK = (CLOTHING / "fnc_getPackProperties.sqf").read_text(encoding="utf-8")
 FNC_EQUIP = (CLOTHING / "fnc_getEquipmentProperties.sqf").read_text(encoding="utf-8")
 INV = Path("/tmp/equip_extract/inventory.txt")
 
-# The inventory is extracted from the INSTALLED game + RHS configs - a
-# local artefact, not in CI.  When it is absent the coverage check
-# skips (the classname-family verification needs the extraction); the
-# SQF keywords are still verified by test_clothing / test_equipment_values.
-if not INV.exists():
-    raise unittest.SkipTest("equipment inventory not extracted (local-only check)")
-
 # Known noise: config base classes, hitpoint classes, animation
 # skeletons, vehicle-mounted weapons, cosmetic items.  These are NOT
 # real equipment items; the inventory extraction picks them up from
@@ -111,6 +104,11 @@ def load_inventory():
     return sections
 
 
+@unittest.skipUnless(
+    INV.exists(),
+    "equipment inventory not extracted (local-only check - run the extraction "
+    "in tools/tests/classify_inventory.py against the installed game + RHS)",
+)
 class TestClassifierExhaustiveness(unittest.TestCase):
     """Every real equipment family in the known inventory classifies."""
 
