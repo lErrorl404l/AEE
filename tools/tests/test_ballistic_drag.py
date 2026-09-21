@@ -25,48 +25,50 @@ from pathlib import Path
 
 REPO = Path(__file__).parents[2]
 
-# The modern BRL G1/G7 drag tables (mirror the SQF tables verbatim).
+# The modern BRL/JBM drag tables (the AUTHORITATIVE values, 76 G1
+# points / 81 G7 points - Litz Applied Ballistics A5-1/A5-3, McCoy
+# Ch.7, NATO AOP-55, ARL.  The anchors are the exact table values).
 G1 = {
-    0.0: 0.2032,
-    0.5: 0.2032,
-    0.8: 0.2285,
-    0.9: 0.3013,
-    1.0: 0.4805,
-    1.1: 0.5951,
-    1.2: 0.6550,
-    1.3: 0.6600,
-    1.4: 0.6460,
-    1.5: 0.6573,
-    1.6: 0.6590,
-    1.8: 0.6315,
+    0.0: 0.2630,
+    0.5: 0.2030,
+    0.8: 0.2550,
+    0.9: 0.3420,
+    1.0: 0.4810,
+    1.1: 0.5880,
+    1.2: 0.6390,
+    1.3: 0.6590,
+    1.4: 0.6630,
+    1.5: 0.6570,
+    1.6: 0.6490,
+    1.8: 0.6320,
     2.0: 0.5934,
-    2.25: 0.5650,
-    2.5: 0.5397,
-    3.0: 0.5035,
-    3.5: 0.4830,
-    4.0: 0.4660,
-    5.0: 0.4470,
+    2.25: 0.5660,
+    2.5: 0.5400,
+    3.0: 0.4990,
+    3.5: 0.4720,
+    4.0: 0.4530,
+    5.0: 0.4370,
 }
 G7 = {
     0.0: 0.1198,
     0.5: 0.1198,
-    0.8: 0.1366,
-    0.9: 0.1838,
-    1.0: 0.3003,
-    1.1: 0.3767,
-    1.2: 0.4130,
-    1.3: 0.4140,
-    1.4: 0.3990,
-    1.5: 0.4100,
-    1.6: 0.4118,
-    1.8: 0.3991,
-    2.0: 0.3779,
-    2.25: 0.3635,
-    2.5: 0.3530,
-    3.0: 0.3390,
-    3.5: 0.3330,
-    4.0: 0.3300,
-    5.0: 0.3260,
+    0.8: 0.1358,
+    0.9: 0.1763,
+    1.0: 0.2427,
+    1.1: 0.3334,
+    1.2: 0.4460,
+    1.3: 0.5743,
+    1.4: 0.6748,
+    1.5: 0.7100,
+    1.6: 0.7030,
+    1.8: 0.6550,
+    2.0: 0.6060,
+    2.25: 0.5590,
+    2.5: 0.5240,
+    3.0: 0.4750,
+    3.5: 0.4430,
+    4.0: 0.4210,
+    5.0: 0.4000,
 }
 
 
@@ -121,32 +123,34 @@ class TestG1DragTable(unittest.TestCase):
     """The G1 Cd table must match the modern BRL reference values."""
 
     def test_table_anchors(self):
-        # The published G1 anchors (Applied Ballistics / JBM):
-        # Mach 0.5: 0.2032, Mach 1.0: 0.4805, Mach 1.5: 0.6573,
-        # Mach 2.0: 0.5934, Mach 2.5: 0.5397.
+        # The published G1 anchors (the JBM/BRL table: Litz A5-1,
+        # McCoy Ch.7, NATO AOP-55):
+        # Mach 0.5: 0.2030, Mach 1.0: 0.4810, Mach 1.5: 0.6570,
+        # Mach 2.0: 0.5934, Mach 2.5: 0.5400.
         for mach, cd in [
-            (0.5, 0.2032),
-            (1.0, 0.4805),
-            (1.5, 0.6573),
+            (0.5, 0.2030),
+            (1.0, 0.4810),
+            (1.5, 0.6570),
             (2.0, 0.5934),
-            (2.5, 0.5397),
+            (2.5, 0.5400),
         ]:
             self.assertAlmostEqual(G1[mach], cd, places=4, msg=f"G1 Cd at Mach {mach}")
 
     def test_transonic_peak(self):
-        # The transonic rise peaks ~0.66 at Mach 1.3 (~3.2x subsonic).
+        # The transonic rise peaks ~0.66 at Mach 1.3-1.4 (~3.2x the
+        # subsonic 0.20).
         peak = max(G1[m] for m in G1 if 1.0 <= m <= 1.6)
-        self.assertAlmostEqual(peak, 0.6600, delta=0.005)
+        self.assertAlmostEqual(peak, 0.6630, delta=0.005)
         self.assertGreater(peak, G1[0.5] * 3.0)
 
     def test_table_saved_in_sqf(self):
-        # The SQF must carry the same table anchors.
+        # The SQF must carry the same table anchors (the JBM/BRL values).
         sqf = (
             REPO / "addons/ballistics/functions/fnc_calculateBallisticDrag.sqf"
         ).read_text(encoding="utf-8")
-        for anchor in ("0.2032", "0.4805", "0.6573", "0.5934", "0.5397", "0.6600"):
+        for anchor in ("0.2030", "0.4810", "0.6570", "0.5934", "0.5400"):
             self.assertIn(anchor, sqf, f"G1 anchor {anchor} missing from SQF")
-        for anchor in ("0.1198", "0.3003", "0.4130", "0.4140", "0.3779"):
+        for anchor in ("0.1198", "0.2427", "0.7100", "0.6060", "0.5240"):
             self.assertIn(anchor, sqf, f"G7 anchor {anchor} missing from SQF")
 
 
