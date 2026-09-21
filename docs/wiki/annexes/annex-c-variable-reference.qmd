@@ -86,7 +86,7 @@ follow the variable names as written in the SQF source.
 | `aee_optics_glareBlur` | optics | Glare blur |
 | `aee_optics_currentLaserAttenuation` | optics | Laser attenuation |
 | `aee_optics_currentVisibleAttenuation` | optics | Visible attenuation |
-| `aee_optics_currentThermalNoise` | optics | Thermal noise |
+| `aee_thermal_currentThermalNoise` | thermal | Thermal noise floor (NETD-based), produced by fnc_calculateThermalContrast |
 | `aee_core_dynamicLux` | core | Dynamic lux contribution |
 | `aee_core_irLightLux` | core | IR light lux |
 | `aee_core_lightDirection` | core | Light direction |

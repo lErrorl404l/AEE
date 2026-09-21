@@ -2707,13 +2707,14 @@ class TestSQFSync(unittest.TestCase):
 
     # ── Thermal contrast (fnc_calculateThermalContrast.sqf) ──
     def test_contrast_span_is_8(self):
-        self._assert_in_sqf("fnc_calculateThermalContrast.sqf", ["/ 8"], "delta-T span")
+        self._assert_in_sqf("fnc_calculateThermalContrast.sqf", ["/ 8"], "delta-T span", addon="thermal")
 
     def test_contrast_attenuation_constants(self):
         self._assert_in_sqf(
             "fnc_calculateThermalContrast.sqf",
             ["rain * 0.4", "fog * 0.6", "humidity * 0.3"],
             "atmospheric attenuation",
+            addon="thermal",
         )
 
     def test_contrast_heat_cold_constants(self):
@@ -2721,6 +2722,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_calculateThermalContrast.sqf",
             ["_T > 35", "(_T - 35) / 10) * 0.7", "_T < 5", "* 1.2", "min 1.0"],
             "heat flatten / cold boost",
+            addon="thermal",
         )
 
     def test_contrast_vehicle_only_average(self):
@@ -2728,6 +2730,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_calculateThermalContrast.sqf",
             ['isKindOf "Man"', "isEqualType objNull", "avgVehicleTemp"],
             "vehicle-only scene average",
+            addon="thermal",
         )
 
     def test_netd_constants(self):
@@ -2735,6 +2738,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_calculateThermalContrast.sqf",
             ["0.05", "/ 1000", "5000", "humidity * 0.5"],
             "NETD noise floor",
+            addon="thermal",
         )
 
     # ── Thermal vision (fnc_applyThermalVision.sqf) ──
