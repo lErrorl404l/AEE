@@ -2850,20 +2850,20 @@ class TestSQFSync(unittest.TestCase):
         # Issue #204: the muzzle-blast ground stain must be an ORGANIC
         # blob (multi-decals, scatter + elongation along the firing
         # axis), not a single perfect circle - real gas footprints are
-        # irregular and weapon-dependent.  Uses the runway_beton road
-        # proxy planes (land_decal, Roadway LOD) - the verified
-        # TI-visible terrain-surface path, NOT object decals or drop
-        # particles which the TI pass ignores.
+        # irregular and weapon-dependent.  Uses Land_DirtPatch_03_F
+        # decals painted via the usertexture selection - the verified
+        # TI-visible terrain paint (all other vanilla flat pieces are
+        # material-baked with no paintable slot).
         self._assert_in_sqf(
             "fnc_spawnHeatStain.sqf",
             [
-                "createSimpleObject",
-                "runway_beton_F.p3d",
+                "Land_DirtPatch_03_F",
+                '"usertexture"',
                 "setObjectScale",
                 "ground_heat_%1.paa",
                 "random 0.8",  # forward-biased scatter
             ],
-            "organic muzzle-blast ground stain (road-proxy TI path)",
+            "organic muzzle-blast ground stain (DirtPatch usertexture TI path)",
             addon="thermal",
         )
 

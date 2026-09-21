@@ -1,14 +1,15 @@
 #include "..\..\script_component.hpp"
 /*
-Proxy-plane metrics diagnostic (issue #204) - v6.
+Proxy-plane metrics diagnostic (issue #204) - v7.
 
-Land_DirtPatch_03_F has ONE selection: "usertexture" - the decal's
-engine-projected texture hook.  getObjectTextures returns [] because
-the texture is generated/projected, but setObjectTexture by SELECTION
-NAME is the designed way to address decal textures.
+The usertexture paint WORKS (seen in-game) but the .paa tile at heat
+level 04 reads dark/cold - the mid tile is half-brightness red and TI
+reads its luminance.  The proven object paint uses a FULL-brightness
+procedural colour #(rgb,8,8,3)color(1,0.10,0.20,1).
 
-Test: paint the usertexture selection with the mid heat tile and read
-back what the object reports.
+This paints the usertexture selection with the full WHOT-red procedural
+colour (no .paa) - if it reads bright/hot in TI, the overlay uses the
+procedural string directly.
 
 Usage (debug console):
     [] call aee_thermal_fnc_debugProxyMetrics;
@@ -16,10 +17,9 @@ Usage (debug console):
 private _pos = player modelToWorld [0, 3, 0];
 _pos set [2, 0];
 private _obj = createVehicle ["Land_DirtPatch_03_F", _pos, [], 0, "NONE"];
-_obj setObjectTexture ["usertexture", "\z\aee\addons\thermal\data\ground\ground_heat_04.paa"];
-private _texs = getObjectTextures _obj;
-private _mats = getObjectMaterials _obj;
-systemChat format ["AEE metrics: DirtPatch painted usertexture, tex=%1 mats=%2", _texs, _mats];
-diag_log format ["[AEE][METRICS] DirtPatch usertexture painted, tex=%1 mats=%2", _texs, _mats];
+_obj setObjectScale 0.8;
+_obj setObjectTexture ["usertexture", "#(rgb,8,8,3)color(1,0.10,0.20,1)"];
+systemChat "AEE metrics: DirtPatch painted FULL WHOT-red procedural";
+diag_log "[AEE][METRICS] DirtPatch usertexture = full WHOT-red procedural";
 
 []

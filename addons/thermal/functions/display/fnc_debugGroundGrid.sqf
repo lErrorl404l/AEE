@@ -1,13 +1,17 @@
 #include "..\..\script_component.hpp"
 /*
-In-game TI-visible ground-tile grid (issue #204).
+In-game TI-visible ground-tile grid (issue #204) - WORKING mechanism.
 
-Spawns a 5x5 grid of runway_beton proxy planes (the land_decal road
-pieces that render into the terrain surface pass TI mode samples - the
-verified TI-visible path, see fnc_debugRoadTest).  Each tile is painted
-with a feathered heat tile at a smooth radial gradient: hot at the
-centre, cold at the edge.  Tiles overlap (scale 1.3x spacing) so the
-feathered edges blend.
+The terrain overlay is Land_DirtPatch_03_F decals painted via
+setObjectTexture ["usertexture", tile] - the decal's engine-projected
+texture hook.  Verified in-game: the painted decal reads DIFFERENTLY in
+thermals from the surrounding ground (all other vanilla flat pieces are
+material-baked with no paintable slot; the road pieces' tex/mats are
+[]; only the usertexture selection on DirtPatch accepts a paint).
+
+Spawns a 5x5 grid of DirtPatch tiles, each painted with a feathered
+heat tile at a smooth radial gradient: hot centre (7) fading to cold
+edges (0).  Tiles overlap (1.15x scale) so the feathered edges blend.
 
 Usage (debug console):
     [] call aee_thermal_fnc_debugGroundGrid;
@@ -17,10 +21,9 @@ private _centre = getPosATL player;
 _centre set [2, 0];
 
 private _step = (2 * _radius) / (_grid - 1);
-// runway_beton natural size is ~15m; scale ~0.35 gives a 5m tile.
-// This is the tile footprint, NOT the grid step (the step*1.3 bug
-// scaled each tile to ~8x, merging the whole grid into one road).
-private _tileScale = 0.35;
+// DirtPatch natural size 10x10m; scale 0.55 ~ 5.5m tile footprint.
+// 1.15x overlap lets the feathered edges blend into a continuous ramp.
+private _tileScale = _step * 0.11;
 private _tiles = [];
 for "_y" from 0 to (_grid - 1) do {
     for "_x" from 0 to (_grid - 1) do {
@@ -30,15 +33,15 @@ for "_y" from 0 to (_grid - 1) do {
         // radial heat: centre HOT (7) -> edges cold (0)
         private _dist = sqrt (_dx * _dx + _dy * _dy) / _radius;
         private _heat = round (7 * (1 - (_dist min 1)));
-        private _tile = createSimpleObject ["a3\roads_f\runway\runway_beton_F.p3d", _pos];
+        private _tile = createVehicle ["Land_DirtPatch_03_F", _pos, [], 0, "CAN_COLLIDE"];
         _tile setDir (random 360);
         _tile setObjectScale _tileScale;
-        _tile setObjectTexture [0, format ["\z\aee\addons\thermal\data\ground\ground_heat_%1.paa", _heat]];
+        _tile setObjectTexture ["usertexture", format ["\z\aee\addons\thermal\data\ground\ground_heat_%1.paa", _heat]];
         _tiles pushBack _tile;
     };
 };
 
-systemChat format ["AEE ground grid: %1x%1 road-proxy tiles, radius %2m, %3s", _grid, _radius, _lifetime];
+systemChat format ["AEE ground grid: %1x%1 DirtPatch tiles, radius %2m, scale %3", _grid, _radius, _tileScale];
 
 [
     {
