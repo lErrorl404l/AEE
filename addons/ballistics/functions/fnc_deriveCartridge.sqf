@@ -44,22 +44,22 @@ if (_ammo == "") exitWith { [905, 0.307, 0, 5.56, 4.0, 1] };
 // B_127x99_Ball ...  The caliber encodes the family.
 private _a = toLower _ammo;
 private _family = switch (true) do {
-    case (_a find "556x45" >= 0):   "556x45";
-    case (_a find "545x39" >= 0):   "545x39";
-    case (_a find "762x51" >= 0):   "762x51";
-    case (_a find "762x39" >= 0):   "762x39";
-    case (_a find "762x54" >= 0):   "762x54";
+    case (_a find "556x45" >= 0):   { "556x45" };
+    case (_a find "545x39" >= 0):   { "545x39" };
+    case (_a find "762x51" >= 0):   { "762x51" };
+    case (_a find "762x39" >= 0):   { "762x39" };
+    case (_a find "762x54" >= 0):   { "762x54" };
     case (_a find "9x21" >= 0 ||
-          _a find "9x19" >= 0):     "9x19";
-    case (_a find "127x99" >= 0):   "127x99";
-    case (_a find "127x108" >= 0):  "127x108";
-    case (_a find "338" >= 0):      "338";
+          _a find "9x19" >= 0):     { "9x19" };
+    case (_a find "127x99" >= 0):   { "127x99" };
+    case (_a find "127x108" >= 0):  { "127x108" };
+    case (_a find "338" >= 0):      { "338" };
     case (_a find "65x39" >= 0 ||
-          _a find "6.5" >= 0):      "65x39";
+          _a find "6.5" >= 0):      { "65x39" };
     case (_a find "127x76" >= 0 ||
           _a find "12gauge" >= 0 ||
-          _a find "pellet" >= 0):   "12gauge";
-    default                         "";
+          _a find "pellet" >= 0):   { "12gauge" };
+    default                         { "" };
 };
 
 // The family base properties (the #167 researched anchors).  The
@@ -98,7 +98,7 @@ private _vShort = _base select 2;
 private _shortBarrel = _base select 3;
 private _vMin = _base select 4;
 
-private _useBarrel = if (_barrelM > 0.01) then { _barrelM } else { _refBarrel };
+private _useBarrel = [_refBarrel, _barrelM] select (_barrelM > 0.01);
 
 // The velocity-length curve: linear between the short-barrel anchor
 // (vShort at shortBarrel) and the reference (refMV at refBarrel) - the
