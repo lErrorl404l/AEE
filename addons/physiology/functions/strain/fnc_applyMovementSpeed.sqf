@@ -47,14 +47,16 @@ private _fatigue = missionNamespace getVariable [QGVAR(fatigueFactor), 1.0];
 if !(_fatigue isEqualType 0) then { _fatigue = 1.0; };
 _fatigue = _fatigue max 0.3 min 1.0;
 
-// The carried load + insulation: the equipment library's total weight
-// (uniform + vest + helmet + pack + contents) in kg and the combined
-// insulation in clo.  A 30 kg combat load slows the soldier (the issue
-// #119 library feeds #212).  Light patrol ~15 kg -> full speed,
-// overloaded ~45 kg -> 0.85.
+// The carried load + insulation: the equipment library's per-slot
+// signature.  The combined entry (index 5) holds the summed weight
+// (uniform + vest + helmet + goggles + pack + contents) in kg and the
+// combined clo.  A 30 kg combat load slows the soldier (the issue #119
+// library feeds #212).  Light patrol ~15 kg -> full speed, overloaded
+// ~45 kg -> 0.85.
 private _equip = [_unit] call FUNC(getEquipmentProperties);
-private _load = _equip select 0;
-private _clo = _equip select 3;
+private _combined = _equip select 5;
+private _load = _combined select 0;
+private _clo = _combined select 3;
 
 // Clothing insulation shifts the felt wind chill toward the air
 // temperature (the wind-chill index is for exposed skin; clo 1.0 is a
@@ -69,7 +71,21 @@ if !(_airTemp isEqualType 0) then { _airTemp = 15; };
 private _wct = missionNamespace getVariable [QEGVAR(core,windChillTemp), _airTemp];
 if !(_wct isEqualType 0) then { _wct = _airTemp; };
 private _feltWct = _airTemp + (_wct - _airTemp) * (exp (-_clo));
+
+// Gloves (worn with the uniform - no separate engine slot) protect the
+// hands specifically, and dexterity is a HAND function.  The Daanen
+// 2009 dexterity equations are WCET-based; glove insulation (Gonzalez
+// 1998 measured: light 0.86, heavy 1.05, mitten 1.46 clo) raises the
+// hand's effective temperature, so a gloved soldier keeps more manual
+// dexterity at the same wind chill.  At heavy glove insulation the
+// dexterity floor rises from 10 toward ~35 (a gloved hand stays
+// workable in cold that would numb a bare one).
+private _gloveClo = [_unit] call FUNC(getGloveProperties);
 private _dexterity = (90 + 2 * _feltWct) max 10 min 100;
+if (_gloveClo > 0.1) then {
+    _dexterity = _dexterity + (_gloveClo * 15) min 25;
+    _dexterity = _dexterity max 35 min 100;
+};
 
 // Each factor maps to a speed multiplier; the weakest governs.
 private _fatigueSpeed = linearConversion [0.3, 1.0, _fatigue, 0.75, 1.0, true];

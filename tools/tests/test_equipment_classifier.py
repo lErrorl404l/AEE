@@ -20,9 +20,13 @@ import unittest
 from pathlib import Path
 
 REPO = Path(__file__).parents[2]
-FNC = (
-    REPO / "addons/physiology/functions/clothing/fnc_getEquipmentProperties.sqf"
-).read_text(encoding="utf-8")
+CLOTHING = REPO / "addons/physiology/functions/clothing"
+FNC_UNIFORM = (CLOTHING / "fnc_getUniformProperties.sqf").read_text(encoding="utf-8")
+FNC_VEST = (CLOTHING / "fnc_getVestProperties.sqf").read_text(encoding="utf-8")
+FNC_HELMET = (CLOTHING / "fnc_getHelmetProperties.sqf").read_text(encoding="utf-8")
+FNC_GOGGLE = (CLOTHING / "fnc_getGoggleProperties.sqf").read_text(encoding="utf-8")
+FNC_PACK = (CLOTHING / "fnc_getPackProperties.sqf").read_text(encoding="utf-8")
+FNC_EQUIP = (CLOTHING / "fnc_getEquipmentProperties.sqf").read_text(encoding="utf-8")
 INV = Path("/tmp/equip_extract/inventory.txt")
 
 # Known noise: config base classes, hitpoint classes, animation
@@ -42,11 +46,14 @@ NOISE = re.compile(
 )
 
 
-def extract_tiers(slot_var):
-    """Return ordered [(keywords, tier_string)] from the switch on _<slot>."""
+def extract_tiers(slot_var, source=None):
+    """Return ordered [(keywords, tier_string)] from the switch on _<slot>.
+    The per-slot files return a standalone `switch (true) do {...};`."""
+    if source is None:
+        source = FNC_EQUIP
     m = re.search(
-        rf"{slot_var} = switch \(true\) do \{{(.*?)\n    \}};",
-        FNC,
+        rf"switch \(true\) do \{{(.*?)\n\}};",
+        source,
         re.S,
     )
     if not m:
@@ -103,9 +110,10 @@ class TestClassifierExhaustiveness(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.inv = load_inventory()
-        cls.helmet_tiers = extract_tiers("helmet")
-        cls.vest_tiers = extract_tiers("vest")
-        cls.pack_tiers = extract_tiers("pack")
+        cls.helmet_tiers = extract_tiers("_h", FNC_HELMET)
+        cls.vest_tiers = extract_tiers("_v", FNC_VEST)
+        cls.pack_tiers = extract_tiers("_b", FNC_PACK)
+        cls.goggle_tiers = extract_tiers("_g", FNC_GOGGLE)
 
     def _fall_through(self, slot, tiers):
         bad = []
@@ -135,23 +143,31 @@ class TestClassifierExhaustiveness(unittest.TestCase):
 
     def test_all_goggles_classified(self):
         # Every vanilla goggles-slot family must classify (no default).
-        goggle_tiers = extract_tiers("goggle")
         for name in VANILLA_GOGGLES:
-            tier = classify(name, goggle_tiers)
+            tier = classify(name, self.goggle_tiers)
             self.assertNotEqual(
                 tier, "DEFAULT", f"goggles family {name} falls through to default"
             )
 
     def test_goggle_slot_wired(self):
         # The goggles slot is read and combined into the signature.
-        self.assertIn("goggles _unit", FNC)
-        self.assertIn("_goggle select 0", FNC)
+        self.assertIn("goggles _unit", FNC_GOGGLE)
+        self.assertIn("getGoggleProperties", FNC_EQUIP)
+        self.assertIn("_goggle select 0", FNC_EQUIP)
+
+    def test_per_slot_functions_exist(self):
+        # The split: one classifier file per slot.
+        self.assertIn("getUniformProperties", FNC_EQUIP)
+        self.assertIn("getVestProperties", FNC_EQUIP)
+        self.assertIn("getHelmetProperties", FNC_EQUIP)
+        self.assertIn("getPackProperties", FNC_EQUIP)
 
     def test_keywords_present_in_sqf(self):
         # The mirror's tier lists must be non-empty (extraction works).
         self.assertGreater(len(self.helmet_tiers), 10)
         self.assertGreater(len(self.vest_tiers), 10)
         self.assertGreater(len(self.pack_tiers), 8)
+        self.assertGreater(len(self.goggle_tiers), 4)
 
 
 if __name__ == "__main__":

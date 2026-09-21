@@ -18,20 +18,21 @@ import unittest
 from pathlib import Path
 
 REPO = Path(__file__).parents[2]
-FNC = (
-    REPO / "addons/physiology/functions/clothing/fnc_getEquipmentProperties.sqf"
-).read_text(encoding="utf-8")
+CLOTHING = REPO / "addons/physiology/functions/clothing"
+FNC_HELMET = (CLOTHING / "fnc_getHelmetProperties.sqf").read_text(encoding="utf-8")
+FNC_VEST = (CLOTHING / "fnc_getVestProperties.sqf").read_text(encoding="utf-8")
+FNC_PACK = (CLOTHING / "fnc_getPackProperties.sqf").read_text(encoding="utf-8")
 
 
 def extract_tiers(slot_var):
-    """Return {keyword: tier_string} from the switch on _<slot>."""
+    """Return {keyword: tier_string} from the standalone switch."""
     m = re.search(
-        rf"{slot_var} = switch \(true\) do \{{(.*?)\n    \}};",
-        FNC,
+        rf"switch \(true\) do \{{(.*?)\n\}};",
+        slot_var,
         re.S,
     )
     if not m:
-        raise SystemExit(f"switch block for _{slot_var} not found")
+        raise SystemExit("switch block not found")
     body = m.group(1)
     tiers = {}
     for case in re.finditer(r"case\s*\((.*?)\):\s*\{(\s*\[[^\]]+\]\s*)\};", body, re.S):
@@ -43,9 +44,9 @@ def extract_tiers(slot_var):
     return tiers
 
 
-HELMET = extract_tiers("helmet")
-VEST = extract_tiers("vest")
-PACK = extract_tiers("pack")
+HELMET = extract_tiers(FNC_HELMET)
+VEST = extract_tiers(FNC_VEST)
+PACK = extract_tiers(FNC_PACK)
 
 
 class TestHelmetValues(unittest.TestCase):
