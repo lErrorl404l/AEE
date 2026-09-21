@@ -13,6 +13,7 @@ PREPS(surface,getSelectionMaterials);
 PREPS(surface,getHitPointMaterials);
 PREPS(display,applySelectionThermal);
 PREPS(display,debugApplyFPN);
+PREPS(display,spawnHeatStain);
 PREPS(environment,calculateMRT);
 PREPS(environment,calculateGlobeTemperature);
 PREPS(ground,calculateGroundNodeStack);

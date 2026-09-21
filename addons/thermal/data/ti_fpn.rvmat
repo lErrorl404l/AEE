@@ -1,0 +1,31 @@
+// FPN thermal material (issue #204) - production variant.
+//
+// The test (test_fpn_red.rvmat) proved the engine composites a
+// perlinNoise Stage2 over a painted Stage1 colour on objects, per
+// selection.  This is the production version: Stage1 is WHITE so the
+// physics heat colour painted via setObjectTexture shows through
+// unchanged, and Stage2 multiplies the static spatial mottle (FPN)
+// over it.  Real LWIR sensors show this fixed-pattern noise on top of
+// the temporal FilmGrain ppEffect.
+//
+// The material is swapped in only while thermal is active
+// (fnc_applySelectionThermal, FPN setting on) and restored on EXIT -
+// the existing save/restore already captures _oldMats per object.
+ambient[]={1,1,1,1};
+diffuse[]={1,1,1,1};
+forcedDiffuse[]={0,0,0,0};
+emmisive[]={0,0,0,0};
+specular[]={0,0,0,0};
+specularPower=1;
+PixelShaderID="Normal";
+VertexShaderID="Basic";
+class Stage1
+{
+    texture="#(rgb,8,8,3)color(1,1,1,1)";
+    uvSource="tex";
+};
+class Stage2
+{
+    texture="#(ai,512,512,9)perlinNoise(256,256,0.4,1)";
+    uvSource="tex";
+};

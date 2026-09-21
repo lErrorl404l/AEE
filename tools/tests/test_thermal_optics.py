@@ -2829,6 +2829,9 @@ class TestSQFSync(unittest.TestCase):
         # Issue #204 (MKK mechanism): the heat is painted as a procedural
         # WHOT-red colour via setObjectTexture - the vanilla TI mode
         # renders the Stage1 TEXTURE, not a swapped material's diffuse.
+        # The material is swapped ONLY for the FPN rvmat (ti_fpn.rvmat,
+        # perlinNoise Stage2) when the thermalFPN setting is on, and
+        # restored on EXIT - never a permanent replacement.
         self._assert_in_sqf(
             "fnc_applySelectionThermal.sqf",
             [
@@ -2837,9 +2840,27 @@ class TestSQFSync(unittest.TestCase):
                 "0.20 * _qb",
                 "private _levels = 32",
                 "setObjectTexture [_idx, _colour]",
-                "// No setObjectMaterial",
+                "ti_fpn.rvmat",
             ],
-            "heat-colour texture paint (MKK WHOT-red, 32 levels)",
+            "heat-colour texture paint (MKK WHOT-red, 32 levels, FPN material)",
+            addon="thermal",
+        )
+
+    def test_spawn_heat_stain_organic(self):
+        # Issue #204: the muzzle-blast ground stain must be an ORGANIC
+        # blob (multi-decal scatter + elongation along the firing axis),
+        # not a single perfect circle - real gas footprints are irregular
+        # and weapon-dependent.
+        self._assert_in_sqf(
+            "fnc_spawnHeatStain.sqf",
+            [
+                "Land_DirtPatch_03_F",
+                "setDir (random 360)",
+                "_facing vectorMultiply",
+                "createVehicle",
+                "ground_heat_%1.paa",
+            ],
+            "organic muzzle-blast ground stain (multi-decal blob)",
             addon="thermal",
         )
 
@@ -3435,14 +3456,12 @@ class TestSQFSync(unittest.TestCase):
         # (the bare name must NOT reach preprocessFile).
         root = Path(__file__).resolve().parents[2]
         mat_dir = root / "addons" / "material" / "functions"
-        text = (mat_dir / "fnc_classifyBySurfaceType.sqf").read_text(
-            encoding="utf-8")
+        text = (mat_dir / "fnc_classifyBySurfaceType.sqf").read_text(encoding="utf-8")
         self.assertIn('"concrete" in _surface', text)
         self.assertIn('"grass" in _surface', text)
         self.assertIn('"asphalt" in _surface', text)
         self.assertIn("getSurfaceMaterial", text)
-        surf = (mat_dir / "fnc_getSurfaceMaterial.sqf").read_text(
-            encoding="utf-8")
+        surf = (mat_dir / "fnc_getSurfaceMaterial.sqf").read_text(encoding="utf-8")
         self.assertIn('in _surfId || {"/" in _surfId}', surf)  # path guard
 
     def test_ground_temperature_by_surface(self):
@@ -3594,7 +3613,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_applyImpactHeat.sqf",
             [
                 "getPosASL _projectile",
-                'CfgAmmo',
+                "CfgAmmo",
                 '>> "hit"',
                 "addGroundStamp",
                 "nearObjects 2",
@@ -3606,7 +3625,9 @@ class TestSQFSync(unittest.TestCase):
         # The HitPart listener is wired in the optics postInit.
         post = (
             Path(__file__).resolve().parents[2]
-            / "addons" / "optics" / "XEH_postInit.sqf"
+            / "addons"
+            / "optics"
+            / "XEH_postInit.sqf"
         ).read_text(encoding="utf-8")
         self.assertIn('["hitPart"', post)
         self.assertIn("applyImpactHeat", post)

@@ -186,6 +186,18 @@
         private _muzzlePos = getPosASL _projectile;
         missionNamespace setVariable [QEGVAR(thermal,muzzlePos), _muzzlePos];
         missionNamespace setVariable [QEGVAR(thermal,muzzleTime), diag_tickTime];
+
+        // VISUAL organic ground stain (issue #204): the hot gas blast
+        // leaves an irregular, dynamic footprint on the ground - not a
+        // perfect circle.  Spawned from the projectile's own velocity
+        // (the true muzzle axis) with scatter + elongation; fades and
+        // deletes itself.  Client-local; the ground PHYSICS stamp is
+        // separate in fnc_applyExhaustHeat.
+        private _muzzleVel = velocity _projectile;
+        private _heat = missionNamespace getVariable [QEGVAR(thermal,barrelHeat), 0.3];
+        if (_heat isEqualType 0) then {
+            [_muzzlePos, _muzzleVel, _heat, 1] call EFUNC(thermal,spawnHeatStain);
+        };
     };
 
     if (currentVisionMode _unit != 1) exitWith {};
