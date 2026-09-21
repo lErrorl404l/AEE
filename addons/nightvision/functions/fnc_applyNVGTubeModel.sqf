@@ -176,6 +176,17 @@ private _dofMaxDist = 300;
 // GPNVG-18 panoramic quad (4).
 private _tubeCount = 1;
 
+// ─── Device properties (issue #215) ─────────────────────────────────────
+// The device classifier resolves the HMD's researched tube physics
+// [generation, sensitivity, resolution, weightKg, tubeCount, fovDeg].
+// The generation sets the tier (which picks the model's per-tier
+// constants below); the sensitivity and tube count feed the photon
+// model and vignette geometry directly.
+private _dev = [_unit] call FUNC(getNvgDeviceProperties);
+private _tier = _dev select 0;
+private _sensitivity = _dev select 1;
+private _tubeCount = _dev select 4;
+
 // Tier matcher by HMD classname.  Substring tests run most-specific first.
 // The ENVG-II (NVGogglesB_grn_F/blk_F/gry_F, Apex) and panoramic GPNVG-class
 // goggles are modern FILMLESS devices — Gen 4 equivalent, same tube class as
