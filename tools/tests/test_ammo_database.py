@@ -146,11 +146,12 @@ class TestWeaponDatabase(unittest.TestCase):
 
 class TestBallisticWiring(unittest.TestCase):
     def test_fired_eh_uses_real_mv(self):
-        # The Fired EH must read the weapon database MV, not the game
+        # The Fired EH must use the derived MV (issue #170: measure the
+        # barrel, derive the MV from the cartridge curve), not the game
         # initSpeed.
         post = (REPO / "addons/ballistics/XEH_postInit.sqf").read_text(encoding="utf-8")
-        self.assertIn("getWeaponProperties", post)
-        self.assertIn("_weaponProps select 6", post)
+        self.assertIn("measureBarrel", post)
+        self.assertIn("deriveCartridge", post)
 
     def test_mv_correction_uses_real_mv(self):
         # The MV correction reads the ammo database real MV.

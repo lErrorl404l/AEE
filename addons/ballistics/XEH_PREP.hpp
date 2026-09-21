@@ -8,3 +8,5 @@ PREP(calculateBarrelState);
 PREP(getAmmoProperties);
 PREP(getWeaponProperties);
 PREP(calculateBallisticDrag);
+PREP(deriveCartridge);
+PREP(measureBarrel);
