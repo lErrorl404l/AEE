@@ -153,7 +153,7 @@ def main():
         lines.append(f'    ["{fam}", {arr}],')
     lines.append("];")
     lines.append("")
-    lines.append("// The family keyword list (the classifier scan, longest first).")
+    # The family keyword list (the classifier scan, longest first).
     lines.append("private _familyKeys = [")
     for fam in sorted(weapons, key=len, reverse=True):
         lines.append(f'    "{fam}",')
