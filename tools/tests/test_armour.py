@@ -100,6 +100,15 @@ class TestACECoexistence(unittest.TestCase):
         src = (REPO / "addons/armour/initSettings.inc.sqf").read_text(encoding="utf-8")
         self.assertIn("penetrationGate", src)
 
+    def test_soldier_armour_gate(self):
+        # The issue #119 soldier branch: vest NIJ level -> protection mm.
+        src = GATE
+        self.assertIn('isKindOf "Man"', src)
+        self.assertIn("getEquipmentProperties", src)
+        self.assertIn("_nij", src)
+        self.assertIn("case 3: { 20 }", src)  # ESAPI plates
+        self.assertIn("default { 3 }", src)  # no vest
+
 
 if __name__ == "__main__":
     unittest.main()

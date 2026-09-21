@@ -41,10 +41,10 @@ params ["_unit", "_selection", "_damage", "_source", "_projectile",
         ["_hitIndex", -1, [0]], ["_instigator", objNull, [objNull]],
         ["_hitPoint", "", [""]]];
 
-// Only projectile impacts on land vehicles.  Non-projectile damage
-// (collision, fire) passes through untouched.
+// Only projectile impacts on land vehicles OR infantry (the issue #119
+// soldier-armour gate).  Non-projectile damage passes through untouched.
 if (_projectile isEqualType "" || {isNull _projectile}) exitWith { _damage };
-if !(_unit isKindOf "LandVehicle") exitWith { _damage };
+if !(_unit isKindOf "LandVehicle" || {_unit isKindOf "Man"}) exitWith { _damage };
 
 // The engine's ammunition type - from the projectile's config.  Read
 // the real caliber (the normalized penetration multiplier) and speed.
@@ -59,14 +59,28 @@ private _penMM = ((_speed / 1000) * _caliber * 15) max 0;
 
 // The vehicle's STANAG protection class from its armour pool.  The pool
 // is the design target; the class maps to the RHA protection it models.
-private _armorPool = getNumber (configOf _unit >> "armor");
-private _protectionMM = switch (true) do {
-    case (_armorPool >= 1000): { 100 };  // MBT: ~L6 (APFSDS-class)
-    case (_armorPool >= 500):  { 45 };   // IFV/APC tracked: ~L4/L5
-    case (_armorPool >= 300):  { 32 };   // IFV/APC wheeled: ~L4
-    case (_armorPool >= 130):  { 18 };   // MRAP: ~L3
-    case (_armorPool >= 70):   { 8 };    // truck: ~L2
-    default                    { 4 };    // light skin: ~L1
+// The protection class: vehicles use the armour pool ladder; a SOLDIER
+// uses the equipment library's vest NIJ level (issue #119) - a plate
+// carrier (NIJ III) stops rifle ball, an unprotected soldier does not.
+private _protectionMM = if (_unit isKindOf "Man") then {
+    private _equip = [_unit] call EFUNC(physiology,getEquipmentProperties);
+    private _nij = _equip select 1;   // 0 none, 1 IIA, 2 IIIA, 3 III+plates
+    switch (_nij) do {
+        case 3: { 20 };   // ESAPI plates: stops rifle ball + 7.62 AP
+        case 2: { 10 };   // IIIA soft: stops pistol + fragments
+        case 1: { 6 };    // IIA soft: stops pistol only
+        default { 3 };    // no vest: soft tissue
+    };
+} else {
+    private _armorPool = getNumber (configOf _unit >> "armor");
+    switch (true) do {
+        case (_armorPool >= 1000): { 100 };  // MBT: ~L6 (APFSDS-class)
+        case (_armorPool >= 500):  { 45 };   // IFV/APC tracked: ~L4/L5
+        case (_armorPool >= 300):  { 32 };   // IFV/APC wheeled: ~L4
+        case (_armorPool >= 130):  { 18 };   // MRAP: ~L3
+        case (_armorPool >= 70):   { 8 };    // truck: ~L2
+        default                   { 4 };    // light skin: ~L1
+    };
 };
 
 // The gate: does the round's RHA penetration defeat the protection?

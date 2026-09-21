@@ -44,7 +44,7 @@ private _floodRisk  = missionNamespace getVariable [QEGVAR(core,currentFloodRisk
 // Cold-weather state (issue #83: wire computed outputs into the report)
 private _coldCat    = missionNamespace getVariable [QEGVAR(core,coldDangerCategory),     ""];
 private _windChill  = missionNamespace getVariable [QEGVAR(core,windChillTemp),          _T];
-private _dext       = missionNamespace getVariable [QEGVAR(core,dexterityPercent),       1];
+private _dext       = missionNamespace getVariable [QEGVAR(core,dexterityPercent),       100];
 private _frostbite  = missionNamespace getVariable [QEGVAR(core,frostbiteMinutes),       -1];
 
 // Hazard state
@@ -134,8 +134,8 @@ _report = _report + "Water Level: " + str (round (_waterLevel * 1000) / 10) + "%
 if (_coldCat != "") then {
     _report = _report + "\n";
     _report = _report + "Cold: " + _coldCat + "  Wind Chill: " + str (round _windChill) + "°C";
-    if (_dext < 0.9) then {
-        _report = _report + "  Dexterity: " + str (round (_dext * 100)) + "%";
+    if (_dext < 90) then {
+        _report = _report + "  Dexterity: " + str (round _dext) + "%";
     };
     if (_frostbite >= 0) then {
         _report = _report + "  Frostbite in ~" + str (round _frostbite) + " min";
