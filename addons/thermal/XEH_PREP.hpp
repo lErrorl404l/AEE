@@ -14,6 +14,7 @@ PREPS(surface,getHitPointMaterials);
 PREPS(display,applySelectionThermal);
 PREPS(display,debugApplyFPN);
 PREPS(display,debugDropTest);
+PREPS(display,debugProxyMetrics);
 PREPS(display,debugRoadTest);
 PREPS(display,spawnHeatStain);
 PREPS(environment,calculateMRT);
