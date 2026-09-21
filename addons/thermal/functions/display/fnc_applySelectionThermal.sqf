@@ -116,7 +116,7 @@ if (_mode == "EXIT") then {
         // cannot take a material swap - the proxy-plane overlay is the
         // terrain path).  Only slots with a string material are swapped
         // (matches the EXIT restore guard below).
-        if (_fpnEnabled && {count _oldMats > 0}) then {
+        if (_fpnEnabled && _oldMats isNotEqualTo []) then {
             private _fpnMat = "\z\aee\addons\thermal\data\ti_fpn.rvmat";
             {
                 if (_x isEqualType "") then {
