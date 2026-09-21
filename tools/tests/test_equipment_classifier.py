@@ -68,6 +68,24 @@ def classify(name, tiers):
     return "DEFAULT"
 
 
+# Vanilla goggles families (G_ classes) - every one must classify.
+VANILLA_GOGGLES = [
+    "G_Balaclava_blk",
+    "G_Bandanna_aviator",
+    "G_Combat",
+    "G_Diving",
+    "G_Lady_Blue",
+    "G_Lowprofile",
+    "G_Shades_Black",
+    "G_Spectacles",
+    "G_Sport_Blackred",
+    "G_Squares_Tinted",
+    "G_Tactical_Clear",
+    "G_Aviator",
+    "G_Goggles_VR",
+]
+
+
 def load_inventory():
     sections, cur = {}, None
     for line in INV.read_text(encoding="utf-8").splitlines():
@@ -114,6 +132,20 @@ class TestClassifierExhaustiveness(unittest.TestCase):
         self.assertFalse(
             bad, f"pack families missing classifier keywords: {sorted(bad)[:20]}"
         )
+
+    def test_all_goggles_classified(self):
+        # Every vanilla goggles-slot family must classify (no default).
+        goggle_tiers = extract_tiers("goggle")
+        for name in VANILLA_GOGGLES:
+            tier = classify(name, goggle_tiers)
+            self.assertNotEqual(
+                tier, "DEFAULT", f"goggles family {name} falls through to default"
+            )
+
+    def test_goggle_slot_wired(self):
+        # The goggles slot is read and combined into the signature.
+        self.assertIn("goggles _unit", FNC)
+        self.assertIn("_goggle select 0", FNC)
 
     def test_keywords_present_in_sqf(self):
         # The mirror's tier lists must be non-empty (extraction works).

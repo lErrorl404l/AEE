@@ -162,6 +162,90 @@ rigger belt 0.1-0.2, chest rigs 0.4-0.8.
 Webbing weights: ALICE LC-2 belt+suspenders 0.71 kg, MOLLE II belt 0.73,
 58 Pattern belt 0.275, PLCE belt 0.3, Russian 6Sh112 base 0.7.
 
+## Eyewear / facewear (the goggles slot)
+
+Ballistic test standards (corrected): MIL-PRF-31013 spectacles = 0.15 cal
+5.8 grain at ~7.6 J; MIL-PRF-32432 goggles = 0.22 cal 17 grain ~16 J;
+STANAG 2920 Ed 2 V50 fragment ~35 J.
+
+| Name | Country | Weight_g | Ballistic | Notes | Source |
+|---|---|---|---|---|---|
+| ESS Land Ops | US | ~113 | MIL-PRF-32432A | fits over Rx, under NODs | ESS catalog |
+| ESS ICE | US | ~28 | MIL-PRF-31013 | low-profile, NVG-compatible | ESS 2015 |
+| ESS Crossbow | US | ~113 | MIL-PRF-32432 | USMC IBE-issued | USMC PEO |
+| ESS Profile NVG | US | ~113 | MIL-PRF-32432 | NVG-compatible | ESS EyePro |
+| Revision Sawfly | US | 28.8 | MIL-PRF-31013 (246 m/s) | NVG-compatible | Revision datasheet |
+| Revision Desert Locust | US | 130 | MIL-PRF-32432A, STANAG 2920 V50 252 m/s | OcuMax anti-fog | Revision spec |
+| Revision StingerHawk | US | 32 | MIL-PRF-32432A | NVG-compatible | Revision spec |
+| Oakley SI M Frame 3.0 | US | 30 | MIL-PRF-31013 | clear 93% VLT, NVG-compatible | Oakley SI |
+| Wiley X Saber | US | ~30 | MIL-PRF-32432A | Rx insert | Wiley X |
+| Smith Aegis Arc | US | ~113 | MIL-PRF-31013 | PivLock lens swap | Smith Elite |
+| Bolle Combat (UK issue) | France | ~30 | STANAG 2920 V50 229-255 m/s | clear 2C-1.2 | Bolle datasheet |
+| Gatorz Magnum | US | ~113 | ANSI Z87.1+ | 7075 aluminium frame | Gatorz |
+| Swiss Eye Raptor | CH | ~30 | MIL-PRF-31013 | (no USMC 'Raptor' exists) | Swiss Eye |
+| Russian 6B50/6B52 Ratnik goggles | RU | ~100 | GOST frag | Ratnik kit | Wikipedia Ratnik |
+
+Face protection: USMC MFS 800 <454 g frag; MFS 1800 <862 g NIJ IIIA
+(9 mm FMJ); Ops-Core FAST Ballistic Mandible ~300 g (V50 + 9 mm);
+ECH mandible ~400 g; ZSh-1-2M helmet+visor 2100 g total.
+Balaclavas: fleece ~50-100 g (~0.3 clo), shemagh ~100-150 g, neck gaiter
+~30-50 g.
+
+Respirators (mask + filter): M50 JSGPM 0.86 kg incl twin filters (CBRN
+Cap 1); FM12 0.79 kg mask+canister; C50 0.49 kg mask; PMK-3 0.96 kg;
+GP-7 ~0.9 kg; Model 4A1 0.527 kg; M80 filter 0.228 kg.
+
+## Gloves (dexterity + insulation)
+
+The dexterity physics: Daanen 2009 (Ind Health 47:262) - finger
+dexterity decrease = 0.127 x WCET x duration^0.48, manual dexterity =
+0.162 x WCET x duration^0.38.  Heus 1995: dexterity loss from muscle +
+joint cooling, gloves reduce cooling but cost dexterity by thickness
+(Bensel 1993: test time rises linearly with glove thickness).  Grip
+anchor: thick glove (3.1 mm) = -31% max grip (Human Factors 2010).
+Handwear insulation (Gonzalez 1998, measured): light duty glove 0.86
+clo, heavy duty glove 1.05 clo, Arctic mitten 1.46 clo.
+
+| Name | Country | Weight_g | Material | clo | Dexterity | Source |
+|---|---|---|---|---|---|---|
+| Nomex flight glove (MIL-DTL-81188C) | US | ~56 | Nomex knit + leather palm | LD 0.86 | low | MIL-DTL-81188C |
+| Improved Combat Glove | US | n/p | para-aramid + goat leather | LD 0.86 | low-mod | GL-PD-08-81D |
+| Mechanix FastFit | US | ~100 | TrekDry + 0.6 mm synthetic leather | LD 0.86 | low | Mechanix spec |
+| Max Grip NT aircrew | US | 180 | 92% Nomex + leather | LD 0.86 | low | ArmyProperty |
+| British Army Combat Glove Mk.2 | UK | 175 | black leather | HD 1.05 | moderate | Cadet Direct |
+| Russian 6Sh122 Ratnik gloves | RU | 300 | goat/cowhide + foam knuckle | HD 1.05 | moderate | voensklad |
+| ECWCS Gen III glove system | US | 568 total | fleece 103 + softshell 99 + mitt 214 | fleece LD, mitt AM 1.46 | fleece low, mitt high | Outdoor Research |
+| ECW Mitten Set (MIL-M-834) | US | n/p | cotton/nylon shell, deerskin palm | AM 1.46 | high | MIL-M-834L |
+| Trigger Finger Mitten (MIL-DTL-32707) | US | n/p | taslan laminate, goatskin | TF 1.35 | mod-high | MIL-DTL-32707 |
+| USMC Intermediate Cold Weather Glove | US | n/p | nylon shell, leather palm, waterproof | HD 1.05 | moderate | MC/PD 1-2014 |
+| British Arctic Mittens Mk.3 | UK | 250 | trigger finger | AM 1.46 | mod-high | outdoors.ee |
+| German Bundeswehr winter mittens | DE | 300 | cotton shell, pile lining | AM 1.46 | high | ASMC |
+| Russian winter mittens (sheepskin) | RU | n/p | sheepskin, lobster-claw | AM 1.46 | mod-high | russianarmysurplus |
+
+## CBRN equipment
+
+Suit weights: JSLIST 2.63 kg (24 h protection, 45 days/6 launderings);
+MOPP-4 ~8 kg total; L-1 (RU) 3.2-3.5 kg impermeable; OKZK (RU) ~3.0 kg;
+Bundeswehr impermeable set 6.3 kg (butyl).  STANAG 4581 is the NATO
+suit envelope (restricted document).
+
+Mask weights (with filter): M50 JSGPM 0.86 kg (CBRN Cap 1, >36 h agent
+resistance); FM12 0.79 kg; FM50 0.84 kg; C50 0.49 kg mask; S6 0.859 kg
+with filter; PMK-3 0.96 kg; GP-7 ~0.9 kg; GP-5 ~1.0 kg kit; Model 4A1
+0.527 kg + M80 filter 0.228 kg.  Canisters: CBRNCF50 0.365 kg, C2A1
+0.265 kg, Type 87 0.249 kg.
+
+CBRN protection-time basis (for the Arrhenius Q10 persistence model):
+- 24-hour mission profile: JSLIST/MOPP wear limit is 24 h in
+  contaminated environment (1 day at design conditions).
+- Q10 = 2: "with each 10 C rise in temperature the permeation rate
+  roughly doubles and breakthrough time significantly decreases"
+  (CDC/NIOSH, citing Comyn 1985).  rate(T+10) = 2 x rate(T).
+- ASTM F739 breakthrough: permeation rate 0.1 ug/cm2/min at 25 C.
+- Filter service life: NIOSH CBRN Cap 1 minimum 15 min vs
+  cyclohexane/HCN/CK/phosgene; Avon typical >20/>45/>45/>100 min.
+  Carbon service life roughly halves per doubling of concentration.
+
 ## Classname mapping (verified against installed configs)
 
 Vanilla inventory extracted from the installed game configs: 139 helmet
