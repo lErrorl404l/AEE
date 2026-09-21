@@ -87,3 +87,13 @@ if (missionNamespace getVariable [QGVAR(glocEnabled), true]) then {
         missionNamespace setVariable [QGVAR(gLocTolerance), _glocRes select 2];
     }, 1, player] call CBA_fnc_addPerFrameHandler;
 };
+
+// ─── Stamina-to-animation coupling (issue #212) ────────────────────────────
+// A 1 s client-local loop applies the physiology state to movement speed.
+// ACE3 advanced fatigue is guarded inside fnc_applyMovementSpeed.
+if (hasInterface) then {
+    [{
+        [player] call FUNC(applyMovementSpeed);
+    }, 1] call CBA_fnc_addPerFrameHandler;
+};
+
