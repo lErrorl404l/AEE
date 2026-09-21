@@ -36,6 +36,11 @@ for "_y" from 0 to (_grid - 1) do {
         private _tile = createVehicle ["Land_DirtPatch_03_F", _pos, [], 0, "CAN_COLLIDE"];
         _tile setDir (random 360);
         _tile setObjectScale _tileScale;
+        // TI-readable material FIRST (same as fnc_spawnHeatStain): the
+        // decal's own StageTI would render cold grey in the TI pass and
+        // hide the painted tile.  The FPN rvmat's white Stage1 lets the
+        // heat tile show, perlinNoise Stage2 adds the mottle.
+        _tile setObjectMaterial [0, "\z\aee\addons\thermal\data\ti_fpn.rvmat"];
         _tile setObjectTexture [0, _heatTiles select _heat];
         _tiles pushBack _tile;
     };
