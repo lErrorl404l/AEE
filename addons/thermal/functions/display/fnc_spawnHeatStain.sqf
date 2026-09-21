@@ -75,6 +75,12 @@ for "_i" from 0 to (_count - 1) do {
     // Varying scale per decal -> the irregular blob edge.
     private _s = (0.5 + random 0.6) * (_lenScale min 2);
     _decal setObjectScale _s;
+    // TI-readable material FIRST (issue #204): the decal's own material
+    // has a StageTI that renders its cold grey in the TI pass, hiding
+    // our painted tile.  Swap to the FPN rvmat (white Stage1 the tile
+    // overrides + perlinNoise Stage2) - the same swap that made the
+    // object FPN test work - THEN paint the heat tile.
+    _decal setObjectMaterial [0, "\z\aee\addons\thermal\data\ti_fpn.rvmat"];
     _decal setObjectTexture [0, _heatTiles select _heatLevel];
     _decals pushBack _decal;
 };
