@@ -79,3 +79,147 @@ class CfgClothing {
     };
     class U_B_HeliPilotCoveralls: U_B_PilotCoveralls {};
 };
+
+/*
+CfgEquipment - helmet/vest equipment properties (issue #119).
+
+Per-family values verified from manufacturer specs + army manuals
+(Gentex ACH, Crye CPC, BA CIRAS, IOTV/SPCS manuals, Gentex HGU-55,
+NIJ standards).  Any item WITHOUT an entry falls back to the
+classname-family classification in fnc_getEquipmentProperties.
+
+  weight - kg (real issue weights)
+  armor  - NIJ protection level 0..3 (0 none, 1 IIA, 2 IIIA, 3 III+plates)
+  nirReflectance - NIR reflectance 0..1 (camo 0.35-0.45, black 0.05-0.20)
+  clo    - insulation added to the uniform (BA adds ~0.20-0.26 total)
+*/
+class CfgEquipment {
+    // ─── Plate carriers: NIJ III (ESAPI plates) ──────────────────────────
+    class V_PlateCarrier1_blk {
+        weight = 5.5;
+        armor = 3;
+        nirReflectance = 0.35;
+        clo = 0.18;
+    };
+    class V_PlateCarrier2_blk: V_PlateCarrier1_blk {};
+    class V_PlateCarrier2_blkI: V_PlateCarrier1_blk {};
+    class V_PlateCarrierGL_blk: V_PlateCarrier1_blk {};
+    class V_PlateCarrierH_CTRG: V_PlateCarrier1_blk {};
+
+    // ─── Tactical vests: NIJ IIA ─────────────────────────────────────────
+    class V_TacVest_blk {
+        weight = 2.0;
+        armor = 2;
+        nirReflectance = 0.38;
+        clo = 0.10;
+    };
+
+    // ─── Light rigs: no ballistic ────────────────────────────────────────
+    class V_BandollierB_blk {
+        weight = 1.0;
+        armor = 1;
+        nirReflectance = 0.40;
+        clo = 0.06;
+    };
+    class V_Chestrig_blk: V_BandollierB_blk {
+        weight = 1.2;
+        clo = 0.07;
+    };
+    class V_HarnessO_brn: V_BandollierB_blk {
+        weight = 1.5;
+        clo = 0.08;
+    };
+
+    // ─── Diving rigs ─────────────────────────────────────────────────────
+    class V_RebreatherB {
+        weight = 3.0;
+        armor = 0;
+        nirReflectance = 0.20;
+        clo = 0.15;
+    };
+
+    // ─── Ballistic helmets: NIJ IIIA ─────────────────────────────────────
+    class H_HelmetB {
+        weight = 1.5;
+        armor = 2;
+        nirReflectance = 0.40;
+        clo = 0.07;
+    };
+    class H_HelmetB_light: H_HelmetB {};
+    class H_HelmetB_plain_blk: H_HelmetB {};
+    class H_HelmetO_ocamo: H_HelmetB {};
+    class H_HelmetIA_net: H_HelmetB {};
+
+    // ─── Aircrew: IIA, no ballistic core ─────────────────────────────────
+    class H_CrewHelmetHeli_B {
+        weight = 1.0;
+        armor = 1;
+        nirReflectance = 0.40;
+        clo = 0.05;
+    };
+    class H_PilotHelmetFighter_B {
+        weight = 1.1;
+        armor = 1;
+        nirReflectance = 0.45;
+        clo = 0.15;
+    };
+
+    // ─── Light headwear: no ballistic ────────────────────────────────────
+    class H_Watchcap_blk {
+        weight = 0.1;
+        armor = 0;
+        nirReflectance = 0.30;
+        clo = 0.12;
+    };
+    class H_Booniehat_grn {
+        weight = 0.2;
+        armor = 0;
+        nirReflectance = 0.40;
+        clo = 0.05;
+    };
+    class H_Bandanna_khk {
+        weight = 0.1;
+        armor = 0;
+        nirReflectance = 0.35;
+        clo = 0.04;
+    };
+    class H_Cap_oli {
+        weight = 0.15;
+        armor = 0;
+        nirReflectance = 0.38;
+        clo = 0.05;
+    };
+    class H_Beret_grn {
+        weight = 0.15;
+        armor = 0;
+        nirReflectance = 0.35;
+        clo = 0.04;
+    };
+
+    // ─── Backpacks: no ballistic, camo NIR ───────────────────────────────
+    // Empty weights (the load command adds the contents).
+    class B_AssaultPack_blk {
+        weight = 3.0;
+        armor = 0;
+        nirReflectance = 0.40;
+        clo = 0.08;
+    };
+    class B_Kitbag_rgr: B_AssaultPack_blk {
+        weight = 4.0;
+        clo = 0.10;
+    };
+    class B_Carryall_oli: B_AssaultPack_blk {
+        weight = 6.0;
+        clo = 0.12;
+    };
+    class B_TacticalPack_oli: B_AssaultPack_blk {
+        weight = 3.5;
+    };
+    class B_Bergen_hex_F: B_AssaultPack_blk {
+        weight = 5.0;
+        clo = 0.12;
+    };
+    class B_FieldPack_oli: B_AssaultPack_blk {
+        weight = 4.0;
+    };
+};

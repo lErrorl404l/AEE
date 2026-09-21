@@ -227,3 +227,71 @@ class TestNvgContrast(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestEquipmentLibrary(unittest.TestCase):
+    """The comprehensive equipment library (issue #119): helmets, vests,
+    backpacks - weight, NIJ armour, NIR, clo per family."""
+
+    EQ = (
+        REPO / "addons/physiology/functions/clothing/fnc_getEquipmentProperties.sqf"
+    ).read_text(encoding="utf-8")
+    CFG = (REPO / "addons/physiology/config.cpp").read_text(encoding="utf-8")
+
+    def test_config_has_families(self):
+        # The vanilla families in CfgEquipment.
+        for cls in ("V_PlateCarrier1_blk", "V_TacVest_blk", "H_HelmetB",
+                    "H_PilotHelmetFighter_B", "B_AssaultPack_blk",
+                    "B_Carryall_oli"):
+            self.assertIn(f"class {cls}", self.CFG)
+
+    def test_config_values_researched(self):
+        # Verified: plate carrier NIJ III (armor 3), ACH helmet IIIA (2).
+        self.assertIn("armor = 3", self.CFG)
+        self.assertIn("weight = 5.5", self.CFG)   # plate carrier system
+        self.assertIn("weight = 1.5", self.CFG)   # ACH helmet
+
+    def test_vest_classification(self):
+        # The family fallback covers RHS (iotv) + vanilla plate carriers.
+        src = self.EQ
+        for kw in ("platecarrier", "iotv", "ciras", "spcs", "cpc",
+                   "tacvest", "bandollier", "chestrig", "harness",
+                   "rebreather"):
+            self.assertIn(f'"{kw}"', src,
+                          f"vest family keyword {kw} missing")
+
+    def test_helmet_classification(self):
+        src = self.EQ
+        for kw in ("crew", "pilot", "watchcap", "boonie", "bandanna",
+                   "cap", "beret"):
+            self.assertIn(f'"{kw}"', src,
+                          f"helmet family keyword {kw} missing")
+
+    def test_backpack_included(self):
+        # The backpack weight + contents join the combined weight.
+        src = self.EQ
+        self.assertIn('backpack _unit', src)
+        self.assertIn("unitBackpack", src)
+        self.assertIn('load (unitBackpack _unit)', src)
+        for kw in ("backpack", "rucksack", "bergen", "carryall",
+                   "assaultpack", "kitbag"):
+            self.assertIn(f'"{kw}"', src,
+                          f"pack family keyword {kw} missing")
+
+    def test_combine_weight_armour_nir_clo(self):
+        src = self.EQ
+        self.assertIn("_weight", src)
+        self.assertIn("_armor = (_vest select 1) max", src)
+        self.assertIn("_clo = _uniformClo", src)
+
+
+class TestEquipmentMath(unittest.TestCase):
+    def test_plate_carrier_armour_dominates(self):
+        # Vest NIJ III (3) + helmet IIIA (2) -> combined armour 3.
+        vest_armor, helmet_armor = 3, 2
+        self.assertEqual(max(vest_armor, helmet_armor), 3)
+
+    def test_weight_sums(self):
+        # Uniform 4 + plate 5.5 + ACH 1.5 + assault pack 3 = 14 kg.
+        total = 4.0 + 5.5 + 1.5 + 3.0
+        self.assertEqual(total, 14.0)

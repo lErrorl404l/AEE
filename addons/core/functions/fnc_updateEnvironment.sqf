@@ -123,6 +123,11 @@ if (GVAR(physiologyEnabled)) then {
     if (missionNamespace getVariable [QEGVAR(physiology,fatigueEnabled), true]) then {
         [] call EFUNC(physiology,calculateShooterStability);
     };
+    // Cold-weather human performance (wind chill -> dexterity, frostbite
+    // time, TB MED 508 category).  Reads the temperature + wind published
+    // above, publishes the shared cold state the movement coupling and
+    // weather report consume.  Gated internally by coldWeatherEnabled.
+    [] call EFUNC(physiology,calculateColdWeatherPerformance);
     END_COUNTER(physiology);
 };
 
