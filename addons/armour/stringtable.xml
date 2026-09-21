@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="Armour">
+        <Key ID="STR_AEE_Armour_armourEnabled_Description">
+            <Original>Apply the STANAG 4569-aligned vehicle armour ladder (issue #126)</Original>
+            <English>Apply the STANAG 4569-aligned vehicle armour ladder (issue #126)</English>
+        </Key>
+        <Key ID="STR_AEE_Armour_armourEnabled_Name">
+            <Original>Armour Overhaul</Original>
+            <English>Armour Overhaul</English>
+        </Key>
+        <Key ID="STR_AEE_Armour_penetrationDebug_Description">
+            <Original>Log penetration gate decisions (round mm RHA vs protection) to the RPT</Original>
+            <English>Log penetration gate decisions (round mm RHA vs protection) to the RPT</English>
+        </Key>
+        <Key ID="STR_AEE_Armour_penetrationDebug_Name">
+            <Original>Penetration Diagnostics</Original>
+            <English>Penetration Diagnostics</English>
+        </Key>
+        <Key ID="STR_AEE_Armour_penetrationGate_Description">
+            <Original>Scale vehicle damage by the round's real RHA penetration vs the STANAG protection class - a rifle cannot shred an IFV</Original>
+            <English>Scale vehicle damage by the round's real RHA penetration vs the STANAG protection class - a rifle cannot shred an IFV</English>
+        </Key>
+        <Key ID="STR_AEE_Armour_penetrationGate_Name">
+            <Original>Penetration Gate</Original>
+            <English>Penetration Gate</English>
+        </Key>
+    </Package>
+</Project>
