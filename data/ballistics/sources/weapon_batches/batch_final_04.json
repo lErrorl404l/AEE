@@ -1,0 +1,41 @@
+{
+  "retrieved": "2026-09-22",
+  "sources": [
+    {
+      "source_id": "mri_de_manual_2023",
+      "title": "Magnum Research Desert Eagle Owner's Manual (DE-Manual.pdf), specifications tables",
+      "url": "https://www.magnumresearch.com/wp-content/uploads/2023/01/DE-Manual.pdf",
+      "sha256": "3ff8ec8bf47ae654098d79e4499d8b9db3153710aec369c6ff8b7f5352631598"
+    },
+    {
+      "source_id": "kfg_catalog_12th_2026",
+      "title": "Kahr Firearms Group Product Catalog, 12th Edition 2026 (Magnum Research BFR specification tables)",
+      "url": "https://www.magnumresearch.com/wp-content/uploads/2026/01/KFG-Catalog-12th-Edition-2026.pdf",
+      "sha256": "c0367ed0056d2d765bb06a55bdb7fd11e6d7a5e9dc99555737379e7ff3036c41"
+    }
+  ],
+  "weapons": [
+    {
+      "weapon_id": "deserteagle429de",
+      "name": "Desert Eagle .429 DE Semi-auto Pistol",
+      "manufacturer": "Magnum Research",
+      "cartridge": ".429 DE",
+      "barrel_mm": null,
+      "twist_mm": 457.2,
+      "grooves": 6,
+      "source_id": "mri_de_manual_2023",
+      "source_note": "Manufacturer owner's manual, Mark XIX specifications table, row 'Polygonal Rifling (Right Hand Twist)', column '.429 DE': '429 DE: 1 in 18'. A separate specification line states 'Rifling Type: R.H. 6-Rib polygonal barrel'. States the .429 DE barrel has a right-hand twist of 1 turn in 18 inches = 457.2 mm, 6 ribs. The corpus lead (457.0 mm) is close but is not the source; the manufacturer figure 457.2 mm is used."
+    },
+    {
+      "weapon_id": "bfr454casull",
+      "name": "BFR .454 Casull Revolver",
+      "manufacturer": "Magnum Research",
+      "cartridge": ".454 Casull",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": null,
+      "source_id": "kfg_catalog_12th_2026",
+      "source_note": "Manufacturer catalogue, 'BFR SHORT CYLINDER MODELS' specification table. Column order of the model row is 'BFR357MAG | BFR44MAG | BFR454C | BFR480-475 | BFR500JRH | BFR500LB', the caliber row is '.357 Magnum | .44 Magnum | .454 Casull | .480/.475 Linebaugh | .500 JRH | .500 Linebaugh', and the 'Twist Rate' row is '16 | 26 | 16 | 15 | 15 | 15'. The .454 Casull column therefore states a twist of 1 turn in 16 inches = 406.4 mm. Groove count is not stated in the table."
+    }
+  ]
+}

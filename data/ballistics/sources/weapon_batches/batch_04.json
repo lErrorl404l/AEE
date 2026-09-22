@@ -1,0 +1,194 @@
+{
+  "retrieved": "2026-09-22",
+  "sources": [
+    {
+      "source_id": "fn_mdrx_2026",
+      "title": "Desert Tech MDRx Rifle - official product page, Technical Specifications",
+      "url": "https://deserttech.com/mdrx-rifle.html"
+    },
+    {
+      "source_id": "fn_srsa1_barrel_2024",
+      "title": "Desert Tech SRS .308 Winchester Barrel 22\" - Arlington Arms product listing (quotes Desert Tech barrel specification)",
+      "url": "https://arlington-arms.com/product/desert-tech-srs-308-winchester-barrel-22/"
+    },
+    {
+      "source_id": "fn_db10_2025",
+      "title": "Diamondback Firearms DB10, 16\", Carbon Series, .308 Winchester, Black - manufacturer product page",
+      "url": "https://diamondbackfirearms.com/shop/db10-16-carbon-series-308-winchester-black/"
+    },
+    {
+      "source_id": "fn_db380_2025",
+      "title": "Diamondback Firearms DB380 Gen4, .380 ACP, Black - manufacturer product page",
+      "url": "https://diamondbackfirearms.com/shop/db380-gen4-380-acp-black/"
+    },
+    {
+      "source_id": "fn_sidekick_2025",
+      "title": "Diamondback Firearms Sidekick - manufacturer product page (Sidekick specifications)",
+      "url": "https://diamondbackfirearms.com/sidekick/"
+    },
+    {
+      "source_id": "fn_petra_2026",
+      "title": "Falkor Defense PETRA - manufacturer product page (Features)",
+      "url": "https://www.falkordefense.com/petra"
+    },
+    {
+      "source_id": "fn_grot_radom",
+      "title": "FB \"Lucznik\" Radom (Fabryka Broni) - MSBS GROT official product page, Technical data",
+      "url": "https://fabrykabroni.pl/en/en/offer/military-market/rifles/msbs-grot"
+    },
+    {
+      "source_id": "fn_grot_milmag",
+      "title": "MILMAG - Complete family of MSBS-5,56 rifles (MSBS barrel twist rate)",
+      "url": "https://milmag.pl/en/complete-family-of-msbs-556-rifles/"
+    },
+    {
+      "source_id": "fn_fnx45_2025",
+      "title": "FN FNX-45 Tactical - FN America official product page, Specs",
+      "url": "https://fnamerica.com/products/pistols/fnx-45-tactical/"
+    },
+    {
+      "source_id": "fn_scarh_fnestore",
+      "title": "FN SCAR 17S Barrel Assembly, 7.62x51mm, 13-in - FN eStore (manufacturer)",
+      "url": "https://fnestore.com/scar-17s-13-in-barrel-assembly"
+    },
+    {
+      "source_id": "fn_freedomarms_spec_chart",
+      "title": "Freedom Arms Inc. Revolver Specifications chart",
+      "url": "https://freedomarms.com/revolver-spec-chart/"
+    }
+  ],
+  "weapons": [
+    {
+      "weapon_id": "mdrx",
+      "name": "MDR-X .308 Winchester",
+      "manufacturer": "Desert Tech",
+      "cartridge": ".308 Winchester",
+      "barrel_mm": null,
+      "twist_mm": 254.0,
+      "grooves": null,
+      "source_id": "fn_mdrx_2026",
+      "source_note": "Desert Tech MDRx Technical Specifications table: the .308 Win column (16\" and 20\" barrels) gives \"Barrel Twist 1:10\". States a 1 turn in 10 inch twist = 254.0 mm per turn."
+    },
+    {
+      "weapon_id": "srsa1",
+      "name": "SRS-A1 .308 Winchester",
+      "manufacturer": "Desert Tech",
+      "cartridge": ".308 Winchester",
+      "barrel_mm": null,
+      "twist_mm": 279.4,
+      "grooves": null,
+      "source_id": "fn_srsa1_barrel_2024",
+      "source_note": "Desert Tech SRS .308 Winchester precision match grade 22\" barrel specifications: \"Compatible with All SRS-A2, M2 & SRS-A1 chassis, Standard or Covert Barrel Twist 1 in 11\"\". States a 1 turn in 11 inch twist = 279.4 mm per turn for the SRS-A1 .308 Win barrel."
+    },
+    {
+      "weapon_id": "db10",
+      "name": "DB10 AR-10-pattern semi-automatic carbine, 16\" barrel",
+      "manufacturer": "Diamondback Firearms",
+      "cartridge": ".308 Winchester",
+      "barrel_mm": null,
+      "twist_mm": 254.0,
+      "grooves": null,
+      "source_id": "fn_db10_2025",
+      "source_note": "Diamondback Firearms DB10, 16\", Carbon Series manufacturer specifications: \"Barrel: 16 in, 1:10 RH, Light, 4150 CrMov, Black Nitride\". States a right-hand 1 turn in 10 inch twist = 254.0 mm per turn."
+    },
+    {
+      "weapon_id": "db380",
+      "name": "DB380 ultra-compact .380 ACP pocket pistol",
+      "manufacturer": "Diamondback Firearms",
+      "cartridge": ".380 ACP",
+      "barrel_mm": null,
+      "twist_mm": 254.0,
+      "grooves": null,
+      "source_id": "fn_db380_2025",
+      "source_note": "Diamondback Firearms DB380 Gen4 manufacturer specifications: \"Barrel Twist Rate: 1:10 RH\". States a right-hand 1 turn in 10 inch twist = 254.0 mm per turn."
+    },
+    {
+      "weapon_id": "sidekick",
+      "name": "Sidekick 9-shot .22 LR double-action revolver, 2\" barrel",
+      "manufacturer": "Diamondback Firearms",
+      "cartridge": ".22 Long Rifle",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": 6,
+      "source_id": "fn_sidekick_2025",
+      "source_note": "Diamondback Firearms Sidekick manufacturer specifications: \"Barrel Twist: 1:16 RH\" and \"Grooves: 6\". States a right-hand 1 turn in 16 inch twist = 406.4 mm per turn with six grooves. The 2\" barrel variant is not a catalogued Sidekick length; the smallest listed is the 3\" Birdshead, which shares the same 1:16 RH twist."
+    },
+    {
+      "weapon_id": "petra",
+      "name": "Petra .300 Winchester Magnum",
+      "manufacturer": "Falkor Defense",
+      "cartridge": ".300 Winchester Magnum",
+      "barrel_mm": null,
+      "twist_mm": 228.6,
+      "grooves": null,
+      "source_id": "fn_petra_2026",
+      "source_note": "Falkor Defense PETRA manufacturer Features list: \"Barrel: 22-inch Bartlein steel with a 1:9 Twist\". States a 1 turn in 9 inch twist = 228.6 mm per turn."
+    },
+    {
+      "weapon_id": "msbsgrotc",
+      "name": "MSBS Grot C Carbine",
+      "manufacturer": "FB \"Lucznik\" Radom",
+      "cartridge": "5.56\u00d745mm NATO",
+      "barrel_mm": null,
+      "twist_mm": 178.0,
+      "grooves": 6,
+      "source_id": "fn_grot_radom",
+      "source_note": "FB \"Lucznik\" Radom (Fabryka Broni) official MSBS GROT Technical data: \"Barrel length: 406 mm\" and \"Number and twist rate of grooves: 6 / 178mm\". The Grot C16 carbine barrel length matches this entry. States a 178 mm per turn twist (approximately 1 turn in 7 inch) with six grooves."
+    },
+    {
+      "weapon_id": "msbsgrotr",
+      "name": "MSBS Grot R Rifle",
+      "manufacturer": "FB \"Lucznik\" Radom",
+      "cartridge": "5.56\u00d745mm NATO",
+      "barrel_mm": null,
+      "twist_mm": 178.0,
+      "grooves": 6,
+      "source_id": "fn_grot_radom",
+      "source_note": "FB \"Lucznik\" Radom (Fabryka Broni) official MSBS GROT Technical data: \"Barrel length: 406 mm\" and \"Number and twist rate of grooves: 6 / 178mm\". The Grot R service rifle shares this 406 mm barrel and twist. States a 178 mm per turn twist (approximately 1 turn in 7 inch) with six grooves."
+    },
+    {
+      "weapon_id": "fnx45",
+      "name": "FNX-45 Pistol",
+      "manufacturer": "FN Herstal",
+      "cartridge": ".45 ACP",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": null,
+      "source_id": "fn_fnx45_2025",
+      "source_note": "FN America FNX-45 Tactical Specs table: \"Twist Rate: 1:16\\\" RH\". The FNX-45 and FNX-45 Tactical share the same barrel twist. States a right-hand 1 turn in 16 inch twist = 406.4 mm per turn."
+    },
+    {
+      "weapon_id": "scarh",
+      "name": "SCAR-H Sniper Rifle",
+      "manufacturer": "FN Herstal",
+      "cartridge": "7.62\u00d751mm NATO",
+      "barrel_mm": null,
+      "twist_mm": 304.8,
+      "grooves": null,
+      "source_id": "fn_scarh_fnestore",
+      "source_note": "FN eStore (manufacturer) SCAR 17S barrel assembly: \"Cold hammer-forged, chrome-lined, free-floating barrel with muzzle device for SCAR 17S in 7.62x51mm, 1:12\\\" twist.\" The SCAR-H/Mk 17 uses the SCAR 17S barrel. States a 1 turn in 12 inch twist = 304.8 mm per turn."
+    },
+    {
+      "weapon_id": "model83",
+      "name": "Model 83 .357 Magnum 6\"",
+      "manufacturer": "Freedom Arms",
+      "cartridge": ".357 Magnum",
+      "barrel_mm": null,
+      "twist_mm": 355.6,
+      "grooves": null,
+      "source_id": "fn_freedomarms_spec_chart",
+      "source_note": "Freedom Arms Inc. Revolver Specifications chart, Model 83 .357 MAG entries: the 6\" barrel row gives \"1-14\" under the Twist column. States a 1 turn in 14 inch twist = 355.6 mm per turn."
+    },
+    {
+      "weapon_id": "model97",
+      "name": "Model 97 .357 Magnum 5.5\"",
+      "manufacturer": "Freedom Arms",
+      "cartridge": ".357 Magnum",
+      "barrel_mm": null,
+      "twist_mm": 355.6,
+      "grooves": null,
+      "source_id": "fn_freedomarms_spec_chart",
+      "source_note": "Freedom Arms Inc. Revolver Specifications chart, Model 97 .357 MAG entries: the 5.5\" barrel row gives \"1-14\" under the Twist column. States a 1 turn in 14 inch twist = 355.6 mm per turn."
+    }
+  ]
+}

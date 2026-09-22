@@ -1,0 +1,230 @@
+{
+ "retrieved": "2026-09-22",
+ "sources": [
+  {
+   "source_id": "sig_cross_magnum_product_page",
+   "title": "SIG SAUER CROSS MAGNUM bolt-action rifle product page (specification table, SKU CROSS-MAG-300WM-24B), archived by the Internet Archive",
+   "url": "https://web.archive.org/web/20260618085951/https://www.sigsauer.com/cross-magnum.html"
+  },
+  {
+   "source_id": "sig_classic_pistol_manual_8501154",
+   "title": "SIG SAUER Classic Pistols Owner's Manual: Handling & Safety Instructions, P/N 8501154 Rev 03 (P220, P224, P225, P226, P227, P229, P239 technical specifications)",
+   "url": "https://www.sigsauer.com/media/sigsauer/resources/SIG_ClassicMiniManual_8501154Rev03_LR.pdf",
+   "sha256": "f4ca5f81d26ccbbd89203ea932c28ec447acce7b159cde6f9459c7ff4a19013a"
+  },
+  {
+   "source_id": "sig_sg551_manual_40425039",
+   "title": "SIG Sauer SG 551 Assault Rifle Caliber 5.56 mm (.223) Manual, document 40 425 039",
+   "url": "https://www.sigsauer.swiss/media/files/manual-en-sg551-40425039.pdf",
+   "sha256": "310ce88af0db66f8883055986382446021e81f15c75a546a028b80b30871b50a"
+  },
+  {
+   "source_id": "san_swiss_arms_sg550_552_techdata",
+   "title": "SAN Swiss Arms AG technical data, SG 550 / SG 551 / SG 551 LB / SG 551 SWAT / SG 552 Commando (reproduced by Gunnery Network)",
+   "url": "https://gunnerynetwork.com/sig/550/550-tech.html"
+  },
+  {
+   "source_id": "sig556_operator_manual",
+   "title": "SIG 556 Semi-Automatic Rifle 5.56mm NATO (.223 Remington) Operator's Manual (SIG556 OM 12.06), Internet Archive copy",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/sig_sg556.pdf",
+   "sha256": "d62fd12468d99823278ec33db56be79cf6ebe02d0d5e55231f5ecf0d0cee2753"
+  },
+  {
+   "source_id": "sig_ssg3000_manual",
+   "title": "SIG SAUER SSG 3000 Owner's Manual: Handling & Safety Instructions (technical specifications)",
+   "url": "https://www.sigsauer.com/media/sigsauer/resources/SSG3000.pdf",
+   "sha256": "c7ae9e618712ffe1cf3ffae179c057b0011e3ed05984f1cb3cd9469103407ae6"
+  },
+  {
+   "source_id": "silencerco_maxim50_manual",
+   "title": "SilencerCo Maxim 50 Instruction Manual (specifications, moderated .50 calibre muzzleloader)",
+   "url": "https://cdn.amplifi.pattern.com/0780fa16-4d13-47ad-8582-d710b91fba2c",
+   "sha256": "b4664affb301946524ba11c125d35a8b01393ff3d83872619230b187323c0d93"
+  },
+  {
+   "source_id": "sw_specsheet_model442_150544",
+   "title": "Smith & Wesson Model 442 Airweight specification sheet, SKU 150544",
+   "url": "https://smith-wesson.canto.com/direct/document/c8lkgnoj1d5b13eptb7l52706k/UWeJ1d3QgQ-0rEgBBUZvSEoumEg/original?content-type=application%2Fpdf&name=150544_sw_m442_specsheet.pdf",
+   "sha256": "2d0dd6a940de3c6d55400bd6b657b60d279e01a242f01c9f5c8772e035814dbe"
+  },
+  {
+   "source_id": "sw_specsheet_model642_250th_14925",
+   "title": "Smith & Wesson Model 642 America 250th Limited Edition specification sheet, SKU 14925",
+   "url": "https://smith-wesson.canto.com/direct/document/j1nv39ebnt13fd0di1oe7v0l53/clPPiCB8YJb6YSSRVvidrgx4uU8/original?content-type=application%2Fpdf&name=14925_sw_m642_250th_specsheet.pdf",
+   "sha256": "b08f5ee9ffa96a010b7286540f6f37356cac584b5a2e557d311a85b3b6b6f226"
+  },
+  {
+   "source_id": "sw_specsheet_model629_engraved_14784",
+   "title": "Smith & Wesson Model 629 Engraved specification sheet, 6.5 inch barrel, SKU 14784",
+   "url": "https://smith-wesson.canto.com/direct/document/pt5amguhkh6s37l26hlh73dn7p/Lj_ni9TD2tqp9eZ5G8RJhrpLLRM/original?content-type=application%2Fpdf&name=14784_sw_m629_Engraved_specsheet.pdf",
+   "sha256": "43ef454c7a3d377e4995feab4aa2ccc088255d6c738dd92c87f7ae9fed0ba057"
+  },
+  {
+   "source_id": "sw_specsheet_mp45_m2_law_enforcement_12637",
+   "title": "Smith & Wesson M&P 45 M2.0 Law Enforcement specification sheet, SKU 12637",
+   "url": "https://smith-wesson.canto.com/direct/document/n4quqrcvcl4172vcpecq3tqr3v/O9mnJCifrM1ARupURYuhnQi9xDg/original?content-type=application%2Fpdf&name=12637_mp45_2pt0_LE_specsheet.pdf",
+   "sha256": "ea25d6a246217d9ac3ba0aedf046ef5eca05d742c92a894c678c78b32a6a77a7"
+  },
+  {
+   "source_id": "sw_1911_government_oem_barrel_275500000",
+   "title": "Smith & Wesson 1911 Government pistol barrel 5 inch stainless steel .45 ACP, OEM part 275500000 (dealer parts listing with specifications)",
+   "url": "https://usagunsandgear.com/products/smith-wesson-1911-government-barrel-5-stainless-45-acp-275500000"
+  }
+ ],
+ "weapons": [
+  {
+   "weapon_id": "crossmagnum",
+   "name": "CROSS Magnum Bolt-Action Rifle",
+   "manufacturer": "SIG Sauer",
+   "cartridge": ".300 Winchester Magnum",
+   "barrel_mm": null,
+   "twist_mm": 228.6,
+   "grooves": null,
+   "source_id": "sig_cross_magnum_product_page",
+   "source_note": "Manufacturer specification table for SKU CROSS-MAG-300WM-24B, row pairs: 'BARREL LENGTH 24 in [609.6 mm]' and 'TWIST RATE 1:9'. 1 turn in 9 in = 228.6 mm. Read from the rendered specification list on the SIG SAUER product page captured by the Internet Archive (no wording rendered as a sentence; the value is the label/value pair 'TWIST RATE' / '1:9')."
+  },
+  {
+   "weapon_id": "p220",
+   "name": "P220 Pistol",
+   "manufacturer": "SIG Sauer",
+   "cartridge": ".45 ACP",
+   "barrel_mm": null,
+   "twist_mm": 406.4,
+   "grooves": null,
+   "source_id": "sig_classic_pistol_manual_8501154",
+   "source_note": "Section 12.2, 'P220 Technical Specifications': 'P220 Type Super Match Match Elite / Caliber .45 ACP .45 ACP .45 ACP / ... / Barrel Length 5.0\" 5.0\" 4.4\" / Rifling Twist 1 in 16\" 1 in 16\" 1 in 16\"'. All three .45 ACP P220 variants are listed as 1 turn in 16 in = 406.4 mm. The table states no groove count for the P220."
+  },
+  {
+   "weapon_id": "p229",
+   "name": "P229 Pistol, .40 S&W variant",
+   "manufacturer": "SIG Sauer",
+   "cartridge": ".40 Smith & Wesson",
+   "barrel_mm": null,
+   "twist_mm": 381.0,
+   "grooves": 6,
+   "source_id": "sig_classic_pistol_manual_8501154",
+   "source_note": "Section 12.12, 'P229 Technical Specifications': 'Caliber 9mm .40 S&W 357 SIG ... Barrel Length 3.9\" 3.9\" 3.9\" / Rifling Twist 1 in 10\" 1 in 15\" 1 in 16\" / Rifling Grooves 6 6 6'. The .40 S&W column is 1 turn in 15 in = 381.0 mm, 6 grooves. (Note: the separate 12.14 P229 Carry table lists .40 S&W as '1:16 LH'; the standard P229 .40 S&W barrel is 1 in 15 in.)"
+  },
+  {
+   "weapon_id": "sg551",
+   "name": "SG 551 Assault Rifle",
+   "manufacturer": "SIG Sauer AG",
+   "cartridge": "5.56×45mm NATO",
+   "barrel_mm": null,
+   "twist_mm": 254.0,
+   "grooves": 6,
+   "source_id": "sig_sg551_manual_40425039",
+   "source_note": "Section 2.3.1 'SG 551 SB Picatinny version' technical specifications: 'Barrel / Barrel length.....mm...363 / Number of grooves..........6 / Rifling / SG 551-1.....inches. ...10 / SG 551-2.....inches. ......7'. Repeated identically for the SG 551 SB Diopter, SG 551 LB Picatinny and SG 551 LB Diopter versions. The manufacturer lists TWO barrel variants: SG 551-1 is 1 turn in 10 in = 254.0 mm, SG 551-2 is 1 turn in 7 in = 177.8 mm. The recorded value is the SG 551-1 barrel. Do not treat 254.0 mm as covering the SG 551-2 barrel."
+  },
+  {
+   "weapon_id": "sg552",
+   "name": "SG 552 Commando Carbine",
+   "manufacturer": "SIG Sauer AG (Swiss)",
+   "cartridge": "5.56×45mm NATO",
+   "barrel_mm": null,
+   "twist_mm": 177.8,
+   "grooves": 6,
+   "source_id": "san_swiss_arms_sg550_552_techdata",
+   "source_note": "'Technical Data SG 551 SWAT - SG 552 Commando': 'SG 552 Commando ... Calibre 5.56 x 45 mm / .223 Remington ... Barrel length 226 mm / Rifling lead 7\" / Number of grooves 6'. The page states the data is 'Information courtesy of SAN Swiss Arms AG'. 1 turn in 7 in = 177.8 mm, 6 grooves."
+  },
+  {
+   "weapon_id": "sg556",
+   "name": "SIG 556 Export Semi-Automatic Rifle",
+   "manufacturer": "SIG Sauer (SIGARMS, Exeter)",
+   "cartridge": "5.56×45mm NATO",
+   "barrel_mm": null,
+   "twist_mm": 177.8,
+   "grooves": 6,
+   "source_id": "sig556_operator_manual",
+   "source_note": "Section 2.2 'Technical Specifications' of the SIG 556 operator manual: 'Caliber 5.56mm NATO (.223 Remington) / Total length 37 inches / Length with stock collapsed 33.5 inches / Barrel length 16 inches / Number of grooves 6 / Rifling 1 in 7'. 1 turn in 7 in = 177.8 mm, 6 grooves. The manual cover reads 'SIG 556 SEMI-AUTOMATIC RIFLE 5.56mm NATO (.223 Remington)'."
+  },
+  {
+   "weapon_id": "ssg3000",
+   "name": "SSG 3000 Sniper Rifle",
+   "manufacturer": "SIG Sauer AG (Swiss)",
+   "cartridge": "7.62×51mm NATO",
+   "barrel_mm": null,
+   "twist_mm": 304.8,
+   "grooves": 4,
+   "source_id": "sig_ssg3000_manual",
+   "source_note": "Section 4.0 'Technical specifications': 'Caliber 7.62 mm x 51 NATO (.308 Win.) ... Rifling twist 1:12\" / 305 mm ... Barrel length, excl. flash suppressor 23.50\" / 600 mm / No. of grooves 4'. 1 turn in 12 in = 304.8 mm, 4 grooves."
+  },
+  {
+   "weapon_id": "maxim50",
+   "name": "Maxim 50 Muzzleloader",
+   "manufacturer": "SilencerCo",
+   "cartridge": ".50 Caliber Muzzleloader",
+   "barrel_mm": null,
+   "twist_mm": 711.2,
+   "grooves": null,
+   "source_id": "silencerco_maxim50_manual",
+   "source_note": "SPECS page of the SilencerCo Maxim 50 instruction manual: 'The Maxim 50 is an inline muzzleloader with the following specs: / 45\" Overall Length / 20\" Barrel Length / 9\" Moderator Length / Tac2 Trigger System ... / .50 Caliber / 1:28\" Rate-Of-Twist'. 1 turn in 28 in = 711.2 mm. Groove count not stated."
+  },
+  {
+   "weapon_id": "model442",
+   "name": "Model 442 J-frame Airweight",
+   "manufacturer": "Smith & Wesson",
+   "cartridge": ".38 Special",
+   "barrel_mm": null,
+   "twist_mm": 476.25,
+   "grooves": null,
+   "source_id": "sw_specsheet_model442_150544",
+   "source_note": "Manufacturer specification sheet, SKU 150544, 'J-FRAME MODEL 442 AIRWEIGHT - LIGHTWEIGHT ALUMINUM ALLOY FRAME': '38 SPECIAL +P | 1.88\" | 5-rounds' and the Barrel Details cell '1.88\" (4.78 cm) Stainless steel, 1:18.75\" Twist rate'. 1 turn in 18.75 in = 476.25 mm. Groove count not stated."
+  },
+  {
+   "weapon_id": "model642",
+   "name": "Model 642 J-frame Airweight",
+   "manufacturer": "Smith & Wesson",
+   "cartridge": ".38 Special",
+   "barrel_mm": null,
+   "twist_mm": 476.25,
+   "grooves": null,
+   "source_id": "sw_specsheet_model642_250th_14925",
+   "source_note": "Manufacturer specification sheet, SKU 14925, 'J-FRAME MODEL 642 AMERICA 250 EDITION ... NO INTERNAL LOCK DOUBLE-ACTION ONLY': '14925 | 38 SPECIAL +P | 1.875\" | 5-rounds' and the Barrel Details cell '1:18.75\" Twist rate'. 1 turn in 18.75 in = 476.25 mm. This sheet is for the Model 642 America 250th Limited Edition, the 1.875 in .38 Special +P J-frame Airweight that matches this entry. Groove count not stated."
+  },
+  {
+   "weapon_id": "model629",
+   "name": "Model 629 N-frame Revolver",
+   "manufacturer": "Smith & Wesson",
+   "cartridge": ".44 Magnum",
+   "barrel_mm": null,
+   "twist_mm": 508.0,
+   "grooves": null,
+   "source_id": "sw_specsheet_model629_engraved_14784",
+   "source_note": "Manufacturer specification sheet, 'SPECIAL MAKE-UP MODEL 629': 'Chambered in .44 Magnum with a 6.5\" barrel' and the Barrel cell '1:20\" Twist rate'. 1 turn in 20 in = 508.0 mm. The sheet covers a Model 629 (engraved), .44 Magnum, 6.5 in barrel, which matches this entry. Groove count not stated."
+  },
+  {
+   "weapon_id": "mp45m20",
+   "name": "M&P45 M2.0 Full-Size Pistol",
+   "manufacturer": "Smith & Wesson",
+   "cartridge": ".45 ACP",
+   "barrel_mm": null,
+   "twist_mm": 381.0,
+   "grooves": null,
+   "source_id": "sw_specsheet_mp45_m2_law_enforcement_12637",
+   "source_note": "Manufacturer specification sheet, SKU 12637, 'M&P 45 M2.0 - LAW ENFORCEMENT - NIGHT SIGHTS': '45 AUTO | 4.6\" | 10+1-rounds' and the Rifling column '1:15\" Twist'. 1 turn in 15 in = 381.0 mm. The sheet is for the M&P45 M2.0 full-size LE variant, the 4.6 in .45 ACP pistol of this entry. Groove count not stated."
+  },
+  {
+   "weapon_id": "sw1911eseries",
+   "name": "SW1911 E-Series Pistol",
+   "manufacturer": "Smith & Wesson",
+   "cartridge": ".45 ACP",
+   "barrel_mm": null,
+   "twist_mm": 406.4,
+   "grooves": null,
+   "source_id": "sw_1911_government_oem_barrel_275500000",
+   "source_note": "Parts listing for the Smith & Wesson OEM barrel, part 275500000: 'Authentic OEM factory new 5\" stainless steel barrel for the Smith & Wesson 1911 Government model pistol. Features a 1-in-16\" twist rate optimized for .45 ACP, machined to factory specification for a drop-in fit on S&W 1911 Government frames.' Part table: 'Brand: Smith & Wesson / Caliber: .45 ACP / Barrel Length: 5\" / Twist Rate: 1 in 16\"'. 1 turn in 16 in = 406.4 mm. This is the factory barrel used by the SW1911 E-Series (5 in, .45 ACP); Smith & Wesson does not publish a twist figure on the model product page or its 2011 model spec sheet."
+  },
+  {
+   "weapon_id": "sw1911proseries",
+   "name": "SW1911 Pro Series Pistol",
+   "manufacturer": "Smith & Wesson",
+   "cartridge": ".45 ACP",
+   "barrel_mm": null,
+   "twist_mm": 406.4,
+   "grooves": null,
+   "source_id": "sw_1911_government_oem_barrel_275500000",
+   "source_note": "Parts listing for the Smith & Wesson OEM barrel, part 275500000: 'Authentic OEM factory new 5\" stainless steel barrel for the Smith & Wesson 1911 Government model pistol. Features a 1-in-16\" twist rate optimized for .45 ACP, machined to factory specification for a drop-in fit on S&W 1911 Government frames.' Part table: 'Brand: Smith & Wesson / Caliber: .45 ACP / Barrel Length: 5\" / Twist Rate: 1 in 16\"'. 1 turn in 16 in = 406.4 mm. This is the factory barrel used by the SW1911 Pro Series (5 in, .45 ACP); Smith & Wesson does not publish a twist figure on the model product page or its 2011 model spec sheet."
+  }
+ ]
+}

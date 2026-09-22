@@ -1,0 +1,182 @@
+{
+  "retrieved": "2026-09-22",
+  "sources": [
+    {
+      "source_id": "kimber_hunter",
+      "title": "Kimber Hunter product page",
+      "url": "https://www.kimberamerica.com/hunter"
+    },
+    {
+      "source_id": "kimber_rapide_dawn",
+      "title": "Kimber RAPIDE (DAWN) product page",
+      "url": "https://www.kimberamerica.com/rapide-dawn"
+    },
+    {
+      "source_id": "kimber_stainless_target_ii",
+      "title": "Kimber Stainless Target II product page (archived 2014-07-01)",
+      "url": "http://web.archive.org/web/20140701084744/http://www.kimberamerica.com/1911/custom-ii/stainless-target-ii"
+    },
+    {
+      "source_id": "kac_2012_mil_catalog",
+      "title": "Knight's Armament Company 2012 Military Catalog",
+      "url": "https://www.knightarmco.com/wp-content/uploads/2021/05/KAC-2012-MIL.pdf",
+      "sha256": "c8d9a63313d2034f3bfd2e7ab46536967f8327445dd08f2649b379b641ce9c02"
+    },
+    {
+      "source_id": "kac_2018_catalog",
+      "title": "Knight's Armament Company 2018 Catalog",
+      "url": "https://www.knightarmco.com/wp-content/uploads/2021/05/KAC-2018-Catalog.pdf",
+      "sha256": "d23bea57cd39a5d51e27c9217acc1e79c3531a81c6ae46dc6bdc98390a4cb00e"
+    },
+    {
+      "source_id": "lmt_defender_h",
+      "title": "LMT Defender-H 7.62 (MWSDFDR) product page",
+      "url": "https://lmtdefense.com/product/mws-defender/"
+    },
+    {
+      "source_id": "lmt_l129a1",
+      "title": "LMT L129A1 Reference Rifle (LM308SSR) product page",
+      "url": "https://lmtdefense.com/product/lm308ssr/"
+    },
+    {
+      "source_id": "lmt_mars_h",
+      "title": "LMT MARS-H 7.62 (MLKMWS-MARS) product page",
+      "url": "https://lmtdefense.com/product/mlok-mars-h/"
+    },
+    {
+      "source_id": "kriss_vector_g3_manual",
+      "title": "KRISS Vector Gen 3 Owner's Manual (centerfire SDP/SBR/CRB)",
+      "url": "https://kriss.canto.com/direct/document/8coub6olqh48lf048ii4n6i94r/qYPfpVdDEcQWVdTuGaWOBLdYxMU/original?content-type=application%2Fpdf&name=Gen3+Semi_21.pdf",
+      "sha256": "f0aa449180592c72fa120ffacdca24e51e1fb50e570baa1a7d811537a3c77b6f"
+    },
+    {
+      "source_id": "kriss_vector_22_manual",
+      "title": "KRISS Vector 22 Owner's Manual",
+      "url": "https://kriss.canto.com/direct/document/4o6cc7tat11kh75e541s8g8p3f/iN6t17ekhmiw8vFKapdfufsA298/original?content-type=application%2Fpdf&name=KRISS+MANUAL_VECTOR+22.pdf",
+      "sha256": "e94616570249fe0fee8ac779d8e11817e840a658e55ef625e11180455bfdba42"
+    }
+  ],
+  "weapons": [
+    {
+      "weapon_id": "hunter308",
+      "name": "Hunter .308 bolt action, carbon fiber stock, 24\" fluted barrel",
+      "manufacturer": "Kimber",
+      "cartridge": ".308 Winchester",
+      "barrel_mm": null,
+      "twist_mm": 254.0,
+      "grooves": 4,
+      "source_id": "kimber_hunter",
+      "source_note": "\"Twist rate (right hand): 10\" and \"Grooves: 4\" for the .308 Win variant (product # 3000789, UPC 669278307893) on the Kimber Hunter product page. The page lists two variants; the first block with twist 8 (product # 3000793, UPC 669278307930) is the 6.5 Creedmoor, leaving twist 10 for .308 Win. 1 turn in 10 in = 254 mm."
+    },
+    {
+      "weapon_id": "rapidedawn",
+      "name": "Rapide Dawn 5\" barrel, satin silver, blue laminate grips",
+      "manufacturer": "Kimber",
+      "cartridge": ".45 ACP",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": null,
+      "source_id": "kimber_rapide_dawn",
+      "source_note": "\"Twist rate (left hand): 16\" stated for the .45 ACP variant (SKU 3000423) of the Kimber RAPIDE (DAWN). 1 turn in 16 in = 406.4 mm."
+    },
+    {
+      "weapon_id": "targetii1911",
+      "name": "Target II 1911 5\" barrel, adjustable rear sight, stainless",
+      "manufacturer": "Kimber",
+      "cartridge": ".45 ACP",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": null,
+      "source_id": "kimber_stainless_target_ii",
+      "source_note": "Kimber Stainless Target II page: \"Caliber: .45 ACP\", \"Barrel Length (inches): 5\", \"Twist rate (left hand): 16\". 1 turn in 16 in = 406.4 mm."
+    },
+    {
+      "weapon_id": "m110",
+      "name": "M110 Sniper Rifle",
+      "manufacturer": "Knight's Armament",
+      "cartridge": "7.62×51mm NATO",
+      "barrel_mm": null,
+      "twist_mm": 279.4,
+      "grooves": 5,
+      "source_id": "kac_2012_mil_catalog",
+      "source_note": "KAC 2012 Military Catalog, M-110 SASS entry: \"Barrel 20\" (50.8cm) 1:11 Chrome Plated 5R Cut\" (Caliber 7.62 NATO). The same catalog calls it the M-110 Semi-Automatic Sniper System (M-110 SASS). 1 turn in 11 in = 279.4 mm."
+    },
+    {
+      "weapon_id": "sr25",
+      "name": "SR-25 Sniper Rifle",
+      "manufacturer": "Knight's Armament",
+      "cartridge": "7.62×51mm NATO",
+      "barrel_mm": null,
+      "twist_mm": 254.0,
+      "grooves": 5,
+      "source_id": "kac_2018_catalog",
+      "source_note": "KAC 2018 Catalog, SR-25 E2 series: \"SR-25 E2 ADVANCED PRECISION RIFLE M-LOK P/N: 31961 ... Barrel 20\"(51 cm) 5R Cut 1:10 Twist\". All SR-25 E2 models in the catalog (16 in, 14.5 in, 20 in) are listed 1:10. 1 turn in 10 in = 254 mm."
+    },
+    {
+      "weapon_id": "l129a1",
+      "name": "L129A1 Sniper Rifle",
+      "manufacturer": "Lewis Machine & Tool",
+      "cartridge": "7.62×51mm NATO",
+      "barrel_mm": null,
+      "twist_mm": 285.75,
+      "grooves": null,
+      "source_id": "lmt_l129a1",
+      "source_note": "LMT L129A1 Reference Rifle (LM308SSR) product page, Specifications: \"Rifling Twist Rate 1:11.25\"\" with Caliber \"7.62×51 (.308)\" and Barrel Material \"Stainless Steel (SS)\". 1 turn in 11.25 in = 285.75 mm."
+    },
+    {
+      "weapon_id": "defenderh",
+      "name": "Defender-H Rifle",
+      "manufacturer": "LMT Defense",
+      "cartridge": "7.62×51mm NATO",
+      "barrel_mm": null,
+      "twist_mm": 254.0,
+      "grooves": null,
+      "source_id": "lmt_defender_h",
+      "source_note": "LMT Defender-H 7.62 (MWSDFDR) product page, Details and Specs: \"16″ 7.62×51 (.308) Chrome Lined 1:10″ RH Twist Barrel\" and \"Rifling Twist Rate 1:10\"\". 1 turn in 10 in = 254 mm."
+    },
+    {
+      "weapon_id": "marsh",
+      "name": "MARS-H 7.62 NATO",
+      "manufacturer": "LMT Defense",
+      "cartridge": "7.62×51mm NATO",
+      "barrel_mm": null,
+      "twist_mm": 254.0,
+      "grooves": null,
+      "source_id": "lmt_mars_h",
+      "source_note": "LMT MARS-H 7.62 (MLKMWS-MARS) product page: \"16″ 7.62×51 (.308) Chrome Lined 1:10″ RH Twist Barrel\" and Specs \"Rifling Twist Rate 1:10\"\". 1 turn in 10 in = 254 mm."
+    },
+    {
+      "weapon_id": "vector22lr",
+      "name": "Vector .22LR Semi-auto Rifle",
+      "manufacturer": "KRISS USA",
+      "cartridge": ".22 Long Rifle",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": null,
+      "source_id": "kriss_vector_22_manual",
+      "source_note": "KRISS Vector 22 Owner's Manual, Specifications table: \"Caliber 22LR\" and \"Barrel twist 1:16 RH\". 1 turn in 16 in = 406.4 mm."
+    },
+    {
+      "weapon_id": "vectorgen345",
+      "name": "Vector Gen 3 .45 Semi-auto Carbine",
+      "manufacturer": "KRISS USA",
+      "cartridge": ".45 ACP",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": null,
+      "source_id": "kriss_vector_g3_manual",
+      "source_note": "KRISS Vector Gen 3 Owner's Manual (covers SDP, SBR, CRB), Specifications tables: \"Caliber 45ACP 9mm 10mm\" / \"Barrel twist 1:16” RH 1:10” RH 1:10” RH\". The .45 ACP barrel twist is 1:16 RH. 1 turn in 16 in = 406.4 mm."
+    },
+    {
+      "weapon_id": "vectorsdp45",
+      "name": "Vector SDP .45 Semi-auto Pistol",
+      "manufacturer": "KRISS USA",
+      "cartridge": ".45 ACP",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": null,
+      "source_id": "kriss_vector_g3_manual",
+      "source_note": "KRISS Vector Gen 3 Owner's Manual (owner's manual for the centerfire Gen 3 SDP, SBR, CRB), Specifications tables: \"Caliber 45ACP 9mm 10mm\" / \"Barrel twist 1:16” RH 1:10” RH 1:10” RH\". The .45 ACP barrel twist is 1:16 RH. 1 turn in 16 in = 406.4 mm."
+    }
+  ]
+}

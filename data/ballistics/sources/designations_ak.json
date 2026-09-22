@@ -1,0 +1,1773 @@
+{
+ "retrieved": "2026-09-22",
+ "sources": [
+  {
+   "source_id": "cip_545x39",
+   "title": "C.I.P. TDCC Table I (Rimless cartridges): 5,45 x 39 (country of origin SU); Annex 'Grooves' states u* = 195.00, N = 4",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-i/5-45-x-39-en.pdf",
+   "sha256": "b1a1a3d86a471ea1f3bca59303cfc9d7a7597ec9a017d6c204387b7dbd92563f"
+  },
+  {
+   "source_id": "cip_762x39",
+   "title": "C.I.P. TDCC Table I (Rimless cartridges): 7,62 x 39 (country of origin SU); Annex 'Grooves' states u = 240.00, N = 4",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-i/7-62-x-39-en.pdf",
+   "sha256": "05b0d184b75dd101fdf37bea790ff3f52b4d47cdc6a85484cf5378d34f97cffd"
+  },
+  {
+   "source_id": "cip_762x54r",
+   "title": "C.I.P. TDCC Table II (Rimmed cartridges): 7,62 x 54 R (country of origin SU); Annex 'Grooves' states u = 240.00, N = 4",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-ii/7-62-x-54-r-en.pdf",
+   "sha256": "4a9e923b1a7fc10bbc2b9b73fb083874312a024d2ca1f820dadf82bb2977de61"
+  },
+  {
+   "source_id": "cip_9x39",
+   "title": "C.I.P. TDCC Table I (Rimless cartridges): 9 x 39 (country of origin RU); Annex 'Grooves' states u = 240.00, N = 4",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-i/9-x-39-180314-en1.pdf",
+   "sha256": "7deba1d6414a4f5f8be5e0ed219f913df6c8595cdfe2ae29aef96f7ceca8dc37"
+  },
+  {
+   "source_id": "ak74_rpk74_manual_1982",
+   "title": "Руководство по 5,45-мм автомату Калашникова (АК74, АКС74, АК74Н, АКС74Н) и 5,45-мм ручному пулемету Калашникова (РПК74, РПКС74, РПК74Н, РПКС74Н). Министерство обороны СССР, Воениздат, 1982 г. (Приложение 1, стр. 186: Баллистические и конструктивные данные)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/7-ak74/32-ak74rpk74manual82",
+   "sha256": "f2a15ffc95b671fae1f0716b2f53f2cc5240b52bed04477f8ea45495b4eb71e0"
+  },
+  {
+   "source_id": "rpk74m_tech_2002",
+   "title": "Ручной пулемет РПК-74М, журнал \"Техника и вооружение\" 2002 №6 (RPK-74M specification table)",
+   "url": "https://military.wikireading.ru/55679",
+   "sha256": "f7070e1270da0352a5c7bbb983c92c1d8a88491224cc0cb5d7dd6e09dfc1b2c8"
+  },
+  {
+   "source_id": "kalashnikov_club_svd_twist",
+   "title": "Из истории винтовки СВД — про шаг нарезов ствола (Калашников Клуб, АО «Концерн «Калашников»), автор М. Попенкер, 13.07.2018",
+   "url": "https://kalashnikov.club/a/iz-istorii-vintovki-svd-pro-shag-narezov-stvola",
+   "sha256": "ec7bac867c6fc7d3f32a1eefbb5b9dd52e864662fab6fbe440bf80cf883a807b"
+  },
+  {
+   "source_id": "svd_tm_or15",
+   "title": "TM 8370-50097-OR/15, Sniper Rifle 7.62 x 54R mm Dragunov SVD Operator's Manual (2010)",
+   "url": "https://archive.org/download/tm-8370-50097-or-15-sniper-rifle-7.62-x-54-r-mm-dragunov-svd-operators-manual-2010/TM8370-50097-OR-15_Sniper_rifle_7.62_x_54R_mm_Dragunov_SVD_operators_manual_2010.pdf",
+   "sha256": "d50425c9da394c44d7604079a66873c25fb2e79e5947b32ad384ebd133f99fd7"
+  },
+  {
+   "source_id": "svd_ru_manual",
+   "title": "7.62mm Dragunov Sniper Rifle (SVD), Technical Description and Service Manual (English translation)",
+   "url": "https://ia601005.us.archive.org/20/items/manuals.content.like.stevespages/dragunov.pdf",
+   "sha256": "11b1c35bc3ec819411a858dfeec58cf957fca5f765c551e3e99439690ee7c36c"
+  },
+  {
+   "source_id": "ak_info_ak_manual58",
+   "title": "7,62-мм Автомат Калашникова (АК). Наставление по стрелковому делу. Воениздат МО СССР, издание 2-е (Ak-info.ru manual page naming AK and AKS)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/5-ak/135-akmanual58",
+   "sha256": "dd6d62f44a35631d05c2a047f2ddc129ba13cc871351a59bd5c515f0446cb18f"
+  },
+  {
+   "source_id": "ak_info_ak47_1949",
+   "title": "7,62-мм автомат конструкции Калашникова (АК-47). Краткое руководство службы. Воениздат Министерства ВС СССР, 1949 (Ak-info.ru page)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/5-ak/202-ak47about49",
+   "sha256": "81038e5e7c42ba409d98386631bedd5322c385af20c7150d116d32c929edad24"
+  },
+  {
+   "source_id": "ak_info_akm_manual",
+   "title": "7,62-мм модернизированный автомат Калашникова (АКМ и АКМС). Наставление по стрелковому делу. Издание 3-е. Воениздат МО СССР (Ak-info.ru page naming AKM and AKMS)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/6-akm/38-akmmanualv370zip",
+   "sha256": "739a94514158b3f33e13ff47f2b563cbb3df0b41721636a83f66a7440ace3892"
+  },
+  {
+   "source_id": "ak_info_akm_repair68",
+   "title": "7,62-мм модернизированные автоматы Калашникова (АКМ и АКМС). Руководство по ремонту. Министерство обороны СССР, 1968 (Ak-info.ru page)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/6-akm/39-akmrepairmanual68",
+   "sha256": "0ae7c20a81de88996a0089a4df558aafbfe2ae3ffc15d3f48718f77ea578cb0c"
+  },
+  {
+   "source_id": "ak_info_nsd87",
+   "title": "НСД. Основы стрельбы из стрелкового оружия. АКМ и АКМС. РПК и РПКС. ПК, ПКС, ПКБ и ПКТ. ПМ. Ручные гранаты. Министерство обороны СССР (Ak-info.ru page; names the RPK and PK families)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/6-akm/41-akmrpkpkpmnds87zip",
+   "sha256": "9d55ab52da3a08258466e69bdd30d40076b92bd9bf21f90dddb399b2ff35bcce"
+  },
+  {
+   "source_id": "ak_info_aks74u_manual",
+   "title": "Руководство по 5,45-мм Автомату Калашникова Укороченному АКС74У (АКС74УН2). Издание 2-е. Министерство обороны СССР (Ak-info.ru page)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/7-ak74/33-aks74umanualzip",
+   "sha256": "82edf40197fa9c5f8577a044e7f85d544d745972f5c3ebb8444a44d25bad7d3e"
+  },
+  {
+   "source_id": "ak_info_akmn",
+   "title": "АКМН. Модификация АКМ. Описание, характеристики, фотографии (Ak-info.ru variant page for the AKM night-sight rifle)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/6-akm/70-akmnabout",
+   "sha256": "2be7f0f4117ba6dbc6fe082462e63bd63fe8e0188d5d9c9983eafd74eb5a2a98"
+  },
+  {
+   "source_id": "ak_info_akmn2",
+   "title": "АКМН2 (АКМСН2). Модификация АКМ. Описание, характеристики, фотографии (Ak-info.ru variant page)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/6-akm/74-akmn2",
+   "sha256": "23d2979531a10988e20cccd8983a44d0b2beac1e5024d64578b3558dddde460d"
+  },
+  {
+   "source_id": "ak_info_ak101_103",
+   "title": "Автоматы Калашникова АК101, АК103. Руководство по эксплуатации 6П43, 6П45 РЭ. 2003 г. (Ak-info.ru page)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/8-ak100/231-re1011032005",
+   "sha256": "44a910951471332ba66ff5fdc55dd89f92a166779471a367e405f051220e56bd"
+  },
+  {
+   "source_id": "ak_info_ak102_104_105",
+   "title": "Автоматы Калашникова АК102, АК104, АК105. Руководство по эксплуатации. 6П44, 6П46, 6П47 РЭ. 2003 г. (Ak-info.ru page)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/8-ak100/79-ak102-04-05manual03",
+   "sha256": "67227fa36311397c446394846eaa9a216b62e656dafcaea6c3f51c44b0fef25a"
+  },
+  {
+   "source_id": "ak_info_ak104_manual",
+   "title": "7,62 мм автомат Калашникова АК104. Руководство по эксплуатации. 6П46 РЭ. 2005 г. (Ak-info.ru page)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/8-ak100/233-reak10405",
+   "sha256": "0e09c5d8f29f07352a9e48b18e5194c43f895ac11039d87267456b714a1a8d2b"
+  },
+  {
+   "source_id": "ak_info_ak74m_rpk",
+   "title": "Руководство по 5,45-мм автоматам Калашникова АК74, АК74М, АКС74У (и др.) и 5,45-мм ручным пулеметам Калашникова. 2001 г. (Ak-info.ru page naming AK-74M and RPK-74M)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/8-ak100/222-re545about",
+   "sha256": "38fbec33a5a533f05a0059fcbd426e138a88aadd4a600350d6793110b28cca78"
+  },
+  {
+   "source_id": "ak_info_ak12tech",
+   "title": "5,45 мм автомат Калашникова АК-12 обр. 2016 г. (Тип 1). Техническое описание, характеристики (Ak-info.ru page; TTH block states Число нарезов 4)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/32-ak5pokolenie/250-ak12techabout",
+   "sha256": "df3bc2b6898b97533240b06c2f98d5f1697a93777ddbbb6873dce966bf8a37b1"
+  },
+  {
+   "source_id": "ak_info_ak12k",
+   "title": "5,45 мм автомат Калашникова АК-12 укороченный (автомат АК-12К). Описание, характеристики (Ak-info.ru page)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/32-ak5pokolenie/285-ak-12k",
+   "sha256": "05c54f32fef8dbabbb9c81f1fe34a9be1536a20f05716ac5bcd8d59dd002f129"
+  },
+  {
+   "source_id": "ak_info_ak12sk",
+   "title": "5,45 мм автомат Калашникова АК-12 малогабаритный (автомат АК-12СК). Описание, характеристики (Ak-info.ru page)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/32-ak5pokolenie/286-ak-12sk",
+   "sha256": "fbd1274c961b82fe7fa404c7d549728e3f44d490a49ed412ef8464459bc76685"
+  },
+  {
+   "source_id": "ak_info_ak15k",
+   "title": "7,62 мм автомат Калашникова АК-15 укороченный (автомат АК-15К). Описание, характеристики (Ak-info.ru page)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/32-ak5pokolenie/287-ak-15c",
+   "sha256": "fc02b4176e245999fed96b840eaf151f834e02fdcfd6217c0934974b7a8029cb"
+  },
+  {
+   "source_id": "ak_info_ak15sk",
+   "title": "7,62 мм автомат Калашникова АК-15 малогабаритный (автомат АК-15СК). Описание, характеристики (Ak-info.ru page)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/32-ak5pokolenie/288-ak-15sc",
+   "sha256": "c0372c15e1325a4f445ca4befd37559c8da8962c19f529a8374fd1dc2771ecc5"
+  },
+  {
+   "source_id": "ak_info_ak19",
+   "title": "5,56 мм автомат Калашникова АК-19 исполнение 02/03. Описание, характеристики (Ak-info.ru page; TTH block states Калибр 5,56 and Число нарезов 4)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/32-ak5pokolenie/276-ak19k23",
+   "sha256": "92c4112cb179072948be06f07db6117c6e0c1047bc4fb477b61f155aaf3d6aab"
+  },
+  {
+   "source_id": "ak_info_ak200_manual",
+   "title": "5,45 мм автомат Калашникова АК200. Руководство по эксплуатации. 6П34-1 РЭ. (Ak-info.ru page)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/32-ak5pokolenie/280-ak200re",
+   "sha256": "db055b4ce7527d2cc2c70828f746333b78681a46cbbe4c5eed94dcd6455a6e4b"
+  },
+  {
+   "source_id": "ak_info_hu_akm63",
+   "title": "Венгрия. Автомат Калашникова модернизированный (АКМ-63). ТО и ИЭ. Hungarian 7,62 mm-es Korszerusitett Kalasnyikov (Ak-info.ru page hosting the Hungarian AKM-63 manual)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/16-akworld/178-akm63manual",
+   "sha256": "e2fdeca8752b26a748230fe71436870692f31861ecbde09292464cb6416470fc"
+  },
+  {
+   "source_id": "ak_info_hu_amd65",
+   "title": "Венгрия. Автомат Калашникова AMD-65. ТО и ИЭ. Hungarian 7,62 mm-es AMD-65 gepipisztoly leirasa es kezelesi utasitasa (Ak-info.ru page hosting the Hungarian AMD-65 manual)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/16-akworld/179-amd65manual68",
+   "sha256": "ccd262fb61af628517ae68170466ae148278f0a735871a68ccee891e391109e4"
+  },
+  {
+   "source_id": "ak_info_ro_pmmd63",
+   "title": "Румыния. PM md.63. История создания, характеристики, фотографии (Ak-info.ru page on the Romanian PM md.63)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/16-akworld/182-pmmd63",
+   "sha256": "36867769f74f5271cfcc2a8ef8a456bbd52685afce8a1a8564bc0af441520185"
+  },
+  {
+   "source_id": "ak_info_pl_beryl",
+   "title": "Польша. 5.56 mm karabin szturmowy wz. 96 \"BERYL\". Instrukcja obslugi i uzytkowania. Fabryka Broni \"Lucznik\" - Radom. 2009 (Ak-info.ru page hosting the Polish Beryl manual)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/16-akworld/221-nsdberyl09",
+   "sha256": "2422a7f2ac8b4ad292f89f84f79483ab962a185576e873fe1c09056d7766ef1d"
+  },
+  {
+   "source_id": "ak_info_yu_m70family",
+   "title": "Югославия. Определитель модификаций AP 7,62 mm M70 (Ak-info.ru identification guide to the Yugoslav M70 rifle variants)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/16-akworld/241-zastavam70family",
+   "sha256": "627e24dd71c77eb8ba16bcd01d4047aa0cfcd2fecb2d374ed0438fc3a28278b6"
+  },
+  {
+   "source_id": "ak_info_yu_up111",
+   "title": "Югославия. UP-111. Pravilo pusaka i puskomitraljeza 7,62 mm. Savezni Sekretarijat za narodnu odbranu (Yugoslav army manual, 7.62 mm rifles and light machine guns; Ak-info.ru page)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/16-akworld/209-yugonsd83",
+   "sha256": "9d0349f1153b2194cd39c5470d87bedfe8e860f3517407d565d79ac0696df5db"
+  },
+  {
+   "source_id": "ak_info_yu_tech85",
+   "title": "Югославия. Automatske puske i puskomitraljezi 7,62 mm. Radionicko odrzavanje. 1985 (Yugoslav workshop maintenance manual, 7.62 mm rifles and light machine guns; Ak-info.ru page)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/16-akworld/210-yugotech85",
+   "sha256": "8b0d1b26647da58bd46ec2d7394c558de1be0ad6aad952acc1872a7b2c3450f9"
+  },
+  {
+   "source_id": "ak_info_hr_apm70",
+   "title": "Хорватия. Руководство по эксплуатации Automatska Puska AP-M70. Zagreb. 1996 (Croatian AP-M70 assault rifle manual; Ak-info.ru page)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/16-akworld/189-crom70mnl",
+   "sha256": "1b62be9851736b180a1fdcb93743ebebf0b6625bea1793293ba27c9f9ac21146"
+  },
+  {
+   "source_id": "ak_info_iq_manual",
+   "title": "Ирак. Наставление по стрелковому делу автоматов Калашникова. 1997 г. (Iraqi Kalashnikov rifle manual; Ak-info.ru page)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/16-akworld/159-iraqiakmanual",
+   "sha256": "059ba50aae88ac45c2f0c53959996e32402cb4e2d69c78f2b70a92bd03087243"
+  },
+  {
+   "source_id": "ak_info_sy_manual",
+   "title": "Сирийская Арабская Республика. Наставление по стрелковому делу АК. Главное командование Армии и Вооруженных сил (Syrian AK manual; Ak-info.ru page)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/16-akworld/175-siria",
+   "sha256": "72db22ebb522024ed09092952e3eb80be3d340ebb3d618b0c1a31556d224546e"
+  },
+  {
+   "source_id": "ak_info_bg_article",
+   "title": "Болгария. Тематический выпуск журнала \"Клуб Оружие\", посвященный истории автоматов Калашникова (Bulgarian AK history issue; Ak-info.ru page)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/16-akworld/160-bulgarianakxxvek",
+   "sha256": "c7392867c9e611070844a2a7673d64760477d69c0c36a4b200f3c8ddcc8e30b4"
+  },
+  {
+   "source_id": "ak_info_cz_vz58",
+   "title": "Чехословакия. CZ mod. 58 (vz.58). Инструкция по эксплуатации / Instruction manual. Ceska Zbrojovka (Ak-info.ru page; the vz.58 is NOT a Kalashnikov derivative)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/16-akworld/124-vz58manual",
+   "sha256": "cc9bf40e0e10af37cbf396f6183c362d79272b40b0c82f8ed5af7846d94c7c8d"
+  },
+  {
+   "source_id": "kalashnikov_ak74m",
+   "title": "Автомат Калашникова АК74М — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
+   "url": "https://web.archive.org/web/20220313154617/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak74m",
+   "sha256": "cf8b846df37f69b0c2a96a2a3286b51a34498d6852fe66a92e368e2688db2795"
+  },
+  {
+   "source_id": "kalashnikov_ak105",
+   "title": "Автомат Калашникова АК105 — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
+   "url": "https://web.archive.org/web/20220313154521/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak105",
+   "sha256": "4133098e128a1161f1c6ffe5bf2db6ffb6cec14c2836003bc819a4f55aca7bbe"
+  },
+  {
+   "source_id": "kalashnikov_ak12",
+   "title": "Автомат Калашникова АК-12 — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
+   "url": "https://web.archive.org/web/20220313154453/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak-12",
+   "sha256": "4f178b1da297d9ff7b78f714e72814e2ed33798e7433c1ffab669623cc743642"
+  },
+  {
+   "source_id": "kalashnikov_ak101",
+   "title": "Автомат Калашникова АК101 — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
+   "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak101",
+   "sha256": "ba4125d03ffd677dc566cd1f2e5ecad8f9168fcb15dc54e46033ea579af1b696"
+  },
+  {
+   "source_id": "kalashnikov_ak102",
+   "title": "Автомат Калашникова АК102 — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
+   "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak102",
+   "sha256": "d239cc3941112cbc95bf8954d63139004024651cc4aacca5d2ff7ed1ad62aaf8"
+  },
+  {
+   "source_id": "kalashnikov_ak103",
+   "title": "Автомат Калашникова АК103 — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
+   "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak103",
+   "sha256": "4866fbaa785822efdfa8bf991d030489ccfb1cd0b0a5fa04a71d8b10ac16c4b8"
+  },
+  {
+   "source_id": "kalashnikov_ak104",
+   "title": "Автомат Калашникова АК104 — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
+   "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak104",
+   "sha256": "d14d696b8738acfce7c589434e9f679d9d021ef9b7d16c332ff6c01a7660c6f0"
+  },
+  {
+   "source_id": "kalashnikov_ak15",
+   "title": "Автомат Калашникова АК-15 — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
+   "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak-15",
+   "sha256": "85b8983858ffd013a2e35fa8f0dcff2f713984431a7bcd01cbf96508a0ea0e70"
+  },
+  {
+   "source_id": "kalashnikov_ak19",
+   "title": "Автомат Калашникова АК-19 — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
+   "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak-19",
+   "sha256": "72472de0ebaf0c5aaf948cdfe203763ea11c6459f80ec3a8f6a7f009f38cb5c3"
+  },
+  {
+   "source_id": "kalashnikov_ak200",
+   "title": "Автомат Калашникова АК200 — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
+   "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak200",
+   "sha256": "fca553c9cd2a7e4197a78e6cd67a9b738b752249f61541de12786d32c0a43b9e"
+  },
+  {
+   "source_id": "kalashnikov_ak201",
+   "title": "Автомат Калашникова АК201 — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
+   "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak201",
+   "sha256": "4fd0dd5fe381da63160465ae313ab68df43b426d95dc5aa309a3c9cab392dbc4"
+  },
+  {
+   "source_id": "kalashnikov_ak202",
+   "title": "Автомат Калашникова АК202 — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
+   "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak202",
+   "sha256": "9f5b13ee7395d5c3bce3c6de6623058724c663998de01010f5fc6c801659d50f"
+  },
+  {
+   "source_id": "kalashnikov_ak203",
+   "title": "Автомат Калашникова АК203 — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
+   "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak203",
+   "sha256": "4532179219c22ddc856b52679b2ce904b91f7f64bcb31f2908bd5fe94eca6f6e"
+  },
+  {
+   "source_id": "kalashnikov_ak204",
+   "title": "Автомат Калашникова АК204 — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
+   "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak204",
+   "sha256": "08e683183dd7ec9cd7f0af4472e1dcb6906d83a0b238656013027334b8a7b1ec"
+  },
+  {
+   "source_id": "kalashnikov_ak205",
+   "title": "Автомат Калашникова АК205 — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
+   "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak205",
+   "sha256": "2f3a8acd8d7f6be6d1ba23f4c162021d9358c784b355af4ccb16ae4f256dff0d"
+  },
+  {
+   "source_id": "kalashnikov_ak308",
+   "title": "Автомат Калашникова АК-308 — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
+   "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak-308",
+   "sha256": "1b024a49d22b5be65cdf981f709a342e7f205784abd94ded98f5e4b0559f9ec8"
+  },
+  {
+   "source_id": "kalashnikov_svd",
+   "title": "Снайперская винтовка СВД — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
+   "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/snayperskie-vintovki/snayperskaya-vintovka-svd",
+   "sha256": "2f63da61928d7fbdab075a2b2ecd4f15d6173a6398d4fda4544966da543ce10f"
+  },
+  {
+   "source_id": "kalashnikov_svds",
+   "title": "Снайперская винтовка СВДС — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
+   "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/snayperskie-vintovki/snayperskaya-vintovka-svds",
+   "sha256": "e2c0db71369ed884212581dc044b1783f641d453bc1a809770679e2518eeb7b7"
+  },
+  {
+   "source_id": "kalashnikov_svdm",
+   "title": "Снайперская винтовка СВДМ — Группа компаний «Калашников» (official product data page, archived 2022-03-13)",
+   "url": "https://web.archive.org/web/2022id_/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/snayperskie-vintovki/snayperskaya-vintovka-svdm",
+   "sha256": "2554479c1a345a7eb79a4f28ae6447b154de5a7fcdd70153753066387b476f09"
+  },
+  {
+   "source_id": "mf_ak47_akm",
+   "title": "Modern Firearms - AK-47 AKM (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
+   "url": "https://web.archive.org/web/20171023060017/http://modernfirearms.net:80/assault/rus/ak-akm-e.html",
+   "sha256": "1c2ae604bc85b00d35ccd73b8bef0fd22d8180df0f8b71a5de30ce3facd35eb0"
+  },
+  {
+   "source_id": "mf_ak74",
+   "title": "Modern Firearms - AK-74 (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
+   "url": "https://web.archive.org/web/20171015124930/http://modernfirearms.net:80/assault/rus/ak-74-e.html",
+   "sha256": "cb368086cf273b50b995f0bd9d0a8b0a13bf899022b1ddf5ac313b0fe3c867f7"
+  },
+  {
+   "source_id": "mf_pkm",
+   "title": "Modern Firearms - Kalashnikov PK / PKM (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
+   "url": "https://web.archive.org/web/20171022194055/http://modernfirearms.net:80/machine/rus/kalashnikov-pk-pkm-e.html",
+   "sha256": "144995c023e84f326490a834ac82e99406ce92909bcc4c7f7464725d4d681efb"
+  },
+  {
+   "source_id": "mf_rpk",
+   "title": "Modern Firearms - Kalashnikov RPK (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
+   "url": "https://web.archive.org/web/20171010001349/http://modernfirearms.net:80/machine/rus/kalashnikov-rpk-e.html",
+   "sha256": "c06ed27ca7bfcd2f3db11629407af04a1909e3ea6ba218d5e6286db9788ab0f5"
+  },
+  {
+   "source_id": "mf_rpk74",
+   "title": "Modern Firearms - Kalashnikov RPK-74 (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
+   "url": "https://web.archive.org/web/20171018115348/http://modernfirearms.net:80/machine/rus/kalashnikov-rpk-74-e.html",
+   "sha256": "ee860d759591662e970f616b0eac6cc4402fea7a910ebb99276b52dd047273e1"
+  },
+  {
+   "source_id": "mf_rpk16",
+   "title": "Modern Firearms - RPK-16 (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
+   "url": "https://web.archive.org/web/20171022195328/http://modernfirearms.net:80/machine/rus/rpk16-e.html",
+   "sha256": "132a55e03ef6285f9bfaf1a8a521999f3f1eeceb391b9b3a2a722911295ef901"
+  },
+  {
+   "source_id": "mf_pecheneg",
+   "title": "Modern Firearms - Pecheneg (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
+   "url": "https://web.archive.org/web/20171101161643/http://modernfirearms.net:80/machine/rus/pecheneg-e.html",
+   "sha256": "6a9629c8584d3e019e06cc5cfbd2e09e9366eba411ab76652c9db9891dc5e6d4"
+  },
+  {
+   "source_id": "mf_sks",
+   "title": "Modern Firearms - Simonov SKS (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
+   "url": "https://web.archive.org/web/20170925133132/http://modernfirearms.net:80/rifle/autoloading-rifles/rus/simonov-sks-e.html",
+   "sha256": "aff74ecaed54e90096dc75ba457392bb6db49503ec71d2e897e53dff89e0154c"
+  },
+  {
+   "source_id": "mf_svu",
+   "title": "Modern Firearms - СВУ, СВУ-АС (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
+   "url": "https://web.archive.org/web/20150424121520/http://world.guns.ru/sniper/sniper-rifles/rus/svu-and-svu-a-r.html",
+   "sha256": "dea3e15a66f798d8f9272aec28386a7921b4284095e61f12341b6d0c7ff550a7"
+  },
+  {
+   "source_id": "mf_ak9",
+   "title": "Modern Firearms - AK-9 (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
+   "url": "https://web.archive.org/web/20171006154716/http://modernfirearms.net:80/assault/rus/ak-9-e.html",
+   "sha256": "813822cb9ea56f67c2ddd7ed586e0e32ab18a14b69ba32fc2e142b9ccd9a2489"
+  },
+  {
+   "source_id": "mf_ak107",
+   "title": "Modern Firearms - AK-107/108 (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
+   "url": "https://web.archive.org/web/20171029191118/http://modernfirearms.net:80/assault/rus/ak-10710-e.html",
+   "sha256": "ec6b320bf96b9cc1afdbc4021ee1a200fd916d936e5578158db1b03d437cbf3f"
+  },
+  {
+   "source_id": "mf_beryl",
+   "title": "Modern Firearms - Wz.96 Beryl and Mini-Beryl assault rifle (Poland) (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
+   "url": "https://web.archive.org/web/20171029185208/http://modernfirearms.net:80/assault/poland/beryl-e.html",
+   "sha256": "313051ffa2be6bac72502bfb7ae8a3cafc5fd199ba8ac59c306edbadd1a10c21"
+  },
+  {
+   "source_id": "mf_galil",
+   "title": "Modern Firearms - Galil (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
+   "url": "https://web.archive.org/web/20171012110935/http://modernfirearms.net:80/assault/isr/galil-e.html",
+   "sha256": "12c344b538a60bad37ede34e913ca2c7b351f241ff10cbf8358dbc8edb12eb05"
+  },
+  {
+   "source_id": "mf_galil_sniper",
+   "title": "Modern Firearms - Galil Sniper (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
+   "url": "https://web.archive.org/web/20170806134201/http://modernfirearms.net:80/sniper/sniper-rifles/isr/galil-sniper-e.html",
+   "sha256": "696edc01b91fe38945ca558a274ca5c9be295701dfbbf6605f52e8fca54e91d5"
+  },
+  {
+   "source_id": "mf_valmet",
+   "title": "Modern Firearms - Valmet Sako Rk.62 / 76 / 95 (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
+   "url": "https://web.archive.org/web/20171104184548/http://modernfirearms.net:80/assault/fi/valmet-sako-rk62--76--95-e.html",
+   "sha256": "298c9126294303a12df65cbddb4a9d88a35dd690e9a07d892cb724aa19dbdfdd"
+  },
+  {
+   "source_id": "mf_qbz95",
+   "title": "Modern Firearms - Type 95 / QBZ-95 (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
+   "url": "https://web.archive.org/web/20171006154603/http://modernfirearms.net:80/assault/ch/type-95--qbz-95-e.html",
+   "sha256": "0ba21d9d11fea22746711febfa5dcd37ac2e257c4144609b8ebe8ab157a93fe1"
+  },
+  {
+   "source_id": "mf_qbz03",
+   "title": "Modern Firearms - Type 03 / QBZ-03 (archived snapshot of modernfirearms.net / world.guns.ru by Maxim Popenker)",
+   "url": "https://web.archive.org/web/20170911054457/http://modernfirearms.net:80/assault/ch/type-03--qbz-03-e.html",
+   "sha256": "719c5eedd039945d7dacf4e6eb6d4d6fc15666a128d037d7d7e125a4ec95511a"
+  },
+  {
+   "source_id": "pp_type56",
+   "title": "1956年式突击步枪 / Type 56 assault rifle — 枪炮世界 [Firearms World] (Chinese small-arms reference site)",
+   "url": "http://pewpewpew.work/china/rifle/1956ar/1956.htm",
+   "sha256": "d8530f07602e3a8fd738d5a9b35ed11629da939a597b4f9adce9469c50d53b67"
+  },
+  {
+   "source_id": "pp_type56_semi",
+   "title": "56式半自动步枪 / Type 56 semi-automatic rifle (SKS copy) — 枪炮世界 [Firearms World] (Chinese small-arms reference site)",
+   "url": "http://pewpewpew.work/china/rifle/1956sr/1956sr.htm",
+   "sha256": "52a97e205c931ec94f5a3d72399290c84b1c855503a4246d7f3d32ee5315dd7c"
+  },
+  {
+   "source_id": "pp_type81",
+   "title": "81式自动步枪 / Type 81 assault rifle — 枪炮世界 [Firearms World] (Chinese small-arms reference site)",
+   "url": "http://pewpewpew.work/china/rifle/1981/81.htm",
+   "sha256": "35dccd50d25b8ce7b9f854140ac45926a338db6ebb279bfea7cf9543b0159132"
+  },
+  {
+   "source_id": "pp_type81_lmg",
+   "title": "81式班用轻机枪 / Type 81 squad light machine gun — 枪炮世界 [Firearms World] (Chinese small-arms reference site)",
+   "url": "http://pewpewpew.work/china/rifle/1981/81lmg.htm",
+   "sha256": "c4b1d95092f622202a03a0f8813289f76f12b1c78f230772d8972cb45b9d7a59"
+  },
+  {
+   "source_id": "pp_qbz03",
+   "title": "03式突击步枪 / QBZ-03 assault rifle — 枪炮世界 [Firearms World] (Chinese small-arms reference site)",
+   "url": "http://pewpewpew.work/china/rifle/03/03.htm",
+   "sha256": "36656e62770efeed2242ecd7e4420b2b012aecd3cbd2fa8e3840b16376f3994a"
+  },
+  {
+   "source_id": "pp_qbz191",
+   "title": "QBZ191式自动步枪 / QBZ-191 assault rifle — 枪炮世界 [Firearms World] (Chinese small-arms reference site)",
+   "url": "http://pewpewpew.work/china/rifle/qbz19x/qbz191.htm",
+   "sha256": "81b780b3e1fc7d2845d7178d37e7dc5d174b09ae37c4e28741e830aee6a77f28"
+  },
+  {
+   "source_id": "pp_qbu88",
+   "title": "QBU88式狙击步枪 / QBU-88 sniper rifle — 枪炮世界 [Firearms World] (Chinese small-arms reference site)",
+   "url": "http://pewpewpew.work/china/sr/qbu88/qbu88.htm",
+   "sha256": "f767ccc6cf80c9fbf7f2793b04a25e9170d50e56a0eff5738e2dee527db2cfab"
+  },
+  {
+   "source_id": "pp_qjy88",
+   "title": "QJY88式通用机枪 / QJY-88 general-purpose machine gun — 枪炮世界 [Firearms World] (Chinese small-arms reference site)",
+   "url": "http://pewpewpew.work/china/mg/qjy88/qjy88.htm",
+   "sha256": "81e46ae8fd12804efe763a98a20e938ae68fe8fbec41c004d9ccb6a96b363a54"
+  },
+  {
+   "source_id": "pp_nkorea",
+   "title": "朝鲜AK / North Korean AK copies (Type 58/68/88) — 枪炮世界 [Firearms World] (Chinese small-arms reference site)",
+   "url": "http://pewpewpew.work/nkorea/ak/nk.htm",
+   "sha256": "508beb26a4f215322f73d5fac4e791940b5cca0dbb5cfa6a2ffd1b0882d1bf7a"
+  },
+  {
+   "source_id": "firearmsworld_qbz951",
+   "title": "95-1枪族 (Type 95-1 gun family), 枪炮世界 [Firearms World]; page transcribed from 《兵器知识》2011年2A期, 马志杰, 国产新型95-1式枪族",
+   "url": "http://pewpewpew.work/china/rifle/qbz95/qbz951.htm",
+   "sha256": "bdbbac70986fa4e8028547fc86e7b1505a9b4e3f1f08119476fd1f0e85834750"
+  },
+  {
+   "source_id": "qq_58mm_history",
+   "title": "海外谈中国：5.8×42mm军用弹药的历史演变 (the historical evolution of 5.8x42mm military ammunition), Tencent News",
+   "url": "https://news.qq.com/rain/a/20210201A06OR800",
+   "sha256": "8c1361e12fd4115f76468bcb20088dfbce4555d42ac329d420abaa38165f3f50"
+  },
+  {
+   "source_id": "gs_ak47",
+   "title": "GlobalSecurity.org - Avtomat Kalashnikov AK-47",
+   "url": "https://www.globalsecurity.org/military/world/russia/ak-47.htm",
+   "sha256": "d5eceb9ae8a75ffb7f8b9942293b9e880ee27b4668d65bffa694a54324351162"
+  },
+  {
+   "source_id": "gs_ak74",
+   "title": "GlobalSecurity.org - AK-74",
+   "url": "https://www.globalsecurity.org/military/world/russia/ak-74.htm",
+   "sha256": "ee0e554ce02dafac5b956f418fb890a22bc0aa1e3669466150f986ada3828f6c"
+  },
+  {
+   "source_id": "gs_ak100",
+   "title": "GlobalSecurity.org - AK-101 Assault Rifle (AK-100 series)",
+   "url": "https://www.globalsecurity.org/military/world/russia/ak-100.htm",
+   "sha256": "232c31676d021011f9ddbbe9c0b8c6824adda78877f2e19af12cb69ba22044a0"
+  },
+  {
+   "source_id": "gs_ak12",
+   "title": "GlobalSecurity.org - AK-12",
+   "url": "https://www.globalsecurity.org/military/world/russia/ak-12.htm",
+   "sha256": "3af163dca3ff87a64e25fa6468d8be3df7698f34bcbf0ff8277a187481e689f2"
+  },
+  {
+   "source_id": "gs_ak308",
+   "title": "GlobalSecurity.org - AK-308",
+   "url": "https://www.globalsecurity.org/military/world/russia/ak-308.htm",
+   "sha256": "f83530170281be3216bc6fb4afffc4fb7c3d682b371d2a1d69ba2d475250ec4a"
+  },
+  {
+   "source_id": "gs_dragunov",
+   "title": "GlobalSecurity.org - Dragunov SVD Sniper Rifle",
+   "url": "https://www.globalsecurity.org/military/world/russia/dragunov.htm",
+   "sha256": "4d9ea3e081f5260749283ee3f43ac51de8f818e4c5c404097dff3d3dff9d2e1a"
+  },
+  {
+   "source_id": "zastava_m21",
+   "title": "Zastava Arms - Assault Rifle M21, technical characteristics (archived 2019-10-18)",
+   "url": "https://web.archive.org/web/20191018052440/http://www.zastava-arms.rs/en/militaryproduct/assault-rifle-m21",
+   "sha256": "ec0ab64c8aab702055962cf1ab771bba4127ea4c2e4e323ebdf18900b3221c8d"
+  },
+  {
+   "source_id": "zastava_m91",
+   "title": "Zastava Arms - Sniper Rifle M91, technical characteristics (archived 2019-10-18)",
+   "url": "https://web.archive.org/web/20191018054021/http://www.zastava-arms.rs/en/militaryproduct/sniper-rifle-m91",
+   "sha256": "8e8a01f66680d2d0bc46a05484a932554822857a79b8bf7d0775e09929005f78"
+  },
+  {
+   "source_id": "ia_galil_arm_manual",
+   "title": "Galil ARM rifle manual (commercial/import manual, English)",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/galil_arm.pdf",
+   "sha256": "16c9c75c6a068664beac699d1180c53b0bc7d17a1d140f9359b2376430ccdf3e"
+  },
+  {
+   "source_id": "ia_valmet_m76_manual",
+   "title": "Valmet M76 rifle manual (English)",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/valmet_m76.pdf",
+   "sha256": "a1fb3c50f5d45711683f6fb66c20c1324677054c33271f77af478bcc1280a99d"
+  },
+  {
+   "source_id": "ia_sks_instruction_manual",
+   "title": "SKS rifle instruction manual (commercial/import manual, English)",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/sks_instruction_manual.pdf",
+   "sha256": "16a4a06de37d93fd2bdd7dbd6fa4ded6d814e1ea66e639c5677772539b8d90fb"
+  },
+  {
+   "source_id": "ia_romak_3_manual",
+   "title": "Romak 3 (7.62x54R marksman rifle) manual (commercial/import manual, English)",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/romak_3.pdf",
+   "sha256": "93c3c2453cdac8baac1f79db8372a0a8f0d4589826cb724b46b809a48b376557"
+  },
+  {
+   "source_id": "ia_norinco_mak90_manual",
+   "title": "Norinco MAK-90 semi-automatic rifle manual (commercial/import manual, English)",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/norinco_mak_90.pdf",
+   "sha256": "47f79129795bcd29dc28739a92ea3679b3b2b1976cf663f5afed8986cc435496"
+  }
+ ],
+ "designations": [
+  {
+   "designation": "AK-47",
+   "nation": "Soviet Union",
+   "weapon": "Kalashnikov AK-47 (7.62mm Avtomat Kalashnikova)",
+   "weapon_key": "ak47",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "ak_info_ak47_1949",
+   "twist_source_id": null,
+   "note": "Ak-info.ru hosts the 1949 'Краткое руководство службы' for the AK-47. No twist stated; the C.I.P. 7.62x39 standard of 240 mm applies."
+  },
+  {
+   "designation": "AK-47 Type 1",
+   "nation": "Soviet Union",
+   "weapon": "Kalashnikov AK-47 Type 1 (stamped receiver, 1948-1951)",
+   "weapon_key": "ak47_type1",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "mf_ak47_akm",
+   "twist_source_id": null,
+   "note": "Modern Firearms caption: 'Early production / issue Kalashnikov AK rifle, as manufactured between 1949 and 1951, with stamped receiver'. No twist stated; C.I.P. standard 240 mm applies."
+  },
+  {
+   "designation": "AK-47 Type 2",
+   "nation": "Soviet Union",
+   "weapon": "Kalashnikov AK-47 Type 2 (milled receiver, 1951-1954)",
+   "weapon_key": "ak47_type2",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "mf_ak47_akm",
+   "twist_source_id": null,
+   "note": "Modern Firearms caption: 'Post-1951 production Kalashnikov AK rifle with milled receiver'. The Type 2 and Type 3 milled variants are not separated in this source. No twist stated; C.I.P. standard 240 mm applies."
+  },
+  {
+   "designation": "AK-47 Type 3",
+   "nation": "Soviet Union",
+   "weapon": "Kalashnikov AK-47 Type 3 (milled receiver, 1954-1959)",
+   "weapon_key": "ak47_type3",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "mf_ak47_akm",
+   "twist_source_id": null,
+   "note": "Modern Firearms caption: 'Post-1951 production Kalashnikov AK rifle with milled receiver'. The Type 2 and Type 3 milled variants are not separated in this source. No twist stated; C.I.P. standard 240 mm applies."
+  },
+  {
+   "designation": "AKS-47",
+   "nation": "Soviet Union",
+   "weapon": "Kalashnikov AKS-47 (folding-stock AK-47)",
+   "weapon_key": "aks47",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "ak_info_ak_manual58",
+   "twist_source_id": null,
+   "note": "The Soviet 'Наставление по стрелковому делу' for the AK covers the AK and AKS. No twist stated; C.I.P. standard 240 mm applies."
+  },
+  {
+   "designation": "AKM",
+   "nation": "Soviet Union",
+   "weapon": "Kalashnikov AKM (modernised AK-47)",
+   "weapon_key": "akm",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "ak_info_akm_manual",
+   "twist_source_id": null,
+   "note": "Soviet 3rd-edition AKM/AKMS manual. No twist printed in the held edition; C.I.P. 7.62x39 standard 240 mm applies."
+  },
+  {
+   "designation": "AKMS",
+   "nation": "Soviet Union",
+   "weapon": "Kalashnikov AKMS (folding-stock AKM)",
+   "weapon_key": "akms",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "ak_info_akm_manual",
+   "twist_source_id": null,
+   "note": "Soviet AKM/AKMS manual. No twist stated; C.I.P. standard 240 mm applies."
+  },
+  {
+   "designation": "AKMN",
+   "nation": "Soviet Union",
+   "weapon": "Kalashnikov AKMN (AKM with night-sight rail)",
+   "weapon_key": "akmn",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "ak_info_akmn",
+   "twist_source_id": null,
+   "note": "Ak-info.ru variant page 'АКМН. Модификация АКМ'. No twist stated; C.I.P. standard 240 mm applies."
+  },
+  {
+   "designation": "AKMSN",
+   "nation": "Soviet Union",
+   "weapon": "Kalashnikov AKMSN (folding-stock AKM with night-sight rail)",
+   "weapon_key": "akmsn",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "ak_info_akmn",
+   "twist_source_id": null,
+   "note": "Ak-info.ru AKM night-sight variant pages cover the AKMN/AKMSN family. No twist stated; C.I.P. standard 240 mm applies."
+  },
+  {
+   "designation": "AK-74",
+   "nation": "Soviet Union",
+   "weapon": "Kalashnikov AK-74",
+   "weapon_key": "ak74",
+   "chambering": "5.45x39mm",
+   "twist_mm": 200.0,
+   "map_source_id": "ak74_rpk74_manual_1982",
+   "twist_source_id": "ak74_rpk74_manual_1982",
+   "note": "1982 Soviet manual, Appendix 1: 'Длина хода нарезов, мм 200' with 4 grooves; differs from the C.I.P. 5.45x39 figure of 195 mm."
+  },
+  {
+   "designation": "AKS-74",
+   "nation": "Soviet Union",
+   "weapon": "Kalashnikov AKS-74 (folding-stock AK-74)",
+   "weapon_key": "aks74",
+   "chambering": "5.45x39mm",
+   "twist_mm": 200.0,
+   "map_source_id": "ak74_rpk74_manual_1982",
+   "twist_source_id": "ak74_rpk74_manual_1982",
+   "note": "Same 1982 Soviet manual (cover names AKS74). 'Длина хода нарезов, мм 200'; differs from C.I.P. 195 mm."
+  },
+  {
+   "designation": "AK-74N",
+   "nation": "Soviet Union",
+   "weapon": "Kalashnikov AK-74N (AK-74 with night-sight rail)",
+   "weapon_key": "ak74n",
+   "chambering": "5.45x39mm",
+   "twist_mm": 200.0,
+   "map_source_id": "ak74_rpk74_manual_1982",
+   "twist_source_id": "ak74_rpk74_manual_1982",
+   "note": "Same 1982 Soviet manual (cover names AK74N). 'Длина хода нарезов, мм 200'; differs from C.I.P. 195 mm."
+  },
+  {
+   "designation": "AKS-74N",
+   "nation": "Soviet Union",
+   "weapon": "Kalashnikov AKS-74N (folding-stock AK-74N)",
+   "weapon_key": "aks74n",
+   "chambering": "5.45x39mm",
+   "twist_mm": 200.0,
+   "map_source_id": "ak74_rpk74_manual_1982",
+   "twist_source_id": "ak74_rpk74_manual_1982",
+   "note": "Same 1982 Soviet manual (cover names AKS74N). 'Длина хода нарезов, мм 200'; differs from C.I.P. 195 mm."
+  },
+  {
+   "designation": "AKS-74U",
+   "nation": "Soviet Union",
+   "weapon": "Kalashnikov AKS-74U (short carbine)",
+   "weapon_key": "aks74u",
+   "chambering": "5.45x39mm",
+   "twist_mm": null,
+   "map_source_id": "ak_info_aks74u_manual",
+   "twist_source_id": null,
+   "note": "Soviet AKS74U manual (Ak-info.ru). No twist stated; C.I.P. 5.45x39 standard 195 mm applies."
+  },
+  {
+   "designation": "AK-74M",
+   "nation": "Russia",
+   "weapon": "Kalashnikov AK-74M",
+   "weapon_key": "ak74m",
+   "chambering": "5.45x39mm",
+   "twist_mm": 195.0,
+   "map_source_id": "kalashnikov_ak74m",
+   "twist_source_id": "kalashnikov_ak74m",
+   "note": "Kalashnikov Concern: 'Шаг нарезов канала ствола 195', 'Число нарезов 4'. Agrees with the C.I.P. 5.45x39 figure of 195 mm."
+  },
+  {
+   "designation": "AK-101",
+   "nation": "Russia",
+   "weapon": "Kalashnikov AK-101",
+   "weapon_key": "ak101",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": 178.0,
+   "map_source_id": "kalashnikov_ak101",
+   "twist_source_id": "kalashnikov_ak101",
+   "note": "Kalashnikov Concern: 'Шаг нарезов канала ствола 178', 'Число нарезов 4'. Agrees with the 5.56x45 standard 177.8 mm."
+  },
+  {
+   "designation": "AK-102",
+   "nation": "Russia",
+   "weapon": "Kalashnikov AK-102 (short carbine)",
+   "weapon_key": "ak102",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": 178.0,
+   "map_source_id": "kalashnikov_ak102",
+   "twist_source_id": "kalashnikov_ak102",
+   "note": "Kalashnikov Concern: 'Шаг нарезов канала ствола 178'. Agrees with 177.8 mm."
+  },
+  {
+   "designation": "AK-103",
+   "nation": "Russia",
+   "weapon": "Kalashnikov AK-103",
+   "weapon_key": "ak103",
+   "chambering": "7.62x39mm",
+   "twist_mm": 240.0,
+   "map_source_id": "kalashnikov_ak103",
+   "twist_source_id": "kalashnikov_ak103",
+   "note": "Kalashnikov Concern: 'Шаг нарезов канала ствола 240'. Agrees with the C.I.P. 7.62x39 standard 240 mm."
+  },
+  {
+   "designation": "AK-104",
+   "nation": "Russia",
+   "weapon": "Kalashnikov AK-104 (short carbine)",
+   "weapon_key": "ak104",
+   "chambering": "7.62x39mm",
+   "twist_mm": 240.0,
+   "map_source_id": "kalashnikov_ak104",
+   "twist_source_id": "kalashnikov_ak104",
+   "note": "Kalashnikov Concern: 'Шаг нарезов канала ствола 240'. Agrees with C.I.P. 240 mm."
+  },
+  {
+   "designation": "AK-105",
+   "nation": "Russia",
+   "weapon": "Kalashnikov AK-105 (short carbine)",
+   "weapon_key": "ak105",
+   "chambering": "5.45x39mm",
+   "twist_mm": 195.0,
+   "map_source_id": "kalashnikov_ak105",
+   "twist_source_id": "kalashnikov_ak105",
+   "note": "Kalashnikov Concern: 'Шаг нарезов канала ствола 195'. Agrees with C.I.P. 195 mm."
+  },
+  {
+   "designation": "AK-107",
+   "nation": "Russia",
+   "weapon": "Kalashnikov AK-107 (balanced-recoil 5.45mm)",
+   "weapon_key": "ak107",
+   "chambering": "5.45x39mm",
+   "twist_mm": null,
+   "map_source_id": "mf_ak107",
+   "twist_source_id": null,
+   "note": "Modern Firearms 'AK-107/108' article. No twist stated; C.I.P. 5.45x39 standard 195 mm applies."
+  },
+  {
+   "designation": "AK-108",
+   "nation": "Russia",
+   "weapon": "Kalashnikov AK-108 (balanced-recoil 5.56mm)",
+   "weapon_key": "ak108",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": null,
+   "map_source_id": "mf_ak107",
+   "twist_source_id": null,
+   "note": "Modern Firearms 'AK-107/108' article. No twist stated; 5.56x45 standard 177.8 mm applies."
+  },
+  {
+   "designation": "AK-109",
+   "nation": "Russia",
+   "weapon": "Kalashnikov AK-109 (balanced-recoil 7.62mm)",
+   "weapon_key": "ak109",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "mf_ak107",
+   "twist_source_id": null,
+   "note": "AK-109 is the 7.62x39 member of the AK-107/108/109 balanced-recoil family (Modern Firearms 'AK-107/108'). No twist stated; C.I.P. standard 240 mm applies."
+  },
+  {
+   "designation": "AK-9",
+   "nation": "Russia",
+   "weapon": "Kalashnikov AK-9",
+   "weapon_key": "ak9",
+   "chambering": "9x39mm",
+   "twist_mm": null,
+   "map_source_id": "mf_ak9",
+   "twist_source_id": null,
+   "note": "Modern Firearms 'AK-9' article. No twist stated; the C.I.P. 9x39 standard of 240 mm applies."
+  },
+  {
+   "designation": "AK-12",
+   "nation": "Russia",
+   "weapon": "Kalashnikov AK-12",
+   "weapon_key": "ak12",
+   "chambering": "5.45x39mm",
+   "twist_mm": 195.0,
+   "map_source_id": "kalashnikov_ak12",
+   "twist_source_id": "kalashnikov_ak12",
+   "note": "Kalashnikov Concern: 'Шаг нарезов канала ствола 195', 'Число нарезов 4'. Agrees with C.I.P. 195 mm."
+  },
+  {
+   "designation": "AK-12K",
+   "nation": "Russia",
+   "weapon": "Kalashnikov AK-12K (short carbine)",
+   "weapon_key": "ak12k",
+   "chambering": "5.45x39mm",
+   "twist_mm": null,
+   "map_source_id": "ak_info_ak12k",
+   "twist_source_id": null,
+   "note": "Ak-info.ru AK-12K page; TTH block states 'Число нарезов, шт - 4' but no pitch. C.I.P. 5.45x39 standard 195 mm applies."
+  },
+  {
+   "designation": "AK-12SK",
+   "nation": "Russia",
+   "weapon": "Kalashnikov AK-12SK (subcompact)",
+   "weapon_key": "ak12sk",
+   "chambering": "5.45x39mm",
+   "twist_mm": null,
+   "map_source_id": "ak_info_ak12sk",
+   "twist_source_id": null,
+   "note": "Ak-info.ru AK-12SK page; 'Число нарезов, шт - 4', no pitch. C.I.P. standard 195 mm applies."
+  },
+  {
+   "designation": "AK-15",
+   "nation": "Russia",
+   "weapon": "Kalashnikov AK-15",
+   "weapon_key": "ak15",
+   "chambering": "7.62x39mm",
+   "twist_mm": 265.0,
+   "map_source_id": "kalashnikov_ak15",
+   "twist_source_id": "kalashnikov_ak15",
+   "note": "Kalashnikov Concern: 'Шаг нарезов канала ствола 265', 'Число нарезов 4'. DIFFERS from the C.I.P. 7.62x39 standard of 240 mm."
+  },
+  {
+   "designation": "AK-15K",
+   "nation": "Russia",
+   "weapon": "Kalashnikov AK-15K (short carbine)",
+   "weapon_key": "ak15k",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "ak_info_ak15k",
+   "twist_source_id": null,
+   "note": "Ak-info.ru AK-15K page; 'Применяемые патроны - 7,62 мм обр. 1943 г.', 'Число нарезов, шт - 4', no pitch. The AK-15 barrel family is 265 mm per Kalashnikov Concern."
+  },
+  {
+   "designation": "AK-15SK",
+   "nation": "Russia",
+   "weapon": "Kalashnikov AK-15SK (subcompact)",
+   "weapon_key": "ak15sk",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "ak_info_ak15sk",
+   "twist_source_id": null,
+   "note": "Ak-info.ru AK-15SK page; 7.62x39, 4 grooves, no pitch. AK-15 barrel family is 265 mm per the maker."
+  },
+  {
+   "designation": "AK-19",
+   "nation": "Russia",
+   "weapon": "Kalashnikov AK-19",
+   "weapon_key": "ak19",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": 178.0,
+   "map_source_id": "kalashnikov_ak19",
+   "twist_source_id": "kalashnikov_ak19",
+   "note": "Kalashnikov Concern: 'Шаг нарезов канала ствола 178'. Agrees with 5.56x45 standard 177.8 mm."
+  },
+  {
+   "designation": "AK-200",
+   "nation": "Russia",
+   "weapon": "Kalashnikov AK-200",
+   "weapon_key": "ak200",
+   "chambering": "5.45x39mm",
+   "twist_mm": 195.0,
+   "map_source_id": "kalashnikov_ak200",
+   "twist_source_id": "kalashnikov_ak200",
+   "note": "Kalashnikov Concern: 'Шаг нарезов канала ствола 195'. Agrees with C.I.P. 195 mm."
+  },
+  {
+   "designation": "AK-201",
+   "nation": "Russia",
+   "weapon": "Kalashnikov AK-201",
+   "weapon_key": "ak201",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": 178.0,
+   "map_source_id": "kalashnikov_ak201",
+   "twist_source_id": "kalashnikov_ak201",
+   "note": "Kalashnikov Concern: 'Шаг нарезов канала ствола 178'. Agrees with 177.8 mm."
+  },
+  {
+   "designation": "AK-202",
+   "nation": "Russia",
+   "weapon": "Kalashnikov AK-202 (short carbine)",
+   "weapon_key": "ak202",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": 178.0,
+   "map_source_id": "kalashnikov_ak202",
+   "twist_source_id": "kalashnikov_ak202",
+   "note": "Kalashnikov Concern: 'Шаг нарезов канала ствола 178'. Agrees with 177.8 mm."
+  },
+  {
+   "designation": "AK-203",
+   "nation": "Russia",
+   "weapon": "Kalashnikov AK-203",
+   "weapon_key": "ak203",
+   "chambering": "7.62x39mm",
+   "twist_mm": 265.0,
+   "map_source_id": "kalashnikov_ak203",
+   "twist_source_id": "kalashnikov_ak203",
+   "note": "Kalashnikov Concern: 'Шаг нарезов канала ствола 265'. DIFFERS from the C.I.P. 7.62x39 standard of 240 mm."
+  },
+  {
+   "designation": "AK-204",
+   "nation": "Russia",
+   "weapon": "Kalashnikov AK-204 (short carbine)",
+   "weapon_key": "ak204",
+   "chambering": "7.62x39mm",
+   "twist_mm": 265.0,
+   "map_source_id": "kalashnikov_ak204",
+   "twist_source_id": "kalashnikov_ak204",
+   "note": "Kalashnikov Concern: 'Шаг нарезов канала ствола 265'. DIFFERS from the C.I.P. standard 240 mm."
+  },
+  {
+   "designation": "AK-205",
+   "nation": "Russia",
+   "weapon": "Kalashnikov AK-205 (short carbine)",
+   "weapon_key": "ak205",
+   "chambering": "5.45x39mm",
+   "twist_mm": 195.0,
+   "map_source_id": "kalashnikov_ak205",
+   "twist_source_id": "kalashnikov_ak205",
+   "note": "Kalashnikov Concern: 'Шаг нарезов канала ствола 195'. Agrees with C.I.P. 195 mm."
+  },
+  {
+   "designation": "AK-308",
+   "nation": "Russia",
+   "weapon": "Kalashnikov AK-308",
+   "weapon_key": "ak308",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": 305.0,
+   "map_source_id": "kalashnikov_ak308",
+   "twist_source_id": "kalashnikov_ak308",
+   "note": "Kalashnikov Concern: 'Шаг нарезов канала ствола 305'. Agrees with the 7.62x51 standard 304.8 mm."
+  },
+  {
+   "designation": "RPK",
+   "nation": "Soviet Union",
+   "weapon": "Kalashnikov RPK light machine gun",
+   "weapon_key": "rpk",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "mf_rpk",
+   "twist_source_id": null,
+   "note": "Modern Firearms 'Kalashnikov RPK'. No twist stated; C.I.P. 7.62x39 standard 240 mm applies."
+  },
+  {
+   "designation": "RPKS",
+   "nation": "Soviet Union",
+   "weapon": "Kalashnikov RPKS (folding-stock RPK)",
+   "weapon_key": "rpks",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "ak_info_nsd87",
+   "twist_source_id": null,
+   "note": "Soviet НСД (1987) page names 'РПК и РПКС'. No twist stated; C.I.P. standard 240 mm applies."
+  },
+  {
+   "designation": "RPK-74",
+   "nation": "Soviet Union",
+   "weapon": "Kalashnikov RPK-74 light machine gun",
+   "weapon_key": "rpk74",
+   "chambering": "5.45x39mm",
+   "twist_mm": 200.0,
+   "map_source_id": "ak74_rpk74_manual_1982",
+   "twist_source_id": "ak74_rpk74_manual_1982",
+   "note": "1982 Soviet manual, 'Ручной пулемет' column: 'Длина хода нарезов, мм 200'. Differs from C.I.P. 195 mm."
+  },
+  {
+   "designation": "RPK-74M",
+   "nation": "Russia",
+   "weapon": "Kalashnikov RPK-74M light machine gun",
+   "weapon_key": "rpk74m",
+   "chambering": "5.45x39mm",
+   "twist_mm": 200.0,
+   "map_source_id": "rpk74m_tech_2002",
+   "twist_source_id": "rpk74m_tech_2002",
+   "note": "Specification table: 'Нарезы 4 прав.' and 'Длина хода нарезов, мм 200'. Differs from the C.I.P. 195 mm figure."
+  },
+  {
+   "designation": "RPK-16",
+   "nation": "Russia",
+   "weapon": "Kalashnikov RPK-16 light machine gun",
+   "weapon_key": "rpk16",
+   "chambering": "5.45x39mm",
+   "twist_mm": null,
+   "map_source_id": "mf_rpk16",
+   "twist_source_id": null,
+   "note": "Modern Firearms 'RPK-16'. No twist stated; C.I.P. 5.45x39 standard 195 mm applies."
+  },
+  {
+   "designation": "PK",
+   "nation": "Soviet Union",
+   "weapon": "Kalashnikov PK machine gun",
+   "weapon_key": "pk",
+   "chambering": "7.62x54mmR",
+   "twist_mm": null,
+   "map_source_id": "mf_pkm",
+   "twist_source_id": null,
+   "note": "Modern Firearms 'Kalashnikov PK / PKM'. No twist stated; C.I.P. 7.62x54R standard 240 mm applies."
+  },
+  {
+   "designation": "PKS",
+   "nation": "Soviet Union",
+   "weapon": "Kalashnikov PKS (tripod-mounted PK)",
+   "weapon_key": "pks",
+   "chambering": "7.62x54mmR",
+   "twist_mm": null,
+   "map_source_id": "ak_info_nsd87",
+   "twist_source_id": null,
+   "note": "Soviet НСД (1987) names 'ПК, ПКС, ПКБ и ПКТ'. No twist stated; C.I.P. 240 mm applies."
+  },
+  {
+   "designation": "PKM",
+   "nation": "Soviet Union",
+   "weapon": "Kalashnikov PKM machine gun",
+   "weapon_key": "pkm",
+   "chambering": "7.62x54mmR",
+   "twist_mm": null,
+   "map_source_id": "mf_pkm",
+   "twist_source_id": null,
+   "note": "Modern Firearms 'Kalashnikov PK / PKM'. No twist stated; C.I.P. 7.62x54R standard 240 mm applies."
+  },
+  {
+   "designation": "PKMS",
+   "nation": "Soviet Union",
+   "weapon": "Kalashnikov PKMS (tripod-mounted PKM)",
+   "weapon_key": "pkms",
+   "chambering": "7.62x54mmR",
+   "twist_mm": null,
+   "map_source_id": "mf_pkm",
+   "twist_source_id": null,
+   "note": "Modern Firearms 'Kalashnikov PK / PKM'. No twist stated; C.I.P. standard 240 mm applies."
+  },
+  {
+   "designation": "PKP Pecheneg",
+   "nation": "Russia",
+   "weapon": "Kalashnikov PKP Pecheneg machine gun",
+   "weapon_key": "pkp_pecheneg",
+   "chambering": "7.62x54mmR",
+   "twist_mm": null,
+   "map_source_id": "mf_pecheneg",
+   "twist_source_id": null,
+   "note": "Modern Firearms 'Pecheneg'. No twist stated; C.I.P. 7.62x54R standard 240 mm applies."
+  },
+  {
+   "designation": "SVD",
+   "nation": "Soviet Union",
+   "weapon": "Dragunov SVD sniper rifle",
+   "weapon_key": "svd",
+   "chambering": "7.62x54mmR",
+   "twist_mm": 240.0,
+   "map_source_id": "svd_ru_manual",
+   "twist_source_id": "kalashnikov_club_svd_twist",
+   "note": "Kalashnikov Club: 'С момента ее принятия на вооружение и до 1973 года включительно эта винтовка имела нарезы с шагом 320 мм, а с 1974 года и по настоящее время ее нарезы имеют шаг 240 мм.' The Indian TM 8370-50097-OR/15 instead states '1 turn in 10 inches' (254 mm); the two disagree."
+  },
+  {
+   "designation": "SVDS",
+   "nation": "Russia",
+   "weapon": "Dragunov SVDS (folding-stock SVD)",
+   "weapon_key": "svds",
+   "chambering": "7.62x54mmR",
+   "twist_mm": 240.0,
+   "map_source_id": "kalashnikov_svds",
+   "twist_source_id": "kalashnikov_club_svd_twist",
+   "note": "Kalashnikov Concern SVDS page for the designation; the 240 mm post-1974 SVD pitch (Kalashnikov Club) applies. TM 8370-50097-OR/15 gives 254 mm, which conflicts."
+  },
+  {
+   "designation": "SVU",
+   "nation": "Russia",
+   "weapon": "Dragunov SVU (bullpup SVD)",
+   "weapon_key": "svu",
+   "chambering": "7.62x54mmR",
+   "twist_mm": null,
+   "map_source_id": "mf_svu",
+   "twist_source_id": null,
+   "note": "Modern Firearms 'СВУ, СВУ-АС'. No twist stated; C.I.P. 7.62x54R standard 240 mm applies."
+  },
+  {
+   "designation": "SKS",
+   "nation": "Soviet Union",
+   "weapon": "Simonov SKS carbine",
+   "weapon_key": "sks",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "mf_sks",
+   "twist_source_id": null,
+   "note": "Modern Firearms 'Simonov SKS'. No twist stated; C.I.P. 7.62x39 standard 240 mm applies."
+  },
+  {
+   "designation": "Type 56",
+   "nation": "China",
+   "weapon": "Norinco Type 56 assault rifle (copy of AK-47)",
+   "weapon_key": "type56",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "pp_type56",
+   "twist_source_id": null,
+   "note": "枪炮世界: '56式冲锋枪 ... 是仿制自苏联 AK-47型7.62mm突击步枪'. No twist stated; C.I.P. 7.62x39 standard 240 mm applies."
+  },
+  {
+   "designation": "Type 56-1",
+   "nation": "China",
+   "weapon": "Norinco Type 56-1 (folding-stock Type 56)",
+   "weapon_key": "type56_1",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "pp_type56",
+   "twist_source_id": null,
+   "note": "枪炮世界 Type 56 page lists the 56-1 folding-stock variant. No twist stated; C.I.P. standard 240 mm applies."
+  },
+  {
+   "designation": "Type 56-2",
+   "nation": "China",
+   "weapon": "Norinco Type 56-2 (side-folding Type 56)",
+   "weapon_key": "type56_2",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "pp_type56",
+   "twist_source_id": null,
+   "note": "枪炮世界 Type 56 page lists the 56-2 variant. No twist stated; C.I.P. standard 240 mm applies."
+  },
+  {
+   "designation": "Type 56 semi-automatic",
+   "nation": "China",
+   "weapon": "Norinco Type 56 semi-automatic rifle (56半, copy of SKS)",
+   "weapon_key": "type56_semi",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "pp_type56_semi",
+   "twist_source_id": null,
+   "note": "枪炮世界: '1956年式半自动步枪 ... (仿制SKS)'. No twist stated; C.I.P. 7.62x39 standard 240 mm applies."
+  },
+  {
+   "designation": "Type 81",
+   "nation": "China",
+   "weapon": "Norinco Type 81 assault rifle",
+   "weapon_key": "type81",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "pp_type81",
+   "twist_source_id": null,
+   "note": "枪炮世界: '81式枪族 ... 仍采用56式7.62mm枪弹'. No twist stated; C.I.P. 7.62x39 standard 240 mm applies."
+  },
+  {
+   "designation": "Type 81-1",
+   "nation": "China",
+   "weapon": "Norinco Type 81-1 (folding-stock Type 81)",
+   "weapon_key": "type81_1",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "pp_type81",
+   "twist_source_id": null,
+   "note": "枪炮世界 Type 81 page; the -1 is the folding-stock variant. No twist stated; C.I.P. standard 240 mm applies."
+  },
+  {
+   "designation": "Type 81 LMG",
+   "nation": "China",
+   "weapon": "Norinco Type 81 squad light machine gun (81式班用轻机枪)",
+   "weapon_key": "type81_lmg",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "pp_type81_lmg",
+   "twist_source_id": null,
+   "note": "枪炮世界: '81式轻机枪 ... 7.62×39 mm'. No twist stated; C.I.P. standard 240 mm applies."
+  },
+  {
+   "designation": "QBZ-95",
+   "nation": "China",
+   "weapon": "Norinco QBZ-95 (Type 95) bullpup assault rifle",
+   "weapon_key": "qbz95",
+   "chambering": "5.8x42mm",
+   "twist_mm": 240.0,
+   "map_source_id": "firearmsworld_qbz951",
+   "twist_source_id": "firearmsworld_qbz951",
+   "note": "枪炮世界: '膛线缠距从原来的240mm改为210mm' (the original 240 mm rate is that of the QBZ-95). 4 grooves original. No C.I.P. standard exists for 5.8x42mm."
+  },
+  {
+   "designation": "QBZ-95-1",
+   "nation": "China",
+   "weapon": "Norinco QBZ-95-1 (Type 95-1) bullpup assault rifle",
+   "weapon_key": "qbz95_1",
+   "chambering": "5.8x42mm",
+   "twist_mm": 210.0,
+   "map_source_id": "firearmsworld_qbz951",
+   "twist_source_id": "firearmsworld_qbz951",
+   "note": "枪炮世界: '膛线缠距从原来的240mm改为210mm ... 而膛线数量从4条增加至6条'. Compared with the original QBZ-95 rate (240 mm) it differs; no C.I.P. standard exists for 5.8x42mm."
+  },
+  {
+   "designation": "QBZ-95B",
+   "nation": "China",
+   "weapon": "Norinco QBZ-95B (short carbine, 95式短自动步枪)",
+   "weapon_key": "qbz95b",
+   "chambering": "5.8x42mm",
+   "twist_mm": null,
+   "map_source_id": "firearmsworld_qbz951",
+   "twist_source_id": null,
+   "note": "枪炮世界 Type 95-1 family page lists the QBZ95B short rifle. No twist for the B variant; the family rate is 240 mm (95) / 210 mm (95-1). No C.I.P. standard exists."
+  },
+  {
+   "designation": "QBZ-03",
+   "nation": "China",
+   "weapon": "Norinco QBZ-03 (Type 03) assault rifle",
+   "weapon_key": "qbz03",
+   "chambering": "5.8x42mm",
+   "twist_mm": 240.0,
+   "map_source_id": "pp_qbz03",
+   "twist_source_id": "qq_58mm_history",
+   "note": "Mapping per 枪炮世界 QBZ-03 page; twist per the Tencent article: '最初的QBZ-95和QBZ-03缠距最小，为1：9.45' (1:9.45 in = 240.0 mm). No C.I.P. standard exists for 5.8x42mm."
+  },
+  {
+   "designation": "QBZ-191",
+   "nation": "China",
+   "weapon": "Norinco QBZ-191 (Type 191) assault rifle",
+   "weapon_key": "qbz191",
+   "chambering": "5.8x42mm",
+   "twist_mm": null,
+   "map_source_id": "pp_qbz191",
+   "twist_source_id": null,
+   "note": "枪炮世界: 'QBZ191式自动步枪 ... 口径：5.8×42 mm'. No twist stated; no C.I.P. standard exists for 5.8x42mm."
+  },
+  {
+   "designation": "QBU-88",
+   "nation": "China",
+   "weapon": "Norinco QBU-88 (Type 88) sniper rifle",
+   "weapon_key": "qbu88",
+   "chambering": "5.8x42mm",
+   "twist_mm": 177.8,
+   "map_source_id": "pp_qbu88",
+   "twist_source_id": "qq_58mm_history",
+   "note": "Mapping per 枪炮世界 QBU88 page; twist per the Tencent article: 'QBU-88狙击步枪的缠距为1：7' (1:7 in = 177.8 mm). No C.I.P. standard exists for 5.8x42mm."
+  },
+  {
+   "designation": "QJY-88",
+   "nation": "China",
+   "weapon": "Norinco QJY-88 (Type 88) general-purpose machine gun",
+   "weapon_key": "qjy88",
+   "chambering": "5.8x42mm",
+   "twist_mm": 208.5,
+   "map_source_id": "pp_qjy88",
+   "twist_source_id": "qq_58mm_history",
+   "note": "Mapping per 枪炮世界 QJY88 page; twist per the Tencent article: 'QBZ-95-1系列和QJY-88通用机枪的缠距为1：8.21' (1:8.21 in = 208.5 mm). No C.I.P. standard exists for 5.8x42mm."
+  },
+  {
+   "designation": "wz. 96 Beryl",
+   "nation": "Poland",
+   "weapon": "FB Radom kbk wz. 96 Beryl assault rifle",
+   "weapon_key": "wz96_beryl",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": null,
+   "map_source_id": "ak_info_pl_beryl",
+   "twist_source_id": null,
+   "note": "Ak-info.ru hosts the FB Radom 'Instrukcja obslugi ... wz. 96 BERYL' (2009); Modern Firearms also documents the Beryl. No twist stated; 5.56x45 standard 177.8 mm applies."
+  },
+  {
+   "designation": "wz. 88 Tantal",
+   "nation": "Poland",
+   "weapon": "FB Radom kbk wz. 88 Tantal assault rifle",
+   "weapon_key": "wz88_tantal",
+   "chambering": "5.45x39mm",
+   "twist_mm": null,
+   "map_source_id": "mf_beryl",
+   "twist_source_id": null,
+   "note": "Modern Firearms Beryl article: the Beryl 'is based on the previous 5.45mm wz.88 Tantal assault rifle, which, in turn, was a close copy of the Soviet Kalashnikov AK-74'. No twist stated; C.I.P. 5.45x39 standard 195 mm applies."
+  },
+  {
+   "designation": "PM md. 63",
+   "nation": "Romania",
+   "weapon": "Cugir PM md. 63 assault rifle (7.62mm model 1963)",
+   "weapon_key": "pm_md63",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "ak_info_ro_pmmd63",
+   "twist_source_id": null,
+   "note": "Ak-info.ru Romanian page 'PM md.63. История создания, характеристики'. No twist stated; C.I.P. 7.62x39 standard 240 mm applies."
+  },
+  {
+   "designation": "PM md. 65",
+   "nation": "Romania",
+   "weapon": "Cugir PM md. 65 (folding-stock PM md. 63)",
+   "weapon_key": "pm_md65",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "ak_info_ro_pmmd63",
+   "twist_source_id": null,
+   "note": "The Ak-info.ru Romanian PM md.63 page documents the md.63/65/90 family (the md.65 is the under-folding-stock variant). No twist stated; C.I.P. standard 240 mm applies."
+  },
+  {
+   "designation": "PM md. 90",
+   "nation": "Romania",
+   "weapon": "Cugir PM md. 90 assault rifle (7.62mm model 1990)",
+   "weapon_key": "pm_md90",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "ak_info_ro_pmmd63",
+   "twist_source_id": null,
+   "note": "Same Ak-info.ru Romanian page (md.63/65/90 family). No twist stated; C.I.P. standard 240 mm applies."
+  },
+  {
+   "designation": "AK-63",
+   "nation": "Hungary",
+   "weapon": "FEG AK-63 assault rifle (Hungarian AKM)",
+   "weapon_key": "ak63",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "ak_info_hu_akm63",
+   "twist_source_id": null,
+   "note": "Ak-info.ru hosts the Hungarian manual '7,62 mm-es Korszerusitett Kalasnyikov' for the AKM-63. No twist stated; C.I.P. 7.62x39 standard 240 mm applies."
+  },
+  {
+   "designation": "AMD-65",
+   "nation": "Hungary",
+   "weapon": "FEG AMD-65 short assault rifle",
+   "weapon_key": "amd65",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "ak_info_hu_amd65",
+   "twist_source_id": null,
+   "note": "Ak-info.ru hosts the Hungarian AMD-65 manual ('7,62 mm-es AMD-65 gepipisztoly ...', 1968). No twist stated; C.I.P. standard 240 mm applies."
+  },
+  {
+   "designation": "AKK",
+   "nation": "Bulgaria",
+   "weapon": "Arsenal AKK / AKK-47 assault rifle (Bulgarian AK-47)",
+   "weapon_key": "akk",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "ak_info_bg_article",
+   "twist_source_id": null,
+   "note": "Ak-info.ru Bulgarian AK history issue ('Клуб Оружие') documents the Bulgarian Kalashnikov production (AKK). No twist stated; C.I.P. 7.62x39 standard 240 mm applies."
+  },
+  {
+   "designation": "AR-M1",
+   "nation": "Bulgaria",
+   "weapon": "Arsenal AR-M1 assault rifle",
+   "weapon_key": "arm1",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "ak_info_bg_article",
+   "twist_source_id": null,
+   "note": "Same Ak-info.ru Bulgarian article. No twist stated; C.I.P. standard 240 mm applies."
+  },
+  {
+   "designation": "vz. 58",
+   "nation": "Czechoslovakia",
+   "weapon": "CZ vz. 58 assault rifle (NOT a Kalashnikov derivative)",
+   "weapon_key": "vz58",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "ak_info_cz_vz58",
+   "twist_source_id": null,
+   "note": "Ak-info.ru hosts the CZ mod.58 instruction manual. The site explicitly contrasts it with the AK ('АКМ и CZ mod. 58. Фотосравнение'). It is listed here only to record that it is not an AK. No twist stated; C.I.P. 7.62x39 standard 240 mm applies."
+  },
+  {
+   "designation": "M70",
+   "nation": "Yugoslavia",
+   "weapon": "Zastava M70 assault rifle",
+   "weapon_key": "zastava_m70",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "ak_info_yu_m70family",
+   "twist_source_id": null,
+   "note": "Ak-info.ru 'Определитель модификаций AP 7,62 mm M70'. No twist stated; C.I.P. 7.62x39 standard 240 mm applies."
+  },
+  {
+   "designation": "M70AB2",
+   "nation": "Yugoslavia",
+   "weapon": "Zastava M70AB2 (under-folding-stock M70)",
+   "weapon_key": "zastava_m70ab2",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "ak_info_yu_m70family",
+   "twist_source_id": null,
+   "note": "Same Ak-info.ru M70 variant guide. No twist stated; C.I.P. standard 240 mm applies."
+  },
+  {
+   "designation": "M72",
+   "nation": "Yugoslavia",
+   "weapon": "Zastava M72 light machine gun",
+   "weapon_key": "zastava_m72",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "ak_info_yu_up111",
+   "twist_source_id": null,
+   "note": "Yugoslav UP-111 manual ('Pravilo pusaka i puskomitraljeza 7,62 mm'). No twist stated; C.I.P. standard 240 mm applies."
+  },
+  {
+   "designation": "M76",
+   "nation": "Yugoslavia",
+   "weapon": "Zastava M76 semi-automatic sniper rifle",
+   "weapon_key": "zastava_m76",
+   "chambering": "7.92x57mm",
+   "twist_mm": null,
+   "map_source_id": "ak_info_yu_tech85",
+   "twist_source_id": null,
+   "note": "Yugoslav 7.62 mm rifles/LMG maintenance manual (1985). M76 is the 7.92x57mm Mauser member of the Zastava family; no twist stated."
+  },
+  {
+   "designation": "M77",
+   "nation": "Yugoslavia",
+   "weapon": "Zastava M77 battle rifle",
+   "weapon_key": "zastava_m77",
+   "chambering": "7.62x54mmR",
+   "twist_mm": null,
+   "map_source_id": "ak_info_yu_tech85",
+   "twist_source_id": null,
+   "note": "Same Yugoslav manual. No twist stated; C.I.P. 7.62x54R standard 240 mm applies."
+  },
+  {
+   "designation": "M80",
+   "nation": "Yugoslavia",
+   "weapon": "Zastava M80 light machine gun",
+   "weapon_key": "zastava_m80",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "ak_info_yu_tech85",
+   "twist_source_id": null,
+   "note": "Same Yugoslav 7.62 mm manual. No twist stated; C.I.P. 7.62x39 standard 240 mm applies."
+  },
+  {
+   "designation": "M85",
+   "nation": "Yugoslavia",
+   "weapon": "Zastava M85 carbine (5.56mm)",
+   "weapon_key": "zastava_m85",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": null,
+   "map_source_id": "ak_info_yu_m70family",
+   "twist_source_id": null,
+   "note": "M85 is the 5.56mm carbine member of the Zastava M70 family (Ak-info.ru M70 variant guide). No twist stated; 5.56x45 standard 177.8 mm applies."
+  },
+  {
+   "designation": "M90",
+   "nation": "Yugoslavia",
+   "weapon": "Zastava M90 assault rifle (5.56mm)",
+   "weapon_key": "zastava_m90",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": null,
+   "map_source_id": "ak_info_yu_m70family",
+   "twist_source_id": null,
+   "note": "M90 is the 5.56mm member of the Zastava AK family (Ak-info.ru M70 variant guide). No twist stated; 5.56x45 standard 177.8 mm applies."
+  },
+  {
+   "designation": "M92",
+   "nation": "Yugoslavia",
+   "weapon": "Zastava M92 short carbine",
+   "weapon_key": "zastava_m92",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "ak_info_yu_m70family",
+   "twist_source_id": null,
+   "note": "M92 is the short 7.62x39 carbine member of the Zastava family. No twist stated; C.I.P. standard 240 mm applies."
+  },
+  {
+   "designation": "M21",
+   "nation": "Serbia",
+   "weapon": "Zastava M21 assault rifle",
+   "weapon_key": "zastava_m21",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": null,
+   "map_source_id": "zastava_m21",
+   "twist_source_id": null,
+   "note": "Zastava Arms official product page for the M21. No twist stated; 5.56x45 standard 177.8 mm applies."
+  },
+  {
+   "designation": "M91",
+   "nation": "Serbia",
+   "weapon": "Zastava M91 designated marksman rifle",
+   "weapon_key": "zastava_m91",
+   "chambering": "7.62x54mmR",
+   "twist_mm": null,
+   "map_source_id": "zastava_m91",
+   "twist_source_id": null,
+   "note": "Zastava Arms official product page for the M91. No twist stated; C.I.P. 7.62x54R standard 240 mm applies."
+  },
+  {
+   "designation": "AP-M70",
+   "nation": "Croatia",
+   "weapon": "Croatian AP-M70 assault rifle (Zagreb, 1996)",
+   "weapon_key": "apm70",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "ak_info_hr_apm70",
+   "twist_source_id": null,
+   "note": "Ak-info.ru hosts the Croatian 'Automatska Puska AP-M70' operating manual. No twist stated; C.I.P. 7.62x39 standard 240 mm applies."
+  },
+  {
+   "designation": "RK 62",
+   "nation": "Finland",
+   "weapon": "Valmet/Sako RK 62 (7.62 RK 62) assault rifle",
+   "weapon_key": "rk62",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "mf_valmet",
+   "twist_source_id": null,
+   "note": "Modern Firearms 'Valmet Sako Rk.62 / 76 / 95'. No twist stated; C.I.P. 7.62x39 standard 240 mm applies."
+  },
+  {
+   "designation": "RK 95 TP",
+   "nation": "Finland",
+   "weapon": "Sako RK 95 TP (7.62 RK 95 TP) assault rifle",
+   "weapon_key": "rk95",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "mf_valmet",
+   "twist_source_id": null,
+   "note": "Modern Firearms 'Valmet Sako Rk.62 / 76 / 95'. No twist stated; C.I.P. standard 240 mm applies."
+  },
+  {
+   "designation": "Valmet M62",
+   "nation": "Finland",
+   "weapon": "Valmet M62 assault rifle",
+   "weapon_key": "valmet_m62",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "mf_valmet",
+   "twist_source_id": null,
+   "note": "Modern Firearms 'Valmet Sako Rk.62 / 76 / 95'. No twist stated; C.I.P. standard 240 mm applies."
+  },
+  {
+   "designation": "Valmet M76",
+   "nation": "Finland",
+   "weapon": "Valmet M76 assault rifle",
+   "weapon_key": "valmet_m76",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "ia_valmet_m76_manual",
+   "twist_source_id": null,
+   "note": "Valmet M76 rifle manual ('7.62 Rifle M 76'); Modern Firearms also documents the M76. No twist stated; C.I.P. 7.62x39 standard 240 mm applies."
+  },
+  {
+   "designation": "Valmet M82",
+   "nation": "Finland",
+   "weapon": "Valmet M82 bullpup assault rifle",
+   "weapon_key": "valmet_m82",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "mf_valmet",
+   "twist_source_id": null,
+   "note": "Modern Firearms 'Valmet Sako Rk.62 / 76 / 95'. No twist stated; C.I.P. standard 240 mm applies."
+  },
+  {
+   "designation": "Galil ARM",
+   "nation": "Israel",
+   "weapon": "IMI/IWI Galil ARM assault rifle",
+   "weapon_key": "galil_arm",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": null,
+   "map_source_id": "ia_galil_arm_manual",
+   "twist_source_id": "ia_galil_arm_manual",
+   "note": "Galil ARM manual: 'Rifling R.H. 6 Grooves, 1 turn in 12\" or 1 : 7\" for SS109'. The manual gives two rates; recorded as null because no single value is stated. Modern Firearms 'Galil' also documents the ARM."
+  },
+  {
+   "designation": "Galil AR",
+   "nation": "Israel",
+   "weapon": "IMI/IWI Galil AR assault rifle",
+   "weapon_key": "galil_ar",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": null,
+   "map_source_id": "mf_galil",
+   "twist_source_id": null,
+   "note": "Modern Firearms 'Galil'. No twist stated; the Galil ARM manual gives '1 turn in 12\" or 1 : 7\" for SS109'."
+  },
+  {
+   "designation": "Galil SAR",
+   "nation": "Israel",
+   "weapon": "IMI/IWI Galil SAR short assault rifle",
+   "weapon_key": "galil_sar",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": null,
+   "map_source_id": "mf_galil",
+   "twist_source_id": null,
+   "note": "Modern Firearms 'Galil'. No twist stated; the Galil ARM manual gives '1 turn in 12\" or 1 : 7\" for SS109'."
+  },
+  {
+   "designation": "Galil Sniper",
+   "nation": "Israel",
+   "weapon": "IMI/IWI Galil Sniper (Galatz)",
+   "weapon_key": "galil_sniper",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": null,
+   "map_source_id": "mf_galil_sniper",
+   "twist_source_id": null,
+   "note": "Modern Firearms 'Galil Sniper'. No twist stated; 7.62x51 standard 304.8 mm applies."
+  },
+  {
+   "designation": "Type 58",
+   "nation": "North Korea",
+   "weapon": "North Korean Type 58 assault rifle (copy of AK-47 Type 3)",
+   "weapon_key": "nk_type58",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "pp_nkorea",
+   "twist_source_id": null,
+   "note": "枪炮世界: '朝鲜58式突击步枪是AK-47第3型的仿制品'. No twist stated; C.I.P. 7.62x39 standard 240 mm applies."
+  },
+  {
+   "designation": "Type 58-1",
+   "nation": "North Korea",
+   "weapon": "North Korean Type 58-1 (copy of AKS-47)",
+   "weapon_key": "nk_type58_1",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "pp_nkorea",
+   "twist_source_id": null,
+   "note": "枪炮世界: '仿折叠托的AKS-47的则称为58-1式'. No twist stated; C.I.P. standard 240 mm applies."
+  },
+  {
+   "designation": "Type 68",
+   "nation": "North Korea",
+   "weapon": "North Korean Type 68 assault rifle (copy of AKM)",
+   "weapon_key": "nk_type68",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "pp_nkorea",
+   "twist_source_id": null,
+   "note": "枪炮世界: '仿制冲压机匣的AKM和AKMS则称为68式和68-1'. No twist stated; C.I.P. standard 240 mm applies."
+  },
+  {
+   "designation": "Type 68-1",
+   "nation": "North Korea",
+   "weapon": "North Korean Type 68-1 (copy of AKMS)",
+   "weapon_key": "nk_type68_1",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "pp_nkorea",
+   "twist_source_id": null,
+   "note": "枪炮世界 North Korean AK page. No twist stated; C.I.P. standard 240 mm applies."
+  },
+  {
+   "designation": "Type 88",
+   "nation": "North Korea",
+   "weapon": "North Korean Type 88 assault rifle (copy of AK-74)",
+   "weapon_key": "nk_type88",
+   "chambering": "5.45x39mm",
+   "twist_mm": null,
+   "map_source_id": "pp_nkorea",
+   "twist_source_id": null,
+   "note": "枪炮世界: '朝鲜又开始仿制5.45口径的AK-74和AKS-74，有些资料中把这两种型号分别称为88式和88-1式'. No twist stated; C.I.P. 5.45x39 standard 195 mm applies."
+  },
+  {
+   "designation": "Type 88-1",
+   "nation": "North Korea",
+   "weapon": "North Korean Type 88-1 (copy of AKS-74)",
+   "weapon_key": "nk_type88_1",
+   "chambering": "5.45x39mm",
+   "twist_mm": null,
+   "map_source_id": "pp_nkorea",
+   "twist_source_id": null,
+   "note": "Same 枪炮世界 page. No twist stated; C.I.P. standard 195 mm applies."
+  },
+  {
+   "designation": "Tabuk",
+   "nation": "Iraq",
+   "weapon": "Iraqi Tabuk assault rifle (Al-Qadissiya, AKM derivative)",
+   "weapon_key": "tabuk",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "ak_info_iq_manual",
+   "twist_source_id": null,
+   "note": "Ak-info.ru hosts the Iraqi 'Наставление по стрелковому делу автоматов Калашникова' (1997). The manual documents the Iraqi Kalashnikov (Tabuk) rifle; no twist stated, C.I.P. 7.62x39 standard 240 mm applies."
+  },
+  {
+   "designation": "MAK-90",
+   "nation": "China",
+   "weapon": "Norinco MAK-90 semi-automatic rifle (AKM derivative)",
+   "weapon_key": "mak90",
+   "chambering": "7.62x39mm",
+   "twist_mm": null,
+   "map_source_id": "ia_norinco_mak90_manual",
+   "twist_source_id": null,
+   "note": "Norinco MAK-90 semi-automatic rifle manual (commercial/import). No twist stated; C.I.P. 7.62x39 standard 240 mm applies."
+  },
+  {
+   "designation": "Romak 3 / PSL",
+   "nation": "Romania",
+   "weapon": "Cugir Romak 3 (PSL) marksman rifle (AK-pattern, not an AK variant)",
+   "weapon_key": "romak3",
+   "chambering": "7.62x54mmR",
+   "twist_mm": null,
+   "map_source_id": "ia_romak_3_manual",
+   "twist_source_id": null,
+   "note": "Romak 3 manual (commercial/import). The PSL shares the AK action layout but is not a Kalashnikov derivative; listed for completeness. No twist stated; C.I.P. 7.62x54R standard 240 mm applies."
+  }
+ ]
+}

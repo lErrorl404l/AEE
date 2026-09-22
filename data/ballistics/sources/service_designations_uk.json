@@ -1,0 +1,675 @@
+{
+ "retrieved": "2026-09-22",
+ "sources": [
+  {
+   "source_id": "taji_si_2019",
+   "title": "Service Inquiry - Death of a Soldier from a Gunshot Wound at Camp Taji, Iraq, 2 January 2017 (Defence Safety Authority, 5 November 2019)",
+   "url": "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/844426/20191104-SI_Taji_Redacted-FINAL.pdf",
+   "sha256": "2e546c4525b701166515feb3ac60587aaa174821dd52c7b547ced2d9f69b50f7"
+  },
+  {
+   "source_id": "mod_raf_weapons_2013",
+   "title": "Royal Air Force Aircraft and Weapons (Ministry of Defence, 2013)",
+   "url": "https://web.archive.org/web/20170710150246/https://www.raf.mod.uk/rafcms/mediafiles/E28BE76F_5056_A318_A833EB4C9A735AD8.pdf",
+   "sha256": "f7487223f6bd951a99ca158f1d91235e543983da07c9c7348cf0b30204406f9c"
+  },
+  {
+   "source_id": "mod_army_vehicles_equipment",
+   "title": "British Army: Vehicles and Equipment (Ministry of Defence)",
+   "url": "https://web.archive.org/web/20101119164824/http://www.army.mod.uk/documents/general/285986_ARMY_VEHICLESEQUIPMENT_V12.PDF_web.pdf",
+   "sha256": "b81f1f494401952fca67bfe1c30a4f4bd800d66d7b5fca3b922c376681d1f206"
+  },
+  {
+   "source_id": "mod_thps",
+   "title": "Tactical Hearing Protection System (THPS) User Information (Ministry of Defence, army.mod.uk)",
+   "url": "https://web.archive.org/web/20171014233713/http://www.army.mod.uk/documents/general/Tactical_hearing.pdf",
+   "sha256": "4825453890bab5785180468f833a263f14ce3cebe9967eeceb1566c6f60bb259"
+  },
+  {
+   "source_id": "mod_adc_minutes",
+   "title": "Army Dress Committee meeting minutes March 2011 to November 2013 (Ministry of Defence)",
+   "url": "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/863716/Army_Dress_Committee_meeting_minutes_March_2011_to_November_2013__Annex_J_.pdf",
+   "sha256": "a48fd28d175dd3c8c5cb3d61c6479e0a8d87f53ab8b1470e37534e7abc7c3eb2"
+  },
+  {
+   "source_id": "mod_din_digest_2013",
+   "title": "DIN Digest September 2013 (Ministry of Defence)",
+   "url": "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/263787/DIN_DIGEST_sept_2013.pdf",
+   "sha256": "3e446580ec96fd4350d562eac3a155ab08909c27ae3998a270ea94bd129c3064"
+  },
+  {
+   "source_id": "mod_foi_lsw_lmg",
+   "title": "FOI2019/08028, Removal of the Light Support Weapon and LMG from service (MOD Defence Equipment and Support, 22 July 2019)",
+   "url": "https://assets.publishing.service.gov.uk/media/5d5fb72f40f0b607c23ad84f/20190723_FOI201908028_Removal_of_the_light_support_weapon_and_LMG_from_service_Weapons_for_publishing_O.pdf",
+   "sha256": "b9ad3abb7c75453f139889d7e2039ec9fc2064eebfb69de1400150bd16bc6b56"
+  },
+  {
+   "source_id": "desa_benelli_l128a1",
+   "title": "Benelli L128A1 Combat Shotgun factsheet (MOD Defence Equipment Sales Authority)",
+   "url": "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/1025306/Benelli_FS.pdf",
+   "sha256": "fa1f37d4ea880be1c7479af76b3cbc62d4f5f3344a283ac01a7dcbe7581bbb56"
+  },
+  {
+   "source_id": "desa_minimi_l110a2",
+   "title": "Minimi 5.56 L110A2 Light Machine Gun factsheet (MOD Defence Equipment Sales Authority)",
+   "url": "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/1025314/Minimi_LMG_FS.pdf",
+   "sha256": "9b1ab618313f5d06862d598b40afc352eff946ad9542a50b4e8ffdf7b5f95ce0"
+  },
+  {
+   "source_id": "mod_army_sa80",
+   "title": "SA80 Individual Weapon, The British Army (Ministry of Defence)",
+   "url": "https://www.army.mod.uk/learn-and-explore/equipment/small-arms-and-support-weapons/sa80-individual-weapon/",
+   "sha256": null
+  },
+  {
+   "source_id": "mod_army_l115a3",
+   "title": "L115A3 Long Range Sniper Rifle, The British Army (Ministry of Defence)",
+   "url": "https://www.army.mod.uk/learn-and-explore/equipment/small-arms-and-support-weapons/l115a3-long-range-sniper-rifle/",
+   "sha256": null
+  },
+  {
+   "source_id": "mod_army_l129a1",
+   "title": "L129A1 Sharpshooter Rifle, The British Army (Ministry of Defence)",
+   "url": "https://www.army.mod.uk/learn-and-explore/equipment/small-arms-and-support-weapons/l129a1-sharpshooter-rifle/",
+   "sha256": null
+  },
+  {
+   "source_id": "mod_army_gpmg",
+   "title": "General Purpose Machine Gun, The British Army (Ministry of Defence)",
+   "url": "https://www.army.mod.uk/learn-and-explore/equipment/small-arms-and-support-weapons/general-purpose-machine-gun/",
+   "sha256": null
+  },
+  {
+   "source_id": "mod_army_hmg",
+   "title": "Heavy Machine Gun, The British Army (Ministry of Defence)",
+   "url": "https://www.army.mod.uk/learn-and-explore/equipment/small-arms-and-support-weapons/heavy-machine-gun/",
+   "sha256": null
+  },
+  {
+   "source_id": "gov_l403a1",
+   "title": "90 million pound contract equips Armed Forces with advanced new rifle (Ministry of Defence, 7 September 2023)",
+   "url": "https://www.gov.uk/government/news/90-million-contract-equips-armed-forces-with-advanced-new-rifle",
+   "sha256": null
+  },
+  {
+   "source_id": "gov_l129a1_helmand",
+   "title": "Royal Marines are first to use new Sharpshooter rifle in Helmand (Ministry of Defence, 7 June 2010)",
+   "url": "https://www.gov.uk/government/news/royal-marines-are-first-to-use-new-sharpshooter-rifle-in-helmand",
+   "sha256": null
+  },
+  {
+   "source_id": "gov_dstl_l85",
+   "title": "Live firing exercise tests latest soldier systems (Defence Science and Technology Laboratory, 23 August 2022)",
+   "url": "https://www.gov.uk/government/news/live-firing-exercise-tests-latest-soldier-systems",
+   "sha256": null
+  },
+  {
+   "source_id": "gov_newpistols",
+   "title": "New pistols for UK Armed Forces (Ministry of Defence, 11 January 2013)",
+   "url": "https://www.gov.uk/government/news/new-pistols-for-uk-armed-forces",
+   "sha256": null
+  },
+  {
+   "source_id": "gov_rmp_l119a1",
+   "title": "Royal Military Police train for close protection (Ministry of Defence)",
+   "url": "https://www.gov.uk/government/news/royal-military-police-train-for-close-protection",
+   "sha256": null
+  },
+  {
+   "source_id": "mod_royal_navy_l403a1",
+   "title": "Britain's Commandos to Get New Assault Rifles (Royal Navy, 7 September 2023)",
+   "url": "https://www.royalnavy.mod.uk/news-and-latest-activity/news/2023/september/07/230907-royal-marines-new-rifle",
+   "sha256": null
+  },
+  {
+   "source_id": "cadet_gp_rifle_l98a2",
+   "title": "Cadet GP Rifle L98A2 (5.56mm), UK Ministry of Defence, 2021 (weapon technical data)",
+   "url": null,
+   "sha256": null
+  },
+  {
+   "source_id": "iwm_l108a1",
+   "title": "Sling, L108A1 5.56mm Minimi LMG, Imperial War Museums collection",
+   "url": "https://www.iwm.org.uk/collections/item/object/30105407",
+   "sha256": null
+  },
+  {
+   "source_id": "royal_armouries_l74a1",
+   "title": "Centrefire pump-action military shotgun - Remington Wingmaster Model 870 - L74A1, Royal Armouries collection",
+   "url": "https://royalarmouries.org/collection/object/object-276316",
+   "sha256": null
+  },
+  {
+   "source_id": "altair_2013",
+   "title": "Brytyjczycy chca niemieckiej broni (Agencja Lotnicza ALTAIR, 1 September 2013)",
+   "url": "https://www.altair.com.pl/brytyjczycy-chca-niemieckiej-broni",
+   "sha256": null
+  },
+  {
+   "source_id": "rifleman_l96a1",
+   "title": "The Accuracy International AW Sniper Rifle - the L96A1 in British Service (UK Historic Arms Resource Centre)",
+   "url": "https://www.rifleman.org.uk/Accuracy_International_AW_L96A1.html",
+   "sha256": null
+  },
+  {
+   "source_id": "rifleman_l81a2",
+   "title": "The L81A1, L81A2 Cadet Target Rifles and their Parker-Hale antecedents (UK Historic Arms Resource Centre)",
+   "url": "https://www.rifleman.org.uk/L81A2_Cadet_Target_Rifle.html",
+   "sha256": null
+  },
+  {
+   "source_id": "forgottenweapons_l118a2",
+   "title": "L118A2: Accuracy International Arctic Warfare (Forgotten Weapons)",
+   "url": "https://www.forgottenweapons.com/l118a2-accuracy-international-arctic-warfare/",
+   "sha256": null
+  },
+  {
+   "source_id": "militaryfactory_l115",
+   "title": "Accuracy International L115 Bolt-Action Sniper Rifle (Military Factory)",
+   "url": "https://www.militaryfactory.com/smallarms/detail.php?smallarms_id=396",
+   "sha256": null
+  },
+  {
+   "source_id": "eliteukforces_minimi",
+   "title": "British Military Weapons - Minimi (Elite UK Forces)",
+   "url": "https://www.eliteukforces.info/weapons/minimi/",
+   "sha256": null
+  },
+  {
+   "source_id": "eliteukforces_c8",
+   "title": "SAS - Weapons - C8 Carbine (Elite UK Forces)",
+   "url": "https://www.eliteukforces.info/special-air-service/weapons/c8.php",
+   "sha256": null
+  },
+  {
+   "source_id": "sadefensejournal_l129a2",
+   "title": "Sharpshooter Reaches Further Downrange: The L129A2 gets adopted (Small Arms Defense Journal)",
+   "url": "https://sadefensejournal.com/sharpshooter-reaches-further-downrange-the-l129a2-gets-adopted/",
+   "sha256": null
+  },
+  {
+   "source_id": "kac_ks1",
+   "title": "KS-1, Knight's Armament Company product page",
+   "url": "https://www.knightarmco.com/28951/shop/military/ks/ks-1",
+   "sha256": null
+  },
+  {
+   "source_id": "lmt_l129a1",
+   "title": "LMT L129A1 Reference Rifle (LM308SSR) product page (Lewis Machine & Tool)",
+   "url": "https://lmtdefense.com/product/lm308ssr/",
+   "sha256": null
+  },
+  {
+   "source_id": "lmt_contract_l129a1",
+   "title": "British Army L129A1 contract page (Lewis Machine & Tool)",
+   "url": "https://lmtdefense.com/contract-rifles/british-army-l129a1/",
+   "sha256": null
+  },
+  {
+   "source_id": "ai_awm",
+   "title": "Accuracy International - AWM (Super Magnum) product page",
+   "url": "https://web.archive.org/web/20021113101855id_/http://www.accuracyinternational.com/awm.htm",
+   "sha256": null
+  },
+  {
+   "source_id": "ai_aw_brochure_2010",
+   "title": "Accuracy International AW Series brochure (Arctic Warfare system configurator), 2010",
+   "url": "https://web.archive.org/web/20100331050126/http://www.accuracyinternational.com/assets/assets/aw_brochure.pdf",
+   "sha256": null
+  },
+  {
+   "source_id": "fn_fal_manual",
+   "title": "FN Light Automatic Rifle FAL, user's manual",
+   "url": "https://archive.org/download/gunmanual_FN-FAL_Manual/FN-FAL%20Manual_text.pdf",
+   "sha256": null
+  },
+  {
+   "source_id": "glock_armorer",
+   "title": "GLOCK Armorer's Manual",
+   "url": "https://archive.org/download/gunmanual_Glock_ARmorers_Manual/Glock%20ARmorers%20Manual_text.pdf",
+   "sha256": "3b4366d035057fbc2a8149cb97bf2c23f2f5894a3aa15b799d862897e8d99bb3"
+  },
+  {
+   "source_id": "sig_p226_manual",
+   "title": "SIG Sauer P226 pistol manual, technical specifications",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/sig_p226_djvu.txt",
+   "sha256": "6efe3abf08558f0e5436bac63a6f34f9bf222c284d63271d53028f0c45d5e384"
+  },
+  {
+   "source_id": "hk_mp5_manual",
+   "title": "Heckler & Koch MP5 Submachine Gun manual",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/hk_mp5_djvu.txt",
+   "sha256": "97855893985feb568f6f596a842597678978a3e1c2792dcf40eafa8e0e144e9c"
+  },
+  {
+   "source_id": "tm_9_1005_201_10",
+   "title": "TM 9-1005-201-10, Operator's Manual, Machine Gun 5.56mm M249 (US Army)",
+   "url": "https://archive.org/download/tm-9-1005-201-10-machine-gun-5.56mm-m-249-1991/TM%209-1005-201-10%20Machine%20Gun%2C%205.56mm%2C%20M249%20%201991_djvu.txt",
+   "sha256": "baaae285e2e3a20129361581169f777d2531a64967ae9f0420aaa775479dfe99"
+  },
+  {
+   "source_id": "tm_9_1005_213_10",
+   "title": "TM 9-1005-213-10, Operator's Manual, Machine Gun, Caliber .50, Browning, M2 (US Army)",
+   "url": "https://archive.org/download/TM9-1005-213-10/TM9-1005-213-10_djvu.txt",
+   "sha256": "120dce90a02074394dc22d80dc1fdd10d3fb5cb13b8a5cb21df496816ad5416b"
+  },
+  {
+   "source_id": "paradata_glock",
+   "title": "Glock 17 Gen 4/L131A1 pistol, Airborne Assault Museum",
+   "url": "https://www.paradata.org.uk/content/4663889-glock-17-gen-4l131a1-pistol",
+   "sha256": null
+  }
+ ],
+ "designations": [
+  {
+   "designation": "L85A1",
+   "weapon": "SA80 Individual Weapon (Royal Small Arms Factory Enfield)",
+   "weapon_key": "sa80_iw",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": null,
+   "map_source_id": "taji_si_2019",
+   "twist_source_id": null,
+   "note": "Taji service inquiry list of SA80 reference names includes 'Rifle 5.56mm L85A1 (SA80)'. Original 1985 IW, superseded by the L85A2. No twist stated for the A1 designation."
+  },
+  {
+   "designation": "L85A2",
+   "weapon": "SA80 A2 Individual Weapon (Heckler & Koch)",
+   "weapon_key": "sa80_a2",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": 180.0,
+   "map_source_id": "mod_army_sa80",
+   "twist_source_id": "cadet_gp_rifle_l98a2",
+   "note": "Army: 'SA80 A2 comprises the Individual Weapon (IW) and the Light Support Weapon (LSW) ... Made by Heckler and Koch, they fire NATO standard 5.56 x 45mm ammunition.' The MOD cadet manual for the L98A2 (an L85A2 variant) states the SA80 twist: 6 grooves, pitch 180 mm, 1 turn right hand. Twist is for the weapon, not stated against the L85A2 designation."
+  },
+  {
+   "designation": "L85A3",
+   "weapon": "SA80 A3 Individual Weapon (Heckler & Koch)",
+   "weapon_key": "sa80_a3",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": null,
+   "map_source_id": "gov_dstl_l85",
+   "twist_source_id": null,
+   "note": "Dstl: 'SA-80 L85A2 versus the L85A3 rifle'. The gov.uk L403A1 release calls the L85A3 'the current in-service' rifle. No twist stated for the A3."
+  },
+  {
+   "designation": "L22A2",
+   "weapon": "SA80 Carbine (short-barrelled SA80)",
+   "weapon_key": "sa80_carbine",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": null,
+   "map_source_id": "altair_2013",
+   "twist_source_id": null,
+   "note": "Altair (defence publication): '5,56-mm subkarabinkow L22A2'. MOD THPS lists '5.56mm Carbine L22A1'. No twist stated for the carbine."
+  },
+  {
+   "designation": "L86A1",
+   "weapon": "SA80 Light Support Weapon (LSW)",
+   "weapon_key": "sa80_lsw",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": null,
+   "map_source_id": "mod_army_sa80",
+   "twist_source_id": null,
+   "note": "Army: 'SA80 A2 comprises the Individual Weapon (IW) and the Light Support Weapon (LSW).' The L86 is the LSW; A1 is the original 1985 variant. No designation-specific A1 twist located."
+  },
+  {
+   "designation": "L86A2",
+   "weapon": "SA80 A2 Light Support Weapon (LSW)",
+   "weapon_key": "sa80_lsw_a2",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": null,
+   "map_source_id": "mod_raf_weapons_2013",
+   "twist_source_id": null,
+   "note": "RAF: 'The L86A2 is known as the Light Support Weapon (LSW).' MOD FOI2019/08028 also states 'The L86A2 (Light Support Weapon)'. No twist stated for the LSW."
+  },
+  {
+   "designation": "L98A2",
+   "weapon": "Cadet GP Rifle (L85A2-based, semi-automatic)",
+   "weapon_key": "l98a2",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": 180.0,
+   "map_source_id": "cadet_gp_rifle_l98a2",
+   "twist_source_id": "cadet_gp_rifle_l98a2",
+   "note": "MOD cadet manual: the L98A2 is the cadet version of the L85A2, 6 grooves, pitch 180 mm, 1 turn right hand. Taji list: 'Rifle 5.56mm L98A2 (SA80)'."
+  },
+  {
+   "designation": "L96A1",
+   "weapon": "Accuracy International Precision Marksman (PM)",
+   "weapon_key": "ai_pm",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": null,
+   "map_source_id": "rifleman_l96a1",
+   "twist_source_id": null,
+   "note": "UK Historic Arms Resource Centre: 'The Accuracy International AW Sniper Rifle - the L96A1 in British Service'. Taji list: 'Rifle 7.62mm L96A1 (Sniper)'. The PM was the first AI variant in UK service. No twist located for the PM."
+  },
+  {
+   "designation": "L96A2",
+   "weapon": null,
+   "weapon_key": null,
+   "chambering": null,
+   "twist_mm": null,
+   "map_source_id": "rifleman_l96a1",
+   "twist_source_id": null,
+   "note": "Not mapped. No authoritative source located that states an L96A2 designation; the L96 family is documented as the L96A1 (AI PM). The source given documents the L96 family and does not list an A2. Do not treat as resolved."
+  },
+  {
+   "designation": "L115A1",
+   "weapon": "Accuracy International AWM (.338)",
+   "weapon_key": "awm",
+   "chambering": ".338 Lapua Magnum",
+   "twist_mm": 279.4,
+   "map_source_id": "militaryfactory_l115",
+   "twist_source_id": "ai_awm",
+   "note": "Military Factory: 'The first L115 models to reach the British military were designated as the L115A1' and 'the newer L115 makes use of a heavier 8.59mm caliber cartridge'. Taji list: 'L115A1 SNIPER RIFLE'. AI AWM product page: the .338 Lapua Magnum AWM uses a '1 in 11 twist' barrel = 279.4 mm. Twist is for the AWM weapon."
+  },
+  {
+   "designation": "L115A2",
+   "weapon": "Accuracy International AWM (.338)",
+   "weapon_key": "awm",
+   "chambering": ".338 Lapua Magnum",
+   "twist_mm": 279.4,
+   "map_source_id": "militaryfactory_l115",
+   "twist_source_id": "ai_awm",
+   "note": "The L115A2 designation was not stated in any authoritative source located; the L115 series is the AI AWM in .338 Lapua Magnum (A1 = fixed stock, A2 = folding stock variant). Mapped by family only. AI AWM .338 twist 1 in 11 = 279.4 mm."
+  },
+  {
+   "designation": "L115A3",
+   "weapon": "Accuracy International AWM (.338)",
+   "weapon_key": "awm",
+   "chambering": ".338 Lapua Magnum",
+   "twist_mm": 279.4,
+   "map_source_id": "mod_army_l115a3",
+   "twist_source_id": "ai_awm",
+   "note": "Army: 'Manufactured by Accuracy International, the L115A3 long range rifle fires an 8.59mm bullet'. Taji list: 'L115A3 Sniper Rifle'. AI AWM .338 uses a 1 in 11 twist = 279.4 mm."
+  },
+  {
+   "designation": "L118A1",
+   "weapon": "Accuracy International AW (Arctic Warfare) 7.62",
+   "weapon_key": "ai_aw",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": 304.8,
+   "map_source_id": "mod_thps",
+   "twist_source_id": "ai_aw_brochure_2010",
+   "note": "MOD THPS: '7.62mm Counter Terrorism Sniper Rifle L118A1'. AI AW Series brochure: the standard .308 AW barrel is listed as 1 in 12 = 304.8 mm."
+  },
+  {
+   "designation": "L118A2",
+   "weapon": "Accuracy International AW (Arctic Warfare) 7.62, folding stock",
+   "weapon_key": "ai_aw",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": 304.8,
+   "map_source_id": "forgottenweapons_l118a2",
+   "twist_source_id": "ai_aw_brochure_2010",
+   "note": "Forgotten Weapons: 'the weapon was formally classified as the L118A1 (fixed stock) and L118A2 (folding stock)'. AI AW brochure: .308 AW barrel 1 in 12 = 304.8 mm."
+  },
+  {
+   "designation": "L119A1",
+   "weapon": "Colt Canada C8 (Diemaco)",
+   "weapon_key": "colt_canada_c8",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": 177.8,
+   "map_source_id": "gov_rmp_l119a1",
+   "twist_source_id": "eliteukforces_c8",
+   "note": "gov.uk: 'Their main weapon is the 5.56mm C8 Colt Diemaco (L119A1), made in Canada.' MOD THPS lists '5.56mm Diemarco C8 Standard (16\") L119A1'. C8 barrel 1 turn in 178 mm (7 in) = 177.8 mm."
+  },
+  {
+   "designation": "L119A2",
+   "weapon": "Colt Canada C8 IUR carbine",
+   "weapon_key": "colt_canada_c8",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": 177.8,
+   "map_source_id": "taji_si_2019",
+   "twist_source_id": "eliteukforces_c8",
+   "note": "Taji list: 'C8 Carbine, Rifle 5.56mm Assault L119A2'. The C8 family barrel twist is 1 turn in 178 mm (7 in) = 177.8 mm."
+  },
+  {
+   "designation": "L129A1",
+   "weapon": "Lewis Machine & Tool LM308MWS (MWS)",
+   "weapon_key": "lmt_mws",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": 285.75,
+   "map_source_id": "mod_army_l129a1",
+   "twist_source_id": "lmt_l129a1",
+   "note": "Army: the L129A1 sharpshooter rifle 'fires a 7.62mm round'. LMT contract page: 'The LMT L129A1 - contracted by United Kingdom Ministry of Defence. Chambered in 7.62mm x 51mm ... LMT patented monolithic Modular Weapon System, MWS'. LMT Reference Rifle (LM308SSR) spec: 'Rifling Twist Rate 1:11.25\"' = 285.75 mm."
+  },
+  {
+   "designation": "L129A2",
+   "weapon": "LMT L129A2 (MARS-H DMR)",
+   "weapon_key": "lmt_l129a2",
+   "chambering": "6.5mm Creedmoor",
+   "twist_mm": 203.2,
+   "map_source_id": "sadefensejournal_l129a2",
+   "twist_source_id": "sadefensejournal_l129a2",
+   "note": "Small Arms Defense Journal (defence publication): the L129A2 is the LMT midlife upgrade of the L129A1 'in 6.5 Creedmoor', and 'The barrel twist is 1:8-inch RH' = 203.2 mm. Chambering changed from 7.62x51mm NATO to 6.5mm Creedmoor."
+  },
+  {
+   "designation": "L403A1",
+   "weapon": "Knight's Armament KS-1 (Stryker)",
+   "weapon_key": "kac_ks1",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": 177.8,
+   "map_source_id": "mod_royal_navy_l403a1",
+   "twist_source_id": "kac_ks1",
+   "note": "Royal Navy: 'The Knight's Stoner 1 (KS-1) rifle (designated L403A1)'. gov.uk: 'The Alternative Individual Weapon (AIW) system - known as the L403A1 ... The rifle is manufactured by Knights Armament Corporation (US)'. KAC KS-1 page: '1 in 7\" (17.8 cm) Twist' = 177.8 mm."
+  },
+  {
+   "designation": "L81A2",
+   "weapon": "Parker-Hale L81A2 Cadet Target Rifle",
+   "weapon_key": "l81a2",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": null,
+   "map_source_id": "rifleman_l81a2",
+   "twist_source_id": null,
+   "note": "Taji list: 'L81A2 Cadet Tgt Rifle'. UK Historic Arms Resource Centre: the L81A2 is a shortened Parker-Hale M82 7.62mm target rifle. No twist stated."
+  },
+  {
+   "designation": "L7A1",
+   "weapon": "FN MAG (GPMG)",
+   "weapon_key": "fn_mag",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": null,
+   "map_source_id": "mod_army_gpmg",
+   "twist_source_id": null,
+   "note": "The L7A1 is the original variant of the FN MAG general purpose machine gun; the Army page documents the in-service L7A2 as '7.62mm x 51mm belt-fed general purpose machine gun'. No twist stated in the sources examined."
+  },
+  {
+   "designation": "L7A2",
+   "weapon": "FN MAG (GPMG), UK build by Manroy Engineering",
+   "weapon_key": "fn_mag",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": null,
+   "map_source_id": "mod_army_gpmg",
+   "twist_source_id": null,
+   "note": "Army: 'The L7A2 General Purpose Machine Gun (GPMG) is a 7.62mm x 51mm belt-fed general purpose machine gun ... Manufacturer: Manroy Engineering (UK)'. RAF: 'General Purpose Machine Gun (L7A2)'. No twist stated in the sources examined."
+  },
+  {
+   "designation": "L110A1",
+   "weapon": "FN Minimi Para (LMG)",
+   "weapon_key": "fn_minimi",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": 177.8,
+   "map_source_id": "eliteukforces_minimi",
+   "twist_source_id": "tm_9_1005_201_10",
+   "note": "Elite UK Forces: 'The (L110A1 & L110A2) Light Machine Gun (LMG) is the MoD designation for the Minimi PARA'. The Minimi/M249 barrel twist is '1 turn in 7 inches' = 177.8 mm (US Army TM 9-1005-201-10). Twist is for the Minimi weapon."
+  },
+  {
+   "designation": "L110A2",
+   "weapon": "FN Herstal Minimi Para (LMG)",
+   "weapon_key": "fn_minimi",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": 177.8,
+   "map_source_id": "desa_minimi_l110a2",
+   "twist_source_id": "tm_9_1005_201_10",
+   "note": "MOD DESA factsheet: 'The L110 A2 Light Machine Gun (LMG) is the UK MOD designation for the FN Herstal MINIMI PARA.' Minimi/M249 twist '1 turn in 7 inches' = 177.8 mm (US Army TM 9-1005-201-10)."
+  },
+  {
+   "designation": "L110A3",
+   "weapon": null,
+   "weapon_key": null,
+   "chambering": null,
+   "twist_mm": null,
+   "map_source_id": "mod_foi_lsw_lmg",
+   "twist_source_id": null,
+   "note": "Not mapped. MOD FOI2019/08028 (Defence Equipment and Support, 22 July 2019): 'The MOD has never procured any weapon with the designation L110A3.' There is no such UK designation."
+  },
+  {
+   "designation": "L108A1",
+   "weapon": "FN Minimi (LMG)",
+   "weapon_key": "fn_minimi",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": 177.8,
+   "map_source_id": "iwm_l108a1",
+   "twist_source_id": "tm_9_1005_201_10",
+   "note": "Imperial War Museums collection: 'Sling, L108A1 5.56mm Minimi LMG'. Minimi/M249 twist '1 turn in 7 inches' = 177.8 mm (US Army TM 9-1005-201-10)."
+  },
+  {
+   "designation": "L111A1",
+   "weapon": "Browning M2 heavy machine gun",
+   "weapon_key": "m2_browning",
+   "chambering": "12.7x99mm NATO (.50 BMG)",
+   "twist_mm": 381.0,
+   "map_source_id": "mod_army_hmg",
+   "twist_source_id": "tm_9_1005_213_10",
+   "note": "Army: 'The powerful L111A1 12.7mm (.50) Heavy Machine Gun (HMG) is an updated version of the Browning M2 Fifty-cal'. RAF: 'Heavy Machine Gun (L111A1)'. US Army TM 9-1005-213-10 tabulated data: 'one turn in 15 in' = 381.0 mm, 8 lands and grooves."
+  },
+  {
+   "designation": "L1A1",
+   "weapon": "FN FAL, UK inch pattern Self-Loading Rifle (SLR)",
+   "weapon_key": "fn_fal",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": 304.8,
+   "map_source_id": "fn_fal_manual",
+   "twist_source_id": "fn_fal_manual",
+   "note": "FN FAL user's manual: 4 grooves, right hand, pitch 1 in 305 mm (11.9 in, 304.8 mm). The L1A1 is the UK inch-pattern FN FAL."
+  },
+  {
+   "designation": "L128A1",
+   "weapon": "Benelli M4 Super 90",
+   "weapon_key": "benelli_m4",
+   "chambering": "12 gauge",
+   "twist_mm": null,
+   "map_source_id": "desa_benelli_l128a1",
+   "twist_source_id": null,
+   "note": "MOD DESA factsheet: 'BENELLI L128A1 ... The L128A1 is a combat shotgun operating on an ARGO (Auto Regulating Gas Operated) twin operating system'. 12 bore smoothbore, so no rifling twist."
+  },
+  {
+   "designation": "L74A1",
+   "weapon": "Remington 870 Wingmaster",
+   "weapon_key": "remington_870",
+   "chambering": "12 gauge",
+   "twist_mm": null,
+   "map_source_id": "royal_armouries_l74a1",
+   "twist_source_id": null,
+   "note": "Royal Armouries collection: 'Centrefire pump-action military shotgun - Remington Wingmaster Model 870 - L74A1'. MOD THPS lists '12 Bore Shotgun L74A2'. 12 bore smoothbore, so no rifling twist."
+  },
+  {
+   "designation": "L131A1",
+   "weapon": "Glock 17 Gen4",
+   "weapon_key": "glock_17",
+   "chambering": "9x19mm Parabellum",
+   "twist_mm": 250.0,
+   "map_source_id": "mod_thps",
+   "twist_source_id": "glock_armorer",
+   "note": "MOD THPS: '9mm Glock 17 L131A1'. Taji list: 'L131A1 Designation for Glock 17 GSP'. GLOCK Armorer's Manual: 9mm barrel '250mm' / '9.84 in' right hand twist."
+  },
+  {
+   "designation": "L137A1",
+   "weapon": "Glock 19",
+   "weapon_key": "glock_19",
+   "chambering": "9x19mm Parabellum",
+   "twist_mm": 250.0,
+   "map_source_id": "mod_thps",
+   "twist_source_id": "glock_armorer",
+   "note": "MOD THPS: '9mm Glock 19 L137A1'. GLOCK Armorer's Manual: 9mm barrels use a 250 mm (9.84 in) right hand twist."
+  },
+  {
+   "designation": "L105A1",
+   "weapon": "SIG Sauer P226",
+   "weapon_key": "sig_p226",
+   "chambering": "9x19mm Parabellum",
+   "twist_mm": 250.0,
+   "map_source_id": "taji_si_2019",
+   "twist_source_id": "sig_p226_manual",
+   "note": "Taji list: '9mm Sig Sauer L105A1'. SIG Sauer P226 manual technical data: 'Rifling lead 250 mm' for 9mm."
+  },
+  {
+   "designation": "L105A2",
+   "weapon": "SIG Sauer P226",
+   "weapon_key": "sig_p226",
+   "chambering": "9x19mm Parabellum",
+   "twist_mm": 250.0,
+   "map_source_id": "mod_raf_weapons_2013",
+   "twist_source_id": "sig_p226_manual",
+   "note": "RAF: 'Glock - L131A1 and Sig Sauer L105A2'. MOD Army Dress Committee minutes: 'Pistol Automatic L105A2 (Sig Sauer)'. Taji list: 'L105A2 SIG 226A2'. SIG P226 manual: rifling lead 250 mm."
+  },
+  {
+   "designation": "L107A1",
+   "weapon": "SIG Sauer P228",
+   "weapon_key": "sig_p228",
+   "chambering": "9x19mm Parabellum",
+   "twist_mm": null,
+   "map_source_id": "mod_din_digest_2013",
+   "twist_source_id": null,
+   "note": "MOD DIN Digest September 2013: 'Service Date of L107A1 P228 Tri Service'. No twist stated for the P228 in the sources examined."
+  },
+  {
+   "designation": "L9A1",
+   "weapon": "Browning Hi-Power (P35)",
+   "weapon_key": "browning_hp",
+   "chambering": "9x19mm Parabellum",
+   "twist_mm": null,
+   "map_source_id": "gov_newpistols",
+   "twist_source_id": null,
+   "note": "gov.uk: 'The Glock 17 Gen4 pistol is not only much lighter than the Browning L9A1'. Taji list: 'Pistol Automatic 9mm L9A1' and 'L9A1 Browning'. No maker twist source located."
+  },
+  {
+   "designation": "L80A1",
+   "weapon": "Heckler & Koch MP5K",
+   "weapon_key": "hk_mp5k",
+   "chambering": "9x19mm Parabellum",
+   "twist_mm": 250.4,
+   "map_source_id": "altair_2013",
+   "twist_source_id": "hk_mp5_manual",
+   "note": "Altair (defence publication): 'L80A1 (MP5K)'. MOD THPS lists '9mm Heckler & Koch MP5K' in UK service. HK MP5 manual: '1 turn in 9.86\"' = 250.4 mm right hand twist. The UK government source confirms the MP5K but not the L-number."
+  },
+  {
+   "designation": "L80A2",
+   "weapon": null,
+   "weapon_key": null,
+   "chambering": null,
+   "twist_mm": null,
+   "map_source_id": "altair_2013",
+   "twist_source_id": null,
+   "note": "Not mapped. The defence publication lists L80A1 (MP5K) but no L80A2; no authoritative source located for an L80A2 designation. Do not treat as resolved."
+  },
+  {
+   "designation": "L91A1",
+   "weapon": "Heckler & Koch MP5SD3",
+   "weapon_key": "hk_mp5sd",
+   "chambering": "9x19mm Parabellum",
+   "twist_mm": 250.4,
+   "map_source_id": "altair_2013",
+   "twist_source_id": "hk_mp5_manual",
+   "note": "Altair (defence publication): 'L91A1 (MP5SD3)'. MOD THPS lists '9mm Heckler & Koch MP5SD'. HK MP5 manual: 1 turn in 9.86\" = 250.4 mm right hand twist. The UK government source confirms the MP5SD but not the L-number. Note: one secondary site gives L91A1 as MP5A3; the defence publication is preferred."
+  },
+  {
+   "designation": "L92A1",
+   "weapon": "Heckler & Koch MP5A3",
+   "weapon_key": "hk_mp5a3",
+   "chambering": "9x19mm Parabellum",
+   "twist_mm": 250.4,
+   "map_source_id": "altair_2013",
+   "twist_source_id": "hk_mp5_manual",
+   "note": "Altair (defence publication): 'L92A1 (MP5A3)'. MOD THPS lists '9mm Heckler & Koch MP5A3'. HK MP5 manual: 1 turn in 9.86\" = 250.4 mm right hand twist. The UK government source confirms the MP5A3 but not the L-number."
+  },
+  {
+   "designation": "L104A1",
+   "weapon": "Heckler & Koch HK69A1 (37mm riot gun)",
+   "weapon_key": "hk69a1",
+   "chambering": "37mm",
+   "twist_mm": null,
+   "map_source_id": "altair_2013",
+   "twist_source_id": null,
+   "note": "Altair (defence publication): '37-mm granatnikow L104A1 (wprowadzona do brytyjskiego wojska w 2001 odmiana HK69A1)'. MOD THPS lists '37mm Riot/L104A2'. Smoothbore less-lethal launcher, no rifling twist. Not an MP5 variant."
+  }
+ ]
+}

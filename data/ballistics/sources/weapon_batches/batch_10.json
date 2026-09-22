@@ -1,0 +1,177 @@
+{
+  "retrieved": "2026-09-22",
+  "sources": [
+    {
+      "source_id": "noveske_300blk_barrel",
+      "title": "Noveske Rifleworks - Stainless Lo-Pro Gas Block Barrel 300 Blackout (product page)",
+      "url": "https://noveske.com/products/lo-pro-gas-block-barrel-300-aac-blackout"
+    },
+    {
+      "source_id": "roe_orsis_t5000",
+      "title": "Rosoboronexport (roe.ru) - ORSIS SE T-5000 M sniper rifle product page",
+      "url": "http://www.roe.ru/en/production/security-systems/small-arms/sniper-rifles/orsis_se_t_5000_m/"
+    },
+    {
+      "source_id": "para_gi_expert_manual",
+      "title": "Para Ordnance - Para 1911 GI Expert pistol operator's manual (specifications section)",
+      "url": "https://web.archive.org/web/20090704034237id_/http://www.paraord.com/new/downloads/manual_GI.pdf",
+      "sha256": "977d295c01c6984ddd0543a57029c8980d2e2fa617d30a2b45cea1c5f2630c70"
+    },
+    {
+      "source_id": "proof_elevation_mtr",
+      "title": "Proof Research - Elevation MTR rifle product page (caliber specification tables)",
+      "url": "https://proofresearch.com/rifles/elevation-mtr/"
+    },
+    {
+      "source_id": "q_fix_minifix_manual",
+      "title": "Q LLC - THE FIX & mini FIX owner's manual (specifications table)",
+      "url": "https://liveqordie.com/media/wysiwyg/manuals/tech-data/FIX%20&%20MINI%20FIX%20MANUAL.pdf",
+      "sha256": "83dab01b6b90a4b76e40b459e04cd2340c632d69985845d7b9d58f8d8983d769"
+    },
+    {
+      "source_id": "remington_m2010",
+      "title": "Remington Military - XM2010 Enhanced Sniper Rifle product page (archived 2012)",
+      "url": "https://web.archive.org/web/20121007222611/http://www.remingtonmilitary.com/en/Firearms/Sniper%20Rifles/XM2010.aspx"
+    },
+    {
+      "source_id": "remington_m24",
+      "title": "Remington Military - M24 Sniper Weapon System product page (archived 2014)",
+      "url": "https://web.archive.org/web/20140923075143/http://www.remingtonmilitary.com/Firearms/Sniper%20Rifles/M24.aspx"
+    },
+    {
+      "source_id": "armscor_1911_manual",
+      "title": "Armscor / Rock Island Armory - 1911 A1 / A2 pistol owner's manual (technical specifications)",
+      "url": "https://www.armscor.com/hubfs/Armscor_March2020%20Theme/Pdf%20Files/A_-_Manual.pdf",
+      "sha256": "6a18808a8f8cd8d468f0cf920f763ea72d9d8918ffb0892bf24d68da917f90ba"
+    },
+    {
+      "source_id": "armscor_revolver_manual",
+      "title": "Armscor / Rock Island Armory - revolver owner's manual (M200 / M206 series specifications)",
+      "url": "https://www.armscor.com/hubfs/Armscor_March2020%20Theme/Pdf%20Files/I_-_Manual_-_Revolver.pdf",
+      "sha256": "5283fef6fbc31375e26188bd296a1a60f3e17b56f33b226ee73ad338a5a53aac"
+    }
+  ],
+  "weapons": [
+    {
+      "weapon_id": "n4300blk",
+      "name": "N4 300 BLK Carbine",
+      "manufacturer": "Noveske Rifleworks",
+      "cartridge": ".300 AAC Blackout",
+      "barrel_mm": null,
+      "twist_mm": 177.8,
+      "grooves": null,
+      "source_id": "noveske_300blk_barrel",
+      "source_note": "Noveske product page for its 300 Blackout barrels: \"Precision 300 Blackout barrels in 7.94\", 10.5\", and 12.5\" lengths, machined from 416R stainless with a 1:7 twist\". A 1 turn in 7 inch twist = 7 x 25.4 = 177.8 mm per turn."
+    },
+    {
+      "weapon_id": "t5000",
+      "name": "T-5000 Sniper Rifle (Bolt-Action)",
+      "manufacturer": "ORSIS (Promtekhnologiya)",
+      "cartridge": "7.62\u00d751mm NATO (.308 Win)",
+      "barrel_mm": null,
+      "twist_mm": 279.4,
+      "grooves": 4,
+      "source_id": "roe_orsis_t5000",
+      "source_note": "Rosoboronexport (Russian state arms export agency) product page, specification table: \"Cartridge .308 Win / Barrel length (inches/mm) 26/660 / Rifling pitch 11 / Number of rifles 4 (5R)\". Rifling pitch 11 = 1 turn in 11 inches = 11 x 25.4 = 279.4 mm per turn. The table states 4 grooves (5R profile)."
+    },
+    {
+      "weapon_id": "giexpert",
+      "name": "GI Expert full-size GI-spec 1911 with beavertail and combat sights",
+      "manufacturer": "Para Ordnance",
+      "cartridge": ".45 ACP",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": null,
+      "source_id": "para_gi_expert_manual",
+      "source_note": "Para Ordnance GI Expert operator's manual, specification block: \"Caliber: .45 ACP / Barrel: 5 inches, stainless steel / Twist: 1 in 16 inches, left-hand\". A 1 turn in 16 inch twist = 16 x 25.4 = 406.4 mm per turn, left hand (Para barrel)."
+    },
+    {
+      "weapon_id": "elevationmtr",
+      "name": "Elevation MTR 6.5 Creedmoor",
+      "manufacturer": "Proof Research",
+      "cartridge": "6.5 Creedmoor",
+      "barrel_mm": null,
+      "twist_mm": 190.5,
+      "grooves": null,
+      "source_id": "proof_elevation_mtr",
+      "source_note": "Proof Research Elevation MTR product page, specification table under the \"6.5 CM\" (6.5 Creedmoor) caliber tab: \"Twist Rate 7.5\". A 1 turn in 7.5 inch twist = 7.5 x 25.4 = 190.5 mm per turn."
+    },
+    {
+      "weapon_id": "minifix",
+      "name": "Mini Fix .300BO 9\"",
+      "manufacturer": "Q",
+      "cartridge": ".300 AAC Blackout",
+      "barrel_mm": null,
+      "twist_mm": 127.0,
+      "grooves": null,
+      "source_id": "q_fix_minifix_manual",
+      "source_note": "Q LLC owner's manual for THE FIX and mini FIX, specification table: \"CALIBER 300 BLK / BARREL LENGTH 8 in / TWIST RATE 1:5\". Q states a 1 turn in 5 inch twist for the .300 BLK barrel = 5 x 25.4 = 127.0 mm per turn. The TSV barrel length (9 in) differs; Q's .300 BLK Mini Fix barrel is listed as 8 in."
+    },
+    {
+      "weapon_id": "m2010",
+      "name": "M2010 Sniper Rifle",
+      "manufacturer": "Remington",
+      "cartridge": ".300 Winchester Magnum",
+      "barrel_mm": null,
+      "twist_mm": 254.0,
+      "grooves": null,
+      "source_id": "remington_m2010",
+      "source_note": "Remington Military XM2010 (type-classified M2010 Enhanced Sniper Rifle) product page, specification table: \"Caliber .300 Winchester Magnum ... Barrel 22\" 5R Profile, 1 turn in 10\" RH\". A 1 turn in 10 inch twist = 10 x 25.4 = 254.0 mm per turn, right hand."
+    },
+    {
+      "weapon_id": "m24",
+      "name": "M24 Sniper Rifle",
+      "manufacturer": "Remington",
+      "cartridge": "7.62\u00d751mm NATO",
+      "barrel_mm": null,
+      "twist_mm": 285.75,
+      "grooves": null,
+      "source_id": "remington_m24",
+      "source_note": "Remington Military M24 product page, specification table: \"Barrel 24\", 416R Stainless Steel, 5R, 1:11.25 Twist\". A 1 turn in 11.25 inch twist = 11.25 x 25.4 = 285.75 mm per turn."
+    },
+    {
+      "weapon_id": "1911a1",
+      "name": "1911-A1 classic GI-spec 1911A1 reproduction, parkerized",
+      "manufacturer": "Rock Island Armory",
+      "cartridge": ".45 ACP",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": 6,
+      "source_id": "armscor_1911_manual",
+      "source_note": "Armscor/Rock Island Armory 1911 A1/A2 owner's manual, technical specifications table (covers the full-size 1911A1 model): \"Rifling Twist ... Right hand, 1 turn in 400mm\" and \"No. Of Grooves 6\". Armscor prints 400 mm, the metric rounding of 1 turn in 16 inches = 16 x 25.4 = 406.4 mm per turn, right hand."
+    },
+    {
+      "weapon_id": "compact",
+      "name": "Compact officer-size 1911, 3.5\" barrel, 7-round magazine",
+      "manufacturer": "Rock Island Armory",
+      "cartridge": ".45 ACP",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": 6,
+      "source_id": "armscor_1911_manual",
+      "source_note": "Armscor/Rock Island Armory 1911 A1/A2 owner's manual, technical specifications table (covers the compact CS1911A1 model): \"Rifling Twist ... Right hand, 1 turn in 400mm\" and \"No. Of Grooves 6\". Armscor prints 400 mm, the metric rounding of 1 turn in 16 inches = 16 x 25.4 = 406.4 mm per turn, right hand."
+    },
+    {
+      "weapon_id": "gistandardfs",
+      "name": "GI Standard FS full-size 1911A1 GI-spec reproduction, 5\" barrel",
+      "manufacturer": "Rock Island Armory",
+      "cartridge": ".45 ACP",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": 6,
+      "source_id": "armscor_1911_manual",
+      "source_note": "Armscor/Rock Island Armory 1911 A1/A2 owner's manual, technical specifications table (covers the FS/GI Standard full-size model): \"Rifling Twist ... Right hand, 1 turn in 400mm\" and \"No. Of Grooves 6\". Armscor prints 400 mm, the metric rounding of 1 turn in 16 inches = 16 x 25.4 = 406.4 mm per turn, right hand."
+    },
+    {
+      "weapon_id": "m200",
+      "name": "M200 service revolver, 6-shot, 4\" barrel, fixed sights",
+      "manufacturer": "Rock Island Armory",
+      "cartridge": ".38 Special",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": 6,
+      "source_id": "armscor_revolver_manual",
+      "source_note": "Armscor/Rock Island Armory revolver owner's manual, specification table: \"Rifling Twist  Right Hand Twist, 1 Turn in 400mm (16\")\" and \"No. of Grooves  6\". Armscor equates its 400 mm figure to 1 turn in 16 inches = 16 x 25.4 = 406.4 mm per turn, right hand."
+    }
+  ]
+}

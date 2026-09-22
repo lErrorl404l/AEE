@@ -1,0 +1,120 @@
+{
+  "retrieved": "2026-09-22",
+  "sources": [
+    {
+      "source_id": "sig_mcx_spear",
+      "title": "SIG SAUER MCX-SPEAR product page (archived 25 Dec 2024)",
+      "url": "https://web.archive.org/web/20241225111343/https://www.sigsauer.com/spear.html"
+    },
+    {
+      "source_id": "tikka_t3x_manual",
+      "title": "Tikka T1x/T3x Instruction Manual v5.3, Sako Ltd (Technical Specification, Caliber / Rate of twist)",
+      "url": "https://media.sako.global/image/upload/v1691658741/Tikka_T1x_T3x_Instruction_Manual_v5.3_cjggnu.pdf",
+      "sha256": "23071369c091412ecf0586b3ce2ae5b0f8b2472a4f49e46de6dd2e5fba3be285"
+    },
+    {
+      "source_id": "sadj_vintorez",
+      "title": "The Elusive Vintorez 9x39 Sniper Rifle, Small Arms Defense Journal",
+      "url": "https://sadefensejournal.com/the-elusive-vintorez-9x39-sniper-rifle/"
+    },
+    {
+      "source_id": "shootingillustrated_handgun_rifling",
+      "title": "Handgun Rifling: Bullet Weights & Barrel Twists, Shooting Illustrated (NRA)",
+      "url": "https://www.shootingillustrated.com/content/handgun-rifling-bullet-weights-barrel-twists/"
+    },
+    {
+      "source_id": "ssusa_sti_dvc",
+      "title": "Review: STI DVC Steel 9 mm, Shooting Sports USA (NRA)",
+      "url": "https://www.ssusa.org/content/review-sti-dvc-steel-9-mm/"
+    },
+    {
+      "source_id": "americanrifleman_staccato_p",
+      "title": "Review: Staccato 2011 P Optic Ready, American Rifleman (NRA)",
+      "url": "https://www.americanrifleman.org/content/review-staccato-2011-p-optic-ready/"
+    },
+    {
+      "source_id": "ssusa_staccato_xl",
+      "title": "Staccato XL Competition 2011, Shooting Sports USA (NRA)",
+      "url": "https://www.ssusa.org/content/staccato-xl-competition-2011/"
+    }
+  ],
+  "weapons": [
+    {
+      "weapon_id": "mcxspearlt",
+      "name": "MCX Spear LT commercial .308 lightweight",
+      "manufacturer": "Sig Sauer",
+      "cartridge": "7.62×51mm NATO",
+      "barrel_mm": null,
+      "twist_mm": 254.0,
+      "grooves": null,
+      "source_id": "sig_mcx_spear",
+      "source_note": "Maker spec table lists the 16 in 7.62x51 barrel row as: \"7.62x51 16 in [406.4 mm] Cold Hammer Forged Steel 1:10\". States a 1:10 in twist = 254.0 mm for the .308/7.62x51 MCX-SPEAR. Note: SIG's MCX-SPEAR-LT line is catalogued in 5.56, 7.62x39 and .300 BLK; the 7.62x51 chambering is the MCX-SPEAR, so the .308 twist is taken from that maker row."
+    },
+    {
+      "weapon_id": "t3xgame308",
+      "name": "T3x Game .308 Bolt-action",
+      "manufacturer": "Tikka",
+      "cartridge": ".308 Winchester",
+      "barrel_mm": null,
+      "twist_mm": 279.4,
+      "grooves": 4,
+      "source_id": "tikka_t3x_manual",
+      "source_note": "Sako Ltd manual, \"Caliber / Rate of twist [in] / Number of grooves\" table: \"308 Win..........................11”. . 4\". States 1 turn in 11 in (4 grooves) = 279.4 mm for T3x in .308 Win."
+    },
+    {
+      "weapon_id": "vssvintorez",
+      "name": "VSS Vintorez Sniper Rifle",
+      "manufacturer": "TsKIB SOO",
+      "cartridge": "9×39mm",
+      "barrel_mm": null,
+      "twist_mm": 210.0,
+      "grooves": null,
+      "source_id": "sadj_vintorez",
+      "source_note": "\"The twist rate is 1:210 mm (1:8.3 inches).\" States a 1 turn in 210 mm twist for the VSS/Vintorez 9x39 barrel."
+    },
+    {
+      "weapon_id": "model627",
+      "name": "Model 627 8-shot stainless N-frame, 5\" barrel, unfluted cylinder",
+      "manufacturer": "Smith & Wesson",
+      "cartridge": ".357 Magnum",
+      "barrel_mm": null,
+      "twist_mm": 476.25,
+      "grooves": null,
+      "source_id": "shootingillustrated_handgun_rifling",
+      "source_note": "NRA Shooting Illustrated states: \"Smith & Wesson took a page out of its .38 Spl./.357 Mag. revolver book and rifled its 9 mm pistols with a 1:18.75-inch twist rate\" and \"the 1:18.75-inch twist rate of Smith & Wesson revolvers\". Gives the S&W .38 Spl/.357 Mag revolver twist as 1 turn in 18.75 in = 476.25 mm. No S&W catalogue/manual publishing revolver twist was found."
+    },
+    {
+      "weapon_id": "dvc",
+      "name": "Dvc semi-auto",
+      "manufacturer": "STI",
+      "cartridge": "9×19mm Parabellum",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": null,
+      "source_id": "ssusa_sti_dvc",
+      "source_note": "NRA Shooting Sports USA: \"The fully-ramped DVC Steel 9 mm and .38 Super barrels are a 1:16 right hand twist.\" States 1 turn in 16 in = 406.4 mm for the STI DVC Steel 9 mm. STI is defunct; no archived STI catalogue was reachable (Internet Archive CDX/Wayback was offline at retrieval)."
+    },
+    {
+      "weapon_id": "staccatop",
+      "name": "Staccato P semi-auto",
+      "manufacturer": "STI",
+      "cartridge": "9×19mm Parabellum",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": null,
+      "source_id": "americanrifleman_staccato_p",
+      "source_note": "NRA American Rifleman specification line: \"Barrel: 4.4” Bull 1:16\" twist.\" States the Staccato 2011 P 4.4 in bull barrel has a 1:16 in twist = 406.4 mm."
+    },
+    {
+      "weapon_id": "staccatoxl",
+      "name": "Staccato Xl semi-auto",
+      "manufacturer": "STI",
+      "cartridge": "9×19mm Parabellum",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": null,
+      "source_id": "ssusa_staccato_xl",
+      "source_note": "NRA Shooting Sports USA: \"The stainless-steel barrel is 5.4 inches with a 1:16-inch twist\". States the Staccato XL barrel has a 1:16 in twist = 406.4 mm."
+    }
+  ]
+}

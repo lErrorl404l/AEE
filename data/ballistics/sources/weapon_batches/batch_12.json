@@ -1,0 +1,218 @@
+{
+ "retrieved": "2026-09-22",
+ "sources": [
+  {
+   "source_id": "ruger_security380",
+   "title": "Ruger Security-380 Centerfire Pistol, Model 3839 - manufacturer specification sheet",
+   "url": "https://ruger.com/products/security380/specSheets/3839.html"
+  },
+  {
+   "source_id": "sako85_finnlight",
+   "title": "Sako 85 Finnlight - specification sheet (Sako Ltd.)",
+   "url": "https://media.sako.global/image/upload/v1683876514/SAKO_85_FINNLIGHT_k9z3uk.pdf",
+   "sha256": "fae1064d2ad8e83b48103957f01fb18a4979d8c0a6a020da9627401a46d3dc79"
+  },
+  {
+   "source_id": "sako85_blackbear",
+   "title": "Sako 85 Black Bear - specification sheet (Sako Ltd.)",
+   "url": "https://media.sako.global/image/upload/v1683879179/85_Black_Bear_ovmgsa.pdf",
+   "sha256": "23feefc53f936ea04fb10dbd324ab0ff8949eb41750be20996b34bd6f74ebbbd"
+  },
+  {
+   "source_id": "sako_trg22_manual",
+   "title": "Sako TRG 22/42 Owner's Manual (Sako Ltd., document S3511010/5)",
+   "url": "https://media.sako.global/image/upload/v1691734322/TGR-2242_owner_s_manual_p8zzps.pdf",
+   "sha256": "b1e694dc3401e5c07413ed98b3a892b8dfe63cc72e63676b74dd2b0b984908bf"
+  },
+  {
+   "source_id": "sako_s20_hunter",
+   "title": "Sako S20 Hunter - official product page, configuration table",
+   "url": "https://www.sako.global/rifle/sako-s20-hunter"
+  },
+  {
+   "source_id": "sako_s20_precision",
+   "title": "Sako S20 Precision - official product page, configuration table",
+   "url": "https://www.sako.global/rifle/sako-s20-precision"
+  },
+  {
+   "source_id": "sako_100_explorer",
+   "title": "Sako 100 Explorer - official product page, configuration table",
+   "url": "https://www.sako.global/rifle/sako-100-explorer"
+  },
+  {
+   "source_id": "savage_110scoutv2",
+   "title": "Savage 110 Scout V2, 5.56x45mm NATO (SKU 32982) - manufacturer specifications",
+   "url": "https://savagearms.com/firearms/sku/32982"
+  },
+  {
+   "source_id": "savage_110trailhunter",
+   "title": "Savage 110 Trail Hunter, 308 Win (SKU 58034) - manufacturer specifications",
+   "url": "https://savagearms.com/firearms/sku/58034"
+  },
+  {
+   "source_id": "savage_impulse_chp",
+   "title": "Savage Impulse Core Hunter Pro, 22 Creedmoor (SKU 32921) - manufacturer specifications",
+   "url": "https://savagearms.com/firearms/sku/32921"
+  },
+  {
+   "source_id": "sig_cross",
+   "title": "SIG Sauer CROSS Rifle - manufacturer product page (archived 2026-09-03, Internet Archive)",
+   "url": "http://web.archive.org/web/20260903080555id_/https://www.sigsauer.com/sig-cross-rifle.html"
+  },
+  {
+   "source_id": "weaponsystems_nsv",
+   "title": "NSV Utes - Weaponsystems.net system database",
+   "url": "https://weaponsystems.net/system/954-BB03%20-%20NSV"
+  },
+  {
+   "source_id": "gunspec_kord",
+   "title": "Kord 6P50 - V.A. Degtyarev Plant Machine Gun Specifications, GunSpec.io",
+   "url": "https://gunspec.io/en/firearms/kord-machine-gun"
+  }
+ ],
+ "weapons": [
+  {
+   "weapon_id": "security380",
+   "name": "Security-380 .380 Auto",
+   "manufacturer": "Ruger",
+   "cartridge": ".380 Automatic",
+   "barrel_mm": null,
+   "twist_mm": 254.0,
+   "grooves": 6,
+   "source_id": "ruger_security380",
+   "source_note": "Ruger model 3839 specification sheet: \"Caliber: 380 Auto\", \"Grooves 6\", \"Twist 1:10\\\" RH\". States a six-groove right-hand 1 turn in 10 inch twist = 254.0 mm per turn."
+  },
+  {
+   "weapon_id": "kord",
+   "name": "KORD Heavy Machine Gun",
+   "manufacturer": "Russian Federation",
+   "cartridge": "12.7×108mm",
+   "barrel_mm": null,
+   "twist_mm": 381.0,
+   "grooves": 8,
+   "source_id": "gunspec_kord",
+   "source_note": "GunSpec.io entry for the Kord 6P50 (V.A. Degtyarev Plant): \"Barrel Rifling Right Hand Rifling Twist 381 mm (15.00\\\")\" and \"Number of Grooves 8\". States an eight-groove right-hand twist of 381 mm per turn (about 1 turn in 15 inches). The 6P49/6P50/6P51 operating manual confirms the barrel has eight grooves turning left to right, but does not print the pitch."
+  },
+  {
+   "weapon_id": "nsvutes",
+   "name": "NSV 'Utes' Heavy Machine Gun",
+   "manufacturer": "Russian Federation",
+   "cartridge": "12.7×108mm",
+   "barrel_mm": null,
+   "twist_mm": 381.0,
+   "grooves": 8,
+   "source_id": "weaponsystems_nsv",
+   "source_note": "Weaponsystems.net NSV entry, specification table: \"Rifling 8 grooves, 381 mm right hand twist\". States an eight-groove right-hand twist of 381 mm per turn (about 1 turn in 15 inches)."
+  },
+  {
+   "weapon_id": "100308",
+   "name": "100 .308 Bolt-action",
+   "manufacturer": "Sako",
+   "cartridge": ".308 Winchester",
+   "barrel_mm": null,
+   "twist_mm": 254.0,
+   "grooves": null,
+   "source_id": "sako_100_explorer",
+   "source_note": "Sako 100 Explorer configuration table: the .308 Win. columns of the RATE OF TWIST row read \"1:10\\\"\". States a 1 turn in 10 inch twist = 254.0 mm per turn."
+  },
+  {
+   "weapon_id": "85black308",
+   "name": "85 Black .308 Bolt-action",
+   "manufacturer": "Sako",
+   "cartridge": ".308 Winchester",
+   "barrel_mm": null,
+   "twist_mm": 279.4,
+   "grooves": null,
+   "source_id": "sako85_blackbear",
+   "source_note": "Sako 85 Black Bear specification sheet, \"ACTION SIZE / CALIBER / RATE OF TWIST\": \"S / 308 Win / 11\\\"\". States a 1 turn in 11 inch twist = 279.4 mm per turn for the .308 Win chambering. Sako's 85 Synthetic Black sheet gives the same .308 Win 11\\\" rate."
+  },
+  {
+   "weapon_id": "85finnlight308",
+   "name": "85 Finnlight .308 Bolt-action",
+   "manufacturer": "Sako",
+   "cartridge": ".308 Winchester",
+   "barrel_mm": null,
+   "twist_mm": 279.4,
+   "grooves": null,
+   "source_id": "sako85_finnlight",
+   "source_note": "Sako 85 Finnlight specification sheet, \"ACTION SIZE / CALIBER / RATE OF TWIST\": \"S / 308 Win / 11\\\"\". States a 1 turn in 11 inch twist = 279.4 mm per turn for the .308 Win chambering."
+  },
+  {
+   "weapon_id": "s20hunter308",
+   "name": "S20 Hunter .308 Bolt-action",
+   "manufacturer": "Sako",
+   "cartridge": ".308 Winchester",
+   "barrel_mm": null,
+   "twist_mm": 254.0,
+   "grooves": null,
+   "source_id": "sako_s20_hunter",
+   "source_note": "Sako S20 Hunter configuration table, CALIBER paired with RATE OF TWIST: \"308 Win.\" = \"1:10\\\"\". States a 1 turn in 10 inch twist = 254.0 mm per turn."
+  },
+  {
+   "weapon_id": "s20precision308",
+   "name": "S20 Precision .308 Bolt-action",
+   "manufacturer": "Sako",
+   "cartridge": ".308 Winchester",
+   "barrel_mm": null,
+   "twist_mm": 254.0,
+   "grooves": null,
+   "source_id": "sako_s20_precision",
+   "source_note": "Sako S20 Precision configuration table, row \"Caliber = Rate of twist\": \"308 Win. = 1:10\\\"\". States a 1 turn in 10 inch twist = 254.0 mm per turn."
+  },
+  {
+   "weapon_id": "trg22",
+   "name": "TRG-22 Sniper Rifle",
+   "manufacturer": "Sako",
+   "cartridge": "7.62×51mm NATO",
+   "barrel_mm": null,
+   "twist_mm": 279.4,
+   "grooves": null,
+   "source_id": "sako_trg22_manual",
+   "source_note": "Sako TRG 22/42 Owner's Manual, technical data table: \".308 Win ... Rate of twist and direction of rotation 280 mm (11\\\"), RH\". The manual gives the pitch as 11 inches (written 280 mm); 1 turn in 11 inches = 279.4 mm per turn. The TRG 22 A1 instruction manual gives the same .308 Win / 11\\\"."
+  },
+  {
+   "weapon_id": "110scoutv2",
+   "name": "110 Scout V2 5.56 NATO",
+   "manufacturer": "Savage",
+   "cartridge": "5.56×45mm NATO",
+   "barrel_mm": null,
+   "twist_mm": 177.8,
+   "grooves": null,
+   "source_id": "savage_110scoutv2",
+   "source_note": "Savage 110 Scout V2 (SKU 32982) specification table: \"Caliber 5.56x45mm NATO\" and \"Rate of Twist 1:7\\\"\". States a 1 turn in 7 inch twist = 177.8 mm per turn."
+  },
+  {
+   "weapon_id": "110trailhunter",
+   "name": "110 Trail Hunter .308 Winchester",
+   "manufacturer": "Savage",
+   "cartridge": ".308 Winchester",
+   "barrel_mm": null,
+   "twist_mm": 254.0,
+   "grooves": null,
+   "source_id": "savage_110trailhunter",
+   "source_note": "Savage 110 Trail Hunter, 308 Win (SKU 58034) specification table: \"Caliber 308 Win\" and \"Rate of Twist 1:10\\\"\". States a 1 turn in 10 inch twist = 254.0 mm per turn."
+  },
+  {
+   "weapon_id": "impulsecorehunterpro",
+   "name": "Impulse Core Hunter Pro 22 Creedmoor",
+   "manufacturer": "Savage",
+   "cartridge": "22 Creedmoor",
+   "barrel_mm": null,
+   "twist_mm": 203.2,
+   "grooves": null,
+   "source_id": "savage_impulse_chp",
+   "source_note": "Savage Impulse Core Hunter Pro, 22 Creedmoor (SKU 32921) specification table: \"Caliber 22 Creedmoor\" and \"Rate of Twist 1:8\\\"\". States a 1 turn in 8 inch twist = 203.2 mm per turn."
+  },
+  {
+   "weapon_id": "cross",
+   "name": "CROSS .308 Winchester",
+   "manufacturer": "SIG Sauer",
+   "cartridge": ".308 Winchester",
+   "barrel_mm": null,
+   "twist_mm": 254.0,
+   "grooves": null,
+   "source_id": "sig_cross",
+   "source_note": "Archived SIG Sauer CROSS product page, SKU comparison table row CROSS-308-16B: \"308 Win\", \"16 in [406.4 mm]\", \"TWIST RATE 1:10\". States a 1 turn in 10 inch twist = 254.0 mm per turn for the .308 Win 16 inch barrel."
+  }
+ ]
+}

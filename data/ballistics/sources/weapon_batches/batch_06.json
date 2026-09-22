@@ -1,0 +1,157 @@
+{
+  "retrieved": "2026-09-22",
+  "sources": [
+    {
+      "source_id": "hk_mark23_manual",
+      "title": "Heckler & Koch Mark 23 Operator's Manual (.45 ACP, covers Mark 23 and MK23 Mod 0)",
+      "url": "https://hk-usa.com/wp-content/uploads/2025/01/Mark-23-Operators-Manual.pdf",
+      "sha256": "56072d25aa8ab6c69d1ca641713408bebef0658389fb354f02549fb9805d3f74"
+    },
+    {
+      "source_id": "hk_catalog_2009",
+      "title": "HK Product Catalog 2009 (Heckler & Koch; OCR text edition)",
+      "url": "https://archive.org/download/hk-product-catalog-2009/HK%20Product%20Catalog%20-%202009_text.pdf",
+      "sha256": "00c38bfc4fd0e65803752e192d4897532ed06929f7b018153e227765128779cb"
+    },
+    {
+      "source_id": "hipoint_carbine_manual",
+      "title": "Hi-Point Firearms Carbine Instruction Manual (Models 3895/995/4095/4595/1095)",
+      "url": "https://www.hi-pointfirearms.com/hi-point-resources/Carbine-Instruction-Manual.pdf",
+      "sha256": "57b2f832a7795d54ae9189e3472a231c8d5633f5e8d56c462122e4ebeb5f1e00"
+    },
+    {
+      "source_id": "svd_tm_or15",
+      "title": "TM 8370-50097-OR/15, Sniper Rifle 7.62 x 54R mm Dragunov SVD Operator's Manual (2010)",
+      "url": "https://archive.org/download/tm-8370-50097-or-15-sniper-rifle-7.62-x-54-r-mm-dragunov-svd-operators-manual-2010/TM8370-50097-OR-15_Sniper_rifle_7.62_x_54R_mm_Dragunov_SVD_operators_manual_2010.pdf",
+      "sha256": "d50425c9da394c44d7604079a66873c25fb2e79e5947b32ad384ebd133f99fd7"
+    },
+    {
+      "source_id": "keltec_cp33_manual",
+      "title": "KelTec CP33 Owner's Manual",
+      "url": "https://www.keltecweapons.com/wp-content/uploads/2025/12/CP33_MANUAL_COMPLETE.pdf",
+      "sha256": "a7d34d9064be1c24b308e27e94923f2c46db95d7e5ee64872b44a1f366183d28"
+    },
+    {
+      "source_id": "keltec_p17_manual",
+      "title": "KelTec P17 Owner's Manual",
+      "url": "https://www.keltecweapons.com/wp-content/uploads/2022/01/P17-MANUAL-OPT.pdf",
+      "sha256": "f142331fba277cbe4437dad23c94a2c172bc5da7febe2e04cc667eb40b2f92a9"
+    },
+    {
+      "source_id": "henry_h6_bigboy",
+      "title": "Henry Repeating Arms - H6 Big Boy Rifle & Carbine product page",
+      "url": "https://www.henryusa.com/rifles/big-boy/"
+    },
+    {
+      "source_id": "henry_h1_classic",
+      "title": "Henry Repeating Arms - H1 Classic Rifle & Carbine product page",
+      "url": "https://www.henryusa.com/rifles/lever-action-22-rifle/"
+    },
+    {
+      "source_id": "henry_xmodel",
+      "title": "Henry Repeating Arms - H12 X Model product page",
+      "url": "https://www.henryusa.com/rifles/big-boy-x-model/"
+    }
+  ],
+  "weapons": [
+    {
+      "weapon_id": "mk23",
+      "name": "Mk23 Pistol",
+      "manufacturer": "Heckler & Koch",
+      "cartridge": ".45 ACP",
+      "barrel_mm": null,
+      "twist_mm": 378.0,
+      "grooves": null,
+      "source_id": "hk_mark23_manual",
+      "source_note": "HK Mark 23 Operator's Manual, specification table: \"Twist Length\" \"378 mm (14.88 in.)\". HK states the .45 ACP Mark 23 barrel twist directly in millimetres as 378 mm per turn."
+    },
+    {
+      "weapon_id": "mp7",
+      "name": "MP7 Submachine Gun",
+      "manufacturer": "Heckler & Koch",
+      "cartridge": "4.6\u00d730mm",
+      "barrel_mm": null,
+      "twist_mm": 160.0,
+      "grooves": null,
+      "source_id": "hk_catalog_2009",
+      "source_note": "HK Product Catalog 2009, MP7A1 description: \"7-inch cold-hammer forged barrel with right hand twist rifling (1 turn in 6.3 inches)\". A 1 turn in 6.3 inch twist = 6.3 x 25.4 = 160.0 mm per turn."
+    },
+    {
+      "weapon_id": "bigboy44mag",
+      "name": "Big Boy .44 Mag lever action, 20\" octagonal barrel",
+      "manufacturer": "Henry",
+      "cartridge": ".44 Magnum",
+      "barrel_mm": null,
+      "twist_mm": 508.0,
+      "grooves": null,
+      "source_id": "henry_h6_bigboy",
+      "source_note": "Henry H6 Big Boy product page, model H006G \"H6 Big Boy Rifle .44 Magnum/.44 Spl\": \"Barrel Length 20\" ... Rate of Twist 1:20\". A 1 turn in 20 inch twist = 20 x 25.4 = 508.0 mm per turn."
+    },
+    {
+      "weapon_id": "h00122lr",
+      "name": "H001 .22 LR classic lever action, 18.5\" barrel",
+      "manufacturer": "Henry",
+      "cartridge": ".22 Long Rifle",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": null,
+      "source_id": "henry_h1_classic",
+      "source_note": "Henry H1 Classic product page, model H001-22 \"H1 Classic Rifle .22 S/L/LR\": \"Barrel Length 18.5\" ... Rate of Twist 1:16\". A 1 turn in 16 inch twist = 16 x 25.4 = 406.4 mm per turn."
+    },
+    {
+      "weapon_id": "xmodel44mag",
+      "name": "X Model .44 Mag black synthetic lever, 17.4\" barrel, M-Lok forend",
+      "manufacturer": "Henry",
+      "cartridge": ".44 Magnum",
+      "barrel_mm": null,
+      "twist_mm": 508.0,
+      "grooves": null,
+      "source_id": "henry_xmodel",
+      "source_note": "Henry X Model product page, model H012X \"H12 X Model .44 Magnum/.44 Spl\": \"Barrel Length 17.4\" ... Rate of Twist 1:20\". A 1 turn in 20 inch twist = 20 x 25.4 = 508.0 mm per turn."
+    },
+    {
+      "weapon_id": "4095",
+      "name": "4095 blowback",
+      "manufacturer": "Hi-Point",
+      "cartridge": ".40 Smith & Wesson",
+      "barrel_mm": null,
+      "twist_mm": 254.0,
+      "grooves": 7,
+      "source_id": "hipoint_carbine_manual",
+      "source_note": "Hi-Point Carbine Instruction Manual, Model 4095 specification block: \"Caliber: .40 S&W ... Rifling: 7RH(1in10\" Twist)\". States a 7-groove right-hand 1 turn in 10 inch twist = 10 x 25.4 = 254.0 mm per turn."
+    },
+    {
+      "weapon_id": "svddragunov",
+      "name": "SVD Dragunov Sniper Rifle",
+      "manufacturer": "Izhmash",
+      "cartridge": "7.62\u00d754mmR",
+      "barrel_mm": null,
+      "twist_mm": 254.0,
+      "grooves": null,
+      "source_id": "svd_tm_or15",
+      "source_note": "TM 8370-50097-OR/15, \"Table 1. SVD Sniper Rifle Characteristics\": \"Rifling  1 turn in 10 inches, right-hand twist\". A 1 turn in 10 inch twist = 10 x 25.4 = 254.0 mm per turn."
+    },
+    {
+      "weapon_id": "cp33",
+      "name": "CP33 Semi-auto Pistol",
+      "manufacturer": "Kel-Tec",
+      "cartridge": ".22 Long Rifle",
+      "barrel_mm": null,
+      "twist_mm": 355.6,
+      "grooves": null,
+      "source_id": "keltec_cp33_manual",
+      "source_note": "KelTec CP33 Owner's Manual, specifications table: \"Rifling  1 in 14 in   1 in 356 mm\". KelTec states the .22 LR CP33 twist as 1 turn in 14 inches (= 355.6 mm)."
+    },
+    {
+      "weapon_id": "p17",
+      "name": "P17 Semi-auto Pistol",
+      "manufacturer": "Kel-Tec",
+      "cartridge": ".22 Long Rifle",
+      "barrel_mm": null,
+      "twist_mm": 355.6,
+      "grooves": null,
+      "source_id": "keltec_p17_manual",
+      "source_note": "KelTec P17 Owner's Manual, specifications table: \"Rifling  1 in 14 in   1 in 356 mm\". KelTec states the .22 LR P17 twist as 1 turn in 14 inches (= 355.6 mm)."
+    }
+  ]
+}

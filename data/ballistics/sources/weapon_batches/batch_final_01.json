@@ -1,0 +1,56 @@
+{
+  "retrieved": "2026-09-22",
+  "sources": [
+    {
+      "source_id": "ai_aw_brochure_2010",
+      "title": "Accuracy International AW Series brochure (Arctic Warfare system configurator), 2010",
+      "url": "https://web.archive.org/web/20100331050126/http://www.accuracyinternational.com/assets/assets/aw_brochure.pdf",
+      "sha256": "a16632cd87e7b86c88af4fc087b23a8cc883ff309a2e7fb77110cc130f350908"
+    },
+    {
+      "source_id": "henry_ar7_spec",
+      "title": "Henry Repeating Arms - H2 U.S. Survival Rifle (.22 LR) specifications",
+      "url": "https://www.henryusa.com/rifles/u-s-survival-ar-7/"
+    },
+    {
+      "source_id": "blackstone_cc45",
+      "title": "Blackstone Shooting - Colt Combat Commander, .45 ACP, 4.25\" Barrel, 8 Rds, Stainless Steel (product listing quoting the factory specification)",
+      "url": "https://blackstoneshooting.com/colt-combat-commander-45-acp-4-25-barrel-8-rds-stainless-steel-151550026808/"
+    }
+  ],
+  "weapons": [
+    {
+      "weapon_id": "aws",
+      "name": "AWS .308 Winchester subsonic",
+      "manufacturer": "Accuracy International",
+      "cartridge": ".308 Winchester",
+      "barrel_mm": null,
+      "twist_mm": 228.6,
+      "grooves": 4,
+      "source_id": "ai_aw_brochure_2010",
+      "source_note": "Accuracy International's own AW system configurator lists: '.308 Suppressed* 16\" 1 in 9 N/A 4 No 2560' with footnote '*The Suppressed unit consists of a 16\" barrel housed in a suppressor of 28\" overall length. It is designed to shoot both subsonic and full power ammunition.' This is the maker's figure for the suppressed .308 AW (AWS) barrel: 1 turn in 9 inches (228.6 mm), 4 grooves. Note the standard .308 AW barrel is listed separately as 1 in 12."
+    },
+    {
+      "weapon_id": "ar7",
+      "name": "AR-7 Semi-auto Survival Rifle",
+      "manufacturer": "ArmaLite",
+      "cartridge": ".22 Long Rifle",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": null,
+      "source_id": "henry_ar7_spec",
+      "source_note": "Henry Repeating Arms (the current manufacturer of the AR-7 design, sold as the H2 U.S. Survival Rifle) spec table states: 'Rate of Twist 1:16' for all .22 LR models (H002B/H002C/H002VWP). 1 turn in 16 inches = 406.4 mm."
+    },
+    {
+      "weapon_id": "combatcommander",
+      "name": "Colt Combat Commander 4.25\" .45 ACP",
+      "manufacturer": "Colt",
+      "cartridge": ".45 ACP",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": 6,
+      "source_id": "blackstone_cc45",
+      "source_note": "Dealer product listing for the exact model, quoting the factory description: 'Colt presents the CLT Combat Commander 45ACP 4.25 SS ... a robust .45 ACP caliber, and a 4.25-inch steel barrel with 1:16 left hand twist and 6 groove rifling.' 1 turn in 16 inches = 406.4 mm. Colt does not publish twist on colt.com, so this is a dealer listing of the factory specification, corroborated by the standard 1911 .45 ACP rate (1:16 LH)."
+    }
+  ]
+}

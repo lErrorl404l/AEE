@@ -1,0 +1,207 @@
+{
+  "retrieved": "2026-09-22",
+  "sources": [
+    {
+      "source_id": "springfield_m1a_loaded_308",
+      "title": "Springfield Armory: M1A Loaded .308 Rifle product page (specification table)",
+      "url": "https://www.springfield-armory.com/m1a-series-rifles/m1a-loaded-rifles/m1a-loaded-308-rifle/"
+    },
+    {
+      "source_id": "springfield_saint_edge_556",
+      "title": "Springfield Armory: SAINT Edge 5.56 AR-15 Rifle product page (specification table)",
+      "url": "https://www.springfield-armory.com/ar-series/saint-edge-ar-15-rifles/saint-edge-556-ar-15-rifle/"
+    },
+    {
+      "source_id": "steyr_aug_sa",
+      "title": "Steyr Arms: AUG SA sporting rifle product page (AUG SA ARMY, AUG A3 SA variants)",
+      "url": "https://www.steyr-arms.com/en/sporting-rifles/aug-sa/"
+    },
+    {
+      "source_id": "stoeger_cougar_manual",
+      "title": "Stoeger Cougar pistol owner's manual (Beretta Cougar 8000 series brochure, Beretta Pubblicità C 60351.001, hosted by Stoeger Industries)",
+      "url": "https://web.archive.org/web/20170629223432id_/http://www.stoegerindustries.com/sites/default/files/originals/product-manuals/cougar_pistol.pdf",
+      "sha256": "14c0f475b9d5d8ed9beba89554a7b10fb9364ff842e34420292f288dc5ecc329"
+    },
+    {
+      "source_id": "ruger_lcr_5450",
+      "title": "Sturm, Ruger & Co.: LCR Double-Action Revolver Model 5450 (.357 Mag) spec sheet",
+      "url": "https://ruger.com/products/lcr/specSheets/5450.html"
+    },
+    {
+      "source_id": "ruger_redhawk_5059",
+      "title": "Sturm, Ruger & Co.: Redhawk Double-Action Revolver Model 5059 (.357 Mag, 4.20 in) spec sheet",
+      "url": "https://ruger.com/products/redhawk/specSheets/5059.html"
+    },
+    {
+      "source_id": "ruger_1022_takedown_32010",
+      "title": "Sturm, Ruger & Co.: 10/22 Takedown Model 32010 (18.50 in barrel) spec sheet",
+      "url": "https://ruger.com/products/1022Standard/specSheets/32010.html"
+    },
+    {
+      "source_id": "ruger_1022_tactical_31184",
+      "title": "Sturm, Ruger & Co.: 10/22 Tactical Model 31184 (16.12 in threaded barrel, flash suppressor) spec sheet, archived",
+      "url": "https://web.archive.org/web/20240304191824id_/https://ruger.com/products/1022Tactical/specSheets/31184.html"
+    },
+    {
+      "source_id": "ruger_22charger_4901",
+      "title": "Sturm, Ruger & Co.: 22 Charger Rimfire Pistol Model 4901 (CHR22-10, 10.00 in barrel) spec sheet, archived 2009",
+      "url": "https://web.archive.org/web/20091125152442id_/http://www.ruger.com/products/22Charger/specSheets/4901.html"
+    },
+    {
+      "source_id": "ruger_american_predator_26918",
+      "title": "Sturm, Ruger & Co.: Ruger American Rifle Predator Model 26918 (.308 Win, 22 in barrel) spec sheet, archived 2019",
+      "url": "https://web.archive.org/web/20190720014945id_/https://ruger.com/products/americanRiflePredator/specSheets/26918.html"
+    },
+    {
+      "source_id": "sti_2009_catalog",
+      "title": "STI International product catalog 2009 (STI_Catalog_2009.pdf), BARRELS section",
+      "url": "https://web.archive.org/web/20090419030926id_/http://stiguns.com/catalog/STI_Catalog_2009.pdf",
+      "sha256": "125408868416cac661b6acbb3335a10247d4bcc60e3e2a05cc7500fbaad9d00e"
+    }
+  ],
+  "weapons": [
+    {
+      "weapon_id": "m1a",
+      "name": "M1A Loaded",
+      "manufacturer": "Springfield Armory",
+      "cartridge": ".308 Winchester",
+      "barrel_mm": null,
+      "twist_mm": 279.4,
+      "grooves": 6,
+      "source_id": "springfield_m1a_loaded_308",
+      "source_note": "Specification table: 'Barrel | 22\" NM Medium Weight, 6-Groove Carbon Steel, 1:11'. Product text: 'a National Match tuned 4.5-lb. competition trigger, 22\" 1:11\"-twist premium barrel'. 1 turn in 11 in = 279.4 mm, 6 grooves."
+    },
+    {
+      "weapon_id": "saintedge",
+      "name": "SAINT Edge 5.56 NATO",
+      "manufacturer": "Springfield Armory",
+      "cartridge": "5.56×45mm NATO",
+      "barrel_mm": null,
+      "twist_mm": 203.2,
+      "grooves": null,
+      "source_id": "springfield_saint_edge_556",
+      "source_note": "Specification table: 'Barrel | 16\" LW Profile CMV, Melonite®, 1:8'. Product text: 'A premium 16\" 1:8\"-twist Melonite®-coated barrel stabilizes a wide variety of bullet weights.' 1 turn in 8 in = 203.2 mm. Groove count not stated."
+    },
+    {
+      "weapon_id": "aug",
+      "name": "AUG Assault Rifle",
+      "manufacturer": "Steyr",
+      "cartridge": "5.56×45mm NATO",
+      "barrel_mm": null,
+      "twist_mm": 228.6,
+      "grooves": null,
+      "source_id": "steyr_aug_sa",
+      "source_note": "Manufacturer text on the AUG SA page (which covers AUG SA ARMY and AUG A3 SA variants): 'The cold hammer forged and hard chrome plated barrel with a twist rate 1 in 9” guarantees high reliability.' 1 turn in 9 in = 228.6 mm. Steyr Arms USA lists a separate 14.5 in accessory barrel at 1:7 and 9x19 mm kits at 1:10; the standard 5.56x45 mm AUG barrel is 1 in 9."
+    },
+    {
+      "weapon_id": "auga3",
+      "name": "AUG A3 Assault Rifle",
+      "manufacturer": "Steyr",
+      "cartridge": "5.56×45mm NATO",
+      "barrel_mm": null,
+      "twist_mm": 228.6,
+      "grooves": null,
+      "source_id": "steyr_aug_sa",
+      "source_note": "Same manufacturer statement on the AUG SA page, whose model list includes the AUG A3 SA SE and AUG A3 SA POLICE: 'The cold hammer forged and hard chrome plated barrel with a twist rate 1 in 9” guarantees high reliability.' 1 turn in 9 in = 228.6 mm."
+    },
+    {
+      "weapon_id": "edge",
+      "name": "Edge semi-auto",
+      "manufacturer": "STI",
+      "cartridge": ".40 Smith & Wesson",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": 6,
+      "source_id": "sti_2009_catalog",
+      "source_note": "STI manufacturer barrel specification in the BARRELS section: 'The rifling is 1 in 16 twist and has 6 lands and grooves.' The same section lists the barrel calibers as '.355, 9mm, .38 super, .400, .40 S&W, .450, .45 ACP', so the .40 S&W bull barrel used by the Edge (an STI 2011 double-stack, listed in this catalog) is 1 turn in 16 in = 406.4 mm, 6 lands and grooves."
+    },
+    {
+      "weapon_id": "cougar800040",
+      "name": "Cougar 8000 .40 Semi-auto Pistol",
+      "manufacturer": "Stoeger",
+      "cartridge": ".40 Smith & Wesson",
+      "barrel_mm": null,
+      "twist_mm": 400.0,
+      "grooves": 6,
+      "source_id": "stoeger_cougar_manual",
+      "source_note": "Stoeger-hosted Cougar manual, 'Rifling, Pitch: R.H., 6 grooves. Pitch: Caliber 9mmx19 (9 mm Parabellum) and 9mmx21IMI: 250 mm (9.8 in.). Caliber .40 S&W: 400 mm (15.7 in.). Caliber .45 ACP and .357 SIG: 406 mm (16 in.).' The .40 S&W value is 400 mm, right-hand, 6 grooves. The manufacturer's own metric figure is used, not a conversion of a rounded inch figure."
+    },
+    {
+      "weapon_id": "cougar800045",
+      "name": "Cougar 8000 .45 Semi-auto Pistol",
+      "manufacturer": "Stoeger",
+      "cartridge": ".45 ACP",
+      "barrel_mm": null,
+      "twist_mm": 406.0,
+      "grooves": 6,
+      "source_id": "stoeger_cougar_manual",
+      "source_note": "Stoeger-hosted Cougar manual, 'Rifling, Pitch: R.H., 6 grooves. Pitch: ... Caliber .45 ACP and .357 SIG: 406 mm (16 in.).' The .45 ACP value is 406 mm, right-hand, 6 grooves."
+    },
+    {
+      "weapon_id": "1022tactical",
+      "name": "10/22 Tactical 16.12\" threaded barrel, flash suppressor",
+      "manufacturer": "Sturm Ruger",
+      "cartridge": ".22 Long Rifle",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": 6,
+      "source_id": "ruger_1022_tactical_31184",
+      "source_note": "Manufacturer spec sheet for the 10/22 Tactical Model 31184: 'Model Number: 31184', 'Barrel Length 16.12\"', 'Thread Pattern 1/2\"-28', 'Twist 1:16\" RH', 'Grooves 6', and 'Threaded barrel with 1/2\"-28 thread pattern capped with Ruger® flash suppressor.' 1 turn in 16 in = 406.4 mm, 6 grooves."
+    },
+    {
+      "weapon_id": "1022takedown",
+      "name": "10/22 Takedown takedown carbine, 18.5\" barrel, backpack case",
+      "manufacturer": "Sturm Ruger",
+      "cartridge": ".22 Long Rifle",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": 6,
+      "source_id": "ruger_1022_takedown_32010",
+      "source_note": "Manufacturer spec sheet for the 10/22 Takedown Model 32010: 'Takedown Model', 'Model Number: 32010', 'Barrel Length 18.50\"', 'Twist 1:16\" RH', 'Grooves 6', with the description 'Easy takedown enables quick separation of the barrel from the action'. 1 turn in 16 in = 406.4 mm, 6 grooves."
+    },
+    {
+      "weapon_id": "22charger",
+      "name": "22 Charger pistol, 10\" heavy barrel, bipod, scope rail",
+      "manufacturer": "Sturm Ruger",
+      "cartridge": ".22 Long Rifle",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": 6,
+      "source_id": "ruger_22charger_4901",
+      "source_note": "Archived manufacturer spec sheet for the original 22 Charger Model 4901 (catalog number CHR22-10, the 10 in heavy-barrel Charger supplied with bipod and scope rail): 'Catalog Number: CHR22-10', 'Model Number: 4901', 'Caliber: .22 LR', 'Barrel Length: 10.00\"', 'Twist: 1:16\" RH', 'Grooves: 6'. 1 turn in 16 in = 406.4 mm, 6 grooves."
+    },
+    {
+      "weapon_id": "americanriflepredator",
+      "name": "American Rifle Predator 20\" heavy barrel, synthetic stock, .308",
+      "manufacturer": "Sturm Ruger",
+      "cartridge": ".308 Winchester",
+      "barrel_mm": null,
+      "twist_mm": 254.0,
+      "grooves": 5,
+      "source_id": "ruger_american_predator_26918",
+      "source_note": "Archived manufacturer spec sheet for the Ruger American Rifle Predator Model 26918: 'Caliber: 308 Win', 'Barrel Length 22\"', 'Twist 1:10\" RH', 'Grooves 5'. All .308 Win Predator models on the manufacturer spec pages (26918, 16954, 6974) state 1:10\" RH, so the .308 Win Predator twist is 1 turn in 10 in = 254.0 mm, 5 grooves. The worklist barrel length (20 in) differs from the manufacturer's 22 in for this model number, but the twist is stated for the .308 Win Predator."
+    },
+    {
+      "weapon_id": "lcr",
+      "name": "LCR .357 Mag, polymer frame, 1.87\" barrel",
+      "manufacturer": "Sturm Ruger",
+      "cartridge": ".357 Magnum",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": 6,
+      "source_id": "ruger_lcr_5450",
+      "source_note": "Manufacturer spec sheet for the LCR Model 5450 (.357 Mag, 1.87 in barrel): 'Model Number: 5450', 'Caliber: 357 Mag', 'Barrel Length 1.87\"', 'Twist 1:16\" RH', 'Grooves 6'. 1 turn in 16 in = 406.4 mm, 6 grooves."
+    },
+    {
+      "weapon_id": "redhawk",
+      "name": "Redhawk large-frame DA/SA, 4.2\" barrel",
+      "manufacturer": "Sturm Ruger",
+      "cartridge": ".357 Magnum",
+      "barrel_mm": null,
+      "twist_mm": 476.25,
+      "grooves": 5,
+      "source_id": "ruger_redhawk_5059",
+      "source_note": "Manufacturer spec sheet for the Redhawk Model 5059 (.357 Mag, 4.20 in barrel): 'Model Number: 5059', 'Caliber: 357 Mag', 'Barrel Length 4.20\"', 'Twist 1:18.75\" RH', 'Grooves 5'. 1 turn in 18.75 in = 476.25 mm, 5 grooves. The .44 Mag Redhawk models use 1:20; this .357 Mag model is 1:18.75."
+    }
+  ]
+}

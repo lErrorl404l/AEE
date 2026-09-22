@@ -1,0 +1,270 @@
+{
+  "retrieved": "2026-09-22",
+  "sources": [
+    {
+      "source_id": "marlin_336_dark_70902",
+      "title": "Marlin Firearms: Dark Series Model 336 (model 70902) product specification page",
+      "url": "https://www.marlinfirearms.com/s/model_70902/"
+    },
+    {
+      "source_id": "marlin_1894csbl_archived",
+      "title": "Marlin Firearms: Model 1894 CSBL product page, Internet Archive capture of 30 January 2018",
+      "url": "https://web.archive.org/web/20180130002928/https://www.marlinfirearms.com/lever-action/model-1894/model-1894-csbl"
+    },
+    {
+      "source_id": "marlin_70pss_archived",
+      "title": "Marlin Firearms: Model 70PSS Stainless (Papoose take-down) specification page, Internet Archive capture of 6 June 2010",
+      "url": "https://web.archive.org/web/20100606042403/http://www.marlinfirearms.com/firearms/selfloading/70pss.asp"
+    },
+    {
+      "source_id": "mcmillan_tac300",
+      "title": "McMillan Firearms: TAC-300 McMillan Tactical Rifle product page (specification list), Internet Archive capture of 6 October 2014",
+      "url": "https://web.archive.org/web/20141006232609/http://www.mcmillanfirearms.com/firearms/tac-300-mcmillan-tactical-rifle/"
+    },
+    {
+      "source_id": "mcmillan_tac308",
+      "title": "McMillan Firearms: TAC-308 McMillan Tactical Rifle product page (specification list), Internet Archive capture of 6 October 2014",
+      "url": "https://web.archive.org/web/20141006032340/http://www.mcmillanfirearms.com/firearms/tac-308-mcmillan-tactical-rifle"
+    },
+    {
+      "source_id": "mcmillan_tac338",
+      "title": "McMillan Firearms: TAC-338 McMillan Tactical Rifle product page (specification list), Internet Archive capture of 6 October 2014",
+      "url": "https://web.archive.org/web/20141006050823/http://www.mcmillanfirearms.com/firearms/tac-338-mcmillan-tactical-rifle"
+    },
+    {
+      "source_id": "noveske_diplomat",
+      "title": "Noveske Rifleworks: 7.94 Gen 4 Diplomat Pistol product page (specifications section)",
+      "url": "https://noveske.com/products/7-94-gen-4-diplomat-pistol"
+    },
+    {
+      "source_id": "noveske_ghetto_blaster",
+      "title": "Noveske Rifleworks: Quad Rail Ghetto Blaster 7.94 300BLK SBR product page, Internet Archive capture of 20 July 2025",
+      "url": "https://web.archive.org/web/20250720021702/https://noveske.com/products/quad-rail-ghetto-blaster-7-94-300blk-sbr/"
+    },
+    {
+      "source_id": "nemo_omen_watchman",
+      "title": "NEMO Arms: OMEN Watchman .300 Win Mag product page (specification table)",
+      "url": "https://nemoarms.com/product/omen-watchman/"
+    },
+    {
+      "source_id": "nemo_firearms_list",
+      "title": "NEMO Arms: All Firearms product list (complete current model list)",
+      "url": "https://nemoarms.com/all-firearms/"
+    },
+    {
+      "source_id": "chapuis_mr73",
+      "title": "Chapuis Armes: Revolver Manurhin MR73 - modeles et prix, technical specification table",
+      "url": "https://www.chapuis-armes.com/arme/mr73/"
+    },
+    {
+      "source_id": "naa_black_widow_product",
+      "title": "North American Arms: NAA-BWM .22 Magnum Black Widow product page",
+      "url": "https://www.northamericanarms.com/shop/naa-bwm/"
+    },
+    {
+      "source_id": "naa_ranger_ii_product",
+      "title": "North American Arms: NAA-22M-R .22 Magnum Ranger II product page",
+      "url": "https://www.northamericanarms.com/shop/naa-22m-btii/"
+    }
+  ],
+  "weapons": [
+    {
+      "weapon_id": "f1",
+      "name": "F1 police revolver, .357 Mag, 3\" barrel, fixed sights",
+      "manufacturer": "Manurhin",
+      "cartridge": ".357 Magnum",
+      "barrel_mm": null,
+      "twist_mm": null,
+      "grooves": null,
+      "source_id": "chapuis_mr73",
+      "source_note": "TWIST NOT STATED FOR THIS MODEL. The manufacturer's Manurhin revolver page lists the Manurhin range (MR73 Gendarmerie, MR73 Sport, MR 38 Match, MR 32 Match) and no F1 model appears on it or in a search of the manufacturer site. The Manurhin MR73 owner's manual and the printed Manurhin catalogue likewise give no F1 twist. The F1 could not be identified as a catalogued Chapuis/Manurhin model with a published twist, so the MR73 line value is deliberately not applied to it. The corpus lead (406 mm) is not copied."
+    },
+    {
+      "weapon_id": "mr73gendarmerie",
+      "name": "MR 73 Gendarmerie police revolver, .357 Mag, 4\" barrel",
+      "manufacturer": "Manurhin",
+      "cartridge": ".357 Magnum",
+      "barrel_mm": null,
+      "twist_mm": 476.0,
+      "grooves": 6,
+      "source_id": "chapuis_mr73",
+      "source_note": "Manufacturer specification table, column 'Pas de rayures', row 'MR73 Gendarmerie 4\"': '6 rayures / grooves RH twist at 1 turn in 476mm rate = 18¾\".' The manufacturer states 476 mm directly, so no inch conversion is needed. 6 grooves, right hand."
+    },
+    {
+      "weapon_id": "mr73gign",
+      "name": "MR 73 GIGN duty revolver, .357 Mag, 5.25\" barrel, GIGN issue",
+      "manufacturer": "Manurhin",
+      "cartridge": ".357 Magnum",
+      "barrel_mm": null,
+      "twist_mm": 476.0,
+      "grooves": 6,
+      "source_id": "chapuis_mr73",
+      "source_note": "The GIGN revolver is an MR 73 variant. The manufacturer specification table gives one twist for the whole MR 73 line, row 'MR73 Sport 5\" ¼' (the 5.25 inch barrel): '6 rayures / grooves RH twist at 1 turn in 476mm rate = 18¾\".' The same page states 'le G.I.G.N. et le R.A.I.D. ainsi que la Police Nationale française, avaient choisi le MR73 comme arme de dotation'. The table has no separate GIGN row, so the 476 mm figure is quoted from the MR 73 line, not from a GIGN-specific row."
+    },
+    {
+      "weapon_id": "mr73sport",
+      "name": "MR 73 Sport match revolver, .357 Mag, 6\" barrel, adjustable sights",
+      "manufacturer": "Manurhin",
+      "cartridge": ".357 Magnum",
+      "barrel_mm": null,
+      "twist_mm": 476.0,
+      "grooves": 6,
+      "source_id": "chapuis_mr73",
+      "source_note": "Manufacturer specification table, column 'Pas de rayures', row 'MR73 Sport 6\"': '6 rayures / grooves RH twist at 1 turn in 476mm rate = 18¾\".' 6 grooves, right hand."
+    },
+    {
+      "weapon_id": "mr73",
+      "name": "MR 73 Revolver",
+      "manufacturer": "Manurhin (Chapuis Armes)",
+      "cartridge": ".357 Magnum",
+      "barrel_mm": null,
+      "twist_mm": 476.0,
+      "grooves": 6,
+      "source_id": "chapuis_mr73",
+      "source_note": "Manufacturer product page for the MR 73. Every row of the 'Pas de rayures' column states '6 rayures / grooves RH twist at 1 turn in 476mm rate = 18¾\".' (rows MR73 Gendarmerie 3\"/4\", MR73 Sport 4\", 5\" ¼, Sport HB, 6\", 8\" and the MR 38 / MR 32 Match). The MR 73 line twist is therefore 476 mm, 6 grooves right hand. Note the manufacturer value differs from both the corpus lead (406 mm) and the standard value (457 mm) supplied in the worklist."
+    },
+    {
+      "weapon_id": "model1894csbl",
+      "name": "Model 1894 CSBL stainless .357 Mag, 16.5\" barrel, synthetic stock",
+      "manufacturer": "Marlin",
+      "cartridge": ".357 Magnum",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": null,
+      "source_id": "marlin_1894csbl_archived",
+      "source_note": "Manufacturer product page feature list: '16 1/2\" barrel 1:16\" twist rate'. 1 turn in 16 in = 406.4 mm. Groove count is not stated for this model."
+    },
+    {
+      "weapon_id": "model336darkseries",
+      "name": "Model 336 Dark Series black synthetic, 16.5\" barrel, M-Lok handguard",
+      "manufacturer": "Marlin",
+      "cartridge": ".30-30 Winchester",
+      "barrel_mm": null,
+      "twist_mm": 279.4,
+      "grooves": 6,
+      "source_id": "marlin_336_dark_70902",
+      "source_note": "Manufacturer specification table for model 70902, 'Caliber 30-30 Win': 'Twist | 1:11\" RH' and 'Grooves | 6'. 1 turn in 11 in = 279.4 mm. This differs from the corpus lead (305 mm, 1:12) and from the standard value (254 mm, 1:10)."
+    },
+    {
+      "weapon_id": "model70ppapoose",
+      "name": "Model 70P Papoose takedown .22 LR, backpack",
+      "manufacturer": "Marlin",
+      "cartridge": ".22 Long Rifle",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": 16,
+      "source_id": "marlin_70pss_archived",
+      "source_note": "Manufacturer specification table for the Papoose take-down model 70PSS (the stainless Papoose, same take-down rifle and barrel as the 70P): 'Barrel 16.25\" stainless steel with Micro-Groove® rifling (16 grooves). Twist Rate 1:16\" r.h.' 1 turn in 16 in = 406.4 mm, 16 Micro-Groove grooves, right hand. The published data sheet is for the 70PSS, not for a separately labelled 70P data sheet; the barrel and take-down action are the same."
+    },
+    {
+      "weapon_id": "tac300",
+      "name": "TAC-300 .300 Winchester Magnum",
+      "manufacturer": "McMillan",
+      "cartridge": ".300 Winchester Magnum",
+      "barrel_mm": null,
+      "twist_mm": 254.0,
+      "grooves": null,
+      "source_id": "mcmillan_tac300",
+      "source_note": "Manufacturer specification list: 'Chambered in .300 Winchester Magnum' and 'Twist 1:10\"'. 1 turn in 10 in = 254.0 mm. The corpus lead (254 mm) agrees; the standard value (508 mm) does not apply to this rifle."
+    },
+    {
+      "weapon_id": "tac308",
+      "name": "TAC-308 .308 Winchester",
+      "manufacturer": "McMillan",
+      "cartridge": ".308 Winchester",
+      "barrel_mm": null,
+      "twist_mm": 254.0,
+      "grooves": null,
+      "source_id": "mcmillan_tac308",
+      "source_note": "Manufacturer specification list: '.308 Winchester Twist 1:10\"' (and separately '6.5 Creedmoor Twist 1:8\"'). 1 turn in 10 in = 254.0 mm for the .308 Winchester chambering."
+    },
+    {
+      "weapon_id": "tac338",
+      "name": "TAC-338 .338 Lapua Magnum",
+      "manufacturer": "McMillan",
+      "cartridge": ".338 Lapua Magnum",
+      "barrel_mm": null,
+      "twist_mm": 254.0,
+      "grooves": null,
+      "source_id": "mcmillan_tac338",
+      "source_note": "Manufacturer specification list: '.338 Lapua Mag Twist 1:10\"'. 1 turn in 10 in = 254.0 mm. The corpus lead (237 mm) is not supported by the manufacturer."
+    },
+    {
+      "weapon_id": "blackwidow",
+      "name": "Black Widow Single-action revolver",
+      "manufacturer": "NAA",
+      "cartridge": ".22 Winchester Magnum",
+      "barrel_mm": null,
+      "twist_mm": null,
+      "grooves": null,
+      "source_id": "naa_black_widow_product",
+      "source_note": "TWIST NOT STATED. The manufacturer product page gives only 'Black Widow w/ Fixed Sights – 2″ Barrel .22 Magnum' with barrel length, capacity and weight; it publishes no twist rate. A search of the manufacturer site for 'twist' returns 'No results found', and the NAA mini-revolver manual states no twist. No citable twist exists, so the corpus lead (406 mm) is not copied."
+    },
+    {
+      "weapon_id": "rangerii",
+      "name": "Ranger Ii Single-action top-break revolver",
+      "manufacturer": "NAA",
+      "cartridge": ".22 Winchester Magnum",
+      "barrel_mm": null,
+      "twist_mm": null,
+      "grooves": null,
+      "source_id": "naa_ranger_ii_product",
+      "source_note": "TWIST NOT STATED. The manufacturer product page gives only '22 Magnum – 1 5 / 8 ” Barrel .22 Magnum Long Rifle Conversion Cylinder available as NAA-22MC-R 5-Shot'; it publishes no twist rate. A search of the manufacturer site for 'twist' returns 'No results found'. No citable twist exists, so the corpus lead (305 mm) is not copied."
+    },
+    {
+      "weapon_id": "hush",
+      "name": "Hush .300BLK 16\"",
+      "manufacturer": "Nemo Arms",
+      "cartridge": ".300 AAC Blackout",
+      "barrel_mm": null,
+      "twist_mm": null,
+      "grooves": null,
+      "source_id": "nemo_firearms_list",
+      "source_note": "TWIST NOT STATED / MODEL NOT FOUND. The manufacturer's complete product list holds no 'Hush' model. The NEMO Arms lines are OMEN, XO, Battle-Light, FX, Mongoose and NX; no Internet Archive capture of nemoarms.com contains a Hush product either. A twist cannot be attributed to a product the manufacturer does not publish, so the corpus lead (178 mm) is not copied."
+    },
+    {
+      "weapon_id": "omen",
+      "name": "Omen .300WM 24\"",
+      "manufacturer": "Nemo Arms",
+      "cartridge": ".300 Winchester Magnum",
+      "barrel_mm": null,
+      "twist_mm": 203.2,
+      "grooves": null,
+      "source_id": "nemo_omen_watchman",
+      "source_note": "Manufacturer product page for 'OMEN™ Watchman™ .300 Win Mag', specification table: 'Barrel Length: 24 in' and 'Barrel PROOF Research 24” carbon fiber wrapped barrel 1:8 twist'. The page also lists 'Compatible with (ammo) .300 WIN MAG'. 1 turn in 8 in = 203.2 mm. The 24 inch .300 Win Mag OMEN is the Watchman. The corpus lead (254 mm) matches the older 22 inch OMEN Standard and Match (archived pages give '300 Win Mag, 1/10 Twist'), not this 24 inch model."
+    },
+    {
+      "weapon_id": "sentinel",
+      "name": "Sentinel .308 18\"",
+      "manufacturer": "Nemo Arms",
+      "cartridge": ".308 Winchester",
+      "barrel_mm": null,
+      "twist_mm": null,
+      "grooves": null,
+      "source_id": "nemo_firearms_list",
+      "source_note": "TWIST NOT STATED / MODEL NOT FOUND. The manufacturer's complete product list holds no 'Sentinel' model. The NEMO Arms .308 models are XO, the Battle Rifle and the Dakkar; no Internet Archive capture of nemoarms.com contains a Sentinel product either. A twist cannot be attributed to a product the manufacturer does not publish, so the corpus lead (254 mm) is not copied."
+    },
+    {
+      "weapon_id": "diplomat",
+      "name": "Diplomat Pistol",
+      "manufacturer": "Noveske Rifleworks",
+      "cartridge": ".300 AAC Blackout",
+      "barrel_mm": null,
+      "twist_mm": 177.8,
+      "grooves": null,
+      "source_id": "noveske_diplomat",
+      "source_note": "Manufacturer product page, Specifications section: 'Barrel • 7.94” 300Blackout 416R Stainless with 1:7 twist'. 1 turn in 7 in = 177.8 mm."
+    },
+    {
+      "weapon_id": "ghettoblaster",
+      "name": "Ghetto Blaster SBR",
+      "manufacturer": "Noveske Rifleworks",
+      "cartridge": ".300 AAC Blackout",
+      "barrel_mm": null,
+      "twist_mm": 177.8,
+      "grooves": null,
+      "source_id": "noveske_ghetto_blaster",
+      "source_note": "Manufacturer product page (archived), specification list: 'Barrel: 7.94″ 300 Blackout Stainless with 1:7 twist'. 1 turn in 7 in = 177.8 mm."
+    }
+  ]
+}

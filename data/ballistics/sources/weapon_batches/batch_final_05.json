@@ -1,0 +1,41 @@
+{
+  "retrieved": "2026-09-22",
+  "sources": [
+    {
+      "source_id": "sccy_cpx3_product_spec",
+      "title": "SCCY CPX-3 .380 ACP pistol - manufacturer product specification (SCCY Industries official product description, reproduced on the Impact Guns product listing)",
+      "url": "https://www.impactguns.com/semi-auto-handguns/sccy-cpx-3-380-acp-2-96-barrel-black-10rd-hgu-a018055-",
+      "sha256": null
+    },
+    {
+      "source_id": "sig_mcx_rattler_product_spec",
+      "title": "SIG SAUER MCX Rattler 300BLK Pistol - 5.5 in (No Brace) - SIG Sauer factory product specification, reproduced on the Rainier Arms product listing",
+      "url": "https://www.rainierarms.com/sig-sauer-mcx-rattler-300blk-side-folding-pistol-5-5-no-brace/",
+      "sha256": null
+    }
+  ],
+  "weapons": [
+    {
+      "weapon_id": "cpx3",
+      "name": "CPX-3 polymer compact .380 ACP",
+      "manufacturer": "SCCY Industries",
+      "cartridge": ".380 ACP",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": null,
+      "source_id": "sccy_cpx3_product_spec",
+      "source_note": "SCCY Industries official product description, verbatim: \"Chambered for 380ACP, it has a 2.96\\\" barrel with a 16:1\\\" right hand twist.\" SCCY writes the ratio as 16:1, meaning 1 turn in 16 inches, right hand = 406.4 mm per turn. The same SCCY description is repeated verbatim across many SCCY dealer listings, and SCCY's own catalogue and owner's manual do not state a twist."
+    },
+    {
+      "weapon_id": "mcxrattler",
+      "name": "MCX Rattler 5.5\" SBR",
+      "manufacturer": "SIG Sauer Inc. (USA)",
+      "cartridge": "7.62×35mm",
+      "barrel_mm": null,
+      "twist_mm": 127.0,
+      "grooves": null,
+      "source_id": "sig_mcx_rattler_product_spec",
+      "source_note": "SIG Sauer factory specification for the 5.5 in .300 BLK Rattler, verbatim: \"Barrel Length: 5.5 in (140 mm) ... Twist Rate: 1:5\". 1 turn in 5 inches = 127.0 mm per turn. Corroborated by SIG Sauer's own MCX-RATTLER LT product page, which lists the .300 BLK Rattler twist as 1:5 (archived: https://web.archive.org/web/20231116221830id_/https://www.sigsauer.com/mcx-rattler-lt.html)."
+    }
+  ]
+}

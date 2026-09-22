@@ -1,0 +1,104 @@
+{
+  "retrieved": "2026-09-22",
+  "sources": [
+    {
+      "source_id": "cadex_cdxmc_kraken",
+      "title": "Cadex Defence - CDX-MC KRAKEN product page (barrel and muzzle-brake options)",
+      "url": "https://web.archive.org/web/20260416211252id_/https://www.cadexdefence.com/product/cdx-mc-kraken/"
+    },
+    {
+      "source_id": "colt_cm901",
+      "title": "Colt Defense - Colt Modular Carbine CM901 / LE901-16S product page (Colt Military catalogue)",
+      "url": "https://web.archive.org/web/20140621235215id_/http://www.colt.com/Catalog/Military/Products/ColtModularCarbineCM901.aspx"
+    },
+    {
+      "source_id": "tm_9_1005_211_12",
+      "title": "TM 9-1005-211-12, Pistol, Caliber .45, Automatic, M1911A1 (US Army, 24 June 1968)",
+      "url": "https://archive.org/download/TM9-1005-211-12_201310/TM9-1005-211-12_201310_djvu.txt",
+      "sha256": "be52bd891e3c41437e6ebc91911f48cfd5f27d175901e9b8ed442459ac0cc858"
+    },
+    {
+      "source_id": "dd_dd5v4",
+      "title": "Daniel Defense - DD5 V4 (7.62x51mm) product page",
+      "url": "https://danieldefense.com/dd5-v4-762x51mm.html"
+    },
+    {
+      "source_id": "dd_dd5sbr",
+      "title": "Daniel Defense - DD5 SBR (7.62x51mm) product page",
+      "url": "https://danieldefense.com/dd5-sbr-762x51mm.html"
+    },
+    {
+      "source_id": "dd_ddm4pdw",
+      "title": "Daniel Defense - DDM4 PDW (300 Blackout) product page",
+      "url": "https://danieldefense.com/ddm4-pdw.html"
+    }
+  ],
+  "weapons": [
+    {
+      "weapon_id": "cdxmckraken",
+      "name": "CDX-MC Kraken .300 PRC",
+      "manufacturer": "Cadex Defense",
+      "cartridge": ".300 PRC",
+      "barrel_mm": 660.4,
+      "twist_mm": 203.2,
+      "grooves": null,
+      "source_id": "cadex_cdxmc_kraken",
+      "source_note": "Cadex product page, .300 PRC barrel option: \"300 PRC | 26\\\" Bartlein Barrel | 1:8\\\" Twist | 5/8\\\"-24 TPI | MX1 muzzle brake\". States the .300 PRC configuration of the CDX-MC Kraken uses a 26 inch (660.4 mm) Bartlein barrel with 1 turn in 8 inches twist = 203.2 mm per turn."
+    },
+    {
+      "weapon_id": "cm901",
+      "name": "CM901 modular carbine, 7.62mm, interchangeable barrel system",
+      "manufacturer": "Colt",
+      "cartridge": "7.62×51mm NATO",
+      "barrel_mm": 408.9,
+      "twist_mm": 304.8,
+      "grooves": null,
+      "source_id": "colt_cm901",
+      "source_note": "Colt CM901 specifications table: \"barrel length 16.1 in. (40.89 cm) rate of fire SEMI rifling 1/12 RH effective range 700 m\". States a right-hand 1 turn in 12 inches twist = 304.8 mm per turn for the 16.1 inch 7.62x51mm barrel."
+    },
+    {
+      "weapon_id": "m1911a1",
+      "name": "M1911A1 Pistol",
+      "manufacturer": "Colt",
+      "cartridge": ".45 ACP",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": 6,
+      "source_id": "tm_9_1005_211_12",
+      "source_note": "TM 9-1005-211-12, pistol characteristics table: \"Number of lands and grooves 6\" and \"Rifling, left hand, one turn in 16 in.\" States a six-groove LEFT-hand 1 turn in 16 inches twist = 406.4 mm per turn."
+    },
+    {
+      "weapon_id": "dd5sbr",
+      "name": "DD5 SBR",
+      "manufacturer": "Daniel Defense",
+      "cartridge": "7.62×51mm NATO",
+      "barrel_mm": 317.5,
+      "twist_mm": 254.0,
+      "grooves": null,
+      "source_id": "dd_dd5sbr",
+      "source_note": "Daniel Defense DD5 SBR materials and construction: \"BARREL: DD Proprietary Steel, Cold Hammer Forged, 1:10\\u201d Twist, 12.5\\u2033 S2W Profile, Mid-length Gas System, Chrome Lined\". States a 1 turn in 10 inches twist = 254.0 mm per turn."
+    },
+    {
+      "weapon_id": "dd5v4",
+      "name": "DD5 V4 Rifle",
+      "manufacturer": "Daniel Defense",
+      "cartridge": "7.62×51mm NATO",
+      "barrel_mm": 457.2,
+      "twist_mm": 254.0,
+      "grooves": null,
+      "source_id": "dd_dd5v4",
+      "source_note": "Daniel Defense DD5 V4 (7.62 x 51mm) materials and construction: \"BARREL: DD Proprietary Steel, Cold Hammer Forged, 1:8\\\" (6.5 Creedmoor), 1:10\\\" (7.62), 18\\u2033 S2W Profile, Rifle Length, Chrome Lined\". States the 7.62 configuration uses 1 turn in 10 inches twist = 254.0 mm per turn. The 6.5 Creedmoor configuration is 1:8."
+    },
+    {
+      "weapon_id": "ddm4pdw",
+      "name": "DDM4 PDW SBR",
+      "manufacturer": "Daniel Defense",
+      "cartridge": ".300 AAC Blackout",
+      "barrel_mm": 177.8,
+      "twist_mm": 177.8,
+      "grooves": null,
+      "source_id": "dd_ddm4pdw",
+      "source_note": "Daniel Defense DDM4 PDW features: \"Ultra-compact platform with 7 inch, 1:7 twist barrel for compatibility with subsonic and supersonic loads\" and \"BARREL: Chrome Moly Vanadium Steel, Cold Hammer Forged, 1:7 Twist, 7\\\" S2W Profile\". States a 1 turn in 7 inches twist = 177.8 mm per turn."
+    }
+  ]
+}

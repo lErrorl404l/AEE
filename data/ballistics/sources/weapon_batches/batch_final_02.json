@@ -1,0 +1,58 @@
+{
+  "retrieved": "2026-09-22",
+  "sources": [
+    {
+      "source_id": "cip_46x30_tdcc",
+      "title": "C.I.P. TDCC Tab I, 4,6 x 30 (4.6×30 mm) cartridge datasheet, English (proof barrel and grooves dimensions)",
+      "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-i/4-6x30-suhl-eng-250317.pdf",
+      "sha256": "8f66867363c70a960cc62cf3c5223a678d42f1094c37e2211c5c29ec19b72229"
+    },
+    {
+      "source_id": "gunsweek_colt_competition_1911",
+      "title": "Colt Competition Pistol: the match-ready 1911 (GUNSweek.com)",
+      "url": "https://www.gunsweek.com/en/pistols/articles/colt-competition-pistol-match-ready-1911",
+      "sha256": "64f8133ccdd5036a2980f7503f855cd1c4649f212035d753e0cf1dcb8eeeab55"
+    },
+    {
+      "source_id": "fusion_1911_defender_barrel",
+      "title": "Fusion Firearms 1911 Defender Barrel Selector - Ultra Match Grade (barrel maker page for the 3\" Defender-size 1911 barrel)",
+      "url": "https://fusionfirearms.com/1911-defender-barrel-selector-ultra-match-grade-1",
+      "sha256": "be4329ae9d781a14859e938dfa53759ea1c8b0ab44c75a8b83e766de3f5c13b0"
+    }
+  ],
+  "weapons": [
+    {
+      "weapon_id": "competition1911",
+      "name": "Competition 1911 5\" stainless, adjustable target sights",
+      "manufacturer": "Colt",
+      "cartridge": ".45 ACP",
+      "barrel_mm": 127.0,
+      "twist_mm": 406.4,
+      "grooves": 6,
+      "source_id": "gunsweek_colt_competition_1911",
+      "source_note": "GUNSweek review of the Colt Competition Pistol, specification line: \"Barrel National Match barrel: 127 mm / 5\\\"; six LH grooves, 1:16\\\" twist\". Body text: \"a 5\\\"-long, National Match cold-hammer forged out of stainless steel, with a bright shiny polish and six left-handed grooves and a 1-in-16\\\" pitch\". States the Colt Competition Pistol barrel has six left-hand grooves and one turn in 16 inches = 406.4 mm per turn."
+    },
+    {
+      "weapon_id": "defender",
+      "name": "Defender 3\" barrel, compact carry 1911",
+      "manufacturer": "Colt",
+      "cartridge": ".45 ACP",
+      "barrel_mm": 76.2,
+      "twist_mm": 406.4,
+      "grooves": null,
+      "source_id": "fusion_1911_defender_barrel",
+      "source_note": "Fusion Firearms \"1911 Defender Barrel Selector - Ultra Match Grade\" (3\" Defender-size 1911 barrel), DETAILS: \"3\\\" defender size, perfect for a compact and versatile pistol ... 45acp, 40S&W/10mm: 1:16 twist rate\", and \"Twist rate 45acp, 40S&W/10mm = 1:16\". The barrel maker states one turn in 16 inches = 406.4 mm per turn for the Defender-size .45 ACP barrel. No Colt factory document stating the Defender twist was found."
+    },
+    {
+      "weapon_id": "mp7",
+      "name": "MP7 Submachine Gun",
+      "manufacturer": "Heckler & Koch",
+      "cartridge": "4.6×30mm",
+      "barrel_mm": 180.0,
+      "twist_mm": 150.0,
+      "grooves": 6,
+      "source_id": "cip_46x30_tdcc",
+      "source_note": "C.I.P. TDCC Tab I datasheet for the 4,6 x 30 (4.6×30 mm) cartridge, \"Barrel / Grooves\" block: \"N = 6\" and \"u = 150.00\". In the C.I.P. TDCC drawing u is the twist (pitch of rifling) in millimetres, so the standard twist is one turn in 150.00 mm with 6 grooves. Heckler & Koch's own MP7A1 Technical Data sheet (hk-manuals) states \"Barrel profile/Twist: Polygonal profile, 6 twist lines, right-hand twist\" but gives no pitch."
+    }
+  ]
+}
