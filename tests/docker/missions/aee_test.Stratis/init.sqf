@@ -2333,6 +2333,292 @@ private _p29Pass = 0;
         diag_log text format ["[PHASE44] [FAIL] movement-speed factor out of range: %1", _coef];
     };
 
+    // -- PHASE 45: ammunition resolves to the verified cartridge -----------
+    // The resolver maps an ammo classname to a real cartridge record from
+    // the generated database projection. The classnames below are the
+    // forms vanilla and mod weapons carry.
+    private _ammoCases = [
+        ["B_556x45_Ball", "556x45_nato"],
+        ["B_762x51_Ball", "762x51_nato"],
+        ["B_127x108_Ball", "12_7_x_108"],
+        ["B_9x21_Ball", "9_x_21"],
+        ["B_45ACP_Ball", "45_auto"],
+        ["B_12Gauge_Pellets", "12_gauge"],
+        ["B_65x39_Caseless", "6_5_x_39"],
+        ["B_545x39_Ball", "545x39"],
+        ["B_9x19_Ball", "9x19"],
+        ["B_762x54_Ball", "7_62_x_54_r"],
+        ["MCC_556_M855A1", "556x45_nato"],
+        ["MSS_300NM_225ELDM", "300_norma_mag"],
+        ["CUP_30Rnd_762x39", "762x39"]
+    ];
+    private _p45Pass = 0;
+    private _p45Fail = 0;
+    {
+        _x params ["_ammoClass", "_expected"];
+        private _row = [_ammoClass] call aee_ballistics_fnc_getCartridgeData;
+        private _got = if (_row isEqualTo []) then { "<none>" } else { _row select 0 };
+        if (_got == _expected) then {
+            _p45Pass = _p45Pass + 1;
+        } else {
+            _p45Fail = _p45Fail + 1;
+            diag_log text format ["[PHASE45] [FAIL] %1 resolved to %2, expected %3",
+                _ammoClass, _got, _expected];
+        };
+    } forEach _ammoCases;
+    if (_p45Fail == 0) then {
+        diag_log text format ["[PHASE45] [PASS] ammunition identity: %1 classnames resolved to the verified cartridge", _p45Pass];
+    } else {
+        diag_log text format ["[PHASE45] [FAIL] ammunition identity: %1 passed, %2 failed", _p45Pass, _p45Fail];
+    };
+
+    // -- PHASE 46: muzzle velocity from the physics, not a static table ----
+    // The measured barrel feeds the cartridge curve. The bands are the
+    // published service velocities for the same barrel length.
+    private _mvCases = [
+        ["B_556x45_Ball", 0.508, 900, 990],
+        ["B_762x51_Ball", 0.508, 780, 870],
+        ["B_127x108_Ball", 1.0, 780, 860],
+        ["B_65x39_Caseless", 0.406, 680, 830]
+    ];
+    private _p46Pass = 0;
+    private _p46Fail = 0;
+    {
+        _x params ["_ammoClass", "_barrelM", "_min", "_max"];
+        private _derived = [_ammoClass, _barrelM, 21] call aee_ballistics_fnc_deriveCartridge;
+        private _mv = _derived select 0;
+        if (_mv >= _min && {_mv <= _max}) then {
+            _p46Pass = _p46Pass + 1;
+            diag_log text format ["[PHASE46] [PASS] %1 at %2 m barrel: %3 m/s (band %4-%5)",
+                _ammoClass, _barrelM, round _mv, _min, _max];
+        } else {
+            _p46Fail = _p46Fail + 1;
+            diag_log text format ["[PHASE46] [FAIL] %1 at %2 m barrel: %3 m/s (band %4-%5)",
+                _ammoClass, _barrelM, round _mv, _min, _max];
+        };
+    } forEach _mvCases;
+    if (_p46Fail == 0) then {
+        diag_log text format ["[PHASE46] [PASS] ballistics: %1 rounds in the published velocity band", _p46Pass];
+    } else {
+        diag_log text format ["[PHASE46] [FAIL] ballistics: %1 passed, %2 failed", _p46Pass, _p46Fail];
+    };
+
+    // -- PHASE 47: resolver performance ------------------------------------
+    // The Fired event calls the resolver on every shot, so the cached path
+    // must be negligible. The cold path pays the index build once.
+    private _warmIter = 500;
+    private _warmStart = diag_tickTime;
+    for "_i" from 1 to _warmIter do {
+        ["B_556x45_Ball"] call aee_ballistics_fnc_getCartridgeData;
+    };
+    private _warmMs = (diag_tickTime - _warmStart) / _warmIter * 1000;
+
+    missionNamespace setVariable ["aee_ballistics_cartridgeCache", nil];
+    missionNamespace setVariable ["aee_ballistics_cartridgeIndex", nil];
+    private _coldStart = diag_tickTime;
+    private _coldRow = ["B_556x45_Ball"] call aee_ballistics_fnc_getCartridgeData;
+    private _coldMs = (diag_tickTime - _coldStart) * 1000;
+    if (_coldRow isEqualTo []) then { _coldMs = 1e9; };
+
+    diag_log text format ["[PHASE47] perf: resolver cache %1 ms/call, cold build %2 ms",
+        _warmMs toFixed 4, _coldMs toFixed 3];
+    if (_warmMs < 0.05 && {_coldMs < 10}) then {
+        diag_log text format ["[PHASE47] [PASS] resolver within budget (cache < 0.05 ms, cold < 10 ms)"];
+    } else {
+        diag_log text format ["[PHASE47] [FAIL] resolver over budget: cache %1 ms, cold %2 ms",
+            _warmMs toFixed 4, _coldMs toFixed 3];
+    };
+
+    // -- PHASE 48: gyroscopic stability from the geometry (Miller rule) ---
+    // The Hornady 225 gr ELD Match is published for a 1:10 and a 1:7 twist
+    // because 1:10 is only marginal for it. The rule is computed from the
+    // bullet geometry, so this check is physics, not a table lookup.
+    private _lenM = 0.042291;    // 1.665 in
+    private _massG = 14.5798;    // 225 gr
+    private _diaM = 0.00782;     // .308 in
+    private _sg10 = [_lenM, _massG, _diaM, 0.254, 869, 0] call aee_ballistics_fnc_calculateStability;
+    private _sg7 = [_lenM, _massG, _diaM, 0.1778, 869, 0] call aee_ballistics_fnc_calculateStability;
+    if (_sg10 > 1.1 && {_sg10 < 1.6} && {_sg7 > 2.4}) then {
+        diag_log text format ["[PHASE48] [PASS] Miller stability: 225 ELD-M SG %1 at 1:10, %2 at 1:7 (marginal, then stable)", _sg10 toFixed 2, _sg7 toFixed 2];
+    } else {
+        diag_log text format ["[PHASE48] [FAIL] Miller stability: SG %1 at 1:10, %2 at 1:7", _sg10 toFixed 2, _sg7 toFixed 2];
+    };
+
+    // -- PHASE 49: any drag model, and the local speed of sound ------------
+    // The kernel must accept any standard by name, and the Mach number
+    // must use the local speed of sound: cold dense air moves the
+    // transonic band, which changes the drag at a fixed velocity.
+    private _g7 = [0.391, 900, "G7", 1.0, 15] call aee_ballistics_fnc_calculateBallisticDrag;
+    private _g1 = [0.777, 900, "G1", 1.0, 15] call aee_ballistics_fnc_calculateBallisticDrag;
+    private _numeric = [0.391, 900, 7, 1.0, 15] call aee_ballistics_fnc_calculateBallisticDrag;
+    private _gbLaw = [0.391, 900, "GB", 1.0, 15] call aee_ballistics_fnc_calculateBallisticDrag;
+    // Cold air is denser (more drag) and its speed of sound is lower, so
+    // the same velocity sits at a higher Mach. Cold must give more drag.
+    private _cold = [0.391, 900, "G7", 288.15 / 233.15, -40] call aee_ballistics_fnc_calculateBallisticDrag;
+    private _hot = [0.391, 900, "G7", 288.15 / 323.15, 50] call aee_ballistics_fnc_calculateBallisticDrag;
+    private _models = call aee_ballistics_fnc_getDragTables;
+    private _ok = (_g1 > 0) && {_g7 > 0} && {_numeric > 0} && {_gbLaw > 0}
+        && {abs (_numeric - _g7) < 1e-6}
+        && {_cold > _hot}
+        && {(count _models) >= 14};
+    if (_ok) then {
+        diag_log text format ["[PHASE49] [PASS] drag models: %1 held; G7 %2, G1 %3, GB %4 m/s^2; cold %5 vs hot %6 (speed of sound)", count _models, round _g7, round _g1, round _gbLaw, round _cold, round _hot];
+    } else {
+        diag_log text format ["[PHASE49] [FAIL] drag models: %1 held; G7 %2, G1 %3, GB %4; cold %5 hot %6", count _models, round _g7, round _g1, round _gbLaw, round _cold, round _hot];
+    };
+
+    // -- PHASE 50: one shot resolved end to end, standalone ----------------
+    // resolveShot is the single entry point: identity, drag standard,
+    // velocity, stability and drag in one call. getEnvironmentState pulls
+    // the core state when present and falls back to the ISA otherwise, so
+    // the addon can stand alone.
+    private _shot = ["B_556x45_Ball", "arifle_MX_F", 0.508, 21, 1.0] call aee_ballistics_fnc_resolveShot;
+    _shot params ["_shotMv", "_shotBc", "_shotModel", "_shotTwist", "_shotSg", "_shotRetard", "_shotCart", "_shotProj", "_shotGrade"];
+    private _savedTemp = missionNamespace getVariable ["aee_core_currentTemperature", nil];
+    private _savedRho = missionNamespace getVariable ["aee_core_currentAirDensity", nil];
+    missionNamespace setVariable ["aee_core_currentTemperature", nil];
+    missionNamespace setVariable ["aee_core_currentAirDensity", nil];
+    private _isa = call aee_ballistics_fnc_getEnvironmentState;
+    missionNamespace setVariable ["aee_core_currentTemperature", _savedTemp];
+    missionNamespace setVariable ["aee_core_currentAirDensity", _savedRho];
+    private _shotOk = (_shotMv > 900) && {_shotMv < 990} && {_shotBc > 0} && {_shotModel != ""}
+        && {_shotRetard > 0} && {_shotCart == "556x45_nato"} && {_shotProj == "apg_m855"};
+    private _isaOk = (abs ((_isa select 0) - 15) < 0.01) && {abs ((_isa select 2) - 1.0) < 0.01};
+    if (_shotOk && {_isaOk}) then {
+        diag_log text format ["[PHASE50] [PASS] shot resolved: MV %1 m/s, %2 %3, retard %4 m/s^2; standalone ISA fallback %5 C", round _shotMv, _shotModel, _shotBc, round _shotRetard, _isa select 0];
+    } else {
+        diag_log text format ["[PHASE50] [FAIL] shot: MV %1 bc %2 model %3 retard %4 cart %5 proj %6 isa %7", round _shotMv, _shotBc, _shotModel, round _shotRetard, _shotCart, _shotProj, _isa];
+    };
+
+    // -- PHASE 51: the weapon's own twist replaces the cartridge standard -
+    // The M24 (1:11.2) and the M40A5 (1:12) share the 7.62x51 chambering
+    // but have different barrels. The same round must therefore resolve
+    // to a different twist and spin. A weapon the catalogue does not hold
+    // falls back to the cartridge standard.
+    private _wM24 = ["AEE_Test_M24"] call aee_ballistics_fnc_getWeaponData;
+    private _wM40 = ["AEE_Test_M40A5"] call aee_ballistics_fnc_getWeaponData;
+    private _sM24 = ["B_762x51_Ball", "AEE_Test_M24", 0.61, 21, 1.0] call aee_ballistics_fnc_resolveShot;
+    private _sM40 = ["B_762x51_Ball", "AEE_Test_M40A5", 0.61, 21, 1.0] call aee_ballistics_fnc_resolveShot;
+    private _sPlain = ["B_762x51_Ball", "AEE_Test_Unknown", 0.61, 21, 1.0] call aee_ballistics_fnc_resolveShot;
+    private _wOk = (_wM24 isNotEqualTo []) && {_wM40 isNotEqualTo []}
+        && {(_wM24 select 1) != (_wM40 select 1)}
+        && {(_sM24 select 3) == (_wM24 select 1)}
+        && {(_sM40 select 3) == (_wM40 select 1)}
+        && {(_sPlain select 3) == 0.3048}
+        && {(_sM24 select 9) > 0};
+    if (_wOk) then {
+        diag_log text format ["[PHASE51] [PASS] weapon twist: M24 %1 m/turn, M40A5 %2, unmatched falls back to %3; spin %4 rad/s", _wM24 select 1, _wM40 select 1, _sPlain select 3, round (_sM24 select 9)];
+    } else {
+        diag_log text format ["[PHASE51] [FAIL] weapon twist: M24 %1, M40A5 %2, plain %3", _wM24, _wM40, _sPlain];
+    };
+
+    // -- PHASE 52: the arm type selects the chambering standard --
+    // SAAMI registers .44 Magnum for a pistol test barrel (508 mm) and a
+    // rifle test barrel (965.2 mm). An unidentified weapon keeps the
+    // cartridge default, a handgun takes the pistol rate, and a rifle the
+    // rifle rate. A weapon the catalogue holds still overrides both.
+    private _sPistol = ["AEE_Test_44_Remington_Magnum", "hgun_ACPC2_F", 0.4, 21, 1.0] call aee_ballistics_fnc_resolveShot;
+    private _sRifle = ["AEE_Test_44_Remington_Magnum", "arifle_MX_F", 0.4, 21, 1.0] call aee_ballistics_fnc_resolveShot;
+    private _sPlain = ["AEE_Test_44_Remington_Magnum", "", 0.4, 21, 1.0] call aee_ballistics_fnc_resolveShot;
+    private _armOk = (_sPistol select 3) == 0.508
+        && {(_sRifle select 3) == 0.9652}
+        && {(_sPlain select 3) == 0.508};
+    if (_armOk) then {
+        diag_log text format ["[PHASE52] [PASS] arm type: handgun %1 m/turn, rifle %2, unidentified keeps %3", _sPistol select 3, _sRifle select 3, _sPlain select 3];
+    } else {
+        diag_log text format ["[PHASE52] [FAIL] arm type: handgun %1, rifle %2, plain %3", _sPistol select 3, _sRifle select 3, _sPlain select 3];
+    };
+
+    // -- PHASE 53: a service designation resolves to the real weapon --
+    // "L115A3" is the British designation of the Accuracy International
+    // AWM, whose twist (279.4 mm) differs from the .338 standard
+    // (254 mm). The designation must resolve to the real weapon, not to
+    // the chambering standard.
+    private _wAWM = ["AEE_Test_L115A3"] call aee_ballistics_fnc_getWeaponData;
+    private _wUnknown = ["AEE_Test_NothingKnown"] call aee_ballistics_fnc_getWeaponData;
+    private _desigOk = (_wAWM isNotEqualTo [])
+        && {(_wAWM select 1) == 0.2794}
+        && {(_wUnknown isEqualTo [])};
+    if (_desigOk) then {
+        diag_log text format ["[PHASE53] [PASS] designation: L115A3 resolved to %1 at %2 m/turn, not the .338 standard", _wAWM select 0, _wAWM select 1];
+    } else {
+        diag_log text format ["[PHASE53] [FAIL] designation: L115A3 -> %1", _wAWM];
+    };
+
+    // -- PHASE 54: the weapon resolver stays cheap as the table grows --
+    // The index is built on the first call and every result is cached, so
+    // the cost that matters is the per-call cost after the build.
+    ["AEE_Test_M24"] call aee_ballistics_fnc_getWeaponData;
+    private _wStart = diag_tickTime;
+    for "_i" from 1 to 1000 do {
+        ["AEE_Test_M24"] call aee_ballistics_fnc_getWeaponData;
+    };
+    private _wPerCall = (diag_tickTime - _wStart) / 1000;
+    private _wRows = count (missionNamespace getVariable ["aee_ballistics_weaponIndex", createHashMap]);
+    if (_wPerCall < 0.001) then {
+        diag_log text format ["[PHASE54] [PASS] weapon resolver: %1 ms per cached call, %2 index keys", _wPerCall * 1000, _wRows];
+    } else {
+        diag_log text format ["[PHASE54] [FAIL] weapon resolver: %1 ms per cached call", _wPerCall * 1000];
+    };
+
+    // -- PHASE 55: free recoil matches the SAAMI worked example --
+    // The standard's example: 7 lb shotgun, 589.9 gr ejecta, 33.4 gr
+    // charge, 1275 fps, gas factor 1.50, printed as 30.22 ft-lb. In SI:
+    // 3.175 kg firearm, 0.03822 kg ejecta, 0.002165 kg charge, 388.6 m/s.
+    private _recoil = [0.03822, 388.6, 0.002165, 3.175, "shotgun"] call aee_ballistics_fnc_calculateRecoil;
+    private _rEnergy = _recoil select 2;
+    private _rFtLb = _rEnergy / 1.3558179483314004;
+    private _rOk = (abs (_rFtLb - 30.22) / 30.22) < 0.02
+        && {(_recoil select 0) > 0}
+        && {(_recoil select 1) > 0};
+    if (_rOk) then {
+        diag_log text format ["[PHASE55] [PASS] recoil: impulse %1 Ns, velocity %2 m/s, energy %3 J = %4 ft-lb (SAAMI prints 30.22)", _recoil select 0, _recoil select 1, _rEnergy, _rFtLb];
+    } else {
+        diag_log text format ["[PHASE55] [FAIL] recoil: %1", _recoil];
+    };
+    // A rifle and a long shotgun differ only by the gas factor.
+    private _rRifle = [0.03, 400, 0.002, 3.2, "rifle"] call aee_ballistics_fnc_calculateRecoil;
+    private _rLong = [0.03, 400, 0.002, 3.2, "shotgun_long"] call aee_ballistics_fnc_calculateRecoil;
+    if ((_rRifle select 2) > (_rLong select 2)) then {
+        diag_log text format ["[PHASE55] [PASS] gas factor: rifle %1 J exceeds long shotgun %2 J", _rRifle select 2, _rLong select 2];
+    } else {
+        diag_log text "[PHASE55] [FAIL] gas factor ordering";
+    };
+
+    // -- PHASE 56: the carried weapon mass --
+    // The mass comes from the ballistics catalogue when it holds the
+    // weapon, and from a family keyword tier otherwise. The carried total
+    // is the sum over the primary weapon, the launcher and the handgun.
+    private _wMass = ["AEE_Test_M468"] call aee_physiology_fnc_getWeaponMass;
+    private _wFallback = ["AEE_hgun_test"] call aee_physiology_fnc_getWeaponMass;
+    private _wRifle = ["AEE_arifle_test"] call aee_physiology_fnc_getWeaponMass;
+    private _wLoad = [player] call aee_physiology_fnc_getWeaponLoad;
+    private _wOk = (_wMass == 4.37)
+        && {(_wFallback == 0.9)}
+        && {(_wRifle == 3.5)}
+        && {(_wLoad >= 0)};
+    if (_wOk) then {
+        diag_log text format ["[PHASE56] [PASS] weapon load: catalogue %1 kg, handgun tier %2, rifle tier %3, carried %4", _wMass, _wFallback, _wRifle, _wLoad];
+    } else {
+        diag_log text format ["[PHASE56] [FAIL] weapon load: catalogue %1, handgun %2, rifle %3", _wMass, _wFallback, _wRifle];
+    };
+
+    // -- PHASE 57: the carried magazine mass --
+    // A magazine classname carries the capacity and the chambering, so a
+    // known magazine resolves to its maker-published mass, and an unknown
+    // one falls back to the capacity tier.
+    private _magKnown = ["30Rnd_556x45_Stanag"] call aee_physiology_fnc_getMagazineMass;
+    private _magTier = ["75Rnd_545x39_RPK"] call aee_physiology_fnc_getMagazineMass;
+    private _magLoad = [player] call aee_physiology_fnc_getMagazineLoad;
+    private _magOk = (_magKnown > 0.140) && {(_magKnown < 0.143)}
+        && {(_magTier == 0.3)}
+        && {(_magLoad >= 0)};
+    if (_magOk) then {
+        diag_log text format ["[PHASE57] [PASS] magazine mass: 30Rnd 5.56 %1 kg, unknown 75Rnd tier %2 kg, carried %3", _magKnown, _magTier, _magLoad];
+    } else {
+        diag_log text format ["[PHASE57] [FAIL] magazine mass: known %1, tier %2", _magKnown, _magTier];
+    };
+
 diag_log text "[AEE-TEST] DONE";
         }, [_t1], 5] call CBA_fnc_waitAndExecute;
     }, [], 7] call CBA_fnc_waitAndExecute;
