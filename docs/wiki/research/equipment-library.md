@@ -246,6 +246,27 @@ CBRN protection-time basis (for the Arrhenius Q10 persistence model):
   cyclohexane/HCN/CK/phosgene; Avon typical >20/>45/>45/>100 min.
   Carbon service life roughly halves per doubling of concentration.
 
+## Weapons (the load-carriage addition)
+
+The library below covers the uniform, vest, helmet, goggles and pack. A
+weapon is not a slot, so its mass is resolved separately by
+`aee_physiology_fnc_getWeaponMass` and added to the combined load by
+`aee_physiology_fnc_getWeaponLoad`.
+
+The value comes from the weapon catalogue in the ballistics addon, which
+holds the maker's published mass (`mass_kg`) for every weapon it
+identifies. The call is guarded, so physiology works without ballistics,
+and a family keyword tier supplies a fallback (launcher 5.0, sniper 6.5,
+LMG 8.0, SMG 2.8, handgun 0.9, shotgun 3.2, rifle 3.5). ADR-004 records
+the placement.
+
+Magazines are counted. `aee_physiology_fnc_getMagazineMass` is generated
+from the magazine research set (76 maker-published masses) and matches a
+classname on its capacity and its chambering, with a capacity tier as a
+fallback. `aee_physiology_fnc_getMagazineLoad` adds the empty mass plus the
+rounds held, using the published loaded-round mass for the chambering.
+Both join the combined load.
+
 ## Classname mapping (verified against installed configs)
 
 Vanilla inventory extracted from the installed game configs: 139 helmet
@@ -258,7 +279,7 @@ Tortila, RK-SHT-30, UMBTS, 6Sh117, Eagle III, ALICE packs).
 
 ## Dynamic classification (no hardcoding)
 
-The library classifies EVERY item by its classname's family keywords —
+The library classifies EVERY item by its classname's family keywords:
 the codebase's dynamic pattern.  Per-classname config entries were
 considered and rejected: RHS alone has 2,000+ headgear classes, and a
 config list can never cover a mod we have never seen.  The keyword
@@ -277,7 +298,7 @@ correctly:
   rucksack family
 
 The uniform library (fnc_getClothingInsulation) keeps its config walk
-for the uniform slot — the uniform family signal is weaker (classnames
+for the uniform slot, because the uniform family signal is weaker (classnames
 are less standardised), so the CfgWeapons inheritance chain disambiguates
 there.  Helmets/vests/packs classify on the name alone.
 
