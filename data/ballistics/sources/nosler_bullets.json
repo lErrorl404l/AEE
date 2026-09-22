@@ -1,0 +1,2147 @@
+{
+ "url": "https://www.nosler.com/media/binaryanvil/media_library/2026-Catalog-Layout_Web.pdf",
+ "retrieved": "2026-09-22",
+ "sha256": "50bdc768a8e53b5253f9a396aa786d70be54b8a7d95797b80d65f14e0c91eecc",
+ "bullets": [
+  {
+   "description": "6mm 100 Gr. Spitzer Solid Base",
+   "part": "38050",
+   "diameter_in": 0.243,
+   "mass_gr": 100.0,
+   "bc_g1": 0.388,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 150 Gr. Round Nose Solid Base",
+   "part": "38058",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0,
+   "bc_g1": 0.232,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "350 LGND 180 Gr. Protected Point Solid Base",
+   "part": "38064",
+   "diameter_in": 0.355,
+   "mass_gr": 180.0,
+   "bc_g1": 0.245,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "45 Cal 300 Gr. Protected Point Solid Base",
+   "part": "38068",
+   "diameter_in": 0.458,
+   "mass_gr": 300.0,
+   "bc_g1": 0.191,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 140 Gr. Spitzer Solid Base",
+   "part": "38052",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0,
+   "bc_g1": 0.495,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 150 Gr. Spitzer Solid Base",
+   "part": "38060",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0,
+   "bc_g1": 0.398,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "400 LGND 215 Gr. Protected Point Solid Base",
+   "part": "38066",
+   "diameter_in": 0.4,
+   "mass_gr": 215.0,
+   "bc_g1": 0.215,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "270 Cal 130 Gr. Spitzer Solid Base",
+   "part": "38054",
+   "diameter_in": 0.277,
+   "mass_gr": 130.0,
+   "bc_g1": 0.424,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 165 Gr. Spitzer Solid Base",
+   "part": "38062",
+   "diameter_in": 0.308,
+   "mass_gr": 165.0,
+   "bc_g1": 0.442,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 140 Gr. Spitzer Solid Base",
+   "part": "38056",
+   "diameter_in": 0.284,
+   "mass_gr": 140.0,
+   "bc_g1": 0.459,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 60 Gr. Spitzer Partition",
+   "part": "16316",
+   "diameter_in": 0.224,
+   "mass_gr": 60.0,
+   "bc_g1": 0.228,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "25 Cal 120 Gr. Spitzer Partition",
+   "part": "35643",
+   "diameter_in": 0.257,
+   "mass_gr": 120.0,
+   "bc_g1": 0.391,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "270 Cal 150 Gr. Spitzer Partition",
+   "part": "16323",
+   "diameter_in": 0.277,
+   "mass_gr": 150.0,
+   "bc_g1": 0.465,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 150 Gr. Spitzer Partition",
+   "part": "16329",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0,
+   "bc_g1": 0.387,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 220 Gr. Semi Spitzer Partition",
+   "part": "16332",
+   "diameter_in": 0.308,
+   "mass_gr": 220.0,
+   "bc_g1": 0.351,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "35 Cal 250 Gr. Spitzer Partition",
+   "part": "44801",
+   "diameter_in": 0.358,
+   "mass_gr": 250.0,
+   "bc_g1": 0.446,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 85 Gr. Spitzer Partition",
+   "part": "16314",
+   "diameter_in": 0.243,
+   "mass_gr": 85.0,
+   "bc_g1": 0.315,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": 12.0
+  },
+  {
+   "description": "6.5mm 100 Gr. Spitzer Partition",
+   "part": "16319",
+   "diameter_in": 0.264,
+   "mass_gr": 100.0,
+   "bc_g1": 0.326,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "270 Cal 160 Gr. Semi Spitzer Partition",
+   "part": "16324",
+   "diameter_in": 0.277,
+   "mass_gr": 160.0,
+   "bc_g1": 0.434,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 165 Gr. Spitzer Partition",
+   "part": "16330",
+   "diameter_in": 0.308,
+   "mass_gr": 165.0,
+   "bc_g1": 0.41,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "8mm 200 Gr. Spitzer Partition",
+   "part": "35277",
+   "diameter_in": 0.323,
+   "mass_gr": 200.0,
+   "bc_g1": 0.426,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "9.3mm 286 Gr. Spitzer (18.5 gram) Partition",
+   "part": "44750",
+   "diameter_in": 0.366,
+   "mass_gr": 286.0,
+   "bc_g1": 0.482,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 95 Gr. Spitzer Partition",
+   "part": "16315",
+   "diameter_in": 0.243,
+   "mass_gr": 95.0,
+   "bc_g1": 0.365,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 125 Gr. Spitzer Partition",
+   "part": "16320",
+   "diameter_in": 0.264,
+   "mass_gr": 125.0,
+   "bc_g1": 0.449,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 140 Gr. Spitzer Partition",
+   "part": "16325",
+   "diameter_in": 0.284,
+   "mass_gr": 140.0,
+   "bc_g1": 0.434,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 170 Gr. Round Nose Partition",
+   "part": "16333",
+   "diameter_in": 0.308,
+   "mass_gr": 170.0,
+   "bc_g1": 0.252,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "338 Cal 210 Gr. Spitzer Partition",
+   "part": "16337",
+   "diameter_in": 0.338,
+   "mass_gr": 210.0,
+   "bc_g1": 0.4,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "375 Cal 260 Gr. Spitzer Partition",
+   "part": "44850",
+   "diameter_in": 0.375,
+   "mass_gr": 260.0,
+   "bc_g1": 0.314,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 100 Gr. Spitzer Partition",
+   "part": "35642",
+   "diameter_in": 0.243,
+   "mass_gr": 100.0,
+   "bc_g1": 0.384,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 140 Gr. Spitzer Partition",
+   "part": "16321",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0,
+   "bc_g1": 0.49,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 150 Gr. Spitzer Partition",
+   "part": "16326",
+   "diameter_in": 0.284,
+   "mass_gr": 150.0,
+   "bc_g1": 0.456,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 180 Gr. Protected Point Partition",
+   "part": "25396",
+   "diameter_in": 0.308,
+   "mass_gr": 180.0,
+   "bc_g1": 0.361,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "338 Cal 225 Gr. Spitzer Partition",
+   "part": "16336",
+   "diameter_in": 0.338,
+   "mass_gr": 225.0,
+   "bc_g1": 0.454,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "375 Cal 300 Gr. Spitzer Partition",
+   "part": "44845",
+   "diameter_in": 0.375,
+   "mass_gr": 300.0,
+   "bc_g1": 0.398,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "25 Cal 100 Gr. Spitzer Partition",
+   "part": "16317",
+   "diameter_in": 0.257,
+   "mass_gr": 100.0,
+   "bc_g1": 0.377,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "270 Cal 130 Gr. Spitzer Partition",
+   "part": "16322",
+   "diameter_in": 0.277,
+   "mass_gr": 130.0,
+   "bc_g1": 0.416,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 160 Gr. Spitzer Partition",
+   "part": "16327",
+   "diameter_in": 0.284,
+   "mass_gr": 160.0,
+   "bc_g1": 0.475,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 180 Gr. Spitzer Partition",
+   "part": "16331",
+   "diameter_in": 0.308,
+   "mass_gr": 180.0,
+   "bc_g1": 0.474,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "338 Cal 250 Gr. Spitzer Partition",
+   "part": "35644",
+   "diameter_in": 0.338,
+   "mass_gr": 250.0,
+   "bc_g1": 0.473,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "25 Cal 115 Gr. Spitzer Partition",
+   "part": "16318",
+   "diameter_in": 0.257,
+   "mass_gr": 115.0,
+   "bc_g1": 0.389,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "270 Cal 140 Gr. Spitzer Partition",
+   "part": "35200",
+   "diameter_in": 0.277,
+   "mass_gr": 140.0,
+   "bc_g1": 0.432,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 175 Gr. Spitzer Partition",
+   "part": "35645",
+   "diameter_in": 0.284,
+   "mass_gr": 175.0,
+   "bc_g1": 0.519,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 200 Gr. Spitzer Partition",
+   "part": "35626",
+   "diameter_in": 0.308,
+   "mass_gr": 200.0,
+   "bc_g1": 0.481,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "35 Cal 225 Gr. Spitzer Partition",
+   "part": "44800",
+   "diameter_in": 0.358,
+   "mass_gr": 225.0,
+   "bc_g1": 0.421,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 70 Gr. Spitzer AccuBond",
+   "part": "53780",
+   "diameter_in": 0.224,
+   "mass_gr": 70.0,
+   "bc_g1": 0.37,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "270 Cal 140 Gr. Spitzer AccuBond",
+   "part": "54765",
+   "diameter_in": 0.277,
+   "mass_gr": 140.0,
+   "bc_g1": 0.46,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 150 Gr. Spitzer AccuBond",
+   "part": "56719",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0,
+   "bc_g1": 0.435,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "338 Cal 200 Gr. Spitzer AccuBond",
+   "part": "56382",
+   "diameter_in": 0.338,
+   "mass_gr": 200.0,
+   "bc_g1": 0.414,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "375 Cal 260 Gr. Spitzer W/Cannelure AccuBond",
+   "part": "54413",
+   "diameter_in": 0.375,
+   "mass_gr": 260.0,
+   "bc_g1": 0.473,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 90 Gr. Spitzer AccuBond",
+   "part": "56357",
+   "diameter_in": 0.243,
+   "mass_gr": 90.0,
+   "bc_g1": 0.376,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": 9.0
+  },
+  {
+   "description": "270 Cal 150 Gr. Spitzer AccuBond",
+   "part": "54801",
+   "diameter_in": 0.277,
+   "mass_gr": 150.0,
+   "bc_g1": 0.5,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 165 Gr. Spitzer AccuBond",
+   "part": "55602",
+   "diameter_in": 0.308,
+   "mass_gr": 165.0,
+   "bc_g1": 0.475,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "338 Cal 225 Gr. Spitzer AccuBond",
+   "part": "54357",
+   "diameter_in": 0.338,
+   "mass_gr": 225.0,
+   "bc_g1": 0.55,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "375 Cal 300 Gr. Spitzer W/Cannelure AccuBond",
+   "part": "53662",
+   "diameter_in": 0.375,
+   "mass_gr": 300.0,
+   "bc_g1": 0.485,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "25 Cal 110 Gr. Spitzer AccuBond",
+   "part": "53742",
+   "diameter_in": 0.257,
+   "mass_gr": 110.0,
+   "bc_g1": 0.418,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 140 Gr. Spitzer AccuBond",
+   "part": "59992",
+   "diameter_in": 0.284,
+   "mass_gr": 140.0,
+   "bc_g1": 0.485,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 180 Gr. Spitzer AccuBond",
+   "part": "54825",
+   "diameter_in": 0.308,
+   "mass_gr": 180.0,
+   "bc_g1": 0.507,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "338 Cal 250 Gr. Spitzer AccuBond",
+   "part": "57287",
+   "diameter_in": 0.338,
+   "mass_gr": 250.0,
+   "bc_g1": 0.575,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 130 Gr. Spitzer AccuBond",
+   "part": "56902",
+   "diameter_in": 0.264,
+   "mass_gr": 130.0,
+   "bc_g1": 0.488,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 150 Gr. Spitzer AccuBond",
+   "part": "54951",
+   "diameter_in": 0.284,
+   "mass_gr": 150.0,
+   "bc_g1": 0.493,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 200 Gr. Spitzer AccuBond",
+   "part": "54618",
+   "diameter_in": 0.308,
+   "mass_gr": 200.0,
+   "bc_g1": 0.588,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "338 Cal 300 Gr. Spitzer AccuBond",
+   "part": "54851",
+   "diameter_in": 0.338,
+   "mass_gr": 300.0,
+   "bc_g1": 0.72,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 140 Gr. Spitzer AccuBond",
+   "part": "57873",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0,
+   "bc_g1": 0.509,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 160 Gr. Spitzer AccuBond",
+   "part": "54932",
+   "diameter_in": 0.284,
+   "mass_gr": 160.0,
+   "bc_g1": 0.531,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "8mm 200 Gr. Spitzer AccuBond",
+   "part": "54374",
+   "diameter_in": 0.323,
+   "mass_gr": 200.0,
+   "bc_g1": 0.45,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "35 Cal 225 Gr. Spitzer ( Whelen ) AccuBond",
+   "part": "50712",
+   "diameter_in": 0.358,
+   "mass_gr": 225.0,
+   "bc_g1": 0.43,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "270 Cal 130 Gr. Spitzer AccuBond",
+   "part": "54987",
+   "diameter_in": 0.277,
+   "mass_gr": 130.0,
+   "bc_g1": 0.435,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 125 Gr. Spitzer AccuBond",
+   "part": "52165",
+   "diameter_in": 0.308,
+   "mass_gr": 125.0,
+   "bc_g1": 0.366,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "338 Cal 180 Gr. Spitzer AccuBond",
+   "part": "57625",
+   "diameter_in": 0.338,
+   "mass_gr": 180.0,
+   "bc_g1": 0.372,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "9.3mm 250 Gr. Spitzer W/Cannelure AccuBond",
+   "part": "59756",
+   "diameter_in": 0.366,
+   "mass_gr": 250.0,
+   "bc_g1": 0.494,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 129 Gr. Spitzer AccuBond Long Range",
+   "part": "58943",
+   "diameter_in": 0.264,
+   "mass_gr": 129.0,
+   "bc_g1": 0.53,
+   "bc_g7": 0.267,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "270 Cal 165 Gr. Spitzer AccuBond Long Range",
+   "part": "54827",
+   "diameter_in": 0.277,
+   "mass_gr": 165.0,
+   "bc_g1": 0.62,
+   "bc_g7": 0.312,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 168 Gr. Spitzer AccuBond Long Range",
+   "part": "58455",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0,
+   "bc_g1": 0.525,
+   "bc_g7": 0.265,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "338 Cal 265 Gr. Spitzer AccuBond Long Range",
+   "part": "58454",
+   "diameter_in": 0.338,
+   "mass_gr": 265.0,
+   "bc_g1": 0.732,
+   "bc_g7": 0.369,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 142 Gr. Spitzer AccuBond Long Range",
+   "part": "58922",
+   "diameter_in": 0.264,
+   "mass_gr": 142.0,
+   "bc_g1": 0.625,
+   "bc_g7": 0.315,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 150 Gr. Spitzer AccuBond Long Range",
+   "part": "58734",
+   "diameter_in": 0.284,
+   "mass_gr": 150.0,
+   "bc_g1": 0.546,
+   "bc_g7": 0.275,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "338 Cal 300 Gr. Spitzer AccuBond Long Range",
+   "part": "58456",
+   "diameter_in": 0.338,
+   "mass_gr": 300.0,
+   "bc_g1": 0.64,
+   "bc_g7": 0.325,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 168 Gr. Spitzer AccuBond Long Range",
+   "part": "58930",
+   "diameter_in": 0.284,
+   "mass_gr": 168.0,
+   "bc_g1": 0.616,
+   "bc_g7": 0.31,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 210 Gr. Spitzer AccuBond Long Range",
+   "part": "58623",
+   "diameter_in": 0.308,
+   "mass_gr": 210.0,
+   "bc_g1": 0.661,
+   "bc_g7": 0.333,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "270 Cal 150 Gr. Spitzer AccuBond Long Range",
+   "part": "58836",
+   "diameter_in": 0.277,
+   "mass_gr": 150.0,
+   "bc_g1": 0.591,
+   "bc_g7": 0.298,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 175 Gr. Spitzer AccuBond Long Range",
+   "part": "58517",
+   "diameter_in": 0.284,
+   "mass_gr": 175.0,
+   "bc_g1": 0.648,
+   "bc_g7": 0.326,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 90 Gr. Spitzer (Purple Tip) Ballistic Tip Hunting",
+   "part": "24090",
+   "diameter_in": 0.243,
+   "mass_gr": 90.0,
+   "bc_g1": 0.365,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 140 Gr. Spitzer (Brown Tip) Ballistic Tip Hunting",
+   "part": "26140",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0,
+   "bc_g1": 0.509,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 140 Gr. Spitzer (Red Tip) Ballistic Tip Hunting",
+   "part": "28140",
+   "diameter_in": 0.284,
+   "mass_gr": 140.0,
+   "bc_g1": 0.485,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 168 Gr. Spitzer (Green Tip) Ballistic Tip Hunting",
+   "part": "30168",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0,
+   "bc_g1": 0.49,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 220 Gr. Round Nose (Green Tip) Ballistic Tip Hunting",
+   "part": "30181",
+   "diameter_in": 0.308,
+   "mass_gr": 220.0,
+   "bc_g1": 0.472,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 95 Gr. Spitzer (Purple Tip) Ballistic Tip Hunting",
+   "part": "24095",
+   "diameter_in": 0.243,
+   "mass_gr": 95.0,
+   "bc_g1": 0.379,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "270 Cal 130 Gr. Spitzer (Yellow Tip) Ballistic Tip Hunting",
+   "part": "27130",
+   "diameter_in": 0.277,
+   "mass_gr": 130.0,
+   "bc_g1": 0.433,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 150 Gr. Spitzer (Red Tip) Ballistic Tip Hunting",
+   "part": "28150",
+   "diameter_in": 0.284,
+   "mass_gr": 150.0,
+   "bc_g1": 0.493,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 180 Gr. Spitzer (Green Tip) Ballistic Tip Hunting",
+   "part": "30180",
+   "diameter_in": 0.308,
+   "mass_gr": 180.0,
+   "bc_g1": 0.507,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "25 Cal 100 Gr. Spitzer (Blue Tip) Ballistic Tip Hunting",
+   "part": "25100",
+   "diameter_in": 0.257,
+   "mass_gr": 100.0,
+   "bc_g1": 0.393,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "270 Cal 140 Gr. Spitzer (Yellow Tip) Ballistic Tip Hunting",
+   "part": "27140",
+   "diameter_in": 0.277,
+   "mass_gr": 140.0,
+   "bc_g1": 0.456,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 160 Gr. Spitzer (Red Tip) Ballistic Tip Hunting",
+   "part": "28125",
+   "diameter_in": 0.284,
+   "mass_gr": 160.0,
+   "bc_g1": 0.531,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7.62x39 123 Gr. Spitzer (Green Tip) Ballistic Tip Hunting",
+   "part": "30131",
+   "diameter_in": 0.31,
+   "mass_gr": 123.0,
+   "bc_g1": 0.31,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "25 Cal 115 Gr. Spitzer (Blue Tip) Ballistic Tip Hunting",
+   "part": "25115",
+   "diameter_in": 0.257,
+   "mass_gr": 115.0,
+   "bc_g1": 0.453,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "270 Cal 150 Gr. Spitzer (Yellow Tip) Ballistic Tip Hunting",
+   "part": "27150",
+   "diameter_in": 0.277,
+   "mass_gr": 150.0,
+   "bc_g1": 0.496,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 125 Gr. Spitzer (Green Tip) Ballistic Tip Hunting",
+   "part": "30125",
+   "diameter_in": 0.308,
+   "mass_gr": 125.0,
+   "bc_g1": 0.366,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "8mm 180 Gr. Spitzer (Gunmetal Tip) Ballistic Tip Hunting",
+   "part": "32180",
+   "diameter_in": 0.323,
+   "mass_gr": 180.0,
+   "bc_g1": 0.394,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 100 Gr. Spitzer (Brown Tip) Ballistic Tip Hunting",
+   "part": "26100",
+   "diameter_in": 0.264,
+   "mass_gr": 100.0,
+   "bc_g1": 0.35,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "270 Cal 170 Gr. Spitzer (Yellow Tip) Ballistic Tip Hunting",
+   "part": "28135",
+   "diameter_in": 0.277,
+   "mass_gr": 170.0,
+   "bc_g1": 0.55,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 150 Gr. Spitzer (Green Tip) Ballistic Tip Hunting",
+   "part": "30150",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0,
+   "bc_g1": 0.435,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "458 Cal 300 Gr. Spitzer (Orange Tip) Ballistic Tip Hunting",
+   "part": "31456",
+   "diameter_in": 0.458,
+   "mass_gr": 300.0,
+   "bc_g1": 0.25,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 120 Gr. Spitzer (Brown Tip) Ballistic Tip Hunting",
+   "part": "26120",
+   "diameter_in": 0.264,
+   "mass_gr": 120.0,
+   "bc_g1": 0.458,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 120 Gr. Spitzer (Red Tip) Ballistic Tip Hunting",
+   "part": "28120",
+   "diameter_in": 0.284,
+   "mass_gr": 120.0,
+   "bc_g1": 0.417,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": 8.0
+  },
+  {
+   "description": "30 Cal 165 Gr. Spitzer (Green Tip) Ballistic Tip Hunting",
+   "part": "30165",
+   "diameter_in": 0.308,
+   "mass_gr": 165.0,
+   "bc_g1": 0.475,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 95 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip",
+   "part": "51040",
+   "diameter_in": 0.243,
+   "mass_gr": 95.0,
+   "bc_g1": 0.379,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 150 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip",
+   "part": "51150",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0,
+   "bc_g1": 0.435,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "25 Cal 115 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip",
+   "part": "51050",
+   "diameter_in": 0.257,
+   "mass_gr": 115.0,
+   "bc_g1": 0.453,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 150 Gr. Round Nose (Silver Tip) CT Ballistic Silvertip",
+   "part": "51165",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0,
+   "bc_g1": 0.232,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "270 Cal 130 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip",
+   "part": "51075",
+   "diameter_in": 0.277,
+   "mass_gr": 130.0,
+   "bc_g1": 0.433,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 168 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip",
+   "part": "51160",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0,
+   "bc_g1": 0.49,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "270 Cal 150 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip",
+   "part": "51100",
+   "diameter_in": 0.277,
+   "mass_gr": 150.0,
+   "bc_g1": 0.496,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 180 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip",
+   "part": "51170",
+   "diameter_in": 0.308,
+   "mass_gr": 180.0,
+   "bc_g1": 0.507,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 140 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip",
+   "part": "51105",
+   "diameter_in": 0.284,
+   "mass_gr": 140.0,
+   "bc_g1": 0.485,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "338 Cal 200 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip",
+   "part": "51200",
+   "diameter_in": 0.338,
+   "mass_gr": 200.0,
+   "bc_g1": 0.414,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 150 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip",
+   "part": "51110",
+   "diameter_in": 0.284,
+   "mass_gr": 150.0,
+   "bc_g1": 0.493,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 55 Gr. Spitzer E-Tip",
+   "part": "59624",
+   "diameter_in": 0.224,
+   "mass_gr": 55.0,
+   "bc_g1": 0.305,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 150 Gr. Spitzer E-Tip",
+   "part": "59426",
+   "diameter_in": 0.284,
+   "mass_gr": 150.0,
+   "bc_g1": 0.498,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7.62x39 123 Gr. Spitzer E-Tip",
+   "part": "59387",
+   "diameter_in": 0.31,
+   "mass_gr": 123.0,
+   "bc_g1": 0.316,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "9.3mm 250 Gr. Spitzer E-Tip",
+   "part": "59270",
+   "diameter_in": 0.366,
+   "mass_gr": 250.0,
+   "bc_g1": 0.494,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 90 Gr. Spitzer E-Tip",
+   "part": "59165",
+   "diameter_in": 0.243,
+   "mass_gr": 90.0,
+   "bc_g1": 0.403,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": 10.0
+  },
+  {
+   "description": "300 AAC 110 Gr. Spitzer E-Tip",
+   "part": "59380",
+   "diameter_in": 0.308,
+   "mass_gr": 110.0,
+   "bc_g1": 0.245,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "8mm 180 Gr. Spitzer E-Tip",
+   "part": "59265",
+   "diameter_in": 0.323,
+   "mass_gr": 180.0,
+   "bc_g1": 0.427,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "375 Cal 260 Gr. Spitzer E-Tip",
+   "part": "59379",
+   "diameter_in": 0.375,
+   "mass_gr": 260.0,
+   "bc_g1": 0.49,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "25 Cal 100 Gr. Spitzer E-Tip",
+   "part": "59456",
+   "diameter_in": 0.257,
+   "mass_gr": 100.0,
+   "bc_g1": 0.409,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": 9.0
+  },
+  {
+   "description": "30/30 150 Gr. Round Nose E-Tip",
+   "part": "59451",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0,
+   "bc_g1": 0.344,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "338 Cal 200 Gr. Spitzer E-Tip",
+   "part": "59186",
+   "diameter_in": 0.338,
+   "mass_gr": 200.0,
+   "bc_g1": 0.425,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 120 Gr. Spitzer E-Tip",
+   "part": "59765",
+   "diameter_in": 0.264,
+   "mass_gr": 120.0,
+   "bc_g1": 0.497,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 150 Gr. Spitzer E-Tip",
+   "part": "59378",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0,
+   "bc_g1": 0.469,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "338 Cal 225 Gr. Spitzer E-Tip",
+   "part": "59372",
+   "diameter_in": 0.338,
+   "mass_gr": 225.0,
+   "bc_g1": 0.611,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "270 Cal 130 Gr. Spitzer E-Tip",
+   "part": "59298",
+   "diameter_in": 0.277,
+   "mass_gr": 130.0,
+   "bc_g1": 0.459,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 168 Gr. Spitzer E-Tip",
+   "part": "59415",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0,
+   "bc_g1": 0.503,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "338 Cal 250 Gr. Spitzer E-Tip",
+   "part": "59385",
+   "diameter_in": 0.338,
+   "mass_gr": 250.0,
+   "bc_g1": 0.627,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 140 Gr. Spitzer E-Tip",
+   "part": "59955",
+   "diameter_in": 0.284,
+   "mass_gr": 140.0,
+   "bc_g1": 0.489,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 180 Gr. Spitzer E-Tip",
+   "part": "59180",
+   "diameter_in": 0.308,
+   "mass_gr": 180.0,
+   "bc_g1": 0.523,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "204 Cal 32 Gr. Spitzer (Maroon Tip) Ballistic Tip Varmint",
+   "part": "35216",
+   "diameter_in": 0.204,
+   "mass_gr": 32.0,
+   "bc_g1": 0.206,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 55 Gr. Spitzer (Purple Tip) Ballistic Tip Varmint",
+   "part": "24055",
+   "diameter_in": 0.243,
+   "mass_gr": 55.0,
+   "bc_g1": 0.276,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 80 Gr. Spitzer (Purple Tip) Ballistic Tip Varmint",
+   "part": "24080",
+   "diameter_in": 0.243,
+   "mass_gr": 80.0,
+   "bc_g1": 0.329,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "17 Cal 20 Gr. FBHP Ballistic Tip Varmint",
+   "part": "17205",
+   "diameter_in": 0.172,
+   "mass_gr": 20.0,
+   "bc_g1": 0.119,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 53 Gr. FB Tipped (Metallic Black Tip) Ballistic Tip Varmint",
+   "part": "36523",
+   "diameter_in": 0.224,
+   "mass_gr": 53.0,
+   "bc_g1": 0.303,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 110 Gr. FB Tipped (Metallic Black Tip) Ballistic Tip Varmint",
+   "part": "34057",
+   "diameter_in": 0.308,
+   "mass_gr": 110.0,
+   "bc_g1": 0.293,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "204 Cal 40 Gr. Spitzer (Maroon Tip) Ballistic Tip Varmint",
+   "part": "52111",
+   "diameter_in": 0.204,
+   "mass_gr": 40.0,
+   "bc_g1": 0.239,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 70 Gr. Spitzer (Purple Tip) Ballistic Tip Varmint",
+   "part": "39532",
+   "diameter_in": 0.243,
+   "mass_gr": 70.0,
+   "bc_g1": 0.31,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "25 Cal 85 Gr. Spitzer (Blue Tip) Ballistic Tip Varmint",
+   "part": "43004",
+   "diameter_in": 0.257,
+   "mass_gr": 85.0,
+   "bc_g1": 0.329,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "17 Cal 20 Gr. FB Tipped (Metallic Black Tip) Ballistic Tip Varmint",
+   "part": "17210",
+   "diameter_in": 0.172,
+   "mass_gr": 20.0,
+   "bc_g1": 0.183,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 55 Gr. FB Tipped (Metallic Black Tip) Ballistic Tip Varmint",
+   "part": "17240",
+   "diameter_in": 0.224,
+   "mass_gr": 55.0,
+   "bc_g1": 0.255,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7.62x39 123 Gr. FB Tipped (Metallic Black Tip) Ballistic Tip Varmint",
+   "part": "34056",
+   "diameter_in": 0.31,
+   "mass_gr": 123.0,
+   "bc_g1": 0.304,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 40 Gr. Spitzer (Orange Tip) Ballistic Tip Varmint",
+   "part": "39510",
+   "diameter_in": 0.224,
+   "mass_gr": 40.0,
+   "bc_g1": 0.221,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "204 Cal 32 Gr. FB Tipped (Metallic Black Tip) Ballistic Tip Varmint",
+   "part": "17220",
+   "diameter_in": 0.204,
+   "mass_gr": 32.0,
+   "bc_g1": 0.204,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 62 Gr. FBHP W/Cannelure Ballistic Tip Varmint",
+   "part": "35631",
+   "diameter_in": 0.224,
+   "mass_gr": 62.0,
+   "bc_g1": 0.251,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 50 Gr. Spitzer (Orange Tip) Ballistic Tip Varmint",
+   "part": "39522",
+   "diameter_in": 0.224,
+   "mass_gr": 50.0,
+   "bc_g1": 0.238,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 35 Gr. FB Tipped (Metallic Black Tip) Ballistic Tip Varmint",
+   "part": "36763",
+   "diameter_in": 0.224,
+   "mass_gr": 35.0,
+   "bc_g1": 0.12,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 55 Gr. FB Tipped (Metallic Black Tip) Ballistic Tip Varmint",
+   "part": "17250",
+   "diameter_in": 0.243,
+   "mass_gr": 55.0,
+   "bc_g1": 0.252,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 55 Gr. Spitzer (Orange Tip) Ballistic Tip Varmint",
+   "part": "39526",
+   "diameter_in": 0.224,
+   "mass_gr": 55.0,
+   "bc_g1": 0.267,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 40 Gr. FB Tipped (Metallic Black Tip) Ballistic Tip Varmint",
+   "part": "17230",
+   "diameter_in": 0.224,
+   "mass_gr": 40.0,
+   "bc_g1": 0.211,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 70 Gr. FB Tipped (Metallic Black Tip) Ballistic Tip Varmint",
+   "part": "26123",
+   "diameter_in": 0.243,
+   "mass_gr": 70.0,
+   "bc_g1": 0.305,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 60 Gr. Spitzer (Orange Tip) Ballistic Tip Varmint",
+   "part": "34992",
+   "diameter_in": 0.224,
+   "mass_gr": 60.0,
+   "bc_g1": 0.27,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 50 Gr. FB Tipped (Metallic Black Tip) Ballistic Tip Varmint",
+   "part": "17223",
+   "diameter_in": 0.224,
+   "mass_gr": 50.0,
+   "bc_g1": 0.227,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 90 Gr. FB Tipped (Metallic Black Tip) Ballistic Tip Varmint",
+   "part": "26129",
+   "diameter_in": 0.264,
+   "mass_gr": 90.0,
+   "bc_g1": 0.35,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "204 Cal 32 Gr. Spitzer (Metallic Maroon Tip) Ballistic Tip Lead-Free",
+   "part": "45140",
+   "diameter_in": 0.204,
+   "mass_gr": 32.0,
+   "bc_g1": 0.228,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "50 Cal 300 Gr. Spitzer Ballistic Tip Lead-Free",
+   "part": "50300",
+   "diameter_in": 0.5,
+   "mass_gr": 300.0,
+   "bc_g1": 0.25,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 35 Gr. Spitzer (Metallic Orange Tip) Ballistic Tip Lead-Free",
+   "part": "45150",
+   "diameter_in": 0.224,
+   "mass_gr": 35.0,
+   "bc_g1": 0.201,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 40 Gr. Spitzer (Metallic Orange Tip) Ballistic Tip Lead-Free",
+   "part": "45160",
+   "diameter_in": 0.224,
+   "mass_gr": 40.0,
+   "bc_g1": 0.22,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 50 Gr. Spitzer Ballistic Tip Lead-Free",
+   "part": "45498",
+   "diameter_in": 0.224,
+   "mass_gr": 50.0,
+   "bc_g1": 0.251,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 55 Gr. Spitzer Ballistic Tip Lead-Free",
+   "part": "45170",
+   "diameter_in": 0.243,
+   "mass_gr": 55.0,
+   "bc_g1": 0.288,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 70 Gr. HPBT RDF",
+   "part": "53066",
+   "diameter_in": 0.224,
+   "mass_gr": 70.0,
+   "bc_g1": 0.416,
+   "bc_g7": 0.211,
+   "length_in": null,
+   "min_twist_in": 7.5
+  },
+  {
+   "description": "6mm 115 Gr. HPBT RDF",
+   "part": "53507",
+   "diameter_in": 0.243,
+   "mass_gr": 115.0,
+   "bc_g1": 0.634,
+   "bc_g7": 0.312,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 185 Gr. HPBT RDF",
+   "part": "53432",
+   "diameter_in": 0.284,
+   "mass_gr": 185.0,
+   "bc_g1": 0.719,
+   "bc_g7": 0.357,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "338 Cal 300 Gr. HPBT RDF",
+   "part": "53445",
+   "diameter_in": 0.338,
+   "mass_gr": 300.0,
+   "bc_g1": 0.826,
+   "bc_g7": 0.415,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 77 Gr. HPBT RDF",
+   "part": "53452",
+   "diameter_in": 0.224,
+   "mass_gr": 77.0,
+   "bc_g1": 0.454,
+   "bc_g7": 0.228,
+   "length_in": null,
+   "min_twist_in": 8.0
+  },
+  {
+   "description": "6.5mm 130 Gr. HPBT RDF",
+   "part": "53505",
+   "diameter_in": 0.264,
+   "mass_gr": 130.0,
+   "bc_g1": 0.615,
+   "bc_g7": 0.307,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 168 Gr. HPBT RDF",
+   "part": "53182",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0,
+   "bc_g1": 0.505,
+   "bc_g7": 0.253,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 85 Gr. HPBT RDF",
+   "part": "53441",
+   "diameter_in": 0.224,
+   "mass_gr": 85.0,
+   "bc_g1": 0.498,
+   "bc_g7": 0.245,
+   "length_in": null,
+   "min_twist_in": 8.0
+  },
+  {
+   "description": "6.5mm 140 Gr. HPBT RDF",
+   "part": "49824",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0,
+   "bc_g1": 0.658,
+   "bc_g7": 0.33,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 175 Gr. HPBT RDF",
+   "part": "53170",
+   "diameter_in": 0.308,
+   "mass_gr": 175.0,
+   "bc_g1": 0.536,
+   "bc_g7": 0.27,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 105 Gr. HPBT RDF",
+   "part": "53410",
+   "diameter_in": 0.243,
+   "mass_gr": 105.0,
+   "bc_g1": 0.571,
+   "bc_g7": 0.28,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 150 Gr. HPBT RDF",
+   "part": "49826",
+   "diameter_in": 0.264,
+   "mass_gr": 150.0,
+   "bc_g1": 0.67,
+   "bc_g7": 0.342,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 210 Gr. HPBT RDF",
+   "part": "53434",
+   "diameter_in": 0.308,
+   "mass_gr": 210.0,
+   "bc_g1": 0.707,
+   "bc_g7": 0.348,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 52 Gr. HPBT Custom Competition",
+   "part": "53294",
+   "diameter_in": 0.224,
+   "mass_gr": 52.0,
+   "bc_g1": 0.22,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 123 Gr. HPBT Custom Competition",
+   "part": "53415",
+   "diameter_in": 0.264,
+   "mass_gr": 123.0,
+   "bc_g1": 0.51,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 175 Gr. HPBT Custom Competition",
+   "part": "53952",
+   "diameter_in": 0.308,
+   "mass_gr": 175.0,
+   "bc_g1": 0.505,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 69 Gr. HPBT Custom Competition",
+   "part": "17101",
+   "diameter_in": 0.224,
+   "mass_gr": 69.0,
+   "bc_g1": 0.305,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": 9.0
+  },
+  {
+   "description": "6.5mm 140 Gr. HPBT Custom Competition",
+   "part": "26725",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0,
+   "bc_g1": 0.529,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 190 Gr. HPBT Custom Competition",
+   "part": "53412",
+   "diameter_in": 0.308,
+   "mass_gr": 190.0,
+   "bc_g1": 0.53,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 77 Gr. HPBT W/Cannelure Custom Competition",
+   "part": "53033",
+   "diameter_in": 0.224,
+   "mass_gr": 77.0,
+   "bc_g1": 0.34,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": 8.0
+  },
+  {
+   "description": "6.8mm 115 Gr. HPBT W/Cannelure Custom Competition",
+   "part": "45357",
+   "diameter_in": 0.277,
+   "mass_gr": 115.0,
+   "bc_g1": 0.375,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 220 Gr. HPBT Custom Competition",
+   "part": "53154",
+   "diameter_in": 0.308,
+   "mass_gr": 220.0,
+   "bc_g1": 0.69,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 77 Gr. HPBT Custom Competition",
+   "part": "22421",
+   "diameter_in": 0.224,
+   "mass_gr": 77.0,
+   "bc_g1": 0.34,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": 8.0
+  },
+  {
+   "description": "7mm 168 Gr. HPBT Custom Competition",
+   "part": "53418",
+   "diameter_in": 0.284,
+   "mass_gr": 168.0,
+   "bc_g1": 0.52,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "8mm 200 Gr. HPBT Custom Competition",
+   "part": "49524",
+   "diameter_in": 0.323,
+   "mass_gr": 200.0,
+   "bc_g1": 0.52,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 80 Gr. HPBT Custom Competition",
+   "part": "25116",
+   "diameter_in": 0.224,
+   "mass_gr": 80.0,
+   "bc_g1": 0.415,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": 8.0
+  },
+  {
+   "description": "30 Cal 155 Gr. HPBT Custom Competition",
+   "part": "53155",
+   "diameter_in": 0.308,
+   "mass_gr": 155.0,
+   "bc_g1": 0.45,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "338 Cal 250 Gr. HPBT Custom Competition",
+   "part": "57520",
+   "diameter_in": 0.338,
+   "mass_gr": 250.0,
+   "bc_g1": 0.59,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 107 Gr. HPBT Custom Competition",
+   "part": "49742",
+   "diameter_in": 0.243,
+   "mass_gr": 107.0,
+   "bc_g1": 0.525,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": 8.0
+  },
+  {
+   "description": "30 Cal 168 Gr. HPBT Custom Competition",
+   "part": "53164",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0,
+   "bc_g1": 0.462,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "338 Cal 300 Gr. HPBT Custom Competition",
+   "part": "53515",
+   "diameter_in": 0.338,
+   "mass_gr": 300.0,
+   "bc_g1": 0.8,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "38 Cal 158 Gr. JHP Sporting Handgun",
+   "part": "44841",
+   "diameter_in": 0.357,
+   "mass_gr": 158.0,
+   "bc_g1": 0.182,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "44 Cal 300 Gr. JHP Sporting Handgun",
+   "part": "42069",
+   "diameter_in": 0.429,
+   "mass_gr": 300.0,
+   "bc_g1": 0.206,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "9mm 115 Gr. JHP Sporting Handgun",
+   "part": "44848",
+   "diameter_in": 0.355,
+   "mass_gr": 115.0,
+   "bc_g1": 0.109,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "10mm 150 Gr. JHP Sporting Handgun",
+   "part": "44860",
+   "diameter_in": 0.4,
+   "mass_gr": 150.0,
+   "bc_g1": 0.106,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "44 Cal 240 Gr. JHP Sporting Handgun",
+   "part": "44917",
+   "diameter_in": 0.429,
+   "mass_gr": 240.0,
+   "bc_g1": 0.185,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "41 Cal 210 Gr. JHP Sporting Handgun",
+   "part": "43012",
+   "diameter_in": 0.41,
+   "mass_gr": 210.0,
+   "bc_g1": 0.17,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "45 Colt 250 Gr. JHP Sporting Handgun",
+   "part": "43013",
+   "diameter_in": 0.451,
+   "mass_gr": 250.0,
+   "bc_g1": 0.177,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "9mm 124 Gr. JHP Sporting Handgun",
+   "part": "43123",
+   "diameter_in": 0.355,
+   "mass_gr": 124.0,
+   "bc_g1": 0.118,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "10mm 180 Gr. JHP Sporting Handgun",
+   "part": "44885",
+   "diameter_in": 0.4,
+   "mass_gr": 180.0,
+   "bc_g1": 0.147,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "45 Cal 185 Gr. JHP Sporting Handgun",
+   "part": "44847",
+   "diameter_in": 0.451,
+   "mass_gr": 185.0,
+   "bc_g1": 0.142,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "44 Cal 200 Gr. JHP Sporting Handgun",
+   "part": "44846",
+   "diameter_in": 0.429,
+   "mass_gr": 200.0,
+   "bc_g1": 0.151,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "9mm 147 Gr. JHP Sporting Handgun",
+   "part": "43258",
+   "diameter_in": 0.355,
+   "mass_gr": 147.0,
+   "bc_g1": 0.156,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "10mm 200 Gr. JHP Sporting Handgun",
+   "part": "44952",
+   "diameter_in": 0.4,
+   "mass_gr": 200.0,
+   "bc_g1": 0.163,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "45 Cal 230 Gr. JHP Sporting Handgun",
+   "part": "44922",
+   "diameter_in": 0.451,
+   "mass_gr": 230.0,
+   "bc_g1": 0.175,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "44 Cal 240 Gr. JHP Sporting Handgun",
+   "part": "44842",
+   "diameter_in": 0.429,
+   "mass_gr": 240.0,
+   "bc_g1": 0.173,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "38 Cal 125 Gr. JHP Sporting Handgun",
+   "part": "44912",
+   "diameter_in": 0.357,
+   "mass_gr": 125.0,
+   "bc_g1": 0.13,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "44 Cal 240 Gr. JSP Sporting Handgun",
+   "part": "44868",
+   "diameter_in": 0.429,
+   "mass_gr": 240.0,
+   "bc_g1": 0.177,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "10mm 135 Gr. JHP Sporting Handgun",
+   "part": "44852",
+   "diameter_in": 0.4,
+   "mass_gr": 135.0,
+   "bc_g1": 0.093,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  }
+ ]
+}

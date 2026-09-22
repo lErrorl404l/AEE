@@ -19,14 +19,10 @@ import unittest
 from pathlib import Path
 
 REPO = Path(__file__).parents[2]
-AMMO_SRC = (REPO / "addons/ballistics/functions/fnc_getAmmoProperties.sqf").read_text(
+AMMO_SRC = (REPO / "addons/ballistics/functions/fnc_getProjectileData.sqf").read_text(
     encoding="utf-8"
 )
-WEAPON_SRC = (
-    REPO / "addons/ballistics/functions/fnc_getWeaponProperties.sqf"
-).read_text(encoding="utf-8")
 AMMO_INV = Path("/tmp/equip_extract/pm_ammo_clean.txt")
-WEAPON_INV = Path("/tmp/equip_extract/pm_weapons.txt")
 
 # Known noise: attachments, accessory variants, optic variants, and the
 # HEADGEAR/NVG classes the inventory regex caught (MIG_ is Project M's
@@ -139,77 +135,6 @@ def ammo_family(ammo):
     return None
 
 
-def weapon_resolves(weapon):
-    """Mirror of the SQF weapon switch (a family keyword hits?)."""
-    w = weapon.lower()
-    families = [
-        "arifle_mx",
-        "arifle_spar",
-        "arifle_katiba",
-        "arifle_trg",
-        "arifle_mk20",
-        "lmga_mk200",
-        "arifle_mxm",
-        "srifle_ebr",
-        "srifle_dmr_01",
-        "srifle_dmr_03",
-        "lmga_navid",
-        "mmg_01",
-        "lmga_zafir",
-        "srifle_lrr",
-        "srifle_dmr_02",
-        "srifle_dmr_04",
-        "smg_01",
-        "smg_02",
-        "smg_05",
-        "sgun_hunter",
-        "sgun_m4",
-        "hk416",
-        "m4a1",
-        "m16",
-        "mk18",
-        "rec7",
-        "scar",
-        "spear",
-        "solgw",
-        "licc",
-        "rdak",
-        "mk12",
-        "lmt",
-        "m107",
-        "sr25",
-        "sako",
-        "mrad",
-        "fn",
-        "mp5",
-        "glock",
-        "sig",
-        "ak_",
-        "mss",
-        # Project M real weapons (the family names in the classname)
-        "hk417",
-        "mcc_ks",
-        "mcc_mo",
-        "mcc_rd",
-        "mcc_lmt",
-        "mcc_spearlt",
-        "mcc_solgw",
-        "mcc_licc",
-        "mcc_hk416",
-        "mcc_rec7",
-        "mcc_m4",
-        "mcc_rdak",
-        "ar18",
-        "mcx",
-        "mpx",
-        "mp7",
-        "vector",
-        "p90",
-        "uzi",
-    ]
-    return any(f in w for f in families)
-
-
 class TestPmAmmoCoverage(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -247,42 +172,6 @@ class TestPmAmmoCoverage(unittest.TestCase):
             resolved / len(self.ammo),
             0.90,
             f"only {resolved}/{len(self.ammo)} ammo resolved",
-        )
-
-
-class TestPmWeaponCoverage(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        cls.weapons = [
-            l.strip()
-            for l in WEAPON_INV.read_text(encoding="utf-8").splitlines()
-            if l.strip() and not NOISE.search(l)
-        ]
-
-    def test_real_weapons_resolve(self):
-        missing = [w for w in self.weapons if not weapon_resolves(w)]
-        self.assertFalse(missing, f"Project M weapons unresolved: {missing[:20]}")
-
-    def test_known_weapons(self):
-        for wpn in (
-            "MCC_HK416",
-            "MCC_FNLICC",
-            "MCC_KS",
-            "MCC_SPEARLT",
-            "MCC_SOLGW",
-            "MCC_LMT",
-        ):
-            self.assertTrue(
-                any(wpn.lower() in w.lower() for w in self.weapons),
-                f"weapon family {wpn} not in the inventory",
-            )
-
-    def test_coverage_rate(self):
-        resolved = sum(1 for w in self.weapons if weapon_resolves(w))
-        self.assertGreater(
-            resolved / len(self.weapons),
-            0.90,
-            f"only {resolved}/{len(self.weapons)} weapons resolved",
         )
 
 

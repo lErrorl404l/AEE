@@ -1,0 +1,1077 @@
+{
+ "retrieved": "2026-09-22",
+ "sources": [
+  {
+   "source_id": "saami_z299_2",
+   "title": "ANSI/SAAMI Z299.2-2019, Voluntary Industry Performance Standards for Pressure and Velocity of Shotshell Ammunition for the Use of Commercial Manufacturers",
+   "url": "https://saami.org/wp-content/uploads/2025/09/ANSI-SAAMI-Z299.2-Shotshell-2019-Approved-2025-09-23.pdf",
+   "sha256": "79cf4e153ffa630c8d2e10a1fa5d336bae6d413b57901d77b43e8eb9f6dcf148"
+  },
+  {
+   "source_id": "cip_10tk-17051-en",
+   "title": "CIP TDCC Tab VIII, alarm cartridge datasheet, 10tk-17051-en",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-viii/10tk-17051-en.pdf",
+   "sha256": "a7c8ead40c5667335a7ba3233f53b184e2fc50c3dd55272d702770247199d804"
+  },
+  {
+   "source_id": "cip_12-32-blanc-en",
+   "title": "CIP TDCC Tab VIII, alarm cartridge datasheet, 12-32-blanc-en",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-viii/12-32-blanc-en.pdf",
+   "sha256": "9b3fa30437b6b09da378d8786971795e8e98eb2600bc29acca97b3c1ac60c434"
+  },
+  {
+   "source_id": "cip_12-55-en",
+   "title": "CIP TDCC Tab VII, shot cartridge datasheet, 12-55-en",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/12-55-en.pdf",
+   "sha256": "59da485bc7b069dbd8b75cfbce4c68b1a7219c2679c30f069c929c340551424c"
+  },
+  {
+   "source_id": "cip_357-magnum-en",
+   "title": "CIP TDCC Tab IV, pistol and revolver cartridge datasheet, 357-magnum-en",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-iv/357-magnum-en.pdf",
+   "sha256": "be82ccac39fb343cd1b5370b46545e0982aa783fc778ea0d27c086af63f0876b"
+  },
+  {
+   "source_id": "cip_410-en-1",
+   "title": "CIP TDCC Tab VII, shot cartridge datasheet, 410-en-1",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/410-en-1.pdf",
+   "sha256": "6a20151ccfa54a940eb745a3a95e83249e14e44759b03eb36557d4d2c0c6069f"
+  },
+  {
+   "source_id": "cip_410-en-2",
+   "title": "CIP TDCC Tab VII, shot cartridge datasheet, 410-en-2",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/410-en-2.pdf",
+   "sha256": "6a20151ccfa54a940eb745a3a95e83249e14e44759b03eb36557d4d2c0c6069f"
+  },
+  {
+   "source_id": "cip_410-en-3",
+   "title": "CIP TDCC Tab VII, shot cartridge datasheet, 410-en-3",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/410-en-3.pdf",
+   "sha256": "6a20151ccfa54a940eb745a3a95e83249e14e44759b03eb36557d4d2c0c6069f"
+  },
+  {
+   "source_id": "cip_410-en-4",
+   "title": "CIP TDCC Tab VII, shot cartridge datasheet, 410-en-4",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/410-en-4.pdf",
+   "sha256": "6a20151ccfa54a940eb745a3a95e83249e14e44759b03eb36557d4d2c0c6069f"
+  },
+  {
+   "source_id": "cip_410-en-5",
+   "title": "CIP TDCC Tab VII, shot cartridge datasheet, 410-en-5",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/410-en-5.pdf",
+   "sha256": "6a20151ccfa54a940eb745a3a95e83249e14e44759b03eb36557d4d2c0c6069f"
+  },
+  {
+   "source_id": "cip_410-en-6",
+   "title": "CIP TDCC Tab VII, shot cartridge datasheet, 410-en-6",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/410-en-6.pdf",
+   "sha256": "6a20151ccfa54a940eb745a3a95e83249e14e44759b03eb36557d4d2c0c6069f"
+  },
+  {
+   "source_id": "cip_44-rem-mag-200922-en",
+   "title": "CIP TDCC Tab IV, pistol and revolver cartridge datasheet, 44-rem-mag-200922-en",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-iv/44-rem-mag-200922-en.pdf",
+   "sha256": "c8a1e41834079cbe7e8a5d33ddab92ea4c47d008b0f7df4a556ed8a2f97dd5ca"
+  },
+  {
+   "source_id": "cip_6-mm-centrale-falco-en",
+   "title": "CIP TDCC Tab VII, central fire shot cartridge datasheet, 6-mm-centrale-falco-en",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/6-mm-centrale-falco-en.pdf",
+   "sha256": "947588dc12711fe8fd4481c5b9735956448d6e33f28281f700aa7f453ca5e101"
+  },
+  {
+   "source_id": "cip_tabiical-en-page103",
+   "title": "CIP TDCC Tab II, rimmed cartridge datasheet, tabiical-en-page103",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-ii/tabiical-en-page103.pdf",
+   "sha256": "e109d2856f6993c321948860311e10180759d650b35bca8b81a1b05c64aab967"
+  },
+  {
+   "source_id": "cip_tabivcal-en-page58",
+   "title": "CIP TDCC Tab IV, pistol and revolver cartridge datasheet, tabivcal-en-page58",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-iv/tabivcal-en-page58.pdf",
+   "sha256": "80893f449129aff734270e2cbe4d06cedcac083b71d827461351e1b7fdbc2d49"
+  },
+  {
+   "source_id": "cip_tabivcal-en-page74",
+   "title": "CIP TDCC Tab IV, pistol and revolver cartridge datasheet, tabivcal-en-page74",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-iv/tabivcal-en-page74.pdf",
+   "sha256": "f1e55a0e35feaf12cb2fe19edeccd879a7276d49f72c682a4df874799a0f3d28"
+  },
+  {
+   "source_id": "cip_tabivcal-en-page79",
+   "title": "CIP TDCC Tab IV, pistol and revolver cartridge datasheet, tabivcal-en-page79",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-iv/tabivcal-en-page79.pdf",
+   "sha256": "bafd95da4a239c5d13c3fdb05ba4ace49cedb6ffcc953c9aa8aa9ad9a5012bef"
+  },
+  {
+   "source_id": "cip_tabivcal-en-page82",
+   "title": "CIP TDCC Tab IV, pistol and revolver cartridge datasheet, tabivcal-en-page82",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-iv/tabivcal-en-page82.pdf",
+   "sha256": "6348b18e67e3be39dbc6280c0ee64eae7ab2c236b70d89a53a5e5d4eed63b7a8"
+  },
+  {
+   "source_id": "cip_tabvical-en-page1",
+   "title": "CIP TDCC Tab VI, industrial cartridge datasheet, tabvical-en-page1",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vi/tabvical-en-page1.pdf",
+   "sha256": "15cfc5d11b808cfe37c50501f3fa13198c48bd5fcebc22818a6116b02c97f09e"
+  },
+  {
+   "source_id": "cip_tabvical-en-page10",
+   "title": "CIP TDCC Tab VI, industrial cartridge datasheet, tabvical-en-page10",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vi/tabvical-en-page10.pdf",
+   "sha256": "5f9c7a7101aa500d9b6bfac09accbab34bd2336d911f7f17c3527a00b90f19bb"
+  },
+  {
+   "source_id": "cip_tabvical-en-page11",
+   "title": "CIP TDCC Tab VI, industrial cartridge datasheet, tabvical-en-page11",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vi/tabvical-en-page11.pdf",
+   "sha256": "6af5a7817d3420d462ce7708747fb97033976b69f019231d0c338b68449a89d0"
+  },
+  {
+   "source_id": "cip_tabvical-en-page12",
+   "title": "CIP TDCC Tab VI, industrial cartridge datasheet, tabvical-en-page12",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vi/tabvical-en-page12.pdf",
+   "sha256": "daa5efc63500c5339ad0685588d17874c988836c85429e80e6b3b3735b834760"
+  },
+  {
+   "source_id": "cip_tabvical-en-page15",
+   "title": "CIP TDCC Tab VI, industrial cartridge datasheet, tabvical-en-page15",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vi/tabvical-en-page15.pdf",
+   "sha256": "1f96e4e3a0c8bc95fe20822dce6fce1ea81f072ff2388f8aa3d411b8cafc991d"
+  },
+  {
+   "source_id": "cip_tabvical-en-page16",
+   "title": "CIP TDCC Tab VI, industrial cartridge datasheet, tabvical-en-page16",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vi/tabvical-en-page16.pdf",
+   "sha256": "e954bada52960540eb2860eb41014e569bfe4a519c60b17eb02dc21bb69568e1"
+  },
+  {
+   "source_id": "cip_tabvical-en-page17",
+   "title": "CIP TDCC Tab VI, industrial cartridge datasheet, tabvical-en-page17",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vi/tabvical-en-page17.pdf",
+   "sha256": "8cba4f292b35261b1233075171a4efe6cdfa7a687a8aa6807e242ab291717c90"
+  },
+  {
+   "source_id": "cip_tabvical-en-page4",
+   "title": "CIP TDCC Tab VI, industrial cartridge datasheet, tabvical-en-page4",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vi/tabvical-en-page4.pdf",
+   "sha256": "fb5cd444b0feec2c0b24d10a7339751f500b773faf263efc4e26e3b84838451b"
+  },
+  {
+   "source_id": "cip_tabvical-en-page5",
+   "title": "CIP TDCC Tab VI, industrial cartridge datasheet, tabvical-en-page5",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vi/tabvical-en-page5.pdf",
+   "sha256": "a804e31d267a69258487043eb18b6bed3785779dc1ec5986cd10e04b1fde2f75"
+  },
+  {
+   "source_id": "cip_tabvical-en-page6",
+   "title": "CIP TDCC Tab VI, industrial cartridge datasheet, tabvical-en-page6",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vi/tabvical-en-page6.pdf",
+   "sha256": "0b4e1b71937312b103a88e439c71cfe6b43b8aefe09c8133f37a26623ba72186"
+  },
+  {
+   "source_id": "cip_tabvical-en-page7",
+   "title": "CIP TDCC Tab VI, industrial cartridge datasheet, tabvical-en-page7",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vi/tabvical-en-page7.pdf",
+   "sha256": "921fe8d0c27ca2b0904ccb93f6db1d4c8388d06ac844b7b707777826fb95c922"
+  },
+  {
+   "source_id": "cip_tabvical-en-page8",
+   "title": "CIP TDCC Tab VI, industrial cartridge datasheet, tabvical-en-page8",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vi/tabvical-en-page8.pdf",
+   "sha256": "94f849c3ecc7c05e61d659edd319920bc1b7e322b50570711f717384c927f962"
+  },
+  {
+   "source_id": "cip_tabvical-en-page9",
+   "title": "CIP TDCC Tab VI, industrial cartridge datasheet, tabvical-en-page9",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vi/tabvical-en-page9.pdf",
+   "sha256": "fc1a5b55f6a3ed33dbfc58c93c91810c484f47f178377072695bca8d9f6b3ea0"
+  },
+  {
+   "source_id": "cip_tabvii-20-en",
+   "title": "CIP TDCC Tab VII, shot cartridge datasheet, tabvii-20-en",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/tabvii-20-en.pdf",
+   "sha256": "f7670b55732fc03c209247f7b845490e60b4b6761386fa84d441dd0539b1687e"
+  },
+  {
+   "source_id": "cip_tabvii-28-eng-2",
+   "title": "CIP TDCC Tab VII, shot cartridge datasheet, tabvii-28-eng-2",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/tabvii-28-eng-2.pdf",
+   "sha256": "6a2ccbe076e05dcf6d47860533c44e4bd5f9528b98ef2782983e465e11f8aec5"
+  },
+  {
+   "source_id": "cip_tabviical-en-page1",
+   "title": "CIP TDCC Tab VII, shot cartridge datasheet, tabviical-en-page1",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/tabviical-en-page1.pdf",
+   "sha256": "b8b05f3a3a03bbe9be90b612b1f12c2abd0a1166a5915c4931358c332d98105a"
+  },
+  {
+   "source_id": "cip_tabviical-en-page10",
+   "title": "CIP TDCC Tab VII, shot cartridge datasheet, tabviical-en-page10",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/tabviical-en-page10.pdf",
+   "sha256": "a386370a6eee8db6eaf458d14af06b565290bf6bc385ba644ebd908033cceb7e"
+  },
+  {
+   "source_id": "cip_tabviical-en-page11",
+   "title": "CIP TDCC Tab VII, shot cartridge datasheet, tabviical-en-page11",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/tabviical-en-page11.pdf",
+   "sha256": "d60181335c504f958d32c256b4f202d0dc5e0703c1f214bee19cfd8646441742"
+  },
+  {
+   "source_id": "cip_tabviical-en-page13",
+   "title": "CIP TDCC Tab VII, shot cartridge datasheet, tabviical-en-page13",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/tabviical-en-page13.pdf",
+   "sha256": "64449a883dd3b06984edde6af151f3d15016f35700a5d9cc6fc19633eaf76f4b"
+  },
+  {
+   "source_id": "cip_tabviical-en-page14",
+   "title": "CIP TDCC Tab VII, shot cartridge datasheet, tabviical-en-page14",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/tabviical-en-page14.pdf",
+   "sha256": "58fbf1e471d95f014bd02852b882555dc73d31cd8f23922a35098167bc2010d6"
+  },
+  {
+   "source_id": "cip_tabviical-en-page15",
+   "title": "CIP TDCC Tab VII, shot cartridge datasheet, tabviical-en-page15",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/tabviical-en-page15.pdf",
+   "sha256": "abd5c1d62e485cd356fb7e64b96adef9d2ed9afe104f96cda2405b9e351d01ee"
+  },
+  {
+   "source_id": "cip_tabviical-en-page16",
+   "title": "CIP TDCC Tab VII, shot cartridge datasheet, tabviical-en-page16",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/tabviical-en-page16.pdf",
+   "sha256": "1d6cc4ce76f65d2bc3b2c85241337cebc92126888a7e7495d31df47f5be5bd9d"
+  },
+  {
+   "source_id": "cip_tabviical-en-page2",
+   "title": "CIP TDCC Tab VII, shot cartridge datasheet, tabviical-en-page2",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/tabviical-en-page2.pdf",
+   "sha256": "f1458004c449e3889b5dfe75771535b6806487d649a5e078ea2d35e8b90d0768"
+  },
+  {
+   "source_id": "cip_tabviical-en-page3",
+   "title": "CIP TDCC Tab VII, shot cartridge datasheet, tabviical-en-page3",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/tabviical-en-page3.pdf",
+   "sha256": "ad0daf8c64711ec5aed514982fbe6346ce5fe5ceb5b3b73c42500868de7aea5d"
+  },
+  {
+   "source_id": "cip_tabviical-en-page5",
+   "title": "CIP TDCC Tab VII, shot cartridge datasheet, tabviical-en-page5",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/tabviical-en-page5.pdf",
+   "sha256": "68254f5458be91d8ba3782b5c0f545205c0bfaa97df58c9382f9729b76ac6713"
+  },
+  {
+   "source_id": "cip_tabviical-en-page6",
+   "title": "CIP TDCC Tab VII, shot cartridge datasheet, tabviical-en-page6",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/tabviical-en-page6.pdf",
+   "sha256": "b9a479353610f34a143bb665d4ce725b9277d68967b9135659b4fdca2427caa2"
+  },
+  {
+   "source_id": "cip_tabviical-en-page8",
+   "title": "CIP TDCC Tab VII, shot cartridge datasheet, tabviical-en-page8",
+   "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/tabviical-en-page8.pdf",
+   "sha256": "686033263b9fa61d2b1fbfd82a942579ed1c2a2b6add113635c2a1bbe573654e"
+  }
+ ],
+ "cartridges": [
+  {
+   "cartridge": "4/82",
+   "map_psi": 15229,
+   "map_mpa": 105.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabviical-en-page1",
+   "note": "CIP Pmax 1050 bar, transducer method"
+  },
+  {
+   "cartridge": "4/101",
+   "map_psi": 15229,
+   "map_mpa": 105.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabviical-en-page1",
+   "note": "CIP Pmax 1050 bar, transducer method"
+  },
+  {
+   "cartridge": "8/82",
+   "map_psi": 15229,
+   "map_mpa": 105.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabviical-en-page2",
+   "note": "CIP Pmax 1050 bar, transducer method"
+  },
+  {
+   "cartridge": "8/100",
+   "map_psi": 15229,
+   "map_mpa": 105.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabviical-en-page2",
+   "note": "CIP Pmax 1050 bar, transducer method"
+  },
+  {
+   "cartridge": "10/76",
+   "map_psi": 15229,
+   "map_mpa": 105.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabviical-en-page3",
+   "note": "CIP Pmax 1050 bar, transducer method"
+  },
+  {
+   "cartridge": "10/82",
+   "map_psi": 15229,
+   "map_mpa": 105.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabviical-en-page3",
+   "note": "CIP Pmax 1050 bar, transducer method"
+  },
+  {
+   "cartridge": "10/89",
+   "map_psi": 15229,
+   "map_mpa": 105.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabviical-en-page3",
+   "note": "CIP Pmax 1050 bar, transducer method"
+  },
+  {
+   "cartridge": "12/35 T",
+   "map_psi": 2176,
+   "map_mpa": 15.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_12-55-en",
+   "note": "CIP Pmax 150 bar, transducer method"
+  },
+  {
+   "cartridge": "12/55",
+   "map_psi": 10733,
+   "map_mpa": 74.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_12-55-en",
+   "note": "CIP Pmax 740 bar, transducer method"
+  },
+  {
+   "cartridge": "12/60",
+   "map_psi": 10733,
+   "map_mpa": 74.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_12-55-en",
+   "note": "CIP Pmax 740 bar, transducer method"
+  },
+  {
+   "cartridge": "12/65",
+   "map_psi": 10733,
+   "map_mpa": 74.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_12-55-en",
+   "note": "CIP Pmax 740 bar, transducer method"
+  },
+  {
+   "cartridge": "12/67",
+   "map_psi": 10733,
+   "map_mpa": 74.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_12-55-en",
+   "note": "CIP Pmax 740 bar, transducer method"
+  },
+  {
+   "cartridge": "12/70",
+   "map_psi": 10733,
+   "map_mpa": 74.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_12-55-en",
+   "note": "CIP Pmax 740 bar, transducer method"
+  },
+  {
+   "cartridge": "12/73",
+   "map_psi": 15229,
+   "map_mpa": 105.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_12-55-en",
+   "note": "CIP Pmax 1050 bar, transducer method"
+  },
+  {
+   "cartridge": "12/76",
+   "map_psi": 15229,
+   "map_mpa": 105.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_12-55-en",
+   "note": "CIP Pmax 1050 bar, transducer method"
+  },
+  {
+   "cartridge": "12/89",
+   "map_psi": 15229,
+   "map_mpa": 105.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_12-55-en",
+   "note": "CIP Pmax 1050 bar, transducer method"
+  },
+  {
+   "cartridge": "14/65",
+   "map_psi": 10733,
+   "map_mpa": 74.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabviical-en-page5",
+   "note": "CIP Pmax 740 bar, transducer method"
+  },
+  {
+   "cartridge": "14/67",
+   "map_psi": 10733,
+   "map_mpa": 74.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabviical-en-page5",
+   "note": "CIP Pmax 740 bar, transducer method"
+  },
+  {
+   "cartridge": "14/70",
+   "map_psi": 10733,
+   "map_mpa": 74.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabviical-en-page5",
+   "note": "CIP Pmax 740 bar, transducer method"
+  },
+  {
+   "cartridge": "16/65",
+   "map_psi": 11313,
+   "map_mpa": 78.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabviical-en-page6",
+   "note": "CIP Pmax 780 bar, transducer method"
+  },
+  {
+   "cartridge": "16/67",
+   "map_psi": 11313,
+   "map_mpa": 78.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabviical-en-page6",
+   "note": "CIP Pmax 780 bar, transducer method"
+  },
+  {
+   "cartridge": "16/70",
+   "map_psi": 11313,
+   "map_mpa": 78.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabviical-en-page6",
+   "note": "CIP Pmax 780 bar, transducer method"
+  },
+  {
+   "cartridge": "16/76",
+   "map_psi": 15229,
+   "map_mpa": 105.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabviical-en-page6",
+   "note": "CIP Pmax 1050 bar, transducer method"
+  },
+  {
+   "cartridge": "20/58",
+   "map_psi": 12038,
+   "map_mpa": 83.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabvii-20-en",
+   "note": "CIP Pmax 830 bar, transducer method"
+  },
+  {
+   "cartridge": "20/65",
+   "map_psi": 12038,
+   "map_mpa": 83.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabvii-20-en",
+   "note": "CIP Pmax 830 bar, transducer method"
+  },
+  {
+   "cartridge": "20/67",
+   "map_psi": 12038,
+   "map_mpa": 83.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabvii-20-en",
+   "note": "CIP Pmax 830 bar, transducer method"
+  },
+  {
+   "cartridge": "20/70",
+   "map_psi": 12038,
+   "map_mpa": 83.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabvii-20-en",
+   "note": "CIP Pmax 830 bar, transducer method"
+  },
+  {
+   "cartridge": "20/76",
+   "map_psi": 15229,
+   "map_mpa": 105.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabvii-20-en",
+   "note": "CIP Pmax 1050 bar, transducer method"
+  },
+  {
+   "cartridge": "20/89",
+   "map_psi": 15229,
+   "map_mpa": 105.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabvii-20-en",
+   "note": "CIP Pmax 1050 bar, transducer method"
+  },
+  {
+   "cartridge": "24/63,5",
+   "map_psi": 12038,
+   "map_mpa": 83.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabviical-en-page8",
+   "note": "CIP Pmax 830 bar, transducer method"
+  },
+  {
+   "cartridge": "24/65",
+   "map_psi": 12038,
+   "map_mpa": 83.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabviical-en-page8",
+   "note": "CIP Pmax 830 bar, transducer method"
+  },
+  {
+   "cartridge": "24/70",
+   "map_psi": 12038,
+   "map_mpa": 83.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabviical-en-page8",
+   "note": "CIP Pmax 830 bar, transducer method"
+  },
+  {
+   "cartridge": "28/58,5",
+   "map_psi": 12038,
+   "map_mpa": 83.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabvii-28-eng-2",
+   "note": "CIP Pmax 830 bar, transducer method"
+  },
+  {
+   "cartridge": "28/63,5",
+   "map_psi": 12038,
+   "map_mpa": 83.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabvii-28-eng-2",
+   "note": "CIP Pmax 830 bar, transducer method"
+  },
+  {
+   "cartridge": "28/65",
+   "map_psi": 12038,
+   "map_mpa": 83.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabvii-28-eng-2",
+   "note": "CIP Pmax 830 bar, transducer method"
+  },
+  {
+   "cartridge": "28/70",
+   "map_psi": 12038,
+   "map_mpa": 83.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabvii-28-eng-2",
+   "note": "CIP Pmax 830 bar, transducer method"
+  },
+  {
+   "cartridge": "28/76",
+   "map_psi": 15229,
+   "map_mpa": 105.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabvii-28-eng-2",
+   "note": "CIP Pmax 1050 bar, transducer method"
+  },
+  {
+   "cartridge": "32/50,7",
+   "map_psi": 12038,
+   "map_mpa": 83.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabviical-en-page10",
+   "note": "CIP Pmax 830 bar, transducer method"
+  },
+  {
+   "cartridge": "32/60",
+   "map_psi": 12038,
+   "map_mpa": 83.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabviical-en-page10",
+   "note": "CIP Pmax 830 bar, transducer method"
+  },
+  {
+   "cartridge": "32/63,5",
+   "map_psi": 12038,
+   "map_mpa": 83.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabviical-en-page10",
+   "note": "CIP Pmax 830 bar, transducer method"
+  },
+  {
+   "cartridge": "32/65",
+   "map_psi": 12038,
+   "map_mpa": 83.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabviical-en-page10",
+   "note": "CIP Pmax 830 bar, transducer method"
+  },
+  {
+   "cartridge": "32/70",
+   "map_psi": 12038,
+   "map_mpa": 83.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabviical-en-page10",
+   "note": "CIP Pmax 830 bar, transducer method"
+  },
+  {
+   "cartridge": "32/65 RUS",
+   "map_psi": 12038,
+   "map_mpa": 83.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabviical-en-page11",
+   "note": "CIP Pmax 830 bar, transducer method"
+  },
+  {
+   "cartridge": "32/70 RUS",
+   "map_psi": 12038,
+   "map_mpa": 83.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabviical-en-page11",
+   "note": "CIP Pmax 830 bar, transducer method"
+  },
+  {
+   "cartridge": "410/50,7",
+   "map_psi": 12038,
+   "map_mpa": 83.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_410-en-1",
+   "note": "CIP Pmax 830 bar, transducer method"
+  },
+  {
+   "cartridge": "410/63,5",
+   "map_psi": 12038,
+   "map_mpa": 83.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_410-en-2",
+   "note": "CIP Pmax 830 bar, transducer method"
+  },
+  {
+   "cartridge": "410/65",
+   "map_psi": 12038,
+   "map_mpa": 83.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_410-en-3",
+   "note": "CIP Pmax 830 bar, transducer method"
+  },
+  {
+   "cartridge": "410/70",
+   "map_psi": 12038,
+   "map_mpa": 83.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_410-en-4",
+   "note": "CIP Pmax 830 bar, transducer method"
+  },
+  {
+   "cartridge": "410/73",
+   "map_psi": 15229,
+   "map_mpa": 105.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_410-en-5",
+   "note": "CIP Pmax 1050 bar, transducer method"
+  },
+  {
+   "cartridge": "410/76",
+   "map_psi": 15229,
+   "map_mpa": 105.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_410-en-6",
+   "note": "CIP Pmax 1050 bar, transducer method"
+  },
+  {
+   "cartridge": "6 mm Centrale FALCO",
+   "map_psi": 12038,
+   "map_mpa": 83.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_6-mm-centrale-falco-en",
+   "note": "CIP Pmax 830 bar, transducer method"
+  },
+  {
+   "cartridge": "8 mm C.F.",
+   "map_psi": 12038,
+   "map_mpa": 83.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabviical-en-page13",
+   "note": "CIP Pmax 830 bar, transducer method"
+  },
+  {
+   "cartridge": "8/47,5 mm C.F.",
+   "map_psi": 12038,
+   "map_mpa": 83.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabviical-en-page14",
+   "note": "CIP Pmax 830 bar, transducer method"
+  },
+  {
+   "cartridge": "9 mm C.F.",
+   "map_psi": 12038,
+   "map_mpa": 83.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabviical-en-page15",
+   "note": "CIP Pmax 830 bar, transducer method"
+  },
+  {
+   "cartridge": "9 mm C.F. Mori",
+   "map_psi": 12038,
+   "map_mpa": 83.0,
+   "standard": "CIP TDCC Tab VII",
+   "source_id": "cip_tabviical-en-page16",
+   "note": "CIP Pmax 830 bar, transducer method"
+  },
+  {
+   "cartridge": "22 NC (5,5/16)",
+   "map_psi": 40611,
+   "map_mpa": 280.0,
+   "standard": "CIP TDCC Tab VI",
+   "source_id": "cip_tabvical-en-page1",
+   "note": "CIP Pmax 2800 bar, method transducer [Va1]; industrial cartridge pressure is stated for a test volume"
+  },
+  {
+   "cartridge": "22 NC (5,5/16)",
+   "map_psi": 18855,
+   "map_mpa": 130.0,
+   "standard": "CIP TDCC Tab VI",
+   "source_id": "cip_tabvical-en-page1",
+   "note": "CIP Pmax 1300 bar, method transducer [Va2]; industrial cartridge pressure is stated for a test volume"
+  },
+  {
+   "cartridge": "22 (5,6/16)",
+   "map_psi": 62366,
+   "map_mpa": 430.0,
+   "standard": "CIP TDCC Tab VI",
+   "source_id": "cip_tabvical-en-page4",
+   "note": "CIP Pmax 4300 bar, method transducer [Va1]; industrial cartridge pressure is stated for a test volume"
+  },
+  {
+   "cartridge": "22 (5,6/16)",
+   "map_psi": 29008,
+   "map_mpa": 200.0,
+   "standard": "CIP TDCC Tab VI",
+   "source_id": "cip_tabvical-en-page4",
+   "note": "CIP Pmax 2000 bar, method transducer [Va2]; industrial cartridge pressure is stated for a test volume"
+  },
+  {
+   "cartridge": "22 EX (5,6/25)",
+   "map_psi": 68168,
+   "map_mpa": 470.0,
+   "standard": "CIP TDCC Tab VI",
+   "source_id": "cip_tabvical-en-page5",
+   "note": "CIP Pmax 4700 bar, method transducer [Va1]; industrial cartridge pressure is stated for a test volume"
+  },
+  {
+   "cartridge": "22 EX (5,6/25)",
+   "map_psi": 36259,
+   "map_mpa": 250.0,
+   "standard": "CIP TDCC Tab VI",
+   "source_id": "cip_tabvical-en-page5",
+   "note": "CIP Pmax 2500 bar, method transducer [Va2]; industrial cartridge pressure is stated for a test volume"
+  },
+  {
+   "cartridge": "5,7/14",
+   "map_psi": 59465,
+   "map_mpa": 410.0,
+   "standard": "CIP TDCC Tab VI",
+   "source_id": "cip_tabvical-en-page6",
+   "note": "CIP Pmax 4100 bar, method transducer [Va1]; industrial cartridge pressure is stated for a test volume"
+  },
+  {
+   "cartridge": "5,7/14",
+   "map_psi": 26107,
+   "map_mpa": 180.0,
+   "standard": "CIP TDCC Tab VI",
+   "source_id": "cip_tabvical-en-page6",
+   "note": "CIP Pmax 1800 bar, method transducer [Va2]; industrial cartridge pressure is stated for a test volume"
+  },
+  {
+   "cartridge": "5,7/16",
+   "map_psi": 46412,
+   "map_mpa": 320.0,
+   "standard": "CIP TDCC Tab VI",
+   "source_id": "cip_tabvical-en-page7",
+   "note": "CIP Pmax 3200 bar, method transducer [Va1]; industrial cartridge pressure is stated for a test volume"
+  },
+  {
+   "cartridge": "5,7/16",
+   "map_psi": 21756,
+   "map_mpa": 150.0,
+   "standard": "CIP TDCC Tab VI",
+   "source_id": "cip_tabvical-en-page7",
+   "note": "CIP Pmax 1500 bar, method transducer [Va2]; industrial cartridge pressure is stated for a test volume"
+  },
+  {
+   "cartridge": "5,7/25",
+   "map_psi": 36259,
+   "map_mpa": 250.0,
+   "standard": "CIP TDCC Tab VI",
+   "source_id": "cip_tabvical-en-page8",
+   "note": "CIP Pmax 2500 bar, method transducer [Va1]; industrial cartridge pressure is stated for a test volume"
+  },
+  {
+   "cartridge": "5,7/25",
+   "map_psi": 17405,
+   "map_mpa": 120.0,
+   "standard": "CIP TDCC Tab VI",
+   "source_id": "cip_tabvical-en-page8",
+   "note": "CIP Pmax 1200 bar, method transducer [Va2]; industrial cartridge pressure is stated for a test volume"
+  },
+  {
+   "cartridge": "6,3/10",
+   "map_psi": 46412,
+   "map_mpa": 320.0,
+   "standard": "CIP TDCC Tab VI",
+   "source_id": "cip_tabvical-en-page9",
+   "note": "CIP Pmax 3200 bar, method transducer [Va1]; industrial cartridge pressure is stated for a test volume"
+  },
+  {
+   "cartridge": "6,3/10",
+   "map_psi": 23206,
+   "map_mpa": 160.0,
+   "standard": "CIP TDCC Tab VI",
+   "source_id": "cip_tabvical-en-page9",
+   "note": "CIP Pmax 1600 bar, method transducer [Va2]; industrial cartridge pressure is stated for a test volume"
+  },
+  {
+   "cartridge": "6,3/12",
+   "map_psi": 43511,
+   "map_mpa": 300.0,
+   "standard": "CIP TDCC Tab VI",
+   "source_id": "cip_tabvical-en-page10",
+   "note": "CIP Pmax 3000 bar, method transducer [Va1]; industrial cartridge pressure is stated for a test volume"
+  },
+  {
+   "cartridge": "6,3/12",
+   "map_psi": 21756,
+   "map_mpa": 150.0,
+   "standard": "CIP TDCC Tab VI",
+   "source_id": "cip_tabvical-en-page10",
+   "note": "CIP Pmax 1500 bar, method transducer [Va2]; industrial cartridge pressure is stated for a test volume"
+  },
+  {
+   "cartridge": "6,3/14",
+   "map_psi": 38435,
+   "map_mpa": 265.0,
+   "standard": "CIP TDCC Tab VI",
+   "source_id": "cip_tabvical-en-page11",
+   "note": "CIP Pmax 2650 bar, method transducer [Va1]; industrial cartridge pressure is stated for a test volume"
+  },
+  {
+   "cartridge": "6,3/14",
+   "map_psi": 19580,
+   "map_mpa": 135.0,
+   "standard": "CIP TDCC Tab VI",
+   "source_id": "cip_tabvical-en-page11",
+   "note": "CIP Pmax 1350 bar, method transducer [Va2]; industrial cartridge pressure is stated for a test volume"
+  },
+  {
+   "cartridge": "6,3/16",
+   "map_psi": 65267,
+   "map_mpa": 450.0,
+   "standard": "CIP TDCC Tab VI",
+   "source_id": "cip_tabvical-en-page12",
+   "note": "CIP Pmax 4500 bar, method transducer [Va1]; industrial cartridge pressure is stated for a test volume"
+  },
+  {
+   "cartridge": "6,3/16",
+   "map_psi": 34809,
+   "map_mpa": 240.0,
+   "standard": "CIP TDCC Tab VI",
+   "source_id": "cip_tabvical-en-page12",
+   "note": "CIP Pmax 2400 bar, method transducer [Va2]; industrial cartridge pressure is stated for a test volume"
+  },
+  {
+   "cartridge": "6,8/11",
+   "map_psi": 43511,
+   "map_mpa": 300.0,
+   "standard": "CIP TDCC Tab VI",
+   "source_id": "cip_tabvical-en-page15",
+   "note": "CIP Pmax 3000 bar, method transducer [Va1]; industrial cartridge pressure is stated for a test volume"
+  },
+  {
+   "cartridge": "6,8/11",
+   "map_psi": 22481,
+   "map_mpa": 155.0,
+   "standard": "CIP TDCC Tab VI",
+   "source_id": "cip_tabvical-en-page15",
+   "note": "CIP Pmax 1550 bar, method transducer [Va2]; industrial cartridge pressure is stated for a test volume"
+  },
+  {
+   "cartridge": "6,8/15",
+   "map_psi": 58015,
+   "map_mpa": 400.0,
+   "standard": "CIP TDCC Tab VI",
+   "source_id": "cip_tabvical-en-page16",
+   "note": "CIP Pmax 4000 bar, method transducer [Va1]; industrial cartridge pressure is stated for a test volume"
+  },
+  {
+   "cartridge": "6,8/15",
+   "map_psi": 30458,
+   "map_mpa": 210.0,
+   "standard": "CIP TDCC Tab VI",
+   "source_id": "cip_tabvical-en-page16",
+   "note": "CIP Pmax 2100 bar, method transducer [Va2]; industrial cartridge pressure is stated for a test volume"
+  },
+  {
+   "cartridge": "6,8/18",
+   "map_psi": 65267,
+   "map_mpa": 450.0,
+   "standard": "CIP TDCC Tab VI",
+   "source_id": "cip_tabvical-en-page17",
+   "note": "CIP Pmax 4500 bar, method transducer [Va1]; industrial cartridge pressure is stated for a test volume"
+  },
+  {
+   "cartridge": "6,8/18",
+   "map_psi": 36259,
+   "map_mpa": 250.0,
+   "standard": "CIP TDCC Tab VI",
+   "source_id": "cip_tabvical-en-page17",
+   "note": "CIP Pmax 2500 bar, method transducer [Va2]; industrial cartridge pressure is stated for a test volume"
+  },
+  {
+   "cartridge": "400 Purdey 3”",
+   "map_psi": 34809,
+   "map_mpa": 240.0,
+   "standard": "CIP TDCC",
+   "source_id": "cip_tabiical-en-page103",
+   "note": "CIP Tab II Pmax for the 400 Purdey 3 inch cartridge"
+  },
+  {
+   "cartridge": "10TK",
+   "map_psi": 11603,
+   "map_mpa": 80.0,
+   "standard": "CIP TDCC",
+   "source_id": "cip_10tk-17051-en",
+   "note": "CIP Tab VIII alarm cartridge Pmax"
+  },
+  {
+   "cartridge": "Cal. 12 Blanc",
+   "map_psi": 2176,
+   "map_mpa": 15.0,
+   "standard": "CIP TDCC",
+   "source_id": "cip_12-32-blanc-en",
+   "note": "CIP Tab VIII alarm cartridge Pmax; the datasheet lists the 12/32 and 12/45 blank"
+  },
+  {
+   "cartridge": "38 Special (carb)",
+   "map_psi": 21756,
+   "map_mpa": 150.0,
+   "standard": "CIP TDCC",
+   "source_id": "cip_tabivcal-en-page58",
+   "note": "CIP Tab IV Pmax stated on the carbine datasheet"
+  },
+  {
+   "cartridge": "45 Colt (carb)",
+   "map_psi": 15954,
+   "map_mpa": 110.0,
+   "standard": "CIP TDCC",
+   "source_id": "cip_tabivcal-en-page79",
+   "note": "CIP Tab IV Pmax stated on the carbine datasheet"
+  },
+  {
+   "cartridge": "357 Magnum (carb)",
+   "map_psi": 43511,
+   "map_mpa": 300.0,
+   "standard": "CIP TDCC",
+   "source_id": "cip_357-magnum-en",
+   "note": "CIP Tab IV Pmax for the parent 357 Magnum cartridge; the carbine datasheet states no pressure"
+  },
+  {
+   "cartridge": "44 Rem. Mag. (carb)",
+   "map_psi": 40611,
+   "map_mpa": 280.0,
+   "standard": "CIP TDCC",
+   "source_id": "cip_44-rem-mag-200922-en",
+   "note": "CIP Tab IV Pmax for the parent 44 Rem. Mag. cartridge; the carbine datasheet states no pressure"
+  },
+  {
+   "cartridge": "44 S&W Special (carb)",
+   "map_psi": 14504,
+   "map_mpa": 100.0,
+   "standard": "CIP TDCC",
+   "source_id": "cip_tabivcal-en-page74",
+   "note": "CIP Tab IV Pmax for the parent 44 S&W Special cartridge; the carbine datasheet states no pressure"
+  },
+  {
+   "cartridge": "45 S&W Schofield (carb)",
+   "map_psi": 14504,
+   "map_mpa": 100.0,
+   "standard": "CIP TDCC",
+   "source_id": "cip_tabivcal-en-page82",
+   "note": "CIP Tab IV Pmax for the parent 45 S&W Schofield cartridge; the carbine datasheet states no pressure"
+  },
+  {
+   "cartridge": "10/89",
+   "map_psi": 11000,
+   "map_mpa": 75.8,
+   "standard": "SAAMI Z299.2",
+   "source_id": "saami_z299_2",
+   "note": "SAAMI Z299.2 MAP, 10 gauge 3 1/2 inch lead shot load"
+  },
+  {
+   "cartridge": "12/70",
+   "map_psi": 11500,
+   "map_mpa": 79.3,
+   "standard": "SAAMI Z299.2",
+   "source_id": "saami_z299_2",
+   "note": "SAAMI Z299.2 MAP, 12 gauge 2 3/4 inch lead shot load"
+  },
+  {
+   "cartridge": "12/76",
+   "map_psi": 11500,
+   "map_mpa": 79.3,
+   "standard": "SAAMI Z299.2",
+   "source_id": "saami_z299_2",
+   "note": "SAAMI Z299.2 MAP, 12 gauge 3 inch lead shot load"
+  },
+  {
+   "cartridge": "12/89",
+   "map_psi": 14000,
+   "map_mpa": 96.5,
+   "standard": "SAAMI Z299.2",
+   "source_id": "saami_z299_2",
+   "note": "SAAMI Z299.2 MAP, 12 gauge 3 1/2 inch lead shot load"
+  },
+  {
+   "cartridge": "16/70",
+   "map_psi": 11500,
+   "map_mpa": 79.3,
+   "standard": "SAAMI Z299.2",
+   "source_id": "saami_z299_2",
+   "note": "SAAMI Z299.2 MAP, 16 gauge 2 3/4 inch lead shot load"
+  },
+  {
+   "cartridge": "20/70",
+   "map_psi": 12000,
+   "map_mpa": 82.7,
+   "standard": "SAAMI Z299.2",
+   "source_id": "saami_z299_2",
+   "note": "SAAMI Z299.2 MAP, 20 gauge 2 3/4 inch lead shot load"
+  },
+  {
+   "cartridge": "20/76",
+   "map_psi": 12000,
+   "map_mpa": 82.7,
+   "standard": "SAAMI Z299.2",
+   "source_id": "saami_z299_2",
+   "note": "SAAMI Z299.2 MAP, 20 gauge 3 inch lead shot load"
+  },
+  {
+   "cartridge": "28/70",
+   "map_psi": 12500,
+   "map_mpa": 86.2,
+   "standard": "SAAMI Z299.2",
+   "source_id": "saami_z299_2",
+   "note": "SAAMI Z299.2 MAP, 28 gauge 2 3/4 inch lead shot load"
+  },
+  {
+   "cartridge": "410/63,5",
+   "map_psi": 12500,
+   "map_mpa": 86.2,
+   "standard": "SAAMI Z299.2",
+   "source_id": "saami_z299_2",
+   "note": "SAAMI Z299.2 MAP, 410 bore 2 1/2 inch lead shot load"
+  },
+  {
+   "cartridge": "410/76",
+   "map_psi": 13500,
+   "map_mpa": 93.1,
+   "standard": "SAAMI Z299.2",
+   "source_id": "saami_z299_2",
+   "note": "SAAMI Z299.2 MAP, 410 bore 3 inch lead shot load"
+  }
+ ]
+}

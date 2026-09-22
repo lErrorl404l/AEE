@@ -1,0 +1,70 @@
+{
+ "retrieved": "2026-09-22",
+ "sources": [
+  {
+   "source_id": "nato_epvat",
+   "title": "AEP-97 M-CMOPI, EPVAT proof barrel rifling, per calibre annex",
+   "url": "https://diweb.hq.nato.int/",
+   "sha256": "72a1a153108d161c7fdb52ab26d60510d10765bc9bfbdd546c9d1c88390bbf8b",
+   "note": "The rifling tables of the NATO EPVAT proof barrels, one annex per calibre."
+  }
+ ],
+ "twists": [
+  {
+   "cartridge_id": "556x45_nato",
+   "cartridge": "5.56x45mm NATO",
+   "twist_m": 0.1778,
+   "grooves": 6,
+   "source_id": "nato_epvat",
+   "note": "EPVAT barrel: 1 turn in 177.8 mm, 6 grooves right hand"
+  },
+  {
+   "cartridge_id": "762x51_nato",
+   "cartridge": "7.62x51mm NATO",
+   "twist_m": 0.3048,
+   "grooves": 4,
+   "source_id": "nato_epvat",
+   "note": "EPVAT barrel: 1 turn in 12.000 in [304.8 mm], 4 grooves right hand"
+  },
+  {
+   "cartridge_id": "9x19",
+   "cartridge": "9x19mm NATO",
+   "twist_m": 0.25,
+   "grooves": 6,
+   "source_id": "nato_epvat",
+   "note": "EPVAT barrel: 1 turn in 250 mm R.H., 6 grooves"
+  },
+  {
+   "cartridge_id": "50_bmg",
+   "cartridge": "12.7x99mm NATO",
+   "twist_m": 0.381,
+   "grooves": 8,
+   "source_id": "nato_epvat",
+   "note": "EPVAT barrel: 1 turn in 15.000 in [381 mm], 8 grooves right hand"
+  },
+  {
+   "cartridge_id": "545x39",
+   "cartridge": "5.45x39mm",
+   "twist_m": 0.195,
+   "grooves": 4,
+   "source_id": "cip_tdcc",
+   "note": "CIP TDCC Table I, 5,45 x 39: rifling twist u = 195.00 mm, 4 grooves, right hand"
+  },
+  {
+   "cartridge_id": "454_casull",
+   "cartridge": ".454 Casull",
+   "twist_m": 0.6096,
+   "grooves": 6,
+   "source_id": "saami_z299_3",
+   "note": "SAAMI Z299.3-2022 test barrel: twist rate 24.00 in (609.6 mm) right hand, 6 grooves"
+  },
+  {
+   "cartridge_id": "429_desert_eagle",
+   "cartridge": ".429 DE",
+   "twist_m": 0.508,
+   "grooves": 6,
+   "source_id": "saami_z299_3",
+   "note": "SAAMI Z299.3-2022 test barrel: twist rate 20.00 in (508.0 mm) right hand, 6 grooves"
+  }
+ ]
+}

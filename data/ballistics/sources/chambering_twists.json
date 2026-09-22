@@ -1,0 +1,40 @@
+{
+  "retrieved": "2026-09-22",
+  "sources": [
+    {
+      "source_id": "cip_tdcc_545x39",
+      "title": "C.I.P. TDCC, Table I (Rimless cartridges): 5,45 x 39 (Country of origin: SU, date 1992-07-23, revision 2015-05-19)",
+      "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-i/5-45-x-39-en.pdf",
+      "sha256": "b1a1a3d86a471ea1f3bca59303cfc9d7a7597ec9a017d6c204387b7dbd92563f"
+    },
+    {
+      "source_id": "saami_z299_3_2022",
+      "title": "ANSI/SAAMI Z299.3 - 2022, Voluntary Industry Performance Standards for Pressure and Velocity of Centerfire Pistol and Revolver Ammunition (Section III, Equipment: 454 Casull and 429 Desert Eagle Test Barrel drawings)",
+      "url": "https://saami.org/wp-content/uploads/2025/05/SAAMI-Z299.3-2022-Centerfire-Pistol-Revolver-Approved-12-13-2022.pdf",
+      "sha256": "e2dad5c77ab57636dcdaa3379150703f4b72420e523f455dba0ff1f8e5d0ca34"
+    }
+  ],
+  "twists": [
+    {
+      "cartridge_id": "545x39",
+      "twist_mm": 195.0,
+      "grooves": 4,
+      "source_id": "cip_tdcc_545x39",
+      "quote": "Grooves\nb = 2.60\nN = 4\nu * = 195.00"
+    },
+    {
+      "cartridge_id": "454_casull",
+      "twist_mm": 609.6,
+      "grooves": 6,
+      "source_id": "saami_z299_3_2022",
+      "quote": "NUMBER OF GROOVES: 6\nWIDTH OF GROOVES: .160 + .002 (4.06 + 0.05)\nTWIST RATE: 24.00 (609.6) R.H."
+    },
+    {
+      "cartridge_id": "429_desert_eagle",
+      "twist_mm": 508.0,
+      "grooves": 6,
+      "source_id": "saami_z299_3_2022",
+      "quote": "NUMBER OF GROOVES: 6\nWIDTH OF GROOVES: .1076 + .0020 (2.733 + 0.051)\nTWIST RATE: 20.00 (508.0) RH"
+    }
+  ]
+}

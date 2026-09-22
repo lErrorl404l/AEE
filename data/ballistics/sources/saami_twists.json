@@ -1,0 +1,1681 @@
+{
+ "retrieved": "2026-09-22",
+ "sources": [
+  {
+   "source_id": "saami_z299_2",
+   "title": "ANSI/SAAMI Z299.2-2019 Voluntary Industry Performance Standards for Pressure and Velocity of Shotshell Ammunition for the Use of Commercial Manufacturers (approved 2025-09-23)",
+   "url": "https://saami.org/wp-content/uploads/2025/09/ANSI-SAAMI-Z299.2-Shotshell-2019-Approved-2025-09-23.pdf",
+   "sha256": "79cf4e153ffa630c8d2e10a1fa5d336bae6d413b57901d77b43e8eb9f6dcf148"
+  },
+  {
+   "source_id": "saami_z299_3",
+   "title": "ANSI/SAAMI Z299.3-2022 Voluntary Industry Performance Standards for Pressure and Velocity of Centerfire Pistol and Revolver Ammunition for the Use of Commercial Manufacturers (approved 12-13-2022)",
+   "url": "https://saami.org/wp-content/uploads/2025/05/SAAMI-Z299.3-2022-Centerfire-Pistol-Revolver-Approved-12-13-2022.pdf",
+   "sha256": "e2dad5c77ab57636dcdaa3379150703f4b72420e523f455dba0ff1f8e5d0ca34"
+  },
+  {
+   "source_id": "saami_z299_4",
+   "title": "ANSI/SAAMI Z299.4-2025 Voluntary Industry Performance Standards for Pressure and Velocity of Centerfire Rifle Ammunition for the Use of Commercial Manufacturers (approved 2025-02-10, posted 2026-04-27)",
+   "url": "https://saami.org/wp-content/uploads/2026/04/SAAMI-Z299.4-CFR-2025-Centerfire-Rifle-Approved-2-10-2025-2026-04-27.pdf",
+   "sha256": "8d73431ebc9336a77f930eedaf1113c63326b14d3c1b1a820b03d2d804d16492"
+  },
+  {
+   "source_id": "saami_z299_1",
+   "title": "ANSI/SAAMI Z299.1-2026 Voluntary Industry Performance Standards for Pressure and Velocity of Rimfire Sporting Ammunition for the Use of Commercial Manufacturers (approved 2026-05-08); included because .22 LR is registered here, not in Z299.2/.3/.4",
+   "url": "https://saami.org/wp-content/uploads/2026/05/SAAMI-Z299.1-R2026-Rimfire-FINAL-Approved-2026-05-08.pdf",
+   "sha256": "98bdb0d9fb6fb28297c85df3c53b4ae8a120653f6055aa1ba782bf52bdb8da6d"
+  }
+ ],
+ "twists": [
+  {
+   "cartridge": "9mm LUGER / 9mm LUGER +P",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 6,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 139; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "9x18 MAKAROV (9x18 MAK)",
+   "twist_in": 9.45,
+   "twist_mm": 240.0,
+   "grooves": 4,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 140; verbatim: TWIST RATE: 9.45 (240.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "9x23 WINCHESTER [9 x 23 WIN)",
+   "twist_in": 16.0,
+   "twist_mm": 406.4,
+   "grooves": 6,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 141; verbatim: TWIST RATE: 16.00 (406.4) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "10mm AUTOMATIC [10mm AUTO]",
+   "twist_in": 16.0,
+   "twist_mm": 406.4,
+   "grooves": 6,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 142; verbatim: TWIST RATE: 16.00 (406.4) L.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "221 REMINGTON FIREBALL [221 REM FIREBALL]",
+   "twist_in": 12.0,
+   "twist_mm": 304.8,
+   "grooves": 6,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 143; verbatim: TWIST RATE: 12.00 (304.8) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "NOTICE: This drawing is subject to change. If revised, the current version is available at saami.org.",
+   "twist_in": 16.0,
+   "twist_mm": 406.4,
+   "grooves": 6,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 144; verbatim: TWIST RATE: 16.00 (406.4) L.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "30 LUGER (7.65mm) [30 LUGER]",
+   "twist_in": 11.0,
+   "twist_mm": 279.4,
+   "grooves": 4,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 145; verbatim: TWIST RATE: 11.00 (279.4) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "32 AUTOMATIC [32 AUTO]",
+   "twist_in": 16.0,
+   "twist_mm": 406.4,
+   "grooves": 6,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 146; verbatim: TWIST RATE: 16.00 (406.4) L.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "32 H&R MAGNUM [32 H&R MAG]",
+   "twist_in": 16.0,
+   "twist_mm": 406.4,
+   "grooves": 5,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 147; verbatim: TWIST RATE: 16.00 (406.4) L.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "32 SMITH & WESSON [32 S&W]",
+   "twist_in": 18.75,
+   "twist_mm": 476.3,
+   "grooves": 5,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 148; verbatim: TWIST RATE: 18.75 (476.3) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "32 SMITH & WESSON LONG [32 S&WL] / 32 COLT NEW POLICE [32 CNP]",
+   "twist_in": 18.75,
+   "twist_mm": 476.3,
+   "grooves": 5,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 149; verbatim: TWIST RATE: 18.75 (476.3) L.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "327 FEDERAL MAGNUM [327 FED MAG]",
+   "twist_in": 16.0,
+   "twist_mm": 406.4,
+   "grooves": 5,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 150; verbatim: TWIST RATE: 16.00 (406.4) L.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "357 MAGNUM [357 MAG]",
+   "twist_in": 18.75,
+   "twist_mm": 476.3,
+   "grooves": 6,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 151; verbatim: TWIST RATE: 18.75 (476.3) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "357 SIG [357 SIG]",
+   "twist_in": 16.0,
+   "twist_mm": 406.4,
+   "grooves": 6,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 152; verbatim: TWIST RATE: 16.00 (406.4) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "38 SMITH & WESSON [38 S&W] / 38 COLT NEW POLICE [38 CNP]",
+   "twist_in": 18.75,
+   "twist_mm": 476.3,
+   "grooves": 5,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 153; verbatim: TWIST RATE: 18.75 (476.3) L.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "38 SPECIAL [38 SPL] / 38 SPECIAL +P [38 SPL +P] / 38 SPECIAL MATCH [38 SPL MATCH]",
+   "twist_in": 18.75,
+   "twist_mm": 476.3,
+   "grooves": 6,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 154; verbatim: TWIST RATE: 18.75 (476.3) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "38 SUPER AUTOMATIC +P [38 SUPER AUTO +P] / 38 AUTOMATIC [38 AUTO]",
+   "twist_in": 16.0,
+   "twist_mm": 406.4,
+   "grooves": 6,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 155; verbatim: TWIST RATE: 16.00 (406.4) L.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "380 AUTOMATIC [380 AUTO]",
+   "twist_in": 16.0,
+   "twist_mm": 406.4,
+   "grooves": 6,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 156; verbatim: TWIST RATE: 16.00 (406.4) L.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "40 SMITH & WESSON [40 S&W]",
+   "twist_in": 16.0,
+   "twist_mm": 406.4,
+   "grooves": 6,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 157; verbatim: TWIST RATE: 16.00 (406.4) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "41 REMINGTON MAGNUM (41 REM MAG)",
+   "twist_in": 18.75,
+   "twist_mm": 476.3,
+   "grooves": 6,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 158; verbatim: TWIST RATE: 18.75 (476.3) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "429 DESERT EAGLE (429 DE)",
+   "twist_in": 20.0,
+   "twist_mm": 508.0,
+   "grooves": 6,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 159; verbatim: TWIST RATE: 20.00 (508.0) RH",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "44 REMINGTON MAGNUM [44 REM MAG]",
+   "twist_in": 20.0,
+   "twist_mm": 508.0,
+   "grooves": 6,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 160; verbatim: TWIST RATE: 20.00 (508.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "44 SMITH & WESSON SPECIAL (44 S&W SPL)",
+   "twist_in": 20.0,
+   "twist_mm": 508.0,
+   "grooves": 5,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 161; verbatim: TWIST RATE: 20.00 (508.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "45 AUTOMATIC (45 AUTO) / 45 AUTOMATIC +P (45 AUTO +P) / 45 AUTOMATIC MATCH (45 AUTO MATCH)",
+   "twist_in": 16.0,
+   "twist_mm": 406.4,
+   "grooves": 6,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 162; verbatim: TWIST RATE: 16.00 (406.4) L.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "45 COLT (45 COLT)",
+   "twist_in": 16.0,
+   "twist_mm": 406.4,
+   "grooves": 6,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 163; verbatim: TWIST RATE: 16.00 (406.4) L.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "45 GLOCK AUTOMATIC PISTOL (45 GAP)",
+   "twist_in": 16.0,
+   "twist_mm": 406.4,
+   "grooves": 6,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 164; verbatim: TWIST RATE: 16.00 (406.4) L.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "45 WINCHESTER MAGNUM (45 WIN MAG)",
+   "twist_in": 16.0,
+   "twist_mm": 406.4,
+   "grooves": 6,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 165; verbatim: TWIST RATE: 16.00 (406.4) L.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "454 CASULL (454 CASULL)",
+   "twist_in": 24.0,
+   "twist_mm": 609.6,
+   "grooves": 6,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 166; verbatim: TWIST RATE: 24.00 (609.6) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "460 S&W MAGNUM (460 S&W MAG)",
+   "twist_in": 20.0,
+   "twist_mm": 508.0,
+   "grooves": 5,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 167; verbatim: TWIST RATE: 20.00 (508.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "475 LINEBAUGH (475 LINEBAUGH)",
+   "twist_in": 18.0,
+   "twist_mm": 457.2,
+   "grooves": 6,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 168; verbatim: TWIST RATE: 18.00 (457.2) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "480 RUGER (480 RUGER)",
+   "twist_in": 18.0,
+   "twist_mm": 457.2,
+   "grooves": 6,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 169; verbatim: TWIST RATE: 18.00 (457.2) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "50 ACTION EXPRESS (50 AE)",
+   "twist_in": 20.0,
+   "twist_mm": 508.0,
+   "grooves": 6,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 170; verbatim: TWIST RATE: 20.00 (508.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "500 S&W MAGNUM [500 S&W MAG]",
+   "twist_in": 18.75,
+   "twist_mm": 476.3,
+   "grooves": 6,
+   "source_id": "saami_z299_3",
+   "locator": "Section III test barrel drawing, PDF page 171; verbatim: TWIST RATE: 18.75 (476.3) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "6MM ADVANCED RIFLE CARTRIDGE [6MM ARC]",
+   "twist_in": 7.5,
+   "twist_mm": 190.5,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 257; verbatim: TWIST RATE: 7.50 (190.5) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "6MM CREEDMOOR [6MM CM]",
+   "twist_in": 7.5,
+   "twist_mm": 190.5,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 258; verbatim: TWIST RATE: 7.50 (190.5) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "6MM GT [6MM GT]",
+   "twist_in": 7.5,
+   "twist_mm": 190.5,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 259; verbatim: TWIST RATE: 7.50 (190.5) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "6MM REMINGTON [6MM REM]",
+   "twist_in": 9.0,
+   "twist_mm": 228.6,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 260; verbatim: TWIST RATE: 9.00 (228.6) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "6.5 CREEDMOOR [6.5 CM]",
+   "twist_in": 8.0,
+   "twist_mm": 203.2,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 261; verbatim: TWIST RATE: 8.00 (203.2) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "6.5 GRENDEL [6.5 GREN]",
+   "twist_in": 8.0,
+   "twist_mm": 203.2,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 262; verbatim: TWIST RATE: 8.00 (203.2) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "6.5 PRECISION RIFLE CARTRIDGE [6.5 PRC]",
+   "twist_in": 8.0,
+   "twist_mm": 203.2,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 263; verbatim: TWIST RATE: 8.00 (203.2) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "6.5 WEATHERBY REBATED PRECISION MAGNUM [6.5 WBY RPM]",
+   "twist_in": 8.0,
+   "twist_mm": 203.2,
+   "grooves": 4,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 264; verbatim: TWIST RATE: 8.00 (203.2) RH",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "6.5-284 NORMA [6.5-284 NORMA]",
+   "twist_in": 9.0,
+   "twist_mm": 228.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 265; verbatim: TWIST RATE: 228.0 (9.00) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "6.5-300 WEATHERBY MAGNUM [6.5-300 WBY MAG]",
+   "twist_in": 8.0,
+   "twist_mm": 203.2,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 266; verbatim: TWIST RATE: 8.00 (203.2) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "6.5X55 SWEDISH [6.5X55]",
+   "twist_in": 8.0,
+   "twist_mm": 203.2,
+   "grooves": 4,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 267; verbatim: TWIST RATE: 8.00 (203.2) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "6.8 TRUE VELOCITY COMPOSITE (6.8 TVC)",
+   "twist_in": 8.0,
+   "twist_mm": 203.2,
+   "grooves": 5,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 268; verbatim: TWIST RATE: 8.00 (203.2) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "6.8 WESTERN [6.8 WESTERN]",
+   "twist_in": 8.0,
+   "twist_mm": 203.2,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 269; verbatim: TWIST RATE: 8.00 (203.2) RH",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "6.8MM REMINGTON SPC [6.8MM REM SPC]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 4,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 270; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "7MM MAUSER (7 X 57) [7MM (7 X 57)]",
+   "twist_in": 8.75,
+   "twist_mm": 222.3,
+   "grooves": 4,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 271; verbatim: TWIST RATE: 8.75 (222.3) [Direction not specified]",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "7MM PRECISION RIFLE CARTRIDGE [7MM PRC]",
+   "twist_in": 8.0,
+   "twist_mm": 203.2,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 272; verbatim: TWIST RATE: 8.00 (203.2) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "7MM REMINGTON MAGNUM [7MM REM MAG]",
+   "twist_in": 9.5,
+   "twist_mm": 241.3,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 273; verbatim: TWIST RATE: 9.50 (241.3) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "7MM REMINGTON SHORT ACTION ULTRA MAGNUM [7MM REM SA ULTRA MAG]",
+   "twist_in": 9.25,
+   "twist_mm": 235.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 274; verbatim: TWIST RATE: 9.25 (235.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "7MM REMINGTON ULTRA MAGNUM [7MM REM ULTRA MAG]",
+   "twist_in": 9.5,
+   "twist_mm": 241.3,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 275; verbatim: TWIST RATE: 9.50 (241.3) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "7MM WEATHERBY MAGNUM [7MM WBY MAG]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 276; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "7MM WINCHESTER SHORT MAGNUM [7MM WSM]",
+   "twist_in": 9.5,
+   "twist_mm": 241.3,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 277; verbatim: TWIST RATE: 9.50 (241.3) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "7MM-08 REMINGTON [7MM-08 REM]",
+   "twist_in": 9.5,
+   "twist_mm": 241.3,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 278; verbatim: TWIST RATE: 9.50 (241.3) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "7 X 64 BRENNEKE [7 X 64]",
+   "twist_in": 8.661,
+   "twist_mm": 219.99,
+   "grooves": 4,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 279; verbatim: TWIST RATE: 8.661 (219.99) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "7.62 x 39 [7.69 X 39]",
+   "twist_in": 9.45,
+   "twist_mm": 240.0,
+   "grooves": 4,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 280; verbatim: TWIST RATE: 9.45 (240.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "8MM MAUSER (8 X 57) [8MM (8 X 57)]",
+   "twist_in": 9.5,
+   "twist_mm": 241.3,
+   "grooves": 4,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 281; verbatim: TWIST RATE: 9.5 (241.3) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "9.3 x 62 [9.3 x 62]",
+   "twist_in": 14.17,
+   "twist_mm": 360.0,
+   "grooves": 4,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 282; verbatim: TWIST RATE: 360.0 (14.17) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "17 HORNET [17 HORNET]",
+   "twist_in": 9.0,
+   "twist_mm": 228.6,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 283; verbatim: TWIST RATE: 9.00 (228.6) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "17 REMINGTON [17 REM]",
+   "twist_in": 9.0,
+   "twist_mm": 228.6,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 284; verbatim: TWIST RATE: 9.00 (228.6) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "17 REMINGTON FIREBALL [17 REM FB]",
+   "twist_in": 9.0,
+   "twist_mm": 228.6,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 285; verbatim: TWIST RATE: 9.00 (228.6) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "204 RUGER [204 RUGER]",
+   "twist_in": 12.0,
+   "twist_mm": 304.8,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 286; verbatim: TWIST RATE: 12.00 (304.8) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "218 BEE [218 BEE]",
+   "twist_in": 16.0,
+   "twist_mm": 406.4,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 287; verbatim: TWIST RATE: 16.00 (406.4) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "22 ADVANCED RIFLE CARTRIDGE [22 ARC]",
+   "twist_in": 7.0,
+   "twist_mm": 177.8,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 288; verbatim: TWIST RATE: 7.00 (177.8) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "22 CREEDMOOR [22 CM]",
+   "twist_in": 8.0,
+   "twist_mm": 203.2,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 289; verbatim: TWIST RATE: 8.00 (203.2) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "22 HORNET [22 HORNET]",
+   "twist_in": 16.0,
+   "twist_mm": 406.4,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 290; verbatim: TWIST RATE: 16.00 (406.4) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "22 NOSLER [22 NOSLER]",
+   "twist_in": 8.0,
+   "twist_mm": 203.2,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 291; verbatim: TWIST RATE: 8.00 (203.2) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "22-250 REMINGTON [22-250 REM]",
+   "twist_in": 14.0,
+   "twist_mm": 355.6,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 292; verbatim: TWIST RATE: 14.00 (355.6) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "220 SWIFT [220 SWIFT]",
+   "twist_in": 14.0,
+   "twist_mm": 355.6,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 293; verbatim: TWIST RATE: 14.00 (355.6) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "221 REMINGTON FIREBALL [221 REM FB]",
+   "twist_in": 14.0,
+   "twist_mm": 355.6,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 294; verbatim: TWIST RATE: 14.00 (355.6) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "222 REMINGTON [222 REM]",
+   "twist_in": 14.0,
+   "twist_mm": 355.6,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 295; verbatim: TWIST RATE: 14.00 (355.6) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "222 REMINGTON MAGNUM [222 REM MAG]",
+   "twist_in": 14.0,
+   "twist_mm": 355.6,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 296; verbatim: TWIST RATE: 14.00 (355.6) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "223 REMINGTON [223 REM]",
+   "twist_in": 12.0,
+   "twist_mm": 304.8,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 297; verbatim: TWIST RATE: 12.00 (304.8) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "223 WINCHESTER SUPER SHORT MAGNUM [223 WSSM]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 298; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "243 WINCHESTER [243 WIN]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 300; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "243 WINCHESTER SUPER SHORT MAGNUM [243 WSSM]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 4,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 301; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "25 WINCHESTER SUPER SHORT MAGNUM [25 WSSM]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 302; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "25-06 REMINGTON [25-06 REM]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 303; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "25-20 WINCHESTER [25-20 WIN]",
+   "twist_in": 14.0,
+   "twist_mm": 355.6,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 304; verbatim: TWIST RATE: 14.00 (355.6) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "25-35 WINCHESTER [25-35 WIN]",
+   "twist_in": 8.0,
+   "twist_mm": 203.2,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 305; verbatim: TWIST RATE: 8.00 (203.2) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "250 SAVAGE [250 SAV]",
+   "twist_in": 14.0,
+   "twist_mm": 355.6,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 306; verbatim: TWIST RATE: 14.00 (355.6) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "257 ROBERTS [257 ROB] / 257 ROBERTS +P [257 ROB +P]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 307; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "257 WEATHERBY MAGNUM [257 WBY MAG]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 308; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "26 NOSLER (26 NOSLER)",
+   "twist_in": 8.0,
+   "twist_mm": 203.2,
+   "grooves": 4,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 309; verbatim: TWIST RATE: 8.00 (203.2) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "260 REMINGTON [260 REM]",
+   "twist_in": 9.0,
+   "twist_mm": 228.6,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 310; verbatim: TWIST RATE: 9.00 (228.6) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "264 WINCHESTER MAGNUM [264 WIN MAG]",
+   "twist_in": 9.0,
+   "twist_mm": 228.6,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 311; verbatim: TWIST RATE: 9.00 (228.6) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "27 NOSLER [27 NOSLER]",
+   "twist_in": 8.5,
+   "twist_mm": 215.9,
+   "grooves": 4,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 312; verbatim: TWIST RATE: 8.50 (215.9) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "270 WEATHERBY MAGNUM [270 WBY MAG]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 313; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "270 WINCHESTER [270 WIN]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 4,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 314; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "270 WINCHESTER SHORT MAGNUM [270 WSM]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 4,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 315; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "277 SIG FURY [277 SIG FURY]",
+   "twist_in": 7.0,
+   "twist_mm": 177.8,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 316; verbatim: TWIST RATE: 7.00 (177.8) RH",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "28 NOSLER [28 NOSLER]",
+   "twist_in": 9.0,
+   "twist_mm": 228.6,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 317; verbatim: TWIST RATE: 9.00 (228.6) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "280 ACKLEY IMPROVED [280 ACK IMP]",
+   "twist_in": 9.0,
+   "twist_mm": 228.6,
+   "grooves": 4,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 318; verbatim: TWIST RATE: 9.00 (228.6) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "PREVIOUSLY DESIGNATED 7MM EXPRESS REMINGTON [7MM EXP REM]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 4,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 319; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "284 WINCHESTER [284 WIN]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 320; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "30 CARBINE [30 CARB]",
+   "twist_in": 20.0,
+   "twist_mm": 508.0,
+   "grooves": 4,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 321; verbatim: TWIST RATE: 20.00 (508.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "30 NOSLER [30 NOSLER]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 322; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "30 REMINGTON AR [30 REM AR]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 4,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 323; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "30 THOMPSON CENTER [30 TC]",
+   "twist_in": 12.0,
+   "twist_mm": 304.8,
+   "grooves": 4,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 324; verbatim: TWIST RATE: 12.00 (304.8) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "30-06 SPRINGFIELD [30-06 SPRG]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 4,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 325; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "30-30 WINCHESTER [30-30 WIN]",
+   "twist_in": 12.0,
+   "twist_mm": 304.8,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 326; verbatim: TWIST RATE: 12.00 (304.8) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "30-40 KRAG [30-40 KRAG]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 327; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "300 AAC BLACKOUT [300 BLK]",
+   "twist_in": 8.0,
+   "twist_mm": 203.2,
+   "grooves": 5,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 328; verbatim: TWIST RATE: 8.00 (203.2) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "300 HAM’R [300 HAMR]",
+   "twist_in": 12.0,
+   "twist_mm": 304.8,
+   "grooves": 4,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 329; verbatim: TWIST RATE: 12.00 (304.8) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "300 HOLLAND & HOLLAND MAGNUM [300 H&H MAG]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 4,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 330; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "300 NORMA MAGNUM [300 NM]",
+   "twist_in": 9.02,
+   "twist_mm": 229.0,
+   "grooves": 4,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 331; verbatim: TWIST RATE: 229.0 (9.02) RH",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "300 PRECISION RIFLE CARTRIDGE [300 PRC]",
+   "twist_in": 8.5,
+   "twist_mm": 215.9,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 332; verbatim: TWIST RATE: 8.50 (215.9) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "300 REMINGTON SHORT ACTION ULTRA MAGNUM [300 REM SA ULTRA MAGNUM]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 333; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "300 REMINGTON ULTRA MAGNUM [300 REM ULTRA MAG]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 334; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "300 RUGER COMPACT MAGNUM [300 RCM]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 335; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "300 SAVAGE [300 SAV]",
+   "twist_in": 12.0,
+   "twist_mm": 304.8,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 336; verbatim: TWIST RATE: 12.00 (304.8) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "300 WEATHERBY MAGNUM [300 WBY MAG]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 337; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "300 WINCHESTER MAGNUM [300 WIN MAG]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 338; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "300 WINCHESTER SHORT MAGNUM [300 WSM]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 4,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 339; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "303 BRITISH [303 BRIT]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 5,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 340; verbatim: TWIST RATE: 10.00 (254.0) L.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "307 WINCHESTER [307 WIN]",
+   "twist_in": 12.0,
+   "twist_mm": 304.8,
+   "grooves": 4,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 341; verbatim: TWIST RATE: 12.00 (304.8) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "308 MARLIN EXPRESS [308 MAR EXP]",
+   "twist_in": 12.0,
+   "twist_mm": 304.8,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 342; verbatim: TWIST RATE: 12.00 (304.8) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "308 WINCHESTER [308 WIN]",
+   "twist_in": 12.0,
+   "twist_mm": 304.8,
+   "grooves": 4,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 343; verbatim: TWIST RATE: 12.00 (304.8) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "32 WINCHESTER SPECIAL [32 WIN SPL]",
+   "twist_in": 16.0,
+   "twist_mm": 406.4,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 344; verbatim: TWIST RATE: 16.00 (406.4) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "32-20 WINCHESTER [32-20 WIN]",
+   "twist_in": 20.0,
+   "twist_mm": 508.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 345; verbatim: TWIST RATE: 20.00 (508.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "325 WINCHESTER SHORT MAGNUM [325 WSM]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 4,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 346; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "33 NOSLER [33 NOSLER]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 347; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "338 FEDERAL [338 FED]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 348; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "338 LAPUA MAGNUM [338 LAPUA MAG]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 349; verbatim: TWIST RATE: 254.0 (10.00) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "338 MARLIN EXPRESS [338 ME]",
+   "twist_in": 12.0,
+   "twist_mm": 304.8,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 350; verbatim: TWIST RATE: 12.00 (304.8) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "338 NORMA MAGNUM [338 NM]",
+   "twist_in": 9.25,
+   "twist_mm": 235.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 351; verbatim: TWIST RATE: 235.0 (9.25) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "338 REMINGTON ULTRA MAGNUM [338 REM ULTRA MAG]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 352; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "338 RUGER COMPACT MAGNUM [338 RCM]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 353; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "338 WEATHERBY REBATED PRECISION MAGNUM [338 WBY RPM]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 354; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "338 WINCHESTER MAGNUM [338 WIN MAG]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 355; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "340 WEATHERBY MAGNUM [340 WBY MAG]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 356; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "348 WINCHESTER [348 WIN]",
+   "twist_in": 12.0,
+   "twist_mm": 304.8,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 357; verbatim: TWIST RATE: 12.00 (304.8) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "35 REMINGTON [35 REM]",
+   "twist_in": 16.0,
+   "twist_mm": 406.4,
+   "grooves": 7,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 358; verbatim: TWIST RATE: 16.00 (406.4) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "35 WHELEN [35 WHELEN]",
+   "twist_in": 16.0,
+   "twist_mm": 406.4,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 359; verbatim: TWIST RATE: 16.00 (406.4) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "350 LEGEND [350 LGND]",
+   "twist_in": 16.0,
+   "twist_mm": 406.4,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 360; verbatim: TWIST RATE: 16.00 (406.4) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "356 WINCHESTER [356 WIN]",
+   "twist_in": 12.0,
+   "twist_mm": 304.8,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 361; verbatim: TWIST RATE: 12.00 (304.8) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "358 WINCHESTER [358 WIN]",
+   "twist_in": 12.0,
+   "twist_mm": 304.8,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 362; verbatim: TWIST RATE: 12.00 (304.8) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "360 BUCKHAMMER [360 BHMR]",
+   "twist_in": 12.0,
+   "twist_mm": 304.8,
+   "grooves": 7,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 363; verbatim: TWIST RATE: 12.00 (304.8) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "370 SAKO MAGNUM [370 SAKO MAG]",
+   "twist_in": 14.173,
+   "twist_mm": 360.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 364; verbatim: TWIST RATE: 360.00 (14.173) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "375 HOLLAND & HOLLAND MAGNUM [375 H&H MAG]",
+   "twist_in": 12.0,
+   "twist_mm": 304.8,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 365; verbatim: TWIST RATE: 12.00 (304.8) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "375 REMINGTON ULTRA MAGNUM [375 REM ULTRA MAG]",
+   "twist_in": 12.0,
+   "twist_mm": 304.8,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 366; verbatim: TWIST RATE: 12.00 (304.8) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "375 RUGER [375 RUGER]",
+   "twist_in": 12.0,
+   "twist_mm": 304.8,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 367; verbatim: TWIST RATE: 12.00 (304.8) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "375 WINCHESTER [375 WIN]",
+   "twist_in": 12.0,
+   "twist_mm": 304.8,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 368; verbatim: TWIST RATE: 12.00 (304.8) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "376 STEYR [376 STEYR]",
+   "twist_in": 12.0,
+   "twist_mm": 304.8,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 369; verbatim: TWIST RATE: 304.8 (12.00) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "38-40 WINCHESTER",
+   "twist_in": 36.0,
+   "twist_mm": 914.4,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 370; verbatim: TWIST RATE: 36.00 (914.4) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "38-55 WINCHESTER [38-55 WIN]",
+   "twist_in": 18.0,
+   "twist_mm": 457.2,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 371; verbatim: TWIST RATE: 18.00 (457.2) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "400 LEGEND [400 LGND]",
+   "twist_in": 16.0,
+   "twist_mm": 406.4,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 372; verbatim: TWIST RATE: 16.00 (406.4) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "405 WINCHESTER [405 WIN]",
+   "twist_in": 14.0,
+   "twist_mm": 255.6,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 373; verbatim: TWIST RATE: 14.00 (255.6) R.H.",
+   "smoothbore": false,
+   "note": "SAAMI PDF prints 14.00 (255.6); 14.00 in is 355.6 mm - likely a typo in the standard"
+  },
+  {
+   "cartridge": "416 REMINGTON MAGNUM [416 REM MAG]",
+   "twist_in": 14.0,
+   "twist_mm": 355.6,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 374; verbatim: TWIST RATE: 14.00 (355.6) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "416 RIGBY [416 RIGBY]",
+   "twist_in": 16.535,
+   "twist_mm": 419.99,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 375; verbatim: TWIST RATE: 16.535 (419.99) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "416 RUGER [416 RUGER]",
+   "twist_in": 14.0,
+   "twist_mm": 355.6,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 376; verbatim: TWIST RATE: 14.00 (355.6) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "416 WEATHERBY MAGNUM [416 WBY MAG]",
+   "twist_in": 14.0,
+   "twist_mm": 355.6,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 377; verbatim: TWIST RATE: 14.00 (355.6) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "44 REMINGTON MAGNUM [44 REM MAG]",
+   "twist_in": 38.0,
+   "twist_mm": 965.2,
+   "grooves": 12,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 378; verbatim: TWIST RATE: 38.00 (965.2) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "44-40 WINCHESTER [44-40 WIN]",
+   "twist_in": 36.0,
+   "twist_mm": 914.4,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 379; verbatim: TWIST RATE: 36.00 (914.4) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "444 MARLIN [444 MAR]",
+   "twist_in": 38.0,
+   "twist_mm": 965.2,
+   "grooves": 12,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 380; verbatim: TWIST RATE: 38.00 (965.2) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "45-70 GOVERNMENT [45-70 GOVT]",
+   "twist_in": 20.0,
+   "twist_mm": 508.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 381; verbatim: TWIST RATE: 20.00 (508.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "450 BUSHMASTER [450 BM]",
+   "twist_in": 24.0,
+   "twist_mm": 609.6,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 382; verbatim: TWIST RATE: 24 (609.6) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "450 MARLIN [450 MARLIN]",
+   "twist_in": 20.0,
+   "twist_mm": 508.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 383; verbatim: TWIST RATE: 20.00 (508.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "458 LOTT [458 LOTT]",
+   "twist_in": 10.0,
+   "twist_mm": 254.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 384; verbatim: TWIST RATE: 10.00 (254.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "458 WINCHESTER MAGNUM [458 WIN MAG]",
+   "twist_in": 14.0,
+   "twist_mm": 355.6,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 385; verbatim: TWIST RATE: 14.00 (355.6) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "470 NITRO EXPRESS [470 NE]",
+   "twist_in": 20.0,
+   "twist_mm": 508.0,
+   "grooves": 6,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 386; verbatim: TWIST RATE: 20.00 (508.0) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "500 NITRO EXPRESS 3\" [500 NE 3\"]",
+   "twist_in": 15.0,
+   "twist_mm": 381.0,
+   "grooves": 7,
+   "source_id": "saami_z299_4",
+   "locator": "Section III test barrel drawing, PDF page 387; verbatim: TWIST RATE: 381.0 (15.00) R.H.",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "12 GAUGE 23/4 INCH STANDARD RIFLED V&P AND ACCURACY TEST BARREL",
+   "twist_in": 35.0,
+   "twist_mm": 889.0,
+   "grooves": 8,
+   "source_id": "saami_z299_2",
+   "locator": "Section III test barrel drawing, PDF page 98; verbatim: TWIST 35 (889) ± .125 (3.18) RH (OPTIONAL)",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "12 GAUGE 3 INCH STANDARD RIFLED V&P AND ACCURACY TEST BARREL",
+   "twist_in": 35.0,
+   "twist_mm": 889.0,
+   "grooves": 8,
+   "source_id": "saami_z299_2",
+   "locator": "Section III test barrel drawing, PDF page 100; verbatim: TWIST 35 (889) ± .125 (3.18) RH (OPTIONAL)",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "20 GAUGE 23/4 INCH STANDARD RIFLED V&P AND ACCURACY TEST BARREL",
+   "twist_in": 24.0,
+   "twist_mm": 607.0,
+   "grooves": 8,
+   "source_id": "saami_z299_2",
+   "locator": "Section III test barrel drawing, PDF page 104; verbatim: TWIST 24 (607) ± .125 (3.18) RH (OPTIONAL)",
+   "smoothbore": false,
+   "note": "SAAMI PDF prints 'TWIST 24 (607)'; 24 in is 609.6 mm - likely a typo in the standard"
+  },
+  {
+   "cartridge": "20 GAUGE 3 INCH STANDARD RIFLED V&P AND ACCURACY TEST BARREL",
+   "twist_in": 24.0,
+   "twist_mm": 609.0,
+   "grooves": 8,
+   "source_id": "saami_z299_2",
+   "locator": "Section III test barrel drawing, PDF page 106; verbatim: TWIST 24 (609) ± .125 (3.18) RH (OPTIONAL)",
+   "smoothbore": false,
+   "note": "SAAMI PDF prints 'TWIST 24 (609)' on the test barrel; the 20-gauge cartridge drawing also prints '24 (889)', a typo for 609"
+  },
+  {
+   "cartridge": "12 Gauge 2 3/4\" Smooth Bore Barrel",
+   "twist_in": null,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": "saami_z299_2",
+   "locator": "Section III, 12-GAUGE 2 3/4 INCH STANDARD SMOOTHBORE V&P TEST BARREL - no twist rate printed",
+   "smoothbore": true
+  },
+  {
+   "cartridge": "12 Gauge 3\" Smooth Bore Barrel",
+   "twist_in": null,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": "saami_z299_2",
+   "locator": "Section III, 12-GAUGE 3 INCH STANDARD SMOOTHBORE V&P TEST BARREL - no twist rate printed",
+   "smoothbore": true
+  },
+  {
+   "cartridge": "12 Gauge 3 1/2\" Smooth Bore Barrel",
+   "twist_in": null,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": "saami_z299_2",
+   "locator": "Section III, 12-GAUGE 3 1/2 INCH STANDARD SMOOTHBORE V&P TEST BARREL - no twist rate printed",
+   "smoothbore": true
+  },
+  {
+   "cartridge": "20 Gauge 2 3/4\" Smooth Bore Barrel",
+   "twist_in": null,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": "saami_z299_2",
+   "locator": "Section III, 20-GAUGE 2 3/4 INCH STANDARD SMOOTHBORE V&P TEST BARREL - no twist rate printed",
+   "smoothbore": true
+  },
+  {
+   "cartridge": "20 Gauge 3\" Smooth Bore Barrel",
+   "twist_in": null,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": "saami_z299_2",
+   "locator": "Section III, 20-GAUGE 3 INCH STANDARD SMOOTHBORE V&P TEST BARREL - no twist rate printed",
+   "smoothbore": true
+  },
+  {
+   "cartridge": "28 Gauge 2 3/4\" Smooth Bore Barrel",
+   "twist_in": null,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": "saami_z299_2",
+   "locator": "Section III, 28-GAUGE 2 3/4 INCH STANDARD SMOOTHBORE V&P TEST BARREL - no twist rate printed",
+   "smoothbore": true
+  },
+  {
+   "cartridge": ".410 Bore 3\" Smooth Bore Barrel",
+   "twist_in": null,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": "saami_z299_2",
+   "locator": "Section III, .410 BORE 3 INCH STANDARD SMOOTHBORE V&P TEST BARREL - no twist rate printed",
+   "smoothbore": true
+  },
+  {
+   "cartridge": "17 MACH 2 [17 M2]",
+   "twist_in": 9.0,
+   "twist_mm": 228.6,
+   "grooves": 6,
+   "source_id": "saami_z299_1",
+   "locator": "Section III rimfire V&P test barrel drawing; 'TWIST RATE: 9 (228.6)'",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "17 HORNADY MAGNUM RIMFIRE [17 HMR]",
+   "twist_in": 9.0,
+   "twist_mm": 228.6,
+   "grooves": 6,
+   "source_id": "saami_z299_1",
+   "locator": "Section III rimfire V&P test barrel drawing; 'TWIST RATE: 9 (228.6)'",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "17 WINCHESTER SUPER MAGNUM [17 WSM]",
+   "twist_in": 9.0,
+   "twist_mm": 228.6,
+   "grooves": 6,
+   "source_id": "saami_z299_1",
+   "locator": "Section III rimfire V&P test barrel drawing; 'TWIST RATE: 9 (228.6)'",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "21 SHARP [21 SHARP]",
+   "twist_in": 12.0,
+   "twist_mm": 304.8,
+   "grooves": 6,
+   "source_id": "saami_z299_1",
+   "locator": "Section III rimfire V&P test barrel drawing; 'TWIST RATE: 12 (304.8)'",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "22 SHORT [22 S]",
+   "twist_in": 16.0,
+   "twist_mm": 406.4,
+   "grooves": 6,
+   "source_id": "saami_z299_1",
+   "locator": "Section III rimfire V&P test barrel drawing; 'TWIST RATE: 16 (406.4)'",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "22 LONG [22 L] / 22 LONG RIFLE [22 LR]",
+   "twist_in": 16.0,
+   "twist_mm": 406.4,
+   "grooves": 6,
+   "source_id": "saami_z299_1",
+   "locator": "Section III rimfire V&P test barrel drawing; 'TWIST RATE: 16 (406.4)'",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "22 LONG RIFLE - SHOT [22 LR]",
+   "twist_in": null,
+   "twist_mm": null,
+   "grooves": 0,
+   "source_id": "saami_z299_1",
+   "locator": "Section III rimfire V&P test barrel drawing; no twist printed, NUMBER OF GROOVES: 0 (SMOOTH BORE)",
+   "smoothbore": true
+  },
+  {
+   "cartridge": "22 WINCHESTER RIMFIRE [22 WRF]",
+   "twist_in": 14.0,
+   "twist_mm": 406.4,
+   "grooves": 6,
+   "source_id": "saami_z299_1",
+   "locator": "Section III rimfire V&P test barrel drawing; 'TWIST RATE: 14 (406.4)'",
+   "smoothbore": false
+  },
+  {
+   "cartridge": "22 WINCHESTER MAGNUM RIMFIRE [22 WMR OR 22 WIN MAG]",
+   "twist_in": 16.0,
+   "twist_mm": 406.4,
+   "grooves": 6,
+   "source_id": "saami_z299_1",
+   "locator": "Section III rimfire V&P test barrel drawing; 'TWIST RATE: 16 (406.4)'",
+   "smoothbore": false
+  }
+ ]
+}

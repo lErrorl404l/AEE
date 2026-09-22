@@ -1,0 +1,978 @@
+{
+ "url": "https://archive.org/details/modern-exterior-ballistics-the-launch-and-flight-dynamics-of-symmetric-projectil",
+ "retrieved": "2026-09-22",
+ "sha256": "1ed4e984190f021e0849c09f41c4b1eb8f5650a99fbdf0cfd7f9498a7ce9c538",
+ "note": "Additional standard drag curves Cd(Mach). This file is a companion to drag_functions.json (G1, G2, G5, G6, G7, G8, GI, GS, RA4). Only curves with a genuinely published Cd against Mach tabulation are present; nothing is interpolated, converted, or invented. GA: ChairGun GA drag law for diabolo airgun pellets (Cd first, Mach second), as distributed in Strelok Pro's shared drag profile; the only public machine-readable copy found is the reproduction at https://www.gatewaytoairguns.org/GTA/index.php?topic=159961.0 . GB: 'GB DRAG' table for the .30 Ball M2 projectile printed in R. L. McCoy, Modern Exterior Ballistics, 2nd ed., chapter 8 point-mass example; text obtained from the archive.org copy https://archive.org/details/modern-exterior-ballistics-the-launch-and-flight-dynamics-of-symmetric-projectil . LW2: Luftwiderstandsgesetz Nr 2, Heereswaffenamt (German army air-resistance law 2), file LW2.drg from the Exterior Ballistics 4.0 drag-function pack redistributed with the ballistics.eu Exterior Ballistics 2.6 demo (http://www.ballistics.eu/exterior.html); Cd first, Mach second. RWS1943: RWS Stadeln 1943 curve by H. H. Kritzinger (a 1943-law variant for slender hunting bullets), file RWS_1943.drg from the same Exterior Ballistics 4.0 pack; Cd first, Mach second. It is not the canonical Soviet 1943 law. SCHAPIRO: Schapiro-Mazing-Prudnikow (1968) standard curve via Hauck, file SCHAPIRO.drg from the same Exterior Ballistics 4.0 pack; Cd first, Mach second. Not present because no published Cd(Mach) point table exists: G3 and G4 (the abandoned Aberdeen J3/J4 projectile types, superseded before 1930; no public Cd(Mach) tabulation); GL (published only as a velocity-domain G(v) retardance table, E. D. Lowry 1965, JBM olin.txt, and as an approximate Cd(Mach) polynomial in the GPL JBM CGI source, but with no published Cd(Mach) point table); GC (not a curve, it is the identifier for a custom/measured drag table). The historical EBV4 standard laws Siacci 1896, Gavre type 1, Mayevski 1872, Mayevski+Sabudski, Krupp, 1930 USSR, the canonical 1943 law and the 14.3 mm sphere exist in the same pack but are stored obfuscated ('Encoded Data') and could not be read as numbers. sha256 is over the concatenation of the primary evidence bytes in this order: mccoy.txt, LW2.drg, RWS1943.drg, SCHAPIRO.drg, GA_chairgun.txt.",
+ "models": {
+  "GA": [
+   {
+    "mach": 0.0,
+    "cd": 0.25
+   },
+   {
+    "mach": 0.1,
+    "cd": 0.235
+   },
+   {
+    "mach": 0.2,
+    "cd": 0.221
+   },
+   {
+    "mach": 0.3,
+    "cd": 0.207
+   },
+   {
+    "mach": 0.4,
+    "cd": 0.196
+   },
+   {
+    "mach": 0.5,
+    "cd": 0.189
+   },
+   {
+    "mach": 0.6,
+    "cd": 0.189
+   },
+   {
+    "mach": 0.7,
+    "cd": 0.202
+   },
+   {
+    "mach": 0.8,
+    "cd": 0.241
+   },
+   {
+    "mach": 0.9,
+    "cd": 0.329
+   },
+   {
+    "mach": 1.0,
+    "cd": 0.488
+   },
+   {
+    "mach": 1.1,
+    "cd": 0.597
+   },
+   {
+    "mach": 1.2,
+    "cd": 0.649
+   },
+   {
+    "mach": 1.3,
+    "cd": 0.669
+   },
+   {
+    "mach": 1.4,
+    "cd": 0.672
+   },
+   {
+    "mach": 1.5,
+    "cd": 0.667
+   },
+   {
+    "mach": 1.6,
+    "cd": 0.657
+   },
+   {
+    "mach": 1.7,
+    "cd": 0.644
+   },
+   {
+    "mach": 1.8,
+    "cd": 0.63
+   },
+   {
+    "mach": 1.9,
+    "cd": 0.616
+   },
+   {
+    "mach": 2.0,
+    "cd": 0.602
+   },
+   {
+    "mach": 2.1,
+    "cd": 0.589
+   },
+   {
+    "mach": 2.2,
+    "cd": 0.577
+   },
+   {
+    "mach": 2.3,
+    "cd": 0.566
+   },
+   {
+    "mach": 2.4,
+    "cd": 0.556
+   },
+   {
+    "mach": 2.5,
+    "cd": 0.548
+   },
+   {
+    "mach": 2.6,
+    "cd": 0.54
+   },
+   {
+    "mach": 2.7,
+    "cd": 0.534
+   },
+   {
+    "mach": 2.8,
+    "cd": 0.529
+   },
+   {
+    "mach": 2.9,
+    "cd": 0.524
+   },
+   {
+    "mach": 3.0,
+    "cd": 0.521
+   },
+   {
+    "mach": 3.1,
+    "cd": 0.521
+   },
+   {
+    "mach": 3.2,
+    "cd": 0.517
+   },
+   {
+    "mach": 3.3,
+    "cd": 0.514
+   },
+   {
+    "mach": 3.4,
+    "cd": 0.51
+   },
+   {
+    "mach": 3.5,
+    "cd": 0.507
+   },
+   {
+    "mach": 3.6,
+    "cd": 0.503
+   }
+  ],
+  "GB": [
+   {
+    "mach": 0.0,
+    "cd": 0.211
+   },
+   {
+    "mach": 0.8,
+    "cd": 0.21
+   },
+   {
+    "mach": 0.9,
+    "cd": 0.211
+   },
+   {
+    "mach": 0.95,
+    "cd": 0.257
+   },
+   {
+    "mach": 1.0,
+    "cd": 0.407
+   },
+   {
+    "mach": 1.05,
+    "cd": 0.448
+   },
+   {
+    "mach": 1.1,
+    "cd": 0.448
+   },
+   {
+    "mach": 1.2,
+    "cd": 0.435
+   },
+   {
+    "mach": 1.4,
+    "cd": 0.406
+   },
+   {
+    "mach": 1.6,
+    "cd": 0.378
+   },
+   {
+    "mach": 1.8,
+    "cd": 0.352
+   },
+   {
+    "mach": 2.0,
+    "cd": 0.329
+   },
+   {
+    "mach": 2.2,
+    "cd": 0.308
+   },
+   {
+    "mach": 2.5,
+    "cd": 0.28
+   },
+   {
+    "mach": 3.0,
+    "cd": 0.243
+   }
+  ],
+  "LW2": [
+   {
+    "mach": 0.1,
+    "cd": 0.23
+   },
+   {
+    "mach": 0.3,
+    "cd": 0.218
+   },
+   {
+    "mach": 0.4,
+    "cd": 0.211
+   },
+   {
+    "mach": 0.5,
+    "cd": 0.207
+   },
+   {
+    "mach": 0.6,
+    "cd": 0.203
+   },
+   {
+    "mach": 0.65,
+    "cd": 0.202
+   },
+   {
+    "mach": 0.7,
+    "cd": 0.203
+   },
+   {
+    "mach": 0.75,
+    "cd": 0.204
+   },
+   {
+    "mach": 0.8,
+    "cd": 0.208
+   },
+   {
+    "mach": 0.85,
+    "cd": 0.216
+   },
+   {
+    "mach": 0.9,
+    "cd": 0.235
+   },
+   {
+    "mach": 0.92,
+    "cd": 0.251
+   },
+   {
+    "mach": 0.94,
+    "cd": 0.277
+   },
+   {
+    "mach": 0.95,
+    "cd": 0.293
+   },
+   {
+    "mach": 0.96,
+    "cd": 0.317
+   },
+   {
+    "mach": 0.965,
+    "cd": 0.33
+   },
+   {
+    "mach": 0.97,
+    "cd": 0.339
+   },
+   {
+    "mach": 0.975,
+    "cd": 0.357
+   },
+   {
+    "mach": 0.98,
+    "cd": 0.368
+   },
+   {
+    "mach": 0.99,
+    "cd": 0.384
+   },
+   {
+    "mach": 1.0,
+    "cd": 0.395
+   },
+   {
+    "mach": 1.025,
+    "cd": 0.406
+   },
+   {
+    "mach": 1.05,
+    "cd": 0.411
+   },
+   {
+    "mach": 1.075,
+    "cd": 0.413
+   },
+   {
+    "mach": 1.1,
+    "cd": 0.414
+   },
+   {
+    "mach": 1.15,
+    "cd": 0.412
+   },
+   {
+    "mach": 1.2,
+    "cd": 0.407
+   },
+   {
+    "mach": 1.3,
+    "cd": 0.393
+   },
+   {
+    "mach": 1.4,
+    "cd": 0.378
+   },
+   {
+    "mach": 1.5,
+    "cd": 0.364
+   },
+   {
+    "mach": 1.6,
+    "cd": 0.351
+   },
+   {
+    "mach": 1.7,
+    "cd": 0.339
+   },
+   {
+    "mach": 1.8,
+    "cd": 0.328
+   },
+   {
+    "mach": 1.9,
+    "cd": 0.318
+   },
+   {
+    "mach": 2.0,
+    "cd": 0.308
+   },
+   {
+    "mach": 2.2,
+    "cd": 0.292
+   },
+   {
+    "mach": 2.4,
+    "cd": 0.278
+   },
+   {
+    "mach": 2.6,
+    "cd": 0.266
+   },
+   {
+    "mach": 2.8,
+    "cd": 0.256
+   },
+   {
+    "mach": 3.0,
+    "cd": 0.248
+   },
+   {
+    "mach": 3.2,
+    "cd": 0.24
+   },
+   {
+    "mach": 3.4,
+    "cd": 0.234
+   },
+   {
+    "mach": 3.6,
+    "cd": 0.23
+   },
+   {
+    "mach": 3.8,
+    "cd": 0.225
+   },
+   {
+    "mach": 4.0,
+    "cd": 0.222
+   },
+   {
+    "mach": 4.5,
+    "cd": 0.216
+   },
+   {
+    "mach": 5.0,
+    "cd": 0.212
+   },
+   {
+    "mach": 6.0,
+    "cd": 0.206
+   },
+   {
+    "mach": 8.0,
+    "cd": 0.199
+   },
+   {
+    "mach": 10.0,
+    "cd": 0.195
+   }
+  ],
+  "RWS1943": [
+   {
+    "mach": 0.64,
+    "cd": 0.198
+   },
+   {
+    "mach": 0.74,
+    "cd": 0.2028
+   },
+   {
+    "mach": 0.76,
+    "cd": 0.2044
+   },
+   {
+    "mach": 0.78,
+    "cd": 0.2063
+   },
+   {
+    "mach": 0.8,
+    "cd": 0.2097
+   },
+   {
+    "mach": 0.82,
+    "cd": 0.2143
+   },
+   {
+    "mach": 0.84,
+    "cd": 0.2202
+   },
+   {
+    "mach": 0.86,
+    "cd": 0.2286
+   },
+   {
+    "mach": 0.88,
+    "cd": 0.2405
+   },
+   {
+    "mach": 0.9,
+    "cd": 0.2543
+   },
+   {
+    "mach": 0.92,
+    "cd": 0.2723
+   },
+   {
+    "mach": 0.94,
+    "cd": 0.3038
+   },
+   {
+    "mach": 0.96,
+    "cd": 0.3446
+   },
+   {
+    "mach": 0.98,
+    "cd": 0.3871
+   },
+   {
+    "mach": 1.0,
+    "cd": 0.43
+   },
+   {
+    "mach": 1.02,
+    "cd": 0.4606
+   },
+   {
+    "mach": 1.04,
+    "cd": 0.4852
+   },
+   {
+    "mach": 1.06,
+    "cd": 0.5
+   },
+   {
+    "mach": 1.08,
+    "cd": 0.5086
+   },
+   {
+    "mach": 1.1,
+    "cd": 0.512
+   },
+   {
+    "mach": 1.12,
+    "cd": 0.5127
+   },
+   {
+    "mach": 1.14,
+    "cd": 0.5115
+   },
+   {
+    "mach": 1.16,
+    "cd": 0.5088
+   },
+   {
+    "mach": 1.18,
+    "cd": 0.5059
+   },
+   {
+    "mach": 1.2,
+    "cd": 0.5025
+   },
+   {
+    "mach": 1.22,
+    "cd": 0.4992
+   },
+   {
+    "mach": 1.24,
+    "cd": 0.4967
+   },
+   {
+    "mach": 1.26,
+    "cd": 0.4942
+   },
+   {
+    "mach": 1.28,
+    "cd": 0.4918
+   },
+   {
+    "mach": 1.3,
+    "cd": 0.4897
+   },
+   {
+    "mach": 1.4,
+    "cd": 0.4805
+   },
+   {
+    "mach": 1.5,
+    "cd": 0.471
+   },
+   {
+    "mach": 1.6,
+    "cd": 0.4627
+   },
+   {
+    "mach": 1.7,
+    "cd": 0.4531
+   },
+   {
+    "mach": 1.8,
+    "cd": 0.4422
+   },
+   {
+    "mach": 1.9,
+    "cd": 0.431
+   },
+   {
+    "mach": 2.0,
+    "cd": 0.419
+   },
+   {
+    "mach": 2.1,
+    "cd": 0.4082
+   },
+   {
+    "mach": 2.2,
+    "cd": 0.3979
+   },
+   {
+    "mach": 2.3,
+    "cd": 0.3869
+   },
+   {
+    "mach": 2.4,
+    "cd": 0.3774
+   },
+   {
+    "mach": 2.5,
+    "cd": 0.3686
+   },
+   {
+    "mach": 2.6,
+    "cd": 0.3596
+   },
+   {
+    "mach": 2.7,
+    "cd": 0.3523
+   },
+   {
+    "mach": 2.8,
+    "cd": 0.3458
+   },
+   {
+    "mach": 2.9,
+    "cd": 0.3404
+   },
+   {
+    "mach": 3.0,
+    "cd": 0.3354
+   },
+   {
+    "mach": 3.1,
+    "cd": 0.3312
+   },
+   {
+    "mach": 3.2,
+    "cd": 0.3282
+   },
+   {
+    "mach": 3.3,
+    "cd": 0.3258
+   },
+   {
+    "mach": 3.4,
+    "cd": 0.3243
+   },
+   {
+    "mach": 3.5,
+    "cd": 0.3227
+   },
+   {
+    "mach": 3.6,
+    "cd": 0.3219
+   },
+   {
+    "mach": 3.7,
+    "cd": 0.3208
+   },
+   {
+    "mach": 3.8,
+    "cd": 0.3207
+   },
+   {
+    "mach": 3.9,
+    "cd": 0.3205
+   },
+   {
+    "mach": 4.0,
+    "cd": 0.3205
+   },
+   {
+    "mach": 4.5,
+    "cd": 0.3205
+   },
+   {
+    "mach": 5.0,
+    "cd": 0.3205
+   }
+  ],
+  "SCHAPIRO": [
+   {
+    "mach": 0.0,
+    "cd": 0.102
+   },
+   {
+    "mach": 0.1,
+    "cd": 0.101
+   },
+   {
+    "mach": 0.2,
+    "cd": 0.1
+   },
+   {
+    "mach": 0.3,
+    "cd": 0.099
+   },
+   {
+    "mach": 0.4,
+    "cd": 0.098
+   },
+   {
+    "mach": 0.5,
+    "cd": 0.097
+   },
+   {
+    "mach": 0.6,
+    "cd": 0.096
+   },
+   {
+    "mach": 0.62,
+    "cd": 0.0958
+   },
+   {
+    "mach": 0.64,
+    "cd": 0.0956
+   },
+   {
+    "mach": 0.66,
+    "cd": 0.0954
+   },
+   {
+    "mach": 0.68,
+    "cd": 0.0952
+   },
+   {
+    "mach": 0.7,
+    "cd": 0.095
+   },
+   {
+    "mach": 0.72,
+    "cd": 0.0948
+   },
+   {
+    "mach": 0.74,
+    "cd": 0.0946
+   },
+   {
+    "mach": 0.76,
+    "cd": 0.0944
+   },
+   {
+    "mach": 0.78,
+    "cd": 0.0948
+   },
+   {
+    "mach": 0.8,
+    "cd": 0.0954
+   },
+   {
+    "mach": 0.82,
+    "cd": 0.096
+   },
+   {
+    "mach": 0.84,
+    "cd": 0.0968
+   },
+   {
+    "mach": 0.86,
+    "cd": 0.0976
+   },
+   {
+    "mach": 0.88,
+    "cd": 0.0986
+   },
+   {
+    "mach": 0.9,
+    "cd": 0.1
+   },
+   {
+    "mach": 0.92,
+    "cd": 0.1018
+   },
+   {
+    "mach": 0.94,
+    "cd": 0.1038
+   },
+   {
+    "mach": 0.96,
+    "cd": 0.106
+   },
+   {
+    "mach": 0.98,
+    "cd": 0.113
+   },
+   {
+    "mach": 1.0,
+    "cd": 0.145
+   },
+   {
+    "mach": 1.02,
+    "cd": 0.178
+   },
+   {
+    "mach": 1.04,
+    "cd": 0.2
+   },
+   {
+    "mach": 1.06,
+    "cd": 0.232
+   },
+   {
+    "mach": 1.08,
+    "cd": 0.266
+   },
+   {
+    "mach": 1.1,
+    "cd": 0.273
+   },
+   {
+    "mach": 1.12,
+    "cd": 0.276
+   },
+   {
+    "mach": 1.14,
+    "cd": 0.277
+   },
+   {
+    "mach": 1.16,
+    "cd": 0.2764
+   },
+   {
+    "mach": 1.18,
+    "cd": 0.276
+   },
+   {
+    "mach": 1.2,
+    "cd": 0.2744
+   },
+   {
+    "mach": 1.22,
+    "cd": 0.272
+   },
+   {
+    "mach": 1.24,
+    "cd": 0.266
+   },
+   {
+    "mach": 1.26,
+    "cd": 0.262
+   },
+   {
+    "mach": 1.28,
+    "cd": 0.257
+   },
+   {
+    "mach": 1.3,
+    "cd": 0.253
+   },
+   {
+    "mach": 1.4,
+    "cd": 0.237
+   },
+   {
+    "mach": 1.5,
+    "cd": 0.225
+   },
+   {
+    "mach": 1.6,
+    "cd": 0.215
+   },
+   {
+    "mach": 1.7,
+    "cd": 0.207
+   },
+   {
+    "mach": 1.8,
+    "cd": 0.201
+   },
+   {
+    "mach": 1.9,
+    "cd": 0.195
+   },
+   {
+    "mach": 2.0,
+    "cd": 0.19
+   },
+   {
+    "mach": 2.1,
+    "cd": 0.1845
+   },
+   {
+    "mach": 2.2,
+    "cd": 0.18
+   },
+   {
+    "mach": 2.3,
+    "cd": 0.175
+   },
+   {
+    "mach": 2.4,
+    "cd": 0.171
+   },
+   {
+    "mach": 2.5,
+    "cd": 0.1665
+   },
+   {
+    "mach": 2.6,
+    "cd": 0.162
+   },
+   {
+    "mach": 2.7,
+    "cd": 0.1585
+   },
+   {
+    "mach": 2.8,
+    "cd": 0.1545
+   },
+   {
+    "mach": 2.9,
+    "cd": 0.151
+   },
+   {
+    "mach": 3.0,
+    "cd": 0.1495
+   },
+   {
+    "mach": 3.1,
+    "cd": 0.1465
+   },
+   {
+    "mach": 3.2,
+    "cd": 0.1435
+   },
+   {
+    "mach": 3.3,
+    "cd": 0.142
+   },
+   {
+    "mach": 3.4,
+    "cd": 0.14
+   },
+   {
+    "mach": 3.5,
+    "cd": 0.1385
+   },
+   {
+    "mach": 3.6,
+    "cd": 0.136
+   },
+   {
+    "mach": 3.7,
+    "cd": 0.134
+   },
+   {
+    "mach": 3.8,
+    "cd": 0.1324
+   },
+   {
+    "mach": 3.9,
+    "cd": 0.131
+   },
+   {
+    "mach": 4.0,
+    "cd": 0.1294
+   },
+   {
+    "mach": 4.1,
+    "cd": 0.1278
+   },
+   {
+    "mach": 4.2,
+    "cd": 0.1262
+   },
+   {
+    "mach": 4.3,
+    "cd": 0.125
+   },
+   {
+    "mach": 4.4,
+    "cd": 0.124
+   },
+   {
+    "mach": 4.5,
+    "cd": 0.123
+   },
+   {
+    "mach": 4.6,
+    "cd": 0.122
+   },
+   {
+    "mach": 4.7,
+    "cd": 0.121
+   },
+   {
+    "mach": 4.8,
+    "cd": 0.12
+   },
+   {
+    "mach": 4.9,
+    "cd": 0.119
+   },
+   {
+    "mach": 5.0,
+    "cd": 0.118
+   }
+  ]
+ }
+}
