@@ -33,11 +33,15 @@ Arguments:
      the family reference barrel)
   2: airTempC (NUMBER, the propellant temperature, default 21 C)
 
-Returns [realMV, bcG1, bcG7, caliberMm, massG, dragModel] - the derived
-values with the temperature correction applied to the MV.
+Returns [realMV, bcG1, bcG7, caliberMm, massG, dragModel, twistM,
+pressureMPa] - the derived values with the temperature correction
+applied to the MV. Twist (metres per turn) and chamber pressure (MAP,
+MPa) are cartridge properties and come from the same family row: the
+chambering fixes both, so a weapon of any mod resolves them from its
+ammunition.
 */
 params [["_ammo", "", [""]], ["_barrelM", 0, [0]], ["_airTempC", 21, [0]]];
-if (_ammo == "") exitWith { [905, 0.307, 0, 5.56, 4.0, 1] };
+if (_ammo == "") exitWith { [905, 0.307, 0, 5.56, 4.0, 1, 0.178, 430] };
 
 // ─── Parse the class name into the cartridge family ─────────────────────
 // The vanilla convention: B_556x45_Ball, B_762x51_Ball, B_545x39_Ball,
@@ -69,27 +73,57 @@ private _family = switch (true) do {
 // pairs (211mm->723, 368->862, 508->940 m/s) give the curve; the
 // family carries its anchor points.
 //   [refMV, refBarrelM, vShort, shortBarrelM, vMin, bcG1, bcG7,
-//    caliberMm, massG, dragModel]
+//    caliberMm, massG, dragModel, twistM, pressureMPa]
+//
+// Twist and pressure are CARTRIDGE properties, not weapon properties:
+// the chambering fixes both.  Twist is metres per turn, pressure is
+// the maximum average pressure (MAP) in MPa.  A weapon of any mod
+// resolves them from its ammunition, so no weapon is listed anywhere.
+//
+// Twist sources: STANAG 4172 (5.56, 1:7); the NATO 7.62 standard
+// (1:12 = 305 mm, NATO EPVAT MAP 415 MPa); the AK-74 and AKM barrel
+// data (200 mm and 240 mm, 4 RH grooves); SAAMI/CIP for the pistol,
+// .50 BMG and 12.7x108 MAPs.  The ABE seed agrees on every value
+// except 7.62x51, where its row count splits 279/305 mm and the NATO
+// standard 305 mm wins.
+//
 // The curve: linear between the short barrel (vShort) and the
 // reference barrel (refMV) - the measured relationship is nearly
 // linear in this band (the velocity-length power-law flattens only
 // past the reference).  Below the short barrel the velocity falls
 // toward vMin.
 private _AMMO_FAMILIES = createHashMapFromArray [
-    ["556x45", [948, 0.508, 723, 0.211, 500, 0.307, 0, 5.56, 4.0, 1]],
-    ["545x39", [880, 0.414, 700, 0.210, 500, 0.300, 0.168, 5.45, 3.4, 7]],
-    ["762x51", [838, 0.559, 700, 0.330, 480, 0.393, 0, 7.62, 9.5, 1]],
-    ["762x39", [710, 0.414, 650, 0.210, 420, 0.279, 0, 7.62, 8.0, 1]],
-    ["762x54", [820, 0.699, 700, 0.400, 450, 0.377, 0, 7.62, 9.6, 1]],
-    ["9x19",   [351, 0.102, 280, 0.051, 250, 0.149, 0, 9.01, 8.0, 1]],
-    ["127x99", [885, 1.143, 800, 0.610, 500, 0.670, 0, 12.7, 42.8, 1]],
-    ["127x108",[818, 1.016, 750, 0.610, 480, 0.600, 0.340, 12.7, 48.2, 7]],
-    ["338",    [899, 0.610, 800, 0.508, 500, 0.756, 0, 8.58, 16.2, 1]],
-    ["65x39",  [790, 0.610, 700, 0.406, 450, 0.500, 0.196, 6.71, 7.8, 7]],
-    ["12gauge",[470, 0.711, 400, 0.508, 300, 0.060, 0, 18.5, 28.3, 1]]
+    ["556x45", [948, 0.508, 723, 0.211, 500, 0.307, 0, 5.56, 4.0, 1, 0.178, 430]],
+    ["545x39", [880, 0.414, 700, 0.210, 500, 0.300, 0.168, 5.45, 3.4, 7, 0.200, 355]],
+    ["762x51", [838, 0.559, 700, 0.330, 480, 0.393, 0, 7.62, 9.5, 1, 0.305, 415]],
+    ["762x39", [710, 0.414, 650, 0.210, 420, 0.279, 0, 7.62, 8.0, 1, 0.240, 355]],
+    ["762x54", [820, 0.699, 700, 0.400, 450, 0.377, 0, 7.62, 9.6, 1, 0.240, 390]],
+    ["9x19",   [351, 0.102, 280, 0.051, 250, 0.149, 0, 9.01, 8.0, 1, 0.250, 250]],
+    ["127x99", [885, 1.143, 800, 0.610, 500, 0.670, 0, 12.7, 42.8, 1, 0.381, 379]],
+    ["127x108",[818, 1.016, 750, 0.610, 480, 0.600, 0.340, 12.7, 48.2, 7, 0.381, 360]],
+    ["338",    [899, 0.610, 800, 0.508, 500, 0.756, 0, 8.58, 16.2, 1, 0.254, 420]],
+    ["65x39",  [790, 0.610, 700, 0.406, 450, 0.500, 0.196, 6.71, 7.8, 7, 0.203, 415]],
+    ["12gauge",[470, 0.711, 400, 0.508, 300, 0.060, 0, 18.5, 28.3, 1, 0.0, 65]]
 ];
 private _base = _AMMO_FAMILIES get _family;
-if (isNil "_base") exitWith { [_ammo] call FUNC(getAmmoProperties) };   // fallback
+// The table fallback carries no twist or pressure data: 0 means
+// "unknown", and the caller decides what to do with it.
+if (isNil "_base") exitWith {
+    // No researched curve for this cartridge. Fall back to physics: the
+    // projectile and cartridge records give the inputs, and the
+    // interior-ballistics model gives the velocity. A round that no
+    // table knows still gets a physical muzzle velocity.
+    private _projectile = [_ammo] call FUNC(getProjectileData);
+    private _cartridge = [_ammo] call FUNC(getCartridgeData);
+    if ((_projectile isEqualTo []) || {_cartridge isEqualTo []}) exitWith {
+        [0, 0, 0, 0, 0, 1, 0, 0]
+    };
+    private _calibreMm = (_projectile select 2) * 1000;
+    private _massG = _projectile select 1;
+    private _pressure = _cartridge select 3;
+    private _mv = [_calibreMm, _massG, _barrelM, _pressure] call FUNC(calculateInteriorBallistics);
+    [_mv, 0, 0, _calibreMm, _massG, 1, _cartridge select 2, _pressure]
+};
 
 // ─── The velocity-length curve ───────────────────────────────────────────
 private _refMV = _base select 0;
@@ -127,4 +161,4 @@ private _pctPerDegC = _mpsPerDegC / _mv * 100;
 _mv = _mv * (1 + (_pctPerDegC * (_airTempC - 21) / 100));
 _mv = _mv max 0.85 * _refMV min 1.15 * _refMV;
 
-[_mv, _base select 5, _base select 6, _base select 7, _base select 8, _base select 9]
+[_mv, _base select 5, _base select 6, _base select 7, _base select 8, _base select 9, _base select 10, _base select 11]

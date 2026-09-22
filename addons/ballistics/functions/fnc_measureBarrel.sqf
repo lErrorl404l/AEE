@@ -15,23 +15,23 @@ barrel length is the muzzle-to-chamber distance.
 
 The chamber point may be named "chamber" or the attachment point; the
 fallback measures from the weapon's bounding box front to the ejection
-point when the named points are absent.  A model without usable points
-falls back to the weapon family's reference barrel (the #167 table).
+point when the named points are absent.
+
+A model without usable points returns 0. The caller then lets
+fnc_deriveCartridge use the cartridge reference barrel, which carries
+the cartridge's standard muzzle velocity. A guessed barrel would be
+worse than the cartridge's own standard.
 
 Arguments:
   0: weapon (STRING, the CfgWeapons classname, default "")
   1: weaponHolder (OBJECT, the weapon object, default objNull - the
      measurement needs the actual model)
 
-Returns the measured barrel length in metres (the family default when
-the model has no usable memory points).
+Returns the measured barrel length in metres. Returns 0 when the model
+has no usable memory points.
 */
 params [["_weapon", "", [""]], ["_holder", objNull, [objNull]]];
-if (_weapon == "") exitWith { 0.368 };
-
-// The family reference barrel (the #167 table fallback).  The
-// measurement overrides this when the model has usable points.
-private _familyBarrel = ([_weapon] call FUNC(getWeaponProperties)) select 0;
+if (_weapon == "") exitWith { 0 };
 
 // Measure from the model: the muzzle and chamber memory points.  The
 // muzzle point is the standard "muzzle" on weapon models; the chamber
@@ -55,8 +55,8 @@ if (!isNull _holder) then {
 
 // Sanity: a measured barrel must be between 4" and 40" (0.1-1.0 m).  A
 // value outside the physical band means the memory points are not a
-// muzzle/chamber pair (some mods use "muzzle" for a rail mount) - fall
-// back to the family barrel.
-if (_measured < 0.1 || _measured > 1.0) exitWith { _familyBarrel };
+// muzzle/chamber pair (some mods use "muzzle" for a rail mount).  Return
+// 0 so the cartridge reference barrel is used instead of a guess.
+if (_measured < 0.1 || _measured > 1.0) exitWith { 0 };
 
 _measured
