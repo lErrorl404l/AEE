@@ -57,4 +57,13 @@ private _combined = [
 ];
 _combined set [2, (_combined select 2) / 1.7];
 
+// The weapons the soldier carries join the load. They are not a slot, so
+// they add after the slots are summed. Magazines are a separate capture
+// and are not counted yet (ADR-004).
+_combined set [0, (_combined select 0) + ([_unit] call FUNC(getWeaponLoad))];
+
+// The magazines are the heaviest repeated item, so they join the load
+// too. A magazine's mass is its empty mass plus the rounds it holds.
+_combined set [0, (_combined select 0) + ([_unit] call FUNC(getMagazineLoad))];
+
 [_uniform, _vest, _helmet, _goggle, _pack, _combined]
