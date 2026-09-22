@@ -510,3 +510,51 @@ macro parameter) is absent from the list, and that absence is the signal
 to extend the scanner.  Both modes exit 1 when a flag exists.  The script
 uses only the Python standard library and is wired into the pre-commit
 hook and CI.
+
+## The ballistics data pipeline
+
+The reference database under `data/ballistics/` and the SQF tables the
+mod loads are both generated. One command rebuilds them from the committed
+source data:
+
+```bash
+make data
+```
+
+It runs `tools/build_ballistics_data.sh` and finishes with the data gate,
+the runtime tests and the coverage audit. The build needs no network, and
+it is idempotent: a second run changes nothing.
+
+The order matters, and the script states the reason at each step. The
+register tools add a record only when it is absent, so they run first. The
+projectile catalogue rebuilds its maker records, so everything that
+enriches a projectile runs after it. The loads rebuild from the military
+documents, so the velocity anchors run after that. The runtime
+projections run last, and the gates after them.
+
+| Stage | Tools |
+|---|---|
+| Cartridge records | `gen_cartridges_from_cip`, `_from_saami`, `_nato` |
+| Projectiles | `gen_projectiles`, `_from_apg`, `gen_lengths` |
+| Held documents | `gen_found_data`, `gen_cartridge_standards` |
+| Corroboration and stability | `gen_bc_corroboration`, `strip_derived_bc`, `gen_stability` |
+| Loads | `gen_loads_from_mil`, `gen_loads_from_velocity` |
+| Weapons | `gen_weapons`, `gen_designations`, `gen_weapon_leads`, `gen_weapon_worklist` |
+| Recoil inputs | `gen_recoil_data` |
+| Drag | `merge_drag_functions` |
+| Runtime projections | `gen_runtime_cartridges`, `_projectiles`, `_weapons`, `_drag`, `_magazines` |
+| Outputs and gates | `render_ballistics_index`, `export_ballistics_csv`, `validate_ballistics_data`, `audit_coverage` |
+
+### Adding a source
+
+A `fetch_*` tool runs only when a new document is added, because it needs
+the network. It writes a parsed extract under `data/ballistics/sources/`.
+Then `make data` merges the extract and updates the runtime tables. Never
+edit a generated file: the research database is the source of truth.
+
+### Addon placement
+
+Recoil physics lives in ballistics, because it is the conservation of
+momentum. The shooter's response and the carried load live in physiology.
+The weapon mass crosses the boundary through a guarded call, so
+physiology works when ballistics is absent. ADR-004 records the decision.

@@ -1,0 +1,14 @@
+[
+ {
+  "source_id": "saami_gun_recoil_2018",
+  "title": "SAAMI Gun Recoil Formulae (2018-07-09)",
+  "url": "https://saami.org/wp-content/uploads/2025/03/Gun-Recoil-Formulae-2018-07-9.pdf",
+  "sha256": "72b40f0c1ed37454f2ebb2d33938bd11f54b024f20ca735558c1990fef1ee61e",
+  "publisher": "SAAMI",
+  "retrieved": "2026-09-22",
+  "held": true,
+  "intended_use": "Recoil impulse, free recoil energy and recoil velocity for the weapon layer.",
+  "status": "held, not yet used",
+  "note": "Provided by the operator on 2026-09-22 for the recoil model."
+ }
+]

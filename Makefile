@@ -1,4 +1,9 @@
-.PHONY: check build release test lint clean
+.PHONY: data check build release test lint clean
+
+# Rebuild the verified ballistics database and its runtime projections.
+# Adding a source and running this one target updates the in-game values.
+data:
+	tools/build_ballistics_data.sh
 
 check:
 	hemtt check -p -e

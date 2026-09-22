@@ -1,0 +1,538 @@
+{
+ "retrieved": "2026-09-22",
+ "sources": [
+  {
+   "source_id": "tm43_0001_27",
+   "title": "TM 43-0001-27, Army Ammunition Data Sheets: Small Caliber Ammunition, FSC 1305 (April 1994, Change 2 December 1996)",
+   "url": "https://archive.org/download/tm-43-0001-27-small-caliber-ammunition/TM%2043-0001-27%2C%20Small%20Caliber%20Ammunition_djvu.txt",
+   "sha256": "3aa46bf6835838dff73ba24298a83807cdc88aacb64f57e8ae386aca78a107e1"
+  },
+  {
+   "source_id": "vihtavuori_2026",
+   "title": "Vihtavuori Reloading Guide 2026 (English)",
+   "url": "https://vihtavuori.com/wp-content/uploads/2026/04/Vihtavuori_Reloading_Guide_2026_ENG_web.pdf",
+   "sha256": "07b3f33cf5686b4f6b47665e95ddfa1413af1806666e9786bf01d6ab66f931af"
+  },
+  {
+   "source_id": "alliant_2020",
+   "title": "Alliant Powder Reloader's Guide 2020 (catalog AP392)",
+   "url": "https://www.alliantpowder.com/resources/catalog/AP392_2020_AlliantPowderCatalog_SinglePages.pdf",
+   "sha256": "152f2a76a0c5fa80bec2365f0f61fe71b32eee236fbcd651eff5ca0dc4c983f6"
+  },
+  {
+   "source_id": "epa_m855a1_lcea",
+   "title": "Life-Cycle Environmental Assessment (LCEA) for Cartridge 5.56mm Ball, M855A1 (US EPA / US Army ARDEC, 2010)",
+   "url": "https://www.epa.gov/system/files/documents/2025-05/2010-final-lcea-5-56mm-m855a1.pdf",
+   "sha256": "1934ab242ba2c43f981c7b0aef9d97f70dd0892ae991472c29bd8081ec864c7a"
+  },
+  {
+   "source_id": "yugoimport_127x108_api",
+   "title": "Yugoimport 12.7 x 108 mm API cartridge data sheet",
+   "url": "https://www.yugoimport.com/sites/default/files/documents/2023-12/12.7%20x%20108%20mm%2C%20API.pdf",
+   "sha256": "82f1f617124dd7b2cc44152c8d08046ce2b05470f3486ed83fafce61586e9b9c"
+  },
+  {
+   "source_id": "yugoimport_127x108_ap",
+   "title": "Yugoimport 12.7 x 108 mm AP (Armor Piercing) cartridge data sheet",
+   "url": "https://www.yugoimport.com/sites/default/files/documents/2022-10/12.7%20x%20108%20mm%2C%20AP%20eng..pdf",
+   "sha256": "a7aedd3f361143417888a922b4bf2ad896a818c78e1c4ef0fa6ad1c76a4347d2"
+  }
+ ],
+ "charges": [
+  {
+   "cartridge": "5.56x45mm NATO",
+   "bullet_gr": 55.0,
+   "charge_gr": 26.5,
+   "powder": "WC 844",
+   "kind": "service",
+   "source_id": "tm43_0001_27",
+   "note": "Type WC 844 or CMR 170 Weight 28.5 or 26.5 gr Projectile: Weight 56 gr"
+  },
+  {
+   "cartridge": "5.56x45mm NATO",
+   "bullet_gr": 62.0,
+   "charge_gr": 26.1,
+   "powder": "WC 844",
+   "kind": "service",
+   "source_id": "tm43_0001_27",
+   "note": "CARTRIDGE, 5.56MM, BALL, M855 ... Propellant: Type WC 844 Weight 26.1 gr Projectile: Weight 62 gr"
+  },
+  {
+   "cartridge": "5.56x45mm NATO",
+   "bullet_gr": 63.7,
+   "charge_gr": 24.7,
+   "powder": "WC 844",
+   "kind": "service",
+   "source_id": "tm43_0001_27",
+   "note": "CARTRIDGE, 5.56MM, TRACER, M856 ... Propellant: Type WC 844 Weight 24.7 gr Projectile: Weight 63.7 gr"
+  },
+  {
+   "cartridge": "5.56x45mm NATO",
+   "bullet_gr": 52.0,
+   "charge_gr": 27.5,
+   "powder": "WCR845",
+   "kind": "service",
+   "source_id": "tm43_0001_27",
+   "note": "CARTRIDGE, 5.56MM, ARMOR PIERCING (AP), M995 ... Propellant: Type WCR845 Weight 27.5 gr Projectile: Weight 52 gr"
+  },
+  {
+   "cartridge": "7.62x51mm NATO",
+   "bullet_gr": 150.5,
+   "charge_gr": 46.0,
+   "powder": "WC 846",
+   "kind": "service",
+   "source_id": "tm43_0001_27",
+   "note": "CARTRIDGE, 7.62MM, BALL, M59 ... Propellant: Type WC 846 Weight 46 gr Projectile: Weight 150.5 gr"
+  },
+  {
+   "cartridge": "7.62x51mm NATO",
+   "bullet_gr": 146.0,
+   "charge_gr": 46.0,
+   "powder": "WC 846",
+   "kind": "service",
+   "source_id": "tm43_0001_27",
+   "note": "CARTRIDGE, 7.62MM, BAL., M80 ... Propellant: Type WC 846 Weight 46 gr Projectile: Weight 146 gr"
+  },
+  {
+   "cartridge": "7.62x51mm NATO",
+   "bullet_gr": 142.0,
+   "charge_gr": 46.0,
+   "powder": "WC 846",
+   "kind": "service",
+   "source_id": "tm43_0001_27",
+   "note": "CARTRIDGE, 7.62MM, TRACER, M62 ... Propellant: Type WC 846 Weight 46 gr Projectile: Weight 142 gr"
+  },
+  {
+   "cartridge": "7.62x51mm NATO",
+   "bullet_gr": 150.5,
+   "charge_gr": 41.0,
+   "powder": "IMR 4475",
+   "kind": "service",
+   "source_id": "tm43_0001_27",
+   "note": "CARTRIDGE, 7.62MM, ARMOR PIERCING, M61 ... Propellant: Type IMR 4475 Weight 41 gr Projectile: Weight 150.5 gr"
+  },
+  {
+   "cartridge": "7.62x51mm NATO",
+   "bullet_gr": 168.0,
+   "charge_gr": 42.0,
+   "powder": "IMR 4895",
+   "kind": "service",
+   "source_id": "tm43_0001_27",
+   "note": "CARTRIDGE, 7.62 MM, MATCH, M852 ... Propellant: Type IMR 4895 Weight 42 gr Bullet: Type Hollow point Weight 168 gr"
+  },
+  {
+   "cartridge": "7.62x51mm NATO",
+   "bullet_gr": 126.6,
+   "charge_gr": 45.0,
+   "powder": "Bofors NC1290",
+   "kind": "service",
+   "source_id": "tm43_0001_27",
+   "note": "CARTRIDGE, 7.62 MM, ARMOR PIERCING (AP), M993 ... Propellant: Type Bofors NC1290 Weight 45 gr Projectile: Weight 126.6 gr"
+  },
+  {
+   "cartridge": "9x19mm NATO",
+   "bullet_gr": 112.0,
+   "charge_gr": 6.0,
+   "powder": "HPC 26",
+   "kind": "service",
+   "source_id": "tm43_0001_27",
+   "note": "CARTRIDGE, 9 MM, BALL, NATO, M882 ... Propellant: Type HPC 26 Weight 6 gr Projectile weight 112 gr"
+  },
+  {
+   "cartridge": ".45 ACP",
+   "bullet_gr": 230.0,
+   "charge_gr": 5.0,
+   "powder": "SR 7970",
+   "kind": "service",
+   "source_id": "tm43_0001_27",
+   "note": "CARTRIDGE, CALIBER .45, BALL, M1911 ... Propellant: Type SR 7970 Weight 5 gr"
+  },
+  {
+   "cartridge": ".50 BMG",
+   "bullet_gr": 661.0,
+   "charge_gr": 235.0,
+   "powder": "WC 860",
+   "kind": "service",
+   "source_id": "tm43_0001_27",
+   "note": "CARTRIDGE, CALIBER .50, BALL, M2 ... Propellant: Type WC 860 Weight 235 gr"
+  },
+  {
+   "cartridge": ".50 BMG",
+   "bullet_gr": 661.0,
+   "charge_gr": 235.0,
+   "powder": "WC 860",
+   "kind": "service",
+   "source_id": "tm43_0001_27",
+   "note": "CARTRIDGE, CALIBER .50, BALL, M33 ... Propellant: Type WC 860 Weight 235 gr"
+  },
+  {
+   "cartridge": ".50 BMG",
+   "bullet_gr": 709.0,
+   "charge_gr": 235.0,
+   "powder": "WC 860",
+   "kind": "service",
+   "source_id": "tm43_0001_27",
+   "note": "CARTRIDGE, CALIBER .50, BALL, ARMOR PIERCING, M2 ... Propellant: Type WC 860 Weight 235 gr"
+  },
+  {
+   "cartridge": ".50 BMG",
+   "bullet_gr": 622.5,
+   "charge_gr": 233.0,
+   "powder": "WC 860",
+   "kind": "service",
+   "source_id": "tm43_0001_27",
+   "note": "CARTRIDGE, CALIBER .50, BALL, ARMOR PIERCING INCENDIARY, M8 ... Propellant: Type WC 860 Weight 233 gr Projectile: Weight 622.5 gr"
+  },
+  {
+   "cartridge": ".50 BMG",
+   "bullet_gr": 619.0,
+   "charge_gr": 230.0,
+   "powder": "IMR 5010",
+   "kind": "service",
+   "source_id": "tm43_0001_27",
+   "note": "CARTRIDGE, CALIBER .50, BALL, ARMOR PIERCING INCENDIARY-TRACER, M20 ... Propellant: Type IMR 5010 Weight 230 gr Projectile: Weight 619 gr"
+  },
+  {
+   "cartridge": ".50 BMG",
+   "bullet_gr": 671.0,
+   "charge_gr": 233.0,
+   "powder": "WC 860/IMR 5010 or RA-NC-167",
+   "kind": "service",
+   "source_id": "tm43_0001_27",
+   "note": "CARTRIDGE, CALIBER .50: ARMOR PIERCING INCENDIARY (API), MK211 MOD 0 ... Propellant: Type WC 860/MR 5010 or RA-NC-167 Weight 233 gr Projectile: Weight 671 gr"
+  },
+  {
+   "cartridge": ".50 BMG",
+   "bullet_gr": 360.0,
+   "charge_gr": 275.0,
+   "powder": "WC 856",
+   "kind": "service",
+   "source_id": "tm43_0001_27",
+   "note": "CARTRIDGE, CALIBER .50, SABOTED LIGHT ARMOR PENETRATOR (SLAP), M903 ... Propellant: Type WC 856 Weight 275 gr Projectile: Weight 355-360 gr"
+  },
+  {
+   "cartridge": ".50 BMG",
+   "bullet_gr": 833.0,
+   "charge_gr": 110.0,
+   "powder": "IMR 7383",
+   "kind": "service",
+   "source_id": "tm43_0001_27",
+   "note": "CARTRIDGE, CALIBER.50, BALL, SPOTTER-TRACER, M48A2 ... Propellant: Type IMR 7383 Weight 110 gr Projectile: Weight 833 gr"
+  },
+  {
+   "cartridge": ".30-06 Springfield",
+   "bullet_gr": 152.0,
+   "charge_gr": 50.0,
+   "powder": "IMR 4895",
+   "kind": "service",
+   "source_id": "tm43_0001_27",
+   "note": "CARTRIDGE, CALIBER .30, BALL, M2 ... Propellant: Type IMR 4895 Weight 50 gr"
+  },
+  {
+   "cartridge": ".30 Carbine",
+   "bullet_gr": 110.0,
+   "charge_gr": 13.0,
+   "powder": "WC 820",
+   "kind": "service",
+   "source_id": "tm43_0001_27",
+   "note": "CARTRIDGE, CALIBER .30, CARBINE, BALL, M1 ... Propellant: Type WC 820 Weight 13 gr"
+  },
+  {
+   "cartridge": "5.56x45mm NATO",
+   "bullet_gr": 62.0,
+   "charge_gr": 26.0,
+   "powder": "SMP842",
+   "kind": "service",
+   "source_id": "epa_m855a1_lcea",
+   "note": "approximately 26 grains (1.7 grams) of SMP842 ball propellant"
+  },
+  {
+   "cartridge": "5.56x45mm NATO",
+   "bullet_gr": 62.0,
+   "charge_gr": 26.0,
+   "powder": "SMP842",
+   "kind": "service",
+   "source_id": "epa_m855a1_lcea",
+   "note": "Propellant Charge (SMP842) 1.685 g"
+  },
+  {
+   "cartridge": "12.7x108mm",
+   "bullet_gr": 743.8,
+   "charge_gr": 254.6,
+   "powder": "NCD (double base or single base)",
+   "kind": "service",
+   "source_id": "yugoimport_127x108_api",
+   "note": "Powder charge Weight 16.5-17.5 g (depending on propellant type) ... Bullet weight 48.2 ±0.8 g"
+  },
+  {
+   "cartridge": "12.7x108mm",
+   "bullet_gr": 743.8,
+   "charge_gr": 234.6,
+   "powder": "Spherical double base or single base cylindrical propellant",
+   "kind": "service",
+   "source_id": "yugoimport_127x108_ap",
+   "note": "Powder charge Weight 15.2-16.7 g (depending of propellant type) ... Bullet weight 48.2 ±0.8 g"
+  },
+  {
+   "cartridge": "6.5mm Creedmoor",
+   "bullet_gr": 140.0,
+   "charge_gr": 35.3,
+   "powder": "N150",
+   "kind": "reloading",
+   "source_id": "vihtavuori_2026",
+   "note": "9,1 140 Berger Hybrid Target ... N150 2,03 31.3 710 2329 2,29 35.3 778 2552"
+  },
+  {
+   "cartridge": "6.5mm Creedmoor",
+   "bullet_gr": 143.0,
+   "charge_gr": 34.4,
+   "powder": "N150",
+   "kind": "reloading",
+   "source_id": "vihtavuori_2026",
+   "note": "9,3 143 Hornady ELD-X ... N150 1,98 30.6 695 2280 2,23 34.4 763 2503"
+  },
+  {
+   "cartridge": ".308 Winchester",
+   "bullet_gr": 147.0,
+   "charge_gr": 38.3,
+   "powder": "N133",
+   "kind": "reloading",
+   "source_id": "vihtavuori_2026",
+   "note": "9,5 147 Brenneke TUG Nature ... N133 2,25 34.7 728 2388 2,48 38.3 793 2602"
+  },
+  {
+   "cartridge": ".308 Winchester",
+   "bullet_gr": 168.0,
+   "charge_gr": 40.1,
+   "powder": "N135",
+   "kind": "reloading",
+   "source_id": "vihtavuori_2026",
+   "note": "10,9 168 Sierra HPBT ... N135 2,40 37.0 728 2388 2,60 40.1 783 2569"
+  },
+  {
+   "cartridge": ".308 Winchester",
+   "bullet_gr": 175.0,
+   "charge_gr": 38.6,
+   "powder": "N135",
+   "kind": "reloading",
+   "source_id": "vihtavuori_2026",
+   "note": "11,3 175 Lapua OTM Scenar-L GB550 ... N135 2,29 35.3 720 2362 2,50 38.6 786 2579"
+  },
+  {
+   "cartridge": ".30-06 Springfield",
+   "bullet_gr": 150.0,
+   "charge_gr": 52.8,
+   "powder": "N140",
+   "kind": "reloading",
+   "source_id": "vihtavuori_2026",
+   "note": "9,7 150 Sierra HPBT ... N140 3,08 47.5 798 2618 3,42 52.8 871 2858"
+  },
+  {
+   "cartridge": ".30-06 Springfield",
+   "bullet_gr": 168.0,
+   "charge_gr": 48.8,
+   "powder": "N140",
+   "kind": "reloading",
+   "source_id": "vihtavuori_2026",
+   "note": "10,9 168 Sierra TMK ... N140 2,89 44.6 762 2500 3,16 48.8 832 2730"
+  },
+  {
+   "cartridge": ".300 Winchester Magnum",
+   "bullet_gr": 150.0,
+   "charge_gr": 61.3,
+   "powder": "N140",
+   "kind": "reloading",
+   "source_id": "vihtavuori_2026",
+   "note": "9,7 150 Sierra SBT ... N140 3,70 57.1 886 2907 3,97 61.3 934 3064"
+  },
+  {
+   "cartridge": ".300 Winchester Magnum",
+   "bullet_gr": 168.0,
+   "charge_gr": 65.1,
+   "powder": "N550",
+   "kind": "reloading",
+   "source_id": "vihtavuori_2026",
+   "note": "10,9 168 Sierra HPBT ... N550 3,80 58.6 836 2743 4,22 65.1 919 3015"
+  },
+  {
+   "cartridge": ".300 Winchester Magnum",
+   "bullet_gr": 175.0,
+   "charge_gr": 69.8,
+   "powder": "N160",
+   "kind": "reloading",
+   "source_id": "vihtavuori_2026",
+   "note": "11,3 175 Lapua OTM Scenar-L GB550 ... N160 4,00 61.7 833 2733 4,52 69.8 897 2943"
+  },
+  {
+   "cartridge": ".338 Lapua Magnum",
+   "bullet_gr": 250.0,
+   "charge_gr": 92.1,
+   "powder": "N565",
+   "kind": "reloading",
+   "source_id": "vihtavuori_2026",
+   "note": "16,2 250 Berger Hybrid OTM Tactical ... N565 5,53 85.3 822 2697 5,97 92.1 890 2920"
+  },
+  {
+   "cartridge": ".338 Lapua Magnum",
+   "bullet_gr": 300.0,
+   "charge_gr": 80.2,
+   "powder": "N165",
+   "kind": "reloading",
+   "source_id": "vihtavuori_2026",
+   "note": "19,4 300 Sierra HPBT ... N165 4,57 70.5 695 2281 5,20 80.2 766 2513"
+  },
+  {
+   "cartridge": ".300 AAC Blackout",
+   "bullet_gr": 125.0,
+   "charge_gr": 15.7,
+   "powder": "N110",
+   "kind": "reloading",
+   "source_id": "vihtavuori_2026",
+   "note": "8,1 125 Sierra MatchKing ... N110 0,92 14.2 568 1864 1,02 15.7 613 2011"
+  },
+  {
+   "cartridge": ".300 AAC Blackout",
+   "bullet_gr": 200.0,
+   "charge_gr": 15.7,
+   "powder": "N120",
+   "kind": "reloading",
+   "source_id": "vihtavuori_2026",
+   "note": "13,0 200 Lapua FMJBT ... N120 0,66 10.2 316 1037 1,02 15.7 459 1506"
+  },
+  {
+   "cartridge": ".30 Carbine",
+   "bullet_gr": 110.0,
+   "charge_gr": 14.0,
+   "powder": "N110",
+   "kind": "reloading",
+   "source_id": "vihtavuori_2026",
+   "note": "7,1 110 Speer Spire Point ... N110 0,79 12.1 545 1786 0,91 14.0 605 1983"
+  },
+  {
+   "cartridge": "7.62x39mm",
+   "bullet_gr": 123.0,
+   "charge_gr": 25.5,
+   "powder": "N120",
+   "kind": "reloading",
+   "source_id": "vihtavuori_2026",
+   "note": "8,0 123 Berry's TMJ Spire Point ... N120 1,30 20.1 570 1870 1,65 25.5 708 2323"
+  },
+  {
+   "cartridge": "7.62x54mmR",
+   "bullet_gr": 150.0,
+   "charge_gr": 51.7,
+   "powder": "N140",
+   "kind": "reloading",
+   "source_id": "vihtavuori_2026",
+   "note": "7,62 x 53R (7,62 Russian) 9,7 150 Lapua LockBase ... N140 3,09 47.7 847 2779 3,35 51.7 916 3005"
+  },
+  {
+   "cartridge": "9x19mm",
+   "bullet_gr": 124.0,
+   "charge_gr": 4.5,
+   "powder": "N320",
+   "kind": "reloading",
+   "source_id": "vihtavuori_2026",
+   "note": "8,0 124 Alsa Pro FMJ ... N320 0,25 3.9 291 955 0,29 4.5 328 1076"
+  },
+  {
+   "cartridge": "9x19mm",
+   "bullet_gr": 115.0,
+   "charge_gr": 4.0,
+   "powder": "N320",
+   "kind": "reloading",
+   "source_id": "vihtavuori_2026",
+   "note": "7,5 115 Sierra JHP ... N320 0,22 3.4 280 919 0,26 4.0 326 1070"
+  },
+  {
+   "cartridge": ".45 ACP",
+   "bullet_gr": 230.0,
+   "charge_gr": 8.2,
+   "powder": "N320",
+   "kind": "reloading",
+   "source_id": "vihtavuori_2026",
+   "note": "14,9 230 Sierra FMJ ... N320 0,48 7.4 251 823 0,53 8.2 282 925"
+  },
+  {
+   "cartridge": ".45 ACP",
+   "bullet_gr": 200.0,
+   "charge_gr": 6.3,
+   "powder": "N320",
+   "kind": "reloading",
+   "source_id": "vihtavuori_2026",
+   "note": "13,0 200 Hornady HAP ... N320 0,36 5.5 270 886 0,41 6.3 310 1017"
+  },
+  {
+   "cartridge": ".223 Remington",
+   "bullet_gr": 77.0,
+   "charge_gr": 24.7,
+   "powder": "N140",
+   "kind": "reloading",
+   "source_id": "vihtavuori_2026",
+   "note": "5,0 77 Barnes LRX BT ... N140 1,40 21.6 713 2339 1,60C 24.7C 815 2674"
+  },
+  {
+   "cartridge": ".223 Remington",
+   "bullet_gr": 69.0,
+   "charge_gr": 22.8,
+   "powder": "N133",
+   "kind": "reloading",
+   "source_id": "vihtavuori_2026",
+   "note": "4,5 69 Sierra HPBT ... N133 1,34 20.7 792 2598 1,48 22.8 867 2844"
+  },
+  {
+   "cartridge": "12 gauge",
+   "bullet_gr": 555.6,
+   "charge_gr": 28.1,
+   "powder": "N320",
+   "kind": "reloading",
+   "source_id": "vihtavuori_2026",
+   "note": "Shot Load 36 g / 1 1/4 oz Lead Shot ... N320 ... 1,75 27.0 401 1316 1,82 28.1 411 1348"
+  },
+  {
+   "cartridge": "12 gauge",
+   "bullet_gr": 617.3,
+   "charge_gr": 26.9,
+   "powder": "N320",
+   "kind": "reloading",
+   "source_id": "vihtavuori_2026",
+   "note": "Shot Load 40 g / 1 3/8 oz Lead Shot ... N320 ... 1,60 24.7 367 1204 1,74 26.9 385 1263"
+  },
+  {
+   "cartridge": "20 gauge",
+   "bullet_gr": 382.8,
+   "charge_gr": 16.5,
+   "powder": "20/28",
+   "kind": "reloading",
+   "source_id": "alliant_2020",
+   "note": "7/8 20/28 Rem. 209P RXP 20 15.5 grs 9310 psi 16.5 grs 10180 psi"
+  },
+  {
+   "cartridge": "20 gauge",
+   "bullet_gr": 437.5,
+   "charge_gr": 23.0,
+   "powder": "Blue Dot",
+   "kind": "reloading",
+   "source_id": "alliant_2020",
+   "note": "1 Blue Dot CCI 209 SP 20 22.0 grs 9500 psi 23.0 grs 10300 psi"
+  },
+  {
+   "cartridge": ".410 bore",
+   "bullet_gr": 218.8,
+   "charge_gr": 11.9,
+   "powder": "410",
+   "kind": "reloading",
+   "source_id": "alliant_2020",
+   "note": "1/2 410 CCI 209M WAA41 11.5 grs 11100 psi 11.9 grs 11800 psi"
+  },
+  {
+   "cartridge": ".410 bore",
+   "bullet_gr": 300.0,
+   "charge_gr": 13.5,
+   "powder": "410",
+   "kind": "reloading",
+   "source_id": "alliant_2020",
+   "note": "11/16 410 Rem. 209P Rem. SP410 13.5 grs 12600 psi"
+  }
+ ]
+}

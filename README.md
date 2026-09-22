@@ -111,17 +111,17 @@ Event FX (lightning, dust, sound) vary cosmetically per machine.
 
 AEE develops in three phases. The [project board](https://github.com/orgs/lErrorl404l/projects/2) tracks the 36 issues across them.
 
-1. **Phase 1 Baseline** — Core physics models, unit tests, dedicated-server integration test.
-2. **Phase 2 Expansion** — Additional models, more compat addons, expanded test coverage.
-3. **Phase 3 Frontier** — Advanced phenomena, edge-case coverage, performance optimisation.
+1. **Phase 1 Baseline**: core physics models, unit tests, dedicated-server integration test.
+2. **Phase 2 Expansion**: more models, more compat addons, wider test coverage.
+3. **Phase 3 Frontier**: advanced phenomena, edge-case coverage, performance optimisation.
 
 ---
 
 ## Structure
 
-19 addons under `addons/`.
+22 addons under `addons/`.
 
-**Core addons (13):** `main`, `core`, `actions`, `atmos`, `ballistics`, `environmental`, `fx`, `maritime`, `mobility`, `optics`, `physiology`, `radio`, `thermal`.
+**Core addons (16):** `main`, `core`, `actions`, `armour`, `atmos`, `ballistics`, `environmental`, `fx`, `maritime`, `material`, `mobility`, `nightvision`, `optics`, `physiology`, `radio`, `thermal`.
 
 **Compat addons (6):** `compat_ace3`, `compat_acm`, `compat_acre2`, `compat_kat`, `compat_realweather`, `compat_tfar`.
 
