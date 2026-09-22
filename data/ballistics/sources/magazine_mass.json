@@ -1,0 +1,1297 @@
+{
+ "retrieved": "2026-09-22",
+ "sources": [
+  {
+   "source_id": "magpul_pmag30m3",
+   "title": "Magpul PMAG 30 AR/M4 GEN M3 product page (manufacturer)",
+   "url": "https://magpul.com/pmag-30-ar-m4-gen-m3.html",
+   "sha256": "8a2decefd504dc70e7ec71745e234e29cdb0a3ab88c1e08130f8efb72ca51faf"
+  },
+  {
+   "source_id": "magpul_pmag30m2moe",
+   "title": "Magpul PMAG 30 AR/M4 GEN M2 MOE product page (manufacturer)",
+   "url": "https://magpul.com/pmag-30-ar-m4-gen-m2-moe.html",
+   "sha256": "43a10ccd672e21b27c2f71c1e07507d90416776f566969c5bef4981bbee3e869"
+  },
+  {
+   "source_id": "magpul_pmag30m3win",
+   "title": "Magpul PMAG 30 AR/M4 GEN M3 Window product page (manufacturer)",
+   "url": "https://magpul.com/pmag-30-ar-m4-gen-m3-window.html",
+   "sha256": "b8bbe36945bdfad827ed4153052144d79d551cd076235eebbb6510f4a81319f1"
+  },
+  {
+   "source_id": "magpul_pmag30akmoe",
+   "title": "Magpul PMAG 30 AK/AKM MOE product page (manufacturer)",
+   "url": "https://magpul.com/pmag-30-ak-akm-moe.html",
+   "sha256": "2eb48b613adec228872cda89a0af77f0e3fe4866447e165f1e20585c3b6a84c7"
+  },
+  {
+   "source_id": "magpul_pmag30akm3",
+   "title": "Magpul PMAG 30 AK/AKM GEN M3 product page (manufacturer)",
+   "url": "https://magpul.com/pmag-30-ak-akm-gen-m3.html",
+   "sha256": "77bbf1ed303afdd57e581eaa7f9834b39df10a5e1f293d6cb645b69f350a6f11"
+  },
+  {
+   "source_id": "magpul_pmag30ak74",
+   "title": "Magpul PMAG 30 AK74 MOE product page (manufacturer)",
+   "url": "https://magpul.com/pmag-30-ak74-moe.html",
+   "sha256": "1f431b38cfcc2952cce9cb2674c0d174050ae4844342fdd37f8b0701d79897a5"
+  },
+  {
+   "source_id": "magpul_pmag20ak",
+   "title": "Magpul PMAG 20 AK/AKM MOE product page (manufacturer)",
+   "url": "https://magpul.com/pmag-20-ak-akm-moe.html",
+   "sha256": "fdf6b38d79276e01135036df90f632a104de7af673fcd24e7600850ed2f4883a"
+  },
+  {
+   "source_id": "magpul_pmag10ak",
+   "title": "Magpul PMAG 10 AK/AKM MOE product page (manufacturer)",
+   "url": "https://magpul.com/pmag-10-ak-akm-moe.html",
+   "sha256": "47e0bb538eb16afbfb88f73593dfdddc14f30eadc3fcbcd19fb7901fde462b67"
+  },
+  {
+   "source_id": "magpul_pmag40",
+   "title": "Magpul PMAG 40 AR/M4 GEN M3 product page (manufacturer)",
+   "url": "https://magpul.com/pmag-40-ar-m4-gen-m3.html",
+   "sha256": "2b155eb4375ca6ce038a5e240809e59b7c2865fa32fc793c29d136c595e70259"
+  },
+  {
+   "source_id": "magpul_pmag20ar",
+   "title": "Magpul PMAG 20 AR/M4 GEN M3 product page (manufacturer)",
+   "url": "https://magpul.com/pmag-20-ar-m4-gen-m3.html",
+   "sha256": "6df9bbd4aeeeed8fa7478e0a2238393dfd9de914a90fa66f4363b518111dccac"
+  },
+  {
+   "source_id": "magpul_pmag10ar",
+   "title": "Magpul PMAG 10 AR/M4 GEN M3 product page (manufacturer)",
+   "url": "https://magpul.com/pmag-10-ar-m4-gen-m3.html",
+   "sha256": "4fac67248a6aa8c50e7327b44e4392413998d71128d27f32c4186d8d4d1b36e7"
+  },
+  {
+   "source_id": "magpul_pmag20lrsr",
+   "title": "Magpul PMAG 20 LR/SR GEN M3 product page (manufacturer)",
+   "url": "https://magpul.com/pmag-20-lr-sr-gen-m3.html",
+   "sha256": "d39a085182c2bf30fe50f5cfe32b98b3446ad8117cfdf4085ed89df5b6432eb2"
+  },
+  {
+   "source_id": "magpul_pmag25lrsr",
+   "title": "Magpul PMAG 25 LR/SR GEN M3 Window product page (manufacturer)",
+   "url": "https://magpul.com/pmag-25-lr-sr-gen-m3-window.html",
+   "sha256": "8a8fdb4e6972919e27e6aa4683f98bacb031edc538523db1898a0c7c35467e20"
+  },
+  {
+   "source_id": "magpul_pmag10lrsr",
+   "title": "Magpul PMAG 10 LR/SR GEN M3 product page (manufacturer)",
+   "url": "https://magpul.com/pmag-10-lr-sr-gen-m3.html",
+   "sha256": "346c3e24854a3fd4147447909edb91b7097778ad7b67b659c9870d55d887af84"
+  },
+  {
+   "source_id": "magpul_d60",
+   "title": "Magpul PMAG D-60 AR/M4 GEN M3 product page (manufacturer)",
+   "url": "https://magpul.com/pmag-d-60-ar-m4-gen-m3.html",
+   "sha256": "0f0c18ae487c0d528906b8b8f42ce0008af98bd9eadf7f71bfdb7347435fa24e"
+  },
+  {
+   "source_id": "magpul_d50lrsr",
+   "title": "Magpul PMAG D-50 LR/SR GEN M3 product page (manufacturer)",
+   "url": "https://magpul.com/pmag-d-50-lr-sr-gen-m3.html",
+   "sha256": "e39de63a0c5ac75d9a6f88d09938e10bd1d4247cbc11811a224b10be34d42acd"
+  },
+  {
+   "source_id": "magpul_pmag5ac",
+   "title": "Magpul PMAG 5 7.62 AC AICS product page (manufacturer)",
+   "url": "https://magpul.com/pmag-5-762-ac-aics.html",
+   "sha256": "920eec1a3a39c12a111b2ad863c40f21d4ad7d21cb54eb515306532d70e049d3"
+  },
+  {
+   "source_id": "magpul_pmag10ac",
+   "title": "Magpul PMAG 10 7.62 AC AICS product page (manufacturer)",
+   "url": "https://magpul.com/pmag-10-762-ac-aics.html",
+   "sha256": "7cc2a446ba2ca945e69f0eaa5c3de2a4c963cf555957d15f5ae8fe65f4567aed"
+  },
+  {
+   "source_id": "magpul_pmag10_556ac",
+   "title": "Magpul PMAG 10 5.56 AC product page (manufacturer)",
+   "url": "https://magpul.com/pmag-10-556-ac.html",
+   "sha256": "078694b0276d1d08732167410f30c3d7a3d5a463c5d0d8959bd31577f443daf9"
+  },
+  {
+   "source_id": "magpul_gl9_17",
+   "title": "Magpul PMAG 17 GL9 (Glock 17) product page (manufacturer)",
+   "url": "https://magpul.com/pmag-17-gl9-glock-17.html",
+   "sha256": "f471a71f31bb7bab19edcb6bf33071877a0b63c5ceb65a564fdddf64dfa5565f"
+  },
+  {
+   "source_id": "magpul_gl9_15",
+   "title": "Magpul PMAG 15 GL9 (Glock 19) product page (manufacturer)",
+   "url": "https://magpul.com/pmag-15-gl9-glock-g19.html",
+   "sha256": "885fb22251317ffb92e64085a8f4010329d57624bc5684a72e688bebdedd1082"
+  },
+  {
+   "source_id": "magpul_gl9_21",
+   "title": "Magpul PMAG 21 GL9 product page (manufacturer)",
+   "url": "https://magpul.com/pmag21gl9-9x19-glock.html",
+   "sha256": "918bfb89774cf3e91e924d5d3b815af463e42ee4ac9f8fcd251fbb12dc7d7cbc"
+  },
+  {
+   "source_id": "magpul_gl9_27",
+   "title": "Magpul PMAG 27 GL9 product page (manufacturer)",
+   "url": "https://magpul.com/pmag-27-gl9-glock.html",
+   "sha256": "5bb72c42aeb34a2e1378769db9ff684bb04d8b7a94e321cfb063c8a3360bf965"
+  },
+  {
+   "source_id": "magpul_gl9_12",
+   "title": "Magpul PMAG 12 GL9 (Glock 26) product page (manufacturer)",
+   "url": "https://magpul.com/pmag-12-gl9-glock-g26.html",
+   "sha256": "b3fc96a1796b7e1826634fda1e1624dcebdde8025f807025fc36396215ee97a4"
+  },
+  {
+   "source_id": "magpul_amag15_p320",
+   "title": "Magpul AMAG 15 SG9 (SIG P320 Compact) product page (manufacturer)",
+   "url": "https://magpul.com/amag-15-sg9-sig-p320-compact.html",
+   "sha256": "608548a2c861e8fa3db98946bce8a3bcb904899da9660f1818319a03e0ce11ed"
+  },
+  {
+   "source_id": "magpul_amag17_p320",
+   "title": "Magpul AMAG 17 SG9 (SIG P320/M17) product page (manufacturer)",
+   "url": "https://magpul.com/amag-17-sg9-sig-p320-m17.html",
+   "sha256": "1c2a1431c6f7cdf3cfa086a3eaa078981b36251f02d784ff26b3131db500b332"
+  },
+  {
+   "source_id": "magpul_amag21_p320",
+   "title": "Magpul AMAG 21 SG9 (SIG P320/M17) product page (manufacturer)",
+   "url": "https://magpul.com/amag-21-sg9-sig-p320-m17.html",
+   "sha256": "e2b238be77703fc04124d187105853cc46f5e7815c84d48b738a6daf1460e347"
+  },
+  {
+   "source_id": "magpul_d50gl9",
+   "title": "Magpul PMAG D-50 GL9 (Glock) product page (manufacturer)",
+   "url": "https://magpul.com/pmag-d-50-gl9-glock.html",
+   "sha256": "0a79232aa8323793083cb9bba530f57e051908aa68768145de63dbf9f3dc5fd4"
+  },
+  {
+   "source_id": "magpul_d50mp",
+   "title": "Magpul PMAG D-50 MP (HK MP5) product page (manufacturer)",
+   "url": "https://magpul.com/pmag-d50-mp.html",
+   "sha256": "9d363ee73f2eabdd3e872a064277eea6b862d332de699ec466c2ee38dac21f57"
+  },
+  {
+   "source_id": "hk_g36_td",
+   "title": "Heckler & Koch G36 Technical Data (manufacturer datasheet)",
+   "url": "https://hk-manuals.s3.amazonaws.com/files/Military/G36/G36_Technical_Data.pdf",
+   "sha256": "c5f1b6e3cf3de42588259b088c30ad11704590eaa5e278262af7fe9125f3a9a3"
+  },
+  {
+   "source_id": "hk_hk416_td",
+   "title": "Heckler & Koch HK416 Technical Data (manufacturer datasheet)",
+   "url": "https://hk-manuals.s3.amazonaws.com/files/Military/HK416/HK416_Technical_Data.pdf",
+   "sha256": "6be8e4d917054f1e5b12065026ddee62b70193819040a8c1bac11b1708cfe934"
+  },
+  {
+   "source_id": "hk_hk417_td",
+   "title": "Heckler & Koch HK417 Technical Data (manufacturer datasheet)",
+   "url": "https://hk-manuals.s3.amazonaws.com/files/Military/HK417/HK417_Technical_Data.pdf",
+   "sha256": "93587acdeeeea0f5cb21380652509ed40d0ab73eeeb04a11be88cf64e01b506d"
+  },
+  {
+   "source_id": "steyr_aug_manual",
+   "title": "Steyr AUG A3 SA operator manual (maker manual, archive.org OCR)",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/steyr_aug_a3_sa_djvu.txt",
+   "sha256": "ac6970ce0d1d73869d96c4e93dcc143049427c7f4c7122210394bd81d838dca9"
+  },
+  {
+   "source_id": "fn_fal_manual",
+   "title": "FN Light Automatic Rifle (FAL) technical manual (maker manual, archive.org OCR)",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/fn_fal762_djvu.txt",
+   "sha256": "e01b5269d11ef67cf11b5557da8c31166588eaccfbb61e8c3a2064eb1ceef18c"
+  },
+  {
+   "source_id": "sig_p226_armorer",
+   "title": "SIG Sauer P226 Combat pistol armorer's manual (maker manual, archive.org OCR)",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/sig_p226_combat_pistol_armorer's_manual_djvu.txt",
+   "sha256": "84a41dc3ae95e53ebbc8200b39155b439a59527e7c26d2b553afe6e4babf266d"
+  },
+  {
+   "source_id": "sig_p228_manual",
+   "title": "SIG Sauer P228 pistol manual (maker manual, archive.org OCR)",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/sig_p228_djvu.txt",
+   "sha256": "18786ef7ef60c7dd80b7f955bed361a399eb9631991113a93d0d49265f419a6b"
+  },
+  {
+   "source_id": "sig_p229_manual",
+   "title": "SIG Sauer P229 pistol manual (maker manual, archive.org OCR)",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/sig_p229_djvu.txt",
+   "sha256": "af4392dc6c568a0e4b7016e4e0fb5b027f2dfad30184a6fc5fb395fb0045e961"
+  },
+  {
+   "source_id": "sig_sp2022_manual",
+   "title": "SIG Sauer SP2022 pistol manual (maker manual, archive.org OCR)",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/sig_sp2022_djvu.txt",
+   "sha256": "a43a7253d30cad4f873f06a4961a75af8df23a7c3e05162714cebdd41a541c4b"
+  },
+  {
+   "source_id": "beretta_92fs_manual",
+   "title": "Beretta 92FS pistol manual (maker manual, archive.org OCR)",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/beretta_92fs_djvu.txt",
+   "sha256": "888ba9b07cffd0d655a24a2778cb68ecce5b1b3801d6a2beddeb6e6c2cae72f2"
+  },
+  {
+   "source_id": "cz75_armorer",
+   "title": "CZ 75 pistol armourer manual (maker manual, archive.org OCR)",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/cz_75_armourer_manual_djvu.txt",
+   "sha256": "a24061db49d2a5e8ef2148372d8ec491ac6b30ee6b0993cb9bfa4635dfb13559"
+  },
+  {
+   "source_id": "walther_p99_manual",
+   "title": "Walther P99 pistol manual (maker manual, German, archive.org OCR)",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/walther_p99_djvu.txt",
+   "sha256": "46ed07bdc154e674e2eea4375d946800c913a4fb4eae67c704457861be46ad55"
+  },
+  {
+   "source_id": "galil_manual",
+   "title": "IMI Galil ARM/AR/SAR rifle manual (maker manual, archive.org OCR)",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/galil_arm_djvu.txt",
+   "sha256": "f1c46b8035b9ecd65b2fa283921456899968907cf3a686ee06485b5c0e8d92b9"
+  },
+  {
+   "source_id": "uzi_manual",
+   "title": "IMI Uzi carbine manual (maker manual, archive.org OCR)",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/uzi_djvu.txt",
+   "sha256": "645645e8a17ad34f933cd9b82316459d5f28d1a63a188a3d10b5ec3c4eef7db5"
+  },
+  {
+   "source_id": "hk_mark23_manual",
+   "title": "Heckler & Koch Mark 23 pistol operator's manual (maker manual, archive.org OCR)",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/hk_mark23_djvu.txt",
+   "sha256": "db59fb0e66fe9e90d1f2e23bbedfe144e4c044c1ee7f6e862fb44cd347c69140"
+  },
+  {
+   "source_id": "hk_ump_manual",
+   "title": "Heckler & Koch UMP 40/45 operator's manual (maker manual, archive.org OCR)",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/hk_ump40_djvu.txt",
+   "sha256": "27bf0ef289e12071a81dea772c1686f889b73bf0a7bd0af03f9583e0aacaeabb"
+  },
+  {
+   "source_id": "hk_usp_armorer",
+   "title": "Heckler & Koch USP armourer's instructions (maker manual, archive.org OCR)",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/hk_usp_armorers_instructions_djvu.txt",
+   "sha256": "1a687fa424e6a3c6ee0324992ee3c26b4cd57252832045194ac25fa8ea6aaedd"
+  },
+  {
+   "source_id": "hk_usp_operator",
+   "title": "Heckler & Koch USP operator's manual (maker manual, archive.org OCR)",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/hk_usp-series_djvu.txt",
+   "sha256": "75c7ce66ab07570bcc8c80baf6f1926a0ef7231449da614e326b6dd4d3753a2a"
+  },
+  {
+   "source_id": "hk_hk45_manual",
+   "title": "Heckler & Koch HK45 series operator's manual (maker manual, archive.org OCR)",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/hk_hk45-series_djvu.txt",
+   "sha256": "8d7604ced0c06f087cc0ab88feef5a799b16aba72192aaadabd61bdbc01c55d6"
+  },
+  {
+   "source_id": "hk_mp7_manual",
+   "title": "Heckler & Koch MP7A1 operator's manual (maker manual, archive.org OCR)",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/hk_mp7a1_djvu.txt",
+   "sha256": "e76ddd46e8d040f500e18476f85e56e643253afde441e84d96d93c2b873f8818"
+  },
+  {
+   "source_id": "barrett_95_manual",
+   "title": "Barrett Model 95 .50 BMG rifle manual (maker manual, archive.org OCR)",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/barrett_95_manual_djvu.txt",
+   "sha256": "918d3e05399c4f5de6d1c4e7c6b73ac830cbc55fc31963dc42194d77f2cce198"
+  },
+  {
+   "source_id": "thompson_manual",
+   "title": "Thompson Submachine Gun Model 1928 manual, Auto-Ordnance (maker manual, archive.org OCR)",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/thompson_tommy_full_auto_1927_djvu.txt",
+   "sha256": "7ac234692214940693a2219a7ae36044f54fec510ac51fba0fad03c7c713c99d"
+  },
+  {
+   "source_id": "svd_manual",
+   "title": "Dragunov SVD rifle technical data (manual, archive.org OCR)",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/dragunov_djvu.txt",
+   "sha256": "fbea7a10d0d2ae55c3dbb97fd45f14efbab096cedfd81b1442900d4f99e8ed44"
+  },
+  {
+   "source_id": "m1911_tm",
+   "title": "TM 9-1005-211-34, Maintenance Manual, Pistol, Caliber .45, Automatic, M1911A1 (US Army)",
+   "url": "https://archive.org/download/M1911A1-Technical-Manual-9-1005-211-34/MAINT45A_djvu.txt",
+   "sha256": "6b84b0d3af0d3f0e2ab124b7d50b71439f544c947a952c826cf1f09e0c198439"
+  },
+  {
+   "source_id": "m249_tm",
+   "title": "TM 9-1005-201-10, Operator's Manual, Machine Gun 5.56mm M249 (US Army)",
+   "url": "https://archive.org/download/tm-9-1005-201-10-machine-gun-5.56mm-m-249-1991/TM%209-1005-201-10%20Machine%20Gun%2C%205.56mm%2C%20M249%20%201991_djvu.txt",
+   "sha256": "baaae285e2e3a20129361581169f777d2531a64967ae9f0420aaa775479dfe99"
+  },
+  {
+   "source_id": "tm43_1996",
+   "title": "TM 43-0001-27, Army Ammunition Data Sheets, Small Caliber Ammunition (US Army, 1996)",
+   "url": "https://archive.org/download/1996-us-army-ammunition-data-sheets-small-caliber-ammunition-325p/1996%20US%20Army%20Ammunition%20Data%20Sheets%20Small%20Caliber%20Ammunition%20325p.pdf",
+   "sha256": "ac6b61dbf0b2385c96ac0c1968dadcb411d011eaf5593e9c6c9c744c20ccdafc"
+  },
+  {
+   "source_id": "mk19_fm",
+   "title": "FM 3-22.27, MK 19, 40-mm Grenade Machine Gun, Mod 3 (US Army)",
+   "url": "https://archive.org/download/FM_3_22_27_MK_19_40_G_M_G_M_3_2003/FM_3_22_27_MK_19_40_G_M_G_M_3_2003_djvu.txt",
+   "sha256": "df89805fe8ea008ea157196bc493b8f4d072959031a55abe3cd47a4d3557ae1e"
+  },
+  {
+   "source_id": "epa_m855a1",
+   "title": "Life-Cycle Environmental Assessment (LCEA) for Cartridge 5.56mm Ball, M855A1 (US EPA / US Army ARDEC, 2010)",
+   "url": "https://www.epa.gov/system/files/documents/2025-05/2010-final-lcea-5-56mm-m855a1.pdf",
+   "sha256": "1934ab242ba2c43f981c7b0aef9d97f70dd0892ae991472c29bd8081ec864c7a"
+  },
+  {
+   "source_id": "dtic_ada547525",
+   "title": "DTIC ADA547525: Should the U.S. Army Adopt New 5.56mm Ammunition Cartridge Designs to Reduce Overall Ammunition Weight? (US Army CGSC thesis)",
+   "url": "https://archive.org/download/DTIC_ADA547525/DTIC_ADA547525_djvu.txt",
+   "sha256": "6790f4a103f4412ee24cd5bacae7dca45a4d0166a5bd6b8c32e6c42055e797db"
+  },
+  {
+   "source_id": "rtg_aku_ak47_30",
+   "title": "Robert RTG Parts: AC-Unity AK47 30rd 7.62x39 magazine (specialist retailer)",
+   "url": "https://www.robertrtg.com/ak47-30rd-7-62x39-gen1-magazine-soviet-style-follower-ac-unity",
+   "sha256": "41b1b96e400e5319e6ceb4d0c16da0f0c4518d164892e2c371e8a93e0a3c32c2"
+  },
+  {
+   "source_id": "rtg_aku_ak47_40",
+   "title": "Robert RTG Parts: AC-Unity AK47 40rd 7.62x39 magazine (specialist retailer)",
+   "url": "https://www.robertrtg.com/ak47-40rd-7-62x39-gen1-magazine-soviet-style-follower-ac-unity",
+   "sha256": "b2e366c94656c661ec055358f245f8c4613ccdbf352157d03e44375051ff39b1"
+  },
+  {
+   "source_id": "rtg_aku_ak47_60",
+   "title": "Robert RTG Parts: AC-Unity AK47 60rd quad-stack magazine (specialist retailer)",
+   "url": "https://www.robertrtg.com/ak47-60rd-quad-stack-magazine-ac-unity",
+   "sha256": "e6a6722e875b03b5a9b38b50ffa4d6ec3026a2a4df37a0982d1316052efbbd8b"
+  },
+  {
+   "source_id": "rtg_aku_ak74_30",
+   "title": "Robert RTG Parts: AC-Unity AK74 30rd 5.45x39 window magazine (specialist retailer)",
+   "url": "https://www.robertrtg.com/ak74-30rd-5-45x39-window-magazine-ac-unity",
+   "sha256": "f7fc2572e142c67e79e831f317a2cf622b7af3b97e2c256dcf5c1144a90a10a4"
+  },
+  {
+   "source_id": "rtg_aku_ak556_30",
+   "title": "Robert RTG Parts: AC-Unity AK556 30rd 5.56x45 magazine (specialist retailer)",
+   "url": "https://www.robertrtg.com/ak556-30rd-5-56x45mm-window-magazine-fits-bulgarian-and-yugo-spec-ac-unity",
+   "sha256": "a4fa37c20123a88d48cb31947a28f4f9b61ede91f9bfa494bb98cf6424229c76"
+  },
+  {
+   "source_id": "rtg_aku_ak12_30",
+   "title": "Robert RTG Parts: AC-Unity AK12 30rd 5.45x39 magazine (specialist retailer)",
+   "url": "https://www.robertrtg.com/ak12-30rd-5-45x39-magazine-fits-all-ak74-ac-unity",
+   "sha256": "275ed0ba87fcfde0843668f1514724d76e5303aa18329dcfd882d812f7f876c5"
+  },
+  {
+   "source_id": "rtg_aku_ak103_30",
+   "title": "Robert RTG Parts: AC-Unity AK103 30rd 7.62x39 magazine (specialist retailer)",
+   "url": "https://www.robertrtg.com/ak103-30rd-7-62x39-magazine-fits-all-ak47-ac-unity",
+   "sha256": "730883bf32b7905edda003e6fca10dae43d6d4ce487927a0f718608cb5cbe95b"
+  },
+  {
+   "source_id": "rtg_aku_mp5_40",
+   "title": "Robert RTG Parts: AC-Unity MP5 40rd 9x19 magazine (specialist retailer)",
+   "url": "https://www.robertrtg.com/mp5-40rd-9mm-magazine-ac-unity",
+   "sha256": "4b5f3dda4446dc69edbe01481504ee7b8b92dad33c1c1ce2fa6fb47f5590920d"
+  },
+  {
+   "source_id": "rtg_aku_aug_30",
+   "title": "Robert RTG Parts: AC-Unity Steyr AUG 30rd 5.56x45 window magazine (specialist retailer)",
+   "url": "https://www.robertrtg.com/steyr-aug-30rd-5-56x45mm-window-magazine-ac-unity",
+   "sha256": "99e09ea1f853664c973f87d5d9dcae23bf4950d7a7e15a94032c1bf145b37003"
+  },
+  {
+   "source_id": "rtg_aku_vz58_30",
+   "title": "Robert RTG Parts: AC-Unity VZ58 30rd 7.62x39 magazine (specialist retailer)",
+   "url": "https://www.robertrtg.com/vz58-30rd-magazine-new-ac-unity",
+   "sha256": "89a5038dcfa01825a3401dd2026f338fdf6dab8e335944ef6fa1974658742a1b"
+  },
+  {
+   "source_id": "rtg_aku_glock17_17",
+   "title": "Robert RTG Parts: AC-Unity Glock 17 17rd 9mm window magazine (specialist retailer)",
+   "url": "https://www.robertrtg.com/glock-17-34-9mm-17rd-window-magazine-ac-unity",
+   "sha256": "cf73c09d8bcb725d56e54ae605f7617418e4aa4ffab8ddfc62ba940bf8bfc41d"
+  },
+  {
+   "source_id": "rtg_aku_glock19_15",
+   "title": "Robert RTG Parts: AC-Unity Glock 19 15rd 9mm window magazine (specialist retailer)",
+   "url": "https://www.robertrtg.com/glock-19-9mm-15rd-window-magazine-ac-unity",
+   "sha256": "10929534be710480b07e61352db2d6253926805bf88689b0e195b0f443e02f66"
+  },
+  {
+   "source_id": "rtg_aku_czbren_30",
+   "title": "Robert RTG Parts: AC-Unity CZ Bren 2 30rd 7.62x39 magazine (specialist retailer)",
+   "url": "https://www.robertrtg.com/cz-bren-m2-m2s-7-62x39mm-30rd-magazine-new-ac-unity",
+   "sha256": "e59598fbf4179a8f6a450c70e0016233c4b9504004779f097c895b4168d47f73"
+  },
+  {
+   "source_id": "rtg_aku_m249_box",
+   "title": "Robert RTG Parts: AC-Unity FN Minimi / M249 200rd ammunition box, empty (specialist retailer)",
+   "url": "https://www.robertrtg.com/fn-minimi-m249-200rd-ammo-box-new-ac-unity",
+   "sha256": "4d7c32473925ddf265e6b74e1e253649ff518c7207231f97514788f4c8743711"
+  }
+ ],
+ "magazines": [
+  {
+   "item": "Magpul PMAG 30 AR/M4 GEN M3",
+   "weapon_key": "m4a1",
+   "chambering": "5.56x45mm NATO",
+   "capacity": 30,
+   "empty_mass_g": 141.7,
+   "loaded_mass_g": null,
+   "source_id": "magpul_pmag30m3",
+   "note": "Weight 5 oz."
+  },
+  {
+   "item": "Magpul PMAG 30 AR/M4 GEN M2 MOE",
+   "weapon_key": "m4a1",
+   "chambering": "5.56x45mm NATO",
+   "capacity": 30,
+   "empty_mass_g": 141.7,
+   "loaded_mass_g": null,
+   "source_id": "magpul_pmag30m2moe",
+   "note": "Weight 5 oz."
+  },
+  {
+   "item": "Magpul PMAG 30 AR/M4 GEN M3 Window",
+   "weapon_key": "m4a1",
+   "chambering": "5.56x45mm NATO",
+   "capacity": 30,
+   "empty_mass_g": 141.7,
+   "loaded_mass_g": null,
+   "source_id": "magpul_pmag30m3win",
+   "note": "Weight 5 oz."
+  },
+  {
+   "item": "Magpul PMAG 40 AR/M4 GEN M3",
+   "weapon_key": "m4a1",
+   "chambering": "5.56x45mm NATO",
+   "capacity": 40,
+   "empty_mass_g": 187.1,
+   "loaded_mass_g": null,
+   "source_id": "magpul_pmag40",
+   "note": "Weight 6.6 oz."
+  },
+  {
+   "item": "Magpul PMAG 20 AR/M4 GEN M3",
+   "weapon_key": "m4a1",
+   "chambering": "5.56x45mm NATO",
+   "capacity": 20,
+   "empty_mass_g": 113.4,
+   "loaded_mass_g": null,
+   "source_id": "magpul_pmag20ar",
+   "note": "Weight 4 oz."
+  },
+  {
+   "item": "Magpul PMAG 10 AR/M4 GEN M3",
+   "weapon_key": "m4a1",
+   "chambering": "5.56x45mm NATO",
+   "capacity": 10,
+   "empty_mass_g": 85.0,
+   "loaded_mass_g": null,
+   "source_id": "magpul_pmag10ar",
+   "note": "Weight 3 oz."
+  },
+  {
+   "item": "Magpul PMAG 30 AK/AKM MOE",
+   "weapon_key": "akm",
+   "chambering": "7.62x39mm",
+   "capacity": 30,
+   "empty_mass_g": 184.3,
+   "loaded_mass_g": null,
+   "source_id": "magpul_pmag30akmoe",
+   "note": "Weight 6.5 oz."
+  },
+  {
+   "item": "Magpul PMAG 30 AK/AKM GEN M3",
+   "weapon_key": "akm",
+   "chambering": "7.62x39mm",
+   "capacity": 30,
+   "empty_mass_g": 209.8,
+   "loaded_mass_g": null,
+   "source_id": "magpul_pmag30akm3",
+   "note": "Weight 7.4 oz."
+  },
+  {
+   "item": "Magpul PMAG 20 AK/AKM MOE",
+   "weapon_key": "akm",
+   "chambering": "7.62x39mm",
+   "capacity": 20,
+   "empty_mass_g": 141.7,
+   "loaded_mass_g": null,
+   "source_id": "magpul_pmag20ak",
+   "note": "Weight 5 oz."
+  },
+  {
+   "item": "Magpul PMAG 10 AK/AKM MOE",
+   "weapon_key": "akm",
+   "chambering": "7.62x39mm",
+   "capacity": 10,
+   "empty_mass_g": 113.4,
+   "loaded_mass_g": null,
+   "source_id": "magpul_pmag10ak",
+   "note": "Weight 4 oz."
+  },
+  {
+   "item": "Magpul PMAG 30 AK74 MOE",
+   "weapon_key": "ak74",
+   "chambering": "5.45x39mm",
+   "capacity": 30,
+   "empty_mass_g": 170.1,
+   "loaded_mass_g": null,
+   "source_id": "magpul_pmag30ak74",
+   "note": "Weight 6 oz."
+  },
+  {
+   "item": "Magpul PMAG 20 LR/SR GEN M3",
+   "weapon_key": "scar17s",
+   "chambering": "7.62x51mm NATO",
+   "capacity": 20,
+   "empty_mass_g": 167.3,
+   "loaded_mass_g": null,
+   "source_id": "magpul_pmag20lrsr",
+   "note": "Weight 5.9 oz."
+  },
+  {
+   "item": "Magpul PMAG 25 LR/SR GEN M3 Window",
+   "weapon_key": "scar17s",
+   "chambering": "7.62x51mm NATO",
+   "capacity": 25,
+   "empty_mass_g": 184.3,
+   "loaded_mass_g": null,
+   "source_id": "magpul_pmag25lrsr",
+   "note": "Weight 6.5 oz."
+  },
+  {
+   "item": "Magpul PMAG 10 LR/SR GEN M3",
+   "weapon_key": "scar17s",
+   "chambering": "7.62x51mm NATO",
+   "capacity": 10,
+   "empty_mass_g": 107.7,
+   "loaded_mass_g": null,
+   "source_id": "magpul_pmag10lrsr",
+   "note": "Weight 3.8 oz."
+  },
+  {
+   "item": "Magpul PMAG D-60 AR/M4 GEN M3 drum",
+   "weapon_key": "m4a1",
+   "chambering": "5.56x45mm NATO",
+   "capacity": 60,
+   "empty_mass_g": 581.2,
+   "loaded_mass_g": null,
+   "source_id": "magpul_d60",
+   "note": "Weight 20.5 oz."
+  },
+  {
+   "item": "Magpul PMAG D-50 LR/SR GEN M3 drum",
+   "weapon_key": "scar17s",
+   "chambering": "7.62x51mm NATO",
+   "capacity": 50,
+   "empty_mass_g": 771.1,
+   "loaded_mass_g": null,
+   "source_id": "magpul_d50lrsr",
+   "note": "Weight 1.7 lbs."
+  },
+  {
+   "item": "Magpul PMAG 5 7.62 AC (AICS)",
+   "weapon_key": "ai_awm",
+   "chambering": "7.62x51mm NATO",
+   "capacity": 5,
+   "empty_mass_g": 87.9,
+   "loaded_mass_g": null,
+   "source_id": "magpul_pmag5ac",
+   "note": "Weight 3.1 oz."
+  },
+  {
+   "item": "Magpul PMAG 10 7.62 AC (AICS)",
+   "weapon_key": "ai_awm",
+   "chambering": "7.62x51mm NATO",
+   "capacity": 10,
+   "empty_mass_g": 124.7,
+   "loaded_mass_g": null,
+   "source_id": "magpul_pmag10ac",
+   "note": "Weight 4.4 oz."
+  },
+  {
+   "item": "Magpul PMAG 10 5.56 AC (AICS)",
+   "weapon_key": "ai_awm",
+   "chambering": "5.56x45mm NATO",
+   "capacity": 10,
+   "empty_mass_g": 76.8,
+   "loaded_mass_g": null,
+   "source_id": "magpul_pmag10_556ac",
+   "note": "Weight 2.71 oz."
+  },
+  {
+   "item": "Magpul PMAG 17 GL9 (Glock 17)",
+   "weapon_key": "glock17",
+   "chambering": "9x19mm",
+   "capacity": 17,
+   "empty_mass_g": 48.2,
+   "loaded_mass_g": null,
+   "source_id": "magpul_gl9_17",
+   "note": "Weight 1.7 oz."
+  },
+  {
+   "item": "Magpul PMAG 15 GL9 (Glock 19)",
+   "weapon_key": "glock19",
+   "chambering": "9x19mm",
+   "capacity": 15,
+   "empty_mass_g": 53.9,
+   "loaded_mass_g": null,
+   "source_id": "magpul_gl9_15",
+   "note": "Weight 1.9 oz."
+  },
+  {
+   "item": "Magpul PMAG 21 GL9 (Glock 17)",
+   "weapon_key": "glock17",
+   "chambering": "9x19mm",
+   "capacity": 21,
+   "empty_mass_g": 48.2,
+   "loaded_mass_g": null,
+   "source_id": "magpul_gl9_21",
+   "note": "Weight 1.7 oz."
+  },
+  {
+   "item": "Magpul PMAG 27 GL9 (Glock 17)",
+   "weapon_key": "glock17",
+   "chambering": "9x19mm",
+   "capacity": 27,
+   "empty_mass_g": 56.7,
+   "loaded_mass_g": null,
+   "source_id": "magpul_gl9_27",
+   "note": "Weight 2 oz."
+  },
+  {
+   "item": "Magpul PMAG 12 GL9 (Glock 26)",
+   "weapon_key": "glock26",
+   "chambering": "9x19mm",
+   "capacity": 12,
+   "empty_mass_g": 42.5,
+   "loaded_mass_g": null,
+   "source_id": "magpul_gl9_12",
+   "note": "Weight 1.5 oz."
+  },
+  {
+   "item": "Magpul AMAG 15 SG9 (SIG P320 Compact)",
+   "weapon_key": "sig_p320",
+   "chambering": "9x19mm",
+   "capacity": 15,
+   "empty_mass_g": 81.0,
+   "loaded_mass_g": null,
+   "source_id": "magpul_amag15_p320",
+   "note": "Weight 2.9 oz / 81 g"
+  },
+  {
+   "item": "Magpul AMAG 17 SG9 (SIG P320/M17)",
+   "weapon_key": "sig_p320",
+   "chambering": "9x19mm",
+   "capacity": 17,
+   "empty_mass_g": 89.0,
+   "loaded_mass_g": null,
+   "source_id": "magpul_amag17_p320",
+   "note": "Weight 3.2 oz / 89 g"
+  },
+  {
+   "item": "Magpul AMAG 21 SG9 (SIG P320/M17)",
+   "weapon_key": "sig_p320",
+   "chambering": "9x19mm",
+   "capacity": 21,
+   "empty_mass_g": 113.4,
+   "loaded_mass_g": null,
+   "source_id": "magpul_amag21_p320",
+   "note": "Weight 4.0 oz."
+  },
+  {
+   "item": "Magpul PMAG D-50 GL9 (Glock) drum",
+   "weapon_key": "glock17",
+   "chambering": "9x19mm",
+   "capacity": 50,
+   "empty_mass_g": 490.4,
+   "loaded_mass_g": null,
+   "source_id": "magpul_d50gl9",
+   "note": "Weight 17.3 oz."
+  },
+  {
+   "item": "Magpul PMAG D-50 MP (HK MP5) drum",
+   "weapon_key": "mp5",
+   "chambering": "9x19mm",
+   "capacity": 50,
+   "empty_mass_g": 453.6,
+   "loaded_mass_g": null,
+   "source_id": "magpul_d50mp",
+   "note": "Weight 16 oz."
+  },
+  {
+   "item": "H&K G36 30-round polymer magazine",
+   "weapon_key": "g36",
+   "chambering": "5.56x45mm NATO",
+   "capacity": 30,
+   "empty_mass_g": 140.0,
+   "loaded_mass_g": 510.0,
+   "source_id": "hk_g36_td",
+   "note": "Magazine, 30 rounds (empty) approx. 140 g; fully charged approx. 510 g"
+  },
+  {
+   "item": "H&K HK416 30-round steel magazine",
+   "weapon_key": "hk416",
+   "chambering": "5.56x45mm NATO",
+   "capacity": 30,
+   "empty_mass_g": 250.0,
+   "loaded_mass_g": 620.0,
+   "source_id": "hk_hk416_td",
+   "note": "Magazine, 30 rounds (empty) approx. 250 g; fully charged approx. 620 g"
+  },
+  {
+   "item": "H&K HK417 20-round polymer magazine",
+   "weapon_key": "hk417",
+   "chambering": "7.62x51mm NATO",
+   "capacity": 20,
+   "empty_mass_g": 160.0,
+   "loaded_mass_g": 680.0,
+   "source_id": "hk_hk417_td",
+   "note": "Magazine, 20 rounds (empty) approx. 160 g; fully charged approx. 680 g"
+  },
+  {
+   "item": "Steyr AUG 30-round magazine",
+   "weapon_key": "steyr_aug",
+   "chambering": "5.56x45mm NATO",
+   "capacity": 30,
+   "empty_mass_g": 121.1,
+   "loaded_mass_g": null,
+   "source_id": "steyr_aug_manual",
+   "note": "Weight of empty magazine (30 round) ...... 4.27 oz. / 0.12 kgs"
+  },
+  {
+   "item": "FN FAL 20-round steel magazine",
+   "weapon_key": "fn_fal",
+   "chambering": "7.62x51mm NATO",
+   "capacity": 20,
+   "empty_mass_g": 250.0,
+   "loaded_mass_g": 730.0,
+   "source_id": "fn_fal_manual",
+   "note": "b) Magazine (steel) empty: 250 g (8lozs); c) Magazine (steel) filled 20 rounds Ball Ammn.: 730 g"
+  },
+  {
+   "item": "SIG P226 15-round magazine (Combat)",
+   "weapon_key": "sig_p226",
+   "chambering": "9x19mm",
+   "capacity": 15,
+   "empty_mass_g": 96.4,
+   "loaded_mass_g": null,
+   "source_id": "sig_p226_armorer",
+   "note": "Weight of empty magazine 3.4 oz."
+  },
+  {
+   "item": "SIG P228 13-round magazine",
+   "weapon_key": "sig_p228",
+   "chambering": "9x19mm",
+   "capacity": 13,
+   "empty_mass_g": 85.0,
+   "loaded_mass_g": null,
+   "source_id": "sig_p228_manual",
+   "note": "Magazine weight, empty 85 g"
+  },
+  {
+   "item": "SIG P229 12-round magazine",
+   "weapon_key": "sig_p229",
+   "chambering": "9x19mm",
+   "capacity": 12,
+   "empty_mass_g": 88.0,
+   "loaded_mass_g": null,
+   "source_id": "sig_p229_manual",
+   "note": "Magazine weight, empty 88 g"
+  },
+  {
+   "item": "SIG SP2022 15-round magazine",
+   "weapon_key": "sig_sp2022",
+   "chambering": "9x19mm",
+   "capacity": 15,
+   "empty_mass_g": 87.0,
+   "loaded_mass_g": null,
+   "source_id": "sig_sp2022_manual",
+   "note": "Magazine weight, empty 87g"
+  },
+  {
+   "item": "Beretta 92FS / M9 15-round magazine",
+   "weapon_key": "m9",
+   "chambering": "9x19mm",
+   "capacity": 15,
+   "empty_mass_g": 107.0,
+   "loaded_mass_g": null,
+   "source_id": "beretta_92fs_manual",
+   "note": "Weight of Magazine — 107 g. (3.82 oz.)"
+  },
+  {
+   "item": "CZ 75 15-round magazine",
+   "weapon_key": "cz75",
+   "chambering": "9x19mm",
+   "capacity": 15,
+   "empty_mass_g": 105.0,
+   "loaded_mass_g": null,
+   "source_id": "cz75_armorer",
+   "note": "weight of empty magazine 105 g"
+  },
+  {
+   "item": "Walther P99 10-round magazine",
+   "weapon_key": "walther_p99",
+   "chambering": "9x19mm",
+   "capacity": 10,
+   "empty_mass_g": 70.0,
+   "loaded_mass_g": null,
+   "source_id": "walther_p99_manual",
+   "note": "Gewicht 10SchuB-Magazin (leer): 70g"
+  },
+  {
+   "item": "Walther P99 16-round magazine",
+   "weapon_key": "walther_p99",
+   "chambering": "9x19mm",
+   "capacity": 16,
+   "empty_mass_g": 80.0,
+   "loaded_mass_g": null,
+   "source_id": "walther_p99_manual",
+   "note": "Gewicht 16SchuB-Magazin (leer): 80 g"
+  },
+  {
+   "item": "IMI Galil ARM 35-round magazine",
+   "weapon_key": "galil_arm",
+   "chambering": "5.56x45mm NATO",
+   "capacity": 35,
+   "empty_mass_g": 300.0,
+   "loaded_mass_g": 710.0,
+   "source_id": "galil_manual",
+   "note": "Magazine, 35 Rnd (empty) 300 g; Magazine, 35 Rnd (loaded) 710g"
+  },
+  {
+   "item": "IMI Galil ARM 50-round magazine",
+   "weapon_key": "galil_arm",
+   "chambering": "5.56x45mm NATO",
+   "capacity": 50,
+   "empty_mass_g": 420.0,
+   "loaded_mass_g": 1000.0,
+   "source_id": "galil_manual",
+   "note": "Magazine, 50 Rnd (empty) 420 g; Magazine, 50 Rnd (loaded) 1000 g"
+  },
+  {
+   "item": "Uzi 25-round magazine",
+   "weapon_key": "uzi",
+   "chambering": "9x19mm",
+   "capacity": 25,
+   "empty_mass_g": 200.0,
+   "loaded_mass_g": 500.0,
+   "source_id": "uzi_manual",
+   "note": "Magazine, empty 200 g (0.45 lb); Magazine, 25 rounds, full 500"
+  },
+  {
+   "item": "H&K Mark 23 .45 ACP 12/10-round magazine",
+   "weapon_key": "hk_mark23",
+   "chambering": ".45 ACP",
+   "capacity": 12,
+   "empty_mass_g": 110.0,
+   "loaded_mass_g": 366.0,
+   "source_id": "hk_mark23_manual",
+   "note": "Weight Magazine (empty) 12 or 10 rd. capacity .24 lbs. (.110 kg); Magazine (w/12 rds M1911 Ball) .81 lbs. (.366 kg)"
+  },
+  {
+   "item": "H&K UMP45 .45 ACP 25-round magazine",
+   "weapon_key": "ump45",
+   "chambering": ".45 ACP",
+   "capacity": 25,
+   "empty_mass_g": 170.0,
+   "loaded_mass_g": null,
+   "source_id": "hk_ump_manual",
+   "note": "Magazine, empty (25 rounds) ... 0.17 kg (.38 lb.)"
+  },
+  {
+   "item": "H&K UMP40 .40 S&W 30-round magazine",
+   "weapon_key": "ump40",
+   "chambering": ".40 S&W",
+   "capacity": 30,
+   "empty_mass_g": 170.0,
+   "loaded_mass_g": null,
+   "source_id": "hk_ump_manual",
+   "note": "Magazine, empty (30 rounds) ... 0.17 kg (.38 lb.)"
+  },
+  {
+   "item": "H&K USP .45 ACP 12-round magazine",
+   "weapon_key": "usp45",
+   "chambering": ".45 ACP",
+   "capacity": 12,
+   "empty_mass_g": 110.0,
+   "loaded_mass_g": null,
+   "source_id": "hk_usp_operator",
+   "note": "Weight of Empty Magazine 110 grams (3.88 oz.)"
+  },
+  {
+   "item": "H&K USP 9mm 15-round magazine",
+   "weapon_key": "usp9",
+   "chambering": "9x19mm",
+   "capacity": 15,
+   "empty_mass_g": 55.0,
+   "loaded_mass_g": null,
+   "source_id": "hk_usp_armorer",
+   "note": "Weight of empty magazine 55 grams (1.94 oz)"
+  },
+  {
+   "item": "H&K USP .40 S&W 13-round magazine",
+   "weapon_key": "usp40",
+   "chambering": ".40 S&W",
+   "capacity": 13,
+   "empty_mass_g": 50.0,
+   "loaded_mass_g": null,
+   "source_id": "hk_usp_armorer",
+   "note": "Weight of empty magazine 50 grams (1.76 oz)"
+  },
+  {
+   "item": "H&K HK45 .45 ACP 10-round magazine",
+   "weapon_key": "hk45",
+   "chambering": ".45 ACP",
+   "capacity": 10,
+   "empty_mass_g": 110.0,
+   "loaded_mass_g": null,
+   "source_id": "hk_hk45_manual",
+   "note": "Weight of Magazine 110 grams (3.88 oz)"
+  },
+  {
+   "item": "H&K MP7 20-round magazine",
+   "weapon_key": "mp7",
+   "chambering": "4.6x30mm",
+   "capacity": 20,
+   "empty_mass_g": 100.0,
+   "loaded_mass_g": null,
+   "source_id": "hk_mp7_manual",
+   "note": "Magazine, empty (20 rounds) 100g"
+  },
+  {
+   "item": "H&K MP7 40-round magazine",
+   "weapon_key": "mp7",
+   "chambering": "4.6x30mm",
+   "capacity": 40,
+   "empty_mass_g": 200.0,
+   "loaded_mass_g": null,
+   "source_id": "hk_mp7_manual",
+   "note": "Magazine, empty (40 rounds) 200g"
+  },
+  {
+   "item": "Colt M1911A1 7-round magazine",
+   "weapon_key": "m1911a1",
+   "chambering": ".45 ACP",
+   "capacity": 7,
+   "empty_mass_g": 70.8,
+   "loaded_mass_g": 218.2,
+   "source_id": "m1911_tm",
+   "note": "Weight of loaded magazine with 7 rounds (approximate) 0.481 lb; Weight of empty MAGAZINE 0.156 lb"
+  },
+  {
+   "item": "Thompson 20-round box magazine",
+   "weapon_key": "thompsonm1928",
+   "chambering": ".45 ACP",
+   "capacity": 20,
+   "empty_mass_g": 181.4,
+   "loaded_mass_g": null,
+   "source_id": "thompson_manual",
+   "note": "Five box magazines (empty).............. 2.0 [lb]"
+  },
+  {
+   "item": "Thompson Type L 50-round drum magazine",
+   "weapon_key": "thompsonm1928",
+   "chambering": ".45 ACP",
+   "capacity": 50,
+   "empty_mass_g": 1134.0,
+   "loaded_mass_g": null,
+   "source_id": "thompson_manual",
+   "note": "One Type L drum magazine (50-cartridge), empty ... 2.5 [lb]"
+  },
+  {
+   "item": "Thompson Type C 100-round drum magazine",
+   "weapon_key": "thompsonm1928",
+   "chambering": ".45 ACP",
+   "capacity": 100,
+   "empty_mass_g": 1769.0,
+   "loaded_mass_g": null,
+   "source_id": "thompson_manual",
+   "note": "One Type C drum magazine (100-cartridge), empty ... 3.9 [lb]"
+  },
+  {
+   "item": "Barrett M95 5-round .50 BMG magazine",
+   "weapon_key": "barrett_m95",
+   "chambering": ".50 BMG",
+   "capacity": 5,
+   "empty_mass_g": 453.6,
+   "loaded_mass_g": 1134.0,
+   "source_id": "barrett_95_manual",
+   "note": "MAGAZINE WEIGHT 1.0 pounds; MAGAZINE WITH 5 CARTRIDGES 2.5 pounds"
+  },
+  {
+   "item": "M249 200-round box (filled)",
+   "weapon_key": "m249",
+   "chambering": "5.56x45mm NATO",
+   "capacity": 200,
+   "empty_mass_g": null,
+   "loaded_mass_g": 3140.0,
+   "source_id": "m249_tm",
+   "note": "200:round' box: (filled) ... 3.140 kg (6.92 lbs)"
+  },
+  {
+   "item": "M249 100-round assault pouch (filled)",
+   "weapon_key": "m249",
+   "chambering": "5.56x45mm NATO",
+   "capacity": 100,
+   "empty_mass_g": null,
+   "loaded_mass_g": 1620.0,
+   "source_id": "m249_tm",
+   "note": "100 round assault magazine (filled) ... 1.62 kg (3.00 lbs)"
+  },
+  {
+   "item": "Mk19 40mm 32-round container (loaded)",
+   "weapon_key": "mk19",
+   "chambering": "40x53mm",
+   "capacity": 32,
+   "empty_mass_g": null,
+   "loaded_mass_g": 19050.9,
+   "source_id": "mk19_fm",
+   "note": "42 pounds (32 rounds in PA120 metal container)"
+  },
+  {
+   "item": "M249 200-round ammunition box (empty)",
+   "weapon_key": "m249",
+   "chambering": "5.56x45mm NATO",
+   "capacity": 200,
+   "empty_mass_g": 269.3,
+   "loaded_mass_g": null,
+   "source_id": "rtg_aku_m249_box",
+   "note": "Each can weighs just 9.5 ounces each, including lid and insert."
+  },
+  {
+   "item": "AC-Unity AK47 30-round magazine (Gen1)",
+   "weapon_key": "ak47",
+   "chambering": "7.62x39mm",
+   "capacity": 30,
+   "empty_mass_g": 184.3,
+   "loaded_mass_g": null,
+   "source_id": "rtg_aku_ak47_30",
+   "note": "Magazine Weight (Unloaded): Only 6.5 ounces."
+  },
+  {
+   "item": "AC-Unity AK47 40-round magazine (Gen1)",
+   "weapon_key": "ak47",
+   "chambering": "7.62x39mm",
+   "capacity": 40,
+   "empty_mass_g": 201.3,
+   "loaded_mass_g": null,
+   "source_id": "rtg_aku_ak47_40",
+   "note": "Magazine Weight (Unloaded): Only 7.1 ounces."
+  },
+  {
+   "item": "AC-Unity AK47 60-round quad-stack magazine",
+   "weapon_key": "ak47",
+   "chambering": "7.62x39mm",
+   "capacity": 60,
+   "empty_mass_g": 357.2,
+   "loaded_mass_g": null,
+   "source_id": "rtg_aku_ak47_60",
+   "note": "Magazine Weight (Unloaded): Only 12.6 ounces."
+  },
+  {
+   "item": "AC-Unity AK74 30-round window magazine",
+   "weapon_key": "ak74",
+   "chambering": "5.45x39mm",
+   "capacity": 30,
+   "empty_mass_g": 198.4,
+   "loaded_mass_g": null,
+   "source_id": "rtg_aku_ak74_30",
+   "note": "Magazine Weight (Unloaded): Only 7.0 ounces."
+  },
+  {
+   "item": "AC-Unity AK556 30-round magazine",
+   "weapon_key": "ak556",
+   "chambering": "5.56x45mm",
+   "capacity": 30,
+   "empty_mass_g": 170.1,
+   "loaded_mass_g": null,
+   "source_id": "rtg_aku_ak556_30",
+   "note": "Magazine Weight (Unloaded): 6.0 Ounces"
+  },
+  {
+   "item": "AC-Unity AK12 30-round magazine",
+   "weapon_key": "ak12",
+   "chambering": "5.45x39mm",
+   "capacity": 30,
+   "empty_mass_g": 181.4,
+   "loaded_mass_g": null,
+   "source_id": "rtg_aku_ak12_30",
+   "note": "Magazine Weight (Unloaded): Only 6.4 ounces."
+  },
+  {
+   "item": "AC-Unity AK103 30-round magazine",
+   "weapon_key": "ak103",
+   "chambering": "7.62x39mm",
+   "capacity": 30,
+   "empty_mass_g": 198.4,
+   "loaded_mass_g": null,
+   "source_id": "rtg_aku_ak103_30",
+   "note": "Magazine Weight (Unloaded): Only 7.0 ounces."
+  },
+  {
+   "item": "AC-Unity MP5 40-round magazine",
+   "weapon_key": "mp5",
+   "chambering": "9x19mm",
+   "capacity": 40,
+   "empty_mass_g": 138.9,
+   "loaded_mass_g": null,
+   "source_id": "rtg_aku_mp5_40",
+   "note": "Magazine Weight (Unloaded): Only 4.9 ounces."
+  },
+  {
+   "item": "AC-Unity Steyr AUG 30-round window magazine",
+   "weapon_key": "steyr_aug",
+   "chambering": "5.56x45mm NATO",
+   "capacity": 30,
+   "empty_mass_g": 136.1,
+   "loaded_mass_g": null,
+   "source_id": "rtg_aku_aug_30",
+   "note": "Magazine Weight (Unloaded): 4.8 Ounces"
+  },
+  {
+   "item": "AC-Unity VZ58 30-round magazine",
+   "weapon_key": "vz58",
+   "chambering": "7.62x39mm",
+   "capacity": 30,
+   "empty_mass_g": 170.1,
+   "loaded_mass_g": null,
+   "source_id": "rtg_aku_vz58_30",
+   "note": "Magazine Weight (Unloaded): 6.0 ounces"
+  },
+  {
+   "item": "AC-Unity Glock 17 17-round window magazine",
+   "weapon_key": "glock17",
+   "chambering": "9x19mm",
+   "capacity": 17,
+   "empty_mass_g": 39.7,
+   "loaded_mass_g": null,
+   "source_id": "rtg_aku_glock17_17",
+   "note": "Magazine Weight (Unloaded): 1.4 Ounce"
+  },
+  {
+   "item": "AC-Unity Glock 19 15-round window magazine",
+   "weapon_key": "glock19",
+   "chambering": "9x19mm",
+   "capacity": 15,
+   "empty_mass_g": 42.5,
+   "loaded_mass_g": null,
+   "source_id": "rtg_aku_glock19_15",
+   "note": "Magazine Weight (Unloaded): 1.5 Ounces"
+  },
+  {
+   "item": "AC-Unity CZ Bren 2 30-round 7.62x39 magazine",
+   "weapon_key": "czbren2",
+   "chambering": "7.62x39mm",
+   "capacity": 30,
+   "empty_mass_g": 184.3,
+   "loaded_mass_g": null,
+   "source_id": "rtg_aku_czbren_30",
+   "note": "Magazine Weight (Unloaded): 6.5 ounces"
+  }
+ ],
+ "cases": [
+  {
+   "cartridge": "5.56x45mm NATO (M855)",
+   "material": "brass",
+   "case_mass_g": 6.9,
+   "round_mass_g": 12.3,
+   "source_id": "dtic_ada547525",
+   "note": "This ammunition has a cartridge mass of 190 grains (12.30 grams), with a projectile mass of 62 grains (4.02 grams)/ The cartridge case alone has a mass of approximately 106 grains (6.85 grams)."
+  },
+  {
+   "cartridge": "5.56x45mm NATO (M855)",
+   "material": "brass",
+   "case_mass_g": null,
+   "round_mass_g": 12.3,
+   "source_id": "tm43_1996",
+   "note": "Weight wesc eee 190 gr"
+  },
+  {
+   "cartridge": "5.56x45mm NATO (M855A1)",
+   "material": "brass",
+   "case_mass_g": null,
+   "round_mass_g": 12.4,
+   "source_id": "epa_m855a1",
+   "note": "weighs approximately 191 grains (12.4 grams)"
+  },
+  {
+   "cartridge": "7.62x51mm NATO (M80)",
+   "material": "brass",
+   "case_mass_g": null,
+   "round_mass_g": 25.4,
+   "source_id": "tm43_1996",
+   "note": "Weight ........................ 392 gr"
+  },
+  {
+   "cartridge": "7.62x51mm NATO (FN SS77 ball)",
+   "material": "brass",
+   "case_mass_g": null,
+   "round_mass_g": 24.0,
+   "source_id": "fn_fal_manual",
+   "note": "Weight of cartridge: (for ordinary ball round \"SS 77\") approx. 24 g (0.86 oz)."
+  },
+  {
+   "cartridge": "7.62x54mmR (SVD)",
+   "material": "brass",
+   "case_mass_g": null,
+   "round_mass_g": 21.8,
+   "source_id": "svd_manual",
+   "note": "9. Mass of cartridge, g 21.8"
+  },
+  {
+   "cartridge": "9x19mm NATO (M882)",
+   "material": "brass",
+   "case_mass_g": null,
+   "round_mass_g": 11.6,
+   "source_id": "tm43_1996",
+   "note": "Ме. ees 179 gr"
+  },
+  {
+   "cartridge": ".45 ACP (M1911 Ball)",
+   "material": "brass",
+   "case_mass_g": null,
+   "round_mass_g": 21.4,
+   "source_id": "tm43_1996",
+   "note": "Weight--------------------------------- 331 gr"
+  },
+  {
+   "cartridge": ".45 ACP (Thompson case + primer)",
+   "material": "brass",
+   "case_mass_g": 5.8,
+   "round_mass_g": null,
+   "source_id": "thompson_manual",
+   "note": "Weight of cartridge case and primer 89 grains"
+  },
+  {
+   "cartridge": ".45 ACP (Thompson 230 grain)",
+   "material": "brass",
+   "case_mass_g": null,
+   "round_mass_g": 21.0,
+   "source_id": "thompson_manual",
+   "note": "Weight of cartridge: 230-Grain 324 grains"
+  },
+  {
+   "cartridge": ".50 BMG (M33)",
+   "material": "brass",
+   "case_mass_g": null,
+   "round_mass_g": 114.2,
+   "source_id": "tm43_1996",
+   "note": "Weight ......................... 1762 gr"
+  },
+  {
+   "cartridge": "4.6x30mm (HK MP7)",
+   "material": "steel",
+   "case_mass_g": null,
+   "round_mass_g": 6.0,
+   "source_id": "hk_mp7_manual",
+   "note": "Cartridge (2 g steel bullet) 6g"
+  }
+ ]
+}

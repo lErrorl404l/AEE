@@ -1,0 +1,193 @@
+{
+ "retrieved": "2026-09-22",
+ "note": "Values read from the archived maker manuals and checked one by one against the verbatim line. Accepted only where the manual names the model and the line states the mass of the firearm itself.",
+ "sources": [
+  {
+   "source_id": "manual_steyr_aug_a3_sa",
+   "title": "Maker manual or catalogue: steyr aug a3 sa",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/steyr_aug_a3_sa_djvu.txt",
+   "sha256": "ac6970ce0d1d73869d96c4e93dcc143049427c7f4c7122210394bd81d838dca9",
+   "note": "OCR text layer of the archived manual."
+  },
+  {
+   "source_id": "manual_barrett_m107a1",
+   "title": "Maker manual or catalogue: barrett m107a1",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/barrett_m107a1_djvu.txt",
+   "sha256": "35f049d950731f2681d844edbcd0280d052e9bee4bc91c4dd78d2ae0ddd32e4f",
+   "note": "OCR text layer of the archived manual."
+  },
+  {
+   "source_id": "manual_kimber_compact",
+   "title": "Maker manual or catalogue: kimber compact",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/kimber_compact_djvu.txt",
+   "sha256": "de21e7aa761592865e35a9ecf8b438662bafee6ec252e476ce5a6cb345cdde42",
+   "note": "OCR text layer of the archived manual."
+  },
+  {
+   "source_id": "manual_germansportguns_gsg5",
+   "title": "Maker manual or catalogue: germansportguns gsg5",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/germansportguns_gsg5_djvu.txt",
+   "sha256": "c7142dfdd829053217bc73f6fa6285bba4b64ab5b11fa3ada0b718ef4f6432e6",
+   "note": "OCR text layer of the archived manual."
+  },
+  {
+   "source_id": "manual_hk_416",
+   "title": "Maker manual or catalogue: hk 416",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/hk_416_djvu.txt",
+   "sha256": "0fd5de2de31315e1f9a74a9ba1e4a4c7a7b5eeae67c06dafd27dbc59eb9230a6",
+   "note": "OCR text layer of the archived manual."
+  },
+  {
+   "source_id": "manual_century_l1a1_rifle",
+   "title": "Maker manual or catalogue: century l1a1 rifle",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/century_l1a1_rifle_djvu.txt",
+   "sha256": "a81a1f10e16ff15ce55ba3ffe0d403560aa5c6dae9510d80f3b4abe4fe5daf88",
+   "note": "OCR text layer of the archived manual."
+  },
+  {
+   "source_id": "manual_colt_m16a2",
+   "title": "Maker manual or catalogue: colt m16a2",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/colt_m16a2_djvu.txt",
+   "sha256": "ee80c44077ce6821d9f051678419f03720fbf95b00f9f46f345da8950dc9a59f",
+   "note": "OCR text layer of the archived manual."
+  },
+  {
+   "source_id": "manual_barrett_m468_manual",
+   "title": "Maker manual or catalogue: barrett m468 manual",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/barrett_m468_manual_djvu.txt",
+   "sha256": "e31119989ba9d04733c51cab3be528bc59b1df324563838eeadf7105c4e29dc8",
+   "note": "OCR text layer of the archived manual."
+  },
+  {
+   "source_id": "manual_sig_p220",
+   "title": "Maker manual or catalogue: sig p220",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/sig_p220_djvu.txt",
+   "sha256": "707a9c479efe7cb8800a7c59c2a9251ee8aba0a01cc41b08ae315fe21eefaae1",
+   "note": "OCR text layer of the archived manual."
+  },
+  {
+   "source_id": "manual_sig_p226",
+   "title": "Maker manual or catalogue: sig p226",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/sig_p226_djvu.txt",
+   "sha256": "6efe3abf08558f0e5436bac63a6f34f9bf222c284d63271d53028f0c45d5e384",
+   "note": "OCR text layer of the archived manual."
+  },
+  {
+   "source_id": "manual_sig_p229",
+   "title": "Maker manual or catalogue: sig p229",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/sig_p229_djvu.txt",
+   "sha256": "af4392dc6c568a0e4b7016e4e0fb5b027f2dfad30184a6fc5fb395fb0045e961",
+   "note": "OCR text layer of the archived manual."
+  }
+ ],
+ "weights": [
+  {
+   "verified": true,
+   "weapon_key": "auga3",
+   "maker": "Steyr",
+   "weapon": "AUG A3 Assault Rifle",
+   "source_id": "manual_steyr_aug_a3_sa",
+   "mass_kg": 3.538,
+   "state": "as published",
+   "note": "Weight (without magazine).......................... 7.8 lbs. / 3.55 kg."
+  },
+  {
+   "verified": true,
+   "weapon_key": "barrettm107a1",
+   "maker": "Barrett",
+   "weapon": "Barrett M107A1",
+   "source_id": "manual_barrett_m107a1",
+   "mass_kg": 12.95,
+   "state": "as published",
+   "note": "Weight: 28.55 Ibs (12.95 kg) 27.25 lbs (12.36 kg)"
+  },
+  {
+   "verified": true,
+   "weapon_key": "compact",
+   "maker": "Rock Island Armory",
+   "weapon": "Compact officer-size 1911, 3.5\" barrel, 7-round magazine",
+   "source_id": "manual_kimber_compact",
+   "mass_kg": 0.964,
+   "state": "as published",
+   "note": "Weight Unloaded: 34 oz. Stel | \u2014 31 oz Sted"
+  },
+  {
+   "verified": true,
+   "weapon_key": "gsg5",
+   "maker": "German Sport Guns",
+   "weapon": "GSG-5 .22 LR MP5-style semi-automatic carbine, 16.3\" barrel",
+   "source_id": "manual_germansportguns_gsg5",
+   "mass_kg": 2.93,
+   "state": "as published",
+   "note": "Weight without magazine 2930 g 2/7/09 2545 g"
+  },
+  {
+   "verified": true,
+   "weapon_key": "hk416",
+   "maker": "Heckler & Koch",
+   "weapon": "HK416",
+   "source_id": "manual_hk_416",
+   "twist_mm": 177.8,
+   "twist_note": "178 mm (1 in 7\u201d right hand twist)"
+  },
+  {
+   "verified": true,
+   "weapon_key": "l1a1",
+   "maker": "RSAF Enfield (FN FAL licence)",
+   "weapon": "L1A1 Self-Loading Rifle",
+   "source_id": "manual_century_l1a1_rifle",
+   "mass_kg": 4.536,
+   "state": "as published",
+   "note": "Weight: 10 Lbs. (rifle only)"
+  },
+  {
+   "verified": true,
+   "weapon_key": "m16a2",
+   "maker": "Colt / FN",
+   "weapon": "M16A2 Rifle",
+   "source_id": "manual_colt_m16a2",
+   "twist_mm": 177.8,
+   "twist_note": "CARBINE 145ia \u2014 3'em (Rifle twist 1 in 7 in]"
+  },
+  {
+   "verified": true,
+   "weapon_key": "m468",
+   "maker": "",
+   "weapon": "Barrett M468",
+   "source_id": "manual_barrett_m468_manual",
+   "mass_kg": 4.37,
+   "state": "as published",
+   "note": "Weight: W/30 round mag 4.37 Kg (9.62 Ib) approx"
+  },
+  {
+   "verified": true,
+   "weapon_key": "p220",
+   "maker": "SIG Sauer",
+   "weapon": "P220 Pistol",
+   "source_id": "manual_sig_p220",
+   "mass_kg": 0.8,
+   "state": "as published",
+   "note": "Weight without magazine 800 g 786 g"
+  },
+  {
+   "verified": true,
+   "weapon_key": "p226",
+   "maker": "SIG Sauer",
+   "weapon": "P226 Pistol",
+   "source_id": "manual_sig_p226",
+   "mass_kg": 0.79,
+   "state": "as published",
+   "note": "Weight, excl. magazine 790 g 850 g 850 g"
+  },
+  {
+   "verified": true,
+   "weapon_key": "p229",
+   "maker": "SIG Sauer",
+   "weapon": "P229 Pistol, .40 S&W variant",
+   "source_id": "manual_sig_p229",
+   "mass_kg": 0.892,
+   "state": "as published",
+   "note": "Weight, excl. magazine 892 g 908 g 908 g"
+  }
+ ]
+}

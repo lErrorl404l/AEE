@@ -1,0 +1,1789 @@
+{
+ "retrieved": "2026-09-22",
+ "sources": [
+  {
+   "source_id": "ai_aw_brochure_2010",
+   "title": "Accuracy International AW Series brochure (Arctic Warfare system configurator), 2010",
+   "url": "https://web.archive.org/web/20100331050126/http://www.accuracyinternational.com/assets/assets/aw_brochure.pdf",
+   "sha256": "a16632cd87e7b86c88af4fc087b23a8cc883ff309a2e7fb77110cc130f350908"
+  },
+  {
+   "source_id": "ai_axmc_datasheet",
+   "title": "Accuracy International AXMC datasheet",
+   "url": "https://modularrifle.com/wp-content/uploads/2017/02/Accuracy-International-AI-AXMC-Datasheet.pdf",
+   "sha256": "62af29305cb716085e90d33d4041ee4fc1a84d77a0a35c962d06319b6307d2d4"
+  },
+  {
+   "source_id": "barrett_m107a1",
+   "title": "Barrett M107A1 Operator's Manual",
+   "url": "https://barrett.net/wp-content/uploads/2023/07/M107A1_16693_Op-Manual_8.5x5.5_B-For-Website.pdf",
+   "sha256": "22633173b2e56a333af781d48e267216200bd7ad8fba2f48bdbb1f2a56dde68d"
+  },
+  {
+   "source_id": "barrett_m107a1_prod",
+   "title": "Barrett M107A1 product page, Barrett Firearms",
+   "url": "https://barrett.net/products/firearms/m107a1/",
+   "sha256": "2ae7bee74a7b30745ee6af1ae3b90e0cd1beb7187f505d73679a967ba515fe7c"
+  },
+  {
+   "source_id": "barrett_model95",
+   "title": "Barrett Model 95 product page, Barrett Firearms",
+   "url": "https://barrett.net/products/firearms/model-95/",
+   "sha256": "e54fb52b6b50abdc2aca5e3af83d0e306c2205e6fc09902ee3bb503c5630a862"
+  },
+  {
+   "source_id": "barrett_mrad",
+   "title": "Barrett MRAD product page",
+   "url": "https://barrett.net/products/firearms/mrad-standard/",
+   "sha256": "a3f915b16b2953190c345cba7a8d3b21ac6c505d896010dc2e638e43c042c60a"
+  },
+  {
+   "source_id": "barrett_mrad_covert",
+   "title": "Barrett MRAD Covert product page, Barrett Firearms",
+   "url": "https://barrett.net/products/firearms/mrad-covert/",
+   "sha256": "573f8ab0955321385f8cfac170b14f8e05fd4dc95ed2d236152c19c2026ceefb"
+  },
+  {
+   "source_id": "beretta_m9_tm",
+   "title": "TM 9-1005-317-23&P, Pistol, Semiautomatic, 9mm, M9",
+   "url": "https://www.biggerhammer.net/manuals/m9/M9B.PDF",
+   "sha256": "b3f1fd0e74bfbee2bb74ffa37d0503bb19af5e89155047a1438917bc38155deb"
+  },
+  {
+   "source_id": "bushmaster_450_product",
+   "title": "Bushmaster 450 Bushmaster 20\" product page, specification list",
+   "url": "https://web.archive.org/web/20230129102158id_/https://www.bushmaster.com/450-bushmaster-20-/",
+   "sha256": "db3a7b496cdf1e7646b456ed57c21191df9b5948f33056cff5f36bd09c218705"
+  },
+  {
+   "source_id": "dockery_m1a1_thompson",
+   "title": "Dockery Armory weapons reference - M1A1 Thompson",
+   "url": "https://dockeryarmory.com/m1a1-thompson/",
+   "sha256": "08e2efd8f6bdade48ce6df5b57aff85033be67d04a06ecc69805c58ad646d946"
+  },
+  {
+   "source_id": "famas_manual",
+   "title": "FAMAS 5.56mm automatic rifle manual (English translation)",
+   "url": "https://www.forgottenweapons.com/wp-content/uploads/manuals/FAMAS%20F1%20manual%20English.pdf",
+   "sha256": "ed7f42c5e214ea2f4a50d46268cd02faa1a8d865876ff6abe34649482aa50e4e"
+  },
+  {
+   "source_id": "fn_db380_2025",
+   "title": "Diamondback Firearms DB380 Gen4, .380 ACP, Black - manufacturer product page",
+   "url": "https://diamondbackfirearms.com/shop/db380-gen4-380-acp-black/",
+   "sha256": "c2e791eab15e7289045ecde16e451153840a0408dc68c78a4bb94f648f3811c3"
+  },
+  {
+   "source_id": "fn_fal_manual",
+   "title": "FN Light Automatic Rifle FAL, user's manual",
+   "url": "https://archive.org/download/gunmanual_FN-FAL_Manual/FN-FAL%20Manual_text.pdf",
+   "sha256": "a64c13c7896c41dfb589b5c8ef5e3f7850552ca6f33a34601cc63232f4c24903"
+  },
+  {
+   "source_id": "fn_five_seven",
+   "title": "FN Five-seveN product page, FN America",
+   "url": "https://fnamerica.com/products/pistols/fn-five-seven/",
+   "sha256": "c863f09fd070faf88a49d5c073e77ad2af3d8a01ae23822288c8a7e19e62ee44"
+  },
+  {
+   "source_id": "fn_m249s",
+   "title": "FN M249S product page, FN America",
+   "url": "https://fnamerica.com/products/rifles/fn-m249-s/",
+   "sha256": "d2c0980ce6d5bf4e3bdaa85ada327180a3b432cced406384528f7570597fb996"
+  },
+  {
+   "source_id": "fn_ps90",
+   "title": "FN PS90 product page, FN America",
+   "url": "https://fnamerica.com/products/rifles/fn-ps90/",
+   "sha256": "61ff9dbdeb284f14eb6ccfb7b9f5e2c66829c0cadeb30c866b4d2def3ea5ff89"
+  },
+  {
+   "source_id": "fn_scar17s",
+   "title": "FN SCAR 17S product page, FN America",
+   "url": "https://fnamerica.com/products/rifles/fn-scar-17s/",
+   "sha256": "79e3a408de5450e665db166a3174f5d6a478b1b36b26b4640b542cde07b3129a"
+  },
+  {
+   "source_id": "fn_scar_h_technical_data",
+   "title": "FN SCAR-H Mk2 technical data sheet",
+   "url": "https://fnherstal.com/app/uploads/technical-data-fn-scar-h-mk2-1.pdf",
+   "sha256": "7bab7d16064bc879598c6b50c8d75b6525cde82455dcf2c8f3ee11b60086b359"
+  },
+  {
+   "source_id": "fn_scar_l_technical_data",
+   "title": "FN SCAR-L Mk2 technical data sheet",
+   "url": "https://fnherstal.com/app/uploads/technical-data-fn-scar-l-mk2-2.pdf",
+   "sha256": "e2c5e7a49d1a6217d23c1d29cbf825af7a5ac8e4455b59350e528eef3c8daffb"
+  },
+  {
+   "source_id": "glock_g17_gen5",
+   "title": "GLOCK 17 Gen5 (law enforcement) product page, GLOCK Inc.",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g17-gen5",
+   "sha256": "d3ca3aae745755faf3e87b2ac0068e25387af5a490f5584c07b8e37de82f29ed"
+  },
+  {
+   "source_id": "glock_g19_gen5",
+   "title": "GLOCK 19 Gen5 (law enforcement) product page, GLOCK Inc.",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g19-gen5",
+   "sha256": "c4f67238b0a40c5cb9031ee7224dce0a3e18d14e327675693b4f71379a6f2845"
+  },
+  {
+   "source_id": "glock_g26_gen5",
+   "title": "GLOCK 26 Gen5 (law enforcement) product page, GLOCK Inc.",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g26-gen5",
+   "sha256": "99101e1816e0e42524028f3480fe5fe4d8abe298c6bda54aaea41400a33f47a6"
+  },
+  {
+   "source_id": "glock_g34_gen5",
+   "title": "GLOCK 34 Gen5 MOS (law enforcement) product page, GLOCK Inc.",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g34-gen5-mos",
+   "sha256": "19c154fefbf1d35b1dc5f9aa4c7820acf7deefafd23f03863f2e84296b760e99"
+  },
+  {
+   "source_id": "glock_g43",
+   "title": "GLOCK 43 (commercial firearms) product page, GLOCK Inc.",
+   "url": "https://us.glock.com/en/products/commercial-firearms/pistols/g43",
+   "sha256": "9624fed4e73838e44fe90f3edb81c17e1155fe2e8cf24a29817494ed995c8e77"
+  },
+  {
+   "source_id": "glock_g43x",
+   "title": "GLOCK 43X (commercial firearms) product page, GLOCK Inc.",
+   "url": "https://us.glock.com/en/products/commercial-firearms/pistols/g43x-us",
+   "sha256": "4bd325165a515efa9d7c4194e0f2fb5380a16e3d1d8f8218af53c26aa9c0773b"
+  },
+  {
+   "source_id": "glock_g45",
+   "title": "GLOCK 45 (law enforcement) product page, GLOCK Inc.",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g45",
+   "sha256": "48f7979ef92874c49e78857b959c735299b3a6b88a5e79c7f33a4eca55a0f0cd"
+  },
+  {
+   "source_id": "glock_g48",
+   "title": "GLOCK 48 (commercial firearms) product page, GLOCK Inc.",
+   "url": "https://us.glock.com/en/products/commercial-firearms/pistols/g48",
+   "sha256": "26f8884edd14084812c8f65997f48f130c790d48d2f99bdb3797d15317994ec5"
+  },
+  {
+   "source_id": "gp_k100",
+   "title": "Grand Power K100 9x19 pistol product page, Grand Power",
+   "url": "https://grandpower.eu/products/product-categories/pistols/9x19-luger/k100/",
+   "sha256": "2577f362f67907c1b162cff64b6b0cab5dc5d71bc667ba14a05450ec655d9931"
+  },
+  {
+   "source_id": "gp_q100",
+   "title": "Grand Power Q100 9x19 pistol product page, Grand Power",
+   "url": "https://grandpower.eu/products/product-categories/pistols/9x19-luger/q100/",
+   "sha256": "8825f0b5d9f319d334c3175540dc85d5d51a80e2c8788d198b83e82adc49c332"
+  },
+  {
+   "source_id": "gp_stribog_sp9a3",
+   "title": "Grand Power Stribog SP9 A3 product page, Grand Power",
+   "url": "https://grandpower.eu/products/product-categories/stribog-line/9x19-luger-stribog-line/stribog-sp9-a3/",
+   "sha256": "da49b499070e51a9e4847f626aeeb8e12e9ed4e51fcb36574839c8aadf4bbe1a"
+  },
+  {
+   "source_id": "hipoint_carbine_manual",
+   "title": "Hi-Point Firearms Carbine Instruction Manual (Models 3895/995/4095/4595/1095)",
+   "url": "https://www.hi-pointfirearms.com/hi-point-resources/Carbine-Instruction-Manual.pdf",
+   "sha256": "57b2f832a7795d54ae9189e3472a231c8d5633f5e8d56c462122e4ebeb5f1e00"
+  },
+  {
+   "source_id": "hk416_technical_data",
+   "title": "Heckler & Koch HK416, Cal. 5.56mm x 45, Technical Data",
+   "url": "https://s3.amazonaws.com/hk-manuals/files/Military/HK416/HK416_Technical_Data.pdf",
+   "sha256": "6be8e4d917054f1e5b12065026ddee62b70193819040a8c1bac11b1708cfe934"
+  },
+  {
+   "source_id": "hk417_technical_data",
+   "title": "Heckler & Koch HK417 Technical Data, Cal. 7.62 mm x 51 NATO (manufacturer technical data sheet)",
+   "url": "https://s3.amazonaws.com/hk-manuals/files/Military/HK417/HK417_Technical_Data.pdf",
+   "sha256": "93587acdeeeea0f5cb21380652509ed40d0ab73eeeb04a11be88cf64e01b506d"
+  },
+  {
+   "source_id": "hk_catalog_2009",
+   "title": "HK Product Catalog 2009 (Heckler & Koch; OCR text edition)",
+   "url": "https://archive.org/download/hk-product-catalog-2009/HK%20Product%20Catalog%20-%202009_text.pdf",
+   "sha256": "00c38bfc4fd0e65803752e192d4897532ed06929f7b018153e227765128779cb"
+  },
+  {
+   "source_id": "hk_g36_technical_data",
+   "title": "Heckler & Koch G36, Technical Data",
+   "url": "https://s3.amazonaws.com/hk-manuals/files/Military/G36/G36_Technical_Data.pdf",
+   "sha256": "c5f1b6e3cf3de42588259b088c30ad11704590eaa5e278262af7fe9125f3a9a3"
+  },
+  {
+   "source_id": "hk_g3_manual",
+   "title": "Automatic Rifle HK G3, Cal. 7.62mm x 51 NATO, technical manual",
+   "url": "https://ia601500.us.archive.org/28/items/MManuals/HkG3AutomaticRifleCal7.62mmNato_text.pdf",
+   "sha256": "2b7c019977c3f6b803e270511863862bad2a84637625cf4a9b6fc2ec1ad1ea8b"
+  },
+  {
+   "source_id": "hk_mark23_manual",
+   "title": "Heckler & Koch Mark 23 Operator's Manual (.45 ACP, covers Mark 23 and MK23 Mod 0)",
+   "url": "https://hk-usa.com/wp-content/uploads/2025/01/Mark-23-Operators-Manual.pdf",
+   "sha256": "56072d25aa8ab6c69d1ca641713408bebef0658389fb354f02549fb9805d3f74"
+  },
+  {
+   "source_id": "hk_mg4_technical_data",
+   "title": "Heckler & Koch MG4E, Cal. 5.56mm x 45, Technical Data",
+   "url": "https://s3.amazonaws.com/hk-manuals/files/Military/MG4/HK_MG4E_Technical_Data.pdf",
+   "sha256": "ee6e49113d21369e62de64b62f9ebd6660dcfa6eabe01512a41d64547ad75e3d"
+  },
+  {
+   "source_id": "hk_mp7_technical_data",
+   "title": "Heckler & Koch MP7A1, Cal. 4.6mm x 30, Technical Data",
+   "url": "https://s3.amazonaws.com/hk-manuals/files/Military/MP7/MP7A1_Technical_Data.pdf",
+   "sha256": "6985bc5df05ba4c850fc316ca85448053ad472dd743fe87a458a26d7a5c824d8"
+  },
+  {
+   "source_id": "hk_ump_manual",
+   "title": "Heckler & Koch UMP 45 & UMP 40 Submachine Gun (2000) Operator Manual (Internet Archive scan, OCR text)",
+   "url": "https://archive.org/download/firearms-heckler--koch-ump-45--ump-40-submachine-gun-2000/hecklerkochump45ump40submachinegun2000_djvu.txt",
+   "sha256": "55ed88c0e506a0b9c378e7e623d5e52b5559d9a0dc96f223775c6d2d9677d03b"
+  },
+  {
+   "source_id": "inland_m1",
+   "title": "Inland Manufacturing - M1 1944 Carbine, model specifications (current manufacturer of the M1 Carbine to the original specification)",
+   "url": "https://inland-mfg.com/Inland-Carbines/M1-1944.html",
+   "sha256": "d8b7bd47282773462dc7a7ed802da57cdea59adeb40f0adb7c26b567baf9b153"
+  },
+  {
+   "source_id": "kalashnikov_ak105",
+   "title": "Автомат Калашникова АК105, Группа компаний «Калашников» (Internet Archive capture, 13 Mar 2022)",
+   "url": "https://web.archive.org/web/20220313154521/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak105",
+   "sha256": "2abbd2fc42f8b19f7d2a3ac9054dfaabe08bde684e461eb7ba457cbed2097218"
+  },
+  {
+   "source_id": "kalashnikov_ak74m",
+   "title": "Автомат Калашникова АК74М, Группа компаний «Калашников» (Internet Archive capture, 13 Mar 2022)",
+   "url": "https://web.archive.org/web/20220313154617/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak74m",
+   "sha256": "448cc29afd701a7f6bb98852354dd66b3a8d2e26013ff0c4f7282560d4e57e55"
+  },
+  {
+   "source_id": "kalashnikov_sv98",
+   "title": "SV-98 Sniper Rifle, Kalashnikov Concern, product page (Internet Archive capture, 28 May 2022)",
+   "url": "https://web.archive.org/web/20220528075023/https://en.kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/neavtomaticheskie-vintovki/snayperskaya-vintovka-sv-98",
+   "sha256": "5a176e99069be11310a5294699b5f942c2a26127312c3a83b8e6310b5afa80a2"
+  },
+  {
+   "source_id": "keltec_p17_manual",
+   "title": "KelTec P17 Owner's Manual",
+   "url": "https://www.keltecweapons.com/wp-content/uploads/2022/01/P17-MANUAL-OPT.pdf",
+   "sha256": "f142331fba277cbe4437dad23c94a2c172bc5da7febe2e04cc667eb40b2f92a9"
+  },
+  {
+   "source_id": "kriss_vector_g3_manual",
+   "title": "KRISS Vector Gen 3 Owner's Manual (centerfire SDP/SBR/CRB)",
+   "url": "https://kriss.canto.com/direct/document/8coub6olqh48lf048ii4n6i94r/qYPfpVdDEcQWVdTuGaWOBLdYxMU/original?content-type=application%2Fpdf&name=Gen3+Semi_21.pdf",
+   "sha256": "f0aa449180592c72fa120ffacdca24e51e1fb50e570baa1a7d811537a3c77b6f"
+  },
+  {
+   "source_id": "lmt_mars_h",
+   "title": "LMT MARS-H 7.62 (MLKMWS-MARS) product page",
+   "url": "https://lmtdefense.com/product/mlok-mars-h/",
+   "sha256": "e0065865e9aecb125611d8af4bb8f6c08c23b620086dcaaa0cd587ae37c9263c"
+  },
+  {
+   "source_id": "lwrci_repr_mkii_762",
+   "title": "LWRCI REPR MKII 7.62 NATO product page (manufacturer specification)",
+   "url": "https://www.lwrci.com/REPR-MKII-762-NATO_p_261.html",
+   "sha256": "290b8446aefd2055b48ddb7258ba5833a811295a1bafd1ec7a9c219d307c5b38"
+  },
+  {
+   "source_id": "lwrci_smg45_specsheet",
+   "title": "LWRCI SMG-45 specification sheet (RIFLING: 1:16 RH / 6 GROOVES)",
+   "url": "https://www.lwrci.com/assets/pdfs/specsheets/smg_specs.pdf",
+   "sha256": "19799e558fd4f302bd7c8e6bfd1201c2ac611f5141546266eb8e07138866e8ca"
+  },
+  {
+   "source_id": "m110_operator",
+   "title": "Operator's Manual, 7.62mm Stoner Rifle Mk 11 Mod 0 and SR-M110 SASS",
+   "url": "https://www.biggerhammer.net/stoner/manuals/m110.pdf",
+   "sha256": "7928d97add7fef269aa8491484243f621b9aa63925805baedf740175222f069b"
+  },
+  {
+   "source_id": "naa_black_widow_product",
+   "title": "North American Arms: NAA-BWM .22 Magnum Black Widow product page",
+   "url": "https://www.northamericanarms.com/shop/naa-bwm/",
+   "sha256": "0835eb02b218c64ae3b24b99fa197293d8736e93f1776f2c3432843aba59196a"
+  },
+  {
+   "source_id": "naa_ranger_ii_product",
+   "title": "North American Arms: NAA-22M-R .22 Magnum Ranger II product page",
+   "url": "https://www.northamericanarms.com/shop/naa-22m-btii/",
+   "sha256": "7fefa5e5b09452f36dea59b92905d873985be41c9e669ae9142640aec479891c"
+  },
+  {
+   "source_id": "noveske_diplomat",
+   "title": "Noveske Rifleworks: 7.94 Gen 4 Diplomat Pistol product page (specifications section)",
+   "url": "https://noveske.com/products/7-94-gen-4-diplomat-pistol",
+   "sha256": "8bfd5bb557e6644f28e7a4ee118bc2acc37e54e357ef51b02a3f1ac7633b1910"
+  },
+  {
+   "source_id": "q_fix_minifix_manual",
+   "title": "Q LLC - THE FIX & mini FIX owner's manual (specifications table)",
+   "url": "https://liveqordie.com/media/wysiwyg/manuals/tech-data/FIX%20&%20MINI%20FIX%20MANUAL.pdf",
+   "sha256": "83dab01b6b90a4b76e40b459e04cd2340c632d69985845d7b9d58f8d8983d769"
+  },
+  {
+   "source_id": "remington_m2010",
+   "title": "Remington Military - XM2010 Enhanced Sniper Rifle product page (archived 2012)",
+   "url": "https://web.archive.org/web/20121007222611/http://www.remingtonmilitary.com/en/Firearms/Sniper%20Rifles/XM2010.aspx",
+   "sha256": "519c8e7966ed3c6e8695e56f8c242d50d7e03bd9cecc7d1ac08c6def5e710602"
+  },
+  {
+   "source_id": "remington_m24",
+   "title": "Remington Military - M24 Sniper Weapon System product page (archived 2014)",
+   "url": "https://web.archive.org/web/20140923075143/http://www.remingtonmilitary.com/Firearms/Sniper%20Rifles/M24.aspx",
+   "sha256": "3efc327ac59f1b221e0da33e6591bc05ae37207259f5f8f93d0b11c3fd331859"
+  },
+  {
+   "source_id": "ruger_1022_competition_31127",
+   "title": "Sturm, Ruger & Co. 10/22 Competition Autoloading Rifle, Model 31127, official spec sheet",
+   "url": "https://ruger.com/products/1022Competition/specSheets/31127.html",
+   "sha256": "d9feae7c755293a14c54d2b3ec45c327babeac2b57392cfffa0baa3353a45edd"
+  },
+  {
+   "source_id": "ruger_1022_takedown_32010",
+   "title": "Sturm, Ruger & Co.: 10/22 Takedown Model 32010 (18.50 in barrel) spec sheet",
+   "url": "https://ruger.com/products/1022Standard/specSheets/32010.html",
+   "sha256": "b8ed5151c14b83a40a373bafbc65461e734fb3751ab0fd92e78a40962b393108"
+  },
+  {
+   "source_id": "ruger_lcp_max_13758",
+   "title": "Sturm, Ruger & Co. LCP MAX Centerfire Pistol, Model 13758 (.380 Auto), official spec sheet",
+   "url": "https://ruger.com/products/lcpMax/specSheets/13758.html",
+   "sha256": "064aa18213e4c3e59da1c4f63782fbe5030e934f6d397e0dff461c2b402149b2"
+  },
+  {
+   "source_id": "ruger_lcr_5450",
+   "title": "Sturm, Ruger & Co.: LCR Double-Action Revolver Model 5450 (.357 Mag) spec sheet",
+   "url": "https://ruger.com/products/lcr/specSheets/5450.html",
+   "sha256": "0db6b0ec563f18bc7b241e41612595c84069eeecea7a4f990f60d154b899e2cd"
+  },
+  {
+   "source_id": "ruger_redhawk_5059",
+   "title": "Sturm, Ruger & Co.: Redhawk Double-Action Revolver Model 5059 (.357 Mag, 4.20 in) spec sheet",
+   "url": "https://ruger.com/products/redhawk/specSheets/5059.html",
+   "sha256": "a3939173abd8f004b948dc0344810a00b812c377b8dfd60e05fba59e7e8906e0"
+  },
+  {
+   "source_id": "ruger_security380",
+   "title": "Ruger Security-380 Centerfire Pistol, Model 3839 - manufacturer specification sheet",
+   "url": "https://ruger.com/products/security380/specSheets/3839.html",
+   "sha256": "23091991b22787db9b001a563050538b98966e6cbcf85f2bf5e565f2c42b97fe"
+  },
+  {
+   "source_id": "sako85_blackbear",
+   "title": "Sako 85 Black Bear - specification sheet (Sako Ltd.)",
+   "url": "https://media.sako.global/image/upload/v1683879179/85_Black_Bear_ovmgsa.pdf",
+   "sha256": "23feefc53f936ea04fb10dbd324ab0ff8949eb41750be20996b34bd6f74ebbbd"
+  },
+  {
+   "source_id": "sako_trg22_manual",
+   "title": "Sako TRG 22/42 Owner's Manual (Sako Ltd., document S3511010/5)",
+   "url": "https://media.sako.global/image/upload/v1691734322/TGR-2242_owner_s_manual_p8zzps.pdf",
+   "sha256": "b1e694dc3401e5c07413ed98b3a892b8dfe63cc72e63676b74dd2b0b984908bf"
+  },
+  {
+   "source_id": "san_swiss_arms_sg550_552_techdata",
+   "title": "SAN Swiss Arms AG technical data, SG 550 / SG 551 / SG 551 LB / SG 551 SWAT / SG 552 Commando (reproduced by Gunnery Network)",
+   "url": "https://gunnerynetwork.com/sig/550/550-tech.html",
+   "sha256": "0ee43560b4298e68b2ada20d794a83430ca9e256c3dadafb6426198c69bb8aa0"
+  },
+  {
+   "source_id": "savage_110scoutv2",
+   "title": "Savage 110 Scout V2, 5.56x45mm NATO (SKU 32982) - manufacturer specifications",
+   "url": "https://savagearms.com/firearms/sku/32982",
+   "sha256": "b666e3497bb47b8956a6aeef366fb9e8bcaf3ce2ae8cbc3ddbccde82c4f51043"
+  },
+  {
+   "source_id": "savage_110trailhunter",
+   "title": "Savage 110 Trail Hunter, 308 Win (SKU 58034) - manufacturer specifications",
+   "url": "https://savagearms.com/firearms/sku/58034",
+   "sha256": "2b058df5b6deb63e90953c471b4c082efdb7744b5a542acd4eaa08fa05c7ae58"
+  },
+  {
+   "source_id": "savage_impulse_chp",
+   "title": "Savage Impulse Core Hunter Pro, 22 Creedmoor (SKU 32921) - manufacturer specifications",
+   "url": "https://savagearms.com/firearms/sku/32921",
+   "sha256": "f21cc83c76bf7596ae1aa23ee778351a207f6138ba63c175059ea01a4d4dcfbe"
+  },
+  {
+   "source_id": "sig556_operator_manual",
+   "title": "SIG 556 Semi-Automatic Rifle 5.56mm NATO (.223 Remington) Operator's Manual (SIG556 OM 12.06), Internet Archive copy",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/sig_sg556.pdf",
+   "sha256": "d62fd12468d99823278ec33db56be79cf6ebe02d0d5e55231f5ecf0d0cee2753"
+  },
+  {
+   "source_id": "sig_m17_wb",
+   "title": "SIG SAUER M17 product page (Internet Archive capture, 16 Aug 2025)",
+   "url": "https://web.archive.org/web/20250816124536/https://www.sigsauer.com/m17.html",
+   "sha256": "01a8555fe30fdf4e70ddd8481930c26399816c4c1c88f9d8383b38354ecb3503"
+  },
+  {
+   "source_id": "sig_p226_manual",
+   "title": "SIG Sauer P226 pistol manual, technical specifications",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/sig_p226_djvu.txt",
+   "sha256": "6efe3abf08558f0e5436bac63a6f34f9bf222c284d63271d53028f0c45d5e384"
+  },
+  {
+   "source_id": "sig_ssg3000_manual",
+   "title": "SIG SAUER SSG 3000 Owner's Manual: Handling & Safety Instructions (technical specifications)",
+   "url": "https://www.sigsauer.com/media/sigsauer/resources/SSG3000.pdf",
+   "sha256": "c7ae9e618712ffe1cf3ffae179c057b0011e3ed05984f1cb3cd9469103407ae6"
+  },
+  {
+   "source_id": "springfield_m1a_loaded_308",
+   "title": "Springfield Armory: M1A Loaded .308 Rifle product page (specification table)",
+   "url": "https://www.springfield-armory.com/m1a-series-rifles/m1a-loaded-rifles/m1a-loaded-308-rifle/",
+   "sha256": "a9022eb757693e5fd9567ad708d151a621c0ec9b22ec9a90034c0112f5621982"
+  },
+  {
+   "source_id": "springfield_saint_victor",
+   "title": "Springfield Armory SAINT Victor 5.56 AR-15 rifle product page",
+   "url": "https://www.springfield-armory.com/ar-series/saint-victor-ar-15-rifles/saint-victor-556-ar-15-rifle/",
+   "sha256": "a8f5bb8f24dd9ff06e142eca435d5c2e5e853fb653d87c6d4c8a3cfe85ec10ed"
+  },
+  {
+   "source_id": "steyr_aug_a3_manual",
+   "title": "Steyr AUG A3 SA Owner's Manual",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/steyr_aug_a3_sa_djvu.txt",
+   "sha256": "ac6970ce0d1d73869d96c4e93dcc143049427c7f4c7122210394bd81d838dca9"
+  },
+  {
+   "source_id": "steyr_aug_sa",
+   "title": "Steyr Arms: AUG SA sporting rifle product page (AUG SA ARMY, AUG A3 SA variants)",
+   "url": "https://www.steyr-arms.com/en/sporting-rifles/aug-sa/",
+   "sha256": "fe42d883ef316e85d0486add0e6dd84e1860f5d9eaf6f52b345b35f342e7a119"
+  },
+  {
+   "source_id": "svd_ru_manual",
+   "title": "7.62mm Dragunov Sniper Rifle (SVD), Technical Description and Service Manual",
+   "url": "https://ia601005.us.archive.org/20/items/manuals.content.like.stevespages/dragunov.pdf",
+   "sha256": "11b1c35bc3ec819411a858dfeec58cf957fca5f765c551e3e99439690ee7c36c"
+  },
+  {
+   "source_id": "sw_specsheet_model442_150544",
+   "title": "Smith & Wesson Model 442 Airweight specification sheet, SKU 150544",
+   "url": "https://smith-wesson.canto.com/direct/document/c8lkgnoj1d5b13eptb7l52706k/UWeJ1d3QgQ-0rEgBBUZvSEoumEg/original?content-type=application%2Fpdf&name=150544_sw_m442_specsheet.pdf",
+   "sha256": "2d0dd6a940de3c6d55400bd6b657b60d279e01a242f01c9f5c8772e035814dbe"
+  },
+  {
+   "source_id": "sw_specsheet_model629_engraved_14784",
+   "title": "Smith & Wesson Model 629 Engraved specification sheet, 6.5 inch barrel, SKU 14784",
+   "url": "https://smith-wesson.canto.com/direct/document/pt5amguhkh6s37l26hlh73dn7p/Lj_ni9TD2tqp9eZ5G8RJhrpLLRM/original?content-type=application%2Fpdf&name=14784_sw_m629_Engraved_specsheet.pdf",
+   "sha256": "43ef454c7a3d377e4995feab4aa2ccc088255d6c738dd92c87f7ae9fed0ba057"
+  },
+  {
+   "source_id": "sw_specsheet_model642_250th_14925",
+   "title": "Smith & Wesson Model 642 America 250th Limited Edition specification sheet, SKU 14925",
+   "url": "https://smith-wesson.canto.com/direct/document/j1nv39ebnt13fd0di1oe7v0l53/clPPiCB8YJb6YSSRVvidrgx4uU8/original?content-type=application%2Fpdf&name=14925_sw_m642_250th_specsheet.pdf",
+   "sha256": "b08f5ee9ffa96a010b7286540f6f37356cac584b5a2e557d311a85b3b6b6f226"
+  },
+  {
+   "source_id": "sw_specsheet_mp45_m2_law_enforcement_12637",
+   "title": "Smith & Wesson M&P 45 M2.0 Law Enforcement specification sheet, SKU 12637",
+   "url": "https://smith-wesson.canto.com/direct/document/n4quqrcvcl4172vcpecq3tqr3v/O9mnJCifrM1ARupURYuhnQi9xDg/original?content-type=application%2Fpdf&name=12637_mp45_2pt0_LE_specsheet.pdf",
+   "sha256": "ea25d6a246217d9ac3ba0aedf046ef5eca05d742c92a894c678c78b32a6a77a7"
+  },
+  {
+   "source_id": "tm_05539_in",
+   "title": "TM 05539-IN, Organizational and Intermediate Maintenance Manual, Sniper Rifle 7.62mm M40A3 and M40A5",
+   "url": "https://archive.org/download/MaintenanceManual/MaintenanceManual_djvu.txt",
+   "sha256": "582e3d80149178b70e713fca1d10aecb51bf0607fae19604306df5e80d0f73f8"
+  },
+  {
+   "source_id": "tm_9_1005_201_10",
+   "title": "TM 9-1005-201-10, Operator's Manual, Machine Gun 5.56mm M249",
+   "url": "https://archive.org/download/tm-9-1005-201-10-machine-gun-5.56mm-m-249-1991/TM%209-1005-201-10%20Machine%20Gun%2C%205.56mm%2C%20M249%20%201991_djvu.txt",
+   "sha256": "baaae285e2e3a20129361581169f777d2531a64967ae9f0420aaa775479dfe99"
+  },
+  {
+   "source_id": "tm_9_1005_211_12",
+   "title": "TM 9-1005-211-12, Pistol, Caliber .45, Automatic, M1911A1 (US Army, 24 June 1968)",
+   "url": "https://archive.org/download/TM9-1005-211-12_201310/TM9-1005-211-12_201310_djvu.txt",
+   "sha256": "be52bd891e3c41437e6ebc91911f48cfd5f27d175901e9b8ed442459ac0cc858"
+  },
+  {
+   "source_id": "tm_9_1005_223_10",
+   "title": "TM 9-1005-223-10, Operator's Manual, Rifle 7.62mm M14 and M14A1",
+   "url": "http://www.m14.ca/TM/026378.pdf",
+   "sha256": "d575dedfce300191bbc9d7e96d32ba37da4f66b17afdf7abc674060eb95f95b6"
+  },
+  {
+   "source_id": "tm_9_1005_306_10",
+   "title": "TM 9-1005-306-10, Operator's Manual, 7.62mm M24 Sniper Weapon System",
+   "url": "https://usarmorment.com/pdf/sws24.pdf",
+   "sha256": "94df177bd56b9a754b5cecb08510575d5245ff674e5caab66856d0f9e217b5b5"
+  },
+  {
+   "source_id": "tm_9_1005_319_10",
+   "title": "TM 9-1005-319-10, Operator's Manual, Rifle 5.56mm M16A2/M16A3/M16A4 and Carbine M4/M4A1",
+   "url": "https://cdn.ar15repository.com/wp-content/uploads/20230809205218/OPERATORS-MANUAL-556-MM-M16A2-M16A3-M16A4-M4-and-M4A1-ARMY-TM-9-1005-319-10.October-1998.pdf",
+   "sha256": "aee9f3baabb19b1a25533a202a64140cfa82eb377dc6b5929acbb49f5eb9fc5c"
+  },
+  {
+   "source_id": "uzi_manual",
+   "title": "Uzi submachine gun manual",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/uzi_djvu.txt",
+   "sha256": "645645e8a17ad34f933cd9b82316459d5f28d1a63a188a3d10b5ec3c4eef7db5"
+  },
+  {
+   "source_id": "wb_ai_axsr",
+   "title": "Accuracy International AXSR (military) product page (Internet Archive capture, 15 May 2025)",
+   "url": "https://web.archive.org/web/20250515121905/https://www.accuracyinternational.com/axsr-mil",
+   "sha256": "6468149eb8985c37f39c611eff9e0c2229bae03bd0ef713da63628ff062df66d"
+  },
+  {
+   "source_id": "wb_czusa_75b",
+   "title": "CZ-USA CZ 75 B product page (Internet Archive capture, 20 Jan 2024)",
+   "url": "https://web.archive.org/web/20240120030614/https://cz-usa.com/product/cz-75-b/",
+   "sha256": "6ebcc8cb009ac7a1aebccf20cdbb9a7e234a3bc099d078d74f52c039e6458078"
+  },
+  {
+   "source_id": "wb_dd_ddm4v7",
+   "title": "Daniel Defense DDM4 V7 product page (Internet Archive capture, 2 Jan 2025)",
+   "url": "https://web.archive.org/web/20250102005555/https://danieldefense.com/ddm4-v7.html",
+   "sha256": "c7bd5a2cd33749355d107df333fa91f506b2db5856c1304b07e7ccfdff8e380d"
+  },
+  {
+   "source_id": "wb_hk_msg90",
+   "title": "Heckler & Koch MSG90A1 product page (Internet Archive capture, 21 Jun 2024)",
+   "url": "https://web.archive.org/web/20240621211859/https://hk-usa.com/hk-models/msg90a1/",
+   "sha256": "37c916ba43540d6419b6f9af7c38c2c44f850113faddb24044f6686824c9af1a"
+  },
+  {
+   "source_id": "wb_kalashnikov_ak12",
+   "title": "Автомат Калашникова АК-12, Группа компаний «Калашников» (Internet Archive capture, 30 Jan 2023)",
+   "url": "https://web.archive.org/web/20230130232747/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak-12",
+   "sha256": "23c0e938cd6e753c09abf57c55d91faea7596bfa21c748b8f199de265c2015ab"
+  },
+  {
+   "source_id": "wb_mossberg_590",
+   "title": "Mossberg 590 Shockwave .410 Bore product page (Internet Archive capture, 26 Sep 2021)",
+   "url": "https://web.archive.org/web/20210926090702/https://www.mossberg.com/product/590-shockwave-410-bore/",
+   "sha256": "cd4d940f437dd23fb1c8a9752e346f3a7090249d424f83bfe341d2c087828301"
+  },
+  {
+   "source_id": "wb_sig_mcx_spear",
+   "title": "SIG SAUER MCX-SPEAR product page (Internet Archive capture, 26 May 2022)",
+   "url": "https://web.archive.org/web/20220526075407/https://www.sigsauer.com/mcx-spear.html",
+   "sha256": "f2ead90d5ef69070bbffdf0ff65e836b53cfcfbc4b9cf3f71d5b76154bcdc3b4"
+  },
+  {
+   "source_id": "wb_sig_p320_fs",
+   "title": "SIG SAUER P320 Full Size product page (Internet Archive capture, 28 Jan 2026)",
+   "url": "https://web.archive.org/web/20260128020340/https://www.sigsauer.com/p320-full-size.html",
+   "sha256": "045796b8739e163f86418b52f75c5300706d45e6afd2ca85a7292d69c81698ee"
+  },
+  {
+   "source_id": "wb_springfield_hellion",
+   "title": "Springfield Armory Hellion 5.56 rifle product page (Internet Archive capture, 16 Apr 2026)",
+   "url": "https://web.archive.org/web/20260416121453/https://www.springfield-armory.com/hellion-5-56-rifle-5-fl/",
+   "sha256": "bce0461fd0e29a44cd37dda9ea6ce7a81282f4b59306db76cd38d9852d0984f4"
+  },
+  {
+   "source_id": "wb_taurus_g3c",
+   "title": "Taurus G3c product page (Internet Archive capture, 19 Dec 2020)",
+   "url": "https://web.archive.org/web/20201219070425/https://www.taurususa.com/firearms/pistols/g3c/",
+   "sha256": "d2f5138cf4315a81ba2bdac9de878991196e695a63a8592141371875414cb83d"
+  },
+  {
+   "source_id": "zastava_m07",
+   "title": "Zastava Arms - Sniper Rifle M07, Technical characteristics (archived Internet Archive capture of the manufacturer's page)",
+   "url": "https://web.archive.org/web/20130413141836/http://www.zastava-arms.rs/en/militaryproduct/sniper-rifle-m07",
+   "sha256": "09f47d30219d93b3d26c2d3e7a6e363bda0735b551201e0e94d7a056f564c691"
+  }
+ ],
+ "weights": [
+  {
+   "weapon_key": "hk416",
+   "maker": "Heckler & Koch",
+   "weapon": "HK416 (14.5 in / 368 mm barrel)",
+   "mass_kg": 3.49,
+   "state": "without magazine",
+   "source_id": "hk416_technical_data",
+   "note": "Weapon without magazine approx. 3490 g"
+  },
+  {
+   "weapon_key": "hk416_10",
+   "maker": "Heckler & Koch",
+   "weapon": "HK416 (10.4 in / 264 mm barrel)",
+   "mass_kg": 3.02,
+   "state": "without magazine",
+   "source_id": "hk416_technical_data",
+   "note": "Weapon without magazine approx. 3020 g"
+  },
+  {
+   "weapon_key": "hk417",
+   "maker": "Heckler & Koch",
+   "weapon": "HK417 (16 in / 406 mm barrel)",
+   "mass_kg": 4.45,
+   "state": "without magazine",
+   "source_id": "hk417_technical_data",
+   "note": "Weapon without magazine approx. 4450 g"
+  },
+  {
+   "weapon_key": "hk_g36",
+   "maker": "Heckler & Koch",
+   "weapon": "G36 (480 mm barrel)",
+   "mass_kg": 3.63,
+   "state": "without magazine",
+   "source_id": "hk_g36_technical_data",
+   "note": "Weapon without magazine approx. 3630 g"
+  },
+  {
+   "weapon_key": "hk_g36k",
+   "maker": "Heckler & Koch",
+   "weapon": "G36K (318 mm barrel)",
+   "mass_kg": 3.37,
+   "state": "without magazine",
+   "source_id": "hk_g36_technical_data",
+   "note": "Weapon without magazine approx. 3370 g"
+  },
+  {
+   "weapon_key": "hk_g36c",
+   "maker": "Heckler & Koch",
+   "weapon": "G36C (228 mm barrel)",
+   "mass_kg": 2.988,
+   "state": "without magazine",
+   "source_id": "hk_g36_technical_data",
+   "note": "Weapon without magazine approx. 2988 g"
+  },
+  {
+   "weapon_key": "hk_g3",
+   "maker": "Heckler & Koch",
+   "weapon": "G3 (rigid butt stock)",
+   "mass_kg": 4.25,
+   "state": "without magazine",
+   "source_id": "hk_g3_manual",
+   "note": "without magazine 9.37 lbs. (4.25 kg)"
+  },
+  {
+   "weapon_key": "hk_mg4e",
+   "maker": "Heckler & Koch",
+   "weapon": "MG4E (450 mm barrel)",
+   "mass_kg": 7.9,
+   "state": "as published",
+   "source_id": "hk_mg4_technical_data",
+   "note": "Weapon approx. 7.90 kg"
+  },
+  {
+   "weapon_key": "hk_mg4ke",
+   "maker": "Heckler & Koch",
+   "weapon": "MG4KE (370 mm barrel)",
+   "mass_kg": 7.7,
+   "state": "as published",
+   "source_id": "hk_mg4_technical_data",
+   "note": "Weapon approx. 7.70 kg"
+  },
+  {
+   "weapon_key": "hk_mp7a1",
+   "maker": "Heckler & Koch",
+   "weapon": "MP7A1",
+   "mass_kg": 1.9,
+   "state": "without magazine",
+   "source_id": "hk_mp7_technical_data",
+   "note": "MP7 A1 (without magazine): approx. 1900 g"
+  },
+  {
+   "weapon_key": "hk_ump45",
+   "maker": "Heckler & Koch",
+   "weapon": "UMP45",
+   "mass_kg": 2.26,
+   "state": "without magazine",
+   "source_id": "hk_ump_manual",
+   "note": "UMP without magazine approximately. 2.26 kg (4.93 lb.)"
+  },
+  {
+   "weapon_key": "hk_ump40",
+   "maker": "Heckler & Koch",
+   "weapon": "UMP40",
+   "mass_kg": 2.1,
+   "state": "without magazine",
+   "source_id": "hk_ump_manual",
+   "note": "UMP without magazine approximately. 2.1 kg (4.63 lb.)"
+  },
+  {
+   "weapon_key": "hk_mp5a2",
+   "maker": "Heckler & Koch",
+   "weapon": "MP5A2",
+   "mass_kg": 2.71,
+   "state": "with magazine",
+   "source_id": "hk_catalog_2009",
+   "note": "MP5A2 ... 5.97 lb/ 2710g"
+  },
+  {
+   "weapon_key": "hk_mp5a3",
+   "maker": "Heckler & Koch",
+   "weapon": "MP5A3",
+   "mass_kg": 3.25,
+   "state": "with magazine",
+   "source_id": "hk_catalog_2009",
+   "note": "MP5A3 ... 7.16 lb / 3250g"
+  },
+  {
+   "weapon_key": "hk_mp5k",
+   "maker": "Heckler & Koch",
+   "weapon": "MP5K",
+   "mass_kg": 2.17,
+   "state": "with magazine",
+   "source_id": "hk_catalog_2009",
+   "note": "MP5K ... 4.78 lb/ 2170g"
+  },
+  {
+   "weapon_key": "hk_mp5sd",
+   "maker": "Heckler & Koch",
+   "weapon": "MP5SD1",
+   "mass_kg": 2.97,
+   "state": "with magazine",
+   "source_id": "hk_catalog_2009",
+   "note": "MP5SD1 ... 6.54 lb / 2970g"
+  },
+  {
+   "weapon_key": "hk_ump9",
+   "maker": "Heckler & Koch",
+   "weapon": "UMP9",
+   "mass_kg": 2.25,
+   "state": "with magazine",
+   "source_id": "hk_catalog_2009",
+   "note": "UMP9 ... 4.96 lb / 2250g"
+  },
+  {
+   "weapon_key": "hk_hk45",
+   "maker": "Heckler & Koch",
+   "weapon": "HK45",
+   "mass_kg": 0.812,
+   "state": "with magazine",
+   "source_id": "hk_catalog_2009",
+   "note": "HK45 ... 1.79 lb / 812g"
+  },
+  {
+   "weapon_key": "hk_hk45c",
+   "maker": "Heckler & Koch",
+   "weapon": "HK45 Compact",
+   "mass_kg": 0.785,
+   "state": "with magazine",
+   "source_id": "hk_catalog_2009",
+   "note": "HK45 Compact ... 1.73 lb/ 785g"
+  },
+  {
+   "weapon_key": "hk_p30",
+   "maker": "Heckler & Koch",
+   "weapon": "P30",
+   "mass_kg": 0.74,
+   "state": "with magazine",
+   "source_id": "hk_catalog_2009",
+   "note": "P30 ... 1.63 lb / 740g"
+  },
+  {
+   "weapon_key": "hk_p30l",
+   "maker": "Heckler & Koch",
+   "weapon": "P30L",
+   "mass_kg": 0.78,
+   "state": "with magazine",
+   "source_id": "hk_catalog_2009",
+   "note": "P30L ... 1.72 lb / 780g"
+  },
+  {
+   "weapon_key": "hk_usp9",
+   "maker": "Heckler & Koch",
+   "weapon": "USP9",
+   "mass_kg": 0.77,
+   "state": "with magazine",
+   "source_id": "hk_catalog_2009",
+   "note": "USP9 ... 1.69 lb / 770g"
+  },
+  {
+   "weapon_key": "hk_usp45",
+   "maker": "Heckler & Koch",
+   "weapon": "USP45",
+   "mass_kg": 0.89,
+   "state": "with magazine",
+   "source_id": "hk_catalog_2009",
+   "note": "USP45 ... 1.96 lb/ 890g"
+  },
+  {
+   "weapon_key": "hk_usp45t",
+   "maker": "Heckler & Koch",
+   "weapon": "USP45 Tactical",
+   "mass_kg": 0.923,
+   "state": "with magazine",
+   "source_id": "hk_catalog_2009",
+   "note": "USP45 Tactical ... 2.03 lb / 923g"
+  },
+  {
+   "weapon_key": "hk_mark23",
+   "maker": "Heckler & Koch",
+   "weapon": "Mark 23",
+   "mass_kg": 1.21,
+   "state": "with empty magazine",
+   "source_id": "hk_mark23_manual",
+   "note": "Weight (with empty 12-round magazine) 2.66 lbs. (1.21 kg)"
+  },
+  {
+   "weapon_key": "hk_mr556",
+   "maker": "Heckler & Koch",
+   "weapon": "MR556",
+   "mass_kg": 4.04,
+   "state": "with magazine",
+   "source_id": "hk_catalog_2009",
+   "note": "MR556 ... 8.91 lb / 4.04 kg"
+  },
+  {
+   "weapon_key": "hk_mr762",
+   "maker": "Heckler & Koch",
+   "weapon": "MR762",
+   "mass_kg": 4.48,
+   "state": "with magazine",
+   "source_id": "hk_catalog_2009",
+   "note": "MR762 ... 9.84 lb / 4.48 kg"
+  },
+  {
+   "weapon_key": "hk_sl8",
+   "maker": "Heckler & Koch",
+   "weapon": "SL8-6",
+   "mass_kg": 4.2,
+   "state": "with magazine",
+   "source_id": "hk_catalog_2009",
+   "note": "SL8-6 ... 9.26 lb / 4.2 kg"
+  },
+  {
+   "weapon_key": "hk_msg90",
+   "maker": "Heckler & Koch",
+   "weapon": "MSG90A1",
+   "mass_kg": 7.08,
+   "state": "with empty magazine",
+   "source_id": "wb_hk_msg90",
+   "note": "Weight with Empty Magazine (20) 7080 g 15.60 lb"
+  },
+  {
+   "weapon_key": "scar_h_std",
+   "maker": "FN Herstal",
+   "weapon": "FN SCAR-H STD (16 in barrel)",
+   "mass_kg": 3.63,
+   "state": "without magazine",
+   "source_id": "fn_scar_h_technical_data",
+   "note": "Weight (without magazine) ± 3.63 kg (± 8.00 lb)"
+  },
+  {
+   "weapon_key": "scar_h_cqc",
+   "maker": "FN Herstal",
+   "weapon": "FN SCAR-H CQC (13 in barrel)",
+   "mass_kg": 3.46,
+   "state": "without magazine",
+   "source_id": "fn_scar_h_technical_data",
+   "note": "Weight (without magazine) ± 3.46 kg (± 7.62 lb)"
+  },
+  {
+   "weapon_key": "scar_h_sb",
+   "maker": "FN Herstal",
+   "weapon": "FN SCAR-H SB (10 in barrel)",
+   "mass_kg": 3.29,
+   "state": "without magazine",
+   "source_id": "fn_scar_h_technical_data",
+   "note": "Weight (without magazine) ± 3.29 kg (± 7,25 lb)"
+  },
+  {
+   "weapon_key": "scar_l_std",
+   "maker": "FN Herstal",
+   "weapon": "FN SCAR-L STD (14.5 in barrel)",
+   "mass_kg": 3.6,
+   "state": "without magazine",
+   "source_id": "fn_scar_l_technical_data",
+   "note": "Weight (without magazine) ± 3.6 kg (± 7.94 lb)"
+  },
+  {
+   "weapon_key": "scar_l_cqc",
+   "maker": "FN Herstal",
+   "weapon": "FN SCAR-L CQC (10 in barrel)",
+   "mass_kg": 3.4,
+   "state": "without magazine",
+   "source_id": "fn_scar_l_technical_data",
+   "note": "Weight (without magazine) ± 3.4 kg (± 7.50 lb)"
+  },
+  {
+   "weapon_key": "fn_fal",
+   "maker": "FN Herstal",
+   "weapon": "FN FAL (Light Automatic Rifle)",
+   "mass_kg": 4.2,
+   "state": "without magazine",
+   "source_id": "fn_fal_manual",
+   "note": "Rifle without magazine: 4.200 kg (9.25 lbs.)"
+  },
+  {
+   "weapon_key": "fn_ps90",
+   "maker": "FN Herstal",
+   "weapon": "FN PS90",
+   "mass_kg": 2.849,
+   "state": "as published",
+   "source_id": "fn_ps90",
+   "note": "Weight: 6.28 lb."
+  },
+  {
+   "weapon_key": "fn_m249s",
+   "maker": "FN Herstal",
+   "weapon": "FN M249S",
+   "mass_kg": 7.802,
+   "state": "as published",
+   "source_id": "fn_m249s",
+   "note": "Weight: 17.2 lb."
+  },
+  {
+   "weapon_key": "fn_scar17s",
+   "maker": "FN Herstal",
+   "weapon": "FN SCAR 17S",
+   "mass_kg": 4.037,
+   "state": "as published",
+   "source_id": "fn_scar17s",
+   "note": "Weight: 8.9 lbs."
+  },
+  {
+   "weapon_key": "fn_five_seven",
+   "maker": "FN Herstal",
+   "weapon": "FN Five-seveN",
+   "mass_kg": 0.595,
+   "state": "without magazine",
+   "source_id": "fn_five_seven",
+   "note": "Weight: 21 oz. (without mag)"
+  },
+  {
+   "weapon_key": "m16a2",
+   "maker": "Colt",
+   "weapon": "M16A2 rifle",
+   "mass_kg": 3.987,
+   "state": "with loaded magazine",
+   "source_id": "tm_9_1005_319_10",
+   "note": "Weight w/30 (loaded) round mag approx 8.79 lbs"
+  },
+  {
+   "weapon_key": "m16a4",
+   "maker": "Colt",
+   "weapon": "M16A4 rifle",
+   "mass_kg": 3.987,
+   "state": "with loaded magazine",
+   "source_id": "tm_9_1005_319_10",
+   "note": "Weight w/30 (loaded) round mag 8.79 Ibs"
+  },
+  {
+   "weapon_key": "m4a1",
+   "maker": "Colt",
+   "weapon": "M4/M4A1 Carbine",
+   "mass_kg": 3.402,
+   "state": "with loaded magazine",
+   "source_id": "tm_9_1005_319_10",
+   "note": "Weight w/30 (loaded) round mag 7.5 lb"
+  },
+  {
+   "weapon_key": "m14",
+   "maker": "Springfield Armory / US Army",
+   "weapon": "M14 rifle",
+   "mass_kg": 4.128,
+   "state": "as published",
+   "source_id": "tm_9_1005_223_10",
+   "note": "Weight w/equipment 9.1 lb"
+  },
+  {
+   "weapon_key": "m14a1",
+   "maker": "Springfield Armory / US Army",
+   "weapon": "M14A1 rifle",
+   "mass_kg": 5.498,
+   "state": "as published",
+   "source_id": "tm_9_1005_223_10",
+   "note": "Weight w/equipment 12.12 lb"
+  },
+  {
+   "weapon_key": "m249",
+   "maker": "FN Herstal / US Army",
+   "weapon": "M249 SAW",
+   "mass_kg": 7.718,
+   "state": "with bipod and tools",
+   "source_id": "tm_9_1005_201_10",
+   "note": "Weapon (with bipod and tools) 7.718 kg (17.00 lbs)"
+  },
+  {
+   "weapon_key": "m24",
+   "maker": "Remington / US Army",
+   "weapon": "M24 Sniper Weapon System (with sling)",
+   "mass_kg": 5.488,
+   "state": "as published",
+   "source_id": "tm_9_1005_306_10",
+   "note": "Rifle weight with sling - 12.1 Ibs. nominal"
+  },
+  {
+   "weapon_key": "remington_m24_base",
+   "maker": "Remington",
+   "weapon": "M24 Sniper Weapon System (base rifle)",
+   "mass_kg": 4.99,
+   "state": "as published",
+   "source_id": "remington_m24",
+   "note": "Base Rifle - 11 lbs, Complete - 14.85 lbs"
+  },
+  {
+   "weapon_key": "m40a5",
+   "maker": "Remington / USMC",
+   "weapon": "M40A3/A5 sniper rifle (without suppressor)",
+   "mass_kg": 7.28,
+   "state": "as published",
+   "source_id": "tm_05539_in",
+   "note": "w/o suppressor 16.05 lb"
+  },
+  {
+   "weapon_key": "m110",
+   "maker": "Knight's Armament",
+   "weapon": "M110 SASS (unloaded, no sights)",
+   "mass_kg": 4.74,
+   "state": "empty",
+   "source_id": "m110_operator",
+   "note": "Rifle Weights unloaded: without sights, adapters, or mounts: 10.44 lbs. (4.74 kg.)"
+  },
+  {
+   "weapon_key": "mk11",
+   "maker": "Knight's Armament",
+   "weapon": "Mk 11 Mod 0 (unloaded, no sights)",
+   "mass_kg": 4.9,
+   "state": "empty",
+   "source_id": "m110_operator",
+   "note": "Rifle Weights unloaded: without sights, adapters, or mounts: 10.81 lbs. (4.90 kg.)"
+  },
+  {
+   "weapon_key": "m1911a1",
+   "maker": "Colt / US Army",
+   "weapon": "M1911A1 pistol",
+   "mass_kg": 1.179,
+   "state": "with empty magazine",
+   "source_id": "tm_9_1005_211_12",
+   "note": "Weight: Empty magazine 2.6 lb (approx)"
+  },
+  {
+   "weapon_key": "m9",
+   "maker": "Beretta",
+   "weapon": "M9 pistol (15-round magazine, empty)",
+   "mass_kg": 0.96,
+   "state": "with empty magazine",
+   "source_id": "beretta_m9_tm",
+   "note": "Weight ( w/empty magazine) 980 gr (33.88 oz)"
+  },
+  {
+   "weapon_key": "m107a1",
+   "maker": "Barrett",
+   "weapon": "M107A1 (29 in barrel)",
+   "mass_kg": 12.5,
+   "state": "as published",
+   "source_id": "barrett_m107a1",
+   "note": "Weight 27.55 lbs (12.50 kg)"
+  },
+  {
+   "weapon_key": "m107a1_cq",
+   "maker": "Barrett",
+   "weapon": "M107A1 CQ (20.6 in barrel)",
+   "mass_kg": 11.91,
+   "state": "as published",
+   "source_id": "barrett_m107a1",
+   "note": "Weight 26.26 lbs (11.91 kg)"
+  },
+  {
+   "weapon_key": "mrad_338lm",
+   "maker": "Barrett",
+   "weapon": "MRAD (.338 Lapua Magnum, 26 in barrel)",
+   "mass_kg": 6.6,
+   "state": "as published",
+   "source_id": "barrett_mrad",
+   "note": "Weight 14.5 lbs (6.6 kg)"
+  },
+  {
+   "weapon_key": "mrad_covert",
+   "maker": "Barrett",
+   "weapon": "MRAD Covert (.308 Win, 17 in barrel)",
+   "mass_kg": 5.4,
+   "state": "as published",
+   "source_id": "barrett_mrad_covert",
+   "note": "Weight 11.9 lbs"
+  },
+  {
+   "weapon_key": "mrad_308_17",
+   "maker": "Barrett",
+   "weapon": "MRAD (.308 Win, 17 in barrel)",
+   "mass_kg": 5.48,
+   "state": "as published",
+   "source_id": "barrett_mrad",
+   "note": "Weight 12.08 lbs (5.48 kg)"
+  },
+  {
+   "weapon_key": "barrett_m95",
+   "maker": "Barrett",
+   "weapon": "Model 95",
+   "mass_kg": 10.659,
+   "state": "as published",
+   "source_id": "barrett_model95",
+   "note": "Weight 23.5 lbs"
+  },
+  {
+   "weapon_key": "m107a1_prod",
+   "maker": "Barrett",
+   "weapon": "M107A1 (manufacturer product page)",
+   "mass_kg": 13.018,
+   "state": "as published",
+   "source_id": "barrett_m107a1_prod",
+   "note": "Weight 28.7 lbs"
+  },
+  {
+   "weapon_key": "svd",
+   "maker": "Izhmash / Kalashnikov",
+   "weapon": "SVD Dragunov sniper rifle",
+   "mass_kg": 4.3,
+   "state": "without bayonet",
+   "source_id": "svd_ru_manual",
+   "note": "Mass of rifle without knife 4.3"
+  },
+  {
+   "weapon_key": "ak12",
+   "maker": "Kalashnikov",
+   "weapon": "AK-12",
+   "mass_kg": 3.7,
+   "state": "with empty magazine",
+   "source_id": "wb_kalashnikov_ak12",
+   "note": "Вес (с магазином, без патронов), кг 3,7"
+  },
+  {
+   "weapon_key": "ak74m",
+   "maker": "Kalashnikov",
+   "weapon": "AK-74M",
+   "mass_kg": 3.4,
+   "state": "with empty magazine",
+   "source_id": "kalashnikov_ak74m",
+   "note": "Вес (с магазином, без патронов), кг 3,4"
+  },
+  {
+   "weapon_key": "ak105",
+   "maker": "Kalashnikov",
+   "weapon": "AK-105",
+   "mass_kg": 3.2,
+   "state": "with empty magazine",
+   "source_id": "kalashnikov_ak105",
+   "note": "Вес (с магазином, без патронов), кг 3,2"
+  },
+  {
+   "weapon_key": "sv98",
+   "maker": "Kalashnikov",
+   "weapon": "SV-98",
+   "mass_kg": 5.8,
+   "state": "with empty magazine",
+   "source_id": "kalashnikov_sv98",
+   "note": "Weight (with empty magazine), kg 5.8 without silencer; 6.5 with silencer"
+  },
+  {
+   "weapon_key": "famas_f1",
+   "maker": "GIAT / Nexter",
+   "weapon": "FAMAS F1",
+   "mass_kg": 3.61,
+   "state": "without magazine",
+   "source_id": "famas_manual",
+   "note": "of the weapon without magazine or sling or bipod ... 3.610 kg"
+  },
+  {
+   "weapon_key": "uzi",
+   "maker": "IMI / IWI",
+   "weapon": "Uzi carbine",
+   "mass_kg": 3.8,
+   "state": "empty",
+   "source_id": "uzi_manual",
+   "note": "Carbine, empty 3.8 kg (8.4 Ib)"
+  },
+  {
+   "weapon_key": "steyr_aug_a3",
+   "maker": "Steyr Arms",
+   "weapon": "AUG A3 SA",
+   "mass_kg": 3.55,
+   "state": "without magazine",
+   "source_id": "steyr_aug_a3_manual",
+   "note": "Weight (without magazine) 7.8 lbs. / 3.55 kg."
+  },
+  {
+   "weapon_key": "steyr_aug_sa",
+   "maker": "Steyr Arms",
+   "weapon": "AUG SA Army",
+   "mass_kg": 3.4,
+   "state": "as published",
+   "source_id": "steyr_aug_sa",
+   "note": "Weight * 3,4 kg / 7,5 lbs"
+  },
+  {
+   "weapon_key": "sig_p226",
+   "maker": "SIG Sauer",
+   "weapon": "P226 (9 mm)",
+   "mass_kg": 0.79,
+   "state": "without magazine",
+   "source_id": "sig_p226_manual",
+   "note": "Weight, excl. magazine 790 g 850 g 850 g"
+  },
+  {
+   "weapon_key": "sig_p320",
+   "maker": "SIG Sauer",
+   "weapon": "P320 Full Size",
+   "mass_kg": 0.802,
+   "state": "with magazine",
+   "source_id": "wb_sig_p320_fs",
+   "note": "28.3 oz [802.3 g] w/ Magazine"
+  },
+  {
+   "weapon_key": "sig_m17",
+   "maker": "SIG Sauer",
+   "weapon": "M17",
+   "mass_kg": 0.865,
+   "state": "with magazine",
+   "source_id": "sig_m17_wb",
+   "note": "30.5 oz [864.7 g]"
+  },
+  {
+   "weapon_key": "sig_mcx_spear",
+   "maker": "SIG Sauer",
+   "weapon": "MCX-SPEAR (277 FURY, 13 in)",
+   "mass_kg": 3.81,
+   "state": "as published",
+   "source_id": "wb_sig_mcx_spear",
+   "note": "8.4 lb [3.8 kg]"
+  },
+  {
+   "weapon_key": "sig_sg550",
+   "maker": "SIG Sauer / SAN Swiss Arms",
+   "weapon": "SG 550",
+   "mass_kg": 4.1,
+   "state": "with empty magazine",
+   "source_id": "san_swiss_arms_sg550_552_techdata",
+   "note": "Weapon incl. empty magazine g 4100"
+  },
+  {
+   "weapon_key": "sig_sg551",
+   "maker": "SIG Sauer / SAN Swiss Arms",
+   "weapon": "SG 551",
+   "mass_kg": 3.4,
+   "state": "with empty magazine",
+   "source_id": "san_swiss_arms_sg550_552_techdata",
+   "note": "Weapon incl. empty magazine g 3400"
+  },
+  {
+   "weapon_key": "sig_sg552",
+   "maker": "SIG Sauer / SAN Swiss Arms",
+   "weapon": "SG 552 Commando",
+   "mass_kg": 3.4,
+   "state": "as published",
+   "source_id": "san_swiss_arms_sg550_552_techdata",
+   "note": "Weapon incl. optics 3.4 kg"
+  },
+  {
+   "weapon_key": "sig_ssg3000",
+   "maker": "SIG Sauer",
+   "weapon": "SSG 3000",
+   "mass_kg": 5.1,
+   "state": "with magazine",
+   "source_id": "sig_ssg3000_manual",
+   "note": "Weight incl. magazine, excl. scope 11.24 lbs / 5.1 kg"
+  },
+  {
+   "weapon_key": "sig556",
+   "maker": "SIG Sauer",
+   "weapon": "SIG556",
+   "mass_kg": 3.538,
+   "state": "without magazine",
+   "source_id": "sig556_operator_manual",
+   "note": "Weight (w/out mag) 7.8 lb"
+  },
+  {
+   "weapon_key": "sako_trg22",
+   "maker": "Sako",
+   "weapon": "TRG-22 (.308 Win)",
+   "mass_kg": 4.7,
+   "state": "as published",
+   "source_id": "sako_trg22_manual",
+   "note": "Weight* 4,7 kg (10 3/8 lbs)"
+  },
+  {
+   "weapon_key": "sako_trg42",
+   "maker": "Sako",
+   "weapon": "TRG-42 (.338 Lapua Mag)",
+   "mass_kg": 5.1,
+   "state": "as published",
+   "source_id": "sako_trg22_manual",
+   "note": "Weight* ... 5,1 kg (11 1/4 lbs)"
+  },
+  {
+   "weapon_key": "sako85_blackbear",
+   "maker": "Sako",
+   "weapon": "Sako 85 Black Bear",
+   "mass_kg": 3.1,
+   "state": "without accessories",
+   "source_id": "sako85_blackbear",
+   "note": "OVERALL WEIGHT w/o ACCESSORIES S / 3.1 kg (6 13/16 lbs)"
+  },
+  {
+   "weapon_key": "ai_aw_308",
+   "maker": "Accuracy International",
+   "weapon": "AW (.308 Win, 20 in barrel)",
+   "mass_kg": 6.1,
+   "state": "as published",
+   "source_id": "ai_aw_brochure_2010",
+   "note": "Approximate weight with fixed stock, bipod and empty magazine. .308 Win 20\" 13.5lb (6.1kg)"
+  },
+  {
+   "weapon_key": "ai_aw_338",
+   "maker": "Accuracy International",
+   "weapon": "AW (.338 Lapua Mag, 27 in barrel)",
+   "mass_kg": 6.9,
+   "state": "as published",
+   "source_id": "ai_aw_brochure_2010",
+   "note": "Approximate weight with fixed stock, bipod and empty magazine. .338 Lapua Mag 27\" 15.1lb (6.9kg)"
+  },
+  {
+   "weapon_key": "ai_axmc",
+   "maker": "Accuracy International",
+   "weapon": "AXMC",
+   "mass_kg": 6.8,
+   "state": "as published",
+   "source_id": "ai_axmc_datasheet",
+   "note": "6.8kg (15lb)"
+  },
+  {
+   "weapon_key": "ai_axsr",
+   "maker": "Accuracy International",
+   "weapon": "AXSR (.338 Lapua Mag, 27 in barrel)",
+   "mass_kg": 7.39,
+   "state": "with empty magazine",
+   "source_id": "wb_ai_axsr",
+   "note": "With B&T AG muzzle brake, empty magazine, standard accessory rails, rear grip 27\" .338 Lap Mag barrel: 7.39 kg"
+  },
+  {
+   "weapon_key": "zastava_m07",
+   "maker": "Zastava Arms",
+   "weapon": "M07 sniper rifle",
+   "mass_kg": 5.4,
+   "state": "as published",
+   "source_id": "zastava_m07",
+   "note": "7.62x51 254 6 5 650 1,190 5.4 0.11 1,000"
+  },
+  {
+   "weapon_key": "remington_xm2010",
+   "maker": "Remington",
+   "weapon": "XM2010 Enhanced Sniper Rifle",
+   "mass_kg": 5.488,
+   "state": "as published",
+   "source_id": "remington_m2010",
+   "note": "Weight 12.1 lbs"
+  },
+  {
+   "weapon_key": "glock_17",
+   "maker": "Glock",
+   "weapon": "G17 Gen5",
+   "mass_kg": 0.708,
+   "state": "with empty magazine",
+   "source_id": "glock_g17_gen5",
+   "note": "Weight with empty magazine 708 g"
+  },
+  {
+   "weapon_key": "glock_19",
+   "maker": "Glock",
+   "weapon": "G19 Gen5",
+   "mass_kg": 0.67,
+   "state": "with empty magazine",
+   "source_id": "glock_g19_gen5",
+   "note": "Weight with empty magazine 670 g"
+  },
+  {
+   "weapon_key": "glock_26",
+   "maker": "Glock",
+   "weapon": "G26 Gen5",
+   "mass_kg": 0.615,
+   "state": "with empty magazine",
+   "source_id": "glock_g26_gen5",
+   "note": "Weight with empty magazine 615 g"
+  },
+  {
+   "weapon_key": "glock_34",
+   "maker": "Glock",
+   "weapon": "G34 Gen5 MOS",
+   "mass_kg": 0.743,
+   "state": "with empty magazine",
+   "source_id": "glock_g34_gen5",
+   "note": "Weight with empty magazine 743 g"
+  },
+  {
+   "weapon_key": "glock_45",
+   "maker": "Glock",
+   "weapon": "G45",
+   "mass_kg": 0.694,
+   "state": "with empty magazine",
+   "source_id": "glock_g45",
+   "note": "Weight with empty magazine 694 g"
+  },
+  {
+   "weapon_key": "glock_43",
+   "maker": "Glock",
+   "weapon": "G43",
+   "mass_kg": 0.51,
+   "state": "with empty magazine",
+   "source_id": "glock_g43",
+   "note": "Weight with empty magazine 510 g"
+  },
+  {
+   "weapon_key": "glock_43x",
+   "maker": "Glock",
+   "weapon": "G43X",
+   "mass_kg": 0.53,
+   "state": "with empty magazine",
+   "source_id": "glock_g43x",
+   "note": "Weight with empty magazine 530 g"
+  },
+  {
+   "weapon_key": "glock_48",
+   "maker": "Glock",
+   "weapon": "G48",
+   "mass_kg": 0.588,
+   "state": "with empty magazine",
+   "source_id": "glock_g48",
+   "note": "Weight with empty magazine 588 g"
+  },
+  {
+   "weapon_key": "cz75b",
+   "maker": "CZ",
+   "weapon": "CZ 75 B",
+   "mass_kg": 0.998,
+   "state": "as published",
+   "source_id": "wb_czusa_75b",
+   "note": "Weight 35.2 oz"
+  },
+  {
+   "weapon_key": "taurus_g3c",
+   "maker": "Taurus",
+   "weapon": "G3c",
+   "mass_kg": 0.624,
+   "state": "as published",
+   "source_id": "wb_taurus_g3c",
+   "note": "Weight 22.00 oz."
+  },
+  {
+   "weapon_key": "ddm4v7",
+   "maker": "Daniel Defense",
+   "weapon": "DDM4 V7 (16 in barrel)",
+   "mass_kg": 2.812,
+   "state": "as published",
+   "source_id": "wb_dd_ddm4v7",
+   "note": "Product Weight 6.2 LBS"
+  },
+  {
+   "weapon_key": "gp_k100",
+   "maker": "Grand Power",
+   "weapon": "K100",
+   "mass_kg": 0.82,
+   "state": "with empty magazine",
+   "source_id": "gp_k100",
+   "note": "Weight w empty magazine: 820 g"
+  },
+  {
+   "weapon_key": "gp_q100",
+   "maker": "Grand Power",
+   "weapon": "Q100",
+   "mass_kg": 0.76,
+   "state": "as published",
+   "source_id": "gp_q100",
+   "note": "Weight: 760 g"
+  },
+  {
+   "weapon_key": "gp_stribog_sp9a3",
+   "maker": "Grand Power",
+   "weapon": "Stribog SP9 A3",
+   "mass_kg": 2.7,
+   "state": "as published",
+   "source_id": "gp_stribog_sp9a3",
+   "note": "weight: 2,7kg"
+  },
+  {
+   "weapon_key": "lmt_mars_h",
+   "maker": "LMT",
+   "weapon": "MARS-H 7.62 (MLKMWS-MARS)",
+   "mass_kg": 4.296,
+   "state": "as published",
+   "source_id": "lmt_mars_h",
+   "note": "Size and Weight 34.75\" – 38\" / 9.47lbs"
+  },
+  {
+   "weapon_key": "springfield_m1a",
+   "maker": "Springfield Armory",
+   "weapon": "M1A Loaded (.308 Win)",
+   "mass_kg": 4.309,
+   "state": "as published",
+   "source_id": "springfield_m1a_loaded_308",
+   "note": "Weight 9 lbs 8 oz"
+  },
+  {
+   "weapon_key": "springfield_saint_victor",
+   "maker": "Springfield Armory",
+   "weapon": "SAINT Victor 5.56",
+   "mass_kg": 2.977,
+   "state": "as published",
+   "source_id": "springfield_saint_victor",
+   "note": "Weight 6 lbs 9 oz"
+  },
+  {
+   "weapon_key": "springfield_hellion",
+   "maker": "Springfield Armory",
+   "weapon": "Hellion 5.56",
+   "mass_kg": 3.629,
+   "state": "as published",
+   "source_id": "wb_springfield_hellion",
+   "note": "Weight 8 lbs"
+  },
+  {
+   "weapon_key": "savage_110_scout",
+   "maker": "Savage Arms",
+   "weapon": "110 Scout V2",
+   "mass_kg": 3.68,
+   "state": "as published",
+   "source_id": "savage_110scoutv2",
+   "note": "Weight 8.11 lbs (3.68 kg)"
+  },
+  {
+   "weapon_key": "savage_110_trailhunter",
+   "maker": "Savage Arms",
+   "weapon": "110 Trail Hunter",
+   "mass_kg": 3.63,
+   "state": "as published",
+   "source_id": "savage_110trailhunter",
+   "note": "Weight 8 lbs (3.63 kg)"
+  },
+  {
+   "weapon_key": "savage_impulse_chp",
+   "maker": "Savage Arms",
+   "weapon": "Impulse Core Hunter Pro",
+   "mass_kg": 3.66,
+   "state": "as published",
+   "source_id": "savage_impulse_chp",
+   "note": "Weight 8.06 lbs (3.66 kg)"
+  },
+  {
+   "weapon_key": "ruger_1022_competition",
+   "maker": "Sturm, Ruger & Co.",
+   "weapon": "10/22 Competition (Model 31127)",
+   "mass_kg": 2.72,
+   "state": "as published",
+   "source_id": "ruger_1022_competition_31127",
+   "note": "Weight 6 lb. 2.72 kg"
+  },
+  {
+   "weapon_key": "ruger_1022_takedown",
+   "maker": "Sturm, Ruger & Co.",
+   "weapon": "10/22 Takedown (Model 32010)",
+   "mass_kg": 2.08,
+   "state": "as published",
+   "source_id": "ruger_1022_takedown_32010",
+   "note": "Weight 4.6 lb. 2.08 kg"
+  },
+  {
+   "weapon_key": "ruger_lcp_max",
+   "maker": "Sturm, Ruger & Co.",
+   "weapon": "LCP MAX (Model 13758)",
+   "mass_kg": 0.311,
+   "state": "as published",
+   "source_id": "ruger_lcp_max_13758",
+   "note": "Weight 11 oz. 311 g"
+  },
+  {
+   "weapon_key": "ruger_security380",
+   "maker": "Sturm, Ruger & Co.",
+   "weapon": "Security-380 (Model 3839)",
+   "mass_kg": 0.558,
+   "state": "as published",
+   "source_id": "ruger_security380",
+   "note": "Weight 19.7 oz. 558 g"
+  },
+  {
+   "weapon_key": "ruger_redhawk",
+   "maker": "Sturm, Ruger & Co.",
+   "weapon": "Redhawk (Model 5059, .357 Mag)",
+   "mass_kg": 1.38,
+   "state": "as published",
+   "source_id": "ruger_redhawk_5059",
+   "note": "Weight 49 oz. 1.38 kg"
+  },
+  {
+   "weapon_key": "ruger_lcr",
+   "maker": "Sturm, Ruger & Co.",
+   "weapon": "LCR (Model 5450, .357 Mag)",
+   "mass_kg": 0.484,
+   "state": "as published",
+   "source_id": "ruger_lcr_5450",
+   "note": "Weight 17.1 oz. 484 g"
+  },
+  {
+   "weapon_key": "sw_mp45_m20",
+   "maker": "Smith & Wesson",
+   "weapon": "M&P45 M2.0 (law enforcement, SKU 12637)",
+   "mass_kg": 0.765,
+   "state": "as published",
+   "source_id": "sw_specsheet_mp45_m2_law_enforcement_12637",
+   "note": "Pistol Weight 27.0 oz. (765.5 g)"
+  },
+  {
+   "weapon_key": "sw_model442",
+   "maker": "Smith & Wesson",
+   "weapon": "Model 442 Airweight",
+   "mass_kg": 0.414,
+   "state": "as published",
+   "source_id": "sw_specsheet_model442_150544",
+   "note": "Weight 14.6 oz. (414 g)"
+  },
+  {
+   "weapon_key": "sw_model629",
+   "maker": "Smith & Wesson",
+   "weapon": "Model 629 Engraved (6.5 in barrel)",
+   "mass_kg": 1.398,
+   "state": "as published",
+   "source_id": "sw_specsheet_model629_engraved_14784",
+   "note": "Weight 49.3 oz. (1397.6 g)"
+  },
+  {
+   "weapon_key": "sw_model642",
+   "maker": "Smith & Wesson",
+   "weapon": "Model 642 America 250th",
+   "mass_kg": 0.408,
+   "state": "as published",
+   "source_id": "sw_specsheet_model642_250th_14925",
+   "note": "Weight 14.4 oz."
+  },
+  {
+   "weapon_key": "kriss_vector_crb",
+   "maker": "KRISS USA",
+   "weapon": "Vector Gen 3 CRB (16 in barrel)",
+   "mass_kg": 3.5,
+   "state": "without magazine",
+   "source_id": "kriss_vector_g3_manual",
+   "note": "Weight (w/o mag) 7.7 lbs (3.5 kg)"
+  },
+  {
+   "weapon_key": "kriss_vector_sdp",
+   "maker": "KRISS USA",
+   "weapon": "Vector Gen 3 SDP (5.5 in barrel)",
+   "mass_kg": 2.5,
+   "state": "without magazine",
+   "source_id": "kriss_vector_g3_manual",
+   "note": "Weight (w/o mag) 5.6 lbs (2.5 kg)"
+  },
+  {
+   "weapon_key": "lwrci_repr_mkii",
+   "maker": "LWRCI",
+   "weapon": "REPR MKII (20 in barrel, 7.62 NATO)",
+   "mass_kg": 4.71,
+   "state": "as published",
+   "source_id": "lwrci_repr_mkii_762",
+   "note": "WEIGHT: 10.4 lbs (4.71 kg), 9.0 lbs (4.08kg)"
+  },
+  {
+   "weapon_key": "lwrci_smg45",
+   "maker": "LWRCI",
+   "weapon": "SMG-45",
+   "mass_kg": 2.676,
+   "state": "as published",
+   "source_id": "lwrci_smg45_specsheet",
+   "note": "WEIGHT: 5.9 LBS"
+  },
+  {
+   "weapon_key": "inland_m1_carbine",
+   "maker": "Inland Manufacturing",
+   "weapon": "M1 1944 Carbine",
+   "mass_kg": 2.353,
+   "state": "as published",
+   "source_id": "inland_m1",
+   "note": "Weight: 5lb 3oz"
+  },
+  {
+   "weapon_key": "bushmaster_450",
+   "maker": "Bushmaster",
+   "weapon": "450 Bushmaster 20 in",
+   "mass_kg": 3.175,
+   "state": "without magazine",
+   "source_id": "bushmaster_450_product",
+   "note": "Weight w/o Magazine: 7 LBS"
+  },
+  {
+   "weapon_key": "noveske_diplomat",
+   "maker": "Noveske",
+   "weapon": "7.94 Gen 4 Diplomat Pistol",
+   "mass_kg": 2.404,
+   "state": "as published",
+   "source_id": "noveske_diplomat",
+   "note": "5.3 lbs dry weight"
+  },
+  {
+   "weapon_key": "q_mini_fix",
+   "maker": "Q LLC",
+   "weapon": "Mini Fix",
+   "mass_kg": 2.132,
+   "state": "as published",
+   "source_id": "q_fix_minifix_manual",
+   "note": "WEIGHT 6.2 lbs 7.7 lbs 7.4 lbs 4.7 lbs"
+  },
+  {
+   "weapon_key": "hipoint_995",
+   "maker": "Hi-Point Firearms",
+   "weapon": "995 carbine (9 mm)",
+   "mass_kg": 3.039,
+   "state": "unloaded",
+   "source_id": "hipoint_carbine_manual",
+   "note": "Weight (unloaded): 6.7 Lbs."
+  },
+  {
+   "weapon_key": "naa_black_widow",
+   "maker": "North American Arms",
+   "weapon": "Black Widow .22 Magnum",
+   "mass_kg": 0.252,
+   "state": "as published",
+   "source_id": "naa_black_widow_product",
+   "note": "Weight: 8.9 oz."
+  },
+  {
+   "weapon_key": "naa_ranger_ii",
+   "maker": "North American Arms",
+   "weapon": "Ranger II .22 Magnum",
+   "mass_kg": 0.204,
+   "state": "as published",
+   "source_id": "naa_ranger_ii_product",
+   "note": "Weight: 7.2oz."
+  },
+  {
+   "weapon_key": "keltec_p17",
+   "maker": "KelTec",
+   "weapon": "P17",
+   "mass_kg": 0.309,
+   "state": "as published",
+   "source_id": "keltec_p17_manual",
+   "note": "reduce the total weight of the pistol to 10.9oz"
+  },
+  {
+   "weapon_key": "diamondback_db380",
+   "maker": "Diamondback Firearms",
+   "weapon": "DB380 Gen4",
+   "mass_kg": 0.249,
+   "state": "as published",
+   "source_id": "fn_db380_2025",
+   "note": "Weight: 8.8 oz"
+  },
+  {
+   "weapon_key": "thompson_m1a1",
+   "maker": "Auto-Ordnance",
+   "weapon": "M1A1 Thompson",
+   "mass_kg": 4.74,
+   "state": "empty",
+   "source_id": "dockery_m1a1_thompson",
+   "note": "WEIGHT (EMPTY) – 4.74 kg (10 lbs 7.2 oz)"
+  },
+  {
+   "weapon_key": "mossberg_590_shockwave_410",
+   "maker": "Mossberg",
+   "weapon": "590 Shockwave .410 bore",
+   "mass_kg": 4.24,
+   "state": "as published",
+   "source_id": "wb_mossberg_590",
+   "note": "Weight 4.24"
+  }
+ ]
+}
