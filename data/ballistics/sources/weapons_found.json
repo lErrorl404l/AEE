@@ -1,0 +1,755 @@
+{
+ "retrieved": "2026-09-22",
+ "sources": [
+  {
+   "source_id": "tm_9_1005_319_10",
+   "title": "TM 9-1005-319-10, Operator's Manual, Rifle 5.56mm M16A2/M16A3/M16A4 and Carbine M4/M4A1",
+   "url": "https://cdn.ar15repository.com/wp-content/uploads/20230809205218/OPERATORS-MANUAL-556-MM-M16A2-M16A3-M16A4-M4-and-M4A1-ARMY-TM-9-1005-319-10.October-1998.pdf",
+   "sha256": "aee9f3baabb19b1a25533a202a64140cfa82eb377dc6b5929acbb49f5eb9fc5c"
+  },
+  {
+   "source_id": "tm_9_1005_306_10",
+   "title": "TM 9-1005-306-10, Operator's Manual, 7.62mm M24 Sniper Weapon System",
+   "url": "https://usarmorment.com/pdf/sws24.pdf",
+   "sha256": "94df177bd56b9a754b5cecb08510575d5245ff674e5caab66856d0f9e217b5b5"
+  },
+  {
+   "source_id": "tm_9_1005_201_10",
+   "title": "TM 9-1005-201-10, Operator's Manual, Machine Gun 5.56mm M249",
+   "url": "https://archive.org/download/tm-9-1005-201-10-machine-gun-5.56mm-m-249-1991/TM%209-1005-201-10%20Machine%20Gun%2C%205.56mm%2C%20M249%20%201991_djvu.txt",
+   "sha256": "baaae285e2e3a20129361581169f777d2531a64967ae9f0420aaa775479dfe99"
+  },
+  {
+   "source_id": "tm_9_1005_223_10",
+   "title": "TM 9-1005-223-10, Operator's Manual, Rifle 7.62mm M14 and M14A1",
+   "url": "http://www.m14.ca/TM/026378.pdf",
+   "sha256": "d575dedfce300191bbc9d7e96d32ba37da4f66b17afdf7abc674060eb95f95b6"
+  },
+  {
+   "source_id": "m110_operator",
+   "title": "Operator's Manual, 7.62mm Stoner Rifle Mk 11 Mod 0 and SR-M110 SASS",
+   "url": "https://www.biggerhammer.net/stoner/manuals/m110.pdf",
+   "sha256": "7928d97add7fef269aa8491484243f621b9aa63925805baedf740175222f069b"
+  },
+  {
+   "source_id": "tm_05539_in",
+   "title": "TM 05539-IN, Organizational and Intermediate Maintenance Manual, Sniper Rifle 7.62mm M40A3 and M40A5",
+   "url": "https://archive.org/download/MaintenanceManual/MaintenanceManual_djvu.txt",
+   "sha256": "582e3d80149178b70e713fca1d10aecb51bf0607fae19604306df5e80d0f73f8"
+  },
+  {
+   "source_id": "barrett_m107a1",
+   "title": "Barrett M107A1 Operator's Manual",
+   "url": "https://barrett.net/wp-content/uploads/2023/07/M107A1_16693_Op-Manual_8.5x5.5_B-For-Website.pdf",
+   "sha256": "22633173b2e56a333af781d48e267216200bd7ad8fba2f48bdbb1f2a56dde68d"
+  },
+  {
+   "source_id": "cadet_gp_rifle_l98a2",
+   "title": "Cadet GP Rifle L98A2 (5.56mm), UK Ministry of Defence, 2021",
+   "url": null,
+   "sha256": "409a3c32495c1b287720e5e68fadc2b0dc4e17a9ef2da0fa948fc4701b99500d",
+   "note": "Held in the local MOD reference library. The L98A2 is the cadet version of the L85A2."
+  },
+  {
+   "source_id": "hk416_technical_data",
+   "title": "Heckler & Koch HK416, Cal. 5.56mm x 45, Technical Data",
+   "url": "https://s3.amazonaws.com/hk-manuals/files/Military/HK416/HK416_Technical_Data.pdf",
+   "sha256": "6be8e4d917054f1e5b12065026ddee62b70193819040a8c1bac11b1708cfe934"
+  },
+  {
+   "source_id": "hk417_technical_data",
+   "title": "Heckler & Koch HK417, Technical Data",
+   "url": "https://s3.amazonaws.com/hk-manuals/files/Military/HK417/HK417_Technical_Data.pdf",
+   "sha256": "93587acdeeeea0f5cb21380652509ed40d0ab73eeeb04a11be88cf64e01b506d"
+  },
+  {
+   "source_id": "hk_g36_technical_data",
+   "title": "Heckler & Koch G36, Technical Data",
+   "url": "https://s3.amazonaws.com/hk-manuals/files/Military/G36/G36_Technical_Data.pdf",
+   "sha256": "c5f1b6e3cf3de42588259b088c30ad11704590eaa5e278262af7fe9125f3a9a3"
+  },
+  {
+   "source_id": "hk_g3_manual",
+   "title": "Automatic Rifle HK G3, Cal. 7.62mm x 51 NATO, technical manual",
+   "url": "https://ia601500.us.archive.org/28/items/MManuals/HkG3AutomaticRifleCal7.62mmNato_text.pdf",
+   "sha256": "2b7c019977c3f6b803e270511863862bad2a84637625cf4a9b6fc2ec1ad1ea8b"
+  },
+  {
+   "source_id": "hk_mp5_manual",
+   "title": "Heckler & Koch MP5 Submachine Gun manual",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/hk_mp5_djvu.txt",
+   "sha256": "97855893985feb568f6f596a842597678978a3e1c2792dcf40eafa8e0e144e9c"
+  },
+  {
+   "source_id": "hk_mg4_technical_data",
+   "title": "Heckler & Koch MG4E, Cal. 5.56mm x 45, Technical Data",
+   "url": "https://s3.amazonaws.com/hk-manuals/files/Military/MG4/HK_MG4E_Technical_Data.pdf",
+   "sha256": "ee6e49113d21369e62de64b62f9ebd6660dcfa6eabe01512a41d64547ad75e3d"
+  },
+  {
+   "source_id": "hk_mp7_technical_data",
+   "title": "Heckler & Koch MP7A1, Cal. 4.6mm x 30, Technical Data",
+   "url": "https://s3.amazonaws.com/hk-manuals/files/Military/MP7/MP7A1_Technical_Data.pdf",
+   "sha256": "6985bc5df05ba4c850fc316ca85448053ad472dd743fe87a458a26d7a5c824d8"
+  },
+  {
+   "source_id": "steyr_aug_a3_manual",
+   "title": "Steyr AUG A3 SA Owner's Manual",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/steyr_aug_a3_sa_djvu.txt",
+   "sha256": "ac6970ce0d1d73869d96c4e93dcc143049427c7f4c7122210394bd81d838dca9"
+  },
+  {
+   "source_id": "sig_sg550_manual",
+   "title": "SIG SG 550 / SG 551 assault rifle manual",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/sig_sg550_551_djvu.txt",
+   "sha256": "fa68d4e7afdea43d6f9d2dcfda147ff5fd3b69d4c187510d97ac666fa8968217"
+  },
+  {
+   "source_id": "sig_p226_manual",
+   "title": "SIG Sauer P226 pistol manual, technical specifications",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/sig_p226_djvu.txt",
+   "sha256": "6efe3abf08558f0e5436bac63a6f34f9bf222c284d63271d53028f0c45d5e384"
+  },
+  {
+   "source_id": "famas_manual",
+   "title": "FAMAS 5.56mm automatic rifle manual (English translation)",
+   "url": "https://www.forgottenweapons.com/wp-content/uploads/manuals/FAMAS%20F1%20manual%20English.pdf",
+   "sha256": "ed7f42c5e214ea2f4a50d46268cd02faa1a8d865876ff6abe34649482aa50e4e"
+  },
+  {
+   "source_id": "fn_fal_manual",
+   "title": "FN Light Automatic Rifle FAL, user's manual",
+   "url": "https://archive.org/download/gunmanual_FN-FAL_Manual/FN-FAL%20Manual_text.pdf",
+   "sha256": "a64c13c7896c41dfb589b5c8ef5e3f7850552ca6f33a34601cc63232f4c24903"
+  },
+  {
+   "source_id": "beretta_m9_tm",
+   "title": "TM 9-1005-317-23&P, Pistol, Semiautomatic, 9mm, M9",
+   "url": "https://www.biggerhammer.net/manuals/m9/M9B.PDF",
+   "sha256": "b3f1fd0e74bfbee2bb74ffa37d0503bb19af5e89155047a1438917bc38155deb"
+  },
+  {
+   "source_id": "glock_armorer",
+   "title": "GLOCK Armorer's Manual",
+   "url": "https://archive.org/download/gunmanual_Glock_ARmorers_Manual/Glock%20ARmorers%20Manual_text.pdf",
+   "sha256": "3b4366d035057fbc2a8149cb97bf2c23f2f5894a3aa15b799d862897e8d99bb3"
+  },
+  {
+   "source_id": "kriss_vector_manual",
+   "title": "KRISS Vector Gen II Owner's Manual (SDP, SBR, CRB)",
+   "url": "http://store.kriss-usa.com/images/dealer-resources/kriss/KRISS-MANUAL/Gen-Two/KRISS-MANUAL_2017_VECTOR-Gen-2_CRB-SBR-SDP-12.pdf",
+   "sha256": "14b066db76f6eadec59e17582900bfadff90337d21231c3e7f699759adc2677d"
+  },
+  {
+   "source_id": "ai_axmc_datasheet",
+   "title": "Accuracy International AXMC datasheet",
+   "url": "https://modularrifle.com/wp-content/uploads/2017/02/Accuracy-International-AI-AXMC-Datasheet.pdf",
+   "sha256": "62af29305cb716085e90d33d4041ee4fc1a84d77a0a35c962d06319b6307d2d4"
+  },
+  {
+   "source_id": "m1911_tm",
+   "title": "TM 9-1005-211-34, Maintenance Manual, Pistol, Caliber .45, Automatic, M1911A1",
+   "url": "https://archive.org/download/M1911A1-Technical-Manual-9-1005-211-34/MAINT45A_djvu.txt",
+   "sha256": "6b84b0d3af0d3f0e2ab124b7d50b71439f544c947a952c826cf1f09e0c198439"
+  },
+  {
+   "source_id": "uzi_manual",
+   "title": "Uzi submachine gun manual",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/uzi_djvu.txt",
+   "sha256": "645645e8a17ad34f933cd9b82316459d5f28d1a63a188a3d10b5ec3c4eef7db5"
+  },
+  {
+   "source_id": "kac_catalog",
+   "title": "Knight's Armament Company product catalog 2012",
+   "url": "https://www.knightarmco.com/wp-content/uploads/2021/05/KAC-2012-COM.pdf",
+   "sha256": "b8ba8c5e73d23d490402bf8fe46db01ff93670086da8d7e207d1399eb2c61d17"
+  },
+  {
+   "source_id": "fn_scar_l_technical_data",
+   "title": "FN SCAR-L Mk2 technical data sheet",
+   "url": "https://fnherstal.com/app/uploads/technical-data-fn-scar-l-mk2-2.pdf",
+   "sha256": "e2c5e7a49d1a6217d23c1d29cbf825af7a5ac8e4455b59350e528eef3c8daffb"
+  },
+  {
+   "source_id": "fn_scar_h_technical_data",
+   "title": "FN SCAR-H Mk2 technical data sheet",
+   "url": "https://fnherstal.com/app/uploads/technical-data-fn-scar-h-mk2-1.pdf",
+   "sha256": "7bab7d16064bc879598c6b50c8d75b6525cde82455dcf2c8f3ee11b60086b359"
+  },
+  {
+   "source_id": "svd_ru_manual",
+   "title": "7.62mm Dragunov Sniper Rifle (SVD), Technical Description and Service Manual",
+   "url": "https://ia601005.us.archive.org/20/items/manuals.content.like.stevespages/dragunov.pdf",
+   "sha256": "11b1c35bc3ec819411a858dfeec58cf957fca5f765c551e3e99439690ee7c36c"
+  },
+  {
+   "source_id": "tm_9_1005_224_34",
+   "title": "TM 9-1005-224-34, Direct and General Support Maintenance Manual, Machine Gun 7.62mm M60 and Mount M91",
+   "url": "https://archive.org/download/tm-9-1005-224-34-7.62-mm-machine-gun-m-60-and-mount-m-91-1959/TM%209-1005-224-34%207.62-MM%20Machine%20Gun%20M60%20And%20Mount%20M91%20%201959_djvu.txt",
+   "sha256": "2f82c32e6ba9587804adb5d3a390b0c5d228183d7dbcb3c382fe03f8a63ae3f7"
+  }
+ ],
+ "weapons": [
+  {
+   "weapon_id": "m4a1",
+   "name": "M4A1 Carbine",
+   "manufacturer": "Colt",
+   "cartridge": "5.56x45mm NATO",
+   "barrel_mm": null,
+   "twist_mm": 177.8,
+   "grooves": null,
+   "source_id": "tm_9_1005_319_10",
+   "source_note": "Rifling RH 1 turn in 7 in (177.8 mm). The manual does not state barrel length or groove count."
+  },
+  {
+   "weapon_id": "m16a4",
+   "name": "M16A4 Rifle",
+   "manufacturer": "Colt / FN",
+   "cartridge": "5.56x45mm NATO",
+   "barrel_mm": null,
+   "twist_mm": 177.8,
+   "grooves": null,
+   "source_id": "tm_9_1005_319_10",
+   "source_note": "Rifling RH 1 turn in 7 in (177.8 mm). The manual does not state barrel length or groove count."
+  },
+  {
+   "weapon_id": "m16a2",
+   "name": "M16A2 Rifle",
+   "manufacturer": "Colt / FN",
+   "cartridge": "5.56x45mm NATO",
+   "barrel_mm": null,
+   "twist_mm": 177.8,
+   "grooves": null,
+   "source_id": "tm_9_1005_319_10",
+   "source_note": "Rifling RH 1 turn in 7 in (177.8 mm). The manual does not state barrel length or groove count."
+  },
+  {
+   "weapon_id": "m14",
+   "name": "M14 Rifle",
+   "manufacturer": "Springfield Armory",
+   "cartridge": "7.62x51mm NATO",
+   "barrel_mm": 558.8,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": "tm_9_1005_223_10",
+   "source_note": "Barrel length 22 in (558.8 mm) from the tabulated data. The manual does not state the rifling twist. Twist not verified."
+  },
+  {
+   "weapon_id": "m24",
+   "name": "M24 Sniper Weapon System",
+   "manufacturer": "Remington",
+   "cartridge": "7.62x51mm NATO",
+   "barrel_mm": null,
+   "twist_mm": 284.48,
+   "grooves": 5,
+   "source_id": "tm_9_1005_306_10",
+   "source_note": "Barrel rifling 5 radial with 1 turn in 11.2 in (284.48 mm). The manual does not state barrel length."
+  },
+  {
+   "weapon_id": "m40a5",
+   "name": "M40A5 Sniper Rifle",
+   "manufacturer": "Remington / USMC",
+   "cartridge": "7.62x51mm NATO",
+   "barrel_mm": 609.6,
+   "twist_mm": 304.8,
+   "grooves": null,
+   "source_id": "tm_05539_in",
+   "source_note": "Rifling 1 turn in 12 in (304.8 mm), right hand. Barrel length 24 in (609.6 mm). The manual covers the M40A3 and M40A5."
+  },
+  {
+   "weapon_id": "m110",
+   "name": "M110 SASS",
+   "manufacturer": "Knight's Armament",
+   "cartridge": "7.62x51mm NATO",
+   "barrel_mm": 508.0,
+   "twist_mm": 279.4,
+   "grooves": 5,
+   "source_id": "m110_operator",
+   "source_note": "20 in barrel, 5 grooves, right-hand twist 1 turn in 11 in (279.4 mm). The manual also covers the Mk 11 Mod 0."
+  },
+  {
+   "weapon_id": "sr25",
+   "name": "SR-25",
+   "manufacturer": "Knight's Armament",
+   "cartridge": "7.62x51mm NATO",
+   "barrel_mm": 508.0,
+   "twist_mm": 279.4,
+   "grooves": null,
+   "source_id": "kac_catalog",
+   "source_note": "KAC catalog lists the SR-25 20 in 5R match barrel with a 1:11 twist (279.4 mm). Other SR-25 variants are listed at 16 in with the same 1:11 twist."
+  },
+  {
+   "weapon_id": "m249",
+   "name": "M249 SAW",
+   "manufacturer": "FN",
+   "cartridge": "5.56x45mm NATO",
+   "barrel_mm": 520.0,
+   "twist_mm": 177.8,
+   "grooves": null,
+   "source_id": "tm_9_1005_201_10",
+   "source_note": "Barrel assembly 520 mm (20.50 in). Rifling twist 1 turn in 7 in (177.8 mm)."
+  },
+  {
+   "weapon_id": "m240b",
+   "name": "M240B Machine Gun",
+   "manufacturer": "FN",
+   "cartridge": "7.62x51mm NATO",
+   "barrel_mm": null,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": null,
+   "source_note": "The M240 operator and field maintenance manuals held here do not state the rifling twist. Not verified."
+  },
+  {
+   "weapon_id": "m60",
+   "name": "M60 Machine Gun",
+   "manufacturer": "Saco Defense / U.S. Ordnance",
+   "cartridge": "7.62x51mm NATO",
+   "barrel_mm": null,
+   "twist_mm": 304.8,
+   "grooves": 4,
+   "source_id": "tm_9_1005_224_34",
+   "source_note": "Ordnance tabulated data: number of lands 4, right-hand twist one turn in 12 in (304.8 mm). The manual does not state barrel length."
+  },
+  {
+   "weapon_id": "m107",
+   "name": "M107 / M82 Long Range Sniper Rifle",
+   "manufacturer": "Barrett",
+   "cartridge": ".50 BMG (12.7x99mm NATO)",
+   "barrel_mm": 736.6,
+   "twist_mm": 381.0,
+   "grooves": null,
+   "source_id": "barrett_m107a1",
+   "source_note": "M107A1 barrel 29 in (737 mm) with a 1:15 in twist (381 mm). The M107A1 CQ variant has a 20.6 in barrel with the same twist."
+  },
+  {
+   "weapon_id": "mk18",
+   "name": "Mk18 Close Quarters Battle Rifle",
+   "manufacturer": "Daniel Defense / NSWC Crane",
+   "cartridge": "5.56x45mm NATO",
+   "barrel_mm": null,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": null,
+   "source_note": "No held primary or manufacturer document states the twist. Not verified."
+  },
+  {
+   "weapon_id": "mk12",
+   "name": "Mk12 Special Purpose Rifle",
+   "manufacturer": "NSWC Crane / Douglas Barrels",
+   "cartridge": "5.56x45mm NATO",
+   "barrel_mm": null,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": null,
+   "source_note": "No held primary or manufacturer document states the twist. Not verified."
+  },
+  {
+   "weapon_id": "hk416",
+   "name": "HK416",
+   "manufacturer": "Heckler & Koch",
+   "cartridge": "5.56x45mm NATO",
+   "barrel_mm": 368.0,
+   "twist_mm": 178.0,
+   "grooves": 6,
+   "source_id": "hk416_technical_data",
+   "source_note": "Barrel 14.5 in (368 mm), 6 grooves, right-hand twist 178 mm. Other barrel lengths 10, 16.5 and 20 in share the twist."
+  },
+  {
+   "weapon_id": "hk417",
+   "name": "HK417",
+   "manufacturer": "Heckler & Koch",
+   "cartridge": "7.62x51mm NATO",
+   "barrel_mm": 406.0,
+   "twist_mm": 280.0,
+   "grooves": 4,
+   "source_id": "hk417_technical_data",
+   "source_note": "Barrel 16 in (406 mm), 4 grooves, right-hand twist 280 mm. Other barrel lengths 12 and 20 in share the twist."
+  },
+  {
+   "weapon_id": "g3",
+   "name": "G3 Battle Rifle",
+   "manufacturer": "Heckler & Koch",
+   "cartridge": "7.62x51mm NATO",
+   "barrel_mm": 450.0,
+   "twist_mm": 305.0,
+   "grooves": 4,
+   "source_id": "hk_g3_manual",
+   "source_note": "Barrel 450 mm (17.71 in). Length of twist 305 mm (12.00 in), right hand, 4 grooves."
+  },
+  {
+   "weapon_id": "g36",
+   "name": "G36 Rifle",
+   "manufacturer": "Heckler & Koch",
+   "cartridge": "5.56x45mm NATO",
+   "barrel_mm": 480.0,
+   "twist_mm": 178.0,
+   "grooves": null,
+   "source_id": "hk_g36_technical_data",
+   "source_note": "G36 barrel 480 mm (G36K 318 mm, G36C 228 mm). Groove and land profile right-hand twist 178 mm. The sheet does not state the groove count."
+  },
+  {
+   "weapon_id": "mp5",
+   "name": "MP5 Submachine Gun",
+   "manufacturer": "Heckler & Koch",
+   "cartridge": "9x19mm",
+   "barrel_mm": 225.0,
+   "twist_mm": 250.4,
+   "grooves": 6,
+   "source_id": "hk_mp5_manual",
+   "source_note": "Barrel 8.85 in (225 mm). 6 grooves, right hand, 1 turn in 9.86 in (250.4 mm)."
+  },
+  {
+   "weapon_id": "mp7",
+   "name": "MP7 Personal Defence Weapon",
+   "manufacturer": "Heckler & Koch",
+   "cartridge": "4.6x30mm",
+   "barrel_mm": 180.0,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": "hk_mp7_technical_data",
+   "source_note": "Barrel 180 mm. The bore is a polygonal profile with 6 twist lines, right hand. The sheet does not state a pitch in mm. Twist not verified."
+  },
+  {
+   "weapon_id": "mg3",
+   "name": "MG3 Machine Gun",
+   "manufacturer": "Rheinmetall",
+   "cartridge": "7.62x51mm NATO",
+   "barrel_mm": null,
+   "twist_mm": null,
+   "grooves": 4,
+   "source_id": null,
+   "source_note": "The held MG3 manual states a barrel with 4 grooves but does not state the twist. Not verified."
+  },
+  {
+   "weapon_id": "mg4",
+   "name": "MG4 Machine Gun",
+   "manufacturer": "Heckler & Koch",
+   "cartridge": "5.56x45mm NATO",
+   "barrel_mm": null,
+   "twist_mm": null,
+   "grooves": 6,
+   "source_id": "hk_mg4_technical_data",
+   "source_note": "Groove and land profile 6 grooves, right-hand twist. The sheet does not state the pitch in mm or the barrel length. Twist not verified."
+  },
+  {
+   "weapon_id": "aug",
+   "name": "Steyr AUG",
+   "manufacturer": "Steyr Arms",
+   "cartridge": "5.56x45mm NATO",
+   "barrel_mm": 407.0,
+   "twist_mm": 228.6,
+   "grooves": 6,
+   "source_id": "steyr_aug_a3_manual",
+   "source_note": "AUG A3 SA: barrel 16 in (407 mm), 6 grooves, 1 turn right in 9 in (228.6 mm). The classic A1 rifle barrel is 508 mm with the same twist."
+  },
+  {
+   "weapon_id": "sg550",
+   "name": "SIG SG 550 / SG 551",
+   "manufacturer": "SIG (Swiss Arms)",
+   "cartridge": "5.56x45mm NATO",
+   "barrel_mm": 407.0,
+   "twist_mm": 254.0,
+   "grooves": 6,
+   "source_id": "sig_sg550_manual",
+   "source_note": "6 grooves. Rifling 1 turn in 10 in (254 mm) for the SG550-1; the SG550-2 export variant is 1 turn in 7 in (178 mm). Barrel 16.02 in (407 mm) for the USA model."
+  },
+  {
+   "weapon_id": "p226",
+   "name": "P226 Pistol",
+   "manufacturer": "SIG Sauer",
+   "cartridge": "9x19mm",
+   "barrel_mm": 112.0,
+   "twist_mm": 250.0,
+   "grooves": null,
+   "source_id": "sig_p226_manual",
+   "source_note": "Barrel 112 mm. Rifling lead 250 mm for the 9 mm chambering. The manual does not state the groove count."
+  },
+  {
+   "weapon_id": "famas",
+   "name": "FAMAS",
+   "manufacturer": "GIAT Industries",
+   "cartridge": "5.56x45mm NATO",
+   "barrel_mm": 488.0,
+   "twist_mm": 304.8,
+   "grooves": 3,
+   "source_id": "famas_manual",
+   "source_note": "F1: barrel 488 mm, 3 grooves, right-hand pitch 12 in (304.8 mm). The manual gives an optional 9 in (228.6 mm) pitch for the SS109/G2."
+  },
+  {
+   "weapon_id": "l85a2",
+   "name": "L85A2 Rifle",
+   "manufacturer": "BAE Systems / RSAF Enfield",
+   "cartridge": "5.56x45mm NATO",
+   "barrel_mm": null,
+   "twist_mm": 180.0,
+   "grooves": 6,
+   "source_id": "cadet_gp_rifle_l98a2",
+   "source_note": "L98A2 cadet rifle (L85A2): 6 grooves, pitch 180 mm, 1 turn right hand. The document does not state barrel length."
+  },
+  {
+   "weapon_id": "l1a1",
+   "name": "L1A1 Self-Loading Rifle",
+   "manufacturer": "RSAF Enfield (FN FAL licence)",
+   "cartridge": "7.62x51mm NATO",
+   "barrel_mm": null,
+   "twist_mm": 304.8,
+   "grooves": 4,
+   "source_id": "fn_fal_manual",
+   "source_note": "The L1A1 is the UK inch-pattern FN FAL. The FN FAL manual states 4 grooves, right hand, pitch 1 in 305 mm (11.9 in, 304.8 mm)."
+  },
+  {
+   "weapon_id": "ak47",
+   "name": "AK-47 Assault Rifle",
+   "manufacturer": "Kalashnikov Concern / Izhmash",
+   "cartridge": "7.62x39mm",
+   "barrel_mm": null,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": null,
+   "source_note": "The held USMC AK-47 operator manual and the AK armourer manual do not state the twist. Not verified."
+  },
+  {
+   "weapon_id": "akm",
+   "name": "AKM Assault Rifle",
+   "manufacturer": "Kalashnikov Concern / Izhmash",
+   "cartridge": "7.62x39mm",
+   "barrel_mm": null,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": null,
+   "source_note": "No held primary document states the twist. Not verified."
+  },
+  {
+   "weapon_id": "ak74",
+   "name": "AK-74 Assault Rifle",
+   "manufacturer": "Kalashnikov Concern / Izhmash",
+   "cartridge": "5.45x39mm",
+   "barrel_mm": null,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": null,
+   "source_note": "The held USMC AK-74 operator manual does not state the twist. Not verified."
+  },
+  {
+   "weapon_id": "aks74u",
+   "name": "AKS-74U Carbine",
+   "manufacturer": "Kalashnikov Concern / Tula",
+   "cartridge": "5.45x39mm",
+   "barrel_mm": null,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": null,
+   "source_note": "No held primary document states the twist. Not verified."
+  },
+  {
+   "weapon_id": "rpk",
+   "name": "RPK Light Machine Gun",
+   "manufacturer": "Kalashnikov Concern / Izhmash",
+   "cartridge": "7.62x39mm",
+   "barrel_mm": null,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": null,
+   "source_note": "The held RPK operator manual does not state the twist. Not verified."
+  },
+  {
+   "weapon_id": "pkm",
+   "name": "PKM General Purpose Machine Gun",
+   "manufacturer": "Kalashnikov Concern / Izhmash",
+   "cartridge": "7.62x54mmR",
+   "barrel_mm": null,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": null,
+   "source_note": "The held PKM operator manual does not state the twist. Not verified."
+  },
+  {
+   "weapon_id": "svd",
+   "name": "SVD Dragunov Sniper Rifle",
+   "manufacturer": "Izhmash",
+   "cartridge": "7.62x54mmR",
+   "barrel_mm": null,
+   "twist_mm": null,
+   "grooves": 4,
+   "source_id": "svd_ru_manual",
+   "source_note": "The Russian technical manual states 4 grooves but does not state the twist. Not verified."
+  },
+  {
+   "weapon_id": "vss_9a91",
+   "name": "VSS Vintorez / 9A-91",
+   "manufacturer": "TsNIITochMash / KBP",
+   "cartridge": "9x39mm",
+   "barrel_mm": null,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": null,
+   "source_note": "No held primary or manufacturer document states the twist. Not verified."
+  },
+  {
+   "weapon_id": "scar_l",
+   "name": "FN SCAR-L",
+   "manufacturer": "FN Herstal",
+   "cartridge": "5.56x45mm NATO",
+   "barrel_mm": 368.0,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": "fn_scar_l_technical_data",
+   "source_note": "The FN datasheet states a 14.5 in (368 mm) barrel but does not state the twist. Twist not verified."
+  },
+  {
+   "weapon_id": "scar_h",
+   "name": "FN SCAR-H",
+   "manufacturer": "FN Herstal",
+   "cartridge": "7.62x51mm NATO",
+   "barrel_mm": 406.0,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": "fn_scar_h_technical_data",
+   "source_note": "The FN datasheet states a 16 in (406 mm) barrel but does not state the twist. Twist not verified."
+  },
+  {
+   "weapon_id": "fal",
+   "name": "FN FAL",
+   "manufacturer": "FN Herstal",
+   "cartridge": "7.62x51mm NATO",
+   "barrel_mm": 533.0,
+   "twist_mm": 305.0,
+   "grooves": 4,
+   "source_id": "fn_fal_manual",
+   "source_note": "Barrel 533 mm (21 in). Rifling 4 grooves, right hand, pitch 1 in 305 mm (11.9 in)."
+  },
+  {
+   "weapon_id": "uzi",
+   "name": "Uzi Submachine Gun",
+   "manufacturer": "Israel Military Industries",
+   "cartridge": "9x19mm",
+   "barrel_mm": null,
+   "twist_mm": 254.0,
+   "grooves": 4,
+   "source_id": "uzi_manual",
+   "source_note": "Rifling right hand, 4 grooves, 1 turn in 254 mm (10 in). The manual does not state the barrel length for the SMG."
+  },
+  {
+   "weapon_id": "p90",
+   "name": "FN P90",
+   "manufacturer": "FN Herstal",
+   "cartridge": "5.7x28mm",
+   "barrel_mm": null,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": null,
+   "source_note": "No held primary or manufacturer document states the twist. Not verified."
+  },
+  {
+   "weapon_id": "glock17",
+   "name": "Glock 17 Pistol",
+   "manufacturer": "Glock",
+   "cartridge": "9x19mm",
+   "barrel_mm": 114.0,
+   "twist_mm": 250.0,
+   "grooves": null,
+   "source_id": "glock_armorer",
+   "source_note": "Barrel length 114 mm (4.49 in). Barrel rifling right hand, length of twist 250 mm (9.84 in). The barrel is polygonal so no groove count is given."
+  },
+  {
+   "weapon_id": "m1911",
+   "name": "M1911A1 Pistol",
+   "manufacturer": "Colt",
+   "cartridge": ".45 ACP",
+   "barrel_mm": null,
+   "twist_mm": 406.4,
+   "grooves": 6,
+   "source_id": "m1911_tm",
+   "source_note": "Number of grooves 6. Rifling left hand, one turn in 16 in (406.4 mm). The manual does not state barrel length."
+  },
+  {
+   "weapon_id": "beretta92_m9",
+   "name": "Beretta 92 / M9 Pistol",
+   "manufacturer": "Beretta",
+   "cartridge": "9x19mm",
+   "barrel_mm": 125.0,
+   "twist_mm": 250.0,
+   "grooves": 6,
+   "source_id": "beretta_m9_tm",
+   "source_note": "Barrel 125 mm (4.92 in). Rifling right hand, 6 grooves, pitch 250 mm (1 turn in 10 in). The groove count was checked against the page image."
+  },
+  {
+   "weapon_id": "vector",
+   "name": "KRISS Vector",
+   "manufacturer": "KRISS USA",
+   "cartridge": ".45 ACP",
+   "barrel_mm": 406.0,
+   "twist_mm": 406.4,
+   "grooves": null,
+   "source_id": "kriss_vector_manual",
+   "source_note": "CRB barrel 16 in (406 mm), 1:16 in right-hand twist (406.4 mm) in .45 ACP. The 9 mm model is 1:10 in. The manual does not state the groove count."
+  },
+  {
+   "weapon_id": "mpx",
+   "name": "SIG MPX",
+   "manufacturer": "SIG Sauer",
+   "cartridge": "9x19mm",
+   "barrel_mm": null,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": null,
+   "source_note": "No held primary or manufacturer document states the twist. Not verified."
+  },
+  {
+   "weapon_id": "mcx",
+   "name": "SIG MCX",
+   "manufacturer": "SIG Sauer",
+   "cartridge": "5.56x45mm NATO",
+   "barrel_mm": null,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": null,
+   "source_note": "No held primary or manufacturer document states the twist. Not verified."
+  },
+  {
+   "weapon_id": "qbu88",
+   "name": "QBU-88 Designated Marksman Rifle",
+   "manufacturer": "Norinco",
+   "cartridge": "5.8x42mm",
+   "barrel_mm": null,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": null,
+   "source_note": "No held primary or manufacturer document states the twist. Not verified."
+  },
+  {
+   "weapon_id": "qbz95",
+   "name": "QBZ-95 Assault Rifle",
+   "manufacturer": "Norinco",
+   "cartridge": "5.8x42mm",
+   "barrel_mm": null,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": null,
+   "source_note": "No held primary or manufacturer document states the twist. Not verified."
+  },
+  {
+   "weapon_id": "awm_axmc_338",
+   "name": ".338 Lapua Magnum rifle (AWM / AXMC)",
+   "manufacturer": "Accuracy International",
+   "cartridge": ".338 Lapua Magnum",
+   "barrel_mm": 685.8,
+   "twist_mm": 237.49,
+   "grooves": null,
+   "source_id": "ai_axmc_datasheet",
+   "source_note": "AXMC in .338 LM: 27 in barrel (685.8 mm), 1 in 9.35 in twist (237.49 mm). A 20 in barrel is also offered with the same twist. The datasheet does not state the groove count."
+  },
+  {
+   "weapon_id": "service_rifle_65cm",
+   "name": "6.5mm Creedmoor service rifle",
+   "manufacturer": null,
+   "cartridge": "6.5mm Creedmoor",
+   "barrel_mm": null,
+   "twist_mm": null,
+   "grooves": null,
+   "source_id": null,
+   "source_note": "No adopted 6.5mm Creedmoor service rifle and no held primary or manufacturer document could be verified for the twist. Not verified."
+  }
+ ]
+}

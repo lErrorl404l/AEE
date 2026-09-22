@@ -1,0 +1,197 @@
+{
+  "retrieved": "2026-09-22",
+  "sources": [
+    {
+      "source_id": "armscor_m1911_manual",
+      "title": "Armscor / Rock Island Armory M1911-A1 Series Pistols Owner's Manual (section 04, Tech Specs)",
+      "url": "https://www.armscor.com/hubfs/Armscor_March2020%20Theme/Pdf%20Files/A_-_Manual.pdf",
+      "sha256": "6a18808a8f8cd8d468f0cf920f763ea72d9d8918ffb0892bf24d68da917f90ba"
+    },
+    {
+      "source_id": "armscor_revolver_manual",
+      "title": "Armscor / Rock Island Armory M200 / M202 / M206 / M206WG Revolver Owner's Manual (section 04, Tech Specs)",
+      "url": "https://www.armscor.com/hubfs/Armscor_March2020%20Theme/Pdf%20Files/I_-_Manual_-_Revolver.pdf",
+      "sha256": "5283fef6fbc31375e26188bd296a1a60f3e17b56f33b226ee73ad338a5a53aac"
+    },
+    {
+      "source_id": "rossi_rm64_product",
+      "title": "Rossi USA: RM64 .357 Magnum 4-inch revolver product page (Tech Specs table)",
+      "url": "https://rossiusa.com/product/revolvers/rm64/"
+    },
+    {
+      "source_id": "rossi_r92_357_20",
+      "title": "Rossi USA: R92 traditional hardwood, black, .357 Magnum / .38 Special +P, 20-inch lever-action product page (Tech Specs table)",
+      "url": "https://rossiusa.com/product/rifles/lever-action/373-r92-traditional-hardwood-stock-black-357-mag-38-special-p-20-in/"
+    },
+    {
+      "source_id": "rossi_r92_44_20",
+      "title": "Rossi USA: R92 hardwood, .44 Magnum, polished stainless, 20-inch lever-action product page (Tech Specs table)",
+      "url": "https://rossiusa.com/product/rifles/lever-action/362-r92-hardwood-44-mag-polished-stainless-20-in/"
+    },
+    {
+      "source_id": "ruger_1022_competition_31127",
+      "title": "Sturm, Ruger & Co. 10/22 Competition Autoloading Rifle, Model 31127, official spec sheet",
+      "url": "https://ruger.com/products/1022Competition/specSheets/31127.html"
+    },
+    {
+      "source_id": "ruger_american_ranch_26965_archive",
+      "title": "Sturm, Ruger & Co. Ruger American Ranch Rifle, Model 26965 (5.56 NATO), official spec sheet (archived 21 May 2025)",
+      "url": "https://web.archive.org/web/20250521175453/https://ruger.com/products/americanRifleRanch/specSheets/26965.html"
+    },
+    {
+      "source_id": "ruger_gunsite_scout_6803_archive",
+      "title": "Sturm, Ruger & Co. Ruger Gunsite Scout Rifle, Model 6803 (.308 Win), official spec sheet (archived 23 January 2016)",
+      "url": "https://web.archive.org/web/20160123063919/http://www.ruger.com:80/products/gunsiteScoutRifle/specSheets/6803.html?buy=1"
+    },
+    {
+      "source_id": "ruger_lcp_max_13758",
+      "title": "Sturm, Ruger & Co. LCP MAX Centerfire Pistol, Model 13758 (.380 Auto), official spec sheet",
+      "url": "https://ruger.com/products/lcpMax/specSheets/13758.html"
+    }
+  ],
+  "weapons": [
+    {
+      "weapon_id": "m206",
+      "name": "M206 Spurless Revolver, 6-shot, 2-inch barrel",
+      "manufacturer": "Rock Island Armory (Armscor)",
+      "cartridge": ".38 Special",
+      "barrel_mm": null,
+      "twist_mm": 400.0,
+      "grooves": 6,
+      "source_id": "armscor_revolver_manual",
+      "source_note": "Technical specification table, models M200 / M202 / M206 / M206WG (all .38 Special): 'Rifling Twist   Right Hand Twist, 1 Turn in 400mm (16\")' and 'No. of Grooves   6'. Armscor states the metric value itself (400 mm), so it is recorded as stated rather than converted from inches. Right-hand twist, 6 grooves."
+    },
+    {
+      "weapon_id": "match",
+      "name": "M1911-A1 Match Target 1911, adjustable rear sight, match barrel",
+      "manufacturer": "Rock Island Armory (Armscor)",
+      "cartridge": ".45 ACP",
+      "barrel_mm": null,
+      "twist_mm": 400.0,
+      "grooves": 6,
+      "source_id": "armscor_m1911_manual",
+      "source_note": "Tech Specs table, merged columns that apply to every listed RIA 1911 model: 'Rifling Twist   Right hand, 1 turn in 400mm' and 'No. Of Grooves   6'. The table's calibre cell is '.45ACP, 9mm, 38Super, 40S&W, 10mm'; the model rows are FS(GI STD./ROCK), FS TAC, Mid Size and Compact Size. The text above the table states 'RIA 1911 pistols are also available in the 5\" and 6\" match series', so the same barrel specification covers the match models. Read from the rendered table image (page 7) because text extraction reorders the merged cells."
+    },
+    {
+      "weapon_id": "promatchultra",
+      "name": "PRO Ultra Match 6-inch 1911 target pistol",
+      "manufacturer": "Rock Island Armory (Armscor)",
+      "cartridge": ".45 ACP",
+      "barrel_mm": null,
+      "twist_mm": 400.0,
+      "grooves": 6,
+      "source_id": "armscor_m1911_manual",
+      "source_note": "Tech Specs table: 'Rifling Twist   Right hand, 1 turn in 400mm' with 'No. Of Grooves   6', applying to all listed RIA 1911 models. The table notes name this model explicitly: 'Weight of PRO MATCH ULTRA 6\" pistol (empty): 1.30 kgs.' The 45 ACP calibre applies across the table's model rows."
+    },
+    {
+      "weapon_id": "rockultra",
+      "name": "Rock Ultra FS full-size 1911 with Picatinny rail",
+      "manufacturer": "Rock Island Armory (Armscor)",
+      "cartridge": ".45 ACP",
+      "barrel_mm": null,
+      "twist_mm": 400.0,
+      "grooves": 6,
+      "source_id": "armscor_m1911_manual",
+      "source_note": "Tech Specs table: 'Rifling Twist   Right hand, 1 turn in 400mm' with 'No. Of Grooves   6'. The table notes name the family: 'ROCK ULTRA models have a magazine well attached to frame' and 'ROCK models use a standard-length frame (no Picatinny feature)'. The 45 ACP row applies."
+    },
+    {
+      "weapon_id": "tactical",
+      "name": "TAC Standard FS 1911 full-size tactical pistol",
+      "manufacturer": "Rock Island Armory (Armscor)",
+      "cartridge": ".45 ACP",
+      "barrel_mm": null,
+      "twist_mm": 400.0,
+      "grooves": 6,
+      "source_id": "armscor_m1911_manual",
+      "source_note": "Tech Specs table: 'Rifling Twist   Right hand, 1 turn in 400mm' with 'No. Of Grooves   6'. The table lists the 'FS TAC' models with the 'TAC STD' and 'TAC ULTRA' weight variants, and the merged rifling columns apply to all of them."
+    },
+    {
+      "weapon_id": "ultrafs",
+      "name": "Rock Ultra FS full-size 1911",
+      "manufacturer": "Rock Island Armory (Armscor)",
+      "cartridge": ".45 ACP",
+      "barrel_mm": null,
+      "twist_mm": 400.0,
+      "grooves": 6,
+      "source_id": "armscor_m1911_manual",
+      "source_note": "Tech Specs table: 'Rifling Twist   Right hand, 1 turn in 400mm' with 'No. Of Grooves   6'. The table note 'ROCK ULTRA models have a magazine well attached to frame' identifies the ROCK ULTRA family; the rifling columns are merged across all model rows."
+    },
+    {
+      "weapon_id": "model92",
+      "name": "R92 lever-action carbine, 20-inch barrel, .357 Magnum",
+      "manufacturer": "Rossi",
+      "cartridge": ".357 Magnum",
+      "barrel_mm": null,
+      "twist_mm": 762.0,
+      "grooves": 6,
+      "source_id": "rossi_r92_357_20",
+      "source_note": "Manufacturer Tech Specs table for the R92 in '.357 MAG / 38 SPECIAL +P', 'Barrel Length  20.00 In.': 'Twist Rate   1:30\" RH' and 'Grooves   6'. 1 turn in 30 in = 30 x 25.4 = 762.0 mm."
+    },
+    {
+      "weapon_id": "r92",
+      "name": "R92 stainless steel lever-action carbine, 20-inch barrel, .44 Magnum",
+      "manufacturer": "Rossi",
+      "cartridge": ".44 Magnum",
+      "barrel_mm": null,
+      "twist_mm": 762.0,
+      "grooves": 6,
+      "source_id": "rossi_r92_44_20",
+      "source_note": "Manufacturer Tech Specs table for the R92 in '44 MAG', polished stainless steel, 'Barrel Length  20.00 In.': 'Twist Rate   1:30\" RH' and 'Grooves   6'. 1 turn in 30 in = 762.0 mm. The same 1:30\" RH value is published on the 16.5-inch .44 Magnum R92 page."
+    },
+    {
+      "weapon_id": "rm64",
+      "name": "RM64 medium-frame revolver, 4-inch barrel, .357 Magnum",
+      "manufacturer": "Rossi",
+      "cartridge": ".357 Magnum",
+      "barrel_mm": null,
+      "twist_mm": 419.1,
+      "grooves": 6,
+      "source_id": "rossi_rm64_product",
+      "source_note": "Manufacturer Tech Specs table for the RM64, '.357 MAG / 38 SPECIAL +P', 'Barrel Length  4.00 In.': 'Twist Rate   1:16.5-in RH Twist' and 'Grooves   6'. 1 turn in 16.5 in = 16.5 x 25.4 = 419.1 mm."
+    },
+    {
+      "weapon_id": "1022competition",
+      "name": "10/22 Competition Autoloading Rifle, Model 31127",
+      "manufacturer": "Ruger",
+      "cartridge": ".22 Long Rifle",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": 6,
+      "source_id": "ruger_1022_competition_31127",
+      "source_note": "Official model spec sheet, Model Number 31127, Caliber 22 LR, Barrel Length 16.12\": 'Twist   1:16\" RH' and 'Grooves   6'. 1 turn in 16 in = 16 x 25.4 = 406.4 mm. This differs from the .22 Long Rifle chambering standard lead of 356 mm; the manufacturer states 1:16."
+    },
+    {
+      "weapon_id": "americanranch",
+      "name": "Ruger American Ranch Rifle, Model 26965 (5.56 NATO)",
+      "manufacturer": "Ruger",
+      "cartridge": "5.56×45mm NATO",
+      "barrel_mm": null,
+      "twist_mm": 203.2,
+      "grooves": 5,
+      "source_id": "ruger_american_ranch_26965_archive",
+      "source_note": "Official model spec sheet, Model Number 26965, 'Caliber: 5.56 NATO', 'Barrel Length 16.10\"': 'Twist   1:8\" RH' and 'Grooves   5'. 1 turn in 8 in = 8 x 25.4 = 203.2 mm. Read from the Internet Archive capture dated 21 May 2025 because the live Ruger page is retired. This contradicts the compilation lead of 254.0 mm (1:10)."
+    },
+    {
+      "weapon_id": "gunsitescout",
+      "name": "Ruger Gunsite Scout Rifle, Model 6803 (.308 Win)",
+      "manufacturer": "Ruger",
+      "cartridge": ".308 Winchester",
+      "barrel_mm": null,
+      "twist_mm": 254.0,
+      "grooves": 6,
+      "source_id": "ruger_gunsite_scout_6803_archive",
+      "source_note": "Official model spec sheet, Model Number 6803, 'Caliber: 308 Win', 'Barrel Length 16.10\"': 'Twist   1:10\" RH' and 'Grooves   6'. 1 turn in 10 in = 10 x 25.4 = 254.0 mm. Read from the Internet Archive capture dated 23 January 2016 because the live Ruger page is retired."
+    },
+    {
+      "weapon_id": "lcpmax",
+      "name": "LCP MAX Centerfire Pistol, Model 13758 (.380 Auto)",
+      "manufacturer": "Ruger",
+      "cartridge": ".380 Automatic",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": 6,
+      "source_id": "ruger_lcp_max_13758",
+      "source_note": "Official model spec sheet, Model Number 13758, Caliber 380 Auto, Barrel Length 2.80\": 'Grooves   6' and 'Twist   1:16\" RH'. 1 turn in 16 in = 16 x 25.4 = 406.4 mm."
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-09-22",
+  "sources": [
+    {
+      "source_id": "hk_mp7a1_manual",
+      "title": "H&K MP7A1 Operator's Manual (Internet Archive scan, item gunmanual_Hk_Mp7A1, OCR text)",
+      "url": "https://archive.org/download/gunmanual_Hk_Mp7A1/Hk%20Mp7A1_djvu.txt",
+      "sha256": "0536fda27962279a234cc5b174f1ddd5e10ad89df3e31d1cd90496c1d538485a"
+    },
+    {
+      "source_id": "hk_ump_manual",
+      "title": "Heckler & Koch UMP 45 & UMP 40 Submachine Gun (2000) Operator Manual (Internet Archive scan, OCR text)",
+      "url": "https://archive.org/download/firearms-heckler--koch-ump-45--ump-40-submachine-gun-2000/hecklerkochump45ump40submachinegun2000_djvu.txt",
+      "sha256": "55ed88c0e506a0b9c378e7e623d5e52b5559d9a0dc96f223775c6d2d9677d03b"
+    },
+    {
+      "source_id": "jp_lrp07_dmr",
+      "title": "JP Enterprises LRP-07 Designated Marksman Rifle product page (archived 2016)",
+      "url": "https://web.archive.org/web/20160505005644/http://www.jprifles.com:80/buy.php?item=RR-LRP-07DMR"
+    },
+    {
+      "source_id": "jp_scr11_order_form",
+      "title": "JP Enterprises SCR-11 Order Form (archived manufacturer PDF, 2011)",
+      "url": "https://web.archive.org/web/20110519014625/http://jprifles.com/document_pdfs/SCR11%20Order%20Form_250.pdf",
+      "sha256": "41eb77ef8865022935b3281e40478c33d3d8a4d8da379f4822efc3c99d509a6d"
+    }
+  ],
+  "weapons": [
+    {
+      "weapon_id": "mp7",
+      "name": "MP7 Submachine Gun",
+      "manufacturer": "Heckler & Koch",
+      "cartridge": "4.6×30mm",
+      "barrel_mm": 180.0,
+      "twist_mm": 160.0,
+      "grooves": null,
+      "source_id": "hk_mp7a1_manual",
+      "source_note": "HK MP7A1 manual specification table: \"Barrel length 180 mm\" and \"Twist length (righthand twist) 160 mm\". States twist as 160 mm, right-hand, for the 4.6 x 30 calibre."
+    },
+    {
+      "weapon_id": "ump45",
+      "name": "UMP-45 Submachine Gun",
+      "manufacturer": "Heckler & Koch",
+      "cartridge": ".45 ACP",
+      "barrel_mm": 200.0,
+      "twist_mm": 406.0,
+      "grooves": 6,
+      "source_id": "hk_ump_manual",
+      "source_note": "HK UMP manual specification table: \"Caliber 45 ACP\", \"Barrel length 200 mm (7.87 in)\", \"Twist length 406 mm (15.98 in)\", \"Bore profile 6x polygonal, right-hand twist\". 406 mm equals 1 turn in 16 inches."
+    },
+    {
+      "weapon_id": "lrp07",
+      "name": "LRP-07 .308 Winchester",
+      "manufacturer": "JP Enterprises",
+      "cartridge": ".308 Winchester",
+      "barrel_mm": null,
+      "twist_mm": 254.0,
+      "grooves": null,
+      "source_id": "jp_lrp07_dmr",
+      "source_note": "JP Enterprises LRP-07 Designated Marksman Rifle page: \"Barrel: .308 JP Supermatch barrel, 20\\\" medium contour, 1:10 twist, Thermo-Fit installation\". 1 turn in 10 inches = 254 mm."
+    },
+    {
+      "weapon_id": "scr11",
+      "name": "SCR-11 .223 Remington",
+      "manufacturer": "JP Enterprises",
+      "cartridge": ".223 Remington",
+      "barrel_mm": null,
+      "twist_mm": 203.2,
+      "grooves": null,
+      "source_id": "jp_scr11_order_form",
+      "source_note": "JP Enterprises SCR-11 Order Form, barrel options: \"14.5\\\" - Custom length .223, light contour, 1:8 twist, mid-length gas system\". 1 turn in 8 inches = 203.2 mm. The document states 1:8 for the .223 barrel; JP lists all .223 Wylde/Supermatch barrels as 1:8."
+    }
+  ]
+}

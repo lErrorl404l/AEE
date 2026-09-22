@@ -1,0 +1,115 @@
+{
+ "retrieved": "2026-09-22",
+ "sources": [
+  {
+   "source_id": "tikka_manual_v53",
+   "title": "Tikka T1x/T3x Instruction Manual (Sako Ltd., document S34065180 v5.3), section 'Technical specification - General technical specifications'",
+   "url": "https://media.sako.global/image/upload/v1691658741/Tikka_T1x_T3x_Instruction_Manual_v5.3_cjggnu.pdf",
+   "sha256": "23071369c091412ecf0586b3ce2ae5b0f8b2472a4f49e46de6dd2e5fba3be285"
+  },
+  {
+   "source_id": "sako_t3x_upr",
+   "title": "Tikka T3x UPR - official product page, variant table (Sako Ltd.)",
+   "url": "https://www.sako.global/rifle/t3x-upr"
+  },
+  {
+   "source_id": "zastava_m07",
+   "title": "Zastava Arms - Sniper Rifle M07, Technical characteristics (archived Internet Archive capture of the manufacturer's page)",
+   "url": "https://web.archive.org/web/20130413141836/http://www.zastava-arms.rs/en/militaryproduct/sniper-rifle-m07"
+  },
+  {
+   "source_id": "kalashnikov_sv98",
+   "title": "Kalashnikov Concern - SV-98 sniper rifle, catalogue page (English), technical data table (archived Internet Archive capture)",
+   "url": "https://web.archive.org/web/20220528075023/https://en.kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/neavtomaticheskie-vintovki/snayperskaya-vintovka-sv-98"
+  },
+  {
+   "source_id": "sadj_asval",
+   "title": "Small Arms Defense Journal - 'Keeping Its Place in Russian Battle Space: The AS Val 9x39 Special Purpose Assault Rifle' (Lynndon Schooler, 13 October 2023, Vol. 11 No. 6)",
+   "url": "https://sadefensejournal.com/keeping-its-place-in-russian-battle-space-the-as-val-9x39-special-purpose-assault-rifle/"
+  },
+  {
+   "source_id": "inland_m1",
+   "title": "Inland Manufacturing - M1 1944 Carbine, model specifications (current manufacturer of the M1 Carbine to the original specification)",
+   "url": "https://inland-mfg.com/Inland-Carbines/M1-1944.html"
+  }
+ ],
+ "weapons": [
+  {
+   "weapon_id": "t3xarctic",
+   "name": "T3x Arctic Bolt-action",
+   "manufacturer": "Tikka",
+   "cartridge": "7.62×51mm NATO",
+   "barrel_mm": null,
+   "twist_mm": 279.4,
+   "grooves": 4,
+   "source_id": "tikka_manual_v53",
+   "source_note": "Tikka T1x/T3x Instruction Manual v5.3, table 'Caliber / Rate of twist [in] / Number of grooves': \"308 Win..........................11\". . 4\". States a 1 turn in 11 inch right-hand twist = 279.4 mm per turn with 4 grooves for the .308 Win (7.62x51mm NATO) barrel used by the T3x line, which includes the Arctic. The model-specific Tikka 'ARCTIC_technical_specifications.pdf' sheet gives the same rate: \"CALIBER / RATE OF TWIST ... 308 Win / 11\"\"."
+  },
+  {
+   "weapon_id": "t3xcompact7mm08",
+   "name": "T3x Compact 7mm-08 Bolt-action",
+   "manufacturer": "Tikka",
+   "cartridge": "7mm-08 Remington",
+   "barrel_mm": null,
+   "twist_mm": 241.3,
+   "grooves": 4,
+   "source_id": "tikka_manual_v53",
+   "source_note": "Tikka T1x/T3x Instruction Manual v5.3, table 'Caliber / Rate of twist [in] / Number of grooves': \"7mm-08 Rem............9.5\". . 4\". States a 1 turn in 9.5 inch right-hand twist = 241.3 mm per turn with 4 grooves for 7mm-08 Remington. Tikka's own T3x Compact product data (choose.tikka.fi model feed) gives the same 1:9.5\" for 7MM-08 REM."
+  },
+  {
+   "weapon_id": "t3xupr308",
+   "name": "T3x UPR .308 Bolt-action",
+   "manufacturer": "Tikka",
+   "cartridge": ".308 Winchester",
+   "barrel_mm": null,
+   "twist_mm": 254.0,
+   "grooves": null,
+   "source_id": "sako_t3x_upr",
+   "source_note": "Tikka T3x UPR product page, variant table row 'Caliber = 308 Win.' paired with row 'Rate of twist = 1:10\"'. States a 1 turn in 10 inch twist = 254.0 mm per turn. Tikka's own T3x UPR product feed also lists \"308WIN ... 1:10\"\". Note: the generic T3x instruction manual lists .308 Win as 11\" for the standard T3x barrels; the UPR is specified at 1:10\" by the model-specific Tikka data."
+  },
+  {
+   "weapon_id": "sv98",
+   "name": "SV-98 Sniper Rifle",
+   "manufacturer": "Tula Arms Plant",
+   "cartridge": "7.62×51mm NATO",
+   "barrel_mm": null,
+   "twist_mm": 320.0,
+   "grooves": 4,
+   "source_id": "kalashnikov_sv98",
+   "source_note": "Kalashnikov Concern SV-98 catalogue page, technical data: \"Twist rate 320\" and \"Number of grooves 4\". States 320 mm per turn (about 1 turn in 12.6 inches) with 4 grooves. The same page gives the barrel as 650 mm and the cartridge as 7.62x54R, not 7.62x51mm NATO as recorded in the worklist."
+  },
+  {
+   "weapon_id": "asval",
+   "name": "AS Val Assault Rifle",
+   "manufacturer": "TsKIB SOO",
+   "cartridge": "9×39mm",
+   "barrel_mm": null,
+   "twist_mm": 210.8,
+   "grooves": null,
+   "source_id": "sadj_asval",
+   "source_note": "Small Arms Defense Journal (V11N6), AS Val article: \"As the weapon is integrally suppressed, the barrel extends to 12cm long; the porting consists of six rows of nine holes spiraling along the rifling grooves. The twist rate is 1:8.3 inches.\" States a 1 turn in 8.3 inch twist = 210.8 mm per turn. The article also notes the AS Val was designed at TsNIITochMash and produced at the Tula Arms Plant."
+  },
+  {
+   "weapon_id": "m1carbine",
+   "name": "M1 Carbine Carbine",
+   "manufacturer": "Winchester",
+   "cartridge": ".30 Carbine",
+   "barrel_mm": null,
+   "twist_mm": 508.0,
+   "grooves": 4,
+   "source_id": "inland_m1",
+   "source_note": "Inland Manufacturing (current maker of the M1 Carbine to the original specification) product specifications: \"Barrel groove: 4 Twist rate: 1 x 20\"\". States a 1 turn in 20 inch twist = 508.0 mm per turn with 4 grooves. Source is the manufacturer's data sheet for the M1 Carbine; the original Second World War M1 Carbine used the same .30 Carbine barrel specification."
+  },
+  {
+   "weapon_id": "m07",
+   "name": "M07 Sniper Rifle",
+   "manufacturer": "Zastava Arms d.o.o.",
+   "cartridge": "7.62×51mm NATO",
+   "barrel_mm": null,
+   "twist_mm": 254.0,
+   "grooves": 6,
+   "source_id": "zastava_m07",
+   "source_note": "Zastava Arms Sniper Rifle M07 page, 'Technical characteristics' table, reading across the columns: \"Caliber (mm) 7.62x51 | Twist rate (mm) 254 | Number of grooves 6\". States a 254 mm per turn (1 turn in 10 inches) twist with 6 grooves for the 7.62x51 mm chambering. The related M07 AS and M07 M pages give the same 254 mm / 6 grooves for 7.62x51 mm."
+  }
+ ]
+}

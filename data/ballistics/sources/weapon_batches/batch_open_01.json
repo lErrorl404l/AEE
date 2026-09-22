@@ -1,0 +1,41 @@
+{
+  "retrieved": "2026-09-22",
+  "sources": [
+    {
+      "source_id": "armalite_2015_catalog",
+      "title": "ArmaLite 2015 Catalog (AR-30 & AR-31 rifles)",
+      "url": "https://web.archive.org/web/20150918220604id_/http://armalite.com/catalog/2015/2015ArmaliteCatalog.pdf",
+      "sha256": "cdd85f3173126b9b7dfde0b825084731cfacd12fb498c7c50df3c4ef695b64bb"
+    },
+    {
+      "source_id": "chiappa_rhino_manual",
+      "title": "Chiappa Rhino Instruction Manual (revolver range specifications)",
+      "url": "https://web.archive.org/web/20180118064140id_/http://chiappafirearms.com/downloadpdf.php?id=281",
+      "sha256": "bc02033412fda5c3b5640d484a2a7c4fc59b6130044d8f5b5c15ec1f481b9f39"
+    }
+  ],
+  "weapons": [
+    {
+      "weapon_id": "ar31",
+      "name": "AR-31 Bolt-action Rifle",
+      "manufacturer": "ArmaLite",
+      "cartridge": ".308 Winchester",
+      "barrel_mm": null,
+      "twist_mm": 254.0,
+      "grooves": null,
+      "source_id": "armalite_2015_catalog",
+      "source_note": "ArmaLite 2015 catalog, AR-31 page (PART #: 31BT308): \"Caliber: 7.62x51 MM/.308 ... Twist: 1:10\\\" RH\". States a right-hand 1 turn in 10 inch twist = 254.0 mm per turn."
+    },
+    {
+      "weapon_id": "rhino50ds",
+      "name": "Rhino 50Ds Double-action/single-action revolver",
+      "manufacturer": "Chiappa",
+      "cartridge": ".357 Magnum",
+      "barrel_mm": null,
+      "twist_mm": 482.6,
+      "grooves": 6,
+      "source_id": "chiappa_rhino_manual",
+      "source_note": "Chiappa Rhino instruction manual, \"The Rhino revolver range\" table: \"340.220 50DS Mag 5\\\" 12,7 9\\\"1/2 24 6 1 X 19 in 895 gr 1,97 6 Black - wooden grips\". States the .357 Magnum (Mag) 50DS has 6 grooves and a 1 turn in 19 inch twist = 482.6 mm per turn."
+    }
+  ]
+}

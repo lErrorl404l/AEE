@@ -1,0 +1,122 @@
+{
+ "retrieved": "2026-09-22",
+ "sources": [
+  {
+   "source_id": "fierce_carbon_fury_page",
+   "title": "Carbon Fury - Fierce Firearms (archived manufacturer product page, 12 Jun 2021)",
+   "url": "https://web.archive.org/web/20210612175259id_/http://fiercearms.com/rifles/bolt-rifles/edge/carbon-fury"
+  },
+  {
+   "source_id": "fn_fnp45_tactical_manual",
+   "title": "FNP-45 Owner's Manual (FNH USA / FN Herstal, 2009, Tactical model)",
+   "url": "https://web.archive.org/web/20120904073435id_/http://www.fnhusa.com:80/files/8813/4512/7066/2009_FNP_45_Tactical_OM.pdf",
+   "sha256": "21b9d9e51aff8df166cd44d46243fc5b7a4f374ba9bcb8a9f13a0b345aa9ab3c"
+  },
+  {
+   "source_id": "fm_23_41_m3",
+   "title": "FM 23-41, Submachine Gun, Caliber .45, M3 (US War Department, 1941)",
+   "url": "https://archive.org/details/FM_23_41_S_G_C_45_M3_1941",
+   "sha256": "3b012514ec78b35eb3310b650bce44eae94ff3ce54aec31a4ec56eef03644b97"
+  },
+  {
+   "source_id": "gsg_firefly_page",
+   "title": "GSG FireFly Schwarz .22lr HV Selbstladepistole (German Sport Guns manufacturer product page)",
+   "url": "https://www.german-sport-guns.com/GSG-FireFly-Schwarz-.22lr-HV-Selbstladepistole/400.16.50"
+  },
+  {
+   "source_id": "daewoo_ar110c_manual",
+   "title": "Daewoo AR110C Semi Auto Rifle Operator's Manual (Daewoo Precision Industries; AR110C is the imported K1A1 designation)",
+   "url": "https://archive.org/details/gunmanual_Daewoo_AR110C",
+   "sha256": "d53b371489d5205a24f1508a8c8be1bf976f34c52af2a2802d0ac65615a37bc4"
+  },
+  {
+   "source_id": "shootingillustrated_anaconda",
+   "title": "Review: Colt Anaconda Revolver (NRA Shooting Illustrated)",
+   "url": "https://www.shootingillustrated.com/content/review-colt-anaconda-revolver/"
+  },
+  {
+   "source_id": "ssusa_gold_cup_trophy",
+   "title": "Review: Colt Gold Cup Trophy (NRA Shooting Sports USA)",
+   "url": "https://www.ssusa.org/content/review-colt-gold-cup-trophy/"
+  }
+ ],
+ "weapons": [
+  {
+   "weapon_id": "anaconda",
+   "name": "Anaconda",
+   "manufacturer": "Colt's Manufacturing Co.",
+   "cartridge": ".44 Magnum",
+   "barrel_mm": null,
+   "twist_mm": 508.0,
+   "grooves": null,
+   "source_id": "shootingillustrated_anaconda",
+   "source_note": "SECONDARY SOURCE (NRA magazine review). Quote: \"The Colt Anaconda has a 1:20-inch LH twist, whereas Colt's competitors use right-hand rifling twists in their .44 Mags.\" States a left-hand 1 turn in 20 inch twist = 508.0 mm per turn. No manufacturer document found: Colt's own operator manuals (Double Action Revolvers manual, 2004 edition) and Colt catalogues and product pages do not print pistol twist rates."
+  },
+  {
+   "weapon_id": "carbonfury",
+   "name": "Carbon Fury .300 PRC",
+   "manufacturer": "Fierce Firearms",
+   "cartridge": ".300 PRC",
+   "barrel_mm": null,
+   "twist_mm": 228.6,
+   "grooves": null,
+   "source_id": "fierce_carbon_fury_page",
+   "source_note": "Fierce Firearms Carbon Fury manufacturer page, CALIBERS list: \"6.5 PRC (twist: 1-8 | barrel: 24\\\")\" and \".300 PRC (twist: 1-9 | barrel: 24\\\")\". States the .300 PRC barrel has 1 turn in 9 inches = 228.6 mm per turn."
+  },
+  {
+   "weapon_id": "firefly",
+   "name": "Firefly .22 LR compact pistol, SIG Mosquito-style",
+   "manufacturer": "German Sport Guns",
+   "cartridge": ".22 Long Rifle",
+   "barrel_mm": null,
+   "twist_mm": 406.0,
+   "grooves": 6,
+   "source_id": "gsg_firefly_page",
+   "source_note": "German Sport Guns (GSG) product page, technical data table for the GSG FireFly: \"Dralllänge: 406 mm\" (twist length 406 mm) and \"Züge: 6\" (6 grooves). States one turn in 406 mm with 6 grooves."
+  },
+  {
+   "weapon_id": "fnp45tactical",
+   "name": "FNP-45 Tactical Pistol",
+   "manufacturer": "FN Herstal",
+   "cartridge": ".45 ACP",
+   "barrel_mm": null,
+   "twist_mm": 406.4,
+   "grooves": 6,
+   "source_id": "fn_fnp45_tactical_manual",
+   "source_note": "FNP-45 owner's manual (2009, covers Standard, Competition and Tactical), specification block: \"Number of grooves : 6\" and \"Twist and direction : 1:16\\\", right-hand\". States 1 turn in 16 inches right-hand = 406.4 mm per turn, 6 grooves."
+  },
+  {
+   "weapon_id": "goldcup1911",
+   "name": "Gold Cup 1911 National Match, 5\" barrel, adjustable trigger",
+   "manufacturer": "Colt",
+   "cartridge": ".45 ACP",
+   "barrel_mm": null,
+   "twist_mm": 406.4,
+   "grooves": 6,
+   "source_id": "ssusa_gold_cup_trophy",
+   "source_note": "SECONDARY SOURCE (NRA magazine review, named model Gold Cup). Quote: \"The barrel is Colt's National Match and uses a six groove right hand 1:16 twist in .45 ACP\". States a 6-groove 1 turn in 16 inch twist = 406.4 mm per turn. No manufacturer document found: the Colt Gold Cup National Match MK IV/Series 70 operator's manual carries no twist specification."
+  },
+  {
+   "weapon_id": "k1a1",
+   "name": "K1A1 Carbine",
+   "manufacturer": "Daewoo",
+   "cartridge": "5.56×45mm NATO",
+   "barrel_mm": null,
+   "twist_mm": 185.0,
+   "grooves": 6,
+   "source_id": "daewoo_ar110c_manual",
+   "source_note": "Daewoo AR110C operator's manual, SPECIFICATIONS, barrel rifling: \"number of grooves 6\", \"twist of rifling right hand\", \"pitch of rifling 185mm (7.3\\\")\". The AR-110C is the imported commercial K1A1 (K1 carbine) designation. States 185 mm per turn, right-hand, 6 grooves."
+  },
+  {
+   "weapon_id": "m3greasegun",
+   "name": "M3 Grease Gun Submachine Gun",
+   "manufacturer": "General Motors",
+   "cartridge": ".45 ACP",
+   "barrel_mm": null,
+   "twist_mm": 406.4,
+   "grooves": 4,
+   "source_id": "fm_23_41_m3",
+   "source_note": "FM 23-41, general data, barrel (.45 caliber): \"Number of grooves ....... 4\" and \"Twist in rifling, uniform, right one turn in ... 16\" (inches). States 1 turn in 16 inches right-hand = 406.4 mm per turn, 4 grooves."
+  }
+ ]
+}

@@ -1,0 +1,227 @@
+{
+  "retrieved": "2026-09-22",
+  "sources": [
+    {
+      "source_id": "beretta_px4_storm_manual",
+      "title": "Beretta Px4 Storm Instruction Manual (C62009 003), specifications and technical data",
+      "url": "https://web.archive.org/web/20221223071659id_/https://www.beretta.com/content/dam/beretta/manuals/pistols/px4-storm/Px4_Storm_C62009_003_EN_az_PDF___cover_(3).pdf",
+      "sha256": "7e46cc25215dec2bbb5eaef06a7b0af2343ee2856fcdb868e3ee5e609ffcfccf"
+    },
+    {
+      "source_id": "cz_usa_455_american",
+      "title": "CZ-USA CZ 455 American, .22 LR product page (archived 2014)",
+      "url": "https://web.archive.org/web/20140505032653id_/http://cz-usa.com/product/cz-455-american-22-lr/"
+    },
+    {
+      "source_id": "czub_455_varmint",
+      "title": "CZUB (Ceska zbrojovka) CZ 455 Varmint catalogue page (English), caliber and rate of twist",
+      "url": "https://web.archive.org/web/20141102043405id_/http://www.czub.cz:80/en/catalog/80-malorazky-cz/MS/CZ_455_VARMINT.aspx"
+    },
+    {
+      "source_id": "cz_usa_512_semiauto",
+      "title": "CZ-USA CZ 512 Semi-Automatic 22 LR product page (discontinued 2019)",
+      "url": "https://web.archive.org/web/20200529093245id_/https://cz-usa.com/product/cz-512-semi-automatic-22-lr-discontinued-2019/"
+    },
+    {
+      "source_id": "czub_527_varmint",
+      "title": "CZUB (Ceska zbrojovka) CZ 527 Varmint catalogue page (English), calibre and rate of twist",
+      "url": "https://web.archive.org/web/20130225110407id_/http://www.czub.cz:80/en/catalog/364-centerfire-rifles-cz/KL/CZ_527_VARMINT.aspx"
+    },
+    {
+      "source_id": "czub_550_american",
+      "title": "CZUB (Ceska zbrojovka) CZ 550 American catalogue page, raze - schranka (stoupani dražek)",
+      "url": "https://web.archive.org/web/20141112170512id_/http://www.czub.cz:80/cz/catalog/81-centerfire%20rifles%20cz/KM/CZ_550_AMERICAN.aspx"
+    },
+    {
+      "source_id": "bushmaster_xm15_manual",
+      "title": "Bushmaster XM-15 Rifles User Manual (support.bushmaster.com), barrel rifling specification",
+      "url": "https://web.archive.org/web/20150308060243id_/http://support.bushmaster.com:80/01_XM-15_RIFLES/User_Manual"
+    },
+    {
+      "source_id": "bushmaster_m17s_catalog",
+      "title": "Bushmaster M17S Bullpup Rifle catalogue page (2002), specification table",
+      "url": "https://web.archive.org/web/20020418060012id_/http://www.bushmaster.com:80/shopping/m17s/default.asp",
+      "sha256": "0de9a789392638acdeeae52716946cde2c374a2156a78ea4f71a1c7bb0837ef4"
+    },
+    {
+      "source_id": "bushmaster_450_product",
+      "title": "Bushmaster 450 Bushmaster 20\" product page, specification list",
+      "url": "https://web.archive.org/web/20230129102158id_/https://www.bushmaster.com/450-bushmaster-20-/",
+      "sha256": "db3a7b496cdf1e7646b456ed57c21191df9b5948f33056cff5f36bd09c218705"
+    },
+    {
+      "source_id": "bushmaster_450_barrel",
+      "title": "Bushmaster 20\" .450 BUSHMASTER Barrel product page",
+      "url": "https://web.archive.org/web/20240625130709id_/https://www.bushmaster.com/shop/barrels/bushmaster-20-450-bushmaster-barrel/",
+      "sha256": "48d61730bee1ef84d369a3b324e06138e83da19ccfe983c83ae1c010b978031d"
+    },
+    {
+      "source_id": "cadex_cdx40_shdw",
+      "title": "Cadex Defence CDX-40 SHDW product page, 375 CT specification",
+      "url": "https://web.archive.org/web/20241214032418id_/https://www.cadexdefence.com/product/147-cdx-40-shdw/",
+      "sha256": "e2a58cbc2959317dc80fd9777e07e41620cf4559d008d349b320f3c029f262b8"
+    },
+    {
+      "source_id": "cadex_cdx_lite_series",
+      "title": "Cadex Defence CDX-Lite Series product page, model/caliber/barrel/twist table",
+      "url": "https://web.archive.org/web/20251206084805id_/https://www.cadexdefence.com/products/cadex-precision-rifles/cdx-lite-series/",
+      "sha256": "cc8adbc2345c52b38f8cc6df3e952431a0d25e321e17c087390a8761a0507e34"
+    }
+  ],
+  "weapons": [
+    {
+      "weapon_id": "px4storm",
+      "name": "Px4 Storm full-size .40 S&W",
+      "manufacturer": "Beretta",
+      "cartridge": ".40 Smith & Wesson",
+      "barrel_mm": 102.0,
+      "twist_mm": 400.0,
+      "grooves": 6,
+      "source_id": "beretta_px4_storm_manual",
+      "source_note": "Beretta Px4 Storm instruction manual, SPECIFICATIONS AND TECHNICAL DATA: \"Rifling Pitch (in./mm) ... .40 S&W 15.75 / 400\" and \"Rifling R.H., 6 grooves.\" States the .40 S&W barrel has a right-hand 15.75 in (400 mm) rifling pitch with 6 grooves. Barrel length 4.02 in / 102 mm."
+    },
+    {
+      "weapon_id": "cz455american",
+      "name": "CZ 455 American rimfire bolt-action, American walnut, 20.67\" barrel",
+      "manufacturer": "BRNO / CZ",
+      "cartridge": ".22 Long Rifle",
+      "barrel_mm": 520.7,
+      "twist_mm": 406.4,
+      "grooves": null,
+      "source_id": "cz_usa_455_american",
+      "source_note": "CZ-USA CZ 455 American 22 LR product page: \"Ammunition .22 LR\" and \"Rate of Twist 1:16 in\", \"Barrel Length 20.500 in\". States a 1 turn in 16 inch twist for the .22 LR barrel = 406.4 mm per turn. CZUB's Czech catalogue for the same model confirms \".22 LR (16\")\"."
+    },
+    {
+      "weapon_id": "cz455varmint",
+      "name": "CZ 455 Varmint rimfire bolt-action, heavy bull barrel",
+      "manufacturer": "BRNO / CZ",
+      "cartridge": ".22 Long Rifle",
+      "barrel_mm": 520.7,
+      "twist_mm": 406.4,
+      "grooves": null,
+      "source_id": "czub_455_varmint",
+      "source_note": "CZUB CZ 455 Varmint catalogue page (English): \"Caliber (rate of twist) .22 LR (16\")\" and \"Barrel length 525 mm\". States a 1 turn in 16 inch twist for the .22 LR Varmint barrel = 406.4 mm per turn."
+    },
+    {
+      "weapon_id": "cz512",
+      "name": "CZ 512 semi-automatic rimfire, .22 LR",
+      "manufacturer": "BRNO / CZ",
+      "cartridge": ".22 Long Rifle",
+      "barrel_mm": 520.7,
+      "twist_mm": 406.4,
+      "grooves": null,
+      "source_id": "cz_usa_512_semiauto",
+      "source_note": "CZ-USA CZ 512 Semi-Automatic 22 LR product page: \"Twist Rate Choose an option 1:16 in\", \"Barrel Length Choose an option 20.5 in\". States a 1 turn in 16 inch twist for the .22 LR barrel = 406.4 mm per turn."
+    },
+    {
+      "weapon_id": "cz527varmint",
+      "name": "CZ 527 Varmint mini-Mauser bolt-action, heavy barrel, Kevlar stock",
+      "manufacturer": "BRNO / CZ",
+      "cartridge": ".223 Remington",
+      "barrel_mm": 650.0,
+      "twist_mm": 304.8,
+      "grooves": null,
+      "source_id": "czub_527_varmint",
+      "source_note": "CZUB CZ 527 Varmint catalogue page (English): \"Calibre - detacheable magazine (rate of twist) .223 Rem. (12\")\" and \"Barrel length 650 mm\". States a 1 turn in 12 inch twist for the .223 Remington Varmint barrel = 304.8 mm per turn."
+    },
+    {
+      "weapon_id": "cz550american",
+      "name": "CZ 550 American Mauser 98 bolt-action, .30-06 American walnut",
+      "manufacturer": "BRNO / CZ",
+      "cartridge": ".30-06 Springfield",
+      "barrel_mm": 600.0,
+      "twist_mm": 254.0,
+      "grooves": null,
+      "source_id": "czub_550_american",
+      "source_note": "CZUB CZ 550 American catalogue page: \"Raze - schranka (stoupani dražek) .308 Win. (10\") / .30-06 Sprg. (10\")\" and \"Delka hlavne 600 mm\". States a 1 turn in 10 inch twist (stoupani dražek) for the .30-06 Springfield barrel = 254.0 mm per turn."
+    },
+    {
+      "weapon_id": "450bushmaster",
+      "name": ".450 Bushmaster Semi-auto Rifle",
+      "manufacturer": "Bushmaster",
+      "cartridge": ".450 Bushmaster",
+      "barrel_mm": 508.0,
+      "twist_mm": 609.6,
+      "grooves": null,
+      "source_id": "bushmaster_450_product",
+      "source_note": "Bushmaster 450 Bushmaster 20\" product page specifications: \"- Barrel Length: 20\" ... - Twist Rate: 1:24\". States a 1 turn in 24 inch twist = 609.6 mm per turn. The separate Bushmaster 20\" .450 Bushmaster Barrel page also states \"has a twist rate of 1:24\"."
+    },
+    {
+      "weapon_id": "dissipator",
+      "name": "Dissipator Semi-auto Rifle",
+      "manufacturer": "Bushmaster",
+      "cartridge": "5.56×45mm NATO",
+      "barrel_mm": 406.4,
+      "twist_mm": 228.6,
+      "grooves": 6,
+      "source_id": "bushmaster_xm15_manual",
+      "source_note": "Bushmaster XM-15 Rifles User Manual: \"Barrels on XM15 and Carbon 15 Models are either chrome lined Chrome Moly Vanadium Steel or 416 Stainless Steel. They are usually button rifled 1 turn in 9\" with a right hand twist - 6 lands and grooves.\" The Dissipator is an XM15 E2S 16\" carbine variant, so the XM-15 barrel specification 1 turn in 9 inch = 228.6 mm per turn applies."
+    },
+    {
+      "weapon_id": "m17s",
+      "name": "M17S Semi-auto Bullpup Rifle",
+      "manufacturer": "Bushmaster",
+      "cartridge": "5.56×45mm NATO",
+      "barrel_mm": 546.1,
+      "twist_mm": 228.6,
+      "grooves": 6,
+      "source_id": "bushmaster_m17s_catalog",
+      "source_note": "Bushmaster M17S Bullpup Rifle catalogue page specification table: \"Caliber .223 Rem.\", \"Barrel Length 21.5 inches\", \"Rifling R.H. twist;1 turn in 9\"\". The FAQ page for the same rifle states \"Rifling: 6 grooves / R.H. twist / 1 turn in 9 inches\". States a right-hand 1 turn in 9 inch twist with 6 grooves = 228.6 mm per turn."
+    },
+    {
+      "weapon_id": "xm15a3g",
+      "name": "XM-15 A3G Semi-auto Rifle",
+      "manufacturer": "Bushmaster",
+      "cartridge": "5.56×45mm NATO",
+      "barrel_mm": null,
+      "twist_mm": 228.6,
+      "grooves": 6,
+      "source_id": "bushmaster_xm15_manual",
+      "source_note": "Bushmaster XM-15 Rifles User Manual: \"Barrels on XM15 and Carbon 15 Models are either chrome lined Chrome Moly Vanadium Steel or 416 Stainless Steel. They are usually button rifled 1 turn in 9\" with a right hand twist - 6 lands and grooves.\" States the XM-15 barrel twist is 1 turn in 9 inch with 6 lands and grooves = 228.6 mm per turn."
+    },
+    {
+      "weapon_id": "xm15a4g",
+      "name": "XM-15 A4G Semi-auto Rifle",
+      "manufacturer": "Bushmaster",
+      "cartridge": "5.56×45mm NATO",
+      "barrel_mm": null,
+      "twist_mm": 228.6,
+      "grooves": 6,
+      "source_id": "bushmaster_xm15_manual",
+      "source_note": "Bushmaster XM-15 Rifles User Manual: \"Barrels on XM15 and Carbon 15 Models are either chrome lined Chrome Moly Vanadium Steel or 416 Stainless Steel. They are usually button rifled 1 turn in 9\" with a right hand twist - 6 lands and grooves.\" States the XM-15 barrel twist is 1 turn in 9 inch with 6 lands and grooves = 228.6 mm per turn."
+    },
+    {
+      "weapon_id": "xm15dmr",
+      "name": "XM-15 DMR Semi-auto Rifle",
+      "manufacturer": "Bushmaster",
+      "cartridge": "5.56×45mm NATO",
+      "barrel_mm": null,
+      "twist_mm": 228.6,
+      "grooves": 6,
+      "source_id": "bushmaster_xm15_manual",
+      "source_note": "Bushmaster XM-15 Rifles User Manual: \"Barrels on XM15 and Carbon 15 Models are either chrome lined Chrome Moly Vanadium Steel or 416 Stainless Steel. They are usually button rifled 1 turn in 9\" with a right hand twist - 6 lands and grooves.\" The DMR is an XM-15 model, so the XM-15 barrel specification 1 turn in 9 inch = 228.6 mm per turn applies."
+    },
+    {
+      "weapon_id": "cdx40shadow",
+      "name": "CDX-40 Shadow .375 CheyTac",
+      "manufacturer": "Cadex Defense",
+      "cartridge": ".375 CheyTac",
+      "barrel_mm": 812.8,
+      "twist_mm": 177.8,
+      "grooves": null,
+      "source_id": "cadex_cdx40_shdw",
+      "source_note": "Cadex Defence CDX-40 SHDW product page specification: \"Caliber: 375 CT / Barrel Length: 32\u2033 / Barrel type: Bartlein / Twist rate: 1:7\u2033\". The page describes the CDX-40 SHDW as chambered in 375 EnABELR or 375/408 CT. States a 1 turn in 7 inch twist = 177.8 mm per turn. All Cadex barrels are stated as 5R rifling."
+    },
+    {
+      "weapon_id": "cdxlitetremor",
+      "name": "CDX-Lite Tremor .308 Winchester",
+      "manufacturer": "Cadex Defense",
+      "cartridge": ".308 Winchester",
+      "barrel_mm": null,
+      "twist_mm": 285.75,
+      "grooves": null,
+      "source_id": "cadex_cdx_lite_series",
+      "source_note": "Cadex Defence CDX-Lite Series specification table: \"308 Win ... 20\" / 24\" / 26\" 1:11\u00bc\" or (1:10\") 5R\". States the .308 Win chambering is offered with a 1 turn in 11\u00bc inch twist or 1 turn in 10 inch twist, 5R rifling. Recorded value is the first-listed 1:11\u00bc inch = 285.75 mm per turn. The alternate option is 1:10 = 254.0 mm per turn."
+    }
+  ]
+}

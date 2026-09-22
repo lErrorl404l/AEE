@@ -1,0 +1,73 @@
+{
+  "retrieved": "2026-09-22",
+  "sources": [
+    {
+      "source_id": "kac_mk11_manual",
+      "title": "Knight's Armament Company Military Operator's Manual - Stoner SR-25 7.62mm Mark 11 Mod 0 Type Rifle Systems (KAC P/N 98169, NSN 1005-01-475-7980) and Rifle 7.62mm U.S. Army Stoner Rifle (SR)-M110 (KAC P/N 24123), KAC Part Number MAN-00011, June 2000 (Revised Jan 07)",
+      "url": "https://web.archive.org/web/20101123224526/http://knightarmco.com/manuals/m110.pdf",
+      "sha256": "7928d97add7fef269aa8491484243f621b9aa63925805baedf740175222f069b"
+    },
+    {
+      "source_id": "sar_lm308mws_2015",
+      "title": "Lewis Machine and Tool LM308MWS: \"Best at the Basics\" - Small Arms Review, Volume 19 No. 10 (December 2015)",
+      "url": "https://smallarmsreview.com/lewis-machine-and-tool-lm308mws-best-at-the-basics/"
+    },
+    {
+      "source_id": "lmt_300blk_16",
+      "title": "16\" 300 Blackout - LMT Defense (manufacturer product page, product description and Specs table)",
+      "url": "https://lmtdefense.com/product/16-300-blackout/"
+    },
+    {
+      "source_id": "mri_mountain_eagle_manual",
+      "title": "Mountain Eagle Centerfire Rifle Owner's Manual - Magnum Research, Inc. (Technical Data / Twist Rate table)",
+      "url": "https://www.magnumresearch.com/PDF/Mountain-Eagle-Manual-0110.pdf",
+      "sha256": "ceec9a13180739281bb0c775d4e267ff77d36e557d2032be8d372d03ffeb9146"
+    }
+  ],
+  "weapons": [
+    {
+      "weapon_id": "mk11mod0",
+      "name": "MK11 Mod 0 DMR",
+      "manufacturer": "Knight's Armament Co",
+      "cartridge": "7.62\u00d751mm NATO",
+      "barrel_mm": null,
+      "twist_mm": 279.4,
+      "grooves": 5,
+      "source_id": "kac_mk11_manual",
+      "source_note": "KAC factory military operator's manual for the Mk 11 Mod 0, Section II-Navy: Mk 11 Mod 0 Equipment Description reads verbatim: \"Barrel Rifling and Twist: 20\" barrel with 5 grooves, right-hand twist with 1 turn in 11 inches (279 mm).\" Gives 1 turn in 11 in = 279.4 mm per turn, five grooves, right-hand. The corpus lead of 285.8 mm (1:11.25) is not supported by this maker document."
+    },
+    {
+      "weapon_id": "lm308mws",
+      "name": "LM308MWS Rifle",
+      "manufacturer": "LMT Defense",
+      "cartridge": "7.62\u00d751mm NATO",
+      "barrel_mm": null,
+      "twist_mm": 254.0,
+      "grooves": null,
+      "source_id": "sar_lm308mws_2015",
+      "source_note": "Small Arms Review, LM308MWS review, states verbatim: \"the chrome lined, chrome moly 1-10\u2033 found on the LM308MWS\", and of the reviewed rifle: \"hard chrome lining over the 1-10\u201d twist rifled bore\", and \"The 1-10 twist rate of the rifle\". Model named in the text. Gives 1 turn in 10 in = 254.0 mm per turn. Specialist trade publication quoting the maker's specification; the stainless LM308SSR barrel is a different model at 1:11.25."
+    },
+    {
+      "weapon_id": "marsh300blk",
+      "name": "MARS-H 300 BLK Rifle",
+      "manufacturer": "LMT Defense",
+      "cartridge": ".300 AAC Blackout",
+      "barrel_mm": null,
+      "twist_mm": 177.8,
+      "grooves": null,
+      "source_id": "lmt_300blk_16",
+      "source_note": "LMT Defense manufacturer product page for the 16\" .300 Blackout barrel states verbatim: \"16\u2033 300 Blackout Chrome Lined 1:7\u2033 RH twist barrel\", and the Specs table gives \"Caliber .300 BLK\", \"Rifling Twist Rate 1:7\u2033\". Gives 1 turn in 7 in = 177.8 mm per turn, right-hand. Caveat: LMT catalogues .300 BLK on the MRP-L platform and has no large-frame MARS-H model in .300 BLK, so the listed model name is imprecise; the value is LMT's published .300 BLK twist."
+    },
+    {
+      "weapon_id": "mountaineagle300wm",
+      "name": "Mountain Eagle .300 WM Bolt-action Rifle",
+      "manufacturer": "Magnum Research",
+      "cartridge": ".300 Winchester Magnum",
+      "barrel_mm": null,
+      "twist_mm": 254.0,
+      "grooves": null,
+      "source_id": "mri_mountain_eagle_manual",
+      "source_note": "Magnum Research Mountain Eagle Owner's Manual, Technical Data / TWIST RATE table lists verbatim: \".300 Win Mag   1 in 10\". Gives 1 turn in 10 in = 254.0 mm per turn for the .300 Winchester Magnum barrel. (The same table lists .300 Wby Mag, .338 Win Mag, .340 Wby Mag and .30-06 at 1 in 10.)"
+    }
+  ]
+}

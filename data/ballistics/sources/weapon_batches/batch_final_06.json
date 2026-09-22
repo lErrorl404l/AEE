@@ -1,0 +1,57 @@
+{
+  "retrieved": "2026-09-22",
+  "sources": [
+    {
+      "source_id": "win_catalog_1965",
+      "title": "Winchester-Western Firearms Catalog 1965 (Winchester Repeating Arms / Western Cartridge Co.)",
+      "url": "https://archive.org/details/winchester-western-firearms-catalog-1965",
+      "sha256": "309718d821040b19a378f85f754b03511b435cc3334da0e33e93fede5632c61e"
+    },
+    {
+      "source_id": "rfc_model69_twist",
+      "title": "Rimfire Central Firearm Forum, thread \"Model 69 twist\" (Winchester factory specification sheet dated 8/2/1957, quoted by forum member Seewin)",
+      "url": "https://www.rimfirecentral.com/threads/model-69-twist.259831/"
+    },
+    {
+      "source_id": "rpk74m_tech_2002",
+      "title": "Ручной пулемет РПК-74М, журнал \"Техника и вооружение\" 2002 №6 (RPK-74M specification table)",
+      "url": "https://military.wikireading.ru/55679",
+      "sha256": "f7070e1270da0352a5c7bbb983c92c1d8a88491224cc0cb5d7dd6e09dfc1b2c8"
+    }
+  ],
+  "weapons": [
+    {
+      "weapon_id": "model52",
+      "name": "Model 52",
+      "manufacturer": "Winchester",
+      "cartridge": "22 LR",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": null,
+      "source_id": "win_catalog_1965",
+      "source_note": "Winchester-Western Firearms Catalog 1965, \"MODEL 52D TARGET RIFLE SPECIFICATIONS\" table: \"Rate of Twist* 16\" 16\" / One turn in\". The maker's own catalog lists the Model 52D (the Model 52 target rifle then in production) at one turn in 16 inches. A 1 turn in 16 inch twist = 16 x 25.4 = 406.4 mm per turn. Groove count is not stated in this table."
+    },
+    {
+      "weapon_id": "model69",
+      "name": "Model 69",
+      "manufacturer": "Winchester",
+      "cartridge": "22 LR",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": 4,
+      "source_id": "rfc_model69_twist",
+      "source_note": "Collector forum post quoting a Winchester factory specification sheet: \"I have a Winchester document dated 8/2/1957 which lists the 69A chambered for the 22 short, long and long rifle at 1-16, bore dia of .217\\\" and 4 groove.\" The quoted maker's figure states one turn in 16 inches and 4 grooves for the Model 69/69A. A 1 turn in 16 inch twist = 16 x 25.4 = 406.4 mm per turn. Source is a forum transcription of the Winchester document, not the document itself."
+    },
+    {
+      "weapon_id": "rpk74m",
+      "name": "RPK-74M Light Machine Gun",
+      "manufacturer": "Zavod imeni Degtyaryova",
+      "cartridge": "5.45×39mm",
+      "barrel_mm": null,
+      "twist_mm": 200.0,
+      "grooves": 4,
+      "source_id": "rpk74m_tech_2002",
+      "source_note": "Specification table for the RPK-74M: \"Нарезы 4 прав.\" and \"Длина хода нарезов, мм 200\". The source states 4 right-hand grooves and a rifling pitch (one turn) of 200 mm, so twist = 200.0 mm per turn."
+    }
+  ]
+}

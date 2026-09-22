@@ -1,0 +1,1640 @@
+{
+ "retrieved": "2026-09-22",
+ "sources": [
+  {
+   "source_id": "m1911_tm",
+   "title": "TM 9-1005-211-34, Maintenance Manual, Pistol, Caliber .45, Automatic, M1911A1 (US Army)",
+   "url": "https://archive.org/download/M1911A1-Technical-Manual-9-1005-211-34/MAINT45A_djvu.txt",
+   "sha256": null
+  },
+  {
+   "source_id": "tm_9_1005_211_12",
+   "title": "TM 9-1005-211-12, Pistol, Caliber .45, Automatic, M1911A1 (US Army, 24 June 1968)",
+   "url": "https://archive.org/download/TM9-1005-211-12_201310/TM9-1005-211-12_201310_djvu.txt",
+   "sha256": null
+  },
+  {
+   "source_id": "beretta_m9_tm",
+   "title": "TM 9-1005-317-23&P, Pistol, Semiautomatic, 9mm, M9 (US Army)",
+   "url": "https://www.biggerhammer.net/manuals/m9/M9B.PDF",
+   "sha256": null
+  },
+  {
+   "source_id": "tm_9_1005_223_10",
+   "title": "TM 9-1005-223-10, Operator's Manual, Rifle 7.62mm M14 and M14A1 (US Army)",
+   "url": "http://www.m14.ca/TM/026378.pdf",
+   "sha256": null
+  },
+  {
+   "source_id": "tm_9_1005_319_10",
+   "title": "TM 9-1005-319-10, Operator's Manual, Rifle 5.56mm M16A2/M16A3/M16A4 and Carbine M4/M4A1 (US Army, October 1998)",
+   "url": "https://cdn.ar15repository.com/wp-content/uploads/20230809205218/OPERATORS-MANUAL-556-MM-M16A2-M16A3-M16A4-M4-and-M4A1-ARMY-TM-9-1005-319-10.October-1998.pdf",
+   "sha256": null
+  },
+  {
+   "source_id": "tm_9_1005_201_10",
+   "title": "TM 9-1005-201-10, Operator's Manual, Machine Gun 5.56mm M249 (US Army, 1991)",
+   "url": "https://archive.org/download/tm-9-1005-201-10-machine-gun-5.56mm-m-249-1991/TM%209-1005-201-10%20Machine%20Gun%2C%205.56mm%2C%20M249%20%201991_djvu.txt",
+   "sha256": null
+  },
+  {
+   "source_id": "tm_9_1005_224_34",
+   "title": "TM 9-1005-224-34, Machine Gun 7.62mm M60 and Mount M91 (US Army, 1959)",
+   "url": "https://archive.org/download/tm-9-1005-224-34-7.62-mm-machine-gun-m-60-and-mount-m-91-1959/TM%209-1005-224-34%207.62-MM%20Machine%20Gun%20M60%20And%20Mount%20M91%20%201959_djvu.txt",
+   "sha256": null
+  },
+  {
+   "source_id": "tm_9_1005_213_10",
+   "title": "TM 9-1005-213-10, Operator's Manual, Machine Gun, Caliber .50, Browning, M2 (US Army)",
+   "url": "https://archive.org/download/TM9-1005-213-10/TM9-1005-213-10_djvu.txt",
+   "sha256": null
+  },
+  {
+   "source_id": "tm_9_1005_306_10",
+   "title": "TM 9-1005-306-10, Operator's Manual, 7.62mm M24 Sniper Weapon System (US Army)",
+   "url": "https://usarmorment.com/pdf/sws24.pdf",
+   "sha256": null
+  },
+  {
+   "source_id": "tm_05539_in",
+   "title": "TM 05539-IN, Organizational and Intermediate Maintenance Manual, Sniper Rifle 7.62mm M40A3 and M40A5 (USMC)",
+   "url": "https://archive.org/download/MaintenanceManual/MaintenanceManual_djvu.txt",
+   "sha256": null
+  },
+  {
+   "source_id": "m110_operator",
+   "title": "Operator's Manual, 7.62mm Stoner Rifle Mk 11 Mod 0 and SR-M110 SASS (Knight's Armament)",
+   "url": "https://www.biggerhammer.net/stoner/manuals/m110.pdf",
+   "sha256": null
+  },
+  {
+   "source_id": "kac_mk11_manual",
+   "title": "Knight's Armament Military Operator's Manual, Stoner SR-25 7.62mm Mk 11 Mod 0 and SR-M110 SASS",
+   "url": "https://web.archive.org/web/20101123224526/http://knightarmco.com/manuals/m110.pdf",
+   "sha256": null
+  },
+  {
+   "source_id": "barrett_m107a1",
+   "title": "Barrett M107A1 Operator's Manual",
+   "url": "https://barrett.net/wp-content/uploads/2023/07/M107A1_16693_Op-Manual_8.5x5.5_B-For-Website.pdf",
+   "sha256": null
+  },
+  {
+   "source_id": "remington_m2010",
+   "title": "Remington Military XM2010 Enhanced Sniper Rifle product page (archived 2012)",
+   "url": "https://web.archive.org/web/20121007222611/http://www.remingtonmilitary.com/en/Firearms/Sniper%20Rifles/XM2010.aspx",
+   "sha256": null
+  },
+  {
+   "source_id": "hk_mark23_manual",
+   "title": "Heckler & Koch Mark 23 Operator's Manual (.45 ACP, covers Mark 23 and MK23 Mod 0)",
+   "url": "https://hk-usa.com/wp-content/uploads/2025/01/Mark-23-Operators-Manual.pdf",
+   "sha256": null
+  },
+  {
+   "source_id": "glock_armorer",
+   "title": "GLOCK Armorer's Manual",
+   "url": "https://archive.org/download/gunmanual_Glock_ARmorers_Manual/Glock%20ARmorers%20Manual_text.pdf",
+   "sha256": "6bfae847e94a74d3c466690f98078c571dfd5560c6ba961786007c7e71705dd9"
+  },
+  {
+   "source_id": "springfield_m1a_loaded_308",
+   "title": "Springfield Armory M1A Loaded .308 rifle product page (specification table)",
+   "url": "https://www.springfield-armory.com/m1a-series-rifles/m1a-loaded-rifles/m1a-loaded-308-rifle/",
+   "sha256": null
+  },
+  {
+   "source_id": "inland_m1",
+   "title": "Inland Manufacturing M1 1944 Carbine model specifications",
+   "url": "https://inland-mfg.com/Inland-Carbines/M1-1944.html",
+   "sha256": null
+  },
+  {
+   "source_id": "fm_23_41_m3",
+   "title": "FM 23-41, Submachine Gun, Caliber .45, M3 (US War Department, 1941)",
+   "url": "https://archive.org/details/FM_23_41_S_G_C_45_M3_1941",
+   "sha256": null
+  },
+  {
+   "source_id": "dockery_m1a1_thompson",
+   "title": "Dockery Armory weapons reference - M1A1 Thompson",
+   "url": "https://dockeryarmory.com/m1a1-thompson/",
+   "sha256": null
+  },
+  {
+   "source_id": "us_army_tm9_1010_230_10",
+   "title": "TM 9-1010-230-10, Operator's Manual, Machine Gun, 40MM, MK 19, MOD 3 (US Army, 30 May 2001)",
+   "url": "https://idoc.pub/documents/mk19-pon27265qp40",
+   "sha256": null
+  },
+  {
+   "source_id": "lmt_m203",
+   "title": "LMT Defense 12 in Classic M203 product datasheet (NSN 1010-00-179-6447)",
+   "url": "https://lmtdefense.com/product/12-classic-m203/",
+   "sha256": null
+  },
+  {
+   "source_id": "hk416_technical_data",
+   "title": "Heckler & Koch HK416, Cal. 5.56mm x 45, Technical Data",
+   "url": "https://s3.amazonaws.com/hk-manuals/files/Military/HK416/HK416_Technical_Data.pdf",
+   "sha256": null
+  },
+  {
+   "source_id": "hk417_technical_data",
+   "title": "Heckler & Koch HK417, Technical Data",
+   "url": "https://s3.amazonaws.com/hk-manuals/files/Military/HK417/HK417_Technical_Data.pdf",
+   "sha256": null
+  },
+  {
+   "source_id": "fn_scar_l_technical_data",
+   "title": "FN SCAR-L Mk2 technical data sheet (FN Herstal)",
+   "url": "https://fnherstal.com/app/uploads/technical-data-fn-scar-l-mk2-2.pdf",
+   "sha256": null
+  },
+  {
+   "source_id": "fn_scar_h_technical_data",
+   "title": "FN SCAR-H Mk2 technical data sheet (FN Herstal)",
+   "url": "https://fnherstal.com/app/uploads/technical-data-fn-scar-h-mk2-1.pdf",
+   "sha256": null
+  },
+  {
+   "source_id": "barrett_mrad",
+   "title": "Barrett MRAD product page",
+   "url": "https://barrett.net/products/firearms/mrad-standard/",
+   "sha256": null
+  },
+  {
+   "source_id": "barrett_m95",
+   "title": "Barrett Model 95 product page",
+   "url": "https://barrett.net/products/firearms/model-95/",
+   "sha256": null
+  },
+  {
+   "source_id": "barrett_m99",
+   "title": "Barrett Model 99 product page",
+   "url": "https://barrett.net/products/firearms/model-99/",
+   "sha256": null
+  },
+  {
+   "source_id": "win_catalog_1965",
+   "title": "Winchester-Western Firearms Catalog 1965 (Winchester Repeating Arms / Western Cartridge Co.)",
+   "url": "https://archive.org/details/winchester-western-firearms-catalog-1965",
+   "sha256": null
+  },
+  {
+   "source_id": "sig_classic_pistol_manual",
+   "title": "SIG SAUER Classic Pistols Owner's Manual, P/N 8501154 Rev 03 (P220, P224, P225, P226, P227, P229, P239 technical specifications)",
+   "url": "https://www.sigsauer.com/media/sigsauer/resources/SIG_ClassicMiniManual_8501154Rev03_LR.pdf",
+   "sha256": null
+  },
+  {
+   "source_id": "us_hist_fm235",
+   "title": "FM 23-5, Basic Field Manual: U.S. Rifle, Caliber .30, M1 (US War Department, 1940)",
+   "url": "https://archive.org/details/FM23-51940",
+   "sha256": "121b28639585e0cf97a6242567d2b8a779123ea2db4dc273bb69f811d62bcf00"
+  },
+  {
+   "source_id": "us_hist_fm2310",
+   "title": "FM 23-10, Basic Field Manual: U.S. Rifle, Caliber .30, M1903 (US War Department, 1943)",
+   "url": "https://archive.org/details/FM23-101943",
+   "sha256": "fcde033c31fdc1abf5171a8205b9d47084c31de0f1108b78ed1234d7cfc494a1"
+  },
+  {
+   "source_id": "us_hist_fm236",
+   "title": "FM 23-6, Basic Field Manual: U.S. Rifle, Caliber .30, M1917 (Enfield) (US War Department, 1942)",
+   "url": "https://archive.org/details/Fm2-36",
+   "sha256": "e026b985cdbca19bf8456e52e1ce362bdc85b7e42faf5c32dd29c85b668c89c4"
+  },
+  {
+   "source_id": "us_hist_tm91276",
+   "title": "TM 9-1276, Carbines, Cal. .30, M1, M1A1, M2, and M3 (US War Department, 1947)",
+   "url": "https://archive.org/details/tm-9-1276-carbines-cal.-.-30-m-1-m-1-a-1-m-2-and-m-3-1947",
+   "sha256": null
+  },
+  {
+   "source_id": "us_hist_fm2315",
+   "title": "FM 23-15, Basic Field Manual, Browning Automatic Rifle, Caliber .30, M1918A2, with Bipod (US War Department, 1940)",
+   "url": "https://archive.org/details/Fm23-15",
+   "sha256": "37786194b791eb4e9c0921ff9bab5ed6d000d30f7beba83a5483caa17b35f6bd"
+  },
+  {
+   "source_id": "us_hist_fm2320",
+   "title": "FM 23-20, Basic Field Manual, Browning Automatic Rifle, Caliber .30, M1918, without Bipod (US War Department, 1940)",
+   "url": "https://archive.org/details/FM23-20",
+   "sha256": null
+  },
+  {
+   "source_id": "us_hist_fm2355",
+   "title": "FM 23-55, Browning Machine Guns, Caliber .30, M1917A1, M1919A4, and M1919A6 (US War Department, 1945)",
+   "url": "https://archive.org/details/FM23-55",
+   "sha256": "eccef51582819ac9a9ffe8b00463cf1849cf40173e7e641bc2fe79e93e533c36"
+  },
+  {
+   "source_id": "us_hist_tm21210",
+   "title": "TM 9-1005-212-10, Machine Gun, Caliber .30, Browning M1919A4 and M1919A6 (US Army, 1969)",
+   "url": "https://archive.org/details/tm-9-1005-212-10-machine-gun-caliber-.-30-browning-m-1919-a-4-m-1919-a-6-1969",
+   "sha256": "4c660a55596b68a478700df8fcc7f9cc1051d2bd2fd03091a2a0b1dce1fc0153"
+  },
+  {
+   "source_id": "us_hist_fm2336",
+   "title": "FM 23-36, Revolver, Colt, Caliber .45, M1917 and Revolver, Smith and Wesson, Caliber .45, M1917 (US War Department, 1941)",
+   "url": "https://archive.org/details/FM23-36",
+   "sha256": "36077776b501e130626b366ea5ec1cb865fe3613165784865a192b816ca51641"
+  },
+  {
+   "source_id": "us_hist_fm2340",
+   "title": "FM 23-40, Basic Field Manual, Thompson Submachine Gun, Caliber .45, M1928A1 (US War Department, 1931)",
+   "url": "https://archive.org/details/FM_23_40_B_F_M_T_S_G_C_45_M1928A1_1931",
+   "sha256": "447352e2ba35c2a4745138353fbc791e4a37798034ac93e719ad72fc601ced18"
+  },
+  {
+   "source_id": "us_hist_reising",
+   "title": "H & R Reising 50, 55, & 60 Submachine Gun (operator reference, Internet Archive item)",
+   "url": "https://archive.org/details/firearms-h--r-reising-50-55--60-submachine-gun",
+   "sha256": "9baf31c4c575857fc9e5f523d4b6446a815c6f7beaf89d062617622aec950d4f"
+  },
+  {
+   "source_id": "us_hist_johnson",
+   "title": "Military Handbook of the Johnson Semi-Automatic Rifle (Johnson Automatics Trust, 1938)",
+   "url": "https://archive.org/details/militaryhandbook00john",
+   "sha256": "edbe3e4c9f1270de6376fb85d11641b72444bffd3e4bcb607a64d64ac7c065e1"
+  },
+  {
+   "source_id": "us_hist_tm2012",
+   "title": "TM 9-2012, Operation and Organizational Maintenance, Cal. .30 Machine Gun M37 Tank (US Army, 1954)",
+   "url": "https://archive.org/details/TM9-2012",
+   "sha256": "34062e1cf69285187c344a7e0b02747fb5c49c17f130da4059eb47b99e435138"
+  },
+  {
+   "source_id": "us_hist_cat1944_v3",
+   "title": "Catalog of Standard Ordnance Items, Volume 3 (Office of the Chief of Ordnance, US Army, 1 March 1944)",
+   "url": "https://archive.org/details/CatalogOfStandardOrdnanceItemsVolume3",
+   "sha256": "9b7e6d4c5e26752d67dc9f38af24646cb40ccca07f4504941085f3ef57f0f506"
+  },
+  {
+   "source_id": "us_mod_tm24910",
+   "title": "TM 9-1005-249-10, Operator's Manual for Rifle 5.56mm M16 and M16A1 (US Army)",
+   "url": "https://archive.org/details/milmanual-tm-9-1005-249-10---operators-manual-for-m16-m16a1",
+   "sha256": "252826a3aea361f58892bc199496aaac4e761d53e518891e89885d35ae5cae38"
+  },
+  {
+   "source_id": "us_mod_tm31310",
+   "title": "TM 9-1005-313-10, Machine Gun, 7.62MM, M240, M240B, M240C, M240D, M240E1, M240G, M240H, and M240N (US Army, 2002)",
+   "url": "https://archive.org/details/tm-9-1005-313-10-machine-gun-7.62-mm-m-240-m-240-b-m-240-c-m-240-d-m-240-e-1-m-2",
+   "sha256": "5e3aa4fb83948995ecae33d9a065d94fd2f29a2520738b43307763e8dc107ca3"
+  },
+  {
+   "source_id": "us_mod_tm22320",
+   "title": "TM 9-1005-223-20, Rifles, 7.62mm, M14 and M14A1 (US Army, 1967)",
+   "url": "https://archive.org/details/TM9-1005-223-20",
+   "sha256": "5ec2f8897df9b6045cdc35e9946b23873bda411811dd6ee98f1c78a10782d774"
+  },
+  {
+   "source_id": "us_sup_tm20510",
+   "title": "TM 9-1010-205-10, 40mm Grenade Launcher M79 (US Army, 1985)",
+   "url": "https://archive.org/details/tm-9-1010-205-10-40mm-grenade-launcher-m-79-1985_202408",
+   "sha256": "826db06724a8dcfd115e3510046567a2c190c4348a4a0f1cf6d9d2c916fe89f6"
+  },
+  {
+   "source_id": "us_mod_dtic_mk46",
+   "title": "DTIC ADA394810, MK46 MOD0 (LMG) (US Navy / DTIC, 2001)",
+   "url": "https://archive.org/details/DTIC_ADA394810",
+   "sha256": "7c4c9dd5509a67ecf98bf822e3b0938c9c50a03c6de6dc20f0e54a1fbacfc528"
+  },
+  {
+   "source_id": "us_mod_m231",
+   "title": "Submachine Gun, 5.56-mm: Port, Firing, M231 manuals (Internet Archive collection)",
+   "url": "https://archive.org/details/m231-fpw-manuals",
+   "sha256": "66c3b5c08d324f87506f2ff8773b94ee4ccf57d996ed4df08d580179dfb44384"
+  },
+  {
+   "source_id": "us_pist_sig_m17",
+   "title": "SIG SAUER M17 Modular Handgun System product page (archived)",
+   "url": "https://web.archive.org/web/2023id_/https://www.sigsauer.com/firearms/pistols/m17.html",
+   "sha256": null
+  },
+  {
+   "source_id": "us_pist_safariland_mk",
+   "title": "The Mk Series: a Navy Handgun History (Inside Safariland, 2024)",
+   "url": "https://inside.safariland.com/blog/the-mk-series-of-navy-handguns/",
+   "sha256": null
+  },
+  {
+   "source_id": "us_mod_sig_m250",
+   "title": "SIG SAUER: U.S. Army designates Type Classification Milestone for the NGSW lethality program (M7/M250)",
+   "url": "https://www.sigsauer.com/blog/us-army-designates-type-classification-milestone-for-the-ngsw-lethality-program",
+   "sha256": null
+  },
+  {
+   "source_id": "us_sni_mk12",
+   "title": "The Mk12 SPR Special Purpose Rifle (Small Arms Defense Journal)",
+   "url": "http://www.sadefensejournal.com/wp/the-mk12-spr-special-purpose-rifle/",
+   "sha256": null
+  },
+  {
+   "source_id": "us_sni_psr",
+   "title": "Remington Modular Sniper Rifle (MSR) competes for USSOCOM Precision Sniper Rifle (PSR) contract (Defense Review)",
+   "url": "https://www.defensereview.com/remington-modular-sniper-rifle-msr-competes-for-ussocom-precision-sniper-rifle-psr-contract/",
+   "sha256": null
+  },
+  {
+   "source_id": "us_sup_hk_m320",
+   "title": "Heckler & Koch M320 Grenade Launcher product page (archived)",
+   "url": "https://web.archive.org/web/2023id_/https://hk-usa.com/hk-models/m320/",
+   "sha256": null
+  },
+  {
+   "source_id": "us_sup_peosoldier_m26",
+   "title": "PEO Soldier factsheet, M26 Modular Accessory Shotgun System (US Army, archived 2011)",
+   "url": "https://web.archive.org/web/20110523225318/https://peosoldier.army.mil/factsheets/SW_IW_M26.pdf",
+   "sha256": null
+  },
+  {
+   "source_id": "us_sup_peosoldier_xm25",
+   "title": "PEO Soldier portfolio, XM25 Counter Defilade Target Engagement system (US Army, archived 2013)",
+   "url": "https://web.archive.org/web/20130731003200/https://peosoldier.army.mil/portfolio/",
+   "sha256": null
+  },
+  {
+   "source_id": "us_pist_colt_cqbp",
+   "title": "Colt Defense LLC announces award of Marine Corps M45 Close Quarter Battle Pistol (CQBP) contract (archived)",
+   "url": "https://web.archive.org/web/20120829131746/http://www.colt.com/ColtMilitary/News/tabid/84/articleType/ArticleView/articleId/54/Colt-Defense-LLC-Announces-Award-of-Marine-Corps-M45-Close-Quarter-Battle-Pistol-CQBP-Contract.aspx",
+   "sha256": null
+  },
+  {
+   "source_id": "us_sup_milkor_m32",
+   "title": "Milkor USA M32 Multiple Grenade Launcher product page",
+   "url": "https://www.milkorusa.com/m32/",
+   "sha256": null
+  },
+  {
+   "source_id": "us_sup_benelli_m4",
+   "title": "Benelli M4 tactical semi-auto shotgun product page (Benelli USA)",
+   "url": "https://www.benelliusa.com/shotguns/m4-tactical-semi-auto-shotguns",
+   "sha256": null
+  },
+  {
+   "source_id": "us_sup_mossberg",
+   "title": "Mossberg 500/590 product listing (Mossberg, archived 2008)",
+   "url": "https://web.archive.org/web/20080909063659/http://www.mossberg.com/products/default.asp?id=3",
+   "sha256": null
+  },
+  {
+   "source_id": "us_mod_fn_machineguns",
+   "title": "FN America machine gun product listing (M249, M240, Mk 46, Mk 48)",
+   "url": "https://fnamerica.com/products/machine-guns/",
+   "sha256": null
+  },
+  {
+   "source_id": "us_mod_fn_scar20",
+   "title": "FN America FN SCAR 20S product page",
+   "url": "https://fnamerica.com/products/rifles/fn-scar-20s/",
+   "sha256": null
+  }
+ ],
+ "designations": [
+  {
+   "designation": "M1911",
+   "nation": "United States",
+   "weapon": "Colt M1911",
+   "weapon_key": "m1911",
+   "chambering": ".45 ACP",
+   "twist_mm": 406.4,
+   "map_source_id": "m1911_tm",
+   "twist_source_id": "m1911_tm",
+   "note": "TM 9-1005-211-34: number of grooves 6, rifling left hand, one turn in 16 in."
+  },
+  {
+   "designation": "M1911A1",
+   "nation": "United States",
+   "weapon": "Colt M1911A1",
+   "weapon_key": "m1911a1",
+   "chambering": ".45 ACP",
+   "twist_mm": 406.4,
+   "map_source_id": "tm_9_1005_211_12",
+   "twist_source_id": "tm_9_1005_211_12",
+   "note": "TM 9-1005-211-12: \"Rifling, left hand, one turn in 16 in.\""
+  },
+  {
+   "designation": "M1917 revolver",
+   "nation": "United States",
+   "weapon": "Colt M1917 / Smith & Wesson M1917",
+   "weapon_key": "m1917revolver",
+   "chambering": ".45 ACP",
+   "twist_mm": 406.4,
+   "map_source_id": "us_hist_fm2336",
+   "twist_source_id": "us_hist_fm2336",
+   "note": "FM 23-36 covers both. Colt: \"Twist, one turn in do. 16\". S&W variant is listed separately as one turn in 14.659 in (372.3 mm)."
+  },
+  {
+   "designation": "M9",
+   "nation": "United States",
+   "weapon": "Beretta M9",
+   "weapon_key": "beretta92_m9",
+   "chambering": "9x19mm",
+   "twist_mm": 250.0,
+   "map_source_id": "beretta_m9_tm",
+   "twist_source_id": "beretta_m9_tm",
+   "note": "TM 9-1005-317-23&P: rifling right hand, 6 grooves, pitch 250 mm."
+  },
+  {
+   "designation": "M11",
+   "nation": "United States",
+   "weapon": "SIG Sauer P228",
+   "weapon_key": "m11",
+   "chambering": "9x19mm",
+   "twist_mm": null,
+   "map_source_id": "sig_classic_pistol_manual",
+   "twist_source_id": null,
+   "note": "SIG classic-pistol manual documents the P228; the P228 is the weapon designated M11. No twist stated in the manual."
+  },
+  {
+   "designation": "M17",
+   "nation": "United States",
+   "weapon": "SIG Sauer P320 M17",
+   "weapon_key": "m17",
+   "chambering": "9x19mm",
+   "twist_mm": null,
+   "map_source_id": "us_pist_sig_m17",
+   "twist_source_id": null,
+   "note": "SIG product page names the M17 full-size Modular Handgun System pistol on the P320 platform."
+  },
+  {
+   "designation": "M18",
+   "nation": "United States",
+   "weapon": "SIG Sauer P320 M18",
+   "weapon_key": "m18",
+   "chambering": "9x19mm",
+   "twist_mm": null,
+   "map_source_id": "us_pist_sig_m17",
+   "twist_source_id": null,
+   "note": "SIG product page: the M18 is the compact MHS pistol on the P320 platform."
+  },
+  {
+   "designation": "M45",
+   "nation": "United States",
+   "weapon": "Colt M45 Close Quarter Battle Pistol",
+   "weapon_key": "m45",
+   "chambering": ".45 ACP",
+   "twist_mm": null,
+   "map_source_id": "us_pist_colt_cqbp",
+   "twist_source_id": null,
+   "note": "Colt release: award of the Marine Corps M45 Close Quarter Battle Pistol contract (1911-pattern, .45 ACP)."
+  },
+  {
+   "designation": "M45A1",
+   "nation": "United States",
+   "weapon": "Colt M45A1",
+   "weapon_key": "m45a1",
+   "chambering": ".45 ACP",
+   "twist_mm": null,
+   "map_source_id": "us_pist_colt_cqbp",
+   "twist_source_id": null,
+   "note": "Colt release: the M45A1 is the production designation of the M45 CQBP rail pistol."
+  },
+  {
+   "designation": "Mk 23",
+   "nation": "United States",
+   "weapon": "Heckler & Koch MK23 Mod 0",
+   "weapon_key": "hk_mark23",
+   "chambering": ".45 ACP",
+   "twist_mm": null,
+   "map_source_id": "hk_mark23_manual",
+   "twist_source_id": null,
+   "note": "HK Mark 23 operator manual, covering the commercial Mark 23 and the USSOCOM MK23 Mod 0."
+  },
+  {
+   "designation": "Mk 24",
+   "nation": "United States",
+   "weapon": "Heckler & Koch HK45 Compact Tactical",
+   "weapon_key": "hk45ct",
+   "chambering": ".45 ACP",
+   "twist_mm": null,
+   "map_source_id": "us_pist_safariland_mk",
+   "twist_source_id": null,
+   "note": "Published Navy Mk-series history: the Naval Special Warfare Command adopted the HK45 Compact Tactical as the Mk 24 Mod 0."
+  },
+  {
+   "designation": "Mk 25",
+   "nation": "United States",
+   "weapon": "SIG Sauer P226",
+   "weapon_key": "sig_p226",
+   "chambering": "9x19mm",
+   "twist_mm": null,
+   "map_source_id": "us_pist_safariland_mk",
+   "twist_source_id": null,
+   "note": "Published Navy Mk-series history: the P226 became the Mk 25 with the US Navy in 1989. The P226 manual does not state the twist."
+  },
+  {
+   "designation": "Mk 26",
+   "nation": "United States",
+   "weapon": "Glock 26",
+   "weapon_key": "glock26",
+   "chambering": "9x19mm",
+   "twist_mm": 250.0,
+   "map_source_id": "us_pist_safariland_mk",
+   "twist_source_id": "glock_armorer",
+   "note": "Navy Mk-series history maps Mk 26 to the Glock 26. Glock armorer manual: right hand twist, 1 turn in 9.84 in (250 mm)."
+  },
+  {
+   "designation": "Mk 27",
+   "nation": "United States",
+   "weapon": "Glock 19",
+   "weapon_key": "glock19",
+   "chambering": "9x19mm",
+   "twist_mm": 250.0,
+   "map_source_id": "us_pist_safariland_mk",
+   "twist_source_id": "glock_armorer",
+   "note": "Navy Mk-series history maps Mk 27 to the Glock 19. Glock armorer manual: right hand twist, 1 turn in 9.84 in (250 mm)."
+  },
+  {
+   "designation": "Mk 22 Mod 0",
+   "nation": "United States",
+   "weapon": "Smith & Wesson Model 39 based suppressed pistol (\"Hush Puppy\")",
+   "weapon_key": "hushpuppy",
+   "chambering": "9x19mm",
+   "twist_mm": null,
+   "map_source_id": "us_pist_safariland_mk",
+   "twist_source_id": null,
+   "note": "Navy Mk-series history: the Mk 22 Mod 0 was a suppressed S&W Model 39 variant for Naval Special Warfare."
+  },
+  {
+   "designation": "M1903",
+   "nation": "United States",
+   "weapon": "Springfield M1903",
+   "weapon_key": "m1903",
+   "chambering": ".30-06 Springfield",
+   "twist_mm": 254.0,
+   "map_source_id": "us_hist_fm2310",
+   "twist_source_id": "us_hist_cat1944_v3",
+   "note": "FM 23-10 documents the M1903. Ordnance catalog: \"Twist. Right-hand, 1 turn in 10 ins.\""
+  },
+  {
+   "designation": "M1903A3",
+   "nation": "United States",
+   "weapon": "Remington / Smith-Corona M1903A3",
+   "weapon_key": "m1903a3",
+   "chambering": ".30-06 Springfield",
+   "twist_mm": 254.0,
+   "map_source_id": "us_hist_cat1944_v3",
+   "twist_source_id": "us_hist_cat1944_v3",
+   "note": "Ordnance catalog characteristics of rifle M1903A1 and M1903A3: \"Twist. Right-hand, 1 turn in 10 ins.\""
+  },
+  {
+   "designation": "M1903A4",
+   "nation": "United States",
+   "weapon": "Remington M1903A4 sniper rifle",
+   "weapon_key": "m1903a4",
+   "chambering": ".30-06 Springfield",
+   "twist_mm": 254.0,
+   "map_source_id": "us_hist_cat1944_v3",
+   "twist_source_id": "us_hist_cat1944_v3",
+   "note": "Ordnance catalog M1903A4 section (telescope-sighted M1903A3); same M1903 barrel and 1 turn in 10 in twist."
+  },
+  {
+   "designation": "M1917 Enfield",
+   "nation": "United States",
+   "weapon": "Winchester / Remington M1917",
+   "weapon_key": "m1917enfield",
+   "chambering": ".30-06 Springfield",
+   "twist_mm": 254.0,
+   "map_source_id": "us_hist_fm236",
+   "twist_source_id": "us_hist_fm236",
+   "note": "FM 23-6: \"Twist, uniform, left hand, one turn in inches 10\" (left-hand, 254 mm per turn)."
+  },
+  {
+   "designation": "M1",
+   "nation": "United States",
+   "weapon": "Springfield M1 Garand",
+   "weapon_key": "m1garand",
+   "chambering": ".30-06 Springfield",
+   "twist_mm": 254.0,
+   "map_source_id": "us_hist_fm235",
+   "twist_source_id": "us_hist_cat1944_v3",
+   "note": "FM 23-5 documents the U.S. Rifle Caliber .30 M1. Ordnance catalog: \"R.H. twist; 1 turn in 10 ins., 33.3 cal.\""
+  },
+  {
+   "designation": "M1 Carbine",
+   "nation": "United States",
+   "weapon": "Winchester M1 Carbine",
+   "weapon_key": "m1carbine",
+   "chambering": ".30 Carbine",
+   "twist_mm": 508.0,
+   "map_source_id": "us_hist_tm91276",
+   "twist_source_id": "inland_m1",
+   "note": "TM 9-1276 covers carbines M1, M1A1, M2 and M3. Inland Manufacturing: \"Twist rate: 1 x 20 in.\""
+  },
+  {
+   "designation": "M1A1 Carbine",
+   "nation": "United States",
+   "weapon": "M1A1 Carbine (folding stock)",
+   "weapon_key": "m1a1carbine",
+   "chambering": ".30 Carbine",
+   "twist_mm": 508.0,
+   "map_source_id": "us_hist_tm91276",
+   "twist_source_id": "inland_m1",
+   "note": "TM 9-1276 covers the M1A1 carbine; the barrel is the same .30 Carbine barrel (1 turn in 20 in)."
+  },
+  {
+   "designation": "M2 Carbine",
+   "nation": "United States",
+   "weapon": "M2 Carbine (selective fire)",
+   "weapon_key": "m2carbine",
+   "chambering": ".30 Carbine",
+   "twist_mm": 508.0,
+   "map_source_id": "us_hist_tm91276",
+   "twist_source_id": "inland_m1",
+   "note": "TM 9-1276 covers the M2 carbine; same .30 Carbine barrel (1 turn in 20 in)."
+  },
+  {
+   "designation": "M3 Carbine",
+   "nation": "United States",
+   "weapon": "M3 Carbine (night-vision)",
+   "weapon_key": "m3carbine",
+   "chambering": ".30 Carbine",
+   "twist_mm": 508.0,
+   "map_source_id": "us_hist_tm91276",
+   "twist_source_id": "inland_m1",
+   "note": "TM 9-1276 covers the M3 carbine; same .30 Carbine barrel (1 turn in 20 in)."
+  },
+  {
+   "designation": "M1941 Johnson",
+   "nation": "United States",
+   "weapon": "Johnson Automatics M1941 semi-automatic rifle",
+   "weapon_key": "m1941johnson",
+   "chambering": ".30-06 Springfield",
+   "twist_mm": null,
+   "map_source_id": "us_hist_johnson",
+   "twist_source_id": null,
+   "note": "Johnson Automatics handbook, \"Standard Johnson Semi-Automatic Military Rifle, caliber .30\". No twist stated."
+  },
+  {
+   "designation": "M1941 Johnson LMG",
+   "nation": "United States",
+   "weapon": "Johnson Automatics M1941 light machine gun",
+   "weapon_key": "m1941johnsonlmg",
+   "chambering": ".30-06 Springfield",
+   "twist_mm": null,
+   "map_source_id": "us_hist_johnson",
+   "twist_source_id": null,
+   "note": "Same Johnson Automatics handbook family; the light machine gun is the automatic variant. No twist stated."
+  },
+  {
+   "designation": "M50 Reising",
+   "nation": "United States",
+   "weapon": "Harrington & Richardson Reising M50",
+   "weapon_key": "m50reising",
+   "chambering": ".45 ACP",
+   "twist_mm": null,
+   "map_source_id": "us_hist_reising",
+   "twist_source_id": null,
+   "note": "Reising 50/55/60 operator reference. The twist line is not legible in the scan, so the twist is null."
+  },
+  {
+   "designation": "M55 Reising",
+   "nation": "United States",
+   "weapon": "Harrington & Richardson Reising M55",
+   "weapon_key": "m55reising",
+   "chambering": ".45 ACP",
+   "twist_mm": null,
+   "map_source_id": "us_hist_reising",
+   "twist_source_id": null,
+   "note": "Reising 50/55/60 operator reference. The twist line is not legible in the scan, so the twist is null."
+  },
+  {
+   "designation": "M1918 BAR",
+   "nation": "United States",
+   "weapon": "Colt / Winchester M1918 Browning Automatic Rifle",
+   "weapon_key": "m1918bar",
+   "chambering": ".30-06 Springfield",
+   "twist_mm": null,
+   "map_source_id": "us_hist_fm2320",
+   "twist_source_id": null,
+   "note": "FM 23-20 documents the M1918 BAR without bipod. No twist stated in the manual."
+  },
+  {
+   "designation": "M1918A1",
+   "nation": "United States",
+   "weapon": "M1918A1 Browning Automatic Rifle",
+   "weapon_key": "m1918a1",
+   "chambering": ".30-06 Springfield",
+   "twist_mm": null,
+   "map_source_id": "us_hist_fm2315",
+   "twist_source_id": null,
+   "note": "FM 23-15 documents the M1918A2; the M1918A1 is the preceding model with bipod. No twist stated."
+  },
+  {
+   "designation": "M1918A2",
+   "nation": "United States",
+   "weapon": "M1918A2 Browning Automatic Rifle",
+   "weapon_key": "m1918a2",
+   "chambering": ".30-06 Springfield",
+   "twist_mm": 254.0,
+   "map_source_id": "us_hist_fm2315",
+   "twist_source_id": "us_hist_cat1944_v3",
+   "note": "FM 23-15 documents the M1918A2. Ordnance catalog: \"Twist. Right-hand, 1 turn in 10 ins.\""
+  },
+  {
+   "designation": "M1928 Thompson",
+   "nation": "United States",
+   "weapon": "Auto-Ordnance M1928 / M1928A1 Thompson",
+   "weapon_key": "thompsonm1928",
+   "chambering": ".45 ACP",
+   "twist_mm": 406.4,
+   "map_source_id": "us_hist_fm2340",
+   "twist_source_id": "us_hist_fm2340",
+   "note": "FM 23-40: \"Twist in rifling, uniform, right, one turn ... inches 16\"."
+  },
+  {
+   "designation": "M1A1 Thompson",
+   "nation": "United States",
+   "weapon": "Auto-Ordnance M1A1 Thompson",
+   "weapon_key": "thompsonm1a1",
+   "chambering": ".45 ACP",
+   "twist_mm": 406.4,
+   "map_source_id": "dockery_m1a1_thompson",
+   "twist_source_id": "dockery_m1a1_thompson",
+   "note": "Dockery: \"RIFLING (TYPE & TWIST) - 6 Groove, Right hand twist, one turn in 41 cm (16 in)\"."
+  },
+  {
+   "designation": "M3",
+   "nation": "United States",
+   "weapon": "General Motors M3 submachine gun (Grease Gun)",
+   "weapon_key": "m3greasegun",
+   "chambering": ".45 ACP",
+   "twist_mm": 406.4,
+   "map_source_id": "fm_23_41_m3",
+   "twist_source_id": "fm_23_41_m3",
+   "note": "FM 23-41, general data: \"Twist in rifling, uniform, right one turn in ... 16\"."
+  },
+  {
+   "designation": "M3A1",
+   "nation": "United States",
+   "weapon": "General Motors M3A1 submachine gun",
+   "weapon_key": "m3a1",
+   "chambering": ".45 ACP",
+   "twist_mm": 406.4,
+   "map_source_id": "fm_23_41_m3",
+   "twist_source_id": "us_hist_cat1944_v3",
+   "note": "FM 23-41 documents the M3 family. Ordnance catalog: \"Twist. Right-hand, 1 turn in 16 ins., or 73.4 cals.\""
+  },
+  {
+   "designation": "M14",
+   "nation": "United States",
+   "weapon": "Springfield M14",
+   "weapon_key": "m14",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": null,
+   "map_source_id": "tm_9_1005_223_10",
+   "twist_source_id": null,
+   "note": "TM 9-1005-223-10 documents the M14 and M14A1. The manual does not state the rifling twist."
+  },
+  {
+   "designation": "M14A1",
+   "nation": "United States",
+   "weapon": "Springfield M14A1",
+   "weapon_key": "m14a1",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": null,
+   "map_source_id": "tm_9_1005_223_10",
+   "twist_source_id": null,
+   "note": "TM 9-1005-223-10 covers the M14A1. No twist stated."
+  },
+  {
+   "designation": "M14E2",
+   "nation": "United States",
+   "weapon": "M14E2 (M14A1 development designation)",
+   "weapon_key": "m14e2",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": null,
+   "map_source_id": "us_mod_tm22320",
+   "twist_source_id": null,
+   "note": "TM 9-1005-223-20 covers the M14 and M14A1; the E2 was the development designation of the A1. No twist stated."
+  },
+  {
+   "designation": "M21",
+   "nation": "United States",
+   "weapon": "Springfield M21 sniper rifle",
+   "weapon_key": "m21",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": null,
+   "map_source_id": "us_mod_tm22320",
+   "twist_source_id": null,
+   "note": "TM 9-1005-223-20 covers the M14 National Match family from which the M21 derives. No twist stated."
+  },
+  {
+   "designation": "M25",
+   "nation": "United States",
+   "weapon": "M25 sniper rifle",
+   "weapon_key": "m25",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": null,
+   "map_source_id": "us_mod_tm22320",
+   "twist_source_id": null,
+   "note": "M25 is the US Army M14 National Match sniper variant. TM 9-1005-223-20 covers the M14 NM family. No twist stated."
+  },
+  {
+   "designation": "M1A",
+   "nation": "United States",
+   "weapon": "Springfield Armory M1A (commercial)",
+   "weapon_key": "m1a",
+   "chambering": ".308 Winchester",
+   "twist_mm": 279.4,
+   "map_source_id": "springfield_m1a_loaded_308",
+   "twist_source_id": "springfield_m1a_loaded_308",
+   "note": "Springfield Armory M1A Loaded: \"22\\\" NM Medium Weight, 6-Groove Carbon Steel, 1:11\". Commercial, not a US military designation."
+  },
+  {
+   "designation": "M14 DMR",
+   "nation": "United States",
+   "weapon": "M14 Designated Marksman Rifle (USMC)",
+   "weapon_key": "m14dmr",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": null,
+   "map_source_id": "tm_9_1005_223_10",
+   "twist_source_id": null,
+   "note": "M14 DMR is a USMC M14 variant. TM 9-1005-223-10 documents the M14 base weapon. No twist stated."
+  },
+  {
+   "designation": "M16",
+   "nation": "United States",
+   "weapon": "Colt M16",
+   "weapon_key": "m16",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": null,
+   "map_source_id": "us_mod_tm24910",
+   "twist_source_id": null,
+   "note": "TM 9-1005-249-10 covers the M16 and M16A1. The operator manual does not state the rifling twist."
+  },
+  {
+   "designation": "M16A1",
+   "nation": "United States",
+   "weapon": "Colt M16A1",
+   "weapon_key": "m16a1",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": null,
+   "map_source_id": "us_mod_tm24910",
+   "twist_source_id": null,
+   "note": "TM 9-1005-249-10 covers the M16 and M16A1. The operator manual does not state the rifling twist."
+  },
+  {
+   "designation": "M16A2",
+   "nation": "United States",
+   "weapon": "Colt / FN M16A2",
+   "weapon_key": "m16a2",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": 177.8,
+   "map_source_id": "tm_9_1005_319_10",
+   "twist_source_id": "tm_9_1005_319_10",
+   "note": "TM 9-1005-319-10: \"Rifling RH 1 turn in 7 in\"."
+  },
+  {
+   "designation": "M16A3",
+   "nation": "United States",
+   "weapon": "Colt / FN M16A3",
+   "weapon_key": "m16a3",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": 177.8,
+   "map_source_id": "tm_9_1005_319_10",
+   "twist_source_id": "tm_9_1005_319_10",
+   "note": "TM 9-1005-319-10 covers the M16A3; same barrel as the M16A2 (1 turn in 7 in)."
+  },
+  {
+   "designation": "M16A4",
+   "nation": "United States",
+   "weapon": "Colt / FN M16A4",
+   "weapon_key": "m16a4",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": 177.8,
+   "map_source_id": "tm_9_1005_319_10",
+   "twist_source_id": "tm_9_1005_319_10",
+   "note": "TM 9-1005-319-10: \"Rifling RH 1 turn in 7 in\"."
+  },
+  {
+   "designation": "M4",
+   "nation": "United States",
+   "weapon": "Colt M4",
+   "weapon_key": "m4",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": 177.8,
+   "map_source_id": "tm_9_1005_319_10",
+   "twist_source_id": "tm_9_1005_319_10",
+   "note": "TM 9-1005-319-10 covers the M4 carbine; same 1 turn in 7 in barrel."
+  },
+  {
+   "designation": "M4A1",
+   "nation": "United States",
+   "weapon": "Colt M4A1",
+   "weapon_key": "m4a1",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": 177.8,
+   "map_source_id": "tm_9_1005_319_10",
+   "twist_source_id": "tm_9_1005_319_10",
+   "note": "TM 9-1005-319-10: \"Rifling RH 1 turn in 7 in\"."
+  },
+  {
+   "designation": "M231",
+   "nation": "United States",
+   "weapon": "M231 Firing Port Weapon",
+   "weapon_key": "m231",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": null,
+   "map_source_id": "us_mod_m231",
+   "twist_source_id": null,
+   "note": "M231 FPW manuals: \"Submachine Gun, 5.56-mm: Port, Firing, M231\". No twist stated."
+  },
+  {
+   "designation": "M27 IAR",
+   "nation": "United States",
+   "weapon": "Heckler & Koch M27 Infantry Automatic Rifle",
+   "weapon_key": "m27iar",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": 178.0,
+   "map_source_id": "hk416_technical_data",
+   "twist_source_id": "hk416_technical_data",
+   "note": "The M27 IAR is the USMC designation of the HK416-based rifle. HK416 technical data: right-hand twist 178 mm, the maker's rounding of 1 turn in 7 in (177.8 mm), so it agrees with the 5.56x45 standard."
+  },
+  {
+   "designation": "M38",
+   "nation": "United States",
+   "weapon": "M38 Squad Designated Marksman Rifle",
+   "weapon_key": "m38",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": 178.0,
+   "map_source_id": "hk416_technical_data",
+   "twist_source_id": "hk416_technical_data",
+   "note": "The M38 SDMR is a USMC M27 variant. HK416 technical data gives the HK416 twist (178 mm, the maker's rounding of 1 turn in 7 in), so it agrees with the 5.56x45 standard."
+  },
+  {
+   "designation": "M250",
+   "nation": "United States",
+   "weapon": "SIG Sauer M250 light machine gun",
+   "weapon_key": "m250",
+   "chambering": "6.8x51mm",
+   "twist_mm": null,
+   "map_source_id": "us_mod_sig_m250",
+   "twist_source_id": null,
+   "note": "SIG Sauer release on the US Army NGSW type classification, which names the M250 light machine gun."
+  },
+  {
+   "designation": "M60",
+   "nation": "United States",
+   "weapon": "Saco Defense M60",
+   "weapon_key": "m60",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": 304.8,
+   "map_source_id": "tm_9_1005_224_34",
+   "twist_source_id": "tm_9_1005_224_34",
+   "note": "TM 9-1005-224-34 tabulated data: number of lands 4, right-hand twist one turn in 12 in."
+  },
+  {
+   "designation": "M60D",
+   "nation": "United States",
+   "weapon": "Saco Defense M60D",
+   "weapon_key": "m60d",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": 304.8,
+   "map_source_id": "tm_9_1005_224_34",
+   "twist_source_id": "tm_9_1005_224_34",
+   "note": "M60D is the aircraft/vehicle variant of the M60. TM 9-1005-224-34 gives the M60 barrel twist (1 turn in 12 in)."
+  },
+  {
+   "designation": "M60E3",
+   "nation": "United States",
+   "weapon": "Saco Defense M60E3",
+   "weapon_key": "m60e3",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": 304.8,
+   "map_source_id": "tm_9_1005_224_34",
+   "twist_source_id": "tm_9_1005_224_34",
+   "note": "M60E3 is a lightened M60 variant. TM 9-1005-224-34 gives the M60 barrel twist (1 turn in 12 in)."
+  },
+  {
+   "designation": "M60E4/Mk 43",
+   "nation": "United States",
+   "weapon": "US Ordnance M60E4 / Mk 43",
+   "weapon_key": "m60e4",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": 304.8,
+   "map_source_id": "tm_9_1005_224_34",
+   "twist_source_id": "tm_9_1005_224_34",
+   "note": "M60E4/Mk 43 is the final M60 development. TM 9-1005-224-34 gives the M60 barrel twist (1 turn in 12 in)."
+  },
+  {
+   "designation": "M240B",
+   "nation": "United States",
+   "weapon": "FN M240B",
+   "weapon_key": "m240b",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": null,
+   "map_source_id": "us_mod_tm31310",
+   "twist_source_id": null,
+   "note": "TM 9-1005-313-10 covers M240, M240B, M240C, M240D, M240E1, M240G, M240H and M240N. No twist stated."
+  },
+  {
+   "designation": "M240C",
+   "nation": "United States",
+   "weapon": "FN M240C",
+   "weapon_key": "m240c",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": null,
+   "map_source_id": "us_mod_tm31310",
+   "twist_source_id": null,
+   "note": "TM 9-1005-313-10 covers the M240C (coaxial). No twist stated."
+  },
+  {
+   "designation": "M240D",
+   "nation": "United States",
+   "weapon": "FN M240D",
+   "weapon_key": "m240d",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": null,
+   "map_source_id": "us_mod_tm31310",
+   "twist_source_id": null,
+   "note": "TM 9-1005-313-10 covers the M240D (aircraft). No twist stated."
+  },
+  {
+   "designation": "M240G",
+   "nation": "United States",
+   "weapon": "FN M240G",
+   "weapon_key": "m240g",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": null,
+   "map_source_id": "us_mod_tm31310",
+   "twist_source_id": null,
+   "note": "TM 9-1005-313-10 covers the M240G (USMC). No twist stated."
+  },
+  {
+   "designation": "M240H",
+   "nation": "United States",
+   "weapon": "FN M240H",
+   "weapon_key": "m240h",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": null,
+   "map_source_id": "us_mod_tm31310",
+   "twist_source_id": null,
+   "note": "TM 9-1005-313-10 covers the M240H (helicopter). No twist stated."
+  },
+  {
+   "designation": "M240L",
+   "nation": "United States",
+   "weapon": "FN M240L",
+   "weapon_key": "m240l",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": null,
+   "map_source_id": "us_mod_tm31310",
+   "twist_source_id": null,
+   "note": "M240L is the lightweight M240 variant. TM 9-1005-313-10 (2002) covers the earlier M240 family. No twist stated."
+  },
+  {
+   "designation": "M249",
+   "nation": "United States",
+   "weapon": "FN M249 SAW",
+   "weapon_key": "m249",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": 177.8,
+   "map_source_id": "tm_9_1005_201_10",
+   "twist_source_id": "tm_9_1005_201_10",
+   "note": "TM 9-1005-201-10: barrel assembly 520 mm, rifling twist 1 turn in 7 in."
+  },
+  {
+   "designation": "M249 Para",
+   "nation": "United States",
+   "weapon": "FN M249 Para",
+   "weapon_key": "m249para",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": 177.8,
+   "map_source_id": "tm_9_1005_201_10",
+   "twist_source_id": "tm_9_1005_201_10",
+   "note": "M249 Para is the short-barrel M249 variant. TM 9-1005-201-10 gives the M249 twist (1 turn in 7 in)."
+  },
+  {
+   "designation": "Mk 46",
+   "nation": "United States",
+   "weapon": "FN Mk 46",
+   "weapon_key": "mk46",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": 177.8,
+   "map_source_id": "us_mod_dtic_mk46",
+   "twist_source_id": "tm_9_1005_201_10",
+   "note": "DTIC ADA394810, MK46 MOD0 (LMG). Twist from the M249 TM (same 5.56mm barrel family, 1 turn in 7 in)."
+  },
+  {
+   "designation": "Mk 48",
+   "nation": "United States",
+   "weapon": "FN Mk 48",
+   "weapon_key": "mk48",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": null,
+   "map_source_id": "us_mod_fn_machineguns",
+   "twist_source_id": null,
+   "note": "FN America machine gun listing covers the Mk 48. No twist stated."
+  },
+  {
+   "designation": "Mk 11",
+   "nation": "United States",
+   "weapon": "Knight's Armament Mk 11 Mod 0 (SR-25)",
+   "weapon_key": "mk11",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": 279.4,
+   "map_source_id": "kac_mk11_manual",
+   "twist_source_id": "m110_operator",
+   "note": "KAC operator manual covers the Mk 11 Mod 0. Operator manual: 20 in barrel, 5 grooves, 1 turn in 11 in."
+  },
+  {
+   "designation": "Mk 12",
+   "nation": "United States",
+   "weapon": "Mk 12 Special Purpose Rifle",
+   "weapon_key": "mk12",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": null,
+   "map_source_id": "us_sni_mk12",
+   "twist_source_id": null,
+   "note": "Small Arms Defense Journal, the Mk12 SPR. No twist stated."
+  },
+  {
+   "designation": "Mk 13",
+   "nation": "United States",
+   "weapon": "Mk 13 Mod 0 to Mod 5 sniper rifle",
+   "weapon_key": "mk13",
+   "chambering": ".300 Winchester Magnum",
+   "twist_mm": null,
+   "map_source_id": "us_sni_psr",
+   "twist_source_id": null,
+   "note": "USSOCOM sniper rifle development (Precision Sniper Rifle reporting). No designation-specific source confirmed in this pass."
+  },
+  {
+   "designation": "Mk 14 EBR",
+   "nation": "United States",
+   "weapon": "Mk 14 Mod 0 Enhanced Battle Rifle (M14)",
+   "weapon_key": "mk14ebr",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": null,
+   "map_source_id": "tm_9_1005_223_10",
+   "twist_source_id": null,
+   "note": "Mk 14 EBR is the USSOCOM M14 conversion. TM 9-1005-223-10 documents the M14 base weapon. No twist stated."
+  },
+  {
+   "designation": "Mk 16",
+   "nation": "United States",
+   "weapon": "FN SCAR-L Mk 16",
+   "weapon_key": "mk16",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": 177.8,
+   "map_source_id": "fn_scar_l_technical_data",
+   "twist_source_id": "fn_scar_l_technical_data",
+   "note": "FN SCAR-L Mk2 technical data sheet; Mk 16 is the USSOCOM designation of the SCAR-L."
+  },
+  {
+   "designation": "Mk 17",
+   "nation": "United States",
+   "weapon": "FN SCAR-H Mk 17",
+   "weapon_key": "mk17",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": 304.8,
+   "map_source_id": "fn_scar_h_technical_data",
+   "twist_source_id": "fn_scar_h_technical_data",
+   "note": "FN SCAR-H Mk2 technical data sheet; Mk 17 is the USSOCOM designation of the SCAR-H."
+  },
+  {
+   "designation": "Mk 18",
+   "nation": "United States",
+   "weapon": "Mk 18 Mod 0 Close Quarters Battle Receiver (M4)",
+   "weapon_key": "mk18",
+   "chambering": "5.56x45mm NATO",
+   "twist_mm": 177.8,
+   "map_source_id": "tm_9_1005_319_10",
+   "twist_source_id": "tm_9_1005_319_10",
+   "note": "Mk 18 CQBR is an M4 upper-receiver assembly. TM 9-1005-319-10 documents the M4 and its 1 turn in 7 in twist."
+  },
+  {
+   "designation": "Mk 20",
+   "nation": "United States",
+   "weapon": "FN SCAR-H Mk 20 SSR",
+   "weapon_key": "mk20",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": 304.8,
+   "map_source_id": "us_mod_fn_scar20",
+   "twist_source_id": "fn_scar_h_technical_data",
+   "note": "FN SCAR 20S product page; Mk 20 SSR is the USSOCOM sniper-support variant of the SCAR-H."
+  },
+  {
+   "designation": "Mk 21",
+   "nation": "United States",
+   "weapon": "Remington Modular Sniper Rifle (Precision Sniper Rifle)",
+   "weapon_key": "mk21",
+   "chambering": ".338 Lapua Magnum",
+   "twist_mm": null,
+   "map_source_id": "us_sni_psr",
+   "twist_source_id": null,
+   "note": "USSOCOM Precision Sniper Rifle programme; Remington MSR selected. No twist stated."
+  },
+  {
+   "designation": "Mk 22",
+   "nation": "United States",
+   "weapon": "Barrett MRAD (Advanced Sniper Rifle)",
+   "weapon_key": "mk22",
+   "chambering": ".338 Norma Magnum",
+   "twist_mm": null,
+   "map_source_id": "barrett_mrad",
+   "twist_source_id": null,
+   "note": "Barrett MRAD product page. The MRAD is the USSOCOM Advanced Sniper Rifle (Mk 22). No twist stated."
+  },
+  {
+   "designation": "M107",
+   "nation": "United States",
+   "weapon": "Barrett M107",
+   "weapon_key": "m107",
+   "chambering": "12.7x99mm NATO",
+   "twist_mm": 381.0,
+   "map_source_id": "barrett_m107a1",
+   "twist_source_id": "barrett_m107a1",
+   "note": "Barrett M107A1 operator manual: 29 in barrel, 1:15 in twist (381 mm)."
+  },
+  {
+   "designation": "M82",
+   "nation": "United States",
+   "weapon": "Barrett M82",
+   "weapon_key": "m82",
+   "chambering": "12.7x99mm NATO",
+   "twist_mm": 381.0,
+   "map_source_id": "barrett_m107a1",
+   "twist_source_id": "barrett_m107a1",
+   "note": "Barrett M82/M107 share the 1:15 in twist stated in the M107A1 operator manual."
+  },
+  {
+   "designation": "M95",
+   "nation": "United States",
+   "weapon": "Barrett M95",
+   "weapon_key": "m95",
+   "chambering": "12.7x99mm NATO",
+   "twist_mm": null,
+   "map_source_id": "barrett_m95",
+   "twist_source_id": null,
+   "note": "Barrett Model 95 product page. No twist stated on the page."
+  },
+  {
+   "designation": "M99",
+   "nation": "United States",
+   "weapon": "Barrett M99",
+   "weapon_key": "m99",
+   "chambering": "12.7x99mm NATO",
+   "twist_mm": null,
+   "map_source_id": "barrett_m99",
+   "twist_source_id": null,
+   "note": "Barrett Model 99 product page. No twist stated on the page."
+  },
+  {
+   "designation": "XM2010",
+   "nation": "United States",
+   "weapon": "Remington XM2010",
+   "weapon_key": "xm2010",
+   "chambering": ".300 Winchester Magnum",
+   "twist_mm": 254.0,
+   "map_source_id": "remington_m2010",
+   "twist_source_id": "remington_m2010",
+   "note": "Remington Military XM2010 page: 22 in 5R barrel, 1 turn in 10 in RH."
+  },
+  {
+   "designation": "M2010",
+   "nation": "United States",
+   "weapon": "Remington M2010 Enhanced Sniper Rifle",
+   "weapon_key": "m2010",
+   "chambering": ".300 Winchester Magnum",
+   "twist_mm": 254.0,
+   "map_source_id": "remington_m2010",
+   "twist_source_id": "remington_m2010",
+   "note": "The XM2010 was type-classified as the M2010 ESR; same page and barrel (1 turn in 10 in)."
+  },
+  {
+   "designation": "M24",
+   "nation": "United States",
+   "weapon": "Remington M24 Sniper Weapon System",
+   "weapon_key": "m24",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": 284.48,
+   "map_source_id": "tm_9_1005_306_10",
+   "twist_source_id": "tm_9_1005_306_10",
+   "note": "TM 9-1005-306-10: barrel rifling 5 radial, 1 turn in 11.2 in (284.48 mm)."
+  },
+  {
+   "designation": "M24A2",
+   "nation": "United States",
+   "weapon": "Remington M24A2",
+   "weapon_key": "m24a2",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": 284.48,
+   "map_source_id": "tm_9_1005_306_10",
+   "twist_source_id": "tm_9_1005_306_10",
+   "note": "M24A2 is a later M24 configuration. TM 9-1005-306-10 gives the M24 twist (1 turn in 11.2 in)."
+  },
+  {
+   "designation": "M40",
+   "nation": "United States",
+   "weapon": "Remington M40 (USMC)",
+   "weapon_key": "m40",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": 304.8,
+   "map_source_id": "tm_05539_in",
+   "twist_source_id": "tm_05539_in",
+   "note": "TM 05539-IN covers the M40A3 and M40A5; rifling 1 turn in 12 in, right hand."
+  },
+  {
+   "designation": "M40A1",
+   "nation": "United States",
+   "weapon": "Remington M40A1 (USMC)",
+   "weapon_key": "m40a1",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": 304.8,
+   "map_source_id": "tm_05539_in",
+   "twist_source_id": "tm_05539_in",
+   "note": "M40A1 precedes the M40A3 covered by TM 05539-IN; same 1 turn in 12 in barrel specification."
+  },
+  {
+   "designation": "M40A3",
+   "nation": "United States",
+   "weapon": "Remington M40A3 (USMC)",
+   "weapon_key": "m40a3",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": 304.8,
+   "map_source_id": "tm_05539_in",
+   "twist_source_id": "tm_05539_in",
+   "note": "TM 05539-IN: rifling 1 turn in 12 in, right hand, 24 in barrel."
+  },
+  {
+   "designation": "M40A5",
+   "nation": "United States",
+   "weapon": "Remington M40A5 (USMC)",
+   "weapon_key": "m40a5",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": 304.8,
+   "map_source_id": "tm_05539_in",
+   "twist_source_id": "tm_05539_in",
+   "note": "TM 05539-IN covers the M40A3 and M40A5; rifling 1 turn in 12 in, right hand."
+  },
+  {
+   "designation": "M40A6",
+   "nation": "United States",
+   "weapon": "Remington M40A6 (USMC)",
+   "weapon_key": "m40a6",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": 304.8,
+   "map_source_id": "tm_05539_in",
+   "twist_source_id": "tm_05539_in",
+   "note": "M40A6 is the chassis M40 variant. TM 05539-IN gives the M40A3/A5 twist (1 turn in 12 in)."
+  },
+  {
+   "designation": "M110",
+   "nation": "United States",
+   "weapon": "Knight's Armament M110 SASS",
+   "weapon_key": "m110",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": 279.4,
+   "map_source_id": "m110_operator",
+   "twist_source_id": "m110_operator",
+   "note": "Operator manual: 20 in barrel, 5 grooves, right-hand 1 turn in 11 in (279.4 mm)."
+  },
+  {
+   "designation": "M110A1",
+   "nation": "United States",
+   "weapon": "Heckler & Koch M110A1",
+   "weapon_key": "m110a1",
+   "chambering": "7.62x51mm NATO",
+   "twist_mm": 280.0,
+   "map_source_id": "hk417_technical_data",
+   "twist_source_id": "hk417_technical_data",
+   "note": "The M110A1 is the HK G28/HK417-based CSASS. HK417 technical data: 4 grooves, right-hand twist 280 mm."
+  },
+  {
+   "designation": "M203",
+   "nation": "United States",
+   "weapon": "Colt / LMT M203",
+   "weapon_key": "m203",
+   "chambering": "40x46mm",
+   "twist_mm": null,
+   "map_source_id": "lmt_m203",
+   "twist_source_id": null,
+   "note": "LMT Defense M203 datasheet (NSN 1010-00-179-6447). No twist stated."
+  },
+  {
+   "designation": "M320",
+   "nation": "United States",
+   "weapon": "Heckler & Koch M320",
+   "weapon_key": "m320",
+   "chambering": "40x46mm",
+   "twist_mm": null,
+   "map_source_id": "us_sup_hk_m320",
+   "twist_source_id": null,
+   "note": "HK M320 product page. TM 3-22.31 covers the M320 and M320A1. No twist stated."
+  },
+  {
+   "designation": "Mk 19",
+   "nation": "United States",
+   "weapon": "Saco Defense Mk 19 Mod 3",
+   "weapon_key": "mk19",
+   "chambering": "40x53mm",
+   "twist_mm": null,
+   "map_source_id": "us_army_tm9_1010_230_10",
+   "twist_source_id": null,
+   "note": "TM 9-1010-230-10, Machine Gun, 40MM, MK 19, MOD 3. No twist stated."
+  },
+  {
+   "designation": "Mk 47",
+   "nation": "United States",
+   "weapon": "Saco Defense Mk 47 Striker",
+   "weapon_key": "mk47",
+   "chambering": "40x53mm",
+   "twist_mm": null,
+   "map_source_id": "us_army_tm9_1010_230_10",
+   "twist_source_id": null,
+   "note": "Mk 47 is the lightweight successor to the Mk 19. TM 9-1010-230-10 documents the Mk 19 family. No twist stated."
+  },
+  {
+   "designation": "M79",
+   "nation": "United States",
+   "weapon": "Springfield M79",
+   "weapon_key": "m79",
+   "chambering": "40x46mm",
+   "twist_mm": null,
+   "map_source_id": "us_sup_tm20510",
+   "twist_source_id": null,
+   "note": "TM 9-1010-205-10, 40mm Grenade Launcher M79. No twist stated."
+  },
+  {
+   "designation": "M32",
+   "nation": "United States",
+   "weapon": "Milkor M32 Multiple Grenade Launcher",
+   "weapon_key": "m32",
+   "chambering": "40x46mm",
+   "twist_mm": null,
+   "map_source_id": "us_sup_milkor_m32",
+   "twist_source_id": null,
+   "note": "Milkor USA M32 product page. No twist stated."
+  },
+  {
+   "designation": "M26",
+   "nation": "United States",
+   "weapon": "M26 Modular Accessory Shotgun System (MASS)",
+   "weapon_key": "m26mass",
+   "chambering": "12 gauge",
+   "twist_mm": null,
+   "map_source_id": "us_sup_peosoldier_m26",
+   "twist_source_id": null,
+   "note": "PEO Soldier factsheet, M26 Modular Accessory Shotgun System. Smoothbore, so twist is null. Not the M26 hand grenade."
+  },
+  {
+   "designation": "XM25",
+   "nation": "United States",
+   "weapon": "XM25 Counter Defilade Target Engagement system",
+   "weapon_key": "xm25",
+   "chambering": "25x40mm",
+   "twist_mm": null,
+   "map_source_id": "us_sup_peosoldier_xm25",
+   "twist_source_id": null,
+   "note": "PEO Soldier portfolio, XM25 Counter Defilade Target Engagement system. Experimental; programme cancelled. No twist stated."
+  },
+  {
+   "designation": "M1014",
+   "nation": "United States",
+   "weapon": "Benelli M4 Super 90",
+   "weapon_key": "m1014",
+   "chambering": "12 gauge",
+   "twist_mm": null,
+   "map_source_id": "us_sup_benelli_m4",
+   "twist_source_id": null,
+   "note": "Benelli M4 tactical semi-auto shotgun product page. Smoothbore, so twist is null."
+  },
+  {
+   "designation": "M500",
+   "nation": "United States",
+   "weapon": "Mossberg 500",
+   "weapon_key": "m500",
+   "chambering": "12 gauge",
+   "twist_mm": null,
+   "map_source_id": "us_sup_mossberg",
+   "twist_source_id": null,
+   "note": "Mossberg 500 product listing. Smoothbore, so twist is null."
+  },
+  {
+   "designation": "M590",
+   "nation": "United States",
+   "weapon": "Mossberg 590",
+   "weapon_key": "m590",
+   "chambering": "12 gauge",
+   "twist_mm": null,
+   "map_source_id": "us_sup_mossberg",
+   "twist_source_id": null,
+   "note": "Mossberg 590 product listing. Smoothbore, so twist is null."
+  },
+  {
+   "designation": "M97",
+   "nation": "United States",
+   "weapon": "Winchester Model 1897",
+   "weapon_key": "m97",
+   "chambering": "12 gauge",
+   "twist_mm": null,
+   "map_source_id": "us_hist_cat1944_v3",
+   "twist_source_id": null,
+   "note": "Ordnance catalog: \"WINCHESTER SHOTGUN, M97, TRAP TYPE\" and riot type. Smoothbore, so twist is null."
+  },
+  {
+   "designation": "M12",
+   "nation": "United States",
+   "weapon": "Winchester Model 1912",
+   "weapon_key": "m12",
+   "chambering": "12 gauge",
+   "twist_mm": null,
+   "map_source_id": "win_catalog_1965",
+   "twist_source_id": null,
+   "note": "Winchester-Western catalog 1965. Smoothbore, so twist is null."
+  },
+  {
+   "designation": "M1897",
+   "nation": "United States",
+   "weapon": "Winchester Model 1897 trench gun",
+   "weapon_key": "m1897",
+   "chambering": "12 gauge",
+   "twist_mm": null,
+   "map_source_id": "us_hist_cat1944_v3",
+   "twist_source_id": null,
+   "note": "The military M97 is the Winchester Model 1897; Ordnance catalog lists the M97 riot type with M1917 bayonet. Smoothbore."
+  },
+  {
+   "designation": "M1912",
+   "nation": "United States",
+   "weapon": "Winchester Model 1912 shotgun",
+   "weapon_key": "m1912",
+   "chambering": "12 gauge",
+   "twist_mm": null,
+   "map_source_id": "win_catalog_1965",
+   "twist_source_id": null,
+   "note": "Winchester-Western catalog 1965 (Model 12). Smoothbore, so twist is null."
+  },
+  {
+   "designation": "M1917 MG",
+   "nation": "United States",
+   "weapon": "Browning M1917 / M1917A1",
+   "weapon_key": "m1917mg",
+   "chambering": ".30-06 Springfield",
+   "twist_mm": 254.0,
+   "map_source_id": "us_hist_fm2355",
+   "twist_source_id": "us_hist_cat1944_v3",
+   "note": "FM 23-55 covers the M1917A1, M1919A4 and M1919A6. Ordnance catalog: \"Twist. Right-hand, 1 turn in 10 ins.\""
+  },
+  {
+   "designation": "M1919",
+   "nation": "United States",
+   "weapon": "Browning M1919",
+   "weapon_key": "m1919",
+   "chambering": ".30-06 Springfield",
+   "twist_mm": 254.0,
+   "map_source_id": "us_hist_fm2355",
+   "twist_source_id": "us_hist_cat1944_v3",
+   "note": "FM 23-55 covers the M1919A4/A6. Ordnance catalog: \"Twist. 1 turn in 10 ins., 33.3 cals.\""
+  },
+  {
+   "designation": "M1919A4",
+   "nation": "United States",
+   "weapon": "Browning M1919A4",
+   "weapon_key": "m1919a4",
+   "chambering": ".30-06 Springfield",
+   "twist_mm": 254.0,
+   "map_source_id": "us_hist_tm21210",
+   "twist_source_id": "us_hist_tm21210",
+   "note": "TM 9-1005-212-10: \"Twist, right hand. One turn in 10 in.\""
+  },
+  {
+   "designation": "M1919A6",
+   "nation": "United States",
+   "weapon": "Browning M1919A6",
+   "weapon_key": "m1919a6",
+   "chambering": ".30-06 Springfield",
+   "twist_mm": 254.0,
+   "map_source_id": "us_hist_tm21210",
+   "twist_source_id": "us_hist_tm21210",
+   "note": "TM 9-1005-212-10: \"Twist, right hand. One turn in 10 in.\""
+  },
+  {
+   "designation": "M2",
+   "nation": "United States",
+   "weapon": "Browning M2 heavy machine gun",
+   "weapon_key": "m2browning",
+   "chambering": "12.7x99mm NATO",
+   "twist_mm": 381.0,
+   "map_source_id": "tm_9_1005_213_10",
+   "twist_source_id": "tm_9_1005_213_10",
+   "note": "TM 9-1005-213-10 tabulated data: one turn in 15 in, 8 lands and grooves."
+  },
+  {
+   "designation": "M37",
+   "nation": "United States",
+   "weapon": "M37 tank machine gun (.30 caliber M1919 variant)",
+   "weapon_key": "m37mg",
+   "chambering": ".30-06 Springfield",
+   "twist_mm": null,
+   "map_source_id": "us_hist_tm2012",
+   "twist_source_id": null,
+   "note": "TM 9-2012, Cal. .30 Machine Gun M37 Tank. No twist stated. Note: Ithaca also made an M37 shotgun; this entry is the machine gun."
+  }
+ ]
+}

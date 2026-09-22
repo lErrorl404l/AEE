@@ -1,0 +1,107 @@
+{
+  "retrieved": "2026-09-22",
+  "sources": [
+    {
+      "source_id": "ai_awm",
+      "title": "Accuracy International - AWM (Super Magnum) product page",
+      "url": "https://web.archive.org/web/20021113101855id_/http://www.accuracyinternational.com/awm.htm",
+      "sha256": "b80264cb13da3d955880a84769ae7c7ad12ad42dde74b0e0ca0bbbbe7f3d5c0d"
+    },
+    {
+      "source_id": "armalite_ar10b_catalog",
+      "title": "ArmaLite AR-10B product catalogue page",
+      "url": "https://web.archive.org/web/20070814004925id_/http://www.armalite.com:80/sales/catalog/rifles/ar10b.htm",
+      "sha256": "2842bc88452f5ba268cda87c3999a725662a24b2b0519429ba0b842c7a4cf215"
+    },
+    {
+      "source_id": "armalite_ar180b_catalog",
+      "title": "ArmaLite AR-180B product catalogue page",
+      "url": "https://web.archive.org/web/20020911100123id_/http://www.armalite.com:80/sales/catalog/rifles/ar180b.htm",
+      "sha256": "e5efe56713cb774b4b5a78fc3d04dd2713feab442ef0b3eaf60343e0d639874e"
+    },
+    {
+      "source_id": "armalite_supersass_catalog",
+      "title": "ArmaLite AR-10 SuperSASS product catalogue page",
+      "url": "https://web.archive.org/web/20060312092515id_/http://www.armalite.com/sales/catalog/rifles/SuperSASS.htm",
+      "sha256": "ac39d12b34e541f82d59e0f0213327ee5aa9845f5852999af1d1680d78019a10"
+    },
+    {
+      "source_id": "barrett_mrad",
+      "title": "Barrett MRAD product page",
+      "url": "https://barrett.net/products/firearms/mrad-standard/"
+    },
+    {
+      "source_id": "dockery_m1a1_thompson",
+      "title": "Dockery Armory weapons reference - M1A1 Thompson",
+      "url": "https://dockeryarmory.com/m1a1-thompson/"
+    }
+  ],
+  "weapons": [
+    {
+      "weapon_id": "awm",
+      "name": "AWM Sniper Rifle",
+      "manufacturer": "Accuracy International",
+      "cartridge": ".338 Lapua Magnum",
+      "barrel_mm": null,
+      "twist_mm": 279.4,
+      "grooves": null,
+      "source_id": "ai_awm",
+      "source_note": "Accuracy International, \"AWM in .338 Lapua Magnum\": \"Barrels in caliber .300 Win Mag AWM are 660mm (26\\\") long and the length of the .338 Lap Mag is 686mm (27\\\"), both using 1 in 11 twist barrels.\" States the .338 Lapua Magnum AWM barrel uses a 1 turn in 11 inch twist = 279.4 mm per turn."
+    },
+    {
+      "weapon_id": "ar10b",
+      "name": "AR-10B Semi-auto Rifle",
+      "manufacturer": "ArmaLite",
+      "cartridge": "7.62×51mm NATO",
+      "barrel_mm": null,
+      "twist_mm": 285.75,
+      "grooves": null,
+      "source_id": "armalite_ar10b_catalog",
+      "source_note": "ArmaLite AR-10B model data: \"BARREL: 20\\\" CHROME LINED\" and \"RIFLING TWIST: RH 1:11.25 INCH\". States a right-hand 1 turn in 11.25 inch twist = 285.75 mm per turn."
+    },
+    {
+      "weapon_id": "ar10supersass",
+      "name": "AR-10 Super SASS Semi-auto Sniper Rifle",
+      "manufacturer": "ArmaLite",
+      "cartridge": "7.62×51mm NATO",
+      "barrel_mm": null,
+      "twist_mm": 285.75,
+      "grooves": null,
+      "source_id": "armalite_supersass_catalog",
+      "source_note": "ArmaLite AR-10 SuperSASS model data: \"BARREL: 24\\\" SST T HEAVY\" and \"RIFLING TWIST: 1:11.25 INCH\". States a 1 turn in 11.25 inch twist = 285.75 mm per turn for the original AR-10 SuperSASS."
+    },
+    {
+      "weapon_id": "ar180b",
+      "name": "AR-180B Semi-auto Rifle",
+      "manufacturer": "ArmaLite",
+      "cartridge": "5.56×45mm NATO",
+      "barrel_mm": null,
+      "twist_mm": 228.6,
+      "grooves": null,
+      "source_id": "armalite_ar180b_catalog",
+      "source_note": "ArmaLite AR-180B model data: \"BARREL: 19.8 CHROME MOLY, RH 1:9 INCH TWIST, NATO CHAMBER\". States a right-hand 1 turn in 9 inch twist = 228.6 mm per turn."
+    },
+    {
+      "weapon_id": "thompsonm1a1",
+      "name": "Thompson M1A1 Submachine Gun",
+      "manufacturer": "Auto-Ordnance",
+      "cartridge": ".45 ACP",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": 6,
+      "source_id": "dockery_m1a1_thompson",
+      "source_note": "Dockery Armory reference entry for the M1A1 Thompson: \"RIFLING (TYPE & TWIST) – 6 Groove, Right hand twist, one turn in 41 cm (16 in)\". States a six-groove right-hand 1 turn in 16 inch twist = 406.4 mm per turn."
+    },
+    {
+      "weapon_id": "mrad",
+      "name": "MRAD Sniper Rifle",
+      "manufacturer": "Barrett",
+      "cartridge": ".338 Lapua Magnum",
+      "barrel_mm": null,
+      "twist_mm": 240.0,
+      "grooves": null,
+      "source_id": "barrett_mrad",
+      "source_note": "Barrett MRAD specifications for the .338 Lapua Magnum configuration: \"Twist Rate 1 : 9.4\\\" (240 mm)\". Barrett states the twist directly in millimetres as 240 mm per turn."
+    }
+  ]
+}

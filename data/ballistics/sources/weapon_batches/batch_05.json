@@ -1,0 +1,151 @@
+{
+  "retrieved": "2026-09-22",
+  "sources": [
+    {
+      "source_id": "gsg5_manual",
+      "title": "German Sport Guns GmbH GSG-5 Handling and Safety Instructions (owner's manual)",
+      "url": "https://archive.org/download/strategic_intelligence_network/weapons/firearms/manuals/germansportguns_gsg5.pdf",
+      "sha256": "665ada508e7555a1a0d762f479dbfb27300a02b6ffa9bb2c0271998ad4a51297"
+    },
+    {
+      "source_id": "gsg522_manual",
+      "title": "German Sport Guns GmbH GSG-522 Handling and Safety Instructions - USA (owner's manual)",
+      "url": "https://archive.org/download/strategic_intelligence_network/weapons/firearms/manuals/germansportguns_gsg522.pdf",
+      "sha256": "b762b227fa283a2030ddb5908a99198482fb6e0bcadcc8046997cae1a262dd6e"
+    },
+    {
+      "source_id": "gsg1911_manual",
+      "title": "German Sport Guns GmbH GSG-1911 Handling and Safety Instructions (owner's manual)",
+      "url": "https://archive.org/download/strategic_intelligence_network/weapons/firearms/manuals/germansportguns_gsg1911.pdf",
+      "sha256": "1e7d9edb3deabf86a4f2300afa77188dce06dd05e6ef3f1de8fec00a161781e5"
+    },
+    {
+      "source_id": "ati_gsg_stg44_manual",
+      "title": "American Tactical Imports / German Sport Guns StG44 .22 LR rifle owner's manual",
+      "url": "https://archive.org/download/strategic_intelligence_network/weapons/firearms/manuals/ati-gsg-stg44.pdf",
+      "sha256": "92ec1456bb42f068e91f7798ef467528f21dade3ebb6d04832b845c73da9abc3"
+    },
+    {
+      "source_id": "lai_famas",
+      "title": "FAMAS, presentation of the French Bullpup - LAI Publications (technical study)",
+      "url": "https://www.laipublications.com/en/famas-presentation-du-bullpup-francais/"
+    },
+    {
+      "source_id": "sar_famas",
+      "title": "The FAMAS Assault Rifle - Small Arms Review",
+      "url": "https://smallarmsreview.com/the-famas-assault-rifle/"
+    },
+    {
+      "source_id": "hk417_technical_data",
+      "title": "Heckler & Koch HK417 Technical Data, Cal. 7.62 mm x 51 NATO (manufacturer technical data sheet)",
+      "url": "https://s3.amazonaws.com/hk-manuals/files/Military/HK417/HK417_Technical_Data.pdf",
+      "sha256": "93587acdeeeea0f5cb21380652509ed40d0ab73eeeb04a11be88cf64e01b506d"
+    },
+    {
+      "source_id": "gunwerks_magnus",
+      "title": "Gunwerks Magnus Rifle System (product page, technical specifications)",
+      "url": "https://www.gunwerks.com/magnus-rifle-system-new"
+    }
+  ],
+  "weapons": [
+    {
+      "weapon_id": "gsg1911",
+      "name": "GSG-1911 .22 LR 1911-style semi-automatic pistol",
+      "manufacturer": "German Sport Guns",
+      "cartridge": ".22 Long Rifle",
+      "barrel_mm": null,
+      "twist_mm": 406.0,
+      "grooves": 6,
+      "source_id": "gsg1911_manual",
+      "source_note": "GSG-1911 owner's manual, technical data: \"Caliber .22 Long Rifle HV\", \"Rifling length 406 mm\", \"Numbers of grooves 6\". In this GSG manual the row \"Rifling length\" is the German Drall-Laenge, that is the rifling twist length, so the twist is one turn in 406 mm with six grooves."
+    },
+    {
+      "weapon_id": "gsg5",
+      "name": "GSG-5 .22 LR MP5-style semi-automatic carbine, 16.3\" barrel",
+      "manufacturer": "German Sport Guns",
+      "cartridge": ".22 Long Rifle",
+      "barrel_mm": null,
+      "twist_mm": 406.0,
+      "grooves": 6,
+      "source_id": "gsg5_manual",
+      "source_note": "GSG-5 owner's manual, technical data for the carbine: \"Caliber .22 Long Rifle HV\", \"Barrel length 414 mm\", \"Rifling length 406 mm\", \"Number of grooves 6\". The \"Rifling length\" row is the twist length (Drall-Laenge), so the twist is one turn in 406 mm with six grooves."
+    },
+    {
+      "weapon_id": "gsg522",
+      "name": "GSG-522 .22 LR MP5-style carbine, A3 collapsible stock",
+      "manufacturer": "German Sport Guns",
+      "cartridge": ".22 Long Rifle",
+      "barrel_mm": null,
+      "twist_mm": 406.0,
+      "grooves": 6,
+      "source_id": "gsg522_manual",
+      "source_note": "GSG-522 owner's manual, technical data columns for \"Carbine\", \"SD-Version\" and \"Pistol\": \"Caliber .22 Long Rifle HV\", \"Barrel length 414 mm\", \"Rifling length 406 mm\", \"Number of grooves 6\". The \"Rifling length\" row is the twist length, so the twist is one turn in 406 mm with six grooves."
+    },
+    {
+      "weapon_id": "stg4422",
+      "name": "STG-44 .22 .22 LR replica of StG 44 assault rifle",
+      "manufacturer": "German Sport Guns",
+      "cartridge": ".22 Long Rifle",
+      "barrel_mm": null,
+      "twist_mm": 406.0,
+      "grooves": 6,
+      "source_id": "ati_gsg_stg44_manual",
+      "source_note": "German Sport Guns StG44 .22 LR owner's manual (ATI import), technical data: \"Rifling length 406 mm / 15,9 inch\", \"Number of grooves 6\". The explicit inch equivalent (15.9 in) confirms this row is the twist length, so the twist is one turn in 406 mm with six grooves."
+    },
+    {
+      "weapon_id": "famasf1",
+      "name": "FAMAS F1 Assault Rifle",
+      "manufacturer": "GIAT Industries",
+      "cartridge": "5.56×45mm NATO",
+      "barrel_mm": null,
+      "twist_mm": 304.8,
+      "grooves": null,
+      "source_id": "lai_famas",
+      "source_note": "LAI Publications technical study: \"The barrel of the FAMAS F1 is originally intended to fire the F1 ammunition, which is a M193 type (3.5 g). It therefore has a twist rate of 1:305mm (1:12 inches).\" One turn in 12 inches is 12 x 25.4 = 304.8 mm. Groove count is not fixed: the study states early F1 barrels had six grooves and later ones three, so grooves is left null."
+    },
+    {
+      "weapon_id": "famasfelin",
+      "name": "FAMAS Felin Assault Rifle",
+      "manufacturer": "GIAT Industries",
+      "cartridge": "5.56×45mm NATO",
+      "barrel_mm": null,
+      "twist_mm": 177.8,
+      "grooves": null,
+      "source_id": "sar_famas",
+      "source_note": "Small Arms Review, in its FELIN (low profile FAMAS) section: the FAMAS used with the FELIN system \"had a new one with a 7-inch twist to ensure the compatibility of the ammunition with those of the MINIMI light machine gun\". One turn in 7 inches is 7 x 25.4 = 177.8 mm. Corroborated by barrel makers quoting Beretta-supplied FELIN kit barrels at 1:7 in. Groove count not stated; left null."
+    },
+    {
+      "weapon_id": "famasg2",
+      "name": "FAMAS G2 Assault Rifle",
+      "manufacturer": "GIAT Industries",
+      "cartridge": "5.56×45mm NATO",
+      "barrel_mm": null,
+      "twist_mm": 228.6,
+      "grooves": 3,
+      "source_id": "lai_famas",
+      "source_note": "LAI Publications technical study: \"The G2 barrel allows the firing of the SS-109 ammunition (4 g), with a twist rate of 1:229 mm (1:9 inches). Like the late versions of the F1, the barrel of our study G2 has three grooves.\" One turn in 9 inches is 9 x 25.4 = 228.6 mm, with three grooves."
+    },
+    {
+      "weapon_id": "magnuslr",
+      "name": "Magnus LR .300 PRC",
+      "manufacturer": "Gunwerks",
+      "cartridge": ".300 PRC",
+      "barrel_mm": null,
+      "twist_mm": 228.6,
+      "grooves": null,
+      "source_id": "gunwerks_magnus",
+      "source_note": "Gunwerks Magnus Rifle System technical specifications: \"Twist Rates: .22 cal - 8 twist, 6mm 7.5 twist, 6.5mm - 8 twist, 7mm 8.5 twist, .30 cal - 9 twist, .338 cal - 9.5 twist, .45 cal - 20 twist, .50 cal 20 twist\", with .300 PRC listed under Calibers Available. The .300 PRC is a .30 calibre chambering, so the twist is 1 turn in 9 inches = 228.6 mm. Groove count not stated; left null."
+    },
+    {
+      "weapon_id": "hk417",
+      "name": "HK417 Sniper Rifle",
+      "manufacturer": "Heckler & Koch",
+      "cartridge": "7.62×51mm NATO",
+      "barrel_mm": null,
+      "twist_mm": 280.0,
+      "grooves": 4,
+      "source_id": "hk417_technical_data",
+      "source_note": "HK417 manufacturer technical data sheet, spec table listing barrel lengths 305 mm, 406 mm and 508 mm: \"Barrel profile/twist - Groove/land profile, 4 grooves, right-hand twist 280 mm\". The twist is 280 mm per turn with four right-hand grooves. The 20 inch (508 mm) HK417 sniper configuration uses the same barrel profile."
+    }
+  ]
+}

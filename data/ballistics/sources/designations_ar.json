@@ -1,0 +1,1245 @@
+{
+  "retrieved": "2026-09-22",
+  "sources": [
+    {
+      "source_id": "tm_9_1005_319_10",
+      "title": "Operator's Manual, Rifle 5.56 MM M16A2/M16A3/M16A4 and Carbine M4/M4A1, TM 9-1005-319-10 (US Army)",
+      "url": "https://cdn.ar15repository.com/wp-content/uploads/20230809205218/OPERATORS-MANUAL-556-MM-M16A2-M16A3-M16A4-M4-and-M4A1-ARMY-TM-9-1005-319-10.October-1998.pdf",
+      "sha256": "aee9f3baabb19b1a25533a202a64140cfa82eb377dc6b5929acbb49f5eb9fc5c"
+    },
+    {
+      "source_id": "fm_23_9",
+      "title": "FM 23-9 M16A1 and M16A2 Rifle Marksmanship (US Army)",
+      "url": "https://ia801508.us.archive.org/10/items/fm239-1989/M16A1%20%26%20M16A2%20Rifle%20Marksmanship%20FM%2023-9_text.pdf",
+      "sha256": "3e3ca9ff8306d6f849edaf5747a86e3aaf5d7d5c5891537c12713f16aaccd9dd"
+    },
+    {
+      "source_id": "tm_9_1005_249_10",
+      "title": "Operator's Manual, Rifle 5.56-MM M16 and M16A1, TM 9-1005-249-10 (US Army)",
+      "url": "https://cdn.ar15repository.com/wp-content/uploads/20230809205746/TM-9-1005-249-10-February-1985-OPERATORS-MANUAL-556-MM-M16-M16A1.pdf",
+      "sha256": "cd223a7acae85a33c07bc5b44d8652964671f0f9f1421c7b0ebe3df5e00ccd26"
+    },
+    {
+      "source_id": "tm_9_1005_309_10",
+      "title": "Operator's Manual, Submachine Gun 5.56-MM Port Firing M231, TM 9-1005-309-10 (US Army)",
+      "url": "https://archive.org/download/m231-fpw-manuals/5142.pdf",
+      "sha256": "3e00929e285502ad015c987fd300cae4d7e88d311637f8815457709d0789cdb2"
+    },
+    {
+      "source_id": "kac_m110",
+      "title": "Knight's Armament Company M110 SASS (Export Version) product datasheet",
+      "url": "https://www.knightarmco.com/wp-content/uploads/2018/02/m110_exportversion.pdf",
+      "sha256": "0f1600b0c3fbf7e8037dc043c9d5ae10a7520c4654137e16732e4ec5136882fe"
+    },
+    {
+      "source_id": "hk416_manual",
+      "title": "HK416 Enhanced Carbine & Rifle System Operator's Manual, Heckler & Koch",
+      "url": "https://s3.amazonaws.com/hk-manuals/files/Military/HK416/HK416_Operators_Manual.pdf",
+      "sha256": "1feece4f94f80b3bb7d09d5ec0ab0ffd07ee58a65f09cbfa35bc79f97dd7e936"
+    },
+    {
+      "source_id": "hk416_a5",
+      "title": "HK 416 / HK416-A5 5.56mm x 45 Information Sheet, HK USA",
+      "url": "https://hk-usa.com/wp-content/uploads/2023/09/HK416_HK416-A5-Info-Sheet.pdf",
+      "sha256": "45eeb25a62602b0ba2fe6f66218e5fb25715d69d483211ecc2e31e331e8f5de0"
+    },
+    {
+      "source_id": "hk417_techdata",
+      "title": "HK417 Cal. 7.62 mm x 51 NATO Technical Data, Heckler & Koch",
+      "url": "https://s3.amazonaws.com/hk-manuals/files/Military/HK417/HK417_Technical_Data.pdf",
+      "sha256": "93587acdeeeea0f5cb21380652509ed40d0ab73eeeb04a11be88cf64e01b506d"
+    },
+    {
+      "source_id": "hk_m27",
+      "title": "M27 Infantry Automatic Rifle product sheet, Heckler & Koch",
+      "url": "https://mantadefense.com/wp-content/uploads/2017/11/m27_productsheet.pdf",
+      "sha256": "7eb6819394573e9fc6630eb43ebd8e9920e39421f68a5596f8a84bb9f6ad2b68"
+    },
+    {
+      "source_id": "coltcanada_c7",
+      "title": "Operator's Manual, C7 Family of Combat Weapons, Colt Canada",
+      "url": "https://www.coltcanada.com/wp-content/uploads/2021/04/10047s-1-2005-08-17.pdf",
+      "sha256": "03a0a5e2cd9ee87e82fc545ad11853a3649847c2ecc83ac3f34cb7f33aef4f4b"
+    },
+    {
+      "source_id": "lmt_mars",
+      "title": "LMT Defense MARS-L 5.56 (CQBMLK16-MARS) product page",
+      "url": "https://lmtdefense.com/product/mlc/",
+      "sha256": null
+    },
+    {
+      "source_id": "lmt",
+      "title": "LMT Defense product line (Lewis Machine & Tool)",
+      "url": "https://lmtdefense.com/product/",
+      "sha256": null
+    },
+    {
+      "source_id": "kac_sr25",
+      "title": "Knight's Armament Company SR-25 K3 product page",
+      "url": "https://www.knightarmco.com/38662/shop/commercial-firearms/sr-25/sr-25-k3",
+      "sha256": null
+    },
+    {
+      "source_id": "kac_sr15",
+      "title": "Knight's Armament Company SR-15 KS-1 product page",
+      "url": "https://www.knightarmco.com/38630/shop/commercial-firearms/sr-15/sr-15-ks-1",
+      "sha256": null
+    },
+    {
+      "source_id": "fn_scar",
+      "title": "FN SCAR family, FN Herstal (defence products)",
+      "url": "https://fnherstal.com/en/",
+      "sha256": null
+    },
+    {
+      "source_id": "sig_sauer",
+      "title": "SIG SAUER firearms product line",
+      "url": "https://www.sigsauer.com/firearms.html",
+      "sha256": null
+    },
+    {
+      "source_id": "sig_m400",
+      "title": "SIG SAUER M400 series product page",
+      "url": "https://www.sigsauer.com/firearms/rifles-pistols/sig-m400.html",
+      "sha256": null
+    },
+    {
+      "source_id": "sig_mcx_spear",
+      "title": "SIG SAUER MCX-SPEAR 6.8x51 product page",
+      "url": "https://www.sigsauer.com/mcx-spear-6-8-x-51.html",
+      "sha256": null
+    },
+    {
+      "source_id": "sig_lmg",
+      "title": "SIG SAUER SOF Machine Gun Section (XM250 / SIG LMG)",
+      "url": "https://www.sigsauer.com/media/sigsauer/resources/SOF_MachineGun_Section.pdf",
+      "sha256": null
+    },
+    {
+      "source_id": "ruger_ar556",
+      "title": "Ruger AR-556 rifle specification sheet",
+      "url": "https://ruger.com/products/ar556/specSheets/8500.html",
+      "sha256": null
+    },
+    {
+      "source_id": "dd_ddm4",
+      "title": "Daniel Defense DDM4 V7 product page",
+      "url": "https://danieldefense.com/ddm4-v7.html",
+      "sha256": null
+    },
+    {
+      "source_id": "springfield_saint",
+      "title": "Springfield Armory SAINT series rifles",
+      "url": "https://www.springfield-armory.com/saint-series/",
+      "sha256": null
+    },
+    {
+      "source_id": "bcm",
+      "title": "Bravo Company USA (BCM) 18 inch SS410 rifle upper group",
+      "url": "https://bravocompanyusa.com/18-rifle-upper-group/",
+      "sha256": null
+    },
+    {
+      "source_id": "noveske",
+      "title": "Noveske Rifleworks rifles collection",
+      "url": "https://noveske.com/collections/rifles",
+      "sha256": null
+    },
+    {
+      "source_id": "geissele",
+      "title": "Geissele Automatics Super Duty 5.56 rifles",
+      "url": "https://geissele.com/firearms/super-duty-5-56/rifles.html",
+      "sha256": null
+    },
+    {
+      "source_id": "aero",
+      "title": "Aero Precision AR-15 product line",
+      "url": "https://www.aeroprecisionusa.com/ar15",
+      "sha256": null
+    },
+    {
+      "source_id": "windham",
+      "title": "Windham Weaponry firearms",
+      "url": "https://www.windhamweaponry.com/",
+      "sha256": null
+    },
+    {
+      "source_id": "rra",
+      "title": "Rock River Arms firearms",
+      "url": "https://www.rockriverarms.com/",
+      "sha256": null
+    },
+    {
+      "source_id": "dpms",
+      "title": "DPMS Panther Arms firearms",
+      "url": "https://dpmsinc.com/",
+      "sha256": null
+    },
+    {
+      "source_id": "bushmaster",
+      "title": "Bushmaster Firearms",
+      "url": "https://www.bushmaster.com/",
+      "sha256": null
+    },
+    {
+      "source_id": "barrett",
+      "title": "Barrett Firearms product line",
+      "url": "https://www.barrett.net/",
+      "sha256": null
+    },
+    {
+      "source_id": "barrett_rec7",
+      "title": "Barrett REC7 rifle product page",
+      "url": "https://www.barrett.net/products/firearms/rec7",
+      "sha256": null
+    },
+    {
+      "source_id": "barrett_rec10",
+      "title": "Barrett REC10 rifle product page",
+      "url": "https://www.barrett.net/products/firearms/rec10",
+      "sha256": null
+    },
+    {
+      "source_id": "remington",
+      "title": "Remington Arms firearms",
+      "url": "https://www.remington.com/",
+      "sha256": null
+    },
+    {
+      "source_id": "armalite",
+      "title": "ArmaLite Inc. rifles",
+      "url": "https://armalite.com/",
+      "sha256": null
+    },
+    {
+      "source_id": "armalite_manual",
+      "title": "Operator's Manual for all AR-10B and M15 Series Rifles, ArmaLite Inc.",
+      "url": "https://powderandball.com/manuals/armalite_ar10_and_m15_owners_manual.pdf",
+      "sha256": "19bf50060b3239ffe065321832d8be365f459efa14d76edc39bd948375c78f3e"
+    },
+    {
+      "source_id": "hk_g28",
+      "title": "G28 Designated Marksman Rifle, Heckler & Koch",
+      "url": "https://www.heckler-koch.com/en/Products/Military%20and%20Law%20Enforcement/Designated%20marksman%20rifles/G28",
+      "sha256": null
+    },
+    {
+      "source_id": "hk417_product",
+      "title": "HK417 assault rifle, Heckler & Koch",
+      "url": "https://www.heckler-koch.com/en/Products/Military%20and%20Law%20Enforcement/Assault%20rifles/HK417",
+      "sha256": null
+    },
+    {
+      "source_id": "colt",
+      "title": "Colt's Manufacturing Company firearms",
+      "url": "https://www.colt.com/",
+      "sha256": null
+    },
+    {
+      "source_id": "smith_wesson",
+      "title": "Smith & Wesson firearms",
+      "url": "https://www.smith-wesson.com/",
+      "sha256": null
+    },
+    {
+      "source_id": "firearmsnews_lmt",
+      "title": "LM&T Sharpshooter System (L129A1), Firearms News",
+      "url": "https://www.firearmsnews.com/editorial/lmt-sharpshooter-system/78393",
+      "sha256": null
+    },
+    {
+      "source_id": "forgotten_weapons_l119a2",
+      "title": "L119A2: The New British SOF Rifle, Forgotten Weapons",
+      "url": "https://www.forgottenweapons.com/l119a2-the-new-british-sof-rifle/",
+      "sha256": null
+    },
+    {
+      "source_id": "snipercentral_mk12",
+      "title": "MK 12 SPR specifications, Sniper Central",
+      "url": "https://snipercentral.com/mk12-spr/",
+      "sha256": null
+    },
+    {
+      "source_id": "military_factory",
+      "title": "Military Factory small arms reference",
+      "url": "https://www.militaryfactory.com/smallarms/",
+      "sha256": null
+    },
+    {
+      "source_id": "coltcanada",
+      "title": "Colt Canada product line",
+      "url": "https://www.coltcanada.com/",
+      "sha256": null
+    }
+  ],
+  "designations": [
+    {
+      "designation": "AR-15",
+      "nation": "United States",
+      "weapon": "ArmaLite/Colt AR-15",
+      "weapon_key": "ar15",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": null,
+      "map_source_id": "colt",
+      "twist_source_id": null,
+      "note": "Colt commercial AR-15; early barrels used 1:14 and 1:12 twists, no twist stated on cited page."
+    },
+    {
+      "designation": "AR-15A1",
+      "nation": "United States",
+      "weapon": "Colt AR-15A1",
+      "weapon_key": "ar15a1",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": null,
+      "map_source_id": "colt",
+      "twist_source_id": null,
+      "note": "Colt commercial model."
+    },
+    {
+      "designation": "AR-15A2",
+      "nation": "United States",
+      "weapon": "Colt AR-15A2",
+      "weapon_key": "ar15a2",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": null,
+      "map_source_id": "colt",
+      "twist_source_id": null,
+      "note": "Colt commercial model."
+    },
+    {
+      "designation": "AR-15A3",
+      "nation": "United States",
+      "weapon": "Colt AR-15A3 Tactical Carbine",
+      "weapon_key": "ar15a3",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": null,
+      "map_source_id": "colt",
+      "twist_source_id": null,
+      "note": "Colt commercial model."
+    },
+    {
+      "designation": "AR-15A4",
+      "nation": "United States",
+      "weapon": "Colt AR-15A4",
+      "weapon_key": "ar15a4",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": null,
+      "map_source_id": "colt",
+      "twist_source_id": null,
+      "note": "Colt commercial model."
+    },
+    {
+      "designation": "M16",
+      "nation": "United States",
+      "weapon": "Colt M16 Rifle",
+      "weapon_key": "m16",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": null,
+      "map_source_id": "tm_9_1005_249_10",
+      "twist_source_id": null,
+      "note": "Manual covers Rifle 5.56-MM M16 and M16A1."
+    },
+    {
+      "designation": "XM16E1",
+      "nation": "United States",
+      "weapon": "Colt XM16E1",
+      "weapon_key": "xm16e1",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": null,
+      "map_source_id": "tm_9_1005_249_10",
+      "twist_source_id": null,
+      "note": "Experimental/pre-production M16 adopted as the M16A1; operator manual covers M16/M16A1 family."
+    },
+    {
+      "designation": "M16A1",
+      "nation": "United States",
+      "weapon": "Colt M16A1 Rifle",
+      "weapon_key": "m16a1",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": 304.8,
+      "map_source_id": "tm_9_1005_249_10",
+      "twist_source_id": "fm_23_9",
+      "note": "FM 23-9: 'The M16A1 has a 1:12 barrel twist.'"
+    },
+    {
+      "designation": "M16A2",
+      "nation": "United States",
+      "weapon": "Colt M16A2 Rifle",
+      "weapon_key": "m16a2",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": 177.8,
+      "map_source_id": "tm_9_1005_319_10",
+      "twist_source_id": "tm_9_1005_319_10",
+      "note": "TM 9-1005-319-10: 'Rifling (RH 1/7 twist)'."
+    },
+    {
+      "designation": "M16A3",
+      "nation": "United States",
+      "weapon": "Colt M16A3 Rifle",
+      "weapon_key": "m16a3",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": 177.8,
+      "map_source_id": "tm_9_1005_319_10",
+      "twist_source_id": "tm_9_1005_319_10",
+      "note": "TM covers M16A3; rifling RH 1/7 twist."
+    },
+    {
+      "designation": "M16A4",
+      "nation": "United States",
+      "weapon": "Colt M16A4 Rifle",
+      "weapon_key": "m16a4",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": 177.8,
+      "map_source_id": "tm_9_1005_319_10",
+      "twist_source_id": "tm_9_1005_319_10",
+      "note": "TM covers M16A4; rifling RH 1/7 twist."
+    },
+    {
+      "designation": "M4",
+      "nation": "United States",
+      "weapon": "Colt M4 Carbine",
+      "weapon_key": "m4",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": 177.8,
+      "map_source_id": "tm_9_1005_319_10",
+      "twist_source_id": "tm_9_1005_319_10",
+      "note": "TM covers M4; rifling RH 1/7 twist."
+    },
+    {
+      "designation": "M4A1",
+      "nation": "United States",
+      "weapon": "Colt M4A1 Carbine",
+      "weapon_key": "m4a1",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": 177.8,
+      "map_source_id": "tm_9_1005_319_10",
+      "twist_source_id": "tm_9_1005_319_10",
+      "note": "TM covers M4A1; rifling RH 1/7 twist."
+    },
+    {
+      "designation": "M4 MWS",
+      "nation": "United States",
+      "weapon": "Colt M4 Modular Weapon System",
+      "weapon_key": "m4_mws",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": 177.8,
+      "map_source_id": "tm_9_1005_319_10",
+      "twist_source_id": "tm_9_1005_319_10",
+      "note": "Rail-equipped M4; same barrel as M4."
+    },
+    {
+      "designation": "M4A1 Block II",
+      "nation": "United States",
+      "weapon": "Colt M4A1 (SOPMOD Block II)",
+      "weapon_key": "m4a1_block2",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": null,
+      "map_source_id": "tm_9_1005_319_10",
+      "twist_source_id": null,
+      "note": "USSOCOM SOPMOD Block II configuration of the M4A1; no distinct twist published in cited source."
+    },
+    {
+      "designation": "XM4",
+      "nation": "United States",
+      "weapon": "Colt XM4 Carbine",
+      "weapon_key": "xm4",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": null,
+      "map_source_id": "tm_9_1005_319_10",
+      "twist_source_id": null,
+      "note": "Interim designation of the M4 carbine."
+    },
+    {
+      "designation": "M231",
+      "nation": "United States",
+      "weapon": "Colt M231 Firing Port Weapon",
+      "weapon_key": "m231",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": null,
+      "map_source_id": "tm_9_1005_309_10",
+      "twist_source_id": null,
+      "note": "Firing port weapon for the M2 Bradley. Twist not stated in cited operator manual."
+    },
+    {
+      "designation": "M27 IAR",
+      "nation": "United States",
+      "weapon": "Heckler & Koch M27 Infantry Automatic Rifle",
+      "weapon_key": "m27_iar",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": 177.8,
+      "map_source_id": "hk_m27",
+      "twist_source_id": "hk_m27",
+      "note": "M27 sheet: 'Rifling 1 in 7 inches, right-hand twist, 6 grooves'."
+    },
+    {
+      "designation": "M38 DMR",
+      "nation": "United States",
+      "weapon": "Heckler & Koch M38 Squad Designated Marksman Rifle",
+      "weapon_key": "m38_dmr",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": 177.8,
+      "map_source_id": "hk416_a5",
+      "twist_source_id": "hk416_a5",
+      "note": "HK416-A5 sheet: M38 SDMR is the M27 (HK416); '1 in 7 right hand twist'."
+    },
+    {
+      "designation": "M110 SASS",
+      "nation": "United States",
+      "weapon": "Knight's Armament M110 Semi-Automatic Sniper System",
+      "weapon_key": "m110_sass",
+      "chambering": "7.62x51mm NATO",
+      "twist_mm": 279.4,
+      "map_source_id": "kac_m110",
+      "twist_source_id": "kac_m110",
+      "note": "KAC datasheet: 'Barrel 20in 1:11 5R Cut Rifled Barrel'. Differs from the 7.62 chambering standard."
+    },
+    {
+      "designation": "M110A1 CSASS",
+      "nation": "United States",
+      "weapon": "Heckler & Koch M110A1 CSASS (G28E)",
+      "weapon_key": "m110a1",
+      "chambering": "7.62x51mm NATO",
+      "twist_mm": null,
+      "map_source_id": "hk_g28",
+      "twist_source_id": null,
+      "note": "US Army designation of the HK G28E, developed from the HK417; twist not stated on cited G28 page."
+    },
+    {
+      "designation": "M110A1 SDMR",
+      "nation": "United States",
+      "weapon": "Heckler & Koch M110A1 SDMR",
+      "weapon_key": "m110a1_sdmr",
+      "chambering": "7.62x51mm NATO",
+      "twist_mm": null,
+      "map_source_id": "hk_g28",
+      "twist_source_id": null,
+      "note": "Squad designated marksman variant of the M110A1; HK417/G28 based."
+    },
+    {
+      "designation": "Mk 11 Mod 0",
+      "nation": "United States",
+      "weapon": "Knight's Armament Mk 11 Mod 0",
+      "weapon_key": "mk11",
+      "chambering": "7.62x51mm NATO",
+      "twist_mm": 279.4,
+      "map_source_id": "kac_m110",
+      "twist_source_id": "kac_m110",
+      "note": "KAC M110 datasheet describes the M110 as an evolution of the original Mk 11 with the same 1:11 5R barrel."
+    },
+    {
+      "designation": "Mk 12 Mod 0/1",
+      "nation": "United States",
+      "weapon": "Naval Surface Warfare Center Mk 12 Special Purpose Rifle",
+      "weapon_key": "mk12",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": 177.8,
+      "map_source_id": "snipercentral_mk12",
+      "twist_source_id": "snipercentral_mk12",
+      "note": "Mk 12 SPR: Douglas 18 inch barrel, 1:7 twist."
+    },
+    {
+      "designation": "Mk 18 Mod 0/1",
+      "nation": "United States",
+      "weapon": "Colt Mk 18 Close Quarters Battle Receiver",
+      "weapon_key": "mk18",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": null,
+      "map_source_id": "military_factory",
+      "twist_source_id": null,
+      "note": "USSOCOM CQBR conversion of the M4A1 carbine; no twist published in cited reference."
+    },
+    {
+      "designation": "M25",
+      "nation": "United States",
+      "weapon": "Springfield Armory M25 (M14 derivative)",
+      "weapon_key": "m25",
+      "chambering": "7.62x51mm NATO",
+      "twist_mm": null,
+      "map_source_id": "military_factory",
+      "twist_source_id": null,
+      "note": "Not an AR-pattern weapon; built on the M14."
+    },
+    {
+      "designation": "M39 EMR",
+      "nation": "United States",
+      "weapon": "USMC M39 Enhanced Marksman Rifle (M14 derivative)",
+      "weapon_key": "m39_emr",
+      "chambering": "7.62x51mm NATO",
+      "twist_mm": null,
+      "map_source_id": "military_factory",
+      "twist_source_id": null,
+      "note": "Not an AR-pattern weapon; built on the M14."
+    },
+    {
+      "designation": "M468",
+      "nation": "United States",
+      "weapon": "Barrett M468",
+      "weapon_key": "m468",
+      "chambering": "6.8mm Rem SPC",
+      "twist_mm": null,
+      "map_source_id": "barrett_rec7",
+      "twist_source_id": null,
+      "note": "Barrett 6.8mm AR-pattern carbine; retired in favour of the REC7."
+    },
+    {
+      "designation": "Mk 16 Mod 0",
+      "nation": "United States",
+      "weapon": "FN SCAR-L (Mk 16 Mod 0)",
+      "weapon_key": "mk16",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": 177.8,
+      "map_source_id": "fn_scar",
+      "twist_source_id": "fn_scar",
+      "note": "FN SCAR-L; Mk 16 family barrels are 1 in 7, equal to the 5.56 standard."
+    },
+    {
+      "designation": "Mk 17 Mod 0",
+      "nation": "United States",
+      "weapon": "FN SCAR-H (Mk 17 Mod 0)",
+      "weapon_key": "mk17",
+      "chambering": "7.62x51mm NATO",
+      "twist_mm": 304.8,
+      "map_source_id": "fn_scar",
+      "twist_source_id": "fn_scar",
+      "note": "FN SCAR-H; Mk 17 family barrels are 1 in 12 (304.8 mm), equal to the 7.62 standard."
+    },
+    {
+      "designation": "Mk 20 Mod 0 SSR",
+      "nation": "United States",
+      "weapon": "FN SCAR-H SSR (Mk 20 Mod 0)",
+      "weapon_key": "mk20_ssr",
+      "chambering": "7.62x51mm NATO",
+      "twist_mm": null,
+      "map_source_id": "fn_scar",
+      "twist_source_id": null,
+      "note": "Sniper Support Rifle based on the SCAR-H."
+    },
+    {
+      "designation": "HK416",
+      "nation": "Germany",
+      "weapon": "Heckler & Koch HK416",
+      "weapon_key": "hk416",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": 177.8,
+      "map_source_id": "hk416_manual",
+      "twist_source_id": "hk416_manual",
+      "note": "HK416 operator manual: 'Barrel twist: 178 mm (1 in 7 right hand twist)'."
+    },
+    {
+      "designation": "HK416A5",
+      "nation": "Germany",
+      "weapon": "Heckler & Koch HK416A5",
+      "weapon_key": "hk416a5",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": 177.8,
+      "map_source_id": "hk416_a5",
+      "twist_source_id": "hk416_a5",
+      "note": "HK USA sheet: '1 in 7 right hand twist rifling'."
+    },
+    {
+      "designation": "HK416A7",
+      "nation": "Germany",
+      "weapon": "Heckler & Koch HK416A7 (G95)",
+      "weapon_key": "hk416a7",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": null,
+      "map_source_id": "hk416_a5",
+      "twist_source_id": null,
+      "note": "A7/G95 not covered by the cited info sheet; no twist published there."
+    },
+    {
+      "designation": "HK417",
+      "nation": "Germany",
+      "weapon": "Heckler & Koch HK417",
+      "weapon_key": "hk417",
+      "chambering": "7.62x51mm NATO",
+      "twist_mm": 279.4,
+      "map_source_id": "hk417_techdata",
+      "twist_source_id": "hk417_techdata",
+      "note": "HK417 Technical Data: '4 grooves, right-hand twist 280 mm' (279.4 mm = 1 turn in 11 in)."
+    },
+    {
+      "designation": "HK417A2",
+      "nation": "Germany",
+      "weapon": "Heckler & Koch HK417A2",
+      "weapon_key": "hk417a2",
+      "chambering": "7.62x51mm NATO",
+      "twist_mm": null,
+      "map_source_id": "hk417_product",
+      "twist_source_id": null,
+      "note": "A2 variant; no twist stated on the cited HK417 page."
+    },
+    {
+      "designation": "G27",
+      "nation": "Germany",
+      "weapon": "Heckler & Koch HK417 (Bundeswehr G27)",
+      "weapon_key": "g27",
+      "chambering": "7.62x51mm NATO",
+      "twist_mm": null,
+      "map_source_id": "hk417_product",
+      "twist_source_id": null,
+      "note": "German service designation of the HK417; twist not stated in cited source."
+    },
+    {
+      "designation": "G28",
+      "nation": "Germany",
+      "weapon": "Heckler & Koch G28",
+      "weapon_key": "g28",
+      "chambering": "7.62x51mm NATO",
+      "twist_mm": null,
+      "map_source_id": "hk_g28",
+      "twist_source_id": null,
+      "note": "Designated marksman rifle derived from the HK417/MR308; twist not stated on cited page."
+    },
+    {
+      "designation": "G38",
+      "nation": "Germany",
+      "weapon": "Heckler & Koch HK417 variant (reported G38)",
+      "weapon_key": "g38",
+      "chambering": "7.62x51mm NATO",
+      "twist_mm": null,
+      "map_source_id": "hk417_product",
+      "twist_source_id": null,
+      "note": "Reported German designation for an HK417 variant; not confirmed by the cited primary source."
+    },
+    {
+      "designation": "G95",
+      "nation": "Germany",
+      "weapon": "Heckler & Koch HK416A7 (G95)",
+      "weapon_key": "g95",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": null,
+      "map_source_id": "hk416_a5",
+      "twist_source_id": null,
+      "note": "German service designation of the HK416A7; no twist published in cited sheet."
+    },
+    {
+      "designation": "MR556",
+      "nation": "United States",
+      "weapon": "Heckler & Koch MR556",
+      "weapon_key": "mr556",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": 177.8,
+      "map_source_id": "hk416_a5",
+      "twist_source_id": "hk416_a5",
+      "note": "US semi-automatic build of the HK416; sheet states 1 in 7 right hand twist."
+    },
+    {
+      "designation": "MR762",
+      "nation": "United States",
+      "weapon": "Heckler & Koch MR762",
+      "weapon_key": "mr762",
+      "chambering": "7.62x51mm NATO",
+      "twist_mm": null,
+      "map_source_id": "hk416_a5",
+      "twist_source_id": null,
+      "note": "US semi-automatic build of the HK417; twist not stated in cited sheet."
+    },
+    {
+      "designation": "MARS-L",
+      "nation": "United States",
+      "weapon": "LMT MARS-L",
+      "weapon_key": "mars_l",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": 177.8,
+      "map_source_id": "lmt_mars",
+      "twist_source_id": "lmt_mars",
+      "note": "LMT: '16in 5.56x45 chrome lined 1:7 RH Twist Barrel'."
+    },
+    {
+      "designation": "MARS-H",
+      "nation": "United States",
+      "weapon": "LMT MARS-H",
+      "weapon_key": "mars_h",
+      "chambering": "7.62x51mm NATO",
+      "twist_mm": null,
+      "map_source_id": "lmt",
+      "twist_source_id": null,
+      "note": "7.62 LMT MARS variant; twist not stated on cited page."
+    },
+    {
+      "designation": "L129A1",
+      "nation": "United Kingdom",
+      "weapon": "LMT L129A1 Sharpshooter Rifle",
+      "weapon_key": "l129a1",
+      "chambering": "7.62x51mm NATO",
+      "twist_mm": 285.75,
+      "map_source_id": "firearmsnews_lmt",
+      "twist_source_id": "firearmsnews_lmt",
+      "note": "LMT Sharpshooter (L129A1): 16 inch stainless barrel, 1:11.25 twist (285.75 mm). Differs from the 7.62 standard."
+    },
+    {
+      "designation": "L119A1",
+      "nation": "United Kingdom",
+      "weapon": "Colt Canada C8 SFW (L119A1)",
+      "weapon_key": "l119a1",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": 177.8,
+      "map_source_id": "forgotten_weapons_l119a2",
+      "twist_source_id": "coltcanada_c7",
+      "note": "UK designation of the Colt Canada C8 SFW; C7 family barrel is 6 grooves, 1 in 17.8 cm."
+    },
+    {
+      "designation": "L119A2",
+      "nation": "United Kingdom",
+      "weapon": "Colt Canada C8 IUR (L119A2)",
+      "weapon_key": "l119a2",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": 177.8,
+      "map_source_id": "forgotten_weapons_l119a2",
+      "twist_source_id": "coltcanada_c7",
+      "note": "UK designation of the Colt Canada C8 IUR; 1-in-7 twist."
+    },
+    {
+      "designation": "C7",
+      "nation": "Canada",
+      "weapon": "Diemaco/Colt Canada C7",
+      "weapon_key": "c7",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": 177.8,
+      "map_source_id": "coltcanada_c7",
+      "twist_source_id": "coltcanada_c7",
+      "note": "Colt Canada manual: '6 grooves, 1 in 17.8 cm' (178 mm)."
+    },
+    {
+      "designation": "C7A1",
+      "nation": "Canada",
+      "weapon": "Colt Canada C7A1",
+      "weapon_key": "c7a1",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": 177.8,
+      "map_source_id": "coltcanada_c7",
+      "twist_source_id": "coltcanada_c7",
+      "note": "C7 family, 1 in 17.8 cm rifling."
+    },
+    {
+      "designation": "C7A2",
+      "nation": "Canada",
+      "weapon": "Colt Canada C7A2",
+      "weapon_key": "c7a2",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": 177.8,
+      "map_source_id": "coltcanada_c7",
+      "twist_source_id": "coltcanada_c7",
+      "note": "C7 family, 1 in 17.8 cm rifling."
+    },
+    {
+      "designation": "C8",
+      "nation": "Canada",
+      "weapon": "Colt Canada C8 Carbine",
+      "weapon_key": "c8",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": 177.8,
+      "map_source_id": "coltcanada_c7",
+      "twist_source_id": "coltcanada_c7",
+      "note": "C8 listed in the C7 family manual; 1 in 17.8 cm rifling."
+    },
+    {
+      "designation": "C8A1",
+      "nation": "Canada",
+      "weapon": "Colt Canada C8A1",
+      "weapon_key": "c8a1",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": 177.8,
+      "map_source_id": "coltcanada_c7",
+      "twist_source_id": "coltcanada_c7",
+      "note": "C8 family, 1 in 17.8 cm rifling."
+    },
+    {
+      "designation": "C8A2",
+      "nation": "Canada",
+      "weapon": "Colt Canada C8A2",
+      "weapon_key": "c8a2",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": null,
+      "map_source_id": "coltcanada",
+      "twist_source_id": null,
+      "note": "Later C8 variant; no twist published in cited source."
+    },
+    {
+      "designation": "C8A3",
+      "nation": "Canada",
+      "weapon": "Colt Canada C8A3",
+      "weapon_key": "c8a3",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": null,
+      "map_source_id": "coltcanada",
+      "twist_source_id": null,
+      "note": "Later C8 variant; no twist published in cited source."
+    },
+    {
+      "designation": "C20 DMR",
+      "nation": "Canada",
+      "weapon": "Colt Canada C20 Designated Marksman Rifle",
+      "weapon_key": "c20",
+      "chambering": "7.62x51mm NATO",
+      "twist_mm": null,
+      "map_source_id": "coltcanada",
+      "twist_source_id": null,
+      "note": "Colt Canada 7.62 DMR; twist not stated on cited page."
+    },
+    {
+      "designation": "Colt Canada MRR",
+      "nation": "Canada",
+      "weapon": "Colt Canada Modular Rail Rifle",
+      "weapon_key": "mrr",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": null,
+      "map_source_id": "coltcanada",
+      "twist_source_id": null,
+      "note": "Colt Canada Modular Rail Rifle; twist not stated on cited page."
+    },
+    {
+      "designation": "SR-15",
+      "nation": "United States",
+      "weapon": "Knight's Armament SR-15",
+      "weapon_key": "sr15",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": null,
+      "map_source_id": "kac_sr15",
+      "twist_source_id": null,
+      "note": "KAC SR-15; twist not stated on cited product page."
+    },
+    {
+      "designation": "SR-16",
+      "nation": "United States",
+      "weapon": "Knight's Armament SR-16",
+      "weapon_key": "sr16",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": null,
+      "map_source_id": "kac_sr15",
+      "twist_source_id": null,
+      "note": "KAC SR-16; full-auto SR-15 variant."
+    },
+    {
+      "designation": "SR-25",
+      "nation": "United States",
+      "weapon": "Knight's Armament SR-25",
+      "weapon_key": "sr25",
+      "chambering": "7.62x51mm NATO",
+      "twist_mm": 254.0,
+      "map_source_id": "kac_sr25",
+      "twist_source_id": "kac_sr25",
+      "note": "KAC SR-25 K3: '16in, 5R cut rifled, 416R SS, 1:10 twist'. Differs from the 7.62 standard."
+    },
+    {
+      "designation": "SIG M400",
+      "nation": "United States",
+      "weapon": "SIG SAUER M400",
+      "weapon_key": "sig_m400",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": 177.8,
+      "map_source_id": "sig_m400",
+      "twist_source_id": "sig_m400",
+      "note": "M400 16 inch barrel, 1:7 twist (equal to the 5.56 standard)."
+    },
+    {
+      "designation": "SIG516",
+      "nation": "United States",
+      "weapon": "SIG SAUER SIG516",
+      "weapon_key": "sig516",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": null,
+      "map_source_id": "sig_sauer",
+      "twist_source_id": null,
+      "note": "SIG 5.56 AR-pattern rifle; twist not stated in cited source."
+    },
+    {
+      "designation": "SIG716",
+      "nation": "United States",
+      "weapon": "SIG SAUER SIG716",
+      "weapon_key": "sig716",
+      "chambering": "7.62x51mm NATO",
+      "twist_mm": null,
+      "map_source_id": "sig_sauer",
+      "twist_source_id": null,
+      "note": "SIG 7.62 AR-pattern rifle; twist not stated in cited source."
+    },
+    {
+      "designation": "SIG MCX",
+      "nation": "United States",
+      "weapon": "SIG SAUER MCX",
+      "weapon_key": "sig_mcx",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": null,
+      "map_source_id": "sig_sauer",
+      "twist_source_id": null,
+      "note": "SIG MCX; twist not stated in cited source."
+    },
+    {
+      "designation": "SIG MCX Spear",
+      "nation": "United States",
+      "weapon": "SIG SAUER MCX-SPEAR",
+      "weapon_key": "mcx_spear",
+      "chambering": "6.8x51mm",
+      "twist_mm": null,
+      "map_source_id": "sig_mcx_spear",
+      "twist_source_id": null,
+      "note": "SIG lists a 1:7 twist for the MCX-SPEAR; not confirmed in a downloaded datasheet."
+    },
+    {
+      "designation": "XM5",
+      "nation": "United States",
+      "weapon": "SIG SAUER MCX-SPEAR (XM5)",
+      "weapon_key": "xm5",
+      "chambering": "6.8x51mm",
+      "twist_mm": null,
+      "map_source_id": "sig_mcx_spear",
+      "twist_source_id": null,
+      "note": "Original NGSW designation of the MCX-SPEAR, later XM7."
+    },
+    {
+      "designation": "XM7",
+      "nation": "United States",
+      "weapon": "SIG SAUER MCX-SPEAR (XM7)",
+      "weapon_key": "xm7",
+      "chambering": "6.8x51mm",
+      "twist_mm": null,
+      "map_source_id": "sig_mcx_spear",
+      "twist_source_id": null,
+      "note": "US Army NGSW-Rifle designation of the MCX-SPEAR, later M7."
+    },
+    {
+      "designation": "M7",
+      "nation": "United States",
+      "weapon": "SIG SAUER M7 (MCX-SPEAR)",
+      "weapon_key": "m7",
+      "chambering": "6.8x51mm",
+      "twist_mm": null,
+      "map_source_id": "sig_mcx_spear",
+      "twist_source_id": null,
+      "note": "Adopted US Army designation of the XM7."
+    },
+    {
+      "designation": "XM250",
+      "nation": "United States",
+      "weapon": "SIG SAUER SIG LMG-6.8 (XM250)",
+      "weapon_key": "xm250",
+      "chambering": "6.8x51mm",
+      "twist_mm": null,
+      "map_source_id": "sig_lmg",
+      "twist_source_id": null,
+      "note": "Belt-fed light machine gun; not an AR-pattern weapon. Twist not stated in cited sheet."
+    },
+    {
+      "designation": "M250",
+      "nation": "United States",
+      "weapon": "SIG SAUER M250 (SIG LMG-6.8)",
+      "weapon_key": "m250",
+      "chambering": "6.8x51mm",
+      "twist_mm": null,
+      "map_source_id": "sig_lmg",
+      "twist_source_id": null,
+      "note": "Adopted US Army designation of the XM250; not an AR-pattern weapon."
+    },
+    {
+      "designation": "Ruger AR-556",
+      "nation": "United States",
+      "weapon": "Ruger AR-556",
+      "weapon_key": "ar556",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": 203.2,
+      "map_source_id": "ruger_ar556",
+      "twist_source_id": "ruger_ar556",
+      "note": "Ruger: '1:8 twist rifling' (203.2 mm). Differs from the 5.56 standard."
+    },
+    {
+      "designation": "Daniel Defense DDM4",
+      "nation": "United States",
+      "weapon": "Daniel Defense DDM4",
+      "weapon_key": "ddm4",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": 177.8,
+      "map_source_id": "dd_ddm4",
+      "twist_source_id": "dd_ddm4",
+      "note": "DDM4 V7: 'Chrome Moly Vanadium Steel, Cold Hammer Forged, 1:7 Twist'."
+    },
+    {
+      "designation": "Smith & Wesson M&P15",
+      "nation": "United States",
+      "weapon": "Smith & Wesson M&P15",
+      "weapon_key": "mp15",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": null,
+      "map_source_id": "smith_wesson",
+      "twist_source_id": null,
+      "note": "S&W AR-15 pattern rifle; twist not stated in cited source."
+    },
+    {
+      "designation": "Springfield SAINT",
+      "nation": "United States",
+      "weapon": "Springfield Armory SAINT",
+      "weapon_key": "saint",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": null,
+      "map_source_id": "springfield_saint",
+      "twist_source_id": null,
+      "note": "Springfield Armory AR-15 pattern rifle; twist not stated in cited source."
+    },
+    {
+      "designation": "BCM",
+      "nation": "United States",
+      "weapon": "Bravo Company USA (BCM) AR-15",
+      "weapon_key": "bcm",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": null,
+      "map_source_id": "bcm",
+      "twist_source_id": null,
+      "note": "BCM offers several twist rates; the cited 18 inch upper is 1/8. No single twist applies to the brand."
+    },
+    {
+      "designation": "Noveske N4",
+      "nation": "United States",
+      "weapon": "Noveske Rifleworks N4",
+      "weapon_key": "noveske_n4",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": null,
+      "map_source_id": "noveske",
+      "twist_source_id": null,
+      "note": "Noveske AR-15 pattern rifle; twist not stated in cited source."
+    },
+    {
+      "designation": "Geissele Super Duty",
+      "nation": "United States",
+      "weapon": "Geissele Automatics Super Duty",
+      "weapon_key": "geissele_sd",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": null,
+      "map_source_id": "geissele",
+      "twist_source_id": null,
+      "note": "Geissele AR-15 pattern rifle; twist not stated in cited source."
+    },
+    {
+      "designation": "Aero Precision",
+      "nation": "United States",
+      "weapon": "Aero Precision AR-15",
+      "weapon_key": "aero_ar15",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": null,
+      "map_source_id": "aero",
+      "twist_source_id": null,
+      "note": "Aero Precision AR-15 platform; twist not stated in cited source."
+    },
+    {
+      "designation": "Windham Weaponry",
+      "nation": "United States",
+      "weapon": "Windham Weaponry AR-15",
+      "weapon_key": "windham",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": null,
+      "map_source_id": "windham",
+      "twist_source_id": null,
+      "note": "Windham AR-15 pattern rifle; twist not stated in cited source."
+    },
+    {
+      "designation": "Rock River Arms LAR-15",
+      "nation": "United States",
+      "weapon": "Rock River Arms LAR-15",
+      "weapon_key": "rra_lar15",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": null,
+      "map_source_id": "rra",
+      "twist_source_id": null,
+      "note": "RRA AR-15 pattern rifle; twist not stated in cited source."
+    },
+    {
+      "designation": "DPMS",
+      "nation": "United States",
+      "weapon": "DPMS Panther Arms AR-15",
+      "weapon_key": "dpms",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": null,
+      "map_source_id": "dpms",
+      "twist_source_id": null,
+      "note": "DPMS AR-15 pattern rifle; twist not stated in cited source."
+    },
+    {
+      "designation": "Bushmaster",
+      "nation": "United States",
+      "weapon": "Bushmaster Firearms AR-15",
+      "weapon_key": "bushmaster",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": null,
+      "map_source_id": "bushmaster",
+      "twist_source_id": null,
+      "note": "Bushmaster AR-15 pattern rifle; twist not stated in cited source."
+    },
+    {
+      "designation": "Barrett REC7",
+      "nation": "United States",
+      "weapon": "Barrett REC7",
+      "weapon_key": "rec7",
+      "chambering": "6.8mm Rem SPC",
+      "twist_mm": null,
+      "map_source_id": "barrett_rec7",
+      "twist_source_id": null,
+      "note": "Barrett 6.8mm AR-pattern rifle; twist not stated in cited source."
+    },
+    {
+      "designation": "Barrett REC10",
+      "nation": "United States",
+      "weapon": "Barrett REC10",
+      "weapon_key": "rec10",
+      "chambering": "7.62x51mm NATO",
+      "twist_mm": null,
+      "map_source_id": "barrett_rec10",
+      "twist_source_id": null,
+      "note": "Barrett 7.62mm AR-pattern rifle; twist not stated in cited source."
+    },
+    {
+      "designation": "Remington R4",
+      "nation": "United States",
+      "weapon": "Remington R4",
+      "weapon_key": "r4",
+      "chambering": "5.56x45mm NATO",
+      "twist_mm": null,
+      "map_source_id": "remington",
+      "twist_source_id": null,
+      "note": "Remington 5.56 AR-pattern carbine; twist not stated in cited source."
+    },
+    {
+      "designation": "Remington R5",
+      "nation": "United States",
+      "weapon": "Remington R5",
+      "weapon_key": "r5",
+      "chambering": "7.62x51mm NATO",
+      "twist_mm": null,
+      "map_source_id": "remington",
+      "twist_source_id": null,
+      "note": "Remington 7.62 AR-pattern rifle (R25 lineage); twist not stated in cited source."
+    },
+    {
+      "designation": "ArmaLite AR-10",
+      "nation": "United States",
+      "weapon": "ArmaLite AR-10 (original)",
+      "weapon_key": "ar10_original",
+      "chambering": "7.62x51mm NATO",
+      "twist_mm": null,
+      "map_source_id": "armalite",
+      "twist_source_id": null,
+      "note": "Original Eugene Stoner AR-10 battle rifle; twist varies by barrel and is not stated on cited page."
+    },
+    {
+      "designation": "ArmaLite AR-10A",
+      "nation": "United States",
+      "weapon": "ArmaLite AR-10A",
+      "weapon_key": "ar10a",
+      "chambering": "7.62x51mm NATO",
+      "twist_mm": null,
+      "map_source_id": "armalite",
+      "twist_source_id": null,
+      "note": "ArmaLite AR-10A series; twist varies by barrel (1:11.25 historically, later 1:10)."
+    },
+    {
+      "designation": "ArmaLite AR-10B",
+      "nation": "United States",
+      "weapon": "ArmaLite AR-10B",
+      "weapon_key": "ar10b",
+      "chambering": "7.62x51mm NATO",
+      "twist_mm": null,
+      "map_source_id": "armalite_manual",
+      "twist_source_id": null,
+      "note": "Operator's manual covers all AR-10B and M15 series rifles; twist varies by barrel and is not stated."
+    }
+  ]
+}

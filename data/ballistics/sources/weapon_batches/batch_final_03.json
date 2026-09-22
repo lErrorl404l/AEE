@@ -1,0 +1,120 @@
+{
+ "retrieved": "2026-09-22",
+ "sources": [
+  {
+   "source_id": "kalashnikov_club_svd_twist",
+   "title": "Из истории винтовки СВД — про шаг нарезов ствола (Калашников Клуб, АО «Концерн «Калашников»), автор М. Попенкер, 13.07.2018",
+   "url": "https://kalashnikov.club/a/iz-istorii-vintovki-svd-pro-shag-narezov-stvola",
+   "sha256": "ec7bac867c6fc7d3f32a1eefbb5b9dd52e864662fab6fbe440bf80cf883a807b"
+  },
+  {
+   "source_id": "ak74_rpk74_manual_1982",
+   "title": "Руководство по 5,45-мм автомату Калашникова (АК74, АКС74, АК74Н, АКС74Н) и 5,45-мм ручному пулемету Калашникова (РПК74, РПКС74, РПК74Н, РПКС74Н). Министерство обороны СССР, Воениздат, 1982 г. (Приложение 1, стр. 186: Баллистические и конструктивные данные)",
+   "url": "https://www.ak-info.ru/joomla/index.php/aaka/7-ak74/32-ak74rpk74manual82",
+   "sha256": "f2a15ffc95b671fae1f0716b2f53f2cc5240b52bed04477f8ea45495b4eb71e0"
+  },
+  {
+   "source_id": "kalashnikov_ak74m",
+   "title": "Автомат Калашникова АК74М — Группа компаний «Калашников» (product data page, archived 2022-03-13)",
+   "url": "https://web.archive.org/web/20220313154617/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak74m",
+   "sha256": "cf8b846df37f69b0c2a96a2a3286b51a34498d6852fe66a92e368e2688db2795"
+  },
+  {
+   "source_id": "kalashnikov_ak105",
+   "title": "Автомат Калашникова АК105 — Группа компаний «Калашников» (product data page, archived 2022-03-13)",
+   "url": "https://web.archive.org/web/20220313154521/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak105",
+   "sha256": "4133098e128a1161f1c6ffe5bf2db6ffb6cec14c2836003bc819a4f55aca7bbe"
+  },
+  {
+   "source_id": "kalashnikov_ak12",
+   "title": "Автомат Калашникова АК-12 — Группа компаний «Калашников» (product data page, archived 2022-03-13)",
+   "url": "https://web.archive.org/web/20220313154453/https://kalashnikovgroup.ru/catalog/boevoe-strelkovoe-oruzhie/avtomaty/avtomat-kalashnikova-ak-12",
+   "sha256": "4f178b1da297d9ff7b78f714e72814e2ed33798e7433c1ffab669623cc743642"
+  },
+  {
+   "source_id": "kac_sr25_m110_manual",
+   "title": "Operator's Manual — Stoner SR-25 7.62mm Mk 11 Mod 0 / SR-M110 SASS Rifle Systems (Knight's Armament / US Armament operator manual; section II Navy Mk 11 Mod 0 equipment description), 124 pp.",
+   "url": "http://www.biggerhammer.net/stoner/manuals/m110.pdf",
+   "sha256": "7928d97add7fef269aa8491484243f621b9aa63925805baedf740175222f069b"
+  }
+ ],
+ "weapons": [
+  {
+   "weapon_id": "svds",
+   "name": "SVDS Sniper Rifle",
+   "manufacturer": "Izhmash",
+   "cartridge": "7.62×54mmR",
+   "barrel_mm": null,
+   "twist_mm": 240.0,
+   "grooves": null,
+   "source_id": "kalashnikov_club_svd_twist",
+   "source_note": "Официальный Клуб Концерна «Калашников» (АО «Концерн «Калашников»), статья «Из истории винтовки СВД — про шаг нарезов ствола»: «С момента ее принятия на вооружение и до 1973 года включительно эта винтовка имела нарезы с шагом 320 мм, а с 1974 года и по настоящее время ее нарезы имеют шаг 240 мм.» States the SVD (and therefore the SVDS, introduced 1991) uses a 240 mm rifling pitch from 1974 onward; the earlier 320 mm figure applies only to pre-1974 rifles."
+  },
+  {
+   "weapon_id": "ak105",
+   "name": "AK-105 Assault Rifle",
+   "manufacturer": "Kalashnikov Concern",
+   "cartridge": "5.45×39mm",
+   "barrel_mm": 314.0,
+   "twist_mm": 195.0,
+   "grooves": 4,
+   "source_id": "kalashnikov_ak105",
+   "source_note": "Kalashnikov Group official AK105 product page, specifications block: «Шаг нарезов канала ствола 195» and «Число нарезов 4»; also «Длина ствола, мм 314» and «Длина нарезной части ствола, мм ~ 270». States a 195 mm rifling pitch with 4 grooves for the 5.45 mm AK-105."
+  },
+  {
+   "weapon_id": "ak12",
+   "name": "AK-12 Assault Rifle",
+   "manufacturer": "Kalashnikov Concern",
+   "cartridge": "5.45×39mm",
+   "barrel_mm": 415.0,
+   "twist_mm": 195.0,
+   "grooves": 4,
+   "source_id": "kalashnikov_ak12",
+   "source_note": "Kalashnikov Group official AK-12 product page, specifications block: «Шаг нарезов канала ствола 195» and «Число нарезов 4»; also «Длина ствола, мм 415» and «Длина нарезной части ствола, мм ~ 371». States a 195 mm rifling pitch with 4 grooves for the 5.45 mm AK-12."
+  },
+  {
+   "weapon_id": "ak74",
+   "name": "AK-74 Assault Rifle",
+   "manufacturer": "Kalashnikov Concern",
+   "cartridge": "5.45×39mm",
+   "barrel_mm": 415.0,
+   "twist_mm": 200.0,
+   "grooves": 4,
+   "source_id": "ak74_rpk74_manual_1982",
+   "source_note": "Soviet Ministry of Defence manual 1982 (AK74/АКС74 and RPK74/РПКС74), Appendix 1 ballistic/design data table, columns «Автомат» / «Ручной пулемет»: row 15 «Длина ствола, мм 415 590», row 16 «Длина нарезной части ствола, мм 372 549», row 17 «Число нарезов, шт. 4 4», row 18 «Длина хода нарезов, мм 200 200». States the AK-74 barrel is 415 mm with 4 grooves and 200 mm rifling pitch (the RPK-74 column is also 200 mm)."
+  },
+  {
+   "weapon_id": "ak74m",
+   "name": "AK-74M Assault Rifle",
+   "manufacturer": "Kalashnikov Concern",
+   "cartridge": "5.45×39mm",
+   "barrel_mm": 415.0,
+   "twist_mm": 195.0,
+   "grooves": 4,
+   "source_id": "kalashnikov_ak74m",
+   "source_note": "Kalashnikov Group official AK74M product page, specifications block: «Шаг нарезов канала ствола 195» and «Число нарезов 4»; also «Длина ствола, мм 415» and «Длина нарезной части ствола, мм ~ 371». States a 195 mm rifling pitch with 4 grooves for the 5.45 mm AK-74M. Note: the 1982 Soviet AK-74 manual gives 200 mm for the AK-74; the current manufacturer figure for the AK-74M is 195 mm."
+  },
+  {
+   "weapon_id": "rpk74",
+   "name": "RPK-74 Light Machine Gun",
+   "manufacturer": "Kalashnikov Concern",
+   "cartridge": "5.45×39mm",
+   "barrel_mm": 590.0,
+   "twist_mm": 200.0,
+   "grooves": 4,
+   "source_id": "ak74_rpk74_manual_1982",
+   "source_note": "Soviet Ministry of Defence manual 1982 (AK74/АКС74 and RPK74/РПКС74), Appendix 1 table, «Ручной пулемет» column: row 15 «Длина ствола, мм 590», row 16 «Длина нарезной части ствола, мм 549», row 17 «Число нарезов, шт. 4», row 18 «Длина хода нарезов, мм 200». States the RPK-74 barrel is 590 mm with 4 grooves and 200 mm rifling pitch."
+  },
+  {
+   "weapon_id": "mk11",
+   "name": "Mk 11 Sniper Rifle",
+   "manufacturer": "Knight's Armament",
+   "cartridge": "7.62×51mm NATO",
+   "barrel_mm": 508.0,
+   "twist_mm": 279.0,
+   "grooves": 5,
+   "source_id": "kac_sr25_m110_manual",
+   "source_note": "Operator's Manual, section II — Navy: Mk 11 Mod 0 equipment description, para 1-7: «Barrel Rifling and Twist: 20” barrel with 5 grooves, right-hand twist with 1 turn in 11 inches (279 mm).» Also «Barrel Length: 20\" (508 mm)». States the Mk 11 Mod 0 has a 20 inch (508 mm) barrel with 5 grooves, right-hand twist, 1 turn in 11 inches = 279 mm per turn."
+  }
+ ]
+}

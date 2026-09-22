@@ -1,0 +1,157 @@
+{
+  "retrieved": "2026-09-22",
+  "sources": [
+    {
+      "source_id": "kfg_catalog_5th_2019",
+      "title": "Kahr Firearms Group Product Catalog, 5th Edition 2019 (Magnum Research BFR specification tables)",
+      "url": "https://www.magnumresearch.com/PDF/KFG-Catalog-5th-Edition-2019.pdf",
+      "sha256": "a3aabac16d6cb50f9a33717103d841f2777cad2eb8eac21e221f2134d80990ea"
+    },
+    {
+      "source_id": "kfg_catalog_12th_2026",
+      "title": "Kahr Firearms Group Product Catalog, 12th Edition 2026 (Magnum Research BFR specification tables)",
+      "url": "https://www.magnumresearch.com/wp-content/uploads/2026/01/KFG-Catalog-12th-Edition-2026.pdf",
+      "sha256": "c0367ed0056d2d765bb06a55bdb7fd11e6d7a5e9dc99555737379e7ff3036c41"
+    },
+    {
+      "source_id": "mri_store_desert_eagle_50ae",
+      "title": "Kahr Firearms Group store: Magnum Research Desert Eagle .50 AE product page (specification table)",
+      "url": "https://shopkahrfirearmsgroup.com/copy-of-desert-eagle-50-ae-black/"
+    },
+    {
+      "source_id": "lmt_mars_h_battle_rifle",
+      "title": "LMT Defense: MARS-H 7.62 BATTLE RIFLE (MLKMWSB-MARS) product page and specification table",
+      "url": "https://lmtdefense.com/product/mlk-mws-battle-rifle/"
+    },
+    {
+      "source_id": "lmt_mars_h_spec_sheet",
+      "title": "LMT Defense MARS-H Spec Sheet (MARS-H 7.62x51 mm system, barrel options)",
+      "url": "https://www.lmtdealer.com/wp-content/uploads/2021/03/MARS-H-Spec-Sheet.pdf",
+      "sha256": "10bb7905e9f48cfefd540ed301a90377f5977dd445d9a1fe67bec435eb90c7d4"
+    },
+    {
+      "source_id": "lwrci_repr_mkii_762",
+      "title": "LWRCI REPR MKII 7.62 NATO product page (manufacturer specification)",
+      "url": "https://www.lwrci.com/REPR-MKII-762-NATO_p_261.html"
+    },
+    {
+      "source_id": "lwrci_smg45_specsheet",
+      "title": "LWRCI SMG-45 specification sheet (RIFLING: 1:16 RH / 6 GROOVES)",
+      "url": "https://www.lwrci.com/assets/pdfs/specsheets/smg_specs.pdf",
+      "sha256": "19799e558fd4f302bd7c8e6bfd1201c2ac611f5141546266eb8e07138866e8ca"
+    },
+    {
+      "source_id": "lwrci_smg45_productpdf",
+      "title": "LWRCI SMG-45 product sheet (RIFLING: 1:16 RH / 6 GROOVES)",
+      "url": "https://www.lwrci.com/assets/images/Rifles/SMG/SMG45.pdf",
+      "sha256": "b0f8fd682f3a0690d59472f341d35190a9647649040ee78e5ade98d78687e8c1"
+    },
+    {
+      "source_id": "mri_baby_eagle_iii_manual",
+      "title": "Magnum Research Baby Eagle (Baby Desert Eagle III) Owner's Manual, document BE-III-Series-Manual-0720",
+      "url": "https://www.magnumresearch.com/PDF/BE-III-Series-Manual-0720.pdf",
+      "sha256": "4ace17e6c100af5943ab3d50a24ec7f304dbcaf7cbdd88bf674743972c606e32"
+    }
+  ],
+  "weapons": [
+    {
+      "weapon_id": "marsh308",
+      "name": "MARS-H .308 Rifle",
+      "manufacturer": "LMT Defense",
+      "cartridge": "7.62×51mm NATO",
+      "barrel_mm": null,
+      "twist_mm": 254.0,
+      "grooves": null,
+      "source_id": "lmt_mars_h_battle_rifle",
+      "source_note": "Specification table row: 'Rifling Twist Rate  1:10\"'. The Details text states '13.5\" 7.62x51 (.308) Light Weight Chrome Lined 1:10\" RH Twist Barrel w/ Pinned LMT 3-Prong Flash Hider'. 1 turn in 10 in = 254.0 mm. This is the 13.5 in MARS-H configuration; LMT lists 1:10 as the platform twist."
+    },
+    {
+      "weapon_id": "repr762",
+      "name": "REPR 7.62 Rifle",
+      "manufacturer": "LWRC International",
+      "cartridge": "7.62×51mm NATO",
+      "barrel_mm": null,
+      "twist_mm": 254.0,
+      "grooves": null,
+      "source_id": "lwrci_repr_mkii_762",
+      "source_note": "Manufacturer specification block: 'CALIBER: 7.62 X 51 NATO', 'BARREL: 20\", 16.1\"', 'Cold hammer forged 1:10 twist stabilizes a wide range of bullet types'. 1 turn in 10 in = 254.0 mm."
+    },
+    {
+      "weapon_id": "smg45",
+      "name": "SMG-45 SMG",
+      "manufacturer": "LWRC International",
+      "cartridge": ".45 ACP",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": 6,
+      "source_id": "lwrci_smg45_specsheet",
+      "source_note": "Manufacturer specification sheet: 'BARREL LENGTH: 8.5\"           RIFLING: 1:16 RH/ 6 GROOVES'. 1 turn in 16 in = 406.4 mm, 6 grooves. The same sheet is published on the LWRCI product page as SMG45.pdf."
+    },
+    {
+      "weapon_id": "babyeagleiii45",
+      "name": "Baby Eagle III .45 Semi-auto Pistol",
+      "manufacturer": "Magnum Research",
+      "cartridge": ".45 ACP",
+      "barrel_mm": null,
+      "twist_mm": null,
+      "grooves": null,
+      "source_id": "mri_baby_eagle_iii_manual",
+      "source_note": "TWIST NOT STATED. The owner's manual technical data table gives only 'Rifling  6 Right Hand grooves, polygonal' for all calibers (including .45 ACP). Groove count and hand are cited but no turn length is published. Omitted per the no-guess rule; do not copy the corpus lead."
+    },
+    {
+      "weapon_id": "bfr357mag",
+      "name": "BFR .357 Mag Revolver",
+      "manufacturer": "Magnum Research",
+      "cartridge": ".357 Magnum",
+      "barrel_mm": null,
+      "twist_mm": 406.4,
+      "grooves": null,
+      "source_id": "kfg_catalog_12th_2026",
+      "source_note": "BFR Short Cylinder Models specification table, model column BFR357MAG, row 'Twist Rate  16' (with 'Groove Diameter  0.355'). 1 turn in 16 in = 406.4 mm, read from the rendered table image (page 32) because text extraction reorders columns. Note the earlier 5th Edition (2019) catalogue, before .357 Magnum was added to the BFR line, shows 26 for the .44 Magnum column."
+    },
+    {
+      "weapon_id": "bfr44mag",
+      "name": "BFR .44 Mag Revolver",
+      "manufacturer": "Magnum Research",
+      "cartridge": ".44 Magnum",
+      "barrel_mm": null,
+      "twist_mm": 660.4,
+      "grooves": null,
+      "source_id": "kfg_catalog_5th_2019",
+      "source_note": "BFR Short Cylinder Models specification table, model column BFR44MAG, row 'Twist Rate  26' (with 'Groove Diameter  0.430'). 1 turn in 26 in = 660.4 mm. Read from the rendered table image (page 30), which shows the table has no .357 Magnum column, so 26 unambiguously belongs to .44 Magnum. Confirmed identically in the 2021 7th Edition and 2025 11th Edition tables."
+    },
+    {
+      "weapon_id": "bfr4570",
+      "name": "BFR .45-70 Revolver",
+      "manufacturer": "Magnum Research",
+      "cartridge": ".45-70 Government",
+      "barrel_mm": null,
+      "twist_mm": 355.6,
+      "grooves": null,
+      "source_id": "kfg_catalog_5th_2019",
+      "source_note": "BFR Long Cylinder Models specification table, model column BFR45-70 | BFR45-707, row 'Twist Rate  14' (with 'Groove Diameter  0.458'). 1 turn in 14 in = 355.6 mm. Read from the rendered table image (page 32); the 2019 5th Edition lists no .44 Magnum in the long-cylinder table, so 14 belongs to .45-70 Gov't."
+    },
+    {
+      "weapon_id": "bfr500sw",
+      "name": "BFR .500 S&W Revolver",
+      "manufacturer": "Magnum Research",
+      "cartridge": ".500 Smith & Wesson Magnum",
+      "barrel_mm": null,
+      "twist_mm": 381.0,
+      "grooves": null,
+      "source_id": "kfg_catalog_5th_2019",
+      "source_note": "BFR Long Cylinder Models specification table, model column BFR500SW10(B) | BFR500SW7(B), row 'Twist Rate  15' (with 'Groove Diameter  0.500'). 1 turn in 15 in = 381.0 mm. Read from the rendered table image (page 32); the model cell names the .500 S&W Magnum explicitly."
+    },
+    {
+      "weapon_id": "deserteaglemarkxix",
+      "name": "Desert Eagle Mark XIX Pistol",
+      "manufacturer": "Magnum Research / IWI",
+      "cartridge": ".50 Action Express",
+      "barrel_mm": null,
+      "twist_mm": 483.0,
+      "grooves": 6,
+      "source_id": "mri_store_desert_eagle_50ae",
+      "source_note": "Manufacturer store specification table, .50 A.E. column: 'Polygonal Rifling w / Right Hand Twist, 6 lands & grooves | 1 turn in 19\"; / 483 mm | 1 turn in 18\"; / 457 mm | 1 turn in 14\"; / 355 mm' for .50 A.E. | .44 MAGNUM | .357 MAGNUM respectively. The .50 AE value is 1 turn in 19 in = 483 mm, 6 lands and grooves. The 483.0 mm figure is the manufacturer's own stated value, not a conversion of a rounded inch figure."
+    }
+  ]
+}
