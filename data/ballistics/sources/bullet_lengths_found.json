@@ -1,0 +1,1450 @@
+{
+ "retrieved": "2026-09-22",
+ "sources": [
+  {
+   "source_id": "nosler_catalog",
+   "title": "Nosler 2026 Product Guide, bullet specifications (OAL column)",
+   "url": "https://www.nosler.com/media/binaryanvil/media_library/2026-Catalog-Layout_Web.pdf",
+   "sha256": "50bdc768a8e53b5253f9a396aa786d70be54b8a7d95797b80d65f14e0c91eecc"
+  },
+  {
+   "source_id": "berger_chart",
+   "title": "Berger Bullets, Bullet Reference Charts (OAL column)",
+   "url": "https://bergerbullets.com/information/lines-and-designs/bullet-reference-charts/",
+   "sha256": "ce83b87f87571a7800c56b54df57cb4c41bdbd48258e51f78769c94da9b4af5b"
+  }
+ ],
+ "bullets": [
+  {
+   "manufacturer": "Berger",
+   "designation": "22 Cal 80.5 gr FULLBORE Target",
+   "diameter_in": 0.224,
+   "mass_gr": 80.5,
+   "length_in": 1.091,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 22427"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "6 mm 105 gr VLD Target",
+   "diameter_in": 0.243,
+   "mass_gr": 105.0,
+   "length_in": 1.222,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 24429"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "6 mm 105 gr Hybrid Target",
+   "diameter_in": 0.243,
+   "mass_gr": 105.0,
+   "length_in": 1.256,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 24433"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "6 mm 109 gr LR Hybrid Target",
+   "diameter_in": 0.243,
+   "mass_gr": 109.0,
+   "length_in": 1.277,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 24485"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "6 mm 95 gr VLD Hunting",
+   "diameter_in": 0.243,
+   "mass_gr": 95.0,
+   "length_in": 1.13,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 24527"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "6 mm 105 gr VLD Hunting",
+   "diameter_in": 0.243,
+   "mass_gr": 105.0,
+   "length_in": 1.223,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 24528"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "6 mm 115 gr VLD Hunting",
+   "diameter_in": 0.243,
+   "mass_gr": 115.0,
+   "length_in": 1.348,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 24530"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "6 mm 108 gr Elite Hunter",
+   "diameter_in": 0.243,
+   "mass_gr": 108.0,
+   "length_in": 1.26,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 24556"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "6 mm 95 gr Classic Hunter",
+   "diameter_in": 0.243,
+   "mass_gr": 95.0,
+   "length_in": 1.069,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 24570"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "6.5 mm 130 gr VLD Target",
+   "diameter_in": 0.264,
+   "mass_gr": 130.0,
+   "length_in": 1.31,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 26403"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "6.5 mm 140 gr LR BT Target",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0,
+   "length_in": 1.397,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 26409"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "6.5 mm 140 gr Hybrid Target",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0,
+   "length_in": 1.407,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 26414"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "6.5 mm 130 gr VLD Hunting",
+   "diameter_in": 0.264,
+   "mass_gr": 130.0,
+   "length_in": 1.324,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 26503"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "6.5 mm 140 gr VLD Hunting",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0,
+   "length_in": 1.39,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 26504"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "6.5 mm 140 gr Elite Hunter",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0,
+   "length_in": 1.403,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 26552"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "270 Cal 130 gr Classic Hunter",
+   "diameter_in": 0.277,
+   "mass_gr": 130.0,
+   "length_in": 1.21,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 27570"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "270 Cal 140 gr Classic Hunter",
+   "diameter_in": 0.277,
+   "mass_gr": 140.0,
+   "length_in": 1.274,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 27571"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "7 mm 180 gr Hybrid Target",
+   "diameter_in": 0.284,
+   "mass_gr": 180.0,
+   "length_in": 1.527,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 28407"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "7 mm 168 gr VLD Hunting",
+   "diameter_in": 0.284,
+   "mass_gr": 168.0,
+   "length_in": 1.433,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 28501"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "7 mm 180 gr VLD Hunting",
+   "diameter_in": 0.284,
+   "mass_gr": 180.0,
+   "length_in": 1.506,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 28502"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "7 mm 168 gr Classic Hunter",
+   "diameter_in": 0.284,
+   "mass_gr": 168.0,
+   "length_in": 1.372,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 28570"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "30 Cal 185 gr VLD Target",
+   "diameter_in": 0.308,
+   "mass_gr": 185.0,
+   "length_in": 1.383,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 30413"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "30 Cal 185 gr Juggernaut Target",
+   "diameter_in": 0.308,
+   "mass_gr": 185.0,
+   "length_in": 1.344,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 30418"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "30 Cal 175 gr LR BT Target",
+   "diameter_in": 0.308,
+   "mass_gr": 175.0,
+   "length_in": 1.314,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 30420"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "30 Cal 185 gr Hybrid Target",
+   "diameter_in": 0.308,
+   "mass_gr": 185.0,
+   "length_in": 1.418,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 30424"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "30 Cal 168 gr Hybrid Target",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0,
+   "length_in": 1.287,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 30425"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "30 Cal 155 gr Hybrid Target",
+   "diameter_in": 0.308,
+   "mass_gr": 155.0,
+   "length_in": 1.271,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 30426"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "30 Cal 230 gr Hybrid Target",
+   "diameter_in": 0.308,
+   "mass_gr": 230.0,
+   "length_in": 1.668,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 30430"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "30 Cal 208 gr LR Hybrid Target",
+   "diameter_in": 0.308,
+   "mass_gr": 208.0,
+   "length_in": 1.575,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 30485"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "30 Cal 155 gr VLD Hunting",
+   "diameter_in": 0.308,
+   "mass_gr": 155.0,
+   "length_in": 1.223,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 30508"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "30 Cal 168 gr VLD Hunting",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0,
+   "length_in": 1.261,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 30510"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "30 Cal 175 gr VLD Hunting",
+   "diameter_in": 0.308,
+   "mass_gr": 175.0,
+   "length_in": 1.328,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 30512"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "30 Cal 185 gr VLD Hunting",
+   "diameter_in": 0.308,
+   "mass_gr": 185.0,
+   "length_in": 1.366,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 30513"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "30 Cal 210 gr VLD Hunting",
+   "diameter_in": 0.308,
+   "mass_gr": 210.0,
+   "length_in": 1.47,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 30515"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "30 Cal 245 gr EOL Elite Hunter",
+   "diameter_in": 0.308,
+   "mass_gr": 245.0,
+   "length_in": 1.775,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 30560"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "30 Cal 168 gr Classic Hunter",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0,
+   "length_in": 1.228,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 30570"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "30 Cal 185 gr Classic Hunter",
+   "diameter_in": 0.308,
+   "mass_gr": 185.0,
+   "length_in": 1.314,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 30571"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "338 Cal 250 gr Elite Hunter",
+   "diameter_in": 0.338,
+   "mass_gr": 250.0,
+   "length_in": 1.627,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 33554"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "338 Cal 300 gr Elite Hunter",
+   "diameter_in": 0.338,
+   "mass_gr": 300.0,
+   "length_in": 1.816,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 33556"
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "375 Cal 407 gr ELR Match Solid Bullets",
+   "diameter_in": 0.375,
+   "mass_gr": 407.0,
+   "length_in": 2.347,
+   "source_id": "berger_chart",
+   "source_note": "bullet reference chart, OAL column; part 37407"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "22 Cal 69 Gr. HPBT Custom Competition",
+   "diameter_in": 0.224,
+   "mass_gr": 69.0,
+   "length_in": 0.9,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 17101"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "17 Cal 20 Gr. FB Tipped (Metallic Black Tip) Ballistic Tip Varmint",
+   "diameter_in": 0.172,
+   "mass_gr": 20.0,
+   "length_in": 0.555,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 17210"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "6mm 55 Gr. Spitzer (Purple Tip) Ballistic Tip Varmint",
+   "diameter_in": 0.243,
+   "mass_gr": 55.0,
+   "length_in": 0.785,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 24055"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "6mm 95 Gr. Spitzer (Purple Tip) Ballistic Tip Hunting",
+   "diameter_in": 0.243,
+   "mass_gr": 95.0,
+   "length_in": 1.12,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 24095"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "25 Cal 100 Gr. Spitzer (Blue Tip) Ballistic Tip Hunting",
+   "diameter_in": 0.257,
+   "mass_gr": 100.0,
+   "length_in": 1.11,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 25100"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "25 Cal 115 Gr. Spitzer (Blue Tip) Ballistic Tip Hunting",
+   "diameter_in": 0.257,
+   "mass_gr": 115.0,
+   "length_in": 1.215,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 25115"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "30 Cal 180 Gr. Protected Point Partition",
+   "diameter_in": 0.308,
+   "mass_gr": 180.0,
+   "length_in": 1.18,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 25396"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "6.5mm 100 Gr. Spitzer (Brown Tip) Ballistic Tip Hunting",
+   "diameter_in": 0.264,
+   "mass_gr": 100.0,
+   "length_in": 1.08,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 26100"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "6.5mm 90 Gr. FB Tipped (Metallic Black Tip) Ballistic Tip Varmint",
+   "diameter_in": 0.264,
+   "mass_gr": 90.0,
+   "length_in": 1.02,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 26129"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "6.5mm 140 Gr. Spitzer (Brown Tip) Ballistic Tip Hunting",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0,
+   "length_in": 1.35,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 26140"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "6.5mm 140 Gr. HPBT Custom Competition",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0,
+   "length_in": 1.307,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 26725"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "270 Cal 130 Gr. Spitzer (Yellow Tip) Ballistic Tip Hunting",
+   "diameter_in": 0.277,
+   "mass_gr": 130.0,
+   "length_in": 1.22,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 27130"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "270 Cal 150 Gr. Spitzer (Yellow Tip) Ballistic Tip Hunting",
+   "diameter_in": 0.277,
+   "mass_gr": 150.0,
+   "length_in": 1.35,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 27150"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "7mm 160 Gr. Spitzer (Red Tip) Ballistic Tip Hunting",
+   "diameter_in": 0.284,
+   "mass_gr": 160.0,
+   "length_in": 1.385,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 28125"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "270 Cal 170 Gr. Spitzer (Yellow Tip) Ballistic Tip Hunting",
+   "diameter_in": 0.277,
+   "mass_gr": 170.0,
+   "length_in": 1.485,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 28135"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "7mm 140 Gr. Spitzer (Red Tip) Ballistic Tip Hunting",
+   "diameter_in": 0.284,
+   "mass_gr": 140.0,
+   "length_in": 1.255,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 28140"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "7mm 150 Gr. Spitzer (Red Tip) Ballistic Tip Hunting",
+   "diameter_in": 0.284,
+   "mass_gr": 150.0,
+   "length_in": 1.3,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 28150"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "30 Cal 125 Gr. Spitzer (Green Tip) Ballistic Tip Hunting",
+   "diameter_in": 0.308,
+   "mass_gr": 125.0,
+   "length_in": 1.06,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 30125"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "30 Cal 150 Gr. Spitzer (Green Tip) Ballistic Tip Hunting",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0,
+   "length_in": 1.22,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 30150"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "30 Cal 165 Gr. Spitzer (Green Tip) Ballistic Tip Hunting",
+   "diameter_in": 0.308,
+   "mass_gr": 165.0,
+   "length_in": 1.29,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 30165"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "30 Cal 180 Gr. Spitzer (Green Tip) Ballistic Tip Hunting",
+   "diameter_in": 0.308,
+   "mass_gr": 180.0,
+   "length_in": 1.36,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 30180"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "30 Cal 220 Gr. Round Nose (Green Tip) Ballistic Tip Hunting",
+   "diameter_in": 0.308,
+   "mass_gr": 220.0,
+   "length_in": 1.465,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 30181"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "7.62x39 123 Gr. FB Tipped (Metallic Black Tip) Ballistic Tip Varmint",
+   "diameter_in": 0.31,
+   "mass_gr": 123.0,
+   "length_in": 0.95,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 34056"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "22 Cal 60 Gr. Spitzer (Orange Tip) Ballistic Tip Varmint",
+   "diameter_in": 0.224,
+   "mass_gr": 60.0,
+   "length_in": 0.855,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 34992"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "270 Cal 140 Gr. Spitzer Partition",
+   "diameter_in": 0.277,
+   "mass_gr": 140.0,
+   "length_in": 1.19,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 35200"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "204 Cal 32 Gr. Spitzer (Maroon Tip) Ballistic Tip Varmint",
+   "diameter_in": 0.204,
+   "mass_gr": 32.0,
+   "length_in": 0.64,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 35216"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "22 Cal 62 Gr. FBHP W/Cannelure Ballistic Tip Varmint",
+   "diameter_in": 0.224,
+   "mass_gr": 62.0,
+   "length_in": 0.77,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 35631"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "6mm 100 Gr. Spitzer Solid Base",
+   "diameter_in": 0.243,
+   "mass_gr": 100.0,
+   "length_in": 1.072,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 38050"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "6.5mm 140 Gr. Spitzer Solid Base",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0,
+   "length_in": 1.285,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 38052"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "270 Cal 130 Gr. Spitzer Solid Base",
+   "diameter_in": 0.277,
+   "mass_gr": 130.0,
+   "length_in": 1.122,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 38054"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "7mm 140 Gr. Spitzer Solid Base",
+   "diameter_in": 0.284,
+   "mass_gr": 140.0,
+   "length_in": 1.145,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 38056"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "30 Cal 150 Gr. Round Nose Solid Base",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0,
+   "length_in": 0.956,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 38058"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "30 Cal 150 Gr. Spitzer Solid Base",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0,
+   "length_in": 1.115,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 38060"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "30 Cal 165 Gr. Spitzer Solid Base",
+   "diameter_in": 0.308,
+   "mass_gr": 165.0,
+   "length_in": 1.185,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 38062"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "45 Cal 300 Gr. Protected Point Solid Base",
+   "diameter_in": 0.458,
+   "mass_gr": 300.0,
+   "length_in": 0.805,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 38068"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "22 Cal 40 Gr. Spitzer (Orange Tip) Ballistic Tip Varmint",
+   "diameter_in": 0.224,
+   "mass_gr": 40.0,
+   "length_in": 0.705,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 39510"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "22 Cal 50 Gr. Spitzer (Orange Tip) Ballistic Tip Varmint",
+   "diameter_in": 0.224,
+   "mass_gr": 50.0,
+   "length_in": 0.8,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 39522"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "22 Cal 55 Gr. Spitzer (Orange Tip) Ballistic Tip Varmint",
+   "diameter_in": 0.224,
+   "mass_gr": 55.0,
+   "length_in": 0.81,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 39526"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "6mm 70 Gr. Spitzer (Purple Tip) Ballistic Tip Varmint",
+   "diameter_in": 0.243,
+   "mass_gr": 70.0,
+   "length_in": 0.915,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 39532"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "44 Cal 240 Gr. JSP Sporting Handgun",
+   "diameter_in": 0.429,
+   "mass_gr": 240.0,
+   "length_in": 0.7,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 44868"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "44 Cal 240 Gr. JHP Sporting Handgun",
+   "diameter_in": 0.429,
+   "mass_gr": 240.0,
+   "length_in": 0.721,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 44917"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "204 Cal 32 Gr. Spitzer (Metallic Maroon Tip) Ballistic Tip Lead-Free",
+   "diameter_in": 0.204,
+   "mass_gr": 32.0,
+   "length_in": 0.745,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 45140"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "22 Cal 35 Gr. Spitzer (Metallic Orange Tip) Ballistic Tip Lead-Free",
+   "diameter_in": 0.224,
+   "mass_gr": 35.0,
+   "length_in": 0.73,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 45150"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "22 Cal 40 Gr. Spitzer (Metallic Orange Tip) Ballistic Tip Lead-Free",
+   "diameter_in": 0.224,
+   "mass_gr": 40.0,
+   "length_in": 0.783,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 45160"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "6mm 55 Gr. Spitzer Ballistic Tip Lead-Free",
+   "diameter_in": 0.243,
+   "mass_gr": 55.0,
+   "length_in": 0.95,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 45170"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "22 Cal 50 Gr. Spitzer Ballistic Tip Lead-Free",
+   "diameter_in": 0.224,
+   "mass_gr": 50.0,
+   "length_in": 0.9,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 45498"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "8mm 200 Gr. HPBT Custom Competition",
+   "diameter_in": 0.323,
+   "mass_gr": 200.0,
+   "length_in": 1.325,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 49524"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "6.5mm 140 Gr. HPBT RDF",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0,
+   "length_in": 1.42,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 49824"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "35 Cal 225 Gr. Spitzer ( Whelen ) AccuBond",
+   "diameter_in": 0.358,
+   "mass_gr": 225.0,
+   "length_in": 1.365,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 50712"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "6mm 95 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip",
+   "diameter_in": 0.243,
+   "mass_gr": 95.0,
+   "length_in": 1.12,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 51040"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "25 Cal 115 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip",
+   "diameter_in": 0.257,
+   "mass_gr": 115.0,
+   "length_in": 1.215,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 51050"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "270 Cal 130 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip",
+   "diameter_in": 0.277,
+   "mass_gr": 130.0,
+   "length_in": 1.22,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 51075"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "270 Cal 150 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip",
+   "diameter_in": 0.277,
+   "mass_gr": 150.0,
+   "length_in": 1.35,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 51100"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "7mm 140 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip",
+   "diameter_in": 0.284,
+   "mass_gr": 140.0,
+   "length_in": 1.255,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 51105"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "7mm 150 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip",
+   "diameter_in": 0.284,
+   "mass_gr": 150.0,
+   "length_in": 1.3,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 51110"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "30 Cal 150 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0,
+   "length_in": 1.22,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 51150"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "30 Cal 168 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0,
+   "length_in": 1.307,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 51160"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "30 Cal 150 Gr. Round Nose (Silver Tip) CT Ballistic Silvertip",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0,
+   "length_in": 1.066,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 51165"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "30 Cal 180 Gr. Spitzer (Silver Tip) CT Ballistic Silvertip",
+   "diameter_in": 0.308,
+   "mass_gr": 180.0,
+   "length_in": 1.36,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 51170"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "30 Cal 125 Gr. Spitzer AccuBond",
+   "diameter_in": 0.308,
+   "mass_gr": 125.0,
+   "length_in": 1.08,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 52165"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "22 Cal 77 Gr. HPBT W/Cannelure Custom Competition",
+   "diameter_in": 0.224,
+   "mass_gr": 77.0,
+   "length_in": 0.98,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 53033"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "30 Cal 220 Gr. HPBT Custom Competition",
+   "diameter_in": 0.308,
+   "mass_gr": 220.0,
+   "length_in": 1.53,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 53154"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "30 Cal 168 Gr. HPBT Custom Competition",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0,
+   "length_in": 1.2,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 53164"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "30 Cal 168 Gr. HPBT RDF",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0,
+   "length_in": 1.32,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 53182"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "22 Cal 52 Gr. HPBT Custom Competition",
+   "diameter_in": 0.224,
+   "mass_gr": 52.0,
+   "length_in": 0.73,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 53294"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "22 Cal 77 Gr. HPBT RDF",
+   "diameter_in": 0.224,
+   "mass_gr": 77.0,
+   "length_in": 1.07,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 53452"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "6mm 115 Gr. HPBT RDF",
+   "diameter_in": 0.243,
+   "mass_gr": 115.0,
+   "length_in": 1.35,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 53507"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "338 Cal 300 Gr. HPBT Custom Competition",
+   "diameter_in": 0.338,
+   "mass_gr": 300.0,
+   "length_in": 1.725,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 53515"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "375 Cal 300 Gr. Spitzer W/Cannelure AccuBond",
+   "diameter_in": 0.375,
+   "mass_gr": 300.0,
+   "length_in": 1.52,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 53662"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "22 Cal 70 Gr. Spitzer AccuBond",
+   "diameter_in": 0.224,
+   "mass_gr": 70.0,
+   "length_in": 0.985,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 53780"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "30 Cal 175 Gr. HPBT Custom Competition",
+   "diameter_in": 0.308,
+   "mass_gr": 175.0,
+   "length_in": 1.24,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 53952"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "338 Cal 225 Gr. Spitzer AccuBond",
+   "diameter_in": 0.338,
+   "mass_gr": 225.0,
+   "length_in": 1.45,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 54357"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "8mm 200 Gr. Spitzer AccuBond",
+   "diameter_in": 0.323,
+   "mass_gr": 200.0,
+   "length_in": 1.38,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 54374"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "375 Cal 260 Gr. Spitzer W/Cannelure AccuBond",
+   "diameter_in": 0.375,
+   "mass_gr": 260.0,
+   "length_in": 1.38,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 54413"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "30 Cal 200 Gr. Spitzer AccuBond",
+   "diameter_in": 0.308,
+   "mass_gr": 200.0,
+   "length_in": 1.485,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 54618"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "270 Cal 140 Gr. Spitzer AccuBond",
+   "diameter_in": 0.277,
+   "mass_gr": 140.0,
+   "length_in": 1.295,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 54765"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "270 Cal 150 Gr. Spitzer AccuBond",
+   "diameter_in": 0.277,
+   "mass_gr": 150.0,
+   "length_in": 1.345,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 54801"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "30 Cal 180 Gr. Spitzer AccuBond",
+   "diameter_in": 0.308,
+   "mass_gr": 180.0,
+   "length_in": 1.38,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 54825"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "338 Cal 300 Gr. Spitzer AccuBond",
+   "diameter_in": 0.338,
+   "mass_gr": 300.0,
+   "length_in": 1.75,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 54851"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "7mm 160 Gr. Spitzer AccuBond",
+   "diameter_in": 0.284,
+   "mass_gr": 160.0,
+   "length_in": 1.385,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 54932"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "7mm 150 Gr. Spitzer AccuBond",
+   "diameter_in": 0.284,
+   "mass_gr": 150.0,
+   "length_in": 1.29,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 54951"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "270 Cal 130 Gr. Spitzer AccuBond",
+   "diameter_in": 0.277,
+   "mass_gr": 130.0,
+   "length_in": 1.23,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 54987"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "30 Cal 165 Gr. Spitzer AccuBond",
+   "diameter_in": 0.308,
+   "mass_gr": 165.0,
+   "length_in": 1.29,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 55602"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "6mm 90 Gr. Spitzer AccuBond",
+   "diameter_in": 0.243,
+   "mass_gr": 90.0,
+   "length_in": 1.085,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 56357"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "338 Cal 200 Gr. Spitzer AccuBond",
+   "diameter_in": 0.338,
+   "mass_gr": 200.0,
+   "length_in": 1.34,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 56382"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "30 Cal 150 Gr. Spitzer AccuBond",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0,
+   "length_in": 1.2,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 56719"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "6.5mm 130 Gr. Spitzer AccuBond",
+   "diameter_in": 0.264,
+   "mass_gr": 130.0,
+   "length_in": 1.305,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 56902"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "338 Cal 250 Gr. Spitzer AccuBond",
+   "diameter_in": 0.338,
+   "mass_gr": 250.0,
+   "length_in": 1.567,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 57287"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "338 Cal 250 Gr. HPBT Custom Competition",
+   "diameter_in": 0.338,
+   "mass_gr": 250.0,
+   "length_in": 1.595,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 57520"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "6.5mm 140 Gr. Spitzer AccuBond",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0,
+   "length_in": 1.375,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 57873"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "30 Cal 168 Gr. Spitzer AccuBond Long Range",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0,
+   "length_in": 1.365,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 58455"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "338 Cal 300 Gr. Spitzer AccuBond Long Range",
+   "diameter_in": 0.338,
+   "mass_gr": 300.0,
+   "length_in": 1.875,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; catalogue part 58518; database part 58456 is shifted in this section"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "7mm 175 Gr. Spitzer AccuBond Long Range",
+   "diameter_in": 0.284,
+   "mass_gr": 175.0,
+   "length_in": 1.54,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 58517"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "30 Cal 210 Gr. Spitzer AccuBond Long Range",
+   "diameter_in": 0.308,
+   "mass_gr": 210.0,
+   "length_in": 1.57,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; catalogue part 58317; database part 58623 is shifted in this section"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "7mm 150 Gr. Spitzer AccuBond Long Range",
+   "diameter_in": 0.284,
+   "mass_gr": 150.0,
+   "length_in": 1.4,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 58734"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "270 Cal 150 Gr. Spitzer AccuBond Long Range",
+   "diameter_in": 0.277,
+   "mass_gr": 150.0,
+   "length_in": 1.39,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 58836"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "7mm 168 Gr. Spitzer AccuBond Long Range",
+   "diameter_in": 0.284,
+   "mass_gr": 168.0,
+   "length_in": 1.5,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; catalogue part 58623; database part 58930 is shifted in this section"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "6.5mm 129 Gr. Spitzer AccuBond Long Range",
+   "diameter_in": 0.264,
+   "mass_gr": 129.0,
+   "length_in": 1.37,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 58943"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "6mm 90 Gr. Spitzer E-Tip",
+   "diameter_in": 0.243,
+   "mass_gr": 90.0,
+   "length_in": 1.18,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 59165"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "30 Cal 180 Gr. Spitzer E-Tip",
+   "diameter_in": 0.308,
+   "mass_gr": 180.0,
+   "length_in": 1.485,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 59180"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "338 Cal 200 Gr. Spitzer E-Tip",
+   "diameter_in": 0.338,
+   "mass_gr": 200.0,
+   "length_in": 1.427,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 59186"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "8mm 180 Gr. Spitzer E-Tip",
+   "diameter_in": 0.323,
+   "mass_gr": 180.0,
+   "length_in": 1.365,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 59265"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "9.3mm 250 Gr. Spitzer E-Tip",
+   "diameter_in": 0.366,
+   "mass_gr": 250.0,
+   "length_in": 1.68,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 59270"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "270 Cal 130 Gr. Spitzer E-Tip",
+   "diameter_in": 0.277,
+   "mass_gr": 130.0,
+   "length_in": 1.345,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 59298"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "338 Cal 225 Gr. Spitzer E-Tip",
+   "diameter_in": 0.338,
+   "mass_gr": 225.0,
+   "length_in": 1.575,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 59372"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "30 Cal 150 Gr. Spitzer E-Tip",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0,
+   "length_in": 1.293,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 59378"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "375 Cal 260 Gr. Spitzer E-Tip",
+   "diameter_in": 0.375,
+   "mass_gr": 260.0,
+   "length_in": 1.489,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 59379"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "300 AAC 110 Gr. Spitzer E-Tip",
+   "diameter_in": 0.308,
+   "mass_gr": 110.0,
+   "length_in": 1.095,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 59380"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "338 Cal 250 Gr. Spitzer E-Tip",
+   "diameter_in": 0.338,
+   "mass_gr": 250.0,
+   "length_in": 1.68,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 59385"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "7.62x39 123 Gr. Spitzer E-Tip",
+   "diameter_in": 0.31,
+   "mass_gr": 123.0,
+   "length_in": 1.125,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 59387"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "30 Cal 168 Gr. Spitzer E-Tip",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0,
+   "length_in": 1.415,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 59415"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "7mm 150 Gr. Spitzer E-Tip",
+   "diameter_in": 0.284,
+   "mass_gr": 150.0,
+   "length_in": 1.425,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 59426"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "30/30 150 Gr. Round Nose E-Tip",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0,
+   "length_in": 1.165,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 59451"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "25 Cal 100 Gr. Spitzer E-Tip",
+   "diameter_in": 0.257,
+   "mass_gr": 100.0,
+   "length_in": 1.215,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 59456"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "22 Cal 55 Gr. Spitzer E-Tip",
+   "diameter_in": 0.224,
+   "mass_gr": 55.0,
+   "length_in": 0.89,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 59624"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "9.3mm 250 Gr. Spitzer W/Cannelure AccuBond",
+   "diameter_in": 0.366,
+   "mass_gr": 250.0,
+   "length_in": 1.375,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 59756"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "6.5mm 120 Gr. Spitzer E-Tip",
+   "diameter_in": 0.264,
+   "mass_gr": 120.0,
+   "length_in": 1.35,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 59765"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "7mm 140 Gr. Spitzer E-Tip",
+   "diameter_in": 0.284,
+   "mass_gr": 140.0,
+   "length_in": 1.36,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 59955"
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "7mm 140 Gr. Spitzer AccuBond",
+   "diameter_in": 0.284,
+   "mass_gr": 140.0,
+   "length_in": 1.27,
+   "source_id": "nosler_catalog",
+   "source_note": "2026 product guide, OAL column; part 59992"
+  }
+ ]
+}

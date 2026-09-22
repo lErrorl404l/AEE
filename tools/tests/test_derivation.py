@@ -104,14 +104,22 @@ class TestBarrelMeasurement(unittest.TestCase):
         self.assertIn("selectionPosition", src)
         self.assertIn('"muzzle"', src)
         self.assertIn('"chamber"', src)
-        self.assertIn("_familyBarrel", src)
 
     def test_sanity_band(self):
         # A measured barrel outside 0.1-1.0 m (4"-40") is not a
-        # muzzle/chamber pair - fall back to the family.
+        # muzzle/chamber pair: return 0, not a guess.
         src = (BALL / "fnc_measureBarrel.sqf").read_text(encoding="utf-8")
         self.assertIn("_measured < 0.1", src)
         self.assertIn("_measured > 1.0", src)
+        self.assertIn("exitWith { 0 }", src)
+
+    def test_barrel_does_not_call_a_weapon_resolver(self):
+        # The barrel path must not call back into a weapon resolver.
+        # The two once called each other and recursed until the script
+        # stack overflowed, which HEMTT cannot see: it checks syntax.
+        barrel = (BALL / "fnc_measureBarrel.sqf").read_text(encoding="utf-8")
+        self.assertNotIn("FUNC(getWeaponProperties)", barrel)
+        self.assertFalse((BALL / "fnc_getWeaponProperties.sqf").exists())
 
 
 class TestProtectionDerivation(unittest.TestCase):
@@ -142,7 +150,7 @@ class TestDerivationWiring(unittest.TestCase):
         # The Fired EH measures the barrel and derives the MV.
         post = (REPO / "addons/ballistics/XEH_postInit.sqf").read_text(encoding="utf-8")
         self.assertIn("measureBarrel", post)
-        self.assertIn("deriveCartridge", post)
+        self.assertIn("resolveShot", post)
 
     def test_derivation_registered(self):
         prep = (REPO / "addons/ballistics/XEH_PREP.hpp").read_text(encoding="utf-8")

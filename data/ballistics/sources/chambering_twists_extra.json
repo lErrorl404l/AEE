@@ -1,0 +1,119 @@
+{
+  "retrieved": "2026-09-22",
+  "sources": [
+    {
+      "source_id": "cip_7_63_mauser",
+      "title": "C.I.P. TDCC - 7,63 Mauser (Tab IV, page 11)",
+      "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-iv/tabivcal-en-page11.pdf",
+      "sha256": "4e26b0747e4295804cf4ea27c491d209d1e18b20672901d1ec30cc8a36a012f2"
+    },
+    {
+      "source_id": "cip_7_65_browning",
+      "title": "C.I.P. TDCC - 7,65 mm Browning (Tab IV, page 12)",
+      "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-iv/tabivcal-en-page12.pdf",
+      "sha256": "15d7a80c0e2f2bf916d4fe499f709cb8190a2db15360211406181552237ade89"
+    },
+    {
+      "source_id": "cip_410",
+      "title": "C.I.P. TDCC Tab VII - Cal. 410 (smoothbore shot cartridge)",
+      "url": "https://bobp.cip-bobp.org/uploads/tdcc/tab-vii/410-en-6.pdf",
+      "sha256": "6a20151ccfa54a940eb745a3a95e83249e14e44759b03eb36557d4d2c0c6069f"
+    },
+    {
+      "source_id": "cip_tabvii_list",
+      "title": "C.I.P. TDCC - List of Tab VII, shot cartridges (smoothbore centre fire shotguns)",
+      "url": "https://bobp.cip-bobp.org/en/tdcc_public?page=1&cartridge_type_id=7",
+      "sha256": "8d7d8bde35aa9220c556d51b670a23f132c9110bebe284b8724ce8ba0c1a678e"
+    },
+    {
+      "source_id": "us_army_tm9_1010_230_10",
+      "title": "TM 9-1010-230-10, Operator's Manual, Machine Gun, 40MM, MK 19, MOD 3 (US Army, 30 May 2001)",
+      "url": "https://idoc.pub/documents/mk19-pon27265qp40",
+      "sha256": "e3ccb02cf04109f09f453f56e547dde868c428e6cd1bc87fe7b459a7c45cd01f"
+    },
+    {
+      "source_id": "coe_1945_part2",
+      "title": "Catalog of Enemy Ordnance Material, Volume II (Japanese Section), Office of the Chief of Ordnance, 1945",
+      "url": "https://stephentaylorhistorian.com/wp-content/uploads/2020/02/catalog-of-enemy-ordnance-material-1945-part-2-of-3.pdf",
+      "sha256": "d6396597da2d41b17598af08ddcc351c2056de09158907c684026b0adc5a845d"
+    },
+    {
+      "source_id": "lmt_m203",
+      "title": "LMT Defense - 12 in Classic M203 (NSN 1010-00-179-6447) product datasheet",
+      "url": "https://lmtdefense.com/product/12-classic-m203/",
+      "sha256": "48920a71071e1d491cb8c1c28c360d55d1a8111a234c742d06ac7be6dd24e876"
+    },
+    {
+      "source_id": "alexander_arms_beowulf",
+      "title": "Alexander Arms - .50 Beowulf 12 in DIY Upper Kit product page",
+      "url": "https://www.alexanderarms.com/product/50-beowulf-12-diy-upper-kit/",
+      "sha256": "e49278eea0dff739531cb91d07895aa50478d69fb18c61b4679c8c0d56428fa2"
+    }
+  ],
+  "twists": [
+    {
+      "chambering": "7.63x25mm Mauser",
+      "twist_mm": 250.0,
+      "grooves": 6,
+      "source_id": "cip_7_63_mauser",
+      "locator": "Tab IV sheet '7,63 Mauser' (date 84-06-14), Grooves block: 'N = 6' and 'u = 250.00'.",
+      "smoothbore": false
+    },
+    {
+      "chambering": "7.65x17mm Browning (.32 ACP)",
+      "twist_mm": 250.0,
+      "grooves": 6,
+      "source_id": "cip_7_65_browning",
+      "locator": "Tab IV sheet '7,65 mm Browning' (date 84-06-14), Grooves block: 'N = 6' and 'u = 250.00'.",
+      "smoothbore": false
+    },
+    {
+      "chambering": "40x46mm SR (M203)",
+      "twist_mm": 1219.2,
+      "grooves": null,
+      "source_id": "lmt_m203",
+      "locator": "12 in Classic M203 datasheet, NSN 1010-00-179-6447 (the US M203 NSN): '1:48\" RH twist rifling'.",
+      "smoothbore": false
+    },
+    {
+      "chambering": "40x53mm (Mk 19)",
+      "twist_mm": 1219.2,
+      "grooves": null,
+      "source_id": "us_army_tm9_1010_230_10",
+      "locator": "WP 0004 00, BARREL: 'Rifling: Twist: RH, uniform; Slope: 1 turn in 48 inches'.",
+      "smoothbore": false
+    },
+    {
+      "chambering": "7.7x58mm Arisaka (Type 99)",
+      "twist_mm": 254.0,
+      "grooves": 4,
+      "source_id": "coe_1945_part2",
+      "locator": "p. 212.1, '7.7 mm PARATROOPER RIFLES, Model 99 (1939)': 'Twist ... Uniform, right hand; one turn in approx. 10 ins.'; 'No. of grooves ... 4'. The page states these rifles are 'basically the same as the Japanese 7.7 mm standard infantry rifle, Model 99'.",
+      "smoothbore": false
+    },
+    {
+      "chambering": ".50 Beowulf (12.7x42mm)",
+      "twist_mm": 508.0,
+      "grooves": null,
+      "source_id": "alexander_arms_beowulf",
+      "locator": "'.50 Beowulf 12 in DIY Upper Kit' product page: '- 12 in Chrome Moly Barrel - 1:20 Twist Rate'.",
+      "smoothbore": false
+    },
+    {
+      "chambering": "20 gauge",
+      "twist_mm": 0.0,
+      "grooves": null,
+      "source_id": "cip_tabvii_list",
+      "locator": "C.I.P. TDCC Tab VII list, note: 'Calibres of smoothbore centre fire shotguns.' Tab VII has no twist field. Reference twist is zero.",
+      "smoothbore": true
+    },
+    {
+      "chambering": ".410 bore",
+      "twist_mm": 0.0,
+      "grooves": null,
+      "source_id": "cip_410",
+      "locator": "C.I.P. Tab VII sheet 'Cal. 410', table header 'TAB. VII' (C.I.P. table of smoothbore centre fire shotguns); the sheet has no twist field. Reference twist is zero.",
+      "smoothbore": true
+    }
+  ]
+}

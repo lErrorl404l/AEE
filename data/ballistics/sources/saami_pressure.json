@@ -1,0 +1,950 @@
+{
+ "url": "https://saami.org/technical-information/ansi-saami-standards/",
+ "retrieved": "2026-09-22",
+ "sha256": "100ec8ccff95952e5414d931456beb655aaf4fc350ea8e8088a21157464f58b6",
+ "standard": "SAAMI Z299.3 / Z299.4",
+ "cartridges": [
+  {
+   "cartridge": "9mm Luger",
+   "map_psi": 35000,
+   "map_mpa": 241.3,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": "9mm Luger +P",
+   "map_psi": 38500,
+   "map_mpa": 265.4,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": "9x18 Makarov",
+   "map_psi": 24100,
+   "map_mpa": 166.2,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": "9x23 Winchester",
+   "map_psi": 55000,
+   "map_mpa": 379.2,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": "10mm Automatic",
+   "map_psi": 37500,
+   "map_mpa": 258.6,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".221 Remington Fireball",
+   "map_psi": 60000,
+   "map_mpa": 413.7,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".25 Automatic",
+   "map_psi": 25000,
+   "map_mpa": 172.4,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".30 Luger (7.65mm)",
+   "map_psi": 28000,
+   "map_mpa": 193.1,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".32 Automatic",
+   "map_psi": 20500,
+   "map_mpa": 141.3,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".32 H&R Magnum",
+   "map_psi": 23000,
+   "map_mpa": 158.6,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".32 Smith & Wesson",
+   "map_psi": 17000,
+   "map_mpa": 117.2,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".32 Smith & Wesson Long (32 Colt New Police)",
+   "map_psi": 15000,
+   "map_mpa": 103.4,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".327 Federal Magnum",
+   "map_psi": 45000,
+   "map_mpa": 310.3,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".357 Magnum",
+   "map_psi": 35000,
+   "map_mpa": 241.3,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".357 Sig.",
+   "map_psi": 40000,
+   "map_mpa": 275.8,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".38 Automatic",
+   "map_psi": 26500,
+   "map_mpa": 182.7,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".38 Smith & Wesson (38 Colt New Police)",
+   "map_psi": 14500,
+   "map_mpa": 100.0,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".38 Special",
+   "map_psi": 17000,
+   "map_mpa": 117.2,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".38 Special Match",
+   "map_psi": 17000,
+   "map_mpa": 117.2,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".38 Special +P",
+   "map_psi": 20000,
+   "map_mpa": 137.9,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".38 Super Automatic +P",
+   "map_psi": 36500,
+   "map_mpa": 251.7,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".380 Automatic",
+   "map_psi": 21500,
+   "map_mpa": 148.2,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".40 Smith & Wesson",
+   "map_psi": 35000,
+   "map_mpa": 241.3,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".41 Remington Magnum",
+   "map_psi": 36000,
+   "map_mpa": 248.2,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".429 Desert Eagle",
+   "map_psi": 46000,
+   "map_mpa": 317.2,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".44 Remington Magnum",
+   "map_psi": 36000,
+   "map_mpa": 248.2,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".44 Smith & Wesson Special",
+   "map_psi": 15500,
+   "map_mpa": 106.9,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".45 Automatic",
+   "map_psi": 21000,
+   "map_mpa": 144.8,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".45 Automatic Match",
+   "map_psi": 21000,
+   "map_mpa": 144.8,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".45 Automatic +P",
+   "map_psi": 23000,
+   "map_mpa": 158.6,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".45 Colt",
+   "map_psi": 14000,
+   "map_mpa": 96.5,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".45 Glock Automatic Pistol",
+   "map_psi": 23000,
+   "map_mpa": 158.6,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".45 Winchester Magnum",
+   "map_psi": 41500,
+   "map_mpa": 286.1,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".454 Casull",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".460 S&W Magnum",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".475 Linebaugh",
+   "map_psi": 50000,
+   "map_mpa": 344.7,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".480 Ruger",
+   "map_psi": 48000,
+   "map_mpa": 330.9,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".50 Action Express",
+   "map_psi": 35000,
+   "map_mpa": 241.3,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": ".500 S&W Magnum",
+   "map_psi": 60000,
+   "map_mpa": 413.7,
+   "standard": "Z299.3"
+  },
+  {
+   "cartridge": "6mm Advanced Rifle Cartridge",
+   "map_psi": 52000,
+   "map_mpa": 358.5,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": "6mm Creedmoor",
+   "map_psi": 62000,
+   "map_mpa": 427.5,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": "6mm GT",
+   "map_psi": 62000,
+   "map_mpa": 427.5,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": "6mm Remington",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": "6.5 Creedmoor",
+   "map_psi": 62000,
+   "map_mpa": 427.5,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": "6.5 Grendel",
+   "map_psi": 52000,
+   "map_mpa": 358.5,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": "6.5 Precision Rifle Cartridge",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": "6.5 Weatherby Rebated Precision Magnum",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": "6.5-284 Norma",
+   "map_psi": 58000,
+   "map_mpa": 399.9,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": "6.5-300 Weatherby Magnum",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": "6.5 x 55 Swedish",
+   "map_psi": 51000,
+   "map_mpa": 351.6,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": "6.8 True Velocity Composite",
+   "map_psi": 70000,
+   "map_mpa": 482.6,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": "6.8 Western",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": "6.8mm Remington SPC",
+   "map_psi": 55000,
+   "map_mpa": 379.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": "7mm Mauser (7 x 57)",
+   "map_psi": 51000,
+   "map_mpa": 351.6,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": "7mm Precision Rifle Cartridge",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": "7mm Remington Magnum",
+   "map_psi": 61000,
+   "map_mpa": 420.6,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": "7mm Remington Short Action Ultra Magnum",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": "7mm Remington Ultra Magnum",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": "7mm Weatherby Magnum",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": "7mm Winchester Short Magnum",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": "7mm-08 Remington",
+   "map_psi": 61000,
+   "map_mpa": 420.6,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": "7 x 64 Brenneke",
+   "map_psi": 55000,
+   "map_mpa": 379.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": "7.62 x 39",
+   "map_psi": 45000,
+   "map_mpa": 310.3,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": "8mm Mauser (8 x 57)",
+   "map_psi": 35000,
+   "map_mpa": 241.3,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": "9.3 x 62",
+   "map_psi": 57500,
+   "map_mpa": 396.4,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".17 Hornet",
+   "map_psi": 50000,
+   "map_mpa": 344.7,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".17 Remington",
+   "map_psi": 63000,
+   "map_mpa": 434.4,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".17 Remington Fireball",
+   "map_psi": 55000,
+   "map_mpa": 379.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".204 Ruger",
+   "map_psi": 57500,
+   "map_mpa": 396.4,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".22 Advanced Rifle Cartridge",
+   "map_psi": 52000,
+   "map_mpa": 358.5,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".22 Creedmoor",
+   "map_psi": 62000,
+   "map_mpa": 427.5,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".22 Hornet",
+   "map_psi": 49000,
+   "map_mpa": 337.8,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".22 Nosler",
+   "map_psi": 55000,
+   "map_mpa": 379.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".22-250 Remington",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".220 Swift",
+   "map_psi": 62000,
+   "map_mpa": 427.5,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".222 Remington",
+   "map_psi": 50000,
+   "map_mpa": 344.7,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".222 Remington Magnum",
+   "map_psi": 55000,
+   "map_mpa": 379.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".223 Remington",
+   "map_psi": 55000,
+   "map_mpa": 379.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".223 Winchester Super Short Magnum",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".224 Valkyrie",
+   "map_psi": 55000,
+   "map_mpa": 379.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".243 Winchester",
+   "map_psi": 60000,
+   "map_mpa": 413.7,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".243 Winchester Super Short Magnum",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".25 Winchester Super Short Magnum",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".25-06 Remington",
+   "map_psi": 63000,
+   "map_mpa": 434.4,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".257 Roberts",
+   "map_psi": 54000,
+   "map_mpa": 372.3,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".257 Roberts +P",
+   "map_psi": 58000,
+   "map_mpa": 399.9,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".257 Weatherby Magnum",
+   "map_psi": 62500,
+   "map_mpa": 430.9,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".26 Nosler",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".260 Remington",
+   "map_psi": 60000,
+   "map_mpa": 413.7,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".264 Winchester Magnum",
+   "map_psi": 64000,
+   "map_mpa": 441.3,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".27 Nosler",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".270 Weatherby Magnum",
+   "map_psi": 62500,
+   "map_mpa": 430.9,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".270 Winchester",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".270 Winchester Short Magnum",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".277 SIG Fury",
+   "map_psi": 80000,
+   "map_mpa": 551.6,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".28 Nosler",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".280 Ackley Improved",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".280 Remington",
+   "map_psi": 60000,
+   "map_mpa": 413.7,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".284 Winchester",
+   "map_psi": 56000,
+   "map_mpa": 386.1,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".30 Carbine",
+   "map_psi": 40000,
+   "map_mpa": 275.8,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".30 Nosler",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".30 Remington AR",
+   "map_psi": 55000,
+   "map_mpa": 379.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".30 Thompson Center",
+   "map_psi": 62000,
+   "map_mpa": 427.5,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".30-06 Springfield",
+   "map_psi": 60000,
+   "map_mpa": 413.7,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".30-30 Winchester",
+   "map_psi": 42000,
+   "map_mpa": 289.6,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".300 AAC BLACKOUT",
+   "map_psi": 55000,
+   "map_mpa": 379.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".300 HAM’R",
+   "map_psi": 57500,
+   "map_mpa": 396.4,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".300 Holland & Holland Magnum",
+   "map_psi": 58000,
+   "map_mpa": 399.9,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".300 Norma Magnum",
+   "map_psi": 61000,
+   "map_mpa": 420.6,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".300 Precision Rifle Cartridge",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".300 Remington Short Action Ultra Magnum",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".300 Remington Ultra Magnum",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".300 Ruger Compact Magnum",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".300 Savage",
+   "map_psi": 47000,
+   "map_mpa": 324.1,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".300 Weatherby Magnum",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".300 Winchester Magnum",
+   "map_psi": 64000,
+   "map_mpa": 441.3,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".300 Winchester Short Magnum",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".303 British",
+   "map_psi": 49000,
+   "map_mpa": 337.8,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".308 Marlin Express",
+   "map_psi": 47500,
+   "map_mpa": 327.5,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".308 Winchester",
+   "map_psi": 62000,
+   "map_mpa": 427.5,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".32 Winchester Special",
+   "map_psi": 42000,
+   "map_mpa": 289.6,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".325 Winchester Short Magnum",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".33 Nosler",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".338 Federal",
+   "map_psi": 62000,
+   "map_mpa": 427.5,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".338 Lapua Magnum",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".338 Marlin Express",
+   "map_psi": 46000,
+   "map_mpa": 317.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".338 Norma Magnum",
+   "map_psi": 62500,
+   "map_mpa": 430.9,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".338 Remington Ultra Magnum",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".338 Ruger Compact Magnum",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".338 Weatherby Precision Rebated Magnum",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".338 Winchester Magnum",
+   "map_psi": 64000,
+   "map_mpa": 441.3,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".340 Weatherby Magnum",
+   "map_psi": 62500,
+   "map_mpa": 430.9,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".348 Winchester",
+   "map_psi": 45000,
+   "map_mpa": 310.3,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".35 Remington",
+   "map_psi": 33500,
+   "map_mpa": 231.0,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".35 Whelen",
+   "map_psi": 62000,
+   "map_mpa": 427.5,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".350 Legend",
+   "map_psi": 55000,
+   "map_mpa": 379.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".360 Buckhammer",
+   "map_psi": 50000,
+   "map_mpa": 344.7,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".370 Sako Magnum",
+   "map_psi": 60000,
+   "map_mpa": 413.7,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".375 Holland & Holland Magnum",
+   "map_psi": 62000,
+   "map_mpa": 427.5,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".375 Remington Ultra Magnum",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".375 Ruger",
+   "map_psi": 62000,
+   "map_mpa": 427.5,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".376 Steyr",
+   "map_psi": 62000,
+   "map_mpa": 427.5,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".400 Legend",
+   "map_psi": 45000,
+   "map_mpa": 310.3,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".405 Winchester",
+   "map_psi": 46000,
+   "map_mpa": 317.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".416 Remington Magnum",
+   "map_psi": 65000,
+   "map_mpa": 448.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".416 Rigby",
+   "map_psi": 52000,
+   "map_mpa": 358.5,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".416 Ruger",
+   "map_psi": 62000,
+   "map_mpa": 427.5,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".44 Remington Magnum",
+   "map_psi": 36000,
+   "map_mpa": 248.2,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".44-40 Winchester",
+   "map_psi": 11000,
+   "map_mpa": 75.8,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".444 Marlin",
+   "map_psi": 42000,
+   "map_mpa": 289.6,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".45-70 Government",
+   "map_psi": 28000,
+   "map_mpa": 193.1,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".450 Bushmaster",
+   "map_psi": 38500,
+   "map_mpa": 265.4,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".450 Marlin",
+   "map_psi": 43500,
+   "map_mpa": 299.9,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".458 Lott",
+   "map_psi": 62500,
+   "map_mpa": 430.9,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".458 Winchester Magnum",
+   "map_psi": 60000,
+   "map_mpa": 413.7,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".470 Nitro Express",
+   "map_psi": 41000,
+   "map_mpa": 282.7,
+   "standard": "Z299.4"
+  },
+  {
+   "cartridge": ".500 Nitro Express 3”",
+   "map_psi": 38500,
+   "map_mpa": 265.4,
+   "standard": "Z299.4"
+  }
+ ]
+}

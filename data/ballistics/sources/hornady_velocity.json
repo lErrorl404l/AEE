@@ -1,0 +1,4011 @@
+{
+ "url": "https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf",
+ "retrieved": "2026-09-22",
+ "sha256": "62142ccb829e17dc871bda89100da321ffdfc529d6ea34d037b2dd5241bbebd4",
+ "loads": [
+  {
+   "cartridge": "17 Mach 2",
+   "projectile": "15.5 gr. NTX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 625,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "17 Mach 2",
+   "projectile": "17 gr. V-MAX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 640,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "17 HMR",
+   "projectile": "15.5 gr. NTX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 770,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "17 HMR",
+   "projectile": "17 gr. V-MAX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 777,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "17 HMR",
+   "projectile": "20 gr. XTP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 724,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "17 WSM",
+   "projectile": "20 gr. V-MAX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 914,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "17 Hornet",
+   "projectile": "20 gr. V-MAX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 1113,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "204 Ruger",
+   "projectile": "24 gr. NTX",
+   "barrel_mm": 660.4,
+   "velocity_ms": 1341,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "204 Ruger",
+   "projectile": "32 gr. V-MAX",
+   "barrel_mm": 660.4,
+   "velocity_ms": 1288,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "204 Ruger",
+   "projectile": "40 gr. V-MAX",
+   "barrel_mm": 660.4,
+   "velocity_ms": 1189,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "22 WMR",
+   "projectile": "30 gr. V-MAX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 671,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "22 Hornet",
+   "projectile": "35 gr. V-MAX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 936,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "22 Hornet",
+   "projectile": "45 gr. SP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 812,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "218 Bee",
+   "projectile": "45 gr. HP Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 838,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "222 Rem",
+   "projectile": "35 gr. NTX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 1146,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "222 Rem",
+   "projectile": "50 gr. V-MAX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 1020,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "5.45 x 39mm",
+   "projectile": "60 gr. V-MAX",
+   "barrel_mm": 406.4,
+   "velocity_ms": 856,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "223 Rem",
+   "projectile": "35 gr. NTX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 1219,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "223 Rem",
+   "projectile": "53 gr. V-MAX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 1056,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "223 Rem",
+   "projectile": "55 gr. CX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 991,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "223 Rem",
+   "projectile": "55 gr. FTX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 988,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "223 Rem",
+   "projectile": "55 gr. HP Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 988,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "223 Rem",
+   "projectile": "55 gr. SP 55 gr. V-MAX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 988,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "223 Rem",
+   "projectile": "62 gr. FMJ",
+   "barrel_mm": 609.6,
+   "velocity_ms": 945,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "223 Rem",
+   "projectile": "73 gr. ELD Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 850,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "223 Rem",
+   "projectile": "73 gr. FTX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 850,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "223 Rem",
+   "projectile": "75 gr. BTHP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 850,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "223 Rem",
+   "projectile": "75 gr. BTHP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 850,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "223 Rem",
+   "projectile": "75 gr. BTHP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 893,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "5.56 NATO",
+   "projectile": "55 gr. CX",
+   "barrel_mm": 508.0,
+   "velocity_ms": 968,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "5.56 NATO",
+   "projectile": "62 gr. FMJ",
+   "barrel_mm": 508.0,
+   "velocity_ms": 933,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "5.56 NATO",
+   "projectile": "75 gr. BTHP",
+   "barrel_mm": 508.0,
+   "velocity_ms": 887,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "5.56 NATO",
+   "projectile": "75 gr. InterLock HD SBR",
+   "barrel_mm": 508.0,
+   "velocity_ms": 704,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "224 Valkyrie",
+   "projectile": "60 gr. V-MAX W/C",
+   "barrel_mm": 609.6,
+   "velocity_ms": 1006,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "224 Valkyrie",
+   "projectile": "75 gr. BTHP W/C",
+   "barrel_mm": 609.6,
+   "velocity_ms": 914,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "224 Valkyrie",
+   "projectile": "88 gr. ELD Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 815,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "22-250 Rem",
+   "projectile": "35 gr. NTX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 1356,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "22-250 Rem",
+   "projectile": "50 gr. V-MAX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 1158,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "22-250 Rem",
+   "projectile": "50 gr. V-MAX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 1219,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "22-250 Rem",
+   "projectile": "55 gr. V-MAX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 1122,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "220 Swift",
+   "projectile": "55 gr. V-MAX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 1122,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "6mm ARC",
+   "projectile": "103 gr. ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 853,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "6mm ARC",
+   "projectile": "105 gr. BTHP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 838,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "6mm ARC",
+   "projectile": "108 gr. ELD Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 838,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "243 Win",
+   "projectile": "58 gr. V-MAX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 1196,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "243 Win",
+   "projectile": "75 gr. V-MAX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 1091,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "243 Win",
+   "projectile": "80 gr. CX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 975,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "243 Win",
+   "projectile": "87 gr. SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 853,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "243 Win",
+   "projectile": "87 gr. V-MAX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 988,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "243 Win",
+   "projectile": "90 gr. ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 960,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "243 Win",
+   "projectile": "95 gr. SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 971,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "43 Win",
+   "projectile": "100 gr. InterLock BTSP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 902,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "6mm Rem",
+   "projectile": "95 gr. SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 986,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "6mm Creedmoor",
+   "projectile": "87 gr. V-MAX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 978,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "6mm Creedmoor",
+   "projectile": "90 gr. CX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 1013,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "6mm Creedmoor",
+   "projectile": "103 gr. ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 930,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "6mm Creedmoor",
+   "projectile": "105 gr. BTHP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 902,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "6mm Creedmoor",
+   "projectile": "108 gr. ELD Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 902,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "25-35 Win",
+   "projectile": "110 gr. FTX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 739,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "250 Savage",
+   "projectile": "100 gr. InterLock SP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 853,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "257 Roberts +P",
+   "projectile": "117 gr. SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 898,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "25-06 Rem",
+   "projectile": "90 gr. CX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 1021,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "25-06 Rem",
+   "projectile": "110 gr. ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 957,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "5-06 Rem",
+   "projectile": "117 gr. InterLock BTSP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 911,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "25-06 Rem",
+   "projectile": "117 gr. SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 948,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "257 Wby Mag",
+   "projectile": "90 gr. CX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 1105,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "257 Wby Mag",
+   "projectile": "110 gr. ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 988,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "6.5 Grendel",
+   "projectile": "123 gr. ELD Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 786,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "6.5 Grendel",
+   "projectile": "123 gr. SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 786,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "6.5 x 55mm",
+   "projectile": "140 gr. SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 834,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "260 Rem",
+   "projectile": "129 gr. SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 893,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "260 Rem",
+   "projectile": "130 gr. ELD Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 866,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "6.5 Creedmoor",
+   "projectile": "95 gr. V-MAX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 1006,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "6.5 Creedmoor",
+   "projectile": "120 gr. CX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 892,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "6.5 Creedmoor",
+   "projectile": "120 gr. CX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 930,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "6.5 Creedmoor",
+   "projectile": "120 gr. ELD Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 887,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": ".5 Creedmoor",
+   "projectile": "129 gr. InterLock",
+   "barrel_mm": 609.6,
+   "velocity_ms": 860,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "6.5 Creedmoor",
+   "projectile": "129 gr. SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 899,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "6.5 Creedmoor",
+   "projectile": "140 gr. BTHP Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 820,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "6.5 Creedmoor",
+   "projectile": "140 gr. ELD Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 826,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "6.5 Creedmoor",
+   "projectile": "143 gr. ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 823,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "6.5 Creedmoor",
+   "projectile": "147 gr. ELD Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 821,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "6.5 PRC",
+   "projectile": "130 gr. CX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 907,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "6.5 PRC",
+   "projectile": "143 gr. ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 902,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "6.5 PRC",
+   "projectile": "147 gr. ELD Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 887,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "264 Win Mag",
+   "projectile": "140 gr. InterLock SP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 895,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "6.8mm SPC",
+   "projectile": "100 gr. CX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 777,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "6.8mm SPC",
+   "projectile": "110 gr. V-MAX",
+   "barrel_mm": 406.4,
+   "velocity_ms": 785,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "6.8mm SPC",
+   "projectile": "120 gr. SST",
+   "barrel_mm": 406.4,
+   "velocity_ms": 750,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "270 Win",
+   "projectile": "130 gr. CX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 914,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "270 Win",
+   "projectile": "130 gr. CX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 972,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "270 Win",
+   "projectile": "130 gr. SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 975,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "70 Win",
+   "projectile": "130 gr. InterLock SP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 933,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "70 Win",
+   "projectile": "140 gr. InterLock SP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 896,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "270 Win",
+   "projectile": "140 gr. SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 942,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "270 Win",
+   "projectile": "145 gr. ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 905,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "270 WSM",
+   "projectile": "130 gr. CX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 960,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "270 WSM",
+   "projectile": "145 gr. ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 945,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "275 Rigby",
+   "projectile": "140 gr. InterLock SP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 817,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "7mm-08 Rem",
+   "projectile": "120 gr. SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 815,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "7mm-08 Rem",
+   "projectile": "139 gr. CX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 887,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "mm-08 Rem",
+   "projectile": "139 gr. InterLock SP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 866,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "7mm-08 Rem",
+   "projectile": "139 gr. SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 899,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "7mm-08 Rem",
+   "projectile": "150 gr. ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 844,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "280 Rem",
+   "projectile": "150 gr. ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 892,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "280 Ackley Imp",
+   "projectile": "162 gr. ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 869,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "mm Rem Mag",
+   "projectile": "139 gr. InterLock SP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 960,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "7mm Rem Mag",
+   "projectile": "139 gr. SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 988,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "7mm Rem Mag",
+   "projectile": "150 gr. CX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 914,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "mm Rem Mag",
+   "projectile": "154 gr. InterLock SP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 925,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "7mm Rem Mag",
+   "projectile": "154 gr. SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 945,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "7mm Rem Mag",
+   "projectile": "162 gr. ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 907,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "7mm Rem Mag",
+   "projectile": "162 gr. SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 924,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "7mm WSM",
+   "projectile": "150 gr. CX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 930,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "7mm WSM",
+   "projectile": "162 gr. ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 914,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "7-30 Waters",
+   "projectile": "120 gr. FTX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 823,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "28 Nosler",
+   "projectile": "162 gr. ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 968,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "7mm STW",
+   "projectile": "162 gr. ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 930,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "30 Carbine",
+   "projectile": "110 gr. FTX",
+   "barrel_mm": 508.0,
+   "velocity_ms": 610,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "300 Blackout",
+   "projectile": "110 gr. CX",
+   "barrel_mm": 406.4,
+   "velocity_ms": 696,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "300 Blackout",
+   "projectile": "110 gr. V-MAX",
+   "barrel_mm": 406.4,
+   "velocity_ms": 724,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "300 Blackout",
+   "projectile": "125 gr. HP Match",
+   "barrel_mm": 406.4,
+   "velocity_ms": 663,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "300 Blackout",
+   "projectile": "135 gr. FTX",
+   "barrel_mm": 406.4,
+   "velocity_ms": 636,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "300 Blackout",
+   "projectile": "190 gr. SUB-X",
+   "barrel_mm": 406.4,
+   "velocity_ms": 320,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "300 Blackout",
+   "projectile": "208 gr. A-MAX",
+   "barrel_mm": 406.4,
+   "velocity_ms": 311,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "30-30 Win",
+   "projectile": "140 gr. MonoFlex",
+   "barrel_mm": 609.6,
+   "velocity_ms": 751,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "0-30 Win",
+   "projectile": "150 gr. RN",
+   "barrel_mm": 609.6,
+   "velocity_ms": 728,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "30-30 Win",
+   "projectile": "160 gr. FTX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 732,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "30-30 Win",
+   "projectile": "175 gr. SUB-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 320,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "300 Savage",
+   "projectile": "150 gr. SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 835,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "307 Win",
+   "projectile": "160 gr. FTX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 808,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "308 Marlin Express",
+   "projectile": "160 gr. FTX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 811,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "308 Win",
+   "projectile": "125 gr. SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 815,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "08 Win",
+   "projectile": "150 gr. InterLock SP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 860,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "308 Win",
+   "projectile": "150 gr. SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 914,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "308 Win",
+   "projectile": "150 gr. SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 860,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "308 Win",
+   "projectile": "155 gr. A-MAX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 869,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "308 Win",
+   "projectile": "155 gr. BTHP Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 823,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "308 Win",
+   "projectile": "155 gr. FTX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 849,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "308 Win",
+   "projectile": "165 gr. CX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 796,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "308 Win",
+   "projectile": "165 gr. CX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 838,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "08 Win",
+   "projectile": "165 gr. InterLock SP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 823,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "308 Win",
+   "projectile": "165 gr. SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 866,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "308 Win",
+   "projectile": "168 gr. A-MAX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 823,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "308 Win",
+   "projectile": "168 gr. BTHP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 823,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "308 Win",
+   "projectile": "168 gr. ELD Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 823,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "308 Win",
+   "projectile": "168 gr. ELD Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 866,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "308 Win",
+   "projectile": "178 gr. BTHP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 792,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "308 Win",
+   "projectile": "178 gr. ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 792,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "30-40 Krag",
+   "projectile": "180 gr. InterLock SP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 741,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "30 TC",
+   "projectile": "150 gr. SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 914,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "30-06 Springfield",
+   "projectile": "125 gr. SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 823,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "0-06 Springfield",
+   "projectile": "150 gr. InterLock SP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 887,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "30-06 Springfield",
+   "projectile": "150 gr. SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 939,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "30-06 Springfield",
+   "projectile": "165 gr. CX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 896,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "30-06 Springfield",
+   "projectile": "165 gr. SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 902,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "0-06 Springfield",
+   "projectile": "168 gr. ELD Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 826,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "30-06 Springfield",
+   "projectile": "178 gr. ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 838,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "30-06 Springfield",
+   "projectile": "180 gr. CX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 792,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "0-06 Springfield",
+   "projectile": "180 gr. InterLock SP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 823,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "30-06 Springfield",
+   "projectile": "180 gr. SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 860,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "300 H&H Mag",
+   "projectile": "180 gr. InterBond",
+   "barrel_mm": 609.6,
+   "velocity_ms": 875,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "300 RSAUM",
+   "projectile": "178 gr. ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 899,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "300 RCM",
+   "projectile": "150 gr. SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 1009,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "300 RCM",
+   "projectile": "178 gr. ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 884,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "00 WSM",
+   "projectile": "165 gr. InterLock",
+   "barrel_mm": 609.6,
+   "velocity_ms": 954,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "300 WSM",
+   "projectile": "180 gr. CX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 884,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "300 WSM",
+   "projectile": "200 gr. ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 860,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "00 Win Mag",
+   "projectile": "150 gr. InterLock SP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 998,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "300 Win Mag",
+   "projectile": "165 gr. CX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 994,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "300 Win Mag",
+   "projectile": "178 gr. ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 902,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "300 Win Mag",
+   "projectile": "178 gr. ELD Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 902,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "300 Win Mag",
+   "projectile": "180 gr. CX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 902,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "00 Win Mag",
+   "projectile": "180 gr. InterLock SP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 902,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "300 Win Mag",
+   "projectile": "180 gr. SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 954,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "300 Win Mag",
+   "projectile": "195 gr. ELD Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 893,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "300 Win Mag",
+   "projectile": "200 gr. ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 872,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "300 Wby Mag",
+   "projectile": "180 gr. CX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 945,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "300 Wby Mag",
+   "projectile": "200 gr. ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 902,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "300 PRC",
+   "projectile": "190 gr. CX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 914,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "300 PRC",
+   "projectile": "212 gr. ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 872,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "300 PRC",
+   "projectile": "225 gr. ELD Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 856,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "300 Rem Ultra Mag",
+   "projectile": "180 gr. CX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 975,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "300 Rem Ultra Mag",
+   "projectile": "220 gr. ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 887,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "30-378 Wby Mag",
+   "projectile": "220 gr. ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 922,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "7.62 x 39",
+   "projectile": "123 gr. HP Match",
+   "barrel_mm": 508.0,
+   "velocity_ms": 716,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "7.62 x 39",
+   "projectile": "123 gr. SST",
+   "barrel_mm": 508.0,
+   "velocity_ms": 716,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "303 British",
+   "projectile": "150 gr. InterLock SP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 818,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "32 Win Special",
+   "projectile": "165 gr. FTX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 735,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "x 57",
+   "projectile": "196 gr. BTHP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 762,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "338 Marlin Express",
+   "projectile": "200 gr. FTX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 782,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "338 RCM",
+   "projectile": "225 gr. SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 838,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "338 Win Mag",
+   "projectile": "200 gr. SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 924,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "338 Win Mag",
+   "projectile": "225 gr. CX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 853,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "338 Win Mag",
+   "projectile": "225 gr. SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 866,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "338 Win Mag",
+   "projectile": "230 gr. ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 856,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "338 Lapua Mag",
+   "projectile": "250 gr. BTHP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 872,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "338 Lapua Mag",
+   "projectile": "270 gr. ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 853,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "338 Lapua Mag",
+   "projectile": "285 gr. ELD Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 837,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "348 Win",
+   "projectile": "200 gr. FTX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 780,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "350 Legend",
+   "projectile": "165 gr. FTX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 671,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "50 Legend",
+   "projectile": "170 gr. InterLock SP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 671,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "350 Legend",
+   "projectile": "250 gr. SUB-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 320,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "35 Rem",
+   "projectile": "200 gr. FTX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 678,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "358 Win",
+   "projectile": "200 gr. InterLock SP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 754,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "35 Whelen",
+   "projectile": "200 gr. InterLock SP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 887,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "9.3 x 74R",
+   "projectile": "286 gr. InterLock SP-RP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 719,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "9.3 x 62mm",
+   "projectile": "286 gr. InterLock SP-RP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 719,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "376 Steyr",
+   "projectile": "225 gr. InterLock SP-RP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 792,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "376 Steyr",
+   "projectile": "270 gr. InterLock SP-RP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 792,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "375 H&H Mag",
+   "projectile": "250 gr. CX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 823,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "375 H&H Mag",
+   "projectile": "270 gr. InterLock SP-RP SPF",
+   "barrel_mm": 609.6,
+   "velocity_ms": 853,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "375 H&H Mag",
+   "projectile": "300 gr. DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 771,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "375 H&H Mag",
+   "projectile": "300 gr. DGX Bonded",
+   "barrel_mm": 609.6,
+   "velocity_ms": 771,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "375 Ruger",
+   "projectile": "250 gr. CX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 853,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "375 Ruger",
+   "projectile": "270 gr. InterLock SP-RP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 866,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "375 Ruger",
+   "projectile": "300 gr. DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 811,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "375 Ruger",
+   "projectile": "300 gr. DGX Bonded",
+   "barrel_mm": 609.6,
+   "velocity_ms": 811,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "450-400 Nitro Express 3\"",
+   "projectile": "400 gr. DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 625,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "450-400 Nitro Express 3\"",
+   "projectile": "400 gr. DGX Bonded",
+   "barrel_mm": 609.6,
+   "velocity_ms": 625,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "405 Win",
+   "projectile": "300 gr. InterLock SP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 671,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "416 Ruger",
+   "projectile": "400 gr. DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 732,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "416 Ruger",
+   "projectile": "400 gr. DGX Bonded",
+   "barrel_mm": 609.6,
+   "velocity_ms": 732,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "416 Rem Mag",
+   "projectile": "400 gr. DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 732,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "416 Rem Mag",
+   "projectile": "400 gr. DGX Bonded",
+   "barrel_mm": 609.6,
+   "velocity_ms": 732,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "416 Rigby",
+   "projectile": "400 gr. DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 736,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "416 Rigby",
+   "projectile": "400 gr. DGX Bonded",
+   "barrel_mm": 609.6,
+   "velocity_ms": 736,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "404 Jeffery",
+   "projectile": "400 gr. DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 701,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "404 Jeffery",
+   "projectile": "400 gr. DGX Bonded",
+   "barrel_mm": 609.6,
+   "velocity_ms": 701,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "444 Marlin",
+   "projectile": "265 gr. FTX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 709,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "444 Marlin",
+   "projectile": "265 gr. InterLock FP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 732,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "50 Bushmaster",
+   "projectile": "245 gr. InterLock",
+   "barrel_mm": 609.6,
+   "velocity_ms": 671,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "450 Bushmaster",
+   "projectile": "250 gr. FTX",
+   "barrel_mm": 508.0,
+   "velocity_ms": 671,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "450 Bushmaster",
+   "projectile": "250 gr. FTX",
+   "barrel_mm": 508.0,
+   "velocity_ms": 671,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "450 Bushmaster",
+   "projectile": "395 gr. SUB-X",
+   "barrel_mm": 508.0,
+   "velocity_ms": 320,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "45-70 Govt",
+   "projectile": "250 gr. MonoFlex",
+   "barrel_mm": 609.6,
+   "velocity_ms": 617,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "45-70 Govt",
+   "projectile": "325 gr. FTX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 610,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "45-70 Govt",
+   "projectile": "410 gr. SUB-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 328,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "450 Marlin",
+   "projectile": "325 gr. FTX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 678,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "450 Nitro Express 3¼\"",
+   "projectile": "480 gr. DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 655,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "450 Nitro Express 3¼\"",
+   "projectile": "480 gr. DGX Bonded",
+   "barrel_mm": 609.6,
+   "velocity_ms": 655,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "458 Win Mag",
+   "projectile": "500 gr. DGS SPF",
+   "barrel_mm": 609.6,
+   "velocity_ms": 652,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "458 Win Mag",
+   "projectile": "500 gr. DGX Bonded SPF",
+   "barrel_mm": 609.6,
+   "velocity_ms": 652,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "458 Lott",
+   "projectile": "500 gr. DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 701,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "458 Lott",
+   "projectile": "500 gr. DGX Bonded",
+   "barrel_mm": 609.6,
+   "velocity_ms": 701,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "470 Nitro Express",
+   "projectile": "500 gr. DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 655,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "470 Nitro Express",
+   "projectile": "500 gr. DGX Bonded",
+   "barrel_mm": 609.6,
+   "velocity_ms": 655,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "500 Nitro Express 3\"",
+   "projectile": "570 gr. DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 646,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "500 Nitro Express 3\"",
+   "projectile": "570 gr. DGX Bonded",
+   "barrel_mm": 609.6,
+   "velocity_ms": 646,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "50 BMG",
+   "projectile": "750 gr. A-MAX",
+   "barrel_mm": 914.4,
+   "velocity_ms": 858,
+   "source_note": "Hornady Standard Ballistics Chart 2022, rifle ammunition; https://static.hornady.media/presscenter/docs/1410998060-2022-Standard-Ballistics-Chart.pdf (barrel is the chart's stated 24\" test barrel unless the row names another)"
+  },
+  {
+   "cartridge": "17 Hornet",
+   "projectile": "20 gr V-Max",
+   "barrel_mm": 609.6,
+   "velocity_ms": 1097,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "17 Hornet",
+   "projectile": "20 gr V-Max",
+   "barrel_mm": 609.6,
+   "velocity_ms": 975,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "17 Rem Fireball",
+   "projectile": "25 gr V-Max",
+   "barrel_mm": 660.4,
+   "velocity_ms": 1128,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "17 Rem Fireball",
+   "projectile": "25 gr V-Max",
+   "barrel_mm": 660.4,
+   "velocity_ms": 1006,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "17 Remington",
+   "projectile": "25 gr V-Max",
+   "barrel_mm": 609.6,
+   "velocity_ms": 1189,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "17 Remington",
+   "projectile": "25 gr V-Max",
+   "barrel_mm": 609.6,
+   "velocity_ms": 1097,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "204 Ruger",
+   "projectile": "32 gr V-Max",
+   "barrel_mm": 660.4,
+   "velocity_ms": 1219,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "204 Ruger",
+   "projectile": "32 gr V-Max",
+   "barrel_mm": 660.4,
+   "velocity_ms": 1128,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "5.45x39",
+   "projectile": "60 gr V-Max",
+   "barrel_mm": 406.4,
+   "velocity_ms": 853,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "5.45x39",
+   "projectile": "60 gr V-Max",
+   "barrel_mm": 406.4,
+   "velocity_ms": 732,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "22 Hornet",
+   "projectile": "35 gr V-Max",
+   "barrel_mm": 558.8,
+   "velocity_ms": 945,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "22 Hornet",
+   "projectile": "35 gr V-Max",
+   "barrel_mm": 558.8,
+   "velocity_ms": 792,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "22 K Hornet",
+   "projectile": "35 gr V-Max",
+   "barrel_mm": 609.6,
+   "velocity_ms": 945,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "22 K Hornet",
+   "projectile": "35 gr V-Max",
+   "barrel_mm": 609.6,
+   "velocity_ms": 792,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "218 Bee",
+   "projectile": "45 gr HP Bee",
+   "barrel_mm": 558.8,
+   "velocity_ms": 853,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "218 Bee",
+   "projectile": "45 gr HP Bee",
+   "barrel_mm": 558.8,
+   "velocity_ms": 732,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "221 Rem Fireball",
+   "projectile": "50 gr V-Max",
+   "barrel_mm": 609.6,
+   "velocity_ms": 884,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "221 Rem Fireball",
+   "projectile": "50 gr V-Max",
+   "barrel_mm": 609.6,
+   "velocity_ms": 792,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "222 Rem",
+   "projectile": "50 gr V-Max",
+   "barrel_mm": 609.6,
+   "velocity_ms": 945,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "222 Rem",
+   "projectile": "50 gr V-Max",
+   "barrel_mm": 609.6,
+   "velocity_ms": 853,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "223 Rem",
+   "projectile": "55 gr V-Max",
+   "barrel_mm": 660.4,
+   "velocity_ms": 975,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "223 Rem",
+   "projectile": "55 gr V-Max",
+   "barrel_mm": 660.4,
+   "velocity_ms": 853,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "5.56 NATO",
+   "projectile": "75 gr BTHP",
+   "barrel_mm": 508.0,
+   "velocity_ms": 884,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "5.56 NATO",
+   "projectile": "75 gr BTHP",
+   "barrel_mm": 508.0,
+   "velocity_ms": 762,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "222 Rem Mag",
+   "projectile": "55 gr V-Max",
+   "barrel_mm": 609.6,
+   "velocity_ms": 1006,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "222 Rem Mag",
+   "projectile": "55 gr V-Max",
+   "barrel_mm": 609.6,
+   "velocity_ms": 884,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "22 PPC",
+   "projectile": "55 gr V-Max",
+   "barrel_mm": 609.6,
+   "velocity_ms": 975,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "22 PPC",
+   "projectile": "55 gr V-Max",
+   "barrel_mm": 609.6,
+   "velocity_ms": 884,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "5.6x50 Mag",
+   "projectile": "55 gr V-Max",
+   "barrel_mm": 600.1,
+   "velocity_ms": 975,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "5.6x50 Mag",
+   "projectile": "55 gr V-Max",
+   "barrel_mm": 600.1,
+   "velocity_ms": 884,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "225 Win",
+   "projectile": "55 gr V-Max",
+   "barrel_mm": 609.6,
+   "velocity_ms": 1097,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "225 Win",
+   "projectile": "55 gr V-Max",
+   "barrel_mm": 609.6,
+   "velocity_ms": 975,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "224 Wby Mag",
+   "projectile": "55 gr V-Max",
+   "barrel_mm": 660.4,
+   "velocity_ms": 1128,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "224 Wby Mag",
+   "projectile": "55 gr V-Max",
+   "barrel_mm": 660.4,
+   "velocity_ms": 975,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "224 Valkyrie",
+   "projectile": "88 gr ELD-Match",
+   "barrel_mm": 558.8,
+   "velocity_ms": 838,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "224 Valkyrie",
+   "projectile": "88 gr ELD-Match",
+   "barrel_mm": 558.8,
+   "velocity_ms": 732,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "22-250 Rem",
+   "projectile": "55 gr V-Max",
+   "barrel_mm": 660.4,
+   "velocity_ms": 1097,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "22-250 Rem",
+   "projectile": "55 gr V-Max",
+   "barrel_mm": 660.4,
+   "velocity_ms": 975,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "220 Swift",
+   "projectile": "55 gr V-Max",
+   "barrel_mm": 660.4,
+   "velocity_ms": 1128,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "220 Swift",
+   "projectile": "55 gr V-Max",
+   "barrel_mm": 660.4,
+   "velocity_ms": 1006,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "5.6x57 RW",
+   "projectile": "55 gr V-Max",
+   "barrel_mm": 558.8,
+   "velocity_ms": 1128,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "5.6x57 RW",
+   "projectile": "55 gr V-Max",
+   "barrel_mm": 558.8,
+   "velocity_ms": 1036,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6mm PPC",
+   "projectile": "75 gr V-Max",
+   "barrel_mm": 495.3,
+   "velocity_ms": 823,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6mm PPC",
+   "projectile": "75 gr V-Max",
+   "barrel_mm": 495.3,
+   "velocity_ms": 732,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6mm BR Rem",
+   "projectile": "75 gr V-Max",
+   "barrel_mm": 609.6,
+   "velocity_ms": 945,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6mm BR Rem",
+   "projectile": "75 gr V-Max",
+   "barrel_mm": 609.6,
+   "velocity_ms": 732,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6mm ARC 52kpsi Gas",
+   "projectile": "108 gr ELD-Match",
+   "barrel_mm": 457.2,
+   "velocity_ms": 785,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6mm ARC 52kpsi Gas",
+   "projectile": "108 gr ELD-Match",
+   "barrel_mm": 457.2,
+   "velocity_ms": 671,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6mm ARC 62kpsi Bolt",
+   "projectile": "108 gr ELD-Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 853,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6mm ARC 62kpsi Bolt",
+   "projectile": "108 gr ELD-Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 762,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "243 Win",
+   "projectile": "95 gr SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 914,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "243 Win",
+   "projectile": "95 gr SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 792,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6mm Remington",
+   "projectile": "95 gr SST",
+   "barrel_mm": 558.8,
+   "velocity_ms": 884,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6mm Remington",
+   "projectile": "95 gr SST",
+   "barrel_mm": 558.8,
+   "velocity_ms": 762,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6mm Creedmoor",
+   "projectile": "108 gr ELD-Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 930,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6mm Creedmoor",
+   "projectile": "108 gr ELD-Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 823,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "240 Wby Mag",
+   "projectile": "95 gr SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 945,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "240 Wby Mag",
+   "projectile": "95 gr SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 884,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "243 WSSM",
+   "projectile": "95 gr SST",
+   "barrel_mm": 660.4,
+   "velocity_ms": 945,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "243 WSSM",
+   "projectile": "95 gr SST",
+   "barrel_mm": 660.4,
+   "velocity_ms": 823,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "25-20 Win",
+   "projectile": "60 gr SP",
+   "barrel_mm": 558.8,
+   "velocity_ms": 640,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "25-20 Win",
+   "projectile": "60 gr SP",
+   "barrel_mm": 558.8,
+   "velocity_ms": 549,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "256 Win Mag",
+   "projectile": "60 gr SP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 853,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "256 Win Mag",
+   "projectile": "60 gr SP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 701,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "25-35 Win",
+   "projectile": "110 gr FTX",
+   "barrel_mm": 508.0,
+   "velocity_ms": 762,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "25-35 Win",
+   "projectile": "110 gr FTX",
+   "barrel_mm": 508.0,
+   "velocity_ms": 610,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "250 Savage",
+   "projectile": "75 gr V-Max",
+   "barrel_mm": 660.4,
+   "velocity_ms": 975,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "250 Savage",
+   "projectile": "75 gr V-Max",
+   "barrel_mm": 660.4,
+   "velocity_ms": 853,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "257 Roberts",
+   "projectile": "117 gr SST",
+   "barrel_mm": 558.8,
+   "velocity_ms": 884,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "257 Roberts",
+   "projectile": "117 gr SST",
+   "barrel_mm": 558.8,
+   "velocity_ms": 762,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "25 WSSM",
+   "projectile": "117 gr SST",
+   "barrel_mm": 558.8,
+   "velocity_ms": 899,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "25 WSSM",
+   "projectile": "117 gr SST",
+   "barrel_mm": 558.8,
+   "velocity_ms": 792,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "25-06 Rem",
+   "projectile": "117 gr SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 914,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "25-06 Rem",
+   "projectile": "117 gr SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 823,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "257 Wby Mag",
+   "projectile": "117 gr SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 975,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "257 Wby Mag",
+   "projectile": "117 gr SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 853,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6.5x50 Jap",
+   "projectile": "140 gr SST",
+   "barrel_mm": 812.8,
+   "velocity_ms": 792,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6.5x50 Jap",
+   "projectile": "140 gr SST",
+   "barrel_mm": 812.8,
+   "velocity_ms": 671,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6.5x54 Mannlicher-Schoenauer",
+   "projectile": "140 gr SST",
+   "barrel_mm": 457.2,
+   "velocity_ms": 732,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6.5x54 Mannlicher-Schoenauer",
+   "projectile": "140 gr SST",
+   "barrel_mm": 457.2,
+   "velocity_ms": 610,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6.5 Grendel",
+   "projectile": "123 gr ELD-Match",
+   "barrel_mm": 457.2,
+   "velocity_ms": 762,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6.5 Grendel",
+   "projectile": "123 gr ELD-Match",
+   "barrel_mm": 457.2,
+   "velocity_ms": 640,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6.5x55 Swede",
+   "projectile": "140 gr ELD-Match",
+   "barrel_mm": 736.6,
+   "velocity_ms": 762,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6.5x55 Swede",
+   "projectile": "140 gr ELD-Match",
+   "barrel_mm": 736.6,
+   "velocity_ms": 701,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "260 Rem",
+   "projectile": "140 gr ELD-Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 808,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "260 Rem",
+   "projectile": "140 gr ELD-Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 701,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6.5 Creedmoor",
+   "projectile": "140 gr ELD-Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 823,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6.5 Creedmoor",
+   "projectile": "140 gr ELD-Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 732,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6.5x57",
+   "projectile": "140 gr ELD-Match",
+   "barrel_mm": 600.1,
+   "velocity_ms": 792,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6.5x57",
+   "projectile": "140 gr ELD-Match",
+   "barrel_mm": 600.1,
+   "velocity_ms": 701,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6.5x284 Norma",
+   "projectile": "147 gr ELD-Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 884,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6.5x284 Norma",
+   "projectile": "147 gr ELD-Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 792,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6.5x06",
+   "projectile": "143 gr ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 884,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6.5x06",
+   "projectile": "143 gr ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 762,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6.5 Rem Mag",
+   "projectile": "143 gr ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 884,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6.5 Rem Mag",
+   "projectile": "143 gr ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 792,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6.5 PRC",
+   "projectile": "147 gr ELD-Match",
+   "barrel_mm": 660.4,
+   "velocity_ms": 930,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6.5 PRC",
+   "projectile": "147 gr ELD-Match",
+   "barrel_mm": 660.4,
+   "velocity_ms": 823,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "264 Win Mag",
+   "projectile": "143 gr ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 930,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "264 Win Mag",
+   "projectile": "143 gr ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 823,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6.8 Rem SPC",
+   "projectile": "120 gr SST",
+   "barrel_mm": 406.4,
+   "velocity_ms": 732,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "6.8 Rem SPC",
+   "projectile": "120 gr SST",
+   "barrel_mm": 406.4,
+   "velocity_ms": 610,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "270 Win",
+   "projectile": "140 gr SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 914,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "270 Win",
+   "projectile": "140 gr SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 792,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "270 WSM",
+   "projectile": "140 gr SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 945,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "270 WSM",
+   "projectile": "140 gr SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 853,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "270 Wby Mag",
+   "projectile": "150 gr SST",
+   "barrel_mm": 660.4,
+   "velocity_ms": 914,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "270 Wby Mag",
+   "projectile": "150 gr SST",
+   "barrel_mm": 660.4,
+   "velocity_ms": 823,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7-30 Waters",
+   "projectile": "120 gr FTX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 838,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7-30 Waters",
+   "projectile": "120 gr FTX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 732,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7mm-08 Rem",
+   "projectile": "150 gr ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 853,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7mm-08 Rem",
+   "projectile": "150 gr ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 701,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7x57 Mauser",
+   "projectile": "162 gr ELD-X",
+   "barrel_mm": 558.8,
+   "velocity_ms": 762,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7x57 Mauser",
+   "projectile": "162 gr ELD-X",
+   "barrel_mm": 558.8,
+   "velocity_ms": 640,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "284 Win",
+   "projectile": "162 gr ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 823,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "284 Win",
+   "projectile": "162 gr ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 671,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7x65mm R",
+   "projectile": "162 gr ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 853,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7x65mm R",
+   "projectile": "162 gr ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 762,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7x64 Brenneke",
+   "projectile": "162 gr ELD-X",
+   "barrel_mm": 558.8,
+   "velocity_ms": 808,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7x64 Brenneke",
+   "projectile": "162 gr ELD-X",
+   "barrel_mm": 558.8,
+   "velocity_ms": 701,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "280 Rem",
+   "projectile": "162 gr ELD-X",
+   "barrel_mm": 558.8,
+   "velocity_ms": 823,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "280 Rem",
+   "projectile": "162 gr ELD-X",
+   "barrel_mm": 558.8,
+   "velocity_ms": 701,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "280 AI",
+   "projectile": "162 gr ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 899,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "280 AI",
+   "projectile": "162 gr ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 762,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7mm RSAUM",
+   "projectile": "162 gr ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 853,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7mm RSAUM",
+   "projectile": "162 gr ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 792,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7mm Rem Mag",
+   "projectile": "162 gr ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 914,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7mm Rem Mag",
+   "projectile": "162 gr ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 792,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7mm WSM",
+   "projectile": "162 gr ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 945,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7mm WSM",
+   "projectile": "162 gr ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 762,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7mm Wby Mag",
+   "projectile": "175 gr InterLock",
+   "barrel_mm": 660.4,
+   "velocity_ms": 945,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7mm Wby Mag",
+   "projectile": "175 gr InterLock",
+   "barrel_mm": 660.4,
+   "velocity_ms": 792,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "28 Nosler",
+   "projectile": "175 gr ELD-X",
+   "barrel_mm": 660.4,
+   "velocity_ms": 930,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "28 Nosler",
+   "projectile": "175 gr ELD-X",
+   "barrel_mm": 660.4,
+   "velocity_ms": 853,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7mm STW",
+   "projectile": "175 gr InterLock",
+   "barrel_mm": 660.4,
+   "velocity_ms": 945,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7mm STW",
+   "projectile": "175 gr InterLock",
+   "barrel_mm": 660.4,
+   "velocity_ms": 823,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7mm Rem Ulta Mag",
+   "projectile": "175 gr InterLock",
+   "barrel_mm": 660.4,
+   "velocity_ms": 945,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7mm Rem Ulta Mag",
+   "projectile": "175 gr InterLock",
+   "barrel_mm": 660.4,
+   "velocity_ms": 823,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "30 M1 Carbine",
+   "projectile": "110 gr FMJ-RN",
+   "barrel_mm": 444.5,
+   "velocity_ms": 610,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "30 M1 Carbine",
+   "projectile": "110 gr FMJ-RN",
+   "barrel_mm": 444.5,
+   "velocity_ms": 549,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "300 Blackout",
+   "projectile": "135 gr FTX",
+   "barrel_mm": 406.4,
+   "velocity_ms": 625,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "300 Blackout",
+   "projectile": "135 gr FTX",
+   "barrel_mm": 406.4,
+   "velocity_ms": 564,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "300 Blackout SUB",
+   "projectile": "190 gr Sub-X",
+   "barrel_mm": 406.4,
+   "velocity_ms": 366,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "300 Blackout SUB",
+   "projectile": "190 gr Sub-X",
+   "barrel_mm": 406.4,
+   "velocity_ms": 305,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "30-30 Win",
+   "projectile": "160 gr FTX",
+   "barrel_mm": 508.0,
+   "velocity_ms": 701,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "30-30 Win",
+   "projectile": "160 gr FTX",
+   "barrel_mm": 508.0,
+   "velocity_ms": 579,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7.5x54mm MAS",
+   "projectile": "150 gr InterLock",
+   "barrel_mm": 571.5,
+   "velocity_ms": 792,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7.5x54mm MAS",
+   "projectile": "150 gr InterLock",
+   "barrel_mm": 571.5,
+   "velocity_ms": 671,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "300 Savage",
+   "projectile": "150 gr SST",
+   "barrel_mm": 558.8,
+   "velocity_ms": 792,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "300 Savage",
+   "projectile": "150 gr SST",
+   "barrel_mm": 558.8,
+   "velocity_ms": 671,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "307 Win",
+   "projectile": "150 gr RN",
+   "barrel_mm": 508.0,
+   "velocity_ms": 762,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "307 Win",
+   "projectile": "150 gr RN",
+   "barrel_mm": 508.0,
+   "velocity_ms": 701,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "30 Rem AR",
+   "projectile": "150 gr BTHP",
+   "barrel_mm": 558.8,
+   "velocity_ms": 792,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "30 Rem AR",
+   "projectile": "150 gr BTHP",
+   "barrel_mm": 558.8,
+   "velocity_ms": 671,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "308 Marlin Express",
+   "projectile": "160 gr FTX",
+   "barrel_mm": 558.8,
+   "velocity_ms": 792,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "308 Marlin Express",
+   "projectile": "160 gr FTX",
+   "barrel_mm": 558.8,
+   "velocity_ms": 671,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7.5x55 Schmidt Rubin",
+   "projectile": "165 gr InterLock",
+   "barrel_mm": 779.8,
+   "velocity_ms": 823,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7.5x55 Schmidt Rubin",
+   "projectile": "165 gr InterLock",
+   "barrel_mm": 779.8,
+   "velocity_ms": 671,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "308 Win",
+   "projectile": "168 gr ELD-Match",
+   "barrel_mm": 558.8,
+   "velocity_ms": 792,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "308 Win",
+   "projectile": "168 gr ELD-Match",
+   "barrel_mm": 558.8,
+   "velocity_ms": 640,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7.62x54R",
+   "projectile": "180 gr InterLock",
+   "barrel_mm": 673.1,
+   "velocity_ms": 762,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7.62x54R",
+   "projectile": "180 gr InterLock",
+   "barrel_mm": 673.1,
+   "velocity_ms": 640,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "30-40 Krag",
+   "projectile": "180 gr InterLock",
+   "barrel_mm": 762.0,
+   "velocity_ms": 640,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "30-40 Krag",
+   "projectile": "180 gr InterLock",
+   "barrel_mm": 762.0,
+   "velocity_ms": 579,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "30 TC",
+   "projectile": "165 gr InterLock",
+   "barrel_mm": 660.4,
+   "velocity_ms": 823,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "30 TC",
+   "projectile": "165 gr InterLock",
+   "barrel_mm": 660.4,
+   "velocity_ms": 732,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "30-06 Springfield",
+   "projectile": "180 gr InterLock",
+   "barrel_mm": 603.2,
+   "velocity_ms": 808,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "30-06 Springfield",
+   "projectile": "180 gr InterLock",
+   "barrel_mm": 603.2,
+   "velocity_ms": 701,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "M1 Garand",
+   "projectile": "168 gr BTHP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 792,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "M1 Garand",
+   "projectile": "168 gr BTHP",
+   "barrel_mm": 609.6,
+   "velocity_ms": 701,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "300 H&H Mag",
+   "projectile": "180 gr InterLock",
+   "barrel_mm": 660.4,
+   "velocity_ms": 869,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "300 H&H Mag",
+   "projectile": "180 gr InterLock",
+   "barrel_mm": 660.4,
+   "velocity_ms": 762,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "300 RSAUM",
+   "projectile": "178 gr ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 884,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "300 RSAUM",
+   "projectile": "178 gr ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 732,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "308 Norma Mag",
+   "projectile": "180 gr InterLock",
+   "barrel_mm": 609.6,
+   "velocity_ms": 914,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "308 Norma Mag",
+   "projectile": "180 gr InterLock",
+   "barrel_mm": 609.6,
+   "velocity_ms": 792,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "300 RCM",
+   "projectile": "178 gr ELD-X",
+   "barrel_mm": 508.0,
+   "velocity_ms": 792,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "300 RCM",
+   "projectile": "178 gr ELD-X",
+   "barrel_mm": 508.0,
+   "velocity_ms": 701,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "300 WSM",
+   "projectile": "200 gr ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 899,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "300 WSM",
+   "projectile": "200 gr ELD-X",
+   "barrel_mm": 609.6,
+   "velocity_ms": 762,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "300 Win Mag",
+   "projectile": "200 gr ELD-X",
+   "barrel_mm": 635.0,
+   "velocity_ms": 884,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "300 Win Mag",
+   "projectile": "200 gr ELD-X",
+   "barrel_mm": 635.0,
+   "velocity_ms": 762,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "300 Wby Mag",
+   "projectile": "180 gr InterLock",
+   "barrel_mm": 660.4,
+   "velocity_ms": 945,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "300 Wby Mag",
+   "projectile": "180 gr InterLock",
+   "barrel_mm": 660.4,
+   "velocity_ms": 823,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "300 PRC",
+   "projectile": "225 gr ELD-Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 869,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "300 PRC",
+   "projectile": "225 gr ELD-Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 762,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "300 Norma",
+   "projectile": "225 gr ELD-Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 884,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "300 Norma",
+   "projectile": "225 gr ELD-Match",
+   "barrel_mm": 609.6,
+   "velocity_ms": 792,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "300 Rem Ultra Mag",
+   "projectile": "220 gr ELD-X",
+   "barrel_mm": 660.4,
+   "velocity_ms": 899,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "300 Rem Ultra Mag",
+   "projectile": "220 gr ELD-X",
+   "barrel_mm": 660.4,
+   "velocity_ms": 792,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "30-378 Wby Mag",
+   "projectile": "220 gr ELD-X",
+   "barrel_mm": 660.4,
+   "velocity_ms": 945,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "30-378 Wby Mag",
+   "projectile": "220 gr ELD-X",
+   "barrel_mm": 660.4,
+   "velocity_ms": 853,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "32-20 Winchester - WCF",
+   "projectile": "100 gr XTP",
+   "barrel_mm": 469.9,
+   "velocity_ms": 671,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "32-20 Winchester - WCF",
+   "projectile": "100 gr XTP",
+   "barrel_mm": 469.9,
+   "velocity_ms": 549,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7.62x39",
+   "projectile": "123 gr SST",
+   "barrel_mm": 508.0,
+   "velocity_ms": 732,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7.62x39",
+   "projectile": "123 gr SST",
+   "barrel_mm": 508.0,
+   "velocity_ms": 579,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7.65x53 Belgian Mauser",
+   "projectile": "174 gr FMJ-BT",
+   "barrel_mm": 736.6,
+   "velocity_ms": 792,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7.65x53 Belgian Mauser",
+   "projectile": "174 gr FMJ-BT",
+   "barrel_mm": 736.6,
+   "velocity_ms": 671,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "303 British",
+   "projectile": "174 gr FMJ-BT",
+   "barrel_mm": 641.3,
+   "velocity_ms": 732,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "303 British",
+   "projectile": "174 gr FMJ-BT",
+   "barrel_mm": 641.3,
+   "velocity_ms": 610,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7.7x58 Jap",
+   "projectile": "174 gr FMJ-BT",
+   "barrel_mm": 647.7,
+   "velocity_ms": 792,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "7.7x58 Jap",
+   "projectile": "174 gr FMJ-BT",
+   "barrel_mm": 647.7,
+   "velocity_ms": 671,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "32 Win Special",
+   "projectile": "170 gr InterLock",
+   "barrel_mm": 508.0,
+   "velocity_ms": 701,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "32 Win Special",
+   "projectile": "170 gr InterLock",
+   "barrel_mm": 508.0,
+   "velocity_ms": 610,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "8x57 Mauser",
+   "projectile": "180 gr GMX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 792,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "8x57 Mauser",
+   "projectile": "180 gr GMX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 671,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "8mmx06",
+   "projectile": "195 gr InterLock",
+   "barrel_mm": 596.9,
+   "velocity_ms": 762,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "8mmx06",
+   "projectile": "195 gr InterLock",
+   "barrel_mm": 596.9,
+   "velocity_ms": 671,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "325 WSM",
+   "projectile": "195 gr InterLock",
+   "barrel_mm": 584.2,
+   "velocity_ms": 869,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "325 WSM",
+   "projectile": "195 gr InterLock",
+   "barrel_mm": 584.2,
+   "velocity_ms": 762,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "8x68mm S",
+   "projectile": "195 gr InterLock",
+   "barrel_mm": 660.4,
+   "velocity_ms": 884,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "8x68mm S",
+   "projectile": "195 gr InterLock",
+   "barrel_mm": 660.4,
+   "velocity_ms": 762,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "8mm Rem Mag",
+   "projectile": "195 gr InterLock",
+   "barrel_mm": 609.6,
+   "velocity_ms": 853,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "8mm Rem Mag",
+   "projectile": "195 gr InterLock",
+   "barrel_mm": 609.6,
+   "velocity_ms": 732,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "33 Win",
+   "projectile": "200 gr FTX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 610,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "33 Win",
+   "projectile": "200 gr FTX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 518,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "338 Marlin Express",
+   "projectile": "200 gr FTX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 732,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "338 Marlin Express",
+   "projectile": "200 gr FTX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 610,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "338 Federal",
+   "projectile": "200 gr SST",
+   "barrel_mm": 660.4,
+   "velocity_ms": 808,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "338 Federal",
+   "projectile": "200 gr SST",
+   "barrel_mm": 660.4,
+   "velocity_ms": 671,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "338x06",
+   "projectile": "225 gr SST",
+   "barrel_mm": 596.9,
+   "velocity_ms": 792,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "338x06",
+   "projectile": "225 gr SST",
+   "barrel_mm": 596.9,
+   "velocity_ms": 671,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "338 RCM",
+   "projectile": "225 gr SST",
+   "barrel_mm": 508.0,
+   "velocity_ms": 762,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "338 RCM",
+   "projectile": "225 gr SST",
+   "barrel_mm": 508.0,
+   "velocity_ms": 701,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "338 Win Mag",
+   "projectile": "225 gr SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 823,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "338 Win Mag",
+   "projectile": "225 gr SST",
+   "barrel_mm": 609.6,
+   "velocity_ms": 701,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "340 Wby Mag",
+   "projectile": "250 gr InterLock",
+   "barrel_mm": 660.4,
+   "velocity_ms": 884,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "340 Wby Mag",
+   "projectile": "250 gr InterLock",
+   "barrel_mm": 660.4,
+   "velocity_ms": 762,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "338 Rem Ultra Mag",
+   "projectile": "250 gr InterLock",
+   "barrel_mm": 660.4,
+   "velocity_ms": 884,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "338 Rem Ultra Mag",
+   "projectile": "250 gr InterLock",
+   "barrel_mm": 660.4,
+   "velocity_ms": 792,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "338 Lapua Mag",
+   "projectile": "285 gr ELD-Match",
+   "barrel_mm": 690.1,
+   "velocity_ms": 823,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "338 Lapua Mag",
+   "projectile": "285 gr ELD-Match",
+   "barrel_mm": 690.1,
+   "velocity_ms": 732,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "338-378 Wby Mag",
+   "projectile": "250 gr InterLock",
+   "barrel_mm": 711.2,
+   "velocity_ms": 914,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "338-378 Wby Mag",
+   "projectile": "250 gr InterLock",
+   "barrel_mm": 711.2,
+   "velocity_ms": 762,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "348 Win",
+   "projectile": "200 gr FTX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 808,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "348 Win",
+   "projectile": "200 gr FTX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 701,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "350 Legend",
+   "projectile": "165 gr FTX",
+   "barrel_mm": 406.4,
+   "velocity_ms": 686,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "350 Legend",
+   "projectile": "165 gr FTX",
+   "barrel_mm": 406.4,
+   "velocity_ms": 610,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "357 Magnum (Rifle)",
+   "projectile": "158 gr XTP",
+   "barrel_mm": 406.4,
+   "velocity_ms": 503,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "357 Magnum (Rifle)",
+   "projectile": "158 gr XTP",
+   "barrel_mm": 406.4,
+   "velocity_ms": 366,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "35 Remington",
+   "projectile": "200 gr FTX",
+   "barrel_mm": 508.0,
+   "velocity_ms": 640,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "35 Remington",
+   "projectile": "200 gr FTX",
+   "barrel_mm": 508.0,
+   "velocity_ms": 488,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "356 Winchester",
+   "projectile": "200 gr FTX",
+   "barrel_mm": 514.4,
+   "velocity_ms": 732,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "356 Winchester",
+   "projectile": "200 gr FTX",
+   "barrel_mm": 514.4,
+   "velocity_ms": 640,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "358 Winchester",
+   "projectile": "200 gr InterLock",
+   "barrel_mm": 609.6,
+   "velocity_ms": 762,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "358 Winchester",
+   "projectile": "200 gr InterLock",
+   "barrel_mm": 609.6,
+   "velocity_ms": 671,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "350 Rem Mag",
+   "projectile": "200 gr InterLock",
+   "barrel_mm": 469.9,
+   "velocity_ms": 792,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "350 Rem Mag",
+   "projectile": "200 gr InterLock",
+   "barrel_mm": 469.9,
+   "velocity_ms": 671,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "35 Whelen",
+   "projectile": "250 gr InterLock",
+   "barrel_mm": 558.8,
+   "velocity_ms": 762,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "35 Whelen",
+   "projectile": "250 gr InterLock",
+   "barrel_mm": 558.8,
+   "velocity_ms": 640,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "358 Norma Mag",
+   "projectile": "250 gr InterLock",
+   "barrel_mm": 647.7,
+   "velocity_ms": 853,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "358 Norma Mag",
+   "projectile": "250 gr InterLock",
+   "barrel_mm": 647.7,
+   "velocity_ms": 732,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "9.3x74R",
+   "projectile": "286 gr InterLock",
+   "barrel_mm": 599.4,
+   "velocity_ms": 701,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "9.3x74R",
+   "projectile": "286 gr InterLock",
+   "barrel_mm": 599.4,
+   "velocity_ms": 610,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "9.3x62",
+   "projectile": "286 gr InterLock",
+   "barrel_mm": 599.4,
+   "velocity_ms": 701,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "9.3x62",
+   "projectile": "286 gr InterLock",
+   "barrel_mm": 599.4,
+   "velocity_ms": 610,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "376 Steyr",
+   "projectile": "270 gr InterLock",
+   "barrel_mm": 647.7,
+   "velocity_ms": 792,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "376 Steyr",
+   "projectile": "270 gr InterLock",
+   "barrel_mm": 647.7,
+   "velocity_ms": 671,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "375 Ruger",
+   "projectile": "300 gr DGS",
+   "barrel_mm": 508.0,
+   "velocity_ms": 762,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "375 Ruger",
+   "projectile": "300 gr DGS",
+   "barrel_mm": 508.0,
+   "velocity_ms": 671,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "375 H&H Mag",
+   "projectile": "300 gr DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 762,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "375 H&H Mag",
+   "projectile": "300 gr DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 640,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "375 Wby Mag",
+   "projectile": "300 gr DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 823,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "375 Wby Mag",
+   "projectile": "300 gr DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 701,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "375 Rem Ultra Mag",
+   "projectile": "300 gr DGS",
+   "barrel_mm": 660.4,
+   "velocity_ms": 823,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "375 Rem Ultra Mag",
+   "projectile": "300 gr DGS",
+   "barrel_mm": 660.4,
+   "velocity_ms": 701,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "378 Wby Mag",
+   "projectile": "300 gr DGS",
+   "barrel_mm": 660.4,
+   "velocity_ms": 884,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "378 Wby Mag",
+   "projectile": "300 gr DGS",
+   "barrel_mm": 660.4,
+   "velocity_ms": 792,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "405 Winchester",
+   "projectile": "300 gr InterLock",
+   "barrel_mm": 609.6,
+   "velocity_ms": 686,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "405 Winchester",
+   "projectile": "300 gr InterLock",
+   "barrel_mm": 609.6,
+   "velocity_ms": 549,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "450/400 Nitro Express 3\"",
+   "projectile": "400 gr DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 625,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "450/400 Nitro Express 3\"",
+   "projectile": "400 gr DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 549,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "416 Rigby",
+   "projectile": "400 gr DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 732,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "416 Rigby",
+   "projectile": "400 gr DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 640,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "416 Ruger",
+   "projectile": "400 gr DGS",
+   "barrel_mm": 508.0,
+   "velocity_ms": 686,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "416 Ruger",
+   "projectile": "400 gr DGS",
+   "barrel_mm": 508.0,
+   "velocity_ms": 610,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "416 Rem Mag",
+   "projectile": "400 gr DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 716,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "416 Rem Mag",
+   "projectile": "400 gr DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 686,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "416 Wby Mag",
+   "projectile": "400 gr DGS",
+   "barrel_mm": 660.4,
+   "velocity_ms": 823,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "416 Wby Mag",
+   "projectile": "400 gr DGS",
+   "barrel_mm": 660.4,
+   "velocity_ms": 701,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "416 Barrett",
+   "projectile": "450 gr BTHP",
+   "barrel_mm": 812.8,
+   "velocity_ms": 884,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "416 Barrett",
+   "projectile": "450 gr BTHP",
+   "barrel_mm": 812.8,
+   "velocity_ms": 762,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "404 Jeffrey",
+   "projectile": "400 gr DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 671,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "404 Jeffrey",
+   "projectile": "400 gr DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 610,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "44 Rem Mag (Rifle)",
+   "projectile": "240 gr XTP",
+   "barrel_mm": 457.2,
+   "velocity_ms": 549,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "44 Rem Mag (Rifle)",
+   "projectile": "240 gr XTP",
+   "barrel_mm": 457.2,
+   "velocity_ms": 427,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "444 Marlin",
+   "projectile": "265 gr FTX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 686,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "444 Marlin",
+   "projectile": "265 gr FTX",
+   "barrel_mm": 609.6,
+   "velocity_ms": 594,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "45 Colt (Rifle)",
+   "projectile": "225 gr FTX",
+   "barrel_mm": 508.0,
+   "velocity_ms": 351,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "45 Colt (Rifle)",
+   "projectile": "225 gr FTX",
+   "barrel_mm": 508.0,
+   "velocity_ms": 259,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "450 Bushmaster",
+   "projectile": "250 gr FTX",
+   "barrel_mm": 406.4,
+   "velocity_ms": 640,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "450 Bushmaster",
+   "projectile": "250 gr FTX",
+   "barrel_mm": 406.4,
+   "velocity_ms": 518,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "45-70 Trap Door",
+   "projectile": "300 gr HP",
+   "barrel_mm": 749.3,
+   "velocity_ms": 579,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "45-70 Trap Door",
+   "projectile": "300 gr HP",
+   "barrel_mm": 749.3,
+   "velocity_ms": 396,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "45-70 Ruger #1",
+   "projectile": "350 gr InterLock",
+   "barrel_mm": 558.8,
+   "velocity_ms": 640,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "45-70 Ruger #1",
+   "projectile": "350 gr InterLock",
+   "barrel_mm": 558.8,
+   "velocity_ms": 518,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "450 Marlin",
+   "projectile": "350 gr InterLock",
+   "barrel_mm": 469.9,
+   "velocity_ms": 610,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "450 Marlin",
+   "projectile": "350 gr InterLock",
+   "barrel_mm": 469.9,
+   "velocity_ms": 488,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "450 Nitro Express 3\"",
+   "projectile": "480 gr DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 640,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "450 Nitro Express 3\"",
+   "projectile": "480 gr DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 549,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "458 Win Mag",
+   "projectile": "500 gr DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 655,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "458 Win Mag",
+   "projectile": "500 gr DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 594,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "458 Lott",
+   "projectile": "500 gr DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 655,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "458 Lott",
+   "projectile": "500 gr DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 579,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "450 Rigby",
+   "projectile": "500 gr DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 762,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "450 Rigby",
+   "projectile": "500 gr DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 671,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "460 Wby Mag",
+   "projectile": "500 gr DGS",
+   "barrel_mm": 660.4,
+   "velocity_ms": 777,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "460 Wby Mag",
+   "projectile": "500 gr DGS",
+   "barrel_mm": 660.4,
+   "velocity_ms": 701,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "470 Nitro Express",
+   "projectile": "500 gr DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 655,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "470 Nitro Express",
+   "projectile": "500 gr DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 579,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "50 Beowulf",
+   "projectile": "300 gr XTP",
+   "barrel_mm": 406.4,
+   "velocity_ms": 579,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "50 Beowulf",
+   "projectile": "300 gr XTP",
+   "barrel_mm": 406.4,
+   "velocity_ms": 457,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "505 Gibbs",
+   "projectile": "525 gr DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 701,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "505 Gibbs",
+   "projectile": "525 gr DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 610,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "500 Nitro Express 3\"",
+   "projectile": "570 gr DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 640,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "500 Nitro Express 3\"",
+   "projectile": "570 gr DGS",
+   "barrel_mm": 609.6,
+   "velocity_ms": 579,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "50 BMG",
+   "projectile": "750 gr A-Max",
+   "barrel_mm": 914.4,
+   "velocity_ms": 823,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "50 BMG",
+   "projectile": "750 gr A-Max",
+   "barrel_mm": 914.4,
+   "velocity_ms": 732,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "22 Savage High Power .227\" Bore",
+   "projectile": "70 gr SP w/c",
+   "barrel_mm": null,
+   "velocity_ms": 914,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "22 Savage High Power .227\" Bore",
+   "projectile": "70 gr SP w/c",
+   "barrel_mm": null,
+   "velocity_ms": 823,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "45-70 1895 Marlin",
+   "projectile": "325 gr FTX",
+   "barrel_mm": null,
+   "velocity_ms": 640,
+   "source_note": "Hornady Basic Rifle Data, max load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  },
+  {
+   "cartridge": "45-70 1895 Marlin",
+   "projectile": "325 gr FTX",
+   "barrel_mm": null,
+   "velocity_ms": 549,
+   "source_note": "Hornady Basic Rifle Data, starting load; https://static.hornady.media/site/hornady/files/load-data/basic-rifle-data.pdf"
+  }
+ ]
+}

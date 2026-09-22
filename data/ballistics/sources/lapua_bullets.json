@@ -1,0 +1,557 @@
+{
+ "url": "https://www.lapua.com/wp-content/uploads/2026/06/Lapua_Catalog_2026_ENG_web.pdf",
+ "retrieved": "2026-09-22",
+ "sha256": "27b2ebed6394cfa9a762527f8188eb3e534d39c1ef75dd9524f78c7954417f64",
+ "bullets": [
+  {
+   "description": "5.69 mm 50 gr Naturalis",
+   "part": "N566",
+   "diameter_in": 0.224,
+   "mass_gr": 50.0,
+   "bc_g1": 0.197,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "5.69 mm 55 gr Soft Point",
+   "part": "E539",
+   "diameter_in": 0.224,
+   "mass_gr": 55.0,
+   "bc_g1": 0.185,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "5.69 mm 55 gr FMJ",
+   "part": "S569",
+   "diameter_in": 0.224,
+   "mass_gr": 55.0,
+   "bc_g1": 0.255,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "5.69 mm 69 gr Scenar-L",
+   "part": "GB544",
+   "diameter_in": 0.224,
+   "mass_gr": 69.0,
+   "bc_g1": 0.341,
+   "bc_g7": 0.171,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "5.69 mm 77 gr Scenar-L",
+   "part": "GB545",
+   "diameter_in": 0.224,
+   "mass_gr": 77.0,
+   "bc_g1": 0.386,
+   "bc_g7": 0.193,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6 mm 90 gr Scenar-L",
+   "part": "GB543",
+   "diameter_in": 0.243,
+   "mass_gr": 90.0,
+   "bc_g1": 0.434,
+   "bc_g7": 0.216,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6 mm 90 gr Naturalis",
+   "part": "N509",
+   "diameter_in": 0.243,
+   "mass_gr": 90.0,
+   "bc_g1": 0.23,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6 mm 105 gr Scenar-L",
+   "part": "GB542",
+   "diameter_in": 0.243,
+   "mass_gr": 105.0,
+   "bc_g1": 0.472,
+   "bc_g7": 0.236,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5 mm 100 gr Scenar",
+   "part": "GB504",
+   "diameter_in": 0.264,
+   "mass_gr": 100.0,
+   "bc_g1": 0.424,
+   "bc_g7": 0.212,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5 mm 100 gr FMJ",
+   "part": "S341",
+   "diameter_in": 0.264,
+   "mass_gr": 100.0,
+   "bc_g1": 0.25,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5 mm 100 gr FMJ Cutting Edge",
+   "part": "S496",
+   "diameter_in": 0.264,
+   "mass_gr": 100.0,
+   "bc_g1": 0.25,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5 mm 108 gr Scenar",
+   "part": "GB464",
+   "diameter_in": 0.264,
+   "mass_gr": 108.0,
+   "bc_g1": 0.465,
+   "bc_g7": 0.231,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5 mm 120 gr Scenar-L",
+   "part": "GB547",
+   "diameter_in": 0.264,
+   "mass_gr": 120.0,
+   "bc_g1": 0.497,
+   "bc_g7": 0.246,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5 mm 120 gr TrueRange Expanding",
+   "part": "N583",
+   "diameter_in": 0.264,
+   "mass_gr": 120.0,
+   "bc_g1": 0.428,
+   "bc_g7": 0.212,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5 mm 123 gr Scenar",
+   "part": "GB489",
+   "diameter_in": 0.264,
+   "mass_gr": 123.0,
+   "bc_g1": 0.527,
+   "bc_g7": 0.263,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5 mm 136 gr Scenar-L",
+   "part": "GB546",
+   "diameter_in": 0.264,
+   "mass_gr": 136.0,
+   "bc_g1": 0.545,
+   "bc_g7": 0.274,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5 mm 139 gr Scenar",
+   "part": "GB458",
+   "diameter_in": 0.264,
+   "mass_gr": 139.0,
+   "bc_g1": 0.578,
+   "bc_g7": 0.29,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5 mm 140 gr Naturalis",
+   "part": "N563",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0,
+   "bc_g1": 0.201,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5 mm 144 gr FMJ",
+   "part": "B343",
+   "diameter_in": 0.264,
+   "mass_gr": 144.0,
+   "bc_g1": 0.636,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5 mm 144 gr MaxRange Target",
+   "part": "GB582",
+   "diameter_in": 0.264,
+   "mass_gr": 144.0,
+   "bc_g1": 0.67,
+   "bc_g7": 0.335,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5 mm 155 gr Mega",
+   "part": "E471",
+   "diameter_in": 0.264,
+   "mass_gr": 155.0,
+   "bc_g1": 0.377,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7 mm 150 gr Scenar-L",
+   "part": "GB553",
+   "diameter_in": 0.284,
+   "mass_gr": 150.0,
+   "bc_g1": 0.526,
+   "bc_g7": 0.26,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7 mm 156 gr Naturalis",
+   "part": "N564",
+   "diameter_in": 0.284,
+   "mass_gr": 156.0,
+   "bc_g1": 0.28,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7 mm 180 gr Scenar-L",
+   "part": "GB554",
+   "diameter_in": 0.284,
+   "mass_gr": 180.0,
+   "bc_g1": 0.661,
+   "bc_g7": 0.332,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7.62 mm 100 gr OT Cutting Edge",
+   "part": "G477",
+   "diameter_in": 0.308,
+   "mass_gr": 100.0,
+   "bc_g1": 0.17,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7.62 mm 100 gr Open Tip",
+   "part": "G580",
+   "diameter_in": 0.308,
+   "mass_gr": 100.0,
+   "bc_g1": 0.2,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7.62 mm 123 gr FMJ",
+   "part": "S374",
+   "diameter_in": 0.308,
+   "mass_gr": 123.0,
+   "bc_g1": 0.27,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7.62 mm 150 gr Mega",
+   "part": "E469",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0,
+   "bc_g1": 0.33,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7.62 mm 150 gr TrueRange Expanding",
+   "part": "N585",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0,
+   "bc_g1": 0.384,
+   "bc_g7": 0.19,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7.62 mm 155 gr Scenar-L",
+   "part": "GB552",
+   "diameter_in": 0.308,
+   "mass_gr": 155.0,
+   "bc_g1": 0.46,
+   "bc_g7": 0.23,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7.62 mm 165 gr TrueRange Expanding",
+   "part": "N584",
+   "diameter_in": 0.308,
+   "mass_gr": 165.0,
+   "bc_g1": 0.49,
+   "bc_g7": 0.243,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7.62 mm 167 gr Scenar",
+   "part": "GB422",
+   "diameter_in": 0.308,
+   "mass_gr": 167.0,
+   "bc_g1": 0.446,
+   "bc_g7": 0.223,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7.62 mm 170 gr Lock Base",
+   "part": "B476",
+   "diameter_in": 0.308,
+   "mass_gr": 170.0,
+   "bc_g1": 0.498,
+   "bc_g7": 0.249,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7.62 mm 170 gr Naturalis",
+   "part": "N558",
+   "diameter_in": 0.308,
+   "mass_gr": 170.0,
+   "bc_g1": 0.354,
+   "bc_g7": 0.177,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7.62 mm 175 gr Scenar-L",
+   "part": "GB550",
+   "diameter_in": 0.308,
+   "mass_gr": 175.0,
+   "bc_g1": 0.49,
+   "bc_g7": 0.247,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7.62 mm 175 gr MaxRange Target",
+   "part": "GB581",
+   "diameter_in": 0.308,
+   "mass_gr": 175.0,
+   "bc_g1": 0.581,
+   "bc_g7": 0.286,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7.62 mm 185 gr D46",
+   "part": "D46",
+   "diameter_in": 0.308,
+   "mass_gr": 185.0,
+   "bc_g1": 0.506,
+   "bc_g7": 0.254,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7.62 mm 185 gr Mega",
+   "part": "E415",
+   "diameter_in": 0.308,
+   "mass_gr": 185.0,
+   "bc_g1": 0.319,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7.62 mm 185 gr Scenar",
+   "part": "GB432",
+   "diameter_in": 0.308,
+   "mass_gr": 185.0,
+   "bc_g1": 0.482,
+   "bc_g7": 0.242,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7.62 mm 200 gr Subsonic",
+   "part": "B416",
+   "diameter_in": 0.308,
+   "mass_gr": 200.0,
+   "bc_g1": 0.518,
+   "bc_g7": 0.235,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7.62 mm 200 gr Mega",
+   "part": "E401",
+   "diameter_in": 0.308,
+   "mass_gr": 200.0,
+   "bc_g1": 0.344,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7.62 mm 220 gr Scenar-L",
+   "part": "GB551",
+   "diameter_in": 0.308,
+   "mass_gr": 220.0,
+   "bc_g1": 0.647,
+   "bc_g7": 0.324,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7.62 mm 200 gr D166",
+   "part": "D166",
+   "diameter_in": 0.31,
+   "mass_gr": 200.0,
+   "bc_g1": 0.448,
+   "bc_g7": 0.224,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7.62 mm 123 gr FMJ",
+   "part": "S405",
+   "diameter_in": 0.311,
+   "mass_gr": 123.0,
+   "bc_g1": 0.257,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": ".32 83 gr Lead Wadcutter",
+   "part": "C427",
+   "diameter_in": 0.314,
+   "mass_gr": 83.0,
+   "bc_g1": 0.029,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": ".32 98 gr Lead Wadcutter",
+   "part": "C356",
+   "diameter_in": 0.314,
+   "mass_gr": 98.0,
+   "bc_g1": 0.041,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "8 mm 120 gr Open Tip",
+   "part": "G573",
+   "diameter_in": 0.323,
+   "mass_gr": 120.0,
+   "bc_g1": 0.248,
+   "bc_g7": 0.179,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "8 mm 180 gr Naturalis",
+   "part": "N559",
+   "diameter_in": 0.323,
+   "mass_gr": 180.0,
+   "bc_g1": 0.357,
+   "bc_g7": 0.179,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "8.61 mm 231 gr Naturalis",
+   "part": "N508",
+   "diameter_in": 0.338,
+   "mass_gr": 231.0,
+   "bc_g1": 0.373,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "8.61 mm 250 gr Lock Base",
+   "part": "B408",
+   "diameter_in": 0.338,
+   "mass_gr": 250.0,
+   "bc_g1": 0.625,
+   "bc_g7": 0.31,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "8.61 mm 250 gr Scenar",
+   "part": "GB488",
+   "diameter_in": 0.338,
+   "mass_gr": 250.0,
+   "bc_g1": 0.648,
+   "bc_g7": 0.322,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "8.61 mm 300 gr Scenar",
+   "part": "GB528",
+   "diameter_in": 0.338,
+   "mass_gr": 300.0,
+   "bc_g1": 0.736,
+   "bc_g7": 0.368,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "9.3 mm 185 gr Open Tip",
+   "part": "G574",
+   "diameter_in": 0.366,
+   "mass_gr": 185.0,
+   "bc_g1": 0.283,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "9.3 mm 250 gr Naturalis",
+   "part": "N560",
+   "diameter_in": 0.366,
+   "mass_gr": 250.0,
+   "bc_g1": 0.419,
+   "bc_g7": 0.215,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "9.3 mm 285 gr Mega",
+   "part": "E433",
+   "diameter_in": 0.366,
+   "mass_gr": 285.0,
+   "bc_g1": 0.339,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  }
+ ]
+}

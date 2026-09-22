@@ -1,0 +1,80 @@
+{
+  "retrieved": "2026-09-22",
+  "documents": [
+    {
+      "spec": "MIL-C-63989C",
+      "title": "Cartridge, 5.56mm, Ball, M855",
+      "date": "1994-02-15",
+      "url": "https://everyspec.com/MIL-SPECS/MIL-SPECS-MIL-C/download.php?spec=MIL-C-63989C.037913.pdf",
+      "sha256": "78dede5d0d8385435065480f7cdb14173c2d317103f3a832413a67cd1746dd36",
+      "cartridge": "5.56x45mm NATO",
+      "projectile": "M855",
+      "bullet_mass_gr": null,
+      "muzzle_velocity_ms": 914.4,
+      "reference_barrel_mm": null,
+      "pressure_mpa": 379.2,
+      "twist_in": 7,
+      "notes": "Velocity 3000 ft/s plus or minus 40 ft/s, measured 78 ft from the muzzle, conditioned at 70 F plus or minus 2 F. Chamber pressure 379.2 MPa (55,000 psi) is the average limit. The individual limit and the average plus three standard deviations limit are 420.6 MPa (61,000 psi). Twist is one turn in 7 in from the scope. The specification does not state bullet mass or barrel length."
+    },
+    {
+      "spec": "MIL-C-9963F",
+      "title": "Cartridge, 5.56mm, Ball, M193",
+      "date": "1976-10-15",
+      "url": "https://everyspec.com/MIL-SPECS/MIL-SPECS-MIL-C/download.php?spec=MIL-C-9963F.025766.pdf",
+      "sha256": "08b9fea1826c8a8b669bf5b3792aec485a3d2c5107104e59e56746606fef6d08",
+      "cartridge": "5.56x45mm NATO",
+      "projectile": "M193",
+      "bullet_mass_gr": null,
+      "muzzle_velocity_ms": 964.7,
+      "reference_barrel_mm": null,
+      "pressure_mpa": 379.2,
+      "twist_in": null,
+      "notes": "Velocity 3165 ft/s plus or minus 40 ft/s, measured 78 ft from the muzzle, conditioned at 70 F plus or minus 2 F. The chamber pressure has two methods. The copper-crush cylinder average limit is 358.5 MPa (52,000 psi). The piezoelectric transducer average limit is 379.2 MPa (55,000 psi). The average plus three standard deviations limits are 400.0 MPa (58,000 psi) and 420.6 MPa (61,000 psi). The specification does not state bullet mass, barrel length or twist."
+    },
+    {
+      "spec": "MIL-C-46931F",
+      "title": "Cartridge, 7.62mm: NATO, Ball, M80",
+      "date": "1991-03-29",
+      "url": "https://everyspec.com/MIL-SPECS/MIL-SPECS-MIL-C/download.php?spec=MIL-C-46931F.042098.pdf",
+      "sha256": "5360fe83c4f842edae69d7d2ea9f2f0b2b59836503feac3da00f187086150413",
+      "cartridge": "7.62x51mm NATO",
+      "projectile": "M80",
+      "bullet_mass_gr": null,
+      "muzzle_velocity_ms": 838.2,
+      "reference_barrel_mm": null,
+      "pressure_mpa": 365.0,
+      "twist_in": null,
+      "notes": "Velocity 2750 ft/s plus or minus 30 ft/s, measured 78 ft from the muzzle, conditioned at 70 F. The chamber pressure has two methods. The copper-crush cylinder average limit is 344.7 MPa (50,000 psi). The EPVAT average limit is 365 MPa (52,940 psi). The average plus three standard deviations limits are 379.2 MPa (55,000 psi) and 400 MPa (58,016 psi). The specification does not state bullet mass, barrel length or twist."
+    },
+    {
+      "spec": "MIL-C-46281F",
+      "title": "Cartridge, 7.62mm: NATO, Tracer, M62",
+      "date": "1987-11-24",
+      "url": "https://everyspec.com/MIL-SPECS/MIL-SPECS-MIL-C/download.php?spec=MIL-C-46281F.046967.pdf",
+      "sha256": "1a1863f5b9ce53a64ad7a07387f097a30f1562793486c34c31dcd68d3271e454",
+      "cartridge": "7.62x51mm NATO",
+      "projectile": "M62",
+      "bullet_mass_gr": null,
+      "muzzle_velocity_ms": 838.2,
+      "reference_barrel_mm": null,
+      "pressure_mpa": 365.0,
+      "twist_in": null,
+      "notes": "Velocity depends on the jacket type. The value is 2750 ft/s plus or minus 30 ft/s for gilding metal clad steel jackets. The value is 2680 ft/s plus or minus 30 ft/s for gilding metal jackets. Velocity is measured 78 ft from the muzzle, conditioned at 70 F. The chamber pressure has two methods. The copper-crush cylinder average limit is 344.7 MPa (50,000 psi). The EPVAT average limit is 365 MPa (52,940 psi). The average plus three standard deviations limits are 379.2 MPa (55,000 psi) and 400 MPa (58,016 psi). The specification does not state bullet mass, barrel length or twist."
+    },
+    {
+      "spec": "MIL-C-70508",
+      "title": "Cartridge, 9mm, Ball, NATO, XM882",
+      "date": "1985-02-07",
+      "url": "https://everyspec.com/MIL-SPECS/MIL-SPECS-MIL-C/download.php?spec=MIL-C-70508.051909.pdf",
+      "sha256": "253dc30ae84154d2c4dcfe2d460535f15599069be0758cd9c63263e44417c381",
+      "cartridge": "9x19mm NATO",
+      "projectile": "M882",
+      "bullet_mass_gr": null,
+      "muzzle_velocity_ms": 385.0,
+      "reference_barrel_mm": null,
+      "pressure_mpa": 215.0,
+      "twist_in": null,
+      "notes": "Velocity 385 m/s plus or minus 15 m/s, measured 16 m from the muzzle, conditioned at 21 C plus or minus 2 C. Chamber pressure 215 MPa is the corrected average peak limit at the case mouth. No individual peak pressure shall exceed 250 MPa. The specification designates the cartridge XM882. The specification does not state bullet mass, barrel length or twist."
+    }
+  ]
+}

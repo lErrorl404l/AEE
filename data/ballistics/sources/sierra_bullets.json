@@ -1,0 +1,2417 @@
+{
+ "url": "https://sierrabullets.com/bullets/shop-all/",
+ "retrieved": "2026-09-22",
+ "sha256": "7615ce523fc0eb8c071e30a88b8892a2b8009a882bfc0eaeb5ac2ee6adcb089d",
+ "bullets": [
+  {
+   "description": "20 Cal 32 gr Tipped VarmintKing (TVK)",
+   "part": "1032",
+   "diameter_in": 0.204,
+   "mass_gr": 32,
+   "bc_g1": 0.221,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "20 Cal 36 gr Tipped VarmintKing (TVK)",
+   "part": "1036",
+   "diameter_in": 0.204,
+   "mass_gr": 36,
+   "bc_g1": 0.255,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "20 Cal 39 gr Tipped VarmintKing (TVK)",
+   "part": "1039",
+   "diameter_in": 0.204,
+   "mass_gr": 39,
+   "bc_g1": 0.287,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "223 Cal 40 gr Hornet VarmintKing (SVK)",
+   "part": "1100",
+   "diameter_in": 0.223,
+   "mass_gr": 40,
+   "bc_g1": 0.117,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "223 Cal 45 gr Hornet VarmintKing (SVK)",
+   "part": "1110",
+   "diameter_in": 0.223,
+   "mass_gr": 45,
+   "bc_g1": 0.132,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 40 gr HP VarmintKing (SVK)",
+   "part": "1385",
+   "diameter_in": 0.224,
+   "mass_gr": 40,
+   "bc_g1": 0.155,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 40 gr Hornet VarmintKing (SVK)",
+   "part": "1200",
+   "diameter_in": 0.224,
+   "mass_gr": 40,
+   "bc_g1": 0.116,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 40 gr Tipped VarmintKing (TVK)",
+   "part": "1440",
+   "diameter_in": 0.224,
+   "mass_gr": 40,
+   "bc_g1": 0.196,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 45 gr Hornet VarmintKing (SVK)",
+   "part": "1210",
+   "diameter_in": 0.224,
+   "mass_gr": 45,
+   "bc_g1": 0.131,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 45 gr SPT VarmintKing (SVK)",
+   "part": "1310",
+   "diameter_in": 0.224,
+   "mass_gr": 45,
+   "bc_g1": 0.21,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 50 gr SPT VarmintKing (SVK)",
+   "part": "1330",
+   "diameter_in": 0.224,
+   "mass_gr": 50,
+   "bc_g1": 0.222,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 50 gr Tipped VarmintKing (TVK)",
+   "part": "1450",
+   "diameter_in": 0.224,
+   "mass_gr": 50,
+   "bc_g1": 0.248,
+   "bc_g7": 0.114,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 50 gr VarmintKing (SVK)",
+   "part": "1340",
+   "diameter_in": 0.224,
+   "mass_gr": 50,
+   "bc_g1": 0.222,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 52 gr HPBT MatchKing (SMK)",
+   "part": "1410",
+   "diameter_in": 0.224,
+   "mass_gr": 52,
+   "bc_g1": 0.225,
+   "bc_g7": 0.11,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 53 gr HP MatchKing (SMK)",
+   "part": "1400",
+   "diameter_in": 0.224,
+   "mass_gr": 53,
+   "bc_g1": 0.224,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 55 gr FMJBT GameKing (SGK)",
+   "part": "1355",
+   "diameter_in": 0.224,
+   "mass_gr": 55,
+   "bc_g1": 0.272,
+   "bc_g7": 0.122,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 55 gr HPBT GameKing (SGK)",
+   "part": "1390",
+   "diameter_in": 0.224,
+   "mass_gr": 55,
+   "bc_g1": 0.185,
+   "bc_g7": 0.097,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 55 gr SBT GameKing (SGK)",
+   "part": "1365",
+   "diameter_in": 0.224,
+   "mass_gr": 55,
+   "bc_g1": 0.25,
+   "bc_g7": 0.123,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 55 gr SPT VarmintKing (SVK)",
+   "part": "1360",
+   "diameter_in": 0.224,
+   "mass_gr": 55,
+   "bc_g1": 0.237,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 55 gr Tipped VarmintKing (TVK)",
+   "part": "1455",
+   "diameter_in": 0.224,
+   "mass_gr": 55,
+   "bc_g1": 0.271,
+   "bc_g7": 0.124,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 55 gr VarmintKing (SVK)",
+   "part": "1345",
+   "diameter_in": 0.224,
+   "mass_gr": 55,
+   "bc_g1": 0.237,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 60 gr HP VarmintKing (SVK)",
+   "part": "1375",
+   "diameter_in": 0.224,
+   "mass_gr": 60,
+   "bc_g1": 0.246,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 60 gr Tipped MatchKing (TMK)",
+   "part": "7160",
+   "diameter_in": 0.224,
+   "mass_gr": 60,
+   "bc_g1": 0.323,
+   "bc_g7": 0.151,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 62 gr SBT GameKing (SGK)",
+   "part": "9362",
+   "diameter_in": 0.224,
+   "mass_gr": 62,
+   "bc_g1": 0.298,
+   "bc_g7": 0.149,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 63 gr SMP VarmintKing (SVK)",
+   "part": "1370",
+   "diameter_in": 0.224,
+   "mass_gr": 63,
+   "bc_g1": 0.231,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 64 gr Tipped GameKing (TGK)",
+   "part": "4062",
+   "diameter_in": 0.224,
+   "mass_gr": 64,
+   "bc_g1": 0.323,
+   "bc_g7": 0.159,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 65 gr SBT GameKing (SGK)",
+   "part": "1395",
+   "diameter_in": 0.224,
+   "mass_gr": 65,
+   "bc_g1": 0.303,
+   "bc_g7": 0.147,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 69 gr HPBT MatchKing (SMK)",
+   "part": "1380",
+   "diameter_in": 0.224,
+   "mass_gr": 69,
+   "bc_g1": 0.341,
+   "bc_g7": 0.167,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 69 gr Tipped GameKing (TGK)",
+   "part": "7171",
+   "diameter_in": 0.224,
+   "mass_gr": 69,
+   "bc_g1": 0.37,
+   "bc_g7": 0.185,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 69 gr Tipped MatchKing (TMK)",
+   "part": "7169",
+   "diameter_in": 0.224,
+   "mass_gr": 69,
+   "bc_g1": 0.375,
+   "bc_g7": 0.178,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 69 gr Tipped VarmintKing (TVK)",
+   "part": "7170",
+   "diameter_in": 0.224,
+   "mass_gr": 69,
+   "bc_g1": 0.357,
+   "bc_g7": 0.177,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 77 gr HPBT MatchKing (SMK)",
+   "part": "9377T",
+   "diameter_in": 0.224,
+   "mass_gr": 77,
+   "bc_g1": 0.372,
+   "bc_g7": 0.182,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 77 gr HPBT MatchKing (SMK) - Cannelure",
+   "part": "9377GT",
+   "diameter_in": 0.224,
+   "mass_gr": 77,
+   "bc_g1": 0.372,
+   "bc_g7": 0.182,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 77 gr HPBT MatchKing X (MKX)",
+   "part": "9380",
+   "diameter_in": 0.224,
+   "mass_gr": 77,
+   "bc_g1": 0.372,
+   "bc_g7": 0.182,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 77 gr Tipped MatchKing (TMK)",
+   "part": "7177",
+   "diameter_in": 0.224,
+   "mass_gr": 77,
+   "bc_g1": 0.42,
+   "bc_g7": 0.207,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 80 gr HPBT/CN MatchKing (SMK)",
+   "part": "9390T",
+   "diameter_in": 0.224,
+   "mass_gr": 80,
+   "bc_g1": 0.461,
+   "bc_g7": 0.229,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 88 gr Tipped MatchKing (TMK)",
+   "part": "7188",
+   "diameter_in": 0.224,
+   "mass_gr": 88,
+   "bc_g1": 0.525,
+   "bc_g7": 0.263,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 90 gr HPBT/CN MatchKing (SMK)",
+   "part": "9290T",
+   "diameter_in": 0.224,
+   "mass_gr": 90,
+   "bc_g1": 0.563,
+   "bc_g7": 0.278,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "22 Cal 95 gr HPBT/CN MatchKing (SMK)",
+   "part": "1396",
+   "diameter_in": 0.224,
+   "mass_gr": 95,
+   "bc_g1": 0.6,
+   "bc_g7": 0.299,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 55 gr Tipped VarmintKing (TVK)",
+   "part": "1502",
+   "diameter_in": 0.243,
+   "mass_gr": 55,
+   "bc_g1": 0.225,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 60 gr HP VarmintKing (SVK)",
+   "part": "1500",
+   "diameter_in": 0.243,
+   "mass_gr": 60,
+   "bc_g1": 0.182,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 70 gr HPBT MatchKing (SMK)",
+   "part": "1505",
+   "diameter_in": 0.243,
+   "mass_gr": 70,
+   "bc_g1": 0.259,
+   "bc_g7": 0.134,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 70 gr Tipped VarmintKing (TVK)",
+   "part": "1507",
+   "diameter_in": 0.243,
+   "mass_gr": 70,
+   "bc_g1": 0.299,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 75 gr HP VarmintKing (SVK)",
+   "part": "1510",
+   "diameter_in": 0.243,
+   "mass_gr": 75,
+   "bc_g1": 0.217,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 80 gr SBT VarmintKing (SVK)",
+   "part": "1515",
+   "diameter_in": 0.243,
+   "mass_gr": 80,
+   "bc_g1": 0.319,
+   "bc_g7": 0.155,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 85 gr HPBT GameKing (SGK)",
+   "part": "1530",
+   "diameter_in": 0.243,
+   "mass_gr": 85,
+   "bc_g1": 0.311,
+   "bc_g7": 0.156,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 85 gr SPT VarmintKing (SVK)",
+   "part": "1520",
+   "diameter_in": 0.243,
+   "mass_gr": 85,
+   "bc_g1": 0.315,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 90 gr Tipped GameKing (TGK)",
+   "part": "4100T",
+   "diameter_in": 0.243,
+   "mass_gr": 90,
+   "bc_g1": 0.49,
+   "bc_g7": 0.211,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 95 gr HPBT/CN MatchKing (SMK)",
+   "part": "1537",
+   "diameter_in": 0.243,
+   "mass_gr": 95,
+   "bc_g1": 0.49,
+   "bc_g7": 0.235,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 95 gr Tipped MatchKing (TMK)",
+   "part": "7295",
+   "diameter_in": 0.243,
+   "mass_gr": 95,
+   "bc_g1": 0.5,
+   "bc_g7": 0.246,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 100 gr SBT Pro-Hunter",
+   "part": "1560",
+   "diameter_in": 0.243,
+   "mass_gr": 100,
+   "bc_g1": 0.43,
+   "bc_g7": 0.208,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 100 gr SPT Pro-Hunter",
+   "part": "1540",
+   "diameter_in": 0.243,
+   "mass_gr": 100,
+   "bc_g1": 0.373,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 100 gr Tipped GameKing (TGK)",
+   "part": "4110T",
+   "diameter_in": 0.243,
+   "mass_gr": 100,
+   "bc_g1": 0.515,
+   "bc_g7": 0.253,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 105 gr HPBT/CN MatchKing (SMK)",
+   "part": "1565",
+   "diameter_in": 0.243,
+   "mass_gr": 105,
+   "bc_g1": 0.577,
+   "bc_g7": 0.284,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 107 gr HPBT MatchKing X (MKX)",
+   "part": "1571",
+   "diameter_in": 0.243,
+   "mass_gr": 107,
+   "bc_g1": 0.477,
+   "bc_g7": 0.242,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 107 gr HPBT/CN MatchKing (SMK)",
+   "part": "1570",
+   "diameter_in": 0.243,
+   "mass_gr": 107,
+   "bc_g1": 0.547,
+   "bc_g7": 0.262,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 107 gr Tipped MatchKing (TMK)",
+   "part": "7207",
+   "diameter_in": 0.243,
+   "mass_gr": 107,
+   "bc_g1": 0.574,
+   "bc_g7": 0.292,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 110 gr HPBT/CN MatchKing (SMK)",
+   "part": "1575",
+   "diameter_in": 0.243,
+   "mass_gr": 110,
+   "bc_g1": 0.617,
+   "bc_g7": 0.304,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6mm 116 gr Tipped MatchKing (TMK)",
+   "part": "7216",
+   "diameter_in": 0.243,
+   "mass_gr": 116,
+   "bc_g1": 0.609,
+   "bc_g7": 0.305,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "25 Cal 70 gr Tipped VarmintKing (TVK)",
+   "part": "1605",
+   "diameter_in": 0.257,
+   "mass_gr": 70,
+   "bc_g1": 0.26,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "25 Cal 87 gr SPT VarmintKing (SVK)",
+   "part": "1610",
+   "diameter_in": 0.257,
+   "mass_gr": 87,
+   "bc_g1": 0.293,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "25 Cal 90 gr HPBT GameKing (SGK)",
+   "part": "1615",
+   "diameter_in": 0.257,
+   "mass_gr": 90,
+   "bc_g1": 0.25,
+   "bc_g7": 0.133,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "25 Cal 90 gr Tipped VarmintKing (TVK)",
+   "part": "1616",
+   "diameter_in": 0.257,
+   "mass_gr": 90,
+   "bc_g1": 0.388,
+   "bc_g7": 0.173,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "25 Cal 100 gr HPBT MatchKing (SMK)",
+   "part": "1628",
+   "diameter_in": 0.257,
+   "mass_gr": 100,
+   "bc_g1": 0.394,
+   "bc_g7": 0.191,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "25 Cal 100 gr SBT GameKing (SGK)",
+   "part": "1625",
+   "diameter_in": 0.257,
+   "mass_gr": 100,
+   "bc_g1": 0.355,
+   "bc_g7": 0.17,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "25 Cal 110 gr Tipped GameKing (TGK)",
+   "part": "4210",
+   "diameter_in": 0.257,
+   "mass_gr": 110,
+   "bc_g1": 0.447,
+   "bc_g7": 0.217,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "25 Cal 117 gr SBT GameKing (SGK)",
+   "part": "1630",
+   "diameter_in": 0.257,
+   "mass_gr": 117,
+   "bc_g1": 0.41,
+   "bc_g7": 0.203,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "25 Cal 131 gr HPBT-CN MatchKing (SMK)",
+   "part": "9631",
+   "diameter_in": 0.257,
+   "mass_gr": 131,
+   "bc_g1": 0.571,
+   "bc_g7": 0.291,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "25 Cal 131 gr Tipped GameKing (TGK)",
+   "part": "7331",
+   "diameter_in": 0.257,
+   "mass_gr": 131,
+   "bc_g1": null,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "25 Cal 135 gr Tipped MatchKing (TMK)",
+   "part": "7334",
+   "diameter_in": 0.257,
+   "mass_gr": 135,
+   "bc_g1": 0.595,
+   "bc_g7": 0.307,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 100 gr HP VarmintKing (SVK)",
+   "part": "1710",
+   "diameter_in": 0.264,
+   "mass_gr": 100,
+   "bc_g1": 0.259,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 100 gr HPBT MatchKing (SMK)",
+   "part": "1711C",
+   "diameter_in": 0.264,
+   "mass_gr": 100,
+   "bc_g1": 0.361,
+   "bc_g7": 0.182,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 105 gr Tipped VarmintKing (TVK)",
+   "part": "1785",
+   "diameter_in": 0.264,
+   "mass_gr": 105,
+   "bc_g1": 0.425,
+   "bc_g7": 0.212,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 107 gr HPBT MatchKing (SMK)",
+   "part": "1715",
+   "diameter_in": 0.264,
+   "mass_gr": 107,
+   "bc_g1": 0.43,
+   "bc_g7": 0.203,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 107 gr Tipped MatchKing (TMK)",
+   "part": "7407",
+   "diameter_in": 0.264,
+   "mass_gr": 107,
+   "bc_g1": 0.445,
+   "bc_g7": 0.225,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 120 gr HPBT MatchKing (SMK)",
+   "part": "1725",
+   "diameter_in": 0.264,
+   "mass_gr": 120,
+   "bc_g1": 0.421,
+   "bc_g7": 0.207,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 120 gr SPT Pro-Hunter",
+   "part": "1720",
+   "diameter_in": 0.264,
+   "mass_gr": 120,
+   "bc_g1": 0.356,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 120 gr Tipped GameKing (TGK)",
+   "part": "4320",
+   "diameter_in": 0.264,
+   "mass_gr": 120,
+   "bc_g1": 0.466,
+   "bc_g7": 0.236,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 123 gr HPBT/CN MatchKing (SMK)",
+   "part": "1727",
+   "diameter_in": 0.264,
+   "mass_gr": 123,
+   "bc_g1": 0.51,
+   "bc_g7": 0.255,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 130 gr HPBT GameKing (SGK)",
+   "part": "1728",
+   "diameter_in": 0.264,
+   "mass_gr": 130,
+   "bc_g1": 0.355,
+   "bc_g7": 0.189,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 130 gr HPBT/CN MatchKing (SMK)",
+   "part": "1729T",
+   "diameter_in": 0.264,
+   "mass_gr": 130,
+   "bc_g1": 0.584,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 130 gr Tipped GameKing (TGK)",
+   "part": "4330T",
+   "diameter_in": 0.264,
+   "mass_gr": 130,
+   "bc_g1": 0.51,
+   "bc_g7": 0.248,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 130 gr Tipped MatchKing (TMK)",
+   "part": "7430",
+   "diameter_in": 0.264,
+   "mass_gr": 130,
+   "bc_g1": 0.518,
+   "bc_g7": 0.262,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 140 gr HPBT MatchKing (SMK)",
+   "part": "1740",
+   "diameter_in": 0.264,
+   "mass_gr": 140,
+   "bc_g1": 0.535,
+   "bc_g7": 0.264,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 140 gr SBT GameKing (SGK)",
+   "part": "1730",
+   "diameter_in": 0.264,
+   "mass_gr": 140,
+   "bc_g1": 0.495,
+   "bc_g7": 0.246,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 140 gr Tipped GameKing (TGK)",
+   "part": "4340",
+   "diameter_in": 0.264,
+   "mass_gr": 140,
+   "bc_g1": 0.563,
+   "bc_g7": 0.276,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 142 gr HPBT MatchKing X (MKX)",
+   "part": "1743",
+   "diameter_in": 0.264,
+   "mass_gr": 142,
+   "bc_g1": 0.595,
+   "bc_g7": 0.287,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 142 gr HPBT/CN MatchKing (SMK)",
+   "part": "1742",
+   "diameter_in": 0.264,
+   "mass_gr": 142,
+   "bc_g1": 0.626,
+   "bc_g7": 0.303,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 144 gr HPBT MatchKing (SMK)",
+   "part": "1744",
+   "diameter_in": 0.264,
+   "mass_gr": 144,
+   "bc_g1": 0.55,
+   "bc_g7": 0.271,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 145 gr Tipped GameKing (TGK)",
+   "part": "4345",
+   "diameter_in": 0.264,
+   "mass_gr": 145,
+   "bc_g1": 0.597,
+   "bc_g7": 0.291,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 150 gr HPBT/CN MatchKing (SMK)",
+   "part": "1755",
+   "diameter_in": 0.264,
+   "mass_gr": 150,
+   "bc_g1": 0.713,
+   "bc_g7": 0.354,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "6.5mm 153 gr Tipped MatchKing (TMK)",
+   "part": "7450",
+   "diameter_in": 0.264,
+   "mass_gr": 153,
+   "bc_g1": 0.642,
+   "bc_g7": 0.32,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "270 Cal 115 gr HPBT MatchKing (SMK)",
+   "part": "1815",
+   "diameter_in": 0.277,
+   "mass_gr": 115,
+   "bc_g1": 0.324,
+   "bc_g7": 0.155,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "270 Cal 130 gr SBT GameKing (SGK)",
+   "part": "1820",
+   "diameter_in": 0.277,
+   "mass_gr": 130,
+   "bc_g1": 0.436,
+   "bc_g7": 0.209,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "270 Cal 130 gr SPT Pro-Hunter",
+   "part": "1830",
+   "diameter_in": 0.277,
+   "mass_gr": 130,
+   "bc_g1": 0.37,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "270 Cal 135 gr HPBT MatchKing (SMK)",
+   "part": "1833",
+   "diameter_in": 0.277,
+   "mass_gr": 135,
+   "bc_g1": 0.505,
+   "bc_g7": 0.245,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "270 Cal 135 gr HPBT MatchKing X (MKX)",
+   "part": "1834",
+   "diameter_in": 0.277,
+   "mass_gr": 135,
+   "bc_g1": 0.505,
+   "bc_g7": 0.245,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "270 Cal 140 gr HPBT GameKing (SGK)",
+   "part": "1835",
+   "diameter_in": 0.277,
+   "mass_gr": 140,
+   "bc_g1": 0.337,
+   "bc_g7": 0.183,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "270 Cal 140 gr SBT GameKing (SGK)",
+   "part": "1845",
+   "diameter_in": 0.277,
+   "mass_gr": 140,
+   "bc_g1": 0.457,
+   "bc_g7": 0.223,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "270 Cal 140 gr Tipped GameKing (TGK)",
+   "part": "4440T",
+   "diameter_in": 0.277,
+   "mass_gr": 140,
+   "bc_g1": 0.508,
+   "bc_g7": 0.224,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "270 Cal 150 gr SBT GameKing (SGK)",
+   "part": "1840",
+   "diameter_in": 0.277,
+   "mass_gr": 150,
+   "bc_g1": 0.483,
+   "bc_g7": 0.236,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "270 Cal 175 gr Tipped GameKing (TGK)",
+   "part": "4475",
+   "diameter_in": 0.277,
+   "mass_gr": 175,
+   "bc_g1": 0.633,
+   "bc_g7": 0.315,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 100 gr HP VarmintKing (SVK)",
+   "part": "1895",
+   "diameter_in": 0.284,
+   "mass_gr": 100,
+   "bc_g1": 0.209,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 120 gr SPT Pro-Hunter",
+   "part": "1900",
+   "diameter_in": 0.284,
+   "mass_gr": 120,
+   "bc_g1": 0.328,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 140 gr HPBT GameKing (SGK)",
+   "part": "1912",
+   "diameter_in": 0.284,
+   "mass_gr": 140,
+   "bc_g1": 0.375,
+   "bc_g7": 0.197,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 140 gr SBT GameKing (SGK)",
+   "part": "1905",
+   "diameter_in": 0.284,
+   "mass_gr": 140,
+   "bc_g1": 0.416,
+   "bc_g7": 0.213,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 140 gr SPT Pro-Hunter",
+   "part": "1910",
+   "diameter_in": 0.284,
+   "mass_gr": 140,
+   "bc_g1": 0.377,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 140 gr Tipped GameKing (TGK)",
+   "part": "4540",
+   "diameter_in": 0.284,
+   "mass_gr": 140,
+   "bc_g1": 0.545,
+   "bc_g7": 0.272,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 140 gr Tipped GameKing (TGK)- BGB",
+   "part": "4540C",
+   "diameter_in": 0.284,
+   "mass_gr": 140,
+   "bc_g1": 0.545,
+   "bc_g7": 0.272,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 150 gr HPBT MatchKing (SMK)",
+   "part": "1915",
+   "diameter_in": 0.284,
+   "mass_gr": 150,
+   "bc_g1": 0.429,
+   "bc_g7": 0.22,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 150 gr SBT GameKing (SGK)",
+   "part": "1913",
+   "diameter_in": 0.284,
+   "mass_gr": 150,
+   "bc_g1": 0.436,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 150 gr Tipped GameKing (TGK)",
+   "part": "4550T",
+   "diameter_in": 0.284,
+   "mass_gr": 150,
+   "bc_g1": 0.545,
+   "bc_g7": 0.266,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 160 gr HPBT GameKing (SGK)",
+   "part": "1925",
+   "diameter_in": 0.284,
+   "mass_gr": 160,
+   "bc_g1": 0.384,
+   "bc_g7": 0.2,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 160 gr SBT GameKing (SGK)",
+   "part": "1920",
+   "diameter_in": 0.284,
+   "mass_gr": 160,
+   "bc_g1": 0.455,
+   "bc_g7": 0.236,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 160 gr Tipped MatchKing (TMK)",
+   "part": "7660",
+   "diameter_in": 0.284,
+   "mass_gr": 160,
+   "bc_g1": 0.6,
+   "bc_g7": 0.301,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 165 gr Tipped GameKing (TGK)",
+   "part": "4565T",
+   "diameter_in": 0.284,
+   "mass_gr": 165,
+   "bc_g1": 0.61,
+   "bc_g7": 0.275,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 168 gr HPBT MatchKing (SMK)",
+   "part": "1930",
+   "diameter_in": 0.284,
+   "mass_gr": 168,
+   "bc_g1": 0.488,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 175 gr HPBT MatchKing (SMK)",
+   "part": "1975",
+   "diameter_in": 0.284,
+   "mass_gr": 175,
+   "bc_g1": 0.608,
+   "bc_g7": 0.302,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 175 gr HPBT MatchKing X (MKX)",
+   "part": "1976",
+   "diameter_in": 0.284,
+   "mass_gr": 175,
+   "bc_g1": 0.597,
+   "bc_g7": 0.295,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 175 gr SBT GameKing (SGK)",
+   "part": "1940",
+   "diameter_in": 0.284,
+   "mass_gr": 175,
+   "bc_g1": 0.533,
+   "bc_g7": 0.271,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 180 gr HPBT MatchKing (SMK)",
+   "part": "1980",
+   "diameter_in": 0.284,
+   "mass_gr": 180,
+   "bc_g1": 0.66,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 180 gr HPBT/CN (Optimized for 7PRC) MatchKing (SMK)",
+   "part": "1981",
+   "diameter_in": 0.284,
+   "mass_gr": 180,
+   "bc_g1": 0.676,
+   "bc_g7": 0.335,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 180 gr Tipped GameKing (TGK)",
+   "part": "4580",
+   "diameter_in": 0.284,
+   "mass_gr": 180,
+   "bc_g1": 0.632,
+   "bc_g7": 0.305,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 183 gr HPBT/CN MatchKing (SMK)",
+   "part": "1983",
+   "diameter_in": 0.284,
+   "mass_gr": 183,
+   "bc_g1": 0.707,
+   "bc_g7": 0.351,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 185 gr Tipped MatchKing (TMK)",
+   "part": "7685",
+   "diameter_in": 0.284,
+   "mass_gr": 185,
+   "bc_g1": 0.685,
+   "bc_g7": 0.346,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "7mm 197 gr HPBT/CN MatchKing (SMK)",
+   "part": "1997",
+   "diameter_in": 0.284,
+   "mass_gr": 197,
+   "bc_g1": 0.78,
+   "bc_g7": 0.385,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 85 gr RN Sports Master",
+   "part": "8005",
+   "diameter_in": 0.308,
+   "mass_gr": 85,
+   "bc_g1": 0.102,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 110 gr HP VarmintKing (SVK)",
+   "part": "2110",
+   "diameter_in": 0.308,
+   "mass_gr": 110,
+   "bc_g1": 0.177,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 110 gr RN Pro-Hunter",
+   "part": "2100",
+   "diameter_in": 0.308,
+   "mass_gr": 110,
+   "bc_g1": 0.144,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 115 gr HP VarmintKing (SVK)",
+   "part": "2116",
+   "diameter_in": 0.308,
+   "mass_gr": 115,
+   "bc_g1": 0.267,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 125 gr HP/CN MatchKing (SMK)",
+   "part": "2121",
+   "diameter_in": 0.308,
+   "mass_gr": 125,
+   "bc_g1": 0.349,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 125 gr HP/FN Pro-Hunter",
+   "part": "2020",
+   "diameter_in": 0.308,
+   "mass_gr": 125,
+   "bc_g1": 0.119,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 125 gr SPT Pro-Hunter",
+   "part": "2120",
+   "diameter_in": 0.308,
+   "mass_gr": 125,
+   "bc_g1": 0.279,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 125 gr Tipped GameKing (TGK)",
+   "part": "4625",
+   "diameter_in": 0.308,
+   "mass_gr": 125,
+   "bc_g1": 0.318,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 125 gr Tipped MatchKing (TMK)",
+   "part": "7725",
+   "diameter_in": 0.308,
+   "mass_gr": 125,
+   "bc_g1": 0.343,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 135 gr HP VarmintKing (SVK)",
+   "part": "2124",
+   "diameter_in": 0.308,
+   "mass_gr": 135,
+   "bc_g1": 0.308,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 150 gr FMJBT GameKing (SGK)",
+   "part": "2115",
+   "diameter_in": 0.308,
+   "mass_gr": 150,
+   "bc_g1": 0.408,
+   "bc_g7": 0.201,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 150 gr FN Pro-Hunter",
+   "part": "2000",
+   "diameter_in": 0.308,
+   "mass_gr": 150,
+   "bc_g1": 0.185,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 150 gr HP VarmintKing (SVK)",
+   "part": "2136",
+   "diameter_in": 0.308,
+   "mass_gr": 150,
+   "bc_g1": 0.334,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 150 gr HPBT MatchKing (SMK)",
+   "part": "2190",
+   "diameter_in": 0.308,
+   "mass_gr": 150,
+   "bc_g1": 0.417,
+   "bc_g7": 0.199,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 150 gr RN Pro-Hunter",
+   "part": "2135",
+   "diameter_in": 0.308,
+   "mass_gr": 150,
+   "bc_g1": 0.2,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 150 gr SBT GameKing (SGK)",
+   "part": "2125",
+   "diameter_in": 0.308,
+   "mass_gr": 150,
+   "bc_g1": 0.38,
+   "bc_g7": 0.188,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 150 gr SPT Pro-Hunter",
+   "part": "2130",
+   "diameter_in": 0.308,
+   "mass_gr": 150,
+   "bc_g1": 0.336,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 155 gr HPBT MatchKing (SMK)",
+   "part": "2155",
+   "diameter_in": 0.308,
+   "mass_gr": 155,
+   "bc_g1": 0.45,
+   "bc_g7": 0.221,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 155 gr HPBT/CN - Palma MatchKing (SMK)",
+   "part": "2156",
+   "diameter_in": 0.308,
+   "mass_gr": 155,
+   "bc_g1": 0.504,
+   "bc_g7": 0.236,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 155 gr Tipped MatchKing (TMK)",
+   "part": "7755",
+   "diameter_in": 0.308,
+   "mass_gr": 155,
+   "bc_g1": 0.519,
+   "bc_g7": 0.256,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 165 gr HPBT GameKing (SGK)",
+   "part": "2140",
+   "diameter_in": 0.308,
+   "mass_gr": 165,
+   "bc_g1": 0.363,
+   "bc_g7": 0.183,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 165 gr SBT GameKing (SGK)",
+   "part": "2145",
+   "diameter_in": 0.308,
+   "mass_gr": 165,
+   "bc_g1": 0.404,
+   "bc_g7": 0.207,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 165 gr Tipped GameKing (TGK)",
+   "part": "4665T",
+   "diameter_in": 0.308,
+   "mass_gr": 165,
+   "bc_g1": 0.53,
+   "bc_g7": 0.234,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 168 gr HPBT MatchKing (SMK)",
+   "part": "2200",
+   "diameter_in": 0.308,
+   "mass_gr": 168,
+   "bc_g1": 0.462,
+   "bc_g7": 0.224,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 168 gr Tipped MatchKing (TMK)",
+   "part": "7768",
+   "diameter_in": 0.308,
+   "mass_gr": 168,
+   "bc_g1": 0.535,
+   "bc_g7": 0.267,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 169 gr HPBT/CN MatchKing (SMK)",
+   "part": "2269",
+   "diameter_in": 0.308,
+   "mass_gr": 169,
+   "bc_g1": 0.527,
+   "bc_g7": 0.26,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 170 gr FN Pro-Hunter",
+   "part": "2010",
+   "diameter_in": 0.308,
+   "mass_gr": 170,
+   "bc_g1": 0.205,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 175 gr HPBT MatchKing (SMK)",
+   "part": "2275",
+   "diameter_in": 0.308,
+   "mass_gr": 175,
+   "bc_g1": 0.505,
+   "bc_g7": 0.25,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 175 gr HPBT MatchKing X (MKX)",
+   "part": "2175",
+   "diameter_in": 0.308,
+   "mass_gr": 175,
+   "bc_g1": 0.505,
+   "bc_g7": 0.25,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 175 gr Tipped MatchKing (TMK)",
+   "part": "7775",
+   "diameter_in": 0.308,
+   "mass_gr": 175,
+   "bc_g1": 0.545,
+   "bc_g7": 0.267,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 177 gr HPBT/CN MatchKing (SMK)",
+   "part": "2277",
+   "diameter_in": 0.308,
+   "mass_gr": 177,
+   "bc_g1": 0.545,
+   "bc_g7": 0.271,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 180 gr RN Pro-Hunter",
+   "part": "2170",
+   "diameter_in": 0.308,
+   "mass_gr": 180,
+   "bc_g1": 0.24,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 180 gr SBT GameKing (SGK)",
+   "part": "2160",
+   "diameter_in": 0.308,
+   "mass_gr": 180,
+   "bc_g1": 0.501,
+   "bc_g7": 0.253,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 180 gr Tipped GameKing (TGK)",
+   "part": "4682",
+   "diameter_in": 0.308,
+   "mass_gr": 180,
+   "bc_g1": 0.543,
+   "bc_g7": 0.264,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 180 gr Tipped GameKing (TGK) (Optimized for .300 Win Mag)",
+   "part": "4680T",
+   "diameter_in": 0.308,
+   "mass_gr": 180,
+   "bc_g1": 0.515,
+   "bc_g7": 0.252,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 180 gr Tipped GameKing (TGK) (Optimized for 30-06)",
+   "part": "4681T",
+   "diameter_in": 0.308,
+   "mass_gr": 180,
+   "bc_g1": 0.543,
+   "bc_g7": 0.264,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 190 gr HPBT MatchKing (SMK)",
+   "part": "2210",
+   "diameter_in": 0.308,
+   "mass_gr": 190,
+   "bc_g1": 0.533,
+   "bc_g7": 0.265,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 195 gr Tipped GameKing (TGK)",
+   "part": "4695",
+   "diameter_in": 0.308,
+   "mass_gr": 195,
+   "bc_g1": null,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 195 gr Tipped MatchKing (TMK)",
+   "part": "7795",
+   "diameter_in": 0.308,
+   "mass_gr": 195,
+   "bc_g1": 0.61,
+   "bc_g7": 0.303,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 200 gr HPBT MatchKing (SMK)",
+   "part": "2230",
+   "diameter_in": 0.308,
+   "mass_gr": 200,
+   "bc_g1": 0.565,
+   "bc_g7": 0.282,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 200 gr HPBT MatchKing X (MKX)",
+   "part": "2232",
+   "diameter_in": 0.308,
+   "mass_gr": 200,
+   "bc_g1": 0.553,
+   "bc_g7": 0.275,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 200 gr HPBT/CN MatchKing (SMK)",
+   "part": "2231",
+   "diameter_in": 0.308,
+   "mass_gr": 200,
+   "bc_g1": 0.715,
+   "bc_g7": 0.354,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 200 gr SBT GameKing (SGK)",
+   "part": "2165",
+   "diameter_in": 0.308,
+   "mass_gr": 200,
+   "bc_g1": 0.56,
+   "bc_g7": 0.279,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 205 gr HPBT GameKing (SGK)",
+   "part": "2236",
+   "diameter_in": 0.308,
+   "mass_gr": 205,
+   "bc_g1": 0.48,
+   "bc_g7": 0.245,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 210 gr HPBT/CN MatchKing (SMK)",
+   "part": "9240T",
+   "diameter_in": 0.308,
+   "mass_gr": 210,
+   "bc_g1": 0.67,
+   "bc_g7": 0.327,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 210 gr Tipped GameKing (TGK)",
+   "part": "4610GT",
+   "diameter_in": 0.308,
+   "mass_gr": 210,
+   "bc_g1": 0.621,
+   "bc_g7": 0.303,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 215 gr HPBT/CN MatchKing (SMK)",
+   "part": "2237",
+   "diameter_in": 0.308,
+   "mass_gr": 215,
+   "bc_g1": 0.68,
+   "bc_g7": 0.336,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 220 gr HPBT MatchKing (SMK)",
+   "part": "2240",
+   "diameter_in": 0.308,
+   "mass_gr": 220,
+   "bc_g1": 0.629,
+   "bc_g7": 0.313,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 220 gr RN Pro-Hunter",
+   "part": "2180",
+   "diameter_in": 0.308,
+   "mass_gr": 220,
+   "bc_g1": 0.31,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 220 gr Tipped MatchKing (TMK)",
+   "part": "7720",
+   "diameter_in": 0.308,
+   "mass_gr": 220,
+   "bc_g1": 0.696,
+   "bc_g7": 0.353,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "30 Cal 230 gr HPBT/CN MatchKing (SMK)",
+   "part": "2251",
+   "diameter_in": 0.308,
+   "mass_gr": 230,
+   "bc_g1": 0.8,
+   "bc_g7": 0.399,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "303 Cal 125 gr SPT Pro-Hunter",
+   "part": "2305",
+   "diameter_in": 0.311,
+   "mass_gr": 125,
+   "bc_g1": 0.274,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "303 Cal 150 gr SPT Pro-Hunter",
+   "part": "2300",
+   "diameter_in": 0.311,
+   "mass_gr": 150,
+   "bc_g1": 0.344,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "303 Cal 174 gr HPBT MatchKing (SMK)",
+   "part": "2315",
+   "diameter_in": 0.311,
+   "mass_gr": 174,
+   "bc_g1": 0.499,
+   "bc_g7": 0.249,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "303 Cal 180 gr SPT Pro-Hunter",
+   "part": "2310",
+   "diameter_in": 0.311,
+   "mass_gr": 180,
+   "bc_g1": 0.411,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "32 Cal 90 gr JHC Sports Master",
+   "part": "8030",
+   "diameter_in": 0.312,
+   "mass_gr": 90,
+   "bc_g1": 0.125,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "8mm 150 gr SPT Pro-Hunter",
+   "part": "2400",
+   "diameter_in": 0.323,
+   "mass_gr": 150,
+   "bc_g1": 0.336,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "8mm 175 gr SPT Pro-Hunter",
+   "part": "2410",
+   "diameter_in": 0.323,
+   "mass_gr": 175,
+   "bc_g1": 0.381,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "8mm 200 gr HPBT MatchKing (SMK)",
+   "part": "2415",
+   "diameter_in": 0.323,
+   "mass_gr": 200,
+   "bc_g1": 0.52,
+   "bc_g7": 0.256,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "8mm 220 gr SBT GameKing (SGK)",
+   "part": "2420",
+   "diameter_in": 0.323,
+   "mass_gr": 220,
+   "bc_g1": 0.521,
+   "bc_g7": 0.261,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "338 Cal 215 gr SBT GameKing (SGK)",
+   "part": "2610",
+   "diameter_in": 0.338,
+   "mass_gr": 215,
+   "bc_g1": 0.485,
+   "bc_g7": 0.243,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "338 Cal 225 gr SPT Pro-Hunter",
+   "part": "2620",
+   "diameter_in": 0.338,
+   "mass_gr": 225,
+   "bc_g1": 0.462,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "338 Cal 250 gr HPBT MatchKing (SMK)",
+   "part": "2650",
+   "diameter_in": 0.338,
+   "mass_gr": 250,
+   "bc_g1": 0.587,
+   "bc_g7": 0.295,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "338 Cal 250 gr SBT GameKing (SGK)",
+   "part": "2600",
+   "diameter_in": 0.338,
+   "mass_gr": 250,
+   "bc_g1": 0.565,
+   "bc_g7": 0.281,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "338 Cal 300 gr HPBT MatchKing (SMK)",
+   "part": "9300T",
+   "diameter_in": 0.338,
+   "mass_gr": 300,
+   "bc_g1": 0.768,
+   "bc_g7": 0.383,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "9mm 90 gr JHP - SIG V-Crown",
+   "part": "9990",
+   "diameter_in": 0.355,
+   "mass_gr": 90,
+   "bc_g1": 0.094,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "9mm 90 gr JHP Sports Master",
+   "part": "8100",
+   "diameter_in": 0.355,
+   "mass_gr": 90,
+   "bc_g1": 0.095,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "9mm 95 gr FMJ Tournament Master",
+   "part": "8105",
+   "diameter_in": 0.355,
+   "mass_gr": 95,
+   "bc_g1": 0.093,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "9mm 115 gr FMJ Tournament Master",
+   "part": "8115",
+   "diameter_in": 0.355,
+   "mass_gr": 115,
+   "bc_g1": 0.107,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "9mm 115 gr JHP Sports Master",
+   "part": "8110",
+   "diameter_in": 0.355,
+   "mass_gr": 115,
+   "bc_g1": 0.127,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "9mm 124 gr JHP - SIG V-Crown",
+   "part": "9924",
+   "diameter_in": 0.355,
+   "mass_gr": 124,
+   "bc_g1": 0.12,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "9mm 124 gr JHP Sports Master",
+   "part": "8124",
+   "diameter_in": 0.355,
+   "mass_gr": 124,
+   "bc_g1": 0.125,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "9mm 125 gr FMJ Tournament Master",
+   "part": "8120",
+   "diameter_in": 0.355,
+   "mass_gr": 125,
+   "bc_g1": 0.115,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "9mm 125 gr JHP - SIG V-Crown",
+   "part": "9925",
+   "diameter_in": 0.355,
+   "mass_gr": 125,
+   "bc_g1": 0.122,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "9mm 125 gr JHP Sports Master",
+   "part": "8125",
+   "diameter_in": 0.355,
+   "mass_gr": 125,
+   "bc_g1": 0.124,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "9mm 147 gr JHP - SIG V-Crown",
+   "part": "9947",
+   "diameter_in": 0.355,
+   "mass_gr": 147,
+   "bc_g1": 0.162,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "9mm 147 gr JHP Sports Master",
+   "part": "8147",
+   "diameter_in": 0.355,
+   "mass_gr": 147,
+   "bc_g1": 0.157,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "35 Cal 155 gr FN Pro-Hunter",
+   "part": "2755",
+   "diameter_in": 0.355,
+   "mass_gr": 155,
+   "bc_g1": 0.176,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "38 Cal 125 gr JHP Sports Master",
+   "part": "8320",
+   "diameter_in": 0.357,
+   "mass_gr": 125,
+   "bc_g1": 0.133,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "38 Cal 125 gr JSP Sports Master",
+   "part": "8310",
+   "diameter_in": 0.357,
+   "mass_gr": 125,
+   "bc_g1": 0.133,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "38 Cal 140 gr JHP Sports Master",
+   "part": "8325",
+   "diameter_in": 0.357,
+   "mass_gr": 140,
+   "bc_g1": 0.078,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "38 Cal 158 gr JHC Sports Master",
+   "part": "8360",
+   "diameter_in": 0.357,
+   "mass_gr": 158,
+   "bc_g1": 0.1,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "38 Cal 158 gr JSP Sports Master",
+   "part": "8340",
+   "diameter_in": 0.357,
+   "mass_gr": 158,
+   "bc_g1": 0.1,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "38 Cal 180 gr FPJ Tournament Master",
+   "part": "8370",
+   "diameter_in": 0.357,
+   "mass_gr": 180,
+   "bc_g1": 0.147,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "35 Cal 200 gr RN Pro-Hunter",
+   "part": "2800",
+   "diameter_in": 0.358,
+   "mass_gr": 200,
+   "bc_g1": 0.148,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "35 Cal 225 gr SBT GameKing (SGK)",
+   "part": "2850",
+   "diameter_in": 0.358,
+   "mass_gr": 225,
+   "bc_g1": 0.37,
+   "bc_g7": 0.192,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "375 Cal 200 gr FN Pro-Hunter",
+   "part": "2900",
+   "diameter_in": 0.375,
+   "mass_gr": 200,
+   "bc_g1": 0.195,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "375 Cal 250 gr SBT GameKing (SGK)",
+   "part": "2950",
+   "diameter_in": 0.375,
+   "mass_gr": 250,
+   "bc_g1": 0.353,
+   "bc_g7": 0.186,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "375 Cal 300 gr SBT GameKing (SGK)",
+   "part": "3000",
+   "diameter_in": 0.375,
+   "mass_gr": 300,
+   "bc_g1": 0.475,
+   "bc_g7": 0.239,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "375 Cal 350 gr HPBT/CN MatchKing (SMK)",
+   "part": "9350T",
+   "diameter_in": 0.375,
+   "mass_gr": 350,
+   "bc_g1": 0.805,
+   "bc_g7": 0.4,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "10mm 150 gr JHP Sports Master",
+   "part": "8430",
+   "diameter_in": 0.4,
+   "mass_gr": 150,
+   "bc_g1": 0.12,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "10mm 165 gr JHP - SIG V-Crown",
+   "part": "9465",
+   "diameter_in": 0.4,
+   "mass_gr": 165,
+   "bc_g1": 0.132,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "10mm 165 gr JHP Sports Master",
+   "part": "8445",
+   "diameter_in": 0.4,
+   "mass_gr": 165,
+   "bc_g1": 0.13,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "10mm 180 gr JHP Sports Master",
+   "part": "8460",
+   "diameter_in": 0.4,
+   "mass_gr": 180,
+   "bc_g1": 0.14,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "40 Cal 200 gr JHP Pro-Hunter",
+   "part": "3100",
+   "diameter_in": 0.4,
+   "mass_gr": 200,
+   "bc_g1": null,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "41 Cal 170 gr JHC Sports Master",
+   "part": "8500",
+   "diameter_in": 0.41,
+   "mass_gr": 170,
+   "bc_g1": 0.123,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "41 Cal 210 gr JHC Sports Master",
+   "part": "8520",
+   "diameter_in": 0.41,
+   "mass_gr": 210,
+   "bc_g1": 0.165,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "44 Cal 180 gr JHC Sports Master",
+   "part": "8600",
+   "diameter_in": 0.4295,
+   "mass_gr": 180,
+   "bc_g1": 0.13,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "44 Cal 210 gr JHC Sports Master",
+   "part": "8620",
+   "diameter_in": 0.4295,
+   "mass_gr": 210,
+   "bc_g1": 0.16,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "44 Cal 240 gr JHC Sports Master",
+   "part": "8610",
+   "diameter_in": 0.4295,
+   "mass_gr": 240,
+   "bc_g1": 0.185,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "44 Cal 250 gr FPJ Tournament Master",
+   "part": "8615",
+   "diameter_in": 0.4295,
+   "mass_gr": 250,
+   "bc_g1": 0.213,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "44 Cal 300 gr JSP Sports Master",
+   "part": "8630",
+   "diameter_in": 0.4295,
+   "mass_gr": 300,
+   "bc_g1": 0.23,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "45 Cal 185 gr JHP Sports Master",
+   "part": "8835",
+   "diameter_in": 0.4515,
+   "mass_gr": 185,
+   "bc_g1": 0.105,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "45 Cal 200 gr FPJ Tournament Master",
+   "part": "8825",
+   "diameter_in": 0.4515,
+   "mass_gr": 200,
+   "bc_g1": 0.12,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "45 Cal 200 gr JHP - Sig V-Crown",
+   "part": "9820",
+   "diameter_in": 0.4515,
+   "mass_gr": 200,
+   "bc_g1": 0.118,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "45 Cal 225 gr JHC Sports Master",
+   "part": "8826C",
+   "diameter_in": 0.4515,
+   "mass_gr": 225,
+   "bc_g1": 0.141,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "45 Cal 230 gr FMJ Tournament Master",
+   "part": "8815",
+   "diameter_in": 0.4515,
+   "mass_gr": 230,
+   "bc_g1": 0.14,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "45 Cal 230 gr JHP Sports Master",
+   "part": "8805",
+   "diameter_in": 0.4515,
+   "mass_gr": 230,
+   "bc_g1": 0.145,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "45 Cal 240 gr JHC Sports Master",
+   "part": "8820",
+   "diameter_in": 0.4515,
+   "mass_gr": 240,
+   "bc_g1": 0.15,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "45 Cal 260 gr FN Pro-Hunter",
+   "part": "8760",
+   "diameter_in": 0.4515,
+   "mass_gr": 260,
+   "bc_g1": 0.164,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "45 Cal 300 gr JSP Sports Master",
+   "part": "8830",
+   "diameter_in": 0.4515,
+   "mass_gr": 300,
+   "bc_g1": 0.192,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "45-70 Cal 300 gr HP/FN Pro-Hunter",
+   "part": "8900",
+   "diameter_in": 0.458,
+   "mass_gr": 300,
+   "bc_g1": 0.12,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "45-70 Cal 400 gr HP/FN Pro-Hunter",
+   "part": "8950",
+   "diameter_in": 0.458,
+   "mass_gr": 400,
+   "bc_g1": 0.152,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "50 Cal 350 gr JHP Sports Master",
+   "part": "5350",
+   "diameter_in": 0.5,
+   "mass_gr": 350,
+   "bc_g1": 0.155,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  },
+  {
+   "description": "50 Cal 400 gr JSP Sports Master",
+   "part": "5400",
+   "diameter_in": 0.5,
+   "mass_gr": 400,
+   "bc_g1": 0.185,
+   "bc_g7": null,
+   "length_in": null,
+   "min_twist_in": null
+  }
+ ]
+}

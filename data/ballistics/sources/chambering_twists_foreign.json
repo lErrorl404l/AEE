@@ -1,0 +1,57 @@
+{
+  "retrieved": "2026-09-22",
+  "sources": [
+    {
+      "source_id": "firearmsworld_qbz951",
+      "title": "95-1枪族 (Type 95-1 gun family), 枪炮世界 [Firearms World]; page transcribed from 《兵器知识》2011年2A期, 马志杰, 国产新型95-1式枪族 (Ordnance Knowledge 2011(2A), Ma Zhijie, 'The New Domestic Type 95-1 Gun Family')",
+      "url": "http://pewpewpew.work/china/rifle/qbz95/qbz951.htm",
+      "sha256": "bdbbac70986fa4e8028547fc86e7b1505a9b4e3f1f08119476fd1f0e85834750"
+    },
+    {
+      "source_id": "qq_58mm_history",
+      "title": "海外谈中国：5.8×42mm军用弹药的历史演变 它到底好在哪里？ (Overseas view of China: the historical evolution of 5.8x42mm military ammunition), Tencent News (news.qq.com)",
+      "url": "https://news.qq.com/rain/a/20210201A06OR800",
+      "sha256": "8c1361e12fd4115f76468bcb20088dfbce4555d42ac329d420abaa38165f3f50"
+    },
+    {
+      "source_id": "dockery_ptrd41",
+      "title": "Dockery Armory, PTRD-41 (Degtyaryov 14.5x114mm anti-tank rifle), technical data sheet, ref. CODE 03-125-941",
+      "url": "https://dockeryarmory.com/ptrd-41/",
+      "sha256": "48c6a0ba816b0b3c966401899be69b6a7462a711f75e45db1de8509464a776ad"
+    }
+  ],
+  "twists": [
+    {
+      "chambering": "5.8x42mm (QBZ-95 / Type 95 rifle, original barrel)",
+      "twist_mm": 240.0,
+      "grooves": 4,
+      "source_id": "firearmsworld_qbz951",
+      "locator": "Section on the 95-1 gun family, paragraph beginning '由于要发射新弹' (Because it must fire the new cartridge): '95-1枪族中的两种自动步枪的膛线缠距从原来的240mm改为210mm' (the rifling twist of the two automatic rifles in the 95-1 family changed from the original 240 mm to 210 mm). The 240 mm figure is stated as the pre-95-1 (i.e. QBZ-95) rate; the same sentence gives the new groove count as rising from 4 to 6, so the original barrel had 4 grooves. Page cites 《兵器知识》2011年2A期, 马志杰, 国产新型95-1式枪族.",
+      "smoothbore": false
+    },
+    {
+      "chambering": "5.8x42mm (QBZ-95-1 / Type 95-1 rifle)",
+      "twist_mm": 210.0,
+      "grooves": 6,
+      "source_id": "firearmsworld_qbz951",
+      "locator": "Same paragraph: '膛线缠距从原来的240mm改为210mm，与班用机枪一样，提高弹头膛内旋转速度。而膛线数量从4条增加至6条' (twist changed from 240 mm to 210 mm, the same as the squad machine gun, to raise the in-bore spin rate. And the number of grooves was increased from 4 to 6). Verbatim value 210 mm and 6 grooves.",
+      "smoothbore": false
+    },
+    {
+      "chambering": "5.8x42mm (QBZ-95-1 / QJY-88 general-purpose machine gun)",
+      "twist_mm": 208.5,
+      "grooves": null,
+      "source_id": "qq_58mm_history",
+      "locator": "Independent Chinese secondary record: '最初的QBZ-95和QBZ-03缠距最小，为1：9.45，而QBZ-95-1系列和QJY-88通用机枪的缠距为1：8.21，QBU-88狙击步枪的缠距为1：7' (the original QBZ-95 and QBZ-03 had the slowest twist at 1:9.45, while the QBZ-95-1 series and QJY-88 GPMG twist is 1:8.21, and the QBU-88 sniper rifle is 1:7). 1:8.21 in = 208.5 mm, corroborating the 210 mm from firearmsworld_qbz951. The 1:9.45 in = 240.0 mm figure matches the 240 mm original. No groove count given. This article states it is a translation of a foreign (non-Chinese) article.",
+      "smoothbore": false
+    },
+    {
+      "chambering": "14.5x114mm (Soviet; KPV/KPVT, PTRD-41, PTRS-41)",
+      "twist_mm": 455.0,
+      "grooves": 8,
+      "source_id": "dockery_ptrd41",
+      "locator": "Data sheet field 'RIFLING (TYPE & TWIST)': '8-Grooves, Right hand twist, 1 turn in 45.5 cm (17.91 in)'. 45.5 cm = 455 mm; 17.91 in x 25.4 = 454.9 mm. CAVEAT: this is an unsourced collector/technical reference, not a foreign-materiel exploitation document. The groove count and right-hand direction are independently corroborated by the Russian KPVT technical description at https://vimpel-v.com/small_arms/kkp/4245-kpvt.html ('Внутри ствол имеет канал с восемью нарезами, вьющимися слева вверх направо' - the bore has eight grooves, curving from left up to the right), but that Russian page states no pitch. The 455 mm value could not be traced to any primary or state document; it also appears in the unsourced Wikipedia infobox for 14.5x114mm.",
+      "smoothbore": false
+    }
+  ]
+}

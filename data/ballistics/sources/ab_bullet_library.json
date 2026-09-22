@@ -1,0 +1,5161 @@
+{
+ "url": "https://web.archive.org/web/2020id_/http://www.appliedballisticsllc.com/Downloads/ABLibrary.pdf",
+ "retrieved": "2026-09-22",
+ "sha256": "93cfab0aa8e2cb7dfb19d9c39188605219ae38696f27bb97ec2ba1eb3dde5a9a",
+ "bullets": [
+  {
+   "manufacturer": "Alco",
+   "designation": "RBT AT",
+   "diameter_in": 0.308,
+   "mass_gr": 220.0
+  },
+  {
+   "manufacturer": "ARM",
+   "designation": "Predator",
+   "diameter_in": 0.308,
+   "mass_gr": 176.0
+  },
+  {
+   "manufacturer": "Australia",
+   "designation": "HBC",
+   "diameter_in": 0.308,
+   "mass_gr": 155.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "LR Solid",
+   "diameter_in": 0.51,
+   "mass_gr": 800.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "LR Solid BoreRider",
+   "diameter_in": 0.51,
+   "mass_gr": 750.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "LRXBT",
+   "diameter_in": 0.264,
+   "mass_gr": 127.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "LRXBT",
+   "diameter_in": 0.277,
+   "mass_gr": 129.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "LRXBT",
+   "diameter_in": 0.284,
+   "mass_gr": 145.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "LRXBT",
+   "diameter_in": 0.284,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "LRXBT",
+   "diameter_in": 0.308,
+   "mass_gr": 175.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "LRXBT",
+   "diameter_in": 0.308,
+   "mass_gr": 200.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "LRXBT",
+   "diameter_in": 0.338,
+   "mass_gr": 265.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "LRXBT",
+   "diameter_in": 0.338,
+   "mass_gr": 280.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "LRXBT",
+   "diameter_in": 0.375,
+   "mass_gr": 270.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "Match Burner",
+   "diameter_in": 0.224,
+   "mass_gr": 50.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "Match Burner",
+   "diameter_in": 0.224,
+   "mass_gr": 52.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "Match Burner",
+   "diameter_in": 0.224,
+   "mass_gr": 69.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "Match Burner",
+   "diameter_in": 0.224,
+   "mass_gr": 85.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "Match Burner",
+   "diameter_in": 0.284,
+   "mass_gr": 171.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "Match Burner",
+   "diameter_in": 0.308,
+   "mass_gr": 155.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "Match Burner",
+   "diameter_in": 0.308,
+   "mass_gr": 175.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "Match Burner",
+   "diameter_in": 0.243,
+   "mass_gr": 68.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "Match Burner",
+   "diameter_in": 0.243,
+   "mass_gr": 105.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "Match Burner",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "MLE TacX BT",
+   "diameter_in": 0.308,
+   "mass_gr": 110.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "MLE TacX BT",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "RRLP FB",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "Tac LR",
+   "diameter_in": 0.51,
+   "mass_gr": 750.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "Tac TXBT",
+   "diameter_in": 0.338,
+   "mass_gr": 225.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "Tac TXBT",
+   "diameter_in": 0.338,
+   "mass_gr": 265.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "Tac X",
+   "diameter_in": 0.224,
+   "mass_gr": 70.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "Tac X",
+   "diameter_in": 0.51,
+   "mass_gr": 647.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "Tac X BT",
+   "diameter_in": 0.338,
+   "mass_gr": 285.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "Tac X BT",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TSX",
+   "diameter_in": 0.284,
+   "mass_gr": 175.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TSXBT",
+   "diameter_in": 0.224,
+   "mass_gr": 70.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TSXBT",
+   "diameter_in": 0.277,
+   "mass_gr": 130.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TSXBT",
+   "diameter_in": 0.277,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TSXBT",
+   "diameter_in": 0.308,
+   "mass_gr": 165.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TSXBT",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TSXBT",
+   "diameter_in": 0.308,
+   "mass_gr": 180.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TSXBT",
+   "diameter_in": 0.338,
+   "mass_gr": 285.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TSXFB",
+   "diameter_in": 0.257,
+   "mass_gr": 115.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TSXFB",
+   "diameter_in": 0.284,
+   "mass_gr": 110.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TTSX",
+   "diameter_in": 0.224,
+   "mass_gr": 55.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TTSX",
+   "diameter_in": 0.257,
+   "mass_gr": 100.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TTSX",
+   "diameter_in": 0.308,
+   "mass_gr": 110.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TTSXBT",
+   "diameter_in": 0.224,
+   "mass_gr": 62.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TTSXBT",
+   "diameter_in": 0.243,
+   "mass_gr": 80.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TTSXBT",
+   "diameter_in": 0.257,
+   "mass_gr": 80.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TTSXBT",
+   "diameter_in": 0.264,
+   "mass_gr": 100.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TTSXBT",
+   "diameter_in": 0.264,
+   "mass_gr": 120.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TTSXBT",
+   "diameter_in": 0.277,
+   "mass_gr": 95.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TTSXBT",
+   "diameter_in": 0.277,
+   "mass_gr": 110.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TTSXBT",
+   "diameter_in": 0.277,
+   "mass_gr": 130.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TTSXBT",
+   "diameter_in": 0.284,
+   "mass_gr": 120.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TTSXBT",
+   "diameter_in": 0.284,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TTSXBT",
+   "diameter_in": 0.284,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TTSXBT",
+   "diameter_in": 0.308,
+   "mass_gr": 130.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TTSXBT",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TTSXBT",
+   "diameter_in": 0.308,
+   "mass_gr": 165.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TTSXBT",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TTSXBT",
+   "diameter_in": 0.338,
+   "mass_gr": 185.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TTSXBT",
+   "diameter_in": 0.338,
+   "mass_gr": 210.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TTSXBT",
+   "diameter_in": 0.338,
+   "mass_gr": 225.0
+  },
+  {
+   "manufacturer": "Barnes",
+   "designation": "TTSXFB",
+   "diameter_in": 0.284,
+   "mass_gr": 110.0
+  },
+  {
+   "manufacturer": "Barrett",
+   "designation": "Brass Solid",
+   "diameter_in": 0.416,
+   "mass_gr": 398.0
+  },
+  {
+   "manufacturer": "Barts",
+   "designation": "RBT",
+   "diameter_in": 0.243,
+   "mass_gr": 105.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Classic Hunter",
+   "diameter_in": 0.243,
+   "mass_gr": 95.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Classic Hunter",
+   "diameter_in": 0.264,
+   "mass_gr": 135.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Classic Hunter",
+   "diameter_in": 0.277,
+   "mass_gr": 130.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Classic Hunter",
+   "diameter_in": 0.277,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Classic Hunter",
+   "diameter_in": 0.284,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Classic Hunter",
+   "diameter_in": 0.284,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Classic Hunter",
+   "diameter_in": 0.308,
+   "mass_gr": 155.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Classic Hunter",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Classic Hunter",
+   "diameter_in": 0.308,
+   "mass_gr": 185.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Elite Hunter",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Elite Hunter",
+   "diameter_in": 0.277,
+   "mass_gr": 170.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Elite Hunter",
+   "diameter_in": 0.284,
+   "mass_gr": 175.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Elite Hunter",
+   "diameter_in": 0.308,
+   "mass_gr": 180.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Elite Hunter",
+   "diameter_in": 0.338,
+   "mass_gr": 250.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Elite Hunter",
+   "diameter_in": 0.338,
+   "mass_gr": 300.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "EOL Hunter",
+   "diameter_in": 0.264,
+   "mass_gr": 156.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "EOL Hunter",
+   "diameter_in": 0.284,
+   "mass_gr": 195.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Hunting VLD",
+   "diameter_in": 0.243,
+   "mass_gr": 87.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Hunting VLD",
+   "diameter_in": 0.243,
+   "mass_gr": 95.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Hunting VLD",
+   "diameter_in": 0.243,
+   "mass_gr": 105.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Hunting VLD",
+   "diameter_in": 0.243,
+   "mass_gr": 115.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Hunting VLD",
+   "diameter_in": 0.257,
+   "mass_gr": 115.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Hunting VLD",
+   "diameter_in": 0.264,
+   "mass_gr": 130.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Hunting VLD",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Hunting VLD",
+   "diameter_in": 0.277,
+   "mass_gr": 130.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Hunting VLD",
+   "diameter_in": 0.277,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Hunting VLD",
+   "diameter_in": 0.277,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Hunting VLD",
+   "diameter_in": 0.284,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Hunting VLD",
+   "diameter_in": 0.284,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Hunting VLD",
+   "diameter_in": 0.284,
+   "mass_gr": 180.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Hunting VLD",
+   "diameter_in": 0.308,
+   "mass_gr": 155.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Hunting VLD",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Hunting VLD",
+   "diameter_in": 0.308,
+   "mass_gr": 175.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Hunting VLD",
+   "diameter_in": 0.308,
+   "mass_gr": 185.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Hunting VLD",
+   "diameter_in": 0.308,
+   "mass_gr": 190.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Hunting VLD",
+   "diameter_in": 0.308,
+   "mass_gr": 210.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Solid (Prototype)",
+   "diameter_in": 0.338,
+   "mass_gr": 301.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Solid (Prototype)",
+   "diameter_in": 0.375,
+   "mass_gr": 379.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Solid (Prototype)",
+   "diameter_in": 0.375,
+   "mass_gr": 407.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Tactical AR Hybrid",
+   "diameter_in": 0.264,
+   "mass_gr": 130.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Tactical OTM",
+   "diameter_in": 0.224,
+   "mass_gr": 77.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Tactical OTM",
+   "diameter_in": 0.308,
+   "mass_gr": 175.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Tactical OTM",
+   "diameter_in": 0.338,
+   "mass_gr": 250.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Tactical OTM",
+   "diameter_in": 0.308,
+   "mass_gr": 230.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Tactical OTM",
+   "diameter_in": 0.338,
+   "mass_gr": 300.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Tactical OTM Juggernaut",
+   "diameter_in": 0.308,
+   "mass_gr": 185.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target BR Column",
+   "diameter_in": 0.243,
+   "mass_gr": 64.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target BT",
+   "diameter_in": 0.224,
+   "mass_gr": 73.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target BT",
+   "diameter_in": 0.224,
+   "mass_gr": 82.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target BT",
+   "diameter_in": 0.243,
+   "mass_gr": 65.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target BT",
+   "diameter_in": 0.243,
+   "mass_gr": 90.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target BT",
+   "diameter_in": 0.243,
+   "mass_gr": 105.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target BT",
+   "diameter_in": 0.243,
+   "mass_gr": 108.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target BT",
+   "diameter_in": 0.264,
+   "mass_gr": 120.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target Euwin",
+   "diameter_in": 0.243,
+   "mass_gr": 62.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target FB",
+   "diameter_in": 0.224,
+   "mass_gr": 52.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target FB",
+   "diameter_in": 0.224,
+   "mass_gr": 55.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target FB",
+   "diameter_in": 0.243,
+   "mass_gr": 68.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target FB",
+   "diameter_in": 0.308,
+   "mass_gr": 115.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target FB",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target FULLBORE",
+   "diameter_in": 0.224,
+   "mass_gr": 80.5
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target FULLBORE",
+   "diameter_in": 0.308,
+   "mass_gr": 155.5
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target Hybrid",
+   "diameter_in": 0.243,
+   "mass_gr": 105.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target Hybrid",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target Hybrid",
+   "diameter_in": 0.284,
+   "mass_gr": 180.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target Hybrid",
+   "diameter_in": 0.284,
+   "mass_gr": 184.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target Hybrid",
+   "diameter_in": 0.308,
+   "mass_gr": 155.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target Hybrid",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target Hybrid",
+   "diameter_in": 0.308,
+   "mass_gr": 185.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target Hybrid",
+   "diameter_in": 0.308,
+   "mass_gr": 200.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target Hybrid",
+   "diameter_in": 0.308,
+   "mass_gr": 215.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target Hybrid",
+   "diameter_in": 0.308,
+   "mass_gr": 230.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target Hybrid 20X",
+   "diameter_in": 0.308,
+   "mass_gr": 200.2
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target Juggernaut",
+   "diameter_in": 0.308,
+   "mass_gr": 185.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target LRBT",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target LRBT",
+   "diameter_in": 0.308,
+   "mass_gr": 175.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target LRBT",
+   "diameter_in": 0.308,
+   "mass_gr": 210.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target VLD",
+   "diameter_in": 0.224,
+   "mass_gr": 70.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target VLD",
+   "diameter_in": 0.224,
+   "mass_gr": 75.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target VLD",
+   "diameter_in": 0.224,
+   "mass_gr": 80.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target VLD",
+   "diameter_in": 0.224,
+   "mass_gr": 90.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target VLD",
+   "diameter_in": 0.243,
+   "mass_gr": 95.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target VLD",
+   "diameter_in": 0.243,
+   "mass_gr": 105.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target VLD",
+   "diameter_in": 0.243,
+   "mass_gr": 115.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target VLD",
+   "diameter_in": 0.264,
+   "mass_gr": 130.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target VLD",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target VLD",
+   "diameter_in": 0.284,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target VLD",
+   "diameter_in": 0.284,
+   "mass_gr": 180.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target VLD",
+   "diameter_in": 0.308,
+   "mass_gr": 155.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target VLD",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target VLD",
+   "diameter_in": 0.308,
+   "mass_gr": 175.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target VLD",
+   "diameter_in": 0.308,
+   "mass_gr": 185.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target VLD",
+   "diameter_in": 0.308,
+   "mass_gr": 210.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Target WEB",
+   "diameter_in": 0.243,
+   "mass_gr": 65.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Varmint BT",
+   "diameter_in": 0.204,
+   "mass_gr": 40.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Varmint BT",
+   "diameter_in": 0.204,
+   "mass_gr": 55.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Varmint FB",
+   "diameter_in": 0.172,
+   "mass_gr": 25.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Varmint FB",
+   "diameter_in": 0.204,
+   "mass_gr": 35.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Varmint FB",
+   "diameter_in": 0.224,
+   "mass_gr": 40.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Varmint FB",
+   "diameter_in": 0.224,
+   "mass_gr": 52.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Varmint FB",
+   "diameter_in": 0.224,
+   "mass_gr": 55.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Varmint FB",
+   "diameter_in": 0.224,
+   "mass_gr": 60.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Varmint FB",
+   "diameter_in": 0.224,
+   "mass_gr": 64.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Varmint FB",
+   "diameter_in": 0.243,
+   "mass_gr": 80.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Varmint HBCFB",
+   "diameter_in": 0.243,
+   "mass_gr": 69.0
+  },
+  {
+   "manufacturer": "Berger",
+   "designation": "Varmint HBCFB",
+   "diameter_in": 0.243,
+   "mass_gr": 88.0
+  },
+  {
+   "manufacturer": "Cauterucio",
+   "designation": "10Ogive",
+   "diameter_in": 0.264,
+   "mass_gr": 119.0
+  },
+  {
+   "manufacturer": "Cauterucio",
+   "designation": "15Ogive",
+   "diameter_in": 0.264,
+   "mass_gr": 119.0
+  },
+  {
+   "manufacturer": "Cauterucio",
+   "designation": "HPBT",
+   "diameter_in": 0.264,
+   "mass_gr": 146.0
+  },
+  {
+   "manufacturer": "Cauterucio",
+   "designation": "HPBT",
+   "diameter_in": 0.264,
+   "mass_gr": 152.0
+  },
+  {
+   "manufacturer": "Cauterucio",
+   "designation": "HPBT",
+   "diameter_in": 0.284,
+   "mass_gr": 163.5
+  },
+  {
+   "manufacturer": "Cauterucio",
+   "designation": "VLD",
+   "diameter_in": 0.264,
+   "mass_gr": 131.0
+  },
+  {
+   "manufacturer": "Cauterucio",
+   "designation": "VLD",
+   "diameter_in": 0.264,
+   "mass_gr": 155.0
+  },
+  {
+   "manufacturer": "Cauterucio",
+   "designation": "VLD",
+   "diameter_in": 0.284,
+   "mass_gr": 177.0
+  },
+  {
+   "manufacturer": "Cauterucio",
+   "designation": "VLD",
+   "diameter_in": 0.284,
+   "mass_gr": 189.0
+  },
+  {
+   "manufacturer": "CheyTac",
+   "designation": "Balanced Flight Solid",
+   "diameter_in": 0.375,
+   "mass_gr": 350.0
+  },
+  {
+   "manufacturer": "CheyTac",
+   "designation": "Balanced Flight Solid",
+   "diameter_in": 0.408,
+   "mass_gr": 419.0
+  },
+  {
+   "manufacturer": "CheyTac",
+   "designation": "Solid",
+   "diameter_in": 0.408,
+   "mass_gr": 305.0
+  },
+  {
+   "manufacturer": "Chinchaga",
+   "designation": "RBT ST Hybrid",
+   "diameter_in": 0.338,
+   "mass_gr": 300.0
+  },
+  {
+   "manufacturer": "Chinchaga",
+   "designation": "RBT ULD",
+   "diameter_in": 0.264,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Chinchaga",
+   "designation": "RBT ULD ST",
+   "diameter_in": 0.308,
+   "mass_gr": 236.0
+  },
+  {
+   "manufacturer": "Chinchaga",
+   "designation": "RBT ULD ST Hybrid",
+   "diameter_in": 0.284,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Chinchaga",
+   "designation": "RBT ULD ST Hybrid",
+   "diameter_in": 0.284,
+   "mass_gr": 196.0
+  },
+  {
+   "manufacturer": "Chinchaga",
+   "designation": "RBT ULD ST Hybrid",
+   "diameter_in": 0.284,
+   "mass_gr": 226.0
+  },
+  {
+   "manufacturer": "CKYA Thomas",
+   "designation": "Al Tip",
+   "diameter_in": 0.308,
+   "mass_gr": 217.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "HPBT",
+   "diameter_in": 0.277,
+   "mass_gr": 120.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "HPBT",
+   "diameter_in": 0.277,
+   "mass_gr": 130.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "HPBT",
+   "diameter_in": 0.308,
+   "mass_gr": 180.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "HPBT",
+   "diameter_in": 0.338,
+   "mass_gr": 300.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "Lazer",
+   "diameter_in": 0.264,
+   "mass_gr": 125.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "Lazer",
+   "diameter_in": 0.264,
+   "mass_gr": 145.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "Lazer",
+   "diameter_in": 0.277,
+   "mass_gr": 115.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "Lazer",
+   "diameter_in": 0.277,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "Lazer",
+   "diameter_in": 0.284,
+   "mass_gr": 145.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "Lazer",
+   "diameter_in": 0.284,
+   "mass_gr": 185.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "Lazer",
+   "diameter_in": 0.308,
+   "mass_gr": 165.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "Lazer",
+   "diameter_in": 0.308,
+   "mass_gr": 220.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "Lazer",
+   "diameter_in": 0.308,
+   "mass_gr": 240.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "Lazer",
+   "diameter_in": 0.338,
+   "mass_gr": 225.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "Lazer",
+   "diameter_in": 0.338,
+   "mass_gr": 250.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "Lazer",
+   "diameter_in": 0.338,
+   "mass_gr": 275.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "Lazer",
+   "diameter_in": 0.338,
+   "mass_gr": 300.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "Lazer",
+   "diameter_in": 0.375,
+   "mass_gr": 325.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "Lazer",
+   "diameter_in": 0.375,
+   "mass_gr": 350.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "Lazer",
+   "diameter_in": 0.408,
+   "mass_gr": 425.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "Lazer",
+   "diameter_in": 0.408,
+   "mass_gr": 450.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "Lazer",
+   "diameter_in": 0.408,
+   "mass_gr": 475.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "Lazer",
+   "diameter_in": 0.416,
+   "mass_gr": 500.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "Lazer",
+   "diameter_in": 0.416,
+   "mass_gr": 550.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "Lazer Max",
+   "diameter_in": 0.308,
+   "mass_gr": 180.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "Lazer MAX",
+   "diameter_in": 0.375,
+   "mass_gr": 375.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "Lazer MAX",
+   "diameter_in": 0.375,
+   "mass_gr": 400.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "Lazer MAX",
+   "diameter_in": 0.375,
+   "mass_gr": 425.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "Lazer STD",
+   "diameter_in": 0.308,
+   "mass_gr": 180.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "LDHPBT Max",
+   "diameter_in": 0.308,
+   "mass_gr": 180.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTAC",
+   "diameter_in": 0.264,
+   "mass_gr": 133.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTAC",
+   "diameter_in": 0.264,
+   "mass_gr": 143.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTAC",
+   "diameter_in": 0.338,
+   "mass_gr": 254.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTAC",
+   "diameter_in": 0.338,
+   "mass_gr": 277.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTAC",
+   "diameter_in": 0.338,
+   "mass_gr": 302.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTAC",
+   "diameter_in": 0.375,
+   "mass_gr": 352.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTAC",
+   "diameter_in": 0.375,
+   "mass_gr": 377.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTAC",
+   "diameter_in": 0.375,
+   "mass_gr": 402.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTAC",
+   "diameter_in": 0.375,
+   "mass_gr": 427.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTAC",
+   "diameter_in": 0.375,
+   "mass_gr": 452.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTAC",
+   "diameter_in": 0.408,
+   "mass_gr": 395.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTAC",
+   "diameter_in": 0.408,
+   "mass_gr": 420.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTAC",
+   "diameter_in": 0.416,
+   "mass_gr": 422.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTAC",
+   "diameter_in": 0.416,
+   "mass_gr": 446.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTAC",
+   "diameter_in": 0.416,
+   "mass_gr": 472.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTAC",
+   "diameter_in": 0.51,
+   "mass_gr": 720.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTAC",
+   "diameter_in": 0.51,
+   "mass_gr": 762.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTAC",
+   "diameter_in": 0.51,
+   "mass_gr": 802.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTAC MAX",
+   "diameter_in": 0.416,
+   "mass_gr": 450.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTH",
+   "diameter_in": 0.264,
+   "mass_gr": 130.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTH",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTH",
+   "diameter_in": 0.284,
+   "mass_gr": 180.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTH",
+   "diameter_in": 0.308,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTH",
+   "diameter_in": 0.308,
+   "mass_gr": 165.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTH",
+   "diameter_in": 0.338,
+   "mass_gr": 175.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTH",
+   "diameter_in": 0.338,
+   "mass_gr": 200.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTH",
+   "diameter_in": 0.338,
+   "mass_gr": 225.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTH",
+   "diameter_in": 0.338,
+   "mass_gr": 252.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTH",
+   "diameter_in": 0.338,
+   "mass_gr": 265.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTH",
+   "diameter_in": 0.338,
+   "mass_gr": 275.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTH",
+   "diameter_in": 0.338,
+   "mass_gr": 300.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTH",
+   "diameter_in": 0.375,
+   "mass_gr": 300.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTH",
+   "diameter_in": 0.375,
+   "mass_gr": 320.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTH",
+   "diameter_in": 0.375,
+   "mass_gr": 330.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTH",
+   "diameter_in": 0.375,
+   "mass_gr": 350.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTH",
+   "diameter_in": 0.375,
+   "mass_gr": 375.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTH",
+   "diameter_in": 0.408,
+   "mass_gr": 390.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTH",
+   "diameter_in": 0.408,
+   "mass_gr": 415.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTH",
+   "diameter_in": 0.416,
+   "mass_gr": 420.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTH",
+   "diameter_in": 0.416,
+   "mass_gr": 444.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTH C21",
+   "diameter_in": 0.308,
+   "mass_gr": 180.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTH MAX",
+   "diameter_in": 0.308,
+   "mass_gr": 190.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTH168MAX",
+   "diameter_in": 0.284,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "CuttingEdge",
+   "designation": "MTHJ07",
+   "diameter_in": 0.284,
+   "mass_gr": 155.0
+  },
+  {
+   "manufacturer": "DAG",
+   "designation": "DM111 Ball FMJ",
+   "diameter_in": 0.308,
+   "mass_gr": 147.0
+  },
+  {
+   "manufacturer": "DAG",
+   "designation": "NR474",
+   "diameter_in": 0.308,
+   "mass_gr": 163.0
+  },
+  {
+   "manufacturer": "Dietlein",
+   "designation": "ULD",
+   "diameter_in": 0.308,
+   "mass_gr": 155.5
+  },
+  {
+   "manufacturer": "Dietlein",
+   "designation": "ULD",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Dietlein",
+   "designation": "ULD",
+   "diameter_in": 0.308,
+   "mass_gr": 173.0
+  },
+  {
+   "manufacturer": "Dietlein",
+   "designation": "ULD",
+   "diameter_in": 0.308,
+   "mass_gr": 175.0
+  },
+  {
+   "manufacturer": "Dietlein",
+   "designation": "ULD",
+   "diameter_in": 0.308,
+   "mass_gr": 185.0
+  },
+  {
+   "manufacturer": "Dietlein",
+   "designation": "ULD",
+   "diameter_in": 0.308,
+   "mass_gr": 190.0
+  },
+  {
+   "manufacturer": "DRT",
+   "designation": "Frangible",
+   "diameter_in": 0.224,
+   "mass_gr": 79.0
+  },
+  {
+   "manufacturer": "DRT",
+   "designation": "Frangible",
+   "diameter_in": 0.308,
+   "mass_gr": 175.0
+  },
+  {
+   "manufacturer": "DRT",
+   "designation": "Frangible",
+   "diameter_in": 0.308,
+   "mass_gr": 200.0
+  },
+  {
+   "manufacturer": "DTAC",
+   "designation": "BTHP",
+   "diameter_in": 0.243,
+   "mass_gr": 115.0
+  },
+  {
+   "manufacturer": "DTAC",
+   "designation": "RBT pointed",
+   "diameter_in": 0.243,
+   "mass_gr": 115.0
+  },
+  {
+   "manufacturer": "DTAC",
+   "designation": "Tipped",
+   "diameter_in": 0.243,
+   "mass_gr": 117.0
+  },
+  {
+   "manufacturer": "Federal",
+   "designation": "Edge TLR",
+   "diameter_in": 0.277,
+   "mass_gr": 136.0
+  },
+  {
+   "manufacturer": "Federal",
+   "designation": "Edge TLR",
+   "diameter_in": 0.284,
+   "mass_gr": 155.0
+  },
+  {
+   "manufacturer": "Federal",
+   "designation": "Edge TLR",
+   "diameter_in": 0.308,
+   "mass_gr": 175.0
+  },
+  {
+   "manufacturer": "Federal",
+   "designation": "Tactical Bonded Tip",
+   "diameter_in": 0.308,
+   "mass_gr": 165.0
+  },
+  {
+   "manufacturer": "Federal",
+   "designation": "Tactical Bonded Tip",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "FreedomMunitions",
+   "designation": "FMJ BT",
+   "diameter_in": 0.51,
+   "mass_gr": 647.0
+  },
+  {
+   "manufacturer": "G9",
+   "designation": "Competition",
+   "diameter_in": 0.243,
+   "mass_gr": 87.0
+  },
+  {
+   "manufacturer": "G9",
+   "designation": "Competition",
+   "diameter_in": 0.264,
+   "mass_gr": 103.0
+  },
+  {
+   "manufacturer": "G9",
+   "designation": "Competition",
+   "diameter_in": 0.264,
+   "mass_gr": 113.0
+  },
+  {
+   "manufacturer": "G9",
+   "designation": "Competition",
+   "diameter_in": 0.308,
+   "mass_gr": 154.0
+  },
+  {
+   "manufacturer": "G9",
+   "designation": "Competition",
+   "diameter_in": 0.338,
+   "mass_gr": 232.0
+  },
+  {
+   "manufacturer": "General Dynamics",
+   "designation": "Sniper Elite Ball",
+   "diameter_in": 0.51,
+   "mass_gr": 704.0
+  },
+  {
+   "manufacturer": "General Dynamics",
+   "designation": "Sniper Elite AP",
+   "diameter_in": 0.51,
+   "mass_gr": 756.0
+  },
+  {
+   "manufacturer": "General Dynamics",
+   "designation": "Sniper Elite API",
+   "diameter_in": 0.51,
+   "mass_gr": 756.0
+  },
+  {
+   "manufacturer": "GSCustom",
+   "designation": "SP",
+   "diameter_in": 0.224,
+   "mass_gr": 57.0
+  },
+  {
+   "manufacturer": "GSCustom",
+   "designation": "SP",
+   "diameter_in": 0.224,
+   "mass_gr": 69.0
+  },
+  {
+   "manufacturer": "GSCustom",
+   "designation": "SP",
+   "diameter_in": 0.243,
+   "mass_gr": 81.0
+  },
+  {
+   "manufacturer": "GSCustom",
+   "designation": "SP",
+   "diameter_in": 0.243,
+   "mass_gr": 109.0
+  },
+  {
+   "manufacturer": "GSCustom",
+   "designation": "SP",
+   "diameter_in": 0.257,
+   "mass_gr": 90.0
+  },
+  {
+   "manufacturer": "GSCustom",
+   "designation": "SP",
+   "diameter_in": 0.264,
+   "mass_gr": 112.0
+  },
+  {
+   "manufacturer": "GSCustom",
+   "designation": "SP",
+   "diameter_in": 0.264,
+   "mass_gr": 119.0
+  },
+  {
+   "manufacturer": "GSCustom",
+   "designation": "SP",
+   "diameter_in": 0.264,
+   "mass_gr": 128.0
+  },
+  {
+   "manufacturer": "GSCustom",
+   "designation": "SP",
+   "diameter_in": 0.277,
+   "mass_gr": 105.0
+  },
+  {
+   "manufacturer": "GSCustom",
+   "designation": "SP",
+   "diameter_in": 0.284,
+   "mass_gr": 125.0
+  },
+  {
+   "manufacturer": "GSCustom",
+   "designation": "SP",
+   "diameter_in": 0.308,
+   "mass_gr": 137.0
+  },
+  {
+   "manufacturer": "GSCustom",
+   "designation": "SP",
+   "diameter_in": 0.308,
+   "mass_gr": 158.0
+  },
+  {
+   "manufacturer": "GSCustom",
+   "designation": "SP",
+   "diameter_in": 0.308,
+   "mass_gr": 167.0
+  },
+  {
+   "manufacturer": "GSCustom",
+   "designation": "SP",
+   "diameter_in": 0.308,
+   "mass_gr": 197.0
+  },
+  {
+   "manufacturer": "GSCustom",
+   "designation": "SP",
+   "diameter_in": 0.338,
+   "mass_gr": 200.0
+  },
+  {
+   "manufacturer": "GSCustom",
+   "designation": "SP",
+   "diameter_in": 0.338,
+   "mass_gr": 232.0
+  },
+  {
+   "manufacturer": "GSCustom",
+   "designation": "SP",
+   "diameter_in": 0.338,
+   "mass_gr": 267.0
+  },
+  {
+   "manufacturer": "GSCustom",
+   "designation": "SP",
+   "diameter_in": 0.375,
+   "mass_gr": 291.0
+  },
+  {
+   "manufacturer": "GSCustom",
+   "designation": "SP",
+   "diameter_in": 0.375,
+   "mass_gr": 330.0
+  },
+  {
+   "manufacturer": "GSCustom",
+   "designation": "SP",
+   "diameter_in": 0.375,
+   "mass_gr": 355.0
+  },
+  {
+   "manufacturer": "GSCustom",
+   "designation": "SP",
+   "diameter_in": 0.375,
+   "mass_gr": 414.0
+  },
+  {
+   "manufacturer": "GSCustom",
+   "designation": "SP",
+   "diameter_in": 0.408,
+   "mass_gr": 385.0
+  },
+  {
+   "manufacturer": "GSCustom",
+   "designation": "SP",
+   "diameter_in": 0.416,
+   "mass_gr": 420.0
+  },
+  {
+   "manufacturer": "GSCustom",
+   "designation": "SP",
+   "diameter_in": 0.51,
+   "mass_gr": 720.0
+  },
+  {
+   "manufacturer": "GSCustom",
+   "designation": "SP",
+   "diameter_in": 0.51,
+   "mass_gr": 800.0
+  },
+  {
+   "manufacturer": "GSCustom",
+   "designation": "SP",
+   "diameter_in": 0.51,
+   "mass_gr": 1030.0
+  },
+  {
+   "manufacturer": "GSCustom",
+   "designation": "SP",
+   "diameter_in": 0.51,
+   "mass_gr": 1100.0
+  },
+  {
+   "manufacturer": "Hammer",
+   "designation": "Hunt",
+   "diameter_in": 0.243,
+   "mass_gr": 80.0
+  },
+  {
+   "manufacturer": "Hammer",
+   "designation": "Hunt",
+   "diameter_in": 0.243,
+   "mass_gr": 88.0
+  },
+  {
+   "manufacturer": "Hammer",
+   "designation": "Hunt",
+   "diameter_in": 0.243,
+   "mass_gr": 101.0
+  },
+  {
+   "manufacturer": "Hammer",
+   "designation": "Hunt",
+   "diameter_in": 0.264,
+   "mass_gr": 124.0
+  },
+  {
+   "manufacturer": "Hammer",
+   "designation": "Hunt",
+   "diameter_in": 0.264,
+   "mass_gr": 125.0
+  },
+  {
+   "manufacturer": "Hammer",
+   "designation": "Hunt",
+   "diameter_in": 0.277,
+   "mass_gr": 117.0
+  },
+  {
+   "manufacturer": "Hammer",
+   "designation": "Hunt",
+   "diameter_in": 0.277,
+   "mass_gr": 156.0
+  },
+  {
+   "manufacturer": "Hammer",
+   "designation": "Hunt",
+   "diameter_in": 0.277,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Hammer",
+   "designation": "Hunt",
+   "diameter_in": 0.284,
+   "mass_gr": 133.0
+  },
+  {
+   "manufacturer": "Hammer",
+   "designation": "Hunt",
+   "diameter_in": 0.284,
+   "mass_gr": 155.0
+  },
+  {
+   "manufacturer": "Hammer",
+   "designation": "Hunt",
+   "diameter_in": 0.284,
+   "mass_gr": 177.0
+  },
+  {
+   "manufacturer": "Hammer",
+   "designation": "Hunt",
+   "diameter_in": 0.308,
+   "mass_gr": 152.0
+  },
+  {
+   "manufacturer": "Hammer",
+   "designation": "Hunt",
+   "diameter_in": 0.308,
+   "mass_gr": 166.0
+  },
+  {
+   "manufacturer": "Hammer",
+   "designation": "Hunt",
+   "diameter_in": 0.308,
+   "mass_gr": 181.0
+  },
+  {
+   "manufacturer": "Hammer",
+   "designation": "Hunt",
+   "diameter_in": 0.308,
+   "mass_gr": 214.0
+  },
+  {
+   "manufacturer": "Hammer",
+   "designation": "Hunt",
+   "diameter_in": 0.308,
+   "mass_gr": 227.0
+  },
+  {
+   "manufacturer": "Hammer",
+   "designation": "Hunt",
+   "diameter_in": 0.338,
+   "mass_gr": 260.0
+  },
+  {
+   "manufacturer": "Hammer",
+   "designation": "Hunt",
+   "diameter_in": 0.338,
+   "mass_gr": 307.0
+  },
+  {
+   "manufacturer": "HBC",
+   "designation": "HPBT",
+   "diameter_in": 0.308,
+   "mass_gr": 155.0
+  },
+  {
+   "manufacturer": "Hoover",
+   "designation": "VLD",
+   "diameter_in": 0.264,
+   "mass_gr": 136.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "A-Tip",
+   "diameter_in": 0.243,
+   "mass_gr": 110.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "A-Tip",
+   "diameter_in": 0.264,
+   "mass_gr": 135.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "A-Tip",
+   "diameter_in": 0.308,
+   "mass_gr": 230.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Amax",
+   "diameter_in": 0.204,
+   "mass_gr": 32.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Amax",
+   "diameter_in": 0.224,
+   "mass_gr": 52.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Amax",
+   "diameter_in": 0.224,
+   "mass_gr": 75.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Amax",
+   "diameter_in": 0.224,
+   "mass_gr": 80.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Amax",
+   "diameter_in": 0.243,
+   "mass_gr": 105.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Amax",
+   "diameter_in": 0.264,
+   "mass_gr": 100.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Amax",
+   "diameter_in": 0.264,
+   "mass_gr": 120.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Amax",
+   "diameter_in": 0.264,
+   "mass_gr": 123.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Amax",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Amax",
+   "diameter_in": 0.284,
+   "mass_gr": 162.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Amax",
+   "diameter_in": 0.308,
+   "mass_gr": 155.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Amax",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Amax",
+   "diameter_in": 0.308,
+   "mass_gr": 178.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Amax",
+   "diameter_in": 0.308,
+   "mass_gr": 208.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Amax",
+   "diameter_in": 0.338,
+   "mass_gr": 285.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Amax",
+   "diameter_in": 0.51,
+   "mass_gr": 750.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "BTHP",
+   "diameter_in": 0.224,
+   "mass_gr": 68.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "BTHP",
+   "diameter_in": 0.224,
+   "mass_gr": 53.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "BTHP",
+   "diameter_in": 0.224,
+   "mass_gr": 75.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "BTHP",
+   "diameter_in": 0.243,
+   "mass_gr": 87.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "BTHP",
+   "diameter_in": 0.308,
+   "mass_gr": 208.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "BTHP",
+   "diameter_in": 0.338,
+   "mass_gr": 285.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "BTHP",
+   "diameter_in": 0.338,
+   "mass_gr": 250.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "BTHP Match",
+   "diameter_in": 0.224,
+   "mass_gr": 52.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "BTHP Match",
+   "diameter_in": 0.224,
+   "mass_gr": 68.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "BTHP Match",
+   "diameter_in": 0.224,
+   "mass_gr": 75.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "BTHP Match",
+   "diameter_in": 0.243,
+   "mass_gr": 105.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "BTHP Match",
+   "diameter_in": 0.277,
+   "mass_gr": 110.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "BTHP Match",
+   "diameter_in": 0.308,
+   "mass_gr": 195.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "BTHP Match",
+   "diameter_in": 0.284,
+   "mass_gr": 162.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "BTHP Match Canalure",
+   "diameter_in": 0.224,
+   "mass_gr": 68.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "BTHP Match Canalure",
+   "diameter_in": 0.224,
+   "mass_gr": 75.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "BTHP Match pointed",
+   "diameter_in": 0.308,
+   "mass_gr": 208.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "BTHP Match pointed",
+   "diameter_in": 0.308,
+   "mass_gr": 225.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "BTHP pointed",
+   "diameter_in": 0.243,
+   "mass_gr": 105.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "BTSP",
+   "diameter_in": 0.243,
+   "mass_gr": 100.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "BTSP",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "BTSP",
+   "diameter_in": 0.308,
+   "mass_gr": 190.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "BTSP Interlock",
+   "diameter_in": 0.277,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "BTSP Interlock",
+   "diameter_in": 0.284,
+   "mass_gr": 139.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "BTSP Interlock",
+   "diameter_in": 0.284,
+   "mass_gr": 162.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "BTSP Interlock",
+   "diameter_in": 0.308,
+   "mass_gr": 165.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD Match",
+   "diameter_in": 0.224,
+   "mass_gr": 52.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD Match",
+   "diameter_in": 0.224,
+   "mass_gr": 73.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD Match",
+   "diameter_in": 0.224,
+   "mass_gr": 75.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD Match",
+   "diameter_in": 0.224,
+   "mass_gr": 80.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD Match",
+   "diameter_in": 0.224,
+   "mass_gr": 88.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD Match",
+   "diameter_in": 0.243,
+   "mass_gr": 108.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD Match",
+   "diameter_in": 0.264,
+   "mass_gr": 100.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD Match",
+   "diameter_in": 0.264,
+   "mass_gr": 120.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD Match",
+   "diameter_in": 0.264,
+   "mass_gr": 123.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD Match",
+   "diameter_in": 0.264,
+   "mass_gr": 130.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD Match",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD Match",
+   "diameter_in": 0.264,
+   "mass_gr": 147.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD Match",
+   "diameter_in": 0.284,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD Match",
+   "diameter_in": 0.284,
+   "mass_gr": 162.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD Match",
+   "diameter_in": 0.284,
+   "mass_gr": 180.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD Match",
+   "diameter_in": 0.308,
+   "mass_gr": 155.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD Match",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD Match",
+   "diameter_in": 0.308,
+   "mass_gr": 175.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD Match",
+   "diameter_in": 0.308,
+   "mass_gr": 195.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD Match",
+   "diameter_in": 0.308,
+   "mass_gr": 208.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD Match",
+   "diameter_in": 0.308,
+   "mass_gr": 225.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD Match",
+   "diameter_in": 0.338,
+   "mass_gr": 285.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD X",
+   "diameter_in": 0.243,
+   "mass_gr": 103.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD X",
+   "diameter_in": 0.264,
+   "mass_gr": 143.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD X",
+   "diameter_in": 0.277,
+   "mass_gr": 145.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD X",
+   "diameter_in": 0.284,
+   "mass_gr": 162.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD X",
+   "diameter_in": 0.284,
+   "mass_gr": 175.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD X",
+   "diameter_in": 0.308,
+   "mass_gr": 178.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD X",
+   "diameter_in": 0.308,
+   "mass_gr": 200.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD X",
+   "diameter_in": 0.308,
+   "mass_gr": 212.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD X",
+   "diameter_in": 0.308,
+   "mass_gr": 220.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD X",
+   "diameter_in": 0.338,
+   "mass_gr": 230.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "ELD X",
+   "diameter_in": 0.338,
+   "mass_gr": 270.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "FMJBT",
+   "diameter_in": 0.224,
+   "mass_gr": 55.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "FMJBT",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "FXT",
+   "diameter_in": 0.338,
+   "mass_gr": 200.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "GMX",
+   "diameter_in": 0.224,
+   "mass_gr": 55.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "GMX",
+   "diameter_in": 0.224,
+   "mass_gr": 70.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "GMX",
+   "diameter_in": 0.243,
+   "mass_gr": 80.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "GMX",
+   "diameter_in": 0.257,
+   "mass_gr": 90.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "GMX",
+   "diameter_in": 0.264,
+   "mass_gr": 120.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "GMX",
+   "diameter_in": 0.277,
+   "mass_gr": 100.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "GMX",
+   "diameter_in": 0.277,
+   "mass_gr": 130.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "GMX",
+   "diameter_in": 0.284,
+   "mass_gr": 139.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "GMX",
+   "diameter_in": 0.308,
+   "mass_gr": 110.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "GMX",
+   "diameter_in": 0.308,
+   "mass_gr": 125.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "GMX",
+   "diameter_in": 0.308,
+   "mass_gr": 165.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "GMX",
+   "diameter_in": 0.308,
+   "mass_gr": 180.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "GMX",
+   "diameter_in": 0.338,
+   "mass_gr": 185.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "HP Match",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "HPBT",
+   "diameter_in": 0.308,
+   "mass_gr": 155.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "HPBT",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "HPBT",
+   "diameter_in": 0.308,
+   "mass_gr": 178.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "InterBond",
+   "diameter_in": 0.243,
+   "mass_gr": 85.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Interbond",
+   "diameter_in": 0.257,
+   "mass_gr": 110.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Interbond",
+   "diameter_in": 0.264,
+   "mass_gr": 129.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Interbond",
+   "diameter_in": 0.277,
+   "mass_gr": 130.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Interbond",
+   "diameter_in": 0.284,
+   "mass_gr": 139.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Interbond",
+   "diameter_in": 0.284,
+   "mass_gr": 154.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Interlock",
+   "diameter_in": 0.284,
+   "mass_gr": 175.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "SP Interlock",
+   "diameter_in": 0.277,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "SP Interlock",
+   "diameter_in": 0.284,
+   "mass_gr": 139.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "SP Interlock",
+   "diameter_in": 0.284,
+   "mass_gr": 154.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Spitzer",
+   "diameter_in": 0.257,
+   "mass_gr": 87.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "SST",
+   "diameter_in": 0.243,
+   "mass_gr": 95.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "SST",
+   "diameter_in": 0.257,
+   "mass_gr": 117.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "SST",
+   "diameter_in": 0.264,
+   "mass_gr": 129.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "SST",
+   "diameter_in": 0.277,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "SST",
+   "diameter_in": 0.284,
+   "mass_gr": 154.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "SST",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "SST",
+   "diameter_in": 0.308,
+   "mass_gr": 165.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "SST",
+   "diameter_in": 0.338,
+   "mass_gr": 200.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "SST",
+   "diameter_in": 0.338,
+   "mass_gr": 225.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "SSTBT",
+   "diameter_in": 0.264,
+   "mass_gr": 123.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "SSTBT",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "SSTBT",
+   "diameter_in": 0.277,
+   "mass_gr": 120.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "SSTBT",
+   "diameter_in": 0.277,
+   "mass_gr": 130.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "SSTBT",
+   "diameter_in": 0.277,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "SSTBT",
+   "diameter_in": 0.284,
+   "mass_gr": 139.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "SSTBT",
+   "diameter_in": 0.284,
+   "mass_gr": 154.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "SSTBT",
+   "diameter_in": 0.284,
+   "mass_gr": 162.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "SSTBT",
+   "diameter_in": 0.308,
+   "mass_gr": 180.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Tap",
+   "diameter_in": 0.224,
+   "mass_gr": 55.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Tap (BTHP)",
+   "diameter_in": 0.224,
+   "mass_gr": 75.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Tap",
+   "diameter_in": 0.308,
+   "mass_gr": 155.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Tap (Amax)",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Tap (BTHP)",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Tap (BTHP)",
+   "diameter_in": 0.308,
+   "mass_gr": 175.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Vmax",
+   "diameter_in": 0.172,
+   "mass_gr": 20.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Vmax",
+   "diameter_in": 0.172,
+   "mass_gr": 25.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Vmax",
+   "diameter_in": 0.204,
+   "mass_gr": 40.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Vmax",
+   "diameter_in": 0.224,
+   "mass_gr": 35.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Vmax",
+   "diameter_in": 0.224,
+   "mass_gr": 40.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Vmax",
+   "diameter_in": 0.224,
+   "mass_gr": 50.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Vmax",
+   "diameter_in": 0.224,
+   "mass_gr": 53.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Vmax",
+   "diameter_in": 0.224,
+   "mass_gr": 55.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Vmax",
+   "diameter_in": 0.224,
+   "mass_gr": 60.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Vmax",
+   "diameter_in": 0.243,
+   "mass_gr": 58.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Vmax",
+   "diameter_in": 0.243,
+   "mass_gr": 65.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Vmax",
+   "diameter_in": 0.243,
+   "mass_gr": 75.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Vmax",
+   "diameter_in": 0.243,
+   "mass_gr": 87.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Vmax",
+   "diameter_in": 0.257,
+   "mass_gr": 75.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Vmax",
+   "diameter_in": 0.264,
+   "mass_gr": 95.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Vmax",
+   "diameter_in": 0.277,
+   "mass_gr": 110.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Vmax",
+   "diameter_in": 0.284,
+   "mass_gr": 120.0
+  },
+  {
+   "manufacturer": "Hornady",
+   "designation": "Vmax",
+   "diameter_in": 0.308,
+   "mass_gr": 110.0
+  },
+  {
+   "manufacturer": "HSM",
+   "designation": "T50",
+   "diameter_in": 0.408,
+   "mass_gr": 400.0
+  },
+  {
+   "manufacturer": "JLK",
+   "designation": "BTHP",
+   "diameter_in": 0.284,
+   "mass_gr": 180.0
+  },
+  {
+   "manufacturer": "JLK",
+   "designation": "VLD",
+   "diameter_in": 0.224,
+   "mass_gr": 80.0
+  },
+  {
+   "manufacturer": "JLK",
+   "designation": "VLD",
+   "diameter_in": 0.243,
+   "mass_gr": 105.0
+  },
+  {
+   "manufacturer": "JLK",
+   "designation": "VLD",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "JLK",
+   "designation": "VLD",
+   "diameter_in": 0.308,
+   "mass_gr": 155.0
+  },
+  {
+   "manufacturer": "JLK",
+   "designation": "VLD",
+   "diameter_in": 0.308,
+   "mass_gr": 210.0
+  },
+  {
+   "manufacturer": "JLK",
+   "designation": "VLD LBT",
+   "diameter_in": 0.308,
+   "mass_gr": 210.0
+  },
+  {
+   "manufacturer": "KPBallistics",
+   "designation": "Jack",
+   "diameter_in": 0.308,
+   "mass_gr": 200.0
+  },
+  {
+   "manufacturer": "LakeCity",
+   "designation": "FMJBT",
+   "diameter_in": 0.224,
+   "mass_gr": 62.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "AP",
+   "diameter_in": 0.338,
+   "mass_gr": 300.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "FMJBT",
+   "diameter_in": 0.243,
+   "mass_gr": 90.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "FMJBT",
+   "diameter_in": 0.264,
+   "mass_gr": 144.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "FMJBT",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "FMJBT",
+   "diameter_in": 0.308,
+   "mass_gr": 170.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "FMJBT",
+   "diameter_in": 0.308,
+   "mass_gr": 185.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "FMJBT",
+   "diameter_in": 0.308,
+   "mass_gr": 200.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "FMJBT",
+   "diameter_in": 0.338,
+   "mass_gr": 250.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "Match Solid",
+   "diameter_in": 0.51,
+   "mass_gr": 800.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "Scenar",
+   "diameter_in": 0.224,
+   "mass_gr": 69.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "Scenar",
+   "diameter_in": 0.224,
+   "mass_gr": 77.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "Scenar",
+   "diameter_in": 0.243,
+   "mass_gr": 90.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "Scenar",
+   "diameter_in": 0.243,
+   "mass_gr": 105.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "Scenar",
+   "diameter_in": 0.264,
+   "mass_gr": 108.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "Scenar",
+   "diameter_in": 0.264,
+   "mass_gr": 123.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "Scenar",
+   "diameter_in": 0.264,
+   "mass_gr": 139.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "Scenar",
+   "diameter_in": 0.308,
+   "mass_gr": 155.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "Scenar",
+   "diameter_in": 0.308,
+   "mass_gr": 167.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "Scenar",
+   "diameter_in": 0.308,
+   "mass_gr": 185.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "Scenar",
+   "diameter_in": 0.338,
+   "mass_gr": 250.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "Scenar",
+   "diameter_in": 0.338,
+   "mass_gr": 300.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "ScenarL",
+   "diameter_in": 0.224,
+   "mass_gr": 69.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "ScenarL",
+   "diameter_in": 0.224,
+   "mass_gr": 77.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "ScenarL",
+   "diameter_in": 0.243,
+   "mass_gr": 90.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "ScenarL",
+   "diameter_in": 0.243,
+   "mass_gr": 105.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "ScenarL",
+   "diameter_in": 0.264,
+   "mass_gr": 120.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "ScenarL",
+   "diameter_in": 0.264,
+   "mass_gr": 123.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "ScenarL",
+   "diameter_in": 0.264,
+   "mass_gr": 136.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "ScenarL",
+   "diameter_in": 0.264,
+   "mass_gr": 139.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "ScenarL",
+   "diameter_in": 0.284,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "ScenarL",
+   "diameter_in": 0.284,
+   "mass_gr": 180.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "ScenarL",
+   "diameter_in": 0.308,
+   "mass_gr": 155.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "ScenarL",
+   "diameter_in": 0.308,
+   "mass_gr": 175.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "ScenarL",
+   "diameter_in": 0.308,
+   "mass_gr": 220.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "ScenarL",
+   "diameter_in": 0.338,
+   "mass_gr": 250.0
+  },
+  {
+   "manufacturer": "Lapua",
+   "designation": "ScenarL",
+   "diameter_in": 0.338,
+   "mass_gr": 300.0
+  },
+  {
+   "manufacturer": "Lehigh",
+   "designation": "Brass Solid",
+   "diameter_in": 0.338,
+   "mass_gr": 230.0
+  },
+  {
+   "manufacturer": "Lehigh",
+   "designation": "Controlled Chaos",
+   "diameter_in": 0.51,
+   "mass_gr": 750.0
+  },
+  {
+   "manufacturer": "Lehigh",
+   "designation": "FlashTip",
+   "diameter_in": 0.264,
+   "mass_gr": 105.0
+  },
+  {
+   "manufacturer": "Lehigh",
+   "designation": "FlashTip",
+   "diameter_in": 0.264,
+   "mass_gr": 119.0
+  },
+  {
+   "manufacturer": "Lehigh",
+   "designation": "FlashTip",
+   "diameter_in": 0.338,
+   "mass_gr": 240.0
+  },
+  {
+   "manufacturer": "Lehigh",
+   "designation": "Match Solid",
+   "diameter_in": 0.338,
+   "mass_gr": 245.0
+  },
+  {
+   "manufacturer": "Lehigh",
+   "designation": "Match Solid",
+   "diameter_in": 0.375,
+   "mass_gr": 330.0
+  },
+  {
+   "manufacturer": "Lehigh",
+   "designation": "Match Solid",
+   "diameter_in": 0.375,
+   "mass_gr": 353.0
+  },
+  {
+   "manufacturer": "Lehigh",
+   "designation": "Match Solid",
+   "diameter_in": 0.408,
+   "mass_gr": 400.0
+  },
+  {
+   "manufacturer": "Lehigh",
+   "designation": "Match Solid",
+   "diameter_in": 0.416,
+   "mass_gr": 416.0
+  },
+  {
+   "manufacturer": "Lehigh",
+   "designation": "Match Solid",
+   "diameter_in": 0.51,
+   "mass_gr": 650.0
+  },
+  {
+   "manufacturer": "Lehigh",
+   "designation": "Match Solid",
+   "diameter_in": 0.51,
+   "mass_gr": 750.0
+  },
+  {
+   "manufacturer": "Lehigh",
+   "designation": "Match Solid",
+   "diameter_in": 0.51,
+   "mass_gr": 808.0
+  },
+  {
+   "manufacturer": "Matrix",
+   "designation": "BTHP",
+   "diameter_in": 0.264,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Matrix",
+   "designation": "BTHP",
+   "diameter_in": 0.264,
+   "mass_gr": 160.0
+  },
+  {
+   "manufacturer": "Matrix",
+   "designation": "RBT",
+   "diameter_in": 0.277,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Matrix",
+   "designation": "RBT",
+   "diameter_in": 0.284,
+   "mass_gr": 175.0
+  },
+  {
+   "manufacturer": "Matrix",
+   "designation": "RBT",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Matrix",
+   "designation": "VLD",
+   "diameter_in": 0.243,
+   "mass_gr": 107.0
+  },
+  {
+   "manufacturer": "Matrix",
+   "designation": "VLD",
+   "diameter_in": 0.284,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Matrix",
+   "designation": "VLD",
+   "diameter_in": 0.284,
+   "mass_gr": 190.0
+  },
+  {
+   "manufacturer": "Matrix",
+   "designation": "VLD",
+   "diameter_in": 0.308,
+   "mass_gr": 210.0
+  },
+  {
+   "manufacturer": "Military",
+   "designation": "M995 AP - AA69",
+   "diameter_in": 0.224,
+   "mass_gr": 51.0
+  },
+  {
+   "manufacturer": "Military",
+   "designation": "M855 - AA33",
+   "diameter_in": 0.224,
+   "mass_gr": 62.0
+  },
+  {
+   "manufacturer": "Military",
+   "designation": "M855 A1 - AB57",
+   "diameter_in": 0.224,
+   "mass_gr": 62.0
+  },
+  {
+   "manufacturer": "Military",
+   "designation": "MK318 MOD0 - AA49",
+   "diameter_in": 0.224,
+   "mass_gr": 62.0
+  },
+  {
+   "manufacturer": "Military",
+   "designation": "MK262 MOD0 - AA53",
+   "diameter_in": 0.224,
+   "mass_gr": 77.0
+  },
+  {
+   "manufacturer": "Military",
+   "designation": "MK319 MOD0 - AB50",
+   "diameter_in": 0.308,
+   "mass_gr": 130.0
+  },
+  {
+   "manufacturer": "Military",
+   "designation": "M80A1 - AZ54",
+   "diameter_in": 0.308,
+   "mass_gr": 131.0
+  },
+  {
+   "manufacturer": "Military",
+   "designation": "M118LR - AA11",
+   "diameter_in": 0.308,
+   "mass_gr": 175.0
+  },
+  {
+   "manufacturer": "Military",
+   "designation": "MK248 MOD0 - A191",
+   "diameter_in": 0.308,
+   "mass_gr": 190.0
+  },
+  {
+   "manufacturer": "Military",
+   "designation": "MK248 MOD1 - AB43",
+   "diameter_in": 0.308,
+   "mass_gr": 220.0
+  },
+  {
+   "manufacturer": "Military",
+   "designation": "MK330 MOD0 - AB97",
+   "diameter_in": 0.308,
+   "mass_gr": 300.0
+  },
+  {
+   "manufacturer": "Military",
+   "designation": "ADIF1 Ball",
+   "diameter_in": 0.338,
+   "mass_gr": 661.0
+  },
+  {
+   "manufacturer": "Military",
+   "designation": "M33 - A610",
+   "diameter_in": 0.51,
+   "mass_gr": 660.0
+  },
+  {
+   "manufacturer": "Military",
+   "designation": "M8 API - A531",
+   "diameter_in": 0.51,
+   "mass_gr": 663.0
+  },
+  {
+   "manufacturer": "Norma",
+   "designation": "Diamond",
+   "diameter_in": 0.264,
+   "mass_gr": 130.0
+  },
+  {
+   "manufacturer": "Norma",
+   "designation": "FMJBT",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Norma",
+   "designation": "Golden Target",
+   "diameter_in": 0.264,
+   "mass_gr": 130.0
+  },
+  {
+   "manufacturer": "Norma",
+   "designation": "Match",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Accubond",
+   "diameter_in": 0.243,
+   "mass_gr": 90.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Accubond",
+   "diameter_in": 0.257,
+   "mass_gr": 110.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Accubond",
+   "diameter_in": 0.264,
+   "mass_gr": 130.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Accubond",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Accubond",
+   "diameter_in": 0.277,
+   "mass_gr": 100.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Accubond",
+   "diameter_in": 0.277,
+   "mass_gr": 130.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Accubond",
+   "diameter_in": 0.277,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Accubond",
+   "diameter_in": 0.284,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Accubond",
+   "diameter_in": 0.284,
+   "mass_gr": 160.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Accubond",
+   "diameter_in": 0.308,
+   "mass_gr": 125.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Accubond",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Accubond",
+   "diameter_in": 0.308,
+   "mass_gr": 165.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Accubond",
+   "diameter_in": 0.308,
+   "mass_gr": 180.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Accubond",
+   "diameter_in": 0.308,
+   "mass_gr": 200.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Accubond",
+   "diameter_in": 0.338,
+   "mass_gr": 180.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Accubond",
+   "diameter_in": 0.338,
+   "mass_gr": 200.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Accubond",
+   "diameter_in": 0.338,
+   "mass_gr": 225.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Accubond",
+   "diameter_in": 0.338,
+   "mass_gr": 250.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Accubond",
+   "diameter_in": 0.375,
+   "mass_gr": 300.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Ballistic Silver Tip",
+   "diameter_in": 0.277,
+   "mass_gr": 130.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Ballistic Silver Tip",
+   "diameter_in": 0.284,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Ballistic Tip",
+   "diameter_in": 0.224,
+   "mass_gr": 55.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Ballistic Tip",
+   "diameter_in": 0.224,
+   "mass_gr": 60.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Ballistic Tip",
+   "diameter_in": 0.243,
+   "mass_gr": 70.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Ballistic Tip",
+   "diameter_in": 0.243,
+   "mass_gr": 80.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Ballistic Tip",
+   "diameter_in": 0.257,
+   "mass_gr": 100.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Ballistic Tip",
+   "diameter_in": 0.257,
+   "mass_gr": 115.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Ballistic Tip",
+   "diameter_in": 0.264,
+   "mass_gr": 100.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Ballistic Tip",
+   "diameter_in": 0.264,
+   "mass_gr": 120.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Ballistic Tip",
+   "diameter_in": 0.277,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Ballistic Tip",
+   "diameter_in": 0.284,
+   "mass_gr": 120.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Ballistic Tip",
+   "diameter_in": 0.284,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Ballistic Tip",
+   "diameter_in": 0.284,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Ballistic Tip",
+   "diameter_in": 0.308,
+   "mass_gr": 125.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Ballistic Tip",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Ballistic Tip",
+   "diameter_in": 0.308,
+   "mass_gr": 165.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Ballistic Tip",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Ballistic Tip",
+   "diameter_in": 0.308,
+   "mass_gr": 180.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Custom Competition",
+   "diameter_in": 0.224,
+   "mass_gr": 52.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Custom Competition",
+   "diameter_in": 0.224,
+   "mass_gr": 69.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Custom Competition",
+   "diameter_in": 0.224,
+   "mass_gr": 77.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Custom Competition",
+   "diameter_in": 0.224,
+   "mass_gr": 80.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Custom Competition",
+   "diameter_in": 0.224,
+   "mass_gr": 80.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Custom Competition",
+   "diameter_in": 0.264,
+   "mass_gr": 123.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Custom Competition",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Custom Competition",
+   "diameter_in": 0.277,
+   "mass_gr": 115.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Custom Competition",
+   "diameter_in": 0.284,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Custom Competition",
+   "diameter_in": 0.308,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Custom Competition",
+   "diameter_in": 0.308,
+   "mass_gr": 155.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Custom Competition",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Custom Competition",
+   "diameter_in": 0.308,
+   "mass_gr": 175.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Custom Competition",
+   "diameter_in": 0.308,
+   "mass_gr": 190.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Custom Competition",
+   "diameter_in": 0.308,
+   "mass_gr": 220.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Custom Competition",
+   "diameter_in": 0.338,
+   "mass_gr": 300.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "ETip",
+   "diameter_in": 0.243,
+   "mass_gr": 90.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "ETip",
+   "diameter_in": 0.277,
+   "mass_gr": 130.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "ETip",
+   "diameter_in": 0.284,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "ETip",
+   "diameter_in": 0.284,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "ETip",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "ETip",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "ETip",
+   "diameter_in": 0.308,
+   "mass_gr": 180.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "ETip",
+   "diameter_in": 0.338,
+   "mass_gr": 200.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Long Range Accubond",
+   "diameter_in": 0.264,
+   "mass_gr": 129.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Long Range Accubond",
+   "diameter_in": 0.264,
+   "mass_gr": 142.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Long Range Accubond",
+   "diameter_in": 0.277,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Long Range Accubond",
+   "diameter_in": 0.284,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Long Range Accubond",
+   "diameter_in": 0.284,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Long Range Accubond",
+   "diameter_in": 0.284,
+   "mass_gr": 175.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Long Range Accubond",
+   "diameter_in": 0.308,
+   "mass_gr": 190.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Long Range Accubond",
+   "diameter_in": 0.308,
+   "mass_gr": 210.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Partition",
+   "diameter_in": 0.243,
+   "mass_gr": 95.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Partition",
+   "diameter_in": 0.257,
+   "mass_gr": 115.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Partition",
+   "diameter_in": 0.284,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Partition",
+   "diameter_in": 0.284,
+   "mass_gr": 175.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Partition",
+   "diameter_in": 0.308,
+   "mass_gr": 165.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Partition",
+   "diameter_in": 0.308,
+   "mass_gr": 180.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Partition",
+   "diameter_in": 0.308,
+   "mass_gr": 200.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "Partition",
+   "diameter_in": 0.277,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "RDF",
+   "diameter_in": 0.224,
+   "mass_gr": 70.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "RDF",
+   "diameter_in": 0.224,
+   "mass_gr": 77.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "RDF",
+   "diameter_in": 0.243,
+   "mass_gr": 105.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "RDF",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "RDF",
+   "diameter_in": 0.284,
+   "mass_gr": 185.0
+  },
+  {
+   "manufacturer": "Nosler",
+   "designation": "RDF",
+   "diameter_in": 0.308,
+   "mass_gr": 175.0
+  },
+  {
+   "manufacturer": "Peregrine",
+   "designation": "SSBT",
+   "diameter_in": 0.375,
+   "mass_gr": 247.0
+  },
+  {
+   "manufacturer": "Peregrine",
+   "designation": "SSBT",
+   "diameter_in": 0.375,
+   "mass_gr": 300.0
+  },
+  {
+   "manufacturer": "Peregrine",
+   "designation": "SSBT",
+   "diameter_in": 0.375,
+   "mass_gr": 350.0
+  },
+  {
+   "manufacturer": "Peregrine",
+   "designation": "SSBT",
+   "diameter_in": 0.408,
+   "mass_gr": 405.0
+  },
+  {
+   "manufacturer": "Peregrine",
+   "designation": "SSBT",
+   "diameter_in": 0.416,
+   "mass_gr": 430.0
+  },
+  {
+   "manufacturer": "Peregrine",
+   "designation": "SSBT",
+   "diameter_in": 0.416,
+   "mass_gr": 500.0
+  },
+  {
+   "manufacturer": "Peregrine",
+   "designation": "SSBT",
+   "diameter_in": 0.51,
+   "mass_gr": 750.0
+  },
+  {
+   "manufacturer": "Peregrine",
+   "designation": "SSBT",
+   "diameter_in": 0.51,
+   "mass_gr": 850.0
+  },
+  {
+   "manufacturer": "PMC",
+   "designation": "FMJBT",
+   "diameter_in": 0.51,
+   "mass_gr": 660.0
+  },
+  {
+   "manufacturer": "PMC",
+   "designation": "FMJBT Green Tip",
+   "diameter_in": 0.224,
+   "mass_gr": 62.0
+  },
+  {
+   "manufacturer": "PMP",
+   "designation": "HPBT",
+   "diameter_in": 0.308,
+   "mass_gr": 155.0
+  },
+  {
+   "manufacturer": "PrecisionBallistics",
+   "designation": "BTHP",
+   "diameter_in": 0.264,
+   "mass_gr": 123.0
+  },
+  {
+   "manufacturer": "PrecisionBallistics",
+   "designation": "BTHP",
+   "diameter_in": 0.264,
+   "mass_gr": 130.0
+  },
+  {
+   "manufacturer": "PrecisionBallistics",
+   "designation": "BTHP",
+   "diameter_in": 0.264,
+   "mass_gr": 136.0
+  },
+  {
+   "manufacturer": "PrecisionBallistics",
+   "designation": "BTHP",
+   "diameter_in": 0.264,
+   "mass_gr": 139.0
+  },
+  {
+   "manufacturer": "PrecisionBallistics",
+   "designation": "BTHP",
+   "diameter_in": 0.264,
+   "mass_gr": 142.0
+  },
+  {
+   "manufacturer": "PrecisionBallistics",
+   "designation": "VLD",
+   "diameter_in": 0.243,
+   "mass_gr": 103.0
+  },
+  {
+   "manufacturer": "PrecisionBallistics",
+   "designation": "VLD",
+   "diameter_in": 0.243,
+   "mass_gr": 105.0
+  },
+  {
+   "manufacturer": "PrecisionBallistics",
+   "designation": "VLD",
+   "diameter_in": 0.243,
+   "mass_gr": 108.0
+  },
+  {
+   "manufacturer": "PrecisionBallistics",
+   "designation": "VLD",
+   "diameter_in": 0.243,
+   "mass_gr": 113.0
+  },
+  {
+   "manufacturer": "PrecisionBallistics",
+   "designation": "VLD",
+   "diameter_in": 0.243,
+   "mass_gr": 115.0
+  },
+  {
+   "manufacturer": "Prime",
+   "designation": "Match+",
+   "diameter_in": 0.264,
+   "mass_gr": 130.0
+  },
+  {
+   "manufacturer": "PrviPartizan",
+   "designation": "FMJ",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "RockyMountain",
+   "designation": "RBT",
+   "diameter_in": 0.338,
+   "mass_gr": 325.0
+  },
+  {
+   "manufacturer": "RUAG",
+   "designation": "AP",
+   "diameter_in": 0.338,
+   "mass_gr": 260.0
+  },
+  {
+   "manufacturer": "RUAG",
+   "designation": "AP",
+   "diameter_in": 0.338,
+   "mass_gr": 300.0
+  },
+  {
+   "manufacturer": "RUAG",
+   "designation": "DM121 FMJ",
+   "diameter_in": 0.308,
+   "mass_gr": 200.0
+  },
+  {
+   "manufacturer": "RUAG",
+   "designation": "DM131 FMJ",
+   "diameter_in": 0.308,
+   "mass_gr": 195.0
+  },
+  {
+   "manufacturer": "RUAG",
+   "designation": "Swiss Match BTHP",
+   "diameter_in": 0.308,
+   "mass_gr": 175.0
+  },
+  {
+   "manufacturer": "RUAG",
+   "designation": "Swiss P",
+   "diameter_in": 0.338,
+   "mass_gr": 300.0
+  },
+  {
+   "manufacturer": "RUAG",
+   "designation": "Swiss P Ball",
+   "diameter_in": 0.338,
+   "mass_gr": 252.0
+  },
+  {
+   "manufacturer": "RUAG",
+   "designation": "Swiss P Styx",
+   "diameter_in": 0.308,
+   "mass_gr": 167.0
+  },
+  {
+   "manufacturer": "RUAG",
+   "designation": "Swiss P Target BTHP",
+   "diameter_in": 0.224,
+   "mass_gr": 69.0
+  },
+  {
+   "manufacturer": "RUAG",
+   "designation": "Swiss P Target BTHP",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "RUAG",
+   "designation": "Swiss P Target BTHP",
+   "diameter_in": 0.308,
+   "mass_gr": 180.0
+  },
+  {
+   "manufacturer": "RUAG",
+   "designation": "Swiss P Target BTHP",
+   "diameter_in": 0.308,
+   "mass_gr": 190.0
+  },
+  {
+   "manufacturer": "RUAG",
+   "designation": "Swiss P Target BTHP",
+   "diameter_in": 0.308,
+   "mass_gr": 200.0
+  },
+  {
+   "manufacturer": "RUAG",
+   "designation": "Swiss P Target BTHP",
+   "diameter_in": 0.308,
+   "mass_gr": 220.0
+  },
+  {
+   "manufacturer": "RUAG",
+   "designation": "Swiss P Target BTHP",
+   "diameter_in": 0.338,
+   "mass_gr": 250.0
+  },
+  {
+   "manufacturer": "Sako",
+   "designation": "Subsonic",
+   "diameter_in": 0.308,
+   "mass_gr": 170.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "BlitzKing",
+   "diameter_in": 0.224,
+   "mass_gr": 55.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "BlitzKing",
+   "diameter_in": 0.243,
+   "mass_gr": 80.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "BlitzKing",
+   "diameter_in": 0.257,
+   "mass_gr": 70.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "FBHP Varminter",
+   "diameter_in": 0.308,
+   "mass_gr": 110.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "FMJ",
+   "diameter_in": 0.224,
+   "mass_gr": 55.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "FMJBT",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "FMJBT",
+   "diameter_in": 0.308,
+   "mass_gr": 173.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "GameChanger",
+   "diameter_in": 0.243,
+   "mass_gr": 90.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "GameChanger",
+   "diameter_in": 0.264,
+   "mass_gr": 130.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "GameChanger",
+   "diameter_in": 0.277,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "GameChanger",
+   "diameter_in": 0.284,
+   "mass_gr": 165.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "GameChanger",
+   "diameter_in": 0.308,
+   "mass_gr": 165.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "GameKing",
+   "diameter_in": 0.224,
+   "mass_gr": 65.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "GameKing",
+   "diameter_in": 0.277,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "GameKing",
+   "diameter_in": 0.277,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "GameKing",
+   "diameter_in": 0.284,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "GameKing",
+   "diameter_in": 0.284,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "GameKing",
+   "diameter_in": 0.284,
+   "mass_gr": 175.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "GameKing",
+   "diameter_in": 0.308,
+   "mass_gr": 165.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "GameKing",
+   "diameter_in": 0.308,
+   "mass_gr": 180.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "GameKing",
+   "diameter_in": 0.308,
+   "mass_gr": 200.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "GameKing",
+   "diameter_in": 0.338,
+   "mass_gr": 250.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "GameKing",
+   "diameter_in": 0.375,
+   "mass_gr": 300.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "HPBT GameKing",
+   "diameter_in": 0.284,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "HPBT GameKing",
+   "diameter_in": 0.284,
+   "mass_gr": 160.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "HPBT GameKing",
+   "diameter_in": 0.308,
+   "mass_gr": 165.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.224,
+   "mass_gr": 52.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.224,
+   "mass_gr": 53.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.224,
+   "mass_gr": 69.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.224,
+   "mass_gr": 77.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.224,
+   "mass_gr": 80.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.224,
+   "mass_gr": 90.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.243,
+   "mass_gr": 70.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.243,
+   "mass_gr": 95.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.243,
+   "mass_gr": 107.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.257,
+   "mass_gr": 100.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.264,
+   "mass_gr": 107.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.264,
+   "mass_gr": 120.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.264,
+   "mass_gr": 123.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.264,
+   "mass_gr": 142.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.264,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.277,
+   "mass_gr": 115.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.277,
+   "mass_gr": 135.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.284,
+   "mass_gr": 130.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.284,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.284,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.284,
+   "mass_gr": 175.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.284,
+   "mass_gr": 180.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.308,
+   "mass_gr": 125.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.308,
+   "mass_gr": 135.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.308,
+   "mass_gr": 175.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.308,
+   "mass_gr": 180.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.308,
+   "mass_gr": 190.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing 2230",
+   "diameter_in": 0.308,
+   "mass_gr": 200.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing 2231",
+   "diameter_in": 0.308,
+   "mass_gr": 200.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.308,
+   "mass_gr": 210.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.308,
+   "mass_gr": 240.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.338,
+   "mass_gr": 250.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.338,
+   "mass_gr": 300.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.375,
+   "mass_gr": 350.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing",
+   "diameter_in": 0.308,
+   "mass_gr": 220.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing PALMA 2155",
+   "diameter_in": 0.308,
+   "mass_gr": 155.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing PALMA 2156",
+   "diameter_in": 0.308,
+   "mass_gr": 155.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing pointed",
+   "diameter_in": 0.224,
+   "mass_gr": 80.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing pointed",
+   "diameter_in": 0.224,
+   "mass_gr": 90.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing pointed",
+   "diameter_in": 0.243,
+   "mass_gr": 95.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing Pointed",
+   "diameter_in": 0.243,
+   "mass_gr": 107.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing pointed",
+   "diameter_in": 0.243,
+   "mass_gr": 110.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing Pointed",
+   "diameter_in": 0.264,
+   "mass_gr": 123.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing Pointed",
+   "diameter_in": 0.264,
+   "mass_gr": 142.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing Pointed",
+   "diameter_in": 0.284,
+   "mass_gr": 183.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing pointed",
+   "diameter_in": 0.284,
+   "mass_gr": 197.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing Pointed",
+   "diameter_in": 0.308,
+   "mass_gr": 125.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "MatchKing pointed",
+   "diameter_in": 0.308,
+   "mass_gr": 230.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "Pro Hunter",
+   "diameter_in": 0.243,
+   "mass_gr": 100.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "Pro Hunter",
+   "diameter_in": 0.257,
+   "mass_gr": 117.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "ProHunter",
+   "diameter_in": 0.264,
+   "mass_gr": 120.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "SBT",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "SP GameKing",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "SP GameKing",
+   "diameter_in": 0.308,
+   "mass_gr": 165.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "SP GameKing",
+   "diameter_in": 0.338,
+   "mass_gr": 250.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "Tipped MatchKing",
+   "diameter_in": 0.224,
+   "mass_gr": 69.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "Tipped MatchKing",
+   "diameter_in": 0.224,
+   "mass_gr": 77.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "Tipped MatchKing",
+   "diameter_in": 0.243,
+   "mass_gr": 95.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "Tipped MatchKing",
+   "diameter_in": 0.264,
+   "mass_gr": 130.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "Tipped MatchKing",
+   "diameter_in": 0.284,
+   "mass_gr": 160.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "Tipped MatchKing",
+   "diameter_in": 0.308,
+   "mass_gr": 125.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "Tipped MatchKing",
+   "diameter_in": 0.308,
+   "mass_gr": 155.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "Tipped MatchKing",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "Tipped MatchKing",
+   "diameter_in": 0.308,
+   "mass_gr": 175.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "Tipped MatchKing",
+   "diameter_in": 0.308,
+   "mass_gr": 195.0
+  },
+  {
+   "manufacturer": "Sierra",
+   "designation": "Varminter",
+   "diameter_in": 0.308,
+   "mass_gr": 135.0
+  },
+  {
+   "manufacturer": "Sig Sauer",
+   "designation": "Varmint",
+   "diameter_in": 0.224,
+   "mass_gr": 40.0
+  },
+  {
+   "manufacturer": "Sig Sauer",
+   "designation": "FMJ",
+   "diameter_in": 0.224,
+   "mass_gr": 55.0
+  },
+  {
+   "manufacturer": "Sig Sauer",
+   "designation": "Elite",
+   "diameter_in": 0.224,
+   "mass_gr": 60.0
+  },
+  {
+   "manufacturer": "Sig Sauer",
+   "designation": "OTM",
+   "diameter_in": 0.224,
+   "mass_gr": 77.0
+  },
+  {
+   "manufacturer": "Sig Sauer",
+   "designation": "Varmint",
+   "diameter_in": 0.243,
+   "mass_gr": 55.0
+  },
+  {
+   "manufacturer": "Sig Sauer",
+   "designation": "Elite",
+   "diameter_in": 0.264,
+   "mass_gr": 120.0
+  },
+  {
+   "manufacturer": "Sig Sauer",
+   "designation": "OTM",
+   "diameter_in": 0.264,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Sig Sauer",
+   "designation": "Elite",
+   "diameter_in": 0.308,
+   "mass_gr": 120.0
+  },
+  {
+   "manufacturer": "Sig Sauer",
+   "designation": "Elite",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Sig Sauer",
+   "designation": "Elite",
+   "diameter_in": 0.308,
+   "mass_gr": 165.0
+  },
+  {
+   "manufacturer": "Sig Sauer",
+   "designation": "OTM",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Sig Sauer",
+   "designation": "OTM",
+   "diameter_in": 0.308,
+   "mass_gr": 175.0
+  },
+  {
+   "manufacturer": "Sig Sauer",
+   "designation": "OTM",
+   "diameter_in": 0.308,
+   "mass_gr": 190.0
+  },
+  {
+   "manufacturer": "SniperExtreme",
+   "designation": "APFI",
+   "diameter_in": 0.408,
+   "mass_gr": 400.0
+  },
+  {
+   "manufacturer": "SniperExtreme",
+   "designation": "API",
+   "diameter_in": 0.408,
+   "mass_gr": 400.0
+  },
+  {
+   "manufacturer": "SniperExtreme",
+   "designation": "EBB",
+   "diameter_in": 0.408,
+   "mass_gr": 400.0
+  },
+  {
+   "manufacturer": "SniperExtreme",
+   "designation": "EBB",
+   "diameter_in": 0.51,
+   "mass_gr": 700.0
+  },
+  {
+   "manufacturer": "Speer",
+   "designation": "Gold Dot",
+   "diameter_in": 0.224,
+   "mass_gr": 55.0
+  },
+  {
+   "manufacturer": "Speer",
+   "designation": "Gold Dot",
+   "diameter_in": 0.224,
+   "mass_gr": 75.0
+  },
+  {
+   "manufacturer": "Speer",
+   "designation": "Gold Dot",
+   "diameter_in": 0.308,
+   "mass_gr": 168.0
+  },
+  {
+   "manufacturer": "Swift",
+   "designation": "AFrame",
+   "diameter_in": 0.277,
+   "mass_gr": 140.0
+  },
+  {
+   "manufacturer": "Swift",
+   "designation": "AFrame",
+   "diameter_in": 0.277,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Swift",
+   "designation": "BT Spitzer",
+   "diameter_in": 0.308,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Swift",
+   "designation": "BT Spitzer",
+   "diameter_in": 0.308,
+   "mass_gr": 165.0
+  },
+  {
+   "manufacturer": "Swift",
+   "designation": "BT Spitzer",
+   "diameter_in": 0.308,
+   "mass_gr": 180.0
+  },
+  {
+   "manufacturer": "Swift",
+   "designation": "BTSP",
+   "diameter_in": 0.284,
+   "mass_gr": 150.0
+  },
+  {
+   "manufacturer": "Swift",
+   "designation": "Scirocco",
+   "diameter_in": 0.257,
+   "mass_gr": 100.0
+  },
+  {
+   "manufacturer": "Swift",
+   "designation": "Scirocco",
+   "diameter_in": 0.264,
+   "mass_gr": 130.0
+  },
+  {
+   "manufacturer": "Thunder Ammo",
+   "designation": "Brass Solid",
+   "diameter_in": 0.51,
+   "mass_gr": 802.0
+  },
+  {
+   "manufacturer": "Trom",
+   "designation": "Nato",
+   "diameter_in": 0.224,
+   "mass_gr": 53.0
+  },
+  {
+   "manufacturer": "Trom",
+   "designation": "Flatline",
+   "diameter_in": 0.308,
+   "mass_gr": 111.0
+  },
+  {
+   "manufacturer": "Trom",
+   "designation": "900m",
+   "diameter_in": 0.308,
+   "mass_gr": 132.0
+  },
+  {
+   "manufacturer": "Trom",
+   "designation": "1100m",
+   "diameter_in": 0.308,
+   "mass_gr": 135.0
+  },
+  {
+   "manufacturer": "VaporTrail",
+   "designation": "BTHP",
+   "diameter_in": 0.243,
+   "mass_gr": 103.0
+  },
+  {
+   "manufacturer": "VaporTrail",
+   "designation": "BTHP",
+   "diameter_in": 0.264,
+   "mass_gr": 137.0
+  },
+  {
+   "manufacturer": "VaporTrail",
+   "designation": "BTHP",
+   "diameter_in": 0.308,
+   "mass_gr": 180.0
+  },
+  {
+   "manufacturer": "VaporTrail",
+   "designation": "BTHP",
+   "diameter_in": 0.308,
+   "mass_gr": 207.0
+  },
+  {
+   "manufacturer": "Warner",
+   "designation": "Flatline",
+   "diameter_in": 0.284,
+   "mass_gr": 151.0
+  },
+  {
+   "manufacturer": "Warner",
+   "designation": "Flatline",
+   "diameter_in": 0.308,
+   "mass_gr": 155.0
+  },
+  {
+   "manufacturer": "Warner",
+   "designation": "Flatline",
+   "diameter_in": 0.308,
+   "mass_gr": 180.0
+  },
+  {
+   "manufacturer": "Warner",
+   "designation": "Flatline",
+   "diameter_in": 0.308,
+   "mass_gr": 198.0
+  },
+  {
+   "manufacturer": "Warner",
+   "designation": "Flatline",
+   "diameter_in": 0.308,
+   "mass_gr": 200.0
+  },
+  {
+   "manufacturer": "Warner",
+   "designation": "Flatline",
+   "diameter_in": 0.338,
+   "mass_gr": 256.0
+  },
+  {
+   "manufacturer": "Wildcat",
+   "designation": "ULD",
+   "diameter_in": 0.284,
+   "mass_gr": 200.0
+  },
+  {
+   "manufacturer": "Aguila (Rimfire)",
+   "designation": "Sniper Subsonic",
+   "diameter_in": 0.224,
+   "mass_gr": 60.0
+  },
+  {
+   "manufacturer": "CCI (Rimfire)",
+   "designation": "Mini-Mag HP",
+   "diameter_in": 0.224,
+   "mass_gr": 36.0
+  },
+  {
+   "manufacturer": "CCI (Rimfire)",
+   "designation": "Select",
+   "diameter_in": 0.224,
+   "mass_gr": 40.0
+  },
+  {
+   "manufacturer": "CCI (Rimfire)",
+   "designation": "Sub-Sonic",
+   "diameter_in": 0.224,
+   "mass_gr": 40.0
+  },
+  {
+   "manufacturer": "Eley (Rimfire)",
+   "designation": "Edge",
+   "diameter_in": 0.224,
+   "mass_gr": 40.0
+  },
+  {
+   "manufacturer": "Eley (Rimfire)",
+   "designation": "Match",
+   "diameter_in": 0.224,
+   "mass_gr": 40.0
+  },
+  {
+   "manufacturer": "Eley (Rimfire)",
+   "designation": "Tenex",
+   "diameter_in": 0.224,
+   "mass_gr": 40.0
+  },
+  {
+   "manufacturer": "Federal (Rimfire)",
+   "designation": "Target",
+   "diameter_in": 0.224,
+   "mass_gr": 40.0
+  },
+  {
+   "manufacturer": "Fiocchi (Rimfire)",
+   "designation": "Official 320",
+   "diameter_in": 0.224,
+   "mass_gr": 40.0
+  },
+  {
+   "manufacturer": "Lapua (Rimfire)",
+   "designation": "CenterX",
+   "diameter_in": 0.224,
+   "mass_gr": 40.0
+  },
+  {
+   "manufacturer": "Lapua (Rimfire)",
+   "designation": "Midas+",
+   "diameter_in": 0.224,
+   "mass_gr": 40.0
+  },
+  {
+   "manufacturer": "Norma (Rimfire)",
+   "designation": "Match22",
+   "diameter_in": 0.224,
+   "mass_gr": 40.0
+  },
+  {
+   "manufacturer": "RWS (Rimfire)",
+   "designation": "R50",
+   "diameter_in": 0.224,
+   "mass_gr": 40.0
+  },
+  {
+   "manufacturer": "RWS (Rimfire)",
+   "designation": "Rifle Match",
+   "diameter_in": 0.224,
+   "mass_gr": 40.0
+  },
+  {
+   "manufacturer": "SK (Rimfire)",
+   "designation": "Flatnose Match",
+   "diameter_in": 0.224,
+   "mass_gr": 40.0
+  },
+  {
+   "manufacturer": "SK (Rimfire)",
+   "designation": "Long Range Match",
+   "diameter_in": 0.224,
+   "mass_gr": 40.0
+  },
+  {
+   "manufacturer": "SK (Rimfire)",
+   "designation": "Match",
+   "diameter_in": 0.224,
+   "mass_gr": 40.0
+  }
+ ]
+}

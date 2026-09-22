@@ -1,0 +1,497 @@
+{
+ "url": "https://www.lapua.com/wp-content/uploads/2026/06/Lapua_Catalog_2026_ENG_web.pdf",
+ "retrieved": "2026-09-22",
+ "sha256": "27b2ebed6394cfa9a762527f8188eb3e534d39c1ef75dd9524f78c7954417f64",
+ "loads": [
+  {
+   "cartridge": ".222 Remington",
+   "projectile": "55 gr FMJ",
+   "barrel_mm": 600,
+   "velocity_ms": 880.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": ".222 Remington",
+   "projectile": "55 gr SP",
+   "barrel_mm": 600,
+   "velocity_ms": 880.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": ".222 Remington",
+   "projectile": "50 gr Naturalis",
+   "barrel_mm": 600,
+   "velocity_ms": 965.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": ".223 Remington",
+   "projectile": "50 gr Naturalis",
+   "barrel_mm": null,
+   "velocity_ms": 1015.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": ".223 Remington",
+   "projectile": "69 gr Scenar-L",
+   "barrel_mm": 510,
+   "velocity_ms": 830.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": ".223 Remington",
+   "projectile": "55 gr FMJ",
+   "barrel_mm": 660,
+   "velocity_ms": 955.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": ".308 Winchester",
+   "projectile": "170 gr Lock Base",
+   "barrel_mm": 400,
+   "velocity_ms": 744.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": ".308 Winchester",
+   "projectile": "200 gr FMJBT",
+   "barrel_mm": 410,
+   "velocity_ms": 325.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": ".308 Winchester",
+   "projectile": "167 gr Armour Piercing",
+   "barrel_mm": 410,
+   "velocity_ms": 770.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": ".308 Winchester",
+   "projectile": "150 gr TRX",
+   "barrel_mm": 510,
+   "velocity_ms": 840.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": ".308 Winchester",
+   "projectile": "185 gr Scenar",
+   "barrel_mm": 660,
+   "velocity_ms": 755.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": ".308 Winchester",
+   "projectile": "185 gr FMJBT",
+   "barrel_mm": 660,
+   "velocity_ms": 760.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": ".308 Winchester",
+   "projectile": "185 gr Mega",
+   "barrel_mm": 660,
+   "velocity_ms": 765.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": ".308 Winchester",
+   "projectile": "175 gr Scenar-L",
+   "barrel_mm": 660,
+   "velocity_ms": 793.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": ".308 Winchester",
+   "projectile": "170 gr Naturalis",
+   "barrel_mm": 660,
+   "velocity_ms": 800.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": ".308 Winchester",
+   "projectile": "167 gr Scenar",
+   "barrel_mm": 660,
+   "velocity_ms": 820.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": ".308 Winchester",
+   "projectile": "170 gr Lock Base",
+   "barrel_mm": 660,
+   "velocity_ms": 840.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": ".308 Winchester",
+   "projectile": "150 gr Mega",
+   "barrel_mm": 660,
+   "velocity_ms": 850.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": ".308 Winchester",
+   "projectile": "167 gr Armor Piercing",
+   "barrel_mm": 660,
+   "velocity_ms": 855.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": ".308 Winchester",
+   "projectile": "155 gr Scenar-L",
+   "barrel_mm": 660,
+   "velocity_ms": 860.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": ".308 Winchester",
+   "projectile": "123 gr FMJ",
+   "barrel_mm": 660,
+   "velocity_ms": 895.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": ".338 Lapua Magnum",
+   "projectile": "300 gr Scenar",
+   "barrel_mm": 680,
+   "velocity_ms": 830.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": ".338 Lapua Magnum",
+   "projectile": "250 gr Lock Base",
+   "barrel_mm": 680,
+   "velocity_ms": 900.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": ".338 Lapua Magnum",
+   "projectile": "250 gr Scenar",
+   "barrel_mm": 680,
+   "velocity_ms": 905.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": ".338 Lapua Magnum",
+   "projectile": "231 gr Naturalis",
+   "barrel_mm": 680,
+   "velocity_ms": 920.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "243 Win.",
+   "projectile": "90 gr FMJ",
+   "barrel_mm": 610,
+   "velocity_ms": 885.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "243 Win.",
+   "projectile": "90 gr Naturalis",
+   "barrel_mm": 610,
+   "velocity_ms": 910.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "260 Rem.",
+   "projectile": "136 gr Scenar-L",
+   "barrel_mm": 510,
+   "velocity_ms": 814.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "30-06 Spring.",
+   "projectile": "165 gr TRX",
+   "barrel_mm": 570,
+   "velocity_ms": 830.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "30-06 Spring.",
+   "projectile": "200 gr Mega",
+   "barrel_mm": 600,
+   "velocity_ms": 775.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "30-06 Spring.",
+   "projectile": "185 gr Mega",
+   "barrel_mm": 600,
+   "velocity_ms": 800.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "30-06 Spring.",
+   "projectile": "170 gr Naturalis",
+   "barrel_mm": 600,
+   "velocity_ms": 830.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "30-06 Spring.",
+   "projectile": "123 gr FMJ",
+   "barrel_mm": 600,
+   "velocity_ms": 895.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "300 Win. Mag.",
+   "projectile": "165 gr TRX",
+   "barrel_mm": 570,
+   "velocity_ms": 905.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "300 Win. Mag.",
+   "projectile": "185 gr Mega",
+   "barrel_mm": 600,
+   "velocity_ms": 830.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "300 Win. Mag.",
+   "projectile": "170 gr Naturalis",
+   "barrel_mm": 600,
+   "velocity_ms": 902.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "300 Win. Mag.",
+   "projectile": "185 gr Scenar",
+   "barrel_mm": 680,
+   "velocity_ms": 900.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "6 mm BR Norma",
+   "projectile": "105 gr Scenar-L",
+   "barrel_mm": 670,
+   "velocity_ms": 815.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "6 mm BR Norma",
+   "projectile": "90 gr Scenar-L",
+   "barrel_mm": 670,
+   "velocity_ms": 900.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "6,5 x 47 Lapua",
+   "projectile": "136 gr Scenar-L",
+   "barrel_mm": 660,
+   "velocity_ms": 800.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "6,5 x 47 Lapua",
+   "projectile": "140 gr Naturalis",
+   "barrel_mm": 660,
+   "velocity_ms": 807.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "6,5 x 47 Lapua",
+   "projectile": "139 gr Scenar",
+   "barrel_mm": 660,
+   "velocity_ms": 820.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "6,5 x 47 Lapua",
+   "projectile": "120 gr Scenar-L",
+   "barrel_mm": 660,
+   "velocity_ms": 845.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "6,5 x 47 Lapua",
+   "projectile": "123 gr Scenar",
+   "barrel_mm": 660,
+   "velocity_ms": 850.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "6,5 x 55 SE",
+   "projectile": "120 gr TRX",
+   "barrel_mm": 510,
+   "velocity_ms": 835.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "6,5 x 55 SE",
+   "projectile": "140 gr Naturalis",
+   "barrel_mm": 600,
+   "velocity_ms": 800.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "6,5 x 55 SE",
+   "projectile": "100 gr FMJ",
+   "barrel_mm": 600,
+   "velocity_ms": 830.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "6,5 x 55 SE",
+   "projectile": "156 gr Mega",
+   "barrel_mm": 740,
+   "velocity_ms": 780.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "6,5 x 55 SE",
+   "projectile": "100 gr Scenar",
+   "barrel_mm": 740,
+   "velocity_ms": 800.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "6,5 x 55 SE",
+   "projectile": "139 gr Scenar",
+   "barrel_mm": 740,
+   "velocity_ms": 800.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "6,5 x 55 SE",
+   "projectile": "136 gr Scenar-L",
+   "barrel_mm": 740,
+   "velocity_ms": 815.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "6,5 x 55 SE",
+   "projectile": "120 gr Scenar-L",
+   "barrel_mm": 740,
+   "velocity_ms": 830.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "6,5 x 55 SE",
+   "projectile": "123 gr Scenar",
+   "barrel_mm": 740,
+   "velocity_ms": 830.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "6,5 x 55 SE",
+   "projectile": "144 gr MaxRT",
+   "barrel_mm": 740,
+   "velocity_ms": 835.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "6,5 x 55 SE",
+   "projectile": "108 gr Scenar",
+   "barrel_mm": 740,
+   "velocity_ms": 900.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "6,5 x 55 SE",
+   "projectile": "120 gr Scenar-L",
+   "barrel_mm": 740,
+   "velocity_ms": 920.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "6,5 x 55 SE",
+   "projectile": "123 gr Scenar",
+   "barrel_mm": 740,
+   "velocity_ms": 920.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "6.5 Creedmoor",
+   "projectile": "140 gr Naturalis",
+   "barrel_mm": 600,
+   "velocity_ms": 780.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "6.5 Creedmoor",
+   "projectile": "156 gr Mega",
+   "barrel_mm": 600,
+   "velocity_ms": 780.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "6.5 Creedmoor",
+   "projectile": "136 gr Scenar-L",
+   "barrel_mm": 600,
+   "velocity_ms": 835.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "6.5 Creedmoor",
+   "projectile": "145 gr Armour Piercing",
+   "barrel_mm": 600,
+   "velocity_ms": 845.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "6.5 Creedmoor",
+   "projectile": "123 gr Scenar",
+   "barrel_mm": 600,
+   "velocity_ms": 850.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "7 x 64",
+   "projectile": "156 gr Naturalis",
+   "barrel_mm": 600,
+   "velocity_ms": 840.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "7 x 65 R",
+   "projectile": "156 gr Naturalis",
+   "barrel_mm": 600,
+   "velocity_ms": 840.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "8 x 57 IRS",
+   "projectile": "180 gr Naturalis",
+   "barrel_mm": 600,
+   "velocity_ms": 805.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "8 x 57 IS",
+   "projectile": "180 gr Naturalis",
+   "barrel_mm": 600,
+   "velocity_ms": 800.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "8 x 57 IS",
+   "projectile": "120 gr OT",
+   "barrel_mm": 600,
+   "velocity_ms": 940.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "9,3 x 62",
+   "projectile": "285 gr Mega",
+   "barrel_mm": 600,
+   "velocity_ms": 690.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "9,3 x 62",
+   "projectile": "250 gr Naturalis",
+   "barrel_mm": 600,
+   "velocity_ms": 740.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  },
+  {
+   "cartridge": "9,3 x 62",
+   "projectile": "185 gr OT",
+   "barrel_mm": 600,
+   "velocity_ms": 845.0,
+   "source_note": "Lapua Catalog 2026, centerfire rifle trajectory table (metric): test barrel length and muzzle velocity at 0 m"
+  }
+ ]
+}

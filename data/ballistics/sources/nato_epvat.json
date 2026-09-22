@@ -1,0 +1,122 @@
+{
+  "retrieved": "2026-09-22",
+  "documents": [
+    {
+      "document": "AOP-4172",
+      "edition": "A, V1",
+      "date": "2020-09",
+      "url": "https://www.jedi-sec.us/downloads/MISC_PDF/AOP-4172%20EDA%20V1%20E.pdf",
+      "sha256": "1759b5ba71abbbcafd940df45c14b6f7d99421640dfe7a8e8651a400474ed130",
+      "calibre": "5.56x45mm NATO",
+      "service_pressure_mpa": 445,
+      "service_pressure_basis": "corrected mean case mouth pressure plus 3 standard deviations, ammunition conditioned at +21 C (Chapter 2 para 1a and Annex B sheet 1)",
+      "proof_pressure_mpa": null,
+      "velocity_ms": null,
+      "note": "Genuine NATO AOP-4172 Edition A Version 1, September 2020. The held file is a secondary mirror copy from jedi-sec.us. No archived copy was found on the NATO public release host. The document states ammunition acceptance limits. It does not state a weapon proof pressure. It refers to AEP-97 Volumes 12 and 13. It also states a corrected mean case mouth pressure not exceeding 455 MPa at +52 C and -54 C. It states a port pressure minus 3 SD not less than 103 MPa at +21 C. It states a velocity variation of +50/-80 m/s from the +21 C sample at +52 C and -54 C. Absolute velocity is not stated."
+    },
+    {
+      "document": "AEP-97",
+      "edition": "A, V1, Volume 12",
+      "date": "2020-10",
+      "url": "https://web.archive.org/web/20250523071813/https://diweb.hq.nato.int/naag/Public%20Release%20Documents/AEP-97%20EDA%20V1%20E.pdf",
+      "sha256": "72a1a153108d161c7fdb52ab26d60510d10765bc9bfbdd546c9d1c88390bbf8b",
+      "calibre": "5.56x45mm NATO",
+      "service_pressure_mpa": 445,
+      "service_pressure_basis": "maximum corrected mean case mouth pressure plus 3 standard deviations for the +21 C sample (Volume 12 para 12.2.2 table)",
+      "proof_pressure_mpa": null,
+      "velocity_ms": null,
+      "note": "NATO AEP-97 Edition A Version 1, October 2020, Volume 12. This volume holds the Combination Electronic Pressure Velocity and Action Time (EPVAT) Test Procedures. The held file is the primary copy from the NATO public release server at diweb.hq.nato.int. The Internet Archive supplied the copy. Port pressure minus 3 SD is not less than 103 MPa at +21 C. Velocity variation is +50/-80 m/s from the +21 C sample at +52 C and -54 C. The document states no absolute velocity requirement and no weapon proof pressure."
+    },
+    {
+      "document": "AEP-97",
+      "edition": "A, V1, Volume 12",
+      "date": "2020-10",
+      "url": "https://web.archive.org/web/20250523071813/https://diweb.hq.nato.int/naag/Public%20Release%20Documents/AEP-97%20EDA%20V1%20E.pdf",
+      "sha256": "72a1a153108d161c7fdb52ab26d60510d10765bc9bfbdd546c9d1c88390bbf8b",
+      "calibre": "7.62x51mm NATO",
+      "service_pressure_mpa": 445,
+      "service_pressure_basis": "maximum corrected mean case mouth pressure plus 3 standard deviations for the +21 C sample (Volume 12 para 12.2.2 table)",
+      "proof_pressure_mpa": null,
+      "velocity_ms": null,
+      "note": "NATO AEP-97 Edition A Version 1, October 2020, Volume 12. The held file is the primary copy from the NATO public release server. The Internet Archive supplied the copy. Port pressure minus 3 SD is not less than 56 MPa at +21 C. Velocity variation is +45/-75 m/s from the +21 C sample at +52 C and -54 C. The document states no absolute velocity requirement and no weapon proof pressure."
+    },
+    {
+      "document": "AEP-97",
+      "edition": "A, V1, Volume 12",
+      "date": "2020-10",
+      "url": "https://web.archive.org/web/20250523071813/https://diweb.hq.nato.int/naag/Public%20Release%20Documents/AEP-97%20EDA%20V1%20E.pdf",
+      "sha256": "72a1a153108d161c7fdb52ab26d60510d10765bc9bfbdd546c9d1c88390bbf8b",
+      "calibre": "9x19mm NATO",
+      "service_pressure_mpa": 285,
+      "service_pressure_basis": "maximum corrected mean case mouth pressure plus 3 standard deviations for the +21 C sample, 6215/GP6 transducer column (Volume 12 para 12.2.2 table)",
+      "proof_pressure_mpa": null,
+      "velocity_ms": null,
+      "note": "NATO AEP-97 Edition A Version 1, October 2020, Volume 12. The held file is the primary copy from the NATO public release server. The Internet Archive supplied the copy. The legacy 6203 transducer column states 265 MPa. Velocity variation is +30/-30 m/s from the +21 C sample. The document states no absolute velocity requirement and no weapon proof pressure."
+    },
+    {
+      "document": "AEP-97",
+      "edition": "A, V1, Volume 12",
+      "date": "2020-10",
+      "url": "https://web.archive.org/web/20250523071813/https://diweb.hq.nato.int/naag/Public%20Release%20Documents/AEP-97%20EDA%20V1%20E.pdf",
+      "sha256": "72a1a153108d161c7fdb52ab26d60510d10765bc9bfbdd546c9d1c88390bbf8b",
+      "calibre": "12.7x99mm NATO",
+      "service_pressure_mpa": 450,
+      "service_pressure_basis": "maximum corrected mean case mouth pressure plus 3 standard deviations for the +21 C sample (Volume 12 para 12.2.2 table)",
+      "proof_pressure_mpa": null,
+      "velocity_ms": null,
+      "note": "NATO AEP-97 Edition A Version 1, October 2020, Volume 12. The held file is the primary copy from the NATO public release server. The Internet Archive supplied the copy. No port pressure or velocity variation requirement is stated for 12.7 mm. The document states no absolute velocity requirement and no weapon proof pressure."
+    },
+    {
+      "document": "Def Stan 05-101 Part 1",
+      "edition": "Issue 1 (Amendment 1)",
+      "date": "2005-05-20",
+      "url": "https://web.archive.org/web/20110716024825/http://www.dstan.mod.uk/standards/defstans/05/101/01000100.pdf",
+      "sha256": "a42d75abc4868f3ba82bf7fad3b83a4804facca1a9fcca069622fc8ca1b41f81",
+      "calibre": "5.56x45mm NATO",
+      "service_pressure_mpa": 430,
+      "service_pressure_basis": "derived as proof pressure divided by 1.25. Para 8.2.2 defines service pressure Pmax as the mean pressure of the service cartridge at 21 C. It defines the proof round as 25 percent in excess. The value 430 MPa is not printed in the table.",
+      "proof_pressure_mpa": 537.5,
+      "velocity_ms": null,
+      "note": "UK MOD national standard, Proof of Ordnance Munitions Armour and Explosives, Part 1 Requirements. Issue 1 is dated 20 May 2005. The standard was reprinted 24 November 2006 with Amendment 1. Table 2 Corrected Proof Pressure Requirement gives 5375 bar, equal to 537.5 MPa. The pressure is recorded in a NATO design EPVAT barrel with a Kistler 6215 transducer. The alternative is equipment to CIP requirements. The weapon and ammunition are conditioned at 21 C. The held file comes from the UK MOD web archive. NATO EPVAT descriptions cite this standard as the source of the proof pressure."
+    },
+    {
+      "document": "Def Stan 05-101 Part 1",
+      "edition": "Issue 1 (Amendment 1)",
+      "date": "2005-05-20",
+      "url": "https://web.archive.org/web/20110716024825/http://www.dstan.mod.uk/standards/defstans/05/101/01000100.pdf",
+      "sha256": "a42d75abc4868f3ba82bf7fad3b83a4804facca1a9fcca069622fc8ca1b41f81",
+      "calibre": "7.62x51mm NATO",
+      "service_pressure_mpa": 415.2,
+      "service_pressure_basis": "derived as proof pressure divided by 1.25. Para 8.2.2 defines service pressure Pmax as the mean pressure of the service cartridge at 21 C. It defines the proof round as 25 percent in excess. The value 415.2 MPa is not printed in the table.",
+      "proof_pressure_mpa": 519.0,
+      "velocity_ms": null,
+      "note": "UK MOD national standard Def Stan 05-101 Part 1 Issue 1. Table 2 gives 5190 bar, equal to 519.0 MPa. The pressure is recorded in a NATO design EPVAT barrel with a Kistler 6215 transducer. The alternative is equipment to CIP requirements. The weapon and ammunition are conditioned at 21 C. The held file comes from the UK MOD web archive."
+    },
+    {
+      "document": "Def Stan 05-101 Part 1",
+      "edition": "Issue 1 (Amendment 1)",
+      "date": "2005-05-20",
+      "url": "https://web.archive.org/web/20110716024825/http://www.dstan.mod.uk/standards/defstans/05/101/01000100.pdf",
+      "sha256": "a42d75abc4868f3ba82bf7fad3b83a4804facca1a9fcca069622fc8ca1b41f81",
+      "calibre": "9x19mm NATO",
+      "service_pressure_mpa": 252.0,
+      "service_pressure_basis": "derived as proof pressure divided by 1.25. Para 8.2.2 defines service pressure Pmax as the mean pressure of the service cartridge at 21 C. It defines the proof round as 25 percent in excess. The value 252.0 MPa is not printed in the table.",
+      "proof_pressure_mpa": 315.0,
+      "velocity_ms": null,
+      "note": "UK MOD national standard Def Stan 05-101 Part 1 Issue 1. Table 2 gives 3150 bar, equal to 315.0 MPa. The pressure is recorded in a CIP design barrel at the mid case position. The weapon and ammunition are conditioned at 21 C. The held file comes from the UK MOD web archive."
+    },
+    {
+      "document": "Def Stan 05-101 Part 1",
+      "edition": "Issue 1 (Amendment 1)",
+      "date": "2005-05-20",
+      "url": "https://web.archive.org/web/20110716024825/http://www.dstan.mod.uk/standards/defstans/05/101/01000100.pdf",
+      "sha256": "a42d75abc4868f3ba82bf7fad3b83a4804facca1a9fcca069622fc8ca1b41f81",
+      "calibre": "12.7x99mm NATO",
+      "service_pressure_mpa": 417.04,
+      "service_pressure_basis": "derived as proof pressure divided by 1.25. Para 8.2.2 defines service pressure Pmax as the mean pressure of the service cartridge at 21 C. It defines the proof round as 25 percent in excess. The value 417.04 MPa is not printed in the table.",
+      "proof_pressure_mpa": 521.3,
+      "velocity_ms": null,
+      "note": "UK MOD national standard Def Stan 05-101 Part 1 Issue 1. Table 2 gives 5213 bar, equal to 521.3 MPa. The pressure is recorded in a NATO design EPVAT barrel with a Kistler 6215 transducer. The alternative is equipment to CIP requirements. The weapon and ammunition are conditioned at 21 C. The held file comes from the UK MOD web archive."
+    }
+  ]
+}
