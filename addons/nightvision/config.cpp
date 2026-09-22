@@ -10,7 +10,6 @@ class CfgPatches {
         requiredAddons[] = {
             "aee_main",
             "aee_core",
-            "aee_optics",
             "cba_main",
             "cba_xeh"
         };
