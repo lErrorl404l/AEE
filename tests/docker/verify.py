@@ -38,6 +38,35 @@ errors = [
     if re.search(r"\bError\b", l) and not any(b in l for b in _ERROR_BENIGN)
 ]
 
+# Warnings are errors here.  A warning AEE emits fails the gate.  Only
+# engine noise that no AEE change can remove is benign, and each entry
+# states why.  This is the check that caught the 'modes/' class read and
+# the mapZone alarm before a player saw them.
+_WARNING_BENIGN = (
+    "Warning: looped for animation",  # vanilla RTM loop flag
+    "is dependent on downloadable content",  # server note: the base addon is installed
+    "No entry 'bin\\config.bin",  # vanilla class gap in the BI config
+    "No entry 'bin/config.bin",
+    "No entry '.",  # engine light class gap (BI CargoLight)
+    "'/' is not a value",  # BI config placeholder
+    "Size: '/' not an array",  # BI config placeholder
+    "No geometry and no visual shape",  # vanilla proxy models
+    "Fresnel k must be >0",  # vanilla material
+    "Some of magazines weren't stored",  # engine soldier loadout note
+    "unknown animation source",  # vanilla vehicle animation
+    "Array tex in bin",  # vanilla config
+    ".wss",  # missing vanilla sound files
+    ".ogg",
+    ".wav",
+    "Cannot open object",  # engine asset noise
+    "bison",  # PBO header noise
+)
+warnings = [
+    l
+    for l in text.splitlines()
+    if re.search(r"\bWarning\b", l) and not any(b in l for b in _WARNING_BENIGN)
+]
+
 print(f"phases passed: {len(passes)}")
 for p in passes:
     print(f"  {p}")
@@ -50,8 +79,12 @@ if errors:
     print(f"script errors: {len(errors)}")
     for e in errors[:10]:
         print(f"  {e}")
+if warnings:
+    print(f"warnings (treated as errors): {len(warnings)}")
+    for w in warnings[:10]:
+        print(f"  {w}")
 
-if fails or not done or errors:
+if fails or not done or errors or warnings:
     print("RESULT: FAIL")
     sys.exit(1)
 print("RESULT: PASS")
