@@ -90,11 +90,11 @@ diag_log text format ["[AEE-TEST] biome after explicit call: %1", _biomeAfter];
         ["aee_core_currentIcingSeverity",     0, 1,    "atmos/icing"],
         ["aee_core_currentWaterTemperature",  0, 40,   "thermal/water"],
         ["aee_core_currentWBGT",              -10, 60, "thermal/wbgt"],
-        ["aee_core_currentHypothermiaRisk",   0, 1,    "thermal/hypothermia"],
+        ["aee_core_currentHypothermiaRisk",   0, 1,    "thermal/hypothermia", "gated: returns 0 when air is above 15 C"],
         ["aee_core_surfaceTemperature",       -60, 60, "thermal/surface"],
         ["aee_core_currentAirDensity",        0.5, 1.6,"ballistics"],
         ["aee_core_currentFireRisk",          0, 1,    "environmental/fire"],
-        ["aee_core_currentFloodRisk",         0, 1,    "environmental/flood"],
+        ["aee_core_currentFloodRisk",         0, 1,    "environmental/flood", "", ["None", "Elevated", "Flood", "Severe"]],
         ["aee_core_snowDepth_m",              0, 10,   "environmental/snow"],
         ["aee_core_currentCropDensity",       0, 1,    "environmental/crop"],
         ["aee_core_currentAvalancheRisk",     0, 1,    "environmental/avalanche"],
@@ -106,9 +106,9 @@ diag_log text format ["[AEE-TEST] biome after explicit call: %1", _biomeAfter];
         ["aee_core_waveHeight_m",             0, 20,   "maritime/sea"],
         ["aee_core_currentTideOffset_m",      -10, 10, "maritime/tide"],
         ["aee_core_currentUVIndex",           0, 15,   "physiology/uv"],
-        ["aee_physiology_acclimatizationPercent", 0, 100, "physiology/acclim"],
+        ["aee_physiology_acclimatizationPercent", 0, 100, "physiology/acclim", "gated: needs elapsed exposure above sea level"],
         ["aee_optics_atmosphericSeeing",      0, 1,    "optics/seeing"],
-        ["aee_optics_vehicleHeatShimmerIntensity", 0, 1, "optics/shimmer"],
+        ["aee_optics_vehicleHeatShimmerIntensity", 0, 1, "optics/shimmer", "gated: needs a hot vehicle in view"],
         ["aee_mobility_currentTractionWheeled", 0, 1,  "mobility/traction"],
         ["aee_radio_radioPropagationIndex",   0, 2,    "radio"],
         ["aee_core_currentLightningRisk",     0, 1,    "fx/lightning"],
@@ -116,37 +116,65 @@ diag_log text format ["[AEE-TEST] biome after explicit call: %1", _biomeAfter];
         ["aee_core_groundState",              -1, -1,  "mobility/ground"]
     ];
     private _pass = 0;
-    private _nil = 0;
+    private _gated = 0;
     private _fail = 0;
     {
-        _x params ["_var", "_min", "_max", "_module"];
+        // A row is [varName, min, max, module] or, when the variable is
+        // only produced under a condition, [varName, min, max, module,
+        // "gated: <reason>"].  The fifth element is the declaration that
+        // nil is expected here.  An UNDECLARED nil is a failure: a
+        // variable that silently stops being produced must not read as a
+        // pass, which is how a whole module can go dark unnoticed.
+        private _var  = _x select 0;
+        private _min  = _x select 1;
+        private _max  = _x select 2;
+        private _module = _x select 3;
+        private _gate = if ((count _x) > 4) then { _x select 4 } else { "" };
         private _val = missionNamespace getVariable [_var, nil];
         if (isNil "_val") then {
-            diag_log text format ["[PHASE6] [NIL] %1 (%2)", _var, _module];
-            _nil = _nil + 1;
+            if (_gate != "") then {
+                diag_log text format ["[PHASE6] [GATED] %1 (%2) %3", _var, _module, _gate];
+                _gated = _gated + 1;
+            } else {
+                diag_log text format ["[PHASE6] [FAIL] %1 is nil and is not declared gated (%2)", _var, _module];
+                _fail = _fail + 1;
+            };
         } else {
             if (_min == -1) then {
                 _pass = _pass + 1;
             } else {
-                if (!(_val isEqualType 0)) then {
-                    diag_log text format ["[PHASE6] [NIL] %1 (non-numeric: %2, %3)", _var, _val, _module];
-                    _nil = _nil + 1;
+                if (!(_val isEqualType 0) && !(_val isEqualType "")) then {
+                    diag_log text format ["[PHASE6] [FAIL] %1 has type %2, expected a number or a declared string (%3)", _var, typeName _val, _module];
+                    _fail = _fail + 1;
                 } else {
-                    if ((_val >= _min) && (_val <= _max)) then {
-                        _pass = _pass + 1;
+                    if (_val isEqualType "") then {
+                        // A string field declares its legal values in the
+                        // row instead of a numeric range, so the check is
+                        // membership rather than a bound.
+                        private _allowed = _x param [5, []];
+                        if (_val in _allowed) then {
+                            _pass = _pass + 1;
+                        } else {
+                            diag_log text format ["[PHASE6] [FAIL] %1 = %2, expected one of %3 (%4)", _var, _val, _allowed, _module];
+                            _fail = _fail + 1;
+                        };
                     } else {
-                        diag_log text format ["[PHASE6] [FAIL] %1 = %2 (expected %3..%4, %5)", _var, _val, _min, _max, _module];
-                        _fail = _fail + 1;
+                        if ((_val >= _min) && (_val <= _max)) then {
+                            _pass = _pass + 1;
+                        } else {
+                            diag_log text format ["[PHASE6] [FAIL] %1 = %2 (expected %3..%4, %5)", _var, _val, _min, _max, _module];
+                            _fail = _fail + 1;
+                        };
                     };
                 };
             };
         };
     } forEach _coverage;
-    diag_log text format ["[PHASE6] summary: pass=%1 nil=%2 fail=%3", _pass, _nil, _fail];
-    if ((_fail == 0) && ((_pass + _nil) >= 30)) then {
-        diag_log text format ["[PHASE6] [PASS] module coverage: %1 state vars verified", _pass];
+    diag_log text format ["[PHASE6] summary: pass=%1 gated=%2 fail=%3", _pass, _gated, _fail];
+    if ((_fail == 0) && (_pass >= 25)) then {
+        diag_log text format ["[PHASE6] [PASS] module coverage: %1 verified, %2 gated", _pass, _gated];
     } else {
-        diag_log text format ["[PHASE6] [FAIL] coverage: pass=%1 nil=%2 fail=%3", _pass, _nil, _fail];
+        diag_log text format ["[PHASE6] [FAIL] coverage: pass=%1 gated=%2 fail=%3", _pass, _gated, _fail];
     };
 
 
