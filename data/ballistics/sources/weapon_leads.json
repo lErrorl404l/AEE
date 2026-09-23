@@ -7,7 +7,7 @@
   "no_standard": 2,
   "weak_citation": 663,
   "unsourced": 935,
-  "verified": 304
+  "verified": 308
  },
  "leads": [
   {
@@ -540,7 +540,7 @@
   },
   {
    "weapon_id": "aw",
-   "verified": false,
+   "verified": true,
    "names": [
     "AW Sniper Rifle"
    ],
@@ -2748,7 +2748,7 @@
   },
   {
    "weapon_id": "m4",
-   "verified": false,
+   "verified": true,
    "names": [
     "M4 M4A1"
    ],
@@ -3036,7 +3036,7 @@
   },
   {
    "weapon_id": "m9",
-   "verified": false,
+   "verified": true,
    "names": [
     "M9 Pistol"
    ],
@@ -3052,7 +3052,7 @@
   },
   {
    "weapon_id": "m9",
-   "verified": false,
+   "verified": true,
    "names": [
     "M9 Semi-auto Pistol"
    ],

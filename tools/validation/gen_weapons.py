@@ -28,7 +28,11 @@ Run:  python3 tools/validation/gen_weapons.py
 
 import json
 import re
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent))
+import chambering  # noqa: E402  - shared canonical form
 
 DATA = Path(__file__).parents[2] / "data" / "ballistics"
 SRC = DATA / "sources"
@@ -147,7 +151,8 @@ def load_found():
                     first["source_id"] = weapon.get("source_id")
                     first["grooves"] = weapon.get("grooves") or first.get("grooves")
                     first["source_note"] = (
-                        str(first.get("source_note", "")) + " "
+                        str(first.get("source_note", ""))
+                        + " "
                         + str(weapon.get("source_note", ""))
                     ).strip()
                     fills.append((weapon_id, path.name))
@@ -162,9 +167,14 @@ def load_found():
 def main():
     retrieved, found_sources, found_weapons, duplicates, fills = load_found()
     cartridges = json.loads((DATA / "cartridges.json").read_text(encoding="utf-8"))
-    by_name = {
-        normalise(n): r["cartridge_id"] for r in cartridges for n in r.get("names", [])
-    }
+    # The chambering join runs on the canonical form, which is one source
+    # for every generator. An exact name match missed most maker strings,
+    # because the maker writes "5.56x45mm NATO" and the register writes
+    # "5.56x45". A collision is left unresolved and reported by
+    # gen_chambering_gaps.py, never guessed.
+    chambering_index = chambering.build_index(cartridges)
+    chambering_aliases = chambering.load_aliases()
+    unresolved_chamberings = 0
 
     # Register only the sources a value actually references.
     referenced = {row["source_id"] for row in found_weapons if row.get("source_id")}
@@ -248,13 +258,18 @@ def main():
                 "source": source_id,
                 "grade": grade,
             }
+        cartridge_id, candidates = chambering.resolve(
+            row.get("cartridge", ""), chambering_index, chambering_aliases
+        )
+        if not cartridge_id:
+            unresolved_chamberings += 1
         weapons.append(
             {
                 "weapon_id": row["weapon_id"],
                 "names": [row["name"]] if row.get("name") else [row["weapon_id"]],
                 "aliases": aliases(row["weapon_id"], row.get("name", "")),
                 "manufacturer": row.get("manufacturer", ""),
-                "cartridge_id": by_name.get(normalise(row.get("cartridge", "")), ""),
+                "cartridge_id": cartridge_id,
                 "note": row.get("source_note", ""),
                 "values": values,
             }
@@ -289,7 +304,8 @@ def main():
     print(
         f"weapons: {len(weapons)} ({with_twist} with a twist), "
         f"sources added: {added_sources}, rows skipped for no source: {skipped}, "
-        f"disagreements: {len(duplicates)}"
+        f"disagreements: {len(duplicates)}, "
+        f"chamberings unresolved: {unresolved_chamberings}"
     )
 
 

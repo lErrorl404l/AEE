@@ -28,6 +28,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 from gen_weapons import classify  # noqa: E402  - shared source grading
+import chambering  # noqa: E402  - shared canonical form
 
 DATA = Path(__file__).parents[2] / "data" / "ballistics"
 SRC = DATA / "sources"
@@ -106,14 +107,18 @@ def main():
         for alias in [record["weapon_id"]] + record.get("aliases", []):
             owner.setdefault(alias, record["weapon_id"])
 
-    by_cart = {}
-    for record in cartridges:
-        for name in record.get("names", []):
-            by_cart.setdefault(normalise(name), record["cartridge_id"])
+    # The chambering join runs on the canonical form, shared with
+    # gen_weapons. An exact name match left most maker strings unresolved.
+    chambering_index = chambering.build_index(cartridges)
+    chambering_aliases = chambering.load_aliases()
 
     aliased = created = standard_only = ambiguous = disagreed = 0
     # Two batches may name the same model. The first file in name order
-    # owns it, so a duplicate cannot create a second record.
+    # owns it, so a duplicate cannot create a second record. The key is
+    # the resolved record and not the designation text: two different
+    # weapons can share a designation, as the Beretta M9 and the Steyr M9
+    # both being "M9", and deduping on the text would drop the row that
+    # carries the twist.
     seen = set()
     for path in FILES:
         if not path.exists():
@@ -121,16 +126,25 @@ def main():
         for row in json.loads(path.read_text(encoding="utf-8"))["designations"]:
             designation = row.get("designation", "")
             key = normalise(designation)
-            if len(key) < 3:
+            # A short designation is real: M4, M9, C7 and PK are all
+            # service designations. The guard is one character, which
+            # rejects only a placeholder, and the target lookup below
+            # rejects a name that resolves to nothing.
+            if len(key) < 2:
                 continue
-            if key in seen:
-                continue
-            seen.add(key)
+            # The explicit weapon_key is the strongest identity: it names
+            # the record the row is about. The designation text is weaker,
+            # because two weapons can share one, as the Beretta M9 and the
+            # Steyr M9 are both "M9".
             target = (
-                by_key.get(key)
-                or by_key.get(normalise(row.get("weapon_key", "")))
+                by_key.get(normalise(row.get("weapon_key", "")))
+                or by_key.get(key)
                 or by_key.get(normalise(row.get("weapon", "")))
             )
+            seen_key = target["weapon_id"] if target is not None else key
+            if seen_key in seen:
+                continue
+            seen.add(seen_key)
             source_id = row.get("twist_source_id") or row.get("map_source_id")
             tier = tiers.get(source_id, 4)
             grade = (
@@ -144,6 +158,17 @@ def main():
             value = round(float(twist) / 1000, 5) if twist else 0.0
 
             if target is not None:
+                # The catalogue may hold the record with no chambering
+                # joined. The designation row names it, so fill it here.
+                # This is a repair of the target's own record, not an
+                # alias claim, so it runs before the ownership guard: two
+                # weapons can share a designation, as the Beretta M9 and
+                # the Steyr M9 both being "M9", and the guard would drop
+                # the row that carries the twist.
+                if not target.get("cartridge_id"):
+                    target["cartridge_id"], _ = chambering.resolve(
+                        row.get("chambering", ""), chambering_index, chambering_aliases
+                    )
                 if owner.get(key, target["weapon_id"]) != target["weapon_id"]:
                     ambiguous += 1
                     continue
@@ -186,7 +211,9 @@ def main():
             # stored only when a source states it; otherwise the chambering
             # standard applies, which is the same value with its own
             # provenance.
-            cartridge_id = by_cart.get(normalise(row.get("chambering", "")), "")
+            cartridge_id, _candidates = chambering.resolve(
+                row.get("chambering", ""), chambering_index, chambering_aliases
+            )
             if not row.get("chambering") and value <= 0:
                 standard_only += 1
                 continue
@@ -238,6 +265,27 @@ def main():
             by_key[key] = record
             created += 1
 
+    # A designation row can name a record that a later row creates, so the
+    # alias attach in the main loop can miss it. Every record exists now,
+    # so attach the remaining aliases and converge in one run.
+    for path in FILES:
+        if not path.exists():
+            continue
+        for row in json.loads(path.read_text(encoding="utf-8"))["designations"]:
+            key = normalise(row.get("designation", ""))
+            if len(key) < 2:
+                continue
+            target = by_key.get(normalise(row.get("weapon_key", ""))) or by_key.get(key)
+            if target is None:
+                continue
+            if owner.get(key, target["weapon_id"]) != target["weapon_id"]:
+                continue
+            if key not in target.get("aliases", []) and key != target["weapon_id"]:
+                target.setdefault("aliases", [])
+                target["aliases"] = sorted(set(target["aliases"]) | {key})
+                owner[key] = target["weapon_id"]
+                aliased += 1
+
     # A maker slug never leads the key: the maker is a field. A record
     # whose key carries it is renamed, and the old form stays an alias, so
     # a mod classname that carries the maker still matches.
@@ -248,7 +296,7 @@ def main():
         wid = record["weapon_id"]
         if not maker or not wid.startswith(maker) or len(wid) <= len(maker) + 2:
             continue
-        new_id = wid[len(maker):]
+        new_id = wid[len(maker) :]
         if new_id in taken:
             continue
         taken.discard(wid)

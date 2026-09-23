@@ -3938,6 +3938,17 @@
   "date": "2026-09-22"
  },
  {
+  "entity": "tikkat3",
+  "field": "twist_m",
+  "value_a": 0.2794,
+  "source_a": "tikka_t3x_manual",
+  "value_b": 0.2032,
+  "source_b": "tikka_t3x_manual",
+  "resolution": "Kept the existing value. Recorded both.",
+  "rule_applied": "Two sources disagree. It is recorded, never averaged.",
+  "date": "2026-09-22"
+ },
+ {
   "entity": "9x19",
   "field": "max_pressure_mpa",
   "value_a": 235,
