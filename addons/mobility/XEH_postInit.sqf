@@ -45,3 +45,36 @@ if (GVAR(rolloverEnabled)) then {
 
     AEE_LOG_INFO("vehicle rollover PFH started");
 };
+
+// Per-frame off-road terrain drag (#117): slow a vehicle on rough or soft
+// ground with a force opposing its motion.  The terrain factor is a pure
+// function of the surface and the shared ground state, so every machine
+// computes the same value; the force is applied on the machine that owns
+// the vehicle.  The candidate list is shared with the rollover loop.
+if (GVAR(terrainDragEnabled)) then {
+    GVAR(terrainVehicles) = [];
+    GVAR(terrainRefresh) = -1;
+
+    GVAR(terrainDragPFH) = [{
+        private _ref = [worldSize / 2, worldSize / 2, 0];
+        private _player = call CBA_fnc_currentUnit;
+        if (!isNil "_player" && {!isNull _player}) then {
+            _ref = getPosATL _player;
+        };
+
+        if ((time - GVAR(terrainRefresh)) > 5) then {
+            GVAR(terrainVehicles) = vehicles select {
+                (alive _x) && {!(_x isKindOf "Air")}
+            };
+            GVAR(terrainRefresh) = time;
+        };
+
+        {
+            if ((_x distance _ref) < GVAR(terrainRadius)) then {
+                [_x] call FUNC(applyTerrainDrag);
+            };
+        } forEach GVAR(terrainVehicles);
+    }, 0] call CBA_fnc_addPerFrameHandler;
+
+    AEE_LOG_INFO("terrain drag PFH started");
+};

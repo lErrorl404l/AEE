@@ -169,6 +169,30 @@
             <Original>Route Recovery Rate</Original>
             <English>Route Recovery Rate</English>
         </Key>
+        <Key ID="STR_AEE_Mobility_terrainDragEnabled_Description">
+            <Original>Slow a vehicle on rough or soft ground by applying a drag force opposing its motion. The force comes from a per-surface speed factor: road 1.00, field 0.40 to 0.55, woodland 0.25 to 0.40, sand 0.15 to 0.30, swamp 0.10 to 0.20. The engine has no command that caps a driven vehicle's speed, so a physical force is used, applied on the driver's machine.</Original>
+            <English>Slow a vehicle on rough or soft ground by applying a drag force opposing its motion. The force comes from a per-surface speed factor: road 1.00, field 0.40 to 0.55, woodland 0.25 to 0.40, sand 0.15 to 0.30, swamp 0.10 to 0.20. The engine has no command that caps a driven vehicle's speed, so a physical force is used, applied on the driver's machine.</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_terrainDragEnabled_Name">
+            <Original>Terrain Speed Drag</Original>
+            <English>Terrain Speed Drag</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_terrainDragScale_Description">
+            <Original>Strength of the terrain drag force, per unit of overspeed above the surface's target speed, scaled by vehicle mass. A higher value pulls the vehicle to the target speed faster. The force is applied only above the target, so a slow vehicle is never dragged to a stop.</Original>
+            <English>Strength of the terrain drag force, per unit of overspeed above the surface's target speed, scaled by vehicle mass. A higher value pulls the vehicle to the target speed faster. The force is applied only above the target, so a slow vehicle is never dragged to a stop.</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_terrainDragScale_Name">
+            <Original>Terrain Drag Strength</Original>
+            <English>Terrain Drag Strength</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_terrainRadius_Description">
+            <Original>Distance in metres within which the terrain drag check runs. The candidate vehicle list is cached and refreshed every 5 seconds, so the loop does not scan the world every frame.</Original>
+            <English>Distance in metres within which the terrain drag check runs. The candidate vehicle list is cached and refreshed every 5 seconds, so the loop does not scan the world every frame.</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_terrainRadius_Name">
+            <Original>Terrain Check Radius</Original>
+            <English>Terrain Check Radius</English>
+        </Key>
         <Key ID="STR_AEE_Mobility_tidalReach_m_Description">
             <Original>Distance in metres inland that the tide raises the river level. Full tidal amplitude at the coast, falling to zero at this distance.</Original>
             <English>Distance in metres inland that the tide raises the river level. Full tidal amplitude at the coast, falling to zero at this distance.</English>
