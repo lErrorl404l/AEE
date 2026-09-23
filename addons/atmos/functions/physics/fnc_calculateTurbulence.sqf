@@ -47,7 +47,7 @@ if (_windSpd > 5) then {
 
 // ─── Convective (thermal-driven) ────────────────────────────────────────
 private _convective = 0;
-private _temp = EGVAR(core,currentTemperature);
+private _temp = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 if (isNil "_temp") then { _temp = 20; };
 
 // Hot surface + clear skies — strong thermals

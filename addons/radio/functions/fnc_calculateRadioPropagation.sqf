@@ -26,9 +26,9 @@ Stored in QGVAR(radioPropagationIndex) for consumption by radio/TFAR
 integration and AI communication-range modelling.
 */
 
-private _T   = EGVAR(core,currentTemperature);
-private _RH  = EGVAR(core,currentHumidity);
-private _P   = EGVAR(core,currentPressure);
+private _T   = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
+private _RH  = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
+private _P   = missionNamespace getVariable [QEGVAR(core,currentPressure), 1013.25];
 
 // The propagation index feeds only the ACRE2 and TFAR compat layers.
 // Without either host mod there is no consumer, so exit early with the
@@ -150,7 +150,7 @@ if (_freqHz < 30e6) then {
 };
 
 // Terrain/obstruction excess loss (open 0, urban/forest higher)
-private _biome = EGVAR(core,biome);
+private _biome = missionNamespace getVariable [QEGVAR(core,biome), "Cfb"];
 private _terrainLoss = 0;
 if (!isNil "_biome") then {
     if (_biome in ["UMa", "Uhd", "Uhb", "Uhi", "Cfa", "Cfb", "Cfc", "Dfa", "Dfb"]) then {
@@ -170,7 +170,7 @@ _index = _index max 0.3 min _propRange;
 
 missionNamespace setVariable [QGVAR(radioPropagationIndex), _index];
 
-if (EGVAR(core,diagnostic)) then {
+if (missionNamespace getVariable [QEGVAR(core,diagnostic), false]) then {
     diag_log text format [
         "[AEE] RadioPropagation: %1 (FSPL %2 dB | duct %3 dB | terrain %4 dB | link %5 dBm)",
         [_index, 2] call CBA_fnc_formatNumber,

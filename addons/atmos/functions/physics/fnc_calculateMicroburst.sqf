@@ -19,8 +19,8 @@ Sets:
 
 // ─── Inputs ──────────────────────────────────────────────────────────────
 private _overcast  = overcast;
-private _temp      = EGVAR(core,currentTemperature);
-private _RH        = EGVAR(core,currentHumidity);
+private _temp      = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
+private _RH        = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
 
 if (isNil "_temp") then { _temp = 20; };
 if (isNil "_RH")   then { _RH   = 50; };

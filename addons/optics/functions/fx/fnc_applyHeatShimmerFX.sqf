@@ -11,7 +11,7 @@ Computes and stores the heat shimmer ChromAberration intensity in
 QGVAR(shimmerChroma); application is handled by fnc_managePostProcess.
 */
 
-if (!EGVAR(core,opticsEnabled)) exitWith {};
+if (!(missionNamespace getVariable [QEGVAR(core,opticsEnabled), true])) exitWith {};
 
 private _shimmer = missionNamespace getVariable [QGVAR(vehicleHeatShimmerIntensity), 0];
 if !(_shimmer isEqualType 0) then { _shimmer = 0; };

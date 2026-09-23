@@ -1,9 +1,9 @@
 #include "..\script_component.hpp"
 
 private _rho = GVAR(currentAirDensity);
-private _T = EGVAR(core,currentTemperature);
-private _P = EGVAR(core,currentPressure);
-private _RH = EGVAR(core,currentHumidity);
+private _T = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
+private _P = missionNamespace getVariable [QEGVAR(core,currentPressure), 1013.25];
+private _RH = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
 private _biome = GVAR(biome);
 private _biomeName = GVAR(biomeName);
 

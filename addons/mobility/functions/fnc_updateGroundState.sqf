@@ -33,8 +33,8 @@ if (_posASL isEqualTo []) then {
 };
 
 // ─── Inputs ───────────────────────────────────────────────────────────
-private _T = EGVAR(core,currentTemperature);
-private _biome = EGVAR(core,biome);
+private _T = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
+private _biome = missionNamespace getVariable [QEGVAR(core,biome), "Cfb"];
 private _windSpeed = vectorMagnitude wind;
 
 private _surface = "";

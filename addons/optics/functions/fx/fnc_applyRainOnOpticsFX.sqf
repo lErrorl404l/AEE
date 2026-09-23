@@ -12,7 +12,7 @@ rain blur intensity in QGVAR(rainBlur); application is handled by
 fnc_managePostProcess.
 */
 
-if (!EGVAR(core,opticsEnabled)) exitWith {};
+if (!(missionNamespace getVariable [QEGVAR(core,opticsEnabled), true])) exitWith {};
 
 private _accum  = missionNamespace getVariable [QGVAR(rainOnOptics), 0];
 private _player = call CBA_fnc_currentUnit;

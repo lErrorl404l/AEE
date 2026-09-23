@@ -26,7 +26,7 @@ Anti-flicker:
 Gates on EGVAR(core,opticsEnabled).  Sets nothing except the effects.
 */
 
-if (!EGVAR(core,opticsEnabled)) exitWith {};
+if (!(missionNamespace getVariable [QEGVAR(core,opticsEnabled), true])) exitWith {};
 
 private _player = call CBA_fnc_currentUnit;
 // Run in the player's own view: on foot (cameraOn == player) or in

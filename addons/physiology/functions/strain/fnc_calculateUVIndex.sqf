@@ -38,8 +38,10 @@ if (_sinElev > 0.001) then {
 
 // ─── Altitude bonus: +10 % per 1000 m
 private _player = call CBA_fnc_currentUnit;
-private _altitude = EGVAR(core,referenceAltitude);
-if (isNil "_altitude") then { _altitude = 0; };
+// The reference altitude the core publishes. A bare EGVAR() use reads an
+// undefined variable and returns nil.
+private _altitude = missionNamespace getVariable [QEGVAR(core,referenceAltitude), 0];
+if !(_altitude isEqualType 0) then { _altitude = 0; };
 if (!isNil "_player") then { _altitude = (getPosASL _player) select 2; };
 private _altFactor = 1 + (_altitude / 1000) * 0.1;
 

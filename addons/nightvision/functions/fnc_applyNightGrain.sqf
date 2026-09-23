@@ -15,7 +15,7 @@ The grain simulates the eye's noise floor in low light and the
 visual degradation from precipitation obscuring the view.
 */
 
-if (!EGVAR(core,opticsEnabled)) exitWith {};
+if (!(missionNamespace getVariable [QEGVAR(core,opticsEnabled), true])) exitWith {};
 
 private _player = call CBA_fnc_currentUnit;
 // Run in the player's own view: on foot (cameraOn == player) or in

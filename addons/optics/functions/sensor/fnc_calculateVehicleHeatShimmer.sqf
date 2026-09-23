@@ -17,7 +17,7 @@ visual post-process systems.
 params [["_unit", objNull, [objNull]]];
 if (isNull _unit) exitWith { 0 };  // no unit on dedicated server
 
-if (!EGVAR(core,opticsEnabled)) exitWith {
+if (!(missionNamespace getVariable [QEGVAR(core,opticsEnabled), true])) exitWith {
     missionNamespace setVariable [QGVAR(vehicleHeatShimmerIntensity), 0];
     0
 };

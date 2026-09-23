@@ -17,7 +17,7 @@ Reference values:
   • Combined with slight radial blur for periphery wash
 */
 
-if (!EGVAR(core,opticsEnabled)) exitWith {};
+if (!(missionNamespace getVariable [QEGVAR(core,opticsEnabled), true])) exitWith {};
 
 private _blindness = missionNamespace getVariable [QGVAR(snowBlindness), 0];
 private _player    = call CBA_fnc_currentUnit;

@@ -11,10 +11,10 @@ Returns cloud ceiling in metres.
 */
 
 // ─── Inputs ──────────────────────────────────────────────────────────────
-private _temp = EGVAR(core,currentTemperature);
+private _temp = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 if (isNil "_temp") then { _temp = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15]; };
 
-private _rh = EGVAR(core,currentHumidity);
+private _rh = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
 if (isNil "_rh") then { _rh = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50]; };
 
 private _overcast = overcast;

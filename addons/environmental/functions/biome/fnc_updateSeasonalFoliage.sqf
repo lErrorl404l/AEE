@@ -10,7 +10,7 @@ Stored in GVAR(currentFoliageDensity) for use by concealment
 modifiers, sound-propagation, and visual-seasonal systems.
 */
 
-private _biome = EGVAR(core,biome);
+private _biome = missionNamespace getVariable [QEGVAR(core,biome), "Cfb"];
 if (isNil "_biome" || _biome == "") then { _biome = "Cfb"; };
 
 private _monthIdx = ((date select 1) - 1) max 0 min 11; // 0‑based

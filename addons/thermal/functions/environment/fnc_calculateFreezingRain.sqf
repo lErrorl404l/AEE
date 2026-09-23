@@ -23,8 +23,8 @@ private _severity   = 0;
 
 if (_T_C < 0 && _rain > 0) then {
     // Warm-layer proxy: thick overcast + low altitude
-    private _altitude = EGVAR(core,referenceAltitude);
-    if (isNil "_altitude") then { _altitude = 0; };
+    private _altitude = missionNamespace getVariable [QEGVAR(core,referenceAltitude), 0];
+    if !(_altitude isEqualType 0) then { _altitude = 0; };
 
     if (overcast > 0.6 && _altitude < 500) then {
         _isFreezing = true;

@@ -21,7 +21,7 @@ GVAR(scentDispersionDir) (degrees, downwind direction).
 params [];
 
 // ─── Inputs ────────────────────────────────────────────────────────────────
-private _wind = EGVAR(core,currentWind);
+private _wind = missionNamespace getVariable [QEGVAR(core,currentWind), [0, 0]];
 if (isNil "_wind") exitWith { 0 };
 
 // currentWind is a velocity VECTOR, not [speed, direction].  Speed is the
@@ -29,8 +29,8 @@ if (isNil "_wind") exitWith { 0 };
 private _windSpeed = vectorMagnitude _wind;
 private _windDir   = missionNamespace getVariable [QEGVAR(core,currentWindDir), 0];
 
-private _temp       = EGVAR(core,currentTemperature);
-private _humidity   = EGVAR(core,currentHumidity);
+private _temp       = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
+private _humidity   = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
 
 private _groundState = missionNamespace getVariable [QEGVAR(core,groundState), "Normal"];
 

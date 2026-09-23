@@ -19,7 +19,7 @@ Adapted from TPW MODS heat haze and vanilla Arma 3 heatDistortion
 effect patterns.
 */
 
-if (!EGVAR(core,opticsEnabled)) exitWith {};
+if (!(missionNamespace getVariable [QEGVAR(core,opticsEnabled), true])) exitWith {};
 
 private _intensity = missionNamespace getVariable [QGVAR(mirageIntensity), 0];
 private _player    = call CBA_fnc_currentUnit;

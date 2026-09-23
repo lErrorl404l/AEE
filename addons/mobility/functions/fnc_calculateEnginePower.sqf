@@ -30,7 +30,7 @@ if ((count _pos) >= 3) then {
     };
 };
 
-private _T = EGVAR(core,currentTemperature);
+private _T = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 if (isNil "_T") then { _T = 15 };
 
 // ─── Battery cold-start gating (issue #36) ────────────────────────────────
@@ -69,7 +69,7 @@ if (_crankSuccess <= 0) then { _turbo = 0; };
 missionNamespace setVariable [QGVAR(enginePowerModifier), _power];
 missionNamespace setVariable [QGVAR(engineTurboModifier), _turbo];
 
-if (EGVAR(core,diagnostic)) then {
+if (missionNamespace getVariable [QEGVAR(core,diagnostic), false]) then {
     diag_log text format [
         "[AEE] EnginePower: NA=%1 Turbo=%2 Crank=%3 (alt=%4 m, T=%5 °C, bat=%6)",
         [_power, 2] call CBA_fnc_formatNumber,

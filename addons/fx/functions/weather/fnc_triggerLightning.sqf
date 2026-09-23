@@ -11,7 +11,7 @@ Sets: nothing (side effect only — visual/audio)
 */
 
 // ─── Gate ────────────────────────────────────────────────────────────────
-if (!EGVAR(core,atmosphericEventsEnabled)) exitWith {};
+if (!(missionNamespace getVariable [QEGVAR(core,atmosphericEventsEnabled), true])) exitWith {};
 
 private _chance = missionNamespace getVariable [QGVAR(lightningFXChance), 0.05];
 private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];

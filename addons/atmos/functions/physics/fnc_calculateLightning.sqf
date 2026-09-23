@@ -32,7 +32,7 @@ if ((_overrideType != "") && (time < _overrideUntil)) then {
     };
     if (_overrideType == "thunderstorm") then {
         missionNamespace setVariable [QEGVAR(core,currentLightningRisk), _overrideIntensity];
-        missionNamespace setVariable [QGVAR(lastTemperature), EGVAR(core,currentTemperature)];
+        missionNamespace setVariable [QGVAR(lastTemperature), missionNamespace getVariable [QEGVAR(core,currentTemperature), 15]];
         _overridden = true;
     };
 };
@@ -40,8 +40,8 @@ if (_overridden) exitWith {};
 
 private _overcast = overcast;
 private _rain = rain;
-private _RH = EGVAR(core,currentHumidity);
-private _temp = EGVAR(core,currentTemperature);
+private _RH = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
+private _temp = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 
 if (isNil "_RH")   then { _RH = 50; };
 if (isNil "_temp") then { _temp = 20; };

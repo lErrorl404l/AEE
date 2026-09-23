@@ -20,7 +20,7 @@ This is distinct from heat shimmer (vehicle/engine) which uses
 the same effect but driven by different state.
 */
 
-if (!EGVAR(core,opticsEnabled)) exitWith {};
+if (!(missionNamespace getVariable [QEGVAR(core,opticsEnabled), true])) exitWith {};
 
 private _seeing    = missionNamespace getVariable [QGVAR(atmosphericSeeing), 0.2];
 private _player    = call CBA_fnc_currentUnit;

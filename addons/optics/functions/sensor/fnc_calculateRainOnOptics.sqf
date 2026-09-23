@@ -19,7 +19,7 @@ Stored in QGVAR(rainOnOptics) for consumption by visual overlay systems.
 
 params [];
 
-if (!EGVAR(core,opticsEnabled)) exitWith {
+if (!(missionNamespace getVariable [QEGVAR(core,opticsEnabled), true])) exitWith {
     missionNamespace setVariable [QGVAR(rainOnOptics), 0];
     0
 };

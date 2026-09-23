@@ -15,7 +15,7 @@ Reads:   rain (engine variable), wind
 Emits:   Billboard water-drop particles in a circle around player
 */
 
-if (!EGVAR(core,enabled)) exitWith {};
+if (!(missionNamespace getVariable [QEGVAR(core,enabled), true])) exitWith {};
 
 private _player = call CBA_fnc_currentUnit;
 // Run in the player's own view: on foot (cameraOn == player) or in

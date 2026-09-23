@@ -104,7 +104,7 @@ private _concealment = ((_factor - _snowPenalty) max 0) min 1;
 missionNamespace setVariable [QGVAR(concealmentFactor), _concealment];
 missionNamespace setVariable [QGVAR(concealmentClass), _class];
 
-if (EGVAR(core,diagnostic)) then {
+if (missionNamespace getVariable [QEGVAR(core,diagnostic), false]) then {
     diag_log text format [
         "[AEE] Concealment: %1 (%2) foliage=%3 crop=%4 snow=%5",
         [_concealment, 2] call CBA_fnc_formatNumber, _class,

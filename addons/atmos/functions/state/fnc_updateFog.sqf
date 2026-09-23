@@ -20,7 +20,7 @@ if (!isServer) exitWith {};
 
 private _month = date select 1;
 
-private _biome = EGVAR(core,biome);
+private _biome = missionNamespace getVariable [QEGVAR(core,biome), "Cfb"];
 if (isNil "_biome" || _biome == "") exitWith {};
 
 private _normals = [_biome] call EFUNC(environmental,getClimateNormals);

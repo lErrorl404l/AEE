@@ -31,7 +31,7 @@ Returns true when a source was started.
 
 params [["_unit", call CBA_fnc_currentUnit, [objNull]]];
 if (isNull _unit || !alive _unit) exitWith { false };
-if (!(EGVAR(core,enabled))) exitWith { false };
+if (!(missionNamespace getVariable [QEGVAR(core,enabled), true])) exitWith { false };
 
 // On foot only: a vehicle already has its own kickup.
 if (!isNull objectParent _unit) exitWith { false };

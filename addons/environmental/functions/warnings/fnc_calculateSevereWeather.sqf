@@ -35,7 +35,7 @@ if ((_overrideType != "") && (time < _overrideUntil)) then {
 };
 if (_overridden) exitWith {};
 
-private _biome       = EGVAR(core,biome);
+private _biome       = missionNamespace getVariable [QEGVAR(core,biome), "Cfb"];
 private _windSpd     = vectorMagnitude wind;
 private _rain        = rain;
 private _temp        = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];

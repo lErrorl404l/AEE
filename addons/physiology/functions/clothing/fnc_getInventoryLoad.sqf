@@ -50,7 +50,10 @@ private _total = 0;
 private _resolvers = missionNamespace getVariable [QGVAR(massResolvers), []];
 private _resolve = {
     params ["_item", ["_category", "", [""]]];
-    private _mass = [_item, _category] call FUNC(getItemMass);
+    // getItemMass takes the LIST of categories it may match, so one
+    // category is a one-element list. Passing the bare string threw in
+    // params every time an item needed a category-restricted lookup.
+    private _mass = [_item, [_category]] call FUNC(getItemMass);
     if (_mass <= 0) then {
         {
             _mass = [_item] call _x;

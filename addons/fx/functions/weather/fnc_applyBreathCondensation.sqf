@@ -11,7 +11,7 @@ Uses #particlesource with lifecycle management.  Stacking guard
 via QGVAR(breathCondensation) mission variable.
 */
 
-if (!EGVAR(core,environmentalEnabled)) exitWith {};
+if (!(missionNamespace getVariable [QEGVAR(core,environmentalEnabled), true])) exitWith {};
 
 private _temp      = missionNamespace getVariable [QEGVAR(core,currentTemperature), 20];
 private _windSpeed = vectorMagnitude wind;

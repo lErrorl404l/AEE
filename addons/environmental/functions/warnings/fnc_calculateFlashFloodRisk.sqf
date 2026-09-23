@@ -23,7 +23,7 @@ Stored in QGVAR(flashFloodRisk).
 
 private _rainRate  = missionNamespace getVariable [QGVAR(rainRateOverride), rain];
 private _rainAccum = missionNamespace getVariable [QEGVAR(core,rainAccum), 0];
-private _biome     = EGVAR(core,biome);
+private _biome     = missionNamespace getVariable [QEGVAR(core,biome), "Cfb"];
 
 if (isNil "_rainRate") then { _rainRate = 0; };
 
@@ -54,7 +54,7 @@ _risk = _risk max 0 min 1;
 
 missionNamespace setVariable [QGVAR(flashFloodRisk), _risk];
 
-if (_risk > 0.6 && (EGVAR(core,diagnostic))) then {
+if (_risk > 0.6 && (missionNamespace getVariable [QEGVAR(core,diagnostic), false])) then {
     diag_log text "[AEE] HIGH FLASH FLOOD RISK — reduce vehicle movement, monitor low-lying areas";
 };
 
