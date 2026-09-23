@@ -276,6 +276,21 @@ follow the variable names as written in the SQF source.
 
 ## Settings
 
+### Diagnostics switches
+
+These registered settings gate the DEBUG and TRACE log lines. The
+`AEE_LOG_DEBUG` and `AEE_LOG_TRACE` macros test `aee_core_logDebug`, and
+per module the name built from the component (`aee_ballistics_logDebug`,
+`aee_physiology_logDebug`, `aee_fx_logDebug`). A mission or the debug
+console may set any of them directly.
+
+| Variable | Purpose |
+|---|---|
+| `aee_core_logDebug` | Master switch for DEBUG and TRACE lines |
+| `aee_ballistics_logDebug` | Trace shot resolution alone |
+| `aee_physiology_logDebug` | Trace the carried load and the item masses |
+| `aee_fx_logDebug` | Trace the effect emitters |
+
 129 settings register in the CBA settings interface, one category per
 module plus the per-topic subs: AEE (core), AEE Optics (Intensity,
 Thresholds, Particles, Atmosphere), AEE Physiology (Rates, Thresholds,

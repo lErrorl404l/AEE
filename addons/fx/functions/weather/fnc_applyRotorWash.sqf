@@ -26,7 +26,7 @@ Returns true when a source was started.
 
 params [["_aircraft", vehicle (call CBA_fnc_currentUnit), [objNull]]];
 if (isNull _aircraft || !alive _aircraft) exitWith { false };
-if (!(EGVAR(core,enabled)) || !(GVAR(enabled))) exitWith { false };
+if (!(EGVAR(core,enabled))) exitWith { false };
 
 // Helicopters only: a fixed-wing rotor wash is not this phenomenon.
 if !(_aircraft isKindOf "Helicopter") exitWith { false };
