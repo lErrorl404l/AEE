@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       issues: read
-      projects: write
+      repository-projects: write
     steps:
       - name: Sync labels to project board fields
         uses: actions/github-script@v7
