@@ -1,0 +1,1070 @@
+{
+  "retrieved": "2026-09-23",
+  "note": "Device-layer mass capture (night vision, thermal, laser, light, optic, suppressor, rangefinder, GPS, designator). All masses from manufacturer datasheets, manufacturer product pages, or military documents downloaded and hashed here. Tier 5 pages go to leads only.",
+  "sources": [
+    {
+      "source_id": "l3harris_pvs31a",
+      "title": "AN/PVS-31A BNVD White Phosphor datasheet",
+      "url": "https://www.l3harris.com/sites/default/files/2020-09/cs-ivs-an-pvs-31a-bnvd-datasheet_0.pdf",
+      "sha256": "88ce46d84f815354585c0e2a486c64e5b29a5185058ce4611c61809e4e9ac6fa",
+      "publisher": "L3Harris Technologies",
+      "tier": 4
+    },
+    {
+      "source_id": "l3harris_gpnvg",
+      "title": "GPNVG White Phosphor spec sheet",
+      "url": "https://www.l3harris.com/sites/default/files/2025-01/cs-ivs-white-phosphor-ground-panoramic-night-vision-gpnvg-spec-sheet.pdf",
+      "sha256": "783a87f6a7c06cfbc6b52bab1f8a5e9acfc11f14756b4ca3bf401cdb48207151",
+      "publisher": "L3Harris Technologies",
+      "tier": 4
+    },
+    {
+      "source_id": "wilcox_g24",
+      "title": "Wilcox TDS271 G24 breakaway NVG mount technical data sheet",
+      "url": "https://wilcoxind.com/backend/wp-content/uploads/2021/01/Wilcox-TDS271-G24-MOUNT.pdf",
+      "sha256": "7918fc343d2a8995bc5bdec5aed00e239738824d19e3d8c874c06bfced90b4d0",
+      "publisher": "Wilcox Industries",
+      "tier": 4
+    },
+    {
+      "source_id": "elbit_pvs14",
+      "title": "AN/PVS-14 (F6015) monocular night vision device datasheet",
+      "url": "https://440148.fs1.hubspotusercontent-na1.net/hubfs/440148/Website/Data%20Sheets/Night%20Vision/ElbitAmerica_Datasheet_AN-PVS-14%20GENERIC.pdf",
+      "sha256": "468267429e44ddf74b6a7f2ab07804c21a03090f0705c530a3b15773d7519fef",
+      "publisher": "Elbit Systems of America",
+      "tier": 4
+    },
+    {
+      "source_id": "l3harris_pvs14",
+      "title": "AN/PVS-14 M914A White Phosphor datasheet",
+      "url": "https://rtkllc.com/content/cs-ivs-an-pvs-14-m914a-datasheet.pdf",
+      "sha256": "0b983abaa218c42791cfb2c30468ce6d5fdc62be170093950acac4e8a2b3c5e5",
+      "publisher": "L3Harris Technologies",
+      "tier": 4
+    },
+    {
+      "source_id": "elbit_pvs7",
+      "title": "AN/PVS-7D (F5001) bi-ocular night vision device datasheet",
+      "url": "https://f.hubspotusercontent40.net/hubfs/440148/Website/Data%20Sheets/Night%20Vision/ElbitAmerica_Datasheet_AN-PVS-7D%20GENERIC.pdf",
+      "sha256": "1fa6238d8d944a66f309b7dfd42c125c6a6cdcf22164f65b2d6935b3db77b5b2",
+      "publisher": "Elbit Systems of America",
+      "tier": 4
+    },
+    {
+      "source_id": "elbit_avs9",
+      "title": "AN/AVS-9 (F4949) aviation night vision goggle datasheet",
+      "url": "https://440148.fs1.hubspotusercontent-na1.net/hubfs/440148/Website/Data%20Sheets/Night%20Vision/ElbitAmerica_Datasheet_AN-AVS-9%20GENERIC.pdf",
+      "sha256": "de4e7e9804f0fbdc31d293d224df448df8d32184987b8e868a487542008b14ea",
+      "publisher": "Elbit Systems of America",
+      "tier": 4
+    },
+    {
+      "source_id": "elbit_envgb",
+      "title": "ENVG-B MDS-F6025 marketing data sheet",
+      "url": "https://cdn2.hubspot.net/hubfs/440148/Engagement%20Kits/AAAA%202000/Marketing-Datasheet-System-ENVG-B%20REV%20-.pdf",
+      "sha256": "b300d223527a7ebd46fda97f5f9a5c3676846f395c363a4dbde88aee9479c62c",
+      "publisher": "Elbit Systems of America (night vision division)",
+      "tier": 4
+    },
+    {
+      "source_id": "l3harris_peq15",
+      "title": "AN/PEQ-15 ATPIAL spec sheet",
+      "url": "https://www.l3harris.com/sites/default/files/2021-02/cs-ivs-an-peq-15-advanced-target-pointer-illuminator-aiming-laser-atpial-spec-sheet.pdf",
+      "sha256": "1a95223c97cc27483f105c5ef3473cfd956ec6e75f5df6512fb97c5331aa1edd",
+      "publisher": "L3Harris Technologies",
+      "tier": 4
+    },
+    {
+      "source_id": "bemeyers_mawl",
+      "title": "MAWL-C1 product specifications page",
+      "url": "https://www.bemeyers.com/mawl-c1",
+      "sha256": "6fc4c4f3df0b47d436037605a9c70410d75ac3fcd9bb929cd8cba4cf2c1b7374",
+      "publisher": "B.E. Meyers & Co.",
+      "tier": 4
+    },
+    {
+      "source_id": "surefire_m600v",
+      "title": "SureFire M600V Scout Light product page",
+      "url": "https://www.surefire.com/m600v-scout-light-weaponlight/",
+      "sha256": "e9bef847a608db491738ae43a41510b8a50d0c6a2c939145743489468a44b6f5",
+      "publisher": "SureFire",
+      "tier": 4
+    },
+    {
+      "source_id": "surefire_socom556rc2",
+      "title": "SureFire SOCOM556-RC2 suppressor product page",
+      "url": "https://www.surefire.com/socom556-rc2/",
+      "sha256": "f3df5858b2917fba66220ce37bcf28a66bf83ed4e227ae93ce5e9aa0568b82d2",
+      "publisher": "SureFire",
+      "tier": 4
+    },
+    {
+      "source_id": "anvs_pvs15",
+      "title": "AN/PVS-15 (M953) White Phosphor datasheet",
+      "url": "https://anvsinc.com/wp-content/uploads/2019/06/AN_PVS-15_M953_WP_L3_WMS_Insight_r4.pdf",
+      "sha256": "2eb2ba5385ce71695fb191c55378455c00759161d737048fc3419e39c76b50aa",
+      "publisher": "ANVS Inc (night vision integrator)",
+      "tier": 4
+    },
+    {
+      "source_id": "l3harris_pvs31k",
+      "title": "AN/PVS-31K Super Gain BNVD sell sheet",
+      "url": "https://www.l3harris.com/sites/default/files/2021-03/cs-ivs-pvs-31k-super-gain-bnvd-white-phosphor-sell-sheet.pdf",
+      "sha256": "9b5cdb5ea657084e10d15ed859d3d4b7f623c67fedc1a563037bec611d303ee1",
+      "publisher": "L3Harris Technologies",
+      "tier": 4
+    },
+    {
+      "source_id": "l3harris_ngal",
+      "title": "Next Generation Aiming Laser (NGAL) sell sheet",
+      "url": "https://www.l3harris.com/sites/default/files/2021-01/cs-ivs-next-generation-aiming-laser-ngal-sell-sheet.pdf",
+      "sha256": "579a1bc0230ddd9444f9a761e2754925dd91f83571bc8f765a33e21b36c85fdb",
+      "publisher": "L3Harris Technologies",
+      "tier": 4
+    },
+    {
+      "source_id": "l3harris_spear",
+      "title": "Small Precision Enhanced Aiming Rangefinder (SPEAR) datasheet",
+      "url": "https://www.l3harris.com/sites/default/files/2021-08/cs-ivs-small-precision-enhanced-aiming-rangefinder-spear-datasheet.pdf",
+      "sha256": "88b80b45e24d5cf48e7854ac248adcf4d93d645850d36a7c31b91cc88280cb44",
+      "publisher": "L3Harris Technologies",
+      "tier": 4
+    },
+    {
+      "source_id": "insight_peq2a",
+      "title": "AN/PEQ-2A ITPIAL manufacturer datasheet (DefenseReview mirror of Insight Technology PDF)",
+      "url": "https://defensereview.com/1_31_2004/Insight%20Technology%20Incorporated%20AN-PEQ-2A%20Infrared%20Target%20Pointer-Illuminator-Aiming%20Laser.pdf",
+      "sha256": "508ce82c5578fddee4ef9fdafdd94ffcfe35bec50d29f10be545335ed4525237",
+      "publisher": "Insight Technology",
+      "tier": 4
+    },
+    {
+      "source_id": "steiner_dbal_a2",
+      "title": "AN/PEQ-15A DBAL-A2 product specifications comparison table",
+      "url": "https://www.steiner-optics.com/products/anpeq-15a-dbal-a2",
+      "sha256": "35af64faf22fbdb8e5280da4b183d17bdb4b614132178c1e8eed52be22bc3e35",
+      "publisher": "Steiner (Beretta Holding)",
+      "tier": 4
+    },
+    {
+      "source_id": "lockheed_javelin",
+      "title": "Javelin product card",
+      "url": "https://www.lockheedmartin.com/content/dam/lockheed-martin/mfc/pc/javelin/24-11303_TM_Javelin_Product_Card_R1_6.pdf",
+      "sha256": "8b81d9026c58edb9537848dec2dd561bdb8642709a5e4b812e11ed5ea3e8d16c",
+      "publisher": "Lockheed Martin",
+      "tier": 4
+    },
+    {
+      "source_id": "nightforce_atacr_1_8",
+      "title": "ATACR 1-8x24 F1 product page",
+      "url": "https://nightforceoptics.com/riflescopes/atacr/atacr-1-8x24-f1",
+      "sha256": "7aaf4ce2c2f33dc63a488b5825caeb179562a275d3da8ce1c4de65fb01a26eb0",
+      "publisher": "Nightforce Optics",
+      "tier": 4
+    },
+    {
+      "source_id": "vortex_razor_gen3",
+      "title": "Razor HD Gen III 1-10x24 riflescope product page",
+      "url": "https://vortexoptics.com/vortex-razor-hd-gen-iii-1-10x24-riflescope.html",
+      "sha256": "95e3b1904af57023cbec36a2750e6a4cee5fb14aa45dc34b2cc996f3fa8da2d2",
+      "publisher": "Vortex Optics",
+      "tier": 4
+    },
+    {
+      "source_id": "leupold_mark6",
+      "title": "Mark 6 3-18x44 M5C2 riflescope product page",
+      "url": "https://www.leupold.com/mark-6-3-18x44-m5c2-illum-ffp-tremor-2-riflescope",
+      "sha256": "adfbaa60d064f10636dacd47eedec9693444c921b3a8ac24f14a39e5128f306c",
+      "publisher": "Leupold & Stevens",
+      "tier": 4
+    },
+    {
+      "source_id": "surefire_x300ub",
+      "title": "SureFire X300U-B product page",
+      "url": "https://www.surefire.com/x300u-b/",
+      "sha256": "6e2228446bf0ed2f1752e855d71121e6711f52e4cfc89bb54dadbfeec82f0404",
+      "publisher": "SureFire",
+      "tier": 4
+    },
+    {
+      "source_id": "surefire_socom762rc2",
+      "title": "SureFire SOCOM762-RC2 suppressor product page",
+      "url": "https://www.surefire.com/socom762-rc2/",
+      "sha256": "8c1f0e0f1d127efa9ba6eb3384b3f08e7485b34e9042540804775413b18b2966",
+      "publisher": "SureFire",
+      "tier": 4
+    },
+    {
+      "source_id": "deadair_sandman_s",
+      "title": "Sandman-S product page",
+      "url": "https://www.deadairsilencers.com/sandman-s/",
+      "sha256": "ea7f2bd7d62109b69afe9381feedd193bcc3afe88514b8cfd5641695e0c34db2",
+      "publisher": "Dead Air Armament",
+      "tier": 4
+    },
+    {
+      "source_id": "kac_qdss_nt4",
+      "title": "5.56mm QDSS NT4 suppressor product page",
+      "url": "https://www.knightarmco.com/16373/shop/signature-reduction/rifle-suppressors/5-56mm/5-56mm-qdss-nt4",
+      "sha256": "7dce22180789975402e4bc1a712005c573526b8da7232efd23288e0638316bf5",
+      "publisher": "Knight's Armament Company",
+      "tier": 4
+    },
+    {
+      "source_id": "kac_m110_suppressor",
+      "title": "M110 Suppressor 7.62/.300 product page",
+      "url": "https://www.knightarmco.com/13487/shop/signature-reduction/rifle-suppressors/7-62mm/m110-suppressor-7-62-300",
+      "sha256": "31c5c2c3a8cf69d6bca1587f4ecfd6c87ff500bec21ebdc44f2fd5848c174201",
+      "publisher": "Knight's Armament Company",
+      "tier": 4
+    },
+    {
+      "source_id": "sightmark_wraith4k",
+      "tier": 4,
+      "title": "Sightmark Wraith 4K 3-24x50 digital riflescope specifications",
+      "publisher": "Sightmark",
+      "url": "https://sightmark.com/products/wraith-4k-3-24x50",
+      "retrieved": "2026-09-22",
+      "sha256": "e85bd440413a5ef01d469722c348709dd081b800f1f3b838b74bbca512e38482"
+    },
+    {
+      "source_id": "sightmark_wraithhd",
+      "tier": 4,
+      "title": "Sightmark Wraith HD 4-32x50 digital riflescope specifications",
+      "publisher": "Sightmark",
+      "url": "https://sightmark.com/products/wraith-hd-4-32x50",
+      "retrieved": "2026-09-22",
+      "sha256": "4d4c1c02353d73e0e615b48c033d59ce4d7c535bc0536cd273cca25b51bffab5"
+    },
+    {
+      "source_id": "bushnell_nitro10x42",
+      "tier": 4,
+      "title": "Bushnell Nitro 10x42 binocular specifications",
+      "publisher": "Bushnell",
+      "url": "https://www.bushnell.com/binoculars/nitro/Nitro-10x42-Binoculars/221042M.html",
+      "retrieved": "2026-09-22",
+      "sha256": "317e747e60c4c3c32bcfc24c31759b849961c85e2739b978bd176275cd5852a5"
+    },
+    {
+      "source_id": "rsregulate_akr",
+      "tier": 4,
+      "title": "RS Regulate AKR top rail product page",
+      "publisher": "RS Regulate",
+      "url": "https://rsregulate.com/product/akr/",
+      "retrieved": "2026-09-22",
+      "sha256": "347132fee9d53364ca792922218d1d0e3b51b2608ae005553048f5a80e6d7750"
+    },
+    {
+      "source_id": "rsregulate_ak301m",
+      "tier": 4,
+      "title": "RS Regulate AK-300 series side mount product page",
+      "publisher": "RS Regulate",
+      "url": "https://rsregulate.com/product/ak-300/",
+      "retrieved": "2026-09-22",
+      "sha256": "ce4f4be35d8f1a8b8d80765c01613cf30c92b17af8d217b70389b42be21f88fc"
+    },
+    {
+      "source_id": "holosun_aems",
+      "tier": 4,
+      "title": "Holosun AEMS Core enclosed emitter sight specifications",
+      "publisher": "Holosun",
+      "url": "https://holosun.com/products/red-dot-sights/aems/aems-core-2.html",
+      "retrieved": "2026-09-22",
+      "sha256": "9fea870b9f15a0aacbbba53338c103e37256e340d7494894541aaeee3a0670a8"
+    },
+    {
+      "source_id": "scalarworks_leap10",
+      "tier": 4,
+      "title": "Scalarworks LEAP/10 Aimpoint Duty RDS and CompM5s mount specifications",
+      "publisher": "Scalarworks",
+      "url": "https://scalarworks.com/shop/quick-detach-mounts/leap-10/",
+      "retrieved": "2026-09-22",
+      "sha256": "a02146aa712efc44b7289443a6608d2cb67f8e8b6f05eb55460d107c9ef4045e"
+    },
+    {
+      "source_id": "scalarworks_leap14",
+      "tier": 4,
+      "title": "Scalarworks LEAP/14 Trijicon ACOG mount specifications",
+      "publisher": "Scalarworks",
+      "url": "https://scalarworks.com/shop/quick-detach-mounts/leap-14/",
+      "retrieved": "2026-09-22",
+      "sha256": "3546c56fa497963499336a906720a6fd861e29e167805b9d1b377c512b956af4"
+    },
+    {
+      "source_id": "scalarworks_leap02",
+      "tier": 4,
+      "title": "Scalarworks LEAP/02 Aimpoint Micro mount specifications",
+      "publisher": "Scalarworks",
+      "url": "https://scalarworks.com/shop/quick-detach-mounts/leap-02/",
+      "retrieved": "2026-09-22",
+      "sha256": "138469475180258ae3e62456cc6dd56493cf679f35b1710e21c2f953c32a9967"
+    },
+    {
+      "source_id": "scalarworks_leap03",
+      "tier": 4,
+      "title": "Scalarworks LEAP/03 Aimpoint mount specifications",
+      "publisher": "Scalarworks",
+      "url": "https://scalarworks.com/shop/quick-detach-mounts/leap-03/",
+      "retrieved": "2026-09-22",
+      "sha256": "78283d3ffc9dae15dc2d4c0a336458e4d269b8424ac2109b843950b18628794a"
+    },
+    {
+      "source_id": "streamlight_protac_rm2",
+      "tier": 4,
+      "title": "Streamlight ProTac Rail Mount 2 product page",
+      "publisher": "Streamlight",
+      "url": "https://www.streamlight.com/products/detail/protac-rail-mount-2",
+      "retrieved": "2026-09-22",
+      "sha256": "6c60ec1c03f59357d7e13712a681b1575e50b74f8b0bf27e8e8ea5294ce9fe2f"
+    },
+    {
+      "source_id": "streamlight_protac_hlx",
+      "tier": 4,
+      "title": "Streamlight ProTac Rail Mount HL-X product page",
+      "publisher": "Streamlight",
+      "url": "https://www.streamlight.com/products/detail/protac-rail-mount-hl-x",
+      "retrieved": "2026-09-22",
+      "sha256": "1fd7e4ab01c48f55da2da98badf509f069f8cbba2998667214fcfb4b17f2e1a9"
+    },
+    {
+      "source_id": "streamlight_protac_20rm",
+      "tier": 4,
+      "title": "Streamlight ProTac 2.0 Rail Mount product page",
+      "publisher": "Streamlight",
+      "url": "https://www.streamlight.com/products/detail/protac-2-0-rail-mount",
+      "retrieved": "2026-09-22",
+      "sha256": "eb8e06bef607ace1a9e8539ba673382ca1b83b747fe3910c30c83282cddf4e3b"
+    },
+    {
+      "source_id": "streamlight_tlr1hl",
+      "tier": 4,
+      "title": "Streamlight TLR-1 HL product page",
+      "publisher": "Streamlight",
+      "url": "https://www.streamlight.com/products/detail/tlr-1-hl",
+      "retrieved": "2026-09-22",
+      "sha256": "baa7b8fef48b97b455aba5936f31c695671c0925f154cd2f143cfb1949998d21"
+    },
+    {
+      "source_id": "streamlight_tlr7x",
+      "tier": 4,
+      "title": "Streamlight TLR-7 X product page",
+      "publisher": "Streamlight",
+      "url": "https://www.streamlight.com/products/detail/tlr-7-x",
+      "retrieved": "2026-09-22",
+      "sha256": "73fc75646a337e7720a7cb28d7d4009d23ae0fc21c4b4c3926771eec321bfc04"
+    },
+    {
+      "source_id": "streamlight_protac_virpro",
+      "tier": 4,
+      "title": "Streamlight ProTac Rail Mount VIR product page",
+      "publisher": "Streamlight",
+      "url": "https://www.streamlight.com/products/detail/protac-rail-mount-vir-pro",
+      "retrieved": "2026-09-22",
+      "sha256": "714f303d427bb8cb417c33fbe8344a03209f0936ab53609698f245af283e5c2d"
+    },
+    {
+      "source_id": "holosun_507c",
+      "tier": 4,
+      "title": "Holosun HS507C X3 red dot sight specifications",
+      "publisher": "Holosun",
+      "url": "https://holosun.com/products/hs507c-x3-rd",
+      "retrieved": "2026-09-22",
+      "sha256": "33f0dde066ad44a3cb598418632c43aa233eed3acdc2ef6728848687cbc9885f"
+    },
+    {
+      "source_id": "holosun_hm3x",
+      "tier": 4,
+      "title": "Holosun HM3X magnifier specifications",
+      "publisher": "Holosun",
+      "url": "https://holosun.com/products/hm3x",
+      "retrieved": "2026-09-22",
+      "sha256": "dd7340b1dc6bd61d1c20410e90574983ef5ff942ce843d111ff1d4a0d03651bc"
+    },
+    {
+      "source_id": "holosun_hm3xt",
+      "tier": 4,
+      "title": "Holosun HM3XT magnifier specifications",
+      "publisher": "Holosun",
+      "url": "https://holosun.com/products/hm3xt",
+      "retrieved": "2026-09-22",
+      "sha256": "bddfebec74d0e8847d40ac1f26d2af9b140b65a80d80a01d27214abcbc463994"
+    },
+    {
+      "source_id": "holosun_drs_th",
+      "tier": 4,
+      "title": "Holosun DRS-TH thermal reflex sight specifications",
+      "publisher": "Holosun",
+      "url": "https://holosun.com/products/drs-th",
+      "retrieved": "2026-09-22",
+      "sha256": "97e5a0621e07564b5b2679d75b943190a79993f05a0f83b5f875baec934c0d8a"
+    },
+    {
+      "source_id": "holosun_aems_evo",
+      "tier": 4,
+      "title": "Holosun AEMS Evo Dual sight specifications",
+      "publisher": "Holosun",
+      "url": "https://holosun.com/products/aems-evo-dual",
+      "retrieved": "2026-09-22",
+      "sha256": "9fb47869e7152ead40afbf64df78d5909582ed21cdb74952e1703697bb06cdcb"
+    },
+    {
+      "source_id": "garmin_foretrex701",
+      "tier": 4,
+      "title": "Garmin Foretrex 701 Ballistic Edition product specifications",
+      "publisher": "Garmin",
+      "url": "https://www.garmin.com/en-US/p/583825/",
+      "retrieved": "2026-09-22",
+      "sha256": "d2144ae6088b5819e58c9e91a1bc10dabaafc799072f3988fd2d147692081d06"
+    }
+  ],
+  "items": [
+    {
+      "item": "AN/PVS-31A BNVD",
+      "category": "nv",
+      "family": "pvs31",
+      "mass_kg": 0.45,
+      "state": "with AA lithium battery",
+      "maker": "L3Harris",
+      "country": "US",
+      "era": "modern",
+      "note": "< 450 g (0.99 lb.) with AA Lithium",
+      "source_id": "l3harris_pvs31a"
+    },
+    {
+      "item": "GPNVG-18",
+      "category": "nv",
+      "family": "gpnvg",
+      "mass_kg": 0.8,
+      "state": "without accessories",
+      "maker": "L3Harris",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight                           < 800 g (28.2 ounces) without accessories",
+      "source_id": "l3harris_gpnvg"
+    },
+    {
+      "item": "Wilcox G24 NVG mount",
+      "category": "nv",
+      "family": "g24",
+      "mass_kg": 0.162,
+      "state": "mount only",
+      "maker": "Wilcox Industries",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight:                                                            162 g (5.7 oz)",
+      "source_id": "wilcox_g24"
+    },
+    {
+      "item": "AN/PVS-14",
+      "category": "nv",
+      "family": "pvs14",
+      "mass_kg": 0.35,
+      "state": "with battery (L3Harris figure)",
+      "maker": "L3Harris",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight                                                     350 g (0.77 lb.) with battery",
+      "source_id": "l3harris_pvs14"
+    },
+    {
+      "item": "AN/PVS-7D",
+      "category": "nv",
+      "family": "pvs7",
+      "mass_kg": 0.68,
+      "state": "maximum, batteries included not stated",
+      "maker": "Elbit Systems of America",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight                                                  680 g maximum",
+      "source_id": "elbit_pvs7"
+    },
+    {
+      "item": "AN/AVS-9",
+      "category": "nv",
+      "family": "avs9",
+      "mass_kg": 0.55,
+      "state": "binocular only, maximum",
+      "maker": "Elbit Systems of America",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight (binocular only)                                   550 g maximum",
+      "source_id": "elbit_avs9"
+    },
+    {
+      "item": "ENVG-B",
+      "category": "thermal",
+      "family": "envgb",
+      "mass_kg": 1.133,
+      "state": "binocular maximum, includes batteries and main components",
+      "maker": "Elbit Systems of America",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight of Binocular    < 1133g maximum (includes batteries and main components), ENVG-B goggle only: < 680g maximum",
+      "source_id": "elbit_envgb"
+    },
+    {
+      "item": "ENVG-B goggle",
+      "category": "thermal",
+      "family": "envgb",
+      "mass_kg": 0.68,
+      "state": "goggle only, maximum",
+      "maker": "Elbit Systems of America",
+      "country": "US",
+      "era": "modern",
+      "note": "ENVG-B goggle only: < 680g maximum",
+      "source_id": "elbit_envgb"
+    },
+    {
+      "item": "AN/PEQ-15 ATPIAL",
+      "category": "laser",
+      "family": "peq15",
+      "mass_kg": 0.2126,
+      "state": "with battery",
+      "maker": "L3Harris (Insight Technology)",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight                                                 7.5 oz. with battery",
+      "source_id": "l3harris_peq15"
+    },
+    {
+      "item": "MAWL-C1",
+      "category": "laser",
+      "family": "mawl",
+      "mass_kg": 0.315,
+      "state": "with batteries",
+      "maker": "B.E. Meyers & Co.",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight w/ Batteries    11.1 oz",
+      "source_id": "bemeyers_mawl"
+    },
+    {
+      "item": "MAWL-C1",
+      "category": "laser",
+      "family": "mawl",
+      "mass_kg": 0.298,
+      "state": "without batteries",
+      "maker": "B.E. Meyers & Co.",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight w/o Batteries   10.5 oz",
+      "source_id": "bemeyers_mawl"
+    },
+    {
+      "item": "SureFire M600V Scout Light",
+      "category": "light",
+      "family": "m600v",
+      "mass_kg": 0.136,
+      "state": "with batteries",
+      "maker": "SureFire",
+      "country": "US",
+      "era": "modern",
+      "note": "WEIGHT W/ BATTERIES 4.8 oz. (136 g)",
+      "source_id": "surefire_m600v"
+    },
+    {
+      "item": "SureFire SOCOM556-RC2",
+      "category": "suppressor",
+      "family": "socom",
+      "mass_kg": 0.482,
+      "state": "suppressor only, mount not included",
+      "maker": "SureFire",
+      "country": "US",
+      "era": "modern",
+      "note": "WEIGHT 17.0 oz (482 g)",
+      "source_id": "surefire_socom556rc2"
+    },
+    {
+      "item": "AN/PVS-15 (M953)",
+      "category": "nv",
+      "family": "pvs15",
+      "mass_kg": 0.7,
+      "state": "with battery",
+      "maker": "L3 Warrior Systems (via ANVS)",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight:                         < 700 g (1.55 lb.) with battery",
+      "source_id": "anvs_pvs15"
+    },
+    {
+      "item": "AN/PVS-31K BNVD",
+      "category": "nv",
+      "family": "pvs31",
+      "mass_kg": 0.45,
+      "state": "with AA lithium battery",
+      "maker": "L3Harris",
+      "country": "US",
+      "era": "modern",
+      "note": "< 450 g (0.99 lb.) with AA Lithium",
+      "source_id": "l3harris_pvs31k"
+    },
+    {
+      "item": "NGAL AN/PEQ-51",
+      "category": "laser",
+      "family": "ngal",
+      "mass_kg": 0.142,
+      "state": "with battery, maximum",
+      "maker": "L3Harris",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight                                                 < 5 oz. with battery",
+      "source_id": "l3harris_ngal"
+    },
+    {
+      "item": "SPEAR rangefinder",
+      "category": "rangefinder",
+      "family": "spear",
+      "mass_kg": 0.425,
+      "state": "with battery, maximum",
+      "maker": "L3Harris",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight                                                 \u2264 15 oz. with battery",
+      "source_id": "l3harris_spear"
+    },
+    {
+      "item": "AN/PEQ-2A ITPIAL",
+      "category": "laser",
+      "family": "peq2",
+      "mass_kg": 0.21,
+      "state": "complete, battery state not stated",
+      "maker": "Insight Technology",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight:                                                    210grams",
+      "source_id": "insight_peq2a"
+    },
+    {
+      "item": "Steiner DBAL-A2 (AN/PEQ-15A) PN 40090",
+      "category": "laser",
+      "family": "dbal",
+      "mass_kg": 0.2126,
+      "state": "with battery",
+      "maker": "Steiner",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight With Battery ... Aircraft Aluminum Black 7.5 oz 3.4 x 2.8 x 1.6 in",
+      "source_id": "steiner_dbal_a2"
+    },
+    {
+      "item": "Steiner DBAL-A2 (AN/PEQ-15A) PN 10004",
+      "category": "laser",
+      "family": "dbal",
+      "mass_kg": 0.2268,
+      "state": "with battery",
+      "maker": "Steiner",
+      "country": "US",
+      "era": "modern",
+      "note": "Submersible to 5 m QD HT Mount Yes Integrated Push Button Yes 8 oz 1 Year",
+      "source_id": "steiner_dbal_a2"
+    },
+    {
+      "item": "Javelin Command Launch Unit",
+      "category": "thermal",
+      "family": "javelin",
+      "mass_kg": 7.0,
+      "state": "CLU only, without missile",
+      "maker": "Raytheon/Lockheed Martin joint venture",
+      "country": "US",
+      "era": "modern",
+      "note": "WEIGHT:        25 lb (11.8 kg) missile / 15.4 lb (7.0 kg) CLU / 34 lb (15.5 kg) round",
+      "source_id": "lockheed_javelin"
+    },
+    {
+      "item": "Nightforce ATACR 1-8x24 F1",
+      "category": "optic",
+      "family": "atacr",
+      "mass_kg": 0.595,
+      "state": "scope only, no mount",
+      "maker": "Nightforce Optics",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight: 21.0 oz/595 g",
+      "source_id": "nightforce_atacr_1_8"
+    },
+    {
+      "item": "Vortex Razor HD Gen III 1-10x24",
+      "category": "optic",
+      "family": "razor",
+      "mass_kg": 0.61,
+      "state": "scope only, no mount",
+      "maker": "Vortex Optics",
+      "country": "US",
+      "era": "modern",
+      "note": "\"vx_weight\":{\"label\":\"Weight\",\"value\":\"21.5 oz\"}",
+      "source_id": "vortex_razor_gen3"
+    },
+    {
+      "item": "Leupold Mark 6 3-18x44",
+      "category": "optic",
+      "family": "mark6",
+      "mass_kg": 0.669,
+      "state": "scope only, no mount",
+      "maker": "Leupold & Stevens",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight (oz) | 23.6",
+      "source_id": "leupold_mark6"
+    },
+    {
+      "item": "SureFire X300U-B",
+      "category": "light",
+      "family": "x300",
+      "mass_kg": 0.116,
+      "state": "with batteries",
+      "maker": "SureFire",
+      "country": "US",
+      "era": "modern",
+      "note": "WEIGHT WITH BATTERIES 4.1 oz (116 g)",
+      "source_id": "surefire_x300ub"
+    },
+    {
+      "item": "SureFire SOCOM762-RC2",
+      "category": "suppressor",
+      "family": "socom",
+      "mass_kg": 0.595,
+      "state": "suppressor only, mount not included",
+      "maker": "SureFire",
+      "country": "US",
+      "era": "modern",
+      "note": "WEIGHT 21 oz (595 g)",
+      "source_id": "surefire_socom762rc2"
+    },
+    {
+      "item": "Dead Air Sandman-S",
+      "category": "suppressor",
+      "family": "sandman",
+      "mass_kg": 0.502,
+      "state": "suppressor only",
+      "maker": "Dead Air Armament",
+      "country": "US",
+      "era": "modern",
+      "note": "\"name\":\"Weight\",\"value\":\"17.7 ounces\"",
+      "source_id": "deadair_sandman_s"
+    },
+    {
+      "item": "Knight's Armament QDSS-NT4 (5.56)",
+      "category": "suppressor",
+      "family": "nt4",
+      "mass_kg": 0.624,
+      "state": "suppressor only, connects to M4QD muzzle device",
+      "maker": "Knight's Armament Company",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight: 22oz Length: 6.5\u2033",
+      "source_id": "kac_qdss_nt4"
+    },
+    {
+      "item": "Knight's Armament M110 Suppressor (7.62)",
+      "category": "suppressor",
+      "family": "m110",
+      "mass_kg": 0.907,
+      "state": "suppressor only",
+      "maker": "Knight's Armament Company",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight: 32.0oz Length: 14\u2033",
+      "source_id": "kac_m110_suppressor"
+    },
+    {
+      "category": "optic",
+      "family": "wraith4k",
+      "mass_kg": 0.6122,
+      "state": "with batteries",
+      "note": "Weight (with batteries), oz 21.6",
+      "source_id": "sightmark_wraith4k",
+      "item": "Sightmark Wraith 4K 3-24x50 digital riflescope"
+    },
+    {
+      "category": "optic",
+      "family": "wraithhd",
+      "mass_kg": 1.029,
+      "state": "with batteries",
+      "note": "Weight, oz 36.3 (with batteries)",
+      "source_id": "sightmark_wraithhd",
+      "item": "Sightmark Wraith HD 4-32x50 digital riflescope"
+    },
+    {
+      "category": "binoculars",
+      "family": "nitro",
+      "mass_kg": 0.695,
+      "state": "as sold",
+      "note": "Weight: 24.5 oz",
+      "source_id": "bushnell_nitro10x42",
+      "item": "Bushnell Nitro 10x42 binocular"
+    },
+    {
+      "category": "mount",
+      "family": "akr",
+      "mass_kg": 0.0672,
+      "state": "rail only",
+      "note": "Weight: 2.37 oz",
+      "source_id": "rsregulate_akr",
+      "item": "RS Regulate AKR Picatinny top rail"
+    },
+    {
+      "category": "mount",
+      "family": "ak301m",
+      "mass_kg": 0.0817,
+      "state": "lower only",
+      "note": "Weight: 2.88 oz",
+      "source_id": "rsregulate_ak301m",
+      "item": "RS Regulate AK-301M lower side mount"
+    },
+    {
+      "category": "optic",
+      "family": "aems",
+      "mass_kg": 0.1162,
+      "state": "body only, no mount",
+      "note": "Weight Body 4.1 oz",
+      "source_id": "holosun_aems",
+      "item": "Holosun AEMS Core sight body"
+    },
+    {
+      "category": "optic",
+      "family": "aems",
+      "mass_kg": 0.1615,
+      "state": "mount only",
+      "note": "Mount Weight 5.7oz",
+      "source_id": "holosun_aems",
+      "item": "Holosun AEMS Core sight mount"
+    },
+    {
+      "category": "mount",
+      "family": "leap10",
+      "mass_kg": 0.038,
+      "state": "SW1910 variant",
+      "note": "Weight SW1910 : 38g (1.34oz)",
+      "source_id": "scalarworks_leap10",
+      "item": "Scalarworks LEAP/10 SW1910 mount"
+    },
+    {
+      "category": "mount",
+      "family": "leap10",
+      "mass_kg": 0.043,
+      "state": "SW1920 variant",
+      "note": "Weight SW1920 : 43g (1.52oz)",
+      "source_id": "scalarworks_leap10",
+      "item": "Scalarworks LEAP/10 SW1920 mount"
+    },
+    {
+      "category": "mount",
+      "family": "leap14",
+      "mass_kg": 0.044,
+      "state": "SW2310 variant",
+      "note": "Weight SW2310 : 44g (1.55oz)",
+      "source_id": "scalarworks_leap14",
+      "item": "Scalarworks LEAP/14 SW2310 mount"
+    },
+    {
+      "category": "mount",
+      "family": "leap14",
+      "mass_kg": 0.047,
+      "state": "SW2320 variant",
+      "note": "Weight SW2320 : 47g (1.66oz)",
+      "source_id": "scalarworks_leap14",
+      "item": "Scalarworks LEAP/14 SW2320 mount"
+    },
+    {
+      "item": "Scalarworks LEAP/02 mount",
+      "category": "mount",
+      "family": "leap02",
+      "mass_kg": 0.063,
+      "state": "as sold",
+      "note": "Weight 63g (2.22oz)",
+      "source_id": "scalarworks_leap02"
+    },
+    {
+      "item": "Scalarworks LEAP/03 SW0310 mount",
+      "category": "mount",
+      "family": "leap03",
+      "mass_kg": 0.044,
+      "state": "SW0310 variant",
+      "note": "Weight SW0310 : 44g (1.55oz)",
+      "source_id": "scalarworks_leap03"
+    },
+    {
+      "item": "Scalarworks LEAP/03 SW0320 mount",
+      "category": "mount",
+      "family": "leap03",
+      "mass_kg": 0.047,
+      "state": "SW0320 variant",
+      "note": "Weight SW0320 : 47g (1.66oz)",
+      "source_id": "scalarworks_leap03"
+    },
+    {
+      "item": "Streamlight ProTac Rail Mount 2",
+      "category": "light",
+      "family": "protac",
+      "mass_kg": 0.14175,
+      "state": "Weight (Max)",
+      "note": "Weight (Max) 5.00 ounces (141.75 grams)",
+      "source_id": "streamlight_protac_rm2"
+    },
+    {
+      "item": "Streamlight ProTac Rail Mount HL-X",
+      "category": "light",
+      "family": "protac",
+      "mass_kg": 0.19561,
+      "state": "Weight (Max)",
+      "note": "Weight (Max) 6.90 ounces (195.61 grams)",
+      "source_id": "streamlight_protac_hlx"
+    },
+    {
+      "item": "Streamlight ProTac Rail Mount HL-X",
+      "category": "light",
+      "family": "protac",
+      "mass_kg": 0.18144,
+      "state": "Weight (Min)",
+      "note": "Weight (Min) 6.40 ounces (181.44 grams)",
+      "source_id": "streamlight_protac_hlx"
+    },
+    {
+      "item": "Streamlight ProTac 2.0 Rail Mount",
+      "category": "light",
+      "family": "protac",
+      "mass_kg": 0.257,
+      "state": "with (1) SL-B50 battery pack",
+      "note": "Weight: 9.06 oz (257g) with (1) SL-B50 battery pack",
+      "source_id": "streamlight_protac_20rm"
+    },
+    {
+      "item": "Streamlight TLR-1 HL",
+      "category": "light",
+      "family": "tlr1",
+      "mass_kg": 0.1225,
+      "state": "with (2) CR123A batteries",
+      "note": "3.39 in (8.61 cm); 4.32 oz (122.5g)",
+      "source_id": "streamlight_tlr1hl"
+    },
+    {
+      "item": "Streamlight TLR-7 X",
+      "category": "light",
+      "family": "tlr7",
+      "mass_kg": 0.0748,
+      "state": "with SL-B9 rechargeable battery",
+      "note": "Weight w/ SL-B9: 2.64 oz (74.8 g)",
+      "source_id": "streamlight_tlr7x"
+    },
+    {
+      "item": "Streamlight TLR-7 X",
+      "category": "light",
+      "family": "tlr7",
+      "mass_kg": 0.0703,
+      "state": "with CR123A battery",
+      "note": "Weight w/ CR123A: 2.48 oz (70.3 g)",
+      "source_id": "streamlight_tlr7x"
+    },
+    {
+      "item": "Streamlight ProTac Rail Mount VIR",
+      "category": "light",
+      "family": "virpro",
+      "mass_kg": 0.231,
+      "state": "with (2) CR123A batteries",
+      "note": "Weight: 8.2 oz (231 g) with (2) CR123A batteries",
+      "source_id": "streamlight_protac_virpro"
+    },
+    {
+      "item": "Streamlight ProTac Rail Mount VIR",
+      "category": "light",
+      "family": "virpro",
+      "mass_kg": 0.249,
+      "state": "with (1) SL-B26 rechargeable battery pack",
+      "note": "8.8 oz (249 g) with (1) SL-B26 rechargeable battery pack",
+      "source_id": "streamlight_protac_virpro"
+    },
+    {
+      "item": "Holosun HS507C X3",
+      "category": "optic",
+      "family": "hs507c",
+      "mass_kg": 0.04394,
+      "state": "body only",
+      "note": "Body Weight 1.55 oz",
+      "source_id": "holosun_507c"
+    },
+    {
+      "item": "Holosun HM3X",
+      "category": "optic",
+      "family": "hm3x",
+      "mass_kg": 0.27783,
+      "state": "body only",
+      "note": "Body (oz) Weight 9.8 oz",
+      "source_id": "holosun_hm3x"
+    },
+    {
+      "item": "Holosun HM3XT",
+      "category": "optic",
+      "family": "hm3xt",
+      "mass_kg": 0.32885,
+      "state": "body only",
+      "note": "Body (oz) Weight 11.6 oz",
+      "source_id": "holosun_hm3xt"
+    },
+    {
+      "item": "Holosun DRS-TH",
+      "category": "optic",
+      "family": "drsth",
+      "mass_kg": 0.51029,
+      "state": "body only",
+      "note": "Body Weight 18 oz",
+      "source_id": "holosun_drs_th"
+    },
+    {
+      "item": "Holosun DRS-TH mount",
+      "category": "mount",
+      "family": "drsth",
+      "mass_kg": 0.0652,
+      "state": "mount only",
+      "note": "Mount Weight 2.3 oz",
+      "source_id": "holosun_drs_th"
+    },
+    {
+      "item": "Holosun AEMS Evo Dual",
+      "category": "optic",
+      "family": "aems",
+      "mass_kg": 0.3005,
+      "state": "body only",
+      "note": "Body Weight 10.6 oz",
+      "source_id": "holosun_aems_evo"
+    },
+    {
+      "item": "Garmin Foretrex 701 Ballistic Edition",
+      "category": "gps",
+      "family": "foretrex",
+      "mass_kg": 0.08788,
+      "state": "with batteries",
+      "note": "Weight 3.1 oz with batteries",
+      "source_id": "garmin_foretrex701"
+    }
+  ],
+  "leads": [],
+  "conflicts": [
+    {
+      "item": "AN/PVS-14",
+      "field": "mass_kg",
+      "value_a": 0.35,
+      "source_a": "l3harris_pvs14",
+      "value_b": 0.355,
+      "source_b": "elbit_pvs14",
+      "note": "L3Harris publishes 350 g (0.77 lb.) with battery; Elbit publishes Weight (maximum) 355 g. Both values recorded, neither discarded. Item keeps the L3Harris value because its state names the battery."
+    },
+    {
+      "item": "RS Regulate AKR Picatinny top rail",
+      "field": "mass_kg",
+      "value_a": 0.0672,
+      "source_a": "rsregulate_akr",
+      "value_b": 0.17,
+      "source_b": "rsregulate_akr",
+      "note": "Product description states Weight: 2.37 oz. Store product record states 6 oz. Both recorded. Item keeps the description value."
+    },
+    {
+      "item": "RS Regulate AK-301M lower side mount",
+      "field": "mass_kg",
+      "value_a": 0.0817,
+      "source_a": "rsregulate_ak301m",
+      "value_b": 0.2268,
+      "source_b": "rsregulate_ak301m",
+      "note": "Product description states Weight: 2.88 oz. Store product record states 8 oz. Both recorded. Item keeps the description value."
+    }
+  ]
+}
