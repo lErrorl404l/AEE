@@ -105,6 +105,14 @@
             <Original>Collision Damage Diagnostics</Original>
             <English>Collision Damage Diagnostics</English>
         </Key>
+        <Key ID="STR_AEE_Core_computeMode_Description">
+            <Original>Where the environment computation runs. Deterministic (default): every machine computes the same values with NO network traffic. Costs the same CPU on server and clients, and is the only mode that cannot desynchronise. A third mode, full server authority, is deliberately NOT offered: it would need every one of the 117 shared state variables broadcast each tick, and a partial sync would desynchronise machines, which is the one failure this mod cannot have. Server map facts only: the server computes the once-per-mission terrain facts and every machine keeps its own position work. A few hundred bytes once, and it removes the only startup hitch on a large map.</Original>
+            <English>Where the environment computation runs. Deterministic (default): every machine computes the same values with NO network traffic. Costs the same CPU on server and clients, and is the only mode that cannot desynchronise. Server authority: the server computes and broadcasts the shared state each tick. Lowers client CPU at the cost of roughly 0.6 MB per minute per client at an 80 player count, and it needs a full resync when a player joins mid mission. Server map facts only: the server computes the once-per-mission terrain facts and every machine keeps its own position work. A few hundred bytes once, and it removes the only startup hitch on a large map.</English>
+        </Key>
+        <Key ID="STR_AEE_Core_computeMode_Name">
+            <Original>Work Distribution</Original>
+            <English>Work Distribution</English>
+        </Key>
         <Key ID="STR_AEE_Core_diagnostic_Description">
             <Original>Enable verbose diagnostic logging (diag_log) for environment state changes</Original>
             <English>Enable verbose diagnostic logging (diag_log) for environment state changes</English>
