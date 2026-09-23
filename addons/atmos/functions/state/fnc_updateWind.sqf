@@ -41,6 +41,22 @@ if (_windDir >= 360) then { _windDir = _windDir - 360; };
 // that only need intensity (scent dispersal, glare, sound).
 private _windStr = vectorMagnitude _wind;
 
+// ─── Terrain speed-up ────────────────────────────────────────────────────
+// Wind accelerates over a ridge crest and slows in the lee. The published
+// guideline (Taylor and Lee 1984) gives the fractional speed-up as
+// dS = 2 (h/L) sigma; fnc_calculateTerrainWind holds it. The setting gates
+// and scales the effect.
+private _terrainSetting = missionNamespace getVariable [QEGVAR(core,windTerrainInfluence), 0.6];
+if !(_terrainSetting isEqualType 0) then { _terrainSetting = 0.6; };
+if (_terrainSetting > 0) then {
+    private _unit = call CBA_fnc_currentUnit;
+    if (!isNil "_unit" && {!isNull _unit}) then {
+        private _multiplier = [getPosASL _unit, _terrainSetting] call FUNC(calculateTerrainWind);
+        _wind = _wind vectorMultiply _multiplier;
+        _windStr = _windStr * _multiplier;
+    };
+};
+
 // Store for our own functions
 missionNamespace setVariable [QEGVAR(core,currentWind), _wind];
 missionNamespace setVariable [QEGVAR(core,currentGusts), _gusts];
