@@ -2,6 +2,7 @@ PREPS(warnings,calculateBiologicalAmbient);
 PREPS(terrain,calculateCropState);
 PREPS(terrain,calculateDustSuppression);
 PREPS(terrain,calculateUrbanHeatIsland);
+PREPS(terrain,calculateMicroclimate);
 PREPS(warnings,calculateFireSpreadRisk);
 PREPS(biome,updateSeasonalFoliage);
 PREPS(warnings,calculateAvalancheRisk);
