@@ -161,6 +161,8 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_mobility_routeConeIndex` | mobility | Route cone index |
 | `aee_mobility_routePassability` | mobility | Route passability 0..1 |
 | `aee_mobility_riverReservoirs` | mobility | Nash cascade reservoir state |
+| `aee_mobility_infiltrationCumulative_mm` | mobility | Green-Ampt cumulative infiltration F (mm) |
+| `aee_mobility_d8AccumulationCache` | mobility | D8 runoff routing result, cached per terrain grid |
 | `aee_core_groundState` | mobility | Ground state |
 | `aee_core_currentWaterLevel` | mobility | River water level |
 | `aee_mobility_currentLiftRatio` | mobility | Helicopter lift ratio |
