@@ -22,6 +22,9 @@ private _T = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
 
 private _depth = missionNamespace getVariable [QEGVAR(core,snowDepth_m), 0];
+// Kept for the melt flux below: the depth before this tick's change is
+// what melted, and the depth after is what remains.
+private _prevDepth = _depth;
 
 private _accretionRate = missionNamespace getVariable [QGVAR(SnowAccretionRate), 0.01];
 private _maxSnowDepth = missionNamespace getVariable [QGVAR(MaxSnowDepth), 3.0];
@@ -41,6 +44,31 @@ if (!isNil "_T") then {
 };
 
 _depth = _depth max 0 min _maxSnowDepth;
+
+// ─── Melt heat flux, for the soil surface balance (issue #11) ─────────────
+// Melting snow consumes latent heat, and that heat comes from the ground
+// and the air above it. Without this the soil surface reads warm through a
+// thaw, because the balance has no sink for it.
+//
+// The snow owner computes the melt, so the snow owner publishes the flux.
+// The node stack reads it. One writer per variable, which is the rule the
+// mod already applies to the biome class and the chambering.
+//
+//   flux W/m2 = melt_depth_m * rho_snow * L_f / interval_s
+//
+// Positive means the surface is LOSING heat to the melt.
+private _meltFlux = 0;
+if (_T > 2 && _depth < _prevDepth) then {
+    private _snowDensity = (missionNamespace getVariable [QEGVAR(environmental,slabDensity), 300]) / 1000;
+    if !(_snowDensity isEqualType 0) then { _snowDensity = 0.3 };
+    private _rhoSnowKgM3 = _snowDensity * 1000;
+    private _lFus = 334e3;                  // J/kg, IAPWS-95
+    private _meltDepthM = _prevDepth - _depth;
+    private _intervalS = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+    if !(_intervalS isEqualType 0) then { _intervalS = 5; };
+    _meltFlux = (_meltDepthM * _rhoSnowKgM3 * _lFus) / (_intervalS max 1);
+};
+missionNamespace setVariable [QEGVAR(core,snowMeltFlux_Wm2), _meltFlux];
 
 // ─── Wind drifting ────────────────────────────────────────────────────────
 private _windSpd = vectorMagnitude wind;
