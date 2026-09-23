@@ -17,3 +17,4 @@ PREPS(particle,particleState);
 PREPS(particle,surfaceMaterial);
 PREPS(particle,surfaceSample);
 PREPS(particle,kickupParams);
+PREPS(particle,calculateDownwash);
