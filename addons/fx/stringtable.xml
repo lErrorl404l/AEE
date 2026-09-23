@@ -97,5 +97,13 @@
             <Original>Wind Noise Volume</Original>
             <English>Wind Noise Volume</English>
         </Key>
+        <Key ID="STR_AEE_Fx_logDebug_Description">
+            <Original>Log this module DEBUG and TRACE lines to the RPT. Off by default.</Original>
+            <English>Log this module DEBUG and TRACE lines to the RPT. Off by default.</English>
+        </Key>
+        <Key ID="STR_AEE_Fx_logDebug_Name">
+            <Original>Trace This Module</Original>
+            <English>Trace This Module</English>
+        </Key>
     </Package>
 </Project>

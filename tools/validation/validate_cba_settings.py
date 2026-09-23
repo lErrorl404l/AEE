@@ -40,6 +40,12 @@ _CALL = re.compile(
     r'(?:"(?P<lit>' + PREFIX + r'_\w+)"'
     r"|(?P<macro>(?:Q?GVAR|Q?EGVAR)\([^)]*\)))"
 )
+# A name composed by format ["aee_%1_logDebug", COMPONENT] is a produced
+# template: the real variables are built per component at run time. The
+# pattern is the literal string the macros use, so the setting that writes
+# aee_<component>_logDebug is recognised as a producer rather than
+# reported as a write with no reader.
+_FORMAT_TEMPLATE = re.compile(r'format\s*\[\s*"(?P<lit>' + PREFIX + r'_\w*%1\w*)"')
 _MACRO = re.compile(r"\b(?:Q?GVAR|Q?EGVAR)\([^)]*\)")
 _MACRO_NAME = re.compile(r"\bQ?EGVAR\(([^,)]+),([^)]+)\)|\bQ?GVAR\(([^)]+)\)")
 _DECL = re.compile(r"\bQGVAR\((\w+)\)")
@@ -85,7 +91,9 @@ def scan():
     reads = {}  # name -> [files]
     writes = {}  # name -> [files]
 
-    for sqf in sorted(ADDONS.rglob("*.sqf")):
+    # Both .sqf and the macros: a name may be read from a macro in a
+    # .hpp, which is how the per-module debug switches are consumed.
+    for sqf in sorted(list(ADDONS.rglob("*.sqf")) + list(ADDONS.rglob("*.hpp"))):
         addon = addon_of(sqf)
         text = strip_comments(sqf.read_text(encoding="utf-8", errors="replace"))
         rel = str(sqf.relative_to(REPO_ROOT))
@@ -101,6 +109,12 @@ def scan():
                 continue  # PREP-registered function handles are always produced
             bucket = reads if kind == "getVariable" else writes
             bucket.setdefault(name, []).append(rel)
+
+        # A name composed by format ["aee_%1_logDebug", COMPONENT] produces
+        # one variable per component. Recorded as a produced template, so
+        # the setting that writes it is not reported as a dead write.
+        for lit in _FORMAT_TEMPLATE.findall(text):
+            writes.setdefault(lit, []).append(rel)
 
         # Bare-form macros (not the first argument of get/setVariable):
         # an assignment like "GVAR(x) = ..." writes; a value use like
@@ -201,7 +215,20 @@ def main():
         n for n in test_reads if not is_produced(n) and n not in test_writes
     )
 
-    dead_setting = sorted(n for n in declared if n not in reads)
+    # A declared setting is consumed when a literal read names it, or when a
+    # format template composes its name at run time.  The per-module debug
+    # switches are read by the macro as format ["aee_%1_logDebug", COMPONENT],
+    # so the template satisfies them without a literal read.
+    def template_names(name):
+        for template in templates:
+            head, _, tail = template.partition("%1")
+            if name.startswith(head) and name.endswith(tail):
+                return True
+        return False
+
+    dead_setting = sorted(
+        n for n in declared if n not in reads and not template_names(n)
+    )
     orphan = sorted(
         n for n in writes if n not in reads and n not in declared and "%1" not in n
     )

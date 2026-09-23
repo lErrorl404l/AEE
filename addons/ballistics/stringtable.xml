@@ -17,5 +17,13 @@
             <Original>Ammo Temperature Time Constant</Original>
             <English>Ammo Temperature Time Constant</English>
         </Key>
+        <Key ID="STR_AEE_Ballistics_logDebug_Description">
+            <Original>Log this module DEBUG and TRACE lines to the RPT. Off by default.</Original>
+            <English>Log this module DEBUG and TRACE lines to the RPT. Off by default.</English>
+        </Key>
+        <Key ID="STR_AEE_Ballistics_logDebug_Name">
+            <Original>Trace This Module</Original>
+            <English>Trace This Module</English>
+        </Key>
     </Package>
 </Project>
