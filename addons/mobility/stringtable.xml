@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="AEE">
     <Package name="Mobility">
+        <Key ID="STR_AEE_Mobility_baseflowRate_perDay_Description">
+            <Original>Linear-reservoir recession rate per day for groundwater baseflow. USGS SIR 2022-5114 gives 0.9 to 0.99 per day for a perennial stream, which is this value as a daily retention.</Original>
+            <English>Linear-reservoir recession rate per day for groundwater baseflow. USGS SIR 2022-5114 gives 0.9 to 0.99 per day for a perennial stream, which is this value as a daily retention.</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_baseflowRate_perDay_Name">
+            <Original>Baseflow Recession Rate</Original>
+            <English>Baseflow Recession Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_bedSlope_Description">
+            <Original>Bed slope in metres per metre. Manning rating sets the stage from the discharge, and a steeper bed carries the same flow at a lower stage.</Original>
+            <English>Bed slope in metres per metre. Manning rating sets the stage from the discharge, and a steeper bed carries the same flow at a lower stage.</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_bedSlope_Name">
+            <Original>River Bed Slope</Original>
+            <English>River Bed Slope</English>
+        </Key>
         <Key ID="STR_AEE_Mobility_brakeCoolingTau_Description">
             <Original>Time constant of brake-rotor cooling toward ambient (seconds)</Original>
             <English>Time constant of brake-rotor cooling toward ambient (seconds)</English>
@@ -25,6 +41,14 @@
             <Original>Brake Rotor Mass</Original>
             <English>Brake Rotor Mass</English>
         </Key>
+        <Key ID="STR_AEE_Mobility_catchmentArea_m2_Description">
+            <Original>Area in square metres draining to the river point. A river stage responds to everything upstream, so this is the contributing area rather than the routing cell. 250000 is a small stream catchment.</Original>
+            <English>Area in square metres draining to the river point. A river stage responds to everything upstream, so this is the contributing area rather than the routing cell. 250000 is a small stream catchment.</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_catchmentArea_m2_Name">
+            <Original>Catchment Area</Original>
+            <English>Catchment Area</English>
+        </Key>
         <Key ID="STR_AEE_Mobility_flightTurbulence_Description">
             <Original>Apply atmospheric turbulence, gusts, and wind-shear forces to aircraft</Original>
             <English>Apply atmospheric turbulence, gusts, and wind-shear forces to aircraft</English>
@@ -32,6 +56,14 @@
         <Key ID="STR_AEE_Mobility_flightTurbulence_Name">
             <Original>Flight Turbulence</Original>
             <English>Flight Turbulence</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_manningN_Description">
+            <Original>Manning roughness coefficient n for the channel. 0.030 to 0.050 is a natural stream (Chow 1959); 0.025 is smooth earth.</Original>
+            <English>Manning roughness coefficient n for the channel. 0.030 to 0.050 is a natural stream (Chow 1959); 0.025 is smooth earth.</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_manningN_Name">
+            <Original>Manning Roughness</Original>
+            <English>Manning Roughness</English>
         </Key>
         <Key ID="STR_AEE_Mobility_minEnginePower_Description">
             <Original>Floor on engine power derating from altitude and temperature (0.3 = 30 % minimum power)</Original>
@@ -73,6 +105,14 @@
             <Original>River Response Rate</Original>
             <English>River Response Rate</English>
         </Key>
+        <Key ID="STR_AEE_Mobility_riverSectionWidth_m_Description">
+            <Original>Width in metres of the modelled river section. Rising runoff is spread over a 100 m catchment cell and divided by this width to give the water-level rise.</Original>
+            <English>Width in metres of the modelled river section. Rising runoff is spread over a 100 m catchment cell and divided by this width to give the water-level rise.</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_riverSectionWidth_m_Name">
+            <Original>River Section Width</Original>
+            <English>River Section Width</English>
+        </Key>
         <Key ID="STR_AEE_Mobility_routeDamageRate_Description">
             <Original>Soil cone-index damage per vehicle passage per 5 s tick</Original>
             <English>Soil cone-index damage per vehicle passage per 5 s tick</English>
@@ -88,6 +128,14 @@
         <Key ID="STR_AEE_Mobility_routeRecoveryRate_Name">
             <Original>Route Recovery Rate</Original>
             <English>Route Recovery Rate</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_tidalReach_m_Description">
+            <Original>Distance in metres inland that the tide raises the river level. Full tidal amplitude at the coast, falling to zero at this distance.</Original>
+            <English>Distance in metres inland that the tide raises the river level. Full tidal amplitude at the coast, falling to zero at this distance.</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_tidalReach_m_Name">
+            <Original>Tidal Reach</Original>
+            <English>Tidal Reach</English>
         </Key>
         <Key ID="STR_AEE_Mobility_tractionScale_Description">
             <Original>Multiplier on all surface traction coefficients</Original>

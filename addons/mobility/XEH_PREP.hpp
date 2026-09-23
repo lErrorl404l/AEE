@@ -8,3 +8,6 @@ PREP(calculateSoilBearingStrength);
 PREP(calculateTraction);
 PREP(calculateWetTraction);
 PREP(updateGroundState);
+PREPS(hydrology,calculateRunoffSCS);
+PREPS(hydrology,calculateDepressionStorage);
+PREPS(hydrology,calculateBaseflow);

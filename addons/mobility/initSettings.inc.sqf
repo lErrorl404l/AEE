@@ -148,3 +148,67 @@
     true,
     {}
 ] call CBA_fnc_addSetting;
+
+// ── Hydrology (issue #24) ─────────────────────────────────────────────────
+// These drive the rainfall-runoff chain in fnc_calculateRiverWaterLevel.
+// The defaults are the operational values the models were calibrated on,
+// so the settings change the model rather than decorating it.
+[
+    QGVAR(riverSectionWidth_m),
+    "SLIDER",
+    [LLSTRING(riverSectionWidth_m_Name), LLSTRING(riverSectionWidth_m_Description)],
+    ["AEE Mobility", "Hydrology"],
+    [0.5, 50, 4, 1],
+    true,
+    {}
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(tidalReach_m),
+    "SLIDER",
+    [LLSTRING(tidalReach_m_Name), LLSTRING(tidalReach_m_Description)],
+    ["AEE Mobility", "Hydrology"],
+    [500, 20000, 5000, 0],
+    true,
+    {}
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(baseflowRate_perDay),
+    "SLIDER",
+    [LLSTRING(baseflowRate_perDay_Name), LLSTRING(baseflowRate_perDay_Description)],
+    ["AEE Mobility", "Hydrology"],
+    [0.01, 1, 0.2, 2],
+    true,
+    {}
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(catchmentArea_m2),
+    "SLIDER",
+    [LLSTRING(catchmentArea_m2_Name), LLSTRING(catchmentArea_m2_Description)],
+    ["AEE Mobility", "Hydrology"],
+    [10000, 5000000, 250000, 0],
+    true,
+    {}
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(bedSlope),
+    "SLIDER",
+    [LLSTRING(bedSlope_Name), LLSTRING(bedSlope_Description)],
+    ["AEE Mobility", "Hydrology"],
+    [0.0001, 0.05, 0.001, 5],
+    true,
+    {}
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(manningN),
+    "SLIDER",
+    [LLSTRING(manningN_Name), LLSTRING(manningN_Description)],
+    ["AEE Mobility", "Hydrology"],
+    [0.01, 0.1, 0.035, 3],
+    true,
+    {}
+] call CBA_fnc_addSetting;
