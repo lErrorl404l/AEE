@@ -43,12 +43,15 @@ Args:
   1: radius (NUMBER, metres, the user setting, default 1000)
   2: water fraction 0..1 (NUMBER, the share of the sampled area that is
      water, default 0)
+  3: ambient temperature (NUMBER, degrees Celsius, default 15).  Passed
+     in, never read from the published state: this term is added to that
+     value, so reading it back would close a feedback loop.
 
 Returns the temperature offset in degrees Celsius, signed by the
 day/night difference between water and land.
 */
 
-params [["_pos", [], [[]]], ["_radius", 1000, [0]], ["_waterFrac", 0, [0]]];
+params [["_pos", [], [[]]], ["_radius", 1000, [0]], ["_waterFrac", 0, [0]], ["_ambientTemp", 15, [0]]];
 
 if (count _pos < 2) exitWith { 0 };
 if (_radius <= 0) exitWith { 0 };
@@ -95,9 +98,11 @@ private _referenceDepth = 200;
 private _strength = (_waterFrac min 1) * (_referenceDepth / _dibl);
 
 // The sign and magnitude follow the water-land temperature difference: a
-// water body is cooler than land by day and warmer by night.  The model
-// reads the two from the state the environment publishes.
-private _airTemp = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
+// water body is cooler than land by day and warmer by night.  The ambient
+// temperature is passed IN, never read from the published state: this
+// term is added to that very value, so reading it back would close a
+// feedback loop and the result would oscillate and grow.
+private _airTemp = _ambientTemp;
 if !(_airTemp isEqualType 0) then { _airTemp = 15; };
 private _waterTemp = missionNamespace getVariable [QEGVAR(core,currentWaterTemperature), _airTemp];
 if !(_waterTemp isEqualType 0) then { _waterTemp = _airTemp; };
