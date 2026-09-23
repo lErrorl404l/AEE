@@ -28,6 +28,21 @@ missionNamespace setVariable [QEGVAR(core,overcast), overcast];
 // data. Derived effects (ground, fog, foliage, FX) still run below.
 private _realWeather = missionNamespace getVariable [QEGVAR(core,realWeatherActive), false];
 
+// The ICAO reference altitude is the standard-atmosphere datum the
+// derived models use.  Five consumers read EGVAR(core,referenceAltitude)
+// (pressure, temperature lapse, helicopter lift, UV index, freezing rain)
+// and nothing produced it: each read an undefined variable and fell back to
+// its own default.  The setting is the producer, and 0 keeps the live
+// terrain height, which is the behaviour those consumers expect.
+if (GVAR(icaoReferenceAlt) != 0) then {
+    missionNamespace setVariable [QEGVAR(core,referenceAltitude), GVAR(icaoReferenceAlt)];
+} else {
+    missionNamespace setVariable [
+        QEGVAR(core,referenceAltitude),
+        getTerrainHeightASL (_posASL select [0, 2])
+    ];
+};
+
 if (!_realWeather) then {
     // Deterministic weather progression seed — drives slow weather-quality drift
     BEGIN_COUNTER(weatherProgression);
@@ -39,34 +54,45 @@ if (!_realWeather) then {
     // Per-position biome detection — updates aee_core_biome based on
     // surface type, latitude, and elevation at the player's position.
     BEGIN_COUNTER(biomePosition);
-    [_posASL] call EFUNC(environmental,updateBiomePosition);
+    if (GVAR(biomeEnabled)) then {
+        [_posASL] call EFUNC(environmental,updateBiomePosition);
+    };
     END_COUNTER(biomePosition);
     private _biome = GVAR(biome);
 
     // Pass explicit position to update functions so they use the same
     // location rather than each independently querying CBA_fnc_currentUnit.
     BEGIN_COUNTER(thermoAtmos);
-    [_biome, _month, _posASL] call EFUNC(thermal,updateTemperature);
+    if (GVAR(tempLapseRateEnabled) || GVAR(tempDiurnalEnabled)) then {
+        [_biome, _month, _posASL] call EFUNC(thermal,updateTemperature);
+    };
     [_biome, _month, _posASL] call EFUNC(atmos,updatePressure);
     [] call EFUNC(environmental,calculateQNH);
     [] call EFUNC(physiology,calculateHypoxia);
-    [_biome, _month, _posASL] call EFUNC(atmos,updateHumidity);
+    if (GVAR(humidityEnabled)) then {
+        [_biome, _month, _posASL] call EFUNC(atmos,updateHumidity);
+    };
     [] call FUNC(updateSoilMoisture);
     [] call EFUNC(atmos,calculatePrecipitationPhase);
     [] call EFUNC(atmos,calculateHaze);
     [] call EFUNC(environmental,calculateSurfaceWetness);
     END_COUNTER(thermoAtmos);
 
-    BEGIN_COUNTER(airDensity);
-    [] call EFUNC(ballistics,calculateAirDensity);
-    END_COUNTER(airDensity);
+    if (GVAR(airDensityEnabled)) then {
+        BEGIN_COUNTER(airDensity);
+        [] call EFUNC(ballistics,calculateAirDensity);
+        END_COUNTER(airDensity);
+    };
 };
 
 // Wind runs in BOTH modes.  updateWind reads the engine wind command and
 // publishes the computed vector and gusts to the shared state and the
 // engine (setWind).  Real-weather mode replaces temperature/pressure/
-// humidity but must not freeze the wind field, so it is not gated.
-[] call EFUNC(atmos,updateWind);
+// humidity but must not freeze the wind field, so it is not gated by
+// realWeather, only by the wind switch itself.
+if (GVAR(windEnabled)) then {
+    [] call EFUNC(atmos,updateWind);
+};
 if (GVAR(fxEnabled)) then {
     [] call EFUNC(fx,applyWindNoise);
 };
@@ -120,7 +146,8 @@ if (GVAR(physiologyEnabled)) then {
     // Crosswind is NOT a stability factor: it deflects the round, not the
     // shooter (handled by the ballistics module).  Stored for the ACE3
     // sway factor and for external consumers.
-    if (missionNamespace getVariable [QEGVAR(physiology,fatigueEnabled), true]) then {
+    if (missionNamespace getVariable [QEGVAR(physiology,fatigueEnabled), true]
+        && {missionNamespace getVariable [QEGVAR(physiology,stabilityEnabled), true]}) then {
         [] call EFUNC(physiology,calculateShooterStability);
     };
     // Cold-weather human performance (wind chill -> dexterity, frostbite

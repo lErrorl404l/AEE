@@ -8,8 +8,17 @@ private _wind = wind;
 // gust is an engine weather variable that is undefined on a dedicated
 // server (no local weather simulation). Guard it; the gust field is
 // used for visual/audio FX only, so a zero default is safe.
+//
+// The gust setting is the relative frequency of gust events (0 calm, 1
+// very gusty). It scales the engine's own gust signal, which supplies the
+// timing, so the setting controls how much gust the atmosphere carries
+// without replacing the engine's natural cycle.
 private _gusts = 0;
 if (!isNil {gust}) then { _gusts = gust; };
+private _gustFreq = missionNamespace getVariable [QEGVAR(core,windGustFrequency), 0.3];
+if !(_gustFreq isEqualType 0) then { _gustFreq = 0.3; };
+_gustFreq = _gustFreq max 0 min 1;
+_gusts = _gusts * (_gustFreq * 2);
 
 // Apply module wind multiplier (EDEN/Zeus)
 private _moduleMult = missionNamespace getVariable [QEGVAR(core,moduleWindMultiplier), 1];
