@@ -379,42 +379,7 @@
 // ── Diagnostics: ballistics ───────────────────────────────────────────────
 // Per-module switch.  A whole-mod DEBUG stream is unreadable in a firefight,
 // so one module can be traced alone.
-[
-    QGVAR(logDebug_ballistics),
-    "CHECKBOX",
-    [LLSTRING(logDebugPerModule_Name), LLSTRING(logDebug_ballistics_Description)],
-    ["AEE", "Diagnostics"],
-    false,
-    true,
-    {
-        missionNamespace setVariable ["aee_ballistics_logDebug", _this];
-    }
-] call CBA_fnc_addSetting;
-
 // ── Diagnostics: physiology and the carried load ──────────────────────────
-[
-    QGVAR(logDebug_physiology),
-    "CHECKBOX",
-    [LLSTRING(logDebugPerModule_Name), LLSTRING(logDebug_physiology_Description)],
-    ["AEE", "Diagnostics"],
-    false,
-    true,
-    {
-        missionNamespace setVariable ["aee_physiology_logDebug", _this];
-    }
-] call CBA_fnc_addSetting;
-
 // ── Diagnostics: effect emitters ──────────────────────────────────────────
 // Footfall, rotor wash and the surface dust: the values a headless test
 // cannot see, so a client trace needs to print them.
-[
-    QGVAR(logDebug_fx),
-    "CHECKBOX",
-    [LLSTRING(logDebugPerModule_Name), LLSTRING(logDebug_fx_Description)],
-    ["AEE", "Diagnostics"],
-    false,
-    true,
-    {
-        missionNamespace setVariable ["aee_fx_logDebug", _this];
-    }
-] call CBA_fnc_addSetting;

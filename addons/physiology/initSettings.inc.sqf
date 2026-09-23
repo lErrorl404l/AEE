@@ -231,3 +231,18 @@
     true,
     {}
 ] call CBA_fnc_addSetting;
+
+// ── Diagnostics ───────────────────────────────────────────────────────────
+// The per-module trace switch.  The AEE_LOG_DEBUG macro reads the name
+// built from the component: aee_<component>_logDebug.  Declaring it here,
+// in its own addon, is what makes that name correct.  QGVAR(logDebug)
+// resolves to aee_physiology_logDebug.
+[
+    QGVAR(logDebug),
+    "CHECKBOX",
+    [LLSTRING(logDebug_Name), LLSTRING(logDebug_Description)],
+    ["AEE Physiology", "Diagnostics"],
+    false,
+    true,
+    {}
+] call CBA_fnc_addSetting;
