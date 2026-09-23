@@ -266,3 +266,34 @@
     true,
     {}
 ] call CBA_fnc_addSetting;
+
+// ── Off-road terrain drag ──────────────────────────────────────────────────
+[
+    QGVAR(terrainDragEnabled),
+    "CHECKBOX",
+    [LLSTRING(terrainDragEnabled_Name), LLSTRING(terrainDragEnabled_Description)],
+    ["AEE Mobility", "Terrain"],
+    true,
+    true,
+    {}
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(terrainDragScale),
+    "SLIDER",
+    [LLSTRING(terrainDragScale_Name), LLSTRING(terrainDragScale_Description)],
+    ["AEE Mobility", "Terrain"],
+    [0.05, 1.0, 0.3, 2],
+    true,
+    {}
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(terrainRadius),
+    "SLIDER",
+    [LLSTRING(terrainRadius_Name), LLSTRING(terrainRadius_Description)],
+    ["AEE Mobility", "Terrain"],
+    [10, 200, 50, 0],
+    true,
+    {}
+] call CBA_fnc_addSetting;

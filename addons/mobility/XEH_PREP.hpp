@@ -9,6 +9,8 @@ PREP(calculateRouteDegradation);
 PREP(calculateSSF);
 PREP(calculateSoilStrength);
 PREP(calculateTerrainLimits);
+PREP(applyTerrainDrag);
+PREP(getTerrainSpeedFactor);
 PREP(calculateSoilBearingStrength);
 PREP(calculateTraction);
 PREP(calculateWetTraction);
