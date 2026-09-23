@@ -43,9 +43,18 @@ _tracked = _tracked max 0.05 min 1.0;
 
 // ─── Slip-curve model ────────────────────────────────────────────────────
 // F = mu * W * (1 - exp(-k * s));  k ~ 10 for dry surfaces.
-private _veh = vehicle (call CBA_fnc_currentUnit);
-private _groundSpeed = (speed _veh) / 3.6; // km/h to m/s
-private _wheelSpeed = (velocity _veh) vectorDotProduct (vectorDir _veh);
+//
+// The unit has a deterministic fallback: a dedicated server has none, and
+// reading it unguarded made the slip depend on who was asking.
+private _unit = call CBA_fnc_currentUnit;
+private _veh = objNull;
+if (!isNil "_unit" && {!isNull _unit}) then { _veh = vehicle _unit; };
+private _groundSpeed = 0;
+private _wheelSpeed = 0;
+if (!isNull _veh) then {
+    _groundSpeed = (speed _veh) / 3.6; // km/h to m/s
+    _wheelSpeed = (velocity _veh) vectorDotProduct (vectorDir _veh);
+};
 private _slip = 0;
 if (_wheelSpeed > 0.1) then {
     _slip = ((_wheelSpeed - _groundSpeed) / _wheelSpeed) max 0 min 1;
