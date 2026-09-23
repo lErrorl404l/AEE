@@ -26,7 +26,8 @@ unpopulated when the NVG tick fires.
 Gate:    vision mode 1
 Reads:   moonIntensity, overcast, rain, hmd _player
 Sets:    QGVAR(nvgGain), QGVAR(nvgNoise), QGVAR(nvgTubeTier),
-         QGVAR(nvgGrainActive), five ppEffects (client-side only)
+         QGVAR(nvgPerceived), QGVAR(nvgGrainActive),
+         five ppEffects (client-side only)
 */
 
 private _player = call CBA_fnc_currentUnit;
@@ -823,6 +824,25 @@ if (_battery < 0.05 && {random 1 < 0.15}) then {
     _brightness = 0;
 };
 
+// ─── Perceived output (gap 6, #153) ──────────────────────────────────────
+// The tier constants above change the image the operator resolves: SNR
+// (photon statistics), MTF (contrast transfer), the vignette/erosion
+// field and the AGC brightness.  Combine them into ONE scalar and feed it
+// to the render, so a PVS-31 and a Gen 1 on the SAME scene do not render
+// identically.  Every factor is already computed from the tier constants;
+// no new magnitude is added.
+//
+//   cleanliness = mtfEffective × (1 - noise) / erosionFactor
+//                 (contrast × SNR × flat field, all in (0, 1])
+//   perceived   = 0.65 + (1 - 0.65) × (brightness × cleanliness)
+//
+// 0.65 is the engine's documented ColorCorrections brightness floor
+// (ACE3 ST_NVG_BRIGHT_MIN): the perceived value stays in the watchable
+// 0.65..1.0 band, so a Gen 1 reads dimmer and dirtier, never black.
+private _cleanliness = _mtfEffective * (1 - _noise) / _erosionFactor;
+private _perceived = 0.65 + (1 - 0.65) * (_brightness * _cleanliness);
+missionNamespace setVariable [QGVAR(nvgPerceived), _perceived];
+
 // ─── FilmGrain parameters (shot noise) ───────────────────────────────────
 // Grain sharpness and size scale with noise level.  At high noise
 // (starlight), grain is coarse and sharp.  At low noise (full moon),
@@ -1390,7 +1410,7 @@ if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
         _hVig,
         _hGrain,
         _hDoF,
-        [_brightness, _mtfEffective, 0, [0,0,0,0], _phosphorTint, _nvgWeight],
+        [_perceived, _mtfEffective, 0, [0,0,0,0], _phosphorTint, _nvgWeight],
         _bloom,
         [_grainIntensity, _sharpness, _grainSize, 0.5, 1.0, 0],
         _blowout,
@@ -1430,7 +1450,11 @@ if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
 // weight: desaturation RGB weights, non-zero.  [6, 1, 1, 0] = ACE3 green,
 //   [1, 1, 6, 0] = ACE3 white.  [0,0,0,0] disables the effect.
 if (_hCC >= 0) then {
-    _hCC ppEffectAdjust [_brightness, _mtfEffective, 0, [0,0,0,0], _phosphorTint, _nvgWeight];
+    // The render consumes the PUBLISHED perceived output, re-read from
+    // missionNamespace (the file's single-source-of-truth pattern).  A
+    // Gen 1 resolves a dimmer image than a PVS-31 on the same scene.
+    private _perceivedOut = missionNamespace getVariable [QGVAR(nvgPerceived), _perceived];
+    _hCC ppEffectAdjust [_perceivedOut, _mtfEffective, 0, [0,0,0,0], _phosphorTint, _nvgWeight];
     _hCC ppEffectCommit 0;
     _hCC ppEffectEnable true;
     _hCC ppEffectForceInNVG true;
