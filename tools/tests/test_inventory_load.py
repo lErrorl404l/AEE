@@ -219,5 +219,46 @@ class TestMagazineLoadRowShape(unittest.TestCase):
         self.assertIn("(_count max 0) * _round / 1000", src)
 
 
+class TestVanillaPlaceholders(unittest.TestCase):
+    """Vanilla generic slot items map to a researched analogue.
+
+    ItemGPS, NVGoggles, Binocular and the rest have no real product, so no
+    published mass exists.  A soldier carrying them is carrying something,
+    so each maps to the researched real device it stands for.  The mapping
+    is a judgement and it is written down, not inferred in code, so it can
+    be reviewed.
+    """
+
+    def test_every_placeholder_is_labelled_an_analogue(self):
+        import json
+        from pathlib import Path
+
+        doc = json.loads(
+            (REPO / "data/equipment/sources/vanilla_placeholders.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertGreaterEqual(len(doc["items"]), 8)
+        for item in doc["items"]:
+            self.assertIn("analogue", item["maker"].lower(), item["item"])
+            self.assertIn("no real product", item["note"].lower(), item["item"])
+            self.assertGreater(item["mass_kg"], 0)
+
+    def test_placeholders_reach_the_table(self):
+        rows = {row[0] for row in sqf_table()}
+        for family in (
+            "nvgoggles",
+            "itemgps",
+            "itemmap",
+            "itemcompass",
+            "itemwatch",
+            "itemradio",
+            "binocular",
+            "minedetector",
+            "toolkit",
+        ):
+            self.assertIn(family, rows, f"{family} missing from the item table")
+
+
 if __name__ == "__main__":
     unittest.main()

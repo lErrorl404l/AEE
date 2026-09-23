@@ -1,0 +1,132 @@
+{
+  "retrieved": "2026-09-23",
+  "note": "Vanilla generic slot items have no real product, so no published mass exists for them. Each row maps a vanilla placeholder to the researched real device it stands for, and carries that device's published mass. Written by hand and reviewed; it is a judgement of what a placeholder represents, so it is stated here rather than inferred in code.",
+  "sources": [
+    {
+      "source_id": "aee_placeholder_mapping",
+      "title": "AEE placeholder mapping: vanilla slot items to their real analogue",
+      "url": "https://github.com/lErrorl404l/AEE",
+      "sha256": "",
+      "publisher": "AEE",
+      "tier": 4
+    }
+  ],
+  "items": [
+    {
+      "item": "ItemGPS (US DAGR-class handheld GPS)",
+      "category": "gps",
+      "family": "itemgps",
+      "mass_kg": 0.088,
+      "state": "with battery",
+      "maker": "analogue: Garmin Foretrex 701",
+      "country": "US",
+      "era": "modern",
+      "note": "Vanilla ItemGPS has no real product. It stands for a handheld military GPS, and the researched analogue is the Garmin Foretrex 701 at 0.088 kg (see device_mass.json, Garmin product page).",
+      "source_id": "aee_placeholder_mapping"
+    },
+    {
+      "item": "NVGoggles (monocular night vision)",
+      "category": "nv",
+      "family": "nvgoggles",
+      "mass_kg": 0.35,
+      "state": "with battery",
+      "maker": "analogue: AN/PVS-14",
+      "country": "US",
+      "era": "modern",
+      "note": "Vanilla NVGoggles has no real product. It stands for a monocular image-intensifier goggle, and the researched analogue is the AN/PVS-14 at 0.35 kg (L3Harris product page, see device_mass.json).",
+      "source_id": "aee_placeholder_mapping"
+    },
+    {
+      "item": "ItemMap (folding map and case)",
+      "category": "misc",
+      "family": "itemmap",
+      "mass_kg": 0.14,
+      "state": "folded with case",
+      "maker": "analogue: US military map case",
+      "country": "US",
+      "era": "modern",
+      "note": "Vanilla ItemMap has no real product. A folded field map in a case weighs a small fraction of a kilogram; the value is the lightest band of the carried small kit and is recorded as an analogue rather than a maker figure.",
+      "source_id": "aee_placeholder_mapping"
+    },
+    {
+      "item": "ItemCompass (lensatic compass)",
+      "category": "misc",
+      "family": "itemcompass",
+      "mass_kg": 0.1,
+      "state": "with case",
+      "maker": "analogue: lensatic compass",
+      "country": "US",
+      "era": "modern",
+      "note": "Vanilla ItemCompass has no real product. A lensatic compass is of the order of a tenth of a kilogram with its case.",
+      "source_id": "aee_placeholder_mapping"
+    },
+    {
+      "item": "ItemWatch (wristwatch)",
+      "category": "misc",
+      "family": "itemwatch",
+      "mass_kg": 0.06,
+      "state": "worn",
+      "maker": "analogue: service wristwatch",
+      "country": "US",
+      "era": "modern",
+      "note": "Vanilla ItemWatch has no real product. A service wristwatch is of the order of 60 g.",
+      "source_id": "aee_placeholder_mapping"
+    },
+    {
+      "item": "ItemRadio (manpack radio, carried in a pouch)",
+      "category": "radio",
+      "family": "itemradio",
+      "mass_kg": 1.1,
+      "state": "with battery",
+      "maker": "analogue: AN/PRC-152A",
+      "country": "US",
+      "era": "modern",
+      "note": "Vanilla ItemRadio has no real product. It stands for a handheld or manpack combat radio, and the researched analogue is the AN/PRC-152A at 1.1 kg (L3Harris datasheet, see kit_mass.json).",
+      "source_id": "aee_placeholder_mapping"
+    },
+    {
+      "item": "Binocular (military binocular)",
+      "category": "binocular",
+      "family": "binocular",
+      "mass_kg": 0.695,
+      "state": "complete",
+      "maker": "analogue: Bushnell Nitro 10x42",
+      "country": "US",
+      "era": "modern",
+      "note": "Vanilla Binocular has no real product. The researched analogue is a 10x42 binocular at 0.695 kg (maker spec, see device_mass.json).",
+      "source_id": "aee_placeholder_mapping"
+    },
+    {
+      "item": "MineDetector (metal detector)",
+      "category": "tool",
+      "family": "minedetector",
+      "mass_kg": 3.0,
+      "state": "complete",
+      "maker": "analogue: Vallon-class detector",
+      "country": "DE",
+      "era": "modern",
+      "note": "Vanilla MineDetector has no real product. A military metal detector is of the order of 3 kg complete; recorded as an analogue.",
+      "source_id": "aee_placeholder_mapping"
+    },
+    {
+      "item": "ToolKit (tool kit)",
+      "category": "tool",
+      "family": "toolkit",
+      "mass_kg": 4.0,
+      "state": "complete",
+      "maker": "analogue: field tool kit",
+      "country": "US",
+      "era": "modern",
+      "note": "Vanilla ToolKit has no real product. ACE states its own ToolKit at 4.0 kg in units of 100 g (ACE_common config mass 40 is not held; ACE publishes 4.0 kg for the toolkit), and the engine gives the vanilla ToolKit mass 80 in slot-space. Recorded as an analogue.",
+      "source_id": "aee_placeholder_mapping"
+    }
+  ],
+  "leads": [
+    {
+      "item": "vanilla generic slot items generally",
+      "url": "https://community.bistudio.com/wiki/Arma_3:_ItemInfo_Config_Reference",
+      "why": "The engine gives every item an ItemInfo mass, but it is a slot-space value rather than a mass (FirstAidKit 8, H_HelmetB 30, V_PlateCarrier1 80). It is identity evidence and never a value source."
+    }
+  ],
+  "conflicts": []
+}
