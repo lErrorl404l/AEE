@@ -34,11 +34,13 @@ if [ ! -x "$ARMA3_SERVER_ROOT/arma3server_x64" ]; then
 fi
 echo "==> server root: $ARMA3_SERVER_ROOT"
 
-docker run --rm -v "$DOCKER/configs:/c" alpine rm -rf /c/profiles 2>/dev/null || true
-
+# The container runs as root, so a profiles dir it writes through the host
+# bind mount is root-owned and blocks the host-side hemtt build walk.  The
+# alpine volume removes it with root rights even when a plain rm -rf fails.
 clean_profiles() { docker run --rm -v "$DOCKER/configs:/c" alpine rm -rf /c/profiles 2>/dev/null || true; }
-# Remove per-host/world compose overlay files left by FAIL paths
-clean_overlays() { rm -f "$DOCKER"/docker-compose.{ace,acre2,tfar,kat,acm,Stratis,Tanoa,Enoch}.yml 2>/dev/null || true; }
+# Remove per-host/world compose overlay files left by FAIL paths.  The base
+# compose and the baseline overlay are kept.
+clean_overlays() { find "$DOCKER" -maxdepth 1 -name 'docker-compose.*.yml' ! -name 'docker-compose.baseline.yml' -delete 2>/dev/null || true; }
 trap 'docker compose "${COMPOSE_FILES[@]}" down 2>/dev/null || true; clean_profiles; clean_overlays' EXIT
 
 # ── Map rotation mode ───────────────────────────────────────────────────────
@@ -148,7 +150,7 @@ YAMLEOF
         fi
         docker compose -f "$DOCKER/docker-compose.yml" -f "$DOCKER/docker-compose.$host.yml" down 2>/dev/null || true
         rm -f "$DOCKER/docker-compose.$host.yml"
-        rm -rf "$DOCKER/configs/profiles" 2>/dev/null || true
+        clean_profiles
     done
     cat >"$DOCKER/configs/server.cfg" <<CFGEOF
 hostname = "AEE Test";
@@ -180,20 +182,90 @@ fi
 
 if [ "${1:-}" = "--maps" ]; then
     echo "==> map rotation test"
-    MAPS=("Stratis:Csa" "Tanoa:Af" "Enoch:Dfb")
-    FAILED=0
+    # Workshop content root. Override AEE_WORKSHOP_DIR for another library.
+    WORKSHOP="${AEE_WORKSHOP_DIR:-/ext/SteamLibrary/steamapps/workshop/content/107410}"
+    VALIDATOR="$ROOT/tools/validation/validate_biome_plausible.py"
+
+    # world|latitude|required-workshop-ids
+    #   The latitude is a FACT read from the map's own CfgWorlds latitude
+    #   (BIS stores it sign-inverted; the Koppen band is symmetric, so the
+    #   MAGNITUDE is the value under test).  The rotation never knows the
+    #   expected biome: it asks validate_biome_plausible.py whether the
+    #   resolved biome is in the latitude band (ADR-002, no-hardcoding).
+    #   The world is the CfgWorlds class name, not the mod name.
+    MAPS=(
+        "Stratis|35.097|"
+        "Tanoa|17.698|"
+        "Enoch|54|"
+        "NorthTakistan|17.698|2829330653,583496184"
+        "kunduz_valley|36.72|3078351739,583496184"
+        "Mountains_ACR|34|583544987,583496184"
+        "oski_corran|56.702|2214384530"
+    )
+
+    # Dependency check BEFORE the rotation.  A missing Workshop mod skips
+    # its map and the run still exits 0: an absent local mod is not a
+    # regression of the biome system.
+    RUNNABLE=()
     for entry in "${MAPS[@]}"; do
-        world="${entry%%:*}"
-        expect="${entry##*:}"
-        echo "==> world $world (expect biome $expect)"
-        # the wrapper reads world/mission from env, not config.toml
-        cat >"$DOCKER/docker-compose.$world.yml" <<YAMLEOF
-services:
-  aee-test:
-    environment:
-      - ARMA3_SERVER__WORLD=$world
-      - ARMA3_SERVER__MISSION=aee_test.$world
-YAMLEOF
+        IFS='|' read -r world _lat mods <<<"$entry"
+        missing=""
+        if [ -n "$mods" ]; then
+            IFS=',' read -ra ids <<<"$mods"
+            for id in "${ids[@]}"; do
+                if [ ! -d "$WORKSHOP/$id" ]; then
+                    missing="$missing $id"
+                elif [ ! -d "$WORKSHOP/$id/addons" ] && [ ! -d "$WORKSHOP/$id/Addons" ]; then
+                    missing="$missing $id(no addons folder)"
+                fi
+            done
+        fi
+        if [ -n "$missing" ]; then
+            echo "  MISSING: $world needs workshop mod(s)$missing in $WORKSHOP; skipping"
+        else
+            RUNNABLE+=("$entry")
+        fi
+    done
+    echo "==> $((${#RUNNABLE[@]})) of $((${#MAPS[@]})) maps runnable"
+
+    FAILED=0
+    for entry in "${RUNNABLE[@]}"; do
+        IFS='|' read -r world lat mods <<<"$entry"
+        echo "==> world $world (latitude $lat)"
+        # Mount each required Workshop item inside the mods bind mount, then
+        # add it to the load order.  The mount must be writable: Arma's mod
+        # scanner resolves a Docker :ro bind mount as an empty mod, so a
+        # read-only mount silently drops the map's dependencies.  The engine
+        # does not write to the mount (verified: no file is modified).
+        # Some Workshop mods ship an uppercase Addons folder; Arma's Linux
+        # scanner needs lowercase 'addons', so the real folder is mounted at
+        # the lowercase name.  The entrypoint symlinks every @* folder into
+        # the game dir.
+        modparam="mods/@aee;mods/@cba_a3"
+        overlay_volumes=""
+        if [ -n "$mods" ]; then
+            IFS=',' read -ra ids <<<"$mods"
+            for id in "${ids[@]}"; do
+                modparam="$modparam;mods/@$id"
+                addons_src="$WORKSHOP/$id/addons"
+                [ -d "$addons_src" ] || addons_src="$WORKSHOP/$id/Addons"
+                overlay_volumes="$overlay_volumes      - $addons_src:/arma3/server/mods/@$id/addons
+"
+            done
+        fi
+        # the wrapper reads world/mission/params from env, not config.toml
+        {
+            echo "services:"
+            echo "  aee-test:"
+            echo "    environment:"
+            echo "      - ARMA3_SERVER__WORLD=$world"
+            echo "      - ARMA3_SERVER__MISSION=aee_test.$world"
+            echo "      - ARMA3_SERVER__PARAMS=-autoInit -noBattlEye -mod=$modparam"
+            if [ -n "$overlay_volumes" ]; then
+                echo "    volumes:"
+                printf '%s' "$overlay_volumes"
+            fi
+        } >"$DOCKER/docker-compose.$world.yml"
         cat >"$DOCKER/configs/server.cfg" <<CFGEOF
 hostname = "AEE Test";
 password = "";
@@ -211,22 +283,26 @@ class Missions {
     };
 };
 CFGEOF
+        clean_profiles
         docker compose -f "$DOCKER/docker-compose.yml" -f "$DOCKER/docker-compose.$world.yml" up -d --force-recreate
         for _ in $(seq 1 36); do
             if docker compose -f "$DOCKER/docker-compose.yml" -f "$DOCKER/docker-compose.$world.yml" logs 2>/dev/null | grep -q "\[AEE-TEST\] DONE"; then break; fi
             sleep 5
         done
         docker compose -f "$DOCKER/docker-compose.yml" -f "$DOCKER/docker-compose.$world.yml" logs >"$DOCKER/run.$world.log" 2>&1
-        biome=$(grep -oE "\[BIOME\] $world=[A-Za-z]+" "$DOCKER/run.$world.log" | tail -1 | cut -d= -f2)
-        if [ "$biome" = "$expect" ]; then
-            echo "  PASS: $world resolves to $biome (expected $expect)"
+        biome=$({ grep -oE "\[BIOME\] $world=[A-Za-z]+" "$DOCKER/run.$world.log" || true; } | tail -1 | cut -d= -f2)
+        if [ -z "$biome" ]; then
+            echo "  FAIL: $world - no [BIOME] line (see tests/docker/run.$world.log)"
+            FAILED=1
+        elif python3 "$VALIDATOR" "$lat" "$biome"; then
+            echo "  PASS: $world lat=$lat -> $biome (plausible)"
         else
-            echo "  FAIL: $world biome = '${biome:-<none>}' (expected $expect)"
+            echo "  FAIL: $world lat=$lat -> $biome rejected by the band gate"
             FAILED=1
         fi
         docker compose -f "$DOCKER/docker-compose.yml" -f "$DOCKER/docker-compose.$world.yml" down 2>/dev/null || true
         rm -f "$DOCKER/docker-compose.$world.yml"
-        rm -rf "$DOCKER/configs/profiles" 2>/dev/null || true
+        clean_profiles
     done
     cat >"$DOCKER/configs/server.cfg" <<CFGEOF
 hostname = "AEE Test";
