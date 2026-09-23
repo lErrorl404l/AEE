@@ -19,6 +19,7 @@ Run:  python3 tools/validation/gen_equipment_data.py
 """
 
 import json
+import re
 import statistics
 from pathlib import Path
 
@@ -54,6 +55,48 @@ LOOKALIKES = str.maketrans(
 )
 
 
+def classifier_rows():
+    """Researched weights from the slot classifiers, as table rows.
+
+    The slot classifiers hold a researched weight for every family they
+    know (helmet 60 keywords, vest 92, rucksack 34, goggle 41).  Those
+    weights already cover the VANILLA classnames, which carry a generic
+    name rather than a product name: a soldier wears H_HelmetB and
+    V_PlateCarrier1, not "mich" or "spcs".  Without this the equipment
+    table resolves none of them and the soldier's own kit weighs nothing.
+
+    Seeding from the classifiers removes that gap without duplicating the
+    research, and keeps one source of truth: the classifier states the
+    value, and this reads it.
+    """
+    slots = (
+        ("helmet", "fnc_getHelmetProperties.sqf"),
+        ("vest", "fnc_getVestProperties.sqf"),
+        ("rucksack", "fnc_getPackProperties.sqf"),
+    )
+    rows = []
+    for category, filename in slots:
+        path = REPO / "addons/physiology/functions/clothing" / filename
+        if not path.exists():
+            continue
+        text = path.read_text(encoding="utf-8")
+        body = re.search(r"switch \(true\) do \{(.*?)\n\};", text, re.S)
+        if not body:
+            continue
+        for case in re.finditer(
+            r"case\s*\((.*?)\):\s*\{\s*\[\s*([0-9.]+)", body.group(1), re.S
+        ):
+            weight = float(case.group(2))
+            if weight <= 0:
+                continue
+            for keyword in re.findall(r'find "([^"]+)"', case.group(1)):
+                keyword = keyword.strip().lower()
+                if len(keyword) < MIN_FAMILY:
+                    continue
+                rows.append((keyword, category, "tier value", weight, 4))
+    return rows
+
+
 def load_rows():
     """Return (rows, skipped) from every capture in the source directory.
 
@@ -71,6 +114,7 @@ def load_rows():
         "no_mass": 0,
         "no_family": 0,
         "non_ascii": 0,
+        "no_category": 0,
         "impossible": 0,
     }
     for path in sorted(SRC.glob("*.json")):
@@ -87,6 +131,13 @@ def load_rows():
                 continue
             if len(family) < MIN_FAMILY:
                 skipped["no_family"] += 1
+                continue
+            # A row without a category is a capture defect, not a lookup
+            # miss: the row silently cannot match a filtered lookup.
+            # medical_mass.json shipped 56 such rows, and the whole capture
+            # was unusable for a category-filtered call until it was fixed.
+            if not str(item.get("category", "")).strip():
+                skipped["no_category"] += 1
                 continue
             if not isinstance(mass, (int, float)) or mass <= 0:
                 skipped["no_mass"] += 1
@@ -232,6 +283,11 @@ _match
 
 def main():
     rows, skipped = load_rows()
+    # The captured research wins where it exists; the classifier tiers fill
+    # the families the captures do not hold (the generic vanilla names).
+    captured = {(f, c) for f, c, _s, _m, _t in rows}
+    seeded = [r for r in classifier_rows() if (r[0], r[1]) not in captured]
+    rows = rows + seeded
     table, claimed_rows = build_table(rows)
     body = ",\n".join('    ["{}", "{}", {}, {}]'.format(*row) for row in table)
     OUT.write_text(TEMPLATE.replace("__ROWS__", body), encoding="utf-8")
@@ -240,6 +296,7 @@ def main():
         + skipped["no_mass"]
         + skipped["no_family"]
         + skipped["non_ascii"]
+        + skipped["no_category"]
         + skipped["impossible"]
     )
     # The confidence mix is printed, so a table that leans on compilations
