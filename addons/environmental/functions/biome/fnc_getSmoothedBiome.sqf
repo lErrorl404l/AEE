@@ -41,9 +41,20 @@ if (_radius <= 0) exitWith {
 // ─── Sample the ring and count the votes ─────────────────────────────────
 // Eight points at the radius, so the neighbourhood is sampled evenly and
 // the dominant biome is the one that actually surrounds the position.
+//
+// Each sample costs a surfaceType query, so the ring is eight terrain
+// reads per call, and this runs every environment tick on every machine.
+// The answer depends only on where the position sits and on the radius,
+// and neither moves while the player stays put. It is cached per 100 m
+// cell: the biome boundary is kilometres wide, so a 100 m quantisation is
+// far below the feature the ring is measuring.
 private _px = _posASL select 0;
 private _py = _posASL select 1;
 private _pz = _posASL select 2;
+private _cellKey = format ["%1_%2_%3",
+    floor (_px / 100), floor (_py / 100), round _radius];
+private _ringCache = missionNamespace getVariable [QGVAR(biomeRingCache), createHashMap];
+if (_cellKey in _ringCache) exitWith { _ringCache get _cellKey };
 
 private _votes = createHashMap;
 private _count = 0;
@@ -63,7 +74,10 @@ for "_i" from 0 to 7 do {
 };
 
 if (_count == 0) exitWith {
-    [_posASL] call EFUNC(environmental,getBiomeAtPosition)
+    private _fallback = [_posASL] call EFUNC(environmental,getBiomeAtPosition);
+    _ringCache set [_cellKey, _fallback];
+    missionNamespace setVariable [QGVAR(biomeRingCache), _ringCache];
+    _fallback
 };
 
 // ─── The dominant biome, with the centre breaking a tie ──────────────────
@@ -82,8 +96,12 @@ private _tie = false;
     };
 } forEach _votes;
 
-if (_tie) exitWith {
+private _result = if (_tie) then {
     [_posASL] call EFUNC(environmental,getBiomeAtPosition)
+} else {
+    _best
 };
+_ringCache set [_cellKey, _result];
+missionNamespace setVariable [QGVAR(biomeRingCache), _ringCache];
 
-_best
+_result
