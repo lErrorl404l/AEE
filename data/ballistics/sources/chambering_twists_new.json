@@ -1,0 +1,38 @@
+{
+  "retrieved": "2026-09-23",
+  "sources": [
+    {
+      "source_id": "dockery_ptrd41",
+      "title": "Dockery Armory, PTRD-41 (Degtyaryov 14.5x114mm anti-tank rifle), technical data sheet, ref. CODE 03-125-941",
+      "url": "https://dockeryarmory.com/ptrd-41/",
+      "sha256": "b7f5754fc67415c157d740666d2367bd0870cabbdbddb6d7eb7225abd16c6fc2",
+      "publisher": "Dockery Armory",
+      "tier": 3
+    }
+  ],
+  "twists": [
+    {
+      "chambering": "14.5x114mm",
+      "twist_mm": 455.0,
+      "grooves": 8,
+      "source_id": "dockery_ptrd41",
+      "locator": "Data sheet field 'RIFLING (TYPE & TWIST)': '8-Grooves, Right hand twist, 1 turn in 45.5 cm (17.91 in)'. 45.5 cm = 455 mm, and 17.91 in x 25.4 = 454.9 mm. PROVENANCE: a published collector/reference data sheet for the PTRD-41, not a state document. The same pitch is stated for the cartridge in the English Wikipedia infobox (lead only). The 8-groove, right-hand direction is corroborated by the Russian KPVT technical description ('Внутри ствол имеет канал с восемью нарезами, вьющимися слева вверх направо' - the bore has eight grooves curving from left up to the right, no pitch given) and by Tank Encyclopedia ('The barrel had eight riflings'). No national standard, proof-house sheet or military manual giving the pitch was found.",
+      "note": "8-Grooves, Right hand twist, 1 turn in 45.5 cm (17.91 in)",
+      "smoothbore": false
+    }
+  ],
+  "leads": [
+    {
+      "chambering": "14.5x114mm",
+      "url": "https://en.wikipedia.org/wiki/14.5%C3%97114mm",
+      "tier": 5,
+      "reason": "Wikipedia infobox: 'rifling = 455 mm (1 in 17.91 in)', with 8 grooves. A wiki is a lead only. It agrees with the tier 3 Dockery data sheet carried on the twist row above, so the row is graded by the Dockery source, and the wiki is recorded here as the independent corroboration."
+    },
+    {
+      "chambering": ".280 British (7x43mm, 7 mm Mk1z)",
+      "url": "https://en.wikipedia.org/wiki/.280_British",
+      "tier": 5,
+      "reason": "Wikipedia infobox: 'rifling = 1:8.66 in (220 mm)'. This is the only source found that gives a pitch, and a wiki-only figure is a lead, so no twist row is written. No national standard, military manual, proof-house sheet, Cartridges of the World entry, Jane's entry or DTIC report stating the .280 British twist was found. Searched and found no pitch: DTIC report (Development and Proof Services, Aberdeen Proving Grounds, 5 June 1950, Ninth Report of Project TS2-2015, Vol. I, 239 pp.), the Rifle No.9 Mk.1 (EM-2) user handbook (OCR, no rifling data), rifleman.org.uk EM-2 page, municion.org 7x43 catalogue pages, and Koll/russianammo.org."
+    }
+  ]
+}
