@@ -75,26 +75,37 @@ def research_table():
             if not isinstance(mass, (int, float)) or mass <= 0:
                 continue
             tier = tier_of.get(item.get("source_id"))
-            if tier is None or tier >= 5:
+            if tier is None:
+                continue
+            if (
+                not isinstance(mass, (int, float))
+                or mass <= 0
+                or mass > 40
+                or mass < 0.001
+            ):
                 continue
             category = str(item.get("category", "")).strip().lower()
             category = CATEGORY_ALIASES.get(category, category)
-            groups.setdefault((family, category), []).append(
-                (str(item.get("state", "")).lower(), float(mass))
-            )
+            state = str(item.get("state", "")).strip().lower()
+            groups.setdefault((family, category), []).append((state, float(mass), tier))
     table = []
+    claimed_rows = 0
     for (family, category), entries in sorted(
         groups.items(), key=lambda kv: (-len(kv[0][0]), kv[0])
     ):
-        masses = [mass for _state, mass in entries]
+        strong = [e for e in entries if e[2] < 5]
+        selected = strong if strong else entries
+        if not strong:
+            claimed_rows += 1
+        masses = [mass for _state, mass, _tier in selected]
         if category == "rucksack":
-            empty = [mass for state, mass in entries if "empty" in state]
+            empty = [mass for state, mass, _tier in selected if "empty" in state]
             if empty:
                 masses = empty
         table.append(
             (family, category, round(statistics.median(masses), 3), len(masses))
         )
-    return table
+    return table, claimed_rows
 
 
 def sqf_table():
@@ -113,12 +124,36 @@ class TestResolverMatchesResearch(unittest.TestCase):
     def test_table_equals_capture_medians(self):
         # The projection must equal the captures.  A capture that lands
         # without a regenerated resolver fails here.
-        expected = research_table()
+        expected, _claimed = research_table()
         self.assertEqual(
             sqf_table(),
             expected,
             "fnc_getItemMass.sqf is stale: run tools/validation/gen_equipment_data.py",
         )
+
+    def test_a_strong_source_beats_a_compilation(self):
+        # A tier 5 value may enter (a labelled weak value beats a silent
+        # zero), but a tier 1-4 value must displace it outright for the same
+        # family and category.  This exercises the GENERATOR's own rule, not
+        # a copy of it, so a divergence fails here.
+        import importlib.util
+
+        spec = importlib.util.spec_from_file_location(
+            "gen_equipment_data", REPO / "tools/validation/gen_equipment_data.py"
+        )
+        gen = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(gen)
+
+        rows = [
+            ("testfam", "medical", "with packaging", 1.0, 4),
+            ("testfam", "medical", "with packaging", 9.9, 5),
+            ("weakfam", "medical", "with packaging", 2.5, 5),
+        ]
+        table, claimed = gen.build_table(rows)
+        got = {row[0]: row[2] for row in table}
+        self.assertEqual(got["testfam"], 1.0, "tier 5 overrode a maker value")
+        self.assertEqual(got["weakfam"], 2.5, "a lone tier 5 value was dropped")
+        self.assertEqual(claimed, 1, "the weak row was not counted as claimed")
 
     def test_table_not_empty_when_sources_exist(self):
         if list(SOURCES.glob("*.json")):

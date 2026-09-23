@@ -53,7 +53,14 @@ reads them all, so a new file joins the build with no code change.
 - `source_id`: stable snake_case key. One id per document.
 - `tier`: 1 issue standard or specification, 2 military manual or
   technical manual, 3 reference work, 4 manufacturer, 5 compilation.
-  Tier 5 is a lead only. It never becomes an item.
+  A tier 5 source (a compilation, for example Wikipedia) is weaker, but a
+  labelled weak value beats a silent zero, so it DOES become an item.  It
+  enters at grade `claimed` and is counted in the build output, so the
+  confidence mix is visible.  A tier 1-4 value always displaces a tier 5
+  value for the same family and category.  A physically impossible mass
+  (above 40 kg or below 1 g for a carried item) is rejected whatever the
+  tier.  Prefer tiers 1-4; reach for 5 only when nothing stronger exists,
+  and sanity-check the figure against the material and the size.
 - `category`: one of `uniform`, `garment`, `vest`, `rucksack`, `helmet`,
   `webbing`, `footwear`, `nv`, `thermal`, `optic`, `laser`, `light`,
   `mount`, `suppressor`, `rangefinder`, `binocular`, `gps`, `designator`,
@@ -79,7 +86,11 @@ reads them all, so a new file joins the build with no code change.
 2. Primary sources first: issue specifications, military manuals,
    manufacturer datasheets and product pages. Use an Internet Archive
    snapshot when the live site blocks.
-3. A tier 5 source goes to `leads` with its reason.
+3. A tier 5 source is allowed as a last resort: it becomes an item at
+   grade `claimed`, never at a stronger grade, and it is counted in the
+   build output. It never displaces a tier 1-4 value. A tier 5 source
+   that only *supports* a value (corroboration) goes to `leads`, and so
+   does anything you would not put in front of a reader.
 4. Record a disagreement in `conflicts` and keep the higher tier value
    on the item. Never average two sources.
 5. One item per row. A product family with published variants gets one

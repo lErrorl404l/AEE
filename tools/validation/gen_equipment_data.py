@@ -55,15 +55,23 @@ LOOKALIKES = str.maketrans(
 
 
 def load_rows():
-    """Return (rows, skipped) from every capture in the source directory."""
+    """Return (rows, skipped) from every capture in the source directory.
+
+    A tier 5 source (a compilation, e.g. Wikipedia) is weaker than a maker
+    page, but a labelled weak value beats a silent zero.  Such a row enters
+    as grade "claimed" and is counted, so the confidence mix is visible.  A
+    tier 1-4 value always displaces it for the same family and category.
+    A physically impossible mass is rejected outright.
+    """
     tier_of = {}
     collected = []
     skipped = {
-        "tier5": 0,
+        "tier5_kept": 0,
         "no_source": 0,
         "no_mass": 0,
         "no_family": 0,
         "non_ascii": 0,
+        "impossible": 0,
     }
     for path in sorted(SRC.glob("*.json")):
         doc = json.loads(path.read_text(encoding="utf-8"))
@@ -83,40 +91,58 @@ def load_rows():
             if not isinstance(mass, (int, float)) or mass <= 0:
                 skipped["no_mass"] += 1
                 continue
+            # A hand-held item cannot exceed 40 kg and nothing carried on a
+            # soldier is under a gram.  A value outside that band is a data
+            # error, not a weak source, so it is rejected whatever the tier.
+            if mass > 40 or mass < 0.001:
+                skipped["impossible"] += 1
+                continue
             tier = tier_of.get(source_id)
             if tier is None:
                 skipped["no_source"] += 1
                 continue
-            if tier >= 5:
-                skipped["tier5"] += 1
-                continue
+            claimed = tier >= 5
+            if claimed:
+                skipped["tier5_kept"] += 1
             category = str(item.get("category", "")).strip().lower()
             category = CATEGORY_ALIASES.get(category, category)
             state = str(item.get("state", "")).strip().lower()
-            collected.append((family, category, state, float(mass)))
+            collected.append((family, category, state, float(mass), tier))
     return collected, skipped
 
 
 def build_table(rows):
-    """Group by (family, category) and take the median mass."""
+    """Group by (family, category) and take the median mass.
+
+    A tier 1-4 value always displaces a tier 5 value for the same family
+    and category, so a weak compilation can never override a maker page.
+    Within one tier the median stands, which is the existing convention for
+    a family with several published variants.
+    """
     groups = {}
-    for family, category, state, mass in rows:
-        groups.setdefault((family, category), []).append((state, mass))
+    for family, category, state, mass, tier in rows:
+        groups.setdefault((family, category), []).append((state, mass, tier))
     table = []
+    claimed_rows = 0
     for (family, category), entries in sorted(
         groups.items(), key=lambda kv: (-len(kv[0][0]), kv[0])
     ):
-        masses = [mass for _state, mass in entries]
+        # A published tier 1-4 figure beats a tier 5 compilation outright.
+        strong = [e for e in entries if e[2] < 5]
+        selected = strong if strong else entries
+        if not strong:
+            claimed_rows += 1
+        masses = [mass for _state, mass, _tier in selected]
         # A rucksack enters the load EMPTY: fnc_getInventoryLoad weighs its
         # contents, so a filled mass would count the contents twice.
         if category == "rucksack":
-            empty = [mass for state, mass in entries if "empty" in state]
+            empty = [mass for state, mass, _tier in selected if "empty" in state]
             if empty:
                 masses = empty
         table.append(
             (family, category, round(statistics.median(masses), 3), len(masses))
         )
-    return table
+    return table, claimed_rows
 
 
 TEMPLATE = """#include "..\\..\\script_component.hpp"
@@ -183,14 +209,29 @@ _match
 
 def main():
     rows, skipped = load_rows()
-    table = build_table(rows)
+    table, claimed_rows = build_table(rows)
     body = ",\n".join('    ["{}", "{}", {}, {}]'.format(*row) for row in table)
     OUT.write_text(TEMPLATE.replace("__ROWS__", body), encoding="utf-8")
-    dropped = sum(skipped.values())
+    dropped = (
+        skipped["no_source"]
+        + skipped["no_mass"]
+        + skipped["no_family"]
+        + skipped["non_ascii"]
+        + skipped["impossible"]
+    )
+    # The confidence mix is printed, so a table that leans on compilations
+    # is visible in the build output rather than silently trusted.
     print(
-        "equipment families: {} rows from {} items; skipped {} {}; "
-        "wrote {} ({} bytes)".format(
-            len(table), len(rows), dropped, skipped, OUT.name, OUT.stat().st_size
+        "equipment families: {} rows from {} items; "
+        "{} row(s) grade claimed (tier 5, no stronger source); "
+        "dropped {} {}; wrote {} ({} bytes)".format(
+            len(table),
+            len(rows),
+            claimed_rows,
+            dropped,
+            skipped,
+            OUT.name,
+            OUT.stat().st_size,
         )
     )
 

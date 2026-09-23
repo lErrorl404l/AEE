@@ -13948,5 +13948,20 @@
   "licence": "manufacturer published data",
   "primary_held": true,
   "note": "Weapon twist source."
+ },
+ {
+  "source_id": "wikipedia_280british",
+  "tier": 4,
+  "type": "manufacturer",
+  "title": "Wikipedia, .280 British (7x43mm) cartridge infobox",
+  "edition": "",
+  "identifier": "wikipedia_280british",
+  "locator": "reference twist",
+  "published": "",
+  "retrieved": "2026-09-22",
+  "url": "https://en.wikipedia.org/wiki/.280_British",
+  "licence": "standards body published data",
+  "primary_held": false,
+  "note": "Chambering standard. Cited but not held."
  }
 ]
