@@ -46,15 +46,24 @@ class TestArmourLadder(unittest.TestCase):
         # MBT must be the top (L6 - APFSDS-class only).
         self.assertGreater(1100, 700)
 
-    def test_hierarchy_in_config(self):
-        # The config itself must encode the ladder in order.
-        self.assertIn("armor = 160", CONFIG)  # MRAP
-        self.assertIn("armor = 600", CONFIG)  # IFV tracked
-        self.assertIn("armor = 1100", CONFIG)  # MBT
+    def test_no_static_vehicle_class_list(self):
+        # Rebasing a vanilla class discards fields its real base carries
+        # (CargoLight, textureTrackWheel, the Damage array), and the engine
+        # raises "No entry" for each at vehicle load.
+        self.assertNotIn(": Car_F", CONFIG)
+        self.assertNotIn(": Truck_F", CONFIG)
 
-    def test_vanilla_correction_noted(self):
-        # The research corrected the issue's table (400 -> 500 verified).
-        self.assertIn("500", CONFIG)
+    def test_dynamic_resolvers_own_protection(self):
+        # The three functions that replace the static list must exist.
+        functions = REPO / "addons/armour/functions"
+        for name in (
+            "fnc_getVehicleArmour.sqf",
+            "fnc_deriveProtection.sqf",
+            "fnc_penetrationGate.sqf",
+        ):
+            self.assertTrue(
+                (functions / name).exists(), f"dynamic armour resolver {name} missing"
+            )
 
 
 class TestPenetrationMath(unittest.TestCase):
