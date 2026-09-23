@@ -12,10 +12,18 @@ climate is computed from first principles, and the biome is CLASSIFIED
 from that climate by the real Köppen rules.
 
 Model (anchored to real climatology):
-  T_mean(lat) = 30.9 - 0.437 * |lat|          degC annual mean
-  A(lat)      = 1.4  + 0.405 * |lat|          degC annual amplitude
+  T_mean(lat) = (26 - 0.40*|lat|) + 5*maritime + 6.0*hadley + 10.0*heatRidge
+  A(lat)      = (7.1 + 0.333 * |lat|) / 2     degC amplitude about the mean
   T_month(m)  = T_mean + A * sin(2*pi*(m - peak)/12)
   peak = 7 (northern hemisphere: July warmest), 1 (southern: January)
+
+  The annual mean is NOT monotonic in latitude. The hottest annual means
+  on Earth are the Sahara, Sahel and Arabian landmass at 15-25 deg, not
+  the equator: Timbuktu 28.9 C, Agadez 28.1, Kidal 28.9 against about 26
+  C at the equator. The heatRidge term is that landmass core, damped by
+  (1 - maritime) because the ocean breaks it. Without it the model gave a
+  coldest month of 16 C at 17.7 N, below the 18 C Koppen tropical gate, so
+  a subtropical classification was forced on a tropical latitude.
 
   Diurnal range grows toward the dry subtropics and shrinks toward the
   wet tropics and the poles (a proxy for clear-sky vs cloudy/oceanic):
@@ -42,9 +50,10 @@ private _lat = abs _latDeg;
 if (_lat > 66.5) then { _lat = 66.5; };  // clamp: poleward = polar night regime
 
 // ─── Annual mean + amplitude from latitude ───────────────────────────────
-// t_mean: 27 C at the equator, falling ~0.42 C/deg poleward (climatology:
-// tropical mean 27, lat 45 ~8, lat 60 ~2).
-private _tMeanBase = 27 - 0.42 * _lat;
+// The base is the zonal/oceanic annual mean: about 26 C at the equator,
+// falling 0.40 C/deg poleward.  It is deliberately monotonic; the landmass
+// heat core below supplies the subtropical maximum.
+private _tMeanBase = 26 - 0.40 * _lat;
 
 // Maritime correction: an ocean-air mass moderates BOTH the amplitude AND
 // the annual mean.  The ocean warms the winter half-year (its heat
@@ -72,14 +81,29 @@ private _maritime = 1 / (1 + exp (-12 * (_waterFrac - 0.22)));
 // maps (the ocean breaks the high).  Cairo (30 N): +5.2 C, *0.20
 // precip — real 22 C, 25 mm/yr (BWh).
 private _hadley = exp (-((_lat - 31) ^ 2) / (2 * 25)) * (1 - _maritime);
-private _tMean = _tMeanBase + 5 * _maritime + 6.0 * _hadley;
-// Annual amplitude: the documented model A(lat) = 1.4 + 0.405*|lat| is
-// the FULL peak-to-trough range (Minsk at 54 N: 25.1 C swing).  The
-// sin() term below needs HALF that - the amplitude about the mean - so
-// the range is halved here.  Feeding the full range in produced a ~2x
-// seasonal swing (Enoch min -17 / max 26 vs real Minsk -6.6 / 18.5),
-// pushing mid-latitude maps into Dfa instead of Dfb (issue #184).
-private _ampFull = (1.4 + 0.405 * _lat) max 2.0;
+// Landmass heat core.  The annual mean peaks at about 19 deg latitude on
+// land, not at the equator: the Saharan/Sahel/Arabian belt is the hottest
+// land on Earth (Timbuktu 28.9 C, Agadez 28.1, Kidal 28.9, against about
+// 26 C at the equator).  A broad Gaussian on the LAND only, scaled by
+// (1 - maritime) because the ocean breaks the core, exactly as the Hadley
+// factor is.  Peaks at 10.0 C, e-folding width 8 deg: +9.1 C at 17.7 N
+// where the real figure needs it, +3.6 C at 30 N, effectively zero by 45 N.
+// This is what keeps the 17.7 N coldest month above the 18 C Koppen
+// tropical gate.
+private _heatRidge = exp (-((_lat - 19) ^ 2) / (2 * 8 ^ 2)) * (1 - _maritime);
+private _tMean = _tMeanBase + 5 * _maritime + 6.0 * _hadley + 10.0 * _heatRidge;
+// Annual amplitude: A(lat) is the FULL peak-to-trough range, and the sin()
+// term below needs HALF that - the amplitude about the mean - so the range
+// is halved here.  Feeding the full range in produced a ~2x seasonal swing
+// (Enoch min -17 / max 26 vs real Minsk -6.6 / 18.5), pushing mid-latitude
+// maps into Dfa instead of Dfb (issue #184).
+//
+// The coefficients are fitted through two real anchors: 13.0 C at 17.7 N
+// (Timbuktu range 13.0, Agadez 14.0) and 25.1 C at 54 N (Minsk).  The
+// earlier 1.4 + 0.405*lat gave 8.6 at 17.7 N and 23.3 at 54 N, too small
+// at both ends: a tropical latitude then had a seasonality the real
+// subtropics do not show.
+private _ampFull = (7.1 + 0.333 * _lat) max 2.0;
 private _amp = (_ampFull / 2) * (1 - 0.6 * _maritime);
 
 // Hemisphere: peak month is July (7) north, January (1) south.

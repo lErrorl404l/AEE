@@ -27,7 +27,7 @@ def latitude_climate(lat_deg, water_frac=0.3):
     lat = abs(lat_deg)
     if lat > 66.5:
         lat = 66.5
-    t_mean_base = 27 - 0.42 * lat
+    t_mean_base = 26 - 0.40 * lat
     # Maritime air masses moderate amplitude AND raise the annual mean
     # (the ocean warms the winter half-year).  Threshold sits low: a map
     # with a third water is dominated by ocean-air masses.  The +5 C
@@ -48,12 +48,17 @@ def latitude_climate(lat_deg, water_frac=0.3):
     # (30 N): +5.2 C, *0.20 precip — real 22 C, 25 mm/yr (BWh).
     hadley = math.exp(-((lat - 31) ** 2) / (2 * 5**2)) * (1 - maritime)
     t_mean = t_mean + 6.0 * hadley
-    # Annual amplitude: the documented model A(lat) = 1.4 + 0.405*|lat| is
-    # the FULL peak-to-trough range (Minsk at 54 N: 25.1 C swing).  The
-    # sin() term needs HALF that (the amplitude about the mean).  Feeding
-    # the full range in produced a ~2x seasonal swing, pushing mid-latitude
-    # maps into Dfa instead of Dfb (issue #184).
-    amp_full = max(1.4 + 0.405 * lat, 2.0)
+    # Landmass heat core: the annual mean peaks at about 19 deg on LAND,
+    # not at the equator (Timbuktu 28.9 C, Agadez 28.1 against about 26 C
+    # at the equator).  Damped by (1 - maritime) because the ocean breaks
+    # it.  Without it a 17.7 N low-water point gave a coldest month of
+    # 16 C, below the 18 C Koppen tropical gate.
+    heat_ridge = math.exp(-((lat - 19) ** 2) / (2 * 8**2)) * (1 - maritime)
+    t_mean = t_mean + 10.0 * heat_ridge
+    # Annual amplitude, the FULL peak-to-trough range.  Fitted through
+    # Timbuktu (17.7 N, 13.0 C) and Minsk (54 N, 25.1 C).  The sin() term
+    # needs HALF this (the amplitude about the mean).
+    amp_full = max(7.1 + 0.333 * lat, 2.0)
     amp = (amp_full / 2) * (1 - 0.6 * maritime)
     peak_month = 7 if lat_deg >= 0 else 1
     summer_boost = 6 * math.exp(-((lat - 35) ** 2) / 90)
@@ -556,9 +561,9 @@ class TestRootCauseRegressions(unittest.TestCase):
         # gone; the substrate's safe fallback is present.
         from pathlib import Path
 
-        text = Path("addons/thermal/functions/display/fnc_applyClothingThermal.sqf").read_text(
-            encoding="utf-8"
-        )
+        text = Path(
+            "addons/thermal/functions/display/fnc_applyClothingThermal.sqf"
+        ).read_text(encoding="utf-8")
         self.assertNotIn('_m find "cloth" >= 0', text)
         self.assertNotIn('_m == "" ||', text)
         self.assertNotIn("Unknown material: swap", text)
@@ -576,9 +581,9 @@ class TestRootCauseRegressions(unittest.TestCase):
         # 66 N (Norway) must NOT receive the 35 N Cfb table.
         from pathlib import Path
 
-        get_biome = Path("addons/environmental/functions/biome/fnc_getBiome.sqf").read_text(
-            encoding="utf-8"
-        )
+        get_biome = Path(
+            "addons/environmental/functions/biome/fnc_getBiome.sqf"
+        ).read_text(encoding="utf-8")
         self.assertIn("QGVAR(climateNormals)", get_biome)
         self.assertIn("getLatitudeClimate", get_biome)
         # Regression: `private _x = getVariable [..., nil]` does not bind
@@ -630,6 +635,103 @@ class TestRootCauseRegressions(unittest.TestCase):
         self.assertNotIn("} forEach _vegScores;", text)
         self.assertNotIn("} forEach _surfaceScores;", text)
         self.assertNotIn("} forEach _structScores;", text)
+
+
+class TestLowLatitudeHeatCore(unittest.TestCase):
+    """The 17.7 N cold-bias defect, and the model constants behind it.
+
+    The model previously gave a coldest month of 16.0 C at 17.7 N with a
+    low water fraction.  Koppen's tropical gate is a coldest month of at
+    least 18 C, so a tropical latitude was forced into Cfa and the biome
+    validator correctly rejected the combination.  Real station normals at
+    that latitude and water fraction put the coldest month at 19.8-22.2 C
+    (Timbuktu 21.5, Agadez 19.8, Kidal 20.3, Hyderabad 22.2), so the model
+    was cold-biased, not the validator wrong.
+    """
+
+    def test_low_latitude_low_water_is_tropical(self):
+        n = latitude_climate(17.7, 0.02)
+        t = mean_temps(n)
+        coldest = min(t)
+        self.assertGreaterEqual(
+            coldest,
+            18.0,
+            f"coldest month {coldest:.1f} C is below the 18 C tropical gate",
+        )
+        self.assertGreater(sum(t) / 12, 26.0)
+
+    def test_sahel_annual_mean_is_hotter_than_the_equator(self):
+        # The hottest annual means on Earth are the Saharan/Sahel belt,
+        # not the equator.  This is the shape the model now reproduces.
+        sahel = sum(mean_temps(latitude_climate(17.7, 0.02))) / 12
+        equator = sum(mean_temps(latitude_climate(0.0, 0.02))) / 12
+        self.assertGreater(sahel, equator)
+
+    def test_maritime_breaks_the_heat_core(self):
+        # The ocean damps the landmass core, so a wet tropical point at the
+        # same latitude stays cooler than the dry one but still tropical.
+        dry = min(mean_temps(latitude_climate(17.7, 0.02)))
+        wet = min(mean_temps(latitude_climate(17.7, 0.95)))
+        self.assertGreater(dry, wet)
+        self.assertGreaterEqual(wet, 18.0)
+
+    def test_sqf_constants_match_the_mirror(self):
+        """Read the model constants out of the SQF, not a restatement.
+
+        A mirror that restates the SQF proves nothing: when the mirror
+        carried the same cold-biased arithmetic, the whole suite passed
+        while the shipped model was wrong at 17.7 N.  This parses the real
+        expressions so a coefficient change cannot slip through unmirrored.
+        """
+        from pathlib import Path
+        import re
+
+        text = Path(
+            "addons/environmental/functions/climatology/fnc_getLatitudeClimate.sqf"
+        ).read_text(encoding="utf-8")
+
+        base = re.search(
+            r"_tMeanBase\s*=\s*([0-9.]+)\s*-\s*([0-9.]+)\s*\*\s*_lat", text
+        )
+        self.assertIsNotNone(base, "the mean base no longer matches the mirror")
+        self.assertAlmostEqual(float(base.group(1)), 26.0, places=6)
+        self.assertAlmostEqual(float(base.group(2)), 0.40, places=6)
+
+        ridge = re.search(
+            r"_heatRidge\s*=\s*exp\s*\(-\(\(_lat\s*-\s*([0-9.]+)\)\s*\^\s*2\)\s*/"
+            r"\s*\(2\s*\*\s*([0-9.]+)\s*\^\s*2\)\)",
+            text,
+        )
+        self.assertIsNotNone(ridge, "the landmass heat ridge is missing")
+        self.assertAlmostEqual(float(ridge.group(1)), 19.0, places=6)
+        self.assertAlmostEqual(float(ridge.group(2)), 8.0, places=6)
+
+        amp = re.search(
+            r"_ampFull\s*=\s*\(([0-9.]+)\s*\+\s*([0-9.]+)\s*\*\s*_lat\)", text
+        )
+        self.assertIsNotNone(amp, "the amplitude fit no longer matches the mirror")
+        self.assertAlmostEqual(float(amp.group(1)), 7.1, places=6)
+        self.assertAlmostEqual(float(amp.group(2)), 0.333, places=6)
+
+        # The composition, not just the definition: defining the ridge but
+        # dropping it from _tMean left the mirror tropical while the SQF
+        # was not, and every test still passed.  Assert the term is USED.
+        composition = re.search(r"_tMean\s*=\s*(.+?);", text)
+        self.assertIsNotNone(composition, "no _tMean composition found")
+        terms = composition.group(1)
+        for required in ("_tMeanBase", "_maritime", "_hadley", "_heatRidge"):
+            self.assertIn(
+                required,
+                terms,
+                f"{required} is missing from the _tMean composition",
+            )
+
+    def test_amplitude_hits_the_two_real_anchors(self):
+        # Timbuktu (17.7 N) range 13.0 C; Minsk (54 N) range 25.1 C.
+        timbuktu = 7.1 + 0.333 * 17.7
+        minsk = 7.1 + 0.333 * 54.0
+        self.assertAlmostEqual(timbuktu, 13.0, delta=0.4)
+        self.assertAlmostEqual(minsk, 25.1, delta=0.4)
 
 
 if __name__ == "__main__":
