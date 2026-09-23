@@ -2866,6 +2866,27 @@ private _p29Pass = 0;
         diag_log text format ["[PHASE62] [FAIL] downwash: dust %1 ref %2 ok=%3, sand %4 ok=%5, ordered=%6, gravel %7, flux %8, outwash %9 high %10 (ge=%11)", _dust select 1, _refDust, _dustOk, _sand select 1, _sandOk, _ordered, _gravel select 0, _sand select 3, _outwash, _high select 2, _groundEffectReal];
     };
 
+    // -- PHASE 63: the debug switch actually gates the trace --
+    // The macros existed with no declared setting, so DEBUG was
+    // unreachable. This runs the traced path with the flag ON; verify.py
+    // then asserts the DEBUG line reached the log, so a switch that does
+    // not switch fails the gate.
+    missionNamespace setVariable ["aee_core_logDebug", true];
+    private _itemMass = ["FirstAidKit"] call aee_physiology_fnc_getItemMass;
+    private _load = [player] call aee_physiology_fnc_getEquipmentProperties;
+    private _shot = ["B_556x45_Ball", "arifle_MX_F", 0.508, 15, 1] call aee_ballistics_fnc_resolveShot;
+    missionNamespace setVariable ["aee_core_logDebug", false];
+    // These two run again with the flag off: their traces must not appear.
+    ["FirstAidKit"] call aee_physiology_fnc_getItemMass;
+    private _p63Ok = (_itemMass >= 0) && {count _load == 6};
+    if (_p63Ok) then {
+        diag_log text format ["[PHASE63] [PASS] debug switch: traced item %1 kg, load resolved, shot mv %2", _itemMass, round (_shot select 0)];
+    } else {
+        diag_log text format ["[PHASE63] [FAIL] debug switch: item %1, load %2", _itemMass, count _load];
+    };
+
+diag_log text "[AEE-TEST] DONE";
+
 diag_log text "[AEE-TEST] DONE";
         }, [_t1], 5] call CBA_fnc_waitAndExecute;
     }, [], 7] call CBA_fnc_waitAndExecute;

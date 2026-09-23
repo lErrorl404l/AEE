@@ -355,3 +355,66 @@
     true,
     {}
 ] call CBA_fnc_addSetting;
+
+// ── Diagnostics ───────────────────────────────────────────────────────────
+// The switch behind AEE_LOG_DEBUG.  Without a declared setting the flag
+// could only be set from the debug console, so the DEBUG lines were
+// unreachable in practice.  This registers it in the settings UI and sets
+// GVAR(logDebug), which the macros read.
+[
+    QGVAR(logDebug),
+    "CHECKBOX",
+    [LLSTRING(logDebug_Name), LLSTRING(logDebug_Description)],
+    ["AEE", "Core"],
+    false,
+    true,
+    {
+        // The macros test both names; keep them in step so a mission that
+        // reads aee_core_logDebug sees the same state as the setting.
+        missionNamespace setVariable [QGVAR(logDebug), _this];
+        missionNamespace setVariable ["aee_core_logDebug", _this];
+    }
+] call CBA_fnc_addSetting;
+
+// ── Diagnostics: ballistics ───────────────────────────────────────────────
+// Per-module switch.  A whole-mod DEBUG stream is unreadable in a firefight,
+// so one module can be traced alone.
+[
+    QGVAR(logDebug_ballistics),
+    "CHECKBOX",
+    [LLSTRING(logDebugPerModule_Name), LLSTRING(logDebug_ballistics_Description)],
+    ["AEE", "Diagnostics"],
+    false,
+    true,
+    {
+        missionNamespace setVariable ["aee_ballistics_logDebug", _this];
+    }
+] call CBA_fnc_addSetting;
+
+// ── Diagnostics: physiology and the carried load ──────────────────────────
+[
+    QGVAR(logDebug_physiology),
+    "CHECKBOX",
+    [LLSTRING(logDebugPerModule_Name), LLSTRING(logDebug_physiology_Description)],
+    ["AEE", "Diagnostics"],
+    false,
+    true,
+    {
+        missionNamespace setVariable ["aee_physiology_logDebug", _this];
+    }
+] call CBA_fnc_addSetting;
+
+// ── Diagnostics: effect emitters ──────────────────────────────────────────
+// Footfall, rotor wash and the surface dust: the values a headless test
+// cannot see, so a client trace needs to print them.
+[
+    QGVAR(logDebug_fx),
+    "CHECKBOX",
+    [LLSTRING(logDebugPerModule_Name), LLSTRING(logDebug_fx_Description)],
+    ["AEE", "Diagnostics"],
+    false,
+    true,
+    {
+        missionNamespace setVariable ["aee_fx_logDebug", _this];
+    }
+] call CBA_fnc_addSetting;

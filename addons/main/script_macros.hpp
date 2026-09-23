@@ -46,9 +46,13 @@
 //   TRACE  - logged only when aee_core_logDebug is true.
 //
 // DEBUG/TRACE are compiled IN (so intermediate variables are always used
-// and the lint stays clean) but gated by the runtime flag.  Set it via
-// debug console:  aee_core_logDebug = true;
-// Per-module:      aee_core_logDebug_optics = true;
+// and the lint stays clean) but gated by the runtime flag.  Set it in the
+// settings UI (AEE Core, Log Debug Output) or from the debug console:
+//   aee_core_logDebug = true;
+// Per-module:  aee_<component>_logDebug = true;  (AEE Diagnostics settings)
+//
+// The per-module flag is tested with the module's own name, so tracing
+// one module does not drown the RPT in every other module's lines.
 //
 // GUIDANCE (write new code with these):
 //   - one log line per LIFECYCLE event, not per tick (INFO)
@@ -61,8 +65,8 @@
 #define AEE_LOG_ERROR(msg) diag_log text format ["[AEE][%1][ERROR] %2", QUOTE(COMPONENT), msg]
 #define AEE_LOG_WARN(msg) diag_log text format ["[AEE][%1][WARN] %2", QUOTE(COMPONENT), msg]
 #define AEE_LOG_INFO(msg) diag_log text format ["[AEE][%1][INFO] %2", QUOTE(COMPONENT), msg]
-#define AEE_LOG_DEBUG(msg) if (missionNamespace getVariable [QGVAR(logDebug), false] || missionNamespace getVariable ["aee_core_logDebug", false]) then { diag_log text format ["[AEE][%1][DEBUG] %2", QUOTE(COMPONENT), msg]; };
-#define AEE_LOG_TRACE(msg) if (missionNamespace getVariable [QGVAR(logDebug), false] || missionNamespace getVariable ["aee_core_logDebug", false]) then { diag_log text format ["[AEE][%1][TRACE] %2", QUOTE(COMPONENT), msg]; };
+#define AEE_LOG_DEBUG(msg) if (missionNamespace getVariable [QGVAR(logDebug), false] || missionNamespace getVariable ["aee_core_logDebug", false] || missionNamespace getVariable [format ["aee_%1_logDebug", QUOTE(COMPONENT)], false]) then { diag_log text format ["[AEE][%1][DEBUG] %2", QUOTE(COMPONENT), msg]; };
+#define AEE_LOG_TRACE(msg) if (missionNamespace getVariable [QGVAR(logDebug), false] || missionNamespace getVariable ["aee_core_logDebug", false] || missionNamespace getVariable [format ["aee_%1_logDebug", QUOTE(COMPONENT)], false]) then { diag_log text format ["[AEE][%1][TRACE] %2", QUOTE(COMPONENT), msg]; };
 
 // ── Error helper — breaks on purpose in debug, logs in release ────────────
 #ifdef DEBUG_MODE_FULL

@@ -163,14 +163,20 @@ __ROWS__
 // The table is ordered longest family first, so the more specific keyword
 // wins (an "lv-119" row outranks a "119" row).
 private _match = 0;
+private _family = "";
 {
-    _x params ["_family", "_category", "_mass"];
+    _x params ["_familyName", "_category", "_mass"];
     if ((_allowed isEqualTo [] || {_category in _allowed})
-        && {_hay find _family >= 0}) exitWith {
+        && {_hay find _familyName >= 0}) exitWith {
         _match = _mass;
+        _family = _familyName;
     };
 } forEach _TABLE;
 
+// The trace names what resolved and, when nothing did, says so: an item
+// that falls to 0 is the case a carried-load figure is hardest to explain.
+private _logMsg = format ["item mass: %1 -> %2 kg (family '%3')", _item, _match, _family];
+AEE_LOG_DEBUG(_logMsg);
 _match
 """
 

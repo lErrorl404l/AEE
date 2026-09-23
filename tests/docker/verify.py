@@ -73,6 +73,21 @@ for p in passes:
 print(f"phases failed: {len(fails)}")
 for f in fails:
     print(f"  {f}")
+
+# The debug switch must actually gate the trace.  Phase 63 runs the traced
+# path with the flag on; if the DEBUG lines are absent from the log, the
+# macro is not reading the flag and the switch is decorative.  This is the
+# check that a setting can be registered and still do nothing.
+_debug_expected = (
+    "[AEE][physiology][DEBUG] item mass:",
+    "[AEE][ballistics][DEBUG] shot ",
+)
+_debug_missing = [m for m in _debug_expected if m not in text]
+if _debug_missing:
+    print(f"debug switch: {len(_debug_missing)} expected trace line(s) absent")
+    for m in _debug_missing:
+        print(f"  missing: {m}")
+
 if not done:
     print("  mission did not reach DONE")
 if errors:
@@ -84,7 +99,7 @@ if warnings:
     for w in warnings[:10]:
         print(f"  {w}")
 
-if fails or not done or errors or warnings:
+if fails or not done or errors or warnings or _debug_missing:
     print("RESULT: FAIL")
     sys.exit(1)
 print("RESULT: PASS")
