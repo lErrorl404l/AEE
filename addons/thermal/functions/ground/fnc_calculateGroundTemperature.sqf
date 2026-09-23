@@ -97,22 +97,33 @@ private _result = _ts + _stampOffset;
 
 // ─── Ground heat diagnostic (issue #204) ──────────────────────────────────
 // Trace the ground temperature chain so the RPT proves the physics:
-// surface class, equilibrium, stamp offset, stamp count.  Throttled to
-// one line per 5 s per position cell so a session shows the ground heat
-// without spamming.  The 'still no heat on the ground' report needs
-// this visibility - was the stamp laid? was it read? what temp?
-private _traceKey = format ["%1_%2_%3", QGVAR(groundTraceT),
-        round ((_pos select 0) / 5), round ((_pos select 1) / 5)];
-private _nowT = diag_tickTime;
-private _lastT = missionNamespace getVariable [_traceKey, -999];
-if (_nowT - _lastT >= 5) then {
-    missionNamespace setVariable [_traceKey, _nowT];
-    private _stampCount = count (missionNamespace getVariable [QGVAR(groundStamps), []]);
-    private _surfNow = surfaceType [_pos select 0, _pos select 1];
-    diag_log format [
-        "[AEE][GROUND] surf=%1 mat=%2 tEq=%3 stamp=%4 (count %5) tFinal=%6",
-        _surfNow, _material, _ts, _stampOffset, _stampCount, _result
-    ];
+// surface class, equilibrium, stamp offset, stamp count.
+//
+// This line is behind the module debug switch (`AEE Thermal -> Log Debug`),
+// like every other trace in the mod. It was once unconditional and
+// throttled per 5 m position cell, which made it a client performance
+// defect: the ground solver runs several times a tick at changing
+// positions, so the live cell count grew with movement, each new cell
+// minted a key, and a ten minute session wrote 803 lines of synchronous
+// file I/O on the render thread. A diagnostic must be off unless asked
+// for, and it must not add an engine query when it is off.
+private _traceOn = missionNamespace getVariable [QGVAR(logDebug), false]
+    || missionNamespace getVariable ["aee_core_logDebug", false]
+    || missionNamespace getVariable [format ["aee_%1_logDebug", QUOTE(COMPONENT)], false];
+if (_traceOn) then {
+    private _traceKey = format ["%1_%2_%3", QGVAR(groundTraceT),
+            round ((_pos select 0) / 5), round ((_pos select 1) / 5)];
+    private _nowT = diag_tickTime;
+    private _lastT = missionNamespace getVariable [_traceKey, -999];
+    if (_nowT - _lastT >= 5) then {
+        missionNamespace setVariable [_traceKey, _nowT];
+        private _stampCount = count (missionNamespace getVariable [QGVAR(groundStamps), []]);
+        private _surfNow = surfaceType [_pos select 0, _pos select 1];
+        diag_log format [
+            "[AEE][GROUND] surf=%1 mat=%2 tEq=%3 stamp=%4 (count %5) tFinal=%6",
+            _surfNow, _material, _ts, _stampOffset, _stampCount, _result
+        ];
+    };
 };
 
 // The node-stack surface temperature, published for a consumer that needs
