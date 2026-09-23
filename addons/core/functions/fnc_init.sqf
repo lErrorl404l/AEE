@@ -63,7 +63,15 @@ GVAR(updatePFH) = [{
     // Resolve position once so temp, pressure, and humidity all use the
     // exact same location — deterministic, communicable between players.
     private _player = call CBA_fnc_currentUnit;
-    private _pos = if (isNil "_player") then { [] } else { getPosASL _player };
+    // CBA_fnc_currentUnit always returns an object: the Zeus remote-control
+    // unit, or `player`. On a dedicated server that is objNull, never nil,
+    // so the test must be isNull. isNil here was a no-op and the server
+    // took getPosASL objNull instead of the intended empty array.
+    private _pos = if (!isNil "_player" && {!isNull _player}) then {
+        getPosASL _player
+    } else {
+        []
+    };
     [_pos] call FUNC(updateEnvironment);
 }, _interval] call CBA_fnc_addPerFrameHandler;
 

@@ -60,6 +60,10 @@ private _sigma = 5.670374419e-8;       // W/m2K4, Stefan-Boltzmann (CODATA 2022)
 // matches the node stack so both share one position identity.
 private _state = missionNamespace getVariable [QGVAR(frostState), createHashMap];
 if (isNil "_state") then { _state = createHashMap; };
+// The cell key indexes the position unconditionally, so a caller that
+// passes an empty array would raise a zero divisor. Guard rather than
+// assume the caller always supplies one.
+if (count _pos < 2) then { _pos = [0, 0, 0]; };
 private _cell = format ["%1_%2", floor ((_pos select 0) / 5), floor ((_pos select 1) / 5)];
 private _last = _state getOrDefault [_cell, []];
 private _filmMass = if (count _last > 0) then { _last select 0 } else { 0 };

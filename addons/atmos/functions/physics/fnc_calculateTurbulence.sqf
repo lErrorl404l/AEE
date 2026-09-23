@@ -23,7 +23,10 @@ Sets QEGVAR(core,currentTurbulence), GVAR(edrValue), GVAR(turbulenceClass).
 // crest speed-up (up to 1.4x) is rougher.
 private _player = call CBA_fnc_currentUnit;
 private _posASL = [0, 0, 0];
-if (!isNil "_player") then { _posASL = getPosASL _player; };
+// isNull, not isNil: CBA_fnc_currentUnit returns objNull on a dedicated
+// server rather than nil, so the isNil test let the body run and the
+// server published position-derived turbulence for the map origin.
+if (!isNil "_player" && {!isNull _player}) then { _posASL = getPosASL _player; };
 private _localWind = [_posASL, _posASL param [2, 0]] call FUNC(getLocalWind);
 private _windSpd = vectorMagnitude _localWind;
 private _mechanical = 0;

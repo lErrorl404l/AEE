@@ -40,7 +40,7 @@ if (_groundState != "Snow" && (_groundState != "Frozen")) exitWith {
 private _pos2D = [];
 if (_posASL isEqualTo []) then {
     private _player = call CBA_fnc_currentUnit;
-    if (!isNil "_player") then { _pos2D = getPos _player; };
+    if (!isNil "_player" && {!isNull _player}) then { _pos2D = getPos _player; };
 } else {
     _pos2D = _posASL select [0, 2];
 };

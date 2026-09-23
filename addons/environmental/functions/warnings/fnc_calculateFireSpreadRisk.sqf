@@ -40,7 +40,7 @@ private _fuelMoisture = ((100 - _RH) / 100) + _rainAccum * 0.2;
 // ─── Slope from 4 cardinal terrain samples at 50 m radius (percent) ───────
 private _slopePct = 0;
 private _player = call CBA_fnc_currentUnit;
-if (!isNil "_player") then {
+if (!isNil "_player" && {!isNull _player}) then {
     private _pos2D = getPos _player;
     private _c = getTerrainHeightASL _pos2D;
     private _n = getTerrainHeightASL [_pos2D#0, (_pos2D#1) + 50];

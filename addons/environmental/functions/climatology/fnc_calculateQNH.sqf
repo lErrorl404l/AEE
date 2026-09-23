@@ -13,7 +13,10 @@ private _P = missionNamespace getVariable [QEGVAR(core,currentPressure), 1013.25
 
 private _altASL = 0;
 private _player = call CBA_fnc_currentUnit;
-if (!isNil "_player") then {
+// isNull, not isNil: CBA_fnc_currentUnit returns objNull on a dedicated
+// server rather than nil, so the isNil test let the body run and the
+// server published a QNH from the map origin.
+if (!isNil "_player" && {!isNull _player}) then {
     _altASL = (getPosASL _player) select 2;
 };
 

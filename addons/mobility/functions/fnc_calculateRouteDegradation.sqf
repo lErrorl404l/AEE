@@ -34,10 +34,11 @@ _coneIndex = (_coneIndex * (_recoveryRate ^ (_interval / 5))) min 1.0;
 
 // ─── Vehicle passage damage ─────────────────────────────────────────────────
 private _player = call CBA_fnc_currentUnit;
-if (!isNil "_player") then {
-    private _vehicles = _player nearEntities [["Car", "Tank", "Motorcycle"], 200];
+if (!isNil "_player" && {!isNull _player}) then {
+    // Shared with fnc_calculateMudAccretion, which wants the same list in
+    // the same tick. One engine walk, not two.
+    private _vehicles = [200, _player] call FUNC(getNearbyVehicles);
     {
-        if (isNull _x) then { continue; };
         if (abs speed _x < 1) then { continue; };   // parked vehicles do not pass
         private _groundPressure = (getMass _x) / 8;
         _coneIndex = _coneIndex - (_groundPressure * _damageRate * (_interval / 5));

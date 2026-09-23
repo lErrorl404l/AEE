@@ -23,7 +23,7 @@ if (_density <= 0) then {
     if !(_elevation isEqualType 0) then { _elevation = 0; };
     if (_elevation <= 0) then {
         private _player = call CBA_fnc_currentUnit;
-        if (isNil "_player") then {
+        if (isNull _player) then {
             _elevation = 0;
         } else {
             _elevation = getTerrainHeightASL (getPos _player);

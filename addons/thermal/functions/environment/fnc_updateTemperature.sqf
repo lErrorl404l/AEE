@@ -40,7 +40,7 @@ missionNamespace setVariable [QEGVAR(core,currentTemperatureBase), _T_base];
 private _pos2D = [0, 0];
 if (_posASL isEqualTo []) then {
     private _player = call CBA_fnc_currentUnit;
-    if (!isNil "_player") then { _pos2D = getPos _player; };
+    if (!isNil "_player" && {!isNull _player}) then { _pos2D = getPos _player; };
 };
 if (_pos2D isEqualTo [0, 0] && _posASL isNotEqualTo []) then {
     _pos2D = _posASL select [0, 2];

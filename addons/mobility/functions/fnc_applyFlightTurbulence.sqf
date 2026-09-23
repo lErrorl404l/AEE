@@ -53,7 +53,7 @@ private _radius = GVAR(turbulenceRadius);
 // ─── Reference position — player or mission centre ─────────────────────
 private _refPos = [worldSize / 2, worldSize / 2, 0];
 private _player = call CBA_fnc_currentUnit;
-if (!isNil "_player") then {
+if (!isNil "_player" && {!isNull _player}) then {
     _refPos = getPosATL _player;
 };
 

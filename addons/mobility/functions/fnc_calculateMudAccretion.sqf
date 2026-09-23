@@ -32,15 +32,17 @@ private _decayRate = missionNamespace getVariable [QGVAR(mudDecayRate), 0.99];
 private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
 private _player = call CBA_fnc_currentUnit;
 
-if (isNil "_player" || !alive _player) exitWith { 0 };
+// A null unit is the dedicated-server case. The old guard tested isNil
+// only, and CBA_fnc_currentUnit returns objNull rather than nil when there
+// is no player, so the test passed and the engine was asked for the
+// neighbourhood of nothing.
+if (isNil "_player" || {isNull _player} || {!alive _player}) exitWith { 0 };
 
-// Ground vehicles within 200 m of the player
-private _vehicles = _player nearEntities [["Car", "Tank", "Motorcycle"], 200];
+// Ground vehicles within 200 m, shared with fnc_calculateRouteDegradation.
+private _vehicles = [200, _player] call FUNC(getNearbyVehicles);
 
 // ─── Per-vehicle pass ─────────────────────────────────────────────────────
 {
-    if (isNull _x) then { continue; };
-
     // Keys must be strings — SQF hashmaps reject Object references.
     // Value: [accretion, objectRef] so cleanup can check the stored ref.
     private _vKey = str _x;

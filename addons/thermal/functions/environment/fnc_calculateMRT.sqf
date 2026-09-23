@@ -89,7 +89,7 @@ private _objFactor = 0;
 private _unit = call CBA_fnc_currentUnit;
 private _objs = missionNamespace getVariable [QEGVAR(core,objectTemperatures), []];
 if (isNil "_objs") then { _objs = []; };
-if (!isNil "_unit" && {count _objs > 0}) then {
+if (!isNil "_unit" && {!isNull _unit} && {count _objs > 0}) then {
     private _objPos = if (count _pos >= 3) then { _pos } else { getPosASL _unit };
     private _count = 0;
     {

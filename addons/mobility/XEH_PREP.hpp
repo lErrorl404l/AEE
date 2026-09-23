@@ -11,3 +11,4 @@ PREP(updateGroundState);
 PREPS(hydrology,calculateRunoffSCS);
 PREPS(hydrology,calculateDepressionStorage);
 PREPS(hydrology,calculateBaseflow);
+PREPS(common,getNearbyVehicles);
