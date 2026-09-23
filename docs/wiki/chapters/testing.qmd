@@ -85,17 +85,35 @@ expected reference.
 ## Map rotation
 
 The `--maps` mode runs the mission on several worlds and asserts each
-resolves to its Koppen biome:
+resolved Koppen biome is PLAUSIBLE for the map's latitude. The latitude is
+a fact read from the map's own `CfgWorlds` config (`abs` of the declared
+value: BIS stores the sign inverted, and the Koppen band is symmetric).
+There is no expected biome per map: the mode calls
+`tools/validation/validate_biome_plausible.py <latitude> <biome>` and
+passes when the validator accepts the band (ADR-002).
 
 ```bash
 tools/docker_test.sh --maps
 ```
 
-| World | Expected biome |
-|---|---|
-| Stratis | Csa |
-| Tanoa | Af |
-| Enoch | Dfb |
+| World (CfgWorlds class) | Latitude | Required Workshop mod |
+|---|---|---|
+| Stratis | 35.097 | vanilla |
+| Tanoa | 17.698 | vanilla (Apex) |
+| Enoch | 54 | vanilla (Contact) |
+| NorthTakistan | 17.698 | 2829330653, 583496184 (CUP Terrains Core) |
+| kunduz_valley | 36.72 | 3078351739, 583496184 (CUP Terrains Core) |
+| Mountains_ACR | 34 | 583544987 (CUP Terrains Maps), 583496184 |
+| oski_corran | 56.702 | 2214384530 |
+
+Before the rotation, `--maps` checks each map's required Workshop
+directories under the local library. A missing dependency prints a
+`MISSING` line, skips that map, and the run still exits 0. The library
+root defaults to
+`/ext/SteamLibrary/steamapps/workshop/content/107410` and can be
+overridden with `AEE_WORKSHOP_DIR`. Each required Workshop item is bind
+mounted inside the mods folder for the run; the mount is writable because
+Arma's mod scanner resolves a read-only `:ro` bind mount as an empty mod.
 
 ## Host-mod compatibility
 
