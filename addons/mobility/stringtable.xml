@@ -113,6 +113,46 @@
             <Original>River Section Width</Original>
             <English>River Section Width</English>
         </Key>
+        <Key ID="STR_AEE_Mobility_rolloverDynamicFactor_Description">
+            <Original>Fraction of the static threshold a manoeuvre reaches before the inside wheels lift. Published range 0.7 to 0.9 because body roll, tyre deflection and load transfer reduce the limit. 0.8 is the default.</Original>
+            <English>Fraction of the static threshold a manoeuvre reaches before the inside wheels lift. Published range 0.7 to 0.9 because body roll, tyre deflection and load transfer reduce the limit. 0.8 is the default.</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_rolloverDynamicFactor_Name">
+            <Original>Rollover Dynamic Factor</Original>
+            <English>Rollover Dynamic Factor</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_rolloverEnabled_Description">
+            <Original>Tip a vehicle whose sustained lateral acceleration exceeds its Static Stability Factor threshold. The threshold is SSF = track width / (2 x centre-of-gravity height), corrected for ground slope (Gillespie). A single frame cannot roll a vehicle; the condition must hold.</Original>
+            <English>Tip a vehicle whose sustained lateral acceleration exceeds its Static Stability Factor threshold. The threshold is SSF = track width / (2 x centre-of-gravity height), corrected for ground slope (Gillespie). A single frame cannot roll a vehicle; the condition must hold.</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_rolloverEnabled_Name">
+            <Original>Vehicle Rollover</Original>
+            <English>Vehicle Rollover</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_rolloverHoldFrames_Description">
+            <Original>Frames the lateral acceleration must stay above the threshold before the vehicle rolls. A transient spike from a kerb or a collision must not roll it. Lower values roll more readily.</Original>
+            <English>Frames the lateral acceleration must stay above the threshold before the vehicle rolls. A transient spike from a kerb or a collision must not roll it. Lower values roll more readily.</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_rolloverHoldFrames_Name">
+            <Original>Rollover Hold Frames</Original>
+            <English>Rollover Hold Frames</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_rolloverRadius_Description">
+            <Original>Distance in metres within which the rollover check runs. The candidate vehicle list is cached and refreshed every 5 seconds, so the loop does not scan the world every frame.</Original>
+            <English>Distance in metres within which the rollover check runs. The candidate vehicle list is cached and refreshed every 5 seconds, so the loop does not scan the world every frame.</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_rolloverRadius_Name">
+            <Original>Rollover Check Radius</Original>
+            <English>Rollover Check Radius</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_rolloverTorqueScale_Description">
+            <Original>Rotational impulse applied per sustained roll event, scaled by vehicle mass. The engine has no tilt command, so the roll uses addTorque at the centre of mass; the impulse must be sustained to overcome the solver.</Original>
+            <English>Rotational impulse applied per sustained roll event, scaled by vehicle mass. The engine has no tilt command, so the roll uses addTorque at the centre of mass; the impulse must be sustained to overcome the solver.</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_rolloverTorqueScale_Name">
+            <Original>Rollover Torque Scale</Original>
+            <English>Rollover Torque Scale</English>
+        </Key>
         <Key ID="STR_AEE_Mobility_routeDamageRate_Description">
             <Original>Soil cone-index damage per vehicle passage per 5 s tick</Original>
             <English>Soil cone-index damage per vehicle passage per 5 s tick</English>

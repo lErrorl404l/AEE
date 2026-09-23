@@ -170,12 +170,15 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_core_groundState` | mobility | Ground state |
 | `aee_core_currentWaterLevel` | mobility | River water level |
 | `aee_mobility_currentLiftRatio` | mobility | Helicopter lift ratio |
+| `aee_mobility_currentRolloverG` | mobility | Current lateral acceleration in g (issue #108) |
+| `aee_mobility_currentRolloverThresholdG` | mobility | Applied rollover threshold in g: SSF slope-corrected, times the dynamic factor (#108) |
 | `aee_mobility_currentTractionTracked` | mobility | Tracked traction 0..1 |
 | `aee_mobility_currentTractionWheeled` | mobility | Wheeled traction 0..1 |
 | `aee_mobility_routeDegradation` | mobility | Route degradation |
 | `aee_mobility_soilBearing` | mobility | Soil bearing strength |
 | `aee_mobility_tractionModifier` | mobility | Traction modifier |
 | `aee_mobility_turbulencePFH` | mobility | Turbulence PFH handle |
+| `aee_mobility_rolloverPFH` | mobility | Vehicle rollover PFH handle (#108) |
 | `aee_mobility_isReady` | mobility | Mobility module ready flag |
 | `aee_mobility_crankSuccess` | mobility | Cold-start crank probability 0..1 |
 | `aee_mobility_muSurface` | mobility | Combined wet/ice/brake surface friction 0..1 |
