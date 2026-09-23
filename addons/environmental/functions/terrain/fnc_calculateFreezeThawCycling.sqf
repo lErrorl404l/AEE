@@ -62,7 +62,7 @@ if (!isNil "_unit" && {!isNull _unit}) then {
 private _snowDepth = missionNamespace getVariable [QEGVAR(core,snowDepth_m), 0];
 if !(_snowDepth isEqualType 0) then { _snowDepth = 0; };
 // The coefficient is cm per sqrt(degC-day); the depth below is in metres.
-private _stefanM = ([_surfaceClass, _snowDepth] call EFUNC(thermal,calculateStefanCoefficient)) / 100;
+private _stefanM = ([_surfaceClass, _snowDepth] call EFUNC(material,calculateStefanCoefficient)) / 100;
 private _frozenDepth_m = _stefanM * (sqrt _FDD);
 private _thawDepth_m   = _stefanM * (sqrt _TDD);
 

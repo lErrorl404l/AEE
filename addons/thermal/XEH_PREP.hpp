@@ -20,7 +20,6 @@ PREPS(ground,calculateGroundNodeStack);
 PREPS(surface,isPositionShadowed);
 PREPS(ground,calculateGroundTemperature);
 PREPS(ground,calculateFrostState);
-PREPS(ground,calculateStefanCoefficient);
 PREPS(ground,addGroundStamp);
 PREPS(ground,getGroundStampOffset);
 PREPS(ground,applyGroundContactStamps);
