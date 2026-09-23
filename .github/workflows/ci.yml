@@ -41,6 +41,8 @@ jobs:
         run: python3 tools/validation/fix_current_unit_guard.py
       - name: Cross-module reference validation
         run: python3 tools/validation/validate_cross_module.py
+      - name: Macro quoting check
+        run: python3 tools/validation/check_macro_quoting.py
       - name: Oracle validation (JSP 939 VV&A)
         run: python3 tools/validation/validate_oracles.py
       - name: Check for BOM

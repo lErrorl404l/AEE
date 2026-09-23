@@ -65,8 +65,13 @@
 #define AEE_LOG_ERROR(msg) diag_log text format ["[AEE][%1][ERROR] %2", QUOTE(COMPONENT), msg]
 #define AEE_LOG_WARN(msg) diag_log text format ["[AEE][%1][WARN] %2", QUOTE(COMPONENT), msg]
 #define AEE_LOG_INFO(msg) diag_log text format ["[AEE][%1][INFO] %2", QUOTE(COMPONENT), msg]
-#define AEE_LOG_DEBUG(msg) if (missionNamespace getVariable [QGVAR(logDebug), false] || missionNamespace getVariable ["aee_core_logDebug", false] || missionNamespace getVariable [format ["aee_%1_logDebug", QUOTE(COMPONENT)], false]) then { diag_log text format ["[AEE][%1][DEBUG] %2", QUOTE(COMPONENT), msg]; };
-#define AEE_LOG_TRACE(msg) if (missionNamespace getVariable [QGVAR(logDebug), false] || missionNamespace getVariable ["aee_core_logDebug", false] || missionNamespace getVariable [format ["aee_%1_logDebug", QUOTE(COMPONENT)], false]) then { diag_log text format ["[AEE][%1][TRACE] %2", QUOTE(COMPONENT), msg]; };
+// The module trace switch, evaluated once so a caller that needs to skip
+// expensive work (a surfaceType query, an engine call) can test it BEFORE
+// building the message. AEE_LOG_DEBUG always builds its message, which is
+// the wrong shape for a guard.
+#define AEE_TRACE_ON (missionNamespace getVariable [QGVAR(logDebug), false] || missionNamespace getVariable ["aee_core_logDebug", false] || missionNamespace getVariable [format ["aee_%1_logDebug", QUOTE(COMPONENT)], false])
+#define AEE_LOG_DEBUG(msg) if (AEE_TRACE_ON) then { diag_log text format ["[AEE][%1][DEBUG] %2", QUOTE(COMPONENT), msg]; };
+#define AEE_LOG_TRACE(msg) if (AEE_TRACE_ON) then { diag_log text format ["[AEE][%1][TRACE] %2", QUOTE(COMPONENT), msg]; };
 
 // ── Error helper — breaks on purpose in debug, logs in release ────────────
 #ifdef DEBUG_MODE_FULL

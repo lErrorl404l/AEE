@@ -52,7 +52,7 @@ private _depression = _temp - _dewPoint;
 // has not reached yet.
 private _surfaceTemp = _temp;
 private _unit = call CBA_fnc_currentUnit;
-private _surfState = missionNamespace getVariable [QGVAR(groundSurfaceTemp), createHashMap];
+private _surfState = missionNamespace getVariable [QEGVAR(thermal,groundSurfaceTemp), createHashMap];
 private _stackKey = "";
 if (!isNil "_unit" && {!isNull _unit} && {_surfState isEqualType createHashMap}) then {
     private _upos = getPos _unit;
