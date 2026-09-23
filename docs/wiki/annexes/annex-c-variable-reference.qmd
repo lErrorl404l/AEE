@@ -172,6 +172,9 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_mobility_currentLiftRatio` | mobility | Helicopter lift ratio |
 | `aee_mobility_currentRolloverG` | mobility | Current lateral acceleration in g (issue #108) |
 | `aee_mobility_currentRolloverThresholdG` | mobility | Applied rollover threshold in g: SSF slope-corrected, times the dynamic factor (#108) |
+| `aee_mobility_currentVCI1` | mobility | NRMM Vehicle Cone Index, one pass (#117) |
+| `aee_mobility_currentVCI50` | mobility | NRMM Vehicle Cone Index, 50 passes (#117) |
+| `aee_mobility_currentMobilityIndex` | mobility | NRMM wheeled Mobility Index from the published form (#117) |
 | `aee_mobility_currentTractionTracked` | mobility | Tracked traction 0..1 |
 | `aee_mobility_currentTractionWheeled` | mobility | Wheeled traction 0..1 |
 | `aee_mobility_routeDegradation` | mobility | Route degradation |

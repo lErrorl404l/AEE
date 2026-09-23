@@ -39,7 +39,21 @@ private _windSpeed = vectorMagnitude wind;
 
 private _surface = "";
 if (_pos2D isNotEqualTo []) then {
-    _surface = toLower (surfaceType _pos2D);
+    // surfaceType returns the surface CLASS NAME.  Verified against the ACE
+    // machine-readable wiki: the Arma 3 names are capitalised and carry NO
+    // '#' prefix (GdtMarsh, GdtMud, GdtStratisConcrete, ...).  The '#' form
+    // appears only in the Armed Assault and Arma 2 lists.  Normalise to
+    // lower case for the comparisons below, and strip a leading '#' and the
+    // 'gdt' tag so both forms resolve.
+    private _raw = surfaceType _pos2D;
+    _surface = toLower _raw;
+    if (_surface find "#gdt" == 0) then {
+        _surface = _surface select [4];
+    } else {
+        if (_surface find "gdt" == 0) then {
+            _surface = _surface select [3];
+        };
+    };
 };
 
 // ─── Frost depth (the Stefan solution, environmental) ────────────────────
@@ -56,7 +70,7 @@ private _groundFrozen = (_frozenDepth > 0.01);
 // ─── Classification (most specific → least) ──────────────────────────
 private _state = "Normal";
 
-if (_surface in ["#gdtsnow","#gdtice","#gdtglacier","#gdttundra"]) then {
+if (_surface in ["snow","ice","glacier","tundra"]) then {
     _state = "Snow";
 } else {
     if (!isNil "_T" && (_T < -2) && ((_rainAccum > 0.05) || _groundFrozen)) then {
