@@ -37,7 +37,10 @@ private _roundTiers = [
 
 private _total = 0;
 {
-    _x params ["_magazine", "_ammo", "_count", "_loaded"];
+    // A magazinesAmmoFull row is [classname, round count, isLoaded, type,
+    // location, id, creator]. Only the classname and the round count are
+    // needed, and the round count is the SECOND element.
+    _x params ["_magazine", "_count"];
     if (_magazine != "") then {
         private _empty = [_magazine] call FUNC(getMagazineMass);
         private _lower = toLower _magazine;
