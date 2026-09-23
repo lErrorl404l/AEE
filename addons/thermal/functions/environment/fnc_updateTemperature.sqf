@@ -108,6 +108,32 @@ private _T_shade = _T_wind - ([0, 3] select _inShade);
 private _moduleOffset = missionNamespace getVariable [QEGVAR(core,moduleTempOffset), 0];
 _T_shade = _T_shade + _moduleOffset;
 
+// ─── Urban heat island ───────────────────────────────────────────────────
+// A city is warmer than its countryside; the relation and its validity
+// limits are in fnc_calculateUrbanHeatIsland (Oke 1973).  The user setting
+// scales the computed intensity, so 0 disables the effect and 1 gives the
+// published magnitude.
+private _uhiSetting = missionNamespace getVariable [QEGVAR(core,urbanHeatIsland), 0];
+if !(_uhiSetting isEqualType 0) then { _uhiSetting = 0; };
+if (_uhiSetting > 0) then {
+    private _signals = missionNamespace getVariable [QEGVAR(environmental,terrainSignals), []];
+    private _structures = if (count _signals > 2) then { _signals select 2 } else { [] };
+    // The built-up density at this position: the structure vote for the
+    // biome, which is the fraction of sampled objects that are buildings.
+    private _density = 0;
+    if (_structures isEqualType []) then {
+        {
+            _density = _density max _x;
+        } forEach _structures;
+    };
+    if !(_density isEqualType 0) then { _density = 0; };
+    private _pos = [0, 0, 0];
+    private _unit = call CBA_fnc_currentUnit;
+    if (!isNil "_unit" && {!isNull _unit}) then { _pos = getPosASL _unit; };
+    private _uhi = [_pos, _density] call EFUNC(environmental,calculateUrbanHeatIsland);
+    _T_shade = _T_shade + _uhi * (_uhiSetting min 1);
+};
+
 // ─── Output ───────────────────────────────────────────────────────────────
 private _T_final = round (_T_shade * 10) / 10;
 
