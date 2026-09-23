@@ -60,52 +60,25 @@ LOOKALIKES = str.maketrans(
 
 
 def research_table():
-    """The table the captures imply: median per family and category."""
-    tier_of = {}
-    groups = {}
-    for path in sorted(SOURCES.glob("*.json")):
-        doc = json.loads(path.read_text(encoding="utf-8"))
-        for source in doc.get("sources", []):
-            tier_of.setdefault(source["source_id"], source.get("tier"))
-        for item in doc.get("items", []):
-            family = str(item.get("family", "")).strip().lower().translate(LOOKALIKES)
-            mass = item.get("mass_kg")
-            if len(family) < MIN_FAMILY or any(ord(c) > 127 for c in family):
-                continue
-            if not isinstance(mass, (int, float)) or mass <= 0:
-                continue
-            tier = tier_of.get(item.get("source_id"))
-            if tier is None:
-                continue
-            if (
-                not isinstance(mass, (int, float))
-                or mass <= 0
-                or mass > 40
-                or mass < 0.001
-            ):
-                continue
-            category = str(item.get("category", "")).strip().lower()
-            category = CATEGORY_ALIASES.get(category, category)
-            state = str(item.get("state", "")).strip().lower()
-            groups.setdefault((family, category), []).append((state, float(mass), tier))
-    table = []
-    claimed_rows = 0
-    for (family, category), entries in sorted(
-        groups.items(), key=lambda kv: (-len(kv[0][0]), kv[0])
-    ):
-        strong = [e for e in entries if e[2] < 5]
-        selected = strong if strong else entries
-        if not strong:
-            claimed_rows += 1
-        masses = [mass for _state, mass, _tier in selected]
-        if category == "rucksack":
-            empty = [mass for state, mass, _tier in selected if "empty" in state]
-            if empty:
-                masses = empty
-        table.append(
-            (family, category, round(statistics.median(masses), 3), len(masses))
-        )
-    return table, claimed_rows
+    """The table the generator produces, from the generator itself.
+
+    A hand-written mirror of the generator drifted twice (a duplicated mass
+    check, a missing category guard, a missing classifier seed), and a
+    mirror that disagrees with the generator fails for the wrong reason.
+    Calling the generator's own functions makes the projection check exact.
+    """
+    import importlib.util
+
+    spec = importlib.util.spec_from_file_location(
+        "gen_equipment_data", REPO / "tools/validation/gen_equipment_data.py"
+    )
+    gen = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(gen)
+
+    rows, _skipped = gen.load_rows()
+    captured = {(f, c) for f, c, _s, _m, _t in rows}
+    rows = rows + [r for r in gen.classifier_rows() if (r[0], r[1]) not in captured]
+    return gen.build_table(rows)
 
 
 def sqf_table():

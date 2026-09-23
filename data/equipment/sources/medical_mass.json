@@ -1,1006 +1,1062 @@
 {
-  "retrieved": "2026-09-23",
-  "note": "Military first-aid item masses: individual and collective kits, dressings, haemostatics, airways, chest seals, splints, litters and related items. Every mass is a published figure from a manufacturer product page or a manufacturer catalogue, downloaded and sha256-hashed here. Tier 5 pages are recorded in leads only. Where a source publishes both lb and kg the kg figure is used; where only lb or oz is published the exact conversions 1 lb = 0.45359237 kg and 1 oz = 0.028349523125 kg are applied.",
-  "sources": [
-    {
-      "source_id": "chb_ifak",
-      "title": "Improved First Aid Kit (IFAK) product page",
-      "url": "https://www.chb-tech.com/solutionsmarkets/medical-disease-hygiene-treatment-supplies/improved-first-aid-kit-ifak/",
-      "sha256": "c29482d7329da9beef53576654091d639457cad779bf7ea9451155e13595a36d",
-      "publisher": "CHB Infrastructure, Technology and Marketing Group LLC",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_operator_bls_ifak",
-      "title": "Operator BLS IFAK product page",
-      "url": "https://www.narescue.com/operator-bls-ifak.html",
-      "sha256": "22f4329518cb9d48e1da32df0a4d3bf869c8a30a21ac1f6970a4d68f9204f5b7",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_storm_operator_ifak",
-      "title": "S.T.O.R.M. Operator IFAK product page",
-      "url": "https://www.narescue.com/s-t-o-r-m-operator-ifak.html",
-      "sha256": "a96b8e70195f2c9364786988e9aea8a8934ee397050f85137a0a467d87895aa8",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_uscg_ifak",
-      "title": "USCG IFAK product page",
-      "url": "https://www.narescue.com/uscg-ifak.html",
-      "sha256": "71e3ef314327c35c38506cf1964b70ccb55536e099603feaa480ddcb06bb29ca",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_efak",
-      "title": "EFAK Expeditionary First Aid Kit product page",
-      "url": "https://www.narescue.com/efak-expeditionary-first-aid-kit.html",
-      "sha256": "6b255a916488873e8484a9aeadd75fa97f110a3f88954259b9a75578212b9f08",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_micro_first_aid",
-      "title": "Micro Individual First Aid kit product page",
-      "url": "https://www.narescue.com/kit-micro-individual-first-aid.html",
-      "sha256": "9192c59cade4f32deb044485604ec33346ba3c1dbd1431e1ada651cce38f87ca",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_compact_officer_core",
-      "title": "Compact Officer Response Emergency Core kit product page",
-      "url": "https://www.narescue.com/kit-compact-officer-response-emergency-core.html",
-      "sha256": "a6145e1753885e512d3f639c94a0d44797b0b3975007804afb93555ec5bcd6f4",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_kit_nar5",
-      "title": "NAR-5 medical kit product page",
-      "url": "https://www.narescue.com/kit-nar5.html",
-      "sha256": "16ced2a1dfeca604b3cc428de6e306eb43f986d2621edf7c11a98904ce4413a4",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_usmc_cls_kit",
-      "title": "USMC Combat Life Saving Kit product page",
-      "url": "https://www.narescue.com/usmc-combat-life-saving-kit-coy.html",
-      "sha256": "19c58277b96a2628f696aa6919ee6ef3bb8afa305055fd5db90f2bd5b6bcd349",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_uscg_boat_kit",
-      "title": "USCG Boat Response Kit product page",
-      "url": "https://www.narescue.com/kit-uscg-boat-response-kit.html",
-      "sha256": "73ce01dc0844af631eb7d806683cb686b48317911c19e13deb5fb4f9c26b97cb",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_naval_gun_kit",
-      "title": "Naval Gun Response Kit product page",
-      "url": "https://www.narescue.com/kit-naval-gun-response.html",
-      "sha256": "18d2d66fade4bd9e62dadaa740d5a43d0298351aa1a596b0927f699f6a925234",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_usmc_cls_resupply",
-      "title": "USMC Combat Lifesaver Resupply kit product page",
-      "url": "https://www.narescue.com/kit-usmc-combat-lifesaver-resupply.html",
-      "sha256": "5519986d143047d15d4824003cd4138b42ca8a885d63f733bfdcfef8ccf4d73e",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_4_aid_bag",
-      "title": "NAR-4 Aid Bag product page",
-      "url": "https://www.narescue.com/nar-4-aid-bag.html",
-      "sha256": "06559ede326aeaa4152337e891acba0bf5804f141cce01de548054fc3ea39fc9",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_rapid_response_bag",
-      "title": "Rapid Response Bag (law enforcement edition, bag only) product page",
-      "url": "https://www.narescue.com/rapid-response-bag-only-law-enforcement-edition-black.html",
-      "sha256": "7ea3f83f6f5e79bbb1b5c2665b5d038f13fc1c918395be581e520da1ee884bcd",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_squad_kit_bag",
-      "title": "Squad Kit bag (bag only) product page",
-      "url": "https://www.narescue.com/squad-kit-bag-only.html",
-      "sha256": "4b8d988caed47876335112dae216cc201186068e7077422f334d0650fa70dca3",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_medic_trauma_sheet_bag",
-      "title": "Medic Trauma Sheet Bag (CCRK) product page",
-      "url": "https://www.narescue.com/medic-trauma-sheet-bag-ccrk.html",
-      "sha256": "bde3f79c2b3a91e625b642aed9d19a79bddc8dd5ab3a538e76e90e58c816e841",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_npa_lubricant",
-      "title": "Nasopharyngeal Airway with lubricant product page",
-      "url": "https://www.narescue.com/all-products/airway/nasopharyngeal-airway-with-lubricant.html",
-      "sha256": "f14e2bdf3483bd794ea0abb8c18131961d465a793fc1def1e24e8b971d15be91",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_tactical_crickit",
-      "title": "Tactical CricKit product page",
-      "url": "https://www.narescue.com/tactical-crickit.html",
-      "sha256": "bdf63cec9e76c826c5768db8748d9489431717a8e8f9229540b582b701c4b5c1",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_bac_pack",
-      "title": "BAC-Pack bougie-aided cricothyroidotomy pack product page",
-      "url": "https://www.narescue.com/military-products/march/bac-pack-bougie-aided-cricothyroidotomy-pack.html",
-      "sha256": "26224284e1f82fd209e5299e45f104b16e5a10b9363749d1378af8be37b2435d",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_hyfin_single",
-      "title": "HyFin Chest Seal product page",
-      "url": "https://www.narescue.com/hyfin-chest-seal.html",
-      "sha256": "ff2cce2a5688d7faef3acdc1895972116c9f7de261d7bf38c82841473ceb38d8",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_cyclone_bvm",
-      "title": "Cyclone Pocket BVM product page",
-      "url": "https://www.narescue.com/cyclone-pocket-bvm.html",
-      "sha256": "c9957f2a289cdc8f83be36c4a65a436b80d1370fde2159279e2cc49e73e8d2e7",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_ambu_spur_ii",
-      "title": "Ambu SPUR II BVM product page",
-      "url": "https://www.narescue.com/all-products/airway/ambu-spur-ii-bvm.html",
-      "sha256": "39cc37b7c4be8d7f8d6b5adde45ef5a3217089287ba287428a12b98be8af5c2e",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_ambu_mark_iii",
-      "title": "Ambu Mark III resuscitator product page",
-      "url": "https://www.narescue.com/all-products/airway/ambu-rdic-military-mark-iii-resuscitator.html",
-      "sha256": "a85ba47335f679d0c6add2a3dac63e8ab50465aacd31e3af1cb0f4e03d365f53",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_tactical_suction",
-      "title": "NAR Tactical Suction Device product page",
-      "url": "https://www.narescue.com/nar-tactical-suction-device.html",
-      "sha256": "3c9c31c0a33dbfd8b11963564367e8f2064f1c139b977fc1828d0f4e99705625",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_spear",
-      "title": "SPEAR Simplified Pneumothorax Emergency Air Release product page",
-      "url": "https://www.narescue.com/spear-simplified-pneumothorax-emergency-air-release.html",
-      "sha256": "dd05985b30b0ac4f97594259012a769008b65884c7439ad4ab2acde1d9b4958a",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_chitogauze",
-      "title": "ChitoGauze 4 in x 4 yd hemostatic bandage product page",
-      "url": "https://www.narescue.com/hemostatic-bandage-chitogauze-4-x-4yd.html",
-      "sha256": "48a1a71bcc114561cbf68a8b3eaf1e59232a008b3ebb30bd02346b5b4fe80be2",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_celox_rapid",
-      "title": "Celox Rapid hemostatic dressing product page",
-      "url": "https://www.narescue.com/hemostatic-dressing-celox-rapid.html",
-      "sha256": "e52aa57b395bda3384306d9aee9d82545113ae8872daafeec01eafaeac4683eb",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_celox_a",
-      "title": "Celox-A hemostatic agent product page",
-      "url": "https://www.narescue.com/celox-a-hemostatic-agent.html",
-      "sha256": "6e837d115fe991caf143b08ed5f8ba34d2ed031339d9141d83ef49c77045f477",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_combat_gauze_zfold",
-      "title": "Combat Gauze Z-Fold hemostatic dressing product page",
-      "url": "https://www.narescue.com/all-products/massive-hemorrhage/combat-gauze-z-fold-hemostatic.html",
-      "sha256": "005ea0fecaa36fa8fde16c26974b8be0d8a0965f0f522bfca8c7e34961cc7705",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_burntec_dressing",
-      "title": "BurnTec dressing product page",
-      "url": "https://www.narescue.com/burntec-dressing.html",
-      "sha256": "69b04e5dbce6c3991a26f532d9df02ce6cfb790262c97a2e492ab955ce08bc9c",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_burntec_facial",
-      "title": "BurnTec facial mask dressing product page",
-      "url": "https://www.narescue.com/burntec-dressing-facial-mask.html",
-      "sha256": "80f78bb198a343c7ef02bc7ad796d30d52a4cfdbd4843fa01c6e3d38b2e0d9eb",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_burntec_minor_kit",
-      "title": "BurnTec minor burn dressing kit product page",
-      "url": "https://www.narescue.com/kit-dressing-burntec-minor-burn.html",
-      "sha256": "5a18bbe4678c928d2e6764ab5a0448bf8055471f054470077b296df7a1a9bb42",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_burn_cravat_xl",
-      "title": "Dry sterile burn dressing cravat XL product page",
-      "url": "https://www.narescue.com/all-products/treatment-support/burn-dressings/dry-sterile-burn-dressing-cravat-xl.html",
-      "sha256": "bd14206ee540f7b9bb7ce6040253b5c2158f645110ff2bef0f10c7c29ce25535",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_fox_eye_shield",
-      "title": "Fox eye shield (pack of 12) product page",
-      "url": "https://www.narescue.com/kit-eye-shield-fox-pk-of-12.html",
-      "sha256": "2e02c3a78d98fe3b1f83322ac74ae1c1ccc5b3d40b1654463ab60dbf228ba29e",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_pes_eye_shield",
-      "title": "Polycarbonate eye shield (PES) product page",
-      "url": "https://www.narescue.com/polycarbonate-eye-shield-pes.html",
-      "sha256": "7df28d5bd9ebf2f40e6edcdc9c61aa3651f33c3963b4f9641b436df4b46d3e4c",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_ace_collar",
-      "title": "ACE cervical collar product page",
-      "url": "https://www.narescue.com/ace-cervical-collar.html",
-      "sha256": "ebc4059972e986781914544a290c1af25bac7de9f247044aeb4c82a85ae790fb",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_hpmk",
-      "title": "NAR Hypothermia Prevention and Management Kit (HPMK) product page",
-      "url": "https://www.narescue.com/nar-hypothermia-prevention-and-management-kit-hpmk.html",
-      "sha256": "8fc833fc19efb2331b522b6ab9629ec984d08acaa804581b937329405f05b3de",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_glove_kits",
-      "title": "Responder glove kits (pack of 25) product page",
-      "url": "https://www.narescue.com/outdoor-adventure-products/responder-glove-kits-pack-of-25.html",
-      "sha256": "d54548b9981848f036009bdd2d3548270c603eebd29c662ee99548d86823a4a5",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_jett",
-      "title": "Junctional Emergency Treatment Tool (JETT) product page",
-      "url": "https://www.narescue.com/junctional-emergency-treatment-tool-jett.html",
-      "sha256": "e0cbcb01bbb017f47cde8772a52459f5de0887cb8a061c4be2d3e790e72fa61f",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_aajt_s",
-      "title": "Abdominal Aortic and Junctional Tourniquet (AAJT-S) product page",
-      "url": "https://www.narescue.com/abdominal-aortic-and-junctional-tourniquet-stablized-aajt-s.html",
-      "sha256": "cf97dfee9db4ab573e9d7c11179f67062e640807e569ca58b9f9279f54ea8358",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_eel",
-      "title": "Emergency Evacuation Litter (EEL) product page",
-      "url": "https://www.narescue.com/emergency-evacuation-litter-eel.html",
-      "sha256": "d0847ff0f6e82741a3a5c7e1618e5b19c415b3b84aea6cfce0386982aefc1187",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_triangular_bandage",
-      "title": "Triangular bandage (OD green) product page",
-      "url": "https://www.narescue.com/kit-triangular-bandage-odg.html",
-      "sha256": "24133caa1abb2413295f3c9eba7fa70a08bd785c02953d0fbb798e4e65feb811",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_walk",
-      "title": "Warrior Aid and Litter Kit (WALK) product page",
-      "url": "https://www.narescue.com/warrior-aid-and-litter-kit-walk.html",
-      "sha256": "f99319b526bf6a269bc40615d4582fe227856f181eec3d9612fc8941548f6c4a",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_trauma_shears",
-      "title": "NAR Trauma Shears product page",
-      "url": "https://www.narescue.com/nar-trauma-shears.html",
-      "sha256": "4b6b132948583b50160b0509552647196fed8e059a7ae14688fe30f3a6e89806",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "nar_saline_lock",
-      "title": "NAR Saline Lock Kit product page",
-      "url": "https://www.narescue.com/nar-saline-lock-kit.html",
-      "sha256": "c5ee4304c2e66fe0fdf59e8aa89a155839a08a5ad4a20003b44b2853580cc8a7",
-      "publisher": "North American Rescue",
-      "tier": 4
-    },
-    {
-      "source_id": "tacmed_olaes",
-      "title": "OLAES Modular Bandage product page",
-      "url": "https://www.tacmedsolutions.com/products/olaes-modular-bandage",
-      "sha256": "8d9a80f5ca86b1245f54833d86e4e716f2ae245e5608c033019f4309e4efe93b",
-      "publisher": "TacMed Solutions",
-      "tier": 4
-    },
-    {
-      "source_id": "tacmed_slishman",
-      "title": "Slishman Traction Splint, Gen 1 product page",
-      "url": "https://www.tacmedsolutions.com/products/slishman-traction-splint",
-      "sha256": "14c646e91d28b9514511193b1afd8473d6c15eeeb70625d2c65d865da21d3927",
-      "publisher": "TacMed Solutions",
-      "tier": 4
-    },
-    {
-      "source_id": "skedco_basic",
-      "title": "Sked Basic Rescue System product page",
-      "url": "https://skedco.com/product/sked-basic-rescue-system/",
-      "sha256": "f7131347622ea10bcbaa39eb73a388a5694eb22b38be124a6b574d500f9fe0ba",
-      "publisher": "Skedco",
-      "tier": 4
-    },
-    {
-      "source_id": "sam_medical_splint",
-      "title": "SAM Splint product page",
-      "url": "https://sammedical.com/products/sam-splint",
-      "sha256": "843a76965497ce88b6a413e2faeed74e931049aa7ee66947c5b39a29bb0148f1",
-      "publisher": "SAM Medical",
-      "tier": 4
-    },
-    {
-      "source_id": "israeli_bandage_ws",
-      "title": "PerSys Medical Israeli Emergency Bandage 4 in 2-pack product page",
-      "url": "https://warehousesoverstock.com/persys-medical-first-aid-israeli-emergency-bandage-4-2-pack/",
-      "sha256": "4a4353e4bc16bc75098a33c3279d8912deda3d740c40f099a6dee42463f6bb63",
-      "publisher": "Warehouse Overstock (distributor)",
-      "tier": 4
-    }
-  ],
-  "items": [
-    {
-      "item": "US Army IFAK (Improved First-Aid Kit)",
-      "family": "ifak",
-      "mass_kg": 0.4536,
-      "state": "complete, packaged",
-      "maker": "US Army",
-      "country": "US",
-      "note": "Weighing only one pound, the IFAK consists of six expendable medical items packaged inside of a modified MOLLE 100-round SAW ammo pouch.",
-      "source_id": "chb_ifak"
-    },
-    {
-      "item": "Operator BLS IFAK",
-      "family": "ifak",
-      "mass_kg": 0.7938,
-      "state": "complete kit",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight: 1 lb 12 oz",
-      "source_id": "nar_operator_bls_ifak"
-    },
-    {
-      "item": "S.T.O.R.M. Operator IFAK",
-      "family": "ifak",
-      "mass_kg": 0.7938,
-      "state": "complete kit",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight: 1 lb 12 oz",
-      "source_id": "nar_storm_operator_ifak"
-    },
-    {
-      "item": "USCG IFAK",
-      "family": "ifak",
-      "mass_kg": 1.1907,
-      "state": "complete kit",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight: 2 lb 10 oz",
-      "source_id": "nar_uscg_ifak"
-    },
-    {
-      "item": "EFAK Expeditionary First Aid Kit",
-      "family": "firstaid",
-      "mass_kg": 0.5386,
-      "state": "complete kit",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight: 1 lb 3 oz",
-      "source_id": "nar_efak"
-    },
-    {
-      "item": "Micro Individual First Aid kit",
-      "family": "firstaid",
-      "mass_kg": 0.3221,
-      "state": "complete kit",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight: 0.71 lb",
-      "source_id": "nar_micro_first_aid"
-    },
-    {
-      "item": "Compact Officer Response Emergency Core kit",
-      "family": "firstaid",
-      "mass_kg": 0.1814,
-      "state": "complete kit",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight: 6.4 oz",
-      "source_id": "nar_compact_officer_core"
-    },
-    {
-      "item": "NAR-5 medical kit",
-      "family": "medikit",
-      "mass_kg": 7.3028,
-      "state": "complete kit",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight: 16.1 lb",
-      "source_id": "nar_kit_nar5"
-    },
-    {
-      "item": "USMC Combat Life Saving Kit",
-      "family": "medikit",
-      "mass_kg": 3.1184,
-      "state": "complete kit",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight: 6 lb 14 oz",
-      "source_id": "nar_usmc_cls_kit"
-    },
-    {
-      "item": "USCG Boat Response Kit",
-      "family": "medikit",
-      "mass_kg": 4.0256,
-      "state": "complete kit",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight: 8 lbs. 14 oz.",
-      "source_id": "nar_uscg_boat_kit"
-    },
-    {
-      "item": "Naval Gun Response Kit",
-      "family": "medikit",
-      "mass_kg": 2.1262,
-      "state": "complete kit",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight: 4 lb 11 oz",
-      "source_id": "nar_naval_gun_kit"
-    },
-    {
-      "item": "USMC Combat Lifesaver Resupply kit",
-      "family": "medikit",
-      "mass_kg": 2.2226,
-      "state": "complete kit",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight: 4.9 lbs.",
-      "source_id": "nar_usmc_cls_resupply"
-    },
-    {
-      "item": "NAR-4 Aid Bag",
-      "family": "aidbag",
-      "mass_kg": 1.9867,
-      "state": "empty bag",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight: 4.38 lbs.",
-      "source_id": "nar_4_aid_bag"
-    },
-    {
-      "item": "Rapid Response Bag (law enforcement edition)",
-      "family": "medicalbag",
-      "mass_kg": 0.948,
-      "state": "bag only, empty",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight (Bag only): 2.09 lb",
-      "source_id": "nar_rapid_response_bag"
-    },
-    {
-      "item": "Squad Kit bag",
-      "family": "medicalbag",
-      "mass_kg": 0.6169,
-      "state": "empty",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight empty: 1.36 lb",
-      "source_id": "nar_squad_kit_bag"
-    },
-    {
-      "item": "Medic Trauma Sheet Bag (CCRK)",
-      "family": "medicalbag",
-      "mass_kg": 2.1546,
-      "state": "bag only",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight: 4.75 lbs.",
-      "source_id": "nar_medic_trauma_sheet_bag"
-    },
-    {
-      "item": "Nasopharyngeal Airway with lubricant",
-      "family": "npa",
-      "mass_kg": 0.0142,
-      "state": "single airway with lubricant",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight: 0.5 oz",
-      "source_id": "nar_npa_lubricant"
-    },
-    {
-      "item": "Tactical CricKit",
-      "family": "cric",
-      "mass_kg": 0.1049,
-      "state": "complete kit",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight: 3.7 oz",
-      "source_id": "nar_tactical_crickit"
-    },
-    {
-      "item": "BAC-Pack bougie-aided cricothyroidotomy pack",
-      "family": "cric",
-      "mass_kg": 0.1474,
-      "state": "complete pack",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight: 5.2 oz",
-      "source_id": "nar_bac_pack"
-    },
-    {
-      "item": "HyFin Chest Seal",
-      "family": "chestseal",
-      "mass_kg": 0.0408,
-      "state": "single seal",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight: 1.44 oz",
-      "source_id": "nar_hyfin_single"
-    },
-    {
-      "item": "SPEAR Simplified Pneumothorax Emergency Air Release",
-      "family": "decompression",
-      "mass_kg": 0.0283,
-      "state": "single device",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight: 1 oz",
-      "source_id": "nar_spear"
-    },
-    {
-      "item": "Cyclone Pocket BVM",
-      "family": "bvm",
-      "mass_kg": 0.4933,
-      "state": "complete",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight: 17.4 oz",
-      "source_id": "nar_cyclone_bvm"
-    },
-    {
-      "item": "Ambu SPUR II BVM",
-      "family": "bvm",
-      "mass_kg": 0.3175,
-      "state": "complete",
-      "maker": "Ambu",
-      "country": "DK",
-      "note": "Weight: 0.7 lb",
-      "source_id": "nar_ambu_spur_ii"
-    },
-    {
-      "item": "Ambu Mark III resuscitator",
-      "family": "bvm",
-      "mass_kg": 2.4494,
-      "state": "complete resuscitator",
-      "maker": "Ambu",
-      "country": "DK",
-      "note": "Weight: 5.4 lb",
-      "source_id": "nar_ambu_mark_iii"
-    },
-    {
-      "item": "NAR Tactical Suction Device",
-      "family": "suction",
-      "mass_kg": 0.207,
-      "state": "complete",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight: 7.3 oz",
-      "source_id": "nar_tactical_suction"
-    },
-    {
-      "item": "ChitoGauze 4 in x 4 yd hemostatic bandage",
-      "family": "chito",
-      "mass_kg": 0.0198,
-      "state": "single dressing",
-      "maker": "ChitoGauze (Tricol Biomedical)",
-      "country": "US",
-      "note": "Weight: 0.7 oz",
-      "source_id": "nar_chitogauze"
-    },
-    {
-      "item": "Celox Rapid hemostatic dressing",
-      "family": "celox",
-      "mass_kg": 0.0312,
-      "state": "single dressing",
-      "maker": "Celox (Medtrade)",
-      "country": "GB",
-      "note": "Weight: 1.1 oz",
-      "source_id": "nar_celox_rapid"
-    },
-    {
-      "item": "Celox-A hemostatic agent",
-      "family": "celox",
-      "mass_kg": 0.0312,
-      "state": "single applicator",
-      "maker": "Celox (Medtrade)",
-      "country": "GB",
-      "note": "Weight: 1.1 oz",
-      "source_id": "nar_celox_a"
-    },
-    {
-      "item": "Combat Gauze Z-Fold hemostatic dressing",
-      "family": "combatgauze",
-      "mass_kg": 0.0227,
-      "state": "single dressing",
-      "maker": "QuikClot (Teleflex)",
-      "country": "US",
-      "note": "Weight: 0.8 oz",
-      "source_id": "nar_combat_gauze_zfold"
-    },
-    {
-      "item": "Israeli Emergency Bandage 4 in",
-      "family": "israeli",
-      "mass_kg": 0.0992,
-      "state": "4 in x 13.5 ft, packaged",
-      "maker": "PerSys Medical",
-      "country": "IL",
-      "note": "Expanded Size: 4\" x 13.5' Pad Size: 4\" x 7\" Packaged Size: 6-3/8\" x 5\" Weight: 3.5 oz.",
-      "source_id": "israeli_bandage_ws"
-    },
-    {
-      "item": "OLAES Modular Bandage 4 in flat packed",
-      "family": "olaes",
-      "mass_kg": 0.085,
-      "state": "4 in flat packed",
-      "maker": "TacMed Solutions",
-      "country": "US",
-      "note": "Weight: 4”+ 4” Flat Packed - 3oz / 85g",
-      "source_id": "tacmed_olaes"
-    },
-    {
-      "item": "OLAES Modular Bandage 6 in",
-      "family": "olaes",
-      "mass_kg": 0.105,
-      "state": "6 in",
-      "maker": "TacMed Solutions",
-      "country": "US",
-      "note": "Weight: 6” Version - 3.7oz / 105g",
-      "source_id": "tacmed_olaes"
-    },
-    {
-      "item": "BurnTec dressing",
-      "family": "burntec",
-      "mass_kg": 0.0539,
-      "state": "single dressing",
-      "maker": "BurnTec",
-      "country": "US",
-      "note": "Weight: 1.9 oz",
-      "source_id": "nar_burntec_dressing"
-    },
-    {
-      "item": "BurnTec facial mask dressing",
-      "family": "burntec",
-      "mass_kg": 0.55,
-      "state": "single mask",
-      "maker": "BurnTec",
-      "country": "US",
-      "note": "Weight: 19.4 oz",
-      "source_id": "nar_burntec_facial"
-    },
-    {
-      "item": "BurnTec minor burn dressing kit",
-      "family": "burntec",
-      "mass_kg": 1.4061,
-      "state": "complete kit",
-      "maker": "BurnTec",
-      "country": "US",
-      "note": "Weight: 3.10 lbs",
-      "source_id": "nar_burntec_minor_kit"
-    },
-    {
-      "item": "Dry sterile burn dressing cravat XL",
-      "family": "burn",
-      "mass_kg": 0.0283,
-      "state": "single dressing",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight: 1 oz",
-      "source_id": "nar_burn_cravat_xl"
-    },
-    {
-      "item": "SAM Splint 4 in finger",
-      "family": "samsplint",
-      "mass_kg": 0.006,
-      "state": "4 in finger, flat/fold",
-      "maker": "SAM Medical",
-      "country": "US",
-      "note": "\"4\\\" Finger\",\"Flat/Fold\"],\"price\":210,\"weight\":6",
-      "source_id": "sam_medical_splint"
-    },
-    {
-      "item": "SAM Splint 9 in small",
-      "family": "samsplint",
-      "mass_kg": 0.031,
-      "state": "9 in small, flat/fold",
-      "maker": "SAM Medical",
-      "country": "US",
-      "note": "\"9\\\" Small\",\"Flat/Fold\"],\"price\":595,\"weight\":31",
-      "source_id": "sam_medical_splint"
-    },
-    {
-      "item": "SAM Splint 18 in medium",
-      "family": "samsplint",
-      "mass_kg": 0.068,
-      "state": "18 in medium, flat/fold",
-      "maker": "SAM Medical",
-      "country": "US",
-      "note": "\"18\\\" Medium\",\"Flat/Fold\"],\"price\":895,\"weight\":68",
-      "source_id": "sam_medical_splint"
-    },
-    {
-      "item": "SAM Splint 36 in large",
-      "family": "samsplint",
-      "mass_kg": 0.113,
-      "state": "36 in large, flat/fold",
-      "maker": "SAM Medical",
-      "country": "US",
-      "note": "\"36\\\" Large\",\"Flat/Fold\"],\"price\":1500,\"weight\":113",
-      "source_id": "sam_medical_splint"
-    },
-    {
-      "item": "SAM Splint 36 in large rolled",
-      "family": "samsplint",
-      "mass_kg": 0.113,
-      "state": "36 in large, roll",
-      "maker": "SAM Medical",
-      "country": "US",
-      "note": "\"36\\\" Large\",\"Roll\"],\"price\":1500,\"weight\":113",
-      "source_id": "sam_medical_splint"
-    },
-    {
-      "item": "SAM Splint 36 in XL",
-      "family": "samsplint",
-      "mass_kg": 0.167,
-      "state": "36 in XL, flat/fold",
-      "maker": "SAM Medical",
-      "country": "US",
-      "note": "\"36\\\" XL\",\"Flat/Fold\"],\"price\":1500,\"weight\":167",
-      "source_id": "sam_medical_splint"
-    },
-    {
-      "item": "Slishman Traction Splint Gen 1",
-      "family": "traction",
-      "mass_kg": 0.6804,
-      "state": "complete",
-      "maker": "TacMed Solutions",
-      "country": "US",
-      "note": "Weight : 1lb 8oz",
-      "source_id": "tacmed_slishman"
-    },
-    {
-      "item": "ACE cervical collar",
-      "family": "collar",
-      "mass_kg": 0.1474,
-      "state": "single collar",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight: 5.2 oz",
-      "source_id": "nar_ace_collar"
-    },
-    {
-      "item": "Emergency Evacuation Litter (EEL)",
-      "family": "litter",
-      "mass_kg": 0.8505,
-      "state": "complete litter",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight: 1 lb 14 oz",
-      "source_id": "nar_eel"
-    },
-    {
-      "item": "Sked Basic Rescue System",
-      "family": "sked",
-      "mass_kg": 7.7111,
-      "state": "complete system",
-      "maker": "Skedco",
-      "country": "US",
-      "note": "\"weight\":\"17\",\"weight_html\":\"17 lbs\"",
-      "source_id": "skedco_basic"
-    },
-    {
-      "item": "Warrior Aid and Litter Kit (WALK)",
-      "family": "walk",
-      "mass_kg": 13.5794,
-      "state": "complete kit",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight: 29 lb 15 oz",
-      "source_id": "nar_walk"
-    },
-    {
-      "item": "NAR Hypothermia Prevention and Management Kit (HPMK)",
-      "family": "hpmk",
-      "mass_kg": 1.5876,
-      "state": "complete kit",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight (HPMK®): 3 lb 8 oz",
-      "source_id": "nar_hpmk"
-    },
-    {
-      "item": "Fox eye shield",
-      "family": "eyeshield",
-      "mass_kg": 0.0057,
-      "state": "single shield",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Individual Weight: 0.2 oz (5 grams)",
-      "source_id": "nar_fox_eye_shield"
-    },
-    {
-      "item": "Polycarbonate eye shield (PES)",
-      "family": "eyeshield",
-      "mass_kg": 0.0057,
-      "state": "single shield",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight: 0.2 oz",
-      "source_id": "nar_pes_eye_shield"
-    },
-    {
-      "item": "Responder glove kit",
-      "family": "gloves",
-      "mass_kg": 0.4564,
-      "state": "pack of 25 glove kits",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight: 16.1 oz",
-      "source_id": "nar_glove_kits"
-    },
-    {
-      "item": "NAR Trauma Shears",
-      "family": "shears",
-      "mass_kg": 0.0567,
-      "state": "single pair",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight: 2 oz",
-      "source_id": "nar_trauma_shears"
-    },
-    {
-      "item": "Triangular bandage (OD green)",
-      "family": "triangular",
-      "mass_kg": 0.0454,
-      "state": "single bandage, folded",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight: 1.6 oz.",
-      "source_id": "nar_triangular_bandage"
-    },
-    {
-      "item": "Junctional Emergency Treatment Tool (JETT)",
-      "family": "jett",
-      "mass_kg": 0.6804,
-      "state": "complete",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight: 1 lb 8 oz",
-      "source_id": "nar_jett"
-    },
-    {
-      "item": "Abdominal Aortic and Junctional Tourniquet (AAJT-S)",
-      "family": "aajt",
-      "mass_kg": 0.7087,
-      "state": "complete",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight: 25 oz",
-      "source_id": "nar_aajt_s"
-    },
-    {
-      "item": "NAR Saline Lock Kit",
-      "family": "ivset",
-      "mass_kg": 0.0369,
-      "state": "complete kit",
-      "maker": "North American Rescue",
-      "country": "US",
-      "note": "Weight: 1.3 oz",
-      "source_id": "nar_saline_lock"
-    }
-  ],
-  "leads": [
-    {
-      "item": "1000 mL 0.9% sodium chloride IV bag",
-      "url": "https://www.boundtree.com/",
-      "why": "no manufacturer page publishes a bag mass; Bound Tree returns HTTP 403 to this client, MedexSupply and B.Braun Ecoflac pages carry no mass field, Grifols 1000 mL bag page has weight null"
-    },
-    {
-      "item": "IV administration (giving) set",
-      "url": "https://www.medexsupply.com/iv-administration-sets/",
-      "why": "distributor catalogue lists sets but no mass; manufacturer pages not located"
-    },
-    {
-      "item": "Pressure infuser (1000 mL)",
-      "url": "https://www.medexsupply.com/pressure-infusors/",
-      "why": "MedexSupply and VBM pages publish no mass for the infuser"
-    },
-    {
-      "item": "Blood collection / transfusion bag",
-      "url": "https://www.narescue.com/field-blood-transfusion-kits-fbtk.html",
-      "why": "NAR Field Blood Transfusion Kit page is 404 and the live kit page publishes no mass; no manufacturer datasheet located"
-    },
-    {
-      "item": "Oropharyngeal airway (Guedel), size 3",
-      "url": "https://www.trudellhs.com/sites/default/files/documents/Guedel%20Airways_Product%20Data%20Sheet_THS.pdf",
-      "why": "Trudell and O-Two Guedel data sheets list sizes and materials but no mass; Intersurgical and Cardinal pages carry no mass"
-    },
-    {
-      "item": "Examination glove, per pair",
-      "url": "https://www.aureliagloves.com/products/sonic",
-      "why": "Aurelia, Unigloves and Sempermed product pages publish no per-glove or per-pair mass; NAR sells a 25-kit pack only"
-    },
-    {
-      "item": "Bolin chest seal",
-      "url": "https://www.handhmedical.com/products/bolin-chest-seal",
-      "why": "H&H Medical domain does not resolve (DNS) from this client; no alternate manufacturer page located"
-    }
-  ],
-  "conflicts": []
+ "retrieved": "2026-09-23",
+ "note": "Military first-aid item masses: individual and collective kits, dressings, haemostatics, airways, chest seals, splints, litters and related items. Every mass is a published figure from a manufacturer product page or a manufacturer catalogue, downloaded and sha256-hashed here. Tier 5 pages are recorded in leads only. Where a source publishes both lb and kg the kg figure is used; where only lb or oz is published the exact conversions 1 lb = 0.45359237 kg and 1 oz = 0.028349523125 kg are applied.",
+ "sources": [
+  {
+   "source_id": "chb_ifak",
+   "title": "Improved First Aid Kit (IFAK) product page",
+   "url": "https://www.chb-tech.com/solutionsmarkets/medical-disease-hygiene-treatment-supplies/improved-first-aid-kit-ifak/",
+   "sha256": "c29482d7329da9beef53576654091d639457cad779bf7ea9451155e13595a36d",
+   "publisher": "CHB Infrastructure, Technology and Marketing Group LLC",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_operator_bls_ifak",
+   "title": "Operator BLS IFAK product page",
+   "url": "https://www.narescue.com/operator-bls-ifak.html",
+   "sha256": "22f4329518cb9d48e1da32df0a4d3bf869c8a30a21ac1f6970a4d68f9204f5b7",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_storm_operator_ifak",
+   "title": "S.T.O.R.M. Operator IFAK product page",
+   "url": "https://www.narescue.com/s-t-o-r-m-operator-ifak.html",
+   "sha256": "a96b8e70195f2c9364786988e9aea8a8934ee397050f85137a0a467d87895aa8",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_uscg_ifak",
+   "title": "USCG IFAK product page",
+   "url": "https://www.narescue.com/uscg-ifak.html",
+   "sha256": "71e3ef314327c35c38506cf1964b70ccb55536e099603feaa480ddcb06bb29ca",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_efak",
+   "title": "EFAK Expeditionary First Aid Kit product page",
+   "url": "https://www.narescue.com/efak-expeditionary-first-aid-kit.html",
+   "sha256": "6b255a916488873e8484a9aeadd75fa97f110a3f88954259b9a75578212b9f08",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_micro_first_aid",
+   "title": "Micro Individual First Aid kit product page",
+   "url": "https://www.narescue.com/kit-micro-individual-first-aid.html",
+   "sha256": "9192c59cade4f32deb044485604ec33346ba3c1dbd1431e1ada651cce38f87ca",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_compact_officer_core",
+   "title": "Compact Officer Response Emergency Core kit product page",
+   "url": "https://www.narescue.com/kit-compact-officer-response-emergency-core.html",
+   "sha256": "a6145e1753885e512d3f639c94a0d44797b0b3975007804afb93555ec5bcd6f4",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_kit_nar5",
+   "title": "NAR-5 medical kit product page",
+   "url": "https://www.narescue.com/kit-nar5.html",
+   "sha256": "16ced2a1dfeca604b3cc428de6e306eb43f986d2621edf7c11a98904ce4413a4",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_usmc_cls_kit",
+   "title": "USMC Combat Life Saving Kit product page",
+   "url": "https://www.narescue.com/usmc-combat-life-saving-kit-coy.html",
+   "sha256": "19c58277b96a2628f696aa6919ee6ef3bb8afa305055fd5db90f2bd5b6bcd349",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_uscg_boat_kit",
+   "title": "USCG Boat Response Kit product page",
+   "url": "https://www.narescue.com/kit-uscg-boat-response-kit.html",
+   "sha256": "73ce01dc0844af631eb7d806683cb686b48317911c19e13deb5fb4f9c26b97cb",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_naval_gun_kit",
+   "title": "Naval Gun Response Kit product page",
+   "url": "https://www.narescue.com/kit-naval-gun-response.html",
+   "sha256": "18d2d66fade4bd9e62dadaa740d5a43d0298351aa1a596b0927f699f6a925234",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_usmc_cls_resupply",
+   "title": "USMC Combat Lifesaver Resupply kit product page",
+   "url": "https://www.narescue.com/kit-usmc-combat-lifesaver-resupply.html",
+   "sha256": "5519986d143047d15d4824003cd4138b42ca8a885d63f733bfdcfef8ccf4d73e",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_4_aid_bag",
+   "title": "NAR-4 Aid Bag product page",
+   "url": "https://www.narescue.com/nar-4-aid-bag.html",
+   "sha256": "06559ede326aeaa4152337e891acba0bf5804f141cce01de548054fc3ea39fc9",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_rapid_response_bag",
+   "title": "Rapid Response Bag (law enforcement edition, bag only) product page",
+   "url": "https://www.narescue.com/rapid-response-bag-only-law-enforcement-edition-black.html",
+   "sha256": "7ea3f83f6f5e79bbb1b5c2665b5d038f13fc1c918395be581e520da1ee884bcd",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_squad_kit_bag",
+   "title": "Squad Kit bag (bag only) product page",
+   "url": "https://www.narescue.com/squad-kit-bag-only.html",
+   "sha256": "4b8d988caed47876335112dae216cc201186068e7077422f334d0650fa70dca3",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_medic_trauma_sheet_bag",
+   "title": "Medic Trauma Sheet Bag (CCRK) product page",
+   "url": "https://www.narescue.com/medic-trauma-sheet-bag-ccrk.html",
+   "sha256": "bde3f79c2b3a91e625b642aed9d19a79bddc8dd5ab3a538e76e90e58c816e841",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_npa_lubricant",
+   "title": "Nasopharyngeal Airway with lubricant product page",
+   "url": "https://www.narescue.com/all-products/airway/nasopharyngeal-airway-with-lubricant.html",
+   "sha256": "f14e2bdf3483bd794ea0abb8c18131961d465a793fc1def1e24e8b971d15be91",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_tactical_crickit",
+   "title": "Tactical CricKit product page",
+   "url": "https://www.narescue.com/tactical-crickit.html",
+   "sha256": "bdf63cec9e76c826c5768db8748d9489431717a8e8f9229540b582b701c4b5c1",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_bac_pack",
+   "title": "BAC-Pack bougie-aided cricothyroidotomy pack product page",
+   "url": "https://www.narescue.com/military-products/march/bac-pack-bougie-aided-cricothyroidotomy-pack.html",
+   "sha256": "26224284e1f82fd209e5299e45f104b16e5a10b9363749d1378af8be37b2435d",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_hyfin_single",
+   "title": "HyFin Chest Seal product page",
+   "url": "https://www.narescue.com/hyfin-chest-seal.html",
+   "sha256": "ff2cce2a5688d7faef3acdc1895972116c9f7de261d7bf38c82841473ceb38d8",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_cyclone_bvm",
+   "title": "Cyclone Pocket BVM product page",
+   "url": "https://www.narescue.com/cyclone-pocket-bvm.html",
+   "sha256": "c9957f2a289cdc8f83be36c4a65a436b80d1370fde2159279e2cc49e73e8d2e7",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_ambu_spur_ii",
+   "title": "Ambu SPUR II BVM product page",
+   "url": "https://www.narescue.com/all-products/airway/ambu-spur-ii-bvm.html",
+   "sha256": "39cc37b7c4be8d7f8d6b5adde45ef5a3217089287ba287428a12b98be8af5c2e",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_ambu_mark_iii",
+   "title": "Ambu Mark III resuscitator product page",
+   "url": "https://www.narescue.com/all-products/airway/ambu-rdic-military-mark-iii-resuscitator.html",
+   "sha256": "a85ba47335f679d0c6add2a3dac63e8ab50465aacd31e3af1cb0f4e03d365f53",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_tactical_suction",
+   "title": "NAR Tactical Suction Device product page",
+   "url": "https://www.narescue.com/nar-tactical-suction-device.html",
+   "sha256": "3c9c31c0a33dbfd8b11963564367e8f2064f1c139b977fc1828d0f4e99705625",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_spear",
+   "title": "SPEAR Simplified Pneumothorax Emergency Air Release product page",
+   "url": "https://www.narescue.com/spear-simplified-pneumothorax-emergency-air-release.html",
+   "sha256": "dd05985b30b0ac4f97594259012a769008b65884c7439ad4ab2acde1d9b4958a",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_chitogauze",
+   "title": "ChitoGauze 4 in x 4 yd hemostatic bandage product page",
+   "url": "https://www.narescue.com/hemostatic-bandage-chitogauze-4-x-4yd.html",
+   "sha256": "48a1a71bcc114561cbf68a8b3eaf1e59232a008b3ebb30bd02346b5b4fe80be2",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_celox_rapid",
+   "title": "Celox Rapid hemostatic dressing product page",
+   "url": "https://www.narescue.com/hemostatic-dressing-celox-rapid.html",
+   "sha256": "e52aa57b395bda3384306d9aee9d82545113ae8872daafeec01eafaeac4683eb",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_celox_a",
+   "title": "Celox-A hemostatic agent product page",
+   "url": "https://www.narescue.com/celox-a-hemostatic-agent.html",
+   "sha256": "6e837d115fe991caf143b08ed5f8ba34d2ed031339d9141d83ef49c77045f477",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_combat_gauze_zfold",
+   "title": "Combat Gauze Z-Fold hemostatic dressing product page",
+   "url": "https://www.narescue.com/all-products/massive-hemorrhage/combat-gauze-z-fold-hemostatic.html",
+   "sha256": "005ea0fecaa36fa8fde16c26974b8be0d8a0965f0f522bfca8c7e34961cc7705",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_burntec_dressing",
+   "title": "BurnTec dressing product page",
+   "url": "https://www.narescue.com/burntec-dressing.html",
+   "sha256": "69b04e5dbce6c3991a26f532d9df02ce6cfb790262c97a2e492ab955ce08bc9c",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_burntec_facial",
+   "title": "BurnTec facial mask dressing product page",
+   "url": "https://www.narescue.com/burntec-dressing-facial-mask.html",
+   "sha256": "80f78bb198a343c7ef02bc7ad796d30d52a4cfdbd4843fa01c6e3d38b2e0d9eb",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_burntec_minor_kit",
+   "title": "BurnTec minor burn dressing kit product page",
+   "url": "https://www.narescue.com/kit-dressing-burntec-minor-burn.html",
+   "sha256": "5a18bbe4678c928d2e6764ab5a0448bf8055471f054470077b296df7a1a9bb42",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_burn_cravat_xl",
+   "title": "Dry sterile burn dressing cravat XL product page",
+   "url": "https://www.narescue.com/all-products/treatment-support/burn-dressings/dry-sterile-burn-dressing-cravat-xl.html",
+   "sha256": "bd14206ee540f7b9bb7ce6040253b5c2158f645110ff2bef0f10c7c29ce25535",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_fox_eye_shield",
+   "title": "Fox eye shield (pack of 12) product page",
+   "url": "https://www.narescue.com/kit-eye-shield-fox-pk-of-12.html",
+   "sha256": "2e02c3a78d98fe3b1f83322ac74ae1c1ccc5b3d40b1654463ab60dbf228ba29e",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_pes_eye_shield",
+   "title": "Polycarbonate eye shield (PES) product page",
+   "url": "https://www.narescue.com/polycarbonate-eye-shield-pes.html",
+   "sha256": "7df28d5bd9ebf2f40e6edcdc9c61aa3651f33c3963b4f9641b436df4b46d3e4c",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_ace_collar",
+   "title": "ACE cervical collar product page",
+   "url": "https://www.narescue.com/ace-cervical-collar.html",
+   "sha256": "ebc4059972e986781914544a290c1af25bac7de9f247044aeb4c82a85ae790fb",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_hpmk",
+   "title": "NAR Hypothermia Prevention and Management Kit (HPMK) product page",
+   "url": "https://www.narescue.com/nar-hypothermia-prevention-and-management-kit-hpmk.html",
+   "sha256": "8fc833fc19efb2331b522b6ab9629ec984d08acaa804581b937329405f05b3de",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_glove_kits",
+   "title": "Responder glove kits (pack of 25) product page",
+   "url": "https://www.narescue.com/outdoor-adventure-products/responder-glove-kits-pack-of-25.html",
+   "sha256": "d54548b9981848f036009bdd2d3548270c603eebd29c662ee99548d86823a4a5",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_jett",
+   "title": "Junctional Emergency Treatment Tool (JETT) product page",
+   "url": "https://www.narescue.com/junctional-emergency-treatment-tool-jett.html",
+   "sha256": "e0cbcb01bbb017f47cde8772a52459f5de0887cb8a061c4be2d3e790e72fa61f",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_aajt_s",
+   "title": "Abdominal Aortic and Junctional Tourniquet (AAJT-S) product page",
+   "url": "https://www.narescue.com/abdominal-aortic-and-junctional-tourniquet-stablized-aajt-s.html",
+   "sha256": "cf97dfee9db4ab573e9d7c11179f67062e640807e569ca58b9f9279f54ea8358",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_eel",
+   "title": "Emergency Evacuation Litter (EEL) product page",
+   "url": "https://www.narescue.com/emergency-evacuation-litter-eel.html",
+   "sha256": "d0847ff0f6e82741a3a5c7e1618e5b19c415b3b84aea6cfce0386982aefc1187",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_triangular_bandage",
+   "title": "Triangular bandage (OD green) product page",
+   "url": "https://www.narescue.com/kit-triangular-bandage-odg.html",
+   "sha256": "24133caa1abb2413295f3c9eba7fa70a08bd785c02953d0fbb798e4e65feb811",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_walk",
+   "title": "Warrior Aid and Litter Kit (WALK) product page",
+   "url": "https://www.narescue.com/warrior-aid-and-litter-kit-walk.html",
+   "sha256": "f99319b526bf6a269bc40615d4582fe227856f181eec3d9612fc8941548f6c4a",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_trauma_shears",
+   "title": "NAR Trauma Shears product page",
+   "url": "https://www.narescue.com/nar-trauma-shears.html",
+   "sha256": "4b6b132948583b50160b0509552647196fed8e059a7ae14688fe30f3a6e89806",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "nar_saline_lock",
+   "title": "NAR Saline Lock Kit product page",
+   "url": "https://www.narescue.com/nar-saline-lock-kit.html",
+   "sha256": "c5ee4304c2e66fe0fdf59e8aa89a155839a08a5ad4a20003b44b2853580cc8a7",
+   "publisher": "North American Rescue",
+   "tier": 4
+  },
+  {
+   "source_id": "tacmed_olaes",
+   "title": "OLAES Modular Bandage product page",
+   "url": "https://www.tacmedsolutions.com/products/olaes-modular-bandage",
+   "sha256": "8d9a80f5ca86b1245f54833d86e4e716f2ae245e5608c033019f4309e4efe93b",
+   "publisher": "TacMed Solutions",
+   "tier": 4
+  },
+  {
+   "source_id": "tacmed_slishman",
+   "title": "Slishman Traction Splint, Gen 1 product page",
+   "url": "https://www.tacmedsolutions.com/products/slishman-traction-splint",
+   "sha256": "14c646e91d28b9514511193b1afd8473d6c15eeeb70625d2c65d865da21d3927",
+   "publisher": "TacMed Solutions",
+   "tier": 4
+  },
+  {
+   "source_id": "skedco_basic",
+   "title": "Sked Basic Rescue System product page",
+   "url": "https://skedco.com/product/sked-basic-rescue-system/",
+   "sha256": "f7131347622ea10bcbaa39eb73a388a5694eb22b38be124a6b574d500f9fe0ba",
+   "publisher": "Skedco",
+   "tier": 4
+  },
+  {
+   "source_id": "sam_medical_splint",
+   "title": "SAM Splint product page",
+   "url": "https://sammedical.com/products/sam-splint",
+   "sha256": "843a76965497ce88b6a413e2faeed74e931049aa7ee66947c5b39a29bb0148f1",
+   "publisher": "SAM Medical",
+   "tier": 4
+  },
+  {
+   "source_id": "israeli_bandage_ws",
+   "title": "PerSys Medical Israeli Emergency Bandage 4 in 2-pack product page",
+   "url": "https://warehousesoverstock.com/persys-medical-first-aid-israeli-emergency-bandage-4-2-pack/",
+   "sha256": "4a4353e4bc16bc75098a33c3279d8912deda3d740c40f099a6dee42463f6bb63",
+   "publisher": "Warehouse Overstock (distributor)",
+   "tier": 4
+  }
+ ],
+ "items": [
+  {
+   "item": "US Army IFAK (Improved First-Aid Kit)",
+   "family": "ifak",
+   "mass_kg": 0.4536,
+   "state": "complete, packaged",
+   "maker": "US Army",
+   "country": "US",
+   "note": "Weighing only one pound, the IFAK consists of six expendable medical items packaged inside of a modified MOLLE 100-round SAW ammo pouch.",
+   "source_id": "chb_ifak",
+   "category": "medical"
+  },
+  {
+   "item": "Operator BLS IFAK",
+   "family": "ifak",
+   "mass_kg": 0.7938,
+   "state": "complete kit",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight: 1 lb 12 oz",
+   "source_id": "nar_operator_bls_ifak",
+   "category": "medical"
+  },
+  {
+   "item": "S.T.O.R.M. Operator IFAK",
+   "family": "ifak",
+   "mass_kg": 0.7938,
+   "state": "complete kit",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight: 1 lb 12 oz",
+   "source_id": "nar_storm_operator_ifak",
+   "category": "medical"
+  },
+  {
+   "item": "USCG IFAK",
+   "family": "ifak",
+   "mass_kg": 1.1907,
+   "state": "complete kit",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight: 2 lb 10 oz",
+   "source_id": "nar_uscg_ifak",
+   "category": "medical"
+  },
+  {
+   "item": "EFAK Expeditionary First Aid Kit",
+   "family": "firstaid",
+   "mass_kg": 0.5386,
+   "state": "complete kit",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight: 1 lb 3 oz",
+   "source_id": "nar_efak",
+   "category": "medical"
+  },
+  {
+   "item": "Micro Individual First Aid kit",
+   "family": "firstaid",
+   "mass_kg": 0.3221,
+   "state": "complete kit",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight: 0.71 lb",
+   "source_id": "nar_micro_first_aid",
+   "category": "medical"
+  },
+  {
+   "item": "Compact Officer Response Emergency Core kit",
+   "family": "firstaid",
+   "mass_kg": 0.1814,
+   "state": "complete kit",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight: 6.4 oz",
+   "source_id": "nar_compact_officer_core",
+   "category": "medical"
+  },
+  {
+   "item": "NAR-5 medical kit",
+   "family": "medikit",
+   "mass_kg": 7.3028,
+   "state": "complete kit",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight: 16.1 lb",
+   "source_id": "nar_kit_nar5",
+   "category": "medical"
+  },
+  {
+   "item": "USMC Combat Life Saving Kit",
+   "family": "medikit",
+   "mass_kg": 3.1184,
+   "state": "complete kit",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight: 6 lb 14 oz",
+   "source_id": "nar_usmc_cls_kit",
+   "category": "medical"
+  },
+  {
+   "item": "USCG Boat Response Kit",
+   "family": "medikit",
+   "mass_kg": 4.0256,
+   "state": "complete kit",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight: 8 lbs. 14 oz.",
+   "source_id": "nar_uscg_boat_kit",
+   "category": "medical"
+  },
+  {
+   "item": "Naval Gun Response Kit",
+   "family": "medikit",
+   "mass_kg": 2.1262,
+   "state": "complete kit",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight: 4 lb 11 oz",
+   "source_id": "nar_naval_gun_kit",
+   "category": "medical"
+  },
+  {
+   "item": "USMC Combat Lifesaver Resupply kit",
+   "family": "medikit",
+   "mass_kg": 2.2226,
+   "state": "complete kit",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight: 4.9 lbs.",
+   "source_id": "nar_usmc_cls_resupply",
+   "category": "medical"
+  },
+  {
+   "item": "NAR-4 Aid Bag",
+   "family": "aidbag",
+   "mass_kg": 1.9867,
+   "state": "empty bag",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight: 4.38 lbs.",
+   "source_id": "nar_4_aid_bag",
+   "category": "medical"
+  },
+  {
+   "item": "Rapid Response Bag (law enforcement edition)",
+   "family": "medicalbag",
+   "mass_kg": 0.948,
+   "state": "bag only, empty",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight (Bag only): 2.09 lb",
+   "source_id": "nar_rapid_response_bag",
+   "category": "medical"
+  },
+  {
+   "item": "Squad Kit bag",
+   "family": "medicalbag",
+   "mass_kg": 0.6169,
+   "state": "empty",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight empty: 1.36 lb",
+   "source_id": "nar_squad_kit_bag",
+   "category": "medical"
+  },
+  {
+   "item": "Medic Trauma Sheet Bag (CCRK)",
+   "family": "medicalbag",
+   "mass_kg": 2.1546,
+   "state": "bag only",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight: 4.75 lbs.",
+   "source_id": "nar_medic_trauma_sheet_bag",
+   "category": "medical"
+  },
+  {
+   "item": "Nasopharyngeal Airway with lubricant",
+   "family": "npa",
+   "mass_kg": 0.0142,
+   "state": "single airway with lubricant",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight: 0.5 oz",
+   "source_id": "nar_npa_lubricant",
+   "category": "medical"
+  },
+  {
+   "item": "Tactical CricKit",
+   "family": "cric",
+   "mass_kg": 0.1049,
+   "state": "complete kit",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight: 3.7 oz",
+   "source_id": "nar_tactical_crickit",
+   "category": "medical"
+  },
+  {
+   "item": "BAC-Pack bougie-aided cricothyroidotomy pack",
+   "family": "cric",
+   "mass_kg": 0.1474,
+   "state": "complete pack",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight: 5.2 oz",
+   "source_id": "nar_bac_pack",
+   "category": "medical"
+  },
+  {
+   "item": "HyFin Chest Seal",
+   "family": "chestseal",
+   "mass_kg": 0.0408,
+   "state": "single seal",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight: 1.44 oz",
+   "source_id": "nar_hyfin_single",
+   "category": "medical"
+  },
+  {
+   "item": "SPEAR Simplified Pneumothorax Emergency Air Release",
+   "family": "decompression",
+   "mass_kg": 0.0283,
+   "state": "single device",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight: 1 oz",
+   "source_id": "nar_spear",
+   "category": "medical"
+  },
+  {
+   "item": "Cyclone Pocket BVM",
+   "family": "bvm",
+   "mass_kg": 0.4933,
+   "state": "complete",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight: 17.4 oz",
+   "source_id": "nar_cyclone_bvm",
+   "category": "medical"
+  },
+  {
+   "item": "Ambu SPUR II BVM",
+   "family": "bvm",
+   "mass_kg": 0.3175,
+   "state": "complete",
+   "maker": "Ambu",
+   "country": "DK",
+   "note": "Weight: 0.7 lb",
+   "source_id": "nar_ambu_spur_ii",
+   "category": "medical"
+  },
+  {
+   "item": "Ambu Mark III resuscitator",
+   "family": "bvm",
+   "mass_kg": 2.4494,
+   "state": "complete resuscitator",
+   "maker": "Ambu",
+   "country": "DK",
+   "note": "Weight: 5.4 lb",
+   "source_id": "nar_ambu_mark_iii",
+   "category": "medical"
+  },
+  {
+   "item": "NAR Tactical Suction Device",
+   "family": "suction",
+   "mass_kg": 0.207,
+   "state": "complete",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight: 7.3 oz",
+   "source_id": "nar_tactical_suction",
+   "category": "medical"
+  },
+  {
+   "item": "ChitoGauze 4 in x 4 yd hemostatic bandage",
+   "family": "chito",
+   "mass_kg": 0.0198,
+   "state": "single dressing",
+   "maker": "ChitoGauze (Tricol Biomedical)",
+   "country": "US",
+   "note": "Weight: 0.7 oz",
+   "source_id": "nar_chitogauze",
+   "category": "medical"
+  },
+  {
+   "item": "Celox Rapid hemostatic dressing",
+   "family": "celox",
+   "mass_kg": 0.0312,
+   "state": "single dressing",
+   "maker": "Celox (Medtrade)",
+   "country": "GB",
+   "note": "Weight: 1.1 oz",
+   "source_id": "nar_celox_rapid",
+   "category": "medical"
+  },
+  {
+   "item": "Celox-A hemostatic agent",
+   "family": "celox",
+   "mass_kg": 0.0312,
+   "state": "single applicator",
+   "maker": "Celox (Medtrade)",
+   "country": "GB",
+   "note": "Weight: 1.1 oz",
+   "source_id": "nar_celox_a",
+   "category": "medical"
+  },
+  {
+   "item": "Combat Gauze Z-Fold hemostatic dressing",
+   "family": "combatgauze",
+   "mass_kg": 0.0227,
+   "state": "single dressing",
+   "maker": "QuikClot (Teleflex)",
+   "country": "US",
+   "note": "Weight: 0.8 oz",
+   "source_id": "nar_combat_gauze_zfold",
+   "category": "medical"
+  },
+  {
+   "item": "Israeli Emergency Bandage 4 in",
+   "family": "israeli",
+   "mass_kg": 0.0992,
+   "state": "4 in x 13.5 ft, packaged",
+   "maker": "PerSys Medical",
+   "country": "IL",
+   "note": "Expanded Size: 4\" x 13.5' Pad Size: 4\" x 7\" Packaged Size: 6-3/8\" x 5\" Weight: 3.5 oz.",
+   "source_id": "israeli_bandage_ws",
+   "category": "medical"
+  },
+  {
+   "item": "OLAES Modular Bandage 4 in flat packed",
+   "family": "olaes",
+   "mass_kg": 0.085,
+   "state": "4 in flat packed",
+   "maker": "TacMed Solutions",
+   "country": "US",
+   "note": "Weight: 4\u201d+ 4\u201d Flat Packed - 3oz / 85g",
+   "source_id": "tacmed_olaes",
+   "category": "medical"
+  },
+  {
+   "item": "OLAES Modular Bandage 6 in",
+   "family": "olaes",
+   "mass_kg": 0.105,
+   "state": "6 in",
+   "maker": "TacMed Solutions",
+   "country": "US",
+   "note": "Weight: 6\u201d Version - 3.7oz / 105g",
+   "source_id": "tacmed_olaes",
+   "category": "medical"
+  },
+  {
+   "item": "BurnTec dressing",
+   "family": "burntec",
+   "mass_kg": 0.0539,
+   "state": "single dressing",
+   "maker": "BurnTec",
+   "country": "US",
+   "note": "Weight: 1.9 oz",
+   "source_id": "nar_burntec_dressing",
+   "category": "medical"
+  },
+  {
+   "item": "BurnTec facial mask dressing",
+   "family": "burntec",
+   "mass_kg": 0.55,
+   "state": "single mask",
+   "maker": "BurnTec",
+   "country": "US",
+   "note": "Weight: 19.4 oz",
+   "source_id": "nar_burntec_facial",
+   "category": "medical"
+  },
+  {
+   "item": "BurnTec minor burn dressing kit",
+   "family": "burntec",
+   "mass_kg": 1.4061,
+   "state": "complete kit",
+   "maker": "BurnTec",
+   "country": "US",
+   "note": "Weight: 3.10 lbs",
+   "source_id": "nar_burntec_minor_kit",
+   "category": "medical"
+  },
+  {
+   "item": "Dry sterile burn dressing cravat XL",
+   "family": "burn",
+   "mass_kg": 0.0283,
+   "state": "single dressing",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight: 1 oz",
+   "source_id": "nar_burn_cravat_xl",
+   "category": "medical"
+  },
+  {
+   "item": "SAM Splint 4 in finger",
+   "family": "samsplint",
+   "mass_kg": 0.006,
+   "state": "4 in finger, flat/fold",
+   "maker": "SAM Medical",
+   "country": "US",
+   "note": "\"4\\\" Finger\",\"Flat/Fold\"],\"price\":210,\"weight\":6",
+   "source_id": "sam_medical_splint",
+   "category": "medical"
+  },
+  {
+   "item": "SAM Splint 9 in small",
+   "family": "samsplint",
+   "mass_kg": 0.031,
+   "state": "9 in small, flat/fold",
+   "maker": "SAM Medical",
+   "country": "US",
+   "note": "\"9\\\" Small\",\"Flat/Fold\"],\"price\":595,\"weight\":31",
+   "source_id": "sam_medical_splint",
+   "category": "medical"
+  },
+  {
+   "item": "SAM Splint 18 in medium",
+   "family": "samsplint",
+   "mass_kg": 0.068,
+   "state": "18 in medium, flat/fold",
+   "maker": "SAM Medical",
+   "country": "US",
+   "note": "\"18\\\" Medium\",\"Flat/Fold\"],\"price\":895,\"weight\":68",
+   "source_id": "sam_medical_splint",
+   "category": "medical"
+  },
+  {
+   "item": "SAM Splint 36 in large",
+   "family": "samsplint",
+   "mass_kg": 0.113,
+   "state": "36 in large, flat/fold",
+   "maker": "SAM Medical",
+   "country": "US",
+   "note": "\"36\\\" Large\",\"Flat/Fold\"],\"price\":1500,\"weight\":113",
+   "source_id": "sam_medical_splint",
+   "category": "medical"
+  },
+  {
+   "item": "SAM Splint 36 in large rolled",
+   "family": "samsplint",
+   "mass_kg": 0.113,
+   "state": "36 in large, roll",
+   "maker": "SAM Medical",
+   "country": "US",
+   "note": "\"36\\\" Large\",\"Roll\"],\"price\":1500,\"weight\":113",
+   "source_id": "sam_medical_splint",
+   "category": "medical"
+  },
+  {
+   "item": "SAM Splint 36 in XL",
+   "family": "samsplint",
+   "mass_kg": 0.167,
+   "state": "36 in XL, flat/fold",
+   "maker": "SAM Medical",
+   "country": "US",
+   "note": "\"36\\\" XL\",\"Flat/Fold\"],\"price\":1500,\"weight\":167",
+   "source_id": "sam_medical_splint",
+   "category": "medical"
+  },
+  {
+   "item": "Slishman Traction Splint Gen 1",
+   "family": "traction",
+   "mass_kg": 0.6804,
+   "state": "complete",
+   "maker": "TacMed Solutions",
+   "country": "US",
+   "note": "Weight : 1lb 8oz",
+   "source_id": "tacmed_slishman",
+   "category": "medical"
+  },
+  {
+   "item": "ACE cervical collar",
+   "family": "collar",
+   "mass_kg": 0.1474,
+   "state": "single collar",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight: 5.2 oz",
+   "source_id": "nar_ace_collar",
+   "category": "medical"
+  },
+  {
+   "item": "Emergency Evacuation Litter (EEL)",
+   "family": "litter",
+   "mass_kg": 0.8505,
+   "state": "complete litter",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight: 1 lb 14 oz",
+   "source_id": "nar_eel",
+   "category": "medical"
+  },
+  {
+   "item": "Sked Basic Rescue System",
+   "family": "sked",
+   "mass_kg": 7.7111,
+   "state": "complete system",
+   "maker": "Skedco",
+   "country": "US",
+   "note": "\"weight\":\"17\",\"weight_html\":\"17 lbs\"",
+   "source_id": "skedco_basic",
+   "category": "medical"
+  },
+  {
+   "item": "Warrior Aid and Litter Kit (WALK)",
+   "family": "walk",
+   "mass_kg": 13.5794,
+   "state": "complete kit",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight: 29 lb 15 oz",
+   "source_id": "nar_walk",
+   "category": "medical"
+  },
+  {
+   "item": "NAR Hypothermia Prevention and Management Kit (HPMK)",
+   "family": "hpmk",
+   "mass_kg": 1.5876,
+   "state": "complete kit",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight (HPMK\u00ae): 3 lb 8 oz",
+   "source_id": "nar_hpmk",
+   "category": "medical"
+  },
+  {
+   "item": "Fox eye shield",
+   "family": "eyeshield",
+   "mass_kg": 0.0057,
+   "state": "single shield",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Individual Weight: 0.2 oz (5 grams)",
+   "source_id": "nar_fox_eye_shield",
+   "category": "medical"
+  },
+  {
+   "item": "Polycarbonate eye shield (PES)",
+   "family": "eyeshield",
+   "mass_kg": 0.0057,
+   "state": "single shield",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight: 0.2 oz",
+   "source_id": "nar_pes_eye_shield",
+   "category": "medical"
+  },
+  {
+   "item": "Responder glove kit",
+   "family": "gloves",
+   "mass_kg": 0.4564,
+   "state": "pack of 25 glove kits",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight: 16.1 oz",
+   "source_id": "nar_glove_kits",
+   "category": "medical"
+  },
+  {
+   "item": "NAR Trauma Shears",
+   "family": "shears",
+   "mass_kg": 0.0567,
+   "state": "single pair",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight: 2 oz",
+   "source_id": "nar_trauma_shears",
+   "category": "medical"
+  },
+  {
+   "item": "Triangular bandage (OD green)",
+   "family": "triangular",
+   "mass_kg": 0.0454,
+   "state": "single bandage, folded",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight: 1.6 oz.",
+   "source_id": "nar_triangular_bandage",
+   "category": "medical"
+  },
+  {
+   "item": "Junctional Emergency Treatment Tool (JETT)",
+   "family": "jett",
+   "mass_kg": 0.6804,
+   "state": "complete",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight: 1 lb 8 oz",
+   "source_id": "nar_jett",
+   "category": "medical"
+  },
+  {
+   "item": "Abdominal Aortic and Junctional Tourniquet (AAJT-S)",
+   "family": "aajt",
+   "mass_kg": 0.7087,
+   "state": "complete",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight: 25 oz",
+   "source_id": "nar_aajt_s",
+   "category": "medical"
+  },
+  {
+   "item": "NAR Saline Lock Kit",
+   "family": "ivset",
+   "mass_kg": 0.0369,
+   "state": "complete kit",
+   "maker": "North American Rescue",
+   "country": "US",
+   "note": "Weight: 1.3 oz",
+   "source_id": "nar_saline_lock",
+   "category": "medical"
+  }
+ ],
+ "leads": [
+  {
+   "item": "1000 mL 0.9% sodium chloride IV bag",
+   "url": "https://www.boundtree.com/",
+   "why": "no manufacturer page publishes a bag mass; Bound Tree returns HTTP 403 to this client, MedexSupply and B.Braun Ecoflac pages carry no mass field, Grifols 1000 mL bag page has weight null"
+  },
+  {
+   "item": "IV administration (giving) set",
+   "url": "https://www.medexsupply.com/iv-administration-sets/",
+   "why": "distributor catalogue lists sets but no mass; manufacturer pages not located"
+  },
+  {
+   "item": "Pressure infuser (1000 mL)",
+   "url": "https://www.medexsupply.com/pressure-infusors/",
+   "why": "MedexSupply and VBM pages publish no mass for the infuser"
+  },
+  {
+   "item": "Blood collection / transfusion bag",
+   "url": "https://www.narescue.com/field-blood-transfusion-kits-fbtk.html",
+   "why": "NAR Field Blood Transfusion Kit page is 404 and the live kit page publishes no mass; no manufacturer datasheet located"
+  },
+  {
+   "item": "Oropharyngeal airway (Guedel), size 3",
+   "url": "https://www.trudellhs.com/sites/default/files/documents/Guedel%20Airways_Product%20Data%20Sheet_THS.pdf",
+   "why": "Trudell and O-Two Guedel data sheets list sizes and materials but no mass; Intersurgical and Cardinal pages carry no mass"
+  },
+  {
+   "item": "Examination glove, per pair",
+   "url": "https://www.aureliagloves.com/products/sonic",
+   "why": "Aurelia, Unigloves and Sempermed product pages publish no per-glove or per-pair mass; NAR sells a 25-kit pack only"
+  },
+  {
+   "item": "Bolin chest seal",
+   "url": "https://www.handhmedical.com/products/bolin-chest-seal",
+   "why": "H&H Medical domain does not resolve (DNS) from this client; no alternate manufacturer page located"
+  }
+ ],
+ "conflicts": []
 }
