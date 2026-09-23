@@ -5,9 +5,10 @@ Free recoil energy needs four numbers. Two are already held: the ejecta
 mass (the projectile layer) and the muzzle velocity (the load layer). This
 tool merges the other two:
 
-  mass_kg        onto a weapon record, from sources/weapon_mass.json (a
-                 maker page or manual) and sources/weapon_mass_manuals.json
-                 (an archived manual, checked against the verbatim line)
+  mass_kg        onto a weapon record, from the weapon-mass captures
+                 under sources/ (a maker page or manual, checked against
+                 the verbatim line). The batch files weapon_mass_a and
+                 weapon_mass_b join the primary captures.
   charge_mass_g  onto a load record, from sources/load_charges.json
 
 A charge is matched to a load by the cartridge and the bullet mass, so a
@@ -33,6 +34,18 @@ LOADS = DATA / "loads.json"
 CARTRIDGES = DATA / "cartridges.json"
 SOURCES = DATA / "sources.json"
 CONFLICTS = DATA / "conflicts.json"
+
+# The weapon-mass captures. The primary captures are taken at face value;
+# the manual and candidate sets must state verified: true on the row. A new
+# batch file joins here, so a landed capture needs no code change and the
+# candidates file (all leads) can never be swept in by a pattern.
+MASS_FILES = (
+    "weapon_mass.json",
+    "weapon_mass_manuals.json",
+    "weapon_mass_a.json",
+    "weapon_mass_b.json",
+)
+NEEDS_VERIFICATION = {"weapon_mass_manuals.json", "weapon_mass_candidates.json"}
 
 GRAIN_G = 0.06479891
 # An archived maker manual is a published document, not a maker web page.
@@ -84,12 +97,21 @@ def grade_for(sources, sid):
 
 
 def cartridge_lookup(by_cart, text):
-    """A name, then the same name without a trailing case descriptor."""
+    """A name, then the same name with the unit word and case dropped.
+
+    A charge row writes "6.5mm Creedmoor" where the register holds
+    "6.5 Creedmoor", and "7.62x54mmR" where it holds "7,62 x 54 R".
+    Both differ only by the interior "mm", so the mm-free form is a
+    candidate as well as the trailing-descriptor forms.
+    """
     base = normalise(text)
-    for candidate in (base,
-                      re.sub(r"mmnato$", "", base),
-                      re.sub(r"mm$", "", base),
-                      re.sub(r"nato$", "", base)):
+    for candidate in (
+        base,
+        re.sub(r"mmnato$", "", base),
+        re.sub(r"mm$", "", base),
+        re.sub(r"nato$", "", base),
+        base.replace("mm", ""),
+    ):
         if candidate and candidate in by_cart:
             return by_cart[candidate]
     return None
@@ -98,6 +120,56 @@ def cartridge_lookup(by_cart, text):
 def grain_of(text):
     match = re.search(r"(\d+(?:\.\d+)?)\s*gr", text or "", re.I)
     return float(match.group(1)) if match else None
+
+
+# A reloading table names its bullet ("168 Sierra HPBT"). Several loads
+# can share one bullet weight, and the bullet identity in the note is
+# what tells them apart.
+BULLET_TOKENS = (
+    "hpbt",
+    "sbt",
+    "tmk",
+    "matchking",
+    "vmax",
+    "xtp",
+    "ntx",
+    "scenar",
+    "lrx",
+    "tug",
+    "fmjbt",
+    "fmjsp",
+    "spire",
+    "jhp",
+    "jhp",
+    "hap",
+    "otm",
+    "eld-x",
+    "eldx",
+    "eld",
+    "berger",
+    "sierra",
+    "hornady",
+    "lapua",
+    "barnes",
+    "speer",
+    "brenneke",
+    "alsa",
+    "berry",
+    "hybrid",
+)
+
+
+def bullet_tokens(text):
+    low = normalise(text)
+    return [token for token in BULLET_TOKENS if normalise(token) in low]
+
+
+def same_bullet(tokens, projectile):
+    """True when the note's bullet identity appears in the load's name."""
+    if not tokens:
+        return False
+    target = normalise(projectile)
+    return any(normalise(token) in target for token in tokens)
 
 
 def main():
@@ -109,7 +181,7 @@ def main():
     known = {s["source_id"] for s in sources}
 
     added_sources = 0
-    for name in ("weapon_mass.json", "weapon_mass_manuals.json", "load_charges.json"):
+    for name in MASS_FILES + ("load_charges.json",):
         added_sources += register(sources, known, SRC / name)
 
     # ─── Weapon mass ─────────────────────────────────────────────────────
@@ -135,16 +207,16 @@ def main():
         name = normalise(row.get("weapon", ""))
         maker = normalise(row.get("maker", ""))
         if maker and name.startswith(maker):
-            return by_key.get(name[len(maker):])
+            return by_key.get(name[len(maker) :])
         return None
 
     masses = matched_mass = mass_conflicts = twist_only = 0
-    for name in ("weapon_mass.json", "weapon_mass_manuals.json"):
+    for name in MASS_FILES:
         path = SRC / name
         if not path.exists():
             continue
         for row in json.loads(path.read_text(encoding="utf-8"))["weights"]:
-            if not row.get("verified", name == "weapon_mass.json"):
+            if not row.get("verified", name not in NEEDS_VERIFICATION):
                 continue
             record = find_weapon(row)
             if record is None:
@@ -198,13 +270,15 @@ def main():
         for name in record.get("names", []):
             by_cart.setdefault(normalise(name), record["cartridge_id"])
 
-    charges = matched_charge = ambiguous = service_level = 0
+    charges = matched_charge = service_level = 0
+    no_lookup = no_load = ambiguous = 0
     by_id = {record["cartridge_id"]: record for record in cartridges}
     charge_file = SRC / "load_charges.json"
     if charge_file.exists():
         for row in json.loads(charge_file.read_text(encoding="utf-8"))["charges"]:
             cartridge_id = cartridge_lookup(by_cart, row.get("cartridge", ""))
             if cartridge_id is None:
+                no_lookup += 1
                 continue
             charges += 1
             source_id = row["source_id"]
@@ -213,19 +287,27 @@ def main():
             # A service charge is the actual factory charge for the
             # cartridge, so it belongs on the cartridge record. It applies
             # to every load of that cartridge, which the load table may not
-            # hold. A reloading charge is bullet specific and stays on the
-            # load.
+            # hold, and it needs no matching load. A reloading charge is
+            # bullet specific and stays on the load.
             if row.get("kind") == "service":
                 cartridge = by_id.get(cartridge_id)
-                if (cartridge is not None
-                        and "service_charge_mass_g" not in cartridge["values"]):
+                if (
+                    cartridge is not None
+                    and "service_charge_mass_g" not in cartridge["values"]
+                ):
                     cartridge["values"]["service_charge_mass_g"] = {
-                        "value": grams, "unit": "g",
-                        "source": source_id, "grade": grade}
+                        "value": grams,
+                        "unit": "g",
+                        "source": source_id,
+                        "grade": grade,
+                    }
                     cartridge["values"]["service_charge_powder"] = {
                         "value": row.get("powder", "") or "not stated",
-                        "source": source_id, "grade": grade}
+                        "source": source_id,
+                        "grade": grade,
+                    }
                     service_level += 1
+                continue
             target = float(row["bullet_gr"])
             hits = [
                 load
@@ -234,24 +316,38 @@ def main():
                 and grain_of(load.get("projectile", "")) is not None
                 and abs(grain_of(load["projectile"]) - target) <= 0.6
             ]
-            if len(hits) != 1:
-                ambiguous += 1
+            if not hits:
+                # The table carries a bullet the load table does not hold.
+                no_load += 1
                 continue
-            load = hits[0]
-            if "charge_mass_g" in load["values"]:
-                continue
-            load["values"]["charge_mass_g"] = {
-                "value": round(float(row["charge_gr"]) * GRAIN_G, 3),
-                "unit": "g",
-                "source": source_id,
-                "grade": grade,
-            }
-            load["values"]["charge_kind"] = {
-                "value": row.get("kind", "reloading"),
-                "source": source_id,
-                "grade": grade,
-            }
-            matched_charge += 1
+            if len(hits) > 1:
+                # One repeated name is one bullet, so every copy takes the
+                # charge. Different names are different bullets, and only
+                # the note's bullet identity tells them apart.
+                if len({normalise(h.get("projectile", "")) for h in hits}) > 1:
+                    tokens = bullet_tokens(row.get("note", ""))
+                    picked = [
+                        h for h in hits if same_bullet(tokens, h.get("projectile", ""))
+                    ]
+                    if len(picked) != 1:
+                        ambiguous += 1
+                        continue
+                    hits = picked
+            for load in hits:
+                if "charge_mass_g" in load["values"]:
+                    continue
+                load["values"]["charge_mass_g"] = {
+                    "value": round(float(row["charge_gr"]) * GRAIN_G, 3),
+                    "unit": "g",
+                    "source": source_id,
+                    "grade": grade,
+                }
+                load["values"]["charge_kind"] = {
+                    "value": row.get("kind", "reloading"),
+                    "source": source_id,
+                    "grade": grade,
+                }
+                matched_charge += 1
 
     WEAPONS.write_text(json.dumps(weapons, indent=1) + "\n", encoding="utf-8")
     LOADS.write_text(json.dumps(loads, indent=1) + "\n", encoding="utf-8")
@@ -264,7 +360,8 @@ def main():
         f"(of {masses} rows, {mass_conflicts} disagreements), "
         f"charge rows considered: {charges}, service charges on the "
         f"cartridge: {service_level}, merged onto a load: {matched_charge}, "
-        f"ambiguous: {ambiguous}"
+        f"unmatched: {no_load} no load at that bullet, {ambiguous} "
+        f"unresolved, {no_lookup} unknown cartridge"
     )
 
 

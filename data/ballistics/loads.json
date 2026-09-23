@@ -4812,14 +4812,14 @@
     "grade": "claimed"
    },
    "charge_mass_g": {
-    "value": 0.842,
+    "value": 0.907,
     "unit": "g",
-    "source": "tm43_0001_27",
+    "source": "vihtavuori_2026",
     "grade": "documented"
    },
    "charge_kind": {
-    "value": "service",
-    "source": "tm43_0001_27",
+    "value": "reloading",
+    "source": "vihtavuori_2026",
     "grade": "documented"
    }
   }
@@ -7275,17 +7275,6 @@
     "unit": "mm, m/s",
     "source": "hornady_velocity",
     "grade": "claimed"
-   },
-   "charge_mass_g": {
-    "value": 1.717,
-    "unit": "g",
-    "source": "tm43_0001_27",
-    "grade": "documented"
-   },
-   "charge_kind": {
-    "value": "service",
-    "source": "tm43_0001_27",
-    "grade": "documented"
    }
   }
  },
@@ -7317,17 +7306,6 @@
     "unit": "mm, m/s",
     "source": "hornady_velocity",
     "grade": "claimed"
-   },
-   "charge_mass_g": {
-    "value": 1.691,
-    "unit": "g",
-    "source": "tm43_0001_27",
-    "grade": "documented"
-   },
-   "charge_kind": {
-    "value": "service",
-    "source": "tm43_0001_27",
-    "grade": "documented"
    }
   }
  },
@@ -7812,6 +7790,17 @@
     "unit": "mm, m/s",
     "source": "hornady_velocity",
     "grade": "claimed"
+   },
+   "charge_mass_g": {
+    "value": 2.229,
+    "unit": "g",
+    "source": "vihtavuori_2026",
+    "grade": "documented"
+   },
+   "charge_kind": {
+    "value": "reloading",
+    "source": "vihtavuori_2026",
+    "grade": "documented"
    }
   }
  },
