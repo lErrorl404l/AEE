@@ -86,4 +86,15 @@ missionNamespace setVariable [QEGVAR(core,snowfallRate), _snowfallRate * _orogra
 missionNamespace setVariable [QEGVAR(core,orographicFactor), _orographic];
 missionNamespace setVariable [QEGVAR(core,hailActive), _hailActive];
 
+// ─── Hailstone size and impact energy (#151 follow-on) ───────────────────
+// The size comes from the updraft, so it scales from the same CAPE proxy the
+// gate uses.  The energy drives the damage channel (fnc_hailDamage); it is
+// published on the core bus so the server can read it without touching this
+// addon's internals.
+private _hailEnergy = [0, 0, 0, 0];
+if (_hailActive) then {
+    _hailEnergy = [_capeProxy] call FUNC(calculateHailEnergy);
+};
+missionNamespace setVariable [QEGVAR(core,hailEnergy), _hailEnergy];
+
 _phase

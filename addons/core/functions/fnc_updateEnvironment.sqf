@@ -271,6 +271,18 @@ if (GVAR(fxEnabled)) then {
     [] call EFUNC(fx,particlePipeline);
 };
 
+// ─── Hail damage (#151 follow-on) ─────────────────────────────────────────
+// The particles above render the hail; this applies its impact.  It reads
+// the deterministic energy the phase model published, and applies it to the
+// local unit, because a unit's damage is owned by the machine that runs it.
+if (GVAR(fxEnabled)) then {
+    private _player = call CBA_fnc_currentUnit;
+    if (missionNamespace getVariable [QEGVAR(core,hailActive), false]
+        && {!isNil "_player"} && {!isNull _player}) then {
+        [_player] call EFUNC(atmos,hailDamage);
+    };
+};
+
 // ─── Environmental / Seasonal ──────────────────────────────────────────────
 [] call EFUNC(mobility,calculateRiverWaterLevel);
 [] call EFUNC(environmental,calculateCropState);

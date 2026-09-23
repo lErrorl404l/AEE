@@ -18,6 +18,8 @@ PREPS(physics,calculateLightning);
 PREPS(physics,calculateMicroburst);
 PREPS(physics,calculateTurbulence);
 PREPS(physics,calculatePrecipitationPhase);
+PREPS(physics,calculateHailEnergy);
+PREPS(physics,hailDamage);
 PREPS(physics,calculateHaze);
 PREPS(physics,calculateRefraction);
 PREPS(wind,getLocalWind);
