@@ -7,8 +7,8 @@ standard already applies and where verification is needed.
 
 - Weapons held at the held cartridge standard: 386
 - Weapons that differ: 308
-- Of those, now verified against a held source: 299
-- Of those, still open in this worklist: 69
+- Of those, now verified against a held source: 304
+- Of those, still open in this worklist: 64
 - Weapons with no standard for the chambering: 2
 - Weak citation, not usable even as a lead: 663
 - Unsourced, skipped: 935
@@ -48,9 +48,6 @@ standard already applies and where verification is needed.
 | mac10 | .45 ACP | 0.406 | 0.508 | tier 1 |
 | magnumlite | .22 Long Rifle | 0.406 | 0.356 | tier 4 |
 | markii | .22 Long Rifle | 0.406 | 0.356 | tier 1 |
-| mc14tipat | .380 ACP | 0.25 | 0.4064 | tier 4 |
-| mc1911commander | .45 ACP | 0.406 | 0.508 | tier 4 |
-| microdeserteagle | .380 ACP | 0.254 | 0.4064 | tier 4 |
 | milsport | .45 ACP | 0.406 | 0.508 | tier 4 |
 | model100 | 308 Win | 0.279 | 0.305 | tier 4 |
 | model351 | .38 Special | 0.381 | 0.254 | tier 4 |
@@ -68,7 +65,6 @@ standard already applies and where verification is needed.
 | p40 | .40 Smith & Wesson | 0.406 | 1.016 | tier 4 |
 | patriot | .45 ACP | 0.406 | 0.508 | tier 4 |
 | pko45 | .45 ACP | 0.406 | 0.508 | tier 4 |
-| pp19bizon | 9×19mm Parabellum | 0.24 | 0.25 | tier 1 |
 | ps1 | .223 Remington | 0.229 | 0.305 | tier 4 |
 | ps1 | .300 AAC Blackout | 0.203 | 0.508 | tier 4 |
 | r380 | .380 ACP | 0.25 | 0.4064 | tier 4 |
@@ -82,7 +78,6 @@ standard already applies and where verification is needed.
 | staccatoc | 9×19mm Parabellum | 0.406 | 0.25 | tier 4 |
 | stribogsp45 | .45 ACP | 0.406 | 0.508 | tier 4 |
 | strike | .308 Winchester | 0.254 | 0.305 | tier 4 |
-| t3xupr300wm | .300 Winchester Magnum | 0.254 | 0.508 | tier 4 |
 | tacs | .45 ACP | 0.406 | 0.508 | tier 4 |
 | tp380 | .380 ACP | 0.25 | 0.4064 | tier 4 |
 | warthog | .45 ACP | 0.406 | 0.508 | tier 4 |
