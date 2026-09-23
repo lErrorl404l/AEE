@@ -17,10 +17,10 @@ has never seen resolves from the surface it declares.  Where the token is
 unknown, the ground state and the local terrain colour decide.
 
 Arguments:
-  0: surface (STRING, an engine surfaceType, default "") - when empty the
-     position argument is sampled
-  1: position (ARRAY, PositionWorld, default []) - sampled when the
-     surface argument is empty
+  0: surface (STRING, an engine surfaceType, default "") - a surface type
+     string, OR a position array, which is sampled
+  1: position (ARRAY, PositionWorld, default []) - sampled when the first
+     argument is empty
 
 Returns [material, colourRGBA, density]:
   material - "dust" | "sand" | "dirt" | "snow" | "mud" | "spray" | "gravel"
@@ -30,8 +30,15 @@ Returns [material, colourRGBA, density]:
              mud and hard ground lift little)
 */
 
-params [["_surface", "", [""]], ["_pos", [], [[]]]];
+params [["_surface", "", ["", []]], ["_pos", [], [[]]]];
 
+// A position array in the first argument is the common call: read the
+// surface under it.
+if (_surface isEqualType []) then {
+    private _p = _surface;
+    if (count _p >= 3) then { _p = ASLToAGL _p; };
+    _surface = surfaceType _p;
+};
 if (_surface == "" && {count _pos >= 2}) then {
     _surface = surfaceType _pos;
 };

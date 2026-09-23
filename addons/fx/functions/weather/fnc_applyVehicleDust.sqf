@@ -37,38 +37,29 @@ if (!isNull _existing && alive _existing) exitWith {};
 // Budget check: skip if over particle ceiling
 if !([] call FUNC(checkParticleBudget)) exitWith {};
 
-private _groundState = missionNamespace getVariable [QEGVAR(core,groundState), "Normal"];
 private _windArr = missionNamespace getVariable [QEGVAR(core,currentWind), wind];
 private _windX = (_windArr select 0) * 0.5;
 
-// ─── Colour palette by ground state ─────────────────────────────────────
-// Alpha is weighted by dustSuppression (1 = no suppression = full dust)
-// and scaled by the vehicleDustIntensity setting.
-private _startColor = [0.7, 0.6, 0.4, 0.3 * _dustSuppression * _intensity];
-private _endColor   = [0.7, 0.6, 0.4, 0.1 * _dustSuppression * _intensity];
-
-switch (_groundState) do {
-    case "Mud": {
-        _startColor = [0.4, 0.3, 0.2, 0.4 * _dustSuppression * _intensity];
-        _endColor   = [0.4, 0.3, 0.2, 0.15 * _dustSuppression * _intensity];
-    };
-    case "Snow": {
-        _startColor = [1, 1, 1, 0.3 * _dustSuppression * _intensity];
-        _endColor   = [1, 1, 1, 0.1 * _dustSuppression * _intensity];
-    };
-    case "Dusty": {
-        _startColor = [0.8, 0.7, 0.5, 0.5 * _dustSuppression * _intensity];
-        _endColor   = [0.8, 0.7, 0.5, 0.2 * _dustSuppression * _intensity];
-    };
-};
+// ─── Surface material ────────────────────────────────────────────────────
+// The map's own surface decides WHAT is kicked up: sand on sand, snow on
+// snow, dirt on dirt.  The physics and the colour come from the material
+// and the environmental state, not from a fixed palette.
+private _pos = getPosASL _veh;
+private _ground = [_pos] call FUNC(surfaceSample);
+_ground params ["_material", "_groundColour", "_lift"];
 
 // ─── State-coupled physics (issue #150) ──────────────────────────────────
 // weight/volume/rubbing/bounce from the material table + AEE state:
-// air density scales drag (thin air: dust travels farther), ground state
-// sets restitution (hardpack bounces, mud absorbs, snow fluffs), wind
-// couples the advection.
-private _physics = ["dust", getPosASL _veh] call FUNC(particleState);
+// air density scales drag (thin air: dust travels farther), moisture
+// holds the particles down, wind couples the advection.
+private _physics = [_material, _lift, _groundColour, _pos] call FUNC(kickupParams);
 _physics params ["_weight", "_volume", "_rubbing", "_bounce", "_matColour"];
+
+// Alpha is weighted by dustSuppression (1 = no suppression = full dust),
+// the surface lift coefficient and the vehicleDustIntensity setting.
+private _alpha = _lift * _dustSuppression * _intensity;
+private _startColor = [_matColour select 0, _matColour select 1, _matColour select 2, 0.45 * _alpha];
+private _endColor   = [_matColour select 0, _matColour select 1, _matColour select 2, 0.15 * _alpha];
 
 // ─── Create particle source attached to vehicle ─────────────────────────
 private _source = "#particlesource" createVehicleLocal getPosASL _veh;

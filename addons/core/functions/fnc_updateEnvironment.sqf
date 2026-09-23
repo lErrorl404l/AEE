@@ -205,6 +205,8 @@ if (GVAR(hydrologyEnabled)) then {
 if (GVAR(fxEnabled)) then {
     [] call EFUNC(fx,applyVehicleDust);
     [] call EFUNC(fx,applyAtmosphericDust);
+    // Infantry footfall: the engine throws no dust for a soldier on foot.
+    [] call EFUNC(fx,applyFootfallDust);
 };
 END_COUNTER(hydrology);
 
