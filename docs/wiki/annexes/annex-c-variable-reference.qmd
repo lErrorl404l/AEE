@@ -51,6 +51,7 @@ follow the variable names as written in the SQF source.
 | `aee_core_precipitationPhase` | atmos | Phase (rain/sleet/snow/freezing_rain) |
 | `aee_core_snowfallRate` | atmos | Snowfall rate |
 | `aee_core_hailActive` | atmos | Hail gate: convective instability + wet-bulb below freezing aloft (#151) |
+| `aee_core_hailEnergy` | atmos | Hailstone [diameter_m, mass_kg, v_t_ms, energy_j] from the convective proxy (#151) |
 | `aee_core_fogBase_m` | atmos | Fog base altitude in metres |
 | `aee_core_fogForecast` | atmos | Fog forecast |
 | `aee_core_currentHaze` | atmos | Haze intensity 0..1 |
