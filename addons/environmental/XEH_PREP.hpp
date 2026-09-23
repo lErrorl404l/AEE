@@ -25,6 +25,7 @@ PREPS(climatology,calculateFogBaseAltitude);
 PREPS(biome,classifyBiome);
 PREPS(biome,getBiome);
 PREPS(biome,getBiomeAtPosition);
+PREPS(biome,getSmoothedBiome);
 PREPS(biome,getBiomeName);
 PREPS(climatology,getClimateNormals);
 PREPS(climatology,getLatitudeClimate);

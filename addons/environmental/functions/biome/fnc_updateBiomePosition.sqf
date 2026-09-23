@@ -27,7 +27,11 @@ if (_override != "AUTO") exitWith {
 };
 
 // ─── Sample biome at current position ─────────────────────────────────
-private _newBiome = [_posASL] call EFUNC(environmental,getBiomeAtPosition);
+// The smoothing sampler resolves the boundary: it samples the ring at
+// the biomeTransitionRadius setting and returns the dominant biome, so a
+// position near an edge reads as its neighbourhood rather than as the
+// single tile it stands on.
+private _newBiome = [_posASL] call EFUNC(environmental,getSmoothedBiome);
 
 // ─── Update if changed ────────────────────────────────────────────────
 private _current = missionNamespace getVariable [QEGVAR(core,biome), ""];
