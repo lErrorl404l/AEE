@@ -167,6 +167,8 @@ if (GVAR(physiologyEnabled)) then {
 BEGIN_COUNTER(optics);
 [] call EFUNC(environmental,calculateSpaceWeather);
 [_posASL] call EFUNC(core,calculateIlluminance);
+// Engine camera aperture follows the illuminance model (issue #141).
+[] call EFUNC(atmos,updateAperture);
 [] call EFUNC(thermal,calculateThermalContrast);
 [] call EFUNC(optics,calculateAttenuation);
 if (GVAR(opticsEnabled)) then {
@@ -243,6 +245,8 @@ END_COUNTER(hydrology);
 BEGIN_COUNTER(atmosEvents);
 if (GVAR(atmosphericEventsEnabled)) then {
     [] call EFUNC(atmos,calculateLightning);
+    // Engine lightning rendering follows the strike risk (issue #141).
+    [] call EFUNC(atmos,updateEngineLightnings);
     [] call EFUNC(environmental,calculateSevereWeather);
     [] call EFUNC(atmos,calculateMicroburst);
     [] call EFUNC(atmos,calculateTurbulence);
@@ -293,6 +297,8 @@ if (GVAR(physiologyEnabled)) then {
 };
 if (GVAR(maritimeEnabled)) then {
     [] call EFUNC(maritime,calculateSeaState);
+    // Engine wave rendering follows the sea state (issue #141).
+    [] call EFUNC(atmos,updateEngineWaves);
     [] call EFUNC(maritime,calculateCompassDeviation);
 };
 
@@ -302,6 +308,11 @@ if (GVAR(opticsEnabled)) then {
     [] call EFUNC(optics,calculateVehicleHeatShimmer);
 };
 [] call EFUNC(mobility,calculateMudAccretion);
+
+// ─── Engine environment bridges (issue #141) ─────────────────────────────
+// Local renderer bridges; each function self-gates on hasInterface.
+[] call EFUNC(atmos,updateRainbow);
+[] call EFUNC(atmos,updateLocalWindParams);
 
 // ─── Post-Process Effects & HUD ─────────────────────────────────────────
 [] call EFUNC(optics,applyRainOnOpticsFX);

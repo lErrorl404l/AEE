@@ -1,7 +1,13 @@
-PREPS(state,updatePressure);
-PREPS(state,updateHumidity);
-PREPS(state,updateWind);
+PREPS(state,updateAperture);
+PREPS(state,updateEngineLightnings);
+PREPS(state,updateEngineWaves);
 PREPS(state,updateFog);
+PREPS(state,updateHumidity);
+PREPS(state,updateLocalWindParams);
+PREPS(state,updatePressure);
+PREPS(state,updateRainbow);
+PREPS(state,updateSimulWeatherLayers);
+PREPS(state,updateWind);
 PREPS(physics,calculateCloudCeiling);
 PREPS(physics,calculatePressureTrend);
 PREPS(physics,calculateAirframeIcing);

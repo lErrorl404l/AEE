@@ -57,6 +57,15 @@ follow the variable names as written in the SQF source.
 | `aee_core_currentLightningRisk` | atmos | Lightning risk 0..1 |
 | `aee_core_currentSolarRadiation` | core | Solar radiation factor 0..1 |
 
+### Engine environment bridges
+
+These variables back the local engine bridges (issue #141). Each bridge is
+client-only and derives from deterministic state, so none is broadcast.
+
+| Variable | Subsystem | Purpose |
+|---|---|---|
+| `aee_atmos_localWindActive` | atmos | True while the rotor-wash visual is applied |
+
 ### Air density and ballistics
 
 | Variable | Subsystem | Purpose |

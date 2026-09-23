@@ -335,3 +335,35 @@ coupling, so the old state cannot return.
 
 **Lesson.** A recorded limitation is a deferred fix, not a closed item.
 Fix it when the cycle can carry it, and reverse the test that described it.
+
+## GAP-026: the sensor pipeline can leak its teardown on death
+
+Status: Open
+
+**What happened.** An aperture arbitration review found that the NVG and
+thermal sensor pipeline exits early on `!alive` and on a nil current unit,
+without running its teardown. On death while a sensor is worn, the sensor
+PFH keeps a non-nil handle, the `nvgGrainActive` and `thermalActive` flags
+stay true, and the effect handles survive into the respawn.
+
+**What went wrong.** The teardown is owned by the `visionMode` player
+event alone. That event fires on a mode change, and a death is not a mode
+change, so the only owner that can clean up never runs.
+
+**Why.** The rule was unapplied. The PFH already guards against a transient
+vision mode 0 by skipping rather than tearing down, and that guard was
+written for weapon raise and ADS. Death looks identical to that transient
+from inside the PFH, so the correct-looking guard also swallows a real
+exit. The lifecycle was designed around the event being reliable, and it is
+not: death, respawn and teleport all bypass it.
+
+**What prevents recurrence.** Key the sensor session to the unit, so a
+change of unit or a death runs the full teardown from inside the PFH. The
+alternative, a check in the event handler, cannot work because the event
+does not fire. This is not fixed here: it is a pre-existing defect in the
+optics module and it is wider than the aperture change that found it.
+
+**Lesson.** A teardown owned by one event is only safe when that event is
+guaranteed to fire. Death, respawn and teleport are not mode changes, so
+any handler keyed on a mode change needs a second owner that runs without
+one.
