@@ -24,6 +24,12 @@
     "unit": "m per turn",
     "source": "sako_100_explorer",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.8,
+    "unit": "kg",
+    "source": "sako-100-explorer",
+    "grade": "documented"
    }
   }
  },
@@ -51,6 +57,12 @@
     "unit": "m per turn",
     "source": "sako_100_explorer",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.8,
+    "unit": "kg",
+    "source": "sako-100-explorer",
+    "grade": "documented"
    }
   }
  },
@@ -105,6 +117,12 @@
     "unit": "count",
     "source": "ruger_1022standard",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 1.9,
+    "unit": "kg",
+    "source": "ruger_1022standard_32002",
+    "grade": "documented"
    }
   }
  },
@@ -287,6 +305,12 @@
     "unit": "name",
     "source": "sw_home",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 2.236,
+    "unit": "kg",
+    "source": "sw_spec_m_p_15_22_sport_moe_sl_matte_black",
+    "grade": "documented"
    }
   }
  },
@@ -371,6 +395,12 @@
     "unit": "m per turn",
     "source": "glock_gen4_en",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.705,
+    "unit": "kg",
+    "source": "glock_g17",
+    "grade": "documented"
    }
   }
  },
@@ -398,6 +428,12 @@
     "value": 0.25,
     "unit": "m per turn",
     "source": "glock_gen4_en",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.705,
+    "unit": "kg",
+    "source": "glock_g17_gen4",
     "grade": "documented"
    }
   }
@@ -455,6 +491,12 @@
     "unit": "m per turn",
     "source": "glock_gen4_en",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.68,
+    "unit": "kg",
+    "source": "glock_g17_gen6",
+    "grade": "documented"
    }
   }
  },
@@ -483,6 +525,12 @@
     "unit": "m per turn",
     "source": "glock_gen4_en",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.755,
+    "unit": "kg",
+    "source": "glock_g17l",
+    "grade": "documented"
    }
   }
  },
@@ -510,6 +558,12 @@
     "value": 0.25,
     "unit": "m per turn",
     "source": "glock_gen4_en",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.72,
+    "unit": "kg",
+    "source": "glock_g17l_gen5_mos",
     "grade": "documented"
    }
   }
@@ -721,6 +775,12 @@
     "unit": "count",
     "source": "sa_1911_ronin_9mm",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 1.162,
+    "unit": "kg",
+    "source": "springfield_1911_ronin_aos_9mm_handgun",
+    "grade": "documented"
    }
   }
  },
@@ -880,6 +940,12 @@
     "unit": "m per turn",
     "source": "glock_gen4_en",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.67,
+    "unit": "kg",
+    "source": "glock_g19",
+    "grade": "documented"
    }
   }
  },
@@ -907,6 +973,12 @@
     "value": 0.25,
     "unit": "m per turn",
     "source": "glock_gen4_en",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.67,
+    "unit": "kg",
+    "source": "glock_g19_gen4",
     "grade": "documented"
    }
   }
@@ -964,6 +1036,12 @@
     "unit": "m per turn",
     "source": "glock_gen4_en",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.64,
+    "unit": "kg",
+    "source": "glock_g19_gen6",
+    "grade": "documented"
    }
   }
  },
@@ -1020,6 +1098,12 @@
     "unit": "m per turn",
     "source": "glock_us_2026",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.704,
+    "unit": "kg",
+    "source": "glock_g19x",
+    "grade": "documented"
    }
   }
  },
@@ -1064,6 +1148,12 @@
     "unit": "name",
     "source": "glock_buyers_2007",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 0.865,
+    "unit": "kg",
+    "source": "glock_g20_sf",
+    "grade": "documented"
    }
   }
  },
@@ -1086,6 +1176,12 @@
     "unit": "name",
     "source": "glock_buyers_2007",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 0.87,
+    "unit": "kg",
+    "source": "glock_g20_gen4",
+    "grade": "documented"
    }
   }
  },
@@ -1107,6 +1203,12 @@
     "value": "10mm Auto",
     "unit": "name",
     "source": "glock_us_2026",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.805,
+    "unit": "kg",
+    "source": "glock_g20_gen5_mos",
     "grade": "documented"
    }
   }
@@ -1246,6 +1348,12 @@
     "unit": "m per turn",
     "source": "glock_armorer",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.825,
+    "unit": "kg",
+    "source": "glock_g21_sf",
+    "grade": "documented"
    }
   }
  },
@@ -1274,6 +1382,12 @@
     "unit": "m per turn",
     "source": "glock_armorer",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.83,
+    "unit": "kg",
+    "source": "glock_g21_gen4",
+    "grade": "documented"
    }
   }
  },
@@ -1302,6 +1416,12 @@
     "unit": "m per turn",
     "source": "glock_armorer",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.825,
+    "unit": "kg",
+    "source": "glock_g21_gen5_mos",
+    "grade": "documented"
    }
   }
  },
@@ -1452,6 +1572,12 @@
     "unit": "name",
     "source": "glock_buyers_2007",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 0.725,
+    "unit": "kg",
+    "source": "glock_g22",
+    "grade": "documented"
    }
   }
  },
@@ -1474,6 +1600,12 @@
     "unit": "name",
     "source": "glock_buyers_2007",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 0.725,
+    "unit": "kg",
+    "source": "glock_g22_gen4",
+    "grade": "documented"
    }
   }
  },
@@ -1495,6 +1627,12 @@
     "value": ".40 S&W",
     "unit": "name",
     "source": "glock_us_2026",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.806,
+    "unit": "kg",
+    "source": "glock_g22_gen5",
     "grade": "documented"
    }
   }
@@ -1518,6 +1656,12 @@
     "unit": "name",
     "source": "glock_buyers_2007",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 0.67,
+    "unit": "kg",
+    "source": "glock_g23",
+    "grade": "documented"
    }
   }
  },
@@ -1540,6 +1684,12 @@
     "unit": "name",
     "source": "glock_buyers_2007",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 0.675,
+    "unit": "kg",
+    "source": "glock_g23_gen4",
+    "grade": "documented"
    }
   }
  },
@@ -1561,6 +1711,12 @@
     "value": ".40 S&W",
     "unit": "name",
     "source": "glock_us_2026",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.756,
+    "unit": "kg",
+    "source": "glock_g23_gen5_mos",
     "grade": "documented"
    }
   }
@@ -1584,6 +1740,12 @@
     "unit": "name",
     "source": "glock_buyers_2007",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 0.84,
+    "unit": "kg",
+    "source": "glock_g24",
+    "grade": "documented"
    }
   }
  },
@@ -1634,6 +1796,12 @@
     "unit": "m per turn",
     "source": "glock_gen4_en",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.61,
+    "unit": "kg",
+    "source": "glock_g26",
+    "grade": "documented"
    }
   }
  },
@@ -1661,6 +1829,12 @@
     "value": 0.25,
     "unit": "m per turn",
     "source": "glock_gen4_en",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.61,
+    "unit": "kg",
+    "source": "glock_g26_gen4",
     "grade": "documented"
    }
   }
@@ -1712,6 +1886,12 @@
     "unit": "name",
     "source": "glock_buyers_2007",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 0.605,
+    "unit": "kg",
+    "source": "glock_g27",
+    "grade": "documented"
    }
   }
  },
@@ -1734,6 +1914,12 @@
     "unit": "name",
     "source": "glock_buyers_2007",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 0.605,
+    "unit": "kg",
+    "source": "glock_g27_gen4",
+    "grade": "documented"
    }
   }
  },
@@ -1755,6 +1941,12 @@
     "value": ".40 S&W",
     "unit": "name",
     "source": "glock_us_2026",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.676,
+    "unit": "kg",
+    "source": "glock_g27_gen5",
     "grade": "documented"
    }
   }
@@ -1822,6 +2014,12 @@
     "unit": "name",
     "source": "glock_buyers_2007",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 0.76,
+    "unit": "kg",
+    "source": "glock_g29_sf",
+    "grade": "documented"
    }
   }
  },
@@ -1844,6 +2042,12 @@
     "unit": "name",
     "source": "glock_buyers_2007",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 0.76,
+    "unit": "kg",
+    "source": "glock_g29_gen4",
+    "grade": "documented"
    }
   }
  },
@@ -1865,6 +2069,12 @@
     "value": "10mm Auto",
     "unit": "name",
     "source": "glock_us_2026",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.76,
+    "unit": "kg",
+    "source": "glock_g29_gen5",
     "grade": "documented"
    }
   }
@@ -2025,6 +2235,12 @@
     "unit": "m per turn",
     "source": "glock_armorer",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.745,
+    "unit": "kg",
+    "source": "glock_g30_sf",
+    "grade": "documented"
    }
   }
  },
@@ -2053,6 +2269,12 @@
     "unit": "m per turn",
     "source": "glock_armorer",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.745,
+    "unit": "kg",
+    "source": "glock_g30_gen4",
+    "grade": "documented"
    }
   }
  },
@@ -2081,6 +2303,12 @@
     "unit": "m per turn",
     "source": "glock_armorer",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.745,
+    "unit": "kg",
+    "source": "glock_g30_gen5",
+    "grade": "documented"
    }
   }
  },
@@ -2109,6 +2337,12 @@
     "unit": "m per turn",
     "source": "glock_armorer",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.645,
+    "unit": "kg",
+    "source": "glock_g30s",
+    "grade": "documented"
    }
   }
  },
@@ -2131,6 +2365,12 @@
     "unit": "name",
     "source": "glock_buyers_2007",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 0.74,
+    "unit": "kg",
+    "source": "glock_g31",
+    "grade": "documented"
    }
   }
  },
@@ -2153,6 +2393,12 @@
     "unit": "name",
     "source": "glock_buyers_2007",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 0.74,
+    "unit": "kg",
+    "source": "glock_g31_gen4",
+    "grade": "documented"
    }
   }
  },
@@ -2196,6 +2442,12 @@
     "unit": "name",
     "source": "glock_buyers_2007",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 0.69,
+    "unit": "kg",
+    "source": "glock_g32",
+    "grade": "documented"
    }
   }
  },
@@ -2218,6 +2470,12 @@
     "unit": "name",
     "source": "glock_buyers_2007",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 0.69,
+    "unit": "kg",
+    "source": "glock_g32_gen4",
+    "grade": "documented"
    }
   }
  },
@@ -2268,6 +2526,12 @@
     "unit": "name",
     "source": "glock_buyers_2007",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 0.62,
+    "unit": "kg",
+    "source": "glock_g33",
+    "grade": "documented"
    }
   }
  },
@@ -2290,6 +2554,12 @@
     "unit": "name",
     "source": "glock_buyers_2007",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 0.62,
+    "unit": "kg",
+    "source": "glock_g33_gen4",
+    "grade": "documented"
    }
   }
  },
@@ -2311,6 +2581,12 @@
     "unit": "name",
     "source": "sw_home",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.335,
+    "unit": "kg",
+    "source": "sw_spec_model_340_pd",
+    "grade": "documented"
    }
   }
  },
@@ -2339,6 +2615,12 @@
     "unit": "m per turn",
     "source": "glock_gen4_en",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.735,
+    "unit": "kg",
+    "source": "glock_g34",
+    "grade": "documented"
    }
   }
  },
@@ -2366,6 +2648,12 @@
     "value": 0.25,
     "unit": "m per turn",
     "source": "glock_gen4_en",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.735,
+    "unit": "kg",
+    "source": "glock_g34_gen4",
     "grade": "documented"
    }
   }
@@ -2417,6 +2705,12 @@
     "unit": "name",
     "source": "glock_buyers_2007",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 0.78,
+    "unit": "kg",
+    "source": "glock_g35",
+    "grade": "documented"
    }
   }
  },
@@ -2439,6 +2733,12 @@
     "unit": "name",
     "source": "glock_buyers_2007",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 0.785,
+    "unit": "kg",
+    "source": "glock_g35_gen4",
+    "grade": "documented"
    }
   }
  },
@@ -2467,6 +2767,12 @@
     "unit": "m per turn",
     "source": "glock_armorer",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.635,
+    "unit": "kg",
+    "source": "glock_g36",
+    "grade": "documented"
    }
   }
  },
@@ -2489,6 +2795,12 @@
     "unit": "name",
     "source": "glock_buyers_2007",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 0.815,
+    "unit": "kg",
+    "source": "glock_g37",
+    "grade": "documented"
    }
   }
  },
@@ -2511,6 +2823,12 @@
     "unit": "name",
     "source": "glock_buyers_2007",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 0.755,
+    "unit": "kg",
+    "source": "glock_g38",
+    "grade": "documented"
    }
   }
  },
@@ -2533,6 +2851,12 @@
     "unit": "name",
     "source": "glock_buyers_2007",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 0.685,
+    "unit": "kg",
+    "source": "glock_g39",
+    "grade": "documented"
    }
   }
  },
@@ -2588,6 +2912,12 @@
     "unit": "name",
     "source": "glock_buyers_2007",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 1.005,
+    "unit": "kg",
+    "source": "glock_g40_gen4_mos",
+    "grade": "documented"
    }
   }
  },
@@ -2638,6 +2968,12 @@
     "unit": "m per turn",
     "source": "glock_armorer",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.76,
+    "unit": "kg",
+    "source": "glock_g41_gen4",
+    "grade": "documented"
    }
   }
  },
@@ -2682,6 +3018,12 @@
     "unit": "name",
     "source": "glock_buyers_2007",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 0.39,
+    "unit": "kg",
+    "source": "glock_g42",
+    "grade": "documented"
    }
   }
  },
@@ -2837,6 +3179,12 @@
     "unit": "name",
     "source": "glock_us_2026",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.415,
+    "unit": "kg",
+    "source": "glock_g44",
+    "grade": "documented"
    }
   }
  },
@@ -2942,6 +3290,12 @@
     "unit": "m per turn",
     "source": "glock_us_2026",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.655,
+    "unit": "kg",
+    "source": "glock_g45_gen6",
+    "grade": "documented"
    }
   }
  },
@@ -2984,6 +3338,12 @@
     "unit": "name",
     "source": "sw_home",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 2.809,
+    "unit": "kg",
+    "source": "sw_spec_performance_center_model_460xvr",
+    "grade": "documented"
    }
   }
  },
@@ -3039,6 +3399,12 @@
     "value": 0.25,
     "unit": "m per turn",
     "source": "glock_us_2026",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.735,
+    "unit": "kg",
+    "source": "glock_g47_mos",
     "grade": "documented"
    }
   }
@@ -3306,6 +3672,12 @@
     "unit": "name",
     "source": "taurus_revolver_manual",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.68,
+    "unit": "kg",
+    "source": "wb_taurus_605",
+    "grade": "documented"
    }
   }
  },
@@ -3369,6 +3741,12 @@
     "unit": "name",
     "source": "sw_home",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.635,
+    "unit": "kg",
+    "source": "sw_spec_model_640",
+    "grade": "documented"
    }
   }
  },
@@ -3432,6 +3810,12 @@
     "unit": "name",
     "source": "sw_home",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.992,
+    "unit": "kg",
+    "source": "sw_spec_model_686_plus_mountain_gun",
+    "grade": "documented"
    }
   }
  },
@@ -3473,6 +3857,12 @@
     "value": ".357 Magnum / 9x19mm",
     "unit": "name",
     "source": "taurus_revolver_manual",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.907,
+    "unit": "kg",
+    "source": "wb_taurus_692",
     "grade": "documented"
    }
   }
@@ -4052,6 +4442,12 @@
     "value": ".38 Special",
     "unit": "name",
     "source": "taurus_revolver_manual",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.454,
+    "unit": "kg",
+    "source": "wb_taurus_856",
     "grade": "documented"
    }
   }
@@ -6610,6 +7006,12 @@
     "unit": "count",
     "source": "ruger_americanriflepredatorgenii",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.03,
+    "unit": "kg",
+    "source": "ruger_americanriflepredatorgenii_46930",
+    "grade": "documented"
    }
   }
  },
@@ -6677,6 +7079,12 @@
     "unit": "count",
     "source": "ruger_americanriflegenii",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 2.9,
+    "unit": "kg",
+    "source": "ruger_americanriflegenii_46902",
+    "grade": "documented"
    }
   }
  },
@@ -6824,6 +7232,12 @@
     "unit": "name",
     "source": "bt_firearms_catalogue_2026",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.3,
+    "unit": "kg",
+    "source": "bt-apc223-pro-222mm",
+    "grade": "documented"
    }
   }
  },
@@ -6845,6 +7259,12 @@
     "unit": "name",
     "source": "bt_firearms_catalogue_2026",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.2,
+    "unit": "kg",
+    "source": "bt-apc300-pro-222mm",
+    "grade": "documented"
    }
   }
  },
@@ -6866,6 +7286,12 @@
     "unit": "name",
     "source": "bt_firearms_catalogue_2026",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 4.1,
+    "unit": "kg",
+    "source": "bt-apc308-pro-330mm",
+    "grade": "documented"
    }
   }
  },
@@ -6929,6 +7355,12 @@
     "unit": "name",
     "source": "bt_firearms_catalogue_2026",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 2.9,
+    "unit": "kg",
+    "source": "bt-apc9-pro",
+    "grade": "documented"
    }
   }
  },
@@ -6950,6 +7382,12 @@
     "unit": "name",
     "source": "bt_firearms_catalogue_2026",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 2.7,
+    "unit": "kg",
+    "source": "bt-apc9-k-pro",
+    "grade": "documented"
    }
   }
  },
@@ -6971,6 +7409,12 @@
     "unit": "name",
     "source": "bt_firearms_catalogue_2026",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.2,
+    "unit": "kg",
+    "source": "bt-apc9-sd-pro",
+    "grade": "documented"
    }
   }
  },
@@ -6992,6 +7436,12 @@
     "unit": "name",
     "source": "bt_firearms_catalogue_2026",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 2.9,
+    "unit": "kg",
+    "source": "bt-apc9-pro",
+    "grade": "documented"
    }
   }
  },
@@ -8668,6 +9118,12 @@
     "unit": "m per turn",
     "source": "bergara_b14_hmr",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 4.4,
+    "unit": "kg",
+    "source": "bergara-catalog-2026",
+    "grade": "documented"
    }
   }
  },
@@ -8808,6 +9264,12 @@
     "unit": "m per turn",
     "source": "bergara_b14_timber",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.5,
+    "unit": "kg",
+    "source": "bergara-catalog-2026",
+    "grade": "documented"
    }
   }
  },
@@ -9383,6 +9845,12 @@
     "unit": "count",
     "source": "ruger_newmodelblackhawkblued",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 1.19,
+    "unit": "kg",
+    "source": "ruger_newmodelblackhawkblued_0306",
+    "grade": "documented"
    }
   }
  },
@@ -11360,6 +11828,12 @@
     "unit": "count",
     "source": "nato_epvat",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 0.94,
+    "unit": "kg",
+    "source": "zastava-cz999",
+    "grade": "documented"
    }
   }
  },
@@ -12394,6 +12868,12 @@
     "unit": "count",
     "source": "sa_1911_emissary_45_acp",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 1.134,
+    "unit": "kg",
+    "source": "springfield_1911_emissary_45_acp_handgun",
+    "grade": "documented"
    }
   }
  },
@@ -12476,6 +12956,12 @@
     "unit": "name",
     "source": "sw_home",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 1.123,
+    "unit": "kg",
+    "source": "sw_spec_sw1911_e_series",
+    "grade": "documented"
    }
   }
  },
@@ -12551,6 +13037,12 @@
     "unit": "count",
     "source": "nato_epvat",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 0.95,
+    "unit": "kg",
+    "source": "zastava-ez9",
+    "grade": "documented"
    }
   }
  },
@@ -13553,6 +14045,12 @@
     "unit": "name",
     "source": "taurus_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.624,
+    "unit": "kg",
+    "source": "wb_taurus_g2c",
+    "grade": "documented"
    }
   }
  },
@@ -14661,6 +15159,12 @@
     "unit": "count",
     "source": "sa_1911_garrison_45_acp",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 1.049,
+    "unit": "kg",
+    "source": "springfield_1911_garrison_45_acp_handgun_firstline",
+    "grade": "documented"
    }
   }
  },
@@ -14731,6 +15235,12 @@
     "unit": "name",
     "source": "bt_firearms_catalogue_2026",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 2.4,
+    "unit": "kg",
+    "source": "bt-ghm9",
+    "grade": "documented"
    }
   }
  },
@@ -14752,6 +15262,12 @@
     "unit": "name",
     "source": "bt_firearms_catalogue_2026",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 2.3,
+    "unit": "kg",
+    "source": "bt-ghm9-compact",
+    "grade": "documented"
    }
   }
  },
@@ -15281,6 +15797,12 @@
     "unit": "count",
     "source": "ruger_gp100",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 1.27,
+    "unit": "kg",
+    "source": "ruger_gp100_1707",
+    "grade": "documented"
    }
   }
  },
@@ -15645,6 +16167,12 @@
     "unit": "count",
     "source": "sa_hellcat_pro_osp_9mm",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.595,
+    "unit": "kg",
+    "source": "springfield_hellcat_pro_osp_9mm_handgun",
+    "grade": "documented"
    }
   }
  },
@@ -17371,6 +17899,12 @@
     "unit": "name",
     "source": "bt_firearms_catalogue_2026",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 2.7,
+    "unit": "kg",
+    "source": "bt-kh9-c",
+    "grade": "documented"
    }
   }
  },
@@ -17950,6 +18484,12 @@
     "unit": "count",
     "source": "ruger_lcp",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 294.0,
+    "unit": "kg",
+    "source": "ruger_lcp_3752",
+    "grade": "documented"
    }
   }
  },
@@ -17983,6 +18523,12 @@
     "unit": "count",
     "source": "ruger_lcpii",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 317.0,
+    "unit": "kg",
+    "source": "ruger_lcpii_13705",
+    "grade": "documented"
    }
   }
  },
@@ -18415,6 +18961,12 @@
     "unit": "count",
     "source": "cip_762x39",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 4.15,
+    "unit": "kg",
+    "source": "zastava-m05-e2",
+    "grade": "documented"
    }
   }
  },
@@ -18448,6 +19000,12 @@
     "unit": "count",
     "source": "cip_762x39",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 4.25,
+    "unit": "kg",
+    "source": "zastava-m05-e3",
+    "grade": "documented"
    }
   }
  },
@@ -19171,6 +19729,12 @@
     "unit": "count",
     "source": "cip_762x39",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 3.85,
+    "unit": "kg",
+    "source": "zastava-m19",
+    "grade": "documented"
    }
   }
  },
@@ -19696,6 +20260,12 @@
     "unit": "count",
     "source": "sa_m1a_national_match_308",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 4.309,
+    "unit": "kg",
+    "source": "springfield_m1a_national_match_308_rifle",
+    "grade": "documented"
    }
   }
  },
@@ -19729,6 +20299,12 @@
     "unit": "count",
     "source": "sa_m1a_scout_squad_308",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 4.167,
+    "unit": "kg",
+    "source": "springfield_m1a_scout_squad_308_rifle",
+    "grade": "documented"
    }
   }
  },
@@ -19762,6 +20338,12 @@
     "unit": "count",
     "source": "sa_m1a_socom_16_308",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.856,
+    "unit": "kg",
+    "source": "springfield_m1a_socom_16_308_rifle",
+    "grade": "documented"
    }
   }
  },
@@ -19795,6 +20377,12 @@
     "unit": "count",
     "source": "sa_m1a_tanker_308",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.884,
+    "unit": "kg",
+    "source": "springfield_m1a_tanker_308_rifle",
+    "grade": "documented"
    }
   }
  },
@@ -19995,6 +20583,12 @@
     "unit": "count",
     "source": "nato_epvat",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 4.0,
+    "unit": "kg",
+    "source": "zastava-m21-bs",
+    "grade": "documented"
    }
   }
  },
@@ -21772,6 +22366,12 @@
     "unit": "count",
     "source": "ruger_hawkeyestandard",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.17,
+    "unit": "kg",
+    "source": "ruger_hawkeyestandard_37115",
+    "grade": "documented"
    }
   }
  },
@@ -21990,6 +22590,12 @@
     "unit": "count",
     "source": "cip_762x54r",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 5.49,
+    "unit": "kg",
+    "source": "zastava-m91",
+    "grade": "documented"
    }
   }
  },
@@ -22044,6 +22650,12 @@
     "unit": "name",
     "source": "zastava_arms_rifles",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 16.7,
+    "unit": "kg",
+    "source": "zastava-m93",
+    "grade": "documented"
    }
   }
  },
@@ -22615,6 +23227,12 @@
     "unit": "count",
     "source": "ruger_markivstandard",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 799.0,
+    "unit": "kg",
+    "source": "ruger_markivstandard_40104",
+    "grade": "documented"
    }
   }
  },
@@ -22648,6 +23266,12 @@
     "unit": "count",
     "source": "ruger_markivtarget",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 1.21,
+    "unit": "kg",
+    "source": "ruger_markivtarget_40103",
+    "grade": "documented"
    }
   }
  },
@@ -23710,6 +24334,12 @@
     "unit": "count",
     "source": "ruger_mini14ranchrifle",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.17,
+    "unit": "kg",
+    "source": "ruger_mini14ranchrifle_5802",
+    "grade": "documented"
    }
   }
  },
@@ -23743,6 +24373,12 @@
     "unit": "count",
     "source": "ruger_mini14tacticalrifle",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.4,
+    "unit": "kg",
+    "source": "ruger_mini14tacticalrifle_5895",
+    "grade": "documented"
    }
   }
  },
@@ -23875,6 +24511,12 @@
     "unit": "count",
     "source": "ruger_minithirty",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.06,
+    "unit": "kg",
+    "source": "ruger_minithirty_5806",
+    "grade": "documented"
    }
   }
  },
@@ -24468,6 +25110,12 @@
     "unit": "name",
     "source": "sw_home",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 1.312,
+    "unit": "kg",
+    "source": "sw_spec_model_41",
+    "grade": "documented"
    }
   }
  },
@@ -24548,6 +25196,12 @@
     "unit": "m per turn",
     "source": "sw_model_617_mountain_gun",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 1.023,
+    "unit": "kg",
+    "source": "sw_spec_model_617_mountain_gun",
+    "grade": "documented"
    }
   }
  },
@@ -24976,6 +25630,12 @@
     "unit": "m per turn",
     "source": "sw_m_p_10_6_5_creedmoor",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 4.105,
+    "unit": "kg",
+    "source": "sw_spec_m_p_10_6_5_creedmoor",
+    "grade": "documented"
    }
   }
  },
@@ -25059,6 +25719,12 @@
     "unit": "name",
     "source": "sw_home",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.822,
+    "unit": "kg",
+    "source": "sw_spec_m_p_9_m2_0_optic_ready_no_thumb_safety_15rd",
+    "grade": "documented"
    }
   }
  },
@@ -25926,6 +26592,12 @@
     "unit": "name",
     "source": "bt_firearms_catalogue_2026",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 1.7,
+    "unit": "kg",
+    "source": "bt-mp9-n",
+    "grade": "documented"
    }
   }
  },
@@ -26076,6 +26748,12 @@
     "unit": "name",
     "source": "sw_m_p_9_shield_plus",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.564,
+    "unit": "kg",
+    "source": "sw_spec_m_p_9_shield_plus_ca_compliant",
+    "grade": "documented"
    }
   }
  },
@@ -26097,6 +26775,12 @@
     "unit": "name",
     "source": "sw_m_p_15_sport_ii",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 2.957,
+    "unit": "kg",
+    "source": "sw_spec_m_p_15_sport_iii_tungsten_gray",
+    "grade": "documented"
    }
   }
  },
@@ -27283,6 +27967,12 @@
     "unit": "count",
     "source": "ruger_no1",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.49,
+    "unit": "kg",
+    "source": "ruger_no1_21364",
+    "grade": "documented"
    }
   }
  },
@@ -27531,6 +28221,12 @@
     "value": 6,
     "unit": "count",
     "source": "sa_1911_operator_45_acp",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 1.191,
+    "unit": "kg",
+    "source": "springfield_1911_operator_45_acp_handgun",
     "grade": "documented"
    }
   }
@@ -29157,6 +29853,12 @@
     "unit": "count",
     "source": "ruger_pccarbine",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.17,
+    "unit": "kg",
+    "source": "ruger_pccarbine_19115",
+    "grade": "documented"
    }
   }
  },
@@ -29190,6 +29892,12 @@
     "unit": "count",
     "source": "ruger_pccharger",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 2.35,
+    "unit": "kg",
+    "source": "ruger_pccharger_29100",
+    "grade": "documented"
    }
   }
  },
@@ -30080,6 +30788,12 @@
     "unit": "count",
     "source": "ruger_precisionrifle",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 5.67,
+    "unit": "kg",
+    "source": "ruger_precisionrifle_18095",
+    "grade": "documented"
    }
   }
  },
@@ -30113,6 +30827,12 @@
     "unit": "count",
     "source": "ruger_precisionrimfire",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.12,
+    "unit": "kg",
+    "source": "ruger_precisionrimfire_8400",
+    "grade": "documented"
    }
   }
  },
@@ -30273,6 +30993,12 @@
     "unit": "count",
     "source": "sa_1911_professional_45_acp",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 1.219,
+    "unit": "kg",
+    "source": "springfield_1911_professional_45_acp_handgun",
+    "grade": "documented"
    }
   }
  },
@@ -32210,6 +32936,12 @@
     "unit": "count",
     "source": "sa_1911_ronin_45_acp",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 1.134,
+    "unit": "kg",
+    "source": "springfield_1911_ronin_aos_45_acp_handgun",
+    "grade": "documented"
    }
   }
  },
@@ -32533,6 +33265,12 @@
     "unit": "m per turn",
     "source": "sako_s20_hunter",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.6,
+    "unit": "kg",
+    "source": "sako-s20-hunter",
+    "grade": "documented"
    }
   }
  },
@@ -32560,6 +33298,12 @@
     "unit": "m per turn",
     "source": "sako_s20_hunter",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.6,
+    "unit": "kg",
+    "source": "sako-s20-hunter",
+    "grade": "documented"
    }
   }
  },
@@ -32587,6 +33331,12 @@
     "unit": "m per turn",
     "source": "sako_s20_precision",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.8,
+    "unit": "kg",
+    "source": "sako-s20-precision",
+    "grade": "documented"
    }
   }
  },
@@ -32803,6 +33553,12 @@
     "unit": "m per turn",
     "source": "springfield_saint_edge_556",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 4.309,
+    "unit": "kg",
+    "source": "springfield_saint_edge_atc_223_ar_15_rifle",
+    "grade": "documented"
    }
   }
  },
@@ -32878,6 +33634,12 @@
     "unit": "name",
     "source": "sako_series",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.2,
+    "unit": "kg",
+    "source": "sako-90-hunter",
+    "grade": "documented"
    }
   }
  },
@@ -34079,6 +34841,12 @@
     "unit": "m per turn",
     "source": "sw_sd40",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.644,
+    "unit": "kg",
+    "source": "sw_spec_sw_sd40_2_2_tone_14rd",
+    "grade": "documented"
    }
   }
  },
@@ -34106,6 +34874,12 @@
     "unit": "m per turn",
     "source": "sw_sd9",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.644,
+    "unit": "kg",
+    "source": "sw_spec_s_w_sd9_2_0_2_tone_od_green",
+    "grade": "documented"
    }
   }
  },
@@ -34214,6 +34988,12 @@
     "unit": "count",
     "source": "ruger_security9",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 674.0,
+    "unit": "kg",
+    "source": "ruger_security9_3810",
+    "grade": "documented"
    }
   }
  },
@@ -35289,6 +36069,12 @@
     "unit": "count",
     "source": "ruger_newmodelsinglesixsingleten",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 992.0,
+    "unit": "kg",
+    "source": "ruger_newmodelsinglesix_0661",
+    "grade": "documented"
    }
   }
  },
@@ -35587,6 +36373,12 @@
     "unit": "count",
     "source": "ruger_sp101",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 737.0,
+    "unit": "kg",
+    "source": "ruger_sp101_5737",
+    "grade": "documented"
    }
   }
  },
@@ -35650,6 +36442,12 @@
     "unit": "name",
     "source": "bt_firearms_catalogue_2026",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 2.7,
+    "unit": "kg",
+    "source": "bt-spc9",
+    "grade": "documented"
    }
   }
  },
@@ -35746,6 +36544,12 @@
     "unit": "name",
     "source": "bt_firearms_catalogue_2026",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.8,
+    "unit": "kg",
+    "source": "bt-spr300",
+    "grade": "documented"
    }
   }
  },
@@ -35840,6 +36644,12 @@
     "unit": "count",
     "source": "ruger_sr1911standard",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 881.0,
+    "unit": "kg",
+    "source": "ruger_sr1911standard_16706",
+    "grade": "documented"
    }
   }
  },
@@ -36705,6 +37515,12 @@
     "unit": "count",
     "source": "ruger_newmodelsuperblackhawkstandard",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 1.55,
+    "unit": "kg",
+    "source": "ruger_newmodelsuperblackhawkstandard_0807",
+    "grade": "documented"
    }
   }
  },
@@ -37156,6 +37972,12 @@
     "value": 6,
     "unit": "count",
     "source": "tikka_t3x_manual",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 2.5,
+    "unit": "kg",
+    "source": "tikka-us-t1x",
     "grade": "documented"
    }
   }
@@ -37611,6 +38433,12 @@
     "unit": "m per turn",
     "source": "tikka_t3x_manual",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 3.0,
+    "unit": "kg",
+    "source": "tikka-us-t3x-upr",
+    "grade": "claimed"
    }
   }
  },
@@ -37644,6 +38472,12 @@
     "unit": "count",
     "source": "tikka_manual_v53",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 4.1,
+    "unit": "kg",
+    "source": "tikka-us-t3x-upr",
+    "grade": "claimed"
    }
   }
  },
@@ -37705,6 +38539,12 @@
     "unit": "m per turn",
     "source": "tikka_t3x_manual",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 3.6,
+    "unit": "kg",
+    "source": "tikka-us-t3x-upr",
+    "grade": "claimed"
    }
   }
  },
@@ -37766,6 +38606,12 @@
     "unit": "m per turn",
     "source": "tikka_t3x_manual",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 4.5,
+    "unit": "kg",
+    "source": "tikka-us-t3x-upr",
+    "grade": "claimed"
    }
   }
  },
@@ -37793,6 +38639,12 @@
     "value": 0.254,
     "unit": "m per turn",
     "source": "sako_t3x_upr",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.6,
+    "unit": "kg",
+    "source": "tikka-us-t3x-upr",
     "grade": "claimed"
    }
   }
@@ -37846,6 +38698,12 @@
     "value": 0.254,
     "unit": "m per turn",
     "source": "sako_t3x_upr",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.6,
+    "unit": "kg",
+    "source": "tikka-us-t3x-upr",
     "grade": "claimed"
    }
   }
@@ -38412,6 +39270,12 @@
     "unit": "name",
     "source": "bt_firearms_catalogue_2026",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 1.7,
+    "unit": "kg",
+    "source": "bt-tp9-n",
+    "grade": "documented"
    }
   }
  },
@@ -38602,6 +39466,12 @@
     "unit": "name",
     "source": "sako_trg_series",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 5.3,
+    "unit": "kg",
+    "source": "sako-trg-2242",
+    "grade": "documented"
    }
   }
  },
@@ -38628,6 +39498,12 @@
     "value": 0.2794,
     "unit": "m per turn",
     "source": "sako_trg22_manual",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 5.3,
+    "unit": "kg",
+    "source": "sako-trg-2242",
     "grade": "documented"
    }
   }
@@ -38690,6 +39566,12 @@
     "unit": "name",
     "source": "sako_trg_series",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 5.5,
+    "unit": "kg",
+    "source": "sako-trg-2242",
+    "grade": "documented"
    }
   }
  },
@@ -38754,6 +39636,12 @@
     "unit": "name",
     "source": "sako_trg_series",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 5.8,
+    "unit": "kg",
+    "source": "sako-trg-2242-a1",
+    "grade": "documented"
    }
   }
  },
@@ -38776,6 +39664,12 @@
     "unit": "name",
     "source": "sako_trg_series",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 6.7,
+    "unit": "kg",
+    "source": "sako-trg-m10",
+    "grade": "documented"
    }
   }
  },
@@ -38809,6 +39703,12 @@
     "unit": "count",
     "source": "sa_1911_trp_45_acp",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 1.191,
+    "unit": "kg",
+    "source": "springfield_1911_trp_45_acp_handgun",
+    "grade": "documented"
    }
   }
  },
@@ -40767,6 +41667,12 @@
     "unit": "m per turn",
     "source": "bergara_wilderness_hmr",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 4.4,
+    "unit": "kg",
+    "source": "bergara-catalog-2026",
+    "grade": "documented"
    }
   }
  },
@@ -41057,6 +41963,12 @@
     "unit": "count",
     "source": "ruger_wrangler",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 850.0,
+    "unit": "kg",
+    "source": "ruger_wrangler_2003",
+    "grade": "documented"
    }
   }
  },
@@ -41226,6 +42138,12 @@
     "unit": "count",
     "source": "sa_home",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.703,
+    "unit": "kg",
+    "source": "springfield_xd_e_33_single_stack_9mm_handgun",
+    "grade": "documented"
    }
   }
  },
