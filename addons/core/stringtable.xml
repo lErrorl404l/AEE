@@ -169,6 +169,14 @@
             <Original>ICAO Reference Altitude</Original>
             <English>ICAO Reference Altitude</English>
         </Key>
+        <Key ID="STR_AEE_Core_lightScanInterval_Description">
+            <Original>Seconds between dynamic light-source scans on the client. The contribution changes only when a lamp toggles or the weather attenuates it. 0 scans every tick.</Original>
+            <English>Seconds between dynamic light-source scans on the client. The contribution changes only when a lamp toggles or the weather attenuates it. 0 scans every tick.</English>
+        </Key>
+        <Key ID="STR_AEE_Core_lightScanInterval_Name">
+            <Original>Light Scan Interval</Original>
+            <English>Light Scan Interval</English>
+        </Key>
         <Key ID="STR_AEE_Core_logDebug_Description">
             <Original>Log DEBUG and TRACE lines to the RPT. Values, not narration: each line carries the real inputs the code used. Off by default.</Original>
             <English>Log DEBUG and TRACE lines to the RPT. Values, not narration: each line carries the real inputs the code used. Off by default.</English>

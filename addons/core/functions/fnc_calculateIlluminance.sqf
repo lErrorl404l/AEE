@@ -158,6 +158,11 @@ private _ambientLux = _starlightLux + (_moonLight * 0.249) + _twilightLux + _aur
 // incorrectly darken the NVG image.  We therefore do NOT use it for ambient
 // lux — the moonIntensity model handles that.
 private _dynamicLux = 0;
+// Carry the last scan's contribution across a skipped tick. Resetting it
+// to zero would drop every nearby lamp from the total and the night-vision
+// tube would flicker brighter and darker on alternate ticks.
+private _cachedDynamic = missionNamespace getVariable [QGVAR(dynamicLuxCached), 0];
+if !(_cachedDynamic isEqualType 0) then { _cachedDynamic = 0 };
 private _unit = call CBA_fnc_currentUnit;
 
 // ─── IR weapon light (ACE3 SPIR/DBAL, vanilla IR) ─────────────────────────
@@ -198,8 +203,23 @@ if (!isNull _unit && hasInterface && _currentWeapon != "") then {
 // 300 dB/km (ITU-R P.1817-1).
 //
 // Performance: nearestObjects is O(n) in the search radius; 100 m keeps
-// the candidate set small.  The scan runs once per tick on the client.
-if (!isNull _unit && hasInterface) then {
+// the candidate set small. The scan runs on a client, and the light
+// contribution it produces changes only when a lamp toggles or the
+// weather attenuates it. The environment tick is 5 s by default, which is
+// twelve times more often than that needs.
+//
+// The gate covers the SCAN only. The ambient term above stays per-tick,
+// because it follows the weather and the moon, which do change.
+private _lightScanInterval = missionNamespace getVariable [QGVAR(lightScanInterval), 30];
+if !(_lightScanInterval isEqualType 0) then { _lightScanInterval = 30; };
+private _scanDue = true;
+if (_lightScanInterval > 0) then {
+    private _now = diag_tickTime;
+    private _lastScan = missionNamespace getVariable [QGVAR(lightScanLast), -1e9];
+    _scanDue = (_now - _lastScan) >= _lightScanInterval;
+    if (_scanDue) then { missionNamespace setVariable [QGVAR(lightScanLast), _now]; };
+};
+if (!isNull _unit && hasInterface && _scanDue) then {
     // Shared eye state: single source of truth for eye position (cached
     // once per frame; every eye-space system consumes it).
     private _eye = ([_unit] call FUNC(getEyeState)) select 0;
@@ -273,6 +293,13 @@ if (!isNull _unit && hasInterface) then {
     } forEach _envLights;
 };
 
+// A skipped scan keeps the last contribution, so the total does not
+// flicker between ticks. A completed scan refreshes the cache.
+if (_scanDue) then {
+    missionNamespace setVariable [QGVAR(dynamicLuxCached), _dynamicLux];
+} else {
+    _dynamicLux = _cachedDynamic;
+};
 private _totalLux = _ambientLux + _dynamicLux;
 
 // ─── Night detection ──────────────────────────────────────────────────────
