@@ -20,21 +20,8 @@
     // or ENVG-II cycling).  Run each sensor's exit block once to destroy
     // handles and tear down the overlay, then stop the PFH.  Also restore
     // the engine's default aperture (DoF off) so normal vision is sharp.
-    if (_visionMode == 0 && !isNil QGVAR(sensorPFH)) then {
-        setAperture -1;
-        [] call EFUNC(nightvision,applyNVGTubeModel);
-        [] call EFUNC(thermal,applyThermalVision);
-        ["EXIT"] call EFUNC(thermal,applySecondSun);
-        ["EXIT"] call EFUNC(thermal,applyClothingThermal);
-        ["EXIT"] call EFUNC(thermal,applyBuildingThermal);
-        ["EXIT"] call EFUNC(thermal,applyRainDroplets);
-        // Fusion teardown: destroy the fusion PP handles and the diet
-        // sun so the overlay does not leak into normal vision.
-        [0] call EFUNC(thermal,cycleFusionMode);
-        ["EXIT"] call EFUNC(thermal,applyFusionSun);
-        [GVAR(sensorPFH)] call CBA_fnc_removePerFrameHandler;
-        GVAR(sensorPFH) = nil;
-        AEE_LOG_INFO("sensor PFH stopped (returned to normal vision)");
+    if (_visionMode == 0) then {
+        [] call FUNC(teardownSensors);
     };
     // Fade normal-vision optical effects immediately (managePostProcess
     // gates on vision mode internally).
@@ -85,13 +72,28 @@
     // next frame and never recover.  AGC lag and gating need this
     // sub-second tick; the environment PFH only runs every 5 s.
     if (_visionMode > 0 && isNil QGVAR(sensorPFH)) then {
+        // Key the session to the unit it was opened for.  The "visionMode"
+        // event cannot see a death, a respawn or a remote-control switch,
+        // so the PFH below owns that part of the lifecycle: when the unit
+        // changes or dies, it tears the session down itself (GAP-026).
+        GVAR(sensorUnit) = _unit;
         GVAR(sensorPFH) = [{
             private _player = call CBA_fnc_currentUnit;
+            // Death, respawn or a remote-control switch is NOT a vision
+            // mode change, so the event never fires for it.  Without this
+            // the handler outlives the session: the handle, the flags and
+            // the overlays stay live into the respawn (GAP-026).  Tear
+            // down here instead of exiting, because nothing else will.
+            if (isNil "_player"
+                || {!alive _player}
+                || {!isNil QGVAR(sensorUnit) && _player isNotEqualTo GVAR(sensorUnit)}) exitWith {
+                [] call FUNC(teardownSensors);
+            };
             private _veh = vehicle _player;
             // Run in the player's own view: on foot (cameraOn == player)
             // or in the player's vehicle (pilot/passenger/gunner).  Skip
             // spectator/UAV-terminal/external cameras.
-            if (isNil "_player" || !alive _player) exitWith {};
+            if (cameraOn != _player && {cameraOn != _veh}) exitWith {};
             if (cameraOn != _player && {cameraOn != _veh}) exitWith {};
             private _vm = currentVisionMode _player;
             // Transient 0: skip, do not clean up or stop.  The visionMode

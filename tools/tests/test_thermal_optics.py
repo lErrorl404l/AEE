@@ -4126,11 +4126,20 @@ class TestFusionPipeline(unittest.TestCase):
         )
 
     def test_fusion_teardown_on_exit(self):
-        # Leaving NVG destroys the fusion PP handles and the diet sun.
+        # Leaving NVG destroys the fusion PP handles and the diet sun.  The
+        # sequence moved into fnc_teardownSensors when the visionMode event
+        # stopped being its only owner (GAP-026): the handler now tears down
+        # on death and respawn too, so both paths must run one sequence.
         self._assert_in_sqf(
             "XEH_postInit.sqf",
-            ["cycleFusionMode", "applyFusionSun", "sensor PFH stopped"],
+            ["teardownSensors"],
             "fusion teardown on normal-vision exit",
+            addon="optics",
+        )
+        self._assert_in_sqf(
+            "functions/vision/fnc_teardownSensors.sqf",
+            ["cycleFusionMode", "applyFusionSun", "sensor PFH stopped"],
+            "fusion teardown sequence",
             addon="optics",
         )
 

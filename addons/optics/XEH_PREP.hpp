@@ -21,5 +21,6 @@ PREPS(sensor,classifyNight);
 PREPS(sensor,getStarCatalog);
 PREPS(sensor,getOpticProperties);
 PREPS(vision,managePostProcess);
+PREPS(vision,teardownSensors);
 PREPS(vision,calculateViewDistance);
 PREPS(vision,ppEffectCreate);
