@@ -7,6 +7,7 @@ PREP(calculateRiverWaterLevel);
 PREP(calculateRolloverThreshold);
 PREP(calculateRouteDegradation);
 PREP(calculateSSF);
+PREP(calculateSoilStrength);
 PREP(calculateSoilBearingStrength);
 PREP(calculateTraction);
 PREP(calculateWetTraction);
