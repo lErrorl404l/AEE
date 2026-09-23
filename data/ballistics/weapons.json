@@ -3504,6 +3504,12 @@
     "unit": "name",
     "source": "fn_herstal_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.672,
+    "unit": "kg",
+    "source": "wp_fn_502",
+    "grade": "documented"
    }
   }
  },
@@ -3525,6 +3531,12 @@
     "unit": "name",
     "source": "fn_herstal_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.595,
+    "unit": "kg",
+    "source": "wp_fn_503",
+    "grade": "documented"
    }
   }
  },
@@ -3546,6 +3558,12 @@
     "unit": "name",
     "source": "fn_herstal_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.763,
+    "unit": "kg",
+    "source": "wp_fn_509",
+    "grade": "documented"
    }
   }
  },
@@ -3567,6 +3585,12 @@
     "unit": "name",
     "source": "fn_herstal_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.879,
+    "unit": "kg",
+    "source": "wp_fn_510",
+    "grade": "documented"
    }
   }
  },
@@ -5608,6 +5632,12 @@
     "unit": "count",
     "source": "nato_epvat",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 3.6,
+    "unit": "kg",
+    "source": "kk_ak101",
+    "grade": "documented"
    }
   }
  },
@@ -5641,6 +5671,12 @@
     "unit": "count",
     "source": "nato_epvat",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 3.2,
+    "unit": "kg",
+    "source": "kk_ak102",
+    "grade": "documented"
    }
   }
  },
@@ -5674,6 +5710,12 @@
     "unit": "count",
     "source": "cip_762x39",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 3.6,
+    "unit": "kg",
+    "source": "kk_ak103",
+    "grade": "documented"
    }
   }
  },
@@ -5707,6 +5749,12 @@
     "unit": "count",
     "source": "cip_762x39",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 3.2,
+    "unit": "kg",
+    "source": "kk_ak104",
+    "grade": "documented"
    }
   }
  },
@@ -5813,6 +5861,12 @@
     "unit": "count",
     "source": "ak74_rpk74_manual_1982",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 3.8,
+    "unit": "kg",
+    "source": "wp_ak_107",
+    "grade": "documented"
    }
   }
  },
@@ -5846,6 +5900,12 @@
     "unit": "count",
     "source": "nato_epvat",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 3.8,
+    "unit": "kg",
+    "source": "wp_ak_107",
+    "grade": "documented"
    }
   }
  },
@@ -6018,6 +6078,12 @@
     "unit": "count",
     "source": "cip_762x39",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 3.75,
+    "unit": "kg",
+    "source": "kk_ak15",
+    "grade": "documented"
    }
   }
  },
@@ -6117,6 +6183,12 @@
     "unit": "count",
     "source": "nato_epvat",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 3.8,
+    "unit": "kg",
+    "source": "kk_ak19",
+    "grade": "documented"
    }
   }
  },
@@ -6149,6 +6221,12 @@
     "value": 4,
     "unit": "count",
     "source": "ak74_rpk74_manual_1982",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 4.0,
+    "unit": "kg",
+    "source": "kk_ak200",
     "grade": "documented"
    }
   }
@@ -6183,6 +6261,12 @@
     "unit": "count",
     "source": "nato_epvat",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 4.0,
+    "unit": "kg",
+    "source": "kk_ak201",
+    "grade": "documented"
    }
   }
  },
@@ -6216,6 +6300,12 @@
     "unit": "count",
     "source": "nato_epvat",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 3.7,
+    "unit": "kg",
+    "source": "kk_ak202",
+    "grade": "documented"
    }
   }
  },
@@ -6249,6 +6339,12 @@
     "unit": "count",
     "source": "cip_762x39",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 4.0,
+    "unit": "kg",
+    "source": "kk_ak203",
+    "grade": "documented"
    }
   }
  },
@@ -6282,6 +6378,12 @@
     "unit": "count",
     "source": "cip_762x39",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 3.8,
+    "unit": "kg",
+    "source": "kk_ak204",
+    "grade": "documented"
    }
   }
  },
@@ -6314,6 +6416,12 @@
     "value": 4,
     "unit": "count",
     "source": "ak74_rpk74_manual_1982",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 3.7,
+    "unit": "kg",
+    "source": "kk_ak205",
     "grade": "documented"
    }
   }
@@ -6348,6 +6456,12 @@
     "unit": "count",
     "source": "nato_epvat",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 4.3,
+    "unit": "kg",
+    "source": "kk_ak308",
+    "grade": "documented"
    }
   }
  },
@@ -6401,6 +6515,12 @@
     "unit": "count",
     "source": "cip_762x39",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 3.47,
+    "unit": "kg",
+    "source": "wp_ak_47",
+    "grade": "documented"
    }
   }
  },
@@ -6434,6 +6554,12 @@
     "unit": "count",
     "source": "cip_762x39",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 3.47,
+    "unit": "kg",
+    "source": "wp_ak_47",
+    "grade": "documented"
    }
   }
  },
@@ -6467,6 +6593,12 @@
     "unit": "count",
     "source": "cip_762x39",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 3.47,
+    "unit": "kg",
+    "source": "wp_ak_47",
+    "grade": "documented"
    }
   }
  },
@@ -6533,6 +6665,12 @@
     "value": 4,
     "unit": "count",
     "source": "ak74_rpk74_manual_1982",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 3.07,
+    "unit": "kg",
+    "source": "wp_ak_74",
     "grade": "documented"
    }
   }
@@ -6607,6 +6745,12 @@
     "unit": "count",
     "source": "ak74_rpk74_manual_1982",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 3.07,
+    "unit": "kg",
+    "source": "wp_ak_74",
+    "grade": "documented"
    }
   }
  },
@@ -6628,6 +6772,12 @@
     "unit": "name",
     "source": "roe_small_arms",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.8,
+    "unit": "kg",
+    "source": "wp_ak_9",
+    "grade": "documented"
    }
   }
  },
@@ -6734,6 +6884,12 @@
     "unit": "count",
     "source": "cip_762x39",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 3.3,
+    "unit": "kg",
+    "source": "wp_akm",
+    "grade": "documented"
    }
   }
  },
@@ -6767,6 +6923,12 @@
     "unit": "count",
     "source": "cip_762x39",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 3.5,
+    "unit": "kg",
+    "source": "wp_akm",
+    "grade": "documented"
    }
   }
  },
@@ -6800,6 +6962,12 @@
     "unit": "count",
     "source": "cip_762x39",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 3.5,
+    "unit": "kg",
+    "source": "wp_akm",
+    "grade": "documented"
    }
   }
  },
@@ -6833,6 +7001,12 @@
     "unit": "count",
     "source": "cip_762x39",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 3.47,
+    "unit": "kg",
+    "source": "wp_ak_47",
+    "grade": "documented"
    }
   }
  },
@@ -6866,6 +7040,12 @@
     "unit": "count",
     "source": "ak74_rpk74_manual_1982",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 2.97,
+    "unit": "kg",
+    "source": "wp_ak_74",
+    "grade": "documented"
    }
   }
  },
@@ -6898,6 +7078,12 @@
     "value": 4,
     "unit": "count",
     "source": "ak74_rpk74_manual_1982",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 2.97,
+    "unit": "kg",
+    "source": "wp_ak_74",
     "grade": "documented"
    }
   }
@@ -7211,6 +7397,12 @@
     "unit": "m per turn",
     "source": "shootingillustrated_anaconda",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 1.3,
+    "unit": "kg",
+    "source": "wp_colt_anaconda",
+    "grade": "documented"
    }
   }
  },
@@ -7863,6 +8055,12 @@
     "unit": "name",
     "source": "armalite_home",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 2.97,
+    "unit": "kg",
+    "source": "wp_armalite_ar_15",
+    "grade": "documented"
    }
   }
  },
@@ -7926,6 +8124,12 @@
     "unit": "name",
     "source": "armalite_home",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.04,
+    "unit": "kg",
+    "source": "wp_armalite_ar_18",
+    "grade": "documented"
    }
   }
  },
@@ -7954,6 +8158,12 @@
     "unit": "m per turn",
     "source": "armalite_ar180b_catalog",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.04,
+    "unit": "kg",
+    "source": "wp_armalite_ar_18",
+    "grade": "documented"
    }
   }
  },
@@ -8050,6 +8260,12 @@
     "unit": "name",
     "source": "armalite_home",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 4.58,
+    "unit": "kg",
+    "source": "wp_armalite_ar_30",
+    "grade": "documented"
    }
   }
  },
@@ -8071,6 +8287,12 @@
     "unit": "name",
     "source": "armalite_home",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 5.9,
+    "unit": "kg",
+    "source": "wp_armalite_ar_30",
+    "grade": "documented"
    }
   }
  },
@@ -8153,6 +8375,12 @@
     "unit": "name",
     "source": "armalite_home",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 15.5,
+    "unit": "kg",
+    "source": "wp_armalite_ar_50",
+    "grade": "documented"
    }
   }
  },
@@ -8174,6 +8402,12 @@
     "unit": "name",
     "source": "armalite_home",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 15.5,
+    "unit": "kg",
+    "source": "wp_armalite_ar_50",
+    "grade": "documented"
    }
   }
  },
@@ -8229,6 +8463,12 @@
     "unit": "m per turn",
     "source": "henry_ar7_spec",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 1.134,
+    "unit": "kg",
+    "source": "wp_armalite_ar_7",
+    "grade": "documented"
    }
   }
  },
@@ -8647,6 +8887,12 @@
     "unit": "count",
     "source": "steyr_aug_a3_manual",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.6,
+    "unit": "kg",
+    "source": "steyr_aug_a1_tech",
+    "grade": "documented"
    }
   }
  },
@@ -8668,6 +8914,12 @@
     "unit": "name",
     "source": "steyr_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 2.9,
+    "unit": "kg",
+    "source": "steyr_aug_a3_tech",
+    "grade": "documented"
    }
   }
  },
@@ -8701,6 +8953,12 @@
     "unit": "count",
     "source": "steyr_aug_a3_manual",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.6,
+    "unit": "kg",
+    "source": "steyr_aug_a1_tech",
+    "grade": "documented"
    }
   }
  },
@@ -8734,6 +8992,12 @@
     "unit": "count",
     "source": "steyr_aug_a3_manual",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.6,
+    "unit": "kg",
+    "source": "steyr_aug_a1_tech",
+    "grade": "documented"
    }
   }
  },
@@ -8862,6 +9126,12 @@
     "unit": "count",
     "source": "steyr_aug_a3_manual",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 4.9,
+    "unit": "kg",
+    "source": "wp_steyr_aug",
+    "grade": "documented"
    }
   }
  },
@@ -8895,6 +9165,12 @@
     "unit": "count",
     "source": "steyr_aug_a3_manual",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 4.9,
+    "unit": "kg",
+    "source": "wp_steyr_aug",
+    "grade": "documented"
    }
   }
  },
@@ -8916,6 +9192,12 @@
     "unit": "name",
     "source": "steyr_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 2.9,
+    "unit": "kg",
+    "source": "steyr_aug_a3_tech",
+    "grade": "documented"
    }
   }
  },
@@ -9426,6 +9708,12 @@
     "unit": "name",
     "source": "fn_home",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 7.54,
+    "unit": "kg",
+    "source": "wp_fn_ballista",
+    "grade": "documented"
    }
   }
  },
@@ -9446,6 +9734,12 @@
     "value": ".30-06 Springfield",
     "unit": "name",
     "source": "fn_bar_manual",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 7.25,
+    "unit": "kg",
+    "source": "wp_m1918_browning_automatic_rifle",
     "grade": "documented"
    }
   }
@@ -9812,6 +10106,12 @@
     "unit": "count",
     "source": "nato_epvat",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 2.1,
+    "unit": "kg",
+    "source": "wp_pp_19_bizon",
+    "grade": "documented"
    }
   }
  },
@@ -10136,6 +10436,12 @@
     "unit": "name",
     "source": "fn_herstal_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.35,
+    "unit": "kg",
+    "source": "wp_fn_cal",
+    "grade": "documented"
    }
   }
  },
@@ -10184,6 +10490,12 @@
     "unit": "name",
     "source": "iwi_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.3,
+    "unit": "kg",
+    "source": "iwi_carmel",
+    "grade": "documented"
    }
   }
  },
@@ -10597,6 +10909,12 @@
     "unit": "count",
     "source": "colt_cm7",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 4.26,
+    "unit": "kg",
+    "source": "wp_colt_cm901",
+    "grade": "documented"
    }
   }
  },
@@ -10630,6 +10948,12 @@
     "unit": "count",
     "source": "colt_cm7",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 4.26,
+    "unit": "kg",
+    "source": "wp_colt_cm901",
+    "grade": "documented"
    }
   }
  },
@@ -10657,6 +10981,12 @@
     "value": 0.3048,
     "unit": "m per turn",
     "source": "colt_cm901",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 4.26,
+    "unit": "kg",
+    "source": "wp_colt_cm901",
     "grade": "documented"
    }
   }
@@ -10691,6 +11021,12 @@
     "unit": "count",
     "source": "colt_cmk",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 4.26,
+    "unit": "kg",
+    "source": "wp_colt_cm901",
+    "grade": "documented"
    }
   }
  },
@@ -11049,6 +11385,12 @@
     "unit": "count",
     "source": "nato_epvat",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 2.9,
+    "unit": "kg",
+    "source": "wp_norinco_cq",
+    "grade": "documented"
    }
   }
  },
@@ -11082,6 +11424,12 @@
     "unit": "count",
     "source": "nato_epvat",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 2.9,
+    "unit": "kg",
+    "source": "wp_norinco_cq",
+    "grade": "documented"
    }
   }
  },
@@ -11278,6 +11626,12 @@
     "unit": "count",
     "source": "nato_epvat",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 6.5,
+    "unit": "kg",
+    "source": "wp_cs_lr4",
+    "grade": "documented"
    }
   }
  },
@@ -11320,6 +11674,12 @@
     "unit": "name",
     "source": "kimber_home",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 1.077,
+    "unit": "kg",
+    "source": "wp_kimber_custom",
+    "grade": "documented"
    }
   }
  },
@@ -11341,6 +11701,12 @@
     "unit": "name",
     "source": "kimber_home",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 1.077,
+    "unit": "kg",
+    "source": "wp_kimber_custom",
+    "grade": "documented"
    }
   }
  },
@@ -12252,6 +12618,12 @@
     "unit": "name",
     "source": "colt_home",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 1.105,
+    "unit": "kg",
+    "source": "wp_colt_delta_elite",
+    "grade": "documented"
    }
   }
  },
@@ -12427,6 +12799,12 @@
     "unit": "name",
     "source": "colt_home",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.595,
+    "unit": "kg",
+    "source": "wp_colt_detective_special",
+    "grade": "documented"
    }
   }
  },
@@ -12663,6 +13041,12 @@
     "unit": "count",
     "source": "kalashnikov_club_svd_twist",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 4.3,
+    "unit": "kg",
+    "source": "wp_svd_rifle",
+    "grade": "documented"
    }
   }
  },
@@ -13084,6 +13468,12 @@
     "unit": "name",
     "source": "fn_herstal_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.6,
+    "unit": "kg",
+    "source": "wp_fn_f2000",
+    "grade": "documented"
    }
   }
  },
@@ -13105,6 +13495,12 @@
     "unit": "name",
     "source": "fn_herstal_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.39,
+    "unit": "kg",
+    "source": "wp_fn_f2000",
+    "grade": "documented"
    }
   }
  },
@@ -13489,6 +13885,12 @@
     "unit": "name",
     "source": "fn_herstal_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 4.31,
+    "unit": "kg",
+    "source": "wp_fn_model_1949",
+    "grade": "documented"
    }
   }
  },
@@ -13510,6 +13912,12 @@
     "unit": "name",
     "source": "fn_herstal_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.84,
+    "unit": "kg",
+    "source": "wp_fn_fnc",
+    "grade": "documented"
    }
   }
  },
@@ -13659,6 +14067,12 @@
     "unit": "name",
     "source": "fn_herstal_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.919,
+    "unit": "kg",
+    "source": "wp_fn_fnp",
+    "grade": "documented"
    }
   }
  },
@@ -13692,6 +14106,12 @@
     "unit": "count",
     "source": "fn_fnp45_tactical_manual",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.919,
+    "unit": "kg",
+    "source": "wp_fn_fnp",
+    "grade": "documented"
    }
   }
  },
@@ -13713,6 +14133,12 @@
     "unit": "name",
     "source": "fn_herstal_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.7,
+    "unit": "kg",
+    "source": "wp_fn_fnp",
+    "grade": "documented"
    }
   }
  },
@@ -13734,6 +14160,12 @@
     "unit": "name",
     "source": "fn_herstal_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.78,
+    "unit": "kg",
+    "source": "wp_fn_fns",
+    "grade": "documented"
    }
   }
  },
@@ -13755,6 +14187,12 @@
     "unit": "name",
     "source": "fn_herstal_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.714,
+    "unit": "kg",
+    "source": "wp_fn_fns",
+    "grade": "documented"
    }
   }
  },
@@ -13776,6 +14214,12 @@
     "unit": "name",
     "source": "fn_herstal_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.663,
+    "unit": "kg",
+    "source": "wp_fn_fns",
+    "grade": "documented"
    }
   }
  },
@@ -13797,6 +14241,12 @@
     "unit": "name",
     "source": "fn_herstal_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.692,
+    "unit": "kg",
+    "source": "wp_fn_fnx",
+    "grade": "documented"
    }
   }
  },
@@ -13824,6 +14274,12 @@
     "unit": "m per turn",
     "source": "fn_fnx45_2025",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.941,
+    "unit": "kg",
+    "source": "wp_fn_fnx",
+    "grade": "documented"
    }
   }
  },
@@ -13845,6 +14301,12 @@
     "unit": "name",
     "source": "fn_herstal_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.621,
+    "unit": "kg",
+    "source": "wp_fn_fnx",
+    "grade": "documented"
    }
   }
  },
@@ -13899,6 +14361,12 @@
     "unit": "name",
     "source": "fn_herstal_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.65,
+    "unit": "kg",
+    "source": "wp_fn_f2000",
+    "grade": "documented"
    }
   }
  },
@@ -14268,6 +14736,12 @@
     "unit": "m per turn",
     "source": "hk_g36_td",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 3.63,
+    "unit": "kg",
+    "source": "wp_heckler_koch_g36",
+    "grade": "documented"
    }
   }
  },
@@ -14424,6 +14898,12 @@
     "value": 0.178,
     "unit": "m per turn",
     "source": "hk_g36_td",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 3.63,
+    "unit": "kg",
+    "source": "wp_heckler_koch_g36",
     "grade": "documented"
    }
   }
@@ -14878,6 +15358,12 @@
     "unit": "count",
     "source": "galil_arm_manual",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 3.95,
+    "unit": "kg",
+    "source": "wp_iwi_galil",
+    "grade": "documented"
    }
   }
  },
@@ -14899,6 +15385,12 @@
     "unit": "name",
     "source": "iwi_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.8,
+    "unit": "kg",
+    "source": "iwi_ace",
+    "grade": "documented"
    }
   }
  },
@@ -14920,6 +15412,12 @@
     "unit": "name",
     "source": "iwi_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.0,
+    "unit": "kg",
+    "source": "iwi_ace21",
+    "grade": "documented"
    }
   }
  },
@@ -14941,6 +15439,12 @@
     "unit": "name",
     "source": "iwi_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.4,
+    "unit": "kg",
+    "source": "iwi_ace22",
+    "grade": "documented"
    }
   }
  },
@@ -14962,6 +15466,12 @@
     "unit": "name",
     "source": "iwi_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.6,
+    "unit": "kg",
+    "source": "iwi_ace23",
+    "grade": "documented"
    }
   }
  },
@@ -14983,6 +15493,12 @@
     "unit": "name",
     "source": "iwi_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.0,
+    "unit": "kg",
+    "source": "iwi_ace31",
+    "grade": "documented"
    }
   }
  },
@@ -15004,6 +15520,12 @@
     "unit": "name",
     "source": "iwi_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.5,
+    "unit": "kg",
+    "source": "iwi_ace32",
+    "grade": "documented"
    }
   }
  },
@@ -15025,6 +15547,12 @@
     "unit": "name",
     "source": "iwi_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.6,
+    "unit": "kg",
+    "source": "iwi_ace52",
+    "grade": "documented"
    }
   }
  },
@@ -15086,6 +15614,12 @@
     "unit": "name",
     "source": "iwi_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.75,
+    "unit": "kg",
+    "source": "wp_iwi_galil",
+    "grade": "documented"
    }
   }
  },
@@ -15836,6 +16370,12 @@
     "unit": "count",
     "source": "browning_hipower_manual",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.915,
+    "unit": "kg",
+    "source": "wp_browning_hi_power",
+    "grade": "documented"
    }
   }
  },
@@ -16113,6 +16653,12 @@
     "unit": "name",
     "source": "steyr_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 1.2,
+    "unit": "kg",
+    "source": "wp_steyr_m1912_pistol",
+    "grade": "documented"
    }
   }
  },
@@ -16239,6 +16785,12 @@
     "unit": "count",
     "source": "browning_hipower_manual",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.915,
+    "unit": "kg",
+    "source": "wp_browning_hi_power",
+    "grade": "documented"
    }
   }
  },
@@ -16338,6 +16890,12 @@
     "value": 4,
     "unit": "count",
     "source": "hk121_td",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 9.9,
+    "unit": "kg",
+    "source": "hk_mg5",
     "grade": "documented"
    }
   }
@@ -16594,6 +17152,12 @@
     "value": "5.56x45mm NATO",
     "unit": "name",
     "source": "hk_catalog_2018",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 3.9,
+    "unit": "kg",
+    "source": "wp_heckler_koch_hk33",
     "grade": "documented"
    }
   }
@@ -16950,6 +17514,12 @@
     "unit": "count",
     "source": "hk_catalog_2018",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.88,
+    "unit": "kg",
+    "source": "hk_hk45t",
+    "grade": "documented"
    }
   }
  },
@@ -17171,6 +17741,12 @@
     "unit": "count",
     "source": "browning_hipower_manual",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.915,
+    "unit": "kg",
+    "source": "wp_browning_hi_power",
+    "grade": "documented"
    }
   }
  },
@@ -17214,6 +17790,12 @@
     "unit": "name",
     "source": "steyr_website",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 13.8,
+    "unit": "kg",
+    "source": "steyr_hs50_tech",
+    "grade": "documented"
    }
   }
  },
@@ -17419,6 +18001,12 @@
     "unit": "count",
     "source": "colt_infantry_automatic_rifle",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 4.32,
+    "unit": "kg",
+    "source": "wp_colt_iar6940",
+    "grade": "documented"
    }
   }
  },
@@ -17557,6 +18145,12 @@
     "unit": "name",
     "source": "iwi_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 1.01,
+    "unit": "kg",
+    "source": "iwi_jerfs",
+    "grade": "documented"
    }
   }
  },
@@ -20669,6 +21263,12 @@
     "unit": "name",
     "source": "fn_herstal_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 11.8,
+    "unit": "kg",
+    "source": "fn_mag_technical_data",
+    "grade": "documented"
    }
   }
  },
@@ -21686,6 +22286,12 @@
     "unit": "count",
     "source": "colt_m4_carbine",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 2.917,
+    "unit": "kg",
+    "source": "wp_m4_carbine",
+    "grade": "documented"
    }
   }
  },
@@ -23042,6 +23648,12 @@
     "unit": "name",
     "source": "steyr_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 4.52,
+    "unit": "kg",
+    "source": "wp_mannlicher_m1886",
+    "grade": "documented"
    }
   }
  },
@@ -23063,6 +23675,12 @@
     "unit": "name",
     "source": "steyr_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 4.41,
+    "unit": "kg",
+    "source": "wp_mannlicher_m1888",
+    "grade": "documented"
    }
   }
  },
@@ -23105,6 +23723,12 @@
     "unit": "name",
     "source": "steyr_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.78,
+    "unit": "kg",
+    "source": "wp_mannlicher_m1895",
+    "grade": "documented"
    }
   }
  },
@@ -23422,6 +24046,12 @@
     "unit": "name",
     "source": "iwi_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.65,
+    "unit": "kg",
+    "source": "iwi_masada",
+    "grade": "documented"
    }
   }
  },
@@ -23443,6 +24073,12 @@
     "unit": "name",
     "source": "iwi_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.65,
+    "unit": "kg",
+    "source": "wp_iwi_masada",
+    "grade": "documented"
    }
   }
  },
@@ -24045,6 +24681,12 @@
     "unit": "count",
     "source": "hk_mg4_technical_data",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 8.15,
+    "unit": "kg",
+    "source": "hk_mg4",
+    "grade": "documented"
    }
   }
  },
@@ -25056,6 +25698,12 @@
     "unit": "name",
     "source": "fn_herstal_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.62,
+    "unit": "kg",
+    "source": "wp_fn_m1900",
+    "grade": "documented"
    }
   }
  },
@@ -26313,6 +26961,12 @@
     "unit": "count",
     "source": "hk_mp5_manual",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 2.97,
+    "unit": "kg",
+    "source": "hk_mp5sd",
+    "grade": "documented"
    }
   }
  },
@@ -26346,6 +27000,12 @@
     "unit": "count",
     "source": "hk_mp5_manual",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 2.97,
+    "unit": "kg",
+    "source": "hk_mp5sd",
+    "grade": "documented"
    }
   }
  },
@@ -26379,6 +27039,12 @@
     "unit": "count",
     "source": "hk_mp5_manual",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 2.97,
+    "unit": "kg",
+    "source": "hk_mp5sd",
+    "grade": "documented"
    }
   }
  },
@@ -26412,6 +27078,12 @@
     "unit": "count",
     "source": "hk_mp5_manual",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 2.97,
+    "unit": "kg",
+    "source": "hk_mp5sd",
+    "grade": "documented"
    }
   }
  },
@@ -26445,6 +27117,12 @@
     "unit": "count",
     "source": "hk_mp5_manual",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 2.97,
+    "unit": "kg",
+    "source": "hk_mp5sd",
+    "grade": "documented"
    }
   }
  },
@@ -26619,6 +27297,12 @@
     "unit": "name",
     "source": "steyr_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.13,
+    "unit": "kg",
+    "source": "wp_steyr_mpi_69",
+    "grade": "documented"
    }
   }
  },
@@ -26640,6 +27324,12 @@
     "unit": "name",
     "source": "steyr_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.13,
+    "unit": "kg",
+    "source": "wp_steyr_mpi_69",
+    "grade": "documented"
    }
   }
  },
@@ -26661,6 +27351,12 @@
     "unit": "name",
     "source": "steyr_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.3,
+    "unit": "kg",
+    "source": "wp_akm",
+    "grade": "documented"
    }
   }
  },
@@ -27411,6 +28107,12 @@
     "unit": "name",
     "source": "colt_home",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.354,
+    "unit": "kg",
+    "source": "wp_colt_mustang",
+    "grade": "documented"
    }
   }
  },
@@ -27696,6 +28398,12 @@
     "unit": "name",
     "source": "iwi_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 7.6,
+    "unit": "kg",
+    "source": "iwi_negevbase",
+    "grade": "documented"
    }
   }
  },
@@ -27717,6 +28425,12 @@
     "unit": "name",
     "source": "iwi_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 7.6,
+    "unit": "kg",
+    "source": "iwi_negevbase",
+    "grade": "documented"
    }
   }
  },
@@ -27738,6 +28452,12 @@
     "unit": "name",
     "source": "iwi_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 7.65,
+    "unit": "kg",
+    "source": "wp_iwi_negev",
+    "grade": "documented"
    }
   }
  },
@@ -27759,6 +28479,12 @@
     "unit": "name",
     "source": "iwi_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 7.95,
+    "unit": "kg",
+    "source": "iwi_negev7",
+    "grade": "documented"
    }
   }
  },
@@ -27780,6 +28506,12 @@
     "unit": "name",
     "source": "iwi_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 7.65,
+    "unit": "kg",
+    "source": "iwi_negevs",
+    "grade": "documented"
    }
   }
  },
@@ -29263,6 +29995,12 @@
     "unit": "m per turn",
     "source": "hk_p30_manual",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.68,
+    "unit": "kg",
+    "source": "hk_p30sk",
+    "grade": "documented"
    }
   }
  },
@@ -29551,6 +30289,12 @@
     "unit": "name",
     "source": "hk_p7m_manual",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.85,
+    "unit": "kg",
+    "source": "wp_heckler_koch_p7",
+    "grade": "documented"
    }
   }
  },
@@ -29571,6 +30315,12 @@
     "value": "9x19mm Parabellum",
     "unit": "name",
     "source": "hk_p7m_manual",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.78,
+    "unit": "kg",
+    "source": "wp_heckler_koch_p7",
     "grade": "documented"
    }
   }
@@ -29677,6 +30427,12 @@
     "unit": "name",
     "source": "fn_herstal_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 2.8,
+    "unit": "kg",
+    "source": "fn_p90_technical_data",
+    "grade": "documented"
    }
   }
  },
@@ -30324,6 +31080,12 @@
     "unit": "count",
     "source": "nato_epvat",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 0.72,
+    "unit": "kg",
+    "source": "kk_plk",
+    "grade": "documented"
    }
   }
  },
@@ -30563,6 +31325,12 @@
     "unit": "count",
     "source": "nato_epvat",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 2.85,
+    "unit": "kg",
+    "source": "kk_vityaz",
+    "grade": "documented"
    }
   }
  },
@@ -31680,6 +32448,12 @@
     "unit": "name",
     "source": "colt_home",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 1.077,
+    "unit": "kg",
+    "source": "wp_colt_python",
+    "grade": "documented"
    }
   }
  },
@@ -31799,6 +32573,12 @@
     "unit": "count",
     "source": "firearmsworld_qbz951",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 3.5,
+    "unit": "kg",
+    "source": "wp_qbz_03",
+    "grade": "documented"
    }
   }
  },
@@ -31820,6 +32600,12 @@
     "unit": "name",
     "source": "norinco_official",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.1,
+    "unit": "kg",
+    "source": "wp_qbz_191",
+    "grade": "documented"
    }
   }
  },
@@ -31879,6 +32665,12 @@
     "unit": "count",
     "source": "firearmsworld_qbz951",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 3.4,
+    "unit": "kg",
+    "source": "wp_qbz_95",
+    "grade": "documented"
    }
   }
  },
@@ -31932,6 +32724,12 @@
     "unit": "count",
     "source": "nato_epvat",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 3.4,
+    "unit": "kg",
+    "source": "wp_qbz_95",
+    "grade": "documented"
    }
   }
  },
@@ -31992,6 +32790,12 @@
     "unit": "m per turn",
     "source": "qq_58mm_history",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 7.6,
+    "unit": "kg",
+    "source": "wp_qjy_88",
+    "grade": "documented"
    }
   }
  },
@@ -32034,6 +32838,12 @@
     "unit": "name",
     "source": "norinco_official",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.76,
+    "unit": "kg",
+    "source": "wp_qsz_92",
+    "grade": "documented"
    }
   }
  },
@@ -32067,6 +32877,12 @@
     "unit": "count",
     "source": "nato_epvat",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 0.76,
+    "unit": "kg",
+    "source": "wp_qsz_92",
+    "grade": "documented"
    }
   }
  },
@@ -33016,6 +33832,12 @@
     "unit": "count",
     "source": "ak74_rpk74_manual_1982",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 4.8,
+    "unit": "kg",
+    "source": "wp_rpk",
+    "grade": "documented"
    }
   }
  },
@@ -33049,6 +33871,12 @@
     "value": 4,
     "unit": "count",
     "source": "ak74_rpk74_manual_1982",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 4.7,
+    "unit": "kg",
+    "source": "wp_rpk_74",
     "grade": "documented"
    }
   }
@@ -33117,6 +33945,12 @@
     "unit": "count",
     "source": "ak74_rpk74_manual_1982",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 4.7,
+    "unit": "kg",
+    "source": "wp_rpk_74",
+    "grade": "documented"
    }
   }
  },
@@ -33183,6 +34017,12 @@
     "unit": "count",
     "source": "cip_762x39",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 4.8,
+    "unit": "kg",
+    "source": "wp_rpk",
+    "grade": "documented"
    }
   }
  },
@@ -33215,6 +34055,12 @@
     "value": 4,
     "unit": "count",
     "source": "ak74_rpk74_manual_1982",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 4.85,
+    "unit": "kg",
+    "source": "wp_rpk_74",
     "grade": "documented"
    }
   }
@@ -34450,6 +35296,12 @@
     "unit": "name",
     "source": "fn_scar_l_datasheet",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 3.29,
+    "unit": "kg",
+    "source": "wp_fn_scar",
+    "grade": "documented"
    }
   }
  },
@@ -34477,6 +35329,12 @@
     "unit": "count",
     "source": "fn_fn_scar_16s",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.29,
+    "unit": "kg",
+    "source": "wp_fn_scar",
+    "grade": "documented"
    }
   }
  },
@@ -34745,6 +35603,12 @@
     "unit": "name",
     "source": "steyr_website",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.0,
+    "unit": "kg",
+    "source": "wp_steyr_scout",
+    "grade": "documented"
    }
   }
  },
@@ -34765,6 +35629,12 @@
     "value": ".22 LR",
     "unit": "name",
     "source": "steyr_scout_manual",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 3.0,
+    "unit": "kg",
+    "source": "wp_steyr_scout",
     "grade": "documented"
    }
   }
@@ -36036,6 +36906,12 @@
     "unit": "name",
     "source": "colt_home",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 1.048,
+    "unit": "kg",
+    "source": "wp_colt_single_action_army",
+    "grade": "documented"
    }
   }
  },
@@ -36202,6 +37078,12 @@
     "unit": "name",
     "source": "fn_home",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.37,
+    "unit": "kg",
+    "source": "wp_fn_slp",
+    "grade": "documented"
    }
   }
  },
@@ -36495,6 +37377,12 @@
     "value": 0.25,
     "unit": "m per turn",
     "source": "steyr_spp_manual",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 1.3,
+    "unit": "kg",
+    "source": "wp_steyr_tmp",
     "grade": "documented"
    }
   }
@@ -36926,6 +37814,12 @@
     "unit": "name",
     "source": "steyr_website",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 4.71,
+    "unit": "kg",
+    "source": "wp_steyr_ssg_04",
+    "grade": "documented"
    }
   }
  },
@@ -36955,6 +37849,12 @@
     "value": 0.3048,
     "unit": "m per turn",
     "source": "steyr_ssg08",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 5.46,
+    "unit": "kg",
+    "source": "steyr_ssg08_tech",
     "grade": "documented"
    }
   }
@@ -36988,6 +37888,12 @@
     "value": 4,
     "unit": "count",
     "source": "steyr_ssg08_manual",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 5.46,
+    "unit": "kg",
+    "source": "steyr_ssg08_tech",
     "grade": "documented"
    }
   }
@@ -37071,6 +37977,12 @@
     "unit": "name",
     "source": "steyr_website",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 4.0,
+    "unit": "kg",
+    "source": "wp_steyr_ssg_69",
+    "grade": "documented"
    }
   }
  },
@@ -37146,6 +38058,12 @@
     "unit": "name",
     "source": "kimber_home",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 1.077,
+    "unit": "kg",
+    "source": "wp_kimber_custom",
+    "grade": "documented"
    }
   }
  },
@@ -37233,6 +38151,12 @@
     "unit": "count",
     "source": "steyr_aug_a3_manual",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.6,
+    "unit": "kg",
+    "source": "steyr_aug_a1_tech",
+    "grade": "documented"
    }
   }
  },
@@ -37461,6 +38385,12 @@
     "unit": "count",
     "source": "colt_sub_machine_guns",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 2.61,
+    "unit": "kg",
+    "source": "wp_colt_9mm_smg",
+    "grade": "documented"
    }
   }
  },
@@ -37783,6 +38713,12 @@
     "unit": "count",
     "source": "kalashnikov_club_svd_twist",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 5.3,
+    "unit": "kg",
+    "source": "kk_svdm",
+    "grade": "documented"
    }
   }
  },
@@ -37843,6 +38779,12 @@
     "unit": "count",
     "source": "kalashnikov_club_svd_twist",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.6,
+    "unit": "kg",
+    "source": "wp_dragunov_svu",
+    "grade": "documented"
    }
   }
  },
@@ -38965,6 +39907,12 @@
     "unit": "name",
     "source": "iwi_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 4.1,
+    "unit": "kg",
+    "source": "iwi_tavor7",
+    "grade": "documented"
    }
   }
  },
@@ -38997,6 +39945,12 @@
     "value": 6,
     "unit": "count",
     "source": "tavor_armorer_manual",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 3.5,
+    "unit": "kg",
+    "source": "iwi_ctar",
     "grade": "documented"
    }
   }
@@ -39064,6 +40018,12 @@
     "unit": "count",
     "source": "tavor_armorer_manual",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 3.6,
+    "unit": "kg",
+    "source": "iwi_tar",
+    "grade": "documented"
    }
   }
  },
@@ -39096,6 +40056,12 @@
     "value": 6,
     "unit": "count",
     "source": "tavor_armorer_manual",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 3.3,
+    "unit": "kg",
+    "source": "wp_iwi_tavor_x95",
     "grade": "documented"
    }
   }
@@ -39206,6 +40172,12 @@
     "value": "9x19mm Parabellum",
     "unit": "name",
     "source": "steyr_tmp_manual",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 1.3,
+    "unit": "kg",
+    "source": "wp_steyr_tmp",
     "grade": "documented"
    }
   }
@@ -39423,6 +40395,12 @@
     "unit": "name",
     "source": "fn_home",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 2.72,
+    "unit": "kg",
+    "source": "wp_fn_tps",
+    "grade": "documented"
    }
   }
  },
@@ -39772,6 +40750,12 @@
     "unit": "name",
     "source": "norinco_official",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.89,
+    "unit": "kg",
+    "source": "wp_type_54_pistol",
+    "grade": "documented"
    }
   }
  },
@@ -39805,6 +40789,12 @@
     "unit": "count",
     "source": "cip_762x39",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 3.8,
+    "unit": "kg",
+    "source": "wp_type_56_assault_rifle",
+    "grade": "documented"
    }
   }
  },
@@ -39838,6 +40828,12 @@
     "unit": "count",
     "source": "cip_762x39",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 3.7,
+    "unit": "kg",
+    "source": "wp_type_56_assault_rifle",
+    "grade": "documented"
    }
   }
  },
@@ -39871,6 +40867,12 @@
     "unit": "count",
     "source": "cip_762x39",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 3.9,
+    "unit": "kg",
+    "source": "wp_type_56_assault_rifle",
+    "grade": "documented"
    }
   }
  },
@@ -39904,6 +40906,12 @@
     "unit": "count",
     "source": "cip_762x39",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 2.85,
+    "unit": "kg",
+    "source": "wp_type_56_assault_rifle",
+    "grade": "documented"
    }
   }
  },
@@ -39979,6 +40987,12 @@
     "unit": "name",
     "source": "norinco_official",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.5,
+    "unit": "kg",
+    "source": "wp_type_77_pistol",
+    "grade": "documented"
    }
   }
  },
@@ -40000,6 +41014,12 @@
     "unit": "name",
     "source": "norinco_official",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 1.75,
+    "unit": "kg",
+    "source": "wp_type_79_submachine_gun",
+    "grade": "documented"
    }
   }
  },
@@ -40021,6 +41041,12 @@
     "unit": "name",
     "source": "norinco_official",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 12.6,
+    "unit": "kg",
+    "source": "wp_type_80_machine_gun",
+    "grade": "documented"
    }
   }
  },
@@ -40054,6 +41080,12 @@
     "unit": "count",
     "source": "cip_762x39",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 3.4,
+    "unit": "kg",
+    "source": "wp_type_81_assault_rifle",
+    "grade": "documented"
    }
   }
  },
@@ -40087,6 +41119,12 @@
     "unit": "count",
     "source": "cip_762x39",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 3.4,
+    "unit": "kg",
+    "source": "wp_type_81_assault_rifle",
+    "grade": "documented"
    }
   }
  },
@@ -40140,6 +41178,12 @@
     "unit": "count",
     "source": "cip_762x39",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 3.4,
+    "unit": "kg",
+    "source": "wp_type_81_assault_rifle",
+    "grade": "documented"
    }
   }
  },
@@ -40161,6 +41205,12 @@
     "unit": "name",
     "source": "norinco_official",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 1.9,
+    "unit": "kg",
+    "source": "wp_type_85_submachine_gun",
+    "grade": "documented"
    }
   }
  },
@@ -40247,6 +41297,12 @@
     "value": 4,
     "unit": "count",
     "source": "firearmsworld_qbz951",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 3.4,
+    "unit": "kg",
+    "source": "wp_qbz_95",
     "grade": "documented"
    }
   }
@@ -40574,6 +41630,12 @@
     "unit": "count",
     "source": "hk_catalog_2018",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.82,
+    "unit": "kg",
+    "source": "hk_usp",
+    "grade": "documented"
    }
   }
  },
@@ -40853,6 +41915,12 @@
     "unit": "count",
     "source": "uzi_manual",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.5,
+    "unit": "kg",
+    "source": "wp_uzi",
+    "grade": "documented"
    }
   }
  },
@@ -40874,6 +41942,12 @@
     "unit": "name",
     "source": "iwi_products",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 2.4,
+    "unit": "kg",
+    "source": "iwi_uzipro",
+    "grade": "documented"
    }
   }
  },
@@ -41256,6 +42330,12 @@
     "unit": "count",
     "source": "hk_catalog_2018",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.753,
+    "unit": "kg",
+    "source": "hk_vp40",
+    "grade": "documented"
    }
   }
  },
@@ -41336,6 +42416,12 @@
     "unit": "count",
     "source": "hk_catalog_2018",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.753,
+    "unit": "kg",
+    "source": "hk_vp9",
+    "grade": "documented"
    }
   }
  },
@@ -41362,6 +42448,12 @@
     "value": 6,
     "unit": "count",
     "source": "hk_catalog_2018",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.654,
+    "unit": "kg",
+    "source": "hk_vp9sk",
     "grade": "documented"
    }
   }
@@ -41395,6 +42487,12 @@
     "value": 6,
     "unit": "count",
     "source": "hk_catalog_2018",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.762,
+    "unit": "kg",
+    "source": "hk_vp9tac",
     "grade": "documented"
    }
   }
@@ -41583,6 +42681,12 @@
     "value": "7.62x51mm NATO",
     "unit": "name",
     "source": "hk_catalog_2018",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 6.95,
+    "unit": "kg",
+    "source": "wp_walther_wa_2000",
     "grade": "documented"
    }
   }
