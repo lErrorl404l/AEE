@@ -8,6 +8,7 @@ PREPS(warnings,calculateFireSpreadRisk);
 PREPS(biome,updateSeasonalFoliage);
 PREPS(warnings,calculateAvalancheRisk);
 PREPS(terrain,calculateConcealment);
+PREPS(terrain,getCoastDistance);
 PREPS(terrain,calculateIceLoad);
 PREPS(warnings,calculateCBRNPersistence);
 PREPS(warnings,getCbrnProtection);
