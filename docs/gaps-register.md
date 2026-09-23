@@ -6,6 +6,8 @@ recurrence, and the lesson.
 
 ## GAP-012: a ninth argument the engine does not accept
 
+Status: Closed
+
 **What happened.** `fnc_isPositionShadowed.sqf` called
 `lineIntersectsSurfaces` with a ninth argument, `true`, commented
 "returnUnique (2.10+)". Every shadow raycast raised "Error Type Bool,
@@ -33,6 +35,8 @@ signature before writing the call.
 
 ## GAP-013: a matching keyword with a lookalike character
 
+Status: Closed
+
 **What happened.** Four capture rows under `data/equipment/sources/` carried
 the family keyword `protaс`, with U+0441 CYRILLIC SMALL LETTER ES in place
 of the Latin `c`. The generated resolver could never match a classname.
@@ -56,6 +60,8 @@ than none. Fold lookalikes at ingest and count what is dropped.
 
 ## GAP-014: `hmd` returns a string, not an array
 
+Status: Closed
+
 **What happened.** The first draft of `fnc_getInventoryLoad.sqf` wrote
 `hmd _unit + [binocular _unit]`. HEMTT reported L-S12: the left operand is
 a String. The walk was wrong before it ran.
@@ -75,6 +81,8 @@ checker is the gate that caught it, and it runs on every commit.
 checker that catches the call shape is cheaper than a docker run.
 
 ## GAP-016: an eager type guard evaluated a command on the wrong type
+
+Status: Closed
 
 **What happened.** `fnc_readState.sqf` tested a value's type and its length
 in one `&&` chain: `_neverZero && _val isEqualType [] && count _val == 0`.
@@ -100,6 +108,8 @@ register carries the lesson.
 
 ## GAP-017: an engine warning passed as clean
 
+Status: Closed
+
 **What happened.** Two faults emitted engine warnings and the gate passed
 them. `fnc_calculateBarrelState.sqf` read a weapon's modes class without
 testing it first ("'modes/' is not a class"), and `fnc_init.sqf` logged a
@@ -122,6 +132,8 @@ rule in the gate.
 
 ## GAP-018: four stale checks kept the suite red
 
+Status: Closed
+
 **What happened.** Four tests failed for reasons unrelated to the code:
 a parser that could not read a unary command inside parentheses, a row
 pattern that matched six fields against eight, a not-built assertion for a
@@ -143,3 +155,103 @@ agree in either direction.
 
 **Lesson.** A red suite hides the next real failure. Keep the floor clean.
 
+
+## GAP-019: a model added to the value it reads
+
+Status: Closed
+
+**What happened.** `fnc_calculateWaterInfluence` read
+`aee_core_currentTemperature` to obtain the ambient temperature. That is
+the value the caller adds the returned offset to. The offset alternated
++40 and -40 C per tick and the temperature swung 80.9 C, reaching 71 C on
+one tick and -8 C on the next.
+
+**What went wrong.** Two faults met. The reader and the writer shared one
+variable, so the model fed on its own output. The per-term debug prints
+sampled different ticks, so each looked plausible in isolation.
+
+**Why.** The rule was absent. Nothing forbade a model from reading the
+state it contributes to, and no test sampled the same tick twice.
+
+**What prevents recurrence.** The ambient temperature is passed in as an
+argument. The docker determinism phase (PHASE5) samples one tick apart and
+asserts the delta stays small, so a feedback loop fails the gate.
+
+**Lesson.** A model that adds to state X must never read published X. Pass
+the input in, and print the running total after each stage, not per term.
+
+## GAP-020: a cross-addon read that returned nil
+
+Status: Closed
+
+**What happened.** `EGVAR(core,currentTemperature)` was used as a value in
+72 places across 52 files. It expands to the unquoted token
+`aee_core_currentTemperature`, which SQF reads as a variable, so every one
+of those reads returned nil. The client RPT carried 2796 "Undefined
+variable aee_core_currenttemperature" errors in a single session.
+
+**What went wrong.** The macro was used as if it were a variable. The
+correct form is `missionNamespace getVariable [QEGVAR(core,name), default]`.
+
+**Why.** The rule was unclear. Both EGVAR and QEGVAR are documented, and
+the difference is invisible in a file that only reads well-formed code.
+Five call sites already used the correct form, so the pattern existed.
+
+**What prevents recurrence.** Every cross-addon read uses QEGVAR inside
+getVariable. `fnc_resolveShot.sqf` and `fnc_openAltimeter.sqf` are the
+reference call sites to match.
+
+**Lesson.** A bare macro that expands to a name is not a value. Cite a
+working call site before writing a cross-addon read.
+
+## GAP-021: a unit the setting never used
+
+Status: Closed
+
+**What happened.** `fnc_updatePressure` read `aee_core_tempLapseRate`,
+documented as degrees Celsius per 1000 m with a default of 6.5, and used it
+as kelvin per metre. The 1000-times value drove the barometric term
+negative and the station pressure collapsed to 0.5 hPa. The formula's
+ratio was also inverted, so pressure rose with height.
+
+**What went wrong.** Two independent faults in one expression, and the
+existing check mirrored the hardcoded constant rather than the setting, so
+it passed while the real code diverged.
+
+**Why.** The guardrail was unapplied. The check asserted the formula, not
+the setting that feeds it, so a unit error was invisible.
+
+**What prevents recurrence.** The value is divided by 1000 at the point of
+use. A new check, `check_barometric_pressure`, compares the result with
+the ICAO standard atmosphere table and asserts that pressure falls with
+height.
+
+**Lesson.** A setting has a unit. Convert it where it is used, and test the
+setting, not a copy of the arithmetic.
+
+## GAP-022: two classifiers sharing one variable
+
+Status: Closed
+
+**What happened.** `aee_core_biome` holds the map Koppen class, read by
+fourteen consumers for a map-scoped purpose. A per-position sampler wrote
+the same variable every tick with one tile's surface answer. On Stratis at
+35 N the map-wide classifier resolved Csa, correct for an Aegean island,
+and the position path replaced it with Cfb, because a man-made surface
+carries no climate signal.
+
+**What went wrong.** Two functions with different scopes owned one
+variable. The weaker signal won because it wrote last.
+
+**Why.** The guardrail was absent. No test compared the two verdicts, and
+the latitude band check could not see the fault because Cfb is legal at
+35 N.
+
+**What prevents recurrence.** The position sampler publishes
+`aee_environmental_localBiome` instead. PHASE8b asserts the map class does
+not change when the player crosses a surface boundary. The first fix read
+the anchor from the variable it wrote, a feedback loop of the GAP-019
+class, and the phase caught it.
+
+**Lesson.** One variable has one owner and one scope. When two producers
+disagree, give the weaker one its own variable rather than a tie-break.
