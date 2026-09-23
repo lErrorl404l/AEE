@@ -48,6 +48,7 @@ def main():
         "tools/tests/test_blast.py",
         "tools/tests/test_diving.py",
         "tools/tests/test_particles.py",
+        "tools/tests/test_particle_engine.py",
         "tools/tests/test_perf_counters.py",
         "tools/tests/test_barrel_thermal.py",
         "tools/tests/test_local_wind.py",

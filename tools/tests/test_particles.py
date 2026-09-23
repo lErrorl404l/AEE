@@ -12,23 +12,39 @@ Run: python3 -m unittest tools.tests.test_particles
 import unittest
 
 # ─── Mirror of fnc_particleMaterial.sqf ──────────────────────────────────
+# Values track the ONE material table (issue #149 unification).  The
+# surface materials carry the values the live kickup functions used, so the
+# pipeline migration does not change their behaviour.
 MATERIALS = {
+    "dust": {"weight": 1.00, "volume": 0.60, "rubbing": 0.50, "bounce": 0.25},
+    "sand": {"weight": 1.45, "volume": 0.45, "rubbing": 0.42, "bounce": 0.20},
+    "dirt": {"weight": 1.10, "volume": 0.70, "rubbing": 0.55, "bounce": 0.15},
+    "snow": {"weight": 0.55, "volume": 1.10, "rubbing": 0.75, "bounce": 0.05},
+    "mud": {"weight": 1.60, "volume": 0.30, "rubbing": 0.20, "bounce": 0.05},
+    "gravel": {"weight": 1.80, "volume": 0.25, "rubbing": 0.15, "bounce": 0.35},
+    "spray": {"weight": 0.80, "volume": 1.40, "rubbing": 0.35, "bounce": 0.60},
     "smoke": {"weight": 1.0, "volume": 1.0, "rubbing": 0.05, "bounce": -1},
-    "dust": {"weight": 1.0, "volume": 0.6, "rubbing": 0.5, "bounce": 0.4},
-    "spray": {"weight": 0.5, "volume": 2.0, "rubbing": 0.7, "bounce": 0.8},
     "debris": {"weight": 3.0, "volume": 0.2, "rubbing": 0.2, "bounce": 0.6},
     "plume": {"weight": -0.5, "volume": 0.5, "rubbing": 0.1, "bounce": -1},
+    "hail": {"weight": 2.2, "volume": 0.15, "rubbing": 0.10, "bounce": 0.60},
+    "rain": {"weight": 0.9, "volume": 1.30, "rubbing": 0.80, "bounce": -1},
 }
+
+# Materials whose base bounce >= 0 collide with the ground, so the ground
+# state overrides their restitution.
+GROUND_COLLIDERS = {"dust", "sand", "dirt", "snow", "mud", "gravel"}
 
 
 def particle_material(material):
-    return MATERIALS.get(material, MATERIALS["smoke"])
+    return MATERIALS.get(material, MATERIALS["dust"])
 
 
 # ─── Mirror of fnc_particleState.sqf coupling ────────────────────────────
-def coupled_params(material, rho=1.225, ground_state="Normal", wind_str=0.0):
+def coupled_params(
+    material, rho=1.225, ground_state="Normal", wind_str=0.0, wave_height=0.0
+):
     """Mirror of the state coupling: density drag, ground restitution,
-    wind advection."""
+    wind advection, water-surface tracking."""
     base = particle_material(material)
     weight, volume, rubbing, bounce = (
         base["weight"],
@@ -41,8 +57,8 @@ def coupled_params(material, rho=1.225, ground_state="Normal", wind_str=0.0):
     rho = max(0.1, min(1.5, rho))
     volume = volume * (1.225 / rho)
 
-    # Ground state -> dust restitution.
-    if material == "dust":
+    # Ground state -> restitution for the colliding materials.
+    if material in GROUND_COLLIDERS:
         bounce = {
             "Frozen": 0.45,
             "Hardpack": 0.4,
@@ -51,11 +67,14 @@ def coupled_params(material, rho=1.225, ground_state="Normal", wind_str=0.0):
             "Snow": 0.05,
         }.get(ground_state, 0.25)
 
-    # Wind -> dust advection.
-    if material == "dust":
-        rubbing = min(0.3 + (min(wind_str, 15) / 15) * 0.4, 0.7)
+    # Wind -> advection: the production formula from fnc_kickupParams.
+    rubbing = min(rubbing * (1 + (min(wind_str, 15) / 15) * 0.6), 0.9)
 
-    return weight, volume, rubbing, bounce
+    # Water surface -> keepOnSurface + surfaceOffset (wave height).
+    keep = material == "spray"
+    offset = max(0.0, wave_height) if keep else 0.0
+
+    return weight, volume, rubbing, bounce, keep, offset
 
 
 class TestParticleMaterial(unittest.TestCase):
@@ -77,8 +96,10 @@ class TestParticleMaterial(unittest.TestCase):
         self.assertGreater(d["weight"], 2.0)
         self.assertLess(d["volume"], 0.3)
 
-    def test_unknown_falls_back_to_smoke(self):
-        self.assertEqual(particle_material("nope"), MATERIALS["smoke"])
+    def test_unknown_falls_back_to_dust(self):
+        # The unified table falls back to dust, the production default
+        # (fnc_kickupParams used dust as its default too).
+        self.assertEqual(particle_material("nope"), MATERIALS["dust"])
 
 
 class TestDensityCoupling(unittest.TestCase):
@@ -86,21 +107,21 @@ class TestDensityCoupling(unittest.TestCase):
 
     def test_volume_scales_inverse_density(self):
         # rho 0.6 -> volume x (1.225/0.6) = x2.04
-        _, vol_thin, _, _ = coupled_params("smoke", rho=0.6)
-        _, vol_sea, _, _ = coupled_params("smoke", rho=1.225)
+        vol_thin = coupled_params("smoke", rho=0.6)[1]
+        vol_sea = coupled_params("smoke", rho=1.225)[1]
         self.assertAlmostEqual(vol_thin / vol_sea, 1.225 / 0.6, places=4)
 
     def test_dust_travels_farther_in_thin_air(self):
         # Spec vector: rho 0.6 -> ~1.7x farther (sqrt of the drag ratio).
-        _, vol_thin, _, _ = coupled_params("dust", rho=0.6)
-        _, vol_sea, _, _ = coupled_params("dust", rho=1.225)
+        vol_thin = coupled_params("dust", rho=0.6)[1]
+        vol_sea = coupled_params("dust", rho=1.225)[1]
         self.assertAlmostEqual(vol_thin / vol_sea, 1.225 / 0.6, places=4)
 
     def test_density_clamped(self):
         # Thin air (low rho) -> high volume (less drag); dense air (high
         # rho) -> low volume.  Clamped to rho 0.1..1.5.
-        _, vol_thin, _, _ = coupled_params("dust", rho=0.01)
-        _, vol_dense, _, _ = coupled_params("dust", rho=10.0)
+        vol_thin = coupled_params("dust", rho=0.01)[1]
+        vol_dense = coupled_params("dust", rho=10.0)[1]
         self.assertGreater(vol_thin, vol_dense)
         # At the clamp extremes: 0.1 -> x12.25, 1.5 -> x0.82.
         self.assertAlmostEqual(vol_thin, 0.6 * (1.225 / 0.1), places=4)
@@ -129,8 +150,23 @@ class TestWindCoupling(unittest.TestCase):
         self.assertGreater(windy, calm)
 
     def test_wind_capped(self):
+        # The production coupling caps rubbing at 0.9 (fnc_kickupParams).
         cap = coupled_params("dust", wind_str=50.0)[2]
-        self.assertLessEqual(cap, 0.7)
+        self.assertLessEqual(cap, 0.9)
+
+
+class TestWaterSurfaceCoupling(unittest.TestCase):
+    """Spray tracks the water surface (issue #150)."""
+
+    def test_spray_keeps_on_surface_with_wave_offset(self):
+        keep, offset = coupled_params("spray", wave_height=2.5)[4:]
+        self.assertTrue(keep)
+        self.assertEqual(offset, 2.5)
+
+    def test_dust_does_not_keep_on_surface(self):
+        keep, offset = coupled_params("dust", wave_height=2.5)[4:]
+        self.assertFalse(keep)
+        self.assertEqual(offset, 0.0)
 
 
 if __name__ == "__main__":

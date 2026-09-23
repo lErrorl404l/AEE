@@ -231,14 +231,9 @@ if (GVAR(hydrologyEnabled)) then {
 };
 [] call EFUNC(mobility,calculateRouteDegradation);
 [] call EFUNC(mobility,calculateSoilBearingStrength);
-if (GVAR(fxEnabled)) then {
-    [] call EFUNC(fx,applyVehicleDust);
-    [] call EFUNC(fx,applyAtmosphericDust);
-    // Infantry footfall: the engine throws no dust for a soldier on foot.
-    [] call EFUNC(fx,applyFootfallDust);
-    // Rotor wash: a helicopter in ground effect raises the surface cloud.
-    [] call EFUNC(fx,applyRotorWash);
-};
+// Particle effects are driven by the ONE pipeline after the severe-weather
+// block below, so the weather gates read the current sandstorm and
+// blowing-snow state rather than the previous tick's.
 END_COUNTER(hydrology);
 
 // ─── Atmospheric events ────────────────────────────────────────────────────
@@ -266,6 +261,15 @@ if (GVAR(atmosphericEventsEnabled)) then {
     };
 };
 END_COUNTER(atmosEvents);
+
+// ─── Particle pipeline (issues #149, #151) ─────────────────────────────────
+// ONE handler for every AEE particle effect: the four surface/dust effects
+// and the weather set.  It runs after the severe-weather block so the
+// weather gates read the current sandstorm and blowing-snow state, and
+// after the phase model so snowfall sees the current phase.
+if (GVAR(fxEnabled)) then {
+    [] call EFUNC(fx,particlePipeline);
+};
 
 // ─── Environmental / Seasonal ──────────────────────────────────────────────
 [] call EFUNC(mobility,calculateRiverWaterLevel);
