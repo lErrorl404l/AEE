@@ -2813,6 +2813,49 @@ private _p29Pass = 0;
         diag_log text format ["[PHASE61] [FAIL] kickup: sand=%1 snow=%2 mud=%3 gravel=%4 rgba=%5 colour-from-ground=%6", _sand, _snow, _mud, _gravel, _rgbaOk, _colourFromGround];
     };
 
+    // -- PHASE 62: rotor downwash physics --
+    // The model must follow the published chain: momentum-theory induced
+    // velocity, the Bagnold threshold, and the cubic flux law. This phase
+    // recomputes the reference values here, so the SQF is checked against
+    // the formulas rather than against its own output.  Assertions use
+    // tolerances, never rounded prints: rounding hid an earlier vacuous
+    // pass (0.13 and 0.23 both printed as 0).
+    private _rho = missionNamespace getVariable ["aee_core_currentAirDensity", 1.225];
+    if !(_rho isEqualType 0) then { _rho = 1.225; };
+    private _g = 9.80665;
+    private _refDust = 0.1 * sqrt (((2650 - _rho) / _rho) * _g * 80e-6);
+    private _refSand = 0.1 * sqrt (((2650 - _rho) / _rho) * _g * 250e-6);
+
+    // In ground effect: the aircraft must be low, or the wash factor is
+    // zero and nothing is entrained.
+    private _heli = createVehicle ["B_Heli_Light_01_F", [0, 0, 3], [], 0, "NONE"];
+    private _dust = [_heli, "dust"] call aee_fx_fnc_calculateDownwash;
+    private _sand = [_heli, "sand"] call aee_fx_fnc_calculateDownwash;
+    private _gravel = [_heli, "gravel"] call aee_fx_fnc_calculateDownwash;
+    deleteVehicle _heli;
+
+    // The SQF threshold must match Bagnold within 20 percent, per material.
+    private _dustOk = (abs ((_dust select 1) - _refDust)) < (_refDust * 0.2);
+    private _sandOk = (abs ((_sand select 1) - _refSand)) < (_refSand * 0.2);
+    // Dust is finer than sand, so its threshold is lower and it lifts first.
+    private _ordered = (_dust select 1) < (_sand select 1);
+    // Gravel is too coarse to be lifted by this flow.
+    private _gravelStaysDown = (_gravel select 0) < 0.5;
+    // The flux grows as the cube of the friction velocity, so it is a real
+    // positive number when the flow is above threshold.
+    private _fluxPositive = (_sand select 3) > 0;
+    // Outwash in ground effect must exceed the free-air induced velocity.
+    private _outwash = _dust select 2;
+    private _washWorks = (_outwash > 10) && {_outwash < 60};
+
+    private _p62Ok = _dustOk && {_sandOk} && {_ordered} && {_gravelStaysDown}
+        && {_fluxPositive} && {_washWorks};
+    if (_p62Ok) then {
+        diag_log text format ["[PHASE62] [PASS] downwash: dust threshold %1 (ref %2), sand %3 (ref %4), outwash %5 m/s, entrain d%6 s%7 g%8, flux %9", _dust select 1, _refDust, _sand select 1, _refSand, _outwash, _dust select 0, _sand select 0, _gravel select 0, _sand select 3];
+    } else {
+        diag_log text format ["[PHASE62] [FAIL] downwash: dust %1 ref %2 ok=%3, sand %4 ref %5 ok=%6, ordered=%7, gravel %8, flux %9, outwash %10", _dust select 1, _refDust, _dustOk, _sand select 1, _refSand, _sandOk, _ordered, _gravel select 0, _sand select 3, _outwash];
+    };
+
 diag_log text "[AEE-TEST] DONE";
         }, [_t1], 5] call CBA_fnc_waitAndExecute;
     }, [], 7] call CBA_fnc_waitAndExecute;
