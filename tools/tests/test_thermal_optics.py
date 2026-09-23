@@ -3628,7 +3628,6 @@ class TestSQFSync(unittest.TestCase):
             [
                 "lineIntersectsSurfaces",
                 '"GEOM", "NONE"',
-                "returnUnique",
                 "currentSunAzimuth",
                 "currentSunElevation",
                 "QGVAR(shadowCache)",
@@ -3637,6 +3636,11 @@ class TestSQFSync(unittest.TestCase):
             "thermal shadow detection (sun raycast)",
             addon="thermal",
         )
+        # The call keeps the documented eight arguments.  A ninth argument
+        # (returnUnique) was rejected by the engine at that position with a
+        # type error, and its default is already true.
+        shadow = _read_sqf("fnc_isPositionShadowed.sqf", "thermal")
+        self.assertNotIn("returnUnique", shadow)
         # The ground wrapper applies the shadow depression.
         ground = _read_sqf("fnc_calculateGroundTemperature.sqf", "thermal")
         self.assertIn("isPositionShadowed", ground)
