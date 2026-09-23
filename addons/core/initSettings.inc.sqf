@@ -383,3 +383,17 @@
 // ── Diagnostics: effect emitters ──────────────────────────────────────────
 // Footfall, rotor wash and the surface dust: the values a headless test
 // cannot see, so a client trace needs to print them.
+
+// ── Client scan cadence ───────────────────────────────────────────────────
+// The dynamic-light scan walks nearby objects to find lit lamps. It is
+// client-only and its result changes only when a lamp toggles or the
+// weather attenuates it. 0 scans every tick.
+[
+    QGVAR(lightScanInterval),
+    "SLIDER",
+    [LLSTRING(lightScanInterval_Name), LLSTRING(lightScanInterval_Description)],
+    ["AEE", "Core"],
+    [0, 120, 30, 0],
+    true,
+    {}
+] call CBA_fnc_addSetting;
