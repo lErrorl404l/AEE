@@ -91,6 +91,32 @@ def band_name(lat):
     return "unknown"
 
 
+def agrees(anchor, per_position):
+    """True when the two classifiers are compatible.
+
+    The map-wide classifier reads latitude, water fraction and terrain for
+    the WHOLE map. The per-position classifier reads one tile's surface
+    type. Both publish into aee_core_biome, so a disagreement means one
+    silently overwrote the other.
+
+    A disagreement is a defect when the per-position verdict is a generic
+    default. On Stratis at 35 N the map-wide classifier correctly resolved
+    Csa, then the per-position path read a man-made surface
+    (GdtStratisConcrete), found no climate signal, and answered Cfb. A
+    Mediterranean island was downgraded to an oceanic one, and the band
+    check could not see it because Cfb is legal at 35 N under the band
+    rules.
+
+    The Koppen first TWO letters are the shared climate group: 'Cs' is a
+    dry-summer Mediterranean climate and 'Cf' is one with no dry season, so
+    'Csa' and 'Cfb' are different climates that both begin with 'C'. A
+    one-character test cannot separate them.
+    """
+    if not anchor or not per_position:
+        return True
+    return anchor[:2] == per_position[:2]
+
+
 def main():
     args = sys.argv[1:]
     if "--list" in args:
@@ -98,6 +124,41 @@ def main():
         for lo, hi, codes, name in BANDS:
             print(f"  {lo:5.1f} - {hi:5.1f}  {name:12s} {', '.join(sorted(codes))}")
         return 0
+    if "--self-check" in args:
+        # The defect that survived: two classifiers disagreeing while both
+        # individual verdicts were plausible for the latitude. Without this
+        # case the band rules cannot catch it.
+        cases = [
+            ("Csa", "Csa", True, "same verdict"),
+            ("Csa", "Cfb", False, "Stratis: Mediterranean downgraded to oceanic"),
+            ("Csa", "Cfa", False, "different thermal group from the anchor"),
+            ("BWh", "BWh", True, "same verdict"),
+            ("", "Cfb", True, "no anchor yet: nothing to contradict"),
+            ("Cfb", "", True, "no per-position verdict: nothing to contradict"),
+        ]
+        failures = 0
+        for anchor, per_position, expected, why in cases:
+            got = agrees(anchor, per_position)
+            mark = "OK  " if got == expected else "FAIL"
+            if got != expected:
+                failures += 1
+            print(
+                f"  {mark} anchor={anchor or '-':<4} per-position={per_position or '-':<4} -> {got} ({why})"
+            )
+        # And the band rules must still hold.
+        for lat, code, expected in (
+            (55, "Cfb", True),
+            (35, "Csa", True),
+            (55, "Af", False),
+        ):
+            got = plausible(lat, code)
+            if got != expected:
+                failures += 1
+                print(f"  FAIL band lat={lat} {code} -> {got}, expected {expected}")
+        print(
+            f"classifier agreement: {'PASS' if failures == 0 else 'FAIL'} ({failures} failed)"
+        )
+        return 1 if failures else 0
     if len(args) < 2:
         print(__doc__)
         return 2

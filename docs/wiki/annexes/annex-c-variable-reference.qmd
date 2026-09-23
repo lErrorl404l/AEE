@@ -207,7 +207,9 @@ follow the variable names as written in the SQF source.
 | `aee_environmental_currentAvalancheWarning` | environmental | Avalanche warning |
 | `aee_environmental_currentSoundPropagation` | environmental | Sound propagation 0..1 |
 | `aee_environmental_biologicalAmbientIntensity` | environmental | Biological ambient |
-| `aee_core_biome` | environmental | Koppen biome code |
+| `aee_core_biome` | environmental | Koppen biome code (map climate class) |
+| `aee_environmental_localBiome` | environmental | Biome code of the surface under the player (local detail, not the map class) |
+| `aee_environmental_localBiomeName` | environmental | Display name for `aee_environmental_localBiome` |
 
 ### Maritime
 

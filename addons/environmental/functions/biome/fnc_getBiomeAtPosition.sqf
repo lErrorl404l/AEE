@@ -176,7 +176,10 @@ private _CANDIDATE_MAP = createHashMapFromArray [
 // Look up candidates for this surface type
 private _candidates = _CANDIDATE_MAP getOrDefault [_surface, []];
 
-// If no candidates found, use latitude-based fallback
+// A surface with no climate candidate of its own falls back to the
+// latitude band. This is surface detail, not the map's climate class:
+// the map-wide classifier owns aee_core_biome and fuses six terrain
+// signals, so it is never asked to defer to this answer.
 if (_candidates isEqualTo []) exitWith {
     switch (_latBand) do {
         case "A": { "Af" };
@@ -189,12 +192,11 @@ if (_candidates isEqualTo []) exitWith {
 };
 
 // ─── Pick winner from candidates ──────────────────────────────────────
-// Simple weighted selection. First candidate with highest weight wins.
+// Simple weighted selection: the highest weight wins. The weights are the
+// climate plausibility of that surface at this latitude band.
 private _best = _candidates select 0;
 {
-    if ((_x select 1) > (_best select 1)) then {
-        _best = _x;
-    };
+    if ((_x select 1) > (_best select 1)) then { _best = _x; };
 } forEach _candidates;
 
 _best select 0
