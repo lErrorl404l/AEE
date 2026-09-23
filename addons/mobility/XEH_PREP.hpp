@@ -8,6 +8,7 @@ PREP(calculateRolloverThreshold);
 PREP(calculateRouteDegradation);
 PREP(calculateSSF);
 PREP(calculateSoilStrength);
+PREP(calculateTerrainLimits);
 PREP(calculateSoilBearingStrength);
 PREP(calculateTraction);
 PREP(calculateWetTraction);

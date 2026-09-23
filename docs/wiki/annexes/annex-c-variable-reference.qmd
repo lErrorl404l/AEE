@@ -175,6 +175,9 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_mobility_currentVCI1` | mobility | NRMM Vehicle Cone Index, one pass (#117) |
 | `aee_mobility_currentVCI50` | mobility | NRMM Vehicle Cone Index, 50 passes (#117) |
 | `aee_mobility_currentMobilityIndex` | mobility | NRMM wheeled Mobility Index from the published form (#117) |
+| `aee_mobility_currentBreakoverDeg` | mobility | Vehicle breakover angle, 2*atan(2c/L) (#117) |
+| `aee_mobility_currentGradeLimitDeg` | mobility | Usable grade limit: force grade capped by the friction limit (#117) |
+| `aee_mobility_currentSideSlopeLimitDeg` | mobility | Side-slope limit: the lower of the SSF tip angle and the published limit (#117) |
 | `aee_mobility_currentTractionTracked` | mobility | Tracked traction 0..1 |
 | `aee_mobility_currentTractionWheeled` | mobility | Wheeled traction 0..1 |
 | `aee_mobility_routeDegradation` | mobility | Route degradation |
