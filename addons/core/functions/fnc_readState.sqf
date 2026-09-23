@@ -37,7 +37,14 @@ if (_type == 3) then { _ok = _val isEqualType []; };
 if (_type == 4) then { _ok = _val isEqualType true; };
 if !(_ok) exitWith { _default };
 
-if (_neverZero && _val isEqualType 0 && _val == 0) exitWith { _default };
-if (_neverZero && _val isEqualType [] && count _val == 0) exitWith { _default };
+// The guard must be lazy: `count` on a number is an engine error, and a
+// plain `&&` chain evaluates the count even when the type test is false.
+// Each branch tests one type, so the count only runs on an array.
+private _zeroed = false;
+if (_neverZero) then {
+    if (_val isEqualType 0) then { _zeroed = _val == 0; };
+    if (_val isEqualType []) then { _zeroed = (count _val) == 0; };
+};
+if (_zeroed) exitWith { _default };
 
 _val
