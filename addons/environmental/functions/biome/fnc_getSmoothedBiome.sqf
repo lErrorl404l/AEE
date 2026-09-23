@@ -41,9 +41,9 @@ if (_radius <= 0) exitWith {
 // ─── Sample the ring and count the votes ─────────────────────────────────
 // Eight points at the radius, so the neighbourhood is sampled evenly and
 // the dominant biome is the one that actually surrounds the position.
-private _x = _posASL select 0;
-private _y = _posASL select 1;
-private _z = _posASL select 2;
+private _px = _posASL select 0;
+private _py = _posASL select 1;
+private _pz = _posASL select 2;
 
 private _votes = createHashMap;
 private _count = 0;
@@ -51,9 +51,9 @@ for "_i" from 0 to 7 do {
     private _angle = _i * 45;
     private _rad = _angle * (pi / 180);
     private _sample = [
-        _x + (_radius * sin _rad),
-        _y + (_radius * cos _rad),
-        _z
+        _px + (_radius * sin _rad),
+        _py + (_radius * cos _rad),
+        _pz
     ];
     private _code = [_sample] call EFUNC(environmental,getBiomeAtPosition);
     if (_code != "") then {
@@ -73,12 +73,12 @@ private _best = "";
 private _bestVotes = -1;
 private _tie = false;
 {
-    if (_x > _bestVotes) then {
-        _best = _y;
-        _bestVotes = _x;
+    if (_y > _bestVotes) then {
+        _best = _x;
+        _bestVotes = _y;
         _tie = false;
     } else {
-        if (_x == _bestVotes) then { _tie = true; };
+        if (_y == _bestVotes) then { _tie = true; };
     };
 } forEach _votes;
 
