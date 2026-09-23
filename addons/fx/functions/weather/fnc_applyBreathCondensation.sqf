@@ -30,14 +30,16 @@ if (cameraOn != _player && {cameraOn != _veh}) exitWith {};
 private _existing = missionNamespace getVariable [QGVAR(breathCondensation), objNull];
 if (!isNull _existing && alive _existing) exitWith {};
 
-// Budget check: skip if over particle ceiling
-if !([] call FUNC(checkParticleBudget)) exitWith {};
+// Allocate from the shared budget by priority (issue #149).  Breath
+// condensation is a high-visibility player effect, so it outranks ambient
+// dust but sits below the weather extremes.
+if !(["breath", 65, 20] call FUNC(particleAllocate)) exitWith {};
 
 // Create particle source at eye position
 private _headPos = eyePos _player;
 private _source = "#particlesource" createVehicleLocal _headPos;
 missionNamespace setVariable [QGVAR(breathCondensation), _source];
-_source call FUNC(registerParticleSource);
+[_source, "breath", 65, 20, 3, ""] call FUNC(registerParticleSource);
 
 _source setParticleCircle [0, [0, 0, 0]];
 _source setParticleRandom [0, [0, 0, 0], [0, 0, 0.2], 0, 0.2, [0, 0, 0, 0], 0, 0];
