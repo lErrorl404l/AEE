@@ -212,3 +212,57 @@
     true,
     {}
 ] call CBA_fnc_addSetting;
+
+// ── Vehicle Rollover ───────────────────────────────────────────────────────
+// The threshold physics is the Static Stability Factor (NHTSA) with the
+// Gillespie slope correction. Each control is a real input to that model,
+// so none of them is inert.
+[
+    QGVAR(rolloverEnabled),
+    "CHECKBOX",
+    [LLSTRING(rolloverEnabled_Name), LLSTRING(rolloverEnabled_Description)],
+    ["AEE Mobility", "Rollover"],
+    true,   // default: enabled
+    true,   // global — the threshold must match on every machine
+    {}
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(rolloverDynamicFactor),
+    "SLIDER",
+    [LLSTRING(rolloverDynamicFactor_Name), LLSTRING(rolloverDynamicFactor_Description)],
+    ["AEE Mobility", "Rollover"],
+    [0.7, 0.9, 0.8, 2],
+    true,
+    {}
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(rolloverHoldFrames),
+    "SLIDER",
+    [LLSTRING(rolloverHoldFrames_Name), LLSTRING(rolloverHoldFrames_Description)],
+    ["AEE Mobility", "Rollover"],
+    [1, 60, 10, 0],
+    true,
+    {}
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(rolloverTorqueScale),
+    "SLIDER",
+    [LLSTRING(rolloverTorqueScale_Name), LLSTRING(rolloverTorqueScale_Description)],
+    ["AEE Mobility", "Rollover"],
+    [0.05, 1.0, 0.25, 2],
+    true,
+    {}
+] call CBA_fnc_addSetting;
+
+[
+    QGVAR(rolloverRadius),
+    "SLIDER",
+    [LLSTRING(rolloverRadius_Name), LLSTRING(rolloverRadius_Description)],
+    ["AEE Mobility", "Rollover"],
+    [10, 200, 50, 0],
+    true,
+    {}
+] call CBA_fnc_addSetting;
