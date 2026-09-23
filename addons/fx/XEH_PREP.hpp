@@ -13,3 +13,4 @@ PREPS(weather,triggerSevereWeatherFX);
 PREPS(weather,calculateLightningStrikeEffects);
 PREPS(particle,particleMaterial);
 PREPS(particle,particleState);
+PREPS(particle,surfaceMaterial);

@@ -2289,14 +2289,32 @@ private _p29Pass = 0;
                 diag_log text format ["[PHASE5] [FAIL] delta over 5 s = %1", _delta];
             };
                 // -- PHASE 41: armour module (issue #126) --------------------------------
-    // The armour addon must have compiled: the config override applies the
-    // STANAG pool ladder, and the penetration gate resolves.
+    // The armour addon holds NO static vehicle class list.  Protection is
+    // resolved dynamically from the classname family signal
+    // (fnc_getVehicleArmour), the mass derivation when the table has no
+    // row (fnc_deriveProtection) and the bisurf gate (fnc_penetrationGate).
+    // A function reference is not a mission variable, so it cannot be
+    // tested with isNil: the phase proves the resolvers by USING them.
+    private _fnArmour = missionNamespace getVariable ["aee_armour_fnc_getVehicleArmour", nil];
     private _fnGate = missionNamespace getVariable ["aee_armour_fnc_penetrationGate", nil];
-    private _armorCfg = getNumber (configFile >> "CfgVehicles" >> "MRAP_01_base_F" >> "armor");
-    if (!isNil "_fnGate" && _armorCfg == 160) then {
-        diag_log text format ["[PHASE41] [PASS] armour module: gate resolved, MRAP armor=%1 (STANAG L3)", _armorCfg];
+    private _mrap = "B_MRAP_01_F" createVehicle [0, 0, 50];
+    private _resolved = if (isNil "_fnArmour") then { [] } else { [_mrap] call _fnArmour };
+    // The vanilla pool must be the map's own value: rebasing the class
+    // would discard fields its real base carries and the engine warns at
+    // vehicle load.  The value is read here, never assumed.
+    private _vanillaPool = getNumber (configFile >> "CfgVehicles" >> "MRAP_01_base_F" >> "armor");
+    deleteVehicle _mrap;
+    private _level = if (_resolved isEqualType []) then { _resolved select 0 } else { -1 };
+    // The gate must be callable: a non-projectile passes through untouched.
+    private _gateCallable = false;
+    if (!isNil "_fnGate") then {
+        private _probe = [objNull, "Hull", 0.4, objNull, objNull, 0, objNull, "HitHull"] call _fnGate;
+        _gateCallable = _probe isEqualType 0;
+    };
+    if (_gateCallable && {_level >= 2} && {_vanillaPool > 0}) then {
+        diag_log text format ["[PHASE41] [PASS] armour module: gate callable, MRAP L%1 %2 mm dynamic, vanilla pool %3 intact", _level, _resolved select 1, _vanillaPool];
     } else {
-        diag_log text format ["[PHASE41] [FAIL] armour module: gate=%1 MRAP armor=%2", isNil "_fnGate", _armorCfg];
+        diag_log text format ["[PHASE41] [FAIL] armour module: gate callable=%1 resolver=%2 MRAP=%3 vanilla pool=%4", _gateCallable, isNil "_fnArmour", _resolved, _vanillaPool];
     };
 
     // -- PHASE 42: penetration gate physics (issue #126) ---------------------
@@ -2727,6 +2745,37 @@ private _p29Pass = 0;
         diag_log text format ["[PHASE59] [PASS] state read: number %1, zero guard %2, array %3, empty guard %4, missing %5, unguarded %6", _rNum, _rZero, _rArr, _rEmpty, _rMissing, _rPlain];
     } else {
         diag_log text format ["[PHASE59] [FAIL] state read: number %1, zero %2, array %3, empty %4, missing %5, unguarded %6", _rNum, _rZero, _rArr, _rEmpty, _rMissing, _rPlain];
+    };
+
+    // -- PHASE 60: surface material classifier --
+    // The engine config cannot be changed at run time, so the visible
+    // kickup comes from our own emitters. They need to know WHAT is being
+    // kicked up: the classifier maps an engine surface type to a material
+    // and a colour. Snow must throw snow, sand must throw sand, dirt must
+    // throw dirt, regardless of the map.
+    private _cases = [
+        ["#GdtSnow", "snow"], ["#GdtSnowSurface", "snow"],
+        ["#GdtSand", "sand"], ["#GdtDesert", "sand"],
+        ["#GdtDirt", "dirt"], ["#GdtGrassGreen", "dirt"],
+        ["#GdtRock", "gravel"], ["#GdtMud", "mud"],
+        ["#GdtWater", "spray"], ["#GdtConcrete", "dust"]
+    ];
+    private _p60Ok = true;
+    private _seen = [];
+    {
+        _x params ["_surface", "_expect"];
+        private _got = ([_surface] call aee_fx_fnc_surfaceMaterial) select 0;
+        _seen pushBack format ["%1->%2", _surface, _got];
+        if (_got != _expect) then { _p60Ok = false; };
+    } forEach _cases;
+    // An unknown surface must still resolve (the ground-state fallback),
+    // never return an empty material.
+    private _unknown = (["#NotASurface_zzz"] call aee_fx_fnc_surfaceMaterial) select 0;
+    if (_unknown == "") then { _p60Ok = false; };
+    if (_p60Ok) then {
+        diag_log text format ["[PHASE60] [PASS] surface material: %1 cases, unknown -> %2", count _cases, _unknown];
+    } else {
+        diag_log text format ["[PHASE60] [FAIL] surface material: %1", _seen];
     };
 
 diag_log text "[AEE-TEST] DONE";
