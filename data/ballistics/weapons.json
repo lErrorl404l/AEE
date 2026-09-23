@@ -22883,6 +22883,38 @@
   }
  },
  {
+  "weapon_id": "mc14tipat",
+  "names": [
+   "MC 14 Tipat"
+  ],
+  "aliases": [
+   "mc14tipat"
+  ],
+  "manufacturer": "Girsan",
+  "cartridge_id": "",
+  "note": "Verbatim maker line: \"Rifling : Right Hand 6 Unit(250 mm)\" (page states \"Caliber : .380ACP\"). The listed name 'MC 14 Tipat' matches no separate Girsan designation; the .380 ACP Girsan MC 14 is published here as 250 mm / 6 grooves right hand. The MC 14 T tip-up variant has no separately published rifling.",
+  "values": {
+   "cartridge": {
+    "value": ".380 ACP",
+    "unit": "name",
+    "source": "girsan-mc14-black",
+    "grade": "claimed"
+   },
+   "twist_m": {
+    "value": 0.25,
+    "unit": "m per turn",
+    "source": "girsan-mc14-black",
+    "grade": "claimed"
+   },
+   "grooves": {
+    "value": 6,
+    "unit": "count",
+    "source": "girsan-mc14-black",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "weapon_id": "mc1911",
   "names": [
    "Girsan MC1911"
@@ -22899,6 +22931,38 @@
     "value": ".45 ACP",
     "unit": "name",
     "source": "girsan_products",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "mc1911commander",
+  "names": [
+   "MC 1911 Commander"
+  ],
+  "aliases": [
+   "mc1911commander"
+  ],
+  "manufacturer": "Girsan",
+  "cartridge_id": "45_auto",
+  "note": "Verbatim maker line for the .45 ACP model: \"Rifling : Right Hand 6 Unit(406 mm)\" (page states \"Caliber : .45 ACP\"). The Girsan MC 1911 C Commander page gives the line-range value \"Rifling : Right Hand 6 Unit(250-406 mm)\" (9x19mm/9mm = 250 mm, .45 ACP = 406 mm); sha256 c2201a59f2612cebc10ef5015f5a785ab865b7161bdee8ed30a305e17808a216, https://girsan.com/products/mc-1911-c-black/3-8-52. .45 ACP value 406 mm taken.",
+  "values": {
+   "cartridge": {
+    "value": ".45 ACP",
+    "unit": "name",
+    "source": "girsan-mc1911s-black",
+    "grade": "claimed"
+   },
+   "twist_m": {
+    "value": 0.406,
+    "unit": "m per turn",
+    "source": "girsan-mc1911s-black",
+    "grade": "claimed"
+   },
+   "grooves": {
+    "value": 6,
+    "unit": "count",
+    "source": "girsan-mc1911s-black",
     "grade": "claimed"
    }
   }
@@ -23512,6 +23576,32 @@
     "unit": "name",
     "source": "kimber_home",
     "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "microdeserteagle",
+  "names": [
+   "Micro Desert Eagle"
+  ],
+  "aliases": [
+   "microdeserteagle"
+  ],
+  "manufacturer": "Magnum Research",
+  "cartridge_id": "",
+  "note": "Verbatim spec: \"Barrel : 3.0\u201d, Nickel Teflon, Conventional Rifling, 1 - 16 right-hand twist\". 16 in = 406.4 mm. Manual elsewhere says \"polygonal rifling\" for the M380; no groove count is published.",
+  "values": {
+   "cartridge": {
+    "value": ".380 ACP",
+    "unit": "name",
+    "source": "mr-m380-manual-0419",
+    "grade": "documented"
+   },
+   "twist_m": {
+    "value": 0.4064,
+    "unit": "m per turn",
+    "source": "mr-m380-manual-0419",
+    "grade": "documented"
    }
   }
  },
@@ -29700,6 +29790,38 @@
     "unit": "count",
     "source": "nato_epvat",
     "grade": "standard"
+   }
+  }
+ },
+ {
+  "weapon_id": "pp19bizon",
+  "names": [
+   "PP-19 Bizon"
+  ],
+  "aliases": [
+   "pp19bizon"
+  ],
+  "manufacturer": "KBP",
+  "cartridge_id": "",
+  "note": "Barrel: Four-groove with right-hand twist of one turn. In 240 mm (9.4 inches). The bore and chamber are chrome lined.",
+  "values": {
+   "cartridge": {
+    "value": "9\u00d719mm Parabellum",
+    "unit": "name",
+    "source": "club-guns-ru-bizon",
+    "grade": "claimed"
+   },
+   "twist_m": {
+    "value": 0.24,
+    "unit": "m per turn",
+    "source": "club-guns-ru-bizon",
+    "grade": "claimed"
+   },
+   "grooves": {
+    "value": 4,
+    "unit": "count",
+    "source": "club-guns-ru-bizon",
+    "grade": "claimed"
    }
   }
  },
@@ -37671,6 +37793,32 @@
     "value": 0.254,
     "unit": "m per turn",
     "source": "sako_t3x_upr",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "t3xupr300wm",
+  "names": [
+   "T3x UPR .300WM"
+  ],
+  "aliases": [
+   "t3xupr300wm"
+  ],
+  "manufacturer": "Tikka",
+  "cartridge_id": "300_winchester_magnum",
+  "note": "Maker spec JSON on the official Tikka page: \"rifleCaliber\":\"300_win_mag\", ... \"rifleRateOfTwist\":\"1_10\" (label \"Rate of Twist\", translation \"rifleRateOfTwist.1_10\":\"1:10\\\"\"). All .300 Win. Mag. T3x variants on the page read 1_10. 1 in 10 inches = 254.0 mm. Groove count not published.",
+  "values": {
+   "cartridge": {
+    "value": ".300 Winchester Magnum",
+    "unit": "name",
+    "source": "tikka-us-t3x-upr",
+    "grade": "claimed"
+   },
+   "twist_m": {
+    "value": 0.254,
+    "unit": "m per turn",
+    "source": "tikka-us-t3x-upr",
     "grade": "claimed"
    }
   }

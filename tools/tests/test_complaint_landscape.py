@@ -59,14 +59,24 @@ class TestRoadmapMapping(unittest.TestCase):
                 f"ballistics {fn} missing - doc SHIPPED claim drifted",
             )
 
-    def test_anim_coupling_not_built(self):
-        # The doc says the setAnimSpeedCoef coupling is NOT built.
-        # Verify no code calls it.
-        hits = []
-        for sqf in (REPO / "addons").rglob("*.sqf"):
-            if "setAnimSpeedCoef" in sqf.read_text(encoding="utf-8"):
-                hits.append(str(sqf))
-        self.assertEqual(hits, [], f"setAnimSpeedCoef built without doc update: {hits}")
+    def test_anim_coupling_wired(self):
+        # The coupling was built (issue #212), so the claim is the
+        # opposite of the original not-built guard: the code calls
+        # setAnimSpeedCoef AND the doc says so.  Either half missing is a
+        # drift.
+        hits = [
+            str(sqf)
+            for sqf in (REPO / "addons").rglob("*.sqf")
+            if "setAnimSpeedCoef" in sqf.read_text(encoding="utf-8")
+        ]
+        self.assertTrue(
+            hits, "the coupling is documented as built but no code calls it"
+        )
+        self.assertIn(
+            "Built (issue #212)",
+            DOC.read_text(encoding="utf-8"),
+            "setAnimSpeedCoef is built but the doc still calls it not built",
+        )
 
     def test_engine_fundamental_claims_present(self):
         # The do-not-claim section must list the five engine-fundamental

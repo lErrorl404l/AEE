@@ -1,0 +1,1555 @@
+{
+  "retrieved": "2026-09-23",
+  "note": "Soldier small-kit mass capture: radio, medical, tool, hydration, food, power and misc. All masses are published values from manufacturer datasheets, manufacturer product pages, or military documents downloaded and sha256-hashed here. Tier 5 pages are recorded in leads only. Where a source publishes both lb and kg the kg figure is used; where only lb is published the exact conversion 1 lb = 0.45359237 kg is applied.",
+  "sources": [
+    {
+      "source_id": "l3harris_prc152a",
+      "title": "FALCON III AN/PRC-152A wideband networking handheld radio datasheet",
+      "url": "https://web.archive.org/web/2026/https://www.l3harris.com/sites/default/files/2021-01/cs-tcom-falcon-iii-an-prc-152a-wideband-networking-handheld-radio-datasheet.pdf",
+      "sha256": "9fce8d79ba825781b56cb4fd4c3e38a5c564f95d1801aca5414437c934df4be7",
+      "publisher": "L3Harris Technologies",
+      "tier": 4
+    },
+    {
+      "source_id": "l3harris_prc158",
+      "title": "Falcon IV AN/PRC-158 multi-channel manpack MCMP datasheet",
+      "url": "https://web.archive.org/web/2026/https://www.l3harris.com/sites/default/files/2024-01/l3harris-falcon-iv-an-prc-158-multi-channel-manpack-mcmp-datasheet-o-cs-tcom.pdf",
+      "sha256": "69b709a7c711f7cb8a996c319583a306be5b75bda1a727cd556bb8243f3e3d6b",
+      "publisher": "L3Harris Technologies",
+      "tier": 4
+    },
+    {
+      "source_id": "l3harris_prc163",
+      "title": "AN/PRC-163 multi-channel handheld radio datasheet (08-24)",
+      "url": "https://www.l3harris.com/sites/default/files/2024-09/l3harris-an-prc-163-multi-channel-handheld-radio-datasheet-cs-tcom-08-24.pdf",
+      "sha256": "d176f01a29fd797892916046fbfe3d43e4b0376abaa9465c1778b1ed2271e7a2",
+      "publisher": "L3Harris Technologies",
+      "tier": 4
+    },
+    {
+      "source_id": "l3harris_prc165",
+      "title": "AN/PRC-165 handheld video data link (HH-VDL) spec sheet",
+      "url": "https://www.l3harris.com/sites/default/files/2022-03/an-prc-165-handheld-video-data-link-hh-vdl-spec-sheet.pdf",
+      "sha256": "e012ccd629d6c27aff99736f57b2df3c6b04fb095d8cbe0caba3dd6766c50d91",
+      "publisher": "L3Harris Technologies",
+      "tier": 4
+    },
+    {
+      "source_id": "l3harris_prc167",
+      "title": "AN/PRC-167 multi-channel manpack datasheet",
+      "url": "https://web.archive.org/web/2026/https://www.l3harris.com/sites/default/files/2024-11/l3harris-an-prc-167-multi-channel-manpack-datasheet-cs-tcom.pdf",
+      "sha256": "0edea06d9449e525e93fc892564dfb2221486c00f2fd67a4aac6d348c20fb6b3",
+      "publisher": "L3Harris Technologies",
+      "tier": 4
+    },
+    {
+      "source_id": "l3harris_prc171",
+      "title": "AN/PRC-171 compact team radio sell sheet",
+      "url": "https://web.archive.org/web/2026/https://www.l3harris.com/sites/default/files/2025-04/l3harris-an-prc-171-compact-team-radio-sell-sheet-cs-tcom.pdf",
+      "sha256": "2f7a0d3f34f122ab667ffdf1b45dacb45fe9ecd60e4dd6037ed6b49feab7bf6f",
+      "publisher": "L3Harris Technologies",
+      "tier": 4
+    },
+    {
+      "source_id": "l3harris_prc160v",
+      "title": "AN/PRC-160V wideband HF/VHF tactical radio datasheet",
+      "url": "https://www.l3harris.com/sites/default/files/2024-01/l3harris-an-prc-160v-wideband-hf-vhf-tactical-radio-datasheet-cs-tcom.pdf",
+      "sha256": "173278ba3834f24d9633eb1537e1f73d1cc026d890017545e24ac6983787de74",
+      "publisher": "L3Harris Technologies",
+      "tier": 4
+    },
+    {
+      "source_id": "l3harris_prc117g",
+      "title": "AN/PRC-117G multiband networking manpack radio datasheet (DOD)",
+      "url": "https://www.l3harris.com/sites/default/files/2026-08/l3harris-an-prc-117g-multiband-networking-manpack-radio-datasheet-csd-dod.pdf",
+      "sha256": "16e4a7673f5e40a33db41e61a239ab9719768245e3ed32a4db3bdca90b1035b5",
+      "publisher": "L3Harris Technologies",
+      "tier": 4
+    },
+    {
+      "source_id": "rf7800h_mp",
+      "title": "FALCON III RF-7800H-MP wideband HF/VHF tactical radio system datasheet",
+      "url": "https://www.l3harris.com/sites/default/files/2020-07/cs_tc_datsheet_rf-7800h-mp-wideband-hf-vhf-tactical-radio-system.pdf",
+      "sha256": "c8adf88680f0bfab4625a3e39c1fd8ad4698c1c7a508b8a263b6b3614a631c83",
+      "publisher": "L3Harris Technologies",
+      "tier": 4
+    },
+    {
+      "source_id": "rf7800m_mp",
+      "title": "FALCON III RF-7800M-MP multiband networking manpack radio datasheet",
+      "url": "https://web.archive.org/web/2026/https://www.l3harris.com/sites/default/files/2021-01/cs-tcom-falcon-iii-rf-7800m-mp-multiband-networking-manpack-radio-datasheet.pdf",
+      "sha256": "5c85cbe6431173e813d70d284efe6526c04229fc0f2dcf3a5bf9576da4de290d",
+      "publisher": "L3Harris Technologies",
+      "tier": 4
+    },
+    {
+      "source_id": "energizer_l91_pdf",
+      "title": "Energizer L91 Ultimate Lithium AA technical datasheet",
+      "url": "https://data.energizer.com/pdfs/l91.pdf",
+      "sha256": "065bb4a5bf8cf48f6890da5b0a59d445a12e152a9c10e2ecc0f6bc7c61819137",
+      "publisher": "Energizer",
+      "tier": 4
+    },
+    {
+      "source_id": "energizer_l92_pdf",
+      "title": "Energizer L92 Ultimate Lithium AAA technical datasheet",
+      "url": "https://data.energizer.com/pdfs/l92.pdf",
+      "sha256": "6880c71b6f332ff1d42f2deb27d02a7d906f6be3015c5937e37c1dc77e38b41b",
+      "publisher": "Energizer",
+      "tier": 4
+    },
+    {
+      "source_id": "energizer_123_pdf",
+      "title": "Energizer 123 (EL123) lithium photo technical datasheet",
+      "url": "https://data.energizer.com/pdfs/123.pdf",
+      "sha256": "372053c271933ca6bf90860086058c758dc484cb0c933cb0a0f7e56195c126f6",
+      "publisher": "Energizer",
+      "tier": 4
+    },
+    {
+      "source_id": "energizer_cr2032_pdf",
+      "title": "Energizer CR2032 lithium coin technical datasheet",
+      "url": "https://data.energizer.com/pdfs/cr2032.pdf",
+      "sha256": "ff05548e1efc6164fc779836976b0de4859ddcfa0c4f058dd55147bdc239d41f",
+      "publisher": "Energizer",
+      "tier": 4
+    },
+    {
+      "source_id": "energizer_e91_pdf",
+      "title": "Energizer E91 AA alkaline technical datasheet",
+      "url": "https://data.energizer.com/pdfs/e91.pdf",
+      "sha256": "22a204e47c54a8b4c4c5b1e9b34be83486ce4b53f73e9c9453ee425cbffc6c8a",
+      "publisher": "Energizer",
+      "tier": 4
+    },
+    {
+      "source_id": "energizer_e92_pdf",
+      "title": "Energizer E92 AAA alkaline technical datasheet",
+      "url": "https://data.energizer.com/pdfs/e92.pdf",
+      "sha256": "237b07107f05de3955a5fbb5fb350c1ed3d8bb4246e0cda293e9adec654d4183",
+      "publisher": "Energizer",
+      "tier": 4
+    },
+    {
+      "source_id": "energizer_522_pdf",
+      "title": "Energizer 522 9V alkaline technical datasheet",
+      "url": "https://data.energizer.com/pdfs/522.pdf",
+      "sha256": "73253a3bf4eab3d8e4b2475d676710c2924bf081b3352f814df1bfc84fc6949c",
+      "publisher": "Energizer",
+      "tier": 4
+    },
+    {
+      "source_id": "duracell_123",
+      "title": "Duracell DL123A lithium photo battery datasheet",
+      "url": "https://web.archive.org/web/2026/https://www.duracell.com/oem/Pdf/dl123a.pdf",
+      "sha256": "09b738fb9544f9c5bb37056c8e68d617f40333aefb13567900268d817d56abab",
+      "publisher": "Duracell",
+      "tier": 4
+    },
+    {
+      "source_id": "brentronics_bb2590_pdf",
+      "title": "Bren-Tronics BB-2590/U lithium-ion battery datasheet",
+      "url": "https://web.archive.org/web/2026/http://www.bren-tronics.com/BB2590.pdf",
+      "sha256": "c5978663270b715006a169d11995db96dba7fdbf23a58a490edcb93e45f9f3e5",
+      "publisher": "Bren-Tronics",
+      "tier": 4
+    },
+    {
+      "source_id": "brentronics_bt2590ck",
+      "title": "Bren-Tronics BT-2590CK rechargeable battery product page",
+      "url": "https://web.archive.org/web/2026/http://www.bren-tronics.com/batteries/rechargeable/bt-2590ck.html",
+      "sha256": "60be61808c7a4af09542659ea6c70cee674836da2f7f6569a5a82d56d124fe99",
+      "publisher": "Bren-Tronics",
+      "tier": 4
+    },
+    {
+      "source_id": "lm_wave",
+      "title": "Leatherman Wave+ multi-tool product page",
+      "url": "https://www.leatherman.com/products/wave",
+      "sha256": "b3cd176639c74382c9d3faf47982bf6344d9c5b424aa7ef95069b99fb88c959b",
+      "publisher": "Leatherman Tool Group",
+      "tier": 4
+    },
+    {
+      "source_id": "lm_surge",
+      "title": "Leatherman Surge multi-tool product page",
+      "url": "https://www.leatherman.com/products/surge",
+      "sha256": "551811a2167444e358c67ffab8eeca393ac2583462edb37648a2e5c12bd3f91e",
+      "publisher": "Leatherman Tool Group",
+      "tier": 4
+    },
+    {
+      "source_id": "lm_mut",
+      "title": "Leatherman MUT multi-tool product page",
+      "url": "https://www.leatherman.com/products/mut",
+      "sha256": "6151c019b77dfaf06249ac1bdd116332c8e5c260d4d8edb1c2f7d4c4342c8d36",
+      "publisher": "Leatherman Tool Group",
+      "tier": 4
+    },
+    {
+      "source_id": "lm_mut_eod",
+      "title": "Leatherman MUT EOD multi-tool product page",
+      "url": "https://www.leatherman.com/products/mut-eod",
+      "sha256": "9f1e4cfa8b56cdbe91ad9938c76526dc3f76a642d4c2c425a6e0b72f54d63090",
+      "publisher": "Leatherman Tool Group",
+      "tier": 4
+    },
+    {
+      "source_id": "lm_skeletool",
+      "title": "Leatherman Skeletool multi-tool product page",
+      "url": "https://www.leatherman.com/products/skeletool",
+      "sha256": "81d56117b5590b48a7b42549e8eccfc0175ce95195e610bafe81ecc137bb2151",
+      "publisher": "Leatherman Tool Group",
+      "tier": 4
+    },
+    {
+      "source_id": "lm_raptor",
+      "title": "Leatherman Raptor Rescue shears product page",
+      "url": "https://www.leatherman.com/products/raptor-rescue",
+      "sha256": "f4eaa39a0eb2a1f3e7fea938cb9f44251828b6b4fc6a5acedc3bc702a34d1dc8",
+      "publisher": "Leatherman Tool Group",
+      "tier": 4
+    },
+    {
+      "source_id": "lm_signal",
+      "title": "Leatherman Signal multi-tool product page",
+      "url": "https://www.leatherman.com/products/signal",
+      "sha256": "d0f32defc77a1eee82cd2cd75ac6669bbca858403ff86aa0fb6c993f9f645db9",
+      "publisher": "Leatherman Tool Group",
+      "tier": 4
+    },
+    {
+      "source_id": "lm_micra",
+      "title": "Leatherman Micra multi-tool product page",
+      "url": "https://www.leatherman.com/products/micra",
+      "sha256": "de166dd58851531b1920b8bdfd9f97084c06571f80b954f0040af008f3f4e5af",
+      "publisher": "Leatherman Tool Group",
+      "tier": 4
+    },
+    {
+      "source_id": "lm_wingman",
+      "title": "Leatherman Wingman multi-tool product page",
+      "url": "https://www.leatherman.com/products/wingman",
+      "sha256": "64a4af9045d427e34bc8d061b8e587c77c4a126ce5ed742a1d63eb34bf8062b6",
+      "publisher": "Leatherman Tool Group",
+      "tier": 4
+    },
+    {
+      "source_id": "lm_sidekick",
+      "title": "Leatherman Sidekick multi-tool product page",
+      "url": "https://www.leatherman.com/products/sidekick",
+      "sha256": "6b5cb526f7108f1178daa3397af2abfa48e5a0fe1a5e93da81b170adb070ee32",
+      "publisher": "Leatherman Tool Group",
+      "tier": 4
+    },
+    {
+      "source_id": "lm_wave_alpha",
+      "title": "Leatherman Wave Alpha multi-tool product page",
+      "url": "https://www.leatherman.com/products/wave-alpha",
+      "sha256": "f73c6f0fbbec8bd87d2ad44212ddf1960306fdb8325df85118b53c261b20d356",
+      "publisher": "Leatherman Tool Group",
+      "tier": 4
+    },
+    {
+      "source_id": "lm_super_tool_300",
+      "title": "Leatherman Super Tool 300 product page",
+      "url": "https://www.leatherman.com/products/super-tool-300",
+      "sha256": "2ddee754aa462411abffba77681ee7a316e9b547eacc2d33c3b42865e80b0113",
+      "publisher": "Leatherman Tool Group",
+      "tier": 4
+    },
+    {
+      "source_id": "lm_super_tool_300_eod",
+      "title": "Leatherman Super Tool 300 EOD product page",
+      "url": "https://www.leatherman.com/products/super-tool-300-eod",
+      "sha256": "26bf2aedf780a88f2e14802ef67d07d9aac5adbf4d7aeb82ac9cdb5536651433",
+      "publisher": "Leatherman Tool Group",
+      "tier": 4
+    },
+    {
+      "source_id": "lm_super_tool_300m",
+      "title": "Leatherman Super Tool 300M product page",
+      "url": "https://www.leatherman.com/products/super-tool-300m",
+      "sha256": "8fface44671fa5246e78fdfe8387f3a379bec5f1aee3b68dcafba1508f402404",
+      "publisher": "Leatherman Tool Group",
+      "tier": 4
+    },
+    {
+      "source_id": "lm_rebar",
+      "title": "Leatherman Rebar multi-tool product page",
+      "url": "https://www.leatherman.com/products/rebar",
+      "sha256": "3182b7db3fe700fc4dcd9d112db74af9a641be0553f89697b1cb5cc815d16aa1",
+      "publisher": "Leatherman Tool Group",
+      "tier": 4
+    },
+    {
+      "source_id": "lm_bond",
+      "title": "Leatherman Bond multi-tool product page",
+      "url": "https://www.leatherman.com/products/bond",
+      "sha256": "2f151283d8f6ceaffc2c527ffa67ca0d003b42c190bba99a987a70848ed3b3b3",
+      "publisher": "Leatherman Tool Group",
+      "tier": 4
+    },
+    {
+      "source_id": "lm_rev",
+      "title": "Leatherman Rev multi-tool product page",
+      "url": "https://www.leatherman.com/products/rev",
+      "sha256": "f21cfb779a097e26e7c00d92ee9e6496dde6224854f2787e0c2169e78e236eea",
+      "publisher": "Leatherman Tool Group",
+      "tier": 4
+    },
+    {
+      "source_id": "lm_free_k4x",
+      "title": "Leatherman Free K4x product page",
+      "url": "https://www.leatherman.com/products/free-k4x",
+      "sha256": "f1ed98aa493c89855ea710306a3b2bdc5971ad78bdc6dcdd9b05eda6096a77a4",
+      "publisher": "Leatherman Tool Group",
+      "tier": 4
+    },
+    {
+      "source_id": "lm_free_k2x",
+      "title": "Leatherman Free K2x product page",
+      "url": "https://www.leatherman.com/products/free-k2x",
+      "sha256": "8796a9da6369a15faddd6d1b0e3895c59590b00b37c2f6bf75bf7986230249e5",
+      "publisher": "Leatherman Tool Group",
+      "tier": 4
+    },
+    {
+      "source_id": "lm_skeletool_cx",
+      "title": "Leatherman Skeletool CX multi-tool product page",
+      "url": "https://www.leatherman.com/products/skeletool-cx",
+      "sha256": "93f6f9dd6da272f9a64924a4d53825c33a40ce5ec798b282b42f231329bce084",
+      "publisher": "Leatherman Tool Group",
+      "tier": 4
+    },
+    {
+      "source_id": "lm_free_t2",
+      "title": "Leatherman Free T2 multi-tool product page",
+      "url": "https://www.leatherman.com/products/free-t2",
+      "sha256": "67ce0daa9d6c076bb86956c212ec3b59254ba9c7a64589bd231da24439d0c742",
+      "publisher": "Leatherman Tool Group",
+      "tier": 4
+    },
+    {
+      "source_id": "nal_32wm",
+      "title": "Nalgene 32oz Wide Mouth bottle product page",
+      "url": "https://nalgene.com/product/32oz-wide-mouth-large-logo/",
+      "sha256": "f084a6f7ca3d2980957f3731113d3e38882ec38582b76068aecafabc7a79617d",
+      "publisher": "Nalgene (Thermo Fisher)",
+      "tier": 4
+    },
+    {
+      "source_id": "nal_48",
+      "title": "Nalgene 48oz storage bottle product page",
+      "url": "https://nalgene.com/product/48oz-nalgene-storage-bottle/",
+      "sha256": "6a202e743cece8481abe2eea451f536b825c1469c93f54374f095d26e360673a",
+      "publisher": "Nalgene (Thermo Fisher)",
+      "tier": 4
+    },
+    {
+      "source_id": "nal_ultralite16",
+      "title": "Nalgene Ultralite 16oz narrow mouth bottle product page",
+      "url": "https://nalgene.com/product/ultralite-16oz-narrow-mouth-nalgene/",
+      "sha256": "8b44d2376e54f707dd3c5f84d30cb85ceb321164780fac6b33e8a85b18e3910b",
+      "publisher": "Nalgene (Thermo Fisher)",
+      "tier": 4
+    },
+    {
+      "source_id": "nal_cantene32",
+      "title": "Nalgene 32oz Cantene collapsible bottle product page",
+      "url": "https://nalgene.com/product/32oz-nalgene-cantene/",
+      "sha256": "0f7f091cd79bd504c7a6f8bd11d6dbc3b014ccc9029adecc3a3baad7da549468",
+      "publisher": "Nalgene (Thermo Fisher)",
+      "tier": 4
+    },
+    {
+      "source_id": "nar_catalog0204",
+      "title": "North American Rescue product catalogue 0204 (PDF)",
+      "url": "https://web.archive.org/web/2026/http://www.narescue.com/0204catalog.pdf",
+      "sha256": "2cb47b9d9f7d2276f34c7792947b4af9630a45b2b57e11e0154238f9d95f21c3",
+      "publisher": "North American Rescue",
+      "tier": 4
+    },
+    {
+      "source_id": "nar_cat7",
+      "title": "C-A-T Combat Application Tourniquet product page",
+      "url": "https://www.narescue.com/combat-application-tourniquet-c-a-t.html",
+      "sha256": "ae36e1e02c4be0f73bf3f439e8aa3f730876d6f4b7e56aef3ef666ad5524db2a",
+      "publisher": "North American Rescue",
+      "tier": 4
+    },
+    {
+      "source_id": "nar_combat_gauze_le",
+      "title": "Combat Gauze LE product page",
+      "url": "https://www.narescue.com/combat-gauze-le.html",
+      "sha256": "2723b4e6f125ba6ba0dad5b3d1cfdc00dde00322388d754ef8d418ab3f17f9bd",
+      "publisher": "North American Rescue",
+      "tier": 4
+    },
+    {
+      "source_id": "nar_quikclot_bcd",
+      "title": "QuikClot Bleeding Control Dressing product page",
+      "url": "https://www.narescue.com/quikclot-bleeding-control-dressings.html",
+      "sha256": "549fb3617f03e78278d7f8a617f76801591d64deb13d195b2f2da5fa358fdbde",
+      "publisher": "North American Rescue",
+      "tier": 4
+    },
+    {
+      "source_id": "nar_quikclot_zfold",
+      "title": "QuikClot Bleeding Control Z-Fold Dressing 3 in x 4 yd product page",
+      "url": "https://www.narescue.com/quikclot-bleeding-control-z-fold-dressing-3-in-x-4-yd.html",
+      "sha256": "fed46a9dd9ee270577c85413250fd253a2fee41ef1cbd00ea1b142312802f35a",
+      "publisher": "North American Rescue",
+      "tier": 4
+    },
+    {
+      "source_id": "nar_hyfin_twin",
+      "title": "HyFin Vent Chest Seal twin pack product page",
+      "url": "https://www.narescue.com/hyfin-vent-chest-seal-twin-pack.html",
+      "sha256": "18351b7ff671bcf2c34ba0d33bae0d4f1365a6565d5c262c4131a052b1835ad4",
+      "publisher": "North American Rescue",
+      "tier": 4
+    },
+    {
+      "source_id": "nar_hyfin_compact_twin",
+      "title": "HyFin Vent Compact Chest Seal twin pack product page",
+      "url": "https://www.narescue.com/hyfin-vent-compact-chest-seal-twin-pack.html",
+      "sha256": "b9b6fa235a93e98fddbc8f5d397f1bad6d11c853dc1cd0e23bc1973daeb0b5f2",
+      "publisher": "North American Rescue",
+      "tier": 4
+    },
+    {
+      "source_id": "nar_npa",
+      "title": "NAR Nasopharyngeal Airway 28F pre-lubricated product page",
+      "url": "https://web.archive.org/web/2026/https://www.narescue.com/nasopharyngeal-airway.html",
+      "sha256": "7f4d7ab7ad35465726012b3a8c0dd897b8351868798a000a9f587687973f2225",
+      "publisher": "North American Rescue",
+      "tier": 4
+    },
+    {
+      "source_id": "nar_sam_splint_ii",
+      "title": "SAM Splint II product page",
+      "url": "https://www.narescue.com/sam-splint-ii.html",
+      "sha256": "f1d1ce665428905ea057365ea97dc95e8bab98aba5a43b165f0f1eb172c29245",
+      "publisher": "North American Rescue",
+      "tier": 4
+    },
+    {
+      "source_id": "nar_survival_blanket",
+      "title": "NAR Survival Blanket product page",
+      "url": "https://www.narescue.com/nar-survival-blanket.html",
+      "sha256": "42ec2cf9dbfedc58481d5fc3cccbd144a2aaaf03d427d8e0014306d75647422e",
+      "publisher": "North American Rescue",
+      "tier": 4
+    },
+    {
+      "source_id": "nar_rolled_gauze",
+      "title": "NAR S-Rolled Gauze product page",
+      "url": "https://www.narescue.com/nar-s-rolled-gauze.html",
+      "sha256": "87228619095f5cd8ebfcfac07a92585edf0cbd14bec437ffc28b40a8ec083c2e",
+      "publisher": "North American Rescue",
+      "tier": 4
+    },
+    {
+      "source_id": "nar_etd",
+      "title": "Responder Emergency Trauma Dressing product page",
+      "url": "https://www.narescue.com/emergency-trauma-dressing.html",
+      "sha256": "32f7a833c2c556fa52ee8cebb28dc73dd1dbcdba8a16fad627f8a6569976dd14",
+      "publisher": "North American Rescue",
+      "tier": 4
+    },
+    {
+      "source_id": "nar_quiklitter_lite",
+      "title": "NAR QuikLitter Lite product page",
+      "url": "https://www.narescue.com/nar-quiklitter-lite.html",
+      "sha256": "07babfff54a86c1cea34eecf5716c07b2b39d9e295fd9b1c673e682cf85bb44e",
+      "publisher": "North American Rescue",
+      "tier": 4
+    },
+    {
+      "source_id": "nar_quiklitter_xl",
+      "title": "NAR QuikLitter XL product page",
+      "url": "https://www.narescue.com/nar-quiklitter-xl.html",
+      "sha256": "ad8efa969dd74b136782bf64c043cdfda214d5c757a3c5a1d434e195a298d4e2",
+      "publisher": "North American Rescue",
+      "tier": 4
+    },
+    {
+      "source_id": "nar_etd4",
+      "title": "4 in rolled Responder Emergency Trauma Dressing product page",
+      "url": "https://web.archive.org/web/2026/https://www.narescue.com/4-in-rolled-responder-emergency-trauma-dressing.html",
+      "sha256": "0daa04073ce68c3acecaf4c108c00dc939285048cd3250f634f64620d2afa5c5",
+      "publisher": "North American Rescue",
+      "tier": 4
+    },
+    {
+      "source_id": "nar_field_shield",
+      "title": "Field Shield Wound Dressing product page",
+      "url": "https://www.narescue.com/field-shield-wound-dressing.html",
+      "sha256": "64f4d27354d000f5cce37766d84f26bf3df0898aec1467e2442daafbdd160454",
+      "publisher": "North American Rescue",
+      "tier": 4
+    },
+    {
+      "source_id": "nar_burn_kit",
+      "title": "BurnTec Emergency Burn Kit product page",
+      "url": "https://www.narescue.com/burntec-emergency-burn-kit.html",
+      "sha256": "ad41c60fb6c89987f06a492b9f2ac872beae0dbe6ac2c5d9d66f506557ed89f2",
+      "publisher": "North American Rescue",
+      "tier": 4
+    },
+    {
+      "source_id": "nar_cat_case",
+      "title": "C-A-T Rigid Inside the Waistband (IWB) tourniquet case product page",
+      "url": "https://www.narescue.com/c-a-t-rigid-inside-the-waistband-iwb-tourniquet-case.html",
+      "sha256": "a8db7e31a456f01058dca639e0c839c7838f929f27aa38f50a68adcb5e890277",
+      "publisher": "North American Rescue",
+      "tier": 4
+    },
+    {
+      "source_id": "nar_celox_zfold",
+      "title": "Celox First Aid 5 ft Z-Fold hemostatic dressing product page",
+      "url": "https://www.narescue.com/five-ft-celox-first-aid-z-fold-hemostatic-dressing.html",
+      "sha256": "02c2f8bc8a48b5bed1f99ca74633e6180d36c0765ef7a211c68a7168482ec9d7",
+      "publisher": "North American Rescue",
+      "tier": 4
+    },
+    {
+      "source_id": "nar_elastic_wrap",
+      "title": "NAR elastic wrap bandages product page",
+      "url": "https://www.narescue.com/nar-elastic-wrap-bandages.html",
+      "sha256": "1140fc7fe4ef9349540be5904ac1d4e13611c8c707c868c9611d96e380912db3",
+      "publisher": "North American Rescue",
+      "tier": 4
+    },
+    {
+      "source_id": "tfp_echo",
+      "title": "Tactical Foodpack 1 Meal Ration Echo product page",
+      "url": "https://web.archive.org/web/2026/https://www.tacticalfoodpack.com/et/toode/1-meal-ration-echo/",
+      "sha256": "ec50e913cbe8410d6e8985ca189dfd3a0122ac4da548718e6df6b393a580815d",
+      "publisher": "Tactical Foodpack",
+      "tier": 4
+    },
+    {
+      "source_id": "tfp_delta",
+      "title": "Tactical Foodpack 1 Meal Ration Delta product page",
+      "url": "https://web.archive.org/web/2026/https://www.tacticalfoodpack.com/et/toode/1-meal-ration-delta-341g/",
+      "sha256": "6147219adfdc71376bae48571e775266ae02bf9acc0c2e9e8ac8e7c8155d75e2",
+      "publisher": "Tactical Foodpack",
+      "tier": 4
+    },
+    {
+      "source_id": "rothco_survival_blanket",
+      "title": "Rothco 2-Person Polarshield survival blanket product page",
+      "url": "https://www.rothco.com/product/rothco-2-person-polarshield-survival-blanket",
+      "sha256": "112920797167c15f1918f3700e71794a683d72f9b3638e1ebb0dc54130085d9f",
+      "publisher": "Rothco",
+      "tier": 4
+    }
+  ],
+  "items": [
+    {
+      "item": "AN/PRC-152A (non-GPS)",
+      "category": "radio",
+      "family": "prc152",
+      "mass_kg": 1.1,
+      "state": "with battery and antenna",
+      "maker": "L3Harris",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight (with battery and antenna) Non-GPS models: 2.5 lbs. max (1.1 kg)",
+      "source_id": "l3harris_prc152a"
+    },
+    {
+      "item": "AN/PRC-152A (GPS)",
+      "category": "radio",
+      "family": "prc152",
+      "mass_kg": 1.2,
+      "state": "with battery and antenna",
+      "maker": "L3Harris",
+      "country": "US",
+      "era": "modern",
+      "note": "GPS models: 2.7 lbs. max (1.2 kg)",
+      "source_id": "l3harris_prc152a"
+    },
+    {
+      "item": "AN/PRC-158",
+      "category": "radio",
+      "family": "prc158",
+      "mass_kg": 4.04,
+      "state": "without battery",
+      "maker": "L3Harris",
+      "country": "US",
+      "era": "modern",
+      "note": "8.9 lbs (without battery)",
+      "source_id": "l3harris_prc158"
+    },
+    {
+      "item": "AN/PRC-158",
+      "category": "radio",
+      "family": "prc158",
+      "mass_kg": 5.76,
+      "state": "with battery",
+      "maker": "L3Harris",
+      "country": "US",
+      "era": "modern",
+      "note": "12.7 lbs (with battery)",
+      "source_id": "l3harris_prc158"
+    },
+    {
+      "item": "AN/PRC-163",
+      "category": "radio",
+      "family": "prc163",
+      "mass_kg": 1.25,
+      "state": "with battery",
+      "maker": "L3Harris",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight (with battery) 2.75 lbs (1.25 kg)",
+      "source_id": "l3harris_prc163"
+    },
+    {
+      "item": "AN/PRC-165",
+      "category": "radio",
+      "family": "prc165",
+      "mass_kg": 0.566,
+      "state": "with battery",
+      "maker": "L3Harris",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight <20 oz (0.566 kg)",
+      "source_id": "l3harris_prc165"
+    },
+    {
+      "item": "AN/PRC-167",
+      "category": "radio",
+      "family": "prc167",
+      "mass_kg": 5.85,
+      "state": "with battery",
+      "maker": "L3Harris",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight 12.9 lbs (with battery); 5.85 kg",
+      "source_id": "l3harris_prc167"
+    },
+    {
+      "item": "AN/PRC-171",
+      "category": "radio",
+      "family": "prc171",
+      "mass_kg": 0.45,
+      "state": "without battery",
+      "maker": "L3Harris",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight (without battery) 1 lbs (450 g)",
+      "source_id": "l3harris_prc171"
+    },
+    {
+      "item": "AN/PRC-160V",
+      "category": "radio",
+      "family": "prc160",
+      "mass_kg": 4.1,
+      "state": "without batteries",
+      "maker": "L3Harris",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight 9.1 lbs (4.1 kg) without batteries",
+      "source_id": "l3harris_prc160v"
+    },
+    {
+      "item": "AN/PRC-117G",
+      "category": "radio",
+      "family": "prc117",
+      "mass_kg": 3.67,
+      "state": "without battery",
+      "maker": "L3Harris",
+      "country": "US",
+      "era": "modern",
+      "note": "Without battery: 8.1(3.67 kg)",
+      "source_id": "l3harris_prc117g"
+    },
+    {
+      "item": "AN/PRC-117G",
+      "category": "radio",
+      "family": "prc117",
+      "mass_kg": 4.98,
+      "state": "with battery",
+      "maker": "L3Harris",
+      "country": "US",
+      "era": "modern",
+      "note": "With battery: 11 lbs (4.98 kg)",
+      "source_id": "l3harris_prc117g"
+    },
+    {
+      "item": "RF-7800H-MP",
+      "category": "radio",
+      "family": "rf7800",
+      "mass_kg": 3.9,
+      "state": "without batteries",
+      "maker": "L3Harris",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight 8.7 lbs (3.9 kg) without batteries",
+      "source_id": "rf7800h_mp"
+    },
+    {
+      "item": "RF-7800M-MP",
+      "category": "radio",
+      "family": "rf7800",
+      "mass_kg": 3.58,
+      "state": "without battery",
+      "maker": "L3Harris",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight 7.9 lbs (3.58 kg) (without battery)",
+      "source_id": "rf7800m_mp"
+    },
+    {
+      "item": "Energizer Ultimate Lithium AA (L91)",
+      "category": "power",
+      "family": "l91",
+      "mass_kg": 0.015,
+      "state": "single cell",
+      "maker": "Energizer",
+      "country": "US",
+      "era": "modern",
+      "note": "Typical Weight: 15 grams (0.5 oz.)",
+      "source_id": "energizer_l91_pdf"
+    },
+    {
+      "item": "Energizer Ultimate Lithium AAA (L92)",
+      "category": "power",
+      "family": "l92",
+      "mass_kg": 0.0076,
+      "state": "single cell",
+      "maker": "Energizer",
+      "country": "US",
+      "era": "modern",
+      "note": "Typical Weight: 7.6 grams (0.3 oz.)",
+      "source_id": "energizer_l92_pdf"
+    },
+    {
+      "item": "Energizer 123 (CR123A)",
+      "category": "power",
+      "family": "cr123",
+      "mass_kg": 0.0165,
+      "state": "single cell",
+      "maker": "Energizer",
+      "country": "US",
+      "era": "modern",
+      "note": "Typical Weight: 16.5 grams (0.58 oz.)",
+      "source_id": "energizer_123_pdf"
+    },
+    {
+      "item": "Energizer CR2032",
+      "category": "power",
+      "family": "cr2032",
+      "mass_kg": 0.003,
+      "state": "single cell",
+      "maker": "Energizer",
+      "country": "US",
+      "era": "modern",
+      "note": "Typical Weight: 3.0 grams (0.10 oz.)",
+      "source_id": "energizer_cr2032_pdf"
+    },
+    {
+      "item": "Energizer E91 AA alkaline",
+      "category": "power",
+      "family": "e91",
+      "mass_kg": 0.023,
+      "state": "single cell",
+      "maker": "Energizer",
+      "country": "US",
+      "era": "modern",
+      "note": "Typical Weight: 23.0 grams (0.8 oz.)",
+      "source_id": "energizer_e91_pdf"
+    },
+    {
+      "item": "Energizer E92 AAA alkaline",
+      "category": "power",
+      "family": "e92",
+      "mass_kg": 0.0115,
+      "state": "single cell",
+      "maker": "Energizer",
+      "country": "US",
+      "era": "modern",
+      "note": "Typical Weight: 11.5 grams (0.4 oz.)",
+      "source_id": "energizer_e92_pdf"
+    },
+    {
+      "item": "Energizer 522 9V alkaline",
+      "category": "power",
+      "family": "522",
+      "mass_kg": 0.045,
+      "state": "single cell",
+      "maker": "Energizer",
+      "country": "US",
+      "era": "modern",
+      "note": "Typical Weight: 45 grams",
+      "source_id": "energizer_522_pdf"
+    },
+    {
+      "item": "Duracell DL123A",
+      "category": "power",
+      "family": "dl123",
+      "mass_kg": 0.017,
+      "state": "single cell",
+      "maker": "Duracell",
+      "country": "US",
+      "era": "modern",
+      "note": "Average Weight: 0.60 oz. (17.0 g)",
+      "source_id": "duracell_123"
+    },
+    {
+      "item": "BB-2590/U",
+      "category": "power",
+      "family": "bb2590",
+      "mass_kg": 1.4,
+      "state": "nominal weight",
+      "maker": "Bren-Tronics",
+      "country": "US",
+      "era": "modern",
+      "note": "Nominal Weight . . . 3.10 Lb (1.4 Kg)",
+      "source_id": "brentronics_bb2590_pdf"
+    },
+    {
+      "item": "BT-2590CK",
+      "category": "power",
+      "family": "bt2590",
+      "mass_kg": 1.4,
+      "state": "with connector kit",
+      "maker": "Bren-Tronics",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight 3.1 lb (1.4 kg)",
+      "source_id": "brentronics_bt2590ck"
+    },
+    {
+      "item": "Wave+",
+      "category": "tool",
+      "family": "wave",
+      "mass_kg": 0.241,
+      "state": "tool only",
+      "maker": "Leatherman",
+      "country": "US",
+      "era": "modern",
+      "note": "\"weight\":\"241 g\"",
+      "source_id": "lm_wave"
+    },
+    {
+      "item": "Surge",
+      "category": "tool",
+      "family": "surge",
+      "mass_kg": 0.354,
+      "state": "tool only",
+      "maker": "Leatherman",
+      "country": "US",
+      "era": "modern",
+      "note": "\"weight\":\"354 g\"",
+      "source_id": "lm_surge"
+    },
+    {
+      "item": "MUT",
+      "category": "tool",
+      "family": "mut",
+      "mass_kg": 0.318,
+      "state": "tool only",
+      "maker": "Leatherman",
+      "country": "US",
+      "era": "modern",
+      "note": "\"weight\":\"318 g\"",
+      "source_id": "lm_mut"
+    },
+    {
+      "item": "MUT EOD",
+      "category": "tool",
+      "family": "mut",
+      "mass_kg": 0.318,
+      "state": "tool only",
+      "maker": "Leatherman",
+      "country": "US",
+      "era": "modern",
+      "note": "\"weight\":\"318 g\"",
+      "source_id": "lm_mut_eod"
+    },
+    {
+      "item": "Skeletool",
+      "category": "tool",
+      "family": "skeletool",
+      "mass_kg": 0.142,
+      "state": "tool only",
+      "maker": "Leatherman",
+      "country": "US",
+      "era": "modern",
+      "note": "\"weight\":\"142 g\"",
+      "source_id": "lm_skeletool"
+    },
+    {
+      "item": "Raptor Rescue",
+      "category": "tool",
+      "family": "raptor",
+      "mass_kg": 0.164,
+      "state": "tool only",
+      "maker": "Leatherman",
+      "country": "US",
+      "era": "modern",
+      "note": "\"weight\":\"164 g\"",
+      "source_id": "lm_raptor"
+    },
+    {
+      "item": "Signal",
+      "category": "tool",
+      "family": "signal",
+      "mass_kg": 0.213,
+      "state": "tool only",
+      "maker": "Leatherman",
+      "country": "US",
+      "era": "modern",
+      "note": "\"weight\":\"213 g\"",
+      "source_id": "lm_signal"
+    },
+    {
+      "item": "Micra",
+      "category": "tool",
+      "family": "micra",
+      "mass_kg": 0.051,
+      "state": "tool only",
+      "maker": "Leatherman",
+      "country": "US",
+      "era": "modern",
+      "note": "\"weight\":\"51 g\"",
+      "source_id": "lm_micra"
+    },
+    {
+      "item": "Wingman",
+      "category": "tool",
+      "family": "wingman",
+      "mass_kg": 0.198,
+      "state": "tool only",
+      "maker": "Leatherman",
+      "country": "US",
+      "era": "modern",
+      "note": "\"weight\":\"198 g\"",
+      "source_id": "lm_wingman"
+    },
+    {
+      "item": "Sidekick",
+      "category": "tool",
+      "family": "sidekick",
+      "mass_kg": 0.198,
+      "state": "tool only",
+      "maker": "Leatherman",
+      "country": "US",
+      "era": "modern",
+      "note": "\"weight\":\"198 g\"",
+      "source_id": "lm_sidekick"
+    },
+    {
+      "item": "Wave Alpha",
+      "category": "tool",
+      "family": "wave alpha",
+      "mass_kg": 0.234,
+      "state": "tool only",
+      "maker": "Leatherman",
+      "country": "US",
+      "era": "modern",
+      "note": "\"weight\":\"234 g\"",
+      "source_id": "lm_wave_alpha"
+    },
+    {
+      "item": "Super Tool 300",
+      "category": "tool",
+      "family": "super tool",
+      "mass_kg": 0.272,
+      "state": "tool only",
+      "maker": "Leatherman",
+      "country": "US",
+      "era": "modern",
+      "note": "\"weight\":\"272 g\"",
+      "source_id": "lm_super_tool_300"
+    },
+    {
+      "item": "Super Tool 300 EOD",
+      "category": "tool",
+      "family": "super tool",
+      "mass_kg": 0.272,
+      "state": "tool only",
+      "maker": "Leatherman",
+      "country": "US",
+      "era": "modern",
+      "note": "\"weight\":\"272 g\"",
+      "source_id": "lm_super_tool_300_eod"
+    },
+    {
+      "item": "Super Tool 300M",
+      "category": "tool",
+      "family": "super tool",
+      "mass_kg": 0.28,
+      "state": "tool only",
+      "maker": "Leatherman",
+      "country": "US",
+      "era": "modern",
+      "note": "\"weight\":\"280 g\"",
+      "source_id": "lm_super_tool_300m"
+    },
+    {
+      "item": "Rebar",
+      "category": "tool",
+      "family": "rebar",
+      "mass_kg": 0.19,
+      "state": "tool only",
+      "maker": "Leatherman",
+      "country": "US",
+      "era": "modern",
+      "note": "\"weight\":\"190 g\"",
+      "source_id": "lm_rebar"
+    },
+    {
+      "item": "Bond",
+      "category": "tool",
+      "family": "bond",
+      "mass_kg": 0.176,
+      "state": "tool only",
+      "maker": "Leatherman",
+      "country": "US",
+      "era": "modern",
+      "note": "\"weight\":\"176 g\"",
+      "source_id": "lm_bond"
+    },
+    {
+      "item": "Rev",
+      "category": "tool",
+      "family": "rev",
+      "mass_kg": 0.167,
+      "state": "tool only",
+      "maker": "Leatherman",
+      "country": "US",
+      "era": "modern",
+      "note": "\"weight\":\"167 g\"",
+      "source_id": "lm_rev"
+    },
+    {
+      "item": "Free K4x",
+      "category": "tool",
+      "family": "free k4x",
+      "mass_kg": 0.156,
+      "state": "tool only",
+      "maker": "Leatherman",
+      "country": "US",
+      "era": "modern",
+      "note": "\"weight\":\"156 g\"",
+      "source_id": "lm_free_k4x"
+    },
+    {
+      "item": "Free K2x",
+      "category": "tool",
+      "family": "free k2x",
+      "mass_kg": 0.139,
+      "state": "tool only",
+      "maker": "Leatherman",
+      "country": "US",
+      "era": "modern",
+      "note": "\"weight\":\"139 g\"",
+      "source_id": "lm_free_k2x"
+    },
+    {
+      "item": "Skeletool CX",
+      "category": "tool",
+      "family": "skeletool",
+      "mass_kg": 0.142,
+      "state": "tool only",
+      "maker": "Leatherman",
+      "country": "US",
+      "era": "modern",
+      "note": "\"weight\":\"142 g\"",
+      "source_id": "lm_skeletool_cx"
+    },
+    {
+      "item": "Free T2",
+      "category": "tool",
+      "family": "free t2",
+      "mass_kg": 0.094,
+      "state": "tool only",
+      "maker": "Leatherman",
+      "country": "US",
+      "era": "modern",
+      "note": "\"weight\":\"94 g\"",
+      "source_id": "lm_free_t2"
+    },
+    {
+      "item": "Nalgene 32oz Wide Mouth",
+      "category": "hydration",
+      "family": "nalgene",
+      "mass_kg": 0.17725,
+      "state": "empty bottle",
+      "maker": "Nalgene",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight 6.25 oz (177.25g)",
+      "source_id": "nal_32wm"
+    },
+    {
+      "item": "Nalgene 48oz storage bottle",
+      "category": "hydration",
+      "family": "nalgene",
+      "mass_kg": 0.22675,
+      "state": "empty bottle",
+      "maker": "Nalgene",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight 8 oz (226.75g)",
+      "source_id": "nal_48"
+    },
+    {
+      "item": "Nalgene Ultralite 16oz narrow mouth",
+      "category": "hydration",
+      "family": "nalgene",
+      "mass_kg": 0.06375,
+      "state": "empty bottle",
+      "maker": "Nalgene",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight 2.25 oz (63.75g)",
+      "source_id": "nal_ultralite16"
+    },
+    {
+      "item": "Nalgene 32oz Cantene",
+      "category": "hydration",
+      "family": "nalgene",
+      "mass_kg": 0.06025,
+      "state": "empty bottle",
+      "maker": "Nalgene",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight 2.125 oz (60.25g)",
+      "source_id": "nal_cantene32"
+    },
+    {
+      "item": "C-A-T Combat Application Tourniquet",
+      "category": "medical",
+      "family": "cat",
+      "mass_kg": 0.0765,
+      "state": "single tourniquet",
+      "maker": "North American Rescue",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight: 2.7 oz",
+      "source_id": "nar_cat7"
+    },
+    {
+      "item": "Combat Gauze LE",
+      "category": "medical",
+      "family": "combat gauze",
+      "mass_kg": 0.0227,
+      "state": "single dressing",
+      "maker": "North American Rescue",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight: 0.8 oz",
+      "source_id": "nar_combat_gauze_le"
+    },
+    {
+      "item": "QuikClot Bleeding Control Dressing",
+      "category": "medical",
+      "family": "quikclot",
+      "mass_kg": 0.0227,
+      "state": "single dressing",
+      "maker": "QuikClot (Teleflex)",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight - 0.8 oz",
+      "source_id": "nar_quikclot_bcd"
+    },
+    {
+      "item": "QuikClot Bleeding Control Z-Fold Dressing 3 in x 4 yd",
+      "category": "medical",
+      "family": "quikclot",
+      "mass_kg": 0.0227,
+      "state": "single dressing",
+      "maker": "QuikClot (Teleflex)",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight - 0.8 oz",
+      "source_id": "nar_quikclot_zfold"
+    },
+    {
+      "item": "HyFin Vent Chest Seal",
+      "category": "medical",
+      "family": "hyfin",
+      "mass_kg": 0.0709,
+      "state": "twin pack",
+      "maker": "North American Rescue",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight: 2.5 oz",
+      "source_id": "nar_hyfin_twin"
+    },
+    {
+      "item": "HyFin Vent Compact Chest Seal",
+      "category": "medical",
+      "family": "hyfin",
+      "mass_kg": 0.0439,
+      "state": "twin pack",
+      "maker": "North American Rescue",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight: 1.55 oz",
+      "source_id": "nar_hyfin_compact_twin"
+    },
+    {
+      "item": "NAR Nasopharyngeal Airway 28F pre-lubricated",
+      "category": "medical",
+      "family": "npa",
+      "mass_kg": 0.00907,
+      "state": "single airway",
+      "maker": "North American Rescue",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight: 0.02 lbs",
+      "source_id": "nar_npa"
+    },
+    {
+      "item": "SAM Splint II",
+      "category": "medical",
+      "family": "sam splint",
+      "mass_kg": 0.1276,
+      "state": "single splint",
+      "maker": "SAM Medical",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight: 4.5 oz",
+      "source_id": "nar_sam_splint_ii"
+    },
+    {
+      "item": "NAR Survival Blanket",
+      "category": "medical",
+      "family": "survival blanket",
+      "mass_kg": 0.0522,
+      "state": "single blanket",
+      "maker": "North American Rescue",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight: 1.84 oz",
+      "source_id": "nar_survival_blanket"
+    },
+    {
+      "item": "NAR S-Rolled Gauze",
+      "category": "medical",
+      "family": "rolled gauze",
+      "mass_kg": 0.034,
+      "state": "single roll",
+      "maker": "North American Rescue",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight: 1.2 oz",
+      "source_id": "nar_rolled_gauze"
+    },
+    {
+      "item": "Responder Emergency Trauma Dressing",
+      "category": "medical",
+      "family": "etd",
+      "mass_kg": 0.0567,
+      "state": "single dressing",
+      "maker": "North American Rescue",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight: 2.0 oz",
+      "source_id": "nar_etd"
+    },
+    {
+      "item": "NAR QuikLitter Lite",
+      "category": "medical",
+      "family": "quiklitter",
+      "mass_kg": 0.3685,
+      "state": "semi-rigid litter",
+      "maker": "North American Rescue",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight: 13 oz",
+      "source_id": "nar_quiklitter_lite"
+    },
+    {
+      "item": "NAR QuikLitter XL",
+      "category": "medical",
+      "family": "quiklitter",
+      "mass_kg": 0.9979,
+      "state": "semi-rigid litter",
+      "maker": "North American Rescue",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight: 2.2 lb",
+      "source_id": "nar_quiklitter_xl"
+    },
+    {
+      "item": "Responder Emergency Trauma Dressing 4 in",
+      "category": "medical",
+      "family": "etd",
+      "mass_kg": 0.0567,
+      "state": "single dressing",
+      "maker": "North American Rescue",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight: 2.0 oz",
+      "source_id": "nar_etd4"
+    },
+    {
+      "item": "Field Shield Wound Dressing",
+      "category": "medical",
+      "family": "field shield",
+      "mass_kg": 0.0142,
+      "state": "single dressing",
+      "maker": "North American Rescue",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight: 0.5 oz",
+      "source_id": "nar_field_shield"
+    },
+    {
+      "item": "BurnTec Emergency Burn Kit",
+      "category": "medical",
+      "family": "burntec",
+      "mass_kg": 1.3608,
+      "state": "complete kit",
+      "maker": "North American Rescue",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight: 3 lbs",
+      "source_id": "nar_burn_kit"
+    },
+    {
+      "item": "C-A-T Rigid IWB Tourniquet Case",
+      "category": "medical",
+      "family": "cat case",
+      "mass_kg": 0.085,
+      "state": "empty case",
+      "maker": "North American Rescue",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight: 3 oz",
+      "source_id": "nar_cat_case"
+    },
+    {
+      "item": "Celox First Aid 5 ft Z-Fold Hemostatic Dressing",
+      "category": "medical",
+      "family": "celox",
+      "mass_kg": 0.0454,
+      "state": "single dressing",
+      "maker": "Celox (Medtrade)",
+      "country": "GB",
+      "era": "modern",
+      "note": "Weight: 0.10 lbs",
+      "source_id": "nar_celox_zfold"
+    },
+    {
+      "item": "NAR Elastic Wrap Bandage",
+      "category": "medical",
+      "family": "elastic wrap",
+      "mass_kg": 0.0595,
+      "state": "single bandage",
+      "maker": "North American Rescue",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight: 2.1 oz",
+      "source_id": "nar_elastic_wrap"
+    },
+    {
+      "item": "Talon II 3X Composite Series litter",
+      "category": "medical",
+      "family": "talon",
+      "mass_kg": 6.8,
+      "state": "complete litter",
+      "maker": "North American Rescue",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight: 15 lbs. (6.8 Kg)",
+      "source_id": "nar_catalog0204"
+    },
+    {
+      "item": "RAVEN Model 90C main battlefield litter",
+      "category": "medical",
+      "family": "raven",
+      "mass_kg": 6.8,
+      "state": "complete litter",
+      "maker": "North American Rescue",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight: 15 lbs. (6.8 Kg)",
+      "source_id": "nar_catalog0204"
+    },
+    {
+      "item": "NARP Spine Board",
+      "category": "medical",
+      "family": "narp",
+      "mass_kg": 6.0,
+      "state": "complete board",
+      "maker": "North American Rescue",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight: 13 lbs. (6.0 Kg)",
+      "source_id": "nar_catalog0204"
+    },
+    {
+      "item": "Reeves Sleeve II patient immobilisation",
+      "category": "medical",
+      "family": "reeves",
+      "mass_kg": 8.6,
+      "state": "complete sleeve",
+      "maker": "North American Rescue",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight: 19 lbs. (8.6 Kg)",
+      "source_id": "nar_catalog0204"
+    },
+    {
+      "item": "SAM Sling pelvic binder",
+      "category": "medical",
+      "family": "sam sling",
+      "mass_kg": 0.3969,
+      "state": "single sling",
+      "maker": "SAM Medical",
+      "country": "US",
+      "era": "modern",
+      "note": "Weights only 14 ounces!",
+      "source_id": "nar_catalog0204"
+    },
+    {
+      "item": "Tactical Extrication Device (T.E.D.)",
+      "category": "medical",
+      "family": "ted",
+      "mass_kg": 0.7,
+      "state": "with carrying case",
+      "maker": "North American Rescue",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight: 1.5 lbs. (0.7 Kg.)",
+      "source_id": "nar_catalog0204"
+    },
+    {
+      "item": "Special Operations laryngoscope set",
+      "category": "medical",
+      "family": "laryngoscope",
+      "mass_kg": 0.2835,
+      "state": "complete set",
+      "maker": "North American Rescue",
+      "country": "US",
+      "era": "modern",
+      "note": "Size: 8\"x5.5\"x2\" Weight: 10 oz.",
+      "source_id": "nar_catalog0204"
+    },
+    {
+      "item": "Talon II litter carrier",
+      "category": "medical",
+      "family": "litter carrier",
+      "mass_kg": 0.4536,
+      "state": "empty carrier",
+      "maker": "North American Rescue",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight: 16 oz.",
+      "source_id": "nar_catalog0204"
+    },
+    {
+      "item": "Adjustable IV pole",
+      "category": "medical",
+      "family": "iv pole",
+      "mass_kg": 0.4536,
+      "state": "single pole",
+      "maker": "North American Rescue",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight: 16 oz.",
+      "source_id": "nar_catalog0204"
+    },
+    {
+      "item": "Non-adjustable IV pole",
+      "category": "medical",
+      "family": "iv pole",
+      "mass_kg": 0.2835,
+      "state": "single pole",
+      "maker": "North American Rescue",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight: 10 oz.",
+      "source_id": "nar_catalog0204"
+    },
+    {
+      "item": "Tactical Foodpack 1 Meal Ration Echo",
+      "category": "food",
+      "family": "tfp",
+      "mass_kg": 0.346,
+      "state": "1 meal ration, net weight",
+      "maker": "Tactical Foodpack",
+      "country": "EE",
+      "era": "modern",
+      "note": "Netokaal: 346g",
+      "source_id": "tfp_echo"
+    },
+    {
+      "item": "Tactical Foodpack 1 Meal Ration Delta",
+      "category": "food",
+      "family": "tfp",
+      "mass_kg": 0.341,
+      "state": "1 meal ration, net weight",
+      "maker": "Tactical Foodpack",
+      "country": "EE",
+      "era": "modern",
+      "note": "product page slug: 1-meal-ration-delta-341g",
+      "source_id": "tfp_delta"
+    },
+    {
+      "item": "Rothco 2-Person Polarshield survival blanket",
+      "category": "misc",
+      "family": "polarshield",
+      "mass_kg": 0.0709,
+      "state": "single blanket",
+      "maker": "Rothco",
+      "country": "US",
+      "era": "modern",
+      "note": "96 inches X 60 inches, Weight: 2.5 Oz",
+      "source_id": "rothco_survival_blanket"
+    }
+  ],
+  "leads": [
+    {
+      "item": "US MRE (Meal, Ready-to-Eat) individual ration",
+      "url": "https://www.mreinfo.com/mres/",
+      "why": "tier 5 hobby reference; no primary weight line found on the DLA weight/cube document (site returns HTTP 403 to this client)"
+    },
+    {
+      "item": "Rothco 1 qt / 2 qt canteen",
+      "url": "https://www.rothco.com/product/genuine-gi-3-pc-1-qt-canteen-with-clip",
+      "why": "product page publishes a unitless shipping weight field (0.3500 / 0.6000); no unit shown, so not usable as a mass"
+    },
+    {
+      "item": "Gerber multi-tools and knives",
+      "url": "https://gerbergear.com/products/multi-plier-600-stainless-carbide-cutters-needlenose-sheath-g07530gn",
+      "why": "Gerber product page loads its specification weight client-side; no mass value in the fetched bytes"
+    },
+    {
+      "item": "Sawyer Squeeze water filter",
+      "url": "https://sawyer.com/products/sawyer-squeeze-filter",
+      "why": "page states both 2 ounces (body text) and 4.93 ounces (spec table); unresolved internal conflict, not used"
+    },
+    {
+      "item": "Cyalume 6 in SnapLight chem light",
+      "url": "http://www.cyalume.com/chemlight/militaryprods.htm",
+      "why": "manufacturer military page has no published mass line; no datasheet located"
+    },
+    {
+      "item": "Snugpak military sleeping bag",
+      "url": "http://www.snugpak.com/20_outdoors/21_15_sleepingbag.htm",
+      "why": "page has a WEIGHT label but the value is not present in the fetched bytes"
+    },
+    {
+      "item": "Empty sandbag weight",
+      "url": "https://www.sandbagstore.com/bulk-large-empty-sandbags.html",
+      "why": "retailer lists bulk shipping weights only, no per-bag mass"
+    },
+    {
+      "item": "US operational ration Weight & Cube table",
+      "url": "https://www.dla.mil/Portals/104/Documents/TroopSupport/Subsistence/Rations/weight_cube_090425.pdf",
+      "why": "DLA blocks this client (HTTP 403) and the document is not in the Internet Archive; would carry MRE and UGR masses"
+    }
+  ],
+  "conflicts": []
+}

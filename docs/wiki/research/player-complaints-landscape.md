@@ -105,7 +105,9 @@ complaint.
 - **The animation fix AEE CAN own**: setAnimSpeedCoef coupling -
   physiology state (dexterity %, fatigue, cold) scales movement
   animation speed.  A physics-data animation improvement no other
-  mod does.  Not yet built.
+  mod does.  Built (issue #212):
+  `aee_physiology_fnc_applyMovementSpeed` applies the coefficient,
+  guarded so ACE3 advanced fatigue keeps ownership of the engine call.
 
 ## Test vectors
 

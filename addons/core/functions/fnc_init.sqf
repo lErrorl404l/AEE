@@ -19,18 +19,16 @@ if (!isNil QGVAR(updatePFH)) then {
 [] call EFUNC(environmental,getBiome);
 
 // ─── Geolocation sanity check (issue #179) ────────────────────────────────
-// One load-time read of the world anchor.  Latitude is validated against
-// the UTM zone longitude band it should occupy: a zone number whose
-// central meridian disagrees with the declared longitude flags a broken
-// CfgWorlds entry at boot, not in a player's vitals.  The zone central
-// meridian is zoneMeridian = (zone - 1) * 6 - 180 + 3.  A map that
-// declares a zone far from its longitude (or a latitude with no zone at
-// all) cannot anchor MGRS or solar time reliably.
+// One load-time read of the world anchor.  A declared UTM zone whose
+// central meridian sits away from the terrain longitude is NORMAL: a map
+// is authored in a time zone, and the solar model uses the declared zone
+// meridian on purpose (fnc_calculateSolarRadiation).  The condition is
+// therefore reported at INFO.  Latitude is still checked against its
+// physical range, because that IS a data fault.
 // NOTE: BIS latitude is INVERTED (positive = south), so a sign check
 // cannot use the zone number alone - only the zone<->longitude band
 // cross-check is valid.  The Scottish Highlands bug (latitude = -56.702,
-// issue #123) is caught here only if the map also declares a zone that
-// disagrees with its longitude.
+// issue #123) is caught by the range check below.
 private _loc = [] call FUNC(getWorldLocation);
 private _latSigned = _loc select 0;
 private _lon = _loc select 2;
@@ -40,8 +38,8 @@ if (_zone > 0) then {
     private _lonDiff = abs (_lon - _zoneMeridian);
     if (_lonDiff > 6) then {
         diag_log format [
-            "[AEE] WARNING: mapZone %1 (central meridian %2) disagrees with longitude %3 (CfgWorlds %4) - MGRS/solar anchor unreliable",
-            _zone, _zoneMeridian, _lon, worldName
+            "[AEE] INFO: mapZone %1 (meridian %2) sits %3 deg from longitude %4 (CfgWorlds %5); the solar model uses the declared zone meridian",
+            _zone, _zoneMeridian, _lonDiff, _lon, worldName
         ];
     };
 };
