@@ -244,19 +244,32 @@ NEW_CARTRIDGES = [
         "cartridge_id": "58x42",
         "names": ["5.8x42mm", "DBP87"],
         "case_family": "",
-        "classification": {"cip_tab": "", "case_type": "rifle",
-                           "cartridge_type": "rifle", "origin_country": "China",
-                           "year_created": "1987",
-                           "classification_source": "firearmsworld_qbz951"},
-        "note": ("Chinese service cartridge. The QBZ-95-1 changed the twist from "
-                 "240 mm to 210 mm, so the original rate is the chambering "
-                 "standard and the later rate is a weapon-level value."),
+        "classification": {
+            "cip_tab": "",
+            "case_type": "rifle",
+            "cartridge_type": "rifle",
+            "origin_country": "China",
+            "year_created": "1987",
+            "classification_source": "firearmsworld_qbz951",
+        },
+        "note": (
+            "Chinese service cartridge. The QBZ-95-1 changed the twist from "
+            "240 mm to 210 mm, so the original rate is the chambering "
+            "standard and the later rate is a weapon-level value."
+        ),
         "values": {
-            "standard_twist_m": {"value": 0.24, "unit": "m per turn",
-                                 "source": "firearmsworld_qbz951",
-                                 "grade": "documented"},
-            "grooves": {"value": 4, "unit": "count",
-                        "source": "firearmsworld_qbz951", "grade": "documented"},
+            "standard_twist_m": {
+                "value": 0.24,
+                "unit": "m per turn",
+                "source": "firearmsworld_qbz951",
+                "grade": "documented",
+            },
+            "grooves": {
+                "value": 4,
+                "unit": "count",
+                "source": "firearmsworld_qbz951",
+                "grade": "documented",
+            },
         },
     },
     {
@@ -387,6 +400,7 @@ def main():
             SRC / "saami_twists.json",
             SRC / "chambering_twists_extra.json",
             SRC / "chambering_twists_foreign.json",
+            SRC / "chambering_twists_new.json",
         ],
         sources,
         known,
@@ -421,18 +435,28 @@ def main():
     for path, key in (
         (SRC / "saami_twists.json", "cartridge"),
         (SRC / "chambering_twists_extra.json", "chambering"),
+        (SRC / "chambering_twists_new.json", "chambering"),
     ):
         if not path.exists():
             continue
         for row in json.loads(path.read_text(encoding="utf-8"))["twists"]:
-            names = (
-                [row[key]]
-                if key == "chambering"
-                else saami_aliases(row.get("cartridge", ""))
-            )
+            if key == "chambering":
+                # A chambering capture may file the name under any of the
+                # labels the sets use.
+                names = [
+                    row.get("chambering")
+                    or row.get("cartridge")
+                    or row.get("chambering_id")
+                    or ""
+                ]
+            else:
+                names = saami_aliases(row.get("cartridge", ""))
+            if not any(names):
+                unmatched += 1
+                continue
             record = None
             if key == "chambering":
-                record = by_id.get(CHAMBERING_TO_ID.get(row[key], ""))
+                record = by_id.get(CHAMBERING_TO_ID.get(names[0], ""))
             if record is None:
                 for alias in names:
                     hit = by_name.get(normalise(alias)) or by_id.get(
@@ -522,7 +546,8 @@ def main():
         for c in conflicts
         if not (
             c.get("field") == "standard_twist_m"
-            and {c.get("source_a"), c.get("source_b")} <= {"saami_z299_3", "saami_z299_4"}
+            and {c.get("source_a"), c.get("source_b")}
+            <= {"saami_z299_3", "saami_z299_4"}
         )
     ]
 
