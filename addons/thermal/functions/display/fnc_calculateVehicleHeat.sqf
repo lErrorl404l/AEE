@@ -94,15 +94,22 @@ if (abs _heatDelta >= _trendEpsilon) then {
 };
 _vehicle setVariable [QGVAR(vehicleHeatTrend), _heatTrend];
 
-// Diagnostic trace: prove the heat pipeline.  Throttled to 1 line per
-// vehicle per 5 s so a session shows the ramp without spamming.
-private _lastLog = _vehicle getVariable [QGVAR(vehicleHeatLogT), -999];
-if (_now - _lastLog >= 5) then {
-    _vehicle setVariable [QGVAR(vehicleHeatLogT), _now];
-    diag_log format [
-        "[AEE][HEAT] %1 heat=%2 engineOn=%3 moving=%4 speed=%5kph trend=%6",
-        typeOf _vehicle, _heat, _engineRunning, _isMoving, round _motionSpeed, _heatTrend
-    ];
+// Diagnostic trace: prove the heat pipeline. Behind the module debug
+// switch, like every other trace, and throttled to one line per vehicle
+// per 5 s. A diagnostic that writes unconditionally is a client cost:
+// diag_log is synchronous file I/O on the render thread.
+private _traceOn = missionNamespace getVariable [QGVAR(logDebug), false]
+    || missionNamespace getVariable ["aee_core_logDebug", false]
+    || missionNamespace getVariable [format ["aee_%1_logDebug", QUOTE(COMPONENT)], false];
+if (_traceOn) then {
+    private _lastLog = _vehicle getVariable [QGVAR(vehicleHeatLogT), -999];
+    if (_now - _lastLog >= 5) then {
+        _vehicle setVariable [QGVAR(vehicleHeatLogT), _now];
+        diag_log format [
+            "[AEE][HEAT] %1 heat=%2 engineOn=%3 moving=%4 speed=%5kph trend=%6",
+            typeOf _vehicle, _heat, _engineRunning, _isMoving, round _motionSpeed, _heatTrend
+        ];
+    };
 };
 
 _heat
