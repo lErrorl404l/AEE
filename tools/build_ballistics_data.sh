@@ -62,6 +62,10 @@ step "weapons: catalogue" "$V/gen_weapons.py"
 step "weapons: service designations" "$V/gen_designations.py"
 step "weapons: corpus leads" "$V/gen_weapon_leads.py"
 step "weapons: verification worklist" "$V/gen_weapon_worklist.py"
+# The mass worklist is the research backlog grouped by manufacturer, so one
+# catalogue page covers a family. It reads the weapon records, which hold
+# the maker, so no row is left unattributed.
+step "weapons: mass worklist" "$V/gen_weapon_mass_worklist.py"
 
 # The recoil inputs: a weapon mass and a propellant charge mass. They
 # merge after the catalogue, because a mass attaches to a weapon record.
