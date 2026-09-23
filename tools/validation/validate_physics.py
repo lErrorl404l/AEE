@@ -672,6 +672,70 @@ def check_barometric_pressure():
     }
 
 
+def check_snow_insulation():
+    """Snow resistance in series with the atmospheric exchange (issue #11).
+
+    Mirrors the snow block in fnc_calculateGroundNodeStack.sqf. A snow
+    layer sits between the soil and the air as a thermal resistance, and
+    that is the dominant effect: under 0.3 m of settled snow the soil is
+    largely decoupled from the air, which is why a snowfield keeps the
+    ground near freezing while the air is far colder.
+
+    Conductivity: Sturm et al. 1997, J. Climate 10, 1267.
+      k = 0.023 + 0.234*rho                rho < 0.156 g/cm3
+      k = 0.138 - 1.01*rho + 3.233*rho^2   0.156 <= rho <= 0.6
+    Series resistance: 1/h_eff = 1/h_air + depth/k_snow.
+    """
+
+    def k_snow(rho):
+        if rho < 0.156:
+            return 0.023 + 0.234 * rho
+        return 0.138 - 1.01 * rho + 3.233 * rho * rho
+
+    def h_eff(depth, rho, h_air):
+        if depth <= 0.02:
+            return h_air
+        return 1 / ((1 / h_air) + (depth / max(k_snow(rho), 0.02)))
+
+    # Sturm's own value, the anchor the fit is checked against.
+    k_at_300 = k_snow(0.300)
+    h_air = 5.7 + 3.8 * 2.0  # McAdams at 2 m/s
+    bare = h_eff(0.0, 0.3, h_air)
+    covered = h_eff(0.30, 0.3, h_air)
+    decoupling = bare / covered
+
+    # Bare ground must be untouched: the snow term may not change the
+    # clear case, or every existing ground temperature shifts.
+    unchanged = abs(bare - h_air) < 1e-9
+    # Snow conductivity rises with density (Sturm's fit is monotonic over
+    # the setting's 100-400 kg/m3 range), so denser snow insulates less.
+    denser_conducts_more = k_snow(0.40) > k_snow(0.10)
+    # Deeper snow insulates more.
+    deeper_insulates_more = h_eff(0.50, 0.3, h_air) < h_eff(0.10, 0.3, h_air)
+
+    ok = (
+        abs(k_at_300 - 0.126) < 0.002
+        and unchanged
+        and denser_conducts_more
+        and deeper_insulates_more
+        and decoupling > 10
+    )
+    return {
+        "name": "Snow insulation (Sturm 1997 resistance in series)",
+        "ground_truth": "Sturm et al. 1997 conductivity; series resistance",
+        "grid": "depth 0 to 1 m, density 100 to 400 kg/m3, air 2 m/s",
+        "tolerance": "k(300 kg/m3) within 0.002; bare ground unchanged",
+        "status": "PASS" if ok else "FAIL",
+        "max_abs": abs(k_at_300 - 0.126),
+        "rmse": abs(k_at_300 - 0.126),
+        "unit": "W/mK",
+        "note": (
+            f"k(300 kg/m3) = {k_at_300:.4f} W/mK; h_air {h_air:.1f} -> "
+            f"{covered:.3f} W/m2K under 0.3 m, a {decoupling:.0f}x reduction"
+        ),
+    }
+
+
 def check_wbgt_iso7243():
     """Mod WBGT vs ISO 7243 Tg=Ta reduction (overcast = 1)."""
     errors = []
@@ -928,6 +992,7 @@ def main():
         check_terrain_wind_speedup(),
         check_lapse_rate(),
         check_barometric_pressure(),
+        check_snow_insulation(),
         check_wbgt_iso7243(),
         check_heat_index(),
         check_isa_metpy(),

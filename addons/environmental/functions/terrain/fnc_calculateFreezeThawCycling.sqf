@@ -46,9 +46,25 @@ missionNamespace setVariable [QEGVAR(core,freezingDegreeDays), _FDD];
 missionNamespace setVariable [QEGVAR(core,thawingDegreeDays), _TDD];
 
 // ─── Stefan freeze/thaw depth — proportional to sqrt(degree-days) ─────────
-// 0.05 m per sqrt(degC-day), typical for silty soil
-private _frozenDepth_m = 0.05 * (sqrt _FDD);
-private _thawDepth_m   = 0.05 * (sqrt _TDD);
+// The coefficient comes from the soil's own water content and frozen
+// conductivity (issue #11, fnc_calculateStefanCoefficient), so a saturated
+// soil freezes to a shallower depth than dry gravel under the same
+// weather. The value once held 0.05 m/sqrt(degC-day), which is the
+// metres form of a generic soil and could not express that range. The
+// surface class is the material classifier's, not a call into thermal:
+// thermal already calls this addon.
+private _surfaceClass = "ground";
+private _unit = call CBA_fnc_currentUnit;
+if (!isNil "_unit" && {!isNull _unit}) then {
+    private _upos = getPos _unit;
+    _surfaceClass = (surfaceType [_upos select 0, _upos select 1]) call EFUNC(material,classifyBySurfaceType);
+};
+private _snowDepth = missionNamespace getVariable [QEGVAR(core,snowDepth_m), 0];
+if !(_snowDepth isEqualType 0) then { _snowDepth = 0; };
+// The coefficient is cm per sqrt(degC-day); the depth below is in metres.
+private _stefanM = ([_surfaceClass, _snowDepth] call EFUNC(thermal,calculateStefanCoefficient)) / 100;
+private _frozenDepth_m = _stefanM * (sqrt _FDD);
+private _thawDepth_m   = _stefanM * (sqrt _TDD);
 
 // ─── Hysteresis state ─────────────────────────────────────────────────────
 private _delta = 0;

@@ -169,6 +169,37 @@ private _sigma = 5.670374419e-8;             // CODATA 2022
 private _tSkyClear = (0.0552 * ((_tAir + 273.15) ^ 1.5)) - 273.15;
 private _tSkyK = ((_tAir + (_tSkyClear - _tAir) * (1 - _overcast)) + 273.15);
 
+// ─── Snow insulation (issue #11) ──────────────────────────────────────────
+// A snow layer sits between the soil and the air as a thermal resistance
+// in series with the atmospheric exchange. That is the dominant effect,
+// not the snow's heat capacity: at 0.3 m and k 0.13 the layer is about
+// 2.3 m2K/W, against roughly 0.075 for the atmosphere at 2 m/s, so the
+// soil is largely decoupled from the air. The mod had no snow term at
+// all, so a snowfield lost heat at the bare-ground rate.
+//
+// Conductivity follows Sturm et al. 1997, J. Climate 10, 1267:
+//   k = 0.023 + 0.234*rho                 rho < 0.156 g/cm3
+//   k = 0.138 - 1.01*rho + 3.233*rho^2    0.156 <= rho <= 0.6
+// The density is the existing aee_environmental_slabDensity setting, in
+// kg/m3 for the McClung avalanche model. It is the same snowpack, so one
+// setting serves both rather than a second value that could disagree. The
+// default 300 kg/m3 is settled mid-winter snow.
+private _snowDepth = missionNamespace getVariable [QEGVAR(core,snowDepth_m), 0];
+if !(_snowDepth isEqualType 0) then { _snowDepth = 0; };
+private _snowCovered = _snowDepth > 0.02;
+private _snowDensity = (missionNamespace getVariable [QEGVAR(environmental,slabDensity), 300]) / 1000;
+if !(_snowDensity isEqualType 0) then { _snowDensity = 0.3 };
+if (_snowCovered) then {
+    private _kSnow = if (_snowDensity < 0.156) then {
+        0.023 + (0.234 * _snowDensity)
+    } else {
+        0.138 - (1.01 * _snowDensity) + (3.233 * _snowDensity * _snowDensity)
+    };
+    _kSnow = _kSnow max 0.02;
+    private _rSnow = _snowDepth / _kSnow;
+    _h = 1 / ((1 / _h) + _rSnow);
+};
+
 // Evaporative draw (FAO-56 Penman-Monteith) - the #194 wet-ground path.
 // Top-layer moisture -> surface resistance: 10 s/m wet, rises below 15%
 // vol (van de Griend & Owe 1994; Fuchs & Tanner 1967).
@@ -185,9 +216,17 @@ private _delta = {
 private _esKPa = ((_tAir call _psat) / 1000);  // kPa
 private _eaKPa = _esKPa * (0.5);               // kPa (50% RH default)
 private _ra = (_rho * 1007) / (_h max 1);      // aerodynamic resistance, s/m
-private _Rn = _alphaSurf * (_solar max 0) * 0.7;  // bare-soil albedo 0.3
+// Under snow the snow surface, not the soil, absorbs the sun and exchanges
+// water with the air. Leaving the soil term in would warm the ground under
+// the snow, which is the opposite of the insulation being added. The solar
+// that the snow absorbs is not modelled here: fnc_calculateSnowAccumulation
+// owns the snow depth and melts it by degree-days, and the melt heat is not
+// yet coupled to this balance. That omission biases the snow surface cool
+// and the soil surface warm during melt.
+private _soilSolar = if (_snowCovered) then { 0 } else { _alphaSurf * (_solar max 0) * 0.7 };
+private _Rn = _soilSolar;  // bare-soil albedo 0.3
 private _qEvap = 0;
-if (_moistTop > 0.02) then {
+if (_moistTop > 0.02 && {!_snowCovered}) then {
     private _numerator = ((_tAir call _delta) * _Rn) + ((_rho * 1007 * (_esKPa - _eaKPa)) / _ra);
     private _denominator = (_tAir call _delta) + (_gamma * (1 + (_rs / _ra)));
     private _e0 = if (_denominator > 0) then { _numerator / _denominator } else { 0 };

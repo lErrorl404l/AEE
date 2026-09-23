@@ -45,10 +45,25 @@ private _gamma      = ln (_humidity / 100) + (17.62 * _temp) / (243.12 + _temp);
 private _dewPoint   = (243.12 * _gamma) / (17.62 - _gamma);
 private _depression = _temp - _dewPoint;
 
-// Surface temperature (Brunt radiative cooling)
+// Surface temperature. The node stack solves it from the full energy
+// balance (issue #198, fnc_calculateGroundNodeStack) and publishes it per
+// 5 m cell; issue #11 asked for the old T_air - 2 C night heuristic to be
+// replaced, and the Brunt term below now stands only for a cell the stack
+// has not reached yet.
 private _surfaceTemp = _temp;
-if (_overcast < 0.3 && _wind < 5) then {
-    _surfaceTemp = _temp - 2;
+private _unit = call CBA_fnc_currentUnit;
+private _surfState = missionNamespace getVariable [QGVAR(groundSurfaceTemp), createHashMap];
+private _stackKey = "";
+if (!isNil "_unit" && {!isNull _unit} && {_surfState isEqualType createHashMap}) then {
+    private _upos = getPos _unit;
+    _stackKey = format ["%1_%2_%3", floor ((_upos select 0) / 5), floor ((_upos select 1) / 5), "ground"];
+};
+if (_stackKey != "" && {_stackKey in _surfState}) then {
+    _surfaceTemp = _surfState get _stackKey;
+} else {
+    if (_overcast < 0.3 && _wind < 5) then {
+        _surfaceTemp = _temp - 2;
+    };
 };
 
 // Frost conditions

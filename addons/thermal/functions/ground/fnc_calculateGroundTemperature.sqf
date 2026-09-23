@@ -109,4 +109,16 @@ if (_nowT - _lastT >= 5) then {
     ];
 };
 
+// The node-stack surface temperature, published for a consumer that needs
+// the real ground skin temperature rather than an air proxy.
+// fnc_detectGroundFrost once used T_air - 2 C on a clear calm night, the
+// heuristic issue #11 asked to replace; it reads this value now. The 5 m
+// grid key matches the node stack's own cell.
+if (count _pos >= 2) then {
+    private _cellKey = format ["%1_%2_%3", floor ((_pos select 0) / 5), floor ((_pos select 1) / 5), _material];
+    private _surfState = missionNamespace getVariable [QGVAR(groundSurfaceTemp), createHashMap];
+    _surfState set [_cellKey, _ts];
+    missionNamespace setVariable [QGVAR(groundSurfaceTemp), _surfState];
+};
+
 _result
