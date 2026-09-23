@@ -2698,6 +2698,37 @@ private _p29Pass = 0;
     };
     deleteGroup _invGrp;
 
+    // -- PHASE 59: the state read guards the count --
+    // The neverZero guard must not evaluate count on a number.  The engine
+    // raises "count: Type Number, expected Array" and the read aborts, so
+    // the weapon barrel-heat display flooded the session RPT.  This phase
+    // drives every branch, and any engine error fails the gate.
+    missionNamespace setVariable ["aee_test_stateNum", 5];
+    missionNamespace setVariable ["aee_test_stateZero", 0];
+    missionNamespace setVariable ["aee_test_stateArr", [7]];
+    missionNamespace setVariable ["aee_test_stateEmpty", []];
+    private _rNum = ["aee_test_stateNum", -1, 1, true] call aee_core_fnc_readState;
+    private _rZero = ["aee_test_stateZero", 42, 1, true] call aee_core_fnc_readState;
+    private _rArr = ["aee_test_stateArr", [], 3, true] call aee_core_fnc_readState;
+    private _rEmpty = ["aee_test_stateEmpty", [9], 3, true] call aee_core_fnc_readState;
+    private _rMissing = ["aee_test_stateMissing", 7, 1, true] call aee_core_fnc_readState;
+    private _rPlain = ["aee_test_stateNum", -1, 1] call aee_core_fnc_readState;
+    {
+        missionNamespace setVariable [_x, nil];
+    } forEach ["aee_test_stateNum", "aee_test_stateZero", "aee_test_stateArr", "aee_test_stateEmpty"];
+
+    private _p59Ok = (_rNum == 5)
+        && {_rZero == 42}
+        && {_rArr isEqualTo [7]}
+        && {_rEmpty isEqualTo [9]}
+        && {_rMissing == 7}
+        && {_rPlain == 5};
+    if (_p59Ok) then {
+        diag_log text format ["[PHASE59] [PASS] state read: number %1, zero guard %2, array %3, empty guard %4, missing %5, unguarded %6", _rNum, _rZero, _rArr, _rEmpty, _rMissing, _rPlain];
+    } else {
+        diag_log text format ["[PHASE59] [FAIL] state read: number %1, zero %2, array %3, empty %4, missing %5, unguarded %6", _rNum, _rZero, _rArr, _rEmpty, _rMissing, _rPlain];
+    };
+
 diag_log text "[AEE-TEST] DONE";
         }, [_t1], 5] call CBA_fnc_waitAndExecute;
     }, [], 7] call CBA_fnc_waitAndExecute;
