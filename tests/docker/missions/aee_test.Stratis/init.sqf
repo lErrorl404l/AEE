@@ -2826,12 +2826,18 @@ private _p29Pass = 0;
     private _refDust = 0.1 * sqrt (((2650 - _rho) / _rho) * _g * 80e-6);
     private _refSand = 0.1 * sqrt (((2650 - _rho) / _rho) * _g * 250e-6);
 
-    // In ground effect: the aircraft must be low, or the wash factor is
-    // zero and nothing is entrained.
+    // In ground effect: h/R must be well below 1, or the wash factor
+    // collapses.  Spawn at 1 m above the terrain so the rotor is settling.
     private _heli = createVehicle ["B_Heli_Light_01_F", [0, 0, 3], [], 0, "NONE"];
+    private _groundZ = getTerrainHeightASL (getPos _heli);
+    _heli setPosASL [0, 0, _groundZ + 1];
     private _dust = [_heli, "dust"] call aee_fx_fnc_calculateDownwash;
     private _sand = [_heli, "sand"] call aee_fx_fnc_calculateDownwash;
     private _gravel = [_heli, "gravel"] call aee_fx_fnc_calculateDownwash;
+    // The same aircraft high above the ground must entrain far less: the
+    // ground-effect term is the difference, not a constant.
+    _heli setPosASL [0, 0, _groundZ + 120];
+    private _high = [_heli, "dust"] call aee_fx_fnc_calculateDownwash;
     deleteVehicle _heli;
 
     // The SQF threshold must match Bagnold within 20 percent, per material.
@@ -2847,13 +2853,17 @@ private _p29Pass = 0;
     // Outwash in ground effect must exceed the free-air induced velocity.
     private _outwash = _dust select 2;
     private _washWorks = (_outwash > 10) && {_outwash < 60};
+    // The ground-effect term must do real work: the same rotor high above
+    // the ground entrains less than the same rotor settling into it.
+    private _highEntrain = _high select 0;
+    private _groundEffectReal = (_high select 2) < _outwash;
 
     private _p62Ok = _dustOk && {_sandOk} && {_ordered} && {_gravelStaysDown}
-        && {_fluxPositive} && {_washWorks};
+        && {_fluxPositive} && {_washWorks} && {_groundEffectReal};
     if (_p62Ok) then {
-        diag_log text format ["[PHASE62] [PASS] downwash: dust threshold %1 (ref %2), sand %3 (ref %4), outwash %5 m/s, entrain d%6 s%7 g%8, flux %9", _dust select 1, _refDust, _sand select 1, _refSand, _outwash, _dust select 0, _sand select 0, _gravel select 0, _sand select 3];
+        diag_log text format ["[PHASE62] [PASS] downwash: dust %1 (ref %2), sand %3 (ref %4), outwash %5 m/s (high %6), entrain d%7 high%8 g%9, flux %10", _dust select 1, _refDust, _sand select 1, _refSand, _outwash, _high select 2, _dust select 0, _highEntrain, _gravel select 0, _sand select 3];
     } else {
-        diag_log text format ["[PHASE62] [FAIL] downwash: dust %1 ref %2 ok=%3, sand %4 ref %5 ok=%6, ordered=%7, gravel %8, flux %9, outwash %10", _dust select 1, _refDust, _dustOk, _sand select 1, _refSand, _sandOk, _ordered, _gravel select 0, _sand select 3, _outwash];
+        diag_log text format ["[PHASE62] [FAIL] downwash: dust %1 ref %2 ok=%3, sand %4 ok=%5, ordered=%6, gravel %7, flux %8, outwash %9 high %10 (ge=%11)", _dust select 1, _refDust, _dustOk, _sand select 1, _sandOk, _ordered, _gravel select 0, _sand select 3, _outwash, _high select 2, _groundEffectReal];
     };
 
 diag_log text "[AEE-TEST] DONE";

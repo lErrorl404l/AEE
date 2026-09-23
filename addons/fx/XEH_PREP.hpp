@@ -1,6 +1,7 @@
 PREPS(weather,applyAtmosphericDust);
 PREPS(weather,applyBreathCondensation);
 PREPS(weather,applyFootfallDust);
+PREPS(weather,applyRotorWash);
 PREPS(weather,applyRainSurfaceDrops);
 PREPS(weather,applyRainVehicleSound);
 PREPS(weather,applyVehicleDust);
