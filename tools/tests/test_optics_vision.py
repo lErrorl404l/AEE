@@ -10,7 +10,9 @@ Run: python3 -m unittest tools.tests.test_optics_vision
 """
 
 import math
+import re
 import unittest
+from pathlib import Path
 
 
 def sigma_total(fog=0.0, haze=0.0, rain_mmh=0.0):
@@ -191,6 +193,69 @@ class TestDriver(unittest.TestCase):
         # 0.2 -> 11.3 km).
         v = view_distance_m(haze=0.0, sun_down=0, eye_height=100.0)
         self.assertGreater(v, 6200.0)
+
+
+class TestSensorSessionLifecycle(unittest.TestCase):
+    """The sensor session must not outlive its unit (GAP-026).
+
+    The "visionMode" player event was the only code that could tear the
+    session down. A death, a respawn or a remote-control switch is not a
+    vision-mode change, so the event never fired, and the per-frame handler
+    plus the sensor flags and overlays stayed live into the respawn.
+
+    These read the SOURCE. A mirror of the lifecycle would prove nothing
+    about the lifecycle.
+    """
+
+    def setUp(self):
+        self.post_init = (
+            Path("addons/optics/XEH_postInit.sqf").read_text(encoding="utf-8")
+        )
+        self.teardown = (
+            Path("addons/optics/functions/vision/fnc_teardownSensors.sqf").read_text(
+                encoding="utf-8"
+            )
+        )
+
+    def test_death_tears_down_rather_than_exiting(self):
+        """The !alive guard must call the teardown, not silently exit.
+
+        The old form was a bare `if (... || !alive _player) exitWith {};`
+        which skipped the tick and left the session running forever.
+        """
+        guard = re.search(
+            r'if \(isNil "_player"(.*?)\) exitWith \{(.*?)\n            \};', self.post_init, re.S
+        )
+        self.assertIsNotNone(guard, "the PFH unit guard is missing")
+        condition, handler = guard.group(1), guard.group(2)
+        self.assertIn("!alive _player", condition)
+        self.assertIn(
+            "teardownSensors",
+            handler,
+            "death exits without tearing down: the session outlives the unit",
+        )
+
+    def test_session_is_keyed_to_a_unit(self):
+        """A unit change must close the session."""
+        self.assertIn("sensorUnit", self.post_init)
+        self.assertIn("_player isNotEqualTo GVAR(sensorUnit)", self.post_init)
+
+    def test_teardown_is_idempotent(self):
+        """A second call must find no handler and return."""
+        self.assertIn("if (isNil QGVAR(sensorPFH)) exitWith {}", self.teardown)
+
+    def test_teardown_clears_the_unit_key(self):
+        """The unit key must not survive the session, or the next session
+        compares against a stale unit and tears itself down at once."""
+        self.assertIn("GVAR(sensorUnit) = nil", self.teardown)
+
+    def test_both_paths_use_one_teardown(self):
+        """The event and the handler must share the sequence, so the two
+        cannot drift apart."""
+        self.assertIn("call FUNC(teardownSensors)", self.post_init)
+        # No inline teardown left in the event.
+        self.assertNotIn('[GVAR(sensorPFH)] call CBA_fnc_removePerFrameHandler', self.post_init)
+        self.assertIn("[GVAR(sensorPFH)] call CBA_fnc_removePerFrameHandler", self.teardown)
 
 
 if __name__ == "__main__":

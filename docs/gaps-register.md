@@ -338,7 +338,7 @@ Fix it when the cycle can carry it, and reverse the test that described it.
 
 ## GAP-026: the sensor pipeline can leak its teardown on death
 
-Status: Open
+Status: Closed
 
 **What happened.** An aperture arbitration review found that the NVG and
 thermal sensor pipeline exits early on `!alive` and on a nil current unit,
@@ -367,3 +367,47 @@ optics module and it is wider than the aperture change that found it.
 guaranteed to fire. Death, respawn and teleport are not mode changes, so
 any handler keyed on a mode change needs a second owner that runs without
 one.
+
+**Resolved.** The teardown was extracted to `fnc_teardownSensors`, so the
+event and the handler run one sequence and cannot drift. The handler now
+keys the session to the unit it opened for: when the unit changes or dies,
+the handler tears down itself, because nothing else will. The old
+`!alive` guard exited without cleaning up, which looked identical to the
+transient it was written for. A source-reading test asserts death calls the
+teardown, the session is unit-keyed, and the teardown clears the key.
+Proven to bite: restoring the leaky guard fails two tests.
+
+## GAP-027: a finished worker left the tree write-protected
+
+Status: Closed
+
+**What happened.** For about twenty minutes, edits to one file appeared to
+succeed and did not persist. The `edit` tool reported a replacement, a
+Python write reported success, and `awk` to a temp file then back reported
+nothing, yet `git status` showed the file unmodified. Shell writes to other
+files worked throughout, so it looked like a filesystem or tool fault.
+
+**What went wrong.** It was not a fault in the tools. A subagent session
+that had already finished and been collected appeared to the concurrent
+worker guard as still active. While the guard believed a worker was live,
+it rolled back uncommitted changes in the repository, which reverted the
+edit each time it was made. The guard also blocked a restore with a
+message naming the session, and that message was the evidence.
+
+**Why.** The rule was unapplied. The project states that a worker must be
+committed or handed off before another starts, and that plugins must not be
+edited while workers run. A subagent was collected from but never marked
+finished, so its scope stayed open. The symptom pointed at the tools, and
+two tool paths were distrusted before the guard message was read as the
+cause.
+
+**What prevents recurrence.** Read the guard message when it appears: it
+names the blocking session, and that is the cause, not noise. When a
+subagent's work is collected, treat the session as closed before starting
+another. When an edit does not appear in `git status`, suspect a guard
+before suspecting the editor, and check `git status` after every write
+rather than trusting the tool result.
+
+**Lesson.** A write that reports success and does not appear in the
+working tree is a sign that something else owns the tree. Find the owner
+before blaming the writer.
