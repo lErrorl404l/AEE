@@ -97,6 +97,33 @@ _insulation = _insulation max 0.3 min 0.8;
 private _thermalState = missionNamespace getVariable [QGVAR(thermalState), createHashMap];
 private _now = diag_tickTime;
 
+// ─── Scan interval gate ───────────────────────────────────────────────────
+// This is the most expensive call in the environment tick: a nearestObjects
+// query, up to fifty lineIntersectsSurfaces raycasts, and around five
+// hundred Newton iterations, on EVERY machine whenever the tick fires.
+//
+// The scan does not need the tick rate. The surface temperatures it feeds
+// run on time constants of 600 s (ground), 1800 s (acclimatisation) and
+// about 7200 s (a vehicle), and the solver already integrates an arbitrary
+// step through exp(-dt/tau). A 30 s step differs from a 5 s step by 0.3%
+// of the approach to equilibrium, which is well inside the model's own
+// uncertainty, so the scan runs on its own clock and the tick calls it
+// cheaply.
+//
+// Set the interval to 0 to scan every tick, which restores the old
+// behaviour for a calibration sweep.
+private _scanInterval = missionNamespace getVariable [QGVAR(objectScanInterval), 30];
+if !(_scanInterval isEqualType 0) then { _scanInterval = 30; };
+if (_scanInterval > 0) then {
+    private _lastScan = missionNamespace getVariable [QGVAR(objectScanLast), -1e9];
+    if ((_now - _lastScan) < _scanInterval) exitWith {
+        // Not due. Publish the cached summary so a consumer still reads a
+        // value rather than nothing.
+        missionNamespace getVariable [QGVAR(objectTemperatureSummary), []]
+    };
+    missionNamespace setVariable [QGVAR(objectScanLast), _now];
+};
+
 // ─── Ground temperature ───────────────────────────────────────────────────
 // Per-position ground solve (issue #124).  The old per-class gain table
 // (a 5-15 C offset hack per surface type) and the manual wind/shade
@@ -440,5 +467,10 @@ missionNamespace setVariable [QEGVAR(core,avgGroundTemp), _groundTemp];
 
 private _logMsg = format ["thermal: air %1, ground %2, vehicle %3, infantry %4, objects %5", _airTemp, _groundTemp, _avgVehicle, _avgInfantry, count _results];
 AEE_LOG_DEBUG(_logMsg);
+
+// Cache the result so a tick inside the scan interval returns the last
+// computed set rather than nothing. The published summary state above is
+// already current, because it was written on the scan that produced it.
+missionNamespace setVariable [QGVAR(objectTemperatureSummary), _results];
 
 _results

@@ -57,3 +57,17 @@
     true,
     {}
 ] call CBA_fnc_addSetting;
+
+// ── Solver cadence ────────────────────────────────────────────────────────
+// The object-temperature scan is the most expensive call in the environment
+// tick. Surface temperatures run on time constants of 600 s and up, so the
+// scan does not need the tick rate. 0 restores a scan every tick.
+[
+    QGVAR(objectScanInterval),
+    "SLIDER",
+    [LLSTRING(objectScanInterval_Name), LLSTRING(objectScanInterval_Description)],
+    ["AEE Thermal", "Solver"],
+    [0, 120, 30, 0],
+    true,
+    {}
+] call CBA_fnc_addSetting;
