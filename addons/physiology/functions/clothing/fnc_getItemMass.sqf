@@ -247,8 +247,7 @@ private _match = 0;
 private _family = "";
 {
     _x params ["_familyName", "_category", "_mass"];
-    if ((_allowed isEqualTo [] || {_category in _allowed})
-        && {_hay find _familyName >= 0}) exitWith {
+    if ((_allowed isEqualTo [] || {_category in _allowed}) && {_hay find _familyName >= 0}) exitWith {
         _match = _mass;
         _family = _familyName;
     };
