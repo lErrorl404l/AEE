@@ -244,6 +244,7 @@ follow the variable names as written in the SQF source.
 | `aee_atmos_refractionCondition` | atmos | Refraction regime |
 | `aee_atmos_refractionK` | atmos | K-factor (4/3 earth) |
 | `aee_atmos_refractivityGradient` | atmos | Refractivity gradient |
+| `aee_core_orographicFactor` | atmos | Precipitation enhancement over terrain: 1.0 base, above over an upslope and below over a downslope. The published upslope form (Smith 1979) |
 | `aee_atmos_refractivityN` | atmos | Refractivity in N-units |
 | `aee_ballistics_downrangeWind` | ballistics | Downrange wind component |
 | `aee_ballistics_muzzleVelocityCorrection` | ballistics | MV correction 0.85..1.15 |

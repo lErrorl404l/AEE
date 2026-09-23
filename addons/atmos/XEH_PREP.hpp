@@ -5,6 +5,7 @@ PREPS(state,updateFog);
 PREPS(physics,calculateCloudCeiling);
 PREPS(physics,calculatePressureTrend);
 PREPS(physics,calculateAirframeIcing);
+PREPS(physics,calculateOrographicPrecipitation);
 PREPS(physics,calculateCloudDevelopment);
 PREPS(physics,calculateLightning);
 PREPS(physics,calculateMicroburst);
