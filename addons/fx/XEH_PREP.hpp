@@ -1,5 +1,6 @@
 PREPS(weather,applyAtmosphericDust);
 PREPS(weather,applyBreathCondensation);
+PREPS(weather,applyFootfallDust);
 PREPS(weather,applyRainSurfaceDrops);
 PREPS(weather,applyRainVehicleSound);
 PREPS(weather,applyVehicleDust);
@@ -14,3 +15,5 @@ PREPS(weather,calculateLightningStrikeEffects);
 PREPS(particle,particleMaterial);
 PREPS(particle,particleState);
 PREPS(particle,surfaceMaterial);
+PREPS(particle,surfaceSample);
+PREPS(particle,kickupParams);
