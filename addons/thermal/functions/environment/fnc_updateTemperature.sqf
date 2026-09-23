@@ -149,6 +149,19 @@ if (_mcRadius > 0) then {
     };
 };
 
+// ─── Water-body influence ────────────────────────────────────────────────
+// A lake or sea moderates the air that crosses it and the effect fades
+// inland as the internal boundary layer deepens.  The growth is published;
+// fnc_calculateWaterInfluence holds it.
+private _wiRadius = missionNamespace getVariable [QEGVAR(core,waterInfluenceRadius), 1000];
+if !(_wiRadius isEqualType 0) then { _wiRadius = 1000; };
+if (_wiRadius > 0) then {
+    private _wiPos2D = _pos2D;
+    if (isNil "_wiPos2D") then { _wiPos2D = [0, 0]; };
+    private _wiOffset = [[_wiPos2D select 0, _wiPos2D select 1, 0], _wiRadius] call EFUNC(environmental,calculateWaterInfluence);
+    _T_shade = _T_shade + _wiOffset;
+};
+
 // ─── Output ───────────────────────────────────────────────────────────────
 private _T_final = round (_T_shade * 10) / 10;
 
