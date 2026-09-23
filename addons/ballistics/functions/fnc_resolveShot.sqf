@@ -133,6 +133,15 @@ if (_bc > 0 && _mv > 0) then {
 // omega = 2 pi v / T (rad/s). It is what the stability depends on.
 private _spinRate = if (_twist > 0 && _mv > 0) then { 2 * pi * _mv / _twist } else { 0 };
 
+// The resolved shot, in one line: the identity it matched and the values
+// the model derived from it. A miss shows as an empty cartridge, which is
+// the case a wrong trajectory is hardest to explain without this.
+private _logMsg = format [
+    "shot %1/%2: mv %3 m/s, bc %4 (%5), twist %6 m/turn, stability %7, retard %8 m/s2, barrel %9 m",
+    _cartridgeId, _projectileId, round _mv, _bc, _model, _twist, _stability, round _retard, round (_barrelM * 1000) / 1000
+];
+AEE_LOG_DEBUG(_logMsg);
+
 [
     _mv,
     _bc,

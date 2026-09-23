@@ -43,9 +43,10 @@ private _pack = [_unit] call FUNC(getPackProperties);
 // The combined signature: weight sums, armour = max (the vest
 // dominates), NIR = the uniform-dominant surface-weighted average, clo
 // sums.
+private _slots = (_uniform select 0) + (_vest select 0) + (_helmet select 0)
+    + (_goggle select 0) + (_pack select 0);
 private _combined = [
-    (_uniform select 0) + (_vest select 0) + (_helmet select 0)
-        + (_goggle select 0) + (_pack select 0),
+    _slots,
     (_vest select 1) max (_helmet select 1) max (_goggle select 1),
     (_uniform select 2) + (_vest select 2) * 0.3 + (_helmet select 2) * 0.2
         + (_pack select 2) * 0.1 + (_goggle select 2) * 0.1,
@@ -56,11 +57,13 @@ _combined set [2, (_combined select 2) / 1.7];
 
 // The weapons the soldier carries join the load. They are not a slot, so
 // they add after the slots are summed.
-_combined set [0, (_combined select 0) + ([_unit] call FUNC(getWeaponLoad))];
+private _weapons = [_unit] call FUNC(getWeaponLoad);
+_combined set [0, (_combined select 0) + _weapons];
 
 // The magazines are the heaviest repeated item, so they join the load
 // too. A magazine's mass is its empty mass plus the rounds it holds.
-_combined set [0, (_combined select 0) + ([_unit] call FUNC(getMagazineLoad))];
+private _magazines = [_unit] call FUNC(getMagazineLoad);
+_combined set [0, (_combined select 0) + _magazines];
 
 // The container contents and the carried small kit (NVG, radio, GPS,
 // medical kit, tools, weapon attachments) close the load.  The engine
@@ -68,6 +71,16 @@ _combined set [0, (_combined select 0) + ([_unit] call FUNC(getMagazineLoad))];
 // a fraction and not a mass, so the contents are weighed item by item.
 // The walk skips the worn slots, the carried weapons and the magazines,
 // so nothing is counted twice.
-_combined set [0, (_combined select 0) + ([_unit] call FUNC(getInventoryLoad))];
+private _inventory = [_unit] call FUNC(getInventoryLoad);
+_combined set [0, (_combined select 0) + _inventory];
+
+// The four resolvers and their sum: one line that explains a carried load,
+// which is otherwise a single number with no way to see where it came from.
+// The values are the ones already computed, not a second call.
+private _logMsg = format [
+    "load %1 kg = slots %2 + weapons %3 + magazines %4 + inventory %5",
+    round ((_combined select 0) * 10) / 10, _slots, _weapons, _magazines, _inventory
+];
+AEE_LOG_DEBUG(_logMsg);
 
 [_uniform, _vest, _helmet, _goggle, _pack, _combined]

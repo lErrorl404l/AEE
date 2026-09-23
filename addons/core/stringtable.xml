@@ -169,6 +169,30 @@
             <Original>ICAO Reference Altitude</Original>
             <English>ICAO Reference Altitude</English>
         </Key>
+        <Key ID="STR_AEE_Core_logDebugPerModule_Name">
+            <Original>Trace This Module</Original>
+            <English>Trace This Module</English>
+        </Key>
+        <Key ID="STR_AEE_Core_logDebug_Description">
+            <Original>Log DEBUG and TRACE lines to the RPT. Values, not narration: each line carries the real inputs the code used. Off by default.</Original>
+            <English>Log DEBUG and TRACE lines to the RPT. Values, not narration: each line carries the real inputs the code used. Off by default.</English>
+        </Key>
+        <Key ID="STR_AEE_Core_logDebug_Name">
+            <Original>Log Debug Output</Original>
+            <English>Log Debug Output</English>
+        </Key>
+        <Key ID="STR_AEE_Core_logDebug_ballistics_Description">
+            <Original>Trace shot resolution: the cartridge and projectile it matched, the measured barrel, the muzzle velocity, twist, stability and drag</Original>
+            <English>Trace shot resolution: the cartridge and projectile it matched, the measured barrel, the muzzle velocity, twist, stability and drag</English>
+        </Key>
+        <Key ID="STR_AEE_Core_logDebug_fx_Description">
+            <Original>Trace the effect emitters: the surface material sampled, the particle parameters and the entrainment the physics computed</Original>
+            <English>Trace the effect emitters: the surface material sampled, the particle parameters and the entrainment the physics computed</English>
+        </Key>
+        <Key ID="STR_AEE_Core_logDebug_physiology_Description">
+            <Original>Trace the carried load: each item, its resolved mass and the four resolver totals that make up the combined weight</Original>
+            <English>Trace the carried load: each item, its resolved mass and the four resolver totals that make up the combined weight</English>
+        </Key>
         <Key ID="STR_AEE_Core_maritimeEnabled_Description">
             <Original>Enable sea state, wave height, tidal prediction, and magnetic compass deviation</Original>
             <English>Enable sea state, wave height, tidal prediction, and magnetic compass deviation</English>
