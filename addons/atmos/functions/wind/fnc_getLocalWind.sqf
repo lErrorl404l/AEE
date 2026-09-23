@@ -81,7 +81,12 @@ _terrainS = _terrainS min 1.4 max 0.2;   // crest speed-up capped 1.4
 // (30-60% of free wind), far wake 5-15H (60-90%).
 // Shadow: S(x) = 1 - 0.7 x (x/L_R)^-p, p ~1.5-2.0.
 private _buildingS = 1.0;
-private _nearestBld = nearestObjects [_posAGL, ["House", "Building"], 30];
+// One query covers both the wake and the canyon checks below. They search
+// the same classes at 30 m and 25 m, so the wider search serves both and
+// the narrower case is filtered locally. The canyon check needs the
+// second building, so the list is kept whole.
+private _nearBuildings = nearestObjects [_posAGL, ["House", "Building"], 30];
+private _nearestBld = _nearBuildings select [0, 1];
 if (_nearestBld isNotEqualTo []) then {
     private _bld = _nearestBld select 0;
     private _bldPos = getPosASL _bld;
@@ -122,12 +127,13 @@ if (_nearestBld isNotEqualTo []) then {
 // <0.4.  Perpendicular wind: street-level 10-20% of roof wind.  Parallel
 // (channelling): S = 1.2.
 private _canyonS = 1.0;
-private _nearBuildings = nearestObjects [_posAGL, ["House", "Building"], 25];
-if (count _nearBuildings >= 2) then {
+// The same list, narrowed to the canyon radius. No second engine query.
+private _canyonBuildings = _nearBuildings select { _posAGL distance _x <= 25 };
+if (count _canyonBuildings >= 2) then {
     // The street is flanked: canyon regime likely.  Is the wind parallel
     // to the street?  Proxy: compare the wind to the building-row axis.
-    private _b1 = _nearBuildings select 0;
-    private _b2 = _nearBuildings select 1;
+    private _b1 = _canyonBuildings select 0;
+    private _b2 = _canyonBuildings select 1;
     private _rowAxis = vectorNormalized ((getPosASL _b2) vectorDiff (getPosASL _b1));
     private _perpComponent = abs ((_windVec select 0) * (_rowAxis select 0) + (_windVec select 1) * (_rowAxis select 1));
     private _bH = (boundingBox _b1 select 1) select 2;
