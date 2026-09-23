@@ -81,6 +81,13 @@ private _spec = [0.40, 3.20, 0.76, 30];   // default: a light 4x4 / HMMWV
 
 _spec params ["_clearance", "_wheelbase", "_fordDepth", "_sideLimit"];
 
+// The vehicle's own geometry overrides the class estimate where it is
+// readable (fnc_getVehicleGeometry): a measured wheelbase is real data, and
+// the breakover angle depends on it directly.  Clearance has no engine
+// source, so it stays on the class table.
+private _geo = [_vehicle] call FUNC(getVehicleGeometry);
+if ((_geo select 1) > 0) then { _wheelbase = _geo select 1; };
+
 // ─── Breakover ───────────────────────────────────────────────────────────
 private _breakover = 2 * (atan ((2 * _clearance) / _wheelbase)) * 57.2957795;
 

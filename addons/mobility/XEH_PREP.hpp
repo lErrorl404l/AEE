@@ -11,6 +11,7 @@ PREP(calculateSoilStrength);
 PREP(calculateTerrainLimits);
 PREP(applyTerrainDrag);
 PREP(getTerrainSpeedFactor);
+PREP(getVehicleGeometry);
 PREP(calculateSoilBearingStrength);
 PREP(calculateTraction);
 PREP(calculateWetTraction);

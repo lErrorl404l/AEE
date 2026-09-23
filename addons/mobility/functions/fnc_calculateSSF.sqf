@@ -61,12 +61,19 @@ private _trackTable = [
     ["Wheeled_APC_F", 2.10]
 ];
 
-private _track = 0;
-{
-    if (_vehicle isKindOf (_x select 0)) exitWith {
-        _track = _x select 1;
-    };
-} forEach _trackTable;
+// The real geometry first: the vehicle's own wheel points, read from its
+// config or its model (fnc_getVehicleGeometry).  The class table below is
+// the fallback, used only when the vehicle declares no readable wheels.
+private _geo = [_vehicle] call FUNC(getVehicleGeometry);
+private _track = _geo select 0;
+
+if (_track <= 0) then {
+    {
+        if (_vehicle isKindOf (_x select 0)) exitWith {
+            _track = _x select 1;
+        };
+    } forEach _trackTable;
+};
 
 // A tracked vehicle rolls about its track centres, so the tank entry above
 // applies.  An unmatched class falls to a conservative light-vehicle width.
@@ -77,7 +84,7 @@ if (_vehicle isKindOf "Air") exitWith { [0, 0, 0, "table"] };
 
 // ─── Centre-of-gravity height ────────────────────────────────────────────
 private _cgHeight = 0;
-private _source = "table";
+private _source = ["table", "geometry"] select ((_geo select 0) > 0);
 private _com = getCenterOfMass _vehicle;
 if (_com isEqualType [] && {count _com == 3}) then {
     // getCenterOfMass returns the offset from the model centre.  Measure

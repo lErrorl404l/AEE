@@ -85,6 +85,15 @@ private _spec = [8000, 12, 40, 10, 4];   // default: a light 4x4
 
 _spec params ["_w", "_b", "_d", "_hc", "_n"];
 
+// The vehicle's own geometry overrides the class estimate where it is
+// readable.  The Mobility Index is driven by the tyre width b, the tyre
+// diameter d, the wheel count n and the clearance hc, so replacing the
+// table estimates with measured values makes the index per-vehicle rather
+// than per-class (fnc_getVehicleGeometry).
+private _geo = [_vehicle] call FUNC(getVehicleGeometry);
+if ((_geo select 2) > 0) then { _d = (_geo select 2) / 0.0254; };   // m -> in
+if ((_geo select 3) > 0) then { _n = _geo select 3; };
+
 // ─── Mobility Index ──────────────────────────────────────────────────────
 private _cpf = _w / (0.5 * _n * _d * _b);
 private _tef = (10 + _b) / 100;
