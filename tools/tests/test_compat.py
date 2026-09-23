@@ -497,5 +497,75 @@ class TestWorldLatitudePattern(unittest.TestCase):
         )
 
 
+class TestAceItemMassHook(unittest.TestCase):
+    """ACE item mass coverage and the resolver hook contract.
+
+    The core library holds no ACE item, because its classnames carry no
+    engine item category: the core resolver returns 0 for them and the
+    item weighs nothing.  The compat layer supplies ACE's published masses
+    and registers a resolver.  These tests pin both the values and the
+    hook, so an inert registration (a resolver that is never consulted)
+    fails CI rather than degrading in silence.
+    """
+
+    def _read(self, rel):
+        from pathlib import Path
+
+        return (Path("addons") / rel).read_text(encoding="utf-8")
+
+    def test_ace_masses_match_the_published_config(self):
+        import re
+
+        src = self._read("compat_ace3/functions/fnc_getAceItemMass.sqf")
+        rows = dict(
+            (m.group(1), float(m.group(2)))
+            for m in re.finditer(r'\["(ACE_\w+|FirstAidKit|Medikit)", ([0-9.]+)\]', src)
+        )
+        # The values ACE publishes in its own CfgWeapons, in units of 100 g.
+        for name, unit in (
+            ("ACE_fieldDressing", 0.6),
+            ("ACE_tourniquet", 1.0),
+            ("ACE_salineIV", 10.0),
+            ("ACE_salineIV_500", 5.0),
+            ("ACE_surgicalKit", 15.0),
+            ("ACE_suture", 0.1),
+            ("FirstAidKit", 4.0),
+            ("Medikit", 60.0),
+        ):
+            self.assertIn(name, rows, f"{name} missing from the ACE mass table")
+            self.assertAlmostEqual(rows[name], unit, places=3, msg=f"{name} value")
+
+    def test_the_unit_scale_is_a_tenth(self):
+        # The table stores ACE's config unit; the function returns kg, and
+        # the scale was verified against documented item masses (a saline
+        # IV at 10 units is a 1.0 kg bag).  A change to the divisor is a
+        # change to a verified physical scale, so it must be deliberate.
+        src = self._read("compat_ace3/functions/fnc_getAceItemMass.sqf")
+        self.assertIn("_match / 10", src, "the 100 g to kg scale changed")
+
+    def test_compat_registers_its_resolver(self):
+        # Without the registration the walk never calls it.
+        src = self._read("compat_ace3/XEH_preInit.sqf")
+        self.assertIn("aee_physiology_massResolvers", src)
+        self.assertIn("FUNC(getAceItemMass)", src)
+
+    def test_core_walk_consults_the_registered_resolvers(self):
+        # The other half of the contract: the walk must read the list and
+        # try each resolver when the core table misses.  Assert the real
+        # text, not a string this test fabricates.
+        src = self._read("physiology/functions/clothing/fnc_getInventoryLoad.sqf")
+        self.assertIn(
+            "QGVAR(massResolvers)", src, "the walk does not read the resolver list"
+        )
+        self.assertIn("forEach _resolvers", src, "the walk does not try the resolvers")
+
+    def test_core_stays_ace_free(self):
+        # No ACE classname or ACE field may appear in the core resolver:
+        # that knowledge belongs to the compat layer.
+        src = self._read("physiology/functions/clothing/fnc_getItemMass.sqf")
+        self.assertNotIn("ACE_", src, "an ACE name leaked into the core resolver")
+        self.assertNotIn("ACE_isMedicalItem", src)
+
+
 if __name__ == "__main__":
     unittest.main()
