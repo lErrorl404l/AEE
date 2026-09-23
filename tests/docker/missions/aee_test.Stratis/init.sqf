@@ -2619,6 +2619,85 @@ private _p29Pass = 0;
         diag_log text format ["[PHASE57] [FAIL] magazine mass: known %1, tier %2", _magKnown, _magTier];
     };
 
+    // -- PHASE 58: the carried inventory load --
+    // The worn slots are weighed by the equipment library; what the
+    // soldier CARRIES (container contents, the assigned slot items, the
+    // weapon attachments) is weighed item by item.  Two engine facts
+    // decide the walk: `items` and `assignedItems` must not hand over the
+    // same item twice, and the `load` command is a 0..1 capacity ratio,
+    // not a mass.
+    // The test unit sits in a CIVILIAN group.  The mission runs repeatedly
+    // in one server session, and the BLUFOR group limit is reached, which
+    // once made this phase create no unit and report all zeros.
+    private _invGrp = createGroup [civilian, true];
+    private _invUnit = _invGrp createUnit ["B_Soldier_F", [4300, 4250, 0], [], 0, "NONE"];
+    if (isNull _invUnit) then {
+        diag_log text "[PHASE58] [FAIL] inventory load: the test unit was not created";
+    } else {
+        _invUnit addBackpack "B_AssaultPack_khk";
+        _invUnit linkItem "ItemGPS";
+        _invUnit linkItem "ItemRadio";
+        _invUnit linkItem "NVGoggles";
+        _invUnit addItem "FirstAidKit";
+        _invUnit addItemToBackpack "FirstAidKit";
+
+        private _items = items _invUnit;
+        private _assigned = assignedItems _invUnit;
+        private _overlap = _items arrayIntersect _assigned;
+        // An item must reach the walk at most once, whichever source the
+        // engine reports it in.  The engine decides which slot a linked
+        // item lands in, so the count is the property, not the source.
+        private _seen = _items + _assigned;
+        private _duplicates = 0;
+        {
+            private _target = _x;
+            private _n = {_x == _target} count _seen;
+            if (_n > 1) then { _duplicates = _duplicates + (_n - 1); };
+        } forEach ["NVGoggles", "ItemGPS", "ItemRadio"];
+
+        // An unknown classname returns 0: the resolver never guesses.
+        private _unknown = ["AEE_Unknown_zzz_item"] call aee_physiology_fnc_getItemMass;
+
+        // Window A, kit items only: the combined load must move by exactly
+        // the inventory walk, because no weapon and no magazine changed.
+        private _equip1 = [_invUnit] call aee_physiology_fnc_getEquipmentProperties;
+        private _walk1 = [_invUnit] call aee_physiology_fnc_getInventoryLoad;
+        _invUnit addItemToBackpack "FirstAidKit";
+        _invUnit addItemToBackpack "FirstAidKit";
+        private _equip2 = [_invUnit] call aee_physiology_fnc_getEquipmentProperties;
+        private _walk2 = [_invUnit] call aee_physiology_fnc_getInventoryLoad;
+        private _walkDelta = _walk2 - _walk1;
+        private _equipDelta = (_equip2 select 5 select 0) - (_equip1 select 5 select 0);
+
+        // Window B, a spare magazine: it belongs to the magazine resolver
+        // alone, so the item walk holds still while the magazine mass rises.
+        private _magWalk1 = [_invUnit] call aee_physiology_fnc_getInventoryLoad;
+        private _magMass1 = [_invUnit] call aee_physiology_fnc_getMagazineLoad;
+        _invUnit addMagazine "30Rnd_556x45_Stanag";
+        private _magWalk2 = [_invUnit] call aee_physiology_fnc_getInventoryLoad;
+        private _magMass2 = [_invUnit] call aee_physiology_fnc_getMagazineLoad;
+
+        // The engine ratio, for the record: a fraction, never a mass.
+        private _loadRatio = load (unitBackpack _invUnit);
+        deleteVehicle _invUnit;
+
+        private _p58Ok = (_overlap isEqualTo [])
+            && {_duplicates == 0}
+            && {count _assigned >= 2}
+            && {_unknown == 0}
+            && {_walk2 >= 0}
+            && {abs (_equipDelta - _walkDelta) < 0.001}
+            && {_loadRatio <= 1}
+            && {abs (_magWalk2 - _magWalk1) < 0.001}
+            && {_magMass2 > _magMass1};
+        if (_p58Ok) then {
+            diag_log text format ["[PHASE58] [PASS] inventory load: items %1, assigned %2, overlap %3, duplicates %4, walk %5 kg (delta %6), magazine %7 kg, pack ratio %8", count _items, count _assigned, count _overlap, _duplicates, _walk2, _walkDelta, _magMass2, _loadRatio];
+        } else {
+            diag_log text format ["[PHASE58] [FAIL] inventory load: overlap %1, duplicates %2, assigned %3, unknown %4, equip delta %5 vs walk delta %6, ratio %7, magazine %8 -> %9, walk %10 -> %11", _overlap, _duplicates, count _assigned, _unknown, _equipDelta, _walkDelta, _loadRatio, _magMass1, _magMass2, _magWalk1, _magWalk2];
+        };
+    };
+    deleteGroup _invGrp;
+
 diag_log text "[AEE-TEST] DONE";
         }, [_t1], 5] call CBA_fnc_waitAndExecute;
     }, [], 7] call CBA_fnc_waitAndExecute;

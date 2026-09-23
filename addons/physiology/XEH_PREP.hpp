@@ -15,6 +15,8 @@ PREPS(strain,integrateSwayFactor);
 PREPS(strain,applyMovementSpeed);
 PREPS(clothing,getCamouflageProperties);
 PREPS(clothing,getEquipmentProperties);
+PREPS(clothing,getInventoryLoad);
+PREPS(clothing,getItemMass);
 PREPS(clothing,getWeaponLoad);
 PREPS(clothing,getMagazineLoad);
 PREPS(clothing,getMagazineMass);

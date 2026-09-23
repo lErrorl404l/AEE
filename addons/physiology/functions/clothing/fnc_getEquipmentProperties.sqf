@@ -24,8 +24,9 @@ Arguments:
 
 Returns [uniform, vest, helmet, goggle, pack, combined]:
   each slot entry is [weightKg, armorLevel, nirReflectance, cloTotal]
-  combined - weight sums (incl. the pack contents), armour = max,
-    NIR = the surface-weighted average, clo = the sum
+  combined - weight sums (the worn slots, the carried weapons and
+    magazines, and the container contents), armour = max, NIR = the
+    surface-weighted average, clo = the sum
 */
 params [["_unit", player, [objNull]]];
 if (isNull _unit) exitWith {
@@ -39,16 +40,12 @@ private _helmet = [_unit] call FUNC(getHelmetProperties);
 private _goggle = [_unit] call FUNC(getGoggleProperties);
 private _pack = [_unit] call FUNC(getPackProperties);
 
-// The pack contents add their carried weight (the engine load command:
-// 0..1 of the pack's max capacity).
-private _packContents = load (unitBackpack _unit);
-
 // The combined signature: weight sums, armour = max (the vest
 // dominates), NIR = the uniform-dominant surface-weighted average, clo
 // sums.
 private _combined = [
     (_uniform select 0) + (_vest select 0) + (_helmet select 0)
-        + (_goggle select 0) + (_pack select 0) + _packContents,
+        + (_goggle select 0) + (_pack select 0),
     (_vest select 1) max (_helmet select 1) max (_goggle select 1),
     (_uniform select 2) + (_vest select 2) * 0.3 + (_helmet select 2) * 0.2
         + (_pack select 2) * 0.1 + (_goggle select 2) * 0.1,
@@ -58,12 +55,19 @@ private _combined = [
 _combined set [2, (_combined select 2) / 1.7];
 
 // The weapons the soldier carries join the load. They are not a slot, so
-// they add after the slots are summed. Magazines are a separate capture
-// and are not counted yet (ADR-004).
+// they add after the slots are summed.
 _combined set [0, (_combined select 0) + ([_unit] call FUNC(getWeaponLoad))];
 
 // The magazines are the heaviest repeated item, so they join the load
 // too. A magazine's mass is its empty mass plus the rounds it holds.
 _combined set [0, (_combined select 0) + ([_unit] call FUNC(getMagazineLoad))];
+
+// The container contents and the carried small kit (NVG, radio, GPS,
+// medical kit, tools, weapon attachments) close the load.  The engine
+// `load` command is not used: it returns 0..1 of the container capacity,
+// a fraction and not a mass, so the contents are weighed item by item.
+// The walk skips the worn slots, the carried weapons and the magazines,
+// so nothing is counted twice.
+_combined set [0, (_combined select 0) + ([_unit] call FUNC(getInventoryLoad))];
 
 [_uniform, _vest, _helmet, _goggle, _pack, _combined]

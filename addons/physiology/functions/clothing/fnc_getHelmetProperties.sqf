@@ -33,7 +33,7 @@ if (_helmetItem == "") exitWith { [1.4, 2, 0.40, 0.07] };
 
 private _helmetDef = [1.4, 2, 0.40, 0.07];
 private _h = toLower _helmetItem;
-switch (true) do {
+private _tier = switch (true) do {
     // ── Historical steel helmets (WW1-WW2) ──
     // Stahlhelm M35/M40/M42, US M1, SSh-68, STSh-81, M56, Modèle
     // 1951: unrated steel, 0.8-1.4 kg by size (the family mean ~1.2).
@@ -121,3 +121,10 @@ switch (true) do {
     case (_h find "beret" >= 0):       { [0.15, 0, 0.35, 0.04] };
     default                           { _helmetDef };
 };
+
+// The researched item table outranks the family tier: when a capture
+// holds the family, its published mass replaces the tier weight.  Armour,
+// NIR and clo stay with the tier.
+private _mass = [_helmetItem, ["helmet"]] call FUNC(getItemMass);
+if (_mass > 0) then { _tier set [0, _mass] };
+_tier
