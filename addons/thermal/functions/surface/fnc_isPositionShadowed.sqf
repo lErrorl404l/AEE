@@ -72,9 +72,8 @@ private _end = _origin vectorAdd (_sunDir vectorMultiply 200);
 private _hits = lineIntersectsSurfaces [
     _origin, _end,
     objNull, objNull,
-    true, 1,    // geometry LOD, max results
-    "GEOM", "NONE",
-    true        // returnUnique (2.10+)
+    true, 1,    // sort nearest first, one result
+    "GEOM", "NONE"
 ];
 private _shadowed = count _hits > 0;
 if (_shadowed && {count _hits > 0}) then {
