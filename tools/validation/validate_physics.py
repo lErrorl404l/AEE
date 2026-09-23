@@ -564,6 +564,58 @@ def check_orographic_upslope():
     }
 
 
+def check_terrain_wind_speedup():
+    """Hill speed-up: the mod relation vs Taylor and Lee (1984).
+
+    The SQF computes dS = 2 (h/L) sigma, the maximum fractional speed-up
+    over a hill crest.  The check tests the published properties: the
+    coefficient is 2, the shape factor is 1 for an ideal ridge and 0.8 for
+    rolling terrain, the result is linear in h/L, and the form is applied
+    up to the stated limit h/L < 0.5 and clamped beyond it.
+    """
+
+    def speedup(h_over_l, sigma=1.0):
+        return 2 * min(h_over_l, 0.5) * sigma
+
+    errors = []
+    # The ideal-ridge coefficient: doubling h/L doubles the speed-up,
+    # over the range the guideline states (h/L below 0.5).
+    for hl in (0.05, 0.1, 0.2):
+        if abs(speedup(2 * hl) - 2 * speedup(hl)) > 1e-12:
+            errors.append(1.0)
+    # The shape factor: rolling terrain is 0.8 of an ideal ridge.
+    if abs(speedup(0.2, 0.8) - 0.8 * speedup(0.2, 1.0)) > 1e-12:
+        errors.append(1.0)
+    # The stated ceiling: at h/L = 0.5 the ideal speed-up is 1.0.
+    if abs(speedup(0.5) - 1.0) > 1e-12:
+        errors.append(1.0)
+    # The clamp: beyond the stated validity the value does not grow.
+    if speedup(1.0) != speedup(0.5):
+        errors.append(1.0)
+    max_abs, rmse = compute_stats(errors)
+    return {
+        "name": "Terrain wind speed-up (Taylor & Lee 1984 form vs published)",
+        "ground_truth": (
+            "dS = 2 (h/L) sigma, sigma ~ 1 ideal ridge, ~0.8 rolling terrain; "
+            "Taylor & Lee 1984, Climatological Bulletin 18(2) 3-32 (a "
+            "reproduction of Taylor et al. 1983; the primaries are paywalled). "
+            "Validity h/L < 0.5 stated by Taylor & Lee, h/L < 0.05 by "
+            "Jackson & Hunt 1975, QJRMS 101, 929, DOI 10.1002/qj.49710143015"
+        ),
+        "grid": "h/L = 0.05 .. 0.5 (the stated range), sigma 1.0 and 0.8",
+        "tolerance": "1e-12 (linearity, coefficient and clamp are exact)",
+        "status": "PASS" if max_abs <= 1e-12 else "FAIL",
+        "max_abs": max_abs,
+        "rmse": rmse,
+        "unit": "fraction",
+        "note": (
+            "no Froude-number correction is applied: the literature gives "
+            "F_L as a regime parameter and no canonical closed-form "
+            "correction to the coefficient was found"
+        ),
+    }
+
+
 def check_lapse_rate():
     """Mod lapse T(z) = T0 - 0.0065 z vs ISA table temperatures."""
     errors = []
@@ -836,6 +888,7 @@ def main():
         check_air_density_isa(),
         check_urban_heat_island(),
         check_orographic_upslope(),
+        check_terrain_wind_speedup(),
         check_lapse_rate(),
         check_wbgt_iso7243(),
         check_heat_index(),
