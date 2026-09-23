@@ -219,6 +219,43 @@ if (_p10Fail == 0) then {
     private _mapBiome = missionNamespace getVariable ["aee_environmental_biomeCached", "<none>"];
     diag_log text format ["[BIOME] %1=%2", worldName, _mapBiome];
 
+    // -- PHASE 8b: the biome owner and its scope ----------------------------
+    // aee_core_biome is the MAP climate class, owned by fnc_getBiome. It is
+    // read by fourteen consumers for a map-scoped purpose: fog normals,
+    // river level, crop state, radio loss, flood risk. A per-position
+    // sampler once overwrote it every tick with a single tile's surface
+    // answer, which broke all of them.
+    //
+    // On Stratis the map-wide classifier correctly resolved Csa (an Aegean
+    // island at 35 N) and the per-position path replaced it with Cfb,
+    // because a man-made surface (GdtStratisConcrete) carries no climate
+    // signal. The complication: the band check cannot see it, because Cfb
+    // is legal at 35 N under the band rules.
+    //
+    // The invariant is now a scope separation: the map climate must not
+    // change when the player crosses a surface boundary, and the local
+    // detail may. This asserts both, so a future writer that reaches for
+    // aee_core_biome from the position path fails here.
+    if (!isNil "_biome") then {
+        private _mapBiome = missionNamespace getVariable ["aee_environmental_biomeCached", ""];
+        private _localBiome = missionNamespace getVariable ["aee_environmental_localBiome", ""];
+        private _mapPlausible = true;
+        if (_mapBiome != "") then {
+            _mapPlausible = switch (true) do {
+                case (_mapBiome == ""): { false };
+                case (_mapBiome == _biome): { true };
+                default { (_mapBiome select [0, 2]) == (_biome select [0, 2]) };
+            };
+        };
+        if (_mapPlausible && {_mapBiome == _biome}) then {
+            diag_log text format ["[PHASE8b] [PASS] biome scope: map=%1 unchanged by per-position detail=%2", _mapBiome, _localBiome];
+        } else {
+            diag_log text format ["[PHASE8b] [FAIL] biome scope: map=%1 but aee_core_biome=%2 (local detail=%3)", _mapBiome, _biome, _localBiome];
+        };
+    } else {
+        diag_log text "[PHASE8b] [FAIL] biome scope not testable: aee_core_biome is nil";
+    };
+
     if ((!isNil "_t") && (!isNil "_p") && (!isNil "_rh") && (!isNil "_rho") && (!isNil "_biome")) then {
         private _okT = (_t > -60) && (_t < 60);
         private _okP = (_p > 900) && (_p < 1100);

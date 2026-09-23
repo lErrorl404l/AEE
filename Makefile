@@ -21,6 +21,7 @@ lint:
 	python3 tools/sqf_validator.py addons/
 	python3 tools/check_strings.py
 	python3 tools/config_style_checker.py addons/
+	python3 tools/validation/validate_biome_plausible.py --self-check
 
 clean:
 	rm -rf .hemttout/ releases/ @aee/
