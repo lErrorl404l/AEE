@@ -8,7 +8,7 @@ Gate:  GVAR(enabled) && player in vehicle && rain > 0.1
 Reads: engine `rain` command
 */
 
-if (!EGVAR(core,enabled)) exitWith {};
+if (!(missionNamespace getVariable [QEGVAR(core,enabled), true])) exitWith {};
 
 private _player = call CBA_fnc_currentUnit;
 if (isNil "_player" || !alive _player) exitWith {};

@@ -14,7 +14,7 @@ Stored in GVAR(riverReservoirs)   — [r1, r2, r3] cascade state
 Stored in GVAR(currentFloodRisk)  — string "None"|"Elevated"|"Flood"|"Severe"
 */
 
-private _biome = EGVAR(core,biome);
+private _biome = missionNamespace getVariable [QEGVAR(core,biome), "Cfb"];
 if (isNil "_biome" || _biome == "") then { _biome = "Cfb"; };
 
 private _biomeFactor = switch (true) do {
@@ -50,7 +50,7 @@ missionNamespace setVariable [QGVAR(riverReservoirs), [_r1, _r2, _r3]];
 // Tidal offset: high tide raises the base level, low tide lowers it.
 // Full amplitude at coast, zero upstream.  The tidal reach parameter
 // (metres from coast where tidal influence reaches) is configurable.
-private _tideOffset = EGVAR(core,currentTideOffset_m);
+private _tideOffset = missionNamespace getVariable [QEGVAR(core,currentTideOffset_m), 0];
 if (isNil "_tideOffset") then { _tideOffset = 0; };
 private _waterLevel = (_outflow + _tideOffset) max 0;
 

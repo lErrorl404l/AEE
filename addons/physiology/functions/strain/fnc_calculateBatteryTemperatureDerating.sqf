@@ -17,7 +17,7 @@ Stored in GVAR(batteryTemperatureDerating).
 
 params [];
 
-private _temp = EGVAR(core,currentTemperature);
+private _temp = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 if (isNil "_temp") exitWith { 1.0 };
 
 private _factor = 1.0;

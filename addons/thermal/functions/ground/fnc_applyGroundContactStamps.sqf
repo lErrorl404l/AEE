@@ -42,7 +42,7 @@ Output: nothing
 
 params [["_obj", objNull, [objNull]]];
 if (isNull _obj) exitWith {};
-if !(EGVAR(core,enabled)) exitWith {};
+if !(missionNamespace getVariable [QEGVAR(core,enabled), true]) exitWith {};
 
 private _pos = getPosATL _obj;
 if (count _pos < 2) exitWith {};

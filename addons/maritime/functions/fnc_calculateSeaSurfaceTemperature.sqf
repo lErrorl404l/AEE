@@ -30,7 +30,7 @@ Output: sea-surface temperature in degC
 Sets:   QEGVAR(core,seaSurfaceTemperature)
 */
 
-private _T = EGVAR(core,currentTemperature);
+private _T = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 if (isNil "_T") exitWith { 15 };
 
 // ─── Latitude-seasonal climatology ─────────────────────────────────────────

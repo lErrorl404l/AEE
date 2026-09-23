@@ -26,7 +26,7 @@ params [];
 
 private _response = missionNamespace getVariable [QGVAR(seaStateResponse), 0.3];
 
-private _wind = EGVAR(core,currentWind);
+private _wind = missionNamespace getVariable [QEGVAR(core,currentWind), [0, 0]];
 if (isNil "_wind") exitWith { 0 };
 
 private _speed = vectorMagnitude _wind;

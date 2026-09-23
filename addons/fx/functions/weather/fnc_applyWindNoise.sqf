@@ -15,7 +15,7 @@ Gate:  GVAR(enabled) && cameraOn == player
 Reads: engine `wind` vector magnitude
 */
 
-if (!EGVAR(core,enabled)) exitWith {};
+if (!(missionNamespace getVariable [QEGVAR(core,enabled), true])) exitWith {};
 
 private _player = call CBA_fnc_currentUnit;
 if (isNil "_player" || !alive _player) exitWith {};

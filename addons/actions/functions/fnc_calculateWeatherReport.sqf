@@ -9,9 +9,9 @@ Returns: string (do NOT setVariable — return value only).
 */
 
 // ─── Read inputs with isNil guards ────────────────────────────────────────
-private _T      = EGVAR(core,currentTemperature);
-private _P      = EGVAR(core,currentPressure);
-private _RH     = EGVAR(core,currentHumidity);
+private _T      = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
+private _P      = missionNamespace getVariable [QEGVAR(core,currentPressure), 1013.25];
+private _RH     = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
 private _windDir = missionNamespace getVariable [QEGVAR(core,currentWindDir), 0];
 
 if (isNil "_T")      then { _T = 20; };
@@ -29,7 +29,7 @@ private _dirIdx = round (_windDir / 22.5) % 16;
 private _dirStr = _dirNames select _dirIdx;
 
 // AEE state
-private _biome = EGVAR(core,biome);
+private _biome = missionNamespace getVariable [QEGVAR(core,biome), "Cfb"];
 if (isNil "_biome") then { _biome = "Unknown"; };
 
 private _forecast   = missionNamespace getVariable [QEGVAR(core,currentWeatherForecast),  ""];

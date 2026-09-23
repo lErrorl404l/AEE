@@ -18,7 +18,7 @@ threshold or below, using a flag (QGVAR(hudWarningActive)) to avoid spamming
 titleText every tick.
 */
 
-if (!EGVAR(core,physiologyEnabled)) exitWith {};
+if (!(missionNamespace getVariable [QEGVAR(core,physiologyEnabled), true])) exitWith {};
 
 private _risk   = missionNamespace getVariable [QGVAR(dehydrationRisk), 0];
 private _WBGT   = missionNamespace getVariable [QEGVAR(core,currentWBGT), 15];

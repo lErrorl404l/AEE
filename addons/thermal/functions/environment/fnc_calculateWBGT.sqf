@@ -15,7 +15,7 @@ no physical basis; the globe now comes from the real energy balance
 against MRT and solar load (issue #124, ISO 7726 + 7243).
 */
 
-if !(EGVAR(core,enabled)) exitWith {};
+if !(missionNamespace getVariable [QEGVAR(core,enabled), true]) exitWith {};
 
 private _T_C = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 private _RH  = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];

@@ -21,7 +21,7 @@ Consumed by visual texture overlay / vehicle appearance systems.
 
 params [];
 
-if (!EGVAR(core,mudAccretionEnabled)) exitWith {
+if (!(missionNamespace getVariable [QEGVAR(core,mudAccretionEnabled), true])) exitWith {
     missionNamespace setVariable [QGVAR(mudAccretion), createHashMap];
     0
 };

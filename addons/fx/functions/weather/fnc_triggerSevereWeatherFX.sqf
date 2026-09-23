@@ -11,7 +11,7 @@ and blur intensity for active severe weather, clears both when none active.
 Sets: QEGVAR(optics,severeWeatherCC), QEGVAR(optics,severeWeatherBlur)
 */
 
-if (!EGVAR(core,atmosphericEventsEnabled)) exitWith {};
+if (!(missionNamespace getVariable [QEGVAR(core,atmosphericEventsEnabled), true])) exitWith {};
 
 private _sandstorm   = missionNamespace getVariable [QEGVAR(core,currentSandstorm), 0];
 private _blowingSnow = missionNamespace getVariable [QEGVAR(core,currentBlowingSnow), 0];

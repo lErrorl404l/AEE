@@ -30,7 +30,7 @@ Public: No
 */
 
 if (!GVAR(flightTurbulence)) exitWith {};
-if (!EGVAR(core,enabled)) exitWith {};
+if (!(missionNamespace getVariable [QEGVAR(core,enabled), true])) exitWith {};
 
 private _turbulence = missionNamespace getVariable [QEGVAR(core,currentTurbulence), 0];
 private _gusts = missionNamespace getVariable [QEGVAR(core,currentGusts), 0];

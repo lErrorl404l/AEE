@@ -19,7 +19,7 @@ Adjustments:
 Stored in EGVAR(core,currentHeatIndex) for heat-stress modelling.
 */
 
-if !(EGVAR(core,enabled)) exitWith {};
+if !(missionNamespace getVariable [QEGVAR(core,enabled), true]) exitWith {};
 
 private _T_C = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 private _RH  = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];

@@ -17,7 +17,7 @@ NOTE: FilmGrain is owned by applyNightGrain.  This function computes
 only the blur contribution to avoid ppEffect conflicts.
 */
 
-if (!EGVAR(core,opticsEnabled)) exitWith {};
+if (!(missionNamespace getVariable [QEGVAR(core,opticsEnabled), true])) exitWith {};
 
 private _obscuration = missionNamespace getVariable [QGVAR(dewOnOptics), 0];
 private _player      = call CBA_fnc_currentUnit;

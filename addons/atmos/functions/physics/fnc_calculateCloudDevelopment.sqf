@@ -24,8 +24,8 @@ Stored in GVAR(currentCloudDescription) — string
 Stored in GVAR(capeProxy)           — float, > 0 = convective potential
 */
 
-private _RH = EGVAR(core,currentHumidity);
-private _T  = EGVAR(core,currentTemperature);
+private _RH = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
+private _T  = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 
 if (isNil "_RH") then { _RH = 50; };
 if (isNil "_T")  then { _T  = 20; };

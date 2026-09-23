@@ -19,8 +19,9 @@ private _density = missionNamespace getVariable [QEGVAR(core,currentAirDensity),
 
 if (_density <= 0) then {
     // Fallback — standard atmosphere exponential
-    private _elevation = EGVAR(core,referenceAltitude);
-    if (isNil "_elevation" || (_elevation <= 0)) then {
+    private _elevation = missionNamespace getVariable [QEGVAR(core,referenceAltitude), 0];
+    if !(_elevation isEqualType 0) then { _elevation = 0; };
+    if (_elevation <= 0) then {
         private _player = call CBA_fnc_currentUnit;
         if (isNil "_player") then {
             _elevation = 0;

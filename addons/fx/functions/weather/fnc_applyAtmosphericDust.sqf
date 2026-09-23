@@ -14,7 +14,7 @@ Reads:   wind, surfaceType, EGVAR(core,dustSuppression), overcast
 Emits:   Billboard particles coloured by biome dust type
 */
 
-if (!EGVAR(core,enabled)) exitWith {};
+if (!(missionNamespace getVariable [QEGVAR(core,enabled), true])) exitWith {};
 
 private _player = call CBA_fnc_currentUnit;
 // Run in the player's own view: on foot (cameraOn == player) or in

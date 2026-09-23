@@ -17,7 +17,7 @@ State: aee_core_soilMoisture (0..1).
 
 private _moisture = missionNamespace getVariable [QGVAR(soilMoisture), 0.2];
 private _rainRate  = rain;
-private _temp      = EGVAR(core,currentTemperature);
+private _temp      = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 private _wind      = vectorMagnitude wind;
 private _humidity  = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
 private _solar     = missionNamespace getVariable [QEGVAR(core,currentSolarRadiation), 0.5];

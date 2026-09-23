@@ -17,7 +17,7 @@ Reference values (from research):
   • Low sun near horizon = stronger veiling glare
 */
 
-if (!EGVAR(core,opticsEnabled)) exitWith {};
+if (!(missionNamespace getVariable [QEGVAR(core,opticsEnabled), true])) exitWith {};
 
 private _intensity = missionNamespace getVariable [QGVAR(solarGlareIntensity), 0];
 private _player    = call CBA_fnc_currentUnit;
