@@ -202,7 +202,11 @@ class TestInventoryWalk(unittest.TestCase):
         self.assertIn("!(_x in _held)", FNC_WALK)
 
     def test_walk_uses_both_resolvers(self):
-        self.assertIn("[_x] call FUNC(getItemMass)", FNC_WALK)
+        # Items go through the mass resolver, stowed weapons through the
+        # weapon resolver.  The item path may route through a registered
+        # fallback resolver first, so the assertion is the contract: the
+        # core table is consulted and the weapon resolver is used.
+        self.assertIn("call FUNC(getItemMass)", FNC_WALK)
         self.assertIn("[_x] call FUNC(getWeaponMass)", FNC_WALK)
 
     def test_ratio_defect_gone(self):

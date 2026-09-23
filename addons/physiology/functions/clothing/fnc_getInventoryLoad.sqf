@@ -43,13 +43,30 @@ private _held = [
 
 private _total = 0;
 
+// An item the core table does not hold may be held by an optional layer:
+// ACE's own kit carries published masses for items the core cannot know.
+// Core asks whether a fallback resolver is registered and never names the
+// layer, so the dependency stays one-way.
+private _resolvers = missionNamespace getVariable [QGVAR(massResolvers), []];
+private _resolve = {
+    params ["_item"];
+    private _mass = [_item] call FUNC(getItemMass);
+    if (_mass <= 0) then {
+        {
+            _mass = [_item] call _x;
+            if (_mass > 0) exitWith {};
+        } forEach _resolvers;
+    };
+    _mass
+};
+
 // The container contents: one entry per instance, so each is counted.
 {
     if (_x != ""
         && {!(_x in _worn)}
         && {!(_x in _held)}
         && {!isClass (configFile >> "CfgMagazines" >> _x)}) then {
-        _total = _total + ([_x] call FUNC(getItemMass));
+        _total = _total + ([_x] call _resolve);
     };
 } forEach (items _unit);
 
@@ -68,7 +85,7 @@ if (_binocular != "" && {!(_binocular in _assigned)}) then {
     if (_x != ""
         && {!(_x in _worn)}
         && {!(_x in _held)}) then {
-        _total = _total + ([_x] call FUNC(getItemMass));
+        _total = _total + ([_x] call _resolve);
     };
 } forEach _assigned;
 
@@ -76,7 +93,7 @@ if (_binocular != "" && {!(_binocular in _assigned)}) then {
 {
     {
         if (_x != "") then {
-            _total = _total + ([_x] call FUNC(getItemMass));
+            _total = _total + ([_x] call _resolve);
         };
     } forEach _x;
 } forEach [

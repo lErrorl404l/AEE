@@ -7,6 +7,15 @@ ADDON = false;
 
 if (is3DEN) exitWith {};
 
+// ACE's own kit carries a published mass the core library cannot know: its
+// classnames hold no engine item category, so the core resolver returns 0
+// and the item would weigh nothing. Register this resolver so the load walk
+// consults it. The direction is one-way: core asks whether a resolver
+// exists and never names ACE, so physiology stays ACE-free.
+private _resolvers = missionNamespace getVariable ["aee_physiology_massResolvers", []];
+_resolvers pushBackUnique FUNC(getAceItemMass);
+missionNamespace setVariable ["aee_physiology_massResolvers", _resolvers];
+
 // AEE owns the weather state. Disable ACE3's own weather simulation so the
 // two models do not fight. Verified against ACE3 source: ace_weather_enabled
 // gates the server update tick (XEH_postServerInit); the enableWind/Rain/Fog/
