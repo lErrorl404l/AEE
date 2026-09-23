@@ -12,7 +12,7 @@ jobs:
       repository-projects: write
     steps:
       - name: Sync labels to project board fields
-        uses: actions/github-script@v7
+        uses: actions/github-script@v9
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
