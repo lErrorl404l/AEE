@@ -107,9 +107,7 @@ private _result = _ts + _stampOffset;
 // minted a key, and a ten minute session wrote 803 lines of synchronous
 // file I/O on the render thread. A diagnostic must be off unless asked
 // for, and it must not add an engine query when it is off.
-private _traceOn = missionNamespace getVariable [QGVAR(logDebug), false]
-    || missionNamespace getVariable ["aee_core_logDebug", false]
-    || missionNamespace getVariable [format ["aee_%1_logDebug", QUOTE(COMPONENT)], false];
+private _traceOn = AEE_TRACE_ON;
 if (_traceOn) then {
     private _traceKey = format ["%1_%2_%3", QGVAR(groundTraceT),
             round ((_pos select 0) / 5), round ((_pos select 1) / 5)];

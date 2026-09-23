@@ -98,9 +98,7 @@ _vehicle setVariable [QGVAR(vehicleHeatTrend), _heatTrend];
 // switch, like every other trace, and throttled to one line per vehicle
 // per 5 s. A diagnostic that writes unconditionally is a client cost:
 // diag_log is synchronous file I/O on the render thread.
-private _traceOn = missionNamespace getVariable [QGVAR(logDebug), false]
-    || missionNamespace getVariable ["aee_core_logDebug", false]
-    || missionNamespace getVariable [format ["aee_%1_logDebug", QUOTE(COMPONENT)], false];
+private _traceOn = AEE_TRACE_ON;
 if (_traceOn) then {
     private _lastLog = _vehicle getVariable [QGVAR(vehicleHeatLogT), -999];
     if (_now - _lastLog >= 5) then {
