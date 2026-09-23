@@ -25,7 +25,7 @@ if ((count _pos) >= 3) then {
     _alt = _pos select 2;
 } else {
     private _player = call CBA_fnc_currentUnit;
-    if (!isNil "_player") then {
+    if (!isNil "_player" && {!isNull _player}) then {
         _alt = (getPosASL _player) select 2;
     };
 };

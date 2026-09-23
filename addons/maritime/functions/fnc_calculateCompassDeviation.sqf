@@ -33,7 +33,10 @@ Also stored in GVAR(magneticDeclinationDeg) for existing consumers.
 params [];
 
 private _unit = call CBA_fnc_currentUnit;
-if (isNil "_unit") exitWith { 0 };
+// isNull, not isNil: CBA_fnc_currentUnit returns objNull on a dedicated
+// server rather than nil, so this guard never fired and the compass
+// deviation ran on a null unit.
+if (isNull _unit) exitWith { 0 };
 
 // ─── Longitude from the shared geolocation source ──────────────────────────
 // The old code ESTIMATED longitude from map X offset (map centre → 0°,

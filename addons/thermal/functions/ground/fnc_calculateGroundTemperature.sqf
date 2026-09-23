@@ -36,8 +36,14 @@ if !(_tAir isEqualType 0) then { _tAir = 15; };
 
 if (_pos isEqualTo []) then {
     private _unit = call CBA_fnc_currentUnit;
-    if (!isNil "_unit") then { _pos = getPosASL _unit; };
+    if (!isNil "_unit" && {!isNull _unit}) then { _pos = getPosASL _unit; };
 };
+
+// A dedicated server has no unit, so the branch above leaves _pos empty.
+// The grid key and the surface lookup below both index the position, so an
+// empty array raises a zero divisor every tick. The map origin is the
+// defined fallback, the same one updatePressure and calculateQNH use.
+if (count _pos < 2) then { _pos = [0, 0, 0]; };
 
 // ─── Material class at the position (#96 detector) ────────────────────────
 // `surfaceType` at the ground point gives the engine surface class

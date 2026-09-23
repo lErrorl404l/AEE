@@ -14,7 +14,7 @@ Public: No
 private _player = call CBA_fnc_currentUnit;
 private _uid = "";
 private _altASL = 0;
-if (!isNil "_player") then {
+if (!isNil "_player" && {!isNull _player}) then {
     _uid = getPlayerUID _player;
     _altASL = (getPosASL _player) select 2;
 };

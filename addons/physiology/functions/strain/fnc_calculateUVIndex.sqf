@@ -42,7 +42,7 @@ private _player = call CBA_fnc_currentUnit;
 // undefined variable and returns nil.
 private _altitude = missionNamespace getVariable [QEGVAR(core,referenceAltitude), 0];
 if !(_altitude isEqualType 0) then { _altitude = 0; };
-if (!isNil "_player") then { _altitude = (getPosASL _player) select 2; };
+if (!isNil "_player" && {!isNull _player}) then { _altitude = (getPosASL _player) select 2; };
 private _altFactor = 1 + (_altitude / 1000) * 0.1;
 
 // ─── Overcast reduction: full overcast cuts 70 %
