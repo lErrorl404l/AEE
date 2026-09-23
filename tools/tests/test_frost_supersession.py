@@ -135,7 +135,45 @@ class TestSnowInsulation(unittest.TestCase):
         """The snow surface absorbs the sun, not the ground beneath."""
         self.assertRegex(self.src, r"_snowCovered\) then \{ 0 \}")
 
-    def test_states_the_melt_limitation(self):
-        """The latent heat of melt is not coupled to this balance. That is
-        a known bias and it is recorded, not hidden."""
-        self.assertRegex(self.src, r"melt heat is not|not\s+yet\s+coupled", re.I)
+    def test_the_melt_sink_is_now_coupled(self):
+        """This test once asserted the melt was NOT coupled, which was the
+        documented limitation. The coupling landed (see TestMeltCoupling),
+        so the assertion is reversed: the stack must carry the sink, and
+        it must not carry the old limitation note."""
+        self.assertIn("_meltSink", self.src)
+        self.assertNotRegex(self.src, r"melt heat is not\s+yet\s+coupled", re.I)
+
+
+class TestMeltCoupling(unittest.TestCase):
+    """Melting must consume latent heat from the surface balance.
+
+    Without it the soil surface reads warm through a thaw, which was a
+    documented limitation of the snow work. The snow owner computes the
+    melt, so the snow owner publishes the flux and the node stack reads
+    it: one writer per variable.
+    """
+
+    def setUp(self):
+        self.snow = read(
+            "environmental/functions/terrain/fnc_calculateSnowAccumulation.sqf"
+        )
+        self.stack = read("thermal/functions/ground/fnc_calculateGroundNodeStack.sqf")
+
+    def test_the_snow_owner_publishes_the_flux(self):
+        self.assertIn("snowMeltFlux_Wm2", self.snow)
+
+    def test_the_flux_uses_the_latent_heat_of_fusion(self):
+        self.assertIn("334e3", self.snow)
+
+    def test_the_stack_subtracts_it(self):
+        self.assertRegex(self.stack, r"-\s*_meltSink")
+
+    def test_the_stack_does_not_compute_the_melt_itself(self):
+        """Two writers of one quantity is the defect class the project
+        already removed twice. The stack must only READ the flux."""
+        body = re.sub(r"//[^\n]*", "", self.stack)
+        self.assertNotIn("meltDepth", body)
+
+    def test_the_limitation_note_is_gone(self):
+        """The header used to say the melt was not coupled. It is now."""
+        self.assertNotRegex(self.stack, r"melt heat is not\s+yet\s+coupled")

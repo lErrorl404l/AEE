@@ -216,15 +216,18 @@ private _delta = {
 private _esKPa = ((_tAir call _psat) / 1000);  // kPa
 private _eaKPa = _esKPa * (0.5);               // kPa (50% RH default)
 private _ra = (_rho * 1007) / (_h max 1);      // aerodynamic resistance, s/m
-// Under snow the snow surface, not the soil, absorbs the sun and exchanges
-// water with the air. Leaving the soil term in would warm the ground under
-// the snow, which is the opposite of the insulation being added. The solar
-// that the snow absorbs is not modelled here: fnc_calculateSnowAccumulation
-// owns the snow depth and melts it by degree-days, and the melt heat is not
-// yet coupled to this balance. That omission biases the snow surface cool
-// and the soil surface warm during melt.
+// The snow surface, not the soil, exchanges with the sky, so leaving them
+// in would warm the ground under the snow, the opposite of the insulation
+// added.
+//
+// Melting consumes latent heat, and that is a sink on the surface balance.
+// The snow owner publishes the flux (fnc_calculateSnowAccumulation), so
+// the soil surface does not read warm through a thaw. One writer per
+// variable: the snow function owns the depth AND the melt.
 private _soilSolar = if (_snowCovered) then { 0 } else { _alphaSurf * (_solar max 0) * 0.7 };
 private _Rn = _soilSolar;  // bare-soil albedo 0.3
+private _meltSink = missionNamespace getVariable [QEGVAR(core,snowMeltFlux_Wm2), 0];
+if !(_meltSink isEqualType 0) then { _meltSink = 0; };
 private _qEvap = 0;
 if (_moistTop > 0.02 && {!_snowCovered}) then {
     private _numerator = ((_tAir call _delta) * _Rn) + ((_rho * 1007 * (_esKPa - _eaKPa)) / _ra);
@@ -240,7 +243,7 @@ if (_moistTop > 0.02 && {!_snowCovered}) then {
 // forcing flux; the bottom node is the fixed TBOT anchor.
 // Crank-Nicolson: (I - r*D) * T_new = (I + r*D) * T_old + source
 // r = alpha*dt/(2*dz^2) for the CN half-step.
-private _fluxSurf = (_alphaSurf * (_solar max 0)) + (_eps * _sigma * (((_T select 0) + 273.15) ^ 4) - (_eps * _sigma * (_tSkyK ^ 4))) - (_h * ((_T select 0) - _tAir)) - _qEvap;
+private _fluxSurf = (_alphaSurf * (_solar max 0)) + (_eps * _sigma * (((_T select 0) + 273.15) ^ 4) - (_eps * _sigma * (_tSkyK ^ 4))) - (_h * ((_T select 0) - _tAir)) - _qEvap - _meltSink;
 // Surface half-cell transient: dT = q*dt*2/(rho_cp*dz) (finite volume,
 // NOT the steady-state gradient - caught in the mirror as a 100x bug).
 private _T0new = (_T select 0) + (_fluxSurf * _dt * 2 / (_rho * _cp * (_dz select 0)));
