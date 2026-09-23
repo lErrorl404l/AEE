@@ -101,6 +101,25 @@ if (_runoffTotalMm < _runoffPrev) then { _runoffPrev = 0; };
 private _runoffMm = (_runoffTotalMm - _runoffPrev) max 0;
 missionNamespace setVariable [QGVAR(runoffCumulative_mm), _runoffTotalMm];
 
+// ─── Green-Ampt infiltration (issue #24) ──────────────────────────────────
+// The Curve Number predicts runoff; Green-Ampt gives the water the soil can
+// physically take, from the Rawls 1983 parameters. The cumulative
+// infiltration F is the model's own state, so the soil wets from the storm
+// itself and the model needs no extra clock.
+//
+// A soil cannot absorb more than Green-Ampt allows, so the runoff can never
+// be less than the rain that Green-Ampt cannot take. The two models bracket
+// the answer and the larger runoff is the physically safe one.
+private _gaF = missionNamespace getVariable [QGVAR(infiltrationCumulative_mm), 0];
+if !(_gaF isEqualType 0) then { _gaF = 0; };
+_gaF = _gaF max 0;
+private _ga = [_gaF, _surfaceClass, _soilMoist] call FUNC(calculateGreenAmptInfiltration);
+private _gaRate = _ga select 0;
+// The depth the interval can absorb at the current rate, capped by the rain.
+private _gaInfil_mm = (_mmPerTick min (_gaRate * (_interval / 3600))) max 0;
+missionNamespace setVariable [QGVAR(infiltrationCumulative_mm), _gaF + _gaInfil_mm];
+_runoffMm = _runoffMm max ((_mmPerTick - _gaInfil_mm) max 0);
+
 // ─── Depression storage (bucket fill-spill) ───────────────────────────────
 // Hollows fill before anything spills downstream. The capacity is the
 // NRCS class value for the cover: a paved surface holds almost nothing.
@@ -159,16 +178,31 @@ _riverWidthM = _riverWidthM max 0.5;
 // Discharge: the runoff depth over the contributing area, delivered over
 // the interval, with the cascade's outflow as the fraction that arrives.
 //
-// The catchment is the area draining to this point. Issue #24 specifies
-// D8 routing on the terrain heightmap at a 30-100 m step, and that step
-// is the ROUTING cell, not the contributing area: a river's stage
-// responds to everything upstream. A single 100 m cell gives 0.10 m of
-// stage for 90 mm of rain, which is a ditch. The setting defaults to
-// 0.25 km2, a small stream catchment, so the level sits in the range the
-// flood thresholds describe.
+// The contributing area is ROUTED, not assumed (issue #24). D8 routing on
+// the terrain heightmap gives the area that drains to this cell: each cell
+// passes its flow to the single steepest downhill neighbour (O'Callaghan
+// and Mark 1984), so a valley cell collects its real catchment and a ridge
+// cell collects almost nothing.
+//
+// The scan is map-scoped and cached. The grid is sampled once per mission
+// and every later tick is a hash lookup. A per-tick heightmap probe would
+// cost thousands of getTerrainHeightASL calls on every machine, the wrong
+// cost model for a tick that runs on every client.
+//
+// The setting stays as the fallback for a position the grid does not cover,
+// for example a map larger than worldSize reports. It defaults to 0.25 km2,
+// a small stream catchment. A valid D8 cell always carries at least its own
+// area, so a zero means the lookup missed.
+private _d8Step = 100;   // metres, the issue's 30-100 m routing cell
+private _d8Side = (ceil (worldSize / _d8Step)) max 1;
+private _d8Area = [[0, 0], _d8Side, _d8Side, _d8Step] call FUNC(routeRunoffD8);
+private _d8Ix = (floor ((_pos select 0) / _d8Step)) min (_d8Side - 1) max 0;
+private _d8Iy = (floor ((_pos select 1) / _d8Step)) min (_d8Side - 1) max 0;
+private _d8CatchmentM2 = _d8Area param [(_d8Iy * _d8Side) + _d8Ix, 0];
 private _catchmentM2 = missionNamespace getVariable [QGVAR(catchmentArea_m2), 250000];
 if !(_catchmentM2 isEqualType 0) then { _catchmentM2 = 250000; };
 _catchmentM2 = _catchmentM2 max 10000;
+if (_d8CatchmentM2 > 0) then { _catchmentM2 = _d8CatchmentM2; };
 private _dischargeM3s = ((_outflow / 1000) * _catchmentM2) / (_interval max 1);
 
 private _tideOffset = missionNamespace getVariable [QEGVAR(core,currentTideOffset_m), 0];

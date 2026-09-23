@@ -11,4 +11,6 @@ PREP(updateGroundState);
 PREPS(hydrology,calculateRunoffSCS);
 PREPS(hydrology,calculateDepressionStorage);
 PREPS(hydrology,calculateBaseflow);
+PREPS(hydrology,calculateGreenAmptInfiltration);
+PREPS(hydrology,routeRunoffD8);
 PREPS(common,getNearbyVehicles);
