@@ -5,8 +5,7 @@ Decompose the engine wind vector into crosswind and downrange components
 relative to the player's weapon direction for ACE3 ballistics.
 
 Reads:    wind (Arma engine), player weapon direction
-Sets:     EGVAR(core,currentWind) = [crosswind, downrange]
-          QGVAR(crosswind)
+Sets:     QGVAR(crosswind)
           QGVAR(downrangeWind)
 Returns:  nothing
 */

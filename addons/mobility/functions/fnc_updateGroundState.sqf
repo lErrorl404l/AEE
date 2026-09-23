@@ -42,13 +42,24 @@ if (_pos2D isNotEqualTo []) then {
     _surface = toLower (surfaceType _pos2D);
 };
 
+// ─── Frost depth (the Stefan solution, environmental) ────────────────────
+// fnc_calculateFreezeThawCycling solves the Stefan freeze/thaw depth and
+// publishes it, but nothing consumed it, so a dry cold snap never
+// classified as Frozen: the old branch required recent RAIN.  A real frost
+// depth in the ground is the physical test, so it is read here.  The
+// freeze/thaw model has already applied its hysteresis, so this does not
+// chatter at 0 C.
+private _frozenDepth = missionNamespace getVariable [QEGVAR(core,frozenDepth_m), 0];
+if !(_frozenDepth isEqualType 0) then { _frozenDepth = 0; };
+private _groundFrozen = (_frozenDepth > 0.01);
+
 // ─── Classification (most specific → least) ──────────────────────────
 private _state = "Normal";
 
 if (_surface in ["#gdtsnow","#gdtice","#gdtglacier","#gdttundra"]) then {
     _state = "Snow";
 } else {
-    if (!isNil "_T" && (_T < -2) && (_rainAccum > 0.05)) then {
+    if (!isNil "_T" && (_T < -2) && ((_rainAccum > 0.05) || _groundFrozen)) then {
         _state = "Frozen";
     } else {
         if (_rainAccum > 0.2 && (!isNil "_T") && (_T > 2)) then {
