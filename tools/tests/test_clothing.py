@@ -354,8 +354,11 @@ class TestEquipmentLibrary(unittest.TestCase):
     def test_backpack_classification(self):
         src = self.EQ
         self.assertIn("backpack _unit", src)
-        self.assertIn("unitBackpack", src)
-        self.assertIn("load (unitBackpack _unit)", src)
+        # The engine `load` command returns 0..1 of the container
+        # capacity, not kg.  The contents are weighed item by item by the
+        # inventory walk instead.
+        self.assertNotIn("load (unitBackpack _unit)", src)
+        self.assertIn("getInventoryLoad", src)
         for kw in (
             "backpack",
             "rucksack",

@@ -79,6 +79,9 @@ step "runtime: weapons" "$V/gen_runtime_weapons.py"
 step "runtime: drag tables" "$V/gen_runtime_drag.py"
 # The magazine mass feeds the load model in physiology.
 step "runtime: magazine mass" "$V/gen_runtime_magazines.py"
+# The equipment captures (uniforms, garments, vests, rucksacks, helmets,
+# devices and kit) project onto the item-mass resolver the load walk uses.
+step "runtime: equipment item mass" "$V/gen_equipment_data.py"
 
 # ─── The human-readable outputs ───────────────────────────────────────────
 step "docs: ballistics index and CSV" "$V/render_ballistics_index.py"

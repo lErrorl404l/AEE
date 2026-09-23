@@ -32,7 +32,7 @@ if (_goggleItem == "") exitWith { [0.05, 0, 0.40, 0.02] };
 
 private _goggleDef = [0.05, 0, 0.40, 0.02];
 private _g = toLower _goggleItem;
-switch (true) do {
+private _tier = switch (true) do {
     // ── CBRN respirators ──
     // M50 0.86 kg, FM12 0.79, PMK-3 0.96.  The mask is the heaviest
     // goggles-slot item and adds face armour.
@@ -88,3 +88,10 @@ switch (true) do {
           _g find "diving" >= 0):    { [0.10, 1, 0.35, 0.01] };
     default                           { _goggleDef };
 };
+
+// The researched item table outranks the family tier when a capture holds
+// the family.  No capture category covers eyewear yet, so the lookup
+// accepts any category and the tier stays the fallback.
+private _mass = [_goggleItem] call FUNC(getItemMass);
+if (_mass > 0) then { _tier set [0, _mass] };
+_tier

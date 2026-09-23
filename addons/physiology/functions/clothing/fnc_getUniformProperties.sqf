@@ -91,5 +91,10 @@ private _clo = switch (true) do {
 };
 
 // The uniform carries no armour (the vest covers the torso); its
-// weight is the base garment + the gloves.
-[4.0 + _gloves, 0, _nir, _clo + _gloves]
+// weight is the base garment (4.0 kg) + the gloves.  The researched item
+// table outranks the base when a capture holds the uniform's family, and
+// the gloves still ride in the uniform.
+private _tier = [4.0 + _gloves, 0, _nir, _clo + _gloves];
+private _mass = [_uniform, ["uniform", "garment"]] call FUNC(getItemMass);
+if (_mass > 0) then { _tier set [0, _mass + _gloves] };
+_tier

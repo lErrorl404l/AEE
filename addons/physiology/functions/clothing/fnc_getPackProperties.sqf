@@ -29,7 +29,7 @@ if (_packItem == "") exitWith { [5.0, 0, 0.40, 0.10] };
 
 private _packDef = [5.0, 0, 0.40, 0.10];
 private _b = toLower _packItem;
-switch (true) do {
+private _tier = switch (true) do {
     // ── Russia: Ratnik packs ──
     // 6Sh118 (60 L, 3.5 kg) + 6Sh117 vest.
     case (_b find "6sh118" >= 0 ||
@@ -85,3 +85,11 @@ switch (true) do {
           _b find "rucksack" >= 0):    { [5.0, 0, 0.40, 0.10] };
     default                        { _packDef };
 };
+
+// The researched item table outranks the family tier: when a capture
+// holds the family, its published EMPTY mass replaces the tier weight
+// (the contents are weighed separately by fnc_getInventoryLoad).  Armour,
+// NIR and clo stay with the tier.
+private _mass = [_packItem, ["rucksack"]] call FUNC(getItemMass);
+if (_mass > 0) then { _tier set [0, _mass] };
+_tier

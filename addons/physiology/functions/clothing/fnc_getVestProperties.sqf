@@ -35,7 +35,7 @@ if (_vestItem == "") exitWith { [2.5, 2, 0.38, 0.10] };
 
 private _vestDef = [2.5, 2, 0.38, 0.10];
 private _v = toLower _vestItem;
-switch (true) do {
+private _tier = switch (true) do {
     // ── USSR/Russia: the 6B series ──
     // 6B45 (Ratnik, 2015): GOST 5a/6a ~III/IV, 8-13 kg.
     case (_v find "6b45" >= 0):      { [9.0, 3, 0.40, 0.15] };
@@ -176,3 +176,10 @@ switch (true) do {
           _v find "vest_pistol" >= 0): { [1.2, 0, 0.40, 0.07] };
     default                            { _vestDef };
 };
+
+// The researched item table outranks the family tier: when a capture
+// holds the family, its published mass replaces the tier weight.  Armour,
+// NIR and clo stay with the tier.
+private _mass = [_vestItem, ["vest", "webbing"]] call FUNC(getItemMass);
+if (_mass > 0) then { _tier set [0, _mass] };
+_tier
