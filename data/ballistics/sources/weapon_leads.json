@@ -7,7 +7,7 @@
   "no_standard": 2,
   "weak_citation": 663,
   "unsourced": 935,
-  "verified": 299
+  "verified": 304
  },
  "leads": [
   {
@@ -8668,7 +8668,7 @@
   },
   {
    "weapon_id": "mc14tipat",
-   "verified": false,
+   "verified": true,
    "names": [
     "MC 14 Tipat Semi-auto Pistol"
    ],
@@ -8684,7 +8684,7 @@
   },
   {
    "weapon_id": "mc1911commander",
-   "verified": false,
+   "verified": true,
    "names": [
     "MC 1911 Commander Semi-auto Pistol"
    ],
@@ -8764,7 +8764,7 @@
   },
   {
    "weapon_id": "microdeserteagle",
-   "verified": false,
+   "verified": true,
    "names": [
     "Micro Desert Eagle Semi-auto Pistol"
    ],
@@ -9772,7 +9772,7 @@
   },
   {
    "weapon_id": "pp19bizon",
-   "verified": false,
+   "verified": true,
    "names": [
     "PP-19 Bizon Submachine Gun"
    ],
@@ -10732,7 +10732,7 @@
   },
   {
    "weapon_id": "t3xupr300wm",
-   "verified": false,
+   "verified": true,
    "names": [
     "T3x UPR .300 WM Bolt-action"
    ],
