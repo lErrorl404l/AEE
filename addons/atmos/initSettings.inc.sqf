@@ -118,3 +118,14 @@
     true,
     {}
 ] call CBA_fnc_addSetting;
+
+// ── Engine cloud quality ──────────────────────────────────────────────────
+[
+    QGVAR(simulWeatherLayers),
+    "SLIDER",
+    [LLSTRING(simulWeatherLayers_Name), LLSTRING(simulWeatherLayers_Description)],
+    ["AEE Atmos", "Clouds"],
+    [0, 5, 0, 0],
+    true,
+    {}
+] call CBA_fnc_addSetting;

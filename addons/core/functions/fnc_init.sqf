@@ -75,4 +75,9 @@ GVAR(updatePFH) = [{
     [_pos] call FUNC(updateEnvironment);
 }, _interval] call CBA_fnc_addPerFrameHandler;
 
+// One-shot engine quality bridge (issue #141): setSimulWeatherLayers is
+// persistent across the game instance, so it is applied once at startup,
+// not per tick.  The function self-gates on hasInterface.
+[] call EFUNC(atmos,updateSimulWeatherLayers);
+
 diag_log format ["[AEE] Local environment PFH started. Base biome: %1", GVAR(biomeName)];
