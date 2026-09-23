@@ -397,3 +397,26 @@
     true,
     {}
 ] call CBA_fnc_addSetting;
+
+// ── Work distribution ─────────────────────────────────────────────────────
+// Where the environment computation runs. AEE computes identical values on
+// every machine by design, with no network traffic, which is what makes it
+// scale to a large milsim session. This setting exists for the units that
+// cannot take that default: a server with headroom and clients that are
+// already frame-limited.
+[
+    QGVAR(computeMode),
+    "LIST",
+    [LLSTRING(computeMode_Name), LLSTRING(computeMode_Description)],
+    ["AEE", "Core"],
+    [
+        ["DETERMINISTIC", "SERVER_MAP_ONLY"],
+        [
+            "Deterministic (recommended: no network, every machine computes)",
+            "Server map facts only (one terrain sweep shared, position work stays local)"
+        ],
+        0
+    ],
+    true,
+    {}
+] call CBA_fnc_addSetting;

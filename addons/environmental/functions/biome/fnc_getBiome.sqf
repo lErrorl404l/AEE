@@ -68,8 +68,44 @@ if (_lat == 0) then { _lat = 40; };
 
 // Run the one-time terrain scan if it has not happened yet (it may have
 // been triggered earlier by another consumer).
+//
+// Work distribution. The scan is the most expensive single operation in
+// the mod: a 64-point grid with surfaceType, terrain height and object
+// classification at each point. Under SERVER_MAP_ONLY the server runs it
+// and publishes the result, so each client adopts it instead of repeating
+// the sweep. The payload is the three vote maps and three scalars, a few
+// hundred bytes once per mission, which is why this mode is the cheapest
+// of the three to offer.
+private _mode = missionNamespace getVariable [QEGVAR(core,computeMode), "DETERMINISTIC"];
+if !(_mode isEqualType "") then { _mode = "DETERMINISTIC"; };
+
 if (isNil {missionNamespace getVariable [QGVAR(terrainScanDone), nil]}) then {
-    [] call FUNC(scanTerrainSignals);
+    if (_mode == "SERVER_MAP_ONLY" && !isServer) then {
+        // A client adopts the server's result when it has arrived. If it
+        // has not (a player who joined mid mission never saw the one-shot
+        // broadcast), the client runs its own sweep rather than waiting
+        // forever. The terrain is the same on every machine, so both
+        // paths give the same answer: the mode is an optimisation, never
+        // a correctness dependency.
+        private _published = missionNamespace getVariable [QGVAR(terrainSignalsPublished), []];
+        if (_published isNotEqualTo []) then {
+            missionNamespace setVariable [QGVAR(terrainSignals), _published];
+            missionNamespace setVariable [QGVAR(terrainScanDone), true];
+        } else {
+            private _waits = missionNamespace getVariable [QGVAR(scanWaitTicks), 0];
+            if !(_waits isEqualType 0) then { _waits = 0; };
+            _waits = _waits + 1;
+            missionNamespace setVariable [QGVAR(scanWaitTicks), _waits];
+            // Give the server a moment (about three ticks), then do it here.
+            if (_waits >= 3) then { [] call FUNC(scanTerrainSignals); };
+        };
+    } else {
+        [] call FUNC(scanTerrainSignals);
+        if (_mode == "SERVER_MAP_ONLY" && isServer) then {
+            private _signals = missionNamespace getVariable [QGVAR(terrainSignals), []];
+            missionNamespace setVariable [QGVAR(terrainSignalsPublished), _signals, true];
+        };
+    };
 };
 private _signals = missionNamespace getVariable [QGVAR(terrainSignals), [createHashMap, createHashMap, createHashMap, 0, 0, 0]];
 _signals params ["_surfaceScores", "_vegScores", "_structScores", "_waterFrac", "_meanElev", "_elevMax"];
