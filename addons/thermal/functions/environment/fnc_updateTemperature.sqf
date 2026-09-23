@@ -48,11 +48,18 @@ if (_pos2D isEqualTo [0, 0] && _posASL isNotEqualTo []) then {
 if (_pos2D isEqualTo [0, 0]) then { _pos2D = [0, 0]; };
 
 // ─── Elevation ────────────────────────────────────────────────────────────
-private _elevation = EGVAR(core,referenceAltitude);
+// The reference altitude the core publishes. A bare EGVAR() use reads an
+// undefined variable and returns nil.
+private _elevation = missionNamespace getVariable [QEGVAR(core,referenceAltitude), 0];
+if !(_elevation isEqualType 0) then { _elevation = 0; };
 if (_elevation <= 0) then {
     _elevation = getTerrainHeightASL _pos2D;
 };
-private _T_elevation = _T_base - 0.0065 * _elevation;
+// The setting is in degrees Celsius per 1000 m and the formula needs
+// kelvin per metre, so the value is divided by 1000 here.
+private _lapseRate = missionNamespace getVariable [QEGVAR(core,tempLapseRate), 6.5];
+if !(_lapseRate isEqualType 0) then { _lapseRate = 6.5; };
+private _T_elevation = _T_base - (_lapseRate / 1000) * _elevation;
 
 // ─── Overcast ─────────────────────────────────────────────────────────────
 private _T_overcast = _T_elevation - 4 * overcast;
@@ -162,7 +169,7 @@ if !(_wiRadius isEqualType 0) then { _wiRadius = 1000; };
 if (_wiRadius > 0) then {
     private _wiPos2D = _pos2D;
     if (isNil "_wiPos2D") then { _wiPos2D = [0, 0]; };
-    private _wiOffset = [[_wiPos2D select 0, _wiPos2D select 1, 0], _wiRadius] call EFUNC(environmental,calculateWaterInfluence);
+    private _wiOffset = [[_wiPos2D select 0, _wiPos2D select 1, 0], _wiRadius, 0, _T_wind] call EFUNC(environmental,calculateWaterInfluence);
     _T_shade = _T_shade + _wiOffset;
 };
 

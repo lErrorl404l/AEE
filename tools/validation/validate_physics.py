@@ -635,6 +635,43 @@ def check_lapse_rate():
     }
 
 
+def check_barometric_pressure():
+    """Mod station pressure P(z) vs the ISA table, with the lapse setting.
+
+    Mirrors fnc_updatePressure.sqf, including the unit conversion from
+    the setting (degrees Celsius per 1000 m) to kelvin per metre. The
+    check exists because two faults once met in this formula: the setting
+    was used unconverted, and the ratio was inverted, so pressure rose
+    with height. Both gave a plausible-looking number, and no other check
+    covered station pressure.
+    """
+    errors = []
+    for z, _t_c, p_hpa, _rho in ISA_TABLE:
+        lapse_setting = 6.5  # the CBA default, in C per 1000 m
+        lapse_per_m = lapse_setting / 1000
+        ratio = 1 - (lapse_per_m * z / 288.15)
+        p_mod = 1013.25 * (ratio**5.2559)
+        errors.append(abs(p_mod - p_hpa) / p_hpa * 100)
+    max_rel, rmse = compute_stats(errors)
+    # Monotonicity: pressure must fall as height rises.
+    p_low = 1013.25 * ((1 - (0.0065 * 100 / 288.15)) ** 5.2559)
+    p_high = 1013.25 * ((1 - (0.0065 * 2000 / 288.15)) ** 5.2559)
+    monotonic = p_low > p_high
+    status = "PASS" if max_rel <= 0.1 and monotonic else "FAIL"
+    return {
+        "name": "Barometric station pressure vs ISA (with the lapse setting)",
+        "ground_truth": "ICAO standard atmosphere table",
+        "grid": "z = 0, 1000, 2000, 5000, 11000 m",
+        "tolerance": "0.1% relative, and pressure falls with height",
+        "status": status,
+        "max_abs": max_rel,
+        "rmse": rmse,
+        "unit": "%",
+        "note": "P = P_sea * (1 - lapse * z / T_std) ^ 5.2559. "
+        "The setting is C per 1000 m and is divided by 1000 before use.",
+    }
+
+
 def check_wbgt_iso7243():
     """Mod WBGT vs ISO 7243 Tg=Ta reduction (overcast = 1)."""
     errors = []
@@ -890,6 +927,7 @@ def main():
         check_orographic_upslope(),
         check_terrain_wind_speedup(),
         check_lapse_rate(),
+        check_barometric_pressure(),
         check_wbgt_iso7243(),
         check_heat_index(),
         check_isa_metpy(),
