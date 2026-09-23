@@ -207,6 +207,8 @@ if (GVAR(fxEnabled)) then {
     [] call EFUNC(fx,applyAtmosphericDust);
     // Infantry footfall: the engine throws no dust for a soldier on foot.
     [] call EFUNC(fx,applyFootfallDust);
+    // Rotor wash: a helicopter in ground effect raises the surface cloud.
+    [] call EFUNC(fx,applyRotorWash);
 };
 END_COUNTER(hydrology);
 
