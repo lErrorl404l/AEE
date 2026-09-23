@@ -193,13 +193,34 @@ __ROWS__
 // wins (an "lv-119" row outranks a "119" row).
 private _match = 0;
 private _family = "";
+private _familyCategory = "";
 {
     _x params ["_familyName", "_category", "_mass"];
     if ((_allowed isEqualTo [] || {_category in _allowed}) && {_hay find _familyName >= 0}) exitWith {
         _match = _mass;
         _family = _familyName;
+        _familyCategory = _category;
     };
 } forEach _TABLE;
+
+// The caller may know WHAT KIND of item this is.  A classifier registered
+// by an optional layer answers it, and the caller's own category is the
+// fallback.  A family of a different kind may not claim the item:
+// kat_IO_FAST is an intraosseous drill, and without this it matched the
+// helmet family "fast" and was weighed as headgear.
+private _known = "";
+{
+    _known = [_item] call _x;
+    if (_known != "") exitWith {};
+} forEach (missionNamespace getVariable [QGVAR(categoryResolvers), []]);
+if (_known == "" && _allowed isNotEqualTo []) then { _known = _allowed select 0; };
+// Only a known category that the family contradicts is rejected.  An
+// empty family category means the row states none, which is not a
+// contradiction.
+if (_known != "" && _familyCategory != "" && _familyCategory != _known) then {
+    _match = 0;
+    _family = "";
+};
 
 // The trace names what resolved and, when nothing did, says so: an item
 // that falls to 0 is the case a carried-load figure is hardest to explain.

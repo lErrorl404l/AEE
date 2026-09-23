@@ -566,6 +566,24 @@ class TestAceItemMassHook(unittest.TestCase):
         self.assertNotIn("ACE_", src, "an ACE name leaked into the core resolver")
         self.assertNotIn("ACE_isMedicalItem", src)
 
+    def test_a_medical_item_cannot_match_a_helmet(self):
+        # kat_IO_FAST is an intraosseous drill whose classname contains the
+        # helmet family keyword "fast", so without a category it was weighed
+        # as headgear (0.667 kg). This pins the collision and the rule.
+        src = self._read("compat_ace3/functions/fnc_isAceMedicalItem.sqf")
+        self.assertIn("ACE_isMedicalItem", src)
+        table_src = self._read("physiology/functions/clothing/fnc_getItemMass.sqf")
+        self.assertIn('["fast", "helmet"', table_src, "the colliding family is gone")
+        self.assertIn("_familyCategory != _known", table_src)
+        self.assertIn("QGVAR(categoryResolvers)", table_src)
+
+    def test_compat_registers_its_classifier(self):
+        # Without the registration the category question is never answered
+        # and the collision returns.
+        src = self._read("compat_ace3/XEH_preInit.sqf")
+        self.assertIn("aee_physiology_categoryResolvers", src)
+        self.assertIn("FUNC(isAceMedicalItem)", src)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -16,6 +16,14 @@ private _resolvers = missionNamespace getVariable ["aee_physiology_massResolvers
 _resolvers pushBackUnique FUNC(getAceItemMass);
 missionNamespace setVariable ["aee_physiology_massResolvers", _resolvers];
 
+// ACE marks its own category (ACE_isMedicalItem). The core knows no ACE
+// field, so a classifier is registered that answers "is this medical",
+// which is what separates a medical item from gear whose classname happens
+// to share a word.
+private _classifiers = missionNamespace getVariable ["aee_physiology_categoryResolvers", []];
+_classifiers pushBackUnique FUNC(isAceMedicalItem);
+missionNamespace setVariable ["aee_physiology_categoryResolvers", _classifiers];
+
 // AEE owns the weather state. Disable ACE3's own weather simulation so the
 // two models do not fight. Verified against ACE3 source: ace_weather_enabled
 // gates the server update tick (XEH_postServerInit); the enableWind/Rain/Fog/

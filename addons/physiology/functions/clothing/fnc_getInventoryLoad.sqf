@@ -49,8 +49,8 @@ private _total = 0;
 // layer, so the dependency stays one-way.
 private _resolvers = missionNamespace getVariable [QGVAR(massResolvers), []];
 private _resolve = {
-    params ["_item"];
-    private _mass = [_item] call FUNC(getItemMass);
+    params ["_item", ["_category", "", [""]]];
+    private _mass = [_item, _category] call FUNC(getItemMass);
     if (_mass <= 0) then {
         {
             _mass = [_item] call _x;
@@ -61,12 +61,15 @@ private _resolve = {
 };
 
 // The container contents: one entry per instance, so each is counted.
+// The category is the kind the walk knows: the items loop carries the
+// general carried kit, so an optional classifier may identify a medical
+// item and a family of another kind may not claim it.
 {
     if (_x != ""
         && {!(_x in _worn)}
         && {!(_x in _held)}
         && {!isClass (configFile >> "CfgMagazines" >> _x)}) then {
-        _total = _total + ([_x] call _resolve);
+        _total = _total + ([_x, "medical"] call _resolve);
     };
 } forEach (items _unit);
 
