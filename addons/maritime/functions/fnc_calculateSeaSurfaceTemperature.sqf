@@ -37,7 +37,13 @@ if (isNil "_T") exitWith { 15 };
 // Mean surface temperature by latitude band (annual average, degC).
 // Tropical band 28, subtropical 22, temperate 13, subpolar 5, polar 0.
 // Latitudes are negative in the southern hemisphere.
-private _lat = (getPosASL player) select 1;
+//
+// The latitude is the map's own, from the single geolocation source, not
+// the local player's position. `player` is null on a dedicated server, so
+// reading it gave the server a different sea temperature from every client
+// and the value diverged across machines. The map latitude is the same
+// everywhere by definition.
+private _lat = ([] call EFUNC(core,getWorldLocation)) select 0;
 if !(_lat isEqualType 0) then { _lat = 50 };   // default: temperate north
 private _absLat = abs _lat;
 // Annual-mean surface temperature by latitude band (degC): tropics 28,

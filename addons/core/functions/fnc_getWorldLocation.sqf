@@ -36,6 +36,14 @@ longitude to 0, and mapZone to 0 - the same fallback the old latitude
 reader used.
 */
 
+// The CfgWorlds read is three config lookups, and this function is called
+// around thirteen times per environment tick on EVERY machine. The world
+// does not change during a mission, so the result is computed once and
+// cached. missionNamespace scopes the cache to the mission, so a restart
+// re-reads it rather than holding a stale world.
+private _cached = missionNamespace getVariable [QGVAR(worldLocation), []];
+if (_cached isNotEqualTo []) exitWith { _cached };
+
 private _signed = -getNumber (configFile >> "CfgWorlds" >> worldName >> "latitude");
 if !(_signed isEqualType 0) then { _signed = 40; };
 if (_signed == 0) then { _signed = 40; };
@@ -46,4 +54,7 @@ if !(_lon isEqualType 0) then { _lon = 0; };
 private _zone = getNumber (configFile >> "CfgWorlds" >> worldName >> "mapZone");
 if !(_zone isEqualType 0) then { _zone = 0; };
 
-[_signed, abs _signed, _lon, _zone]
+private _result = [_signed, abs _signed, _lon, _zone];
+missionNamespace setVariable [QGVAR(worldLocation), _result];
+
+_result

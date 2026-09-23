@@ -127,7 +127,16 @@ private _range = viewDistance;
 if !(_range isEqualType 0) then { _range = 1000; };
 _range = _range max 100 min 5000;
 
-private _dev = [player, (vehicle player)] call EFUNC(thermal,getThermalDeviceProperties);
+// The device properties need a player to hold the device. A dedicated
+// server has none, so the call is guarded and the sensor falls back to the
+// uncooled default the resolver itself returns for an unknown device:
+// [netdDegC, resX, resY, weightKg, refreshHz, cooled].
+private _player = call CBA_fnc_currentUnit;
+private _dev = if (isNil "_player" || {isNull _player}) then {
+    [0.05, 640, 480, 1.5, 30, 0]
+} else {
+    [player, (vehicle player)] call EFUNC(thermal,getThermalDeviceProperties)
+};
 private _netd = _dev select 0;
 if !(_netd isEqualType 0) then { _netd = 0.05; };
 private _noise = _netd * ((_range / 1000) ^ 2);
