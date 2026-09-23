@@ -1,0 +1,289 @@
+{
+  "retrieved": "2026-09-23",
+  "note": "Combat uniforms, ghillie suits and the modern gear families the clothing capture does not hold. Values come from maker pages (Defcon 5, Helikon-Tex, Team Wendy) and one manufacturer snapshot (MASKPOL KWM-02 through the Internet Archive). Fictional DLC items map to a named real analogue and the mapping is in the item name; the analogue mass is published. A Wikipedia article enters at tier 5, so the build grades it claimed. Sources read through a text proxy carry no sha256; direct fetches carry the digest of the retrieved bytes.",
+  "sources": [
+    {
+      "source_id": "defcon5_acu",
+      "title": "DEFCON 5 ARMY COMBAT UNIFORM D5-1650 product page",
+      "url": "https://www.defcon5italy.com/k/en/eur/products/v/defcon_5_army_combat_uniform_d5-1650_vi_2115.html",
+      "sha256": "",
+      "publisher": "Defcon 5 S.r.l.",
+      "tier": 4
+    },
+    {
+      "source_id": "defcon5_rau",
+      "title": "DEFCON 5 REGULAR ARMY UNIFORM ITALIAN CAMO D5-1660 product page",
+      "url": "https://www.defcon5italy.com/en/product/4045/defcon_5_regular_army_uniform_italian_camo_65polye.html",
+      "sha256": "",
+      "publisher": "Defcon 5 S.r.l.",
+      "tier": 4
+    },
+    {
+      "source_id": "helikon_ghillie",
+      "title": "Helikon-Tex Ghillie Suit product page",
+      "url": "https://helikon-tex.com/en/ghillie-suiten.html",
+      "sha256": "b792294ec950c9bfda31b8886082108b075afd6f8a3bc00d29c14f9d28b80af8",
+      "publisher": "Helikon-Tex",
+      "tier": 4
+    },
+    {
+      "source_id": "helikon_leaf_ghillie",
+      "title": "Helikon-Tex Leaf Ghillie Set product page",
+      "url": "https://helikon-tex.com/en/leaf-ghillie-seten.html",
+      "sha256": "b46539b9dffd4306fab819305c75571fb5b8b674f5e798840043414bdaf4b4b1",
+      "publisher": "Helikon-Tex",
+      "tier": 4
+    },
+    {
+      "source_id": "helikon_mcdu_shirt",
+      "title": "Helikon-Tex MCDU Combat Shirt product page",
+      "url": "https://helikon-tex.com/en/mcdu-combat-shirt-nyco-ripstopen.html",
+      "sha256": "4db0cd8bd1bb288b027c54e0464f4c7bdc51e5a381002bd445b69e99773ee30b",
+      "publisher": "Helikon-Tex",
+      "tier": 4
+    },
+    {
+      "source_id": "helikon_mcdu_pants",
+      "title": "Helikon-Tex MCDU Pants product page",
+      "url": "https://helikon-tex.com/en/mcdu-pants-nyco-ripstopen.html",
+      "sha256": "59ce0cf201070b223686c5cf7a4caeec7e266be95fff7bac8eb5c2d1a0cbe60c",
+      "publisher": "Helikon-Tex",
+      "tier": 4
+    },
+    {
+      "source_id": "maskpol_kwm02",
+      "title": "MASKPOL Multi-Threat Body Armour System KWM-02 product page (Internet Archive snapshot)",
+      "url": "https://web.archive.org/web/2026/https://www.maskpol.com.pl/en/products/multi-threat-body-armour-system-kwm-02",
+      "sha256": "f49ec58905fa895e30a44802d3cd8e5638d1f5f0691c72c2ed5ca986e439b7a4",
+      "publisher": "MASKPOL S.A.",
+      "tier": 4
+    },
+    {
+      "source_id": "teamwendy_exfil",
+      "title": "Team Wendy EXFIL Ballistic Helmet product page",
+      "url": "https://shop.teamwendy.com/products/exfil-ballistic-helmet",
+      "sha256": "",
+      "publisher": "Team Wendy",
+      "tier": 4
+    },
+    {
+      "source_id": "wp_ach_equiv",
+      "title": "Advanced Combat Helmet (Wikipedia article)",
+      "url": "https://en.wikipedia.org/wiki/Advanced_Combat_Helmet",
+      "sha256": "",
+      "publisher": "Wikipedia (Wikimedia Foundation)",
+      "tier": 5
+    },
+    {
+      "source_id": "ras_smersh",
+      "title": "SSO Tactical Vest Smersh SVD/VSS product page",
+      "url": "https://ras-store.eu/belt-systems/2074-sso-tactical-vest-smersh-svdvss.html",
+      "sha256": "",
+      "publisher": "RAS Store (SSO Smersh load-bearing system)",
+      "tier": 4
+    }
+  ],
+  "items": [
+    {
+      "item": "Defcon 5 Army Combat Uniform D5-1650",
+      "category": "uniform",
+      "family": "combatuniform",
+      "mass_kg": 1.34,
+      "state": "jacket and trousers, complete combat uniform",
+      "maker": "Defcon 5",
+      "country": "IT",
+      "era": "modern",
+      "note": "ACU Combat Uniform (jacket and pants). ... Weight: 1.34 Kg",
+      "source_id": "defcon5_acu"
+    },
+    {
+      "item": "Defcon 5 Regular Army Uniform D5-1660",
+      "category": "uniform",
+      "family": "combat",
+      "mass_kg": 1.42,
+      "state": "jacket and trousers, complete army uniform, Italian camo",
+      "maker": "Defcon 5",
+      "country": "IT",
+      "era": "modern",
+      "note": "Weight: 1.42 Kg",
+      "source_id": "defcon5_rau"
+    },
+    {
+      "item": "Defcon 5 Army Combat Uniform D5-1650 (ACU cut)",
+      "category": "uniform",
+      "family": "acu",
+      "mass_kg": 1.34,
+      "state": "jacket and trousers, complete combat uniform, ACU cut",
+      "maker": "Defcon 5",
+      "country": "IT",
+      "era": "modern",
+      "note": "ACU Combat Uniform (jacket and pants). ... Weight: 1.34 Kg",
+      "source_id": "defcon5_acu"
+    },
+    {
+      "item": "Defcon 5 Army Combat Uniform D5-1650 (Multiland R)",
+      "category": "uniform",
+      "family": "multicam",
+      "mass_kg": 1.34,
+      "state": "jacket and trousers, Multiland R pattern of the MultiCam family",
+      "maker": "Defcon 5",
+      "country": "IT",
+      "era": "modern",
+      "note": "ACU Combat Uniform (jacket and pants). ... Weight: 1.34 Kg",
+      "source_id": "defcon5_acu"
+    },
+    {
+      "item": "Defcon 5 Army Combat Uniform D5-1650 (Multiland R)",
+      "category": "uniform",
+      "family": "mcam",
+      "mass_kg": 1.34,
+      "state": "jacket and trousers, Multiland R pattern of the MultiCam family",
+      "maker": "Defcon 5",
+      "country": "IT",
+      "era": "modern",
+      "note": "ACU Combat Uniform (jacket and pants). ... Weight: 1.34 Kg",
+      "source_id": "defcon5_acu"
+    },
+    {
+      "item": "Helikon-Tex Ghillie Suit",
+      "category": "uniform",
+      "family": "ghillie",
+      "mass_kg": 1.67,
+      "state": "single full-body ghillie suit, size M",
+      "maker": "Helikon-Tex",
+      "country": "PL",
+      "era": "modern",
+      "note": "Weight [g]: 1,670.00 ... Reference weight: dla rozmiaru M",
+      "source_id": "helikon_ghillie"
+    },
+    {
+      "item": "Helikon-Tex Leaf Ghillie Set",
+      "category": "uniform",
+      "family": "ghillie",
+      "mass_kg": 0.85,
+      "state": "complete ghillie set",
+      "maker": "Helikon-Tex",
+      "country": "PL",
+      "era": "modern",
+      "note": "Weight [g]: 850.00",
+      "source_id": "helikon_leaf_ghillie"
+    },
+    {
+      "item": "Helikon-Tex MCDU Combat Shirt",
+      "category": "garment",
+      "family": "combatshirt",
+      "mass_kg": 0.433,
+      "state": "single combat shirt, size L",
+      "maker": "Helikon-Tex",
+      "country": "PL",
+      "era": "modern",
+      "note": "Weight [g]: 433 ... dla rozmiaru L",
+      "source_id": "helikon_mcdu_shirt"
+    },
+    {
+      "item": "Helikon-Tex MCDU Pants",
+      "category": "garment",
+      "family": "combattrouser",
+      "mass_kg": 0.78,
+      "state": "single combat trousers, size L",
+      "maker": "Helikon-Tex",
+      "country": "PL",
+      "era": "modern",
+      "note": "Weight [g]: 780 ... dla rozmiaru L",
+      "source_id": "helikon_mcdu_pants"
+    },
+    {
+      "item": "MASKPOL KWM-02 multi-threat body armour system",
+      "category": "vest",
+      "family": "carrierrig",
+      "mass_kg": 4.0,
+      "state": "base protection level without hard plates, lower bound of the published 4-13 kg range",
+      "maker": "MASKPOL",
+      "country": "PL",
+      "era": "modern",
+      "note": "Vest weights range from 4 to 13 kg depending on the ballistic protection level provided.",
+      "source_id": "maskpol_kwm02"
+    },
+    {
+      "item": "MASKPOL KWM-02 multi-threat body armour system",
+      "category": "vest",
+      "family": "kbt",
+      "mass_kg": 4.0,
+      "state": "base protection level without hard plates, lower bound of the published 4-13 kg range",
+      "maker": "MASKPOL",
+      "country": "PL",
+      "era": "modern",
+      "note": "Vest weights range from 4 to 13 kg depending on the ballistic protection level provided.",
+      "source_id": "maskpol_kwm02"
+    },
+    {
+      "item": "Avenger helmet (LDF) analogue: Team Wendy EXFIL Ballistic high-cut",
+      "category": "helmet",
+      "family": "aggressor",
+      "mass_kg": 1.17,
+      "state": "complete helmet system, high-cut, size Medium",
+      "maker": "Team Wendy",
+      "country": "US",
+      "era": "modern",
+      "note": "Complete system weights High-cut * Small - 2.53 lbs (1.15 kg) * Medium - 2.59 lbs (1.17 kg) * Large - 2.71 lbs (1.23 kg) * XL - 2.97 lbs (1.35 kg)",
+      "source_id": "teamwendy_exfil"
+    },
+    {
+      "item": "Advanced Modular Helmet (LDF) analogue: ACH Medium",
+      "category": "helmet",
+      "family": "hbk",
+      "mass_kg": 1.361,
+      "state": "complete helmet, size Medium, without cover",
+      "maker": "Gentex",
+      "country": "US",
+      "era": "modern",
+      "note": "The small ACH (without the cover) weighs under 3 pounds, the medium weighs 3 pounds, the large weighs 3.3 pounds, and the X-large weighs 3.8 pounds.",
+      "source_id": "wp_ach_equiv"
+    },
+    {
+      "item": "Kipchak (V_SmershVest) analogue: SSO Smersh SVD/VSS load-bearing system",
+      "category": "vest",
+      "family": "smersh",
+      "mass_kg": 2.07,
+      "state": "complete load-bearing system, belt, harness and pouches",
+      "maker": "SSO (Special Equipment Supply)",
+      "country": "RU",
+      "era": "modern",
+      "note": "Weight: 2070 g",
+      "source_id": "ras_smersh"
+    }
+  ],
+  "leads": [
+    {
+      "item": "Crye Precision G3 and G4 combat shirt and trousers",
+      "url": "https://www.cryeprecision.com/G3-Combat-Shirt",
+      "why": "the product page and the linked spec sheet PDF publish no mass"
+    },
+    {
+      "item": "UK MTP combat uniform (jacket and trousers)",
+      "url": "https://helikon-tex.com/en/clothing/uniform-shirts.html",
+      "why": "no tier 1-4 source with a complete MTP uniform mass was reachable in this run; the makers publish component masses only"
+    },
+    {
+      "item": "Arma 3 Avenger helmet (H_HelmetAggressor_F)",
+      "url": "https://armedassault.fandom.com/wiki/Avenger_Helmet",
+      "why": "the LDF helmet is fictional and the wiki names no real counterpart; the row uses the Team Wendy EXFIL Ballistic high-cut as the closest published modern analogue"
+    },
+    {
+      "item": "Arma 3 Kipchak (V_SmershVest_01_F)",
+      "url": "https://armedassault.fandom.com/wiki/Kipchak",
+      "why": "the wiki says the in-game rig is modelled on the British PLCE chest rig, not the SSO Smersh; the row uses the SSO Smersh, the real Russian load-bearing vest the classname names"
+    },
+    {
+      "item": "CSAT hexacam combat uniforms (ocamo and oucamo)",
+      "url": "https://armedassault.fandom.com/wiki/Contact_DLC",
+      "why": "fictional patterns with no real counterpart; the vanilla classnames carry the token combatuniform and resolve to that family"
+    },
+    {
+      "item": "HBK headset, ear and chops variants (H_HelmetHBK_headset_F and others)",
+      "url": "https://armedassault.fandom.com/wiki/Advanced_Modular_Helmet",
+      "why": "the wiki gives engine mass units only, which are identity evidence and not a value source; the family resolves to the ACH figure"
+    }
+  ],
+  "conflicts": []
+}
