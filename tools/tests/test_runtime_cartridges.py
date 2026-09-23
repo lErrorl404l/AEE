@@ -25,14 +25,19 @@ def normalise(text):
 
 
 def table():
+    # Row shape: [cartridge_id, aliases, calibre_mm, twist_m, pressure_mpa,
+    # proof_mpa, twist_pistol_m, twist_rifle_m].  The resolver grew the two
+    # arm-type twist scopes (issue: the pistol and rifle test barrels), so
+    # the pattern names every field rather than a fixed six.
     m = re.search(r"private _TABLE = \[(.*?)\n\];", SQF, re.S)
     rows = re.findall(
-        r'\["([^"]+)", "([^"]*)", ([0-9.]+), ([0-9.]+), ([0-9.]+), ([0-9.]+)\]',
+        r'\["([^"]+)", "([^"]*)", '
+        r"([0-9.]+), ([0-9.]+), ([0-9.]+), ([0-9.]+), ([0-9.]+), ([0-9.]+)\]",
         m.group(1),
     )
     return [
         (i, a.split("|"), float(c), float(t), float(p), float(pr))
-        for i, a, c, t, p, pr in rows
+        for i, a, c, t, p, pr, _pistol, _rifle in rows
     ]
 
 

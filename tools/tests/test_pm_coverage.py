@@ -135,6 +135,11 @@ def ammo_family(ammo):
     return None
 
 
+@unittest.skipUnless(
+    AMMO_INV.exists(),
+    "Project M inventory not extracted (local-only check - run the extraction "
+    "in tools/tests/classify_inventory.py against the installed Project M mod)",
+)
 class TestPmAmmoCoverage(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
