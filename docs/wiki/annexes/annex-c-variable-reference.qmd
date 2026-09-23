@@ -64,6 +64,8 @@ follow the variable names as written in the SQF source.
 | `aee_core_currentAirDensity` | ballistics | Air density in kg/m3 |
 | `aee_ballistics_coriolisDeflection_m` | ballistics | Coriolis deflection in metres |
 | `aee_ballistics_crosswind` | ballistics | Crosswind deflection |
+| `aee_ballistics_lastShot` | ballistics | The resolved shot of the last round: [init speed, BC, drag model, twist, stability, retard, cartridge id, projectile id, BC grade, spin rate] |
+| `aee_ballistics_lastCartridge` | ballistics | The last fired round's cartridge: [cartridge id, 0, twist, 0, 0] |
 
 ### Optics
 
