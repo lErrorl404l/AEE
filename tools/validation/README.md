@@ -542,8 +542,16 @@ projections run last, and the gates after them.
 | Weapons | `gen_weapons`, `gen_designations`, `gen_weapon_leads`, `gen_weapon_worklist` |
 | Recoil inputs | `gen_recoil_data` |
 | Drag | `merge_drag_functions` |
-| Runtime projections | `gen_runtime_cartridges`, `_projectiles`, `_weapons`, `_drag`, `_magazines` |
+| Runtime projections | `gen_runtime_cartridges`, `_projectiles`, `_weapons`, `_drag`, `_magazines`, `gen_equipment_data` |
 | Outputs and gates | `render_ballistics_index`, `export_ballistics_csv`, `validate_ballistics_data`, `audit_coverage` |
+
+`gen_equipment_data` is the one projection whose research lives outside
+`data/ballistics/`: it reads the equipment captures under
+`data/equipment/sources/` (schema in `data/equipment/SCHEMA.md`) and writes
+the item-mass resolver `fnc_getItemMass.sqf`, which the load walk
+`fnc_getInventoryLoad` consumes. A new capture file joins the build with no
+code change. The rucksack rows are projected EMPTY, because the walk weighs
+the pack contents separately.
 
 ### Adding a source
 
