@@ -48,8 +48,22 @@ private _now = diag_tickTime;
 private _dtH = (_now - _lastTick) / 3600;
 if (_dtH > 0.5) then { _dtH = 0.5; };   // clamp against long gaps
 
-// Snow cover halves the growth constant (insulation).
-private _C = [2.7, 1.7] select (_snow > 0.05);
+// The Stefan coefficient comes from the SOIL's own frozen conductivity
+// and density, and from the snow that insulates it (issue #11). The mod
+// once held two constants, 2.7 bare and 1.7 under snow, which is right
+// for a generic soil but cannot express the real range: peat reaches
+// 1.76 and dense sand 2.67 under the same weather.
+//
+// The surface class comes from the material classifier, not from a call
+// into thermal: thermal already calls this addon, and the reverse call
+// would close a dependency cycle.
+private _snowDepth = missionNamespace getVariable [QEGVAR(core,snowDepth_m), 0];
+if !(_snowDepth isEqualType 0) then { _snowDepth = 0; };
+private _surfaceClass = "ground";
+if (count _posASL >= 2) then {
+    _surfaceClass = (surfaceType [_posASL select 0, _posASL select 1]) call EFUNC(material,classifyBySurfaceType);
+};
+private _C = [_surfaceClass, _snowDepth] call EFUNC(thermal,calculateStefanCoefficient);
 
 if (_T < 0) then {
     // Accumulate freezing degree-hours, convert to degree-days.
