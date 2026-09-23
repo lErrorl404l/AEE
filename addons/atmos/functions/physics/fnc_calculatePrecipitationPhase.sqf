@@ -46,7 +46,21 @@ private _phase = switch (true) do {
 
 private _snowfallRate = if (_phase in ["snow", "sleet", "freezing_rain"]) then { _rainRate min 1 } else { 0 };
 
+// ─── Orographic enhancement ──────────────────────────────────────────────
+// Air forced up a slope condenses more, so a ridge receives more
+// precipitation than the flat land around it.  The model is the published
+// upslope form (Smith 1979); fnc_calculateOrographicPrecipitation holds it.
+// The setting gates the effect, so a mission can turn it off.
+private _orographic = 1;
+if (missionNamespace getVariable [QEGVAR(core,precipOrographicEnabled), true]) then {
+    private _unit = call CBA_fnc_currentUnit;
+    if (!isNil "_unit" && {!isNull _unit}) then {
+        _orographic = [getPosASL _unit] call FUNC(calculateOrographicPrecipitation);
+    };
+};
+
 missionNamespace setVariable [QEGVAR(core,precipitationPhase), _phase];
-missionNamespace setVariable [QEGVAR(core,snowfallRate), _snowfallRate];
+missionNamespace setVariable [QEGVAR(core,snowfallRate), _snowfallRate * _orographic];
+missionNamespace setVariable [QEGVAR(core,orographicFactor), _orographic];
 
 _phase
