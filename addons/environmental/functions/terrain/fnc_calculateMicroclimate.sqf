@@ -71,6 +71,13 @@ if (_relief > 0) then {
     // depth, before the user scale.
     private _maxDeficit = 3.0;
     _pooling = -_maxDeficit * _depth;
+    // A built-up surface drains and warms: that is the urban heat island,
+    // and it is the same ground that would otherwise pool cold air.  The
+    // two are not additive, so the pooling yields to the built density
+    // rather than stacking with the urban heat island term elsewhere.
+    private _built = missionNamespace getVariable [QEGVAR(core,builtDensity), 0];
+    if !(_built isEqualType 0) then { _built = 0; };
+    _pooling = _pooling * (1 - (_built max 0 min 1));
 };
 
 // ─── Mechanism 2: canopy cooling ─────────────────────────────────────────

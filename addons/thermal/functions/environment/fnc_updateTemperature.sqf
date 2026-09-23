@@ -127,6 +127,10 @@ if (_uhiSetting > 0) then {
         } forEach _structures;
     };
     if !(_density isEqualType 0) then { _density = 0; };
+    // Publish the built density: the microclimate pooling term yields to
+    // it, because built-up ground drains and warms rather than pooling
+    // cold air. The two models share one measurement.
+    missionNamespace setVariable [QEGVAR(core,builtDensity), _density];
     private _pos = [0, 0, 0];
     private _unit = call CBA_fnc_currentUnit;
     if (!isNil "_unit" && {!isNull _unit}) then { _pos = getPosASL _unit; };
