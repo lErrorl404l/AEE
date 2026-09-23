@@ -72,7 +72,7 @@ model under that principle.
   count is a test failure rather than a silent error.
 - An engine semantic is verified in the engine, not assumed. The docker
   probe is the gate, because HEMTT cannot see a runtime type error (see
-  GAP-012 and GAP-014 in `rules/gaps-register.md`).
+  GAP-012 and GAP-014 in `docs/gaps-register.md`).
 - Coverage is measurable. A capture that lands without a regenerated
   resolver fails `test_inventory_load.py`.
 - The derived rung is intentionally absent, not silently guessed. It needs
