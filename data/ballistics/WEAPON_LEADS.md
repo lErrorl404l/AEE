@@ -7,7 +7,7 @@ standard already applies and where verification is needed.
 
 - Weapons held at the held cartridge standard: 386
 - Weapons that differ: 308
-- Of those, now verified against a held source: 304
+- Of those, now verified against a held source: 308
 - Of those, still open in this worklist: 64
 - Weapons with no standard for the chambering: 2
 - Weak citation, not usable even as a lead: 663

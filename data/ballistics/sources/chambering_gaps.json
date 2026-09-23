@@ -1,0 +1,438 @@
+{
+ "retrieved": "2026-09-23",
+ "weapons_resolved": 1583,
+ "weapons_unresolved": 60,
+ "gaps": [
+  {
+   "chambering": "6.8x51mm",
+   "canonical_key": "68x51",
+   "weapons": [
+    "m250",
+    "m7",
+    "mcxspear",
+    "xm250",
+    "xm5",
+    "xm7"
+   ],
+   "count": 6,
+   "status": "absent_from_register",
+   "candidate_ids": [],
+   "note": ""
+  },
+  {
+   "chambering": "6.5mm (6.5 Creedmoor/6.5 PRC)",
+   "canonical_key": "6565creedmoor/65prc",
+   "weapons": [
+    "clymr",
+    "endex",
+    "goat",
+    "magnus",
+    "nexus"
+   ],
+   "count": 5,
+   "status": "absent_from_register",
+   "candidate_ids": [],
+   "note": ""
+  },
+  {
+   "chambering": "7.92x57mm Mauser",
+   "canonical_key": "792x57mauser",
+   "weapons": [
+    "dror",
+    "fg42",
+    "m76",
+    "mg34",
+    "mg42"
+   ],
+   "count": 5,
+   "status": "absent_from_register",
+   "candidate_ids": [],
+   "note": ""
+  },
+  {
+   "chambering": ".300 PRC",
+   "canonical_key": "300prc",
+   "weapons": [
+    "carbonfury",
+    "cdxmckraken",
+    "crossmagnum300prc",
+    "magnuslr"
+   ],
+   "count": 4,
+   "status": "absent_from_register",
+   "candidate_ids": [],
+   "note": ""
+  },
+  {
+   "chambering": "7.5x55mm Swiss",
+   "canonical_key": "75x55swiss",
+   "weapons": [
+    "sg510",
+    "sg5101",
+    "sg5102",
+    "sg5103"
+   ],
+   "count": 4,
+   "status": "absent_from_register",
+   "candidate_ids": [],
+   "note": ""
+  },
+  {
+   "chambering": "40x46mm",
+   "canonical_key": "40x46",
+   "weapons": [
+    "m203",
+    "m32",
+    "m79"
+   ],
+   "count": 3,
+   "status": "absent_from_register",
+   "candidate_ids": [],
+   "note": ""
+  },
+  {
+   "chambering": ".22 WMR",
+   "canonical_key": "22wmr",
+   "weapons": [
+    "savage93",
+    "wmp"
+   ],
+   "count": 2,
+   "status": "absent_from_register",
+   "candidate_ids": [],
+   "note": ""
+  },
+  {
+   "chambering": ".22 Winchester Magnum",
+   "canonical_key": "22winchestermag",
+   "weapons": [
+    "blackwidow",
+    "rangerii"
+   ],
+   "count": 2,
+   "status": "absent_from_register",
+   "candidate_ids": [],
+   "note": ""
+  },
+  {
+   "chambering": "300 BLK (7.62x35mm)",
+   "canonical_key": "300blk762x35",
+   "weapons": [
+    "mcxrattler300",
+    "sg553bk"
+   ],
+   "count": 2,
+   "status": "absent_from_register",
+   "candidate_ids": [],
+   "note": ""
+  },
+  {
+   "chambering": "5.8x21mm",
+   "canonical_key": "58x21",
+   "weapons": [
+    "qsw06",
+    "qsz9258x21"
+   ],
+   "count": 2,
+   "status": "absent_from_register",
+   "candidate_ids": [],
+   "note": ""
+  },
+  {
+   "chambering": ".22 LR / .25 ACP / .32 ACP / .380 ACP",
+   "canonical_key": "22lr/25acp/32acp/380acp",
+   "weapons": [
+    "hk4"
+   ],
+   "count": 1,
+   "status": "ambiguous",
+   "candidate_ids": [
+    "22_long_rifle",
+    "25_automatic",
+    "32_acp",
+    "380_automatic"
+   ],
+   "note": ""
+  },
+  {
+   "chambering": ".300 BLK (7.62x35mm)",
+   "canonical_key": "300blk762x35",
+   "weapons": [
+    "hk437"
+   ],
+   "count": 1,
+   "status": "absent_from_register",
+   "candidate_ids": [],
+   "note": ""
+  },
+  {
+   "chambering": ".357 Magnum / 9x19mm",
+   "canonical_key": "357mag/9x19",
+   "weapons": [
+    "692"
+   ],
+   "count": 1,
+   "status": "ambiguous",
+   "candidate_ids": [
+    "357_magnum",
+    "9x19"
+   ],
+   "note": ""
+  },
+  {
+   "chambering": ".380 ACP (9x17mm)",
+   "canonical_key": "380acp9x17",
+   "weapons": [
+    "p238"
+   ],
+   "count": 1,
+   "status": "ambiguous",
+   "candidate_ids": [
+    "380_automatic",
+    "9_x_17"
+   ],
+   "note": ""
+  },
+  {
+   "chambering": ".429 DE",
+   "canonical_key": "429de",
+   "weapons": [
+    "deserteagle429de"
+   ],
+   "count": 1,
+   "status": "absent_from_register",
+   "candidate_ids": [],
+   "note": ""
+  },
+  {
+   "chambering": ".45 ACP / .40 S&W / 9x19mm Parabellum",
+   "canonical_key": "45acp/40sw/9x19parabellum",
+   "weapons": [
+    "ump"
+   ],
+   "count": 1,
+   "status": "ambiguous",
+   "candidate_ids": [
+    "40_smith_wesson",
+    "45_auto",
+    "9x19"
+   ],
+   "note": ""
+  },
+  {
+   "chambering": ".45 Colt / .410 bore",
+   "canonical_key": "45colt/410bore",
+   "weapons": [
+    "judge"
+   ],
+   "count": 1,
+   "status": "ambiguous",
+   "candidate_ids": [
+    "410_bore",
+    "45_colt"
+   ],
+   "note": ""
+  },
+  {
+   "chambering": ".50 Caliber Muzzleloader",
+   "canonical_key": "50calibermuzzleloader",
+   "weapons": [
+    "maxim50"
+   ],
+   "count": 1,
+   "status": "absent_from_register",
+   "candidate_ids": [],
+   "note": ""
+  },
+  {
+   "chambering": ".500 Smith & Wesson Magnum",
+   "canonical_key": "500smithwessonmag",
+   "weapons": [
+    "bfr500sw"
+   ],
+   "count": 1,
+   "status": "absent_from_register",
+   "candidate_ids": [],
+   "note": ""
+  },
+  {
+   "chambering": "11x58mmR",
+   "canonical_key": "11x58r",
+   "weapons": [
+    "mannlicherm1886"
+   ],
+   "count": 1,
+   "status": "absent_from_register",
+   "candidate_ids": [],
+   "note": ""
+  },
+  {
+   "chambering": "15.5x115mm",
+   "canonical_key": "155x115",
+   "weapons": [
+    "brg15"
+   ],
+   "count": 1,
+   "status": "absent_from_register",
+   "candidate_ids": [],
+   "note": ""
+  },
+  {
+   "chambering": "25x40mm",
+   "canonical_key": "25x40",
+   "weapons": [
+    "xm25"
+   ],
+   "count": 1,
+   "status": "absent_from_register",
+   "candidate_ids": [],
+   "note": ""
+  },
+  {
+   "chambering": "37mm",
+   "canonical_key": "37",
+   "weapons": [
+    "hk69a1"
+   ],
+   "count": 1,
+   "status": "absent_from_register",
+   "candidate_ids": [],
+   "note": ""
+  },
+  {
+   "chambering": "4.5mm air rifle",
+   "canonical_key": "45airrifle",
+   "weapons": [
+    "lg400"
+   ],
+   "count": 1,
+   "status": "absent_from_register",
+   "candidate_ids": [],
+   "note": ""
+  },
+  {
+   "chambering": "4.73x33mm caseless",
+   "canonical_key": "473x33caseless",
+   "weapons": [
+    "g11"
+   ],
+   "count": 1,
+   "status": "absent_from_register",
+   "candidate_ids": [],
+   "note": ""
+  },
+  {
+   "chambering": "5.66x39mm",
+   "canonical_key": "566x39",
+   "weapons": [
+    "aps"
+   ],
+   "count": 1,
+   "status": "absent_from_register",
+   "candidate_ids": [],
+   "note": ""
+  },
+  {
+   "chambering": "6x35mm",
+   "canonical_key": "6x35",
+   "weapons": [
+    "kacpdw"
+   ],
+   "count": 1,
+   "status": "absent_from_register",
+   "candidate_ids": [],
+   "note": ""
+  },
+  {
+   "chambering": "7.62x37mm subsonic (676)",
+   "canonical_key": "762x37subsonic676",
+   "weapons": [
+    "sl9sd"
+   ],
+   "count": 1,
+   "status": "absent_from_register",
+   "candidate_ids": [],
+   "note": ""
+  },
+  {
+   "chambering": "7.62x38mmR",
+   "canonical_key": "762x38r",
+   "weapons": [
+    "nagantm1895"
+   ],
+   "count": 1,
+   "status": "absent_from_register",
+   "candidate_ids": [],
+   "note": ""
+  },
+  {
+   "chambering": "7.62\u00d751mm NATO (.308 Win)",
+   "canonical_key": "762x51nato308win",
+   "weapons": [
+    "t5000"
+   ],
+   "count": 1,
+   "status": "ambiguous",
+   "candidate_ids": [
+    "308_win",
+    "762x51_nato"
+   ],
+   "note": ""
+  },
+  {
+   "chambering": "8x56mmR",
+   "canonical_key": "8x56r",
+   "weapons": [
+    "schoenauer"
+   ],
+   "count": 1,
+   "status": "absent_from_register",
+   "candidate_ids": [],
+   "note": ""
+  },
+  {
+   "chambering": "9x19mm",
+   "canonical_key": "9x19",
+   "weapons": [
+    "n9theschwartz"
+   ],
+   "count": 1,
+   "status": "absent_from_register",
+   "candidate_ids": [],
+   "note": ""
+  },
+  {
+   "chambering": "9x21mm IMI",
+   "canonical_key": "9x21imi",
+   "weapons": [
+    "98"
+   ],
+   "count": 1,
+   "status": "absent_from_register",
+   "candidate_ids": [],
+   "note": ""
+  },
+  {
+   "chambering": "9x23mm Steyr",
+   "canonical_key": "9x23steyr",
+   "weapons": [
+    "hahnm1912"
+   ],
+   "count": 1,
+   "status": "absent_from_register",
+   "candidate_ids": [],
+   "note": ""
+  },
+  {
+   "chambering": "n/a (rangefinder)",
+   "canonical_key": "n/arangefinder",
+   "weapons": [
+    "kilo"
+   ],
+   "count": 1,
+   "status": "absent_from_register",
+   "candidate_ids": [],
+   "note": ""
+  }
+ ]
+}

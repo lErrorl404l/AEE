@@ -170,6 +170,35 @@ def check_records(kind, records, by_id, errors):
             )
 
 
+def check_references(weapons, cartridges, gaps, errors):
+    """Every joined cartridge_id names a cartridge. Every blank one is
+    reported. A weapon with a blank id falls back to its own twist alone,
+    and the gap report is where that is recorded, so a blank id that no
+    report names is an unreported hole."""
+    cartridge_ids = {c["cartridge_id"] for c in cartridges}
+    for weapon in weapons:
+        cid = weapon.get("cartridge_id", "")
+        if not cid:
+            continue
+        if cid not in cartridge_ids:
+            errors.append(
+                f"weapon {weapon['weapon_id']}: cartridge_id {cid} is not a cartridge"
+            )
+    if gaps is None:
+        return
+    reported = set()
+    for row in gaps.get("gaps", []):
+        raw = row["chambering"]
+        for wid in row["weapons"]:
+            reported.add(wid)
+    for weapon in weapons:
+        if weapon.get("cartridge_id") or weapon["weapon_id"] in reported:
+            continue
+        errors.append(
+            f"weapon {weapon['weapon_id']}: no cartridge_id and no chambering gap row"
+        )
+
+
 def main():
     errors = []
     sources = load("sources.json")
@@ -177,6 +206,13 @@ def main():
     for kind in ("cartridges", "projectiles", "loads", "weapons"):
         check_records(kind, load(f"{kind}.json"), by_id, errors)
     load("conflicts.json")
+    gaps_path = DATA / "sources" / "chambering_gaps.json"
+    gaps = (
+        json.loads(gaps_path.read_text(encoding="utf-8"))
+        if gaps_path.exists()
+        else None
+    )
+    check_references(load("weapons.json"), load("cartridges.json"), gaps, errors)
 
     if errors:
         print("ballistics data gate: FAIL")

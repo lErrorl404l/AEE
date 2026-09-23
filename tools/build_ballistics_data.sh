@@ -60,6 +60,9 @@ step "weapons: catalogue" "$V/gen_weapons.py"
 # designation resolves to that weapon's own twist. Runs after the
 # catalogue, which holds the target records.
 step "weapons: service designations" "$V/gen_designations.py"
+# The chambering join is complete now, so the gaps are the true ones. The
+# report drives the research that adds the missing cartridge records.
+step "weapons: chambering gaps" "$V/gen_chambering_gaps.py"
 step "weapons: corpus leads" "$V/gen_weapon_leads.py"
 step "weapons: verification worklist" "$V/gen_weapon_worklist.py"
 # The mass worklist is the research backlog grouped by manufacturer, so one

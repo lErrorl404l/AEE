@@ -97,7 +97,7 @@
    "ruger1022"
   ],
   "manufacturer": "Ruger",
-  "cartridge_id": "",
+  "cartridge_id": "22_long_rifle",
   "note": "10/22 (United States). Ruger product line '10/22', model 'Standard', 22 LR: twist 16.000 in, 6 grooves.",
   "values": {
    "cartridge": {
@@ -237,7 +237,7 @@
    "110scoutv2556nato"
   ],
   "manufacturer": "Savage",
-  "cartridge_id": "",
+  "cartridge_id": "556x45_nato",
   "note": "Savage 110 Scout V2 (SKU 32982) specification table: \"Caliber 5.56x45mm NATO\" and \"Rate of Twist 1:7\\\"\". States a 1 turn in 7 inch twist = 177.8 mm per turn.",
   "values": {
    "cartridge": {
@@ -297,7 +297,7 @@
    "smithwesson1522"
   ],
   "manufacturer": "Smith & Wesson",
-  "cartridge_id": "",
+  "cartridge_id": "22_long_rifle",
   "note": "15-22 (United States). M&P15-22 rimfire carbine. Twist not stated on the catalogue pages retrieved.",
   "values": {
    "cartridge": {
@@ -755,7 +755,7 @@
    "springfieldarmory19119mm"
   ],
   "manufacturer": "Springfield Armory",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "1911 (9mm) (United States). Springfield 1911 pistols in 9mm also use a 1:16 twist, which differs from the 1:10 9x19 reference.",
   "values": {
    "cartridge": {
@@ -1245,7 +1245,7 @@
    "beretta21abobcat"
   ],
   "manufacturer": "Beretta",
-  "cartridge_id": "",
+  "cartridge_id": "22_long_rifle",
   "note": "21A Bobcat (Italy). one turn in 14 in",
   "values": {
    "cartridge": {
@@ -1272,7 +1272,7 @@
    "beretta21abobcat25"
   ],
   "manufacturer": "Beretta",
-  "cartridge_id": "",
+  "cartridge_id": "25_automatic",
   "note": "21A Bobcat .25 (Italy). one turn in 10 in",
   "values": {
    "cartridge": {
@@ -1564,7 +1564,7 @@
    "glockglock22gen3"
   ],
   "manufacturer": "Glock",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "G22 Gen3 (Austria). GLOCK 22 is catalogued in .40 S&W (GLOCK USA product catalogue). GLOCK publishes 1:9.84 in (250 mm) for 9 mm and 1:15.75 in (400 mm) for .45 ACP; no GLOCK-published pitch for the .40 S&W barrel of this model.",
   "values": {
    "cartridge": {
@@ -1592,7 +1592,7 @@
    "glockglock22gen4"
   ],
   "manufacturer": "Glock",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "G22 Gen4 (Austria). GLOCK 22 is catalogued in .40 S&W (GLOCK USA product catalogue). GLOCK publishes 1:9.84 in (250 mm) for 9 mm and 1:15.75 in (400 mm) for .45 ACP; no GLOCK-published pitch for the .40 S&W barrel of this model.",
   "values": {
    "cartridge": {
@@ -1620,7 +1620,7 @@
    "glockglock22gen5"
   ],
   "manufacturer": "Glock",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "G22 Gen5 (Austria). GLOCK 22 is catalogued in .40 S&W (GLOCK USA product catalogue). GLOCK publishes 1:9.84 in (250 mm) for 9 mm and 1:15.75 in (400 mm) for .45 ACP; no GLOCK-published pitch for the .40 S&W barrel of this model.",
   "values": {
    "cartridge": {
@@ -1648,7 +1648,7 @@
    "glockglock23gen3"
   ],
   "manufacturer": "Glock",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "G23 Gen3 (Austria). GLOCK 23 is catalogued in .40 S&W (GLOCK USA product catalogue). GLOCK publishes 1:9.84 in (250 mm) for 9 mm and 1:15.75 in (400 mm) for .45 ACP; no GLOCK-published pitch for the .40 S&W barrel of this model.",
   "values": {
    "cartridge": {
@@ -1676,7 +1676,7 @@
    "glockglock23gen4"
   ],
   "manufacturer": "Glock",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "G23 Gen4 (Austria). GLOCK 23 is catalogued in .40 S&W (GLOCK USA product catalogue). GLOCK publishes 1:9.84 in (250 mm) for 9 mm and 1:15.75 in (400 mm) for .45 ACP; no GLOCK-published pitch for the .40 S&W barrel of this model.",
   "values": {
    "cartridge": {
@@ -1704,7 +1704,7 @@
    "glockglock23gen5"
   ],
   "manufacturer": "Glock",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "G23 Gen5 (Austria). GLOCK 23 is catalogued in .40 S&W (GLOCK USA product catalogue). GLOCK publishes 1:9.84 in (250 mm) for 9 mm and 1:15.75 in (400 mm) for .45 ACP; no GLOCK-published pitch for the .40 S&W barrel of this model.",
   "values": {
    "cartridge": {
@@ -1732,7 +1732,7 @@
    "glockglock24gen3"
   ],
   "manufacturer": "Glock",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "G24 Gen3 (Austria). GLOCK 24 is catalogued in .40 S&W (GLOCK USA product catalogue). GLOCK publishes 1:9.84 in (250 mm) for 9 mm and 1:15.75 in (400 mm) for .45 ACP; no GLOCK-published pitch for the .40 S&W barrel of this model.",
   "values": {
    "cartridge": {
@@ -1760,7 +1760,7 @@
    "glockglock25gen3"
   ],
   "manufacturer": "Glock",
-  "cartridge_id": "",
+  "cartridge_id": "380_automatic",
   "note": "G25 Gen3 (Austria). GLOCK 25 is catalogued in .380 ACP (GLOCK USA product catalogue). GLOCK publishes 1:9.84 in (250 mm) for 9 mm and 1:15.75 in (400 mm) for .45 ACP; no GLOCK-published pitch for the .380 ACP barrel of this model.",
   "values": {
    "cartridge": {
@@ -1878,7 +1878,7 @@
    "glockglock27gen3"
   ],
   "manufacturer": "Glock",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "G27 Gen3 (Austria). GLOCK 27 is catalogued in .40 S&W (GLOCK USA product catalogue). GLOCK publishes 1:9.84 in (250 mm) for 9 mm and 1:15.75 in (400 mm) for .45 ACP; no GLOCK-published pitch for the .40 S&W barrel of this model.",
   "values": {
    "cartridge": {
@@ -1906,7 +1906,7 @@
    "glockglock27gen4"
   ],
   "manufacturer": "Glock",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "G27 Gen4 (Austria). GLOCK 27 is catalogued in .40 S&W (GLOCK USA product catalogue). GLOCK publishes 1:9.84 in (250 mm) for 9 mm and 1:15.75 in (400 mm) for .45 ACP; no GLOCK-published pitch for the .40 S&W barrel of this model.",
   "values": {
    "cartridge": {
@@ -1934,7 +1934,7 @@
    "glockglock27gen5"
   ],
   "manufacturer": "Glock",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "G27 Gen5 (Austria). GLOCK 27 is catalogued in .40 S&W (GLOCK USA product catalogue). GLOCK publishes 1:9.84 in (250 mm) for 9 mm and 1:15.75 in (400 mm) for .45 ACP; no GLOCK-published pitch for the .40 S&W barrel of this model.",
   "values": {
    "cartridge": {
@@ -1962,7 +1962,7 @@
    "glockglock28gen3"
   ],
   "manufacturer": "Glock",
-  "cartridge_id": "",
+  "cartridge_id": "380_automatic",
   "note": "G28 Gen3 (Austria). GLOCK 28 is catalogued in .380 ACP (GLOCK USA product catalogue). GLOCK publishes 1:9.84 in (250 mm) for 9 mm and 1:15.75 in (400 mm) for .45 ACP; no GLOCK-published pitch for the .380 ACP barrel of this model.",
   "values": {
    "cartridge": {
@@ -2137,7 +2137,7 @@
    "beretta3032tomcat"
   ],
   "manufacturer": "Beretta",
-  "cartridge_id": "",
+  "cartridge_id": "32_acp",
   "note": "3032 Tomcat (Italy). one turn in 10 in",
   "values": {
    "cartridge": {
@@ -2412,7 +2412,7 @@
    "smithwesson329"
   ],
   "manufacturer": "Smith & Wesson",
-  "cartridge_id": "",
+  "cartridge_id": "44_remington_magnum",
   "note": "329 (United States). N-frame scandium revolver. Twist not stated on the catalogue pages retrieved.",
   "values": {
    "cartridge": {
@@ -2697,7 +2697,7 @@
    "glockglock35gen3"
   ],
   "manufacturer": "Glock",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "G35 Gen3 (Austria). GLOCK 35 is catalogued in .40 S&W (GLOCK USA product catalogue). GLOCK publishes 1:9.84 in (250 mm) for 9 mm and 1:15.75 in (400 mm) for .45 ACP; no GLOCK-published pitch for the .40 S&W barrel of this model.",
   "values": {
    "cartridge": {
@@ -2725,7 +2725,7 @@
    "glockglock35gen4"
   ],
   "manufacturer": "Glock",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "G35 Gen4 (Austria). GLOCK 35 is catalogued in .40 S&W (GLOCK USA product catalogue). GLOCK publishes 1:9.84 in (250 mm) for 9 mm and 1:15.75 in (400 mm) for .45 ACP; no GLOCK-published pitch for the .40 S&W barrel of this model.",
   "values": {
    "cartridge": {
@@ -2739,6 +2739,26 @@
     "unit": "kg",
     "source": "glock_g35_gen4",
     "grade": "documented"
+   }
+  }
+ },
+ {
+  "weapon_id": "36",
+  "names": [
+   "Smith & Wesson Model 36"
+  ],
+  "aliases": [
+   "smithwesson36"
+  ],
+  "manufacturer": "Smith & Wesson",
+  "cartridge_id": "38_special",
+  "note": "36 (United States). J-frame Chiefs Special. Twist not stated on the catalogue pages retrieved.",
+  "values": {
+   "cartridge": {
+    "value": ".38 Special",
+    "unit": "name",
+    "source": "sw_home",
+    "grade": "claimed"
    }
   }
  },
@@ -2829,6 +2849,26 @@
     "unit": "kg",
     "source": "glock_g38",
     "grade": "documented"
+   }
+  }
+ },
+ {
+  "weapon_id": "39",
+  "names": [
+   "Smith & Wesson Model 39"
+  ],
+  "aliases": [
+   "smithwesson39"
+  ],
+  "manufacturer": "Smith & Wesson",
+  "cartridge_id": "9x19",
+  "note": "39 (United States). Discontinued first-generation pistol. Twist not stated on the catalogue pages retrieved.",
+  "values": {
+   "cartridge": {
+    "value": "9x19mm",
+    "unit": "name",
+    "source": "sw_home",
+    "grade": "claimed"
    }
   }
  },
@@ -2988,7 +3028,7 @@
    "glockglock42gen3"
   ],
   "manufacturer": "Glock",
-  "cartridge_id": "",
+  "cartridge_id": "380_automatic",
   "note": "G42 Gen3 (Austria). GLOCK 42 is catalogued in .380 ACP (GLOCK USA product catalogue). GLOCK publishes 1:9.84 in (250 mm) for 9 mm and 1:15.75 in (400 mm) for .45 ACP; no GLOCK-published pitch for the .380 ACP barrel of this model.",
   "values": {
    "cartridge": {
@@ -3010,7 +3050,7 @@
    "glockglock42gen4"
   ],
   "manufacturer": "Glock",
-  "cartridge_id": "",
+  "cartridge_id": "380_automatic",
   "note": "G42 Gen4 (Austria). GLOCK 42 is catalogued in .380 ACP (GLOCK USA product catalogue). GLOCK publishes 1:9.84 in (250 mm) for 9 mm and 1:15.75 in (400 mm) for .45 ACP; no GLOCK-published pitch for the .380 ACP barrel of this model.",
   "values": {
    "cartridge": {
@@ -3496,7 +3536,7 @@
    "fnherstal502"
   ],
   "manufacturer": "FN Herstal",
-  "cartridge_id": "",
+  "cartridge_id": "22_long_rifle",
   "note": "502 (Belgium). twist not stated",
   "values": {
    "cartridge": {
@@ -3658,6 +3698,26 @@
   }
  },
  {
+  "weapon_id": "59",
+  "names": [
+   "Smith & Wesson Model 59"
+  ],
+  "aliases": [
+   "smithwesson59"
+  ],
+  "manufacturer": "Smith & Wesson",
+  "cartridge_id": "9x19",
+  "note": "59 (United States). Discontinued first-generation pistol. Twist not stated on the catalogue pages retrieved.",
+  "values": {
+   "cartridge": {
+    "value": "9x19mm",
+    "unit": "name",
+    "source": "sw_home",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "weapon_id": "5906",
   "names": [
    "Smith & Wesson 5906"
@@ -3667,7 +3727,7 @@
    "smithwesson5906"
   ],
   "manufacturer": "Smith & Wesson",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "5906 (United States). Discontinued third-generation pistol. Twist not stated on the catalogue pages retrieved.",
   "values": {
    "cartridge": {
@@ -3736,7 +3796,7 @@
    "smithwesson629"
   ],
   "manufacturer": "Smith & Wesson",
-  "cartridge_id": "",
+  "cartridge_id": "44_remington_magnum",
   "note": "629 (United States). N-frame revolver. Twist not stated on the catalogue pages retrieved.",
   "values": {
    "cartridge": {
@@ -3792,6 +3852,26 @@
     "unit": "name",
     "source": "sw_home",
     "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "66",
+  "names": [
+   "Taurus 66"
+  ],
+  "aliases": [
+   "taurus66"
+  ],
+  "manufacturer": "Taurus",
+  "cartridge_id": "357_magnum",
+  "note": "66 (Brazil). twist not stated",
+  "values": {
+   "cartridge": {
+    "value": ".357 Magnum",
+    "unit": "name",
+    "source": "taurus_revolver_manual",
+    "grade": "documented"
    }
   }
  },
@@ -3853,7 +3933,7 @@
    "smithwesson6906"
   ],
   "manufacturer": "Smith & Wesson",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "6906 (United States). Discontinued third-generation pistol. Twist not stated on the catalogue pages retrieved.",
   "values": {
    "cartridge": {
@@ -3929,6 +4009,26 @@
     "value": "5.56x45mm NATO",
     "unit": "name",
     "source": "colt_home",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "70",
+  "names": [
+   "Beretta 70"
+  ],
+  "aliases": [
+   "beretta70"
+  ],
+  "manufacturer": "Beretta",
+  "cartridge_id": "22_long_rifle",
+  "note": "70 (Italy). twist not stated",
+  "values": {
+   "cartridge": {
+    "value": ".22 LR",
+    "unit": "name",
+    "source": "beretta_defense_catalogue",
     "grade": "claimed"
    }
   }
@@ -4028,6 +4128,26 @@
   }
  },
  {
+  "weapon_id": "71",
+  "names": [
+   "Beretta 71 Jaguar"
+  ],
+  "aliases": [
+   "beretta71"
+  ],
+  "manufacturer": "Beretta",
+  "cartridge_id": "22_long_rifle",
+  "note": "71 (Italy). twist not stated",
+  "values": {
+   "cartridge": {
+    "value": ".22 LR",
+    "unit": "name",
+    "source": "beretta_defense_catalogue",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "weapon_id": "751sapr",
   "names": [
    "SIG SG 751 SAPR"
@@ -4044,6 +4164,26 @@
     "value": "7.62x51mm NATO",
     "unit": "name",
     "source": "sig_sauer_ag_catalogue_2023",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "76",
+  "names": [
+   "Beretta 76"
+  ],
+  "aliases": [
+   "beretta76"
+  ],
+  "manufacturer": "Beretta",
+  "cartridge_id": "22_long_rifle",
+  "note": "76 (Italy). twist not stated",
+  "values": {
+   "cartridge": {
+    "value": ".22 LR",
+    "unit": "name",
+    "source": "beretta_defense_catalogue",
     "grade": "claimed"
    }
   }
@@ -4135,7 +4275,7 @@
    "beretta8040"
   ],
   "manufacturer": "Beretta",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "8040 (Italy).",
   "values": {
    "cartridge": {
@@ -4230,6 +4370,26 @@
     "unit": "name",
     "source": "kimber_home",
     "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "85",
+  "names": [
+   "Taurus 85"
+  ],
+  "aliases": [
+   "taurus85"
+  ],
+  "manufacturer": "Taurus",
+  "cartridge_id": "38_special",
+  "note": "85 (Brazil). twist not stated",
+  "values": {
+   "cartridge": {
+    "value": ".38 Special",
+    "unit": "name",
+    "source": "taurus_revolver_manual",
+    "grade": "documented"
    }
   }
  },
@@ -4486,7 +4646,7 @@
    "sakosako8565x55"
   ],
   "manufacturer": "Sako",
-  "cartridge_id": "",
+  "cartridge_id": "6_5_x_55_se",
   "note": "Sako 85 6.5x55 (Finland). rate-of-twist table",
   "values": {
    "cartridge": {
@@ -4540,7 +4700,7 @@
    "sakosako857x64"
   ],
   "manufacturer": "Sako",
-  "cartridge_id": "",
+  "cartridge_id": "7_x_64_brenneke",
   "note": "Sako 85 7x64 (Finland). rate-of-twist table",
   "values": {
    "cartridge": {
@@ -4567,7 +4727,7 @@
    "sakosako8593x62"
   ],
   "manufacturer": "Sako",
-  "cartridge_id": "",
+  "cartridge_id": "9_3_x_62",
   "note": "Sako 85 9.3x62 (Finland). rate-of-twist table",
   "values": {
    "cartridge": {
@@ -4639,6 +4799,90 @@
   }
  },
  {
+  "weapon_id": "87",
+  "names": [
+   "Beretta 87 Target"
+  ],
+  "aliases": [
+   "beretta87"
+  ],
+  "manufacturer": "Beretta",
+  "cartridge_id": "22_long_rifle",
+  "note": "87 (Italy). pitch 350 mm (13.8 in)",
+  "values": {
+   "cartridge": {
+    "value": ".22 LR",
+    "unit": "name",
+    "source": "beretta_87_manual",
+    "grade": "documented"
+   },
+   "twist_m": {
+    "value": 0.35,
+    "unit": "m per turn",
+    "source": "beretta_87_manual",
+    "grade": "documented"
+   },
+   "grooves": {
+    "value": 6,
+    "unit": "count",
+    "source": "beretta_87_manual",
+    "grade": "documented"
+   }
+  }
+ },
+ {
+  "weapon_id": "89",
+  "names": [
+   "Beretta 89"
+  ],
+  "aliases": [
+   "beretta89"
+  ],
+  "manufacturer": "Beretta",
+  "cartridge_id": "22_long_rifle",
+  "note": "89 (Italy). twist not stated",
+  "values": {
+   "cartridge": {
+    "value": ".22 LR",
+    "unit": "name",
+    "source": "beretta_defense_catalogue",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "92",
+  "names": [
+   "Beretta 92"
+  ],
+  "aliases": [
+   "beretta92"
+  ],
+  "manufacturer": "Beretta",
+  "cartridge_id": "9x19",
+  "note": "92 (Italy). 92 series; RH 6 grooves",
+  "values": {
+   "cartridge": {
+    "value": "9x19mm Parabellum",
+    "unit": "name",
+    "source": "beretta_92_manual",
+    "grade": "documented"
+   },
+   "twist_m": {
+    "value": 0.25,
+    "unit": "m per turn",
+    "source": "beretta_92_manual",
+    "grade": "documented"
+   },
+   "grooves": {
+    "value": 6,
+    "unit": "count",
+    "source": "beretta_92_manual",
+    "grade": "documented"
+   }
+  }
+ },
+ {
   "weapon_id": "92_m9",
   "names": [
    "Beretta 92 / M9 Pistol"
@@ -4649,7 +4893,7 @@
    "beretta92m9pistol"
   ],
   "manufacturer": "Beretta",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "Barrel 125 mm (4.92 in). Rifling right hand, 6 grooves, pitch 250 mm (1 turn in 10 in). The groove count was checked against the page image.",
   "values": {
    "cartridge": {
@@ -4913,7 +5157,7 @@
    "beretta950jetfire"
   ],
   "manufacturer": "Beretta",
-  "cartridge_id": "",
+  "cartridge_id": "25_automatic",
   "note": "950 Jetfire (Italy). twist not stated",
   "values": {
    "cartridge": {
@@ -4921,6 +5165,58 @@
     "unit": "name",
     "source": "beretta_defense_catalogue",
     "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "96",
+  "names": [
+   "Beretta 96"
+  ],
+  "aliases": [
+   "beretta96"
+  ],
+  "manufacturer": "Beretta",
+  "cartridge_id": "40_smith_wesson",
+  "note": "96 (Italy). 92 series in .40 S&W",
+  "values": {
+   "cartridge": {
+    "value": ".40 S&W",
+    "unit": "name",
+    "source": "beretta_92_manual",
+    "grade": "documented"
+   },
+   "twist_m": {
+    "value": 0.4,
+    "unit": "m per turn",
+    "source": "beretta_92_manual",
+    "grade": "documented"
+   },
+   "grooves": {
+    "value": 6,
+    "unit": "count",
+    "source": "beretta_92_manual",
+    "grade": "documented"
+   }
+  }
+ },
+ {
+  "weapon_id": "98",
+  "names": [
+   "Beretta 98"
+  ],
+  "aliases": [
+   "beretta98"
+  ],
+  "manufacturer": "Beretta",
+  "cartridge_id": "",
+  "note": "98 (Italy). 9x21 export variant; twist not stated",
+  "values": {
+   "cartridge": {
+    "value": "9x21mm IMI",
+    "unit": "name",
+    "source": "beretta_92_manual",
+    "grade": "documented"
    }
   }
  },
@@ -4934,7 +5230,7 @@
    "taurus992"
   ],
   "manufacturer": "Taurus",
-  "cartridge_id": "",
+  "cartridge_id": "22_long_rifle",
   "note": "992 (Brazil). twist not stated",
   "values": {
    "cartridge": {
@@ -4955,13 +5251,39 @@
    "kbpinstrumentdesignbureau9a91"
   ],
   "manufacturer": "KBP Instrument Design Bureau",
-  "cartridge_id": "",
+  "cartridge_id": "9_x_39",
   "note": "9A-91 (Russia). 9x39 compact rifle; no held source states a weapon twist.",
   "values": {
    "cartridge": {
     "value": "9x39mm",
     "unit": "name",
     "source": "roe_small_arms",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "a5",
+  "names": [
+   "FN FN SPR A5M"
+  ],
+  "aliases": [
+   "fnamericaa5"
+  ],
+  "manufacturer": "FN America",
+  "cartridge_id": "762x51_nato",
+  "note": "A5 (United States). SPR A5M product page: 1:10 twist.",
+  "values": {
+   "cartridge": {
+    "value": "7.62x51mm NATO",
+    "unit": "name",
+    "source": "fn_fn_spr_a5m",
+    "grade": "claimed"
+   },
+   "twist_m": {
+    "value": 0.254,
+    "unit": "m per turn",
+    "source": "fn_fn_spr_a5m",
     "grade": "claimed"
    }
   }
@@ -5097,7 +5419,7 @@
    "kimberaegis"
   ],
   "manufacturer": "Kimber",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "Aegis (United States). Aegis. Twist not stated on the product pages retrieved.",
   "values": {
    "cartridge": {
@@ -5269,6 +5591,28 @@
   }
  },
  {
+  "weapon_id": "aiae",
+  "names": [
+   "Accuracy International AE"
+  ],
+  "aliases": [
+   "accuracyinternationalaiae",
+   "ae",
+   "aiae"
+  ],
+  "manufacturer": "Accuracy International",
+  "cartridge_id": "308_win",
+  "note": "AE (United Kingdom). AE model listed; no twist published",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "ai_website",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "weapon_id": "aias50",
   "names": [
    "Accuracy International AS50"
@@ -5279,13 +5623,41 @@
    "as50"
   ],
   "manufacturer": "Accuracy International",
-  "cartridge_id": "",
+  "cartridge_id": "50_bmg",
   "note": "AS50 (United Kingdom). AS50 listed; no twist published",
   "values": {
    "cartridge": {
     "value": ".50 BMG (12.7x99mm NATO)",
     "unit": "name",
     "source": "ai_website",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "aiat",
+  "names": [
+   "Accuracy International AT"
+  ],
+  "aliases": [
+   "accuracyinternationalaiat",
+   "aiat",
+   "at"
+  ],
+  "manufacturer": "Accuracy International",
+  "cartridge_id": "308_win",
+  "note": "AT (United Kingdom). AT-X/AX barrel sheet: .308 Win 1 in 10 in",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "ai_at_x_mil",
+    "grade": "claimed"
+   },
+   "twist_m": {
+    "value": 0.254,
+    "unit": "m per turn",
+    "source": "ai_at_x_mil",
     "grade": "claimed"
    }
   }
@@ -5353,6 +5725,7 @@
   ],
   "aliases": [
    "aiaw",
+   "aw",
    "l118a1"
   ],
   "manufacturer": "",
@@ -5384,7 +5757,7 @@
    "aw50"
   ],
   "manufacturer": "Accuracy International",
-  "cartridge_id": "",
+  "cartridge_id": "50_bmg",
   "note": "AW50 (United Kingdom). AW50 listed; no twist published",
   "values": {
    "cartridge": {
@@ -5468,7 +5841,7 @@
    "awsuppressed"
   ],
   "manufacturer": "Accuracy International",
-  "cartridge_id": "",
+  "cartridge_id": "308_win",
   "note": "AW Suppressed (United Kingdom). AW configurator: 16 in suppressed barrel 1 in 9 in",
   "values": {
    "cartridge": {
@@ -5502,7 +5875,7 @@
    "ax50"
   ],
   "manufacturer": "Accuracy International",
-  "cartridge_id": "",
+  "cartridge_id": "50_bmg",
   "note": "AX50 (United Kingdom). AX50 listed; no twist published",
   "values": {
    "cartridge": {
@@ -5769,7 +6142,7 @@
    "ak105assaultrifle"
   ],
   "manufacturer": "Kalashnikov Concern",
-  "cartridge_id": "",
+  "cartridge_id": "545x39",
   "note": "Kalashnikov Group official AK105 product page, specifications block: \u00ab\u0428\u0430\u0433 \u043d\u0430\u0440\u0435\u0437\u043e\u0432 \u043a\u0430\u043d\u0430\u043b\u0430 \u0441\u0442\u0432\u043e\u043b\u0430 195\u00bb and \u00ab\u0427\u0438\u0441\u043b\u043e \u043d\u0430\u0440\u0435\u0437\u043e\u0432 4\u00bb; also \u00ab\u0414\u043b\u0438\u043d\u0430 \u0441\u0442\u0432\u043e\u043b\u0430, \u043c\u043c 314\u00bb and \u00ab\u0414\u043b\u0438\u043d\u0430 \u043d\u0430\u0440\u0435\u0437\u043d\u043e\u0439 \u0447\u0430\u0441\u0442\u0438 \u0441\u0442\u0432\u043e\u043b\u0430, \u043c\u043c ~ 270\u00bb. States a 195 mm rifling pitch with 4 grooves for the 5.45 mm AK-105.",
   "values": {
    "cartridge": {
@@ -5953,7 +6326,7 @@
    "ak12assaultrifle"
   ],
   "manufacturer": "Kalashnikov Concern",
-  "cartridge_id": "",
+  "cartridge_id": "545x39",
   "note": "Kalashnikov Group official AK-12 product page, specifications block: \u00ab\u0428\u0430\u0433 \u043d\u0430\u0440\u0435\u0437\u043e\u0432 \u043a\u0430\u043d\u0430\u043b\u0430 \u0441\u0442\u0432\u043e\u043b\u0430 195\u00bb and \u00ab\u0427\u0438\u0441\u043b\u043e \u043d\u0430\u0440\u0435\u0437\u043e\u0432 4\u00bb; also \u00ab\u0414\u043b\u0438\u043d\u0430 \u0441\u0442\u0432\u043e\u043b\u0430, \u043c\u043c 415\u00bb and \u00ab\u0414\u043b\u0438\u043d\u0430 \u043d\u0430\u0440\u0435\u0437\u043d\u043e\u0439 \u0447\u0430\u0441\u0442\u0438 \u0441\u0442\u0432\u043e\u043b\u0430, \u043c\u043c ~ 371\u00bb. States a 195 mm rifling pitch with 4 grooves for the 5.45 mm AK-12.",
   "values": {
    "cartridge": {
@@ -6686,7 +7059,7 @@
    "ak74massaultrifle"
   ],
   "manufacturer": "Kalashnikov Concern",
-  "cartridge_id": "",
+  "cartridge_id": "545x39",
   "note": "Kalashnikov Group official AK74M product page, specifications block: \u00ab\u0428\u0430\u0433 \u043d\u0430\u0440\u0435\u0437\u043e\u0432 \u043a\u0430\u043d\u0430\u043b\u0430 \u0441\u0442\u0432\u043e\u043b\u0430 195\u00bb and \u00ab\u0427\u0438\u0441\u043b\u043e \u043d\u0430\u0440\u0435\u0437\u043e\u0432 4\u00bb; also \u00ab\u0414\u043b\u0438\u043d\u0430 \u0441\u0442\u0432\u043e\u043b\u0430, \u043c\u043c 415\u00bb and \u00ab\u0414\u043b\u0438\u043d\u0430 \u043d\u0430\u0440\u0435\u0437\u043d\u043e\u0439 \u0447\u0430\u0441\u0442\u0438 \u0441\u0442\u0432\u043e\u043b\u0430, \u043c\u043c ~ 371\u00bb. States a 195 mm rifling pitch with 4 grooves for the 5.45 mm AK-74M. Note: the 1982 Soviet AK-74 manual gives 200 mm for the AK-74; the current manufacturer figure for the AK-74M is 195 mm.",
   "values": {
    "cartridge": {
@@ -6764,7 +7137,7 @@
    "kalashnikovconcernak9"
   ],
   "manufacturer": "Kalashnikov Concern",
-  "cartridge_id": "",
+  "cartridge_id": "9_x_39",
   "note": "AK-9 (Russia). 9x39 silenced rifle; no held source states a weapon twist.",
   "values": {
    "cartridge": {
@@ -7151,7 +7524,7 @@
    "rugerrugeramericanpistol"
   ],
   "manufacturer": "Ruger",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "Ruger American Pistol (United States). Discontinued striker pistol. Twist not stated on the current catalogue.",
   "values": {
    "cartridge": {
@@ -7172,7 +7545,7 @@
    "rugeramericanpredator"
   ],
   "manufacturer": "Ruger",
-  "cartridge_id": "",
+  "cartridge_id": "65_creedmoor",
   "note": "American Predator (United States). Ruger product line 'Ruger American Rifle Generation II', model 'Predator', 6.5 Creedmoor: twist 8.000 in, 5 grooves.",
   "values": {
    "cartridge": {
@@ -7212,7 +7585,7 @@
    "rugeramericanranchriflemodel26965556nato"
   ],
   "manufacturer": "Ruger",
-  "cartridge_id": "",
+  "cartridge_id": "556x45_nato",
   "note": "Official model spec sheet, Model Number 26965, 'Caliber: 5.56 NATO', 'Barrel Length 16.10\"': 'Twist   1:8\" RH' and 'Grooves   5'. 1 turn in 8 in = 8 x 25.4 = 203.2 mm. Read from the Internet Archive capture dated 21 May 2025 because the live Ruger page is retired. This contradicts the compilation lead of 254.0 mm (1:10).",
   "values": {
    "cartridge": {
@@ -7383,7 +7756,7 @@
    "anaconda"
   ],
   "manufacturer": "Colt's Manufacturing Co.",
-  "cartridge_id": "",
+  "cartridge_id": "44_remington_magnum",
   "note": "SECONDARY SOURCE (NRA magazine review). Quote: \"The Colt Anaconda has a 1:20-inch LH twist, whereas Colt's competitors use right-hand rifling twists in their .44 Mags.\" States a left-hand 1 turn in 20 inch twist = 508.0 mm per turn. No manufacturer document found: Colt's own operator manuals (Double Action Revolvers manual, 2004 edition) and Colt catalogues and product pages do not print pistol twist rates.",
   "values": {
    "cartridge": {
@@ -7497,7 +7870,7 @@
    "btapc40"
   ],
   "manufacturer": "B&T",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "APC40 (Switzerland). twist not stated in catalogue",
   "values": {
    "cartridge": {
@@ -7849,7 +8222,7 @@
    "armalitear10b"
   ],
   "manufacturer": "ArmaLite",
-  "cartridge_id": "",
+  "cartridge_id": "762x51_nato",
   "note": "ArmaLite AR-10B model data: \"BARREL: 20\\\" CHROME LINED\" and \"RIFLING TWIST: RH 1:11.25 INCH\". States a right-hand 1 turn in 11.25 inch twist = 285.75 mm per turn.",
   "values": {
    "cartridge": {
@@ -7899,7 +8272,7 @@
    "ar10supersasssemiautosniperrifle"
   ],
   "manufacturer": "ArmaLite",
-  "cartridge_id": "",
+  "cartridge_id": "762x51_nato",
   "note": "ArmaLite AR-10 SuperSASS model data: \"BARREL: 24\\\" SST T HEAVY\" and \"RIFLING TWIST: 1:11.25 INCH\". States a 1 turn in 11.25 inch twist = 285.75 mm per turn for the original AR-10 SuperSASS.",
   "values": {
    "cartridge": {
@@ -8144,7 +8517,7 @@
    "ar180bsemiautorifle"
   ],
   "manufacturer": "ArmaLite",
-  "cartridge_id": "",
+  "cartridge_id": "556x45_nato",
   "note": "ArmaLite AR-180B model data: \"BARREL: 19.8 CHROME MOLY, RH 1:9 INCH TWIST, NATO CHAMBER\". States a right-hand 1 turn in 9 inch twist = 228.6 mm per turn.",
   "values": {
    "cartridge": {
@@ -8231,7 +8604,7 @@
    "armalitear24"
   ],
   "manufacturer": "ArmaLite",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "AR-24 (United States). ArmaLite AR-24 pistol. Site blocked at retrieval; twist not verified.",
   "values": {
    "cartridge": {
@@ -8755,7 +9128,7 @@
    "tsniitochmashasmdt"
   ],
   "manufacturer": "TsNIITochMash",
-  "cartridge_id": "",
+  "cartridge_id": "545x39",
   "note": "ASM-DT (Russia). Dual-medium; no held source states a twist.",
   "values": {
    "cartridge": {
@@ -8798,7 +9171,7 @@
    "asvalassaultrifle"
   ],
   "manufacturer": "TsKIB SOO",
-  "cartridge_id": "",
+  "cartridge_id": "9_x_39",
   "note": "Small Arms Defense Journal (V11N6), AS Val article: \"As the weapon is integrally suppressed, the barrel extends to 12cm long; the porting consists of six rows of nine holes spiraling along the rifling grooves. The twist rate is 1:8.3 inches.\" States a 1 turn in 8.3 inch twist = 210.8 mm per turn. The article also notes the AS Val was designed at TsNIITochMash and produced at the Tula Arms Plant.",
   "values": {
    "cartridge": {
@@ -9012,7 +9385,7 @@
    "auga3assaultrifle"
   ],
   "manufacturer": "Steyr",
-  "cartridge_id": "",
+  "cartridge_id": "556x45_nato",
   "note": "Same manufacturer statement on the AUG SA page, whose model list includes the AUG A3 SA SE and AUG A3 SA POLICE: 'The cold hammer forged and hard chrome plated barrel with a twist rate 1 in 9\u201d guarantees high reliability.' 1 turn in 9 in = 228.6 mm.",
   "values": {
    "cartridge": {
@@ -9837,7 +10210,7 @@
    "beretta92m9pistol"
   ],
   "manufacturer": "Beretta",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "Barrel 125 mm (4.92 in). Rifling right hand, 6 grooves, pitch 250 mm (1 turn in 10 in). The groove count was checked against the page image.",
   "values": {
    "cartridge": {
@@ -9951,7 +10324,7 @@
    "bfr44magrevolver"
   ],
   "manufacturer": "Magnum Research",
-  "cartridge_id": "",
+  "cartridge_id": "44_remington_magnum",
   "note": "BFR Short Cylinder Models specification table, model column BFR44MAG, row 'Twist Rate  26' (with 'Groove Diameter  0.430'). 1 turn in 26 in = 660.4 mm. Read from the rendered table image (page 30), which shows the table has no .357 Magnum column, so 26 unambiguously belongs to .44 Magnum. Confirmed identically in the 2021 7th Edition and 2025 11th Edition tables.",
   "values": {
    "cartridge": {
@@ -10059,7 +10432,7 @@
    "bigboy44magleveraction20octagonalbarrel"
   ],
   "manufacturer": "Henry",
-  "cartridge_id": "",
+  "cartridge_id": "44_remington_magnum",
   "note": "Henry H6 Big Boy product page, model H006G \"H6 Big Boy Rifle .44 Magnum/.44 Spl\": \"Barrel Length 20\" ... Rate of Twist 1:20\". A 1 turn in 20 inch twist = 20 x 25.4 = 508.0 mm per turn.",
   "values": {
    "cartridge": {
@@ -10086,7 +10459,7 @@
    "kalashnikovconcernbizon"
   ],
   "manufacturer": "Kalashnikov Concern",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "Bizon (Russia). 9x19 helical magazine; EPVAT 250 mm chambering reference.",
   "values": {
    "cartridge": {
@@ -10280,6 +10653,30 @@
   }
  },
  {
+  "weapon_id": "c7",
+  "names": [
+   "Diemaco/Colt Canada C7"
+  ],
+  "aliases": [],
+  "manufacturer": "",
+  "cartridge_id": "556x45_nato",
+  "note": "C7 (Canada). Colt Canada manual: '6 grooves, 1 in 17.8 cm' (178 mm).",
+  "values": {
+   "cartridge": {
+    "value": "5.56x45mm NATO",
+    "unit": "name",
+    "source": "coltcanada_c7",
+    "grade": "documented"
+   },
+   "twist_m": {
+    "value": 0.1778,
+    "unit": "m per turn",
+    "source": "coltcanada_c7",
+    "grade": "documented"
+   }
+  }
+ },
+ {
   "weapon_id": "c7a1",
   "names": [
    "Colt Canada C7A1"
@@ -10316,6 +10713,30 @@
   "manufacturer": "",
   "cartridge_id": "556x45_nato",
   "note": "C7A2 (Canada). C7 family, 1 in 17.8 cm rifling.",
+  "values": {
+   "cartridge": {
+    "value": "5.56x45mm NATO",
+    "unit": "name",
+    "source": "coltcanada_c7",
+    "grade": "documented"
+   },
+   "twist_m": {
+    "value": 0.1778,
+    "unit": "m per turn",
+    "source": "coltcanada_c7",
+    "grade": "documented"
+   }
+  }
+ },
+ {
+  "weapon_id": "c8",
+  "names": [
+   "Colt Canada C8 Carbine"
+  ],
+  "aliases": [],
+  "manufacturer": "",
+  "cartridge_id": "556x45_nato",
+  "note": "C8 (Canada). C8 listed in the C7 family manual; 1 in 17.8 cm rifling.",
   "values": {
    "cartridge": {
     "value": "5.56x45mm NATO",
@@ -10611,7 +11032,7 @@
    "norincocf98"
   ],
   "manufacturer": "Norinco",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "CF-98 (China). 9x19 export pistol.",
   "values": {
    "cartridge": {
@@ -10968,7 +11389,7 @@
    "cm901modularcarbine762mminterchangeablebarrelsystem"
   ],
   "manufacturer": "Colt",
-  "cartridge_id": "",
+  "cartridge_id": "762x51_nato",
   "note": "Colt CM901 specifications table: \"barrel length 16.1 in. (40.89 cm) rate of fire SEMI rifling 1/12 RH effective range 700 m\". States a right-hand 1 turn in 12 inches twist = 304.8 mm per turn for the 16.1 inch 7.62x51mm barrel.",
   "values": {
    "cartridge": {
@@ -11338,7 +11759,7 @@
    "cpx3polymercompact380acp"
   ],
   "manufacturer": "SCCY Industries",
-  "cartridge_id": "",
+  "cartridge_id": "380_automatic",
   "note": "SCCY Industries official product description, verbatim: \"Chambered for 380ACP, it has a 2.96\\\" barrel with a 16:1\\\" right hand twist.\" SCCY writes the ratio as 16:1, meaning 1 turn in 16 inches, right hand = 406.4 mm per turn. The same SCCY description is repeated verbatim across many SCCY dealer listings, and SCCY's own catalogue and owner's manual do not state a twist.",
   "values": {
    "cartridge": {
@@ -11645,7 +12066,7 @@
    "tauruscurve"
   ],
   "manufacturer": "Taurus",
-  "cartridge_id": "",
+  "cartridge_id": "380_automatic",
   "note": "Curve (Brazil). twist not stated",
   "values": {
    "cartridge": {
@@ -11753,7 +12174,7 @@
    "cx4storm40"
   ],
   "manufacturer": "Beretta",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "Cx4 Storm .40 (Italy). manual table ambiguous",
   "values": {
    "cartridge": {
@@ -12174,7 +12595,7 @@
    "zastavaarmscz99"
   ],
   "manufacturer": "Zastava Arms",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "CZ99 (Serbia). Zastava 9x19 pistol; NATO EPVAT 250 mm.",
   "values": {
    "cartridge": {
@@ -12284,7 +12705,7 @@
    "db380ultracompact380acppocketpistol"
   ],
   "manufacturer": "Diamondback Firearms",
-  "cartridge_id": "",
+  "cartridge_id": "380_automatic",
   "note": "Diamondback Firearms DB380 Gen4 manufacturer specifications: \"Barrel Twist Rate: 1:10 RH\". States a right-hand 1 turn in 10 inch twist = 254.0 mm per turn.",
   "values": {
    "cartridge": {
@@ -12331,7 +12752,7 @@
    "dd5sbr"
   ],
   "manufacturer": "Daniel Defense",
-  "cartridge_id": "",
+  "cartridge_id": "762x51_nato",
   "note": "Daniel Defense DD5 SBR materials and construction: \"BARREL: DD Proprietary Steel, Cold Hammer Forged, 1:10\\u201d Twist, 12.5\\u2033 S2W Profile, Mid-length Gas System, Chrome Lined\". States a 1 turn in 10 inches twist = 254.0 mm per turn.",
   "values": {
    "cartridge": {
@@ -12379,7 +12800,7 @@
    "dd5v4rifle"
   ],
   "manufacturer": "Daniel Defense",
-  "cartridge_id": "",
+  "cartridge_id": "762x51_nato",
   "note": "Daniel Defense DD5 V4 (7.62 x 51mm) materials and construction: \"BARREL: DD Proprietary Steel, Cold Hammer Forged, 1:8\\\" (6.5 Creedmoor), 1:10\\\" (7.62), 18\\u2033 S2W Profile, Rifle Length, Chrome Lined\". States the 7.62 configuration uses 1 turn in 10 inches twist = 254.0 mm per turn. The 6.5 Creedmoor configuration is 1:8.",
   "values": {
    "cartridge": {
@@ -12541,7 +12962,7 @@
    "defenderhrifle"
   ],
   "manufacturer": "LMT Defense",
-  "cartridge_id": "",
+  "cartridge_id": "762x51_nato",
   "note": "LMT Defender-H 7.62 (MWSDFDR) product page, Details and Specs: \"16\u2033 7.62\u00d751 (.308) Chrome Lined 1:10\u2033 RH Twist Barrel\" and \"Rifling Twist Rate 1:10\"\". 1 turn in 10 in = 254 mm.",
   "values": {
    "cartridge": {
@@ -12589,7 +13010,7 @@
    "delta5"
   ],
   "manufacturer": "Daniel Defense",
-  "cartridge_id": "",
+  "cartridge_id": "65_creedmoor",
   "note": "Delta 5 (United States). Delta 5 bolt-action product page not verified on this retrieval.",
   "values": {
    "cartridge": {
@@ -12704,7 +13125,7 @@
    "iwiimideserteagle44"
   ],
   "manufacturer": "IWI/IMI",
-  "cartridge_id": "",
+  "cartridge_id": "44_remington_magnum",
   "note": "Desert Eagle .44 (Israel). 1 turn in 18 in; polygonal RH",
   "values": {
    "cartridge": {
@@ -12846,7 +13267,7 @@
    "dissipatorsemiautorifle"
   ],
   "manufacturer": "Bushmaster",
-  "cartridge_id": "",
+  "cartridge_id": "556x45_nato",
   "note": "Bushmaster XM-15 Rifles User Manual: \"Barrels on XM15 and Carbon 15 Models are either chrome lined Chrome Moly Vanadium Steel or 416 Stainless Steel. They are usually button rifled 1 turn in 9\" with a right hand twist - 6 lands and grooves.\" The Dissipator is an XM15 E2S 16\" carbine variant, so the XM-15 barrel specification 1 turn in 9 inch = 228.6 mm per turn applies.",
   "values": {
    "cartridge": {
@@ -12935,7 +13356,7 @@
    "vadegtyaryovplantdp27"
   ],
   "manufacturer": "V.A. Degtyaryov Plant",
-  "cartridge_id": "",
+  "cartridge_id": "7_62_x_54_r",
   "note": "DP-27 (Russia). 7.62x54R light machine gun; C.I.P. 240 mm chambering reference.",
   "values": {
    "cartridge": {
@@ -13021,7 +13442,7 @@
    "izhmashkalashnikovconcerndragunov"
   ],
   "manufacturer": "Izhmash / Kalashnikov Concern",
-  "cartridge_id": "",
+  "cartridge_id": "7_62_x_54_r",
   "note": "Dragunov (Russia). Designer surname for the SVD; 7.62x54R, SVD service pitch 320 mm.",
   "values": {
    "cartridge": {
@@ -13081,7 +13502,7 @@
    "dvcsemiauto"
   ],
   "manufacturer": "STI",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "NRA Shooting Sports USA: \"The fully-ramped DVC Steel 9 mm and .38 Super barrels are a 1:16 right hand twist.\" States 1 turn in 16 in = 406.4 mm for the STI DVC Steel 9 mm. STI is defunct; no archived STI catalogue was reachable (Internet Archive CDX/Wayback was offline at retrieval).",
   "values": {
    "cartridge": {
@@ -13129,7 +13550,7 @@
    "rugerec9"
   ],
   "manufacturer": "Ruger",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "EC9 (United States). Current variant of the LC9 line. Twist not stated on the catalogue.",
   "values": {
    "cartridge": {
@@ -13380,7 +13801,7 @@
    "zastavaarmsez40"
   ],
   "manufacturer": "Zastava Arms",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "EZ40 (Serbia). Zastava .40 S&W pistol; no held source states the twist.",
   "values": {
    "cartridge": {
@@ -13401,7 +13822,7 @@
    "zastavaarmsez9"
   ],
   "manufacturer": "Zastava Arms",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "EZ9 (Serbia). Zastava 9x19 pistol.",
   "values": {
    "cartridge": {
@@ -13607,7 +14028,7 @@
    "famasf1assaultrifle"
   ],
   "manufacturer": "GIAT Industries",
-  "cartridge_id": "",
+  "cartridge_id": "556x45_nato",
   "note": "LAI Publications technical study: \"The barrel of the FAMAS F1 is originally intended to fire the F1 ammunition, which is a M193 type (3.5 g). It therefore has a twist rate of 1:305mm (1:12 inches).\" One turn in 12 inches is 12 x 25.4 = 304.8 mm. Groove count is not fixed: the study states early F1 barrels had six grooves and later ones three, so grooves is left null.",
   "values": {
    "cartridge": {
@@ -13641,7 +14062,7 @@
    "famasfelinassaultrifle"
   ],
   "manufacturer": "GIAT Industries",
-  "cartridge_id": "",
+  "cartridge_id": "556x45_nato",
   "note": "Small Arms Review, in its FELIN (low profile FAMAS) section: the FAMAS used with the FELIN system \"had a new one with a 7-inch twist to ensure the compatibility of the ammunition with those of the MINIMI light machine gun\". One turn in 7 inches is 7 x 25.4 = 177.8 mm. Corroborated by barrel makers quoting Beretta-supplied FELIN kit barrels at 1:7 in. Groove count not stated; left null.",
   "values": {
    "cartridge": {
@@ -13669,7 +14090,7 @@
    "famasg2assaultrifle"
   ],
   "manufacturer": "GIAT Industries",
-  "cartridge_id": "",
+  "cartridge_id": "556x45_nato",
   "note": "LAI Publications technical study: \"The G2 barrel allows the firing of the SS-109 ammunition (4 g), with a twist rate of 1:229 mm (1:9 inches). Like the late versions of the F1, the barrel of our study G2 has three grooves.\" One turn in 9 inches is 9 x 25.4 = 228.6 mm, with three grooves.",
   "values": {
    "cartridge": {
@@ -13817,7 +14238,7 @@
    "fnherstalfiveseven"
   ],
   "manufacturer": "FN Herstal",
-  "cartridge_id": "",
+  "cartridge_id": "5_7_x_28",
   "note": "Five-seveN (Belgium). 9.1 in (231 mm) RH",
   "values": {
    "cartridge": {
@@ -14152,7 +14573,7 @@
    "fns40"
   ],
   "manufacturer": "FN Herstal",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "FNS-40 (Belgium). twist not stated",
   "values": {
    "cartridge": {
@@ -14233,7 +14654,7 @@
    "fnx40"
   ],
   "manufacturer": "FN Herstal",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "FNX-40 (Belgium). twist not stated",
   "values": {
    "cartridge": {
@@ -15211,6 +15632,66 @@
   }
  },
  {
+  "weapon_id": "g4",
+  "names": [
+   "Taurus G4"
+  ],
+  "aliases": [
+   "taurusg4"
+  ],
+  "manufacturer": "Taurus",
+  "cartridge_id": "9x19",
+  "note": "G4 (Brazil). twist not stated",
+  "values": {
+   "cartridge": {
+    "value": "9x19mm Parabellum",
+    "unit": "name",
+    "source": "taurus_products",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "g5",
+  "names": [
+   "Heckler & Koch G5"
+  ],
+  "aliases": [
+   "hecklerkochg5"
+  ],
+  "manufacturer": "Heckler & Koch",
+  "cartridge_id": "556x45_nato",
+  "note": "G5 (Germany). G5 export rifle in 5.56x45. No HK pitch published for this pattern.",
+  "values": {
+   "cartridge": {
+    "value": "5.56x45mm NATO",
+    "unit": "name",
+    "source": "hk_catalog_2018",
+    "grade": "documented"
+   }
+  }
+ },
+ {
+  "weapon_id": "g8",
+  "names": [
+   "Heckler & Koch G8"
+  ],
+  "aliases": [
+   "hecklerkochg8"
+  ],
+  "manufacturer": "Heckler & Koch",
+  "cartridge_id": "762x51_nato",
+  "note": "G8 (Germany). G8 heavy-barrel rifle (HK11 family). No pitch stated on the HK sheet.",
+  "values": {
+   "cartridge": {
+    "value": "7.62x51mm NATO",
+    "unit": "name",
+    "source": "hk_catalog_2018",
+    "grade": "documented"
+   }
+  }
+ },
+ {
   "weapon_id": "g82a1",
   "names": [
    "Barrett M107 (Bundeswehr G82A1, supplied by Heckler & Koch)"
@@ -15703,6 +16184,26 @@
   }
  },
  {
+  "weapon_id": "gb",
+  "names": [
+   "Steyr GB"
+  ],
+  "aliases": [
+   "steyrgb"
+  ],
+  "manufacturer": "Steyr",
+  "cartridge_id": "9x19",
+  "note": "GB (Austria). twist not stated",
+  "values": {
+   "cartridge": {
+    "value": "9x19mm Parabellum",
+    "unit": "name",
+    "source": "steyr_gb_manual",
+    "grade": "documented"
+   }
+  }
+ },
+ {
   "weapon_id": "geisselesd",
   "names": [
    "Geissele Automatics Super Duty"
@@ -16088,7 +16589,7 @@
    "l131a1"
   ],
   "manufacturer": "Glock",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "Barrel length 114 mm (4.49 in). Barrel rifling right hand, length of twist 250 mm (9.84 in). The barrel is polygonal so no groove count is given.",
   "values": {
    "cartridge": {
@@ -16155,7 +16656,7 @@
    "mk26"
   ],
   "manufacturer": "",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "Mk 26 (United States). Navy Mk-series history maps Mk 26 to the Glock 26. Glock armorer manual: right hand twist, 1 turn in 9.84 in (250 mm).",
   "values": {
    "cartridge": {
@@ -16530,7 +17031,7 @@
    "kbpinstrumentdesignbureaugsh18"
   ],
   "manufacturer": "KBP Instrument Design Bureau",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "GSh-18 (Russia). 9x19 service pistol.",
   "values": {
    "cartridge": {
@@ -16563,7 +17064,7 @@
    "walthergsp"
   ],
   "manufacturer": "Walther",
-  "cartridge_id": "",
+  "cartridge_id": "22_long_rifle",
   "note": "GSP (Germany). twist not stated",
   "values": {
    "cartridge": {
@@ -16693,7 +17194,7 @@
    "springfieldarmoryhellcatpro"
   ],
   "manufacturer": "Springfield Armory",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "Hellcat Pro (United States). Springfield Armory product page: 9x19mm, twist 1:10.",
   "values": {
    "cartridge": {
@@ -16804,7 +17305,7 @@
    "hipower40"
   ],
   "manufacturer": "FN Herstal",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "Hi-Power .40 (Belgium). LH 1 in 16 in",
   "values": {
    "cartridge": {
@@ -17782,7 +18283,7 @@
    "steyrsteyrhs50"
   ],
   "manufacturer": "Steyr",
-  "cartridge_id": "",
+  "cartridge_id": "50_bmg",
   "note": "HS .50 (Austria). HS .50 listed; no twist published",
   "values": {
    "cartridge": {
@@ -17809,7 +18310,7 @@
    "hti"
   ],
   "manufacturer": "Desert Tech",
-  "cartridge_id": "",
+  "cartridge_id": "50_bmg",
   "note": "HTI (United States). HTI listed; no twist published",
   "values": {
    "cartridge": {
@@ -17927,7 +18428,7 @@
    "mk22mod0"
   ],
   "manufacturer": "",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "Mk 22 Mod 0 (United States). Navy Mk-series history: the Mk 22 Mod 0 was a suppressed S&W Model 39 variant for Naval Special Warfare.",
   "values": {
    "cartridge": {
@@ -18275,7 +18776,7 @@
    "k1a1carbine"
   ],
   "manufacturer": "Daewoo",
-  "cartridge_id": "",
+  "cartridge_id": "556x45_nato",
   "note": "Daewoo AR110C operator's manual, SPECIFICATIONS, barrel rifling: \"number of grooves 6\", \"twist of rifling right hand\", \"pitch of rifling 185mm (7.3\\\")\". The AR-110C is the imported commercial K1A1 (K1 carbine) designation. States 185 mm per turn, right-hand, 6 grooves.",
   "values": {
    "cartridge": {
@@ -18618,7 +19119,7 @@
    "kordheavymachinegun"
   ],
   "manufacturer": "Russian Federation",
-  "cartridge_id": "",
+  "cartridge_id": "12_7_x_108",
   "note": "GunSpec.io entry for the Kord 6P50 (V.A. Degtyarev Plant): \"Barrel Rifling Right Hand Rifling Twist 381 mm (15.00\\\")\" and \"Number of Grooves 8\". States an eight-groove right-hand twist of 381 mm per turn (about 1 turn in 15 inches). The 6P49/6P50/6P51 operating manual confirms the barrel has eight grooves turning left to right, but does not print the pitch.",
   "values": {
    "cartridge": {
@@ -18651,7 +19152,7 @@
    "kp9"
   ],
   "manufacturer": "Kalashnikov USA",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "KP-9 (United States). 9x19 pistol; EPVAT 250 mm chambering reference.",
   "values": {
    "cartridge": {
@@ -18750,7 +19251,7 @@
    "kr9"
   ],
   "manufacturer": "Kalashnikov USA",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "KR-9 (United States). 9x19 carbine.",
   "values": {
    "cartridge": {
@@ -18804,7 +19305,7 @@
    "l129a1sniperrifle"
   ],
   "manufacturer": "Lewis Machine & Tool",
-  "cartridge_id": "",
+  "cartridge_id": "762x51_nato",
   "note": "LMT L129A1 Reference Rifle (LM308SSR) product page, Specifications: \"Rifling Twist Rate 1:11.25\"\" with Caliber \"7.62\u00d751 (.308)\" and Barrel Material \"Stainless Steel (SS)\". 1 turn in 11.25 in = 285.75 mm.",
   "values": {
    "cartridge": {
@@ -19037,7 +19538,7 @@
    "rugerlc9"
   ],
   "manufacturer": "Ruger",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "LC9 (United States). Discontinued compact pistol. Twist not stated on the current catalogue.",
   "values": {
    "cartridge": {
@@ -19058,7 +19559,7 @@
    "rugerlcp"
   ],
   "manufacturer": "Ruger",
-  "cartridge_id": "",
+  "cartridge_id": "380_automatic",
   "note": "LCP (United States). Ruger product line 'LCP', model '*', 380 Auto: twist 16.000 in, 6 grooves.",
   "values": {
    "cartridge": {
@@ -19097,7 +19598,7 @@
    "rugerlcpii"
   ],
   "manufacturer": "Ruger",
-  "cartridge_id": "",
+  "cartridge_id": "22_long_rifle",
   "note": "LCP II (United States). Ruger product line 'LCP II', model '*', 22 LR: twist 16.000 in, 6 grooves.",
   "values": {
    "cartridge": {
@@ -19245,7 +19746,7 @@
    "lm308mwsrifle"
   ],
   "manufacturer": "LMT Defense",
-  "cartridge_id": "",
+  "cartridge_id": "762x51_nato",
   "note": "Small Arms Review, LM308MWS review, states verbatim: \"the chrome lined, chrome moly 1-10\u2033 found on the LM308MWS\", and of the reviewed rifle: \"hard chrome lining over the 1-10\u201d twist rifled bore\", and \"The 1-10 twist rate of the rifle\". Model named in the text. Gives 1 turn in 10 in = 254.0 mm per turn. Specialist trade publication quoting the maker's specification; the stainless LM308SSR barrel is a different model at 1:11.25.",
   "values": {
    "cartridge": {
@@ -19294,7 +19795,7 @@
    "lmtl129a2"
   ],
   "manufacturer": "",
-  "cartridge_id": "",
+  "cartridge_id": "65_creedmoor",
   "note": "L129A2 (). Small Arms Defense Journal (defence publication): the L129A2 is the LMT midlife upgrade of the L129A1 'in 6.5 Creedmoor', and 'The barrel twist is 1:8-inch RH' = 203.2 mm. Chambering changed from 7.62x51mm NATO to 6.5mm Creedmoor.",
   "values": {
    "cartridge": {
@@ -19613,7 +20114,7 @@
    "m07sniperrifle"
   ],
   "manufacturer": "Zastava Arms d.o.o.",
-  "cartridge_id": "",
+  "cartridge_id": "762x51_nato",
   "note": "Zastava Arms Sniper Rifle M07 page, 'Technical characteristics' table, reading across the columns: \"Caliber (mm) 7.62x51 | Twist rate (mm) 254 | Number of grooves 6\". States a 254 mm per turn (1 turn in 10 inches) twist with 6 grooves for the 7.62x51 mm chambering. The related M07 AS and M07 M pages give the same 254 mm / 6 grooves for 7.62x51 mm.",
   "values": {
    "cartridge": {
@@ -19638,6 +20139,26 @@
     "value": 5.4,
     "unit": "kg",
     "source": "zastava_m07",
+    "grade": "documented"
+   }
+  }
+ },
+ {
+  "weapon_id": "m1",
+  "names": [
+   "Benelli M1 Super 90"
+  ],
+  "aliases": [
+   "benellim1"
+  ],
+  "manufacturer": "Benelli",
+  "cartridge_id": "12_gauge",
+  "note": "M1 (Italy). smoothbore",
+  "values": {
+   "cartridge": {
+    "value": "12 gauge",
+    "unit": "name",
+    "source": "benelli_m1_manual",
     "grade": "documented"
    }
   }
@@ -19673,7 +20194,7 @@
    "m107m82longrangesniperrifle"
   ],
   "manufacturer": "Barrett",
-  "cartridge_id": "",
+  "cartridge_id": "50_bmg",
   "note": "M107A1 barrel 29 in (737 mm) with a 1:15 in twist (381 mm). The M107A1 CQ variant has a 20.6 in barrel with the same twist.",
   "values": {
    "cartridge": {
@@ -19701,7 +20222,7 @@
    "m107a1"
   ],
   "manufacturer": "Barrett",
-  "cartridge_id": "",
+  "cartridge_id": "50_bmg",
   "note": "M107A1 (United States). M107A1 spec table .50 BMG 1:15",
   "values": {
    "cartridge": {
@@ -19733,7 +20254,7 @@
    "m11"
   ],
   "manufacturer": "",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "M11 (United States). SIG classic-pistol manual documents the P228; the P228 is the weapon designated M11. No twist stated in the manual.",
   "values": {
    "cartridge": {
@@ -20230,7 +20751,7 @@
    "m17ssemiautobullpuprifle"
   ],
   "manufacturer": "Bushmaster",
-  "cartridge_id": "",
+  "cartridge_id": "556x45_nato",
   "note": "Bushmaster M17S Bullpup Rifle catalogue page specification table: \"Caliber .223 Rem.\", \"Barrel Length 21.5 inches\", \"Rifling R.H. twist;1 turn in 9\"\". The FAQ page for the same rifle states \"Rifling: 6 grooves / R.H. twist / 1 turn in 9 inches\". States a right-hand 1 turn in 9 inch twist with 6 grooves = 228.6 mm per turn.",
   "values": {
    "cartridge": {
@@ -20262,7 +20783,7 @@
    "m18"
   ],
   "manufacturer": "",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "M18 (United States). SIG product page: the M18 is the compact MHS pistol on the P320 platform.",
   "values": {
    "cartridge": {
@@ -21014,6 +21535,26 @@
   }
  },
  {
+  "weapon_id": "m2",
+  "names": [
+   "Benelli M2"
+  ],
+  "aliases": [
+   "benellim2"
+  ],
+  "manufacturer": "Benelli",
+  "cartridge_id": "12_gauge",
+  "note": "M2 (Italy). smoothbore",
+  "values": {
+   "cartridge": {
+    "value": "12 gauge",
+    "unit": "name",
+    "source": "benelli_m2_manual",
+    "grade": "documented"
+   }
+  }
+ },
+ {
   "weapon_id": "m200",
   "names": [
    "M200 service revolver, 6-shot, 4\" barrel, fixed sights"
@@ -21607,7 +22148,7 @@
    "m2browning"
   ],
   "manufacturer": "",
-  "cartridge_id": "",
+  "cartridge_id": "50_bmg",
   "note": "L111A1 (). Army: 'The powerful L111A1 12.7mm (.50) Heavy Machine Gun (HMG) is an updated version of the Browning M2 Fifty-cal'. RAF: 'Heavy Machine Gun (L111A1)'. US Army TM 9-1005-213-10 tabulated data: 'one turn in 15 in' = 381.0 mm, 8 lands and grooves.",
   "values": {
    "cartridge": {
@@ -21647,6 +22188,26 @@
     "unit": "m per turn",
     "source": "inland_m1",
     "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "m3",
+  "names": [
+   "Benelli M3 Super 90"
+  ],
+  "aliases": [
+   "benellim3"
+  ],
+  "manufacturer": "Benelli",
+  "cartridge_id": "12_gauge",
+  "note": "M3 (Italy). smoothbore",
+  "values": {
+   "cartridge": {
+    "value": "12 gauge",
+    "unit": "name",
+    "source": "benelli_m3_manual",
+    "grade": "documented"
    }
   }
  },
@@ -21784,7 +22345,7 @@
    "tulaizhevskarsenalsm38"
   ],
   "manufacturer": "Tula / Izhevsk arsenals",
-  "cartridge_id": "",
+  "cartridge_id": "7_62_x_54_r",
   "note": "M38 (Russia). 7.62x54R; C.I.P. TDCC 240 mm, 4 grooves.",
   "values": {
    "cartridge": {
@@ -22113,7 +22674,7 @@
    "tulaizhevskarsenalsm44"
   ],
   "manufacturer": "Tula / Izhevsk arsenals",
-  "cartridge_id": "",
+  "cartridge_id": "7_62_x_54_r",
   "note": "M44 (Russia). 7.62x54R; C.I.P. TDCC 240 mm, 4 grooves.",
   "values": {
    "cartridge": {
@@ -22203,6 +22764,33 @@
   }
  },
  {
+  "weapon_id": "m4_2",
+  "names": [
+   "Colt M4"
+  ],
+  "aliases": [
+   "m4",
+   "m4_2"
+  ],
+  "manufacturer": "",
+  "cartridge_id": "556x45_nato",
+  "note": "M4 (United States). TM 9-1005-319-10 covers the M4 carbine; same 1 turn in 7 in barrel.",
+  "values": {
+   "cartridge": {
+    "value": "5.56x45mm NATO",
+    "unit": "name",
+    "source": "tm_9_1005_319_10",
+    "grade": "documented"
+   },
+   "twist_m": {
+    "value": 0.1778,
+    "unit": "m per turn",
+    "source": "tm_9_1005_319_10",
+    "grade": "documented"
+   }
+  }
+ },
+ {
   "weapon_id": "m4a1",
   "names": [
    "M4A1 Carbine"
@@ -22263,6 +22851,7 @@
   ],
   "aliases": [
    "coltm4carbine",
+   "m4",
    "m4carbine"
   ],
   "manufacturer": "Colt",
@@ -22724,6 +23313,24 @@
   }
  },
  {
+  "weapon_id": "m7",
+  "names": [
+   "SIG SAUER M7 (MCX-SPEAR)"
+  ],
+  "aliases": [],
+  "manufacturer": "",
+  "cartridge_id": "",
+  "note": "M7 (United States). Adopted US Army designation of the XM7.",
+  "values": {
+   "cartridge": {
+    "value": "6.8x51mm",
+    "unit": "name",
+    "source": "sig_mcx_spear",
+    "grade": "documented"
+   }
+  }
+ },
+ {
   "weapon_id": "m70",
   "names": [
    "Zastava M70"
@@ -22919,7 +23526,7 @@
    "zastavaarmsm77"
   ],
   "manufacturer": "Zastava Arms",
-  "cartridge_id": "",
+  "cartridge_id": "7_62_x_54_r",
   "note": "M77 (Serbia). Zastava page lists 7.62x39 / 7.62x51 / 7.62x54R in the M77 family; 7.62x54R row, C.I.P. 240 mm.",
   "values": {
    "cartridge": {
@@ -23045,7 +23652,7 @@
    "m82"
   ],
   "manufacturer": "Barrett",
-  "cartridge_id": "",
+  "cartridge_id": "50_bmg",
   "note": "M82 (United States). Model 82A1 spec table .50 BMG 1:15",
   "values": {
    "cartridge": {
@@ -23073,7 +23680,7 @@
    "m82a1"
   ],
   "manufacturer": "Barrett",
-  "cartridge_id": "",
+  "cartridge_id": "50_bmg",
   "note": "M82A1 (United States). Model 82A1 spec table .50 BMG 1:15",
   "values": {
    "cartridge": {
@@ -23122,7 +23729,7 @@
    "zastavaarmsm87"
   ],
   "manufacturer": "Zastava Arms",
-  "cartridge_id": "",
+  "cartridge_id": "12_7_x_108",
   "note": "M87 (Serbia). Zastava heavy machine gun; no held source states the twist.",
   "values": {
    "cartridge": {
@@ -23130,6 +23737,44 @@
     "unit": "name",
     "source": "zastava_arms_rifles",
     "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "m9",
+  "names": [
+   "Beretta M9"
+  ],
+  "aliases": [
+   "berettam9"
+  ],
+  "manufacturer": "Beretta",
+  "cartridge_id": "9x19",
+  "note": "M9 (Italy). US service designation",
+  "values": {
+   "cartridge": {
+    "value": "9x19mm Parabellum",
+    "unit": "name",
+    "source": "beretta_m9_tm",
+    "grade": "documented"
+   },
+   "twist_m": {
+    "value": 0.25,
+    "unit": "m per turn",
+    "source": "beretta_m9_tm",
+    "grade": "documented"
+   },
+   "grooves": {
+    "value": 6,
+    "unit": "count",
+    "source": "beretta_m9_tm",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.96,
+    "unit": "kg",
+    "source": "beretta_m9_tm",
+    "grade": "documented"
    }
   }
  },
@@ -23176,7 +23821,7 @@
    "zastavaarmsm91"
   ],
   "manufacturer": "Zastava Arms",
-  "cartridge_id": "",
+  "cartridge_id": "7_62_x_54_r",
   "note": "M91 (Serbia). Zastava 7.62x54R marksman rifle; C.I.P. 240 mm.",
   "values": {
    "cartridge": {
@@ -23248,7 +23893,7 @@
    "zastavaarmsm93"
   ],
   "manufacturer": "Zastava Arms",
-  "cartridge_id": "",
+  "cartridge_id": "12_7_x_108",
   "note": "M93 (Serbia). Zastava M93 Black Arrow anti-materiel rifle; no held source states the twist.",
   "values": {
    "cartridge": {
@@ -23276,7 +23921,7 @@
    "m95"
   ],
   "manufacturer": "Barrett",
-  "cartridge_id": "",
+  "cartridge_id": "50_bmg",
   "note": "M95 (United States). Model 95 spec table .50 BMG 1:15",
   "values": {
    "cartridge": {
@@ -23352,7 +23997,7 @@
    "m99"
   ],
   "manufacturer": "Barrett",
-  "cartridge_id": "",
+  "cartridge_id": "50_bmg",
   "note": "M99 (United States). Model 99 spec table .50 BMG 1:15",
   "values": {
    "cartridge": {
@@ -23583,10 +24228,11 @@
   ],
   "aliases": [
    "izhmashmakarovpm",
-   "makarovpm"
+   "makarovpm",
+   "pm"
   ],
   "manufacturer": "Izhmash",
-  "cartridge_id": "",
+  "cartridge_id": "9x18_makarov",
   "note": "Makarov PM (Russia). Same weapon as PM.",
   "values": {
    "cartridge": {
@@ -23667,7 +24313,7 @@
    "steyrmannlicherm1888"
   ],
   "manufacturer": "Steyr",
-  "cartridge_id": "",
+  "cartridge_id": "8_x_50_r",
   "note": "Mannlicher M1888 (Austria). twist not stated",
   "values": {
    "cartridge": {
@@ -23694,7 +24340,7 @@
    "steyrmannlicherm1890"
   ],
   "manufacturer": "Steyr",
-  "cartridge_id": "",
+  "cartridge_id": "8_x_50_r",
   "note": "Mannlicher M1890 (Austria). twist not stated",
   "values": {
    "cartridge": {
@@ -23715,7 +24361,7 @@
    "steyrmannlicherm1895"
   ],
   "manufacturer": "Steyr",
-  "cartridge_id": "",
+  "cartridge_id": "8_x_50_r",
   "note": "Mannlicher M1895 (Austria). twist not stated",
   "values": {
    "cartridge": {
@@ -23768,7 +24414,7 @@
    "rugermarki"
   ],
   "manufacturer": "Ruger",
-  "cartridge_id": "",
+  "cartridge_id": "22_long_rifle",
   "note": "Mark I (United States). Pre-Mark II rimfire pistol. Twist not stated on the current catalogue.",
   "values": {
    "cartridge": {
@@ -23789,7 +24435,7 @@
    "rugermarkii"
   ],
   "manufacturer": "Ruger",
-  "cartridge_id": "",
+  "cartridge_id": "22_long_rifle",
   "note": "Mark II (United States). Discontinued rimfire pistol. Twist not stated on the current catalogue.",
   "values": {
    "cartridge": {
@@ -23810,7 +24456,7 @@
    "rugermarkiii"
   ],
   "manufacturer": "Ruger",
-  "cartridge_id": "",
+  "cartridge_id": "22_long_rifle",
   "note": "Mark III (United States). Discontinued rimfire pistol. Twist not stated on the current catalogue.",
   "values": {
    "cartridge": {
@@ -23831,7 +24477,7 @@
    "rugermarkiv"
   ],
   "manufacturer": "Ruger",
-  "cartridge_id": "",
+  "cartridge_id": "22_long_rifle",
   "note": "Mark IV (United States). Ruger product line 'Mark IV', model 'Standard', 22 LR: twist 16.000 in, 6 grooves.",
   "values": {
    "cartridge": {
@@ -23870,7 +24516,7 @@
    "rugermarkivtarget"
   ],
   "manufacturer": "Ruger",
-  "cartridge_id": "",
+  "cartridge_id": "22_long_rifle",
   "note": "Mark IV Target (United States). Ruger product line 'Mark IV', model 'Target', 22 LR: twist 16.000 in, 6 grooves.",
   "values": {
    "cartridge": {
@@ -23922,6 +24568,34 @@
   }
  },
  {
+  "weapon_id": "marlin60",
+  "names": [
+   "Marlin 60"
+  ],
+  "aliases": [
+   "60",
+   "marlin60",
+   "marlinmarlin60"
+  ],
+  "manufacturer": "Marlin",
+  "cartridge_id": "22_long_rifle",
+  "note": "60 (United States). Marlin .22 LR barrels 1:16",
+  "values": {
+   "cartridge": {
+    "value": ".22 Long Rifle",
+    "unit": "name",
+    "source": "marlin_70pss_archived",
+    "grade": "documented"
+   },
+   "twist_m": {
+    "value": 0.4064,
+    "unit": "m per turn",
+    "source": "marlin_70pss_archived",
+    "grade": "documented"
+   }
+  }
+ },
+ {
   "weapon_id": "marsh",
   "names": [
    "MARS-H 7.62 NATO"
@@ -23931,7 +24605,7 @@
    "marsh762nato"
   ],
   "manufacturer": "LMT Defense",
-  "cartridge_id": "",
+  "cartridge_id": "762x51_nato",
   "note": "LMT MARS-H 7.62 (MLKMWS-MARS) product page: \"16\u2033 7.62\u00d751 (.308) Chrome Lined 1:10\u2033 RH Twist Barrel\" and Specs \"Rifling Twist Rate 1:10\"\". 1 turn in 10 in = 254 mm.",
   "values": {
    "cartridge": {
@@ -23985,7 +24659,7 @@
    "marsh308rifle"
   ],
   "manufacturer": "LMT Defense",
-  "cartridge_id": "",
+  "cartridge_id": "762x51_nato",
   "note": "Specification table row: 'Rifling Twist Rate  1:10\"'. The Details text states '13.5\" 7.62x51 (.308) Light Weight Chrome Lined 1:10\" RH Twist Barrel w/ Pinned LMT 3-Prong Flash Hider'. 1 turn in 10 in = 254.0 mm. This is the 13.5 in MARS-H configuration; LMT lists 1:10 as the platform twist.",
   "values": {
    "cartridge": {
@@ -24151,7 +24825,7 @@
    "mc14tipat"
   ],
   "manufacturer": "Girsan",
-  "cartridge_id": "",
+  "cartridge_id": "380_automatic",
   "note": "Verbatim maker line: \"Rifling : Right Hand 6 Unit(250 mm)\" (page states \"Caliber : .380ACP\"). The listed name 'MC 14 Tipat' matches no separate Girsan designation; the .380 ACP Girsan MC 14 is published here as 250 mm / 6 grooves right hand. The MC 14 T tip-up variant has no separately published rifling.",
   "values": {
    "cartridge": {
@@ -24300,7 +24974,7 @@
    "mcxrattler55sbr"
   ],
   "manufacturer": "SIG Sauer Inc. (USA)",
-  "cartridge_id": "",
+  "cartridge_id": "556x45_nato",
   "note": "SIG Sauer factory specification for the 5.5 in .300 BLK Rattler, verbatim: \"Barrel Length: 5.5 in (140 mm) ... Twist Rate: 1:5\". 1 turn in 5 inches = 127.0 mm per turn. Corroborated by SIG Sauer's own MCX-RATTLER LT product page, which lists the .300 BLK Rattler twist as 1:5 (archived: https://web.archive.org/web/20231116221830id_/https://www.sigsauer.com/mcx-rattler-lt.html).",
   "values": {
    "cartridge": {
@@ -24382,7 +25056,7 @@
    "sigsauermcxspeardmr"
   ],
   "manufacturer": "SIG Sauer",
-  "cartridge_id": "",
+  "cartridge_id": "762x51_nato",
   "note": "MCX SPEAR DMR (United States). SIG 2023 catalog MCX SPEAR DMR: TWIST RATE 1:10 in right hand / 1:254 mm right hand.",
   "values": {
    "cartridge": {
@@ -24409,7 +25083,7 @@
    "mcxspearltcommercial308lightweight"
   ],
   "manufacturer": "Sig Sauer",
-  "cartridge_id": "",
+  "cartridge_id": "762x51_nato",
   "note": "Maker spec table lists the 16 in 7.62x51 barrel row as: \"7.62x51 16 in [406.4 mm] Cold Hammer Forged Steel 1:10\". States a 1:10 in twist = 254.0 mm for the .308/7.62x51 MCX-SPEAR. Note: SIG's MCX-SPEAR-LT line is catalogued in 5.56, 7.62x39 and .300 BLK; the 7.62x51 chambering is the MCX-SPEAR, so the .308 twist is taken from that maker row.",
   "values": {
    "cartridge": {
@@ -24834,7 +25508,7 @@
    "micro"
   ],
   "manufacturer": "Kimber",
-  "cartridge_id": "",
+  "cartridge_id": "380_automatic",
   "note": "Micro (United States). Micro line. Twist not stated on the product pages retrieved.",
   "values": {
    "cartridge": {
@@ -24854,7 +25528,7 @@
    "microdeserteagle"
   ],
   "manufacturer": "Magnum Research",
-  "cartridge_id": "",
+  "cartridge_id": "380_automatic",
   "note": "Verbatim spec: \"Barrel : 3.0\u201d, Nickel Teflon, Conventional Rifling, 1 - 16 right-hand twist\". 16 in = 406.4 mm. Manual elsewhere says \"polygonal rifling\" for the M380; no groove count is published.",
   "values": {
    "cartridge": {
@@ -25205,7 +25879,7 @@
    "mk11sniperrifle"
   ],
   "manufacturer": "Knight's Armament",
-  "cartridge_id": "",
+  "cartridge_id": "762x51_nato",
   "note": "Operator's Manual, section II \u2014 Navy: Mk 11 Mod 0 equipment description, para 1-7: \u00abBarrel Rifling and Twist: 20\u201d barrel with 5 grooves, right-hand twist with 1 turn in 11 inches (279 mm).\u00bb Also \u00abBarrel Length: 20\" (508 mm)\u00bb. States the Mk 11 Mod 0 has a 20 inch (508 mm) barrel with 5 grooves, right-hand twist, 1 turn in 11 inches = 279 mm per turn.",
   "values": {
    "cartridge": {
@@ -25244,7 +25918,7 @@
    "mk11mod0dmr"
   ],
   "manufacturer": "Knight's Armament Co",
-  "cartridge_id": "",
+  "cartridge_id": "762x51_nato",
   "note": "KAC factory military operator's manual for the Mk 11 Mod 0, Section II-Navy: Mk 11 Mod 0 Equipment Description reads verbatim: \"Barrel Rifling and Twist: 20\" barrel with 5 grooves, right-hand twist with 1 turn in 11 inches (279 mm).\" Gives 1 turn in 11 in = 279.4 mm per turn, five grooves, right-hand. The corpus lead of 285.8 mm (1:11.25) is not supported by this maker document.",
   "values": {
    "cartridge": {
@@ -25690,7 +26364,7 @@
    "model1900"
   ],
   "manufacturer": "FN Herstal",
-  "cartridge_id": "",
+  "cartridge_id": "32_acp",
   "note": "Model 1900 (Belgium). twist not stated",
   "values": {
    "cartridge": {
@@ -25750,7 +26424,7 @@
    "smithwessonmodel41"
   ],
   "manufacturer": "Smith & Wesson",
-  "cartridge_id": "",
+  "cartridge_id": "22_long_rifle",
   "note": "Model 41 (United States). Target rimfire pistol. Twist not stated on the catalogue pages retrieved.",
   "values": {
    "cartridge": {
@@ -25803,7 +26477,7 @@
    "model52"
   ],
   "manufacturer": "Winchester",
-  "cartridge_id": "",
+  "cartridge_id": "22_long_rifle",
   "note": "Winchester-Western Firearms Catalog 1965, \"MODEL 52D TARGET RIFLE SPECIFICATIONS\" table: \"Rate of Twist* 16\" 16\" / One turn in\". The maker's own catalog lists the Model 52D (the Model 52 target rifle then in production) at one turn in 16 inches. A 1 turn in 16 inch twist = 16 x 25.4 = 406.4 mm per turn. Groove count is not stated in this table.",
   "values": {
    "cartridge": {
@@ -25830,7 +26504,7 @@
    "smithwessonmodel617"
   ],
   "manufacturer": "Smith & Wesson",
-  "cartridge_id": "",
+  "cartridge_id": "22_long_rifle",
   "note": "Model 617 (United States). Model 617 Mountain Gun product page: 1 in 15 twist (differs from the .22 LR reference 406.4 mm).",
   "values": {
    "cartridge": {
@@ -25890,7 +26564,7 @@
    "model629nframerevolver"
   ],
   "manufacturer": "Smith & Wesson",
-  "cartridge_id": "",
+  "cartridge_id": "44_remington_magnum",
   "note": "Manufacturer specification sheet, 'SPECIAL MAKE-UP MODEL 629': 'Chambered in .44 Magnum with a 6.5\" barrel' and the Barrel cell '1:20\" Twist rate'. 1 turn in 20 in = 508.0 mm. The sheet covers a Model 629 (engraved), .44 Magnum, 6.5 in barrel, which matches this entry. Groove count not stated.",
   "values": {
    "cartridge": {
@@ -25943,7 +26617,7 @@
    "model69"
   ],
   "manufacturer": "Winchester",
-  "cartridge_id": "",
+  "cartridge_id": "22_long_rifle",
   "note": "Collector forum post quoting a Winchester factory specification sheet: \"I have a Winchester document dated 8/2/1957 which lists the 69A chambered for the 22 short, long and long rifle at 1-16, bore dia of .217\\\" and 4 groove.\" The quoted maker's figure states one turn in 16 inches and 4 grooves for the Model 69/69A. A 1 turn in 16 inch twist = 16 x 25.4 = 406.4 mm per turn. Source is a forum transcription of the Winchester document, not the document itself.",
   "values": {
    "cartridge": {
@@ -26161,7 +26835,7 @@
    "tulaizhevskarsenalsmosinm9130"
   ],
   "manufacturer": "Tula / Izhevsk arsenals",
-  "cartridge_id": "",
+  "cartridge_id": "7_62_x_54_r",
   "note": "Mosin M91/30 (Russia). 7.62x54R; C.I.P. TDCC 240 mm, 4 grooves.",
   "values": {
    "cartridge": {
@@ -26264,7 +26938,7 @@
    "smithwessonmp10"
   ],
   "manufacturer": "Smith & Wesson",
-  "cartridge_id": "",
+  "cartridge_id": "65_creedmoor",
   "note": "M&P10 (United States). M&P10 6.5 Creedmoor product page: 1 in 8 RH twist.",
   "values": {
    "cartridge": {
@@ -26318,7 +26992,7 @@
    "smithwessonmp1522"
   ],
   "manufacturer": "Smith & Wesson",
-  "cartridge_id": "",
+  "cartridge_id": "22_long_rifle",
   "note": "M&P15-22 (United States). M&P15-22 product page states the caliber; twist not stated on the page retrieved.",
   "values": {
    "cartridge": {
@@ -26359,7 +27033,7 @@
    "smithwessonmp20"
   ],
   "manufacturer": "Smith & Wesson",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "M&P 2.0 (United States). M&P M2.0 family. Twist varies by caliber and model; see the M&P9/M&P40/M&P45 rows.",
   "values": {
    "cartridge": {
@@ -26405,7 +27079,7 @@
    "mp43"
   ],
   "manufacturer": "",
-  "cartridge_id": "",
+  "cartridge_id": "7_92_x_33_kurz",
   "note": "MP43 (Germany). Catalog of Enemy Ordnance Materiel (US Army, 1945): 'Submachine Gun, M. P. 43' and '7.92 mm ... M. P. 43; M. P. 43/1; Sturmgewehr 44'. TM-E 30-451 also describes the MP. 43/1. No twist is stated.",
   "values": {
    "cartridge": {
@@ -26425,7 +27099,7 @@
    "mp431"
   ],
   "manufacturer": "",
-  "cartridge_id": "",
+  "cartridge_id": "7_92_x_33_kurz",
   "note": "MP43/1 (Germany). Catalog of Enemy Ordnance Materiel (1945): 'The various models of this weapon, including the M. P. 43, M. P. 43/1, and M. P. 44, have been officially designated M. P. 44.' No twist is stated.",
   "values": {
    "cartridge": {
@@ -26445,7 +27119,7 @@
    "mp44"
   ],
   "manufacturer": "",
-  "cartridge_id": "",
+  "cartridge_id": "7_92_x_33_kurz",
   "note": "MP44 (Germany). Catalog of Enemy Ordnance Materiel (1945): the MP. 43, MP. 43/1 and MP. 44 were 'officially designated M. P. 44'; 'A recent official German order changed the nomenclature to Sturmgewehr 44.' No twist is stated.",
   "values": {
    "cartridge": {
@@ -26466,7 +27140,7 @@
    "mp443grach"
   ],
   "manufacturer": "Izhmash",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "MP-443 Grach (Russia). Service designation of the PYa; 9x19.",
   "values": {
    "cartridge": {
@@ -26555,7 +27229,7 @@
    "mp5submachinegun"
   ],
   "manufacturer": "Heckler & Koch",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "Barrel 8.85 in (225 mm). 6 grooves, right hand, 1 turn in 9.86 in (250.4 mm).",
   "values": {
    "cartridge": {
@@ -26607,7 +27281,7 @@
    "mp540"
   ],
   "manufacturer": "",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "MP5/40 (Germany). MP5 family document references the MP5/40 (.40 S&W). No twist length is published.",
   "values": {
    "cartridge": {
@@ -27177,7 +27851,7 @@
    "mp7personaldefenceweapon"
   ],
   "manufacturer": "Heckler & Koch",
-  "cartridge_id": "",
+  "cartridge_id": "4_6_x_30",
   "note": "Barrel 180 mm. The bore is a polygonal profile with 6 twist lines, right hand. The sheet does not state a pitch in mm. Twist not verified. HK Product Catalog 2009, MP7A1 description: \"7-inch cold-hammer forged barrel with right hand twist rifling (1 turn in 6.3 inches)\". A 1 turn in 6.3 inch twist = 6.3 x 25.4 = 160.0 mm per turn.",
   "values": {
    "cartridge": {
@@ -27203,7 +27877,7 @@
    "mp7a1"
   ],
   "manufacturer": "",
-  "cartridge_id": "",
+  "cartridge_id": "4_6_x_30",
   "note": "MP7A1 (Germany). HK MP7A1 technical data (4.6 mm x 30). Twist 1 turn in 6.3 in = 160.0 mm from HK Product Catalog 2009; differs from the 4.6x30 standard (150 mm).",
   "values": {
    "cartridge": {
@@ -27235,7 +27909,7 @@
    "mp7a2"
   ],
   "manufacturer": "",
-  "cartridge_id": "",
+  "cartridge_id": "4_6_x_30",
   "note": "MP7A2 (Germany). HK MP7 product page lists the MP7 A1 and MP7 A2 variants. Twist as MP7 (1 turn in 6.3 in = 160.0 mm, HK Product Catalog 2009); differs from the 4.6x30 standard (150 mm).",
   "values": {
    "cartridge": {
@@ -27370,7 +28044,7 @@
    "mpl"
   ],
   "manufacturer": "Kalashnikov Concern",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "MPL (Russia). Maker: Lebedev modular pistol, 9x19.",
   "values": {
    "cartridge": {
@@ -27403,7 +28077,7 @@
    "mpl1"
   ],
   "manufacturer": "Kalashnikov Concern",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "MPL-1 (Russia). Maker: Lebedev modular pistol, 9x19.",
   "values": {
    "cartridge": {
@@ -27436,7 +28110,7 @@
    "smithwessonmpshield"
   ],
   "manufacturer": "Smith & Wesson",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "M&P Shield (United States). Shield Plus product page states the caliber; twist not stated on the page retrieved.",
   "values": {
    "cartridge": {
@@ -27921,7 +28595,7 @@
    "msbsgrotccarbine"
   ],
   "manufacturer": "FB \"Lucznik\" Radom",
-  "cartridge_id": "",
+  "cartridge_id": "556x45_nato",
   "note": "FB \"Lucznik\" Radom (Fabryka Broni) official MSBS GROT Technical data: \"Barrel length: 406 mm\" and \"Number and twist rate of grooves: 6 / 178mm\". The Grot C16 carbine barrel length matches this entry. States a 178 mm per turn twist (approximately 1 turn in 7 inch) with six grooves.",
   "values": {
    "cartridge": {
@@ -28020,7 +28694,7 @@
    "msbsgrotrrifle"
   ],
   "manufacturer": "FB \"Lucznik\" Radom",
-  "cartridge_id": "",
+  "cartridge_id": "556x45_nato",
   "note": "FB \"Lucznik\" Radom (Fabryka Broni) official MSBS GROT Technical data: \"Barrel length: 406 mm\" and \"Number and twist rate of grooves: 6 / 178mm\". The Grot R service rifle shares this 406 mm barrel and twist. States a 178 mm per turn twist (approximately 1 turn in 7 inch) with six grooves.",
   "values": {
    "cartridge": {
@@ -28099,7 +28773,7 @@
    "mustang"
   ],
   "manufacturer": "Colt",
-  "cartridge_id": "",
+  "cartridge_id": "380_automatic",
   "note": "Mustang (United States). Colt Mustang pocket pistol. Twist not stated on the current Colt product pages.",
   "values": {
    "cartridge": {
@@ -28285,6 +28959,32 @@
   }
  },
  {
+  "weapon_id": "n6",
+  "names": [
+   "Noveske N6"
+  ],
+  "aliases": [
+   "noveskerifleworksn6"
+  ],
+  "manufacturer": "Noveske Rifleworks",
+  "cartridge_id": "762x51_nato",
+  "note": "N6 (United States). N6 Large Marge product page: 1:8 twist.",
+  "values": {
+   "cartridge": {
+    "value": "7.62x51mm NATO",
+    "unit": "name",
+    "source": "nov_n6_micro_switchblock_leonidas_12_5_3",
+    "grade": "claimed"
+   },
+   "twist_m": {
+    "value": 0.2032,
+    "unit": "m per turn",
+    "source": "nov_n6_micro_switchblock_leonidas_12_5_3",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "weapon_id": "n9crybaby",
   "names": [
    "Noveske N9 Cry Baby"
@@ -28294,7 +28994,7 @@
    "noveskerifleworksn9crybaby"
   ],
   "manufacturer": "Noveske Rifleworks",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "N9 Cry Baby (United States). N9 CRY BABY product page: 1:12 twist (differs from the 9x19 reference 254.0 mm).",
   "values": {
    "cartridge": {
@@ -28807,7 +29507,7 @@
    "np22"
   ],
   "manufacturer": "Norinco",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "NP-22 (China). 9x19 export pistol.",
   "values": {
    "cartridge": {
@@ -28840,7 +29540,7 @@
    "np29"
   ],
   "manufacturer": "Norinco",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "NP-29 (China). 9x19 export pistol.",
   "values": {
    "cartridge": {
@@ -28874,7 +29574,7 @@
    "nsvutesheavymachinegun"
   ],
   "manufacturer": "Russian Federation",
-  "cartridge_id": "",
+  "cartridge_id": "12_7_x_108",
   "note": "Weaponsystems.net NSV entry, specification table: \"Rifling 8 grooves, 381 mm right hand twist\". States an eight-groove right-hand twist of 381 mm per turn (about 1 turn in 15 inches).",
   "values": {
    "cartridge": {
@@ -29006,7 +29706,7 @@
    "ots14groza9x39"
   ],
   "manufacturer": "KBP Instrument Design Bureau",
-  "cartridge_id": "",
+  "cartridge_id": "9_x_39",
   "note": "OTs-14 Groza (9x39) (Russia). 9x39 variant; no held source states a weapon twist.",
   "values": {
    "cartridge": {
@@ -29027,13 +29727,33 @@
    "ots33"
   ],
   "manufacturer": "KBP Instrument Design Bureau",
-  "cartridge_id": "",
+  "cartridge_id": "9x18_makarov",
   "note": "OTs-33 (Russia). 9x18 machine pistol; no held source states the twist.",
   "values": {
    "cartridge": {
     "value": "9x18mm Makarov",
     "unit": "name",
     "source": "roe_small_arms",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "p1",
+  "names": [
+   "Grand Power P1"
+  ],
+  "aliases": [
+   "grandpowerp1"
+  ],
+  "manufacturer": "Grand Power",
+  "cartridge_id": "9x19",
+  "note": "P1 (Slovakia). twist not stated",
+  "values": {
+   "cartridge": {
+    "value": "9x19mm Parabellum",
+    "unit": "name",
+    "source": "grandpower_products",
     "grade": "claimed"
    }
   }
@@ -29239,7 +29959,7 @@
    "waltherp22"
   ],
   "manufacturer": "Walther",
-  "cartridge_id": "",
+  "cartridge_id": "22_long_rifle",
   "note": "P22 (Germany). twist not stated",
   "values": {
    "cartridge": {
@@ -29320,7 +30040,7 @@
    "sigsauerp224"
   ],
   "manufacturer": "SIG Sauer",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "P224 (Germany/Switzerland). P224 subcompact. SIG Classic Manual P229 .40 S&W column applies to the P224 barrel: 1 in 15 in = 381.0 mm.",
   "values": {
    "cartridge": {
@@ -29374,7 +30094,7 @@
    "p226pistol"
   ],
   "manufacturer": "SIG Sauer",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "Barrel 112 mm. Rifling lead 250 mm for the 9 mm chambering. The manual does not state the groove count.",
   "values": {
    "cartridge": {
@@ -29440,7 +30160,7 @@
    "sigsauerp22640"
   ],
   "manufacturer": "SIG Sauer",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "P226-40 (Germany/Switzerland). SIG Classic Manual 12.8 P226 .40 S&W column: 1 in 15 in = 381.0 mm, 6 grooves.",
   "values": {
    "cartridge": {
@@ -29606,7 +30326,7 @@
    "sigsauerp22940"
   ],
   "manufacturer": "SIG Sauer",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "P229-40 (Germany/Switzerland). SIG Classic Manual 12.12 P229 .40 S&W column: 1 in 15 in = 381.0 mm, 6 grooves. (The separate 12.14 P229 Carry table lists .40 S&W as 1:16 LH; the standard P229 .40 S&W barrel is 1 in 15 in.)",
   "values": {
    "cartridge": {
@@ -29639,7 +30359,7 @@
    "waltherp22q"
   ],
   "manufacturer": "Walther",
-  "cartridge_id": "",
+  "cartridge_id": "22_long_rifle",
   "note": "P22Q (Germany). twist not stated",
   "values": {
    "cartridge": {
@@ -29660,7 +30380,7 @@
    "sigsaueragswitzerlandp230"
   ],
   "manufacturer": "SIG Sauer AG (Switzerland)",
-  "cartridge_id": "",
+  "cartridge_id": "380_automatic",
   "note": "P230 (Switzerland). twist not stated",
   "values": {
    "cartridge": {
@@ -29681,7 +30401,7 @@
    "sigsaueragswitzerlandp232"
   ],
   "manufacturer": "SIG Sauer AG (Switzerland)",
-  "cartridge_id": "",
+  "cartridge_id": "380_automatic",
   "note": "P232 (Switzerland). rifling lead 250 mm",
   "values": {
    "cartridge": {
@@ -29795,7 +30515,7 @@
    "sigsauerp23940"
   ],
   "manufacturer": "SIG Sauer",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "P239-40 (Germany/Switzerland). SIG Classic Manual 12.16 P239 .40 S&W column: 1 in 15 in = 381.0 mm, 6 grooves.",
   "values": {
    "cartridge": {
@@ -30209,6 +30929,26 @@
   }
  },
  {
+  "weapon_id": "p4",
+  "names": [
+   "Walther P4"
+  ],
+  "aliases": [
+   "waltherp4"
+  ],
+  "manufacturer": "Walther",
+  "cartridge_id": "9x19",
+  "note": "P4 (Germany). short P5",
+  "values": {
+   "cartridge": {
+    "value": "9x19mm Parabellum",
+    "unit": "name",
+    "source": "walther_p5_manual",
+    "grade": "documented"
+   }
+  }
+ },
+ {
   "weapon_id": "p40",
   "names": [
    "Grand Power P40"
@@ -30218,7 +30958,7 @@
    "p40"
   ],
   "manufacturer": "Grand Power",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "P40 (Slovakia). twist not stated",
   "values": {
    "cartridge": {
@@ -30251,6 +30991,26 @@
   }
  },
  {
+  "weapon_id": "p5",
+  "names": [
+   "Walther P5"
+  ],
+  "aliases": [
+   "waltherp5"
+  ],
+  "manufacturer": "Walther",
+  "cartridge_id": "9x19",
+  "note": "P5 (Germany). twist not stated",
+  "values": {
+   "cartridge": {
+    "value": "9x19mm Parabellum",
+    "unit": "name",
+    "source": "walther_p5_manual",
+    "grade": "documented"
+   }
+  }
+ },
+ {
   "weapon_id": "p64",
   "names": [
    "FB Radom P-64"
@@ -30260,7 +31020,7 @@
    "p64"
   ],
   "manufacturer": "FB Radom (Fabryka Broni)",
-  "cartridge_id": "",
+  "cartridge_id": "9x18_makarov",
   "note": "P-64 (Poland). Polish 9x18 pistol; no held source states the twist.",
   "values": {
    "cartridge": {
@@ -30268,6 +31028,24 @@
     "unit": "name",
     "source": "fb_radom",
     "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "p7",
+  "names": [
+   "Heckler & Koch P7"
+  ],
+  "aliases": [],
+  "manufacturer": "",
+  "cartridge_id": "9x19",
+  "note": "P7 (Germany). HK P7 Series Operator's Manual, cal. 9 mm x 19. No turn length is stated. The 9x19 standard is 250 mm. Named as a Bundeswehr pistol in InfoBrief Heer 2022.",
+  "values": {
+   "cartridge": {
+    "value": "9x19mm Parabellum",
+    "unit": "name",
+    "source": "hk_p7_om",
+    "grade": "documented"
    }
   }
  },
@@ -30326,6 +31104,30 @@
   }
  },
  {
+  "weapon_id": "p8",
+  "names": [
+   "Heckler & Koch P8 (USP, Bundeswehr)"
+  ],
+  "aliases": [],
+  "manufacturer": "",
+  "cartridge_id": "9x19",
+  "note": "P8 (Germany). HK P8 Operator's Manual: 'Kaliber 9 mm x 19'; 'Drallaenge ... 250 mm' (English: 'Twist Length ... 250 mm'). 250 mm agrees with the 9x19 standard.",
+  "values": {
+   "cartridge": {
+    "value": "9x19mm Parabellum",
+    "unit": "name",
+    "source": "hk_p8_om",
+    "grade": "documented"
+   },
+   "twist_m": {
+    "value": 0.25,
+    "unit": "m per turn",
+    "source": "hk_p8_om",
+    "grade": "documented"
+   }
+  }
+ },
+ {
   "weapon_id": "p83",
   "names": [
    "FB Radom P-83"
@@ -30335,7 +31137,7 @@
    "p83"
   ],
   "manufacturer": "FB Radom (Fabryka Broni)",
-  "cartridge_id": "",
+  "cartridge_id": "9x18_makarov",
   "note": "P-83 (Poland). Polish 9x18 pistol; no held source states the twist.",
   "values": {
    "cartridge": {
@@ -30356,7 +31158,7 @@
    "rugerp85"
   ],
   "manufacturer": "Ruger",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "P85 (United States). Discontinued P-series pistol. Twist not stated on the current catalogue.",
   "values": {
    "cartridge": {
@@ -30398,7 +31200,7 @@
    "rugerp89"
   ],
   "manufacturer": "Ruger",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "P89 (United States). Discontinued P-series pistol. Twist not stated on the current catalogue.",
   "values": {
    "cartridge": {
@@ -30406,6 +31208,24 @@
     "unit": "name",
     "source": "ruger_home",
     "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "p9",
+  "names": [
+   "Heckler & Koch P9"
+  ],
+  "aliases": [],
+  "manufacturer": "",
+  "cartridge_id": "9x19",
+  "note": "P9 (Germany). HK P9S manual (covers the P9/P9S family), cal. 9 mm x 19. No turn length is stated.",
+  "values": {
+   "cartridge": {
+    "value": "9x19mm Parabellum",
+    "unit": "name",
+    "source": "hk_p9s_manual",
+    "grade": "documented"
    }
   }
  },
@@ -30419,7 +31239,7 @@
    "p90"
   ],
   "manufacturer": "FN Herstal",
-  "cartridge_id": "",
+  "cartridge_id": "5_7_x_28",
   "note": "P90 (Belgium). manual table not captured",
   "values": {
    "cartridge": {
@@ -30473,7 +31293,7 @@
    "rugerp95"
   ],
   "manufacturer": "Ruger",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "P95 (United States). Discontinued P-series pistol. Twist not stated on the current catalogue.",
   "values": {
    "cartridge": {
@@ -30580,6 +31400,26 @@
   }
  },
  {
+  "weapon_id": "pb",
+  "names": [
+   "PB silenced pistol"
+  ],
+  "aliases": [
+   "izhmashpb"
+  ],
+  "manufacturer": "Izhmash",
+  "cartridge_id": "9x18_makarov",
+  "note": "PB (Russia). Maker: silenced 9x18 pistol.",
+  "values": {
+   "cartridge": {
+    "value": "9x18mm Makarov",
+    "unit": "name",
+    "source": "kk_group_en_pistols",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "weapon_id": "pccarbine",
   "names": [
    "Ruger PC Carbine"
@@ -30589,7 +31429,7 @@
    "rugerpccarbine"
   ],
   "manufacturer": "Ruger",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "PC Carbine (United States). Ruger product line 'PC Carbine', model '*', 9mm Luger: twist 10.000 in, 6 grooves.",
   "values": {
    "cartridge": {
@@ -30628,7 +31468,7 @@
    "rugerpccharger"
   ],
   "manufacturer": "Ruger",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "PC Charger (United States). Ruger product line 'PC Charger', model '*', 9mm Luger: twist 10.000 in, 6 grooves.",
   "values": {
    "cartridge": {
@@ -30800,7 +31640,7 @@
    "pico"
   ],
   "manufacturer": "Beretta",
-  "cartridge_id": "",
+  "cartridge_id": "380_automatic",
   "note": "Pico (Italy).",
   "values": {
    "cartridge": {
@@ -30845,6 +31685,24 @@
   }
  },
  {
+  "weapon_id": "pk",
+  "names": [
+   "Kalashnikov PK machine gun"
+  ],
+  "aliases": [],
+  "manufacturer": "",
+  "cartridge_id": "7_62_x_54_r",
+  "note": "PK (Soviet Union). Modern Firearms 'Kalashnikov PK / PKM'. No twist stated; C.I.P. 7.62x54R standard 240 mm applies.",
+  "values": {
+   "cartridge": {
+    "value": "7.62x54mmR",
+    "unit": "name",
+    "source": "mf_pkm",
+    "grade": "standard"
+   }
+  }
+ },
+ {
   "weapon_id": "pk380",
   "names": [
    "Walther PK380"
@@ -30854,7 +31712,7 @@
    "waltherpk380"
   ],
   "manufacturer": "Walther",
-  "cartridge_id": "",
+  "cartridge_id": "380_automatic",
   "note": "PK380 (Germany). twist not stated",
   "values": {
    "cartridge": {
@@ -30874,7 +31732,7 @@
    "pkm"
   ],
   "manufacturer": "",
-  "cartridge_id": "",
+  "cartridge_id": "7_62_x_54_r",
   "note": "PKM (Soviet Union). Modern Firearms 'Kalashnikov PK / PKM'. No twist stated; C.I.P. 7.62x54R standard 240 mm applies.",
   "values": {
    "cartridge": {
@@ -30895,7 +31753,7 @@
    "vadegtyaryovplantzidpkmn"
   ],
   "manufacturer": "V.A. Degtyaryov Plant (ZiD)",
-  "cartridge_id": "",
+  "cartridge_id": "7_62_x_54_r",
   "note": "PKMN (Russia). 7.62x54R general-purpose machine gun. C.I.P. TDCC 7,62 x 54 R: N=4, u=240.00.",
   "values": {
    "cartridge": {
@@ -30928,7 +31786,7 @@
    "vadegtyaryovplantzidpkms"
   ],
   "manufacturer": "V.A. Degtyaryov Plant (ZiD)",
-  "cartridge_id": "",
+  "cartridge_id": "7_62_x_54_r",
   "note": "PKMS (Russia). 7.62x54R general-purpose machine gun. C.I.P. TDCC 7,62 x 54 R: N=4, u=240.00.",
   "values": {
    "cartridge": {
@@ -30961,7 +31819,7 @@
    "vadegtyaryovplantzidpkppecheneg"
   ],
   "manufacturer": "V.A. Degtyaryov Plant (ZiD)",
-  "cartridge_id": "",
+  "cartridge_id": "7_62_x_54_r",
   "note": "PKP Pecheneg (Russia). 7.62x54R; C.I.P. TDCC gives 240 mm.",
   "values": {
    "cartridge": {
@@ -30994,7 +31852,7 @@
    "vadegtyaryovplantzidpkpsp"
   ],
   "manufacturer": "V.A. Degtyaryov Plant (ZiD)",
-  "cartridge_id": "",
+  "cartridge_id": "7_62_x_54_r",
   "note": "PKP-SP (Russia). Silenced Pecheneg variant, 7.62x54R.",
   "values": {
    "cartridge": {
@@ -31027,7 +31885,7 @@
    "vadegtyaryovplantzidpks"
   ],
   "manufacturer": "V.A. Degtyaryov Plant (ZiD)",
-  "cartridge_id": "",
+  "cartridge_id": "7_62_x_54_r",
   "note": "PKS (Russia). 7.62x54R general-purpose machine gun. C.I.P. TDCC 7,62 x 54 R: N=4, u=240.00.",
   "values": {
    "cartridge": {
@@ -31060,7 +31918,7 @@
    "plk"
   ],
   "manufacturer": "Kalashnikov Concern",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "PLK (Russia). Maker: 9x19 compact pistol.",
   "values": {
    "cartridge": {
@@ -31099,7 +31957,7 @@
    "pm63rak"
   ],
   "manufacturer": "FB Radom (Fabryka Broni)",
-  "cartridge_id": "",
+  "cartridge_id": "9x18_makarov",
   "note": "PM-63 RAK (Poland). Polish 9x18 machine pistol; no held source states the twist.",
   "values": {
    "cartridge": {
@@ -31120,7 +31978,7 @@
    "pmm"
   ],
   "manufacturer": "Izhmash",
-  "cartridge_id": "",
+  "cartridge_id": "9x18_makarov",
   "note": "PMM (Russia). Maker: modernised Makarov, 9x18.",
   "values": {
    "cartridge": {
@@ -31231,6 +32089,26 @@
   }
  },
  {
+  "weapon_id": "pp",
+  "names": [
+   "Walther PP"
+  ],
+  "aliases": [
+   "waltherpp"
+  ],
+  "manufacturer": "Walther",
+  "cartridge_id": "32_acp",
+  "note": "PP (Germany). twist not stated",
+  "values": {
+   "cartridge": {
+    "value": ".32 ACP (7.65x17mm Browning)",
+    "unit": "name",
+    "source": "walther_pp_ppk_manual",
+    "grade": "documented"
+   }
+  }
+ },
+ {
   "weapon_id": "pp1901vityaz",
   "names": [
    "PP-19-01 Vityaz-SN"
@@ -31240,7 +32118,7 @@
    "pp1901vityaz"
   ],
   "manufacturer": "Kalashnikov Concern",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "PP-19-01 Vityaz (Russia). 9x19; EPVAT 250 mm chambering reference.",
   "values": {
    "cartridge": {
@@ -31272,7 +32150,7 @@
    "pp19bizon"
   ],
   "manufacturer": "KBP",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "Barrel: Four-groove with right-hand twist of one turn. In 240 mm (9.4 inches). The bore and chamber are chrome lined.",
   "values": {
    "cartridge": {
@@ -31305,7 +32183,7 @@
    "pp19vityaz"
   ],
   "manufacturer": "Kalashnikov Concern",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "PP-19 Vityaz (Russia). 9x19; NATO EPVAT 9x19 proof-barrel twist 250 mm (chambering reference).",
   "values": {
    "cartridge": {
@@ -31344,7 +32222,7 @@
    "pp2000"
   ],
   "manufacturer": "KBP Instrument Design Bureau",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "PP-2000 (Russia). 9x19; EPVAT 250 mm chambering reference.",
   "values": {
    "cartridge": {
@@ -31377,7 +32255,7 @@
    "pp90m1"
   ],
   "manufacturer": "KBP Instrument Design Bureau",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "PP-90M1 (Russia). 9x19; no held source states a weapon twist.",
   "values": {
    "cartridge": {
@@ -31410,7 +32288,7 @@
    "waltherppk"
   ],
   "manufacturer": "Walther",
-  "cartridge_id": "",
+  "cartridge_id": "32_acp",
   "note": "PPK (Germany). twist not stated",
   "values": {
    "cartridge": {
@@ -31431,7 +32309,7 @@
    "waltherppks"
   ],
   "manufacturer": "Walther",
-  "cartridge_id": "",
+  "cartridge_id": "380_automatic",
   "note": "PPK/s (Germany). twist not stated",
   "values": {
    "cartridge": {
@@ -31494,7 +32372,7 @@
    "sudayevsestroretskpps43"
   ],
   "manufacturer": "Sudayev, Sestroretsk",
-  "cartridge_id": "",
+  "cartridge_id": "7_62_x_25_tokarev",
   "note": "PPS-43 (Russia). 7.62x25 SMG; no held source states the twist.",
   "values": {
    "cartridge": {
@@ -31515,7 +32393,7 @@
    "shpaginziszisppsh41"
   ],
   "manufacturer": "Shpagin, ZIS/ZIS",
-  "cartridge_id": "",
+  "cartridge_id": "7_62_x_25_tokarev",
   "note": "PPSh-41 (Russia). 7.62x25 SMG; no held source states the twist.",
   "values": {
    "cartridge": {
@@ -31536,7 +32414,7 @@
    "rugerprecisionrifle"
   ],
   "manufacturer": "Ruger",
-  "cartridge_id": "",
+  "cartridge_id": "65_creedmoor",
   "note": "Precision Rifle (United States). Ruger product line 'Ruger Precision Rifle', model '*', 6.5 Creedmoor: twist 8.000 in, 5 grooves.",
   "values": {
    "cartridge": {
@@ -31575,7 +32453,7 @@
    "rugerprecisionrimfire"
   ],
   "manufacturer": "Ruger",
-  "cartridge_id": "",
+  "cartridge_id": "22_long_rifle",
   "note": "Precision Rimfire (United States). Ruger product line 'Ruger Precision Rimfire', model '*', 22 LR: twist 16.000 in, 6 grooves.",
   "values": {
    "cartridge": {
@@ -31929,7 +32807,7 @@
    "ps90"
   ],
   "manufacturer": "FN Herstal",
-  "cartridge_id": "",
+  "cartridge_id": "5_7_x_28",
   "note": "PS90 (Belgium). civilian P90",
   "values": {
    "cartridge": {
@@ -31996,7 +32874,7 @@
    "psl"
   ],
   "manufacturer": "Cugir / Romarm",
-  "cartridge_id": "",
+  "cartridge_id": "7_62_x_54_r",
   "note": "PSL (Romania). 7.62x54R marksman rifle; no held source states the weapon twist.",
   "values": {
    "cartridge": {
@@ -32029,7 +32907,7 @@
    "psm"
   ],
   "manufacturer": "Izhmash",
-  "cartridge_id": "",
+  "cartridge_id": "5_45_x_18",
   "note": "PSM (Russia). Maker: 5.45x18 compact pistol.",
   "values": {
    "cartridge": {
@@ -32050,7 +32928,7 @@
    "tauruspt100"
   ],
   "manufacturer": "Taurus",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "PT100 (Brazil). twist not stated",
   "values": {
    "cartridge": {
@@ -32071,7 +32949,7 @@
    "tauruspt101"
   ],
   "manufacturer": "Taurus",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "PT101 (Brazil). twist not stated",
   "values": {
    "cartridge": {
@@ -32113,7 +32991,7 @@
    "tauruspt140"
   ],
   "manufacturer": "Taurus",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "PT140 (Brazil). twist not stated",
   "values": {
    "cartridge": {
@@ -32209,7 +33087,7 @@
    "tauruspt840"
   ],
   "manufacturer": "Taurus",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "PT840 (Brazil). twist not stated",
   "values": {
    "cartridge": {
@@ -32326,7 +33204,7 @@
    "px4storm40"
   ],
   "manufacturer": "Beretta",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "Px4 Storm .40 (Italy). manual table ambiguous for .40",
   "values": {
    "cartridge": {
@@ -32407,7 +33285,7 @@
    "pya"
   ],
   "manufacturer": "Izhmash",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "PYa (Russia). Maker: 9x19 (7N21).",
   "values": {
    "cartridge": {
@@ -32458,6 +33336,26 @@
   }
  },
  {
+  "weapon_id": "q1",
+  "names": [
+   "Grand Power Q1"
+  ],
+  "aliases": [
+   "grandpowerq1"
+  ],
+  "manufacturer": "Grand Power",
+  "cartridge_id": "9x19",
+  "note": "Q1 (Slovakia). twist not stated",
+  "values": {
+   "cartridge": {
+    "value": "9x19mm Parabellum",
+    "unit": "name",
+    "source": "grandpower_products",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "weapon_id": "q100",
   "names": [
    "Grand Power Q100"
@@ -32481,6 +33379,46 @@
     "unit": "kg",
     "source": "gp_q100",
     "grade": "documented"
+   }
+  }
+ },
+ {
+  "weapon_id": "q4",
+  "names": [
+   "Walther Q4 Steel Frame"
+  ],
+  "aliases": [
+   "waltherq4"
+  ],
+  "manufacturer": "Walther",
+  "cartridge_id": "9x19",
+  "note": "Q4 (Germany). twist not stated",
+  "values": {
+   "cartridge": {
+    "value": "9x19mm Parabellum",
+    "unit": "name",
+    "source": "walther_products",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "q5",
+  "names": [
+   "Walther Q5 Match"
+  ],
+  "aliases": [
+   "waltherq5"
+  ],
+  "manufacturer": "Walther",
+  "cartridge_id": "9x19",
+  "note": "Q5 (Germany). twist not stated",
+  "values": {
+   "cartridge": {
+    "value": "9x19mm Parabellum",
+    "unit": "name",
+    "source": "walther_products",
+    "grade": "claimed"
    }
   }
  },
@@ -32645,7 +33583,7 @@
    "qbz951"
   ],
   "manufacturer": "Norinco",
-  "cartridge_id": "",
+  "cartridge_id": "58x42",
   "note": "QBZ-95-1 (China). Twist changed from 240 mm to 210 mm and grooves 4 to 6.",
   "values": {
    "cartridge": {
@@ -32776,7 +33714,7 @@
    "qjy88"
   ],
   "manufacturer": "Norinco",
-  "cartridge_id": "",
+  "cartridge_id": "58x42",
   "note": "QJY-88 (China). GPMG; twist 1:8.21 in (208.5 mm).",
   "values": {
    "cartridge": {
@@ -32857,7 +33795,7 @@
    "qsz929x19"
   ],
   "manufacturer": "Norinco",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "QSZ-92 (9x19) (China). 9x19 variant; NATO EPVAT 9x19 twist 250 mm.",
   "values": {
    "cartridge": {
@@ -32921,6 +33859,26 @@
     "unit": "count",
     "source": "sako_quad_tech",
     "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "r1",
+  "names": [
+   "Benelli R1"
+  ],
+  "aliases": [
+   "benellir1"
+  ],
+  "manufacturer": "Benelli",
+  "cartridge_id": "30_06_springfield",
+  "note": "R1 (Italy). twist not stated",
+  "values": {
+   "cartridge": {
+    "value": ".30-06 Springfield",
+    "unit": "name",
+    "source": "benelli_r1_manual",
+    "grade": "documented"
    }
   }
  },
@@ -33018,7 +33976,7 @@
    "r7mako"
   ],
   "manufacturer": "Kimber",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "R7 Mako (United States). R7 Mako. Twist not stated on the product pages retrieved.",
   "values": {
    "cartridge": {
@@ -33040,7 +33998,7 @@
    "r92stainlesssteelleveractioncarbine20inchbarrel44magnum"
   ],
   "manufacturer": "Rossi",
-  "cartridge_id": "",
+  "cartridge_id": "44_remington_magnum",
   "note": "Manufacturer Tech Specs table for the R92 in '44 MAG', polished stainless steel, 'Barrel Length  20.00 In.': 'Twist Rate   1:30\" RH' and 'Grooves   6'. 1 turn in 30 in = 762.0 mm. The same 1:30\" RH value is published on the 16.5-inch .44 Magnum R92 page.",
   "values": {
    "cartridge": {
@@ -33094,7 +34052,7 @@
    "taurusragingbull"
   ],
   "manufacturer": "Taurus",
-  "cartridge_id": "",
+  "cartridge_id": "44_remington_magnum",
   "note": "Raging Bull (Brazil). twist not stated",
   "values": {
    "cartridge": {
@@ -33115,7 +34073,7 @@
    "taurusraginghunter"
   ],
   "manufacturer": "Taurus",
-  "cartridge_id": "",
+  "cartridge_id": "44_remington_magnum",
   "note": "Raging Hunter (Brazil). twist not stated",
   "values": {
    "cartridge": {
@@ -33343,7 +34301,7 @@
    "repr762rifle"
   ],
   "manufacturer": "LWRC International",
-  "cartridge_id": "",
+  "cartridge_id": "762x51_nato",
   "note": "Manufacturer specification block: 'CALIBER: 7.62 X 51 NATO', 'BARREL: 20\", 16.1\"', 'Cold hammer forged 1:10 twist stabilizes a wide range of bullet types'. 1 turn in 10 in = 254.0 mm.",
   "values": {
    "cartridge": {
@@ -33711,7 +34669,7 @@
    "romak3psl"
   ],
   "manufacturer": "",
-  "cartridge_id": "",
+  "cartridge_id": "7_62_x_54_r",
   "note": "Romak 3 / PSL (Romania). Romak 3 manual (commercial/import). The PSL shares the AK action layout but is not a Kalashnikov derivative; listed for completeness. No twist stated; C.I.P. 7.62x54R standard 240 mm applies.",
   "values": {
    "cartridge": {
@@ -33852,7 +34810,7 @@
    "rpk74lightmachinegun"
   ],
   "manufacturer": "Kalashnikov Concern",
-  "cartridge_id": "",
+  "cartridge_id": "545x39",
   "note": "Soviet Ministry of Defence manual 1982 (AK74/\u0410\u041a\u042174 and RPK74/\u0420\u041f\u041a\u042174), Appendix 1 table, \u00ab\u0420\u0443\u0447\u043d\u043e\u0439 \u043f\u0443\u043b\u0435\u043c\u0435\u0442\u00bb column: row 15 \u00ab\u0414\u043b\u0438\u043d\u0430 \u0441\u0442\u0432\u043e\u043b\u0430, \u043c\u043c 590\u00bb, row 16 \u00ab\u0414\u043b\u0438\u043d\u0430 \u043d\u0430\u0440\u0435\u0437\u043d\u043e\u0439 \u0447\u0430\u0441\u0442\u0438 \u0441\u0442\u0432\u043e\u043b\u0430, \u043c\u043c 549\u00bb, row 17 \u00ab\u0427\u0438\u0441\u043b\u043e \u043d\u0430\u0440\u0435\u0437\u043e\u0432, \u0448\u0442. 4\u00bb, row 18 \u00ab\u0414\u043b\u0438\u043d\u0430 \u0445\u043e\u0434\u0430 \u043d\u0430\u0440\u0435\u0437\u043e\u0432, \u043c\u043c 200\u00bb. States the RPK-74 barrel is 590 mm with 4 grooves and 200 mm rifling pitch.",
   "values": {
    "cartridge": {
@@ -33892,7 +34850,7 @@
    "rpk74mlightmachinegun"
   ],
   "manufacturer": "Zavod imeni Degtyaryova",
-  "cartridge_id": "",
+  "cartridge_id": "545x39",
   "note": "Specification table for the RPK-74M: \"\u041d\u0430\u0440\u0435\u0437\u044b 4 \u043f\u0440\u0430\u0432.\" and \"\u0414\u043b\u0438\u043d\u0430 \u0445\u043e\u0434\u0430 \u043d\u0430\u0440\u0435\u0437\u043e\u0432, \u043c\u043c 200\". The source states 4 right-hand grooves and a rifling pitch (one turn) of 200 mm, so twist = 200.0 mm per turn.",
   "values": {
    "cartridge": {
@@ -34217,7 +35175,7 @@
    "steyrs40a1"
   ],
   "manufacturer": "Steyr",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "S40-A1 (Austria). twist not stated",
   "values": {
    "cartridge": {
@@ -34385,7 +35343,7 @@
    "saintedge556nato"
   ],
   "manufacturer": "Springfield Armory",
-  "cartridge_id": "",
+  "cartridge_id": "556x45_nato",
   "note": "Specification table: 'Barrel | 16\" LW Profile CMV, Melonite\u00ae, 1:8'. Product text: 'A premium 16\" 1:8\"-twist Melonite\u00ae-coated barrel stabilizes a wide variety of bullet weights.' 1 turn in 8 in = 203.2 mm. Groove count not stated.",
   "values": {
    "cartridge": {
@@ -34495,6 +35453,7 @@
    "Sako A7"
   ],
   "aliases": [
+   "a7",
    "sakoa7",
    "sakosakoa7"
   ],
@@ -35109,6 +36068,50 @@
   }
  },
  {
+  "weapon_id": "savage64",
+  "names": [
+   "Savage Model 64"
+  ],
+  "aliases": [
+   "64",
+   "savage64",
+   "savagearmssavage64"
+  ],
+  "manufacturer": "Savage Arms",
+  "cartridge_id": "22_long_rifle",
+  "note": "64 (United States). Model 64 rimfire; no twist published",
+  "values": {
+   "cartridge": {
+    "value": ".22 Long Rifle",
+    "unit": "name",
+    "source": "savage_site",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "savage93",
+  "names": [
+   "Savage Model 93"
+  ],
+  "aliases": [
+   "93",
+   "savage93",
+   "savagearmssavage93"
+  ],
+  "manufacturer": "Savage Arms",
+  "cartridge_id": "",
+  "note": "93 (United States). Model 93 rimfire; no twist published",
+  "values": {
+   "cartridge": {
+    "value": ".22 WMR",
+    "unit": "name",
+    "source": "savage_site",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "weapon_id": "savageaxis",
   "names": [
    "Savage Axis"
@@ -35504,7 +36507,7 @@
    "scarhsniperrifle"
   ],
   "manufacturer": "FN Herstal",
-  "cartridge_id": "",
+  "cartridge_id": "762x51_nato",
   "note": "FN eStore (manufacturer) SCAR 17S barrel assembly: \"Cold hammer-forged, chrome-lined, free-floating barrel with muzzle device for SCAR 17S in 7.62x51mm, 1:12\\\" twist.\" The SCAR-H/Mk 17 uses the SCAR 17S barrel. States a 1 turn in 12 inch twist = 304.8 mm per turn.",
   "values": {
    "cartridge": {
@@ -35622,7 +36625,7 @@
    "steyrscoutrfr"
   ],
   "manufacturer": "Steyr",
-  "cartridge_id": "",
+  "cartridge_id": "22_long_rifle",
   "note": "Scout RFR (Austria). twist not stated",
   "values": {
    "cartridge": {
@@ -35697,7 +36700,7 @@
    "smithwessonsd40"
   ],
   "manufacturer": "Smith & Wesson",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "SD40 (United States). SD40 2.0 product page: 1 in 18 twist (differs from the .40 S&W reference 406.4 mm).",
   "values": {
    "cartridge": {
@@ -35730,7 +36733,7 @@
    "smithwessonsd9"
   ],
   "manufacturer": "Smith & Wesson",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "SD9 (United States). SD9 2.0 product page: 1 in 18 twist.",
   "values": {
    "cartridge": {
@@ -35838,7 +36841,7 @@
    "security9"
   ],
   "manufacturer": "Ruger",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "Security-9 (United States). Ruger product line 'Security-9', model '*', 9mm Luger: twist 10.000 in, 6 grooves.",
   "values": {
    "cartridge": {
@@ -36148,7 +37151,7 @@
    "sg551assaultrifle"
   ],
   "manufacturer": "SIG Sauer AG",
-  "cartridge_id": "",
+  "cartridge_id": "556x45_nato",
   "note": "Section 2.3.1 'SG 551 SB Picatinny version' technical specifications: 'Barrel / Barrel length.....mm...363 / Number of grooves..........6 / Rifling / SG 551-1.....inches. ...10 / SG 551-2.....inches. ......7'. Repeated identically for the SG 551 SB Diopter, SG 551 LB Picatinny and SG 551 LB Diopter versions. The manufacturer lists TWO barrel variants: SG 551-1 is 1 turn in 10 in = 254.0 mm, SG 551-2 is 1 turn in 7 in = 177.8 mm. The recorded value is the SG 551-1 barrel. Do not treat 254.0 mm as covering the SG 551-2 barrel.",
   "values": {
    "cartridge": {
@@ -36254,7 +37257,7 @@
    "sg552commandocarbine"
   ],
   "manufacturer": "SIG Sauer AG (Swiss)",
-  "cartridge_id": "",
+  "cartridge_id": "556x45_nato",
   "note": "'Technical Data SG 551 SWAT - SG 552 Commando': 'SG 552 Commando ... Calibre 5.56 x 45 mm / .223 Remington ... Barrel length 226 mm / Rifling lead 7\" / Number of grooves 6'. The page states the data is 'Information courtesy of SAN Swiss Arms AG'. 1 turn in 7 in = 177.8 mm, 6 grooves.",
   "values": {
    "cartridge": {
@@ -36397,7 +37400,7 @@
    "sig556exportsemiautomaticrifle"
   ],
   "manufacturer": "SIG Sauer (SIGARMS, Exeter)",
-  "cartridge_id": "",
+  "cartridge_id": "556x45_nato",
   "note": "Section 2.2 'Technical Specifications' of the SIG 556 operator manual: 'Caliber 5.56mm NATO (.223 Remington) / Total length 37 inches / Length with stock collapsed 33.5 inches / Barrel length 16 inches / Number of grooves 6 / Rifling 1 in 7'. 1 turn in 7 in = 177.8 mm, 6 grooves. The manual cover reads 'SIG 556 SEMI-AUTOMATIC RIFLE 5.56mm NATO (.223 Remington)'.",
   "values": {
    "cartridge": {
@@ -36925,7 +37928,7 @@
    "singlesix"
   ],
   "manufacturer": "Ruger",
-  "cartridge_id": "",
+  "cartridge_id": "22_long_rifle",
   "note": "Single-Six (United States). Ruger product line 'New Model Single-Six', model 'Single-Ten', 22 LR: twist 14.000 in, 6 grooves.",
   "values": {
    "cartridge": {
@@ -37343,7 +38346,7 @@
    "taurusspectrum"
   ],
   "manufacturer": "Taurus",
-  "cartridge_id": "",
+  "cartridge_id": "380_automatic",
   "note": "Spectrum (Brazil). twist not stated",
   "values": {
    "cartridge": {
@@ -37551,7 +38554,7 @@
    "tsniitochmashsr2"
   ],
   "manufacturer": "TsNIITochMash",
-  "cartridge_id": "",
+  "cartridge_id": "9_x_21",
   "note": "SR-2 (Russia). 9x21 SR-2; no held source states a weapon twist.",
   "values": {
    "cartridge": {
@@ -37646,7 +38649,7 @@
    "tsniitochmashsr3m"
   ],
   "manufacturer": "TsNIITochMash",
-  "cartridge_id": "",
+  "cartridge_id": "9_x_39",
   "note": "SR-3M (Russia). 9x39 compact rifle; no held source states a weapon twist.",
   "values": {
    "cartridge": {
@@ -37667,7 +38670,7 @@
    "sr40"
   ],
   "manufacturer": "Ruger",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "SR40 (United States). Discontinued striker pistol. Twist not stated on the current catalogue.",
   "values": {
    "cartridge": {
@@ -37730,7 +38733,7 @@
    "sr9"
   ],
   "manufacturer": "Ruger",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "SR9 (United States). Discontinued striker pistol. Twist not stated on the current catalogue.",
   "values": {
    "cartridge": {
@@ -37929,7 +38932,7 @@
    "ssg3000sniperrifle"
   ],
   "manufacturer": "SIG Sauer AG (Swiss)",
-  "cartridge_id": "",
+  "cartridge_id": "762x51_nato",
   "note": "Section 4.0 'Technical specifications': 'Caliber 7.62 mm x 51 NATO (.308 Win.) ... Rifling twist 1:12\" / 305 mm ... Barrel length, excl. flash suppressor 23.50\" / 600 mm / No. of grooves 4'. 1 turn in 12 in = 304.8 mm, 4 grooves.",
   "values": {
    "cartridge": {
@@ -37996,7 +38999,7 @@
    "staccatopsemiauto"
   ],
   "manufacturer": "STI",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "NRA American Rifleman specification line: \"Barrel: 4.4\u201d Bull 1:16\" twist.\" States the Staccato 2011 P 4.4 in bull barrel has a 1:16 in twist = 406.4 mm.",
   "values": {
    "cartridge": {
@@ -38023,7 +39026,7 @@
    "staccatoxlsemiauto"
   ],
   "manufacturer": "STI",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "NRA Shooting Sports USA: \"The stainless-steel barrel is 5.4 inches with a 1:16-inch twist\". States the Staccato XL barrel has a 1:16 in twist = 406.4 mm.",
   "values": {
    "cartridge": {
@@ -38076,7 +39079,7 @@
    "stg44"
   ],
   "manufacturer": "",
-  "cartridge_id": "",
+  "cartridge_id": "7_92_x_33_kurz",
   "note": "StG44 (Germany). Catalog of Enemy Ordnance Materiel (1945): 'A recent official German order changed the nomenclature to Sturmgewehr 44.' No twist is stated.",
   "values": {
    "cartridge": {
@@ -38365,7 +39368,7 @@
    "submachineguns"
   ],
   "manufacturer": "Colt",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "Sub-Machine Guns (United States). Colt product page: caliber 9x19mm NATO, rifling 1:10 RH, 6 Groove.",
   "values": {
    "cartridge": {
@@ -38425,7 +39428,7 @@
    "superblackhawk"
   ],
   "manufacturer": "Ruger",
-  "cartridge_id": "",
+  "cartridge_id": "44_remington_magnum",
   "note": "Super Blackhawk (United States). Ruger product line 'New Model Super Blackhawk', model 'Standard', 44 Rem Mag: twist 20.000 in, 6 grooves.",
   "values": {
    "cartridge": {
@@ -38560,7 +39563,7 @@
    "sv98sniperrifle"
   ],
   "manufacturer": "Tula Arms Plant",
-  "cartridge_id": "",
+  "cartridge_id": "762x51_nato",
   "note": "Kalashnikov Concern SV-98 catalogue page, technical data: \"Twist rate 320\" and \"Number of grooves 4\". States 320 mm per turn (about 1 turn in 12.6 inches) with 4 grooves. The same page gives the barrel as 650 mm and the cartridge as 7.62x54R, not 7.62x51mm NATO as recorded in the worklist.",
   "values": {
    "cartridge": {
@@ -38599,7 +39602,7 @@
    "svch"
   ],
   "manufacturer": "Kalashnikov Concern",
-  "cartridge_id": "",
+  "cartridge_id": "7_62_x_54_r",
   "note": "SVCh (Russia). Maker catalogue; 7.62x54R variant. No held source states the twist.",
   "values": {
    "cartridge": {
@@ -38633,7 +39636,7 @@
    "svddragunovsniperrifle"
   ],
   "manufacturer": "Izhmash",
-  "cartridge_id": "",
+  "cartridge_id": "7_62_x_54_r",
   "note": "The Russian technical manual states 4 grooves but does not state the twist. Not verified.",
   "values": {
    "cartridge": {
@@ -38666,7 +39669,7 @@
    "svddragunovsniperrifle"
   ],
   "manufacturer": "Izhmash",
-  "cartridge_id": "",
+  "cartridge_id": "7_62_x_54_r",
   "note": "TM 8370-50097-OR/15, \"Table 1. SVD Sniper Rifle Characteristics\": \"Rifling  1 turn in 10 inches, right-hand twist\". A 1 turn in 10 inch twist = 10 x 25.4 = 254.0 mm per turn.",
   "values": {
    "cartridge": {
@@ -38693,7 +39696,7 @@
    "svdm"
   ],
   "manufacturer": "Izhmash / Kalashnikov Concern",
-  "cartridge_id": "",
+  "cartridge_id": "7_62_x_54_r",
   "note": "SVDM (Russia). Modernised SVD; 7.62x54R, 320 mm SVD pitch.",
   "values": {
    "cartridge": {
@@ -38732,7 +39735,7 @@
    "svdssniperrifle"
   ],
   "manufacturer": "Izhmash",
-  "cartridge_id": "",
+  "cartridge_id": "7_62_x_54_r",
   "note": "\u041e\u0444\u0438\u0446\u0438\u0430\u043b\u044c\u043d\u044b\u0439 \u041a\u043b\u0443\u0431 \u041a\u043e\u043d\u0446\u0435\u0440\u043d\u0430 \u00ab\u041a\u0430\u043b\u0430\u0448\u043d\u0438\u043a\u043e\u0432\u00bb (\u0410\u041e \u00ab\u041a\u043e\u043d\u0446\u0435\u0440\u043d \u00ab\u041a\u0430\u043b\u0430\u0448\u043d\u0438\u043a\u043e\u0432\u00bb), \u0441\u0442\u0430\u0442\u044c\u044f \u00ab\u0418\u0437 \u0438\u0441\u0442\u043e\u0440\u0438\u0438 \u0432\u0438\u043d\u0442\u043e\u0432\u043a\u0438 \u0421\u0412\u0414 \u2014 \u043f\u0440\u043e \u0448\u0430\u0433 \u043d\u0430\u0440\u0435\u0437\u043e\u0432 \u0441\u0442\u0432\u043e\u043b\u0430\u00bb: \u00ab\u0421 \u043c\u043e\u043c\u0435\u043d\u0442\u0430 \u0435\u0435 \u043f\u0440\u0438\u043d\u044f\u0442\u0438\u044f \u043d\u0430 \u0432\u043e\u043e\u0440\u0443\u0436\u0435\u043d\u0438\u0435 \u0438 \u0434\u043e 1973 \u0433\u043e\u0434\u0430 \u0432\u043a\u043b\u044e\u0447\u0438\u0442\u0435\u043b\u044c\u043d\u043e \u044d\u0442\u0430 \u0432\u0438\u043d\u0442\u043e\u0432\u043a\u0430 \u0438\u043c\u0435\u043b\u0430 \u043d\u0430\u0440\u0435\u0437\u044b \u0441 \u0448\u0430\u0433\u043e\u043c 320 \u043c\u043c, \u0430 \u0441 1974 \u0433\u043e\u0434\u0430 \u0438 \u043f\u043e \u043d\u0430\u0441\u0442\u043e\u044f\u0449\u0435\u0435 \u0432\u0440\u0435\u043c\u044f \u0435\u0435 \u043d\u0430\u0440\u0435\u0437\u044b \u0438\u043c\u0435\u044e\u0442 \u0448\u0430\u0433 240 \u043c\u043c.\u00bb States the SVD (and therefore the SVDS, introduced 1991) uses a 240 mm rifling pitch from 1974 onward; the earlier 320 mm figure applies only to pre-1974 rifles.",
   "values": {
    "cartridge": {
@@ -38759,7 +39762,7 @@
    "svu"
   ],
   "manufacturer": "Izhmash / Kalashnikov Concern",
-  "cartridge_id": "",
+  "cartridge_id": "7_62_x_54_r",
   "note": "SVU (Russia). Bullpup SVD; 7.62x54R, SVD barrel family 320 mm.",
   "values": {
    "cartridge": {
@@ -38873,7 +39876,7 @@
    "sw99"
   ],
   "manufacturer": "Smith & Wesson",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "SW99 (United States). Discontinued Walther-built pistol. Twist not stated on the catalogue pages retrieved.",
   "values": {
    "cartridge": {
@@ -39231,7 +40234,7 @@
    "tikkatikkat365x55"
   ],
   "manufacturer": "Tikka",
-  "cartridge_id": "",
+  "cartridge_id": "6_5_x_55_se",
   "note": "Tikka T3 6.5x55 (Finland). value not captured in table",
   "values": {
    "cartridge": {
@@ -39306,7 +40309,7 @@
    "tikkatikkat37x64"
   ],
   "manufacturer": "Tikka",
-  "cartridge_id": "",
+  "cartridge_id": "7_x_64_brenneke",
   "note": "Tikka T3 7x64 (Finland). 10 in",
   "values": {
    "cartridge": {
@@ -39333,7 +40336,7 @@
    "tikkatikkat393x62"
   ],
   "manufacturer": "Tikka",
-  "cartridge_id": "",
+  "cartridge_id": "9_3_x_62",
   "note": "Tikka T3 9.3x62 (Finland). 14 in",
   "values": {
    "cartridge": {
@@ -39394,7 +40397,7 @@
    "t3xarcticboltaction"
   ],
   "manufacturer": "Tikka",
-  "cartridge_id": "",
+  "cartridge_id": "762x51_nato",
   "note": "Tikka T1x/T3x Instruction Manual v5.3, table 'Caliber / Rate of twist [in] / Number of grooves': \"308 Win..........................11\". . 4\". States a 1 turn in 11 inch right-hand twist = 279.4 mm per turn with 4 grooves for the .308 Win (7.62x51mm NATO) barrel used by the T3x line, which includes the Arctic. The model-specific Tikka 'ARCTIC_technical_specifications.pdf' sheet gives the same rate: \"CALIBER / RATE OF TWIST ... 308 Win / 11\"\".",
   "values": {
    "cartridge": {
@@ -39817,7 +40820,7 @@
    "tac50"
   ],
   "manufacturer": "McMillan",
-  "cartridge_id": "",
+  "cartridge_id": "50_bmg",
   "note": "TAC-50 (United States). TAC-50 discontinued; no twist published",
   "values": {
    "cartridge": {
@@ -40135,6 +41138,34 @@
   }
  },
  {
+  "weapon_id": "tikkat3",
+  "names": [
+   "Tikka T3"
+  ],
+  "aliases": [
+   "t3",
+   "tikkat3",
+   "tikkatikkat3"
+  ],
+  "manufacturer": "Tikka",
+  "cartridge_id": "308_win",
+  "note": "T3 (Finland). Tikka manual caliber/rate-of-twist table",
+  "values": {
+   "cartridge": {
+    "value": ".308 Winchester",
+    "unit": "name",
+    "source": "tikka_t3x_manual",
+    "grade": "documented"
+   },
+   "twist_m": {
+    "value": 0.2794,
+    "unit": "m per turn",
+    "source": "tikka_t3x_manual",
+    "grade": "documented"
+   }
+  }
+ },
+ {
   "weapon_id": "tle",
   "names": [
    "Kimber TLE II"
@@ -40192,7 +41223,7 @@
    "tulaarsenaltokarev"
   ],
   "manufacturer": "Tula Arsenal",
-  "cartridge_id": "",
+  "cartridge_id": "7_62_x_25_tokarev",
   "note": "Tokarev (Russia). Same weapon as TT-33.",
   "values": {
    "cartridge": {
@@ -40213,7 +41244,7 @@
    "tp380"
   ],
   "manufacturer": "B&T",
-  "cartridge_id": "",
+  "cartridge_id": "380_automatic",
   "note": "TP380 (Switzerland). twist not stated in catalogue",
   "values": {
    "cartridge": {
@@ -40366,7 +41397,7 @@
    "walthertph"
   ],
   "manufacturer": "Walther",
-  "cartridge_id": "",
+  "cartridge_id": "22_long_rifle",
   "note": "TPH (Germany). twist not stated",
   "values": {
    "cartridge": {
@@ -40463,7 +41494,7 @@
    "trg22sniperrifle"
   ],
   "manufacturer": "Sako",
-  "cartridge_id": "",
+  "cartridge_id": "762x51_nato",
   "note": "Sako TRG 22/42 Owner's Manual, technical data table: \".308 Win ... Rate of twist and direction of rotation 280 mm (11\\\"), RH\". The manual gives the pitch as 11 inches (written 280 mm); 1 turn in 11 inches = 279.4 mm per turn. The TRG 22 A1 instruction manual gives the same .308 Win / 11\\\".",
   "values": {
    "cartridge": {
@@ -40700,7 +41731,7 @@
    "tulaarsenaltt33"
   ],
   "manufacturer": "Tula Arsenal",
-  "cartridge_id": "",
+  "cartridge_id": "7_62_x_25_tokarev",
   "note": "TT-33 (Russia). 7.62x25; no held source states the twist.",
   "values": {
    "cartridge": {
@@ -40721,7 +41752,7 @@
    "tx22"
   ],
   "manufacturer": "Taurus",
-  "cartridge_id": "",
+  "cartridge_id": "22_long_rifle",
   "note": "TX22 (Brazil). twist not stated",
   "values": {
    "cartridge": {
@@ -40742,7 +41773,7 @@
    "type54"
   ],
   "manufacturer": "Norinco",
-  "cartridge_id": "",
+  "cartridge_id": "7_62_x_25_tokarev",
   "note": "Type 54 (China). Chinese TT-33 copy; no held source states the twist.",
   "values": {
    "cartridge": {
@@ -40979,7 +42010,7 @@
    "type77"
   ],
   "manufacturer": "Norinco",
-  "cartridge_id": "",
+  "cartridge_id": "7_62_x_25_tokarev",
   "note": "Type 77 (China). 7.62x25 pistol; no held source states the twist.",
   "values": {
    "cartridge": {
@@ -41006,7 +42037,7 @@
    "type79"
   ],
   "manufacturer": "Norinco",
-  "cartridge_id": "",
+  "cartridge_id": "7_62_x_25_tokarev",
   "note": "Type 79 (China). 7.62x25 SMG; no held source states the twist.",
   "values": {
    "cartridge": {
@@ -41033,7 +42064,7 @@
    "type80"
   ],
   "manufacturer": "Norinco",
-  "cartridge_id": "",
+  "cartridge_id": "7_62_x_25_tokarev",
   "note": "Type 80 (China). 7.62x25 SMG; no held source states the twist.",
   "values": {
    "cartridge": {
@@ -41197,7 +42228,7 @@
    "type85"
   ],
   "manufacturer": "Norinco",
-  "cartridge_id": "",
+  "cartridge_id": "7_62_x_25_tokarev",
   "note": "Type 85 (China). 7.62x25 SMG; no held source states the twist.",
   "values": {
    "cartridge": {
@@ -41423,7 +42454,7 @@
    "ump40"
   ],
   "manufacturer": "",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "UMP40 (Germany). HK UMP 40 Operator's Manual specification table: 'Twist length ... 377 mm (14.84 in)'; 'Bore profile 6x polygonal, right-hand twist'. No .40 S&W standard is given in the task, so no comparison applies.",
   "values": {
    "cartridge": {
@@ -41616,7 +42647,7 @@
    "usp40"
   ],
   "manufacturer": "Heckler & Koch",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "USP40 (Germany). HK product catalog lists USP40 in .40 S&W. No pitch published on the USP40 sheet. Where HK states it (VP9 family), the barrel is 6 groove, right hand, 1 in 9.8 in (248.9 mm).",
   "values": {
    "cartridge": {
@@ -41856,7 +42887,7 @@
    "uzisubmachinegun"
   ],
   "manufacturer": "Israel Military Industries",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "Rifling right hand, 4 grooves, 1 turn in 254 mm (10 in). The manual does not state the barrel length for the SMG.",
   "values": {
    "cartridge": {
@@ -41961,7 +42992,7 @@
    "val"
   ],
   "manufacturer": "TsNIITochMash",
-  "cartridge_id": "",
+  "cartridge_id": "9_x_39",
   "note": "Val (Russia). Same weapon as AS Val; 9x39, 210 mm.",
   "values": {
    "cartridge": {
@@ -42283,7 +43314,7 @@
    "vis100"
   ],
   "manufacturer": "FB Radom (Fabryka Broni)",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "VIS 100 (Poland). Polish 9x19 service pistol.",
   "values": {
    "cartridge": {
@@ -42316,7 +43347,7 @@
    "vp40"
   ],
   "manufacturer": "Heckler & Koch",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "VP40 (Germany). HK product catalog lists VP40 in .40 S&W. No pitch published on the VP40 sheet. Where HK states it (VP9 family), the barrel is 6 groove, right hand, 1 in 9.8 in (248.9 mm).",
   "values": {
    "cartridge": {
@@ -42349,7 +43380,7 @@
    "vp40tactical"
   ],
   "manufacturer": "Heckler & Koch",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "VP40 Tactical (Germany). HK 2018 catalog, VP pistol cutaway: cold-hammer forged barrel, polygonal bore, 6 groove, right hand twist, 1 in 9.8 inch = 248.9 mm.",
   "values": {
    "cartridge": {
@@ -42507,7 +43538,7 @@
    "vpo129"
   ],
   "manufacturer": "Molot-Oruzhie",
-  "cartridge_id": "",
+  "cartridge_id": "7_62_x_54_r",
   "note": "VPO-129 (Russia). 7.62x54R civilian rifle; C.I.P. 240 mm.",
   "values": {
    "cartridge": {
@@ -42594,7 +43625,7 @@
    "vssvintorezsniperrifle"
   ],
   "manufacturer": "TsKIB SOO",
-  "cartridge_id": "",
+  "cartridge_id": "9_x_39",
   "note": "\"The twist rate is 1:210 mm (1:8.3 inches).\" States a 1 turn in 210 mm twist for the VSS/Vintorez 9x39 barrel.",
   "values": {
    "cartridge": {
@@ -42735,7 +43766,7 @@
    "weatherbyweatherby460"
   ],
   "manufacturer": "Weatherby",
-  "cartridge_id": "",
+  "cartridge_id": "460_weath_mag",
   "note": "Model 460 (United States). Model 460 legacy; no twist published",
   "values": {
    "cartridge": {
@@ -42993,7 +44024,7 @@
    "wist94"
   ],
   "manufacturer": "FB Radom (Fabryka Broni)",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "WIST-94 (Poland). Polish 9x19 pistol.",
   "values": {
    "cartridge": {
@@ -43047,7 +44078,7 @@
    "wrangler"
   ],
   "manufacturer": "Ruger",
-  "cartridge_id": "",
+  "cartridge_id": "22_long_rifle",
   "note": "Wrangler (United States). Ruger product line 'Wrangler', model '*', 22 LR: twist 14.000 in, 6 grooves.",
   "values": {
    "cartridge": {
@@ -43150,6 +44181,26 @@
   }
  },
  {
+  "weapon_id": "xd",
+  "names": [
+   "HS Produkt XD"
+  ],
+  "aliases": [
+   "hsproduktxd"
+  ],
+  "manufacturer": "HS Produkt",
+  "cartridge_id": "9x19",
+  "note": "XD (Croatia). twist not stated",
+  "values": {
+   "cartridge": {
+    "value": "9x19mm Parabellum",
+    "unit": "name",
+    "source": "springfield_xd_manual",
+    "grade": "documented"
+   }
+  }
+ },
+ {
   "weapon_id": "xd40",
   "names": [
    "HS Produkt XD-40"
@@ -43159,7 +44210,7 @@
    "xd40"
   ],
   "manufacturer": "HS Produkt",
-  "cartridge_id": "",
+  "cartridge_id": "40_smith_wesson",
   "note": "XD-40 (Croatia). twist not stated",
   "values": {
    "cartridge": {
@@ -43222,7 +44273,7 @@
    "xde"
   ],
   "manufacturer": "Springfield Armory",
-  "cartridge_id": "",
+  "cartridge_id": "9x19",
   "note": "XD-E (United States). Product page not matched; twist not verified.",
   "values": {
    "cartridge": {
@@ -43304,7 +44355,7 @@
    "xm15a3gsemiautorifle"
   ],
   "manufacturer": "Bushmaster",
-  "cartridge_id": "",
+  "cartridge_id": "556x45_nato",
   "note": "Bushmaster XM-15 Rifles User Manual: \"Barrels on XM15 and Carbon 15 Models are either chrome lined Chrome Moly Vanadium Steel or 416 Stainless Steel. They are usually button rifled 1 turn in 9\" with a right hand twist - 6 lands and grooves.\" States the XM-15 barrel twist is 1 turn in 9 inch with 6 lands and grooves = 228.6 mm per turn.",
   "values": {
    "cartridge": {
@@ -43338,7 +44389,7 @@
    "xm15a4gsemiautorifle"
   ],
   "manufacturer": "Bushmaster",
-  "cartridge_id": "",
+  "cartridge_id": "556x45_nato",
   "note": "Bushmaster XM-15 Rifles User Manual: \"Barrels on XM15 and Carbon 15 Models are either chrome lined Chrome Moly Vanadium Steel or 416 Stainless Steel. They are usually button rifled 1 turn in 9\" with a right hand twist - 6 lands and grooves.\" States the XM-15 barrel twist is 1 turn in 9 inch with 6 lands and grooves = 228.6 mm per turn.",
   "values": {
    "cartridge": {
@@ -43372,7 +44423,7 @@
    "xm15dmrsemiautorifle"
   ],
   "manufacturer": "Bushmaster",
-  "cartridge_id": "",
+  "cartridge_id": "556x45_nato",
   "note": "Bushmaster XM-15 Rifles User Manual: \"Barrels on XM15 and Carbon 15 Models are either chrome lined Chrome Moly Vanadium Steel or 416 Stainless Steel. They are usually button rifled 1 turn in 9\" with a right hand twist - 6 lands and grooves.\" The DMR is an XM-15 model, so the XM-15 barrel specification 1 turn in 9 inch = 228.6 mm per turn applies.",
   "values": {
    "cartridge": {
@@ -43559,7 +44610,7 @@
    "xmodel44magblacksyntheticlever174barrelmlokforend"
   ],
   "manufacturer": "Henry",
-  "cartridge_id": "",
+  "cartridge_id": "44_remington_magnum",
   "note": "Henry X Model product page, model H012X \"H12 X Model .44 Magnum/.44 Spl\": \"Barrel Length 17.4\" ... Rate of Twist 1:20\". A 1 turn in 20 inch twist = 20 x 25.4 = 508.0 mm per turn.",
   "values": {
    "cartridge": {

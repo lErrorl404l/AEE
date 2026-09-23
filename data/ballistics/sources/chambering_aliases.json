@@ -1,0 +1,42 @@
+{
+ "retrieved": "2026-09-23",
+ "note": "A chambering abbreviation that differs from the register name. Each entry is an identity claim between two names for one cartridge, so each carries the source that states the equivalence. Keyed on the canonical key (see tools/validation/chambering.py), never on the raw text, so a register that renames a record does not break the alias.",
+ "aliases": [
+  {
+   "key": "40sw",
+   "cartridge_id": "40_smith_wesson",
+   "note": ".40 S&W is the common abbreviation of .40 Smith & Wesson. Both names are on the SAAMI cartridge and chamber drawing.",
+   "source": "saami_z299_3"
+  },
+  {
+   "key": "380acp",
+   "cartridge_id": "380_automatic",
+   "note": ".380 ACP is the common name. SAAMI catalogues the cartridge as .380 Automatic, which is the same round.",
+   "source": "saami_z299_3"
+  },
+  {
+   "key": "25acp",
+   "cartridge_id": "25_automatic",
+   "note": ".25 ACP is the common name. SAAMI catalogues the cartridge as .25 Automatic.",
+   "source": "saami_z299_3"
+  },
+  {
+   "key": "22lr",
+   "cartridge_id": "22_long_rifle",
+   "note": ".22 LR abbreviates .22 Long Rifle. SAAMI lists .22 Long Rifle.",
+   "source": "saami_z299_4"
+  },
+  {
+   "key": "44mag",
+   "cartridge_id": "44_remington_magnum",
+   "note": ".44 Magnum is the common name of the .44 Remington Magnum, which is the name on the SAAMI drawing.",
+   "source": "saami_z299_3"
+  },
+  {
+   "key": "460weatherbymag",
+   "cartridge_id": "460_weath_mag",
+   "note": ".460 Weatherby Magnum is the register's own name for the same cartridge, written in full.",
+   "source": "cip_tdcc"
+  }
+ ]
+}
