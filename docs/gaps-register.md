@@ -255,3 +255,59 @@ class, and the phase caught it.
 
 **Lesson.** One variable has one owner and one scope. When two producers
 disagree, give the weaker one its own variable rather than a tie-break.
+
+## GAP-023: a supersession that left its consumers behind
+
+Status: Closed
+
+**What happened.** Issue #11 asked for three things. The largest, a full
+soil temperature solve, landed as a 4-node Crank-Nicolson stack (issue
+#198), which replaced the single-node solver the issue had described. Two
+consumers of the OLD approximation were never moved with it:
+`fnc_detectGroundFrost` still computed the surface as `T_air - 2` on a
+clear calm night, and `fnc_calculateFreezeThawCycling` still used
+`0.05 * sqrt(FDD)`. Both were the exact shortcuts the issue named.
+
+**What went wrong.** The replacement was declared done when the new model
+landed. Nothing checked whether every consumer of the model it replaced
+had been routed.
+
+**Why.** The rule was absent. A replacement reads as complete because the
+new code works, and the old call sites keep working too, on the value
+they always produced. Nothing compares the two.
+
+**What prevents recurrence.** Both consumers now read the solved values.
+`test_frost_supersession.py` guards each route at source level, because
+"this file uses the solved value" is a property no runtime test can see
+on a headless server.
+
+**Lesson.** A replacement is not done when the new model works. It is done
+when every consumer of the old one has moved.
+
+## GAP-024: a test that asserted a monotonicity the physics lacks
+
+Status: Closed
+
+**What happened.** A new test asserted that frost depth decreases as soil
+water content rises, across every row of the material table. It failed on
+two rows that share one water content. An earlier version of the same
+table also produced a 65-metre frost depth, because a water content of
+zero let the divisor collapse to the floor.
+
+**What went wrong.** Two faults, both in my own work. Depth depends on
+BOTH the frozen conductivity and the water content, so ordering by water
+content alone is not guaranteed to be monotonic. And a cover over soil
+(concrete, asphalt, metal) is not a soil: it takes the ground beneath it.
+
+**Why.** The guardrail was absent at first. I wrote the test from the
+intuition "more water, less depth" without checking that the function has
+one controlling variable. It does not.
+
+**What prevents recurrence.** The test holds conductivity fixed and varies
+only the water content, which is the invariant that actually holds. The
+table gives every cover the soil beneath it. A test asserts no material
+exceeds 5 m of frost depth at 500 degree-days.
+
+**Lesson.** A test that fails on correct code is a finding about the test.
+Check which variables the function actually depends on before asserting
+monotonicity in one of them.
