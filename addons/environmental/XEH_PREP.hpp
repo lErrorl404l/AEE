@@ -18,6 +18,8 @@ PREPS(terrain,calculateFrostOnWindscreens);
 PREPS(terrain,detectGroundFrost);
 PREPS(climatology,calculateLunarIllumination);
 PREPS(warnings,calculateSevereWeather);
+PREPS(warnings,calculateBlowingSnowVisibility);
+PREPS(warnings,calculateDustVisibility);
 PREPS(terrain,calculateSnowAccumulation);
 PREPS(climatology,calculateSpaceWeather);
 PREPS(climatology,calculateQNH);

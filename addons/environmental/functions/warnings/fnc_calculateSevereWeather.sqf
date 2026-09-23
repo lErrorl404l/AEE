@@ -11,7 +11,9 @@ Dust devils need the 2-8 m/s wind band: calm enough to not be
 shredded, windy enough for vorticity. Strong wind (above the sandstorm
 threshold) destroys them.
 
-Each severity is 0-1 (0 = none, 1 = severe).
+Each severity is 0-1 (0 = none, 1 = severe).  The sandstorm and
+blowing-snow intensities come from the dust and snow visibility models
+(issue #106), so each scalar rises as the visibility falls.
 Sets QEGVAR(core,currentSandstorm), QEGVAR(core,currentBlowingSnow), QEGVAR(core,currentDustDevil).
 */
 
@@ -44,20 +46,33 @@ private _groundState = missionNamespace getVariable [QEGVAR(core,groundState), "
 
 if (isNil "_temp") then { _temp = 20; };
 
-// ─── Sandstorm — arid + dry + wind above the threshold ──────────────────
+// ─── Sandstorm / haboob — arid + dry + wind above the threshold ─────────
+// The intensity comes from the dust visibility (Baddock 2014), not from a
+// wind scalar.  The airborne concentration is a MODELLING CHOICE: the mod
+// has no dust sensor, so the concentration ramps from 1 mg/m3 at the wind
+// threshold to 10 mg/m3 ten m/s above it.  That spans the issue's severe
+// band (1 to 10 mg/m3, 500 to 50 m visibility) over the 10 to 20 m/s wind
+// range the issue gives for typical to crusted sand.
+private _sandThreshold = missionNamespace getVariable [QGVAR(SandstormWindThreshold), 10];
 private _sandstorm = 0;
 if (!isNil "_biome"
     && _biome in ["BWh","BWk","BSh","BSk"]
-    && (_windSpd > missionNamespace getVariable [QGVAR(SandstormWindThreshold), 10])
+    && (_windSpd > _sandThreshold)
     && (_rain < 0.01)
 ) then {
-    _sandstorm = (_windSpd / 25) min 1.0;
+    private _concentration = 1 + ((_windSpd - _sandThreshold) * 0.9);
+    _sandstorm = ([_concentration] call FUNC(calculateDustVisibility)) get "intensity";
 };
 
 // ─── Blowing snow / whiteout — snow state + cold + wind above threshold ──
+// The intensity comes from the suspended-snow visibility (Li and Pomeroy
+// 1997b), not from a wind scalar.  Air density is passed in so the
+// saltation flux uses the current atmosphere.
 private _blowingSnow = 0;
 if (_groundState == "Snow" && (_windSpd > missionNamespace getVariable [QGVAR(BlowingSnowWindThreshold), 8]) && (_temp < 0)) then {
-    _blowingSnow = (_windSpd / 20) min 1.0;
+    private _rhoA = missionNamespace getVariable [QEGVAR(core,currentAirDensity), 1.225];
+    if !(_rhoA isEqualType 0) then { _rhoA = 1.225; };
+    _blowingSnow = ([_windSpd, _temp, 0.001, _rhoA, 0.20] call FUNC(calculateBlowingSnowVisibility)) get "intensity";
 };
 
 // ─── Dust devil — arid + hot + clear + wind 2-8 m/s ─────────────────────
