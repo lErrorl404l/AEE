@@ -58,6 +58,11 @@ private _clo = switch (true) do {
     // The combat fallback: any pattern/camo/olive/uniform name is a
     // standard combat uniform (clo 0.75).  The garment types (smock,
     // fatigues, coverall, jumpsuit, overall) are combat-wear.
+    // Faction and role names are combat wear too: the vanilla classnames
+    // carry CTRG, Guerilla, Soldier and Plain rather than a pattern, and
+    // without them those uniforms fell through to the light-shirt default.
+    case (_uni find "cbrn" >= 0):              { 2.63 };
+    case (_uni find "eod" >= 0):               { 2.63 };
     case (_uni find "camo" >= 0 ||
           _uni find "pattern" >= 0 ||
           _uni find "uniform" >= 0 ||
@@ -86,6 +91,14 @@ private _clo = switch (true) do {
           _uni find "emr" >= 0 ||
           _uni find "mtp" >= 0 ||
           _uni find "dpm" >= 0 ||
+          // Faction and role names: the vanilla cuts carry CTRG, Guerilla,
+          // Soldier and Plain rather than a pattern, and without them those
+          // uniforms fell through to the light-shirt default.
+          _uni find "ctrg" >= 0 ||
+          _uni find "guerilla" >= 0 ||
+          _uni find "soldier" >= 0 ||
+          _uni find "plain" >= 0 ||
+          _uni find "safety" >= 0 ||
           _uni find "multicam" >= 0):           { 0.75 };
     default                                     { 0.50 };   // light shirt
 };
