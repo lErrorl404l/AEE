@@ -23,13 +23,11 @@ _gusts = _gusts * (_gustFreq * 2);
 // Apply module wind multiplier (EDEN/Zeus)
 private _moduleMult = missionNamespace getVariable [QEGVAR(core,moduleWindMultiplier), 1];
 
-// Only call setWind when the multiplier actually changes the vector.
-// Calling setWind every tick (even with the same values) resets the
-// engine's natural gust cycle and can cause visual artefacts during
-// skip-time or rapid weather transitions.
+// Apply the module multiplier (EDEN/Zeus) to the vector.  The engine push
+// happens ONCE, after the terrain speed-up below, so the engine `wind`
+// command always carries AEE's final vector (issue #78, Row 1/Row 4).
 if (_moduleMult != 1) then {
     _wind = [_wind#0 * _moduleMult, _wind#1 * _moduleMult];
-    setWind [_wind select 0, _wind select 1, false];
 };
 
 // Compute wind direction in meteorological convention (degrees from north, wind FROM)
@@ -62,3 +60,21 @@ missionNamespace setVariable [QEGVAR(core,currentWind), _wind];
 missionNamespace setVariable [QEGVAR(core,currentGusts), _gusts];
 missionNamespace setVariable [QEGVAR(core,currentWindDir), _windDir];
 missionNamespace setVariable [QEGVAR(core,currentWindStr), _windStr];
+
+// ─── Push the final vector to the engine ─────────────────────────────────
+// ACE3 ballistics reads the engine `wind` command, NOT a mission variable,
+// so the terrain-scaled vector must reach the engine or a shot over a ridge
+// is deflected by the wrong wind (issue #78, Row 1 and Row 4).
+//
+// Push ONLY when the vector changed.  Calling setWind every tick resets the
+// engine's natural gust cycle and distorts the visuals during skip-time or
+// a fast weather transition, so the previous pushed value is kept and
+// compared.  This is the same discipline as before, now applied to the
+// final vector rather than the module multiplier alone.
+private _lastPushed = missionNamespace getVariable [QEGVAR(core,pushedWind), []];
+private _windChanged = (count _lastPushed != 2
+    || {_lastPushed isNotEqualTo [_wind#0, _wind#1]});
+if (_windChanged) then {
+    setWind [_wind#0, _wind#1, false];
+    missionNamespace setVariable [QEGVAR(core,pushedWind), [_wind#0, _wind#1]];
+};

@@ -44,6 +44,7 @@ follow the variable names as written in the SQF source.
 | `aee_core_currentWind` | atmos | Wind vector |
 | `aee_core_currentWindDir` | atmos | Wind direction in degrees |
 | `aee_core_currentGusts` | atmos | Gust speed in m/s |
+| `aee_core_pushedWind` | atmos | Last wind vector pushed to the engine `wind` command |
 | `aee_core_currentFogDensity` | atmos | Fog density 0..1 |
 | `aee_core_currentHaze` | atmos | Haze intensity 0..1 |
 | `aee_core_cloudCeiling_m` | atmos | Cloud base height in metres |
