@@ -2778,6 +2778,41 @@ private _p29Pass = 0;
         diag_log text format ["[PHASE60] [FAIL] surface material: %1", _seen];
     };
 
+    // -- PHASE 61: kickup physics per material --
+    // The dust an emitter throws must match the ground: sand behaves like
+    // sand and snow like snow, and the environmental state scales it.
+    // The engine is the solver, so the parameters must differ per material
+    // and must move with air density and moisture.
+    private _sand = ["sand", 1.0, []] call aee_fx_fnc_kickupParams;
+    private _snow = ["snow", 0.55, []] call aee_fx_fnc_kickupParams;
+    private _mud = ["mud", 0.2, []] call aee_fx_fnc_kickupParams;
+    private _gravel = ["gravel", 0.6, []] call aee_fx_fnc_kickupParams;
+    // Sand is heavier than snow and drags less (settles faster).
+    private _sandHeavier = (_sand select 0) > (_snow select 0);
+    private _sandLessDrag = (_sand select 1) < (_snow select 1);
+    // Snow drifts on the wind more than mud.
+    private _snowDrifts = (_snow select 2) > (_mud select 2);
+    // Gravel settles at once (heaviest, least drag).
+    private _gravelSettles = (_gravel select 0) >= (_sand select 0);
+    // The colour comes from the SURFACE under the emitter when a position
+    // is given, so the same material on a different ground takes that
+    // ground's hue.  The sampled colour must equal what the classifier
+    // returns for that surface, not a per-material default.
+    private _pos = getPosASL player;
+    private _sampled = [_pos] call aee_fx_fnc_surfaceSample;
+    private _withPos = ["snow", 0.55, [], _pos] call aee_fx_fnc_kickupParams;
+    private _colourFromGround = (_withPos select 4) isEqualTo (_sampled select 1);
+    // The colour must be a valid RGBA (4 elements, 0..1).
+    private _rgbaOk = (count (_sand select 4)) == 4
+        && {((_sand select 4) select 0) >= 0 && {((_sand select 4) select 0) <= 1}};
+    private _p61Ok = _sandHeavier && {_sandLessDrag} && {_snowDrifts}
+        && {_gravelSettles} && {_rgbaOk} && {_colourFromGround};
+    if (_p61Ok) then {
+        diag_log text format ["[PHASE61] [PASS] kickup: sand w%1 v%2, snow w%3 v%4 r%5, mud r%6, gravel w%7, ground colour %8 (%9)", _sand select 0, _sand select 1, _snow select 0, _snow select 1, _snow select 2, _mud select 2, _gravel select 0, _withPos select 4, _sampled select 0];
+    } else {
+        diag_log text format ["[PHASE61] [FAIL] kickup: sand=%1 snow=%2 mud=%3 gravel=%4 rgba=%5 colour-from-ground=%6", _sand, _snow, _mud, _gravel, _rgbaOk, _colourFromGround];
+    };
+
 diag_log text "[AEE-TEST] DONE";
         }, [_t1], 5] call CBA_fnc_waitAndExecute;
     }, [], 7] call CBA_fnc_waitAndExecute;
