@@ -51,11 +51,11 @@ if (_strength <= 0) exitWith { 1 };
 private _step = 500;
 private _x = _pos select 0;
 private _y = _pos select 1;
-private _centre = getTerrainHeightASL _pos;
-private _upwind = getTerrainHeightASL [_x - _step, _y, 0];
-private _downwind = getTerrainHeightASL [_x + _step, _y, 0];
-private _side = (getTerrainHeightASL [_x, _y - _step, 0]
-    + getTerrainHeightASL [_x, _y + _step, 0]) / 2;
+private _centre = getTerrainHeightASL (_pos select [0, 2]);
+private _upwind = getTerrainHeightASL [_x - _step, _y];
+private _downwind = getTerrainHeightASL [_x + _step, _y];
+private _side = (getTerrainHeightASL [_x, _y - _step]
+    + getTerrainHeightASL [_x, _y + _step]) / 2;
 
 // The height above the surrounding terrain: how far the position stands
 // out from its neighbours.  A crest reads positive, a valley negative.
@@ -67,7 +67,7 @@ private _height = abs _relief;
 private _halfLength = _step;
 for "_i" from 1 to 4 do {
     private _d = _i * _step;
-    private _h = getTerrainHeightASL [_x - _d, _y, 0];
+    private _h = getTerrainHeightASL [_x - _d, _y];
     if ((abs (_centre - _h)) >= _height / 2) exitWith {
         _halfLength = _d;
     };

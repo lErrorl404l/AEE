@@ -131,7 +131,22 @@ if (_uhiSetting > 0) then {
     private _unit = call CBA_fnc_currentUnit;
     if (!isNil "_unit" && {!isNull _unit}) then { _pos = getPosASL _unit; };
     private _uhi = [_pos, _density] call EFUNC(environmental,calculateUrbanHeatIsland);
-    _T_shade = _T_shade + _uhi * (_uhiSetting min 1);
+    private _uhiOffset = _uhi * (_uhiSetting min 1);
+    _T_shade = _T_shade + _uhiOffset;
+};
+
+// ─── Local microclimate ──────────────────────────────────────────────────
+// Cold-air pooling in a hollow and canopy cooling, sampled over the radius
+// the user set.  The mechanisms are in fnc_calculateMicroclimate.
+private _mcRadius = missionNamespace getVariable [QEGVAR(core,microclimateRadius), 200];
+if !(_mcRadius isEqualType 0) then { _mcRadius = 200; };
+if (_mcRadius > 0) then {
+    private _mcUnit = call CBA_fnc_currentUnit;
+    if (!isNil "_mcUnit" && {!isNull _mcUnit}) then {
+        private _mcPos = getPosASL _mcUnit;
+        private _mcOffset = [_mcPos, _mcRadius] call EFUNC(environmental,calculateMicroclimate);
+        _T_shade = _T_shade + _mcOffset;
+    };
 };
 
 // ─── Output ───────────────────────────────────────────────────────────────

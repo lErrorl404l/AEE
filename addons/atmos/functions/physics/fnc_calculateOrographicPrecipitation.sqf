@@ -75,10 +75,10 @@ if !(_v isEqualType 0) then { _v = 0; };
 private _step = 500;
 private _x = _pos select 0;
 private _y = _pos select 1;
-private _hAbove = getTerrainHeightASL [_x + _step, _y, 0];
-private _hBelow = getTerrainHeightASL [_x - _step, _y, 0];
-private _hRight = getTerrainHeightASL [_x, _y + _step, 0];
-private _hLeft = getTerrainHeightASL [_x, _y - _step, 0];
+private _hAbove = getTerrainHeightASL [_x + _step, _y];
+private _hBelow = getTerrainHeightASL [_x - _step, _y];
+private _hRight = getTerrainHeightASL [_x, _y + _step];
+private _hLeft = getTerrainHeightASL [_x, _y - _step];
 
 // The gradient in the x and y directions, m per m.
 private _dzdx = (_hAbove - _hBelow) / (2 * _step);
