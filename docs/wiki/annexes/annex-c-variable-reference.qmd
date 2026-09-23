@@ -112,6 +112,7 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_nightvision_nvgGateFlickerUntil` | nightvision | Mission time until the gate-transition blackout flicker ends |
 | `aee_nightvision_nvgGrainBoost` | nightvision | 1 while gate flicker active (noise floor raised), 0 otherwise |
 | `aee_nightvision_nvgTubeOnTime` | nightvision | Mission time the tube was first powered on - drives the warm-up dark-current curve (#153 gap 4) |
+| `aee_nightvision_nvgPerceived` | nightvision | Perceived NVG output 0.65..1.0: AGC brightness x cleanliness (MTF x SNR / erosion), per tier - consumed by ColorCorrections (#153 gap 6) |
 | `aee_optics_viewDistanceTarget` | optics | Vision-driven view distance target in metres (issue #138) |
 | `aee_optics_viewDistanceSigma` | optics | Total atmospheric extinction sigma for the view-distance driver |
 
