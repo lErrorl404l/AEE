@@ -14,6 +14,9 @@ if (is3DEN) exitWith {};
             "_hitIndex", "_instigator", "_hitPoint"];
     // Only land vehicles; cheap gate for everything else.
     if !(_unit isKindOf "LandVehicle") exitWith { _damage };
+    // The module's own switch, so a mission can disable the whole armour
+    // model without unloading the addon.
+    if !(missionNamespace getVariable [QGVAR(armourEnabled), true]) exitWith { _damage };
     if !(missionNamespace getVariable [QGVAR(penetrationGate), true]) exitWith { _damage };
     [_unit, _selection, _damage, _source, _projectile, _hitIndex,
      _instigator, _hitPoint] call FUNC(penetrationGate);
