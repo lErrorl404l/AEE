@@ -63,7 +63,7 @@ private _surfaceClass = "ground";
 if (count _posASL >= 2) then {
     _surfaceClass = (surfaceType [_posASL select 0, _posASL select 1]) call EFUNC(material,classifyBySurfaceType);
 };
-private _C = [_surfaceClass, _snowDepth] call EFUNC(thermal,calculateStefanCoefficient);
+private _C = [_surfaceClass, _snowDepth] call EFUNC(material,calculateStefanCoefficient);
 
 if (_T < 0) then {
     // Accumulate freezing degree-hours, convert to degree-days.

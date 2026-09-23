@@ -1,3 +1,4 @@
+PREP(calculateStefanCoefficient);
 PREP(classifyBySurfaceType);
 PREP(getObjectMaterial);
 PREP(getSurfaceMaterial);

@@ -1,4 +1,4 @@
-#include "..\..\script_component.hpp"
+#include "..\script_component.hpp"
 /*
 Stefan frost-depth coefficient from the soil's own water content and its
 frozen thermal conductivity (issue #11, the soil-type-dependent Stefan

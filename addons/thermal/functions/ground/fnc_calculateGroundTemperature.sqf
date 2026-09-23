@@ -134,6 +134,7 @@ if (count _pos >= 2) then {
     private _surfState = missionNamespace getVariable [QGVAR(groundSurfaceTemp), createHashMap];
     _surfState set [_cellKey, _ts];
     missionNamespace setVariable [QGVAR(groundSurfaceTemp), _surfState];
+    missionNamespace setVariable [QEGVAR(core,groundSurfaceTemp), _surfState];
 };
 
 _result
