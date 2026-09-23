@@ -44,6 +44,9 @@ MASS_FILES = (
     "weapon_mass_manuals.json",
     "weapon_mass_a.json",
     "weapon_mass_b.json",
+    "weapon_mass_c.json",
+    "weapon_mass_d.json",
+    "weapon_mass_e.json",
 )
 NEEDS_VERIFICATION = {"weapon_mass_manuals.json", "weapon_mass_candidates.json"}
 

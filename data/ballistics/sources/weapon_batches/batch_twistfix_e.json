@@ -1,0 +1,322 @@
+{
+ "retrieved": "2026-09-23",
+ "note": "Twist rows split out of weapon_mass_e.json: the mass merge does not read a twists key, so a twist kept there would be dropped in silence.",
+ "sources": [
+  {
+   "source_id": "tikka-us-t3x-upr",
+   "title": "Tikka T3x product family technical data (rifleProductTotalWeight, rifleRateOfTwist)",
+   "url": "https://www.tikka.us/rifles/tikka-t3x/t3x-upr",
+   "sha256": "7b7b1fc778f06ecb49b08455dd5d53d9bb2c809da0f30cd283ddabad3b4a4ce9",
+   "publisher": "Tikka (Sako Ltd / Beretta Holding)",
+   "tier": 4
+  },
+  {
+   "source_id": "tikka-us-t1x",
+   "title": "Tikka T1x product family technical data (rifleProductTotalWeight, rifleRateOfTwist)",
+   "url": "https://www.tikka.us/rifles/tikka-t1x",
+   "sha256": "48fafe0bbd6772133c6cdf6fb87a3cbb838075f0cc0825e0db0214b4ac6e0b27",
+   "publisher": "Tikka (Sako Ltd / Beretta Holding)",
+   "tier": 4
+  },
+  {
+   "source_id": "sako-100-explorer",
+   "title": "Sako 100 Explorer product page technical data",
+   "url": "https://www.sako.global/rifle/sako-100-explorer",
+   "sha256": "694965c47abd644ce3e13ff6a9d4cec7cde62c831edb498aa84fbf8380b9297e",
+   "publisher": "Sako Ltd (Beretta Holding)",
+   "tier": 4
+  },
+  {
+   "source_id": "sako-90-hunter",
+   "title": "Sako 90 Hunter product page technical data",
+   "url": "https://www.sako.global/rifle/sako-90-hunter",
+   "sha256": "d29ebcda678686549b78d8a2f23c12c2f4ad001ae1f386648e057083293439a9",
+   "publisher": "Sako Ltd (Beretta Holding)",
+   "tier": 4
+  },
+  {
+   "source_id": "sako-s20-hunter",
+   "title": "Sako S20 Hunter product page technical data",
+   "url": "https://www.sako.global/rifle/sako-s20-hunter",
+   "sha256": "c332ebbc829497e5484483e48e18c7ae221293c94e2ab6c768f45515fc93ab47",
+   "publisher": "Sako Ltd (Beretta Holding)",
+   "tier": 4
+  },
+  {
+   "source_id": "sako-s20-precision",
+   "title": "Sako S20 Precision product page technical data",
+   "url": "https://www.sako.global/rifle/sako-s20-precision",
+   "sha256": "f0120adc5a5696797fa270ecb26f83abfb1d65895554038d9c5b9b459cbee8a0",
+   "publisher": "Sako Ltd (Beretta Holding)",
+   "tier": 4
+  },
+  {
+   "source_id": "sako-trg-2242",
+   "title": "Sako TRG 22/42 product page technical data",
+   "url": "https://www.sako.global/rifle/sako-trg-2242",
+   "sha256": "369f89dbdf775b623f1f5a389db17cca07bb5fd68fd39a67a59c827d90449dfb",
+   "publisher": "Sako Ltd (Beretta Holding)",
+   "tier": 4
+  },
+  {
+   "source_id": "sako-trg-2242-a1",
+   "title": "Sako TRG 22/42 A1 product page technical data",
+   "url": "https://www.sako.global/rifle/sako-trg-2242-a1",
+   "sha256": "8b3fec252f4b4d53064b6cce55adffed0bb454d68c90117cbce1fe6c942ed05b",
+   "publisher": "Sako Ltd (Beretta Holding)",
+   "tier": 4
+  },
+  {
+   "source_id": "sako-trg-m10",
+   "title": "Sako TRG M10 product page technical data",
+   "url": "https://www.sako.global/rifle/sako-trg-m10",
+   "sha256": "27fdeb163279fafe24e433bb2dfee3df14f0475a312e96d46bf35d889324fe41",
+   "publisher": "Sako Ltd (Beretta Holding)",
+   "tier": 4
+  },
+  {
+   "source_id": "bergara-catalog-2026",
+   "title": "Bergara 2026 product catalogue, specifications tables",
+   "url": "https://www.bergara.online/en/wp-content/uploads/sites/5/2026/05/2026-Bergara-Catalog_V12.1_.pdf",
+   "sha256": "43916f6ac8370f1cd90f2d1bbb14e53063d45e3f62bb51a7069c10503795545b",
+   "publisher": "Bergara International (BPI Outdoors)",
+   "tier": 4
+  },
+  {
+   "source_id": "bt-apc9-pro",
+   "title": "B&T APC9 PRO product page technical information",
+   "url": "https://bt-ag.ch/en/product/bt-weapons/bt-apc/bt-apc9-10-40-45-pro/apc9-pro/",
+   "sha256": "4d4acf0b838a704ba195e1b032f1dbb390cb13683a19e4eb7a9e565dbf0be0d9",
+   "publisher": "B&T AG (Brugger & Thomet), Thun, Switzerland",
+   "tier": 4
+  },
+  {
+   "source_id": "bt-apc9-k-pro",
+   "title": "B&T APC9 K PRO product page technical information",
+   "url": "https://bt-ag.ch/en/product/bt-weapons/bt-apc/bt-apc9-10-40-45-pro/apc9-k-pro/",
+   "sha256": "2f29843e17b8820120bebc34abf172fadd76f6af950ba77a3135969fe5f5cf04",
+   "publisher": "B&T AG (Brugger & Thomet), Thun, Switzerland",
+   "tier": 4
+  },
+  {
+   "source_id": "bt-apc9-sd-pro",
+   "title": "B&T APC9 SD PRO product page technical information",
+   "url": "https://bt-ag.ch/en/product/bt-weapons/bt-apc/bt-apc9-10-40-45-pro/apc9-sd-pro/",
+   "sha256": "9a68a3c78671a33f88786def192408fd458d438919fb3e933bca46de429930b3",
+   "publisher": "B&T AG (Brugger & Thomet), Thun, Switzerland",
+   "tier": 4
+  },
+  {
+   "source_id": "bt-apc223-pro-222mm",
+   "title": "B&T APC223 PRO (222 mm) product page technical information",
+   "url": "https://bt-ag.ch/en/product/bt-weapons/bt-apc/bt-apc556-223/apc223-pro-222mm/",
+   "sha256": "0e5c226b5cc9c443a239770a355c6665a5271b3ba0ff332c967a1c32700155f0",
+   "publisher": "B&T AG (Brugger & Thomet), Thun, Switzerland",
+   "tier": 4
+  },
+  {
+   "source_id": "bt-apc300-pro-222mm",
+   "title": "B&T APC300 PRO (222 mm) product page technical information",
+   "url": "https://bt-ag.ch/en/product/bt-weapons/bt-apc/bt-apc300/apc300-pro-222mm/",
+   "sha256": "1393e6499ec775ca320a54bc1f71ae15241707c7bf5951b7f3a3030c0e5029b4",
+   "publisher": "B&T AG (Brugger & Thomet), Thun, Switzerland",
+   "tier": 4
+  },
+  {
+   "source_id": "bt-apc308-pro-330mm",
+   "title": "B&T APC308 PRO (330 mm) product page technical information",
+   "url": "https://bt-ag.ch/en/product/bt-weapons/bt-apc/bt-apc308/apc308-pro-330mm/",
+   "sha256": "59913d1b8d879df856e80affe882dd8451ef803d45eb3e6450f3c994a5d8e233",
+   "publisher": "B&T AG (Brugger & Thomet), Thun, Switzerland",
+   "tier": 4
+  },
+  {
+   "source_id": "bt-ghm9",
+   "title": "B&T GHM9 product page technical information",
+   "url": "https://bt-ag.ch/en/product/bt-weapons/bt-ghm9/ghm9/",
+   "sha256": "dd65bca7fba8fcc2f093e4a746dece7ae13ec438e061cedc90b0c655f9a7df12",
+   "publisher": "B&T AG (Brugger & Thomet), Thun, Switzerland",
+   "tier": 4
+  },
+  {
+   "source_id": "bt-ghm9-compact",
+   "title": "B&T GHM9 Compact product page technical information",
+   "url": "https://bt-ag.ch/en/product/bt-weapons/bt-ghm9/ghm9-compact/",
+   "sha256": "f641bdc59762add18239de26fe3fe303633de406da068151f64a970f6a6d64b7",
+   "publisher": "B&T AG (Brugger & Thomet), Thun, Switzerland",
+   "tier": 4
+  },
+  {
+   "source_id": "bt-kh9-c",
+   "title": "B&T KH9-C product page technical information",
+   "url": "https://bt-ag.ch/en/product/bt-weapons/bt-kh9/kh9-c/",
+   "sha256": "b7558f8a8439f87da1f7970482a73867df5470f88f048b4ca9833d78dee6b5ac",
+   "publisher": "B&T AG (Brugger & Thomet), Thun, Switzerland",
+   "tier": 4
+  },
+  {
+   "source_id": "bt-mp9-n",
+   "title": "B&T MP9-N product page technical information",
+   "url": "https://bt-ag.ch/en/product/bt-weapons/bt-mp-tp/bt-mp9-tp9/mp9-n/",
+   "sha256": "d00c56473426a77837341daed54d841a86eefce7aa98be7da1c67248f981c934",
+   "publisher": "B&T AG (Brugger & Thomet), Thun, Switzerland",
+   "tier": 4
+  },
+  {
+   "source_id": "bt-spc9",
+   "title": "B&T SPC9 product page technical information",
+   "url": "https://bt-ag.ch/en/product/bt-weapons/bt-spc/bt-spc9/spc9/",
+   "sha256": "bba9655e5ce3e8aa358956d055019faa5c1774b6ccf75fb24c6d5847c9103e43",
+   "publisher": "B&T AG (Brugger & Thomet), Thun, Switzerland",
+   "tier": 4
+  },
+  {
+   "source_id": "bt-spr300",
+   "title": "B&T SPR300 product page technical information",
+   "url": "https://bt-ag.ch/en/product/bt-weapons/bt-spr300/spr300/",
+   "sha256": "3e4b04963ccd39dbe41cf79ac76855c4d89e7e3b7ce20fb2a8b168bb49154ee2",
+   "publisher": "B&T AG (Brugger & Thomet), Thun, Switzerland",
+   "tier": 4
+  },
+  {
+   "source_id": "bt-tp9-n",
+   "title": "B&T TP9-N product page technical information",
+   "url": "https://bt-ag.ch/en/product/bt-weapons/bt-mp-tp/bt-mp9-tp9/tp9-n/",
+   "sha256": "0d33957126a0ae69a2ad1a5c5b143fa32b2d871a171e3286a43b7b3d90628e63",
+   "publisher": "B&T AG (Brugger & Thomet), Thun, Switzerland",
+   "tier": 4
+  },
+  {
+   "source_id": "zastava-m05-e2",
+   "title": "Zastava M05 E2 assault rifle technical data",
+   "url": "https://zastava-arms.rs/en/assault-rifle-m05-e2/",
+   "sha256": "f57ee6963a098e3e0d73978d3677afc650e68577cbe08497a69a60585f8b9b3f",
+   "publisher": "Zastava Arms d.o.o., Kragujevac, Serbia",
+   "tier": 4
+  },
+  {
+   "source_id": "zastava-m05-e3",
+   "title": "Zastava M05 E3 assault rifle technical data",
+   "url": "https://zastava-arms.rs/en/assault-rifle-m05-e3/",
+   "sha256": "cf689001fcc186ce3d3137f69acfe3322be530ab96e93425d45cf5765a853182",
+   "publisher": "Zastava Arms d.o.o., Kragujevac, Serbia",
+   "tier": 4
+  },
+  {
+   "source_id": "zastava-m19",
+   "title": "Zastava M19 modular assault rifle technical data",
+   "url": "https://zastava-arms.rs/en/modular-assault-rifle-m19-m20/",
+   "sha256": "38a1e326916785c9064c05a584a832761d23f1876cf94e78e4ced051e6cd6a08",
+   "publisher": "Zastava Arms d.o.o., Kragujevac, Serbia",
+   "tier": 4
+  },
+  {
+   "source_id": "zastava-m21-bs",
+   "title": "Zastava M21 BS submachine gun technical data",
+   "url": "https://zastava-arms.rs/en/submachine-gun-m21-bs/",
+   "sha256": "82a462e437c2c41eec9321955a0a8b05108e7d300a949b74b4354404b131029b",
+   "publisher": "Zastava Arms d.o.o., Kragujevac, Serbia",
+   "tier": 4
+  },
+  {
+   "source_id": "zastava-m91",
+   "title": "Zastava M91 sniper rifle technical data",
+   "url": "https://zastava-arms.rs/en/sniper-rifle-m91/",
+   "sha256": "8d8f58659d5bb6cc6434128c842f8c212af217218710992025d8db1d28ce6edc",
+   "publisher": "Zastava Arms d.o.o., Kragujevac, Serbia",
+   "tier": 4
+  },
+  {
+   "source_id": "zastava-m93",
+   "title": "Zastava M93 long range rifle technical data",
+   "url": "https://zastava-arms.rs/en/long-range-rifle-m93/",
+   "sha256": "5914a458e01c459cb1f0e7d9642df7ab9aa326f0985557c771ad2ef9f749cb01",
+   "publisher": "Zastava Arms d.o.o., Kragujevac, Serbia",
+   "tier": 4
+  },
+  {
+   "source_id": "zastava-cz999",
+   "title": "Zastava CZ999 pistol technical data",
+   "url": "https://zastava-arms.rs/en/pistol-cz-999/",
+   "sha256": "99d8fed254c37e257b79049fd5f7f6babaddf0e20dce153c61cd94de353246c2",
+   "publisher": "Zastava Arms d.o.o., Kragujevac, Serbia",
+   "tier": 4
+  },
+  {
+   "source_id": "zastava-ez9",
+   "title": "Zastava EZ9 pistol technical data",
+   "url": "https://zastava-arms.rs/en/pistol-ez9/",
+   "sha256": "8eeca52fcaa375e0628cb8f2150e621668bbaeaabba5011adf2b258fbbfa89ed",
+   "publisher": "Zastava Arms d.o.o., Kragujevac, Serbia",
+   "tier": 4
+  }
+ ],
+ "weights": [
+  {
+   "weapon_id": "sako90",
+   "name": "Sako 90",
+   "manufacturer": "Sako",
+   "cartridge": ".308 Winchester",
+   "barrel_mm": 569,
+   "twist_mm": 254.0,
+   "grooves": null,
+   "source_id": "sako-90-hunter",
+   "source_note": "Maker technical data: rifleRateOfTwist=1:10 in. for rifleCaliber=308_win, rifleBarrelLength=569 mm (Sako 90 Hunter Basic). 10 in = 254.0 mm."
+  },
+  {
+   "weapon_id": "trg21",
+   "name": "TRG-21",
+   "manufacturer": "Sako",
+   "cartridge": ".308 Winchester",
+   "barrel_mm": 660,
+   "twist_mm": 254.0,
+   "grooves": null,
+   "source_id": "sako-trg-2242",
+   "source_note": "Maker technical data: rifleRateOfTwist=1:10 in. for rifleCaliber=308_win, rifleBarrelLength=660 mm (TRG 22/42 family, .308 Win. member). 10 in = 254.0 mm."
+  },
+  {
+   "weapon_id": "trg41",
+   "name": "TRG-41",
+   "manufacturer": "Sako",
+   "cartridge": ".338 Lapua Magnum",
+   "barrel_mm": 690,
+   "twist_mm": 254.0,
+   "grooves": null,
+   "source_id": "sako-trg-2242",
+   "source_note": "Maker technical data: rifleRateOfTwist=1:10 in. for rifleCaliber=338_lapua_mag, rifleBarrelLength=690 mm (TRG 22/42 family, .338 Lapua Mag. member). 10 in = 254.0 mm."
+  },
+  {
+   "weapon_id": "trga1",
+   "name": "TRG 22/42 A1",
+   "manufacturer": "Sako",
+   "cartridge": ".308 Winchester",
+   "barrel_mm": 660,
+   "twist_mm": 254.0,
+   "grooves": null,
+   "source_id": "sako-trg-2242-a1",
+   "source_note": "Maker technical data: rifleRateOfTwist=1:10 in. for rifleCaliber=308_win, rifleBarrelLength=660 mm (TRG 22/42 A1 Black). 10 in = 254.0 mm."
+  },
+  {
+   "weapon_id": "trgm10",
+   "name": "TRG M10",
+   "manufacturer": "Sako",
+   "cartridge": ".308 Winchester",
+   "barrel_mm": 660,
+   "twist_mm": 254.0,
+   "grooves": null,
+   "source_id": "sako-trg-m10",
+   "source_note": "Maker technical data: rifleRateOfTwist=1:10 in. for rifleCaliber=308_win, rifleBarrelLength=660 mm. 10 in = 254.0 mm."
+  },
+  {
+   "weapon_id": "m93",
+   "name": "Zastava M93",
+   "manufacturer": "Zastava Arms",
+   "cartridge": "12.7x108 mm",
+   "barrel_mm": 1007,
+   "twist_mm": 381.0,
+   "grooves": 8,
+   "source_id": "zastava-m93",
+   "source_note": "Maker technical data: \"TWIST RATE 381 mm NUMBER OF GROOVES 8\"; \"CALIBRE 12.7 x 108 mm\"; \"BARREL LENGTH 1007 mm\"."
+  }
+ ]
+}

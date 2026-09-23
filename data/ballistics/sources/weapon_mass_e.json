@@ -1,0 +1,652 @@
+{
+ "retrieved": "2026-09-23",
+ "note": "Weapon mass and rifling-twist captures for the open worklist. Mass rows are keyed by the catalogue weapon_key; twist rows by the catalogue weapon_id. Values are maker-published technical data only. Sako and Tikka pages embed the maker product JSON (rifleProductTotalWeight in kg, rifleRateOfTwist in inches); Bergara values come from the 2026 catalogue specification tables; B&T from the product technical-information tables; Zastava from the maker technical-data tables.",
+ "sources": [
+  {
+   "source_id": "tikka-us-t3x-upr",
+   "title": "Tikka T3x product family technical data (rifleProductTotalWeight, rifleRateOfTwist)",
+   "url": "https://www.tikka.us/rifles/tikka-t3x/t3x-upr",
+   "sha256": "7b7b1fc778f06ecb49b08455dd5d53d9bb2c809da0f30cd283ddabad3b4a4ce9",
+   "publisher": "Tikka (Sako Ltd / Beretta Holding)",
+   "tier": 4
+  },
+  {
+   "source_id": "tikka-us-t1x",
+   "title": "Tikka T1x product family technical data (rifleProductTotalWeight, rifleRateOfTwist)",
+   "url": "https://www.tikka.us/rifles/tikka-t1x",
+   "sha256": "48fafe0bbd6772133c6cdf6fb87a3cbb838075f0cc0825e0db0214b4ac6e0b27",
+   "publisher": "Tikka (Sako Ltd / Beretta Holding)",
+   "tier": 4
+  },
+  {
+   "source_id": "sako-100-explorer",
+   "title": "Sako 100 Explorer product page technical data",
+   "url": "https://www.sako.global/rifle/sako-100-explorer",
+   "sha256": "694965c47abd644ce3e13ff6a9d4cec7cde62c831edb498aa84fbf8380b9297e",
+   "publisher": "Sako Ltd (Beretta Holding)",
+   "tier": 4
+  },
+  {
+   "source_id": "sako-90-hunter",
+   "title": "Sako 90 Hunter product page technical data",
+   "url": "https://www.sako.global/rifle/sako-90-hunter",
+   "sha256": "d29ebcda678686549b78d8a2f23c12c2f4ad001ae1f386648e057083293439a9",
+   "publisher": "Sako Ltd (Beretta Holding)",
+   "tier": 4
+  },
+  {
+   "source_id": "sako-s20-hunter",
+   "title": "Sako S20 Hunter product page technical data",
+   "url": "https://www.sako.global/rifle/sako-s20-hunter",
+   "sha256": "c332ebbc829497e5484483e48e18c7ae221293c94e2ab6c768f45515fc93ab47",
+   "publisher": "Sako Ltd (Beretta Holding)",
+   "tier": 4
+  },
+  {
+   "source_id": "sako-s20-precision",
+   "title": "Sako S20 Precision product page technical data",
+   "url": "https://www.sako.global/rifle/sako-s20-precision",
+   "sha256": "f0120adc5a5696797fa270ecb26f83abfb1d65895554038d9c5b9b459cbee8a0",
+   "publisher": "Sako Ltd (Beretta Holding)",
+   "tier": 4
+  },
+  {
+   "source_id": "sako-trg-2242",
+   "title": "Sako TRG 22/42 product page technical data",
+   "url": "https://www.sako.global/rifle/sako-trg-2242",
+   "sha256": "369f89dbdf775b623f1f5a389db17cca07bb5fd68fd39a67a59c827d90449dfb",
+   "publisher": "Sako Ltd (Beretta Holding)",
+   "tier": 4
+  },
+  {
+   "source_id": "sako-trg-2242-a1",
+   "title": "Sako TRG 22/42 A1 product page technical data",
+   "url": "https://www.sako.global/rifle/sako-trg-2242-a1",
+   "sha256": "8b3fec252f4b4d53064b6cce55adffed0bb454d68c90117cbce1fe6c942ed05b",
+   "publisher": "Sako Ltd (Beretta Holding)",
+   "tier": 4
+  },
+  {
+   "source_id": "sako-trg-m10",
+   "title": "Sako TRG M10 product page technical data",
+   "url": "https://www.sako.global/rifle/sako-trg-m10",
+   "sha256": "27fdeb163279fafe24e433bb2dfee3df14f0475a312e96d46bf35d889324fe41",
+   "publisher": "Sako Ltd (Beretta Holding)",
+   "tier": 4
+  },
+  {
+   "source_id": "bergara-catalog-2026",
+   "title": "Bergara 2026 product catalogue, specifications tables",
+   "url": "https://www.bergara.online/en/wp-content/uploads/sites/5/2026/05/2026-Bergara-Catalog_V12.1_.pdf",
+   "sha256": "43916f6ac8370f1cd90f2d1bbb14e53063d45e3f62bb51a7069c10503795545b",
+   "publisher": "Bergara International (BPI Outdoors)",
+   "tier": 4
+  },
+  {
+   "source_id": "bt-apc9-pro",
+   "title": "B&T APC9 PRO product page technical information",
+   "url": "https://bt-ag.ch/en/product/bt-weapons/bt-apc/bt-apc9-10-40-45-pro/apc9-pro/",
+   "sha256": "4d4acf0b838a704ba195e1b032f1dbb390cb13683a19e4eb7a9e565dbf0be0d9",
+   "publisher": "B&T AG (Brugger & Thomet), Thun, Switzerland",
+   "tier": 4
+  },
+  {
+   "source_id": "bt-apc9-k-pro",
+   "title": "B&T APC9 K PRO product page technical information",
+   "url": "https://bt-ag.ch/en/product/bt-weapons/bt-apc/bt-apc9-10-40-45-pro/apc9-k-pro/",
+   "sha256": "2f29843e17b8820120bebc34abf172fadd76f6af950ba77a3135969fe5f5cf04",
+   "publisher": "B&T AG (Brugger & Thomet), Thun, Switzerland",
+   "tier": 4
+  },
+  {
+   "source_id": "bt-apc9-sd-pro",
+   "title": "B&T APC9 SD PRO product page technical information",
+   "url": "https://bt-ag.ch/en/product/bt-weapons/bt-apc/bt-apc9-10-40-45-pro/apc9-sd-pro/",
+   "sha256": "9a68a3c78671a33f88786def192408fd458d438919fb3e933bca46de429930b3",
+   "publisher": "B&T AG (Brugger & Thomet), Thun, Switzerland",
+   "tier": 4
+  },
+  {
+   "source_id": "bt-apc223-pro-222mm",
+   "title": "B&T APC223 PRO (222 mm) product page technical information",
+   "url": "https://bt-ag.ch/en/product/bt-weapons/bt-apc/bt-apc556-223/apc223-pro-222mm/",
+   "sha256": "0e5c226b5cc9c443a239770a355c6665a5271b3ba0ff332c967a1c32700155f0",
+   "publisher": "B&T AG (Brugger & Thomet), Thun, Switzerland",
+   "tier": 4
+  },
+  {
+   "source_id": "bt-apc300-pro-222mm",
+   "title": "B&T APC300 PRO (222 mm) product page technical information",
+   "url": "https://bt-ag.ch/en/product/bt-weapons/bt-apc/bt-apc300/apc300-pro-222mm/",
+   "sha256": "1393e6499ec775ca320a54bc1f71ae15241707c7bf5951b7f3a3030c0e5029b4",
+   "publisher": "B&T AG (Brugger & Thomet), Thun, Switzerland",
+   "tier": 4
+  },
+  {
+   "source_id": "bt-apc308-pro-330mm",
+   "title": "B&T APC308 PRO (330 mm) product page technical information",
+   "url": "https://bt-ag.ch/en/product/bt-weapons/bt-apc/bt-apc308/apc308-pro-330mm/",
+   "sha256": "59913d1b8d879df856e80affe882dd8451ef803d45eb3e6450f3c994a5d8e233",
+   "publisher": "B&T AG (Brugger & Thomet), Thun, Switzerland",
+   "tier": 4
+  },
+  {
+   "source_id": "bt-ghm9",
+   "title": "B&T GHM9 product page technical information",
+   "url": "https://bt-ag.ch/en/product/bt-weapons/bt-ghm9/ghm9/",
+   "sha256": "dd65bca7fba8fcc2f093e4a746dece7ae13ec438e061cedc90b0c655f9a7df12",
+   "publisher": "B&T AG (Brugger & Thomet), Thun, Switzerland",
+   "tier": 4
+  },
+  {
+   "source_id": "bt-ghm9-compact",
+   "title": "B&T GHM9 Compact product page technical information",
+   "url": "https://bt-ag.ch/en/product/bt-weapons/bt-ghm9/ghm9-compact/",
+   "sha256": "f641bdc59762add18239de26fe3fe303633de406da068151f64a970f6a6d64b7",
+   "publisher": "B&T AG (Brugger & Thomet), Thun, Switzerland",
+   "tier": 4
+  },
+  {
+   "source_id": "bt-kh9-c",
+   "title": "B&T KH9-C product page technical information",
+   "url": "https://bt-ag.ch/en/product/bt-weapons/bt-kh9/kh9-c/",
+   "sha256": "b7558f8a8439f87da1f7970482a73867df5470f88f048b4ca9833d78dee6b5ac",
+   "publisher": "B&T AG (Brugger & Thomet), Thun, Switzerland",
+   "tier": 4
+  },
+  {
+   "source_id": "bt-mp9-n",
+   "title": "B&T MP9-N product page technical information",
+   "url": "https://bt-ag.ch/en/product/bt-weapons/bt-mp-tp/bt-mp9-tp9/mp9-n/",
+   "sha256": "d00c56473426a77837341daed54d841a86eefce7aa98be7da1c67248f981c934",
+   "publisher": "B&T AG (Brugger & Thomet), Thun, Switzerland",
+   "tier": 4
+  },
+  {
+   "source_id": "bt-spc9",
+   "title": "B&T SPC9 product page technical information",
+   "url": "https://bt-ag.ch/en/product/bt-weapons/bt-spc/bt-spc9/spc9/",
+   "sha256": "bba9655e5ce3e8aa358956d055019faa5c1774b6ccf75fb24c6d5847c9103e43",
+   "publisher": "B&T AG (Brugger & Thomet), Thun, Switzerland",
+   "tier": 4
+  },
+  {
+   "source_id": "bt-spr300",
+   "title": "B&T SPR300 product page technical information",
+   "url": "https://bt-ag.ch/en/product/bt-weapons/bt-spr300/spr300/",
+   "sha256": "3e4b04963ccd39dbe41cf79ac76855c4d89e7e3b7ce20fb2a8b168bb49154ee2",
+   "publisher": "B&T AG (Brugger & Thomet), Thun, Switzerland",
+   "tier": 4
+  },
+  {
+   "source_id": "bt-tp9-n",
+   "title": "B&T TP9-N product page technical information",
+   "url": "https://bt-ag.ch/en/product/bt-weapons/bt-mp-tp/bt-mp9-tp9/tp9-n/",
+   "sha256": "0d33957126a0ae69a2ad1a5c5b143fa32b2d871a171e3286a43b7b3d90628e63",
+   "publisher": "B&T AG (Brugger & Thomet), Thun, Switzerland",
+   "tier": 4
+  },
+  {
+   "source_id": "zastava-m05-e2",
+   "title": "Zastava M05 E2 assault rifle technical data",
+   "url": "https://zastava-arms.rs/en/assault-rifle-m05-e2/",
+   "sha256": "f57ee6963a098e3e0d73978d3677afc650e68577cbe08497a69a60585f8b9b3f",
+   "publisher": "Zastava Arms d.o.o., Kragujevac, Serbia",
+   "tier": 4
+  },
+  {
+   "source_id": "zastava-m05-e3",
+   "title": "Zastava M05 E3 assault rifle technical data",
+   "url": "https://zastava-arms.rs/en/assault-rifle-m05-e3/",
+   "sha256": "cf689001fcc186ce3d3137f69acfe3322be530ab96e93425d45cf5765a853182",
+   "publisher": "Zastava Arms d.o.o., Kragujevac, Serbia",
+   "tier": 4
+  },
+  {
+   "source_id": "zastava-m19",
+   "title": "Zastava M19 modular assault rifle technical data",
+   "url": "https://zastava-arms.rs/en/modular-assault-rifle-m19-m20/",
+   "sha256": "38a1e326916785c9064c05a584a832761d23f1876cf94e78e4ced051e6cd6a08",
+   "publisher": "Zastava Arms d.o.o., Kragujevac, Serbia",
+   "tier": 4
+  },
+  {
+   "source_id": "zastava-m21-bs",
+   "title": "Zastava M21 BS submachine gun technical data",
+   "url": "https://zastava-arms.rs/en/submachine-gun-m21-bs/",
+   "sha256": "82a462e437c2c41eec9321955a0a8b05108e7d300a949b74b4354404b131029b",
+   "publisher": "Zastava Arms d.o.o., Kragujevac, Serbia",
+   "tier": 4
+  },
+  {
+   "source_id": "zastava-m91",
+   "title": "Zastava M91 sniper rifle technical data",
+   "url": "https://zastava-arms.rs/en/sniper-rifle-m91/",
+   "sha256": "8d8f58659d5bb6cc6434128c842f8c212af217218710992025d8db1d28ce6edc",
+   "publisher": "Zastava Arms d.o.o., Kragujevac, Serbia",
+   "tier": 4
+  },
+  {
+   "source_id": "zastava-m93",
+   "title": "Zastava M93 long range rifle technical data",
+   "url": "https://zastava-arms.rs/en/long-range-rifle-m93/",
+   "sha256": "5914a458e01c459cb1f0e7d9642df7ab9aa326f0985557c771ad2ef9f749cb01",
+   "publisher": "Zastava Arms d.o.o., Kragujevac, Serbia",
+   "tier": 4
+  },
+  {
+   "source_id": "zastava-cz999",
+   "title": "Zastava CZ999 pistol technical data",
+   "url": "https://zastava-arms.rs/en/pistol-cz-999/",
+   "sha256": "99d8fed254c37e257b79049fd5f7f6babaddf0e20dce153c61cd94de353246c2",
+   "publisher": "Zastava Arms d.o.o., Kragujevac, Serbia",
+   "tier": 4
+  },
+  {
+   "source_id": "zastava-ez9",
+   "title": "Zastava EZ9 pistol technical data",
+   "url": "https://zastava-arms.rs/en/pistol-ez9/",
+   "sha256": "8eeca52fcaa375e0628cb8f2150e621668bbaeaabba5011adf2b258fbbfa89ed",
+   "publisher": "Zastava Arms d.o.o., Kragujevac, Serbia",
+   "tier": 4
+  }
+ ],
+ "weights": [
+  {
+   "weapon_key": "t3x",
+   "maker": "Tikka",
+   "weapon": "Tikka T3x Hunter (.308 Win., 569 mm barrel)",
+   "mass_kg": 3.0,
+   "state": "as published",
+   "source_id": "tikka-us-t3x-upr",
+   "note": "Maker technical data field rifleProductTotalWeight=3.0 (kg); rifleCaliber=308_win; rifleBarrelLength=569 mm; rifleRateOfTwist=1:10 in. T3x Hunter basic synthetic, right hand."
+  },
+  {
+   "weapon_key": "t3xctr",
+   "maker": "Tikka",
+   "weapon": "Tikka T3x Compact Tactical Rifle (.308 Win., 508 mm barrel)",
+   "mass_kg": 3.6,
+   "state": "as published",
+   "source_id": "tikka-us-t3x-upr",
+   "note": "Maker technical data field rifleProductTotalWeight=3.6 (kg); rifleCaliber=308_win; rifleBarrelLength=508 mm; rifleRateOfTwist=1:10 in."
+  },
+  {
+   "weapon_key": "t3xtaca1",
+   "maker": "Tikka",
+   "weapon": "Tikka T3x TACT A1 (.308 Win., 508 mm barrel)",
+   "mass_kg": 4.5,
+   "state": "as published",
+   "source_id": "tikka-us-t3x-upr",
+   "note": "Maker technical data field rifleProductTotalWeight=4.5 (kg); rifleCaliber=308_win; rifleBarrelLength=508 mm; rifleRateOfTwist=1:10 in."
+  },
+  {
+   "weapon_key": "t3xupr",
+   "maker": "Tikka",
+   "weapon": "Tikka T3x UPR (.308 Win., 508 mm barrel)",
+   "mass_kg": 3.6,
+   "state": "as published",
+   "source_id": "tikka-us-t3x-upr",
+   "note": "Maker technical data field rifleProductTotalWeight=3.6 (kg); rifleCaliber=308_win; rifleBarrelLength=508 mm; rifleRateOfTwist=1:10 in."
+  },
+  {
+   "weapon_key": "t3xupr308",
+   "maker": "Tikka",
+   "weapon": "Tikka T3x UPR (.308 Win., 508 mm barrel)",
+   "mass_kg": 3.6,
+   "state": "as published",
+   "source_id": "tikka-us-t3x-upr",
+   "note": "Maker technical data field rifleProductTotalWeight=3.6 (kg); rifleCaliber=308_win; rifleBarrelLength=508 mm; rifleRateOfTwist=1:10 in. Same T3x UPR model as weapon_key t3xupr."
+  },
+  {
+   "weapon_key": "t3xarctic",
+   "maker": "Tikka",
+   "weapon": "Tikka T3x Arctic (.308 Win., 508 mm barrel)",
+   "mass_kg": 4.1,
+   "state": "as published",
+   "source_id": "tikka-us-t3x-upr",
+   "note": "Maker technical data field rifleProductTotalWeight=4.1 (kg); rifleCaliber=308_win; rifleBarrelLength=508 mm; rifleRateOfTwist=1:10 in."
+  },
+  {
+   "weapon_key": "t1x",
+   "maker": "Tikka",
+   "weapon": "Tikka T1x MTR (.22 LR, 406 mm barrel)",
+   "mass_kg": 2.5,
+   "state": "as published",
+   "source_id": "tikka-us-t1x",
+   "note": "Maker technical data field rifleProductTotalWeight=2.5 (kg); rifleCaliber=22_lr; rifleBarrelLength=406 mm; rifleRateOfTwist=1:16.5 in."
+  },
+  {
+   "weapon_key": "100",
+   "maker": "Sako",
+   "weapon": "Sako 100 Explorer Wood (.308 Win., 508 mm barrel)",
+   "mass_kg": 3.8,
+   "state": "as published",
+   "source_id": "sako-100-explorer",
+   "note": "Maker technical data: rifleProductTotalWeight=3.8 kg; rifleCaliber=308_win; rifleRateOfTwist=1:10 in.; rifleBarrelLength=508 mm; Sako 100 Explorer Wood."
+  },
+  {
+   "weapon_key": "100308",
+   "maker": "Sako",
+   "weapon": "Sako 100 Explorer Wood (.308 Win., 508 mm barrel)",
+   "mass_kg": 3.8,
+   "state": "as published",
+   "source_id": "sako-100-explorer",
+   "note": "Maker technical data: rifleProductTotalWeight=3.8 kg; rifleCaliber=308_win; rifleRateOfTwist=1:10 in.; rifleBarrelLength=508 mm. Same Sako 100 .308 model as weapon_key 100."
+  },
+  {
+   "weapon_key": "sako90",
+   "maker": "Sako",
+   "weapon": "Sako 90 Hunter (.308 Win., 569 mm barrel)",
+   "mass_kg": 3.2,
+   "state": "as published",
+   "source_id": "sako-90-hunter",
+   "note": "Maker technical data: rifleProductTotalWeight=3.2 kg; rifleCaliber=308_win; rifleRateOfTwist=1:10 in.; rifleBarrelLength=569 mm; Sako 90 Hunter Basic."
+  },
+  {
+   "weapon_key": "s20",
+   "maker": "Sako",
+   "weapon": "Sako S20 Hunter (.308 Win., 508 mm barrel)",
+   "mass_kg": 3.6,
+   "state": "as published",
+   "source_id": "sako-s20-hunter",
+   "note": "Maker technical data: rifleProductTotalWeight=3.6 kg; rifleCaliber=308_win; rifleRateOfTwist=1:10 in.; rifleBarrelLength=508 mm; S20 Hunter Basic."
+  },
+  {
+   "weapon_key": "s20hunter308",
+   "maker": "Sako",
+   "weapon": "Sako S20 Hunter (.308 Win., 508 mm barrel)",
+   "mass_kg": 3.6,
+   "state": "as published",
+   "source_id": "sako-s20-hunter",
+   "note": "Maker technical data: rifleProductTotalWeight=3.6 kg; rifleCaliber=308_win; rifleRateOfTwist=1:10 in.; rifleBarrelLength=508 mm. Same S20 Hunter .308 model as weapon_key s20."
+  },
+  {
+   "weapon_key": "s20precision308",
+   "maker": "Sako",
+   "weapon": "Sako S20 Precision (.308 Win., 508 mm barrel)",
+   "mass_kg": 3.8,
+   "state": "as published",
+   "source_id": "sako-s20-precision",
+   "note": "Maker technical data: rifleProductTotalWeight=3.8 kg; rifleCaliber=308_win; rifleRateOfTwist=1:10 in.; rifleBarrelLength=508 mm; S20 Precision Basic."
+  },
+  {
+   "weapon_key": "trg21",
+   "maker": "Sako",
+   "weapon": "Sako TRG 22/42 (.308 Win., 660 mm barrel)",
+   "mass_kg": 5.3,
+   "state": "as published",
+   "source_id": "sako-trg-2242",
+   "note": "Maker technical data: rifleProductTotalWeight=5.3 kg; rifleCaliber=308_win; rifleRateOfTwist=1:10 in.; rifleBarrelLength=660 mm. TRG-21 is the .308 Win. member of the TRG 22/42 family."
+  },
+  {
+   "weapon_key": "trg22",
+   "maker": "Sako",
+   "weapon": "Sako TRG 22/42 (.308 Win., 660 mm barrel)",
+   "mass_kg": 5.3,
+   "state": "as published",
+   "source_id": "sako-trg-2242",
+   "note": "Maker technical data: rifleProductTotalWeight=5.3 kg; rifleCaliber=308_win; rifleRateOfTwist=1:10 in.; rifleBarrelLength=660 mm."
+  },
+  {
+   "weapon_key": "trg41",
+   "maker": "Sako",
+   "weapon": "Sako TRG 22/42 (.338 Lapua Mag., 690 mm barrel)",
+   "mass_kg": 5.5,
+   "state": "as published",
+   "source_id": "sako-trg-2242",
+   "note": "Maker technical data: rifleProductTotalWeight=5.5 kg; rifleCaliber=338_lapua_mag; rifleRateOfTwist=1:10 in.; rifleBarrelLength=690 mm. TRG-41 is the .338 Lapua Mag. member of the TRG 22/42 family."
+  },
+  {
+   "weapon_key": "trg42",
+   "maker": "Sako",
+   "weapon": "Sako TRG 22/42 (.300 Win. Mag., 690 mm barrel)",
+   "mass_kg": 5.1,
+   "state": "as published",
+   "source_id": "sako-trg-2242",
+   "note": "Maker technical data: rifleProductTotalWeight=5.1 kg; rifleCaliber=300_win_mag; rifleRateOfTwist=1:10 in.; rifleBarrelLength=690 mm."
+  },
+  {
+   "weapon_key": "trga1",
+   "maker": "Sako",
+   "weapon": "Sako TRG 22/42 A1 (.308 Win., 660 mm barrel)",
+   "mass_kg": 5.8,
+   "state": "as published",
+   "source_id": "sako-trg-2242-a1",
+   "note": "Maker technical data: rifleProductTotalWeight=5.8 kg; rifleCaliber=308_win; rifleRateOfTwist=1:10 in.; rifleBarrelLength=660 mm; TRG 22/42 A1 Black."
+  },
+  {
+   "weapon_key": "trgm10",
+   "maker": "Sako",
+   "weapon": "Sako TRG M10 (.308 Win., 660 mm barrel)",
+   "mass_kg": 6.7,
+   "state": "as published",
+   "source_id": "sako-trg-m10",
+   "note": "Maker technical data: rifleProductTotalWeight=6.7 kg; rifleCaliber=308_win; rifleRateOfTwist=1:10 in.; rifleBarrelLength=660 mm."
+  },
+  {
+   "weapon_key": "b14hmr",
+   "maker": "Bergara",
+   "weapon": "Bergara B-14 HMR (.22-250 Rem., 61 cm barrel)",
+   "mass_kg": 4.4,
+   "state": "as published",
+   "source_id": "bergara-catalog-2026",
+   "note": "Catalogue specification line: \"BE245-22250  .22-250 Rem.  1:9\"  61 cm (24\")  112 cm (44\")  21.5 mm (No. 6)  5/8-24 UNEF  4,4 kg (9.7 lbs)  AICS COMPATIBLE  5+1\" (B-14 HMR)."
+  },
+  {
+   "weapon_key": "b14timber",
+   "maker": "Bergara",
+   "weapon": "Bergara B-14 Timber (6.5 Creedmoor, 56 cm barrel)",
+   "mass_kg": 3.5,
+   "state": "as published",
+   "source_id": "bergara-catalog-2026",
+   "note": "Catalogue specification line: \"BE214-65  6.5 Creedmoor  1:8\"  56 cm (22\")  107 cm (42\")  17.5 mm (No. 5)  5/8-24 UNEF  3,5 kg (7.5 lbs)  DETACHABLE  3+1\" (TIMBER)."
+  },
+  {
+   "weapon_key": "wildernesshmr",
+   "maker": "Bergara",
+   "weapon": "Bergara Wilderness HMR (6.5 Creedmoor, 61 cm barrel)",
+   "mass_kg": 4.4,
+   "state": "as published",
+   "source_id": "bergara-catalog-2026",
+   "note": "Catalogue specification line: \"BW135-65  6.5 Creedmoor  1:8\"  61 cm (24\")  112 cm (44\")  21.5 mm (No. 6)  5/8-24 UNEF  4,4 kg (9.7 lbs)  AICS COMPATIBLE  5+1\" (HMR, B-14 Wilderness Series)."
+  },
+  {
+   "weapon_key": "apc9",
+   "maker": "B&T",
+   "weapon": "B&T APC9 PRO (9x19 mm, 175 mm barrel)",
+   "mass_kg": 2.9,
+   "state": "as published",
+   "source_id": "bt-apc9-pro",
+   "note": "Maker technical information: \"Weight 2.9 kg (incl. 30-round magazine and sights)\"; \"Barrel length 175 mm\"; \"Caliber 9x19 mm\"."
+  },
+  {
+   "weapon_key": "apc9pro",
+   "maker": "B&T",
+   "weapon": "B&T APC9 PRO (9x19 mm, 175 mm barrel)",
+   "mass_kg": 2.9,
+   "state": "as published",
+   "source_id": "bt-apc9-pro",
+   "note": "Maker technical information: \"Weight 2.9 kg (incl. 30-round magazine and sights)\"; \"Barrel length 175 mm\"."
+  },
+  {
+   "weapon_key": "apc9k",
+   "maker": "B&T",
+   "weapon": "B&T APC9 K PRO (9x19 mm, 138 mm barrel)",
+   "mass_kg": 2.7,
+   "state": "as published",
+   "source_id": "bt-apc9-k-pro",
+   "note": "Maker technical information: \"Weight 2.7 kg (incl. 30-round magazine and sights)\"; \"Barrel length 138 mm\"."
+  },
+  {
+   "weapon_key": "apc9ksd2",
+   "maker": "B&T",
+   "weapon": "B&T APC9 SD PRO (9x19 mm, 146 mm barrel)",
+   "mass_kg": 3.2,
+   "state": "as published",
+   "source_id": "bt-apc9-sd-pro",
+   "note": "Maker technical information: \"Weight 3.2 kg\"; \"Barrel length 146 mm\"; \"Caliber 9x19 mm\"."
+  },
+  {
+   "weapon_key": "apc223",
+   "maker": "B&T",
+   "weapon": "B&T APC223 PRO (.223 Rem., 222 mm barrel)",
+   "mass_kg": 3.3,
+   "state": "as published",
+   "source_id": "bt-apc223-pro-222mm",
+   "note": "Maker technical information: \"Weight 3.3 kg (incl. 30-round magazine and sights)\"; \"Barrel length 222 mm\"; \"Caliber .223 Rem.\"."
+  },
+  {
+   "weapon_key": "apc300",
+   "maker": "B&T",
+   "weapon": "B&T APC300 PRO (.300 BLK, 222 mm barrel)",
+   "mass_kg": 3.2,
+   "state": "as published",
+   "source_id": "bt-apc300-pro-222mm",
+   "note": "Maker technical information: \"Weight 3.2 kg (incl. 30-round magazine and sights)\"; \"Barrel length 222 mm\"; \"Caliber .300 BLK\"."
+  },
+  {
+   "weapon_key": "apc308",
+   "maker": "B&T",
+   "weapon": "B&T APC308 PRO (.308 Win., 330 mm barrel)",
+   "mass_kg": 4.1,
+   "state": "as published",
+   "source_id": "bt-apc308-pro-330mm",
+   "note": "Maker technical information: \"Weight 4.1 kg (incl. magazine and sights)\"; \"Barrel length 330 mm\"; \"Caliber .308 Win.\"."
+  },
+  {
+   "weapon_key": "ghm9",
+   "maker": "B&T",
+   "weapon": "B&T GHM9 (9x19 mm, 175 mm barrel)",
+   "mass_kg": 2.4,
+   "state": "as published",
+   "source_id": "bt-ghm9",
+   "note": "Maker technical information: \"Weight 2.4 kg (incl. 30-round magazine)\"; \"Barrel length 175 mm\"."
+  },
+  {
+   "weapon_key": "ghm9c",
+   "maker": "B&T",
+   "weapon": "B&T GHM9 Compact (9x19 mm, 110 mm barrel)",
+   "mass_kg": 2.3,
+   "state": "as published",
+   "source_id": "bt-ghm9-compact",
+   "note": "Maker technical information: \"Weight 2.3 kg (incl. 30-round magazine)\"; \"Barrel length 110 mm\"."
+  },
+  {
+   "weapon_key": "kh9",
+   "maker": "B&T",
+   "weapon": "B&T KH9-C (9x19 mm, 153 mm barrel)",
+   "mass_kg": 2.7,
+   "state": "as published",
+   "source_id": "bt-kh9-c",
+   "note": "Maker technical information: \"Weight 2.7 kg (incl. 25-round magazine and sight)\"; \"Barrel length 153 mm\". Catalogue model KH9; maker page is the KH9-C variant."
+  },
+  {
+   "weapon_key": "mp9",
+   "maker": "B&T",
+   "weapon": "B&T MP9-N (9x19 mm, 130 mm barrel)",
+   "mass_kg": 1.7,
+   "state": "as published",
+   "source_id": "bt-mp9-n",
+   "note": "Maker technical information: \"Weight 1.7 kg (incl. Aimpoint and 30-round magazine)\"; \"Barrel length 130 mm\"."
+  },
+  {
+   "weapon_key": "spc9",
+   "maker": "B&T",
+   "weapon": "B&T SPC9 (9x19 mm, 230 mm barrel)",
+   "mass_kg": 2.7,
+   "state": "as published",
+   "source_id": "bt-spc9",
+   "note": "Maker technical information: \"Weight approx. 2'700 g (with empty 30-round magazine & Aimpoint)\"; \"Barrel length 230 mm\"."
+  },
+  {
+   "weapon_key": "spr300",
+   "maker": "B&T",
+   "weapon": "B&T SPR300 (.300 BLK, 250 mm barrel)",
+   "mass_kg": 3.8,
+   "state": "as published",
+   "source_id": "bt-spr300",
+   "note": "Maker technical information: \"Weight 3.8 kg (incl. 10-round magazine)\"; \"Barrel length 250 mm\"; \"Caliber .300 BLK\"."
+  },
+  {
+   "weapon_key": "tp9",
+   "maker": "B&T",
+   "weapon": "B&T TP9-N (9x19 mm, 130 mm barrel)",
+   "mass_kg": 1.7,
+   "state": "as published",
+   "source_id": "bt-tp9-n",
+   "note": "Maker technical information: \"Weight 1.7 kg (incl. Aimpoint and 30-round magazine)\"; \"Barrel length 130 mm\"."
+  },
+  {
+   "weapon_key": "m05",
+   "maker": "Zastava Arms",
+   "weapon": "Zastava M05 E2 (7.62x39 mm, 415 mm barrel)",
+   "mass_kg": 4.15,
+   "state": "without magazine",
+   "source_id": "zastava-m05-e2",
+   "note": "Maker technical data: \"WEIGHT * with empty polymer magazine 4.15 kg\"; \"CALIBRE 7.62 x 39 mm\"; \"TWIST RATE 240 mm\". M05 E1 page carries placeholder zeros; the M05 E2 line is published."
+  },
+  {
+   "weapon_key": "m05e1",
+   "maker": "Zastava Arms",
+   "weapon": "Zastava M05 E3 (7.62x39 mm, 415 mm barrel)",
+   "mass_kg": 4.25,
+   "state": "without magazine",
+   "source_id": "zastava-m05-e3",
+   "note": "Maker technical data: \"WEIGHT * with empty polymer magazine 4.25 kg\"; \"CALIBRE 7.62 x 39 mm\"; \"TWIST RATE 240 mm\". M05 E1 page carries placeholder zeros; the M05 E3 line is published."
+  },
+  {
+   "weapon_key": "m19",
+   "maker": "Zastava Arms",
+   "weapon": "Zastava M19 (7.62x39 mm, 415 mm barrel)",
+   "mass_kg": 3.85,
+   "state": "without magazine",
+   "source_id": "zastava-m19",
+   "note": "Maker technical data: \"WEIGHT * with empty polymer magazine 3.85 kg\"; \"CALIBRE 7.62 x 39 mm\"; \"TWIST RATE 240 mm\"; \"NUMBER OF GROOVES 4\"."
+  },
+  {
+   "weapon_key": "m21",
+   "maker": "Zastava Arms",
+   "weapon": "Zastava M21 BS (5.56x45 mm, 290 mm barrel)",
+   "mass_kg": 4.0,
+   "state": "without magazine",
+   "source_id": "zastava-m21-bs",
+   "note": "Maker technical data: \"WEIGHT * with empty polymer magazine 4 kg\"; \"CALIBRE 5.56 x 45 mm\"; \"TWIST RATE 177.8 mm\"; \"NUMBER OF GROOVES 6\"."
+  },
+  {
+   "weapon_key": "m91",
+   "maker": "Zastava Arms",
+   "weapon": "Zastava M91 (7.62x51 mm, 620 mm barrel)",
+   "mass_kg": 5.49,
+   "state": "without magazine",
+   "source_id": "zastava-m91",
+   "note": "Maker technical data: \"WEIGHT * with empty polymer magazine 5.49 kg\"; \"CALIBRE 7.62 x 51 mm\"; \"TWIST RATE 254 mm\"; \"NUMBER OF GROOVES 6\"."
+  },
+  {
+   "weapon_key": "m93",
+   "maker": "Zastava Arms",
+   "weapon": "Zastava M93 (12.7x108 mm, 1007 mm barrel)",
+   "mass_kg": 16.7,
+   "state": "as published",
+   "source_id": "zastava-m93",
+   "note": "Maker technical data: \"WEIGHT 16.7 kg\"; \"CALIBRE 12.7 x 108 mm\"; \"TWIST RATE 381 mm\"; \"NUMBER OF GROOVES 8\"."
+  },
+  {
+   "weapon_key": "cz99",
+   "maker": "Zastava Arms",
+   "weapon": "Zastava CZ999 (9x19 mm)",
+   "mass_kg": 0.94,
+   "state": "empty",
+   "source_id": "zastava-cz999",
+   "note": "Maker technical data: \"w=0,94 kg\"; \"cal=9 x 19 mm\"; \"Magazine capacity (rounds) 10 -15\"."
+  },
+  {
+   "weapon_key": "ez9",
+   "maker": "Zastava Arms",
+   "weapon": "Zastava EZ9 (9x19 mm)",
+   "mass_kg": 0.95,
+   "state": "empty",
+   "source_id": "zastava-ez9",
+   "note": "Maker technical data: \"w=0.95 kg\"; \"Caliber 9x19 mm\"; \"Magazine capacity (rounds) 15/10\"."
+  }
+ ]
+}

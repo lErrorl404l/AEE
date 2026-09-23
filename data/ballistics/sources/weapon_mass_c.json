@@ -1,0 +1,1878 @@
+{
+ "retrieved": "2026-09-23",
+ "note": "Manufacturer published weapon masses. One row per model, each with the configuration state named in the maker's own words. Values come from maker product pages and data sheets (tier 4). A compilation (tier 5) appears only where a maker page could not be fetched, and says so. Mod or engine config values are never a value source.",
+ "sources": [
+  {
+   "source_id": "glock_g17",
+   "title": "GLOCK G17 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g17",
+   "sha256": "9f4b5d4b3c91659dc73f1e294809202ca8635953c5b9adf12f337e9353e18bd5",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g17_gen4",
+   "title": "GLOCK G17 Gen4 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g17-gen4",
+   "sha256": "7ff47c8c4a34cd3f9c6c8b1dd7fc8cc84eee1b52f054b1e0096ea5a61f5ce255",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g17_gen6",
+   "title": "GLOCK G17 Gen6 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/commercial-firearms/pistols/g17-gen6",
+   "sha256": "a783e733227919b883264cf35f8735abcca98462f39bc883c835b595fd0f0668",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g17l",
+   "title": "GLOCK G17L pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g17l",
+   "sha256": "e0ff12e8cd4803cb7603505a8040806ff7dad2d532aa1e24e8c93921549eff89",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g17l_gen5_mos",
+   "title": "GLOCK G17L Gen5 MOS pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g17l-gen5-mos",
+   "sha256": "95ced1ea15a1fccde35578f7df921e288043109f3d66e5c28a8e1c232dbb105a",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g19",
+   "title": "GLOCK G19 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g19",
+   "sha256": "87eb191bc23936504e163d36a9898e7dd92324910ce56072a93df15e902de15a",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g19_gen4",
+   "title": "GLOCK G19 Gen4 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g19-gen4",
+   "sha256": "31eab5f8009cecf6e3f5bc5adb3f1e701011a5e5145e6bbd100b149f4b6a7b97",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g19_gen6",
+   "title": "GLOCK G19 Gen6 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/commercial-firearms/pistols/g19-gen6",
+   "sha256": "8fd7143d22df0d1c86027393e1dcac5ff3d47c633a64a1aca2eec38aeff2d37f",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g19x",
+   "title": "GLOCK G19X pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g19x",
+   "sha256": "3ce8401d8103ab83c48584d1574c9651c16b6945176434e5a3a6a7b4c09cb48d",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g20_sf",
+   "title": "GLOCK G20 SF pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g20-sf",
+   "sha256": "bba9d927fac063cdc879e95ff89ac78bbac6fb4f50388a816471d87a152e7fe8",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g20_gen4",
+   "title": "GLOCK G20 Gen4 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g20-gen4",
+   "sha256": "ec1ddb15b492a27dcdc37cb5e5184d8c597e6716157081b377c509dcde63032d",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g20_gen5_mos",
+   "title": "GLOCK G20 Gen5 MOS pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g20-gen5-mos",
+   "sha256": "6c1a80de37d52515cae36e6ffd0fac5dfe51419ab391eb0933128f6c3ed97d39",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g21_sf",
+   "title": "GLOCK G21 SF pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g21-sf",
+   "sha256": "a9b2fbcce37ef1e6982d2fe102a4441617829b42cc03d769b474c7ca120f7517",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g21_gen4",
+   "title": "GLOCK G21 Gen4 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g21-gen4",
+   "sha256": "417108bb0eff41b32e32c66b9d48b38b9814200dd66519e1a83e889cac16f4e6",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g21_gen5_mos",
+   "title": "GLOCK G21 Gen5 MOS pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g21-gen5-mos",
+   "sha256": "2fea47f019579e31b09ac02a321139703193e5498f4e0f459abfb2cf97b37c27",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g22",
+   "title": "GLOCK G22 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g22",
+   "sha256": "95e3b120d31cd9fb05323d663e57eb933096613cca61a06bfa9652f97bb459be",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g22_gen4",
+   "title": "GLOCK G22 Gen4 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g22-gen4",
+   "sha256": "1c21383869488804231464e9fb3fb9826b866a621433f0d2dc60151259458697",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g22_gen5",
+   "title": "GLOCK G22 Gen5 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g22-gen5",
+   "sha256": "55f40f700786c47756d1f15805fdce22c39b069b5214b080d318c9202ba8a5b0",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g23",
+   "title": "GLOCK G23 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g23",
+   "sha256": "55618ee9bf598554f323e0fe71844e75871b2c29942aa822f3cc83889c66ebd3",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g23_gen4",
+   "title": "GLOCK G23 Gen4 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g23-gen4",
+   "sha256": "d1dba67cf8159831a5673a19659bbf9c92f9b421f760d2b100cc7791393e1f94",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g23_gen5_mos",
+   "title": "GLOCK G23 Gen5 MOS pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/commercial-firearms/pistols/g23-gen5-mos",
+   "sha256": "5be471a318c3db6d4b213fc929a453d06c0f0617b619106c3332b4402c686e6e",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g24",
+   "title": "GLOCK G24 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g24",
+   "sha256": "751df1e5f5639a2b1af20edd15065153e1f80fdaf96fb4a78378adbacfa5a3f7",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g26",
+   "title": "GLOCK G26 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g26",
+   "sha256": "1725dbf30f05978a7a2048079d00496bcc7c8fcdbaca093805db1b15ed27bbd7",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g26_gen4",
+   "title": "GLOCK G26 Gen4 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g26-gen4",
+   "sha256": "e43214b7725c18be42b9229b0174a96840d132bc10334ae893d49bc2feade0d7",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g27",
+   "title": "GLOCK G27 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g27",
+   "sha256": "5c2eb718cbb17826e418f45603387b9b0e5fa5f47223e3038a4145840d504a3a",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g27_gen4",
+   "title": "GLOCK G27 Gen4 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g27-gen4",
+   "sha256": "5905bb188fd83c04024aa537e5bf3266841c224242400f7b6ff264a52548df50",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g27_gen5",
+   "title": "GLOCK G27 Gen5 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g27-gen5",
+   "sha256": "65212b5bf30c2e2d6754e3e8777b7a4af830973dd1fdcdeb40519506ed3e008c",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g29_sf",
+   "title": "GLOCK G29 SF pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g29-sf",
+   "sha256": "8c3374753bd7cc0f2b4c6e9d15ce109b768e4309ec1b3d73ec7a88826fd31fb9",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g29_gen4",
+   "title": "GLOCK G29 Gen4 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g29-gen4",
+   "sha256": "ca41bb9880e1cf4c880522fd15467e430d2ec690236684fcfce4a80d1cd6c949",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g29_gen5",
+   "title": "GLOCK G29 Gen5 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g29-gen5",
+   "sha256": "4ef8cd578f6084ea53867083a4ee0eecbcae8e6c6138347cf6c4adea72ef32b4",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g30_sf",
+   "title": "GLOCK G30 SF pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g30-sf",
+   "sha256": "b0a138ec0f3308d4d1a4314a3d51ca8a0b0b0c98163254ac8efbfb39f101dab5",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g30_gen4",
+   "title": "GLOCK G30 Gen4 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g30-gen4",
+   "sha256": "5aab6d8d903b6e03bd962cc335e0efa4b6cf9a6f06ec71359e597fca5d2191db",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g30_gen5",
+   "title": "GLOCK G30 Gen5 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g30-gen5",
+   "sha256": "da683d20e9e63877428a78b5f38204c44ade27a1782069c746cf50f7af93249b",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g30s",
+   "title": "GLOCK G30S pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g30s",
+   "sha256": "4bf2be33655132e11fb47776d20af95db2119e22a207ce0c28227e8a159e34a8",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g31",
+   "title": "GLOCK G31 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g31",
+   "sha256": "25af21db3b46d03b4e3802368482cdc565cb2d86f5f1e5af11ac6a847a2840ab",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g31_gen4",
+   "title": "GLOCK G31 Gen4 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g31-gen4",
+   "sha256": "bb713179ceca6f07bbb7492cfd440b29612f02ab76932e658d1385a56d7b57a4",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g32",
+   "title": "GLOCK G32 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g32",
+   "sha256": "4d67b9f32bd6508194b23ff09886ba45d85edb118f4ef4e3e992b8b2f6c8790e",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g32_gen4",
+   "title": "GLOCK G32 Gen4 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g32-gen4",
+   "sha256": "2edf2eae2fb77d73aaec9f43da141a6e6e21ac3901ed5f9031e1d69ab0415a44",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g33",
+   "title": "GLOCK G33 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g33",
+   "sha256": "1d5cb8d48a3718010762857d174992d0e2fa9d5ed0c09f8339c875e7512a1713",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g33_gen4",
+   "title": "GLOCK G33 Gen4 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g33-gen4",
+   "sha256": "1c6760a769d4ff9973a5610e6b08ec5013b9b796aff17419583c8f1db87d19cc",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g34",
+   "title": "GLOCK G34 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g34",
+   "sha256": "0fbd85ef5a237c55303c4d127ff27b9681dc1358e526d2b9937317e802e38fe5",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g34_gen4",
+   "title": "GLOCK G34 Gen4 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g34-gen4",
+   "sha256": "63c6e41edd558b3cc570a635b2acfbadf8e6a7b16be194a8975e36bd7e24bf2b",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g35",
+   "title": "GLOCK G35 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g35",
+   "sha256": "0d8ff69992230310c448c72d03c81ff3676681f73e4cfd4130ceaaf8007effa4",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g35_gen4",
+   "title": "GLOCK G35 Gen4 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g35-gen4",
+   "sha256": "f9f4662432d73591c2b7d368374e1119e6cd7c4faef75cdf767ae5c1a617fd64",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g36",
+   "title": "GLOCK G36 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g36",
+   "sha256": "3b08d3d26c4f17ec604939f4da1a8b16a09597ba5d19e0cb28b34446a221344c",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g37",
+   "title": "GLOCK G37 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g37",
+   "sha256": "bf6458da701e01dd3eeb021d4d3309a0a2d4101fd7aab4f046f37feff66a079b",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g38",
+   "title": "GLOCK G38 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g38",
+   "sha256": "61f49dcbc06b98095f2f6508a29c76cae277f6e25bfd2e80045e74997de134e8",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g39",
+   "title": "GLOCK G39 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g39",
+   "sha256": "4f57804b9239b5a57722e7d6466fa8e1ccada006a14d3209e06b387274e5d4fc",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g40_gen4_mos",
+   "title": "GLOCK G40 Gen4 MOS pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g40-gen4-mos",
+   "sha256": "9c74a623b92ada636224d5f04fe066702ad6c1e78f135d0eabeea783a242968b",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g41_gen4",
+   "title": "GLOCK G41 Gen4 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g41-gen4",
+   "sha256": "e835514c27d5b9af23085cfdb41e6e21d82685704c0e117e2fab8edfee6dbd88",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g42",
+   "title": "GLOCK G42 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/commercial-firearms/pistols/g42",
+   "sha256": "f222ecf6b67da2ca7ca14625f466507a3719dfe13ec6a85eca5737f88e6a728e",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g44",
+   "title": "GLOCK G44 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g44",
+   "sha256": "770d8f857cdd9af8873bc8dff9119a10e3010fc4fb46fc344057ff787349f7c9",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g45_gen6",
+   "title": "GLOCK G45 Gen6 pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/commercial-firearms/pistols/g45-gen6",
+   "sha256": "5496d114e998093b8d6f3c08d7a10bd46a122e263f41463f0c9fbd45347275d6",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "glock_g47_mos",
+   "title": "GLOCK G47 MOS pistol technical data, GLOCK Inc. product page",
+   "url": "https://us.glock.com/en/products/law-enforcement/pistols/g47-mos",
+   "sha256": "805146ea5ff599c1dd177bf45baa73de9fc685a881ab060940860ad93fcf0c89",
+   "publisher": "GLOCK Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "ruger_1022standard_32002",
+   "title": "Ruger\u00ae 10/22\u00ae Standard Autoloading Rifle Model 32002, Sturm, Ruger & Co. specification sheet",
+   "url": "https://ruger.com/products/1022Standard/specSheets/32002.html",
+   "sha256": "7983759d982bc2c42570d0401c5504ff428ce5cfa7e4e576c57c48bbed7929dd",
+   "publisher": "Sturm, Ruger & Co.",
+   "tier": 4
+  },
+  {
+   "source_id": "ruger_americanriflepredatorgenii_46930",
+   "title": "Ruger American\u00ae Rifle Generation II Predator Bolt-Action Rifle Model 46930, Sturm, Ruger & Co. specification sheet",
+   "url": "https://ruger.com/products/americanRiflePredatorGenII/specSheets/46930.html",
+   "sha256": "ea3d6bae638ccfcf6ec564bb2ec8110e4f8fe359edb06ad6ffd18171115c2c04",
+   "publisher": "Sturm, Ruger & Co.",
+   "tier": 4
+  },
+  {
+   "source_id": "ruger_americanriflegenii_46902",
+   "title": "Ruger American\u00ae Rifle Generation II Standard Bolt-Action Rifle Model 46902, Sturm, Ruger & Co. specification sheet",
+   "url": "https://ruger.com/products/americanRifleGenII/specSheets/46902.html",
+   "sha256": "05655d057cac7795448477b0d1f6c6677a45069dc3e0b99a092eeb6d42f8c3a1",
+   "publisher": "Sturm, Ruger & Co.",
+   "tier": 4
+  },
+  {
+   "source_id": "ruger_newmodelblackhawkblued_0306",
+   "title": "Ruger\u00ae New Model Blackhawk\u00ae Blued Single-Action Revolver Model 0306, Sturm, Ruger & Co. specification sheet",
+   "url": "https://ruger.com/products/newModelBlackhawkBlued/specSheets/0306.html",
+   "sha256": "8b683a75820174ce4ef2f94212200ecb04625b0b95647181138b1a2b83115615",
+   "publisher": "Sturm, Ruger & Co.",
+   "tier": 4
+  },
+  {
+   "source_id": "ruger_gp100_1707",
+   "title": "Ruger\u00ae GP100\u00ae Standard Double-Action Revolver Model 1707, Sturm, Ruger & Co. specification sheet",
+   "url": "https://ruger.com/products/gp100/specSheets/1707.html",
+   "sha256": "c780dce1465ce74334b68214357b89c9d8c5102716525182dc369fee155ba697",
+   "publisher": "Sturm, Ruger & Co.",
+   "tier": 4
+  },
+  {
+   "source_id": "ruger_lcp_3752",
+   "title": "Ruger\u00ae LCP\u00ae Centerfire Pistol Model 3752, Sturm, Ruger & Co. specification sheet",
+   "url": "https://ruger.com/products/lcp/specSheets/3752.html",
+   "sha256": "f34b1541f0726df6c347523d907abc8ef459c3bd209e3c653f3859ec24a5391f",
+   "publisher": "Sturm, Ruger & Co.",
+   "tier": 4
+  },
+  {
+   "source_id": "ruger_lcpii_13705",
+   "title": "Ruger\u00ae LCP\u00ae II Centerfire Pistol Model 13705, Sturm, Ruger & Co. specification sheet",
+   "url": "https://ruger.com/products/lcpII/specSheets/13705.html",
+   "sha256": "ecd1db50e2816002028dc27e800625c9c0769f1dc7163409814f3cb288f28868",
+   "publisher": "Sturm, Ruger & Co.",
+   "tier": 4
+  },
+  {
+   "source_id": "ruger_hawkeyestandard_37115",
+   "title": "Ruger\u00ae Hawkeye\u00ae Standard Bolt-Action Rifle Model 37115, Sturm, Ruger & Co. specification sheet",
+   "url": "https://ruger.com/products/HawkeyeStandard/specSheets/37115.html",
+   "sha256": "5a02a331038670ace66ff4c2d04ba8ab4d037ddb1dd6cdb716359229947b4978",
+   "publisher": "Sturm, Ruger & Co.",
+   "tier": 4
+  },
+  {
+   "source_id": "ruger_markivstandard_40104",
+   "title": "Ruger\u00ae Mark IV\u2122 Standard Rimfire Pistol Model 40104, Sturm, Ruger & Co. specification sheet",
+   "url": "https://ruger.com/products/markIVStandard/specSheets/40104.html",
+   "sha256": "753da93ae64d635142356dfaa0cd7e03522cdba263178c56dba6f1578ebb1976",
+   "publisher": "Sturm, Ruger & Co.",
+   "tier": 4
+  },
+  {
+   "source_id": "ruger_markivtarget_40103",
+   "title": "Ruger\u00ae Mark IV\u2122 Target Rimfire Pistol Model 40103, Sturm, Ruger & Co. specification sheet",
+   "url": "https://ruger.com/products/markIVTarget/specSheets/40103.html",
+   "sha256": "f167435d6612d4a3b1d163202a894bb64a864a56493bbd0303209b02b164557d",
+   "publisher": "Sturm, Ruger & Co.",
+   "tier": 4
+  },
+  {
+   "source_id": "ruger_mini14ranchrifle_5802",
+   "title": "Ruger\u00ae Mini-14\u00ae Ranch Rifle Autoloading Rifle Model 5802, Sturm, Ruger & Co. specification sheet",
+   "url": "https://ruger.com/products/mini14RanchRifle/specSheets/5802.html",
+   "sha256": "99fdbed695429085a5400105b66f9f31296f090eddfca3a0a06ae59f18678a7c",
+   "publisher": "Sturm, Ruger & Co.",
+   "tier": 4
+  },
+  {
+   "source_id": "ruger_mini14tacticalrifle_5895",
+   "title": "Ruger\u00ae Mini-14\u00ae Tactical Rifle Autoloading Rifle Model 5895, Sturm, Ruger & Co. specification sheet",
+   "url": "https://ruger.com/products/mini14TacticalRifle/specSheets/5895.html",
+   "sha256": "b0780745b3933254c873c17d4442d63b4bff3a855faf8917ebfada94acf5e820",
+   "publisher": "Sturm, Ruger & Co.",
+   "tier": 4
+  },
+  {
+   "source_id": "ruger_minithirty_5806",
+   "title": "Ruger\u00ae Mini-14\u00ae Mini Thirty\u00ae Rifle Autoloading Rifle Model 5806, Sturm, Ruger & Co. specification sheet",
+   "url": "https://ruger.com/products/miniThirty/specSheets/5806.html",
+   "sha256": "8e5d26d6fdd05b77199031b2574f786eb51f3bc31a957844d61aa2b4ae932320",
+   "publisher": "Sturm, Ruger & Co.",
+   "tier": 4
+  },
+  {
+   "source_id": "ruger_no1_21364",
+   "title": "Ruger\u00ae No.1 Single-Shot Rifle Model 21364, Sturm, Ruger & Co. specification sheet",
+   "url": "https://ruger.com/products/no1/specSheets/21364.html",
+   "sha256": "75e0e329194ab72d57a812cba114cfc308458d7484c9da0d25af36034f040177",
+   "publisher": "Sturm, Ruger & Co.",
+   "tier": 4
+  },
+  {
+   "source_id": "ruger_pccarbine_19115",
+   "title": "Ruger\u00ae PC Carbine\u2122 Autoloading Rifle Model 19115, Sturm, Ruger & Co. specification sheet",
+   "url": "https://ruger.com/products/pcCarbine/specSheets/19115.html",
+   "sha256": "ee7d7124a8e3414af2e48cfbcb9c685d8560ec1daef2d791bb47e456996f78f3",
+   "publisher": "Sturm, Ruger & Co.",
+   "tier": 4
+  },
+  {
+   "source_id": "ruger_pccharger_29100",
+   "title": "Ruger\u00ae PC Charger\u2122 Centerfire Pistol Model 29100, Sturm, Ruger & Co. specification sheet",
+   "url": "https://ruger.com/products/pcCharger/specSheets/29100.html",
+   "sha256": "eb58742b2833e48103f1891078ca6e7dc1d48a5e1418e4c8e9aa8efa37d089fd",
+   "publisher": "Sturm, Ruger & Co.",
+   "tier": 4
+  },
+  {
+   "source_id": "ruger_precisionrifle_18095",
+   "title": "Ruger Precision\u00ae Rifle Bolt-Action Rifle Model 18095, Sturm, Ruger & Co. specification sheet",
+   "url": "https://ruger.com/products/precisionRifle/specSheets/18095.html",
+   "sha256": "419ed26b38c9bc03a67aed5b9e23f991bf872de067c32a605843ba078168e6d5",
+   "publisher": "Sturm, Ruger & Co.",
+   "tier": 4
+  },
+  {
+   "source_id": "ruger_precisionrimfire_8400",
+   "title": "Ruger Precision\u00ae Rimfire Bolt-Action Rifle Model 8400, Sturm, Ruger & Co. specification sheet",
+   "url": "https://ruger.com/products/precisionRimfire/specSheets/8400.html",
+   "sha256": "dfc627540acca12b68cd19b65be25f483e4b5dfe8022fec13c10fe0177545428",
+   "publisher": "Sturm, Ruger & Co.",
+   "tier": 4
+  },
+  {
+   "source_id": "ruger_security9_3810",
+   "title": "Ruger\u00ae Security-9\u00ae Centerfire Pistol Model 3810, Sturm, Ruger & Co. specification sheet",
+   "url": "https://ruger.com/products/security9/specSheets/3810.html",
+   "sha256": "a8e348d22db7e945d312f7f46deb68a8415d915c9781773adf55e7568c195db7",
+   "publisher": "Sturm, Ruger & Co.",
+   "tier": 4
+  },
+  {
+   "source_id": "ruger_newmodelsinglesix_0661",
+   "title": "Ruger\u00ae New Model Single-Six\u00ae Single-Action Revolver Model 0661, Sturm, Ruger & Co. specification sheet",
+   "url": "https://ruger.com/products/newModelSingleSix/specSheets/0661.html",
+   "sha256": "2445e6b723ac7ce4d452efa42b6e00a2ca6763d80f82baa6aef98460ab9acc28",
+   "publisher": "Sturm, Ruger & Co.",
+   "tier": 4
+  },
+  {
+   "source_id": "ruger_sp101_5737",
+   "title": "Ruger\u00ae SP101\u00ae Standard Double-Action Revolver Model 5737, Sturm, Ruger & Co. specification sheet",
+   "url": "https://ruger.com/products/sp101/specSheets/5737.html",
+   "sha256": "7efa768dfa5ddeafb1f328ceb08a39dc0e1b5e36edcd2452b83120f27e6004fe",
+   "publisher": "Sturm, Ruger & Co.",
+   "tier": 4
+  },
+  {
+   "source_id": "ruger_sr1911standard_16706",
+   "title": "Ruger\u00ae SR1911\u00ae Standard Centerfire Pistol Model 16706, Sturm, Ruger & Co. specification sheet",
+   "url": "https://ruger.com/products/sr1911Standard/specSheets/16706.html",
+   "sha256": "7d16402bbfd1cfbddf83a970169689937e660aa0ae4976fc409c3609bbcd6181",
+   "publisher": "Sturm, Ruger & Co.",
+   "tier": 4
+  },
+  {
+   "source_id": "ruger_newmodelsuperblackhawkstandard_0807",
+   "title": "Ruger\u00ae New Model Super Blackhawk\u00ae Standard Single-Action Revolver Model 0807, Sturm, Ruger & Co. specification sheet",
+   "url": "https://ruger.com/products/newModelSuperBlackhawkStandard/specSheets/0807.html",
+   "sha256": "9b12cbc41fe8a76968a00a8cea55f88ff2af74592728526ffe6ce5c2a7aed326",
+   "publisher": "Sturm, Ruger & Co.",
+   "tier": 4
+  },
+  {
+   "source_id": "ruger_wrangler_2003",
+   "title": "Ruger\u00ae Wrangler\u00ae Single-Action Revolver Model 2003, Sturm, Ruger & Co. specification sheet",
+   "url": "https://ruger.com/products/wrangler/specSheets/2003.html",
+   "sha256": "4cfdb97b7485b793279dbc9b90e1b0adc585d0f885ec6f88524a167355c3ff2d",
+   "publisher": "Sturm, Ruger & Co.",
+   "tier": 4
+  },
+  {
+   "source_id": "sw_spec_model_340_pd",
+   "title": "Model 340 Pd (SKU 163062), Smith & Wesson product data",
+   "url": "https://www.smith-wesson.com/_next/data/z8jbKTNew6nFesa2KkLQE/product/model-340-pd.json",
+   "sha256": "7c5bdc06bf64cc342e0a6a21898c917961194b33696d88249a02e211087372bf",
+   "publisher": "Smith & Wesson",
+   "tier": 4
+  },
+  {
+   "source_id": "sw_spec_performance_center_model_460xvr",
+   "title": "Performance Center\u00ae Model 460Xvr (SKU 170262), Smith & Wesson product data",
+   "url": "https://www.smith-wesson.com/_next/data/z8jbKTNew6nFesa2KkLQE/product/performance-center-model-460xvr.json",
+   "sha256": "fe8c1d5a9bba80a688997058afed146475872d510960df3edd97e2504c0b1d27",
+   "publisher": "Smith & Wesson",
+   "tier": 4
+  },
+  {
+   "source_id": "sw_spec_model_640",
+   "title": "Model 640 (SKU 163690), Smith & Wesson product data",
+   "url": "https://www.smith-wesson.com/_next/data/z8jbKTNew6nFesa2KkLQE/product/model-640.json",
+   "sha256": "01472caa7b5feb187dcf34829e44bf79dafeb0143a619a1f2aae463fb41c663c",
+   "publisher": "Smith & Wesson",
+   "tier": 4
+  },
+  {
+   "source_id": "sw_spec_model_686_plus_mountain_gun",
+   "title": "Model 686 Plus Mountain Gun\u00ae (SKU 14040), Smith & Wesson product data",
+   "url": "https://www.smith-wesson.com/_next/data/z8jbKTNew6nFesa2KkLQE/product/model-686-plus-mountain-gun.json",
+   "sha256": "f31a7a71e0dcf27de1fff59955422435ab3b7d64ffc1ada1a9ce10342767f88e",
+   "publisher": "Smith & Wesson",
+   "tier": 4
+  },
+  {
+   "source_id": "sw_spec_model_41",
+   "title": "Model 41 (SKU 130511), Smith & Wesson product data",
+   "url": "https://www.smith-wesson.com/_next/data/z8jbKTNew6nFesa2KkLQE/product/model-41.json",
+   "sha256": "08a5aaf622a7147622470dbad1b25ef78a5871129787e26a0d3515a150a4aeff",
+   "publisher": "Smith & Wesson",
+   "tier": 4
+  },
+  {
+   "source_id": "sw_spec_model_617_mountain_gun",
+   "title": "Model 617 Mountain Gun\u00ae (SKU 14107), Smith & Wesson product data",
+   "url": "https://www.smith-wesson.com/_next/data/z8jbKTNew6nFesa2KkLQE/product/model-617-mountain-gun.json",
+   "sha256": "503de598d667d027d030cdb1edfde66955b74329682a667d486a95d116f81509",
+   "publisher": "Smith & Wesson",
+   "tier": 4
+  },
+  {
+   "source_id": "sw_spec_m_p_10_6_5_creedmoor",
+   "title": "[Discontinued] M&P\u00ae10 6.5 Creedmoor (SKU 10057), Smith & Wesson product data",
+   "url": "https://www.smith-wesson.com/_next/data/z8jbKTNew6nFesa2KkLQE/product/m-p-10-6.5-creedmoor.json",
+   "sha256": "b34bb86511079db7e70b7cc80dab3d5c6b27ddfca22d9fc8ca69bc2637488bd5",
+   "publisher": "Smith & Wesson",
+   "tier": 4
+  },
+  {
+   "source_id": "sw_spec_m_p_15_22_sport_moe_sl_matte_black",
+   "title": "M&P\u00ae15-22 Sport Moe Sl\u00ae Matte Black (SKU 10213), Smith & Wesson product data",
+   "url": "https://www.smith-wesson.com/_next/data/z8jbKTNew6nFesa2KkLQE/product/m-p-15-22-sport-moe-sl-matte-black.json",
+   "sha256": "602526f14f42111581c972a6189358e61d6751a46869ef1ab2a5c412fb46bee1",
+   "publisher": "Smith & Wesson",
+   "tier": 4
+  },
+  {
+   "source_id": "sw_spec_m_p_9_m2_0_optic_ready_no_thumb_safety_15rd",
+   "title": "M&P\u00ae9 M2.0\u00ae Optic Ready No Thumb Safety 15Rd (SKU 14913), Smith & Wesson product data",
+   "url": "https://www.smith-wesson.com/_next/data/z8jbKTNew6nFesa2KkLQE/product/m-p-9-m2-0-optic-ready-no-thumb-safety-15rd.json",
+   "sha256": "433def16cd395cd4f7929b413bcd35a2dd05c5b91e571734f79de68c54f87a47",
+   "publisher": "Smith & Wesson",
+   "tier": 4
+  },
+  {
+   "source_id": "sw_spec_m_p_9_shield_plus_ca_compliant",
+   "title": "M&P\u00ae9 Shield Plus Ca Compliant (SKU 14280), Smith & Wesson product data",
+   "url": "https://www.smith-wesson.com/_next/data/z8jbKTNew6nFesa2KkLQE/product/m-p-9-shield-plus-ca-compliant.json",
+   "sha256": "3d7d6689a2429be04a32526e20e39fdc2fbf731c2e7b44162c04f6367bc43710",
+   "publisher": "Smith & Wesson",
+   "tier": 4
+  },
+  {
+   "source_id": "sw_spec_m_p_15_sport_iii_tungsten_gray",
+   "title": "M&P\u00ae15 Sport\u2122 Iii Tungsten Gray (SKU 14425), Smith & Wesson product data",
+   "url": "https://www.smith-wesson.com/_next/data/z8jbKTNew6nFesa2KkLQE/product/m-p-15-sport-iii-tungsten-gray.json",
+   "sha256": "ac16b29db6f2b5feadb93d0d1c01e44a8804eee8765ec174f75583d475fee6e7",
+   "publisher": "Smith & Wesson",
+   "tier": 4
+  },
+  {
+   "source_id": "sw_spec_s_w_sd9_2_0_2_tone_od_green",
+   "title": "S&W\u00ae Sd9 2.0 2-Tone Od Green (SKU 14440), Smith & Wesson product data",
+   "url": "https://www.smith-wesson.com/_next/data/z8jbKTNew6nFesa2KkLQE/product/s-w-sd9-2-0-2-tone-od-green.json",
+   "sha256": "c7260489f6894595b8b20c1db11c609f6e392928b4943401c060ac9a9e099a42",
+   "publisher": "Smith & Wesson",
+   "tier": 4
+  },
+  {
+   "source_id": "sw_spec_sw_sd40_2_2_tone_14rd",
+   "title": "S&W Sd40 2.0 2-Tone 14Rd (SKU 13936), Smith & Wesson product data",
+   "url": "https://www.smith-wesson.com/_next/data/z8jbKTNew6nFesa2KkLQE/product/sw-sd40-2-2-tone-14rd.json",
+   "sha256": "52b265eef18dfebc9b7443fbc15e1d9a931f25cecfc79c438e5fa4b506ba20f1",
+   "publisher": "Smith & Wesson",
+   "tier": 4
+  },
+  {
+   "source_id": "sw_spec_sw1911_e_series",
+   "title": "Sw1911 E-Series (SKU 108482), Smith & Wesson product data",
+   "url": "https://www.smith-wesson.com/_next/data/z8jbKTNew6nFesa2KkLQE/product/sw1911-e-series.json",
+   "sha256": "c026425330ea3e600d2c8475cb151eb2c185c380d0b88ec401fd94b81055adc1",
+   "publisher": "Smith & Wesson",
+   "tier": 4
+  },
+  {
+   "source_id": "springfield_1911_ronin_aos_9mm_handgun",
+   "title": "1911 Ronin AOS 9mm Handgun - PX9119LAOS - Springfield Armory, Springfield Armory",
+   "url": "https://www.springfield-armory.com/1911-series-handguns/1911-ronin-handguns/1911-ronin-aos-9mm-handgun/",
+   "sha256": "026fab4cad5d3a94a3592b27fb52b7046568185fa73326d0b836bc1e9ff0dcde",
+   "publisher": "Springfield Armory",
+   "tier": 4
+  },
+  {
+   "source_id": "springfield_1911_emissary_45_acp_handgun",
+   "title": "1911 Emissary .45 ACP Handgun - PX9220L - Springfield Armory, Springfield Armory",
+   "url": "https://www.springfield-armory.com/1911-series-handguns/1911-emissary-handguns/1911-emissary-45-acp-handgun/",
+   "sha256": "053e30f7ecf0dfbdcc5569a44b554376eaafd5a072d4bab31472207019ba0b93",
+   "publisher": "Springfield Armory",
+   "tier": 4
+  },
+  {
+   "source_id": "springfield_1911_garrison_45_acp_handgun_firstline",
+   "title": "1911 Garrison .45 ACP Handgun - PX9420-FL - Firstline - Springfield Armory, Springfield Armory",
+   "url": "https://www.springfield-armory.com/1911-series-handguns/1911-garrison-handguns/1911-garrison-45-acp-handgun-firstline/",
+   "sha256": "504921b35d8205b6c93f3cf77727fda9026a9fd2108ee9e5d1f453a3bf7cc7d6",
+   "publisher": "Springfield Armory",
+   "tier": 4
+  },
+  {
+   "source_id": "springfield_hellcat_pro_osp_9mm_handgun",
+   "title": "Hellcat\u00ae Pro OSP\u2122 9mm Handgun - HCP9379BOSP - Springfield Armory, Springfield Armory",
+   "url": "https://www.springfield-armory.com/hellcat-series-handguns/hellcat-pro-handguns/hellcat-pro-osp-9mm-handgun/",
+   "sha256": "d101949549439d59f69aa398af4ff96b7e2526599b8d02ab1086c296a905fa81",
+   "publisher": "Springfield Armory",
+   "tier": 4
+  },
+  {
+   "source_id": "springfield_m1a_national_match_308_rifle",
+   "title": "M1A\u2122 National Match .308 Rifle - NA9102 - Springfield Armory, Springfield Armory",
+   "url": "https://www.springfield-armory.com/m1a-series-rifles/m1a-national-match-rifles/m1a-national-match-308-rifle/",
+   "sha256": "6e9318a02d213a489881f2ae6cac02b29b3e23d17bc4a0912f45efd422e09b12",
+   "publisher": "Springfield Armory",
+   "tier": 4
+  },
+  {
+   "source_id": "springfield_m1a_scout_squad_308_rifle",
+   "title": "M1A\u2122 Scout Squad\u2122 .308 Rifle - AA9122 - Springfield Armory, Springfield Armory",
+   "url": "https://www.springfield-armory.com/m1a-series-rifles/m1a-scout-squad-rifles/m1a-scout-squad-308-rifle/",
+   "sha256": "f9fba8a9b5dae62f0b83a99fbe0e30d806989954c0e40666565efe92263df143",
+   "publisher": "Springfield Armory",
+   "tier": 4
+  },
+  {
+   "source_id": "springfield_m1a_socom_16_308_rifle",
+   "title": "M1A\u2122 SOCOM 16 .308 Rifle - AA9626 - Springfield Armory, Springfield Armory",
+   "url": "https://www.springfield-armory.com/m1a-series-rifles/m1a-socom-16-rifles/m1a-socom-16-308-rifle/",
+   "sha256": "084ae2083a289b1cabf3ac851192f364c194cab58adba9759923b17adcd24e1b",
+   "publisher": "Springfield Armory",
+   "tier": 4
+  },
+  {
+   "source_id": "springfield_m1a_tanker_308_rifle",
+   "title": "M1A\u2122 Tanker .308 Rifle - AA9622 - Springfield Armory, Springfield Armory",
+   "url": "https://www.springfield-armory.com/m1a-series-rifles/m1a-socom-16-rifles/m1a-tanker-308-rifle/",
+   "sha256": "21643ec1e6cf3a42747d1db69abf3f4786668199624e4584e8d8d9e007ef50f6",
+   "publisher": "Springfield Armory",
+   "tier": 4
+  },
+  {
+   "source_id": "springfield_1911_operator_45_acp_handgun",
+   "title": "1911 Operator\u00ae .45 ACP Handgun - PO9230 - Springfield Armory, Springfield Armory",
+   "url": "https://www.springfield-armory.com/1911-series-handguns/1911-operator-handguns/1911-operator-45-acp-handgun/",
+   "sha256": "bc0d2a7052b9b760a767afbfe019237b54c77627dff6aa2c166d2a31b84ac7f9",
+   "publisher": "Springfield Armory",
+   "tier": 4
+  },
+  {
+   "source_id": "springfield_1911_professional_45_acp_handgun",
+   "title": "1911 Professional .45 ACP Handgun - PC9111 - Springfield Armory, Springfield Armory",
+   "url": "https://www.springfield-armory.com/1911-series-handguns/custom-handguns/1911-professional-45-acp-handgun/",
+   "sha256": "2bfdeb9d1ed83320c3eae26bac8cd96de3e987f83354b9fc0fc7348fa53c5ca4",
+   "publisher": "Springfield Armory",
+   "tier": 4
+  },
+  {
+   "source_id": "springfield_1911_ronin_aos_45_acp_handgun",
+   "title": "1911 Ronin AOS .45 ACP Handgun - PX9120LAOS - Springfield Armory, Springfield Armory",
+   "url": "https://www.springfield-armory.com/1911-series-handguns/1911-ronin-handguns/1911-ronin-aos-45-acp-handgun/",
+   "sha256": "54f90ac2e923d89c71ab9a9209c9c2f415ab2d41eda30f9bb11f897d550e7ed5",
+   "publisher": "Springfield Armory",
+   "tier": 4
+  },
+  {
+   "source_id": "springfield_saint_edge_atc_223_ar_15_rifle",
+   "title": "SAINT\u00ae Edge ATC .223 AR-15 Rifle - STA918223B - Springfield Armory, Springfield Armory",
+   "url": "https://www.springfield-armory.com/saint-series/saint-edge-atc-ar-15-rifles/saint-edge-atc-223-ar-15-rifle/",
+   "sha256": "a9661f536cdc2e7d3abb5a5fd346c4d887fb78b865f43a028d7a9a65144f6a91",
+   "publisher": "Springfield Armory",
+   "tier": 4
+  },
+  {
+   "source_id": "springfield_1911_trp_45_acp_handgun",
+   "title": "1911 TRP\u2122 .45 ACP Handgun - PC9108L18 - Springfield Armory, Springfield Armory",
+   "url": "https://www.springfield-armory.com/1911-series-handguns/1911-trp-handguns/1911-trp-45-acp-handgun/",
+   "sha256": "55017bd38dfc35cd30d5abe6aaf35d3f042de5d29624081d65643d403c068353",
+   "publisher": "Springfield Armory",
+   "tier": 4
+  },
+  {
+   "source_id": "springfield_xd_e_33_single_stack_9mm_handgun",
+   "title": "XD-E\u00ae 3.3&quot; Single Stack 9mm Handgun - XDE9339BE - Springfield Armory, Springfield Armory",
+   "url": "https://www.springfield-armory.com/xd-series-handguns/xd-e-handguns/xd-e-33-single-stack-9mm-handgun/",
+   "sha256": "82ff9ba0350c64bc06b897b551b033add79f722c096b30514c3c95eb99f7ee82",
+   "publisher": "Springfield Armory",
+   "tier": 4
+  },
+  {
+   "source_id": "wb_taurus_g2c",
+   "title": "Taurus G2c product page (https://www.taurususa.com/firearms/pistols/g2c/), Internet Archive capture",
+   "url": "https://web.archive.org/web/20201219162026/https://www.taurususa.com/firearms/pistols/g2c/",
+   "sha256": "1e1e6e753c87eaaa00a17a990d7dcdfdf3bb0bc67c0abb43dd26ae318b9ae882",
+   "publisher": "Taurus USA",
+   "tier": 4
+  },
+  {
+   "source_id": "wb_taurus_605",
+   "title": "Taurus Model 605 product page (https://www.taurususa.com/firearms/revolvers/605/), Internet Archive capture",
+   "url": "https://web.archive.org/web/20201220100701/https://www.taurususa.com/firearms/revolvers/605/",
+   "sha256": "7d1e156992f72494650e37a0220a105cdf95352adeb603a06ad387a973385ad3",
+   "publisher": "Taurus USA",
+   "tier": 4
+  },
+  {
+   "source_id": "wb_taurus_692",
+   "title": "Taurus Model 692 product page (https://www.taurususa.com/firearms/revolvers/692/), Internet Archive capture",
+   "url": "https://web.archive.org/web/20201219225524/https://www.taurususa.com/firearms/revolvers/692/",
+   "sha256": "afda8bcfa72e2db0b89859c84b3013f72f15cce7d1801b05524dc666ad61d24f",
+   "publisher": "Taurus USA",
+   "tier": 4
+  },
+  {
+   "source_id": "wb_taurus_856",
+   "title": "Taurus Model 856 product page (https://www.taurususa.com/firearms/revolvers/856/), Internet Archive capture",
+   "url": "https://web.archive.org/web/20201220082217/https://www.taurususa.com/firearms/revolvers/856/",
+   "sha256": "0cff5f3c0a30fee6164b9b112cbc9b190588c909eee5dd101b964081225bdee3",
+   "publisher": "Taurus USA",
+   "tier": 4
+  }
+ ],
+ "weights": [
+  {
+   "weapon_key": "glock_17gen3",
+   "maker": "Glock",
+   "weapon": "G17",
+   "mass_kg": 0.705,
+   "state": "with empty magazine",
+   "source_id": "glock_g17",
+   "note": "Weight with empty magazine 705 g | 24.87 oz"
+  },
+  {
+   "weapon_key": "glock_17gen4",
+   "maker": "Glock",
+   "weapon": "G17 Gen4",
+   "mass_kg": 0.705,
+   "state": "with empty magazine",
+   "source_id": "glock_g17_gen4",
+   "note": "Weight with empty magazine 705 g | 24.87 oz"
+  },
+  {
+   "weapon_key": "glock_17gen6",
+   "maker": "Glock",
+   "weapon": "G17 Gen6",
+   "mass_kg": 0.68,
+   "state": "with empty magazine",
+   "source_id": "glock_g17_gen6",
+   "note": "Weight with empty magazine 680 g | 23.99 oz"
+  },
+  {
+   "weapon_key": "glock_17lgen3",
+   "maker": "Glock",
+   "weapon": "G17L",
+   "mass_kg": 0.755,
+   "state": "with empty magazine",
+   "source_id": "glock_g17l",
+   "note": "Weight with empty magazine 755 g | 26.63 oz"
+  },
+  {
+   "weapon_key": "glock_17lgen5",
+   "maker": "Glock",
+   "weapon": "G17L Gen5 MOS",
+   "mass_kg": 0.72,
+   "state": "with empty magazine",
+   "source_id": "glock_g17l_gen5_mos",
+   "note": "Weight with empty magazine 720 g I 25.40 oz"
+  },
+  {
+   "weapon_key": "glock_19gen3",
+   "maker": "Glock",
+   "weapon": "G19",
+   "mass_kg": 0.67,
+   "state": "with empty magazine",
+   "source_id": "glock_g19",
+   "note": "Weight with empty magazine 670 g | 23.63 oz"
+  },
+  {
+   "weapon_key": "glock_19gen4",
+   "maker": "Glock",
+   "weapon": "G19 Gen4",
+   "mass_kg": 0.67,
+   "state": "with empty magazine",
+   "source_id": "glock_g19_gen4",
+   "note": "Weight with empty magazine 670 g | 23.63 oz"
+  },
+  {
+   "weapon_key": "glock_19gen6",
+   "maker": "Glock",
+   "weapon": "G19 Gen6",
+   "mass_kg": 0.64,
+   "state": "with empty magazine",
+   "source_id": "glock_g19_gen6",
+   "note": "Weight with empty magazine 640 g | 22.58 oz"
+  },
+  {
+   "weapon_key": "glock_19xgen5",
+   "maker": "Glock",
+   "weapon": "G19X",
+   "mass_kg": 0.704,
+   "state": "with empty magazine",
+   "source_id": "glock_g19x",
+   "note": "Weight with empty magazine 704 g | 24.83 oz"
+  },
+  {
+   "weapon_key": "glock_20gen3sf",
+   "maker": "Glock",
+   "weapon": "G20 SF",
+   "mass_kg": 0.865,
+   "state": "with empty magazine",
+   "source_id": "glock_g20_sf",
+   "note": "Weight with empty magazine 865 g | 30.51 oz"
+  },
+  {
+   "weapon_key": "glock_20gen4",
+   "maker": "Glock",
+   "weapon": "G20 Gen4",
+   "mass_kg": 0.87,
+   "state": "with empty magazine",
+   "source_id": "glock_g20_gen4",
+   "note": "Weight with empty magazine 870 g | 30.69 oz"
+  },
+  {
+   "weapon_key": "glock_20gen5",
+   "maker": "Glock",
+   "weapon": "G20 Gen5 MOS",
+   "mass_kg": 0.805,
+   "state": "with empty magazine",
+   "source_id": "glock_g20_gen5_mos",
+   "note": "Weight with empty magazine 805 g I 28.40 oz"
+  },
+  {
+   "weapon_key": "glock_21gen3sf",
+   "maker": "Glock",
+   "weapon": "G21 SF",
+   "mass_kg": 0.825,
+   "state": "with empty magazine",
+   "source_id": "glock_g21_sf",
+   "note": "Weight with empty magazine 825 g | 29.10 oz"
+  },
+  {
+   "weapon_key": "glock_21gen4",
+   "maker": "Glock",
+   "weapon": "G21 Gen4",
+   "mass_kg": 0.83,
+   "state": "with empty magazine",
+   "source_id": "glock_g21_gen4",
+   "note": "Weight with empty magazine 830 g | 29.28 oz"
+  },
+  {
+   "weapon_key": "glock_21gen5",
+   "maker": "Glock",
+   "weapon": "G21 Gen5 MOS",
+   "mass_kg": 0.825,
+   "state": "with empty magazine",
+   "source_id": "glock_g21_gen5_mos",
+   "note": "Weight with empty magazine 825 g I 29.10 oz"
+  },
+  {
+   "weapon_key": "glock_22gen3",
+   "maker": "Glock",
+   "weapon": "G22",
+   "mass_kg": 0.725,
+   "state": "with empty magazine",
+   "source_id": "glock_g22",
+   "note": "Weight with empty magazine 725 g | 25.57 oz"
+  },
+  {
+   "weapon_key": "glock_22gen4",
+   "maker": "Glock",
+   "weapon": "G22 Gen4",
+   "mass_kg": 0.725,
+   "state": "with empty magazine",
+   "source_id": "glock_g22_gen4",
+   "note": "Weight with empty magazine 725 g | 25.57 oz"
+  },
+  {
+   "weapon_key": "glock_22gen5",
+   "maker": "Glock",
+   "weapon": "G22 Gen5",
+   "mass_kg": 0.806,
+   "state": "with empty magazine",
+   "source_id": "glock_g22_gen5",
+   "note": "Weight with empty magazine 806 g | 28.43 oz"
+  },
+  {
+   "weapon_key": "glock_23gen3",
+   "maker": "Glock",
+   "weapon": "G23",
+   "mass_kg": 0.67,
+   "state": "with empty magazine",
+   "source_id": "glock_g23",
+   "note": "Weight with empty magazine 670 g | 23.63 oz"
+  },
+  {
+   "weapon_key": "glock_23gen4",
+   "maker": "Glock",
+   "weapon": "G23 Gen4",
+   "mass_kg": 0.675,
+   "state": "with empty magazine",
+   "source_id": "glock_g23_gen4",
+   "note": "Weight with empty magazine 675 g | 23.81 oz"
+  },
+  {
+   "weapon_key": "glock_23gen5",
+   "maker": "Glock",
+   "weapon": "G23 Gen5 MOS",
+   "mass_kg": 0.756,
+   "state": "with empty magazine",
+   "source_id": "glock_g23_gen5_mos",
+   "note": "Weight with empty magazine 756 g | 26.67 oz"
+  },
+  {
+   "weapon_key": "glock_24gen3",
+   "maker": "Glock",
+   "weapon": "G24",
+   "mass_kg": 0.84,
+   "state": "with empty magazine",
+   "source_id": "glock_g24",
+   "note": "Weight with empty magazine 840 g | 29.63 oz"
+  },
+  {
+   "weapon_key": "glock_26gen3",
+   "maker": "Glock",
+   "weapon": "G26",
+   "mass_kg": 0.61,
+   "state": "with empty magazine",
+   "source_id": "glock_g26",
+   "note": "Weight with empty magazine 610 g | 21.52 oz"
+  },
+  {
+   "weapon_key": "glock_26gen4",
+   "maker": "Glock",
+   "weapon": "G26 Gen4",
+   "mass_kg": 0.61,
+   "state": "with empty magazine",
+   "source_id": "glock_g26_gen4",
+   "note": "Weight with empty magazine 610 g | 21.52 oz"
+  },
+  {
+   "weapon_key": "glock_27gen3",
+   "maker": "Glock",
+   "weapon": "G27",
+   "mass_kg": 0.605,
+   "state": "with empty magazine",
+   "source_id": "glock_g27",
+   "note": "Weight with empty magazine 605 g | 21.34 oz"
+  },
+  {
+   "weapon_key": "glock_27gen4",
+   "maker": "Glock",
+   "weapon": "G27 Gen4",
+   "mass_kg": 0.605,
+   "state": "with empty magazine",
+   "source_id": "glock_g27_gen4",
+   "note": "Weight with empty magazine 605 g | 21.34 oz"
+  },
+  {
+   "weapon_key": "glock_27gen5",
+   "maker": "Glock",
+   "weapon": "G27 Gen5",
+   "mass_kg": 0.676,
+   "state": "with empty magazine",
+   "source_id": "glock_g27_gen5",
+   "note": "Weight with empty magazine 676 g | 23.85 oz"
+  },
+  {
+   "weapon_key": "glock_29gen3sf",
+   "maker": "Glock",
+   "weapon": "G29 SF",
+   "mass_kg": 0.76,
+   "state": "with empty magazine",
+   "source_id": "glock_g29_sf",
+   "note": "Weight with empty magazine 760 g | 26.81 oz"
+  },
+  {
+   "weapon_key": "glock_29gen4",
+   "maker": "Glock",
+   "weapon": "G29 Gen4",
+   "mass_kg": 0.76,
+   "state": "with empty magazine",
+   "source_id": "glock_g29_gen4",
+   "note": "Weight with empty magazine 760 g | 26.81 oz"
+  },
+  {
+   "weapon_key": "glock_29gen5",
+   "maker": "Glock",
+   "weapon": "G29 Gen5",
+   "mass_kg": 0.76,
+   "state": "with empty magazine",
+   "source_id": "glock_g29_gen5",
+   "note": "Weight with empty magazine 760 g I 26.81 oz"
+  },
+  {
+   "weapon_key": "glock_30gen3sf",
+   "maker": "Glock",
+   "weapon": "G30 SF",
+   "mass_kg": 0.745,
+   "state": "with empty magazine",
+   "source_id": "glock_g30_sf",
+   "note": "Weight with empty magazine 745 g | 26.28 oz"
+  },
+  {
+   "weapon_key": "glock_30gen4",
+   "maker": "Glock",
+   "weapon": "G30 Gen4",
+   "mass_kg": 0.745,
+   "state": "with empty magazine",
+   "source_id": "glock_g30_gen4",
+   "note": "Weight with empty magazine 745 g | 26.28 oz"
+  },
+  {
+   "weapon_key": "glock_30gen5",
+   "maker": "Glock",
+   "weapon": "G30 Gen5",
+   "mass_kg": 0.745,
+   "state": "with empty magazine",
+   "source_id": "glock_g30_gen5",
+   "note": "Weight with empty magazine 745 g I 26.28 oz"
+  },
+  {
+   "weapon_key": "glock_30sgen3",
+   "maker": "Glock",
+   "weapon": "G30S",
+   "mass_kg": 0.645,
+   "state": "with empty magazine",
+   "source_id": "glock_g30s",
+   "note": "Weight with empty magazine 645 g | 22.75 oz"
+  },
+  {
+   "weapon_key": "glock_31gen3",
+   "maker": "Glock",
+   "weapon": "G31",
+   "mass_kg": 0.74,
+   "state": "with empty magazine",
+   "source_id": "glock_g31",
+   "note": "Weight with empty magazine 740 g | 26.10 oz"
+  },
+  {
+   "weapon_key": "glock_31gen4",
+   "maker": "Glock",
+   "weapon": "G31 Gen4",
+   "mass_kg": 0.74,
+   "state": "with empty magazine",
+   "source_id": "glock_g31_gen4",
+   "note": "Weight with empty magazine 740 g | 26.10 oz"
+  },
+  {
+   "weapon_key": "glock_32gen3",
+   "maker": "Glock",
+   "weapon": "G32",
+   "mass_kg": 0.69,
+   "state": "with empty magazine",
+   "source_id": "glock_g32",
+   "note": "Weight with empty magazine 690 g | 24.34 oz"
+  },
+  {
+   "weapon_key": "glock_32gen4",
+   "maker": "Glock",
+   "weapon": "G32 Gen4",
+   "mass_kg": 0.69,
+   "state": "with empty magazine",
+   "source_id": "glock_g32_gen4",
+   "note": "Weight with empty magazine 690 g | 24.34 oz"
+  },
+  {
+   "weapon_key": "glock_33gen3",
+   "maker": "Glock",
+   "weapon": "G33",
+   "mass_kg": 0.62,
+   "state": "with empty magazine",
+   "source_id": "glock_g33",
+   "note": "Weight with empty magazine 620 g | 21.87 oz"
+  },
+  {
+   "weapon_key": "glock_33gen4",
+   "maker": "Glock",
+   "weapon": "G33 Gen4",
+   "mass_kg": 0.62,
+   "state": "with empty magazine",
+   "source_id": "glock_g33_gen4",
+   "note": "Weight with empty magazine 620 g | 21.87 oz"
+  },
+  {
+   "weapon_key": "glock_34gen3",
+   "maker": "Glock",
+   "weapon": "G34",
+   "mass_kg": 0.735,
+   "state": "with empty magazine",
+   "source_id": "glock_g34",
+   "note": "Weight with empty magazine 735 g | 25.93 oz"
+  },
+  {
+   "weapon_key": "glock_34gen4",
+   "maker": "Glock",
+   "weapon": "G34 Gen4",
+   "mass_kg": 0.735,
+   "state": "with empty magazine",
+   "source_id": "glock_g34_gen4",
+   "note": "Weight with empty magazine 735 g | 25.93 oz"
+  },
+  {
+   "weapon_key": "glock_35gen3",
+   "maker": "Glock",
+   "weapon": "G35",
+   "mass_kg": 0.78,
+   "state": "with empty magazine",
+   "source_id": "glock_g35",
+   "note": "Weight with empty magazine 780 g | 27.51 oz"
+  },
+  {
+   "weapon_key": "glock_35gen4",
+   "maker": "Glock",
+   "weapon": "G35 Gen4",
+   "mass_kg": 0.785,
+   "state": "with empty magazine",
+   "source_id": "glock_g35_gen4",
+   "note": "Weight with empty magazine 785 g | 27.69 oz"
+  },
+  {
+   "weapon_key": "glock_36gen3",
+   "maker": "Glock",
+   "weapon": "G36",
+   "mass_kg": 0.635,
+   "state": "with empty magazine",
+   "source_id": "glock_g36",
+   "note": "Weight with empty magazine 635 g | 22.40 oz"
+  },
+  {
+   "weapon_key": "glock_37gen3",
+   "maker": "Glock",
+   "weapon": "G37",
+   "mass_kg": 0.815,
+   "state": "with empty magazine",
+   "source_id": "glock_g37",
+   "note": "Weight with empty magazine 815 g | 28.75 oz"
+  },
+  {
+   "weapon_key": "glock_38gen3",
+   "maker": "Glock",
+   "weapon": "G38",
+   "mass_kg": 0.755,
+   "state": "with empty magazine",
+   "source_id": "glock_g38",
+   "note": "Weight with empty magazine 755 g | 26.63 oz"
+  },
+  {
+   "weapon_key": "glock_39gen3",
+   "maker": "Glock",
+   "weapon": "G39",
+   "mass_kg": 0.685,
+   "state": "with empty magazine",
+   "source_id": "glock_g39",
+   "note": "Weight with empty magazine 685 g | 24.16 oz"
+  },
+  {
+   "weapon_key": "glock_40gen4",
+   "maker": "Glock",
+   "weapon": "G40 Gen4 MOS",
+   "mass_kg": 1.005,
+   "state": "with empty magazine",
+   "source_id": "glock_g40_gen4_mos",
+   "note": "Weight with empty magazine 1005 g | 35.45 oz"
+  },
+  {
+   "weapon_key": "glock_41gen4",
+   "maker": "Glock",
+   "weapon": "G41 Gen4",
+   "mass_kg": 0.76,
+   "state": "with empty magazine",
+   "source_id": "glock_g41_gen4",
+   "note": "Weight with empty magazine 760 g | 26.81 oz"
+  },
+  {
+   "weapon_key": "glock_42gen4",
+   "maker": "Glock",
+   "weapon": "G42",
+   "mass_kg": 0.39,
+   "state": "with empty magazine",
+   "source_id": "glock_g42",
+   "note": "Weight with empty magazine 390 g | 13.76 oz"
+  },
+  {
+   "weapon_key": "glock_44gen5",
+   "maker": "Glock",
+   "weapon": "G44",
+   "mass_kg": 0.415,
+   "state": "with empty magazine",
+   "source_id": "glock_g44",
+   "note": "Weight with empty magazine 415 g | 14.64 oz"
+  },
+  {
+   "weapon_key": "glock_45gen6",
+   "maker": "Glock",
+   "weapon": "G45 Gen6",
+   "mass_kg": 0.655,
+   "state": "with empty magazine",
+   "source_id": "glock_g45_gen6",
+   "note": "Weight with empty magazine 655 g | 23.10 oz"
+  },
+  {
+   "weapon_key": "glock_47gen5",
+   "maker": "Glock",
+   "weapon": "G47 MOS",
+   "mass_kg": 0.735,
+   "state": "with empty magazine",
+   "source_id": "glock_g47_mos",
+   "note": "Weight with empty magazine 735 g | 25.93 oz"
+  },
+  {
+   "weapon_key": "ruger_1022",
+   "maker": "Ruger",
+   "weapon": "Ruger\u00ae 10/22\u00ae Standard Autoloading Rifle Model 32002",
+   "mass_kg": 1.9,
+   "state": "as published",
+   "source_id": "ruger_1022standard_32002",
+   "note": "Weight 4.2 lb. 1.90\u00a0kg"
+  },
+  {
+   "weapon_key": "ruger_americanpredator",
+   "maker": "Ruger",
+   "weapon": "Ruger American\u00ae Rifle Generation II Predator Bolt-Action Rifle Model 46930",
+   "mass_kg": 3.03,
+   "state": "as published",
+   "source_id": "ruger_americanriflepredatorgenii_46930",
+   "note": "Weight 6.7 lb. 3.03\u00a0kg"
+  },
+  {
+   "weapon_key": "ruger_americanrifle",
+   "maker": "Ruger",
+   "weapon": "Ruger American\u00ae Rifle Generation II Standard Bolt-Action Rifle Model 46902",
+   "mass_kg": 2.9,
+   "state": "as published",
+   "source_id": "ruger_americanriflegenii_46902",
+   "note": "Weight 6.4 lb. 2.90\u00a0kg"
+  },
+  {
+   "weapon_key": "ruger_blackhawk",
+   "maker": "Ruger",
+   "weapon": "Ruger\u00ae New Model Blackhawk\u00ae Blued Single-Action Revolver Model 0306",
+   "mass_kg": 1.19,
+   "state": "as published",
+   "source_id": "ruger_newmodelblackhawkblued_0306",
+   "note": "Weight 42 oz. 1.19\u00a0kg"
+  },
+  {
+   "weapon_key": "ruger_gp100",
+   "maker": "Ruger",
+   "weapon": "Ruger\u00ae GP100\u00ae Standard Double-Action Revolver Model 1707",
+   "mass_kg": 1.27,
+   "state": "as published",
+   "source_id": "ruger_gp100_1707",
+   "note": "Weight 45 oz. 1.27\u00a0kg"
+  },
+  {
+   "weapon_key": "ruger_lcp",
+   "maker": "Ruger",
+   "weapon": "Ruger\u00ae LCP\u00ae Centerfire Pistol Model 3752",
+   "mass_kg": 294.0,
+   "state": "as published",
+   "source_id": "ruger_lcp_3752",
+   "note": "Weight 10.4 oz. 294\u00a0g"
+  },
+  {
+   "weapon_key": "ruger_lcpii",
+   "maker": "Ruger",
+   "weapon": "Ruger\u00ae LCP\u00ae II Centerfire Pistol Model 13705",
+   "mass_kg": 317.0,
+   "state": "as published",
+   "source_id": "ruger_lcpii_13705",
+   "note": "Weight 11.2 oz. 317\u00a0g"
+  },
+  {
+   "weapon_key": "ruger_m77hawkeye",
+   "maker": "Ruger",
+   "weapon": "Ruger\u00ae Hawkeye\u00ae Standard Bolt-Action Rifle Model 37115",
+   "mass_kg": 3.17,
+   "state": "as published",
+   "source_id": "ruger_hawkeyestandard_37115",
+   "note": "Weight 7 lb. 3.17\u00a0kg"
+  },
+  {
+   "weapon_key": "ruger_markiv",
+   "maker": "Ruger",
+   "weapon": "Ruger\u00ae Mark IV\u2122 Standard Rimfire Pistol Model 40104",
+   "mass_kg": 799.0,
+   "state": "as published",
+   "source_id": "ruger_markivstandard_40104",
+   "note": "Weight 28.2 oz. 799\u00a0g"
+  },
+  {
+   "weapon_key": "ruger_markivtarget",
+   "maker": "Ruger",
+   "weapon": "Ruger\u00ae Mark IV\u2122 Target Rimfire Pistol Model 40103",
+   "mass_kg": 1.21,
+   "state": "as published",
+   "source_id": "ruger_markivtarget_40103",
+   "note": "Weight 42.8 oz. 1.21\u00a0kg"
+  },
+  {
+   "weapon_key": "ruger_mini14",
+   "maker": "Ruger",
+   "weapon": "Ruger\u00ae Mini-14\u00ae Ranch Rifle Autoloading Rifle Model 5802",
+   "mass_kg": 3.17,
+   "state": "as published",
+   "source_id": "ruger_mini14ranchrifle_5802",
+   "note": "Weight 7 lb. 3.17\u00a0kg"
+  },
+  {
+   "weapon_key": "ruger_mini14tactical",
+   "maker": "Ruger",
+   "weapon": "Ruger\u00ae Mini-14\u00ae Tactical Rifle Autoloading Rifle Model 5895",
+   "mass_kg": 3.4,
+   "state": "as published",
+   "source_id": "ruger_mini14tacticalrifle_5895",
+   "note": "Weight 7.5 lb. 3.40\u00a0kg"
+  },
+  {
+   "weapon_key": "ruger_minithirty",
+   "maker": "Ruger",
+   "weapon": "Ruger\u00ae Mini-14\u00ae Mini Thirty\u00ae Rifle Autoloading Rifle Model 5806",
+   "mass_kg": 3.06,
+   "state": "as published",
+   "source_id": "ruger_minithirty_5806",
+   "note": "Weight 6.7 lb. 3.06\u00a0kg"
+  },
+  {
+   "weapon_key": "ruger_no1",
+   "maker": "Ruger",
+   "weapon": "Ruger\u00ae No.1 Single-Shot Rifle Model 21364",
+   "mass_kg": 3.49,
+   "state": "as published",
+   "source_id": "ruger_no1_21364",
+   "note": "Weight 7.7 lb. 3.49\u00a0kg"
+  },
+  {
+   "weapon_key": "ruger_pccarbine",
+   "maker": "Ruger",
+   "weapon": "Ruger\u00ae PC Carbine\u2122 Autoloading Rifle Model 19115",
+   "mass_kg": 3.17,
+   "state": "as published",
+   "source_id": "ruger_pccarbine_19115",
+   "note": "Weight 7 lb. 3.17\u00a0kg"
+  },
+  {
+   "weapon_key": "ruger_pccharger",
+   "maker": "Ruger",
+   "weapon": "Ruger\u00ae PC Charger\u2122 Centerfire Pistol Model 29100",
+   "mass_kg": 2.35,
+   "state": "as published",
+   "source_id": "ruger_pccharger_29100",
+   "note": "Weight 5.2 lb. 2.35\u00a0kg"
+  },
+  {
+   "weapon_key": "ruger_precisionrifle",
+   "maker": "Ruger",
+   "weapon": "Ruger Precision\u00ae Rifle Bolt-Action Rifle Model 18095",
+   "mass_kg": 5.67,
+   "state": "as published",
+   "source_id": "ruger_precisionrifle_18095",
+   "note": "Weight 12.5 lb. 5.67\u00a0kg"
+  },
+  {
+   "weapon_key": "ruger_precisionrimfire",
+   "maker": "Ruger",
+   "weapon": "Ruger Precision\u00ae Rimfire Bolt-Action Rifle Model 8400",
+   "mass_kg": 3.12,
+   "state": "as published",
+   "source_id": "ruger_precisionrimfire_8400",
+   "note": "Weight 6.8 lb. 3.12\u00a0kg"
+  },
+  {
+   "weapon_key": "ruger_security9",
+   "maker": "Ruger",
+   "weapon": "Ruger\u00ae Security-9\u00ae Centerfire Pistol Model 3810",
+   "mass_kg": 674.0,
+   "state": "as published",
+   "source_id": "ruger_security9_3810",
+   "note": "Weight 23.8 oz. 674\u00a0g"
+  },
+  {
+   "weapon_key": "ruger_singlesix",
+   "maker": "Ruger",
+   "weapon": "Ruger\u00ae New Model Single-Six\u00ae Single-Action Revolver Model 0661",
+   "mass_kg": 992.0,
+   "state": "as published",
+   "source_id": "ruger_newmodelsinglesix_0661",
+   "note": "Weight 35 oz. 992\u00a0g"
+  },
+  {
+   "weapon_key": "ruger_sp101",
+   "maker": "Ruger",
+   "weapon": "Ruger\u00ae SP101\u00ae Standard Double-Action Revolver Model 5737",
+   "mass_kg": 737.0,
+   "state": "as published",
+   "source_id": "ruger_sp101_5737",
+   "note": "Weight 26 oz. 737\u00a0g"
+  },
+  {
+   "weapon_key": "ruger_sr1911",
+   "maker": "Ruger",
+   "weapon": "Ruger\u00ae SR1911\u00ae Standard Centerfire Pistol Model 16706",
+   "mass_kg": 881.0,
+   "state": "as published",
+   "source_id": "ruger_sr1911standard_16706",
+   "note": "Weight 31.1 oz. 881\u00a0g"
+  },
+  {
+   "weapon_key": "ruger_superblackhawk",
+   "maker": "Ruger",
+   "weapon": "Ruger\u00ae New Model Super Blackhawk\u00ae Standard Single-Action Revolver Model 0807",
+   "mass_kg": 1.55,
+   "state": "as published",
+   "source_id": "ruger_newmodelsuperblackhawkstandard_0807",
+   "note": "Weight 55 oz. 1.55\u00a0kg"
+  },
+  {
+   "weapon_key": "ruger_wrangler",
+   "maker": "Ruger",
+   "weapon": "Ruger\u00ae Wrangler\u00ae Single-Action Revolver Model 2003",
+   "mass_kg": 850.0,
+   "state": "as published",
+   "source_id": "ruger_wrangler_2003",
+   "note": "Weight 30 oz. 850\u00a0g"
+  },
+  {
+   "weapon_key": "smith_wesson_340",
+   "maker": "Smith & Wesson",
+   "weapon": "Model 340 Pd",
+   "mass_kg": 0.335,
+   "state": "as published",
+   "source_id": "sw_spec_model_340_pd",
+   "note": "WEIGHT 11.8 oz"
+  },
+  {
+   "weapon_key": "smith_wesson_460xvr",
+   "maker": "Smith & Wesson",
+   "weapon": "Performance Center\u00ae Model 460Xvr",
+   "mass_kg": 2.809,
+   "state": "as published",
+   "source_id": "sw_spec_performance_center_model_460xvr",
+   "note": "WEIGHT 99.1 oz"
+  },
+  {
+   "weapon_key": "smith_wesson_640",
+   "maker": "Smith & Wesson",
+   "weapon": "Model 640",
+   "mass_kg": 0.635,
+   "state": "as published",
+   "source_id": "sw_spec_model_640",
+   "note": "WEIGHT 22.4 oz"
+  },
+  {
+   "weapon_key": "smith_wesson_686plus",
+   "maker": "Smith & Wesson",
+   "weapon": "Model 686 Plus Mountain Gun\u00ae",
+   "mass_kg": 0.992,
+   "state": "as published",
+   "source_id": "sw_spec_model_686_plus_mountain_gun",
+   "note": "WEIGHT 35 oz"
+  },
+  {
+   "weapon_key": "smith_wesson_model_41",
+   "maker": "Smith & Wesson",
+   "weapon": "Model 41",
+   "mass_kg": 1.312,
+   "state": "as published",
+   "source_id": "sw_spec_model_41",
+   "note": "WEIGHT 46.27 oz"
+  },
+  {
+   "weapon_key": "smith_wesson_model_617",
+   "maker": "Smith & Wesson",
+   "weapon": "Model 617 Mountain Gun\u00ae",
+   "mass_kg": 1.023,
+   "state": "as published",
+   "source_id": "sw_spec_model_617_mountain_gun",
+   "note": "WEIGHT 36.1 oz"
+  },
+  {
+   "weapon_key": "smith_wesson_mp10",
+   "maker": "Smith & Wesson",
+   "weapon": "[Discontinued] M&P\u00ae10 6.5 Creedmoor",
+   "mass_kg": 4.105,
+   "state": "as published",
+   "source_id": "sw_spec_m_p_10_6_5_creedmoor",
+   "note": "WEIGHT 144.8 oz"
+  },
+  {
+   "weapon_key": "smith_wesson_mp1522",
+   "maker": "Smith & Wesson",
+   "weapon": "M&P\u00ae15-22 Sport Moe Sl\u00ae Matte Black",
+   "mass_kg": 2.236,
+   "state": "as published",
+   "source_id": "sw_spec_m_p_15_22_sport_moe_sl_matte_black",
+   "note": "WEIGHT 78.88 oz"
+  },
+  {
+   "weapon_key": "smith_wesson_mp20",
+   "maker": "Smith & Wesson",
+   "weapon": "M&P\u00ae9 M2.0\u00ae Optic Ready No Thumb Safety 15Rd",
+   "mass_kg": 0.822,
+   "state": "as published",
+   "source_id": "sw_spec_m_p_9_m2_0_optic_ready_no_thumb_safety_15rd",
+   "note": "WEIGHT 29 oz"
+  },
+  {
+   "weapon_key": "smith_wesson_mpshield",
+   "maker": "Smith & Wesson",
+   "weapon": "M&P\u00ae9 Shield Plus Ca Compliant",
+   "mass_kg": 0.564,
+   "state": "as published",
+   "source_id": "sw_spec_m_p_9_shield_plus_ca_compliant",
+   "note": "WEIGHT 19.9 oz"
+  },
+  {
+   "weapon_key": "smith_wesson_mpsport",
+   "maker": "Smith & Wesson",
+   "weapon": "M&P\u00ae15 Sport\u2122 Iii Tungsten Gray",
+   "mass_kg": 2.957,
+   "state": "as published",
+   "source_id": "sw_spec_m_p_15_sport_iii_tungsten_gray",
+   "note": "WEIGHT 104.32 oz"
+  },
+  {
+   "weapon_key": "smith_wesson_sd9",
+   "maker": "Smith & Wesson",
+   "weapon": "S&W\u00ae Sd9 2.0 2-Tone Od Green",
+   "mass_kg": 0.644,
+   "state": "as published",
+   "source_id": "sw_spec_s_w_sd9_2_0_2_tone_od_green",
+   "note": "WEIGHT 22.7 oz"
+  },
+  {
+   "weapon_key": "smith_wesson_sd40",
+   "maker": "Smith & Wesson",
+   "weapon": "S&W Sd40 2.0 2-Tone 14Rd",
+   "mass_kg": 0.644,
+   "state": "as published",
+   "source_id": "sw_spec_sw_sd40_2_2_tone_14rd",
+   "note": "WEIGHT 22.7 oz"
+  },
+  {
+   "weapon_key": "smith_wesson_eseries",
+   "maker": "Smith & Wesson",
+   "weapon": "Sw1911 E-Series",
+   "mass_kg": 1.123,
+   "state": "as published",
+   "source_id": "sw_spec_sw1911_e_series",
+   "note": "WEIGHT 39.6 oz"
+  },
+  {
+   "weapon_key": "springfield_armory_19119mm",
+   "maker": "Springfield Armory",
+   "weapon": "1911 Ronin AOS 9mm Handgun",
+   "mass_kg": 1.162,
+   "state": "as published",
+   "source_id": "springfield_1911_ronin_aos_9mm_handgun",
+   "note": "Weight 41 oz"
+  },
+  {
+   "weapon_key": "springfield_armory_emissary",
+   "maker": "Springfield Armory",
+   "weapon": "1911 Emissary .45 ACP Handgun",
+   "mass_kg": 1.134,
+   "state": "as published",
+   "source_id": "springfield_1911_emissary_45_acp_handgun",
+   "note": "Weight 40 oz"
+  },
+  {
+   "weapon_key": "springfield_armory_garrison",
+   "maker": "Springfield Armory",
+   "weapon": "1911 Garrison .45 ACP Handgun",
+   "mass_kg": 1.049,
+   "state": "as published",
+   "source_id": "springfield_1911_garrison_45_acp_handgun_firstline",
+   "note": "Weight 37 oz"
+  },
+  {
+   "weapon_key": "springfield_armory_hellcatpro",
+   "maker": "Springfield Armory",
+   "weapon": "Hellcat\u00ae Pro OSP\u2122 9mm Handgun",
+   "mass_kg": 0.595,
+   "state": "as published",
+   "source_id": "springfield_hellcat_pro_osp_9mm_handgun",
+   "note": "Weight 21 oz w/ Flush Mag, 21.4 oz w/ Extended Mag"
+  },
+  {
+   "weapon_key": "springfield_armory_m1anationalmatch",
+   "maker": "Springfield Armory",
+   "weapon": "M1A\u2122 National Match .308 Rifle",
+   "mass_kg": 4.309,
+   "state": "as published",
+   "source_id": "springfield_m1a_national_match_308_rifle",
+   "note": "Weight 9 lbs 8 oz"
+  },
+  {
+   "weapon_key": "springfield_armory_m1ascout",
+   "maker": "Springfield Armory",
+   "weapon": "M1A\u2122 Scout Squad\u2122 .308 Rifle",
+   "mass_kg": 4.167,
+   "state": "as published",
+   "source_id": "springfield_m1a_scout_squad_308_rifle",
+   "note": "Weight 9 lbs 3 oz"
+  },
+  {
+   "weapon_key": "springfield_armory_m1asocom",
+   "maker": "Springfield Armory",
+   "weapon": "M1A\u2122 SOCOM 16 .308 Rifle",
+   "mass_kg": 3.856,
+   "state": "as published",
+   "source_id": "springfield_m1a_socom_16_308_rifle",
+   "note": "Weight 8 lbs 8 oz"
+  },
+  {
+   "weapon_key": "springfield_armory_m1atanker",
+   "maker": "Springfield Armory",
+   "weapon": "M1A\u2122 Tanker .308 Rifle",
+   "mass_kg": 3.884,
+   "state": "as published",
+   "source_id": "springfield_m1a_tanker_308_rifle",
+   "note": "Weight 8 lbs 9oz"
+  },
+  {
+   "weapon_key": "springfield_armory_operator",
+   "maker": "Springfield Armory",
+   "weapon": "1911 Operator\u00ae .45 ACP Handgun",
+   "mass_kg": 1.191,
+   "state": "as published",
+   "source_id": "springfield_1911_operator_45_acp_handgun",
+   "note": "Weight 42 oz"
+  },
+  {
+   "weapon_key": "springfield_armory_professional",
+   "maker": "Springfield Armory",
+   "weapon": "1911 Professional .45 ACP Handgun",
+   "mass_kg": 1.219,
+   "state": "as published",
+   "source_id": "springfield_1911_professional_45_acp_handgun",
+   "note": "Weight 43 oz"
+  },
+  {
+   "weapon_key": "springfield_armory_ronin",
+   "maker": "Springfield Armory",
+   "weapon": "1911 Ronin AOS .45 ACP Handgun",
+   "mass_kg": 1.134,
+   "state": "as published",
+   "source_id": "springfield_1911_ronin_aos_45_acp_handgun",
+   "note": "Weight 40 oz"
+  },
+  {
+   "weapon_key": "saintedge",
+   "maker": "Springfield Armory",
+   "weapon": "SAINT\u00ae Edge ATC .223 AR-15 Rifle",
+   "mass_kg": 4.309,
+   "state": "as published",
+   "source_id": "springfield_saint_edge_atc_223_ar_15_rifle",
+   "note": "Weight 9 lbs 8 oz"
+  },
+  {
+   "weapon_key": "springfield_armory_trp",
+   "maker": "Springfield Armory",
+   "weapon": "1911 TRP\u2122 .45 ACP Handgun",
+   "mass_kg": 1.191,
+   "state": "as published",
+   "source_id": "springfield_1911_trp_45_acp_handgun",
+   "note": "Weight 42 oz"
+  },
+  {
+   "weapon_key": "springfield_armory_xde",
+   "maker": "Springfield Armory",
+   "weapon": "XD-E\u00ae 3.3&quot; Single Stack 9mm Handgun",
+   "mass_kg": 0.703,
+   "state": "as published",
+   "source_id": "springfield_xd_e_33_single_stack_9mm_handgun",
+   "note": "Weight 24.8 oz w/ Flush Mag, 25.6 oz w/ Extended Mag"
+  },
+  {
+   "weapon_key": "taurus_g2c",
+   "maker": "Taurus",
+   "weapon": "G2c",
+   "mass_kg": 0.624,
+   "state": "as published",
+   "source_id": "wb_taurus_g2c",
+   "note": "Weight 22.00 oz."
+  },
+  {
+   "weapon_key": "taurus_605",
+   "maker": "Taurus",
+   "weapon": "Model 605",
+   "mass_kg": 0.68,
+   "state": "as published",
+   "source_id": "wb_taurus_605",
+   "note": "Weight 24.00 oz."
+  },
+  {
+   "weapon_key": "taurus_692",
+   "maker": "Taurus",
+   "weapon": "Model 692",
+   "mass_kg": 0.907,
+   "state": "as published",
+   "source_id": "wb_taurus_692",
+   "note": "Weight 32.00 oz."
+  },
+  {
+   "weapon_key": "taurus_856",
+   "maker": "Taurus",
+   "weapon": "Model 856",
+   "mass_kg": 0.454,
+   "state": "as published",
+   "source_id": "wb_taurus_856",
+   "note": "Weight 16.00 oz."
+  }
+ ]
+}

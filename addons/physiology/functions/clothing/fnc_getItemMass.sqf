@@ -26,6 +26,9 @@ Returns the published mass in kg, or 0 when no family matches.
 params [["_item", "", [""]], ["_allowed", [], [[]]]];
 if (_item == "") exitWith { 0 };
 
+// The core addon stays ACE-free. A caller passes the categories it accepts
+// when it holds the slot itself; an ACE category tag is not consulted here,
+// because that convention belongs to the optional ACE layer.
 private _hay = toLower _item;
 {
     private _cfg = configFile >> _x >> _item;
