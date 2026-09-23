@@ -33,6 +33,10 @@ diag_log text "[AEE_SWEEP] starting in 5 s - exit the menu first";
     private _air = [_biome, _month, _posASL] call aee_thermal_fnc_updateTemperature;
     private _vehT = -999;
     if !(isNull _probeVeh) then {
+        // The calibration sweep steps the solver once per iteration, so it
+        // must bypass the environment tick's scan-interval gate. Setting
+        // the interval to 0 makes every call scan.
+        missionNamespace setVariable ["aee_thermal_objectScanInterval", 0];
         [] call aee_thermal_fnc_calculateObjectTemperature;
         private _state = missionNamespace getVariable ["aee_thermal_thermalState", createHashMap];
         private _key = str _probeVeh;

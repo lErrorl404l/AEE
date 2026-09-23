@@ -9,6 +9,14 @@
             <Original>Fusion Always On</Original>
             <English>Fusion Always On</English>
         </Key>
+        <Key ID="STR_AEE_Thermal_objectScanInterval_Description">
+            <Original>Seconds between object-temperature scans. Surface temperatures change on time constants of 600 seconds and longer, so a scan every tick is wasted work. 0 scans every tick.</Original>
+            <English>Seconds between object-temperature scans. Surface temperatures change on time constants of 600 seconds and longer, so a scan every tick is wasted work. 0 scans every tick.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_objectScanInterval_Name">
+            <Original>Object Scan Interval</Original>
+            <English>Object Scan Interval</English>
+        </Key>
         <Key ID="STR_AEE_Thermal_thermalDebug_Description">
             <Original>Log thermal system diagnostics (second sun, building paint, AGC) to the RPT. Thermal's own debug flag - not nightvision's.</Original>
             <English>Log thermal system diagnostics (second sun, building paint, AGC) to the RPT. Thermal's own debug flag - not nightvision's.</English>
