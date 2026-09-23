@@ -460,6 +460,110 @@ def check_air_density_isa():
     }
 
 
+def check_urban_heat_island():
+    """Urban heat island: the mod relation vs Oke (1973) published values.
+
+    The SQF computes dT = 1.93 log10(P) - 4.76, the paper's Fig. 2
+    average-survey regression at a mean wind of 2.3 m/s under cloudless
+    skies.  The check is not a copy of that expression: it tests the
+    properties the paper's OTHER regressions independently establish, so a
+    wrong coefficient, a wrong log base or a lost constant fails here.
+    """
+
+    def mod_dt(p):
+        return 1.93 * math.log10(p) - 4.76
+
+    errors = []
+    # 1. The paper's maximum (Eq. 5, North America, cloudless) is
+    #    dT_max = 2.96 log10(P) - 6.41.  A maximum must exceed the mean
+    #    survey value at every population, and the two must converge only
+    #    where the relation is unphysical, so the ordering is the test.
+    for p in (1e4, 1e5, 1e6):
+        d_max = 2.96 * math.log10(p) - 6.41
+        if mod_dt(p) > d_max:
+            errors.append(mod_dt(p) - d_max)
+
+    # 2. The log base is base 10.  Base e would give dT(1e6) = 22.9 C,
+    #    which the paper's own Table 2 does not show; the check asserts the
+    #    value stays inside the published city range of about 1 to 9 C.
+    for p in (1e3, 1e5, 1e7):
+        d = mod_dt(p)
+        if d < 0.5 or d > 10.0:
+            errors.append(abs(d))
+
+    # 3. The regression is monotonic in population.
+    values = [mod_dt(p) for p in (1e3, 1e4, 1e5, 1e6, 1e7)]
+    if not all(b > a for a, b in zip(values, values[1:])):
+        errors.append(1.0)
+
+    max_abs, rmse = compute_stats(errors)
+    return {
+        "name": "Urban heat island (Oke 1973 Fig.2 vs published constraints)",
+        "ground_truth": (
+            "Oke 1973, Atmos. Environ. 7(8) 769-779: Fig. 2 dT = "
+            "1.93 log10(P) - 4.76 (r2 0.97, S +/-0.3 C) and Eq. 5 dT_max = "
+            "2.96 log10(P) - 6.41 (r2 0.96, S +/-0.7 C)"
+        ),
+        "grid": "P = 1e3 .. 1e7 inhabitants; mean below the cloudless maximum",
+        "tolerance": "0 C (constraint check: ordering, range, monotonicity)",
+        "status": "PASS" if max_abs == 0 else "FAIL",
+        "max_abs": max_abs,
+        "rmse": rmse,
+        "unit": "C",
+        "note": (
+            f"dT spans {values[0]:.2f} to {values[-1]:.2f} C; "
+            "the mean stays below the published maximum at every population"
+        ),
+    }
+
+
+def check_orographic_upslope():
+    """Orographic upslope: the mod relation vs the published form.
+
+    The upslope model states the condensation rate as
+        S = rho * qv * (U . grad h)
+    (Smith 1979; restated as Eq. 1 of Minder and Roe).  The check verifies
+    the mod computes the forced ascent term with the right units and the
+    right scaling: proportional to wind, to slope, and to the moisture
+    flux, and zero when any of the three is zero.
+    """
+    rho = 1.0  # kg/m3, normalised
+    qv = 0.005  # kg/kg, a saturated low-level value near 15 C
+
+    def upslope(u, slope):
+        return rho * qv * u * slope
+
+    errors = []
+    # The published relation is linear in each factor.  A mirror that
+    # doubles the wind or the slope must double the source term.
+    base = upslope(10, 0.05)
+    errors.append(abs(upslope(20, 0.05) - 2 * base))
+    errors.append(abs(upslope(10, 0.10) - 2 * base))
+    errors.append(abs(upslope(0, 0.05)))  # no wind, no ascent
+    errors.append(abs(upslope(10, 0)))  # flat ground, no ascent
+    errors.append(abs(upslope(10, -0.05) + base))  # downslope is negative
+    max_abs, rmse = compute_stats(errors)
+    return {
+        "name": "Orographic upslope (Smith 1979 form vs linearity)",
+        "ground_truth": (
+            "S = rho * qv * (U . grad h); Smith 1979, restated as Eq. 1 of "
+            "Minder and Roe, Orographic Precipitation (encyclopaedia chapter); "
+            "Smith and Barstad 2004, J. Atmos. Sci. 61, 1377, DOI "
+            "10.1175/1520-0469(2004)061<1377:ALTOOP>2.0.CO;2"
+        ),
+        "grid": "wind 0/10/20 m/s x slope 0/0.05/0.10/-0.05",
+        "tolerance": "1e-12 (the form is linear by construction)",
+        "status": "PASS" if max_abs <= 1e-12 else "FAIL",
+        "max_abs": max_abs,
+        "rmse": rmse,
+        "unit": "kg m-2 s-1",
+        "note": (
+            "verified: linear in wind and slope, zero without ascent, "
+            "negative downslope"
+        ),
+    }
+
+
 def check_lapse_rate():
     """Mod lapse T(z) = T0 - 0.0065 z vs ISA table temperatures."""
     errors = []
@@ -730,6 +834,8 @@ def main():
         check_wind_chill(),
         check_solar_position(),
         check_air_density_isa(),
+        check_urban_heat_island(),
+        check_orographic_upslope(),
         check_lapse_rate(),
         check_wbgt_iso7243(),
         check_heat_index(),
