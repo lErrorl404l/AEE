@@ -42,8 +42,14 @@ if !(_ambient isEqualType 0) then { _ambient = 21; };
 // ─── Per-caliber parameters ───────────────────────────────────────────────
 // Machine-gun class: rate of fire >= 600 rpm and belt-fed are MG signals;
 // fall back to the weapon's mode list.  Heat per round and cooling tau
-// follow the firearm class per the issue tables.
-private _mode = getText (configFile >> "CfgWeapons" >> _weapon >> "modes" >> "this");
+// follow the firearm class per the issue tables.  A weapon with no modes
+// class is not an error: the engine warns when the read is attempted, so
+// the class is tested first.
+private _weaponCfg = configFile >> "CfgWeapons" >> _weapon;
+private _mode = "";
+if (isClass (_weaponCfg >> "modes")) then {
+    _mode = getText (_weaponCfg >> "modes" >> "this");
+};
 private _isMG = (_weapon find "MMG" >= 0) || (_weapon find "LMG" >= 0) || {_mode find "fullauto" >= 0};
 private _heatPerRound = [1.0, 3.0] select _isMG;       // 5.56 rifle / 7.62 MG
 private _tau = [150, 250] select _isMG;                // seconds

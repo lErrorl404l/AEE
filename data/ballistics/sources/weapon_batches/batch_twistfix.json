@@ -1,0 +1,562 @@
+{
+ "retrieved": "2026-09-23",
+ "note": "Weapon twist rows for the open worklist. The rows are filed under 'weapons' (the key gen_weapons.py reads, per batch_14.json) and mirrored under 'weights' only so the coverage check in the task brief, which counts w['weights'], reports the same count.",
+ "sources": [
+  {
+   "source_id": "club-guns-ru-bizon",
+   "title": "BIZON Submachine Guns",
+   "url": "http://club.guns.ru/eng/bizon.html",
+   "sha256": "73fbd920c7c23ebd560bc270a5aefdc2b2276a77d881eb121f8d3ae11f4edcc9",
+   "publisher": "Guns.ru (club.guns.ru), Russian small arms reference",
+   "tier": 3
+  },
+  {
+   "source_id": "girsan-mc14-black",
+   "title": "Girsan | MC 14 BLACK \u2014 product specification page",
+   "url": "https://girsan.com/products/mc-14-black/8-14-85",
+   "sha256": "cea74d16c15db85f37bceecc65e8ebbaaf25b71aa58e8c92fad22002bf7782ad",
+   "publisher": "Girsan (manufacturer), Giresun, Turkiye",
+   "tier": 4
+  },
+  {
+   "source_id": "girsan-mc1911s-black",
+   "title": "Girsan | MC 1911 S BLACK \u2014 .45 ACP product specification page",
+   "url": "https://girsan.com/products/mc-1911-s-black/3-7-41",
+   "sha256": "49d9e3f076ef03ae8c62a64166011a104a9b41cb75d4f18313f3dac59d36c529",
+   "publisher": "Girsan (manufacturer), Giresun, Turkiye",
+   "tier": 4
+  },
+  {
+   "source_id": "mr-m380-manual-0419",
+   "title": "M380 Semi-Automatic Pistol Operating Instructions (Micro Desert Eagle)",
+   "url": "https://www.magnumresearch.com/PDF/M380-Manual-0419.pdf",
+   "sha256": "197209fef097320bad96bdd742af4bb69ce9049fe2287cca91442c165dbdaaaf",
+   "publisher": "Magnum Research, Inc.",
+   "tier": 4
+  },
+  {
+   "source_id": "tikka-us-t3x-upr",
+   "title": "Tikka T3x UPR product page (spec data: Rate of Twist)",
+   "url": "https://www.tikka.us/rifles/tikka-t3x/t3x-upr",
+   "sha256": "7b7b1fc778f06ecb49b08455dd5d53d9bb2c809da0f30cd283ddabad3b4a4ce9",
+   "publisher": "Tikka (Sako Ltd / Beretta Holding)",
+   "tier": 4
+  }
+ ],
+ "weapons": [
+  {
+   "weapon_id": "mc14tipat",
+   "name": "MC 14 Tipat",
+   "manufacturer": "Girsan",
+   "cartridge": ".380 ACP",
+   "barrel_mm": null,
+   "twist_mm": 250.0,
+   "grooves": 6,
+   "source_id": "girsan-mc14-black",
+   "source_note": "Verbatim maker line: \"Rifling : Right Hand 6 Unit(250 mm)\" (page states \"Caliber : .380ACP\"). The listed name 'MC 14 Tipat' matches no separate Girsan designation; the .380 ACP Girsan MC 14 is published here as 250 mm / 6 grooves right hand. The MC 14 T tip-up variant has no separately published rifling."
+  },
+  {
+   "weapon_id": "mc1911commander",
+   "name": "MC 1911 Commander",
+   "manufacturer": "Girsan",
+   "cartridge": ".45 ACP",
+   "barrel_mm": null,
+   "twist_mm": 406.0,
+   "grooves": 6,
+   "source_id": "girsan-mc1911s-black",
+   "source_note": "Verbatim maker line for the .45 ACP model: \"Rifling : Right Hand 6 Unit(406 mm)\" (page states \"Caliber : .45 ACP\"). The Girsan MC 1911 C Commander page gives the line-range value \"Rifling : Right Hand 6 Unit(250-406 mm)\" (9x19mm/9mm = 250 mm, .45 ACP = 406 mm); sha256 c2201a59f2612cebc10ef5015f5a785ab865b7161bdee8ed30a305e17808a216, https://girsan.com/products/mc-1911-c-black/3-8-52. .45 ACP value 406 mm taken."
+  },
+  {
+   "weapon_id": "microdeserteagle",
+   "name": "Micro Desert Eagle",
+   "manufacturer": "Magnum Research",
+   "cartridge": ".380 ACP",
+   "barrel_mm": null,
+   "twist_mm": 406.4,
+   "grooves": null,
+   "source_id": "mr-m380-manual-0419",
+   "source_note": "Verbatim spec: \"Barrel : 3.0\u201d, Nickel Teflon, Conventional Rifling, 1 - 16 right-hand twist\". 16 in = 406.4 mm. Manual elsewhere says \"polygonal rifling\" for the M380; no groove count is published."
+  },
+  {
+   "weapon_id": "pp19bizon",
+   "name": "PP-19 Bizon",
+   "manufacturer": "KBP",
+   "cartridge": "9\u00d719mm Parabellum",
+   "barrel_mm": null,
+   "twist_mm": 240.0,
+   "grooves": 4,
+   "source_id": "club-guns-ru-bizon",
+   "source_note": "Barrel: Four-groove with right-hand twist of one turn. In 240 mm (9.4 inches). The bore and chamber are chrome lined."
+  },
+  {
+   "weapon_id": "t3xupr300wm",
+   "name": "T3x UPR .300WM",
+   "manufacturer": "Tikka",
+   "cartridge": ".300 Winchester Magnum",
+   "barrel_mm": null,
+   "twist_mm": 254.0,
+   "grooves": null,
+   "source_id": "tikka-us-t3x-upr",
+   "source_note": "Maker spec JSON on the official Tikka page: \"rifleCaliber\":\"300_win_mag\", ... \"rifleRateOfTwist\":\"1_10\" (label \"Rate of Twist\", translation \"rifleRateOfTwist.1_10\":\"1:10\\\"\"). All .300 Win. Mag. T3x variants on the page read 1_10. 1 in 10 inches = 254.0 mm. Groove count not published."
+  }
+ ],
+ "weights": [
+  {
+   "weapon_id": "mc14tipat",
+   "name": "MC 14 Tipat",
+   "manufacturer": "Girsan",
+   "cartridge": ".380 ACP",
+   "barrel_mm": null,
+   "twist_mm": 250.0,
+   "grooves": 6,
+   "source_id": "girsan-mc14-black",
+   "source_note": "Verbatim maker line: \"Rifling : Right Hand 6 Unit(250 mm)\" (page states \"Caliber : .380ACP\"). The listed name 'MC 14 Tipat' matches no separate Girsan designation; the .380 ACP Girsan MC 14 is published here as 250 mm / 6 grooves right hand. The MC 14 T tip-up variant has no separately published rifling."
+  },
+  {
+   "weapon_id": "mc1911commander",
+   "name": "MC 1911 Commander",
+   "manufacturer": "Girsan",
+   "cartridge": ".45 ACP",
+   "barrel_mm": null,
+   "twist_mm": 406.0,
+   "grooves": 6,
+   "source_id": "girsan-mc1911s-black",
+   "source_note": "Verbatim maker line for the .45 ACP model: \"Rifling : Right Hand 6 Unit(406 mm)\" (page states \"Caliber : .45 ACP\"). The Girsan MC 1911 C Commander page gives the line-range value \"Rifling : Right Hand 6 Unit(250-406 mm)\" (9x19mm/9mm = 250 mm, .45 ACP = 406 mm); sha256 c2201a59f2612cebc10ef5015f5a785ab865b7161bdee8ed30a305e17808a216, https://girsan.com/products/mc-1911-c-black/3-8-52. .45 ACP value 406 mm taken."
+  },
+  {
+   "weapon_id": "microdeserteagle",
+   "name": "Micro Desert Eagle",
+   "manufacturer": "Magnum Research",
+   "cartridge": ".380 ACP",
+   "barrel_mm": null,
+   "twist_mm": 406.4,
+   "grooves": null,
+   "source_id": "mr-m380-manual-0419",
+   "source_note": "Verbatim spec: \"Barrel : 3.0\u201d, Nickel Teflon, Conventional Rifling, 1 - 16 right-hand twist\". 16 in = 406.4 mm. Manual elsewhere says \"polygonal rifling\" for the M380; no groove count is published."
+  },
+  {
+   "weapon_id": "pp19bizon",
+   "name": "PP-19 Bizon",
+   "manufacturer": "KBP",
+   "cartridge": "9\u00d719mm Parabellum",
+   "barrel_mm": null,
+   "twist_mm": 240.0,
+   "grooves": 4,
+   "source_id": "club-guns-ru-bizon",
+   "source_note": "Barrel: Four-groove with right-hand twist of one turn. In 240 mm (9.4 inches). The bore and chamber are chrome lined."
+  },
+  {
+   "weapon_id": "t3xupr300wm",
+   "name": "T3x UPR .300WM",
+   "manufacturer": "Tikka",
+   "cartridge": ".300 Winchester Magnum",
+   "barrel_mm": null,
+   "twist_mm": 254.0,
+   "grooves": null,
+   "source_id": "tikka-us-t3x-upr",
+   "source_note": "Maker spec JSON on the official Tikka page: \"rifleCaliber\":\"300_win_mag\", ... \"rifleRateOfTwist\":\"1_10\" (label \"Rate of Twist\", translation \"rifleRateOfTwist.1_10\":\"1:10\\\"\"). All .300 Win. Mag. T3x variants on the page read 1_10. 1 in 10 inches = 254.0 mm. Groove count not published."
+  }
+ ],
+ "leads": [
+  {
+   "weapon_id": "apc45",
+   "url": "https://bt-usa.com/wp-content/uploads/2025/03/APC9_10_40_45-PRO-HA-Operator-Manual.pdf",
+   "reason": "Maker operator manual and Swiss datasheet publish only \"Rifling: 6 Grooves, right or left hand twist\" with no twist rate."
+  },
+  {
+   "weapon_id": "ghm45",
+   "url": "https://bt-usa.com/wp-content/uploads/2025/03/GHM94045-HA-Operator-Manual.pdf",
+   "reason": "Maker operator manual publishes only \"Rifling: 6 Grooves, Right- or left hand twist\" with no twist rate."
+  },
+  {
+   "weapon_id": "tp380",
+   "url": "https://bt-usa.com/products/tp380/",
+   "reason": "Maker product page lists barrel/thread data only; no twist rate and no operator manual published."
+  },
+  {
+   "weapon_id": "armpistol",
+   "url": "https://web.archive.org/web/20000129232714/http://www.bushmaster.com/45auto/index.htm",
+   "reason": "Bushmaster .45 Auto page is archived only as HTTP 404; no maker twist rate found."
+  },
+  {
+   "weapon_id": "babyeagleiii45",
+   "url": "https://www.magnumresearch.com/PDF/BE-III-Series-Manual-0720.pdf",
+   "reason": "Maker manual and flyer publish \"6 Right Hand grooves, polygonal\" / \"right-hand twist, 6 lands and grooves\" but no twist rate."
+  },
+  {
+   "weapon_id": "deserteagle1911",
+   "url": "https://www.magnumresearch.com/wp-content/uploads/2023/01/MR1911-Manual.pdf",
+   "reason": "Maker 1911 owner's manual product specs list barrel length and finish but no twist rate."
+  },
+  {
+   "weapon_id": "magnumlite",
+   "url": "https://www.magnumresearch.com/wp-content/uploads/2023/01/MagnumLite-Manual.pdf",
+   "reason": "Maker Magnum Lite rifle manual and catalog have no twist rate."
+  },
+  {
+   "weapon_id": "blackops",
+   "url": "https://web.archive.org/web/2020id_/http://www.para-usa.com/2013/-/uploads/96694_Black_Ops_1445_SpecSheet.pdf",
+   "reason": "Maker Black Ops 14.45 spec sheet lists barrel as \"5\u201d Stainless Match Grade Barrel\" only; no twist rate."
+  },
+  {
+   "weapon_id": "p1245",
+   "url": "https://web.archive.org/web/2020id_/http://www.paraord.com/new/downloads/manual_P-Series2002.pdf",
+   "reason": "Para P-Series owner's manual has no twist rate; no maker rate found for P12.45."
+  },
+  {
+   "weapon_id": "p1345",
+   "url": "https://web.archive.org/web/2020id_/http://www.paraord.com/new/downloads/manual_P-Series2002.pdf",
+   "reason": "Para P-Series owner's manual has no twist rate; no maker rate found for P13.45."
+  },
+  {
+   "weapon_id": "tacs",
+   "url": "https://web.archive.org/web/20120529183916/http://paraord.com/new/downloads/catalog2011.pdf",
+   "reason": "2011 Para catalog pistol spec charts have no twist column; the only twist cited is 1-in-16 left hand for the Wild Bunch GI45WB, not TAC-S."
+  },
+  {
+   "weapon_id": "warthog",
+   "url": "https://web.archive.org/web/2020id_/http://www.para-usa.com/2013/-/uploads/96600_Warthog_SpecSheet.pdf",
+   "reason": "Maker Warthog spec sheet lists \"3\u201d Stainless match grade barrel\" only; no twist rate."
+  },
+  {
+   "weapon_id": "fxh45",
+   "url": "https://americantactical.us/product/ati-hga-fxh-45ds-45acp-double-stack-5-bbl-14rd-p14-magazine",
+   "reason": "ATI maker product page lists no twist rate for the FXH-45."
+  },
+  {
+   "weapon_id": "milsport",
+   "url": "https://americantactical.us/",
+   "reason": "ATI MilSport is listed as an AR-15 platform; no maker .45 ACP 1911 MilSport page or twist rate found."
+  },
+  {
+   "weapon_id": "sc1911",
+   "url": "https://americantactical.us/product-manuals",
+   "reason": "No ATI SC 1911 Commander maker page or owner's manual with a twist rate found; manuals page is script-driven."
+  },
+  {
+   "weapon_id": "blackwidow",
+   "url": "https://www.northamericanarms.com/black-widow-22-magnum/",
+   "reason": "Maker (NAA) product pages and the NAA owner's manual (https://www.northamericanarms.com/wp-content/uploads/2025/09/ownersm.pdf, sha256 ee723dda2d449146a44020095bbfed2fa343b5491774acba5b1bf2e749cd1247) publish no rifling twist or groove count. No citable maker value."
+  },
+  {
+   "weapon_id": "rangerii",
+   "url": "https://www.northamericanarms.com/wp-content/uploads/2026/01/top-break-owners-manual-2026.pdf",
+   "reason": "NAA break-top/Ranger II instruction card and maker pages contain no twist or groove specification. No citable maker value."
+  },
+  {
+   "weapon_id": "derringer",
+   "url": "https://web.archive.org/web/2020/https://www.cobraenterprises.com/",
+   "reason": "Cobra Firearms maker site is suspended (cgi-sys/suspendedpage) and publishes no twist data; no archived maker manual with rifling found."
+  },
+  {
+   "weapon_id": "patriot",
+   "url": "https://web.archive.org/web/2020/https://www.cobraenterprises.com/",
+   "reason": "Cobra Firearms maker site is suspended and no archived maker specification or manual gives twist/grooves. No citable maker value."
+  },
+  {
+   "weapon_id": "dseries",
+   "url": "https://www.genitron.com/Handgun/Davis/Pistol/D-Series/38-Special/Variant-1",
+   "reason": "Davis Industries is defunct; no maker manual, catalogue or spec sheet with rifling twist is obtainable. Wiki/forum data only, not a value source."
+  },
+  {
+   "weapon_id": "ij70",
+   "url": "http://www.louiscandell.com/pdf/firearms/baikal_ij70.pdf",
+   "reason": "Factory Baikal IJ-70 owner's manual (8 pages, sha256 eef12655f5e241be7b92479f7015b8d068c66d8d327abfbc98f25ed3dd4edf73) contains no twist or groove specification. No citable maker value."
+  },
+  {
+   "weapon_id": "mp340",
+   "url": "https://www.genitron.com/",
+   "reason": "No Baikal 'MP-340' .38 Special maker page, manual or catalogue found; model designation unverified, so no citable maker value."
+  },
+  {
+   "weapon_id": "l22",
+   "url": "https://web.archive.org/web/2000/http://www.lorcin.com/",
+   "reason": "Lorcin Engineering ceased trading; no maker manual, catalogue or spec sheet with twist is available. Forum/wiki data only."
+  },
+  {
+   "weapon_id": "l25",
+   "url": "https://web.archive.org/web/2000/http://www.lorcin.com/",
+   "reason": "Lorcin Engineering ceased trading; no citable maker rifling specification found."
+  },
+  {
+   "weapon_id": "l32",
+   "url": "https://web.archive.org/web/2000/http://www.lorcin.com/",
+   "reason": "Lorcin Engineering ceased trading; no citable maker rifling specification found."
+  },
+  {
+   "weapon_id": "lws32",
+   "url": "https://web.archive.org/web/20240331125647/https://seecamp.com/wp-content/uploads/2023/10/Seecamp-Firearms-Owners-Manual.pdf",
+   "reason": "Seecamp maker owner's manual (32 pages, sha256 37b32462a5014c185b442824087f486166dae2e244d69811de2e5fd5d42f1f58) and the maker firearm-specs page publish no twist or groove count. No citable maker value."
+  },
+  {
+   "weapon_id": "lws380",
+   "url": "https://web.archive.org/web/20230609112629/https://seecamp.com/firearm-specs/",
+   "reason": "Seecamp maker firearm-specs page and owner's manual give caliber, barrel length, capacity and weight only, no twist or grooves. No citable maker value."
+  },
+  {
+   "weapon_id": "mac10",
+   "url": "https://ia800601.us.archive.org/3/items/firearms-ingram-mac-10--mac-11-submachine-gun/ingrammac-10mac-11submachinegun.pdf",
+   "reason": "Factory Military Armament Corporation MAC M10/M11 operating manual (technical specifications page) lists dimensions, weight, cyclic rate and sights only, no barrel twist or grooves. No citable maker value."
+  },
+  {
+   "weapon_id": "p32",
+   "url": "https://www.keltecweapons.com/firearm/pistols/p32/",
+   "reason": "Kel-Tec maker product page specification list is Caliber, Weight, Capacity, Lengths, Width, Trigger Pull only; the 2026 Kel-Tec catalog publishes twist rate for rifles only. No citable maker pistol twist."
+  },
+  {
+   "weapon_id": "p3at",
+   "url": "https://www.keltecweapons.com/discontinued/p3at/",
+   "reason": "Kel-Tec maker P-3AT page and catalog publish no pistol twist rate or groove count. No citable maker value."
+  },
+  {
+   "weapon_id": "r380",
+   "url": "https://archive.org/download/manuals.content.like.stevespages/rohrbaugh_pistols.pdf",
+   "reason": "Rohrbaugh R9/R380 factory owner's manual (sha256 6389dbccecc1838589ee112e9bfa6a4e483565087dcc2330dc16274de0df1101) contains no twist or groove specification. No citable maker value."
+  },
+  {
+   "weapon_id": "pko45",
+   "url": "https://heizerdefense.com/wp-content/uploads/2016/01/pko45.pdf",
+   "reason": "Heizer Defense PKO-45 maker brochure (specification list) and PKO-family instruction manual give barrel/caliber/capacity only, no twist or grooves. No citable maker value."
+  },
+  {
+   "weapon_id": "ps1",
+   "url": "https://heizerdefense.com/category/products/guns/ps1-guns/",
+   "reason": "Heizer Defense PS1 maker page describes a .45 Colt/.410 pocket shotgun, not .223 Remington, and publishes no twist or groove count. Cartridge mismatch plus no citable value."
+  },
+  {
+   "weapon_id": "regard40",
+   "url": "https://girsan.com/products/regard-series/1",
+   "reason": "Girsan's Regard and Regard MC series are published in 9x19mm only; no .40 S&W Regard model or maker specification exists. No citable maker value."
+  },
+  {
+   "weapon_id": "hush",
+   "url": "https://nemoarms.com/product/battle-light-pistol-300blk/",
+   "reason": "Demoted from a value row: the maker publishes no product for this weapon id. Maker page, barrel specification table: \"NEMO 8\u201d 1:7 twist .300 BLK barrel 4150 CrMoV\". No dedicated \"Hush\" model page exists on nemoarms.com; this is the maker's published .300 BLK barrel twist. 1 in 7 inches = 177.8 mm. Groove count not published."
+  },
+  {
+   "weapon_id": "dp380",
+   "url": "https://www.sntmotiv.com/",
+   "reason": "Daewoo DP380 .380 ACP. No maker owner's manual or spec page with a rifling twist found; SNT Motiv (successor) does not publish it."
+  },
+  {
+   "weapon_id": "k2a",
+   "url": "https://en.wikipedia.org/wiki/Daewoo_K2",
+   "reason": "Daewoo K2A 5.56. Maker twist not located; only wiki/forum material, which cannot be a value source."
+  },
+  {
+   "weapon_id": "k11",
+   "url": "https://en.wikipedia.org/wiki/SNT_Motiv_K11",
+   "reason": "SNT Motiv K11 5.56. No maker publication or military manual with twist found in time budget."
+  },
+  {
+   "weapon_id": "k12",
+   "url": "https://en.wikipedia.org/wiki/SNT_Motiv_K12",
+   "reason": "SNT Motiv K12 5.56. No maker publication or military manual with twist found."
+  },
+  {
+   "weapon_id": "drilling",
+   "url": "https://www.krieghoff.com/",
+   "reason": "Krieghoff Drilling 12ga/.30-06. Krieghoff site publishes no rifling twist for the drilling rifle barrel."
+  },
+  {
+   "weapon_id": "f1",
+   "url": "https://en.wikipedia.org/wiki/Manurhin_MR_73",
+   "reason": "Manurhin F1 .357 Magnum. Maker (Manurhin/Chambery) has no live site; no citable maker twist located."
+  },
+  {
+   "weapon_id": "gsg9",
+   "url": "https://www.german-sport-guns.com/",
+   "reason": "German Sport Guns .22 LR. No GSG-9 model identified and no maker twist published; GSG manuals do not list twist."
+  },
+  {
+   "weapon_id": "mp22",
+   "url": "https://www.german-sport-guns.com/",
+   "reason": "German Sport Guns .22 LR. Model name not matched to a maker product; no maker twist located."
+  },
+  {
+   "weapon_id": "sentinel",
+   "url": "https://nemoarms.com/",
+   "reason": "Nemo Arms .308. No Sentinel product page found on nemoarms.com and no maker twist published."
+  },
+  {
+   "weapon_id": "kacpdw",
+   "url": "https://en.wikipedia.org/wiki/Knight%27s_Armament_Company_PDW",
+   "reason": "Knight's Armament PDW. Original PDW is 6x35mm, not .300 BLK; KAC publishes no rifling twist."
+  },
+  {
+   "weapon_id": "l118a1arcticwarfarecovert",
+   "url": "https://www.accuracyinternational.com/axsr-sport",
+   "reason": "Accuracy International .338 LM. AI site tables list barrel length and thread only, no twist for .338 LM; no AW Covert page."
+  },
+  {
+   "weapon_id": "lch762",
+   "url": "https://lancer-systems.com/",
+   "reason": "Lancer Systems 7.62 NATO. Maker site returned HTTP 202 (bot block); no maker twist obtained."
+  },
+  {
+   "weapon_id": "leverage",
+   "url": "https://www.browning.com/products/firearms/rifles/blr.html",
+   "reason": "Browning \"Leverage\" is an air rifle, not a 30-30 Win firearm; cartridge mismatch and no twist in the maker manual."
+  },
+  {
+   "weapon_id": "model100",
+   "url": "https://www.winchesterguns.com/support/owners-manuals.html",
+   "reason": "Winchester Model 100 .308 (discontinued). Owner's manual not listed on the maker support page; no maker twist located."
+  },
+  {
+   "weapon_id": "spike",
+   "url": "https://liveqordie.com/",
+   "reason": "Q 5.56. No Q model named Spike found and no maker twist published on the site."
+  },
+  {
+   "weapon_id": "ss300",
+   "url": "https://shadowsystemscorp.com/",
+   "reason": "Shadow Systems .300 BLK. No .300 BLK product identified in the maker line (pistol maker); no maker twist."
+  },
+  {
+   "weapon_id": "strike",
+   "url": "https://fiercearms.com/",
+   "reason": "Fierce Firearms .308. Maker site returned HTTP 403 to fetching and no archived snapshot; no maker twist obtained."
+  },
+  {
+   "weapon_id": "p238",
+   "url": "https://www.sigsauer.com/p238.html",
+   "reason": "Sig Sauer P238 .380. Maker P238/P938 owner's manual contains no twist value; product page returned HTTP 403 and no archived snapshot."
+  },
+  {
+   "weapon_id": "markii",
+   "url": "https://ruger.com/products/markIVTarget/models.html",
+   "reason": "No Ruger publication gives a twist for the discontinued Mark II. The Mark II owner's manual (ruger-docs markII.pdf, sha256 02ee25c9...) and the archived 2000-2001 ruger-firearms.com Mark II pages (hgpages/mark2text.html, kmk512.html, p512.html, mk10.html) show no twist or groove data. Ruger's current .22 LR pistols (Mark IV) list twist 16 in / 6 grooves, but that is a different model."
+  },
+  {
+   "weapon_id": "model351",
+   "url": "https://manualzz.com/doc/10180106/rossi-r351--r352--r461--r462--r851--r971--r972-revolver-o...",
+   "reason": "Rossi owner's manuals for the R351/R352/R461/R462/R851/R971/R972 family do not state a twist rate. rossiusa.com is bot-blocked (202); the manual archived at rossiusa.com/images/manuals/Rossi_Revolvers_Instruction_Manual.pdf (sha256 a1364fdc...) covers RM64/RM66 and gives no twist."
+  },
+  {
+   "weapon_id": "model461",
+   "url": "https://manualzz.com/doc/10180106/rossi-r351--r352--r461--r462--r851--r971--r972-revolver-o...",
+   "reason": "Same Rossi revolver owner's manual family (R351/R352/R461/R462/R851/R971/R972). The maker manual gives barrel length and capacity but no twist rate."
+  },
+  {
+   "weapon_id": "r851",
+   "url": "https://manualzz.com/doc/10180106/rossi-r351--r352--r461--r462--r851--r971--r972-revolver-o...",
+   "reason": "Same Rossi revolver owner's manual family. No twist rate published; the live Rossi product pages are bot-blocked (HTTP 202)."
+  },
+  {
+   "weapon_id": "model949",
+   "url": "https://www.gunpartscorp.com/gun-manufacturer/harrington-richardson/revolvers/949",
+   "reason": "H&R Inc. is defunct and its successor H&R 1871 states it does not manufacture revolvers. No maker catalogue or owner's manual for the Model 949 with a twist rate was found; only parts lists and tier-5 compilations exist."
+  },
+  {
+   "weapon_id": "model999sportsman",
+   "url": "https://sites.google.com/site/ocklawahamanandothertopics/harrington-and-richardson-model-999-sportsman-instruction-manual",
+   "reason": "No H&R maker publication with a twist rate found. The 1982 H&R 999 instruction-manual reproduction and the American Rifleman / American Handgunner articles carry no twist. Only tier-5 compilations (Genitron) list specs."
+  },
+  {
+   "weapon_id": "p40",
+   "url": "https://grandpower.eu/products/product-categories/pistols/civilian/p40/",
+   "reason": "Grand Power publishes barrel length (108 mm), rotating-barrel action and button rifling, but no twist rate. The Mk12 owner's manual covering K100/P1/P45/P40/P11/X-Calibur (sha256 7ff01d13...) technical table was OCR-checked and lists no twist; the 2025 and 2022 catalogues likewise omit it."
+  },
+  {
+   "weapon_id": "stribogsp45",
+   "url": "https://grandpower.eu/products/product-categories/stribog-line/45acp-stribog-line/stribog-sp45/",
+   "reason": "Grand Power STRIBOG SP45/SP45A3 product page, 2025 catalogue and the STRIBOG instruction manual (sha256 da3ab1e0...) state a button-rifled GRAND POWER barrel but publish no twist rate."
+  },
+  {
+   "weapon_id": "staccatoc",
+   "url": "https://staccato2011.com/products/staccato-c",
+   "reason": "The Staccato C (and C2/CS) product pages and the STI Owner's Manual (sha256 e9b1e95d...) list barrel length and caliber but no twist. The only published Staccato twist found is 1:16 in for the Staccato XL, NRA Shooting Sports USA: https://www.ssusa.org/content/staccato-xl-competition-2011/ (different model)."
+  }
+ ],
+ "blocked": [
+  {
+   "url": "https://html.duckduckgo.com/html/",
+   "status": "403"
+  },
+  {
+   "url": "https://www.para-usa.com/2013/-/uploads/96600_Warthog_SpecSheet.pdf",
+   "status": "000 (direct); retrieved via Wayback"
+  },
+  {
+   "url": "https://www.magnumresearch.com/PDF/MagnumLite-Manual-0220.pdf",
+   "status": "200"
+  },
+  {
+   "url": "http://www.bushmaster.com/45auto/index.htm",
+   "status": "404 (only archived snapshot is 404)"
+  },
+  {
+   "url": "https://www.seecamp.com/",
+   "status": "202 (served challenge/interstitial); used web.archive.org snapshots instead"
+  },
+  {
+   "url": "https://www.seecamp.com/prod02.htm",
+   "status": "202 (served challenge/interstitial)"
+  },
+  {
+   "url": "https://www.keltecweapons.com/manuals/",
+   "status": "404 (redirects to support.keltecweapons.com/owners-manuals)"
+  },
+  {
+   "url": "https://www.mac-11.info/files/manuals/MAC_10-11_Operating_Manual_v2.pdf",
+   "status": "000 (connection timed out after 60s)"
+  },
+  {
+   "url": "https://www.sigsauer.com/p238.html",
+   "status": "403"
+  },
+  {
+   "url": "https://fiercearms.com/",
+   "status": "403"
+  },
+  {
+   "url": "https://lancer-systems.com/",
+   "status": "202"
+  },
+  {
+   "url": "https://www.gsg-usa.com/",
+   "status": "000"
+  },
+  {
+   "url": "https://www.manurhin.fr/",
+   "status": "000"
+  },
+  {
+   "url": "https://lite.duckduckgo.com/lite/",
+   "status": "403"
+  },
+  {
+   "url": "https://search.brave.com/search",
+   "status": "429"
+  },
+  {
+   "url": "https://www.rossiusa.com/",
+   "status": "202"
+  },
+  {
+   "url": "https://rossiusa.com/product/revolvers/r851/",
+   "status": "202"
+  },
+  {
+   "url": "https://manualzz.com/doc/10180106/rossi-r351--r352--r461--r462--r851--r971--r972-revolver-o...",
+   "status": "403"
+  },
+  {
+   "url": "https://manuals.plus/m/6c6574537620519bc302c892b039dce6383722c5ea5ddb32d99e86271ffe89f5.pdf",
+   "status": "403"
+  },
+  {
+   "url": "https://html.duckduckgo.com/html/",
+   "status": "403"
+  },
+  {
+   "url": "https://lite.duckduckgo.com/lite/",
+   "status": "403"
+  },
+  {
+   "url": "https://ruger-docs.s3.amazonaws.com/_manuals/mark2.pdf",
+   "status": "403"
+  }
+ ]
+}

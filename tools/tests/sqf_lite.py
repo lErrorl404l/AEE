@@ -137,12 +137,23 @@ class Exp:
 
 
 @dataclass
+class UnaryCmd:
+    op: str  # "count" | "abs"
+    arg: Any
+
+
+@dataclass
 class Assign:
     name: str
     expr: Any
 
 
 BINARY_COMMANDS = {"getVariable", "isEqualType"}
+
+# Unary commands applied to a following expression.  Without these the
+# parser reads the name as a variable and the operand as a new statement,
+# which is how `(count _v) == 0` raised "expected ), got _v".
+UNARY_COMMANDS = {"count", "abs"}
 
 
 @dataclass
@@ -431,6 +442,9 @@ class SqfParser:
         if t is not None and t.value in ("exp",) and self._is_cmd_use(t.value):
             self.next()
             return Exp(self.parse_unary())
+        if t is not None and t.value in UNARY_COMMANDS and self._is_cmd_use(t.value):
+            self.next()
+            return UnaryCmd(t.value, self.parse_unary())
         return self.parse_postfix()
 
     def _is_cmd_use(self, name: str) -> bool:
@@ -626,6 +640,13 @@ class SqfRuntime:
             return max(l, r) if node.op == "max" else min(l, r)
         if isinstance(node, Exp):
             return math.exp(self.eval(node.arg))
+        if isinstance(node, UnaryCmd):
+            value = self.eval(node.arg)
+            if node.op == "count":
+                return len(value)
+            if node.op == "abs":
+                return abs(value)
+            raise ValueError(f"unknown unary command {node.op}")
         if isinstance(node, Select):
             arr = self.eval(node.arr)
             idx = self.eval(node.idx)
