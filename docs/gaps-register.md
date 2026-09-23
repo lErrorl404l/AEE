@@ -311,3 +311,27 @@ exceeds 5 m of frost depth at 500 degree-days.
 **Lesson.** A test that fails on correct code is a finding about the test.
 Check which variables the function actually depends on before asserting
 monotonicity in one of them.
+
+## GAP-025: a documented limitation left standing
+
+Status: Closed
+
+**What happened.** The snow work recorded that the latent heat of melt was
+not coupled to the soil surface balance, so the ground read warm through a
+thaw. That note was honest, and it was also a defect left in place.
+
+**What went wrong.** Nothing. The limitation was found, stated and
+recorded rather than hidden. The fault was that recording it was treated
+as the end of the task.
+
+**Why.** The rule was unlearnt. "Document the limitation" is a valid
+answer only when the limitation cannot be fixed in the cycle. Here it
+could: the snow owner already computed the melt rate.
+
+**What prevents recurrence.** The snow function publishes the flux and the
+node stack subtracts it. One writer per variable, so the two cannot
+disagree. A test that once asserted the limitation EXISTED now asserts the
+coupling, so the old state cannot return.
+
+**Lesson.** A recorded limitation is a deferred fix, not a closed item.
+Fix it when the cycle can carry it, and reverse the test that described it.
