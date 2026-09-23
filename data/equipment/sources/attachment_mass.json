@@ -1,0 +1,413 @@
+{
+  "retrieved": "2026-09-23",
+  "note": "Weapon-attachment mass capture (suppressors by calibre, bipods, magnified and unmagnified optics). The family keyword is the literal token a vanilla classname carries (muzzle_snds_h, bipod_01, optic_aco), because the earlier product-name families (socom, sandman) never matched a vanilla classname. Every mass is from a manufacturer product page or datasheet, read directly or through the web archive when the maker site blocked a plain fetch. Tier 5 pages go to leads only. This file does not repeat the optic, laser, light and mount families already held in device_mass.json (atacr, razor, peq15, mawl, x300).",
+  "sources": [
+    {
+      "source_id": "surefire_socom556_mini2",
+      "title": "SOCOM556-MINI2 suppressor product page",
+      "url": "https://www.surefire.com/socom556-mini2/",
+      "sha256": "0e0867b89aa05156497d180326387da3297a045e294cca8bc5d934aaf31668e8",
+      "publisher": "SureFire",
+      "tier": 4
+    },
+    {
+      "source_id": "surefire_socom762_mini2",
+      "title": "SOCOM762-MINI2 suppressor product page",
+      "url": "https://www.surefire.com/socom762-mini2/",
+      "sha256": "e0adfed06cb421efea8b43a58e2b7d96108a621b5cd8545a29fd6a1d7af70c8c",
+      "publisher": "SureFire",
+      "tier": 4
+    },
+    {
+      "source_id": "surefire_socom338_ti",
+      "title": "SOCOM338-Ti suppressor product page",
+      "url": "https://www.surefire.com/socom338-ti/",
+      "sha256": "76d8bce527f3bddf0ff4fb8e13cd495102214cf68cfb79e9320bfdf5dde066bc",
+      "publisher": "SureFire",
+      "tier": 4
+    },
+    {
+      "source_id": "deadair_odessa9",
+      "title": "Odessa-9 modular pistol suppressor product page",
+      "url": "https://www.deadairsilencers.com/odessa-9/",
+      "sha256": "f9814bb0dc6f83d38ea487138cbc9cf0825ba1d464975b77149bc8c77c1229c4",
+      "publisher": "Dead Air Armament",
+      "tier": 4
+    },
+    {
+      "source_id": "deadair_nomad_l",
+      "title": "Nomad-L 30 cal suppressor product page",
+      "url": "https://www.deadairsilencers.com/nomad-l/",
+      "sha256": "f285d292897775377bf574a473cb861868dbb149b63f125b37462e816d54bb42",
+      "publisher": "Dead Air Armament",
+      "tier": 4
+    },
+    {
+      "source_id": "deadair_sandman_l",
+      "title": "Sandman-L 7.62 mm suppressor product page",
+      "url": "https://www.deadairsilencers.com/sandman-l/",
+      "sha256": "2a5a6ada93d6e24502a32a627d5df7b2d62bc0a2e879675530d343e30635ea00",
+      "publisher": "Dead Air Armament",
+      "tier": 4
+    },
+    {
+      "source_id": "deadair_ghost_45m",
+      "title": "Ghost 45M pistol suppressor product page",
+      "url": "https://www.deadairsilencers.com/ghost-45m/",
+      "sha256": "51b6bb5ee0ad6b00b70246bf932eb0c0c1368b8f2be36fa0d7db57377ff21e49",
+      "publisher": "Dead Air Armament",
+      "tier": 4
+    },
+    {
+      "source_id": "harris_s_brm",
+      "title": "Harris S-BRM bipod product page (Internet Archive snapshot)",
+      "url": "https://web.archive.org/web/2023/https://www.harrisbipods.com/product/s-brm-bipod/",
+      "sha256": "67c46ee17358a3d00abae10a583cf2604c72d47b6fe4a5343c978c1c7a82b51f",
+      "publisher": "Harris Engineering",
+      "tier": 4
+    },
+    {
+      "source_id": "accushot_bt10_v8",
+      "title": "BT10 V8 Atlas bipod product page",
+      "url": "https://www.accu-shot.com/shop/atlas-bipods/bt10-v8/",
+      "sha256": "7f54a30375b193a7334f0aed94adea0123831e12b1676d97f3af427020526167",
+      "publisher": "Accu-Shot (B&T Industries)",
+      "tier": 4
+    },
+    {
+      "source_id": "accutac_br4_g2",
+      "title": "BR-4 G2 bipod product page",
+      "url": "https://accu-tac.com/products/br-4-g2-bipod",
+      "sha256": "be4438e7618bd2508780d87952df8fa15f71c551d4461d26206f7ba856e97e81",
+      "publisher": "Accu-Tac",
+      "tier": 4
+    },
+    {
+      "source_id": "aimpoint_compm4",
+      "title": "Comp M4 red dot reflex sight product page",
+      "url": "https://www.aimpoint.com/products/comp-m4-2-moa-red-dot-reflex-sight-with-standard-spacer-and-qrp2-mount/",
+      "sha256": "ab01358a1bbc331c323d502ce05f3a71a3ba5bcd5415813635bfc000814ec134",
+      "publisher": "Aimpoint",
+      "tier": 4
+    },
+    {
+      "source_id": "eotech_exps3",
+      "title": "EOTech HWS EXPS3 holographic weapon sight product page",
+      "url": "https://www.eotechinc.com/products/eotech-hws-exps3",
+      "sha256": "22437aaec7d38189e83ae38a7a7e8474060d48b4ce53c27ff84101b34fe7e2b6",
+      "publisher": "EOTech",
+      "tier": 4
+    },
+    {
+      "source_id": "trijicon_ta31f",
+      "title": "ACOG TA31F 4x32 riflescope product page (Internet Archive snapshot)",
+      "url": "https://web.archive.org/web/2023/https://www.trijicon.com/products/details/ta31f",
+      "sha256": "99e3a2c18ca8a1d9686109cc317e3dd09c2529184400ce9e41fb336f739cbcb5",
+      "publisher": "Trijicon",
+      "tier": 4
+    },
+    {
+      "source_id": "trijicon_ta01",
+      "title": "ACOG TA01 4x32 riflescope product page (Internet Archive snapshot)",
+      "url": "https://web.archive.org/web/2023/https://www.trijicon.com/products/details/ta01",
+      "sha256": "ece7fa828cb97df209751c0ed0c45a23e0eea07c0b8011f99d6cddd0b2f338aa",
+      "publisher": "Trijicon",
+      "tier": 4
+    },
+    {
+      "source_id": "steiner_t5xi_1_5x24",
+      "title": "T5Xi 1-5x24 riflescope product page",
+      "url": "https://www.steiner-optics.com/products/t5xi-1-5x24",
+      "sha256": "08d482cb77da3ddc006a35ef385239db591686956386b7ee7bebea897982dab4",
+      "publisher": "Steiner (Beretta Holding)",
+      "tier": 4
+    },
+    {
+      "source_id": "steiner_m5xi_3_15x50",
+      "title": "M5Xi 3-15x50 riflescope product page",
+      "url": "https://www.steiner-optics.com/products/m5xi-3-15x50",
+      "sha256": "e2082e38be71cb6d4a5e14318a7719271084c2d3b63021bcc0d65f16b30fc87e",
+      "publisher": "Steiner (Beretta Holding)",
+      "tier": 4
+    },
+    {
+      "source_id": "steiner_m5xi_5_25x56",
+      "title": "M5Xi 5-25x56 riflescope product page",
+      "url": "https://www.steiner-optics.com/products/m5xi-5-25x56",
+      "sha256": "bc5b889f1ec2607178a29a7a3aa085a53ca080eba692083e58f41f6249591009",
+      "publisher": "Steiner (Beretta Holding)",
+      "tier": 4
+    },
+    {
+      "source_id": "nightforce_nxs_55_22x50",
+      "title": "NXS 5.5-22x50 riflescope product page",
+      "url": "https://www.nightforceoptics.com/riflescopes/nxs/nxs-55-22x50",
+      "sha256": "e2fe21b21e7aacddc2e2d3ae360be39284fa0910abe6674a3a439408850e07d4",
+      "publisher": "Nightforce Optics",
+      "tier": 4
+    }
+  ],
+  "items": [
+    {
+      "item": "SureFire SOCOM556-MINI2",
+      "category": "suppressor",
+      "family": "muzzle_snds_h",
+      "mass_kg": 0.425,
+      "state": "bare",
+      "maker": "SureFire",
+      "country": "US",
+      "era": "modern",
+      "note": "WEIGHT 15 oz (425 g)",
+      "source_id": "surefire_socom556_mini2"
+    },
+    {
+      "item": "SureFire SOCOM762-MINI2",
+      "category": "suppressor",
+      "family": "muzzle_snds_b",
+      "mass_kg": 0.482,
+      "state": "bare",
+      "maker": "SureFire",
+      "country": "US",
+      "era": "modern",
+      "note": "WEIGHT 17 oz (482 g)",
+      "source_id": "surefire_socom762_mini2"
+    },
+    {
+      "item": "SureFire SOCOM338-Ti",
+      "category": "suppressor",
+      "family": "muzzle_snds_338",
+      "mass_kg": 0.623,
+      "state": "bare",
+      "maker": "SureFire",
+      "country": "US",
+      "era": "modern",
+      "note": "WEIGHT 22.0 oz (623 g)",
+      "source_id": "surefire_socom338_ti"
+    },
+    {
+      "item": "Dead Air Odessa-9",
+      "category": "suppressor",
+      "family": "muzzle_snds_l",
+      "mass_kg": 0.286,
+      "state": "with mount",
+      "maker": "Dead Air Armament",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight (With Piston & Spring / Without) 10.1 ounces / 7.4 ounces",
+      "source_id": "deadair_odessa9"
+    },
+    {
+      "item": "Dead Air Nomad-L",
+      "category": "suppressor",
+      "family": "muzzle_snds_m",
+      "mass_kg": 0.519,
+      "state": "bare",
+      "maker": "Dead Air Armament",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight 18.3 ounces",
+      "source_id": "deadair_nomad_l"
+    },
+    {
+      "item": "Dead Air Sandman-L",
+      "category": "suppressor",
+      "family": "muzzle_snds_65",
+      "mass_kg": 0.618,
+      "state": "bare",
+      "maker": "Dead Air Armament",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight 21.8 ounces",
+      "source_id": "deadair_sandman_l"
+    },
+    {
+      "item": "Dead Air Ghost 45M",
+      "category": "suppressor",
+      "family": "muzzle_snds_acp",
+      "mass_kg": 0.34,
+      "state": "bare",
+      "maker": "Dead Air Armament",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight (Long) 12 ounces",
+      "source_id": "deadair_ghost_45m"
+    },
+    {
+      "item": "Harris S-BRM",
+      "category": "mount",
+      "family": "bipod_01",
+      "mass_kg": 0.397,
+      "state": "complete",
+      "maker": "Harris Engineering",
+      "country": "US",
+      "era": "modern",
+      "note": "Ultralight weight - 14 oz",
+      "source_id": "harris_s_brm"
+    },
+    {
+      "item": "Atlas BT10 V8",
+      "category": "mount",
+      "family": "bipod_02",
+      "mass_kg": 0.335,
+      "state": "complete",
+      "maker": "Accu-Shot (B&T Industries)",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight 11.808 oz",
+      "source_id": "accushot_bt10_v8"
+    },
+    {
+      "item": "Accu-Tac BR-4 G2",
+      "category": "mount",
+      "family": "bipod_03",
+      "mass_kg": 0.567,
+      "state": "complete",
+      "maker": "Accu-Tac",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight 20 oz 21.12 oz",
+      "source_id": "accutac_br4_g2"
+    },
+    {
+      "item": "Aimpoint Comp M4",
+      "category": "optic",
+      "family": "optic_aco",
+      "mass_kg": 0.268,
+      "state": "bare",
+      "maker": "Aimpoint",
+      "country": "SE",
+      "era": "modern",
+      "note": "Weight 268 g (9.5 oz) sight only",
+      "source_id": "aimpoint_compm4"
+    },
+    {
+      "item": "EOTech HWS EXPS3",
+      "category": "optic",
+      "family": "optic_yorris",
+      "mass_kg": 0.3175,
+      "state": "complete",
+      "maker": "EOTech",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight 11.2 oz (317.5 g)",
+      "source_id": "eotech_exps3"
+    },
+    {
+      "item": "Trijicon ACOG TA31F",
+      "category": "optic",
+      "family": "optic_arco",
+      "mass_kg": 0.428,
+      "state": "bare",
+      "maker": "Trijicon",
+      "country": "US",
+      "era": "modern",
+      "note": "15.1 oz",
+      "source_id": "trijicon_ta31f"
+    },
+    {
+      "item": "Trijicon ACOG TA01",
+      "category": "optic",
+      "family": "optic_hamr",
+      "mass_kg": 0.281,
+      "state": "bare",
+      "maker": "Trijicon",
+      "country": "US",
+      "era": "modern",
+      "note": "9.9 oz",
+      "source_id": "trijicon_ta01"
+    },
+    {
+      "item": "Steiner T5Xi 1-5x24",
+      "category": "optic",
+      "family": "optic_mrco",
+      "mass_kg": 0.55,
+      "state": "complete",
+      "maker": "Steiner",
+      "country": "DE",
+      "era": "modern",
+      "note": "Weight 19.4 oz",
+      "source_id": "steiner_t5xi_1_5x24"
+    },
+    {
+      "item": "Steiner M5Xi 3-15x50",
+      "category": "optic",
+      "family": "optic_dms",
+      "mass_kg": 0.921,
+      "state": "complete",
+      "maker": "Steiner",
+      "country": "DE",
+      "era": "modern",
+      "note": "Weight 32.5 oz",
+      "source_id": "steiner_m5xi_3_15x50"
+    },
+    {
+      "item": "Steiner M5Xi 5-25x56",
+      "category": "optic",
+      "family": "optic_khs",
+      "mass_kg": 1.029,
+      "state": "complete",
+      "maker": "Steiner",
+      "country": "DE",
+      "era": "modern",
+      "note": "Weight 36.3 oz",
+      "source_id": "steiner_m5xi_5_25x56"
+    },
+    {
+      "item": "Nightforce NXS 5.5-22x50",
+      "category": "optic",
+      "family": "optic_lrps",
+      "mass_kg": 0.879,
+      "state": "complete",
+      "maker": "Nightforce Optics",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight 31.0 oz/879 g",
+      "source_id": "nightforce_nxs_55_22x50"
+    },
+    {
+      "item": "Nightforce NXS 5.5-22x50",
+      "category": "optic",
+      "family": "optic_ams",
+      "mass_kg": 0.879,
+      "state": "complete",
+      "maker": "Nightforce Optics",
+      "country": "US",
+      "era": "modern",
+      "note": "Weight 31.0 oz/879 g",
+      "source_id": "nightforce_nxs_55_22x50"
+    }
+  ],
+  "leads": [
+    {
+      "item": "Chinese 5.8 mm suppressor (for muzzle_snds_58)",
+      "url": "https://en.wikipedia.org/wiki/QBU-88",
+      "why": "No maker datasheet found for a 5.8x42 mm suppressor mass. The classname token is covered by no tier 1-4 figure yet."
+    },
+    {
+      "item": "Magpul Bipod M-LOK (for bipod_03)",
+      "url": "https://magpul.com/magpul-bipod-m-lok.html",
+      "why": "Maker page states only 'extremely lightweight at just over 11 oz', not an exact published mass. A tier 1-4 exact figure would displace the Accu-Tac row."
+    },
+    {
+      "item": "Leupold Mark 4 HAMR 4x24 (for optic_hamr)",
+      "url": "https://www.leupold.com/shop/riflescopes/discontinued",
+      "why": "Discontinued; no live maker product page carries the mass. Only retailer listings (opticsplanet, MidwayUSA) hold a figure, and those are compilations, not the maker."
+    },
+    {
+      "item": "Leupold Mark 4HD 2.5-10x42 (for optic_dms)",
+      "url": "https://www.leupold.com/mark-4hd-2-5-10x42-m5c3-ffp-illum-tmr-riflescope",
+      "why": "Maker page loads its specification table by script; the fetched bytes carry no mass figure."
+    },
+    {
+      "item": "SilencerCo Omega 9K / Osprey 45 (for muzzle_snds_l and muzzle_snds_acp)",
+      "url": "https://silencerco.com/silencers/omega-9k/",
+      "why": "Maker site blocks a plain fetch (Cloudflare 403) and holds no archive snapshot of the product pages."
+    },
+    {
+      "item": "Aimpoint Comp M4 alternate mass",
+      "url": "https://en.wikipedia.org/wiki/Aimpoint_CompM4",
+      "why": "Older Aimpoint material and Wikipedia cite about 335 g for the Comp M4. The current maker page states 268 g optic only, and a tier 1-4 figure stands over a tier 5 one, so 268 g is kept."
+    }
+  ],
+  "conflicts": []
+}
