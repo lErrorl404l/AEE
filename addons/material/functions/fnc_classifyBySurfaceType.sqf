@@ -3,7 +3,7 @@
 Classify an engine surfaceType result into an AEE material class
 (issue #96, layer 1 - terrain taxonomy).
 
-The engine `surfaceType` command returns a `#gdt*` class for terrain
+The engine `surfaceType` command returns a Gdt* class for terrain
 (the map's own CfgSurfaces entries).  This is the fastest and most
 complete source for GROUND material: it covers every map's terrain with
 zero per-mod work, because every terrain surface class is engine-exposed
@@ -12,15 +12,15 @@ classes for climate votes; this function maps them to the physical
 material class for thermal/traction/acoustic consumers.
 
 Arguments:
-  0: surface type (STRING) - the `#gdt...` engine value, lower-cased
+  0: surface type (STRING) - the surface class name, for example GdtAsphalt
 
 Return Value:
   STRING - ground, rock, wood, concrete, asphalt, metal, glass, water,
   vegetation, or "ground" for unknown
 
 Example:
-  "#gdtasphalt" call aee_material_fnc_classifyBySurfaceType -> "asphalt"
-  "#gdtconcrete" call aee_material_fnc_classifyBySurfaceType -> "concrete"
+  "GdtAsphalt" call aee_material_fnc_classifyBySurfaceType -> "asphalt"
+  "GdtConcrete" call aee_material_fnc_classifyBySurfaceType -> "concrete"
 */
 
 params [["_surface", "", [""]]];
@@ -42,10 +42,9 @@ if (_surface != "") then {
     // Gdt* WITH the prefix - keep it for the config lookup (the bare
     // stripped name misses the config class and the bisurf fallback
     // fires on a non-path, warning 'Script X not found').  Only the
-    // leading # is removed.
+    // leading # is removed; the Gdt prefix is kept.
     private _clean = _surface;
     if (_clean find "#gdt" == 0) then { _clean = _clean select [4, (count _clean) - 4]; };
-    if (_clean find "gdt" == 0) then { _clean = _clean; };   // keep Gdt prefix
     _dynamicMat = _clean call EFUNC(material,getSurfaceMaterial);
 };
 if (_dynamicMat != "" && _dynamicMat != "ground") exitWith { _dynamicMat };

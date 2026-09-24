@@ -47,7 +47,7 @@ if (count _pos < 2) then { _pos = [0, 0, 0]; };
 
 // ─── Material class at the position (#96 detector) ────────────────────────
 // `surfaceType` at the ground point gives the engine surface class
-// (e.g. #gdtasphalt); the #96 taxonomy maps it to the physical material.
+// (e.g. GdtAsphalt); the #96 taxonomy maps it to the physical material.
 if (_material == "") then {
     if (count _pos >= 2) then {
         private _surf = surfaceType [_pos select 0, _pos select 1];

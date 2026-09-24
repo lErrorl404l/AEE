@@ -7,7 +7,7 @@ materials at runtime: getObjectMaterials returns only setObjectMaterial
 OVERRIDES (empty/any for default materials - verified against BIS docs),
 so it cannot reveal a model's material.  The authoritative sources are:
 
-  1. Terrain surfaceType - for ground/static objects the #gdt* class is
+  1. Terrain surfaceType - for ground/static objects the Gdt* class is
      the material (the map's own CfgSurfaces)
   2. Config hiddenSelectionsMaterials - for objects that declare
      per-selection materials in their config (buildings, some props)
