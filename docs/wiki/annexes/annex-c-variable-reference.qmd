@@ -172,9 +172,8 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_mobility_currentLiftRatio` | mobility | Helicopter lift ratio |
 | `aee_mobility_currentRolloverG` | mobility | Current lateral acceleration in g (issue #108) |
 | `aee_mobility_currentRolloverThresholdG` | mobility | Applied rollover threshold in g: SSF slope-corrected, times the dynamic factor (#108) |
-| `aee_mobility_currentVCI1` | mobility | NRMM Vehicle Cone Index, one pass (#117) |
-| `aee_mobility_currentVCI50` | mobility | NRMM Vehicle Cone Index, 50 passes (#117) |
-| `aee_mobility_currentMobilityIndex` | mobility | NRMM wheeled Mobility Index from the published form (#117) |
+| `aee_mobility_currentSoilStrengthKnown` | mobility | Soil-strength knownness: false while no sourced vehicle record exists (#117) |
+| `aee_mobility_currentSoilStrengthReason` | mobility | Reason no numeric soil result is published: `null`, `tracked`, or `unverifiedInputs` (#117) |
 | `aee_mobility_currentBreakoverDeg` | mobility | Vehicle breakover angle, 2*atan(2c/L) (#117) |
 | `aee_mobility_currentGradeLimitDeg` | mobility | Usable grade limit: force grade capped by the friction limit (#117) |
 | `aee_mobility_currentSideSlopeLimitDeg` | mobility | Side-slope limit: the lower of the SSF tip angle and the published limit (#117) |
@@ -193,6 +192,12 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_mobility_muSurface` | mobility | Combined wet/ice/brake surface friction 0..1 |
 | `aee_mobility_brakeTempC` | mobility | Brake rotor temperature in C |
 | `aee_mobility_brakeMu` | mobility | Brake friction coefficient (fade) 0..1 |
+
+The soil-strength model is fail-closed (#117). It publishes no numeric VCI or
+Mobility Index value while the vehicle records and the VCI50 source are
+unverified. Only the two status variables above are active. The numeric
+variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
+`aee_mobility_currentMobilityIndex` are cleared with nil.
 
 ### Environmental
 

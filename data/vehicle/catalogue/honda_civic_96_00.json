@@ -1,0 +1,112 @@
+{
+  "retrieved": "2026-09-24",
+  "note": "Catalogue capture for the held tier-2 Honda Civic Factory Service Manual (96-00), First Edition 8/99. It holds the 6th generation Civic 4 door Sedan as a wheeled civilian-car lead. The manual publishes the identity, overall dimensions, wheelbase, track, ground clearance, per-variant gross vehicle weight ratings, the engine family and displacement and the transmission types. It publishes no curb weight, no operating weight, no payload, no engine rated power, no engine torque and no tyre size or pressure, so the entry is not runtime-ready and emits no runtime row. The Design Specifications table sits on scan PDF page 64 (printed page 3-20). The page image resolves the track row: it prints 1,475/1,475 mm and 58.1/58.1 in, while the PDF text layer misreads the rear as 1,415 mm. The printed values agree, so no conflict record is created.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "honda_civic_6gen_sedan",
+      "canonical_name": "Honda Civic Sedan (6th generation)",
+      "maker": "Honda",
+      "model": "Civic",
+      "variant": "4 door Sedan, 6th generation (EJ6/EJ8), 1996-2000",
+      "variant_id": "honda_civic_6gen_sedan",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Japan",
+      "era": "modern",
+      "aliases": ["civic", "honda civic", "hondacivic", "honda civic sedan", "ej6", "ej8"],
+      "keywords": ["car", "civilian", "passenger car", "sedan"],
+      "runtime_ready": false,
+      "values": {
+        "length_mm": {
+          "value": 4450,
+          "unit": "mm",
+          "source": "honda_civic_factory_service_manual_96_00",
+          "locator": "Design Specifications table, DIMENSIONS, Overall Length, 2 door Coupe/4 door Sedan ('99, '00), scan PDF page 64, printed page 3-20",
+          "state": "overall length, 4 door Sedan 1999-2000; 4,445 mm for the 1996-1998 Coupe and Sedan",
+          "grade": "documented"
+        },
+        "width_mm": {
+          "value": 1705,
+          "unit": "mm",
+          "source": "honda_civic_factory_service_manual_96_00",
+          "locator": "Design Specifications table, DIMENSIONS, Overall Width, scan PDF page 64, printed page 3-20",
+          "state": "overall width, all 6th generation bodies, as published",
+          "grade": "documented"
+        },
+        "height_mm": {
+          "value": 1390,
+          "unit": "mm",
+          "source": "honda_civic_factory_service_manual_96_00",
+          "locator": "Design Specifications table, DIMENSIONS, Overall Height, 4 door Sedan, scan PDF page 64, printed page 3-20",
+          "state": "overall height, 4 door Sedan; the 2 door Coupe and 2 door Hatchback are 1,375 mm",
+          "grade": "documented"
+        },
+        "wheelbase_mm": {
+          "value": 2620,
+          "unit": "mm",
+          "source": "honda_civic_factory_service_manual_96_00",
+          "locator": "Design Specifications table, DIMENSIONS, Wheelbase, scan PDF page 64, printed page 3-20",
+          "state": "wheelbase, all 6th generation bodies, as published",
+          "grade": "documented"
+        },
+        "track_mm": {
+          "value": 1475,
+          "unit": "mm",
+          "source": "honda_civic_factory_service_manual_96_00",
+          "locator": "Design Specifications table, DIMENSIONS, Track, Front/Rear, scan PDF page 64, printed page 3-20",
+          "state": "track, front and rear; the printed metric 1,475/1,475 mm and English 58.1/58.1 in agree. The PDF text layer misreads the rear as 1,415 mm.",
+          "grade": "documented"
+        },
+        "ground_clearance_mm": {
+          "value": 150,
+          "unit": "mm",
+          "source": "honda_civic_factory_service_manual_96_00",
+          "locator": "Design Specifications table, DIMENSIONS, Ground Clearance, scan PDF page 64, printed page 3-20",
+          "state": "ground clearance, as published",
+          "grade": "documented"
+        },
+        "gross_weight_kg": {
+          "value": 1540,
+          "unit": "kg",
+          "source": "honda_civic_factory_service_manual_96_00",
+          "locator": "Design Specifications table, WEIGHT (CANADA), Gross Vehicle Weight Rating (GVWR), 4 door Sedan, EX A/T, scan PDF page 64, printed page 3-20",
+          "state": "gross vehicle weight rating, 4 door Sedan EX with automatic transmission, Canadian table, as published in kg; the USA table publishes GVWR in lb",
+          "grade": "documented"
+        },
+        "engine_model": {
+          "value": "Honda D16Y8",
+          "unit": "text",
+          "source": "honda_civic_factory_service_manual_96_00",
+          "locator": "Design Specifications table, ENGINE, Type, note 2, scan PDF page 64, printed page 3-20",
+          "state": "SOHC VTEC 1.6 L engine, 4 door Sedan EX fitment, as published",
+          "grade": "documented"
+        },
+        "engine_displacement_l": {
+          "value": 1.59,
+          "unit": "L",
+          "source": "honda_civic_factory_service_manual_96_00",
+          "locator": "Design Specifications table, ENGINE, Displacement, D16Y5, D16Y7, D16Y8, scan PDF page 64, printed page 3-20",
+          "state": "displacement 1,590 cm3 for D16Y5, D16Y7 and D16Y8, converted to litres",
+          "grade": "documented"
+        },
+        "transmission_type": {
+          "value": "automatic",
+          "unit": "enum",
+          "source": "honda_civic_factory_service_manual_96_00",
+          "locator": "Design Specifications (cont'd) table, TRANSMISSION, Transmission Type, A/T, scan PDF page 65, printed page 3-21",
+          "state": "4 speed automatic (A/T) with 1 reverse, as published",
+          "grade": "documented"
+        },
+        "gears": {
+          "value": 4,
+          "unit": "count",
+          "source": "honda_civic_factory_service_manual_96_00",
+          "locator": "Design Specifications (cont'd) table, TRANSMISSION, Transmission Type, A/T, scan PDF page 65, printed page 3-21",
+          "state": "automatic transmission, 4 forward speeds and 1 reverse, as published",
+          "grade": "documented"
+        }
+      }
+    }
+  ]
+}

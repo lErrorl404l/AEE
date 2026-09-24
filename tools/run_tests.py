@@ -83,6 +83,10 @@ def main():
         "tools/tests/test_armour_database.py",
         "tools/tests/test_derivation.py",
         "tools/tests/test_engine_bridges.py",
+        "tools/tests/test_vehicle_inventory.py",
+        "tools/tests/test_vehicle_corpus.py",
+        "tools/tests/test_vehicle_coverage.py",
+        "tools/tests/test_runtime_vehicles.py",
     ]
     # Only run suites that exist (module suites are added incrementally).
     existing = [s for s in suites if os.path.exists(os.path.join(ROOT, s))]

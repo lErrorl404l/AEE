@@ -1,0 +1,64 @@
+{
+  "retrieved": "2026-09-24",
+  "note": "Catalogue capture for the held tier-2 operator manual TM 9-2355-335-10 (Oshkosh M-ATV M1240/M1240A1/M1245, July 2012). It holds the M1240 as a wheeled entry. The manual publishes the identity, the vehicle curb weight and the gross vehicle weight rating, a maximum engine rating with no net basis, an automatic transmission and a tyre size code. It publishes no operating weight, no net power, no tyre width and no tyre diameter, so the entry is not runtime-ready and emits no runtime row. No real source maps an AEE game class to the M1240, so class_token is empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "m_atv_m1240",
+      "canonical_name": "M-ATV M1240",
+      "maker": "Oshkosh",
+      "model": "M-ATV",
+      "variant": "M1240",
+      "variant_id": "m_atv_m1240",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": ["m-atv", "matv", "m1240"],
+      "keywords": ["mrap", "oshkosh", "m-atv"],
+      "runtime_ready": false,
+      "values": {
+        "curb_weight_kg": {
+          "value": 11123,
+          "unit": "kg",
+          "source": "tm_9_2355_335_10",
+          "locator": "Table 2, Weight, page 0002-10, row Vehicle Curb Weight (VCW) (M1240)",
+          "state": "vehicle curb weight, M1240, no crew and no payload",
+          "grade": "documented"
+        },
+        "gross_weight_kg": {
+          "value": 16798,
+          "unit": "kg",
+          "source": "tm_9_2355_335_10",
+          "locator": "Table 2, Weight, page 0002-10, row Gross Vehicle Weight Rating (GVWR)",
+          "state": "gross vehicle weight rating, maximum rated",
+          "grade": "documented"
+        },
+        "published_power_hp": {
+          "value": 370,
+          "unit": "hp",
+          "source": "tm_9_2355_335_10",
+          "locator": "Table 13, Engine, page 0002-14, row Maximum Horsepower",
+          "state": "maximum rating, no net basis",
+          "grade": "documented"
+        },
+        "transmission_type": {
+          "value": "automatic",
+          "unit": "enum",
+          "source": "tm_9_2355_335_10",
+          "locator": "Table 19, Transmission, page 0002-16, row Type",
+          "state": "Allison 3500 SP, six speed automatic, as published",
+          "grade": "documented"
+        },
+        "tyre_size_text": {
+          "value": "395/85R20",
+          "unit": "text",
+          "source": "tm_9_2355_335_10",
+          "locator": "Table 15, Tires, page 0002-15, row Type",
+          "state": "M1240/M1245 fitment, as published",
+          "grade": "documented"
+        }
+      }
+    }
+  ]
+}

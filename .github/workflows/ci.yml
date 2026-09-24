@@ -45,6 +45,14 @@ jobs:
         run: python3 tools/validation/check_macro_quoting.py
       - name: Oracle validation (JSP 939 VV&A)
         run: python3 tools/validation/validate_oracles.py
+      - name: Vehicle class inventory check
+        run: python3 tools/validation/gen_vehicle_class_inventory.py --check
+      - name: Vehicle projection freshness check
+        run: python3 tools/validation/gen_vehicle_data.py --check
+      - name: Vehicle coverage freshness check
+        run: python3 tools/validation/gen_vehicle_coverage.py --check
+      - name: Vehicle data validation
+        run: python3 tools/validation/validate_vehicle_data.py
       - name: Check for BOM
         uses: arma-actions/bom-check@v1
         with:

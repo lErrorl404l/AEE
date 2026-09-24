@@ -1,0 +1,53 @@
+[
+  {
+    "source_id": "fixture_structural_tier2",
+    "tier": 2,
+    "type": "manual",
+    "title": "FIXTURE ONLY structural tier-2 source, not a real manual",
+    "edition": "",
+    "identifier": "FIXTURE-STRUCTURAL-TIER2",
+    "locator": "fixture only, no real locator",
+    "published": "",
+    "retrieved": "2026-09-24",
+    "url": "",
+    "archive_ref": "",
+    "licence": "",
+    "primary_held": false,
+    "sha256": "",
+    "note": "FIXTURE ONLY, not a held document. This entry exists so the task 4 validator can exercise the shape of a tier-2 source. It names no real manual, holds no bytes and must never carry a value. primary_held is false."
+  },
+  {
+    "source_id": "fixture_weak_compilation",
+    "tier": 5,
+    "type": "compilation",
+    "title": "FIXTURE ONLY weak compilation source, not a real compilation",
+    "edition": "",
+    "identifier": "FIXTURE-WEAK-COMPILATION",
+    "locator": "fixture only, no real locator",
+    "published": "",
+    "retrieved": "2026-09-24",
+    "url": "",
+    "archive_ref": "",
+    "licence": "",
+    "primary_held": false,
+    "sha256": "",
+    "note": "FIXTURE ONLY, not a held document. A tier 5 compilation fixture. It exists to test the weak-source and grade coupling in the task 4 validator. Never an entry source and never primary. primary_held is false."
+  },
+  {
+    "source_id": "fixture_engine_config",
+    "tier": 5,
+    "type": "engine_config",
+    "title": "FIXTURE ONLY engine_config source, forbidden as a value source",
+    "edition": "",
+    "identifier": "FIXTURE-ENGINE-CONFIG",
+    "locator": "fixture only, no real locator",
+    "published": "",
+    "retrieved": "2026-09-24",
+    "url": "",
+    "archive_ref": "",
+    "licence": "",
+    "primary_held": false,
+    "sha256": "",
+    "note": "FIXTURE ONLY, not a held document. An engine type, not a real-world source. The schema forbids engine_config as an entry source for a numeric or categorical value. It is present so the task 4 validator rejects the fixture value that names it. The tier number is meaningless for an engine type and is set only to keep the entry schema-shaped. primary_held is false."
+  }
+]
