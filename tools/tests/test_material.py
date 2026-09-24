@@ -56,28 +56,36 @@ BISURF_CONTENT = {
 
 
 def classify_surface_type(surface):
-    """Mirror of fnc_classifyBySurfaceType.sqf."""
+    """Mirror of fnc_classifyBySurfaceType.sqf.
+
+    surfaceType returns the bare class name (GdtSnow); the SQF normalises on
+    read (lowercase, strip an optional leading #gdt/gdt) before comparing.
+    """
     s = surface.lower()
-    if s in ("#gdtsnow", "#gdtice", "#gdtglacier", "#gdttundra"):
+    if s.startswith("#gdt"):
+        s = s[4:]
+    elif s.startswith("gdt"):
+        s = s[3:]
+    if s in ("snow", "ice", "glacier", "tundra"):
         return "ground"
-    if s in ("#gdtrock", "#gdtmountain", "#gdtgravel"):
+    if s in ("rock", "mountain", "gravel"):
         return "rock"
-    if s in ("#gdtdesert", "#gdtdunes", "#gdtsand", "#gdtprairie"):
+    if s in ("desert", "dunes", "sand", "prairie"):
         return "ground"
     if s in (
-        "#gdtgrass",
-        "#gdtgrassland",
-        "#gdtforest",
-        "#gdtjungle",
-        "#gdtrainforest",
-        "#gdtconiferous",
-        "#gdtcrop",
-        "#gdtfield",
-        "#gdtvineyard",
-        "#gdtorchard",
+        "grass",
+        "grassland",
+        "forest",
+        "jungle",
+        "rainforest",
+        "coniferous",
+        "crop",
+        "field",
+        "vineyard",
+        "orchard",
     ):
         return "vegetation"
-    if s in ("#gdtswamp", "#gdtmarsh"):
+    if s in ("swamp", "marsh"):
         return "water"
     return "ground"
 

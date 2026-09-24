@@ -67,15 +67,19 @@ private _T_overcast = _T_elevation - 4 * overcast;
 // ─── Surface modifier ─────────────────────────────────────────────────────
 private _surfaceMod = 0;
 if (_pos2D isNotEqualTo [0, 0]) then {
+    // surfaceType returns the class name with no '#' prefix (GdtDesert);
+    // normalise to the bare token before comparing.
     private _type = toLower (surfaceType _pos2D);
+    if (_type find "#gdt" == 0) then { _type = _type select [4]; }
+    else { if (_type find "gdt" == 0) then { _type = _type select [3]; }; };
     _surfaceMod = switch (true) do {
-        case (_type == "#gdtdesert"):        {  4   };
-        case (_type == "#gdtsand"):          {  2   };
-        case (_type == "#gdtice"):           { -5   };
-        case (_type == "#gdtsnow"):          { -3   };
-        case (_type == "#gdtconiferous"):    { -2   };
-        case (_type == "#gdtforest"):        { -1.5 };
-        default                              {  0   };
+        case (_type == "desert"):        {  4   };
+        case (_type == "sand"):          {  2   };
+        case (_type == "ice"):           { -5   };
+        case (_type == "snow"):          { -3   };
+        case (_type == "coniferous"):    { -2   };
+        case (_type == "forest"):        { -1.5 };
+        default                          {  0   };
     };
 };
 private _T_surface = _T_overcast + _surfaceMod;

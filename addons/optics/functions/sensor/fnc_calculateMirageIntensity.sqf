@@ -39,10 +39,14 @@ if (isNil "_temp") exitWith {
 
 // ─── Surface temperature estimate ──────────────────────────────────────
 // Solar loading: +10 °C on bare/reflective surfaces in clear daytime
+// surfaceType returns the class name with no '#' prefix (GdtDesert);
+// normalise to the bare token before the membership test.
 private _surfaceType = toLower (surfaceType (getPos _unit));
+if (_surfaceType find "#gdt" == 0) then { _surfaceType = _surfaceType select [4]; }
+else { if (_surfaceType find "gdt" == 0) then { _surfaceType = _surfaceType select [3]; }; };
 private _isAridSurf  = _surfaceType in [
-    "#gdtbare", "#gdtconcrete", "#gdtdesert", "#gdtrocky",
-    "#gdtsundesert", "#gdtstony", "#gdtasphalt"
+    "bare", "concrete", "desert", "rocky",
+    "sundesert", "stony", "asphalt"
 ];
 
 private _solarLoading = 0;

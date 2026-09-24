@@ -36,13 +36,17 @@ if (_windSpd > 5) then {
     private _roughness = 0.4;    // default
     if (!isNil "_player") then {
         private _pos2D = getPos _player;
+        // surfaceType returns the class name with no '#' prefix (GdtSnow);
+        // normalise to the bare token before comparing.
         private _type = toLower (surfaceType _pos2D);
+        if (_type find "#gdt" == 0) then { _type = _type select [4]; }
+        else { if (_type find "gdt" == 0) then { _type = _type select [3]; }; };
         _roughness = switch (true) do {
-            case (_type in ["#gdtconiferous","#gdtforest"]):         { 0.8 };
-            case (_type in ["#gdturban","#gdtstratis","#gdtconcrete","#gdtruins"]): { 1.0 };
-            case (_type in ["#gdtdesert","#gdtsand"]):               { 0.2 };
-            case (_type in ["#gdtwater","#gdtsea","#gdtpond"]):      { 0.1 };
-            default                                                  { 0.4 };
+            case (_type in ["coniferous","forest"]):           { 0.8 };
+            case (_type in ["urban","stratis","concrete","ruins"]): { 1.0 };
+            case (_type in ["desert","sand"]):                 { 0.2 };
+            case (_type in ["water","sea","pond"]):            { 0.1 };
+            default                                            { 0.4 };
         };
     };
     _mechanical = _roughness * (_windSpd / 15) min 1.0;

@@ -3445,9 +3445,9 @@ class TestSQFSync(unittest.TestCase):
         root = Path(__file__).resolve().parents[2]
         mat_dir = root / "addons" / "material" / "functions"
         text = (mat_dir / "fnc_classifyBySurfaceType.sqf").read_text(encoding="utf-8")
-        self.assertIn('"concrete" in _surface', text)
-        self.assertIn('"grass" in _surface', text)
-        self.assertIn('"asphalt" in _surface', text)
+        self.assertIn('"concrete" in _name', text)
+        self.assertIn('"grass" in _name', text)
+        self.assertIn('"asphalt" in _name', text)
         self.assertIn("getSurfaceMaterial", text)
         surf = (mat_dir / "fnc_getSurfaceMaterial.sqf").read_text(encoding="utf-8")
         self.assertIn('in _surfId || {"/" in _surfId}', surf)  # path guard

@@ -16,6 +16,7 @@ from pathlib import Path
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 _ENV = _REPO_ROOT / "addons" / "environmental" / "functions"
 
+
 def _read_recursive(base, name):
     """Read an SQF function file, resolving categorised subfolders (issue
     #203).  The function NAME is flat (aee_<mod>_fnc_<name>)."""
@@ -26,7 +27,6 @@ def _read_recursive(base, name):
     raise FileNotFoundError(f"{name} not found under {base}")
 
 
-
 def _read_sqf(name):
     """Read an SQF function file.  The drift-lock tests read the SOURCE so a
     constant change in SQF fails the mirror tests until re-synced."""
@@ -35,18 +35,30 @@ def _read_sqf(name):
 
 # ─── Mirror of fnc_getBiomeAtPosition.sqf ──────────────────────────────
 
+
+def _normalise_surface(surface):
+    """surfaceType returns the bare class name (GdtDesert); strip an
+    optional legacy #gdt/gdt prefix, mirroring the SQF guard."""
+    s = surface.lower()
+    if s.startswith("#gdt"):
+        return s[4:]
+    if s.startswith("gdt"):
+        return s[3:]
+    return s
+
+
 # Tier 1: High-confidence surface → biome mapping
 DIRECT_MAP = {
-    "#gdtdesert": "BWh",
-    "#gdtsand": "BWh",
-    "#gdt dunes": "BWh",
-    "#gdtjungle": "Af",
-    "#gdtrainforest": "Af",
-    "#gdttundra": "ET",
-    "#gdtice": "EF",
-    "#gdtglacier": "EF",
-    "#gdtvineyard": "Csa",
-    "#gdtprairie": "BSk",
+    "desert": "BWh",
+    "sand": "BWh",
+    "dunes": "BWh",
+    "jungle": "Af",
+    "rainforest": "Af",
+    "tundra": "ET",
+    "ice": "EF",
+    "glacier": "EF",
+    "vineyard": "Csa",
+    "prairie": "BSk",
 }
 
 
@@ -82,9 +94,9 @@ def tier2_candidates(surface, lat_band, elev_effect):
 
     Returns list of (biome, weight) tuples.
     """
-    surface = surface.lower()
+    surface = _normalise_surface(surface)
 
-    if surface == "#gdtforest":
+    if surface == "forest":
         candidates = {
             "A": [("Af", 2), ("Am", 1)],
             "B": [("BSh", 2), ("BSk", 1)],
@@ -94,7 +106,7 @@ def tier2_candidates(surface, lat_band, elev_effect):
         }
         return candidates.get(lat_band, [])
 
-    if surface == "#gdtconiferous":
+    if surface == "coniferous":
         candidates = {
             "A": [("Am", 2), ("Cfb", 1)],
             "B": [("BSk", 2), ("Cfb", 1)],
@@ -104,7 +116,7 @@ def tier2_candidates(surface, lat_band, elev_effect):
         }
         return candidates.get(lat_band, [])
 
-    if surface == "#gdtgrass":
+    if surface == "grass":
         candidates = {
             "A": [("Aw", 3), ("Am", 1)],
             "B": [("BSh", 3), ("BSk", 2)],
@@ -114,7 +126,7 @@ def tier2_candidates(surface, lat_band, elev_effect):
         }
         return candidates.get(lat_band, [])
 
-    if surface == "#gdtgrassland":
+    if surface == "grassland":
         candidates = {
             "A": [("Aw", 3), ("Am", 1)],
             "B": [("BSh", 3), ("BSk", 2)],
@@ -124,7 +136,7 @@ def tier2_candidates(surface, lat_band, elev_effect):
         }
         return candidates.get(lat_band, [])
 
-    if surface == "#gdtswamp":
+    if surface == "swamp":
         candidates = {
             "A": [("Af", 3), ("Am", 2)],
             "B": [("BSh", 2), ("Cfa", 1)],
@@ -134,7 +146,7 @@ def tier2_candidates(surface, lat_band, elev_effect):
         }
         return candidates.get(lat_band, [])
 
-    if surface == "#gdtmarsh":
+    if surface == "marsh":
         candidates = {
             "A": [("Af", 3), ("Am", 2)],
             "B": [("BSh", 2), ("Cfa", 1)],
@@ -144,7 +156,7 @@ def tier2_candidates(surface, lat_band, elev_effect):
         }
         return candidates.get(lat_band, [])
 
-    if surface == "#gdtsnow":
+    if surface == "snow":
         if lat_band == "E":
             return [("ET", 3), ("EF", 2)]
         elif lat_band == "D":
@@ -154,7 +166,7 @@ def tier2_candidates(surface, lat_band, elev_effect):
         else:
             return [("Dfc", 2), ("ET", 1)]
 
-    if surface == "#gdtrock":
+    if surface == "rock":
         if elev_effect > 15:
             return [("ET", 3), ("EF", 1)]
         elif elev_effect > 8:
@@ -164,7 +176,7 @@ def tier2_candidates(surface, lat_band, elev_effect):
         else:
             return [("Dfb", 2), ("Cfb", 1)]
 
-    if surface == "#gdtmountain":
+    if surface == "mountain":
         if elev_effect > 20:
             return [("ET", 3), ("EF", 1)]
         elif elev_effect > 10:
@@ -174,7 +186,7 @@ def tier2_candidates(surface, lat_band, elev_effect):
         else:
             return [("Dfb", 2), ("Dfc", 1)]
 
-    if surface == "#gdtfield":
+    if surface == "field":
         candidates = {
             "A": [("Aw", 2), ("Am", 1)],
             "B": [("BSh", 2), ("BSk", 1)],
@@ -184,7 +196,7 @@ def tier2_candidates(surface, lat_band, elev_effect):
         }
         return candidates.get(lat_band, [])
 
-    if surface == "#gdtcrop":
+    if surface == "crop":
         candidates = {
             "A": [("Aw", 2), ("Am", 1)],
             "B": [("BSh", 2), ("BSk", 1)],
@@ -194,7 +206,7 @@ def tier2_candidates(surface, lat_band, elev_effect):
         }
         return candidates.get(lat_band, [])
 
-    if surface == "#gdtorchard":
+    if surface == "orchard":
         candidates = {
             "A": [("Am", 2), ("Af", 1)],
             "B": [("BSk", 2), ("BSh", 1)],
@@ -220,7 +232,7 @@ def pick_winner(candidates):
 
 def get_biome_at_position(surface, lat, elevation_m):
     """Full mirror of fnc_getBiomeAtPosition.sqf logic."""
-    surface = surface.lower()
+    surface = _normalise_surface(surface)
 
     # Tier 1: high confidence
     if surface in DIRECT_MAP:
@@ -311,11 +323,11 @@ class TestSQFSync(unittest.TestCase):
         self._assert_in_sqf(
             "fnc_getBiomeAtPosition.sqf",
             [
-                '"#GdtDesert",   "BWh"',
-                '"#GdtJungle",   "Af"',
-                '"#GdtTundra",   "ET"',
-                '"#GdtIce",      "EF"',
-                '"#GdtPrairie",  "BSk"',
+                '"desert",   "BWh"',
+                '"jungle",   "Af"',
+                '"tundra",   "ET"',
+                '"ice",      "EF"',
+                '"prairie",  "BSk"',
             ],
             "Tier 1 direct surface map",
         )
@@ -325,8 +337,8 @@ class TestSQFSync(unittest.TestCase):
         self._assert_in_sqf(
             "fnc_getBiomeAtPosition.sqf",
             [
-                '["#GdtSwamp", switch (_latBand) do {',
-                '["#GdtMarsh", switch (_latBand) do {',
+                '["swamp", switch (_latBand) do {',
+                '["marsh", switch (_latBand) do {',
             ],
             "Tier 2 wetland surface candidates",
         )
