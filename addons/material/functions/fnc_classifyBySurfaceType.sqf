@@ -27,18 +27,18 @@ params [["_surface", "", [""]]];
 _surface = toLower _surface;
 
 // ─── Dynamic first (issue #204): the engine's own material keyword ───────
-// A custom or modded surface (GdtStratisConcrete, GdtCustomAsphalt...)
+// A custom or modded surface (GdtCustomConcrete, GdtCustomAsphalt...)
 // has a CfgSurfaces entry whose soundHit/soundEnviron field carries the
 // PHYSICAL material keyword - the map maker's own classification, no
 // static naming required.  Try the config lookup FIRST (it also reads
 // the .bisurf file when the config class is absent), and only fall back
 // to the static switch below for the known #gdt* primitives.  Without
-// this, GdtStratisConcrete fell through to 'ground' and the concrete
+// this, GdtCustomConcrete fell through to 'ground' and the concrete
 // never warmed from muzzle flash or sun (the user's report).
 private _dynamicMat = "";
 if (_surface != "") then {
     // The surface may come as "#gdtconcrete" (with #) or the class
-    // "gdtsstratisconcrete" (lowercased).  The CfgSurfaces classes are
+    // "gdtcustomconcrete" (lowercased).  The CfgSurfaces classes are
     // Gdt* WITH the prefix - keep it for the config lookup (the bare
     // stripped name misses the config class and the bisurf fallback
     // fires on a non-path, warning 'Script X not found').  Only the
@@ -81,11 +81,11 @@ private _material = switch (true) do {
     // surfaceType at sea returns the water class, NOT land.
     case (_name in ["sea", "ocean", "lake", "river",
         "water"]): { "water" };
-    // Custom / modded surfaces (issue #204): GdtStratisConcrete,
-    // GdtCustomAsphalt, stratisdrygrass... The map's own surface names
+    // Custom / modded surfaces (issue #204): GdtCustomConcrete,
+    // GdtCustomAsphalt, a modded concrete surface.  The map's own surface names
     // often embed the material keyword.  Match by CONTAINS - the
-    // material class is in the name (GdtStratisCONCRETE = concrete,
-    // GdtStratisDRYGRASS = grass).  This is the dynamic, no-static-
+    // material class is in the name (GdtCustomCONCRETE = concrete,
+    // GdtCustomDRYGRASS = grass).  This is the dynamic, no-static-
     // naming fallback for surfaces the CfgSurfaces soundHit lookup
     // could not resolve.
     case ("concrete" in _name): { "concrete" };

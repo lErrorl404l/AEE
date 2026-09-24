@@ -182,30 +182,25 @@ class TestUpdateHumidity(unittest.TestCase):
 
 
 class TestCalculateTurbulence(unittest.TestCase):
-    """fnc_calculateTurbulence roughness."""
+    """fnc_calculateTurbulence roughness source shape.
+
+    Roughness now comes from the engine's own CfgSurfaces `rough`
+    coefficient, so the source must read configFile and must no longer
+    carry the static membership table keyed on a surface token.
+    """
 
     def setUp(self):
-        self.groups = membership_number_cases(read("turbulence"), "_type")
+        self.code = code_only(read("turbulence"))
 
-    def _roughness(self, surface):
-        return first_match(self.groups, normalise(surface), 0.4)
+    def test_reads_roughness_from_cfg_surfaces(self):
+        self.assertIn('"CfgSurfaces"', self.code)
+        self.assertIn('"rough"', self.code)
 
-    def test_runtime_coniferous_and_forest(self):
-        self.assertEqual(self._roughness("GdtConiferous"), 0.8)
-        self.assertEqual(self._roughness("GdtForest"), 0.8)
+    def test_no_static_membership_table(self):
+        self.assertNotIn("case (_type in [", self.code)
 
-    def test_runtime_desert(self):
-        self.assertEqual(self._roughness("GdtDesert"), 0.2)
-
-    def test_runtime_water(self):
-        self.assertEqual(self._roughness("GdtWater"), 0.1)
-
-    def test_unknown_uses_default(self):
-        self.assertEqual(self._roughness("GdtMud"), 0.4)
-
-    def test_no_dead_prefix_keys(self):
-        for keys, _ in self.groups:
-            self.assertFalse([k for k in keys if k.startswith("#")])
+    def test_normalises_the_surface_token(self):
+        self.assertIn('"#gdt"', self.code)
 
 
 class TestClassifyBySurfaceType(unittest.TestCase):
@@ -397,6 +392,53 @@ class TestNoLivePrefixedLiterals(unittest.TestCase):
                     code.count("#gdt"),
                     code.count('find "#gdt"'),
                     f"{name}: a '#gdt' literal is not a normalisation guard",
+                )
+
+
+class TestNoMapNameMaterialLiterals(unittest.TestCase):
+    """Drift-lock: no SQF string literal names a map surface.
+
+    A map name as a surface token makes the comparison map-specific and
+    unsourced.  The engine's own CfgSurfaces data is the source instead.
+    A map name may appear only inside a comment.
+    """
+
+    MAP_NAMES = {
+        "stratis",
+        "altis",
+        "malena",
+        "malden",
+        "tanoa",
+        "livonia",
+        "enoch",
+        "weferlingen",
+        "kunduz",
+        "takistan",
+        "chernarus",
+        "sahrani",
+        "utes",
+        "carthage",
+        "lythium",
+    }
+
+    EXTRA = (
+        ADDON / "atmos" / "functions" / "physics" / "fnc_calculateTurbulence.sqf",
+        ADDON / "material" / "functions" / "fnc_classifyBySurfaceType.sqf",
+        ADDON / "material" / "functions" / "fnc_getSurfaceMaterial.sqf",
+    )
+
+    def test_no_map_name_material_literals(self):
+        for path in sorted({*FILES.values(), *self.EXTRA}):
+            code = code_only(path.read_text(encoding="utf-8"))
+            literals = re.findall(r'"([^"]*)"', code)
+            hits = sorted(
+                literal for literal in literals if literal.lower() in self.MAP_NAMES
+            )
+            with self.subTest(file=path.name):
+                self.assertEqual(
+                    hits,
+                    [],
+                    f"{path.name}: map name inside a string literal: {hits}",
                 )
 
 
