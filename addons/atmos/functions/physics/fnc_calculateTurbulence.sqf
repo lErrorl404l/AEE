@@ -52,7 +52,7 @@ if (_windSpd > 5) then {
         private _cls = _raw;
         if (_cls find "#" == 0) then { _cls = _cls select [1]; };
         private _cfg = configFile >> "CfgSurfaces" >> _cls;
-        if (!isClass _cfg && {_type != ""}) then {
+        if (!isClass _cfg && _type != "") then {
             _cfg = configFile >> "CfgSurfaces" >> _type;
         };
         if (isClass _cfg) then {
