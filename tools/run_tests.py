@@ -24,6 +24,11 @@ def main():
     suites = [
         "tools/tests/test_physics.py",
         "tools/tests/test_mobility.py",
+        "tools/tests/test_soil_strength.py",
+        "tools/tests/test_terrain_limits.py",
+        "tools/tests/test_terrain_drag.py",
+        "tools/tests/test_vehicle_geometry.py",
+        "tools/tests/test_rollover.py",
         "tools/tests/test_physiology.py",
         "tools/tests/test_radio.py",
         "tools/tests/test_environmental.py",
