@@ -87,6 +87,8 @@ def classify_surface_type(surface):
         return "vegetation"
     if s in ("swamp", "marsh"):
         return "water"
+    if s in ("sea", "ocean", "lake", "river", "water"):
+        return "water"
     return "ground"
 
 
@@ -158,6 +160,10 @@ class TestClassifyBySurfaceType(unittest.TestCase):
     def test_wetland_is_water(self):
         self.assertEqual(classify_surface_type("#gdtswamp"), "water")
         self.assertEqual(classify_surface_type("#gdtmarsh"), "water")
+
+    def test_open_water_is_water(self):
+        self.assertEqual(classify_surface_type("GdtSea"), "water")
+        self.assertEqual(classify_surface_type("#gdtwater"), "water")
 
     def test_unknown_falls_to_ground(self):
         self.assertEqual(classify_surface_type("#gdtunknown_thing"), "ground")

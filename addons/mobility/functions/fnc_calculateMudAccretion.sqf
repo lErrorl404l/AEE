@@ -52,7 +52,10 @@ private _vehicles = [200, _player] call FUNC(getNearbyVehicles);
 
     // Per-vehicle surface under the vehicle
     private _surface = surfaceType (getPos _x);
-    private _mudFactor = parseNumber ((_surface find "Mud" >= 0) || (_surface find "Dirt" >= 0) || (_surface find "Soft" >= 0));
+    private _sf = toLower _surface;
+    if (_sf find "#gdt" == 0) then { _sf = _sf select [4]; }
+    else { if (_sf find "gdt" == 0) then { _sf = _sf select [3]; }; };
+    private _mudFactor = parseNumber ((_sf find "mud" >= 0) || (_sf find "dirt" >= 0) || (_sf find "soft" >= 0));
 
     if (_mudFactor > 0) then {
         // Accretion: setting per 5 s tick while moving on mud

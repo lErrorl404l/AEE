@@ -239,8 +239,9 @@ class TestClassifyBySurfaceType(unittest.TestCase):
         # must strip only the '#', never the Gdt tag.
         code = code_only(read("classify"))
         self.assertIn('_clean find "#gdt"', code)
-        self.assertIn('_clean find "gdt" == 0', code)
-        self.assertNotIn("_clean select [3,", code)
+        self.assertIn("_clean select [4, (count _clean) - 4]", code)
+        self.assertIn("the Gdt prefix is kept", read("classify"))
+        self.assertNotIn('_clean find "gdt" == 0', code)
 
     def test_no_dead_prefix_keys(self):
         for keys, _ in self.groups:
@@ -253,26 +254,56 @@ class TestSurfaceMaterial(unittest.TestCase):
     def setUp(self):
         code = code_only(read("surface_material"))
         block = extract_block(code, "_TABLE")
-        self.rows = {
-            k: (m, d)
+        # IN ORDER: [(key, material, density)].  The SQF matcher takes the
+        # first row whose key is a PREFIX of the token, so order matters
+        # (drygrass before grass).
+        self.rows = [
+            (k, m, d)
             for k, m, d in re.findall(
                 r'\["([^"]+)",\s*"([^"]+)",\s*\[[^\]]*\],\s*([\d.]+)\]', block
             )
-        }
+        ]
+        # The matcher operator decides anchoring.  Read it out of the SQF so
+        # a change from `find _key == 0` (anchored) to `find _key >= 0`
+        # (contains) makes these tests fail.
+        m = re.search(r"_s find _key\s*(==|>=|>)\s*0", code)
+        assert m, "the SQF matcher operator is gone"
+        self.op = m.group(1)
+
+    def _match(self, surface):
+        token = normalise(surface)
+        for key, material, density in self.rows:
+            if self._hits(token, key):
+                return (material, density)
+        return None
+
+    def _hits(self, token, key):
+        idx = token.find(key)
+        if self.op == "==":
+            return idx == 0
+        if self.op == ">=":
+            return idx >= 0
+        return idx > 0
 
     def test_runtime_snow(self):
-        self.assertEqual(self.rows[normalise("GdtSnow")][0], "snow")
+        self.assertEqual(self.rows and self._match("GdtSnow")[0], "snow")
 
     def test_runtime_drygrass_keeps_its_own_row(self):
-        # The prefixed keys anchored drygrass against grass; the bare token
-        # must still resolve to the drygrass row, not the grass row.
-        self.assertEqual(self.rows[normalise("GdtDryGrass")], ("dirt", "0.80"))
+        # The keys are prefix anchors: drygrass must win over grass for the
+        # token gdtdrygrass, and the anchoring must not let grass win first.
+        self.assertEqual(self._match("GdtDryGrass"), ("dirt", "0.80"))
+
+    def test_runtime_grass_resolves_to_grass_row(self):
+        self.assertEqual(self._match("GdtGrass"), ("dirt", "0.35"))
+
+    def test_runtime_snow_does_not_resolve_to_drygrass(self):
+        self.assertNotEqual(self._match("GdtSnow"), ("dirt", "0.80"))
 
     def test_runtime_mud(self):
-        self.assertEqual(self.rows[normalise("GdtMud")][0], "mud")
+        self.assertEqual(self._match("GdtMud")[0], "mud")
 
     def test_no_dead_prefix_keys(self):
-        self.assertFalse([k for k in self.rows if k.startswith("#")])
+        self.assertFalse([k for k, _, _ in self.rows if k.startswith("#")])
 
 
 class TestConcealment(unittest.TestCase):
