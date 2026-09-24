@@ -47,6 +47,10 @@ private _snow = missionNamespace getVariable [QEGVAR(core,snowDepth_m), 0];
 if !(_snow isEqualType 0) then { _snow = 0; };
 
 private _surface = toLower (surfaceType _posASL);
+// surfaceType returns the class name with no '#' prefix (GdtSnow);
+// normalise to the bare token before the keyword tests below.
+if (_surface find "#gdt" == 0) then { _surface = _surface select [4]; }
+else { if (_surface find "gdt" == 0) then { _surface = _surface select [3]; }; };
 private _prone = _stance == "PRONE";
 private _crouched = _stance == "CROUCH";
 
@@ -54,31 +58,31 @@ private _crouched = _stance == "CROUCH";
 private _factor = 0.05;   // bare/desert floor
 private _class = "";
 
-if (_surface find "#gdtforest" >= 0 || _surface find "#gdtconiferous" >= 0 ||
-    _surface find "#gdtjungle" >= 0 || _surface find "#gdtrainforest" >= 0 ||
-    _surface find "#gdtorchard" >= 0) then {
+if (_surface find "forest" >= 0 || _surface find "coniferous" >= 0 ||
+    _surface find "jungle" >= 0 || _surface find "rainforest" >= 0 ||
+    _surface find "orchard" >= 0) then {
     // Deciduous leaf cycle: full concealment leaf-on, winter leaf-off.
     _factor = _foliage;
     _class = "forest";
 } else {
-    if (_surface find "#gdtcrop" >= 0 || _surface find "#gdtvineyard" >= 0) then {
+    if (_surface find "crop" >= 0 || _surface find "vineyard" >= 0) then {
         // Standing corn ~2 m hides a standing person; bare stubble none.
         _factor = _crop;
         _class = "crop";
     } else {
-        if (_surface find "#gdtgrass" >= 0 || _surface find "#gdtgrassland" >= 0 ||
-            _surface find "#gdtprairie" >= 0 || _surface find "#gdttundra" >= 0) then {
+        if (_surface find "grass" >= 0 || _surface find "grassland" >= 0 ||
+            _surface find "prairie" >= 0 || _surface find "tundra" >= 0) then {
             // Tall grass hides prone/crouched; a standing figure is
             // visible above it.  Prone 0.5, crouched 0.2, standing 0.05.
             _factor = [0.5, 0.2, 0.05] select ([_prone, _crouched] find true);
             _class = "grass";
         } else {
-            if (_surface find "#gdtmarsh" >= 0 || _surface find "#gdtswamp" >= 0) then {
+            if (_surface find "marsh" >= 0 || _surface find "swamp" >= 0) then {
                 _factor = 0.3 + 0.7 * _foliage;
                 _class = "marsh";
             } else {
-                if (_surface find "#gdtsnow" >= 0 || _surface find "#gdtglacier" >= 0 ||
-                    _surface find "#gdtice" >= 0) then {
+                if (_surface find "snow" >= 0 || _surface find "glacier" >= 0 ||
+                    _surface find "ice" >= 0) then {
                     // White background: a non-white camo stands out.
                     _factor = -0.3 * (0.1 + _snow);   // penalty (negative)
                     _class = "snow";

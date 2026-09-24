@@ -42,59 +42,63 @@ if (_surface isEqualType []) then {
 if (_surface == "" && {count _pos >= 2}) then {
     _surface = surfaceType _pos;
 };
+// surfaceType returns the class name with no '#' prefix (GdtSnow);
+// normalise to the bare token, then match the exact surface token.
 private _s = toLower _surface;
+if (_s find "#gdt" == 0) then { _s = _s select [4]; }
+else { if (_s find "gdt" == 0) then { _s = _s select [3]; }; };
 
-// [token, material, colour, density].  Order matters: the first token that
-// matches wins, so forest sits above the generic grass entry and snow
-// above ice.
+// [token, material, colour, density].  The token is the bare surface
+// class name, matched as a PREFIX (the original '#gdt'-anchored keys were
+// prefix anchors: #gdtsnow matched #gdtsnowsurface but never #gdtdrygrass).
 private _TABLE = [
     // Snow and ice: white plumes, low lift.
-    ["#gdtsnow",        "snow",  [1.00, 1.00, 1.00], 0.55],
-    ["#gdtglacier",     "snow",  [0.96, 0.98, 1.00], 0.45],
-    ["#gdtice",         "snow",  [0.90, 0.95, 1.00], 0.35],
+    ["snow",        "snow",  [1.00, 1.00, 1.00], 0.55],
+    ["glacier",     "snow",  [0.96, 0.98, 1.00], 0.45],
+    ["ice",         "snow",  [0.90, 0.95, 1.00], 0.35],
     // Sand and desert: pale ochre, lifts freely.
-    ["#gdtsand",        "sand",  [0.85, 0.76, 0.55], 1.00],
-    ["#gdtdunes",       "sand",  [0.87, 0.78, 0.57], 1.00],
-    ["#gdtdesert",      "sand",  [0.83, 0.72, 0.52], 0.95],
-    ["#gdtbeach",       "sand",  [0.82, 0.76, 0.62], 0.90],
+    ["sand",        "sand",  [0.85, 0.76, 0.55], 1.00],
+    ["dunes",       "sand",  [0.87, 0.78, 0.57], 1.00],
+    ["desert",      "sand",  [0.83, 0.72, 0.52], 0.95],
+    ["beach",       "sand",  [0.82, 0.76, 0.62], 0.90],
     // Vegetated ground: dark organic, low lift.
-    ["#gdtforest",      "dirt",  [0.30, 0.25, 0.18], 0.25],
-    ["#gdtconiferous",  "dirt",  [0.28, 0.23, 0.16], 0.25],
-    ["#gdtjungle",      "dirt",  [0.26, 0.22, 0.15], 0.30],
-    ["#gdtrainforest",  "dirt",  [0.26, 0.22, 0.15], 0.30],
-    ["#gdtorchard",     "dirt",  [0.34, 0.28, 0.20], 0.30],
-    ["#gdtvineyard",    "dirt",  [0.36, 0.30, 0.22], 0.35],
-    ["#gdtcrop",        "dirt",  [0.40, 0.33, 0.24], 0.40],
-    ["#gdtfield",       "dirt",  [0.44, 0.36, 0.26], 0.45],
-    ["#gdtgrass",       "dirt",  [0.42, 0.36, 0.24], 0.35],
-    ["#gdtgrassland",   "dirt",  [0.44, 0.38, 0.25], 0.40],
-    ["#gdtprairie",     "dirt",  [0.48, 0.40, 0.27], 0.50],
-    ["#gdtthistle",     "dirt",  [0.46, 0.39, 0.26], 0.45],
-    ["#gdtweed",        "dirt",  [0.42, 0.35, 0.24], 0.40],
-    ["#gdtwildfield",   "dirt",  [0.48, 0.40, 0.27], 0.55],
-    ["#gdtdead",        "dirt",  [0.38, 0.31, 0.22], 0.45],
+    ["forest",      "dirt",  [0.30, 0.25, 0.18], 0.25],
+    ["coniferous",  "dirt",  [0.28, 0.23, 0.16], 0.25],
+    ["jungle",      "dirt",  [0.26, 0.22, 0.15], 0.30],
+    ["rainforest",  "dirt",  [0.26, 0.22, 0.15], 0.30],
+    ["orchard",     "dirt",  [0.34, 0.28, 0.20], 0.30],
+    ["vineyard",    "dirt",  [0.36, 0.30, 0.22], 0.35],
+    ["crop",        "dirt",  [0.40, 0.33, 0.24], 0.40],
+    ["field",       "dirt",  [0.44, 0.36, 0.26], 0.45],
+    ["grass",       "dirt",  [0.42, 0.36, 0.24], 0.35],
+    ["grassland",   "dirt",  [0.44, 0.38, 0.25], 0.40],
+    ["prairie",     "dirt",  [0.48, 0.40, 0.27], 0.50],
+    ["thistle",     "dirt",  [0.46, 0.39, 0.26], 0.45],
+    ["weed",        "dirt",  [0.42, 0.35, 0.24], 0.40],
+    ["wildfield",   "dirt",  [0.48, 0.40, 0.27], 0.55],
+    ["dead",        "dirt",  [0.38, 0.31, 0.22], 0.45],
     // Exposed soil and dirt: brown, lifts readily.
-    ["#gdtsoil",        "dirt",  [0.45, 0.35, 0.24], 0.70],
-    ["#gdtdirt",        "dirt",  [0.44, 0.34, 0.23], 0.75],
-    ["#gdtdrygrass",    "dirt",  [0.58, 0.49, 0.31], 0.80],
+    ["soil",        "dirt",  [0.45, 0.35, 0.24], 0.70],
+    ["dirt",        "dirt",  [0.44, 0.34, 0.23], 0.75],
+    ["drygrass",    "dirt",  [0.58, 0.49, 0.31], 0.80],
     // Rock, rubble and scree: grey, moderate lift.
-    ["#gdtrock",        "gravel",[0.52, 0.50, 0.47], 0.60],
-    ["#gdtmountain",    "gravel",[0.50, 0.48, 0.45], 0.55],
-    ["#gdtstony",       "gravel",[0.54, 0.52, 0.49], 0.60],
-    ["#gdtgravel",      "gravel",[0.56, 0.53, 0.49], 0.65],
-    ["#gdtrubble",      "gravel",[0.58, 0.55, 0.51], 0.70],
+    ["rock",        "gravel",[0.52, 0.50, 0.47], 0.60],
+    ["mountain",    "gravel",[0.50, 0.48, 0.45], 0.55],
+    ["stony",       "gravel",[0.54, 0.52, 0.49], 0.60],
+    ["gravel",      "gravel",[0.56, 0.53, 0.49], 0.65],
+    ["rubble",      "gravel",[0.58, 0.55, 0.51], 0.70],
     // Wet ground: dark, lifts little.
-    ["#gdtmud",         "mud",   [0.30, 0.24, 0.17], 0.20],
-    ["#gdtswamp",       "mud",   [0.26, 0.24, 0.18], 0.15],
-    ["#gdtmarsh",       "mud",   [0.28, 0.25, 0.19], 0.15],
+    ["mud",         "mud",   [0.30, 0.24, 0.17], 0.20],
+    ["swamp",       "mud",   [0.26, 0.24, 0.18], 0.15],
+    ["marsh",       "mud",   [0.28, 0.25, 0.19], 0.15],
     // Water feedback on a wet surface.
-    ["#gdtwater",       "spray", [0.72, 0.78, 0.82], 0.60],
-    ["#gdtseabed",      "spray", [0.55, 0.58, 0.55], 0.20],
+    ["water",       "spray", [0.72, 0.78, 0.82], 0.60],
+    ["seabed",      "spray", [0.55, 0.58, 0.55], 0.20],
     // Built ground: almost no lift.
-    ["#gdtconcrete",    "dust",  [0.62, 0.60, 0.56], 0.25],
-    ["#gdtasphalt",     "dust",  [0.35, 0.34, 0.33], 0.20],
-    ["#gdttarmac",      "dust",  [0.35, 0.34, 0.33], 0.20],
-    ["#gdtroad",        "dust",  [0.40, 0.38, 0.36], 0.20]
+    ["concrete",    "dust",  [0.62, 0.60, 0.56], 0.25],
+    ["asphalt",     "dust",  [0.35, 0.34, 0.33], 0.20],
+    ["tarmac",      "dust",  [0.35, 0.34, 0.33], 0.20],
+    ["road",        "dust",  [0.40, 0.38, 0.36], 0.20]
 ];
 
 private _material = "dust";
@@ -103,7 +107,7 @@ private _density = 0.60;
 
 {
     _x params ["_key", "_mat", "_col", "_den"];
-    if (_s find _key >= 0) exitWith {
+    if (_s find _key == 0) exitWith {
         _material = _mat;
         _colour = +_col;
         _density = _den;

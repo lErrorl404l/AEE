@@ -32,20 +32,24 @@ private _elevation = _posASL select 2;
 //   Tier 1: High-confidence surfaces → immediate return
 //   Tier 2: Low-confidence surfaces → latitude + elevation disambiguation
 private _surface = toLower (surfaceType _pos2D);
+// surfaceType returns the class name with no '#' prefix (GdtDesert);
+// normalise to the bare token to match the maps below.
+if (_surface find "#gdt" == 0) then { _surface = _surface select [4]; }
+else { if (_surface find "gdt" == 0) then { _surface = _surface select [3]; }; };
 
 // Tier 1: High-confidence surface → biome mapping
 // These surfaces have a strong, unambiguous biome signal.
 private _DIRECT_MAP = createHashMapFromArray [
-    ["#GdtDesert",   "BWh"],  // Hot Desert, arid sparse vegetation
-    ["#GdtSand",     "BWh"],  // Sand, desert substrate
-    ["#GdtDunes",    "BWh"],  // Dunes, desert landform
-    ["#GdtJungle",   "Af"],   // Jungle, tropical rainforest
-    ["#GdtRainForest","Af"],  // Rain Forest, tropical rainforest
-    ["#GdtTundra",   "ET"],   // Tundra, treeless polar/subpolar
-    ["#GdtIce",      "EF"],   // Ice, permanent ice cap
-    ["#GdtGlacier",  "EF"],   // Glacier, permanent ice
-    ["#GdtVineyard", "Csa"],  // Vineyard, Mediterranean agriculture
-    ["#GdtPrairie",  "BSk"]   // Prairie, semi-arid grassland
+    ["desert",   "BWh"],  // Hot Desert, arid sparse vegetation
+    ["sand",     "BWh"],  // Sand, desert substrate
+    ["dunes",    "BWh"],  // Dunes, desert landform
+    ["jungle",   "Af"],   // Jungle, tropical rainforest
+    ["rainforest","Af"],  // Rain Forest, tropical rainforest
+    ["tundra",   "ET"],   // Tundra, treeless polar/subpolar
+    ["ice",      "EF"],   // Ice, permanent ice cap
+    ["glacier",  "EF"],   // Glacier, permanent ice
+    ["vineyard", "Csa"],  // Vineyard, Mediterranean agriculture
+    ["prairie",  "BSk"]   // Prairie, semi-arid grassland
 ];
 
 if (_surface in _DIRECT_MAP) exitWith {
@@ -80,14 +84,14 @@ private _elevEffect = _elevation / 1000 * 6.5; // temperature depression
 // Surface + latitude band → candidate list [biome, weight]
 private _CANDIDATE_MAP = createHashMapFromArray [
     // Forest types: depend on latitude and elevation
-    ["#GdtForest", switch (_latBand) do {
+    ["forest", switch (_latBand) do {
         case "A": { [["Af",2], ["Am",1]] };
         case "B": { [["BSh",2], ["BSk",1]] };
         case "C": { [["Cfb",3], ["Cfa",1]] };
         case "D": { [["Dfb",3], ["Dfc",1]] };
         case "E": { [["Dfc",2], ["ET",1]] };
     }],
-    ["#GdtConiferous", switch (_latBand) do {
+    ["coniferous", switch (_latBand) do {
         case "A": { [["Am",2], ["Cfb",1]] };
         case "B": { [["BSk",2], ["Cfb",1]] };
         case "C": { [["Cfb",2], ["Dfb",2]] };
@@ -96,14 +100,14 @@ private _CANDIDATE_MAP = createHashMapFromArray [
     }],
 
     // Grass types: depend on latitude (precipitation proxy)
-    ["#GdtGrass", switch (_latBand) do {
+    ["grass", switch (_latBand) do {
         case "A": { [["Aw",3], ["Am",1]] };
         case "B": { [["BSh",3], ["BSk",2]] };
         case "C": { [["Cfb",3], ["Cfa",1]] };
         case "D": { [["Dfb",2], ["Cfb",1]] };
         case "E": { [["ET",2], ["Dfc",1]] };
     }],
-    ["#GdtGrassLand", switch (_latBand) do {
+    ["grassland", switch (_latBand) do {
         case "A": { [["Aw",3], ["Am",1]] };
         case "B": { [["BSh",3], ["BSk",2]] };
         case "C": { [["Cfb",3], ["Cfa",1]] };
@@ -112,14 +116,14 @@ private _CANDIDATE_MAP = createHashMapFromArray [
     }],
 
     // Wetland: depends on latitude (temperature determines type)
-    ["#GdtSwamp", switch (_latBand) do {
+    ["swamp", switch (_latBand) do {
         case "A": { [["Af",3], ["Am",2]] };
         case "B": { [["BSh",2], ["Cfa",1]] };
         case "C": { [["Cfa",2], ["Cfb",2]] };
         case "D": { [["Dfb",2], ["Dfc",1]] };
         case "E": { [["Dfc",2], ["ET",1]] };
     }],
-    ["#GdtMarsh", switch (_latBand) do {
+    ["marsh", switch (_latBand) do {
         case "A": { [["Af",3], ["Am",2]] };
         case "B": { [["BSh",2], ["Cfa",1]] };
         case "C": { [["Cfa",2], ["Cfb",2]] };
@@ -128,13 +132,13 @@ private _CANDIDATE_MAP = createHashMapFromArray [
     }],
 
     // Rocky/mountain: elevation dominates
-    ["#GdtRock", switch (true) do {
+    ["rock", switch (true) do {
         case (_elevEffect > 15):  { [["ET",3], ["EF",1]] };   // High alpine
         case (_elevEffect > 8):   { [["Dfc",3], ["ET",2]] };  // Subalpine
         case (_latBand == "E"):   { [["ET",3], ["Dfc",2]] };  // Polar
         default                   { [["Dfb",2], ["Cfb",1]] }; // Mid-elevation
     }],
-    ["#GdtMountain", switch (true) do {
+    ["mountain", switch (true) do {
         case (_elevEffect > 20):  { [["ET",3], ["EF",1]] };   // Above treeline
         case (_elevEffect > 10):  { [["Dfc",3], ["ET",2]] };  // Subalpine
         case (_latBand == "E"):   { [["ET",3], ["Dfc",2]] };  // Polar
@@ -142,21 +146,21 @@ private _CANDIDATE_MAP = createHashMapFromArray [
     }],
 
     // Agricultural: anthropogenic, use latitude for base climate
-    ["#GdtField", switch (_latBand) do {
+    ["field", switch (_latBand) do {
         case "A": { [["Aw",2], ["Am",1]] };
         case "B": { [["BSh",2], ["BSk",1]] };
         case "C": { [["Cfb",3], ["Cfa",2]] };
         case "D": { [["Dfb",3], ["Dfb",1]] };
         case "E": { [["Dfc",2], ["ET",1]] };
     }],
-    ["#GdtCrop", switch (_latBand) do {
+    ["crop", switch (_latBand) do {
         case "A": { [["Aw",2], ["Am",1]] };
         case "B": { [["BSh",2], ["BSk",1]] };
         case "C": { [["Cfb",3], ["Cfa",2]] };
         case "D": { [["Dfb",3], ["Dfb",1]] };
         case "E": { [["Dfc",2], ["ET",1]] };
     }],
-    ["#GdtOrchard", switch (_latBand) do {
+    ["orchard", switch (_latBand) do {
         case "A": { [["Am",2], ["Af",1]] };
         case "B": { [["BSk",2], ["BSh",1]] };
         case "C": { [["Cfb",3], ["Cfa",2]] };
@@ -165,7 +169,7 @@ private _CANDIDATE_MAP = createHashMapFromArray [
     }],
 
     // Snow: cold biomes
-    ["#GdtSnow", switch (true) do {
+    ["snow", switch (true) do {
         case (_latBand == "E"):   { [["ET",3], ["EF",2]] };
         case (_latBand == "D"):   { [["Dfc",3], ["ET",2]] };
         case (_elevEffect > 15):  { [["ET",3], ["Dfc",2]] };

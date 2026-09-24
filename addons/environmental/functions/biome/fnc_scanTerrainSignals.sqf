@@ -78,31 +78,32 @@ private _STRUCT_RULES = [
     ["rock",     [["ET",2], ["Dfc",2]]]
 ];
 
-// Surface -> Koppen votes (ground texture evidence).  Keys are the
-// LOWERCASED surface type the map's CfgSurfaces produces.
+// Surface -> Koppen votes (ground texture evidence).  Keys are the BARE
+// lowercased surface token: surfaceType returns the class name with no
+// '#' prefix (GdtDesert), normalised to the bare token below.
 private _SURFACE_VOTES = [
-    ["#gdtdesert",       [["BWh",3], ["BWk",2], ["BSh",1]]],
-    ["#gdtconiferous",   [["Dfb",3], ["Dfc",2]]],
-    ["#gdtdunes",        [["BWh",3], ["BSh",1]]],
-    ["#gdtforest",       [["Cfb",3], ["Dfb",2], ["Dfc",1]]],
-    ["#gdtgrass",        [["Cfb",2], ["BSk",2], ["Dfb",1]]],
-    ["#gdtgrassland",    [["Cfb",2], ["BSk",2], ["Dfb",1]]],
-    ["#gdtice",          [["EF",3],  ["ET",2]]],
-    ["#gdtjungle",       [["Af",3],  ["Am",2]]],
-    ["#gdtprairie",      [["BSk",3], ["Dfb",1]]],
-    ["#gdtrainforest",   [["Af",3],  ["Am",2]]],
-    ["#gdtsand",         [["BWh",3], ["BWk",2]]],
-    ["#gdtsnow",         [["Dfc",3], ["ET",2]]],
-    ["#gdttundra",       [["ET",3],  ["Dfc",2]]],
-    ["#gdtglacier",      [["EF",3],  ["ET",1]]],
-    ["#gdtswamp",        [["Af",2],  ["Cfb",1]]],
-    ["#gdtmarsh",        [["Af",2],  ["Cfb",1]]],
-    ["#gdtvineyard",     [["Csa",3], ["Cfa",1]]],
-    ["#gdtorchard",      [["Cfb",2], ["Cfa",1]]],
-    ["#gdtfield",        [["Cfb",2], ["Dfb",1]]],
-    ["#gdtcrop",         [["Cfb",2], ["Dfb",1]]],
-    ["#gdtrock",         [["Dfb",1], ["Dfc",1]]],
-    ["#gdtmountain",     [["Dfc",2], ["ET",1]]]
+    ["desert",       [["BWh",3], ["BWk",2], ["BSh",1]]],
+    ["coniferous",   [["Dfb",3], ["Dfc",2]]],
+    ["dunes",        [["BWh",3], ["BSh",1]]],
+    ["forest",       [["Cfb",3], ["Dfb",2], ["Dfc",1]]],
+    ["grass",        [["Cfb",2], ["BSk",2], ["Dfb",1]]],
+    ["grassland",    [["Cfb",2], ["BSk",2], ["Dfb",1]]],
+    ["ice",          [["EF",3],  ["ET",2]]],
+    ["jungle",       [["Af",3],  ["Am",2]]],
+    ["prairie",      [["BSk",3], ["Dfb",1]]],
+    ["rainforest",   [["Af",3],  ["Am",2]]],
+    ["sand",         [["BWh",3], ["BWk",2]]],
+    ["snow",         [["Dfc",3], ["ET",2]]],
+    ["tundra",       [["ET",3],  ["Dfc",2]]],
+    ["glacier",      [["EF",3],  ["ET",1]]],
+    ["swamp",        [["Af",2],  ["Cfb",1]]],
+    ["marsh",        [["Af",2],  ["Cfb",1]]],
+    ["vineyard",     [["Csa",3], ["Cfa",1]]],
+    ["orchard",      [["Cfb",2], ["Cfa",1]]],
+    ["field",        [["Cfb",2], ["Dfb",1]]],
+    ["crop",         [["Cfb",2], ["Dfb",1]]],
+    ["rock",         [["Dfb",1], ["Dfc",1]]],
+    ["mountain",     [["Dfc",2], ["ET",1]]]
 ];
 
 // ─── Scan ─────────────────────────────────────────────────────────────────
@@ -126,6 +127,8 @@ for "_x" from 1 to 8 do {
             _waterCount = _waterCount + 1;
         } else {
             private _type = toLower (surfaceType _pos);
+            if (_type find "#gdt" == 0) then { _type = _type select [4]; }
+            else { if (_type find "gdt" == 0) then { _type = _type select [3]; }; };
             private _votes = _surfaceLookup getOrDefault [_type, []];
             {
                 _surfaceScores set [_x#0, (_surfaceScores getOrDefault [_x#0, 0]) + (_x#1)];

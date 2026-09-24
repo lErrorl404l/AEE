@@ -35,20 +35,24 @@ if (_pos2D isEqualTo [0, 0] && _posASL isNotEqualTo []) then {
 
 private _surfaceMod = 0;
 if (_pos2D isNotEqualTo [0, 0]) then {
+    // surfaceType returns the surface CLASS NAME with no '#' prefix
+    // (GdtDesert).  Normalise to the bare token before comparing.
     private _type = toLower (surfaceType _pos2D);
+    if (_type find "#gdt" == 0) then { _type = _type select [4]; }
+    else { if (_type find "gdt" == 0) then { _type = _type select [3]; }; };
     _surfaceMod = switch (true) do {
-        case (_type == "#gdtdesert"):      { -15 };
-        case (_type == "#gdtsand"):        { -10 };
-        case (_type == "#gdtice"):         { -10 };
-        case (_type == "#gdtsnow"):        {   5 };
-        case (_type == "#gdtjungle"):      {  10 };
-        case (_type == "#gdtrainforest"):  {  12 };
-        case (_type == "#gdtforest"):      {   5 };
-        case (_type == "#gdtconiferous"):  {   5 };
-        case (_type == "#gdtswamp"):       {   8 };
-        case (_type == "#gdtmarsh"):       {   8 };
-        case (_type == "#gdtwater"):       {   5 };
-        default                            {   0 };
+        case (_type == "desert"):      { -15 };
+        case (_type == "sand"):        { -10 };
+        case (_type == "ice"):         { -10 };
+        case (_type == "snow"):        {   5 };
+        case (_type == "jungle"):      {  10 };
+        case (_type == "rainforest"):  {  12 };
+        case (_type == "forest"):      {   5 };
+        case (_type == "coniferous"):  {   5 };
+        case (_type == "swamp"):       {   8 };
+        case (_type == "marsh"):       {   8 };
+        case (_type == "water"):       {   5 };
+        default                        {   0 };
     };
 };
 _RH = (_RH + _surfaceMod) max 0 min 100;
