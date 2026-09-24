@@ -285,7 +285,8 @@ class VehicleExpansionTest(unittest.TestCase):
         report = (DATA / "SOURCE_GAPS.md").read_text(encoding="utf-8")
         self.assertIn("honda_civic_6gen_sedan", report)
         self.assertIn("m923a2", report)
-        self.assertIn("- Catalogue entries: 4", report)
+        self.assertIn("kawasaki_ninja_250r_ex250f", report)
+        self.assertIn("- Catalogue entries: 5", report)
 
 
 if __name__ == "__main__":

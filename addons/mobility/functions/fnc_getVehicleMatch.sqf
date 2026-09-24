@@ -81,6 +81,7 @@ private _tokens = [];
 
 private _table = [
     ["honda_civic_6gen_sedan", "honda_civic_6gen_sedan", "wheeled", "", "car", "civic|hondacivic|hondacivicsedan|ej6|ej8", "car|civilian|passengercar|sedan", "honda_civic_factory_service_manual_96_00", [1540, 0, 0, 150, 0, "automatic", ""]],
+    ["kawasaki_ninja_250r_ex250f", "kawasaki_ninja_250r_ex250f", "wheeled", "", "", "ninja250|ninja250r|ex250|ex250f|gpx250|gpx250r|kawasakininja250r", "motorcycle|ninja|sportbike", "kawasaki_ninja_250r_service_manual", [161, 0, 0, 155, 27.948831, "manual", "none"]],
     ["m113a2", "m113a2", "tracked", "", "trackedapc", "m113|m113a2", "apc|carrier|tracked|armoredpersonnelcarrier", "tm_9_2350_261_10", [11353, 0, 0, 434.8, 156.596973, "automatic", "grousers"]],
     ["m923a2", "m923a2", "wheeled", "", "truck", "m923|m923a2|m939|m939a2", "truck|cargo|5ton|6x6|dropside", "tm_9_2320_272_10", [9502, 355.6, 1219.2, 353, 178.967969, "automatic", ""]],
     ["m_atv_m1240", "m_atv_m1240", "wheeled", "", "mrap", "matv|m1240", "mrap|oshkosh|matv", "tm_9_2355_335_10", [11123, 395.0, 1179.5, 0, 275.908953, "automatic", ""]]

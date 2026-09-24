@@ -308,11 +308,17 @@ class ClassMapTest(unittest.TestCase):
 
 
 class RealCorpusTest(unittest.TestCase):
-    def test_four_held_entries_and_four_mappings_load_clean(self) -> None:
+    def test_held_entries_and_mappings_load_clean(self) -> None:
         loaded = vc.load(DATA)
         self.assertEqual([], loaded.errors, loaded.errors)
         self.assertEqual(
-            {"m_atv_m1240", "m113a2", "m923a2", "honda_civic_6gen_sedan"},
+            {
+                "m_atv_m1240",
+                "m113a2",
+                "m923a2",
+                "honda_civic_6gen_sedan",
+                "kawasaki_ninja_250r_ex250f",
+            },
             {entry.catalogue_id for entry in loaded.entries},
         )
         self.assertEqual(4, len(loaded.mappings))

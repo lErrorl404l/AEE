@@ -9,11 +9,11 @@ labelled absent zero. This file lists the resolved provenance of each
 row and the next source class for each absent field. A missing field
 is a labelled zero, not a refusal.
 
-- Catalogue entries: 4
-- Emitted runtime rows: 4
+- Catalogue entries: 5
+- Emitted runtime rows: 5
 - Runtime-ready entries: 0
-- Entries with an absent runtime field: 4
-- Absent fields: 9
+- Entries with an absent runtime field: 5
+- Absent fields: 11
 
 ## honda_civic_6gen_sedan - Honda Civic Sedan (6th generation) (wheeled)
 
@@ -38,6 +38,28 @@ is a labelled zero, not a refusal.
 | `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
 | `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## kawasaki_ninja_250r_ex250f - Kawasaki Ninja 250R (EX250-F) (wheeled)
+
+- Capture: `data/vehicle/catalogue/kawasaki_ninja_250r_service_manual.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 161 | `kawasaki_ninja_250r_service_manual` | General Specifications table, Dimensions, Curb weight Front 76 kg and Rear 85 kg, printed page 1-4 (scan PDF page 13) | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | documented | 155 | `kawasaki_ninja_250r_service_manual` | General Specifications table, Dimensions, Road clearance 155 mm, printed page 1-4 (scan PDF page 13) | road clearance as published; the manual names the field Road clearance |
+| `net_power_kw` | derived | 27.948831 | `kawasaki_ninja_250r_service_manual` | General Specifications table, Engine, Maximum horsepower 27.9 kW (38 PS) @ 11 000 r/min, printed page 1-4 (scan PDF page 13) | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | manual | `kawasaki_ninja_250r_service_manual` | General Specifications table, Drive Train, Transmission Type 6-speed, constant mesh, return shift, printed page 1-5 (scan PDF page 14) | six-speed constant-mesh return-shift gearbox, a manual transmission |
+| `grousers_state` | documented | none | `kawasaki_ninja_250r_service_manual` | General Specifications table, Frame, Front tire and Rear tire Type Tubeless and Final drive system Type Chain drive, printed pages 1-4 and 1-5 (scan PDF pages 13 and 14) | wheeled motorcycle on front and rear pneumatic tyres with a chain final drive; no track and no grouser is fitted |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
 
 ## m113a2 - M113A2 (tracked)
 

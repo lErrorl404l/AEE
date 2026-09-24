@@ -160,9 +160,10 @@ class TestGeneratedMatchFile(unittest.TestCase):
             self.assertIn(token, header, f"the header does not state {token}")
 
     def test_the_corpus_emits_one_row_per_entry(self):
-        # Four catalogue entries, four emitted rows.
-        self.assertEqual(len(re.findall(r"^\s{4}\[", table_body(), re.M)), 4)
-        self.assertEqual(len(gen.load_rows(gen.DEFAULT_DATA)), 4)
+        # One emitted table row per runtime-ready catalogue entry.
+        rows = gen.load_rows(gen.DEFAULT_DATA)
+        self.assertEqual(len(re.findall(r"^\s{4}\[", table_body(), re.M)), len(rows))
+        self.assertGreaterEqual(len(rows), 5)
 
     def test_reads_no_source_registry_and_no_config_value(self):
         self.assertNotIn("sources.json", MATCH)
@@ -379,12 +380,18 @@ class TestGeneratorRows(unittest.TestCase):
             ["a_catalogue", "b_catalogue"],
         )
 
-    def test_the_real_corpus_emits_four_rows(self):
+    def test_the_real_corpus_emits_a_row_per_ready_entry(self):
         rows = gen.load_rows(gen.DEFAULT_DATA)
-        self.assertEqual(len(rows), 4)
+        self.assertEqual(len(rows), 5)
         self.assertEqual(
             {row[COL_CATALOGUE] for row in rows},
-            {"honda_civic_6gen_sedan", "m113a2", "m923a2", "m_atv_m1240"},
+            {
+                "honda_civic_6gen_sedan",
+                "kawasaki_ninja_250r_ex250f",
+                "m113a2",
+                "m923a2",
+                "m_atv_m1240",
+            },
         )
 
     def test_a_synthetic_row_renders_into_the_match_file(self):

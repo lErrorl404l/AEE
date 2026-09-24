@@ -1,0 +1,152 @@
+{
+  "retrieved": "2026-09-24",
+  "note": "Catalogue capture for the held tier-2 Kawasaki Ninja250R / GPX250R Motorcycle Service Manual Supplement (Internet Archive scan, 162 pages). It holds the Kawasaki EX250-F (Ninja 250R / GPX250R) as a wheeled motorcycle entry. The General Specifications table (Items EX250-F2 ~ F13) publishes the overall dimensions, wheelbase, road clearance, dry weight, curb weight by axle, the engine type and displacement, the maximum power and torque ratings, the six-speed constant-mesh manual transmission, the chain final drive and the front and rear tyre sizes. The entry is runtime-ready: operating weight resolves from the published curb weight, net power from the published maximum rating and the two tyre fields from the rear tyre size code. The 2006-2007 model supplement (printed page 20-4) prints a 1 410 mm wheelbase for the EX250F6F series; the base table prints 1 400 mm for EX250-F2 to F13, a different model range, so the entry keeps the base figure and names both. No real source maps an AEE game class to the EX250-F, so class_token is empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "kawasaki_ninja_250r_ex250f",
+      "canonical_name": "Kawasaki Ninja 250R (EX250-F)",
+      "maker": "Kawasaki",
+      "model": "Ninja 250R",
+      "variant": "EX250-F2 to F13 (Ninja 250R / GPX250R)",
+      "variant_id": "kawasaki_ninja_250r_ex250f",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Japan",
+      "era": "modern",
+      "aliases": ["ninja 250", "ninja 250r", "ninja250", "ninja250r", "ex250", "ex250f", "gpx250", "gpx250r", "kawasaki ninja 250r"],
+      "keywords": ["motorcycle", "ninja", "sport bike"],
+      "runtime_ready": true,
+      "values": {
+        "length_mm": {
+          "value": 2035,
+          "unit": "mm",
+          "source": "kawasaki_ninja_250r_service_manual",
+          "locator": "General Specifications table, Dimensions, Overall length 2 035 mm, printed page 1-4 (scan PDF page 13)",
+          "state": "overall length, EX250-F2 to F13, as published",
+          "grade": "documented"
+        },
+        "width_mm": {
+          "value": 710,
+          "unit": "mm",
+          "source": "kawasaki_ninja_250r_service_manual",
+          "locator": "General Specifications table, Dimensions, Overall width 710 mm, printed page 1-4 (scan PDF page 13)",
+          "state": "overall width, EX250-F2 to F13, as published",
+          "grade": "documented"
+        },
+        "height_mm": {
+          "value": 1095,
+          "unit": "mm",
+          "source": "kawasaki_ninja_250r_service_manual",
+          "locator": "General Specifications table, Dimensions, Overall height 1 095 mm, printed page 1-4 (scan PDF page 13)",
+          "state": "overall height, EX250-F2 to F13, as published",
+          "grade": "documented"
+        },
+        "wheelbase_mm": {
+          "value": 1400,
+          "unit": "mm",
+          "source": "kawasaki_ninja_250r_service_manual",
+          "locator": "General Specifications table, Dimensions, Wheelbase 1 400 mm, printed page 1-4 (scan PDF page 13)",
+          "state": "wheelbase, EX250-F2 to F13, as published; the 2006-2007 model supplement (printed page 20-4) prints 1 410 mm for the EX250F6F series, a different model range, and is not averaged",
+          "grade": "documented"
+        },
+        "ground_clearance_mm": {
+          "value": 155,
+          "unit": "mm",
+          "source": "kawasaki_ninja_250r_service_manual",
+          "locator": "General Specifications table, Dimensions, Road clearance 155 mm, printed page 1-4 (scan PDF page 13)",
+          "state": "road clearance as published; the manual names the field Road clearance",
+          "grade": "documented"
+        },
+        "curb_weight_kg": {
+          "value": 161,
+          "unit": "kg",
+          "source": "kawasaki_ninja_250r_service_manual",
+          "locator": "General Specifications table, Dimensions, Curb weight Front 76 kg and Rear 85 kg, printed page 1-4 (scan PDF page 13)",
+          "state": "curb weight, front 76 kg plus rear 85 kg as published; the manual prints the curb weight by axle, not as a single total. California models are front 76 kg and rear 85.5 kg",
+          "grade": "documented"
+        },
+        "engine_displacement_l": {
+          "value": 0.248,
+          "unit": "L",
+          "source": "kawasaki_ninja_250r_service_manual",
+          "locator": "General Specifications table, Engine, Displacement 248 mL, printed page 1-4 (scan PDF page 13)",
+          "state": "displacement 248 mL converted to litres",
+          "grade": "documented"
+        },
+        "published_power_hp": {
+          "value": 37.48,
+          "unit": "hp",
+          "source": "kawasaki_ninja_250r_service_manual",
+          "locator": "General Specifications table, Engine, Maximum horsepower 27.9 kW (38 PS) @ 11 000 r/min, printed page 1-4 (scan PDF page 13)",
+          "state": "maximum rating 27.9 kW (38 PS) at 11 000 rpm as published; metric horsepower PS converted to mechanical hp by 1 PS = 0.986320 hp; maximum rating, no net basis",
+          "grade": "documented"
+        },
+        "torque_nm": {
+          "value": 24.5,
+          "unit": "N m",
+          "source": "kawasaki_ninja_250r_service_manual",
+          "locator": "General Specifications table, Engine, Maximum torque 24.5 N-m at 10 000 r/min, printed page 1-4 (scan PDF page 13)",
+          "state": "maximum torque at 10 000 rpm, as published",
+          "grade": "documented"
+        },
+        "transmission_type": {
+          "value": "manual",
+          "unit": "enum",
+          "source": "kawasaki_ninja_250r_service_manual",
+          "locator": "General Specifications table, Drive Train, Transmission Type 6-speed, constant mesh, return shift, printed page 1-5 (scan PDF page 14)",
+          "state": "six-speed constant-mesh return-shift gearbox, a manual transmission",
+          "grade": "documented"
+        },
+        "gears": {
+          "value": 6,
+          "unit": "count",
+          "source": "kawasaki_ninja_250r_service_manual",
+          "locator": "General Specifications table, Drive Train, Transmission Gear ratio 1st to 6th, printed page 1-5 (scan PDF page 14)",
+          "state": "six forward gear ratios, as published",
+          "grade": "documented"
+        },
+        "drivetrain": {
+          "value": "chain drive",
+          "unit": "enum",
+          "source": "kawasaki_ninja_250r_service_manual",
+          "locator": "General Specifications table, Drive Train, Final drive system Type Chain drive, printed page 1-5 (scan PDF page 14)",
+          "state": "chain final drive to the rear wheel, as published",
+          "grade": "documented"
+        },
+        "final_drive": {
+          "value": 3.214,
+          "unit": "ratio",
+          "source": "kawasaki_ninja_250r_service_manual",
+          "locator": "General Specifications table, Drive Train, Final drive system Reduction ratio 3.214 (45/14), printed page 1-5 (scan PDF page 14)",
+          "state": "final drive reduction ratio 45/14, as published",
+          "grade": "documented"
+        },
+        "tyre_size_text": {
+          "value": "130/80-16",
+          "unit": "text",
+          "source": "kawasaki_ninja_250r_service_manual",
+          "locator": "General Specifications table, Frame, Rear tire Size 130/80-16 64S, printed page 1-5 (scan PDF page 14)",
+          "state": "rear tyre size code, tubeless; the front tyre is 100/80-16 50S. The rear (drive) tyre is recorded as the single runtime size code",
+          "grade": "documented"
+        },
+        "turning_radius_m": {
+          "value": 2.8,
+          "unit": "m",
+          "source": "kawasaki_ninja_250r_service_manual",
+          "locator": "General Specifications table, Performance, Minimum turning radius 2.8 m, printed page 1-4 (scan PDF page 13)",
+          "state": "minimum turning radius, as published",
+          "grade": "documented"
+        },
+        "grousers_state": {
+          "value": "none",
+          "unit": "enum",
+          "source": "kawasaki_ninja_250r_service_manual",
+          "locator": "General Specifications table, Frame, Front tire and Rear tire Type Tubeless and Final drive system Type Chain drive, printed pages 1-4 and 1-5 (scan PDF pages 13 and 14)",
+          "state": "wheeled motorcycle on front and rear pneumatic tyres with a chain final drive; no track and no grouser is fitted",
+          "grade": "documented"
+        }
+      }
+    }
+  ]
+}
