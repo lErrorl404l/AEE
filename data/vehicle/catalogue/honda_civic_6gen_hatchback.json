@@ -1,0 +1,89 @@
+{
+  "retrieved": "2026-09-24",
+  "note": "Catalogue capture for the held tier-2 Honda Civic Factory Service Manual (96-00), First Edition 8/99. It holds the 6th generation Civic hatchback as a wheeled civilian-car lead. The manual publishes the identity, overall dimensions, wheelbase, track, ground clearance and per-trim gross vehicle weight ratings. It publishes no curb weight, no operating weight, no payload, no engine rated power, no engine torque and no tyre size or pressure, so the entry is not runtime-ready.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "honda_civic_6gen_hatchback",
+      "canonical_name": "Honda Civic Hatchback (6th generation)",
+      "maker": "Honda",
+      "model": "Civic",
+      "variant": "2 door Hatchback, 6th generation (EJ6/EJ7), 1996-2000",
+      "variant_id": "honda_civic_6gen_hatchback",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Japan",
+      "era": "modern",
+      "aliases": [
+        "civic hatchback",
+        "honda civic hatchback",
+        "civic 2 door hatchback"
+      ],
+      "keywords": [
+        "car",
+        "civilian",
+        "passenger car",
+        "hatchback"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "length_mm": {
+          "value": 4180,
+          "unit": "mm",
+          "source": "honda_civic_factory_service_manual_96_00",
+          "locator": "Design Specifications table, DIMENSIONS, Overall Length, 2 door Hatchback ('98-00), scan PDF page 64, printed page 3-20",
+          "state": "overall length, 2 door Hatchback 1998-2000; the 1996-1997 figure is 4,170 mm",
+          "grade": "documented"
+        },
+        "width_mm": {
+          "value": 1705,
+          "unit": "mm",
+          "source": "honda_civic_factory_service_manual_96_00",
+          "locator": "Design Specifications table, DIMENSIONS, Overall Width, scan PDF page 64, printed page 3-20",
+          "state": "overall width, all 6th generation bodies, as published",
+          "grade": "documented"
+        },
+        "height_mm": {
+          "value": 1375,
+          "unit": "mm",
+          "source": "honda_civic_factory_service_manual_96_00",
+          "locator": "Design Specifications table, DIMENSIONS, Overall Height, 2 door Coupe/2 door Hatchback, scan PDF page 64, printed page 3-20",
+          "state": "overall height, 2 door Hatchback",
+          "grade": "documented"
+        },
+        "wheelbase_mm": {
+          "value": 2620,
+          "unit": "mm",
+          "source": "honda_civic_factory_service_manual_96_00",
+          "locator": "Design Specifications table, DIMENSIONS, Wheelbase, scan PDF page 64, printed page 3-20",
+          "state": "wheelbase, all 6th generation bodies, as published",
+          "grade": "documented"
+        },
+        "track_mm": {
+          "value": 1475,
+          "unit": "mm",
+          "source": "honda_civic_factory_service_manual_96_00",
+          "locator": "Design Specifications table, DIMENSIONS, Track, Front/Rear, scan PDF page 64, printed page 3-20",
+          "state": "track, front and rear; the printed metric 1,475/1,475 mm and English 58.1/58.1 in agree. The PDF text layer misreads the rear as 1,415 mm.",
+          "grade": "documented"
+        },
+        "ground_clearance_mm": {
+          "value": 150,
+          "unit": "mm",
+          "source": "honda_civic_factory_service_manual_96_00",
+          "locator": "Design Specifications table, DIMENSIONS, Ground Clearance, scan PDF page 64, printed page 3-20",
+          "state": "ground clearance, as published",
+          "grade": "documented"
+        },
+        "gross_weight_kg": {
+          "value": 1495,
+          "unit": "kg",
+          "source": "honda_civic_factory_service_manual_96_00",
+          "locator": "Design Specifications table, WEIGHT (CANADA), Gross Vehicle Weight Rating (GVWR), 2 door Hatchback, CX/CX-G ('96), scan PDF page 64, printed page 3-20",
+          "state": "gross vehicle weight rating, 2 door Hatchback CX/CX-G, Canadian table, 1996, as published in kg; the USA table publishes GVWR in lb",
+          "grade": "documented"
+        }
+      }
+    }
+  ]
+}

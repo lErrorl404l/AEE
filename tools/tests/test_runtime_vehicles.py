@@ -382,17 +382,24 @@ class TestGeneratorRows(unittest.TestCase):
 
     def test_the_real_corpus_emits_a_row_per_ready_entry(self):
         rows = gen.load_rows(gen.DEFAULT_DATA)
-        self.assertEqual(len(rows), 5)
-        self.assertEqual(
-            {row[COL_CATALOGUE] for row in rows},
-            {
-                "honda_civic_6gen_sedan",
-                "kawasaki_ninja_250r_ex250f",
-                "m113a2",
-                "m923a2",
-                "m_atv_m1240",
-            },
-        )
+        ids = {row[COL_CATALOGUE] for row in rows}
+        # One row per entry, no duplicate row.
+        self.assertEqual(len(ids), len(rows))
+        for sentinel in (
+            "honda_civic_6gen_sedan",
+            "kawasaki_ninja_250r_ex250f",
+            "m113a2",
+            "m923a2",
+            "m_atv_m1240",
+            "m1_abrams",
+            "m2_m3_bradley",
+            "m925a2",
+            "m577a2",
+            "cougar_4x4",
+            "hmmwv_m998",
+            "toyota_t100",
+        ):
+            self.assertIn(sentinel, ids)
 
     def test_a_synthetic_row_renders_into_the_match_file(self):
         row = gen.build_row(ready_record(), ("B_MRAP_01_F",))
@@ -469,7 +476,9 @@ class TestReferenceMatcher(unittest.TestCase):
                 self.assertEqual(len(value_row), 7)
 
     def test_a_keyword_resolves_when_no_alias_matches(self) -> None:
-        result = gen.match_row(self.rows, "armoredpersonnelcarrier")
+        # "motorcycle" is a keyword of one entry (min four characters) and
+        # an alias of none, so the keyword layer resolves it unambiguously.
+        result = gen.match_row(self.rows, "motorcycle")
         self.assertIsNotNone(result)
         assert result is not None
         self.assertEqual(result[4], "keyword")

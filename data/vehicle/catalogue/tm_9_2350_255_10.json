@@ -1,0 +1,120 @@
+{
+  "retrieved": "2026-09-24",
+  "note": "Catalogue capture for the held tier-2 operator manual TM 9-2350-255-10 (Tank, Combat, Full-Tracked, 105-mm Gun, M1, General Abrams, April 1981 draft). It holds the M1 as a tracked entry. The manual publishes the identity, the turbine engine model, the automatic transmission model, the maximum speed, the range, the gradient and side-slope limits, the fording depth, the combat-loaded weight as 60 tons, the overall dimensions and the ground clearance. It names no manufacturer, so maker is recorded as unknown rather than inferred from a secondary page. Every dimension comes from the published centimetre figure converted to millimetres by a decimal shift, and the conversion is named in each state. The weight comes from the published 60 tons converted as 60 US short tons. The manual publishes no engine horsepower rating, no track shoe width, no track pitch and no grouser statement, so those runtime fields are absent and the entry is not runtime-ready. No real source maps an AEE game class to the M1, so class_token is empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "m1_abrams",
+      "canonical_name": "M1 Abrams",
+      "maker": "unknown",
+      "model": "M1",
+      "variant": "M1",
+      "variant_id": "m1_abrams",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": ["m1", "m1 abrams", "abrams", "general abrams"],
+      "keywords": ["tank", "mbt", "main battle tank", "105mm"],
+      "runtime_ready": false,
+      "values": {
+        "length_mm": {
+          "value": 8971,
+          "unit": "mm",
+          "source": "tm_9_2350_255_10",
+          "locator": "EQUIPMENT DESCRIPTION, PERFORMANCE DATA, printed page 1-16, Dimensions, Length (overall, main gun rearward)",
+          "state": "overall length with the main gun rearward, published as 353.2 in (897.1 cm); the published centimetre figure converted to millimetres by a decimal shift; length with the gun forward is 384.5 in (976.6 cm)",
+          "grade": "documented"
+        },
+        "width_mm": {
+          "value": 3653,
+          "unit": "mm",
+          "source": "tm_9_2350_255_10",
+          "locator": "EQUIPMENT DESCRIPTION, PERFORMANCE DATA - Continued, printed page 1-18, Dimensions, Width",
+          "state": "overall width with the skirts, published as 143.75 in (365.3 cm); the published centimetre figure converted to millimetres; width with the skirts removed is 136 in (348 cm)",
+          "grade": "documented"
+        },
+        "height_mm": {
+          "value": 2885,
+          "unit": "mm",
+          "source": "tm_9_2350_255_10",
+          "locator": "EQUIPMENT DESCRIPTION, PERFORMANCE DATA, printed page 1-16, Dimensions, Height (maximum overall)",
+          "state": "maximum overall height, published as 113.6 in (288.5 cm); the published centimetre figure converted to millimetres; height to the turret roof is 93.5 in (237.5 cm)",
+          "grade": "documented"
+        },
+        "ground_clearance_mm": {
+          "value": 483,
+          "unit": "mm",
+          "source": "tm_9_2350_255_10",
+          "locator": "EQUIPMENT DESCRIPTION, PERFORMANCE DATA - Continued, printed page 1-18, Dimensions, Ground clearance (center portion of hull structure)",
+          "state": "ground clearance at the center portion of the hull structure, published as 19.0 in (48.3 cm); the published centimetre figure converted to millimetres; the other portion of the hull structure is 17.0 in (43.2 cm)",
+          "grade": "documented"
+        },
+        "operating_weight_kg": {
+          "value": 54431,
+          "unit": "kg",
+          "source": "tm_9_2350_255_10",
+          "locator": "EQUIPMENT DESCRIPTION, PERFORMANCE DATA, printed page 1-16, Weight, Combat loaded (less kits)",
+          "state": "combat loaded with the kits removed, fuel, ammunition and crew aboard; published as 60 tons and converted as 60 US short tons by 1 short ton = 907.18474 kg; the manual prints no kilogram figure",
+          "grade": "documented"
+        },
+        "engine_model": {
+          "value": "AGT-1500C",
+          "unit": "text",
+          "source": "tm_9_2350_255_10",
+          "locator": "EQUIPMENT DESCRIPTION, PERFORMANCE DATA, printed page 1-16, Turbine Engine, Model",
+          "state": "turbine engine, dual-compressor, regenerative; the manual names no engine manufacturer",
+          "grade": "documented"
+        },
+        "transmission_type": {
+          "value": "automatic",
+          "unit": "enum",
+          "source": "tm_9_2350_255_10",
+          "locator": "printed page 1-9, EQUIPMENT DESCRIPTION, Capability and Features, automatic transmission; printed page 1-16, PERFORMANCE DATA, Transmission, Model X1100-3B",
+          "state": "X1100-3B automatic transmission, four speeds forward and two reverse with pivot and neutral selections",
+          "grade": "documented"
+        },
+        "fording_depth_mm": {
+          "value": 1219,
+          "unit": "mm",
+          "source": "tm_9_2350_255_10",
+          "locator": "EQUIPMENT DESCRIPTION, PERFORMANCE DATA, printed page 1-16, Performance, Fording depth Without Kit",
+          "state": "fording depth without a fording kit, published as 48 in (121.9 cm); the published centimetre figure converted to millimetres; with the kit the rated depth is the turret roof",
+          "grade": "documented"
+        },
+        "max_speed_kmh": {
+          "value": 72,
+          "unit": "km/h",
+          "source": "tm_9_2350_255_10",
+          "locator": "EQUIPMENT DESCRIPTION, PERFORMANCE DATA, printed page 1-16, Performance, Forward speed maximum (paved level surface)",
+          "state": "maximum forward speed on a paved level surface, published as 45 mph (72 km/h)",
+          "grade": "documented"
+        },
+        "range_km": {
+          "value": 440,
+          "unit": "km",
+          "source": "tm_9_2350_255_10",
+          "locator": "EQUIPMENT DESCRIPTION, PERFORMANCE DATA, printed page 1-16, Performance, Range",
+          "state": "operating range on dry level secondary roads at a constant 25 mph without refuelling, published as 273-298 mi (440-480 km); the lower bound 440 km is recorded and the range is not averaged",
+          "grade": "documented"
+        },
+        "max_gradient_deg": {
+          "value": 31,
+          "unit": "deg",
+          "source": "tm_9_2350_255_10",
+          "locator": "EQUIPMENT DESCRIPTION, PERFORMANCE DATA, printed page 1-16, Performance, Grade ascending ability",
+          "state": "grade ascending ability at a sustained 5 mph, published as 60 percent (31 degrees)",
+          "grade": "documented"
+        },
+        "max_side_slope_deg": {
+          "value": 22,
+          "unit": "deg",
+          "source": "tm_9_2350_255_10",
+          "locator": "EQUIPMENT DESCRIPTION, PERFORMANCE DATA, printed page 1-16, Performance, Sideslope (MAXIMUM)",
+          "state": "maximum side slope, published as 40 percent (22 degrees)",
+          "grade": "documented"
+        }
+      }
+    }
+  ]
+}

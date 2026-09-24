@@ -9,11 +9,105 @@ labelled absent zero. This file lists the resolved provenance of each
 row and the next source class for each absent field. A missing field
 is a labelled zero, not a refusal.
 
-- Catalogue entries: 5
-- Emitted runtime rows: 5
+- Catalogue entries: 47
+- Emitted runtime rows: 47
 - Runtime-ready entries: 0
-- Entries with an absent runtime field: 5
-- Absent fields: 11
+- Entries with an absent runtime field: 47
+- Absent fields: 79
+
+## cougar_4x4 - Cougar 4x4 (wheeled)
+
+- Capture: `data/vehicle/catalogue/gdls_cougar_4x4_datasheet.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 15422 | `gdls_cougar_4x4_datasheet` | Features & Specifications, Configuration, Curb Weight, page 2 | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 395.0 | `gdls_cougar_4x4_datasheet` | Features & Specifications, Power Train & Suspension, Tires, page 2 | derived from the size code 395/85 R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1179.5 | `gdls_cougar_4x4_datasheet` | Features & Specifications, Power Train & Suspension, Tires, page 2 | derived from the size code 395/85 R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | claimed | 380 | `gdls_cougar_4x4_datasheet` | Features & Specifications, Configuration, Ground Clearance, page 2 | ground clearance under the transfer case, published as 15 in (38 cm); the cm figure converted to mm |
+| `net_power_kw` | derived | 246.080958 | `gdls_cougar_4x4_datasheet` | Features & Specifications, Power Train & Suspension, Horsepower, page 2 | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | claimed | automatic | `gdls_cougar_4x4_datasheet` | Features & Specifications, Power Train & Suspension, Transmission, page 2 | Allison 3500 SP series automatic transmission, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## hmmwv_m998 - M998 HMMWV (wheeled)
+
+- Capture: `data/vehicle/catalogue/tm_9_2320_280_10.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 2361 | `tm_9_2320_280_10` | Table 1-18, Curb Weight, printed page 1-34, row M998 | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | documented | 410 | `tm_9_2320_280_10` | Table 1-13, Vehicle Dimensions, printed page 1-30, row All, column Ground Clearance Under Axle | ground clearance under axle, published as 16 in (41 cm); under chassis is 24 in (61 cm); the cm figure converted to mm |
+| `net_power_kw` | derived | 111.854981 | `tm_9_2320_280_10` | Table 1-4, Engine Data (6.2 L), printed page 1-25, Brake horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2320_280_10` | Table 1-7, Transmission Data (3L80), printed page 1-26, Type | three-speed automatic, model Turbo Hydra-Matic 3L80, as published; the A2 vehicles carry the four-speed 4L80-E |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## honda_civic_6gen_coupe - Honda Civic Coupe (6th generation) (wheeled)
+
+- Capture: `data/vehicle/catalogue/honda_civic_6gen_coupe.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 1570 | `honda_civic_factory_service_manual_96_00` | Design Specifications table, WEIGHT (CANADA), Gross Vehicle Weight Rating (GVWR), 2 door Coupe, Si ('97-00), scan PDF page 64, printed page 3-20 | derived operating weight from the gross vehicle weight rating; no operating or curb weight is published, so the rating is the basis and it is a maximum, not a kerb weight |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | documented | 150 | `honda_civic_factory_service_manual_96_00` | Design Specifications table, DIMENSIONS, Ground Clearance, scan PDF page 64, printed page 3-20 | ground clearance, as published |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## honda_civic_6gen_hatchback - Honda Civic Hatchback (6th generation) (wheeled)
+
+- Capture: `data/vehicle/catalogue/honda_civic_6gen_hatchback.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 1495 | `honda_civic_factory_service_manual_96_00` | Design Specifications table, WEIGHT (CANADA), Gross Vehicle Weight Rating (GVWR), 2 door Hatchback, CX/CX-G ('96), scan PDF page 64, printed page 3-20 | derived operating weight from the gross vehicle weight rating; no operating or curb weight is published, so the rating is the basis and it is a maximum, not a kerb weight |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | documented | 150 | `honda_civic_factory_service_manual_96_00` | Design Specifications table, DIMENSIONS, Ground Clearance, scan PDF page 64, printed page 3-20 | ground clearance, as published |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
 ## honda_civic_6gen_sedan - Honda Civic Sedan (6th generation) (wheeled)
 
@@ -61,6 +155,72 @@ is a labelled zero, not a refusal.
 | `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
 | `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
 
+## m1059 - M1059 (tracked)
+
+- Capture: `data/vehicle/catalogue/m1059.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 11077 | `tm_9_2350_261_10` | WP 0002 00, TABULATED DATA, page 0002 00-43, WEIGHT, With full load (gross), M1059 | derived operating weight from the gross vehicle weight rating; no operating or curb weight is published, so the rating is the basis and it is a maximum, not a kerb weight |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | documented | 434.8 | `tm_9_2350_261_10` | WP 0002 00, TABULATED DATA, page 0002 00-43, SIZE, Clearance above ground | clearance above ground, as published, 43.48 cm converted to mm |
+| `net_power_kw` | derived | 156.596973 | `tm_9_2350_261_10` | WP 0002 00, TABULATED DATA, page 0002 00-44, ENGINE, Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2350_261_10` | WP 0001 00-1, NOMENCLATURE CROSS-REFERENCE, Transmission, hydraulic, and WP 0002 00, page 0002 00-28, POWER TRAIN | hydraulic transmission with automatic range selection |
+| `grousers_state` | documented | grousers | `tm_9_2350_261_10` | WP 0082 00, TRACK SHOE WEAR LIMITS, page 0082 00-1, step 1, Grouser height (T130 only) | T130/T130E1 track; T150 replacement track has no grouser |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+
+## m1064 - M1064 (tracked)
+
+- Capture: `data/vehicle/catalogue/m1064.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 12546 | `tm_9_2350_261_10` | WP 0002 00, TABULATED DATA, page 0002 00-43, WEIGHT, With full load (gross), M1064 | derived operating weight from the gross vehicle weight rating; no operating or curb weight is published, so the rating is the basis and it is a maximum, not a kerb weight |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | documented | 434.8 | `tm_9_2350_261_10` | WP 0002 00, TABULATED DATA, page 0002 00-43, SIZE, Clearance above ground | clearance above ground, as published, 43.48 cm converted to mm |
+| `net_power_kw` | derived | 156.596973 | `tm_9_2350_261_10` | WP 0002 00, TABULATED DATA, page 0002 00-44, ENGINE, Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2350_261_10` | WP 0001 00-1, NOMENCLATURE CROSS-REFERENCE, Transmission, hydraulic, and WP 0002 00, page 0002 00-28, POWER TRAIN | hydraulic transmission with automatic range selection |
+| `grousers_state` | documented | grousers | `tm_9_2350_261_10` | WP 0082 00, TRACK SHOE WEAR LIMITS, page 0082 00-1, step 1, Grouser height (T130 only) | T130/T130E1 track; T150 replacement track has no grouser |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+
+## m1068 - M1068 (tracked)
+
+- Capture: `data/vehicle/catalogue/m1068.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 12182 | `tm_9_2350_261_10` | WP 0002 00, TABULATED DATA, page 0002 00-43, WEIGHT, With full load (gross), M1068 | derived operating weight from the gross vehicle weight rating; no operating or curb weight is published, so the rating is the basis and it is a maximum, not a kerb weight |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | documented | 434.8 | `tm_9_2350_261_10` | WP 0002 00, TABULATED DATA, page 0002 00-43, SIZE, Clearance above ground | clearance above ground, as published, 43.48 cm converted to mm |
+| `net_power_kw` | derived | 156.596973 | `tm_9_2350_261_10` | WP 0002 00, TABULATED DATA, page 0002 00-44, ENGINE, Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2350_261_10` | WP 0001 00-1, NOMENCLATURE CROSS-REFERENCE, Transmission, hydraulic, and WP 0002 00, page 0002 00-28, POWER TRAIN | hydraulic transmission with automatic range selection |
+| `grousers_state` | documented | grousers | `tm_9_2350_261_10` | WP 0082 00, TRACK SHOE WEAR LIMITS, page 0082 00-1, step 1, Grouser height (T130 only) | T130/T130E1 track; T150 replacement track has no grouser |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+
 ## m113a2 - M113A2 (tracked)
 
 - Capture: `data/vehicle/catalogue/tm_9_2350_261_10.json`
@@ -83,6 +243,115 @@ is a labelled zero, not a refusal.
 | `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
 | `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
 
+## m1_abrams - M1 Abrams (tracked)
+
+- Capture: `data/vehicle/catalogue/tm_9_2350_255_10.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | documented | 54431 | `tm_9_2350_255_10` | EQUIPMENT DESCRIPTION, PERFORMANCE DATA, printed page 1-16, Weight, Combat loaded (less kits) | combat loaded with the kits removed, fuel, ammunition and crew aboard; published as 60 tons and converted as 60 US short tons by 1 short ton = 907.18474 kg; the manual prints no kilogram figure |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | documented | 483 | `tm_9_2350_255_10` | EQUIPMENT DESCRIPTION, PERFORMANCE DATA - Continued, printed page 1-18, Dimensions, Ground clearance (center portion of hull structure) | ground clearance at the center portion of the hull structure, published as 19.0 in (48.3 cm); the published centimetre figure converted to millimetres; the other portion of the hull structure is 17.0 in (43.2 cm) |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | documented | automatic | `tm_9_2350_255_10` | printed page 1-9, EQUIPMENT DESCRIPTION, Capability and Features, automatic transmission; printed page 1-16, PERFORMANCE DATA, Transmission, Model X1100-3B | X1100-3B automatic transmission, four speeds forward and two reverse with pivot and neutral selections |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m2_m3_bradley - M2/M3 Bradley (tracked)
+
+- Capture: `data/vehicle/catalogue/tm_9_2350_252_10_1.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | documented | 22285 | `tm_9_2350_252_10_1` | EQUIPMENT DATA, GENERAL, printed page 1-7, Weight (combat loaded) | combat loaded, as published 49,138 lb (22,285 kg) |
+| `track_shoe_width_mm` | documented | 533 | `tm_9_2350_252_10_1` | EQUIPMENT DATA, RUNNING GEAR, printed page 1-8, the unlabelled value printed immediately below Track pitch | published as 21 in (53.3 cm) in the RUNNING GEAR block; the row label is absent in the held scan; 53.3 cm converted to mm |
+| `track_pitch_mm` | documented | 152 | `tm_9_2350_252_10_1` | EQUIPMENT DATA, RUNNING GEAR, printed page 1-8, Track pitch | as published 6 in (15.2 cm); 15.2 cm converted to mm |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | derived | 372.849936 | `tm_9_2350_252_10_1` | EQUIPMENT DATA, ENGINE, printed page 1-8, Gross horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2350_252_10_1` | EQUIPMENT DATA, TRANSMISSION, AUTOMATIC, printed page 1-8 | G.E. HMPT-500 hydromechanical transmission with automatic range selection |
+| `grousers_state` | documented | grousers | `tm_9_2350_252_10_1` | REMOVE/INSTALL TRACK SHOE PADS, printed page 3-72, CAUTION, and EQUIPMENT DATA, RUNNING GEAR, printed page 1-8, Track type | steel single-pin track with detachable rubber pads; the pad-removal caution states that grousers wear out quickly without the pads |
+
+| Absent field | Next source class |
+|---|---|
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+
+## m577a2 - M577A2 (tracked)
+
+- Capture: `data/vehicle/catalogue/m577a2.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 11719 | `tm_9_2350_261_10` | WP 0002 00, TABULATED DATA, page 0002 00-43, WEIGHT, With full load (gross), M577A2 | derived operating weight from the gross vehicle weight rating; no operating or curb weight is published, so the rating is the basis and it is a maximum, not a kerb weight |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | documented | 434.8 | `tm_9_2350_261_10` | WP 0002 00, TABULATED DATA, page 0002 00-43, SIZE, Clearance above ground | clearance above ground, as published, 43.48 cm converted to mm |
+| `net_power_kw` | derived | 156.596973 | `tm_9_2350_261_10` | WP 0002 00, TABULATED DATA, page 0002 00-44, ENGINE, Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2350_261_10` | WP 0001 00-1, NOMENCLATURE CROSS-REFERENCE, Transmission, hydraulic, and WP 0002 00, page 0002 00-28, POWER TRAIN | hydraulic transmission with automatic range selection |
+| `grousers_state` | documented | grousers | `tm_9_2350_261_10` | WP 0082 00, TRACK SHOE WEAR LIMITS, page 0082 00-1, step 1, Grouser height (T130 only) | T130/T130E1 track; T150 replacement track has no grouser |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+
+## m923 - M923 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m923.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 9806 | `tm_9_2320_272_10` | Table 1-4, Weights, page 1-18, row M923, column Empty kg | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 279.4 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data, page 1-24, heading M939 SERIES (11:00 X R20 TIRE) | derived from the size code 11:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1066.8 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data, page 1-24, heading M939 SERIES (11:00 X R20 TIRE) | derived from the size code 11:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 292 | `tm_9_2320_272_10` | Table 1-3, Vehicle Dimensions, page 1-17, Ground Clearance, row M939, column Under Axle cm | ground clearance under axle, M939, published as 29.2 cm converted to mm; under chassis is 27.2 cm |
+| `net_power_kw` | derived | 186.424968 | `tm_9_2320_272_10` | Table 1-8, Engine and Cooling System Data, page 1-22, heading ENGINE CUMMINGS NHC 250 (M939 AND M939A1 SERIES), Brake Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2320_272_10` | Table 1-9, Automatic Transmission Data, page 1-23, Range Selection, row 1-5 (drive) | automatic transmission with converter-driven power takeoff, ranges 1-5 and reverse, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m923a1 - M923A1 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m923a1.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 10067 | `tm_9_2320_272_10` | Table 1-4, Weights, page 1-18, row M923A1, column Empty kg | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 355.6 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1219.2 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 353 | `tm_9_2320_272_10` | Table 1-3, Vehicle Dimensions, page 1-17, Ground Clearance, row M939A1, column Under Axle cm | ground clearance under axle, M939A1, published as 35.3 cm converted to mm; under chassis is 33.3 cm |
+| `net_power_kw` | derived | 186.424968 | `tm_9_2320_272_10` | Table 1-8, Engine and Cooling System Data, page 1-22, heading ENGINE CUMMINGS NHC 250 (M939 AND M939A1 SERIES), Brake Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2320_272_10` | Table 1-9, Automatic Transmission Data, page 1-23, Range Selection, row 1-5 (drive) | automatic transmission with converter-driven power takeoff, ranges 1-5 and reverse, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
 ## m923a2 - M923A2 (wheeled)
 
 - Capture: `data/vehicle/catalogue/m923a2.json`
@@ -98,6 +367,573 @@ is a labelled zero, not a refusal.
 | `ground_clearance_mm` | documented | 353 | `tm_9_2320_272_10` | Table 1-3, Vehicle Dimensions, page 1-17, Ground Clearance, row M939A2, column Under Axle | ground clearance under axle, M939A2, published as 13.9 in (35.3 cm); under chassis is 13.1 in (33.3 cm); the cm figure converted to mm |
 | `net_power_kw` | derived | 178.967969 | `tm_9_2320_272_10` | Table 1-8, Engine and Cooling System Data, page 1-22, ENGINE CUMMINS 6CTA8.3 (M939A2 SERIES), Brake Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
 | `transmission_type` | documented | automatic | `tm_9_2320_272_10` | Table 1-9, Automatic Transmission Data, pages 1-22 and 1-23, transmission driving range selection | automatic transmission with converter-driven power takeoff, ranges 1-5 and reverse, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m925 - M925 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m925.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 10151 | `tm_9_2320_272_10` | Table 1-4, Weights, page 1-18, row M925, column Empty kg | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 279.4 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data, page 1-24, heading M939 SERIES (11:00 X R20 TIRE) | derived from the size code 11:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1066.8 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data, page 1-24, heading M939 SERIES (11:00 X R20 TIRE) | derived from the size code 11:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 292 | `tm_9_2320_272_10` | Table 1-3, Vehicle Dimensions, page 1-17, Ground Clearance, row M939, column Under Axle cm | ground clearance under axle, M939, published as 29.2 cm converted to mm; under chassis is 27.2 cm |
+| `net_power_kw` | derived | 186.424968 | `tm_9_2320_272_10` | Table 1-8, Engine and Cooling System Data, page 1-22, heading ENGINE CUMMINGS NHC 250 (M939 AND M939A1 SERIES), Brake Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2320_272_10` | Table 1-9, Automatic Transmission Data, page 1-23, Range Selection, row 1-5 (drive) | automatic transmission with converter-driven power takeoff, ranges 1-5 and reverse, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m925a1 - M925A1 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m925a1.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 10567 | `tm_9_2320_272_10` | Table 1-4, Weights, page 1-18, row M925A1, column Empty kg | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 355.6 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1219.2 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 353 | `tm_9_2320_272_10` | Table 1-3, Vehicle Dimensions, page 1-17, Ground Clearance, row M939A1, column Under Axle cm | ground clearance under axle, M939A1, published as 35.3 cm converted to mm; under chassis is 33.3 cm |
+| `net_power_kw` | derived | 186.424968 | `tm_9_2320_272_10` | Table 1-8, Engine and Cooling System Data, page 1-22, heading ENGINE CUMMINGS NHC 250 (M939 AND M939A1 SERIES), Brake Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2320_272_10` | Table 1-9, Automatic Transmission Data, page 1-23, Range Selection, row 1-5 (drive) | automatic transmission with converter-driven power takeoff, ranges 1-5 and reverse, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m925a2 - M925A2 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m925a2.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 10002 | `tm_9_2320_272_10` | Table 1-4, Weights, page 1-18, row M925A2, column Empty kg | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 355.6 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1219.2 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 353 | `tm_9_2320_272_10` | Table 1-3, Vehicle Dimensions, page 1-17, Ground Clearance, row M939A2, column Under Axle cm | ground clearance under axle, M939A2, published as 35.3 cm converted to mm; under chassis is 33.3 cm |
+| `net_power_kw` | derived | 178.967969 | `tm_9_2320_272_10` | Table 1-8, Engine and Cooling System Data, page 1-22, heading ENGINE CUMMINS 6CTA8.3 (M939A2 SERIES), Brake Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2320_272_10` | Table 1-9, Automatic Transmission Data, page 1-23, Range Selection, row 1-5 (drive) | automatic transmission with converter-driven power takeoff, ranges 1-5 and reverse, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m927 - M927 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m927.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 12598 | `tm_9_2320_272_10` | Table 1-4, Weights, page 1-18, row M927, column Empty kg | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 279.4 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data, page 1-24, heading M939 SERIES (11:00 X R20 TIRE) | derived from the size code 11:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1066.8 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data, page 1-24, heading M939 SERIES (11:00 X R20 TIRE) | derived from the size code 11:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 292 | `tm_9_2320_272_10` | Table 1-3, Vehicle Dimensions, page 1-17, Ground Clearance, row M939, column Under Axle cm | ground clearance under axle, M939, published as 29.2 cm converted to mm; under chassis is 27.2 cm |
+| `net_power_kw` | derived | 186.424968 | `tm_9_2320_272_10` | Table 1-8, Engine and Cooling System Data, page 1-22, heading ENGINE CUMMINGS NHC 250 (M939 AND M939A1 SERIES), Brake Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2320_272_10` | Table 1-9, Automatic Transmission Data, page 1-23, Range Selection, row 1-5 (drive) | automatic transmission with converter-driven power takeoff, ranges 1-5 and reverse, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m927a1 - M927A1 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m927a1.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 11366 | `tm_9_2320_272_10` | Table 1-4, Weights, page 1-18, row M927A1, column Empty kg | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 355.6 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1219.2 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 353 | `tm_9_2320_272_10` | Table 1-3, Vehicle Dimensions, page 1-17, Ground Clearance, row M939A1, column Under Axle cm | ground clearance under axle, M939A1, published as 35.3 cm converted to mm; under chassis is 33.3 cm |
+| `net_power_kw` | derived | 186.424968 | `tm_9_2320_272_10` | Table 1-8, Engine and Cooling System Data, page 1-22, heading ENGINE CUMMINGS NHC 250 (M939 AND M939A1 SERIES), Brake Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2320_272_10` | Table 1-9, Automatic Transmission Data, page 1-23, Range Selection, row 1-5 (drive) | automatic transmission with converter-driven power takeoff, ranges 1-5 and reverse, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m927a2 - M927A2 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m927a2.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 10801 | `tm_9_2320_272_10` | Table 1-4, Weights, page 1-18, row M927A2, column Empty kg | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 355.6 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1219.2 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 353 | `tm_9_2320_272_10` | Table 1-3, Vehicle Dimensions, page 1-17, Ground Clearance, row M939A2, column Under Axle cm | ground clearance under axle, M939A2, published as 35.3 cm converted to mm; under chassis is 33.3 cm |
+| `net_power_kw` | derived | 178.967969 | `tm_9_2320_272_10` | Table 1-8, Engine and Cooling System Data, page 1-22, heading ENGINE CUMMINS 6CTA8.3 (M939A2 SERIES), Brake Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2320_272_10` | Table 1-9, Automatic Transmission Data, page 1-23, Range Selection, row 1-5 (drive) | automatic transmission with converter-driven power takeoff, ranges 1-5 and reverse, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m928 - M928 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m928.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 12626 | `tm_9_2320_272_10` | Table 1-4, Weights, page 1-18, row M928, column Empty kg | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 279.4 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data, page 1-24, heading M939 SERIES (11:00 X R20 TIRE) | derived from the size code 11:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1066.8 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data, page 1-24, heading M939 SERIES (11:00 X R20 TIRE) | derived from the size code 11:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 292 | `tm_9_2320_272_10` | Table 1-3, Vehicle Dimensions, page 1-17, Ground Clearance, row M939, column Under Axle cm | ground clearance under axle, M939, published as 29.2 cm converted to mm; under chassis is 27.2 cm |
+| `net_power_kw` | derived | 186.424968 | `tm_9_2320_272_10` | Table 1-8, Engine and Cooling System Data, page 1-22, heading ENGINE CUMMINGS NHC 250 (M939 AND M939A1 SERIES), Brake Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2320_272_10` | Table 1-9, Automatic Transmission Data, page 1-23, Range Selection, row 1-5 (drive) | automatic transmission with converter-driven power takeoff, ranges 1-5 and reverse, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m928a1 - M928A1 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m928a1.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 11865 | `tm_9_2320_272_10` | Table 1-4, Weights, page 1-18, row M928A1, column Empty kg | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 355.6 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1219.2 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 353 | `tm_9_2320_272_10` | Table 1-3, Vehicle Dimensions, page 1-17, Ground Clearance, row M939A1, column Under Axle cm | ground clearance under axle, M939A1, published as 35.3 cm converted to mm; under chassis is 33.3 cm |
+| `net_power_kw` | derived | 186.424968 | `tm_9_2320_272_10` | Table 1-8, Engine and Cooling System Data, page 1-22, heading ENGINE CUMMINGS NHC 250 (M939 AND M939A1 SERIES), Brake Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2320_272_10` | Table 1-9, Automatic Transmission Data, page 1-23, Range Selection, row 1-5 (drive) | automatic transmission with converter-driven power takeoff, ranges 1-5 and reverse, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m928a2 - M928A2 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m928a2.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 11300 | `tm_9_2320_272_10` | Table 1-4, Weights, page 1-18, row M928A2, column Empty kg | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 355.6 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1219.2 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 353 | `tm_9_2320_272_10` | Table 1-3, Vehicle Dimensions, page 1-17, Ground Clearance, row M939A2, column Under Axle cm | ground clearance under axle, M939A2, published as 35.3 cm converted to mm; under chassis is 33.3 cm |
+| `net_power_kw` | derived | 178.967969 | `tm_9_2320_272_10` | Table 1-8, Engine and Cooling System Data, page 1-22, heading ENGINE CUMMINS 6CTA8.3 (M939A2 SERIES), Brake Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2320_272_10` | Table 1-9, Automatic Transmission Data, page 1-23, Range Selection, row 1-5 (drive) | automatic transmission with converter-driven power takeoff, ranges 1-5 and reverse, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m929 - M929 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m929.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 11753 | `tm_9_2320_272_10` | Table 1-4, Weights, page 1-18, row M929, column Empty kg | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 279.4 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data, page 1-24, heading M939 SERIES (11:00 X R20 TIRE) | derived from the size code 11:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1066.8 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data, page 1-24, heading M939 SERIES (11:00 X R20 TIRE) | derived from the size code 11:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 292 | `tm_9_2320_272_10` | Table 1-3, Vehicle Dimensions, page 1-17, Ground Clearance, row M939, column Under Axle cm | ground clearance under axle, M939, published as 29.2 cm converted to mm; under chassis is 27.2 cm |
+| `net_power_kw` | derived | 186.424968 | `tm_9_2320_272_10` | Table 1-8, Engine and Cooling System Data, page 1-22, heading ENGINE CUMMINGS NHC 250 (M939 AND M939A1 SERIES), Brake Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2320_272_10` | Table 1-9, Automatic Transmission Data, page 1-23, Range Selection, row 1-5 (drive) | automatic transmission with converter-driven power takeoff, ranges 1-5 and reverse, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m929a1 - M929A1 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m929a1.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 11380 | `tm_9_2320_272_10` | Table 1-4, Weights, page 1-18, row M929A1, column Empty kg | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 355.6 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1219.2 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 353 | `tm_9_2320_272_10` | Table 1-3, Vehicle Dimensions, page 1-17, Ground Clearance, row M939A1, column Under Axle cm | ground clearance under axle, M939A1, published as 35.3 cm converted to mm; under chassis is 33.3 cm |
+| `net_power_kw` | derived | 186.424968 | `tm_9_2320_272_10` | Table 1-8, Engine and Cooling System Data, page 1-22, heading ENGINE CUMMINGS NHC 250 (M939 AND M939A1 SERIES), Brake Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2320_272_10` | Table 1-9, Automatic Transmission Data, page 1-23, Range Selection, row 1-5 (drive) | automatic transmission with converter-driven power takeoff, ranges 1-5 and reverse, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m929a2 - M929A2 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m929a2.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 10814 | `tm_9_2320_272_10` | Table 1-4, Weights, page 1-18, row M929A2, column Empty kg | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 355.6 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1219.2 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 353 | `tm_9_2320_272_10` | Table 1-3, Vehicle Dimensions, page 1-17, Ground Clearance, row M939A2, column Under Axle cm | ground clearance under axle, M939A2, published as 35.3 cm converted to mm; under chassis is 33.3 cm |
+| `net_power_kw` | derived | 178.967969 | `tm_9_2320_272_10` | Table 1-8, Engine and Cooling System Data, page 1-22, heading ENGINE CUMMINS 6CTA8.3 (M939A2 SERIES), Brake Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2320_272_10` | Table 1-9, Automatic Transmission Data, page 1-23, Range Selection, row 1-5 (drive) | automatic transmission with converter-driven power takeoff, ranges 1-5 and reverse, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m930 - M930 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m930.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 12087 | `tm_9_2320_272_10` | Table 1-4, Weights, page 1-18, row M930, column Empty kg | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 279.4 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data, page 1-24, heading M939 SERIES (11:00 X R20 TIRE) | derived from the size code 11:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1066.8 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data, page 1-24, heading M939 SERIES (11:00 X R20 TIRE) | derived from the size code 11:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 292 | `tm_9_2320_272_10` | Table 1-3, Vehicle Dimensions, page 1-17, Ground Clearance, row M939, column Under Axle cm | ground clearance under axle, M939, published as 29.2 cm converted to mm; under chassis is 27.2 cm |
+| `net_power_kw` | derived | 186.424968 | `tm_9_2320_272_10` | Table 1-8, Engine and Cooling System Data, page 1-22, heading ENGINE CUMMINGS NHC 250 (M939 AND M939A1 SERIES), Brake Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2320_272_10` | Table 1-9, Automatic Transmission Data, page 1-23, Range Selection, row 1-5 (drive) | automatic transmission with converter-driven power takeoff, ranges 1-5 and reverse, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m930a1 - M930A1 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m930a1.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 11879 | `tm_9_2320_272_10` | Table 1-4, Weights, page 1-18, row M930A1, column Empty kg | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 355.6 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1219.2 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 353 | `tm_9_2320_272_10` | Table 1-3, Vehicle Dimensions, page 1-17, Ground Clearance, row M939A1, column Under Axle cm | ground clearance under axle, M939A1, published as 35.3 cm converted to mm; under chassis is 33.3 cm |
+| `net_power_kw` | derived | 186.424968 | `tm_9_2320_272_10` | Table 1-8, Engine and Cooling System Data, page 1-22, heading ENGINE CUMMINGS NHC 250 (M939 AND M939A1 SERIES), Brake Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2320_272_10` | Table 1-9, Automatic Transmission Data, page 1-23, Range Selection, row 1-5 (drive) | automatic transmission with converter-driven power takeoff, ranges 1-5 and reverse, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m930a2 - M930A2 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m930a2.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 11314 | `tm_9_2320_272_10` | Table 1-4, Weights, page 1-18, row M930A2, column Empty kg | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 355.6 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1219.2 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 353 | `tm_9_2320_272_10` | Table 1-3, Vehicle Dimensions, page 1-17, Ground Clearance, row M939A2, column Under Axle cm | ground clearance under axle, M939A2, published as 35.3 cm converted to mm; under chassis is 33.3 cm |
+| `net_power_kw` | derived | 178.967969 | `tm_9_2320_272_10` | Table 1-8, Engine and Cooling System Data, page 1-22, heading ENGINE CUMMINS 6CTA8.3 (M939A2 SERIES), Brake Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2320_272_10` | Table 1-9, Automatic Transmission Data, page 1-23, Range Selection, row 1-5 (drive) | automatic transmission with converter-driven power takeoff, ranges 1-5 and reverse, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m931 - M931 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m931.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 10028 | `tm_9_2320_272_10` | Table 1-4, Weights, page 1-18, row M931, column Empty kg | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 279.4 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data, page 1-24, heading M939 SERIES (11:00 X R20 TIRE) | derived from the size code 11:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1066.8 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data, page 1-24, heading M939 SERIES (11:00 X R20 TIRE) | derived from the size code 11:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 292 | `tm_9_2320_272_10` | Table 1-3, Vehicle Dimensions, page 1-17, Ground Clearance, row M939, column Under Axle cm | ground clearance under axle, M939, published as 29.2 cm converted to mm; under chassis is 27.2 cm |
+| `net_power_kw` | derived | 186.424968 | `tm_9_2320_272_10` | Table 1-8, Engine and Cooling System Data, page 1-22, heading ENGINE CUMMINGS NHC 250 (M939 AND M939A1 SERIES), Brake Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2320_272_10` | Table 1-9, Automatic Transmission Data, page 1-23, Range Selection, row 1-5 (drive) | automatic transmission with converter-driven power takeoff, ranges 1-5 and reverse, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m931a1 - M931A1 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m931a1.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 9598 | `tm_9_2320_272_10` | Table 1-4, Weights, page 1-18, row M931A1, column Empty kg | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 355.6 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1219.2 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 353 | `tm_9_2320_272_10` | Table 1-3, Vehicle Dimensions, page 1-17, Ground Clearance, row M939A1, column Under Axle cm | ground clearance under axle, M939A1, published as 35.3 cm converted to mm; under chassis is 33.3 cm |
+| `net_power_kw` | derived | 186.424968 | `tm_9_2320_272_10` | Table 1-8, Engine and Cooling System Data, page 1-22, heading ENGINE CUMMINGS NHC 250 (M939 AND M939A1 SERIES), Brake Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2320_272_10` | Table 1-9, Automatic Transmission Data, page 1-23, Range Selection, row 1-5 (drive) | automatic transmission with converter-driven power takeoff, ranges 1-5 and reverse, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m931a2 - M931A2 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m931a2.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 9032 | `tm_9_2320_272_10` | Table 1-4, Weights, page 1-18, row M931A2, column Empty kg | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 355.6 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1219.2 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 353 | `tm_9_2320_272_10` | Table 1-3, Vehicle Dimensions, page 1-17, Ground Clearance, row M939A2, column Under Axle cm | ground clearance under axle, M939A2, published as 35.3 cm converted to mm; under chassis is 33.3 cm |
+| `net_power_kw` | derived | 178.967969 | `tm_9_2320_272_10` | Table 1-8, Engine and Cooling System Data, page 1-22, heading ENGINE CUMMINS 6CTA8.3 (M939A2 SERIES), Brake Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2320_272_10` | Table 1-9, Automatic Transmission Data, page 1-23, Range Selection, row 1-5 (drive) | automatic transmission with converter-driven power takeoff, ranges 1-5 and reverse, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m932 - M932 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m932.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 10370 | `tm_9_2320_272_10` | Table 1-4, Weights, page 1-18, row M932, column Empty kg | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 279.4 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data, page 1-24, heading M939 SERIES (11:00 X R20 TIRE) | derived from the size code 11:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1066.8 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data, page 1-24, heading M939 SERIES (11:00 X R20 TIRE) | derived from the size code 11:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 292 | `tm_9_2320_272_10` | Table 1-3, Vehicle Dimensions, page 1-17, Ground Clearance, row M939, column Under Axle cm | ground clearance under axle, M939, published as 29.2 cm converted to mm; under chassis is 27.2 cm |
+| `net_power_kw` | derived | 186.424968 | `tm_9_2320_272_10` | Table 1-8, Engine and Cooling System Data, page 1-22, heading ENGINE CUMMINGS NHC 250 (M939 AND M939A1 SERIES), Brake Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2320_272_10` | Table 1-9, Automatic Transmission Data, page 1-23, Range Selection, row 1-5 (drive) | automatic transmission with converter-driven power takeoff, ranges 1-5 and reverse, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m932a1 - M932A1 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m932a1.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 10098 | `tm_9_2320_272_10` | Table 1-4, Weights, page 1-18, row M932A1, column Empty kg | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 355.6 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1219.2 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 353 | `tm_9_2320_272_10` | Table 1-3, Vehicle Dimensions, page 1-17, Ground Clearance, row M939A1, column Under Axle cm | ground clearance under axle, M939A1, published as 35.3 cm converted to mm; under chassis is 33.3 cm |
+| `net_power_kw` | derived | 186.424968 | `tm_9_2320_272_10` | Table 1-8, Engine and Cooling System Data, page 1-22, heading ENGINE CUMMINGS NHC 250 (M939 AND M939A1 SERIES), Brake Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2320_272_10` | Table 1-9, Automatic Transmission Data, page 1-23, Range Selection, row 1-5 (drive) | automatic transmission with converter-driven power takeoff, ranges 1-5 and reverse, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m932a2 - M932A2 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m932a2.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 9532 | `tm_9_2320_272_10` | Table 1-4, Weights, page 1-18, row M932A2, column Empty kg | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 355.6 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1219.2 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 353 | `tm_9_2320_272_10` | Table 1-3, Vehicle Dimensions, page 1-17, Ground Clearance, row M939A2, column Under Axle cm | ground clearance under axle, M939A2, published as 35.3 cm converted to mm; under chassis is 33.3 cm |
+| `net_power_kw` | derived | 178.967969 | `tm_9_2320_272_10` | Table 1-8, Engine and Cooling System Data, page 1-22, heading ENGINE CUMMINS 6CTA8.3 (M939A2 SERIES), Brake Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2320_272_10` | Table 1-9, Automatic Transmission Data, page 1-23, Range Selection, row 1-5 (drive) | automatic transmission with converter-driven power takeoff, ranges 1-5 and reverse, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m934 - M934 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m934.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 13595 | `tm_9_2320_272_10` | Table 1-4, Weights, page 1-18, row M934, column Empty kg | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 279.4 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data, page 1-24, heading M939 SERIES (11:00 X R20 TIRE) | derived from the size code 11:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1066.8 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data, page 1-24, heading M939 SERIES (11:00 X R20 TIRE) | derived from the size code 11:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 292 | `tm_9_2320_272_10` | Table 1-3, Vehicle Dimensions, page 1-17, Ground Clearance, row M939, column Under Axle cm | ground clearance under axle, M939, published as 29.2 cm converted to mm; under chassis is 27.2 cm |
+| `net_power_kw` | derived | 186.424968 | `tm_9_2320_272_10` | Table 1-8, Engine and Cooling System Data, page 1-22, heading ENGINE CUMMINGS NHC 250 (M939 AND M939A1 SERIES), Brake Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2320_272_10` | Table 1-9, Automatic Transmission Data, page 1-23, Range Selection, row 1-5 (drive) | automatic transmission with converter-driven power takeoff, ranges 1-5 and reverse, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m934a1 - M934A1 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m934a1.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 13293 | `tm_9_2320_272_10` | Table 1-4, Weights, page 1-18, row M934A1, column Empty kg | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 355.6 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1219.2 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 353 | `tm_9_2320_272_10` | Table 1-3, Vehicle Dimensions, page 1-17, Ground Clearance, row M939A1, column Under Axle cm | ground clearance under axle, M939A1, published as 35.3 cm converted to mm; under chassis is 33.3 cm |
+| `net_power_kw` | derived | 186.424968 | `tm_9_2320_272_10` | Table 1-8, Engine and Cooling System Data, page 1-22, heading ENGINE CUMMINGS NHC 250 (M939 AND M939A1 SERIES), Brake Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2320_272_10` | Table 1-9, Automatic Transmission Data, page 1-23, Range Selection, row 1-5 (drive) | automatic transmission with converter-driven power takeoff, ranges 1-5 and reverse, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m934a2 - M934A2 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m934a2.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 12728 | `tm_9_2320_272_10` | Table 1-4, Weights, page 1-18, row M934A2, column Empty kg | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 355.6 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1219.2 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 353 | `tm_9_2320_272_10` | Table 1-3, Vehicle Dimensions, page 1-17, Ground Clearance, row M939A2, column Under Axle cm | ground clearance under axle, M939A2, published as 35.3 cm converted to mm; under chassis is 33.3 cm |
+| `net_power_kw` | derived | 178.967969 | `tm_9_2320_272_10` | Table 1-8, Engine and Cooling System Data, page 1-22, heading ENGINE CUMMINS 6CTA8.3 (M939A2 SERIES), Brake Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2320_272_10` | Table 1-9, Automatic Transmission Data, page 1-23, Range Selection, row 1-5 (drive) | automatic transmission with converter-driven power takeoff, ranges 1-5 and reverse, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m936 - M936 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m936.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 17858 | `tm_9_2320_272_10` | Table 1-4, Weights, page 1-18, row M936, column Empty kg | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 279.4 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data, page 1-24, heading M939 SERIES (11:00 X R20 TIRE) | derived from the size code 11:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1066.8 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data, page 1-24, heading M939 SERIES (11:00 X R20 TIRE) | derived from the size code 11:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 292 | `tm_9_2320_272_10` | Table 1-3, Vehicle Dimensions, page 1-17, Ground Clearance, row M939, column Under Axle cm | ground clearance under axle, M939, published as 29.2 cm converted to mm; under chassis is 27.2 cm |
+| `net_power_kw` | derived | 186.424968 | `tm_9_2320_272_10` | Table 1-8, Engine and Cooling System Data, page 1-22, heading ENGINE CUMMINGS NHC 250 (M939 AND M939A1 SERIES), Brake Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2320_272_10` | Table 1-9, Automatic Transmission Data, page 1-23, Range Selection, row 1-5 (drive) | automatic transmission with converter-driven power takeoff, ranges 1-5 and reverse, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m936a1 - M936A1 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m936a1.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 17322 | `tm_9_2320_272_10` | Table 1-4, Weights, page 1-18, row M936A1, column Empty kg | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 355.6 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1219.2 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 353 | `tm_9_2320_272_10` | Table 1-3, Vehicle Dimensions, page 1-17, Ground Clearance, row M939A1, column Under Axle cm | ground clearance under axle, M939A1, published as 35.3 cm converted to mm; under chassis is 33.3 cm |
+| `net_power_kw` | derived | 186.424968 | `tm_9_2320_272_10` | Table 1-8, Engine and Cooling System Data, page 1-22, heading ENGINE CUMMINGS NHC 250 (M939 AND M939A1 SERIES), Brake Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2320_272_10` | Table 1-9, Automatic Transmission Data, page 1-23, Range Selection, row 1-5 (drive) | automatic transmission with converter-driven power takeoff, ranges 1-5 and reverse, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m936a2 - M936A2 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m936a2.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 16757 | `tm_9_2320_272_10` | Table 1-4, Weights, page 1-18, row M936A2, column Empty kg | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 355.6 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1219.2 | `tm_9_2320_272_10` | Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20) | derived from the size code 14:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 353 | `tm_9_2320_272_10` | Table 1-3, Vehicle Dimensions, page 1-17, Ground Clearance, row M939A2, column Under Axle cm | ground clearance under axle, M939A2, published as 35.3 cm converted to mm; under chassis is 33.3 cm |
+| `net_power_kw` | derived | 178.967969 | `tm_9_2320_272_10` | Table 1-8, Engine and Cooling System Data, page 1-22, heading ENGINE CUMMINS 6CTA8.3 (M939A2 SERIES), Brake Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2320_272_10` | Table 1-9, Automatic Transmission Data, page 1-23, Range Selection, row 1-5 (drive) | automatic transmission with converter-driven power takeoff, ranges 1-5 and reverse, as published |
 | `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
 
 | Absent field | Next source class |
@@ -124,4 +960,76 @@ is a labelled zero, not a refusal.
 | Absent field | Next source class |
 |---|---|
 | `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m_atv_m1240a1 - M-ATV M1240A1 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m_atv_m1240a1.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 12940 | `tm_9_2355_335_10` | Table 2, Weight, page 0002-10, row Vehicle Curb Weight (VCW) (M1240A1) | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | derived | 275.908953 | `tm_9_2355_335_10` | Table 13, Engine, page 0002-14, row Maximum Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2355_335_10` | Table 19, Transmission, page 0002-16, row Type | Allison 3500 SP six speed automatic with TC 418 torque converter, second gear start |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m_atv_m1245 - M-ATV M1245 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m_atv_m1245.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 12325 | `tm_9_2355_335_10` | Table 2, Weight, page 0002-10, row Vehicle Curb Weight (VCW) (M1245) | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 395.0 | `tm_9_2355_335_10` | Table 15, Tires, page 0002-15, row Type | derived from the size code 395/85R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1179.5 | `tm_9_2355_335_10` | Table 15, Tires, page 0002-15, row Type | derived from the size code 395/85R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | derived | 275.908953 | `tm_9_2355_335_10` | Table 13, Engine, page 0002-14, row Maximum Horsepower | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2355_335_10` | Table 19, Transmission, page 0002-16, row Type | Allison 3500 SP six speed automatic with TC 418 torque converter, second gear start |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## toyota_t100 - Toyota T100 (wheeled)
+
+- Capture: `data/vehicle/catalogue/toyota_t100_factory_service_manual_1996.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | documented | manual | `toyota_t100_factory_service_manual_1996` | Contents page, section MT Manual Transmission (W59), scan PDF page 2 | the T100 service manual covers a W59 manual transmission and an automatic transmission; this entry states the manual option, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `operating_weight_kg` | a standard characteristics manual, for example TM 55-46-1, or the vehicle sustainment manual |
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |

@@ -1,0 +1,160 @@
+{
+  "retrieved": "2026-09-24",
+  "note": "Catalogue capture for the held tier-4 General Dynamics Land Systems product datasheet for the Cougar 4x4 MRAP. It holds the Cougar 4x4 (MRAP Category I) as a wheeled entry. The datasheet is the maker product page, so every value is grade claimed. It publishes the identity, overall dimensions, the curb and combat weights, the payload, ground clearance, the Caterpillar C7 rating of 330 hp, the Allison 3500 SP automatic transmission, the range and the fording depth. The datasheet prints no company name, so the maker rests on the maker product page that publishes it. No freely downloadable operator manual for the Cougar or the RG-31 exists, so this maker datasheet is the held document.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "cougar_4x4",
+      "canonical_name": "Cougar 4x4",
+      "maker": "General Dynamics Land Systems",
+      "model": "Cougar",
+      "variant": "4x4, MRAP Category I",
+      "variant_id": "cougar_4x4",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": ["cougar", "cougar 4x4", "mrap cougar"],
+      "keywords": ["mrap", "mine resistant", "cougar", "4x4"],
+      "runtime_ready": false,
+      "values": {
+        "length_mm": {
+          "value": 6350,
+          "unit": "mm",
+          "source": "gdls_cougar_4x4_datasheet",
+          "locator": "Features & Specifications, Configuration, Length, page 2",
+          "state": "overall length from the front bumper to the rear steps, published as 250 in (635 cm); the cm figure converted to mm",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2710,
+          "unit": "mm",
+          "source": "gdls_cougar_4x4_datasheet",
+          "locator": "Features & Specifications, Configuration, Width, page 2",
+          "state": "overall width at the rear side marker lights, published as 107 in (271 cm); the cm figure converted to mm",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 3020,
+          "unit": "mm",
+          "source": "gdls_cougar_4x4_datasheet",
+          "locator": "Features & Specifications, Configuration, Height, page 2",
+          "state": "approximate overall height to the top of the go light, published as 119 in (302 cm); the cm figure converted to mm",
+          "grade": "claimed"
+        },
+        "ground_clearance_mm": {
+          "value": 380,
+          "unit": "mm",
+          "source": "gdls_cougar_4x4_datasheet",
+          "locator": "Features & Specifications, Configuration, Ground Clearance, page 2",
+          "state": "ground clearance under the transfer case, published as 15 in (38 cm); the cm figure converted to mm",
+          "grade": "claimed"
+        },
+        "curb_weight_kg": {
+          "value": 15422,
+          "unit": "kg",
+          "source": "gdls_cougar_4x4_datasheet",
+          "locator": "Features & Specifications, Configuration, Curb Weight, page 2",
+          "state": "curb weight, published as 34,000 lb (15,422 kg); the published kg figure used directly",
+          "grade": "claimed"
+        },
+        "gross_weight_kg": {
+          "value": 19504,
+          "unit": "kg",
+          "source": "gdls_cougar_4x4_datasheet",
+          "locator": "Features & Specifications, Configuration, Combat Weight, page 2",
+          "state": "maximum combat weight, published as 43,000 lb (19,504 kg); the published kg figure used directly",
+          "grade": "claimed"
+        },
+        "payload_kg": {
+          "value": 2268,
+          "unit": "kg",
+          "source": "gdls_cougar_4x4_datasheet",
+          "locator": "Features & Specifications, Configuration, Payload, page 2",
+          "state": "maximum payload, published as 5,000 lb (2,268 kg); the published kg figure used directly",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 330,
+          "unit": "hp",
+          "source": "gdls_cougar_4x4_datasheet",
+          "locator": "Features & Specifications, Power Train & Suspension, Horsepower, page 2",
+          "state": "rated power at 2400 rpm, Caterpillar C7 diesel (MIL SPEC), published as 330 hp (246 kW); the maker states a rating, not a net basis",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Caterpillar C7 diesel (MIL SPEC)",
+          "unit": "text",
+          "source": "gdls_cougar_4x4_datasheet",
+          "locator": "Features & Specifications, Power Train & Suspension, Engine, page 2",
+          "state": "engine maker and model, as published",
+          "grade": "claimed"
+        },
+        "torque_nm": {
+          "value": 1166,
+          "unit": "N m",
+          "source": "gdls_cougar_4x4_datasheet",
+          "locator": "Features & Specifications, Power Train & Suspension, Torque, page 2",
+          "state": "peak torque at 1450 rpm, published as 860 ft lbs (1166 N m); the published N m figure used directly",
+          "grade": "claimed"
+        },
+        "transmission_type": {
+          "value": "automatic",
+          "unit": "enum",
+          "source": "gdls_cougar_4x4_datasheet",
+          "locator": "Features & Specifications, Power Train & Suspension, Transmission, page 2",
+          "state": "Allison 3500 SP series automatic transmission, as published",
+          "grade": "claimed"
+        },
+        "tyre_size_text": {
+          "value": "395/85 R20",
+          "unit": "text",
+          "source": "gdls_cougar_4x4_datasheet",
+          "locator": "Features & Specifications, Power Train & Suspension, Tires, page 2",
+          "state": "Michelin XZL 395/85 R20, as published; the named size-code derivation gives the width and the outside diameter",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 88,
+          "unit": "km/h",
+          "source": "gdls_cougar_4x4_datasheet",
+          "locator": "Features & Specifications, Performance, Governed Speed, page 2",
+          "state": "governed speed, published as 55 mph (88 km/h); the sprint speed is 65 mph (104 km/h), printed as 65 mpg in the source",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 675.9,
+          "unit": "km",
+          "source": "gdls_cougar_4x4_datasheet",
+          "locator": "Features & Specifications, Performance, Range, page 2",
+          "state": "range, published as 420 mi (675.9 km); the published km figure used directly",
+          "grade": "claimed"
+        },
+        "fording_depth_mm": {
+          "value": 990,
+          "unit": "mm",
+          "source": "gdls_cougar_4x4_datasheet",
+          "locator": "Features & Specifications, Performance, Fording Depth, page 2",
+          "state": "unprepared fording depth, published as about 39 in (99 cm); the cm figure converted to mm",
+          "grade": "claimed"
+        },
+        "approach_angle_deg": {
+          "value": 40,
+          "unit": "deg",
+          "source": "gdls_cougar_4x4_datasheet",
+          "locator": "Features & Specifications, Performance, Approach Angle, page 2",
+          "state": "approach angle, as published",
+          "grade": "claimed"
+        },
+        "departure_angle_deg": {
+          "value": 50,
+          "unit": "deg",
+          "source": "gdls_cougar_4x4_datasheet",
+          "locator": "Features & Specifications, Performance, Departure Angle, page 2",
+          "state": "departure angle, as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

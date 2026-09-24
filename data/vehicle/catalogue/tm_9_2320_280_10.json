@@ -1,0 +1,136 @@
+{
+  "retrieved": "2026-09-24",
+  "note": "Catalogue capture for the held tier-2 operator manual TM 9-2320-280-10 (M998 series, January 1996, Change 3). It holds the M998 cargo/troop carrier as a wheeled truck entry. The manual publishes identity, overall dimensions, ground clearance, the curb weight, the gross vehicle weight, the engine rating as brake horsepower, the automatic transmission and the tyre size code. It names no manufacturer, publishes no net power with a stated basis and no operating weight, so the entry is not runtime-ready. Every dimension comes from a table that prints both the inch and the centimetre figure. This entry records the published centimetre figure converted to millimetres.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "hmmwv_m998",
+      "canonical_name": "M998 HMMWV",
+      "maker": "unknown",
+      "model": "HMMWV",
+      "variant": "M998 cargo/troop carrier, 1-1/4 ton, 4x4",
+      "variant_id": "hmmwv_m998",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": ["m998", "m998a1", "hmmwv", "humvee", "m1038"],
+      "keywords": ["truck", "utility", "cargo", "4x4", "troop carrier"],
+      "runtime_ready": false,
+      "values": {
+        "length_mm": {
+          "value": 4570,
+          "unit": "mm",
+          "source": "tm_9_2320_280_10",
+          "locator": "Table 1-13, Vehicle Dimensions, printed page 1-30, row M998/M998A1, column Length Overall",
+          "state": "overall length, M998, published as 180 in (457 cm); the cm figure converted to mm",
+          "grade": "documented"
+        },
+        "width_mm": {
+          "value": 2160,
+          "unit": "mm",
+          "source": "tm_9_2320_280_10",
+          "locator": "Table 1-13, Vehicle Dimensions, printed page 1-30, row All, column Width Overall",
+          "state": "overall width, all M998 series, published as 85 in (216 cm); the cm figure converted to mm",
+          "grade": "documented"
+        },
+        "height_mm": {
+          "value": 1750,
+          "unit": "mm",
+          "source": "tm_9_2320_280_10",
+          "locator": "Table 1-13, Vehicle Dimensions, printed page 1-30, row M998/M998A1, column Height Overall",
+          "state": "overall height, M998 basic vehicle, published as 69 in (175 cm); the cm figure converted to mm",
+          "grade": "documented"
+        },
+        "ground_clearance_mm": {
+          "value": 410,
+          "unit": "mm",
+          "source": "tm_9_2320_280_10",
+          "locator": "Table 1-13, Vehicle Dimensions, printed page 1-30, row All, column Ground Clearance Under Axle",
+          "state": "ground clearance under axle, published as 16 in (41 cm); under chassis is 24 in (61 cm); the cm figure converted to mm",
+          "grade": "documented"
+        },
+        "curb_weight_kg": {
+          "value": 2361,
+          "unit": "kg",
+          "source": "tm_9_2320_280_10",
+          "locator": "Table 1-18, Curb Weight, printed page 1-34, row M998",
+          "state": "curb weight, M998, vehicle only with no crew and no payload, published as 5,200 lb (2,361 kg); the published kg figure used directly",
+          "grade": "documented"
+        },
+        "gross_weight_kg": {
+          "value": 3496,
+          "unit": "kg",
+          "source": "tm_9_2320_280_10",
+          "locator": "Table 1-15, Vehicle Cruising Range, printed page 1-32, row M998, column Gross Vehicle Weight (GVW)",
+          "state": "gross vehicle weight, M998, published as 7,700 lb (3,496 kg); the published kg figure used directly",
+          "grade": "documented"
+        },
+        "published_power_hp": {
+          "value": 150,
+          "unit": "hp",
+          "source": "tm_9_2320_280_10",
+          "locator": "Table 1-4, Engine Data (6.2 L), printed page 1-25, Brake horsepower",
+          "state": "brake horsepower at 3600 rpm, 6.2 L naturally-aspirated diesel, no net basis; the 6.5 L engine is 160 horsepower at 3400 rpm",
+          "grade": "documented"
+        },
+        "engine_displacement_l": {
+          "value": 6.2,
+          "unit": "L",
+          "source": "tm_9_2320_280_10",
+          "locator": "Table 1-4, Engine Data (6.2 L), printed page 1-25, Type",
+          "state": "6.2 liter diesel, naturally-aspirated, liquid-cooled, as published",
+          "grade": "documented"
+        },
+        "transmission_type": {
+          "value": "automatic",
+          "unit": "enum",
+          "source": "tm_9_2320_280_10",
+          "locator": "Table 1-7, Transmission Data (3L80), printed page 1-26, Type",
+          "state": "three-speed automatic, model Turbo Hydra-Matic 3L80, as published; the A2 vehicles carry the four-speed 4L80-E",
+          "grade": "documented"
+        },
+        "gears": {
+          "value": 3,
+          "unit": "count",
+          "source": "tm_9_2320_280_10",
+          "locator": "Table 1-7, Transmission Data (3L80), printed page 1-26, Type",
+          "state": "three forward speeds and one reverse, as published",
+          "grade": "documented"
+        },
+        "max_speed_kmh": {
+          "value": 88,
+          "unit": "km/h",
+          "source": "tm_9_2320_280_10",
+          "locator": "Table 1-11, Maximum Vehicle Operating Speeds (3L80 Transmission), printed page 1-29, row D (drive), column H High Range",
+          "state": "maximum vehicle operating speed, drive range, high transfer case range, published as 55 mph (88 kph)",
+          "grade": "documented"
+        },
+        "fording_depth_mm": {
+          "value": 760,
+          "unit": "mm",
+          "source": "tm_9_2320_280_10",
+          "locator": "general description of fording, printed page 1-4",
+          "state": "fording depth without a deep water fording kit, published as 30 in (76 cm); the cm figure converted to mm",
+          "grade": "documented"
+        },
+        "wading_depth_mm": {
+          "value": 1520,
+          "unit": "mm",
+          "source": "tm_9_2320_280_10",
+          "locator": "general description of fording, printed page 1-4",
+          "state": "fording depth with the deep water fording kit installed, published as 60 in (152 cm); the cm figure converted to mm",
+          "grade": "documented"
+        },
+        "tyre_size_text": {
+          "value": "36x12.50-16.5 LT bias ply; 37x12.50R16.5 LT radial",
+          "unit": "text",
+          "source": "tm_9_2320_280_10",
+          "locator": "PMCS tyre inspection, printed page 2-87",
+          "state": "the two published tyre size codes for the M998 series, invite bias ply and radial, as published; the named size-code derivation does not parse this compound code",
+          "grade": "documented"
+        }
+      }
+    }
+  ]
+}
