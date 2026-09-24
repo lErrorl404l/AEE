@@ -517,15 +517,17 @@ class HeldSourceTest(unittest.TestCase):
             errors = v.validate_held_sources(_sources(), dest)
         self.assertEqual([], errors)
 
-    def test_held_source_missing_file_is_rejected_naming_id(self) -> None:
+    def test_held_source_missing_file_is_skipped_not_invalid(self) -> None:
+        # The held bytes are not vendored (gitignored), so a fresh clone has
+        # the register but not the documents.  This structural gate tolerates
+        # the absent bytes; the explicit byte check is
+        # fetch_vehicle_sources.verify_sources.
         with tempfile.TemporaryDirectory() as tmp:
             dest = Path(tmp)
             _write_held_files(dest)
             (dest / "fx_standard.bin").unlink()
             errors = v.validate_held_sources(_sources(), dest)
-        self.assertEqual(len(errors), 1, errors)
-        self.assertIn("fx_standard", errors[0])
-        self.assertIn("missing", errors[0])
+        self.assertEqual([], errors)
 
     def test_held_source_digest_mismatch_is_rejected_naming_id(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -751,7 +753,11 @@ class ValidatorCliTest(unittest.TestCase):
             self.assertEqual(0, result.returncode, result.stdout + result.stderr)
             self.assertIn("vehicle data gate: PASS", result.stdout)
 
-    def test_cli_rejects_a_missing_held_file(self) -> None:
+    def test_cli_accepts_missing_held_bytes(self) -> None:
+        # The held bytes are not vendored (gitignored), so a fresh clone has
+        # the register but not the documents, and an empty sources directory
+        # is never tracked.  The CLI tolerates the absence; the explicit byte
+        # check is fetch_vehicle_sources.verify_sources.
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp) / "vehicle"
             _write_corpus(root)
@@ -763,10 +769,8 @@ class ValidatorCliTest(unittest.TestCase):
                 cwd=str(REPO),
                 check=False,
             )
-        self.assertEqual(1, result.returncode)
-        self.assertIn("vehicle data gate: FAIL", result.stdout)
-        self.assertIn("fx_standard", result.stdout)
-        self.assertIn("missing", result.stdout)
+        self.assertEqual(0, result.returncode, result.stdout + result.stderr)
+        self.assertIn("vehicle data gate: PASS", result.stdout)
 
     def test_cli_accepts_a_catalogue_and_class_map(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

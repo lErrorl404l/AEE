@@ -26,7 +26,7 @@ import hashlib
 import json
 import sys
 import tempfile
-from collections.abc import Sequence
+from collections.abc import Mapping, Sequence
 from pathlib import Path
 from typing import cast
 
@@ -37,7 +37,10 @@ if str(_REPO) not in sys.path:
     sys.path.insert(0, str(_REPO))
 
 from tools.validation import vehicle_catalogue  # noqa: E402
-from tools.validation.fetch_vehicle_sources import verify_sources  # noqa: E402
+from tools.validation.fetch_vehicle_sources import (  # noqa: E402
+    held_filename,
+    sha256_file,
+)
 
 DEFAULT_DATA = Path(__file__).parents[2] / "data" / "vehicle"
 
@@ -240,8 +243,31 @@ def validate_sources(
 
 
 def validate_held_sources(sources: Sequence[object], sources_dir: Path) -> list[str]:
-    """Check every held source against its on-disk bytes and digest."""
-    return verify_sources(sources, sources_dir)
+    """Verify the held bytes that are present; absent bytes are not an error.
+
+    The documents are not vendored (they are gitignored, the same rule as the
+    ballistics sources), so a fresh clone holds the register but not the
+    bytes.  A held source whose file is absent is skipped here.  The explicit
+    byte check is `fetch_vehicle_sources.py --verify`.
+    """
+    errors: list[str] = []
+    for raw in sources:
+        if not isinstance(raw, Mapping) or raw.get("primary_held") is not True:
+            continue
+        source_id = str(raw.get("source_id", "?"))
+        path = sources_dir / held_filename(raw)
+        if not path.exists():
+            continue
+        digest = raw.get("sha256")
+        if not isinstance(digest, str) or not digest:
+            errors.append(f"{source_id}: primary_held is true but sha256 is empty")
+            continue
+        actual = sha256_file(path)
+        if actual != digest:
+            errors.append(
+                f"{source_id}: digest mismatch: recorded {digest}, on disk {actual}"
+            )
+    return errors
 
 
 def _engine_geometry_allowed(
