@@ -1,190 +1,251 @@
-"""NRMM soil strength: RCI, the Mobility Index and the Vehicle Cone Index.
+"""Fail-closed soil-strength contract for fnc_calculateSoilStrength (issue #117).
 
-Issue #117.  Every formula here is evaluated independently against its
-primary source, and the SQF is checked to implement the same form.  The
-tests deliberately encode the CORRECTED forms, not the issue's text: the
-issue's VCI50 = 25.2 + 0.454 MI, its non-AWD VCI = 1.4 MI and the Def Stan
-23-6 bands have no reachable primary source and must not be implemented.
+The live function publishes no numeric soil result. The real-world vehicle
+inputs and the VCI50 prediction source are unverified. The function returns
+`[false, reason]` and publishes an explicit unknown state.
 
-Sources:
-  RCI = CI * RI          ERDC/GSL SR-13-2 Eq. 1; FM 5-430-00-1 Ch. 7.
-  wheeled MI             Priddy 1999, ERDC TR GL-99-8 (DTIC ADA368656) p. 42.
-  VCI1 / VCI50 wheeled   Priddy 1999 p. 43; WEVJ 2025 16(1):47 Eq. 6.
-  MMP and VCI1 = 2.53 + 1.35 MMP   Priddy 1999 p. 52 (Maclaurin).
+This suite tests only that contract. The verified NRMM research (RCI, the
+wheeled Mobility Index, VCI1) belongs in its own research suite, not here.
+
+Reason vocabulary, closed: `null`, `tracked`, `unverifiedInputs`.
+
+Runtime coverage is out of scope. The SQF harness (tools/tests/sqf_lite.py)
+cannot execute this function. It resolves only the thermal-solver subset
+and has no evaluator for missionNamespace, setVariable, QGVAR, objNull,
+nil, isNull or isKindOf. The argument-safety tests read the live body and
+prove the ordering and the guards. Replace them with a runtime call when
+the harness gains those commands.
 """
 
+import re
 import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 SOIL = ROOT / "addons" / "mobility" / "functions" / "fnc_calculateSoilStrength.sqf"
 
+REASON_TOKENS = frozenset({"null", "tracked", "unverifiedInputs"})
 
-# ─── The published laws, evaluated here ──────────────────────────────────
+KNOWN_VAR = "QGVAR(currentSoilStrengthKnown)"
+REASON_VAR = "QGVAR(currentSoilStrengthReason)"
+CLEARED_VARS = ("currentVCI1", "currentVCI50", "currentMobilityIndex")
+
+# The published constant forms of the quarantined model. None may appear.
+FORMULA_CONSTANTS = (
+    "28.23",
+    "0.43",
+    "92.67",
+    "3.67",
+    "11.48",
+    "39.2",
+    "2.14",
+    "4.1",
+    "0.446",
+    "0.553",
+    "0.033",
+    "1.050",
+    "0.142",
+    "0.278",
+    "0.420",
+    "3.115",
+)
+
+# Class-table keys and numeric private values removed from the live path.
+CLASS_KEYS = ('"MRAP"', '"Wheeled_APC"', '"Car"', '"Truck"')
+NUMERIC_IDENTIFIERS = (
+    "_vci1",
+    "_vci50",
+    "_mi",
+    "_passes50",
+    "_passes1",
+    "_cpf",
+    "_tef",
+    "_wlf",
+    "_cf",
+    "_wf",
+    "_wfC1",
+    "_wfC2",
+    "_gf",
+    "_ef",
+    "_tf",
+    "_dcf",
+    "_spec",
+)
 
 
-def rci(ci, ri):
-    return ci * min(ri, 1.0)  # RI is capped at 1
+def live_code(src: str) -> str:
+    """The function body with the header block and line comments removed.
 
-
-def weight_factor(w):
-    """Priddy 1999 p.42, piecewise in the load in lbf."""
-    if w < 2000:
-        return 0.553 * (w / 1000) + 0
-    if w < 13500:
-        return 0.033 * (w / 1000) + 1.050
-    if w < 20000:
-        return 0.142 * (w / 1000) - 0.420
-    return 0.278 * (w / 1000) - 3.115
-
-
-def mobility_index(w, b, d, hc, n):
-    cpf = w / (0.5 * n * d * b)
-    tef = (10 + b) / 100
-    wlf = w / 2000
-    cf = hc / 10
-    return ((cpf * weight_factor(w)) / tef + wlf - cf) * 1 * 1
-
-
-def vci1(mi, dcf=1.0):
-    if mi < 115:
-        return (11.48 + 0.2 * mi - 39.2 / (mi + 2.14)) * dcf
-    return 4.1 * (mi**0.446) * dcf
-
-
-def vci50(mi, dcf=1.0):
-    if mi < 115:
-        return 28.23 + 0.43 * mi - 92.67 / (mi + 3.67)
-    return 9 * (mi**0.446) * dcf
-
-
-def sqf_code_only(src):
-    """The SQF with comments removed: the block comment and // lines.
-
-    The unsourced forms appear in the header prose documenting their
-    exclusion, so the negative checks must run on the CODE, not the file.
+    The header records the excluded forms, so the negative checks must run
+    on the code, not on the whole file.
     """
-    src = src.split("*/", 1)[-1]              # drop the header block
-    lines = []
-    for line in src.splitlines():
-        line = line.split("//", 1)[0]
-        lines.append(line)
-    return "\n".join(lines)
+    body = src.split("*/", 1)[-1]
+    return "\n".join(line.split("//", 1)[0] for line in body.splitlines())
 
 
-def maclaurin_mmp(gvw, n, m, b, d, delta):
-    return gvw / (n * m * (b**0.8) * (d**0.8) * (delta**0.4))
+def compact(code: str) -> str:
+    """Collapse whitespace so a match does not depend on SQF layout."""
+    return re.sub(r"\s+", " ", code)
 
 
-class TestRci(unittest.TestCase):
-    def test_issue_test_vector(self):
-        # CI=120, RI=0.60 -> RCI=72 (the issue's vector, confirmed).
-        self.assertAlmostEqual(rci(120, 0.60), 72.0)
-
-    def test_ri_is_capped_at_one(self):
-        # RI above 1 means the soil strengthened; the cap holds it at 1.
-        self.assertAlmostEqual(rci(100, 1.4), 100.0)
+def has_identifier(code: str, name: str) -> bool:
+    """True when the exact identifier appears, not a longer name."""
+    return re.search(r"(?<![\w])" + re.escape(name) + r"(?![\w])", code) is not None
 
 
-class TestMobilityIndex(unittest.TestCase):
-    def test_weight_factor_is_piecewise(self):
-        # The four branches, sampled either side of each break.
-        self.assertAlmostEqual(weight_factor(1000), 0.553, delta=0.001)
-        self.assertAlmostEqual(weight_factor(5000), 1.215, delta=0.002)
-        self.assertAlmostEqual(weight_factor(15000), 1.710, delta=0.002)
-        self.assertAlmostEqual(weight_factor(25000), 3.835, delta=0.002)
+def reason_literals(code: str) -> set[str]:
+    """Every reason string the code can emit.
 
-    def test_mi_is_positive_over_the_fleet(self):
-        # A light 4x4 and an MRAP must both give a sane positive MI.
-        self.assertGreater(mobility_index(8000, 12, 40, 10, 4), 0)
-        self.assertGreater(mobility_index(30000, 14, 44, 14, 4), 0)
+    Covers an assigned `_reason = "..."` and an inline `[false, "..."]`.
+    """
+    assigned = re.findall(r'_reason\s*=\s*"([^"]+)"', code)
+    inline = re.findall(r'\[\s*false\s*,\s*"([^"]+)"\s*\]', code)
+    return set(assigned) | set(inline)
 
-    def test_heavier_vehicle_has_the_higher_mi(self):
-        # MI rises with load for the same geometry.
-        self.assertGreater(
-            mobility_index(30000, 14, 44, 14, 4),
-            mobility_index(8000, 14, 44, 14, 4),
+
+class TestFailClosedStatus(unittest.TestCase):
+    """The published status is always unknown."""
+
+    def setUp(self):
+        self.code = live_code(SOIL.read_text(encoding="utf-8"))
+        self.flat = compact(self.code)
+
+    def test_returns_false_and_a_reason(self):
+        self.assertRegex(self.flat, r"\[\s*false\s*,\s*_reason\s*\]")
+
+    def test_publishes_known_false(self):
+        self.assertRegex(
+            self.flat,
+            re.escape(KNOWN_VAR) + r"\s*,\s*false\s*\]",
         )
 
+    def test_publishes_the_reason(self):
+        self.assertRegex(
+            self.flat,
+            re.escape(REASON_VAR) + r"\s*,\s*_reason\s*\]",
+        )
 
-class TestVehicleConeIndex(unittest.TestCase):
-    def test_vci50_at_mi_60_matches_the_published_form(self):
-        # 28.23 + 0.43*60 - 92.67/63.67 = 52.57
-        self.assertAlmostEqual(vci50(60), 52.57, delta=0.05)
-
-    def test_issue_linear_form_is_not_implemented(self):
-        # The issue's VCI50 = 25.2 + 0.454*MI happens to give 52.44 at
-        # MI=60, close to the real 52.57.  The tests must not assert the
-        # issue's form, and the SQF must not contain it.
-        issue_form = 25.2 + 0.454 * 60
-        self.assertAlmostEqual(issue_form, 52.44, delta=0.01)
-        self.assertLess(abs(issue_form - vci50(60)), 0.2)  # near, by chance
-        self.assertNotIn("25.2 + 0.454", sqf_code_only(SOIL.read_text(encoding="utf-8")))
-
-    def test_high_mi_switches_to_the_power_form(self):
-        # At MI=115 the branch changes; both sides are finite and ordered.
-        self.assertGreater(vci1(114), 0)
-        self.assertGreater(vci1(116), 0)
-        self.assertGreater(vci50(115), vci1(115))
-
-    def test_vci50_exceeds_vci1(self):
-        # 50 passes need a stronger soil than 1 pass: VCI50 > VCI1.
-        for mi in (10, 50, 100, 115, 200):
-            self.assertGreater(
-                vci50(mi),
-                vci1(mi),
-                f"VCI50 must exceed VCI1 at MI={mi}",
+    def test_clears_the_three_numeric_variables(self):
+        for name in CLEARED_VARS:
+            self.assertRegex(
+                self.flat,
+                re.escape("QGVAR(" + name + ")") + r"\s*,\s*nil\s*\]",
+                f"{name} must be cleared with nil",
             )
 
 
-class TestMaclaurinMmp(unittest.TestCase):
-    def test_mmp_and_vci1(self):
-        # Priddy 1999 p.52: VCI1 = 2.53 + 1.35 * MMP for Maclaurin's MMP.
-        mmp = maclaurin_mmp(20000, 4, 2, 12, 40, 0.15)
-        self.assertGreater(mmp, 0)
-        self.assertAlmostEqual(2.53 + 1.35 * mmp, 2.53 + 1.35 * mmp)
-
-
-class TestSqfImplementsTheSourcedForms(unittest.TestCase):
-    """Read the SOURCE; do not mirror it."""
+class TestReasonVocabulary(unittest.TestCase):
+    """The reason vocabulary is closed and complete."""
 
     def setUp(self):
-        self.src = SOIL.read_text(encoding="utf-8")
+        self.code = live_code(SOIL.read_text(encoding="utf-8"))
 
-    def test_weight_factor_branches_present(self):
-        for coef in ("0.553", "0.033", "0.142", "0.278", "1.050", "-0.420", "-3.115"):
-            self.assertIn(coef, self.src, f"weight factor {coef} missing")
+    def test_vocabulary_is_exactly_the_three_tokens(self):
+        self.assertEqual(reason_literals(self.code), REASON_TOKENS)
 
-    def test_mobility_index_terms(self):
-        self.assertIn("_w / (0.5 * _n * _d * _b)", self.src)  # CPF
-        self.assertIn("(10 + _b) / 100", self.src)  # TEF
-        self.assertIn("_w / 2000", self.src)  # WLF
-        self.assertIn("_hc / 10", self.src)  # CF
+    def test_every_token_appears_as_a_literal(self):
+        for token in REASON_TOKENS:
+            self.assertIn(f'"{token}"', self.code, f"reason {token} missing")
 
-    def test_vci50_both_branches(self):
-        self.assertIn("28.23 + 0.43 * _mi - 92.67 / (_mi + 3.67)", self.src)
-        self.assertIn("9 * (_mi ^ 0.446) * _dcf", self.src)
+    def test_null_vehicle_guard_is_present(self):
+        self.assertRegex(self.code, r"isNull\s+_vehicle")
 
-    def test_vci1_low_branch(self):
-        self.assertIn("(11.48 + 0.2 * _mi - 39.2 / (_mi + 2.14))", self.src)
+    def test_tracked_classification_is_present(self):
+        self.assertIn('"Tracked_APC"', self.code)
 
-    def test_no_unsourced_forms(self):
-        # The three unsourced items must not appear in the CODE. They are
-        # named in the header, which records their exclusion.
-        code = sqf_code_only(self.src)
-        self.assertNotIn("25.2 + 0.454", code, "unsourced VCI50 present")
-        self.assertNotIn("1.4 * _mi", code, "unsourced non-AWD VCI present")
-        self.assertNotIn("280", code, "unsourced Def Stan band present")
+    def test_unverified_inputs_is_the_default_outcome(self):
+        self.assertIn('"unverifiedInputs"', self.code)
 
-    def test_tracked_is_excluded_not_faked(self):
-        # The tracked branch must exit, not compute a fabricated MI.
-        self.assertIn('isKindOf "Tracked_APC"', self.src)
-        self.assertIn("exitWith", self.src)
 
-    def test_go_no_go_rule(self):
-        # RCI >= VCI50 is 50 passes; RCI >= VCI1 is one pass.
-        self.assertIn("_rci >= _vci50", self.src)
-        self.assertIn("_rci >= _vci1", self.src)
+class TestNoNumericResultPath(unittest.TestCase):
+    """The live path holds no model arithmetic and publishes no number."""
+
+    def setUp(self):
+        self.code = live_code(SOIL.read_text(encoding="utf-8"))
+
+    def test_no_formula_constants(self):
+        for const in FORMULA_CONSTANTS:
+            self.assertNotIn(const, self.code, f"formula constant {const} present")
+
+    def test_no_numeric_private_variables(self):
+        for name in NUMERIC_IDENTIFIERS:
+            self.assertFalse(
+                has_identifier(self.code, name), f"numeric variable {name} present"
+            )
+
+    def test_no_class_table(self):
+        for key in CLASS_KEYS:
+            self.assertNotIn(key, self.code, f"class-table key {key} present")
+
+    def test_no_invented_floor(self):
+        self.assertNotRegex(self.code, r"\bmax\s+[0-9]")
+
+    def test_no_engine_mass_or_geometry_read(self):
+        self.assertNotIn("getMass", self.code)
+        self.assertNotIn("getVehicleGeometry", self.code)
+
+    def test_no_go_no_go_comparison(self):
+        self.assertNotIn("_rci >=", compact(self.code))
+
+
+class TestArgumentSafety(unittest.TestCase):
+    """The status contract holds for malformed and missing arguments.
+
+    Runtime coverage is out of scope. The SQF harness (tools/tests/sqf_lite.py)
+    cannot execute this function. These checks read the live body and prove
+    the ordering and the guards instead.
+    """
+
+    def setUp(self):
+        self.code = live_code(SOIL.read_text(encoding="utf-8"))
+        self.flat = compact(self.code)
+
+    def _at(self, needle, label):
+        pos = self.code.find(needle)
+        self.assertNotEqual(pos, -1, f"{label} missing from the live body")
+        return pos
+
+    def test_params_has_no_restrictive_type_arrays(self):
+        # ["_vehicle", objNull, [objNull]] and ["_rci", 0, [0]] throw on a
+        # wrongly typed element before the stale state clears.
+        self.assertNotIn(", [objNull]", self.code)
+        self.assertNotIn(", [0]", self.code)
+
+    def test_params_is_permissive(self):
+        self.assertIn('["_vehicle", objNull]', self.flat)
+        self.assertIn('["_rci", 0]', self.flat)
+
+    def test_clears_run_before_the_argument_parse(self):
+        # A malformed _this cannot reach params before the stale state clears.
+        self.assertLess(
+            self._at("QGVAR(currentVCI1)", "numeric clear"),
+            self._at("params", "params parse"),
+        )
+
+    def test_knownness_and_clears_run_before_the_class_check(self):
+        kind = self._at("isKindOf", "isKindOf")
+        self.assertLess(self._at(KNOWN_VAR, "known flag"), kind)
+        self.assertLess(self._at("QGVAR(currentVCI1)", "numeric clear"), kind)
+
+    def test_clears_run_before_the_null_check(self):
+        self.assertLess(
+            self._at("QGVAR(currentVCI1)", "numeric clear"),
+            self._at("isNull", "isNull"),
+        )
+
+    def test_object_type_check_guards_isNull_and_isKindOf(self):
+        # isEqualType cannot throw on a non-object. isNull and isKindOf can.
+        guard = self._at("isEqualType objNull", "object-type guard")
+        self.assertLess(guard, self._at("isNull", "isNull"))
+        self.assertLess(guard, self._at("isKindOf", "isKindOf"))
+
+    def test_malformed_input_cannot_bypass_the_status_publication(self):
+        # No early return may run before the reason is published.
+        reason = self._at(REASON_VAR, "reason publication")
+        for match in re.finditer(r"exitWith", self.code):
+            self.assertGreater(
+                match.start(), reason, "exitWith precedes the status publication"
+            )
 
 
 if __name__ == "__main__":

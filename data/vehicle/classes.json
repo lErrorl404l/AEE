@@ -1,0 +1,369 @@
+{
+  "schema": "aee.vehicle.class_inventory/1",
+  "tokens": [
+    {
+      "exclusion_reason": "no positive ground class-table row",
+      "is_ground": false,
+      "kind": "engine_base",
+      "provenance": [
+        "addons/armour/functions/fnc_deriveProtection.sqf:52"
+      ],
+      "token": "APC_Tracked_01_base_F"
+    },
+    {
+      "exclusion_reason": "no positive ground class-table row",
+      "is_ground": false,
+      "kind": "engine_base",
+      "provenance": [
+        "addons/armour/functions/fnc_deriveProtection.sqf:52"
+      ],
+      "token": "APC_Tracked_02_base_F"
+    },
+    {
+      "exclusion_reason": "no positive ground class-table row",
+      "is_ground": false,
+      "kind": "engine_base",
+      "provenance": [
+        "addons/armour/functions/fnc_deriveProtection.sqf:53"
+      ],
+      "token": "APC_Tracked_03_base_F"
+    },
+    {
+      "exclusion_reason": "no positive ground class-table row",
+      "is_ground": false,
+      "kind": "engine_base",
+      "provenance": [
+        "addons/armour/functions/fnc_deriveProtection.sqf:56"
+      ],
+      "token": "APC_Wheeled_01_base_F"
+    },
+    {
+      "exclusion_reason": "no positive ground class-table row",
+      "is_ground": false,
+      "kind": "engine_base",
+      "provenance": [
+        "addons/armour/functions/fnc_deriveProtection.sqf:56"
+      ],
+      "token": "APC_Wheeled_02_base_F"
+    },
+    {
+      "exclusion_reason": "no positive ground class-table row",
+      "is_ground": false,
+      "kind": "engine_base",
+      "provenance": [
+        "addons/armour/functions/fnc_deriveProtection.sqf:57"
+      ],
+      "token": "APC_Wheeled_03_base_F"
+    },
+    {
+      "exclusion_reason": "no positive ground class-table row",
+      "is_ground": false,
+      "kind": "engine_base",
+      "provenance": [
+        "addons/armour/functions/fnc_deriveProtection.sqf:64",
+        "addons/core/XEH_postInit.sqf:19",
+        "addons/core/functions/fnc_handleCollisionDamage.sqf:45",
+        "addons/core/functions/fnc_handleCollisionDamage.sqf:46",
+        "addons/mobility/XEH_postInit.sqf:34",
+        "addons/mobility/XEH_postInit.sqf:67",
+        "addons/mobility/functions/fnc_applyFlightTurbulence.sqf:64",
+        "addons/mobility/functions/fnc_applyRollover.sqf:40",
+        "addons/mobility/functions/fnc_applyTerrainDrag.sqf:41",
+        "addons/mobility/functions/fnc_calculateSSF.sqf:83",
+        "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:273"
+      ],
+      "token": "Air"
+    },
+    {
+      "exclusion_reason": "no positive ground class-table row",
+      "is_ground": false,
+      "kind": "engine_base",
+      "provenance": [
+        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:148",
+        "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:326",
+        "addons/thermal/functions/surface/fnc_getHitPointMaterials.sqf:31",
+        "addons/thermal/functions/surface/fnc_getSelectionMaterials.sqf:156"
+      ],
+      "token": "AllVehicles"
+    },
+    {
+      "exclusion_reason": "no positive ground class-table row",
+      "is_ground": false,
+      "kind": "engine_base",
+      "provenance": [
+        "addons/environmental/functions/biome/fnc_scanTerrainSignals.sqf:162",
+        "addons/material/functions/fnc_getObjectMaterial.sqf:30"
+      ],
+      "token": "Building"
+    },
+    {
+      "exclusion_reason": "no positive ground class-table row",
+      "is_ground": false,
+      "kind": "engine_base",
+      "provenance": [
+        "addons/environmental/functions/biome/fnc_scanTerrainSignals.sqf:150"
+      ],
+      "token": "Bush"
+    },
+    {
+      "exclusion_reason": "no positive ground class-table row",
+      "is_ground": false,
+      "kind": "engine_base",
+      "provenance": [
+        "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:160",
+        "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:58"
+      ],
+      "token": "CAManBase"
+    },
+    {
+      "exclusion_reason": null,
+      "is_ground": true,
+      "kind": "engine_base",
+      "provenance": [
+        "addons/armour/functions/fnc_deriveProtection.sqf:60",
+        "addons/mobility/functions/common/fnc_getNearbyVehicles.sqf:44",
+        "addons/mobility/functions/fnc_calculateSSF.sqf:112",
+        "addons/mobility/functions/fnc_calculateSSF.sqf:59",
+        "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:78",
+        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:180",
+        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:189"
+      ],
+      "token": "Car"
+    },
+    {
+      "exclusion_reason": "no positive ground class-table row",
+      "is_ground": false,
+      "kind": "engine_base",
+      "provenance": [
+        "addons/core/functions/fnc_calculateIlluminance.sqf:276"
+      ],
+      "token": "F_40_Green"
+    },
+    {
+      "exclusion_reason": "no positive ground class-table row",
+      "is_ground": false,
+      "kind": "engine_base",
+      "provenance": [
+        "addons/core/functions/fnc_calculateIlluminance.sqf:275"
+      ],
+      "token": "F_40_Red"
+    },
+    {
+      "exclusion_reason": "no positive ground class-table row",
+      "is_ground": false,
+      "kind": "engine_base",
+      "provenance": [
+        "addons/core/functions/fnc_calculateIlluminance.sqf:275",
+        "addons/nightvision/functions/fnc_applyNVGTubeModel.sqf:515"
+      ],
+      "token": "F_40_White"
+    },
+    {
+      "exclusion_reason": "no positive ground class-table row",
+      "is_ground": false,
+      "kind": "engine_base",
+      "provenance": [
+        "addons/core/functions/fnc_calculateIlluminance.sqf:276"
+      ],
+      "token": "F_40_Yellow"
+    },
+    {
+      "exclusion_reason": "class-table row marks the token non-ground (zero value)",
+      "is_ground": false,
+      "kind": "engine_base",
+      "provenance": [
+        "addons/atmos/functions/state/fnc_updateLocalWindParams.sqf:35",
+        "addons/atmos/functions/state/fnc_updateLocalWindParams.sqf:36",
+        "addons/fx/functions/weather/fnc_applyRotorWash.sqf:27",
+        "addons/mobility/functions/fnc_calculateSSF.sqf:58",
+        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:180",
+        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:189"
+      ],
+      "token": "Helicopter"
+    },
+    {
+      "exclusion_reason": "no positive ground class-table row",
+      "is_ground": false,
+      "kind": "engine_base",
+      "provenance": [
+        "addons/environmental/functions/biome/fnc_scanTerrainSignals.sqf:162"
+      ],
+      "token": "House"
+    },
+    {
+      "exclusion_reason": "no positive ground class-table row",
+      "is_ground": false,
+      "kind": "engine_base",
+      "provenance": [
+        "addons/armour/XEH_postInit.sqf:16",
+        "addons/armour/functions/fnc_penetrationGate.sqf:47",
+        "addons/core/XEH_postInit.sqf:19",
+        "addons/core/functions/fnc_handleCollisionDamage.sqf:45",
+        "addons/core/functions/fnc_handleCollisionDamage.sqf:46",
+        "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:57",
+        "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:273"
+      ],
+      "token": "LandVehicle"
+    },
+    {
+      "exclusion_reason": null,
+      "is_ground": true,
+      "kind": "mod_token",
+      "provenance": [
+        "addons/mobility/functions/fnc_calculateSSF.sqf:109",
+        "addons/mobility/functions/fnc_calculateSSF.sqf:54",
+        "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:74"
+      ],
+      "token": "MRAP"
+    },
+    {
+      "exclusion_reason": "no positive ground class-table row",
+      "is_ground": false,
+      "kind": "engine_base",
+      "provenance": [
+        "addons/armour/functions/fnc_penetrationGate.sqf:47",
+        "addons/armour/functions/fnc_penetrationGate.sqf:65",
+        "addons/thermal/functions/display/fnc_applyBuildingThermal.sqf:111",
+        "addons/thermal/functions/display/fnc_applyClothingThermal.sqf:100",
+        "addons/thermal/functions/display/fnc_applyExhaustHeat.sqf:60",
+        "addons/thermal/functions/display/fnc_applyImpactHeat.sqf:53",
+        "addons/thermal/functions/display/fnc_getThermalSelections.sqf:31",
+        "addons/thermal/functions/fusion/fnc_applyFusionOverlay.sqf:52",
+        "addons/thermal/functions/sensor/fnc_calculateThermalContrast.sqf:75",
+        "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:196",
+        "addons/thermal/functions/surface/fnc_getSelectionMaterials.sqf:149"
+      ],
+      "token": "Man"
+    },
+    {
+      "exclusion_reason": "no positive ground class-table row",
+      "is_ground": false,
+      "kind": "mod_token",
+      "provenance": [
+        "addons/mobility/functions/common/fnc_getNearbyVehicles.sqf:44",
+        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:180",
+        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:189"
+      ],
+      "token": "Motorcycle"
+    },
+    {
+      "exclusion_reason": "no positive ground class-table row",
+      "is_ground": false,
+      "kind": "mod_token",
+      "provenance": [
+        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:180",
+        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:189"
+      ],
+      "token": "Plane"
+    },
+    {
+      "exclusion_reason": "no positive ground class-table row",
+      "is_ground": false,
+      "kind": "engine_base",
+      "provenance": [
+        "addons/environmental/functions/biome/fnc_scanTerrainSignals.sqf:162"
+      ],
+      "token": "Ruins"
+    },
+    {
+      "exclusion_reason": "no positive ground class-table row",
+      "is_ground": false,
+      "kind": "engine_base",
+      "provenance": [
+        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:180",
+        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:189",
+        "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:273"
+      ],
+      "token": "Ship"
+    },
+    {
+      "exclusion_reason": "no positive ground class-table row",
+      "is_ground": false,
+      "kind": "engine_base",
+      "provenance": [
+        "addons/material/functions/fnc_getObjectMaterial.sqf:30"
+      ],
+      "token": "Static"
+    },
+    {
+      "exclusion_reason": "no positive ground class-table row",
+      "is_ground": false,
+      "kind": "engine_base",
+      "provenance": [
+        "addons/thermal/functions/display/fnc_calculateVehicleHeat.sqf:34"
+      ],
+      "token": "StaticWeapon"
+    },
+    {
+      "exclusion_reason": null,
+      "is_ground": true,
+      "kind": "engine_base",
+      "provenance": [
+        "addons/armour/functions/fnc_deriveProtection.sqf:51",
+        "addons/mobility/functions/common/fnc_getNearbyVehicles.sqf:44",
+        "addons/mobility/functions/fnc_calculateSSF.sqf:110",
+        "addons/mobility/functions/fnc_calculateSSF.sqf:56",
+        "addons/mobility/functions/fnc_calculateSoilStrength.sqf:70",
+        "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:76",
+        "addons/mobility/functions/fnc_calculateTraction.sqf:78",
+        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:180",
+        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:189",
+        "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:57"
+      ],
+      "token": "Tank"
+    },
+    {
+      "exclusion_reason": null,
+      "is_ground": true,
+      "kind": "engine_base",
+      "provenance": [
+        "addons/mobility/functions/fnc_calculateSSF.sqf:111",
+        "addons/mobility/functions/fnc_calculateSSF.sqf:57",
+        "addons/mobility/functions/fnc_calculateSoilStrength.sqf:70",
+        "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:77"
+      ],
+      "token": "Tracked_APC"
+    },
+    {
+      "exclusion_reason": "no positive ground class-table row",
+      "is_ground": false,
+      "kind": "engine_base",
+      "provenance": [
+        "addons/environmental/functions/biome/fnc_scanTerrainSignals.sqf:150"
+      ],
+      "token": "Tree"
+    },
+    {
+      "exclusion_reason": null,
+      "is_ground": true,
+      "kind": "engine_base",
+      "provenance": [
+        "addons/armour/functions/fnc_deriveProtection.sqf:63",
+        "addons/mobility/functions/fnc_calculateSSF.sqf:113",
+        "addons/mobility/functions/fnc_calculateSSF.sqf:60",
+        "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:79"
+      ],
+      "token": "Truck"
+    },
+    {
+      "exclusion_reason": null,
+      "is_ground": true,
+      "kind": "mod_token",
+      "provenance": [
+        "addons/mobility/functions/fnc_calculateSSF.sqf:114",
+        "addons/mobility/functions/fnc_calculateSSF.sqf:55",
+        "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:75"
+      ],
+      "token": "Wheeled_APC"
+    },
+    {
+      "exclusion_reason": null,
+      "is_ground": true,
+      "kind": "mod_token",
+      "provenance": [
+        "addons/mobility/functions/fnc_calculateSSF.sqf:61"
+      ],
+      "token": "Wheeled_APC_F"
+    }
+  ]
+}

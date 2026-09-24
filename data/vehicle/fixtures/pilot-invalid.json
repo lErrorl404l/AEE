@@ -1,0 +1,38 @@
+{
+  "retrieved": "2026-09-24",
+  "note": "RED FIXTURE ONLY, not runtime data. The task 4 validator must reject this file. It holds no real vehicle value, no real class mapping and no held source. Every value is the sentinel FIXTURE-NOT-A-REAL-VALUE. operating_weight_kg has no source key. net_power_kw names an engine_config source, which the schema forbids as a value source. The record is not runtime-ready. Do not promote this file to data/vehicle/records/.",
+  "sources": [],
+  "records": [
+    {
+      "variant_id": "fixture_red_variant",
+      "game_class": "FIXTURE_CLASS_DO_NOT_USE",
+      "class_token": "FIXTURE_TOKEN",
+      "identity_source": "fixture_structural_tier2",
+      "maker": "FIXTURE",
+      "model": "FIXTURE",
+      "variant": "FIXTURE",
+      "country": "NONE",
+      "era": "none",
+      "vehicle_type": "wheeled",
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": "FIXTURE-NOT-A-REAL-VALUE",
+          "unit": "kg",
+          "locator": "fixture only, no real locator",
+          "state": "fixture state, not a real configuration",
+          "grade": "documented"
+        },
+        "net_power_kw": {
+          "value": "FIXTURE-NOT-A-REAL-VALUE",
+          "unit": "kW",
+          "source": "fixture_engine_config",
+          "locator": "fixture only, no real locator",
+          "state": "fixture state, not a real configuration",
+          "grade": "documented"
+        }
+      }
+    }
+  ],
+  "conflicts": []
+}

@@ -37,6 +37,10 @@ lint:
 	python3 tools/validation/validate_cross_module.py
 	python3 tools/validation/validate_oracles.py
 	python3 tools/validation/check_macro_quoting.py
+	python3 tools/validation/gen_vehicle_class_inventory.py --check
+	python3 tools/validation/gen_vehicle_data.py --check
+	python3 tools/validation/gen_vehicle_coverage.py --check
+	python3 tools/validation/validate_vehicle_data.py
 
 # Fail when the lint target and the CI workflow disagree, so a new CI check
 # cannot be added without a matching local one.

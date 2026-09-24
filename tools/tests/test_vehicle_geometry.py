@@ -22,15 +22,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 GEOM = ROOT / "addons" / "mobility" / "functions" / "fnc_getVehicleGeometry.sqf"
 SSF = ROOT / "addons" / "mobility" / "functions" / "fnc_calculateSSF.sqf"
-SOIL = ROOT / "addons" / "mobility" / "functions" / "fnc_calculateSoilStrength.sqf"
 LIMITS = ROOT / "addons" / "mobility" / "functions" / "fnc_calculateTerrainLimits.sqf"
 
 
 def code(src):
     """The SQF with the header block and // comments removed."""
-    return "\n".join(
-        l.split("//", 1)[0] for l in src.split("*/", 1)[-1].splitlines()
-    )
+    return "\n".join(l.split("//", 1)[0] for l in src.split("*/", 1)[-1].splitlines())
 
 
 class TestGeometrySource(unittest.TestCase):
@@ -122,11 +119,6 @@ class TestCallSitesUseGeometry(unittest.TestCase):
         # The table must still exist as the fallback.
         self.assertIn("_trackTable", body)
 
-    def test_soil_strength_uses_real_tyre_and_wheel_count(self):
-        body = code(SOIL.read_text(encoding="utf-8"))
-        self.assertIn("getVehicleGeometry", body)
-        self.assertIn("_n = _geo select 3", body)
-
     def test_terrain_limits_uses_the_real_wheelbase(self):
         body = code(LIMITS.read_text(encoding="utf-8"))
         self.assertIn("getVehicleGeometry", body)
@@ -137,7 +129,7 @@ class TestCallSitesUseGeometry(unittest.TestCase):
         # a vehicle with no readable geometry keeps its table.  Either gate
         # form is correct: `if (x > 0)` or `if (x <= 0)` with the table in
         # the branch.
-        for f in (SSF, SOIL, LIMITS):
+        for f in (SSF, LIMITS):
             body = code(f.read_text(encoding="utf-8"))
             self.assertRegex(
                 body,
