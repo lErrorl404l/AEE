@@ -32,21 +32,32 @@ private _windSpd = vectorMagnitude _localWind;
 private _mechanical = 0;
 
 if (_windSpd > 5) then {
-    // Resolve surface roughness from ground type
-    private _roughness = 0.4;    // default
-    if (!isNil "_player") then {
+    // Surface roughness: the engine's own CfgSurfaces `rough` coefficient
+    // for the ground under the player.  This is the map's data, so no
+    // map-specific surface name is compared here.  CfgSurfaces is
+    // read-only at runtime, but readable.
+    private _roughness = 0.4;    // fallback: open ground
+    // isNull, not isNil: a dedicated server's CBA_fnc_currentUnit is
+    // objNull, not nil, so this once ran at the map origin.
+    if (!isNull _player) then {
         private _pos2D = getPos _player;
-        // surfaceType returns the class name with no '#' prefix (GdtSnow);
-        // normalise to the bare token before comparing.
-        private _type = toLower (surfaceType _pos2D);
+        // surfaceType returns the bare class name (GdtSnow);
+        // normalise the token before the config lookup.
+        private _raw = surfaceType _pos2D;
+        private _type = toLower _raw;
         if (_type find "#gdt" == 0) then { _type = _type select [4]; }
         else { if (_type find "gdt" == 0) then { _type = _type select [3]; }; };
-        _roughness = switch (true) do {
-            case (_type in ["coniferous","forest"]):           { 0.8 };
-            case (_type in ["urban","stratis","concrete","ruins"]): { 1.0 };
-            case (_type in ["desert","sand"]):                 { 0.2 };
-            case (_type in ["water","sea","pond"]):            { 0.1 };
-            default                                            { 0.4 };
+        // Keep the engine class case (GdtSnow) for the lookup; the bare
+        // stripped name misses the CfgSurfaces class.
+        private _cls = _raw;
+        if (_cls find "#" == 0) then { _cls = _cls select [1]; };
+        private _cfg = configFile >> "CfgSurfaces" >> _cls;
+        if (!isClass _cfg && {_type != ""}) then {
+            _cfg = configFile >> "CfgSurfaces" >> _type;
+        };
+        if (isClass _cfg) then {
+            private _r = getNumber (_cfg >> "rough");
+            if (_r > 0) then { _roughness = _r min 1.0; };
         };
     };
     _mechanical = _roughness * (_windSpd / 15) min 1.0;
