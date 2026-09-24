@@ -1,0 +1,151 @@
+{
+  "retrieved": "2026-09-24",
+  "note": "Catalogue capture for the held tier-2 operator manual TM 9-2355-335-10 (Oshkosh M-ATV M1240/M1240A1/M1245, July 2012). It holds the M1240A1 as a wheeled entry. The manual publishes the identity, the vehicle curb weight and the gross vehicle weight rating, a maximum engine rating with no net basis, an automatic transmission and a tyre size code. It publishes no operating weight, no net power, no tyre width and no tyre diameter, so the entry is not runtime-ready.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "m_atv_m1240a1",
+      "canonical_name": "M-ATV M1240A1",
+      "maker": "Oshkosh",
+      "model": "M-ATV",
+      "variant": "M1240A1",
+      "variant_id": "m_atv_m1240a1",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "m-atv m1240a1",
+        "m1240a1"
+      ],
+      "keywords": [
+        "mrap",
+        "oshkosh",
+        "m-atv"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "length_mm": {
+          "value": 6269,
+          "unit": "mm",
+          "source": "tm_9_2355_335_10",
+          "locator": "Table 1, Dimensions, page 0002-9, row Length (M1240/M1240A1)",
+          "state": "overall length, M1240A1, as published in cm converted to mm",
+          "grade": "documented"
+        },
+        "width_mm": {
+          "value": 2489,
+          "unit": "mm",
+          "source": "tm_9_2355_335_10",
+          "locator": "Table 1, Dimensions, page 0002-9, row Width",
+          "state": "overall width, published as 98.0 in (248.9 cm) converted to mm",
+          "grade": "documented"
+        },
+        "height_mm": {
+          "value": 2766,
+          "unit": "mm",
+          "source": "tm_9_2355_335_10",
+          "locator": "Table 1, Dimensions, page 0002-9, row Height (M1240A1)",
+          "state": "overall height, M1240A1, as published in cm converted to mm",
+          "grade": "documented"
+        },
+        "curb_weight_kg": {
+          "value": 12940,
+          "unit": "kg",
+          "source": "tm_9_2355_335_10",
+          "locator": "Table 2, Weight, page 0002-10, row Vehicle Curb Weight (VCW) (M1240A1)",
+          "state": "vehicle curb weight, M1240A1, no crew and no payload",
+          "grade": "documented"
+        },
+        "gross_weight_kg": {
+          "value": 16798,
+          "unit": "kg",
+          "source": "tm_9_2355_335_10",
+          "locator": "Table 2, Weight, page 0002-10, row Gross Vehicle Weight Rating (GVWR)",
+          "state": "gross vehicle weight rating, maximum rated; one rating covers M1240, M1240A1 and M1245",
+          "grade": "documented"
+        },
+        "fording_depth_mm": {
+          "value": 914,
+          "unit": "mm",
+          "source": "tm_9_2355_335_10",
+          "locator": "Table 3, Performance, page 0002-11, row Fording",
+          "state": "rated fording depth without a kit, published as 36 in (91.4 cm)",
+          "grade": "documented"
+        },
+        "max_speed_kmh": {
+          "value": 105,
+          "unit": "km/h",
+          "source": "tm_9_2355_335_10",
+          "locator": "Table 3, Performance, page 0002-11, row Speed, Maximum GVW Road",
+          "state": "maximum road speed at gross vehicle weight, published as 65 mph (105 km/h)",
+          "grade": "documented"
+        },
+        "turning_radius_m": {
+          "value": 20.3,
+          "unit": "m",
+          "source": "tm_9_2355_335_10",
+          "locator": "Table 3, Performance, page 0002-11, row Turning Radius",
+          "state": "turning radius wall to wall, published as 66.5 ft (20.3 m); curb to curb is 31.6 ft (9.6 m)",
+          "grade": "documented"
+        },
+        "published_power_hp": {
+          "value": 370,
+          "unit": "hp",
+          "source": "tm_9_2355_335_10",
+          "locator": "Table 13, Engine, page 0002-14, row Maximum Horsepower",
+          "state": "maximum rating, no net basis",
+          "grade": "documented"
+        },
+        "engine_model": {
+          "value": "Caterpillar C-7",
+          "unit": "text",
+          "source": "tm_9_2355_335_10",
+          "locator": "Table 13, Engine, page 0002-14, row Make and Model",
+          "state": "electronic control, four stroke in-line six cylinder, as published",
+          "grade": "documented"
+        },
+        "engine_displacement_l": {
+          "value": 7.2,
+          "unit": "L",
+          "source": "tm_9_2355_335_10",
+          "locator": "Table 13, Engine, page 0002-14, row Displacement",
+          "state": "published as 441 in3 (7.2 L)",
+          "grade": "documented"
+        },
+        "torque_nm": {
+          "value": 1254,
+          "unit": "N m",
+          "source": "tm_9_2355_335_10",
+          "locator": "Table 13, Engine, page 0002-14, row Peak Torque",
+          "state": "peak torque, published as 925 lb-ft (1 254 N m)",
+          "grade": "documented"
+        },
+        "transmission_type": {
+          "value": "automatic",
+          "unit": "enum",
+          "source": "tm_9_2355_335_10",
+          "locator": "Table 19, Transmission, page 0002-16, row Type",
+          "state": "Allison 3500 SP six speed automatic with TC 418 torque converter, second gear start",
+          "grade": "documented"
+        },
+        "gears": {
+          "value": 6,
+          "unit": "count",
+          "source": "tm_9_2355_335_10",
+          "locator": "Table 19, Transmission, page 0002-16, row Type",
+          "state": "six forward ratios and one reverse, as published",
+          "grade": "documented"
+        },
+        "tyre_size_text": {
+          "value": "16.00 R20 XZLTLRM",
+          "unit": "text",
+          "source": "tm_9_2355_335_10",
+          "locator": "Table 15, Tires, page 0002-15, row Type",
+          "state": "tyre size code for the M1240A1 fitment, as published",
+          "grade": "documented"
+        }
+      }
+    }
+  ]
+}

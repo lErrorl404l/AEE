@@ -1,0 +1,120 @@
+{
+  "retrieved": "2026-09-24",
+  "note": "Catalogue capture for the held tier-2 operator manual TM 9-2350-252-10-1 (Fighting Vehicle, Infantry, M2 and Fighting Vehicle, Cavalry, M3; 1982 draft equipment publication). It holds the M2/M3 Bradley as one tracked entry. The manual publishes the combat loaded weight, the engine model and displacement, a gross horsepower rating with no net basis, an automatic hydromechanical transmission, the track type, the track shoe count, the track pitch, an unlabelled track shoe width figure, the maximum road speed, the cruising range and the fording depth. It publishes no overall length, width or height and no ground clearance, so the entry is not runtime-ready and its runtime row states an absent zero for ground clearance. It names no vehicle manufacturer, so maker is recorded as unknown rather than inferred. The track shoe width is the printed 21 in (53.3 cm) value that sits unlabelled directly below Track pitch on printed page 1-8; the row label is absent in the held scan and the state records that caveat. The published centimetre and metre figures are converted to millimetres and the conversion is named in each state, matching the M113A2 and M939 records. No real source maps an AEE game class to the Bradley, so class_token is empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "m2_m3_bradley",
+      "canonical_name": "M2/M3 Bradley",
+      "maker": "unknown",
+      "model": "Bradley",
+      "variant": "M2 (IFV) / M3 (CFV)",
+      "variant_id": "m2_m3_bradley",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": ["m2 bradley", "m3 bradley", "bradley", "m2 ifv", "m3 cfv"],
+      "keywords": ["ifv", "cfv", "infantry fighting vehicle", "cavalry fighting vehicle", "tracked", "bradley"],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 22285,
+          "unit": "kg",
+          "source": "tm_9_2350_252_10_1",
+          "locator": "EQUIPMENT DATA, GENERAL, printed page 1-7, Weight (combat loaded)",
+          "state": "combat loaded, as published 49,138 lb (22,285 kg)",
+          "grade": "documented"
+        },
+        "published_power_hp": {
+          "value": 500,
+          "unit": "hp",
+          "source": "tm_9_2350_252_10_1",
+          "locator": "EQUIPMENT DATA, ENGINE, printed page 1-8, Gross horsepower",
+          "state": "gross horsepower, the manual prints 500 (506 metric); no net basis",
+          "grade": "documented"
+        },
+        "engine_model": {
+          "value": "Cummins VTA-903T",
+          "unit": "text",
+          "source": "tm_9_2350_252_10_1",
+          "locator": "EQUIPMENT DATA, ENGINE, printed page 1-8, Make and model",
+          "state": "as published",
+          "grade": "documented"
+        },
+        "engine_displacement_l": {
+          "value": 14.8,
+          "unit": "L",
+          "source": "tm_9_2350_252_10_1",
+          "locator": "EQUIPMENT DATA, ENGINE, printed page 1-8, Displacement",
+          "state": "as published 903 cu in (14.8 liters)",
+          "grade": "documented"
+        },
+        "transmission_type": {
+          "value": "automatic",
+          "unit": "enum",
+          "source": "tm_9_2350_252_10_1",
+          "locator": "EQUIPMENT DATA, TRANSMISSION, AUTOMATIC, printed page 1-8",
+          "state": "G.E. HMPT-500 hydromechanical transmission with automatic range selection",
+          "grade": "documented"
+        },
+        "track_shoe_width_mm": {
+          "value": 533,
+          "unit": "mm",
+          "source": "tm_9_2350_252_10_1",
+          "locator": "EQUIPMENT DATA, RUNNING GEAR, printed page 1-8, the unlabelled value printed immediately below Track pitch",
+          "state": "published as 21 in (53.3 cm) in the RUNNING GEAR block; the row label is absent in the held scan; 53.3 cm converted to mm",
+          "grade": "documented"
+        },
+        "track_pitch_mm": {
+          "value": 152,
+          "unit": "mm",
+          "source": "tm_9_2350_252_10_1",
+          "locator": "EQUIPMENT DATA, RUNNING GEAR, printed page 1-8, Track pitch",
+          "state": "as published 6 in (15.2 cm); 15.2 cm converted to mm",
+          "grade": "documented"
+        },
+        "track_shoe_count": {
+          "value": 83,
+          "unit": "count",
+          "source": "tm_9_2350_252_10_1",
+          "locator": "EQUIPMENT DATA, RUNNING GEAR, printed page 1-8, Number of track shoes",
+          "state": "left side; the right side carries 82",
+          "grade": "documented"
+        },
+        "grousers_state": {
+          "value": "grousers",
+          "unit": "enum",
+          "source": "tm_9_2350_252_10_1",
+          "locator": "REMOVE/INSTALL TRACK SHOE PADS, printed page 3-72, CAUTION, and EQUIPMENT DATA, RUNNING GEAR, printed page 1-8, Track type",
+          "state": "steel single-pin track with detachable rubber pads; the pad-removal caution states that grousers wear out quickly without the pads",
+          "grade": "documented"
+        },
+        "max_speed_kmh": {
+          "value": 66,
+          "unit": "km/h",
+          "source": "tm_9_2350_252_10_1",
+          "locator": "EQUIPMENT DATA, PERFORMANCE, printed page 1-8, Speed on land",
+          "state": "as published 41 mph (66 km/h)",
+          "grade": "documented"
+        },
+        "range_km": {
+          "value": 483,
+          "unit": "km",
+          "source": "tm_9_2350_252_10_1",
+          "locator": "EQUIPMENT DATA, PERFORMANCE, printed page 1-8, Cruising range",
+          "state": "as published 300 mi (483 km)",
+          "grade": "documented"
+        },
+        "fording_depth_mm": {
+          "value": 1070,
+          "unit": "mm",
+          "source": "tm_9_2350_252_10_1",
+          "locator": "FORD WATER LESS THAN 3 1/2 FEET DEEP, printed page 2-259",
+          "state": "as published 3 1/2 feet (1.07 m), fording without the water barrier; 1.07 m converted to mm",
+          "grade": "documented"
+        }
+      }
+    }
+  ]
+}

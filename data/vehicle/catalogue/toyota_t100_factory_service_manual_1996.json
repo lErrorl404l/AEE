@@ -1,0 +1,48 @@
+{
+  "retrieved": "2026-09-24",
+  "note": "Catalogue capture for the held tier-2 1996 Toyota T100 Factory Service Manual (RM449U). It holds the T100 4x2 as a wheeled civilian-car lead. The manual publishes the tyre size code and the W59 manual transmission option. It publishes no vehicle operating weight, no vehicle dimension table, no ground clearance and no rated engine output, so the entry is not runtime-ready. The tyre size code P215/75R15 carries a passenger type prefix, so the named size-code derivation does not parse it and the tyre width and diameter are absent.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "toyota_t100",
+      "canonical_name": "Toyota T100",
+      "maker": "Toyota",
+      "model": "T100",
+      "variant": "4x2, 1996 model year",
+      "variant_id": "toyota_t100",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Japan",
+      "era": "modern",
+      "aliases": ["t100", "toyota t100"],
+      "keywords": ["car", "pickup", "civilian", "light truck"],
+      "runtime_ready": false,
+      "values": {
+        "tyre_size_text": {
+          "value": "P215/75R15",
+          "unit": "text",
+          "source": "toyota_t100_factory_service_manual_1996",
+          "locator": "TIRE AND WHEEL (2WD) table, Tire size column, printed page SA-3, scan PDF page 1473",
+          "state": "cold tyre size code for the 2WD T100, as published; the 4WD table lists P235/75R15 and 31 x 10.5 R15LT",
+          "grade": "documented"
+        },
+        "transmission_type": {
+          "value": "manual",
+          "unit": "enum",
+          "source": "toyota_t100_factory_service_manual_1996",
+          "locator": "Contents page, section MT Manual Transmission (W59), scan PDF page 2",
+          "state": "the T100 service manual covers a W59 manual transmission and an automatic transmission; this entry states the manual option, as published",
+          "grade": "documented"
+        },
+        "engine_model": {
+          "value": "3RZ-FE",
+          "unit": "text",
+          "source": "toyota_t100_factory_service_manual_1996",
+          "locator": "Contents page, Engine Mechanical (3RZ-FE) and Engine Mechanical (5VZ-FE), scan PDF page 2",
+          "state": "engine code named in the manual contents; the manual covers the 3RZ-FE and the 5VZ-FE engines",
+          "grade": "documented"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "retrieved": "2026-09-24",
+  "note": "Catalogue capture for the held tier-2 operator manual TM 9-2350-261-10 (M113A2 family of vehicles, August 2005). It holds the M1068 standardized integrated command post system as a tracked entry. The manual publishes the dimensions, the gross weight with full load, a maximum engine rating with no net basis, the ground clearance, the fording depth, an automatic hydraulic transmission, the track shoe count and the grouser state. It names no maker, so maker is unknown. It publishes no operating weight, no net power, no track shoe width and no track pitch, so the entry is not runtime-ready.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "m1068",
+      "canonical_name": "M1068",
+      "maker": "unknown",
+      "model": "M1068",
+      "variant": "M1068",
+      "variant_id": "m1068",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "m1068"
+      ],
+      "keywords": [
+        "apc",
+        "carrier",
+        "tracked",
+        "standardized integrated command post system"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "length_mm": {
+          "value": 4851.4,
+          "unit": "mm",
+          "source": "tm_9_2350_261_10",
+          "locator": "WP 0002 00, TABULATED DATA, page 0002 00-43, SIZE, Length, All carriers except M1064",
+          "state": "as published, 485.14 cm converted to mm",
+          "grade": "documented"
+        },
+        "width_mm": {
+          "value": 2686.1,
+          "unit": "mm",
+          "source": "tm_9_2350_261_10",
+          "locator": "WP 0002 00, TABULATED DATA, page 0002 00-43, SIZE, Width, Widest (overall)",
+          "state": "as published, 268.61 cm converted to mm",
+          "grade": "documented"
+        },
+        "height_mm": {
+          "value": 2705.1,
+          "unit": "mm",
+          "source": "tm_9_2350_261_10",
+          "locator": "WP 0002 00, TABULATED DATA, page 0002 00-43, SIZE, Height, To top of antenna guards: M577A2 and M1068",
+          "state": "as published, 270.51 cm converted to mm",
+          "grade": "documented"
+        },
+        "ground_clearance_mm": {
+          "value": 434.8,
+          "unit": "mm",
+          "source": "tm_9_2350_261_10",
+          "locator": "WP 0002 00, TABULATED DATA, page 0002 00-43, SIZE, Clearance above ground",
+          "state": "clearance above ground, as published, 43.48 cm converted to mm",
+          "grade": "documented"
+        },
+        "gross_weight_kg": {
+          "value": 12182,
+          "unit": "kg",
+          "source": "tm_9_2350_261_10",
+          "locator": "WP 0002 00, TABULATED DATA, page 0002 00-43, WEIGHT, With full load (gross), M1068",
+          "state": "with full load (gross), M1068, published as the stated kg figure",
+          "grade": "documented"
+        },
+        "range_km": {
+          "value": 680,
+          "unit": "km",
+          "source": "tm_9_2350_261_10",
+          "locator": "WP 0002 00, TABULATED DATA, page 0002 00-44, PERFORMANCE (LAND), Cruising range at 25 mph average",
+          "state": "cruising range at 25 mph average; the manual prints the unit token m, and the kg figure is the stated value",
+          "grade": "documented"
+        },
+        "fording_depth_mm": {
+          "value": 1016,
+          "unit": "mm",
+          "source": "tm_9_2350_261_10",
+          "locator": "WP 0002 00, TABULATED DATA, page 0002 00-44, PERFORMANCE (WATER), Fording depth",
+          "state": "as published, 40 in (101.6 cm) converted to mm",
+          "grade": "documented"
+        },
+        "published_power_hp": {
+          "value": 210,
+          "unit": "hp",
+          "source": "tm_9_2350_261_10",
+          "locator": "WP 0002 00, TABULATED DATA, page 0002 00-44, ENGINE, Horsepower",
+          "state": "maximum rating at 2800 RPM, no net basis",
+          "grade": "documented"
+        },
+        "transmission_type": {
+          "value": "automatic",
+          "unit": "enum",
+          "source": "tm_9_2350_261_10",
+          "locator": "WP 0001 00-1, NOMENCLATURE CROSS-REFERENCE, Transmission, hydraulic, and WP 0002 00, page 0002 00-28, POWER TRAIN",
+          "state": "hydraulic transmission with automatic range selection",
+          "grade": "documented"
+        },
+        "track_shoe_count": {
+          "value": 63,
+          "unit": "count",
+          "source": "tm_9_2350_261_10",
+          "locator": "WP 0002 00, TABULATED DATA, page 0002 00-46, TRACKS, Track shoes, left (when new)",
+          "state": "left track when new; right track 64 when new",
+          "grade": "documented"
+        },
+        "grousers_state": {
+          "value": "grousers",
+          "unit": "enum",
+          "source": "tm_9_2350_261_10",
+          "locator": "WP 0082 00, TRACK SHOE WEAR LIMITS, page 0082 00-1, step 1, Grouser height (T130 only)",
+          "state": "T130/T130E1 track; T150 replacement track has no grouser",
+          "grade": "documented"
+        }
+      }
+    }
+  ]
+}

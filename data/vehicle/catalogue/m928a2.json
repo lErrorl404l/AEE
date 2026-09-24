@@ -1,0 +1,191 @@
+{
+  "retrieved": "2026-09-24",
+  "note": "Catalogue capture for the held tier-2 operator manual TM 9-2320-272-10 (M939/A1/A2 series, Change 2 of September 2004). It holds the M939A2 M928A2 truck (M939A2 series) as a wheeled entry. The manual publishes no operating weight, no named curb weight, no net power and no tyre width or diameter, so the entry is not runtime-ready. Every dimension comes from a table that prints both inch and centimetre figures; the published centimetre figure is recorded converted to millimetres. The maker is unknown because the manual names no manufacturer.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "m928a2",
+      "canonical_name": "M928A2",
+      "maker": "unknown",
+      "model": "M939A2",
+      "variant": "M928A2",
+      "variant_id": "m928a2",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "m928a2"
+      ],
+      "keywords": [
+        "truck",
+        "5-ton",
+        "6x6",
+        "m939a2"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "length_mm": {
+          "value": 10363.0,
+          "unit": "mm",
+          "source": "tm_9_2320_272_10",
+          "locator": "Table 1-3, Vehicle Dimensions, page 1-17, row M928A2, column Length cm",
+          "state": "overall length, M928A2, published as 1036.3 cm converted to mm",
+          "grade": "documented"
+        },
+        "width_mm": {
+          "value": 2474.0,
+          "unit": "mm",
+          "source": "tm_9_2320_272_10",
+          "locator": "Table 1-3, Vehicle Dimensions, page 1-17, row M928A2, column Width cm",
+          "state": "overall width, M928A2, published as 247.4 cm converted to mm",
+          "grade": "documented"
+        },
+        "height_mm": {
+          "value": 3063.0,
+          "unit": "mm",
+          "source": "tm_9_2320_272_10",
+          "locator": "Table 1-3, Vehicle Dimensions, page 1-17, row M928A2, column Height cm",
+          "state": "overall height, M928A2, published as 306.3 cm converted to mm",
+          "grade": "documented"
+        },
+        "ground_clearance_mm": {
+          "value": 353,
+          "unit": "mm",
+          "source": "tm_9_2320_272_10",
+          "locator": "Table 1-3, Vehicle Dimensions, page 1-17, Ground Clearance, row M939A2, column Under Axle cm",
+          "state": "ground clearance under axle, M939A2, published as 35.3 cm converted to mm; under chassis is 33.3 cm",
+          "grade": "documented"
+        },
+        "wheelbase_mm": {
+          "value": 5461.0,
+          "unit": "mm",
+          "source": "tm_9_2320_272_10",
+          "locator": "Table 1-5, Chassis Dimensions, page 1-19, row M928A2, column Wheelbase cm",
+          "state": "wheelbase, M928A2, published as 546.1 cm converted to mm",
+          "grade": "documented"
+        },
+        "turning_radius_m": {
+          "value": 15.1,
+          "unit": "m",
+          "source": "tm_9_2320_272_10",
+          "locator": "Table 1-5, Chassis Dimensions, page 1-19, row M928A2, column Turning Radius M",
+          "state": "turning radius, M928A2, as published",
+          "grade": "documented"
+        },
+        "approach_angle_deg": {
+          "value": 31,
+          "unit": "deg",
+          "source": "tm_9_2320_272_10",
+          "locator": "Table 1-5, Chassis Dimensions, page 1-19, row M928A2, column Angle of Approach",
+          "state": "angle of approach, M928A2, as published",
+          "grade": "documented"
+        },
+        "departure_angle_deg": {
+          "value": 21,
+          "unit": "deg",
+          "source": "tm_9_2320_272_10",
+          "locator": "Table 1-5, Chassis Dimensions, page 1-19, row M928A2, column Departure",
+          "state": "angle of departure, M928A2, as published",
+          "grade": "documented"
+        },
+        "curb_weight_kg": {
+          "value": 11300,
+          "unit": "kg",
+          "source": "tm_9_2320_272_10",
+          "locator": "Table 1-4, Weights, page 1-18, row M928A2, column Empty kg",
+          "state": "empty weight, M928A2, vehicle only with no crew and no payload; the manual names the column Empty, not curb weight",
+          "grade": "documented"
+        },
+        "payload_kg": {
+          "value": 4540,
+          "unit": "kg",
+          "source": "tm_9_2320_272_10",
+          "locator": "Table 1-4, Weights, page 1-18, row M928A2, column Payload kg",
+          "state": "payload, %s, published as the stated payload row",
+          "grade": "documented"
+        },
+        "towing_capacity_kg": {
+          "value": 6810,
+          "unit": "kg",
+          "source": "tm_9_2320_272_10",
+          "locator": "Table 1-4, Weights, page 1-18, row M928A2, column Towed Load (Pintle) kg",
+          "state": "towed load at the pintle, M928A2, published as the stated row",
+          "grade": "documented"
+        },
+        "fording_depth_mm": {
+          "value": 760,
+          "unit": "mm",
+          "source": "tm_9_2320_272_10",
+          "locator": "para 2-40, page 2-218, fording depth without a kit",
+          "state": "fording depth without a fording kit, published as 30 in (76 cm)",
+          "grade": "documented"
+        },
+        "wading_depth_mm": {
+          "value": 1980,
+          "unit": "mm",
+          "source": "tm_9_2320_272_10",
+          "locator": "para 2-40, page 2-218, fording depth with kit installed",
+          "state": "fording depth with the deepwater fording kit installed, published as 78 in (198 cm)",
+          "grade": "documented"
+        },
+        "published_power_hp": {
+          "value": 240,
+          "unit": "hp",
+          "source": "tm_9_2320_272_10",
+          "locator": "Table 1-8, Engine and Cooling System Data, page 1-22, heading ENGINE CUMMINS 6CTA8.3 (M939A2 SERIES), Brake Horsepower",
+          "state": "brake horsepower at 2100 rpm, M939A2 series Cummins 6CTA8.3, no net basis",
+          "grade": "documented"
+        },
+        "engine_model": {
+          "value": "Cummins 6CTA8.3",
+          "unit": "text",
+          "source": "tm_9_2320_272_10",
+          "locator": "Table 1-8, Engine and Cooling System Data, page 1-22, heading ENGINE CUMMINS 6CTA8.3 (M939A2 SERIES)",
+          "state": "diesel, turbocharged and aftercooled, six cylinder in line, M939A2 series",
+          "grade": "documented"
+        },
+        "transmission_type": {
+          "value": "automatic",
+          "unit": "enum",
+          "source": "tm_9_2320_272_10",
+          "locator": "Table 1-9, Automatic Transmission Data, page 1-23, Range Selection, row 1-5 (drive)",
+          "state": "automatic transmission with converter-driven power takeoff, ranges 1-5 and reverse, as published",
+          "grade": "documented"
+        },
+        "gears": {
+          "value": 5,
+          "unit": "count",
+          "source": "tm_9_2320_272_10",
+          "locator": "Table 1-9, Automatic Transmission Data, page 1-23, Range Selection, row 1-5 (drive)",
+          "state": "five forward driving ranges and one reverse, as published",
+          "grade": "documented"
+        },
+        "tyre_size_text": {
+          "value": "14:00 x R20",
+          "unit": "text",
+          "source": "tm_9_2320_272_10",
+          "locator": "Table 1-10, Tire Inflation Data (Contd), page 1-24, heading M939A1/A2 SERIES (14:00 X R20)",
+          "state": "tyre size code for the M939A2 series, as published",
+          "grade": "documented"
+        },
+        "tyre_pressure_kpa": {
+          "value": 483,
+          "unit": "kPa",
+          "source": "tm_9_2320_272_10",
+          "locator": "Table 1-10, Tire Inflation Data (Contd), page 1-24, M939A1/A2 SERIES, HIGHWAY, Metric (kPa)",
+          "state": "highway front and rear 70 psi (483 kPa); cross-country 35 psi (241 kPa); mud, sand and snow 25 psi (172 kPa); emergency 12 psi (83 kPa)",
+          "grade": "documented"
+        },
+        "max_speed_kmh": {
+          "value": 88,
+          "unit": "km/h",
+          "source": "tm_9_2320_272_10",
+          "locator": "Table 1-9A, Maximum Safe Operating Speeds, page 1-23, Highway/secondary roads, column W/ABS",
+          "state": "maximum safe speed on highway and secondary roads with ABS, published as 55 mph (88 km/h); without ABS 40 mph (64 km/h)",
+          "grade": "documented"
+        }
+      }
+    }
+  ]
+}

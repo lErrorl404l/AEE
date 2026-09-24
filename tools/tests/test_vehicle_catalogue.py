@@ -311,16 +311,19 @@ class RealCorpusTest(unittest.TestCase):
     def test_held_entries_and_mappings_load_clean(self) -> None:
         loaded = vc.load(DATA)
         self.assertEqual([], loaded.errors, loaded.errors)
-        self.assertEqual(
-            {
-                "m_atv_m1240",
-                "m113a2",
-                "m923a2",
-                "honda_civic_6gen_sedan",
-                "kawasaki_ninja_250r_ex250f",
-            },
-            {entry.catalogue_id for entry in loaded.entries},
-        )
+        ids = {entry.catalogue_id for entry in loaded.entries}
+        for sentinel in (
+            "m_atv_m1240",
+            "m113a2",
+            "m923a2",
+            "honda_civic_6gen_sedan",
+            "kawasaki_ninja_250r_ex250f",
+            "m1_abrams",
+            "m2_m3_bradley",
+            "cougar_4x4",
+        ):
+            self.assertIn(sentinel, ids)
+        self.assertGreaterEqual(len(ids), 47)
         self.assertEqual(4, len(loaded.mappings))
         for mapping in loaded.mappings:
             self.assertEqual("claimed", mapping.grade)
