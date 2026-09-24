@@ -75,5 +75,21 @@
     "identifier": "data/vehicle/classes.json",
     "retrieved": "2026-09-24",
     "note": "The derived AEE ground token inventory. It is engine class-table evidence, not a real-world document. It can bind a game class to a catalogue entry only at grade claimed, and the evidence must name the concrete token it binds."
+  },
+  {
+    "source_id": "kawasaki_ninja_250r_service_manual",
+    "tier": 2,
+    "type": "manual",
+    "title": "Kawasaki Ninja250R / GPX250R Motorcycle Service Manual Supplement",
+    "edition": "Motorcycle Service Manual Supplement covering the EX250-F2 to F13 (Ninja 250R / GPX250R) with model-year supplements for 2000 to 2007; Internet Archive scan, 162 pages",
+    "identifier": "Kawasaki Ninja250R / GPX250R Motorcycle Service Manual Supplement; Internet Archive item kawasaki-ninja-250-r-service-manual",
+    "locator": "General Specifications table, printed page 1-4 (scan PDF page 13) and printed page 1-5 (scan PDF page 14)",
+    "retrieved": "2026-09-24",
+    "url": "https://archive.org/download/kawasaki-ninja-250-r-service-manual/Kawasaki%20Ninja%20250R%20-%20service%20manual.pdf",
+    "archive_ref": "Internet Archive item kawasaki-ninja-250-r-service-manual, title 'Kawasaki Ninja 250 R ZZR250 EX-250 Service Manual', uploaded 2023-08-10, 162 pages",
+    "licence": "Kawasaki manufacturer service manual held as a public Internet Archive scan. The held bytes are the Internet Archive scan of the printed supplement, not an issuing-authority copy.",
+    "primary_held": true,
+    "sha256": "2efe4a03845722baa91d696a8a6a6cb22f127b70098bc2096a5513823d517862",
+    "note": "Held tier-2 motorcycle service manual supplement for the Kawasaki EX250-F (Ninja 250R / GPX250R). It publishes identity, overall dimensions, wheelbase, road clearance, dry weight, curb weight by axle, the engine type and displacement, the maximum power and torque ratings, the manual six-speed transmission, the chain final drive and the front and rear tyre size codes. It publishes no net power with a stated basis, no single total curb weight (the curb weight is printed by axle) and no operating weight. The held copy is on disk under data/vehicle/sources/ and its digest matches the registry entry."
   }
 ]
