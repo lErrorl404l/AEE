@@ -53,6 +53,8 @@ jobs:
         run: python3 tools/validation/gen_vehicle_coverage.py --check
       - name: Vehicle data validation
         run: python3 tools/validation/validate_vehicle_data.py
+      - name: Ballistics data validation
+        run: python3 tools/validation/validate_ballistics_data.py
       - name: Check for BOM
         uses: arma-actions/bom-check@v1
         with:

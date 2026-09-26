@@ -264,6 +264,8 @@ private _TABLE = [
     ["lapua_S405", "762mm123grfmj", 7.9703, 7.8994, "G1:0.257:claimed", 0],
     ["lapua_S496", "65mm100grfmjcuttingedge", 6.4799, 6.7056, "G1:0.25:claimed", 0],
     ["lapua_S569", "569mm55grfmj", 3.5639, 5.6896, "G1:0.255:claimed", 0],
+    ["m829_apfsds", "120mmapfsds|m829|m829apfsdst", 0, 0, "", 0],
+    ["m830_heat", "120mmheat|m830|m830heatmpt", 13607.77, 120.0, "", 0],
     ["nosler_16314", "6mm85grspitzerpartition", 5.5079, 6.1722, "G1:0.315:claimed", 24.13],
     ["nosler_16315", "6mm95grspitzerpartition", 6.1559, 6.1722, "G1:0.365:claimed|G7:0.177:corroborated", 28.448],
     ["nosler_16316", "22cal60grspitzerpartition", 3.8879, 5.6896, "G1:0.228:claimed", 21.717],

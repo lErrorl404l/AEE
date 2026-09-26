@@ -10106,5 +10106,136 @@
     "grade": "documented"
    }
   }
+ },
+ {
+  "load_id": "120mm_m829_load",
+  "cartridge_id": "120mm_m256_smoothbore",
+  "projectile": "M829 APFSDS-T",
+  "note": "M829 APFSDS-T service round for the M256 gun.",
+  "values": {
+   "cartridge": {
+    "value": "120mm M256 smoothbore",
+    "unit": "name",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "projectile": {
+    "value": "M829 APFSDS-T",
+    "unit": "designation",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "service_velocity_ms": {
+    "value": 1679.45,
+    "unit": "m/s",
+    "source": "tm43_0001_28",
+    "grade": "documented",
+    "formula": "5510 ft/s x 0.3048 m/s per ft/s"
+   },
+   "velocity_reference": {
+    "value": "nominal velocity, M256 120 mm smoothbore cannon (TM 43-0001-28 page 2-109)",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "service_pressure_mpa": {
+    "value": 510.0,
+    "unit": "MPa",
+    "source": "tm43_0001_28",
+    "grade": "documented",
+    "formula": "5100 bar x 0.1 MPa per bar"
+   },
+   "pressure_reference": {
+    "value": "peak chamber pressure at 21 C (TM 43-0001-28 page 2-109)",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "charge_mass_g": {
+    "value": 8141.98,
+    "unit": "g",
+    "source": "tm43_0001_28",
+    "grade": "documented",
+    "formula": "17.95 lb x 453.59237 g/lb; source labels it total explosive weight (solid-projectile round, so this is the propellant charge)"
+   },
+   "twist_in": {
+    "value": 0,
+    "unit": "inches per turn",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 5280.0,
+      "mv_ms": 1679.45
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "tm43_0001_28",
+    "grade": "derived",
+    "formula": "reference barrel = 44 x 120 mm (M256 L/44) = 5280 mm; velocity from TM 43-0001-28 page 2-109"
+   }
+  }
+ },
+ {
+  "load_id": "120mm_m830_load",
+  "cartridge_id": "120mm_m256_smoothbore",
+  "projectile": "M830 HEAT-MP-T",
+  "note": "M830 HEAT-MP-T service round for the M256 gun.",
+  "values": {
+   "cartridge": {
+    "value": "120mm M256 smoothbore",
+    "unit": "name",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "projectile": {
+    "value": "M830 HEAT-MP-T",
+    "unit": "designation",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "service_velocity_ms": {
+    "value": 1139.95,
+    "unit": "m/s",
+    "source": "tm43_0001_28",
+    "grade": "documented",
+    "formula": "3740 ft/s x 0.3048 m/s per ft/s"
+   },
+   "velocity_reference": {
+    "value": "nominal velocity, M256 120 mm smoothbore cannon (TM 43-0001-28 page 2-115)",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "service_pressure_mpa": {
+    "value": 479.87,
+    "unit": "MPa",
+    "source": "tm43_0001_28",
+    "grade": "documented",
+    "formula": "69600 psi x 0.00689476 MPa per psi"
+   },
+   "pressure_reference": {
+    "value": "peak chamber pressure (TM 43-0001-28 page 2-115)",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "twist_in": {
+    "value": 0,
+    "unit": "inches per turn",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 5280.0,
+      "mv_ms": 1139.95
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "tm43_0001_28",
+    "grade": "derived",
+    "formula": "reference barrel = 44 x 120 mm (M256 L/44) = 5280 mm; velocity from TM 43-0001-28 page 2-115"
+   }
+  }
  }
 ]

@@ -21,14 +21,17 @@ would misplace the transonic band and with it the whole drag curve.
 
 Every standard drag function the database holds is available by name:
 G1, G2, G5, G6, G7, G8, GA, GB, GI, GS, LW2, RA4, RWS1943 and SCHAPIRO.
-The tables live in fnc_getDragTables, generated from the verified source.
+APFSDS is the fin-stabilised cannon label: it reuses the held SCHAPIRO
+curve as a placeholder, because no measured APFSDS curve is held. The
+tables live in fnc_getDragTables, generated from the verified source.
 A projectile may also carry a direct Cd(Mach) table of its own, which is
 what a measured custom drag model is.
 
 Arguments:
   0: bc (NUMBER, the ballistic coefficient in the chosen standard)
   1: velocity (NUMBER, the current velocity, m/s)
-  2: dragModel (STRING or NUMBER, default "G1"; 7 and "G7" are the same)
+  2: dragModel (STRING or NUMBER, default "G1"; 7 and "G7" are the same,
+     and 14 and "APFSDS" are the same)
   3: rhoRel (NUMBER, relative air density, default 1.0)
   4: airTempC (NUMBER, air temperature, default 15)
 
@@ -47,7 +50,11 @@ if (_velocity <= 0) exitWith { 0.0 };
 private _model = if (_dragModel isEqualType "") then {
     toUpper _dragModel
 } else {
-    format ["G%1", round _dragModel]
+    private _code = round _dragModel;
+    // 14 is the fin-stabilised cannon long rod, which is not a G-series
+    // number. The numeric form maps to the APFSDS table name. Every other
+    // code is a G-series standard.
+    if (_code == 14) then { "APFSDS" } else { format ["G%1", _code] }
 };
 
 private _table = (call FUNC(getDragTables)) getOrDefault [_model, []];

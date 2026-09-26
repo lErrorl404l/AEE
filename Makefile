@@ -41,6 +41,7 @@ lint:
 	python3 tools/validation/gen_vehicle_data.py --check
 	python3 tools/validation/gen_vehicle_coverage.py --check
 	python3 tools/validation/validate_vehicle_data.py
+	python3 tools/validation/validate_ballistics_data.py
 
 # Fail when the lint target and the CI workflow disagree, so a new CI check
 # cannot be added without a matching local one.

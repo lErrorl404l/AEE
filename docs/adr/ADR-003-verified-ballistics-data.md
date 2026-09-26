@@ -186,6 +186,18 @@ search, with a single `classification_source`:
 | temperature_sensitivity | | Where measured |
 | value_sources | | Source and grade per field |
 
+**Cannon fields**
+
+Phase 1 of the vehicle-weapons extension adds two fields. They carry a
+source, a unit and a grade like every other value. The data gate accepts
+the cannon ranges for bore, calibre, case length, barrel, mass, length,
+diameter and velocity.
+
+| Field | Unit | Notes |
+|---|---|---|
+| charge_mass_g | g | The propellant or charge mass |
+| penetration_mm_rha | mm RHA | The armour penetration reference, where a source holds it. Quarantined when no source exists |
+
 **conflicts**
 
 | Field | Purpose |

@@ -36203,5 +36203,55 @@
    "year_created": "1991",
    "classification_source": "cip_tdcc"
   }
+ },
+ {
+  "cartridge_id": "120mm_m256_smoothbore",
+  "names": [
+   "120mm M256 smoothbore",
+   "120mm NATO tank",
+   "120 mm M256"
+  ],
+  "case_family": "120 mm NATO",
+  "note": "120 mm smoothbore tank cartridge family fired from the M256 gun. Smoothbore, so the reference twist is zero. The held source states the complete round length, not the case length, so case_length_mm is not entered.",
+  "alias_exclude": ["120"],
+  "values": {
+   "calibre_mm": {
+    "value": 120.0,
+    "unit": "mm",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "bore_mm": {
+    "value": 120.0,
+    "unit": "mm",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "standard_twist_m": {
+    "value": 0,
+    "unit": "m per turn",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "max_pressure_mpa": {
+    "value": 510.0,
+    "unit": "MPa",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "pressure_standard": {
+    "value": "US Army data sheet, peak chamber pressure at 21 C",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   }
+  },
+  "classification": {
+   "cip_tab": "",
+   "case_type": "other",
+   "cartridge_type": "cannon",
+   "origin_country": "United states",
+   "year_created": "",
+   "classification_source": "tm43_0001_28"
+  }
  }
 ]

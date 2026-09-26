@@ -62,6 +62,9 @@ def row(rec):
     aliases = {n for n in (normalise(x) for x in names) if len(n) >= MIN_ALIAS}
     for name in names:
         aliases |= derived_aliases(name)
+    # A bare calibre token is not an identity signal, so a record may
+    # exclude one by name.
+    aliases -= {normalise(a) for a in rec.get("alias_exclude", [])}
     aliases = sorted(aliases)
     if not aliases:
         return None
@@ -220,7 +223,9 @@ def main():
     ambiguous = sum(1 for c in counts.values() if c > 1)
 
     rows.sort(key=lambda r: r[0])
-    body = ",\n".join('    ["{}", "{}", {}, {}, {}, {}, {}, {}]'.format(*r) for r in rows)
+    body = ",\n".join(
+        '    ["{}", "{}", {}, {}, {}, {}, {}, {}]'.format(*r) for r in rows
+    )
     text = TEMPLATE.replace("__ROWS__", body).replace("__SCAN__", str(SCAN_ALIAS))
     OUT.write_text(text, encoding="utf-8")
     print(

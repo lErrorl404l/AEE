@@ -63,6 +63,11 @@ private _family = switch (true) do {
     case (_a find "127x76" >= 0 ||
           _a find "12gauge" >= 0 ||
           _a find "pellet" >= 0):   { "12gauge" };
+    case (_a find "m829" >= 0 ||
+          _a find "apfsds" >= 0):   { "120mm_m256_m829" };
+    case (_a find "m830" >= 0 ||
+          _a find "120mm" >= 0 ||
+          _a find "m256" >= 0):     { "120mm_m256" };
     default                         { "" };
 };
 
@@ -103,7 +108,23 @@ private _AMMO_FAMILIES = createHashMapFromArray [
     ["127x108",[818, 1.016, 750, 0.610, 480, 0.600, 0.340, 12.7, 48.2, 7, 0.381, 360]],
     ["338",    [899, 0.610, 800, 0.508, 500, 0.756, 0, 8.58, 16.2, 1, 0.254, 420]],
     ["65x39",  [790, 0.610, 700, 0.406, 450, 0.500, 0.196, 6.71, 7.8, 7, 0.203, 415]],
-    ["12gauge",[470, 0.711, 400, 0.508, 300, 0.060, 0, 18.5, 28.3, 1, 0.0, 65]]
+    ["12gauge",[470, 0.711, 400, 0.508, 300, 0.060, 0, 18.5, 28.3, 1, 0.0, 65]],
+    // The 120 mm smoothbore tank cannon (M256). Two rows, one per
+    // projectile, because the two rounds have different service
+    // velocities and the M829 subprojectile mass is not published.
+    // M830 HEAT-MP-T: velocity 1139.95 m/s and pressure 479.87 MPa from
+    // TM 43-0001-28 page 2-115; mass from the projectile record, itself
+    // from the same page. Twist 0 because the barrel is a smoothbore.
+    // vMin is derived, not published: it is the fallback floor for a
+    // barrel shorter than the reference. The M256 barrel is 5.28 m
+    // (44 calibres), so the below-reference branch is not reachable and
+    // the floor is set to the reference velocity.
+    ["120mm_m256",[1139.95, 5.28, 1139.95, 5.28, 1139.95, 0, 0, 120, 13607.77, 1, 0, 479.87]],
+    // M829 APFSDS-T: velocity 1679.45 m/s and pressure 510 MPa from
+    // TM 43-0001-28 page 2-109. The subprojectile mass and diameter are
+    // not published, so massG is 0 and the row derives no BC. vMin is
+    // derived as above.
+    ["120mm_m256_m829",[1679.45, 5.28, 1679.45, 5.28, 1679.45, 0, 0, 120, 0, 14, 0, 510]]
 ];
 private _base = _AMMO_FAMILIES get _family;
 // The table fallback carries no twist or pressure data: 0 means

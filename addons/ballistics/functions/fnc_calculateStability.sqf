@@ -29,6 +29,9 @@ Arguments:
   5: altitudeFt (NUMBER, altitude, feet, default 0)
 
 Returns the stability factor. Returns 0 when an input is missing.
+Returns -1 (FIN_STABILISED) when the twist is 0, which is a fin-stabilised
+projectile: the Miller rule needs a spin, so it does not apply and the
+caller treats -1 as "not assessed", never as unstable.
 */
 params [
     ["_lengthM", 0, [0]],
@@ -39,7 +42,15 @@ params [
     ["_altitudeFt", 0, [0]]
 ];
 
-if (_lengthM <= 0 || _massG <= 0 || _diameterM <= 0 || _twistM <= 0) exitWith { 0 };
+if (_lengthM <= 0 || _massG <= 0 || _diameterM <= 0) exitWith { 0 };
+
+// The fin-stabilised path. A smoothbore sets the twist to 0, so the
+// projectile has no spin and the Miller rule cannot apply. A fin-stabilised
+// round is stabilised by its tail fins. The database does not yet hold the
+// fin area or the centre of pressure, so the cross-check is not computed
+// here. The documented sentinel FIN_STABILISED (-1) marks the case, and the
+// caller never reads it as an unstable value.
+if (_twistM <= 0) exitWith { -1 };
 
 private _massGr = _massG / 0.06479891;
 private _diameterIn = _diameterM / 0.0254;

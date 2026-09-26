@@ -17953,5 +17953,22 @@
   "licence": "public domain",
   "primary_held": true,
   "note": "Recoil input."
+ },
+ {
+  "source_id": "tm43_0001_28",
+  "tier": 2,
+  "type": "manual",
+  "title": "TM 43-0001-28, Army Ammunition Data Sheets: Artillery Ammunition, Guns, Howitzers, Mortars, Recoilless Rifles, Grenade Launchers, and Rockets (April 1994)",
+  "edition": "",
+  "identifier": "tm43_0001_28",
+  "locator": "Cartridge, 120 Millimeter: APFSDS-T, M829 (page 2-109) and HEAT-MP-T, M830 (page 2-115)",
+  "published": "April 1994",
+  "retrieved": "2026-09-26",
+  "url": "https://archive.org/download/milmanual-tm-43-0001-28-army-ammunition-data-sheets/tm_43-0001-28_army_ammunition_data_sheets_djvu.txt",
+  "archive_hash": "eeae6fba6d9200455ae75013528ae49dfd1c794c229712d0e5e1e18207fddbd0",
+  "held_pdf_sha256": "968e5dbe2adcebf10e1a8c400d55da95289a65392fe826f2fc59ebb9884c490b",
+  "licence": "public domain",
+  "primary_held": true,
+  "note": "Held as tm43_0001_28_djvu.txt under data/ballistics/sources/. archive_hash is the sha256 of that held text, which is the url payload. The PDF held beside it is tm43_0001_28.pdf, sha256 968e5dbe2adcebf10e1a8c400d55da95289a65392fe826f2fc59ebb9884c490b, recorded in held_pdf_sha256. 120 mm M829 (page 2-109) and M830 (page 2-115) data sheets."
  }
 ]

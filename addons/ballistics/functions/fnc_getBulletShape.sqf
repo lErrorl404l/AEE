@@ -5,11 +5,13 @@ Bullet shape classification (issue #167).
 Classifies a round's PROJECTILE SHAPE from its classname (the OTM/BTHP/
 FMJ/SP/RN signals) and returns [shapeClass, formFactor, dragModel]:
 
-  shapeClass - G1/G2/G5/G6/G7/G8 (the drag model the bullet uses)
+  shapeClass - G1/G2/G5/G6/G7/G8, or APFSDS for the fin-stabilised
+               cannon long rod (G1 and G7 do not apply to it)
   formFactor - the i in BC = m / (i * d^2) (the shape's drag efficiency
                relative to the G1 reference; i < 1 means lower drag
                than the G1 spitzer)
-  dragModel  - 1 = G1, 2 = G2, 5 = G5, 6 = G6, 7 = G7, 8 = G8
+  dragModel  - 1 = G1, 2 = G2, 5 = G5, 6 = G6, 7 = G7, 8 = G8, 14 = APFSDS
+               (the APFSDS curve is a placeholder; see fnc_getDragTables)
 
 The shape classes (per McCoy "Modern Exterior Ballistics", the JBM
 standard drag models).  The form factor i is the DRAG EFFICIENCY in
@@ -84,6 +86,16 @@ switch (true) do {
           _a find "xtp" >= 0 ||
           _a find "golddot" >= 0 ||
           _a find "hydra" >= 0):              { ["G1", 0.94, 1] };
+    // The tank-cannon long rod: the fin-stabilised sub-calibre APFSDS.
+    // The G1 and G7 tables are spin-stabilised references and do not apply,
+    // so the APFSDS label is used. No measured APFSDS curve is held: the
+    // APFSDS table is the SCHAPIRO curve reused as a placeholder (see
+    // data/ballistics/sources/drag_functions.json placeholder_models).
+    // The form factor is the slender-body value.
+    case (_a find "apfsds" >= 0 ||
+          _a find "m829" >= 0 ||
+          _a find "m256" >= 0 ||
+          _a find "120mm" >= 0):             { ["APFSDS", 0.30, 14] };
     // The default: a standard FMJ ball uses the G1 reference.
     default                                   { ["G1", 0.60, 1] };
 };
