@@ -27006,5 +27006,193 @@
     "grade": "derived"
    }
   }
+ },
+ {
+  "projectile_id": "m55a2_tp",
+  "names": [
+   "M55A2",
+   "20mm TP"
+  ],
+  "manufacturer": "US Army",
+  "note": "20 x 102 mm target practice projectile. The held TM states the projectile weight and the round length.",
+  "values": {
+   "mass_g": {
+    "value": 254.98,
+    "unit": "g",
+    "source": "tm43_0001_27",
+    "grade": "documented",
+    "formula": "3,935 gr x 0.06479891 g per gr"
+   },
+   "diameter_mm": {
+    "value": 20.0,
+    "unit": "mm",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   },
+   "drag_model": {
+    "value": "G1",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   }
+  }
+ },
+ {
+  "projectile_id": "m56a3_hei",
+  "names": [
+   "M56A3",
+   "M56A4",
+   "20mm HEI"
+  ],
+  "manufacturer": "US Army",
+  "note": "20 x 102 mm high explosive incendiary projectile. The held TM states the projectile weight; the explosive and incendiary fill weights are recorded as stated.",
+  "values": {
+   "mass_g": {
+    "value": 256.93,
+    "unit": "g",
+    "source": "tm43_0001_27",
+    "grade": "documented",
+    "formula": "3,965 gr x 0.06479891 g per gr"
+   },
+   "diameter_mm": {
+    "value": 20.0,
+    "unit": "mm",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   },
+   "drag_model": {
+    "value": "G1",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   }
+  }
+ },
+ {
+  "projectile_id": "m792_hei",
+  "names": [
+   "M792",
+   "25mm HEI-T"
+  ],
+  "manufacturer": "US Army",
+  "note": "25 x 137 mm high explosive incendiary tracer projectile. The held TM states the projectile weight as 1.11 lb and the propellant charge as 90 g of WC 890 ball propellant.",
+  "values": {
+   "mass_g": {
+    "value": 503.49,
+    "unit": "g",
+    "source": "tm43_0001_27",
+    "grade": "documented",
+    "formula": "1.11 lb x 453.59237 g per lb"
+   },
+   "diameter_mm": {
+    "value": 25.0,
+    "unit": "mm",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   },
+   "drag_model": {
+    "value": "G1",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   }
+  }
+ },
+ {
+  "projectile_id": "m919_apfsds",
+  "names": [
+   "M919",
+   "25mm APFSDS-T"
+  ],
+  "manufacturer": "US Army",
+  "note": "25 x 137 mm armour piercing fin stabilised discarding sabot tracer. The held TM states the propellant charge and the muzzle velocity but not the subprojectile mass or diameter, so those values are not entered and the round does not reach the stability path. Fin stabilised, so the drag model label is APFSDS.",
+  "values": {
+   "drag_model": {
+    "value": "APFSDS",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   }
+  }
+ },
+ {
+  "projectile_id": "mk239_tp_t",
+  "names": [
+   "MK239",
+   "30x173 TP-T"
+  ],
+  "manufacturer": "General Dynamics Ordnance and Tactical Systems",
+  "note": "30 x 173 mm target practice tracer projectile. Tier 4 maker data sheet, so the values are a claim.",
+  "values": {
+   "mass_g": {
+    "value": 365.0,
+    "unit": "g",
+    "source": "gdots_30x173",
+    "grade": "claimed"
+   },
+   "diameter_mm": {
+    "value": 30.0,
+    "unit": "mm",
+    "source": "gdots_30x173",
+    "grade": "claimed"
+   },
+   "drag_model": {
+    "value": "G1",
+    "source": "gdots_30x173",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "projectile_id": "mk258_apfsds",
+  "names": [
+   "MK258",
+   "30x173 APFSDS-T"
+  ],
+  "manufacturer": "General Dynamics Ordnance and Tactical Systems",
+  "note": "30 x 173 mm armour piercing fin stabilised discarding sabot tracer. The maker states the projectile mass; the subprojectile diameter is not stated, so diameter is not entered. Fin stabilised, so the drag model label is APFSDS.",
+  "values": {
+   "mass_g": {
+    "value": 230.0,
+    "unit": "g",
+    "source": "gdots_30x173",
+    "grade": "claimed"
+   },
+   "drag_model": {
+    "value": "APFSDS",
+    "source": "gdots_30x173",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "projectile_id": "yugo_127x108_ap",
+  "names": [
+   "12.7 x 108 mm AP",
+   "M93 AP"
+  ],
+  "manufacturer": "Yugoimport",
+  "note": "12.7 x 108 mm armour piercing projectile. The maker states the bullet mass 48.2 +/- 0.8 g and the bullet length 64.5 mm.",
+  "values": {
+   "mass_g": {
+    "value": 48.2,
+    "unit": "g",
+    "source": "yugoimport_127x108_ap",
+    "grade": "documented"
+   },
+   "length_mm": {
+    "value": 64.5,
+    "unit": "mm",
+    "source": "yugoimport_127x108_ap",
+    "grade": "documented"
+   },
+   "diameter_mm": {
+    "value": 12.7,
+    "unit": "mm",
+    "source": "yugoimport_127x108_ap",
+    "grade": "documented"
+   },
+   "drag_model": {
+    "value": "G1",
+    "source": "yugoimport_127x108_ap",
+    "grade": "documented"
+   }
+  }
  }
 ]

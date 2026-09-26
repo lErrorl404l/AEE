@@ -988,8 +988,10 @@
  },
  {
   "cartridge_id": "12_7_x_108",
+  "alias_exclude": ["127x108", "12x"],
   "names": [
-   "12,7 x 108"
+   "12,7 x 108",
+   "127108"
   ],
   "note": "",
   "values": {
@@ -17638,12 +17640,24 @@
    "year_created": "1966",
    "classification_source": "us_army_tm9_1010_230_10"
   },
-  "note": "High pressure grenade cartridge. The launcher barrel is rifled.",
+  "note": "High pressure grenade cartridge. The launcher barrel is rifled. Calibre and bore from the held US Army TM 43-0001-28; the reference twist is from the held Mk 19 operator manual.",
   "values": {
    "standard_twist_m": {
     "value": 1.2192,
     "unit": "m per turn",
     "source": "us_army_tm9_1010_230_10",
+    "grade": "documented"
+   },
+   "calibre_mm": {
+    "value": 40.0,
+    "unit": "mm",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "bore_mm": {
+    "value": 40.0,
+    "unit": "mm",
+    "source": "tm43_0001_28",
     "grade": "documented"
    }
   }
@@ -22892,6 +22906,20 @@
     "value": "WC 860",
     "source": "tm43_0001_27",
     "grade": "documented"
+   },
+   "calibre_mm": {
+    "value": 12.7,
+    "unit": "mm",
+    "source": "mil_specs",
+    "grade": "derived",
+    "formula": "0.50 in x 25.4 mm per in"
+   },
+   "bore_mm": {
+    "value": 12.7,
+    "unit": "mm",
+    "source": "mil_specs",
+    "grade": "derived",
+    "formula": "0.50 in x 25.4 mm per in"
    }
   }
  },
@@ -36213,7 +36241,9 @@
   ],
   "case_family": "120 mm NATO",
   "note": "120 mm smoothbore tank cartridge family fired from the M256 gun. Smoothbore, so the reference twist is zero. The held source states the complete round length, not the case length, so case_length_mm is not entered.",
-  "alias_exclude": ["120"],
+  "alias_exclude": [
+   "120"
+  ],
   "values": {
    "calibre_mm": {
     "value": 120.0,
@@ -36252,6 +36282,272 @@
    "origin_country": "United states",
    "year_created": "",
    "classification_source": "tm43_0001_28"
+  }
+ },
+ {
+  "cartridge_id": "20x102",
+  "names": [
+   "20x102mm",
+   "20 mm autocannon"
+  ],
+  "case_family": "20 mm autocannon",
+  "note": "20 mm autocannon cartridge family for the M39, M61, M68 and M195 guns. The held TM states the M55A2 target practice and M56A3 high explosive incendiary rounds. The case length is not stated on the held sheet, so it is not entered.",
+  "values": {
+   "calibre_mm": {
+    "value": 20.0,
+    "unit": "mm",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   },
+   "bore_mm": {
+    "value": 20.0,
+    "unit": "mm",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   },
+   "max_pressure_mpa": {
+    "value": 417.13,
+    "unit": "MPa",
+    "source": "tm43_0001_27",
+    "grade": "documented",
+    "formula": "60,500 psi x 0.00689476 MPa per psi; 20 mm M55A2 chamber pressure"
+   },
+   "pressure_standard": {
+    "value": "US Army data sheet, chamber pressure (TM 43-0001-27 p 14-11)",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   }
+  },
+  "classification": {
+   "cip_tab": "",
+   "case_type": "other",
+   "cartridge_type": "cannon",
+   "origin_country": "",
+   "year_created": "",
+   "classification_source": "tm43_0001_27"
+  }
+ },
+ {
+  "cartridge_id": "25x137",
+  "names": [
+   "25x137mm",
+   "25 mm M242 Bushmaster"
+  ],
+  "case_family": "25 mm autocannon",
+  "note": "25 mm autocannon cartridge family for the M242 Bushmaster. The held TM states the M792 HEI-T and M919 APFSDS-T rounds. The case length is not stated on the held sheet, so it is not entered.",
+  "values": {
+   "calibre_mm": {
+    "value": 25.0,
+    "unit": "mm",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   },
+   "bore_mm": {
+    "value": 25.0,
+    "unit": "mm",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   },
+   "max_pressure_mpa": {
+    "value": 386.11,
+    "unit": "MPa",
+    "source": "tm43_0001_27",
+    "grade": "documented",
+    "formula": "56,000 psi x 0.00689476 MPa per psi; 25 mm M919 maximum chamber pressure"
+   },
+   "pressure_standard": {
+    "value": "US Army data sheet, maximum chamber pressure (TM 43-0001-27 p 15-6)",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   }
+  },
+  "classification": {
+   "cip_tab": "",
+   "case_type": "other",
+   "cartridge_type": "cannon",
+   "origin_country": "",
+   "year_created": "",
+   "classification_source": "tm43_0001_27"
+  }
+ },
+ {
+  "cartridge_id": "30x113",
+  "names": [
+   "30x113mm",
+   "30 mm M230"
+  ],
+  "case_family": "30 mm autocannon",
+  "note": "30 mm autocannon cartridge family for the M230 chain gun. The held TM states the M789 high explosive dual purpose round, whose average chamber pressure is a band. The band upper bound is entered and the band is stated in the pressure reference.",
+  "values": {
+   "calibre_mm": {
+    "value": 30.0,
+    "unit": "mm",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   },
+   "bore_mm": {
+    "value": 30.0,
+    "unit": "mm",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   },
+   "max_pressure_mpa": {
+    "value": 309.92,
+    "unit": "MPa",
+    "source": "tm43_0001_27",
+    "grade": "documented",
+    "formula": "44,950 psi x 0.00689476 MPa per psi; upper bound of the stated 40,000 to 44,950 psi average chamber pressure"
+   },
+   "pressure_standard": {
+    "value": "US Army data sheet, average chamber pressure 40,000 to 44,950 psi (280 to 310 MPa), TM 43-0001-27 p 16-5",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   }
+  },
+  "classification": {
+   "cip_tab": "",
+   "case_type": "other",
+   "cartridge_type": "cannon",
+   "origin_country": "",
+   "year_created": "",
+   "classification_source": "tm43_0001_27"
+  }
+ },
+ {
+  "cartridge_id": "30x173",
+  "names": [
+   "30x173mm",
+   "30 mm Bushmaster II / MK44"
+  ],
+  "case_family": "30 mm autocannon",
+  "note": "30 mm autocannon cartridge family for the Bushmaster II (MK44) and Mauser MK30. The only held source is the tier 4 maker data sheet, so every value is graded claimed. The case length is not entered: the source does not state it.",
+  "values": {
+   "calibre_mm": {
+    "value": 30.0,
+    "unit": "mm",
+    "source": "gdots_30x173",
+    "grade": "claimed"
+   },
+   "bore_mm": {
+    "value": 30.0,
+    "unit": "mm",
+    "source": "gdots_30x173",
+    "grade": "claimed"
+   },
+   "max_pressure_mpa": {
+    "value": 345.0,
+    "unit": "MPa",
+    "source": "gdots_30x173",
+    "grade": "claimed"
+   },
+   "pressure_standard": {
+    "value": "manufacturer data sheet, 30x173mm ammunition suite",
+    "source": "gdots_30x173",
+    "grade": "claimed"
+   }
+  },
+  "classification": {
+   "cip_tab": "",
+   "case_type": "other",
+   "cartridge_type": "cannon",
+   "origin_country": "",
+   "year_created": "",
+   "classification_source": "gdots_30x173"
+  }
+ },
+ {
+  "cartridge_id": "127x108",
+  "alias_exclude": ["127108"],
+  "names": [
+   "12.7x108mm",
+   "12.7 x 108 mm"
+  ],
+  "case_family": "12.7 mm Soviet",
+  "note": "12.7 x 108 mm heavy machine gun cartridge (DShK, NSV, Kord). The held Yugoimport data sheets state the case length, bullet mass, velocity and case mouth pressure. The velocity is stated as a band; the lower bound is entered and the band is named in the velocity reference.",
+  "values": {
+   "calibre_mm": {
+    "value": 12.7,
+    "unit": "mm",
+    "source": "yugoimport_127x108_ap",
+    "grade": "documented"
+   },
+   "bore_mm": {
+    "value": 12.7,
+    "unit": "mm",
+    "source": "yugoimport_127x108_ap",
+    "grade": "documented",
+    "formula": "case length and calibre designation 12.7 x 108 mm"
+   },
+   "case_length_mm": {
+    "value": 108.0,
+    "unit": "mm",
+    "source": "yugoimport_127x108_ap",
+    "grade": "documented"
+   },
+   "max_pressure_mpa": {
+    "value": 340.0,
+    "unit": "MPa",
+    "source": "yugoimport_127x108_ap",
+    "grade": "documented",
+    "formula": "3,400 bar x 0.1 MPa per bar; maximum average case mouth pressure"
+   },
+   "pressure_standard": {
+    "value": "manufacturer data sheet, maximum average case mouth pressure (piezo, K6215), standard proof barrel 1008 mm",
+    "source": "yugoimport_127x108_ap",
+    "grade": "documented"
+   }
+  },
+  "classification": {
+   "cip_tab": "",
+   "case_type": "other",
+   "cartridge_type": "other",
+   "origin_country": "Soviet union",
+   "year_created": "",
+   "classification_source": "yugoimport_127x108_ap"
+  }
+ },
+ {
+  "cartridge_id": "145x114",
+  "names": [
+   "14.5x114mm",
+   "14.5 mm KPV"
+  ],
+  "case_family": "14.5 mm Soviet",
+  "note": "14.5 x 114 mm heavy machine gun and anti-tank rifle cartridge (KPV, PTRD, PTRS). The standard twist is the missing value the scope named: the held PTRD-41 data sheet states 8 grooves, right hand, 1 turn in 45.5 cm (455 mm). The case length is not stated on the held sheet, so it is not entered.",
+  "values": {
+   "calibre_mm": {
+    "value": 14.5,
+    "unit": "mm",
+    "source": "dockery_ptrd41",
+    "grade": "documented"
+   },
+   "bore_mm": {
+    "value": 14.5,
+    "unit": "mm",
+    "source": "dockery_ptrd41",
+    "grade": "documented"
+   },
+   "standard_twist_m": {
+    "value": 0.455,
+    "unit": "m per turn",
+    "source": "dockery_ptrd41",
+    "grade": "documented",
+    "formula": "1 turn in 45.5 cm = 455 mm = 0.455 m"
+   },
+   "grooves": {
+    "value": 8,
+    "unit": "count",
+    "source": "dockery_ptrd41",
+    "grade": "documented"
+   }
+  },
+  "classification": {
+   "cip_tab": "",
+   "case_type": "other",
+   "cartridge_type": "other",
+   "origin_country": "Soviet union",
+   "year_created": "",
+   "classification_source": "dockery_ptrd41"
   }
  }
 ]

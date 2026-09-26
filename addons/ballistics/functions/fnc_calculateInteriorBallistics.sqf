@@ -50,6 +50,20 @@ Returns the calculated muzzle velocity (m/s), or 0 for invalid inputs.
 params ["_caliberMm", "_massG", "_barrelM", ["_pressureMPa", 0, [0]]];
 if (_caliberMm <= 0 || _massG <= 0 || _barrelM <= 0) exitWith { 0 };
 
+// ─── The cannon regime (20 mm and above) ─────────────────────────────────
+// The two-zone model below is fitted to small-arms cartridges. Its
+// Mayer-Krause burn length and its combustion-efficiency regime are
+// calibrated against measured rifle, pistol and heavy machine gun muzzle
+// velocities, and they do not transfer to a cannon. A cannon derivation
+// needs a charge and bore model held as a sourced curve: the propellant
+// charge geometry, the shot start pressure and the barrel travel are all
+// absent from the database. This function therefore returns 0 for a
+// cannon calibre, which the resolver reads as "not held". The cannon
+// muzzle velocity comes from the sourced service_velocity_ms in the load
+// record instead. No cannon pressure and no interior curve are invented
+// here. This is the documented deferral, not a computed value.
+if (_caliberMm >= 20) exitWith { 0 };
+
 // ─── The researched peak pressure by caliber (SAAMI/CIP MAP) ─────────────
 if (_pressureMPa <= 0) then {
     _pressureMPa = switch (true) do {

@@ -71,19 +71,29 @@ private _CALIBERS = [
     [18.5,  "12 Gauge",    ["12gauge", "12_ga", "127x76", "shotgun"]],
     [30.0,  "30mm",        ["30mm", "30x173", "30x113"]],
     [25.0,  "25mm",        ["25mm", "25x137"]],
-    [20.0,  "20mm",        ["20mm", "20x102"]]
+    [20.0,  "20mm",        ["20mm", "20x102"]],
+    // Tank cannon (the vehicle-weapons extension). The three-digit mm
+    // forms also resolve in the numeric layer; the cartridge tokens
+    // (m256, m829, 2a46) give an exact alias match.
+    [105.0, "105mm",       ["105mm", "105x617", "105x607", "m68", "l7a3", "m735"]],
+    [120.0, "120mm",       ["120mm", "120x570", "m256", "m829", "m830"]],
+    [125.0, "125mm",       ["125mm", "125x408", "2a46", "3bm"]]
 ];
 
 // Layer 1 result (empty = no alias matched; the numeric conversion follows).
+// The LONGEST alias wins, so 120mm does not resolve as 20mm and 125mm does
+// not resolve as 25mm - the same longest-alias rule as the cartridge
+// resolver.
 private _aliasResult = [];
+private _bestAliasLen = 0;
 {
     private _caliberRow = _x;        // [caliberMm, canonicalName, aliases]
-    private _aliases = _x select 2;
     {
-        if (_n find _x >= 0) exitWith {
+        if ((_n find _x >= 0) && ((count _x) > _bestAliasLen)) then {
+            _bestAliasLen = count _x;
             _aliasResult = [_caliberRow select 0, _caliberRow select 1, 1];
         };
-    } forEach _aliases;
+    } forEach (_x select 2);
 } forEach _CALIBERS;
 if (_aliasResult isNotEqualTo []) exitWith { _aliasResult };
 

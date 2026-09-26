@@ -95,6 +95,8 @@ switch (true) do {
     case (_a find "apfsds" >= 0 ||
           _a find "m829" >= 0 ||
           _a find "m256" >= 0 ||
+          _a find "m919" >= 0 ||
+          _a find "mk258" >= 0 ||
           _a find "120mm" >= 0):             { ["APFSDS", 0.30, 14] };
     // The default: a standard FMJ ball uses the G1 reference.
     default                                   { ["G1", 0.60, 1] };

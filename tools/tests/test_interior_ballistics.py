@@ -32,6 +32,10 @@ def mv(cal_mm, mass_g, barrel_m, pressure_mpa=None):
     """Mirror of the SQF interior-ballistics calculator."""
     if cal_mm <= 0 or mass_g <= 0 or barrel_m <= 0:
         return 0
+    if cal_mm >= 20:
+        # The cannon regime is deferred: the small-arms two-zone model does
+        # not transfer, and no cannon interior curve is held. See the SQF.
+        return 0
     if pressure_mpa is None:
         if cal_mm <= 5.6:
             pressure_mpa = 430
@@ -131,6 +135,27 @@ class TestMeasuredAnchors(unittest.TestCase):
     def test_svd(self):
         # SVD 7.62x54R 22.2" (0.565 m): 810-830 m/s.
         self.assert_in_band(7.62, 9.6, 0.565, 810, pct=10.0)
+
+
+class TestCannonDeferral(unittest.TestCase):
+    """The cannon regime (calibre 20 mm and above) is deferred, not computed.
+
+    fnc_calculateInteriorBallistics returns 0 for a cannon calibre because
+    the two-zone model is fitted to small arms and no cannon charge or bore
+    curve is held. The SQF guard and the Python mirror must agree.
+    """
+
+    def test_mirror_returns_zero_for_cannon(self):
+        for cal_mm in (20, 30, 40, 120):
+            self.assertEqual(
+                mv(cal_mm, 400.0, 3.0),
+                0,
+                f"the mirror computed a cannon calibre {cal_mm} mm",
+            )
+
+    def test_sqf_guard_agrees(self):
+        self.assertIn("if (_caliberMm >= 20) exitWith { 0 };", FNC)
+        self.assertIn("cannon", FNC.lower())
 
 
 if __name__ == "__main__":

@@ -72,6 +72,8 @@
   "url": "https://web.archive.org/web/2020id_/http://www.appliedballisticsllc.com/Downloads/ABLibrary.pdf",
   "licence": "Applied Ballistics published data",
   "primary_held": true,
+  "held_file": "ab_bullet_library.pdf",
+  "held_pdf_sha256": "93cfab0aa8e2cb7dfb19d9c39188605219ae38696f27bb97ec2ba1eb3dde5a9a",
   "note": "An independent bullet identity and weight reference. Applied Ballistics measures bullet drag with Doppler radar. The direct download is blocked, so the archived copy is used. The parsed index and the SHA256 are held under data/ballistics/sources/ab_bullet_library.json."
  },
  {
@@ -132,6 +134,8 @@
   "url": "https://everyspec.com/",
   "licence": "public domain, distribution unlimited",
   "primary_held": true,
+  "held_file": "mil_specs.json",
+  "archive_hash": "5772a573439ae2f8af1a586cb71d65d4aaabcae7bca0e8521234e5d677a436d0",
   "note": "Service ammunition specifications. The velocity is measured at a stated distance from the muzzle, not at the muzzle, and no specification states a bullet mass or a barrel length. The parsed values and the SHA256 of each document are held under data/ballistics/sources/mil_specs.json."
  },
  {
@@ -147,6 +151,8 @@
   "url": "https://frfrogspad.com/20120418-g7bclist.xls",
   "licence": "public compilation of measured data",
   "primary_held": true,
+  "held_file": "apg_litz_g7.xls",
+  "archive_hash": "d23878aec0ce880d19b09ffcfdb7211d3166b9a05716e465a367d190f397f703",
   "note": "Independent G7 measurements for military and commercial bullets. The rows are labelled APG (Aberdeen Proving Ground), Litz, or SL (a ShootingLab conversion, which is not a measurement and is marked as such). Distributed as a public list. Held under data/ballistics/sources/apg_litz_g7.json."
  },
  {
@@ -162,6 +168,8 @@
   "url": "https://sentineltactical.com/wp-content/uploads/2019/12/Litz-BC-of-bullets.pdf",
   "licence": "US Government work, public release",
   "primary_held": true,
+  "held_file": "litz_dfrl.pdf",
+  "held_pdf_sha256": "31e76d202d4ee42e582b68a7d93d1d9a6900f70f6057bc89b12f996c956c9d72",
   "note": "Compares the manufacturer G1 claim against the Litz measured G1 and G7 for the Barnes, Hornady, Sierra and Nosler lines. The measurements used a chronograph and acoustic sensors over 600 yards. Held under data/ballistics/sources/litz_dfrl.json."
  },
  {
@@ -3612,6 +3620,8 @@
   "url": "https://dockeryarmory.com/ptrd-41/",
   "licence": "public domain",
   "primary_held": true,
+  "held_file": "dockery_ptrd41.html",
+  "archive_hash": "4ce26dc62b4b55ebb985cd1e41f8487554789e292355a6dc838bf1fe8c4958dd",
   "note": "Chambering standard."
  },
  {
@@ -7956,13 +7966,15 @@
   "title": "TM 43-0001-27, Army Ammunition Data Sheets: Small Caliber Ammunition, FSC 1305 (April 1994, Change 2 December 1996)",
   "edition": "",
   "identifier": "tm43_0001_27",
-  "locator": "recoil input",
+  "locator": "Recoil input; Caliber .50 chapter 12 (M2, M33), 20 mm chapter 14 (M55A2 p 14-11, M56A3 p 14-13), 25 mm chapter 15 (M792 p 15-5, M919), 30 mm chapter 16 (M789 p 16-5)",
   "published": "",
   "retrieved": "2026-09-22",
   "url": "https://archive.org/download/tm-43-0001-27-small-caliber-ammunition/TM%2043-0001-27%2C%20Small%20Caliber%20Ammunition_djvu.txt",
   "licence": "public domain",
   "primary_held": true,
-  "note": "Recoil input."
+  "held_file": "tm43_djvu.txt",
+  "archive_hash": "dba84046c86bdfe32159831af7e931899003c2495e2c2e1a464f042dc69eb1c0",
+  "note": "Recoil input and the autocannon and heavy machine gun data sheets. Small caliber ammunition, so the source supports the HMG and autocannon families that sit below the artillery TM."
  },
  {
   "source_id": "vihtavuori_2026",
@@ -8016,13 +8028,15 @@
   "title": "Yugoimport 12.7 x 108 mm API cartridge data sheet",
   "edition": "",
   "identifier": "yugoimport_127x108_api",
-  "locator": "recoil input",
+  "locator": "12.7 x 108 mm cartridge data sheet: case length, bullet mass, velocity and case mouth pressure",
   "published": "",
   "retrieved": "2026-09-22",
   "url": "https://www.yugoimport.com/sites/default/files/documents/2023-12/12.7%20x%20108%20mm%2C%20API.pdf",
   "licence": "public domain",
   "primary_held": true,
-  "note": "Recoil input."
+  "held_file": "yugoimport_127x108_api.pdf",
+  "held_pdf_sha256": "82f1f617124dd7b2cc44152c8d08046ce2b05470f3486ed83fafce61586e9b9c",
+  "note": "Held as yugoimport_127x108_ap.pdf and yugoimport_127x108_api.pdf under data/ballistics/sources/. Manufacturer data sheet, tier 3."
  },
  {
   "source_id": "yugoimport_127x108_ap",
@@ -8031,13 +8045,15 @@
   "title": "Yugoimport 12.7 x 108 mm AP (Armor Piercing) cartridge data sheet",
   "edition": "",
   "identifier": "yugoimport_127x108_ap",
-  "locator": "recoil input",
+  "locator": "12.7 x 108 mm cartridge data sheet: case length, bullet mass, velocity and case mouth pressure",
   "published": "",
   "retrieved": "2026-09-22",
   "url": "https://www.yugoimport.com/sites/default/files/documents/2022-10/12.7%20x%20108%20mm%2C%20AP%20eng..pdf",
   "licence": "public domain",
   "primary_held": true,
-  "note": "Recoil input."
+  "held_file": "yugoimport_127x108_ap.pdf",
+  "held_pdf_sha256": "a7aedd3f361143417888a922b4bf2ad896a818c78e1c4ef0fa6ad1c76a4347d2",
+  "note": "Held as yugoimport_127x108_ap.pdf and yugoimport_127x108_api.pdf under data/ballistics/sources/. Manufacturer data sheet, tier 3."
  },
  {
   "source_id": "sig_classic_pistol_manual",
@@ -17970,5 +17986,23 @@
   "licence": "public domain",
   "primary_held": true,
   "note": "Held as tm43_0001_28_djvu.txt under data/ballistics/sources/. archive_hash is the sha256 of that held text, which is the url payload. The PDF held beside it is tm43_0001_28.pdf, sha256 968e5dbe2adcebf10e1a8c400d55da95289a65392fe826f2fc59ebb9884c490b, recorded in held_pdf_sha256. 120 mm M829 (page 2-109) and M830 (page 2-115) data sheets."
+ },
+ {
+  "source_id": "gdots_30x173",
+  "tier": 4,
+  "type": "manufacturer",
+  "title": "General Dynamics Ordnance and Tactical Systems, 30x173mm Ammunition Suite",
+  "edition": "",
+  "identifier": "GD-OTS 30x173mm ammunition suite data sheet",
+  "locator": "MK239 TP-T and MK258 APFSDS-T: cartridge mass, projectile mass, muzzle velocity, chamber pressure",
+  "published": "2020",
+  "retrieved": "2026-09-26",
+  "url": "https://www.gdots.com/wp-content/uploads/2020/01/30x173mm-Ammunition-Suite.pdf",
+  "archive_hash": "60c0c9b8a6a817d7ce678cacf425365ef9df4e432bad92af9bc936d559e7e029",
+  "held_pdf_sha256": "60c0c9b8a6a817d7ce678cacf425365ef9df4e432bad92af9bc936d559e7e029",
+  "licence": "manufacturer public data sheet",
+  "primary_held": true,
+  "held_file": "gdots_30x173.pdf",
+  "note": "Held as gdots_30x173.pdf and gdots_30x173.txt under data/ballistics/sources/. A tier 4 manufacturer claim, so every value from it is graded claimed and never displaces a standard or manual value."
  }
 ]
