@@ -1,0 +1,98 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the RG-31 Nyala. Every value is grade claimed and the registry marks primary_held false. The article publishes the weight, the dimensions, the engine rating, the road speed and the range. It publishes no maker, no ground clearance and no transmission type.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "rg_31",
+      "canonical_name": "RG-31 Nyala",
+      "maker": "unknown",
+      "model": "RG-31",
+      "variant": "Mine-resistant ambush protected vehicle (4x4)",
+      "variant_id": "rg_31",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "South Africa",
+      "era": "modern",
+      "aliases": [
+        "rg-31",
+        "rg31",
+        "rg-31 nyala",
+        "nyala"
+      ],
+      "keywords": [
+        "mrap",
+        "wheeled",
+        "4x4",
+        "south africa"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 7280,
+          "unit": "kg",
+          "source": "wikipedia_rg_31",
+          "locator": "Infobox, weight row",
+          "state": "weight published as 7.28 t; the tonne taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6400,
+          "unit": "mm",
+          "source": "wikipedia_rg_31",
+          "locator": "Infobox, length row",
+          "state": "length published as 6.40 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2470,
+          "unit": "mm",
+          "source": "wikipedia_rg_31",
+          "locator": "Infobox, width row",
+          "state": "width published as 2.47 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2630,
+          "unit": "mm",
+          "source": "wikipedia_rg_31",
+          "locator": "Infobox, height row",
+          "state": "height published as 2.63 m",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Daimler-Benz OM 352A 6-cylinder diesel",
+          "unit": "text",
+          "source": "wikipedia_rg_31",
+          "locator": "Infobox, engine row, option 1 entry",
+          "state": "engine published as a Daimler-Benz OM 352A 6-cylinder diesel, as published",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 123,
+          "unit": "hp",
+          "source": "wikipedia_rg_31",
+          "locator": "Infobox, engine row, option 1 entry",
+          "state": "engine power published as 123 hp, with no net basis",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 100,
+          "unit": "km/h",
+          "source": "wikipedia_rg_31",
+          "locator": "Infobox, speed row",
+          "state": "road speed published as 100 km/h",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 900,
+          "unit": "km",
+          "source": "wikipedia_rg_31",
+          "locator": "Infobox, vehicle range row",
+          "state": "range published as 900 km",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

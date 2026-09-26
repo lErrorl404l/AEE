@@ -1,0 +1,98 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the T-90. Every value is grade claimed and the registry marks primary_held false. The article publishes the weight, the dimensions, the engine and its rating, the road speed and the range. It publishes no ground clearance.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "t_90",
+      "canonical_name": "T-90",
+      "maker": "Uralvagonzavod",
+      "model": "T-90",
+      "variant": "Main battle tank",
+      "variant_id": "t_90",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Russia",
+      "era": "modern",
+      "aliases": [
+        "t-90",
+        "t90",
+        "t-90a",
+        "t-90s"
+      ],
+      "keywords": [
+        "mbt",
+        "main battle tank",
+        "tracked",
+        "russia"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 46000,
+          "unit": "kg",
+          "source": "wikipedia_t_90",
+          "locator": "Infobox, weight row",
+          "state": "weight published as 46 t for the T-90; the same row publishes 46.5 t for the T-90A and 48 t for the T-90SM, and the tonne is taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 9630,
+          "unit": "mm",
+          "source": "wikipedia_t_90",
+          "locator": "Infobox, length row",
+          "state": "length published as 9.63 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3780,
+          "unit": "mm",
+          "source": "wikipedia_t_90",
+          "locator": "Infobox, width row",
+          "state": "width published as 3.78 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2220,
+          "unit": "mm",
+          "source": "wikipedia_t_90",
+          "locator": "Infobox, height row",
+          "state": "height published as 2.22 m",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "V-84MS 12-cylinder diesel",
+          "unit": "text",
+          "source": "wikipedia_t_90",
+          "locator": "Infobox, engine row, T-90 entry",
+          "state": "engine published as a V-84MS 12-cylinder diesel for the T-90, as published",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 840,
+          "unit": "hp",
+          "source": "wikipedia_t_90",
+          "locator": "Infobox, engine power row, V-84MS entry",
+          "state": "engine power published as 840 hp (617 kW) for the V-84MS, with no net basis",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 60,
+          "unit": "km/h",
+          "source": "wikipedia_t_90",
+          "locator": "Infobox, speed row",
+          "state": "road speed published as 60 km/h for the T-90A and T-90MS",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 550,
+          "unit": "km",
+          "source": "wikipedia_t_90",
+          "locator": "Infobox, vehicle range row",
+          "state": "range published as 550 km without fuel drums",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

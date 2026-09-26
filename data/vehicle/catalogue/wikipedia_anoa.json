@@ -1,0 +1,112 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the Anoa. Every value is grade claimed and the registry marks primary_held false. The article publishes the weight, the dimensions, the ground clearance, the engine, the automatic transmission, the road speed and the range.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "anoa",
+      "canonical_name": "Anoa",
+      "maker": "Pindad",
+      "model": "Anoa",
+      "variant": "Armoured personnel carrier (6x6)",
+      "variant_id": "anoa",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Indonesia",
+      "era": "modern",
+      "aliases": [
+        "anoa",
+        "pindad anoa"
+      ],
+      "keywords": [
+        "apc",
+        "wheeled",
+        "6x6",
+        "indonesia"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 12500,
+          "unit": "kg",
+          "source": "wikipedia_anoa",
+          "locator": "Infobox, weight row",
+          "state": "weight published as 12.5 tonnes with 14.5 tons combat; recorded at 12.5 tonnes and the tonne taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6000,
+          "unit": "mm",
+          "source": "wikipedia_anoa",
+          "locator": "Infobox, length row",
+          "state": "length published as 6 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2500,
+          "unit": "mm",
+          "source": "wikipedia_anoa",
+          "locator": "Infobox, width row",
+          "state": "width published as 2.5 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2170,
+          "unit": "mm",
+          "source": "wikipedia_anoa",
+          "locator": "Infobox, height row",
+          "state": "height published as 2.17 m hull top",
+          "grade": "claimed"
+        },
+        "ground_clearance_mm": {
+          "value": 400,
+          "unit": "mm",
+          "source": "wikipedia_anoa",
+          "locator": "Infobox, clearance row",
+          "state": "ground clearance published as 40 cm",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Renault MIDR 062045 inline-6 turbo-charged diesel",
+          "unit": "text",
+          "source": "wikipedia_anoa",
+          "locator": "Infobox, engine row",
+          "state": "engine published as a Renault MIDR 062045 inline-6 turbo-charged diesel, as published",
+          "grade": "claimed"
+        },
+        "transmission_type": {
+          "value": "automatic",
+          "unit": "enum",
+          "source": "wikipedia_anoa",
+          "locator": "Infobox, transmission row",
+          "state": "transmission published as an automatic ZF S6HP502",
+          "grade": "claimed"
+        },
+        "gears": {
+          "value": 6,
+          "unit": "count",
+          "source": "wikipedia_anoa",
+          "locator": "Infobox, transmission row",
+          "state": "ZF S6HP502 published with 6 forward and 1 reverse gear",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 80,
+          "unit": "km/h",
+          "source": "wikipedia_anoa",
+          "locator": "Infobox, speed row",
+          "state": "speed published as about 80 km/h, a safety speed recommendation",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 600,
+          "unit": "km",
+          "source": "wikipedia_anoa",
+          "locator": "Infobox, vehicle range row",
+          "state": "range published as 600 km",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

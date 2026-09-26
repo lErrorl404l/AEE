@@ -1,0 +1,96 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the BTR-4. Every value is grade claimed and the registry marks primary_held false. The article publishes the weight, the dimensions, the engine ratings, the road speed and the range. It publishes no ground clearance and no transmission type.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "btr_4",
+      "canonical_name": "BTR-4",
+      "maker": "Kharkiv Morozov Machine Building Design Bureau",
+      "model": "BTR-4",
+      "variant": "Armoured personnel carrier (8x8)",
+      "variant_id": "btr_4",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Ukraine",
+      "era": "modern",
+      "aliases": [
+        "btr-4",
+        "btr4"
+      ],
+      "keywords": [
+        "apc",
+        "wheeled",
+        "8x8",
+        "ukraine"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 20500,
+          "unit": "kg",
+          "source": "wikipedia_btr_4",
+          "locator": "Infobox, weight row, anti-bullet protection entry",
+          "state": "weight published as 17.5+3 t with anti-bullet protection, taken as 20.5 t; the same row publishes 25+3 t with additional protection, and the tonne is taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 7760,
+          "unit": "mm",
+          "source": "wikipedia_btr_4",
+          "locator": "Infobox, length row",
+          "state": "length published as 7.76 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2930,
+          "unit": "mm",
+          "source": "wikipedia_btr_4",
+          "locator": "Infobox, width row",
+          "state": "width published as 2.93 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 3020,
+          "unit": "mm",
+          "source": "wikipedia_btr_4",
+          "locator": "Infobox, height row",
+          "state": "height published as 3.02 m",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "3TD diesel or DEUTZ EURO III",
+          "unit": "text",
+          "source": "wikipedia_btr_4",
+          "locator": "Infobox, engine row",
+          "state": "engine published as a 3TD diesel or a DEUTZ EURO III, as published",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 489,
+          "unit": "hp",
+          "source": "wikipedia_btr_4",
+          "locator": "Infobox, engine power row",
+          "state": "engine power published as 489 hp or 598 hp, with no net basis",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 110,
+          "unit": "km/h",
+          "source": "wikipedia_btr_4",
+          "locator": "Infobox, speed row, road entry",
+          "state": "road speed published as 110 km/h; the water speed is published as 10 km/h",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 690,
+          "unit": "km",
+          "source": "wikipedia_btr_4",
+          "locator": "Infobox, vehicle range row",
+          "state": "range published as at least 690 km",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

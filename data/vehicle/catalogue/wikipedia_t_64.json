@@ -1,0 +1,104 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the T-64. Every value is grade claimed and the registry marks primary_held false. The article publishes the weight, the gun-forward length, the dimensions, the engine and its displacement and rating, the speed and the range. It publishes no ground clearance and no transmission type.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "t_64",
+      "canonical_name": "T-64",
+      "maker": "Malyshev Factory",
+      "model": "T-64",
+      "variant": "Main battle tank",
+      "variant_id": "t_64",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "modern",
+      "aliases": [
+        "t-64",
+        "t64"
+      ],
+      "keywords": [
+        "mbt",
+        "main battle tank",
+        "tracked",
+        "soviet union"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 38000,
+          "unit": "kg",
+          "source": "wikipedia_t_64",
+          "locator": "Infobox, weight row",
+          "state": "weight published as 38 t; the tonne taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 9225,
+          "unit": "mm",
+          "source": "wikipedia_t_64",
+          "locator": "Infobox, length row, gun forward entry",
+          "state": "length published as 9.225 m with the gun forward",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3415,
+          "unit": "mm",
+          "source": "wikipedia_t_64",
+          "locator": "Infobox, width row",
+          "state": "width published as 3.415 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2172,
+          "unit": "mm",
+          "source": "wikipedia_t_64",
+          "locator": "Infobox, height row",
+          "state": "height published as 2.172 m",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "5TDF 5-cylinder diesel",
+          "unit": "text",
+          "source": "wikipedia_t_64",
+          "locator": "Infobox, engine row",
+          "state": "engine published as a 5TDF 5-cylinder diesel, 13.6 litre, as published",
+          "grade": "claimed"
+        },
+        "engine_displacement_l": {
+          "value": 13.6,
+          "unit": "L",
+          "source": "wikipedia_t_64",
+          "locator": "Infobox, engine row",
+          "state": "engine published as 13.6 litre",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 700,
+          "unit": "hp",
+          "source": "wikipedia_t_64",
+          "locator": "Infobox, engine power row",
+          "state": "engine power published as 700 hp (522 kW), with no net basis",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 60,
+          "unit": "km/h",
+          "source": "wikipedia_t_64",
+          "locator": "Infobox, speed row",
+          "state": "speed published as 45 to 60 km/h depending on version; the top of the published range taken",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 500,
+          "unit": "km",
+          "source": "wikipedia_t_64",
+          "locator": "Infobox, vehicle range row",
+          "state": "range published as 500 km, and 700 km with external tanks",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

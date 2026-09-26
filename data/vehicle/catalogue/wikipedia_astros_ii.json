@@ -1,0 +1,98 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the Astros II. Every value is grade claimed and the registry marks primary_held false. The article publishes the weight, the dimensions, the engine and its rating, the speed and the range. It publishes no ground clearance, so that field is absent.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "astros_ii",
+      "canonical_name": "Astros II MLRS",
+      "maker": "Avibras",
+      "model": "Astros II",
+      "variant": "Multiple rocket launcher (6x6)",
+      "variant_id": "astros_ii",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Brazil",
+      "era": "modern",
+      "aliases": [
+        "astros ii",
+        "astros 2",
+        "astros"
+      ],
+      "keywords": [
+        "mlrs",
+        "rocket artillery",
+        "wheeled",
+        "6x6",
+        "brazil"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 10000,
+          "unit": "kg",
+          "source": "wikipedia_astros_ii",
+          "locator": "Infobox, weight row",
+          "state": "weight published as 10,000 kg; the same row publishes 27,000 kg for the MK6",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 7000,
+          "unit": "mm",
+          "source": "wikipedia_astros_ii",
+          "locator": "Infobox, length row",
+          "state": "length published as 7 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2900,
+          "unit": "mm",
+          "source": "wikipedia_astros_ii",
+          "locator": "Infobox, width row",
+          "state": "width published as 2.9 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2600,
+          "unit": "mm",
+          "source": "wikipedia_astros_ii",
+          "locator": "Infobox, height row",
+          "state": "height published as 2.6 m",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Mercedes OM422 8-cylinder diesel",
+          "unit": "text",
+          "source": "wikipedia_astros_ii",
+          "locator": "Infobox, engine row",
+          "state": "engine published as a Mercedes OM422 8-cylinder diesel, as published",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 280,
+          "unit": "hp",
+          "source": "wikipedia_astros_ii",
+          "locator": "Infobox, engine power row",
+          "state": "engine power published as 280 hp (209 kW), with no net basis",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 100,
+          "unit": "km/h",
+          "source": "wikipedia_astros_ii",
+          "locator": "Infobox, speed row",
+          "state": "road speed published as 100 km/h",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 500,
+          "unit": "km",
+          "source": "wikipedia_astros_ii",
+          "locator": "Infobox, vehicle range row",
+          "state": "range published as 500 km",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}
