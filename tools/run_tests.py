@@ -78,6 +78,7 @@ def main():
         "tools/tests/test_device_wiring.py",
         "tools/tests/test_ammo_database.py",
         "tools/tests/test_ballistic_drag.py",
+        "tools/tests/test_supersonic_trace.py",
         "tools/tests/test_interior_ballistics.py",
         "tools/tests/test_ballistic_coefficient.py",
         "tools/tests/test_armour_database.py",

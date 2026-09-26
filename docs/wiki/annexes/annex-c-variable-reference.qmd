@@ -292,6 +292,7 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | `aee_ballistics_barrelTempC` | ballistics | Weapon barrel temperature in degC |
 | `aee_ballistics_barrelPOIShiftMrad` | ballistics | Elevation POI shift from barrel heat (mrad, positive = up) |
 | `aee_ballistics_barrelColdBore` | ballistics | 1 when the cold-bore first-shot bias applies |
+| `aee_ballistics_barrelWearModelled` | ballistics | 1 when the barrel wear model applies to the weapon, 0 for a cannon |
 
 ### Module overrides
 
