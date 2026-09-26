@@ -1,0 +1,277 @@
+{{Short description|Soviet military light utility vehicle}}
+{{Infobox automobile
+| name = UAZ-469/3151/Hunter
+| image = ParkPatriot2015part4-12.jpg
+| caption = UAZ-3151
+| manufacturer = [[UAZ]]
+| model_code =
+| aka = UAZ-469 / UAZ-469B (1971–1985)<br />UAZ-3151 / UAZ-31512 (1985–2003)<ref name="cars-database">{{cite web|url=http://cars-database.com|title=Cars Database - UAZ 469|access-date=2013-11-09|work=Roman Pashkeev|url-status=live|archive-url=https://web.archive.org/web/20131108162920/http://cars-database.com/|archive-date=2013-11-08}}</ref><br />UAZ Tundra 469 (West Germany, 1971–1991)<ref>{{cite web|title=1980 UAZ 469 B|work=IMCDB|url=https://www.imcdb.org/v057091.html|quote=The fact that they have or not the "B" in the name depending also if it had or not portal axles fitted;into story of Italian UAZ site they say also that "469 B" was military denomination chosen by Importer for put in sale that vehicle in Italy, being "31512" name that of original civilian version at home;e.g., in West Germany into '70s, the same civilian UAZ was marketed as "Tundra 469 B";by that, it's easy to understand that if us were in presence of a military one, then was a UAZ 469(with portal axles)or a 469 B(without portal axles);if civilian version, therefore only UAZ 31512(but if wrongly named 469 B at export);warning, but:some military cars into movies sometimes were civilian ones converted in military for be filmed, so isn't easy to say if us were in presence of a true surplus ex-military one or a civilian one retouched and re-painted(when needs)as a military-spec vehicle.}}</ref><br />UAZ Tigr (2005–2012)<br />Baijah Taigah (Germany, 2003–2007)<br />MWM Spartan (Czech Rep., 2020–2022)
+| production = 1971–present
+| model_years =
+| assembly = Soviet Union / Russia: [[Ulyanovsk]]<br />Ukraine: [[Lutsk]] ([[LuAZ]]: 1999–2004)<br />Germany: [[Bad Nauheim]] ([[Baijah Automotive]]: 2003–2007)<br />Cuba: [[Camagüey]] (Empresa Reparadora José Smith Comas: 2003–20??)<br />Azerbaijan: [[Ganja, Azerbaijan|Ganja]] ([[Ganja Auto Plant]]: 2005–2008)<br />Ukraine: [[Kremenchuk]] (KrASZ: 2004–2014)<br />Vietnam: [[Hanoi]] (Thanh Xuan Industry Automobile-Motorbike Co.: 2003–present)<br />Sudan: [[Port Sudan]] (2006–present)<br />Czech Republic: [[Štěnovice]] (MW Motors: 2020–2022)
+| designer = Albert Rakhmanov
+| class =
+| body_style = 4-door [[SUV]]<ref name="KITOY" />
+| layout = [[Front-engine, four-wheel drive layout|Front-engine, four-wheel drive]]<ref name="KITOY">{{cite web|url=http://www.kitoy.ru/uaz|title=UAZ All-Terrain Vehicles: History, Photographs, and Links|access-date=2013-11-09|work=kitoy.ru|url-status=dead|archive-url=https://web.archive.org/web/20131109133027/http://www.kitoy.ru/uaz/|archive-date=2013-11-09}}</ref>
+| platform =
+| related = [[Beijing BJ212]]
+| engine = {{ubl
+  | 2445&nbsp;cc ''[[UMZ]] 451 MI'' [[Straight-four engine|I4]]
+  | 2693&nbsp;cc I4<ref name="cars-database" />
+  }}
+| transmission = 4-speed or 5-speed [[Manual transmission|manual]] 
+| propulsion =
+| wheelbase = {{convert|2380|mm|in|1|abbr=on}}
+| length = {{convert|4025|mm|in|1|abbr=on}}
+| width = {{convert|1785|mm|in|1|abbr=on}}
+| height = {{convert|2050|mm|in|1|abbr=on}}
+| weight = {{convert|1700|kg|lb|1|abbr=on}}
+| predecessor = [[GAZ-69]]
+| successor = [[UAZ Simbir]]
+}}
+
+The '''UAZ-469''', later sold as the '''UAZ-3151''' and '''UAZ Hunter''', is an [[off-road vehicle|off-road]] [[military light utility vehicle]] manufactured by [[UAZ]] since 1971. It was used by [[Soviet Armed Forces|Soviet]] and other [[Warsaw Pact]] armed forces, as well as [[paramilitary]] units in [[Eastern Bloc]] countries. In the [[Soviet Union]], it also saw widespread service in state organizations that needed a robust and durable off-road vehicle. Standard military versions included seating for seven personnel.<ref name="KITOY" />
+
+==History==
+[[File:UAZ-469, 12. Internationales Maritimes-Fahrzeugtreffen, Ribnitz-Damgarten ( 1060475).jpg|thumb|left|Early UAZ-469]]
+In 1956, the [[Soviet Army]] ordered [[UAZ]] to design a successor for an outdated [[GAZ-69]]. At first the vehicle supposed to be amphibious and have a rear engine layout but later the order was simplified, and the car received a chassis of [[UAZ-452|UAZ-450]]. The first prototypes were called UAZ-460 and had 400 mm of clearance, the model was proven to be prone to rollovers. Later the V4-powered unibody UAZ-471 was made, but its serial production required the plant reconstruction, so it was cancelled.<ref>Thompson, Andy. ''Cars of the Soviet Union'' (Haynes Publishing, Somerset, UK, 2008), p. 73 caption.</ref>
+
+In 1961 the first UAZ-469 was made, it lowered to 300 mm of clearance and was powered by the same {{cvt|75|hp-metric|kW|0}} {{cvt|2,445|cc|cid|1}} [[UMZ]]-452MI [[inline-four engine]] as the [[UAZ-452]] and is able to run on gasoline with an [[octane rating]] as low as 72 (although 76 was preferred).<ref>Thompson, p. 178.</ref> This engine was used in a variety of Soviet vehicles, including the [[GAZ-21|GAZ-21 Volga]] passenger car. The UAZ-469 presented two great advantages: it was able to drive in virtually any terrain and it was very easy to repair.
+
+Due to [[Soviet Union]] building expensive [[AvtoVAZ|VAZ]] and [[KamAZ]] factories at the same time, UAZ-469 production was delayed and only began in 1971. At first, only a military version with [[Ride height|ground clearance]] of {{convert|300|mm|in|abbr=on}} entered the production, civilian UAZ-469B with clearance decreased to {{convert|220|mm|in|abbr=on}} was introduced in 1973. The cars were mostly purchased by army and state agencies, but many were sold as surplus to private owners.<ref name="KITOY" />
+
+In 1974 three stock UAZ-469B became the first cars to ever conquer [[Mount Elbrus]]. The cars took 38 minutes to go 4200 m above sea level. The expedition was curated by the engineer of Nalchik High Mountain Geophysical Institute Aleksei Berberashvili, who previously drove 5600km up the Elbrus on a custom-made bike, becoming the first ever biker to conquer the mountain. Aside from expedition the cars that day were assisting in a rescue mission, bringing the emergency equipment to the people stuck on Elbrus. According to drivers, the engine power got shortened by approximately 40% but none of the cars broke down.<ref>{{Cite web|title=Первый автомобиль, покоривший Эльбрус|url=https://www.uaz.ru/blog/news/vosxozhdenie-na-elbrus|website=[[UAZ]]}}</ref>
+
+In 1980 the manufacturing of the hardtop version for [[Soviet Border Troops]] had begun, it received the name UAZ-31515 Burevestnik.
+
+In 1985, due to new industry designation standards, modifications were renamed: the UAZ-469 became the UAZ-3151, while the UAZ-469B became the UAZ-31512. Newer models received a singular windshield with automated wipers, new lights, dual-circuit brake system, better heating and a modernized drivetrain.
+
+In 1993 a civilian hardtop model UAZ-31514 entered the production, in 1997 its more powerful version, UAZ-31519, was introduced. In 1996 UAZ has made a stretched wheelbase model called Gusar, in 1999 its wider version called Bars was introduced, long wheelbase models were assembled in small batches. Also in 1996, UAZ introduced the UAZ-2315 pickup based on 31514. In 1999 UAZ began to assemble the short wheelbase Shalun.
+
+[[File:Interpolitex 2011 (403-53).jpg|thumb|left|UAZ Hunter at Interpolitex 2011]]
+In 2003 an updated version of the old UAZ-31514 was introduced to replace the base models, the new car was named UAZ Hunter.<ref name="KITOY" /><ref>{{cite web |url=http://www.uaz.ru/eng/models/hunter/ |title=UAZ |access-date=2010-08-07 |url-status=live |archive-url=https://web.archive.org/web/20100803165116/http://www.uaz.ru/eng/models/hunter/ |archive-date=2010-08-03 }}</ref> Manufacture of the UAZ-31512 for the [[Russian Ground Forces|Russian Army]] continued until 2011,<ref>[http://www.vz.ru/news/2011/10/6/528074.html Минобороны отказалось от «уазиков» (in Russian)] {{webarchive|url=https://web.archive.org/web/20160304094754/http://www.vz.ru/news/2011/10/6/528074.html |date=2016-03-04 }}</ref> while manufacture for the civilian market was discontinued in 2005 due to new [[emission standards]].
+
+The UAZ-469 and UAZ-3151 were exported to eighty countries,<ref name="auto"/> and between 1.65 to 2 million units of the vehicle and its variants were produced.<ref>{{cite web |url=http://www.military-today.com/trucks/top_10_light_utility_vehicles.htm |archive-url=https://archive.today/20191223120746/http://www.military-today.com/trucks/top_10_light_utility_vehicles.htm |url-status=usurped |archive-date=December 23, 2019 |title=UAZ 469 total production}}</ref><ref>{{cite web |url=http://www.sollers-auto.com/en/pressroom/news/index.php?from35=2&id35=807 |title=UAZ Restarts Iconic Hunter SUV Production |date=10 February 2016 |access-date=28 August 2021 |archive-date=28 August 2021 |archive-url=https://web.archive.org/web/20210828163231/http://www.sollers-auto.com/en/pressroom/news/index.php?from35=2&id35=807 |url-status=dead }}</ref> The Hunter was originally sold in [[Germany]] and some Asian countries as the "UAZ Tigr" (Tiger), until [[General Motors]] complained that the name was too similar to the [[Opel Tigra]], and in Germany, it was renamed "[[Baijah Automotive|Baijah Taigah]]".<ref name="auto">Thompson, p. 333 caption.</ref>
+
+In 2010 in honor of the [[Victory Day (9 May)|Victory Day]] UAZ launched a limited edition of Hunter under the original UAZ-469 nameplate.
+
+June 4, 2010 UAZ Hunter set a world record of the biggest passenger capacity. In collaboration with Rumyantsev State School of Circus and Variety Art UAZ held an event where their car fitted 32 people including the driver. The weight of the passengers (including the driver) was 1900 kg and the car was able to drive the minimum required 10 meters with no people falling out of the car. UAZ Hunter has beaten the previous record of 23 people fitting into [[Kia Spectra]] and was featured in [[Guinness World Records|The Guinness Book of Records]].<ref>{{Cite web|title=Легендарный УАЗ 469 установил мировой рекорд|url=https://www.autocentre.ua/ru/news/sobytie/legendarnyj-uaz-469-ustanovil-mirovoj-rekord-110953.html|website=Avtotsentr}}</ref>
+
+[[File:UAZ Hunter (MSP16).jpg|thumb|Post-facelift UAZ Hunter in [[Poznań]]]]
+In 2011 UAZ Hunter underwent a facelift bringing back the classic bumpers and removing the plastic moldings, returning to the original look, similar to 2010 UAZ-469. Following the facelift UAZ launched a series of limited editions and special series.
+
+In 2015 it was decided to discontinue the Hunter due to its outdated technology. In order to commemorate this and the [[Victory Day (9 May)|Victory Day]] UAZ launched a limited 'Victory Series' with a livery inspired by the planes from the Soviet war drama [[Only "Old Men" Are Going Into Battle]]. The next year after the final edition the factory changed their decision and brought back UAZ Hunter back into production.
+
+In 2017 to honor the model's 45th anniversary UAZ launched Hunter's special edition. It was available in teal and white color scheme and was limited to 469 copies referencing the car's original index.
+
+In 2019 UAZ began to offer the Expedition version of Hunter. It was equipped with offroad bumper and a roof rack and was available exclusively in orange and black color scheme.
+
+In 2021 Czech company MW Motors began the production of the electrified UAZ Hunter called Spartan. The project was introduced back in 2019, but its assembly got pushed back due to [[COVID-19 pandemic]].<ref>{{Cite web|title=UAZ Hunter перевели на электричество|url=https://av.by/news/uaz-hunter-pereveli-na-elektrichestvo|website=av.by}}</ref>
+
+In 2022 to celebrate Hunter's 50th anniversary UAZ assembled 50 softtop cars under the original UAZ-469 nameplate, which was its first return since 2010.
+
+Following [[Russia]]'s [[2022 Russian invasion of Ukraine|full-scale invasion]] of [[Ukraine]] in 2022 UAZ was hit by western sanctions. The assembly of the original MWM Spartan had been stopped, eventually it got replaced by the Indian Force Gurkha. Due to the change of suppliers UAZ had to stop the assembly of the Expedition trims for 2023-2024.<ref>{{Cite web|title=УАЗ приостановил прием заказов на экспедиционные версии «Патриота», «Хантера» и «Буханки»|url=https://avtonovostidnya.ru/avtorynok/314881-uaz|website=Avtonovosti Dnya}}</ref>
+
+==Specifications==
+The original version uses a 2.45-liter four-cylinder engine. From 2010 until 2013 it had a {{cvt|2693|cc|L|1|disp=flip}} engine producing {{cvt|112|hp-metric|kW|0}}.<ref name="cars-database" />
+
+;Engine: 2,450 cc petrol, in-line 4-cylinder, water cooled, {{cvt|75|hp-metric|kW|0}} at 4,000 rpm, {{convert|166.7|Nm|lbft||abbr=on}} at 2,200 rpm<ref>{{cite web|url=http://www.auto-data.net/en/?f=showCar&car_id=16633|title=UAZ - 469 - 2.45 (75 Hp) - Technical specifications, Fuel economy (consumption)|website=www.auto-data.net|url-status=live|archive-url=https://web.archive.org/web/20160304222024/http://www.auto-data.net/en/?f=showCar&car_id=16633|archive-date=2016-03-04}}</ref>
+;Fuel: Carburettor system, uses 76-[[octane rating|octane]] [[petrol]], tank capacity is 78 litres
+;Transmission: 4-speed [[Manual transmission|manual gearbox]], 2-speed [[transfer case]], [[4-wheel drive]]
+;Front axle: Live axle with [[coil spring]]s, [[drum brake]]s
+;Rear axle: Live axle with [[leaf spring]]s, drum brakes
+
+;Dimensions and weights:
+* Empty weight with fuel: {{convert|1650|kg|lb|0|abbr=on}}
+* Max. gross weight: {{convert|2450|kg|lb|0|abbr=on}}
+* External dimensions: (length/width/height): {{convert|4025|mm|in|1|abbr=on}} × {{convert|1785|mm|in|1|abbr=on}} × {{convert|2050|mm|in|1|abbr=on}}
+* Wheelbase: {{convert|2380|mm|in|1|abbr=on}}
+* Tread front/rear: {{convert|1453|mm|in|1|abbr=on}}/{{convert|1453|mm|in|1|abbr=on}}
+* Ground clearance: {{convert|220|mm|in|1|abbr=on}}
+* Tire size: 215 SR 15
+* Wheel size: 6L×15
+
+==Modifications==
+* UAZ-469 / 3151 – specialized military UAZ-469, with ground clearance of {{convert|300|mm|in|abbr=on}}
+** UAZ-469RKh – version modified for [[CBRN defense|nuclear, biological, and chemical (NBC) resistance]]
+** UAZ-31515 Burevestnik – hardtop version for [[Soviet Border Troops]]
+* UAZ-469B / 31512 – civilian version with ground clearance of 220 mm, longer [[Power take-off|PTO shafts]] and a single-stage main gear without the final drive.<ref>The GAZ-69 had differentials with two satellites but the UAZ-469B uses four satellites due to its higher torque.</ref> Available with a contact or contactless (on later models) [[Ignition system#Electronic systems|electronic ignition system]].
+** UAZ-469AP / 31512-UMM — Police [[patrol car]] version with an insulated five-door metal body and optional special equipment.<ref>ТУ 78.2.071-92</ref>
+** UAZ-469BI / 469BIT – 469B version with shielded electrical equipment (for example, P-403M microwave transceiver VHF radio)
+** UAZ-469BG / 3152 – medical utility version, equipped with places for nurses and a stretcher; modernized and renamed in 1985.
+* UAZ-31514 / Hunter – hardtop version, modernized and renamed in 2003. Became a base model in 2005.
+** UAZ-31519 – more powerful version of the hardtop model
+** UAZ-2315 – pickup version
+* UAZ-3150 Shalun<ref>{{cite web|url=http://www.denisovets.ru/uaz/uazpages/uaz3150.html|title=Автомодельное бюро: УАЗ-3150 "Шалун"|website=www.denisovets.ru|url-status=live|archive-url=https://web.archive.org/web/20171117023840/http://denisovets.ru/uaz/uazpages/uaz3150.html|archive-date=2017-11-17}}</ref><ref>{{cite web |url=http://www.denisovets.ru/uaz/uazprototips/UAZ3150_1.gif |title=Archived copy |access-date=2018-01-28 |url-status=live |archive-url=https://web.archive.org/web/20160819104654/http://denisovets.ru/uaz/uazprototips/UAZ3150_1.gif |archive-date=2016-08-19 }}</ref> – a short wheelbase (2000mm) version with removable roof and doors<ref>{{cite web |url=http://www.autosoviet.altervista.org/ENGLISH-automotorusse9%28uaz%29.htm#2 |title= Autosoviet: UAZ|website=www.autosoviet.altervista.org |archive-url=https://web.archive.org/web/20150810163219/http://www.autosoviet.altervista.org/ENGLISH-automotorusse9(uaz).htm |archive-date=2015-08-10}}</ref>
+* UAZ-3153 Gusar – long wheelbase model (2760mm)
+** UAZ-3159 Bars – wider version of the long wheelbase model
+
+===Special Editions===
+* UAZ-Martorelli – UAZ-469B version that was exported to [[Italy]], where it was significantly modified. These versions included:
+** UAZ-Explorer – with Russian UMP-451M [[petrol engine]] (2,445 cc, 75&nbsp;hp)
+** UAZ-Marathon – with a [[List of PSA engines#XD|Peugeot XD2]] [[diesel engine|diesel]] (2,498&nbsp;cc, 76&nbsp;hp)
+** UAZ-Dakar – with a [[turbodiesel]] Vittorio Martorelli [[VM Motori]] (2,400&nbsp;cc, 100&nbsp;hp)
+** UAZ-Racing – with a [[Fiat]] petrol engine (1,995&nbsp;cc, 112&nbsp;hp)<ref>{{cite web |url=http://uazbuka.ru/models/uaz-Martorelli.html |title=УАЗы фирмы братьев Марторелли | trans-title = UAZs from Fratelli Martorelli | work =Уазбука |year=2012 |archive-url=https://web.archive.org/web/20121221032419/http://uazbuka.ru/models/uaz-Martorelli.html |archive-date=2012-12-21 |language=ru |url-status=dead }}</ref>
+* Baijah Taigah – UAZ Hunter version that was exported to [[Germany]]
+** Active – 4-door hardtop
+** Cabrio – 4-door softtop
+** Pickup – 2-door pickup
+* Vallarta Kit – special package available in [[Mexico]], named after the beach resort of [[Puerto Vallarta]]. Features a winch, steering assembly and gearbox reinforcement, snorkel, suspension kit and LED headlights.<ref>{{Cite web |url=http://landing.uaz-mexico.com/hunter-vallarta/ |title=UAZ |access-date=2018-12-13 |archive-url=https://web.archive.org/web/20181216032238/http://landing.uaz-mexico.com/hunter-vallarta/ |archive-date=2018-12-16 |url-status=live }}</ref>
+* UAZ Hunter Expedition – special package with offroad bumper and a roof rack.<ref>{{Cite web|title=УАЗ создал экспедиционный "Хантер" за миллион|url=https://4x4.media/47834-uaz-sozdal-ekspedicionnyj-xanter-za-million.html|website=4x4 Club}}</ref>
+* UAZ-469 (2010) – limited edition to commemorate the [[Victory Day (9 May)|Victory Day]]
+* UAZ Hunter Beach (2011) – limited edition with roll cage
+* UAZ Hunter Expedition (2011) – limited edition with snorkel and a roof rack, not to be confused with 2019 special package
+* UAZ Hunter Trophy (2013) – limited edition with sturdy steering arm and a tie down hook
+* UAZ Hunter Victory Series (2015) – limited edition to commemorate the [[Victory Day (9 May)|Victory Day]]
+* UAZ Hunter Jungle Edition (2016) – limited edition with lifted suspension
+* UAZ Hunter 45th Anniversary (2017) – limited edition to celebrate model's anniversary<ref>{{Cite web|title=Ветераны еще не идут на покой: УАЗ представил спецверсию Hunter к 45-летию модели|url=https://autoconsulting.ua/article.php?sid=39530|website=AutoConsulting}}</ref>
+* UAZ-469 50th Anniversary (2022) – limited edition to celebrate model's anniversary<ref>{{Cite web|title=УАЗ выпустил совершенно новый «Хантер» 2023. Внедорожник получил спецверсию к своему 50-летию|url=https://cenyavto.com/uaz-vypustil-sovershenno-novyj-hanter-2023/|website=CenyAvto}}</ref>
+
+==Vehicles based on UAZ Hunter==
+* [[UAZ Jaguar|UAZ-3907 Jaguar]] – [[amphibious vehicle]] based on the UAZ-469 with two [[propellers]] mounted to the rear axle
+* R-125B1 / R125B2 – command and control vehicle with radio station
+* UAZ-469 WZMot-4 – Polish ambulance version with stretched patient compartment, upgraded from UAZ-469BG<ref>[https://carakoom.com/blog/v-polshe-peredelyvali-nashi-uaz469-v-neobychnye-sanitarki-s-udlinennym-kuzovom В Польше переделывали наши УАЗ-469 в необычные санитарки с удлиненным кузовом] (in Russian)</ref>
+* UAZ-3151T – topography vehicle
+* Barsuk – mobile communication node
+* Vest – chassis for [[9M133 Kornet]]
+* [[TREKOL-39041]] – amphibious vehicle based on UAZ-469B<ref>{{cite web|url=http://www.madeinrussia.cz/en/floating-uaz-vehicles-202/|title=Floating UAZ vehicles - Made in Russia|last=INET-SERVIS.CZ|website=www.madeinrussia.cz|url-status=live|archive-url=https://web.archive.org/web/20140611143542/http://www.madeinrussia.cz/en/floating-uaz-vehicles-202/|archive-date=2014-06-11}}</ref>
+** TREKOL-39294 – variant with low–pressure tires
+* MWM Spartan – Czech [[electric vehicle]]
+
+==Military operators==
+[[File:Парад по случаю Дня независимости Беларуси при участии авиации ЗВО (16).jpg|thumb|A UAZ-3151 on [[Minsk Independence Day Parade|parade]] in [[Minsk]], July 2017.]]
+
+{{Div col|colwidth=15em}}
+* {{Flag|Afghanistan}}{{sfn|Shankar|2015|page=202}}{{sfn|Foss|Gander|1999|page=727}}
+* {{ALB}}{{sfn|Foss|Gander|1999|page=727}}
+* {{ALG}}{{sfn|Foss|Gander|1999|page=727}}
+* {{ANG}}{{sfn|Foss|Gander|1999|page=727}}
+* {{ARM}}<ref>{{cite web |last1=Janovsky |first1=Jakub |last2=Dan |last3=Mitzer |first3=Stijn |last4=Oliemans |first4=Joost |last5=Kemal |title=The Fight For Nagorno-Karabakh: Documenting Losses On The Sides Of Armenia And Azerbaijan |url=https://www.oryxspioenkop.com/2020/09/the-fight-for-nagorno-karabakh.html |website=Oryx |access-date=5 January 2024 |date=27 September 2020}}</ref>
+* {{AZE}}{{sfn|Foss|Gander|1999|page=732}}
+* {{BLR}}{{sfn|Foss|Gander|1999|page=732}}
+* {{BUL}}<ref>{{cite book |last1=Nuciari |first1=Marina |last2=Olivetta |first2=Eraldo |title=Leaders for Tomorrow: Challenges for Military Leadership in the Age of Asymmetric Warfare |date=9 May 2021 |publisher=Springer Nature |isbn=978-3-030-71714-8 |page=202 |url=https://books.google.com/books?id=Bl8tEAAAQBAJ |language=en}}</ref>
+* {{CAM}}{{sfn|Foss|Gander|1999|page=728}}
+* {{CUB}}{{sfn|Foss|Gander|1999|page=728}}
+* {{GEO}}{{sfn|Foss|Gander|1999|page=732}}
+* {{GHA}}<ref>{{cite web |title=UAZs were armed with American 106-mm recoilless guns |url=https://vpk.name/en/579023_uazs-were-armed-with-american-106-mm-recoilless-guns.html |website=ВПК.name |date=11 February 2022 |access-date=26 June 2022 |language=en}}</ref>
+* {{HUN}}{{sfn|Foss|Gander|1999|page=730}}
+* {{IRQ}}{{sfn|Foss|Gander|1999|page=730}}
+* {{CIV}}<ref>{{cite news |title=Eyewitness: Ivory Coast's ghost town |url=http://news.bbc.co.uk/2/hi/africa/3572157.stm |access-date=2 February 2026 |date=26 March 2004}}</ref>
+* {{KAZ}}{{sfn|Foss|Gander|1999|page=732}}
+* {{KGZ}}{{sfn|Foss|Gander|1999|page=732}}
+* {{LAO}}<ref>{{cite web |last1=Gibson |first1=Neil |last2=Fediushko |first2=Dmitry |title=Laotian military parades Russian- and Chinese-made equipment |url=https://www.janes.com/article/85876/laotian-military-parades-russian-and-chinese-made-equipment/ |website=Jane's 360 |access-date=24 January 2019 |archive-url=https://web.archive.org/web/20190123223848/https://www.janes.com/article/85876/laotian-military-parades-russian-and-chinese-made-equipment/ |archive-date=23 January 2019 |location=London, Moscow |date=22 January 2019 |url-status=live}}</ref>
+* {{LBY}}{{sfn|Foss|Gander|1999|page=731}}
+* {{MDA}}{{sfn|Foss|Gander|1999|page=732}}
+* {{MGL}}{{sfn|Foss|Gander|1999|page=731}}
+* {{MOZ}}{{sfn|Foss|Gander|1999|page=731}}
+* {{NIC}}{{sfn|Foss|Gander|1999|page=731}}
+* {{PRK}}<ref>{{cite book |last1=Marine Corps Intelligence Activity |title=North Korea Country Handbook |date=1997 |publisher=MCIA |location=Quantico, VA |page=A-123 |url=https://nuke.fas.org/guide/dprk/nkor.pdf |access-date=28 January 2024 |language=en |author1-link=Marine Corps Intelligence Activity }}</ref>
+* {{POL}}{{sfn|Foss|Gander|1999|page=732}}
+* {{ROM}}{{sfn|Foss|Gander|1999|page=732}}
+* {{RUS}}{{sfn|Foss|Gander|1999|page=732}}
+* {{SYR}}{{sfn|Foss|Gander|1999|page=733}}
+* {{TJK}}{{sfn|Foss|Gander|1999|page=732}}
+* {{Flagicon|Transnistria}} [[Transnistria]]<ref>{{cite web |last1=Mitzer |first1=Stijn |last2=Oliemans |first2=Joost |title=The Struggle For Relevance: Transnistria's Fighting Vehicles |url=https://www.oryxspioenkop.com/2022/11/the-struggle-for-relevance.html |website=Oryx |access-date=28 January 2024 |date=25 November 2022}}</ref>
+* {{TKM}}{{sfn|Foss|Gander|1999|page=732}}
+* {{UKR}}<ref>{{cite web |last1=Janovsky |first1=Jakub |last2=naalsio26 |last3=Aloha |last4=Dan |last5=Kemal |last6=Black |first6=Alexander |title=Attack On Europe: Documenting Ukrainian Equipment Losses During The Russian Invasion Of Ukraine |url=https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-ukrainian.html |website=Oryx |access-date=28 January 2024}}</ref>
+* {{URU}}<ref>{{cite web |url=https://www.militaryimages.net/threads/uruguayan-military.9400/page-2#post-202891 |access-date=23 February 2022|title=Photos - Uruguayan military |date=5 August 2020 }}</ref>
+* {{UZB}}{{sfn|Foss|Gander|1999|page=732}}
+* {{VNM}}{{sfn|Foss|Gander|1999|page=734}}
+* {{YEM}}<ref>{{cite web |title=Handbook Of Pre-War Yemeni Fighting Vehicles |url=https://www.oryxspioenkop.com/2015/09/pre-war-yemeni-fighting-vehicles_20.html |website=Oryx |access-date=24 May 2023}}</ref>
+{{div col end}}
+
+===Former military operators===
+* {{Flagcountry|Islamic Republic of Afghanistan}}<ref>{{cite book |last1=Shankar |first1=Colonel C. P. |title=Military in Pakistan and Afghanistan A Brief History |date=2015 |page=202 |publisher=Neha Publishers & Distributors |isbn=978-9380318851 |url=https://books.google.com/books?id=FxnkEAAAQBAJ}}</ref>
+* {{CZE}}<ref>{{cite web |title=The purchase of off-road vehicles: the Army is to defend the change of assignment |url=https://www.czdjournal.com/defence/the-purchase-of-offroad-vehicles-the-army-is-to-defend-the-change-of-assignment-312.html |archive-url=https://web.archive.org/web/20200927024255/https://www.czdjournal.com/defence/the-purchase-of-offroad-vehicles-the-army-is-to-defend-the-change-of-assignment-312.html |archive-date=27 September 2020 |website=Czech Defence Journal  |access-date=15 August 2022 |language=en}}</ref>
+* {{CZS}}
+* {{GDR}}
+* {{EGY}}{{sfn|Foss|Gander|1999|page=729}}
+* {{Flag|Islamic State}}<ref>{{cite web|url=https://www.oryxspioenkop.com/2014/11/vehicles-and-equipment-captured-and.html|title=Vehicles And Equipment Captured And Destroyed By The Islamic State Inside Iraq Until November 2014|website=www.oryxspioenkop.com|access-date=September 17, 2026 |date=November 22, 2014}}</ref>
+* {{IRN}}:{{sfn|Foss|Gander|1999|page=730}} Bought in the 1970s and retired in the 1990s.{{citation needed|date=April 2024}}
+* {{Flag|Lebanon}}: Used by the [[Lebanese Armed Forces]] and some Lebanese militias during the [[Lebanese Civil War]] (1975–1994).<ref>Kassis, ''Invasion of Lebanon 1982'' (2019), p. 231.</ref><ref>Sex & Abi-Chahine, ''Modern Conflicts 2 – The Lebanese Civil War, From 1975 to 1991 and Beyond'' (2021), pp. 7; 214-215.</ref> 
+* {{MLI}}<ref>{{cite web |title=Sons of Bamako - Malian Armed Forces Fighting Vehicles |url=https://www.oryxspioenkop.com/2021/10/sons-of-bamako-malian-armed-forces.html |website=Oryx |access-date=19 February 2024}}</ref>
+* {{SOM}}: Bought in the 1970s, all were lost during the [[Somali Civil War]].<ref>{{cite book |title=Jane's Armour and Artillery 1985-86 |date=1985 |publisher=Jane's Publishing Company |isbn=0710608209|edition=6th |location=London |page= }}</ref>
+* {{SVK}}{{sfn|Foss|Gander|1999|page=733}}
+* {{USSR}}: Passed on to successor states.
+
+==Service history==
+* [[Yom Kippur War]]
+* [[Lebanese Civil War]]
+* [[Angolan Civil War]]
+* [[Mozambican Civil War]]
+* [[South African Border War]]
+* [[Soviet–Afghan War]]
+* [[Iran–Iraq War]]
+* [[United States invasion of Grenada]]
+* [[Persian Gulf War]]
+* [[Transnistrian War]]
+* [[First Nagorno-Karabakh War]]
+* [[First Chechen War]]
+* [[Second Chechen War]]
+* [[War in Afghanistan (2001–2021)]]
+* [[Iraq War]]
+* [[Libyan crisis]]
+* [[Syrian civil war]]
+* [[Russo-Ukrainian War]]
+** [[War in Donbas]]
+** [[Russian invasion of Ukraine]]
+* [[Second Nagorno-Karabakh War]]
+
+==Gallery==
+
+<gallery widths=180>
+File:UAZ 569-engine compartment.jpg|UMP-4178 engine for the UAZ-469
+File:Украинская милиция.jpg|Ukrainian police UAZ-3151 UMM
+File:UAZ-469 on Garbarska street in Kraków (3).jpg|UAZ-469 on Garbarska street in Kraków
+File:UAZ-31514.jpg|UAZ-3150 aka UAZ Sport
+File:UAZ - Rehearsal in Alabino of 2013 Victory Day Parade.jpg|UAZ-469 with open top
+File:UAZ-469 FI H86018 10.JPG|UAZ-469 interior
+File:UAZ Hunter in Yekaterinburg.jpg|UAZ Hunter with equipment
+</gallery>
+
+==See also==
+* [[Beijing BJ212|Beijing Auto Works BJ-212]], a Chinese off-road vehicle based on the UAZ-469
+* [[Willys MB]], the US off-road vehicle of [[World War II]].
+* [[Lada Niva]], similar SUV from [[AvtoVAZ]]
+* [[Lada Niva Travel]]
+* [[UAZ Patriot]]
+
+==References==
+{{reflist}}
+
+==Bibliography==
+*{{cite book |editor1-last=Foss |editor1-first=Christopher F. |editor2-last=Gander |editor2-first=Terry J. |editor1-link=Christopher F Foss |title=Jane's Military Vehicles and Logistics, 1999-2000 |date=1999 |publisher=Jane's Information Group |isbn=978-0-7106-1912-9}}
+* {{cite book|last=Kassis |first=Samer |title=Invasion of Lebanon 1982 |publisher=Abteilung 502 |date=2019 |isbn=978-84-120935-1-3 |url=https://play.google.com/books/reader?id=G2y3DwAAQBAJ}}
+* {{cite book|last1=Sex |first1=Zachary |last2=Abi-Chahine |first2=Bassel |title=Modern Conflicts 2 – The Lebanese Civil War, From 1975 to 1991 and Beyond |series=Modern Conflicts Profile Guide |volume=II |publisher=AK Interactive |date=2021 |id={{EAN|8435568306073}}}}
+
+==External links==
+{{commons category}}
+* [http://www.uaz.ru/en/ UAZ company]
+* [http://www.uazbuka.ru UAZ owners group]
+* [https://www.uaz.ru/cars/hunter official web site]
+* [http://www.uazitalia.net Italian owners group] {{Webarchive|url=https://web.archive.org/web/20140223111429/http://www.uazitalia.net/ |date=2014-02-23 }}
+* [http://www.uazik.ru/tuning/dir/4/ UAZ tuning Gallery]
+* [https://www.youtube.com/watch?v=GAoydc1oeLE Video of Tuned UAZs in extreme off-road]
+* [https://www.youtube.com/watch?v=Rt1wABeKyMs Video of stock UAZ from Poland]
+* [http://uaz.rustina.cz/LITERATURA/POPIS_A_PROVOZ_469.pdf UAZ 469 Instruction Manual (cz)]
+* [http://uaz.rustina.cz/LITERATURA/UZIVATELSKA_PRIRUCKA_3151_EN.pdf UAZ 3151 Instruction Manual (en)]
+
+{{UAZ timeline 1958 to date}}
+{{Authority control}}
+
+{{DEFAULTSORT:Uaz-469}}
+[[Category:Military vehicles of the Soviet Union]]
+[[Category:Soviet automobiles]]
+[[Category:Military light utility vehicles]]
+[[Category:UAZ]]
+[[Category:Military vehicles of Russia]]
+[[Category:Cars of Russia]]
+[[Category:Military vehicles introduced in the 1970s]]
+[[Category:Compact sport utility vehicles]]
+[[Category:1970s cars]]
+[[Category:1980s cars]]
+[[Category:1990s cars]]
+[[Category:2000s cars]]
+[[Category:2010s cars]]
+[[Category:Police vehicles]]
+[[Category:All-wheel-drive vehicles]]

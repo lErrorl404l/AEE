@@ -1,0 +1,133 @@
+{{Short description|Korean wheeled armored personnel carrier}}
+{{Use dmy dates|date=June 2026}}
+{{Infobox weapon
+| name               = K808/806 White Tiger
+| image              = ROKA K808 APC river crossing training - March 2021.jpg
+| image_size         = 300
+| caption            = 
+| origin             = South Korea
+| type               = [[Armored Personnel Carrier]]
+| is_vehicle         = yes
+| service            = 2018–present<ref name="Dema 2019-05-13">{{cite web|url=https://kookbang.dema.mil.kr/newsWeb/20190513/1/BBSMSTR_000000100019/view.do|title=K806 / K808|publisher=Defense Media Agency|date=13 May 2019|archive-url=https://web.archive.org/web/20240708094241/https://kookbang.dema.mil.kr/newsWeb/20190513/1/BBSMSTR_000000100019/view.do|archive-date=8 July 2024|access-date=8 July 2024|author1=Shin In-ho}}</ref>
+| used_by            = See ''[[K808 White Tiger#Operators|Operators]]''
+| wars               = 
+| designer           = [[Hyundai Rotem]]
+| design_date        = 2012–2016<ref name="Dema 2019-05-13" />
+| number             = 
+| production_date    = 2016–present
+| variants           = See ''[[K808 White Tiger#Variants|Variants]]''
+| manufacturer       = [[Hyundai Rotem]]
+| length             = K808: {{convert|7.2|m|ftin|sp=us}} <br />K806: {{convert|6.6|m|ftin|sp=us}}<ref name="Dema 2019-05-13" />
+| width              = {{convert|2.1|m|ftin|sp=us}}<ref name="Dema 2019-05-13" />
+| height             = {{convert|2.7|m|ftin|sp=us}}<ref name="Dema 2019-05-13" />
+| weight             = K808: {{convert|20|t|sp=us}}<br />K806: {{convert|16|t|sp=us}}<ref name="Dema 2017-09-24">{{cite web|url=https://kookbang.dema.mil.kr/newsWeb/20170922/16/BBSMSTR_000000010023/view.do|title='새로운 보병의 발' 차륜형 장갑차 K808 시승기|publisher=Defense Media Agency|date=24 September 2017|archive-url=https://web.archive.org/web/20240708093320/https://kookbang.dema.mil.kr/newsWeb/20170922/16/BBSMSTR_000000010023/view.do|archive-date=8 July 2024|access-date=8 July 2024|author1=Kim Chul-hwan}}</ref><ref name="KODITS K808">{{cite web|url=https://kodits.kotra.or.kr/upload_file/promotion/2019%20Korea%20Defense%20Products%20Guide.pdf|title=2019 Korea Defense Products Guide|publisher=Korea Defense Industry Trade Support Center|date=2019|archive-url=https://web.archive.org/web/20220924054836/https://kodits.kotra.or.kr/upload_file/promotion/2019%20Korea%20Defense%20Products%20Guide.pdf|archive-date=24 September 2022|access-date=24 September 2022|author=}} p. 68–69</ref>
+| armour             = [[Samyang Comtech]] [[Ceramic armor|Ceramic]] / [[Polymer]] matrix composites<ref name="Samyang Comtech">{{cite web|url=http://samyangct.com/eng/lab/?ckattempt=1|title=Armor Research Division|publisher=[[Samyang Comtech]]|date=|archive-url=https://archive.today/20220902201337/http://samyangct.com/eng/lab/?ckattempt=1|archive-date=2 September 2022|access-date=2 September 2022|author=}}</ref>
+| primary_armament   = K808: [[Daewoo Precision Industries K4|K4 grenade launcher]], or [[M2 Browning|K6 heavy machine gun]]<br />K806: [[Daewoo Precision Industries K3|K3 light machine gun]]<ref name="Dema 2017-09-24" /><ref name="KODITS K808" />
+| secondary_armament = K808: 12.7&nbsp;mm / 30&nbsp;mm [[Remote controlled weapon station|RCWS]]<br />K806: 40&nbsp;mm [[Automatic grenade launcher|AGL]] / 12.7&nbsp;mm RCWS<ref name="KODITS K808" />
+| suspension         = Independent [[Hydropneumatic suspension|Hydropneumatic Suspension Unit]] (HSU)<ref name="KODITS K808" />
+| speed              = {{convert|100|km/h|mph|abbr=on}} (road)<br />{{convert|8|km/h|mph knot|abbr=on}} (water)<ref name="Dema 2019-05-13" />
+| clearance          = 
+| fuel_capacity      = 
+| pw_ratio           = K808: 21&nbsp;hp/t (15.44&nbsp;kW/t)<br />K806: 25&nbsp;hp/t (18.38&nbsp;kW/t)
+| vehicle_range      = {{convert|700|-|800|km|mi|abbr=on}}
+| engine             = [[Hyundai Motor Company|Hyundai Motors]] D6HA 10L V6 [[Diesel engine|diesel]]<ref name="Dema 2017-09-24" />
+| engine_power       = K808: {{convert|420|hp|abbr=on}}<br />K806: {{convert|400|hp|abbr=on}}<ref name="Dema 2019-05-13" />
+| crew               = 2 (commander and driver), more depending on configuration<ref name="Dema 2019-05-13" />
+| passengers         = K808: 1–10<br />K806: 1–9<ref name="Dema 2019-05-13" />
+}}
+
+The '''K808/806 White Tiger''' ({{langx|ko|백호}} "Baekho",<ref name="GS">{{Cite web | url=https://www.asiatoday.co.kr/view.php?key=20220610010005103 | title=Republic of Korea Army designates new vehicle names | date=10 June 2022 }}</ref> [[Hanja]]: 白虎) wheeled [[armored personnel carrier]] (APC) is family of 8×8 and 6×6 armored vehicles. Developed by [[Hyundai Rotem]] as a private venture in 2012, the [[Republic of Korea Army|Korean Army]] declared a plan to acquire 600 6×6 and 8×8 wheeled APCs in order to help build rapid response forces modeled after U.S. [[Stryker]] combat brigades, according to the [[Defense Acquisition Program Administration]] (DAPA).<ref name="armyrecognition">{{cite web|url=http://www.armyrecognition.com/december_2012_new_army_military_defence_industry/south_korean_army_will_deploy_600_new_wheeled_armoured_vehicles_from_2016_0912122.html|title=South Korean army will deploy 600 new wheeled vehicles from 2016|publisher=Army Recognition|access-date=18 April 2015|archive-date=9 December 2023|archive-url=https://web.archive.org/web/20231209120400/https://armyrecognition.com/december_2012_new_army_military_defence_industry/south_korean_army_will_deploy_600_new_wheeled_armoured_vehicles_from_2016_0912122.html|url-status=dead}}</ref>
+
+Hyundai Rotem, a subsidiary of [[Hyundai Motor Group]], made the K808/806 in competition with the [[Doosan]] Black Fox and [[Samsung Techwin]] MPV, and eventually won the competition.<ref name="tanknutdave.com">{{cite web|url=https://tanknutdave.com/the-hyundai-rotem-kw1-scorpion-6x6-wheeled-armoured-personnel-carrier/|title=Hyundai Rotem KW1 Scorpion 6x6 Wheeled APC}}</ref><ref name="deagel.com">{{cite web|url=http://www.deagel.com/Wheeled-Armored-Fighting-Vehicles/KW1-Scorpion_a002459001.aspx|title= KW1 Scorpion|publisher=deagel}}</ref>
+
+==Development==
+On 9 May 2016, the vehicles, officially designated as the K808 and K806, passed their final qualification tests, allowing for production to begin for deployment the next year; 600 units were to be produced by 2023. The wheeled vehicles were created to enhance the mobility and striking power of infantry over the slower [[K200]] and [[K21]] tracked vehicles. The K808 is designed for fast troop deployment and reconnaissance missions in front-line areas while the K806 is intended for mobile strike and reconnaissance missions in the rear. Their wheeled designs make them better suited for contributing to [[United Nations peacekeeping]] operations and finding export markets.<ref>{{cite news|url=http://english.yonhapnews.co.kr/news/2016/06/07/0200000000AEN20160607004300315.html|title=S. Korea develops wheeled armored combat vehicles for infantry troops|publisher=[[Yonhap News Agency]]|date=7 June 2016|access-date=7 June 2016}}</ref><ref>{{cite news|url=https://www.armyrecognition.com/june_2016_global_defense_security_news_industry/south_korea_defense_industry_has_developed_two_new_types_of_wheeled_armoured_vehicles_10706161.html|title=South Korea Defense Industry has developed two new types of wheeled armoured vehicles|publisher=Army Recognition|access-date=7 June 2016}}</ref>
+
+Hyundai Rotem expected an order by October 2016 for 16 [[Low rate initial production|low-rate initial production]] vehicles to be delivered to the ROKA for field trials, scheduled to last until late 2017. Production would then commence in 2018 at a rate of 100 per year. Out of 600 total wheeled armored vehicles (WAVs), there would be 100 K806 and 500 K808, designated K806 and K808 in ROKA service, respectively.<ref name="janes9sept16" />
+
+Although the two variants share many performance characteristics, they have different concepts of operations: the 16-tonne (17.6-ton) K806 can perform rear-echelon roles such as facility defence and logistics convoy protection, while the 20-tonne (22-ton) K808 can conduct high-intensity combat operations alongside [[K1 88-Tank#K1A1|K1A1]] and [[K2 Black Panther|K2]] main battle tanks.<ref name="janes9sept16">{{cite news|url=http://www.janes.com/article/63586/dx-korea-2016-hyundai-rotem-readies-k806-and-k808-wheeled-armoured-vehicle-production-for-south-korean-army|title=DX Korea 2016: Hyundai Rotem readies K806 and K808 wheeled armoured vehicle production for South Korean army|date=9 September 2016|website=[[Jane's Information Group|Jane's]]|access-date=9 September 2016|url-status=dead|archive-url=https://web.archive.org/web/20160910130030/http://www.janes.com/article/63586/dx-korea-2016-hyundai-rotem-readies-k806-and-k808-wheeled-armoured-vehicle-production-for-south-korean-army|archive-date=10 September 2016}}</ref>
+
+In September 2018, the Defense Acquisition Program Administration announced Hyundai Rotem would begin mass-producing the K806 and K808 vehicles later in the year.<ref>{{cite web |last1=Dominguez |first1=Gabriel |title=South Korea to begin mass-producing K806, K808 armoured combat vehicles |url=https://www.janes.com/article/82905/south-korea-to-begin-mass-producing-k806-k808-armoured-combat-vehicles |website=IHS Jane's 360 |access-date=11 September 2018 |archive-url=https://web.archive.org/web/20180911204402/https://www.janes.com/article/82905/south-korea-to-begin-mass-producing-k806-k808-armoured-combat-vehicles |archive-date=11 September 2018 |location=London |date=11 September 2018 |url-status=live}}</ref><ref>[https://www.armyrecognition.com/september_2018_global_defense_security_army_news_industry/south_korea_k808_8x8_armored_personnel_carrier_to_be_mass_produced_from_late_2018.html South Korea: K808 8×8 armored personnel carrier to be mass produced from late 2018]. ''Army Recognition''. 10 September 2018.</ref>
+
+==Design==
+The engine is located in the front on the left side. The driver sits beside the engine to the right. The troop compartment is at the rear, accommodating ten fully equipped soldiers plus two crew members. Troops enter and exit the vehicle via a rear automatic ramp, in addition to four roof hatches.
+
+===Protection===
+The K808/806 has an all-welded armored hull that provides protection against small-arms fire and artillery shell splinters. It can be fitted with add-on armor for a higher level of protection. It is equipped with an [[NBC protection system]].<ref name="military-today">{{cite web|url=http://www.military-today.com/apc/rotem_scorpion.htm|archive-url=https://archive.today/20130128162338/http://www.military-today.com/apc/rotem_scorpion.htm|url-status=usurped|archive-date=28 January 2013|title=Rotem KW1 Scorpion Armored personnel carrier}}</ref> The 8×8 version is more heavily armored than the 6×6 version.<ref name="shephard22oct15">[https://www.shephardmedia.com/news/landwarfareintl/hyundai-rotem-advances-armoured-armada/ Hyundai Rotem advances armoured armada] – Shephardmedia.com, 22 October 2015</ref>
+
+===Engine===
+Initially, the K808/806 Scorpion was fitted with a 380 hp Hyundai [[diesel engine]]. This was later replaced by a 420 hp Hyundai engine, with a seven-speed transmission and two-mode secondary transmission. This engine is used in 8×8 configuration. The vehicle has an automatic drive-line management system, [[central tire inflation system]], and [[run-flat tire]]s. The Scorpion 8×8 is fully amphibious, propelled by two water jets,<ref name="military-today" /> but the Scorpion 6×6 is not.<ref name="shephard22oct15" />
+
+===Weapons===
+The vehicle has a [[Remote weapon station|remotely controlled weapon station]] armed with a 40&nbsp;mm automatic grenade launcher or 12.7&nbsp;mm machine gun. It can support a two-man turret, armed with a 30&nbsp;mm cannon and coaxial 7.62&nbsp;mm machine gun.<ref name="military-today" /> It can feature a manned weapon station with a 40&nbsp;mm grenade launcher and 7.62&nbsp;mm machine gun.<ref name="shephard22oct15" /> In Korean service, the K806/K808 will be outfitted with a one-person protected weapon station armed with an [[M2 Browning|M2HB machine gun]] rather than an RWS, to reduce acquisition costs, although the company could supply such systems if requested.<ref name="janes9sept16" />
+
+In June 2020, [[Hanwha Defense]] was given a contract to deliver the K30W Cheonho ([[Korean language|Korean]]: 천호, [[Hanja]]: 天虎; literally "sky tiger") 30&nbsp;mm Anti-Aircraft Gun-Wheeled Vehicle System (AAGW) to the ROK military, a K808 chassis fitted with the twin 30&nbsp;mm cannon turret of the [[K30 Biho]]. It has greater range than the [[M167 Vulcan|Vulcan Air Defense System (VADS)]] it will replace.<ref>[https://www.koreaherald.com/view.php?ud=20200627000048 S. Korea's military to deploy new wheeled anti-aircraft system]. ''[[The Korea Herald]]''. 27 June 2020.</ref><ref>[https://www.armyrecognition.com/june_2020_news_defense_global_security_army_industry/south_korea_signs_contract_to_acquire_new_30mm_anti-aircraft_gun_wheeled_vehicle_systems_from_hanwha_defense.html South Korea signs contract to acquire new 30mm Anti-Aircraft Gun Wheeled Vehicle Systems from Hanwha Defense]. ''Army Recognition''. 28 June 2020.</ref> Deployment began in December 2021 and will continue until the early 2030s.<ref>{{Cite web|last=|first=|date=16 December 2021|title=South Korea deploys new SPAAG system|url=https://www.janes.com/defence-news/news-detail/south-korea-deploys-new-spaag-system|access-date=|website=[[Janes Information Services]]|archive-url=https://web.archive.org/web/20211216130131/https://www.janes.com/defence-news/news-detail/south-korea-deploys-new-spaag-system|archive-date=16 December 2021|url-status=live}}</ref><ref>[https://www.armyrecognition.com/defense_news_december_2021_global_security_army_industry/south_korea_army_deploys_new_kw2_30mm_anti-aircraft_gun_wheeled_vehicle_system.html South Korea Army deploys new KW2 30mm Anti-Aircraft Gun Wheeled Vehicle System]. ''Army Recognition''. 21 December 2021.</ref>
+
+==Variants==
+[[File:Republic of Korea Army soldiers operating a K30W Sky Tiger anti-aircraft vehicle cross a newly constructed Improved Ribbon Bridge during a wet gap crossing training as a part of the larger exercise Freedom Shield 24.jpg|thumb|A K30W Cheonho anti-aircraft vehicle crossing a newly constructed improved ribbon bridge during a wet gap crossing training.]]
+* KW1 medical evacuation vehicle (MEV), based on the 6×6 chassis.
+* KW1 Armored Combat Vehicle (ACV), based on the 6×6 chassis.
+* KW1 Mobile Gun System (MGS), armed with 90&nbsp;mm gun, based on the 6×6 chassis.
+* KW2 8×8 armored personnel carrier (APC), based on the 6×6 chassis.<ref name="tanknutdave.com" />
+* KW2 Jupiter 8×8 [[fire support]] vehicle, armed with a [[120×570mm NATO|120&nbsp;mm]] gun, based on the 8×8 chassis.
+* KW2 120&nbsp;mm [[mortar carrier]], based on the 8×8 chassis.
+* KW2 Command Post, based on the 8×8 chassis.<ref name="shephard22oct15" /><ref>[https://www.ajudaily.com/view/20210125153710278 S. Korea completes development of wheel-type command post vehicle] {{Webarchive|url=https://web.archive.org/web/20240225133120/https://www.ajudaily.com/view/20210125153710278 |date=25 February 2024 }}. ''[[Aju Business Daily]]''. 25 January 2021.</ref>
+* KW2 Anti-Tank Vehicle, features [[RCWS]] with [[30&nbsp;mm]] cannon and two [[Raybolt]] ATGMs, based on the 8×8 chassis.<ref>[https://armyrecognition.com/adex_2017_online_show_daily_news/adex_2017_hyundai_rotem_tank_killer_8x8_wav_for_rok_army.html Hyundai Rotem Tank Killer 8×8 WAV for ROK Army] - Armyrecognition.com, 19 October 2017</ref>
+* K30W Cheonho – A [[30&nbsp;mm]] [[Self-propelled anti-aircraft weapon|self-propelled anti-aircraft vehicle]] that combines the turrets of the [[K30 Biho]], based on the 8×8 chassis.
+
+==Operators==
+<!--READ FIRST: This section is for cited entries only. Please do not add entries into this list without a citation from a reliable source. All entries without a citation will be removed. Thank you.-->
+
+===Current===
+; {{flag|South Korea}}
+: In use by the South Korean army<ref>{{cite news |date=15 December 2023 |title=South Korea fields new Command Post Vehicles |url=https://www.asianmilitaryreview.com/2023/12/south-korea-fields-new-command-post-vehicles/ |access-date=2 May 2024 |website=asianmilitaryreview.com}}</ref>
+
+===Future===
+; {{flag|Peru}}
+: In May 2024, Hyundai Rotem announced that 30 amphibious K808 vehicles would be exported to Peru under a contract worth 60 million USD.<ref>{{cite news |date=2 May 2024 |title=Hyundai Rotem to export armored vehicles to Peru |url=https://www.koreaherald.com/view.php?ud=20240502050668 |access-date=2 May 2024 |website=koreaherald.com}}</ref>
+
+===Bid===
+: {{flag|Chile}} (> 200)
+: The [[Chilean Army]] has been looking for a successor to its 160 Piraña I 6×6 and 30 Piraña I 8×8. Long-term, more than 200 vehicles are expected to be purchased, with a first phase including a [[Legal tender|tender]] for 82 8×8 armoured vehicles, with a deadline of 8 April 2025. The K808 White Tiger is one of the competitors for the contract.<ref>{{cite web |date=25 October 2023 |title=Chile opens bidding for new wheeled armored vehicles |url=https://www.defensenews.com/land/2023/10/25/chile-opens-bidding-for-new-wheeled-armored-vehicles/}}</ref><ref>{{Cite web |last=InfoDefensa |first=Revista Defensa |title=El Ejército de Chile modifica el proyecto Cromo y analiza comprar 82 carros 4×4, 6×6 y 8×8 |url=https://www.infodefensa.com/texto-diario/mostrar/5084638/ejercito-chile-modifica-proyecto-cromo-analiza-comprar-82-carros-4x4-6x6-8x8 |access-date=1 February 2025 |website=Infodefensa – Noticias de defensa, industria, seguridad, armamento, ejércitos y tecnología de la defensa |language=es}}</ref>
+
+==See also==
+'''Comparable vehicles'''
+{{Div col|colwidth=25em}}
+* {{lwc|Stryker}}
+* [[LAV III]]/[[LAV (armoured vehicle)|LAV AFV]]/{{lwc|LAV-25}}
+** {{lwc|ASLAV}}
+* {{lwc|Boxer (armoured fighting vehicle)|Boxer}}
+* {{lwc|BTR-90}}
+* {{lwc|VPK-7829 Bumerang}}
+* {{lwc|Type 08|ZBL-08}}
+* {{lwc|Clouded Leopard Armored Vehicle|Clouded Leopard}}
+* {{lwc|Type 96 armored personnel carrier}}
+* {{lwc|Patria AMV}}
+* {{lwc|BTR-4}}
+* {{lwc|Saur 1|Saur 2}}
+* {{lwc|KTO Rosomak}}
+* {{lwc|FNSS Pars}}
+* {{lwc|MOWAG Piranha}}
+* {{lwc|Terrex ICV}}
+
+{{Div col end}}
+
+==References==
+{{reflist}}
+
+==External links==
+{{Commons category|K808 White Tiger}}
+
+{{Modern IFV and APC}}
+{{Modern Recce}}
+
+[[Category:Wheeled armoured personnel carriers]]
+[[Category:Hyundai Motor Group]]
+[[Category:Armoured fighting vehicles of South Korea]]
+[[Category:Six-wheeled vehicles]]
+[[Category:Eight-wheeled vehicles]]
+[[Category:Military vehicles introduced in the 2010s]]
+[[Category:Wheeled amphibious armoured fighting vehicles]]
+[[Category:Armoured personnel carriers of South Korea]]
+[[Category:Armoured personnel carriers of the post–Cold War period]]
+[[Category:Hyundai vehicles|K808]]

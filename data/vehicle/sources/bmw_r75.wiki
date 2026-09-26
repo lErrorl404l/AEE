@@ -1,0 +1,87 @@
+{{Short description|World War II-era motorcycle and sidecar}}
+{{More footnotes|date=February 2009}}
+: ''For the 1970s 750 cc motorcycles see [[BMW /5 motorcycles|BMW R75/5]], [[BMW /6 motorcycles|BMW R75/6]], or [[BMW R100|BMW R75/7]]''
+{{Infobox Motorcycle
+| name = BMW R75
+| image = [[File:BMW R75 museum left.jpg|250px|alt=Desert camouflage BMW R75 motorcycle and sidecar]]
+| aka = 
+| manufacturer = [[BMW]]
+| parent_company = 
+| production = 1941–1946
+| predecessor = 
+| successor = 
+| class = Motorcycle/sidecar combination
+| engine = {{cvt|745.4|cc|abbr=on}} flat-twin (OHV)<ref name=bmbikes>{{cite web | url= http://www.bmbikes.co.uk/specpages/R75_sidecar_unit.htm | publisher= Phil Hawksley's BM Bikes | title= BMW R75 sidecar unit specifications | access-date= 6 December 2009 | archive-date= 28 March 2009 | archive-url= https://web.archive.org/web/20090328130431/http://www.bmbikes.co.uk/specpages/R75_sidecar_unit.htm | url-status= live }}</ref>
+| bore_stroke = {{convert|78|x|78|mm|abbr=on}}<ref name=bmbikes/>
+| power = {{convert|26|hp|abbr=on}}<ref name=bmbikes/>
+| torque = 
+| transmission = 
+| suspension = 
+| brakes = 
+| tires = 
+| rake_trail = 
+| wheelbase = 
+| length= 
+| width= 
+| height= 
+| seat_height = 
+| dry_weight = {{convert|420|kg|lb|abbr=on}}
+| wet_weight = 
+| fuel_capacity = 
+| related = 
+| similar = 
+}}
+[[File:BMW R75 back.jpg|thumb|260px|Rear of a desert camouflage BMW R75 motorcycle with spare wheel on the back of the sidecar (museum)]]
+The '''BMW R75''' is a [[World War II]]-era [[motorcycle]] and [[sidecar]] combination produced by the German company [[BMW]]. The BMW R75 stands out by its integral two-wheel drive design, with [[drive shaft]]s to both its rear wheel and the third side-car wheel, from a [[locking differential]], as well as a [[transfer case]] offering both road and off-road [[gear ratio]]s, through which all forward and reverse gears worked. This made the R75 highly manoeuvrable and capable of negotiating most surfaces. A few other motorcycle manufactures, like [[FN (motorcycle)|FN]] and [[Norton Motorcycle Company|Norton]], offered optional drive to sidecars.
+
+==History==
+In the 1930s BMW were producing a number of popular and highly effective motorcycles. In 1938 development of the R75 started in response to a request from the [[Wehrmacht|German Army]].
+
+Preproduction models of the R75 were powered by a 750&nbsp;cc side valve engine, which was based on the R71 engine. However it was quickly found necessary to design an all-new OHV 750&nbsp;cc engine for the R75 unit. This OHV engine later proved to be the basis for subsequent post-war BMW flat-twin engined motorcycles like the [[BMW R51/3|R51/3, R67]] and [[BMW R68|R68]].
+
+The BMW R75 and the competing [[Zündapp]] [[Zündapp KS 750|KS 750]] were both widely used by the [[Operation Barbarossa|Wehrmacht in Russia]] and [[North Africa Campaign|North Africa]], though after a period of evaluation it became clear that the Zündapp was the superior machine. In August 1942 Zündapp and BMW, on the urging of the Army, agreed upon standardization of parts for both machines, with a view of eventually creating a Zündapp-BMW hybrid (designated the BW 43), in which a BMW 286/1 side-car would be grafted onto a Zündapp KS 750 motorcycle. They also agreed that the manufacture of the R75 would cease once production reached 20,200 units, and after that point BMW and Zündapp would only produce the Zündapp-BMW machine, manufacturing 20,000 each year.
+
+Since the target of 20,200 BMW R75's was not reached, it remained in production until the [[Eisenach]] factory was so badly damaged by Allied bombing that production ceased in 1944. A further 98 units were assembled by the Soviets in 1946 as reparations.
+
+Nevertheless, the standardization program achieved 70% parts commonality between BMW and Zündapp machines. This simplified the supply of spare parts for these vehicles, many of which are still in the hands of historic motorcycle enthusiasts. These vehicles are still highly desirable as collector's items because of their elaborate and durable technology, and are correspondingly expensive. A well-restored R75 can still be used for everyday purposes, on or off-road without problems.
+
+In 1954 a small number of modified R75 models were produced at Eisenach (then in Soviet-controlled [[East Germany]]) for testing under the designation AWO 700, but were not put into full production.
+
+==Similar motorcycles in other countries==
+===Soviet Union and China===
+{{Main|Dnepr M-72}}
+In 1940 [[People's Commissariat of Defense of the Soviet Union]] acknowledged the lag in motorized vehicles and decided to choose a foreign platform to build upon. In 1941 a factory was built which is known today as [[IMZ-Ural]] with Nikolai Serdyukov as its head constructor because he was doing an internship in BMW factories in [[Munich]], [[Spandau]] and [[Eisenach]] from 1935 till 1940 and worked his way up to a [[Shop foreman|plant foreman]]. His experience there was a key point in choosing R71 as a main platform for a future M-72.
+
+A Chinese variant of the M-72, the Yangtze River 750, went into production in 1957.{{Citation needed|date=October 2020}}
+
+===United States===
+{{Main|Harley-Davidson XA}}
+{{See also|Indian 841}}
+The success and reliability of the shaft-driven R71 and R75 during the war led to the [[US Army]] requesting that [[Harley-Davidson]] produce a similar shaft-driven motorcycle for American troops. This led to Harley producing their first ever shaft-driven model, the [[Harley-Davidson XA]], which was a near duplicate of the flathead R71.<ref>[http://www.motorcyclemuseum.org/asp/classics/bike.asp?id=71 Motorcycle Hall Of Fame Museum] {{webarchive|url=https://web.archive.org/web/20120726000000/http://www.motorcyclemuseum.org/asp/classics/bike.asp?id=71 |date=2012-07-26 }}</ref>
+
+==See also==
+* [[History of BMW motorcycles]]
+* [[List of motorcycles of the 1940s]]
+
+==References==
+{{reflist}}
+{{refbegin}}
+* {{cite book | author = Piekalkiewicz, Janusz | title = BMW Motorcycles in World War II: R12/R75 | publisher = Schiffer Military History | year = 1991 |  isbn = 978-0-88740-306-4 | author-link = Janusz Piekałkiewicz }}
+{{refend}}
+
+==External links==
+{{commons category}}
+* [http://www.bmbikes.co.uk/specpages/R75_sidecar_unit.htm R75 specifications]
+* [https://web.archive.org/web/20191103033704/http://www.krad-register.de/ The WH-Krad Registry]
+* [https://www.youtube.com/watch?v=Pnbej8M_iq0 BMW R75 (1943) Exterior and Interior in 3D 4K UHD]
+* [http://motos-of-war.ru/en/motorcycles/bmw-r75/ BMW R75 (1942) in the museum (Russia)]
+{{BMW motorcycles}}
+{{WWIIGermanVehicles}}
+[[Category:BMW motorcycles|R75]]
+[[Category:World War II military vehicles of Germany]]
+[[Category:Motorcycles powered by flat engines]]
+[[Category:Shaft drive motorcycles]]
+[[Category:Military motorcycles]]
+[[Category:Motorcycles introduced in the 1940s]]
+[[Category:Sidecars]]
+[[Category:Military vehicles introduced from 1940 to 1944]]

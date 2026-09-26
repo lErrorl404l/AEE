@@ -1,0 +1,99 @@
+{{Infobox weapon
+| name               = Komatsu LAV
+| image              = JASDF Light Armored vehicle(45-6120) right front view at Hamamatsu Air Base September 28, 2014 02.jpg
+| image_size         = 300
+| caption            = A Komatsu LAV parked at JASDF's [[Hamamatsu Air Base]] in central Japan. The roof-top shield has a provision for a machine gun.
+| origin             = [[Japan]]
+| type               = [[Armored car (military)|Armoured scout car]]
+<!-- Type selection -->| is_vehicle         = yes
+<!-- Service history -->| service            = 2002–present
+| used_by            = Japan
+| wars               = [[Iraq War]]
+<!-- Production history -->| designer           = 
+| design_date        = 1997<ref name="LAV">{{cite web|archive-url=https://web.archive.org/web/20130326115823/http://www.tamiya.com/english/products/35275light_armored/index.htm |url=http://www.tamiya.com/english/products/35275light_armored/index.htm |title=Tamiya's Komatsu LAV Page |access-date=2012-10-25 |publisher=Tamiya |archive-date=2013-03-26 |url-status=dead }}</ref>
+| manufacturer       = [[Komatsu Limited|Komatsu]]
+| unit_cost          = [[Japanese yen|¥]]30 million<ref name="Profile">{{cite web|url=http://jieitaisaiyou.web.fc2.com/report/vehicle/komatsu-lav.html |archive-url=https://archive.today/20130616042445/http://jieitaisaiyou.web.fc2.com/report/vehicle/komatsu-lav.html |script-title=ja:軽装甲機動車 |access-date=2013-06-15 |archive-date=2013-06-16 |language=ja |url-status=dead }}</ref>
+| production_date    = 1997-2017
+| number             = 1937 (2016)
+| variants           = <!-- General specifications -->
+| weight             = 4500 kg
+| length             = 4.4 m
+| part_length        = 
+| width              = 2.04 m
+| height             = 1.85 m
+| diameter           = 
+| crew               = 4+1 (MG or ATGM gunner)
+<!-- Vehicle/missile specifications -->| armour             = 
+| primary_armament   = [[5.56mm Machine Gun MINIMI|Sumitomo M249]] or [[M2 Browning machine gun|Sumitomo M2HB]]
+| secondary_armament = [[Type 01 LMAT]] or a [[Type 87 Chu-MAT|Kawasaki Type 87 anti-tank missile]].
+| engine             = 4-cylinder diesel
+| engine_power       = 160 hp
+| payload_capacity   = 
+| fuel_capacity      = 
+| pw_ratio           = 
+| suspension         = 
+| drive              = [[4x4]] wheeled
+| clearance          = 
+| vehicle_range      = 500 km
+| speed              = 100 km/h  (Speeds can exceed 70mph)
+| guidance           = 
+| transmission       = 4 speed Automatic
+}}
+
+The {{nihongo|'''Komatsu [[light armored vehicle]]''' ([[Japanese language|Japanese]]: 軽装甲機動車;|kei-sōkō-kidōsha}} is a Japanese military vehicle first produced in 2002. Currently used exclusively by the [[Japan Self-Defense Force]] (JSDF), it has seen use in the [[Iraq War]]. It is built by [[Komatsu Limited]]. Defense Systems Division in [[Komatsu, Ishikawa]], [[Japan]].<ref>{{cite web|archive-url=https://web.archive.org/web/20110713164734/http://www.komatsu.com/CompanyInfo/profile/outline/production.html|url=http://www.komatsu.com/CompanyInfo/profile/outline/production.html|archive-date=2011-07-13|access-date=2012-10-25|title=Komatsu Production Page|publisher=Komatsu}}</ref> Komatsu's factory designation for the vehicle is '''KU50W'''.<ref name="Prototype">{{cite web|url=http://type61tank.la.coocan.jp/lav-prototype.htm |archive-url=https://web.archive.org/web/20160304025950/http://type61tank.la.coocan.jp/lav-prototype.htm |title=Komatsu LAV Prototype |access-date=2012-10-25 |language=ja |archive-date=2016-03-04 |url-status=dead }}</ref>
+
+The exterior resembles the [[Véhicule Blindé Léger|Panhard VBL]] used by the French army, but the LAV has 4 doors and a large cabin for carrying soldiers. The LAV can also be transported by air in vehicles like the CH-47J and the C-130H.<ref name="Mount">{{cite web|url=http://rightwing.sakura.ne.jp/equipment/jgsdf/vehicle/lamv/lamv.html |archive-url=https://web.archive.org/web/20121219093550/http://rightwing.sakura.ne.jp/equipment/jgsdf/vehicle/lamv/lamv.html |script-title=ja:軽装甲機動車 |access-date=2012-10-25 |language=ja |archive-date=2012-12-19 |url-status=dead }}</ref>
+
+==History==
+[[File:P1060634 R 国際平和協力活動等（及び防衛協力等） 18.jpg|thumb|left|A Komatsu LAV with [[Japanese Iraq Reconstruction and Support Group]] markings in Samawa.]]
+[[File:JGSDF Komatsu LAV.jpg|thumb|left|Komatsu LAV during demonstration in Yokosuka 2017]]
+
+The Komatsu LAV was developed in 1997 to meet a [[Japan Ground Self-Defense Force|JGSDF]] need for an armored wheeled vehicle that could provide armored protection since their [[Toyota High Mobility Vehicle]]s and [[Mitsubishi Type 73 light truck]]s were not adequate to provide protection from small arms fire.<ref name="LAV"/> They were initially created with the concept of a potential Soviet invasion during the Cold War before they were relegated to anti-terrorist/invasion operations.<ref>{{cite web|url=http://www.defencereviewasia.com/articles/196/Protected-mobility-VEHICLES-SLOW-TO-ACCELERATE-IN-ASIA |archive-url=https://archive.today/20130614023042/http://www.defencereviewasia.com/articles/196/Protected-mobility-VEHICLES-SLOW-TO-ACCELERATE-IN-ASIA |title=Protected mobility- VEHICLES SLOW TO ACCELERATE IN ASIA |date=2012-12-20 |access-date=2013-06-14 |archive-date=2013-06-14 |publisher=Defence Review Asia |url-status=dead }}</ref>
+
+It had made its first appearance in [[Kuwait]] when [[Japan Ground Self-Defense Force|JGSDF]] units had deployed the Komatsu LAV prior to humanitarian operations in [[Samawah]], a city in Iraq, 280&nbsp;km (174&nbsp;mi) southeast of Baghdad.<ref name="Blog">{{cite web|archive-url=https://web.archive.org/web/20071202095224/http://blog.wired.com/defense/2007/03/five_for_fighti_7.html|url=http://blog.wired.com/defense/2007/03/five_for_fighti_7.html|title= Japan's slick armored vehicle|access-date=2013-06-14|archive-date=2007-12-02 |date=2007-03-19|author=Noah Shachtman}}</ref><ref name="Page">{{cite web|url=http://uroneko02.com/jgsdf_wepon01.htm |archive-url=https://archive.today/20130614125325/http://uroneko02.com/jgsdf_wepon01.htm |script-title=ja:軽装甲機動車 |language=ja |access-date=2013-06-14 |archive-date=2013-06-14 |url-status=dead }}</ref> An initial 400 LAVs were brought into JGSDF service in March 2005.<ref name="Blog"/> JASDF base security units are also equipped with the LAV as a main vehicle for patrols.<ref>{{cite web|archive-url=https://web.archive.org/web/20081022205408/http://www15.tok2.com/home/lttom/military-powers_jasdf/omomezu/omomezu005.htm|url=http://www15.tok2.com/home/lttom/military-powers_jasdf/omomezu/omomezu005.htm|script-title=ja:ミリパワ的おもめず航空自衛隊 基地警備部隊車両編|access-date=2013-06-15|archive-date=2008-10-22 |language=ja}}</ref>
+
+In February 2019, Komatsu formally announced it will no longer develop new models of the LAV, citing high cost in developing a new model and low profit return when production was first halted in 2017.<ref>{{Cite web|archive-url=https://web.archive.org/web/20190222185554/https://www.janes.com/article/86737/komatsu-to-stop-developing-lav-for-jgsdf|archive-date=2019-02-22|url=https://www.janes.com/article/86737/komatsu-to-stop-developing-lav-for-jgsdf|title=Komatsu to stop developing LAV for JGSDF|last=Takahashi|first=Kosuke|date=21 February 2019|website=Jane's 360|access-date=8 March 2019}}</ref> They would only continue production for NBC recon vehicles.<ref>https://web.archive.org/web/20201007012244/https://euro-sd.com/2019/05/articles/13183/komatsus-withdrawal-from-the-armoured-vehicles-business/</ref>
+
+==Variants==
+No variants are known to be available, but the vehicle appears to have been built in at least three production models, namely '''KU50W-0002K''', '''KU50W-0003K''' and '''KU50W-0005K'''.<ref name="Prototype"/>
+
+==Design==
+[[File:13 01 018 R 自衛隊記念日 観閲式(Parade of Self-Defense Force) 30.jpg|right|thumb|Komatsu LAVs used by the JGSDF in a military parade. Note the split-type roof hatches and the machine gun shield.]]
+
+The Komatsu LAV has open-split roof hatch of the vehicle provides additional protection to the gunner from all directions, if it is locked in an upright position.<ref name="Profile"/> The vehicles deployed in Iraq are fitted with reinforced bulletproof windshields, wire cutters and an armoured tub around the gun mount for extra protection.<ref name="Profile"/>
+
+According to reports, the vehicle is bulletproof against 5.56 and 7.62 bullets.<ref name="Profile"/> It is unknown whether other bullet calibers can easily penetrate the LAV or not.
+
+For the LAV's engine, it is fitted with a liquid cooled 4-cycle diesel engine of 160&nbsp;hp. The power pack is mounted centre forward of the vehicle to distribute weight more evenly between the axles. The propulsion system provides a top speed of 100&nbsp;km/h, traveling more than 200 miles without refueling.<ref>{{cite web|url=http://www15.tok2.com/home/lttom/military-powers_jgsdf/other/military-powers_lav.html |archive-url=https://web.archive.org/web/20131003001058/http://www15.tok2.com/home/lttom/military-powers_jgsdf/other/military-powers_lav.html |title=軽装甲機動車 略称：LAV愛称：ライトアーマー |language=ja |access-date=2012-10-25 |archive-date=2013-10-03 |url-status=dead }}</ref> It is fitted with all run-flat tires. The low turning radius allows the vehicle to negotiate narrow passages.
+
+The Komatsu LAV can be armed with the [[FN MINIMI|Sumitomo M249 LMG]] or [[M2 Browning machine gun|Sumitomo M2HB]] 12.7mm machine gun for anti-personnel duties.<ref name="Mount"/> It can also mount the [[Type 01 LMAT]] or a [[Type 87 Chu-MAT|Kawasaki Type 87 anti-tank missile]] for anti-armored missions. [[Smoke grenade]] dischargers can be mounted on the rear sides of the vehicle.<ref name="Mount"/>
+
+==Operators==
+*{{flag|Japan}}<ref name="Page"/>
+
+==See also==
+* [[Otokar Cobra]] of Turkey
+* [[Véhicule Blindé Léger]] of France
+
+==Sources==
+{{Reflist}}
+
+===References===
+* ''Kenkyusha's New Japanese-English Dictionary'', Kenkyusha Limited, Tokyo 1991, {{ISBN|4-7674-2015-6}}
+
+== External links ==
+* [https://web.archive.org/web/20120421043948/http://www.mod.go.jp/gsdf/equipment/ve/1_9.html Official JGSDF Page.]
+{{Commons category|Komatsu LAV}}
+{{Komatsu Limited}}
+{{Modern Recce}}
+{{DEFAULTSORT:Komatsu Lav}}
+[[Category:Armoured cars of Japan]]
+[[Category:Wheeled reconnaissance vehicles]]
+[[Category:Internal security vehicles]]
+[[Category:Japan Ground Self-Defense Force]]
+[[Category:Armoured fighting vehicles of Japan]]
+[[Category:Komatsu vehicles|LAV]]
+[[Category:Post–Cold War military equipment of Japan]]
+[[Category:Military vehicles introduced in the 2000s]]
+[[Category:Military light utility vehicles]]
+[[Category:Komatsu Limited]]

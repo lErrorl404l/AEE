@@ -1,0 +1,110 @@
+{{Short description|Japanese wheeled armoured vehicle}}
+{{Use dmy dates|date=January 2024}}
+{{Infobox weapon
+ | name              = Type 96 wheeled armored personnel carrier
+ | image             = JGSDF APC Type 96 20120108-02.jpg
+ | image_size        = 300
+ | caption           = A Type 96 on display at Narashino
+ | origin            = [[Japan]]
+ | type              = [[Armored personnel carrier]]
+<!-- Type selection -->
+ | is_ranged         = 
+ | is_bladed         = 
+ | is_explosive      = 
+ | is_artillery      = 
+ | is_vehicle        = yes
+ | is_missile        = 
+ | is_UK             = 
+<!-- Service history -->
+ | service           = 1996–present
+ | used_by           = Japan
+ | wars              = 
+<!-- Production history -->
+ | designer          = 
+ | design_date       = 
+ | manufacturer      = [[Komatsu Limited|Komatsu]]
+ | unit_cost         = 
+* US$1.6 million (2012)<ref>{{cite web|title=Cost disparity between Japanese and US military hardware|publisher=Japan Security Watch
+| archive-url=https://web.archive.org/web/20120321192851/http://newpacificinstitute.org/jsw/?p=4904|author=James Simpson
+| date=20 February 2011|url=http://newpacificinstitute.org/jsw/?p=4904|archive-date=21 March 2012}}</ref>
+* 120 million yen (2014)<ref name="RikiType96">{{cite web | url=https://rikuzi-chousadan.com/soubihin/soukousya/type96.html | title=96式装輪装甲車｜陸上自衛隊装備品｜陸自調査団|website=rikuzi-chousadan.com|language=ja }}</ref>
+ | production_date   = 1996–present
+ | number            = 365 (2014)
+ | variants          = 
+<!-- General specifications -->
+ | spec_label        = 
+ | weight            = {{convert|14.6|t|ST}}
+ | length            = {{convert|6.84|m|in}}
+ | part_length       = 
+ | width             = {{convert|2.48|m|in}}
+ | height            = {{convert|1.85|m|in}}
+ | diameter          = 
+ | crew              = 2 + 8
+<!-- Vehicle/missile specifications -->
+ | armour            = 
+ | primary_armament  = 1× [[Howa Type 96|Type 96 40mm Automatic grenade launcher]] or 1× [[M2 Browning machine gun|12.7 mm M2HB machine gun]]
+ | secondary_armament = 
+ | engine            = Mitsubishi 6D40 water-cooled 6-cylinder [[Diesel engine|diesel]]
+ | engine_power      = 360 hp
+ | pw_ratio          = 
+ | transmission      = 
+ | payload_capacity  = 
+ | suspension        = 8×8 wheeled
+ | clearance         = 
+ | fuel_capacity     = 
+ | vehicle_range     = {{convert|500|km|mi}}
+ | speed             = {{convert|100|km/h|mph}} (road)
+ <!-- For all -->
+| ref = <ref>{{Cite web|url=https://www.mod.go.jp/gsdf/neae/6d/equipment/wapc.html|title=９６式装輪装甲車|access-date=13 January 2024|website=mod.go.jp|language=ja}}</ref>
+}}
+The {{Nihongo|'''Type 96 wheeled armored personnel carrier'''|96式装輪装甲車|kyuu-roku-shiki-sourin-soukou-sha}} is an armoured vehicle that entered service with [[Japan]] in 1996, manufactured by Komatsu.<ref name="MFA">{{Cite web|url=https://motor-fan.jp/mf/article/24779/|title=人員10人を乗せ舗装路や不整地を自在に駆ける、車中泊は意外と快適な「96式装輪装甲車」|date=21 November 2021|accessdate=13 January 2024}}</ref> This vehicle complements the existing fleet of tracked [[Type 73 armored personnel carrier]]s already in service with plans to eventually replace it.<ref name="MASDF96">{{Cite web|url=http://weapons-free.masdf.com/land/japan/96apc.html|title=96式装輪装甲車|website=weapons-free.masdf.com|access-date=13 January 2024|language=ja}}</ref>
+
+==History==
+Komatsu produced the first Type 96 in 1996 in service with the JGSDF.<ref>{{cite web | url=https://dsm.forecastinternational.com/2019/09/24/japan-lines-up-contenders-for-its-new-armored-personnel-carrier/ | title=Japan Lines up Contenders for Its New Armored Personnel Carrier | date=24 September 2019 }}</ref> Development first started in 1992 with a prototype vehicle produced in 1994.<ref name="RikiType96"/>
+
+In March 2021, a Type 96 APC was shown with Type 70 MiclicC system mine clearing equipment.<ref>{{cite web | url=https://www.armyrecognition.com/defense_news_march_2021_global_security_army_industry/japanese_army_displays_type_96_apc_with_mine_clearance_system.html | title=Japanese army displays Type 96 APC with mine clearing system &#124; Defense News March 2021 Global Security army industry &#124; Defense Security global news industry army year 2021 &#124; Archive News year | date=23 March 2021 }}</ref>
+
+== Design ==
+[[File:JGSDF APC Type 96 at JGSDF Camp Matsudo 02.jpg|thumb|left|A Type 96 on display at JGSDF Camp Matsudo]]
+
+[[File:突撃する96式装輪装甲車.JPG|thumb|left|A soldier of the JGSDF's 15th Infantry Regiment fire the Sumitomo M2 HMG.]]
+
+The driver sits on the right side of the vehicle with the engine to his left, which also has its own hatch.<ref>{{cite web | url=https://www.globalsecurity.org/military/world/japan/type-96.htm | title=Type-96 Wheeled Armored Personnel Carrier }}</ref> This position is fitted with three periscopes, the center of which can be replaced by a passive night vision periscope.<ref>{{cite web |title=Type 96 armoured personnel carrier (8×8) (Japan), Armoured personnel carriers (wheeled)|url=http://articles.janes.com/articles/Janes-Armour-and-Artillery/Type-96-armoured-personnel-carrier-8-x-8-Japan.html|publisher=Jane's|archive-date=26 April 2012 |archive-url=https://web.archive.org/web/20120426182845/http://articles.janes.com/articles/Janes-Armour-and-Artillery/Type-96-armoured-personnel-carrier-8-x-8-Japan.html}}</ref> Behind the driver is the commander/gunner in a cupola that traverses 360° that can carry either a [[Howa Type 96|40 mm grenade launcher]] (Type A) or a [[M2 Browning machine gun|.50 caliber (12.7 mm) M2HB machine gun]] (Type B).<ref name="RikiType96"/>
+
+Its suspension is based on a double wishbone type suspension with torsion bars on the front two axles and trailing arm type torsion bars on the rear two axles.<ref>{{Cite web|url=https://www.jiji.com/jc/v2?id=20090924jgsdf_arms_22|title=９６式装輪装甲車（２）：時事ドットコム|website=時事ドットコム|accessdate=13 January 2024}}</ref> The Type 96 can be driven between all-wheel drive (8×8) and rear 2-axle drive (4×8).<ref name="RikiType96"/>
+
+The passenger compartment has space for 8 infantrymen who can use 2 firing ports on each side.<ref>{{cite web | url=https://tanknutdave.com/the-japanese-type-96-8x8-wheeled-apc/ | title=The Japanese Type 96 8×8 wheeled APC }}</ref><ref name="RikiType96"/> They can dismount via rear hydraulic ramp, but a built-in door can be used in case the hydraulics do not work.<ref name="RikiType96"/> In case of casualty evacuation, the spacious interior can be used to load stretchers inside.<ref name="MFA"/>
+
+When the Type 96 was deployed to Iraq previously, it appeared that the driver's position was fitted with an assembly of three windows to enable the person to drive with his head out of the vehicle for greater situational awareness while still protected from small-arms fire. It also included additional armor for protection.<ref name="MASDF96"/> The Central Readiness Regiment (CRR) uses it with additional armor installed on the sides, which is known as the "Type 96 Wheeled Armored Vehicle Type 2".<ref name="RikiType96"/>
+
+==Replacement==
+On 10 January 2017, a new 8×8 APC prototype called the [[:ja:装輪装甲車 (改)|Wheeled Armoured Vehicle (Improved)]] was handed off to the JSDF to replace the 365 Type 96 vehicles in service.<ref>{{cite web | url=https://www.defensenews.com/articles/japan-unveils-armored-vehicle-prototype-for-counter-island-invasion | title=Japan Unveils Armored Vehicle Prototype for 'Counter Island Invasion' | date=13 January 2017 }}</ref> Developed by the [[Ministry of Defense (Japan)|Japanese Defense Ministry]] in collaboration with [[Komatsu Limited]], this next generation wheeled vehicle was designed to offer more protection against [[improvised explosive device]]s (IEDs) with a similar layout to the [[Patria AMV]] and [[Stryker]], providing a family of different vehicles on a common chassis.<ref name="AR">{{cite web | url=https://armyrecognition.com/january_2017_global_defense_security_army_news_industry/japanese_ministry_of_defense_unveils_new_8x8_apc_armoured_vehicle_personnel_carrier_11601173.html | title=Japanese Ministry of Defense unveils new 8×8 APC armoured vehicle personnel carrier 11601173 &#124; January 2017 Global Defense Security army news industry &#124; Defense Security global news industry army 2017 &#124; Archive News year | date=16 January 2017 }}</ref> The new vehicle proposed is longer, higher and heavier than the Type 96. Around US$41 million was invested by the Ministry of Defense.<ref name="AR"/>
+
+The ''Wheeled Armoured Vehicle (Improved)'' prototype is {{convert|8.4|m|ft|abbr=on}} long, {{convert|2.5|m|ft|abbr=on}} wide, and {{convert|2.9|m|ft|abbr=on}} high, weighing 20 tons and carries two crew and nine troops with a new more powerful 500&nbsp;hp diesel engine and strengthened suspension to run at 100&nbsp;km/h. The vehicle will equip JGSDF combat and combat-support units for peacekeeping operations as well as “counter island invasion” scenarios. Trials of the prototype were intended to continue until 2019. This was due to issues with the armor quality of the prototypes.<ref>{{Cite web|url=https://www.shephardmedia.com/news/landwarfareintl/dsa-2018-development-delays-japanese-8x8-apc/|title=DSA 2018: Development delays for Japanese 8×8 APC &#124; Shephard|website=www.shephardmedia.com|accessdate=13 January 2024}}</ref> The Japanese Ministry of Defense announced that further prototype testing would end in 2018, due to concerns of a lack of adequate bulletproofing material that can be used and whether revisions can be made to meet the target production and the costs in time.<ref>[https://www.mod.go.jp/atla/pinup/pinup300727.pdf 装輪装甲車（改）の開発事業について] mod.go.jp</ref><ref>{{Cite web |language=ja |url=https://toyokeizai.net/articles/-/722024 |title=｢次期装輪装甲車｣選定に見る防衛予算の無駄遣い |date=19 December 2023 |website=Toyokeizai.net |access-date=13 January 2024 }}</ref>
+
+The MOD reported that they would continue to look for suitable APCs to replace the Type 96.<ref>{{cite web |last1=Takahashi |first1=Kosuke |title=Tokyo resumes plans to replace JGSDF's Type 96 armoured vehicles |url=https://www.janes.com/article/88572/tokyo-resumes-plans-to-replace-jgsdf-s-type-96-armoured-vehicles |website=Jane's 360 |access-date=16 May 2019 |archive-url=https://web.archive.org/web/20190516221057/https://www.janes.com/article/88572/tokyo-resumes-plans-to-replace-jgsdf-s-type-96-armoured-vehicles |archive-date=16 May 2019 |location=Tokyo |date=16 May 2019 |url-status=live}}</ref> Among the vehicles tested included the LAV 6.0, the Patria AMV and the Mitsubishi Mobile Armored Vehicle.<ref>[https://www.mod.go.jp/atla/pinup/pinup041209.pdf 次期装輪装甲車（人員輸送型）の車種決定について] mod.go.jp</ref><ref>[https://www.mod.go.jp/atla/pinup/pinup310910_02.pdf 次期装輪装甲車の試験用車種の選定について] mod.go.jp</ref>
+
+On 9 December 2022, the Japanese Ministry of Defense awarded a contract for the [[Patria AMV]] through Patria Japan.<ref>{{cite web | url=https://www.janes.com/defence-news/news-detail/japan-selects-patrias-amv-for-type-96-replacement-programme | archive-url=https://web.archive.org/web/20221210053150/https://www.janes.com/defence-news/news-detail/japan-selects-patrias-amv-for-type-96-replacement-programme | archive-date=10 December 2022 | title=Japan selects Patria's AMV for Type 96 replacement programme }}</ref><ref>{{cite web | url=https://www.patriagroup.com/newsroom/news/2022/patria-amvxp-8x8-vehicle-selected-by-japan-as-a-new-wheeled-armored-personnel-carrier-wapc-for-japan-ground-self-defense-force | title=Patria AMVXP 8×8 vehicle selected by Japan as a new Wheeled Armored Personnel Carrier (WAPC) for Japan Ground Self-Defense Force | date=9 December 2022 }}</ref>
+
+==Operators==
+* {{flag|Japan}}: 365 vehicles had been produced as of 2014.<ref name="AR"/>
+
+==References==
+{{Reflist}}
+
+==External links==
+* {{Commons category-inline|Type 96 Wheeled Armored Personnel Carrier (JGSDF)}}
+
+{{Komatsu Limited}}
+{{Modern IFV and APC}}
+{{ModernJapaneseAFVs}}
+
+[[Category:Armoured personnel carriers of Japan]]
+[[Category:Armoured personnel carriers of the post–Cold War period]]
+[[Category:Japan Ground Self-Defense Force]]
+[[Category:Post–Cold War military equipment of Japan]]
+[[Category:Komatsu Limited]]
+[[Category:Eight-wheeled vehicles]]
+[[Category:Military vehicles introduced in the 1990s]]
+[[Category:Wheeled armoured personnel carriers]]
+[[Category:Komatsu vehicles]]

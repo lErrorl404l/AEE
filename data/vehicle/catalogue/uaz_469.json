@@ -1,0 +1,104 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the UAZ-469. Every value is grade claimed and the registry marks primary_held false. The article is a secondary compilation and is not a primary source.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "uaz_469",
+      "canonical_name": "UAZ-469",
+      "maker": "UAZ",
+      "model": "UAZ-469",
+      "variant": "Light utility vehicle",
+      "variant_id": "uaz_469",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "modern",
+      "aliases": [
+        "uaz-469",
+        "uaz 469",
+        "uaz469"
+      ],
+      "keywords": [
+        "uaz 469",
+        "uaz469",
+        "soviet light utility"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "curb_weight_kg": {
+          "value": 1700,
+          "unit": "kg",
+          "source": "uaz_469",
+          "locator": "Infobox, weight row",
+          "state": "weight published as 1,700 kg; the infobox does not name the load state",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 4025,
+          "unit": "mm",
+          "source": "uaz_469",
+          "locator": "Infobox, length row",
+          "state": "length published as 4,025 mm",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 1785,
+          "unit": "mm",
+          "source": "uaz_469",
+          "locator": "Infobox, width row",
+          "state": "width published as 1,785 mm",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2050,
+          "unit": "mm",
+          "source": "uaz_469",
+          "locator": "Infobox, height row",
+          "state": "height published as 2,050 mm",
+          "grade": "claimed"
+        },
+        "wheelbase_mm": {
+          "value": 2380,
+          "unit": "mm",
+          "source": "uaz_469",
+          "locator": "Infobox, wheelbase row",
+          "state": "wheelbase published as 2,380 mm",
+          "grade": "claimed"
+        },
+        "ground_clearance_mm": {
+          "value": 220,
+          "unit": "mm",
+          "source": "uaz_469",
+          "locator": "Design section, ground clearance sentence",
+          "state": "civilian UAZ-469B ground clearance published as 220 mm; the military UAZ-469 is published with 300 mm and the 220 mm civilian figure recorded",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "UMZ 451 MI inline-four",
+          "unit": "text",
+          "source": "uaz_469",
+          "locator": "Infobox, engine row",
+          "state": "engine published as a 2,445 cc UMZ 451 MI I4; a 2,693 cc I4 is also listed",
+          "grade": "claimed"
+        },
+        "engine_displacement_l": {
+          "value": 2.445,
+          "unit": "L",
+          "source": "uaz_469",
+          "locator": "Infobox, engine row",
+          "state": "engine displacement published as 2,445 cc",
+          "grade": "claimed"
+        },
+        "transmission_type": {
+          "value": "manual",
+          "unit": "enum",
+          "source": "uaz_469",
+          "locator": "Infobox, transmission row",
+          "state": "transmission published as a 4-speed or 5-speed manual",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,378 @@
+{{Short description|Four cylinder engine motorcycle}}
+{{Use dmy dates|date=March 2024}}{{Use British English|date=June 2023}}
+
+{{Infobox Motorcycle
+| name = CB750
+| image = Honda CB750.JPG
+| caption = 1969 CB750
+| aka = Honda Dream CB750 Four<ref name=JSAE/>
+| manufacturer = [[Honda]]
+| parent_company = 
+| production = 1969–2008
+| assembly = [[Wakō, Saitama]], Japan<br/>[[Hamamatsu]], [[Shizuoka Prefecture]], Japan<br/>[[Suzuka, Mie]], Japan<ref name=OfficialHistory/>
+| predecessor = [[Honda CB450]]
+| successor = [[Honda CBX750]]
+| class = [[Sport bike]] or [[Types of motorcycles#Standard|standard]]
+| engine = {{convert|736|cc|abbr=on}} [[SOHC]] [[air-cooled]] [[Straight-four engine|straight four]] (1969–1978)<ref name=JSAE/><br />[[DOHC]] air-cooled straight 4 (1979–2003, 2007)
+| bore_stroke = {{convert|61|×|63|mm|abbr=on}}<ref name=JSAE/>
+| top_speed = {{convert|125|mph|abbr=on}}
+| power = {{convert|68|hp|abbr=on|order=flip}} @ 8500&nbsp;rpm (1969)<ref name="HondaCB750Ad1">[http://thekneeslider.com/archives/2008/05/01/honda-cb750-it-really-changed-everything/ Honda CB750 – It Really Changed Everything], by Paul Crowe – "The Kneeslider" on 5 January 2008.</ref>
+ {{convert|67|hp|abbr=on|order=flip}} @ 8000&nbsp;rpm (DIN)<ref name=JSAE/><ref name=Walker2006>{{Citation |author-link= Mick Walker (motorcycling) |last= Walker |first=Mick |year= 2006 |title=Motorcycle: Evolution, Design, Passion |publisher=JHU Press |isbn=0-8018-8530-2 |url=https://books.google.com/books?id=AHSlknpjrgAC&pg=PA150 |page=150 }}</ref>
+| torque = {{convert|44|lbf.ft|abbr=on}} @ 7000&nbsp;rpm
+| transmission = 5-[[Gear train|speed]] [[Sequential manual transmission|manual]], [[Roller chain|chain]] final drive
+| suspension = Front: telescopic forks <br />Rear: swingarm with two spring/shock units.
+| brakes = Front [[Disc brake|disc]] / Rear [[Drum brake|drum]]
+| tires = Front: 3.25" x 19"<br>Rear: 4.00" x 18"
+| rake_trail = {{convert|3.7|in|abbr=on|order=flip}}
+| wheelbase = {{convert|57.3|in|abbr=on|order=flip}}
+| length = {{convert|85|in|abbr=on|order=flip}}
+| width = {{convert|35|in|abbr=on|order=flip}}
+| height = {{convert|44|in|abbr=on|order=flip}}
+| seat_height = {{convert|31|in|abbr=on|order=flip}}
+| dry_weight = {{convert|218|kg|abbr=on}}<ref name=JSAE/>
+| wet_weight = {{convert|513|lb|abbr=on|order=flip}}<ref name=CWAugust1970/>
+| fuel_capacity = {{convert|19|L|abbr=on}}<ref name=JSAE/>
+| fuel_consumption = {{convert|34.3|mpgus|abbr=on}}<ref name="Landon Hall">{{cite web |url=http://www.motorcycleclassics.com/motorcycle-reviews/2006-07-01/classic-for-the-masses-honda-cb750.aspx |title=Honda CB750 Four: A Classic for the Masses |publisher=[[Motorcycle Classics]]|access-date=17 November 2010 |date=July–August 2006 |author=Landon Hall}}</ref>
+}}
+
+The '''CB750''' is an [[air-cooled]], [[Transverse engine|transverse]], [[Straight-four engine|in-line-four-cylinder]]-engine [[motorcycles]] made by Honda over several generations for year models 1969–2008 with an upright, or [[Types of motorcycles#Standard|standard]], riding posture. It is often called the original [[Universal Japanese Motorcycle]] (UJM) and also is regarded as the first motorcycle to be called a "superbike".<ref name="Landon Hall" /><ref name="TAM" /><ref name=Walker2006/><ref name=Frank2003>{{Citation |title= Honda Motorcycles |first= Aaron |last= Frank |publisher = MotorBooks/MBI Publishing Company |year= 2003 |isbn= 0-7603-1077-7 |url= https://books.google.com/books?id=CSxTaoGagKoC&pg=PA92 |access-date= 20 February 2010 |page=92 }}</ref> The '''CR750''' is the associated works racer.
+
+Though other manufacturers had marketed the transverse, [[overhead camshaft]], inline four-cylinder engine configuration and the layout had been used in racing engines prior to World War II, Honda popularized the configuration with the CB750, and the layout subsequently became the dominant [[sport bike]] engine layout.
+
+The CB750 is included in the [[American Motorcyclist Association|AMA]] [[Motorcycle Hall of Fame]] Classic Bikes;<ref>{{Citation|url=http://www.motorcyclemuseum.org/classics/bike.asp?id=91 |archive-url=https://web.archive.org/web/20051030005725/http://www.motorcyclemuseum.org/classics/bike.asp?id=91 |url-status=dead |archive-date=2005-10-30 |title=1969 Honda CB750; The Year of the Super-bike |author=Motorcycle Hall of Fame |publisher=[[American Motorcyclist Association]] }}</ref><ref name=AMA>{{Citation |title=The Dawn of the Superbike: Honda's Remarkable CB750 |url=http://www.motorcyclemuseum.org/exhibits/superbikes/CB750/CB750.asp |access-date=20 February 2010 |work=[[Motorcycle Hall of Fame|AMA Motorcycle Hall of Fame]] |publisher=[[American Motorcyclist Association]] |archive-url= https://web.archive.org/web/20100113132331/http://www.motorcyclemuseum.org/exhibits/superbikes/CB750/CB750.asp |archive-date= 13 January 2010 }}</ref> was named in the [[Discovery Channel]]'s "Greatest Motorbikes Ever";<ref name=Discovery>{{Cite web| url= http://www.discoverychannel.co.uk/greatest_ever/motorbikes/index.shtml | work= Discovery Channel| title= Greatest Motorbikes Ever |archive-url= https://web.archive.org/web/20091003090823/http://www.discoverychannel.co.uk/greatest_ever/motorbikes/index.shtml |archive-date=3 October 2009}}</ref> was in ''[[The Art of the Motorcycle]]'' exhibition,<ref name=TAM/> and is in the UK [[National Motor Museum, Beaulieu|National Motor Museum]].<ref>{{Citation |url=http://www.nationalmotormuseum.org.uk/?location_id=335 |title=List of vehicles |publisher=National Motor Museum Trust |access-date=19 October 2010 }}</ref> The [[:ja:自動車技術会|Society of Automotive Engineers of Japan, Inc.]] rates the 1969 CB750 as one of the ''240 Landmarks of Japanese Automotive Technology''.<ref name=JSAE>{{cite web|title=Honda Dream CB750|url=http://www.jsae.or.jp/autotech/data_e/4-16e.html|work=240 Landmarks of Japanese Automotive Technology|publisher=Society of Automotive Engineers of Japan, Inc.|access-date=11 August 2013|quote=Developed with the goal of giving riders greater power with better safety, the Dream CB750 featured Honda's first double cradle frame and the world's first hydraulic front disc brakes.|archive-url=https://web.archive.org/web/20131103101506/http://www.jsae.or.jp/autotech/data_e/4-16e.html|archive-date=3 November 2013|url-status=dead}}</ref>
+
+Although the CB750 nameplate has carried on throughout multiple generations, the original CB750 line from 1969 to 1983 was succeeded by the [[Honda CBX750|CBX750]], which used the CB750 designation for several of its derivatives.
+
+==History==
+Honda of Japan introduced the CB750 motorcycle to the US and European markets in 1969 after experiencing success with its smaller motorcycles.  In the late 1960s Honda motorcycles were, overall, the world's biggest sellers. There were the C100 Cub step-through—the best-selling motorcycle of all time—the C71, C72, C77 and CA77/8 Dreams; and the CB72/77 Super Hawks/Sports. A taste of what was ahead came with the introduction of the revolutionary [[Honda CB450|CB450]] DOHC twin-cylinder machine in 1966. Profits from these production bikes financed the successful racing machines of the 1960s, and lessons learned from racing were applied to the CB750. The CB750 was targeted directly at the US market after Honda officials, including founder [[Soichiro Honda]], repeatedly met US dealers and understood the opportunity for a larger bike.
+
+===Early racing===
+In 1967 American Honda's service manager [[Bob Hansen (motorcycling)|Bob Hansen]]<ref>Girdler, Alan. [http://www.cycleworld.com/2013/03/07/remembering-the-life-of-bob-hansen-1919-2013/ Bob Hansen, 1919–2013 A long and rewarding life.] ''[[Cycle World]]''</ref><ref>{{mhof|66|Bob Hansen}}</ref> flew to Japan and discussed with Soichiro Honda the possibility of using Grand Prix technology in bikes prepared for American motorcycle events. American racing's governing body, the [[American Motorcyclist Association|AMA]], had rules that allowed racing by production machines only, and restricted overhead-valve engines to 500&nbsp;cc whilst allowing the side-valve Harley Davidsons to compete with 750&nbsp;cc engines.<ref name="M online">[http://www.motorcyclistonline.com/blogs/dick-manns-1970-daytona-200-victory-mann-machine Mann and machine, Motorcyclist online] Retrieved 13 June 2015</ref> Honda knew that what won on the race track today, sold in the show rooms tomorrow, and a large engine capacity road machine would have to be built to compete with the Harley Davidson and Triumph twin-cylinder machines.
+
+Hansen told Soichiro Honda that he should build a 'King of Motorcycles',{{Failed verification|date=July 2019}} and the CB750 appeared at the Tokyo Show in November 1968. In the UK, it was publicly launched at the [[Brighton]] motorcycle show, held at the [[Hilton Brighton Metropole|Metropole Hotel exhibition centre]] during April 1969,<ref name="MC Sport"/><ref name="Mechanics"/> with an earlier press-launch at Honda's London headquarters;<ref name="MC Sport">''Motorcycle Sport'', UK monthly magazine, April 1969, pp. Cover, 121, 132–133. ''Honda's 750-4 arrives. "The wide, sweeping handlebars on the machines shown at Brighton are fitted in the US market, but before deciding on whether or not these will be the ones for this country some discussion will take place between Honda UK and dealers and prospective owners''". Accessed 15 June 2015</ref><ref name="Mechanics">[[Motorcycle Mechanics (magazine)|''Motorcycle Mechanics'']], May 1969, Showtime – 6-page-special. pp. Cover, 38–39, ''Honda's Four. "MM takes a close look at the new 4-pot Honda 750''". Accessed 15 June 2015</ref> the pre-production versions appeared with a high and very wide handlebar intended for the US market.<ref name="MC Sport"/>
+
+The AMA Competition Committee recognised the need for more variation of racing motorcycle and changed the rules from 1970, by standardizing a full 750&nbsp;cc displacement for all engines regardless of valve location or number of cylinders, enabling [[BSA Rocket 3/Triumph Trident|Triumph and BSA]] to field their 750&nbsp;cc triples instead of the 500&nbsp;cc [[Triumph Tiger Daytona|Triumph Daytona]] twins.<ref name="M online"/>
+
+[[File:Honda CR750 Dick Mann 1970 Daytona kinsarvik cropped.jpg|thumb|Dick Mann's Daytona-winning CR750 on display at Le Musée Auto Moto Vélo, a transportation Museum in Châtellerault, France]]
+The Honda factory responded by producing four works-racer CR750s, a racing version of the production CB750, ridden by UK-based [[Ralph Bryans]], [[Tommy Robb (motorcyclist)|Tommy Robb]] and [[Bill Smith (motorcyclist)|Bill Smith]] under the supervision of Mr Nakamura, and a fourth machine under Hansen ridden by [[Dick Mann]]. The three Japanese-prepared machines all failed during the race with Mann just holding on to win by a few seconds with a failing engine.<ref name="M online"/>
+
+Hansen's race team's historic victory at the March 1970 Daytona 200 with Dick Mann riding a tall-geared CR750 to victory<ref name=OfficialHistory>{{Cite web| url= http://world.honda.com/history/challenge/1969cb750four/index.html | title= The Dream CB750 Four (Official history) | author= Honda | author-link= Honda }}</ref><ref>Original Honda CB750 by John Wyatt – Bay View Books Ltd 1998</ref> preceded the [[1970 Isle of Man TT|June 1970 Isle of Man TT races]] when two 'official' Honda CB750s were entered, again ridden by [[Irish people|Irishman]] Tommy Robb partnered in the team by experienced English racer [[John Cooper (motorcyclist)|John Cooper]]. The machines were entered into the 750&nbsp;cc Production Class, a category for road-based machines allowing a limited number of strictly-controlled modifications. They finished in eighth and ninth places.<ref>[http://www.iomtt.com/TT-Database/Events/Races.aspx?meet_code=TT70&race_seq=1 Isle of Man TT Races official site] 1970 Production 750cc Results Retrieved 13 June 2015</ref> Cooper was interviewed in UK monthly magazine [[Motorcycle Mechanics (magazine)|''Motorcycle Mechanics'']], stating both riders were unhappy with their poor-handling Hondas, and that he would not ride in the next year's race "unless the bikes have been greatly improved".<ref name="Mechanics2">[[Motorcycle Mechanics (magazine)|''Motorcycle Mechanics'']], December 1970, pp.36–37 John Cooper interview by ''Charles Deane'' (editor). Accessed 13 June 2015</ref>
+
+In 1973, Japanese rider Morio Sumiya finished in sixth place in the Daytona 200-Mile race on a factory 750.<ref>[http://world.honda.com/design/colors/tricolour/ Honda WorldWide, Honda Motor Co., Ltd official site] Retrieved 20 June 2015</ref>
+
+== Production and reception ==
+
+Under development for a year,<ref name=CW1969>{{citation |magazine=[[Cycle World]] |date= January 1969|title= Honda's Fabulous 750 Four; Honda Launches the Ultimate Weapon in One-Upmanship – a Magnificent, Musclebound, Racer for the Road |pages=36–39 |issn=0011-4286 }}</ref> the CB750 had a transverse straight-four engine with a single [[overhead camshaft]] (SOHC) and a front disc brake, neither of which had previously been available on an affordable mainstream production motorcycle. This spec, married with the introductory price of US${{Formatnum: 1495}}<ref name=Cycle1969/> (US${{Formatnum: {{inflation|US|1495|1969}} }} in current money), gave the CB750 a considerable sporting-performance advantage over its competition, particularly its British rivals.
+
+''[[Cycle (magazine)|Cycle]]'' magazine called the CB750, "the most sophisticated production bike ever" at the time of the bike's introduction.<ref name=Cycle1969>{{Citation |magazine=[[Cycle (magazine)|Cycle]] |date= August 1969 |title=Cycle Road Test: Honda 750cc Four |pages=33–39, 78–81 }}</ref> ''[[Cycle World]]'' called it a masterpiece, highlighting Honda's painstaking durability testing, the bike's {{convert|124|mph|abbr=on}} top speed, the fade-free braking, the comfortable ride, and the excellent instrumentation.<ref name=CW1969/>
+
+The CB750 was the first modern four-cylinder machine from a mainstream manufacturer,<ref name="MotoPedia">{{Citation |author=Wilson, H. |title=The Encyclopedia of the Motorcycle |pages=88–89 |publisher=Dorling Kindersley Limited |year=1995 |isbn=0-7513-0206-6}}</ref> and the term ''[[superbike]]'' was coined to describe it.<ref name=Walker2006 /><ref name=AMA/> Adding to the bike's value were its [[electric starter]], [[kill switch]], dual mirrors, flashing turn signals, easily maintained valves, and overall smoothness and low vibration both under way and at a standstill. Much later models from 1991 included maintenance-free hydraulic valves.
+
+Unsure of the bike's reception and therefore unable to accurately gauge demand for the new bike, Honda limited its initial investment in the production dies for the CB750's engine by using a technique called [[permanent mold casting|permanent mould casting]] (often erroneously referred to as sandcasting), rather than diecasting.<ref name=HondaHistory>{{Citation | title=Employing an Idle Facility to Produce a Large Motorcycle | url=http://world.honda.com/history/challenge/1969cb750four/page04.html |access-date=25 August 2014 }}</ref> After the initial run of 7,414 motorcycles Honda switched to die casting, with the initial run of bikes going on to be prized by collectors.<ref>[https://www.hagerty.com/media/motorcycles/why-do-collectors-pay-double-for-a-honda-cb750-engine-cast-in-sand/ Hagery.com: Why do collectors pay double for a Honda CB750 engine cast in sand?, James Hewitt, 02 October 2020]</ref> The bike remained in the Honda line up for ten years, with a production total over 400,000.<ref name=Alexander>{{Citation |title= Japan's Motorcycle Wars: An Industry History |first= Jeffrey W. |last= Alexander |publisher= [[UBC Press]] |year= 2009 |isbn= 978-0-7748-1454-6 |url= https://books.google.com/books?id=Q473NKddjnAC&pg=PA206 |page= 206 |access-date=5 April 2011 }}</ref>
+
+==Models==
+[[File:CB750 production.png|thumb|upright=1.4|Annual and cumulative production statistics, separated by SOHC (to 1978) and DOHC (1979 and later)]]
+Note: All CB750 engines are air/oil-cooled, as opposed to liquid-cooled
+
+===SOHC===
+Year and model code:<ref name="SOHC_list">{{Citation|journal=Classic Bike |author=Mick Duckworth |date=June 2004 |url=http://www.classicbike.co.uk/pdf/506/197883.pdf |title=Classic Bike Dossier: Honda CB750 |access-date=15 January 2008 }}{{dead link|date=April 2017 |bot=InternetArchiveBot |fix-attempted=yes }}</ref>
+* 1969 CB750 (6 June), CB750K or CB750K0 (date unknown)
+* 1970 CB750K1 (21 September)
+* 1972 CB750K2 (US 1 March)
+* 1973 CB750K3 (US-only 1 February. K2 elsewhere)
+* 1974 CB750K4 (US/Japan-only, K2 elsewhere)
+* 1975 CB750K5 (US-only, K2/K4 elsewhere), CB750FO, CB750A (Canada-only)<ref>{{Cite web |url=http://www.motorcycleclassics.com/motorcycle-reviews/honda-cb750f-super-sport.aspx |title=Honda CB750F Super Sport |publisher=Motorcycle Classics|access-date=21 May 2010 |date=May–June 2010 |author=Richard Backus}}</ref> The 1975 CB750F had a more streamlined look, thanks in part to a 4-into-1 exhaust and cafe style seat with fiberglass rear. Other changes included the use of a rear disc brake and a lighter crankshaft and flywheel. 
+* 1976 CB750K6, CB750F1, CB750A
+* 1977 CB750K7, CB750F2, CB750A1
+* 1978 CB750K8 (US-only), CB750F3, CB750A2
+
+{| class="wikitable"
+|+
+!Model
+!Production (rounded figures)<ref>Classic Bike Glamorous and Glorious by Mick Duckworth June 2004 issue</ref>
+|-
+|CB750K0
+|53,400
+|-
+|CB750K1
+|77,000
+|-
+|CB750K2
+|63,500
+|-
+|CB750K3
+|38,000
+|-
+|CB750K4
+|60,000
+|-
+|CB750K5
+|35,000
+|-
+|CB750K6
+|42,000
+|-
+|CB750K7
+|38,000
+|-
+|CB750K8
+|39,000
+|-
+|CB750F
+|15,000
+|-
+|CB750F1
+|44,000
+|-
+|CB750F2
+|25,000
+|-
+|CB750F3
+|18,400
+|-
+|CB750A
+|4,100
+|-
+|CB750A1
+|2,300
+|-
+|CB750A2
+|1,700
+|}
+
+===DOHC===
+[[File:HONDA CB 750 Four; Germany, 1971.jpg|thumb|Honda CB750 Four]]
+* 1979–1982 [[Honda CB 750 K (RC01)|CB750K]]
+* 1979 CB750K 10th Anniversary Edition (5,000 produced for US)
+* 1979–1982 CB750F
+* 1980–1983 CB750C "Custom"
+* 1982–1983 CB750SC Nighthawk
+* 1984–1986 CB750SC Nighthawk S (Horizon in Japan. Export version of the [[Honda CBX750|CBX750]].) 
+* 1991–2003 Nighthawk 750
+* 1992–2008 CB750 (sold as CB750F2 and CB Seven-Fifty in Europe)
+* 2023–present CB750 Hornet (Derived from the [[Honda Transalp|2023 Transalp]])
+
+===CB750A Hondamatic===
+{{Infobox Motorcycle
+|name = CB750A
+|image =
+|aka = Hondamatic
+|manufacturer =
+|parent_company =
+|production = 1976–1978<ref name=Bacon1996/>
+|model_year =
+|predecessor =
+|successor =
+|class =
+|engine = {{convert|736.6|cc|abbr=on}} [[Straight-four engine|inline-four]], [[SOHC]] [[air-cooled]]
+|bore_stroke = {{convert|61.0|×|63.0|mm|abbr=on}}
+|compression = 7.7:1
+|top_speed ={{convert|97|mph|abbr=on|order=flip}}<ref name=CWSeptember1976/>
+|power = {{convert|47|hp|abbr=on|order=flip}} @ 7500&nbsp;rpm<ref name=Bacon1996/>
+|torque = {{convert|5.0|kgm|abbr=on}} @ 6000&nbsp;rpm<ref name=Bacon1996/>
+|ignition = Coil
+|transmission = 2-speed automatic, w/[[torque converter]], chain
+|frame =
+|suspension =
+|brakes = Front: {{convert|296|mm|abbr=on}} disc<br>Rear: {{convert|180|mm|abbr=on}} drum
+|tires = Front: 3.5" x 19"<br>Rear: 4.5" x 17"
+|rake_trail =28°, {{convert|4.5|in|abbr=on|order=flip}}
+|wheelbase = {{convert|58.0|in|abbr=on|order=flip}}
+|length = {{convert|89.0|in|abbr=on|order=flip}}
+|width = {{convert|31.5|in|abbr=on|order=flip}}
+|height =
+|seat_height ={{convert|33.0|in|abbr=on|order=flip}}
+|dry_weight ={{convert|262|kg|abbr=on}} (claimed)<ref name="HondaPrApr77" />
+|wet_weight ={{Convert|572|lb|abbr=on|order=flip}}<ref name=CWSeptember1976/>
+|fuel_capacity = {{convert|18|L|abbr=on}}
+|oil_capacity =
+|fuel_consumption =
+|turning_radius =
+|related =
+}}
+In 1976, Honda introduced the CB750A to the United States, with the ''A'' suffix designating "Automatic", for its automatic transmission. Although the two-speed transmission includes a torque converter typical of an automatic transmission, the transmission does not automatically change gears for the rider. Each gear is selected by a foot-controlled hydraulic valve/selector (similar in operation to a manual transmission motorcycle).<ref name=Bacon1996>{{Citation |title= Honda: The Early Classic Motorcycles : All the Singles, Twins and Fours, Including Production Racers and Gold Wing-1947 to 1977 |first= Roy |last= Bacon |publisher= Niton Publishing |year= 1996 |isbn= 1-85579-028-9 |pages=110, 112, 185, 192}}</ref><ref name=Ker2007>{{Citation |last=Ker |first=Rod |title=Classic Japanese Motorcycle Guide |year=2007 |isbn=978-1-84425-335-7 |publisher=[[Haynes Manual|Haynes Publishing]] |location=[[Sparkford|Sparkford, UK]] |page=81}}</ref> The foot selector controls the application of high pressure oil to a single clutch pack (one clutch for each gear), causing the selected clutch (and gear) to engage. The selected gear remains selected until changed by the rider, or the kickstand is lowered (which shifts the transmission to neutral).<ref name=CWSeptember1976/>
+
+The CB750A was sold in the North American and Japanese markets only.<ref name=Ker2007/> The name [[Hondamatic]] was shared with Honda cars of the 1970s, but the motorcycle transmission was not fully automatic. The design of the transmission is similar in concept to the transmission in Honda's [[Honda N360|N360AT]],<ref name=CWSeptember1976/><ref>The Hondamatic Transmission, The Innovative Automatic Transmission: A Breakthrough in Original Thinking, 1968</ref> a [[kei car]] sold in Japan from 1967 to 1972.
+
+The CB750A uses the same engine as the CB750, but detuned with lower 7.7:1 compression and smaller carburettors producing a lower output, {{convert|47.0|hp|abbr=on|order=flip}}. The same oil is used for the engine and transmission, and the engine was changed to a [[wet sump]] instead of [[dry sump]] type. A lockout safety device prevents the transmission from moving out of neutral if the side stand is down. There is no tachometer but the instruments include a fuel gauge and gear indicator. For 1977 the gearing was revised, and the exhaust changed to a four-into-two with a silencer on either side. Due to slow sales the model was discontinued in 1978,<ref name=Bacon1996/> though Honda did later introduce smaller Hondamatic motorcycles (namely the [[Honda CB400T#CB400A Hawk Hondamatic|CB400A]], [[Honda CM400|CM400A]],<ref name="hondacbcmshop">{{cite book|title=Honda Shop Manual CB/CM400's|publisher=Honda Motor Co. Ltd|date=December 1980|page=1}}</ref> and [[Honda CM450A|CM450A]]).<ref name="hondacmshop">{{cite book|title=Honda Shop Manual CB/CM450's|publisher=American Honda Motor Co.|date=1984|page=4}}</ref> ''Cycle World'' tested the 1976 CB750A's top speed at {{Convert|97|mph|abbr=on|order=flip}}, with a {{convert|0|to|60|mph|abbr=on}} time of 10.0 seconds and a standing {{Convert|1/4|mile}} time of 15.90 seconds at {{Convert|86.34|mph|abbr=on|order=flip}}.<ref name=CWSeptember1976/> Braking from {{Convert|60|to|0|mph|abbr=on}} was {{Convert|129|ft|abbr=on|order=flip}}.<ref name=CWSeptember1976/>
+{{Clear}}
+
+===Nighthawk 750 & CBX750 derived CB750 Models===
+[[File:Honda CB 750 Custom (1).jpg|thumb|The 1980-1983 CB750C "Custom" would become the basis for the Honda Nighthawk line of motorcycles.]]
+[[File:Honda CB750SC Nighthawk 1982.JPG|left|thumb|1982 Honda Nighthawk 750SC]]
+From 1982 through 2003, with the exception of several years, Honda produced a CB750 known as the [[Honda Nighthawk|Nighthawk 750]]. As the motorcycle market in the early 1980s began to experience segmentation and the prevalence of UJMs began to dwindle, Honda made efforts to hold its territory on the market by offering more specific variants of their existing bikes as the company was still in the midst of researching and developing dedicated [[Honda CBR series|sportbike]] and [[Honda Shadow|cruiser]] lines.<ref>{{Cite web |title=Requiem for a Cruiser : A Brief History of Honda Cruisers |url=https://cdnbkr.ca/vintage-motorcycles/history-honda-cruisers/ |access-date=2024-01-06 |website=Canadian Biker Magazine}}</ref> The cruiser variant of many of the Honda models offered at the time would be known as "customs"; this included but was not limited to the [[Honda CB900C|CB900C]], [[Honda CX series|CX500C]], [[Honda CM250C|CM250C]] and the CB750C, and these bikes would prove to be the most popular with American consumers. Therefore, expanding upon the niche that the CB750C "Custom" had initiated along with its "custom" stable mates, a new series of bikes appeared with the surname [[Honda Nighthawk|"Nighthawk"]].  These bikes would continue to take on the 'pseudo' cruiser bike aesthetic that was specifically catered for the North American market at the time along with offering certain upmarket features, one notable feature being [[Hydraulic tappet|hydraulic valves]]. Along with the normal CB750 1982-1983 variants the CB750SC Nighthawk would be offered.<ref name="Frugal_Flyers">{{cite web|url=http://www.motorcycle.com/shoot-outs/frugal-flyers-a-sixbike-shoot-out-576.html|title=Frugal Flyers: A Six-Bike Shoot Out|author=Andy Saunders|work=motorcycle.com}}</ref><ref name="ValueBike">{{cite web|url=http://www.motorcycle.com/shoot-outs/2000-valuebike-shootout-15645.html|title=2000 Valuebike Shootout|author=MO Staff|work=motorcycle.com}}</ref> The Nighthawk 750SC had a 749cc 4-stroke engine with a 5-speed manual transmission, chain drive, front disc and rear drum brakes. Also exclusive to the Nighthawk variant was Honda's TRAC (Torque Reactive Anti-Dive System).<ref>{{Cite web |title=Honda CB 750SC Nighthawk |url=https://www.motorcyclespecs.co.za/model/Honda/honda_cb750sc_82.htm |access-date=2024-01-06 |website=motorcyclespecs.co.za}}</ref> Because of the [[1983 motorcycle tariff]], the Nighthawk CB750SC was soon replaced by the smaller, yet more sporty and sophisticated [[Honda CB700SC|CB700SC Nighthawk S]]. This new motorcycle was a downsized version of the CB750SC Nighthawk S, the export variant of the CB750's successor, the [[Honda CBX750|CBX750]]<ref>{{Cite web |title=Shawn T. Samuelson's Honda Nighthawk page |url=https://stsamuel.tripod.com/nighthawk.html |access-date=2023-10-03 |website=stsamuel.tripod.com}}</ref>
+[[File:Nighthawk stop.JPG|thumb|1984-1986 Honda CB700SC Nighthawk S, a lower displacement version of the CB750SC Nighthawk S made to satisfy legal requirements set forth by the 1983 tariff.]]
+
+After the discontinuation of the CB700SC Nighthawk S in 1986 and the tariff being lifted in 1987 Honda decided not to follow up with the larger CB750SC Nighthawk S, which was offered for the Canadian market. Instead, as was typically the case for many Japanese corporations during the [[Japanese asset price bubble|bubble years]], Honda began to experiment with its standard bike offerings by first releasing the V-twin [[Honda NT650|NT650]] in 1988 and later both the café racer [[Honda GB500|GB500]] and CBR400RR derived [[Honda CB-1|CB-1]] in 1989. Though innovative in their own right, these motorcycles had very short lives in the North American Market; soon growing demand emerged for a return towards the traditional UJM style that had fallen out of prominence due to market segmentation. Also in 1989, Kawasaki had successfully released the [[Kawasaki Zephyr|Zephyr 400]] in the Japanese market and soon 550cc and 750cc versions would debut for export markets as well, which was an indicator that a return to form was needed in order to meet demand both at home and abroad.[[File:1992HondaNighthawk750-2.jpg|thumb|1992 Honda Nighthawk 750|left]] [[File:Honda CB750 (RC42) 01.jpg|thumb|2001 Honda CB750]]
+
+Honda responded in the summer of 1991 with the RC38 Nighthawk 750, which was marketed in both North America and Japan. The Japanese model was released only as a limited single year run (750 units) and possessed its own designation, ''RC39'' CB750 Nighthawk.<ref>{{Cite web |title=空冷直列4気筒エンジンを搭載した風格あるデザインの大型ツーリングバイク「ホンダナイトホーク750」を発売 {{!}} Honda 企業情報サイト |url=https://global.honda/jp/news/1991/2910712.html |access-date=2026-03-09 |website=Honda Global}}</ref> In the following year, the higher spec RC42 CB750 would debut for European and Japanese markets (in Europe it went by either CB750F2 or ''CB'' ''Seven-Fifty'') coinciding with the release of the [[Honda CB400SF|NC31 CB400]] and [[Honda CB1000|SC30 CB1000]]. Both the RC38/39 and RC42 were [[Parts bin special|parts-bin specials]], mainly being mechanical descendants of the [[Honda CBX750|CBX750]] yet also borrowing numerous components from other bikes such as the [[Honda CBR600F|CBR600F2]], [[Honda Gold Wing|Goldwing]] and CB-1.<ref>{{Cite web |title=ホンダ CB750(1992年モデル)の基本情報 {{!}} ヒストリー {{!}} 中古バイク情報はBBB |url=https://www.bbb-bike.com/history/data132_1.html |access-date=2024-01-04 |website=bbb-bike.com}}</ref>
+
+The RC38/39 Nighthawk 750 differed from the RC42 CB750 by taking on a more budget-friendly, cruiser-adjacent approach with its packaging; instead of the CB750's dual front disc and single rear disc brake setup, the Nighthawk 750 instead made use with a single disc brake on a larger front 18" wheel and a rear drum brake. The fork rake angle on the Nighthawk 750 was slightly increased and conventional twin hydraulic shock absorbers were used instead of the CB750's gas-charged absorbers; The foot pegs were welded to the frame, rather than being interchangeable like on the CB750 and the styling for the Nighthawk was given a more 'retro', smoother reworking that was reminiscent of the Nighthawk bikes of the early 1980s. The engine, exhaust, transmission, gearing and gauges were the same on both bikes, though the Nighthawk used a smaller capacity oil cooler.
+
+In AMC's ''[[The Walking Dead (TV series)|The Walking Dead]],'' two custom RC38 Nighthawk 750s were used as screen bikes to be ridden by [[Norman Reedus]]' character, Daryl Dixon.<ref>{{Cite web |title=Daryl's Bike - Motorcycles - Classified Moto |url=https://www.classifiedmoto.com/motorcycles/daryls-bike |access-date=2025-09-01 |website=www.classifiedmoto.com |language=en-US}}</ref>
+
+The RC42 CB750 was widely adopted at riding schools throughout Japan to prepare riders for their large motorcycle license exams due in part to its smooth power delivery, predictable handling, neutral ergonomics, reliability and maintainability.<ref>{{Cite web |title=Evolution of Honda's 750 cc Models up to the Last Air-cooled 750｜CB Stories｜HISTORY｜CB｜Honda Global Corporate Website |url=https://global.honda/en/CB/history/stories/1992/ |access-date=2024-11-12 |website=CB｜Honda Global Corporate Website}}</ref>
+
+The entry-level 1992-2008 [[Honda Nighthawk 250|Nighthawk 250]] replicated the Nighthawk 750's styling along with using the Nighthawk nomenclature.
+
+==== 2007 CB750 Special Edition ====
+[[File:Honda CB750 Special 2007TMS.jpg|thumb|left|2007 Honda CB750 Special Edition]]
+In 2007 Honda Japan offered a Special Edition version of the RC42 CB750. This limited edition run was put forth to commemorate the 25th anniversary of [[Freddie Spencer|"Fast Freddie" Spencer]] joining the [[Honda Racing Corporation|Honda Grand Prix Team]]. These bikes would don the "Digital Silver Metallic" color of the CB750 racebike Spencer used in the 1981 AMA Superbike championship alongside a version that was painted in "Candy Blazing Red" reminiscent of the [[Honda CBX|CBX1000]].<ref name="cb750se">{{Cite web|url=http://www.honda.co.jp/motor-lineup/cb750/photo/index.html|archive-url=https://web.archive.org/web/20090531070030/http://www.honda.co.jp/motor-lineup/cb750/photo/index.html|url-status=dead|title=Honda Japan website|archive-date=31 May 2009}}</ref>
+
+=== Discontinuation and Successors ===
+The CB750F2/''CB Seven-Fifty'' was discontinued for the European market in 2001 and in 2003 the Nighthawk 750 was discontinued in North America, though the CB750 would continue in Japan until 2008 when 2007 automobile exhaust gas regulations went into effect. This would lead the CBR600F3 based [[Honda CB600F|Honda Hornet]] CB600F and later both the [[Honda 650 standard and sport motorcycles|CB650F]] and [[Honda NC700 series|NC700 series]] to eventually take over the role as Honda's middleweight standard bike offerings in both Europe and North America.
+
+In 2010, Honda released the [[Honda CB1100|CB1100]], which although well over 750cc in displacement and fuel-injected was marketed as a spiritual successor to the original 1970-1983 CB750 models both in terms of style and concept; this motorcycle model would be later sold to North America and Europe in 2013, with sales ending in 2017 and 2022 respectively.
+
+==== 2023 CB750 Hornet ====
+[[File:2023 Honda CB750 Hornet.jpg|thumb|2023 CB750 Hornet]]
+
+In 2023, Honda Motor Europe Ltd revived the CB750 nameplate once more in the form of the CB750 Hornet. This new model is not a successor to the CB750 motorcycles; it is instead part of the updated Hornet line of naked sportbikes. The frame and engine of the motorcycle is lifted directly from new [[Honda Transalp|XL750 Transalp]]; the new engine being a 755cc SOHC 8-valve liquid-cooled [[PGM-FI]] equipped parallel twin with an output of 90.5&nbsp;hp @ 9,500 rpm and 55.3&nbsp;lb.-ft. @ 7,250 rpm.<ref>{{Cite web |title=2023 Honda CB750 Hornet First Look |url=https://www.cycleworld.com/story/bikes/honda-cb750-hornet-first-look-2023/ |access-date=2023-12-15 |website=Cycle World}}</ref> The CB750 Hornet is sold in European, Australia, India, Japan and Southeast Asian markets. It replaces the CB650R in the United States and was launched along with the [[CB1000 Hornet SP]].{{Clear}}
+
+==Specifications==
+{| class="wikitable"
+!Model
+![[Engine displacement]]
+!Fuel system
+!Cam
+!Valves per cylinder
+!Power
+!Torque
+!Weight
+!Drive
+|-
+|1969–1978 CB750 Four<ref name="Honda69Pr750">[http://www.honda.co.jp/news/1969/2690728.html Honda Press 18 July 1969], Honda Dream 18 July 1969 CB750 FOUR.</ref><ref name="Honda69Ad750cb">[http://world.honda.com/history/challenge/1969cb750four/photo/03.html Honda Dream CB750 Four History], The First Motorcycle to Offer Disc Brakes.</ref>
+|{{convert|736|cc|abbr=on}}<ref name="Honda69Ad750cb" />
+|4 carburettors<ref name="Honda69Ad750cb" />
+|SOHC<ref name="Honda69Ad750cb" />
+|2
+|{{convert|67|bhp|abbr=on}} @ 8000&nbsp;rpm<ref name=TAM>{{Citation |chapter=Honda CB750 Four  |first1=Daniel K. |last1=Statnekov |title=The Art of the Motorcycle |author2=Guggenheim Museum Staff |editor1-first= Thomas |editor1-last= Krens |editor2-first= Matthew |editor2-last= Drutt |year= 1998 |publisher=Harry N. Abrams |isbn=0-8109-6912-2 |page=312 }}</ref><ref name="Honda69Ad750cb" /><ref name=Brown2005>{{Citation
+|last=Brown |first=Roland |year=2005 |title=The ultimate history of fast motorcycles |publisher=[[Parragon]] |isbn=1-4054-5466-0 |location=[[Bath, England]] |pages=114–115 }}</ref>
+|{{convert|59.8|N.m|abbr=on}} @ 7000&nbsp;rpm<ref name="Honda69Ad750cb" />
+|{{convert|218|kg|abbr=on}} (dry)<ref name="Honda69Ad750cb" />
+|5-Speed, Constant Mesh, Gearbox, Final Drive Chain<ref name="Honda69Ad750cb" />
+|-
+|1976–1978 CB750A<ref name="HondaPrApr77">[http://www.honda.co.jp/news/1977/2770421.html Honda Press 1977], Honda EARA.</ref>
+|{{convert|736|cc|abbr=on}}
+|4 carburettors
+|SOHC
+|2
+|{{convert|47|hp|abbr=on|order=flip}} @ 7500&nbsp;rpm<ref name=Bacon1996/>
+|
+|{{convert|262|kg|abbr=on}} (claimed dry)<ref name="HondaPrApr77" /><br>{{Convert|572|lb|abbr=on|order=flip}} (wet)<ref name=CWSeptember1976/>
+|2-speed w/[[torque converter]], chain<ref name=Bacon1996/>
+|-
+|[[Honda CB 750 K (RC01)|1978 CB750K]]<ref name="HondaPrDec78">[http://www.honda.co.jp/news/1978/2781212.html Honda Press Dec 1978], 1978 Honda CB750K.</ref>
+||{{convert|748|cc|abbr=on}}
+|4 carburettors
+|DOHC
+|4
+|{{convert|78|hp|abbr=on|order=flip}} @ 9000&nbsp;rpm
+|
+|{{convert|231|kg|abbr=on}} (dry){{citation needed|date=July 2015}}
+|5-Speed, Constant Mesh, Gearbox, Final Drive Chain
+|-
+|1979–1980 CB750F (RC04)<ref name="HondaPressJune79">[http://www.honda.co.jp/news/1979/2790622.html Honda Press June 1979], 1979 Honda CB750F Released 23 June 1979.</ref>
+|{{convert|748|cc|abbr=on}}
+|4 carburettors<ref name="HondaPressJune79" />
+|DOHC<ref name="HondaPressJune79" />
+|4
+|{{convert|78|hp|abbr=on|order=flip}} @ 9000&nbsp;rpm<ref name="HondaPressJune79" />
+|{{Convert|42.6|lbft|abbr=on}} @ 8000&nbsp;rpm<ref name="HondaPressJune79" />
+|{{convert|228|kg|abbr=on}} Dry<ref name="HondaPressJune79" />
+|5-Speed, Constant Mesh, Gearbox, Final Drive Chain<ref name="HondaPressJune79" />
+|-
+|1980–1982 CB750C Custom<ref name="HondaPressMay80">[http://www.honda.co.jp/news/1980/2800520.html Honda Press May 20, 1980], 1980 Honda CB750C, CB750K, CB750F Press Release.</ref>
+|{{convert|748|cc|abbr=on}}
+|4 carburettors<ref name="HondaPressMay80" />
+|DOHC<ref name="HondaPressMay80" />
+|4
+|{{convert|78|hp|abbr=on|order=flip}} @ 9000&nbsp;rpm<ref name="HondaPressMay80" />
+|{{Convert|42.6|lbft|abbr=on}} @ 8000&nbsp;rpm<ref name="HondaPressMay80" />
+|{{convert|236|kg|abbr=on}} [[Motorcycle testing and measurement#Dry weight|dry]]<br><ref name="HondaPressMay80" /> ~{{convert|252|kg|abbr=on}} [[Motorcycle testing and measurement#Wet weight|wet]]<ref name="HondaPressMay80" />
+|5-Speed, Constant Mesh, Gearbox, Final Drive Chain<ref name="HondaPressMay80" />
+|-
+|1981 CB750F
+|{{convert|748|cc|abbr=on}}
+|4 carburettors
+|DOHC
+|4
+|{{convert|67|hp|abbr=on|order=flip}}{{Citation needed|date=April 2010}}
+||{{Convert|42.6|lbft|abbr=on}} @ 8000&nbsp;rpm
+|{{convert|536|lb|abbr=on|order=flip}}{{Citation needed|date=April 2010}}
+|Chain
+|-
+|1982–1983 CB750SC (Nighthawk)
+|{{convert|749|cc|abbr=on}}
+|4 carburettors
+|DOHC
+|4
+|{{convert|66.57|hp|abbr=on|order=flip}} @ 9000&nbsp;rpm{{Citation needed|date=April 2010}}
+|{{convert|41.54|lbf.ft|abbr=on}} @ 7500&nbsp;rpm{{Citation needed|date=April 2010}}
+|{{convert|573.5|lb|abbr=on|order=flip}} wet{{Citation needed|date=April 2010}}
+|5-Speed, Chain<ref name=Honda>{{Citation |title= Honda Motorcycle Identification Guide, 1959–2000 |author= American Honda Motor Company |author-link= American Honda Motor Company |year= 2000 |isbn= 0-9642491-1-1 |pages= 254–255, 262–263, 278 |publisher= American Honda Motor Company, Incorporated }}</ref><ref name=Falloon2005>{{Citation |title= The Honda Story: Road and Racing Motorcycles from 1948 to the Present Day |first=Ian |last= Falloon |publisher= [[Haynes Manual|Haynes]] |location = [[Sparkford]] |year= 2005  |isbn= 1-85960-966-X |pages= 79–82}}</ref> ''See also [[Honda CB700SC]]''
+|-
+|1991-2003
+(Nighthawk 750)
+|{{convert|747|cc|abbr=on}}
+|4 Keihin 34&nbsp;mm Constant Vacuum carburettors
+|DOHC
+|4
+|{{convert|75|hp|abbr=on|order=flip}} @ 8500&nbsp;rpm{{Citation needed|date=April 2010}}
+|{{convert|64|N.m|abbr=on}} @ 7500&nbsp;rpm{{Citation needed|date=April 2010}}
+|{{convert|463|lb|abbr=on|order=flip}}{{Citation needed|date=April 2010}}
+|Chain
+|-
+|1992-2008 CB750 (1992-2001 CB750F2)
+|{{convert|747|cc|abbr=on}}
+|4 Keihin 34&nbsp;mm Constant Vacuum carburetors (1992–2003)
+Keihin VENA Carbs (2004–2008)
+|DOHC
+|4
+|{{convert|74|hp|abbr=on|order=flip}} @ 8500&nbsp;rpm<ref name=hondajp>{{Cite web|url=http://www.honda.co.jp/motor-lineup/cb750/spec/?from=rcount |archive-url=https://web.archive.org/web/20121021045946/http://www.honda.co.jp/motor-lineup/cb750/spec/?from=rcount |url-status=dead |archive-date=21 October 2012 |language=ja |title=Honda CB750 Specifications |publisher=Honda Japan |access-date=9 May 2010 }}</ref>
+|{{convert|64|N.m|abbr=on}} @ 7500&nbsp;rpm<ref name=hondajp/>
+|{{convert|520|lb|abbr=on|order=flip}}<ref name=hondajp/>
+|Chain
+|-
+|2023-CB750 Hornet
+|755cc
+(46 cu in)
+|PGM-FI
+|SOHC
+|4
+|67.5&nbsp;kW (90&nbsp;hp) @
+9500 rpm<ref>{{Cite web |title=2023 Honda CB 750 Hornet |url=https://www.motorcyclespecs.co.za/model/Honda/honda-cb750-hornet-23.html |access-date=2023-12-15 |website=motorcyclespecs.co.za}}</ref>
+|75 Nm (55.3&nbsp;lb-ft) @
+7250 rpm
+|190&nbsp;kg (419&nbsp;lb)
+(wet)
+|Chain
+|}
+
+==See also==
+*[[Triumph Bonneville T140]] (Role model)
+
+==References==
+{{Reflist|refs=
+
+<ref name=CWAugust1970>{{Citation |title=Cycle World Road Test: Honda CB750 |pages=44–51 |date=August 1970 |volume=8 |issue=8 |magazine=[[Cycle World]] }}</ref>
+
+<ref name=CWSeptember1976>{{Citation |title=Honda's CB750F Stick versus the CB750A Automatic |magazine=[[Cycle World]] |publisher=[[Hachette Filipacchi Media U.S.]] |issn=0011-4286 |location=Newport Beach, California |date=September 1976 |volume= 15|issue=9 |pages=60–65}}</ref>
+
+}}
+
+==External links==
+{{Commons category|Honda CB750}}
+*{{Official website|http://world.honda.com/history/challenge/1969cb750four/index.html | name= The Dream CB750 Four (Official history)}}
+*[https://web.archive.org/web/20150629091833/http://www.vintage-motorcycle.com/imageviewer.php?galleryid=144 CB750 images at the 1969 Brighton Motorcycle Show]
+*{{Citation |title= The Honda CB750 Sandcast Prototype; In early 1969, Honda's guys hand-built four CB prototypes. Three are gone. This is the story of the fourth |first= Mitch |last= Boehm |date= 29 July 2014 |url= https://www.motorcyclistonline.com/news/honda-cb750-sandcast-prototype |magazine=[[Motorcyclist (magazine)|Motorcyclist]] }}
+
+{{Honda motorcycles (2000s)}}
+
+{{DEFAULTSORT:Honda Cb750}}
+[[Category:Honda motorcycles|CB750]]
+[[Category:Sport bikes]]
+[[Category:Standard motorcycles]]
+[[Category:Motorcycles introduced in 1969]]
+
+[[pt:Honda CB 750 Four]]

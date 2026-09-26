@@ -1,0 +1,138 @@
+{{Short description|Chinese infantry fighting vehicle}}
+
+{{Infobox weapon
+|name=ZBD-04<br />Type 04 IFV
+| image=ZBD-04A IFV 20170716.jpg
+| image_size = 300
+|caption=ZBD-04A at Theme Exhibition of the 90th Anniversary of Chinese People's Liberation Army.
+|origin= [[China]]
+|type=[[Infantry fighting vehicle]]
+|design_date=1990s
+|production_date=1997–present
+|number= 3,075+<ref name="IISS2025_p241">[[International Institute for Strategic Studies]]: The Military Balance 2025, p.241</ref>
+|service=1999–present
+|is_vehicle=yes
+|crew=3
+|passengers=7
+|variants=ZBD-04<br />ZBD-04A<br />AFT-10 Launcher
+|length={{convert|7.2|m|ftin|abbr=on|lk=on}}<ref name="zbd08" />
+|width={{convert|3.2|m|ftin|abbr=on}}<ref name="zbd08" />
+|height={{convert|2.5|m|ftin|abbr=on}}<ref name="zbd08" />
+|weight=ZBD-04: {{convert|20|t|ST LT|abbr=on|lk=on}}<br />ZBD-04A: {{convert|24|t|ST LT|abbr=on|lk=on}}
+|armour=Welded steel (ZBD-04)<br />[[Appliqué armor]] (ZBD-04A)<br />[[Explosive reactive armor]] (VN-12)
+|primary_armament=100 mm rifled gun similar to [[2A70]]<br />[[ZPT-99]] 30 mm autocannon
+|secondary_armament=Type 86 7.62 mm or QJT-88 5.8mm coaxial [[machine gun]]<br />4 × [[HJ-8]] or [[HJ-10]] anti-tank missiles (ZBD-04 AT or ZBD-04A AT)
+|engine=ZBD-04: Type 6V150 [[Diesel engine|diesel]] {{convert|440|kW|hp|0}} <br />ZBD-04A:Type 6V150 [[Diesel engine|diesel]] {{convert|670|hp|kW|0}}
+|suspension=Torsion bar
+|speed=ZBD-04: <br />{{convert|65|km/h|mph|abbr=on}} <small>(road)</small><br />{{convert|20|km/h|mph knot|abbr=on}} <small>(water)</small><br />
+ZBD-04A: <br />
+{{convert|75|km/h|mph|abbr=on}} <small>(road)</small><br />{{convert|6-8|km/h|mph knot|abbr=on}} <small>(water)</small>
+|vehicle_range={{convert|500|km|mi|abbr=on}}
+}}
+
+The '''ZBD-04''' or '''Type 04''' (industrial designation '''WZ502''')<ref name="urlZBD-04 ZBD97 tracked armored IFV Infantry Fighting Vehicle">{{cite web |url=https://www.armyrecognition.com/china_chinese_light_armored_armoured_vehicle_uk/zbd-04_zbd97_armoured_infantry_fighting_vehicle_technical_data_sheet_specifications_information_uk.html |title=ZBD-04 ZBD97 tracked armored IFV Infantry Fighting Vehicle |access-date=2018-02-04 |archive-date=2022-05-30 |archive-url=https://web.archive.org/web/20220530190011/https://www.armyrecognition.com/china_chinese_light_armored_armoured_vehicle_uk/zbd-04_zbd97_armoured_infantry_fighting_vehicle_technical_data_sheet_specifications_information_uk.html |url-status=dead }}</ref><ref name="militarytodayzbd04">{{usurped|1=[https://web.archive.org/web/20071209052917if_/http://www.military-today.com/apc/type_97_ifv.htm Type 97]}} – Infantry fighting vehicle</ref> is a Chinese [[infantry fighting vehicle]]. It bears some external resemblance to the [[BMP-3]], particularly with regard to its turret and main armament; However, the chassis and internal subsystem possess a different layout. The earliest prototypes received the designation '''ZBD-97'''.<ref>{{cite web |url=http://www.armystar.com/m/view.php?aid=28544 |title=中国的铁拳！04重型战车可横扫周边陆军强国_环球军事网 |website=www.armystar.com |url-status=dead |archive-url=https://web.archive.org/web/20150923173755/http://www.armystar.com/m/view.php?aid=28544 |archive-date=2015-09-23}}</ref> An improved version, '''ZBD-04A''', is the vehicle currently in service and being produced.<ref>{{cite web|url=http://politics.people.com.cn/n/2015/0903/c398090-27543439.html|title=04A履带步兵战车受阅 系陆军复合式发展代表产物 时政 人民网|website=politics.people.com.cn}}</ref>
+
+==Development==
+[[File:ZBD-04 Infantry fighting vehicle during an anniversary parade.jpg|thumb|left|A ZBD-04 IFV during China's 60th anniversary military parade.]]
+The ZBD-97/ZBD-04 was designed as the successor to the [[ZBD-86]] and has been in service with the [[People's Liberation Army]] ground forces since 1999, in the armored units of the [[Guangzhou Military Region|Guangzhou]] and [[Eastern Theater Command|Nanjing]] military regions. Besides the infantry fighting vehicle (IFV) variant, an [[armored recovery vehicle]] (ARV) variant is also available. A further improved variant is known as the ZBD-04A.<ref>{{cite web|url=http://www.claws.in/SW/SW%20J.62-84.pdf|title=People's Liberation Army Ground Forces Modernisation|access-date=2013-05-03|archive-date=2013-01-23|archive-url=https://web.archive.org/web/20130123000000/http://www.claws.in/SW/SW%20J.62-84.pdf|url-status=dead}}</ref>
+
+In 1996, China imported the technologies of [[BMP-3|BMP-3M]] turret and weapon systems with licenses from Russia.<ref name="development" /> After testing, the Chinese military decided to fit the imported weapon systems with indigenously developed turrets, sensors, and chassis. The night vision system of the BMP-3M with an IR searchlight was deemed outdated and was replaced by a day/night thermal sight. Laser warning receivers, independent thermal viewers for the commander, and meteorological sensor systems were installed.<ref name="development">{{cite web|url=https://www.toutiao.com/article/7133877818844365316/ |title=大国善谋，武器维护保养换过时产品，26年后中国却玩出先进步战车 |website=Toutiao |date=25 August 2022 |language=Chinese}}</ref> ZBD-04 features a fully welded turret and frontal engine compartment for more effective troop dismount operation, whereas BMP-3 has the engine situated at the rear.<ref name="Type04">{{cite web|url= https://mil.sina.cn/sd/2020-04-18/detail-iirczymi6995260.d.html|title= 中国仿制俄方的04A步战车 为何运用越来越像美军了 |website=sina news|date=18 April 2020 |language=Chinese}}</ref><ref name="thermal"/>
+
+The first prototype appeared in 1997, hence the designation ZBD-97. The design was finalized in 2004 and entered production in the same year.<ref name="development" />
+
+==Design==
+The ZBD-04 has a crew of three (a commander, a driver, and a gunner) and can carry seven troops. The commander and gunner are seated in the two-man turret located in the middle, and the driver with one passenger is located in tandem to the left of the power compartment, located at the front right. Six infantrymen are located in the troop compartment at the rear.
+
+There are firing ports on the left, right, and the exit door that allow infantrymen to fire assault rifles or light machine guns from inside the vehicle, even on the move. The vehicle is [[amphibious vehicle|amphibious]], featuring two water jets.<ref name="IISS 2018">{{cite book |title=The Military Balance 2018 |date=14 February 2018 |publisher=The International Institute for Strategic Studies |isbn=978-1857439557 |page=251 |edition=2018}}</ref>
+
+===Armament===
+[[File:ZBD-04 in Beijing 02.jpg|thumb|right|The ZBD-04 turret.]]
+[[File:ZBD-04A Turret front 20170919.jpg|right|thumb|Front view of the ZBD-04A turret, featuring weapons from left to right including 30&nbsp;mm coaxial automatic cannon, 100&nbsp;mm rifled gun, and 5.8mm coaxial machine gun. The Commander's Independent Thermal Viewer (CITV), gunner thermal sight, emergency daylight sight as well as [[laser warning receiver]]s can be seen mounted on top of the turret.]]
+The main armament of the ZBD-04 is a two-plane stabilized, semi-automatic 100&nbsp;mm rifled gun, capable of firing both HE-FRAG rounds and the [[9M117 Bastion|3UBK10]] ATGM. The effective range of the HE-FRAG round is estimated to be 4,000 meters, with a rate of fire of 10 rounds/minute. The A270 low-pressure rifled gun can be used similarly to 2A60 mortars, sporting −8°~+60° elevation angles. The 3UBK10 ATGM and its Chinese derivate consist of a laser beam riding missile and a container case. As well as engaging armored vehicles and fortifications, the missile could also engage low-flying helicopters. The missile has a maximum range of 4,000&nbsp;m and can penetrate 600&nbsp;mm of armor. 
+
+Chinese engineers developed programmable airburst HE-FRAG, [[bunker-buster]], and [[thermobaric]] shells for the rifled gun, The Chinese 3UBK10 derivate was also upgraded on the ZBD-04A with top-attack capability supported by the [[millimeter-wave]] [[fire-control radar]] mounted above the rifled gun.<ref name="development" /> The system can store 30 rounds of 100&nbsp;mm missiles or other cartridges inside the turret.<ref name="zbd04_ws" />
+
+The ZBD-04 also has a coaxial ZPT-99 30&nbsp;mm automatic cannon, with 500 rounds. The cannon can fire both armor-piercing (AP) and HE-FRAG rounds. It is also fitted with indigenously-developed 30&nbsp;mm armor-piercing discarding sabot (APDS) and armor-piercing fin-stabilized discarding sabot (APFSDS) rounds. The rate of fire is 300 rounds/min and the range is 1,500 to 2,000&nbsp;m. The ZBD-04 also has a [[Type 80 machine gun|Type 86]] 7.62&nbsp;mm coaxial machine gun located to the left of the main gun. The coaxial machine gun was replaced by QJT-88 5.8&nbsp;mm on the ZBD-04A.<ref>{{cite web|url=https://www.163.com/dy/article/HBKEGV6T0535I3QJ.html |title=国产QJT式并列机枪亮相？采用5.8毫米重弹和长枪管，射程可达千米 |website=NetEase News |date=6 July 2022 }}</ref><ref name="zbd04_ws">{{cite web|url=https://weaponsystems.net/system/397-ZBD04 |title=ZBD-04 |website=weaponsystems.net}}</ref> Certain variant of the ZBD-04 can be equipped with four [[HJ-8]] wire-guided anti-tank missiles on both sides of the turret.<ref name="HJ-8" />
+
+On ZBD-04A, the main armament layout is kept largely the same, whilst the electronics and protections are upgraded.<ref name="development" /> 
+
+===Electronics===
+On ZBD-04, the gunner has an integrated day/night thermal scope and an emergency backup day sight. The fire-control system includes a digital ballistic computer, an electro-mechanical gun stabilizer, and a laser rangefinder. The driver's hatch mounts three periscopes, with the central periscope being able to be replaced by an image-intensifying night vision periscope. On the original ZBD-04, The commander has a combined daylight/thermal periscope and a backup day sight.<ref name="development" />
+
+On the ZBD-04A, the vehicle receives an improved thermal system, while the commander has been upgraded to an independent thermal sight that can rotate 360 degrees.<ref name="thermal">{{cite web|url= https://mil.sina.cn/sd/2017-05-31/detail-ifyfqvmh9670188.d.html |title= 俄军BMP3战车夜视系统竟落后中国04步战车20年 |website=Sina news |date=31 May 2017}}</ref> The digital fire control system supports "hunter-killer" and commander takeover, automatic target tracking, battle management system, and [[laser designator]] functions.<ref>{{cite web|url=https://news.qq.com/a/20151208/041342.htm |title=04A步战车与阿帕奇使用相同功能"神秘按钮" |website=Tencent News |date=8 December 2015}}</ref> A [[millimeter-wave]] [[fire-control radar]] was mounted above the rifled gun to support target acquisition and missile guidance.<ref name="development" />
+
+===Protection===
+The ZBD-04 is fitted with a collective [[NBC protection]] system, with its air filter located behind the turret to the right. There is a three-barrel smoke grenade launcher mounted on either side of the turret. The vehicle is fitted with an indigenous-made laser warning and countermeasures system.<ref>{{cite web|url=https://www.globalsecurity.org/military/world/china/type-04-zbd-04.htm |title=Type 04 Tracked Amphibious Infantry Fighting Vehicle |website=globalsecurity }}</ref>
+
+While ballistic protection is unknown, the vehicle likely has all-round protection against [[14.5 mm]] rounds and resistance against 20–25&nbsp;mm shells over the frontal arc.<ref name="militarytodayzbd04"/> On the ZBD-04A, the protection is further improved with [[appliqué armor]] plates, with a claimed protection level of defending 30&nbsp;mm round in the front. Two additional smoke discharges are mounted on each side of the turret, for a total of 10.<ref>{{cite web|url=https://weaponsystems.net/system/398-ZBD04A |title=ZBD04A |website=weaponsystems}}</ref>
+
+===Mobility===
+ZBD-04 is powered by the modified Type 6V150 diesel engine, developing {{convert|440|kW|hp|0}}.<ref name="development" /> ZBD-04A reportedly has an engine developing 670&nbsp;hp.<ref>{{cite web|url= https://www.army-technology.com/projects/zbd-04a-tracked-infantry-fighting-vehicle/ |title=ZBD-04A |website=army technology}}</ref> The vehicle is fitted with CH600 hydraulic torque converter.<ref name="Type04"/>
+
+The ZBD-04 has [[amphibious vehicle|amphibious]] capability, designed to swim to shore from a ship. For high-speed swimming, it has two large [[pump-jet|water jet]] ports.<ref name="IISS 2018"/> The ZBD-04A removed water jets to save weight in exchange for better protection, thus no longer capable of operating in the open sea.<ref name="zbd08" />
+
+==Variants==
+===Domestic===
+;ZBD-97: Designation for ZBD-04 prototype. 
+;ZBD-04: Standard variant.
+;ZBD-04 HJ-8: Based on the original ZBD-04 with four additional [[HJ-8]] anti-tank missiles mounted on the sw1 turret.<ref name="HJ-8">[http://survincity.com/2013/05/a-new-modification-of-the-zbd-04-type-04-combat/ A new modification of the ZBD-04 (Type 04) — Combat Vehicle Reconnaissance BRM (China)] {{Webarchive|url=https://web.archive.org/web/20180212142153/http://survincity.com/2013/05/a-new-modification-of-the-zbd-04-type-04-combat/ |date=2018-02-12 }} – survincity.com</ref>
+;ZBD-04A: The ZBD-04A (industrial designation '''WZ502G''', sometimes referred to as '''ZBD-08''') is an improved variant that sacrifices amphibious performance for better armor protection; add-on armor can be fitted, and the frontal arc can withstand 30&nbsp;mm rounds along with side skirts added. Although the vehicle is still amphibious, able to propel itself by its tracks to [[Ford (crossing)|ford]] lakes and rivers, it lacks waterjets and can no longer operate in open sea.<ref>{{cite web|url=http://english.chinamil.com.cn/news-channels/china-military-news/2015-09/15/content_6682644.htm|title=Details about China's ZBD-04A Tracked Infantry Fighting Vehicle|publisher=China Military Online|access-date=November 18, 2015|archive-date=September 13, 2016|archive-url=https://web.archive.org/web/20160913071815/http://english.chinamil.com.cn/news-channels/china-military-news/2015-09/15/content_6682644.htm|url-status=dead}}</ref><ref name="zbd08">{{Cite web|url=http://www.military-today.com/apc/zbd_08.htm |archive-url=https://archive.today/20140310151126/http://www.military-today.com/apc/zbd_08.htm |url-status=usurped |archive-date=March 10, 2014 |title=ZBD-08 - Infantry fighting vehicle}}</ref><ref>[https://weaponsystems.net/weaponsystem/CC04%20-%20ZBD04A.html ZBD04A] – Weaponsystems.net</ref>
+;ZBD-04A AT (AFT-10 Anti-Tank Missile Carrier): ZBD-04A's chassis works as the mobile launching platform for AFT-10 ([[HJ-10]]) anti-tank missiles. Noted the AFT-10 is a specific version of the HJ-10 missile that is designed for firing from vehicle launching platforms such as ZBD-04A. The sensors include a thermal camera, TV camera, and a laser range finder.<ref>{{Cite web |url=http://www.military-today.com/missiles/aft_10.htm |archive-url=https://web.archive.org/web/20210422011129/http://www.military-today.com/missiles/aft_10.htm |url-status=dead |archive-date=April 22, 2021 |title=AFT-10 - Anti-tank missile carrier |access-date=April 21, 2021 }}</ref> A millimeter-wave radar system is mounted at the front-right corner of the vehicle to improve all-weather operation capability.<ref>{{cite web |url=https://www.sohu.com/a/279758172_677685 |title=红箭10导弹发射车"汇总" |language=Chinese |website=SoHu News |date=5 December 2018 |access-date=21 April 2021 |archive-date=21 April 2021 |archive-url=https://web.archive.org/web/20210421150705/https://www.sohu.com/a/279758172_677685 |url-status=dead }}</ref>
+;ZBD-04A Command Vehicle: Modified from the original ZBD-04A, featuring a crew cabin with a higher ceiling.
+;ZBD-04A Combat Reconnaissance Vehicle: Equipped with radars and electric-optic sights for battlefield surveillance, the chassis of the Combat Reconnaissance Vehicle is modified from standard ZBD-04A. The recon equipment is mounted on a retractable mast.
+;ZBD-04A Armored Recovery Vehicle: Equipped with a crane for emergency vehicle service. As known as ZHB-04.<ref>{{Cite web |title=ZBD04 |url=https://weaponsystems.net/system/397-ZBD04 |access-date=2024-10-19 |website=Weaponsystems.net |language=en}}</ref> 
+;[[PLZ-07]]: 122&nbsp;mm self-propelled howitzer based on the ZBD-04 chassis.<ref>{{Cite web |url=http://www.military-today.com/artillery/plz_07.htm |title=PLZ-07 - 122 mm self-propelled howitzer |archive-url=https://web.archive.org/web/20210609131352/http://www.military-today.com/artillery/plz_07.htm |archive-date=9 June 2021 |url-status=dead |access-date=3 April 2021 }}</ref>
+
+===Export===
+;VN11: Export version of the ZBD-04.<ref>{{cite web|url=https://tr.ww2facts.net/23975-vn11-export-option-wz502-china.html|title=VN11 ihracat seçeneği WZ502, Çin|language=tr|access-date=2023-08-25}}{{Dead link|date=August 2025 |bot=InternetArchiveBot |fix-attempted=yes }}</ref>
+;VN11A: Export version of the ZBD-04A.<ref>{{cite web | url=https://123ru.net/smi/dogswar-ru/231028611/ | title=Боевая машина пехоты Norinco VN11A IFV (Китай). — 123ru.net }}</ref>
+;VN12: Export variant based on ZBD-04A.<ref>{{Cite web |url=http://www.military-today.com/apc/vn12.htm#:~:text=The%20VN12%20is%20a%20Chinese,it%20is%20a%20different%20design |title=VN12 - Infantry fighting vehicle |date= |access-date=2022-08-20 |archive-url=https://web.archive.org/web/20210508191816/https://www.military-today.com/apc/vn12.htm#:~:text=The%20VN12%20is%20a%20Chinese,it%20is%20a%20different%20design |archive-date=2021-05-08 |url-status=dead }}</ref>
+
+==Operators==
+;{{PRC}}
+* [[People's Liberation Army Ground Force]] – 3,475+ units as of 2025. 400 units of ZBD-04; 450 units of ZBD-04 HJ-8 Carrier with the sw1 turret; 2,400 units of ZBD-04A; 200 units of ZBD-04A HJ-10 Carrier; 25 units of ZBD-04A HJ-10A Carrier; Uncounted units of other variants.<ref name="IISS2025_p241"/>
+
+== Gallery ==
+<gallery mode=packed widths="240px" heights="160px">
+File:ZBD-04 - front right view.jpg|ZBD-04 at the [[China People's Revolution Military Museum]] in [[Beijing]] during the 2007 ''Our troops towards the sun'' exhibition.
+File:ZBD-04 - front left view.jpg|ZBD-04 IFV. 
+File:ZBD-04A Infantry fighting vehicles 20170902.jpg|ZBD-04A at Theme Exhibition of the 90th Anniversary of Chinese People's Liberation Army.
+File:ZBD-04A rear 20170902.jpg|Rear side of ZBD-04A.   
+</gallery>
+
+== See also ==
+* [[List of modern armored fighting vehicles]]
+;Related development
+* [[Type 89 AFV|ZSD-89A]] – armored personnel carrier chassis complementing the ZBD-04 series.
+* [[ZBD-03]] – airborne combat vehicle developed by China
+* [[ZBD-05]] – amphibious fighting vehicle developed by China
+* [[ZBL-08]] – wheeled infantry fighting vehicle developed by China
+;Similar ground systems
+* {{lwc|ASCOD}}
+* {{lwc|M2 Bradley}}
+* {{lwc|BMP-3}}
+* {{lwc|BMD-4}}
+* {{lwc|Combat Vehicle 90|CV90}}
+* {{lwc|Warrior Tracked Armoured Vehicle|Warrior}}
+* {{lwc|Mitsubishi Type 89 IFV|Type 89}}
+* {{lwc|K21}}
+* {{lwc|Makran IFV}}
+* {{lwc|Puma (German IFV)|Puma IFV}}
+* {{lwc|Hunter AFV}}
+
+==References==
+{{Reflist}}
+{{PRCAFVs}}
+
+==External links==
+* {{Commons category-inline}}
+* [http://www.sinodefence.com/army/armour/zbd97.asp Sino Defence]
+* [https://www.armyrecognition.com/china_chinese_light_armored_armoured_vehicle_uk/zbd-04_zbd97_armoured_infantry_fighting_vehicle_technical_data_sheet_specifications_information_uk.html Army Recognition] {{Webarchive|url=https://web.archive.org/web/20220530190011/https://www.armyrecognition.com/china_chinese_light_armored_armoured_vehicle_uk/zbd-04_zbd97_armoured_infantry_fighting_vehicle_technical_data_sheet_specifications_information_uk.html |date=2022-05-30 }}
+* [https://weaponsystems.net/weaponsystem/CC04%20-%20ZBD04.html Weapon Systems]
+
+{{DEFAULTSORT:Zbd97}}
+[[Category:Tracked infantry fighting vehicles]]
+[[Category:Amphibious infantry fighting vehicles]]
+[[Category:Armoured fighting vehicles of China]]
+[[Category:Infantry fighting vehicles of the post–Cold War period]]
+[[Category:Military vehicles introduced in the 1990s]]

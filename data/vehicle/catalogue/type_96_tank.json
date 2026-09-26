@@ -1,0 +1,88 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the Type 96 tank. Every value is grade claimed and the registry marks primary_held false. The article is a secondary compilation and is not a primary source.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "type_96_tank",
+      "canonical_name": "Type 96",
+      "maker": "First Inner Mongolia Machinery Factory",
+      "model": "ZTZ-96",
+      "variant": "Type 96 main battle tank",
+      "variant_id": "type_96_tank",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "China",
+      "era": "modern",
+      "aliases": [
+        "type 96",
+        "ztz-96",
+        "ztz96"
+      ],
+      "keywords": [
+        "ztz96",
+        "type 96 tank",
+        "chinese tank"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 41000,
+          "unit": "kg",
+          "source": "type_96_tank",
+          "locator": "Infobox, weight row, Type 96 entry",
+          "state": "Type 96 weight published as 41 tonnes; the same row publishes 42.8 t for the Type 96A and 43 t for the Type 96B, and the tonne is taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6330,
+          "unit": "mm",
+          "source": "type_96_tank",
+          "locator": "Infobox, length row",
+          "state": "length published as 6.33 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3450,
+          "unit": "mm",
+          "source": "type_96_tank",
+          "locator": "Infobox, width row",
+          "state": "width published as 3.45 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2300,
+          "unit": "mm",
+          "source": "type_96_tank",
+          "locator": "Infobox, height row",
+          "state": "height published as 2.30 m",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "12V150ZLC diesel",
+          "unit": "text",
+          "source": "type_96_tank",
+          "locator": "Infobox, engine_power row, Type 96 entry",
+          "state": "engine published as a 12V150ZLC diesel for the Type 96, as published",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 730,
+          "unit": "hp",
+          "source": "type_96_tank",
+          "locator": "Infobox, engine_power row, Type 96 entry",
+          "state": "Type 96 engine power published as 730 hp (582 kW); the Type 96A is published as 865 hp and the Type 96B as 1,000 hp; maximum rating, no net basis",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 65,
+          "unit": "km/h",
+          "source": "type_96_tank",
+          "locator": "Infobox, speed row",
+          "state": "speed published as 65 km/h",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

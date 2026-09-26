@@ -1,0 +1,191 @@
+{{More citations needed|date=September 2014}}
+{{Infobox automobile
+| name = GAZ-66
+| image = Red GAZ-66.jpg
+| manufacturer = [[GAZ]]
+| aka =
+| production= 1964–1998
+| model_years =
+| assembly = Soviet Union / Russia: [[Nizhny Novgorod|Gorky]] (Nizhny Novgorod)
+| class = Truck
+| body_style=
+| layout = [[F4 layout]]
+| transmission = 4-speed manual
+| wheelbase = {{convert|3300|mm|in|1|abbr=on}}
+| length = {{convert|5805|mm|in|1|abbr=on}} 
+| width = {{convert|2322|mm|in|1|abbr=on}} 
+| height = {{convert|2520|mm|in|1|abbr=on}} 
+| weight = {{convert|3440|kg|lb|0|abbr=on}}
+| predecessor=[[GAZ-63]]
+| successor =[[GAZ-3308]]
+}}
+
+The '''GAZ-66''' is a [[Soviet Union|Soviet]] and Russian [[four wheel drive|4x4]] all-road (off-road) military truck produced by [[GAZ]]. It was one of<!--The US Field Manual FM-100-2-3 dated 6 June 1991 says that a Motorized Rifle Division's truck fleet included 421 Ural-375 Trucks and 344 GAZ-66.--> the main cargo <!--'transport' - this can mislead people into thinking that the trucks carried infantry, when they were actually used for ammo, equipment etc. The infantry were in BTR-60/70/80 wheeled APCs or BMP-1/2/3 tracked IFVs.--> vehicles for [[motorized infantry]] of the [[Soviet Army]] and is still employed in former [[Soviet Union]] countries.<ref>{{Cite web|url=http://www.military-today.com/trucks/gaz_66.htm|archive-url=https://web.archive.org/web/20070705063700if_/http://www.military-today.com/trucks/gaz_66.htm|url-status=usurped|archive-date=July 5, 2007|title=GAZ-66 - Light utility truck|access-date=2019-04-24}}</ref> It is nicknamed ''[[shishiga]]'' (шишига), ''shisharik'' (шишарик)/''shehsherik'' (шешерик), ''trueman'' (in [[Siberia]]).
+
+== History ==
+After tests and trials, in 1969 GAZ-66 received the [[state quality mark of the USSR]]. It was the first USSR truck to receive such an award.<ref>Л. Д. Гоголев. Автомобили в боевом строю. М., "Молодая гвардия", 1981.</ref>
+
+Almost one million vehicles of this type were built for both military and civilian use. The GAZ-66 has gained legendary status in many countries due to its reliability, simplicity and off-road capability.<ref>{{Cite web|url=http://englishrussia.com/2016/11/08/maybe-the-best-soviet-truck-legend-of-soviet-union-gaz-66/|title=Maybe the best Soviet truck, Legend of Soviet Union – GAZ-66 {{!}} English Russia|date=8 November 2016 |access-date=2019-04-24}}</ref> Since the 1960s, the GAZ-66 has been popular with armed forces and off-road enthusiasts.<ref>{{Cite web|url=https://auto-market-usa.com/auto-classified-ads/russian-4wd-truck-gaz-66-for-hunters-and-off-road-travelers/|title=Russian 4wd truck GAZ-66 for hunters and off-road travelers | work = Auto Market USA: Auto Classifieds |language=en-US|access-date=2019-04-24|archive-date=2019-04-24|archive-url=https://web.archive.org/web/20190424143204/https://auto-market-usa.com/auto-classified-ads/russian-4wd-truck-gaz-66-for-hunters-and-off-road-travelers/|url-status=usurped}}</ref> Production ceased in 1999, with the [[GAZ-3308]] being produced instead.
+
+==Basic versions==
+[[File:Tolna Feuerwehr 0032.JPG|thumb|GAZ-66 based fire engine]]
+[[File:A_GAZ-66_truck_at_Tambov_Airshow_2007.jpg|thumb|right|GAZ-66 tanker]]
+[[File:GAZ_66.jpg|thumb|GAZ-66 with [[KUNG]] body.]]
+[[File:ГАЗ-66_в_Хабаровске.JPG|thumb|right|GAZ-66 platform truck]]
+[[File:GAZ-66_truck_in_Russian_military_service%2C_used_as_a_communication_centre.jpg|thumb|right|GAZ-66 in Russian military service]]
+[[File:ASC Leiden - Coutinho Collection - G 20 - Life in Ziguinchor, Senegal - PAIGC office in Ziguinchor, also Coutinho’s home - 1973.tif|GAZ-66 in military service with the [[PAIGC]] liberation movement in [[Guinea-Bissau]], 1973|thumb]]
+
+* GAZ-66-1 (1964–1968) – the first model with no centralized system for adjusting the air pressure in the tires
+* GAZ-66A (1964–1968) – with a winch
+* GAZ-34 – a 6×6 prototype
+* GAZ-66B (1966) – Paratrooper version with telescopic steering column, folding roof and folding windshield frame
+** BM-21V "Grad-V" (Vozdushnodesantiy – 'airborne') (NATO designation M1975): Developed for airborne troops in 1969. A GAZ-66B 4x4 truck chassis is fitted with a 12-round 122&nbsp;mm rocket launcher. The vehicle is sturdy enough to be air-dropped. Parts of the vehicle such as the canvas cab roof can be taken off or folded down to reduce its size during transit. Like the [[BM-21]], the BM-21V has stabilizing jacks on the rear of the vehicle for support when firing. The launch vehicle has the industrial index of 9P125.
+* GAZ-66D (1964–1968) – the chassis with a power take-off
+* GAZ-66P – tractor (experimental)
+* GAZ-66E (1964–1968) – with shielded electrical equipment
+* GAZ-66-01 (1968–1985) – the base model with a centralized control system for tire pressure
+* GAZ-66-02 (1968–1985) – with a winch
+* GAZ-66-03 (1964–1968) – with shielded electrical equipment
+* GAZ-66-04 (1968–1985) – the chassis with shielded electrical equipment
+* GAZ-66-05 (1968–1985) – with shielded electrical equipment and a winch
+* GAZ-66-11 (1985–1996) – upgraded base model
+* GAZ-66-12 (1985–1996) – with a winch
+* GAZ-66-14 (1985–1996) – the chassis with shielded electrical equipment and a power take-off
+
+==Military versions==
+* GAZ-66-15 (1985–1996) – with shielded electrical equipment and a winch
+* GAZ-66-16 (1991–1993) – modernized version with ZMZ-513.10, reinforced tires (wheels – lean), completed the brakes, the platform without intruding wheel niches (also installed on GAZ-66-11 and GAZ-66-40 ), load capacity 2.3 tons
+* GAZ-66-21 (1993–1995) – the national-economic modification with the dual tires and rear axle wooden platform GAZ-53, load capacity 3.5 tons
+* GAZ-66-31 – chassis for trucks
+* GAZ-66-41 (1992–1995) – a naturally aspirated GAZ-544 diesel engine
+* GAZ-66-40 (1995–1999) – with a GAZ-5441 turbodiesel
+* GAZ-66-92 (1987–1995) – for use in the far north
+* GAZ-66-96 – chassis for [[shift bus]]es
+
+===Export versions===
+* GAZ-66-51 (1968–1985)
+* GAZ-66-52 (1968–1985) – with a winch
+* GAZ-66-81 (1985–1995) – for countries with a temperate climate
+* GAZ-66-91 (1985–1995) – for countries with a tropical climate
+
+===Specialised versions===
+* AP-2 – aid station, the main transport unit regimental aid station.
+* AS-66 – ambulance, designed to evacuate the wounded.
+* DDA-2 – disinfecting shower installation, is used in the military (sometimes civil) sanitary-epidemiological units.
+* GZSA-731, 983A, 947, 3713, 3714 – Vans "Mail", "bread" and "Medicine"
+* MZ-66 – Lube.
+* 3902, 3903, 39021, 39031 – mobile workshops to provide technical assistance to agricultural machinery.
+* 2001, 2002, 3718, 3719, 3716, 3924, 39521 – mobile clinics
+* NZAS-3964, Volgar-39461 – [[watch bus]]es
+* GAZ-SAZ-3511 – tipper for agricultural purposes on the GAZ-66-31 (build – Saransk).
+* GAZ-KAZ-3511 – tipper for agricultural purposes on GAZ-66-31 (build – Bishkek, Kyrgyzstan)
+
+==Operators==
+* {{ANG}}{{sfn|Foss|Gander|1991|page=393}} 
+* {{ARM}}<ref>{{cite web |last1=Janovsky |first1=Jakub |last2=Dan |last3=Mitzer |first3=Stijn |last4=Oliemans |first4=Joost |last5=Kemal |title=The Fight For Nagorno-Karabakh: Documenting Losses On The Sides Of Armenia And Azerbaijan |url=https://www.oryxspioenkop.com/2020/09/the-fight-for-nagorno-karabakh.html |website=Oryx |access-date=5 January 2024 |date=27 September 2020}}</ref>
+* {{BLR}} – [[Armed Forces of Belarus]]<ref>[https://vayar.mil.by/news/172477/ Подразделения войск связи Вооруженных Сил получили новую и модернизированную технику] // Военное информационное агентство от 30 мая 2024</ref>
+* {{BUL}}<ref>{{cite book |last1=Nuciari |first1=Marina |last2=Olivetta |first2=Eraldo |title=Leaders for Tomorrow: Challenges for Military Leadership in the Age of Asymmetric Warfare |date=9 May 2021 |publisher=Springer Nature |isbn=978-3-030-71714-8 |page=202 |url=https://books.google.com/books?id=Bl8tEAAAQBAJ |language=en}}</ref>
+* {{flag|China}}
+* {{CUB}}{{sfn|Foss|Gander|1991|page=645}}
+* {{EGY}}{{sfn|Foss|Gander|1991|page=393}}
+* {{GEO}}<ref>{{Citation|first=Karolina|last=Gmyrek|title=English: Republic of Georgia Army Soldiers prepare to setup an antenna atop a GAZ-66 communication van, during the US European Command (USEUCOM) -sponsored Exercise COMBINED ENDEAVOR, held at Lager Aulenbach, Germany. The Exercise is a Partnership for Peace (PfP) exercised hosted by Germany, and is the largest information and communications systems exercise in the world which focuses primarily on Command, Control, Communications, and Computers (C4) interoperability testing and documentation.|date=2003-07-05|url=https://commons.wikimedia.org/wiki/File:Georgian_GAZ-66.JPEG|access-date=2021-05-30}}</ref>
+* {{flag|Guinea-Bissau}}
+* {{flag|Hungary}}
+* {{flag|Iran}}{{sfn|Foss|Gander|1991|page=393}}
+* {{flag|Iraq}}<ref>{{cite book |title=Iraq Country Handbook |publisher=Marine Corps Intelligence Activity |page=156 |url=https://www.sabrizain.org/iraq/Marines.pdf |access-date=28 January 2024 |archive-url=https://web.archive.org/web/20050528131010/http://www.sabrizain.org/iraq/Marines.pdf |archive-date=28 May 2005}}</ref>
+* {{LBY}}{{sfn|Foss|Gander|1991|page=648}}
+* {{flag|Moldova}} – [[Armed Forces of the Republic of Moldova]]<ref>Testarea nu cunoaşte clipe de respiro // "Oastea Moldovei", № 11, 2020. стр.6-7</ref>
+* {{flag|North Korea}}
+* {{flag|Laos}}
+* {{flag|Poland}}: Only specialized variants in use.
+* {{SYR}}
+* {{Flagicon|RPR}} [[Romania]] – [[Romanian Armed Forces]]
+* {{RUS}}<ref>{{cite web |last1=Janovsky |first1=Jakub |last2=Naalsio |last3=Aloha |last4=Dan |last5=Kemal |last6=Black |first6=Alexander |title=Attack On Europe: Documenting Russian Equipment Losses During The Russian Invasion Of Ukraine |url=https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-equipment.html |website=Oryx |access-date=15 April 2024 |date=24 February 2022}}</ref>
+* {{Flagicon|Transnistria}} [[Transnistria]]
+* {{flag|Ukraine}} – [[Ukrainian Armed Forces]]<ref>{{cite web |last1=B. |first1=Volodymyr |title=Unified truck platform for the Ukrainian Defense Forces: KrAZ, MAZ, or Tatra? |url=https://mil.in.ua/en/articles/unified-truck-platform-for-the-ukrainian-defense-forces-kraz-maz-or-tatra/ |website=Militarnyi |access-date=28 January 2024 |date=29 July 2023}}</ref>
+* {{flag|Vietnam}}
+
+===Former operators===
+* {{flag|Afghanistan|1980}} – [[Armed Forces of the Democratic Republic of Afghanistan]]<ref>Afghanistan along a peace road // "Soviet Military Review", No. 8, August 1988. pages 40-41.</ref>
+* {{flag|Finland}}{{sfn|Foss|Gander|1991|page=393}} – purchased 200 regular GAZ-66 trucks and 100 special versions for the [[Finnish Defence Forces]] in 1972–1975. Another 140 units were purchased in 1986–1989.
+* {{GDR}} – passed on to Germany after reunification; retired.
+* {{flag|USSR}} – passed on to successor states.
+
+== Specifications ==
+Specifications for GAZ-66-11<ref>{{Cite web|url=http://weaponsystems.net/weaponsystem/CC08%20-%20GAZ-66.html|title=GAZ-66 {{!}} Weaponsystems.net|website=weaponsystems.net|access-date=2019-04-24}}</ref><ref>{{cite web|title=Основные ТТХ серийного ГАЗ-66-11 (1985–1996)|url=http://www.voengruzovik.ru/GAZ/GAZ-66/GAZ-66-11.htm|access-date=2014-03-02|archive-date=2016-03-04|archive-url=https://web.archive.org/web/20160304084547/http://www.voengruzovik.ru/GAZ/GAZ-66/GAZ-66-11.htm|url-status=dead}}</ref>
+;Design
+* Cab-forward design, 2-seat cab + 21 passengers in the back.
+* Payload: {{convert|2000|kg|abbr=on}} plus the same weight trailer
+* Suspension: Solid axles with leaf springs
+;Engine
+* Type- ZMZ-66-06 V8 petrol (carburetor) OHV engine; heavy duty version of the [[GAZ-53|ZMZ-53]]<ref>[https://tractorreview.ru/dvigateli/zmz/zmz-511-tehnicheskie-harakteristiki.html ЗМЗ-511: технические характеристики]</ref><ref>[https://avtomobilgaz.ru/gruzovye/gaz3307/dvigatel.html Двигатели на ГАЗ 3307]</ref><ref>[https://gaz24.info/wp/dvygately-v8-zmz-konstrukcyja-harakterystyky-ystoryja-razrabotky/ Двигатели V8 ЗМЗ конструкция, характеристики, история разработки]</ref>
+* Displacement: 4,254 cc (Bore {{convert|92|mm|in|3|abbr=on}}, Stroke {{convert|80|mm|in|3|abbr=on}})
+* Compression ratio: 7.6:1
+* Output: {{convert|120|hp|abbr=on}} @ 3,200 rpm
+* Torque: {{convert|284.5|N.m|0|abbr=on}} @ 2,000-2200 rpm
+* Max. speed- {{convert|90|km/h|abbr=on}}(speed governed)
+;Brakes
+* Type: Drums, with hydraulic control, single circuit, servo assisted
+* Stopping distance from 20&nbsp;mph: 27'
+;Measurements
+* L×W×H: {{convert|5805|mm|ftin|0|abbr=on}} x {{convert|2322|mm|ftin|0|abbr=on}} x {{convert|2490|mm|ftin|0|abbr=on}}(cab) / {{convert|2520|mm|ftin|0|abbr=on}}(tent)
+* Wheelbase: {{convert|3300|mm|in|2|abbr=on}}
+* Track front/rear: {{convert|1820|mm|in|2|abbr=on}}/{{convert|1750|mm|in|2|abbr=on}}
+* Curb weight: {{convert|3440|kg|abbr=on}}
+* Fuel tanks: 2 x {{convert|105|L|abbr=on}}
+* Fuel economy: {{convert|31.5|L/100km|0|abbr=on}}
+;Maneuverability
+* Turning circle: {{convert|9.5|m|ft|0|abbr=on}}
+* Approach angle: 41°
+* Departure angle: 32°
+* Max. ascent angle: 31–37° (fully loaded)
+* Ground clearance: {{convert|315|mm|in|0|abbr=on}}
+* Fording depth: {{convert|1|m|in|0|abbr=on}}
+;Tires
+* Size: 12–18"
+* Pressure: Adjustable with central tyre inflation system from cab
+
+==Popular culture==
+[[File:The Soviet Union 1971 CPA 3998 stamp (GAZ-66 Truck).jpg|thumb|Soviet stamp, 1971]]
+* In the 2010 game ''[[Call of Duty: Black Ops]]'', the GAZ-66 is used as a transport for guards in the level "Vorkuta".
+* It is mentioned in the 1991 [[Tom Clancy]] novel ''[[The Sum Of All Fears]]''. 
+* In the Russian version of the TV show ''[[Top Gear Russia|Top Gear]]'', a test was conducted on the vehicle's strengths: the body had building rubble dropped on it, it was set on fire and submerged in water. After all these tests, it kept going.
+* The GAZ-66 was featured in the movie ''[[The Expendables 2]]'' with [[Jean-Claude Van Damme]].
+* The GAZ-66 is a truck in the game ''[[Spintires: MudRunner|MudRunner]]'' with the name of B-66 due to copyright claims.
+* In the 2019 [[HBO]] TV miniseries ''[[Chernobyl (miniseries)|Chernobyl]]'', the truck is used by Gen. Col. Vladimir Pikalov, commander of the Soviet Chemical Troops, to carry out a radiation measuring at the damaged power plant, with high-range [[dosimeter]] placed at the front and lead sheets covering the cabin.
+* In the 2020 film Wonder Woman 1984. Appears in the Middle Eastern convoy scene.
+
+==Bibliography==
+*{{cite book |editor1-last=Foss |editor1-first=Christopher F. |editor2-last=Gander |editor2-first=Terry J. |editor1-link=Christopher F. Foss |title=Jane's Military Vehicles and Logistics 1991-92 |date=1991 |publisher=Jane's Information Group |isbn=978-0-7106-0950-2 |edition=12 |language=English}}
+
+==References==
+{{Reflist}}
+
+== External links ==
+{{commons category}}
+
+* [http://www.russianmilitarytrucks.com/ English website for Russian Military Trucks]
+* [https://web.archive.org/web/20120220085222/http://gaz66.co.uk/ The UK home of the Gaz 66]
+* [http://www.gaz66.ru/ GAZ-66 enthusiast group]
+* [http://www.gaz66.de/ The German home of the GAZ-66]
+* [http://gaz66blog.wordpress.com/ German blog with GAZ-66 restoration and travel info]
+* [https://web.archive.org/web/20060823215124/http://gaz.toimii.net/ GAZ-66 enthusiast website]
+* [https://web.archive.org/web/20070119000524/http://www.kilometr.pl/MR_GAZ66.html Polish GAZ-66 site]
+* [http://www.sever66.ru/?cid=1001 GAZ-66 expedition site]
+* [https://web.archive.org/web/20110720134602/http://gaz66.livejournal.com/ GAZ-66 blog]
+* [http://tarmo.tkwcy.ee/albumid/vasulamarts2005/013_G.mpg GAZ-66 Video]
+* [http://tarmo.tkwcy.ee/albumid/vasulamarts2005/014_G.mpg GAZ-66 Video]
+* [http://tarmo.tkwcy.ee/albumid/vasulamarts2005/017_G.mpg GAZ-66 Video]
+* [http://crazywheels.spb.ru/65.html History of the predecessor of GAZ-66 – GAZ-62 (rus)]
+* [http://animium.com/2014/11/gaz-66 GAZ-66 3d model] 
+* [https://3dmodels.org/360-view/?id=126975 GAZ-66 3d 360-view]
+
+{{GAZ timeline 1960-present}}
+{{Authority control}}
+
+[[Category:All-wheel-drive vehicles]]
+[[Category:GAZ Group trucks]]
+[[Category:Military trucks of the Soviet Union]]
+[[Category:Cars of Russia]]
+[[Category:Vehicles introduced in 1964]]
+[[Category:Military vehicles introduced in the 1960s]]

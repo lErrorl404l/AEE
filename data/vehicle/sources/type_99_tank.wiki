@@ -1,0 +1,147 @@
+{{Short description|2001 Chinese main battle tank}}
+{{Infobox weapon
+| name               = Type 99
+| image              = ZTZ-99A tank front 20170902.jpg
+| caption            = Front view of Type 99A tank
+| is_vehicle         = yes
+| type               = [[Main battle tank]]
+| origin             = China
+| manufacturer       = [[Baotou Tank Plant]]
+| designer           = [[Norinco|201st Research Institute]]
+| unit_cost          = $2.5 million<ref>{{cite web |last1=Episkopos |first1=Mark |title=Type 99 Tank: How China Is Preparing for a Land War |url=https://nationalinterest.org/blog/buzz/type-99-tank-how-china-preparing-land-war-175809 |website=The National Interest |publisher=Center for the National Interest |access-date=22 May 2023 |date=January 5, 2021 |quote=The Type 99 represents the cutting-edge of currently deployed People’s Liberation Army tanks ... though it has not been widely proliferated throughout China’s armed forces due to its prodigious price tag of $2,500,000 per unit.}}</ref>
+| used_by            = See ''[[#Operators|Operators]]''
+| production_date    = 1998–2001 (Type 98)<br /> 2001–2011 (Type 99)<br />2007–present (Type 99A)
+| service            = 2001 (Type 99)<br />2011–present (Type 99A)
+| number             = ~1,300<ref name="IISS2024_p255">{{cite book |author=International Institute for Strategic Studies |title = The Military Balance 2024 | publisher = Routledge | year = 2024 | isbn = 978-1032780047 | author-link = International Institute for Strategic Studies | page = 255}}</ref>
+| weight             = 51 tonnes (Type 98) <br />55 tonnes (Type 99A)
+| length             = Hull: {{convert|7.6|m|ft}}<br />Gun forward: {{convert|11|m|ft}}<ref name="army-tech">{{cite web|url=https://www.army-technology.com/projects/type99chinese-main/ |title=ZTZ99 Main Battle Tank |website=army-technology }}</ref>
+| width              = Hull: {{convert|3.7|m|ft}}<ref name="armyrecognition99a">{{Cite web|title = TYPE 99A A2 ZTZ-99A MBT MAIN BATTLE TANK|url = http://www.armyrecognition.com/china_chinese_heavy_armoured_vehicle_tank_uk/type_99a_99_a2_ztz-99a_main_battle_tank_china_11408171.html|website = armyrecognition|access-date = 2018-04-10|archive-url = https://web.archive.org/web/20180411174259/http://www.armyrecognition.com/china_chinese_heavy_armoured_vehicle_tank_uk/type_99a_99_a2_ztz-99a_main_battle_tank_china_11408171.html|archive-date = 2018-04-11|url-status = live}}</ref>
+| height             = Hull: {{convert|2.35|m|ft}}<ref name="armyrecognition99a" />
+| crew               = 3 (commander, driver, gunner)<ref name="usarmytradoc_5-45">US Army TRADOC Intelligence Support Activity (2011:5-45)</ref>
+| armour             = Classified. <br /> Anticipated to be welded turret with [[spaced armor|applique]] and modular composite/[[Explosive Reactive Armor|reactive]] armor
+| primary_armament   = 125mm ZPT-98 smoothbore gun (42 Rounds; autoloader)
+| secondary_armament = [[W85 heavy machine gun|QJC-88]] [[heavy machine gun]]<ref name="usarmytradoc_5-45"/><br />
+[[Type 80 machine gun|Type 86]] coaxial machine gun
+| engine             = 150HB [[Radiator (engine cooling)|liquid-cooled]] [[V12 engine|V12]] [[twin-turbo]] [[Diesel engine|diesel]] 33.9 litre
+| engine_power       = 1,500 hp (1,119 kW)
+| pw_ratio           = 27.78 hp/tonne <br />
+| suspension         = [[Torsion bar suspension]]
+| vehicle_range      = {{convert|600|km|mi}}–{{convert|650|km|mi}}
+| speed              = Road: {{convert|76|kph|mph}}<br /> (Type 99A)
+Off-road: {{convert|54|kph|mph}}
+}}
+
+The '''Type 99''' ({{zh|c=99式主战坦克|p=Jiǔjiǔshì Zhǔzhàn Tǎnkè}}) or '''ZTZ-99''' is a Chinese [[List of main battle tanks by generation|third generation]] [[main battle tank]] (MBT).<ref name="usarmytradoc_5-40">US Army TRADOC Intelligence Support Activity (2011:5-40)</ref> The vehicle was a replacement for the aging [[Type 80/88 main battle tank|Type 88]] introduced in the late 1980s. The Type 99 MBT was China's first mass-produced third-generation main battle tank. Combining modular composite armour and tandem-charge defeating [[Explosive reactive armour|ERA]], 125&nbsp;mm smoothbore gun with [[ATGM]]-capability, high mobility, digital systems and optics, the Type 99 represents a shift towards rapid modernization by the PLA.
+
+The Type 99 is based on the Soviet [[T-72]] chassis.<ref name="Foss">{{cite book |editor1-last=Foss |editor1-first=Christopher F. |editor1-link=Christopher F. Foss |title=Jane's Armour and Artillery 2011–2012 |publisher=Janes Information Group |location=London |year=2011 |isbn=978-0-71062960-9 |pages=5–6 |edition=32nd |chapter=Main battle tanks |url=https://archive.org/details/janesarmourartil0000unse}}</ref> The tank entered [[People's Liberation Army]] (PLA) service in 2001.<ref name="usarmytradoc_5-40" />  The [[People's Liberation Army Ground Force]] (PLAGF) is the sole operator of the Type 99. Three main versions of the Type 99 have been deployed: the Type 98 prototype, Type 99 and the '''Type 99A'''. The Type 99 forms the core of China’s modern maneuver combat capabilities, with over 1,300 tanks built for the past two decades.<ref name="IISS2024_p255" />
+
+== Development ==
+The development of China's domestic third generation MBT was started in 1989, under China's eighth five-year plan. In the early 1990s China produced one of its second generation prototypes, the [[Al-Khalid tank|Type 90-II]] series. The Type 90-II was designed by studying the [[T-72]] tank. The chassis was to be based on the T-72's hull but with Chinese subsystems.<ref name=":8">{{Cite book|title=Jane's Armour and Artillery 2006-2007|last=Foss|first=Christopher F|publisher=Janes Information Group|year=2006|isbn=978-0710627476}}</ref> The Type 90-II had a 125mm smoothbore cannon with an autoloader, modular composite armor and a centered driver position.<ref name=":0">{{Cite book|title = The Chinese army today : tradition and transformation for the 21st century.|last = Blasko|first = Dennis J.|publisher = Routledge|year = 2012|isbn = 9780415783217|location = Abingdon, Oxford|pages = 153}}</ref> While the Type 90-II series ultimately did not enter PLA service, it saw success as an export tank and was built under license in Pakistan as the [[Al-Khalid tank|Al-Khalid]].<ref name=":1">{{Cite web |date=2025-12-15 |title=Chinese tank, upgraded for high altitudes, could be sent to border with India |url=https://www.scmp.com/news/china/military/article/3336467/chinese-main-battle-tank-upgraded-high-altitudes-could-be-sent-border-india |access-date=2025-12-17 |website=South China Morning Post |language=en}}</ref>
+
+The Type 98 or WZ-123 was China's domestic Type 90-II derivative. It was based on the T-72 chassis.<ref name="Foss"/> It was first seen in rehearsals for the 1999 National Day parade and was officially revealed on 1 October 1999.<ref name=":5">{{Cite web |date=2025-12-16 |title=China races to boost tank power: Is PLA's type 99B a response to Made-In-India Zorawar tank? |url=https://www.hindustantimes.com/geopolitics/china-races-to-boost-tank-power-is-plas-type-99b-a-response-to-made-in-india-zorawar-tank-101765897564248.html |access-date=2025-12-17 |website=Hindustan Times |language=en}}</ref>
+
+An improved version was shortly produced and was named the Type 98G or Type 99.<ref name=":8" />
+
+An updated Type 99 model was officially introduced at the 2015 Victory Day Parade as the Type 99A.<ref name=":6">{{Cite web|url = http://english.chinamil.com.cn/news-channels/china-military-news/2015-09/02/content_6662152.htm|title = ZTZ-99A Tank, China's King of Land Battle|date = 2015-09-02|access-date = 11 November 2015|website = China Military Online|last = Zhang|first = Tao|archive-url = https://web.archive.org/web/20151117063603/http://english.chinamil.com.cn/news-channels/china-military-news/2015-09/02/content_6662152.htm|archive-date = 17 November 2015|url-status = live|df = dmy-all}}</ref> This variant had previously been used by PLA troops during the [[Shanghai Cooperation Organisation|Shanghai Cooperation Organization]] (SCO) military exercises in 2014.<ref name=":3">{{Cite web|title = Update: China showcases new weapon systems at 3 September parade - IHS Jane's 360|url = http://www.janes.com/article/54069/update-china-showcases-new-weapon-systems-at-3-september-parade|website = www.janes.com|access-date = 2015-11-10|archive-url = https://web.archive.org/web/20151013093230/http://www.janes.com/article/54069/update-china-showcases-new-weapon-systems-at-3-september-parade|archive-date = 2015-10-13|url-status = live}}</ref>
+
+=== Deployment ===
+By 2008, 200 Type 98 and Type 99 tanks may have been deployed to the [[Beijing Military Region|Beijing]] and [[Shenyang Military Region]]s.<ref>{{Cite report |author=United States Office of the Secretary of Defense |author-link=Office of the Secretary of Defense |date=2008 |title=Military Power of the People's Republic of China |url=http://www.defense.gov/pubs/pdfs/China_Military_Report_08.pdf |page=5 |access-date=16 August 2015 |archive-url=https://web.archive.org/web/20100228192752/http://www.defense.gov/pubs/pdfs/China_Military_Report_08.pdf |archive-date=28 February 2010}}</ref> The Type 99 has seen less deployment than other tanks in PLA service due to cost factors.<ref name=":0" /> By 2024, more than 1,300 units of Type 99 and Type 99A have been deployed into the [[PLAGF]] service, forming the core maneuvering force of the PLA heavy combined arms brigades.<ref name="IISS2024_p255" />
+
+==Design==
+The Type 98/99 hull appears similar to the Soviet T-72 on which it is based, but it is longer.<ref name="Foss"/>
+
+===Armament===
+The main armament is a 2-plane stabilized ZPT-98 125&nbsp;mm [[smoothbore]] gun with a carousel-style [[autoloader]]. The weapon system is derived from Soviet [[2A46 125 mm gun|2A46 tank gun]]{{Citation needed|date=May 2026}}and AZ autoloader in the T-72.<ref>{{cite web|url=https://nationalinterest.org/blog/buzz/type-99-tank-how-china-preparing-land-war-175809 |title=Type 99 Tank: How China Is Preparing for a Land War |website=National Interest |date=5 January 2021 |first=Mark |last=Episkopos}}</ref> The gun may be fired under computerized or manual control. The tank can carry 42 rounds including 22 in the autoloader. The rate of fire is 8 rounds per minute using the autoloader, and 2 rounds per minute with manual loading.<ref name=":2">{{Cite book|title = Worldwide Equipment Guide 1 (2011 ed.) Ground Systems|location = US Army TRADOC Intelligence Support Activity|pages = 5–45 |url=https://cgsc.contentdm.oclc.org/digital/collection/p4013coll11/id/2089 }}</ref> The Type 99A mounts an improved 125&nbsp;mm gun,<ref name="usarmytradoc_5-46">US Army TRADOC Intelligence Support Activity] (2011:5-46)</ref> with a new autoloader capable of firing 10 rounds per minute.
+
+The 125&nbsp;mm gun of the Type 99 is capable of firing [[Armour-piercing fin-stabilized discarding-sabot|APFSDS-T]], [[high explosive anti-tank|HEAT]], Frag-HE-T, and gun-launched [[anti-tank missile]]s (ATGM). The gun may fire a range of Chinese, Russian, and ex-Warsaw Pact ammunition. The Type 99 can fire tandem shaped charged GP125 ATGMs similar to the Russian Invar with a range of up to 5 kilometres.<ref name=":2" /> The [[9M119 Svir/Refleks|9M119]] ATGMs were approved for domestic licensed production by Russia.<ref>{{cite web|url= https://nationalinterest.org/blog/buzz/type-99-tank-how-china-preparing-land-war-175809 |title= Type 99 Tank: How China Is Preparing for a Land War |website=National Interest |date=5 January 2021}}</ref>
+
+Secondary armament consists of a [[W85 heavy machine gun|QJC-88]] 12.7&nbsp;mm machine gun on the commander's cupola and a coaxial 7.62&nbsp;mm MG. The 12.7&nbsp;mm machine gun has an elevation of -4 to 75 degrees.
+
+=== Fire control ===
+The Type 99 has hunter-killer capabilities, operating an ISFCS-212 fire control system with an IR automatic target tracker.<ref name=":2" /> It is capable of firing on the move with a dual-axis stabilized main gun, stabilized gunner thermal sight, an advanced ballistic computer and a laser range finder.<ref name="rusi_2005" /> The gunner has a maximum target acquisition range of 5 kilometres.<ref name=":2" /> The gunner's thermal sight has optical magnification at 5x and 11.4x.<ref name=":8" /> The commander also has access to an independent thermal sight with auto-tracking targeting capabilities. A wide range of sensor data is displayed through a computer system to achieve quicker command response.<ref name="rusi_2005" />
+
+The Type 99A MBT is equipped with an improved fire control system (which includes a new 3rd generation thermal imaging sight, ballistic computer and weather measurement sensors) thus improving ballistic trajectory under adverse conditions. The commander also has an independent panoramic sight with laser range-finding function that can rotate 360 degrees. Both the gunner and commander sight is fully stabilized and capable of day/night operations.
+
+Type 99A is fitted with ST-16<ref name="sina_20170720" /> millimeter wave radar suite,<ref name="sina_20170720">{{cite web|url=http://mil.news.sina.com.cn/jssd/2018-07-20/doc-ihfqtahh8381084.shtml |title=中国99A型坦克安装一部毫米波雷达 却非防御系统组件 |website=Sina News |date=20 July 2020 |language=Chinese }}</ref> designed for [[identification friend or foe|target identification]] (IFF), acquisition and track. The original Type 99 utilizes the [[Type 99 tank#Protection|onboard active laser defense system]] for identification friend or foe application, but the function may be compromised under adverse weather condition. The radar system instead offers a more reliable all-weather operation capability.<ref name="sina_20170720" /> Type 99A's fire control computer can also automatically measure, identify and correct firing errors with muzzle reference system (MRS) mounted at the tip of the gun barrel as well as [[Position sensitive device|position sensitive detector]] (PSD) situated at the base of the barrel underneath the millimeter-wave radar panel, ensuring greater hit probability in sophisticated battlefield environments.<ref>{{cite web|url=https://www.163.com/dy/article/ECS4IIHM0511DTU9.html |title=坦克射击误差如何校准？中国有这款"秘密小配件" |website=NetEase News |date=16 April 2019 |language=Chinese}}</ref>
+
+Type 99 and Type 99A are fitted with digital map interface, [[BeiDou|BeiDou global positioning system]], UHF/VHF radio, encrypted laser communication system,<ref name="army-tech" /> and other form of communication devices along with an inertial navigation system as well as a [[Command and control|C4ISR]] [[Battle Management|battle management system]] used in conjunction with the data-link and communication systems to coordinate combat with other forces such as aircraft and infantry.<ref name=":9">{{Cite journal|date=15 December 2016|title=Worldwide Equipment Guide 2016 Volume 1: Ground Systems|url=https://community.apan.org/wg/tradoc-g2/ace-threats-integration/m/documents/218108#|journal=Us Tradoc|volume=1|pages=275–277|access-date=5 March 2019|archive-url=https://web.archive.org/web/20190306042639/https://community.apan.org/wg/tradoc-g2/ace-threats-integration/m/documents/218108|archive-date=6 March 2019|url-status=live|df=dmy-all}}</ref>
+
+===Protection===
+[[File:ZTZ-99A tank 20170919.jpg|thumb|Type 99A's frontal armor packs]]
+The tank's welded turret is of an angular design with spaced modular armor and composite panels.<ref name=":0" /><ref name=":2" /> Applique armor consists of modular armor mentioned above and track skirts. The Type 99A may mount 3rd generation ([[Kontakt-5|Relikt-type]]) ERA that provides protection against [[tandem-charge]] warheads.<ref name="usarmytradoc_5-46"/> It has a [[CBRN defense|nuclear-biological-chemical]] protection system<ref name="usarmytradoc_5-45"/> as well as fire detection and suppression system. The storage baskets on the turret sides and rear are buffer spaces, and are protected by ERA. The tank is also equipped with an active protection system.<ref name=":9" /> Type 99A's protection performance, in combination of the traditional armor, composite mix and reactive armor, is equivalent to HEAT more than 1000mm of rolled homogeneous armor (RHA), according to an interview with the tank's commander.<ref name="tradoc_99a">"{{cite news|author=US Army TRADOC Intelligence Support Activity |author-link=United States Army Training and Doctrine Command |title=Type 99A Main Battle Tank's Capabilities on Display |url=https://community.apan.org/wg/tradoc-g2/fmso/m/oe-watch-articles-singular-format/302493/download |series=OE Watch |volume=1 |edition=2019 |access-date=20 August 2021}}</ref>
+
+The tank features multiple countermeasure systems for additional protection, including laser-based self defense weapon (LSDW) system,<ref name="du_2004">{{cite web|url=https://defense-update.com/20040313_dazzler.html |title=Laser Dazzler – Laser Active Countermeasures |website=defense-update |date=13 March 2004}}</ref> [[laser warning receiver]] system, twelve 81-mm smoke grenade launchers, and smoke screen generated by injecting fuel into the engines.<ref name="urlThe Kremlin Hints at Reviving Cold War Laser Tanks | War Is Boring">{{cite web |url=https://warisboring.com/the-kremlin-hints-at-reviving-cold-war-laser-tanks/ |title=The Kremlin Hints at Reviving Cold War Laser Tanks &#124; War Is Boring |date=10 July 2015 |archive-url=https://web.archive.org/web/20190210100113/https://warisboring.com/the-kremlin-hints-at-reviving-cold-war-laser-tanks/ |archive-date=2019-02-10 |url-status=live }}</ref><ref name="usarmytradoc_5-45" /><ref name="army-tech" /> In September 2024, the Type 99 tank was spotted with the GL-6 hard-kill active protection system (APS), which features two APS projectile launchers and four fire control radars. The GL-6 is designed to intercept and destroy attacks from both ground and air angles.<ref>{{cite web| url=https://www.twz.com/land/chinese-tanks-active-protection-system-seen-intercepting-drone-fired-rocket-propelled-grenade | title=Chinese Tank's Active Protection System Seen Intercepting Drone-Fired Rocket Propelled Grenade | date=7 February 2025 |website=The War Zone |first=Joseph |last=Trevithick }}</ref>
+
+The box-shaped JD-3<ref name="rusi_2005" /> (also known as [[ZM-87]]) active laser self-defense weapon (LSDW) is installed on the rotating platform behind the tank commander hatch for all Type 99 variants. First seen on the Type 98 prototype,<ref name="du_2004" /> consecutive improvements have been introduced over the years. Type 99A features a smaller, more compact LSDW. After the laser warning receiver receives enemy laser illumination, the system would automatically alert the crew, and activate low-intensity laser to search and locate the enemy's laser source,<ref>{{cite web|url=https://news.qq.com/a/20121218/000890.htm |title=中国99式坦克配激光武器 可瞬间致盲敌观瞄手 |website=Tencent News |language=Chinese |date=18 December 2012}}</ref> then intensifying the beam to blind the enemy gunner, damage or destroy enemy's optic sensors.<ref name="rusi_2005" /> The high-powered laser can engage both ground vehicles and helicopters,<ref name="rusi_2005" /> disrupting the guidance signal or damaging the gunner's eyesight.<ref name="army-tech" /> The jammer is capable of interfering with anti-tank guided missiles (ATGM) utilizing [[SACLOS]] such as the [[MILAN]]. The LSDW has a reported effective range of {{convert|3000|m|ft}} on Type 99, and {{convert|4000|m|ft}} on Type 99A.<ref>{{cite web|url=https://www.sohu.com/a/279189975_607689 |title=99A上的小盒子，带来了中国在激光武器领域方面一个新的突破  |website=Sohu News |date=2 December 2012 |language=Chinese }}</ref> JD-3 (ZM-87) system also integrates laser transmitter, serving for both the line-of-sight (LOS) communication and the identification friend or foe (IFF) purpose.<ref name="sina_20170720" /><ref name="army-tech" /><ref>{{cite web|url=https://war.163.com/photoview/4T8E0001/2187392.html?from=tj_xytj#p=BQ32KMV04T8E0001 |title=中国主战坦克间可进行激光通讯 全世界独有 |website=NetEase News |language=Chinese |date=21 June 2016}}</ref>
+
+===Mobility===
+[[File:Type 99 MBT - drivers position.jpg|thumb|Type 99 MBT driver's position]]
+The driver sits in the center front of the hull. The latest Type 99A shows the driver's hatch in the center left of the hull. Type 99 features a [[torsion bar suspension]] system that consists of six rubber-tired road wheels on each side with a power sprocket at the rear. The first, second, and sixth road wheels are fitted with a special hydraulic shock buffer. The Type 99A tank is powered by a HP150 1500&nbsp;[[horsepower|hp]] diesel engine, giving it a [[power-to-weight ratio]] of about 27.78&nbsp;hp/ton. The original Type 99 had a manual transmission but later Type 99 variants have a CH1000 [[Fluid coupling|hydraulic]]-[[torque converter|mechanical]] [[semi-automatic transmission]] with six forward gears and two reverse gears.<ref name=":8" /><ref name=":6" /> The maximum road and off-road speeds are 80&nbsp;km/h and 60&nbsp;km/h respectively. The cruising range is {{cvt|500|km|mi}}.<ref name="usarmytradoc_5-45" /> The Type 99A is controlled by a steering wheel/yoke with stick-shift transmission capable of manual and automatic modes. The tank also uses gas and brake pedals similar to that of a standard [[motor vehicle]].<ref name="tradoc_99a" />
+
+The tank can be equipped with a snorkel for deep fording. With the deep fording kit, the Type 99A can cross waters up to 4.5 meters in depth.
+
+==Variants==
+[[File:Type 98 tanks on parade.jpg|thumb|right|Type 98 tank prototype (9910) at the 1999 [[National Day of the People's Republic of China|National Day]] parade.]]
+
+=== Project 9910 prototype ===
+Also known as the Type 98,<ref name="rusi_2005">{{cite web|url=https://rusi.org/publication/pla-armour-modernization-type-98-mbt |title=PLA Armour Modernization: Type 98 MBT |website=Royal United Services Institute |date=5 August 2005}}</ref> WZ-123.<ref name="usarmytradoc_5-40" /> The early pre-production (small batch production) prototype was called Project 9910. Features included composite armor panels and a 1200&nbsp;hp diesel engine.<ref name="usarmytradoc_5-45" /> 1st generation ERA may have been an option.<ref name="usarmytradoc_5-46" /> The armor layout of the early pre-production prototype may have been similar to the T-80U and T-80UK.<ref name="rusi_2005" />
+
+=== Type 99 ===
+[[File:Type 99 MBT front right.jpg|thumb|right|Type 99 front right view. Note the distinctive wedged shaped turret and applique armor panels on turret front and sides]]
+Also known as the Type 99G and Type 99A1.<ref name="usarmytradoc_5-40" /> Upgradable from small batch pre-production prototype. The tank features a new wedge-shaped turret and applique armor panels on turret front and sides, and upgraded to third generation ERA and second generation thermal sight, and a [[semi-automatic transmission]].<ref name=":6" /> Type 99 officially went into service in 2001.<ref name="usarmytradoc_5-40" /> A mid-life upgrade was commenced around 2008, called ZTZ-99 Phase-II to distinguish it from the initial production model. The new iteration featured a new angled turret and revised ERA blocks.<ref>{{cite web|url=https://nationalinterest.org/blog/reboot/china%E2%80%99s-ztz-99a-how-dangerous-tank-181241 |title=China's ZTZ-99A: How Dangerous Is This Tank? |website=National Interest |date=27 March 2021 |first=Charlie |last=Gao}}</ref>
+
+=== Type 99A ===
+[[File:ZTZ-99A MBT 20170902.jpg|thumb|Type 99A tank]]
+Improved Type 99. In 2003, the 99A model was developed. Prototype testing was underway by August 2007<ref name=":4">{{cite web|url=http://www.janes.com/news/defence/jdw/jdw070824_1_n.shtml|title=China trials enhanced Type 99 MBT - Jane's Defence News|last=Weng|first=Jonathan|date=24 August 2007|publisher=Janes.com|archive-url=https://web.archive.org/web/20071226112211/http://www.janes.com/news/defence/jdw/jdw070824_1_n.shtml|archive-date=26 December 2007|access-date=16 August 2015}}</ref> and believed to be the standard deployed Type 99 variant in 2011. The position of the driver's hatch was moved from the centre left to the centre right of the hull. The improved main gun carries a [[9M119|Invar-type]] ATGM. It mounts a type of 3rd generation ERA, and an active protection system.<ref name="usarmytradoc_5-46" /> The tank has a new, larger arrow-shaped turret with applique ERA armor.<ref name=":0" /> The larger turret has improved armour and a commander's periscope, and the tank has an integrated propulsion system. The {{cvt|1200|hp|kW}} engine is replaced with a {{cvt|1500|hp|kW}} engine. The tank also features a laser warning receiver.<ref name="usarmytradoc_5-46" />
+
+==== Type 99A Upgraded Variant ====
+This model has [[Explosive reactive armour|ERA]] installed on the glacis turret front and turret sides. It was in testing {{asof|2011|lc=on|post=.}}<ref name="Foss"/> It is most likely this refers to a normal Type 99A, as the A2 nomenclature is not known to be used by the [[People's Liberation Army]].
+
+=== Type 99B ===
+[[File:ZTZ99B 2025 V-J Parade CNS.png|thumb|Type 99B at the 2025 China Victory Day Parade]]
+
+The Type-99B upgraded variant was officially unveiled at the [[2025 China Victory Day Parade]].<ref>{{cite web|url=https://interestingengineering.com/military/china-showed-biggest-military-parade |title=From nuclear triad to hypersonics: What China unveiled in largest military parade ever |website=Interesting Engineering |date=3 September 2025 |first=Kapil |last=Kajal }}</ref> In 2024, the Type 99B prototype, fitted with two GL-6 APS launchers and four radars, was spotted in China. Improvements include with new and improved explosive reactive armor modules,  upgraded information technology and information sharing with other combat vehicles, 360-degree vision system for the crew, updated fire control system with new generation thermal optics, and new photoelectric and sensor systems for improved battlefield awareness. Some versions are noted to be equipped with a remote-controlled weapon station (RCWS) for the commander and lacking the GL-6 hard kill APS launchers.<ref> {{cite web|url=https://www.scmp.com/news/china/article/3324119/victory-day-military-parade-china-puts-weapons-progress-and-troops-show |title=China parades new weapons in show of ‘strategic ace’ deterrence – as it happened |website=South China Morning Post |date=3 September 2025 |author=SCMP Reporters }}</ref> Media reports in the [[South China Morning Post]] and the [[Hindustan Times]] indicated that the tank will primarily be deployed in the [[Himalayas]], alongside the smaller [[Type 15 tank|Type-15.]]<ref name=":1" /><ref name=":5" />
+
+==Operators==
+*{{CHN}}
+**[[People's Liberation Army Ground Force]]: 600 ZTZ-99, 700 ZTZ-99A<ref name="IISS2024_p255" />
+
+== Gallery ==
+<gallery widths="240" heights="200">
+File:Type 98 tank raised view.jpg|Type 98 tank prototype (9910 project) during the rehearsal of the 1999 National Day Military Parade.
+File:Type 99 MBT front left.jpg|A Type 99 tank at the [[China People's Revolution Military Museum]] in [[Beijing]] during the 2007 ''Our troops towards the sun'' exhibition.
+File:ZTZ-99A tank front right 20170902.jpg|Type 99A tank at a Theme Exhibition of the 90th Anniversary of the Chinese People's Liberation Army.
+</gallery>
+
+== See also ==
+{{Commons|Type 99 tanks}}
+*[[Type 100 tank|Type 100]] — China's fourth-generation MBT
+* [[Al-Khalid tank]]
+* [[VT-4]] — export MBT built by Norinco
+* [[Type 96 tank|Type 96B]] — China's other third-generation MBT
+* [[Type 15 tank|Type 15]] — China's new third-generation [[light tank]]
+* [[List of main battle tanks by generation]]
+* [[M1 Abrams]]
+* [[Arjun (tank)|Arjun MBT]]
+
+==Notes==
+{{Reflist}}
+
+;Bibliography
+{{Refbegin}} 
+*{{cite book |author=US Army TRADOC Intelligence Support Activity |author-link=United States Army Training and Doctrine Command |title=Ground Systems |url=http://cgsc.contentdm.oclc.org/utils/getdownloaditem/collection/p4013coll11/id/2089/filename/2090.pdf/mapsto/pdf/type/singleitem |series=Worldwide Equipment Guide |volume=1 |edition=2011 |access-date=15 August 2015}}
+{{Refend}}
+
+==External links==
+* [http://www.globalsecurity.org/military/world/china/type-99-a2.htm Type 99A2 on Global Security]
+* [https://www.youtube.com/watch?v=QW522Tbpvhk Ruptly footage of the Type 99 at the 2014 Peace Mission exercise]
+{{Norinco|state=expanded}}
+{{PRCAFVs}}
+{{Post-Cold War tanks|style=wide}}
+
+[[Category:Main battle tanks of China]]
+[[Category:Tanks of China]]
+[[Category:Main battle tanks of the post–Cold War period]]
+[[Category:Tanks with autoloaders]]
+[[Category:Military vehicles introduced in the 2000s]]
+[[Category:Norinco]]

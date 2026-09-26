@@ -1,0 +1,95 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the Komatsu LAV. Every value is grade claimed and the registry marks primary_held false. The article is a secondary compilation and is not a primary source.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "komatsu_lav",
+      "canonical_name": "Komatsu LAV",
+      "maker": "Komatsu",
+      "model": "LAV",
+      "variant": "Light armoured vehicle",
+      "variant_id": "komatsu_lav",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Japan",
+      "era": "modern",
+      "aliases": [
+        "komatsu lav",
+        "jgsdf lav"
+      ],
+      "keywords": [
+        "komatsu lav",
+        "jgsdf lav",
+        "japanese lav"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 4500,
+          "unit": "kg",
+          "source": "komatsu_lav",
+          "locator": "Infobox, weight row",
+          "state": "weight published as 4,500 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 4400,
+          "unit": "mm",
+          "source": "komatsu_lav",
+          "locator": "Infobox, length row",
+          "state": "length published as 4.4 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2040,
+          "unit": "mm",
+          "source": "komatsu_lav",
+          "locator": "Infobox, width row",
+          "state": "width published as 2.04 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 1850,
+          "unit": "mm",
+          "source": "komatsu_lav",
+          "locator": "Infobox, height row",
+          "state": "height published as 1.85 m",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "4-cylinder diesel",
+          "unit": "text",
+          "source": "komatsu_lav",
+          "locator": "Infobox, engine row",
+          "state": "engine published as a 4-cylinder diesel, as published",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 160,
+          "unit": "hp",
+          "source": "komatsu_lav",
+          "locator": "Infobox, engine_power row",
+          "state": "engine power published as 160 hp; maximum rating, no net basis",
+          "grade": "claimed"
+        },
+        "transmission_type": {
+          "value": "automatic",
+          "unit": "enum",
+          "source": "komatsu_lav",
+          "locator": "Infobox, transmission row",
+          "state": "transmission published as a 4 speed automatic",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 100,
+          "unit": "km/h",
+          "source": "komatsu_lav",
+          "locator": "Infobox, speed row",
+          "state": "speed published as 100 km/h",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+{{Short description|Chinese main battle tank}}
+{{Infobox weapon
+| name               = Type 96 Main Battle Tank<br>ZTZ-96
+| image              = File:TankBiathlon2017Individual-02.jpg
+| image_size         = 300px
+| caption            = Type 96B MBT at Tank Biathlon 2017.
+| type               = [[Main battle tank]]
+| is_vehicle         = yes
+| service            = 1997–present
+| length             = 6.33 m
+| width              = 3.45 m
+| height             = 2.30 m
+| origin             = China
+| manufacturer       = [[Inner-Mongolia First Machine Group Company Limited|First Inner Mongolia Machinery Factory]]
+| crew               = 3
+| used_by            = See [[#Operators|Operators]]
+| number             = 2,500+<ref name="IISS2021_p251">{{cite book |author=International Institute for Strategic Studies |title = The Military Balance 2021 | publisher = Routledge | year = 2021 | isbn = 9781032012278 | author-link = International Institute for Strategic Studies | page = 251}}</ref>
+| weight             = Type 96: 41 tonnes <br/> Type 96A: 42.8 tonnes <br/> Type 96B: 43 tonnes
+| armour             = Type 96: Composite armor (Steel & Ceramic Aluminum Titanate with Fibreglass Cloth)
+Type 96A: Modular applique armor on the turret and FY-4 ERA plates on hull front
+| primary_armament   = Type 88C/ZPT-98 125 mm smoothbore gun, capable of firing ATGMs and depleted uranium rounds
+| secondary_armament = Type 86 7.62 mm [[coaxial]] [[machine gun]]<br/>QJC-88 12.7 mm air-defence machine gun
+| engine             = [[Diesel engine|Diesel]]
+| engine_power       = Type 96: 12V150ZLC - 730 hp (582 kW)<br/>Type 96A: 12V150ZLD - 865hp (636 kW)<br/>Type 96B: 8V150HB - 1000hp (735kW)
+| suspension         = [[Torsion bar]]
+| speed              = 65 km/h<br/>
+74 km/h (Type 96B)
+| pw_ratio           = Type 96: (17.8 hp/tonne)<br/> Type 96A: (18.7 hp/tonne)<br/> Type 96B: (23 hp/tonne)
+| vehicle_range      = 400 km
+}}
+
+The '''Type 96''' ({{lang-zh|c=96式|p=Jiǔliù shì}}) or '''ZTZ96''' is a [[People's Republic of China|Chinese]] [[List of main battle tanks by generation#Second|second generation]] [[main battle tank]] (MBT). The final evolution of the [[Type 80/88 main battle tank|Type 88]] design, the Type 96 entered service with the [[People's Liberation Army]] (PLA) in 1997. The later variants of the Type 96 are currently in PLA service together with China's third generation MBT, the [[Type 99 tank|Type 99]].
+
+==History==
+China's tank development can be divided into three generations. The first generation was the [[Type 59 tank|Type 59]], a locally manufactured copy of the [[Soviet Union|Soviet]] [[T-55A|T-54]] and its [[Type 69/79 main battle tank|derivative tanks]]. The second generation of MBTs started with the [[Type 88 tank (China)#Type 80/Type 88|Type 80]] and reached its end state as the Type 96.<ref name="21c" /> The [[List of main battle tanks by generation#Third|third generation]] began with the [[Type 99 tank|Type 99]] tank.
+
+China's first generation tank development program failed to meet the PLA's performance requirements. These technical shortcomings coincided with the appearance of the [[T-72]] and [[T-80]] tanks in [[Soviet Union|Russia]], which influenced Chinese defense officials and contributed to their decision to begin development of a new generation indigenous MBT in the early 1980s. This new program was to lead to the development of the Type 80/85 family by 1988.
+[[File:Chinese Type 85-IIM Tank.jpg|thumb|Chinese Type 85-IIM Tank, Export version of Type 96 tank.]]
+The Type 80 prototypes were accepted into PLA service as the Type 88A/B. Most distinctively, the Type 88 family had six road wheels instead of the five that the previous Chinese MBTs possessed. However, after the 1991 [[Gulf War]] the PLA soon realized that the Type 88 design was insufficient, due to Iraqi Type 59/69 tanks' poor performance against contemporary [[NATO]] tanks (as the Type 88 itself is a further development of the [[Type 59 tank|Type 59]]). A better domestic MBT was required. However, continued delays in China's third gen MBT development meant the PLA had no choice but to continue development of the Type 85 family. In 1995, Norinco produced the Type 85-III prototype with an upgraded engine and explosive reactive armor.
+
+In 1997, the upgraded Type 85-IIM prototypes were accepted into PLA service as the Type 88C/Type 96.  The most visible difference between the Type 96 and earlier Type 88 series tanks was the additional [[Spaced armour|spaced armor]] on the turret front. This spaced armor gave the Type 96 a rectangular front profile, visually distinguishing it from the round turret of the Type 88. Other visible differences included their armament: the Type 96 possessed a locally designed 125mm [[Smoothbore|smoothbore gun]] while the earlier Type 88 variants used a 105mm [[Rifling|rifled gun]] instead. This made the Type 96 the first PLA tank in service armed with a 125mm caliber gun.
+
+By mid-2016, the Chinese military had over 7,000 tanks in active service, including about 2,077 Type 96/Type 96As and about 814 [[Type 99 tank|Type 99/Type 99As]].  Compared to the Type 99—with its high capability and similarly high cost—the cheaper Type 96B is seen by domestic experts as the main tank in the modernization of the PLA.<ref>[http://www.china.org.cn/china/2016-08/10/content_39059777.htm Type-96B seen as pillar of nation's tank force] - China.org.cn, 10 August 2016</ref>
+
+=== Deployment ===
+In the early 2000s, the Type 96 was the PLA's main armored firepower for [[maneuver warfare]] units. 31 tanks are deployed in an armored battalion and 10 tanks are deployed in a company.<ref>{{Cite web|url=http://cdmd.cnki.com.cn/article/cdmd-90008-2006021063.htm|title=九六式坦克分队岛屿山地进攻战斗火力运用研究--《中国人民解放军信息工程大学》2005年硕士论文|website=cdmd.cnki.com.cn|language=zh|access-date=2016-03-08}}</ref>
+
+After the PLA's reforms in 2017, the Type 96 is deployed in the [[combined arms]] battalion of the new heavy combined arms brigade. Each battalion features two tank companies and two mechanized infantry companies, with each company having 14 vehicles.<ref name="rd_inter">{{cite journal |last1=A. Marvel |first1=Bradley |date= September 2019 |title=The Combined Arms Battalion and Combined Arms Brigade: The New Backbone of the Chinese Army |url=https://community.apan.org/wg/tradoc-g2/operational-environment-and-threat-analysis-directorate/m/documents/295598 |journal=Red Diamond |volume=10 |issue=3 |pages=46 |doi= |access-date=11 May 2021}}</ref><ref name="benning">{{cite web|url=https://www.benning.army.mil/Infantry/Magazine/issues/2020/Fall/pdf/5_Arostegui-HIMOB.pdf |title=An Introduction to China's High-Mobility Combined Arms Battalion Concept |first=Joshua |last=Arostegui |website=U.S. Army|date=2020 }}</ref><ref name="mercator">{{cite web|url=https://merics.org/en/report/learning-russia-how-china-used-russian-models-and-experiences-modernize-pla |title=Learning from Russia: How China used Russian models and experiences to modernize the PLA |website=Mercator Institute for China Studies |date=23 September 2020}}</ref>
+
+=== International Tank Biathlon ===
+[[File:TankBiathlon14final-19.jpg|thumb|Type 96A at Tank Biathlon 2014]]
+In 2014, China participated with the Type 96A in the Russian-hosted [[tank biathlon]], where it competed against the Russian T-72B3, clinching third place.<ref>{{Cite news|title = Russia Wins Tank Biathlon; Next Up, Caspian Naval Biathlon?|url = http://www.eurasianet.org/node/69621|newspaper = EurasiaNet|date = 2014-08-19|access-date = 2015-11-07|first = Joshua|last = Kucera}}</ref>  China participated again in 2015, coming in second place.{{citation needed|date=December 2020}} In 2016, it won one gold medal (out of a total of 23 awarded gold medals).{{citation needed|date=December 2020}} China once again reached the finals of the Tank Biathlon in 2021.<ref>{{Cite web|date=2021-09-02|title=Azerbaijani team reaches final of Tank Biathlon competition in Moscow|url=https://www.azernews.az/nation/182849.html|access-date=2021-09-05|website=AzerNews.az|language=en}}</ref>
+
+== Design ==
+=== Armaments ===
+The main armament is a 2-plane stabilized 125&nbsp;mm ZPT-98 smoothbore gun with an [[autoloader]] using a carousel-style magazine.<ref>{{cite web|url=http://fighting-vehicles.com/type-96-tank/type-96-tank-2c46m-1-main-gun/ |title=Type 96 Tank 2C46M-1 Main Gun |website=fighting-vehicles|date=11 September 2016 }}</ref> The main gun has a [[Bore evacuator|fume extractor]] located midway along its length. Secondary armaments include a QJC-88 12.7&nbsp;mm heavy machine gun and a 7.62&nbsp;mm coaxial machine gun. The Type 96 is equipped with the ISFCS-212 computerized [[fire-control system]] with a ballistic computer, laser rangefinder, and automatic target tracking capability. When the Type 96 entered service, its fire-control system was reportedly superior to that of the T-72 tanks fielded by other nations at the time.<ref name="mt">{{cite web|url=http://www.military-today.com/tanks/type_96.htm |archive-url=https://archive.today/20120910103136/http://www.military-today.com/tanks/type_96.htm |url-status=dead |archive-date=September 10, 2012 |title=Type 96 |website=Military Today}}</ref> The Type 96 is capable of day/night all-weather operations as the driver, gunner and commander have access to [[Night-vision device|night vision devices]] and [[image intensifier]]s.<ref name="mt" />
+
+Type 96A is fitted with ISFCS-212B fire-control system,<ref>{{cite web|url=https://mil.news.sina.com.cn/zhengming/2020-12-28/doc-iiznctke8922914.shtml |title=解放军96A坦克演练城市攻防战 暴露出一大遗憾(图) |website=Sina News |date=28 December 2020}}</ref> which replaced the gunner night vision sight with [[Thermography|thermal imaging]] system sporting 3x and 8x optical magnifications.<ref name="96A" /> The new GUMS-2 digital ballistic computer provides more detailed calibration in sophisticated environments. The gunner thermal sight is connected to the commander terminal, which allows the commander to take over in an emergency.<ref name="tw">{{cite web|url=https://twgreatdaily.com/zh-cn/g9F-wXABjYh_GJGVz07n.html |title=解放军绝对主力之ZTZ-96A坦克 |website=twgreatdaily|date=2 March 2020 }}</ref> Type 96B's fire-control system is further upgraded from Type 96A, which includes new computer, communication, command and control systems.<ref name="96b" /> Despite the lack of commander-independent thermal sight, the fire-control computer of Type 96A and Type 96B allows the commander to acquire and engage enemy targets through the optical periscope mounted on the commander's hatch.<ref name="tw" /><ref name="163news">{{cite web|url=https://www.163.com/dy/article/FKT4LVTS05313FB8.html |title=俄方猛夸中国96B，直接点出三大技术优势，部分指标超越俄国同行 |website=NetEase News |date=25 August 2020 }}</ref>
+
+=== Protection ===
+The vehicle features six double-tired road wheels with tracks. The upper portions of the tracks are protected by armor skirts in saw-toothed shape. The [[Glacis#Armored vehicles|glacis plate]] is sloped to the point of being near-horizontal for better protection. The turret has a low-profile design, which makes the vehicle less likely to be seen on the battlefield. Six smoke grenade dischargers are fitted to the side of the turret, providing total of 12 smokes. Due to the usage of autoloader, the tank only has a crew of three, which consists of the driver, tank commander, and gunner. The tank series is also fitted with [[CBRN defense|NBC protection]] and [[Automatic fire suppression|automatic fire suppression system]].<ref name="mt" /><ref name="militaryfactory" /> Type 96 features steel and composite armor on the front hull and turret.<ref name="mt" /> On Type 96A, the tank turret is fully welded with improved steel armor layer and composite mix. The arrow-shaped FY-4 explosive reactive armor (ERA) blocks are mounted on the turret, hull, and storage bucket for increased protection.<ref name="AR" /><ref name="96A" /> Type 96B's armor layout is similar to that of Type 96A.<ref name="96b" />
+
+An electro-optical activated defense system, TCS-2, developed by 303 Institute of [[Norinco]], is installed on the Type 96A prototype. TCS-2 was not installed on the mass-produced version due to limited protection against modern [[ATGM|anti-tank missile]]s.
+
+=== Mobility ===
+The tank driver sits at the front-left of the hull. The tank commander and gunner sit in the turret. The engine compartment is located in the rear.<ref name="militaryfactory">{{cite web|url=https://www.militaryfactory.com/armor/detail.php?armor_id=447 |title=Type 96 (MBT) |website=militaryfactory}}</ref> The Type 96 tank was powered by a 730&nbsp;hp (582&nbsp;kW) engine which was subsequently upgraded to a 800&nbsp;hp engine on the Type 96A.<ref name="96A">{{cite web|url=http://fighting-vehicles.com/type-96a-tank/ |title=Type 96A |website=fighting-vehicles|date=11 September 2016 }}</ref>
+
+On the Type 96B, the engine was upgraded again to 1200&nbsp;hp (895&nbsp;kW). It also features a new [[Hydropneumatic suspension|hydropneumatic suspension system]] and automatic transmission system, providing greater mobility and responsiveness. The increase in horsepower also allows the Type 96B to have a very high [[power-to-weight ratio]], improving its acceleration and hill climbing abilities.<ref name="96b">{{cite web|url= http://fighting-vehicles.com/type-96b-tank/ |title=Type 96B Tank |website=fighting-vehicles|date=12 September 2016 }}</ref><ref name="21c" />
+
+==Variants==
+[[File:Финальный этап подготовки к международному конкурсу «Рембат-2017» (г. Омск) (7).jpg|thumb|Type 96 tank]]
+[[File:TankBiathlon14final-11.jpg|thumb|right|Chinese Type 96A MBT at [[Tank Biathlon]] 2014.]]
+[[File:TankBiathlon2017Individual-07.jpg|thumb|Type 96B at Tank Biathlon 2017]]
+
+=== Type 96 ===
+Domestic version of Type 85-IIM. Sometimes mistakenly referred to as the Type 88C.<ref name=":0">{{Cite book|title = The Chinese army today : tradition and transformation for the 21st century|last = Blasko|first = Dennis J.|publisher = Routledge|year = 2012|isbn = 9780415783217|location = Abingdon, Oxford|pages = 152}}</ref> Renamed Type 96 when put into PLA service.
+In comparison to the Type 85 and Type 88, the Type 96 features a more powerful engine, improved electronics and a welded turret. 
+Type 96 was accepted by the PLA in 1997.
+
+===Type 96A===
+Additional "arrow-shaped" modular armor similar to the Type 99 is installed on the turret front. The back of the hull is now completely flat compared to the baseline Type 96. The Type 96A was first revealed in 2006, but in-service tanks were first seen in a military parade in 2009.<ref name="AR">{{cite web|url=http://www.armyrecognition.com/china_chinese_heavy_armoured_vehicle_tank_uk/ztz96a_type_96a_96g_main_battle_tank_technical_data_sheet_information_description_intelligence_uk.html|title=ZTZ96A Type 96A 96G main battle tank technical data sheet information description intelligence UK|last=Administrator|website=www.armyrecognition.com|access-date=16 September 2018}}</ref>
+
+The Type 96A is a third-generation upgrade of the Type 96. Its internal electronics may have been upgraded to Type 99 standards.<ref name="AR"/> The visual profile of the Type 96A is similar to the Type 99. However, the Type 96A can be distinguished from the Type 99 by the driver's position of the left side of the hull.<ref name=":0" /> FY-4 [[Reactive armour#Explosive reactive armour|ERA]] was added on front upper glacis.<ref name=":1" /><ref>{{Cite web|title=ZTZ96 (Type 96) Main Battle Tank - SinoDefence.com |url=http://www.sinodefence.com/army/tank/type96.asp |date=2011-03-07 |access-date=2015-11-07 |url-status=dead |archive-url=https://web.archive.org/web/20110307061214/http://www.sinodefence.com/army/tank/type96.asp |archive-date=March 7, 2011 }}</ref> The vehicle is equipped with a thermal imager. Features an upgraded {{cvt|800|hp|kW}} engine.
+
+TCS-2 electro-optical active defense system, similar to the [[Shtora]], has been installed.<ref name=":1">{{cite web|last=Martin|first=Andrew|date=22 September 2009|title=Type 96 and Type 99 Main Battle Tanks|pages=1 |url=http://www.ausairpower.net/APA-PLA-Type-96-99.html|access-date=16 September 2018}}</ref> Electro-optical jammers which are able to jam enemy guided missiles, rangefinders, and designators are found on the tank.
+
+===Type 96B===
+Variant first seen in July 2016 loaded on a Russia-bound train to participate in the 2016 tank biathlon. It is equipped with an improved engine, improved high-performance gun with an upgraded fire-control system, new transmission, chassis, ventilation, communications and computer systems, exhaust and suspension. However it still doesn't feature a commander-independent sight.<ref name="96b" /> Compared to the previous variants, the two exhausts that were originally located on the right side of the hull are now located on the rear hull with air vents. The Type 96B has a stated maximum speed of 74&nbsp;km/h.<ref>{{cite web|url=https://theglobalherald.com/news/type-96b-main-battle-tank-in-60s/ |title=Type-96B main battle tank in 60s |website=theglobalherald |date=7 April 2021 }}</ref><ref name="21c">{{cite web|url=https://21stcenturyasianarmsrace.com/2017/12/20/the-pla-loves-its-thousands-of-type-96-tanks/ |archive-url=https://web.archive.org/web/20171223215836/https://21stcenturyasianarmsrace.com/2017/12/20/the-pla-loves-its-thousands-of-type-96-tanks/ |url-status=usurped |archive-date=December 23, 2017 |title=The PLA Loves Its Thousands Of Type 96 Tanks |website=21stcenturyasianarmsrace |date=20 December 2017 }}</ref>
+
+=== VT-2 ===
+[[File:VT-2 Tank (44396585660).jpg|thumb|right|VT-2 Tank]]
+Export variant of Type-96A. Debuted at the 2012 Defence Services Asia Exhibition.<ref>{{Cite web|title = The Chinese Defence Company NORINCO unveils new main battle tank VT2 at DSA 2012 1804124 {{!}} DSA 2012 defense exhibition Malaysia news {{!}} Defense and security exhibition 2012 daily news|url = http://www.armyrecognition.com/dsa_2012_defense_exhibition_malaysia_news/the_chinese_defence_company_norinco_unveils_new_main_battle_tank_vt2_at_dsa_2012_1804124.html|website = www.armyrecognition.com|access-date = 2015-11-08}}</ref><ref>{{Cite web|title = Article DSA 2012 |url=http://www.defense.gouv.fr/ema/sitta/les-salons-precedents/dsa-2012/article-dsa-2012 |website=defense.gouv.fr |access-date = 2015-11-08}}</ref> Can be equipped with [[Remote controlled weapon station|Remote Weapons Station]] and has a maximum speed of 70&nbsp;km/h (on road). Capable of turning on its own axis.<ref>{{Citation|last=arronlee33|title=Zhu Hai 1TV - China Air Show 2016 : Main Battle Tanks & Armoured Vehicles Demo [720p]|date=2016-11-03|url=https://www.youtube.com/watch?v=hk7IqDFt1Vs |archive-url=https://ghostarchive.org/varchive/youtube/20211222/hk7IqDFt1Vs |archive-date=2021-12-22 |url-status=live|access-date=2017-03-26}}{{cbignore}}</ref> On December 9, 2021, the [[Tanzania People's Defence Force]] displayed a single unit of the VT-2 main battle tank during a parade in [[Dar es Salaam]] to mark the 60th anniversary of Tanzanian independence.<ref name="PT20211214">{{cite web |last=Kenyette |first=Patrick |url=https://www.military.africa/2021/12/tanzania-expands-armoured-capability-with-new-norinco-vt-2-main-battle-tank |title=Tanzania expands armoured capability with new Norinco VT-2 main battle tank |website=Military Africa |date=14 December 2021 |access-date=10 March 2022}}</ref>
+
+== Operators ==
+<!--READ FIRST: This section is for cited entries only. Please do not add entries into this list without a citation from a reliable source. All entries without a citation will be removed. Thank you.-->
+
+[[File:Type 96 operators.png|thumb|300px|Map of Type 96 operators]]
+;{{PRC}}
+* [[People's Liberation Army]] – 36+ battalions of Type-96A (around 1,500 units), 31+ battalions of Type 96 (around 1,000 units) as of December 2015.<ref name="IISS2021_p251" />
+;{{TAN}}
+* [[Tanzania People's Defence Force]] – 5+ VT-2 delivered to Tanzania in 2021, according to the Stockholm International Peace Research Institute.<ref name="PT20211214" /> One VT-2 was displayed at a military parade in October 2021.<ref>{{Cite web |date=2021-12-10 |title=Tanzania parades VT2 tank |url=https://www.janes.com/osint-insights/defence-news/c4isr/tanzania-parades-vt2-tank |access-date=2024-09-08 |website=Default |language=en}}</ref>
+;{{SUD}}
+* [[Sudanese Armed Forces]] - Since 2008.<ref>{{cite web |url=https://www.strategypage.com/htmw/htarm/articles/20080218.aspx |website=strategypage.com|title=Armor: New Chinese Tanks in Sudan|access-date=8 July 2022}}</ref>
+
+== Gallery ==
+<gallery mode=packed heights="160">
+File:Type 96A - Tankbiathlon15finalp1-14.jpg|Type 96A tank without hull ERA mounted.
+File:Type 96A - Tankbiathlon15finalp1-12.jpg|Rear side of the Type 96A.
+File:TankBiathlon2016Final-11.jpg|Rear side of the Type 96B.
+File:TankBiathlonFinal2017-30.jpg|Type 96B in Tank Biathlon themed camouflage paint
+</gallery>
+
+==See also==
+{{Commons category|Type 96 tanks}}
+
+;Related Development
+*[[Tanks in China]]
+*[[Type 80/88 main battle tank|Type 88 tank]]
+*[[Type 99 tank]], a Chinese third-generation main battle tank.
+*[[Type 15 tank]]
+;Comparable ground systems
+*{{lwc|T-64#Modernisations in Ukraine|T-64BM}}
+*{{lwc|T-72 operators and variants#Soviet Union and Russia|T-72B3M}}
+*{{lwc|Al-Khalid tank|Al-Khalid}}
+*{{lwc|T-90}}
+*{{lwc|PT-91 Twardy}}
+*{{lwc|T-84|Oplot}}
+*{{lwc|M1 Abrams}}
+
+==References==
+{{reflist|30em}}
+;Bibliography
+{{Refbegin}}
+*{{cite book |author=US Army TRADOC Intelligence Support Activity |title=Ground Systems |url=http://cgsc.contentdm.oclc.org/utils/getdownloaditem/collection/p4013coll11/id/2089/filename/2090.pdf/mapsto/pdf/type/singleitem |series=Worldwide Equipment Guide |volume=1 |edition=2011 |access-date=15 August 2015|author-link=United States Army Training and Doctrine Command }}
+{{Refend}}
+
+==External links==
+*[https://www.youtube.com/watch?v=yhiZ1MlZS30&t=26s Ruptly news footage of the Type 96A in the 2014 tank biathlon]
+*[https://www.youtube.com/watch?v=wMVu54MXW3M&t=31m33s Ruptly news footage of the Type 96A in the 2015 tank biathlon]
+*[https://www.youtube.com/watch?v=VsuortL9Rvg CNTV news footage of the 2015 tank biathlon  (Chinese audio)]
+
+{{PRCAFVs}}
+{{Post-Cold War tanks|style=wide}}
+
+[[Category:Main battle tanks of China]]
+[[Category:Main battle tanks of the post–Cold War period]]
+[[Category:Tanks of China]]
+[[Category:Tanks with autoloaders]]
+[[Category:Military vehicles introduced in the 1990s]]

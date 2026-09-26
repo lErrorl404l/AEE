@@ -1,0 +1,104 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the Honda CB750 and CR750. Every value is grade claimed and the registry marks primary_held false. The article is a secondary compilation and is not a primary source.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "honda_cb750",
+      "canonical_name": "Honda CB750",
+      "maker": "Honda",
+      "model": "CB750",
+      "variant": "Motorcycle",
+      "variant_id": "honda_cb750",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Japan",
+      "era": "modern",
+      "aliases": [
+        "cb750",
+        "honda cb750",
+        "cb750 four"
+      ],
+      "keywords": [
+        "superbike",
+        "air cooled four",
+        "classic motorcycle"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "curb_weight_kg": {
+          "value": 232.7,
+          "unit": "kg",
+          "source": "honda_cb750",
+          "locator": "Infobox, wet_weight row",
+          "state": "wet weight published as 513 lb; pounds converted to kilograms, 1 lb = 0.45359237 kg; the infobox also publishes a 218 kg dry weight and the wet weight is recorded as the curb basis",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 2159,
+          "unit": "mm",
+          "source": "honda_cb750",
+          "locator": "Infobox, length row",
+          "state": "length published as 85 in; inches converted to millimetres",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 889,
+          "unit": "mm",
+          "source": "honda_cb750",
+          "locator": "Infobox, width row",
+          "state": "width published as 35 in; inches converted to millimetres",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 1118,
+          "unit": "mm",
+          "source": "honda_cb750",
+          "locator": "Infobox, height row",
+          "state": "height published as 44 in; inches converted to millimetres",
+          "grade": "claimed"
+        },
+        "wheelbase_mm": {
+          "value": 1455,
+          "unit": "mm",
+          "source": "honda_cb750",
+          "locator": "Infobox, wheelbase row",
+          "state": "wheelbase published as 57.3 in; inches converted to millimetres",
+          "grade": "claimed"
+        },
+        "engine_displacement_l": {
+          "value": 0.736,
+          "unit": "L",
+          "source": "honda_cb750",
+          "locator": "Infobox, engine row",
+          "state": "engine displacement published as 736 cc (1969 to 1978)",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 68,
+          "unit": "hp",
+          "source": "honda_cb750",
+          "locator": "Infobox, power row",
+          "state": "power published as 68 hp at 8,500 rpm (1969); maximum rating, no net basis",
+          "grade": "claimed"
+        },
+        "transmission_type": {
+          "value": "manual",
+          "unit": "enum",
+          "source": "honda_cb750",
+          "locator": "Infobox, transmission row",
+          "state": "transmission published as a 5-speed manual with a chain final drive",
+          "grade": "claimed"
+        },
+        "drivetrain": {
+          "value": "chain drive",
+          "unit": "enum",
+          "source": "honda_cb750",
+          "locator": "Infobox, transmission row",
+          "state": "final drive published as a roller chain to the rear wheel",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

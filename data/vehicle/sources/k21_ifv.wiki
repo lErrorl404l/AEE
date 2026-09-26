@@ -1,0 +1,166 @@
+{{Short description|South Korean infantry fighting vehicle}}
+{{other uses|K21 (disambiguation)}}
+{{More citations needed|date=September 2008}}
+{{Infobox weapon|is_vehicle=yes
+| name= K21
+| image= 2014.5.20 육군 수도기계화보병사단 K-21 장갑차 전투사격훈련 K-21 combat firing practice, Republic of Korea Army Capital Mechanized Infantry Division (14299828042).jpg
+| image_size= 300
+| caption= K21 on combat firing practice
+| type= [[Infantry fighting vehicle]]
+| origin= [[South Korea]]
+| designer= [[Agency for Defense Development]]
+| design_date= 1999–2008
+| manufacturer= Hanwha Defense (originally Daewoo Heavy Industries, later renamed as Doosan DST, follow by Hanwha Defense Systems)
+| production_date= 2009–present
+| number= 466<ref>{{cite web |url=http://www.defensetoday.kr/news/articleView.html?idxno=3420|archive-url=https://web.archive.org/web/20211222215242/http://www.defensetoday.kr/news/articleView.html?idxno=3420 |title=K 21 보병전투차 120여대 추가 양산| date=22 December 2021 |access-date=6 May 2022|archive-date=22 December 2021}}</ref>
+| service= 2009–present
+| unit_cost= $3.2 million
+| length= {{convert|6.9|m|ft|abbr=on}}
+| width= {{convert|3.4|m|ft|abbr=on}}
+| height= {{convert|2.6|m|ft|abbr=on}}
+| weight= {{convert|25.6|tonnes|ton|abbr=on}}
+| suspension= Passive in-arm suspension unit (ISU)
+| speed= {{convert|70|km/h|mph|abbr=on}} (road) <br /> {{convert|40|km/h|mph|abbr=on}} (cross-country) <br /> {{convert|7|km/h|mph knot|abbr=on}} (water)
+| vehicle_range= {{convert|500|km|mi|abbr=on}}
+| primary_armament= [[SNT Dynamics]] K40 40×365mmR [[autocannon]] (240 rounds)<ref name="K40">{{cite web|url=http://www.hisntd.com/eng/business/data/Gun-Artillery_Sytems.pdf|title=Guns & Artillery Systems|publisher=[[SNT Dynamics]]|date=|archive-url=https://web.archive.org/web/20220524023410/http://www.hisntd.com/eng/business/data/Gun-Artillery_Sytems.pdf|archive-date=24 May 2022|access-date=24 May 2022|author=}}</ref><br />Two [[AT-1K Raybolt|Raybolt]] [[Anti-tank guided missile|ATGM]] launchers (planned)
+| secondary_armament= 7.62&nbsp;mm [[M60 machine gun|M60]] GPMG
+| armour= [[2519 aluminium alloy]] chassis. Layers consisting of S2 glass fiber reinforced Al<sub>2</sub>O<sub>3</sub> ceramic armour
+
+All round protection against [[14.5×114mm]] API projectiles as well as 20&nbsp;mm FSP
+
+Frontal armour is resistant to 30&nbsp;mm APDS rounds fired from a 2A72 autocannon (standard on BMP-3 turrets)
+
+Roof armour is resistant to 155&nbsp;mm artillery shell fragments
+
+Soft- and hard-kill anti-missile defense systems, [[explosive reactive armor|ERA]], NERA (only for the K21 PIP)
+
+| engine=[[Doosan]]- D2840LXE [[Diesel engine|diesel]]
+| crew=3 crew + 9 passengers
+| engine_power=750&nbsp;hp (840&nbsp;hp for the PIP)
+| pw_ratio=29.2&nbsp;hp/tonne
+}}
+The '''K21''' is a South Korean [[infantry fighting vehicle]]. A replacement for the [[K200]]-series, it was formerly designated as '''K300''' or '''XK21''' KNIFV (Korea Next-generation Infantry Fighting Vehicle). The initial production began in 2009, with the [[Republic of Korea Army]] planning to field approximately 466 units. It is designed to effectively defeat other IFVs as heavily armed and armored as the [[BMP-3]].<ref name="urlK-21 K21 Doosan tracked armoured infantry fighting technical data sheet description information UK | South Korean Korean army light armoured vehicle UK | South Korea Korean army military equipment UK">{{cite web |url=https://www.armyrecognition.com/south_korean_korean_army_light_armoured_vehicle_uk/k-21_k21_doosan_tracked_armoured_infantry_fighting_technical_data_sheet_description_information_uk.html |title=K-21 K21 Doosan tracked armoured infantry fighting technical data sheet description information UK |archive-url=https://web.archive.org/web/20181026104358/https://www.armyrecognition.com/south_korean_korean_army_light_armoured_vehicle_uk/k-21_k21_doosan_tracked_armoured_infantry_fighting_technical_data_sheet_description_information_uk.html |archive-date=26 October 2018 |url-status=live }}</ref>
+
+==History==
+Development began in 1999. A $77 million contract was awarded to [[Doosan Group|Doosan DST]] for the NIFV prototype in 2003. Three prototype vehicles were delivered to the [[ROK Army]] in 2005. A contract worth $386.7 million for the first batch of K21 vehicles was signed in October 2008. Production began in November 2009 after a ten-year development period. K21s will be deployed from 2013 through 2016.{{Update inline|date=December 2025}}
+
+==Design==
+===Construction===
+The K21 KNIFV's chassis is constructed entirely out of aluminium with certain parts, like hatches, made of fiberglass, reducing the weight of the vehicle and enabling it to travel at higher speeds without bulky and powerful engines. The NIFV is to be lighter than other IFVs, including the American [[Bradley Fighting Vehicle|Bradley]] series, increasing both speed and payload.
+
+The design was finally deemed production-ready in 2009, following 10 years in development and a research budget expenditure of approximately US$80 million. More than 85% of the vehicle's design is domestic. However a redesign is in order following the sinking of two vehicles while engaged in amphibious operations. A board of inquiry found that the problem was a lack of buoyancy, a malfunctioning wave plate, and a technical problem with the drain pump, all of which are to be corrected in the new design.
+
+===Armaments===
+[[File:K-21 장갑차 (7445556270).jpg|thumb|left|K-21 firing its cannon]]
+The two-man turret on the K21 is armed with an [[S&T Dynamics]] K40 40&nbsp;mm cannon.<ref name="K40" /> The K40 40&nbsp;mm automatic gun was developed based on the design of the [[Nobong]]<ref>{{cite web|url=https://www.hanwha-defense.co.kr/kor/products/antiaircraft-40mm.do|title=노봉 40mm 쌍열 함포|publisher=Hanwha Defense|date=|archive-url=https://web.archive.org/web/20220524020516/https://www.hanwha-defense.co.kr/kor/products/antiaircraft-40mm.do|archive-date=24 May 2022|access-date=24 May 2022|author=}}</ref> 40&nbsp;mm twin naval cannon, which was developed to replace the [[OTO Melara]] [[DARDO]] [[Close-in weapon system|CIWS]], which was serviced by the [[Republic of Korea Navy|South Korean Navy]],<ref>{{cite web|url=http://www.defensetoday.kr/news/articleView.html?idxno=1396|title=K21 보병전투장갑차의 개량이 필요한 이유|publisher=Defense Today|date=9 July 2020|archive-url=https://web.archive.org/web/20220524030913/http://www.defensetoday.kr/news/articleView.html?idxno=1396|archive-date=24 May 2022|access-date=24 May 2022|author=Lee Chiheon}}</ref><ref>{{cite web|url=https://www.asiae.co.kr/article/2020061212222475657|title=육군 최초의 대공포 M2A1|publisher=Asia Economy|date=13 June 2020|archive-url=https://web.archive.org/web/20220524033450/https://www.asiae.co.kr/article/2020061212222475657|archive-date=24 May 2022|access-date=24 May 2022|author=Yang Nakgyu}}</ref><ref>{{cite web|url=https://bemil.chosun.com/nbrd/bbs/view.html?b_bbs_id=10158&num=5843|title=K-21 개량|publisher=Bemil|date=25 July 2020|archive-url=https://web.archive.org/web/20220608121313/https://bemil.chosun.com/nbrd/bbs/view.html?b_bbs_id=10158&num=5843|archive-date=8 June 2022|access-date=8 June 2022|author=}}</ref> capable of firing [[APFSDS]], high-explosive, smoke and multipurpose munitions, and a 7.62&nbsp;mm machine gun. This is combined with an advanced fire-control system and gun stabilizer usually found on third-generation main battle tanks that makes the K21, together with the German [[Puma (IFV)|Puma]], able to move and engage the targets with high degree of accuracy at the same time. The ammunition for the autocannon is stored under the turret. The 40&nbsp;mm cannon can fire up to 300 rounds per minute, with a projectile velocity of up to {{convert|1,005|m/s|ft/s|abbr=on}}. The improved APFSDS for it are able to penetrate up to {{convert|160–220|mm|in|abbr=on}} of armor, slightly higher than other similar rounds, due to a self-sharpening process as the round penetrates armour.
+
+The K236 MMFA (Multi-mode Fused Ammunition) has several modes including [[proximity fuse|proximity]], [[air burst]], armour-piercing and fragmentation. The mode is configured by the K21's FCS, which then transmits the necessary data to a small programmable fuse system inside the round before it is fired. This allows more control over the trajectory and impact of the round, expanding the scope of possible targets from medium armored vehicles to aircraft and infantry personnel.
+
+Anti-tank armament includes an indigenous 3rd-generation [[ATGM]], with performance similar to the Israeli [[Spike (missile)|Spike]] and armour penetration of {{convert|700|to|1000|mm|in|abbr=on}} of [[Rolled homogeneous armor|RHA]] base.
+
+===Sensors===
+The fire-control system is able to spot and track targets as far away as {{convert|6000|m|mi}} away and identify them from up to {{convert|3000|m|mi}} away. IFF sensors are also present. The vehicle also has hunter-killer capabilities with its separate commander's sight (IFV Commander's Panoramic Sight or ICPS) and gunner's sight (IFV Gunner's Primary Sight or IGPS), which can detect both ground and aerial targets. The sights are designed by Samsung Thales.
+
+The gunner's sight is equipped with a third generation thermal viewer and a 1.54&nbsp;[[μm]] [[laser rangefinder]]. It can detect targets from 6,000 meters away and identify them from 3,000 meters away. The commander's sight is equipped with the same system as the gunner's. This allows the gunner to use the commander's sight to engage targets if his own sight is disabled or destroyed. The commander of the vehicle also has the ability to override the command to take control of the turret and gun from the gunner.
+
+===Armour===
+Although not much is known about the composition of the K21's armour, the frontal armour of the vehicle is specifically designed to protect against large caliber automatic cannon rounds, primarily the 30&nbsp;mm APDS munitions (30×165mm) for [[30 mm automatic cannon 2A42|2A72]] automatic cannon used on BMP-3, which has approximately {{convert|50|mm|in|abbr=on}} armour penetration at ranges of 1,000&nbsp;m. The side armour is designed to protect against 14.5&nbsp;mm AP rounds, which have approximately {{convert|25|mm|in|abbr=on}} armour penetration at 1,000&nbsp;m. The top can withstand fragments from 152&nbsp;mm artillery shells exploding as close as 10 meters. It has been confirmed that the composite armour comprises S2-glass fibre and Al<sub>2</sub>O<sub>3</sub> ceramic including lightweight aluminium alloy.<ref>[http://dacc21.co.kr/product/p_12_01.php 복합재 동체] {{Webarchive|url=https://web.archive.org/web/20150705010724/http://dacc21.co.kr/product/p_12_01.php |date=5 July 2015 }} [http://dacc21.co.kr/product/p_13_01.php 복합재 방호판] {{webarchive|url=https://web.archive.org/web/20150705004840/http://dacc21.co.kr/product/p_13_01.php |date=5 July 2015 }} Dacc Co., Ltd</ref>
+
+The vehicle has a soft [[self-sealing fuel tank]] that can absorb the impact of a projectile.<ref>{{cite web|url=http://dacc21.co.kr/product/p_14_01.php|title=복합재 연료탱크|url-status=dead|archive-url=https://web.archive.org/web/20150705020309/http://dacc21.co.kr/product/p_14_01.php|archive-date=5 July 2015|df=dmy-all}}</ref> There is also an [[automatic fire suppression]] system inside the vehicle to extinguish any internal fires that might erupt.
+
+The K21 PIP (Product Improvement Program) will include an active protection suite and hard-kill anti-missile system similar to the AWiSS that will also be utilized for the [[K2 Black Panther|K2 PIP]]. This will increase the vehicle's ability to defend itself against various ATGMs.
+
+===Troop deployment===
+The K21 is able to carry a total of 9 passengers and 3 more vehicle crew members. With the [[Battle Management]] System, the vehicle crew and passengers inside the vehicle can be instantly notified about the environment around them, improving their situational awareness. A {{convert|15|in|cm|abbr=on}} screen is installed inside the passenger compartment, which provides various data from the BMS. The vehicle is mounted with an external CCD camera, and the passengers inside can survey the environment using the same screen.
+
+===Mobility===
+[[File:2014 대한민국 방위산업전(DX Korea) 육군의 명품 무기와 장비 소개 (15394466087).jpg|thumb|Amphibious driver training]]
+The K21 is equipped with a turbocharged [[Doosan]] D2840LXE V-10 diesel engine. The vehicle weight is approximately 25.6 tonnes which, combined with the total output of the engine, gives it a power/weight ratio of approximately 29&nbsp;hp/t. The K21 PIP will feature an improved version of the engine that will give the vehicle an increased power of 840&nbsp;hp.
+
+A newly developed semi-active ISU, or In-arm Suspension Unit, is available for the K21. The same unit is to be used on the [[K2 Black Panther]]. Despite having the same ISU used on the K2 Black Panther, the K21 cannot change its posture.
+
+The vehicle can travel on both land and water. A pontoon system gives more buoyancy to float on water when additional weight is put on to the vehicle.
+
+===Pricing===
+The average cost per unit is approximately [[South Korean won|₩]]3.95 billion (US$3.5 million) (2014).<ref>{{cite web|url=https://www.koreascience.or.kr/article/JAKO201430756851445.pdf|title=A Study on Developing a CER Using Production Cost Data in Korean Maneuver Weapon System|publisher=Bemil|date=September 2014|archive-url=https://web.archive.org/web/20220608124739/https://www.koreascience.or.kr/article/JAKO201430756851445.pdf|archive-date=8 June 2022|access-date=8 June 2022|author=}}</ref>
+
+==Variants==
+===K21-105 Medium tank===
+[[File:Hanhwa K21-105 Medium Tank - Front at ADAS 2018.jpg|thumb|K21-105 Medium Tank]]
+Doosan DST and Belgian firm Cockerill joined in early 2013 to develop the Cockerill XC-8 turret for the K21 to provide a medium weight [[direct fire]] capability. The XC-8 is based on the Cockerill CT-CV 105HP turret and is fitted with a [[105 mm]] or 120&nbsp;mm gun. The 105&nbsp;mm version fires all NATO 105&nbsp;mm ammunition and can also use the Cockerill [[Falarick 105]] Gun-Launched Anti-Tank Guided Missile (GLATGM). It has a maximum elevation of 42 degrees, allowing for a max indirect fire range of {{convert|10|km|mi|abbr=on}}. The 120&nbsp;mm version fires all NATO 120&nbsp;mm ammunition and can utilize the Cockerill Falarick 120 GLATGM. The missile can engage heavy armor beyond {{convert|5|km|mi|abbr=on}}. Both turrets have a two-man crew, are autoloaded, and are digital, fully stabilized, day/night weapon systems.<ref>[http://www.cmigroupe.com/en/news-view/360/cmi-defence-and-doosan-dst-present-a-new-120-105mm-medium-tank-concept CMI Defence and Doosan DST Present a New 120/105mm Medium Tank Concept] {{Webarchive|url=https://web.archive.org/web/20160114134954/http://www.cmigroupe.com/en/news-view/360/cmi-defence-and-doosan-dst-present-a-new-120-105mm-medium-tank-concept |date=14 January 2016}} - CMIgroupe.com, 18 February 2013</ref>
+
+In 2014, CMI Defence and Doosan DST publicly revealed the '''K21-105''', a [[light tank]] version of the K21 chassis fitted with a CMI Defence CT-CV 105HP turret.<ref>{{cite web | url=https://odin.tradoc.army.mil/WEG/Asset/K21-105_South_Korean_Amphibious_Light_Tank | title=ODIN - OE Data Integration Network }}</ref> Referred to as a medium tank by its developers, the vehicle weighs around 25 tons with a 3-man crew, and is cheaper to produce and maintain and has better mobility than actual tanks. The vehicle's main role is direct fire support for infantry against armored and soft-skinned vehicles, buildings, and fortifications. Main armament is a 105&nbsp;mm rifled low-recoil gun that fires standard NATO and newly developed smart ammunition with a max direct fire range of {{convert|4|km|mi|abbr=on}}; although the gun would not be effective against modern main battle tanks, it can defeat older tanks that North Korea still has in widespread service. The gun can also fire the Ukrainian-designed [[laser-guided]] Falarick 105 GLATGM, which has a range of {{convert|5|km|mi|abbr=on}} and a [[tandem warhead]] capable of penetrating {{convert|550|mm|in|abbr=on}} of armor behind ERA. The turret has a bustle-mounted automatic ammunition loading system capable of firing 8 rounds per minute and stores rounds in the bustle compartment, separated from the crew. Secondary armament is a coaxial 7.62&nbsp;mm machine gun plus an optional roof-mounted 12.7&nbsp;mm machine gun in a [[remote weapon station]]. The K21-105 retains the protection level and amphibious capability of the K21 IFV.<ref>{{Cite web |url=http://www.military-today.com/tanks/k21_105.htm |url-status=usurped |archive-url=https://web.archive.org/web/20160420082718/http://www.military-today.com/tanks/k21_105.htm |archive-date=20 April 2016 |title=K21-105 - Light tank}}</ref>
+
+Hanwha Defense (previously Doosan DST) now labels the K21-105 as a [[medium tank]].<ref>{{Citation|title=K21-105 Medium Tank (경전차)| date=30 April 2021 |url=https://www.youtube.com/watch?v=4yXdQkngTTU |archive-url=https://ghostarchive.org/varchive/youtube/20211221/4yXdQkngTTU |archive-date=2021-12-21 |url-status=live|language=en|access-date=2021-10-06}}{{cbignore}}</ref>
+
+=== Redback with LMUK turret ===
+At the Defence Vehicle Dynamics event, held at UTAC Millbrook Proving Ground in Bedfordshire on 16/17 September 2026, a Redback IFV was displayed featuring a Lockheed Martin UK (LMUK) turret evolved from the one the company originally designed for the British Army’s cancelled Warrior Capability Sustainment Programme. Armed with a CT40 autocannon, this combination could address the British Army’s Land Ground-Based Air Defence (GBAD) requirement.<ref>{{Cite web |last=Felstead |first=Peter |date=17 September 2026 |title=DVD 2026: LMUK and Hanwha display Redback IFV featuring CT40-armed manned turret |url=https://warsight.com/2026/09/17/dvd-2026-redback-ifv-featuring-lmuk-turret/ |url-status=live |archive-url=https://web.archive.org/web/20260925143520/https://warsight.com/2026/09/17/dvd-2026-redback-ifv-featuring-lmuk-turret/ |archive-date=25 September 2026 |access-date=25 September 2026 |website=warsight.com}}</ref>
+
+== Operators ==
+<!--READ FIRST: This section is for cited entries only. Please do not add entries into this list without a citation from a reliable source. All entries without a citation will be removed. Thank you.-->
+
+===Current operators===
+; {{KOR}}
+: ~400 units in Republic of Korea Army service.<ref>{{cite web |url=https://www.thecommoditiesnews.com/news/articleView.html?idxno=6922 |title=K21, 7800억 들여 2028년까지 4차 양산 |author= Tae Jeong Park |date=2023-12-04 |access-date=2025-08-28 |website=The Commodities News |language=ko }}</ref>
+
+=== Future operators ===
+; {{AUS}}
+<gallery>
+[https://the-riotact.com/wp-content/uploads/2022/08/Redback-M113-Lynx-AMCL-1200x585.jpg]
+</gallery>
+: [[File:Hanwha AS21 Redback Australian IFV.png|thumb|AS21 Redback demonstration (2024)]]129 units to be ordered for the [[Australian Army]].<ref name="ADM23">{{cite news |last1=Kerr |first1=Julian |date=27 July 2023 |title=Hanwha wins lucrative Army IFV contract |url=https://www.australiandefence.com.au/defence/land/hanwha-wins-lucrative-army-ifv-contract |access-date=18 October 2023 |work=Australian Defence Magazine}}</ref> Hanwha Defense Australia (HDA), a subsidiary of [[Hanwha Defense]], proposed a derivative of the K21 known as the '''AS21 Redback''' for the Australian Army's Land 400 Phase 3 IFV project.<ref name="DefenseNews23">{{cite news |last1=Yeo |first1=Mike |date=28 July 2023 |title=Australia selects South Korea's Hanwha in military vehicle competition |url=https://www.defensenews.com/land/2023/07/27/australia-selects-south-koreas-hanwha-in-military-vehicle-competition/ |access-date=18 October 2023 |work=Defense News |publisher=Sightline Media Group}}</ref> In March 2019, Rheinmetall's [[Lynx (Rheinmetall armoured fighting vehicle)|Lynx KF41]] and the Redback AS21 were shortlisted for consideration for the project.<ref>{{cite press release |author1=Acting Minister for Defence Marise Payne |author2=Minister for Defence Linda Reynolds |author3=Senator Jim Molan |title=Infantry Fighting Vehicle contenders unveiled |url=https://www.minister.defence.gov.au/media-releases/2021-03-12/infantry-fighting-vehicle-contenders-unveiled |website=Department of Defence Ministers |access-date=19 October 2023 |date=12 March 2021}}</ref> The same month three prototype AS21s were delivered to the Australian Army for testing purposes.<ref>{{cite press release |title=Prototype vehicles arrive for assessment |url=https://www.defence.gov.au/news-events/news/2021-03-03/prototype-vehicles-arrive-assessment |website=Department of Defence |access-date=19 October 2023 |date=3 March 2021}}</ref> Testing was supposed to begin in 2019 and last two years, but it was delayed by the [[COVID-19 pandemic]].<ref name="DefenseNews23" /> In July 2023, the AS21 Redback was announced as the successful bidder for the project.<ref name="DefenseNews23" />  The Redback weighs 42 tons and is powered by a MTU America MT881 Ka-500 diesel with an [[Allison Transmission|Allison]] transmission.<ref name="ADBR21">{{cite magazine |last1=Blenkin |first1=Max |date=March–April 2021 |title=Title fight |url=https://adbr.partica.online/adbr/adbr-mar-apr-2021_realview/flipbook/36/ |access-date=19 October 2023 |magazine=Australian Defence Business Review |publisher=Felix Defence |pages=40–41 |volume=40 |issue=2}}</ref><ref name="ADM23" /> It has a maximum range of {{convert|525|km|mi|abbr=on}} and a top speed of {{convert|65|km/h|mph|abbr=on}}.<ref name="ADM23" /> It can carry eight passengers and has a crew of three.<ref name="ADM23" /> The Redback has a Soucy Defense single piece composite rubber track.<ref name="ADBR21" /> The Australian-designed Electro Optic Systems (EOS) T-2000 turret based on the [[Elbit Systems]] MT30 Mk 2 features an ATK [[Mk44 Bushmaster II|Mark 44S Bushmaster II]] 30mm auto cannon, fitted with a two round Rafael [[Spike (missile)|Spike LR2]] anti-tank guided missile (ATGM) system, an EOS R400 [[Remote controlled weapon station|Remote Weapons Station]] (RWS) and a coaxial mounted [[FN MAG|MAG58]] 7.62mm machinegun.<ref name="ADBR21" /><ref name="ADM23" /> The Redback is equipped with the Elbit [[Iron Fist (countermeasure)|Iron Fist]] [[active protection system]] (APS) and an Elbit IronVision system that provides the crew with a 360 degree view.<ref name="ADBR21" /><ref name="eos-cap-tests19-mar-21">{{cite press release |title=Team Redback Completes Key Capability Tests |url=https://eos-aus.com/news/team-redback-completes-key-capability-tests/ |access-date=31 December 2023 |website=Electro Optic Systems |date=19 March 2021}}</ref><ref name="ADM23" /> The Redback is protected by [[Plasan]] armour.<ref>{{cite news |last1=Yeo |first1=Mike |date=12 January 2021 |title=Hanwha unveils Redback IFV for LAND 400 Ph 3 |url=https://adbr.com.au/hanwha-unveils-redback-ifv-for-land-400-ph-3/ |access-date=18 October 2023 |work=Australian Defence Business Review}}</ref> Originally 450 vehicles were planned to be acquired to replace Australia's [[M113 armoured personnel carriers in Australian service#M113AS4 variants|M113AS4]] APCs on a one-for-one basis, but this was reduced in April 2023 by the ''Defence Strategic Review''.<ref name="DefenseNews23" /><ref name="DSR">{{cite book |last1=Smith |first1=Stephen |url=https://www.defence.gov.au/about/reviews-inquiries/defence-strategic-review |title=National defence : Defence strategic review : 2023 |last2=Houston |first2=Angus |date=2023 |publisher=Department of Defence |isbn=9781925890662 |location=Canberra |pages=59–60 |access-date=13 October 2023}}</ref> The review recommended that the acquisition be accelerated.<ref name="DefenseNews23" /><ref name="DSR" /><ref name="ADM23" /> The first Redback is planned to be delivered in early 2027 with deliveries completed by late 2028 at an acquisition cost of between [[Australian dollar|AU]]$5-$7 billion (US$3.4-$4.7 billion).<ref name="DefenseNews23" /> The Redback will be manufactured in a purpose-built Australian factory.<ref name="DefenseNews23" /> HDA has proposed a small initial tranche be built in South Korea to meet the accelerated delivery date.<ref>{{cite news |last1=Kajal |first1=Kapil |date=4 August 2023 |title=Hanwha lays out short-term plan for Australian Redback IFVs |url=https://www.janes.com/defence-news/news-detail/hanwha-lays-out-short-term-plan-for-australian-redback-ifvs |access-date=18 October 2023 |work=Janes}}</ref>
+
+=== Unsuccessful bids ===
+; {{LAT}}
+: In 2023, Latvia tested multiple tracked [[infantry fighting vehicle]]s, including a variant of the K21.<ref>{{Cite web |date=2023-12-16 |title=K-21 장갑차, 라트비아 수출될까…3파전 속 지난달 시험평가 |url=https://www.spnews.co.kr/news/articleView.html?idxno=74438 |access-date=2023-12-20 |website=SPN 서울평양뉴스 |language=ko}}</ref> In November 2024, Latvia announced that it entered in negotiations with [[General Dynamics European Land Systems#Santa Bárbara Sistemas S.A.|GDELS SBS]] for the purchase of an IFV based on the [[ASCOD|ASCOD 2]].<ref>{{Cite web |title=Latvia intends to buy Spanish ASCOD fighting vehicles |url=https://eng.lsm.lv/article/society/defense/11.11.2024-latvia-intends-to-buy-spanish-ascod-fighting-vehicles.a575951/ |access-date=2024-11-12 |website=eng.lsm.lv |language=en}}</ref><ref>{{Cite web |date=2024-11-12 |title=Lettland verhandelt über den Kauf von ASCOD-Schützenpanzern |url=https://www.hartpunkt.de/lettland-verhandelt-ueber-den-kauf-von-ascod-schuetzenpanzern/ |access-date=2024-11-12 |language=de}}</ref>
+{{PHI}}
+: In 2019, the K21-105 variant was among the contenders shortlisted for the [[Philippine Army|Philippine Army’s]] tracked light tank acquisition project.<ref>{{Cite news |last=Arthur |first=Gordon |date=November 22, 2019 |title= D&S 2019: Decision awaited on Philippine light tanks |work=Shephard Media}}</ref> However, the [[Department of National Defense (Philippines)|Department of National Defense]] ultimately selected the [[Sabrah light tank]] for the program.<ref>{{Cite news |last=Boguslavsky |first=Eyal |date=October 8, 2020 |title= Elbit to supply Sabrah light tanks to Philippine Army |work=Israel Defense}}</ref>
+
+; {{POL}}
+: The AS21 Redback was tested in Poland at the end of October 2022 as a potential heavy IFV to serve alongside the lighter, amphibious [[Borsuk (infantry fighting vehicle)|Borsuk]].<ref>{{Cite web |date=2022-10-20 |title=AS21 Redback testowany w Żelaznej Dywizji |url=https://milmag.pl/as21-redback-testowany-w-zelaznej-dywizji/ |access-date=2023-08-21 |website=MILMAG |language=pl-PL}}</ref> On November 29, 2022 at the Polish-Korean Defense Industry Cooperation Conference, Hanwha proposed to co-develop a Redback-based heavy IFV with [[Huta Stalowa Wola|HSW]]. That IFV would have been called PL-21 and armed with the Polish [[ZSSW-30]] unmanned turret. This proposal was not chosen however as Poland ultimately decided to develop their own heavy IFV using the [[AHS Krab|Krab]] SPG [[Powerpack (drivetrain)|powerpack]] and suspension as well as experiences gained during the development of the Borsuk IFV.<ref>{{Cite web |title=Umowy na dostawy ciężkich BWP, nowych KTO i Lekkich Pojazdów Rozpoznawczych |url=https://dziennikzbrojny.pl/aktualnosci/news,1,11876,aktualnosci-z-polski,umowy-na-dostawy-ciezkich-bwp-nowych-kto-i-lekkich-pojazdow-rozpoznawczych |access-date=2023-08-21 |website=DziennikZbrojny.pl |language=pl}}</ref> In 2024, due to the failure to develop its own Heavy IFV, the foreign purchase program was resumed. AS21 Redback will compete against [[Otokar Tulpar]], [[General Dynamics Ajax]], [[Lynx (Rheinmetall armoured fighting vehicle)|Rheinmetall KF-41 Lynx]], [[Armored Multi-Purpose Vehicle|BAE Systems AMPV]].<ref>{{Cite web | title=Ciężki BWP dla Wojska Polskiego. Wybierzemy jednak zagraniczne rozwiązanie? - Forsal.pl | url=https://forsal.pl/kraj/bezpieczenstwo/artykuly/9596419,ciezki-bwp-dla-wojska-polskiego-wybierzemy-jednak-zagraniczne-rozwiaz.html | access-date=2025-11-15 | website=forsal.pl | date=2 September 2024 }}</ref><ref>{{Cite web | title=TULPAR competes in Poland's ZMA tender – Defense Here | date=28 August 2024 | url=https://defensehere.com/en/tulpar-competes-in-polands-zma-tender/ | archive-url=https://web.archive.org/web/20240918064000/https://www.defensehere.com/en/tulpar-competes-in-polands-zma-tender | access-date=2025-11-15 | archive-date=2024-09-18}}</ref><ref>{{Cite web | title=Türkiye's Otokar Tulpar IFV to compete in Poland's heavy IFV tender - Türkiye Today | url=https://www.turkiyetoday.com/turkiye/turkiyes-otokar-tulpar-ifv-to-compete-in-polands-heavy-ifv-tender-45501/ | access-date=2025-11-15 | website=www.turkiyetoday.com}}</ref><ref>{{Cite web |title = New Player in Poland's Armored Programme [DEFENCE24 EXCLUSIVE] |url = https://defence24.com/industry/new-player-in-polands-armored-programme-defence24-exclusive |access-date = 2025-11-15 |website = defence24.com |date = 17 April 2025}}</ref> Ultimately, the decision was made not to purchase the AS-21, as it was decided instead to develop and field the domestic CBWP Ratel, manufactured by PGZ and Huta Stalowa Wola.<ref>{{Cite web |title = Ciężki Bojowy Wóz Piechoty dla Polski. Prototyp ma być gotowy w 2026 r. |url = https://tech.wp.pl/ciezki-bojowy-woz-piechoty-dla-polski-prototyp-ma-byc-gotowy-w-2026-r,7173348617833376a |last = Michalik |first = Łukasz |date = 2025-06-30  |access-date = 2026-09-25 |website = WP Tech |language = pl}}</ref>
+
+; {{ROM}}
+: Romania has selected from the potential candidates the Rheinmetall KF-41 Lynx model. The contract was signed in 2026.<ref>{{Cite web |last=Adamowski |first=Jaroslaw |date=2026-04-30 |title=Romania picks Rheinmetall’s Lynx combat vehicle in $4 billion acquisition |url=https://www.defensenews.com/global/europe/2026/04/30/romania-picks-rheinmetalls-lynx-combat-vehicle-in-4-billion-acquisition/ |access-date=2026-07-06 |website=Defense News |language=en}}</ref>
+
+; {{USA}}
+: [[Oshkosh Defense]] developed a version of the Redback as its entry under a competitive contract for the U.S. Army [[Optionally Manned Fighting Vehicle]] program,<ref name="Oshkosh OMFP">{{cite news |last1=Beinart |first1=Matthew |date=26 July 2021 |title=Oshkosh Defense's OMFV Concept Utilizes Hanwha's Redback Chassis |url=https://www.defensedaily.com/oshkosh-defenses-omfv-concept-utilizes-hanwhas-redback-chassis/army/ |access-date=28 February 2022 |work=Defense Daily}}</ref> but the Oshkosh/Hanwha submission was not selected.<ref>[https://www.defensenews.com/industry/techwatch/2023/06/26/heres-who-will-move-forward-in-the-bradley-replacement-competition/ Here's who will move forward in the Bradley replacement competition]. ''[[Defense News]]''. 26 June 2023.</ref>
+
+==See also==
+{{Div col|colwidth=25em}}
+* {{lwc|ASCOD}}
+** {{lwc|ASCOD 2}}
+*** {{lwc|General Dynamics Ajax}}
+* {{lwc|Bionix AFV}}
+* {{lwc|Hunter AFV}}
+* {{lwc|BWP Borsuk}}
+* {{lwc|WPB Anders}}
+* {{lwc|BMP-3}}
+* {{lwc|BMD-4}}
+* {{lwc|Combat Vehicle 90|CV90 IFV}}
+* {{lwc|Dardo IFV}}
+* {{lwc|M2 Bradley|M2 Bradley IFV}}
+* {{lwc|Mitsubishi Type 89 IFV|Type 89 IFV}}
+* {{lwc|Puma (IFV)|Schützenpanzer Puma}}
+* {{lwc|Tulpar (IFV)|Tulpar IFV}}
+* {{lwc|ZBD-97}}
+
+{{div col end}}
+
+==References==
+{{Reflist}}
+
+==External links==
+{{Commons category|K21 NIFV}}
+* [https://www.hanwha-defense.co.kr/eng/products/maneuver-k21.do K21 - Armored Vehicles - Hanwha Defense]
+* [http://armour.ws/south-korean-k-21-ifv/ K-21 on Armour.ws]
+* [http://nationalinterest.org/blog/the-buzz/south-koreas-deadly-infantry-fighting-vehicle-terror-the-15751 South Korea's Deadly Infantry Fighting Vehicle Is a Terror on the Battlefield - National Interest]
+{{Use dmy dates|date=June 2017}}
+
+[[Category:Infantry fighting vehicles]]
+[[Category:Tracked infantry fighting vehicles]]
+[[Category:Armoured fighting vehicles of South Korea]]
+[[Category:Amphibious armoured fighting vehicles]]
+[[Category:Amphibious infantry fighting vehicles]]
+[[Category:Military vehicles introduced in the 2000s]]
+[[Category:Infantry fighting vehicles of the post–Cold War period]]
+[[Category:ADD research and development projects]]

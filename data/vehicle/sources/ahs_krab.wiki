@@ -1,0 +1,155 @@
+{{Short description|Polish 155 mm self-propelled howitzer}}
+{{Use dmy dates|date=January 2025}}
+{{Infobox weapon
+| name               = AHS Krab
+| image              = File:AHS Krab SPH Exercise Dynamic Front 22.jpg
+| image_size         = 300
+| alt                = 
+| caption            = AHS Krab, a self-propelled tracked howitzer
+| type               = [[Self-propelled artillery]]
+| origin             = [[Poland]] <!-- Do not use flag icons here, per MOS:INFOBOXFLAG -->
+<!-- Type selection -->
+| is_ranged          = y
+| is_artillery       = y
+| is_vehicle         = y
+<!-- Service history -->
+| service            = 2016 – present
+| used_by            = [[Polish Land Forces]]<br>[[Ukrainian Ground Forces]]
+| wars               = [[Russian invasion of Ukraine]]
+<!-- Production history -->
+| designer           = {{ubl|[[Huta Stalowa Wola]]|[[BAE Systems]]|[[Hanwha Techwin|Samsung Techwin]]}}
+| design_date        = 1997–2016
+| manufacturer       = [[Huta Stalowa Wola]]
+| unit_cost          = US$11.45M (est)
+| production_date    = 2008 – present
+| number             = 
+| variants           = 
+<!-- General specifications -->
+| spec_label         = 
+| mass               = {{cvt|48|t|LT ST}}
+| length             = {{cvt|12.1|m|ftin}}
+| part_length        = {{cvt|8.06|m|ftin}} [[Caliber (artillery)|L/52]]
+| width              = {{cvt|3.63|m|ftin}}
+| height             = {{cvt|3|m|ftin}} to turret roof
+| crew               = 5
+<!-- Ranged weapon specifications -->
+| cartridge          = 
+| cartridge_weight   = 
+| caliber            = [[155 mm caliber|{{cvt|155|mm|in}}]]
+| barrels            = 
+| action             = 
+| rate               = {{ubl|2 rds/min sustained|18 rds/3 mins rapid}}
+| velocity           = 
+| range              = 
+| max_range          = {{ubl|{{cvt|30|km|mi}} [[base bleed]]|{{cvt|40|km|mi}} [[M982 Excalibur|Excalibur]]}}
+| feed               = 
+| sights             = 
+<!-- Artillery specifications -->
+| breech             = [[Breechblock#Sliding block|Sliding block]]
+| recoil             = 
+| carriage           = 
+| elevation          = +70° (1244 mils)/-3.5° (-62 mils)
+| traverse           = 360° (6400 mils)
+<!-- Vehicle/missile specifications -->
+| armour             = Max {{cvt|16|mm|in}} steel armour
+| primary_armament   = 155 mm/52-calibre howitzer<br/>40 rounds (29 turret, 11 hull)
+| secondary_armament = [[NSV (machine gun)#Variants|WKM-B]] .50 BMG
+| engine             = [[STX Engine]]/[[MTU Friedrichshafen]] MT881Ka-500 [[8-cylinder]] [[water-cooled]] [[diesel engine]]
+| engine_power       = {{cvt|1000|hp|kW|order=flip}}
+| pw_ratio           = 
+| payload_capacity   = 
+| drive              = [[Continuous track|Tracked]]
+| transmission       = [[SNT Dynamics]]/[[Allison Transmission]] X1100-5A3<br />4 forward, 2 reverse
+| suspension         = [[Mottrol]]/Horstman [[Hydropneumatic suspension|Hydropneumatic Suspension Unit (HSU)]]<br />travel distance: ≤ 275 mm<br />dead weight: 40 ~ 45 kN
+| clearance          = 
+| fuel_capacity      = 
+| vehicle_range      = {{cvt|400|km|mi}}
+| speed              = {{ubl|{{cvt|60|km/h|mph}} on road|{{cvt|30|km/h|mph}} off road}}
+| guidance           = 
+| steering           = 
+<!-- For all -->
+| ref                = [[Janes Information Services|Janes]]<ref name=Janes-Krab>{{Citation |url=https://customer.janes.com/Janes/Display/JAA_1241-JAAD |title=Krab 155 mm |date=8 June 2022 |website=Janes Land Warfare Platforms: Artillery & Air Defence |publisher=Jane's Group UK |url-access=subscription |access-date=30 January 2023}}</ref>
+}}
+
+[[File:WB Topaz mspo1.jpg|thumb|WB Electronics Topaz FCS]]
+The '''AHS Krab''' ([[Polish language|Polish]] for [[crab]]) is a [[155 mm]] NATO-compatible self-propelled [[Tracked vehicle|tracked]] [[gun-howitzer]] designed in Poland by [[Huta Stalowa Wola]] (HSW), by combining a modified South Korean [[K9 Thunder]] chassis with a British [[BAE Systems]] [[AS-90|AS-90M Braveheart]] turret with a 52-calibre gun produced by HSW and the Polish [[WB Group|WB Electronics]]' Topaz artillery fire control system. "AHS" is not a part of the name, but the Polish abbreviation of '''''a'''rmato'''h'''aubica '''s'''amobieżna'' – gun-howitzer, self-propelled.
+
+The 2011 prototype version used [[Nexter Systems]] [[Gun barrel|barrels]] and UPG-NG chassis from domestic company [[Bumar-Łabędy]].
+
+For the production variant, since 2016, Poland decided to base the self-propelled howitzer on a modified K9 chassis with an [[STX Corporation|STX Engine]]-[[MTU Friedrichshafen]] engine and, since 2019, uses barrels made domestically by HSW (earlier, the barrels were delivered by [[Rheinmetall]]).<ref>{{Cite web |title=From 30 to 155 mm. Expanded Barrel Manufacturing Facility at HSW. |url=https://www.hsw.pl/en/news/from-30-to-155-mm-expanded-barrel-manufacturing-facility-at-hsw/ |access-date=29 April 2022 |website=Huta Stalowa Wola S.A. |language=en}}</ref>
+
+== History ==
+The cannon was developed within the "Regina" research framework. The program's goal was to create a {{convert|155|mm|abbr=on}} calibre long-range [[artillery]] piece for the [[Polish Army]] that would serve as a division-level asset. It was decided, that instead of buying a licence for a complete vehicle, only a licence for a modern L/52 gun and turret would be bought, and they would be mounted on domestically developed chassis.
+
+In 1997 a competition for an artillery component, a complete turret with a gun, was announced. The British [[AS-90|AS-90M]] won the competition, the other contestant was the [[Panzerhaubitze 2000|PzH-2000]]. In 1999 its technology was transferred to Huta Stalowa Wola factory.<ref name=ntw>Kwasek, Tomasz. ''Nowe szaty Kraba'' in: "Nowa Technika Wojskowa" Nr. 9/2015. P.16-24 {{in lang|pl}}</ref> The UPG-NG chassis was developed in Poland by OBRUM in [[Gliwice]], from an SPG-1M chassis, itself developed from a Soviet MT-S tractor, using parts combined with the [[PT-91 Twardy]] tank.<ref name=ntw /> The first prototype was completed in 2001, and the second the following year.<ref name=ntw />
+
+The first two prototypes of the howitzer are fitted with turret systems supplied by [[BAE Systems]]. It was planned to complete the first squadron in 2008, but the program was delayed due to financial reasons, and not until 2008 did the Polish Army order the introductory batch of the squadron module, completed in 2012.<ref name=ntw /> It covers eight guns (six new-built and two upgraded prototype vehicles), command vehicles (on a much modernized MTLB chassis), as well as ammunition and repair vehicles for the ordnance and electronics.
+
+In the introductory and series products, Nexter guns replaced the original British pieces. The trial firing of another gun supplied by the manufacturer continued every month through the end of the year. The third gun was tested on 10 August under the supervision of representatives of the Armament Inspectorate and the Head Office of the Missile and Artillery Force of the Air Forces, at the Dynamic Trial Center of the WITU, the Military Technical Institute of Armament, in [[Stalowa Wola]].<ref name="Altair 24-05-2011">{{cite web |url=http://www.altair.com.pl/news/view?news_id=6196 |title=Pozytywne wyniki badań działa dla Kraba. |author=<!--Not stated--> |date=24 May 2011 |website=Altair |publisher=Altair Agencja Lotnicza |location=Warsaw, Poland |language=pl |trans-title=Positive results for tests of Krab gun |access-date=2 July 2024}}</ref>
+
+The first firing of the third complete Krab, which also received new elements of onboard electronics developed by WB Electronics, occurred in July 2011. The concentration of fire was among the requirements tested.<ref name="Altair 24-05-2011"/> As of 2012, two prototypes and eight initial units, two artillery batteries each with four guns, had been built by Huta Stalowa Wola. In 2012–2013 eight new examples were used for tests conducted by the Polish Army as a part of a "Regina" battery command module.<ref name="Altair 08-10-2012">{{cite web |url=http://www.altair.com.pl/news/view?news_id=8763 |title=Kraby dla 11. MPA. |author=<!--Not stated--> |date=8 October 2012 |website=Altair |publisher=Altair Agencja Lotnicza |location=Warsaw, Poland |language=pl |trans-title=Krabs for the 11th Masurian Artillery Regiment |access-date=2 July 2024}}</ref>
+
+{{see also|K9 Thunder#PK9}}
+In December 2014, the Polish Ministry of Defence announced a deal worth US$320M with Korean firm Samsung Techwin (now [[Hanwha Techwin]]) to purchase 120 K9 Thunder chassis, with the first 24 to be delivered in 2017 and 96 to be built under licence in Poland in 2018–2022.<ref>{{cite news |last=Palowski |first=Jakub |date=18 December 2014 |title=Krab Howitzers to get Korean Chassis. PGZ Decision Ends the Crisis. |url=https://defence24.com/industry/krab-howitzers-to-get-korean-chassis-pgz-decision-ends-the-crisis |work=Defence24 |publisher=Defence24 Sp. z o.o. |location=Warsaw, Poland |access-date=10 July 2024}}</ref> Poland also evaluated the Turkish-built [[T-155 Firtina]] chassis of the same origin.<ref name="Altair 03-09-2013">{{cite web
+|url=http://www.altair.com.pl/mspo-report/view?article_id=498 |title=Kraba poniesie turecka Burza? |author=<!--Not stated--> |date=3 September 2013 |website=Altair |publisher=Altair Agencja Lotnicza |location=Warsaw, Poland |language=pl |trans-title=Will the ''Crab'' be carried by the Turkish ''Storm''? |access-date=2 July 2024 |archive-url=https://web.archive.org/web/20141218202456/http://www.altair.com.pl/mspo-report/view?article_id=498 |archive-date=18 December 2014}}</ref> The original Polish OBRUM's<ref group=Note>OBRUM stands for ''Ośrodek Badawczo-Rozwojowy Urządzeń Mechanicznych'' ([[Polish language|Polish]]: "Research and Development Centre for Mechanical Appliances")</ref> The UPG-NG chassis built by BUMAR, which had been used in the eight initial production howitzers and which was equipped with an S-12U engine and other elements (like road wheels) from the PT-91 Twardy, was abandoned due to structural cracks and ceased production of S-12U engines.
+
+The first K9 chassis was shipped to Poland for testing and integration in June 2015.<ref name="Altair 26-06-2015">{{cite web |url=http://www.altair.com.pl/news/view?news_id=16805 |title=Pierwsze koreańskie podwozie dla Kraba |author=<!--Not stated--> |date=26 June 2015 |website=Altair |publisher=Altair Agencja Lotnicza |location=Warsaw, Poland |language=pl |trans-title=First Korean chassis for Krab |access-date=3 July 2024}}</ref> The prototype was rolled out in August 2015.<ref>{{cite web |url=http://www.defence24.pl/248074,krab-na-nowej-drodze-zycia |title="Krab" na nowej drodze życia? |last=Reszczyński |first=Jerzy |date=24 August 2015 |website=Defence24 |publisher=Defence24 Sp. z o.o. |location=Warsaw, Poland |language=pl |trans-title=Krab on a new path of life? |access-date=4 July 2024 |archive-url=https://web.archive.org/web/20150926114445/http://www.defence24.pl/248074,krab-na-nowej-drodze-zycia |archive-date=26 September 2015}}</ref> It went through type acceptance testing in October 2015.<ref>{{cite web |url=http://www.defence24.pl/271962,testy-poligonowe-kraba-ostatni-etap-przygotowan-do-produkcji-seryjnej-foto |title=Testy poligonowe Kraba. "Ostatni etap przygotowań do produkcji seryjnej" |last=Reszczyński |first=Jerzy |date=10 November 2015 |website=Defence24 |publisher=Defence24 Sp. z o.o. |location=Warsaw, Poland |language=pl |trans-title=The Krab's field tests. "The last stage of preparations for serial production" |access-date=4 July 2024 |url-status=live |archive-url=https://web.archive.org/web/20161122071838/http://www.defence24.pl/271962,testy-poligonowe-kraba-ostatni-etap-przygotowan-do-produkcji-seryjnej-foto |archive-date=22 November 2016 }}</ref> The test ended successfully in April 2016, allowing series production.<ref>{{cite web |url=http://www.nowiny24.pl/strefa-biznesu/wiadomosci/a/krab-gotowy-do-produkcji-huta-czeka-na-zamowienia-wojska,10153510/ |title=Krab gotowy do produkcji, huta czeka na zamówienia wojska |last=Surowaniec |first=Zdzisław |date=14 April 2016 |website=Nowiny24 |publisher=Polska Press Sp. z o.o. |location=Warsaw, Poland |language=pl |trans-title=Krab ready for production, steel mill waiting for military orders |access-date=4 July 2024 |archive-url=https://web.archive.org/web/20161122071844/http://www.nowiny24.pl/strefa-biznesu/wiadomosci/a/krab-gotowy-do-produkcji-huta-czeka-na-zamowienia-wojska,10153510/ |archive-date=22 November 2016}}</ref> In April 2016, the Ministry of National Defence and the manufacturer concluded the research and development phase.<ref>{{cite web |url=http://www.defence24.pl/343553,wojsko-zgadza-sie-na-produkcje-seryjna-kraba-czas-na-eksport |title=Wojsko zgadza się na produkcję seryjną Kraba. Czas na eksport? |last=Reszczyński |first=Jerzy |date=7 April 2016 |website=Defence24 |publisher=Defence24 Sp. z o.o. |location=Warsaw, Poland |language=pl |trans-title=Army agrees to serial production of Krab. Time for export? |access-date=4 July 2024 |url-status=live |archive-url=https://web.archive.org/web/20161122072143/http://www.defence24.pl/343553,wojsko-zgadza-sie-na-produkcje-seryjna-kraba-czas-na-eksport |archive-date=22 November 2016}}</ref> In April 2016, during the Polish prime minister's visit to Stalowa Wola, the first two serial examples were handed over to the Polish Army.<ref>{{Cite web |url=http://www.dgrsz.mon.gov.pl/aktualnosci/artykul/najnowsze/2016-04-28-kraby-melduja-sie-do-sluzby/ |title=Kraby meldują się do służby |trans-title=Krabs reporting for duty |language=pl |publisher=[[Armed Forces General Command (Poland)|Dowództwo Generalne Rodzajów Sił Zbrojnych]] |access-date=19 November 2016 |archive-url=https://web.archive.org/web/20180503042155/http://www.dgrsz.mon.gov.pl/aktualnosci/artykul/najnowsze/2016-04-28-kraby-melduja-sie-do-sluzby/ |archive-date=3 May 2018}}</ref>
+
+They joined eight initial production examples at the Artillery Training Center in [[Toruń]], and were used to develop operational standards for combat units. During the handover ceremony in November 2016, nine Krabs were accepted in the presence of the [[Ministry of National Defence (Poland)|Polish Minister of National Defence]], while seven more were in the acceptance testing phase.<ref>{{cite web |url=http://www.defence24.com/494069,artillery-deal-of-the-century-is-it-maturing |title= "Artillery Deal of the Century" – Is it Maturing? |last=Reszczyński |first=Jerzy |date=21 November 2016 |website=Defence24 |publisher=Defence24 Sp. z o.o. |location=Warsaw, Poland |access-date=4 July 2024}}</ref> Eight original turrets on UPG chassis are scheduled to be upgraded to the K9 chassis after the first batch of 16 guns is delivered by the end of 2016.<ref>{{cite web |url=http://www.defence24.pl/306229,krab-na-ostatniej-prostej-foto |title="Krab" na ostatniej prostej |last=Reszczyński |first=Jerzy |date=11 February 2016 |website=Defence24 |publisher=Defence24 Sp. z o.o. |location=Warsaw, Poland |language=pl |trans-title=Krab in the home stretch |access-date=4 July 2024 |url-status=live |archive-url=https://web.archive.org/web/20161122071849/http://www.defence24.pl/306229,krab-na-ostatniej-prostej-foto |archive-date=22 November 2016}}</ref> The deal for the next 96 units was signed in December 2016, raising total order to 120 Krabs for five regiments.<ref>{{Cite web |url=http://www.defence24.pl/509924,artyleryjski-kontrakt-stulecia-podpisany-regina-za-46-mld-zl |title=Artyleryjski kontrakt stulecia podpisany. "Regina" za 4,6 mld zł. |last=Reszczyński |first=Jerzy |date=14 December 2016 |website=Defence24 |publisher=Defence24 Sp. z o.o. |location=Warsaw, Poland |language=pl |trans-title=Artillery contract of the century signed. "Regina" for 4.6 billion złotys |access-date=5 July 2024 |url-status=live |archive-url=https://web.archive.org/web/20161216052336/http://www.defence24.pl/509924,artyleryjski-kontrakt-stulecia-podpisany-regina-za-46-mld-zl |archive-date=16 December 2016}}</ref> Poland originally planned to import 36 chassis from South Korea and produce 84 chassis in Poland to deliver 120 vehicles by 2022. However, the schedule was extended to 2024 as Poland increased its domestic produced chassis from 84 to 96.<ref>{{Cite web |date=29 June 2015 |title=Korea – Krab Chassis Shipped To Poland |url=https://defence24.com/industry/korea-krab-chassis-shipped-to-poland |access-date=29 August 2024 |website=defence24.com |language=pl}}</ref><ref>{{Cite web |date=27 August 2015 |title="Krab" – A New Beginning? |url=https://defence24.com/industry/krab-a-new-beginning |access-date=29 August 2024 |website=defence24.com |language=pl}}</ref><ref>{{Cite web |date=21 November 2016 |title=Krab Howitzers for the Polish Army |url=https://defence24.com/krab-howitzers-for-the-polish-army |access-date=29 August 2024 |website=defence24.com |language=pl}}</ref>
+
+Each of the planned five regiments of Krabs will be equipped with 24 howitzers.<ref>{{cite web |url=http://www.defence24.com/494168,krab-howitzers-for-the-polish-army |title=Krab Howitzers for the Polish Army |last=Reszczyński |first=Jerzy |date=21 November 2016 |website=Defence24 |publisher=Defence24 Sp. z o.o. |location=Warsaw, Poland |access-date=5 July 2024}}</ref> The first unit to receive 24 Krabs by 2017 will be 11th Masurian Artillery Regiment in [[Węgorzewo]]. The development program of advanced, smart 155&nbsp;mm ammunition was expected to conclude in 2017.<ref>{{cite web |url=http://www.defence24.pl/491807,amunicyjno-artyleryjska-karuzela-w-sejmie-prace-nad-pociskami-dla-raka-kraba-leopardow |title=Amunicyjno-artyleryjska karuzela w Sejmie. Prace nad pociskami dla Raka, Kraba, Leopardów... |last=Palowski |first=Jakub |date=16 November 2016 |website=Defence24 |publisher=Defence24 Sp. z o.o. |location=Warsaw, Poland |language=pl |trans-title=Merry-go-round discussion of artillery ammunition in the Sejm. Work on projectiles for Rak, Krab, Leopard... |access-date=5 July 2024 |archive-url=https://web.archive.org/web/20161122072021/http://www.defence24.pl/491807,amunicyjno-artyleryjska-karuzela-w-sejmie-prace-nad-pociskami-dla-raka-kraba-leopardow |archive-date=22 November 2016}}</ref>
+
+In late May 2022, the Polish government donated 18 Krabs to [[Ukraine]] to help the [[Ukrainian military]] defend the nation against the [[Russian invasion of Ukraine]].<ref name="CharlishHunder2022">{{cite news |last1=Charlish |first1=Alan |last2=Hunder |first2=Max |title=Poland gives 18 howitzers to Ukraine – public radio |url=https://www.reuters.com/article/ukraine-crisis-arms-poland-idUSL1N2XL0AF |access-date=4 June 2022 |work=[[Reuters]] |date=29 May 2022}}</ref> The two governments signed a contract under which Poland will sell Ukraine an additional 60 Krabs, in a deal worth 3 billion [[złoty]]s ([[US$]]700 million).<ref name="UkriKrabSale2022">{{cite news |title=Poland to sell 60 Krab self-propelled howitzers to Ukraine |url=https://www.ukrinform.net/rubric-ato/3497984-poland-to-sell-60-krab-selfpropelled-howitzers-to-ukraine.html |website=[[Ukrinform]] |access-date=4 June 2022 |date=2 June 2022}}</ref> With the deal, Ukraine became the first export customer for Polish Krabs.<ref name="UkriKrabSale2022"/> The agreement was the largest defence contract that Poland had made in the previous 20 years.<ref name="UkriKrabSale2022"/> In October 2022, Ukraine's Ministry of Defence [[Oleksii Reznikov]] revealed, that Poland had already donated three battalions of Krabs (i.e. 54 pieces with support vehicles), and another three were ordered.<ref name="Krab donation 1">{{cite web |url=https://www.altair.com.pl/news/view?news_id=38254 |title=3 dywizjony Krabów na Ukrainie |author=<!--Not stated--> |date=18 October 2022 |website=Altair |publisher=Altair Agencja Lotnicza |location=Warsaw, Poland |language=pl |trans-title=3 battalions of Krabs in Ukraine |access-date=2 July 2024}}</ref>
+
+===Heavy IFV===
+In August 2023, the consortium of [[Polish Armaments Group]] (PGZ) and HSW signed a framework contract with [[Ministry of National Defence (Poland)|Poland's MND]] Armament Agency to deliver 700 {{lang|pl|Ciężki Bojowy Wóz Piechoty}} (CBWP, Heavy Infantry Combat Vehicles) beginning in 2025. The vehicle's chassis will be made using elements of the Krab SPH fitted with the [[ZSSW-30]] [[remote weapon station|remote turret system]] to carry three crew and eight troops and engage various targets in direct contact while having a high level of ballistic and anti-mine protection.<ref>{{cite web |url=https://breakingdefense.com/2023/08/poland-signs-deals-for-light-recon-vehicles-heavy-infantry-combat-vehicles-and-apcs/ |title=Poland signs deals for light recon vehicles, heavy infantry combat vehicles and APCs |last=Głowacki |first=Bartosz |date=14 August 2023 |website=Breaking Defense |publisher=Breaking Media, Inc. |location=New York, New York |access-date=5 July 2024}}</ref><ref>{{cite web | url=https://dziennikzbrojny.pl/aktualnosci/news,1,11876,aktualnosci-z-polski,umowy-na-dostawy-ciezkich-bwp-nowych-kto-i-lekkich-pojazdow-rozpoznawczych | title=Umowy na dostawy ciężkich BWP, nowych KTO i Lekkich Pojazdów Rozpoznawczych }}</ref>
+
+== Orders ==
+<!--READ FIRST: This section is for cited entries only. Please do not add entries to this list without a citation from a reliable source. All entries without a citation will be removed. Thank you.-->
+
+[[File:Warszawa – defilada „Silni w sojuszach” (5).JPG|thumb|AHS Krab howitzer during the [[Armed Forces Day (Poland)|Armed Forces Day]] parade in Warsaw]]
+; {{flagicon|Poland}} [[Polish Land Forces]] (248 to be delivered + framework agreement for 56)
+:60 vehicles in service as of December 2025.<ref name="Krab trainer"/>
+:* 1st order: 24 with chassis delivered from South Korea. Delivery completed in 2016.
+:* 2nd order: 96 in 2016 with delivery scheduled by 2024.<ref name="Krab production3">{{Cite web |title=Polish Armed Forces have received self-propelled howitzers KRAB |url=https://www.hsw.pl/en/news/polish-armed-forces-have-received-self-propelled-howitzers-krab/ |access-date=8 December 2022 |website=Huta Stalowa Wola S.A. |language=en}}</ref> 56 were delivered by 2022, but the schedule for the remaining 40 vehicles was postponed from 2022–2024 to 2025–2027 to prioritize Ukrainian order.<ref name="krab schedule">{{Cite web |date=1 March 2024 |title=Key Deadlines for the Polish Army Krab Systems Procurement Unveiled |url=https://defence24.com/armed-forces/land-forces/key-deadlines-for-the-polish-army-krab-systems-procurement-unveiled |access-date=30 August 2024 |website=defence24.com |language=pl}}</ref>
+::* 2 trainers were added as part of the 2016 contract adjustment on 16 December 2020.<ref>{{Cite web |date=2025-07-10 |title=Zamówienie na dodatkowe Kraby dla wojska! |url=https://www.hsw.pl/aktualnosci/zamowienie-na-dodatkowe-kraby-dla-wojska/ |access-date=2025-07-11 |website=Huta Stalowa Wola S.A. |language=pl-PL}}</ref> Delivered in December 2025.<ref name="Krab trainer">{{Cite web |last=Świerkowski |first=Adam |date=2025-12-24 |title=Wojsko odbiera szkolnego Kraba |url=https://defence24.pl/sily-zbrojne/wojsko-odbiera-szkolnego-kraba |access-date=2025-12-28 |website=defence24.pl |language=pl}}</ref>
+::* 54 vehicles were donated to Ukraine in 2022.<ref name="Krab donation 1"/><ref name="krab donation 2">{{Cite web |date=13 August 2024 |title=Krab grzmi w rejonie Kurska. Polska broń widoczna w Ukrainie |url=https://defence24.pl/wojna-na-ukrainie-raport-specjalny-defence24/krab-grzmi-w-rejonie-kurska-polska-bron-widoczna-w-ukrainie |access-date=28 August 2024 |website=defence24.pl |language=pl}}</ref>
+:* 3rd order: 48 for a value of PLN 3.8 billion zlotys (USD $797 million) on September 2022.<ref>{{Cite web |date=5 September 2022 |title=Kraby zamówione w Kielcach |url=https://defence24.pl/przemysl/kraby-zamowione-w-kielcach |website=Defence24 |publisher=Defence24 Sp. z o.o. |location=Warsaw, Poland |language=pl |trans-title=Krabs ordered at Kielce |access-date=5 September 2022}}</ref> Delivery was postponed to 2025–2027 due to Ukrainian order.<ref name="krab schedule"/>
+:* 4th order: 96 Krabs with command vehicles, command and staff vehicles, ammunition vehicles, and repair workshops worth PLN 9 billion was signed on 23 December 2024 as a part of the framework agreement for 152 Krab on 8 December 2023.<ref>{{Cite web |title=The Contract for 152 CRABs for the Polish Army Has Been Approved |url=https://www.defense-aerospace.com/poland-awards-2-5-billion-order-for-152-additional-krab-self-propelled-howitzers |website=Defense-aerospace.com |publisher=Defense Editions |location=Châteauroux, France |access-date=8 December 2023}}</ref><!--Translated from press release by Polish Minstry of Defence; should be replaced with original--><ref name="krab schedule"/>. The delivery is scheduled by the end of 2029.<ref>{{Cite web |date=23 December 2023 |title=Kolejne uzbrojenie dla #WojskoPolskie. |url=https://x.com/MON_GOV_PL/status/1871214300351676464 |publisher=Ministerstwo Obrony Narodowej}}</ref>
+* 5th order: Another 96 Krabs with  command and logistics support vehicle worth roughly PLN 9 billion (1.9 billion EUR). Signed on May 30, 2026. Delivery is scheduled to be completed by 2030.<ref>{{Cite web |date= June 1, 2026|title=Poland enhances artillery forces with new contract for nearly 100 Krab howitzers and hundreds of thousands of large-calibre rounds. |url=https://defence-industry.eu/poland-enhances-artillery-forces-with-new-contract-for-nearly-100-krab-howitzers-and-hundreds-of-thousands-of-large-calibre-rounds/ |publisher=Defence Industry Europe}}</ref> 
+
+[[File:UA AHS Krab 05.jpg|thumb|AHS Krab of a Ukrainian artillery brigade during [[Russian invasion of Ukraine]]]]
+; {{flagicon|Ukraine}} [[Ukrainian Ground Forces]]
+:Acquisition of 108 guns was completed in December 2024.<ref name="krab donation 2"/><ref>{{Cite web |date=2025-07-10 |title=HSW S.A. i HANWHA AEROSPACE podpisały umowę ma dostawy komponentów do podwozi Kraba |url=https://www.hsw.pl/aktualnosci/hsw-i-hanwha-aerospace-podpisaly-umowe-ma-dostawy-komponentow-do-podwozi-kraba/ |access-date=2025-07-11 |website=Huta Stalowa Wola S.A. |language=pl-PL}}</ref> At least 38 were destroyed, and at least 7 were damaged.<ref name="Oryx" />
+:* Poland publicly announced a donation of 18 Krabs;<ref name="PAP 11-06-2022">{{cite news |author=<!--Not stated--> |date=11 June 2022 |title=Poland sells arms to Ukraine in record deal |url=https://www.pap.pl/en/news/news%2C1235794%2Cpoland-sells-arms-ukraine-record-deal.html |agency=[[Polish Press Agency]] |access-date=2 July 2024}}</ref> however, in October 2022, Ukrainian Minister of Defence [[Oleksii Reznikov]] confirmed 54 Krabs were donated.<ref name="Krab donation 1" /><ref name="krab donation 2" />
+:* 54 ordered in June 2022 for $700 million.<ref>{{Cite web |date=1 June 2022 |title=Polska sprzedała Kraby Ukrainie. Rekordowy kontrakt |url=https://defence24.pl/przemysl/polska-sprzedala-kraby-ukrainie-rekordowy-kontrakt |access-date=28 August 2024 |website=defence24.pl |language=pl}}</ref><ref name="krab donation 2"/>
+
+== Operational history ==
+=== Russian invasion of Ukraine ===
+Ukraine reported that it used the weapon during [[Battle of Sievierodonetsk (2022)|fighting near Sievierodonetsk]].<ref>{{cite web |url=https://defence24.pl/geopolityka/ukraina-polskie-kraby-zmienily-sytuacje-w-siewierodoniecku |title=Ukraina: Polskie Kraby zmieniły sytuację w Siewierodoniecku |last=Palowski |first=Jakub |date=17 June 2022 |website=Defence24 |publisher=Defence24 Sp. z o.o. |location=Warsaw, Poland |language=pl |trans-title=Ukraine: Polish Krabs changed the situation in Sievierodonetsk |access-date=7 July 2024}}</ref>
+
+The AHS Krab was used during the [[2022 Ukrainian eastern counteroffensive]] in [[Kharkiv Oblast]].<ref>{{cite web |url=https://mil.in.ua/uk/articles/zahidna-bronetehnika-v-nastupi-na-harkivshhyni/ |last1=Safronov |first1=Taras |date=13 September 2022 |title=Zakhidna bronetekhnika v nastupi na Kharkivshchyni |script-title=uk:Західна бронетехніка в наступі на Харківщині |website=Militarnyi |language=uk |trans-title=Western armored vehicles are on the offensive in the Kharkiv region |access-date=5 July 2024}}</ref>
+
+In Autumn 2022 it was revealed that Ukraine used the Krab with [[M982 Excalibur|Excalibur]] precision ammunition, obtaining a range over 50&nbsp;km.<ref>{{Cite web |url=https://defence24.pl/sily-zbrojne/kraby-walcza-excaliburem |title=Kraby walczą Excaliburem |last=Palowski |first=Jakub |date=14 November 2022 |website=Defence24 |publisher=Defence24 Sp. z o.o. |location=Warsaw, Poland |language=pl |trans-title=Krabs fight with Excalibur rounds |access-date=7 June 2023}}</ref>
+
+==== Losses ====
+The [[OSINT]] analysis website [[Oryx (website)|Oryx]] has documented confirmed Ukrainian Krab losses at 38 units destroyed and 7 damaged.<ref name="Oryx">{{Cite web |last1=Mitzer |first1=Stijn |last2=Oliemans |first2=Joost |last3=Janovsky |first3=Jakub |title=Attack On Europe: Documenting Ukrainian Equipment Losses During The 2022 Russian Invasion Of Ukraine |url=https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-ukrainian.html |url-status=live |archive-url=https://web.archive.org/web/20250617201844/https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-ukrainian.html |archive-date=17 June 2025 |access-date=9 August 2026 |website=Oryx}}</ref>
+
+== Notes ==
+{{reflist|group=Note}}
+
+== References ==
+{{reflist}}
+
+== External links ==
+{{Commons category}}
+* [https://www.hsw.pl/en/offer/155-mm-self-propelled-howitzer-krab/ Photo gallery] by [[Huta Stalowa Wola]]
+* [[Open access]] [https://www.researchgate.net/publication/327066512_'KRAB'_-_new_capabilities_of_the_Polish_Armed_Forces link] to capability study by Lt. Cols. Norbert Swietochowski and Dariusz Rewak
+{{ModernPOLAFVsNav | style= wide }}
+
+[[Category:Self-propelled howitzers of Poland]]
+[[Category:Science and technology in Poland]]
+[[Category:155 mm artillery]]
+[[Category:Tracked self-propelled howitzers]]
+[[Category:Military vehicles introduced in the 2000s]]
+[[Category:Huta Stalowa Wola vehicles]]

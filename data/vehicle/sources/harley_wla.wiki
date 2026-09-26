@@ -1,0 +1,160 @@
+{{Short description|US military motorcycle}}{{More footnotes needed|date=January 2009}}
+{{Use American English|date=November 2024}}
+{{Use dmy dates|date=November 2024}}
+{{Infobox Motorcycle
+|name             = Harley-Davidson WLA
+|image            = File:AWM-Harley-Davidson-42WLA-1.jpg
+|caption          = A Harley-Davidson 42WLA on display at the [[Australian War Memorial]] in Canberra, Australia.
+|aka              = 
+|manufacturer     = [[Harley-Davidson]]
+|production       = 1940 - 1945 and 1949 - 1952
+|assembly         =[[Milwaukee, Wisconsin]], USA
+|class            = Military motorcycle
+|engine           = {{convert|45.12|cuin|cc|abbr=on}} [[Flathead engine|SV]] Air-cooled, side-valve, 45-degree V-twin
+|bore_stroke      = {{convert|2.75|x|3.8125|in|abbr=on}}
+|compression      = 5 : 1
+|top_speed   = {{convert|75|mph|km/h|abbr=on}}
+|power            = {{convert|25|hp|kW|abbr=on}} @ 4,500 rpm
+|torque           = 
+|ignition         = 6&nbsp;V battery and coil with circuit breaker (timer)
+|transmission     = 3-speed hand shift
+|frame            = tubular steel double cradle
+|suspension       = Front: springer fork
+|brakes           = Drums front and rear
+|tires            = 4.00 x 18
+|rake_trail       = 
+|wheelbase        = {{convert|57.5|in|mm|abbr=on}}
+|length           = {{convert|88|in|mm|abbr=on}}
+|width            = {{convert|41|in|mm|abbr=on}}
+|height           = 
+|seat_height      = 
+|dry_weight       = {{convert|540|lbs|kg|abbr=on}}
+|wet_weight       = 
+|fuel_capacity    = {{convert|3.375|USgal|L|1|abbr=on}}
+|oil_capacity     = {{convert|1.125|USgal|L|1|abbr=on}}
+|fuel_consumption = {{convert|35|mpgus|L/100km|abbr=on}}
+|turning_radius   = 
+|related          = 
+|sp               =  US
+}}
+
+The '''Harley-Davidson WLA''' is a [[Harley-Davidson]] [[motorcycle]] that was produced to [[US Army]] specifications in the years during and around World War II. It was based on an existing civilian model, the [[Harley-Davidson WL|WL]], and is of the 45 solo type, so called due to its {{convert|45|cuin|adj=on}} [[engine displacement]] and single-rider design. It acquired the nickname "'''Liberator'''" in Europe.
+
+==Model designation==
+The model number breaks down as follows:
+
+* W: the W family of motorcycles. Harley-Davidson (except in very early models) gives a letter designation for each model family. The W series at the time was the newest incarnation of the {{convert|45|cuin|adj=on}} [[flathead engine|flathead]] motor, and was developed from the earlier R family 1932&ndash;1936 and D family 1929&ndash;1932.
+* L: "high compression", in the usual HD scheme. The "low compression" W model was only briefly available.
+* A: Army. The company would also produce a model to the slightly different specifications of the Canadian Army, which would be named the [[Harley-Davidson WLC|WLC]]. The WLCs differed from WLAs chiefly in the use of some heavier components, usually Big Twin parts, as well as Canadian blackout lighting.
+
+==History==
+
+Harley-Davidson began producing the WLA in small numbers in 1940, as part of a general military expansion. The later entry of the United States into World War II saw significantly increased production, with some 56,000 being produced during the war (along with spare parts the equivalent of many more). Harley-Davidson would also produce a close WLA variant for the Canadian Army called the WLC and would also supply smaller numbers to the UK, South Africa and other allies, as well as filling orders for different models from the Navy and Marine Corps.
+
+Unusually, all the WLAs produced after [[Pearl Harbor]], regardless of the actual year, would be given serial numbers indicating 1942 production. Thus, war-time machines would come to be known as '''42WLA'''s. This may have been in recognition of the continued use of the same specification. Some 20,000 WLCs (so in total some 70,000 WLA and WLC models between 1939 and 1945) were produced in 1942 and 1943, and are marked '''42WLC''' or '''43WLC'''. The precise serial number, as well as casting marks, can be used to date a specific motor accurately, and some other parts bear year and month stamps. Frames and many other parts were not tagged with the serial number, but can be dated by castingnumbers. This is common prior to adoption of the [[vehicle identification number]] (VIN).
+
+Many WLAs would be shipped to allies under the [[Lend-Lease]] program. The largest recipient was the Soviet Union, which was sold some 30,000 WLAs.
+
+Production of the WLA would cease after the war, but would be revived for the [[Korean War]] during the years 1949–1952 in small numbers.
+
+During those post-WWII years two other WLA-variants were built: the 1950 '''WLH''', purposely built for the Dutch MP (Marechaussee).
+
+The 'H' in WLH stood for 'Holland', the model was a crossbred between the 1950 WL and 1943 WLC; 100 were ordered and produced.
+(See: "Op Patrouille"
+Voertuigen van de Koninklijke Marechaussee 1945 – 2015
+Autor: Sander Ruijs
+{{ISBN|978-94-6456-609-3}})
+
+
+Another variant was the 1951 '''WLJ''', the 'J' stands for either 'Jakarta' or 'Java' (Indonesia), less than 100 produced probably. After the declaration of Independence of Indonesia...and the acceptance of the Dutch government,<ref group="https://www.britannica.com/event/Hague-Agreement">[[Dutch%E2%80%93Indonesian Round Table Conference]]</ref> the Indonesian Army (TNI,(AP)RIS) had no vehicles other than those that were forced to give up by the withdrawing Dutch army (KNIL).
+
+Most of these transferred vehicles<ref>{{Cite web |title=wetten.nl - Regeling - Memorandum betreffende de beëindiging van de reorganisatie van het Koninklijk Nederlands-Indonesisch Leger (KNIL) - BWBV0005664 |url=https://wetten.overheid.nl/BWBV0005664/1950-07-14/0 |archive-url=https://web.archive.org/web/20250119061739/https://wetten.overheid.nl/BWBV0005664/1950-07-14/0 |archive-date=19 January 2025 |access-date=2025-03-30 |website=wetten.overheid.nl |language=nl |url-status=live }}</ref> were in bad shape, either worn out or sabotaged, hence the purchase of new motorcycles.<ref>{{Cite web |date=2011-01-14 |title=WLJ info |url=https://forum.antiquemotorcycle.org/bboard/forum/technical-discussions-harley-davidson/flat-heads/9280-wlj-info/page2#post105056 |access-date=2025-03-30 |website=AMCA Forum |language=en}}</ref>
+
+Most WLAs in western hands after the war would be sold as surplus and "civilianized"; the many motorcycles available at very low cost would lead to the rise of the [[chopper (motorcycle)|chopper]] and other modified motorcycle styles, as well as the surrounding [[Motorcycle club|biker culture]]. Many a young soldier would come home hoping to get a Harley-Davidson like he saw or rode in the service, leading to the post-war popularity of both the motorcycle and the company in general.
+
+However, this also ensured that few nearly-original WLAs would survive in the US or even Western Europe. A significant number of WLAs were left in the Soviet Union, and either stored or put in private hands. With little access to parts and no chopper culture, and no export path to the West, many of those WLAs were preserved during the Cold War. Russia and other former Soviet countries are now a major source of WLAs and parts.
+
+==Military changes==
+[[File:WLA3quarters.JPG|thumb|Mostly-restored WLA originally sent to Russia.]]
+
+The WLA is very similar to civilian models, specifically the WL. Among the changes making it a military model:
+* paint and other finishes: painted surfaces were generally painted [[olive drab]] or black and [[Chrome plating|chrome]]- or [[Electroplating|nickel-plated]] parts were generally [[Bluing (steel)|blued]] or [[parkerized]] or painted white. Some parts were left as unfinished aluminum. However, Harley-Davidson was apparently very practical in its use of existing parts and processes, and many finishes remained in their bright civilian versions for a time, and, in some cases, for the whole production run.
+* [[blackout light]]s: in order to reduce nighttime visibility, WLAs were fitted with a second set of blackout head and tail lights.
+* fenders: to reduce mud clogging, the sides of the standard fenders were removed.
+* accessories: a heavy-duty luggage rack (for radios), ammo box, leather [[Thompson submachine gun]] scabbard, skid plate, leg protectors, and windshield could be fitted. Most came with at least these accessories less the windshield or leg protectors.
+* air cleaner: an [[Air filter#Oil Bath|oil bath air cleaner]], originally used for tractors and other vehicles in dusty environments, was fitted to handle the dust of off-road use and to allow easier field maintenance. Oil bath cleaners require only the addition of standard motor oil rather than replaceable filters.
+* fording: changes to the crankcase breather reduced the possibility of water intake into the [[crankcase]].
+
+==Uses==
+[[File:WLA_left_side_manual.png|thumb|US Army Manual diagram of the HD WLA.]]
+[[File:Harley-Davidson Museum February 2024 28 (Clubs and Competition--1946 WLA 'Jack Pine' Racer--Side-Valve V-Twin).jpg|thumb|1946 Harley-Davidson WLA "Jack Pine" Racer at the [[Harley-Davidson Museum]]]]
+
+The US Army would use motorcycles for police and escort work, courier duties, and some scouting, as well as limited use to transport radio and radio suppression equipment. Allied motorcycles were almost never used as combat vehicles or for troop mobility, and so were rarely equipped with [[sidecars]] as was common on the German side.
+
+The WLAs in Soviet service however were often equipped with sidecars and were used as battle vehicles in the frontlines. Nevertheless, the WLA acquired the nickname "Liberator", since it was seen ridden by soldiers liberating occupied Europe.
+
+==Technology==
+The engine of the WLA is a side-valve design, which is reliable though not particularly efficient in comparison to overhead-valve designs. Harley-Davidson already had overhead valve engines in production for its [[Harley-Davidson Knucklehead engine|Big Twin]] lines, but the "small twin" flathead design was popular in applications needing low cost and reliability more than power. This engine remained in production from 1937 to 1973 in the [[Servi-Car]], although it was superseded in two-wheeled motorcycles by the more advanced flathead engine used in the [[Harley-Davidson Model K|Model K]] in 1952, the short-lived ancestor engine of the OHV Sportster from 1957.
+
+Though the model designation suggested high compression, for reliability, the Army version actually used a medium-compression version. In modern terms, the WLA's compression ratio of 5:1 is very low. Due to this low compression ratio, a WLA will run on 74&nbsp;[[octane]] [[gasoline]].
+
+The WLA also features [[Motorcycle fork#Springer|springer]] front suspension. Harley-Davidson would not adopt telescopic front forks until after the war. The rear wheel had no suspension, giving this type of motorcycle the nickname "hard tail".
+
+==Other military motorcycles==
+[[File:xa-600.jpg|thumb|Harley-Davidson copied the [[BMW Motorrad|BMW]] [[History of BMW motorcycles#1921–1938|R71]] to produce its XA model.]]
+
+Harley-Davidson provided motorcycles to the Army during [[World War I]] and for earlier excursions against [[Mexican Revolution|Mexican revolutionaries]] such as [[Pancho Villa]].
+
+During World War II, the Army produced a specification for a motorcycle much like the [[BMW]]s used by German forces. That meant shaft drive, a [[boxer engine]], and several other features that made the BMWs exceptionally reliable and low-maintenance machines. Harley-Davidson produced the [[Harley-Davidson XA|XA]] based closely on the BMW R71. About 1,000 were produced. Due to its new features and low production, the XA was expensive, and by that time it was clear that the Jeep was the Army's general purpose vehicle of choice; the less advanced but cheaper WLA was considered sufficient for its limited roles.
+
+Other motorcycles produced by HD for World War II included US Army and Canadian versions of the Big Twin [[Harley-Davidson EL|EL]] family, the [[Harley-Davidson ELA|ELA]] and [[Harley-Davidson ELC|ELC]], as well as an Army version of the [[Harley-Davidson U|U]], the [[Harley-Davidson UA|UA]]. There was also an experimental three-wheeler [[Harley-Davidson TA|TA]] with a 69 ci EL-motor.
+
+These were produced mainly for "home front" use, and not in very large numbers. Consequently, they are very rare today.
+
+[[Indian (motorcycle)|Indian]], Harley-Davidson's major competitor at the time, also produced some war-time models, such as the [[Indian 640]], [[Indian Chief (CAV/340/344/345)]], [[Indian 741]], and a longitudinal V-twin shaft-drive model, the [[Indian 841]].
+
+Harley-Davidson would later produce the [[MT350E]], after acquiring the British [[Armstrong-CCM Motorcycles|Armstrong]] company in 1987. These were [[dual-sport]] machines, capable of both on-road and off-road service, powered by 350&nbsp;cc [[Rotax]] engines. The MT350E was a redesign of the 500&nbsp;cc [[Armstrong MT500]], which reduced weight, added an electric start, and upgraded pollution standards. The MT500 began as the Italian [[SWM (motorcycles)|SWM]] XN Tornado, which Armstrong acquired the rights to in 1984 when SWM liquidated, and then modified for military use with assistance from [[Clews Competition Motorcycles|CCM]].<ref>{{cite web | url= http://www.realclassic.co.uk/snarley.html | work= RealClassic.co.uk | title= Harley-Davidson MT350E Army Bike | access-date= 2007-12-29 | archive-url= https://web.archive.org/web/20071007152933/http://www.realclassic.co.uk/snarley.html | archive-date= 2007-10-07 | url-status= dead }}</ref><ref name=Dropbears1>{{cite web | url= http://www.dropbears.com/m/models/harley/armstrong.htm | work= Dropbears.com | title= Armstrong Military Motorcycles | access-date= 2007-12-29}}</ref> The MT350E mostly saw British and Canadian service, and some are still in use.<ref>{{Cite web |date= |title=Harley Davidson Motorcycle |url=http://www.army.mod.uk/equipment/muv/muv_hdm.htm |archive-url=https://web.archive.org/web/20070103095745/http://www.army.mod.uk/equipment/muv/muv_hdm.htm |archive-date=2007-01-03 |access-date= |website=www.army.mod.uk}}</ref>
+
+==See also==
+*[[BMW R75]]
+*[[Zündapp|Zündapp KS 750]]
+*[[Harley-Davidson XA]]
+*[[Indian 841]]
+*[[Sokol 1000 M111]]
+*[[G-numbers]]
+*[[List of motorcycles of the 1940s]]
+*[[List of motorcycles of the 1950s]]
+
+== Notes ==
+<references group="https://www.britannica.com/event/Hague-Agreement" />
+==References==
+{{Reflist}}
+
+;Guides and manuals
+*TM 9–2800
+*TM 9–879
+*TM 9–1879
+*SNL G523
+
+==External links==
+*{{cite web |author1=[[United States War Department]] |title=TM 9-879 Motorcycle, Solo (Harley Davidson Model WLA) 1943 |url=https://archive.org/details/TM9-879 |website=[[archive.org]] <!-- |access-date=4 May 2021 --> |date=18 October 1943 |quote=<!-- Digitized by the Combined Arms Research Library Digital Library, US Army Combined Arms Center. In addition to a description of the Harley-Davidson motorcycle, this manual contains technical information required for the identification, use, and care of the materiel. The manual is divided into two parts, Part One, section I through section VI, gives vehicle operating instructions. Part Two, section VII through section XXV, gives vehicle maintenance instructions to using arm personnel charged with the responsibility of doing maintenance work within their jurisdiction.  Together with TM 9-1879, supersedes and replaces the following Quartermaster Corps publications: TM 10-1175, 11 September 1941; TM 10-1177, 11 September 1941; TM 10-1331; TM10-1359, 25 November 1941; and TM 10-1361, 25 November 1941 -->}} 
+*[http://www.harleyxa.zoomshare.com "The Unofficial Harley-Davidson XA Website"]
+*[http://www.theliberator.be The Liberator: WLA WLC Motorcycle]
+*[http://www.autogallery.org.ru/m/hdwla42.htm Harley-Davidson 45 WLA]
+*[https://web.archive.org/web/20071007152933/http://www.realclassic.co.uk/snarley.html Harley-Davidson MT350E Army Bike, part 1] and [http://www.realclassic.co.uk/snarley030407.html part 2] {{Webarchive|url=https://web.archive.org/web/20060814035748/http://www.realclassic.co.uk/snarley030407.html |date=2006-08-14 }} at www.realclassic.co.uk
+*[http://victorylibrary.com/tech/trans-ratio-45.htm Harley-Davidson WLA and other 45 transmission ratios]
+*[https://web.archive.org/web/20071024113618/http://www.olive-drab.com/idphoto/id_photos_harleywla.php3 Harley Davidson Model 50 WLA]
+*[http://www.memorialmuseum.org/displays/motorcycles/item/1944-harley-davidson-wla Harley-Davidson WLA ] {{Webarchive|url=https://web.archive.org/web/20160116175152/http://www.memorialmuseum.org/displays/motorcycles/item/1944-harley-davidson-wla |date=2016-01-16 }} at U.S. Veterans Memorial Museum
+
+{{WWII US Soft Vehicles}}
+{{WWIIBritishSoftVeh}}
+{{Harley-Davidson model families}}
+{{Authority control}}
+
+[[Category:Harley-Davidson motorcycles|WLA]]
+[[Category:World War II military vehicles]]
+[[Category:Military motorcycles]]
+[[Category:World War II vehicles of the United States]]
+[[Category:Motorcycles introduced in the 1940s]]
+[[Category:Motorcycles powered by V engines]]
+[[Category:Military vehicles introduced from 1940 to 1944]]

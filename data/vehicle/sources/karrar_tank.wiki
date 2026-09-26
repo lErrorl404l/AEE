@@ -1,0 +1,136 @@
+{{Short description|Iranian main battle tank}}
+{{Infobox weapon
+| image              = 18-Karar tank -تانک کرار.jpg
+| image_size         = 300
+| name               = Karrar
+| caption            = Karrar main battle tank of the [[Islamic Revolutionary Guard Corps Ground Forces|IRGC-GF]] participating in the Great Prophet 17 military exercise
+| origin             = Iran
+| type               = [[Main battle tank]]
+| is_vehicle         = yes
+| manufacturer       = Bani Hashim Defense Industrial Complex<ref name="PopularMechanics2017">
+{{cite web |last1=Mizokami |first1=Kyle |title=Iran's New Tank Is a Whole Lot of Meh |url=https://www.popularmechanics.com/military/weapons/a25680/irans-karrar-tank/ |website=Popular Mechanics |date=14 March 2017}}
+</ref>
+| production_date    = 2017–present<ref name="ArmyRecognition2017">{{cite news|url=http://www.armyrecognition.com/march_2017_global_defense_security_news_industry/iran_launches_production_line_of_new_karrar_home-made_mbt_main_battle_tank_11201171.html|title=Iran launches production line of new Karrar home-made MBT main battle tank|publisher=Army Recognition|date=12 March 2017|access-date=12 March 2017|archive-url=https://web.archive.org/web/20170314045240/http://www.armyrecognition.com/march_2017_global_defense_security_news_industry/iran_launches_production_line_of_new_karrar_home-made_mbt_main_battle_tank_11201171.html|archive-date=14 March 2017|url-status=live|df=dmy-all}}</ref>
+| used_by            = [[Iran]]
+| service            = 2020–present<ref name="TankEncyclopedia">{{cite web |title=Karrar Main Battle Tank |url=https://tanks-encyclopedia.com/karrar-main-battle-tank/ |website=Tank Encyclopedia |date=5 February 2022}}</ref><ref name="auto"/>
+| length             = 6.8 m<ref name="ArmyRecognition"/> (hull) / 9.5 m<ref name="TankEncyclopedia"/> / 9.78 m (total)
+| width              = 3.68 m / 3.5 m<ref name="ArmyRecognition"/> 3.7 m<ref name="TankEncyclopedia"/>
+| height             = 2.5 m / 2.3 m<ref name="ArmyRecognition"/><ref name="TankEncyclopedia"/>
+| weight             = 51 tons<ref name="TankEncyclopedia"/><ref>{{cite news|url=https://www.thetimes.com/world/article/iran-turns-its-back-on-russia-and-china-with-own-battle-tank-rdfnn9sfd|title=Iran turns its back on Russia and China with own battle tank|work=[[The Times]]|location=Cairo|first=Bel|last=Trew|date=14 March 2017|access-date=15 March 2017|archive-url=https://web.archive.org/web/20170314204854/http://www.thetimes.co.uk/article/iran-turns-its-back-on-russia-and-china-with-own-battle-tank-rdfnn9sfd|archive-date=14 March 2017|url-status=live|df=dmy-all}}</ref> / 51,000 kg<ref name="ArmyRecognition"/>
+| suspension         = Torsion bar<ref name="ArmyRecognition"/><ref name="GlobalSecurity" />
+| speed              = ~70 km/h (43 mph)<ref name="ArmyRecognition"/><ref name="TankEncyclopedia"/>
+| vehicle_range      = Possibly around 500-550 km<ref name="ArmyRecognition"/><ref name="TankEncyclopedia"/> (plus with 200<ref name="TankEncyclopedia"/>-280 km more from fuel tank)
+| primary_armament   = 125 mm [[2A46 125 mm gun|2A46M]]/M-2/M-5 smoothbore gun<ref name="ArmyRecognition"/> (of the Russian design 2A46M)<ref name="TankEncyclopedia"/><ref name="GlobalSecurity"/> with stabilizer
+| secondary_armament = coaxial 7.62mm machine gun<ref name="ArmyRecognition"/> and a remotely controlled 12.7mm machine gun<ref name="PopularMechanics2017"/> (copy of the Soviet DShKM)<ref name="TankEncyclopedia"/> / 14.5mm machine gun
+| armour             = [[Composite armor]] for the turret,<ref name="ArmyRecognition"/><ref name="TankEncyclopedia"/> with ERA (Explosive Reactive Armor) armor for the hull<ref name="ArmyRecognition"/> (possibly Relikt ERA "copy" for turret)<ref name="TankEncyclopedia"/><ref name="MT">{{Cite web|url=http://www.military-today.com/tanks/karrar.htm|title=Karrar - Main battle tank|last=ARG|access-date=3 November 2018|archive-url=https://web.archive.org/web/20180806024759if_/http://www.military-today.com/tanks/karrar.htm|archive-date=6 August 2018|url-status=usurped|df=dmy-all}}</ref> and wire cage armor<ref name="ArmyRecognition"/>
+| engine             = diesel
+| crew               = 3 (driver, commander and gunner)<ref name="GlobalSecurity"/><ref name="ArmyRecognition"/>
+| engine_power       = 
+| pw_ratio           = 
+| number             = 150 ordered in 2017, another 650 ordered in 2018 which is to be finished by late 2020s. 800 total.<ref name="ArmyRecognition"/><ref name="TankEncyclopedia"/>
+}}
+
+The '''Karrar''' ([[Arabic language|Persian]] ''كرار'' lit. ''Striker''<ref name="ArmyRecognition"/><ref name="GlobalSecurity"/> or "Attacker")<ref name="GlobalSecurity"/> is an Iranian [[main battle tank]].<ref name="ArmyRecognition"/> The tank was announced in 2016. At the announcement, it was stated that it possessed an electro-optical fire control system, a laser rangefinder, a ballistic computer and could fire at both stationary and mobile targets in day or night.<ref>{{cite news|url=http://en.farsnews.ir/newstext.aspx?nn=13951222000466|title=Iran Unveils Highly Advanced Home-Made Battle Tank|publisher=[[Fars News Agency]]|date=12 March 2017|access-date=12 March 2017|archive-url=https://web.archive.org/web/20170312100304/http://en.farsnews.com/newstext.aspx?nn=13951222000466|archive-date=12 March 2017|url-status=dead|df=dmy-all}}</ref>
+
+The Karrar was announced following failed negotiations to obtain a licence and the technology to produce Russian T-90MS tanks.<ref name="PopularMechanics2017"/> It is based on the Soviet-made [[T-72]], and attempts to incorporate elements of the T-90, American M1 Abrams, and British Challenger 2.<ref name="ArmyRecognition"/><ref name="PopularMechanics2017"/><ref name="WashingtonInstitute2017">{{cite web |title=Iran May Be Renewing Its Interest in Armored Warfare |url=https://www.washingtoninstitute.org/policy-analysis/iran-may-be-renewing-its-interest-armored-warfare |website=The Washington Institute |date=27 March 2017}}</ref> However,  it is believed to be inferior,<ref name="PopularMechanics2017"/><ref>{{cite web |last1=Larson |first1=Caleb |title=Iran's Karrar Main Battle Tank: Russian Technology with a Bad Paint Job? |url=https://nationalinterest.org/blog/buzz/iran%E2%80%99s-karrar-main-battle-tank-russian-technology-bad-paint-job-138972 |website=The National Interest |date=30 March 2020}}</ref> and has been described as "little more than an upgraded T-72 with some additional indigenous components and aesthetic flourishes modeled after the T-90MS".<ref name="WashingtonInstitute2017"/><ref name="TheNationalInterest2016">
+{{cite web |last1=Beckhusen |first1=Robert |title=Iran's 'New' Karrar Tank: "One of the Most Advanced Tanks in the World"? |url=https://nationalinterest.org/blog/the-buzz/irans-new-karrar-tank-one-the-most-advanced-tanks-the-world-17468 |website=The National Interest |date=25 August 2016 |access-date=3 November 2018 |archive-url=https://web.archive.org/web/20180729093509/https://nationalinterest.org/blog/the-buzz/irans-new-karrar-tank-one-the-most-advanced-tanks-the-world-17468 |archive-date=29 July 2018 |url-status=live |df=dmy-all}}</ref>
+
+It is being manufactured at the Bani Hashim Defense Industrial Complex.<ref name="ArmyRecognition">{{cite web |title=Karrar Striker MBT main battle tank technical data fact sheet |url=https://www.armyrecognition.com/iran_iranian_army_heavy_armoured_main_battle_tank_uk/karrar_striker_mbt_main_battle_tank_technical_data_pictures_video_12203176.html |website=www.armyrecognition.com |language=en-gb |access-date=2022-05-21 |archive-date=2023-06-10 |archive-url=https://web.archive.org/web/20230610214127/https://armyrecognition.com/iran_iranian_army_heavy_armoured_main_battle_tank_uk/karrar_striker_mbt_main_battle_tank_technical_data_pictures_video_12203176.html |url-status=dead }}</ref><ref name="GlobalSecurity">
+{{cite web |title=Karrar (Striker) tank |url=https://www.globalsecurity.org/military/world/iran/karrar.htm |website=www.globalsecurity.org}}</ref>
+
+==History==
+In December 2015, the commander of the Iranian Army, Brigadier General Ahmad Reza Pourdastan, announced plans to buy [[T-90]] tanks.<ref>{{cite news |last1=Sheikhi |first1=Marjohn |title=Iran to buy Russian T-90 tanks |url=https://en.mehrnews.com/news/112695/Iran-to-buy-Russian-T-90-tanks |work=Mehr News Agency |date=9 December 2015}}</ref><ref>{{cite news |title=Iran confirms plans to buy Russia's T-90 tanks |url=https://tass.com/defense/844466 |work=tass.com |date=16 December 2015}}</ref>
+
+In early February 2016, Pourdastan stated that "since we can manufacture similar models within the country and we plan to do so in the near future, the deal is now off".<ref name="TheNationalInterest2016"/><ref>
+* {{cite news |title=Iranian Commander: T90 Tank Deal with Russia Is Off |url=https://www.farsnews.ir/en/news/13941113001057/Iranian-Cmmander-T90-Tank-Deal-wih-Rssia-Is-Off |work=www.farsnews.ir |date=2 February 2016}}
+* {{cite news |title=Iranian commander: T90 tank deal with Russia is off |url=https://theiranproject.com/blog/2016/02/02/iranian-commander-t90-tank-deal-with-russia-is-off/ |work=The Iran Project |date=2 February 2016}}
+</ref><ref>{{cite news |title=Iran defense industry has technology to produce main battle tanks similar to Russian T-90 MBT 10402163 |url=https://www.armyrecognition.com/february_2016_global_defense_security_news_industry/iran_defense_industry_has_technology_to_produce_main_battle_tanks_similar_to_russian_t-90_mbt_10402163.html |access-date=21 May 2022 |work=www.armyrecognition.com |date=4 February 2016}}</ref><ref>
+{{cite web |last1=Panahov |first1=Huseyn |title=Russian Expectations for Post-Sanctions Iran |url=https://www.washingtoninstitute.org/policy-analysis/russian-expectations-post-sanctions-iran |website=The Washington Institute for Near East Policy |publisher=originally published on the Fikra website |access-date=21 May 2022 |date=19 February 2016}}
+
+</ref> According to some sources, Pourdastan also said they would potentially seek to acquire them through licensed production in Iran with assistance from manufacturer Uralvagonzavod.<ref>
+{{cite news |title=Iran Considering Domestic Manufacture of T-90S Tank |url=https://www.defencetalk.com/iran-considering-domestic-manufacture-of-t-90s-tank-66701/ |access-date=22 May 2022 |work=DefenceTalk |date=12 February 2016}}
+</ref><ref>{{cite news |last1=Gady |first1=Franz-Stefan |title=Will Iran License-build Russia's T-90S Main Battle Tank? |url=https://thediplomat.com/2016/02/will-iran-license-build-russias-t-90s-main-battle-tank/ |access-date=22 May 2022 |work=thediplomat.com |date=4 February 2016}}</ref>
+
+The next day, Russian News Agency TASS reported that the Russian manufacturer of the T-90 expressed interest working with Iran "in the areas of T-90S MBT licensed production, T-72S MBT modernization and the upgrade of related facilities" after [[United Nations Security Council Resolution 1929|restrictions on military cooperation with Iran]] are [[Joint Comprehensive Plan of Action|lifted]].<ref>TASS:
+* {{cite news |title="Уралвагонзавод" объявил о готовности наладить лицензионный выпуск танков Т-90 в Иране |url=https://tass.ru/armiya-i-opk/2635269 |access-date=21 May 2022 |work=tass.ru |date=3 February 2016}}
+* {{cite news |title=Russia proposes to Iran to organize licensed production of Russian T-90S tanks |url=https://tass.com/defense/854186 |access-date=21 May 2022 |work=tass.com}}
+</ref><ref>{{cite news |title=UralVagonZavod is ready to establish T-90S licensed production in Iran Tass 50302162 |url=https://www.armyrecognition.com/february_2016_global_defense_security_news_industry/uralvagonzavod_is_ready_to_establish_t-90s_licensed_production_in_iran_tass_50302162.html |work=www.armyrecognition.com |agency=TASS |quote="The cooperation with Iran was ceased in accordance with the "On Measures to Provide the Implementation of the UN Security Council No.1929 Resolution Adopted on 9 June 2010" decree issued by the President of the Russian Federation. Nevertheless, if the related restrictions are lifted, UralVagonZavod in liaison with Rosobornexport will be ready to continue (military-technical) cooperation, namely, in the areas of T-90S MBT licensed production, T-72S MBT modernization and the upgrade of related facilities", Zharich said.}}
+</ref><ref>The National Interest:
+* {{cite web |last1=Majumdar |first1=Dave |title=How Russia Tried—and Failed—to Sell Iran Lethal T-90S Tanks |url=https://nationalinterest.org/blog/the-buzz/how-russia-tried-failed-sell-iran-tanks-15157 |website=The National Interest |date=9 February 2016}}
+* {{cite web |last1=Suciu |first1=Peter |title=Iran's Army Is Building Its Very Own T-90 Tanks |url=https://nationalinterest.org/blog/buzz/irans-army-building-its-very-own-t-90-tanks-146572 |website=The National Interest |date=22 April 2020}}
+
+</ref> A few days later the Iranian Defense Minister also mentioned the Karrar, claiming: "The defense industry designed and built the new battle tank from scratch. If not better, it's still as deadly as the Russian T-90".<ref name=TasnimNews2016>{{cite news |title=Iran's Purchase of T-90 Tanks Not Cancelled: Commander - Defense news |url=https://www.tasnimnews.com/en/news/2016/02/14/1000506/iran-s-purchase-of-t-90-tanks-not-cancelled-commander |work=Tasnim News Agency |date=14 February 2016}}</ref><ref name="ArmyRecognition2016">{{cite web |title=Iran ready to produce local-made Karrar main battle tank with features similar to Russian T-90 MBT 11402161 |url=https://www.armyrecognition.com/february_2016_global_defense_security_news_industry/iran_ready_to_produce_local-made_karrar_main_battle_tank_with_features_similar_to_russian_t-90_mbt_11402161.html |website=www.armyrecognition.com |access-date=21 May 2022 |date=14 February 2016}}</ref>
+
+In mid-February, the Lieutenant Commander of the Iranian Ground Forces stated that the Army had been ordered not to purchase the military gear unless Russia agreed to share the (production) technology, and that Iran was still hoping Russia would agree to such a deal.<ref name=TasnimNews2016/><ref>{{cite web |title=Iran's Military Plays Catch Up |url=https://worldview.stratfor.com/article/irans-military-plays-catch |website=Stratfor |date=19 February 2016 |quote=Deputy commander of the Iranian Ground Forces Gen. Kiomars Heidari has also indicated that Iran may purchase Russian T-90 tanks if it received some of the production technology in the deal.}}</ref><ref>{{cite news |title=Iran keen to import Russian technology to manufacture tank |url=https://www.azernews.az/region/92876.html |work=Azernews.Az |date=14 February 2016}}</ref> He also claimed that "Karrar tanks have been delivered to the combat units of the Ground Force."<ref name="ArmyRecognition2016"/><ref>{{cite web |title=Iran to inaugurate 'Karrar' battle tank soon |url=https://theiranproject.com/blog/2016/03/03/iran-to-inaugurate-karrar-battle-tank-soon/ |website=The Iran Project |access-date=21 May 2022 |date=3 March 2016}}</ref><ref name=TasnimNews2016/>
+
+In August 2016, video footage from Iranian Television "Telewebion" was published on YouTube showing the Karrar main battle during trials in the desert.<ref name="ArmyRecognition"/><ref name="TheNationalInterest2016"/> In November 2016, the RIA news agency reported that Russia and Iran were still in talks regarding the T-90 tanks.<ref>{{cite news |title=Russia and Iran in talks over $10 billion arms deal - RIA |url=https://www.reuters.com/article/uk-russia-iran-arms-idUKKBN1390UO |access-date=21 May 2022 |work=Reuters |date=14 November 2016}}</ref>
+
+In early March 2017, Pourdastan stated that a domestically manufactured battle tank would be unveiled in the coming days and soon join the army, but added that Iran still planned to purchase T-90s.<ref name="GlobalSecurity"/><ref>{{cite news |title=Iran to unveil Karrar tank in coming days: senior commander |url=https://www.tehrantimes.com/news/253495/Iran-to-unveil-Karrar-tank-in-coming-days-senior-commander |access-date=21 May 2022 |work=Tehran Times |date=March 2016 |archive-date=26 March 2023 |archive-url=https://web.archive.org/web/20230326065153/https://www.tehrantimes.com/news/253495/Iran-to-unveil-Karrar-tank-in-coming-days-senior-commander |url-status=dead }}</ref>
+ 
+On 12 March 2017, after the Karrar was unveiled to the public, Tehran announced that it would undergo mass production.<ref>{{cite web|url=http://www.defensenews.com/articles/iran-unveils-domestically-produced-tank-production-line|title=Iran unveils domestically produced tank, production line|agency=Associated Press|date=8 August 2017|access-date=3 November 2018}}</ref> Although at the time it was not clear if pre-production, or production models were being constructed.
+
+Speaking to the Tasnim News Agency, Brigadier General Kiomars Heidari mentioned that the Karrar would be delivered in 2018.<ref name="auto">{{cite web|url=http://www.armyrecognition.com/july_2017_global_defense_security_news_industry/karrar_mbt_tank_delivery_to_iranian_army_march_2018_10907171.html|title=Karrar MBT tank delivery to Iranian army March 2018 10907171 - July 2017 Global Defense Security news industry - Defense Security global news industry army 2017 - Archive News year|last=Administrator|website=www.armyrecognition.com|access-date=3 November 2018|archive-url=https://web.archive.org/web/20181012062205/http://armyrecognition.com/july_2017_global_defense_security_news_industry/karrar_mbt_tank_delivery_to_iranian_army_march_2018_10907171.html|archive-date=12 October 2018|url-status=live|df=dmy-all}}</ref><ref>{{cite news |title=Army to receive new home-made tank |url=https://www.tehrantimes.com/news/414780/Army-to-receive-new-home-made-tank |work=Tehran Times |date=4 July 2017 |language=en}}</ref>
+
+In July 2018, the [[IRGC]] plans to procure up to 800 Karrar main battle tanks.<ref>{{Cite web|title=Iran Plans To Manufacture, Upgrade Its Military Tanks|url=https://caspiannews.com/news-detail/iran-plans-to-manufacture-upgrade-its-military-tanks-2018-7-23-33/|access-date=2021-04-08|website=caspiannews.com|language=en}}</ref><ref>{{cite web |title=Iran deploys its new home-made Karrar Main Battle Tank during military exercises |url=https://www.armyrecognition.com/defense_news_december_2021_global_security_army_industry/iran_deploys_its_new_home-made_karrar_main_battle_tank_during_military_exercises.html |website=www.armyrecognition.com |date=2021}}</ref> On November 20, 2020, production models of the Karrar were deemed ready to enter service with the Iranian Army.<ref name=":0">{{Cite web|url=https://www.armyrecognition.com/defense_news_november_2020_global_security_army_industry/production_model_of_iranian-made_karrar_main_battle_tank_mbt_ready_to_enter_in_service.html|title=Production model of Iranian-made Karrar Main Battle Tank MBT ready to enter in service &#124; Defense News November 2020 Global Security army industry &#124; Defense Security global news industry army 2020 &#124; Archive News year}}</ref><ref name="TankEncyclopedia"/>
+
+==Design==
+
+===Armament===
+The main armament of the Karrar consists of a [[2A46 125 mm gun|125mm 2A46 smoothbore gun]] fitted with a fume extractor and a thermal sleeve.<ref name="MT"/> A remotely operated weapon station armed with a 12.7&nbsp;mm machine gun is mounted on the roof of the turret. The main gun is able to fire anti-tank laser-guided missiles.<ref>{{cite web|url=https://ottawacitizen.com/news/national/defence-watch/irans-new-tank-photos-of-the-karrar|title=Iran's government rolls out new tank – photos of the Karrar|date=13 March 2017|access-date=3 November 2018|archive-url=https://web.archive.org/web/20180712024045/https://ottawacitizen.com/news/national/defence-watch/irans-new-tank-photos-of-the-karrar|archive-date=12 July 2018|url-status=live|df=dmy-all}}</ref> A carousel autoloader is also present, removing the need of a loader.<ref>{{Cite web |url=http://www.defanews.ir/news/%D9%83%D8%B1%D8%A7%D8%B1-%D9%86%D8%AE%D8%B3%D8%AA%D9%8A%D9%86-%D8%AA%D8%A7%D9%86%D9%83-%D9%BE%D9%8A%D8%B4%D8%B1%D9%81%D8%AA%D9%87-%D8%A8%D9%88%D9%85%D9%8A-%D9%83%D8%B4%D9%88%D8%B1-%D8%A8%D8%A7-%D8%AD%D8%B6%D9%88%D8%B1-%D9%88%D8%B2%D9%8A%D8%B1-%D8%AF%D9%81%D8%A7%D8%B9-%D8%B1%D9%88%D9%86%D9%85%D8%A7%D9%8A%D9%8A-%D9%88-%D8%AE%D8%B7-%D8%AA%D9%88%D9%84%D9%8A%D8%AF-%D8%A7%D9%86%D8%A8%D9%88%D9%87-%D8%A2%D9%86-%D8%A7%D9%81%D8%AA%D8%AA%D8%A7%D8%AD-%D8%B4%D8%AF%DA%AF%D8%B2%D8%A7%D8%B1%D8%B4 |title=كرار نخستين تانك پيشرفته بومي كشور با حضور وزير دفاع رونمايي و خط توليد انبوه آن افتتاح شد+گزارش تصویری |access-date=2018-03-31 |archive-url=https://web.archive.org/web/20180526044145/http://www.defanews.ir/news/%D9%83%D8%B1%D8%A7%D8%B1-%D9%86%D8%AE%D8%B3%D8%AA%D9%8A%D9%86-%D8%AA%D8%A7%D9%86%D9%83-%D9%BE%D9%8A%D8%B4%D8%B1%D9%81%D8%AA%D9%87-%D8%A8%D9%88%D9%85%D9%8A-%D9%83%D8%B4%D9%88%D8%B1-%D8%A8%D8%A7-%D8%AD%D8%B6%D9%88%D8%B1-%D9%88%D8%B2%D9%8A%D8%B1-%D8%AF%D9%81%D8%A7%D8%B9-%D8%B1%D9%88%D9%86%D9%85%D8%A7%D9%8A%D9%8A-%D9%88-%D8%AE%D8%B7-%D8%AA%D9%88%D9%84%D9%8A%D8%AF-%D8%A7%D9%86%D8%A8%D9%88%D9%87-%D8%A2%D9%86-%D8%A7%D9%81%D8%AA%D8%AA%D8%A7%D8%AD-%D8%B4%D8%AF%DA%AF%D8%B2%D8%A7%D8%B1%D8%B4 |archive-date=2018-05-26 |url-status=dead }}</ref>
+
+===Protection===
+[[File:Zolfaghar 1403 - Beaching drill (47).jpg|thumb|Karrar Main Battle Tank in service with the [[Islamic Republic of Iran Army Ground Forces]].]]
+The Karrar is supposedly fitted with latest generation of Iranian [[composite armor]] and with [[explosive reactive armor]] panels mounted on the hull and turret. There are also armour plates on the sides and slat armour at the rear of the hull and turret.<ref name="ArmyRecognition2017"/> The Karrar has three main types of [[explosive reactive armor|ERA]] present. The first is what appears to be an Iranian copy of Relikt on the sideskirts and turret front, an unknown ERA on the top of the turret, and an extremely thick ERA on the front of the hull & turret sides previously seen on Iranian M60 tanks.<ref name="TankEncyclopedia"/>
+
+=== Countermeasures ===
+The Karrar features four dazzlers, each containing an electro-optical jammer and 3 [[laser warning receivers]] as part of its [[active protection system|soft-kill active protection system]]. Alternative configurations remove the dazzlers, and have a single 360° PLDS-S-1 [[laser warning receiver]] on top. The same 360° [[laser warning receiver]] is present on Iranian M-60 tanks. Once a laser lock is detected, the tank can use its 12 81mm launchers<ref>{{Cite web |title=DIO (Defence Industries Organisation) ammunition Catalogue Iran - Free Download PDF |url=https://kupdf.net/download/dio-defence-industries-organisation-ammunition-catalogue-iran_5afeef58e2b6f5386f209e74_pdf |access-date=2022-06-09 |website=kupdf.net |language=en}}</ref> to deploy a [[smoke screen|smoke or aerosol screen]].<ref name=":1">{{Cite web |date=2022-02-05 |title=Karrar Main Battle Tank |url=https://tanks-encyclopedia.com/karrar-main-battle-tank/ |access-date=2022-06-09 |website=Tank Encyclopedia |language=en-US}}</ref>
+
+===Mobility===
+
+Karrar is equipped with a 1000&nbsp;hp engine. This has not been officially stated but signs mounted on '''Karrar tanks''' present in [[Bani Hashem]] factory, Iran's main AFV factory alongside Shahid Zainuddin, had the words "hp 1000" written on them.<ref name=":1" /> Karrar's power to weight ratio is about 20&nbsp;hp per tonne as a result, and its speed is stated to be around 70&nbsp;km/h.<ref name=":1" /><ref name="ArmyRecognition" />
+
+External fuel tanks can be attached to the rear in order to extend its range.<ref name="MT"/> The range without fuel drums is 500–550&nbsp;km, but at least 200–280&nbsp;km further with fuel drums.<ref name=":1" />
+
+===Variants===
+
+On November 22, 2020, a service variant was shown. It lacked the metal sheet on the barrel, was painted in a tan color scheme, some tiny differences to the gunner's sights, upgraded optical systems, and an electro-optical jamming system.<ref>{{Cite web|last=Sambo|first=Scoty|date=2020-10-14|title=The Dead District: Iranian Karrar MBT Walk Around|url=https://thedeaddistrict.blogspot.com/2020/10/iranian-karrar-mbt-walk-around.html|access-date=2021-04-08|website=The Dead District}}</ref><ref name=":0" />
+[[File:Islamic Revolutionary Guard Corps Ground Force in Kerman tactical exercise (053).jpg|thumb|Karrar Main Battle Tank in service with the [[Islamic Revolutionary Guard Corps Ground Forces|Islamic Revolutionary Guard Corps Ground Force]].]]
+
+===Similarity to Russian tanks===
+
+"It is no coincidence that specialists regard the Karrar as some kind of a copy of the Russian-made [[T-90|T-90MS]], the most advanced modification of the T-90 platform", according to retired Maj. Gen. Vladimir Bogatyrev, chair of the Board of the Russian National Association of Retired Military Officers. He also added that "It is based on the T-72 platform, but it also has something from the American [[M1 Abrams|Abrams]] and [[M60 (tank)|M60]] tanks. Some elements are borrowed from the [[M48 (tank)|M48]] and the British [[Chieftain (tank)|Chieftain]] tank. They took all these elements and tried to design their own tank."<ref name="GlobalSecurity"/>
+
+Pictures of the composite array of the Karrar tank show it uses reflecting plates, identical to those in Russian [[T-90]] and [[T-72|T-72B/S]] tanks. The turret utilizes of a design that resebles to that of the Russian [[T-90|T-90M/MS]] tank, albeit with a thicker front.
+
+==Operators==
+<!--READ FIRST: This section is for cited entries only. Please do not add entries into this list without a citation from a reliable source. All entries without a citation will be removed. Thank you.-->
+
+* {{Flag|Iran}}
+** [[Islamic Revolutionary Guard Corps Ground Forces]]<ref>{{Cite web|url=https://www.tasnimnews.com/en/news/2021/12/22/2630525/iranian-tank-used-in-irgc-drill|title = Iranian Tank Used in IRGC Drill - Politics news}}</ref>
+** [[Islamic Republic of Iran Army Ground Forces]]<ref>{{cite web | url=https://polygonjournal.com/2019/04/16/iran-army-preparing-to-buy-karrar-mbts/ | title=Iran Army preparing to buy Karrar MBT's – Polygon Military Magazine }}</ref>
+
+==Gallery==
+<gallery class="center">
+File:Karrar Great Prophet 17 (3).jpg|alt=
+File:Karrar Great Prophet 17 (4).jpg|alt=
+File:Karrar Great Prophet 17 (1).jpg|alt=
+File:Iran Ministry of Defense Achievements Exhibition 2022 (24).jpg
+File:Sacred Defence Week parade, 2023, in Tehran (230).jpg
+File:Delivery of weapons to 55th Airborne Brigade (Iran) (47).jpg
+File:Eqtedar 40 defence exhibition (2020) (110).jpg
+</gallery>
+
+
+{{Commons category|Karrar tanks|Karrar}}
+
+==References==
+{{Reflist}}
+
+{{Post-Cold War tanks}}
+{{Weapons of Iran}}
+
+[[Category:Main battle tanks of Iran]]
+[[Category:Main battle tanks of the post–Cold War period]]
+[[Category:Tanks with autoloaders]]
+[[Category:Military vehicles introduced in the 2020s]]
+[[Category:Post–Cold War military equipment of Iran]]

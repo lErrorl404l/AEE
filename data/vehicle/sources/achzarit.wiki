@@ -1,0 +1,87 @@
+{{Short description|Israeli armoured personnel carrier}}
+{{More citations needed|date=November 2009}}
+<!-- SCROLL DOWN TO EDIT THE ARTICLE -->
+{{Infobox weapon
+| name               = IDF Achzarit Mk 2
+| image              = Achzarit.jpg
+| image_size         = 300
+| caption            = Achzarit armed with an [[Rafael Overhead Weapon Station|OWS station]]
+| is_vehicle         = yes
+| type               = [[Armoured personnel carrier]]
+| origin             = Soviet Union <br /> Israel
+| designer           = [[Israeli Defence Forces]] Corps of Ordnance
+| manufacturer       = [[NIMDA]]
+| production_date    = 1988–present
+| wars               = [[South Lebanon conflict (1985–2000)]] <br /> [[Second Intifada]] <br /> [[2006 Lebanon War]] <br /> [[Gaza War (2008–09)|Gaza War]]<br> [[Israeli invasion of the Gaza Strip (2023–present)]]
+| crew               = 3 + 7 passengers
+| length             = 6.20&nbsp;m
+| width              = 3.60&nbsp;m
+| height             = >2&nbsp;m (estimate)
+| weight             = 44&nbsp;tonnes
+| armour             = composite
+| primary_armament   = Rafael [[Rafael Overhead Weapon Station|OWS]] fitted with a 7.62&nbsp;mm [[FN MAG]]
+| secondary_armament = 2×7.62&nbsp;mm FN MAG
+| engine             = Achzarit 1 : Detroit Diesel 8V-71 TTA<br />Achzarit 2 : 8V-92TA/DDC III
+| engine_power       = Achzarit 1 : 650 hp (478 kW)<br />Achzarit 2 : 850 hp (625 kW)
+| transmission       = Achzarit 1 : Allison XTG-411-4<br />Achzarit 2 : XTG-411-5A
+| suspension         = Kinetics modified [[torsion-bar]]
+| speed              = 65&nbsp;km/h (Achzarit 2)
+| pw_ratio           = 14 hp/tonne or
+19.3 hp/tonne
+| vehicle_range      = 600&nbsp;km
+}}
+[[File:Achzarit APC rear view.jpg|thumb|right|Rear view of an Achzarit]]
+[[File:IDF-Achzarit-2016-Zachi-Evenor.jpg|thumb|Achzarit Mk 2, upgraded version of the Achzarit for [[low intensity conflict]]s, 2016.]]
+
+The '''Achzarit''' ({{Script/Hebrew|אכזרית}} in [[Hebrew language|Hebrew]]: "cruel", feminine [[inflection]]) is a heavily [[armoured personnel carrier]] manufactured by the [[Israeli Defence Forces]] Corps of Ordnance.<ref name="Axe2023">{{cite news |last=Axe |first=David |date=2023-10-12 |title=Israel Converted Captured Arab T-55 Tanks Into Heavy Personnel Carriers. Hamas Just Captured A Tenth Of Them. |url=https://www.forbes.com/sites/davidaxe/2023/10/12/israel-converted-captured-arab-t-55-tanks-into-heavy-personnel-carriers-hamas-just-captured-a-tenth-of-them/ |work=Forbes |access-date=2023-10-16 |quote=The result is a very heavy armored personnel carrier tipping the scales at a whopping 49 tons. An Achzarit actually is heavier than a T-55 is. The vehicle pays for its heavy protection with a low power-to-weight ratio of just 18 horsepower per ton, and a commensurate reduction in mobility compared to a T-55.}}</ref>
+
+==History==
+The Achzarit is based on the [[Soviet Union|Soviet]]-built [[T-54/T-55]] [[tank]],<ref name="GS">{{cite web|url=http://www.globalsecurity.org/military/world/israel/achzarit.htm|title=Achzarit|access-date=2009-11-05|publisher=GlobalSecurity.org}}</ref> beginning with those captured from [[Arab]] armies during the [[Arab–Israeli conflict|Arab–Israeli wars]]. To make space for a troop compartment, the eight-and-a-half tonnes turret, the original superstructure of the chassis and the transversely mounted engine were removed.<ref name="GS" /> 
+[[Chobham armour|Non-Explosive Reactive Armour]] was installed over the original hull.<ref>{{Cite book|title=Modern Israeli Tanks and Infantry Carriers 1985-2004|last=Gelbart|first=Marsh|publisher=Osprey Publishing|year=2004|isbn=978-1841765792|pages=8}}</ref> The first model of the Achzarit entered in service in 1988.
+
+==Design==
+===Protection===
+The Achzarit can withstand both shaped-charges and armor-piercing projectiles which would destroy conventional IFVs. The manufacturers claim<ref>{{Cite book|title=Modern Israeli Tanks and Infantry Carriers 1985-2004|last=Gelbart|first=Marsh|publisher=Osprey Publishing|year=2004|isbn=978-1841765792|pages=8}}</ref> that the machine can withstand repeated 125&nbsp;mm APFSDS hits over its frontal arc. At 44 tonnes, the machine is exceptionally heavy for an infantry carrier. The fact that 14 tonnes of the vehicle's weight is made up of additional advanced special composite armor, gives some indication as to its high degree of protection.
+
+===Weapons===
+It is armed with three 7.62&nbsp;mm [[machine gun]]s, including one [[Rafael Overhead Weapons Station]], a machine gun controlled from within the cabin, developed by [[Rafael Advanced Defense Systems]]. As a lesson from the [[Second Intifada]], a [[ballistic glass]] turret was installed over one of the hatches to enable the commander to see outside without being exposed to small arms fire and shrapnel.
+
+Several Achzarit in service have been upgraded with a 12.7&nbsp;mm [[Samson Remote Controlled Weapon Station]] in place of the standard 7.62&nbsp;mm [[Rafael Overhead Weapon Station]].
+
+A version with [[Samson Remote Controlled Weapon Station|RCWS-30]] was also built.<ref>{{Cite web |date=2003-04-06 |title=Achzarit |url=http://www.israeli-weapons.com/weapons/vehicles/armored_personnel_carriers/achzarit/Achzarit.html |access-date=2023-11-02 |archive-url=https://web.archive.org/web/20030406093334/http://www.israeli-weapons.com/weapons/vehicles/armored_personnel_carriers/achzarit/Achzarit.html |archive-date=2003-04-06 }}</ref><ref>{{Cite web |date=2023-11-02 |title=Achzarit |url=https://israeli-weapons.com/weapons/vehicles/armored_personnel_carriers/achzarit/Achzarit.html |access-date=2023-11-02 |archive-url=https://web.archive.org/web/20231102234056/https://israeli-weapons.com/weapons/vehicles/armored_personnel_carriers/achzarit/Achzarit.html |archive-date=2023-11-02 }}</ref>
+
+==Operations==
+Because of its heavy armor, the Achzarit is sometimes called a Heavy APC (HAPC).
+
+Achzarit APCs took part in [[Operation Rainbow]] in [[Rafah]], after a comparatively lightly armored [[M113 armored personnel carrier|M113]] APC was destroyed by an [[Rocket-propelled grenade|RPG]]. Achzarit APCs were also involved in the [[Gaza War (2008–09)]].
+
+On [[October 7 attacks|October 7, 2023]], several old Achzarit APCs were in [[Nahal Oz]] when it was overrun by Hamas.<ref name=Axe2023/>
+
+== Gallery ==
+<gallery mode=packed>
+File:Achzarit-latrun-1.jpg
+File:Achzarit-latrun-2.jpg
+File:IDF Achzarit interior.jpg|interior of Achzarit in 2023
+</gallery>
+
+==See also==
+* [[VIU-55 Munja]], similar example from [[Serbia]]
+* [[BTR-T]], similar example from Russia
+* [[BMPT Terminator]], a Russian tank-derived AFV designed to fight infantry rather than transport it
+* [[BMPV-64]] [[:ru:БМПВ-64]]/[[:uk:БМПВ-64]]: A Ukrainian heavy [[infantry combat vehicle]] based on the T-64 chassis
+* [[Kangaroo (armoured personnel carrier)]], a series of Allied World War 2 armoured personnel carriers that were based on converted tanks.
+
+==References==
+{{reflist}}
+
+==External links==
+{{Commons category}}
+* [http://www.tsahal-miniature.com/tiran1.html Achzarit Family + Tiran family]
+* [http://www.israeli-weapons.com/weapons/vehicles/armored_personnel_carriers/achzarit/Achzarit.html Achzarit at Israeli-Weapons.com]
+
+{{Tanks converted to armored vehicles}}
+{{T-54/T-55_navigation|style=wide}}
+
+[[Category:Armoured personnel carriers of Israel]]
+[[Category:Tracked armoured personnel carriers]]
+[[Category:Military vehicles introduced in the 1980s]]

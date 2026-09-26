@@ -1,0 +1,84 @@
+{{Infobox weapon
+|image=BoraghAPC1.jpg
+|image_size=300
+|name=Boragh
+|caption=
+|origin=[[Iran]]
+|type=[[Armoured personnel carrier]]
+|is_vehicle=yes
+|manufacturer=[[Defense Industries Organization]] (Iran)<br>MIC (Sudan)<ref name="MIC">[http://mic.sd/images/products/wepons/ar/endb/dbKHATIM1.htm Military Industry Corporation (MIC) Official Website] {{webarchive |url=https://web.archive.org/web/20090401152205/http://mic.sd/images/products/wepons/ar/endb/dbKHATIM1.htm |date=April 1, 2009}}</ref>
+|production_date=1997–present
+|used_by=See ''[[#Operators|Operators]]''
+|length=6.72 m
+|width=3.10 m
+|height=1.66 m
+|weight=13 tons
+|suspension=torsion bar
+|speed=65 km/h (road) <br> 45 km/h (off-road)
+|vehicle_range=550 km
+|primary_armament=12.7 mm [[DShK|DShK 1938/46]] heavy machine gun (1,000 rounds), 30 mm cannon, 120 mm mortar or a [[Toophan]] ATGM launcher
+|secondary_armament=unknown
+|armour=Welded rolled steel<ref name="DIOMIL">[http://www.diomil.ir/en/veig.aspx "DIOMIL"] {{webarchive|url=https://web.archive.org/web/20070611170452/http://www.diomil.ir/en/veig.aspx |date=2007-06-11}}</ref>
+|engine=V-8 diesel
+|crew=3 (+8 passengers)
+|engine_power=330 hp (246 kW)
+|pw_ratio=25.4 hp/tonne (18.9 kW/tonne)
+}}
+
+The '''Boragh''' or '''Boraq'''<ref>https://odin.t2com.army.mil/WEG/Asset/216a85a04009c35db7309a555bf10f5a</ref> ({{langx|fa|نفربر براق}}) is an [[Iran]]ian-made [[armoured personnel carrier]]. The Boragh is believed to be a [[reverse engineering|reverse engineered]] and upgraded model of the Chinese [[BMP-1|Type 86 (BMP-1)]].<ref>{{Cite web |url=http://www.military-today.com/apc/boragh.htm |title=Boragh - Armored personnel carrier |access-date=2017-02-24 |archive-url=https://web.archive.org/web/20170223154544if_/http://www.military-today.com/apc/boragh.htm |archive-date=2017-02-23 |url-status=usurped }}</ref><ref>{{Cite web| title=Iranian Arms Transfers: The Facts | url=https://www.iranwatch.org/sites/default/files/csis-iranarmstransf-103000.pdf | archive-url=https://web.archive.org/web/20150814184233/http://www.iranwatch.org/sites/default/files/csis-iranarmstransf-103000.pdf | archive-date=2015-08-14}}</ref> The upgrades include a reduction in weight, a higher road speed, and stronger armor. The vehicle is fully [[amphibious vehicle|amphibious]] and is fitted with an [[NBC (weapon)|NBC]] protection system and [[infrared]] night vision equipment.
+
+==History==
+The APC was first developed in 1997. Iran's plans for a three-per-month production rate for the Boragh was achieved in 2000.<Ref name="fi">https://www.forecastinternational.com/archive/disp_pdf.cfm?DACH_RECNO=1675</ref>
+
+It was reported in May 2002 that three additional variants are produced by the Vehicle and Equipment Group (VEIG) of the Iranian [[Defense Industries Organization|Defence Industries Organisation (DIO)]]. These are a 120&nbsp;mm [[Mortar (weapon)|mortar]] carrier, an ammunition resupply vehicle, and an [[armoured personnel carrier]] (APC) fitted with improved armaments.<ref name="BGS">{{cite web|url=http://www.globalsecurity.org/military/world/china/wz501.htm|title=Type 86 WZ501 Infantry Fighting Vehicle.|author=John Pike|access-date=13 November 2014|archive-url=https://web.archive.org/web/20210824145105/https://www.globalsecurity.org/military/world/iran/boragh.htm|archive-date=2021-08-24|url-status=live}}</ref>
+
+==Design==
+Boragh is a tracked APC. Rubber elements on the track are added to prevent damage on paved surfaces.<ref name="BGS"/> It has a crew of three (driver, commander and gunner).<ref name="dhq">https://timesofindia.indiatimes.com/defence/weapons/tank/boragh</ref>
+
+It can transport up to 8 infantry soldiers.<ref name="dhq"/> Boragh's main armament consists of the DShK 1938/46 12.7&nbsp;mm heavy machine gun on a rotatable mount.<ref>{{cite web | url=http://www.globalsecurity.org/military/world/iran/boragh-specs.htm | archive-url=https://web.archive.org/web/20121111170545/http://www.globalsecurity.org/military/world/iran/boragh-specs.htm | archive-date=2012-11-11 | title=Boragh - Specifications }}</ref> Some vehicles have the machine gun mount protected all around by an armoured shield.
+
+The vehicle is equipped with an NBC protection system and is capable of laying down a defensive smoke screen by injecting diesel fuel into the exhaust outlet.<ref>{{cite web|url=http://www.russiafile.com/boragh.htm|title=Russiafile.com|access-date=13 November 2014|archive-url=https://web.archive.org/web/20141113184959/http://www.russiafile.com/boragh.htm|archive-date=13 November 2014|url-status=live}}</ref>
+
+The vehicle is named after the [[Buraq]], a winged steed from [[Islamic mythology]].
+[[File:BoraghAPC2.jpg|thumb|250px|Boragh mortar carrier]]
+
+==Variants==
+[[File:Boragh.png|thumb|Different versions of Boragh from the top-left: APC, Anti-air threats, Mortar-carrier and Anti-tank]]
+The following are variants of the Boragh:<Ref name="fi"/>
+
+===Iran===
+* '''Boragh''' – Reverse engineered BMP-1 or Type 86 (WZ-501) converted into an APC. It is very similar to Chinese WZ-503 APC. It has V-8 turbocharged diesel engine which delivers 330&nbsp;hp (246&nbsp;kW). It also has road wheels from the US [[M113 armored personnel carrier|M113]] APC. Combat weight was reduced to 13 tonnes. The other upgrades include a higher road speed and stronger armor. Number of passengers was increased from 8 to 12. The 12.7&nbsp;mm [[DShK|DShK 1938/46]] heavy machine gun (1,000 rounds) serves as a main weapon of the vehicle.<ref name="JED The Military Equipment Directory">{{cite web|url=http://www.jedsite.info/fulltrack-bravo/bravo/boragh_series/boragh-series.html|title="JED The Military Equipment Directory"|access-date=13 November 2014|archive-url=https://web.archive.org/web/20130604015243/http://www.jedsite.info/fulltrack-bravo/bravo/boragh_series/boragh-series.html|archive-date=4 June 2013|url-status=live}}</ref>
+** '''Boragh''' APC with a shield around [[DShK|DShK 1938/46]] heavy machine gun mount.<ref name="JED The Military Equipment Directory"/>
+** '''Boragh''' converted into an IFV. The armament is mounted in a turret. The primary armament consists of the 2A42 30&nbsp;mm autocannon stabilized in both planes with a double-belt feed. The secondary armament consists of the PKT 7.62&nbsp;mm tank machine gun, mounted coaxially with the gun. The vehicle is also armed with a mount for an anti-tank guided missile system.<ref name="JED The Military Equipment Directory"/> Some were also fitted with the complete turret of the BMP-1, armed with a 73mm smoothbore gun.<ref>{{cite book |author1=Cordesman, Anthony H. |author2=Kleiber, Martin |title=Iran's Military Forces and Warfighting Capabilities: The Threat in the Northern Gulf | year=2007 | publisher=Greenwood | isbn=978-0-313-34612-5| page=52}}</ref>
+** '''Boragh''' armed with 120&nbsp;mm mortar.
+** '''Boragh''' with 1-man turret armed with the Toophan ATGM system.
+** '''[[Raad 1|Raad-1]] (Thunder-1)''' – Boragh converted into a self-propelled howitzer fitted with a turret from the [[2S1 Gvozdika]].<ref name="JED The Military Equipment Directory"/>
+** '''[[Cobra BMT-2 APC|Cobra]]''' – Concept vehicle for the Boragh armed with 23&nbsp;mm anti-aircraft gun for use as a fire support vehicle.<ref name="JED The Military Equipment Directory"/>
+** '''Boragh''' converted into an ammunition resupply vehicle.
+
+
+===Sudan===
+* '''Khatim 1''' – Sudanese designation for Boragh.<ref name="MIC"/>
+* '''Khatim 2''' – Variant of Khatim 1, houses a mortar.<ref name="MIC"/>
+
+==Operators==
+<!--Please do not add any users here without providing a reliable source to back up your claim. See the page history. Unsourced additions will be speedily deleted.-->
+[[File:Boragh APC Operators map.png|thumb|400px|Boragh Operators in blue]]
+
+* {{IRN}} – Around 40 in service as of 2000 and 2002. 140 in service as of 2005, 2008<ref>{{cite web|url=http://www.globalsecurity.org/military/world/iran/ground-equipment.htm|title=Iranian Ground Forces Equipment|author=John Pike|access-date=13 November 2014|archive-url=https://web.archive.org/web/20100303082352/http://www.globalsecurity.org/military/world/iran/ground-equipment.htm|archive-date=3 March 2010|url-status=live}}</ref> and 2023.<ref>The Military Balance, 2023, p.324</ref>
+* {{SDN}} – 10 ordered in 2001 from Iran and delivered in 2003.<ref name="SIPRI">{{cite web|url=http://armstrade.sipri.org/arms_trade/trade_register.php|title=SIPRI Arms Transfers Database|access-date=13 November 2014|archive-url=https://web.archive.org/web/20090805014045/http://armstrade.sipri.org/arms_trade/trade_register.php|archive-date=5 August 2009|url-status=live}}</ref> Some domestically assembled.<ref name="MIC"/>
+
+==References==
+{{reflist}}
+
+==Sources==
+*[http://www.fas.org/man/dod-101/sys/land/row/wz501.htm Boragh armored infantry fighting vehicle] fas.org
+
+{{Weapons of Iran}}
+
+[[Category:Armoured fighting vehicles of Iran]]
+[[Category:Tracked armoured personnel carriers]]
+[[Category:BMP-1]]
+[[Category:Military vehicles introduced in the 1990s]]
+[[Category:Post–Cold War military equipment of Iran]]
+[[Category:Military vehicles of Iran]]

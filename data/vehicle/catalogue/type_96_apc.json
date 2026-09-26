@@ -1,0 +1,87 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the Type 96 armored personnel carrier. Every value is grade claimed and the registry marks primary_held false. The article is a secondary compilation and is not a primary source.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "type_96_apc",
+      "canonical_name": "Type 96 APC",
+      "maker": "Komatsu",
+      "model": "Type 96",
+      "variant": "Wheeled armoured personnel carrier",
+      "variant_id": "type_96_apc",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Japan",
+      "era": "modern",
+      "aliases": [
+        "type 96 apc",
+        "jgsdf type 96"
+      ],
+      "keywords": [
+        "type 96 apc",
+        "jgsdf apc",
+        "komatsu apc"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 14600,
+          "unit": "kg",
+          "source": "type_96_apc",
+          "locator": "Infobox, weight row",
+          "state": "weight published as 14.6 t; the tonne taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6840,
+          "unit": "mm",
+          "source": "type_96_apc",
+          "locator": "Infobox, length row",
+          "state": "length published as 6.84 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2480,
+          "unit": "mm",
+          "source": "type_96_apc",
+          "locator": "Infobox, width row",
+          "state": "width published as 2.48 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 1850,
+          "unit": "mm",
+          "source": "type_96_apc",
+          "locator": "Infobox, height row",
+          "state": "height published as 1.85 m",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Mitsubishi 6D40 water-cooled 6-cylinder diesel",
+          "unit": "text",
+          "source": "type_96_apc",
+          "locator": "Infobox, engine row",
+          "state": "engine published as a Mitsubishi 6D40 water-cooled 6-cylinder diesel, as published",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 360,
+          "unit": "hp",
+          "source": "type_96_apc",
+          "locator": "Infobox, engine_power row",
+          "state": "engine power published as 360 hp; maximum rating, no net basis",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 100,
+          "unit": "km/h",
+          "source": "type_96_apc",
+          "locator": "Infobox, speed row, road entry",
+          "state": "road speed published as 100 km/h",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}
