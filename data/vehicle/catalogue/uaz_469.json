@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-09-26",
-  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the UAZ-469. Every value is grade claimed and the registry marks primary_held false. The article is a secondary compilation and is not a primary source.",
+  "note": "Catalogue capture uplifted to the held tier-2 Czechoslovak army driver's handbook for the UAZ-469. The handbook publishes the gross weight, the dimensions, the wheelbase, the engine and its ratings, the manual gearbox, the tyre size code, the fording depth and the range at grade documented. It publishes no ground clearance datum in the held pages, so the ground clearance and the curb weight are retained from the tier-5 English Wikipedia article at grade claimed.",
   "sources": [],
   "entries": [
     {
@@ -26,6 +26,118 @@
       ],
       "runtime_ready": false,
       "values": {
+        "gross_weight_kg": {
+          "value": 2400,
+          "unit": "kg",
+          "source": "uaz_469_instrukcja_1976",
+          "locator": "Section 1 Hlavn\u00ed \u00fadaje table, Celkov\u00e1 hmotnost row, printed page 5",
+          "state": "gross weight (celkov\u00e1 hmotnost) published as 2,400 kg",
+          "grade": "documented"
+        },
+        "length_mm": {
+          "value": 4025,
+          "unit": "mm",
+          "source": "uaz_469_instrukcja_1976",
+          "locator": "Section 1 Rozm\u011bry list, d\u00e9lka row, printed page 5",
+          "state": "overall length published as 4,025 mm",
+          "grade": "documented"
+        },
+        "width_mm": {
+          "value": 1785,
+          "unit": "mm",
+          "source": "uaz_469_instrukcja_1976",
+          "locator": "Section 1 Rozm\u011bry list, \u0161\u00ed\u0159ka row, printed page 5",
+          "state": "overall width published as 1,785 mm",
+          "grade": "documented"
+        },
+        "height_mm": {
+          "value": 2015,
+          "unit": "mm",
+          "source": "uaz_469_instrukcja_1976",
+          "locator": "Section 1 Rozm\u011bry list, v\u00fd\u0161ka nezat\u00ed\u017een\u00e9ho vozidla row, printed page 5",
+          "state": "height of the unladen vehicle published as 2,015 mm",
+          "grade": "documented"
+        },
+        "wheelbase_mm": {
+          "value": 2380,
+          "unit": "mm",
+          "source": "uaz_469_instrukcja_1976",
+          "locator": "Section 1, Obr. 1 UAZ-469 B wheelbase dimension, printed page 5",
+          "state": "wheelbase published as 2,380 mm",
+          "grade": "documented"
+        },
+        "engine_model": {
+          "value": "UMZ-451M inline-four petrol",
+          "unit": "text",
+          "source": "uaz_469_instrukcja_1976",
+          "locator": "Motor table, Typ row, printed page 6",
+          "state": "engine published as a UMZ-451 M four-cylinder petrol, as published",
+          "grade": "documented"
+        },
+        "engine_displacement_l": {
+          "value": 2.445,
+          "unit": "L",
+          "source": "uaz_469_instrukcja_1976",
+          "locator": "Motor table, Objem v\u00e1lc\u016f row, printed page 6",
+          "state": "engine swept volume published as 2,445 cm3",
+          "grade": "documented"
+        },
+        "published_power_hp": {
+          "value": 72,
+          "unit": "hp",
+          "source": "uaz_469_instrukcja_1976",
+          "locator": "Motor table, Maxim\u00e1ln\u00ed v\u00fdkon row, printed page 6",
+          "state": "maximum power published as 53 kW (72 hp) at 4,000 rpm; maximum rating, no net basis",
+          "grade": "documented"
+        },
+        "torque_nm": {
+          "value": 166.7,
+          "unit": "N m",
+          "source": "uaz_469_instrukcja_1976",
+          "locator": "Motor table, Maxim\u00e1ln\u00ed moment s\u00edly row, printed page 6",
+          "state": "maximum torque published as 166.7 N m at 2,000 rpm",
+          "grade": "documented"
+        },
+        "transmission_type": {
+          "value": "manual",
+          "unit": "enum",
+          "source": "uaz_469_instrukcja_1976",
+          "locator": "P\u0159evodov\u00e9 \u00fastroj\u00ed table, P\u0159evodovka row, printed page 6",
+          "state": "gearbox published as a mechanical four-speed, a manual, with a two-speed transfer case",
+          "grade": "documented"
+        },
+        "gears": {
+          "value": 4,
+          "unit": "count",
+          "source": "uaz_469_instrukcja_1976",
+          "locator": "P\u0159evodov\u00e9 \u00fastroj\u00ed table, P\u0159evodovka row, printed page 6",
+          "state": "gearbox published as a four-speed (\u010dty\u0159stup\u0148ov\u00e1) with one reverse",
+          "grade": "documented"
+        },
+        "tyre_size_text": {
+          "value": "8.40-15",
+          "unit": "text",
+          "source": "uaz_469_instrukcja_1976",
+          "locator": "Kola, pneumatiky, Pneumatiky row, printed page 8",
+          "state": "tyre size published as a low-pressure 8.40-15",
+          "grade": "documented"
+        },
+        "fording_depth_mm": {
+          "value": 700,
+          "unit": "mm",
+          "source": "uaz_469_instrukcja_1976",
+          "locator": "Section 1 Hlavn\u00ed \u00fadaje table, Brodivost row, printed page 5",
+          "state": "fording depth published as 0.7 m with the fan shroud removed",
+          "grade": "documented"
+        },
+        "range_km": {
+          "value": 750,
+          "unit": "km",
+          "source": "uaz_469_instrukcja_1976",
+          "locator": "Section 1 Hlavn\u00ed \u00fadaje table, J\u00edzdn\u00ed dosah row, printed page 5",
+          "state": "road range published as 750 km at the control fuel consumption",
+          "grade": "documented"
+        },
         "curb_weight_kg": {
           "value": 1700,
           "unit": "kg",
@@ -34,68 +146,12 @@
           "state": "weight published as 1,700 kg; the infobox does not name the load state",
           "grade": "claimed"
         },
-        "length_mm": {
-          "value": 4025,
-          "unit": "mm",
-          "source": "uaz_469",
-          "locator": "Infobox, length row",
-          "state": "length published as 4,025 mm",
-          "grade": "claimed"
-        },
-        "width_mm": {
-          "value": 1785,
-          "unit": "mm",
-          "source": "uaz_469",
-          "locator": "Infobox, width row",
-          "state": "width published as 1,785 mm",
-          "grade": "claimed"
-        },
-        "height_mm": {
-          "value": 2050,
-          "unit": "mm",
-          "source": "uaz_469",
-          "locator": "Infobox, height row",
-          "state": "height published as 2,050 mm",
-          "grade": "claimed"
-        },
-        "wheelbase_mm": {
-          "value": 2380,
-          "unit": "mm",
-          "source": "uaz_469",
-          "locator": "Infobox, wheelbase row",
-          "state": "wheelbase published as 2,380 mm",
-          "grade": "claimed"
-        },
         "ground_clearance_mm": {
           "value": 220,
           "unit": "mm",
           "source": "uaz_469",
           "locator": "Design section, ground clearance sentence",
           "state": "civilian UAZ-469B ground clearance published as 220 mm; the military UAZ-469 is published with 300 mm and the 220 mm civilian figure recorded",
-          "grade": "claimed"
-        },
-        "engine_model": {
-          "value": "UMZ 451 MI inline-four",
-          "unit": "text",
-          "source": "uaz_469",
-          "locator": "Infobox, engine row",
-          "state": "engine published as a 2,445 cc UMZ 451 MI I4; a 2,693 cc I4 is also listed",
-          "grade": "claimed"
-        },
-        "engine_displacement_l": {
-          "value": 2.445,
-          "unit": "L",
-          "source": "uaz_469",
-          "locator": "Infobox, engine row",
-          "state": "engine displacement published as 2,445 cc",
-          "grade": "claimed"
-        },
-        "transmission_type": {
-          "value": "manual",
-          "unit": "enum",
-          "source": "uaz_469",
-          "locator": "Infobox, transmission row",
-          "state": "transmission published as a 4-speed or 5-speed manual",
           "grade": "claimed"
         }
       }

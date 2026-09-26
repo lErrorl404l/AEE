@@ -13,7 +13,7 @@ is a labelled zero, not a refusal.
 - Emitted runtime rows: 133
 - Runtime-ready entries: 1
 - Entries with an absent runtime field: 132
-- Absent fields: 448
+- Absent fields: 440
 
 ## achzarit - Achzarit (tracked)
 
@@ -145,19 +145,18 @@ is a labelled zero, not a refusal.
 
 | Runtime field | Grade | Value | Source | Locator | State |
 |---|---|---|---|---|---|
-| `operating_weight_kg` | claimed | 12500 | `wikipedia_anoa` | Infobox, weight row | weight published as 12.5 tonnes with 14.5 tons combat; recorded at 12.5 tonnes and the tonne taken as 1,000 kg |
+| `operating_weight_kg` | claimed | 14500 | `pindad_anoa_6x6_product_page` | Specification table, Combat Weight row | combat weight published as 14.5 tonnes; the tonne taken as 1,000 kg |
 | `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
 | `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
 | `ground_clearance_mm` | claimed | 400 | `wikipedia_anoa` | Infobox, clearance row | ground clearance published as 40 cm |
-| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
-| `transmission_type` | claimed | automatic | `wikipedia_anoa` | Infobox, transmission row | transmission published as an automatic ZF S6HP502 |
+| `net_power_kw` | derived | 238.623959 | `pindad_anoa_6x6_product_page` | Specification table, Power row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | claimed | automatic | `pindad_anoa_6x6_product_page` | Specification table, Transmission row | transmission published as automatic |
 | `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
 
 | Absent field | Next source class |
 |---|---|
 | `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
 | `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
-| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
 ## arjun - Arjun (tracked)
@@ -2761,12 +2760,12 @@ is a labelled zero, not a refusal.
 
 | Runtime field | Grade | Value | Source | Locator | State |
 |---|---|---|---|---|---|
-| `operating_weight_kg` | claimed | 24000 | `wikipedia_terrex` | Infobox, weight row | weight published as 24 t; the tonne taken as 1,000 kg |
+| `operating_weight_kg` | derived | 24000 | `stengg_terrex_family_datasheet` | TECHNICAL SPECIFICATIONS, Weight row, Gross Vehicle Weight, TERREX 1 column, page 2 | derived operating weight from the gross vehicle weight rating; no operating or curb weight is published, so the rating is the basis and it is a maximum, not a kerb weight |
 | `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
 | `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
 | `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
-| `net_power_kw` | derived | 298.279949 | `wikipedia_terrex` | Infobox, engine power row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
-| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `net_power_kw` | derived | 335.564942 | `stengg_terrex_family_datasheet` | TECHNICAL SPECIFICATIONS, Mobility Systems row, Power Output, TERREX 1 column, page 2 | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | claimed | automatic | `stengg_terrex_family_datasheet` | TECHNICAL SPECIFICATIONS, Mobility Systems row, Gearbox, TERREX 1 column, page 2 | gearbox published as an Allison 4500SP automatic |
 | `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
 
 | Absent field | Next source class |
@@ -2774,7 +2773,6 @@ is a labelled zero, not a refusal.
 | `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
 | `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
 | `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
-| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
 ## toyota_land_cruiser_70 - Toyota Land Cruiser (J70) (wheeled)
@@ -2989,18 +2987,15 @@ is a labelled zero, not a refusal.
 | Runtime field | Grade | Value | Source | Locator | State |
 |---|---|---|---|---|---|
 | `operating_weight_kg` | derived | 1700 | `uaz_469` | Infobox, weight row | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
-| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
-| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_width_mm` | derived | 213.36 | `uaz_469_instrukcja_1976` | Kola, pneumatiky, Pneumatiky row, printed page 8 | derived from the size code 8.40-15 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 807.72 | `uaz_469_instrukcja_1976` | Kola, pneumatiky, Pneumatiky row, printed page 8 | derived from the size code 8.40-15 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
 | `ground_clearance_mm` | claimed | 220 | `uaz_469` | Design section, ground clearance sentence | civilian UAZ-469B ground clearance published as 220 mm; the military UAZ-469 is published with 300 mm and the 220 mm civilian figure recorded |
-| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
-| `transmission_type` | claimed | manual | `uaz_469` | Infobox, transmission row | transmission published as a 4-speed or 5-speed manual |
+| `net_power_kw` | derived | 53.690391 | `uaz_469_instrukcja_1976` | Motor table, Maximální výkon row, printed page 6 | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | manual | `uaz_469_instrukcja_1976` | Převodové ústrojí table, Převodovka row, printed page 6 | gearbox published as a mechanical four-speed, a manual, with a two-speed transfer case |
 | `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
 
 | Absent field | Next source class |
 |---|---|
-| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
-| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
-| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
 ## ural_4320 - Ural-4320 (wheeled)
@@ -3012,20 +3007,17 @@ is a labelled zero, not a refusal.
 
 | Runtime field | Grade | Value | Source | Locator | State |
 |---|---|---|---|---|---|
-| `operating_weight_kg` | derived | 15300 | `wikipedia_ural_4320` | Specifications table, GVWR row, Ural-4320 column | derived operating weight from the gross vehicle weight rating; no operating or curb weight is published, so the rating is the basis and it is a maximum, not a kerb weight |
-| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
-| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `operating_weight_kg` | derived | 8445 | `ural_4320_02_service_manual` | SPECIFICATIONS, General table, Mass of fully equipped truck row, Ural-4320-02 column, printed page 8 | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 355.6 | `ural_4320_02_service_manual` | SPECIFICATIONS, Wheels and Tyres table, Tyres row, Ural-4320-02 column, printed page 9 | derived from the size code 14.00-20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1219.2 | `ural_4320_02_service_manual` | SPECIFICATIONS, Wheels and Tyres table, Tyres row, Ural-4320-02 column, printed page 9 | derived from the size code 14.00-20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
 | `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
-| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
-| `transmission_type` | claimed | manual | `wikipedia_ural_4320` | Infobox, transmission row | transmission published as a 5-speed manual |
+| `net_power_kw` | derived | 156.596973 | `ural_4320_02_service_manual` | SPECIFICATIONS, Engine table, Rated output, gross row, printed page 8 | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | manual | `ural_4320_02_service_manual` | SPECIFICATIONS, Transmission table, Gearbox row, printed page 9 | gearbox published as a mechanical KamAZ-141 five-speed with synchroniser units, a manual |
 | `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
 
 | Absent field | Next source class |
 |---|---|
-| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
-| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
 | `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
-| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
 ## vbci - VBCI (wheeled)

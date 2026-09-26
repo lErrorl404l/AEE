@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-09-26",
-  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the Toyota Land Cruiser J70. Every value is grade claimed and the registry marks primary_held false. The article publishes the short-wheelbase length, the width, the height, the wheelbase and the transmission. It publishes no weight and no ground clearance.",
+  "note": "Catalogue capture uplifted in part to the held tier-2 Toyota Land Cruiser Chassis and Body Repair Manual (10/84 to 1/90). The manual publishes the 70 series wheelbase, the tyre size code and the normal-road tyre pressure at grade documented. It publishes no overall length, width, height or transmission datum, so those fields are retained from the tier-5 English Wikipedia article at grade claimed.",
   "sources": [],
   "entries": [
     {
@@ -55,10 +55,10 @@
         "wheelbase_mm": {
           "value": 2310,
           "unit": "mm",
-          "source": "wikipedia_toyota_land_cruiser_70",
-          "locator": "Infobox, wheelbase row",
-          "state": "wheelbase published as 2,310 mm",
-          "grade": "claimed"
+          "source": "toyota_land_cruiser_repair_manual_1984_1990",
+          "locator": "BODY \u2014 Frame Dimensions, FJ, BJ 70 Series drawing, wheelbase dimension 2,310 (90.94), printed page BO-119",
+          "state": "wheelbase published as 2,310 mm for the FJ and BJ 70 series",
+          "grade": "documented"
         },
         "transmission_type": {
           "value": "manual",
@@ -67,6 +67,22 @@
           "locator": "Infobox, transmission row",
           "state": "transmission published as a 4 or 5-speed manual, with 4-speed and 6-speed automatics also listed",
           "grade": "claimed"
+        },
+        "tyre_size_text": {
+          "value": "7.50-16-6PRLT",
+          "unit": "text",
+          "source": "toyota_land_cruiser_repair_manual_1984_1990",
+          "locator": "SERVICE SPECIFICATIONS \u2014 Front Axle and Suspension, tyre pressure table, FJ70 and BJ70 series rows, printed page A-10",
+          "state": "tyre size published as 7.50-16-6PRLT for the FJ70 and BJ70 series; the table also lists 7.50-16-8PRLT and 7.50R-16-8PRLT",
+          "grade": "documented"
+        },
+        "tyre_pressure_kpa": {
+          "value": 177,
+          "unit": "kPa",
+          "source": "toyota_land_cruiser_repair_manual_1984_1990",
+          "locator": "SERVICE SPECIFICATIONS \u2014 Front Axle and Suspension, tyre pressure table, FJ70 series, 7.50-16-6PRLT row, below 80 km/h column, printed page A-10",
+          "state": "tyre pressure published as 1.8 kgf/cm2 (26 psi, 177 kPa) below 80 km/h; recorded as 177 kPa",
+          "grade": "documented"
         }
       }
     }
