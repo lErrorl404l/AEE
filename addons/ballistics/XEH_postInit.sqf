@@ -65,6 +65,20 @@ ADDON = false;
     // Barrel thermal state: temperature + POI shift (issue #130).
     [_unit, _weapon, true] call FUNC(calculateBarrelState);
 
+    // Refractive trace of a supersonic round (issue #217). A supersonic
+    // round steps air density across its bow shock, and the index of
+    // refraction of air tracks density, so the density step bends light.
+    // The value is an UPPER BOUND, in units of 1e-4, and it is 0 when the
+    // round is not supersonic. The kernel uses the local air temperature
+    // for the speed of sound. The Fired handler holds the muzzle velocity
+    // only, so this publishes the muzzle contrast. A caller that tracks the
+    // round can pass the velocity at range and watch the contrast change as
+    // the round decelerates. A renderer may scale the value. The kernel
+    // itself never scales it, because a trace the air does not support
+    // must not be forced into being.
+    private _trace = [_initSpeed, _rhoRel, _tempC] call FUNC(calculateSupersonicTrace);
+    missionNamespace setVariable [QGVAR(supersonicTrace), _trace];
+
     // ACE3 advanced ballistics owns the correction; write our tracked
     // temperature into ACE3's per-weapon variable so its table uses AEE's
     // live value (Option C).  Otherwise feed our own correction.

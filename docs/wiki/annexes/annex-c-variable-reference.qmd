@@ -293,6 +293,7 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | `aee_ballistics_barrelPOIShiftMrad` | ballistics | Elevation POI shift from barrel heat (mrad, positive = up) |
 | `aee_ballistics_barrelColdBore` | ballistics | 1 when the cold-bore first-shot bias applies |
 | `aee_ballistics_barrelWearModelled` | ballistics | 1 when the barrel wear model applies to the weapon, 0 for a cannon |
+| `aee_ballistics_supersonicTrace` | ballistics | Refractive index contrast across the bow shock, in units of 1e-4, as an upper bound. 0 when the round is not supersonic. A renderer may scale it. The kernel never does |
 
 ### Module overrides
 
