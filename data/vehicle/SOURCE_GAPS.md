@@ -13,7 +13,7 @@ is a labelled zero, not a refusal.
 - Emitted runtime rows: 133
 - Runtime-ready entries: 1
 - Entries with an absent runtime field: 132
-- Absent fields: 437
+- Absent fields: 434
 
 ## achzarit - Achzarit (tracked)
 
@@ -433,20 +433,18 @@ is a labelled zero, not a refusal.
 
 | Runtime field | Grade | Value | Source | Locator | State |
 |---|---|---|---|---|---|
-| `operating_weight_kg` | claimed | 20500 | `wikipedia_btr_4` | Infobox, weight row, anti-bullet protection entry | weight published as 17.5+3 t with anti-bullet protection, taken as 20.5 t; the same row publishes 25+3 t with additional protection, and the tonne is taken as 1,000 kg |
+| `operating_weight_kg` | documented | 21900 | `btr4_manual_2010` | 3.1 Общие данные, Полная масса машины с противопульной защитой row, printed page 3-1 | full mass with anti-bullet protection published as not more than 21.9 t (21.9+0.66); the same table publishes 23.5 t (23.5+0.7) with the additional protection, and the tonne is taken as 1,000 kg |
 | `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
 | `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
-| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
-| `net_power_kw` | derived | 364.647237 | `wikipedia_btr_4` | Infobox, engine power row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
-| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | documented | 475 | `btr4_manual_2010` | 3.1.1 Основные размеры, Дорожный просвет row, printed page 3-1 | road clearance published as 475 mm, without the floor depressions |
+| `net_power_kw` | derived | 372.849936 | `btr4_manual_2010` | 3.9.1 Двигатель, Максимальная мощность row, printed page 3-8 | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `btr4_manual_2010` | 3.10.2 Коробка передач, Переключение передач row, printed page 3-10 | gearbox published as a hydromechanical automatic with a torque converter and a full-range manual mode |
 | `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
 
 | Absent field | Next source class |
 |---|---|
 | `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
 | `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
-| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
-| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
 ## btr_80 - BTR-80 (wheeled)
@@ -847,7 +845,7 @@ is a labelled zero, not a refusal.
 
 | Runtime field | Grade | Value | Source | Locator | State |
 |---|---|---|---|---|---|
-| `operating_weight_kg` | claimed | 16700 | `wikipedia_guarani` | Infobox, weight row | weight published as 16.7 t; the tonne taken as 1,000 kg |
+| `operating_weight_kg` | documented | 17500 | `guarani_eb70_ci_11412` | Capítulo 2, section 2.5.1, VBTP-MR Guarani characteristics list, peso bullet, printed page 2-15 | vehicle weight published as 17.5 t in the characteristics list; the tonne taken as 1,000 kg |
 | `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
 | `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
 | `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
@@ -2682,10 +2680,10 @@ is a labelled zero, not a refusal.
 
 | Runtime field | Grade | Value | Source | Locator | State |
 |---|---|---|---|---|---|
-| `operating_weight_kg` | claimed | 38000 | `wikipedia_t_64` | Infobox, weight row | weight published as 38 t; the tonne taken as 1,000 kg |
+| `operating_weight_kg` | documented | 38500 | `t64a_technical_manual_1984` | 1.2 Основные тактико-технические параметры, Общие данные, Боевая масса row, printed page 7 | T-64A combat weight published as 38.5 t; the tonne taken as 1,000 kg |
 | `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
 | `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
-| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | documented | 500 | `t64a_technical_manual_1984` | 1.2 Основные размеры, Клиренс (по основному днищу) row, printed page 7 | ground clearance at the main floor published as 500 mm |
 | `net_power_kw` | derived | 521.98991 | `wikipedia_t_64` | Infobox, engine power row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
 | `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
 | `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
@@ -2694,7 +2692,6 @@ is a labelled zero, not a refusal.
 |---|---|
 | `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
 | `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
-| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
 | `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
