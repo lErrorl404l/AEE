@@ -51,7 +51,17 @@ if (isClass (_weaponCfg >> "modes")) then {
     _mode = getText (_weaponCfg >> "modes" >> "this");
 };
 private _isMG = (_weapon find "MMG" >= 0) || (_weapon find "LMG" >= 0) || {_mode find "fullauto" >= 0};
-private _heatPerRound = [1.0, 3.0] select _isMG;       // 5.56 rifle / 7.62 MG
+// ─── Cannon regime: the wear and heat coefficient is not held ─────────────
+// No tier 1 to 4 source held here states a cannon barrel heating or erosion
+// rate, for example degC per round at the service charge or mm of bore
+// enlargement per round.  AMCP 706-150 (Interior Ballistics of Guns, US Army
+// Materiel Command 1965, held) gives the heat-transfer and erosion model but
+// not a per-gun coefficient.  The small-arms values below are fitted to
+// cartridge barrels and are not transferred.  A cannon class therefore adds no
+// per-round heat and takes no sourced point-of-impact coefficient, and the
+// gap is recorded rather than filled with an invented number.
+private _isCannon = (_weapon find "cannon" >= 0) || (_weapon find "howitzer" >= 0) || (_weapon find "mortar" >= 0);
+private _heatPerRound = if (_isCannon) then { 0 } else { [1.0, 3.0] select _isMG };
 private _tau = [150, 250] select _isMG;                // seconds
 
 // ─── State ────────────────────────────────────────────────────────────────
@@ -79,7 +89,7 @@ if (_dt > 0) then {
 _unit setVariable [QGVAR(barrelState), [_tempC, _rounds]];
 
 // ─── POI shift (elevation only) ───────────────────────────────────────────
-private _kMradPerC = [0.008, 0.02] select _isMG;       // rifle / MG
+private _kMradPerC = if (_isCannon) then { 0 } else { [0.008, 0.02] select _isMG };
 private _poiMrad = _kMradPerC * (_tempC - _ambient);
 
 // ─── Cold-bore bias ──────────────────────────────────────────────────────
@@ -96,5 +106,6 @@ if (_tempC - _ambient < 15 && _rounds >= 1 && _rounds <= 5) then {
 missionNamespace setVariable [QGVAR(barrelTempC), _tempC];
 missionNamespace setVariable [QGVAR(barrelPOIShiftMrad), _poiMrad];
 missionNamespace setVariable [QGVAR(barrelColdBore), _coldBore];
+missionNamespace setVariable [QGVAR(barrelWearModelled), !_isCannon];
 
 _tempC

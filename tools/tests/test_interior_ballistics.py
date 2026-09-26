@@ -137,6 +137,35 @@ class TestMeasuredAnchors(unittest.TestCase):
         self.assert_in_band(7.62, 9.6, 0.565, 810, pct=10.0)
 
 
+class TestPressureUnitDiscipline(unittest.TestCase):
+    """The pressure argument is a peak chamber pressure in MPa.
+
+    The SQF previously compared the MPa argument against 300e6 and 100e6
+    (pascals). The rifle, heavy-machine-gun and shotgun regime cases then
+    never fired and the calculator silently fell to the default branch. The
+    Python mirror always used the MPa thresholds 300 and 100. This test binds
+    the SQF text to the mirror: the pascalian literals must be absent and the
+    MPa literals present.
+    """
+
+    def test_sqf_uses_mpa_thresholds_not_pascals(self):
+        self.assertNotIn("300e6", FNC, "SQF compares an MPa pressure to pascals")
+        self.assertNotIn("100e6", FNC, "SQF compares an MPa pressure to pascals")
+        # The three MPa thresholds the mirror uses: pistol/magnum split at
+        # 300, the shotgun regime at 100, and the rifle regime at 300.
+        self.assertGreaterEqual(FNC.count("_pressureMPa < 300"), 1)
+        self.assertGreaterEqual(FNC.count("_pressureMPa >= 300"), 2)
+        self.assertGreaterEqual(FNC.count("_pressureMPa < 100"), 1)
+
+    def test_rifle_regime_not_collapsed_to_default(self):
+        # A consequence of the fix: at 430 MPa a 5.56 mm rifle must take
+        # the rifle burn length and regime, so the result is strictly above
+        # the 150 m/s floor and below the 2000 m/s ceiling.
+        v = mv(5.56, 4.0, 0.508)
+        self.assertGreater(v, 150)
+        self.assertLess(v, 2000)
+
+
 class TestCannonDeferral(unittest.TestCase):
     """The cannon regime (calibre 20 mm and above) is deferred, not computed.
 

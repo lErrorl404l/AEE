@@ -10526,5 +10526,115 @@
     "grade": "documented"
    }
   }
+ },
+ {
+  "load_id": "105mm_m456_load",
+  "cartridge_id": "105mm_m68",
+  "projectile": "M456 HEAT-T",
+  "note": "M456 HEAT-T service round for the 105 mm M68 gun.",
+  "values": {
+   "cartridge": {
+    "value": "105mm M68",
+    "unit": "name",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "projectile": {
+    "value": "M456 HEAT-T",
+    "unit": "designation",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "service_velocity_ms": {
+    "value": 1173.0,
+    "unit": "m/s",
+    "source": "tm43_0001_28",
+    "grade": "documented",
+    "formula": "3850 ft/s x 0.3048 m/s per ft/s"
+   },
+   "velocity_reference": {
+    "value": "nominal muzzle velocity, M68 105 mm cannon (TM 43-0001-28 page 2-83, M456 HEAT-T series)",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   }
+  }
+ },
+ {
+  "load_id": "105mm_m735_load",
+  "cartridge_id": "105mm_m68",
+  "projectile": "M735 APFSDS-T",
+  "note": "M735 APFSDS-T service round for the 105 mm M68 gun. The held sheet states the chamber pressure and the propellant charge mass but no muzzle velocity, so no velocity is entered.",
+  "values": {
+   "cartridge": {
+    "value": "105mm M68",
+    "unit": "name",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "projectile": {
+    "value": "M735 APFSDS-T",
+    "unit": "designation",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "service_pressure_mpa": {
+    "value": 413.69,
+    "unit": "MPa",
+    "source": "tm43_0001_28",
+    "grade": "documented",
+    "formula": "60,000 psi x 0.00689476 MPa per psi; chamber pressure at 70 F (TM 43-0001-28 page 2-101)"
+   },
+   "pressure_reference": {
+    "value": "chamber pressure at 70 F (TM 43-0001-28 page 2-101, M735 APFSDS-T)",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "charge_mass_g": {
+    "value": 5669.9,
+    "unit": "g",
+    "source": "tm43_0001_28",
+    "grade": "documented",
+    "formula": "12.5 lb x 453.59237 g/lb; approximately 12.5 lb of M30 propellant (TM 43-0001-28 page 2-101)"
+   }
+  }
+ },
+ {
+  "load_id": "125mm_m88_load",
+  "cartridge_id": "125mm_2a46",
+  "projectile": "M88 APFSDS-T",
+  "note": "M88 APFSDS-T service round for the 2A46 gun family. The held sheet states the muzzle velocity, the base propelling charge mass and a penetration depth whose printed unit is metres; the unit is not trusted, so the penetration value is not entered.",
+  "values": {
+   "cartridge": {
+    "value": "125 mm 2A46",
+    "unit": "name",
+    "source": "yugoimport_125x570_m88",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "M88 APFSDS-T",
+    "unit": "designation",
+    "source": "yugoimport_125x570_m88",
+    "grade": "claimed"
+   },
+   "service_velocity_ms": {
+    "value": 1785.0,
+    "unit": "m/s",
+    "source": "yugoimport_125x570_m88",
+    "grade": "claimed",
+    "formula": "source prints approximately 1785 m/s"
+   },
+   "velocity_reference": {
+    "value": "nominal muzzle velocity, T-72 and M84 125 mm gun (Yugoimport 125 mm APFSDS-T M88 data sheet)",
+    "source": "yugoimport_125x570_m88",
+    "grade": "claimed"
+   },
+   "charge_mass_g": {
+    "value": 2000.0,
+    "unit": "g",
+    "source": "yugoimport_125x570_m88",
+    "grade": "claimed",
+    "formula": "approximately 2 kg x 1000 g/kg (base propelling charge mass, NC-44 and NC-16)"
+   }
+  }
  }
 ]

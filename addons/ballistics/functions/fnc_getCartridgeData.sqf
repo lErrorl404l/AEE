@@ -53,6 +53,7 @@ private _normalise = {
 // [id, aliases (lower case alphanumerics, pipe separated), calibre mm,
 //  twist m per turn, pressure MPa, proof MPa, pistol twist, rifle twist]
 private _TABLE = [
+    ["105mm_m68", "105|105mm|105mml7|105mmm68|105mmtankrifled|105mtr", 105.0, 0, 413.69, 0, 0, 0],
     ["10_3_capra", "103capra", 10.54, 0.45, 410.0, 0, 0, 0],
     ["10_3_csp", "103csp", 10.54, 0.45, 440.0, 0, 0, 0],
     ["10_3_x_60_r", "103x60|103x60r|10xr", 10.54, 0.45, 270.0, 0, 0, 0],
@@ -72,6 +73,7 @@ private _TABLE = [
     ["11_5_x_51", "115x51|11x", 11.49, 0.508, 400.0, 0, 0, 0],
     ["11_mm_73", "11m|11mm73", 11.6, 0.35, 115.0, 0, 0, 0],
     ["120mm_m256_smoothbore", "120mm|120mmm256|120mmm256smoothbore|120mmnatotank", 120.0, 0, 510.0, 0, 0, 0],
+    ["125mm_2a46", "125|125m|125mm2a46|125mmm88|125mmtanksmoothbore|125mts", 125.0, 0, 0, 0, 0, 0],
     ["127x108", "127|127x108|127x108mm", 12.7, 0, 340.0, 0, 0, 0],
     ["12_50_sapl", "1250sapl|12s", 0, 0, 9.0, 0, 0, 0],
     ["12_55_mm_fn_sp", "1255mmfnsp|12mfs", 0, 0, 4.0, 0, 0, 0],

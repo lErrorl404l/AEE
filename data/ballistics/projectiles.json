@@ -27194,5 +27194,29 @@
     "grade": "documented"
    }
   }
+ },
+ {
+  "projectile_id": "m88_apfsds",
+  "names": [
+   "M88",
+   "M88 APFSDS-T",
+   "125mm APFSDS"
+  ],
+  "manufacturer": "Yugoimport",
+  "note": "Sub-calibre fin-stabilised long rod for the 125 mm M88 round. The held sheet states the subcalibre bullet mass. It does not state the rod diameter or length, so resolveShot does not reach the stability path for this round. Fin-stabilised, so the drag model label is APFSDS. No measured APFSDS curve is held.",
+  "values": {
+   "mass_g": {
+    "value": 5670.0,
+    "unit": "g",
+    "source": "yugoimport_125x570_m88",
+    "grade": "claimed",
+    "formula": "approximately 5.67 kg x 1000 g/kg (subcalibre bullet mass)"
+   },
+   "drag_model": {
+    "value": "APFSDS",
+    "source": "yugoimport_125x570_m88",
+    "grade": "claimed"
+   }
+  }
  }
 ]

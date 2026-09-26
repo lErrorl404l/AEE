@@ -54,14 +54,22 @@ if (_caliberMm <= 0 || _massG <= 0 || _barrelM <= 0) exitWith { 0 };
 // The two-zone model below is fitted to small-arms cartridges. Its
 // Mayer-Krause burn length and its combustion-efficiency regime are
 // calibrated against measured rifle, pistol and heavy machine gun muzzle
-// velocities, and they do not transfer to a cannon. A cannon derivation
-// needs a charge and bore model held as a sourced curve: the propellant
-// charge geometry, the shot start pressure and the barrel travel are all
-// absent from the database. This function therefore returns 0 for a
-// cannon calibre, which the resolver reads as "not held". The cannon
-// muzzle velocity comes from the sourced service_velocity_ms in the load
-// record instead. No cannon pressure and no interior curve are invented
-// here. This is the documented deferral, not a computed value.
+// velocities, and they do not transfer to a cannon. A cannon interior model
+// needs the Lagrange or Noble-Abel charge and bore inputs (AMCP 706-150,
+// Interior Ballistics of Guns, US Army Materiel Command 1965, held under
+// data/ballistics/sources/amcp_706_150.pdf), and the held database covers
+// only part of them:
+//   held:     charge mass (M829 8141.98 g, M735 5669.9 g), chamber pressure
+//             (M829 510 MPa, M735 413.69 MPa), reference barrel length and
+//             service muzzle velocity (TM 43-0001-28);
+//   not held: the propellant force or impetus, the shot-start pressure, the
+//             projectile travel, and for the APFSDS rounds the subprojectile
+//             mass and the rod geometry.
+// Without the missing inputs a cannon curve cannot be computed, so this
+// function returns 0 for a cannon calibre and the resolver reads that as
+// "not held". The cannon muzzle velocity comes from the sourced
+// service_velocity_ms in the load record instead. No cannon pressure and no
+// interior curve are invented here. This is the documented deferral.
 if (_caliberMm >= 20) exitWith { 0 };
 
 // ─── The researched peak pressure by caliber (SAAMI/CIP MAP) ─────────────
@@ -86,8 +94,8 @@ if (_pressureMPa <= 0) then {
 // pistol 0.23 fits the 9mm anchors (RMS 2.1%), the magnum 0.45 fits
 // the heavy calibers.  The peak-pressure regime picks the class.
 private _lChar = switch (true) do {
-    case (_pressureMPa < 300e6 && _caliberMm <= 9.1):   { 0.23 };  // pistol/SMG
-    case (_pressureMPa >= 300e6 && _caliberMm < 10):    { 0.54 };  // rifle
+    case (_pressureMPa < 300 && _caliberMm <= 9.1):   { 0.23 };  // pistol/SMG
+    case (_pressureMPa >= 300 && _caliberMm < 10):    { 0.54 };  // rifle
     default                                             { 0.45 };  // magnum/HMG
 };
 
@@ -105,10 +113,10 @@ private _workInt = _lChar * (1 - exp (-_barrelM / _lChar));
 // scaled by the regime multiplier (the combustion-efficiency correction
 // per weapon class - the ABE kernel, verified against measured MVs).
 private _regime = switch (true) do {
-    case (_pressureMPa < 100e6 && _caliberMm > 15):   { 1.60 };   // shotgun
-    case (_pressureMPa < 300e6 && _caliberMm >= 7 && _caliberMm <= 15): { 0.80 };  // pistol/SMG
-    case (_pressureMPa >= 300e6 && _caliberMm >= 10):  { 1.55 };   // HMG
-    case (_pressureMPa >= 300e6 && _caliberMm < 10):   { 1.20 };   // rifle
+    case (_pressureMPa < 100 && _caliberMm > 15):   { 1.60 };   // shotgun
+    case (_pressureMPa < 300 && _caliberMm >= 7 && _caliberMm <= 15): { 0.80 };  // pistol/SMG
+    case (_pressureMPa >= 300 && _caliberMm >= 10):  { 1.55 };   // HMG
+    case (_pressureMPa >= 300 && _caliberMm < 10):   { 1.20 };   // rifle
     default                                             { 1.0 };
 };
 private _efficiency = ((0.87 * exp (-0.30 * _barrelM)) * _regime) max 0.1 min 1.0;
