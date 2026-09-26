@@ -1,0 +1,141 @@
+{{Short description|Singaporean infantry fighting vehicle}}
+<!-- This article is NOT written in US-English. Please do not change it to US-English contrary to [[WP:ENGVAR]]:
+"An article on a topic that has strong ties to a particular English-speaking nation uses the appropriate variety of English for that nation." -->
+{{Infobox weapon
+| name               = Bionix Infantry Fighting Vehicle
+| image              = [[File:Bionix AFV 1.jpg|300px|The up-gunned Bionix II with 30mm Bushmaster II cannon]]
+| caption            = Bionix II IFV at the 2008 [[Singapore Airshow]].
+| origin             = [[Singapore]]
+| type               = [[Infantry fighting vehicle]]
+| service            = 1997 – present
+| used_by            = [[Singapore Army]]
+<!-- Type selection -->| is_ranged          = no
+| is_artillery       = no
+| is_vehicle         = yes
+<!-- Production history -->| designer           = {{ubl|[[Defence Science and Technology Agency|Defence Material Organisation of the Ministry of Defence (Singapore)]]|[[ST Engineering|Singapore Technologies Automotive]]}}
+| design_date        = 1988
+| manufacturer       = {{ubl|Singapore Technologies Automotive<small> (formerly)</small>|ST Kinetics<small> (formerly)</small>|ST Engineering}}
+| production_date    = 1996 – present
+| number             = 800<ref>{{cite web | url=https://www.armyrecognition.com/singapore_singaporean_army_land_ground_forces_uk/singapore_singaporean_army_land_ground_forces_military_equipment_armoured_armored_vehicle_uk.html | title=Singapore Land Forces military equipment and vehicle Singaporean Army | access-date=13 June 2020 | archive-date=21 August 2017 | archive-url=https://web.archive.org/web/20170821045204/https://www.armyrecognition.com/singapore_singaporean_army_land_ground_forces_uk/singapore_singaporean_army_land_ground_forces_military_equipment_armoured_armored_vehicle_uk.html | url-status=dead }}</ref>
+| variants           = See [[#Production models|''variants'']]<ref name=STK>{{cite web |title=Specifications: BIONIX family of armoured fighting vehicles |url=http://www.stengg.com/upload/1803IbIDCl33nB3PEaR.pdf |publisher=[[ST Kinetics]] |access-date=2008-09-29 |url-status=dead |archive-url=https://web.archive.org/web/20110928071553/http://www.stengg.com/upload/1803IbIDCl33nB3PEaR.pdf |archive-date=2011-09-28 }}</ref>
+<!-- General specifications -->| length             = {{convert|5.9|m|ftin}}
+| width              = {{convert|2.7|m|ftin|abbr=on}}
+| height             = {{convert|2.6|m|ftin|abbr=on}}
+| weight             = Combat weight: {{convert|23|t|ST LT}}
+| suspension         = [[Hydropneumatic suspension]]
+| speed              = {{convert|70|km/h|mph|abbr=on}}
+| vehicle_range      = {{convert|400|km|mi|abbr=on}}
+<!-- Vehicle specifications -->| primary_armament   = Bionix 25: [[M242 Bushmaster]] 25 mm Cannon <br>Bionix II: [[Mk44 Bushmaster II]] 30 mm Cannon
+| secondary_armament = [[7.62×51mm NATO]] Commander's MG<br />7.62×51mm NATO Coaxial MG<br />7.62×51mm NATO Trooper Compartment Side Mounted GMPG
+| armour             = [[MEXAS|MEXAS-M]]
+| engine             = [[Detroit Diesel]] [[Detroit Diesel Series 92|6V 92TA]]
+| crew               = 3 (Commander, Gunner, Driver)<br />plus 7 combat troops (2 men turret version)<br />9 combat troops (40/50 version)
+| engine_power       = {{convert|475|hp|kW|lk=in}} <br>{{convert|550|hp|kW|abbr=on}} with Turbo-charge
+| pw_ratio           = 20 hp/tonne
+}}
+
+The '''Bionix''' ('''BX''') is a family of tracked [[Singapore]]an [[Infantry fighting vehicle|armoured fighting vehicles]] jointly developed by the former Defence Material Organisation of the Ministry of Defence of Singapore (now '''[[Defence Science and Technology Agency]]''' '''(DSTA)'''), and the former Singapore Technologies Automotive (STA) (now '''[[ST Engineering]]'''). <ref>{{Cite journal |last=Foss |first=Christopher Frank |date=1999-10-01 |title=Singapore drives bionix IFV to new limits |journal=Jane's International Defence Review |volume=32 |issue=10 |pages=1 }}</ref> Intended to augment the Singapore Army's aging [[M113 Armored Personnel Carrier|M113]] [[armoured personnel carrier]]s, it is the first indigenous armoured vehicle to be developed in Southeast Asia. <ref>{{cite web |title=Bionix Infantry Fighting Vehicle |url=http://infopedia.nl.sg/articles/SIP_967_2005-01-06.html |publisher=[[National Library Board|NLB]] |date=2000-12-29 |access-date=2009-07-15 |url-status=dead |archive-url=https://web.archive.org/web/20090321084533/http://infopedia.nl.sg/articles/SIP_967_2005-01-06.html |archive-date=2009-03-21 }}</ref><ref>{{cite journal |last= Rice |first= Edmond |title= AIFVs Spearhead Army Modernisation Plans in Asia |journal= Asian Defence Journal |date= April 2006 }}</ref> The Bionix has been operational with the [[Singapore Armed Forces]] (SAF) since 1999 in a wide variety of adaptations including the Bionix II, Bionix 25 and Bionix 40/50 variants.
+
+Aside from domestic use, ST Kinetics has been marketing the Bionix to countries that wish to retire their old M113s from front-line service.<ref>{{Cite web|url=http://www.military-today.com/apc/bionix_40_50.htm|archive-url=https://web.archive.org/web/20140331034305/http://www.military-today.com/apc/bionix_40_50.htm|url-status=dead|archive-date=March 31, 2014|title=Bionix 40/50 - Armored personnel carrier|access-date=October 17, 2013}}</ref>
+
+== Production history and development ==
+With the growth and development of the Singapore Armed Forces (SAF) during the mid 1980s came a need to bolster of the existing fleet of M113 Armored Personnel Carriers. This prompted the Ministry of defence to source for a fleet of armored vehicles to operate in tandem with the current fleet of AMX-13/AMX-13 SM1 light tank.
+
+With the participation of the SAF, the Defence Materiel Organisation, MINDEF's systems acquisition house, was appointed to conduct a technology study and recommend the direction for the project. A market survey was conducted in which various armored vehicles including the [[Warrior Tracked Armoured Vehicle]], the [[M2/M3 Bradley Fighting Vehicle]], and the [[Marder (IFV)|Schützenpanzer Marder]] were evaluated. The findings from the market survey showed that none of the off-the-shelf vehicles met the specific requirements of the SAF. Therefore, the decision was made to develop a vehicle locally. Local development was necessary not only because of a lack of suitable off-the-shelf designs, but also as an opportunity to build up the capability of the local defense industry.
+
+Known as "BIONIX", the IFV was the product of a tripartite team of engineers and technical staff from Singapore Technologies Automotive, DMO and G5 Army, working jointly with HQ Armour to produce a fighting machine tailored to the specific operational requirements of the [[Singapore Army|Army]]. Key considerations during the design process included high mobility and agility, low weight, amphibious capability, and adequate protection and firepower.
+
+Development of the Bionix began in 1988. It took several years before leaving the prototyping phase in 1995 and finally being commissioned on 26 March 1997. ST Automotive was awarded a S$2.5 billion (US$1.7 billion) contract in March 1997 to supply several hundred Bionix IFVs to the Singapore Armed Forces. The first production vehicles were inducted by the 42nd Battalion, [[Singapore Armoured Regiment]] in July 1999.<ref>*{{cite web |title= SAF's First Infantry Fighting Vehicle Armoured Battle Group is Operational |url= http://www.mindef.gov.sg/imindef/news_and_events/nr/1999/jul/30jul99_nr.html |publisher= [[MINDEF]] |date= 1999-07-30 |access-date= 2009-05-02 |archive-date= 2018-12-15 |archive-url= https://web.archive.org/web/20181215171823/http://www.mindef.gov.sg/imindef/news_and_events/nr/1999/jul/30jul99_nr.html |url-status= dead }}</ref>
+
+The Bionix IFV has since been succeeded by the '''Bionix II''', which entered a trial service with the Singapore Armed Forces in 2005 with a Company from 41 SAR. In October 2006, The Bionix II was declared operationally ready with 42 SAR being the first fully equipped Bionix II battalion.<ref>*{{cite web|title=About Bionix II |url=http://www.mindef.gov.sg/imindef/mindef_websites/topics/Weapons/bx2/about.html |publisher=[[MINDEF]] |date=2006-11-30 |access-date=2008-09-29 |url-status=dead |archive-url=https://web.archive.org/web/20071006092748/http://www.mindef.gov.sg/imindef/mindef_websites/topics/Weapons/bx2/about.html |archive-date=2007-10-06 }}</ref>
+
+==Description==
+;Protection
+The hull and turret are of all-welded-steel construction with modular [[MEXAS]] passive armour protection. Additional armour protection can be installed with an add-on layer of spaced passive armour.
+
+;Engine
+The Bionix is a compact design produced to meet the conditions of Pacific rim countries where small size is a great asset when it comes to travelling among rubber plantations and over roads and bridges not designed for heavy vehicles. The power provided by the {{convert|475|hp|abbr=on}} Detroit Diesel engine to drive its 23 tonnes, ensures the Bionix is able to overcome the most difficult terrain. Future upgrades in power ratings can be developed according to needs.
+
+The integrated power pack is mounted to the right of the vehicle and can be removed from the Bionix as a complete unit in under 15 minutes. The engine is coupled to the L-3 Combat Propulsion Systems HMPT-500EC fully hydro mechanical transmission, with the final drives being provided by [[David Brown Defence Systems]]. The engine compartment is also fitted with an automatic fire detection and dry-powder fire suppression system with a supplementary manual back up.
+
+;Interior
+The layout of the Bionix is conventional with the driver at the front left, the power pack situated at the front right and the turret in the center with the troop compartment at the rear. Access to the troop compartment at the rear of the vehicle is by a power-operated ramp, which can operate as an emergency access and exit door. A single hatch is installed over the troop compartment.
+
+The driver enters via a roof hatch that opens to the left rear. When driving closed-down, observation is via three day periscopes, while the center periscope can be rapidly replaced by an image-intensification periscope for driving at night. The driver guides the vehicle using a small steering wheel rather than tillers and, as an automatic transmission is fitted, there are just two pedals - accelerator and brake. The instrument panel is mounted on the left, with the transmission selection box on the right.
+
+In the turret, the gunner's station is on the right and the commander's station is on the left, each with a single hatch cover. The turret traverses through 360°. Traverse and weapon elevation is by all-electric digital control. Both the gunner and commander have a turret stop button and are able to lay and fire the weapons. The gunner has the turret control box mounted to the right of his position and both turret-crew members have an adjustable  seat. The communications equipment is installed in the turret bustle.
+
+The basic production models lacks an in-built [[air conditioning]] and [[NBC protection system]], but can be fitted if/when needed.
+
+;Aiming
+The gunner has a twin-control handles and a day/thermal sight, with a magnification of x8 and two fields of view (high and low), with stadias for the 25mm cannon and 7.62mm coaxial machine gun. The commander has an optical relay from the gunner's sight and a single control handle. The vehicle commander has a further five day periscopes to give observation to the turret front, left side and rear; the gunner has three periscopes (1 x M17 and 2 x L794D) to give observation to the right and rear.
+
+==Variants==
+[[File:Bionix ARV.jpg|thumb|Bionix ARV (Armoured Recovery Vehicle)]]
+[[File:Bionix AVLB.jpg|thumb|Bionix AVLB (Armoured Vehicle Launched Bridge)]]
+[[File:NDP2010 Trailblazer CMV 1.jpg|thumb|Trailblazer Counter-Mine Vehicle. It is much taller than the rest of Bionix family, to provide protection against mine blasts.<ref>{{cite web |title=Bionix AFV Armored Fighting Vehicle |url=https://www.militaryfactory.com/armor/detail.asp?armor_id=504 |website=www.militaryfactory.com}}</ref>]]
+
+===Prototypes===
+*'''XV1 and XV2''' - During the experimental phase, two experimental vehicles were built. The first experimental vehicle, XV1, was conceptualised in August 1989 and rolled out in January 1990 while a second and third vehicles, XV2and XV3, based on a new design, was rolled out in December 1990 and March 1991. They were used to test the new running gear and power pack systems as well to firm up the IFV specifications. By January 1993, the first testbed was available; testbeds 2 and 3 were made ready in June 1993. With the acceptance of the IFV by MINDEF, the final prototype and pre-production model rolled out somewhere between July 1995 and June 1996. A total of 9 trial platforms were built in the years up to 1997. {{Citation needed|date=September 2025}}
+*'''[[Interim Armored Vehicle]]''' - The variant was designed as an entry for the US Army's requirements for its [[Stryker Brigade Combat Team|Interim Brigade Combat Team]] (IBCT) concept in 2000. The original turret was replaced with a US-designed and built Recon/Optical stabilised remote weapon station armed with either a 12.7&nbsp;mm [[M2 Browning machine gun]], a 7.62mm machine gun or a 40mm automatic grenade launcher. The replacement of the original turret decreased the overall weight to 17 tonnes, light enough to be air-lifted by a [[C-130 Hercules]] plane. It eventually lost the competition to the [[LAV III]] [[Stryker]] proposed by [[General Dynamics Land Systems]] (GDLS) and [[GM Defense]].{{Citation needed|date=September 2025}}
+*'''Bionix Light Tank''' - Stemming from a need to replace/augment the current fleet of [[AMX-13#National|AMX-13 SM1]] light tanks, MINDEF and [[United Defense]] conducted a series of studies to mount the [[M8-AGS#Variants|Thunderbolt]] Armoured Gun System's 120&nbsp;mm cannon turret (and alternatively, 105mm) on a variety of chassis, namely an extended Bionix chassis, the Universal Combat Vehicle Platform (which the [[SSPH Primus]] was based on) and a variant of the Thunderbolt's chassis. Early extensive attempts to mount an [[Oto Melara]] 120&nbsp;mm turret on the Bionix have been unsuccessful.<ref>{{cite journal|title=Singapore studies indigenous 120 mm main battle tank |url=http://www.navy.mi.th/nrdo/jane/dev_m/singapore_studies_May04.jpg |journal=[[Jane's International Defence Review]] |date=2004-04-05 |access-date=2008-09-29 |url-status=dead |archive-url=https://web.archive.org/web/20070927000359/http://www.navy.mi.th/nrdo/jane/dev_m/singapore_studies_May04.jpg |archive-date=September 27, 2007 }}</ref> Singapore has since procured refurbished [[Leopard 2#Leopard 2A4|Leopard 2A4]] MBTs.<ref>{{cite news |title= Singapore To Buy Refurbished Leopard Tanks From Germany |url= http://www.defensenews.com/story.php?F=2416170&C=asiapac |archive-url= https://archive.today/20121208145029/http://www.defensenews.com/story.php?F=2416170&C=asiapac |url-status= dead |archive-date= 2012-12-08 |publisher= [[Agence France-Presse]] |date= 2006-11-12 |access-date= 2008-09-29 }}</ref>
+
+===Production models===
+*'''Bionix 25''' - First production model. Armed with [[M242 Bushmaster|25mm Bushmaster]] cannon turret and 2 x 7.62mm GPMG. The first Bionix 25 production vehicles were completed in September 1997 and, under the Phase I production contract awarded to Singapore Technologies Automotive. Production continued until 2001. A total of 300 were built for the SAF.{{Citation needed|date=September 2025}}
+*'''Bionix 40/50''' - Variant with Cupola mounted [[STK 40 AGL|40mm AGL]]/[[STK 50MG|0.5-inch HMG]] twin weapon station and 7.62mm GPMG. Can accommodate up to 11 troops. Approx. 300 were built.{{Citation needed|date=September 2025}}
+*'''Bionix II''' - At the turn of the century, the Bionix design received an upgrade, resulting in the creation of the Bionix II; jointly developed by the [[Defence Science and Technology Agency]] (DSTA) and [[Singapore Technologies Engineering]]. The main turret was upgraded to the 30&nbsp;mm [[Bushmaster II]] cannon and armour was improved. The new cannon has 50% greater armor penetration, while the upgraded armour has 50% greater protection against kinetic or shaped charge warheads.{{Citation needed|date=September 2025}} The incorporation of a digital Battlefield Management System has allowed the Bionix II to maintain a higher competency in functionality and survivability by interfacing in real time and sharing information with other linked assets such other army units of the Singapore Army with those of the Air Force and Navy, thereby giving a better all round tactical and situation awareness.<ref>{{cite journal|title=SAF Unveils Battlefield Management System |journal=ST Electronics Review |volume=19 |issue=3 |url=http://www.stee.stengg.com/newsrm/Vol19No3/IndustryNews10.pdf |access-date=2008-09-29 |url-status=dead |archive-url=https://web.archive.org/web/20070928043713/http://www.stee.stengg.com/newsrm/Vol19No3/IndustryNews10.pdf |archive-date=2007-09-28 }}</ref> The Bionix II has an improved day / night thermal sighting system (DNTSS) with a dual-axis stabilisation system for enhanced target tracking, and an integrated eye-safe laser rangefinder has a range of up to 3&nbsp;km. Upgrades also include minefield protection and enhancements to the 30mm cannon.<ref>{{cite web| url= https://www.nas.gov.sg/archivesonline/data/pdfdoc/MINDEF_20061023001/MINDEF_20061023003.pdf| title= Factsheet: BIONIX II : Capabilities and Technical Specifications}}</ref> About 200 were built for the SAF, mostly were upgraded from existing 25mm variants.
+*'''Bionix ARV''' - [[Armoured Recovery Vehicle]] variant equipped with a 25 tonne winch and a 30 tonne crane.{{Citation needed|date=September 2025}}
+*'''Bionix AVLB''' - [[Armoured Vehicle Launched Bridge]] variant fitted with an MLC30 bridge that can be launched within 7 minutes by a crew of two (commander and driver) from the internal armoured compartment or via remote control panel. When extended the bridge can be used to span a gap of up to 22 metres.{{Citation needed|date=September 2025}}
+*'''Bionix Counter-Mine Vehicle (Trailblazer)''' - The SAF has inducted a 30-ton class Counter-Mine Vehicle (CMV) built on the Bionix chassis called the Trailblazer, which uses a mine flail system. In addition to mine-clearing, the Trailblazer is able to mark its trails using a lane marking system with pneumatically fired rods, enabling vehicles to quickly travel behind the Trailblazer safely without losing momentum.<ref>{{cite journal |title=Introduction to Mine Clearing Technology |journal=DTA Horizons 2009 |url=https://dsta.gov.sg/docs/default-source/dsta-about/introduction-to-mine-clearing-technology.pdf?sfvrsn=2 |access-date=2020-05-29 |archive-date=2022-08-06 |archive-url=https://web.archive.org/web/20220806030206/https://dsta.gov.sg/docs/default-source/dsta-about/introduction-to-mine-clearing-technology.pdf?sfvrsn=2 |url-status=dead }}</ref>
+
+==Operators==
+; {{SGP}} 
+* [[Singapore Army]] – 300 Bionix 25, 300 Bionix 40/50, and 200 Bionix-II<ref>{{Cite web|url=https://www.armyrecognition.com/singapore_singaporean_army_land_ground_forces_uk/singapore_singaporean_army_land_ground_forces_military_equipment_armoured_armored_vehicle_uk.html|title=Singapore Singaporean army land ground forces military equipment armoured armored vehicle UK &#124; Singapore Singaporean army land ground forces UK &#124; Asia UK|access-date=2020-06-13|archive-date=2017-08-21|archive-url=https://web.archive.org/web/20170821045204/https://www.armyrecognition.com/singapore_singaporean_army_land_ground_forces_uk/singapore_singaporean_army_land_ground_forces_military_equipment_armoured_armored_vehicle_uk.html|url-status=dead}}</ref>
+
+==See also==
+
+===Comparable AFV/IFVs===
+{{Div col|colwidth=25em}}
+* {{lwc|ASCOD}}
+* {{lwc|BMP-3}}
+* {{lwc|Combat Vehicle 90|CV90 IFV}}
+* {{lwc|Borsuk (infantry fighting vehicle)|Borsuk}}
+* {{lwc|Dardo IFV}}
+* {{lwc|ELVO Kentaurus|Kentaurus}}
+* {{lwc|FV510 Warrior tracked armoured vehicle|FV510 Warrior}}
+* {{lwc|K21}}
+* {{lwc|M2 Bradley|M2 Bradley IFV}}
+* {{lwc|Puma (IFV)|Schützenpanzer Puma}}
+* {{lwc|Tulpar (IFV)|Tulpar IFV}}
+* {{lwc|WPB Anders}}
+* {{lwc|ZBD-97}}
+{{div col end}}
+
+==References==
+;Notes
+{{reflist|colwidth=30em}}
+;Bibliography
+{{refbegin}}
+*{{cite journal |last= C |first= Foss |title= Equipment Profile of Bionix |journal= [[Jane's Defence Weekly]] |date= 1999-01-10 }}
+{{refend}}
+
+==External links==
+{{commons category|Bionix}}
+*[https://web.archive.org/web/20061124112020/http://www.stengg.com/CoyCapPro/detail.aspx?pdid=14 Bionix page @ ST Engineering]
+*{{Deprecated archive|url=https://archive.today/20121225000654/http://www.mindef.gov.sg/imindef/news_and_events/nr/1999/jul/30jul99_nr/30jul99_fs.html|title=MINDEF Factsheet - Bionix IFV|sec=el}}
+*[http://www.mindef.gov.sg/imindef/news_and_events/nr/1999/jul/30jul99_nr.html SAF’s First Infantry Fighting Vehicle Armoured Battle Group is Operational] {{Webarchive|url=https://web.archive.org/web/20181215171823/http://www.mindef.gov.sg/imindef/news_and_events/nr/1999/jul/30jul99_nr.html |date=2018-12-15 }}
+*[http://www.janes.com/defence/land_forces/supplement/lav/lav_bionix.shtml Jane's: Bionix]
+*[http://www.one35th.com/bionix/bi_spec.htm Bionix IFV specifications at one35th.com]
+
+===Video link===
+*{{YouTube|4aTNFxdY7K0|SAF Defence Watch - Trailblazer Counter-Mine Vehicle}}
+
+{{Singapore-designed weapons}}
+
+{{DEFAULTSORT:Bionix Afv}}
+[[Category:Amphibious armoured fighting vehicles]]
+[[Category:Tracked armoured fighting vehicles]]
+[[Category:Armoured fighting vehicles of Singapore]]
+[[Category:Military vehicles introduced in the 1990s]]
+[[Category:Infantry fighting vehicles of the post–Cold War period]]
+[[Category:ST Engineering vehicles]]

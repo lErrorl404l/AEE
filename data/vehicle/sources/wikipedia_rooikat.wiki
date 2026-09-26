@@ -1,0 +1,137 @@
+{{Short description|South African armoured fighting vehicle}}
+{{Use British English|date=February 2017}}
+{{Use dmy dates|date=February 2017}}
+{{Infobox weapon
+| name               = Rooikat
+| image              = [[File:Rooikat Armoured Car (9686598433) (cropped).jpg|frameless|upright=1.4|South African Rooikat armoured fighting vehicle]]
+| image_size         = 
+| caption            = 
+| origin             = [[South Africa|South Africa]]
+| type               = [[Armoured fighting vehicle]]
+| design_date        = 1982
+| production_date    = 1987–2020
+| service            = 1987–present
+| wars               = [[Southern African Development Community intervention in Lesotho|Operation Boleas]]<ref name="SAAC1">{{cite web|title=Customs, Traditions, History, and Insignia of the South African Armoured Corps|author=<!--Staff writer(s); no by-line.-->|url=http://www.saarmourassociation.co.za/images/3,%202nd%20Ed,%20Customs%20&%20Traditions%20History%20and%20Insignia.pdf|location=Bloemfontein|publisher=South African Armour Association|date=18 October 2009|access-date=14 October 2012|archive-url=https://web.archive.org/web/20120913112235/http://www.saarmourassociation.co.za/images/3%2C%202nd%20Ed%2C%20Customs%20%26%20Traditions%20History%20and%20Insignia.pdf|archive-date=13 September 2012|url-status=dead|df=dmy-all}}</ref>
+| is_vehicle         = yes
+| crew               = 4
+| length             = {{convert|7.1|m|ftin|abbr=on}}<br />{{convert|8.2|m|ftin|abbr=on}} with gun forward
+| width              = {{convert|2.9|m|ftin|abbr=on}}
+| height             = {{convert|2.6|m|ftin|abbr=on}} turret roof
+| weight             = {{convert|28|t|abbr=on}}
+| armour             = 
+| primary_armament   = [[Denel GT-4|Denel GT-4]] (Based off of the Oto Melara) L/62 rifled gun<ref>{{cite web|url=http://www.army.mil.za/equipment/weaponsystems/armour/rooikat_equipm.htm|title=Rooikat|publisher=[[South African Army]]|access-date=26 June 2009|archive-date=24 April 2014|archive-url=https://web.archive.org/web/20140424015700/http://www.army.mil.za/equipment/weaponsystems/armour/rooikat_equipm.htm|url-status=dead}}</ref><ref name="defenceweb">{{cite web|url=http://www.defenceweb.co.za/index.php?option=com_content&task=view&id=496&Itemid=362|title=Rooikat armoured car|publisher=DefenceWeb|access-date=26 June 2009}}</ref>
+| secondary_armament = 2 x [[M1919A4#International variants and derivatives|MG4]] 7.62 mm machine guns; 8 x 81 mm smoke grenade dischargers<ref name="defenceweb"/>
+| engine             = 10-cylinder water-cooled diesel
+| engine_power       = {{convert|414|kW|HP|abbr=on}}
+| suspension         = 8×8 wheeled, Fully independent active trailing arm
+| speed              = Road: 120 km/h (75 mph)<br /> Off-road: 60 km/h (37 mph)
+| pw_ratio           = {{convert|14.89|kW|HP|abbr=on}}/t
+| vehicle_range      = 1000 km (621 mi)
+}}
+
+The '''Rooikat''' ([[Afrikaans]] for [[Caracal]]; {{Literal translation|Red cat}}) is a South African [[Reconnaissance vehicle|armoured reconnaissance vehicle]] equipped with a stabilised {{convert|76|mm|abbr=on}} high velocity gun for organic [[anti-tank]] and [[fire support]] purposes. The Rooikat's main armament is the [[Denel GT-4|GT-4]] which was built with the [[OTO Melara 76 mm|Oto Melara 76]] naval gun as its basis, to which it is nearly identical in terms of technical performance and statistics.<ref name="Jane1">''Jane's Armour and Artillery, 2001–2002'', Volume 23, pp. 244-345.</ref> The Rooikat can also fire the same ammunition as the naval gun, albeit modified with new percussion primers in the shells.<ref name="Jane1"/>
+
+==Development history==
+===Background===
+From the mid-1960s to the mid-1980s, the standard reconnaissance vehicle of the [[South African Defence Force]] was the [[Eland armoured car|Eland-90]], a four-wheeled armoured car modelled closely after the [[Panhard AML|Panhard AML-90]].<ref name="Evolution">{{cite book|last=Ogorkiewicz|first=Richard|date=2015|title=Tanks: 100 Years of Evolution|location=Oxford, UK|publisher=Osprey Publishing|isbn=9781472806703|pages=221–223}}</ref> However, the Eland was designed for border patrols and internal security, and proved ill-suited to countering [[tank|tank warfare]].<ref name="Warwick">Warwick, Rodney. ''Operation Savannah: A Measure of SADF Decline, Resourcefulness, and Modernisation''. Scientia Militaria, 2012, Volume 40 Issue 3 p. 364-377.</ref> The Eland's limitations were first observed during combat in ''[[Operation Savannah (Angola)|Operation Savannah]]'', a 1975 South African incursion into [[Angola]].<ref name="Warwick"/> This led to its supplementation in the late 1970s with the much heavier, six-wheeled [[Ratel IFV|Ratel-90]] infantry fighting vehicle. The Ratel proved to be a successful interim measure because it could both carry troops and provide fire support.<ref name="Warwick"/>
+
+In 1984, South Africa launched ''[[Operation Askari]]'', which saw its mechanised and motorised infantry contingents threatened by large Angolan tank formations for the first time.<ref name="Lessons">[https://web.archive.org/web/20150128103422/http://www.ajol.info/index.php/smsajms/article/viewFile/89172/78726 Lessons of the Border War]</ref> Both the Ratel-90 and Eland-90 were used as improvised [[tank destroyer]]s but performed inadequately against [[T-54/55]] tanks of the [[People's Armed Forces for the Liberation of Angola]] (FAPLA).<ref name="Lessons"/> The armoured cars were decisively outranged by the Angolan tanks, and their inability to fire on the move resulted in a poor rate of engagement.<ref name="Grove">{{cite web|title=Ratel teen tenk en|author=<!--Staff writer(s); no by-line.-->
+|url=http://www.samagte.co.za/weermag/hc/grove.html|url-status=dead|location=Port Elizabeth|publisher=International Veterans' Association/South African Forces Club|date=2011
+|access-date=20 September 2016|archive-url=https://web.archive.org/web/20120728040847/http://www.samagte.co.za/weermag/hc/grove.html|archive-date=28 July 2012}}</ref> As a direct result of ''Askari'', the Eland was removed from combat service and a squadron of [[Olifant (tank)|Olifant]] tanks kept on permanent standby to assist with neutralising enemy armour during future South African operations.<ref name="Scholtz">{{cite book|last=Scholtz|first=Leopold|title=The SADF in the Border War 1966–1989|year=2013|publisher=Tafelberg|location=Cape Town|isbn=978-0-624-05410-8|pages=158–194}}</ref>
+
+As early as the mid-1970s, the [[South African Armoured Corps]] had issued a requirement for a "heavy armoured car" capable of improving upon the Eland's 4X4 chassis, which limited mobility, and the mediocre range of its {{convert|90|mm|ftin|abbr=on}} low pressure gun.<ref name=SurviveRide>{{cite book|last1=Camp|first1=Steve|last2=Helmoed-Römer|first2=Heitman|title=Surviving the Ride: A pictorial history of South African Manufactured Mine-Protected vehicles|date=November 2014|pages=181–190|publisher=30 Degrees South|location=Pinetown|isbn=978-1928211-17-4}}</ref> Research was undertaken for a ''New Generation Armoured Car'' project between 1976 and 1979, when three 8X8 prototypes were built by [[Sandock-Austral]] and trialled in [[Potchefstroom]].<ref name=lesakeng>{{cite web |url=http://www.saarmourmuseum.co.za/lesakeng.html |title=Lesakeng |publisher=South African Armour Museum |date=6 December 2012 |access-date=18 June 2013 |url-status=dead |archive-url=https://web.archive.org/web/20130703141331/http://www.saarmourmuseum.co.za/lesakeng.html |archive-date=3 July 2013 |df=dmy-all }}</ref> The prototypes were built using chassis components of the Ratel, Eland and [[Alvis Saracen]], respectively, and were armed with a [[Ordnance QF 17-pounder#77 mm HV|77&nbsp;mm HV]] tank gun.<ref name=lesakeng/> The Saracen and Ratel derivatives could each accommodate four crewmen – gunner, commander, loader and driver – while the Eland derivative accommodated five, including one passenger.<ref name=SurviveRide/> These trials were primarily for the purpose of evaluating the vehicles' performance on different types of local terrain; while none of the three were deemed acceptable for the ''New Generation Armoured Car'' programme, the chassis built with Eland components continued to influence later prototypes—particularly with regards to its suspension features.<ref name=Saen>{{cite web|url=http://www.engineeringnews.co.za/article/south-africas-impressive-history-in-the-design-and-manufacture-of-armoured-vehicles-2008-10-10/article_comments:1 |title=South Africa's impressive history in the design and manufacture of armoured vehicles |publisher=South African Engineering News |date=8 October 2014 |access-date=18 July 2014}}</ref>
+[[File:TempeYard6.png|thumb|250px|Test Beds for the New Generation Armoured Car Project: the one on the left, Concept 1, was built with automotive and chassis components from a [[Ratel IFV|Ratel]], and the one on the right, Concept 2, an [[Eland Mk7]].]]
+Three more contenders appeared in 1982: the Bismarck, the Cheetah Mk1, and the Cheetah Mk2. These prototypes were designed with technical assistance from a West German engineering firm, [[Thyssen-Henschel]].<ref name=SurviveRide/> The Bismarck was an eight-wheeled vehicle which weighed over {{convert|40|t|abbr=on}} and carried a {{convert|105|mm|ftin|abbr=on}} [[Denel GT-7]] tank gun.<ref name=lesakeng/> The Cheetah Mk1 was six-wheeled and carried a lightweight 76mm gun or a [[Brandt Mle CM60A1|60&nbsp;mm breech-loading mortar]] (adopted from the [[Eland Mk7#Eland-60|Eland-60]]); it resembled a modified [[TH200|TH-400]].<ref name=SurviveRide/> Also known as "Model 2B", the Cheetah Mk2 was eight-wheeled and possessed an inferior range to the Cheetah Mk1, but was considerably faster.<ref name=SurviveRide/> These prototypes were trialled in March 1984 and the Cheetah Mk2 was accepted by the South African Army.<ref name=Defence>{{cite web|url=http://www.defenceweb.co.za/index.php?option=com_content&view=article&id=6253:fact-file-rooikat-armoured-car-&catid=79:fact-files&Itemid=159 |title=Fact file: Rooikat armoured car |publisher=Defence Web |date=21 January 2010 |access-date=18 June 2013}}</ref> The Armoured Corps had hoped to simplify logistics by replacing both the Eland and Ratel simultaneously with a new chassis that could double as both a reconnaissance vehicle and an infantry fighting vehicle, similar to the Ratel-90 interim measure, but these plans were shelved.<ref name=Defence/> A fourth, multirole eight-wheeled prototype evaluated in 1984 was rejected and a decision was made to retain the Ratel for the foreseeable future while pursuing the separate development of the Cheetah Mk2, now denoted as the ''Rooikat''.<ref name=lesakeng/> In its final form the Rooikat incorporated several features adopted directly from the Eland-90, namely a similar commander's cupola, the same turret periscopes, and the mounting of all eight wheels on trailing arms, with the same hydropneumatic shock absorbers and coil springs.<ref name=Saen/><ref name=SurviveRide/>
+
+The first Rooikats were manufactured by Sandock-Austral beginning in September 1987, and delivered to the South African Army for further tests by December. Another three were delivered in October 1988.<ref name=SurviveRide/> The Rooikat did not enter service in large numbers until August 1989, when a single South African armoured squadron began receiving it. Mass production commenced around mid-1990.<ref name=SurviveRide/>
+
+===Service===
+Upon its inception in 1994 the [[South African National Defence Force]] (SANDF) immediately ordered the retirement of the surviving Eland-90 fleet.<ref name="Gate">{{Citation |title=Armoured Car, Eland Mk7/90 (RSA) |year=2014 |type=Gate exhibit |publisher=[[South African National Defence Force]] |location= South African Armour Museum, [[Bloemfontein]]}}</ref> Nevertheless, some Elands remained with reserve units as late as 1996 until sufficient numbers of the Rooikat could be produced to phase them out.<ref name="SANow">''SA Now''. South African Communication Service, 1996, Volume 1 p. 24.</ref> The SANDF subsequently issued a requirement for another 66 Rooikats from Sandock-Austral, which had been absorbed by [[Land Systems OMC]].<ref name="Review1">{{cite web|title=South African Defence Review 1998|author=<!--Staff writer(s); no by-line.-->|url=http://www.dod.mil.za/documents/defencereview/defence%20review1998.pdf|location=Pretoria
+|publisher=South African Department of Defence|date=April 1998|access-date=29 September 2016|archive-url=https://web.archive.org/web/20160528115331/http://www.dod.mil.za/documents/defencereview/defence%20review1998.pdf|archive-date=28 May 2016}}</ref> New SANDF doctrine placed an emphasis on the Rooikat's primary role of reconnaissance, as well as the harassment of enemy [[rearguard]] units. In a marked departure from the manoeuvre-oriented anti-tank tactics of the [[South African Border War]], Rooikat crews were also trained to engage tanks only from defilade or otherwise static defensive positions.<ref name="Review1"/>
+
+Just prior to [[South African general election, 1994|general elections]] in 1994, the South African Army deployed the Rooikat for internal patrols.<ref>{{cite web|url=https://www.nelsonmandela.org/omalley/index.php/site/q/03lv00017/04lv00344/05lv00355/06lv00356.htm |title=The O'Malley Archives |access-date=5 November 2014 |url-status=dead |archive-url=https://web.archive.org/web/20150128052759/https://www.nelsonmandela.org/omalley/index.php/site/q/03lv00017/04lv00344/05lv00355/06lv00356.htm |archive-date=28 January 2015 }}</ref> During the [[Southern African Development Community intervention in Lesotho]], Rooikats of the [[1 Special Service Battalion]] were called up to reinforce South African mechanised units then skirmishing with Lesotho Army mutineers. The armoured cars arrived in [[Maseru]], the capital of Lesotho, on 22 September 1998 and participated in various security operations.<ref name="SAAC1"/>
+
+==Variants==
+
+{| class="wikitable sortable"
+|-
+! Variant !! Description !! Image
+|-
+| '''Rooikat 76 ''' || Original version, featuring a 76mm [[Denel GT-4]] main gun.||
+|-
+| '''Rooikat 105''' ||Upgraded version, prototype only.||[[File:Rooikat Armoured Car 105mm.jpg|200px|Rooikat Armoured Car 105&nbsp;mm]]
+|-
+| '''ZA-35''' || Anti-aircraft gun platform, prototype only.||[[File:Rooikat ZA 35.jpg|180px|Rooikat ZA 35]]
+|-
+| '''ZA-HVM''' || Surface-to-air missile platform, prototype only.||[[File:Rooikat SAM.jpg|180px|Rooikat SAM]]
+|-
+| '''35/ZT-3''' || Anti-tank missile platform, prototype only.||[[File:Rooikat antitank.jpg|180px|Rooikat antitank]]
+|}
+
+===Rooikat 105===
+In 1990 an upgrade and redesign programme was started by Reumech OMC to customize the Rooikat for the international market, and by 1994 the development of a Rooikat 105 prototype with a 105mm [[Rifling|rifled gun]] was completed.<ref name=":3">{{Cite web |title=Rooikat |url=https://www.globalsecurity.org/military/world//rsa/rooikat.htm |access-date=2026-09-06 |website=www.globalsecurity.org}}</ref><ref name=":4">{{Cite web |date=2025-01-12 |title=Rooikat 105 (1992) |url=https://forum.warthunder.com/t/rooikat-105-1992/203292 |access-date=2026-09-06 |website=War Thunder — official forum |language=en}}</ref>
+
+The Rooikat 105 is designed for high mobility day and night combat operations. Passive image intensifiers and [[thermal imaging]] equipment for night driving, navigation and weapon deployment permit round-the-clock combat operations. The Rooikat 105 is equipped with a [[Denel GT-7|GT-7]] 105mm tank gun. The gun fires the full range of NATO full-pressure 105mm ammunition including generation I, II and III rounds. The gun, fitted with a 51-calibre thermal sleeve encased barrel, fires six rounds a minute. There are two [[7.62 mm caliber|7.62mm]] [[Machine gun|machine guns]], one [[Co-axial machine gun|co-axial]] to the main armament and one at the commander's position, for general purpose ground and air defence. The vehicle is equipped with two banks of 81mm [[Smoke grenade discharger|smoke grenade]] launchers, mounted in a forward firing position on each side of the turret. The system is electrically operated. The smoke grenades form a dense protective smoke screen, which can be sustained using an exhaust smoke generator. The digital [[Fire-control system|fire control system]] takes data from a suite of sensors and provides an automatic fire control solution. Automatic data input includes target range from a [[laser rangefinder]], target speed and direction derived from tracking the target, crosswind speed, weapon tilt and the characteristics of the weapon. Manual data input includes ammunition type and environmental data. The fire control system allows the Rooikat to engage enemy targets while on the move across rough terrain. The time between laser ranging the target and firing is approximately two seconds. Three variations of fire directing systems are offered. The most complex system incorporates a primary stabilized gunner's sight, automatic computation and implementation of ballistic offset of the weapon, electro-mechanical gun control, stabilized main weapon, gunner's sight with day / night channel slaved to the main weapon and an independent panoramic commander's sight.<ref>{{Cite web |title=Army Technology - Rooikat 105 - Specification |url=http://ciar.org/ttk/mbt/rooikat-specs.html |access-date=2026-09-06 |website=ciar.org}}</ref><ref>{{Cite web |title=Rooikat |url=https://weaponsystems.net/system/333-Rooikat |access-date=2026-09-06 |website=Weaponsystems.net |language=en}}</ref><ref name=":3" /><ref name=":4" />
+
+===ZA-35 ===
+The Rooikat ZA-35 [[Self-propelled anti-aircraft weapon|Self-Propelled Anti-Aircraft Gun]] (SPAAG) version was developed by ARMSCOR in the early 90s. The ZA-35 is armed with two Lyttelton Engineering M-35 guns. These guns have a combined rate of fire at 1,100 rounds per minute and fire HE-FRAG rounds against air targets and AP-I against [[Light Armoured Vehicle|light armoured vehicles]]. The ZA-35 is fitted with an EDR 110 surveillance and tracking radar, which can track up to 100 air targets simultaneously. The antenna can be raised to a height of about {{convert|5|m|ftin|abbr=on}} for increased visibility, when the vehicle is stationary. It can provide targeting data to other nearby SPAAGs and air defence systems, which do not have radars. It is also fitted with a computerized fire control system, fully stabilized gunner's sight and a laser rangefinder.<ref>{{Cite web|author=ARG |url=http://www.military-today.com/artillery/za_35.htm |archive-url=https://archive.today/20150408162306/http://www.military-today.com/artillery/za_35.htm |url-status=usurped |archive-date=8 April 2015 |title=ZA-35 - Prototype 35-mm self-propelled anti-aircraft gun |access-date=15 April 2015}}</ref>
+
+===ZA-HVM===
+{{See also|SAHV-3 surface-to-air missile}}
+The ZA-HVM was based on the same chassis as the Rooikat, and was intended to be used together with the ZA-35. It would have used the [[SAHV-3 Surface To Air Missile|SAHV-3]] [[surface-to-air missile]]. There is photographic evidence of a wooden mockup turret prototype (as can be seen in this citation <ref name=":0">{{Cite web |date=2024-07-10 |title=ZA-HVM - Technical data and Discussion |url=https://forum.warthunder.com/t/za-hvm-technical-data-and-discussion/125878 |access-date=2026-09-04 |website=War Thunder — official forum |language=en}}</ref>) and there is evidence of it being finished but never photographed.<ref name=":0" /> Although the ZA-HVM wasn't finished, the [[G6-HVM]] – which was based on the [[G6 howitzer|G-6 Rhino Howitzer]] – was finished and used the same SAHV-3 missiles the ZA-HVM was supposed to use.<ref name=Janes/>{{rp|398}}
+
+===Rooikat 35/ZT-3===
+A prototype Rooikat 35 was also developed with a new turret to incorporate the [[ZT3 Ingwe]] [[Anti-tank guided missile|anti-tank missiles]] and It used a [[Autocannon|35mm autocannon]], it did not enter production.<ref name="Janes">{{cite book | title=Jane's Tank Recognition Guide | publisher=HarperCollins | author=Foss, Christopher F. | year=1996 | location=Glasgow | isbn=0-00-4709950}}</ref>{{rp|399}}
+
+=== Rooikat 120 ===
+Was a advanced proposed Rooikat variant that never got past testing phase, it was planned to use the [[Denel GT-12|GT-12]] cannon which would be able to use NATO standard ammunition, have a unmanned turret, autoloader, a 7.62mm Co-axial Machine Gun and was planned to have a [[Active protection system|APS]] system with the same optics as the Rooikat MTTD, it helped greatly towards the development of the MTTD.<ref name=":1" /><ref name=":2" /><ref>{{Cite web |date=2010-01-08 |title=Rooikat Armoured Car |url=https://www.secretprojects.co.uk/threads/rooikat-armoured-car.8913/ |access-date=2026-09-23 |website=Secret Projects Forum |language=en-US}}</ref>
+
+=== Technology demonstrators ===
+
+=== Rooikat Medium Turret Technology Demonstrator (MTTD) ===
+The MTTD is one of the most advanced Rooikat Variants acting as a testbed for new technologies, it has a unmanned turret and it houses a [[Denel GT-7|GT-7]] cannon but has also tested the [[Denel GT-8|GT-8]] LIW 105mm Cannon before,<ref name=":2" /> it can also house a 120mm cannon called the [[Denel GT-12|GT-12]] and it has compatibility for a Machine Gun but stock wise it doesn't have one, it has compatibility for a Rexnord Active Protection System [[Active protection system|(APS)]]. 1st Variant is a [[Kinetic energy|Kinetic]] [[Hard-kill]] APS that fires a solid projectile at incoming projectiles to shoot them down. 2nd is a [[Soft-kill]] Laser foam material that throws off [[Laser guidance|laser-guided]] [[missile]] guidance systems.<ref name=":2" /> It has the capability to upgrade its devices, but stock wise the prototype has Gen 2 thermal devices and also Gen 2-3 [[Night-vision device|night vision devices]], the Rooikat MTTD is more of a [[Technology demonstration|technology demonstrator]] than a actual production variant with it mostly being used to test new technological advances, and it is because of the Rooikat MTTD that many modern day [[Armoured fighting vehicle|AFVs]] and [[Main battle tank|MBTs]] alike are experimenting with unmanned turrets and APS systems.<ref name=":2">{{Cite web |title=Medium Turret Technology Demonstrator |url=https://www.saarmourmuseum.com/mttd |access-date=2026-09-04 |website=sa-armour-museum |language=en}}</ref><ref name=":1">{{Cite news |last=Venter |first=Dewald |date=2018-01-25 |title=Rooikat - Tank Encyclopedia |url=https://tanks-encyclopedia.com/coldwar/south_africa/rooikat.php |archive-url=http://web.archive.org/web/20250526224522/https://tanks-encyclopedia.com/coldwar/south_africa/rooikat.php |archive-date=2025-05-26 |access-date=2026-09-04 |work=Tank Encyclopedia |language=en-US}}</ref>
+
+=== Rooikat conventional vehicle electric drive technology demonstrator (CVED) ===
+One Rooikat was turned into a conventional vehicle electric drive technology demonstrator (CVED) and displayed at AAD2006 in Cape Town in September of that year. The CVED project involved HIT, IAD, Nezrotek, Hutchinson (France), Kessler Magnet Motor (Germany) and MTU (Germany). VEG Magazine reported in 2006 the vehicle was fitted with a power supply control system feeding eight wheel-hub mounted M67/0 electric units and a two-phase pneumatic gearbox.<ref name=":1" /><ref>{{Cite web |last=defenceWeb |date=2011-09-28 |title=Gerotek taking CVED for another spin - DefenceWeb |url=https://defenceweb.co.za/industry/industry-industry/gerotek-taking-cved-for-another-spin/ |access-date=2026-09-04 |language=en-ZA}}</ref>
+
+==Operators==
+*{{flag|South Africa}}
+*{{Armed forces|South Africa}}<ref name=":5">{{cite web|url=http://www.army.mil.za/equipment/weaponsystems/armour/rooikat_equipm.htm|title=home|access-date=5 November 2014|archive-date=24 April 2014|archive-url=https://web.archive.org/web/20140424015700/http://www.army.mil.za/equipment/weaponsystems/armour/rooikat_equipm.htm|url-status=dead}}</ref>
+
+=== Past Operators ===
+
+* <span class="flagicon">[[File:Flag of South Africa (1928–1994, dark colors).svg|23x17px|border |alt=|link=]]&nbsp;</span>[[Apartheid South Africa]]
+* <span class="flagicon">[[File:Ensign of the South African Defence Force (1981–1994).svg|23x17px|border |alt=|link=]]&nbsp;</span>[[South African Defence Force]]
+
+==See also==
+{{Portal|South Africa}}
+;Vehicles of comparable role, performance, and era
+*{{lwc|B1 Centauro}}
+*{{lwc|M1128 mobile gun system}}
+*{{lwc|Type 16 maneuver combat vehicle}}
+*{{lwc|Vextra 105}}
+
+== References ==
+{{reflist}}
+
+==External links==
+{{Commons category|Rooikat}}
+* [http://www.baesystems.com/ProductsServices/bae_prod_landa_rooikat.html Manufacturer's website] (Accessed 28 July 2008)
+* [http://www.defenceweb.co.za/index.php?option=com_content&task=view&id=496&Itemid=362 Factfile on Vehicle] (Accessed 25 February 2009)
+* [http://www.denellandsystems.co.za/products_rooikat_76_full_description.html Rooikat 76 Armoured Fighting Vehicle]
+
+{{Denel}}
+{{South African AFV}}
+{{SADF Vehicles}}
+{{Modern Recce}}
+{{Armoured combat vehicles}}
+
+[[Category:Armoured cars]]
+[[Category:Military vehicles introduced in the 1980s]]
+[[Category:Fire support vehicles]]
+[[Category:Armoured fighting vehicles of the Cold War]]
+[[Category:Armoured fighting vehicles of South Africa]]
+[[Category:Tank destroyers]]
+[[Category:Reconnaissance vehicles of the Cold War]]
+[[Category:Denel]]
+[[Category:Eight-wheeled vehicles]]

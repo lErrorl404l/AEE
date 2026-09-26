@@ -1,0 +1,218 @@
+{{Use dmy dates|date=March 2022}}
+{{more citations needed|date=January 2013}}
+{{Infobox weapon
+| name               = BTR-4
+| image              = BTR-4E in Kyiv.jpg
+| image_size         = 300
+| caption            = BTR-4E
+| origin             = [[Ukraine]]
+<!-- Type selection -->| type               = [[Infantry fighting vehicle]]
+| is_vehicle         = yes
+<!-- Service history -->| service            = 2014{{ndash}}present
+| used_by            = See ''[[#Operators|Operators]]''
+| wars               = {{Tree list}}
+*[[Boko Haram insurgency]]
+* [[War against the Islamic State]]<ref>{{Cite web |url=https://isis.liveuamap.com/en/2016/6-june-the-btr4-in-action-with-the-iraqi-army-near-fallujah |title=The BTR-4 in action with the Iraqi Army near Fallujah. - Today news from war on ISIS in English from Somalia, Egypt, Afghanistan, Iraq, Syria - Deir ez-Zur operation - isis.liveuamap.com |access-date=10 March 2018 |archive-url=https://web.archive.org/web/20180311021730/https://isis.liveuamap.com/en/2016/6-june-the-btr4-in-action-with-the-iraqi-army-near-fallujah |archive-date=11 March 2018 |url-status=live }}</ref>
+*[[Russo-Ukrainian War]]
+**[[Russo-Ukrainian war (2022–present)|Russo-Ukrainian war]]
+{{Tree list/end}}
+<!-- Production history -->| designer           = [[Kharkiv Morozov Machine Building Design Bureau]]
+| design_date        = 
+| manufacturer       = Kharkiv Morozov Machine Building Design Bureau
+| unit_cost          = 
+| production_date    = 
+| number             = 
+| variants           = <!-- General specifications -->
+| weight             = {{ubl|17.5+3 t (with anti-bullet protection)|25+3 t (with additional protection)}}
+| length             = {{convert|7.76|m|ft|abbr=on}}
+| part_length        = 
+| width              = {{convert|2.93|m|ft|abbr=on}}
+| height             = {{convert|3.02|m|ft|abbr=on}}
+| diameter           = 
+| crew               = {{ubl|3 crew|8 passengers}}
+<!-- Vehicle/missile specifications -->| armour             = Welded steel
+| primary_armament   = [[Shipunov 2A42|2A72]] {{convert|30|mm|in|abbr=on}} autocannon
+| secondary_armament = {{ubl|{{convert|7.62|mm|in|abbr=on}} coaxial machine gun|x4 anti-tank missiles OR|x2 anti-tank missiles and {{convert|30|mm|in|abbr=on}} automatic grenade launcher}}
+| engine             = 3TD diesel engine or DEUTZ EURO III
+| engine_power       = 489 hp or 598
+| transmission       = 
+| payload_capacity   = 
+| fuel_capacity      = 
+| pw_ratio           = {{ubl|28.6 hp/t (with anti-bullet protection)|20 hp/t (with additional protection)}}
+| suspension         = wheeled 8×8
+| clearance          = 
+| vehicle_range      = at least {{convert|690|km|mi|abbr=on}}
+| speed              = {{ubl|{{convert|110|km/h|abbr=on}} (road)|{{convert|10|km/h|abbr=on}} (in water)}}
+| guidance           = 
+}}
+
+The '''BTR-4 "[[Bucephalus]]"''' ({{Langx|uk|БТР-4 «Буцефал»|lit=|translit=Butsefal}}, abbreviation of {{langx|uk|Бронетранспортер|links=no|lit=armoured  transporter|translit=Bronetransporter|label=none}}) is an [[Amphibious vehicle|amphibious]] 8×8 wheeled [[infantry fighting vehicle]] (IFV) designed in [[Ukraine]] by the [[Kharkiv Morozov Machine Building Design Bureau]] (SOE KMDB).
+
+They have seen action in the [[War against the Islamic State]] during the capture of [[Jurf al-Nasr]] and [[Ar-Rutbah]] from [[Islamic State of Iraq and the Levant|ISIL]] and in the [[Russo-Ukrainian War]].
+
+== History ==
+The prototype, which was designed as a private venture, was unveiled at the Aviasvit 2006 exhibition held in Kyiv in June 2006.<ref name="urlBTR-4 wheeled armoured personnel carrier vehicle Ukrainian Army Ukraine description pictures technic | Ukraine Ukrainian army wheeled armoured vehicle | Ukrainian Ukraine army military equipment UK">{{cite web |url=https://www.armyrecognition.com/ukraine_ukrainian_army_wheeled_armoured_vehicle/btr-4_wheeled_armoured_personnel_carrier_vehicle_ukrainian_army_ukraine_description_pictures_technic.html |title=BTR-4 wheeled armoured personnel carrier vehicle Ukrainian Army Ukraine description pictures technic &#124; Ukraine Ukrainian army wheeled armoured vehicle &#124; Ukrainian Ukraine army military equipment UK |archive-url=https://web.archive.org/web/20181009022120/https://www.armyrecognition.com/ukraine_ukrainian_army_wheeled_armoured_vehicle/btr-4_wheeled_armoured_personnel_carrier_vehicle_ukrainian_army_ukraine_description_pictures_technic.html |archive-date=9 October 2018 |url-status=live }}</ref><ref name="urlBTR-4 Wheeled Armored Personnel Carrier - Ukraine">{{cite web |url=https://www.militaryfactory.com/armor/detail.asp?armor_id=524 |title=BTR-4 Wheeled Armored Personnel Carrier - Ukraine |archive-url=https://web.archive.org/web/20181009013321/https://www.militaryfactory.com/armor/detail.asp?armor_id=524 |archive-date=9 October 2018 |url-status=live }}</ref> A serial production started in late 2008. The first series of ten BTRs entered service with the [[Ukrainian Ground Forces|army of Ukraine]] in 2009.<ref>''Informacje'' in: "Raport - Wojsko Technika Obronność" Nr. 12/2008, p. 69 (pl icon)</ref> In 2009, the BTR-4 was presented as a candidate for replacing the [[Pegaso BMR]] as the next infantry combat vehicle of the [[Spanish Army]].<ref>{{Cite news|url=http://www.infodefensa.com/es/2009/10/04/noticia-ucrania-oferta-el-btr-4-como-candidato-al-vbr-8x8-espanol.html|title=Ucrania oferta el BTR-4 como candidato al VBR 8x8 español - Noticias Infodefensa España|last=Infodefensa.com|date=4 October 2009|work=Infodefensa.com|access-date=15 September 2018|language=es|archive-url=https://web.archive.org/web/20170921193252/http://www.infodefensa.com/es/2009/10/04/noticia-ucrania-oferta-el-btr-4-como-candidato-al-vbr-8x8-espanol.html|archive-date=21 September 2017|url-status=live}}</ref>
+
+In 2012, the [[Ministry of Defence (Iraq)|Iraqi Ministry of Defence]] ordered 420 Ukrainian BTR-4E IFVs.<ref name=":0">{{Cite web |last=Administrator |title=BTR-4E 8x8 armoured vehicle APC personnel carrier IFV technical data {{!}} Ukraine Ukrainian army wheeled armoured vehicle {{!}} Ukrainian Ukraine army military equipment UK |url=https://www.armyrecognition.com/ukraine_ukrainian_army_wheeled_armoured_vehicle/btr-4e_8x8_armoured_vehicle_apc_personnel_carrier_data.html |access-date=2022-11-30 |website=www.armyrecognition.com |language=en-gb}}</ref> However, only 88 vehicles were delivered from the order, as the Iraqi Ministry of Defense cancelled the contract due to quality issues.<ref name=":3">{{Cite web |title=Ukrainian military recaptured BTR-4E from the Russians in Kharkiv region |url=https://mil.in.ua/en/news/ukrainian-military-recaptured-btr-4e-from-the-russians-in-kharkiv-region/ |access-date=2022-11-30 |website=Militarnyi |language=en-US}}</ref> The [[Ukrainian Army|Ukrainian army]] thus took over 52 BTR-4E IFVs originally intended for [[Iraq]].<ref name=":0" />
+
+In April 2014, units of the [[National Guard of Ukraine]] received their first BTR-4E IFVs, and during late May and early June they were already involved in the [[siege of Sloviansk]], which was liberated on 5 July 2014, with the [[Russian people's militias in Ukraine|separatists]] and Russians withdrawing to [[Donetsk]].<ref name=":2">{{Cite web |title=BTR-4 Armoured Personnel Carrier (APC) |url=https://www.army-technology.com/projects/btr-4-armoured-personnel-carrier/ |access-date=2022-11-30 |website=Army Technology |language=en-US}}</ref> During the fighting at Sloviansk, soldiers praised the new BTR-4E, especially for its armour, mobility, and optics.<ref name=":2" /> Vehicles withstood enemy machine gun fire and [[Rocket-propelled grenade|RPGs]], and the [[Slat armor|slat-armor]] and [[Kevlar]] layer also protected the crews from shrapnel.<ref name=":3" /> On October 4, 2014, separatists posted a photo of a captured Ukrainian BTR-4K, a commander's version of the BTR-4.<ref name=":3" /> The vehicle had a slat-armor and was repainted.<ref name=":3" /> It served with the [[Vostok Battalion (Donbas)|Vostok Battalion]], which was composed mainly of Russian [[GRU (Russian Federation)|GRU]] officers.<ref name=":2" />
+
+==Description==
+[[File:BTR-4MV 01.jpg|thumb|A BTR-4MV1]]
+The layout of the BTR-4 represents a change from the older [[BTR-60]]/70/80s designed in the [[Soviet Union]]. The vehicle has a conventional layout similar to Western designs like the German [[TPz Fuchs]] with the driver's and commander's compartment at the front of the hull, the engine and transmission compartment in the middle, and the troop compartment at the rear. The troops enter and leave the vehicle either through the rear doors or the roof hatches, and the driver and the commander are provided with doors located on the sides of the hull.<ref>{{Cite web |title=BTR-4MV1 |url=https://ukroboronprom.com.ua/ |access-date=2022-08-14 |website=ukroboronprom |language=en}}</ref>
+
+The BTR-4 is a more flexible design than the older BTR-60/70/80s, as the altered layout makes it easier to adapt the vehicle to specialized roles. The vehicle can be armed according to customer requirements. The prototype is armed with the locally designed New Armament Module, which consists of one [[30mm]] [[2A72]] automatic cannon, a [[7.62mm]] coaxial machine-gun, up to four 9P135M [[9M113 Konkurs|Konkurs]] or Baryer anti-tank missiles (two on each side of the turret), and one [[30mm]] automatic [[grenade launcher]] (fitted in place of the AT missiles on one left-hand side of the turret). It can be fitted with different turret weapons modules including the GROM module,<ref name=":1">{{Cite web |title=ARMOURED VEHICLES AND ARMAMENT |url=https://www.ukrspecexport.com/uploads/files/Categories/pdf_5/be2e23.pdf |url-status=live |archive-url=https://web.archive.org/web/20230131185002/https://www.ukrspecexport.com/uploads/files/Categories/pdf_5/be2e23.pdf |archive-date=2023-01-31 |access-date=2024-07-24 |website=www.ukrspecexport.com}}</ref> PARUS module,<ref name=":1" /> SHTURM-M module,<ref name=":1" /> SHKVAL module, and the BAU 23x2 module.<ref name=":1" />
+
+The BTR-4 has a maximum speed of 110&nbsp;km/h. It can cross water obstacles at a speed of 10&nbsp;km/h. The vehicle is powered by a 3TD diesel engine with 500&nbsp;hp. There are reports of vehicles being hit by several RPG rounds and multiple small-arms fire with no consequences.{{Citation needed|date=September 2016}} [[Slat armor]] can be fitted for maximum protection against RPG attacks.
+
+Ukrainian state defense manufacturer [[Ukroboronprom|UkrOboronProm]] has unveiled a prototype wheeled armored fighting vehicle that is presently known as the BTR-4MV1. The new BTR-4MV1 is the latest generation of 8×8 IFV. The BTR-4MV1 is designed in accordance with NATO standards. The vehicle is based on the BTR-4 but with many new improvements.
+
+It differs from the previous versions mostly in a modified configuration of the vehicle's hull, which makes it possible to install additional types of protection (including the ceramic plates and explosive reactive armor) to reach the fourth and fifth protection levels in accordance with NATO standards. The hull rear is fitted with a ramp that not only enables troopers to enter and leave the vehicle much quicker, but also enables the armored personnel carrier to transport various large-size cargoes, including additional ammunition, spare parts, etc.{{citation needed|date=February 2021}}
+
+==Service history==
+Up to 750 vehicles have been produced for all operators.{{citation needed|date=November 2019}}
+[[File:171201-Z-EL858-193.jpg|thumb|A BTR-4 assigned to 1st Battalion, [[92nd Mechanized Brigade]], Ukrainian Armed Forces]]
+
+=== Indonesia ===
+During early trials and evaluation by the [[Indonesian Marine Corps]], the BTR-4 has successfully passed the trials in Indonesia.<ref>{{Cite web|url=http://www.defense-aerospace.com/cgi-bin/client/modele.pl?shop=dae&modele=release&prod=180561&cat=3|title=Ukrainian BTR-4M Successfully Passed Trials In Indonesia|website=www.defense-aerospace.com|access-date=27 January 2020}}</ref><ref>{{Cite web|url=https://asianmilitaryreview.com/2017/05/indonesian-marines-has-started-using-ukrainian-btr-4m/|title=Indonesian Marines has started using Ukrainian BTR-4M|date=26 May 2017|website=Asian Military Review|language=en-US|access-date=27 January 2020}}</ref> In April 2017, it was reported that the Indonesian Marine Corps had prepared a formal letter to withdraw from any further acquisitions of the BTR-4,<ref>[http://www.janes.com/article/69391/indonesian-marine-corps-prepares-to-pull-plug-on-further-btr-4-acquisitions Indonesian Marine Corps prepares to pull plug on further BTR-4 acquisitions] {{Webarchive|url=https://web.archive.org/web/20170927112734/http://www.janes.com/article/69391/indonesian-marine-corps-prepares-to-pull-plug-on-further-btr-4-acquisitions|date=27 September 2017}} - Janes.com, 7 April 2017</ref> though according to Ukroboronprom the news are part of informational warfare and black PR.<ref>{{Cite web|url=https://ukroboronprom.com.ua/en/media/vidmova-indoneziyi-vid-ukrayinskyh-btr-4-chergovyj-fejk-informatsijnoyi-vijny.html|title=Відмова Індонезії від українських БТР-4 – черговий фейк інформаційної війни|date=11 April 2017|website=Ukroboronprom|language=en-US|access-date=27 January 2020}}</ref>
+
+=== Iraq ===
+Iraq has ordered 450 BTR-4s. 40 vehicles of the third batch delivered arrived with rust and damaged hulls and were not accepted by Iraq.<ref name="auto">{{cite web|url=http://www.defenseindustrydaily.com/good-bad-news-100-apcs-for-ukraine-023206/|title=Good Bad News: 100 APCs for Ukraine|date=6 April 2014|work=Defense Industry Daily|access-date=15 November 2014|archive-url=https://web.archive.org/web/20141028160703/http://www.defenseindustrydaily.com/good-bad-news-100-apcs-for-ukraine-023206/|archive-date=28 October 2014|url-status=live}}</ref><ref name="auto2">{{cite web|url=https://militarytechcooperations.wordpress.com/tag/btr-4/|title=BTR-4 - militarytechcooperations|access-date=15 November 2014|archive-url=https://web.archive.org/web/20141218120148/https://militarytechcooperations.wordpress.com/tag/btr-4/|archive-date=18 December 2014|url-status=live}}</ref><ref name="auto4">{{cite web|url=http://www.janes.com/article/31977/iraqi-btr-4-shipment-heads-back-to-ukraine|title=Iraqi BTR-4 shipment heads back to Ukraine|access-date=15 November 2014|archive-url=https://web.archive.org/web/20141028154457/http://www.janes.com/article/31977/iraqi-btr-4-shipment-heads-back-to-ukraine|archive-date=28 October 2014|url-status=live}}</ref>
+
+The Iraqi army used BTR-4s in an operation to recapture [[Jurf Al Nasr|Jurf Al Sakhar]] from [[Islamic State of Iraq and the Levant|ISIL]] forces on 24 October 2014, successfully repelling two road-side ambushes.<ref>{{cite web|last1=Al Salami|first1=Jassem|title=Led by an Armored Bulldozer, Shia Militia Fought to Restore Their Credibility|url=https://medium.com/war-is-boring/led-by-an-armored-bulldozer-shia-militia-fought-to-restore-their-credibility-8a6467a29174|website=War is Boring|date=26 November 2014 |publisher=Medium.com|access-date=26 November 2014|archive-url=https://web.archive.org/web/20141219052004/https://medium.com/war-is-boring/led-by-an-armored-bulldozer-shia-militia-fought-to-restore-their-credibility-8a6467a29174|archive-date=19 December 2014|url-status=live}}</ref>
+[[File:Подбитая техника ВСУ 001.png|thumb|A Ukrainian BTR-4 lost during the Russian invasion of Ukraine]]
+
+=== Nigeria ===
+50 BTR-4s were delivered to the Nigerian Army in 2014.{{citation needed|date=February 2021}}
+
+=== Ukraine ===
+Some BTR-4s that are being used by Ukrainian armed forces in the [[Russo-Ukrainian War]] come from the rejected batch for the Iraqi army.<ref name="auto"/><ref name="auto2"/><ref name="auto4"/>
+
+In June 2014, company officials revealed that the BTR-4E was being used in [[2014 pro-Russian conflict in Ukraine|military operations in the Sloviansk area]]. Its armor had withstood hits from large-caliber machine guns, counter-HEAT side screens protected the crew from anti-tank grenade launchers, and armored glass sustained direct hits from sniper rifles.<ref>[http://www.armyrecognition.com/june_2014_global_defense_security_news_uk/ukrainian_btr-4_8x8_armoured_personnel_carrier_used_during_anti-terrorist_operation_in_sloviansk.html Ukrainian BTR-4 8x8 armoured personnel carrier used during anti-terrorist operation in Sloviansk] {{Webarchive|url=https://web.archive.org/web/20150114085416/http://www.armyrecognition.com/june_2014_global_defense_security_news_uk/ukrainian_btr-4_8x8_armoured_personnel_carrier_used_during_anti-terrorist_operation_in_sloviansk.html |date=14 January 2015 }} - Armyrecognition.com, 5 June 2014</ref> Their original desert camo as seen on Iraqi BTR-4s can be viewed in pictures and videos from ATO operations.<ref>{{cite web|url=http://www.janes.com/article/36447/ukraine-national-guard-to-receive-btr-4s|title=Ukraine National Guard to receive BTR-4s|access-date=15 November 2014|archive-url=https://web.archive.org/web/20141028153724/http://www.janes.com/article/36447/ukraine-national-guard-to-receive-btr-4s|archive-date=28 October 2014|url-status=live}}</ref> The BTR-4 continues to see use during the ongoing [[2022 Russian invasion of Ukraine]].
+[[File:Azov in Mariupol 3.jpg|thumb|BTR-4 of the [[Azov Regiment]]]]
+
+==Versions==
+BTR-4 is available in multiple different configurations:
+[[File:BTR-4 silhouette.png|thumb|A BTR-4 with a Grom module]]
+[[File:BSEM-4K silhouette.jpg|thumb|Retrieving And Medical Vehicle BSEM-4K]]
+[[File:BREM-4K silhouette.jpg|thumb|Repair and Recovery Vehicle BREM-4K]]
+* '''BRM-4K''' - reconnaissance vehicle
+* '''BTR-4K''' - command vehicle
+* '''BTR-4KSh''' - command and staff vehicle
+* '''BTR-4E1'''<ref>{{usurped|1=[https://web.archive.org/web/20140313150358/http://wartime.org.ua/9610-hkbm-vigotovilo-noviy-varant-btr-4e1-z-dodatkovim-zahistom.html Kharkiv Machine Design Bureau designed new version of BTR-4 with additional protection]}}. Military panorama. 12 March 2014</ref>
+* '''BTR-4EM''' - Myanmar version with a locally produced turret<ref name=":4">{{Cite web |title=Myanmar Presents Domestic BTR-4 Armored Personnel Carrier for First Time |url=https://militarnyi.com/en/news/myanmar-presents-domestic-btr-4-apc/ |access-date=2026-06-01 |website=Militarnyi |language=en-US}}</ref><ref>{{Cite web |title=Reddit - Please wait for verification |url=https://www.reddit.com/r/Myanmarcombatfootage/comments/1s6mjpq/juntas_newly_revealed_btr4em_infantry_fighting/ |access-date=2026-06-01 |website=www.reddit.com}}</ref>
+* '''BTR-4MV'''<ref>{{Cite web |title=ODIN - OE Data Integration Network |url=https://odin.tradoc.army.mil/WEG/Asset/BTR-4MV_Ukrainian_8x8_Amphibious_Armored_Personnel_Carrier_(APC) |access-date=2025-07-13 |website=odin.tradoc.army.mil}}</ref>
+* '''BTR-4MV1''' - upgraded to NATO standard with increased protection
+* '''MOP-4K''' - fire support vehicle
+* '''BREM-4K''' - repair and recovery vehicle
+* '''BSEM-4K''' - recovery and medical vehicle
+* '''BMM-4A''' - apparently similar in role to the ''BMM-1'' ([[BTR-80#Variants|BTR-80 family]]) [first-aid and battlefield evacuation vehicle]
+* '''BMM-4B''' - apparently similar in role to the ''BMM-2'' (BTR-80 family) [battalion level initial medical treatment vehicle]
+* '''BMM-4C''' - apparently similar in role to the ''BMM-3'' (BTR-80 family) [field hospital]
+
+==Weapons modules==
+'''Standard module:'''
+* Passengers:
+** 3× crew (driver, commander, gunner)
+** 8× soldiers (7× soldiers in up-armored version)
+* Armament:
+** 1× 30&nbsp;mm 2A72 automatic cannon
+** 1× 7.62&nbsp;mm coaxial machinegun
+** 4× 9P135M Konkurs or Baryer AT missiles (optional 1× 30&nbsp;mm automatic grenade launcher with reduction to 2× AT missiles)
+
+'''GROM module:'''
+* Passengers:
+** 3× crew (driver, commander, gunner)
+** 8× soldiers
+* Armament:
+** 1× 30&nbsp;mm automatic cannon
+** 1× 30&nbsp;mm automatic grenade launcher
+** 1× 7.62&nbsp;mm coaxial machine gun
+** 4× 9P135M Konkurs or Baryer AT missiles
+
+'''SHKVAL module:'''
+* Passengers:
+** 3× crew (driver, commander, gunner)
+** 8× soldiers
+* Armament:
+** 1× 30&nbsp;mm automatic cannon
+** 1× 7.62&nbsp;mm coaxial machine gun
+** 4× 9P135M Konkurs or Baryer AT missiles (optional 1× 30&nbsp;mm automatic grenade launcher with reduction to 2× AT missiles)
+
+'''BAU 23×2 module:'''
+* Passengers:
+** 3× crew (driver, commander, gunner)
+** 8× soldiers
+* Armament:
+** 2× [[23×152mmB|23×152&nbsp;mm]] automatic cannons
+** 1× 7.62&nbsp;mm coaxial machine gun
+
+'''BTR-4KSh command and staff vehicle:'''
+* Passengers:
+** 2× crew (driver, vehicle commander)
+** 5× staff (commander, four officers)
+* Armament:
+** 1× TKB-01-1 12.7&nbsp;mm machine gun
+
+'''MOP-4K fire support vehicle:'''
+* Passengers:
+** 4× crew (driver, commander, gunner, loader)
+* Armament:
+** 1× 120&nbsp;mm cannon
+** 1× 12.7&nbsp;mm anti-aircraft machine gun (turret ring mount)
+
+==Operators==
+[[File:BTR-4 operators.png|thumb|A map of BTR-4 operators in 2023]]
+
+===Current operators===
+*{{flag|Indonesia}} — The [[Indonesian Marine Corps]] ordered 5 BTR-4M with two vehicles with the  BM-7 "Parus" turret with a 30-mm ZTM-1 automatic gun and 3 with 7.62&nbsp;mm RCWS and began operating them in May 2017.<ref>[http://www.armyrecognition.com/january_2014_global_defense_security_news_industry/spetstechnoexport_of_ukraine_awarded_contract_to_supply_5_btr-4_8x8_armoured_to_indonesia_2401143.html SpetsTechnoExport of Ukraine awarded contract to supply 5 BTR-4 8x8 armoured to Indonesia] {{Webarchive|url=https://web.archive.org/web/20160513074146/http://www.armyrecognition.com/january_2014_global_defense_security_news_industry/spetstechnoexport_of_ukraine_awarded_contract_to_supply_5_btr-4_8x8_armoured_to_indonesia_2401143.html |date=13 May 2016 }} - Armyrecognition.com, 24 January 2014.</ref> Subsequent orders for 55 vehicles were cancelled due to unsatisfactory performance.<ref>{{Cite web|last=Ziyadi|first=A.|date=8 April 2017|title=TNI AL Batalkan Pembelian Tank BTR-4|url=https://militermeter.com/tni-al-batalkan-pembelian-tank-btr-4/|access-date=14 February 2022|website=MiliterMeter.com|language=id-ID}}</ref> In April 2019, an order was made for 21 BT-3F and 22 BMP-3F vehicles instead.<ref>{{Cite web |url=https://www.armyrecognition.com/april_2019_global_defense_security_army_news_industry/indonesia_buys_bt-3f_and_bmp-3f_armored_vehicles_from_russia.html |title=Indonesia buys BT-3F and BMP-3F armored vehicles from Russia |access-date=28 April 2019 |archive-url=https://web.archive.org/web/20190425102006/https://www.armyrecognition.com/april_2019_global_defense_security_army_news_industry/indonesia_buys_bt-3f_and_bmp-3f_armored_vehicles_from_russia.html |archive-date=25 April 2019 |url-status=live }}</ref>
+*{{IRQ}} — The [[Iraqi Ministry of Defence]] ordered 420 vehicles in 2012.<ref>{{cite web |url=http://www.defenseindustrydaily.com/Ukraine-Iraq-in-25-Bn-Weapons-Deal-06016/ |title=Ukraine, Iraq in $2.5 Bn Weapons Deal |publisher=Defenseindustrydaily.com |date=10 October 2012 |access-date=25 May 2014 |archive-url=https://web.archive.org/web/20140707201901/http://www.defenseindustrydaily.com/Ukraine-Iraq-in-25-Bn-Weapons-Deal-06016/ |archive-date=7 July 2014 |url-status=live }}</ref> Only 88 out of an order for 420 were delivered by late 2013 and the contract has been canceled due to numerous quality violations. According to Ukraine the contract was resumed and as of September 2018 Iraq operates 270 vehicles.
+*{{flag|Nigeria}} — 5 BTR-4 for the Nigerian Police.<ref name="ZA2">{{cite web |url=http://www.defenceweb.co.za/index.php?option%3Dcom_content%26view%3Darticle%26id%3D38580:recent-nigerian-military-acquisitions%26catid%3D50:Land%26Itemid%3D105 |archive-url=https://web.archive.org/web/20150407231838/http://www.defenceweb.co.za/index.php?option=com_content&view=article&id=38580:recent-nigerian-military-acquisitions&catid=50:Land&Itemid=105 |url-status=dead |archive-date=7 April 2015 |title=Recent Nigerian military acquisitions |author=Guy Martin |access-date=30 March 2015 }}</ref>
+*{{UKR}}
+:* [[Armed Forces of Ukraine]] — Ukraine's Ministry of Defence made an initial order of 10 vehicles that entered service in 2009.<ref>{{cite web |url=http://www.ua.all-biz.info/news/index.php?newsid=257529 |archive-url=https://archive.today/20130108074505/http://www.ua.all-biz.info/news/index.php?newsid=257529 |url-status=dead |archive-date=8 January 2013 |title=Лента новостей : ALL.BIZ: Украина |publisher=Ua.all-biz.info |access-date=25 May 2014 }}</ref>105 BTR-4 and BTR-4E in service in Army and National Guards units.<ref>MIlitary balance 2022 p.212-214</ref><ref>[https://economics.unian.info/10317528-ukrainian-army-gets-first-btr-4-apcs-made-of-new-ukrainian-armored-steel-photo.html Ukrainian Army gets first BTR-4 APCs made of new Ukrainian armored steel (Photo)] {{Webarchive|url=https://web.archive.org/web/20181030114629/https://economics.unian.info/10317528-ukrainian-army-gets-first-btr-4-apcs-made-of-new-ukrainian-armored-steel-photo.html |date=30 October 2018 }}, [[UNIAN]] (30 October 2018)</ref>
+:* [[Ministry of Internal Affairs (Ukraine)|Ministry of Internal Affairs]] — since 25 March 2014, 10 vehicles were transferred to the recently reconstituted [[National Guard of Ukraine]]. There were 40 vehicles delivered to NGU until July 2014.<ref>"''Ранее государство закупило для нужд Нацгвардии 40 новейших БТР-4 в Харькове''"<br/>[http://www.unian.net/politics/933030-natsgvardiya-poluchila-pyat-novyih-btr-3e-kievskogo-bronetankovogo-zavoda-smi.html Нацгвардия получила пять новых БТР-3Е Киевского бронетанкового завода - СМИ] {{Webarchive|url=https://web.archive.org/web/20141011173010/http://www.unian.net/politics/933030-natsgvardiya-poluchila-pyat-novyih-btr-3e-kievskogo-bronetankovogo-zavoda-smi.html |date=11 October 2014 }} // "[[Ukrainian Independent Information Agency|УНИАН]]" от 25 июня 2014</ref>
+*{{MYA}} — In March 2019, a Ukrainian company and the Myanmar military signed a joint-venture agreement to build a plant capable of manufacturing armored personnel carriers (APCs) and self-propelled howitzers. The types of APCs that will be made in the plant are said to be eight-wheeled BTR-4E.<ref>{{Cite web|url=https://www.armyrecognition.com/march_2019_global_defense_security_army_news_industry/joint_venture_to_supply_ukrainian_apcs_to_myanmar_army.amp.html|title=Joint venture to supply Ukrainian APCs to Myanmar army|website=www.armyrecognition.com|access-date=25 July 2020|archive-date=25 July 2020|archive-url=https://web.archive.org/web/20200725164929/https://www.armyrecognition.com/march_2019_global_defense_security_army_news_industry/joint_venture_to_supply_ukrainian_apcs_to_myanmar_army.amp.html|url-status=dead}}</ref> Myanmar also revealed a new variant, the BTR-4EM, with a domestically designed and produced turret. 200+ are in service.<ref>{{Cite web |title=Reddit - Please wait for verification |url=https://www.reddit.com/r/Myanmarcombatfootage/comments/1s6mjpq/juntas_newly_revealed_btr4em_infantry_fighting/ |access-date=2026-06-01 |website=www.reddit.com}}</ref><ref name=":4" />
+*{{RUS}} — As of 14 April 2025, at least 21 were captured by Russian forces during the [[Russian invasion of Ukraine]] according to [[Oryx (website)|Oryx]].<ref>{{cite web|title=Attack On Europe: Documenting Ukrainian Equipment Losses During The 2022 Russian Invasion Of Ukraine |url=https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-ukrainian.html|website=[[Oryx (website)|Oryx]]|access-date=14 April 2025}}</ref>
+
+=== Potential operators ===
+
+* {{flag|Republic of North Macedonia}} — The tender for the Republic of North Macedonia Ground Forces is for an infantry wheeled vehicle, for replacement of the current [[BTR-60]] and [[BTR-70]] fleet. The estimated order can reach 200 units.<ref>{{Cite web|url=http://www.kyivpost.com/news/nation/detail/36687/|archive-url=https://web.archive.org/web/20110805102927/http://www.kyivpost.com/news/nation/detail/36687/|url-status=dead|archive-date=5 August 2011|title=Kyiv Post. Independence. Community. Trust - Ukraine - Macedonia 'interested' in Ukraine's advanced light armored vehicles|date=5 August 2011|access-date=15 September 2018}}</ref>
+* {{THA}} — The [[Royal Thai Marine Corps]] reportedly showed interest in the BTR-4MV1 in October 2018.<ref>{{cite web |last1=Grevatt |first1=Jon |title=Thailand interested in new BTR-4 variant, says Ukrainian agency |url=https://www.janes.com/article/83763/thailand-interested-in-new-btr-4-variant-says-ukrainian-agency |website=IHS Jane's 360 |access-date=12 October 2018 |archive-url=https://web.archive.org/web/20181012194128/https://www.janes.com/article/83763/thailand-interested-in-new-btr-4-variant-says-ukrainian-agency |archive-date=12 October 2018 |location=Bangkok |date=12 October 2018 |url-status=live}}</ref>
+=== Captures ===
+
+* {{flag|Islamic State}} — 3 vehicles were seized by ISIL. 2 were captured from [[Iraqi Armed Forces|Iraqi Forces]] around October 2016 after ISIL conducted an offensive to retake the town of [[Ar-Rutbah]] where they were driven out. The other one was captured at an unknown location and date.<ref>{{Cite web |date=2024-05-25 |title=Iraq: ISIS with a captured Ukraine-made BTR-4 APC at Rutbah - Today news from war on Daesh, ISIS in English from Somalia, Egypt, Afghanistan, Iraq, Syria - isis.liveuamap.com |url=https://isis.liveuamap.com/en/2016/24-october-iraq-isis-with-a-captured-ukrainemade-btr4-apc |url-status=live |archive-url=https://web.archive.org/web/20240525105428/https://isis.liveuamap.com/en/2016/24-october-iraq-isis-with-a-captured-ukrainemade-btr4-apc |archive-date=2024-05-25 |access-date=2024-05-25 |website=isis.liveuamap.com}}</ref><ref>{{Cite web |date=2014-09-22 |title=Vehicles And Equipment Captured And Destroyed By The Islamic State Inside Iraq Until November 2014 - Oryx |url=https://www.oryxspioenkop.com/2014/11/vehicles-and-equipment-captured-and.html |url-status=live |archive-url=https://web.archive.org/web/20240201204306/https://www.oryxspioenkop.com/2014/11/vehicles-and-equipment-captured-and.html |archive-date=2024-02-01 |access-date=2024-05-25 |website=www.oryxspioenkop.com}}</ref><ref>{{Cite web |title=ИГИЛовцы захватили БТР украинского производства — ФОТО+ВИДЕО — Новая Эпоха |url=https://novayaepoxa.com/igilovtsy-zahvatili-btr-ukrainskogo-proizvodstva-foto-video/embed |access-date=2024-05-29 |website=novayaepoxa.com}}</ref>
+* {{flagdeco|ISIL}} [[Islamic State – West Africa Province|ISWAP]] — In April 2021, ISWAP captured a BTR-4EN variant from soldiers of the [[Nigerian Army]]'s "[[156 Battalion]]" during the [[Mainok attack]] where they conducted an assault on a military base located in [[Mainok]].<ref>{{Cite news |date=2021-08-29 |title=Despite Nigerian Army denials, ISWAP releases photos of armoured tanks, operational vehicles captured from Mainok - Ripples Nigeria |url=https://www.ripplesnigeria.com/despite-nigerian-army-denials-iswap-releases-photos-of-armoured-tanks-operational-vehicles-captured-from-mainok/ |url-status=live |archive-url=https://web.archive.org/web/20230607051527/https://www.ripplesnigeria.com/despite-nigerian-army-denials-iswap-releases-photos-of-armoured-tanks-operational-vehicles-captured-from-mainok/ |archive-date=2023-06-07 |access-date=2024-05-25 |newspaper=[[Ripples Nigeria]]}}</ref>
+
+==See also==
+*{{lwc|BTR-3}}
+*{{lwc|BTR-7}}
+*{{lwc|BTR-80}} 
+*{{lwc|BTR-90}} 
+*{{lwc|BTR-94}} 
+*{{lwc|Patria AMV}} 
+*{{lwc|Saur 1|Saur 2}} 
+*{{lwc|Stryker}} 
+*{{lwc|TPz Fuchs}} 
+*{{lwc|VPK-7829 Bumerang}}
+
+==References==
+{{Reflist}}
+
+== External links ==
+{{Commons category}}
+* [http://www.armyrecognition.com/index.php?option=com_content&task=view&id=816 BTR-4 Technical data sheet and pictures] {{Webarchive|url=https://web.archive.org/web/20130618053001/http://www.armyrecognition.com/index.php?option=com_content&task=view&id=816 |date=18 June 2013 }}
+* [https://web.archive.org/web/20070514031718/http://www.morozov.com.ua/eng/body/btr4.php?menu=m1.php BTR-4 Armoured Personnel Carrier] at KMDB
+
+{{Modern IFV and APC}}
+{{ModernUKRAFVsNav | style= wide }}
+
+[[Category:Amphibious armoured personnel carriers]]
+[[Category:Armoured personnel carriers of Ukraine]]
+[[Category:Police vehicles]]
+[[Category:Wheeled armoured personnel carriers]]
+[[Category:Wheeled amphibious armoured fighting vehicles]]
+[[Category:Eight-wheeled vehicles]]
+[[Category:Infantry fighting vehicles of the post–Cold War period]]
+[[Category:Military vehicles introduced in the 2000s]]
+[[Category:Armoured personnel carriers of the post–Cold War period]]
+[[Category:Wheeled infantry fighting vehicles]]

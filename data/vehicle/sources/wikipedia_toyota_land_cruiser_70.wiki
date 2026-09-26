@@ -1,0 +1,229 @@
+{{Use dmy dates |date=December 2021}}
+{{Use British English|date=April 2024}}
+{{Infobox automobile
+| name = Toyota Land Cruiser (J70)
+| image = Toyota Land Cruiser 70 003 (cropped).JPG
+| caption = Toyota Land Cruiser (HZJ76V; second facelift, Japan)
+| manufacturer = [[Toyota]]
+| production = 1984–present
+| assembly = {{unbulleted list
+  | Japan: [[Toyota City]] (formerly ARACO; current production by Toyota Auto Body at the Yoshiwara Plant)
+  | Colombia: [[Envigado]], Colombia ([[SOFASA]]: 1993–2008)<ref name="SOFASA">{{Cite web |last=Mantilla |first=Óscar Julián Restrepo |date=2019-07-02 |title=Renault-Sofasa: 50 años de historia moviendo a los colombianos |trans-title=Renault-Sofasa: 50 years of history moving Colombians |url=https://www.elcarrocolombiano.com/industria/renault-sofasa-50-anos-de-historia-moviendo-a-los-colombianos/ |access-date=2021-02-07 |work=El Carro Colombiano |language=es-CO}}</ref>
+  | Portugal: [[Ovar]]<ref>{{cite press release |url=http://web3.cmvm.pt/sdi/emitentes/docs/CONV54816.pdf |title=Annual Financial Statement |page=4 |publisher=Toyota |location=Portugal |date=8 April 2015 |access-date=26 August 2015}}</ref>
+  | Venezuela: [[Cumaná]]<ref>{{cite magazine |url=https://books.google.com/books?id=3rREAAAAYAAJ&q=cumana+landcruiser |magazine=Número | issue = 600 | title = Una falla de batería | trans-title = A battery failure | language = es |page=26 |publisher=Editora G-Nueve |location = Venezuela | year=1994}}</ref>
+  }}
+| class = {{unbulleted list
+  | [[off-road vehicle|Off-road]] [[full-size SUV]]
+  | [[Full-size pickup truck]]
+  }}
+| body_style = {{unbulleted list
+  | 2-door and 4-door [[pickup truck]]
+  | 3-door and 5-door [[station wagon|wagon]]
+  | 3-door troop carrier
+  }}
+| layout = [[Front-engine, four-wheel-drive]]
+| related = [[Toyota Land Cruiser Prado (J70)]]
+| engine = {{unbulleted list
+  |'''Petrol:'''{{Ubl
+    | 2.4&nbsp;L ''[[Toyota R engine#22R|22R]]'' [[Straight-four engine|I4]] (1984–1989 RJ7x)
+    | 2.4&nbsp;L ''[[Toyota R engine#22R-E|22R-E]]'' [[Straight-four engine|I4]] (1984–1989 RJ7x)
+    | 4.0&nbsp;L ''[[Toyota F engine#3F|3F]]'' [[Straight-six engine|I6]] (1985–1992 FJ7x)
+    | 4.5&nbsp;L ''[[Toyota FZ engine#1FZ-F|1FZ-F]]'' I6 (1992–2009 FZJ7x)
+    | 4.5&nbsp;L ''[[Toyota FZ engine#1FZ-FE|1FZ-FE]]'' I6 (1992–2009 FZJ7x)
+    | 4.0&nbsp;L ''[[Toyota GR engine#1GR-FE|1GR-FE]]'' V6 (2009–present GRJ7x)
+    }}
+  |'''Diesel:'''{{Ubl
+    | 2.4&nbsp;L ''[[Toyota L engine#2L|2L]]'' I4 (1990–1996 LJ7x)
+    | 2.4&nbsp;L ''[[Toyota L engine#2L-T|2L-T]]'' [[Turbo-diesel|turbo]] I4 (1990–1996 LJ7x)
+    | 2.4&nbsp;L ''[[Toyota L engine#2L-TE|2L-TE]]'' [[Turbo-diesel|turbo]] I4 (1990–1996 LJ7x)
+    | 2.5&nbsp;L ''[[List of VM Motori engines#425 OHV|VM HR425]]'' turbo [[Straight-four engine|I4]](1987-1990 BJ7x)(Italy only)
+    | 2.5&nbsp;L ''[[List of VM Motori engines#HR 588 OHV|VM HR588]]'' turbo [[Straight-five engine|I5]] (1987-1990 BJ7x)(Italy only)<ref name=TAM90>{{cite book |title=Quattroruote: Tutte le Auto del Mondo 1990 | ref = TAM90 | editor-last=Mastrostefano | editor-first = Raffaele |publisher=Editoriale Domus S.p.A |year=1990 |pages=1340–1341 |language=it |location=Milano}}</ref>
+    | 2.8&nbsp;L ''[[Toyota L engine#3L|3L]]'' I4 (1990–1996 LJ7x)
+    | 2.8&nbsp;L ''[[Toyota GD engine#1GD-FTV|1GD-FTV]]'' turbo I4 (2023–present GDJ7x)
+    | 3.0&nbsp;L ''[[Toyota KZ engine#1KZ-T|1KZ-T]]'' turbo I4 (1993–1996 KZJ7x)
+    | 3.0&nbsp;L ''[[Toyota KZ engine#1KZ-TE|1KZ-TE]]'' turbo I4 (1993–1996 KZJ7x)
+    | 3.4&nbsp;L ''[[Toyota B engine#3B|3B]]'' I4 (1984–1990 BJ7x)
+    | 3.4&nbsp;L ''[[Toyota B engine#13B-T|13B-T]]'' turbo I4 (1984–1990 BJ7x)
+    | 3.4&nbsp;L ''[[Toyota PZ engine|1PZ]]'' I5 (1990–1995 PZJ7x) 
+    | 3.9&nbsp;L ''[[Perkins 4.236|ADE 236]]'' I4 (South Africa only)
+    | 4.0&nbsp;L ''[[Toyota H engine#2H|2H]]'' I6 (1984–1990 HJ7x)
+    | 4.2&nbsp;L ''[[Toyota HZ engine#1HZ|1HZ]]'' I6 (1990–present HZJ7x)
+    | 4.2&nbsp;L ''[[Toyota HD engine#1HD-FTE|1HD-FTE]]'' turbo I6 (1998–2007 HDJ7x)
+    | 4.5&nbsp;L ''[[Toyota VD engine#1VD-FTV|1VD-FTV]]'' turbo [[V8 engine|V8]] (2007–present VDJ7x)
+    }}
+  }}
+| transmission = {{unbulleted list
+  | 4/5-speed [[manual transmission|manual]]
+  | 4-speed [[Automatic transmission|automatic]]
+  | 6-speed automatic (2023–present)
+  }}
+| wheelbase = {{unbulleted list
+  | {{cvt|2310|mm|in|1}}
+  | {{cvt|2600|mm|in|1}}
+  | {{cvt|2730|mm|in|1}}
+  | {{cvt|2980|mm|in|1}}
+  | {{cvt|3180|mm|in|1}}
+  }}
+| length = {{unbulleted list
+  | {{convert|4995|mm|in|1|abbr=on}} ({{abbr|SWB|Short Wheel Base}})
+  | {{convert|5245|mm|in|1|abbr=on}} ({{abbr|LWB|Long Wheel Base}})
+  }}
+| width = {{convert|1790-1870|mm|in|1|abbr=on}}<ref>{{cite web |url=https://www.toyota.com.au/-/media/toyota/main-site/vehicle-hubs/lc70/files/20251021_lc70_spec_table_gto009454.pdf |title=LandCruiser 70 |publisher=Toyota |location=Australia |date=October 2025 |access-date=2026-08-26}}</ref>
+| height = {{unbulleted list
+  | {{convert|1955|mm|in|1|abbr=on}}
+  | {{convert|2070|mm|in|1|abbr=on}}
+  }}
+| predecessor = [[Toyota Land Cruiser (J40)]]
+| model_years = 1985–present
+}}
+
+The '''70 Series''' is a family of [[Toyota Land Cruiser]] models produced since 1984.  It replaced the 25-year-old [[Toyota FJ40|40 Series]] as the [[Off-road vehicle|off-road]] model of the Land Cruiser lineup, while the contemporary [[Toyota Land Cruiser (J60)|60 Series]] developed into more comfortable [[Luxury vehicle|luxury]] [[Sport utility vehicle|SUVs]] starting with the [[Toyota Land Cruiser (J80)|80 Series]]. Despite major changes in styling and numerous technological updates, the 70 Series was designed to retain the off-road capabilities and durability associated with the 40 Series.
+
+== Model designations ==
+Originally, model numbers 70 through 74 referred to the two-door short- and medium-[[wheelbase]]  versions. These were the successors of the 40 Series, such as the FJ40. Model numbers 75, 78 and 79 referred to the long-wheelbase version, which was available in pickup and two-door troop carrier models. These were the successors of the less-well known long-wheelbase 40 Series, such as the FJ45. Models 77 and 76 are semi-long wheelbase four-door wagons offered in a few markets.
+
+In 1999, Toyota introduced several updates and changed the model designations, where the long-wheelbase models became the 78 (troop carrier) and 79 (pickup). In 2007, the 76 (four-door wagon) was added, while the new dual-cab models also share the 79 model designation (essentially the same chassis). Short-wheelbase models are only in production today for a few select markets.
+
+As with all Land Cruisers, the letters at the beginning of the model number designate the engine of the vehicle. Common engines in the 70 series include the 3F [[petrol engine]] (e.g., the FJ70), the 22R petrol engine (e.g. the RJ70/73 Bundera), the 2H [[diesel engine]] (e.g., the HJ75), the 1FZ petrol engine (e.g., the FZJ70/71/73/74/75/76/78/79), the 1PZ diesel engine (e.g., the PZJ70/73/77), the 1HZ diesel engine (e.g., the HZJ70/71/73/74/75/76/77/78/79),<ref>{{cite web|url=https://www.fj.co/detail/1992-Land-Cruiser-HZJ75_345|title=1992 Toyota Land Cruiser HZJ75|website=www.fj.co|access-date=11 July 2020}}</ref> the 1HD diesel engine (e.g. the HDJ78/79), and most recently, the 1VD diesel engine (e.g., the VDJ76). For a while (1987 until at least 1992) the BJ73 hardtop was available in the Portuguese, Italian and Spanish markets with a [[VM Motori|VM]] five-cylinder [[List of VM Motori engines#HR 588 OHV|HR588]] 2.5-litre turbodiesel<ref name=TAM90/> — the "B" was used because the rest of the vehicle comes equipped with everything else a BJ70 has. These VM-powered Land Cruisers were built by [[Salvador Caetano]] in Portugal.
+
+==History==
+'''1984–1999:''' The 70 / 75 series Toyota Land Cruiser took over from the 40 / 45 series of workhorse four-wheel drives in 1984. The styling maintained a family resemblance to the 40 / 45 series but became more angular. The 70 / 71 series was the short-wheelbase (SWB), the 73 / 74 was the medium-wheelbase (MWB) and the 75 / 78 was the long-wheelbase (LWB). The latter came as cab-chassis/utility with a "panelled" tray (pickup), and "troop carrier" hard-top (HT).  Toyota also manufactured lighter duty versions that shared the 70 Series designation from 1985 to 1996 and were marketed in various parts of the world initially as the Bundera,{{cn|date=August 2023}} or Land Cruiser II and later as the [[Toyota Land Cruiser Prado|Prado]]. Of these, the Prado name stuck, and each modification took it further from its 70 Series roots. Starting in 1997, the Prado was known as the 90 Series and had become a passenger 4x4 with no relation to the 70 Series.
+
+'''1999:''' In August, the 70-series underwent its second facelift. The grille now had three horizontal bars with upturned ends, and the combination lights were made larger. In Japan, all 70-series were given a chrome grille.<ref>{{cite press release |url=https://global.toyota/jp/newsroom/toyota/21815450.html | archiveurl = https://web.archive.org/web/20200518215128/https://global.toyota/jp/newsroom/toyota/21815450.html | archivedate = 2020-05-18 | title=トヨタ、ランドクルーザー70をマイナーチェンジ －同時に、ランドクルーザー100、ランドクルーザー100「シグナス」に装備を追加－ | trans-title = Toyota makes minor changes to Land Cruiser 70: New features are added to Land Cruiser 100 and Land Cruiser 100 "Cygnus" at the same time | publisher=Toyota Motor Corporation |date= 4 August 1999 }}</ref> The pickup version was designated the 79 series, the Troop Carrier became the 78 series, and the short-wheelbase version was phased out in most markets.  The principal mechanical changes were: coil spring (instead of leaf spring) live front axle; longer rear leaf springs; 5-bolt wheels instead of 6-bolt wheels; redesigned steering wheel; redesigned front indicators; and, in the cab-chassis, a longer wheelbase, which increased the rear storage capacity.
+
+'''2004''' Japanese market sales ended in June as the 70-series could not meet the [[NOx Law (Japan)|{{NOx}} and particle matters law]].
+
+'''2007:''' The facelifted 70 Series began production in January for market release in late February / early March 2007. Changes involve significant modifications to the front-end design, eliminating the trademark flat fenders featured on all commercial Land Cruiser series' since the [[Toyota Land Cruiser (J40)|40 series]]. This change along with a wider front axle/track and wider chassis were required to allow fitment of the new [[European emission standards|Euro-4]] compliant 4.5L V8 turbo diesel, the [[Toyota VD engine|1VD-FTV]]. This engine was initially just for the Australian market, where it was the only engine available. Africa and other markets continued with straight-6 petrol and [[Toyota HZ engine|1HZ]] diesel engines. In order to fill the hole left by the elimination of lower-specification models in the 100-series and 200-series ranges, a 4-door wagon variant (The 76 series) was introduced alongside the long-running cab-chassis (79 series) and Troop Carrier (78 series) bodies. For the first time a higher GXL specification level was also introduced in some markets for the cab-chassis and wagon variants. This specification level added numerous additional comfort and safety features never previously seen on commercial series Land Cruisers. In 2007 they were made in Venezuela the 50th anniversary version, came with bumper, gasoline bottle, rear blockers, winch, stirrups. Only 300 were made.<ref name= LC70-1>{{Cite web
+  | title = LC70 Specification Summary
+  | publisher = Toyota
+  | location= Australia
+  | date = 9 June 2010
+  | url = http://www.toyota.com.au/toyota/vehicles/pdf/Savers/LC70+Saver_LR_0610.pdf
+  | access-date = 17 June 2010}}</ref>
+
+'''2009:''' Venezuela's President [[Hugo Chávez]] threatened to expropriate Toyota's plants in that country if Toyota and other car makers refused to share their technology with local businesses and meet certain quotas. The 70 series Land Cruiser is used throughout Venezuela for the transportation community, the police, and the National Guard of Venezuela.<ref name= LC70-2>{{Cite web
+  | title = Chavez Threatens to Expel Toyota
+  | publisher = CBS News
+  | date = 25 December 2009
+  | url = https://www.cbsnews.com/news/chavez-threatens-to-expel-toyota/
+  | url-status = live
+  | archive-url= https://web.archive.org/web/20160307193138/http://www.cbsnews.com/news/chavez-threatens-to-expel-toyota/
+  | archive-date= 7 March 2016
+  | access-date = 9 July 2013}}</ref>
+
+'''2009:''' The [[Toyota FZ engine|1FZ/1FZ-FE]] engine was replaced by the 4.0L 1GR-FE in the markets where petrol-powered versions are available, such as Bolivia, Colombia and the Middle East.
+
+'''2012:''' Toyota introduced a double-cabin HZJ79 pickup body type,<ref>{{cite news |last=Pincott |first=Karla |title=Toyota LandCruiser 70 double-cab due September |url=http://www.carsguide.com.au/news-and-reviews/car-news/toyota_landcruiser_70_double_cab_due_september |work=carsguide |location=Australia |date=2012-08-06 |access-date=25 May 2014}}</ref> combining the longer 3180&nbsp;mm wheelbase of the previous two-door pickup with the four doors and single, 130-litre fuel tank of the wagon body types.
+
+'''2014:''' Although it had been discontinued in 2004, Toyota reintroduced a limited-edition '30th Anniversary' 70-series for a 12-month run in the Japanese market. It was available either as a 4-door wagon (GRJ76) or a double-cabin pickup body (GRJ79).<ref name= LC70>{{Cite web | title = Toyota Land Cruiser 70 Series Returns in Japan for 30th Anniversary | publisher =  | magazine = Motor Trend | first = Jason | last = Udy | date = 26 August 2014 | url = http://wot.motortrend.com/1408_toyota_land_cruiser_70_series_returns_in_japan_for_30th_anniversary.html | archive-url = https://web.archive.org/web/20141227204614/http://wot.motortrend.com/1408_toyota_land_cruiser_70_series_returns_in_japan_for_30th_anniversary.html | archive-date = 2014-12-27 }}</ref><ref>{{cite press release |title=Toyota Celebrates 30 Years of "Land Cruiser 70" Series |url=http://newsroom.toyota.co.jp/en/detail/3821341| publisher=Toyota |location=Japan |date=25 August 2014 |access-date=5 January 2015}}</ref> This model came with the [[Toyota GR engine#1GR-FE|1GR-FE]] V6 petrol engine and 5-speed manual transmission. This model was on limited sale in Japan only until June 2015 when Japanese law required all new vehicles to come with Vehicle Skid Control, something the 70 Series does not have.
+
+'''2015:''' The Land Cruiser 70 started production by Salvador Caetano in Ovar, Portugal in an updated version from mid 2015 onwards for export to the African market, Morocco in particular.<ref>{{cite press release |url=http://web3.cmvm.pt/sdi/emitentes/docs/CONV54816.pdf |title=Annual Financial Statement |page=4 |publisher=Toyota |location=Portugal |date=8 April 2015 |access-date=26 August 2015}}</ref> However, the model won't be reintroduced to the European market because its engines are not emissions-certified in Europe.<ref name=cessao>{{cite news |url=http://automonitor.pt/2015/03/09/comercio-e-industria/salvador-caetano-troca-producao-da-dyna-por-land-cruiser/ |title=Salvador Caetano troca produção da Dyna por Land Cruiser |trans-title=Salvador Caetano switches production from Dyna to Land Cruiser |language=pt |date=9 March 2015 |work=Auto Monitor |first=António Machado |last=Magalhães |access-date=16 August 2017}}</ref> This is in spite of the 1VD-FTV being available for the Land Cruiser 200 in a twin-turbo version. The Portuguese-built Land Cruisers have a {{convert|231|PS|kW|abbr=on}} engine and a five-speed manual transmission. Production initially consisted of a five-door station wagon and a double-cab pickup.
+
+'''2022:''' Ongoing modifications brought the 70 series abreast of ratcheting safety and environmental regulation. The 2022 model for Australia met Euro 5 emissions standards, while accommodating front and side airbags (a significant task given the rigid ladder frame) and frame strengthening to meet side impact requirements. The Land Cruiser 76 wagon was reintroduced earlier taking advantage of these safety improvements, in early 2021 it accounted for more than half of 70 series Australian private sales.<ref>{{cite web|title=Toyota LandCruiser 70 Series to get major upgrade|url=https://www.carsales.com.au/editorial/details/toyota-landcruiser-70-series-to-get-major-upgrade-131247/| publisher=carsales |location=Australia |date=2021-07-30 |access-date=11 Mar 2022}}</ref>
+
+'''2023:''' The optional 2.8-litre ''[[Toyota GD engine#1GD-GTV|1GD-FTV]]'' engine became available exclusively with an automatic transmission, alongside the existing engines with manual transmissions.<ref>{{cite news |title=2024 Toyota LandCruiser 70 Series facelift unveiled |url=https://www.drive.com.au/news/2024-toyota-landcruiser-70-series-facelift-unveiled/ |first=Alex |last=Misoyannis |work=Drive |location=Australia |date=2023-08-02 |access-date=2023-08-02}}</ref> Incandescent headlights were replaced with LED units, and the combination meter was changed to a 40-series inspired look, with an additional 4.2 inch colour multi-information display. Ashtrays were deleted from the equipment list, along with the cigarette lighter.{{cn|date=December 2023}}
+
+{{clear}}
+
+==Features==
+<gallery widths="200" heights="150">
+File:Toyota landcruiser70 semilonglx 1 f (cropped).jpg|5-door wagon (pre-facelift, Japan)
+File:Toyota Land Cruiser 70 001.JPG|Middle-spec fibreglass-top 3.4 LX (BJ73V; pre-facelift, Japan, rear)
+File:Toyota LAND CRUISE 4door LX (KG-HZJ76V) front.jpg|5-door wagon (HZJ76V; first facelift, Japan)
+File:Toyota Land Cruiser (J7, Facelift) – Frontansicht, 3. März 2014, Düsseldorf.jpg|Troop Carrier (second facelift, since 1999, front)
+File:Toyota Land Cruiser (J7, Facelift) – Heckansicht, 3. März 2014, Düsseldorf.jpg|Troop Carrier (second facelift, rear)
+File:2015 Toyota Land Cruiser (VDJ76R) GXL 5-door wagon (19039611238).jpg|GXL 5-door wagon (VDJ76; third facelift, since 2007 - Australia)
+File:2008 Toyota Land Cruiser (VDJ78R) WorkMate Troop Carrier 3-door wagon (2009-08-21).jpg|Troop Carrier (VDJ78; third facelift, since 2007 - Australia)
+File:Landcruiser70sud.jpg|Single Cab Pickup (third facelift)
+File:Toyota Land Cruiser 16.09.20 JM (3) (cropped).jpg|Double Cab Pickup (HZJ79; third facelift)
+File:Toyota Land Cruiser 70 LX interior.jpg|Interior (third facelift)
+File:2023 Toyota Land Cruiser 70.jpg|AX 5-door wagon (fourth facelift)
+File:Toyota LAND CRUISER AX (3DA-GDJ76W-RKTNY) (4).jpg|AX 5-door wagon (fourth facelift, rear)
+File:Toyota Land Cruiser J71 Bahrain 2024 rear 2.jpg|3-door wagon (fourth facelift, rear)
+File:2023 Toyota Land Cruiser 70 interior.jpg|Interior (fourth facelift)
+File:Toyota land cruiser j70 1984-2006 facelift.jpg|Comparing facelifts for 1984 – 2006
+</gallery>
+
+{{Clear}}
+
+The J70 Land Cruiser utility has two or four doors with steel doors; the front-clip styling remains much like that of the 40 Series. The grille can be mesh or can consist of three horizontal bars. There are three additional horizontal slots in a single line in the sheet metal under the grille. Front turn signals are square with triangular white lens elements underneath, and are affixed to the vertical edge of the front clip above the fenders and just outboard of each headlight. The top can be hard or soft. The doors are hard, with roll-up windows. Taillights are long, vertical rectangles inset low into the rear bodywork. Rear doors are paired swing-out 'barn doors'. The windscreens of some military versions will fold down to the bonnet. It is available in many forms, including a four-door semi-long (J77V → J76V), a pickup (J75P → J79P), and long-wheelbase utility wagon (J75V → J77V / J78V).
+
+With the exception of a few light-duty models that evolved into the [[Toyota Land Cruiser Prado|Prado]], all 70 Series Land Cruisers have solid leaf-sprung rear axles. The front [[solid axle]]s were [[leaf-sprung]] until 1998, when Toyota decided in favour of a coil spring front suspension with leading arms, and a slightly lighter front axle.  Also beginning in 1999 the rear leaf springs were extended to allow for greater wheel travel (articulation) and increased ride comfort.
+
+Most 70 Series Land Cruisers (both petrol and diesel models) use [[Straight-6|inline six-cylinder]] engines. The exceptions are the [[V8 engine|V8]] diesel 1VD-FTV engine introduced in some markets in 2007, the V6 petrol 1GR-FE introduced in 2009, and the inline four diesel 1GD-FTV introduced in 2023, with the last straight-6 available being the diesel 1HZ for markets with less stringent emission rules such as Africa and Bolivia. Regardless of the engine, a 5-speed manual transmission delivers power to a part-time four-wheel-drive transfer case with high and low range. The solid front axles are a full-floating design with manual [[locking hubs]]. The solid rear axles are available in semi-floating and full-floating variations. Selectable [[locking differential]]s (front and rear) are factory options in some markets.
+
+Basic comfort features such as air-conditioning and radio are available, but the 70 Series lacks many of the refined and luxury features of the more expensive passenger Land Cruisers (80, 90, 100, and 200 Series). 70-series Land Cruisers were usually fitted with manual transmissions, although a four-speed automatic was available on select versions like the FJ73 (1985–1992), the BJ74, the HZJ73/77 (1990–1999), and the HZJ74/76K (1999–2004).
+
+===Short wheelbase models===
+[[File:LANDCRUISER70-2009.JPG|thumb|Land Cruiser 70 in Dubai]]
+
+The suspension, interior and basic layout of these models are nearly identical to the more famous longer wheelbase 75 series Land Cruisers, but the frame and body is much shorter. This allows the Land Cruiser to be more nimble off-road. This model was popular as a personal off-road transport, but because the Land Cruiser was marketed almost exclusively as a commercial and government vehicle and because these were never sold in the US, few were built, compared to other Land Cruiser models.
+
+However, these models were sold all over the world in the 1980s and early 1990s. They can be found in Japan, Asia, Africa, Europe, the Middle East, New Zealand and South America. The short-wheelbase models are not quite as common in Australia, but they are very popular in the homeland of Japan, where compactness and rugged 4x4 are a welcome combination. Today, few short-wheelbase 70 series can be purchased new—some are still in production today in some select South American countries and is still being produced by Toyota Auto Body at the Yoshiwara Plant in Toyota City.<ref>{{Cite web |url=https://www.toyota-body.co.jp/english/products/suv.html |title=SUV / Products Line-up |publisher=Toyota Auto Body |accessdate=8 June 2024}}</ref>
+
+For the North American market, the 70 series was only sold in small numbers. In 1984–1987 (model years 1985–1987), the BJ70 was sold in small numbers in Canada. Available engine choices were the 3B four-cylinder diesel engine or the later 13BT, a turbocharged variant of the 3B. The 1985 version had a 12-volt electrical system which was changed late-1985 production (for the 1986 model year) to a 24-volt system in the diesel powered versions to meet international NATO specifications for a 24V starting system.
+
+{{As of|2022}}, the 70 series models was still available in Canada, albeit accessible only to the mining industry. It was sold through [[Toyota Industrial Sales Canada]], represented by vendors in Saskatoon, Sudbury, North Bay, and Quebec.<ref>{{Cite web |title=The Canadian-Market Land Cruiser Normal People Can't Buy |url=https://jalopnik.com/the-canadian-market-land-cruiser-normal-people-cant-buy-1837547375 | first = Max | last = Finkel | access-date=2022-03-21 |website=Jalopnik |date=25 August 2019 |language=en-us}}</ref><ref>{{Cite web |title=Toyota Land Cruiser Diesel |url=https://www.millertechnology.com/toyota-land-cruiser-diesel/ |access-date=2024-08-18 |website=Miller Technology |date=18 August 2024 |language=en-us}}</ref> The 70 series was not offered for sale in the United States.
+
+{{As of|2022}}, the updated long wheel base HZJ79 is available both as a cab and chassis, or as a completed GCC model with a box, ABS, airbags and available differential lockers.
+
+==Safety==
+{{ANCAP 
+|test_year=2025
+|description=Toyota Landcruiser 70 Series Single Cab & Double Cab variants
+|reference_code=193129
+|grade_percent=55
+|pedestrian_points=13.58
+|pedestrian_percent=56
+|safety_points=6.88
+|safety_percent=55
+|large_utility=1
+}}
+
+==Militarised variants==
+
+===Al-Thalab===
+[[File:Brunei Al-Thalab.jpg|thumb|[[Royal Brunei Land Force|Bruneian]] Al-Thalab]]
+
+In 1999, UK-based engineering company [[Jankel]] entered into a collaborative venture with the [[King Abdullah Design and Development Bureau]] of Jordan ("KADDB"). The Jordan Light Vehicle Manufacturing (JLVM) joint-venture was an initial {{convert|10000|m2|abbr=on}} motor vehicle factory, to enable Jankel to reduce the cost of manufacture of its UK-engineered protective and light-combat vehicles. Soon after opening JLVM, Jankel began creating various up-armoured versions of the Land Cruiser 79 long wheelbase vehicle, and in 2000, secured a contract with the [[United Nations]] to provide protected versions of the Land Cruiser 79.<ref name=ATalthalab/>
+
+In 2000, Jankel began designing a Long Range Patrol Vehicle (LRPV) to provide a capable and reliable patrolling platform. The Land Cruiser 79 chassis base was chosen as it is: common in most countries worldwide; not overly reliant on electronic management systems; mechanical components are of a basic design, enabling field repairs with standard automotive parts; a high-chassis weight loading capability; resulting in a vehicle which could be sustained in-field over long periods in remote areas, with limited or no support.<ref name=DefUpDateThalab/> Designed for patrol missions, internal security, reconnaissance and border patrol forces,<ref name=ATalthalab/><ref name=DefUpDateThalab/> it was field tested in the UK and Jordan, and first produced from 2005.<ref name=ATalthalab/><ref name=DefUpDateThalab>{{cite news |url=http://defense-update.com/products/t/al-thalab.htm |title=Al-Thalab (Fox) Long Range Patrol Vehicle |work=Defense Update |date=25 November 2005 |access-date=16 September 2016}}</ref> The '''Al-Thalab''' can in base form accommodate up to four crew members, {{convert|1700|kg|abbr=on}} of equipment, and comes equipped with three firing bases, two base stations for radios and various power take-offs. There are options for: two stretchers in the rear for medical evacuation; medium range ({{convert|1500|km|abbr=in|disp=comma}}) and commando variants.<ref name=ATalthalab/><ref name=DefUpDateThalab/> Inspected in 2002 by [[QinetiQ]], it was subsequently approved for sale to the UK Government.<ref name=ATalthalab/> In 2004, the [[Jordanian Army]] made its first order, taking initial deliveries from 2006, and now has over 200 units.<ref name=ATalthalab/> The [[Military of Mauritania|Armed Forces of Mauritania]] have been operating the Al-Thalab LRPV since 2006.<ref name=ATalthalab>{{cite web |url=http://www.army-technology.com/projects/althalab/ |title=Al-Thalab Long-Range Patrol Vehicle |work=Army Technology |access-date=16 September 2016}}</ref> In 2016, [[British special forces]] were seen using the Al-Thalab in Syria.<ref name=bbc-20160808>{{cite news |url=https://www.bbc.co.uk/news/uk-37015915 |title=UK special forces pictured on the ground in Syria |publisher=BBC |date=8 August 2016 |first=Quentin |last=Sommerville |access-date=26 March 2017}}</ref>
+
+===Babcock GLV===
+The Babcock GLV was unveiled in June 2023, first seen at Eurosatory.<ref>{{cite news |url=https://www.joint-forces.com/defence-equipment-news/73968-babcock-launch-glv-medium-wheelbase-variant |title=Babcock Launch GLV Medium Wheelbase Variant |website=Joint Forces News |location=UK |date=18 June 2024 |access-date=15 January 2025}}</ref> It uses the Land Cruiser 79 chassis as a basis.<ref>{{cite news |url=https://www.shephardmedia.com/news/landwarfareintl/dsei-babcock-beefs-up-land-cruisers-as-uk-land-rover-replacement-programme-likely-approaches/ |title=DSEI 2023: Babcock beefs up Land Cruisers as British Army Land Rover replacement programme looms |first=Damian |last=Kemp |publisher=Shephard Press |location=UK |date=14 September 2023 |access-date=15 January 2025}}</ref>
+
+===Technamm Masstech T4===
+{{main|Technamm Masstech T4}}
+
+The Technamm Masstech T4 is an unarmoured off-road vehicle used by the [[French Armed Forces]]. It is based on the Land Cruiser HZJ 76 and manufactured by the [[Technamm]] company from 2017 to 2018.<ref>{{cite web |url=https://www.joint-forces.com/features/16460-french-technamm-masstech-t4-vltp-vp |title=French Technamm Masstech T4 VLTP NP |website=JOINT-FORCES.com |location=UK |date=2018-08-03 |access-date=2025-02-02}}</ref>
+
+== See also ==
+{{Commons category}}
+* [[Toyota FJ Cruiser]]
+* [[List of Toyota engines]]
+
+==References==
+{{reflist}}
+
+==External links==
+{{Commons category}}
+*[http://www.toyota-global.com/showroom/vehicle_gallery/suvs/land_cruiser70/ Toyota Land Cruiser 70 Series global Site]
+*[https://web.archive.org/web/20150321053431/http://www.toyota.com.kw/english/toyota_models___/landcruiser/history/html/history/models/model_70.html Toyota LandCruiser Data Library on 70 Series]
+
+{{Toyota cars}}
+
+[[Category:All-wheel-drive vehicles]]
+[[Category:Toyota Land Cruiser|70]]
+[[Category:Military light utility vehicles]]
+[[Category:Compact sport utility vehicles]]
+[[Category:Military trucks]]
+[[Category:ANCAP large utilities]]
+[[Category:Cars introduced in 1984]]
+[[Category:1990s cars]]
+[[Category:2000s cars]]
+[[Category:2010s cars]]
+[[Category:2020s cars]]
+[[Category:Cars of Colombia]]
+[[Category:Cars of Portugal]]
+[[Category:Cars of Venezuela]]
+[[Category:Off-road vehicles]]

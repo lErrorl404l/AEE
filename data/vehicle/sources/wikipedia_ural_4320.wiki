@@ -1,0 +1,154 @@
+{{Short description|Russian 6x6 off-road truck}}
+{{more citations needed|date=September 2011}}
+{{Use dmy dates|date=March 2026}}
+{{Infobox automobile
+| name = Ural-4320
+| image = Ural-4320.jpg
+| caption = Ural-4320
+| manufacturer = [[Ural Automotive Plant]]
+| production = 1977–present<ref>Yearbook of the Great Soviet Encyclopedia, 1978 (issue 22), "Soviet Encyclopedia", 1978. p.36</ref>
+| assembly = Soviet Union / Russia: [[Miass]]
+| class = Truck
+| layout = [[Four-wheel drive|AWD]] 6×6
+| engine = {{ubl|11.2L ''YaMZ-236M2'' V6 turbo diesel<br />14.9L ''YaMZ-238M2'' V8 diesel}}
+| transmission = 5-speed manual
+| length = {{convert|7366|mm|in|1|abbr=on}}
+| width = {{convert|2500|mm|in|1|abbr=on}}
+| height = {{unbulleted list|{{convert|2715|mm|in|1|abbr=on}}| {{convert|3005|mm|in|1|abbr=on}} (with tent)}}
+| predecessor = [[Ural-375D]]
+| successor = 
+}}
+
+The '''Ural-4320''' is a general purpose [[off-road vehicle|off-road]] 6×6 vehicle, produced at the [[Ural Automotive Plant]] in [[Miass]], [[Russia]] for use by the [[Russian Ground Forces|Russian Army]]. The wheel arrangement for the Ural-4320 was designed for transporting cargo, people and trailers on all types of roads and terrain. It also serves as a launching platform for the [[9K51 Grad|BM-21 "Grad"]] rocket launcher.
+
+__TOC__
+
+==Gallery==
+<gallery class="left''">
+File:Ural-4320 with headlights in bumper.jpg|Ural-4320 with headlights in bumper (civilian version since the mid-1990s)
+File:Ural-4320 with the headlights in the wings.jpg|Ural-4320 with headlights in wings (civilian and military versions before the mid-1990s)
+</gallery>
+
+==Specifications==
+{| class="wikitable"
+|+
+! colspan=3 |Ural-4320 truck specifications
+|-
+! ||YaMZ-238M2 engine<ref name=":1" /><ref name=":0" /><ref name=":2" />||YaMZ-236M2 engine<ref name=":1" /><ref name=":0" /><ref name=":2" />
+|-
+|Cab design: ||colspan=2 |Forward-mounted engine 
+|-
+|Seating capacity (in cab): || 3 || 3
+|-
+|[[Gross vehicle weight rating|GVWR]]: || 15,300&nbsp;kg (33,750lb) ||14,975&nbsp;kg (33,000lb)
+|-
+|Weight of load carried: || 6,000&nbsp;kg (13,200&nbsp;lb) ||5,000&nbsp;kg (11,000&nbsp;lb)<ref name=":1" />
+|-
+|Suspension: || colspan=2 |solid axles, leaf springs, rear wheels at balance-cart
+|-
+|GVWR of towed trailer: || colspan = 2 | 11,500&nbsp;kg (25,350&nbsp;lb)
+|-
+|Top speed: || 82&nbsp;km/h (51&nbsp;mph)<ref name=":0">{{Cite web |title=Ural 4320 |url=https://weaponsystems.net/system/1133-Ural+4320 |access-date=12 June 2025 |website=Weaponsystems.net |language=en}}</ref>|| 75&nbsp;km/h (47&nbsp;mph)<ref name=":0" />
+|-
+|Engine: liquid-cooled ||V8 diesel<ref name=":0" />|| V6 diesel
+|-
+|Power: || 240 [[horsepower|PS]] (177 [[kilowatt|kW]]) || 180 PS (132&nbsp;kW)
+|-
+|Transmission: || colspan=2 |Manual, Five forward, One reverse, two-speed distributor gearbox with interaxle locked differential.<ref name=":0" /><ref name=":1">{{Cite web |title=The Russian Ural-4320 Military Truck |url=http://tanknutdave.com/the-russian-ural-4320-military-truck/ |access-date=12 June 2025 |website=TankNutDave.com |language=en-US}}</ref>
+|-
+|Body: || colspan=2 |metal, with tailgate, removable bows and a canopy, two foldable<br> side and one removable middle benches.
+|-
+|[[Seating capacity]]: || 27 || 27
+|-
+|Tires: || colspan=2 |with controlled air pressure OI-25 14.00-20 HC(PR)14
+|-
+|}
+
+Early versions of the Ural-4320 were fitted with the KamAZ-740 V8 diesel engine, ohv, displacement 10,857&nbsp;cc (bore/stroke ratio {{convert|4.72|in|mm|order=flip|abbr=on}}), compression ratio 16:1. Power {{Convert|210|PS|kW hp|0|abbr=on}} at 2,600 rpm. Torque {{Convert|470|lbft|Nm|abbr=on|order=flip}} at 1,500 rpm.
+
+==Versions==
+[[File:Урал машина разминирования.JPG|thumb|Ural-4320-19]]
+[[File:Ural-43206 transport truck.jpg|thumb|Ural-43206 4×4]]
+* Ural-4320-**** - ** - chassis with the standard ("classic") metal cab and a carrying capacity of about 7.9 tons.
+** Ural-4320-19 ** - ** - LONG CHASSIS, capacity about 12 tons.
+** Ural-43203-**** - ** - chassis with reinforced front suspension.
+** Ural-43204-**** - ** - reinforced truck chassis, increased payload.
+** Ural-43206- 4×4 variant with a 180&nbsp;hp YaMZ-236 diesel and a capacity of 4200&nbsp;kg.
+*** Ural-43206-41" - with the 230&nbsp;hp YaMZ-236NE2 turbodiesel.
+*** Ural-43206-0551" - 4×4 variant with a 4-door cab and carrying capacity 3600&nbsp;kg.
+* Ural-43202-**** - ** - truck tractor with semi-trailer for use on all types of roads.
+* Ural-5557/55571- **** - ** - chassis for the installation of production equipment and special installations mass of ~ 12–14 m wide with low-profile tires with CTIS, which significantly increases the permeability of the vehicle.
+
+Cab and tail options:
+[[File:Російська техніка під Тростянцем 18.03.2022 (2).jpg|thumb|Destroyed Russian Ural-4320's near [[Trostianets]], during the [[Russian invasion of Ukraine]] in 2022]]
+[[File:Gorky Automobile Plant in Nizhniy Novgorod (02).jpg|thumb|Ural-43206 with "new" [[Iveco]] cab ([[Iveco T-series]])]]
+[[File:Ural-432065 and Ural-43206.jpg|thumb|Ural-432065 and Ural-43206]]
+* Ural-4320/5557 - 40/41 - All-metal, three seat, two-door cab, just under the symbol produced machines with dual four-door cab;
+* Ural-4320/5557 - 44 - All-metal, three seat, two-door cabin with a sleeping bed;
+* Ural-4320/5557 - 48/58/59 - new version with a more comfortable cabin with large volume bonnet and sprung driver's seat;
+
+All versions are equipped with [[Iveco]] cabs.<ref name=":2">{{Cite web |url=http://msk.carobka.ru/news/17455.html |title="Группа ГАЗ» представляет новинки спецтехники «Урал» на форуме «СТТ-2013"|author=Татьяна Голикова |archive-url=https://web.archive.org/web/20131104085224/http://msk.carobka.ru/news/17455.html|website=Carobka.ru|archive-date=4 November 2013}}</ref><ref name=":0" />
+
+==Operational history==
+===Russian invasion of Ukraine===
+The vehicle was used during the [[Russian invasion of Ukraine]]; [[Oryxspioenkop (OSINT)|Oryxspioenkop]] analyzed photographic and video data and found Russia, as of 14 November 2024, had lost at least 1,454 Ural-4320s (including 183 tankers).<ref>{{cite news|title=Attack On Europe: Documenting Russian Equipment Losses During The 2022 Russian Invasion Of Ukraine|url=https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-equipment.html|publisher=[[Oryxspioenkop (OSINT)]]|access-date=1 September 2022|archive-date=20 October 2023|archive-url=https://web.archive.org/web/20231020111600/https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-equipment.html|url-status=live}}</ref> While Ukraine having lost a total of 113.<ref>{{cite news|title=Attack On Europe: Documenting Ukrainian Equipment Losses During The Russian Invasion Of Ukraine|url=https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-ukrainian.html|publisher=[[Oryxspioenkop (OSINT)]]|access-date=19 December 2023|archive-date=19 December 2023|archive-url=https://web.archive.org/web/20231219001602/https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-ukrainian.html|url-status=live}}</ref>
+
+== Users ==
+* {{ARM}}<ref>{{cite web |title=The Fight For Nagorno-Karabakh: Documenting Losses On The Sides Of Armenia And Azerbaijan |url=https://www.oryxspioenkop.com/2020/09/the-fight-for-nagorno-karabakh.html |website=Oryx |access-date=10 November 2025}}</ref>
+* {{AZE}}:<ref>{{cite news |title=Armenian Special Forces confiscate Azeri Ural truck |url=https://en.armradio.am/2016/04/08/armenian-special-forces-confiscate-azeri-ural-truck/ |access-date=24 July 2025 |work=Public Radio of Armenia}}</ref> Ural-4320s used by [[Azerbaijani Armed Forces]].<ref>{{cite news |title=Ереван и Баку согласовали обмен пленными по принципу "всех на всех" |url=https://ria.ru/20201205/obmen-1587785225.html?in=t |access-date=24 July 2025 |work=РИА Новости |date=5 December 2020 |language=ru-RU}}</ref>
+* {{BAN}}<ref name="UNROCA-Slovakia18">{{cite web| url=https://www.unroca.org/slovakia/report/2018/| title=UNROCA original report Slovakia 2018| publisher=UNROCA| access-date=5 August 2020| archive-date=6 January 2021| archive-url=https://web.archive.org/web/20210106092343/https://www.unroca.org/slovakia/report/2018/| url-status=live}}</ref>
+* {{BFA}}<ref name="BFA-Mali">{{cite journal|journal=Revista Defensa|issue=495–496|date=July 2019|first=Erwan de|last=Cherisey|title=El batallón de infantería "Badenya" de Burkina Faso en Mali - Noticias Defensa En abierto|url=https://www.defensa.com/en-abierto/batallon-infanteria-badenya-burkina-faso-mali|language=es|access-date=30 November 2019|archive-date=22 April 2021|archive-url=https://web.archive.org/web/20210422161823/https://www.defensa.com/en-abierto/batallon-infanteria-badenya-burkina-faso-mali|url-status=live}}</ref>
+* {{flag|Cuba}}: [[Cuban Revolutionary Armed Forces]].<ref>[https://translatingcuba.com/the-cuban-army-exhibits-its-new-acquisitions-russian-ural-4320-trucks-and-chinese-howo-trucks/] https://translatingcuba.com/the-cuban-army-exhibits-its-new-acquisitions-russian-ural-4320-trucks-and-chinese-howo-trucks/] Translating Cuba(11/04/2024)</ref>
+* {{EGY}}<ref>{{Cite web |last=Martin |first=Guy |date=6 May 2016 |title=Egypt using new self-propelled guns |url=https://www.defenceweb.co.za/land/land-land/egypt-using-new-self-propelled-guns/ |access-date=7 October 2024 |website=defenceWeb |language=en-ZA}}</ref>
+* {{LAO}}: In service as of January 2019.<ref>{{cite web |last1=Gibson |first1=Neil |last2=Fediushko |first2=Dmitry |title=Laotian military parades Russian- and Chinese-made equipment |url=https://www.janes.com/article/85876/laotian-military-parades-russian-and-chinese-made-equipment/ |website=Jane's 360 |access-date=24 January 2019 |archive-url=https://web.archive.org/web/20190123223848/https://www.janes.com/article/85876/laotian-military-parades-russian-and-chinese-made-equipment/ |archive-date=23 January 2019 |location=London, Moscow |date=22 January 2019 |url-status=live}}</ref>
+* {{flag|Mali}}<ref>{{cite web |title=Sons of Bamako - Malian Armed Forces Fighting Vehicles |url=https://www.oryxspioenkop.com/2021/10/sons-of-bamako-malian-armed-forces.html |website=Oryx |access-date=29 October 2025}}</ref>
+* {{flag|Philippines}}: [[Philippine Army]] 20 Units Donated by Russian Federation.<ref>{{Cite web |last=Corrales |first=Nestor |date=25 October 2017 |title=Russia hands over 5,000 assault rifles, trucks, helmets to Duterte |url=https://globalnation.inquirer.net/161144/break-news-russia-rodrigo-duterte-military-kalashnikov |access-date=5 April 2024 |website=INQUIRER.net |language=en}}</ref><ref>{{Cite web |title=Russia to donate Kalashnikovs, trucks and munitions to Philippines |work=Reuters |date=11 October 2017 |url=https://www.reuters.com/article/idUSKBN1CG1KP/ |access-date=5 April 2024}}</ref>
+* {{RUS}}
+* {{SYR}}<ref name="Ural12">{{Cite web|url=https://defence-blog.com/russia-supplies-upgraded-multiple-rocket-launcher-mounted-on-ural-4320-31-truck-to-syria/?amp|title=Russia supplies upgraded multiple rocket launcher mounted on Ural-4320-31 truck to Syria|publisher=Defence Blog|date=20 March 2017|access-date=17 May 2024|author=Dylan Malyasov}}</ref> 
+* {{UKR}}
+
+== Variants ==
+
+===Military===
+*Standard cargo/troop transport equipped with a cargo bed. It can be used to transport troops, weapons and other supplies. It has two collapsible benches and a canvas top to provide protection from the elements.
+<gallery class="center">
+File:Ural-4320-truck-Russian Army.jpg|Short bed truck
+File:Ural-4320-trailer-Russian Army.jpg|[[KUNG]] carrying truck with longer wheelbase and KUNG trailer 
+File:Ural-4320-fuel-Russian Army.jpg|ATZ-5-4320, fuel tanker vehicle on Ural-4320 truck chassis<ref name=":0" />
+File:Ural-4320-armoured-Russian Army.jpg|Armored with KUNG shelter
+</gallery>
+
+* Fully armored Ural-4320VV originally built for the [[Internal troops of Russia|Internal Troops]]
+<gallery class="center">
+File:Interpolitex 2013 (535-30).jpg|Ural-4320VV at Interpolitex 2013
+File:VV-Day2016-23.jpg|Internal Troops demonstrating the Ural-4320VV on Internal Troops Day of 2016
+</gallery>
+
+===Civil===
+<gallery class="center">
+File:АЦ на шасси УРАЛ, ПЧ-16, Котлас (00).JPG|Fire appliance based on Ural-43206 4×4 chassis
+File:Урал 3255.jpg|Ural-3255 [[truckbus]] based on Ural-4320
+File:Interpolitex 2010 (334-36).jpg|[[Moscow Police]] Ural-572060 also known as [[VM-4320]]
+File:Integrated Safety and Security Exhibition 2013 (501-32).jpg|Firefighting vehicle NATISK-3000 KS on Ural-5557 chassis
+File:Ural vehicle with hydromanipulator 0.jpg|Ural-4420 with hydromanipulator and flatbed trailer
+File:Ural "Arctika" 2.0 and AC 6.0-40 during the "Armiya 2023" exhibition.jpg | Arctic bus and Firetruck
+</gallery>
+
+==See also==
+*[[Ural-5323]]
+*[[Family of Medium Tactical Vehicles]]
+*[[Medium Tactical Vehicle Replacement]]
+*[[M809 series trucks]]
+*[[M54 (truck)|M54]]
+*[[KrAZ-255]]
+
+==References==
+{{reflist}}
+{{commons category}}
+
+==External links==
+* [https://uralaz.ru/models/?name=ural-4320 Official website of the Ural Automotive Plant for the Ural-4320]
+
+[[Category:Ural Automotive Plant trucks]]
+[[Category:Military trucks of the Soviet Union]]
+[[Category:Military vehicles introduced in the 1970s]]

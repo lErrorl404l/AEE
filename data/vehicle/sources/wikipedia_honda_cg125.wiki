@@ -1,0 +1,69 @@
+{{Short description|Honda motorcycle}}
+{{Infobox Motorcycle
+|name             = CG125
+|image            = File:ホンダ CG125.jpg
+|caption          = 
+|aka              = CG125 Fan and CG125 Circa <br>
+Honda TMX 125 Alpha (Philippines)
+|manufacturer     = [[Honda|Honda Motor Company]]
+|parent_company   = [[Honda|Honda Motor Company]]
+|production       = 1976–present
+|model_year       = 
+|predecessor      = [[Honda CB125]]
+|successor        = [[Honda CBF125]]
+|class            = [[Types of motorcycle#Standard|Standard]]
+|engine           = {{convert|124|cc|abbr=on}}, [[Four-stroke engine|4-stroke]], [[overhead valve|OHV]], [[Air-cooled engine|air-cooled]], [[single-cylinder engine|single]]
+|top_speed        = {{convert|105|km/h|abbr=on}}<ref>{{cite web|url=https://www.motorcyclenews.com/bike-reviews/honda/cg125/1975/|title=HONDA CG125 (1975 - 2008) Review|last=Sutherland|first=Dan|work=[[Motor Cycle News]]|access-date=12 December 2021}}</ref>
+|power            = {{convert|10.5|hp|abbr=on}} at 8,500 rpm
+|torque           = {{convert|9.5|N.m|abbr=on}} at 7,500 rpm
+|compression      = 9.0:1
+|transmission     = 4‑speed and 5‑speed [[manual transmission]]
+|suspension       = Front: [[Telescopic fork]] 103 mm Travel<br>Rear: [[Swingarm]] 68 mm Travel
+|brakes           = [[Drum brakes]], Front and rear
+|tires            = Front: 2.50-18 (38P)<br>Rear: 3.00-17 (50P)
+|rake_trail       = 
+|wheelbase        = {{convert|1204|mm|abbr=on}}
+|length           = {{convert|1912|mm|abbr=on}}
+|width            = {{convert|735|mm|abbr=on}}
+|height           = {{convert|1026|mm|abbr=on}}
+|seat_height      = {{convert|764|mm|abbr=on}}
+|dry_weight       = {{convert|95|kg|abbr=on}}
+|wet_weight       = {{convert|105|kg|abbr=on}}
+|fuel_capacity    = {{convert|9.2|L|abbr=on}} (Reserve: {{convert|2|L|abbr=on}})
+|fuel_consumption = {{convert|40|km/L|abbr=on}}
+|turning_radius   = 
+|related          = 
+|bore_stroke      = {{convert|56.5|mm|abbr=on}} × {{convert|49.5|mm|abbr=on}}
+}}
+The '''CG125''' or '''Honda CG''' is a commuter [[motorcycle]] made by [[Honda]]. It was in production from 1976 to 2008 in Japan and has been in production since 1992 in [[Pakistan]]. The CG was originally manufactured in [[Japan]], but the source for the global market was eventually moved to [[Brazil]] in 1985, and to Pakistan and Turkey in 1992 for the W and M models. 
+
+The CG125 is powered by a {{convert|124|cc|abbr=on}} [[Four-stroke engine|four-stroke]], [[overhead valve]], [[Single-cylinder engine|single-cylinder]] engine that has changed little over the years.
+
+The CG125 engine design has also been widely replicated and reverse-engineered in various countries, particularly in parts of Asia, Africa, and Latin America. These unlicensed or locally produced variants are commonly used in budget commuter motorcycles due to their low production cost, mechanical simplicity, and ease of maintenance, although build quality and material standards may vary compared to the original Honda-manufactured engines.
+
+==History==
+The CG125 was developed from the [[Honda CB125|CB125]] for developing countries' markets. The two models were very similar, with many parts in common. The main difference was in the top ends: the CB had an overhead cam (OHC). One fault with many Honda OHC engines of that era (generally denoted CB), was that they had poor cam-chains/tensioners and a tendency to wear the camshaft bearings if oil changes were skipped. The CG engine was developed specifically to address this problem (amongst others) as Honda realised that riders in developing countries performed little or no preventative maintenance. To make the bike more reliable with minimal servicing, the CG125 uses overhead valves (OHV) with pushrods, a washable foam air filter, and fully enclosed chain. The fully enclosed chain was dropped in 2004.<ref>Honda Corporate Web Site [https://global.honda/heritage/episodes/1975cg125.html "CG125 1975"]</ref>
+
+==Production and availability==
+
+In Pakistan the original CG125 is still being produced by [[Atlas Honda]] Ltd. Except for a few cosmetic changes, the Pakistani version has remained exactly the same as the original 1980s Japanese CG125 over the past years. It is currently available at a MSRP of 238,500 Pakistani Rupees as of September 2025, equipped with a 9.2-liter tank, a [[European emission standards|Euro 2]]-compliant [[overhead valve]] engine with kick-start mechanism, and a 4-speed transmission.<ref>{{cite web |url=https://www.atlashonda.com.pk/cg-125-red/ |title = CG125 Red - Atlas Honda}}</ref> The decoration graphics are redesigned, as well as the seat and the layout of the instrument cluster, to give this long-lasting model a refreshed appearance. Another variant called CG125SE (Special Edition) was introduced in 2019. The overall appearance of the bike remains the same as the standard model except for additional chassis bracing seen at the front of the engine. Other changes include a different chain cover, relocation of the brake tensioner wire, a 5-speed transmission instead of the original 4-speed and electric start in addition to the kick start system offered on the original model.<ref>{{cite web|url=https://www.atlashonda.com.pk/cg-125s-red-se/|title=CG125 Special Edition|publisher=Atlas Honda}}</ref>
+
+The most recent version of the original CG125 without the European market restyling is still in production in China as of 2021 by the two joint-venture partners of Honda, Wuyang Honda<ref>{{cite web |url=https://www.wuyang-honda.com/home/cpzs/ryj/qsj/detail-694.shtml |title = 五羊-本田摩托（广州）有限公司}}</ref> as the WY125-19 and Sundiro Honda<ref>{{cite web |url=https://www.honda-sundiro.com/product/detail.aspx?id=52 |title = 欢迎进入新大洲本田官网}}</ref> as the SDH125-7E, although both models were marketed simply as the CG125 CDi. Both versions are modernized with redesigned fuel-injected engines with electric start and 5-speed transmission, fulfilling the latest emission standard, China-IV, while maintaining the classic appearance from the 1980s. The China-IV standard is even stricter than the [[European emission standards|Euro 4]], so in theory, these bikes could be imported to the European market. The Wuyang version retained the [[overhead valve]] engine while the Sundiro version switched to a more modern [[overhead camshaft]] design,<ref>{{cite web |url=https://mc-web.jp/archive/history/48530/#toc___4 |title = カブに並ぶ「世界のホンダ」CG125は、約50年の間に中国など各地で独自発展していた！ {{!}} モーサイ}}</ref> thus could be differentiated by the appearance of their engines, but both versions kept the same displacement and produced similar power and torque.
+
+The Wuyang version had a redesigned engine with a compression ratio of 9.2:1, producing {{cvt|10|hp|kW PS|0|abbr=on}} at 8,000rpm and {{cvt|9.5|Nm|lbft|1|abbr=on}} of torque at 6,500rpm, with a fuel consumption of 1.8 liters per 100km and a maximum speed of {{cvt|93|kph|mph|0|abbr=on}}. The fuel tank remained has remained the same as the old design and has a capacity of 8.6 liters. The kick-start mechanism is completely replaced by electric start, and gear indicators were added to the instrument cluster. The front drum brakes were enlarged and luggage racks were included as standard equipment. It is sold at a domestic MSRP of ¥6,980 Chinese Yuan (${{To USD|6980|CHN|round=yes}} US dollars) and is exported to other markets including Japan,<ref>{{cite web |url=https://young-machine.com/2020/05/02/89863/ |title = 五羊ホンダCG125Fi試乗インプレッション【昭和の技術が生きるコスパ最強実用車】 {{!}} WEBヤングマシン｜最新バイク情報}}</ref> with a retail price of ¥139,000 Japanese Yen (${{To USD|139000|JPN|round=yes}} US dollars) as a parallel-imported vehicle from the importers.
+
+In the UK, the CG125 was popular with learners due to licensing laws which allow a rider to operate a 125&nbsp;cc motorbike with [[L-plates|L plates]] by completing a [[Compulsory Basic Training]] (CBT) course.<ref>{{cite web | url = http://www.direct.gov.uk/en/Motoring/LearnerAndNewDrivers/RidingMotorcyclesAndMopeds/DG_4022430 |title= Compulsory basic training (CBT): when and how to take it | publisher= DirectGov | access-date= 15 March 2012}}</ref>
+
+==References==
+{{reflist}}
+
+==External links==
+{{Commons category}}
+* [https://global.honda/heritage/episodes/1975cg125.html Honda CG125 History]
+
+{{Honda motorcycles (2000s)}}
+
+{{DEFAULTSORT:Honda Cg125}}
+[[Category:Honda motorcycles|CG125]]
+[[Category:Standard motorcycles]]
+[[Category:Motorcycles introduced in 1976]]

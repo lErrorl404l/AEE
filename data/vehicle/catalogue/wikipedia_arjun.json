@@ -1,0 +1,113 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the Arjun. The Mk1 column is recorded. Every value is grade claimed and the registry marks primary_held false. The article publishes the Mk1 weight, dimensions and ground clearance, the engine rating, the gearbox gear count, the road speed and the range.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "arjun",
+      "canonical_name": "Arjun",
+      "maker": "Armoured Vehicles Nigam Limited",
+      "model": "Arjun",
+      "variant": "Mk1 main battle tank",
+      "variant_id": "arjun",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "India",
+      "era": "modern",
+      "aliases": [
+        "arjun",
+        "arjun mk1",
+        "arjun mbt"
+      ],
+      "keywords": [
+        "mbt",
+        "main battle tank",
+        "tracked",
+        "india"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 58500,
+          "unit": "kg",
+          "source": "wikipedia_arjun",
+          "locator": "Infobox, weight row, MK1 entry",
+          "state": "Mk1 weight published as 58.5 t; the same row publishes 68 t for the MK1A, and the tonne is taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 10190,
+          "unit": "mm",
+          "source": "wikipedia_arjun",
+          "locator": "Infobox, length row, MK1 entry",
+          "state": "Mk1 length published as 10.19 m; the same row publishes 10.64 m for the MK1A",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3850,
+          "unit": "mm",
+          "source": "wikipedia_arjun",
+          "locator": "Infobox, width row, MK1 entry",
+          "state": "Mk1 width published as 3.85 m; the same row publishes 3.95 m for the MK1A",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2320,
+          "unit": "mm",
+          "source": "wikipedia_arjun",
+          "locator": "Infobox, height row, MK1 entry",
+          "state": "Mk1 height published as 2.32 m; the same row publishes about 2.8 m for the MK1A",
+          "grade": "claimed"
+        },
+        "ground_clearance_mm": {
+          "value": 450,
+          "unit": "mm",
+          "source": "wikipedia_arjun",
+          "locator": "Infobox, clearance row",
+          "state": "ground clearance published as 0.45 m",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "MTU MB 838 Ka-501 V10 turbocharged diesel",
+          "unit": "text",
+          "source": "wikipedia_arjun",
+          "locator": "Infobox, engine row, MK1 entry",
+          "state": "Mk1 engine published as an MTU MB 838 Ka-501 V10 turbocharged diesel, as published",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 1400,
+          "unit": "hp",
+          "source": "wikipedia_arjun",
+          "locator": "Infobox, engine row, MK1 entry",
+          "state": "Mk1 engine published as 1,400 hp (1,030 kW), with no net basis",
+          "grade": "claimed"
+        },
+        "gears": {
+          "value": 4,
+          "unit": "count",
+          "source": "wikipedia_arjun",
+          "locator": "Infobox, transmission row",
+          "state": "Renk epicyclic train gearbox published with 4 forward and 2 reverse gears",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 70,
+          "unit": "km/h",
+          "source": "wikipedia_arjun",
+          "locator": "Infobox, speed row, MK1 entry",
+          "state": "Mk1 road speed published as about 70 km/h",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 450,
+          "unit": "km",
+          "source": "wikipedia_arjun",
+          "locator": "Infobox, vehicle range row, MK1 entry",
+          "state": "Mk1 range published as 450 km",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

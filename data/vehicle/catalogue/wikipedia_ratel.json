@@ -1,0 +1,104 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the Ratel. The Ratel-20 column is recorded. Every value is grade claimed and the registry marks primary_held false. The article publishes the weight, the hull length, the dimensions, the ground clearance, the engine rating, the road speed and the range.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "ratel",
+      "canonical_name": "Ratel",
+      "maker": "Sandock Austral",
+      "model": "Ratel",
+      "variant": "Ratel-20 infantry fighting vehicle (6x6)",
+      "variant_id": "ratel",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "South Africa",
+      "era": "modern",
+      "aliases": [
+        "ratel",
+        "ratel 20"
+      ],
+      "keywords": [
+        "ifv",
+        "wheeled",
+        "6x6",
+        "south africa"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 18500,
+          "unit": "kg",
+          "source": "wikipedia_ratel",
+          "locator": "Infobox, weight row, Ratel-20 entry",
+          "state": "weight published as 18.5 t for the Ratel-20 and Ratel-60; the same row publishes 19 t for the Ratel-90, and the tonne is taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 7210,
+          "unit": "mm",
+          "source": "wikipedia_ratel",
+          "locator": "Infobox, length row, hull entry",
+          "state": "hull length published as 7.21 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2500,
+          "unit": "mm",
+          "source": "wikipedia_ratel",
+          "locator": "Infobox, width row",
+          "state": "width published as 2.5 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2390,
+          "unit": "mm",
+          "source": "wikipedia_ratel",
+          "locator": "Infobox, height row, Ratel-20 entry",
+          "state": "Ratel-20 height published as 2.39 m; the same row publishes 3.11 m for the Ratel-60 and 2.91 m for the Ratel-90",
+          "grade": "claimed"
+        },
+        "ground_clearance_mm": {
+          "value": 340,
+          "unit": "mm",
+          "source": "wikipedia_ratel",
+          "locator": "Infobox, clearance row",
+          "state": "ground clearance published as 0.34 m",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Büssing D 3256 BTXF six-cylinder turbocharged diesel",
+          "unit": "text",
+          "source": "wikipedia_ratel",
+          "locator": "Infobox, engine row",
+          "state": "engine published as a Büssing D 3256 BTXF six-cylinder turbocharged diesel, as published",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 275,
+          "unit": "hp",
+          "source": "wikipedia_ratel",
+          "locator": "Infobox, engine power row",
+          "state": "engine power published as 205 kW (275 hp) at 2,200 rpm, with no net basis",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 105,
+          "unit": "km/h",
+          "source": "wikipedia_ratel",
+          "locator": "Infobox, speed row",
+          "state": "road speed published as 105 km/h",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 1000,
+          "unit": "km",
+          "source": "wikipedia_ratel",
+          "locator": "Infobox, vehicle range row",
+          "state": "range published as 1,000 km",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

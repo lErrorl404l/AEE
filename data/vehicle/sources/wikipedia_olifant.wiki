@@ -1,0 +1,107 @@
+{{Infobox weapon
+| name               = Olifant
+| image              = File:Olifant Mk 2 Tank (9689832846).jpg
+| image_size         = 300
+| caption            = Olifant Mk.2 Tank
+| origin             = [[United Kingdom]]<br>[[South Africa]]
+| type               = [[Main battle tank]]
+| is_vehicle         = yes
+| is_UK              = no
+| service            = 1976–present
+| wars               = {{ubl|[[South African Border War]]:| [[Operation Moduler]]| [[Operation Packer]]}}
+| developed_from     = [[Centurion (tank)]]
+| developed_into     = The Olifant led to the TTD also known as [[The Loggim program (TTD Program)]]
+| unit_cost          = 
+| number             = 224
+| length             = Hull only {{convert|24|ft|9.5|in|m|abbr=on}}<ref name="Handbook">''User Handbook for Tk., Med.Gun, Centurion, Mk.3,5 and 6 (1965)''</ref><br/>With gun forward {{convert|32|ft|3|in|m|abbr=on}}<ref name="Handbook"/>
+| width              = {{convert|11|ft|1|in|m|abbr=on}} with side plates<br/>{{convert|10|ft|9|in|m|abbr=on}} without side plates<ref name="Handbook"/>
+| height             = {{convert|9|ft|7.75|in|m|abbr=on|2}}<ref name="Handbook"/>
+| weight             = {{convert|57|LT|t|lk=on}}<ref name="Handbook"/>
+| suspension         = {{ubl|[[Horstmann suspension|Modified Horstmann]] (Mk.1 and Mk.1A)|Torsion Bar (Mk.1B and Mk.2)}}
+| speed              = {{ubl|{{convert|21.5|mph|abbr=on}} (Mk.1)<ref name="Handbook"/>|{{convert|35|mph|abbr=on}} (Mk.1A, Mk.1B, Mk.2)}}
+| vehicle_range      = 
+| primary_armament   = {{ubl|Ordnance QF 20 pounder 84 mm "[[Denel GT-1|GT-1]]" (Mk.1)|105 mm [[Royal Ordnance L7|L7 rifled gun]] "[[Denel GT-3|GT-3]]" (others)}}
+| secondary_armament = [[Co-axial machine gun|Co-axial]] machine gun [[.30-06 Springfield|.30 cal]]
+| armour             = {{convert|51| -|152|mm|abbr=on}}
+| engine             = {{ubl|[[Rolls-Royce Meteor|Rolls-Royce Meteor 4B]]<ref name="Handbook"/> (Mk.1)|V-12 air-cooled [[Continental AV1790]] turbo diesel engine (others)}}
+| fuel_capacity      = 
+| transmission       = {{ubl|5-speed [[David Brown Ltd.|Merrit-Brown]] Z51R Mk. F gearbox (Mk.1)|automatic gearbox (Mk.1A, Mk.1B, Mk.2)}}
+| crew               = 4 (commander, gunner, loader, driver)
+| engine_power       = {{ubl|{{convert|650|hp|kW|abbr=on|lk=in}} at 2550rpm (Meteor)<ref name="Handbook"/>|others up to {{convert|1040|hp|kW|abbr=on|lk=in}} (Mk.2)}}
+| clearance          = {{convert|1 |ft |8| in|abbr=on}}<ref name="Handbook"/>
+| pw_ratio           = 
+}}
+The '''Olifant''' ([[Afrikaans]] for Elephant) is the primary [[main battle tank]] of [[South Africa]]. It was developed from the British [[Centurion (tank)|Centurion tank]] since 1976. These tanks were heavily redesigned and rebuilt by South Africa since 1976 with some help from [[Israel]]. Although based on a Centurion tank hull, it has a domestically-produced gun, power pack, transmission, tracks, wheels and fire control system.
+
+== History ==
+The British Centurion tanks were the South African [[main battle tank]]s since 1957, but they were sold or relegated to reserve roles as a result of maintenance problems compounded by parts shortages, and a tendency to overheat in the hot African climate.<ref name="trade">{{cite web |url=http://armstrade.sipri.org/armstrade/page/trade_register.php |title=Trade Registers |website=[[SIPRI]] |access-date=2013-06-20 |url-status=live |archive-url=https://web.archive.org/web/20100414022558/http://armstrade.sipri.org/armstrade/page/trade_register.php |archive-date=14 April 2010}}</ref>
+
+Thus, [[Operation Savannah (Angola)|Operation Savannah]] in 1975 saw the lightly armoured South African forces in [[Angola]] threatened by large formations of Soviet tanks supplied to the [[People's Armed Forces for the Liberation of Angola]] (FAPLA) and their [[Cuba]]n allies.<ref name=Harmse /> Operation Savannah led to the need of further tank trials under Project ''Semel''. South Africa purchased a number of surplus Centurion hulls from Jordan and India,<ref name="Evolution">{{cite book |last=Ogorkiewicz |first=Richard |date=2015 |title=Tanks: 100 Years of Evolution |location=Oxford, UK |publisher=Osprey Publishing |isbn=978-1-4728-0670-3 |pages=222–223}}</ref> but the [[United Nations Security Council Resolution 418]], which imposed a mandatory arms embargo on South Africa forced them to purchase the tanks without turrets or armament.<ref name="trade" />
+
+The South African government was obliged by the arms embargo to finance the creation of a new private sector enterprise, the [[Land Systems OMC|Olifant Manufacturing Company]] (OMC), to refurbish the Centurions. The Semel program in 1974 counted a total of 35 conversions, soon used operationally. Information from the [[Sho't]] program – the Israeli Centurion conversion program – helped to start a more ambitious project. These refurbished tanks were named Olifant Mk.1.<ref name=Harmse>{{cite book |last1=Harmse |first1=Kyle |last2=Dunstan |first2=Simon |title=South African Armour of the Border War 1975–89 |date=23 February 2017 |pages=4, 32–46 |publisher=Osprey Publishing |location=Oxford, UK |isbn=978-1-4728-1743-3}}</ref>
+
+During [[Operation Askari]], South African forces clashed with FAPLA [[T-54/55]] tanks in late 1983 and early 1984; however, due to the respective logistical commitment the Olifants were not deployed.<ref name=Harmse /> At length the South African mechanised infantry, bolstered by [[Eland Mk7|Eland]] and [[Ratel IFV|Ratel-90]] armoured car squadrons, succeeded in destroying the Angolan tanks on their own.<ref name="Lessons">{{cite web |title=The Lessons of the Border War |last1=Scholtz |first1=Leopold |url=https://www.ajol.info/index.php/smsajms/article/viewFile/89172/78726|location=Stellenbosch |publisher=Military Science Department, Stellenbosch University |date=2012 |access-date=24 March 2017 |archive-url=https://web.archive.org/web/20150128103422/http://www.ajol.info/index.php/smsajms/article/viewFile/89172/78726 |archive-date=28 January 2015}}</ref> But eventually, a single squadron of thirteen Olifant Mk.1As was sent to the Angolan border, where they were attached to the [[61 Mechanised Battalion Group]]. Following the [[Lusaka Accords]], which effectively ensured a ceasefire between South Africa and Angola, the Olifant Mk.1 were placed into storage and the tank crews rotated out.<ref name="Lessons" />
+
+Starting in 1983, OMC had upgraded further Centurions with a 29-litre Teledyne Continental turbocharged diesel engine and a new transmission adopted from the [[M60 Patton]]. The refurbished Centurions were armed with a South African variant of the 105 mm [[Royal Ordnance L7|L7 rifled main gun]] known as the "[[Denel GT-3|GT-3]]". They were accepted into service with the South African Armoured Corps as the Olifant Mk.1A in 1985.<ref name="Evolution" />
+
+The launch of [[Operation Moduler]], following the collapse of the Lusaka Accords in late 1987, led to the Olifant squadron being activated on the direct orders of President [[P.W. Botha]].<ref name=Harmse /> On 9 November 1987 the Olifants destroyed two Angolan T-55s.<ref name="Hamann">{{cite book |title=Days of the Generals |last=Hamann |first=Hilton |date=2007 |orig-year=2003 |location=Cape Town |publisher=Struik Publishers |isbn=978-1-86872-340-9 |page=94}}</ref> Throughout the operation, South African forces typically dispersed into an "arrowhead" formation, with Olifants in the lead, Ratel-90 armoured cars on the flanks, and the remainder of the mechanised infantry to the rear and centre.<ref name="Holt">{{cite book |title=At Thy Call We Did Not Falter |last=Holt |first=Clive |location=Cape Town |publisher=Zebra Press |year=2008 |orig-year=2005 |isbn=978-1-77007-117-9 |pages=68–69}}</ref>
+
+Three Olifants were abandoned in a minefield during [[Operation Packer]] from March to April 1988; one was retrieved by the Cubans and taken to the town of [[Cuito Cuanavale]]<ref name=Edward>{{cite book|last=George|first=Edward|title=The Cuban intervention in Angola : 1965-1991 : from Che Guevara to Cuito Cuanavale|year=2005|publisher=Frank Cass|location=London [u.a.]|isbn=0415350158|edition=1. publ.}}</ref>{{rp|338}} and the other two remain to this day in the Angolan bush.<ref name="Halo">{{cite web | url=http://www.halotrust.org/media-centre/news-press-releases/press-release-prince-harry-visits-halo-programme-angola| title=Prince Harry visits HALO programme in Angola | publisher=The HALO Trust | date=2013 | access-date=14 October 2014|pages=338}}</ref> Another two were damaged beyond immediate repair by mines but successfully recovered.<ref name="Bush">{{cite book |title=Bush War: The Road to Cuito Cuanavale – Soviet Soldiers' Accounts of the Angolan War |last1=Shubin |first1=Gennadiĭ Vladimirovich |last2=Tokarev |first2=Andreĭ Aleksandrovich |location=Auckland Park |publisher=Jacana Media (Pty) Ltd |year=2011 |orig-year=2007 |isbn=978-1-909982-39-0 |page=31}}</ref> A number of others suffered varying degrees of track and suspension damage due to mines or Angolan tank fire, but were able to keep moving after field repairs.<ref name="Polack">{{cite book |title=The Last Hot Battle of the Cold War: South Africa vs. Cuba in the Angolan Civil War |author=Polack, Peter|location=Oxford, UK |publisher=Casemate Publishers |year=2013 |isbn=978-1-61200-195-1 |edition=illustrated |page=149}}</ref> The operational failure by the SADF ended in a strategic stalemate.
+
+[[Leopold Scholtz (author)|Leopold Scholtz's]] book ''[[The SADF in the Border War 1966-1989]]'' offers detailed observations about the use of Olifants in the war, including their tactics and operations, especially during Operation Packer, which is the "stalemate at Tumpo". For Operation Packer, the book relies on interviews with General Louw, who indicates that Lt. Gen. Kat Liebenberg, Chief of the Army, present at Fouche's HQ, countermanded an order to destroy the abandoned Oliphants, assuming they could be recovered later. They were not, as the SADF vacated the battlefield. As for the two tanks never recovered: "the other two proved impossible to move, so heavily had their tracks and suspensions been damaged." It was the only slightly damaged one that the Cubans recovered which eventually ended up in the USSR.
+
+In the early 1990s, the Olifant Mk.1A was superseded by the Olifant Mk.1B, which incorporated major improvements in armour protection, a slightly more powerful engine, a double armoured floor for protection against mines, and a torsion bar suspension. It is barely recognisable as a Centurion.<ref name="globalsecurity.org">{{Cite web|author=Venter, Devald |url=https://www.globalsecurity.org/military/world/rsa/olifant-1b.htm |title=Olifant Main Battle Tank|date=2018 |language=en-US |access-date=2023-04-01}}</ref>
+
+The Olifant Mk.2 was adapted in 2005 when South Africa was no longer subject to international embargoes. Externally, the Mk.2 looks identical to the Mk.1B but features an upgraded Continental 29 Litre turbo-charged V12 diesel engine that produces 1040 [[horsepower]]. Improvements include an upgraded [[Fire-control system|Fire Control System (FCS)]] and a Computerised Battle System (CBS) which includes a hunter-killer mode. A LIW 120 mm smoothbore gun known as the [[Denel GT-9|GT-9]] can be used instead of the 105 mm [[Denel GT-3|GT-3]], [[Royal Ordnance L7|L7 rifled gun]]. In 2018, a total number of 26 Mk.2 tanks was produced.<ref>{{Cite web|author=Pike, John |url=https://tanks-encyclopedia.com/modern/south-africa/olifant-mk2-main-battle-tank/ |title=Olifant Main Battle Tank |date=2018 |language=en-US |access-date=2023-04-01}}</ref>
+
+== Variants ==
+
+{| class="wikitable sortable"
+|-
+! Variant !! Comment !! Image
+|-
+| '''Olifant Mk.1 {{anchor|Olifant Mk.1}}''' ||Main Battle Tank, '''Service''': 1979, '''Engine''': [[Rolls-Royce Meteor]] 4B 650&nbsp;hp petrol V12 power pack, 5-speed Merrit-Brown Z51R Mk. F gearbox, '''Weaponry''': Ordnance QF 20-pounder 84&nbsp;mm ([[Denel GT-1|GT-1]]), '''Survivalbility''': fire extinguishers || [[File:SANDF Olifant Mark one.jpg|300px|SANDF Olifant Mark one]]
+|-
+| '''Olifant Mk.1A {{anchor|Olifant Mk.1A}}''' ||Main Battle Tank, '''Service''': 1985, '''Engine''': new 750&nbsp;hp [[Continental AV1790]] diesel V12 power pack, transmission and automatic gearbox, new coolant system, '''Weaponry''': 105mm [[Royal Ordnance L7|L7 cannon]] ([[Denel GT-3|GT-3]]), improved fire control and storage layout for ammunition, '''Survivalbility''': fire extinguishers, '''Mobility''': new track wheels '''Mineclearing''': Both Olifant Mk.1A and B can be fitted with plough-type, electrohydraulic dozer blade or a roller-type mechanical mineclearing set. The 3.5 m wide dozer blade weighs 1500&nbsp;kg || [[File:SANDF Olifant Mark one.jpg|300px|SANDF Olifant Mark one a]]
+|-
+| '''Olifant Mk.1B {{anchor|Olifant Mk.1B}}''' || Main Battle Tank, '''Service''': 1991, '''Engine''': uprated 950&nbsp;hp [[Continental AV1790]] V-12 air-cooled turbo diesel engine provides increased range, '''Weaponry''': more powerful 105mm [[Royal Ordnance L7|L7 cannon]] ([[Denel GT-3|GT-3B]]) with thermal sleeve, laser rangefinder added, 7.62mm general purpose co-axial machine gun and a 7.62mm anti-aircraft machine gun fitted, first gen image intensifier, driver's station equipped with day/night sight, gunner's station fitted with day/night sights, '''Survivability''': glacis plate and nose of the hull upgraded with passive armour, turret stand-off armour, double-armour floor, running gear protected against HEAT missiles by new sideskirts, fuel injection system smoke screen in engine's exhaust added, fire detection and suppression system improved, '''Mobility''': torsion bar running gear, hydraulic dampers fitted to the first and last pair of wheels, maximum road speed of 58&nbsp;km/h and maximum range on internal fuel of 350&nbsp;km, can ford water to a depth of 1.5m, negotiate gradients and slopes of 60% and 30% and vertical obstacles up to 1m in height  ||  [[File:SANDF Olifant Mark one b.jpg|300px|SANDF Olifant Mark one b]]
+|-
+| '''Olifant Mk.2 {{anchor|Olifant Mk.2}}''' ||Main Battle Tank, '''Service''': 2007, '''Engine''': uprated 1 040&nbsp;hp [[Continental AV1790]] diesel engine '''Weaponry''': 105mm [[Royal Ordnance L7|L7 cannon]] ([[Denel GT-3|GT-3B]]), periscopic stabilized day/ thermal gunner sight with laser rangefinder, upgraded ballistic computer added to the fire control system, panoramic commander sight, full solution fire control system, fire on the move and day and night time engagements, ready rounds located in carousel mounted turret basket, allowing fire rate of 10rpm '''Survivability''': modular composite armour sloping on turret and hull front, in case of ammunition ignition, blow-off panels and armoured doors protect the crew   ||[[File:SANDF Olifant Mark Two.jpg|300px|SANDF Olifant Mark Two]]
+|-
+| '''Olifant Armour Recovery {{anchor|Olifant ARV}}''' || [[Armoured recovery vehicle]] built on the chassis of an Olifant ||[[File:SANDF Olifant Tank Recovery.jpg|350px|SANDF Olifant Tank Recovery]]
+|-
+|}
+
+== Prototypes ==
+=== [[The Loggim program (TTD Program)|Tank Technology Demonstrator (TTD)]] ===
+{{See also|Loggim program}}
+The South African TTD was a new start for the Olifant family, instead of continuing the Olifant as the flagship [[Main battle tank|MBT]]. The [[The Loggim program (TTD Program)|Loggim program]], also known as TTD program, was intended to be a domestically produced counter to the Russian [[T-80]], and [[T-72]] main battle tanks with it being projected of being able to counter [[T-90]] tanks Aswell <ref name=":0" />. Parts of the tank were based on other vehicles such as the U.S. [[M1 Abrams]], German [[Leopard 2]], and French [[Leclerc (tank)|Leclerc]], with it outperforming some western tanks in specific categories while being on par with them overall.<ref name=":0" /><ref>{{Cite web |last=Engelbrecht |first=Leon |date=2009-05-26 |title=SANDF projects: past, present & future - DefenceWeb |url=https://defenceweb.co.za/sa-defence-sa-defence/sandf-projects-past-present-future/ |access-date=2026-09-04 |language=en-ZA}}</ref> It had a 105 mm [[Denel GT-3|GT-3]] QF semi-automatic main gun for the testing version, and a 120 mm [[Denel GT-6|GT-6]] QF semi-automatic [[Smoothbore|smooth-bore]] main gun for the production variant, upgradable to a 140 mm QF semi-automatic smooth-bore main gun.<ref name=":0">{{Cite web |last=Venter |first=Dewald |date=2019-04-06 |title=Tank Technology Demonstrator (TTD) |url=https://tanks-encyclopedia.com/modern/south-africa/tank-technology-demonstrator/ |access-date=2026-05-16 |website=Tank Encyclopedia |language=en}}</ref>
+
+=== Olifant MK1B Optimum ===
+{{anchor|Olifant MK1B Optimum}} The Olifant MK1B Optimum was a continuation of the Olifant tank family which had a very similar turret profile to the [[Loggim program|TTD]] when the Sharp [[Composite armour|Composite package]] was removed, Although it was competing with the [[Loggim program|TTD]], in the end it was more of a stop gap that the [[South African Defence Force|SADF]] was using while working on the [[Loggim program|TTD]] and after the [[South African Defence Force|SADF]] finished the [[Loggim program]], they canceled full continuation of the MK1B Optimum, with the only form of continuation being some systems that modern Olifant Mk.2s use from the Optimum, it used a [[Denel GT-8|GT-8]] 105mm [[Rifling|Rifled]] Main Cannon and a [[7.62×51mm NATO|7.62x51mm]] [[MG-4 machine gun|MG-4]] Browning [[Coaxial machine gun|Coaxial Machine Gun]], with a 950 horsepower diesel powered air cooled [[V12 engine|V-12 Engine]], Advanced [[Ceramic armor|Ceramic Armor]], a advanced [[Fire-control system|Fire control system]] and advanced optics that used high quality [[Thermography|TVD]] and [[Night-vision device|NVD]] systems.<ref>{{Cite web |date=2023-08-03 |title=Olifant MK1B "Optimum" suggestion |url=https://forum.warthunder.com/t/olifant-mk1b-optimum-suggestion/13115 |access-date=2026-09-04 |website=War Thunder — official forum |language=en}}</ref><ref>{{Cite web |last=Engelbrecht |first=Leon |date=2010-01-21 |title=Fact file: The Olifant main battle tank - DefenceWeb |url=https://defenceweb.co.za/resources/fact-files/fact-file-the-olifant-main-battle-tank/ |access-date=2026-09-04 |language=en-ZA}}</ref><ref>{{Cite web |last=Venter |first=Dewald |date=2017-11-24 |title=Olifant Mk1B Main Battle Tank |url=https://tanks-encyclopedia.com/coldwar/south_africa/olifant-mk1b-main-battle-tank/ |access-date=2026-05-16 |website=Tank Encyclopedia |language=en}}</ref>
+
+== References ==
+;Citations
+{{Reflist}}
+;Bibliography
+{{Refbegin}}
+
+* {{cite book |last=Dunstan |first=Simon |title=Centurion (Modern Combat Vehicles: 2) |year=1980 |publisher=Ian Allan Publishing |ISBN=978-0711010635 }}
+* {{cite book |last=Dunstan |first= Simon |others=illustrated by Badrocke M. and Sarson P. |title= Centurion Universal Tank 1943–2003 |year= 2003 |publisher= Osprey Publishing |series=New Vanguard 68) |isbn= 978-1-84176-387-3}}
+* {{cite book |last1=Harmse |first1=Kyle |last2=Dunstan |first2=Simon |title=South African Armour of the Border War 1975–89 |date=2017 |publisher=Osprey Publishing |location=Oxford, UK |isbn=978-1-4728-1743-3}}
+* {{cite book |last= Miller |first=David |title= The Illustrated Directory of Tanks of the World |year=2001 |publisher= Salamander Books Ltd |isbn=978-0-7603-0892-9 |ref=Miller, Dict. Tanks}}
+* {{cite book |last=Munro |first=Bill |title=The Centurion Tank |year=2005 |publisher=Crowood Press |isbn=978-1-86126-701-6}}
+* Scholtz, Leopold (2015). ''The SADF In the Border War, 1966-1989''. Helion & Company, England. ISBN 978-1-909982-76-5
+
+{{Refend}}
+
+== External links ==
+{{Commons category|Olifant tanks}}
+* {{Cite web|author=Venter, Dewald |url=https://tanks-encyclopedia.com/coldwar/south_africa/olifant_mk.i |title=Olifant Mk1A Main Battle Tank |date=2017-11-12 |language=en-US |access-date=2023-04-01}}
+* {{Cite web|author=Venter, Dewald |url=https://tanks-encyclopedia.com/coldwar/south_africa/olifant-mk1b-main-battle-tank/ |title=Olifant Mk1B Main Battle Tank |date=2017-11-24 |language=en-US |access-date=2023-04-01}}
+* {{Cite web|author=Venter, Devald |url=https://tanks-encyclopedia.com/modern/south-africa/olifant-mk2-main-battle-tank/ |title=Olifant Mk2 Main Battle Tank |date=2018-08-04 |language=en-US |access-date=2023-04-01}}
+
+{{Centurion tanks|style=wide}}
+
+[[Category:Armoured fighting vehicles of South Africa]]
+[[Category:Main battle tanks of the Cold War]]

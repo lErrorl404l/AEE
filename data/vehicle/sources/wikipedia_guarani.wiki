@@ -1,0 +1,154 @@
+{{more citations needed|date=November 2020}}
+{{Infobox weapon
+| name               = VBTP-MR Guarani
+| image              = 19 04 2022- Dia do Exército Brasileiro (52016606453).jpg
+| image_size         = 300
+| caption            = The ''VBTP-MR''
+| origin             = [[Brazil]] / [[Italy]]
+| manufacturer       = [[Iveco]]
+
+| type               = Amphibious wheeled [[Armoured personnel carrier]]
+| unit_cost          = [[US$]] 1,074 million (2016)<ref>{{cite web |url= https://www.defesaaereanaval.com.br/naval/exercito-brasileiro-tera-mais-1-580-vbtp-6x6-guarani-em-quatro-lotes |title=Exército Brasileiro terá mais 1.580 VBTP 6×6 Guarani em quatro lotes | work = Defesa Aérea e Naval|date= 19 November 2016}}</ref>
+| is_vehicle         = yes
+<!-- Service history -->| service         = since 2014
+| used_by            = 
+| wars               = 
+| length             = {{convert|6.9|m|ft|abbr=on}}
+| width              = {{convert|2.7|m|ft|abbr=on}}
+| height             = {{convert|2.34|m|ft|abbr=on}}
+| weight             = 16.7 t
+| suspension         = [[Hydropneumatic suspension|Hydropneumatic]]
+| speed              = {{convert|110|km/h|mph|abbr=on}}
+| vehicle_range      = {{convert|600|km|mi|abbr=on}}
+| primary_armament   = Armoured remote controlled AEL Systems UT30 turret 30 mm [[Mk44 Bushmaster II]] autocannon with Coaxial [[FN MAG]] MG 7.62 mm, 6 smoke grenade launchers (can be fitted with add on armour), equipped with infrared/thermal/night vision electronic sight.
+| secondary_armament = 7.62 mm [[FN MAG]] MG, [[M2 Browning]] installed in Remote controlled stabilized REMAX turret (fitted with 4 smoke grenade launchers, electronic thermal/infrared, night vision), or armoured manual turret REMAN (STANAG 4569 Level 2).
+| armour             = Basic armour: [[STANAG 4569]] Level 2.  Add on armour: STANAG 4569 Level 4 (max)
+| engine             = [[Iveco|Iveco Cursor 9 diesel engine]]
+| engine_power       = 383 hp
+| crew               = 3 (+ 8 passengers)
+| pw_ratio           = 
+}}
+The '''VBTP-MR Guarani''' ([[Portuguese language|Portuguese]] ''Viatura Blindada Transporte de Pessoal – Média sobre Rodas''; "Armored Personnel Transport Vehicle – Medium on Wheels"<ref name= "janes360">{{Deprecated archive|url=https://archive.today/20140227210437/http://www.janes360.com/article/34658/guarani-afv-to-enter-service-with-brazil|title=''Guarani AFV to enter service with Brazil''}}, Victor Barreira, Lisbon: IHS Jane's Defence Weekly, 26 February 2014.</ref>) is a [[6×6]] [[armoured personnel carrier]] developed by [[Iveco]] and the [[Brazilian Army]] as part of its "Urutu-III" modernization program aimed to replace all [[EE-11 Urutu]] by 2015.<ref name= "army rec">{{cite web|url= http://www.armyrecognition.com/december_2012_new_army_military_defence_industry/iveco_delivered_the_first_batch_of_vbtp-mr_guarani_armoured_vehicle_to_brazilian_army_1612121.html|title=Iveco delivered the first batch of VBTP-MR Guarani armoured vehicles to Brazilian army |date= 2012-12-16|access-date= 2013-09-25| work = Army Recognition |archive-url= https://web.archive.org/web/20130929035258/http://www.armyrecognition.com/december_2012_new_army_military_defence_industry/iveco_delivered_the_first_batch_of_vbtp-mr_guarani_armoured_vehicle_to_brazilian_army_1612121.html|archive-date= 2013-09-29 |url-status= live}}</ref>  The VBTP-MR is the base of Iveco's [[Superav]] armoured personnel carrier.<ref>{{cite web|url= http://www.army-technology.com/projects/iveco-superav-8x8-armoured-personnel-carrier/ |title=Iveco Superav 8×8 Armoured Personnel Carrier, Italy|access-date=2013-09-25| work = Army Technology|archive-url= https://web.archive.org/web/20130927092612/http://www.army-technology.com/projects/iveco-superav-8x8-armoured-personnel-carrier/ |archive-date= 2013-09-27 |url-status =live}}</ref>  Other Brazilian companies also participated in the program, such as [[IMBEL]] (Communications), [[Elbit Systems|Elbit]] (Armaments), [[Usiminas]] and {{ill |Villares Metals|lt= Villares|pt|Villares Metals S/A}} (development of national ballistic structural steel).
+
+==History==
+In 1999, the [[Brazilian Army]] issued a request (ROB #09/99) for a new family of armored fighting vehicles with amphibious capabilities to replace the [[EE-9 Cascavel]] and [[EE-11 Urutu]].<ref name="DAG">{{cite web |date=24 July 2015 |title=Brazilian Army Modernizes its Armored Vehicle Fleet with Guarani Project |url=https://dialogo-americas.com/articles/brazilian-army-modernizes-its-armored-vehicle-fleet-with-guarani-project/ |url-status=live |archive-url=https://archive.today/20240313004538/https://dialogo-americas.com/articles/brazilian-army-modernizes-its-armored-vehicle-fleet-with-guarani-project/ |archive-date=13 March 2024 |access-date=13 March 2024 |website=Dialogo Americas}}</ref> The main feature of this new family should be its modular design, allowing the incorporation of different turrets, weapons, sensors and communications systems onto the same carriage. The development program also include a communications version, an ambulance version and different fire support versions, armed with large calibre mortar and gun systems.
+
+The Brazilian Army has signed with [[Iveco]] a contract worth about €2.5 billion for supplying armoured personnel carriers of the VBTP-MR model. The vehicles will replace the old Urutu armoured vehicle employed today by the Brazilian armed forces. The contract covers the delivery of 2,044 vehicles and logistical support for a period of 20 years. Deliveries were scheduled to begin in 2012, and continue for 18 years.<ref name="Exército">{{cite web |title=Iveco chega à marca do 100º blindado VBTP-MR Guarani construído para o exército brasileiro |url=http://www.revistaoperacional.com.br/exercito/iveco-chega-a-marca-do-100o-blindado-vbtp-mr-guarani-construido-para-o-exercito-brasileiro/ |url-status=live |archive-url=https://archive.today/20140923230945/http://www.revistaoperacional.com.br/exercito/iveco-chega-a-marca-do-100o-blindado-vbtp-mr-guarani-construido-para-o-exercito-brasileiro/ |archive-date=2014-09-23 |access-date=2015-11-13 |work=Revista operacional |publisher=Exército}}</ref><ref name="tecnodefesa">{{cite web |author=Roberto Caiafa |url= http://tecnodefesa.com.br/laad-2015-iveco-apresenta-seu-portfolio/ |title=LAAD 2015: Iveco apresenta seu portfólio | work = Tecnodefesa |date=2015-11-05 |access-date=2015-11-13 |archive-url= https://web.archive.org/web/20151003213129/http://tecnodefesa.com.br/laad-2015-iveco-apresenta-seu-portfolio/ |archive-date=2015-10-03 |url-status=live }}</ref><ref name="armyrecognition"/> The total order was later scaled down to 1,580 units, under a timetable stretched to 2035. By 2023, the Army considered a further cut in the total number to around 900 units.<ref>{{Cite web |author=Bonin |first=Robson |date=2023-03-08 |title=Exército deve reduzir encomenda de blindados Guarani |trans-title=Army must reduce order for Guarani armored vehicles |url=https://veja.abril.com.br/coluna/radar/exercito-deve-reduzir-encomenda-de-blindados-guarani/ |url-status=live |archive-url=https://archive.today/20250318031708/https://veja.abril.com.br/coluna/radar/exercito-deve-reduzir-encomenda-de-blindados-guarani/ |archive-date=2025-03-18 |access-date=2024-07-29 |website=Veja |language=pt}}</ref>
+
+There is also an 8×8 variant of the vehicle.<ref name="ref4">{{cite web |title=Radar SABER X60 |url=http://www.dct.eb.mil.br/index.php?option=com_content&view=article&id=52&Itemid=90 |url-status=dead |archive-url=https://web.archive.org/web/20090416193222/http://www.dct.eb.mil.br/index.php?option=com_content&view=article&id=52&Itemid=90 |archive-date=April 16, 2009 |access-date=March 18, 2025 |website=www.dct.eb.mil.br |language=pt}}</ref>
+
+==Versions==
+[[File:Cavalaria_(29242886951).jpg|thumb|VBCI-MR Guarani (UT-30BR)]]
+[[File:Cavalaria (28722889524).jpg|thumb|Guarani in amphibious operation]]
+As of 2021 the VBTP-MR has several planned variants of which the VBTP armored personnel carrier has entered production and service, while the rest are under development:
+
+* VBTP (armored personnel carrier) 
+* VBCI (infantry fighting vehicle with 30 mm turret)
+* VBE PC (command post)
+* VBC-MRT (mortar carrier, possibly 120 mm)
+* VBR MR (105&nbsp;mm cannon) 
+* VBE CDT (fire control)
+* VBE COM (communications / command and control) 
+* VBE OFN (workshop)
+* VBE SOC (armored recovery vehicle)
+* VBTE AMB (ambulance)
+* VBE ENG (engineering)<ref name="Guarani Engenharia em testes">{{Cite news |date=4 September 2021 |title=Guarani Engenharia em testes |url=https://tecnodefesa.com.br/guarani-engenharia-em-testes/ |url-status=live |archive-url=https://archive.today/20240313004817/https://tecnodefesa.com.br/guarani-engenharia-em-testes/ |archive-date=13 March 2024 |access-date=13 March 2024 |website=Tecnologia e Defesa |language=pt}}</ref>
+* VBC AAe (anti-air)<ref name="VBC AAe">{{Cite news |date=15 April 2023 |title=El Ejército Brasileño presenta la versión de defensa aérea M-SHORAD del VCBR 6×6 Guarani |trans-title=The Brazilian Army presents the M-SHORAD air defense version of the VCBR 6x6 Guarani |url=https://www.zona-militar.com/2023/04/15/el-ejercito-brasileno-presenta-la-version-de-defensa-aerea-m-shorad-del-vcbr-6x6-guarani/ |url-status=live |archive-url=https://web.archive.org/web/20231007233945/https://www.zona-militar.com/2023/04/15/el-ejercito-brasileno-presenta-la-version-de-defensa-aerea-m-shorad-del-vcbr-6x6-guarani/ |archive-date=7 October 2023 |access-date=18 March 2025 |website=ZMilitar |language=es}}</ref>
+
+The requirements for the VBTP-MR VBCI included an ELBIT remote control turret, equipped with a [[Mk44 Bushmaster II]] cannon and a 7.62mm machine gun; it should also be able to fire anti-tank guided missiles. This turret, capable of 360 degree swivel and elevation / depression of -15 to +60 degrees, was chosen by the [[Brazilian Army]] on a selection made from among four companies. It is expected to be manufactured in Brazil. The firing system has a laser rangefinder, vision and fire control by day/night thermal vision, double shot of command (commander and gunner of the car, with precedence for the later), automatic target tracking system, and hunter killer smoke launchers. A significant aspect of this vehicle is that the turret is equipped with weapons sights and it is stabilized in two axes, allowing firing on the move with very high probability of hit within the first shot. Future needs will determine what kind of instruments will equip the turret, possibly after the vehicle enters service.
+
+Some speculate that the VBE / CP version will fashion a battle management system. The first level at which information must flow in a bidirectional way, what is known as "situational awareness", refers to the tactical commander. The distress (probably the VBCI) and reconnaissance models are planned to have an 8×8 drive train.
+
+In September 2021, the Brazilian Army launched a test campaign of a new engineering variant. The unit is equipped with an excavator manipulator arm (EMA), earth anchor blade (EAB) and a straight obstacle blade (SOB) systems, supplied by the British company Pearson Engineering Ltd.<ref name="Guarani Engenharia em testes"/> In April 2023, the Brazilian Army presented the anti-air version equipped with a [[RBS 70|RBS 70 NG]] system.<ref name="VBC AAe"/>
+
+===Armament===
+[[File:Cavalaria_(29312402846).jpg|thumb|Convoy of Guarani armored vehicles]]
+* UT-30BR turret by Elbit Systems, which will be produced in Brazil by [[AEL Sistemas|AEL Sistemas S.A (Aeroeletronica)]]. (30&nbsp;mm autocannon)
+* [[Reparo de Metralhadora automatizada X|REMAX]] turret by Ares Aeroespacial e Defesa S.A. and CTEx. (12.7&nbsp;mm (.50) machine gun)
+* possibly a 120&nbsp;mm mortar (mortar version)
+* possibly a 105&nbsp;mm cannon (reconnaissance version)
+* [[RBS 70|RBS 70 NG]] (anti-air version)
+
+==Export==
+Compared to the model in use today by the Brazilian Army, the new project brings advantages such as upgraded armor protection, increased mobility, increased range, independent hydropneumatic suspension, increased protection against mines, better ergonomics, air conditioning, brake system with double disc and ABS, GPS, automatic detection and extinguishing of fire, night operation capability as standard and laser detection system.
+[[File:Cavalaria (29345900495).jpg|thumb|VBTP-MR Guarani in Brazilian service]]
+According to Waldemir Cristino General Romulo, Military Project Manager, there is an interest in exporting the VBTP-MR to other markets, because Brazil has already sold vehicles to Latin America, Africa and Asia-Pacific in the past. The [[Argentine Army]] expressed interest in an 8×8 version. Armies also from Chile, Colombia and Ecuador showed interest in the Guarani.{{citation needed|date=February 2015}}
+
+===First orders===
+[[File:Cavalaria (29242886961).jpg|thumb|Guarani in firing operation]]
+On the 26 November 2009, the Brazilian Defence Minister, [[Nelson Jobim]], announced that President Lula had authorized the start of production for 2044 new vehicles with the new name Guarani, formerly known as Urutu III. According to him the new vehicle would replace the entire mobility system of the Brazilian Army. Also according to the minister,  $6 billion would be invested in construction for the Guarani  over 20 years. It was predicted that the first vehicle would be ready in 2010 and 16 vehicles would be tested by 2011. From 2012 on, the actual production would begin.
+
+The army commander, General Enzo Martins Peri, signed the contract for the manufacture of vehicles on 18 December 2009. The examinations would be held at Army's test range (CAEx), located in Barra de Guaratiba, west of [[Rio de Janeiro state]]. The tests would examine the vehicle durability, ergonomics and armour in situation such as landmine explosions,
+
+Only on 7 August 2012, the Brazilian Army signed a contract to produce 86 Guarani.<ref name="DAG"/> The order was completed by December 2012.<ref name="army rec"/>
+
+In March 2014, the [[33rd Infantry Battalion (Brazil)|33rd Motorized Infantry Battalion]] of the [[15th Brigade (Brazil)|15th Mechanized Infantry Brigade]] will receive the first 13 vehicles.<ref name="janes360"/> It will be the first regular army unit to be issued the new vehicle. It will be part of trials using the initial 86 vehicles to figure out doctrine for its use in service.
+
+===In service===
+[[File:07.09.2024 - Desfile de 7 de Setembro (53978372259).jpg|thumb|Guaranis in 2024 Brazil's Independence Day Parade]]
+In 2018 the 30th Mechanized Infantry Battalion in Uberlandia-MG received 30 VBTP-MR Guaranis.
+
+In 2020, The 14th Mechanized Cavalry Regiment of São Miguel do Oeste received ten VBTP-MR Guaranis equipped with the Remax tower.
+
+In 2021 the 11th Mechanized Infantry Brigade, in Campinas-SP, was equipped with more than 126 VBTP-MR Guaranis. In July, the first units of the Brazilian Army in the northeast of the country started to receive the first Guarani vehicles, an example of the 10th Mechanized Cavalry Squadron of the 11th Infantry Brigade.<ref>{{cite web | url=https://tecnodefesa.com.br/guarani-chega-ao-nordeste/ | title=Guarani chega ao Nordeste | date=16 July 2021 }}</ref>
+
+On August 4, 2021, it was the turn of the 41st Motorized Infantry Battalion, it becomes the newest military organization to be equipped with the armored personnel transport vehicle, medium on wheels (VBTP-MSR) 6X6 Guarani, with the receipt of eight units, all with SARC REMAX.<ref>{{cite web | url=https://tecnodefesa.com.br/nova-unidade-com-guarani/ | title=Nova unidade com Guarani | date=9 August 2021 }}</ref>
+
+==Operators==
+[[File:Cerimônia_de_comemoração_dos_71_anos_da_Tomada_de_Monte_Castelo_(25113695685).jpg|thumb|VBTP-MR Guarani armed with a Remax during the ceremony to commemorate the 71 years of the [[Battle of Monte Castello]]; next to it an [[M8 Greyhound]] used in Italy.]]
+<!--READ FIRST: This section is for cited entries only. Please do not add entries into this list without a citation from a reliable source. All entries without a citation will be removed. Thank you.-->
+;{{BRA}} 
+: [[Brazilian Army]]: 700+<ref>{{Cite web|author=Bastos Jr., Paulo Roberto|date=2024-07-05|title=Mais 420 Guaicurus para o Exército|url=https://tecnodefesa.com.br/mais-420-guaicurus-para-o-exercito/|website=Tecnologia & Defesa|access-date=2024-07-29}}</ref> Deliveries started in December 2012,<ref name="army rec"/> with four pre-series and 50 purchased units.<ref name= "armyrecognition">[http://www.armyrecognition.com/december_2012_new_army_military_defence_industry/iveco_delivered_the_first_batch_of_vbtp-mr_guarani_armoured_vehicle_to_brazilian_army_1612121.html IVECO delivers first batch of VBTP-MR vehicles to the Brazilian Army] {{Webarchive|url= https://web.archive.org/web/20130929035258/http://www.armyrecognition.com/december_2012_new_army_military_defence_industry/iveco_delivered_the_first_batch_of_vbtp-mr_guarani_armoured_vehicle_to_brazilian_army_1612121.html |date=2013-09-29}}, Army recognition, December 16, 2012</ref>
+;{{GHA}} 
+: [[Ghana Army]]: 11 ordered in July 2021 equipped with REMAX turret.<ref name="Ghana">{{cite web|author=Exército |url= https://tecnodefesa.com.br/anunciada-exportacao-do-guarani-para-gana/ |title=Anunciada exportação do Guarani para Gana | work = Tecno defesa|date=7 July 2021}}</ref>
+;{{LIB}} 
+: [[Lebanese Army]]: 10 units ordered in 2015.<ref>{{cite web |title= Iveco to Deliver 10 VBTP Guarani 6x6 Armored Vehicles APC to Lebanon Armed Forces |url= https://www.armyrecognition.com/july_2015_global_defense_security_news_uk/iveco_to_deliver_10_vbtp_guarani_6x6_armored_vehicles_apc_to_lebanon_armed_forces.html |url-status=live |archive-url= https://archive.today/20230803121129/https://www.armyrecognition.com/july_2015_global_defense_security_news_uk/iveco_to_deliver_10_vbtp_guarani_6x6_armored_vehicles_apc_to_lebanon_armed_forces.html |archive-date=3 August 2023 |access-date=3 August 2023 |website=Army Recognition|date= 17 July 2015 }}</ref>
+;{{PHI}} 
+: [[Philippine Army]] – Fourteen (14) units out of 28<ref>{{Cite web |date=18 October 2020 |title=Wheeled Armored Personnel Carrier (APC) Acquisition Project of the Philippine Army |url=https://www.phdefresource.com/2020/10/wheeled-armored-personnel-carrier-apc.html |access-date=15 March 2024 |website=Philippine Defense Resource}}</ref><ref>{{Cite web |date=1 November 2020 |title=The IVECO VBTP-MR Guarani 6x6 Armored Vehicle and the Elbit Offer to the Philippine Army |url=https://www.pitzdefanalysis.net/2020/11/the-iveco-vbtp-mr-gurani-6x6-armored.html |access-date=15 March 2024 |website=Pitz Defense Analysis}}</ref> total ordered of the armored personnel carrier variant equipped with the Elbit Systems RCWS Mk. 2 were formally received and inducted into service on 5 March 2024.<ref>{{Cite web |last=Kajal |first=Kapil |date=6 March 2024 |title=Philippine Army receives first batch of Guarani APCs |url=https://www.janes.com/defence-news/news-detail/philippine-army-receives-first-batch-of-guarani-apcs |url-status=live |archive-url=https://archive.today/20240313003601/https://www.janes.com/defence-news/news-detail/philippine-army-receives-first-batch-of-guarani-apcs |archive-date=13 March 2024 |access-date=13 March 2024 |website=Janes}}</ref><ref>{{Cite web |last=Bastos |first=Paulo Roberto Jr |date=29 October 2023 |title=Os Guarani embarcam para as Filipinas e novo lote é negociado |trans-title=The Guarani embark for the Philippines and a new batch is negotiated |url=https://tecnodefesa.com.br/os-guarani-embarcam-para-as-filipinas-e-novo-lote-e-negociado/ |url-status=live |archive-url=https://web.archive.org/web/20241006142648/https://tecnodefesa.com.br/os-guarani-embarcam-para-as-filipinas-e-novo-lote-e-negociado/ |archive-date=6 October 2024 |access-date=18 March 2025 |publisher=Technologia & Defensa |language=Portuguese}}</ref> The first Guarani was received by the Philippine Army on 8 March 2024.<ref>{{Cite web |last=Domingo |first=Juster |date=2024-03-08 |title=Philippines Receives First Guarani APCs From Elbit Systems |url=https://thedefensepost.com/2024/03/08/philippines-guarani-apc-elbit/ |url-status=live |archive-url=https://web.archive.org/web/20241106091521/https://thedefensepost.com/2024/03/08/philippines-guarani-apc-elbit/ |archive-date=2024-11-06 |access-date=2025-03-18 |website=The Defense Post |language=en-US}}</ref>
+	
+===Potential operators===
+;{{MAS}}
+: Ciro Nappi reported that the Guarani will participate in a tender to replace the Condor and SIBMAS AFSV90 against the K806, Anoa 2, LAVII and the FNSS Pars.<ref>{{cite web |date=January 2022 |title=Malaysian Defense to launch tender for procurement of 400 6x6 armored personnel carriers |url=https://www.armyrecognition.com/defense_news_january_2022_global_security_army_industry/malaysian_defense_to_launch_tender_for_procurement_of_400_6x6_armored_personnel_carriers.html |url-status=live |archive-url=https://archive.today/20240313004016/https://www.armyrecognition.com/defense_news_january_2022_global_security_army_industry/malaysian_defense_to_launch_tender_for_procurement_of_400_6x6_armored_personnel_carriers.html |archive-date=13 March 2024 |access-date=13 March 2024 |work=Army Recognition}}</ref>
+
+===Failed Exports===
+;{{ARG}} 
+: Participated in a tender against the Chinese Norinco VN-1 and the American Stryker.<ref>{{cite web |date=7 January 2022 |title=Puntos centrales sobre el futuro del proyecto VCBR |url=https://www.zona-militar.com/2022/01/07/vcbr-como-podria-desarrollarse-el-proyecto/ |url-status=live |archive-url=https://archive.today/20240313004241/https://www.zona-militar.com/2022/01/07/vcbr-como-podria-desarrollarse-el-proyecto/ |archive-date=13 March 2024 |access-date=13 March 2024 |work=Zona militar}}</ref> Argentina declared its aim to buy 156 Guarani armoured vehicles produced in Brazil, having signed a letter of intent on 2022 December 23.<ref>{{cite web |date=2 February 2023 |title=Argentina negotiates large order of Brazilian Guarani armored vehicles |url=https://www.defensenews.com/land/2023/02/01/argentina-negotiates-large-order-of-brazilian-guarani-armored-vehicles/ |url-status=live |archive-url=https://archive.today/20240313003815/https://www.defensenews.com/land/2023/02/01/argentina-negotiates-large-order-of-brazilian-guarani-armored-vehicles/ |archive-date=13 March 2024 |access-date=13 March 2024 |work=Defense News}}</ref>. Argentina selected used [[Stryker]] acquired from the [[United States]] through FMS from 2025 onwards. <ref>{{cite web |title=Argentina Receives Stryker Armored Vehicles from the United States |url=https://ar.usembassy.gov/argentina-receives-stryker-armored-vehicles-from-the-united-states/ |publisher=U.S. Embassy in Argentina |date=December 3, 2025 |access-date=July 20, 2026}}</ref>
+;{{UKR}}
+: Ukraine requested the sale of up to 450 vehicles in 2023, awaiting Brazilian approval for export.<ref>{{cite web |last1=Camargos Pereira |first1=Flavia |title=Ukraine awaits Brazilian approval to purchase 450 Guarani armoured vehicles |url= https://www.shephardmedia.com/news/landwarfareintl/ukraine-awaits-the-brazilian-governments-approval-to-purchase-450-guarani-armoured-vehicles/ |website=Shephard |access-date=29 May 2023 |archive-url= https://web.archive.org/web/20230529184746/https://www.shephardmedia.com/news/landwarfareintl/ukraine-awaits-the-brazilian-governments-approval-to-purchase-450-guarani-armoured-vehicles/ |archive-date=29 May 2023 |location=Kansas City |date=23 May 2023 |url-status=live}}</ref> In June 2023, it was revealed by [[Veja (magazine)|Veja]], that following orders from the [[President of Brazil|President of the Republic]], [[Luiz Inácio Lula da Silva|Lula da Silva]], the Brazilian government vetoed the sale of 450 armoured vehicles set for use in humanitarian missions.<ref>{{cite web |last1=Camargos Pereira |first1=Flávia |date=26 June 2023 |title=Governo Lula nega venda de 450 blindados Guarani à Ucrânia |trans-title=Lula government denies sale of 450 Guarani armoured vehicles to Ukraine |url=https://veja.abril.com.br/coluna/radar/governo-lula-nega-venda-de-450-blindados-guarani-a-ucrania |access-date=2 July 2023 |website=Veja |location=[[São Paulo]]}}</ref>
+
+== Gallery ==
+<gallery mode=packed>
+File:Guarani 1.jpg
+File:Guarani 2.webp
+File:Guarani 5.jpg
+File:Guarani 9.jpg
+File:Guarani 7.jpg
+File:Guarani 8.jpg
+File:Guarani 6.jpg
+File:Guarani 12.jpg
+File:Guarani 10.jpg
+File:Guarani 3.jpg
+File:Guarani 11.jpg
+</gallery>
+
+==References==
+{{reflist}}
+
+==External links==
+{{Commons category|VBTP-MR Guarani}}
+
+* [https://www.ivecodefencevehicles.com/our-products/vbtp Official website]
+* [http://www.armyrecognition.com/index.php?option=com_content&task=view&id=1267 VBTP-MR Technical Data Sheet and pictures] {{Webarchive|url=https://web.archive.org/web/20121002234128/http://www.armyrecognition.com/index.php?option=com_content&task=view&id=1267 |date=2012-10-02 }}
+
+{{Modern IFV and APC}}
+
+[[Category:Amphibious armoured personnel carriers]]
+[[Category:Armoured personnel carriers of Brazil]]
+[[Category:Wheeled armoured personnel carriers]]
+[[Category:Armoured personnel carriers of the post–Cold War period]]
+[[Category:Wheeled amphibious armoured fighting vehicles]]
+[[Category:Iveco vehicles]]
+[[Category:Six-wheeled vehicles]]
+[[Category:Military vehicles introduced in the 2010s]]
+[[Category:Infantry fighting vehicles of the post–Cold War period]]
+[[Category:Armoured fighting vehicles of the post–Cold War period]]

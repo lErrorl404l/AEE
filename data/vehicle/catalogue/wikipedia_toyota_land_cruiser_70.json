@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the Toyota Land Cruiser J70. Every value is grade claimed and the registry marks primary_held false. The article publishes the short-wheelbase length, the width, the height, the wheelbase and the transmission. It publishes no weight and no ground clearance.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "toyota_land_cruiser_70",
+      "canonical_name": "Toyota Land Cruiser (J70)",
+      "maker": "Toyota",
+      "model": "Land Cruiser J70",
+      "variant": "Short-wheelbase off-road utility vehicle",
+      "variant_id": "toyota_land_cruiser_70",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Japan",
+      "era": "modern",
+      "aliases": [
+        "land cruiser 70",
+        "land cruiser j70",
+        "lc70"
+      ],
+      "keywords": [
+        "car",
+        "truck",
+        "off-road",
+        "utility",
+        "japan"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "length_mm": {
+          "value": 4995,
+          "unit": "mm",
+          "source": "wikipedia_toyota_land_cruiser_70",
+          "locator": "Infobox, length row, SWB entry",
+          "state": "short-wheelbase length published as 4,995 mm; the same row publishes 5,245 mm for the long-wheelbase",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 1790,
+          "unit": "mm",
+          "source": "wikipedia_toyota_land_cruiser_70",
+          "locator": "Infobox, width row",
+          "state": "width published as 1,790 to 1,870 mm; the lower bound taken",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 1955,
+          "unit": "mm",
+          "source": "wikipedia_toyota_land_cruiser_70",
+          "locator": "Infobox, height row",
+          "state": "height published as 1,955 mm; the same row publishes 2,070 mm",
+          "grade": "claimed"
+        },
+        "wheelbase_mm": {
+          "value": 2310,
+          "unit": "mm",
+          "source": "wikipedia_toyota_land_cruiser_70",
+          "locator": "Infobox, wheelbase row",
+          "state": "wheelbase published as 2,310 mm",
+          "grade": "claimed"
+        },
+        "transmission_type": {
+          "value": "manual",
+          "unit": "enum",
+          "source": "wikipedia_toyota_land_cruiser_70",
+          "locator": "Infobox, transmission row",
+          "state": "transmission published as a 4 or 5-speed manual, with 4-speed and 6-speed automatics also listed",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the Al-Fahd. The AF-40-8-2 column is recorded. Every value is grade claimed and the registry marks primary_held false. The article publishes the operating empty weight, the dimensions, the variable clearance, the engine rating, the road speed and the range. It carries an unreliable-source flag on the maker and no transmission type.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "al_fahd",
+      "canonical_name": "Al-Fahd",
+      "maker": "Abdallah Al Faris Company for Heavy Industries",
+      "model": "Al-Fahd",
+      "variant": "AF-40-8-2 armoured fighting vehicle (8x8)",
+      "variant_id": "al_fahd",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Saudi Arabia",
+      "era": "modern",
+      "aliases": [
+        "al-fahd",
+        "al fahd",
+        "af-40-8-2"
+      ],
+      "keywords": [
+        "afv",
+        "wheeled",
+        "8x8",
+        "saudi arabia"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 16300,
+          "unit": "kg",
+          "source": "wikipedia_al_fahd",
+          "locator": "Infobox, weight row",
+          "state": "operating empty weight published as 16.3 t; the tonne taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 7900,
+          "unit": "mm",
+          "source": "wikipedia_al_fahd",
+          "locator": "Infobox, length row",
+          "state": "length published as 7.9 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2940,
+          "unit": "mm",
+          "source": "wikipedia_al_fahd",
+          "locator": "Infobox, width row",
+          "state": "width published as 2.94 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2065,
+          "unit": "mm",
+          "source": "wikipedia_al_fahd",
+          "locator": "Infobox, height row, cruising entry",
+          "state": "height published as 2.065 m cruising; the same row publishes 1.81 m lurking and 2.26 m obstacle",
+          "grade": "claimed"
+        },
+        "ground_clearance_mm": {
+          "value": 405,
+          "unit": "mm",
+          "source": "wikipedia_al_fahd",
+          "locator": "Infobox, clearance row, cruising entry",
+          "state": "clearance published as 40.5 cm cruising; the same row publishes 15 cm lurking and 60 cm obstacle",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Deutz 12-cylinder air-cooled engine",
+          "unit": "text",
+          "source": "wikipedia_al_fahd",
+          "locator": "Infobox, engine row, AF-40-8-2 entry",
+          "state": "engine published as a Deutz 12-cylinder air-cooled engine for the AF-40-8-2, as published",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 550,
+          "unit": "hp",
+          "source": "wikipedia_al_fahd",
+          "locator": "Infobox, engine power row, AF-40-8-2 entry",
+          "state": "engine power published as 550 hp for the AF-40-8-2, with no net basis",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 90,
+          "unit": "km/h",
+          "source": "wikipedia_al_fahd",
+          "locator": "Infobox, speed row, road entry",
+          "state": "road speed published as 90 km/h; the cross-country speed is published as 65 km/h and the amphibious speed as 8 km/h",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 600,
+          "unit": "km",
+          "source": "wikipedia_al_fahd",
+          "locator": "Infobox, vehicle range row, AF-40-8-2 entry",
+          "state": "range published as 600 km for the AF-40-8-2",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

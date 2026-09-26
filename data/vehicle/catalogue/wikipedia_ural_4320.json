@@ -1,0 +1,98 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the Ural-4320. Every value is grade claimed and the registry marks primary_held false. The article publishes the gross vehicle weight rating, the dimensions, the engine, the manual transmission and the top speed. It publishes no kerb or operating weight and no ground clearance.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "ural_4320",
+      "canonical_name": "Ural-4320",
+      "maker": "Ural Automotive Plant",
+      "model": "Ural-4320",
+      "variant": "6x6 general purpose truck",
+      "variant_id": "ural_4320",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Russia",
+      "era": "modern",
+      "aliases": [
+        "ural-4320",
+        "ural 4320",
+        "ural4320"
+      ],
+      "keywords": [
+        "truck",
+        "wheeled",
+        "6x6",
+        "russia",
+        "cargo"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "gross_weight_kg": {
+          "value": 15300,
+          "unit": "kg",
+          "source": "wikipedia_ural_4320",
+          "locator": "Specifications table, GVWR row, Ural-4320 column",
+          "state": "gross vehicle weight rating published as 15,300 kg; the same row publishes 14,975 kg for the Ural-43202",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 7366,
+          "unit": "mm",
+          "source": "wikipedia_ural_4320",
+          "locator": "Infobox, length row",
+          "state": "length published as 7,366 mm",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2500,
+          "unit": "mm",
+          "source": "wikipedia_ural_4320",
+          "locator": "Infobox, width row",
+          "state": "width published as 2,500 mm",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2715,
+          "unit": "mm",
+          "source": "wikipedia_ural_4320",
+          "locator": "Infobox, height row",
+          "state": "height published as 2,715 mm; the same row publishes 3,005 mm with the tent",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "YaMZ-236M2 V6 turbo diesel or YaMZ-238M2 V8 diesel",
+          "unit": "text",
+          "source": "wikipedia_ural_4320",
+          "locator": "Infobox, engine row",
+          "state": "engine published as an 11.2 L YaMZ-236M2 V6 turbo diesel or a 14.9 L YaMZ-238M2 V8 diesel, as published",
+          "grade": "claimed"
+        },
+        "transmission_type": {
+          "value": "manual",
+          "unit": "enum",
+          "source": "wikipedia_ural_4320",
+          "locator": "Infobox, transmission row",
+          "state": "transmission published as a 5-speed manual",
+          "grade": "claimed"
+        },
+        "gears": {
+          "value": 5,
+          "unit": "count",
+          "source": "wikipedia_ural_4320",
+          "locator": "Infobox, transmission row",
+          "state": "5-speed manual published with five forward gears",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 82,
+          "unit": "km/h",
+          "source": "wikipedia_ural_4320",
+          "locator": "Specifications table, top speed row, Ural-4320 column",
+          "state": "top speed published as 82 km/h; the same row publishes 75 km/h for the Ural-43202",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

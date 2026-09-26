@@ -1,0 +1,300 @@
+{{Distinguish|text=[[Al-Fahd Infantry fighting vehicle|Al-Fahd]], a Saudi infantry fighting vehicle, or [[Al Fahd 300]], an Iraqi surface-to-surface short-range ballistic missile}}
+{{Infobox weapon
+| name               = Fahd 240/280
+| image              = Egyptian Armored personnel carrier 'Fahd'.jpg
+| image_size         = 300
+| caption            = Egyptian Fahd 240 serving as part of [[UNOSOM I|UN Operation in Somalia]]. Note the smoke grenade launchers on the side and the [[firing port]]s.
+| origin             = {{flag|Egypt}} /<br />{{FRG}}
+| type               = [[Armored personnel carrier]]
+| is_vehicle         = yes
+| service            = 1986–present
+| used_by            = [[Fahd (armored personnel carrier)#Operators|See below]]
+| wars               = [[Gulf War]]<br>[[Somali Civil War]]<br>[[Algerian Civil War]]
+| designer           = Thyssen Henschel (today Rheinmetall Landsysteme and part of [[Rheinmetall|Rheinmetall Defence]])
+| design_date        = 
+| manufacturer       = [[Kader Factory for Developed Industries]]
+| unit_cost          = 
+| production_date    = 1985
+| number             = Over 1,907 (all variants, most users)
+| variants           = Mainly Fahd 240, and Fahd 280-30. See text for extended list.
+| length             = 6 meters
+| width              = 2.45 meters
+| height             = 2.25 meters (without towers)
+| weight             = 10.9 - 12.5 tons (depending on the variant)
+| suspension         = 4 x 4
+| speed              = 100 km/h (on road) <br /> 60 km/h (cross country)
+| vehicle_range      = 700 km (on road)<br /> 450 km (cross country)
+| primary_armament   = [[30 mm automatic cannon 2A42]] <br /> [[9M113 Konkurs|AT-5 Spandrel]] or [[9K111 Fagot|AT-4 Spigot]] [[ATGM]] (Fahd-280-30)
+| secondary_armament = 1-3 [[7.62 mm caliber|7.62 mm]] [[machine gun]]s
+| armour             = Welded [[steel]]
+| engine             = [[Mercedes-Benz]] Diesel OM 366 LA 4-Stroke turbo-charged water-cooled diesel engine
+| crew               = 2 + 10 passengers (Fahd-240), 3 + 7 passengers (Fahd-280-30)
+| engine_power       = 275 hp at 2,300 rpm
+| transmission       = 
+| fuel_capacity      = 280 liters
+| clearance          = 37 cm
+| pw_ratio           = 
+}}
+
+The '''Fahd''' is a [[four-wheel drive|4x4]] [[Egypt]]ian [[armored personnel carrier]] (APC) produced by [[Kader Factory for Developed Industries]], a subsidiary of [[Arab Organization for Industrialization]].<ref name="zawya" /> It is mainly used by the [[Egyptian Armed Forces]]. It replaced older APCs in Egyptian service such as the [[BTR-40]], and the [[Walid (armored personnel carrier)|Walid]].<ref name="janesAPC">{{cite web|url=http://www.janes.com/articles/Janes-Armour-and-Artillery/Kader-Fahd-armoured-personnel-carrier-Egypt.html|title=Kader Fahd armoured personnel carrier|publisher=[[Jane's Information Group]]|access-date=2009-01-27|date=2008-10-23|archive-url=https://web.archive.org/web/20090722103627/http://www.janes.com/articles/Janes-Armour-and-Artillery/Kader-Fahd-armoured-personnel-carrier-Egypt.html|archive-date=2009-07-22|url-status=live}}</ref> It has also been used by the [[United Nations]].<ref name="zawya">{{cite web|url=http://www.zawya.com/printstory.cfm?storyid=busidex71803&l=045356030318|archive-url=https://web.archive.org/web/20090220123902/http://www.zawya.com/printstory.cfm?storyid=busidex71803&l=045356030318|url-status=dead|archive-date=2009-02-20|title=Egyptian defence giant invites former partners|date=2003-03-18|publisher=Zawya|access-date=2009-01-27}}</ref>
+
+The flexible design of the vehicle, its high speed, maneuverability and long range, on road and off-road, makes it possible to produce various versions to satisfy various military and security purposes. Variants include the Fahd 240/280 APC, Fahd 280-30 IFV, a command post vehicle, ambulance vehicle, light [[armoured recovery vehicle|armored recovery vehicle]], and can be used for anti-riot purposes, mine laying and mine dispensing purposes, making it possible to form independent units capable of dealing with different threats of armor, low-flying targets, and personnel, with common repair duties, and operation.<ref name="gs">{{cite web|url=http://www.globalsecurity.org/military/world/egypt/fahd-240.htm|title=Fahd-240|publisher=U.S. Cavalry, Global security|work=Military|access-date=2009-01-27|archive-url=https://web.archive.org/web/20090127051445/http://www.globalsecurity.org/military/world/egypt/fahd-240.htm|archive-date=2009-01-27|url-status=live}}</ref><ref name="aoi">{{cite web|url=http://www.aoi.com.eg/aoi_eng/milit_new/vehicle/fahd.htm |title=FAHD armoured vehicle |publisher=[[Arab Organization for Industrialization]] |access-date=2009-01-27 |url-status=dead |archive-url=https://web.archive.org/web/20070912042613/http://www.aoi.com.eg/aoi_eng/milit_new/vehicle/fahd.htm |archive-date=September 12, 2007 }}</ref> The Fahd consists of a Mercedes-Benz LAP 1117/32 truck (4 × 4) chassis fitted with an armored body. It has a usual APC configuration of placing the driver and the commander on the front, and a large box-like shape, similar to the German [[TPz Fuchs|Fuchs]].<ref name="janesAPC"/>
+
+==Design characteristics==
+The hull of the Fahd is of all-welded [[steel]] [[Vehicle armour|armor]] construction giving complete protection against attack by [[7.62 mm caliber]] AP rounds and shell splinters. The vehicle is equipped with air conditioning. The driver sits at the front of the vehicle on the left side with the commander to the right. Both have forward observation via large bulletproof windows, which can be rapidly covered by an armored shutter hinged at the top, and a side door that opens to the front, featuring a window in its upper part that can also be covered by a shutter as well. Above the commander's position is a single-piece, rear-opening hatch cover. The driver has a forward-facing, roof-mounted day periscope, which can be replaced by a passive periscope for night driving. The troop compartment is at the rear of the hull with the infantry entering via a door in the rear, the upper part of which folds upwards and the lower part downwards to form a step. Over the top of the troop compartment are two rectangular roof hatches hinged in the center that can be locked vertically. The infantry sits on individual bucket seats down the center of the vehicle facing outwards. In either side of the troop compartment are four [[firing port]]s with a vision block above so that the troops can fire their weapons from within the vehicle. Either side of the rear door has a firing port with a vision block above. Optional equipment may be fitted on the vehicle, such as an NBC protection system and passive IR among others.<ref name="janesAPC"/>
+
+===Armament===
+Up to three weapons may be fitted on to the roof of the Fahd, one on each side of the roof hatches and one to the rear. The armament usually consists of three [[PK machine gun]]s, each with 1,500 7.62&nbsp;mm rounds, but other 7.62&nbsp;mm machine guns can be fitted on the vehicle, such as the [[FN MAG]].<ref name="Kader factory"/>
+
+===Maneuverability===
+The Fahd APC has a top speed of {{convert|100|km/h|mph|abbr=on}} on-road with a range of 700&nbsp;km. It has average speed of {{convert|65|km/h|mph|abbr=on}} off-road with a range of 450&nbsp;km. The engine is a [[Mercedes-Benz]] Diesel OM 366 LA 4-Stroke turbocharged water-cooled diesel engine, capable of providing 280&nbsp;hp at 2,200 rpm. The vehicle is able to negotiate slopes up to 80%, and side slopes up to 30%, trenches with a width of up to 0.8&nbsp;m, and vertical obstacle with a maximum height of 0.5&nbsp;m, and it has a steering radius of 8&nbsp;m.<ref name="Kader factory"/>
+
+===Comparison with contemporary vehicles===
+The Fahd APC is relatively lighter, smaller, and better armed than other modern wheeled APCs and IFVs{{Citation needed|date=January 2011}} such as the [[BTR-90]] which weighs 20.9 tons, about twice the weight of the Fahd, yet provides similar armament.<ref name="globalsecurity.com">{{cite web |url=http://www.globalsecurity.org/military/world/russia/btr-90.htm |title=BTR-90 (GAZ 5923) |access-date=2008-09-28 |publisher=globalsecurity.org |archive-url=https://web.archive.org/web/20080917021813/http://www.globalsecurity.org/military/world/russia/btr-90.htm |archive-date=2008-09-17 |url-status=live }}</ref>{{Failed verification|date=January 2011}} A [[LAV-25]] costs 900,000 US dollars, and carries less passengers.<ref name="GSspecLAV-25">{{cite web |url=http://www.globalsecurity.org/military/systems/ground/lav-25.htm |title=Light Armored Vehicle-25 (LAV-25) |access-date=2008-09-28 |publisher=globalsecurity.org |archive-url=https://web.archive.org/web/20081006201816/http://www.globalsecurity.org/military/systems/ground/lav-25.htm |archive-date=2008-10-06 |url-status=live }}</ref>
+
+Below is a comparison of some modern wheeled IFVs including the Fahd''':'''
+{| class="wikitable" style="border-collapse:collapse; text-align:center;" summary="Characteristics of modern wheeled IFVs"
+|+ '''Comparison with some modern IFVs'''
+|- style="vertical-align:bottom; border-bottom:1px solid #999; "
+!
+! style="text-align:center;" | [[Fahd Armored Personnel Carrier|Fahd 280-30]]<ref name="Kader factory">{{cite web|url=http://www.aoi.com.eg/aoi_arab/aoi/kader/English/index_eng.html |title=FAHD |publisher=Kader factory |access-date=2009-01-27 |url-status=dead |archive-url=https://web.archive.org/web/20081229140807/http://www.aoi.com.eg/aoi_arab/aoi/kader/English/index_eng.html |archive-date=December 29, 2008 }}</ref><ref name="AOI">{{cite web|url=http://www.aoi.com.eg/aoi_eng/milit_new/vehicle/fahd.htm |title=FAHD armoured vehicle |publisher=Arab Organization for Industrialization |access-date=2009-01-27 |url-status=dead |archive-url=https://web.archive.org/web/20070912042613/http://www.aoi.com.eg/aoi_eng/milit_new/vehicle/fahd.htm |archive-date=September 12, 2007 }}</ref>
+! style="text-align:center;" | [[BTR-3]]U<ref>{{cite web |url=http://www.morozov.com.ua/eng/body/btr3u.php?menu=m1.php |title=BTR-3U Armoured Personnel Carrier |publisher=KMDB |access-date=2009-01-27 |archive-url=https://web.archive.org/web/20110606143454/http://www.morozov.com.ua/eng/body/btr3u.php?menu=m1.php |archive-date=2011-06-06 |url-status=dead }}</ref>
+! style="text-align:center;" | [[Véhicule blindé de combat d'infanterie|VBCI]]<ref name="Army-technology.com">{{cite web |url=http://www.army-technology.com/projects/vbci/ |title=VBCI Wheeled Infantry Fighting Vehicle, France |access-date=2008-09-28 |publisher=SPG Media Limited, army-technology |archive-url=https://web.archive.org/web/20081004031122/http://www.army-technology.com/projects/vbci/ |archive-date=2008-10-04 |url-status=live }}</ref>{{Unreliable source?|reason=domain on WP:BLACKLIST|date=July 2016}}
+! style="text-align:center;" | [[LAV-25]]<ref name="GSspecLAV-25"/>
+! style="text-align:center;" | [[WZ551|Type-92 IFV]]<ref name="Sinodefence">{{cite web |url=http://www.sinodefence.com/army/armour/zsl92.asp |title=ZSL92 Wheeled Armoured Vehicle |access-date=2008-09-28 |publisher=SinoDefence |archive-url=https://web.archive.org/web/20090127024314/http://www.sinodefence.com/army/armour/zsl92.asp |archive-date=2009-01-27 |url-status=dead }}</ref>
+! style="text-align:center;" | [[BTR-90]]<ref name="GSspecBTR-90">{{cite web |url=http://www.globalsecurity.org/military/world/russia/btr-90-specs.htm |title=BTR-90 (GAZ 5923) specifications |access-date=2008-09-28 |publisher=globalsecurity.org |archive-url=https://web.archive.org/web/20080612092509/http://www.globalsecurity.org/military/world/russia/btr-90-specs.htm |archive-date=2008-06-12 |url-status=live }}</ref><ref name="onwar">{{cite web |url=http://www.onwar.com/weapons/afv/data/rusapcbtr90.htm |title=BTR-90 |access-date=2008-09-28 |work=Modern Armored Vehicles |publisher=On War |archive-url=https://web.archive.org/web/20080706185414/http://www.onwar.com/weapons/afv/data/rusapcbtr90.htm |archive-date=2008-07-06 |url-status=live }}</ref>
+! style="text-align:center;" | [[B1 Centauro#Variants|VBM Freccia]]<ref name="MT">{{Cite web |url=http://www.military-today.com/apc/vbm_freccia.htm |title=VBM Freccia - Infantry fighting vehicle |access-date=2011-09-04 |archive-url=https://web.archive.org/web/20111002111853/http://www.military-today.com/apc/vbm_freccia.htm |archive-date=2011-10-02 |url-status=dead }}</ref>
+|-
+! style="text-align:right;" | Country of origin
+| {{EGY}}
+| {{flag|Ukraine}}
+| {{flag|France}}
+| {{flag|Canada}}
+| {{flag|China}}
+| {{flag|Russia}}
+| {{flag|Italy}}
+|-
+! style="text-align:right;" | Weight
+| {{convert|12.5|MT|ST|abbr=on}}
+| {{convert|16.4|MT|ST|abbr=on}}
+| {{convert|26|MT|ST|abbr=on}}
+| {{convert|12.8|MT|ST|abbr=on}}
+| {{convert|12.5|MT|ST|abbr=on}}
+| {{convert|20.9|MT|ST|abbr=on}}
+| {{convert|26|MT|ST|abbr=on}}
+|-
+! style="text-align:right;" | Primary armament
+| {{convert|30|mm|in|abbr=on}} [[30 mm automatic cannon 2A42|2A42]] automatic cannon
+| {{convert|30|mm|in|abbr=on}} dual-feed cannon
+| [[25mm NATO|25 mm NATO]] dual-feed cannon
+| [[25mm NATO|25 mm NATO]] [[M242 Bushmaster|M242 chain gun]]
+| {{convert|25|mm|in|abbr=on}} Autocannon
+| {{convert|30|mm|in|abbr=on}} [[30 mm automatic cannon 2A42|2A42]] automatic cannon
+| {{convert|25|mm|in|abbr=on}} Oerlikon KBA
+|-
+! style="text-align:right;" | Secondary armament
+| {{convert|7.62|mm|in|abbr=on}} [[FN MAG]] machine gun
+| {{convert|7.62|mm|in|abbr=on}} [[Coaxial weapon|coaxial machine gun]]
+| {{convert|7.62|mm|in|abbr=on}} coaxial machine gun
+| 2 x {{convert|7.62|mm|in|abbr=on}} [[M240 machine gun]]
+| {{convert|7.62|mm|in|abbr=on}} coaxial machine gun
+| {{convert|7.62|mm|in|abbr=on}} [[PKT machine gun]]<br/>grenade launcher
+| {{convert|7.62|mm|in|abbr=on}} [[Coaxial weapon|coaxial machine gun]]
+|-
+! style="text-align:right;" | Missile armament (range)
+| [[9M113 Konkurs|AT-5 Spandrel]] (70-4,000 meters)
+| [[9M113 Konkurs|AT-5 Spandrel]] (70-4,000 meters)
+| -
+| -
+| -
+| [[9M113 Konkurs|AT-5 Spandrel]] (70-4,000 meters)
+| [[Spike (missile)|Spike LR]] (200–4000 meters)
+|-
+! style="text-align:right;" | Road&nbsp;range
+| {{convert|700|km|mi|abbr=on}}
+| {{convert|600|km|mi|abbr=on}}
+| {{convert|750|km|mi|abbr=on}}
+| {{convert|660|km|mi|abbr=on}}
+| {{convert|800|km|mi|abbr=on}}
+| {{convert|800|km|mi|abbr=on}}
+| {{convert|800|km|mi|abbr=on}}
+|-
+! style="text-align:right;" | Maximum on-road speed
+| {{convert|100|km/h|mph|abbr=on}}
+| {{convert|85|km/h|mph|abbr=on}}
+| {{convert|100|km/h|mph|abbr=on}}
+| {{convert|100|km/h|mph|abbr=on}}
+| {{convert|85|km/h|mph|abbr=on}}
+| {{convert|100|km/h|mph|abbr=on}}
+| {{convert|110|km/h|mph|abbr=on}}
+|-
+! style="text-align:right;" | Maximum capacity
+| 3 crew + 7 passengers
+| 3 crew + 6 passengers
+| 2 crew + 9 passengers
+| 3 crew + 6 passengers
+| 3 crew + 9 passengers
+| 3 crew + 7 passengers
+| 3 crew + 8 passengers
+|}
+
+==Variants==
+===Fahd 240===
+The Fahd 240 is based upon the latest Mercedes-Benz LAP 1424/32 chassis. This variant includes a far more powerful engine and a slight increase in armor. It has the same engine as the Fahd. All original Fahds have been updated to this standard, and it is the main variant in service with the Egyptian Army.<ref name="aoi"/> It weighs 11.6 tons. The seating arrangement and design characteristics are similar to the original Fahd APC. It has a crew of two and can carry ten soldiers. On top of the passenger compartment are two large roof hatches, hinged at the center of the vehicle. They sit facing outward down the center of the vehicle. Each passenger has a firing port, giving four ports on either side of the vehicle. The armament is similar to the original Fahd.<ref name="janesAPC"/><ref name="Kader factory"/>
+
+====Other armament options====
+* [[20mm caliber|20mm]] [[Autocannon|Auto-cannon]]: The APC variant can be armed with turrets armed with weapons ranging from 7.62&nbsp;mm machine gun (see [[Fahd (armored personnel carrier)#Variants|Variant with BTM-208 turret]]) to 20&nbsp;mm cannon<ref name="Greenhill Military Manuals">{{cite web|url=http://army.lt/biblioteka/fighting_vehicles.pdf |archive-url=https://web.archive.org/web/20200129032349/http://army.lt/biblioteka/fighting_vehicles.pdf |url-status=dead |archive-date=2020-01-29 |title=Fighting vehicles: Armored Personnel Carriers and Infantry Fighting Vehicles |publisher=Greenhill Books-Vector Publicity and Communication |access-date=2009-02-23 |year=1996 |pages=57, 58 }}</ref>
+* [[MILAN]] [[Anti-tank guided missile]]: The APC variant can also be equipped with a MILAN missile vehicle mount to be able to negotiate armor and low flying threats.<ref name="Greenhill Military Manuals"/>
+
+===Fahd 240 recovery and repair variant===
+{| class="wikitable"
+|-
+|+Fahd 240 recovery and repair vehicle specification<ref name="repair"/>
+|-
+|Maximum arm length|| Four meters
+|-
+|Maximum angle of boom elevation|| 70 degree
+|-
+|Angle of traverse|| 315
+|-
+|Slewing speed|| 1.5 r.p.m
+|-
+! colspan="2" | Boom specifications<ref name="repair">{{cite web|url=http://www.aoi.com.eg/aoi_arab/aoi/kader/English/enfahd5.html |title=Recovery & repair vehicle |publisher=Arab Organization for Industrialization |access-date=2009-01-27 |url-status=dead |archive-url=https://web.archive.org/web/20090222192737/http://www.aoi.com.eg/aoi_arab/aoi/kader/English/enfahd5.html |archive-date=February 22, 2009 }}</ref>
+|-
+!Lifting capability (ton)
+!Boom length (meter)
+|-
+|2
+|2.0 vehicle stopped
+|-
+|1.5
+| 2.7 at stop
+|-
+|1
+| 4.0 at stop
+|-
+|1
+| 2.7 with a speed of 15–20&nbsp;km/h
+|-
+|0.65
+| 4.0 with a speed of 15–20&nbsp;km/h
+|-
+|}
+
+Based on the latest production Fahd-240, it shares the position and entry doors for the commander and the driver with the APC variant. A 2.5 ton turnable-mounted hydraulic crane is mounted on the roof rear, with a telescopic jib that has 315 degrees of traverse, with the boom being elevated to +70 degrees. The vehicle contains two hydraulic stabilizers for the crane, in which they are lowered to the ground while the crane is being used to provide a more stable platform. The vehicle is 13 tons in weight, and 2.8 meters in height.<ref name="janesRepair">{{cite web|url=http://www.janes.com/articles/Janes-Military-Vehicles-and-Logistics/Kader-Fahd-240-Recovery-and-Repair-Vehicle-Egypt.html|title=Kader Fahd 240 Recovery and Repair Vehicle|publisher=Jane's Information Group|date=2008-12-02|access-date=2009-01-27}}</ref>
+
+The vehicle includes the following specialized equipment for repair duties: an air compressor, electric power unit, battery charger, testing unit, portable drill and grinder, tire repair set, radiator set, tool set, greasing equipment, hydraulic jack, [[Oxy-fuel welding and cutting|oxy acetylene]] set, recovery equipment and a tent.<ref name="janesRepair"/>
+
+===Fahd Ambulance===
+The ambulance variant is based on the basic Fahd APC design, with modifications for its specialized purpose. The vehicle has the ability to serve four laying patients, and another four sitting patients. The vehicle has a crew of three, these are: driver, physician, and a dresser. The ambulance variant additional external flasher, and a search light mounted on the rear door for emergency.<ref name="Ambulance"/>
+Along with one tent and dual interior lights, the vehicle is equipped with specialized medical instruments.<ref name="Ambulance">{{cite web|url=http://www.aoi.com.eg/aoi_arab/aoi/kader/English/enfahd4.html |title=Ambulance |publisher=Arab Organization for Industrialization |access-date=2009-01-27 |url-status=dead |archive-url=https://web.archive.org/web/20090222131848/http://www.aoi.com.eg/aoi_arab/aoi/kader/English/enfahd4.html |archive-date=February 22, 2009 }}</ref>
+
+===Fahd mine laying vehicle===
+Another conversion of the Fahd APC enables it to become a mine laying vehicle. The mine are of anti-tank type, where these vehicles are used as mobile systems with high maneuverability, and the ability to lay anti-tank mine fields in a short time. The mine laying system used on the Fahd is the Nather-2. The mine laying system is equipped with a control unit that computes the tube firing sequence delay time to set mine densities, and adjusts the required dispensing direction. The mines can be dispensed on right, left and backwards of the vehicle.<ref name="Sakr factory"/><ref name="aoi systems"/>
+
+The mine layer can create a mine field from 1,500 to 3,000 metres long and 25–30 metres wide from four dispensing modules firing 600 mines per salvo giving a mine density between 0.2 and 1 mine per square meter.<ref name="Sakr factory">{{cite web|url=http://www.aoi.com.eg/aoi_arab/aoi/sakr/sakr_english/military/mine/mine.html |title=Mines Dispensing Systems, Mine Scatter Systems |publisher=Sakr factory |access-date=2009-01-27 |url-status=dead |archive-url=https://web.archive.org/web/20090222193643/http://www.aoi.com.eg/aoi_arab/aoi/sakr/sakr_english/military/mine/mine.html |archive-date=February 22, 2009 }}</ref><ref name="aoi systems">{{cite web|url=http://www.aoi.com.eg/aoi_eng/milit_new/weapon/despens.htm |title=Vehicle Mounted antitank mine dispensing systems |publisher=Arab Organization for Industrialization |access-date=2009-01-27 |url-status=dead |archive-url=https://web.archive.org/web/20090222193045/http://www.aoi.com.eg/aoi_eng/milit_new/weapon/despens.htm |archive-date=February 22, 2009 }}</ref>
+
+===Fahd command vehicle===
+The Fahd command vehicle contains three gun mounts for [[7.62 mm caliber]] machine guns, as well as other special equipments for command purposes.<ref name="Kader factory"/>
+The command vehicle is equipped with three-four wireless communication set with antennas and six terminals intercom system, a 10-line telephone exchange and two field telephones powered from a 1.5&nbsp;kW electrical generator.
+
+===Fahd 280 w/ BTM-208 Turret===
+This IFV variant is essentially a Fahd 240, fitted with a dual-weapon turret that has a 12.7&nbsp;mm machine gun and a 7.62&nbsp;mm machine gun. The addition of a turret requires a third crewman, the gunner, but it does not affect the Fahd 240's passenger capacity. The turret is the French BTM-208 turret, produced under license from the French SAMM company. It is air-tight, and provides NBC protection. It incorporates and aiming telescopic periscope, forward–observation, rotating mirror periscope in co-axial alignment with weapons, and five or six bullet-proof glass ports insuring all-round vision and ballistic protection. 200 rounds are provided for the 7.62&nbsp;mm machine gun, and another 100 for the 12.7&nbsp;mm machine gun. Elevation limits are -8 and +45, the turret provides 360 degrees of traversion for the weapons. The vehicle has a rotating seat, and an armored hatch for the turret. The machine guns can be fired by means of a foot pedal, freeing the gunner's hands. A central console groups control switches and warning lights governing weapon selection. The addition of a turret increases the vehicle height to 2.85 meters.<ref>{{cite web|url=http://www.aoi.com.eg/aoi_arab/aoi/kader/English/index_eng.html |title=With BTM–208 turret (12.7MM + 7.62MM) MG |access-date=2009-02-04 |publisher=Kader factory |url-status=dead |archive-url=https://web.archive.org/web/20081229140807/http://www.aoi.com.eg/aoi_arab/aoi/kader/English/index_eng.html |archive-date=December 29, 2008 }}</ref>
+
+Power from the vehicle's 24V DC supply is delivered through an electric slip ring, which features tracks for intercom circuits between gunner and other crew members. The vehicle uses ventilator extraction of firing gases and fumes.<ref name="Kader factory"/>
+
+===Fahd Anti-Riot===
+The Anti-Riot variant is based on the Fahd 280. The dual weapons installed in the turret are replaced with a water cannon actuated at 180&nbsp;L/min pump to jet plain, colored or mixed water at a distance of 30–50&nbsp;m. Grenade launchers are also installed on the turret for firing smoke and tear gas grenades. There is a steel grader in the vehicle front to remove barricades in streets and passes, along with two flashers, multi-tone siren, loud speaker and horn. This variant also has a passenger capacity of ten.<ref name="Kader factory"/>
+
+===Fahd 280-30===
+The Fahd 280-30 is an [[Infantry fighting vehicle|IFV]] variant of the Fahd, first announced in 1990.<ref>{{Cite web|url=http://www.military-today.com/apc/fahd.htm|title=FAHD - Armoured personnel carrier|access-date=2009-01-28|archive-url=https://web.archive.org/web/20090122174155/http://www.military-today.com/apc/fahd.htm|archive-date=2009-01-22|url-status=dead}}</ref> It features a [[BMP-2]] turret on the roof of the passenger compartment near the rear.<ref>{{Cite book
+  |title=Jane's AFV Recognition Handbook
+  |last=Foss
+  |first=Christopher F
+  |section=Kader Fahd APC
+  |year=1992
+  |edition=2nd
+  |page=167
+  |isbn=0-7106-1043-2
+  |publisher=[[Jane's]]
+}}</ref> It has a [[30 mm automatic cannon 2A42|30 mm automatic cannon]] with a dual feed, one for HE rounds, the other for AP rounds, which can pierce 18&nbsp;mm armor at 60 degrees from a range of 1500&nbsp;m. It also has a coaxial [[PK machine gun|7.62 mm PKT machine gun]] and an ATGM launcher, capable of launching [[9K111 Fagot|AT-4]] or [[9M113 Konkurs|AT-5]] missiles which use [[SACLOS]] guidance, increasing the range at which the Fahd 280-30 can engage armored targets such as tanks to nearly 4000&nbsp;m. These turret-mounted missiles may be deployed away from the vehicle on a launching tripod. The Fahd-30 carries 500 30&nbsp;mm rounds for the autocannon, 2,000 rounds for the 7.62&nbsp;mm machine gun, and five AT-5 missiles. Smoke grenade launchers are standard on this vehicle, with four on each side of the turret. The BMP-2 turret may use [[Vehicle armour#Appliqu.C3.A9 armour|appliqué armor]]. In terms of design it is similar to the Fahd 240, but this variant has three firing ports on each side of the vehicle.<ref name="Kader factory"/>
+
+The Fahd 280-30 has a third crewman, a gunner positioned in the turret, in addition to the commander and driver. As a result of the relatively large turret this variant has a reduced passenger capacity; it can carry seven passengers instead of the original ten. The turret is standard-equipped with [[Passive infrared sensor|passive IR]] and [[Night vision device|night vision]] sensors. It also has fire control and stabilization. As a result of the armament on the Fahd 280-30, the IFV can provide fire support to infantry and it is capable of engaging tanks, armored vehicles, low flying aircraft, helicopters and personnel, with the ability to engage in a stationary position, on the move, in day or nighttime conditions, with high accuracy. The unit price is $254,246.<ref name="gs"/>
+
+====2A42 30mm cannon====
+The gas-operated gun is a dual feed multipurpose small caliber weapon,<ref name="
+30mm 2A42 Automatic Cannon">{{cite web |url=http://www.kbptula.ru/eng/str/cannons/2a42.htm |title=30mm 2A42 Automatic Cannon |access-date=2009-02-08 |publisher=KBP in focus |url-status=dead |archive-url=https://web.archive.org/web/20090504195305/http://www.kbptula.ru/eng/str/cannons/2a42.htm |archive-date=2009-05-04 }}</ref><ref name="2A42 30 mm cannon (Russian Federation), Cannon"/> that has a dual rate of fire with a minimum rate of 200-300 or 550 rounds per minute (rds/min), where the rapid fire mode assures 800 rds/min.<ref name="2A42 30 mm cannon (Russian Federation), Cannon"/><ref name="2A42">{{cite web |url=http://www.deagel.com/Guns-Riffles-and-Grenade-Launchers/2A42_a001883001.aspx |title=2A42 |access-date=2009-02-08 |publisher=Deagel |archive-url=https://web.archive.org/web/20090302065626/http://www.deagel.com/Guns-Riffles-and-Grenade-Launchers/2A42_a001883001.aspx |archive-date=2009-03-02 |url-status=live }}</ref> The sustained rate of fire is 200 rds/min, though.<ref name="
+30mm 2A42 Automatic Cannon"/> The gun is intended for engaging materiel, low flying aircraft, light vehicles, and dismounted infantry.<ref name="
+30mm 2A42 Automatic Cannon"/><ref name="2A42 30 mm cannon (Russian Federation), Cannon"/><ref name="2A42"/> With a muzzle velocity of 960&nbsp;m/s,<ref name="
+30mm 2A42 Automatic Cannon"/><ref name="2A42"/> the gun is capable of defeating a light [[Armored Personnel Carrier]] at a range of 1,500 meters, a soft-skinned vehicle at 4,000 meters, and slow-flying aircraft at altitudes up to 2,000 meters and slant ranges of up to 2,500 meters.<ref name="2A42 30 mm cannon (Russian Federation), Cannon">{{cite web |url=http://www.janes.com/articles/Janes-Infantry-Weapons/2A42-30-mm-cannon-Russian-Federation.html |title=2A42 30 mm cannon (Russian Federation), Cannon |access-date=2009-02-08 |publisher=Jane's Information Group }}</ref>
+
+===Fahd 300===
+At [[Egypt Defence Expo|EDEX]] 2018, the [[Arab Organization for Industrialization]] (AOI) presented a new modernized version of the Fahd under the name of Fahd 300.<ref name=":0">{{Cite web |title=Burundi army operating Fahd-300 4x4 APC armored personnel carriers {{!}} Defense News February 2022 Global Security army industry {{!}} Defense Security global news industry army year 2022 {{!}} Archive News year |url=https://www.armyrecognition.com/defense_news_february_2022_global_security_army_industry/burundi_army_operating_fahd-300_4x4_apc_armored_personnel_carriers.html |access-date=2023-11-22 |website=www.armyrecognition.com|date=16 February 2022 }}</ref><ref name=":1">{{Cite web |last=Zayan |first=Ahmed |date=2022-02-16 |title=الجيش البروندي يقوم بتشغيل المدرعة فهد Fahd-300 المصرية |url=https://arabwar.net/burundi-operates-egyptian-fahd-300-armored-vehicle/ |access-date=2023-11-22 |language=ar}}</ref>
+
+The Fahd 300 benefits from many improvements and is based on a new Tatra chassis offering more mobility in all-terrain conditions, and powered by a Cummins turbodiesel engine. The Fahd 300 can reach a maximum speed of 105&nbsp;km/h, with a maximum cruising range of 700&nbsp;km. It has a new V-shaped hull design with a new armor offering more protection against ballistic and IEDs (Improvised Explosive Device) threats.<ref name=":0" /><ref name=":1" />
+
+The Fahd 300 can accommodate 13 military personnel including driver, commander and gunner. Driver and vehicle commander have a large bulletproof windscreen that can be covered by a shutter hinged at the top. The rear part of the hull has been raised compared to the original version of the Fahd, offering more internal volume for the troop compartment. Troops can enter and leave the vehicle via a door located at the rear of the hull, the upper part of which folds upwards and the lower part downwards to form a step.<ref name=":0" /><ref name=":1" />
+
+At EDEX 2023, an ambulance variant known as the Fahd 300-MD was presented.<ref>{{cite web | url=https://www.armyrecognition.com/defense_news_december_2023_global_security_army_industry/egypt_s_aoi_displays_fahd_300-md_armored_ambulance_at_edex_2023.html | title=Egypt's AOI displays Fahd 300-MD armored ambulance at EDEX 2023 &#124; Defense News December 2023 Global Security army industry &#124; Defense Security global news industry army year 2023 &#124; Archive News year | date=5 December 2023 }}</ref>
+
+==Service history==
+[[File:Egyptian_Military_Police_in_Alexandria.jpg|thumb|Egyptian Military Police in Alexandria]]
+[[File:Mali Army APC in 1997.JPEG|thumb|270px|Malian Fahd being airlifted during an [[Economic Community of West African States Monitoring Group|ECOMOG]] mission to [[Liberia]]]]
+
+The Fahd have been used by eight countries including Egypt, and also served under the United Nations. It has seen service as a part of [[SFOR]] in [[Bosnia and Herzegovina]], and as a part of [[UNOSOM I|UNOSOM]] in [[Somalia]].
+
+===Egypt===
+The vehicle was originally designed to fit Egyptian requirements by Rheinmetall Landsysteme (then [[Thyssen-Henschel]], part of [[Rheinmetall|Rheinmetall DeTech]]) under the designation TH 390. The first prototypes of the vehicle were built in Germany for Egypt. Production was undertaken by the [[Kader Factory for Developed Industries]], part of the [[Arab Organization for Industrialization]]. The production commenced in 1985. The first vehicles have been completed in 1986 to enter service with the [[Army of Egypt|Egyptian Army]]. The Egyptian Army is believed to have placed an initial order for 300 vehicles with an option of further 110. Egypt uses the Fahd for [[Border guard|border patrolling]], where these vehicles are equipped with extra periscopes, and night vision equipments. The Fahd is also used by the [[Egyptian National Police]] and the [[Central Security Forces]]; these vehicles are usually the Anti-riot version or the standard APC variant provided with a box-type shield around the commander's hatch. The vehicle has been used by Egyptian forces in peace keeping missions, and have served with [[SFOR]] in [[Bosnia and Herzegovina]].<ref name="janesAPC"/>
+
+The military, and paramilitary users of the Fahd in Egypt are:
+* [[Egyptian Army]]
+* [[Central Security Forces]]
+
+===Kuwait===
+Egypt sold Kuwait 110 vehicles.<ref>{{cite web|url=http://www.armyrecognition.com/moyen_orient/KOWEIT/koweit_index_materiel.htm|publisher=Army Recognition|access-date=2009-02-17|title=Kuwait|archive-url=https://web.archive.org/web/20080530133537/http://www.armyrecognition.com/moyen_orient/KOWEIT/koweit_index_materiel.htm|archive-date=2008-05-30|url-status=live}}</ref><ref>{{cite web|url=http://www.armyrecognition.com/kuwait_kowe_t/kuwait_army_kuwaiti_land_forces_modern_military_equipment_armoured_vehicle_information_pictures_.html |publisher=Army Recognision |access-date=2009-02-17 |title=Armée koweïtienne Koweït forces terrestres équipements et véhicules |url-status=dead |archive-url=https://web.archive.org/web/20090325160805/http://www.armyrecognition.com/kuwait_kowe_t/kuwait_army_kuwaiti_land_forces_modern_military_equipment_armoured_vehicle_information_pictures_.html |archive-date=March 25, 2009 }}</ref> Kuwait has been reported to operate about 100 units in 1988, where most of the vehicles were captured and/or destroyed by the Iraqi forces.<ref name="gs"/> Currently, Kuwait has 60 vehicles; some more vehicles were received in 1994.<ref name=INSS>{{cite web |url=http://www.inss.org.il/upload/(FILE)1191763608.pdf |publisher=INSS |title=Kuwait |access-date=2009-02-07 |pages=7 |archive-url=https://web.archive.org/web/20081120141846/http://www.inss.org.il/upload/(FILE)1191763608.pdf |archive-date=2008-11-20 |url-status=dead }}</ref> A report of the secretary general of the [[United Nations Security Council]] shows that most of the units that were captured by Iraq were returned to Kuwait as part of the return of property seized by Iraq hand over operations that have taken place from the second of March 1994 to 15 October 1996. A total of forty vehicles have been returned on three phases.<ref name="United Nations Security Council">{{cite web |url=http://www.pogar.org/publications/other/un/secgen/iraq/s1042-96e.pdf |publisher=United Nations Security Council |title=REPORT OF THE SECRETARY-GENERAL OF THE RETURN OF KUWAITI PROPERTY SEIZED BY IRAQ |access-date=2009-02-07 |date=16 December 1996 |pages=2 |archive-url=https://web.archive.org/web/20100704041806/http://www.pogar.org/publications/other/un/secgen/iraq/s1042-96e.pdf |archive-date=2010-07-04 |url-status=dead }}</ref> See the table above for details. Not all of the vehicles are in active service with the Kuwaiti Army currently.<ref name="INSS"/>
+
+==Operators==
+<!--Please do not add any users here without providing a reliable source to back up your claim. See the page history. Unsourced additions will be speedily deleted.-->
+
+[[File:Fahd operators.png|thumb|300px|Map of Fahd operators in blue with former operators in red]]
+
+===Current operators===
+* {{flag|Algeria}}: 200 in service - The only export deal for the vehicle between 1992 and 2006 was to Algeria.<ref name="janesAPC"/> The deal was for 53 units of the Fahd 240 APC variant,<ref name="janesRepair"/> for use in the internal security role and by the Gendarmerie.<ref name="janesAPC"/> Currently, there are 100 units in service with the Algerian forces as of 25-Feb-2008.<ref>{{cite web |url=http://www.inss.org.il/upload/(FILE)1203939706.pdf |publisher=INSS |title=Algeria |access-date=2009-02-07 |pages=7 |archive-url=https://web.archive.org/web/20090305220113/http://www.inss.org.il/upload/(FILE)1203939706.pdf |archive-date=2009-03-05 |url-status=dead }}</ref>
+* {{flag|Burundi}}: 19 Fahds used by the Burundian Army as of 2019.<ref>{{Cite web|url=https://www.armyrecognition.com/defense_news_february_2022_global_security_army_industry/burundi_army_operating_fahd-300_4x4_apc_armored_personnel_carriers.html|title=Burundi army operating Fahd-300 4x4 APC armored personnel carriers|website=www.armyrecognition.com|date=16 February 2022 }}</ref>
+* {{flag|Burkina Faso}}<ref>{{Cite web |date=2023-07-17 |title=زيادة الطلب على المدرّعة المصرية "فهد" وفرنسا أول المتعاقدين - جريدة البلاغ |url=https://alblagh.news/%d8%b2%d9%8a%d8%a7%d8%af%d8%a9-%d8%a7%d9%84%d8%b7%d9%84%d8%a8-%d8%b9%d9%84%d9%89-%d8%a7%d9%84%d9%85%d8%af%d8%b1%d9%91%d8%b9%d8%a9-%d8%a7%d9%84%d9%85%d8%b5%d8%b1%d9%8a%d8%a9-%d9%81%d9%87%d8%af/ |access-date=2023-12-06 |language=ar}}</ref><ref name=":2">{{Cite web |date=2023-06-12 |title=Burkina Faso, France buys FAHD armored vehicles from Egypt |url=https://www.military.africa/2023/06/burkina-faso-france-buys-fahd-armored-vehicles-from-egypt/ |access-date=2023-12-06 |website=Military Africa |language=en-US}}</ref>
+* {{flag|Democratic Republic of the Congo}} - 20 delivered between 1988 and 1990.<ref name=trade/> Currently 7 are in service.<ref name=IISS>{{cite book |last=[[International Institute for Strategic Studies]]|date=2021|title=The Military Balance|page=461|publisher=Taylor & Francis |isbn=9781032012278}}</ref>
+* {{flag|Egypt}}: 1,400 in service - Producer, and main operator. Operates around 900 Fahd 240s, 235 Fahd 280s w/ BTM-208 turret, and 265 Fahd 280-30s.
+* {{Flag|France}}: 16 Fahds used by French forces participating in peacekeeping operations, modified and upgraded to meet the required combat standards.<ref>{{Cite web |last=admin |date=2023-06-18 |title=France buys Egyptian-made armored vehicles |url=https://english.defensearabia.com/france-buys-egyptian-made-armored-vehicles/ |access-date=2023-12-06 |website=Defense Arabia |language=en-US}}</ref><ref name=":2" />
+* {{flag|Kuwait}}: 60 in service - Second largest operator in 1988. The Fahd was used by the Kuwaiti side during the invasion of Kuwait, when it lost most of them. Kuwait received more units in 1994, and had most of its captured units returned by Iraq in 1995.
+* {{flag|Mali}}: 5 delivered in 1990.<ref name=trade>{{cite web |url=http://armstrade.sipri.org/armstrade/page/trade_register.php |title=Trade Registers |publisher=Armstrade.sipri.org |access-date=2014-11-20 |archive-url=https://web.archive.org/web/20100414022558/http://armstrade.sipri.org/armstrade/page/trade_register.php |archive-date=2010-04-14 |url-status=live }}</ref>
+* {{flag|Oman}}: 31 in service<ref>{{cite web |url=http://www.inss.org.il/upload/(FILE)1188476121.pdf |publisher=INSS |title=Oman |access-date=2009-02-07 |pages=7 |archive-url=https://web.archive.org/web/20081120125011/http://www.inss.org.il/upload/(FILE)1188476121.pdf |archive-date=2008-11-20 |url-status=dead }}</ref><ref>{{cite web |url=http://www.inss.org.il/upload/(FILE)1188214448.pdf |publisher=INSS |title=Sudan |access-date=2009-02-07 |pages=6 |archive-url=https://web.archive.org/web/20090205080207/http://www.inss.org.il/upload/(FILE)1188214448.pdf |archive-date=2009-02-05 |url-status=dead }}</ref>
+* {{flag|Sudan}}: The Fahd has been sold to [[Oman]] and [[Sudan]], but because Egypt considered the value of its military exports confidential, it omitted this information from its published trade statistics.<ref name="gs"/>
+
+===Former operators===
+* {{flag|Bangladesh}}: 60 Fahd-280 were bought in 1993. The [[Bangladesh Army]] used these vehicles widely in patrolling missions along the Iraq-Kuwait border during UN sanctioned peacekeeping missions.<ref>{{cite web |url=http://armstrade.sipri.org/armstrade/page/trade_register.php |publisher=SIPRI |title=Trade Registers |access-date=2020-01-22 |archive-date=2010-04-14 |archive-url=https://web.archive.org/web/20100414022558/http://armstrade.sipri.org/armstrade/page/trade_register.php |url-status=dead }}</ref>
+* {{flag|Iraq}}: All retired after 2003. Although not supplied by Egypt, Iraq was able to capture most of the Kuwaiti vehicles in the [[invasion of Kuwait]]. These units were then used by Iraq during the [[Gulf War]] and the [[2003 invasion of Iraq]].<ref>{{cite web|url=http://www.howitzer.dk/vehicles/iraq.htm|title=Iraqi equipment & vehicles|publisher=Bjoern Clausen|access-date=2009-01-27|archive-url=https://web.archive.org/web/20090220073618/http://www.howitzer.dk/vehicles/iraq.htm|archive-date=2009-02-20|url-status=dead}}</ref> After the Iraqi invasion in 2003, the [[Iraqi army]] is not reported to be using them.<ref>{{cite web |url=http://www.inss.org.il/upload/(FILE)1232450384.pdf |publisher=INSS |title=Iraq |access-date=2009-01-27 |pages=6 |archive-url=https://web.archive.org/web/20110720004040/http://www.inss.org.il/upload/(FILE)1232450384.pdf |archive-date=2011-07-20 |url-status=dead }}</ref>
+
+==See also==
+* [[Armoured warfare|Armored warfare]]
+* [[Armoured personnel carrier|Armored personnel carrier]]
+* [[Infantry fighting vehicle]]
+
+==Notes and references==
+{{Reflist|30em}}
+
+==External links==
+{{Commons category|Fahd APC}}
+* [http://www.armyrecognition.com/egypt_egyptian_army_wheeled_armoured_vehicles_uk/fahd_fahd-240_apc_armoured_personnel_carrier_30_mm_cannon_turret_technical_data_sheet_specifications.html Fahd APC Technical data sheet - specification pictures] {{Webarchive|url=https://web.archive.org/web/20171215083905/https://www.armyrecognition.com/egypt_egyptian_army_wheeled_armoured_vehicles_uk/fahd_fahd-240_apc_armoured_personnel_carrier_30_mm_cannon_turret_technical_data_sheet_specifications.html |date=2017-12-15 }}
+* [http://www.aoi.com.eg/aoieng/military/vehicle/fahd.html The vehicle's page on AOI's official site] {{Webarchive|url=https://web.archive.org/web/20140520005856/http://www.aoi.com.eg/aoieng/military/vehicle/fahd.html |date=2014-05-20 }}
+* [http://www.globalsecurity.org/military/world/egypt/fahd-240.htm The vehicle's page on GlobalSecurity.org]
+
+{{Modern IFV and APC}}
+
+{{DEFAULTSORT:Fahd (Armored Personnel Carrier)}}
+[[Category:Wheeled armoured personnel carriers]]
+[[Category:Wheeled infantry fighting vehicles]]
+[[Category:Military engineering vehicles]]
+[[Category:Reconnaissance vehicles]]
+[[Category:Armoured fighting vehicles of Egypt]]
+[[Category:Military vehicles introduced in the 1980s]]
+[[Category:Rheinmetall]]

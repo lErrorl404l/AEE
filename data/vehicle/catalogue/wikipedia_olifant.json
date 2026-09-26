@@ -1,0 +1,105 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the Olifant. The values are the family figures the article publishes, with the mark in the state text. Every value is grade claimed and the registry marks primary_held false. The article publishes no maker and no range.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "olifant",
+      "canonical_name": "Olifant",
+      "maker": "unknown",
+      "model": "Olifant",
+      "variant": "Main battle tank",
+      "variant_id": "olifant",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "South Africa",
+      "era": "modern",
+      "aliases": [
+        "olifant",
+        "olifant mk1",
+        "olifant mk2"
+      ],
+      "keywords": [
+        "mbt",
+        "main battle tank",
+        "tracked",
+        "south africa"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 58000,
+          "unit": "kg",
+          "source": "wikipedia_olifant",
+          "locator": "Infobox, weight row",
+          "state": "weight published as 57 long tons (58 t); the tonne taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 9830,
+          "unit": "mm",
+          "source": "wikipedia_olifant",
+          "locator": "Infobox, length row, with gun forward entry",
+          "state": "length published as 32 ft 3 in with the gun forward; the same row publishes 24 ft 9.5 in for the hull, and 1 ft = 304.8 mm and 1 in = 25.4 mm",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3378,
+          "unit": "mm",
+          "source": "wikipedia_olifant",
+          "locator": "Infobox, width row, with side plates entry",
+          "state": "width published as 11 ft 1 in with side plates; the same row publishes 10 ft 9 in without side plates, and 1 ft = 304.8 mm and 1 in = 25.4 mm",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2940,
+          "unit": "mm",
+          "source": "wikipedia_olifant",
+          "locator": "Infobox, height row",
+          "state": "height published as 9 ft 7.75 in, and 1 ft = 304.8 mm and 1 in = 25.4 mm",
+          "grade": "claimed"
+        },
+        "ground_clearance_mm": {
+          "value": 508,
+          "unit": "mm",
+          "source": "wikipedia_olifant",
+          "locator": "Infobox, clearance row",
+          "state": "ground clearance published as 1 ft 8 in, and 1 ft = 304.8 mm and 1 in = 25.4 mm",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Continental AV1790 V-12 air-cooled turbo diesel",
+          "unit": "text",
+          "source": "wikipedia_olifant",
+          "locator": "Infobox, engine row",
+          "state": "engine published as a Continental AV1790 V-12 air-cooled turbo diesel for the marks after the Mk.1, as published",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 1040,
+          "unit": "hp",
+          "source": "wikipedia_olifant",
+          "locator": "Infobox, engine power row, Mk.2 entry",
+          "state": "engine power published as up to 1,040 hp (775 kW) for the Mk.2, with no net basis",
+          "grade": "claimed"
+        },
+        "transmission_type": {
+          "value": "automatic",
+          "unit": "enum",
+          "source": "wikipedia_olifant",
+          "locator": "Infobox, transmission row, Mk.1A entry",
+          "state": "transmission published as an automatic gearbox for the Mk.1A, Mk.1B and Mk.2",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 56,
+          "unit": "km/h",
+          "source": "wikipedia_olifant",
+          "locator": "Infobox, speed row, Mk.1A entry",
+          "state": "road speed published as 35 mph for the Mk.1A, Mk.1B and Mk.2; converted at 1 mile = 1.609344 km",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

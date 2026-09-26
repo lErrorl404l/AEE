@@ -1,0 +1,94 @@
+{{distinguish|text=[[Fahd (armored personnel carrier)|Fahd]], an  Egyptian armored personnel carrier, or [[Al Fahd 300]], an Iraqi surface-to-surface short-range ballistic missile}}
+
+{{more citations needed|date=August 2010}}
+{{Infobox weapon
+| name               = Al Fahd
+| image              =
+| type               = [[Armoured fighting vehicle]]
+<!-- Type selection -->| is_vehicle         = Yes
+| service            = 1998-present
+| wars               = <!-- Production history -->
+| designer           = 
+| number             = 240<ref name="armytech" />
+| spec_label         = 
+| length             = {{convert|7.9|m|ft|abbr=on}}<ref name="armytechspecs" />
+| width              = {{convert|2.94|m|ft|abbr=on}}<ref name="armytechspecs" />
+| height             = Varies by suspension setting<ref name="armytechspecs" /><br />Cruising: {{convert|2.065|m|ft|abbr=on}}<br />Lurking: {{convert|1.81|m|ft|abbr=on}}<br />Obstacle: {{convert|2.26|m|ft|abbr=on}}
+| diameter           = 
+| passengers         = 11 (AF-40-8-1 without turret)<ref name="armytechspecs" />
+<!-- Vehicle/missile specifications -->| origin             = [[Saudi Arabia]]
+| is_ranged          = 
+| is_bladed          = 
+| is_explosive       = 
+| is_artillery       = 
+| is_missile         = 
+| is_UK              = Yes
+<!-- Service history -->| used_by            = See [[Al-Fahd#Operators|Operators]]
+| design_date        = 
+| manufacturer       = [[Abdallah Al Faris Company for Heavy Industries]]<ref name="armytech">{{cite web|url=http://www.army-technology.com/projects/al_fahd/|title=Al Fahd - Wheeled Armoured Reconnaissance/Personnel Carrier - Army Technology|publisher=Army-Technology.com|access-date=30 August 2010}}</ref>{{Unreliable source?|reason=domain on WP:BLACKLIST|date=June 2016}}
+| unit_cost          = 
+| production_date    = 1998<ref name="armytech" />
+| variants           = AF-40-8-1 Armoured Personnel Carrier (APC)<br />AF-40-8-2 Armoured Fighting/Reconnaissance Vehicle (AFRV)
+<!-- General specifications -->| weight             = {{convert|16.3|t|ST|abbr=on}} (operating empty weight)<ref name="armytechspecs">{{cite web|url=http://www.army-technology.com/projects/al_fahd/specs.html|title=Specifications: Al Fahd - Wheeled Armoured Reconnaissance/Personnel Carrier - Army Technology|publisher=Army-Technology.com|access-date=30 August 2010|archive-date=4 October 2009|archive-url=https://web.archive.org/web/20091004110242/http://www.army-technology.com/projects/al_fahd/specs.html|url-status=dead}}</ref>{{Unreliable source?|reason=domain on WP:BLACKLIST|date=June 2016}}
+| part_length        = 
+| crew               = 1 (AF-40-8-1)<br />4 (AF-40-8-2)<ref name="armytechspecs" />
+| armour             = Steel alloy with [[Kevlar]] [[spall|spall liners]]<ref name="armytechspecs" />
+| primary_armament   = Varies by customer requirements<br />AF-40-8-1: Up to a 40&nbsp;mm cannon<ref name="armytech" /><br />AF-40-8-2: Up to a 105&nbsp;mm low-recoil cannon<ref name="armytech" />
+| secondary_armament = 
+| engine             = AF-40-8-1: [[Deutz AG|Deutz]] 10-cylinder engine<ref name="armytech" /><br />AF-40-8-2: Deutz 12-cylinder, air-cooled engine<ref name="armytech" />
+| engine_power       = AF-40-8-1: {{convert|400|hp|kW|abbr=on}} <br />AF-40-8-2: {{convert|550|hp|kW|abbr=on}}
+| pw_ratio           = 
+| transmission       = [[ZF Friedrichshafen|Zahnradfabrik Passau GmbH]] ZF 6WG-200 powered gearbox<ref name="armytech" />
+| payload_capacity   = Land: {{convert|5.5|t|ST|abbr=on}}<ref name="armytechspecs" /><br />Water: {{convert|2.2|t|ST|abbr=on}}<ref name="armytechspecs" />
+| suspension         = [[Hydropneumatic]] adjustable suspension
+| clearance          = Varies by suspension setting<ref name="armytechspecs" /><br />Cruising: {{convert|40.5|cm|in|abbr=on}}<br />Lurking: {{convert|15|cm|in|abbr=on}}<br />Obstacle: {{convert|60|cm|in|abbr=on}}
+| fuel_capacity      = {{convert|550|L|gal|abbr=on}}
+| vehicle_range      = AF-40-8-1: {{convert|800|km|mi|abbr=on}}<br />AF-40-8-2: {{convert|600|km|mi|abbr=on}}
+| speed              = Road: {{convert|90|km/h|mph|abbr=on}}<ref name="armytechspecs" /><br />Cross country:  {{convert|65|km/h|mph|abbr=on}}<ref name="armytechspecs" /><br />Amphibious:  {{convert|8|km/h|mph|abbr=on}}<ref name="armytechspecs" />
+| guidance           = 
+| steering           = 
+}}
+The '''Al-Fahd''' is a family of 8x8 [[armoured fighting vehicle]] and [[armoured personnel carrier]] produced by the [[Abdallah Al Faris Company for Heavy Industries]]. The vehicle is mainly used by the [[Armed Forces of Saudi Arabia]]. It was the first armored fighting vehicle developed and built-in [[Saudi Arabia]].<ref name="armytech" />
+
+The Al Fahd is available in three configurations: The AF-40-8-1; an [[armoured personnel carrier]] (APC) or [[infantry fighting vehicle]] (IFV) variant, and the AF-40-8-2; an armoured fighting/[[reconnaissance vehicle]] (AFRV).
+
+==Design==
+===Mobility===
+The AF-40-8-1 and AF-40-8-2 are similar in terms of 8-wheeled hull configuration, suspension, and transmission.  Internally, however, the vehicles differ in both engine type and engine placement. The AF-40-8-2's larger, 12-cylinder engine is mounted at the rear of the hull, where the AF-40-8-1's 10-cylinder engine is mounted at the front to allow for the troop compartment and rear troop ramp which is not present on or required for the AFRV version.
+
+The Al Fahd uses a variable [[hydropneumatic suspension]] which allows the vehicle to adjust its ground clearance by a total of {{convert|45|cm|in|abbr=on}} - between  {{convert|15|cm|in|abbr=on}} and {{convert|60|cm|in|abbr=on}} - depending on need.
+
+The vehicle is designed to be able to negotiate slopes of up to 80% (forward) and 55% (side), and cross trenches between {{convert|2|m|ft|abbr=on}} and {{convert|2.5|m|ft|abbr=on}}.
+
+There is also an [[amphibious vehicle|amphibious]] version of the Al Fahd available depending on customer requirements.  The hydraulic propellers are optional, so not all Al Fahd's are capable of an [[amphibious operation]].
+
+===Protection===
+The Al Fahd uses a high-hardness steel alloy to offer protection against 14&nbsp;mm ammunition on the frontal arc at ranges of {{convert|300|m|ft|abbr=on}} and greater, and [[7.62]]&nbsp;mm ammunition at ranges of {{convert|25|m|ft|abbr=on}} and greater on the sides and rear of the vehicle.<ref name="armytechspecs" />  The vehicle also incorporates multiple layers of [[Kevlar]] internally to protect the crew and passengers against [[spall]].
+
+===Armament===
+The [[armament]] for both the AF-40-8-1 and AF-40-8-2 varies according to customer specifications.  The AF-40-8-1 is capable of mounting anything up to and including a 40&nbsp;mm cannon, and the AF-40-8-2 anything up to and including a low-recoil 105&nbsp;mm cannon, the 105mm cannon can be elevated up high similar to the [[Type_08#Export_Variant|ST-3]]<ref>{{Cite web |title=БРОНЕТРАНСПОРТЕР AL FAHD |url=https://war-book.ru/bronetransporter-al-fahd/ |access-date=8 September 2023 |archive-date=27 April 2023 |archive-url=https://archive.today/20230427152539/https://war-book.ru/bronetransporter-al-fahd/ |url-status=bot: unknown }}</ref>
+
+==Operators==
+{{stack|[[File:Al-Fahd Operators (Fixed again).png|alt=|thumb|400x400px|Map of Al-Fahd operators in blue]]}}
+*{{flag|Saudi Arabia}}<ref name="Book">The Militarization of the Persian Gulf: An Economic Analysis by Hossein Askari, Amin Mohseni, Shahrzad Daneshvar, p.90.</ref>
+* {{Flag|Lebanon}}<ref name="Book" />
+* {{flag|Kuwait}}<ref name="Book" />
+* {{flag|Pakistan}}<ref name="Book" />
+* {{flag|Bangladesh}}<ref name="Book" />
+* {{flag|algeria}}<ref name="Book" />
+
+==References==
+<references />
+
+{{Modern IFV and APC}}
+{{Armoured combat vehicles}}
+{{Use dmy dates|date=June 2017}}
+
+[[Category:Wheeled armoured fighting vehicles]]
+[[Category:Military equipment of Saudi Arabia]]
+[[Category:Military vehicles of Pakistan]]
+[[Category:Eight-wheeled vehicles]]
+[[Category:Military vehicles introduced in the 1990s]]
+[[Category:Wheeled amphibious armoured fighting vehicles]]
+[[Category:Wheeled armoured personnel carriers]]
+[[Category:Wheeled infantry fighting vehicles]]

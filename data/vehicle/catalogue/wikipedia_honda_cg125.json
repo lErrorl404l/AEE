@@ -1,0 +1,113 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the Honda CG125. Every value is grade claimed and the registry marks primary_held false. The article publishes the wet and dry weights, the dimensions, the wheelbase, the engine and its displacement, the power and torque ratings and the manual transmission. It publishes no ground clearance and no road speed for the base model.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "honda_cg125",
+      "canonical_name": "Honda CG125",
+      "maker": "Honda Motor Company",
+      "model": "CG125",
+      "variant": "125 cc motorcycle",
+      "variant_id": "honda_cg125",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Japan",
+      "era": "modern",
+      "aliases": [
+        "cg125",
+        "honda cg 125",
+        "honda cg125"
+      ],
+      "keywords": [
+        "motorbike",
+        "commuter",
+        "125",
+        "japan"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "curb_weight_kg": {
+          "value": 105,
+          "unit": "kg",
+          "source": "wikipedia_honda_cg125",
+          "locator": "Infobox, wet weight row",
+          "state": "wet weight published as 105 kg; the same infobox publishes 95 kg dry weight",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 1912,
+          "unit": "mm",
+          "source": "wikipedia_honda_cg125",
+          "locator": "Infobox, length row",
+          "state": "length published as 1,912 mm",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 735,
+          "unit": "mm",
+          "source": "wikipedia_honda_cg125",
+          "locator": "Infobox, width row",
+          "state": "width published as 735 mm",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 1026,
+          "unit": "mm",
+          "source": "wikipedia_honda_cg125",
+          "locator": "Infobox, height row",
+          "state": "height published as 1,026 mm",
+          "grade": "claimed"
+        },
+        "wheelbase_mm": {
+          "value": 1204,
+          "unit": "mm",
+          "source": "wikipedia_honda_cg125",
+          "locator": "Infobox, wheelbase row",
+          "state": "wheelbase published as 1,204 mm",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "124 cc 4-stroke OHV air-cooled single",
+          "unit": "text",
+          "source": "wikipedia_honda_cg125",
+          "locator": "Infobox, engine row",
+          "state": "engine published as a 124 cc 4-stroke OHV air-cooled single, as published",
+          "grade": "claimed"
+        },
+        "engine_displacement_l": {
+          "value": 0.124,
+          "unit": "L",
+          "source": "wikipedia_honda_cg125",
+          "locator": "Infobox, engine row",
+          "state": "engine displacement published as 124 cc, taken as 0.124 L",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 10.5,
+          "unit": "hp",
+          "source": "wikipedia_honda_cg125",
+          "locator": "Infobox, power row",
+          "state": "power published as 10.5 hp at 8,500 rpm, with no net basis",
+          "grade": "claimed"
+        },
+        "torque_nm": {
+          "value": 9.5,
+          "unit": "N m",
+          "source": "wikipedia_honda_cg125",
+          "locator": "Infobox, torque row",
+          "state": "torque published as 9.5 N m at 7,500 rpm",
+          "grade": "claimed"
+        },
+        "transmission_type": {
+          "value": "manual",
+          "unit": "enum",
+          "source": "wikipedia_honda_cg125",
+          "locator": "Infobox, transmission row",
+          "state": "transmission published as a 4-speed and 5-speed manual",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

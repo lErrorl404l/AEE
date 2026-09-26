@@ -1,0 +1,168 @@
+{{Use dmy dates|date=January 2018}}
+{{Use South African English|date=January 2018}}
+{{Infobox weapon|is_vehicle=yes
+|name=RG-31 Mk3A
+|image=[[File:RG-31.JPG|300px|[description]]]
+|caption=RG-31 Charger
+|origin=  [[South Africa]]
+|type= [[Mine-Resistant Ambush Protected Vehicle]]
+<!-- Service history -->
+|service= 
+|used_by=
+|wars= 
+<!-- Production history -->
+|designer= [[BAE Systems]] [[Land Systems OMC]]
+|design_date=
+|manufacturer=
+|unit_cost=
+|production_date=
+|number= 
+|variants= 
+<!-- General specifications -->
+|weight= 7.28 [[tonne|t]]
+|length= 6.40 m (21 ft)
+|width= 2.47 m (8.1 ft)
+|height= 2.63 m (8.63 ft)
+|crew= 2+6
+<!-- Vehicle/missile specifications -->
+|armour= 
+|primary_armament=Varies weapons such as optional [[.50 BMG|12.7mm]] [[M2 Browning]] [[machine gun]] by weapons mount
+|secondary_armament=
+|engine=Option 1: [[Daimler-Benz]] OM 352A, 6-cylinder diesel, 123 hp<br />
+Option 2: [[Iveco]] Tector F4AE0681D diesel<br />
+Option 3: [[Detroit Diesel]]<br />
+Option 4: [[Cummins]] 6.7L QSB, 6-cylinder diesel, 275 hp<br /><ref>{{cite web |url=http://www.gdlscanada.com/pdf/RG31Mk5_specs_mod.pdf |title=General Dynamics &#124; Canada > Home |publisher=Gdlscanada.com |access-date=2010-03-19 |archive-date=11 July 2011 |archive-url=https://web.archive.org/web/20110711081251/http://www.gdlscanada.com/pdf/RG31Mk5_specs_mod.pdf |url-status=dead }}</ref>
+Option 5: [[Weichai]] WD615
+|engine_power=
+|suspension=4×4-wheeled
+|speed= 100 km/h (62 mph)
+|pw_ratio= 
+|vehicle_range= 900 km (559 mi)
+}}
+
+The '''RG-31 Nyala''' is a [[Four-wheel drive|4×4]] multi-purpose [[Mine-Resistant Ambush Protected Vehicle]] manufactured in [[South Africa]] by [[Land Systems OMC]] (a division of [[Denel]] SOC LTD), located in [[Benoni, Gauteng|Benoni]], South Africa and in [[Turkey]] by [[FNSS Defence Systems]].<ref>{{cite web|url=http://www.todayszaman.com/newsDetail_openPrintPage.action?newsId=120473|title=Today's Zaman, Turkish daily news|access-date=5 November 2014|archive-date=5 March 2016|archive-url=https://web.archive.org/web/20160305024204/http://www.todayszaman.com/newsDetail_openPrintPage.action?newsId=120473|url-status=dead}}</ref>  It is based on the [[Mamba APC]] of TFM Industries.
+
+The RG-31 has become the multi-purpose vehicle of choice of the [[UN]] and other peacekeeping and security forces. It is finding favour with non-governmental organisations requiring a vehicle with a non-aggressive appearance to protect their personnel against [[land mine]]s.{{citation needed|date=February 2011}}
+
+==Design==
+The RG-31 is based on a [[Unimog|UNIMOG]] chassis.<ref>{{Cite web |title=Deutsche Rüstungsexporte: Einzelansicht |url=http://ruestungsexport-info.de/no_cache/de/datenbank/einzelansicht.html?tx_ruestungsexport_ruestungsexporte%5Bpage%5D=2&tx_ruestungsexport_ruestungsexporte%5Bfilter%5D%5Bland%5D=&tx_ruestungsexport_ruestungsexporte%5Bfilter%5D%5Bcategory%5D=15&tx_ruestungsexport_ruestungsexporte%5Bfilter%5D%5Bunternehmen%5D=&tx_ruestungsexport_ruestungsexporte%5Bfilter%5D%5Bsearchword%5D=&tx_ruestungsexport_ruestungsexporte%5Baction%5D=show&tx_ruestungsexport_ruestungsexporte%5Bcontroller%5D=Einzelgeschaeft&cHash=1d6da5a888dd691eca7786f56115b738&tx_ruestungsexport_ruestungsexporte%5Beinzelgeschaeft%5D=2435 |access-date=2024-06-09 |website=ruestungsexport-info.de}}</ref> It is built from a [[V-hull|V-shaped]] all-steel welded armor monocoque hull and high suspension, typical of South African mine protected vehicles, providing excellent small-arms and mine blast protection.<ref name="defupd">{{cite web|url=http://www.defense-update.com/products/r/RG-31.htm |title=RG-31 Nyala Mine Protected Vehicle |access-date=2011-03-01}}</ref>  The vehicle is designed to resist a blast equivalent to two [[TM-57 mine|TM-57 anti-tank mines]] detonating simultaneously.<ref>{{cite news|url=https://www.cbc.ca/news/world/military-identifies-4-of-6-canadian-soldiers-killed-1.652240 |title=Military Identifies 4 of 6 Canadian Soldiers Killed |date=2007-07-04 |access-date=2011-03-01 |work=CBC News}}</ref>  The RG-31 is classified by the [[United States Department of Defense]] as a category 1 [[MRAP|Mine Resistant Ambush Protected]] (MRAP) vehicle.{{citation needed|date=February 2011}}
+
+The vehicle accommodates a crew ranging from 5 to 10 depending on mission needs, depending on model. Dismounting is provided via a large air actuated rear door and two front doors, also air actuated.
+
+In July 2016, the [[Letterkenny Army Depot]] in [[Pennsylvania]] rolled out the latest variant of the RG-31, with improvements including an engine upgrade from 275 to 300&nbsp;hp, a transmission upgrade, independent suspension, 360-degree spotlights for night visibility, and an armored gunner's hatch. The depot is scheduled to produce 929 improved RG-31s through 2020.<ref>[http://armyrecognition.com/july_2016_global_defense_security_news_industry/letterkenny_u.s._army_depot_to_celebrate_production_of_new_rg31_4x4_route_clearance_vehicle_12607161.html Letterkenny U.S. Army Depot to celebrate production of new RG31 4x4 route clearance vehicle] {{Webarchive|url=https://web.archive.org/web/20230909145534/https://armyrecognition.com/july_2016_global_defense_security_news_industry/letterkenny_u.s._army_depot_to_celebrate_production_of_new_rg31_4x4_route_clearance_vehicle_12607161.html |date=9 September 2023 }} - Armyrecognition.com, 26 July 2016</ref>
+
+==Production history==
+===Variants===
+Variants come in either an [[armoured personnel carrier]] (APC) or utility vehicle (cargo) configuration.<ref>{{cite web |url=http://www.gdlscanada.com/Default.aspx?tabid=206 |title=Basic variant specifications |access-date=19 June 2010 |archive-date=29 October 2010 |archive-url=https://web.archive.org/web/20101029013805/http://gdlscanada.com/Default.aspx?tabid=206 |url-status=dead }}</ref>
+* RG-31 Mk3A &ndash; based on Mamba APC
+* RG-31 Mk5<ref>{{cite web |url=http://infodefensa.com/noticias/docs/RG31Mk5_specs%5B1%5D.pdf |title=GDLS RG-31 Mk5 spec sheet PDF |access-date=19 June 2010 |archive-date=1 April 2010 |archive-url=https://web.archive.org/web/20100401030603/http://infodefensa.com/noticias/docs/RG31Mk5_specs&#91;1&#93;.pdf |url-status=dead }}</ref>
+* RG-31 Mk5E &ndash; An extended Mk5 with larger passenger/cargo capacity and superior blast and ballistic protection.
+* RG-31 Mk5EHM &ndash; An extended GVW version of Mk5E<ref name=":0">{{Cite web |title=Denel OMC RG31 MRAP Family |url=https://militaryvehiclesdata.com/specsheets/land-vehicles/wheeled-armored/4-wheel-armored-vehicles/denel-omc-rg31-family/ |access-date=2025-01-20 |website=militaryvehiclesdata.com |language=en-US}}</ref>
+* RG-31 Mk5LHM &ndash; Pick-Op version of Mk5E<ref name=":0" />
+* RG-31 Mk5 Ambulance<ref name=":0" />
+* RG-31 Mk6E &ndash; Enhanced crew protection
+* RG-31 Charger &ndash; US Army version of the Mk3 with a [[Detroit Diesel]] engine and Mk5 with a [[Cummins]] engine
+* RG-31M &ndash; features a military wiring harness, central tire inflation and several other new characteristics. This vehicle has a crew of 5.<ref name="defupd"/>
+* RG-31 Agrab; [[Mortar carrier]] version with [[SRAMS]] ([[Super Rapid Advanced Mortar System]]).<ref>{{cite web|url=https://www.armyrecognition.com/september_2013_defense_industry_military_news_uk/the_bae_systems_rg-31_agrab_120mm_4x4_mortar_carrier_vehicle_to_be_produced_in_uae_2609133.html|title=The BAE Systems RG-31 Agrab 120mm 4x4 mortar carrier vehicle to be produced in UAE 2609133|last=Administrator|website=www.armyrecognition.com|access-date=23 March 2018|archive-date=16 December 2023|archive-url=https://web.archive.org/web/20231216163039/https://armyrecognition.com/september_2013_defense_industry_military_news_uk/the_bae_systems_rg-31_agrab_120mm_4x4_mortar_carrier_vehicle_to_be_produced_in_uae_2609133.html|url-status=dead}}</ref>
+
+==Operators==
+[[File:RG-31 operators.png|thumb|400px|Map with RG-31 operators in blue]]
+
+[[File:Spanish RG-31 Nyala in Afghanistan-2010.jpg|thumb|Spanish RG-31 Nyala prepare to depart Forward Operating Base Bernardo de Galvez for a patrol through the town of Sang Atesh, Afghanistan.]]
+[[File:Armored vehicle from the UN World Food Program.JPG|thumb|A UN RG-31 in Iraq.]]
+[[File:Iraqi National Police armored vehicles.jpg|thumb|Iraqi National Police armored vehicles line up for a convoy at Joint Security Station Beladiyat.]]
+<!--READ FIRST: This section is for cited entries only. Please do not add entries into this list without a citation from a reliable source. All entries without a citation will be removed. Thank you.-->
+
+*{{BDI}}:
+**[[National Defence Force (Burundi)|Burundi Army]]
+***12x RG-31 Nyala<ref name=IISS>{{cite book |last=[[International Institute for Strategic Studies]]|date=2021|title=The Military Balance|page=453|isbn=9781032012278}}</ref>
+*{{CAN}}:
+**[[Canadian Forces]]
+***75 RG-31 Mk3 with [[Protector (RWS)]] Remote Weapon Station; replaced by [[Textron Tactical Armoured Patrol Vehicle]]
+**[[London Police Service]]
+***1x RG-31 Mk3A, used by the Emergency Response Team (replaced sometime around 2020 due to maintenance costs and was sold to Stratford Police Service)
+**[[Durham Regional Police Service]]
+***1x RG-31 Mk3A, Tactical Rescue Vehicle donated by General Dynamics to the Tactical Response Unit
+*{{COL}}:
+**[[National Army of Colombia]]
+***4× RG-31 Nyala
+*{{ESP}}: 150× RG-31 Mk5E Nyala with Samson remote Weapon Station (+ option for 30 more) already deployed in Lebanon and Afghanistan.
+*{{MLI}}: 5× RG-31 Nyala
+*{{NGA}}: 1× RG-31 Nyala
+*{{INA}}
+*{{flag|Iraq}}
+*{{RSA}}
+*{{RWA}}: 76× RG-31 Nyala
+*{{SEN}}
+*{{SOM}}<ref>{{Cite web|url=http://www.janes.com/images/assets/520/71520/New-model_African_armies.pdf|archive-url = https://web.archive.org/web/20170622123315/http://www.janes.com/images/assets/520/71520/New-model_African_armies.pdf|archive-date = 22 June 2017|title = Internal Server Error}}</ref>
+*{{SWZ}}: 7× RG-31 Nyala Mk5E, currently used by the [[Umbutfo Eswatini Defence Force]] (UEDF).<ref name="sipri2">{{cite web |title=Arms Trade Register |url=http://armstrade.sipri.org/armstrade/page/trade_register.php |access-date=15 February 2023 |publisher=SIPRI |archive-date=13 May 2011 |archive-url=https://web.archive.org/web/20110513073842/http://armstrade.sipri.org/armstrade/page/trade_register.php |url-status=dead }}</ref>
+*{{UAE}}: 253× customized RG-31 Mk5<ref name="sipri2" />
+*{{UNO}}: 30× RG-31 Nyala
+*{{USA}}:
+**[[US SOCOM]]
+***50× Mk5A1S
+**[[United States Army|US Army]]
+***148× RG-31 Mk3 Charger,
+***257× Mk5A1<ref>{{cite web|url=http://www.baesystemsomc.co.za/Default.aspx?tabid=1697&ctl=ArticleView&mid=2678&articleId=95 |title=??? |url-status=dead |archive-url=https://web.archive.org/web/20070707043619/http://www.baesystemsomc.co.za/Default.aspx?tabid=1697&ctl=ArticleView&mid=2678&articleId=95 |archive-date=7 July 2007 }}</ref>
+***111× Mk5E<ref>{{cite web|url=http://www.globalsecurity.org/military/library/news/2008/06/mil-080612-general-dynamics01.htm |title=General Dynamics Awarded USD $67 Million Modification to Previously Awarded U.S. Army RG-31 Mk5 Contract |date=2008-06-12 |access-date=2011-03-01}}</ref>
+**[[United States Marine Corps|USMC]]
+***12× Mk5A's ([[MRAP]] Cat I)
+***1,385× Mk5E's (MRAP Cat II)<ref>{{cite web |url=http://www.gd.com/news/press_releases/2007/NewsRelease%20August%208,%202007.htm |title=General Dynamics News - August 8, 2007 |publisher=Gd.com |date=2007-08-08 |access-date=2010-03-19 |url-status=dead |archive-url=https://web.archive.org/web/20070927213415/http://www.gd.com/news/press_releases/2007/NewsRelease%20August%208%2C%202007.htm |archive-date=27 September 2007 |df=dmy-all }}</ref><ref>{{cite web |url=http://www.military.com/features/0,15240,153979,00.html |title=Diversity Adds Depth to MRAP |publisher=Military.com |access-date=2010-03-19 |url-status=dead |archive-url=https://web.archive.org/web/20071023075326/http://www.military.com/features/0,15240,153979,00.html |archive-date=23 October 2007 |df=dmy-all }}</ref><ref>{{cite web|url=http://www.gd.com/news/press_releases/2008/NewsRelease%20July%2017,%202008-2.htm |title=General Dynamics News - July 17, 2008 |publisher=Gd.com |date=2008-07-17 |access-date=2010-03-19}}</ref>
+**[[Academi]]
+*{{flag|Ukraine}}: 1 RG-31 Nyala in a combat ambulance configuration was provided to Ukraine by Spain as military aid.<ref>{{cite web|url=https://www.oryxspioenkop.com/2023/05/guns-n-gazpacho-spanish-military-aid-to.html|title=Spanish Military Aid To Ukraine}}</ref>
+
+==Combat history==
+[[File:RG-31 damaged by a mine.jpg|thumb|RG-31 Nyala damaged by a mine]]
+[[File:RG31IED.jpg|thumb|RG-31 after getting hit by an [[Improvised explosive device|IED]] in Iraq in 2007. The explosion tore the vehicle in two. The crew survived, but they were severely wounded.]]
+*[[Afghanistan]] – Canada, (including 5 leased to Netherlands) ([[International Security Assistance Force|ISAF]]), United States, and Spain<ref>[http://www.lavanguardia.com/politica/20110619/54172918062/chacon-afirma-que-el-blindado-evito-un-mal-mayor-en-el-ataque-de-afganistan.html "Chacón afirma que el blindado evitó un "mal mayor" en el ataque de Afganistán"], ''La Vanguardia'', 19 June 2011</ref>
+*[[Bosnia and Herzegovina]] – [[UNPROFOR]]
+*[[Ethiopia]] / [[Eritrea]] – Canada
+*[[Georgia (country)|Georgia]] –- UN
+*[[Iraq]] – United States
+*[[Colombian conflict|Colombian Armed Conflict]]
+*[[Civil war in Côte d'Ivoire|Ivorian Civil War]]
+*[[Ivory Coast]] – [[United Nations Operation in Côte d'Ivoire|UNOCI]]
+*[[Kosovo]] – [[Kosovo Force|KFOR]]
+*[[Lebanon]] – [[United Nations Interim Force in Lebanon|UNIFIL]]
+*[[Uganda]] - [[Uganda People's Defence Forces]]
+*[[Yemen]] - [[United Arab Emirates]] as part of the [[Saudi Arabian-led intervention in Yemen]]
+*[[Mali]] - [[MINUSMA]]
+*[[Syria]] - [[UNDOF]], later captured by rebel groups, eventually captured by [[Syrian Army]]{{cn|date=December 2020}}
+
+==See also==
+;Other wheeled APCs and IFVs developed in South Africa
+* [[Buffel]]
+* [[Casspir]]
+* [[Mamba APC]]
+* [[Ratel IFV]]
+* [[RCV-9]]
+* [[RG-12]]
+* [[RG-19]]
+* [[RG-32]]
+* [[RG-33]]
+* [[RG-34]]
+* [[RG-35]]
+
+;General
+* [[Infantry Mobility Vehicle]]
+* [[MRAP]]
+* [[List of modern armoured fighting vehicles]]
+
+==References==
+{{commons category|RG-31 Nyala}}
+
+{{reflist|2}}
+
+{{MRAP vehicles}}
+{{South African AFV}}
+{{Canadian Forces Land Force Command}}
+{{Modern IFV and APC}}
+
+{{DEFAULTSORT:Rg-31 Nyala}}
+[[Category:Mine-resistant ambush protected vehicles]]
+[[Category:Armoured personnel carriers of South Africa]]
+[[Category:Armoured fighting vehicles of Canada]]
+[[Category:BAE Systems land vehicles]]
+[[Category:Military trucks]]
+[[Category:United States Marine Corps equipment]]
+[[Category:Wheeled armoured personnel carriers]]
