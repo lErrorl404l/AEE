@@ -82,6 +82,7 @@ def main():
         "tools/tests/test_ballistic_coefficient.py",
         "tools/tests/test_armour_database.py",
         "tools/tests/test_derivation.py",
+        "tools/tests/test_vehicle_weapons.py",
         "tools/tests/test_engine_bridges.py",
         "tools/tests/test_vehicle_inventory.py",
         "tools/tests/test_vehicle_corpus.py",

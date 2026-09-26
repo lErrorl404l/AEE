@@ -57,6 +57,17 @@ if (_caliber <= 0) exitWith { _damage };   // non-ballistic (rocket/shell with n
 //   mm RHA = (v/1000) * caliber * 15
 private _penMM = ((_speed / 1000) * _caliber * 15) max 0;
 
+// A cannon round needs a different penetration model. This bisurf rule is
+// fitted to small arms: it has no rod length, no impact obliquity and no
+// shaped-charge jet term, so it does not describe a tank cannon round.
+// The cannon branch is deliberately NOT applied here. The missing inputs
+// are the sub-projectile rod length and diameter, the impact obliquity and
+// the target hardness. Candidate models are the Alekseevskii-Tate long-rod
+// relation for APFSDS and a shaped-charge jet relation for HEAT. No tier 1
+// to 4 source held here states those inputs or a cannon penetration
+// coefficient, and ADR-003 forbids a tier 5 value. The small-arms rule is
+// therefore left in place, and no cannon penetration figure is invented.
+
 // The vehicle's STANAG protection class from its armour pool.  The pool
 // is the design target; the class maps to the RHA protection it models.
 // The protection class: vehicles use the armour pool ladder; a SOLDIER

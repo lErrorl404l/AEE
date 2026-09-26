@@ -63,11 +63,15 @@ private _family = switch (true) do {
     case (_a find "127x76" >= 0 ||
           _a find "12gauge" >= 0 ||
           _a find "pellet" >= 0):   { "12gauge" };
+    // The tank cannon. A bare "apfsds" token is not enough: it also names
+    // the autocannon long rods (M919 25 mm, MK258 30 mm) and the 105 mm
+    // M735. The calibre must match as well, or a 25 mm APFSDS round would
+    // take the 120 mm M829 velocity.
     case (_a find "m829" >= 0 ||
-          _a find "apfsds" >= 0):   { "120mm_m256_m829" };
+          (_a find "120mm" >= 0 && _a find "apfsds" >= 0)): { "120mm_m256_m829" };
     case (_a find "m830" >= 0 ||
-          _a find "120mm" >= 0 ||
-          _a find "m256" >= 0):     { "120mm_m256" };
+          _a find "m256" >= 0 ||
+          _a find "120mm" >= 0):     { "120mm_m256" };
     default                         { "" };
 };
 
