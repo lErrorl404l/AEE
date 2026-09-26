@@ -1,0 +1,76 @@
+{{short description|British motorcycle}}
+{{Use dmy dates|date=January 2017}}
+{{Use British English|date=January 2017}}
+{{Infobox Motorcycle
+|name=BSA M20 / M21
+|image = BSA M20 500cc (1939).JPG
+|image_size = 300px
+|aka=
+|manufacturer=[[Birmingham Small Arms Company]]
+|production=1937&ndash;1955
+|class=
+|related=
+|wheelbase=
+|length=
+|width=
+|height=
+|seat height=
+|engine= 496cc single cylinder side valve 4 stroke
+|bore_stroke      = {{convert|82|x|94|mm|abbr=on}}
+|power=13bhp @4,200 rpm
+|torque=
+|dry_weight= {{convert|369|lbs|kg}}
+|fuel_capacity=3 gallons
+|fuel_economy=
+|transmission=4 Speed / chain
+}}
+
+The '''BSA M20''' is a British [[motorcycle]] formerly made by [[Birmingham Small Arms Company]] (BSA) at their factory in [[Small Heath, Birmingham|Small Heath]], [[Birmingham]]. Although initially viewed as a near failure by the [[War Office]] in 1936, the M20 evolved into one of the longest serving motorcycles in the history of British military motorcycling, as well as becoming the most numerous type produced for [[World War II]] with 126,000<ref name="Mirco" /> in active service.  Many are still in use around the world today.<ref name="KempClassic">{{cite book|last=Kemp|first=Andrew|author2=De Cet|others=Mirco|title=Classic British Bikes|publisher=Bookmart Ltd|date=2004|isbn=1-86147-136-X}}</ref>
+
+==Development==
+[[File:BSA M20 500 (engine).jpg|thumb|left|The engine]]
+At the outbreak of [[World War II]] BSA were Britain's largest motorcycle manufacturer with a long history of armaments supply to the armed forces.  Designed by [[Val Page]], the BSA M20 started development in 1937 as a heavy-framed sidecar model with a simple 500&nbsp;cc single cylinder side valve engine. It had low compression and plenty of low-end torque through a standard BSA gearbox.<ref name="KempClassic" />
+
+Early K-M20 models from 1939 were made from standard civilian parts with the addition of military fittings, such as a  large 8-inch Lucas DUl42 headlight (fitted with a black out mask), a timing-gear cover with a screw-in plug for access to the magneto drive-pinion nut and special filler caps for the petrol (gas) and oil tanks. These early military M20 models were also fitted with a long spiked prop stand on the rear nearside pivoted from a lug brazed on to the rear frame tube. Factory ledgers show that BSA exported K-M20 models to [[Sweden]], [[South Africa]] and [[India]], as well as civilian dealers and distributors.<ref name="Facts">{{cite web|url=http://home.quicknet.nl/qn/prive/ahum/facts.htm |title=BSA Model M20 496cc Facts |accessdate=2009-01-10 |url-status=dead |archiveurl=https://web.archive.org/web/20081016031512/http://home.quicknet.nl/qn/prive/ahum/facts.htm |archivedate=16 October 2008 }}</ref>
+
+==M20 factory bombing==
+BSA workers employed making the M20 were killed in an air raid on the BSA factory in Armoury Road, [[Small Heath, Birmingham|Small Heath]], [[Birmingham]] on the night of Tuesday 19 November 1940.  The factory was one of the main targets for the [[Luftwaffe]] and at 9.25pm a low flying aircraft dropped two bombs which destroyed the southern end of the BSA building in Armoury Road. Rescuers included BSA's own fire brigade who pumped the [[BCN Main Line|Birmingham and Warwick canal]] dry putting out the fire. As well as 53 workers killed, 89 were injured and it was six weeks before the last of the bodies could be recovered.<ref>{{cite web|url=http://www.madeinbirmingham.org/bsamem.htm|title=BSA Memorial|accessdate=2009-01-10| archiveurl= https://web.archive.org/web/20081229084208/http://madeinbirmingham.org/bsamem.htm| archivedate= 29 December 2008 | url-status= live}}</ref> Much of the factory and equipment was destroyed or damaged but BSA had 67 factories so work was transferred elsewhere and production of the BSA M20 continued.<ref name="Mirco">{{cite book|last=De Cet|first=Mirco|title=The Complete Encyclopedia of Classic Motorcycles|editor=Quentin Daniel|publisher=Rebo International|date=2005|isbn=978-90-366-1497-9}}</ref>
+
+==Modifications==
+From October 1939 the K-M20 was designated the W-M20 and modified to include girder-forks and removal of the valanced rear mudguard.  During late 1940 some civil specification M20s were purchased by the War Office which were civil models with a military paint scheme. In 1941 front and rear number plates were removed and between 1941 and 1942 active service use in North Africa showed the need for easy adjustment of the fork dampers. Special damper knobs were made of [[bakelite]] (later replaced with pressed steel). The DU142 headlight was replaced with a smaller 6 in Lucas DU42, with a hooded, slotted black-out shield, and a universal L-WD-MCT1A tail light was fitted.<ref name="Facts" />
+
+From 1942 there was a shortage of rubber so handlebar grips and foot pegs were replaced by canvas covered metal items and production was standardised, with only minor modifications until the end of [[World War II]].<ref name="KempClassic" />  By early 1942 a new large rear carrier was fitted to hold universal WD steel pannier-frames and bags. This meant repositioning the long prop stand to forward of the nearside rear wheel spindle nut. In 1943 further modifications were made including redesign of the crankcase sump shield and fitting of the Vokes high capacity air cleaner, which was a box shaped canister on top of the fuel tank and was intended to assist operations in dusty environments.<ref>{{cite book|last=Ware|first=Pat|title=The Illustrated guide to military motorcycles|year=2010|publisher=Anness Publishing Ltd|isbn=978-1-84681-448-8|pages=184–185}}</ref>  In early 1945 a push-button switch was introduced for the headlight and the main lighting switch relocated to a bracket beneath the offside of the saddle.<ref name="Facts" />
+
+===Speed trials===
+As well as being painstakingly restored by enthusiasts to accurate wartime specification, the M20 has also been modified by specialists for speed trials. A 1938 BSA M20 ridden by Bill Jenkins from [[Dallas]] achieved a top speed of 108&nbsp;mph at [[Bonneville Salt Flats]] making it the fastest M20 in the world. The original side-valve engine was extensively modified and injected with [[nitrous oxide]].  The intake port fed by the carburetor, originally horizontal, was re-drilled at a steep angle into the cylinder casting so it pointed up at the underside of the intake valve. The motorcycle did however retain the long BSA prop stand that hinged under the seat and clipped to the rear mudguard when not in use &mdash; so it looked like a stock M20.<ref>{{cite web|url=http://www.gadgetengineer.com/motorcyclestories.html|title=BSA M20 Bonneville Racer|last=Bath |first=Bill|accessdate=2009-01-10}}</ref>  In October 1995 an M20 fitted with a [[BSA Gold Star]]  crankshaft sprocket and running on a 95% methanol / 5% acetone mix ridden by Pat Jeal achieved a terminal speed of 112&nbsp;mph at the disused airfield of [[RAF Elvington]], Yorkshire.<ref>{{cite web|url=http://victorylibrary.com/brit/enigmas3.htm|title=BSA M20 & M21 Motor Mods   |last=Jeal|first=Pat|accessdate=2009-01-10| archiveurl= https://web.archive.org/web/20090127060154/http://victorylibrary.com/brit/enigmas3.htm| archivedate= 27 January 2009 | url-status= live}}</ref>
+
+==Military service==
+[[File:Starting BSA W-M20_gnangarra.webm|thumb|Starting a 1942 W-M20]]
+The M20 failed on its first submission to the War Office in 1936 due to 'unacceptable engine wear'. The prototype machine required a replacement piston and cylinder after approximately 6,000 miles. In 1937 three more M20s were submitted to the War Office for testing. Two of these just passed the 10,000 mile suitability tests at [[Military Vehicles and Engineering Establishment]], MVEE, [[Chertsey]], while a third  was used in service trials in 1938 when a small batch was commissioned.<ref name="Forces">{{cite book|last=Orchard|first=C. J.|author2=Madden S.J.|title=British Forces Motorcycles 1925 &ndash; 45|publisher=Suton Publishing Ltd|date=1997|isbn=0-7509-1445-9}}</ref> Criticised for being heavy and slow with poor ground clearance, it was saved by its reliability and ease of maintenance.<ref name="KempClassic" />  As the need for transport quickly gained pace orders were placed for larger quantities. While most M20's were used by the [[British Army]], the model also served in the [[Royal Navy]] and [[Royal Air Force]]. Utilized as a general-purpose motorcycle for convoy escort and dispatch transport, the M20 saw action in almost every combat theatre. After the war,
+its low cost, reliability, and ready availability of spare parts saw it continue in the military throughout the [[national service]] of the 1950s and in smaller numbers until the end of the 1960s.<ref name="Forces" />
+
+==Civilian versions==
+[[File:Aa.arp.750pix.jpg|thumb|right|A former AA BSA patrol bike from 1951]]
+The BSA M20 was a reliable and affordable form of post war transport, so BSA repainted the khaki WD models black and they became particularly popular as a sidecar motorcycle.  [[The Automobile Association]] placed a large order and their yellow and black M20 combinations became a familiar sight on British roads.  The 1945 wartime cast iron engine continued in production until 1951, when an alloy cylinder head was introduced but otherwise it remained largely unchanged.<ref name="Westworth">{{cite book|last=Westworth|first=Frank|title=The British Classic Bike Guide|date=1998 |publisher=Haynes Publishing|isbn=1-85960-426-9}}</ref> Spares began to become harder to find in the 1950s, however, and the simple design was overtaken by modern twin cylinder motorcycles, so it was discontinued in 1956, but the 600cc M21 went on until 1963, when it was also discontinued.<ref>{{cite web|url=http://home.quicknet.nl/qn/prive/ahum/civilian/recognition-points.htm|title=Model recognition points|accessdate=2009-01-10|archiveurl=https://web.archive.org/web/20081201173338/http://home.quicknet.nl/qn/prive/ahum/civilian/recognition-points.htm|archivedate=1 December 2008|url-status=dead}}</ref>
+
+==See also==
+*[[List of motorcycles of the 1930s]]
+*[[List of motorcycles of the 1940s]]
+*[[List of motorcycles of the 1950s]]
+
+==References==
+{{reflist|2}}
+
+==External links==
+* [http://www.wdbsa.nl BSA wartime gallery]
+* [https://www.youtube.com/watch?v=I2wVLVHTIT8 Video of BSA WD M20]
+
+{{BSA motorcycles|state=collapsed}}
+{{WWIIBritishSoftVeh}}
+
+[[Category:BSA motorcycles|M]]
+[[Category:Military motorcycles]]
+[[Category:Motorcycles introduced in the 1930s]]
+[[Category:Articles containing video clips]]
+[[Category:World War II vehicles of the United Kingdom]]
+[[Category:Single-cylinder motorcycles]]

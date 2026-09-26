@@ -993,7 +993,7 @@
     "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
     "primary_held": false,
     "sha256": "0e1b00a99353de2a637aa578074267bfddcdd959364d3ed55a5483f6fdcc78ac",
-    "note": "Tier-5 English Wikipedia compilation for the Ratel infantry fighting vehicle. primary_held false. Publishes identity, the 18.5 t weight for the Ratel-20 and Ratel-60, the hull length, the dimensions, the 0.34 m ground clearance, the B\u00fcssing D 3256 BTXF diesel, the 205 kW rating, the road speed and the range."
+    "note": "Tier-5 English Wikipedia compilation for the Ratel infantry fighting vehicle. primary_held false. Publishes identity, the 18.5 t weight for the Ratel-20 and Ratel-60, the hull length, the dimensions, the 0.34 m ground clearance, the Büssing D 3256 BTXF diesel, the 205 kW rating, the road speed and the range."
   },
   {
     "source_id": "wikipedia_olifant",
@@ -1538,5 +1538,70 @@
     "primary_held": true,
     "sha256": "9944b4cf2956b403f2a7c95b7c000f60bd3af9e245c81a9533d6dd9320acc209",
     "note": "Held tier-2 technical manual for the Willys M38, 1/4 ton 4x4 utility truck. It publishes identity, the overall length, width and height, the wheelbase, the ground clearance, the net urban weight and the gross highway weight, the payload, the tyre size code, the engine model, the transmission, the maximum allowable speed, the loaded cruising range and the approach and departure angles. The held copy is on disk under data/vehicle/sources/ and its digest matches the registry entry."
+  },
+  {
+    "source_id": "tm_9_2355_106_10",
+    "tier": 2,
+    "type": "manual",
+    "title": "Operator's Manual, Mine Resistant Ambush Protected (MRAP), M1224 and M1224A1",
+    "edition": "09 April 2012; supersedes TM 9-2355-106-10 dated 27 April 2009",
+    "identifier": "TM 9-2355-106-10 / Air Force TO 36A12-1C-2400-1",
+    "locator": "cover page, page 1; EQUIPMENT DATA Table 1 Vehicle Weight, Table 2 Dimensions, Table 3 Performance, Table 6 Engine Configuration, Table 10 Transmission, Table 11 Transmission Speeds, Table 13 Axles, Table 15 Wheels, Table 16 Tires, printed pages 0002-30 to 0002-33",
+    "published": "2012-04",
+    "retrieved": "2026-09-26",
+    "url": "https://dms-media.ccplatform.net/content/download/156704/file/TM%209-2355-106-10%20MaxxPro%20Base_Part1.pdf",
+    "archive_ref": "Florida Department of Management Services, MRAP information page, TM 9-2355 documentation, MaxxPro Base Part 1; 240-page PDF",
+    "licence": "US Army technical manual, Headquarters Departments of the Army and Air Force. The cover carries DISTRIBUTION STATEMENT C and an export-restricted technical-data warning. The held copy is the public Florida DMS mirror, not an issuing-authority release.",
+    "primary_held": true,
+    "sha256": "d43e34e34fa419a65637004ef116358f78dbdfa89defcb1e325d4c3ace4d2217",
+    "note": "Held tier-2 operator manual for the International MaxxPro M1224 and M1224A1. It publishes the curb weight and gross vehicle weight per model, the ground clearance by component, the angle of approach and departure, the ford depth, the turning radius, the top speed, the engine make, model, displacement, peak torque and maximum brake horsepower, the Allison transmission model and forward gear count, the wheel and axle quantity and the tyre size and pressure. It publishes no overall length, width or height and no net power rating. The held copy is on disk under data/vehicle/sources/ and its digest matches the registry entry."
+  },
+  {
+    "source_id": "gdls_rg31_mk5_datasheet",
+    "tier": 4,
+    "type": "manufacturer",
+    "title": "RG-31 Mk5 Features & Specifications",
+    "edition": "product datasheet",
+    "identifier": "General Dynamics Land Systems product datasheet, RG-31 Mk5",
+    "locator": "specification block, page 1 (Gross Vehicle Weight, Unburdened Mass, Payload, Length, Width, Height, Ground Clearance, Top Speed, Range, Turning radius, Fording depth, Engine, Transmission, Tires)",
+    "retrieved": "2026-09-26",
+    "url": "https://international.gdls.com/english/products/MRAP/RG-31_MK5.pdf",
+    "archive_ref": "General Dynamics Land Systems international product page, MRAP series, RG-31 Mk5",
+    "licence": "Manufacturer product datasheet published freely by General Dynamics Land Systems. The held copy is the GDLS PDF.",
+    "primary_held": true,
+    "sha256": "c621502f1a6a5d0f702e89b9ab12748088d7b1c2759fa32910717511bb749c00",
+    "note": "Held tier-4 maker datasheet for the RG-31 Mk5 MRAP. It publishes the gross vehicle weight, unburdened mass and payload, the overall length, width and height, the ground clearance, the top speed, the range, the turning radius, the fording depth, the Cummins QSB engine rating of 300 hp, the Allison 3000 SP transmission and the Michelin 395/85R20 tyre fitment. The datasheet prints a grade of 60 percent rather than degrees and classifies the mine-blast and ballistic figures. The held copy is on disk under data/vehicle/sources/ and its digest matches the registry entry."
+  },
+  {
+    "source_id": "bsa_m20",
+    "tier": 5,
+    "type": "compilation",
+    "title": "BSA M20",
+    "edition": "English Wikipedia, wikitext snapshot held, retrieved 2026-09-26",
+    "identifier": "English Wikipedia article 'BSA M20'",
+    "locator": "Infobox Motorcycle (engine, power, dry_weight, transmission)",
+    "retrieved": "2026-09-26",
+    "url": "https://en.wikipedia.org/wiki/BSA_M20",
+    "archive_ref": "English Wikipedia article held as wikitext at data/vehicle/sources/bsa_m20.wiki",
+    "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
+    "primary_held": false,
+    "sha256": "728495b9b862618902fa184d6d2c8eb8d8bb44b8157eac64c6ade22b5c6c1f52",
+    "note": "Held tier-5 English Wikipedia compilation for the BSA M20 British military motorcycle. The registry marks primary_held false because the article is a secondary compilation. It carries the engine displacement, the power rating, the dry weight and the transmission class. It states no length, width, height or road speed. Every value from this source is grade claimed."
+  },
+  {
+    "source_id": "peugeot_p4",
+    "tier": 5,
+    "type": "compilation",
+    "title": "Peugeot P4",
+    "edition": "English Wikipedia, wikitext snapshot held, retrieved 2026-09-26",
+    "identifier": "English Wikipedia article 'Peugeot P4'",
+    "locator": "Infobox automobile (length, width, weight, engine, engine_power, speed)",
+    "retrieved": "2026-09-26",
+    "url": "https://en.wikipedia.org/wiki/Peugeot_P4",
+    "archive_ref": "English Wikipedia article held as wikitext at data/vehicle/sources/peugeot_p4.wiki",
+    "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
+    "primary_held": false,
+    "sha256": "4cdaf05f7a620827f8359810d1eba0264f10698b6e5b02f5f4b2b6e7840d3854",
+    "note": "Held tier-5 English Wikipedia compilation for the Peugeot P4 French light utility vehicle. The registry marks primary_held false because the article is a secondary compilation. It carries the overall length, the width, the kerb weight, the engine family and displacement, the power rating and the road-speed range. It states no height and no ground clearance. Every value from this source is grade claimed."
   }
 ]

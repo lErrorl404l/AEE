@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-09-26",
-  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the RG-31 Nyala. Every value is grade claimed and the registry marks primary_held false. The article publishes the weight, the dimensions, the engine rating, the road speed and the range. It publishes no maker, no ground clearance and no transmission type.",
+  "note": "Catalogue capture for the RG-31 Mk5. Every value rests on the held tier-4 maker datasheet from General Dynamics Land Systems. The mass, dimensions, mobility, engine, transmission and tyre values are grade claimed because a maker datasheet is a tier-4 source.",
   "sources": [],
   "entries": [
     {
@@ -29,67 +29,123 @@
       "runtime_ready": false,
       "values": {
         "operating_weight_kg": {
-          "value": 7280,
+          "value": 14000,
           "unit": "kg",
-          "source": "wikipedia_rg_31",
-          "locator": "Infobox, weight row",
-          "state": "weight published as 7.28 t; the tonne taken as 1,000 kg",
+          "source": "gdls_rg31_mk5_datasheet",
+          "locator": "specification block, page 1, row Unburdened Mass - 14t",
+          "state": "unburdened mass published as 14 t; the tonne taken as 1,000 kg; no payload; the same block publishes a gross vehicle weight of up to 20 t",
+          "grade": "claimed"
+        },
+        "gross_weight_kg": {
+          "value": 20000,
+          "unit": "kg",
+          "source": "gdls_rg31_mk5_datasheet",
+          "locator": "specification block, page 1, row Gross Vehicle Weight - up to 20t",
+          "state": "gross vehicle weight published as up to 20 t; the tonne taken as 1,000 kg; maximum rated",
+          "grade": "claimed"
+        },
+        "payload_kg": {
+          "value": 6000,
+          "unit": "kg",
+          "source": "gdls_rg31_mk5_datasheet",
+          "locator": "specification block, page 1, row Payload - up to 6t",
+          "state": "payload published as up to 6 t; the tonne taken as 1,000 kg; maximum rated",
           "grade": "claimed"
         },
         "length_mm": {
-          "value": 6400,
+          "value": 7031,
           "unit": "mm",
-          "source": "wikipedia_rg_31",
-          "locator": "Infobox, length row",
-          "state": "length published as 6.40 m",
+          "source": "gdls_rg31_mk5_datasheet",
+          "locator": "specification block, page 1, row Length - 7031mm",
+          "state": "overall length published as 7,031 mm, as published",
           "grade": "claimed"
         },
         "width_mm": {
-          "value": 2470,
+          "value": 2720,
           "unit": "mm",
-          "source": "wikipedia_rg_31",
-          "locator": "Infobox, width row",
-          "state": "width published as 2.47 m",
+          "source": "gdls_rg31_mk5_datasheet",
+          "locator": "specification block, page 1, row Width - 2720mm",
+          "state": "overall width published as 2,720 mm, as published",
           "grade": "claimed"
         },
         "height_mm": {
-          "value": 2630,
+          "value": 3504,
           "unit": "mm",
-          "source": "wikipedia_rg_31",
-          "locator": "Infobox, height row",
-          "state": "height published as 2.63 m",
+          "source": "gdls_rg31_mk5_datasheet",
+          "locator": "specification block, page 1, row Height - 3504mm",
+          "state": "overall height published as 3,504 mm, as published",
           "grade": "claimed"
         },
-        "engine_model": {
-          "value": "Daimler-Benz OM 352A 6-cylinder diesel",
-          "unit": "text",
-          "source": "wikipedia_rg_31",
-          "locator": "Infobox, engine row, option 1 entry",
-          "state": "engine published as a Daimler-Benz OM 352A 6-cylinder diesel, as published",
-          "grade": "claimed"
-        },
-        "published_power_hp": {
-          "value": 123,
-          "unit": "hp",
-          "source": "wikipedia_rg_31",
-          "locator": "Infobox, engine row, option 1 entry",
-          "state": "engine power published as 123 hp, with no net basis",
+        "ground_clearance_mm": {
+          "value": 492,
+          "unit": "mm",
+          "source": "gdls_rg31_mk5_datasheet",
+          "locator": "specification block, page 1, row Ground Clearance - 492mm",
+          "state": "ground clearance published as 492 mm, as published",
           "grade": "claimed"
         },
         "max_speed_kmh": {
-          "value": 100,
+          "value": 115,
           "unit": "km/h",
-          "source": "wikipedia_rg_31",
-          "locator": "Infobox, speed row",
-          "state": "road speed published as 100 km/h",
+          "source": "gdls_rg31_mk5_datasheet",
+          "locator": "specification block, page 1, row Top Speed - 115 km/hr",
+          "state": "top speed published as 115 km/h, as published",
           "grade": "claimed"
         },
         "range_km": {
-          "value": 900,
+          "value": 532,
           "unit": "km",
-          "source": "wikipedia_rg_31",
-          "locator": "Infobox, vehicle range row",
-          "state": "range published as 900 km",
+          "source": "gdls_rg31_mk5_datasheet",
+          "locator": "specification block, page 1, row Range - 532 km",
+          "state": "range published as 532 km; the fuel load and road state are not stated",
+          "grade": "claimed"
+        },
+        "turning_radius_m": {
+          "value": 16.5,
+          "unit": "m",
+          "source": "gdls_rg31_mk5_datasheet",
+          "locator": "specification block, page 1, row Turning radius - 16.5 m",
+          "state": "turning radius published as 16.5 m, as published",
+          "grade": "claimed"
+        },
+        "fording_depth_mm": {
+          "value": 950,
+          "unit": "mm",
+          "source": "gdls_rg31_mk5_datasheet",
+          "locator": "specification block, page 1, row Fording depth - 950mm",
+          "state": "fording depth published as 950 mm, as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Cummins QSB",
+          "unit": "text",
+          "source": "gdls_rg31_mk5_datasheet",
+          "locator": "specification block, page 1, row Engine - Cummins QSB - 300 hp @ 2500 rpm",
+          "state": "engine published as a Cummins QSB, as published",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 300,
+          "unit": "hp",
+          "source": "gdls_rg31_mk5_datasheet",
+          "locator": "specification block, page 1, row Engine - Cummins QSB - 300 hp @ 2500 rpm",
+          "state": "engine rating published as 300 hp at 2,500 rpm, with no net basis",
+          "grade": "claimed"
+        },
+        "transmission_type": {
+          "value": "automatic",
+          "unit": "enum",
+          "source": "gdls_rg31_mk5_datasheet",
+          "locator": "specification block, page 1, row Transmission - Allison 3000 SP",
+          "state": "transmission published as an Allison 3000 SP, an automatic",
+          "grade": "claimed"
+        },
+        "tyre_size_text": {
+          "value": "395/85R20",
+          "unit": "text",
+          "source": "gdls_rg31_mk5_datasheet",
+          "locator": "specification block, page 1, row Tires - Michelin 395/85R20 XZL with RFIs",
+          "state": "tyre size code 395/85R20; the Michelin XZL fitment is published in the same row",
           "grade": "claimed"
         }
       }

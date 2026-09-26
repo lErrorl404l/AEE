@@ -1,0 +1,109 @@
+{{more citations needed|date=January 2013}}
+{{Infobox weapon
+|name=Peugeot P4
+| image= File:French Peugeot P4 dsc06852.jpg
+| image_size = 300
+|caption=French Army P4 in [[Paris]], 2005
+|origin=[[France]] <!-- Do not use flag icons here, per MOS:INFOBOXFLAG -->
+|type=Unarmored SUV, [[Military light utility vehicle]]
+|is_vehicle=yes
+|is_UK=yes
+|crew=
+|used_by= See ''[[#Users|Users]]''
+|length= {{convert|4200|mm|in|1|abbr=on}}<br />{{convert|4650|mm|in|1|abbr=on}} (long version)
+|width= {{convert|1700|mm|in|1|abbr=on}}
+|height=
+|weight= {{convert|1750|kg|lb|0|abbr=on}}
+|armour= None
+|primary_armament=
+* Browning M2 HMG (For VPS version)<ref name="ARVPS">{{Cite web|url=https://www.armyrecognition.com/french_army_france_wheeled_armoured_vehicle_uk/vps_light_4x4_special_forces_patrol_vehicle_data_sheet_specifications_description_pictures_video.html|title=VPS 1 Light 4x4 Special Forces patrol vehicle data pictures video &#124; French army france wheeled armoured vehicle UK &#124; French army military equipment vehicle UK}}</ref>
+* Gatling Gun<ref name="ARVPS"/>
+* [[MILAN]]<ref name="ARVPS"/>
+|secondary_armament= 
+* 7.62mm machine gun<ref name="ARVPS"/>
+|variants= See ''[[#Variants|Variants]]''
+|engine=2.0&nbsp;L [[List of PSA engines#XN|''XN8'']] [[Inline-four engine|I4]]<br />2.5&nbsp;L [[List of PSA engines#XD|''XD3'']] [[Diesel engine|diesel]] I4
+|engine_power= {{convert|79|PS|kW hp|1|abbr=on}}<ref name="gmlpassion.com">{{Cite web|url=http://www.gmlpassion.com/technique/P4/carac_mil/CARACTERISTIQUES_P4.htm|title=Caracteristiques VLTT Peugeot P4|access-date=2007-07-03|work=gmlpassion.com}}</ref><br />{{convert|70.5|PS|kW hp|1|abbr=on}}
+|suspension= 4x4
+|speed= {{convert|108|km/h|mi/h|abbr=on}}–{{convert|118|km/h|mi/h|abbr=on}}
+|pw_ratio=
+|vehicle_range= with 75 litres (+ 20 litres en jerrican) of petrol a road range of 800 km
+}}
+
+The '''P4''' is an unarmoured [[off-road vehicle]] used by the [[military of France]]. It was manufactured by [[Peugeot]] but is now manufactured by [[Panhard]]. It is to be replaced with the [[Petit Véhicule Protégé|PVP]] by Panhard. The P4 is a derivative of the [[Mercedes-Benz G-Class|Mercedes Geländewagen]] military version built under license by Peugeot for the [[Military of France|French military]]. Peugeot did not have a licence to export the vehicle anywhere else than to the countries bound to France by defence agreements.
+
+== History ==
+In the late 1960s, the French army decided that its 10,001 [[Hotchkiss M201|Jeeps]] needed to be replaced. The replacement vehicle would carry four men with radio equipment and would be small enough to be parachuted and transported by plane.
+
+After many technical issues, the new vehicle was designed in the 1970s. Agreement was reached between Peugeot and Mercedes to co-produce the vehicle on a 50:50 basis. Peugeot installed the engine of the [[Peugeot 504]] and the [[Transmission (mechanics)|transmission]] of the [[Peugeot 604]] on the [[Mercedes-Benz G-Class]]; it also installed the electrical systems, welded the exterior and painted the car. The rest was done by Mercedes.  The plant in [[Sochaux]] did the final assembly. The first prototype was tested in 1978, beginning a long series of tests and trials, notably a rally in south [[Algeria]] with a petrol and a diesel P4.
+
+The [[French Army]] ordered 15,000 P4s, both petrol and diesel versions; in 1981, the order was reduced to 13,500 units with the downsizing of the Army. From 1985, production was transferred to [[Panhard]] in [[Marolles-en-Hurepoix]], where 6,000 vehicles were produced. In 2016, P4s were donated to the Cameroonian military for its special forces units.<ref name="CAM">{{Cite web|url=http://www.defenceweb.co.za/index.php?option=com_content&view=article&id=46244:france-donates-military-equipment-to-cameroon&catid=50:Land&Itemid=105|title = France donates military equipment to Cameroon|date = 12 December 2016}}</ref>
+
+A civilian version was made, but encountered little success because of the high price and a poor [[power-to-weight ratio]].
+
+In 2016, the French military ordered 500 Technamm Masstech T4 VLTP VP vehicles as an interim replacement to the P4.<ref>{{Cite web|url=https://www.joint-forces.com/features/16460-french-technamm-masstech-t4-vltp-vp|title = French Technamm Masstech T4 VLTP VP|date = 3 August 2018}}</ref>
+
+==Variants==
+[[File:54RA-IMG 9121.jpg|thumb|P4 of the 54th Artillery regiment, 2011 military parade.]]
+[[File:Mistral Aspic p1040740.jpg|thumb|P4 with [[Mistral missile]]s in Aspic mount. 2006 military parade, Paris.]]
+
+===P4D===
+In 1992, the Army converted around 1,300 petrol P4s into diesel P4D (''P4 Diesel'') models.<ref name="MT">{{Cite web |url=http://www.military-today.com/trucks/peugeot_p4.htm |title=Peugeot P4 Light utility vehicle |access-date=2021-10-03 |archive-date=2021-12-23 |archive-url=https://web.archive.org/web/20211223210343/http://www.military-today.com/trucks/peugeot_p4.htm |url-status=dead }}</ref> The conversion was executed by Panhard (1300 VLTT) and the ''Établissements régionaux du matériel''. The engine, a 2.5-liter Peugeot four-cylinder, is the same as used in the original diesel P4.
+
+===P4P===
+The P4 P (''P4 Protégé'', "protected P4") is an armoured version,<ref name="MT"/> with 80 units built in the 1990s. An armored version was made at the request of Peugeot by CBH Institutions (Constructions Blindées of Hardricourt).
+
+This version has been evaluated by the French Army and commissioned by the Navy for the Protection of sensitive sites. Five different versions were produced.
+
+* P4 CBH AKIS 2400
+* P4 CBH SUPER AKIS 2850
+* P4 CBH 3120
+
+The four digits at the end of the name signify the three wheelbases of {{convert|2400|,|2850|, or|3120|mm|in|1|abbr=on}} that were available. Some P4 armored CBH have been manufactured for use in [[Lebanon]].
+
+An operation Manufacturer and the [[GIGN]] was conducted in November 1988 for testing rolling over 24 hours. The P4 Shielded CBH AKIS blue police carried out the range of 1000&nbsp;km to the average of 134.5&nbsp;km per hour and the total distance of 3180&nbsp;km in 24 hours is an average of 132.5&nbsp;km / hour with 4 men on board. The engine was a 2.5-litre turbo exchanger amended by CBH, which had an output of 150&nbsp;hp.
+
+===P4 VPS===
+[[File:French SF1 Domenjod 120618.jpg|thumb|A Panhard VPS in service with French special forces.]]
+
+Version of the P4 for French special forces. Contract was awarded to Panhard by the DGA in 2005.<ref name="ARVPS">{{Cite web|url=https://www.armyrecognition.com/french_army_france_wheeled_armoured_vehicle_uk/vps_light_4x4_special_forces_patrol_vehicle_data_sheet_specifications_description_pictures_video.html|title=VPS 1 Light 4x4 Special Forces patrol vehicle data pictures video &#124; French army france wheeled armoured vehicle UK &#124; French army military equipment vehicle UK}}</ref> 51 VPSes were brought to service.<ref name="ARVPS"/>
+
+They're equipped with armored floors to provide landmine protection.<ref name="ARVPS"/>
+
+The VPS can be transported by either a C-160 Transall or C-130 Hercules.<ref name="ARVPS"/>
+
+===P4 VIPAIR===
+The P4 VIPAIR (Véhicule d'Intervention et de Projection Air – Air Intervention and Projection Vehicle) was created by Arquus in 2016,<ref name="ARQ">{{Cite web|url=https://www.arquus-defense.com/newsroom/news/arquus-delivers-last-vipair-p4-vehicle-french-air-and-space-force|title = Arquus delivers the last VIPAIR P4 vehicle to the French Air and Space Force &#124; Arquus}}</ref> which converted 19 P4 ASPICs.<ref>{{cite web |url=https://www.edrmagazine.eu/delivery-of-the-last-vipair-p4-to-the-french-air-force |title = Arquus: the last VIPAIR P4 delivered to the French Air Force - EDR Magazine|date = 15 October 2020}}</ref>
+
+The programme was completed on October 15, 2020.<ref>{{cite web |url=https://www.shephardmedia.com/news/landwarfareintl/arquus-completes-p4-vipair-deliveries/ |title = Arquus completes P4 VIPAIR deliveries - Shephard Media}}</ref>
+
+==Users==
+<!--READ FIRST: This section is for cited entries only. Please do not add entries into this list without a citation from a reliable source. All entries without a citation will be removed. Thank you.-->
+
+* {{flag|Cameroon}}<ref name="CAM"/>
+* {{flag|Chile}}<ref name="MT"/>
+* {{flag|Ukraine}}:<ref name=":33">{{Cite web |last=Oryx |title=Arms For Ukraine: French Weapons Deliveries To Kyiv |url=https://www.oryxspioenkop.com/2022/07/arms-for-ukraine-french-weapon.html |access-date=2022-09-02 |website=Oryx}}</ref><ref>{{cite web | url=https://mil.in.ua/en/news/dnipro-defense-headquarters-purchased-trm2000-trucks-and-peugeot-p4-suvs/ | title=Dnipro Defense Headquarters purchased TRM2000 trucks and Peugeot P4 SUVs }}</ref> 120<ref>{{Cite web | title=Ukraine : la France dresse le bilan des équipements militaires livrés {{!}} Ministère des Armées | url=https://www.defense.gouv.fr/actualites/ukraine-france-dresse-bilan-equipements-militaires-livres | archive-url=https://web.archive.org/web/20240303213907/https://www.defense.gouv.fr/actualites/ukraine-france-dresse-bilan-equipements-militaires-livres | access-date=2025-03-25 | archive-date=2024-03-03}}</ref>
+
+===Former Users===
+
+* {{flag|France}}: Used by the French military.<ref>{{Cite web | title=P4 | url=https://www.defense.gouv.fr/terre/equipements/vehicules/p4 | archive-url=https://web.archive.org/web/20150306221820/https://www.defense.gouv.fr/terre/equipements/vehicules/p4 | archive-date=2015-03-06 | access-date=2025-03-25}}</ref> Replaced by the [[Technamm Masstech T4]] VLTP NP after 2016.<ref>{{cite web | url=https://www.joint-forces.com/features/16460-french-technamm-masstech-t4-vltp-vp | title=French Technamm Masstech T4 VLTP NP | date=3 August 2018 }}</ref>
+
+== See also ==
+* [[Mercedes-Benz G-Class]]
+
+==Notes==
+{{reflist}}
+
+== External links ==
+{{Commons}}
+* [https://web.archive.org/web/20070108123423/http://perso.m201.mageos.com/Peugeot%20P4.htm Historique du Peugeot P4.] {{in lang|fr}}
+
+{{Peugeot early timeline}}
+{{French Army Vehicle}}
+
+[[Category:Military vehicles of France]]
+[[Category:Military light utility vehicles]]
+[[Category:Peugeot vehicles|P4]]
+[[Category:Off-road vehicles]]
+[[Category:Mercedes-Benz G-Class]]
+[[Category:Military vehicles introduced in the 1980s]]

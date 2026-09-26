@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-09-26",
-  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the International MaxxPro. Every value is grade claimed and the registry marks primary_held false. The article publishes the weight, the dimensions, the ground clearance, the engine rating and the transmission. It publishes no speed and no range.",
+  "note": "Catalogue capture for the International MaxxPro. The identity and the overall length, width and height rest on the held tier-5 English Wikipedia article. The weights, ground clearance, angles, ford depth, turning radius, top speed, engine, transmission, wheels and tyres rest on the held tier-2 US Army operator manual TM 9-2355-106-10 for the M1224 and M1224A1.",
   "sources": [],
   "entries": [
     {
@@ -26,14 +26,6 @@
       ],
       "runtime_ready": false,
       "values": {
-        "operating_weight_kg": {
-          "value": 21000,
-          "unit": "kg",
-          "source": "wikipedia_maxxpro",
-          "locator": "Infobox, weight row, MaxxPro entry",
-          "state": "weight published as 21 t, and the tonne taken as 1,000 kg",
-          "grade": "claimed"
-        },
         "length_mm": {
           "value": 6500,
           "unit": "mm",
@@ -58,45 +50,149 @@
           "state": "height published as 10 ft (3 m)",
           "grade": "claimed"
         },
-        "ground_clearance_mm": {
-          "value": 350,
-          "unit": "mm",
-          "source": "wikipedia_maxxpro",
-          "locator": "Infobox, clearance row",
-          "state": "ground clearance published as 14 in (0.35 m)",
-          "grade": "claimed"
-        },
         "engine_model": {
-          "value": "Navistar MaxxForce D9.3I6 I6",
+          "value": "International DT 530 ST",
           "unit": "text",
-          "source": "wikipedia_maxxpro",
-          "locator": "Infobox, engine row",
-          "state": "engine published as a 9.3 L Navistar MaxxForce D9.3I6 I6, as published",
-          "grade": "claimed"
+          "source": "tm_9_2355_106_10",
+          "locator": "Table 6, Engine Configuration, page 0002-32, rows Make International, Model DT 530 ST",
+          "state": "engine published as an International DT 530 ST four-stroke in-line six; the article engine family is named as published",
+          "grade": "documented"
         },
         "published_power_hp": {
           "value": 330,
           "unit": "hp",
-          "source": "wikipedia_maxxpro",
-          "locator": "Infobox, engine power row",
-          "state": "engine power published as 330 hp at 2,100 rpm, and 375 hp in the Plus and Dash variants, with no net basis",
-          "grade": "claimed"
+          "source": "tm_9_2355_106_10",
+          "locator": "Table 6, Engine Configuration, page 0002-32, row Maximum Brake Horsepower (at 2,000 rpm) 330 hp",
+          "state": "maximum brake horsepower at 2,000 rpm; maximum rating, no net basis",
+          "grade": "documented"
         },
         "transmission_type": {
           "value": "automatic",
           "unit": "enum",
-          "source": "wikipedia_maxxpro",
-          "locator": "Infobox, transmission row",
-          "state": "transmission published as an Allison 3000 5-speed automatic",
-          "grade": "claimed"
+          "source": "tm_9_2355_106_10",
+          "locator": "Table 10, Transmission, page 0002-32, Make Allison, Model 3000SP five-speed, Type Electronic Control System",
+          "state": "transmission published as an Allison 3000SP five-speed with an electronic control system, an automatic",
+          "grade": "documented"
         },
         "gears": {
           "value": 5,
           "unit": "count",
-          "source": "wikipedia_maxxpro",
-          "locator": "Infobox, transmission row",
-          "state": "Allison 3000 published as a 5-speed automatic",
-          "grade": "claimed"
+          "source": "tm_9_2355_106_10",
+          "locator": "Table 11, Transmission Speeds, page 0002-32, row Forward Five",
+          "state": "five forward speeds published for the Allison 3000SP; one reverse speed is published in the same table",
+          "grade": "documented"
+        },
+        "curb_weight_kg": {
+          "value": 17168,
+          "unit": "kg",
+          "source": "tm_9_2355_106_10",
+          "locator": "Table 1, Vehicle Weight, page 0002-30, row M1224 (without MEAP kit), Curb Weight 37,850 lbs",
+          "state": "M1224 without the MEAP kit, curb weight published as 37,850 lb; converted with 1 lb = 0.45359237 kg and rounded to the nearest kilogram; no crew and no payload",
+          "grade": "documented"
+        },
+        "gross_weight_kg": {
+          "value": 19731,
+          "unit": "kg",
+          "source": "tm_9_2355_106_10",
+          "locator": "Table 1, Vehicle Weight, page 0002-30, row M1224 (without MEAP kit), Gross Vehicle Weight (GVW) 43,500 lbs",
+          "state": "M1224 gross vehicle weight, published as 43,500 lb; converted with 1 lb = 0.45359237 kg and rounded to the nearest kilogram; maximum rated; the M1224A1 with the MEAP kit is published separately at 46,500 lb",
+          "grade": "documented"
+        },
+        "ground_clearance_mm": {
+          "value": 260,
+          "unit": "mm",
+          "source": "tm_9_2355_106_10",
+          "locator": "Table 2, Dimensions, page 0002-30, rows Front Axle Housing 13.0 in, Belly Pan Armor 15.0 in, Rear Axle Housing 10.25 in",
+          "state": "the lowest point, the rear axle housing, published as 10.25 in and converted with 1 in = 25.4 mm; the same table publishes 13.0 in (330 mm) at the front axle housing and 15.0 in (381 mm) at the belly pan armour",
+          "grade": "documented"
+        },
+        "approach_angle_deg": {
+          "value": 58,
+          "unit": "deg",
+          "source": "tm_9_2355_106_10",
+          "locator": "Table 3, Performance, page 0002-31, row Angle of Approach",
+          "state": "angle of approach published as 58 degrees, as published",
+          "grade": "documented"
+        },
+        "departure_angle_deg": {
+          "value": 46,
+          "unit": "deg",
+          "source": "tm_9_2355_106_10",
+          "locator": "Table 3, Performance, page 0002-31, row Angle of Departure",
+          "state": "angle of departure published as 46 to 48 degrees; the lower bound taken",
+          "grade": "documented"
+        },
+        "fording_depth_mm": {
+          "value": 910,
+          "unit": "mm",
+          "source": "tm_9_2355_106_10",
+          "locator": "Table 3, Performance, page 0002-31, row Ford Depth 36 in. (0.91 m)",
+          "state": "ford depth published as 36 in (0.91 m); the published metre figure used",
+          "grade": "documented"
+        },
+        "turning_radius_m": {
+          "value": 18.9,
+          "unit": "m",
+          "source": "tm_9_2355_106_10",
+          "locator": "Table 3, Performance, page 0002-31, row Turning Radius, Curb to Curb 62 feet (18.9 m)",
+          "state": "turning radius, curb to curb, published as 62 ft (18.9 m); the published metre figure used",
+          "grade": "documented"
+        },
+        "max_speed_kmh": {
+          "value": 105,
+          "unit": "km/h",
+          "source": "tm_9_2355_106_10",
+          "locator": "Table 3, Performance, page 0002-31, row Top Speed 65 mph (105 km/h)",
+          "state": "top speed published as 65 mph (105 km/h); the published metric figure used",
+          "grade": "documented"
+        },
+        "engine_displacement_l": {
+          "value": 8.7,
+          "unit": "L",
+          "source": "tm_9_2355_106_10",
+          "locator": "Table 6, Engine Configuration, page 0002-32, row Displacement 530 cu-in. (8.7 L)",
+          "state": "displacement published as 530 cu-in (8.7 L); the published litre figure used",
+          "grade": "documented"
+        },
+        "torque_nm": {
+          "value": 1288,
+          "unit": "N m",
+          "source": "tm_9_2355_106_10",
+          "locator": "Table 6, Engine Configuration, page 0002-32, row Peak Torque 950 lb-ft @ 1200 rpm",
+          "state": "peak torque published as 950 lb-ft at 1,200 rpm; converted with 1 lb-ft = 1.35581795 N m and rounded to the nearest newton metre",
+          "grade": "documented"
+        },
+        "tyre_size_text": {
+          "value": "395/85R20",
+          "unit": "text",
+          "source": "tm_9_2355_106_10",
+          "locator": "Table 16, Tires, page 0002-33, row Size 395/85R20",
+          "state": "tyre size code 395/85R20; the Michelin XZL and Goodyear MV/T fitments are published in the same table",
+          "grade": "documented"
+        },
+        "tyre_pressure_kpa": {
+          "value": 793,
+          "unit": "kPa",
+          "source": "tm_9_2355_106_10",
+          "locator": "Table 16, Tires, page 0002-33, row Tire Pressure Highway (Front and Rear with 23k Rear Axle) (M1224) 115 psi (793 kPa)",
+          "state": "M1224 highway tyre pressure published as 115 psi (793 kPa) at 60 mph; the published kilopascal figure used; the cross-country, mud/sand/snow and emergency pressures are published separately",
+          "grade": "documented"
+        },
+        "wheel_count": {
+          "value": 4,
+          "unit": "count",
+          "source": "tm_9_2355_106_10",
+          "locator": "Table 15, Wheels, page 0002-33, row Quantity 4",
+          "state": "wheel quantity published as four, a 4x4 arrangement",
+          "grade": "documented"
+        },
+        "axle_count": {
+          "value": 2,
+          "unit": "count",
+          "source": "tm_9_2355_106_10",
+          "locator": "Table 13, Axles, page 0002-32, rows Front and Rear",
+          "state": "front and rear axle published, two axles",
+          "grade": "documented"
         }
       }
     }
