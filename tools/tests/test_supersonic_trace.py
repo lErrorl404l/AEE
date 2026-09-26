@@ -189,5 +189,59 @@ class SupersonicTraceKernel(unittest.TestCase):
         self.assertIn("Returns the refractive index contrast", SOURCE)
 
 
+class SupersonicTraceWiring(unittest.TestCase):
+    """The kernel must be reached from the Fired handler.
+
+    A registered function that nothing calls is dead code, not a feature.
+    The kernel was first committed with no caller, so this guards that.
+    """
+
+    def setUp(self) -> None:
+        self.post_init = (REPO / "addons/ballistics/XEH_postInit.sqf").read_text(
+            encoding="utf-8"
+        )
+        self.annex = (
+            REPO / "docs/wiki/annexes/annex-c-variable-reference.qmd"
+        ).read_text(encoding="utf-8")
+
+    def test_kernel_is_called_not_only_registered(self) -> None:
+        self.assertRegex(self.post_init, r"call FUNC\(calculateSupersonicTrace\)")
+        # A PREP registration alone must never satisfy this gate.
+        prep = (REPO / "addons/ballistics/XEH_PREP.hpp").read_text(encoding="utf-8")
+        self.assertIn("PREP(calculateSupersonicTrace);", prep)
+
+    def test_wired_from_the_fired_handler_not_a_test(self) -> None:
+        # The only production shot path is the "fired" event handler.
+        self.assertIn('"fired"', self.post_init)
+        self.assertIn("call FUNC(resolveShot)", self.post_init)
+
+    def test_published_value_is_not_scaled_at_the_call_site(self) -> None:
+        # A scale factor here would force a trace the air does not support.
+        call = re.search(r"call FUNC\(calculateSupersonicTrace\);", self.post_init)
+        self.assertIsNotNone(call)
+        tail = self.post_init[call.end() : call.end() + 120]
+        self.assertIn("setVariable", tail)
+        self.assertNotRegex(tail, r"\*\s*[0-9]")
+
+    def test_published_variable_is_documented_in_annex_c(self) -> None:
+        # validate_cba_settings.py fails on an undocumented orphan write, so
+        # the published name must carry an Annex C row.
+        self.assertIn("aee_ballistics_supersonicTrace", self.annex)
+
+    def test_wiring_uses_resolved_inputs_not_constants(self) -> None:
+        # The call must use the resolved muzzle velocity and live
+        # environment, not a hard-coded velocity that cannot decay.
+        call = re.search(
+            r"\[([^\]]*)\]\s*call FUNC\(calculateSupersonicTrace\);", self.post_init
+        )
+        self.assertIsNotNone(call)
+        args = call.group(1)
+        self.assertIn("_initSpeed", args)
+        self.assertIn("_rhoRel", args)
+        self.assertIn("_tempC", args)
+        for bad in ("905", "343", "1.0,"):
+            self.assertNotIn(bad, args)
+
+
 if __name__ == "__main__":
     unittest.main()
