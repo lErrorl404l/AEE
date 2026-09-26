@@ -121,3 +121,44 @@ when the row emits and the binding exists.
 JSP 945 for configuration management. Def Stan 05-138 for cyber security.
 `data/vehicle/SCHEMA.md` holds the record contract and the fail-closed
 rules.
+
+## 7. National-manual route (task 19)
+
+The maker-page route is exhausted for the remaining tanks and wheeled
+armoured personnel carriers. Task 19 took the national-manual route that
+worked for the UAZ-469 and the Ural-4320.
+
+### 7.1 Uplifted to a held tier-2 national technical manual
+
+| Catalogue entry | Held tier-2 source | Fields moved to documented |
+|---|---|---|
+| `btr_4` | `btr4_manual_2010`, BTR-4 operation manual В1318Е РЭ, 2010 | weight, length, width, height, wheelbase, track, ground clearance, road speed, range, climb and side-slope limits, engine model, published power, torque, transmission, gears, tyre size, tyre pressure, drivetrain |
+| `t_64` | `t64a_technical_manual_1984`, T-64A technical description and operation manual, Book 1, 1984 | combat weight, length, width, height, ground clearance, road speed, range, climb gradient, fording depth, underwater-driving depth |
+| `guarani` | `guarani_eb70_ci_11412`, EB70-CI-11.412, 2017 and `guarani_eb70_mt_11406`, EB70-MT-11.406, 2020 | weight, maximum road speed, range |
+
+Every other field in these three entries keeps its tier-5 grade and is
+named in the capture note.
+
+### 7.2 No reachable tier-1 to tier-4 source (recorded gaps)
+
+A real attempt was made for each target below. The next source class is
+named. A maker page that already returned 403 or 404 is not retried.
+
+| Target | Attempted | Next source class |
+|---|---|---|
+| `challenger_2` | The military-references.com tank library holds Challenger 1 AESPs (already held as `challenger_1_aesp_230_p_100_201`) but no Challenger 2 document. army.mod.uk and BAE Systems return 403. | A UK MOD AESP for the Challenger 2, or a tier-3 reference work |
+| `leclerc` | No Leclerc technical manual in the military-references.com tank library, which holds no French national manuals. KNDS serves only a marketing flyer. | A French army TTA or Nexter technical manual, or a tier-3 reference work |
+| `c1_ariete` | No Ariete document in the military-references.com library. Leonardo returns 404. | An Italian army technical manual, or a tier-3 reference work |
+| `pt91_twardy` | No PT-91 document on archive.org or in the military-references.com library, which holds Soviet T-72 manuals only. The PT-91 is a Polish rebuild, so a T-72 manual is the wrong vehicle. | A Polish army technical manual, or a tier-3 reference work |
+| `merkava_mk4` | No Merkava document on archive.org. Elbit and the Israeli MoD serve no reachable manual. | An Israeli defence technical manual or a tier-3 reference work |
+| `arjun` | The Indian parliamentary record carries debate records, not a technical manual. DRDO returns 404. | A DRDO or Indian Army technical manual, or a tier-3 reference work |
+| `rosomak` | The Polish MoND `Instrukcja Eksploatacji Pojazdu ROSOMAK` exists on Scribd, pdfcoffee and chomikuj but every copy is login-walled or 403. The archive.org collection holds no Polish armour. `rosomak.pl` and `rosomaksa.pl` serve no reachable specification. | A Polish army IPE/KTO technical manual (the `IPE-001.KTO/2006` catalogue entry names one), or a tier-3 reference work |
+| `piranha_v` | `gdls.com` and `gdels.com` return 403. The held Piranha III brochure is the wrong mark, so it cannot uplift the Piranha V. | A GDELS Piranha V datasheet or a Swiss/Romanian army technical manual |
+| `fahd` | No Fahd document on archive.org or in the military-references.com library. The Egyptian maker serves no reachable manual. | An Egyptian army technical manual, or a tier-3 reference work |
+
+### 7.3 Held but not yet a full record
+
+- `t_64`: the T-64A manual publishes no track shoe width and no track
+  pitch in the held pages, so the two track fields stay absent.
+- `guarani`: the held manuals publish no overall dimensions, no engine
+  and no ground clearance, so those four fields stay at grade claimed.

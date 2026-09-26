@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-09-26",
-  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the BTR-4. Every value is grade claimed and the registry marks primary_held false. The article publishes the weight, the dimensions, the engine ratings, the road speed and the range. It publishes no ground clearance and no transmission type.",
+  "note": "Catalogue capture uplifted to the held tier-2 BTR-4 operation manual (\u04121318\u0415 \u0420\u042d, 2010). Section 3 publishes the full mass, the overall length, the hull width, the height, the wheelbase, the track, the road clearance, the road speed, the range, the climb and side-slope limits, the 3TD-3A engine with its bench-test power and torque, the hydromechanical automatic gearbox with five forward ratios and the 12.00R20 or 365/80R20 tyres. Every value moves to grade documented. The manual publishes no net power with a stated basis, so net_power_kw stays a derived figure. The manual covers the BTR-4E export configuration; the figures recorded name that variant.",
   "sources": [],
   "entries": [
     {
@@ -27,68 +27,156 @@
       "runtime_ready": false,
       "values": {
         "operating_weight_kg": {
-          "value": 20500,
+          "value": 21900,
           "unit": "kg",
-          "source": "wikipedia_btr_4",
-          "locator": "Infobox, weight row, anti-bullet protection entry",
-          "state": "weight published as 17.5+3 t with anti-bullet protection, taken as 20.5 t; the same row publishes 25+3 t with additional protection, and the tonne is taken as 1,000 kg",
-          "grade": "claimed"
+          "source": "btr4_manual_2010",
+          "locator": "3.1 \u041e\u0431\u0449\u0438\u0435 \u0434\u0430\u043d\u043d\u044b\u0435, \u041f\u043e\u043b\u043d\u0430\u044f \u043c\u0430\u0441\u0441\u0430 \u043c\u0430\u0448\u0438\u043d\u044b \u0441 \u043f\u0440\u043e\u0442\u0438\u0432\u043e\u043f\u0443\u043b\u044c\u043d\u043e\u0439 \u0437\u0430\u0449\u0438\u0442\u043e\u0439 row, printed page 3-1",
+          "state": "full mass with anti-bullet protection published as not more than 21.9 t (21.9+0.66); the same table publishes 23.5 t (23.5+0.7) with the additional protection, and the tonne is taken as 1,000 kg",
+          "grade": "documented"
         },
         "length_mm": {
-          "value": 7760,
+          "value": 7878,
           "unit": "mm",
-          "source": "wikipedia_btr_4",
-          "locator": "Infobox, length row",
-          "state": "length published as 7.76 m",
-          "grade": "claimed"
+          "source": "btr4_manual_2010",
+          "locator": "3.1.1 \u041e\u0441\u043d\u043e\u0432\u043d\u044b\u0435 \u0440\u0430\u0437\u043c\u0435\u0440\u044b, \u0414\u043b\u0438\u043d\u0430 row, printed page 3-1",
+          "state": "overall length published as 7,878 mm",
+          "grade": "documented"
         },
         "width_mm": {
-          "value": 2930,
+          "value": 2936,
           "unit": "mm",
-          "source": "wikipedia_btr_4",
-          "locator": "Infobox, width row",
-          "state": "width published as 2.93 m",
-          "grade": "claimed"
+          "source": "btr4_manual_2010",
+          "locator": "3.1.1 \u041e\u0441\u043d\u043e\u0432\u043d\u044b\u0435 \u0440\u0430\u0437\u043c\u0435\u0440\u044b, \u0428\u0438\u0440\u0438\u043d\u0430 \u043f\u043e \u043a\u043e\u0440\u043f\u0443\u0441\u0443 row, printed page 3-1",
+          "state": "hull width published as 2,936 mm; the same table publishes 3,600 mm over the additional protection",
+          "grade": "documented"
         },
         "height_mm": {
-          "value": 3020,
+          "value": 3050,
           "unit": "mm",
-          "source": "wikipedia_btr_4",
-          "locator": "Infobox, height row",
-          "state": "height published as 3.02 m",
-          "grade": "claimed"
+          "source": "btr4_manual_2010",
+          "locator": "3.1.1 \u041e\u0441\u043d\u043e\u0432\u043d\u044b\u0435 \u0440\u0430\u0437\u043c\u0435\u0440\u044b, \u0412\u044b\u0441\u043e\u0442\u0430 row, printed page 3-1",
+          "state": "height published as 3,050 mm",
+          "grade": "documented"
         },
-        "engine_model": {
-          "value": "3TD diesel or DEUTZ EURO III",
-          "unit": "text",
-          "source": "wikipedia_btr_4",
-          "locator": "Infobox, engine row",
-          "state": "engine published as a 3TD diesel or a DEUTZ EURO III, as published",
-          "grade": "claimed"
+        "wheelbase_mm": {
+          "value": 4400,
+          "unit": "mm",
+          "source": "btr4_manual_2010",
+          "locator": "3.1.1 \u041e\u0441\u043d\u043e\u0432\u043d\u044b\u0435 \u0440\u0430\u0437\u043c\u0435\u0440\u044b, \u0411\u0430\u0437\u0430 row, printed page 3-1",
+          "state": "wheelbase published as 4,400 mm",
+          "grade": "documented"
         },
-        "published_power_hp": {
-          "value": 489,
-          "unit": "hp",
-          "source": "wikipedia_btr_4",
-          "locator": "Infobox, engine power row",
-          "state": "engine power published as 489 hp or 598 hp, with no net basis",
-          "grade": "claimed"
+        "track_mm": {
+          "value": 2410,
+          "unit": "mm",
+          "source": "btr4_manual_2010",
+          "locator": "3.1.1 \u041e\u0441\u043d\u043e\u0432\u043d\u044b\u0435 \u0440\u0430\u0437\u043c\u0435\u0440\u044b, \u0428\u0438\u0440\u0438\u043d\u0430 \u043a\u043e\u043b\u0435\u0438 row, printed page 3-1",
+          "state": "track, the wheel centre to centre distance, published as 2,410 mm",
+          "grade": "documented"
+        },
+        "ground_clearance_mm": {
+          "value": 475,
+          "unit": "mm",
+          "source": "btr4_manual_2010",
+          "locator": "3.1.1 \u041e\u0441\u043d\u043e\u0432\u043d\u044b\u0435 \u0440\u0430\u0437\u043c\u0435\u0440\u044b, \u0414\u043e\u0440\u043e\u0436\u043d\u044b\u0439 \u043f\u0440\u043e\u0441\u0432\u0435\u0442 row, printed page 3-1",
+          "state": "road clearance published as 475 mm, without the floor depressions",
+          "grade": "documented"
         },
         "max_speed_kmh": {
           "value": 110,
           "unit": "km/h",
-          "source": "wikipedia_btr_4",
-          "locator": "Infobox, speed row, road entry",
-          "state": "road speed published as 110 km/h; the water speed is published as 10 km/h",
-          "grade": "claimed"
+          "source": "btr4_manual_2010",
+          "locator": "3.1.2 \u042d\u043a\u0441\u043f\u043b\u0443\u0430\u0442\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u0435 \u0434\u0430\u043d\u043d\u044b\u0435, \u041c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u0430\u044f \u0441\u043a\u043e\u0440\u043e\u0441\u0442\u044c \u0434\u0432\u0438\u0436\u0435\u043d\u0438\u044f, \u043f\u043e \u0448\u043e\u0441\u0441\u0435 row, printed page 3-1",
+          "state": "maximum road speed published as 110 km/h; the water speed is published as 8 to 10 km/h",
+          "grade": "documented"
         },
         "range_km": {
           "value": 690,
           "unit": "km",
-          "source": "wikipedia_btr_4",
-          "locator": "Infobox, vehicle range row",
-          "state": "range published as at least 690 km",
-          "grade": "claimed"
+          "source": "btr4_manual_2010",
+          "locator": "3.1.2 \u042d\u043a\u0441\u043f\u043b\u0443\u0430\u0442\u0430\u0446\u0438\u043e\u043d\u043d\u044b\u0435 \u0434\u0430\u043d\u043d\u044b\u0435, \u0417\u0430\u043f\u0430\u0441 \u0445\u043e\u0434\u0430 \u043f\u043e \u0448\u043e\u0441\u0441\u0435 row, printed page 3-2",
+          "state": "road range published as 690 km",
+          "grade": "documented"
+        },
+        "max_gradient_deg": {
+          "value": 30,
+          "unit": "deg",
+          "source": "btr4_manual_2010",
+          "locator": "3.1.3 \u041f\u0440\u0435\u043e\u0434\u043e\u043b\u0435\u0432\u0430\u0435\u043c\u044b\u0435 \u043f\u0440\u0435\u043f\u044f\u0442\u0441\u0442\u0432\u0438\u044f, \u041c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u044b\u0439 \u0443\u0433\u043e\u043b \u043f\u043e\u0434\u044a\u0451\u043c\u0430 row, printed page 3-2",
+          "state": "maximum climb gradient published as 30 degrees on dry turf",
+          "grade": "documented"
+        },
+        "max_side_slope_deg": {
+          "value": 25,
+          "unit": "deg",
+          "source": "btr4_manual_2010",
+          "locator": "3.1.3 \u041f\u0440\u0435\u043e\u0434\u043e\u043b\u0435\u0432\u0430\u0435\u043c\u044b\u0435 \u043f\u0440\u0435\u043f\u044f\u0442\u0441\u0442\u0432\u0438\u044f, \u041c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u044b\u0439 \u0443\u0433\u043e\u043b \u043a\u0440\u0435\u043d\u0430 row, printed page 3-2",
+          "state": "maximum side slope published as 25 degrees on dry turf",
+          "grade": "documented"
+        },
+        "engine_model": {
+          "value": "3TD-3A",
+          "unit": "text",
+          "source": "btr4_manual_2010",
+          "locator": "3.9.1 \u0414\u0432\u0438\u0433\u0430\u0442\u0435\u043b\u044c, \u041c\u0430\u0440\u043a\u0430 row, printed page 3-8",
+          "state": "engine published as a 3TD-3A two-stroke, multi-fuel, three-cylinder opposed-piston diesel with turbocharging",
+          "grade": "documented"
+        },
+        "published_power_hp": {
+          "value": 500,
+          "unit": "hp",
+          "source": "btr4_manual_2010",
+          "locator": "3.9.1 \u0414\u0432\u0438\u0433\u0430\u0442\u0435\u043b\u044c, \u041c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u0430\u044f \u043c\u043e\u0449\u043d\u043e\u0441\u0442\u044c row, printed page 3-8",
+          "state": "maximum bench-test power published as 368 kW (500 hp) plus or minus 6 kW on diesel fuel at 2,600 rpm; maximum rating, no net basis",
+          "grade": "documented"
+        },
+        "torque_nm": {
+          "value": 1285.5,
+          "unit": "N m",
+          "source": "btr4_manual_2010",
+          "locator": "3.9.1 \u0414\u0432\u0438\u0433\u0430\u0442\u0435\u043b\u044c, \u041c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u044b\u0439 \u043a\u0440\u0443\u0442\u044f\u0449\u0438\u0439 \u043c\u043e\u043c\u0435\u043d\u0442 row, printed page 3-8",
+          "state": "maximum torque published as 1,285.5 N m plus or minus 30 N m at 1,950 rpm",
+          "grade": "documented"
+        },
+        "transmission_type": {
+          "value": "automatic",
+          "unit": "enum",
+          "source": "btr4_manual_2010",
+          "locator": "3.10.2 \u041a\u043e\u0440\u043e\u0431\u043a\u0430 \u043f\u0435\u0440\u0435\u0434\u0430\u0447, \u041f\u0435\u0440\u0435\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0435 \u043f\u0435\u0440\u0435\u0434\u0430\u0447 row, printed page 3-10",
+          "state": "gearbox published as a hydromechanical automatic with a torque converter and a full-range manual mode",
+          "grade": "documented"
+        },
+        "gears": {
+          "value": 5,
+          "unit": "count",
+          "source": "btr4_manual_2010",
+          "locator": "3.10.2 \u041a\u043e\u0440\u043e\u0431\u043a\u0430 \u043f\u0435\u0440\u0435\u0434\u0430\u0447, \u041f\u0435\u0440\u0435\u0434\u0430\u0442\u043e\u0447\u043d\u044b\u0435 \u0447\u0438\u0441\u043b\u0430 rows, printed page 3-10",
+          "state": "gearbox published with five forward ratios (7.15, 3.03, 1.92, 1.40, 1.00) and a reverse of 7.18",
+          "grade": "documented"
+        },
+        "tyre_size_text": {
+          "value": "12.00R20",
+          "unit": "text",
+          "source": "btr4_manual_2010",
+          "locator": "3.15.1 \u041a\u043e\u043b\u0435\u0441\u0430, \u0440\u0430\u0437\u043c\u0435\u0440\u043d\u043e\u0441\u0442\u044c row, printed page 3-14",
+          "state": "tyre size published as a 12.00R20 or a 365/80R20, eight wheels",
+          "grade": "documented"
+        },
+        "tyre_pressure_kpa": {
+          "value": 520,
+          "unit": "kPa",
+          "source": "btr4_manual_2010",
+          "locator": "3.15.1 \u041a\u043e\u043b\u0435\u0441\u0430, \u0414\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0432\u043e\u0437\u0434\u0443\u0445\u0430 \u0432 \u0448\u0438\u043d\u0430\u0445 row, printed page 3-14",
+          "state": "tyre pressure adjustable from 0.15 to 0.52 MPa (150 to 520 kPa) by road condition and tyre type; the top of the published range taken",
+          "grade": "documented"
+        },
+        "drivetrain": {
+          "value": "8x8",
+          "unit": "enum",
+          "source": "btr4_manual_2010",
+          "locator": "3.1 \u041e\u0431\u0449\u0438\u0435 \u0434\u0430\u043d\u043d\u044b\u0435, \u041a\u043e\u043b\u0435\u0441\u043d\u0430\u044f \u0444\u043e\u0440\u043c\u0443\u043b\u0430 row, printed page 3-1",
+          "state": "wheel arrangement published as 8x8 with all wheels driven",
+          "grade": "documented"
         }
       }
     }

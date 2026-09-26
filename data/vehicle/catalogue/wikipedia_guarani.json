@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-09-26",
-  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the VBTP-MR Guarani. Every value is grade claimed and the registry marks primary_held false. The article publishes the weight, the dimensions, the engine, the road speed and the range. It publishes no ground clearance, so that field is absent.",
+  "note": "Catalogue capture uplifted to the held tier-2 Brazilian Army manuals for the VBTP-MR Guarani (EB70-CI-11.412, 2017 and EB70-MT-11.406, 2020). The instruction manual publishes the vehicle weight of 17.5 t and the 600 km range, and the technical manual the 95 km/h maximum road speed. The dimensions and the engine model stay at grade claimed from the tier-5 article because the held manuals publish none. The manuals cover the MR 6x6 configuration; the figures recorded name that variant.",
   "sources": [],
   "entries": [
     {
@@ -29,19 +29,35 @@
       "runtime_ready": false,
       "values": {
         "operating_weight_kg": {
-          "value": 16700,
+          "value": 17500,
           "unit": "kg",
-          "source": "wikipedia_guarani",
-          "locator": "Infobox, weight row",
-          "state": "weight published as 16.7 t; the tonne taken as 1,000 kg",
-          "grade": "claimed"
+          "source": "guarani_eb70_ci_11412",
+          "locator": "Cap\u00edtulo 2, section 2.5.1, VBTP-MR Guarani characteristics list, peso bullet, printed page 2-15",
+          "state": "vehicle weight published as 17.5 t in the characteristics list; the tonne taken as 1,000 kg",
+          "grade": "documented"
+        },
+        "max_speed_kmh": {
+          "value": 95,
+          "unit": "km/h",
+          "source": "guarani_eb70_mt_11406",
+          "locator": "Cap\u00edtulo XIV, Uso do Tor\u00f3ide, item 14.2.2 a), velocidade m\u00e1xima da viatura (95 km/h), printed page 14-1",
+          "state": "maximum road speed published as 95 km/h",
+          "grade": "documented"
+        },
+        "range_km": {
+          "value": 600,
+          "unit": "km",
+          "source": "guarani_eb70_ci_11412",
+          "locator": "Cap\u00edtulo 2, section 2.5.1, VBTP-MR Guarani characteristics list, autonomia bullet, printed page 2-15",
+          "state": "operating range published as 600 km",
+          "grade": "documented"
         },
         "length_mm": {
           "value": 6900,
           "unit": "mm",
           "source": "wikipedia_guarani",
           "locator": "Infobox, length row",
-          "state": "length published as 6.9 m",
+          "state": "length published as 6.9 m; retained from the tier-5 article because the held manuals publish no dimensions",
           "grade": "claimed"
         },
         "width_mm": {
@@ -49,7 +65,7 @@
           "unit": "mm",
           "source": "wikipedia_guarani",
           "locator": "Infobox, width row",
-          "state": "width published as 2.7 m",
+          "state": "width published as 2.7 m; retained from the tier-5 article because the held manuals publish no dimensions",
           "grade": "claimed"
         },
         "height_mm": {
@@ -57,7 +73,7 @@
           "unit": "mm",
           "source": "wikipedia_guarani",
           "locator": "Infobox, height row",
-          "state": "height published as 2.34 m",
+          "state": "height published as 2.34 m; retained from the tier-5 article because the held manuals publish no dimensions",
           "grade": "claimed"
         },
         "engine_model": {
@@ -65,23 +81,7 @@
           "unit": "text",
           "source": "wikipedia_guarani",
           "locator": "Infobox, engine row",
-          "state": "engine published as an Iveco Cursor 9 diesel, as published",
-          "grade": "claimed"
-        },
-        "max_speed_kmh": {
-          "value": 110,
-          "unit": "km/h",
-          "source": "wikipedia_guarani",
-          "locator": "Infobox, speed row",
-          "state": "road speed published as 110 km/h",
-          "grade": "claimed"
-        },
-        "range_km": {
-          "value": 600,
-          "unit": "km",
-          "source": "wikipedia_guarani",
-          "locator": "Infobox, vehicle range row",
-          "state": "range published as 600 km",
+          "state": "engine published as an Iveco Cursor 9 diesel, as published; retained from the tier-5 article because the held manuals publish no engine",
           "grade": "claimed"
         }
       }
