@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-09-26",
-  "note": "Held tier-5 English Wikipedia compilation for the Pandur II armoured vehicle. The registry marks primary_held false. It publishes the minimum, additional and amphibious weight states, the length, the width, the height, the engine model and rating, the transmission, the road and water speeds, the range and the payload. It publishes no ground clearance, so that field is absent.",
+  "note": "Catalogue capture for the held tier-4 Tatra Defence Vehicle Pandur II 8x8 product sheet, with the tier-5 English Wikipedia compilation retained for the fields the product sheet does not publish. The registry marks the product sheet primary_held true; the held bytes are the TDV PDF. TDV produces the Pandur II 8x8 under licence from General Dynamics European Land Systems. The product sheet publishes the cruising range, the speed, the fully automatic ZF transmission and the Cummins ISLe engine; those fields are grade claimed at the manufacturer tier. It publishes no dimensions and no weight, so the dimensions, weight, power and payload fields remain on the tier-5 compilation at grade claimed. The speed disagrees with the tier-5 figure; both are recorded and neither is averaged.",
   "sources": [],
   "entries": [
     {
@@ -75,20 +75,28 @@
           "state": "engine published as 335 kW, with no net basis stated",
           "grade": "claimed"
         },
+        "transmission_type": {
+          "value": "automatic",
+          "unit": "enum",
+          "source": "tatra_defence_pandur_ii_datasheet",
+          "locator": "Body text, drive train description",
+          "state": "fully automatic ZF transmission published for the six cylinder inline Cummins ISLe engine",
+          "grade": "claimed"
+        },
         "max_speed_kmh": {
-          "value": 105,
+          "value": 110,
           "unit": "km/h",
-          "source": "wikipedia_pandur_ii",
-          "locator": "Infobox, speed row, road entry",
-          "state": "maximum road speed published as 105 km/h; the water speed is published as up to 11 km/h",
+          "source": "tatra_defence_pandur_ii_datasheet",
+          "locator": "Front panel, Speed",
+          "state": "speed published as 110 km/h; the tier-5 English Wikipedia infobox publishes 105 km/h, so the two sources disagree and neither is averaged",
           "grade": "claimed"
         },
         "range_km": {
           "value": 700,
           "unit": "km",
-          "source": "wikipedia_pandur_ii",
-          "locator": "Infobox, vehicle range row",
-          "state": "range published as approximately 700 km",
+          "source": "tatra_defence_pandur_ii_datasheet",
+          "locator": "Front panel, Cruising range",
+          "state": "cruising range published as 700 km",
           "grade": "claimed"
         },
         "payload_kg": {

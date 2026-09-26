@@ -13,7 +13,7 @@ is a labelled zero, not a refusal.
 - Emitted runtime rows: 133
 - Runtime-ready entries: 1
 - Entries with an absent runtime field: 132
-- Absent fields: 451
+- Absent fields: 448
 
 ## achzarit - Achzarit (tracked)
 
@@ -485,11 +485,11 @@ is a labelled zero, not a refusal.
 
 | Runtime field | Grade | Value | Source | Locator | State |
 |---|---|---|---|---|---|
-| `operating_weight_kg` | derived | 11400 | `wikipedia_bushmaster_pmv` | Infobox, weight row, kerb entry | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `operating_weight_kg` | derived | 11400 | `thales_bushmaster_troop_carrier_datasheet` | Vehicle specifications panel, Kerb mass row | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
 | `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
 | `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
-| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
-| `net_power_kw` | claimed | 224 | `wikipedia_bushmaster_pmv` | Infobox, engine power row | engine published as 224 kW at 2,200 rpm, with no net basis stated |
+| `ground_clearance_mm` | claimed | 430 | `thales_bushmaster_troop_carrier_datasheet` | Vehicle specifications panel, Ground Clearance under hull row | ground clearance under the hull published as 430 mm |
+| `net_power_kw` | derived | 223.709962 | `thales_bushmaster_troop_carrier_datasheet` | Vehicle specifications panel, Engine row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
 | `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
 | `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
 
@@ -497,7 +497,6 @@ is a labelled zero, not a refusal.
 |---|---|
 | `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
 | `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
-| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
 | `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
@@ -2376,7 +2375,7 @@ is a labelled zero, not a refusal.
 | `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
 | `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
 | `net_power_kw` | claimed | 335 | `wikipedia_pandur_ii` | Infobox, engine power row | engine published as 335 kW, with no net basis stated |
-| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `transmission_type` | claimed | automatic | `tatra_defence_pandur_ii_datasheet` | Body text, drive train description | fully automatic ZF transmission published for the six cylinder inline Cummins ISLe engine |
 | `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
 
 | Absent field | Next source class |
@@ -2384,7 +2383,6 @@ is a labelled zero, not a refusal.
 | `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
 | `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
 | `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
-| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
 ## patria_amv - Patria AMV (wheeled)
@@ -2401,7 +2399,7 @@ is a labelled zero, not a refusal.
 | `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
 | `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
 | `net_power_kw` | claimed | 450 | `wikipedia_patria_amv` | Infobox, engine power row | engine power published as 450 kW, or 405 kW, or 360 kW; the highest option recorded, not an average, with no net basis stated |
-| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `transmission_type` | claimed | automatic | `patria_amv_8x8_datasheet` | Technical specifications panel, Engine, Automatic row | automatic transmission published with 7 + 1 gears |
 | `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
 
 | Absent field | Next source class |
@@ -2409,7 +2407,6 @@ is a labelled zero, not a refusal.
 | `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
 | `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
 | `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
-| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
 ## peugeot_p4 - Peugeot P4 (wheeled)
@@ -2664,11 +2661,11 @@ is a labelled zero, not a refusal.
 
 | Runtime field | Grade | Value | Source | Locator | State |
 |---|---|---|---|---|---|
-| `operating_weight_kg` | claimed | 16470 | `wikipedia_stryker` | Infobox, Specifications section, Mass row, ICV entry | mass published for the ICV variant as 18.16 short tons (16.47 t); recorded as 16,470 kg with the tonne taken as 1,000 kg; the same row publishes the MGS mass as a separate configuration and the article states no kerb, combat or gross state for either |
+| `operating_weight_kg` | claimed | 16470 | `wikipedia_stryker` | Infobox, Specifications section, Mass row, ICV entry | mass published for the ICV variant as 18.16 short tons (16.47 t); recorded as 16,470 kg with the tonne taken as 1,000 kg; the same row publishes the MGS mass as a separate configuration and the article states no kerb, combat or gross state for either; the held tier-4 GDLS datasheet publishes no weight |
 | `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
 | `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
 | `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
-| `net_power_kw` | derived | 260.994955 | `wikipedia_stryker` | Infobox, Specifications section, Engine row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `net_power_kw` | derived | 260.994955 | `gdls_stryker_combat_vehicles_datasheet` | Mobility panel, engine row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
 | `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
 | `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
 
