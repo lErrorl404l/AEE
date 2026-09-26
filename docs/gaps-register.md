@@ -574,3 +574,81 @@ each one.
 
 **Lesson.** A research script without an invariant is a research script that
 will lie to you at the boundary. State the identity first, then compute.
+
+## GAP-032: an invented check left the oblique shock unverified
+
+Status: Closed
+
+**What happened.** While tightening the supersonic trace bound for issue 217, I
+wrote a closure check for the oblique shock relation. Expand the post-shock
+flow through the wedge turn with Prandtl-Meyer, then require the pressure to
+return to its starting value. The check failed. I revised it and it failed
+again. Only then did I find the fault in the check itself. It expanded to a
+Mach of 1 rather than through the turn, and the closure condition was my own
+invention rather than a relation taken from a source. The oblique relation was
+sound. A later check against a published vector in the USU course notes
+reproduced the printed values, and the correct conclusion was that no floor
+can be computed for a blunted round at all.
+
+**What went wrong.** Six calls of numerical work went into a check on a
+formula I had never verified, and the check was the thing under suspicion.
+This is the GAP-031 defect class again, a derived quantity published without a
+guard. Here the unguarded quantity was the check itself, which is worse,
+because a failing check invites a repair of the physics instead of a repair of
+the check.
+
+**Why.** The rule was unapplied, not absent. Rule 3 of the global operating
+rules requires a source before a fact is stated, and the same requirement
+applies to a verification. Nothing forces a self-invented check to declare
+where it came from. A sound alternative was available early, the normal shock
+table in NACA Report 1135 Eq (94) at p. 620, and I did not use it.
+
+**What prevents recurrence.** Any check written to validate a derived number
+must state its source before it runs. Where a check cannot be sourced, publish
+no number. A bracket search must be compared against an independent method,
+such as a brute scan, before it is trusted. A failed check is evidence about
+the check first and the physics second. Where a relation does not apply to the
+geometry in hand, the correct output is a refusal, and the refusal belongs in
+the code with the numbers that motivate it.
+
+**Lesson.** If you cannot say where a check came from, you have not checked
+anything. Source the check or publish no number.
+
+## GAP-033: the shape classifier was measured against a key it never receives
+
+Status: Closed
+
+**What happened.** I claimed that nearly every projectile in the ballistics
+corpus falls through the bullet shape classifier to its default branch, and
+that fixing it was the highest value change in the stream. I measured this by
+running the 681 corpus projectile identifiers through a transcription of the
+classifier. Six hundred and twenty one of them, ninety one per cent, reached
+the default. I repeated the claim and prepared to file it as an issue under
+167.
+
+**What went wrong.** The key was wrong. The classifier takes a CfgAmmo
+classname. Its only production caller is the Fired event handler, which passes
+the ammo classname from that event. A corpus identifier encodes the
+manufacturer, not the shape, and never reaches the classifier. The repository
+also ships no CfgAmmo classes, so the names I had quoted, such as a 5.56
+round, belong to a compat addon rather than to this project. The miss rate I
+measured was therefore expected and was not a defect. A later trace from the
+call site confirmed it, and the claim was withdrawn rather than filed.
+
+**Why.** The rule was unapplied, not absent. Rule 3 requires reading the code
+before stating a fact about it, and the call site is the only place the real
+key is written down. I read the switch, transcribed it faithfully, and then
+measured it against an input I had taken from a filename convention rather
+than from the caller. A faithful transcription of a function is not the same as
+a faithful measurement of it.
+
+**What prevents recurrence.** A claim about how a function behaves must quote
+the value its production caller passes, taken from the call site, and the
+measurement must use that value. Where the caller is an event handler or an
+external addon, the claim is about the integration and not about the function,
+and it must say so. A miss rate measured against a substituted input is not
+evidence of a defect.
+
+**Lesson.** Trace the value to its call site before measuring what a function
+does with it. A correct transcription tested on the wrong input still measures
+nothing.
