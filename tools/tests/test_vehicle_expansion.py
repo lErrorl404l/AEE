@@ -30,6 +30,7 @@ from typing import cast
 REPO = Path(__file__).parents[2]
 sys.path.insert(0, str(REPO))
 
+from tools.validation import vehicle_catalogue as catalogue  # noqa: E402
 from tools.validation import validate_vehicle_data as v  # noqa: E402
 from tools.validation.fetch_vehicle_sources import verify_sources  # noqa: E402
 
@@ -286,7 +287,11 @@ class VehicleExpansionTest(unittest.TestCase):
         self.assertIn("honda_civic_6gen_sedan", report)
         self.assertIn("m923a2", report)
         self.assertIn("kawasaki_ninja_250r_ex250f", report)
-        self.assertIn("- Catalogue entries: 47", report)
+        # The report is generated from the catalogue, so pinning a fixed
+        # number here goes stale every time the corpus grows. Compare the
+        # report against the corpus it is generated from.
+        entries = len(catalogue.load(DATA).entries)
+        self.assertIn(f"- Catalogue entries: {entries}", report)
 
 
 if __name__ == "__main__":
