@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-09-26",
-  "note": "Catalogue capture for the held tier-5 English Wikipedia article 'Stryker'. The article is a secondary compilation, so every value is grade claimed and the registry marks primary_held false. It holds the M1126 Stryker infantry carrier vehicle (ICV) as a wheeled entry. It publishes identity, the ICV mass, the overall length, width and height, the engine model, the engine rating of 350 hp with no net basis, the maximum road speed and the operational range. It publishes no ground clearance figure (the article mentions a high ground clearance in prose only), no tyre size code, no tyre width or tyre diameter, no transmission and no grouser statement, so the entry is not runtime-ready. No stronger source is held: the public US Army operator manual for the M1126 is not on the two manual mirrors that served the other captures, and the maker site is bot-walled.",
+  "note": "Catalogue capture for the held tier-4 General Dynamics Land Systems Stryker Combat Vehicles datasheet, with the tier-5 English Wikipedia article retained for the fields the datasheet does not publish. The registry marks the datasheet primary_held true; the held bytes are the GDLS PDF. The datasheet publishes the 350 HP Caterpillar 3126 diesel engine, the eight-wheel running gear, the governed top speed, the cruising range and the combat and shipping height, width and length of the Infantry Carrier Vehicle. Those fields are grade claimed at the manufacturer tier. The datasheet publishes no weight, no ground clearance, no tyre size and no transmission class, so the mass, ground clearance and transmission fields remain absent or on the tier-5 compilation at grade claimed. Where the Wikipedia engine model or speed disagrees with the datasheet, both are recorded and neither is averaged.",
   "sources": [],
   "entries": [
     {
@@ -23,63 +23,71 @@
           "unit": "kg",
           "source": "wikipedia_stryker",
           "locator": "Infobox, Specifications section, Mass row, ICV entry",
-          "state": "mass published for the ICV variant as 18.16 short tons (16.47 t); recorded as 16,470 kg with the tonne taken as 1,000 kg; the same row publishes the MGS mass as a separate configuration and the article states no kerb, combat or gross state for either",
+          "state": "mass published for the ICV variant as 18.16 short tons (16.47 t); recorded as 16,470 kg with the tonne taken as 1,000 kg; the same row publishes the MGS mass as a separate configuration and the article states no kerb, combat or gross state for either; the held tier-4 GDLS datasheet publishes no weight",
           "grade": "claimed"
         },
         "length_mm": {
-          "value": 6950,
+          "value": 7272,
           "unit": "mm",
-          "source": "wikipedia_stryker",
-          "locator": "Infobox, Specifications section, Length row",
-          "state": "overall length, published as 22 ft 10 in (6.95 m); the published metre figure used directly",
+          "source": "gdls_stryker_combat_vehicles_datasheet",
+          "locator": "Infantry Carrier Vehicle panel, combat column, length",
+          "state": "Infantry Carrier Vehicle combat length published as 286.3 in; converted as 286.3 x 25.4 mm = 7,272 mm; the same row publishes the shipping length as 286.5 in",
           "grade": "claimed"
         },
         "width_mm": {
-          "value": 2720,
+          "value": 2957,
           "unit": "mm",
-          "source": "wikipedia_stryker",
-          "locator": "Infobox, Specifications section, Width row",
-          "state": "overall width, published as 8 ft 11 in (2.72 m); the published metre figure used directly",
+          "source": "gdls_stryker_combat_vehicles_datasheet",
+          "locator": "Infantry Carrier Vehicle panel, combat column, width",
+          "state": "Infantry Carrier Vehicle combat width published as 116.43 in; converted as 116.43 x 25.4 mm = 2,957 mm; the same row publishes the shipping width as 112.8 in",
           "grade": "claimed"
         },
         "height_mm": {
-          "value": 2640,
+          "value": 3121,
           "unit": "mm",
-          "source": "wikipedia_stryker",
-          "locator": "Infobox, Specifications section, Height row",
-          "state": "overall height, published as 8 ft 8 in (2.64 m); the published metre figure used directly",
+          "source": "gdls_stryker_combat_vehicles_datasheet",
+          "locator": "Infantry Carrier Vehicle panel, combat column, height",
+          "state": "Infantry Carrier Vehicle combat height published as 122.88 in; converted as 122.88 x 25.4 mm = 3,121 mm; the same row publishes the shipping height as 103.6 in",
           "grade": "claimed"
         },
         "engine_model": {
-          "value": "Caterpillar C7",
+          "value": "Caterpillar 3126",
           "unit": "text",
-          "source": "wikipedia_stryker",
-          "locator": "Infobox, Specifications section, Engine row",
-          "state": "engine published as Caterpillar C7",
+          "source": "gdls_stryker_combat_vehicles_datasheet",
+          "locator": "Mobility panel, engine row",
+          "state": "engine published as a Caterpillar 3126 diesel; the tier-5 English Wikipedia infobox publishes Caterpillar C7 for a later mark, so the two sources disagree and neither is averaged",
           "grade": "claimed"
         },
         "published_power_hp": {
           "value": 350,
           "unit": "hp",
-          "source": "wikipedia_stryker",
-          "locator": "Infobox, Specifications section, Engine row",
-          "state": "engine published as Caterpillar C7, 350 hp (260 kW), with no net basis",
+          "source": "gdls_stryker_combat_vehicles_datasheet",
+          "locator": "Mobility panel, engine row",
+          "state": "engine published as 350 HP, with no net basis stated; the tier-5 English Wikipedia infobox also publishes 350 hp",
           "grade": "claimed"
         },
         "max_speed_kmh": {
-          "value": 97,
+          "value": 100.6,
           "unit": "km/h",
-          "source": "wikipedia_stryker",
-          "locator": "Infobox, Specifications section, Maximum speed row",
-          "state": "maximum road speed, published as 60 mph (97 km/h)",
+          "source": "gdls_stryker_combat_vehicles_datasheet",
+          "locator": "Mobility panel, top speed row",
+          "state": "governed top speed published as 62.5 mph; converted as 62.5 x 1.609344 km/h = 100.6 km/h; the tier-5 English Wikipedia infobox publishes 97 km/h for a variant, so the two sources disagree and neither is averaged",
           "grade": "claimed"
         },
         "range_km": {
-          "value": 500,
+          "value": 531,
           "unit": "km",
-          "source": "wikipedia_stryker",
-          "locator": "Infobox, Specifications section, Operational range row",
-          "state": "operational range, published as 310 mi (500 km); the article states no fuel load or road state",
+          "source": "gdls_stryker_combat_vehicles_datasheet",
+          "locator": "Mobility panel, cruising range row",
+          "state": "cruising range published as 330 mi; converted as 330 x 1.609344 km = 531 km; the datasheet states no load or road state for the figure",
+          "grade": "claimed"
+        },
+        "wheel_count": {
+          "value": 8,
+          "unit": "count",
+          "source": "gdls_stryker_combat_vehicles_datasheet",
+          "locator": "Mobility panel, eight-wheel row",
+          "state": "vehicle published as an eight-wheel, run-flat and central tyre inflation system vehicle",
           "grade": "claimed"
         }
       }

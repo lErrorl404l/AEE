@@ -993,7 +993,7 @@
     "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The held bytes are the article wikitext, not a primary document.",
     "primary_held": false,
     "sha256": "0e1b00a99353de2a637aa578074267bfddcdd959364d3ed55a5483f6fdcc78ac",
-    "note": "Tier-5 English Wikipedia compilation for the Ratel infantry fighting vehicle. primary_held false. Publishes identity, the 18.5 t weight for the Ratel-20 and Ratel-60, the hull length, the dimensions, the 0.34 m ground clearance, the Büssing D 3256 BTXF diesel, the 205 kW rating, the road speed and the range."
+    "note": "Tier-5 English Wikipedia compilation for the Ratel infantry fighting vehicle. primary_held false. Publishes identity, the 18.5 t weight for the Ratel-20 and Ratel-60, the hull length, the dimensions, the 0.34 m ground clearance, the B\u00fcssing D 3256 BTXF diesel, the 205 kW rating, the road speed and the range."
   },
   {
     "source_id": "wikipedia_olifant",
@@ -1603,5 +1603,73 @@
     "primary_held": false,
     "sha256": "4cdaf05f7a620827f8359810d1eba0264f10698b6e5b02f5f4b2b6e7840d3854",
     "note": "Held tier-5 English Wikipedia compilation for the Peugeot P4 French light utility vehicle. The registry marks primary_held false because the article is a secondary compilation. It carries the overall length, the width, the kerb weight, the engine family and displacement, the power rating and the road-speed range. It states no height and no ground clearance. Every value from this source is grade claimed."
+  },
+  {
+    "source_id": "thales_bushmaster_troop_carrier_datasheet",
+    "tier": 4,
+    "type": "manufacturer",
+    "title": "Bushmaster Troop Carrier product data",
+    "edition": "Brochure dated 13/09/12, 2 pages",
+    "identifier": "Thales Australia Bushmaster Troop Carrier brochure",
+    "locator": "Vehicle specifications panel, page 2 (items A to J: overall length, width, overall height, track, wheelbase, overhangs, approach, departure and ramp over angles; Configuration; Weight (GVM); Kerb mass; Engine; Transmission; Tyres; Fuel capacity; Maximum road range; Speed; Ground Clearance under hull; Turning circle; Fording; Side Slope; Gradient)",
+    "published": "2012-09",
+    "retrieved": "2026-09-26",
+    "url": "https://warwheels.net/images/BushmasterTroop2012ThalesBrochure.pdf",
+    "archive_ref": "Thales Australia Bushmaster Troop Carrier brochure, 2 pages; held copy is the warwheels.net document mirror",
+    "licence": "Thales Australia manufacturer sales brochure, copyright Thales Australia Limited. The held bytes come from the warwheels.net document mirror, not from Thales Australia.",
+    "primary_held": true,
+    "note": "Held tier-4 Thales Australia brochure for the Bushmaster troop carrier. It publishes the kerb mass and gross vehicle mass, the overall length, width and height, the track, the wheelbase, the approach, departure and ramp-over angles, the ground clearance under the hull, the 4x4 configuration, the Caterpillar 3126E 7.2 litre engine rated at 224 kW / 300 hp and 1,166 N m, the ZF 6HP502 six-speed transmission, the Michelin 395/85 R20 tyre fitment, the fording depth, the governed speed and the maximum road range. It publishes no payload, no net power basis and no transmission-type word. The held copy is on disk under data/vehicle/sources/ and its digest matches the registry entry.",
+    "sha256": "524d7b69404990e3737564b0c24e68c76295a85c53a47126791bfc1551efabf8"
+  },
+  {
+    "source_id": "patria_amv_8x8_datasheet",
+    "tier": 4,
+    "type": "manufacturer",
+    "title": "Armoured Modular Vehicle (Patria AMV 8x8) product data",
+    "edition": "Brochure, 4 pages",
+    "identifier": "Patria Armoured Modular Vehicle AMV 8x8 brochure",
+    "locator": "Technical specifications panel, page 4 (Dimensions: length, height over hull, width, track width, weight; Performance: maximum speed, gradients, side slope, obstacles, fording; Engine: power output, torque output, automatic gear count, driven axles)",
+    "published": null,
+    "retrieved": "2026-09-26",
+    "url": "https://warwheels.net/images/AMVbrochurePATRIA.pdf",
+    "archive_ref": "Patria Oyj Armoured Modular Vehicle AMV 8x8 brochure, 4 pages; held copy is the warwheels.net document mirror",
+    "licence": "Patria manufacturer sales brochure. The held bytes come from the warwheels.net document mirror, not from Patria.",
+    "primary_held": true,
+    "note": "Held tier-4 Patria brochure for the Armoured Modular Vehicle 8x8. It publishes the length for the standard and longer hull, the height over hull, the width, the track width, the 17,000 to 27,000 kg weight range, the power output of 405 kW, the torque output of 2,090 N m, the automatic transmission with 7 + 1 gears and the all-wheel drive. It names no engine model, publishes no kerb or operating weight as a single figure and states the maximum speed only as greater than 100 km/h. The held copy is on disk under data/vehicle/sources/ and its digest matches the registry entry.",
+    "sha256": "2db3cda92c28e7b52ec3767e8807c686b9cac797b384f78346e391b1576c123d"
+  },
+  {
+    "source_id": "tatra_defence_pandur_ii_datasheet",
+    "tier": 4,
+    "type": "manufacturer",
+    "title": "Pandur II 8x8 Wheeled Armoured Vehicle product data",
+    "edition": "Product sheet, 2 pages",
+    "identifier": "Tatra Defence Vehicle a.s. Pandur II 8x8 product sheet",
+    "locator": "Front panel (cruising range, crew, speed, chassis, ballistic protection, mine protection); body text (engine, transmission, variants, crew capacity)",
+    "published": "2024-05",
+    "retrieved": "2026-09-26",
+    "url": "https://tatradv.cz/wp-content/uploads/2024/05/PANDUR-ENG.pdf",
+    "archive_ref": "Tatra Defence Vehicle a.s. Pandur II 8x8 product sheet, 2 pages; TDV produces the Pandur II 8x8 under licence from General Dynamics European Land Systems",
+    "licence": "Tatra Defence Vehicle a.s. manufacturer product sheet. The held bytes are the TDV PDF.",
+    "primary_held": true,
+    "note": "Held tier-4 Tatra Defence Vehicle product sheet for the Pandur II 8x8. It publishes the 8x8 chassis, a cruising range of 700 km, a speed of 110 km/h, a crew capacity of 14, STANAG 4569 ballistic level 4 and mine level 3, the six cylinder inline Cummins ISLe diesel and the fully automatic ZF transmission. It publishes no dimensions and no weight. The held copy is on disk under data/vehicle/sources/ and its digest matches the registry entry.",
+    "sha256": "816e6a93c188587aab86ab3ba68ad6e45ae000090f948909aae01aa5c24129c0"
+  },
+  {
+    "source_id": "gdls_stryker_combat_vehicles_datasheet",
+    "tier": 4,
+    "type": "manufacturer",
+    "title": "Stryker Combat Vehicles product data",
+    "edition": "Product datasheet, 2 pages",
+    "identifier": "General Dynamics Land Systems Stryker Combat Vehicles datasheet, file StrykerCombatVehicles.pdf",
+    "locator": "Mobility panel and Features & Specifications panel, page 1 (350 HP Caterpillar 3126 diesel engine, eight-wheel run-flat and central tyre inflation system, 62.5 mph governed top speed, 330 mi cruising range, 78 in trench crossing, 23 in vertical climb, 60 percent grade); Infantry Carrier Vehicle panel (combat and shipping height, width and length)",
+    "published": null,
+    "retrieved": "2026-09-26",
+    "url": "https://international.gdls.com/english/files/StrykerCombatVehicles.pdf",
+    "archive_ref": "General Dynamics Land Systems international product page, Stryker Combat Vehicles",
+    "licence": "Manufacturer product datasheet published freely by General Dynamics Land Systems. The held copy is the GDLS PDF.",
+    "primary_held": true,
+    "note": "Held tier-4 General Dynamics Land Systems datasheet for the Stryker combat vehicles. It publishes the 350 HP Caterpillar 3126 diesel engine, the eight-wheel run-flat and central tyre inflation system, the 62.5 mph governed top speed, the 330 mi cruising range, the 78 in trench crossing and the 23 in vertical climb, plus combat and shipping height, width and length for the Infantry Carrier Vehicle and the other nine variants. It publishes no weight, no tyre size and no transmission class. The held copy is on disk under data/vehicle/sources/ and its digest matches the registry entry.",
+    "sha256": "d4a9d66fdde213c2c2239ddf80b472eca0c0be0512fca9f53fd8582ec90c4f5e"
   }
 ]

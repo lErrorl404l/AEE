@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-09-26",
-  "note": "Held tier-5 English Wikipedia compilation for the Patria AMV armoured modular vehicle. The registry marks primary_held false. It publishes the weight range, the length, the width, the height, the engine models, the engine power options, the land and water speeds and the range. It publishes no ground clearance, so that field is absent.",
+  "note": "Catalogue capture for the held tier-4 Patria AMV 8x8 datasheet, with the tier-5 English Wikipedia compilation retained for the fields the datasheet does not publish. The registry marks the datasheet primary_held true; the held bytes are the Patria brochure from the warwheels.net mirror. The datasheet publishes the length for the standard and longer hull, the height over the hull, the width, the track width, the torque output and the automatic transmission with 7 + 1 gears; those fields are grade claimed at the manufacturer tier. It names no engine model and publishes the 17,000 to 27,000 kg weight as a range and the maximum speed as greater than 100 km/h, so the weight, engine-model, power, speed and range fields remain on the tier-5 compilation at grade claimed.",
   "sources": [],
   "entries": [
     {
@@ -36,27 +36,35 @@
           "grade": "claimed"
         },
         "length_mm": {
-          "value": 7700,
+          "value": 7900,
           "unit": "mm",
-          "source": "wikipedia_patria_amv",
-          "locator": "Infobox, length row",
-          "state": "length published as 7.7 m",
+          "source": "patria_amv_8x8_datasheet",
+          "locator": "Technical specifications panel, Dimensions, Length row",
+          "state": "length published as 7.9 m for the standard hull; the same row publishes 8.3 m for the longer hull",
           "grade": "claimed"
         },
         "width_mm": {
           "value": 2800,
           "unit": "mm",
-          "source": "wikipedia_patria_amv",
-          "locator": "Infobox, width row",
+          "source": "patria_amv_8x8_datasheet",
+          "locator": "Technical specifications panel, Dimensions, Width row",
           "state": "width published as 2.8 m",
           "grade": "claimed"
         },
         "height_mm": {
-          "value": 2300,
+          "value": 2400,
           "unit": "mm",
-          "source": "wikipedia_patria_amv",
-          "locator": "Infobox, height row",
-          "state": "height published as 2.3 m",
+          "source": "patria_amv_8x8_datasheet",
+          "locator": "Technical specifications panel, Dimensions, Height over hull row",
+          "state": "height over the hull published as 2.4 m; the same row publishes 2.7 m with the high roof",
+          "grade": "claimed"
+        },
+        "track_mm": {
+          "value": 2500,
+          "unit": "mm",
+          "source": "patria_amv_8x8_datasheet",
+          "locator": "Technical specifications panel, Dimensions, Track width row",
+          "state": "track width published as 2.5 m",
           "grade": "claimed"
         },
         "engine_model": {
@@ -73,6 +81,30 @@
           "source": "wikipedia_patria_amv",
           "locator": "Infobox, engine power row",
           "state": "engine power published as 450 kW, or 405 kW, or 360 kW; the highest option recorded, not an average, with no net basis stated",
+          "grade": "claimed"
+        },
+        "torque_nm": {
+          "value": 2090,
+          "unit": "N m",
+          "source": "patria_amv_8x8_datasheet",
+          "locator": "Technical specifications panel, Engine, Torque output row",
+          "state": "torque output published as 2,090 N m",
+          "grade": "claimed"
+        },
+        "transmission_type": {
+          "value": "automatic",
+          "unit": "enum",
+          "source": "patria_amv_8x8_datasheet",
+          "locator": "Technical specifications panel, Engine, Automatic row",
+          "state": "automatic transmission published with 7 + 1 gears",
+          "grade": "claimed"
+        },
+        "gears": {
+          "value": 8,
+          "unit": "count",
+          "source": "patria_amv_8x8_datasheet",
+          "locator": "Technical specifications panel, Engine, Automatic row",
+          "state": "seven forward and one reverse gear published as 7 + 1",
           "grade": "claimed"
         },
         "max_speed_kmh": {

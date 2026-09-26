@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-09-26",
-  "note": "Held tier-5 English Wikipedia compilation for the Bushmaster protected mobility vehicle. The registry marks primary_held false. It publishes the kerb weight and the gross vehicle mass, the length, the width, the height, the engine model, the engine rating and torque, the transmission, the governed speed and the range. Its clearance row carries overhang and angles, not a ground clearance, so that field is absent.",
+  "note": "Catalogue capture for the held tier-4 Thales Australia Bushmaster troop carrier brochure. The registry marks primary_held true; the held bytes are the Thales brochure from the warwheels.net mirror. The brochure publishes identity, the kerb and gross vehicle masses, the overall length, width and height, the track, the wheelbase, the approach, departure and ramp-over angles, the ground clearance under the hull, the 4x4 configuration, the Caterpillar 3126E engine and its rating and torque, the ZF transmission gear count, the Michelin tyre fitment, the fording depth, the governed speed and the maximum road range. Every value is grade claimed, which is the manufacturer tier. The brochure publishes no payload, no net power basis and no transmission-type word, so those fields are absent.",
   "sources": [],
   "entries": [
     {
@@ -29,81 +29,177 @@
         "curb_weight_kg": {
           "value": 11400,
           "unit": "kg",
-          "source": "wikipedia_bushmaster_pmv",
-          "locator": "Infobox, weight row, kerb entry",
-          "state": "kerb weight published as 11,400 kg",
+          "source": "thales_bushmaster_troop_carrier_datasheet",
+          "locator": "Vehicle specifications panel, Kerb mass row",
+          "state": "kerb mass published as 11,400 kg; the brochure states no crew or fuel load",
           "grade": "claimed"
         },
         "gross_weight_kg": {
           "value": 15400,
           "unit": "kg",
-          "source": "wikipedia_bushmaster_pmv",
-          "locator": "Infobox, weight row, GVM entry",
+          "source": "thales_bushmaster_troop_carrier_datasheet",
+          "locator": "Vehicle specifications panel, Weight (GVM) row",
           "state": "gross vehicle mass published as 15,400 kg",
           "grade": "claimed"
         },
         "length_mm": {
           "value": 7180,
           "unit": "mm",
-          "source": "wikipedia_bushmaster_pmv",
-          "locator": "Infobox, length row",
-          "state": "length published as 7,180 mm",
+          "source": "thales_bushmaster_troop_carrier_datasheet",
+          "locator": "Vehicle specifications panel, item A, overall length",
+          "state": "overall length published as 7,180 mm",
           "grade": "claimed"
         },
         "width_mm": {
           "value": 2480,
           "unit": "mm",
-          "source": "wikipedia_bushmaster_pmv",
-          "locator": "Infobox, width row",
+          "source": "thales_bushmaster_troop_carrier_datasheet",
+          "locator": "Vehicle specifications panel, item B, width",
           "state": "width published as 2,480 mm",
           "grade": "claimed"
         },
         "height_mm": {
           "value": 2650,
           "unit": "mm",
-          "source": "wikipedia_bushmaster_pmv",
-          "locator": "Infobox, height row",
-          "state": "height published as 2,650 mm",
+          "source": "thales_bushmaster_troop_carrier_datasheet",
+          "locator": "Vehicle specifications panel, item C, overall height",
+          "state": "overall height published as 2,650 mm",
+          "grade": "claimed"
+        },
+        "track_mm": {
+          "value": 2100,
+          "unit": "mm",
+          "source": "thales_bushmaster_troop_carrier_datasheet",
+          "locator": "Vehicle specifications panel, item D, track",
+          "state": "track, the wheel centre to centre distance, published as 2,100 mm",
+          "grade": "claimed"
+        },
+        "wheelbase_mm": {
+          "value": 3900,
+          "unit": "mm",
+          "source": "thales_bushmaster_troop_carrier_datasheet",
+          "locator": "Vehicle specifications panel, item E, wheelbase",
+          "state": "wheelbase published as 3,900 mm",
+          "grade": "claimed"
+        },
+        "ground_clearance_mm": {
+          "value": 430,
+          "unit": "mm",
+          "source": "thales_bushmaster_troop_carrier_datasheet",
+          "locator": "Vehicle specifications panel, Ground Clearance under hull row",
+          "state": "ground clearance under the hull published as 430 mm",
+          "grade": "claimed"
+        },
+        "approach_angle_deg": {
+          "value": 40,
+          "unit": "deg",
+          "source": "thales_bushmaster_troop_carrier_datasheet",
+          "locator": "Vehicle specifications panel, item H, approach angle",
+          "state": "approach angle published as 40 degrees",
+          "grade": "claimed"
+        },
+        "departure_angle_deg": {
+          "value": 38,
+          "unit": "deg",
+          "source": "thales_bushmaster_troop_carrier_datasheet",
+          "locator": "Vehicle specifications panel, item I, departure angle",
+          "state": "departure angle published as 38 degrees",
+          "grade": "claimed"
+        },
+        "breakover_angle_deg": {
+          "value": 108,
+          "unit": "deg",
+          "source": "thales_bushmaster_troop_carrier_datasheet",
+          "locator": "Vehicle specifications panel, item J, ramp over angle",
+          "state": "ramp over angle published as 108 degrees",
+          "grade": "claimed"
+        },
+        "fording_depth_mm": {
+          "value": 1200,
+          "unit": "mm",
+          "source": "thales_bushmaster_troop_carrier_datasheet",
+          "locator": "Vehicle specifications panel, Fording row",
+          "state": "fording published as 1,200 mm with no preparation",
           "grade": "claimed"
         },
         "engine_model": {
           "value": "Caterpillar 3126E",
           "unit": "text",
-          "source": "wikipedia_bushmaster_pmv",
-          "locator": "Infobox, engine row",
-          "state": "engine published as a Caterpillar 3126E 7.2 litre six-cylinder turbocharged diesel",
+          "source": "thales_bushmaster_troop_carrier_datasheet",
+          "locator": "Vehicle specifications panel, Engine row",
+          "state": "engine published as a Caterpillar 3126E 7.2 litre six cylinder turbocharged diesel",
           "grade": "claimed"
         },
-        "net_power_kw": {
-          "value": 224,
-          "unit": "kW",
-          "source": "wikipedia_bushmaster_pmv",
-          "locator": "Infobox, engine power row",
-          "state": "engine published as 224 kW at 2,200 rpm, with no net basis stated",
+        "engine_displacement_l": {
+          "value": 7.2,
+          "unit": "L",
+          "source": "thales_bushmaster_troop_carrier_datasheet",
+          "locator": "Vehicle specifications panel, Engine row",
+          "state": "swept volume published as 7.2 litres",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 300,
+          "unit": "hp",
+          "source": "thales_bushmaster_troop_carrier_datasheet",
+          "locator": "Vehicle specifications panel, Engine row",
+          "state": "engine published as 300 hp at 2,200 rpm, with no net basis stated; the same row publishes 224 kW",
           "grade": "claimed"
         },
         "torque_nm": {
           "value": 1166,
           "unit": "N m",
-          "source": "wikipedia_bushmaster_pmv",
-          "locator": "Infobox, engine power row, torque entry",
-          "state": "peak torque published as 1,166 N m at 1,440 rpm",
+          "source": "thales_bushmaster_troop_carrier_datasheet",
+          "locator": "Vehicle specifications panel, Engine row",
+          "state": "torque published as 1,166 N m (860 ft lb) at 1,440 rpm",
+          "grade": "claimed"
+        },
+        "gears": {
+          "value": 6,
+          "unit": "count",
+          "source": "thales_bushmaster_troop_carrier_datasheet",
+          "locator": "Vehicle specifications panel, Transmission row",
+          "state": "six forward speeds and one reverse published for the ZF 6HP502 ECOMAT G2 transmission",
+          "grade": "claimed"
+        },
+        "tyre_size_text": {
+          "value": "Michelin 395/85 R20",
+          "unit": "text",
+          "source": "thales_bushmaster_troop_carrier_datasheet",
+          "locator": "Vehicle specifications panel, Tyres row",
+          "state": "tyre fitment published as Michelin 395/85 R20 low MMP with bead locks",
+          "grade": "claimed"
+        },
+        "wheel_count": {
+          "value": 4,
+          "unit": "count",
+          "source": "thales_bushmaster_troop_carrier_datasheet",
+          "locator": "Vehicle specifications panel, Configuration row",
+          "state": "configuration published as 4x4, four wheel stations",
+          "grade": "claimed"
+        },
+        "axle_count": {
+          "value": 2,
+          "unit": "count",
+          "source": "thales_bushmaster_troop_carrier_datasheet",
+          "locator": "Vehicle specifications panel, Configuration row",
+          "state": "configuration published as 4x4, two axles",
           "grade": "claimed"
         },
         "max_speed_kmh": {
           "value": 100,
           "unit": "km/h",
-          "source": "wikipedia_bushmaster_pmv",
-          "locator": "Infobox, speed row",
-          "state": "governed maximum road speed published as 100 km/h",
+          "source": "thales_bushmaster_troop_carrier_datasheet",
+          "locator": "Vehicle specifications panel, Speed row",
+          "state": "maximum governed speed published as 100 km/h",
           "grade": "claimed"
         },
         "range_km": {
           "value": 800,
           "unit": "km",
-          "source": "wikipedia_bushmaster_pmv",
-          "locator": "Infobox, vehicle range row",
-          "state": "range published as 800 km",
+          "source": "thales_bushmaster_troop_carrier_datasheet",
+          "locator": "Vehicle specifications panel, Maximum road range row",
+          "state": "maximum road range published as 800 km with a 300 litre fuel capacity; the brochure states no road or load state",
           "grade": "claimed"
         }
       }
