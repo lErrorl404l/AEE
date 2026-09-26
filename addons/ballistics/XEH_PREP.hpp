@@ -8,6 +8,7 @@ PREP(calculateBarrelState);
 PREP(getCartridgeData);
 PREP(getProjectileData);
 PREP(getWeaponData);
+PREP(getLoadData);
 PREP(calculateStability);
 PREP(resolveShot);
 PREP(getDragTables);

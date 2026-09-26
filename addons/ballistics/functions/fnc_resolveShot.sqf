@@ -117,6 +117,19 @@ if (_mv <= 0 && _calibreMm > 0 && _massG > 0) then {
     _mv = [_calibreMm, _massG, _barrelM, _pressure] call FUNC(calculateInteriorBallistics);
 };
 
+// A cannon or autocannon has no interior-ballistics curve here: the
+// small-arms model above is fitted to cartridge barrels and gives 0 at
+// and above 20 mm. The sourced service velocity in the load record is
+// then the value, because a found value beats a formula (ADR-003). The
+// lookup is a class-name table with a cache, so the shot path stays flat.
+private _cartridgeCalibre = if (_cartridge isEqualTo []) then { 0 } else { _cartridge select 1 };
+if (_mv <= 0 && _cartridgeCalibre >= 20) then {
+    private _load = [_ammo] call FUNC(getLoadData);
+    if (_load isNotEqualTo []) then {
+        _mv = _load select 2;
+    };
+};
+
 // ─── Stability and the drag at the muzzle ────────────────────────────────
 // The stability path follows the projectile. A rifled round uses the Miller
 // spin rule. A fin-stabilised round (a smoothbore sets the twist to 0) uses
