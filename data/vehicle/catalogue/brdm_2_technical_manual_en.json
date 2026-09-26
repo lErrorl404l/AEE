@@ -1,0 +1,152 @@
+{
+  "retrieved": "2026-09-24",
+  "note": "Catalogue capture for the held tier-2 technical manual (English translation) of the BRDM-2. It holds the BRDM-2 as a wheeled entry. The manual publishes the identity (four-wheel amphibious armoured vehicle), the total (combat) weight, the overall and chassis dimensions, the ground clearance, the maximum road speed and range, the maximum engine power as horse power with no net basis, the engine swept volume, the mechanical transmission with four forward ratios and reverse, the final-drive ratio and the tyre size code with its regulated inflation range. Tyre width and tyre diameter resolve by the named size-code derivation. The entry emits a runtime row with one labelled absent field (grousers_state) so it is not runtime-ready. Every dimension is a published millimetre figure; the tyre pressure is converted from the published kgf/cm2 to kPa and the conversion is named in the state. The manual names no vehicle manufacturer, so the maker is unknown. No real source maps an AEE game class to the BRDM-2, so class_token is empty and no mapping is created.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "brdm_2",
+      "canonical_name": "BRDM-2",
+      "maker": "unknown",
+      "model": "BRDM-2",
+      "variant": "BRDM-2",
+      "variant_id": "brdm_2",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "cold war",
+      "aliases": ["brdm-2", "brdm2", "brdm 2"],
+      "keywords": ["amphibious", "4x4", "armored reconnaissance", "armoured car", "brdm"],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 7000,
+          "unit": "kg",
+          "source": "brdm_2_technical_manual_en",
+          "locator": "Section 3 Technical Characteristics, printed page 9, row Total weight, kg - 7000 + 3%",
+          "state": "combat (total) weight as published 7,000 kg with a plus 3 percent tolerance; the manual publishes no separate kerb weight",
+          "grade": "documented"
+        },
+        "length_mm": {
+          "value": 5750,
+          "unit": "mm",
+          "source": "brdm_2_technical_manual_en",
+          "locator": "Section 3, Overall dimensions, mm, printed page 9, row length - 5750",
+          "state": "overall length, as published",
+          "grade": "documented"
+        },
+        "width_mm": {
+          "value": 2350,
+          "unit": "mm",
+          "source": "brdm_2_technical_manual_en",
+          "locator": "Section 3, Overall dimensions, mm, printed page 9, row width - 2350",
+          "state": "overall width, as published",
+          "grade": "documented"
+        },
+        "height_mm": {
+          "value": 2310,
+          "unit": "mm",
+          "source": "brdm_2_technical_manual_en",
+          "locator": "Section 3, Height at full mass, mm, printed page 9, row the tower - 2310",
+          "state": "overall height over the turret at full mass, as published; the manual gives 1,945 mm on the roof",
+          "grade": "documented"
+        },
+        "wheelbase_mm": {
+          "value": 3100,
+          "unit": "mm",
+          "source": "brdm_2_technical_manual_en",
+          "locator": "Section 3, printed page 9, row Wheelbase, mm - 3100",
+          "state": "wheelbase, as published",
+          "grade": "documented"
+        },
+        "track_mm": {
+          "value": 1840,
+          "unit": "mm",
+          "source": "brdm_2_technical_manual_en",
+          "locator": "Section 3, Track, mm, printed page 9, row the front wheels - 1840",
+          "state": "front wheel track, as published; the manual gives the rear wheel track as 1,790 mm",
+          "grade": "documented"
+        },
+        "ground_clearance_mm": {
+          "value": 330,
+          "unit": "mm",
+          "source": "brdm_2_technical_manual_en",
+          "locator": "Section 3, printed page 9, row Clearance (at pres. Tire 2.8 kg/cm2), mm - 330",
+          "state": "ground clearance at a tyre pressure of 2.8 kgf/cm2, as published",
+          "grade": "documented"
+        },
+        "max_speed_kmh": {
+          "value": 100,
+          "unit": "km/h",
+          "source": "brdm_2_technical_manual_en",
+          "locator": "Section 3, Maximum speed, km/h, printed page 9, row on the highway - 95-100",
+          "state": "published as 95 to 100 km/h on the highway; 100 is the top of the published range",
+          "grade": "documented"
+        },
+        "range_km": {
+          "value": 750,
+          "unit": "km",
+          "source": "brdm_2_technical_manual_en",
+          "locator": "Section 3, printed pages 9 and 10, row Cruising when driving on highway, km - 750",
+          "state": "operating range on the highway, as published",
+          "grade": "documented"
+        },
+        "published_power_hp": {
+          "value": 140,
+          "unit": "hp",
+          "source": "brdm_2_technical_manual_en",
+          "locator": "Section 3, Power plant, printed page 10, row Max. power at 3200-3400 r/min, HP - 140",
+          "state": "maximum power 140 horse power at 3,200 to 3,400 rpm, four-stroke petrol V8; no net basis is stated",
+          "grade": "documented"
+        },
+        "engine_displacement_l": {
+          "value": 5.53,
+          "unit": "L",
+          "source": "brdm_2_technical_manual_en",
+          "locator": "Section 3, Power plant, printed page 10, row Cylinder capacity, l - 5.53",
+          "state": "swept volume, as published",
+          "grade": "documented"
+        },
+        "transmission_type": {
+          "value": "manual",
+          "unit": "enum",
+          "source": "brdm_2_technical_manual_en",
+          "locator": "Section 3, Transmissiya, printed page 11, row Transmission - Mechanical, speed, power takeoff on the water-jet propulsion device",
+          "state": "mechanical transmission with a transfer case and power takeoff, as published",
+          "grade": "documented"
+        },
+        "gears": {
+          "value": 4,
+          "unit": "count",
+          "source": "brdm_2_technical_manual_en",
+          "locator": "Section 3, Transmission ratios, printed page 11, rows I drive 6.55, II transmission 3.09, III transmission 1.70, IV transfer 1.0",
+          "state": "four forward ratios with synchronisers on the third and fourth, as published; reverse ratio 7.77",
+          "grade": "documented"
+        },
+        "final_drive": {
+          "value": 6.8,
+          "unit": "ratio",
+          "source": "brdm_2_technical_manual_en",
+          "locator": "Section 3, printed page 11, row The main gear axles - Hypoid, gear ratio 6.8",
+          "state": "final-drive ratio, as published",
+          "grade": "documented"
+        },
+        "tyre_size_text": {
+          "value": "13.00-18",
+          "unit": "text",
+          "source": "brdm_2_technical_manual_en",
+          "locator": "Section 3, Chassis, printed page 12, row Tires - With adjustable pressure. The size of 13.00-18",
+          "state": "tyre size code as published (imperial form; aspect 100 by definition); central tyre inflation regulated from 0.3 to 2.8 kg/cm2",
+          "grade": "documented"
+        },
+        "tyre_pressure_kpa": {
+          "value": 275,
+          "unit": "kPa",
+          "source": "brdm_2_technical_manual_en",
+          "locator": "Section 3, Chassis, printed page 12, row Tire pressure - In the range from 0.3 to 2.8 kg/cm2",
+          "state": "maximum regulated inflation 2.8 kgf/cm2, converted to 275 kPa by 1 kgf/cm2 = 98.0665 kPa; the range runs down to 0.3 kgf/cm2",
+          "grade": "documented"
+        }
+      }
+    }
+  ]
+}

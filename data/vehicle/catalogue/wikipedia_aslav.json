@@ -1,0 +1,94 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Held tier-5 English Wikipedia compilation for the ASLAV reconnaissance vehicle. The registry marks primary_held false. It publishes the weight, the length, the width, the height, the engine model, the engine rating, the transmission, the maximum road speed and the range. It publishes no ground clearance, so that field is absent.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "aslav",
+      "canonical_name": "ASLAV",
+      "maker": "General Dynamics Land Systems Australia",
+      "model": "ASLAV",
+      "variant": "Reconnaissance vehicle",
+      "variant_id": "aslav",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Australia",
+      "era": "modern",
+      "aliases": [
+        "aslav"
+      ],
+      "keywords": [
+        "reconnaissance",
+        "wheeled",
+        "aslav"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 13200,
+          "unit": "kg",
+          "source": "wikipedia_aslav",
+          "locator": "Infobox, weight row",
+          "state": "weight published as 13.2 t; the tonne taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6530,
+          "unit": "mm",
+          "source": "wikipedia_aslav",
+          "locator": "Infobox, length row",
+          "state": "length published as 6.53 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2620,
+          "unit": "mm",
+          "source": "wikipedia_aslav",
+          "locator": "Infobox, width row",
+          "state": "width published as 2.62 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2690,
+          "unit": "mm",
+          "source": "wikipedia_aslav",
+          "locator": "Infobox, height row",
+          "state": "height published as 2.69 m",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Detroit Diesel 6V-53T",
+          "unit": "text",
+          "source": "wikipedia_aslav",
+          "locator": "Infobox, engine row",
+          "state": "engine published as a Detroit Diesel 6V-53T",
+          "grade": "claimed"
+        },
+        "net_power_kw": {
+          "value": 205,
+          "unit": "kW",
+          "source": "wikipedia_aslav",
+          "locator": "Infobox, engine power row",
+          "state": "engine published as 205 kW, with no net basis stated",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 100,
+          "unit": "km/h",
+          "source": "wikipedia_aslav",
+          "locator": "Infobox, speed row",
+          "state": "maximum road speed published as 100 km/h",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 660,
+          "unit": "km",
+          "source": "wikipedia_aslav",
+          "locator": "Infobox, vehicle range row",
+          "state": "range published as 660 km",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

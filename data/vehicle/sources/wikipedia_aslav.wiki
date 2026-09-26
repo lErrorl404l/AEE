@@ -1,0 +1,171 @@
+{{Short description|Australian/Canadian reconnaissance vehicle}}
+{{Use dmy dates|date=October 2018}}
+{{Infobox weapon
+| name               = ASLAV
+| image              = [[File:Side view of an ASLAV at the AWM in March 2008.jpg|300px|ASLAV-25]]
+| image_size         = 300
+| alt                = 
+| caption            = ASLAV-25
+| type               = [[Reconnaissance vehicle]]
+| origin             = [[Australia]]/[[Canada]]
+<!-- Type selection -->| is_vehicle         = yes
+<!-- Service history -->| service            = 1995–present
+| used_by            = [[Australian Army]]
+| wars               = [[Iraq War]], [[War in Afghanistan (2001–present)|Afghanistan]], [[United Nations Transitional Administration in East Timor|East Timor]]
+<!-- Production history -->| designer           = [[General Dynamics Land Systems]]
+| design_date        = 1992–1994
+| manufacturer       = [[General Motors Diesel]] &<br>[[General Dynamics Land Systems–Australia]]
+| unit_cost          = [[AUD|A$]]2.2M
+| production_date    = 1995–2007
+| number             = 257
+| variants           = [[#Variants|See variants]]
+<!-- General specifications -->| spec_label         = 
+| weight             = {{cvt|13.2|t|LT}}
+| length             = {{cvt|6.53|m|ft}}
+| part_length        = 
+| width              = {{cvt|2.62|m|ft}}
+| height             = {{cvt|2.69|m|ft}}
+| diameter           = 
+| crew               = 3
+| passengers         = 6
+<!-- Vehicle/missile specifications -->| armour             = 
+| primary_armament   = [[M242 Bushmaster|M242 25mm Bushmaster Chain Gun]]<br>210 rounds
+| secondary_armament = [[FN MAG|FN MAG 58 7.62&nbsp;mm machine gun]] <br>1000 rounds
+| engine             = Detroit [[Diesel engine|Diesel]] 6V-53T
+| engine_power       = {{cvt|205|kW}}
+| pw_ratio           = 15.53&nbsp;kW/tonne
+| payload_capacity   = 
+| drive              = Wheeled [[Eight-wheel drive|8x8]]
+| transmission       = [[Allison Transmission|Allison]] MT653
+| suspension         = 
+| clearance          = 
+| fuel_capacity      = 
+| vehicle_range      = {{cvt|660|km}}
+| speed              = {{cvt|100|km/h}}
+| guidance           = 
+| steering           = <!-- For all -->
+| ref                = <small>Australian Army<ref name=Army/> & Jane's<ref name=Janes/></small>
+}}
+
+The '''Australian Light Armoured Vehicle''' ('''ASLAV''') is an eight-wheeled armoured [[reconnaissance vehicle]] of the [[LAV II]] family used by the [[Australian Army]].<ref name="Hart">{{cite book |last1=Hart |first1=Russel |last2=Hart |first2=Stephen |title=Modern Tanks and AFVs 1991-Present |date=2019 |publisher=Amber Books Ltd |isbn=978-1-78274-725-3 |pages=195–198 }}</ref> It was built by [[General Dynamics Land Systems]] Canada, and developed from the U.S. Marine Corps' [[LAV-25]] and Canadian Army's [[Bison (armoured personnel carrier)|Bison]] armoured fighting vehicles.
+
+==Description==
+The ASLAV is a highly mobile, eight-wheel drive armoured fighting vehicle that can be deployed by land, sea or air, in [[Royal Australian Air Force]] C-130s or C-17s. It is fitted with GPS, an intra-vehicular navigation system and a radio harness capable of supporting HF, VHF, UHF and digital radios.<ref name=Army/><ref name=Connery/>
+
+The ASLAV is capable of speeds of {{cvt|100|km/h}} and has a maximum range in excess of {{cvt|660|km}}. The [[eight-wheel drive]] provides excellent cross-country mobility and redundancy. The vehicle is capable of operation with only four working wheels, and can continue to operate with eight punctured tyres through the use of solid-core run-flat tyres. It is no longer a fully amphibious vehicle.<ref name=Army/><ref name=Connery/>
+
+===Variants===
+The ASLAV fleet comprises a number of specialist purpose-designed variants built in three distinct hull configurations.<ref name=Janes/><ref name=Connery/><ref name=ANAO/>
+
+====ASLAV Type I====
+The ASLAV Type I is the most numerous type. It is a turreted vehicle derived from the [[LAV-25]] and comes in only one variant.<ref name=Janes/><ref name=ANAO/>
+
+* '''ASLAV-25''' (Reconnaissance) – is an [[Armored car (military)|Armoured Car]] with a crew of three (commander, gunner & driver). The two-man turret has day, thermal and infrared imaging weapon systems, a stabilised [[M242]] 25&nbsp;mm dual-feed chain gun and two [[FN MAG|FN MAG 58]] 7.62&nbsp;mm machine guns. The ASLAV-25 conducts troop-level tactical reconnaissance and can carry up to six dismounts in the rear.<ref name=Janes/><ref name=Connery/><ref name=ANAO/>
+
+====ASLAV Type II====
+The ASLAV Type II has no turret and greater internal capacity and is derived from the Canadian [[Bison (armoured personnel carrier)|Bison]] Armoured Personnel Carrier. The ASLAV Type II has a crew of two (commander and driver) and is armed with a pintle-mounted [[M2 Browning machine gun|M2]] 12.7&nbsp;mm machine gun. In a number of vehicles, the standard machine gun pintle mount is replaced by a [[Protector (RWS)|Kongsberg Protector remote weapon station (RWS)]], which can accommodate either a 12.7&nbsp;mm machine gun or a [[Mk 19 grenade launcher|Mk 19]] 40&nbsp;mm automatic grenade launcher. Using a common hull design installed with interchangeable Mission Role Installation Kits (MRIKs), it can be converted into any one of four variants.<ref name=Janes/><ref name=ANAO/>
+
+* '''ASLAV-PC''' (Personnel Carrier) – is an [[Armoured Personnel Carrier]] capable of carrying seven fully-equipped troops in support of troop-level tactical reconnaissance.<ref name=Janes/><ref name=Connery/><ref name=ANAO/>
+* '''ASLAV-C''' (Command) – is an Armoured Command Vehicle equipped with an enhanced radio installation and radio masts, map boards, stowage compartments, specialised seating and a stowable annex. In addition to the crew, the ASLAV-C can accommodate three staff officers and provides command and control at the Squadron and Regimental Headquarter level.<ref name=Janes/><ref name=Connery/><ref name=ANAO/>
+* '''ASLAV-S''' (Surveillance) – is a specialised surveillance vehicle equipped with a hydraulically raised mast-mounted thermal imager, laser range finder, day television camera and [[radar|battlefield surveillance radar]] [[MSTAR|AMSTAR]]. The ASLAV-S supports tactical reconnaissance with ground surveillance and observation and can carry four crew and two occasional troops.<ref name=Janes/><ref name=ANAO/>
+* '''ASLAV-A''' ([[Ambulance]]) – is an Armoured Ambulance and is fitted with specialist medical equipment. In addition to the crew, it can accommodate a medic and three lying patients or six sitting patients.<ref name=Janes/><ref name=ANAO/>
+
+====ASLAV Type III====
+The ASLAV Type III has no turret and is used by members of the [[Royal Australian Electrical and Mechanical Engineers]] for repair and recovery. The ASLAV Type III has a crew of two (commander and driver) and usually carries a third mechanic. It is armed with a pintle-mounted FN MAG 58 7.62&nbsp;mm machine gun, although some were temporarily fitted with the Kongsberg Protector RWS for service in the Middle East Area of Operations. The ASLAV Type III comes in two variants utilising two specialist MRIKs.<ref name=Janes/><ref name=ANAO/>
+
+* '''ASLAV-F''' (Fitter) – is a maintenance support vehicle that provides a protected mobile workshop for field repair personnel, including vehicle parts and tools, and is fitted with a HIAB 650 crane.<ref name=Janes/><ref name=Connery/><ref name=ANAO/>
+* '''ASLAV-R''' (Recovery) – is an [[Armoured Recovery Vehicle]] equipped with a heavy winch to recover disabled vehicles to a more accessible location or tow them to a repair facility.<ref name=Janes/><ref name=Connery/><ref name=ANAO/>
+
+==History==
+The acquisition of the ASLAV family of vehicles for the Australian Army was managed by [[Defence Materiel Organisation]] under the multi-phased LAND 112 project.<ref name=ANAO/><ref name=Janes/><ref name=Muir/> The vehicles were similar to those considered by the Australian Army to replace [[M113 armoured personnel carriers in Australian service|its M113 armoured personnel carriers]] in the early 1980s under [[Project Waler]].<ref>{{cite news |url=http://nla.gov.au/nla.news-article136296045|last1=Jesser|first1=John |title=Government opts for wheeled armoured vehicles for Darwin |newspaper=The Canberra Times|date=21 March 1987 |accessdate=26 January 2021 |page=10 |via=National Library of Australia}}</ref>
+
+In April 1989, the Australian Army purchased 15 ex-[[United States Marine Corps]] LAV-25 vehicles at a cost of A$28.4 million under LAND 112 Phase 1. These vehicles were purchased to trial the Wheeled Armoured Fighting Vehicle (WAFV) concept in northern Australia. The trials were conducted by the 2nd Cavalry Regiment in 1990–1991. The subsequent report endorsed the WAFV concept, and the Army determined that the LAV was the best vehicle to fulfil the intended role of armoured reconnaissance and surveillance.<ref name=ANAO/><ref name=Janes/><ref name=Muir/>
+
+In December 1992, Defence contracted the [[Canadian Commercial Corporation]] to supply 97 improved ASLAV Phase 2 vehicles under LAND 112 Phase 2, at a cost of A$123.84 million. These 97 vehicles were built in Canada by the [[Diesel Division of General Motors of Canada]], with final fitting performed in Australia by [[Tenix Defence]]. The first vehicles were completed in 1994. In June 1995, the scope was broadened to include replacements for the Phase 1 vehicles. In total 113 vehicles were purchased under Phase 2, with all vehicles being delivered to the 2nd Cavalry Regiment in Darwin and the School of Armour at Puckapunyal over the period 1995–1997.<ref name=ANAO/><ref name=Janes/><ref name=Muir/>
+
+In December 1997, the Australian government approved the acquisition of an additional 150 vehicles, later amended to 144. Under LAND 112 Phase 3, the initial contract with the Canadian Commercial Corporation was amended at a cost of A$286.37 million for an additional 144 newly built, improved Phase 3 ASLAVs, an upgrade of the Phase 2 fleet to Phase 3 standard and the provision of supporting ancillary equipment. The Phase 3 vehicles had enhanced offensive capabilities and crew protection, including new electric turret drives, improved thermal sights, integrated laser range finder, a second generation drive line and new suspension components.<ref name=ANAO/><ref name=Muir/>
+
+In the preparations for deployment to Iraq in 2003, 10 ASLAV Type IIs and Type IIIs were fitted with the Kongsberg Protector RWS. In total 59 systems were acquired from Kongsberg for A$17.9 million and fitted to vehicles operating in Iraq and Afghanistan. Further upgrades to crew protection for vehicles deployed to Iraq occurred with the fitting of bar armour and internal spall liners to better withstand blasts, small-arms hits and fragmentation.<ref name=ANAO/><ref name=Muir/>
+
+=== Replacement ===
+The ASLAV is to be replaced in Australian Army service by the [[Boxer (armoured fighting vehicle)|Boxer Combat Reconnaissance Vehicle]], under LAND 400 Phase 2, with deliveries expected from 2020.<ref name=CASG/>
+
+==Service==
+In the Australian Army, the ASLAV equips the Cavalry Squadrons of the [[Royal Australian Armoured Corps]]. A Cavalry Squadron comprises a headquarters element, an echelon and three sabre troops of four ASLAVs each. Each troop is further broken down into two patrols, each comprising two ASLAV-25s.<ref name=Noble/>
+
+The ASLAV equips two squadrons from each of the Australian Army's Armoured Cavalry Regiments, the [[1st Armoured Regiment (Australia)|1st Armoured Regiment]] in Adelaide, the [[2nd Cavalry Regiment (Australia)|2nd Cavalry Regiment]] in Townsville, and the [[2nd/14th Light Horse Regiment]] (Queensland Mounted Infantry) in Brisbane, as well as the School of Armour at Puckapunyal.<ref name=Chambers/><ref name=Gardiner/><ref name=Moss/>
+
+===Operational service===
+The Australian Army's ASLAV fleet saw continual operational service from 1999 to 2013.<ref name=Muir/><ref name=Cotton/>
+
+====East Timor====
+On 21 September 1999, C Squadron, 2nd Cavalry Regiment deployed 22 ASLAVs into [[Dili]] aboard [[HMAS Tobruk (L 50)|HMAS Tobruk]] as a part of [[International Force East Timor]], a further seven ASLAVs being deployed later to [[East Timor]] as a part of the commitment. The vehicles were used for a variety of tasks, including convoy escort, surveillance, reconnaissance, communications, search, vehicle check points and force presence.<ref name=Cotton/><ref name=Johnson-Grissom-Oliker/>
+
+====Iraq====
+From 2003 to 2009, the Australian Army deployed ASLAVs to [[Iraq]] with its commitment to the [[Iraq War]]. The vehicles were used as a part of the [[Security Detachment Iraq (Australia)|SECDET]] rotations in [[Baghdad]], as well as [[AMTG]] and the subsequent [[Overwatch Battle Group (West)|OBG(W)]] rotations in [[Dhi Qar Governorate]]. In 13 April 2004, the first Australian engagement of the ASLAV's 25&nbsp;mm main armament against enemy elements occurred when an ASLAV from SECDET engaged an enemy mortar base plate that was in the process of firing mortars into the Baghdad Green Zone.<ref name=Blaxland/>
+
+====Afghanistan====
+From 2006 to 2013, the Australian Army deployed ASLAVs to [[Afghanistan]] with [[Military history of Australia during the War in Afghanistan|its commitment]] to the [[War in Afghanistan (2001–present)|War in Afghanistan]]. Predominantly deployed to [[Urozgan Province]], the vehicles were used as part of the Reconstruction Task Force (RTF), Mentoring and Reconstruction Task Force (MRTF) and Mentoring Task Force (MTF) rotations, as well as supporting Special Forces Task Group (SFTG) rotations.<ref name=Connery/><ref name="D’Angina"/><ref name=Ker/>
+
+==Gallery==
+<gallery mode=packed>
+File:ASLAV in Afghanistan 2011.jpg|ASLAV-25 in Afghanistan
+Image:Puckapunyal-LAV-25-3.jpg|Trial LAV-25 at Puckapunyal
+File:Rear of an ASLAV-25.JPG|ASLAV-25 rear view
+Image:ASLAV Iraq.jpg|ASLAVs in Iraq
+Image:Light Horse 070620-N-4965F-005.jpg|ASLAV-A on exercise
+File:Five ASLAVs in Afghanistan during March 2011.jpg|ASLAV-25 & ASLAV-PC
+</gallery>
+
+==References==
+{{Reflist|refs=
+
+<ref name=Army>[https://www.army.gov.au/our-work/equipment-and-clothing/vehicles/australian-light-armoured-vehicle Australian Army, "Australian Light Armoured Vehicle", ''www.army.gov.au''], retrieved 4 October 2018.</ref>
+
+<ref name=ANAO>Australian National Audit Office, [https://www.anao.gov.au/sites/g/files/net5496/f/ANAO_Report_2006-2007_09.pdf ''Management of the Acquisition of the Australian Light Armoured Vehicle Capability'', ANAO Audit Report No.9 2006–07], Canberra: Australian National Audit Office, 2006, {{ISBN|0-642-80927-5}}.</ref>
+
+<ref name=Blaxland>John Blaxland, ''The Australian Army: from Whitlam to Howard'', Melbourne: Cambridge University Press, 2014, {{ISBN|978-1-107-04365-7}}.</ref>
+
+<ref name=CASG>[http://www.defence.gov.au/dmo/equippingdefence/land400 Capability Acquisition and Sustainment Group, "Land Combat Vehicle System", ''www.defence.gov.au''], retrieved 4 October 2018.</ref>
+
+<ref name=Chambers>LTCOL Grant Chambers, "2nd Cavalry Regiment", ''Ironsides: The Journal of the Royal Australian Armoured Corps'', Puckapunyal, VIC: The Royal Australian Armoured Corps, 2017, {{OCLC|808384287}}.</ref>
+
+<ref name=Cotton>James Cotton, ''East Timor, Australia and regional order: intervention and its aftermath in Southeast Asia'', London: RoutledgeCurzon, 2004, {{ISBN|0-415-33580-9}}.</ref>
+
+<ref name=Connery>David Connery, David Cran & David Evered, ''Conducting counterinsurgency: Reconstruction Task Force 4 in Afghanistan'', Canberra: Army History Unit, 2012, {{ISBN|978-1-921-94177-1}}.</ref>
+
+<ref name="D’Angina">James D’Angina, ''LAV-25: The Marine Corps’ Light Armored Vehicle'', Oxford: Osprey Publishing, 2011, {{ISBN|9781849086110}}.</ref>
+
+<ref name=Gardiner>LTCOL Chris Gardiner, "1st Armoured Regiment", ''Ironsides: The Journal of the Royal Australian Armoured Corps'', Puckapunyal, VIC: The Royal Australian Armoured Corps, 2017, {{OCLC|808384287}}.</ref>
+
+<ref name=Janes>Janes Land Warfare Platforms: Armoured Fighting Vehicles, [https://janes.ihs.com/ArmouredFightingVehicles/Display/jaa_0255-jafv "Australian Light Armoured Vehicle (ASLAV) programme", ''janes.ihs.com''], retrieved 4 October 2018.</ref>
+
+<ref name=Johnson-Grissom-Oliker>David E. Johnson, Adam Grissom & Olga Oliker, ''In the middle of the fight: an assessment of medium-armoured forces in past military operations'', Santa Monica, CA: RAND Corporation, 2008, {{ISBN|978-0-8330-4413-6}}.</ref>
+
+<ref name=Ker>Julian Ker, " Vehicle sustainment in the field", ''Australian Defence Magazine'', Sydney: Yaffa Publishing, October 2012, {{ISSN|1324-6550}}.</ref>
+
+<ref name=Moss>LTCOL Andrew Moss, "2nd/14th Light Horse Regiment", ''Ironsides: The Journal of the Royal Australian Armoured Corps'', Puckapunyal, VIC: The Royal Australian Armoured Corps, 2017, {{OCLC|808384287}}.</ref>
+
+<ref name=Muir>Tom Muir, "ASLAV: Are we overtasking this willing workhorse?", ''Australian Defence Magazine'', Sydney: Yaffa Publishing, October 2008, {{ISSN|1324-6550}}.</ref>
+
+<ref name=Noble>LTCOL Roger Noble, "Australian Light Armoured Vehicle (ASLAV) as mounted cavalry: vanguard for a hardened Army", ''Australian Army Journal'', Vol 2, No 1, Winter 2004, Duntroon: Head, Land Warfare Studies Centre, 2004, {{ISSN|1448-2843}}.</ref>
+
+}}
+
+==External links==
+{{commons category}}
+* [https://www.army-technology.com/projects/australianlightarmou/ Army Technology, "ASLAV-25 Light Armoured Vehicle", www.army-technology.com], retrieved 4 October 2018.
+* [https://www.armyrecognition.com/australia_australian_army_wheeled_armoured_vehicle/aslav_8x8_light_armoured_vehicle_technical_data_sheet_specifications_pictures_video_12102164.html Army Recognition, "ASLAV 8x8 light armoured vehicle technical data sheet specifications", www. armyrecognition.com], retrieved 4 October 2018.
+* [http://www.tanks-encyclopedia.com/modern/Australia/ASLAV.php Tank Encyclopedia, "ASLAV", www.tanks-encyclopedia.com], retrieved 4 October 2018.
+
+{{Modern Recce}}
+{{Modern IFV and APC}}
+
+{{DEFAULTSORT:Aslav}}
+[[Category:Armoured fighting vehicles of Australia]]
+[[Category:Armoured fighting vehicles of the post–Cold War period]]
+[[Category:General Dynamics land vehicles]]
+[[Category:Wheeled amphibious vehicles]]
+[[Category:Eight-wheeled vehicles]]
+[[Category:Military vehicles introduced in the 1990s]]
+[[Category:Mowag Piranha]]

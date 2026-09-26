@@ -1,0 +1,537 @@
+{{Use dmy dates|date=March 2021}}
+{{Infobox weapon
+| name               = Piranha V
+| image              = Mowag Piranha V Danish.jpg
+| caption            = Danish Mowag Piranha 5
+| origin             = [[Switzerland]]
+| type               = [[Armoured fighting vehicle|Wheeled armoured fighting vehicle]]
+<!-- Type selection -->| is_vehicle         = yes
+<!-- Service history -->| service            = 2015 – present<ref name="military-today"/>{{Unreliable source?|date=June 2025}}
+| used_by            = See ''[[#Operators|Operators]]''
+| wars               = <!-- Production history -->
+| designer           = [[General Dynamics European Land Systems]]
+| design_date        = 2004 - 2008 (for the FRES programme)<ref name="design">{{cite web|url=https://publications.parliament.uk/pa/cm200607/cmselect/cmdfence/159/159.pdf|title=The Army's requirement for armoured vehicles: the FRES programme - pages 17 - 22}}</ref>
+| manufacturer       = * [[General Dynamics European Land Systems#GDELS Mowag GmbH|GDELS Mowag GmbH]]<ref name="GDELS production for Denmark">{{cite web|url=https://www.gdels.com/en/media/news/handover-of-the-first-piranha-wheeled-armoured-vehicle-to-denmark-mtk0pyqfyw95c26z2wwj1xu7 |title=Handover of the first PIRANHA Wheeled Armoured Vehicle to Denmark
+ |website=gdels.com| date=17 May 2017}}</ref><ref name="GDELS production for Romania">{{Cite web |date=2024-05-24 |title=BSDA 2024: Romanian Piranha 5 programme progresses |url=https://www.janes.com/osint-insights/defence-news/land/bsda-2024-romanian-piranha-5-programme-progresses |access-date=2024-07-03 |website=Default |language=en}}</ref>
+* [[General Dynamics European Land Systems#GDELS Deutschland GmbH|GDELS Deutschland GmbH]]<ref name="Production Germany">{{cite web|url=https://defence-blog.com/gdels-scales-up-armored-vehicle-production-in-germany/|title=HyGDELS scales up armored vehicle production in Germany  |date=8 September 2025}}</ref>
+* [[ROMARM#Bucharest Mechanical Factory|Bucharest Mechanical Factory]]<ref name="GDELS production for Romania"/>
+| developed_from     = [[Mowag Piranha IV]]
+| developed_into     = *{{ill|Luchs 2|de|Luchs 2 (Spähpanzer)}}
+*{{ill|VCR Dragón|es|Dragón (vehículo blindado)}}
+| unit_cost          = 
+| production_date    = 
+| number             = 
+| variants           = By GDELS Mowag:<ref name="GDELS Piranha V">{{cite web |url=https://www.gdels.com/en/products/wheeled-vehicles/piranha#anchor-modularity|title=GDELS Piranha V |website=gdels.com |access-date=2026-02-20}}</ref>
+Piranha 6×6
+*RECCE
+Piranha 8×8
+*Mortar Carrier
+*IFV
+*APC
+*Stratcom
+*Sappeur
+*Ambulance
+*C2
+*CIS/GEO
+*SHORAD
+Piranha 10×10
+*AAC
+*HMC
+*Recovery
+*Bridge Layer
+<!-- General specifications -->| weight             = {{convert|30|t|lbs|abbr=on}}
+| length             = {{convert|8|m|ft|abbr=on}}
+| width              = {{convert|2.99|m|ft|abbr=on}}
+| height             = {{convert|2.34|m|ft|abbr=on}}
+| diameter           = 
+| crew               = 2 on non turret variants
+3 on IFV/RWS variants 
++ Maximum 8 passengers
+<!-- Vehicle/missile specifications -->| armour             = [[14.5 mm]] AP resistant. Maximum Add-on ([[25 mm caliber|25 mm]] AP resistant)
+| primary_armament   = * [[Armoured personnel carrier|APC]]: [[RCWS]] [[12 mm caliber|12.7 mm]] [[machine gun]] with option for [[anti-tank missile]] launcher
+* [[Infantry fighting vehicle|IFV]]: [[30 mm caliber|30 mm]] [[autocannon]] turret
+* [[Mortar carrier]]: 120 mm [[Mortar (weapon)|mortar]]
+| secondary_armament = * [[Infantry fighting vehicle|IFV]]: [[7.62 mm caliber|7.62 mm]] coaxial machine gun (on turret)
+| engine             = [[MTU Aero Engines|MTU]] 6V199 TE21 or [[Scania AB|Scania]] DC13
+| engine_power       = {{convert|437|kW|hp|lk=in|abbr=on}}, or {{convert|480|kW|hp|lk=in|abbr=on}}
+| transmission       = ZF 7HP902S or SAPA SW624
+| payload_capacity   = 
+| drive              = [[6×6]], [[8×8]] and [[Ten-wheel drive|10×10]]
+| fuel_capacity      = {{convert|450|L|gal|lk=in|abbr=on}}
+| pw_ratio           = {{convert|14.56|kW/t|hp/t|abbr=on}}, or {{convert|16|kW/t|hp/t|abbr=on}}
+| suspension         = [[Hydropneumatic suspension|Hydropneumatic]] 6×6, 8×8 and 10×10 wheeled
+| clearance          = 
+| vehicle_range      = {{convert|550|km|mi|lk=in|abbr=on}}<ref name="Piranha5"/>
+| speed              = {{convert|100|km/h|mph|lk=in|abbr=on}}<ref name="Piranha5"/>
+| guidance           = 
+| steering           = 
+}}
+
+The '''Piranha V''' multi-role [[armoured fighting vehicle]] is the fifth generation variant of the [[Mowag Piranha]] family of vehicles. It was designed by [[General Dynamics European Land Systems#GDELS Mowag GmbH|General Dynamics European Land Systems - Mowag GmbH]].<ref name="Piranha5">[http://www.gdels.com/products/wheeled_3.asp "Product Range - Wheeled Vehicles - Medium Wheeled Vehicles - Piranha 5"] {{Webarchive|url=https://web.archive.org/web/20110903213146/http://www.gdels.com/products/wheeled_3.asp |date=3 September 2011 }}, "GENERAL DYNAMICS - European Land Systems", Retrieved 1 September 2011.</ref> The first prototype was completed in 2008.<ref name="army-tech"/> It was first introduced during the [[Eurosatory]] exhibition in 2010.<ref name="eurosatory">{{cite web|url=https://defense-update.com/20100613_gdls-eurosatory.html|title=GDLS Europe Introduces New Infantry Fighting Vehicles|website=defense-update.com|date=13 June 2010}}</ref>
+
+==Development==
+The Piranha V was developed by [[General Dynamics UK]] and [[General Dynamics European Land Systems#GDELS Mowag GmbH|General Dynamics European Land Systems - Mowag GmbH]]. It was designed to meet the [[British Army]] requirements of the [[Future Rapid Effect System]] (FRES) program.<ref name="army-tech">{{cite web|url=https://www.army-technology.com/projects/piranhav/|title=PIRANHA V Armoured Wheeled Vehicle|website=army-technology.com|date=2021-06-14}}</ref> In 2007, it was announced that three vehicles were participating in the program: the [[Boxer (armoured fighting vehicle)|Boxer]], the [[VBCI]], and the Piranha V.<ref>[http://www.mod.uk/DefenceInternet/DefenceNews/EquipmentAndLogistics/DraysonNewVehiclesWillHavevitalPartToPlayInTheArmyOfTheFuture.htm Ministry of Defence | Defence News | Drayson: New vehicles will have "vital part to play in the Army of the future"] {{webarchive|url=https://web.archive.org/web/20070711050356/http://www.mod.uk/DefenceInternet/DefenceNews/EquipmentAndLogistics/DraysonNewVehiclesWillHavevitalPartToPlayInTheArmyOfTheFuture.htm |date=11 July 2007 }}</ref>
+
+In 2008, the Piranha V was announced as the provisional selection in the FRES program.<ref>[http://www.mod.uk/DefenceInternet/DefenceNews/EquipmentAndLogistics/DesignSelectedForFutureArmouredVehicleForBritishArmyfres.htm Ministry of Defence | Defence News | Design selected for future armoured vehicle for British Army (FRES)] {{webarchive |url=https://web.archive.org/web/20090903110330/http://www.mod.uk/DefenceInternet/DefenceNews/EquipmentAndLogistics/DesignSelectedForFutureArmouredVehicleForBritishArmyfres.htm |date=3 September 2009 }}</ref> However, no production order was announced, and the contract was subsequently cancelled in December 2008.<ref>{{cite web|url=http://www.janes.com/news/defence/land/jdw/jdw080509_1_n.shtml|title=General Dynamics' Piranha V makes FRES provisional selection|work=janes.com|archive-url=https://web.archive.org/web/20090204061737/http://www.janes.com/news/defence/land/jdw/jdw080509_1_n.shtml|archive-date=4 February 2009|date=9 May 2008|author=Tim Ripley}}</ref><ref name="parliament.uk">{{cite web|url=https://publications.parliament.uk/pa/cm200809/cmhansrd/cm081211/wmstext/81211m0001.htm|title=House of Commons Hansard Ministerial Statements for 11 Dec 2008 (pt 0001)|work=parliament.uk|access-date=4 August 2016}}</ref> By the end of 2008, the first prototype was finished.<ref name="army-tech"/> The vehicle was presented by GDELS at the Eurosatory exhibition in 2010, together with a new variant of the [[ASCOD]] IFV.<ref name="eurosatory"/> In 2016, it was successfully loaded into an [[Airbus A400M]] cargo aircraft during an evaluation exercise in [[Seville]].<ref>{{cite web|url=https://www.gdels.com/pr.php?news=88|title=Wheeled Armored Vehicle PIRANHA 5 Loaded in Airbus A400M|website=gdels.com|date=2016-05-25}}</ref>
+
+A live firing test was conducted at [[Rena, Norway|Camp Rena]] in [[Norway]], in 2019, with the presence of the Romanian procurement authority. The Piranha V, fitted with the [[Israel]]i UT30 MK 2 passed the series of static and dynamic shooting tests in harsh environmental conditions, exceeding the customer's requirements, as noted by GDELS.<ref>{{cite web|url=https://www.army-technology.com/news/gdels-shooting-trials-piranha-5-romania/|title=GDELS conducts shooting trials with PIRANHA 5 for Romanian Army|website=army-technology.com|date=10 April 2019}}</ref>
+
+In 2024 GD [[General Dynamics European Land Systems]] unveiled the 10×10 Piranha V HMC<ref>{{Cite web |last=Militar |first=Redaccion Zona |date=2024-04-18 |title=GDELS unveils the new 10×10 heavy transport version of its IFV Piranha |url=https://www.zona-militar.com/en/2024/04/18/gdels-unveils-the-new-10x10-heavy-transport-version-of-its-ifv-piranha/ |access-date=2026-02-19 |website=Zona Militar |language=en-US}}</ref> that can be equipped in either a bridging, troop transport or howitzer configuration.<ref>{{Cite web |title=PIRANHA Wheeled Armored Vehicle {{!}} GDELS |url=https://www.gdels.com/en/products/wheeled-vehicles/piranha |access-date=2026-02-19 |website=www.gdels.com |language=en}}</ref>
+
+==Design==
+===Mobility===
+The Piranha V is available with a [[MTU Aero Engines|MTU]] 6V199 TE21 [[diesel engine]] producing {{convert|586|hp|kW|lk=in}}.<ref>{{cite web|url=https://romarm.ro/en/parteneriat-strategic-uzina-mecanica-bucuresti-general-dynamics-prin-fabricarea-piranha-5/|title=Joint venture agreement between Uzina Mecanică București - General Dynamics, the first step to relaunch the defence industry|date=16 March 2022|access-date=27 May 2023|work=[[ROMARM]]}}</ref> Both Denmark<ref>{{Cite web|url=https://www.mynewsdesk.com/dk/scaniadk/pressreleases/scania-skal-levere-motorer-til-forsvarets-nye-pansrede-mandskabsvogne-1632914|title=Scania skal levere motorer til Forsvarets nye pansrede mandskabsvogne|language=da|date=18 November 2016|website=mynewsdesk.com}}</ref> and Spain,<ref name="hoyos">{{Cite web|url=https://www.infodefensa.com/es/2017/09/12/noticia-hoyos-recepcion-cinco-demostradores-extendera-hasta-noviembre.html|title = Hoyos (8×8): "La recepción de los cinco demostradores se extenderá hasta noviembre de 2018" (1) - Noticias Infodefensa España|date = 12 September 2017}}</ref> however, have opted for a different powerpack built by the Spanish company SAPA, consisting of a [[Scania AB|Scania]] Diesel engine with 480&nbsp;kW coupled with the SW&nbsp;624 automatic transmission, and an auxiliary power unit with 75&nbsp;kW.<ref>{{cite web|url=http://www.janes.com/article/74880/sapa-transmission-powers-spanish-piranha|title=SAPA Transmission powers Spanish Piranha|website=Janes|archive-url=https://web.archive.org/web/20171015084901/http://www.janes.com/article/74880/sapa-transmission-powers-spanish-piranha|archive-date=15 October 2017|date=13 October 2017}}</ref>
+
+===Protection===
+Standard armour ([[STANAG 4569]], Level 4/4b) offers all-round [[14.5 × 114 mm|14.5mm]] AP protection and [[20 mm caliber|20mm]]-[[23 mm caliber|23mm]] AP on front. Can offer full protection for the crew if a 10&nbsp;kg explosive AT mine explodes under the hull. Add-ons can offer all-round protection to [[25 mm caliber|25mm]] AP rounds and level 5 STANAG 4569.<ref name="military-today">{{Cite web|url=http://www.military-today.com/apc/mowag_piranha_v.htm|archive-url=https://archive.today/20160414012646/http://www.military-today.com/apc/mowag_piranha_v.htm|url-status=usurped|archive-date=14 April 2016|title=MOWAG Piranha V - Infantry fighting vehicle|access-date=26 May 2023}}</ref>
+
+=== Modularity ===
+The Piranha V is developed as a modular payload with the 6×6, 8×8 and 10×10 featuring a 7.5, 14.5 and 18 ton payload capacity<ref>{{Cite web |title=PIRANHA Wheeled Armored Vehicle {{!}} GDELS |url=https://www.gdels.com/en/products/wheeled-vehicles/piranha#anchor-payload |access-date=2026-02-19 |website=www.gdels.com |language=en}}</ref>
+
+==Operational history==
+===Denmark===
+At the end of 2015, [[Denmark]] announced the order of 308 vehicles. The first Piranhas were to arrive in 2018, with the last arriving in 2023.<ref name="forsvaret">{{cite web |date=11 December 2015 |title=309 New Armored Vehicles |url=http://www2.forsvaret.dk/nyheder/overige_nyheder/Pages/309nyepansredemandskabsvogne.aspx |archive-url=https://web.archive.org/web/20160116230404/http://www2.forsvaret.dk/nyheder/overige_nyheder/Pages/309nyepansredemandskabsvogne.aspx |archive-date=16 January 2016 |website=[[Forsvaret.dk]] |language=Danish}}</ref> The Piranha V was selected as the replacement of the old [[M113]]. It was selected over the [[Combat Vehicle 90#Armadillo|CV90 Armadillo]], the ASCOD, and the VBCI.<ref>{{cite web|url=https://defense-update.com/20150502_piranha_denmark.html|title=Denmark to buy hundreds of Swiss Piranha 5 APCs to replace aeging M-113s|website=defense-update.com|date=2 May 2015|author=Tamir Eshel}}</ref>
+
+The Danish Piranha V contract includes six different variants: infantry, command, pioneer, ambulance, repair and mortar. The first pre-production variant vehicles arrived in 2017, with the first production variants being officially handed over to the Armed Forces in March 2019.<ref>{{cite web|url=https://esut.de/en/2019/04/meldungen/ruestung2/12055/piranha-5-und-eagle-5-in-daenemark-an-die-streitkraefte-uebergeben/|title=Piranha 5 and Eagle 5 handed over to the armed forces in Denmark|website=esut.de|date=4 April 2019}}</ref><ref name="upi">{{cite web |last1=Tomkins |first1=Richard |date=19 May 2017 |title=First Piranhas delivered to Danish military |url=https://www.upi.com/Defense-News/2017/05/19/First-Piranhas-delivered-to-Danish-military/6061495190787/ |archive-url=https://archive.today/20170521210024/https://www.upi.com/Defense-News/2017/05/19/First-Piranhas-delivered-to-Danish-military/6061495190787/ |archive-date=21 May 2017 |access-date=21 May 2017 |website=United Press International}}</ref>
+
+According to the mortar carrier deal signed between the [[Danish Defence Acquisition and Logistics Organization]] (DALO) signed and the [[Elbit Systems]] subsidiary ELSAIT, 15 Piranha Vs were equipped with the [[Cardom|A3MS 120mm mortar]] system.<ref>{{Cite web |date=2017-03-14 |title=OLFI - Forsvaret har valgt materiel for milliarder |url=https://olfi.dk/2017/03/14/forsvaret-har-valgt-materiel-milliarder/ |access-date=2026-02-19 |website=olfi.dk |language=da-DK}}</ref>
+
+The ambulance version of the Piranha was received in 2020. The vehicles were assigned to the 1st Brigade where they replaced the [[Piranha III]] and [[Mowag Duro]] 6×6.<ref>{{cite web|url=https://www.shephardmedia.com/news/landwarfareintl/premium-ambulance-version-piranha-v-enters-service/|title=Ambulance version of Piranha V enters service with Danish Army|author=Flavia Camargos Pereira|website=shephardmedia.com|date=15 July 2020|url-access=subscription}}</ref> The same year, the Danish Finansudvalg cleared the Danish MoD to use 128 million DKK(20 million USD) on having GDELS and MILDEF AB convert 110 Piranha V APCs into Communication and Information Systems (CIS) and Geospatial (GEO) command platform<ref name=":72" />
+
+In 2023, the [[Danish Ministry of Defence]] announced that it selected the [[Skyranger 30]] as part of its planned ground air defense system. The Skyranger system is to be mounted on the Piranha V platform. The integration will be performed by the Danish company [[Terma A/S]].<ref>{{cite web |author=Stephen W. Miller |date=23 May 2023 |title=Danish Army Selects Skyranger 30 for Planned Mobile Air Defense |url=https://www.armadainternational.com/2023/05/danish-army-selects-skyranger-30-for-planned-mobile-air-defense/ |work=Armada International}}</ref>
+
+==== Danish deplyments of Piranha V ====
+All Piranha V have been and continue to be deployed by the Danish military as part of the contingents to [[Estonia]] and [[Latvia]] as part of [[NATO Enhanced Forward Presence|NATO EFP]].<ref>{{Cite web |title=Mission Update uge 21 - 2022 |url=https://www.forsvaret.dk/da/nyheder/2022/mission-update-uge-21---2022/ |access-date=2026-02-14 |website=Forsvaret |language=da}}</ref>
+
+[[File:Piranha V Sanitet.png|thumb|Piranha V Ambulance in Danish service]]
+The Piranha V has also seen service as part of civilian readiness where theyve served as ambulances during harsh winters where normal ambulances would not be able to navigate.<ref>{{Cite web |date=2024-01-03 |title=Militæret indsætter pansrede køretøjer for at støtte ambulancer |url=https://politiken.dk/danmark/art9690664/Milit%C3%A6ret-inds%C3%A6tter-pansrede-k%C3%B8ret%C3%B8jer-for-at-st%C3%B8tte-ambulancer |access-date=2026-02-19 |website=Politiken - Den levende avis |language=da-DK}}</ref><ref>{{Cite web |date=2026-01-06 |title=Forsvarets Piranha-køretøjer holder klar i vintervejret - TV 2 |url=https://vejr.tv2.dk/live/2024-12-02-vejr-og-klima/forsvarets-piranha-koeretoejer-holder-klar-i-vintervejret?entry=9d5d90f6-76e2-4b3a-b137-fa0ecd0b5492 |access-date=2026-02-19 |website=vejr.tv2.dk |language=da-DK}}</ref>
+
+==== Danish criticism of the weapon system ====
+The Piranha V has received harsh criticism by its users within the Danish armed forces due to issues including possible [[radio interference]] [[Accidental discharge|discharging]] the machine gun, problems with the vehicle brakes and a lack of both spare parts and mechanics who can repair the faults that occur on an ongoing basis.<ref>{{Cite web |date=2022-04-15 |title=OLFI - Mulig radiointerferens fører øjensynligt til vådeskud fra Forsvarets Piranha 5 PMV'er |url=https://olfi.dk/2022/04/15/mulig-radiointerferens-foerer-til-vaadeskud-fra-forsvarets-piranha-5/ |access-date=2026-02-14 |website=olfi.dk |language=da-DK}}</ref> In 2024, it was reported that the Piranha V armored personnel carriers are planned to be retired from infantry use in favor of other infantry fighting vehicles, with the Piranhas relegated to [[command and control]], engineering, artillery and expeditionary deployment use.<ref>{{Cite web |date=2024-04-20 |title=Dokument lækket til TV 2 afslører ny forsvarsplan - TV 2 |url=https://nyheder.tv2.dk/2024-04-20-dokument-laekket-til-tv-2-afsloerer-ny-forsvarsplan |access-date=2026-02-14 |website=nyheder.tv2.dk |language=da-DK}}</ref>
+
+=== Germany ===
+==== Piranha V 8×8 StratCom ====
+As part of the programme "''TaWAN LBO (Taktische Wide Area Network Landbasierte Operationen) Richtfunkmanagement, klein",'' the German Army selected the Piranha V StratCom (Strategic Communication Systems), an armoured vehicle that was presented by [[General Dynamics European Land Systems|GDELS]] at Eurosatory 2024. It is equipped with a 15-meter communication mast system with point-to-point radio systems, and a [[C4I]] command system.<ref name=":9">{{Cite web |date=2024-06-17 |title=Radhaubitze, Panzermörser und Richtfunkpanzer – GDELS stellt neue Fahrzeugvarianten auf der Eurosatory vor |url=https://www.hartpunkt.de/radhaubitze-panzermoerser-und-richtfunkpanzer-gdels-stellt-neue-fahrzeugvarianten-auf-der-eurosatory-vor/ |access-date=2024-07-09 |language=de-DE}}</ref>
+
+The ''"Richtfunkpanzer"'' was selected by the Germany in January 2025, and ordered in February 2025.<ref name=":5">{{Cite web |date=2025-02-20 |title=GDELS to supply PIRANHA 5 vehicles for German Army's TaWAN project |url=https://defence-industry.eu/gdels-to-supply-piranha-5-vehicles-for-german-armys-tawan-project/ |access-date=2025-02-20 |language=en}}</ref>
+
+==== Piranha V 6×6 - Jamming vehicle ====
+The German Army plans to replace the Hummel vehicle, a jammer based on the TPz Fuchs with a [[Mowag Piranha|Piranha 6×6]] called the ''"Maus Störpanzer"'' (Mobiles Aufklärungsunterstützungssystem).<ref name=":92">{{Cite web |last=Onlineredaktion |first=Dorothee FrankLeiterin |date=2025-08-11 |title=Störpanzer-Nachfolge der Bundeswehr |url=https://defence-network.com/maus-nachfolger-stoerpanzer-hummel-bundeswehr/ |access-date=2025-08-12 |language=de}}</ref>
+
+The purchase of 90 vehicles was blocked by the budget committee in January 2026. The experience in Ukraine showed that the protection level and the range of the system was not sufficient for the needs. The initial plan was to procure 40 operational systems and two prototypes for an initial sum of €596 million. A new tendering process will be initiated, and will include Hensoldt and Plath in the list of competitors.<ref>{{Cite web |last=Onlineredaktion |first=Navid LinnemannStv Leiter |date=2026-01-29 |title=„Aus die MAUS“ – Haushaltsausschuss verweigert 90 Störpanzer |url=https://defence-network.com/aus-die-maus-verweigert-stoerpanzer/,%20https://defence-network.com/aus-die-maus-verweigert-stoerpanzer/ |access-date=2026-02-13 |language=de}}</ref>
+
+=== Netherlands ===
+==== Piranha V - SAWFISH ====
+An electronic warfare vehicle selected in June 2026. It is designed to disrupt, interfere or suppress with enemy radio systems (VHF, UHF, SHF).<ref>{{Cite web |last=Giansiracusa |first=Aurelio |date=2026-06-14 |title=Sistemi di guerra elettronica per i Paesi Bassi |url=https://aresdifesa.it/sistemi-di-guerra-elettronica-per-i-paesi-bassi/ |access-date=2026-06-15 |website=Ares Osservatorio Difesa |language=it-IT}}</ref> The main contractor for the EW system is Hensoldt Nederlands.<ref>{{Cite web |last=Defensie |first=Ministerie van |date=2026-06-11 |title=Defensie vernieuwt systemen voor Elektronische Oorlogvoering {{!}} Defensie.nl |url=https://www.defensie.nl/actueel/nieuws/2026/06/11/defensie-vernieuwt-systemen-voor-elektronische-oorlogvoering |access-date=2026-06-15 |website=www.defensie.nl |language=nl}}</ref>
+
+This initiative involves Germany, Switzerland and Denmark as well.
+
+===Romania===
+[[File:1 Decembrie 2022 - Cluj-Napoca (52539297149) cropped.jpg|thumb|Romanian Piranha V with the [[Elbit]] UT30 MK 2 turret]]
+In 2017, [[Romania]] signed a 900 million euro contract with [[General Dynamics European Land Systems]] (GDELS) for the purchase and production of 227 Piranha V armored personnel carriers in Romania.<ref name=":0">{{Cite web |date=2018-01-15 |title=Romania signs €900mn contract for Piranha armoured vehicles |url=https://www.intellinews.com/romania-signs-900mn-contract-for-piranha-armoured-vehicles-135147/ |access-date=2022-10-29 |website=www.intellinews.com |language=en}}</ref> The joint venture between GDELS and {{ill|Uzina Mecanică București|ro}} (UMB) also aims to provide the Piranha V to the export market in the area. Besides production, a military vehicle maintenance section will also operate at UMB.<ref name="15-03-2022">{{Cite web|url=https://www.hotnews.ro/stiri-defense-25435434-blindatele-piranha-5-vor-produse-complet-uzina-mecanica-bucuresti-inclusiv-pentru-export-cate-transportoare-vor-mai-livrate-armatei.htm|title = Blindatele Piranha 5 vor fi produse complet la Uzina Mecanică București, inclusiv pentru export|website=[[HotNews]]|date=15 March 2022|language=ro}}</ref>
+
+The first batch of 36 vehicles, was produced at GDELS-Mowag's facilities in [[Kreuzlingen]], Switzerland, 10 of which were assembled in Bucharest. The first batch included 30 vehicles in [[Infantry Fighting Vehicle]] configuration equipped with [[Mk44 Bushmaster II|30 mm cannons]], and 6 in mobile command point configuration, and was assigned to the [[26th Infantry Battalion (Romania)|26th Infantry Battalion]] in October 2020.<ref>{{cite web|url=https://www.hotnews.ro/stiri-defense-24331777-transportoare-blindate-piranha-5-receptionate-armata-scorpionii-rosii.htm|title=Primele 36 de transportoare blindate PIRANHA V au fost receptionate de Armata|website=[[HotNews]]|date=5 October 2020|access-date=5 Oct 2020|language=ro}}</ref><ref>{{Cite web|url=https://www.hotnews.ro/stiri-defense-24401357-transportoare-blindate-piranha-5-poligon-cincu-trageri.htm|title = Armata a testat primele blindate Piranha 5 în poligonul de la Cincu și a executat trageri cu tunul de 30 mm|website=[[HotNews]]|date=6 November 2020|language=ro}}</ref> A second batch of 32 vehicles assembled at UMB, was received in November 2022. Another 26 Piranhas were received in different configurations, including mortar carriers, equipped with [[Cardom|Spear MK2]] 120&nbsp;mm mortars, ambulances, [[CBRN]], and recovery vehicles.<ref>{{cite web|url=https://www.defenseromania.ro/piranha-v-romania-variante_619874.html|title=Noile variante de Piranha V pentru România (Video). Piranha inclusiv cu mortier Cardom Spear de 120 mm urmează să intre în dotarea Armatei|work=DefenseRomania|date=5 December 2022}}</ref> The rest of the vehicles will be entirely produced in Romania.<ref name="15-03-2022"/> On 10 February 2023, it was announced that Romania will purchase another 150 Piranha V for an estimated cost of 674 million US dollars.<ref>{{cite web|url=https://www.digi24.ro/stiri/romania-va-cumpara-alte-150-de-blindate-piranha-pentru-armata-romana-2247757|title=România va cumpăra alte 150 de blindate Piranha pentru armata română|language=ro|work=[[Digi24]]|date=10 February 2023}}</ref> In June 2025, it was reported that 80% of the local production was completed and that UMB will produce another 150 vehicles.<ref>{{cite web|url=https://www.euronews.ro/articole/in-interiorul-fabricilor-care-lucreaza-pentru-armata-romana-ce-si-cat-se-produce|title=În interiorul fabricilor care lucrează pentru Armata română. Ce și cât se produce în companiile naționale și private|language=ro|website=euronews.ro|date=25 June 2025}}</ref> A total of 122 vehicles were delivered to the Romanian Army in 2025.<ref name=":2025">{{cite web|url=https://monitorulapararii.ro/armata-romana-a-primit-in-2025-194-blindate-cobra-2-122-transportoare-piranha-5-si-495-camioane-iveco-1-59594|title=Armata Română a primit, în 2025, 194 blindate Cobra-2, 122 transportoare Piranha-5 și 495 camioane IVECO|language=ro|website=monitorulapararii.ro|date=14 January 2026}}</ref>
+
+==== Romanian deployments of Piranha V ====
+In May 2023, 25 Piranhas of the 26th Infantry Battalion participated in the Anakonda 23 exercise.<ref name="anakonda">{{cite web|url=https://www.defenseromania.ro/tab-77-si-zimbrii-care-se-stricau-in-misiune-sunt-istorie-demonstratie-de-forta-piranha-5-romanesti-mars-de-1-000-km-a-blindatelor-de-lupta_622542.html|title=TAB-77 și Zimbrii care se stricau în misiune sunt istorie. Demonstrație de forță Piranha 5 românești: Marș de 1.000 km a blindatelor de luptă|language=ro|author=Darius Mureșan|work=DefenseRomania|date=6 May 2023}}</ref><ref>{{cite web|url=https://umbrela-strategica.ro/peste-400-de-militari-vor-participa-la-anakonda-23-exercitiu-multinational-in-polonia/|title=Peste 400 de militari români vor participa la Anakonda 23, exercițiu multinațional în Polonia|language=ro|website=umbrela-strategica.ro|date=24 April 2023}}</ref> The Romanian soldiers carried out a 1,000 kilometer march to the Polish training grounds in [[Nowa Dęba]] where they trained together with troops from [[Slovenia]], [[Poland]], and the [[United States]].<ref name="anakonda"/><ref>{{cite web|url=https://www.army.mil/article/266928/thunderbolts_roll_out_the_thunder_at_anakonda_23|title='Thunderbolts' roll out the thunder at Anakonda 23|author=Pfc. Jason Klaer|website=army.mil|date=23 May 2023}}</ref>
+
+== Derivatives of the Piranha V ==
+
+=== Piranha V 8×8 - VCR Program ===
+{{Main|:es:Dragón (vehículo blindado)|l1=Dragón}}
+[[File:Dragon VCR - IFV.png|thumb|VCR Dragon IFV]]
+Under the ''Vehículo de Combate sobre Ruedas'' (VCR) program, the Spanish Ministry of Defence selected a local team in 2015 to develop the future 8×8 armored infantry vehicle which is to replace the old [[Pegaso BMR|BMR]], [[VEC-M1|VEC]], and [[M113]] vehicles in the Spanish Army endowment. The team, formed by [[Indra Sistemas]], [[Sapa Placencia]], and the joint venture [[General Dynamics European Land Systems]]-[[Santa Bárbara Sistemas]] based the vehicle on the Piranha V design.<ref>{{cite web|url=https://defence-blog.com/spain-selects-piranha-5-as-new-8x8-armoured-infantry-vehicle/|title=Spain selects Piranha 5 as new 8×8 armoured infantry vehicle|author=Dylan Malyasov|website=defence-blog.com|date=28 September 2015}}</ref>
+
+In 2018, the first 5 demonstrators were received.<ref name="hoyos" /> The contract for the armored vehicle, known as the ''{{ill|Dragón|es|Dragón (vehículo blindado)}}'' by the Spanish Army, was awarded in 2020 for 1.74 billion euros, 733 million of which was awarded to GDLS-SBS. It included 348 vehicles, maintenance and life cycle support, as well as the support for international commercialization. The contract is expected to grow to 1,000 vehicles.<ref>{{cite web |date=25 August 2020 |title=General Dynamics European Land Systems awarded €733 million (USD $870 million) of a €1.74 billion contract for 348 Spanish 8×8 combat vehicles |url=https://www.prnewswire.com/news-releases/general-dynamics-european-land-systems-awarded-733-million-usd-870-million-of-a-1-74-billion-contract-for-348-spanish-8x8-combat-vehicles-301117983.html |website=prnewswire.com}}</ref> The Dragón began trials in 2022, after passing the critical design review. Of the 348, 219 are to be in IFV configuration, 58 reconnaissance vehicles, 49 [[military engineering vehicle|sappers combat vehicles]], and 14 command post vehicles. The deliveries are scheduled to finish by 2027.<ref>{{cite web |author=Ronald Watkins |date=12 August 2022 |title=Spain's Dragon 8×8 Combat Vehicles to Begin Trials |url=https://www.thedefensepost.com/2022/08/12/spain-dragon-combat-vehicle-trials/ |work=The Defense Post}}</ref>
+
+The first batch of vehicles was delivered on 20 December 2022. The 7 vehicles were received during a ceremony attended by the [[Secretary of State for Defence (Spain)|Secretary of State for Defence]], and the [[Chief of Staff of the Army (Spain)|Army Chief of Staff]]. The vehicles are being produced by TESS Defence, an association between Santa Bárbara Sistemas, Indra Sistemas, Escribano Mechanical & Engineering, and Sapa Placencia.<ref name="dragon">{{cite web |date=2 January 2023 |title=First Dragón 8×8 Delivered to Spanish Army |url=https://euro-sd.com/2023/01/news/28879/first-dragon-8x8-delivered-to-spanish-army/ |work=European Security & Defence}}</ref>
+
+=== Piranha V 6×6 - Luchs 2 SpähFz NG ===
+
+{{Main|:de:Luchs 2 (Spähpanzer)|l1=Luchs 2}}
+
+As part of the programme ''"SpähFz NG"'' (''Spähfahrzeug Next Generation''), the German Army launched a bidding process to find a successor to the [[Fennek]]. The competitors were the [[TPz Fuchs|Rheinmetall TPz Fuchs Evolution]] and the [[Patria 6×6]] (offered by [[KNDS Deutschland]]).<ref name="Hartpunkt - Dreikampf">{{Cite web |date=2024-08-05 |title=Spähfahrzeug Next Generation – Dreikampf um den Korsak |url=https://www.hartpunkt.de/spaehfahrzeug-next-generation-dreikampf-um-den-korsak/ |access-date=2024-08-07 |language=de-DE}}</ref>
+
+In October 2024, the Piranha was selected by the German Army, and the contract was expected to be signed in early 2025.<ref name="Hartpunkt - Korsak">{{Cite web |date=2024-10-07 |title=Spähfahrzeug Next Generation – Korsak soll auf Basis von Piranha 6×6 realisiert werden |url=https://www.hartpunkt.de/spaehfahrzeug-next-generation-korsak-soll-auf-basis-von-piranha-6x6-realisiert-werden/ |access-date=2024-10-08 |language=de-DE}}</ref>
+
+The initial plan was for the purchase of 2 prototypes, with a firm contract for 90 vehicles, and an option of 160 vehicles.<ref name="Hartpunkt - Dreikampf" /> As of October 2025, the quantity was changed to an order of 356 ''"Luchs 2 SpähFz NG"'' vehicles (274 firm and an option for 82 vehicles), and the budget of €3.5 billion was approved by the budget committee of the parliament.<ref>{{Cite web |date=2025-10-16 |title=Haushälter geben grünes Licht: fast acht Milliarden Euro für ESSM, Schakal und Luchs 2 - ESUT - Europäische Sicherheit & Technik |url=https://esut.de/2025/10/meldungen/featured/64423/haushaelter-geben-gruenes-licht-fast-acht-milliarden-euro-fuer-essm-schakal-und-luchs-2/ |access-date=2025-10-16 |language=de}}</ref><ref>{{Cite web |date=2025-10-13 |title=Schakal und Luchs 2: Bundeswehr will im ersten Anlauf 150 Radschützenpanzer und 274 Spähfahrzeuge bestellen |url=https://www.hartpunkt.de/bundeswehr-will-im-ersten-anlauf-150-radschuetzenpanzer-und-274-spaehfahrzeuge-bestellen/ |access-date=2025-10-13 |language=de}}</ref>
+
+The design of the vehicle is the following: 
+
+* '''Vehicle'''
+** Piranha V 6×6 chassis
+** Amphibious capability
+* '''Weapon systems'''
+** Rheinmetall CT-025 turret<ref>{{Cite web |title=Rheinmetall liefert Turm und Maschinenkanone für das Spähfahrzeug Luchs 2 |url=https://www.rheinmetall.com/de/media/news-watch/news/2026/02/2026-02-20-rheinmetall-liefert-turm-und-maschinenkanone-fuer-das-spaehfahrzeug-luchs-2 |access-date=2026-02-20 |website=www.rheinmetall.com |language=de}}</ref>
+** Stabilised [[Oerlikon KBA|Rheinmetall Oerlikon KBA]] [[25 mm caliber|25×137 mm]] autocannon on a light turret.
+** Smoke grenade launchers
+** Potentially loitering ammunitions in the future
+** Rheinmetall SEOSS 210 P optronics system, based on the Theon Sensors SA PHYLAX technology<ref>{{Cite web |date=2026-04-08 |title=Theon liefert Turm-Optronik für Spähfahrzeug Luchs 2 |url=https://www.hartpunkt.de/theon-liefert-turm-optronik-fuer-spaehfahrzeug-luchs-2/ |access-date=2026-04-08 |language=de}}</ref>
+* '''Other systems'''<ref>{{Cite web |date=2025-11-27 |title=Luchs 2: Hensoldt erhält dreistelligen Millionenauftrag |url=https://soldat-und-technik.de/2025/11/mobilitaet/46278/luchs-2-hensoldt/ |access-date=2025-11-27 |website=soldat-und-technik.de |language=de}}</ref>
+** System: Hensoldt Ceretron, integrating the sensors, and generating the tactical situational awareness (supported by AI, NGVA-compliant, software-defined architecture)
+*** BAA IV: observation and reconnaissance system with SWIR cameras (short wave infrared for poor weather conditions), thermal and daylight imaging, also using a laser rangefinder and target illuminator.
+*** SETAS (See Through Armour System): protecting the crew by detecting the threats early.
+** Mast sensor with:
+*** optical and optronic observation systems
+*** acoustic sensors
+*** electromagnetic sensors:
+**** radio detection finder
+**** laser warning system
+**D-LBO digital communications / information network of the Bundeswehr.
+
+==Operators==
+=== Summary ===
+{| class="wikitable" style="width:100%; font-size: 92%;"
+|- style="vertical-align: top;"
+| rowspan="2" style="background:#EAECF0; border-left:solid 2px black; border-top:solid 2px black; border-bottom:solid 2px grey" | '''Operators'''
+<small>(as of February 2026)</small>
+| rowspan="2" style="background:#EAECF0; border-top:solid 2px black; border-bottom:solid 2px grey" | Base variant
+| rowspan="2" style="background:#EAECF0; border-right:solid 2px grey; border-top:solid 2px black; border-bottom:solid 2px grey" |Quantity ordered
+| colspan="13" style="background:#EAECF0; text-align:center; border-right:solid 2px grey; border-top:solid 2px black" | '''Piranha V'''
+'''Detailed order'''
+
+<small>{{font color||#ADE2B8|(unknown quantity)}}</small>
+| rowspan="2" style="background:#EAECF0; border-right:solid 2px grey; border-top:solid 2px black; border-bottom:solid 2px grey" | '''Deliveries'''
+| rowspan="2" style="background:#EAECF0; border-right:dashed 2px grey; border-top:solid 2px black; border-bottom:solid 2px grey" | '''Retired'''
+| rowspan="2" style="background:#EAECF0; border-right:solid 2px grey; border-top:solid 2px black; border-bottom:solid 2px grey" | '''Losses'''
+| rowspan="2" style="background:#EAECF0; border-right:solid 2px black; border-top:solid 2px black; border-bottom:solid 2px grey" | In service
+|- style="vertical-align: top;"
+| style="background:#EAECF0; text-align:center; border-bottom:solid 2px grey" | [[Armoured personnel carrier|<small>APC</small>]]
+| style="background:#EAECF0; text-align:center; border-bottom:solid 2px grey" | '''<small>[[Infantry fighting vehicle| IFV]]</small>'''
+| style="background:#EAECF0; text-align:center; border-bottom:solid 2px grey" | '''<small>[[Reconnaissance|RECCE]]</small>'''
+| style="background:#EAECF0; text-align:center; border-bottom:solid 2px grey" | '''<small>[[Command and control|C2]]</small>'''
+| style="background:#EAECF0; text-align:center; border-bottom:solid 2px grey" | [[Medical evacuation|<small>MEDEVAC</small>]]
+| style="background:#EAECF0; text-align:center; border-bottom:solid 2px grey" | <small>'''[[Mortar carrier| Mortar]]'''</small>
+| style="background:#EAECF0; text-align:center; border-bottom:solid 2px grey" | '''<small>[[Artillery observer|Artillery Obs.]]</small>'''
+| style="background:#EAECF0; text-align:center; border-bottom:solid 2px grey" |'''<small>[[Self-propelled anti-aircraft gun| SPAAG]]</small>'''
+| style="background:#EAECF0; text-align:center; border-bottom:solid 2px grey" |[[CBRN defense|<small>CBRN</small>]] 
+| style="background:#EAECF0; text-align:center; border-bottom:solid 2px grey" |'''<small>[[Armoured recovery vehicle|ARV]]</small>'''
+| style="background:#EAECF0; text-align:center; border-bottom:solid 2px grey" | [[Military engineering vehicle|<small>Sapper  / AEV</small>]]
+| style="background:#EAECF0; text-align:center; border-bottom:solid 2px grey" | '''<small>[[Mobile communications vehicle|Comm.]]</small>'''
+| style="border-right:solid 2px grey; text-align:center; background:#EAECF0; border-bottom:solid 2px grey" | [[Electronic warfare|EW]]
+|- style="vertical-align: top;"
+| style="background:#EAECF0;border-left:solid 2px black" |{{flagicon|DEN}} [[Royal Danish Army|Denmark]]
+| style="background:#EAECF0;" | Piranha V 8×8
+| style="background:#EAECF0; text-align:right; border-right:solid 2px grey" | 309
+| style="text-align:right" | <small>131</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>110</small>
+| style="text-align:right" | <small>37</small>
+| style="text-align:right" | <small>15</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>16</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right; border-left: solid 2px grey; border-right: solid 2px grey" |<small>309</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right; border-left: dashed 2px grey; border-right: solid 2px grey" | <small>0</small>
+! style="text-align:right; border-right:solid 2px black" |309
+|- style="vertical-align: top;"
+| rowspan="2" style="background:#EAECF0;border-left:solid 2px black" |{{flagicon|GER}} [[German Army|Germany]]
+| style="background:#EAECF0;" | Piranha V 6×6
+| style="background:#EAECF0; text-align:right; border-right:solid 2px grey" | 274
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>274</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| rowspan="2" style="text-align:right; border-left: solid 2px grey; border-right: solid 2px grey" |<small>0</small>
+| rowspan="2" style="text-align:right" | <small>0</small>
+| rowspan="2" style="text-align:right; border-left: dashed 2px grey; border-right: solid 2px grey" | <small>0</small>
+! rowspan="2" style="text-align:right; border-right:solid 2px black" |0
+|- style="vertical-align: top;"
+| style="background:#EAECF0;" | Piranha V 8×8
+| style="background:#EAECF0; text-align:right; border-right:solid 2px grey" | 58
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>58</small>
+| style="text-align:right" | <small>0</small>
+|- style="vertical-align: top;"
+| style="background:#EAECF0;border-left:solid 2px black" |{{flagicon|MLD}} [[Moldovan National Army|Moldova]]
+| style="background:#EAECF0;" | Piranha V 8×8
+| style="background:#EAECF0; text-align:right; border-right:solid 2px grey" | 5
+| style="text-align:right" | <small>5</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right; border-left: solid 2px grey; border-right: solid 2px grey" |<small>5</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right; border-left: dashed 2px grey; border-right: solid 2px grey" | <small>0</small>
+! style="text-align:right; border-right:solid 2px black" |5
+|- style="vertical-align: top;"
+| style="background:#EAECF0;border-left:solid 2px black" |{{flagicon|MON}} [[Compagnie des Carabiniers du Prince|Monaco]]
+| style="background:#EAECF0;" | Piranha V 8×8
+| style="background:#EAECF0; text-align:right; border-right:solid 2px grey" | 2
+| style="text-align:right" | <small>2</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right; border-left: solid 2px grey; border-right: solid 2px grey" |<small>2</small>
+<small>{{citation needed|date=March 2025}}</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right; border-left: dashed 2px grey; border-right: solid 2px grey" | <small>0</small>
+! style="text-align:right; border-right:solid 2px black" |2
+|- style="vertical-align: top;"
+| style="background:#EAECF0;border-left:solid 2px black" |{{flagicon|Netherlands}} [[Royal Netherlands Army|Netherlands]]
+| style="background:#EAECF0;" | Piranha V 8×8
+| style="background:#EAECF0; text-align:right; border-right:solid 2px grey" | {{Tooltip|N/A|Not available}}
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>{{Tooltip|N/A|Not available}}</small>
+| style="text-align:right; border-left: solid 2px grey; border-right: solid 2px grey" |<small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right; border-left: dashed 2px grey; border-right: solid 2px grey" | <small>0</small>
+! style="text-align:right; border-right:solid 2px black" |0
+|- style="vertical-align: top;"
+| style="background:#EAECF0;border-left:solid 2px black" |{{flagicon|ROM}} [[Romanian Land Forces|Romania]]
+| style="background:#EAECF0;" | Piranha V 8×8
+| style="background:#EAECF0; text-align:right; border-right:solid 2px grey" | 227
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>100</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>{{font color||#ADE2B8|(???)}}</small>
+| style="text-align:right" | <small>{{font color||#ADE2B8|(???)}}</small>
+| style="text-align:right" | <small>19</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>{{font color||#ADE2B8|(???)}}</small>
+| style="text-align:right" | <small>{{font color||#ADE2B8|(???)}}</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right; border-left: solid 2px grey; border-right: solid 2px grey" |<small>216</small>
+<small><ref name=":1">{{Cite web |date=2026-01-30 |title=Surpriza din cel de-al treilea mare contract militar SAFE: Sistem german de ultimă generație, pe o parte din noile blindate Piranha 5 construite în România - HotNews.ro |url=https://hotnews.ro/surpriza-din-cel-de-al-treilea-mare-contract-militar-safe-sistem-german-de-ultima-generatie-pe-o-parte-din-noile-blindate-piranha-5-construite-in-romania-2161178 |access-date=2026-02-20 |language=ro-RO}}</ref></small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right; border-left: dashed 2px grey; border-right: solid 2px grey" | <small>0</small>
+! style="text-align:right; border-right:solid 2px black" |216
+|- style="vertical-align: top;"
+| style="background:#EAECF0;border-left:solid 2px black" |{{flagicon|ESP}} [[Spanish Army|Spain]]
+| style="background:#EAECF0;" | {{ill|Dragón VCR|es|Dragón (vehículo blindado)}}
+| style="background:#EAECF0; text-align:right; border-right:solid 2px grey" | 348
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>219</small>
+| style="text-align:right" | <small>58</small>
+| style="text-align:right" | <small>14</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>8</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>49</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right; border-left: solid 2px grey; border-right: solid 2px grey" |<small>84</small>
+<small><ref>{{Cite web |last=InfoDefensa |first=Revista Defensa |title=Tess Defence entrega otros 14 vehículos VCR 8x8 para el Ejército de Tierra y prevé alcanzar las 150 unidades a final de año |url=https://www.infodefensa.com/texto-diario/mostrar/5940086/tess-defence-entrega-otros-14-vehiculos-vcr-8x8-supera-primeros-seis-meses-ano-entregadas-2025 |access-date=2026-07-02 |website=Infodefensa |language=es}}</ref></small>
+| style="text-align:right" | <small>0</small>
+| style="text-align:right; border-left: dashed 2px grey; border-right: solid 2px grey" | <small>0</small>
+! style="text-align:right; border-right:solid 2px black" |84
+|- style="vertical-align: top;"
+| colspan="2" rowspan="2" style="background:#EAECF0; border-left:solid 2px black; border-top:solid 2px grey ;border-bottom:solid 2px black" | '''Total'''
+| rowspan="2" style="background:#EAECF0; text-align:right;  border-right:solid 2px grey; border-top:solid 2px grey ;border-bottom:solid 2px black" | '''1,223'''
+| style="background:#EAECF0; text-align:right; border-top:solid 2px grey" | 138
+| style="background:#EAECF0; text-align:right; border-top:solid 2px grey" |319
+| style="background:#EAECF0; text-align:right; border-top:solid 2px grey" |332
+| style="background:#EAECF0; text-align:right; border-top:solid 2px grey" |124
+<small>{{font color||#ADE2B8|(+???)}}</small>
+| style="background:#EAECF0; text-align:right; border-top:solid 2px grey" |37
+<small>{{font color||#ADE2B8|(+???)}}</small>
+| style="background:#EAECF0; text-align:right; border-top:solid 2px grey" |34
+| style="background:#EAECF0; text-align:right; border-top:solid 2px grey" | 8
+| style="background:#EAECF0; text-align:right; border-top:solid 2px grey" | 16
+| style="background:#EAECF0; text-align:right; border-top:solid 2px grey" | 0
+<small>{{font color||#ADE2B8|(+???)}}</small>
+| style="background:#EAECF0; text-align:right; border-top:solid 2px grey" | 0
+<small>{{font color||#ADE2B8|(+???)}}</small>
+| style="background:#EAECF0; text-align:right; border-top:solid 2px grey" | 49
+| style="background:#EAECF0; text-align:right; border-top:solid 2px grey" | 58
+| style="background:#EAECF0; text-align:right; border-top:solid 2px grey" | {{Tooltip|N/A|Not available}}
+| rowspan="2" style="background:#EAECF0; text-align:right; border-left:solid 2px grey; border-right:solid 2px grey; border-top:solid 2px grey; border-bottom:solid 2px black" | 616
+| rowspan="2" style="background:#EAECF0; text-align:right; border-top:solid 2px grey; border-bottom:solid 2px black" | '''0'''
+| rowspan="2" style="background:#EAECF0; text-align:right; border-left:dashed 2px grey; border-right:solid 2px grey; border-top:solid 2px grey; border-bottom:solid 2px black" | '''0'''
+| rowspan="2" style="background:#EAECF0; text-align:right; border-right:solid 2px black; border-top:solid 2px grey; border-bottom:solid 2px black" | '''616'''
+|- style="vertical-align: top;"
+| colspan="13" style="background:#EAECF0; text-align:center; border-bottom:solid 2px black" | '''1,223'''
+|}
+{{legend|#CEF2E0|Variant ordered, but the quantity in the variant is unknown}}
+
+=== Current operators ===
+[[File:Pirahna V Operators.svg|thumb|300x300px|Piranha V operators: 
+{{legend|#0B60D4|Current operators}}
+{{legend|#333333|Future operators}}]]
+
+; {{flag|Denmark}} (309)
+: The Piranha V was selected over the [[Combat Vehicle 90|CV90 Armadillo]] the [[PMMC G5]] and the [[VBCI]] in 2015. The contract for the order of 309 Piranha V in 6 variants was signed in December 2015 for USD $600 million.<ref>{{Cite web |title=Denmark Signs $600M Contract for Piranha 5 Armored Vehicles|url=https://www.defencetalk.com/denmark-signs-600m-contract-for-piranha-5-armored-vehicles-66595/|access-date=2024-07-03|website=DefenceTalk|language=en-US}}</ref>
+: The first Piranha V was delivered to DALO in 2018, and it entered service at the end of March 2019.<ref>{{Cite web |date=2019-04-03 |title=Danish Army receives first PIRANHA 5 and EAGLE 5 wheeled armoured vehicles |url=https://www.edrmagazine.eu/danish-army-receives-first-piranha-5-and-eagle-5-wheeled-armoured-vehicles |last=Valpolini|first=Paolo|access-date=2024-07-03|website=EDR Magazine|language=en-GB}}</ref>
+: The variants used are:
+:* 131 troop transport, engineering, and mechanic roles
+:* 110 command and control vehicles (CIS/GEO, internals delivered by MILDEF AB)<ref name=":72">https://www.ft.dk/samling/20201/aktstykke/aktstk.242/aktstykke/1781616/2392973.pdf</ref>
+:* 37 armoured ambulances<ref name=":82">{{Cite web |title=Større og stærkere: Her er Forsvarets nye pansrede ambulancer|url=https://www.forsvaret.dk/da/nyheder/2020/storre-og-starkere-her-er-forsvarets-nye-pansrede-ambulancer/|access-date=2026-02-19|website=Forsvaret|language=da}}</ref>
+:* 15 mortar carriers, equipped with the Cardom 120mm mortar system, and the A3MS fire control system delivered by ELSAIT<ref>{{Cite web |title=Nyt materiel til Forsvaret|url=https://www.fmn.dk/da/nyheder/2017/2017/nyt-materiel-til-forsvaret/|access-date=2026-02-19|website=Forsvarsministeriet|language=da}}</ref><ref>{{Cite web |title=Tung mortér - Cardom 10|url=https://www.forsvaret.dk/da/materiel2/tung-morter---cardom-10/|access-date=2026-02-19|website=Forsvaret|language=da}}</ref>  The variants in order include:
+:* 16 SHORAD vehicles, equipped with the Skyranger 30 turrets, and the Mistral 3 missiles, to be delivered in 2026 / 2027.<ref name=":62">{{Cite web |title=Rheinmetall Skyranger 30|url=https://www.forsvaret.dk/da/publikationer/honnoer/honnor-nr.-7-november-2023/rheinmetall-skyranger-30/|access-date=2026-02-19|website=Forsvaret|language=da}}</ref><ref>{{Cite web |title=Forsvaret underskriver kontrakt på maskinkanon til Hærens nye luftværn|url=https://www.fmi.dk/da/nyheder/2024/pm-forsvaret-underskriver-kontrakt-pa-maskinkanon-til-harens-nye-luftvarn/|access-date=2026-02-19|website=Forsvarsministeriets Materiel- og Indkøbsstyrelse|language=da}}</ref>
+'''{{MLD}}''' '''(5)'''
+: Moldova received 5 Piranha V APCs in 2026 as a donation through a German cooperation program.<ref>{{Cite web |date=2026-06-17 |title=First Piranha 5 received by the National Army through German cooperation |url=https://moldova1.md/p/78692 |access-date=2026-06-19 |website=moldova1.md |language=en}}</ref>
+'''{{flag|Monaco}} (2)'''
+: Piranha V vehicles are used by the [[Compagnie des Carabiniers du Prince]].<ref>{{Cite web |last= |title=Monaco’s micro-military still packs a punch |url=https://www.stripes.com/news/2017-11-13/monacos-micro-military-still-packs-a-punch-1535276.html |access-date=2026-03-06 |website=Stars and Stripes |language=en}}</ref><ref>{{Cite web |title=Monaco-gb |url=https://www.forcepublique.org/sources/Annuaire/Monaco-gb.html |access-date=2026-03-06 |website=www.forcepublique.org}}</ref>{{citation needed|date=March 2025}}
+; {{flag|Romania}} (227)
+: In January 2018, Romania signed a framework agreement with [[General Dynamics European Land Systems|GDELS]] for the purchase of 227 Piranha V. The value of the agreement reached €868 million. Six variants are part of the contract:<ref>{{Cite web |date=2022-05-30|title=Romania moves towards full domestic production of Piranha V|url=https://www.janes.com/osint-insights/defence-news/land/romania-moves-towards-full-domestic-production-of-piranha-v|access-date=2024-07-03|website=Default|language=en}}</ref>
+:* 100 Infantry Fighting Vehicles, equipped with Elbit UT30 MK2 unmanned turrets<ref name=":34">{{Cite web |title=Elbit weapon systems to equip more Romanian Piranha vehicles {{!}} Shephard|url=https://www.shephardmedia.com/news/landwarfareintl/elbit-weapon-systems-to-equip-more-romanian-piranha-vehicles/|access-date=2024-11-15|website=www.shephardmedia.com|language=en}}</ref><ref name="sipri">{{cite web|url=https://armstransfers.sipri.org/ArmsTransfer/TransferRegister|title=Arms transfers database|work=[[SIPRI]]|access-date=18 March 2026}}</ref>
+:* 127 others:<ref name="sipri" /> 
+:** Command and control vehicles, equipped with Elbit lightweight 12.7mm [[RCWS]]<ref name=":33">{{Cite web |title=Elbit weapon systems to equip more Romanian Piranha vehicles {{!}} Shephard|url=https://www.shephardmedia.com/news/landwarfareintl/elbit-weapon-systems-to-equip-more-romanian-piranha-vehicles/|access-date=2024-11-15|website=www.shephardmedia.com|language=en}}</ref>
+:** 19 Mortar carriers, equipped with Elbit SPEAR 120mm mortar systems<ref name="sipri" /><ref name=":32">{{Cite web |title=Elbit weapon systems to equip more Romanian Piranha vehicles {{!}} Shephard|url=https://www.shephardmedia.com/news/landwarfareintl/elbit-weapon-systems-to-equip-more-romanian-piranha-vehicles/|access-date=2024-11-15|website=www.shephardmedia.com|language=en}}</ref>
+:** Ambulances ([[MEDEVAC]])<ref name=":42">{{Cite web |last=min|first=Ad|title=New Piranha carriers for the Romanian Army|url=https://ednh.news/en/new-piranha-carriers-for-the-romanian-army/|access-date=2024-11-15|website=ednh.news|language=en}}</ref>
+:** [[CBRN]] reconnaissance vehicles<ref name=":42" />
+:** Recovery vehicles<ref name=":42" />
+: The framework agreement is structured in 3 phases:<ref>{{Cite web |date=2024-05-24|title=BSDA 2024: Romanian Piranha 5 programme progresses|url=https://www.janes.com/osint-insights/defence-news/land/bsda-2024-romanian-piranha-5-programme-progresses|access-date=2024-07-03|website=Default|language=en}}</ref>
+:# 30 vehicles produced by [[Mowag|GDELS Mowag]] in Switzerland (all delivered)
+:# 64 assembled in Romania under the direction of GDELS (all delivered)
+:# 133 to be manufactured by UMB in Romania (all delivered)<ref name=":20252">{{cite web|title=Armata Română a primit, în 2025, 194 blindate Cobra-2, 122 transportoare Piranha-5 și 495 camioane IVECO |url=https://monitorulapararii.ro/armata-romana-a-primit-in-2025-194-blindate-cobra-2-122-transportoare-piranha-5-si-495-camioane-iveco-1-59594 |website=monitorulapararii.ro |language=ro|date=14 January 2026}}</ref><ref name=":22">{{cite web|url=https://www.bursa.ro/general-dynamics-delivered-47-piranha-5-transporters-to-mapn-out-of-the-133-provided-for-in-the-second-phase-of-the-contract-44407252|title=General Dynamics delivered 47 Piranha 5 transporters to MapN, out of the 133 provided for in the second phase of the contract|website=bursa.ro|date=30 May 2024}}</ref>
+:As of January 2026, 216 of the 227 vehicles were confirmed delivered, with the remaining vehicles expected to be delivered by February.<ref name=":1" />
+; {{flag|Spain}} (348)
+: In 2015, a program to replace the [[VEC-M1]], the [[Pegaso BMR|BMR-M1]] and part of the [[M113]] fleet was launched by the Spanish Army. The competitors were the [[Boxer (armoured fighting vehicle)|Boxer]], the [[Freccia IFV|Freccia]], the [[Patria AMV]], the Piranha V, the [[Splitterskyddad EnhetsPlattform|SEP]] and the VBCI.<ref>{{Cite web |last=Villarejo|first=Esteban|date=2015-08-22|title=GD Favored To Win Spanish Armored Vehicle Contract|url=https://www.defensenews.com/land/2015/08/22/gd-favored-to-win-spanish-armored-vehicle-contract/|access-date=2023-10-01|website=Defense News|language=en}}</ref>
+: In September 2015, the competition was won by [[General Dynamics European Land Systems|GDELS]] with the Piranha V.<ref>{{cite web|title=Spain selects Piranha 5 as new 8×8 armoured infantry vehicle|author=Dylan Malyasov|date=Sep 28, 2015|url=https://defence-blog.com/spain-selects-piranha-5-as-new-8x8-armoured-infantry-vehicle/|website=defence-blog.com}}</ref> In December 2019, the Spanish Government cancelled the program, and relaunched the competition.<ref>{{Cite web |last=admin|date=2019-12-29|title=Spanish Government Cancels â'¬2.1 Billion Piranha 5 Contract|url=https://militaryleak.com/2019/12/29/spanish-government-cancels-e2-1-billion-piranha-5-contract/|access-date=2023-10-01|website=MilitaryLeak|language=en-US}}</ref> In August 2020, the Piranha V of [[Santa Bárbara Sistemas|GDELS Santa Barbara Sistemas]] in collaboration with [[Indra Sistemas]] and Sapa Placencia won again the competition for a first batch of 348 vehicles for €1.74 billion.<ref>{{Cite web |url=https://defbrief.com/2020/08/25/spain-hands-out-2-06-billion-contract-for-dragon-vcr-8x8-vehicles/|title=Spain hands out $2.06 billion contract for Dragon VCR 8×8 vehicles|website=Defense Brief|date=2020-08-25|last=Editorial|first=Defense Brief|access-date=2023-10-01|language=en-US}}</ref>
+: It is known as the ''Dragon VCR'' and the orders are split in 3 phases. There are confirmed orders for the phase 1 only:
+:* Phase 1, '''348''' confirmed orders, planned to be delivered until 2027<ref name=":62" />
+:** 219 VCR, an [[infantry fighting vehicle]]
+:** 58 VEC, a [[reconnaissance vehicle]]
+:** 14 VCR-PC, a [[Command and control|company command post]] vehicle
+:** 8 VCOAV, an [[Artillery observer|artillery observation post]] vehicle<ref>{{Cite web |title=8×8, the wait is over - Spanish army|url=https://ejercito.defensa.gob.es/en/reportajes/2018/61_8x8_fin_espera.html|access-date=2023-01-24|website=ejercito.defensa.gob.es}}</ref>
+:** 49 VCR-ZAP, a [[Military engineering vehicle|sapper combat vehicle]]
+
+=== Future operators ===
+
+; {{flag|Germany}} (352)
+: '''Piranha V 6×6:'''
+:* Luchs 2 (274 firm order, option for 82):  The German Army is looking for the successor of the Fennek. Initially the Pandur was favoured by GDELS, but they decided to offer a Piranha instead as Mowag has experience with amphibious vehicles. The competitors were the [[TPz Fuchs|Rheinmetall TPz Fuchs Evolution]] and the [[Patria 6×6]] (offered by [[KNDS Deutschland]]).<ref name="Hartpunkt - Dreikampf3">{{Cite web |date=2024-08-05|title=Spähfahrzeug Next Generation – Dreikampf um den Korsak|url=https://www.hartpunkt.de/spaehfahrzeug-next-generation-dreikampf-um-den-korsak/|access-date=2024-08-07|language=de-DE}}</ref> In October 2024, the Piranha was selected by the German Army, and the contract is expected to be signed in early 2025. None of those information was made official though.<ref name="Hartpunkt - Korsak2">{{Cite web |date=2024-10-07|title=Spähfahrzeug Next Generation – Korsak soll auf Basis von Piranha 6×6 realisiert werden|url=https://www.hartpunkt.de/spaehfahrzeug-next-generation-korsak-soll-auf-basis-von-piranha-6x6-realisiert-werden/|access-date=2024-10-08|language=de-DE}}</ref> Initially, two prototypes were to be ordered, followed by a first order for 90 vehicles, and an option for 160 vehicles.<ref name="Hartpunkt - Dreikampf2">{{Cite web |date=2024-08-05|title=Spähfahrzeug Next Generation – Dreikampf um den Korsak|url=https://www.hartpunkt.de/spaehfahrzeug-next-generation-dreikampf-um-den-korsak/|access-date=2024-08-07|language=de-DE}}</ref> As of October 2025, the quantity was changed to an order of 356 vehicles (274 firm and an option for 82 vehicles). The budget for this contract is €3.5 billion.  Orders:
+:** Initial order: 274, signed the 20 October 2025.<ref>{{Cite web |last=Roukoz|first=Jules|date=2025-10-21|title=GDELS receives contract for the next generation reconnaissance vehicle of the Bundeswehr|url=https://www.edrmagazine.eu/gdels-receives-contract-for-the-next-generation-reconnaissance-vehicle-of-the-bundeswehr|access-date=2025-10-21|website=EDR Magazine|language=en-GB}}</ref>
+: '''Piranha V 8×8:'''
+:* TaWAN LBO (58 firm order + option for 198):  The budget for the initial tranche was approved in January 2025. It includes electronic systems, trucks with a communication mast, and the Piranha V. The budget approved was of €1.9 million.''<ref name=":52">{{Cite web |date=2025-02-20|title=GDELS to supply PIRANHA 5 vehicles for German Army's TaWAN project|url=https://defence-industry.eu/gdels-to-supply-piranha-5-vehicles-for-german-armys-tawan-project/|access-date=2025-02-20|language=en}}</ref><ref>{{Cite web |date=2024-08-09|title=TaWAN – Angebot der Industrie offenbar deutlich über Budget|url=https://www.hartpunkt.de/tawan-angebot-der-industrie-offenbar-deutlich-ueber-budget/|access-date=2024-08-12|language=de-DE}}</ref><ref name=":3222">{{Cite web |date=2025-01-29|title=Bundestag billigt fünf Rüstungsvorhaben für rund 2,5 Milliarden Euro|url=https://www.hartpunkt.de/bundestag-billigt-fuenf-ruestungsvorhaben-fuer-rund-25-milliarden-euro/|access-date=2025-01-29|language=de}}</ref><ref name=":5222">{{Cite web |last=ES&T Redaktion|date=2025-02-01|title=Mobiles Richtfunknetzwerk TaWAN kommt ab 2026|url=https://esut.de/2025/02/meldungen/56969/mobiles-richtfunknetzwerk-tawan-kommt-ab-2026/|access-date=2025-02-02|website=esut.de|language=de-DE}}</ref>''  Orders:
+:** Initial order: 58 in February 2025, with deliveries planned for 2026.<ref>{{Cite web |date=20 February 2025|title=GDELS to supply PIRANHA 5 vehicles for German Army’s TaWAN project|url=https://defence-industry.eu/gdels-to-supply-piranha-5-vehicles-for-german-armys-tawan-project/}}</ref><ref>{{Cite web |date=2025-02-19|title=GDELS to supply PIRANHA 5 for German Army's TaWAN project {{!}} GDELS|url=https://www.gdels.com/en/media/news/gdels-to-supply-piranha-5-for-german-army-s-ta-wan-project-cchnlolm7q67dt8qi2xvkkfb|access-date=2025-10-21|website=www.gdels.com|language=en}}</ref>
+; {{flag|Netherlands}} (Unknown quantity)
+: In June 2026 a contract was signed during ILA Berlin for an unknown quantity. It is a variant to be used for electronic warfare.<ref name="Defensie">{{Cite web |date=2026-12-06|title=Defensie vernieuwt systemen voor Elektronische Oorlogvoering|url=https://www.defensie.nl/actueel/nieuws/2026/06/11/defensie-vernieuwt-systemen-voor-elektronische-oorlogvoering|language=nl-NL}}</ref>
+
+=== Potential future orders ===
+; {{flag|Germany}}
+: Piranha V 6×6:
+:* The German Army plans to replace the Hummel vehicle, a jammer based on the TPz Fuchs with a Piranha 6×6 known as the Maus.<ref name=":932">{{Cite web |last=Onlineredaktion|first=Dorothee FrankLeiterin|date=2025-08-11|title=Störpanzer-Nachfolge der Bundeswehr|url=https://defence-network.com/maus-nachfolger-stoerpanzer-hummel-bundeswehr/,%20https://defence-network.com/maus-nachfolger-stoerpanzer-hummel-bundeswehr|access-date=2025-08-12|language=de}}</ref>
+; {{flag|Ireland}}
+: The Irish Army is looking to replace its 80 [[Mowag Piranha|Piranha III]] and its 27 [[RG-32 Scout|RG-32]]. Ireland mentions a need of 100 vehicles, a budget of €400 million. The split is unclear at the moment.<ref>{{Cite web |last=O'Toole|first=Michael|date=2025-01-12|title=Government to spend over €400 million on armoured vehicles for Defence Forces|url=https://www.irishmirror.ie/news/irish-news/government-spend-over-400-million-34464003|access-date=2025-02-13|website=Irish Mirror|language=en}}</ref> Among the potential successors are:
+:* [[Mowag Eagle|Mowag Eagle V]]
+:* Mowag Piranha V
+:* [[VBMR-L Serval]]
+:* [[VBCI]]
+:* [[Boxer (armoured fighting vehicle)|Boxer]]
+; {{flag|Romania}} (359 potential orders)
+: In February 2023, it was announced that Romania will purchase an additional 150 Piranha Vs.<ref>{{Cite web |date=2023-02-13|title=Romanian Ministry of Defense to buy 150 more Piranha 5 armored personnel carriers|url=https://www.romania-insider.com/romanian-ministry-defense-piranha-armored-vehicles-purchase|access-date=2024-07-03|website=Romania Insider|language=en}}</ref> The order was planned for 2025.<ref>{{Cite web |last=Manuel|first=Rojoef|date=2025-01-27|title=Romania to Acquire 150 Piranha Combat Vehicles in 2025|url=https://thedefensepost.com/2025/01/27/romania-piranha-combat-vehicles/|access-date=2025-01-30|website=The Defense Post|language=en-US}}</ref>
+: In 2026, it was reported that 359 vehicles will be contracted as follows:<ref name="DefenseRoSAFE">{{Cite web |title=Avem lista cu cele 15 programe SAFE pentru Armata României. Care sunt cele mai importante achiziții |url=https://www.defenseromania.ro/avem-lista-cu-cele-15-programe-safe-pentru-armata-romaniei-care-sunt-cele-mai-importante-achizitii_643839.html |access-date=2026-04-28 |website=defenseromania.ro |language=ro}}</ref>
+:* Phase 1: '''139''' to be ordered in 2026 and funded through the [[Security Action for Europe]] (SAFE) programme.<ref name="DefenseRoSAFE"/> The SAFE funding for the 139 vehicles was rejected by [[Parliament of Romania|Parliament]] on 29 May due to the higher price demanded by GDELS.<ref>{{cite web|url=https://monitorulapararii.ro/programul-safe-privind-transportoarele-piranha-5-a-fost-respins-in-parlament-pretul-cerut-era-aproape-dublu-spune-ministrul-miruta-1-62397|title=Programul SAFE privind transportoarele Piranha 5 a fost respins în Parlament. Preţul cerut era aproape dublu, spune ministrul Miruță|website=monitorulapararii.ro|language=ro|date=29 May 2026}}</ref>
+:* Phase 2: '''220''' to be ordered after 2031.<ref name="DefenseRoSAFE"/>
+; {{flag|Spain}} (650 potential orders)
+:* Phase 2, '''365''' to be ordered, with deliveries expected from 2027 to 2035<ref name=":12">{{Cite web |url=https://euro-sd.com/2023/01/news/29320/details-on-8x8-dragon/|title=Details on 8×8 Dragón|website=euro-sd.com|date=2023-01-26|access-date=2024-07-03|language=en-US|last=ESD}}</ref>
+:* Phase 3, '''285''' to be ordered, with deliveries expected from 2035<ref name=":12" />
+
+=== Failed bids ===
+; {{flag|Bulgaria}}
+: In 2017, Bulgaria invited companies to submit offers for a future [[Infantry fighting vehicle|IFV]] and other combat support vehicles (reconnaissance, combat engineering, ambulance) based on an 8×8 armoured vehicles. Over time, several offers were made by various competitors ([[Boxer (armoured fighting vehicle)|GTK Boxer]], Mowag Piranha V, [[VBCI 2|Nexter VBCI 2]], [[Patria AMV|Patria AMV<sup>XP</sup>]], [[Freccia IFV|Freccia]], [[Otokar Arma]], [[FNSS Pars|FNSS PARS]]). The [[Boxer (armoured fighting vehicle)|Boxer]] was eliminated with the [[VBCI]] in December 2017 because they did not fulfil the conditions of the program, while the Piranha V and the [[Patria AMV|Patria AMV<sup>XP</sup>]] did.
+: After years of discussions and cancellations, an offer made by [[General Dynamics Land Systems]] for a much smaller and cheaper [[Stryker]] won the contract in September 2023, 183 vehicles for USD $1.37 billion.<ref>{{Cite web |last=Adamowski |first=Jaroslaw |date=2023-09-25 |title=Bulgarian government approves $1.37 billion Stryker order |url=https://www.defensenews.com/global/europe/2023/09/25/bulgarian-government-approves-137-billion-stryker-order/ |access-date=2023-10-01 |website=Defense News |language=en}}</ref>
+; {{flag|Canada}}
+: In 2011 GDLS Canada proposed the Piranha V platform for the Canadian CCV programme<ref>{{Cite web |last=vasundhara |date=2011-08-30 |title=GD offers Piranha 5 for Canadian CCV Programme |url=https://www.army-technology.com/news/news128597-html/ |access-date=2026-02-19 |website=Army Technology |language=en-US}}</ref> before the programme was eventually cancelled by the canadian MoD<ref>{{Cite web |title=Canada's CCV programme terminated by the government (again) {{!}} Shephard |url=https://www.shephardmedia.com/news/landwarfareintl/canadas-ccv-programme-terminated-government-again/ |access-date=2026-02-19 |website=www.shephardmedia.com |language=en}}</ref>
+; {{flag|Lithuania}}
+: In 2016, the [[Boxer (armoured fighting vehicle)|GTK Boxer]] was selected over the [[Iveco SuperAV|Iveco SUPERAV]], the [[FNSS Pars|PARS III]], the [[Patria AMV]], the Piranha V, the [[Stryker]] and the [[VBCI|VBCI-2]].<ref>{{Cite web |last=Barreira |first=Victor M. S. |date=2016-01-21 |title=Lithuania selects German GTK Boxer AFV |url=https://www.defenceiq.com/army-land-forces/articles/lithuania-selects-german-gtk-boxer-af |access-date=2024-06-26 |website=Defence IQ |language=en}}</ref>
+; {{flag|Slovakia}}
+: In April 2022, Slovakia submitted a [[request for information]] to General Dynamics regarding the Piranha V produced in Romania.<ref name="bulgaria">{{cite web |date=22 July 2022 |title=Bulgaria - interesată de blindate Piranha V produse în România. După ce a ratat contractul Slovaciei, România mai are o șansă la sud de Dunăre |url=https://www.defenseromania.ro/bulgaria-interesata-de-blindate-piranha-v-produse-in-romania-dupa-ce-a-ratat-contractul-slovaciei-romania-mai-are-o-sansa-la-sud-de-dunare_617377.html |work=DefenseRomania |language=ro}}</ref> The contract failed as the [[Patria AMV]] was chosen instead.<ref>{{cite web |date=31 August 2022 |title=Defensenews.com: ''Slovakia, Finland ink production deal for 76 Patria combat vehicles'', 31.8.2022 |url=https://www.defensenews.com/global/europe/2022/08/31/slovakia-finland-ink-production-deal-for-76-patria-combat-vehicles/ |access-date=2022-09-07}}</ref>
+; {{flag|Slovenia}} (106)
+: Up to 106 [[Armoured personnel carrier|APC]] with a budget of €700 million are to be selected after the contract for the [[Boxer (armoured fighting vehicle)|GTK Boxer]] was cancelled. The finalists of the competition are the Piranha V, the [[Freccia IFV|Freccia]], the [[KTO Rosomak|Rosomak L]] and the [[Patria AMV|Patria AMV<sup>XP</sup>]].<ref>{{Cite news|title=Potential suppliers of armoured vehicles winnowed down to four |url=https://sloveniatimes.com/39785/potential-suppliers-of-armoured-vehicles-winnowed-down-to-four |date=September 7, 2023|access-date=2023-11-24 |work=sloveniatimes.com}}</ref> A visit of a Slovenian delegation took place in Romania at the production facility in 2024. On 11 July 2024 it was announced that the Patria AMVxp was the winner of the competition.<ref>{{Cite news|title=Slovenia to buy armoured personnel carriers from Patria |url=https://sloveniatimes.com/40665/slovenia-to-buy-armoured-personnel-carriers-from-patria |date=July 11, 2024|access-date=2024-08-14 |work=sloveniatimes.com}}</ref>
+; {{flag|United Arab Emirates}} (400)
+: In 2017, the UAE military ordered 400 [[Otokar Arma|Otokar Rabdan 8×8]].<ref>{{cite web|title=UAE confirms order Rabdan new 8×8 armoured vehicles with Russian-produced combat turret|author=Dylan Malyasov|date=Feb 25, 2017| url=https://defence-blog.com/uae-confirms-order-rabdan-new-8x8-armoured-vehicles-with-russian-produced-combat-turret/ |website=defence-blog.com}}</ref> It was selected over the [[Boxer (armoured fighting vehicle)|GTK Boxer]], the [[Patria AMV]], the Piranha V and the [[VBCI]] in a competition initially intended for 700 vehicles.<ref>{{Cite web |date=2012-12-26 |title=Commande militaire de blindés par l'armée des Emirats Arabes Unis : Nexter Systems de nouveau dans la course |url=https://www.challenges.fr/entreprise/commande-militaire-de-blindes-par-l-armee-des-emirats-arabes-unis-nexter-systems-de-nouveau-dans-la-course_236342 |access-date=2024-06-26 |website=Challenges |language=fr}}</ref><ref>{{Cite web |date=2012-05-15 |title=UAE: Patria, BTR, VBCI and tender for armored vehicles |url=https://www.tacticalreport.com/daily/6693-uae-patria-btr-vbci-and-tender-for-armored-vehicles |access-date=2024-06-26 |website=Tactical Report |language=en}}</ref>
+; {{flag|United Kingdom}}
+: The UK initially participated in the development of the GTK Boxer with Germany and the Netherlands. The collaboration started in 1999. In 2003, the UK decided to leave the development of that vehicle.<ref>[https://publications.parliament.uk/pa/cm200203/cmhansrd/vo030717/wmstext/30717m05.htm#30717m05.html_spmin5 Written Answers for 17 July 2003] House of Commons Hansard  - URL accessed on 2 May 2006</ref> In 2004, the [[Future Rapid Effect System|FRES programme]] was launched. In June 2007, 3 vehicles were pre-selected for the FRES UV programme, the [[Boxer (armoured fighting vehicle)|GTK Boxer]], the Piranha V and the [[VBCI]].<ref>{{Cite web |date=8 June 2007 |title=Drayson: New vehicles will have "vital part to play in the Army of the future" |url=http://www.mod.uk/DefenceInternet/DefenceNews/EquipmentAndLogistics/DraysonNewVehiclesWillHavevitalPartToPlayInTheArmyOfTheFuture.htm |url-status=dead |archive-url=https://web.archive.org/web/20070711050356/http://www.mod.uk/DefenceInternet/DefenceNews/EquipmentAndLogistics/DraysonNewVehiclesWillHavevitalPartToPlayInTheArmyOfTheFuture.htm |archive-date=11 July 2007 |website=mod.uk}}</ref> The Piranha V was selected as preferred bidder in November 2007 and announced in May 2008.<ref name="mod.uk">[http://www.mod.uk/DefenceInternet/DefenceNews/EquipmentAndLogistics/DraysonNewVehiclesWillHavevitalPartToPlayInTheArmyOfTheFuture.htm Ministry of Defence | Defence News | Drayson: New vehicles will have "vital part to play in the Army of the future"] {{webarchive|url=https://web.archive.org/web/20070711050356/http://www.mod.uk/DefenceInternet/DefenceNews/EquipmentAndLogistics/DraysonNewVehiclesWillHavevitalPartToPlayInTheArmyOfTheFuture.htm|date=11 July 2007}}</ref><ref>{{Cite web |date=8 May 2008 |title=Design selected for future armoured vehicle for British Army (FRES) |url=http://www.mod.uk/DefenceInternet/DefenceNews/EquipmentAndLogistics/DesignSelectedForFutureArmouredVehicleForBritishArmyfres.htm |url-status=dead |archive-url=https://web.archive.org/web/20080512164814/http://www.mod.uk/DefenceInternet/DefenceNews/EquipmentAndLogistics/DesignSelectedForFutureArmouredVehicleForBritishArmyfres.htm |archive-date=12 May 2008 |website=mod.uk}}</ref> It was not followed by orders due to budget crunch, and as of December 2008, the absence of contract meant that the Piranha V was not the preferred bidder anymore.<ref>{{cite web |title=House of Commons Hansard Ministerial Statements for 11 Dec 2008 (pt 0001) |url=https://publications.parliament.uk/pa/cm200809/cmhansrd/cm081211/wmstext/81211m0001.htm |access-date=4 August 2016 |work=parliament.uk}}</ref>
+: In 2014, a new programme, the FUV ''(Future Utility Programme)'' was launched, and the VBCI was considered again and tested by the UK. But the evaluation did not lead to the selection of the vehicle. In 2018, the UK rejoined the Boxer programme through the MIV programme ''(Mechanised Infantry Vehicle)''.<ref>{{cite press release |author=Ministry of Defence and Guto Bebb |url=https://www.gov.uk/government/news/british-army-re-joins-boxer-programme |title=British Army re-joins Boxer programme in step towards new armoured vehicles |publisher=UK Government |date=31 March 2018 |access-date=1 April 2018}}</ref>
+
+==See also==
+
+===Comparable 8×8 vehicles===
+{{Div col|colwidth=18em}}
+
+* {{lwc|BTR-4}}
+* {{lwc|Boxer (armoured fighting vehicle)}}
+* {{lwc|CM-32 armoured vehicle}}
+* {{lwc|Eitan AFV}}
+* {{lwc|FNSS Pars}}
+* {{lwc|Freccia IFV}}
+* {{lwc|Iveco SuperAV}}
+* {{lwc|K808 White Tiger}}
+* {{lwc|LAV 6}}
+** {{lwc|Stryker}}
+* {{lwc|Mowag Piranha III}}
+** {{lwc|Mowag Piranha IV}}
+* {{lwc|Otokar Arma}}
+* {{lwc|Pandur II}}
+* {{lwc|Patria AMV}}
+** {{lwc|KTO Rosomak}}
+* {{lwc|TATA Kestrel}}
+* {{lwc|Terrex ICV}}
+* {{lwc|VBCI}}
+* {{lwc|VPK-7829 Bumerang}}
+{{Div col end}}
+
+==References==
+{{Reflist}}
+
+{{Modern IFV and APC}}
+
+[[Category:Armoured fighting vehicles of the post–Cold War period]]
+[[Category:Wheeled infantry fighting vehicles]]
+[[Category:General Dynamics land vehicles]]
+[[Category:Armoured personnel carriers]]
+[[Category:Military vehicles introduced in the 2010s]]
+[[Category:Mowag Piranha]]

@@ -1,0 +1,98 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Held tier-5 English Wikipedia compilation for the LAV 6.0. The registry marks primary_held false because the article is a secondary compilation. It publishes the basic mass and the add-on armour mass as separate rows, the overall length, width and height, the engine model, the engine rating of 450 hp with no net basis, the on-road and off-road speeds and ranges. It publishes no ground clearance, no tyre size, no transmission, no torque and no grouser statement, so the entry is not runtime-ready.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "lav_6",
+      "canonical_name": "LAV 6.0",
+      "maker": "General Dynamics Land Systems - Canada",
+      "model": "LAV 6.0",
+      "variant": "LAV 6.0 infantry fighting vehicle",
+      "variant_id": "lav_6",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Canada",
+      "era": "modern",
+      "aliases": [
+        "lav 6",
+        "lav 6.0",
+        "lav6"
+      ],
+      "keywords": [
+        "ifv",
+        "infantry fighting vehicle",
+        "wheeled",
+        "8x8",
+        "lav"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "curb_weight_kg": {
+          "value": 20638,
+          "unit": "kg",
+          "source": "wikipedia_lav6",
+          "locator": "Infobox, Specifications section, Mass row",
+          "state": "basic mass published as 20,638 kg; the same row publishes 28,576 kg with the add-on armour as a separate configuration",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 7827,
+          "unit": "mm",
+          "source": "wikipedia_lav6",
+          "locator": "Infobox, Specifications section, Length row",
+          "state": "overall length published as 7.827 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3250,
+          "unit": "mm",
+          "source": "wikipedia_lav6",
+          "locator": "Infobox, Specifications section, Width row",
+          "state": "overall width published as 3.250 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 3266,
+          "unit": "mm",
+          "source": "wikipedia_lav6",
+          "locator": "Infobox, Specifications section, Height row",
+          "state": "overall height published as 3.266 m",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Caterpillar C9 turbo-charged six-cylinder diesel",
+          "unit": "text",
+          "source": "wikipedia_lav6",
+          "locator": "Infobox, Specifications section, Engine row",
+          "state": "engine published as a Caterpillar C9 turbo-charged six-cylinder diesel",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 450,
+          "unit": "hp",
+          "source": "wikipedia_lav6",
+          "locator": "Infobox, Specifications section, Engine power row",
+          "state": "engine power published as 450 hp; the article states no net basis",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 100,
+          "unit": "km/h",
+          "source": "wikipedia_lav6",
+          "locator": "Infobox, Specifications section, Maximum speed row",
+          "state": "road speed published as 100 km/h; the same row publishes 40 km/h offroad as a separate state",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 600,
+          "unit": "km",
+          "source": "wikipedia_lav6",
+          "locator": "Infobox, Specifications section, Operational range row",
+          "state": "road range published as 600 km; the same row publishes 450 km cross country as a separate state",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

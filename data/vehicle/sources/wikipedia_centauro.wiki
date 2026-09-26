@@ -1,0 +1,181 @@
+{{For|the armoured division|131st Armoured Division Centauro}}
+{{more citations needed|date=January 2013}}
+<!-- SCROLL DOWN TO EDIT THE ARTICLE -->{{Infobox weapon
+| name               = Centauro
+| image              = Centauro01.JPEG
+| image_size         = 300
+| caption            = An Italian Army Centauro during a patrol in Bosnia-Herzegovina as part of [[IFOR]] in 1996
+| type               = Wheeled [[tank destroyer]]
+| origin             = Italy
+| is_vehicle         = yes
+| service            = 1991 - present
+| used_by            = See [[#Operators|Operators]]
+| wars               = [[United Nations Operation in Somalia II]]<br />[[Implementation Force]]<br />[[Kosovo Force]]<br />[[Iraq War]]<br />[[UNIFIL]] (United Nations Interim Force in Lebanon)<br />[[Russo-Ukrainian war]]
+| designer           = 
+| design_date        = 1986
+| manufacturer       = [[Iveco|Iveco Fiat]] (hull, propulsion)<br />[[Oto Melara]] (weapons, turrets)
+| unit_cost          = [[€]]1.6 million {{Citation needed|date=March 2021}}
+| production_date    = Centauro: 1991–2006 <br>Centauro 2: 2021–present
+| number             = 490+<ref>{{Cite web |last=Kowak |date=2015-10-16 |title=Centauro e Varianti |url=https://www.militarypedia.it/iveco-centauro/ |access-date=2022-12-04 |website=Militarypedia |language=it-IT}}</ref> (plus 249 Freccia)<ref>{{cite web|title=VBM Freccia Infantry Fighting Vehicle, Italy|url=http://www.army-technology.com/projects/freccia-vehicle/|website=Army-Technology.com|access-date=26 August 2014}}</ref>
+| variants           = See [[#Variants|Variants]]
+| crew               = 4 (commander, gunner, loader and driver)
+| length             = Centauro 1: {{convert|7.85|m|ftin|abbr=on}}  <br>Centauro 2: {{convert|8.26|m|ftin|abbr=on}}<ref name="Centauro 2 " />
+| width              = Centauro 1: {{convert|2.94|m|ftin|abbr=on}}  <br>Centauro 2: {{convert|3.12|m|ftin|abbr=on}}<ref name="Centauro 2 " />
+| height             = Centauro 1: {{convert|2.73|m|ftin|abbr=on}}  <br>Centauro 2: {{convert|3.65|m|ftin|abbr=on}}<ref name="Centauro 2 " />
+| weight             = Centauro 1: {{convert|24|t|LT ST|abbr=on}} <br>Centauro 2: {{convert|30|t|LT ST|abbr=on}}<ref name="Centauro 2 ">{{Cite web |title=Centauro 2 |url=https://www.idvgroup.com/products/land-armoured-vehicles/centauro-ii/ |archive-date=1 September 2026 |archive-url=https://web.archive.org/web/20260901140756/https://www.idvgroup.com/products/land-armoured-vehicles/centauro-ii/}}</ref>
+| payload_capacity   = {{convert|350|kg|lb|abbr=on}}
+| armour             = Welded steel armoured hull
+| primary_armament   = Centauro 1: Oto Melara 105 mm/52 (rifled) <br>Centauro 2: Oto Melara 120mm L/45 LRF (smoothbore)<ref name="Centauro 2 " />
+| secondary_armament = Centauro 1:  
+*Coaxial: 1 × [[General-purpose machine gun|GPMG]] ([[7.62×51mm NATO]])
+*Pintle: 1 × [[General-purpose machine gun|GPMG]] ([[7.62×51mm NATO]])
+Centauro 2:<ref name="Centauro 2 " />
+*Coaxial: 1 × [[General-purpose machine gun|GPMG]] ([[7.62×51mm NATO]])
+*RWS Hitrole Mod.L or pintle: 1 × [[General-purpose machine gun|GPMG]] or ([[7.62×51mm NATO]] / [[12.7×99mm NATO]])
+| transmission       = Hydropneumatic automatic transmission with 5 forward and 2 reverse gears<br />8×8 wheels
+| suspension         = independent [[MacPherson strut]]s
+| engine             = Centauro 1: Iveco VTCA [[V6 engine|V6]], [[Turbo-diesel|turbo-diesel engine]] ({{convert|520|hp|kW|abbr=on}})<br> Centauro 2: 	
+Iveco Vector 8V [[V8 engine]] ({{convert|704|hp|kW|abbr=on}})<ref name="Centauro 2 " />
+| engine_power       = 
+| speed              = {{convert|108|km/h|mph|abbr=on}}
+| pw_ratio           = 
+| vehicle_range      = {{convert|800|km|mi|abbr=on}}
+}}
+
+The '''Centauro''' is a family of Italian military vehicles originating from a wheeled [[tank destroyer]] for light to medium territorial defense and tactical reconnaissance. It was developed by the Società Consortile [[Iveco]] [[Fiat]] – [[OTO Melara]] (CIO), a consortium of manufacturers, with Iveco Fiat tasked with developing the hull and propulsion systems, while Oto Melara was responsible for developing the turrets and weapon systems.<ref name=":0">{{Cite web|title=CENTAURO I|url=https://www.iveco-otomelara.com/wheeled/CentauroI.php|website=www.iveco-otomelara.com|access-date=2020-05-29}}</ref> The Centauro platform has been developed into multiple variants to fulfill other combat roles, such as [[infantry fighting vehicle]] or [[Self-propelled artillery|self-propelled]] [[howitzer]].
+
+==Description==
+The vehicle was developed in response to an [[Italian Army]] requirement for a tank destroyer with the firepower of the old [[Leopard 1]] [[main battle tank]] then in service with the Italian Army, but with greater strategic mobility. The main mission of the Centauro is to protect other, lighter, elements of the [[cavalry]], using its good [[power-to-weight ratio]], excellent range and cross country ability (despite the wheeled design) and computerized fire control system to accomplish this mission. Centauro entered production in 1991 and deliveries were complete by 2006.<ref>{{Cite web|title=B1 Centauro|url=https://tanks-encyclopedia.com/modern/Italy/B1_Centauro.php/|date=2014-12-01|website=Tank Encyclopedia|language=en-US|access-date=2020-05-29}}</ref>
+
+===Armament===
+[[File:A B1 Centauro wheeled tank destroyer in Fort Lewis (DA-SD-03-07591).jpg|thumb|left|An early variant of the vehicle]]
+
+The main armament consists of the Oto Melara 105&nbsp;mm L/52 calibre gyro-stabilized high-pressure, low-recoil gun equipped with a thermal sleeve and an integrated fume extractor, with 40 rounds: 14 ready rounds in the turret and another 26 rounds in the hull. The gun can fire standard NATO ammunition, including [[APFSDS]] (Armour Piercing Fin-Stabilized Discarding Sabot) rounds.
+
+Secondary weapons are a 7.62&nbsp;mm [[Coaxial mount|coaxial]] [[machine gun]], and a 7.62&nbsp;mm [[anti-aircraft]] machine gun with 4,000 rounds of ammunition.
+
+Aiming is provided by a Galileo Avionica TURMS fire control system (the same as fitted to the Italian [[Ariete]] tank), a muzzle referencing system, and a fully digital ballistic computer. The gunner's sight is fully stabilised and includes a thermal imager and laser rangefinder. The commander's station has a panoramic stabilised sight, an image-intensifying night sight, and a monitor displaying the image from the gunner's thermal sight. This allows Centauro, day or night, to engage stationary or moving targets while stationary or on the move.<ref name="mtc">{{Cite web| title=Centauro B1 - Tank destroyer|url=http://www.military-today.com/artillery/centauro_b1.htm|access-date=29 May 2020|archive-date=6 June 2020|archive-url=https://web.archive.org/web/20200606201748if_/http://www.military-today.com/artillery/centauro_b1.htm|url-status=dead}}</ref>
+
+===Armour===
+The Centauro hull is an all-welded steel armoured hull, which in the baseline configuration is designed to withstand [[14.5 × 114 mm|14.5&nbsp;mm]] bullets and shell fragments, with protection against [[25 mm caliber|25&nbsp;mm]] projectiles on the frontal section. The addition of bolt-on appliqué armour increases protection against [[30 mm caliber|30&nbsp;mm]] rounds.
+
+The Centauro is also equipped with an [[CBRN]] (Chemical, Biological, Radiological, and Nuclear) warfare protection system, which is integrated with the vehicle's air conditioning system. The vehicle is also equipped with a four-barreled [[Smoke grenade discharger|smoke grenade launcher]] mounted on each side of the turret and a laser warning receiver.<ref name="mtc"/>
+
+===Propulsion===
+Centauro is powered by an Iveco V6 [[turbo-charged]] after-cooled diesel engine delivering 520&nbsp;hp (382.4&nbsp;kW). This drives a [[ZF Friedrichshafen|ZF]]-designed automatic [[transmission system|transmission]], which is manufactured under licence by Iveco Fiat. The transmission system has five forward and two reverse gears. This drives eight wheels, each equipped with an independent suspension system, run-flat inserts, and a Central Tyre Inflation System (CTIS). Braking is provided by eight [[disc brakes]]. Steering is provided on the first and second axles and at slow speed also with the fourth axle. The Centauro achieves road speeds above {{convert|100|km/h|mph|abbr=on}}; it can negotiate gradients up to 60%, ford water up to a depth of {{convert|1.5|m|ftin|abbr=on}} without preparation, and turn with a {{convert|9|m|ftin|abbr=on}} radius.<ref name="mtc"/>
+
+==Combat history==
+[[File:Cavalry Regiment "Lancieri di Montebello" (8°) Centauro tank destroyer.jpg|thumb|right|[[Regiment "Lancieri di Montebello" (8th)]] Centauro firing during an exercise]]The Centauro is currently deployed as part of [[UNIFIL]] forces in [[Lebanon]].<ref>{{cite web|title=CIO Centauro 8×8 Tank Destroyer.|url=http://www.militaryfactory.com/armor/detail.asp?armor_id=53|website=Military Factory|access-date=10 February 2015}}</ref>
+
+It was deployed in the former [[Yugoslavia]] and [[Somalia]], where the design proved successful. Centauro was usually employed to escort motor convoys, for wide area control, and for road patrols.<ref>{{Cite web|title=B1 Centauro tank destroyer / VBC 8×8 APC|url=https://www.globalsecurity.org/military/world/europe/centauro.htm}}</ref> While on convoy duty at Somalia, a platoon of eight Centauros engaged hostile positions during the [[Battle of Checkpoint Pasta|battle of checkpoint Pasta]], on 2 July 1993.<ref>{{Cite web |last=Vilona |first=Leonardo |date=2020-08-17 |title=Checkpoint Pasta: La battaglia del pastificio (1993) |url=https://www.historyfacts.it/2020/08/17/checkpoint-pasta-la-battaglia-del-pastificio-1993/ |access-date=2023-04-05 |website=History Facts |language=it-IT}}</ref>
+
+Centauros were also deployed during operation [[Operation Ancient Babylon|''Antica Babilonia'']], the Italian involvement in the [[Iraq War]]. During this operation, a Centauro troop took part in the battle for the bridges of [[Nasiriyah]] on 6 April 2004, destroying a building where snipers were hiding.<ref>{{Cite web |date=2018-10-11 |title=il col. Scollo e la battaglia dei ponti a Nassirya (2004) - MILES - Rivista Militare |url=http://www.rivistamilitare.it/index.php?option=com_content&task=view&id=710&Itemid=3 |access-date=2023-04-18 |archive-url=https://web.archive.org/web/20181011214538/http://www.rivistamilitare.it/index.php?option=com_content&task=view&id=710&Itemid=3 |archive-date=11 October 2018 }}</ref>
+
+In 2003, Spain deployed six 105/52&nbsp;mm Centauros to Iraq for their troops' self defence.<ref>{{cite web|title=España refuerza su despliegue en Iraq con seis blindados con cañones de gran calibre. |url=http://www.belt.es/noticias/2003/agosto/7/despliegue.htm |website=Belt Iberica |access-date=10 February 2015 |language=es |url-status=dead |archive-url=https://web.archive.org/web/20150210172502/http://www.belt.es/noticias/2003/agosto/7/despliegue.htm |archive-date=10 February 2015 }}</ref>
+
+Several Centauros were donated to Ukraine by Italy in 2025 to fight in the [[Russo-Ukrainian War]].<ref>{{cite web|title=Ukraine Fields Italy's Centauro B1 8×8 Fire Support Combat Vehicle|url=https://www.armyrecognition.com/news/army-news/2025/ukraine-fields-italys-centauro-b1-8x8-wheeled-armored-fighting-vehicle}}</ref> These were often used to carry out long-range strikes with distances such as 11,100 meters being reported.<ref>{{cite news |last1=Loh |first1=Matthew |title=A Ukrainian crew said its Italian tank gun hit a house that was 120 football fields away |url=https://www.businessinsider.com/ukraine-b1-centauro-tank-destroyer-gun-house-miles-football-fields-2026-5 |access-date=28 May 2026 |work=Business Insider}}</ref> The vehicle was praised for high accuracy and as well clear internal communications compared to Soviet tanks but due to drone saturated battlefields their use was largely limited to long distance fire support.<ref>{{cite news |title=Rare Footage of Italy's B1 Centauro Tank in Ukraine Shows Record 11 km Strike, Battlefield Experience {{!}} Defense Express |url=https://en.defence-ua.com/weapon_and_tech/rare_footage_of_italys_b1_centauro_tank_in_ukraine_shows_record_11_km_strike_battlefield_experience-18596.html |access-date=28 May 2026 |work=en.defence-ua.com |language=en}}</ref>
+
+==Variants==
+===Anti-tank===
+[[File:Italian Army - Cavalry School Centauro 2 tank destroyer during an exercise 2024.jpg|thumb|right|[[Regiment "Cavalleggeri di Lodi" (15th)]] Centauro 2 during an exercise in 2024]]
+* '''Centauro 105mm'''
+: The baseline and original version, also called Centauro Reconnaissance Anti-Tank.
+* '''Centauro 120mm'''
+: Upgraded Centauro with a low recoil 120 mm L/45 cannon (unrelated to the [[Rheinmetall Rh-120|Rheinmetall L/44 120mm]]) in a newly designed turret and with new [[composite armour]] that can resist rounds up to 40&nbsp;mm [[APFSDS]] on the front and [[14.5 × 114 mm|14.5&nbsp;mm]] on the rest of the body.<ref>{{Cite web|title=Centauro 2 MGS 120/105|url=https://www.globalsecurity.org/military/world/europe/centauro-ii.htm}}</ref> This vehicle was also used as a testbed for various technologies that would be used in the B1 Centauro's successor vehicle, the Centauro 2.<ref>{{Cite web |url=http://www.military-today.com/artillery/centauro_120mm.htm |title=Centauro with 120 mm Gun - Fire support vehicle |archive-url=https://web.archive.org/web/20210423171251if_/http://www.military-today.com/artillery/centauro_120mm.htm |archive-date=23 April 2021 |access-date=23 February 2021 |url-status=dead }}</ref>
+* '''Centauro 2'''
+: In July 2018, the Italian Army signed a €159 million (US$186 million) contract to acquire 10 Centauro 2 [[tank destroyer]]s, the first tranche of a planned 150-vehicle order. The 30-ton Centauro 2 is based on the Freccia chassis with a three-man turret, an improved 120&nbsp;mm L/45 ([[120×570mm NATO|STANAG 4385]] munition) or 105 mm L/52 ([[105×617mmR|STANAG 4458]]) gun and an optional RWS in the form of the [[Hitrole|HITROLE]] Mod.L (Alternative: [[Pintle-mount|pintle mounted]] 7.62mm or 12.7mm MG). Additional improvements include a digital communication system, a 720&nbsp;hp (533kW) engine delivering 24&nbsp;hp/ton, and wheels extending farther out from the hull for greater stability and better protection against mine blasts. This is paired with a new [[Hydropneumatic suspension|Hydro-pneumatic suspension]] for greater situational adaptability.<ref>{{Cite web |author-link=https://de.wikipedia.org/wiki/Iveco Group |date=9 July 2025 |title=Centauro II |url=https://www.idvgroup.com/products/land-armoured-vehicles/centauro-ii/ |url-status=live |access-date=9 July 2025 |website=www.idvgroup.com}}</ref><ref>[https://www.defensenews.com/land/2018/07/26/italy-buys-new-tank-and-its-got-much-more-going-for-it-than-its-predecessor/ Italy buys new tank — and it's got much more going for it than its predecessor]. ''Defense News''. 26 July 2018.</ref>
+
+: Owing to the combination of its eight-wheeled configuration and revised chassis, the Centauro 2 can handle the high recoil of a high-velocity 120&nbsp;mm cannon, while equivalent vehicles with fewer wheels or weaker chassis are often limited to main armament with lower velocity and/or lower calibre. The gun is fitted with an efficient muzzle brake.<ref>{{Cite web |url=http://www.military-today.com/artillery/centauro_2.htm |archive-url=https://web.archive.org/web/20171121234306if_/http://www.military-today.com/artillery/centauro_2.htm |title=Centauro 2 - 120 mm fire support vehicle |url-status=usurped |access-date=24 February 2021 |archive-date=21 November 2017}}</ref>
+
+===Other roles===
+* '''VBM "Freccia"'''
+:{{Main|Freccia IFV}}
+:The Veicolo Blindato Medio "Freccia" ({{literally|Medium Armoured Vehicle "Arrow"}}) is a Centauro reconfigured<ref>{{cite web|url=http://www.deagel.com/Wheeled-Armored-Fighting-Vehicles/Centauro-VBM_a000412002.aspx |title=Centauro VBM |website=Deagel.com |access-date=2016-06-15}}</ref> as a wheeled [[infantry fighting vehicle]] with multiple variants, such as command & control or mortar carrier, offering increased armour and NBC protection. It can transport up to eight infantrymen plus three crew.
+* '''Centauro 155/39LW'''
+: [[File:Centauro155-39LW MSPO2012.jpg|thumb|right|Centauro 155/39LW.]]This addition to the Centauro range in late 2013 fills the role of [[self-propelled howitzer]],<ref name="Oto Melara">{{cite web|title=Self-Propelled Wheeled Howitzer Centauro 155/39LW |url=http://www.otomelara.it/documents/1287567/3806643/body_centauro_155mm_2013.pdf |website=otomelara.it |publisher=Oto Melara |access-date=25 August 2014 |url-status=dead |archive-url=https://web.archive.org/web/20140826114243/http://www.otomelara.it/documents/1287567/3806643/body_centauro_155mm_2013.pdf |archive-date=26 August 2014 }}</ref> and is able to fire 
+: up to 8 rounds/minute to a distance exceeding 60&nbsp;km for guided ammunition. It mounts an ultra light 155&nbsp;mm/39 main gun, 
+: based on the latest material breakthroughs,<ref name="Artillery on wheels">{{cite web|title=Artillery on wheels|url=http://www.armada.ch/artillery-on-wheels/|website=armada.ch|publisher=Armada International|access-date=25 August 2014|archive-url=https://web.archive.org/web/20180811175724/http://www.armada.ch/artillery-on-wheels|archive-date=11 August 2018|url-status=dead}}</ref> 
+: and a secondary 7.62 or 12.7&nbsp;mm MG. The 155/39 is manned by a crew of two and provides full NBC and ballistic protection.<ref name="Centauro 155 39LW">{{cite web|title=Centauro 155 39LW |url=http://www.otomelara.it/products-services/landsystems/centauro-155-39lw |website=otomelara.it |publisher=Oto Melara |access-date=25 August 2014 |url-status=dead |archive-url=https://web.archive.org/web/20140821131407/http://www.otomelara.it/products-services/landsystems/centauro-155-39lw |archive-date=21 August 2014 }}</ref>
+* '''Centauro VBM Recovery'''
+:Serves both as an engineer vehicle and for recovery and repair of damaged armoured vehicles on the battlefield.<ref>{{cite web|url=http://www.deagel.com/Special-Purpose-Vehicles/Centauro-VBM-Recovery_a000412003.aspx |title=Centauro VBM Recovery |website=Deagel.com |access-date=2016-06-15}}</ref>
+* '''Draco'''
+[[File:Army parade of Italy 2011 22.jpg|thumb|right|Centauro Draco.]]
+:The Draco was never completed, and remained as an unfinished prototype. The only functional part of the Draco was the hull itself which was that of a B1 Centauro; the actual weapon system reached the mock-up stage and was not completed. The Draco was to be armed with a revolver-type ammunition-loading system. It was to use all standard 76&nbsp;mm ammunition, guided DART ammunition, [[C-RAM]] and [[top-attack]] ammunition, and was to be fully compatible with all in-service 76&nbsp;mm rounds. 
+:The rate of fire was to be 80–100 rounds per minute (depending on the elevation angle), the ammunition revolver 
+:containing 12 indexed rounds and being able to shift from one type of ammunition to another.
+
+==Operators==
+{{about|operators of the B1 Centauro tank destroyer and its engineering and recovery variants|operators of the infantry fighting vehicle derivative|Freccia IFV|section=yes}}
+[[File:B1 Centauro operators.png|thumb|Map of B1 Centauro operators in blue]]
+<!--READ FIRST: This section is for cited entries only. Please do not add entries into this list without a citation from a reliable source. All entries without a citation will be removed. Thank you.-->
+
+===Current operators===
+
+==== Primary operators ====
+; {{flag|Italy}} (259)
+: '''Centauro B1 (< 259):'''
+: Orders: Total production for the Italian Army was for 400 Centauro B1<ref name=b1c>{{Cite web |last=Giusti |first=Arturo |date=2020-12-30 |title=B1 Centauro |url=https://tanks-encyclopedia.com/modern/italy/b1_centauro.php |access-date=2025-11-03 |website=Tank Encyclopedia |language=en-US}}</ref>
+:* Batch 1: 100 (no spaced armour, 20 of which later received add-on armour ROMOR-A)
+:* Batch 2: 150 (15 mm additional armour on the hull / turret)
+:* Batch 3: 150 (add-on armour + lengthened by 22 cm, enabling to have two more ammunition racks or to remove it and to transport four infantry soldiers)
+: Retirement:
+:* 141 were later exported to Jordan.<ref name=b1c/>
+: '''Centauro 2 (150):''' 150 have been ordered in several stages, with the last order taking place in June 2024.<ref name=a16b>{{Cite web |date=2024-06-22 |title=Altre 16 blindo Centauro 2 per l'Esercito Italiano – Analisi Difesa |trans-title=Another 16 Centauro 2 armor for the Italian Army |url=https://www.analisidifesa.it/2022/06/altre-16-blindo-centauro-2-per-lesercito-italiano/ |access-date=2024-06-28 |language=it-IT}}</ref>
+:* 10 ordered in July 2018<ref>{{Cite web |date=2024-06-22 |title=Firmato il contratto per le prime 10 Centauro 2 dell'Esercito Italiano – Analisi Difesa |url=https://www.analisidifesa.it/2018/07/firmato-il-contratto-per-le-prime-10-centauro-ii-dellesercito-italiano/ |access-date=2024-06-28 |language=it-IT}}</ref>
+:* 86 ordered in December 2020 with 10 as an option<ref>{{Cite web |date=2024-06-22 |title=Altri 86 blindo Centauro 2 (più 10 in opzione) per l'Esercito Italiano – Analisi Difesa |url=https://www.analisidifesa.it/2020/12/altri-86-blindo-centauro-2-piu-10-in-opzione-per-lesercito-italiano/ |access-date=2024-06-28 |language=it-IT}}</ref>
+:* 16 ordered in June 2022 with confirmation of the option of 10<ref name=a16b/>
+:* 28 ordered in June 2024<ref>{{Cite news |date=27 June 2024 |title=The Iveco – Oto Melara Consortium signs the contract for the supply of 28 Centauro 2 completing the Italian Army's 150 unit requirement |url=https://www.edrmagazine.eu/the-iveco-oto-melara-consortium-signs-the-contract-for-the-supply-of-28-centauro-ii-completing-the-italian-armys-150-unit-requirement |access-date=28 June 2024 |work=edr magazine}}</ref>
+;{{flag|Brazil}} (7 on order; 2 delivered; requirement for 98; option of 221)
+: '''Centauro 2BR'''
+:* The Brazilian Army has a total requirement for 98 Centauro 2. In November 2022, the estimated value of the potential contract was USD 1 billion.<ref name=":1">{{Cite web |last=Higuera |first=José |date=2022-12-01 |title=Brazilian Army chooses Italian armored vehicle Centauro 2 |url=https://www.defensenews.com/land/2022/12/01/brazilian-army-chooses-italian-armored-vehicle-centauro-ii/ |access-date=2024-01-27 |website=Defense News |language=en}}</ref> A complementary order for 123 additional vehicles (221 in total) is planned to be signed few years prior to the completion of the initial contract. The follow-on contract was estimated at $1.1 billion.<ref name=":1" /> The production will be started in Italy, and eventually, it will be produced in [[Sete Lagoas]] by Iveco's Brazilian branch, together with the related 6×6 [[VBTP-MR Guarani]].<ref name=":0" /><ref>{{Cite web |last=Defesa |first=Redação Forças de |date=2022-12-07 |title=Nota do Exército Brasileiro sobre a aquisição da viatura Centauro 2 |url=https://www.forte.jor.br/2022/12/07/nota-do-exercito-brasileiro-sobre-a-aquisicao-da-viatura-centauro-ii/ |access-date=2022-12-15 |website=Forças Terrestres - Exércitos, Indústria de Defesa e Segurança, Geopolítica e Geoestratégia |language=pt-BR}}</ref>
+:* The 2 first vehicles were delivered to La Spezia in Italy during 2023.<ref>{{Cite web |last=Giovanni |date=2023-02-06 |title=Brazil Takes Delivery of First Two Centauro 2 Wheeled Tank Destroyers |url=https://www.defense-aerospace.com/brazil-takes-delivery-of-first-two-centauro-2-wheeled-tank-destroyers/ |access-date=2024-04-06 |website=Defense aerospace |language=en-US |archive-date=6 April 2024 |archive-url=https://web.archive.org/web/20240406211754/https://www.defense-aerospace.com/brazil-takes-delivery-of-first-two-centauro-2-wheeled-tank-destroyers/ |url-status=dead }}</ref><ref name=":2">{{Cite web |last=Ribas |first=Gabriel |date=2 September 2026 |title=Brazil signs long-anticipated Centauro IIBR contract following a 20-month delay |url=https://warsight.com/2026/09/02/brazil-signs-centauro-iibr-contract/ |url-status=live |archive-url=https://web.archive.org/web/20260908093821/https://warsight.com/2026/09/02/brazil-signs-centauro-iibr-contract/ |archive-date=8 September 2026 |access-date=24 September 2026 |website=Warsight}}</ref> The vehicles were delivered for evaluation by the Brazilian Army under Phase I of the programme. Transit issues delayed their arrival in Brazil, with the first vehicle arriving in Brazil on 17 August 2024, and the second on 2 September 2024.<ref name=":2" />
+:* On 31 August 2026, Brazil ordered 7 Centauro 2BR under Phase II of the programme, representing a significant delay from the originally planned signing date in December 2024. The first vehicle is expected to be delivered in 2028.<ref name=":2" />
+; {{flag|Oman}} (9)
+: '''Centauro B1'''
+: 9 Centauro B1 ordered in 2003 for the Royal Guard of Oman. The variant selected is a modified variant with 120 mm gun.<ref name="trade">{{cite web |title=Trade Registers |url=http://armstrade.sipri.org/armstrade/page/trade_register.php |url-status=dead |archive-url=https://web.archive.org/web/20100414022558/http://armstrade.sipri.org/armstrade/page/trade_register.php |archive-date=14 April 2010 |access-date=2016-06-20 |publisher=Armstrade.sipri.org}}</ref>
+; {{flag|Spain}} (88)
+: '''Centauro B1'''
+: Purchases:<ref name="trade" />
+:* Centauro B1 ''(VRCC-105)'':
+:** Phase 1: 22 ordered in 1999, delivered in 2000-01 (made in Italy)
+:** Phase 2: 62 ordered in 2002, delivered in 2004-06 (made in Spain)
+:* Centauro VBM Recovery:
+:** Phase 3: 4 ordered in 2010.<ref>{{Cite web |last=Defensa.com |date=2019-02-12 |title=Los desconocidos VCREC Centauro del Ejército de Tierra español -noticia defensa.com - Noticias Defensa España |url=https://www.defensa.com/espana/desconocidos-vcrec-centauro-ejercito-tierra-espanol |access-date=2025-07-16 |website=Defensa.com |language=es}}</ref><ref name=b1c/>
+
+==== Second-hand operators ====
+Italy donated some Centauro to support the defence of other nations.
+;{{flag|Jordan}} (141)
+: 141 Centauro B1 (all ex-Italian Army), modernised with upgrade kits.<ref>{{Cite web |date=2025-02-22 |title=Italy reportedly sending B1 Centauros to Ukraine |url=https://defence-blog.com/italy-reportedly-sending-b1-centauros-to-ukraine/ |access-date=2025-11-03 |website=Defence Blog – Military and Defense News |language=en-US}}</ref><ref name=b1c/>
+; {{flag|Ukraine}}
+: First reports of the Centauro B1 transferred to Ukraine appeared in November 2025, likely donated as military aid. On 9 November 2025, the [[78th Airborne Assault Regiment (Ukraine)|78th Airborne Assault Regiment]] of the Ukrainian Air Assault Forces confirmed these rumors, by publishing an official video showcasing the Ukrainian paratroopers using a B1 Centauro in an unknown sector of the frontlines. While the total number of the Centauro gifted to Ukraine is yet unknown, footage published by the 78th regiment shows B1 armored cars with serial numbers going up to 015.<ref>{{cite news |title=First images emerge of the Centauro B1 combat vehicle modified by Ukraine |url=https://www.zona-militar.com/en/2025/11/10/first-images-emerge-of-the-centauro-b1-combat-vehicle-modified-by-ukraine/ |work=Zona Militar |date=10 November 2025}}</ref><ref>{{cite news |title=Ucraina, il cacciacarri italiano Centauro B1 schierato al fronte: così può cambiare la guerra |url=https://www.ilmessaggero.it/mondo/ucraina_cacciacarri_italiano_centauro_b1_come_cambia_guerra-9164542.html |work=www.ilmessaggero.it |date=2 November 2025 |language=it}}</ref><ref>{{cite news |last1=Di Feo |first1=Gianluca |title=Ucraina, le blindo italiane centauro al fronte |url=https://www.repubblica.it/esteri/2025/11/01/news/ucraina_blindo_italiane_centauro_fronte_pokrovsk-424953016/ |work=la Repubblica |date=1 November 2025 |language=it}}</ref><ref>{{cite news |last1=Fretay |first1=Halna du |title=Ukraine's Armed Forces released first visual confirmation of Italian Centauro B1 armored vehicles |url=https://www.armyrecognition.com/focus-analysis-conflicts/army/conflicts-in-the-world/russia-ukraine-war-2022/ukraines-armed-forces-released-first-visual-confirmation-of-italian-centauro-b1-armored-vehicles |work=www.armyrecognition.com |language=en-us}}</ref><ref>{{cite news |last1=Bishnoi |first1=Arun |title=Ukraine Receives Italian Centauro B1 Armored Vehicles |url=https://www.overtdefense.com/2025/11/10/ukraine-receives-italian-centauro-b1-armored-vehicles/ |work=Overt Defense |date=10 November 2025 |language=en-CA}}</ref><ref>{{cite web |date=1 November 2025 |title=Ukraine receives Italian Centauro tank destroyers |url=https://defence-blog.com/ukraine-receives-italian-centauro-tank-destroyers/?fbclid=IwY2xjawNzVS1leHRuA2FlbQIxMQBicmlkETF1eDUyOWhtdVRIa0dYYXdkAR7W1Zt7rsw1w40Yo-HYKIO8hns8-cWGtNBQ_Z3UrL4HXAaAxZPG_DloYdNBGQ_aem_O1-WMIapzZsmyTogxzq4Ag |access-date=1 November 2025 |website=Defence Blog – Military and Defense News}}</ref>
+
+=== Evaluation-only operators ===
+
+; {{flag|Russia}}
+: In 2012, the Russian Army tested the Freccia fitted with a 30 mm turret and the Centauro in 3 variants, equipped with the 105 mm canon on the Centauro B1, one fitted with a Russian 125 mm tank gun, and another one with a NATO 120 mm tank gun with the HITFACT 120mm turret. They were returned to Italy after tests were complete.<ref>{{Cite web |last=admin |date=2012-05-15 |title=Russia Army testing Italian Centauro tank |url=https://www.army-technology.com/news/newsrussia-army-testing-italian-centauro-tank/ |access-date=2024-01-27 |website=Army Technology |language=en-US}}</ref>
+: A discussion for up to 2,500 vehicles was mentioned. Following the [[Annexation of Crimea by the Russian Federation|annexation of Crimea in 2014]], sanctions were imposed on Russia, and all cooperation on armament was cancelled.<ref>{{Cite web |title=Sanctions adopted following Russia's military aggression against Ukraine |url=https://finance.ec.europa.eu/eu-and-world/sanctions-restrictive-measures/sanctions-adopted-following-russias-military-aggression-against-ukraine_en |access-date=2023-11-05 |website=finance.ec.europa.eu |language=en}}</ref>
+; {{flag|United States}}
+: Leased 16 Centauro between 2000 and 2002 for evaluation, and to gain experience for the introduction of the [[M1128 mobile gun system]]. The vehicles were tested with the 2nd Infantry Division at Fort Lewis over a period of two years, and were subsequently returned to Italy in 2002.<ref name="MilitaryToday">{{cite web |title=Centauro B1 |url=http://www.military-today.com/artillery/centauro_b1.htm |access-date=2011-01-21 |archive-date=3 March 2016 |archive-url=https://web.archive.org/web/20160303172545if_/http://www.military-today.com/artillery/centauro_b1.htm |url-status=usurped }}</ref>
+
+==References==
+{{Reflist}}
+
+==External links==
+{{Commons category}}
+* [http://www.iveco-otomelara.com/wheeled/CentauroMGS.php Official website]{{Dead link|date=March 2026 |bot=InternetArchiveBot }}
+* [http://armour.ws/b1-centauro-tank-destroyer-td/ Armour.ws]
+* [https://fas.org/man/dod-101/sys/land/row/centauro.htm FAS.org]
+* [http://www.globalsecurity.org/military/world/europe/centauro.htm Globalsecurity.org]
+{{OTO Melara|state=collapsed}}
+{{Armoured combat vehicles}}
+{{Modern AFV}}
+{{Use dmy dates|date=June 2017}}
+
+[[Category:Armoured fighting vehicles of Italy]]
+[[Category:Tank destroyers]]
+[[Category:Fire support vehicles]]
+[[Category:OTO Melara]]
+[[Category:Iveco vehicles]]
+[[Category:Eight-wheeled vehicles]]
+[[Category:Military vehicles introduced in the 1990s]]
+[[Category:Wheeled armoured fighting vehicles]]

@@ -11,11 +11,11 @@ never leaves the inventory in silence.
 
 - Tokens: 33
 - Ground tokens: 7
-- recorded: 4
-- lead: 1
-- no_source: 2
+- recorded: 6
+- lead: 0
+- no_source: 1
 - excluded_non_ground: 26
-- Runtime rows: 4
+- Runtime rows: 6
 
 ## Ground tokens
 
@@ -23,10 +23,10 @@ never leaves the inventory in silence.
 |---|---|---|---|---|---|
 | `Car` | engine_base | recorded | `honda_civic_6gen_sedan` | yes | runtime row emitted and class-map binding held |
 | `MRAP` | mod_token | recorded | `m_atv_m1240` | yes | runtime row emitted and class-map binding held |
-| `Tank` | engine_base | no_source | none | no | no emitted runtime row and no class-map binding held |
+| `Tank` | engine_base | recorded | `m1_abrams` | yes | runtime row emitted and class-map binding held |
 | `Tracked_APC` | engine_base | recorded | `m113a2` | yes | runtime row emitted and class-map binding held |
 | `Truck` | engine_base | recorded | `m923a2` | yes | runtime row emitted and class-map binding held |
-| `Wheeled_APC` | mod_token | lead | none | no | partial tier-2 lead LAV-25; candidate manual not held and class mapping not source-backed |
+| `Wheeled_APC` | mod_token | recorded | `btr_80` | yes | runtime row emitted and class-map binding held |
 | `Wheeled_APC_F` | mod_token | no_source | none | no | no emitted runtime row and no class-map binding held |
 
 ## Excluded tokens

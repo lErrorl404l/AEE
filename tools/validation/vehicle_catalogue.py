@@ -309,10 +309,16 @@ def _absent(field: str) -> ResolvedField:
     )
 
 
-# The metric size code, for example 395/85R20. The inch form is handled after
-# the imperial colon is folded to a decimal point.
+# The metric size code, radial or cross-ply: 395/85R20, 110/80-R19, 130/80-16.
+# The width is the first figure in millimetres and the aspect is the second.
+# The separator before the rim is required and marks radial (R) or cross-ply
+# (-). It does not change the formula. A required separator stops the aspect
+# from backtracking into the rim, so ``130/80`` and ``395/8520`` are rejected.
+# The inch form is handled after the imperial colon is folded to a decimal
+# point.
 _METRIC_TYRE = re.compile(
-    r"^\s*(\d+(?:\.\d+)?)\s*/\s*(\d+(?:\.\d+)?)\s*R?\s*(\d+(?:\.\d+)?)\s*$"
+    r"^\s*(\d+(?:\.\d+)?)\s*/\s*(\d+(?:\.\d+)?)"
+    r"\s*(?:-\s*)?(?:R|-)\s*(\d+(?:\.\d+)?)\s*$"
 )
 _INCH_TYRE = re.compile(r"^\s*(\d+(?:\.\d+)?)\s*[xX\-\s]+\s*R?\s*(\d+(?:\.\d+)?)\s*$")
 
@@ -320,8 +326,10 @@ _INCH_TYRE = re.compile(r"^\s*(\d+(?:\.\d+)?)\s*[xX\-\s]+\s*R?\s*(\d+(?:\.\d+)?)
 def parse_tyre_size(code: str) -> tuple[float, float] | None:
     """Return ``(width_mm, diameter_mm)`` from a size code, or None.
 
-    Metric ``395/85R20``: width is the first figure, the section height is
-    ``width * aspect / 100`` and the diameter adds two sections to the rim.
+    Metric ``395/85R20`` (radial) and ``130/80-16`` (cross-ply): width is the
+    first figure in millimetres, the section height is ``width * aspect / 100``
+    and the diameter adds two sections to the rim. The separator before the rim
+    marks radial or cross-ply. It does not change the formula.
     Inch ``14:00 x R20``, ``14.00-20`` or ``14x20``: the aspect is 100 by
     definition for a cross-ply truck tyre, so the section equals the width.
     """

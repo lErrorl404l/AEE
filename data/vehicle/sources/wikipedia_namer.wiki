@@ -1,0 +1,170 @@
+{{Short description|Israeli heavy armoured personnel carrier}}
+{{other uses}}
+{{Use dmy dates|date=May 2019}}
+{{Infobox weapon
+| is_vehicle         = yes
+| type               = {{ubl
+ | Heavy [[armoured personnel carrier]]
+ }}
+| origin             = [[Israel]]
+| service            = 2008–present
+| used_by            = [[Israel Defense Forces]]
+| wars               = {{ubl
+ | [[Gaza War (2008–2009)]]
+ | [[2014 Gaza War|Operation Protective Edge]]
+ | [[Gaza war]]
+| [[2026 Lebanon War]]}}
+| designer           = [[Israel Military Industries]]
+| manufacturer       = [[Israeli Ordnance Corps|IDF Ordnance]] (assembler)
+| unit_cost          = $5&nbsp;million<ref name="anshel">{{Cite news |author=Pfeffer |first=Anshel |date=16 February 2014 |title= |script-title=he:צה"ל הכניס לשימוש נגמ"ש חדש מתוצרת ישראלית |trans-title=IDF put to use new Israeli-made armored personnel carrier |url=https://www.haaretz.co.il/news/politics/1.1162442 |url-status=live |archive-url=https://web.archive.org/web/20221007124400/https://www.haaretz.co.il/news/politics/2009-02-16/ty-article/0000017f-e25d-df7c-a5ff-e27f79e30000 |archive-date=7 October 2022 |access-date=18 August 2014 |newspaper=[[Haaretz]] |language=he}}</ref>
+| production_date    = 2008–present
+| number             = {{ubl
+ | Up to 290 are currently operational
+ | 531 in total planned to be produced by 2027<ref name="ynetnews.com">{{Cite news |last1=Yehoshua |first1=Yossi |date=22 September 2014 |title=Ya'alon approves addition of 200 advanced APCs for the IDF |url=https://www.ynetnews.com/articles/0,7340,L-4573814,00.html |url-status=live |archive-url=https://web.archive.org/web/20221228125946/https://www.ynetnews.com/articles/0,7340,L-4573814,00.html |archive-date=28 December 2022 |newspaper=Ynetnews}}</ref>
+ }}
+| name               = Namer
+| image              = [[File:Flickr - Israel Defense Forces - 13th Battalion of the Golani Brigade Holds Drill at Golan Heights (8).jpg|305px|Namer IFV/APC]][[File:Trophy on NAMER AFV.jpg|305px|Namer with TROPHY active protection system]]
+| caption            = '''Top:''' Namer HAPC in a drill, armed with a [[M2 Browning]] on [[RCWS]].<br />'''Bottom:''' Namer with [[Trophy (countermeasure)|Trophy (Windbreaker) APS]] and [[M2 Browning]].
+| length             = 
+| width              = 
+| height             = 
+| clearance          = 
+| weight             = 60+ [[tonne]]s<ref>{{cite web |title=Namer APC Specifications |url=https://farm4.static.flickr.com/3480/3844509317_36447a7cc1_b.jpg |website=Flickr}}</ref> <!-- officially -->
+| transmission       = 
+| suspension         = [[Coil spring|Helical spring]]
+| speed              = {{convert|85.2|km/h|-1|abbr=on}}
+| vehicle_range      = {{convert|500|km|mi|abbr=on}}
+| primary_armament   = [[Samson Remote Controlled Weapon Station|Samson RCWS]] equipped with either [[M2 Browning machine gun|{{convert|12.7|mm|in|abbr=on}} M2 machine gun]] or [[Mk 19 grenade launcher]]
+| payload_capacity   = 9 infantrymen<ref name="autoc">{{cite web |title=New Artillery Cannon for APC |url=https://www.idf.il/1283-11580-en/Dover.aspx |url-status=dead |archive-url=https://web.archive.org/web/20150402144731/https://www.idf.il/1283-11580-en/Dover.aspx |archive-date=2 April 2015 |website=Israel Defense Forces}}</ref>
+| secondary_armament = {{ubl
+ | 1 × {{convert|7.62|mm|in|abbr=on}} [[FN MAG]] MG
+ | 1 × {{convert|60|mm|in|abbr=on}} external [[mortar (weapon)|mortar]]
+ | 12 × [[smoke grenade]]s
+ }}
+| armour             = Classified [[composite armor|composite matrix]] of laminated [[ceramic]]–[[steel]]–[[nickel]] [[alloy]] + underlaid [[reactive armour]]. [[Sloped armor|Sloped]] modular design.
+| crew               = 3 (commander, driver, RCWS operator) + 9 troops
+| engine             = {{convert|1200|hp|0|abbr=on}} [[Turbocharger|turbocharged]] [[diesel engine]]
+| fuel_capacity      = 
+| pw_ratio           = {{convert|20|hp/tonne|abbr=on}}
+}}
+
+'''Namer''' ({{langx|he|נָמֵר}}, {{IPA|he|naˈmeʁ|pron}}; meaning "[[leopard]]," and also a [[syllabic abbreviation]] of "'''Na'''gmash" (APC) and "'''Mer'''kava") is an Israeli [[armoured personnel carrier]] based on a [[Merkava#Merkava Mark IV|Merkava Mark IV]] tank chassis.<ref>{{cite book |author=Scott C. Farquhar |url=https://books.google.com/books?id=Yl-9rni983MC |title=Back to Basics: A Study of the Second Lebanon War and Operation CAST LEAD |date=8 June 2009 |publisher=United States Dept. of Defense |isbn=9780982328330 |page=86 |access-date=14 February 2011}}</ref> Namer was developed by and is being assembled by the [[Israeli Ordnance Corps]]. It has entered service in limited numbers with the [[Israel Defense Forces]] since the end of 2008. Due to budgetary constraints, the introduction of the Namer into the IDF has been slow, leaving the ground forces dependent on the [[M113]] until 2027.<ref name="ReferenceA">{{cite news |last1=Yehoshua |first1=Yossi |title=Ya'alon approves addition of 200 advanced APCs for the IDF |url=https://www.ynetnews.com/articles/0,7340,L-4573814,00.html |website=Ynetnews |archive-url=https://web.archive.org/web/20221228125946/https://www.ynetnews.com/articles/0,7340,L-4573814,00.html |archive-date=28 December 2022 |language=en |date=22 September 2014 |url-status=live}}</ref>
+
+==History==
+{{multiple image
+| direction = vertical
+| caption1 = Namer prototype based on Merkava Mark I. Notice the straight side of the hull.
+| image1 = NamerSirpad01.jpg
+| caption2 = Operational Namer based on Merkava Mark IV. Notice the sloped side of the hull.
+| image2 = IM000656.jpg
+| caption3 = Rear of Namer showing the ramp which replaced the clamshell doors
+| image3 = Nammer004.jpg
+| align = left}}
+
+===1990s–2004===
+The experience of converting [[Centurion tanks]] into [[armoured personnel carrier]]s (Nagmashot, [[Nagmachon]]) and [[combat engineering vehicle]]s ([[Puma armored engineering vehicle|Puma]], [[Nakpadon]]), followed by the conversion of many [[T-54/55|T-54 and T-55]] tanks into [[IDF Achzarit|Achzarit]] infantry fighting vehicles, further promoted the idea of converting Merkava tanks into heavily armoured [[armoured personnel carrier|APCs]] / [[IFV]]s. This concept was also driven by the fact that many of the ~250 Merkava Mark I tanks were being withdrawn from service, and it was also made clear that the 105&nbsp;mm armament of the Merkava Mark IIs could not be upgraded with the modern [[IMI 120 mm gun]].
+
+The development did not progress much in the 1990s due to funding issues, but following [[2004 Israel–Gaza conflict]], which exposed the vulnerability of the [[M113 armored personnel carrier]] to [[improvised explosive device]]s and [[rocket-propelled grenade]]s, the IDF reconsidered the development.<ref>{{cite news |author=Barzilai |first=Amnon |date=10 June 2004 |title= |script-title=he:תוכנית "נמרה": טנק המרכבה 1 יוסב לנגמ"ש |trans-title=Program "Nemmera": Tank will be altered APC |url=https://www.haaretz.co.il/misc/1.972890 |url-status=live |archive-url=https://web.archive.org/web/20221228193428/https://www.haaretz.co.il/misc/2004-06-10/ty-article/0000017f-dc35-d3ff-a7ff-fdb55fc90000 |archive-date=28 December 2022 |access-date=18 August 2014 |newspaper=[[Haaretz]] |language=he}}</ref> At that point, the [[Stryker]] armoured personnel carrier was considered, but was rejected by the IDF.<ref>{{cite web |date=11 January 2005 |title=Armored warfare: Israel Drops Stryker for Merkava APC |url=http://www.fresh.co.il/vBulletin/showpost.php?p=130634&postcount=1 |url-status=live |archive-url=https://web.archive.org/web/20231108183822/https://www.fresh.co.il/vBulletin/showpost.php?p=130634&postcount=1 |archive-date=8 November 2023 |publisher=Fresh.co.il}}</ref>
+
+===2005–present===
+Eventually, [[Israeli Ordnance Corps|IDF Ordnance]] developed infantry fighting vehicle prototypes based on the Merkava Mark I chassis, and also a handful of IFVs based on the Merkava Mark IV chassis.<ref>{{cite book| page=7 |last=Gelbart |first=Marsh |others=Bryan, Anthony 'Tony' illus |title=Modern Israeli Tanks and Infantry Carriers 1985–2004 |location=Oxford, UK |publisher=Osprey |year=2004 |isbn=1-84176-579-1}}</ref> The vehicle was initially called ''Nemmera'' ([[Hebrew language|Hebrew]]: leopardess), but later renamed to ''Namer'' ([[Hebrew language|Hebrew]]: leopard), while the name ''Nemmera'' refers to a Merkava-based [[Armoured recovery vehicle|ARV]].
+
+On 15 February 2005, ''[[Maariv]]'' reported that a Namer prototype based on the Merkava Mark I was fielded by the [[Givati Brigade]] for trials and evaluation. It was equipped with a [[Rafael Overhead Weapon Station]], which is remotely controlled and loaded from within the vehicle. This same unit was demonstrated at the [[Eurosatory]] 2005 military exhibition, where potential export customers showed interest.
+
+Lessons learned in the battles of the [[2006 Lebanon War]] also largely validated this program. Consequently, in 2007, it was reported<ref>{{cite web |date=20 July 2007 |title=Armor: The Ultimate IFV |url=http://www.strategypage.com/htmw/htarm/articles/20070720.aspx |url-status=live |archive-url=https://web.archive.org/web/20231108183822/http://www.strategypage.com/htmw/htarm/articles/20070720.aspx |archive-date=8 November 2023 |access-date=18 August 2014 |publisher=Strategy Page}}</ref> that the first fifteen Namers would be delivered in 2008, and over a hundred more would finally equip two combat brigades. However, conversion plans were abandoned in favor of newly built Merkava Mark IV chassis.
+
+The Namer was the first IDF vehicle designed by computer ([[Computer-aided design|CAD]]), which allowed it to be conceptualized more rapidly than previous vehicles.
+
+On 1 March 2008, the IDF officially presented a Namer IFV that was operational, fully-developed, and built [[ab initio]] based on the Merkava Mark IV chassis.<ref>{{cite web |title=2 March 2008 |script-title=he:עין האוֹנָנוּת |url=http://www.idf.il/1133-9454-he/Dover.aspx |url-status=dead |archive-url=https://web.archive.org/web/20150402122642/https://www.idf.il/1133-9454-he/Dover.aspx |archive-date=2 April 2015 |website=Israel Defense Forces |language=he}}</ref> Reportedly, the construction was expedited in May 2008 by importing parts from the US.<ref>{{cite web|url=http://www.nrg.co.il/online/1/ART1/734/959.html |script-title=he:צה"ל מאיץ את ייצור ה"נמר" בסיוע ארה"ב |trans-title=IDF accelerates production of Namer with assistance of United States |publisher=[[Maariv]] |language=he |access-date=18 August 2014}}</ref> On 15 September 2008, the Namer was unveiled to the general public at an exhibition in [[Rishon LeZion]].
+
+To speed up the production of the Namers (which had been taking place domestically), on 25 October 2010, it was announced that [[General Dynamics Land Systems]] had been chosen to negotiate a contract to manufacture and integrate an unspecified number of vehicle hulls at the [[Lima Army Tank Plant|Joint Systems Manufacturing Center]] in [[Lima, Ohio]].<ref>{{Cite web |date=25 October 2010 |title=General Dynamics Selected for Merkava Armored Personnel Carriers for Israel |url=https://www.prnewswire.com/news-releases/general-dynamics-selected-for-merkava-armored-personnel-carriers-for-israel-105674333.html |url-status=live |archive-url=https://web.archive.org/web/20231112213432/https://www.prnewswire.com/news-releases/general-dynamics-selected-for-merkava-armored-personnel-carriers-for-israel-105674333.html |archive-date=12 November 2023 |access-date=18 August 2014 |website=PR Newswire |publisher=General Dynamics Land Systems}}</ref>
+
+[[File:IDF-Namer003.jpg|thumb|right|Namer in [[Yad La-Shiryon]], [[Latrun]]]]
+
+After cutting back orders for the Namer in 2014 due to budget constraints,<ref>{{cite news |last=Dagoni |first=Ran |date=14 January 2014 |title=Israel halves Namer order with General Dynamics |url=https://www.globes.co.il/en/article-1000909206 |url-status=live |archive-url=https://web.archive.org/web/20231202115502/https://en.globes.co.il/en/article-1000909206 |archive-date=2 December 2023 |publisher=Globes}}</ref> in 2015, the IDF increased its orders for parts, in expectation of orders of complete systems. The decision resulted partly as a response to the death of seven [[Golani Brigade]] soldiers, who were killed by an RPG in Gaza while riding a [[Vietnam War]]-era [[M113 armored personnel carrier|M113]] whose engine stalled in the middle of the battlefield.<ref>{{cite news |last=Lappin |first=Yaakov |date=3 March 2015 |title=Defense Ministry doubles orders for tank, Namer APC parts |url=https://www.jpost.com/Israel-News/Defense-Ministry-orders-more-tanks-will-re-equip-armored-vehicles-with-famed-Trophy-system-392776 |url-status=live |archive-url=https://web.archive.org/web/20240118211652/https://www.jpost.com/israel-news/defense-ministry-orders-more-tanks-will-re-equip-armored-vehicles-with-famed-trophy-system-392776 |archive-date=18 January 2024 |work=The Jerusalem Post}}</ref> The orders from General Dynamics occurred alongside domestic production of the vehicles.
+
+The Namer was originally planned to be equipped with [[Israel Military Industries]]'s [[Iron Fist (countermeasure)|Iron Fist active protection system]];<ref>{{Cite web |date=20 June 2010 |title=Namer Heavy Armoured Infantry Fighting Vehicle |url=https://www.army-technology.com/projects/namerheavyarmouredin/ |url-status=live |archive-url=https://web.archive.org/web/20230923015200/https://www.army-technology.com/projects/namerheavyarmouredin/ |archive-date=23 September 2023 |website=Army Technology}}</ref> however, due to budget limitations, the installation of an active protection system was delayed. In 2016, nearly a decade later than planned,<ref>{{Cite web |last=Opall-Rome |first=Barbara |date=28 January 2016 |title=Israel To Equip Troop Carriers With Trophy APS |url=https://www.defensenews.com/land/2016/01/28/israel-to-equip-troop-carriers-with-trophy-aps/ |url-status=live |archive-url=https://archive.today/20240120005810/https://www.defensenews.com/land/2016/01/28/israel-to-equip-troop-carriers-with-trophy-aps/ |archive-date=20 January 2024 |website=Defense News}}</ref> the IDF said that it would begin to fit newly built Namers with [[Rafael Advanced Defense Systems|Rafael]]'s [[Trophy (countermeasure)|Trophy active protection system]].
+
+The IDF has continuously cut orders for the Namer due to budgetary constraints and a lack of prioritization of ground forces.<ref name="ReferenceA"/> Since 2014, the pace of Namer purchases has been considered slow, with around 30 being produced each year, meaning that there would not be 500 of the vehicles in the IDF until 2027.<ref name="ynetnews.com"/>
+
+On 6 March 2016, the'' [[Jerusalem Post]] ''reported that all new Namers would be delivered with the [[Trophy active protection system]], and that the quantity of Namers ordered had been doubled from the previous year.<ref>{{Cite web |last=Lappin |first=Yaakov |date=7 March 2016 |title=APCs with Trophy system rolling off production lines |url=https://www.jpost.com/Israel-News/APCs-with-Trophy-system-rolling-off-production-lines-447076 |url-status=live |archive-url=https://web.archive.org/web/20240118211640/https://www.jpost.com/israel-news/apcs-with-trophy-system-rolling-off-production-lines-447076 |archive-date=18 January 2024 |website=The Jerusalem Post}}</ref>
+
+At the end of 2016, the IDF [[Combat Engineering Corps]] started to operate the Namer [[Combat engineering vehicle|CEV]] ([[Hebrew]]: אוֹנָנוּת הנדסי – נמר"ה). The Namer CEV is equipped with the [[Trophy active protection system]]<ref name=":0" /> and engineering devices, such as: mine rollers, bulldozer blades, and anti-mine CARPET rockets. In 2023, the Namer CEV was used in the [[Gaza war|war in Gaza]].
+
+==Design==
+
+===Survivability===
+The Namer has been designed for survivability and rapid repair, with modular armor, [[V-hull]] belly armor pack, and [[CBRN defense]].
+[[File:Flickr_-_Israel_Defense_Forces_-_13th_Battalion_of_the_Golani_Brigade_Holds_Drill_at_Golan_Heights_(9).jpg|thumb|left|Namer during training]]
+According to Brigadier general Yaron Livnat, they are more heavily armored than the Merkava IV tanks: "The weight saved by eliminating the turret was 'reinvested' in beefing up the armor."<ref>{{cite web |date=June 2010 |url=http://defense-update.com/features/2010/june/namer_merkava_update_09062010.html |title=Enter the Namer |publisher=Defense Update |access-date=18 August 2014 |archive-url=https://web.archive.org/web/20141006075219/http://defense-update.com/features/2010/june/namer_merkava_update_09062010.html |archive-date=6 October 2014 |url-status=dead }}</ref>
+
+From 2016 onwards, some Namers were planned to be equipped with the [[Trophy (countermeasure)|Trophy]] [[active protection system]].<ref name=":0">{{Cite web |last=אמיר (Bohbot) |first=בוחבוט (Amir) |date=7 September 2014 |title= |script-title=he:נגמ"ש העתיד של צה"ל ימוגן ב"מעיל רוח" |trans-title=The IDF's future APC will be protected by a "wind jacket" |url=https://news.walla.co.il/item/2783131 |url-status=live |archive-url=https://web.archive.org/web/20141111075227/http://news.walla.co.il/item/2783131 |archive-date=11 November 2014 |website=news.walla.co.il}}</ref>
+
+In 2015, Israel's defense ministry stated: "The Namer is considered to be the most protected armored combat vehicle in the world, which proved its abilities during fighting in [[Operation Protective Edge]] against many threats." Consequently, the IDF planned to introduce more of the Namers into the army over the next decade, as replacements for the dated M113s currently in service.<ref>{{Cite web |last=Lappin |first=Yaakov |date=5 May 2015 |title=In wake of last year's war in Gaza, Defense Ministry ramps up orders for new APCs |url=https://www.jpost.com/Israel-News/Defense-Ministry-increases-production-of-Namer-APCs-402122 |url-status=live |archive-url=https://web.archive.org/web/20240118211647/https://www.jpost.com/israel-news/defense-ministry-increases-production-of-namer-apcs-402122 |archive-date=18 January 2024 |website=The Jerusalem Post}}</ref>
+
+===Armament===
+Namers are armed with either an [[M2 Browning machine gun]] or an [[Mk 19 grenade launcher]] mounted on a [[Samson Remote Controlled Weapon Station]], as well as a 7.62&nbsp;mm ([[FN MAG]]) machine gun and a 60&nbsp;mm [[Mortar (weapon)|mortar]]. Smoke grenade launchers are also carried.
+
+On 31 July 2017, the Israeli Defense Ministry (IDF) released video of an [[infantry fighting vehicle]] version of the Namer, fitted with an unmanned turret armed with a 30&nbsp;mm cannon; the turret is equipped with the Trophy APS. The Namer IFV offers more firepower for infantry units, and provides a better response in urban combat operations.<ref>{{Cite web |date=2 August 2017 |title=Israeli Ministry of Defense introduces NAMER tracked IFV with 30mm automatic cannon. |url=https://armyrecognition.com/august_2017_global_defense_security_news_industry/namer_ifv_30mm_cannon_unmanned_turret_israeli_army_mod_10208171.html |url-status=live |archive-url=https://web.archive.org/web/20231013064623/https://armyrecognition.com/august_2017_global_defense_security_news_industry/namer_ifv_30mm_cannon_unmanned_turret_israeli_army_mod_10208171.html |archive-date=13 October 2023 |website=Army Recognition}}</ref>
+
+On 12 December 2018, the Israeli Defense ministry released a further video of the Namer IFV that showed it launching two [[Spike (ATGM)|Spike-MR]] missiles from a pod which can be erected from and lowered flush into the turret roof. A defense ministry spokesperson explained that the installation “will enable IDF soldiers to fire missiles from within the vehicles, while they are still protected, which will significantly increase the attack range of the vehicles.” The automated launch pod will also be fitted to the turret of the [[Eitan AFV]].<ref>{{cite web |last1= |date=12 December 2018 |title=In first, Israel test-fires anti-tank missile from unmanned APC turret |url=https://www.timesofisrael.com/in-first-israel-test-fires-anti-tank-missile-from-unmanned-apc-turret/ |url-status=live |archive-url=https://web.archive.org/web/20230515011434/https://www.timesofisrael.com/in-first-israel-test-fires-anti-tank-missile-from-unmanned-apc-turret/ |archive-date=15 May 2023 |access-date=13 December 2018 |website=the Times of Israel}}</ref>
+
+===Capabilities===
+[[File:Trophy on NAMER IFV.jpg|thumb|Namer IFV version]]
+Namer is capable of maneuvering in difficult terrain, powered by the [[Teledyne Continental Motors|Teledyne Continental]] AVDS-1790-9AR {{convert|1200|hp|0|abbr=on}} [[V12 engine|V12]] [[air-cooled engine|air-cooled]] [[diesel engine]] of the Merkava Mark III. Namer is able to carry up to 12 troops (crewmen and fully equipped infantrymen) and one stretcher, or two stretchers and medical equipment on a ''Namerbulance'' MEDEVAC version.<ref>{{Cite web |date=6 April 2009 |title= |script-title=he:הגלגול הבא של האוֹנָנוּת – אמבולנס משוריין |trans-title=The next incarnation of the NMR - an armored ambulance |url=http://www.yadlashiryon.com/show_item.asp?levelId=64986&itemId=1059&itemType=0 |url-status=dead |archive-url=https://web.archive.org/web/20150402113435/http://www.yadlashiryon.com/show_item.asp?levelId=64986&itemId=1059&itemType=0 |archive-date=2 April 2015 |publisher=Official IDF site |language=he}}</ref> The original Merkava Mark IV rear entrance was redesigned to be a wider door ramp with a sniper port. Two hatches are fitted on the roof, which is higher than Merkava's hull roof. Namer also shares a [[Merkava#Digital battlefield management system|digital battlefield management system]] with Merkava Mark IV, giving it [[hunter-killer team]] capabilities.
+
+=== Namer CEV ===
+[[File:IDF-Nammer-CEV-05-Zachi-Evenor-v62.jpg|thumb|Namer CEV version in [[Yad La-Shiryon]] 69th [[Independence Day (Israel)|Independence Day]] exhibition]]
+[[File:Nammer-Handasa -- Our-IDF-2018-IZE-073 (44815210772).jpg|thumb|Namer CEV in IDF exhibition, 2018]]
+On 13 April 2016, the Israeli Defense Ministry released video and photos of [[Combat engineering vehicle|combat engineering versions]] of the Namer undergoing testing. There are three combat engineering derivatives: a bulldozer version to be operated by company commanders; a breaching and obstacle bridging version to be operated by platoon commanders; and a towing version to be operated by platoon sergeants. Additional engineering devices, such as CARPET mine-breaching rockets, can be installed per mission. Combat engineering Namers are equipped with the Trophy APS, and would endow brigade-level teams with capabilities they never had before to handle tunnels, bridge obstacles, and maneuver in high-threat areas.<ref>{{Cite web |last=Opall-Rome |first=Barbara |date=13 April 2016 |title=Israel Tests Engineering Versions of APS-Protected Troop Carrier |url=https://www.defensenews.com/land/2016/04/13/israel-tests-engineering-versions-of-aps-protected-troop-carrier/ |url-status=live |archive-url=https://archive.today/20240120011405/https://www.defensenews.com/land/2016/04/13/israel-tests-engineering-versions-of-aps-protected-troop-carrier/ |archive-date=20 January 2024 |website=Defense News}}</ref> The Namer CEV entered service in the end 2016, at Battalion 603 of the [[Combat Engineering Corps]], and is projected to enter service of the 601st Battalion in 2021.
+
+==Combat history==
+In 2014, Namers took part in [[Operation Protective Edge]]. During the fighting, Namers (which at the time were not fitted with Active and Soft Protection Systems) were hit multiple times by RPGs and ATGMs, including suffering direct hits by [[9M133 Kornet]] ATGMs.{{clarify |Yes, but what happened to the APC? |date= December 2023}} In another case, an explosive charge weighing between  ½ to 1 ton of explosives was detonated near the Namer, and a house collapsed on the APC.{{clarify |Yes, but what happened to the APC? |date= December 2023}} As a result of its success on the battlefield, there were calls for the number of vehicles to be increased (beyond the 170 on order), and for them to gradually replace the many [[M113]]s currently fielded by IDF combat units.<ref>{{Cite web |last=לוי (Levi) |first=שי (Shay) |date=13 August 2014 |title= |script-title=he:הסיפורים נחשפים: כך הנגמ"שים החדישים הצילו את חיי הלוחמים בעזה |trans-title=The stories are revealed: This is how the new APCs saved the lives of the fighters in Gaza |url=https://www.mako.co.il/pzm-israel-wars/operation-protective-edge/Article-abc4825ee7fc741006.htm |url-status=live |archive-url=https://web.archive.org/web/20231108142712/https://www.mako.co.il/pzm-israel-wars/operation-protective-edge/Article-abc4825ee7fc741006.htm |archive-date=8 November 2023 |website=mako.co.il}}</ref> In 2023, Namers took part in [[Israeli invasion of the Gaza Strip (2023–present)|Operation Swords of Iron]]. On 21 October 2023, eleven soldiers from the [[Givati Brigade|Givati Infantry Brigade's]] Tzabar Battalion were killed after their Namer was struck by an ATGM.<ref>{{Cite web  |last1=Fabian |first1=Emanuel |title=15 soldiers killed in battles inside Gaza; another by mortar shell at border|url=https://www.timesofisrael.com/idf-says-9-soldiers-killed-battling-hamas-deep-inside-gaza-as-military-toll-mounts/ |website=The Times of Israel |date=November 2023 }}</ref><ref>{{Cite web  |last1=Beaumont |first1=Peter |title=Fifteen Israeli soldiers killed as fighting intensifies in Gaza  |url=https://www.theguardian.com/world/2023/nov/01/fifteen-israeli-soldiers-killed-as-fighting-intensifies-in-gaza |website=The Guardian |date=November 2023 }}</ref> On 15 June 2024, eight soldiers were killed, possibly due to a detonation of the explosives carried on the exterior of their Namer.<ref>{{Cite news |last=Beaumont |first=Peter |date=2024-06-15 |title=Eight Israeli soldiers killed in southern Gaza, military says |url=https://www.theguardian.com/world/article/2024/jun/15/israeli-soldiers-killed-in-southern-gaza-military-says |access-date=2024-06-15 |work=The Observer |language=en-GB |issn=0029-7712}}</ref> On June 24, 2024, [[Al-Qassam Brigades]] published footage of its forces attacking a Namer using a Chinese [[HJ-8]] ATGM, hitting the vehicle, causing an external fire on the carry-on [[Rafael Carpet|CARPET]] demining system.<ref>{{Cite AV media |url=https://www.youtube.com/watch?v=sVrb7NHOAyA |title=كتائب القسام تستهدف آلية إسرائيلية بصاروخ "السهم الأحمر" الموجه |date=2024-06-24 |last=AlJazeera Arabic  قناة الجزيرة |access-date=2024-06-24 |via=YouTube}}</ref>
+
+==Users==
+* {{ISR}} — According to IDF, the Namer IFV is set be distributed to infantry and combat engineering forces, with possible future plans for special models for intelligence and command purposes.<ref>{{cite web |title=Armored Personnel Carrier (APC) – Namer |url=http://dover.idf.il/IDF/English/about/weapon/Groung/nagmashim/default.htm |url-status=dead |archive-url=https://web.archive.org/web/20090209005355/http://dover.idf.il/IDF/English/about/weapon/Groung/nagmashim/default.htm |archive-date=9 February 2009 |website=Israel Defense Forces}}</ref> Two Namers took part in the [[Gaza War (2008–09)|Gaza War]] as part of the [[Golani Brigade]].<ref>{{cite web |date=19 February 2009 |title= |script-title=he:מה עשו שני אוֹנָנוּתים בלב רצועת עזה? |trans-title=What were two snipers doing in the heart of the Gaza Strip? |url=http://dover.idf.il/IDF/News_Channels/bamahana/09/8/0805.htm |url-status=dead |archive-url=https://web.archive.org/web/20090227051941/http://dover.idf.il/IDF/News_Channels/bamahana/09/8/0805.htm |archive-date=27 February 2009 |publisher=Israel Defense Forces |language=he}}</ref> By 2014, there were up to 120 Namers in service, and they took part in [[2014 Israel–Gaza conflict|Operation Protective Edge]]. The Namer CEV ([[combat engineering vehicle]]) entered service in the end of 2016. According to a 2022 estimate, the IDF had about 290 Namers.<ref>{{Cite book |title=The Military Balance 2022 |date=14 February 2022 |publisher=Routledge |isbn=9781032279008 |edition=1st |language=en}}</ref>
+
+==Export proposals==
+[[File:Namer in US.jpg|thumb|A Namer during a U.S. operational assessment in 2012]]
+* {{AZE}} — Azerbaijan and Israel have conducted negotiations over the Namer vehicle.<ref>{{cite news |date=30 June 2009 |title=Israel rearms Azerbaijani army |url=http://www.panarmenian.net/eng/world/news/33537 |url-status=live |archive-url=https://web.archive.org/web/20230709193612/https://www.panarmenian.net/eng/world/news/33537 |archive-date=9 July 2023 |access-date=18 August 2014 |publisher=PanARMENIAN.Net}}</ref>
+* {{Flag|Colombia}} — Israel has offered procurement of Namer APCs to Colombia.<ref>{{cite news |date=24 May 2014 |title=Israel has offered the procurement of main battle tank Merkava IV and Namer APC to Colombia |url=http://www.armyrecognition.com/may_2012_new_army_military_defence_industry_uk/israel_has_offered_the_procurement_of_main_battle_tank_merkava_iv_and_namer_apc_to_colombia_2405122.html |url-status=live |archive-url=https://web.archive.org/web/20231120213907/https://www.armyrecognition.com/may_2012_new_army_military_defence_industry_uk/israel_has_offered_the_procurement_of_main_battle_tank_merkava_iv_and_namer_apc_to_colombia_2405122.html |archive-date=20 November 2023 |access-date=18 August 2014 |publisher=Army Recognition}}</ref>
+* {{Flagcountry|US}} — In 2012, the [[U.S. Army]] conducted non-developmental vehicle operational assessments of current combat vehicles to evaluate capabilities against requirements for purchase of a new IFV for the [[Ground Combat Vehicle]] program. One of the vehicles validated was the Namer.<ref>{{cite web |date=23 May 2012 |title=US Army conducts NDV assessments for GCV programme |url=http://www.army-technology.com/news/newsus-army-ndv-assessments |url-status=live |archive-url=https://web.archive.org/web/20230514213635/https://www.army-technology.com/news/newsus-army-ndv-assessments/ |archive-date=14 May 2023 |access-date=18 August 2014 |website=Army Technology}}</ref> In April 2013, the [[Congressional Budget Office]] released a report that advised purchasing current vehicles instead of developing a new vehicle for the GCV program. Buying the Namer would cost $9&nbsp;billion less, and meet the required nine-man carrying capacity.<ref>{{cite web |author=Hoffman |first=Michael |date=3 April 2013 |title=Report: GCV is worst choice to replace Bradley |url=https://www.military.com/dodbuzz/2013/04/03/report-gcv-is-worst-choice-to-replace-bradley |url-status=live |archive-url=https://web.archive.org/web/20230402003847/https://www.military.com/dodbuzz/2013/04/03/report-gcv-is-worst-choice-to-replace-bradley |archive-date=2 April 2023 |access-date=18 August 2014 |website=Military.com}}</ref> The Army responded by saying that although the Namer and other vehicles assessed in 2012 met some GCV requirements, no currently fielded vehicle met enough without needing significant redesign.<ref>{{cite web |author=Hoffman |first=Michael |date=4 April 2013 |title=Army, industry slam CBO's scathing GCV report |url=https://www.military.com/dodbuzz/2013/04/04/army-industry-slam-cbos-scathing-gcv-report |url-status=live |archive-url=https://web.archive.org/web/20231005130833/https://www.military.com/dodbuzz/2013/04/04/army-industry-slam-cbos-scathing-gcv-report |archive-date=5 October 2023 |access-date=18 August 2014 |website=Military.com}}</ref>
+
+==See also==
+{{div col|colwidth=20em}}
+* {{lwc|Nagmachon}}
+* {{lwc|Achzarit}}
+* {{lwc|Nakpadon}}
+* {{lwc|General Dynamics Ajax|Ajax}}
+* {{lwc|General Dynamics Griffin#Griffin III|Griffin III}}
+* {{lwc|Lynx (Rheinmetall armoured fighting vehicle)#Variants|Lynx KF41}}
+* {{lwc|Puma (IFV)|Puma}}
+* {{lwc|T-15 Armata}}
+* {{lwc|Tulpar (IFV)|Tulpar}}
+* {{lwc|VN20}}
+* {{lwc|BTR-T}}
+* {{lwc|Vikram VT21}}
+{{div col end}}
+
+==References==
+{{Reflist|2}}
+
+==External links==
+{{Commons}}
+* [http://armour.ws/namer-ifv/ Namer on Armour.ws]
+* [https://web.archive.org/web/20120218204745/http://defense-update.com/products/n/namer_aifv.htm Namer AIFV on Defense-Update.com]
+* {{usurped|1=[https://web.archive.org/web/20070523162003if_/http://www.military-today.com/apc/namer.htm Namer - Heavy armored personnel carrier]}}
+* [http://www.tsahal-miniature.com/merkava.html Namer Family + Merkava Family]
+* [http://www.israeli-weapons.com/weapons/vehicles/armored_personnel_carriers/namera/Namera.htm Namer prototype and operational Namer on israeli-weapons.com]
+* [http://www.janes.com/articles/Janes-Armour-and-Artillery/Namer-Tiger-heavy-armoured-personnel-carrier-Israel.html Namer heavy armoured personnel carrier on Jane's]
+* [https://www.idf-armor.blogspot.com/2009/01/blog-post_1882.html IDF ARMOR blog: Namer APC on Merkava chassis]
+* [https://web.archive.org/web/20090705084632/http://www.armyrecognition.com/israel_israeli_light_armoured_vehicle_uk/namer_armoured_vehicle_infantry_personnel_carrier_israeli_army_israel_pictures_technical_data_sheet.html Namer Armoured vehicle infantry personnel carrier on armyrecognition.com]
+* [https://www.youtube.com/watch?v=sA5blwP7YSE Namer video on YouTube]
+* [http://www.fresh.co.il/vBulletin/showthread.php?t=473330 First exercise] (Hebrew)
+
+{{Tanks converted to armored vehicles}}
+
+{{DEFAULTSORT:Namer (Vehicle)}}
+[[Category:Armoured personnel carriers of Israel]]
+[[Category:Tracked armoured personnel carriers]]
+[[Category:Military vehicles introduced in the 2000s]]

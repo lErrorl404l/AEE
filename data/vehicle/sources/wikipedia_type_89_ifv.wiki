@@ -1,0 +1,126 @@
+{{Short description|Japanese infantry fighting vehicle}}
+{{distinguish|text=the Chinese [[Type 89 AFV]]}}
+{{Infobox weapon
+|name=Mitsubishi Type 89
+|image=File:JGSDF IFV Type 89 20120108-02 (cropped).JPG
+|caption=A Type 89 [[infantry fighting vehicle]] exhibited in [[Narashino]].
+|type=[[Infantry fighting vehicle]]
+|origin={{flag|Japan}}
+|is_ranged=yes
+|is_vehicle=yes
+|service=1989–…<ref name="c1">{{cite web|title=89式装甲戦闘車|url=https://combat1.sakura.ne.jp/89SHIKI.htm|website=戦車研究室|access-date=21 April 2026}}</ref>
+|used_by={{army|Japan}}
+|wars=
+|designer=[[Acquisition, Technology & Logistics Agency|Technical Research and Development Institute]]<ref name="m1">{{cite web|title=89式装甲戦闘車（89FV）|url=https://www.mod.go.jp/gsdf/equipment/ve/|website=陸上自衛隊|access-date=27 April 2026}}</ref>
+|design_date=1984–1989<ref name="m2">{{cite web|title=装甲車両・火器及び弾薬の開発・調達について|url=https://www.mod.go.jp/j/approach/agenda/meeting/materials/seisan/sonota/pdf/03/001.pdf|website=防衛省・自衛隊|url-status=dead|archive-url=https://web.archive.org/web/20201129180225/https://www.mod.go.jp/j/approach/agenda/meeting/materials/seisan/sonota/pdf/03/001.pdf|archive-date=29 November 2020|access-date=23 April 2026}}</ref>
+|manufacturer=[[Mitsubishi Heavy Industries]] (hull), [[Japan Steel Works]] (gun), [[Kawasaki Heavy Industries]] (missile launchers)<ref name="r1">{{cite web|title=89式 装甲戦闘車|url=http://rightwing.sakura.ne.jp/equipment/jgsdf/infantry/type89fv/type89fv.html |work=Rightwing|url-status=dead|archiveurl=https://web.archive.org/web/20080127205339/http://rightwing.sakura.ne.jp/equipment/jgsdf/infantry/type89fv/type89fv.html|archivedate=27 January 2008|access-date=22 April 2026}}</ref>
+|unit_cost=[[Japanese yen|¥]]700 million<ref name="c1" /><ref name="r1" />
+|production_date=1989–2004<ref name="m2" />
+|number=68<ref name="m2" />
+|variants=
+|mass={{cvt|26.5|t}}<ref name="c1" />
+|length={{cvt|6.80|m}}<ref name="c1" />
+|part_length={{cvt|3.15|m}} (90 [[calibre (artillery)|calibres]])<ref name="c1" />
+|width={{cvt|3.20|m}}<ref name="c1" />
+|height={{cvt|2.50|m}}<ref name="c1" />
+|crew=3 (commander, driver, gunner)<ref name="c1" />
+|passengers=7<ref name="c1" />
+|cartridge=35×228&nbsp;mm
+|caliber={{convert|35|mm|abbr=on}}<ref name="c1" />
+|rate=200 rpm<ref name="c1" />
+|armour=[[Rolled homogeneous armour]]<ref name="c1" />
+|primary_armament=[[Oerlikon GDF|Oerlikon 35&nbsp;mm KDE]] [[autocannon]]<ref name="c1" />
+|secondary_armament=2×[[Type 79 Jyu-MAT]] missile launchers, [[7.62 mm NATO|7.62&nbsp;mm]] [[Sumitomo Type 62#Type 74|Type 74]] [[coaxial machine gun]]<ref name="c1" />
+|engine=[[Mitsubishi]] 6SY31WA [[4-stroke]] [[straight-six engine|I6]] [[liquid-cooled]] [[turbocharged]] [[diesel engine|diesel]]<ref name="c1" />
+|engine_power={{cvt|600|hp}} (2,100 rpm)<ref name="c1" />
+|pw_ratio={{cvt|22.64|hp/t}}
+|transmission=
+|suspension=[[Torsion bar]]
+|clearance=
+|fuel_capacity=
+|vehicle_range={{cvt|400|km}}<ref name="c1" />
+|speed={{cvt|70|km/h}}<ref name="c1" />
+}}
+
+The {{Nihongo|'''Mitsubishi Type 89'''|三菱89式装甲戦闘車|Mitsubishi 89-shiki sōkō-sentō-sha}} is a [[Japan]]ese [[infantry fighting vehicle]]. Using a chassis manufactured by [[Mitsubishi Heavy Industries]], the vehicle mounts an [[Oerlikon GDF|Oerlikon 35&nbsp;mm KDE]] [[autocannon]] produced under licence by [[Japan Steel Works]] and two [[Type 79 Jyu-MAT]] [[anti-tank missile]] launchers.<ref name="c1" /> The Type 89 entered service with the [[Japan Ground Self-Defense Force]] in 1989, although only 68 units<ref name="m2" /> had been built by the end of the production in 2004 due to its high procurement cost.<ref name="c1" /><ref name="r1" /> An abbreviated designation of the vehicle is '''89FV''' and the Type 89 has a nickname '''Light Tiger'''.<ref name="m1" />
+
+==Development==
+[[File:Armoured vehicles at Japan Ground Self-Defense Force Public Information Center 39.jpg|thumb|left|A prototype Type 89 [[infantry fighting vehicle]] with mounting points for a [[mine roller]] at the Japan Ground Self-Defense Force Public Information Center.]]
+
+Development of the Type 89 began in 1980, with its first prototype completed in 1984.<ref name="m3">{{cite web|title=89式装甲戦闘車|url=http://www.masdf.com/spec/land/japan/89ifv.html|website=MASDF|access-date=22 April 2026}}</ref> The prototype underwent technical testing until 1986.<ref name="c1" /> After that, practical testing commended until the Type 89 was accepted into service and type classified in 1989.<ref name="c1" />
+
+The Japan Ground Self-Defense Force's initial requirement was for around 300 vehicles.<ref>{{cite web|title=Type 89|url=https://www.forecastinternational.com/archive/disp_pdf.cfm?DACH_RECNO=1153|website=Forecast International|access-date=24 April 2026}}</ref> However, the Type 89's high procurement cost led to low annual production numbers.<ref name="c1" /> Between the start of the production in 1989 and its end in 2004, 68 vehicles had been built.<ref name="m2" /> Most of the manufacturing work on the Type 89 was carried out by Mitsubishi Heavy Industries, Japan Steel Works produced the gun under licence from [[Oerlikon Contraves]], and [[Kawasaki Heavy Industries]] built the missile launchers.<ref name="r1" />
+
+Compared to the preceding [[Type 73 armored personnel carrier|Type 73]] [[armoured personnel carrier]], the Type 89 has greater protection due to its steel armour as opposed to aluminium used in the Type 73's armour.<ref name="c1" /> The Type 89 is also twice as heavy as the Type 73<ref name="m3" />, meaning it is not [[amphibious vehicle|amphibious]].<ref name="c1" /> Unlike the Type 73, the Type 89 has [[night vision]] equipment.<ref name="m1" /> Both vehicles have protection against [[CBRN|nuclear, biological, and chemical]] threats.<ref name="m3" />
+
+==Design==
+[[File:JGSDF IFV Type 89 20121021-01.JPG|thumb|left|A Type 89 with its characteristic [[firing port]]s clearly visible.]]
+
+The Type 89 has a relatively conventional design with a hull welded from [[rolled homogeneous armour]] steel plates.<ref name="m3" /> The {{cvt|600|hp}} Mitsubishi 6SY31WA [[liquid-cooled]] [[diesel engine]] located in the front left of the hull drives an automatic transmission, which drives the track via drive sprockets at the front of the hull.<ref name="c1" /> On each side of the hull are six road wheels with an idler at the rear, and three track return rollers. The suspension is a torsion bar system.
+
+The driver sits to the right of the engine, with a single-piece hatch above them that opens to the right.<ref name="m3" /> The driver is provided with three fixed vision periscopes, and a single traversable periscope in the hatch. A passive night vision periscope can be used in place of one of the day periscopes. A single dismount sits behind the driver<ref name="c1" /> and has a hatch immediately above them with two vision periscopes that provide coverage of the front of the hull, as well as a large spherical [[firing port]] on the right side of the hull.
+
+In the centre of the hull is the two-man turret, which mounts Oerlikon's 35&nbsp;mm KDE 90-[[calibre (artillery)|calibre]] dual-feed autocannon built under licence by Japan Steel Works.<ref name="c1" /> The gun has a cyclic rate of fire of approximately 200 rounds per minute and 251 rounds available.<ref name="c1" /> Coaxially mounted to the autocannon is a [[7.62 mm NATO|7.62&nbsp;mm]] [[Sumitomo Type 62#Type 74|Type 74]] machine gun with 2,000 rounds of ammunition.<ref name="c1" /> The turret also mounts a single Type 79 Jyu-MAT missile launcher on each side of the turret with a reload for both launchers (four missiles in total).<ref name="c1" /> Underneath the missile launcher on each side is an array of four [[smoke grenade launcher]]s.<ref name="m3" />
+
+The gunner sits on the left of the turret, with the commander to their right with hatches that open to the rear.<ref name="m3" /> Both are provided with telescopic sights mounted on the front of the turret.<ref name="c1" /> The gunner has two vision periscopes that cover the front and left of the turret. The commander has six periscopes that provide all-round coverage. The turret is also fitted with a laser warning system.
+
+At the rear of the hull is the main troop compartment that seats six infantrymen.<ref name="m3" /> The troops enter through two large rear doors which swing open to the side. The troop compartment has seven firing ports: three on the left, one of the right rear exit door, three on the right side.<ref name="c1" /> Each of the firing ports is provided with a vision [[periscope]] mounted above it.<ref name="c1" />
+
+==Variants==
+[[File:JGSDF Type 99 155 mm self-propelled howitzer (96-7002) left front view at Camp Tsuchiura September 28, 2025 03.jpg|thumb|left|The [[Type 99 155&nbsp;mm self-propelled howitzer]] uses a modified Type 89 chassis.]]
+
+The Type 89 hull was used by as the basis for the [[Type 99 155&nbsp;mm self-propelled howitzer]] introduced in 1999.<ref name="c199">{{cite web|title=99式自走155mm榴弾砲|url=http://combat1.sakura.ne.jp/99SHIKI.htm|website=戦車研究室|access-date=26 December 2025}}</ref> Major automotive components including the engine were kept, but the chassis was lengthened by one road wheel on each side to accommodate the extra weight of the heavy artillery piece and its large turret. To accommodate the turret, the hull side armour of the Type 99 is vertical as opposed to the sloped side armour of the Type 89.<ref>{{cite web|title=99式自走155mm榴弾砲|url=http://combat1.sakura.ne.jp/99SHIKI.htm|website=戦車研究室|access-date=26 April 2026}}</ref>
+
+Mitsubishi revealed a render of a concept vehicle based on the Type 89 at the [[DSEI]] Japan 2025 exhibition. The concept proposes converting the Type 89 into an [[unmanned ground vehicle]]. The most significant elements of the modernisation proposal are a new unmanned turret with a [[30&nbsp;mm]] autocannon and eight [[Switchblade 600]] [[loitering munition]] launchers in place of the troop compartment.<ref>{{cite news|last=Mandal|first=Sohini|date=29 May 2025|title=Japan's Mitsubishi unveils unmanned IFV concept|url=https://www.janes.com/osint-insights/defence-news/land/japans-mitsubishi-unveils-unmanned-ifv-concept|work=Janes|access-date=26 April 2026}}</ref>
+
+==Operators==
+[[File:普戦チームの攻撃 011 R 富士総合火力演習・そうかえん 46.jpg|thumb|A Type 89 firing its 35&nbsp;mm [[autocannon]] during annual [[live fire exercise]]s in the [[East Fuji Maneuver Area]].]]
+
+{{flag|Japan}}
+* {{army|Japan}}<ref>https://www.jiji.com/jc/v2?id=20090924jgsdf_arms_14</ref>
+** Ordnance School
+** Fuji School
+*** Fuji School (Combined Training) Brigade
+**** Infantry School Regiment (Mechanized)
+** [[File:JGSDF_Northern_Army.svg|27x27px]] '''[[Northern Army (Japan)|Northern Army]]'''
+*** [[File:JGSDF_7th_Division.svg|27x27px]] '''[[7th Division (Japan)|7th Division]]'''
+**** 11th Infantry Regiment (Mechanized)
+*** Northern Army Combined Brigade
+**** 1st Sergeant Training Unit
+
+==Similar vehicles==
+{{div col|colwidth=25em}}
+* {{lwc|ASCOD}}
+* {{lwc|Bionix (family of armoured fighting vehicles)|Bionix}}
+* {{lwc|BMP-2}}
+* {{lwc|BMP-3}}
+* {{lwc|BMP-23}}
+* {{lwc|BVP M-80}}
+* {{lwc|CV90}}
+* {{lwc|Dardo (infantry fighting vehicle)|Dardo}}
+* {{lwc|M2 Bradley}}
+* {{lwc|MLI-84}}
+* {{lwc|Type 86 (infantry fighting vehicle)|Type 86}}
+* {{lwc|Warrior tracked armoured vehicle|Warrior}}
+* {{lwc|ZBD-04}}
+{{div col end}}
+
+==See also==
+* [[List of infantry fighting vehicles]]
+
+==References==
+{{Reference list}}
+
+==External links==
+{{Commons category-inline|JGSDF Type 89 IFV}}
+
+{{Mitsubishi Heavy Industries}}
+{{ModernJapaneseAFVs}}
+
+[[Category:Japan Ground Self-Defense Force]]
+[[Category:Tracked infantry fighting vehicles]]
+[[Category:Infantry fighting vehicles of Japan]]
+[[Category:Infantry fighting vehicles of the Cold War]]
+[[Category:Cold War military equipment of Japan]]
+[[Category:Mitsubishi Heavy Industries armored vehicles|Type 89]]
+[[Category:Military vehicles introduced in the 1980s]]

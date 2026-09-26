@@ -1,0 +1,89 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Held tier-5 English Wikipedia compilation for the K2 Black Panther. The registry marks primary_held false because the article is a secondary compilation. It publishes the curb and combat weights, the overall and chassis lengths, the width, the highest and lowest heights, the maximum road speed and the range. It publishes no ground clearance, so that field is absent.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "k2_black_panther",
+      "canonical_name": "K2 Black Panther",
+      "maker": "Hyundai Rotem",
+      "model": "K2",
+      "variant": "Black Panther",
+      "variant_id": "k2_black_panther",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "South Korea",
+      "era": "modern",
+      "aliases": [
+        "k2",
+        "k2 black panther",
+        "black panther"
+      ],
+      "keywords": [
+        "mbt",
+        "main battle tank",
+        "tracked",
+        "k2"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "curb_weight_kg": {
+          "value": 55000,
+          "unit": "kg",
+          "source": "wikipedia_k2_black_panther",
+          "locator": "Infobox, weight row, Curb weight entry",
+          "state": "curb weight published as 55 t; the tonne taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "operating_weight_kg": {
+          "value": 56000,
+          "unit": "kg",
+          "source": "wikipedia_k2_black_panther",
+          "locator": "Infobox, weight row, Combat weight entry",
+          "state": "combat weight published as 56 t; the tonne taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 10800,
+          "unit": "mm",
+          "source": "wikipedia_k2_black_panther",
+          "locator": "Infobox, length row, Overall entry",
+          "state": "overall length published as 10.8 m; the same row publishes the chassis length as 7.5 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3600,
+          "unit": "mm",
+          "source": "wikipedia_k2_black_panther",
+          "locator": "Infobox, width row",
+          "state": "overall width published as 3.6 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2400,
+          "unit": "mm",
+          "source": "wikipedia_k2_black_panther",
+          "locator": "Infobox, height row, Highest entry",
+          "state": "overall height published as 2.4 m to the highest point; the same row publishes the lowest point as 2 m",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 70,
+          "unit": "km/h",
+          "source": "wikipedia_k2_black_panther",
+          "locator": "Infobox, speed row, Paved road entry",
+          "state": "maximum road speed published as 70 km/h; the cross country speed is published as 50 km/h",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 450,
+          "unit": "km",
+          "source": "wikipedia_k2_black_panther",
+          "locator": "Infobox, vehicle range row",
+          "state": "range published as 450 km",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

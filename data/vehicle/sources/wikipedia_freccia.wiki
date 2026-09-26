@@ -1,0 +1,414 @@
+{{Short description|Italian wheeled infantry fighting vehicle}}
+{{Infobox weapon
+| name               = VBM Freccia
+| image              = Italian Army - Mechanized Brigade "Pinerolo" Freccia IFV.jpg
+| caption            = A Freccia IFV of the Mechanized Brigade "Pinerolo"
+| origin             = [[Italy]] <!-- Do not use flag icons here, per MOS:INFOBOXFLAG -->
+| type               = 8×8 [[Armoured Fighting Vehicle]]
+| is_vehicle         = yes
+| service            = Since 2008
+| used_by            = see [[#Operators|Operators]]
+| designer           = [[Iveco Defence Vehicles]] and [[OTO Melara]]
+| design_date        = 1996
+| manufacturer       = Iveco Defence Vehicles and OTO Melara
+| unit_cost          = [[€]] 6 million in 2008 <br />
+[[€]] 7 million in 2022
+| production_date    = Since 2002
+| number             = 283 <ref>{{cite web|title=Iveco Group goes on stock exchange while Italy MoD signs for the Freccia upgrade programme with CIO, Italy|date=17 January 2022 |url=https://www.edrmagazine.eu/iveco-group-goes-on-stock-exchange-while-italy-mod-signs-for-the-freccia-upgrade-programme-with-cio|access-date=17 January 2022}}</ref>
+| variants           = See [[#Variants|Variants]]
+| image_size         = 300
+}}
+
+The '''VBM - Freccia''' is a family of 8×8 armoured vehicles that was designed and manufactured for the [[Italian Army]] by [[Iveco Defence Vehicles]] for the hull, the engine and the suspension,  and [[OTO Melara]] for the armament. The first variant to be developed was the [[Infantry fighting vehicle|IFV]], the Freccia being equipped with a [[Hitfist|Hitfist turret]], the same as the one installed on the [[Dardo (infantry fighting vehicle)|VCC Dardo]].<ref>{{Cite web |title=VBM Freccia Infantry Fighting Vehicle {{!}} MilitaryToday.com |url=https://www.militarytoday.com/apc/vbm_freccia.htm#:~:text=The%20VBM%20Freccia%20is%20fitted,rear%20ramp%20or%20roof%20hatches. |access-date=2023-11-04 |website=www.militarytoday.com |archive-date=2023-11-24 |archive-url=https://web.archive.org/web/20231124070622/https://www.militarytoday.com/apc/vbm_freccia.htm#:~:text=The%20VBM%20Freccia%20is%20fitted,rear%20ramp%20or%20roof%20hatches. |url-status=dead }}</ref>
+
+== Background ==
+The Italian Army was looking for a successor to some of the [[Cold War|Cold War era]] [[M113 armored personnel carrier|M113]] variants in the Italian Army, among which the [[Variants of the M113 armoured personnel carrier#Italy|VCC-1]] [[infantry fighting vehicle]], the [[Variants of the M113 armoured personnel carrier#Italy|VCC-2]] [[armoured personnel carrier]] and the [[M106 mortar carrier]].
+
+The {{ill|VCC-1 IFV|it|VCC-1 Camillino}} was replaced by the [[Dardo IFV]]. The Freccia was ordered to replace [[Cold War]] [[Variants of the M113 armoured personnel carrier|VCC-2]] [[armoured personnel carrier]]s of the [[Pinerolo Mechanized Brigade|Mechanized Brigade "Pinerolo"]] in Southern Italy.
+
+A change in the doctrine for a more mobile vehicle was the reason behind the choice of a wheeled platform. And as a support to the infantry, a turret was selected to equip the successor of the VCC-2 APC variant, which increased the capabilities and the power of the infantry brigades. Some other variants such as command post vehicles, mortar carriers are also in use in the Italian Army.
+
+Several batches have been ordered since the first one in 2006.
+
+==Design==
+
+=== Design of the Freccia platform ===
+The VBM – Freccia is a Medium Armoured Combat Vehicle ''("Veicolo Blindato Medio Freccia").'' It is an up-armoured variant of the [[Centauro (Tank destroyer)|Centauro]] (tactical reconnaissance and tank destroyer). It was designed by Iveco Defence Vehicles and OTO Melara with their own resources in order to meet the needs of the Italian Army. A first prototype was produced in 1996. Following a long test campaign, the Italian army selected this vehicle as the winner of the competition and placed a first order for 249 vehicles in 2006.<ref>{{Cite web |title=Freccia IFV (2006) |url=https://tanks-encyclopedia.com/modern/Italy/Freccia-IFV.php |access-date=2023-06-08 |website=tanks-encyclopedia.com}}</ref> In 2021, a contract was concluded for the design of a [[Mid-life update|MLU]] of this first generation of vehicles.<ref name=":2"/>
+
+After this first batch, the Italian Army needed additional vehicles to replace the specialised variants of the M113 in service.
+
+The electronic architecture of the vehicle is designed according to the NATO General Vehicle Architecture (NGVA) [[Standardization agreement|STANAG 4754]].<ref>[https://www.ar.admin.ch/content/ar-internet/de/armasuisse-wissenschaft-und-technologie-w-t/forschungsmanagement/forschungsprogramm7/_jcr_content/contentPar/tabs/items/download/tabPar/downloadlist/downloadItems/29_1512572386493.download/2017_Buch_Technologiefr%C3%BCherkennung_2017-10-30_final_web.pdf Federal Office for Defence Procurement] {{dead link|date=March 2024}}</ref> This agreement focuses on making the architecture modular, easy and less costly to adapt.  Applications can be added to the multi functional control unit as plug and play. It reduces the number of application specific control units, and therefore minimises the need for space and energy. The data, power, communication, sensors, effectors are all integrated according to this architecture. One of the element of this architecture is the SICCONA C2D command, control and navigation system, which includes NEC (Network Enabled Capability).<ref name=":0">{{Cite web |title=Conclusi i test del sistema C2D/N EVO - Esercito Italiano |url=https://www.esercito.difesa.it/comunicazione/Pagine/sistema-C2D-N-EVO_201219.aspx |access-date=2023-06-08 |website=www.esercito.difesa.it}}</ref>
+
+The main variant is the Infantry Fighting Vehicle, and the Anti Tank variant. Both are equipped with a [[Hitfist]] manned turret, which has a [[Oerlikon KBA|KBA 25 mm]] autocannon. For the anti-tank variant, the first variant is equipped with anti-tank missiles to be employed by the dismounted infantry. In the future, a [[Spike (missile)|Spike LR]] missile is to be integrated to the turret.
+
+=== Upgrade to the Freccia PLUS Platform ===
+Additional vehicles for reconnaissance and additional infantry fighting capabilities were needed to equip the infantry troops. Improvements on the Freccia platform were necessary to keep up with the new technologies.<ref name=":2">{{Cite web |last=Valpolini |first=Paolo |date=2022-01-17 |title=Iveco Group goes on stock exchange while Italy MoD signs for the Freccia upgrade programme with CIO |url=https://www.edrmagazine.eu/iveco-group-goes-on-stock-exchange-while-italy-mod-signs-for-the-freccia-upgrade-programme-with-cio |access-date=2023-06-08 |website=EDR Magazine |language=en-GB}}</ref>
+
+The Freccia PLUS is a development of the [[Centauro 2]]. The main improvements include a new [[powertrain]]. The engine power is raised from {{convert|550|hp|kW|abbr=on}} to {{convert|720|hp|kW|abbr=on}}, by modifying the engine to common rail direct injection, and preparing it for a future hybrid-electric propulsion system.<ref name=":4">{{Cite web |date=2024-12-31 |title=Iveco – Oto Melara Consortium signs contract to supply 76 VBM PLUS vehicles to the Italian Army |url=https://defence-industry.eu/iveco-oto-melara-consortium-signs-contract-to-supply-76-vbm-plus-vehicles-to-the-italian-army/ |access-date=2024-12-31 |language=en}}</ref>
+
+The armament capabilities are improved. The turret selected is the unmanned [[Hitfist OWS]] equipped with the Leonardo's X-GUN 30mm [[30x173mm|30×173mm]] chain gun replacing the Oerlikon [[Oerlikon KBA|KBA 25 mm]] autocannon and can be equipped with anti-tank guided missiles mounted on the side of the turret. The [[Spike (missile)|Spike LR]] is the one used by the Italian Army. The turret is also equipped with a new fire control system. The thermal aiming for the gunner is supplied by [[Leonardo S.p.A.|Leonardo]] with the [https://electronics.leonardo.com/en/products/lothar-1 Lothar D] (Land Optronic Thermal Aiming Resource). The commander gets a digital sight, and a mast with a panoramic sight is available especially for the reconnaissance variant, the [https://electronics.leonardo.com/documents/16277707/18401526/Janus_T_LQ_mm07832_.pdf?t=1538987644205 Janus D] also supplied by Leonardo.<ref name=":4" /><ref name=":2" />
+
+As for the communications, Leonardo supplies the SWave VQ1 4-channel software defined radio which operates in the HF, VHF and UHF bands, plus a digital intercom system is available. The Italian Army variant is including it in its ''Network Enhanced Capability'', known as the SICCONA C2D/N EVO which is to be expanded to the other [[armoured fighting vehicle]]s.<ref name=":4" /><ref name=":0" />
+
+The navigation system is using both the [[Global Positioning System|GPS signals]] and the [[Galileo (satellite navigation)|Galileo PRS]].<ref name=":4" />
+
+The [[Iron Fist (countermeasure)|Iron Fist]] [[Active protection system|hard-kill protection system]] has already been tested, a potential integration is being evaluated by the Italian Army. It would most likely be the Light-Decoupled Iron Fist (IF-LD).<ref name=":2"/>
+
+== Variants ==
+
+=== Operational variants ===
+[[File:Italian Army - 82nd Infantry Regiment "Torino" VBM Freccia Mortar Carrier.jpg|thumb|220x220px|Freccia Mortar Carrier]]Variants of the Freccia platform in service with the [[Italian Army]].<ref>{{Cite web |last=bocquelet |first=david |title=Freccia IFV (2006) |url=https://tank-afv.com/modern/Italy/Freccia-IFV.php |access-date=2023-11-04 |website=tank-afv.com |language=en}}</ref>
+* ''VBM da Combattimento (AIFV):''<br />An [[infantry fighting vehicle]] equipped with a two-man [[Hitfist]] turret with a [[Oerlikon KBA|KBA]] [[25 mm caliber|25&nbsp;mm]] [[autocannon]].
+* ''VBM Controcarro (ATGW):'' <br />An [[infantry fighting vehicle]] equipped with a two-man [[Hitfist]] turret with a [[Oerlikon KBA|KBA]] [[25 mm caliber|25&nbsp;mm]] [[autocannon]]. Anti-tank guided missiles are included in the internal armament of the variant. A dual [[Spike (missile)|Spike LR]] anti-tank missile launcher will be added to the turret with the middle-life upgrade.  
+* ''VBM Porta Mortaio:'' <ref name=":1"/><br />A [[mortar carrier]] equipped with the [[Dragon Fire (mortar)|TDA-2R2M 120&nbsp;mm]] mortar system and a [[Remote controlled weapon station|RCWS]] [[Hitrole|Hitrole L]] with a [[M2 Browning]] [[12.7 mm NATO]] machine gun  
+* ''VBM Posto Comando:'' <br />Two variants are in operation in the Italian Army 
+** ''Veicolo Nucleo Comando (nu. Cdo):'' <ref name=":3">{{cite web|url=https://www.iveco-otomelara.com/backoffice/global/docs/upload/Panorama%20Difesa_VBM%20Posto%20Comando_Apr%202021.pdf|title=Panorama Difesa|website=IVECO|access-date=10 March 2024|archive-date=9 December 2024|archive-url=https://web.archive.org/web/20241209014922/https://www.iveco-otomelara.com/backoffice/global/docs/upload/Panorama%20Difesa_VBM%20Posto%20Comando_Apr%202021.pdf|url-status=dead}}</ref><br />Used by the brigade commander, equipped with a [[Remote controlled weapon station|RCWS]] [[Hitrole|Hitrole L]] which uses a heavy machine gun, the [[M2 Browning]] in [[12.7 mm NATO]].  A C4 (command, control, communication and computer) installation is part of its equipment, and additional communication equipment compared to the base IFV variant.  It has access to SATCOM, it is equipped with the SIACCON system (Italian Automated Information System for Command and Control), 3 servers, and 4 LRT350+ computer posts.<ref>[http://www.larimart.it/it/computer-display/soluzioni-veicolari/comp-lrt-350-pc/ LRT350+] larimart.it</ref> 
+** ''Veicolo Nucleo Tattico'' ''(nu. tat.):<ref name=":3" />'' <br />Vehicle used by the platoon commander. The base vehicle is the ''VBM da Combattimento (AIFV),'' equipped with a two-man [[Hitfist]] turret with a [[Oerlikon KBA|KBA]] [[25 mm caliber|25&nbsp;mm]] [[autocannon]] and the same C4  equipment as for the ''Veicolo Nucleo Comando'' is available in the armoured vehicle.
+
+=== Future variants ===
+The army plans to acquire 300 Freccia PLUS, 120 of which in the Reconnaissance variant.<ref name="I programmi3">{{cite web |title=I programmi di acquisizione ed ammodernamento dell'Esercito Italiano |url=https://www.analisidifesa.it/2020/05/lesercito-italiano-ed-i-recenti-programmi-di-acquisizione-ed-ammodernamento/ |access-date=27 May 2020 |publisher=Analisi Difesa}}</ref>
+PLUS Combat:<br />With a remote [[Hitfist OWS]] turret with [[30 mm caliber|30&nbsp;mm]] [[autocannon]] and a [[Spike lr|Spike LR2]] missile.
+* ''Freccia PLUS Reconnaissance:''<br />With a remote [[Hitfist OWS]] turret with [[30 mm caliber|30&nbsp;mm]] [[autocannon]] and a [[Spike lr|Spike LR2]] missile launcher, plus a Janus sensor mast.
+[[File:Army parade of Italy 2011 22.jpg|thumb|180x180px|[[Centauro (Tank destroyer)|Centauro]] ''DRACO'']]
+[[File:Centauro155-39LW MSPO2012a.jpg|thumb|180x180px|Centauro Porcupine]]
+
+=== Prototypes ===
+Prototypes based on both the Freccia and the Centauro common chassis: 
+* ''VBM Freccia APC:<ref name=":1">{{Cite web |last=Kowak |date=2015-07-09 |title=VBM Freccia |url=https://migration.militarypedia.it/vbm-freccia/ |access-date=2023-11-04 |website=Militarypedia |language=it-IT }}{{Dead link|date=December 2024 |bot=InternetArchiveBot |fix-attempted=yes }}</ref><br />''An [[armoured personnel carrier]] variant that was initially planned, but none have been ordered yet, and none are planned to be ordered by the Italian Army.
+* ''VBC con torretta [[60mm HVMS|T60/70A]]:'' <ref>{{Cite web |last=Giusti |first=Arturo |date=2021-03-24 |title=M24 Chaffee with 60 HVMS |url=https://tanks-encyclopedia.com/m24-chaffee-with-60-hvms/ |access-date=2023-11-04 |website=Tank Encyclopedia |language=en-US}}</ref><ref name=":1"/><br />A variant equipped with a turret [[Hitfist]] on which a 60mm self-loading [[autocannon]] by [[OTO Melara]] is installed, expected to be used as an anti-armour vehicle, but it was never ordered.
+* ''VBM Freccia Recupero:'' ''<ref name=":1" />''<br />An [[armoured recovery vehicle]].
+* ''DRACO:'' <ref>{{Cite web |date=2023-10-26 |title=Le prospettive di OTO Melara – Analisi Difesa |url=https://www.analisidifesa.it/2014/03/le-prospettive-di-oto-melara/ |access-date=2023-11-05 |language=it-IT}}</ref><ref>{{Cite web |title=Draco 76 mm Self-Propelled Anti-Aircraft Gun {{!}} MilitaryToday.com |url=https://www.militarytoday.com/artillery/draco.htm |access-date=2023-11-05 |website=www.militarytoday.com |archive-date=2023-11-05 |archive-url=https://web.archive.org/web/20231105042029/https://www.militarytoday.com/artillery/draco.htm |url-status=dead }}</ref>  <br />A SPAAG (self-propelled anti-air gun) and anti-missile gun, based on the naval autocannon [[OTO Melara 76 mm|OTO-Melara 76 mm Super Rapido]]. It can also be used as C-RAM system with APFSDS(armor piercing fin stabilised discarding sabot) ammunition.<ref>{{Cite web |title=The Strales 76mm system with DART guided ammunition |url=https://www.leonardo.com/en/press-release-detail/-/detail/the-strales-76mm-system-with-dart-guided-ammunition |access-date=2023-11-05 |website=www.leonardo.com |language=en-US}}</ref>
+* ''Porcospino:'' <ref>{{Cite web |title=Porcupine Prototype 155-mm Self-Propelled Howitzer {{!}} MilitaryToday.com |url=https://www.militarytoday.com/artillery/porcupine.htm |access-date=2023-11-05 |website=www.militarytoday.com |archive-date=2023-08-04 |archive-url=https://web.archive.org/web/20230804062702/https://www.militarytoday.com/artillery/porcupine.htm |url-status=dead }}</ref> <br />The "Porcupine" is a self-propelled howitzer using a 155mm L/39 artillery gun.
+
+=== Freccia (first phase) ===
+{| class="wikitable"
+| style="background:#EAECF0;border-left:solid 2px black;border-top:solid 2px black;border-bottom:solid 2px black" |'''Parameters'''
+| align="center" style="background:#EAECF0; border-left:solid 2px black;border-top:solid 2px black;border-bottom:solid 2px black" |'''[[Armoured personnel carrier|APC]]'''
+<small>'''Armoured personnel carrier'''</small>
+
+<ref name=":222">{{Cite web |title=VBM FRECCIA APC |url=https://www.iveco-otomelara.com/wheeled/VBMFrecciaAPC.php |access-date=2023-06-01 |website=www.iveco-otomelara.com}}</ref><ref name=":322">{{cite web|url=https://www.iveco-otomelara.com/docs/VBM-Freccia-APC.pdf|title=VBM Freccia APC|website=IVECO|access-date=10 March 2024}}</ref>
+| align="center" style="background:#EAECF0; border-top:solid 2px black;border-bottom:solid 2px black" |'''[[Infantry fighting vehicle|IFV]]'''
+<small>'''Infantry Fighting Vehicle'''</small>
+
+<ref name=":422">{{Cite web |title=VBM FRECCIA AIFV/ATGM |url=https://www.iveco-otomelara.com/wheeled/VBMFrecciaAIFV-ATGM.php |access-date=2023-06-01 |website=www.iveco-otomelara.com}}</ref><ref name=":522">{{cite web|url=https://www.iveco-otomelara.com/docs/VBM-Freccia-AIFV-ATGM.pdf|title=VBM Freccia AIFV ATGM|website=IVECO|access-date=10 March 2024}}</ref>
+| align="center" style="background:#EAECF0; border-top:solid 2px black;border-bottom:solid 2px black" |[[Command and control|'''C2V''']]
+<small>'''Platoon Command Post'''</small>
+
+<ref name=":022">{{Cite web |title=VBM FRECCIA COMMAND POST |url=https://www.iveco-otomelara.com/wheeled/VBMFreccia-Land-TU-CU-POST.php |access-date=2023-06-01 |website=www.iveco-otomelara.com}}</ref><ref name=":122">{{cite web|url=https://www.iveco-otomelara.com/wheeled/VBMFreccia-Land-TU-CU/Scheda_VBM_Freccia_LTCP_2021-spec.pdf|title=VBM Freccia Land TU Cu|website=IVECO|access-date=10 March 2024}}</ref>
+| align="center" style="background:#EAECF0; border-top:solid 2px black;border-bottom:solid 2px black" |'''[[Command and control|C2V]]'''
+<small>'''Squadron Command Post'''</small>
+
+<ref name=":022" /><ref name=":122" />
+| align="center" style="background:#EAECF0; border-top:solid 2px black;border-bottom:solid 2px black" |'''[[Mortar carrier|AMC]]'''
+<small>'''Armoured Mortar Carrier'''</small>
+
+<ref name=":622">{{Cite web |title=VBM FRECCIA AMC |url=https://www.iveco-otomelara.com/wheeled/VBMFrecciaAMC.php |access-date=2023-06-01 |website=www.iveco-otomelara.com}}</ref><ref name=":722">[https://www.iveco-otomelara.com/docs/VBM-Freccia-AMC.pdf BM FRECCIA AMC] iveco.com</ref>
+| align="center" style="background:#EAECF0; border-right:solid 2px black;border-top:solid 2px black;border-bottom:solid 2px black" |'''[[Armoured recovery vehicle|ARV]]'''
+<small>'''Armoured Recovery Vehicle'''</small>
+
+<ref name=":822">{{Cite web |title=VBM FRECCIA ARV |url=https://www.iveco-otomelara.com/wheeled/VBMFrecciaARV.php |access-date=2023-06-01 |website=www.iveco-otomelara.com}}</ref><ref name=":922">[https://www.iveco-otomelara.com/docs/VBM-Freccia-ARV.pdf VBM FRECCIA ARV] iveco-otomelara.com</ref>
+|-
+| style="background:#EAECF0;border-left:solid 2px black;border-right:solid 2px black" |
+| colspan="6" style="background:#EAECF0;border-right:solid 2px black" align="center" |'''<small>Dimensions</small>'''
+|-
+| style="background:#EAECF0;border-left:solid 2px black;border-right:solid 2px black" |'''<small>Internal volume</small>'''
+| align="center" |<small>{{convert|13.5|m3|ft3|abbr=on}}</small>
+| align="center" |<small>{{convert|11.0|m3|ft3|abbr=on}}</small>
+| align="center" |<small>{{convert|11.0|m3|ft3|abbr=on}}</small>
+| align="center" |<small>{{convert|13.5|m3|ft3|abbr=on}}</small>
+| align="center" |<small>{{convert|13.5|m3|ft3|abbr=on}}</small>
+| style="border-right:solid 2px black" align="center" |<small>Crew 7 m<sup>3</sup>Technical 6 m<sup>3</sup></small>
+|-
+| style="background:#EAECF0;border-left:solid 2px black;border-right:solid 2px black" |'''<small>Length</small>'''
+| align="center" |<small>{{convert|7.99|m|ft|abbr=on}}</small>
+| align="center" |<small>{{convert|8.56|m|ft|abbr=on}}</small>
+| align="center" |<small>{{convert|8.56|m|ft|abbr=on}}</small>
+| align="center" |<small>{{convert|8.00|m|ft|abbr=on}}</small>
+| align="center" |<small>{{convert|7.99|m|ft|abbr=on}}</small>
+| style="border-right:solid 2px black" align="center" |<small>{{convert|8.25|m|ft|abbr=on}}</small>
+|-
+| style="background:#EAECF0;border-left:solid 2px black;border-right:solid 2px black" |'''<small>Height (hull)</small>'''
+| align="center" |<small>{{convert|2.01|m|ft|abbr=on}}</small>
+| align="center" |<small>{{convert|2.04|m|ft|abbr=on}}</small>
+| align="center" |<small>{{convert|2.04|m|ft|abbr=on}}</small>
+| align="center" |<small>{{convert|2.04|m|ft|abbr=on}}</small>
+| align="center" |<small>{{convert|2.90|m|ft|abbr=on}}</small>
+| style="border-right:solid 2px black" align="center" |<small>{{convert|2.04|m|ft|abbr=on}}</small>
+|-
+| style="background:#EAECF0;border-left:solid 2px black;border-right:solid 2px black" |'''<small>Height (with turret)</small>'''
+| align="center" |<small>{{convert|2.25|m|ft|abbr=on}}</small>
+| align="center" |<small>{{convert|3.18|m|ft|abbr=on}}</small>
+| align="center" |<small>{{convert|3.22|m|ft|abbr=on}}</small>
+| align="center" |<small>{{convert|3.00|m|ft|abbr=on}}</small>
+| align="center" |<small>—</small>
+| style="border-right:solid 2px black" align="center" |<small>{{convert|2.75|m|ft|abbr=on}}</small>
+|-
+| style="background:#EAECF0;border-left:solid 2px black;border-right:solid 2px black" |'''<small>Width</small>'''
+| colspan="6" style="border-right:solid 2px black" align="center" |<small>{{convert|2.99|m|ft|abbr=on}}</small>
+|-
+| style="background:#EAECF0;border-left:solid 2px black;border-right:solid 2px black" |
+| colspan="6" style="background:#EAECF0;border-right:solid 2px black" align="center" |'''<small>Mass</small>'''
+|-
+| style="background:#EAECF0;border-left:solid 2px black;border-right:solid 2px black" |'''<small>Empty</small>'''
+| align="center" |<small>19.5 t</small>
+| align="center" |<small>22.0 t</small>
+| align="center" |<small>22.0 t</small>
+| align="center" |<small>20.6 t</small>
+| align="center" |<small>21.5 t</small>
+| style="border-right:solid 2px black" align="center" |<small>23.0</small>
+|-
+| style="background:#EAECF0;border-left:solid 2px black;border-right:solid 2px black" |'''<small>Payload</small>'''
+| align="center" |<small>10.5 t</small>
+| align="center" |<small>8.0 t</small>
+| align="center" |<small>8.0 t</small>
+| align="center" |<small>8.0 t</small>
+| align="center" |<small>8.5 t</small>
+| style="border-right:solid 2px black" align="center" |<small>7.0</small>
+|-
+| style="background:#EAECF0;border-left:solid 2px black;border-right:solid 2px black" |'''<small>GVW (max)</small>'''
+| colspan="6" style="border-right:solid 2px black" align="center" |<small>31.5 t</small>
+|-
+| style="background:#EAECF0;border-left:solid 2px black;border-right:solid 2px black" |
+| colspan="6" style="background:#EAECF0;border-right:solid 2px black" align="center" |'''<small>Weapon System / Mission Equipment</small>'''
+|-
+| style="background:#EAECF0;border-left:solid 2px black;border-right:solid 2px black" |'''<small>Crew + passengers</small>'''
+| align="center" |<small>3 + 10</small>
+| align="center" |<small>3 + 8</small>
+| align="center" |<small>3 + 3</small>
+| align="center" |<small>3 + 4</small>
+| align="center" |<small>3 to 5 crews</small>
+| style="border-right:solid 2px black" align="center" |<small>4</small>
+|-
+| rowspan="2" style="background:#EAECF0;border-left:solid 2px black;border-right:solid 2px black" |'''<small>Main mission equipment</small>'''
+| align="center" |<small>[[Remote controlled weapon station|RWS]] [[Hitrole]]<sup>®</sup></small>
+| align="center" |<small>Turret [[Hitfist]]<sup>®</sup></small>
+| align="center" |<small>Turret [[Hitfist]]<sup>®</sup></small>
+| align="center" |<small>[[Remote controlled weapon station|RWS]] [[Hitrole]]<sup>®</sup></small>
+| align="center" |<small>[[2R2M mortar|Thales 2R2M]]</small>
+| style="border-right:solid 2px black" align="center" |<small>Recovery equipment</small>
+|-
+| align="center" |<small>40&nbsp;mm grenade launcher  /Machine gun [[Heavy machine gun|heavy]] or [[Medium machine gun|medium]]</small>
+| align="center" |<small>[[Oerlikon KBA|KBA 25 mm]] /[[Spike (missile)|Spike LR]]</small> <small>/</small> <small>[[Coaxial gun|Coaxial]] [[Machine gun|MG]] 7.62&nbsp;mm</small>
+| align="center" |<small>[[Oerlikon KBA|KBA 25 mm]] /</small> <small>[[Spike (missile)|Spike LR]]</small> <small>/</small> <small>[[Coaxial gun|Coaxial]] [[Machine gun|MG]] 7.62&nbsp;mm</small>
+| align="center" |<small>40&nbsp;mm grenade launcher  /</small> <small>Machine gun [[Heavy machine gun|heavy]] or [[Medium machine gun|medium]]</small>
+| align="center" |<small>Rifled Recoiled Mounted Mortar 120&nbsp;mm</small>
+| style="border-right:solid 2px black" align="center" |<small>Hydraulic crane 245.2&nbsp;kN·</small><small>Main winch 30 t</small>
+|-
+| style="background:#EAECF0;border-left:solid 2px black;border-right:solid 2px black" |
+| colspan="6" style="background:#EAECF0;border-right:solid 2px black" align="center" |'''<small>Vehicle performances</small>'''
+|-
+| style="background:#EAECF0;border-left:solid 2px black;border-right:solid 2px black" |'''<small>Max speed</small>'''
+| colspan="6" style="border-right:solid 2px black" align="center" |<small>{{convert|110|km/h|mph|abbr=on}}</small>
+|-
+| style="background:#EAECF0;border-left:solid 2px black;border-right:solid 2px black" |'''<small>Range on road</small>'''
+| colspan="6" style="border-right:solid 2px black" align="center" |<small>{{convert|800|km|mi|abbr=on}}</small>
+|-
+| style="background:#EAECF0;border-left:solid 2px black;border-right:solid 2px black" |'''<small>Gradient / Side</small>'''
+| colspan="6" style="border-right:solid 2px black" align="center" |<small>60% (31.0°)</small>
+|-
+| style="background:#EAECF0;border-left:solid 2px black;border-right:solid 2px black" |'''<small>Side slope</small>'''
+| colspan="6" style="border-right:solid 2px black" align="center" |<small>30% (16.7°)</small>
+|-
+| style="background:#EAECF0;border-left:solid 2px black;border-right:solid 2px black" |'''<small>Step</small>'''
+| colspan="6" style="border-right:solid 2px black" align="center" |<small>{{convert|0.6|m|ft|abbr=on}}</small>
+|-
+| style="background:#EAECF0;border-left:solid 2px black;border-right:solid 2px black" |'''<small>Trench</small>'''
+| colspan="6" style="border-right:solid 2px black" align="center" |<small>{{convert|2.0|m|ft|abbr=on}}</small>
+|-
+| style="background:#EAECF0;border-left:solid 2px black;border-right:solid 2px black" |'''<small>Fording depth</small>'''
+| colspan="6" style="border-right:solid 2px black" align="center" |<small>{{convert|1.5|m|ft|abbr=on}}</small>
+|-
+| style="background:#EAECF0;border-left:solid 2px black;border-right:solid 2px black" |'''<small>Turning radius</small>'''
+| colspan="6" style="border-right:solid 2px black" align="center" |<small>{{convert|9.0|m|ft|abbr=on}}, with 3 steering axles (1st, 2nd, 4th)</small>
+|-
+| style="background:#EAECF0;border-left:solid 2px black;border-right:solid 2px black" |
+| colspan="6" style="background:#EAECF0;border-right:solid 2px black" align="center" |'''<small>Power train</small>'''
+|-
+| style="background:#EAECF0;border-left:solid 2px black;border-right:solid 2px black" |'''<small>Engine performance</small>'''
+| colspan="6" style="border-right:solid 2px black" align="center" |<small>Engine, Iveco 8262 '''/''' Power</small> <small>{{convert|550|hp|kW|abbr=on}} '''/''' Torque {{convert|2000|Nm|lbft|abbr=on}}</small>
+|-
+| style="background:#EAECF0;border-left:solid 2px black;border-right:solid 2px black" |'''<small>Power / mass ratio</small>'''
+| colspan="6" style="border-right:solid 2px black" align="center" |<small>{{convert|17.5|hp/t|kW/t|abbr=on}} at GVW</small>
+|-
+| style="background:#EAECF0;border-left:solid 2px black;border-right:solid 2px black" |'''<small>Transmission</small>'''
+| colspan="6" style="border-right:solid 2px black" align="center" |<small>Automatic, 5 front + 2 rear gars</small>
+|-
+| style="background:#EAECF0;border-left:solid 2px black;border-right:solid 2px black" |'''<small>Driveline</small>'''
+| colspan="6" style="border-right:solid 2px black" align="center" |<small>Single-differential twin-shaft design (H-shaped driveline)</small>
+|-
+| style="background:#EAECF0;border-left:solid 2px black;border-right:solid 2px black" |'''<small>Suspension</small>'''
+| colspan="6" style="border-right:solid 2px black" align="center" |<small>Hydro-pneumatic and independent suspension</small>
+|-
+| style="background:#EAECF0;border-left:solid 2px black;border-right:solid 2px black" |
+| colspan="6" style="background:#EAECF0;border-right:solid 2px black" align="center" |'''Protection'''
+|-
+| style="background:#EAECF0;border-left:solid 2px black;border-right:solid 2px black" |'''<small>Hull</small>'''
+| colspan="6" style="border-right:solid 2px black" |<small>Hull made of high hardness monocoque steel and direct fire ballistic armour (ceramic).</small>
+* <small>Base level: steel with [[Advanced Modular Armor Protection|AMAP]] add-on armour for frontal armour against 30&nbsp;mm [[Kinetic energy penetrator|APFSDS rounds]]{{citation needed|date=June 2025}}, side armour against 14.5&nbsp;mm [[Armour-piercing ammunition|AP rounds]]</small>
+* <small>Optional: up-armouring the sides against  30&nbsp;mm [[Kinetic energy penetrator|APFSDS rounds]]{{citation needed|date=June 2025}}</small>
+|-
+| style="background:#EAECF0;border-left:solid 2px black;border-right:solid 2px black" |'''<small>Floor</small>'''
+| colspan="6" style="border-right:solid 2px black" |<small>V-shaped floot made of high hardness steel</small>
+* <small>Base level: anti-mine seats + anti-mine / IED floor withstanding up to {{convert|6|kg|lb|abbr=on}}</small> <small>TNT equivalent</small>
+* <small>Optional: increase of the floor protection to withstand up to {{convert|8|kg|lb|abbr=on}} TNT equivalent</small>
+|-
+| style="background:#EAECF0;border-left:solid 2px black;border-bottom:solid 2px black" |'''<small>Optional systems</small>'''
+| colspan="6" style="border-left:solid 2px black;border-bottom:solid 2px black;border-right:solid 2px black" |<small>Smoke grenade launchers (8 × 80&nbsp;mm)</small> <big>'''/'''</big> <small>NBC protection <big>'''/'''</big> IED active jamming protection suite <big>'''/'''</big> laser warning system <big>'''/'''</big> fire extinguishing system in the crew cabin</small>
+|}
+
+== Current operators ==
+<!--READ FIRST: This section is for cited entries only. Please do not add entries into this list without a citation from a reliable source. All entries without a citation will be removed. Thank you.-->
+
+{{unreferenced section|date=September 2023}}
+
+=== Operators ===
+;{{flag|Italy}}
+[[Italian Army]]
+* [[Mechanized Brigade "Pinerolo"]]:
+** [[9th Infantry Regiment "Bari"]]
+** [[7th Bersaglieri Regiment]]
+** [[82nd Infantry Regiment "Torino"]]
+* [[Mechanized Brigade "Aosta"]]
+** [[5th Infantry Regiment "Aosta"]]
+** [[6th Bersaglieri Regiment]]
+** [[62nd Infantry Regiment "Sicilia"]]
+* [[Mechanized Brigade "Sassari"]]:
+** [[3rd Bersaglieri Regiment]]
+
+=== Successful bids ===
+
+==== Total orders expected ====
+'''{{army|Italy}}''' '''(630)'''
+:'''Phase 1''', delivered from 2007 to 2017 '''(249)''':<ref name=":5">{{Cite web |date=April 2021 |title=Panorama Difesa VBM Posto Comando |trans-title=Defense Panorama VBM Command Post |url=https://www.iveco-otomelara.com/backoffice/global/docs/upload/Panorama%20Difesa_VBM%20Posto%20Comando_Apr%202021.pdf |archive-url=https://web.archive.org/web/20241209014922/https://www.iveco-otomelara.com/backoffice/global/docs/upload/Panorama%20Difesa_VBM%20Posto%20Comando_Apr%202021.pdf |archive-date=2024-12-09 |website=iveco-otomelara.com |language=it}}</ref>
+:* '''172''' ''VBM Freccia da Combattimento (AIFV)''
+:* '''36''' ''VBM Freccia Controcarro (ATGW)''
+:* '''20''' ''VBM Freccia Posto Comando''
+:** 10 ''Nucleo Comando''
+:** 10 ''Nucleo Tattico''
+:*'''21''' ''VBM Freccia Porta Mortaio''  
+:'''Phase 2''', planned acquisitions from 2019 '''(381)''':<ref name=":5" />
+:* '''163''' ''VBM Freccia da Combattimento (AIFV)''
+:* '''36''' ''VBM Freccia Controcarro (ATGW)''
+:* '''120''' ''VBM Freccia PLUS Esploranti'' <ref name="I programmi3" />
+:* '''8''' ''VBM Freccia Posto Comando''
+:** 4 ''Nucleo Comando''
+:** 4 ''Nucleo Tattico''
+:*'''14''' ''VBM Freccia Porta Mortaio''
+:*'''40''' ''VBM Freccia Recupero'' (10×10)
+
+==== Detailed orders ====
+'''{{army|Italy}}''' '''(401)'''
+
+:'''Phase 1,''' delivered from 2007 to 2017 '''(249)''':<ref name=":5" />
+:* Tranche 1, €310 million '''(54):'''<ref name=":6">{{Cite web |date=2009-07-02 |title=INTERROGAZIONE A RISPOSTA SCRITTA 4/03685 presentata da TURCO MAURIZIO (PARTITO DEMOCRATICO) |trans-title=Written Question 4/03685 Presented by Turco Maurizio (Democratic Party) |url=https://dati.camera.it/ocd/aic.rdf/aic4_03685_16 |archive-url=https://web.archive.org/web/20250218230121/https://dati.camera.it/ocd/aic.rdf/aic4_03685_16 |archive-date=2025-02-18 |website=dati.camera.it |language=it}}</ref>
+:** 50 ''VBM Freccia da Combattimento (AIFV)''
+:** 1 ''VBM Freccia Controcarro (ATGW)''
+:** 2 ''VBM Freccia Posto Comando''
+:*** 1 ''Nucleo Comando''
+:*** 1 ''Nucleo Tattico''
+:** 1 ''VBM Freccia Porta Mortaio''
+:* Tranche 2 '''(109)''':<ref name=":6" />
+:** 61 ''VBM Freccia da Combattimento (AIFV)''
+:** 24 ''VBM Freccia Controcarro (ATGW)''
+:** 12 ''VBM Freccia Posto Comando''
+:*** 6 ''Nucleo Comando''
+:*** 6 ''Nucleo Tattico''
+:** 12 ''VBM Freccia Porta Mortaio''
+:* Tranche 3 '''(86)''':<ref name=":6" />
+:** 61 ''VBM Freccia da Combattimento (AIFV)''
+:** 11 ''VBM Freccia Controcarro (ATGW)''
+:** 6 ''VBM Freccia Posto Comando''
+:*** 3 ''Nucleo Comando''
+:*** 3 ''Nucleo Tattico''
+:** 8 ''VBM Freccia Porta Mortaio''
+
+:'''Phase 2''', confirmed acquisitions since 2019 '''(152)''':  
+:*Tranche 1, December 2019 '''(30)''':'''<ref>{{Cite web |date=2024-12-22 |title=Altri 30 VBM Freccia per l'Esercito – Analisi Difesa |url=https://www.analisidifesa.it/2020/01/altri-30-vbm-freccia-per-lesercito/ |access-date=2024-12-31 |language=it-IT}}</ref>'''<ref>{{Cite web |last= |date=2020-01-16 |title=Italy Orders Additional Freccia 8x8 VBM |url=https://www.joint-forces.com/defence-equipment-news/28895-italy-orders-additional-freccia-8x8-vbm |access-date=2024-12-31 |website=Joint Forces News |language=en-GB}}</ref><ref>{{Cite web |title=RID Rivista Italiana Difesa - Il CIO fornirà altri 30 VBM all'Esercito Italiano |url=https://www.rid.it/shownews/3417/il-cio-fornira-altri-30-vbm-all-esercito-italiano |access-date=2024-12-31 |website=www.rid.it |language=it}}</ref>
+:**5 ''VBM Freccia da Combattimento (AIFV)''
+:** 25 ''VBM Freccia Controcarro (ATGW)''
+:*Tranche 2, December 2021, €400 million '''(46)''':<ref>{{Cite web |title=Firmato il Contratto per l'acquisizione di VBM |url=https://www.difesa.it/sgd-dna/notizie/firmato-il-contratto-per-lacquisizione-di-vbm/30933.html |access-date=2024-12-31 |website=www.difesa.it}}</ref>
+:**26 ''VBM Freccia Posto Comando''
+:*** 13 ''Nucleo Comando''
+:*** 13 ''Nucleo Tattico''
+:** 14 ''VBM Freccia Porta Mortaio''
+:** 6 ''VBM Freccia Recupero e Soccorso'' (10×10)
+:*Tranche 3, December 2024 '''(76)''':<ref name=":4"/><ref>{{Cite web |last=redazionale |date=2024-12-31 |title=Settantasei VBM Plus per l'Esercito Italiano |url=https://aresdifesa.it/settantasei-vbm-plus-per-lesercito-italiano/ |access-date=2024-12-31 |website=Ares Osservatorio Difesa |language=it-IT}}</ref>
+:**60 ''VBM Freccia PLUS da Combattimento (AIFV)''
+:** 16 ''VBM Freccia PLUS Controcarro (ATGW)''
+
+=== Future contracts ===
+'''{{army|Italy}}''' '''(229)'''
+:The following list includes the remaining number of each model that should be ordered for the Phase 2 of the VBM Freccia programme, but as the anti-tank variant was ordered in a larger quantity than initially planned (5 additional), same for the command variant (18 additional), this list below will be adjusted by the Italian government. 
+:* 98 ''VBM Freccia PLUS da Combattimento (AIFV)''
+:* 120 ''VBM Freccia PLUS Esploranti'' <ref name="I programmi3" />
+:* 34 ''VBM Freccia Recupero e Soccorso'' (10×10)
+
+=== Failed bids ===
+'''<small>{{flagicon|RU}}</small> [[Russian Ground Forces]]''' <ref>{{Cite web |last=Eshel |first=Tamir |date=2012-05-12 |title=Russia Testing Italian Centauro Wheeled Tanks - Defense Update |url=https://defense-update.com/20120512_russia-testing-centauro-italian-wheeled-tanks.html,%20https://defense-update.com/20120512_russia-testing-centauro-italian-wheeled-tanks.html |access-date=2023-11-05 |language=en-US}}{{Dead link|date=December 2024|bot=InternetArchiveBot|fix-attempted=yes}}</ref>
+: In 2012, the Russian Army tested the Freccia fitted with a 30mm turret and the Centauro in 3 variants, equipped with the 105mm canon on the [[Centauro (Tank destroyer)|Centauro]], one fitted with a Russian 125mm tank gun, and another one with a NATO 120mm tank gun with the HITFACT 120mm turret.
+: A discussion for up to 2,500 vehicles was mentioned. Following the [[Annexation of Crimea by the Russian Federation|Annexation of Crimea in 2014]], sanctions were imposed on Russia, and all cooperation on armament was cancelled.<ref>{{Cite web |title=Sanctions adopted following Russia's military aggression against Ukraine |url=https://finance.ec.europa.eu/eu-and-world/sanctions-restrictive-measures/sanctions-adopted-following-russias-military-aggression-against-ukraine_en |access-date=2023-11-05 |website=finance.ec.europa.eu |language=en}}</ref>
+'''{{army|Slovenia}}''' (up to 106)
+: The [[Slovenian Ground Force|Slovenian Army]] is looking for up to 106 [[Armoured personnel carrier|APC]] with a budget of €700 million after rejecting the contract for the [[Boxer (armoured fighting vehicle)|Boxer]]. The finalists of the competition are the [[Mowag Piranha V|Piranha V]], the Freccia, the [[KTO Rosomak|Rosomak L]] and the [[Patria AMV|Patria AMV<sup>XP</sup>.]]<ref>{{Cite web |date=7 September 2023 |title=The Slovenia Times |url=https://sloveniatimes.com/39785/potential-suppliers-of-armoured-vehicles-winnowed-down-to-four |access-date=2023-11-24 |website=sloveniatimes.com}}</ref> On 11 July 2024 it was announced, that the Patria AMVxp won the competition.<ref>{{Cite web |date=11 July 2024 |title=The Slovenia Times |url=https://sloveniatimes.com/40665/slovenia-to-buy-armoured-personnel-carriers-from-patria |access-date=2024-08-14 |website=sloveniatimes.com}}</ref>
+'''{{army|Spain}}''' <ref>{{Cite web |last=Miller |first=Stephen W. |date=2017-12-01 |title=Wheels of Fortune |url=https://www.armadainternational.com/2017/12/wheels-of-fortune-ifv/ |access-date=2023-11-04 |website=Armada International |language=en-US}}</ref>
+
+: In 2015, a program to replace the [[VEC-M1]], the [[Pegaso BMR|BMR-M1]] and part of the [[M113]] fleet was launched by the Spanish Army. The competitors were the [[Boxer (armoured fighting vehicle)|Boxer]], the Freccia, the Patria AMV, the [[Mowag Piranha V|Piranha V]], the [[Splitterskyddad EnhetsPlattform|SEP]] and the [[VBCI]].<ref>{{Cite web |last=Villarejo |first=Esteban |date=2015-08-22 |title=GD Favored To Win Spanish Armored Vehicle Contract |url=https://www.defensenews.com/land/2015/08/22/gd-favored-to-win-spanish-armored-vehicle-contract/ |access-date=2023-10-01 |website=Defense News |language=en}}</ref>
+: In September 2015, the competition was won by [[General Dynamics European Land Systems|GDELS]] with the [[Mowag Piranha V|Piranha V]].<ref>{{cite web | title=Spain selects Piranha 5 as new 8×8 armoured infantry vehicle | website=Defence Blog | date=28 September 2015 | url=https://defence-blog.com/spain-selects-piranha-5-as-new-8x8-armoured-infantry-vehicle/ | access-date=10 March 2024}}</ref> In December 2019, the Spanish Government cancelled the program, and relaunched the competition.<ref>{{Cite web |last=admin |date=2019-12-29 |title=Spanish Government Cancels â'¬2.1 Billion Piranha 5 Contract |url=https://militaryleak.com/2019/12/29/spanish-government-cancels-e2-1-billion-piranha-5-contract/ |access-date=2023-10-01 |website=MilitaryLeak |language=en-US}}</ref> In August 2020, the Piranha V of [[Santa Bárbara Sistemas|GDELS Santa Barbara Sistemas]] in collaboration with [[Indra Sistemas]] and [[Sapa Placencia]] won again the competition for a first batch of 348 vehicles for €1.74 billion.<ref>{{Cite web |last=Editorial |first=Defense Brief |date=2020-08-25 |title=Spain hands out $2.06 billion contract for Dragon VCR 8x8 vehicles |url=https://defbrief.com/2020/08/25/spain-hands-out-2-06-billion-contract-for-dragon-vcr-8x8-vehicles/ |access-date=2023-10-01 |website=Defense Brief |language=en-US |archive-date=2023-11-04 |archive-url=https://web.archive.org/web/20231104131058/https://defbrief.com/2020/08/25/spain-hands-out-2-06-billion-contract-for-dragon-vcr-8x8-vehicles/ |url-status=dead }}</ref> It is known as the ''{{ill|Dragón VCR|es|Dragón (vehículo blindado)}}''.
+
+=== Tender ===
+
+: {{flag|Chile}} (> 200)
+: The Chilean Army was looking for a successor to its 160 Piraña I 6×6 and 30 Piraña I 8×8. On a long term perspective, more than 200 vehicles are expected to be purchased, but in the meantime, a first phase of the replacement includes a tender for 82 8×8 armoured vehicles. The requirement mentions a maximum weight of 38 tons. The deadline for the selection is dated April 8, 2025. Among the known competitors were.:<ref>{{cite web |date=25 October 2023 |title=Chile opens bidding for new wheeled armored vehicles |url=https://www.defensenews.com/land/2023/10/25/chile-opens-bidding-for-new-wheeled-armored-vehicles/}}</ref><ref>{{Cite web |last=InfoDefensa |first=Revista Defensa |title=El Ejército de Chile modifica el proyecto Cromo y analiza comprar 82 carros 4x4, 6x6 y 8x8 |url=https://www.infodefensa.com/texto-diario/mostrar/5084638/ejercito-chile-modifica-proyecto-cromo-analiza-comprar-82-carros-4x4-6x6-8x8 |access-date=2025-02-01 |website=Infodefensa - Noticias de defensa, industria, seguridad, armamento, ejércitos y tecnología de la defensa |language=es}}</ref>
+:* Altuğ by the Turkish [[BMC Otomotiv|BMC]]
+:* [[Patria AMV]] by the Finnish [[Patria Group]]
+:* [[Otokar Arma|Arma]] by the Turkish [[Otokar]]
+:* Freccia by the Italian [[Iveco]]
+:* [[K808 White Tiger]] by the South Korean [[Hyundai Rotem]]
+:* [[Pandur II]] 8×8 by the Czech [[Excalibur Army]]
+:* [[Stryker]] 8×8 by the United States [[United States Army|US army]] (the only offer for already used units) <ref>{{Cite web |last=InfoDefensa |first=Revista Defensa |title=El Ejército de Chile evalúa la compra de carros Stryker 8x8 de Estados Unidos |url=https://www.infodefensa.com/texto-diario/mostrar/3419837/ejercito-chile-evalua-compra-carros-stryker-8x8-estados-unidos |access-date=2025-02-01 |website=Infodefensa - Noticias de defensa, industria, seguridad, armamento, ejércitos y tecnología de la defensa |language=es}}</ref>
+:* [[Terrex ICV]] by the Singapore [[ST Engineering]]<ref>{{Cite web |last=InfoDefensa |first=Revista Defensa |title=ST Engineering ofrece el Terrex para el programa de blindados de Chile |url=https://www.infodefensa.com/texto-diario/mostrar/3057405/st-engineering-ofrece-terrex-programa-blindados-chile |access-date=2025-02-01 |website=Infodefensa - Noticias de defensa, industria, seguridad, armamento, ejércitos y tecnología de la defensa |language=es}}</ref>
+:*:
+
+:
+
+== See also ==
+
+===Comparable vehicles===
+{{Div col|colwidth=20em}}
+* {{lwc|BTR-4|BTR 4}}
+* {{lwc|Boxer (armoured fighting vehicle)|Boxer}}
+* {{lwc|CM-32 armoured vehicle|CM-32}}
+* {{lwc|FNSS Pars|FNSS PARS III}}
+* {{lwc|Iveco SuperAV}}
+* {{lwc|K808 White Tiger}}
+* {{lwc|LAV 6}}
+* {{lwc|LAV 6|LAV 700}}
+* {{lwc|Mowag Piranha|Mowag Piranha IIIH}}
+* {{lwc|Mowag Piranha IV}}
+* {{lwc|Mowag Piranha V}}
+* {{lwc|Otokar Arma}}
+* {{lwc|Pandur II}}
+* {{lwc|Patria AMV}}
+* {{lwc|Stryker}}
+* {{lwc|TATA Kestrel}}
+* {{lwc|Terrex ICV}}
+* {{lwc|VBCI}}
+* {{lwc|VPK-7829 Bumerang}}
+{{Div col end}}
+
+== References ==
+<references />
+
+==External links==
+* [http://www.esercito.difesa.it/equipaggiamenti/Veicoli-blindati-e-corazzati-da-combattimento/Veicoli-da-combattimento/Pagine/vbm-freccia.aspx Italian Army homepage: Freccia]
+* [http://www.iveco-otomelara.com/wheeled/CentauroAIFVFreccia.php Official website] {{Webarchive|url=https://web.archive.org/web/20170116033301/http://www.iveco-otomelara.com/wheeled/CentauroAIFVFreccia.php |date=2017-01-16 }}
+{{Modern IFV and APC}}
+
+{{DEFAULTSORT:Freccia (infantry fighting vehicle)}}
+[[Category:Infantry fighting vehicles of Italy]]
+[[Category:Wheeled infantry fighting vehicles]]
+[[Category:Iveco vehicles]]
+[[Category:Eight-wheeled vehicles]]
+[[Category:Military vehicles introduced in the 2000s]]
+[[Category:Armoured personnel carriers of Italy]]
+[[Category:Infantry fighting vehicles of the post–Cold War period]]
+[[Category:Armoured fighting vehicles of the post–Cold War period]]

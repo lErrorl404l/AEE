@@ -1,0 +1,97 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Held tier-5 English Wikipedia compilation for the K9 Thunder self-propelled howitzer. The registry marks primary_held false. It publishes the K9 and K9A1 combat mass, the overall and hull lengths, the width, the height, the ground clearance, the engine rating, the transmission gear count, the maximum road speed and the range.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "k9_thunder",
+      "canonical_name": "K9 Thunder",
+      "maker": "Hanwha Defense",
+      "model": "K9",
+      "variant": "Thunder",
+      "variant_id": "k9_thunder",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "South Korea",
+      "era": "modern",
+      "aliases": [
+        "k9",
+        "k9 thunder",
+        "k9a1"
+      ],
+      "keywords": [
+        "self-propelled howitzer",
+        "sph",
+        "tracked",
+        "k9"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 47000,
+          "unit": "kg",
+          "source": "wikipedia_k9_thunder",
+          "locator": "Infobox, mass row, K9 & K9A1 combat entry",
+          "state": "combat mass published for the K9 and K9A1 as 47 t; the tonne taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 12000,
+          "unit": "mm",
+          "source": "wikipedia_k9_thunder",
+          "locator": "Infobox, length row, Overall entry",
+          "state": "overall length published as 12 m; the same row publishes the hull length as 7.44 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3400,
+          "unit": "mm",
+          "source": "wikipedia_k9_thunder",
+          "locator": "Infobox, width row",
+          "state": "overall width published as 3.4 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2730,
+          "unit": "mm",
+          "source": "wikipedia_k9_thunder",
+          "locator": "Infobox, height row",
+          "state": "overall height published as 2.73 m",
+          "grade": "claimed"
+        },
+        "ground_clearance_mm": {
+          "value": 410,
+          "unit": "mm",
+          "source": "wikipedia_k9_thunder",
+          "locator": "Infobox, clearance row",
+          "state": "ground clearance published as 410 mm",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 1000,
+          "unit": "hp",
+          "source": "wikipedia_k9_thunder",
+          "locator": "Infobox, engine row, MT881Ka-500 rating",
+          "state": "engine published as 735 kW (1,000 hp) at 2,700 rpm, with no net basis",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 67,
+          "unit": "km/h",
+          "source": "wikipedia_k9_thunder",
+          "locator": "Infobox, speed row",
+          "state": "maximum road speed published as 67 km/h",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 360,
+          "unit": "km",
+          "source": "wikipedia_k9_thunder",
+          "locator": "Infobox, vehicle range row",
+          "state": "range published as 360 km",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

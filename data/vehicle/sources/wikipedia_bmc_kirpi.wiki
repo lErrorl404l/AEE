@@ -1,0 +1,169 @@
+{{Use dmy dates|date=February 2024}}
+{{needs sources|date=June 2024}}
+{{Infobox weapon
+| name               = Kirpi
+| image              = UA Marines BMC Kirpi 04.jpg
+| image_size         = 300
+| caption            = BMC Kirpi in service with the Ukrainian [[35th Marine Brigade (Ukraine)|35th Marine Brigade]]
+| origin             = [[Turkey]]
+| type               = [[Mine-Resistant Ambush Protected Vehicle]]
+| is_vehicle         = yes
+| service            = Active (in service)
+| used_by            = See [[#Operators|Operators]]
+| wars               = {{tree list}}
+* [[Kurdish–Turkish conflict]]
+* [[Syrian Civil War]]
+** [[Syrian-Turkish border clashes during the Syrian Civil War|2012 Syrian-Turkish border clashes]]
+** [[Turkey-ISIL conflict]]
+** [[2019 Turkish offensive into north-eastern Syria]]
+* [[Second Libyan Civil War]]
+* [[Russian invasion of Ukraine]]
+{{tree list/end}}
+| designer           = [[BMC (Turkey)|BMC]]
+| design_date        = 2009 (first prototype)
+| manufacturer       = BMC
+| number             = 
+| variants           = 4×4 and 6×6
+| weight             = 16 tons
+| length             = 6.0 m (short version; 4×4) and 7.075 m (long version; 4×4)
+| width              = 2.51 m (4×4)
+| height             = 3.2 m
+| crew               = 13 passengers
+| armour             = [[STANAG 4569]] Level 3 (MRAP) a
+| primary_armament   = 7.62 or 12.7 mm machine guns
+| engine             = [[BMC TUNA]]
+| engine_power       = 400 hp
+350 ps (257 kW) 2100 rpm turbo diesel
+| transmission       = Allison 3000 type 3000SP
+| fuel_capacity      = 310 liter
+| pw_ratio           = 
+| suspension         = Leaf spring
+| clearance          = 345 mm
+| vehicle_range      = 1000 km at 60 km/h
+| speed              = 
+| mass               = 20,000 kg
+}}
+
+'''BMC Kirpi''' ([[Turkish language|Turkish]] for "Hedgehog") is a Turkish [[Mine-resistant ambush protected vehicle|mine-resistant ambush protected]] (MRAP) vehicle manufactured by [[BMC (Turkey)|BMC]].<ref>{{cite web|url=http://www.armyrecognition.com/turkey_turkish_army_wheeled_armoured_vehicles_uk/kirpi_bmc_350_mrap_armoured_vehicle_personnel_carrier_data_sheet_specifications_description_pictures.html|title=Kirpi BMC 350 MRAP armoured vehicle personnel carrier data sheet specifications description pictures|website=www.armyrecognition.com|access-date=8 November 2016|archive-url=https://web.archive.org/web/20161109112844/http://www.armyrecognition.com/turkey_turkish_army_wheeled_armoured_vehicles_uk/kirpi_bmc_350_mrap_armoured_vehicle_personnel_carrier_data_sheet_specifications_description_pictures.html|archive-date=9 November 2016|url-status=live|df=dmy-all}}</ref>
+
+== Development ==
+{{Unreferenced section|date=June 2024}}
+The Kirpi design process started in 2008. The first prototype was produced in 2009. In 2009, BMC was awarded a tender for 614 MRAP vehicles by the SSB – Presidency of Defence Industry. During the preliminary and critical design phases of this 614 Kirpi project, the prototype was further developed and became the Kirpi 1.
+
+Turkish Land Forces have used the Kirpi 1 intensively on its operations. After Kirpis started to be operated, Turkish Land Forces’ casualties started to reduce significantly. After this initial success of the Kirpi, its total sales number increased to more than 1,500, with more than 200 for export customers.
+
+After the Kirpi 1's seven years of service, with the gained experience and feedback received from users, the Kirpi 2 was introduced in 2018, with several improvements upon the Kirpi 1. In 2018, BMC was awarded another contract by the SSB for 529 units of Kirpi 2 MRAP vehicles. Independent suspension for more comfortable journey for the troops inside, improved air conditioning and engine cooling pack integration, composite add-on armor to lighten the vehicle, allowing it to carry more payload and more mission equipment. Particle/shrapnel holder, spall-liner installation upgrades have been applied to newer, second generation Kirpi 2.
+
+== Technical description ==
+{{Unreferenced section|date=January 2021}}
+BMC Kirpi has a monocoque V-shaped body. Recovery and/or towing points are fitted front and rear, a NATO standard pintle being fitted at the rear. A front-mounted hydraulically operated self-recovery winch is standard.
+
+V-shape monocoque body with composed add-on armor offers great resistance against mine and ballistic attacks in terms of NATO Stanag 4569. Protection levels are classified. In second generation of Kirpi, the Kirpi 2 has composite add-on armor and further increased mine protection.
+
+The cabin can carry 13 personnel, driver, commander and gunner facing front, the rest of 10 personnel are facing each other with 5 units on one side and 5 more on the opposite side both sat on the edge of side walls. Each personnel has mine protected seating, gun racks and gun ports to counterfire in times of need. There are two roof hatches, one on front, opens up inside the covered manual turret, optionally manual turret can be replaced with automatic weapon station, in this situation, front roof hatch opens up behind the weapon station, allowing to manually operate or reload. Second roof hatch is at the far end of cabin. There is a hydraulic operated door at the back of the vehicle, 10 personnel can mount up or evacuate from this door.
+
+The BMC Kirpi 4×4 is 18 tons when empty and has 2,000&nbsp;kg payload with a gross vehicle weight of 20,000&nbsp;kg.
+
+Motive power for the BMC Kirpi is provided by a EURO 3 emissions compliant Cummins diesel engine developing 375&nbsp;hp (275&nbsp;kW). An engine cold start kit is fitted and the cooling system has been adapted for tactical applications in between −32&nbsp;°C / +55&nbsp;°C temperatures. The BMC TUNA engine is planned to replace the currently used Cummins engine.<ref>{{Cite web |date=2025-01-10 |title=BMC livre 100 véhicules blindés équipés de moteurs produits localement aux forces terrestres et à la gendarmerie turques - Defensehere |url=https://defensehere.com/fr/bmc-livre-100-vehicules-blindes-equipes-de-moteurs-produits-localement-aux-forces-terrestres-et-a-la-gendarmerie-turques/ |access-date=2025-04-10 |language=fr-FR}}</ref> In January 2025, TUNA engine Replaces Cummins engine.<ref>{{Cite web |last=Fretay |first=Halna du |title=VURAN and KİRPİ-2 Armored Vehicles with Local Engines Address Operational Challenges in Türkiye |url=https://armyrecognition.com/news/army-news/2025/vuran-and-kirpi-2-armored-vehicles-with-local-engines-address-operational-challenges-in-tuerkiye |access-date=2025-04-10 |website=armyrecognition.com |language=en-gb}}</ref>
+
+Driveline is completed by an Allison 3000 six-speed fully automatic transmission coupled to an Axletech two-speed transfer box with selectable 4×2 or 4×4 drive. A longitudinal driver-controlled pneumatically operated differential lock is fitted. Both the front steer-drive axle and the rear drive axles are Axletech rated at 9,500&nbsp;kg capacity and sprung by the combination of parabolic leaf springs, telescopic shock absorbers, and an anti-roll bar. In second generation of Kirpi, the Kirpi 2 has fully independent suspension with coil springs, has same axle capacity. Both are fitted with driver-controlled pneumatically operated cross-axle differential locks. Steering is power assisted.
+
+Single 14.00 R 20 tyres are standard, rims are 10x20”. CTIS is fitted. Disc brakes are fitted front and rear, supplemented by an engine exhaust brake. ABS is also standard.
+
+Automatic fire suppression system inside personnel cabin an engine departments are standard while outside and tire suppression systems are optional.
+
+== Variants ==
+{{Unreferenced section|date=January 2021}}
+
+BMC Kirpi is a troop carrier and mainly used to transport troops one place to another safely. It is also a multi-purpose platform that can be adapted for the desired role, needed by the end user. It can be utilized to serve different tactical purposes according to certain requirements. BMC Kirpi has 4×4 and 6×6 configurations. The vehicle is driven from all its available wheels which makes it suitable to perform its duty on any terrain.
+
+'''4×4 Troop Carrier'''
+
+Standard troop carrier version is used to transport 13 personnel from one place to another with high safety, ignoring the climate and terrain hardships.
+
+'''6×6 Troop Carrier'''
+
+6×6 version of standard troop carrier. Can carry 15 personnel.
+
+'''Combat Tactical Vehicle'''
+
+When a standard troop carrier version is equipped with situational awareness & offensive weapon systems makes Kirpi a combat fighting vehicle.
+
+'''Utility Vehicle'''
+
+Standard troop carrier version can be turned into a utility vehicle in order to carry cargo safely.
+
+'''Ambulance'''
+
+Ambulance version takes wounded soldiers from the heat of battle and safely escorts them to the back of frontlines. Can carry two doctors with two inpatients or two doctors with one inpatient and two walking cases.
+
+'''Mine Detection and Disposal Vehicle'''
+
+Leads any military convoy, detects explosives buried underground, disrupts it with its robotic arm and disposes any mine threat.
+
+== Characteristics ==
+[[File:UA Marines BMC Kirpi 03.jpg|thumb|UA Marines BMC Kirpi.]]
+The design contract was awarded in 2009, and deliveries commenced in 2014.<ref name=":0">{{Cite web|url=http://www.military-today.com/apc/kirpi.htm|title=Kirpi - Mine resistant ambush protected vehicle|last=ARG|access-date=2016-11-08|archive-url=https://web.archive.org/web/20190521044302if_/http://www.military-today.com/apc/kirpi.htm|archive-date=21 May 2019|url-status=usurped}}</ref>
+
+Its armored hull provides protection against armor-piercing rounds and artillery shell splinters. Some vehicles have been fitted with cage armor for protection against RPG rounds.<ref name=":0" />
+
+The Kirpi features [[shock absorber]] seats and interior accessories, a [[GPS]] system, rear view camera, and automatic fire suppression system. It has five firing ports and four bulletproof windows on each side of the troop compartment.<ref>{{Cite web|url=http://www.armyrecognition.com/turkey_turkish_army_wheeled_armoured_vehicles_uk/kirpi_bmc_350_mrap_armoured_vehicle_personnel_carrier_data_sheet_specifications_description_pictures.html|title=Kirpi BMC 350 MRAP armoured vehicle personnel carrier data sheet specifications description pictures {{!}} Turkey Turkish army wheeled armoured vehicles UK {{!}} Turkey Turkish army military equipment vehicles UK|website=www.armyrecognition.com|access-date=2016-11-08|archive-url=https://web.archive.org/web/20161109112844/http://www.armyrecognition.com/turkey_turkish_army_wheeled_armoured_vehicles_uk/kirpi_bmc_350_mrap_armoured_vehicle_personnel_carrier_data_sheet_specifications_description_pictures.html|archive-date=9 November 2016|url-status=live}}</ref>
+
+It has a shielded position for the gunner on top of the roof, which can be operated manually and can rotate through 360 degrees. The vehicle can be armed with a 7.62-mm or 12.7-mm machine gun and is also available with remotely-controlled weapons stations.<ref name=":0" />
+
+== Operators ==
+[[File:Map of BMC Kirpi Operators.svg|thumb|400px|A map with BMC Kirpi operators in blue]]
+<!--READ FIRST: This section is for cited entries only. Please do not add entries into this list without a citation from a reliable source. All entries without a citation will be removed. Thank you.-->
+* {{flag|Bosnia and Herzegovina}}
+** [[Armed Forces of Bosnia and Herzegovina]]: in November 2024 [[Zukan Helez]], the [[Ministry of Defence (Bosnia and Herzegovina)|Minister of Defense of Bosnia and Herzegovina]], announced that an agreement has been signed to procure BMC Kirpi MRAPs from Turkey.<ref>{{Cite web |date=2024-12-18 |title=Nabavka i isporuka oklopnih transportera KIRPI II: "Isporuka prvog vozila već u martu 2025.godine" |trans-title=Procurement and delivery of KIRPI II armored personnel carriers: "Delivery of the first vehicle as early as March 2025" |url=https://www.mod.gov.ba/aktuelnosti/vijesti/?id=110447 |archive-url=https://web.archive.org/web/20241221214429/https://www.mod.gov.ba/aktuelnosti/vijesti/?id=110447 |archive-date=2024-12-21 |access-date=2025-11-15 |website=www.mod.gov.ba |language=bs}}</ref>
+* {{flag|Djibouti}}
+** [[Djiboutian Army]]: BMC Kirpi I with [[Aselsan]] SARP DUAL [[remote controlled weapon station]] in use.<ref>{{cite tweet|user=africaken1|number=1673991344451211264|title=Djibouti military parade during {{as written|i|t's [sic]}} independence day on display Djibouti army Turkish made BMC Kirpi MRAP's, with a mounted SARP DUAL remotely-controlled weapons system also from Turkish aselsan konya}}</ref>
+* {{flag|United Arab Emirates}}
+** [[United Arab Emirates]]: <ref>{{Cite web |last=Işık |first=Yusuf Emir |date=2023-02-22 |title=BMC'nin Kirpi II zırhlısı BAE envanterine girdi! |url=https://www.defenceturk.net/bmcnin-kirpi-ii-zirhlisi-bae-envanterine-girdi |access-date=2026-01-04 |website=DefenceTurk |language=tr}}</ref>
+* {{flag|Kosovo}}
+** [[Kosovo Security Force]]: Kosovo MoD confirmed the purchase of 14 BMC Kirpi 4×4 MRAP vehicles to local media and Turkish Anadolu Agency news agency, the deliveries are expected to begin in 2022.<ref>{{cite news |title=FSK-ja blen 14 autoblinda turke/ Kosova shteti i pare qe merr keto mjete 4x4|url=https://www.youtube.com/watch?v=Gt2xnw5ynS4|access-date=10 July 2021 |work=Top Chanel| date=9 July 2021 }}</ref>
+* {{flag|Libya}}
+**  [[Libyan Army]]: 40+ BMC Kirpi 4×4 MRAP.<ref>{{cite news |title=Cargo ship loaded with Turkish military vehicles arrives in Tripoli |url=https://english.alarabiya.net/en/News/north-africa/2019/05/19/Cargo-ship-loaded-with-Turkish-military-vehicles-arrives-in-Tripoli |access-date=9 June 2020 |work=Al Arabiya English |date=19 May 2019 |language=en}}</ref>
+*{{PAK}}
+** [[Pakistan Army]]: 100+ BMC Kirpi 4×4.<ref>{{Cite web |last=Khan |first=Bilal |date=2016-12-19 |title=Turkish automanufacturer BMC confirms MRAP sales to Pakistan - Quwa |url=https://quwa.org/daily-news/turkish-automanufacturer-bmc-confirms-mrap-sales-to-pakistan/ |access-date=2026-08-17 |language=en-US}}</ref><ref>{{Cite web |date=2016-12-16 |title=Savunma sanayi kenti oraya inşa edilecek |url=https://www.milliyet.com.tr/ekonomi/savunma-sanayi-kenti-oraya-insa-edilecek-2362903 |access-date=2026-08-31 |website=Milliyet |language=tr}}</ref>
+*  {{QAT}}
+** [[Qatari Emiri Land Force]]: 50 on order<ref>{{Cite web|url=http://www.janes.com/article/78718/turkey-qatar-cement-defence-ties-with-dimdex-deals|title=Turkey-Qatar cement defence ties with DIMDEX deals|website=www.janes.com|access-date=2018-03-22|archive-url=https://web.archive.org/web/20180823074119/https://www.janes.com/article/78718/turkey-qatar-cement-defence-ties-with-dimdex-deals|archive-date=23 August 2018|url-status=dead}}</ref>
+*  {{RUS}}
+**  [[Russian Ground Forces]]: 9 captured from Ukrainian forces.<ref>{{Cite web |last=Oryx |title=Attack On Europe: Documenting Ukrainian Equipment Losses During The 2022 Russian Invasion Of Ukraine |url=https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-ukrainian.html |website=Oryx}}</ref>
+* {{SOM}}
+**  [[Somali National Army]]: 12 BMC Kirpi 4×4 MRAP vehicles in service. Donated by Turkey.<ref>{{cite news |title=Turkey donates 12 military vehicles to Somalia |url=https://www.aa.com.tr/en/turkey/turkey-donates-12-military-vehicles-to-somalia/1955609 |access-date=28 August 2020 |work=Anadolu Agency |date=27 August 2020 |language=en}}</ref>
+* {{TUN}}
+** [[Tunisian Army]]: 233 in service.<ref>{{Cite web |last1=Tr |first1=Ekonomist. com |title=BMC'den Tunus'a yeni Kirpi ihracatı - Ekonomist |url=https://www.ekonomist.com.tr/haberler/bmcden-tunusa-yeni-kirpi-ihracati.html |access-date=2022-08-10 |website=www.ekonomist.com.tr |date=25 June 2021 }}</ref>
+* {{TUR}}
+** [[Turkish Army]]: over 2,000 in service.<ref>{{cite web|url=http://21stcenturyasianarmsrace.com/2015/05/14/armored-cars-bmc-kirpi/|title=Armored Cars: BMC Kirpi|work=21st Century Asian Arms Race|date=13 May 2015 |access-date=1 January 2016|archive-url=https://web.archive.org/web/20160203192451/http://21stcenturyasianarmsrace.com/2015/05/14/armored-cars-bmc-kirpi/|archive-date=3 February 2016|url-status=usurped}}</ref><ref>{{cite web|url=http://www.janes.com/article/49323/turkish-mrap-output-ramps-up-idx15d2|title=Turkish MRAP output ramps up [IDX15D2]|work=IHS Jane's 360|access-date=1 January 2016|archive-url=https://web.archive.org/web/20160204003602/http://www.janes.com/article/49323/turkish-mrap-output-ramps-up-idx15d2|archive-date=4 February 2016|url-status=live}}</ref><ref name="Business Insider">[https://www.businessinsider.com/turkeys-military-equipment-explained-2015-11#/ Turkey's military equipment explained 2015] </ref><ref name="memurlar.net">{{Cite web |url=http://www.memurlar.net/haber/533284/ |title=Kirpi'ye yapılan saldırılarda hiçbir asker şehit olmadı |date=26 August 2015 |access-date=11 January 2016 |archive-url=https://web.archive.org/web/20160201185332/http://www.memurlar.net/haber/533284/ |archive-date=1 February 2016 |url-status=live }}</ref><ref>{{Cite news|url=http://savunmaveteknoloji.com/tskya-529-yeni-kirpi-geliyor/|title=TSK'ya 529 yeni Kirpi geliyor|work=SVT {{!}} Savunma ve Teknoloji|access-date=2017-08-09|language=tr-TR|archive-url=https://web.archive.org/web/20171014223052/http://savunmaveteknoloji.com/tskya-529-yeni-kirpi-geliyor/|archive-date=14 October 2017|url-status=dead}}</ref><ref>{{cite web | url=https://www.savunmasanayist.com/yunanistan-kara-kuvvetleri-karsilastirmasi/ | title=Türkiye – Yunanistan Kara Kuvvetleri karşılaştırması &#124; SavunmaSanayiST | date=15 January 2019 }}</ref>
+** [[Turkish Air Force]]: 15 in service.<ref>{{cite tweet|user=kirpivekobra|number=782630809425551361|title=Hava Kuvvetleri Komutanlığında BMC Kirpi 4X4 ve Otokar Cobra II 4X4 TTZA aktif olarak kullanılmaktadır. Cobra II: 82 adet; Kirpi: 15 adet|language=tr}}</ref>
+** [[Gendarmerie General Command]]: 230 in service.<ref>{{cite web | url=http://www.savunmasanayist.com/1047/ | title=KİRPİ-II Teslimatı &#124; SavunmaSanayiST | date=3 July 2018 }}</ref>
+** [[General Directorate of Security (Turkey)|General Directorate of Security]]: 40 in service.<ref>{{cite web | url=http://star.com.tr/guncel/egm-mayina-karsi-korumali-arac-projesi-kapsaminda-40-adet-kirpinin-kabulleri-basariyla-tamamlandi-haber-1265840/ | title=Polis Özel Harekat'a 40 adet Kirpi &#124; STAR | date=19 October 2017 }}</ref>
+* {{TKM}}
+** [[Armed Forces of Turkmenistan|Turkmenistan Army]]: 10 BMC Kirpi and 90 [[BMC Vuran]] in service.<ref>{{Cite news |date=2025-01-10 |title=BMC, Türk Silahlı Kuvvetleri'ne yüzde 95 yerli motorlu 100 adet taktik zırhlı araç teslim etti |trans-title=100 tactical armored vehicles with 95 percent domestic engines from BMC to TAF |url=https://www.cnbce.com/savunma-sanayii/bmc-turk-silahli-kuvvetlerine-yuzde-95-yerli-motorlu-100-adet-taktik-zirhli-arac-teslim-etti-h8423 |archive-url=https://web.archive.org/web/20250430092829/https://www.cnbce.com/savunma-sanayii/bmc-turk-silahli-kuvvetlerine-yuzde-95-yerli-motorlu-100-adet-taktik-zirhli-arac-teslim-etti-h8423 |archive-date=2025-04-30 |access-date=2025-11-15 |work=CNBC-e |language=tr-TR}}</ref>
+*  {{flag|Ukraine}} 
+** [[Ukrainian Navy]]: Marine detachment of the Ukrainian Naval Forces have received 50 Turkish BMC Kirpi 4×4 MRAP vehicles with 150 more expected to be delivered later.<ref>{{cite web |url=https://mil.in.ua/en/news/ukrainian-armed-forces-received-turkish-made-kirpi-armored-vehicles/ |title=Ukrainian Armed Forces received Turkish-made Kirpi armored vehicles |date=August 9, 2022 |website=Militarnyi |access-date=September 3, 2022 |url-status=live |archive-url=https://web.archive.org/web/20220809100854/https://mil.in.ua/en/news/ukrainian-armed-forces-received-turkish-made-kirpi-armored-vehicles/ |archive-date=August 9, 2022}}</ref> Another batch consisting of at least 42 additional vehicles was spotted getting transported to Ukraine in early 2023.<ref>{{cite tweet|user=clashreport|number=1610674155124363268|title=Train loaded with 42 Turkish-made BMC Kirpi 4×4 MRAPs was observed in Romania}}</ref> According to [[Oryx (website)|Oryx]], a defence analysis website that tracks inventories and equipment losses in conflict zones, as of 5 December 2025 in total 133 units were destroyed, damaged, abandoned or captured during the ongoing [[Russian invasion of Ukraine]].<ref>{{cite web | url=https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-ukrainian.html | title=Attack on Europe: Documenting Ukrainian Equipment Losses During the 2022 Russian Invasion of Ukraine }}</ref> Turkey claimed they issued total 700 BMC Kiripi to Ukraine.<ref>{{cite web | url=https://www.technology.org/2025/03/17/ukraine-received-around-700-turkish-mrap-vehicles-bmc-kirpi/ | title=Ukraine received around 700 turkish BMC Kirpi | date=17 March 2025 }}</ref>
+
+===Non-state operators===
+* {{flag|Autonomous Administration of North and East Syria}} (AANES){{citation needed|date=June 2024}}
+** [[People's Defense Units]] (YPG): one captured from the [[Turkish Army]] in 2019, seen in use in 2022.<ref>{{cite web |last1=Mitzer |first1=Stijn |last2=Oliemans |first2=Joost |title=Kurdish Armour: Inventorising YPG Equipment In Northern Syria |url=https://www.oryxspioenkop.com/2021/10/kurdish-armour-inventorising-ypg.html |website=Oryx Blog |date=29 October 2021}}</ref>
+* {{YEM}}
+** [[Southern Movement]]: some BMC Kirpi I MRAPs purchased by United Arab Emirates from Turkey were donated to secessionist [[Southern Transitional Council]] in Yemen to be operated by its paramilitary wing, the Southern Movement.<ref>{{cite tweet|user=conflicttr|language=tr
+|number=1650519366193106949|title=Türkiye'nin BAE'ye sattığı BMC Kirpi MKKA araçları Yemen'de görüntülendi}} {{better source needed|date=February 2024}}</ref>
+
+==References==
+{{Reflist}}
+
+==External links==
+{{Commons category}}
+* [https://www.bmc.com.tr/en/defense-industry/kirpi Official website]
+* [http://www.armyrecognition.com/turkey_turkish_army_wheeled_armoured_vehicles_uk/kirpi_bmc_350_mrap_armoured_vehicle_personnel_carrier_data_sheet_specifications_description_pictures.html BMC-350 Kirpi MRAP Mine protected armoured vehicle] {{Webarchive|url=https://web.archive.org/web/20160907092045/http://www.armyrecognition.com/turkey_turkish_army_wheeled_armoured_vehicles_uk/kirpi_bmc_350_mrap_armoured_vehicle_personnel_carrier_data_sheet_specifications_description_pictures.html |date=7 September 2016 }} armyrecognition.com
+
+{{MRAP vehicles}}
+{{Modern IFV and APC}}
+
+[[Category:Wheeled armoured fighting vehicles]]
+[[Category:Military vehicles introduced in the 2000s]]
+[[Category:Mine-resistant ambush protected vehicles]]
+[[Category:BMC (Turkey) vehicles]]
+[[Category:Military vehicles of Turkey]]

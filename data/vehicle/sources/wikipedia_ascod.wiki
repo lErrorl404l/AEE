@@ -1,0 +1,247 @@
+{{Short description|Austro-Spanish armoured fighting vehicle}}
+{{About |the armored fighting vehicle|the African Paralympic committee|African Sports Confederation of Disabled}}
+{{Infobox weapon
+| is_vehicle         = yes
+| type               = [[Armoured fighting vehicle]] (ASCOD Ulan/Pizarro)
+| service            = 2002–present
+| origin             = [[Austria]] and [[Spain]]
+| name               = ASCOD
+| image              = File:Trident Juncture 2018 181103-M-RI194-005.jpg
+| image_size         = 300px
+| caption            = The Spanish Armed Forces Pizarro variant of the ASCOD
+| used_by            = See ''[[#Operators|Operators]]''
+| length             = 6.83 m (22 ft) (Pizarro/Ulan), 
+9.5 m (31.16 ft) (ASCOD){{citation needed|date=March 2021}}
+| width              = 3.64 m (12 ft)
+| height             = 2.43 m (8 ft)
+| developed_into     = *[[ASCOD 2| ASCOD 2 (ASCOD SV)]]
+**[[Sabrah light tank]]
+**[[General Dynamics Ajax|GD Ajax]]
+**[[General Dynamics Griffin|GD Griffin]]
+**[[M10 Booker]]
+**{{ill|Vehículo de Apoyo de Cadenas|es|Vehículo de Apoyo de Cadenas}}
+| weight             = {{convert|26.3|t|kg}} (ASCOD Pizarro) <br />{{convert|28|t|short ton}} (ASCOD Ulan)
+| suspension         = torsion bar and [http://www.piedrafita.com Piedrafita] rotary dampers models AR01 and AR02.
+| speed              = Road: 72 km/h
+| primary_armament   = [[30 mm caliber|30 mm]] Mauser MK 30/2 (ASCOD Ulan/Pizarro)
+| secondary_armament = [[Rheinmetall MG3|MG3]] [[7.62×51mm NATO]] (Pizarro) <br />[[FN MAG]] [[7.62×51mm NATO]] (Ulan/ASCOD 2)
+| armour             = rolled steel armor <br />options for [[explosive reactive armor]] and [[composite armor]]
+| crew               = 3 + 8 passengers
+| engine             = Diesel
+| engine_power       = 600 hp (Pizarro fase 1) <br />720 hp (Pizarro fase 2) <br />720 hp (Ulan)
+}}
+
+The '''ASCOD''' ('''Austrian Spanish Cooperation Development''')<ref>{{Cite web |title=ASCOD Autonomous Platform unveiled in Spain |url=https://www.janes.com/defence-news/news-detail/ascod-autonomous-platform-unveiled-in-spain |access-date=2024-05-20 |website=Janes.com |date=19 October 2022 |language=en}}</ref> [[armoured fighting vehicle]] family is the product of a cooperation agreement between [[Austria|Austrian]] [[Steyr-Daimler-Puch]] AG and [[Spain|Spanish]] [[General Dynamics]] [[Santa Bárbara Sistemas]]. Both companies are now [[Division (business)|divisions]] of a unit of [[General Dynamics]]. The ASCOD family includes the LT 105 [[light tank]] equipped with a [[105 mm]] gun, a [[surface-to-air missile]] launcher, an [[anti-tank guided missile]] launcher, [[mortar carrier]], R&R vehicle, [[command and control|command-and-control]] vehicle, [[ambulance]], artillery observer, and the AIFV model.
+
+In Spanish service, the vehicle is called "'''Pizarro'''". The Austrian version is called "'''Ulan'''".
+
+== History ==
+[[File:Museo de Unidades Acorazadas de El Goloso (8615978811).jpg|thumb|An ASCOD prototype in Spain]]
+The ASCOD was designed to replace the older light armoured fighting vehicles of the Austrian and Spanish armies, such as the [[M113 armored personnel carrier]] and the [[Saurer 4K 4FA|Saurer APC]]. The Ulan, the Austrian version of the Pizarro, would provide a flexible complement to their heavy [[Leopard 2]]A4. The Ulan would allow the Austrian army to deploy rapidly and effectively over longer distances, especially for foreseeable future operations—such as trouble-spots for [[UN]] operations.<ref name="Quod Vadis Armour">Quod Vadis Armour?</ref>
+
+In 1982, Steyr-Daimler-Puch Spezialfahrzeug initiated the conception phase for the development of a new infantry fighting vehicle. This was followed by initial talks with the militaries of Greece, Norway and Switzerland to find the desired requirements for a new IFV. In 1985, the decision to develop a new IFV was made following the [[Austrian Armed Forces|Bundesheer]] announcement of the military requirement for the ''Kampfschützenpanzer 90'' (combat infantry fighting vehicle 90).<ref name="truppendienst" /> Based on this, Steyr-Daimler-Puch Spezialfahrzeug started the conception of the vehicle. However, it was clear that Austria would not order new IFVs in the next years and that the development costs exceeded Steyr's budget.<ref name="truppendienst"/>
+
+Therefore, in 1988, a cooperation with the Spanish company Empresa National Santa Barbara S. A. was signed, which resulted in the development being renamed to ASCOD (Austrian Spanish Cooperative Development).<ref name="truppendienst"/> Following this, the development of the ASCOD started. The hulls were manufactured in Spain. The ASCOD turrets were made by Steyr in Austria, based on the SP-30 turret design used on the scout version of the [[Pandur I|Pandur]]. In 1991, the first prototype was presented in 1991 in Sevilla.<ref name="truppendienst" /> It was tested in 1992. Production began in 1996.<ref name="Santa Bárbara Sistemas">{{cite web |url=http://www.gdsbs.com/web/sbs_3/index.asp?idioma=2&idzona=2&idcargo=6&idsubcargo=1&nombre=Armored%20Vehicles&nombrec=Tracked%20Vehicles&tipopag=3&menu_zona=2&menu_cargo=6&act=1&pulsar=6&posicion=6 |title=Santa Bárbara Sistemas website on ASCOD |access-date=2010-03-26 |archive-url=https://web.archive.org/web/20110711081300/http://www.gdsbs.com/web/sbs_3/index.asp?idioma=2&idzona=2&idcargo=6&idsubcargo=1&nombre=Armored%20Vehicles&nombrec=Tracked%20Vehicles&tipopag=3&menu_zona=2&menu_cargo=6&act=1&pulsar=6&posicion=6 |archive-date=2011-07-11 |url-status=dead }}</ref>
+
+Initially, the design was a cooperation between  Austrian [[Steyr-Daimler-Puch]] AG and the [[Hellenic Vehicle Industry|Hellenic ELVO]], formerly Steyr Hellas, after signing the contract for the domestically contracted [[ELVO Leonidas-2|Leonidas 2 APC]]. The contract, activated in 1988, required [[Steyr-Daimler-Puch]] AG to follow Hellenic instructions, and to include parts already produced in Greece, such as the wheels, tracks, and smoke-grenade launchers based on those of the Leopard 1 tank. Also, the secondary MG-3 gun — a variant of the Mauser 30F — was constructed in Greece. Greece withdrew from the program in 1991 after a change of government, requiring Steyr-Daimler-Puch to find a new partner. The IFV in Hellenic service would have the name Alexander the Great. Greece donated its design rights to [[Steyr-Daimler-Puch]] as compensation for the 450 IFVs cancelled.{{citation needed|date=August 2023}}
+
+Following the numerous changed requirements during the ASCOD's conception and development phases, the weight increased from the original 18.8{{Spaces}}t to 25.2{{Nbsp}}t and finally 29.0 tonnes. The first prototype was trialled in Norway in 1993/94, but Norway decided to purchase the Swedish CV9030 instead.<ref name="truppendienst" /> Following these trials, a slightly updated third prototype was built, essentially equalling the version offered as ASCOD to Austria, Spain and other countries. In 1994, Spain decided to order four pre-series vehicles after successful trials of the prototype. In 1996, Spain ordered 144 vehicles with the designation "Pizarro".<ref name="truppendienst" />
+
+Austria's order for the first 112 ASCOD vehicles, "Ulan" in Austria, was delayed for financial reasons until May 1999. Four pre-series Ulan vehicles were given to the Austrian Bundesheer in April 2001 for the final qualification. The official handover happened in May 2001. In 2002, 28 Ulans were delivered. The next batch of 36 was delivered in 2003. In 2004 the order was completed.<ref name="truppendienst" /> In contrast to the original prototypes, the Ulan was completely manufactured in Austria.<ref name="truppendienst" />
+
+The ASCOD effectively brought Austrian and Spanish armour up to date. The Pizarro project was part of the greater Project CORAZA (Project Armour) to replace Spain's [[M113 armored personnel carrier|M113]] APCs, [[M60 Patton|M60A3s]], and [[M110 howitzer|M110]] artillery pieces.<ref>Candil, p. 42</ref> By 2005, the Austrian army was equipped with 112 Ulan vehicles<ref name="Quod Vadis Armour" /> and Spain with 144 (123 [[IFV]] and 21 [[Command and control|C2V]]).<ref>Principales Programas de Armamento de DGAM</ref>
+
+In 2004, the Spanish Ministry of Defence ordered another 212 Pizarros (170 IFV, 5 C2V, 28 [[artillery]] observation, 8 recovery, 1 [[Military engineer|engineering]] vehicle) for €707.5 million Euros,<ref>Ministry of Defence</ref> with up to 356 units total planned.<ref name="Army Technology">{{Cite web|url=https://www.army-technology.com/projects/ascod/|title=ASCOD (Pizarro / Ulan) Armoured Fighting Vehicle}}</ref> By 2010 the cost of this second batch had increased to €845m.<ref name=PEAs>{{cite web|url=http://www.revistatenea.es/revistaatenea/revista/PDF/documentos/Documento_1026.pdf |title=Evaluación de los Programas Especiales de Armamento (PEAs) |author=Ministerio de Defensa |location=Madrid |date=September 2011 |publisher=Grupo Atenea |language=Spanish |accessdate=30 September 2012 |url-status=dead |archiveurl=https://web.archive.org/web/20131024113307/http://www.revistatenea.es/revistaatenea/revista/PDF/documentos/Documento_1026.pdf |archivedate=24 October 2013 }}</ref>
+
+===Deployment history===
+ASCOD entered service with the Spanish and Austrian armies in 2002.<ref name="Army Technology"/> Despite being part of [[ISAF]], Spain did not deploy the Pizarro IFV owing to its lack of a mine-protection kit.
+
+== Design ==
+[[File:SPZ Ulan Kampfraum.jpg|thumbnail|The rear compartment of an ASCOD Ulan]]
+The primary version of the ASCOD is the tracked infantry-fighting vehicle. It follows a conventional layout, featuring a front-mounted engine and a rear compartment for the dismounts. The driver's seat is located at the left hull front. The commander and gunner sit in the slightly off-center–mounted two-man turret. The rear compartment has two hatches on the roof. The Ulan can carry eight dismounts.<ref name=specifications_ulan>{{cite web|title=Schützenpanzer "Ulan"|url=http://www.bundesheer.at/waffen/waf_ulan.shtml|website=bundesheer.at|publisher=bundesheer.at (Austrian army)|accessdate=17 September 2015|archive-date=27 October 2020|archive-url=https://web.archive.org/web/20201027044520/https://www.bundesheer.at/waffen/waf_ulan.shtml|url-status=dead}}</ref> The Pizarro carries seven.<ref name="spanishArmy" />
+
+=== Armament ===
+[[File:SPZ Ulan turret.jpg|thumbnail|Ulan's SP-30 turret with the MK-30/2 gun]]
+
+The ASCOD mounts a 30&nbsp;mm [[Mauser]] {{ill|MK 30|de|MK_30}} autocannon in a fully traversable electro-mechanical turret. The dual belt-fed 30&nbsp;mm cannon, electrically stabilized on two planes, is able to fire at a rate of up to 770 rounds per minute and accurately engage targets on the move.<ref name="truppendienst" /> As secondary armament, the ASCOD carries a 7.62&nbsp;mm machine gun. The Spanish Pizarro is fitted with an [[MG-3]] machine gun. The Ulan is fitted with an [[FN MAG]]. The Ulan carries 200 rounds of 30&nbsp;mm and 600 rounds of 7.62&nbsp;mm in the turret. A further 205 rounds for the 30&nbsp;mm gun and up to 1,290 for the 7.62&nbsp;mm machine gun are stored inside the hull.<ref name="truppendienst" /> The Pizarro carries 300 rounds of main-gun ammunition.<ref name="spanishArmy">{{cite web|title=MATERIALES - Armamento Pesado Vehículo Combate|url=http://www.ejercito.mde.es/materiales/Armamento_pesado_veh_combate/PIZARRO.html|website=ejercito.mde.es/|publisher=[[Spanish Army]]}}</ref>
+
+This armament is comparable to that of the [[M2 Bradley]] and the [[CV90]], and performed well in a [[Norway|Norwegian]] vehicles trial, although it ultimately lost to the [[Sweden|Swedish]] CV90.
+
+==== Optics and fire control system ====
+The Ulan is fitted with a digital [[fire control system|fire-control system]] built by Kollsman,<ref name="Army Technology"/> utilising some components of the [[SK-105 Kürassier|Kürassier A2]]'s fire control system.<ref name="truppendienst" /> The gunner's sight is manufactured by [[Elbit]] and provides 8× magnification in the day channel. The integrated thermal imager, featuring 2.8× and 8.4× magnification, can be accessed by both the gunner and the commander. The commander has a fixed day-sight with 8× magnification.<ref name="truppendienst" /> The Pizarro uses the Mk-10 fire control system from Indra, featuring a full-solution digital ballistic computer, day channel, thermal channel and laser rangefinder. Future versions of the Mk-10 will be fitted with a new VC2 thermal imager.<ref name="Army Technology" />
+
+=== Protection ===
+[[File:Nebelwerfer an Ulan Schuetzenpanzer.jpg|thumbnail|Smoke grenade launchers of the Ulan IFV]]
+[[File:SPz Ulan (5048211700).jpg|thumbnail|Ulan IFV fitted with the [[Saab Group#Saab Barracuda LLC|SAAB Barracuda]] [[Multi-spectral camouflage|MCS]]]]
+
+The ASCOD is constructed of several rolled steel armour plates. The armour provides protection against 14.5&nbsp;mm armour-piercing ammunition fired from distances of 500 meters or more along the frontal 60° arc,<ref name=doppeladler>{{cite web|title=Der Schützenpanzer Ulan.|url=http://www.doppeladler.com/oebh/ulan.htm|website=doppeladler.com|accessdate=17 September 2015}}</ref><ref name="Revistanaval.com">{{cite web |url=http://www.revistanaval.com/blimdanet/historias/articulo/articulo.htm |title=Article (in Spanish) on Revistanaval.com |access-date=2006-10-24 |archive-url=https://web.archive.org/web/20090313094459/http://www.revistanaval.com/blimdanet/historias/articulo/articulo.htm |archive-date=2009-03-13 |url-status=dead }}</ref> with all-round protection against 7.62&nbsp;mm ammunition.<ref name="Army Technology" /> The turret is fitted with two banks of 76&nbsp;mm Wegmann multi-purpose [[grenade launcher]]s. These can fire [[smoke grenade]]s for self-protection, or high-explosive grenades with fragmentation warhead to a maximum range of {{convert|50|m}}.<ref name="truppendienst"/>
+
+The Pizarro is additionally fitted with limited amounts of SABBLIR [[explosive reactive armour]] along the frontal arc and might be upgraded with more later.<ref name="Santa Bárbara Sistemas" /> The SABBLIR reactive armour increases protection against shaped-charge warheads as used on [[rocket-propelled grenade]]s. <!--- However, with appliqué steel plates fitted it can be protected against 30&nbsp;mm [[armour-piercing discarding sabot]]s (APDS).<ref name="Revistanaval.com" /> --->The Ulan has been fitted with [[MEXAS]] composite armour,<ref>{{cite web|title=References|url=http://www.rheinmetall-chempro.com/en/rhc/systeme_und_produkte/referenzen_2/index.php|website=rheinmetall-chempro.com|publisher=Rheinmetall Chempro|accessdate=17 September 2015}}</ref> which increases ballistic protection against up to 30&nbsp;mm APFSDS rounds fired from a 1,000&nbsp;m range over the forward 30° arc, and all-round protection against 14.5&nbsp;mm armour piercing incendiary (API) rounds from a range of 500&nbsp;m.<ref name=truppendienst>{{cite web|last1=Kosar|first1=Dipl.-Ing. Franz|title="Ulan" - Der neue Schützenpanzer des Österreichischen Bundesheeres|url=http://www.bundesheer.at/truppendienst/ausgaben/artikel.php?id=1251|website=bundesheer.at|publisher=Truppendienst magazine|accessdate=17 September 2015|archive-date=30 October 2020|archive-url=https://web.archive.org/web/20201030072532/https://www.bundesheer.at/truppendienst/ausgaben/artikel.php?id=1251|url-status=dead}}</ref> The Ulan is fitted with spall-liners to minimise casualties in case of armour penetration.<ref name="truppendienst"/>
+
+=== Mobility ===
+[[File:Schützenpanzer Ulan (6130725680).jpg|thumbnail|right|ASCOD Ulan in an army exercise]]
+In terms of mobility, the Spanish Pizarro is fitted with a {{convert|600|hp}} MTU SV-183 TE22 engine, while the Austrian Ulan includes a {{convert|720|hp}} MTU 8V-199-TE20 engine. These have [[power-to-weight ratio]]s of 21 and 25, respectively, offering both vehicles excellent mobility. Both versions use a [[Renk]] HSWL 106C hydro-mechanical transmission, and suspension — based on [[torsion bar suspension|torsion bars]]<ref name="Army Technology" /> and rotary dampers — designed and manufactured by ''"Piedrafita"''.<ref>{{cite web|author=[sti] STI soluciones www.stisoluciones.com |url=http://www.Piedrafita.com |title=Rotary dampers (Shock absorbers) / Rugged Testing / Engineering services |publisher=Piedrafita |date= |accessdate=2022-04-15}}</ref>
+
+The ASCOD uses Diehl type-129 tracks.<ref name=ASCOD_flyer>{{cite web|title=Superior performance in any environment - ASCOD|url=http://www.gdels.com/brochures/tracked_ascod2.pdf|website=General Dynamics European Land Systems (gdels.com)|publisher=General Dynamics European Land Systems|accessdate=20 September 2015|archive-url=https://web.archive.org/web/20150615234144/http://www.gdels.com/brochures/tracked_ascod2.pdf|archive-date=15 June 2015|url-status=dead}}</ref> The Pizarro has a maximum speed of 70&nbsp;km/h, and a maximum reverse speed of 35&nbsp;km/h.<ref name="truppendienst" /><ref name="Santa Bárbara Sistemas" /> The ASCOD has a ground-clearance of {{convert|450|mm|in}}. The Ulan can accelerate from 0 to {{convert|50|km/h|mph}} in 14 seconds. It can cross ditches of {{convert|2.3|m}}, climb walls of {{convert|950|mm}} and ford rivers of {{convert|1.2|m}} depth. It is able to drive at 75% gradient and 40% side slope.<ref name="truppendienst" />
+
+== Characteristics ==
+
+=== Spanish version ===
+
+==== Structure ====
+{| class="wikitable"
+|+style="color:	#BDB76B;"|
+!  style="width:180px; px; background:#bdb76b; color:White;"| '''System'''
+!  style="width:25px; px; background:#bdb76b; color:White;"| '''Country'''
+!  style="width:175px; px; background:#bdb76b; color:White;"| '''Vendor'''
+!  style="width:725px; px; background:#bdb76b; color:White;"| '''Notes'''
+|-
+||Hull||Spain||[[Santa Bárbara Sistemas]]
+|-
+||Turret||Spain|| Santa Bárbara Sistemas||
+|}
+
+==== Sensors ====
+{| class="wikitable"
+|+style="color:	#BDB76B;"|
+!  style="width:180px; px; background:#bdb76b; color:White;"| '''System'''
+!  style="width:25px; px; background:#bdb76b; color:White;"| '''Country'''
+!  style="width:175px; px; background:#bdb76b; color:White;"| '''Vendor'''
+!  style="width:725px; px; background:#bdb76b; color:White;"| '''Notes'''
+|-
+||Fire control system||Spain||[[Indra Sistemas]]||
+|-
+||Optronic systems||Spain||[[Indra Sistemas]]||
+|}
+
+==== Armament ====
+{| class="wikitable"
+|+style="color:	#BDB76B;"|
+!  style="width:180px; px; background:#bdb76b; color:White;"| '''System'''
+!  style="width:25px; px; background:#bdb76b; color:White;"| '''Country'''
+!  style="width:175px; px; background:#bdb76b; color:White;"| '''Vendor'''
+!  style="width:725px; px; background:#bdb76b; color:White;"| '''Notes'''
+|-
+||Cannon||Germany||[[Mauser]]||30&nbsp;mm MK 30/2
+|-
+||Machine gun||Spain||[[Santa Bárbara Sistemas]]|| 7.62&nbsp;mm [[MG 3 machine gun|MG3]] made under license from [[Rheinmetall]]
+|}
+
+==== Propulsion ====
+{| class="wikitable"
+|+style="color:	#BDB76B;"|
+!  style="width:180px; px; background:#bdb76b; color:White;"| '''System'''
+!  style="width:25px; px; background:#bdb76b; color:White;"| '''Country'''
+!  style="width:175px; px; background:#bdb76b; color:White;"| '''Vendor'''
+!  style="width:725px; px; background:#bdb76b; color:White;"| '''Notes'''
+|-
+||Suspension||Spain||[[Santa Bárbara Sistemas]]|| For the Spanish version, the rotary damper system is designed and made by [http://www.piedrafita.com Piedrafita].
+|-
+||Undercarriage||Spain||[[Santa Bárbara Sistemas]]||
+|-
+|Transmission||Spain||[[Renk AG]]||For the Spanish version, a binary transmission SG 850 designed by [[Sapa Placencia]] has been incorporated. 
+|-
+|Engine||Spain||[[Navantia|Empresa Nacional Bazán]]|| Made under license from [[MTU Friedrichshafen]]
+|}
+
+== Variants and derivatives ==
+[[File:SPZ Ulan frontview.jpg|thumb|An Austrian Ulan]]
+[[File:GuentherZ 2011-08-06 0103 Panzer ASCOD Fahrschulversion.jpg|thumb|Ulan driver training vehicle]]
+
+=== ASCOD ===
+The ASCOD chassis has been used for a number of vehicles in Spanish service and numerous private ventures developed for the export market. Aside from the IFV version, the ASCOD has been offered as light tank and scout vehicle.<ref name="scout">{{cite web|title=ASCOD / SCOUT/RECCE|url=http://www.gdels.com/brochures/tracked_ascod2scout.pdf|website=gdels.com|publisher=General Dynamics European Land Systems|access-date=2015-09-22|archive-url=https://web.archive.org/web/20150721013236/http://www.gdels.com/brochures/tracked_ascod2scout.pdf|archive-date=2015-07-21|url-status=dead}}</ref><ref name="directfire">{{cite web|title=ASCOD / DF|url=http://www.gdels.com/brochures/tracked_ascod2direct.pdf|website=gdels.com|publisher=General Dynamics European Land Systems|accessdate=20 September 2015|archive-url=https://web.archive.org/web/20160310010637/https://www.gdels.com/brochures/tracked_ascod2direct.pdf|archive-date=10 March 2016|url-status=dead}}</ref> The ASCOD Direct Fire light tank can mount a number of different commercial turrets with 105 or 120&nbsp;mm tank guns. It is expected to weigh about 30 tonnes.
+
+Steyr-Daimler-Puch Spezialfahrzeuge has developed an improved version called Ulan 2. This was never ordered by the Austrian government.<ref>{{usurped|1=[https://web.archive.org/web/20070702171516/http://www.military-today.com/apc/ulan_ifv.htm Military Today website on the Ulan]}}</ref>
+
+*'''ASCOD IFV'''
+*'''Driver training vehicle –''' ASCOD hull fitted with a fixed superstructure instead of turret.
+*'''ASCOD Scout/Recce –''' ASCOD fitted with extensive ISTAR equipment and a three-man crew.<ref name="scout" />
+*'''LT-105 Light Tank (ASCOD Direct Fire) –''' A light tank, designed for the export market, with a 105&nbsp;mm or 120&nbsp;mm gun. There are multiple turret options available, made by a different manufacturers: [[Oto Melara]], Cockerill, General Dynamics, and [[Denel Land Systems]] (formerly known as LIW).<ref>{{Citation | place = ZA | url = http://www.denellandsystems.co.za/products_lmt_105_full_description.html | publisher = Denel Land Systems | title = LMT 105}}</ref><ref name="directfire" />
+
+=== Spanish variant - Pizarro I and Pizarro II ===
+[[File:Pizarro Desfile de las Fuerzas Armadas - 2008.jpg|thumbnail|Spanish Pizarro VCI fitted with SABBLIR ERA]]
+The ASCOD Pizarro is built by GDELS Santa Bárbara Sistemas, and operated by the Spanish Army. It exists in multiple variants.<ref name="Santa Bárbara Sistemas" />
+*Operational variants:
+**'''VCI/C Pizarro –''' ''"vehículo de combate infantería/caballería"'', an [[Infantry fighting vehicle|infantry / cavalry fighting vehicle]]
+**'''VCPC –''' ''"vehiculo de puesto de mando"'', a command vehicle
+*Planned variants that didn't enter service:
+**'''VCOAV –''' ''"vehiculo de observador advanzado"'', an advanced reconnaissance vehicle
+**'''VCREC –''' ''"vehiculo recuperador"'', an armoured recovery vehicle
+
+=== Austrian variant - Ulan ===
+'''ASCOD Ulan''' is built by Steyr-Daimler-Puch Spezialfahrzeuge. It includes a more powerful 530&nbsp;kW engine, and a different fire control system built by Kollsman.<ref name="Army Technology" />
+
+'''ASCOD Ulan NV'''
+
+In February 2023, a modernisation of the 112 IFVs was announced.<ref>{{Cite web |date=5 July 2023 |title=Austria releases 561 million to modernize its SPz Ulan infantry fighting vehicle {{!}} Defense News July 2023 Global Security army industry {{!}} Defense Security global news industry army year 2023 {{!}} Archive News year |url=https://www.armyrecognition.com/defense_news_july_2023_global_security_army_industry/austria_releases_561_million_to_modernize_its_spz_ulan_infantry_fighting_vehicle.html |access-date=2023-07-07 |website=www.armyrecognition.com}}</ref> It focuses mostly on the electronic, providing new observation equipment, a digital panel for the driver. For the rest, a renewed electrical turret drive, other revisions to the electrical system and the drive train.
+The first modernised vehicles were handed over to the Austrian Army on 25th August 2026.<ref name="Ulan NV militaer aktuell">{{cite web |last1=Zacharias |first1=Jürgen |title=Leopard & Ulan: Das Bundesheer stärkt seine schweren Kräfte |url=https://militaeraktuell.at/leopard-ulan-bundesheer-panzer-schwere-kraefte/ |website=Militär Aktuell |publisher=QMN GmbH |access-date=6 September 2026 |language=German |date=25 August 2026}}</ref> The vehicle now is designated Ulan NV (''Nutzungsdauerverlängerung''; service life extension).<ref name="Ulan NV militaer aktuell" /> The modernization includes new optics ([[OIP Sensor Systems]]' FINTIR-MR gunner's sight mounted on the left side of the turret front and Sentinel driver's optics), unified communication systems, changes to the electrical systems and drivetrain.<ref>{{cite news |last1=Heiming |first1=Gerhard |title=Modernisierte Leopard 2 A4NV und ULAN für das Bundesheer |url=https://soldat-und-technik.de/2026/08/mobilitaet/49649/leopard-2-a4nv-ulan/ |access-date=6 September 2026 |publisher=Mittlerer Report Verlag |date=26 August 2026}}</ref>
+
+=== ASCOD 2 ===
+{{Main|ASCOD 2}}
+
+==Operators==
+<!--READ FIRST: This section is for cited entries only. Please do not add entries into this list without a citation from a reliable source. All entries without a citation will be removed. Thank you.-->
+{{more citations needed section|date=December 2020}}
+
+===Current operators===
+;{{flag|Austria}} (112)
+:Delivered between 2001 and 2005<ref>{{Cite web |title=ASCOD (Pizarro / Ulan) Armoured Fighting Vehicle |url=https://www.army-technology.com/projects/ascod/ |access-date=2024-06-26 |website=Army Technology |language=en-US}}</ref>
+:* 112 Ulan ([[Infantry fighting vehicle|IFV]])
+:* 209 additional Ulan in various versions will be ordered. <ref>{{Cite web|url=https://www.instagram.com/stories/bundesheer.online/3591598978786074060/?utm_source=ig_story_item_share&igsh=NnhscmJyZW1ydjV1|title=Instagram|website=www.instagram.com}}</ref>
+;{{flag|Spain}} (261)
+:In service:<ref name=":2">{{Cite web |title=General Dynamics ASCOD (Austrian Spanish Cooperation Development) Armored Fighting Vehicle (AFV) |url=https://www.militaryfactory.com/armor/detail.php?armor_id=913 |access-date=2024-06-26 |website=www.militaryfactory.com}}</ref>
+:* '''204''' VCI/C – [[infantry fighting vehicle]]s
+:* '''21''' VCPC – [[Command and control|command and communications vehicles]]
+:* '''36''' VCZ – [[Military engineering vehicle|sapper combat vehicles]]
+:Details of the orders: 
+:* Initial order of 144 Pizarro in 1996, delivery by 2002:<ref name=":2" /><ref name=":3">{{Cite web |last=Defensa.com |date=2020-11-18 |title=Avances en los blindados Pizarro Fase 2 para el Ejército de Tierra-noticia defensa.com - Noticias Defensa España |url=https://www.defensa.com/espana/avances-blindados-pizarro-fase-2-para-ejercito-tierra |access-date=2024-06-26 |website=Defensa.com |language=es}}</ref>
+:** '''123''' VCI/C – [[infantry fighting vehicle]]s
+:** '''21''' VCPC – [[Command and control|command and communications vehicles]]
+:* Second order reduced to '''117''' Pizarro in 2004 after several cuts, the initial order was for 212 Pizarro, delivered between 2011 and 2015:<ref name=":2" /><ref name=":3" /><ref>{{Cite web |last=OuinetAdmin |date=2004-01-28 |title=Spain Orders Armored Vehicles, Upgrades (Jan. 29) |url=https://www.defense-aerospace.com/spain-orders-armored-vehicles-upgrades-jan-29/ |access-date=2024-06-26 |website=Defense aerospace |language=en-US}}</ref>
+:** '''81''' VCI/C (170 planned initially)
+:** '''36''' VCZ  – [[Military engineering vehicle|sapper combat vehicles]], only 1 was planned initially
+:** Cancelled variants with that order:
+:*** VCPC, 5 were planned initially
+:*** VCOAV – [[Artillery observer|forward artillery observer vehicles]], 28 were planned initially
+:*** VCREC – [[armoured recovery vehicle]]s, 8 were planned initially
+
+== See also ==
+{{Div col|colwidth=25em}}
+* {{lwc|General Dynamics Ajax|Ajax}}
+* {{lwc|General Dynamics Griffin|Griffin}}
+* {{lwc|M2 Bradley}}
+* {{lwc|CV-90}}
+* {{lwc|WPB Anders}}
+* {{lwc|Puma (IFV)}}
+* {{lwc|Dardo IFV}}
+* {{lwc|BVP M-80}}
+* {{lwc|ELVO Kentaurus}}
+* {{lwc|Tulpar (IFV)}}
+* {{lwc|Bionix AFV}}
+* {{lwc|K21}}
+* {{lwc|Mitsubishi Type 89 IFV|Type 89 IFV}}
+* {{lwc|BMP-3}}
+* {{lwc|Lynx (Rheinmetall armoured fighting vehicle)|Lynx KF31/KF41}}
+* {{lwc|Warrior tracked armoured vehicle}}
+* {{lwc|M8 Armored Gun System}}
+* {{lwc|T-15 Armata}}
+{{Div col end}}
+== References ==
+{{reflist}}
+
+==External links==
+*[https://web.archive.org/web/20150116021349/http://www.gdels.com/products/tracked_2.asp General Dynamics European Land Systems - ASCOD AFV]
+*[http://www.armyrecognition.com/europe/Espagne/vehicules_legers/ASCOD_Pizarro/Pizarro_Espagne_description.htm Technical data sheet and pictures Spanish Pizarro from ArmyRecognition.com] {{Webarchive|url=https://web.archive.org/web/20160424074957/http://www.armyrecognition.com/europe/Espagne/vehicules_legers/ASCOD_Pizarro/Pizarro_Espagne_description.htm |date=2016-04-24 }}
+*[http://www.doppeladler.com/oebh/kette/ulan.htm The Ulan (ASCOD) in the Austrian Armed Forces - technical data and pictures]
+*[http://www.mde.es Spain's Ministry of Defence]
+*[https://web.archive.org/web/20090313094459/http://www.revistanaval.com/blimdanet/historias/articulo/articulo.htm ¿INFANTERÍA MECANIZADA?]
+
+{{DEFAULTSORT:ASCOD AFV}}
+[[Category:Tracked reconnaissance vehicles]]
+[[Category:Tracked armoured fighting vehicles]]
+[[Category:Armoured fighting vehicles of Spain]]
+[[Category:Armoured fighting vehicles of Austria]]
+[[Category:Armoured fighting vehicles of the post–Cold War period]]
+[[Category:General Dynamics land vehicles]]
+[[Category:Military vehicles introduced in the 2000s]]
+[[Category:Infantry fighting vehicles of the post–Cold War period]]

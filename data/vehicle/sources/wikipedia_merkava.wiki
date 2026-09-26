@@ -1,0 +1,557 @@
+{{Short description|Series of Israeli main battle tanks}}
+{{For|the religious/mystical uses of the word|Merkabah}}
+{{pp-extended|small=yes}}
+{{Use mdy dates|date=May 2014}}
+{{Infobox weapon
+| name               = Merkava
+| image              = Merkava-Mk4m-whiteback01.jpg
+| image_size         = 300
+| caption            = Merkava Mk 4M Windbreaker, equipped with the [[Trophy (countermeasure)|Trophy active protection system]], during [[Operation Protective Edge]] 2014.
+| is_vehicle         = yes
+| type               = [[Main battle tank]]
+| origin             = Israel
+| service            = 1979–present<ref name= "israeli-weapons.com">{{Cite web |url=http://www.israeli-weapons.com/weapons/vehicles/tanks/merkava/Merkava.html |title=Merkava |work =Tanks |publisher=Israeli weapons}}</ref>
+| used_by            = See ''[[Merkava#Operators|Operators]]''
+| wars               = {{ubli|[[1982 Lebanon War]]|[[South Lebanon conflict (1985–2000)|South Lebanon conflict]]|[[First Intifada]]|[[Second Intifada]]|[[2006 Lebanon War]]|[[Gaza War (2008–09)|Gaza War]]|[[Operation Pillar of Defense]]|[[Operation Protective Edge]]|[[Gaza war]]}}
+| designer           = Mantak
+| manufacturer       = Mantak, [[Ordnance Corps (Israel)|IDF Ordnance Corps]] (assembly)
+| unit_cost          = {{ubli|$3.5 million (Merkava IV for delivery to the IDF, FY2003)<ref>{{cite journal |url= https://www.haaretz.com/merkava-lite-1.102932 |title=Merkava Lite? |journal=TheMarker |date=October 17, 2003 |access-date=March 14, 2018 |via= Haaretz |url-status=dead |archive-url=https://web.archive.org/web/20170417072906/http://www.haaretz.com/merkava-lite-1.102932 |archive-date=April 17, 2017}}</ref><br>(c. $5.85 million, FY2023)|$10 million (Merkava IV) (2014 price for sales to other countries)<ref>{{Cite news |date=June 8, 2014 |url= https://www.intelligenceonline.com/corporate-intelligence_the-red-line/2014/07/02/singapore-looks-out-for-israeli-defence-interests,108029226-art |title=Singapore looks out for Israeli defence interests |work=Intelligence Online|language=en }}</ref>}}
+| production_date    = 1979–present
+| number             = {{ubli|Mark 1: 250|Mark 2: 580|Mark 3: 780|Mark 4: 360 in service + 300 units being delivered<ref name= "INSS">{{Cite report |date=November 20, 2014 |url=http://www.inss.org.il/uploadImages/systemFiles/Israel322533025.pdf |title=Israel |publisher=The Institute for National Security |work=Studies |archive-url= https://web.archive.org/web/20151124130349/http://www.inss.org.il/uploadImages/systemFiles/Israel322533025.pdf |archive-date=November 24, 2015}}</ref>}}
+| length             = {{ubli|{{convert |9.04|m|ft|abbr=on|disp=or}} (incl. gun barrel)|{{convert |7.60|m|ft|abbr=on|disp=or}} (excl. gun barrel)}}
+| width              = {{convert|3.72|m|ft|abbr=on|disp=or}} (excl. skirts)
+| height             = {{convert|2.66|m|ft|abbr=on|disp=or}} (to turret roof)
+| clearance          = {{convert|0.45|m|ft|abbr=on}}
+| weight             = {{convert|65|t|lb|abbr=off|lk=on|comma=gaps}}
+| transmission       = [[Renk]] RK 325
+| suspension         = [[coil spring|Helical spring]]
+| speed              = {{ubli|{{convert|64|km/h|0|abbr=on}} on road|{{convert|55|km/h|0|abbr=on}} off road}}
+| vehicle_range      = {{convert|500|km|mi|abbr=on}}
+| primary_armament   = {{convert |120|mm|in|abbr=on}} [[MG251-LR]] smoothbore gun, capable of firing [[LAHAT]] [[ATGM]]
+| payload_capacity   = 48 rounds
+| secondary_armament = {{ubli|1 × {{convert |12.7|mm|in|abbr=on}} [[machine gun|MG]]|3 × {{convert|7.62|mm|in|abbr=on}} MG|1 × [[Mk 19 grenade launcher]]|1 × {{convert|60|mm|in|abbr=on}} internal [[Mortar (weapon)|mortar]]|12 × [[smoke grenade]]s}}
+| armour             = Classified [[composite armour|composite]]/[[sloped armour]] modular design.
+| crew               = 4 (commander, driver, gunner, and loader)
+| passengers         = 
+| engine             = [[MTU Friedrichshafen|MTU]] [[EuroPowerPack|12V883]] {{convert|1119|kW|0|abbr=on|comma=off}} [[turbocharger|turbocharged]] [[diesel engine]] (4, 5)
+| fuel_capacity      = 1400 litres
+| pw_ratio           = 18.8 kW/t
+}}
+
+The '''Merkava''' ({{langx|he|מֶרְכָּבָה}}, {{IPA|he|mɛʁkaˈva||He-Merkava.ogg}}, "[[chariot]]")<ref>{{Cite news |date=2023-06-15 |title=Israel plans first sale of Merkava tank to European country |language=en |work=Reuters |url=https://www.reuters.com/business/aerospace-defense/israel-plans-first-sale-merkava-tank-european-country-2023-06-15/ |access-date=2023-08-04}}</ref> is a series of [[main battle tank]]s used by the [[Israel Defense Forces]] (IDF) which are the backbone of the [[Armored Corps (Israel)|IDF's Armored Corps]]. Current iterations of this tank are considered broadly equivalent to the capabilities of the [[M1 Abrams]], [[Leopard 2]] and the [[Challenger 2]].<ref>{{Cite web |date=2023-03-03 |title=Merkava Tanks: Are they world leading? - Technology Org |url=https://www.technology.org/how-and-why/why-merkava-tank-from-israel-is-considered-one-of-the-best-in-the-world/ |access-date=2023-11-02 |language=en-US}}</ref><ref>{{Cite web |last=Mizokami |first=Kyle |date=2020-11-18 |title=How Good is the Merkava Tank? (Pretty Good, It Turns Out) |url=https://nationalinterest.org/blog/reboot/how-good-merkava-tank-pretty-good-it-turns-out-172791 |access-date=2023-11-02 |website=The National Interest |language=en}}</ref><ref name=axe>{{Cite magazine|last=Axe |first=David |title=Israel's Merkava Mark IV Tanks Are More Drone-Proof Than Other Tanks |url=https://www.forbes.com/sites/davidaxe/2023/10/12/israels-merkava-mark-iv-tanks-are-more-drone-proof-than-other-tanks-are/ |date=16 October 2023|magazine=Forbes |language=en}}</ref> The current Merkava uses the same [[MTU Friedrichshafen|MTU]] EuroPowerPack powerplant as a number of other tanks.<ref>{{Cite web |title=First 1650 Horsepower EuroPowerPack delivered |url=https://www.mtu-solutions.com/na/en/pressreleases/2002/first_1650_horsepower_europowerpack_delivered.html |date=17 June 2002|publisher=Rolls Royce|language=en}}</ref>{{Failed verification|date=May 2025|reason=Source, from 2002, does not mention Merkava}}
+
+Development began in 1970,<ref>{{cite book |last=Maoz |first=Zeev |author-link=Zeev Maoz |title=Defending the Holy Land |date=2006 |publisher=University of Michigan Press |isbn=0-47211540-5 |chapter=5 |at=note 16}}</ref> and its first generation, the Merkava Mark 1, entered official service in 1979.<ref>{{Cite web |url=https://www.mod.gov.il/Defence-and-Security/merkava/Pages/generations.aspx |title=טנקי המרכבה לדורותיהם |language=he |trans-title=Chariot tanks for generations |access-date=2021-10-20 |website=[[Ministry of Defense (Israel)|Ministry of Defense]], Israel}}</ref> Four main variants have been deployed. As of 2023, Merkava Mark 4 Barak<ref>{{Cite web |title=Merkava 4 MBT to commence series production |url=https://www.defenceprocurementinternational.com/news/land/israels-merkava-4-barak-lightening-mbt-to-enter-series-production |access-date=2023-11-03 |website=www.defenceprocurementinternational.com |language=en-gb}}</ref> is the latest version. The Merkava was first used extensively in the [[1982 Lebanon War]]. The name "Merkava" was derived from the IDF's initial development program name.
+
+The tank was developed in the Merkava and Armored Combat Vehicles Division of the [[Ministry of Defense (Israel)|Israeli Ministry of Defense]], and most of its parts are manufactured in Israel. The Merkava was designed to provide maximum protection for its crew, and therefore its front armor was fortified and the engine placed in the front part of the tank, unlike most other tanks.
+
+Design criteria include rapid repair of battle damage, survivability, cost-effectiveness, and off-road performance. Following the model of contemporary [[self-propelled artillery|self-propelled howitzers]], the turret assembly is located closer to the rear than in most main battle tanks. With the engine in front, this layout is intended to provide additional protection against a frontal attack, so as to absorb some of the force of incoming [[artillery shell|shells]] and projectiles,<ref name="auto">{{cite web |url=http://nationalinterest.org/blog/the-buzz/americas-m1-abrams-tank-vs-israels-merkava-who-wins-18913?page=2 |title=America's M1 Abrams Tank vs. Israel's Merkava: Who Wins? |first=Sebastien |last=Roblin |website=The National Interest |date=December 31, 2016 |access-date=March 14, 2018 |url-status=live |archive-url=https://web.archive.org/web/20171201030900/http://nationalinterest.org/blog/the-buzz/americas-m1-abrams-tank-vs-israels-merkava-who-wins-18913?page=2 |archive-date=December 1, 2017}}</ref> especially for the personnel in the main hull, such as the driver. It also creates more space in the rear of the tank that allows increased storage capacity and a rear entrance to the main crew compartment allowing easy access under enemy fire. This allows the tank to be used as a platform for medical disembarkation (with no ammunition, the Merkava can hold up to 4 stretchers, but this is only an emergency measure), a forward command and control station, and an [[infantry fighting vehicle]]. The rear entrance's [[clamshell design|clamshell]]-style doors provide overhead protection when off- and on-loading cargo and personnel.
+
+==Development==
+During the late 1960s, the Israeli Army collaborated on certain design aspects for the British [[Chieftain (tank)|Chieftain tank]] which had originally been introduced into [[British Army]] service in 1965,<ref>{{cite web |url= http://www.salem-news.com/articles/may132010/depleted-uranium-dp.php |title=Israel and Depleted Uranium |publisher=Salem-News |date= 13 May 2010 |access-date=2013-11-26}}</ref> with a view to Israel purchasing and domestically producing the vehicle. Two Chieftain prototypes were delivered as part of a four-year trial.<ref name= "military-quotes1">{{cite web | publisher = Military quotes |url= http://www.military-quotes.com/forum/israeli-armor-magazin-chieftain-dirty-t443.html |title=The Knight That Gave Birth To The Chariot |work=Armored Corps Magazine |date=January 7, 2004 |access-date= 2013-11-26}}</ref> However, it was eventually decided not to sell the Chieftain to the Israelis, as the tanks were already being supplied to Arab countries,<ref>{{cite web |url= https://www.jta.org/1969/06/17/archive/house-of-commons-will-hold-debate-on-issue-of-sale-of-chieftain-tanks-to-libya |title=House of Commons Will Hold Debate on Issue of Sale of Chieftain Tanks to Libya |publisher=Jewish Telegraphic Agency |date= 1969-06-17 |access-date=2013-11-26}}</ref> which prompted them to follow their own development programme.<ref>{{cite web | work = Science |url= http://science.howstuffworks.com/chieftain-main-battle-tank.htm |title= Chieftain Main Battle Tank |publisher=HowStuffWorks |date= 2007-11-20 |access-date=2013-11-26}}</ref>
+
+[[File:PikiWiki Israel 28625 Art of Israel.jpg|thumb|[[Israel Tal]] with a Merkava tank model, 2005]]
+
+[[Israel Tal]], who was serving as a [[brigade commander]] after the [[Suez Crisis]], restarted plans to produce an indigenous Israeli tank, utilizing information learned from the 1973 [[Yom Kippur War]] – when Israel had suffered heavy losses of mechanized armour.<ref>{{Cite journal |last1=Whetten |first1=Lawrence |last2= Johnson |first2=Michael |date=1974 |title=Military Lessons of the Yom Kippur War |url=https://www.jstor.org/stable/40394764 |journal= The World Today |volume=30 |issue=3 |pages=101–110 |jstor= 40394764 |issn=0043-9134}}</ref>
+
+By 1974, initial designs were completed and prototypes were built. After a brief set of trials, work began to retool the [[Tel HaShomer]] ordnance depot for full-time development and construction. After the new facilities were completed, the Merkava was announced to the public in the ''[[International Defense Review]]'' periodical. The first official images of the tank were released to the American periodical ''[[Armed Forces Journal]]'' on May 4, 1977. The IDF officially adopted the tank in December 1979.
+
+==Primary contractors==
+The lead organization for system integration of the Merkava's main components is [[Israel Military Industries]] (IMI). The [[Israeli Ordnance Corps]] are responsible for final Merkava assembly. More than 90% of the Merkava 4 tank's components are produced locally in Israel by Israeli defense industries.<ref>[https://www.jpost.com/Israel-News/Defense-Ministry-increases-production-of-Namer-APCs-402122 In wake of last year's war in Gaza, Defense Ministry ramps up orders for new APCs] {{webarchive |url=https://web.archive.org/web/20150528160026/http://www.jpost.com/Israel-News/Defense-Ministry-increases-production-of-Namer-APCs-402122 |date=May 28, 2015}} By YAAKOV LAPPIN, 05/05/2015, Jerusalem Post</ref> Contributors to the vehicle include:
+* [[IMI Systems|IMI]] manufactures the 105&nbsp;mm and [[IMI 120 mm gun|120&nbsp;mm]] main guns and their ammunition;
+* TGL SP Industries LTD develop and production of the road wheels.
+* Urdan Industries assembles and constructs the hull, [[powertrain|drive- and powertrains]], and turret assemblies;
+* [[Soltam]] manufactures the 60&nbsp;mm internal mortar;
+* [[Elta Systems|Elta]] designs and manufactures the electronic sensors and [[infrared]] optics;
+* [[Elbit Systems|Elbit]] delivers the ballistics computer, [[fire-control system]] (FCS) and electric turret and gun control system;<ref>{{cite web |url=http://defense-update.com/merkava/ |title=Israel's Merkava Main Battle Tank - Defense-Update - Online, International Defense Magazine |website=defense-update.com |date=June 9, 2010 |access-date=March 14, 2018 |url-status=live |archive-url=https://web.archive.org/web/20171201040318/http://defense-update.com/merkava/ |archive-date=December 1, 2017}}</ref>
+* [[Tadiran]] provides cabin air conditioning, crew cabin intercom and radio equipment;
+* [[El-Op]], [[Elisra]] and [[Astronautics Corporation of America|Astronautics]] implement the optics and laser warning systems;
+* [[Rafael Advanced Defense Systems]] builds and installs the [[Rafael Overhead Weapon Station]] (R-OWS) and [[Trophy (countermeasure)|Trophy active protection system]];
+* [[L-3 Communication Combat Propulsion Systems]] produces licensed copies of Germany's [[MTU Friedrichshafen|MTU]] MT883 1500&nbsp;hp diesel engine powerplant and RENK RK325 transmissions;
+* [[Motorola]] supplies Tadiran communication encryption systems;
+* [[DuPont]] supplies the [[Nomex]], ballistic, and fire-retardant materials used by Hagor;
+* Russia Military Industries helped to design the KMT-4 & -5 anti-mine rollers and the ABK-3 dozer blade, now built by Urdan;
+* [[FN Herstal]] supplies 7.62&nbsp;mm ([[FN MAG|MAG 58]]) and 12.7&nbsp;mm ([[M2 Browning machine gun|M2]]) coaxial and pintle-mounted machine guns;
+* [[Caterpillar Inc.|Caterpillar]] assisted with an Israeli-designed track system.
+* Bental Industries, a [[TAT Technologies]] subsidiary, produced the [[Brushless DC electric motor|brushless motors]] used in the Mark 4 turret and gun control system.<ref>{{cite journal |title=Merkava Mk-4 Detailed| journal=[[Defense Update]] |year=2006|quote=The tank utilizes an electric turret and gun control system, designed by Elbit Systems, which comprises two electrical brushless motors, produced by Bental Industries.}}</ref>
+
+==General characteristics==
+===Firepower===
+The Merkava Mark 1 and 2 were armed with a 105&nbsp;mm IMI [[M68 (tank gun)|M64]] gun, a license-built variant of the [[M68 (tank gun)|M68]]. The Mark 3, Mark 3 ''Dor Dalet BAZ kassag'', and the Mark 4 are armed with an [[IMI 120 mm gun|IMI 120&nbsp;mm smoothbore gun]] which can fire almost all versions of Western 120&nbsp;mm smooth bore tank ammunition, as well as the [[LAHAT]] anti-tank guided missile.
+
+Each model of the Merkava has two roof-mounted 7.62&nbsp;mm machine guns for use by the commander and loader and another mounted co-axially with the main gun. A 60&nbsp;mm [[mortar (weapon)|mortar]]<!--' that can be loaded and fired internally' - not the case for the Mk 1, see below --> is also fitted for firing smoke rounds or suppressing dug-in infantry anti-tank teams.
+
+All Merkava tanks are fitted with a remote-controlled [[M2 Browning]] .50 caliber heavy machine gun, aligned with the main gun and controlled from within the turret.
+
+===Mobility===
+The tank's 1,119 [[watt|kW]] turbocharged diesel engine was designed by [[MTU Friedrichshafen|MTU]] and is manufactured under license by [[L-3 Communication Combat Propulsion Systems]] (formerly General Dynamics).
+
+==Variants==
+===Merkava Mark I===
+[[File:IDF Merkava Tanks in the Golan Heights, 1987 (990040418500205171).jpg|right|thumb|IDF Merkava I in the Golan Heights, 1987]]
+The Mark 1, operational since 1979, is the original design created as a result of Israel Tal's decision, and was fabricated and designed for [[mass production]]. The Mark 1 weighed 63 tonnes and had a {{convert |908|hp}} diesel engine, with a power-to-weight ratio of 14&nbsp;hp/Tonne. It was armed with the 105 millimeter M64 L71A main gun (a licensed copy of the American [[M68 (tank gun)|M68]]), two [[7.62 mm caliber|7.62 mm machine guns]] for anti-infantry defense,<ref>{{cite web |url= http://www.israeli-weapons.com/weapons/vehicles/tanks/merkava/MerkavaMk1.html |title=Merkava Mk 1 |access-date=2008-07-04 | work = Israeli Weapons |url-status=live |archive-url= https://web.archive.org/web/20080526161440/http://www.israeli-weapons.com/weapons/vehicles/tanks/merkava/MerkavaMk1.html |archive-date=May 26, 2008}}</ref> and a 60&nbsp;mm [[Mortar (weapon)|mortar]] mounted externally, with the mortar operator not completely protected by the tank's hull.
+
+The general design borrows the tracks and road wheels from the British [[Centurion tank]], which had seen extensive use during the Yom Kippur war.
+
+The Merkava was first used in combat during the [[1982 Lebanon War]], where Israel deployed 180 units. Although they were a success, the [[M113 APC]]s that accompanied them were found to have several defects and were withdrawn. Merkavas were converted into makeshift APCs or armored ambulances by taking out the palleted ammunition racks in storage. Ten soldiers or walking wounded could enter and exit through the rear door.
+
+After the war, many adjustments and additions were noted and designed, including the need for the 60&nbsp;mm mortar to be installed within the hull and engineered for remote firing—a valuable feature that the Israelis had initially encountered on their [[Centurion tank|Centurion Mk3s]] with their [[British 2 inch mortar|2" Mk.III mortar]].<ref>{{Cite book |last1=Dunstan |first1= Simon |last2=Sarson |first2=Peter |year=2003 |title=Centurion Universal Tank 1943–2003 |page=13 |publisher=Osprey |isbn= 978-1-84176-387-3}}</ref> A [[shot trap]] was found beneath the rear of the turret [[wikt:bustle|bustle]], where a well-placed shot could jam the turret completely.{{Citation needed|date=November 2023}} The installation of chain netting to disperse and destroy [[rocket propelled grenade]]s and [[shoulder-launched missile weapon|anti-tank rockets]] before impacting the primary armor increased survivability.{{Citation needed|date=November 2023}}
+{{clear}}
+
+===Merkava Mark II===
+{{multiple image
+|width = 150
+|footer_align = center
+|footer = '''The Merkava Mark II'''
+|image1 = Merkava-2-latrun-2.jpg
+|alt1 = Merkava Mark II at Yad La-Shiryon
+|caption1 = Merkava Mark II at [[Yad La-Shiryon]]
+|image2 = Merkava-2-latrun-4.jpg
+|alt2 = Merkava Mark II with chain netting installed behind the turret
+|caption2 = Merkava Mark II with chain netting installed behind the turret
+}}
+
+The Mark II was first introduced into general service in April 1983. It incorporated numerous small adjustments as a result of the previous year's incursion into Lebanon.
+
+The Mark II used the same 105&nbsp;mm main gun and 7.62&nbsp;mm machine guns as the Mark I, but the 60&nbsp;mm mortar was redesigned during construction to be located within the hull and configured for remote firing to remove the need to expose the operator to enemy small-arms fire. An Israeli-designed automatic transmission and increased fuel storage for increased range was installed on all further Mark IIs. Anti-rocket netting was fitted for increased survivability against infantry equipped with anti-tank rockets. Many minor improvements were made to the [[fire-control system]]. Updated [[meteorology|meteorological sensors]], [[crosswind]] analyzers, and [[thermography|thermographic]] optics and [[image intensifier]]s gave greater visibility and battlefield awareness.
+
+Newer versions of the original Mark II were designated:
+* '''Mark IIB''', with thermal optics{{Citation needed|date=January 2020}} and unspecified updates to the fire control system.
+* '''Mark IIC''', with more armor on the top of the turret to improve protection against attack from the air.<ref name=axe/>
+* '''Mark IID''', with modular composite armor on the chassis and turret, allowing rapid replacement of damaged armor.
+
+In 2015 the IDF had begun a plan to take the old models out of storage and repurpose them as heavy armored personnel carriers. Cannons, turrets, and spaces used to store tank shells inside the hull were removed to create a personnel carrier that outperforms the lighter M113 APC. Converting hundreds of Mark II chassis provides a low-cost way to upgrade support units' abilities to perform medical, logistical, and rescue missions.{{Citation needed|date=October 2023}}
+
+By late 2016, the last conscripted brigade to operate Merkava 2 was scheduled to transition to Merkava III and Merkava IV tanks for battlefield missions, relegating the vehicles to reserve forces for border patrols during conflicts and conversion to personnel carriers.
+
+===Merkava Mark 3===
+{{multiple image
+|width = 150
+|footer_align = center
+|footer = '''Variants of the Merkava Mark III'''
+|image1 = IDF-ground-forces002.jpg
+|alt1 = The Merkava Mark III
+|caption1 = The Merkava Mark III
+|image2 = Tank-weapons-Merkava3tank.jpg
+|alt2 = The more advanced, Merkava Mark III Baz model, with weaponry highlighted
+|caption2 = The more advanced, Merkava Mark III Baz model, with weaponry highlighted
+|image3 = Merkava3dKasag001.jpg
+|alt3 = Merkava Mark III Dor Dalet BAZ Kasag, the most advanced Merkava III variant
+|caption3 = Merkava Mark III Dor Dalet BAZ Kasag, the most advanced Merkava III variant}}
+The Merkava Mark 3 was introduced in December 1989 and was in production until 2003. As of 2016, the Merkava III was the most numerous tank in frontline IDF service. Compared to the Merkava II, it has upgrades to the drivetrain, powertrain, armament, and electronic systems. The most prominent addition was the incorporation of the locally developed [[IMI 120 mm gun]].<ref>{{Cite web |url= http://www.janes.com/articles/Janes-Armour-and-Artillery-Upgrades/Israel-Military-Industries-120-mm-smoothbore-tank-gun-MG251-Israel.html |title=Israel Military Industries 120&nbsp;mm smoothbore tank gun MG251 (Israel) |work= Armour and Artillery Upgrades | publisher = Jane's |url-status=live |archive-url= https://web.archive.org/web/20101101114331/http://www.janes.com/articles/Janes-Armour-and-Artillery-Upgrades/Israel-Military-Industries-120-mm-smoothbore-tank-gun-MG251-Israel.html |archive-date= November 1, 2010}}</ref> This gun and a larger {{convert |1200|hp}} diesel engine raised the total weight of the tank to {{convert |65|t|lbs|comma=gaps}}, but the larger engine raised the maximum cruising speed to {{convert |60|km/h|abbr= on}}.<ref>{{cite web |department=Tanks |url= http://www.israeli-weapons.com/weapons/vehicles/tanks/merkava/MerkavaMk3.html |title =Merkava Mk 3 |access-date=2008-07-04 | work =Israeli Weapons |url-status= live |archive-url= https://web.archive.org/web/20080526162611/http://www.israeli-weapons.com/weapons/vehicles/tanks/merkava/MerkavaMk3.html |archive-date=May 26, 2008}}</ref>
+
+The turret was re-engineered for movement independent of the tank [[chassis]], allowing it to track a target regardless of the tank's movement. Many other changes were made, including:
+* External two-way telephone for secure communications between the tank crew and dismounted infantry,
+* [[File:Merkava III Showoff.ogg|thumb|Merkava III shooting a shell, FN MAG and smoke grenade. It then turns on the smoke screen system. The demonstration concludes with the throwing of a green smoke hand grenade (1 m 16 s).]] [[File:Flickr - Israel Defense Forces - 188th Brigade Training Day, March 2008-cropped.jpg|thumb|Merkava IIID Baz fires – the Baz [[Fire-control system]] increases the Merkava's accuracy and lethality]]Upgraded ammunition storage containers to minimize ammunition [[cooking off|cook-off]]
+* Addition of [[laser designator]]s
+* Incorporation of the ''Kasag'' modular armor system, designed for rapid replacement and repair in the battlefield and for quick upgrading as new designs and sophisticated materials become available
+
+====BAZ System====
+The 1995 Mark 3 BAZ (Hebrew acronym for ''ברק זוהר'', ''Barak Zoher'', signifying ''Shining Lightning''{{citation needed|date=October 2022}}) had several updates and added systems including:
+* [[Weapons of mass destruction|NBC]] protection systems
+* Locally developed central [[air-conditioning]] system
+* Added improvements in ballistic protection
+* The Mark 3D has removable modular composite armor on the chassis and turret
+
+====Dor-Dalet====
+The last generation of the Mark 3 class was the Mark 3D ''Dor-Dalet'' (Hebrew: ''Fourth Generation''), which included several components as prototypes to be introduced in the Mark 4.
+* Upgraded and strengthened tracks (built by Caterpillar, designed in Israel),
+* Installation of the [[Rafael Overhead Weapon Station]].
+* Independent, fully stabilised, panoramic commander's sights allowing "hunter-killer" ability.{{Sfn |Gelbart|2005|p=77}}
+* Advanced thermal imagers for both gunner and commander.{{Sfn |Gelbart|2005|p=78}}
+
+===Merkava Mark 4===
+[[File:NGP 6692.jpg|thumb|Merkava Mark IV firing]]
+
+The development of Merkava Mark 4 was begun in 1999, and production in 2004. The upgrade's development was announced in an October 1999 edition of the military publication ''Bamachaneh'' ("At the Camp"). However, the Merkava Mark 3 remained in production until 2003. The first Merkava IVs were in production in limited numbers by the end of 2004.<ref name="Merkava Mk IV breaks cover">{{Cite news |last= Donald |first=David |date=June 14, 2010 |url= http://www.janes.com/events/exhibitions/eurosatory2010/sections/daily/day2/merkava-mk-iv-breaks-cove.shtml |archive-url=https://web.archive.org/web/20120907223648/http://home.janes.com/events/exhibitions/eurosatory2010/sections/daily/day2/merkava-mk-iv-breaks-cove.shtml |archive-date=2012-09-07 |title=Merkava Mk IV breaks cover |work=Jane's }}</ref>
+
+Removable [[modular armor]], from the Merkava Mark 3D, is used on all sides, including the top and a [[V-hull|V-shaped belly]] armor pack for the underside. This modular system is designed to allow damaged tanks to be rapidly repaired and returned to the field. Because rear armor is thinner, chains with iron balls are attached to detonate projectiles before they hit the main armored hull.<ref name="auto" />
+[[File:Merkava4-atzmaut1.jpg|thumb|left|The Merkava Mark IV in its first public show at [[Yad La-Shiryon]] during [[Israeli Independence Day]] celebrations in 2002.]] It is the first contemporary tank without a loader's hatch in the turret roof, because any aperture in the turret roof increases risk of penetration by [[ATGM]]s.<ref name="auto2">{{cite book |url=https://books.google.com/books?id=nozvCwAAQBAJ&q=merkava+4&pg=PT62 |title=Modern Israeli Tanks and Infantry Carriers 1985–2004 |first=Marsh |last=Gelbart |date=May 20, 2012 |publisher=Bloomsbury Publishing|isbn=9781780967837 |access-date=March 14, 2018 |via=Google Books}}</ref> Tank rounds are stored in individual fire-proof canisters, which reduce the chance of cook-offs in a fire inside the tank. The turret is electrically, rather than hydraulically, powered (hydraulic turrets use flammable liquid that ignites if the turret is penetrated)<ref>{{cite web |url= http://www.army-technology.com/projects/merkava4/ |title=Merkava 4 Israel Defence Forces Main Battle Tank |access-date=2006-07-24 |url-status=live | work = Army technology |archive-url= https://web.archive.org/web/20060813211629/http://www.army-technology.com/projects/merkava4/ |archive-date=August 13, 2006}}</ref> and "dry": no active rounds are stored in it. Merkava tanks since the IIc, including the Mark IV, have enhanced armor on top of the turret, providing more protection to the crew against drone strikes.<ref name=axe/>
+
+Some features, such as hull shaping, exterior non-reflective paints ([[radar cross-section]] reduction), and shielding for engine heat plumes mixing with outside air (reduced [[infrared signature]]) to confuse enemy [[thermal imager]]s, were carried over from the [[IAI Lavi]] program of the [[Israeli Air Force]] to make the tank harder to spot and target by heat sensors and radar.[[File:IDF-Merkava-Mk-4M-2016-Zachi-Evenor.jpg|thumb|Merkava Mk 4M, 2016]]
+
+The Mark 4 includes the larger 120&nbsp;mm main gun of the previous versions, but can fire a wider variety of ammunition, including [[high-explosive anti-tank]] (HEAT), and [[Sabot (firearms)|sabot]] rounds like the [[Armour-piercing fin-stabilized discarding sabot|armor-piercing fin-stabilized discarding sabot]] (APFSDS) [[kinetic energy penetrator]], using an electrical semi-automatic revolving magazine for 10 rounds. It also includes a much larger 12.7&nbsp;mm machine gun for anti-vehicle operations (most commonly used against [[Technical (vehicle)|technicals]]).<ref>{{cite web |url= http://www.defense-update.com/directory/merkava4.htm |title=Merkava Mk4 Detailed |publisher=Defense Update |archive-url= https://web.archive.org/web/20140426050715/http://www.defense-update.com/directory/merkava4.htm |archive-date=April 26, 2014 |access-date=March 27, 2004}}</ref>
+
+The Mark IV has the Israeli-designed ''TSAWS'' (tracks, springs, and wheels system) [[caterpillar track]] system, called "''Mazkom''" ({{langx|he|מערכת זחלים קפיצים ומרכובים, מזקו"ם}}) by troops. This system is designed to reduce track-shedding under the harsh basalt rock conditions of Lebanon and the Golan Heights.
+
+The model has a new fire-control system, the [[El-Op]] ''Knight Mark 4''. An Amcoram LWS-2 [[laser warning receiver]] notifies the crew of threats like [[laser-guided]] [[anti-tank missile]]s and the fire-control system can launch [[smoke grenade]]s to obscure the tank from the laser beam.<ref name="auto2"/> Electromagnetic warning against radar illumination is also installed.<ref name="auto2"/>[[File:Merkeva Mk 4M - Israeli Tanks 2019-04-21 IZE-42.jpg|thumb|A profile of a Merkava Mk 4M tank, armed with an [[IMI 120 mm gun]], a [[M2 Browning]] .50-cal, a [[7.62×51 mm NATO]] commander's [[FN MAG]], and equipped with the [[Trophy (countermeasure)|Trophy active protection system]].]]
+
+The tank carries the Israeli [[Elbit Systems]] BMS (Battle Management System; Hebrew: צי"ד), a centralised system that takes data from tracked units and [[unmanned aerial vehicle|UAVs]] in theater, displays it on color screens, and distributes it in encrypted form to all other units in a given theater equipped with BMS.
+
+The Merkava IV has been designed for fast repair and replacement of damaged armour, with modular armour that can be easily removed and replaced. It is designed to be cost-effective in production and maintenance.
+
+The tank has a high-performance air conditioning system, and can be fitted with a toilet for long-duration missions.<ref name="auto" />
+
+====Mark 4 Meil Ru'ach (Mk 4M) Windbreaker====
+The Merkava Mark 4M (Mk 4M) Windbreaker is a Merkava Mark 4 equipped with the [[Trophy (countermeasure)|Trophy]] [[active protection system]] (APS), designated "Meil Ruach" ({{langx|he|מעיל רוח}}; "Windbreaker" or "Wind Coat"). [[Mass production]] of Mark 4M tanks began in 2009, and the first whole brigade of Mark 4Ms was declared operational in 2011. The Trophy APS successfully intercepted [[rocket-propelled grenade]]s and [[anti-tank missile]]s, including [[9M133 Kornet]]s, fired by [[Hamas]] before and during [[2014 Israel–Gaza conflict|Operation Protective Edge]] in 2014.<ref>Barbara Opall-Rome, [http://www.defensenews.com/story/defense/land/vehicles/2016/01/28/israel-trophy-active-protection-system-aps/79460018/ "Israel To Equip Troop Carriers With Trophy APS"] Defense News, January 28, 2016</ref>
+
+====Mark 4 Meil Ru'ach 400 (Mk. 4M 400) Windbreaker====
+A midlife upgrade for the Mk. 4M that is somewhat of a bridge between the Mk. 4M and the Mk. 4 Barak.
+
+=== Merkava 4 Barak ===
+[[File:Merkava-Mk-4-Barak-0001.jpg|thumb|Merkava Mk 4 Barak]]
+The Merkava Mark 4 Barak (Lightning) entered service in 2023.<ref>{{cite web |last1=Egozi |first1=Arie |title=Israel Defense Forces test the Merkava 4 "Barak" tank prototypes |date=April 15, 2023 |url= https://defence-industry.eu/israel-defense-forces-test-the-merkava-5-tank-prototypes/ |publisher=Defence Industry Europe |access-date=15 June 2023}}</ref><ref>{{cite web |title=ברקע המלחמה באוקראינה: צה"ל מאיץ את שילוב טנק מרכבה סימן 5 |date= March 10, 2022 |url= https://news.walla.co.il/item/3493339 |publisher=Walla! |access-date= 15 June 2023}}</ref> The tank has an upgraded [[Trophy (countermeasure)|Trophy APS]], 360-degree day/night camera coverage for boosted situational awareness, a fighter jet–style [[helmet-mounted display]] for the tank commander, and new sensors enabling it to independently acquire targets and strike them rapidly, as well as having [[electronic warfare]] abilities and advanced processing systems,<ref name=barak>{{cite web |url= https://www.idf.il/en/minisites/technology-and-innovation/meet-the-merkava-mk-4-barak/ |title=Meet the Merkava Mk. 4 Barak |date= 19 July 2018 |publisher=[[Israel Defense Forces]]}}</ref> and a direct energy system capable of intercepting drones and cruise missiles.{{Citation needed |date=December 2023}}
+==== Iron Vision helmet-mounted display system ====
+A main feature of the Barak, unveiled in July 2018, is the integration of the Iron Vision [[helmet-mounted display|helmet-mounted augmented reality system]], using high-resolution cameras arrayed around the tank to provide a 360° [[virtual reality]] view of a tank's surroundings to crew members' helmet displays while protected inside. Israeli company [[Elbit]] developed the system for the [[F-35]] fighter aircraft.<ref>[http://www.janes.com/article/69059/idf-to-trial-elbit-s-ironvision-in-merkava-mbt "IDF to trial Elbit's IronVision in Merkava MBT"] {{webarchive |url= https://web.archive.org/web/20170419091045/http://www.janes.com/article/69059/idf-to-trial-elbit-s-ironvision-in-merkava-mbt |date= April 19, 2017}} Peter Felstead, ''IHS Jane's Defence Weekly'', 27 March 2017</ref><ref name=barak/>
+
+===Specifications of models===
+{| class=wikitable style="text-align:center;"
+|-
+!width="12%"|
+!width="22%"| Merkava Mark 1
+!width="22%"| Merkava Mark 2
+!width="22%"| Merkava Mark 3
+!width="22%"| Merkava Mark 4
+|-
+!colspan=5 |Service history
+|-
+! In active service
+| 1979–2014 
+| 1983–2020
+| 1990–
+| 2004–
+|-
+! Used by
+|colspan=4 |[[Israel Defense Forces]]
+|-
+! Wars
+| [[1982 Lebanon War]], [[First Intifada]], [[South Lebanon conflict (1985–2000)|South Lebanon Conflict]], [[Second Intifada]], [[2006 Lebanon War]]
+| [[South Lebanon conflict (1985–2000)|South Lebanon Conflict]], [[First Intifada]], [[Second Intifada]], [[2006 Lebanon War]], [[Gaza War (2008–2009)|Gaza War]]
+| [[South Lebanon conflict (1985–2000)|South Lebanon Conflict]], [[First Intifada]], [[Second Intifada]], [[2006 Lebanon War]], [[Gaza War (2008–2009)|Gaza War]], [[2014 Israel–Gaza conflict]], [[2014 Gaza War|Operation Protective Edge]], [[Gaza war]]
+| [[2006 Lebanon War]], [[Gaza War (2008–2009)|Gaza War]], [[2014 Israel–Gaza conflict]], [[2014 Gaza War|Operation Protective Edge]], [[Gaza war]]
+|-
+!colspan=5 |Production history
+|-
+!Designer
+|colspan=4 |MANTAK (Merkava Tank Office)
+|-
+!Manufacturer
+|colspan=4 |MANTAK (Merkava Tank Office)
+|-
+!Produced
+| 1979–83
+| 1983–89
+| 1990–2002
+| 2003–
+|-
+!Number built
+| 250
+| 580
+| 780
+| 360
+|-
+!colspan=5 |Specifications
+|-
+! Weight
+| 61 [[tonne]]s
+| 62 [[tonne]]s
+| 63.5 [[tonne]]s
+| 65 [[tonne]]s
+|-
+! Length
+|colspan=2 | {{convert|8.30|m|ftin|abbr=on}}, rear to muzzle<br/>{{convert|7.45|m|ftin|abbr=on}}, without gun
+|colspan=2 | {{convert|9.04|m|ftin|abbr=on}}, rear to muzzle<br/>{{convert|7.60|m|ftin|abbr=on}}, without gun
+|-
+! Width
+|colspan=3 |{{convert|3.70|m|ftin|abbr=on}}, without skirts
+|{{convert|3.72|m|ftin|abbr=on}}, without skirts
+|-
+! Height
+|colspan=2 |{{convert|2.65|m|ft|abbr=on}}, turret roof
+|colspan=2 |{{convert|2.66|m|ft|abbr=on}}, turret roof
+|-
+! Crew
+|colspan=4 | 4 (tank commander, driver, gunner, loader). May carry infantry as passengers.
+|-
+! Armor
+| Cast and welded steel, in a spaced configuration
+| Cast and welded steel, in a spaced configuration with add-on [[composite armour]] on turret sides
+|colspan=2 | Steel frame with modular composite armor
+|-
+! Primary armament
+|colspan=2 |{{convert|105|mm|in|abbr=on}} [[M68 (tank gun)|M64 L71A]] rifled [[tank gun]]
+|{{convert|120|mm|in|abbr=on}} [[MG251]] smoothbore [[tank gun]]
+|{{convert|120|mm|in|abbr=on}} [[MG251-LR]] smoothbore [[tank gun]]
+|-
+! Ammunition capacity
+|colspan=2 |53 to 62 rounds, 6 per container
+|46 rounds, 5 ready in a mechanical drum
+|48 rounds, 10 ready in an electrical drum
+|-
+! Secondary armament
+| 2–3 × FN MAG58<br/>1 × externally-mounted 60&nbsp;mm [[Soltam]] [[mortar (weapon)|mortar]]<br/>12 × [[smoke grenade]]s launchers
+|colspan=3 |2–3 × FN MAG58<br/>1 × internally-mounted 60&nbsp;mm [[Soltam]] [[mortar (weapon)|mortar]]<br/>12 × [[smoke grenade]]s launchers
+|-
+! Engine
+|[[Teledyne Continental Motors|Teledyne Continental]] AVDS-1790-6A {{convert |908|hp|0|lk=on|abbr=on}} [[V12 engine|V12]] [[Air-cooled engine|air-cooled]] [[diesel engine]]
+|[[Teledyne Continental Motors|Teledyne Continental]] AVDS-1790-7A {{convert |950|hp|0|lk=on|abbr=on}} [[V12 engine|V12]] [[air-cooled engine|air-cooled]] [[diesel engine]]
+|[[Teledyne Continental Motors|Teledyne Continental]] AVDS-1790-9AR {{convert|1200|hp|0|abbr=on}} [[V12 engine|V12]] air-cooled [[Diesel engine|diesel]]
+|[[General Dynamics]] GD883 ([[MTU Friedrichshafen|MTU]]883) {{convert|1500|hp|0|abbr=on}} [[V12 engine|V12]] [[Water cooling|water-cooled]] [[Diesel engine|diesel]]
+|-
+! Transmission
+| [[Allison Transmission|Allison]] CD850-6BX (2 fwd, 1 rev)
+|colspan=2| [[Renk]] RK 304 (4 fwd, 4 rev)
+| Renk RK 325<ref>{{Cite web |url=http://www.eurosatory.mod.gov.il/merkava.htm |website=Israel Ministry of Defense |title=Israel at Eurosatory 2010 - Merkava |year=2010 |archive-url=https://web.archive.org/web/20100525233936/http://www.eurosatory.mod.gov.il/merkava.htm |archive-date=May 25, 2010}}</ref> (5 fwd, 2 rev)
+|-
+! acceleration 0–32&nbsp;km/h
+| 15 s
+| 13 s
+| 10 s<ref>{{Cite web |url= http://mainbattletanks.czweb.org/Tanky/Merkava3.htm |title= Merkava Mk.3 |access-date=April 7, 2019 |url-status=live | work = Main battle tanks | publisher = CZ Web |archive-url= https://web.archive.org/web/20160506085416/http://www.mainbattletanks.czweb.org/Tanky/Merkava3.htm |archive-date=May 6, 2016}}</ref>
+| <10 s
+|-
+! Power / weight
+| 14.8 [[hp/tonne]]
+| 15.3 [[hp/tonne]]
+| 18.8 [[hp/tonne]]
+| 23 [[hp/tonne]]
+|-
+! Suspension type
+|colspan=2| Vertical double coil spring
+|colspan=2| Vertical coil spring with rotary coil spring
+|-
+! Total vertical wheel travel
+|colspan=2| 295–380&nbsp;mm
+|colspan=2| 600&nbsp;mm
+|-
+! Ground clearance
+|colspan=2| {{convert|0.53|m|ftin|abbr=on}}
+|colspan=2| {{convert|0.45|m|ftin|abbr=on}}
+|-
+! Fuel capacity
+|colspan=2| 900 litres
+| 1,100 litres
+| 1,400 litres
+|-
+! Operational range
+| {{convert|400|–|500|km|mi|abbr=on}}
+|colspan=3 |{{convert|500|km|mi|abbr=on}}
+|-
+! Maximum road speed
+|{{convert|46|km/h|0|abbr=on}}<ref>{{Cite web | work = Main battle tanks |url= http://mainbattletanks.czweb.org/Tanky/Merkava1.htm |title=Merkava Mk.1 |access-date=April 7, 2019 | publisher = CZ web |archive-url= https://web.archive.org/web/20161105224120/http://mainbattletanks.czweb.org/Tanky/Merkava1.htm |archive-date=November 5, 2016 |url-status=live}}</ref>
+|{{convert|55|km/h|0|abbr=on}}
+|{{convert|60|km/h|0|abbr=on}}
+|{{convert|64|km/h|0|abbr=on}}
+|}
+
+==Combat history==
+The Merkava has participated in the following actions.
+
+=== 1982 Lebanon War ===
+[[File:IDF forces occupying the eastern side of Lebanon overlooking the Syrian border (FL45948978).jpg|thumb|IDF Merkava I in the eastern Lebanon, 1983]]
+The Merkava was used widely during the 1982 Lebanon War. The tank outperformed contemporary Syrian tanks (mostly [[T-62]]s), and its front proved largely immune to the anti-tank weapons of the time (the [[AT-3 Sagger]] and [[RPG-7]]) that were used against it. It was judged to be a significant improvement over Israel's formerly most effective main battle tank, the [[Centurion tank|Centurion]].<ref>{{Cite book |last1=Katz |first1=Samuel M |last2=Russell |first2=Lee |last3=Volstad |first3=Ronald |year=1985 |title=Armies in Lebanon 1982–84 |publisher=Osprey}}</ref> Israel lost dozens of tanks during the conflict, including several Merkavas.<ref>{{Cite book |last=Seale |first=Patrick |year=1989 |title=Asad: The Struggle for Syria |publisher=University of California Press |pages=382–383 |isbn=0-520-06667-7}}</ref>
+
+=== Second Intifada ===
+In February 2002, a Merkava III was destroyed by a roadside bomb near [[Netzarim]] in the Gaza Strip. The tank was lured into intervening in an attack on a settler convoy. The tank went over a heavy mine (estimated 100&nbsp;kg TNT), which detonated and totally destroyed the tank. Four soldiers were killed in the blast. This was the first main battle tank to be destroyed during the [[Second Intifada]].<ref>{{cite news |url=https://news.bbc.co.uk/2/hi/middle_east/1821396.stm |title=Israel investigates Gaza tank blast |publisher=BBC |date=February 15, 2002 |access-date=2011-09-17 |url-status=live |archive-url=https://web.archive.org/web/20131104095001/http://news.bbc.co.uk/2/hi/middle_east/1821396.stm |archive-date=November 4, 2013}}</ref> A second Merkava II or Merkava III, was destroyed a month later in the same area and a further three soldiers were killed. A third Merkava II or III tank was destroyed near the [[Kissufim Crossing]], when one soldier was killed and two wounded.<ref>{{cite news |url=http://www.mfa.gov.il/MFA/Terrorism-+Obstacle+to+Peace/Palestinian+terror+since+2000/Victims+of+Palestinian+Violence+and+Terrorism+sinc.htm |title=Victims of Palestinian Violence and Terrorism since September 2000 |publisher=MFA |access-date=2010-09-17 |archive-url=https://web.archive.org/web/20070403024612/http://www.mfa.gov.il/MFA/Terrorism-%2BObstacle%2Bto%2BPeace/Palestinian%2Bterror%2Bsince%2B2000/Victims%2Bof%2BPalestinian%2BViolence%2Band%2BTerrorism%2Bsinc.htm |archive-date=April 3, 2007}}</ref>
+
+=== 2006 Lebanon War ===
+[[File:9M133 Kornet.JPG|thumb|The AT-14 Kornet anti-tank laser-guided missile]]
+
+During the 2006 Lebanon War, five Merkava tanks were destroyed.<ref>{{cite book |last1=Cordesman, Sullivan |first1=Anthony H, William D |title=Lessons of the 2006 Israeli-Hezbollah War |date=2007 |publisher=Center for Strategic and International Studies |location=Washington, DC |isbn=978-0-89206-505-9 |page=110 |edition=First |url=https://books.google.com/books?id=Ela6DjyEBQwC&q=Cordesman,+Anthony+H;+Sullivan,+William+D+(2007),+Lessons+of+the+2006+Israeli-Hezbollah+War,+CSIS |access-date=21 November 2020}}</ref> Most of the tanks engaged were Merkava IIIs and earlier versions; only a few of the tanks used during the war were Merkava Mark 4, since by 2006 they had entered service in limited numbers. [[Hezbollah]] fired over 1,000 anti-tank missiles during the conflict against both tanks and dismounted infantry.{{Sfn |Cordesman|Sullivan|2007|p=110}} Some 45 percent of all tanks and armoured vehicles hit with [[anti-tank guided missile]]s (ATGMs) during the conflict suffered some form of armour penetration.{{Sfn |Cordesman |Sullivan |2007 |p=110}}
+
+In total, 15 tank crewmen were killed by these ATGM penetrations.{{Sfn|Cordesman|Sullivan|2007|p=111}} The penetrations were caused by tandem warhead missiles. Hezbollah weaponry was believed to include Russian [[RPG-29]] 'Vampir', [[9M113 Konkurs|AT-5 'Konkurs']], [[9K115-2 Metis-M|AT-13 'Metis-M']], and laser-guided [[9M133 Kornet|AT-14 'Kornet']]<ref name="Ali Saleh">{{cite web |title=Ali Saleh: Destroying the Merkava Myth |first=Mohamed |last=Nazzal |date=July 12, 2012 |work=[[Al Akhbar (Lebanon)|al-Akhbar]] |url=http://english.al-akhbar.com/content/ali-saleh-destroying-merkava-myth |archive-url=https://web.archive.org/web/20131012030319/http://english.al-akhbar.com/content/ali-saleh-destroying-merkava-myth |archive-date=October 12, 2013 |access-date=August 28, 2012}}</ref> HEAT missiles. The RPG-29 was able to defeat the advanced reactive armor on the Merkava 4.<ref>{{cite book |title=Small Arms Survey 2012: Moving Targets |publisher=[[Cambridge University Press]] |url=https://books.google.com/books?id=hY3s5nHUM24C |date=2012-08-30 |page=326|isbn=9780521146876}}</ref> The [[Israel Defense Forces|IDF]] reported finding Kornet ATGMs on Hezbollah positions in the village of Ghandouriyeh.<ref name="Israel humbled by arms from Iran">{{cite news |url=https://www.telegraph.co.uk/news/main.jhtml?xml=/news/2006/08/15/wmid15.xml |work=[[The Daily Telegraph]] |title=Israel humbled by arms from Iran |date=August 15, 2006 |location=London |first=Adrian |last=Blomfield |access-date=2010-04-23 |archive-url=https://web.archive.org/web/20080416172034/http://www.telegraph.co.uk/news/main.jhtml?xml=%2Fnews%2F2006%2F08%2F15%2Fwmid15.xml |archive-date=April 16, 2008}}</ref> Several months after the cease-fire, reports have provided detailed photographic evidence that Kornet ATGMs were indeed both possessed and used by Hezbollah in this area.<ref>{{cite news |url=http://www.terrorism-info.org.il/data/pdf/pdf_human_2.pdf |publisher=Center for Special Studies |title=Hezbollah's use of Lebanese civilians as human shields |archive-url=https://web.archive.org/web/20150720183328/http://www.terrorism-info.org.il/data/pdf/pdf_human_2.pdf |archive-date=July 20, 2015 |access-date=July 16, 2015}}</ref><ref>{{cite news |url=http://img237.imageshack.us/img237/17/9m133jn4.jpg |format=[[JPEG]] |publisher=Center for Special Studies |title=Kornet ATGMs captured in Ghandouriyeh |url-status=dead |archive-url=https://web.archive.org/web/20131104215209/http://img237.imageshack.us/img237/17/9m133jn4.jpg |archive-date=November 4, 2013}}</ref>
+
+Another Merkava IV tank crewman was killed when a tank ran over an [[improvised explosive device]] (IED). This tank had additional V-shaped underside armor, limiting casualties to just one of the seven personnel (four crewmen and three infantrymen) on board. In total, five Merkava tanks (two Merkava IIs, one Merkava III, and two Merkava IVs) were destroyed.{{Sfn|Cordesman|Sullivan|2007|p=110}} Of these two Merkava Mark 4, one was damaged by an IED, and the other being destroyed by a Russian AT-14 'Kornet' missile. The Israeli military said that it was satisfied with the Merkava Mark IV's performance, and attributed problems to insufficient training before the war.<ref>{{cite news |url=http://www.ynetnews.com/articles/0,7340,L-3297431,00.html |title=Why did Armored Corps fail in Lebanon? |work=Ynetnews |date=August 29, 2006 |publisher=Ynet |url-status=live |archive-url=https://web.archive.org/web/20060901011702/http://www.ynetnews.com/articles/0,7340,L-3297431,00.html |archive-date=September 1, 2006 |last1=Greenberg |first1=Hanan}}</ref><ref>{{cite web |last=Barzilai |first=Amnon |title=Defense establishment favors Rafael tank protection system |work=Globes Online |date=August 30, 2006|place=IL |url=http://www.globes.co.il/serveen/globes/docview.asp?did=1000127813 |access-date=August 22, 2013 |url-status=live |archive-url=https://web.archive.org/web/20131103043649/http://www.globes.co.il/serveen/globes/docview.asp?did=1000127813 |archive-date=November 3, 2013}}</ref> In total, 50 Merkava tanks (predominantly Merkava IIs and IIIs) were hit, eight of which remained serviceable on the battlefield. 21 tanks suffered armour penetrations (15 from missiles, and 6 from IEDs and anti-tank mines).{{Sfn|Cordesman|Sullivan|2007|p=110}}
+
+After the 2006 war, and as the IDF becomes increasingly involved in unconventional and [[guerrilla warfare]], some analysts say the Merkava is too vulnerable to advanced anti-tank missiles, that in their man-portable types can be fielded by guerrilla warfare opponents.<ref>{{cite web |format=video |url=http://video.google.com/videoplay?docid=-8853586453841327363 |title=God's chariot |access-date=2008-07-04 |agency=Al jazeera |url-status=live |archive-url=https://web.archive.org/web/20110222220310/http://video.google.com/videoplay?docid=-8853586453841327363 |archive-date=February 22, 2011}}</ref><ref>{{cite news |url=https://news.bbc.co.uk/1/hi/world/middle_east/4794829.stm |title=Tough lessons for Israeli armour |access-date=2008-07-04 |publisher=BBC |date=August 15, 2006 |first=Jonathan |last=Marcus |url-status=live |archive-url=https://web.archive.org/web/20090107012912/http://news.bbc.co.uk/2/hi/middle_east/4794829.stm |archive-date=January 7, 2009}}</ref> Other post-war analysts, including David Eshel, disagree, arguing that reports of losses to Merkavas were overstated and that "summing up the performance of Merkava tanks, especially the latest version Merkava Mark 4, most tank crews agree that, in spite of the losses sustained and some major flaws in tactical conduct, the tank proved its mettle in its first high-saturation combat."<ref>{{cite web |url=http://www.defense-update.com/analysis/lebanon_war_3.htm |title=Assessing the performance of Merkava Tanks |publisher=Defense Update |archive-url=https://web.archive.org/web/20080513181318/http://www.defense-update.com/analysis/lebanon_war_3.htm |archive-date=May 13, 2008 |access-date=September 13, 2007}}</ref>
+
+On a comparison done by the armor corps newsletter, it was shown that the average number of crewmen killed per tank penetrated by missile/rocket was reduced from 2 during the [[Yom Kippur War]] to 1.5 during the 1982 Lebanon War to 1 during the 2006 Lebanon War proving how, even in the face of the improvement in anti-tank weaponry, the Merkava series tanks provide increasingly better protection to its crew. The IDF wanted to increase orders of new Merkava Mark 4 tanks, and planned to add the [[Trophy (countermeasure)|Trophy active defense system]] to Merkava Mark 4 tanks, and to increase joint training between crews and Israeli [[anti-tank warfare|anti-tank]] soldiers.<ref>{{cite news |url=http://www.ynetnews.com/articles/0,7340,L-3439667,00.html |title=IDF mulls spending plan |access-date=2008-07-04 |work=Ynetnews |date=August 20, 2007 |url-status=live |archive-url=https://web.archive.org/web/20080609091110/http://www.ynetnews.com/articles/0,7340,L-3439667,00.html |archive-date=June 9, 2008 |last1=Egozy |first1=Aryeh}}</ref><ref>{{cite news |url=https://fr.jpost.com/servlet/Satellite?cid=1188392502053&pagename=JPost/JPArticle/ShowFull |title=New training aims to help tanks cope in hostile territory |first=Yaakov |last=Katz |work=[[The Jerusalem Post]] |date=August 31, 2007 |archive-url=https://web.archive.org/web/20110429194744/http://fr.jpost.com/servlet/Satellite?cid=1188392502053&pagename=JPost%2FJPArticle%2FShowFull |archive-date=April 29, 2011}}</ref>
+
+=== Operation Cast Lead ===
+{{Main|Operation Cast Lead}}
+The Merkava Mark IV was used more extensively during the [[Gaza War (2008–2009)|Gaza War]], as it had been received by the IDF in increasing numbers since 2006, replacing more of the Merkava II and III versions of the tank that were in service. One brigade of Merkava IVs managed to bisect the Gaza strip in five hours without Israeli casualties. The commander of the brigade stated that battlefield tactics had been greatly revised since 2006. Tactics had also been modified to focus on [[asymmetric war|asymmetric]] or guerrilla war threats, in addition to the conventional war scenarios that the Merkava had mainly been designed to combat.<ref>{{Cite news |last=Katz |first=Yaakov |date=August 13, 2009 |title=Security and Defense: 'The tank is one of the most technologically advanced platforms around' |work=The Jerusalem Post}}</ref>
+
+The IDF also deployed the Merkava II and III during the war.<ref>{{Cite journal|jstor=10.1525/jps.2009.XXXVIII.3.175 |title=The Israeli Arsenal Deployed against Gaza during Operation Cast Lead |journal=[[Journal of Palestine Studies]] |publisher=[[University of California Press]] on behalf of the [[Institute for Palestine Studies]] |volume=38 |issue=3 |date=Spring 2009 |page=180 |issn=1533-8614 |doi=10.1525/jps.2009.XXXVIII.3.175}}</ref>
+
+=== Gaza border areas ===
+[[File:Trophy APS - operational.jpg|thumb|[[Israel Defense Forces|IDF]] Merkava Mk. IVm [[tank]] on the Gaza border. It is equipped with the [[Trophy (countermeasure)|Trophy APS]]. The Trophy protective system has been used by the IDF since 2011.]]
+[[File:Flickr - Israel Defense Forces - Storming Ahead.jpg|thumb|Merkava IV equipped with the [[Trophy (countermeasure)|Trophy]] active defense system.]]
+
+By October 2010, the IDF had begun to equip the first Merkava Mark IVs with the Trophy active protection system, to improve the tanks' protection against advanced anti-tank missiles which use [[tandem-charge]] HEAT warheads.<ref>{{Cite news |url=https://www.jpost.com/Israel/Article.aspx?id=191194 |title=IDF launches massive Ground Forces exercise |work=The Jerusalem Post |first=Yaakov |last=Lappin |date=October 13, 2010 |url-status=live |archive-url=https://web.archive.org/web/20101020033816/http://www.jpost.com/Israel/Article.aspx?id=191194 |archive-date=October 20, 2010}}</ref><ref name=weiss>{{Cite news |last=Weiss |first=Efrat |date=August 7, 2009 |url=http://www.ynetnews.com/articles/0,7340,L-3758478,00.html |title=IDF successfully tests new tank defense system |work=Ynetnews |url-status=live |archive-url=https://web.archive.org/web/20090809103057/http://www.ynetnews.com/articles/0,7340,L-3758478,00.html |archive-date=August 9, 2009 |access-date=2009-08-07}}</ref> Added protection systems included an Elbit laser-warning system and IMI in-built smoke-screen grenades.<ref name="Merkava Mk IV breaks cover"/>
+
+In December 2010, [[Hamas]] fired an [[AT-14 Kornet]] anti-tank missile at a Merkava Mark 3 tank stationed on the Israel-Gaza border near Al-[[Bureij]]. Before then, it was not suspected that Hamas possessed such an advanced missile. The missile penetrated the tank's armour, but caused no injuries among its crew. As a result of the attack, Israel decided to deploy its first Merkava Mark 4 battalion equipped with the Trophy system along the Gaza border.<ref>{{Cite news |url=https://www.jpost.com/Defense/Article.aspx?id=200423 |title=IDF predicts violence to subside despite Gaza pounding |work=The Jerusalem Post |first1=Yaakov |last1=Katz |first2=Rebecca Anna |last2=Stoil |date=December 21, 2010 |url-status=live |archive-url=https://web.archive.org/web/20101223170531/http://www.jpost.com/Defense/Article.aspx?id=200423 |archive-date=December 23, 2010}}</ref>
+
+On March 1, 2011, a Merkava Mark IV stationed near the Gaza border, equipped with the Trophy active protection system, successfully foiled a missile attack against it, marking the system's first operational success.<ref>{{cite news |last=Harel |first=Amos |date=March 1, 2011 |url=https://www.haaretz.com/news/diplomacy-defense/idf-armor-defense-system-foils-attack-on-tank-for-first-time-1.346526 |title=IDF armor-defense system foils attack on tank for first time |work=[[Haaretz]] |url-status=dead |archive-url=https://web.archive.org/web/20150426221651/http://www.haaretz.com/news/diplomacy-defense/idf-armor-defense-system-foils-attack-on-tank-for-first-time-1.346526 |archive-date=April 26, 2015}}</ref>
+
+=== Operation Protective Edge 2014 ===
+{{Main|Operation Protective Edge}}
+[[File:Merkava4m-Windbreaker-0036a.jpg|thumb|Merkava Mk 4M Windbreaker, fitted with [[Trophy (countermeasure)|Trophy]] [[active protection system]], during [[2014 Israel–Gaza conflict|Operation Protective Edge]]]]
+
+No tanks were damaged during Operation Protective Edge. The Merkava Mk 4M tanks, fitted with the Trophy Active Protection system, intercepted anti-tank missiles and RPGs on dozens of occasions during the ground operation.{{unreliable source? |date=August 2022}} During the operation, the system intercepted anti-tank weapons, mostly [[9M133 Kornet|Kornet]], and some [[9K115-2 Metis-M|Metis-M]] and [[RPG-29]], proving itself effective against man-portable anti-tank weapons.<ref name="news.walla.co.il">{{Cite news |url=http://news.walla.co.il/item/2770561 |trans-title=Rescued 15 tanks: Armored Iron Dome Gaza |work=Walla |place=[[Israel|IL]] |title=אמיר בוחבוט יום רביעי |date=July 30, 2014 |language=he |url-status=live |archive-url=https://web.archive.org/web/20150208053633/http://news.walla.co.il/item/2770561 |archive-date=February 8, 2015}}</ref> By identifying the source of fire, Trophy also allowed tanks to kill a Hamas anti-tank team on one occasion.<ref name="news.walla.co.il"/>
+
+Giora Katz, head of Rafael's land division, stated that it was a "breakthrough because it is the first time in military history where an active defense system has proven itself in intense fighting."<ref>{{Cite news |url=http://www.israeldefense.co.il/he/content/ |title=התעניינות-עצומה-במעיל-רוח התעניינות עצומה ב'מעיל רוח מערכת |work=Israel Defense |date=2014-10-13 |url-status=live |archive-url=https://web.archive.org/web/20160316123553/http://www.israeldefense.co.il/he/content/%D7%94%D7%AA%D7%A2%D7%A0%D7%99%D7%99%D7%A0%D7%95%D7%AA-%D7%A2%D7%A6%D7%95%D7%9E%D7%94-%D7%91%D7%9E%D7%A2%D7%99%D7%9C-%D7%A8%D7%95%D7%97 |archive-date=March 16, 2016}}</ref>
+
+The [[401st Brigade (IDF)|401st Brigade]], equipped with Merkava Mk 4M tanks, alone killed between 120 and 130 Hamas fighters during the ground fighting phase of Operation Protective Edge, according to the IDF.<ref>{{cite news |place=Israel |url=http://www.maariv.co.il/news/new.aspx?pn6Vq=E&0r9VQ=GEDGI |title=The stars of Operation Protective Edge: the tanks that cracked the terrorist infrastructure of Hamas |work=Maariv |date=2014-08-25 |url-status=live |archive-url=https://web.archive.org/web/20150715183722/http://www.maariv.co.il/news/new.aspx?pn6Vq=E&0r9VQ=GEDGI |archive-date=July 15, 2015}}</ref>
+
+=== 2023 Israel-Hamas War ===
+According to ''Popular Mechanics'', Hamas may have briefly captured 10 Merkava tanks in the [[October 7 attacks]], but it is unclear how many tanks they damaged or destroyed.<ref name=":0">{{cite web |last=ROBLIN |first=SÉBASTIEN |date=November 13, 2023 |title=How Many Armored Vehicles Has Israel Lost Fighting Hamas? |url=https://www.popularmechanics.com/military/weapons/a45783283/how-many-armored-vehicles-has-israel-lost-fighting-hamas-gaza/ |website=Popular Mechanics}}</ref> At least 1 tank was destroyed when Hamas used a civilian DJI and Autel quadcopter drone to drop a shaped-charge grenade.<ref name=":0" /> 
+
+According to Forbes, Hamas used flyers to disseminate advice for defeating the Merkava's Trophy active protection system.  This advice included such things as: firing rocket-propelled grenades from 50 yards or closer; firing several RPG rounds in quick succession; using an [[SPG-9]], and other information.<ref>{{Cite web |date=15 October 2023 |title=Hamas Distributed A Handy Guide To Destroying Israeli Tanks|url=https://www.forbes.com/sites/davidaxe/2023/10/15/hamas-distributed-a-handy-guide-to-destroying-israeli-tanks/?sh=3ff6ef9434e1|author=David Axe|work=Forbes |access-date=2023-11-12 |language= en-US}}</ref>
+
+On 16 October 2023, Merkavas were seen equipped with added [[Slat armor|slat armour]]  placed above the turrets. Slat armour has proven effective in defense against a number of munitions dropped by small drones.<ref>{{Cite web |last=Axe |first=David |title=The Russians Are Wrapping Their Old T-62 Tanks In Drone Armor, From Tracks To Turret |url=https://www.forbes.com/sites/davidaxe/2023/10/09/the-russians-are-wrapping-their-old-t-62-tanks-in-drone-armor-from-track-to-turret/ |access-date=2023-11-24 |website=Forbes}}</ref> [[Hamas]] has released video footage that suggested unsuccessful strikes against Merkavas using drones.<ref>{{Cite web |date=16 October 2023|last=Axe |first=David |title=Cope Cages Come To Israel As IDF Tanks Get Extra Drone Armor |url= https://www.forbes.com/sites/davidaxe/2023/10/16/cope-cages-come-to-israel-as-idf-tanks-get-extra-drone-armor/?sh=41590b7baab8|access-date=2023-11-11 |website= The War Zone}}</ref><ref>{{Cite web |date=16 October 2023|author=Joseph Trevithick |title=Israeli Merkava Tanks Appear With 'Cope Cage' Armor|url= https://www.thedrive.com/the-war-zone/israeli-merkava-tanks-appear-with-cope-cage-armor|access-date=2023-11-11 |website=Forbes}}</ref><ref>{{Cite web |title= Types of Armour | date = March 27, 2015 | publisher = Norfolk Tank Museum |url=http://norfolktankmuseum.co.uk/types-of-armour/ |access-date=2023-11-11 |language=en-GB}}</ref>
+
+In December 2023, ''Business Insider'' reported that Hamas had "knocked out" about 20 tanks.<ref>{{Cite web |last=Peck |first=Michael |title=Israel's war with Hamas shows why even 50 years of upgrades can't make tanks invulnerable |url=https://www.businessinsider.com/israels-war-with-hamas-shows-why-tanks-are-not-invulnerable-2023-12 |access-date=2024-12-01 |website=Business Insider |language=en-US}}</ref>
+
+On 24 May 2024, The Al-Qassam Brigades reported having destroyed an Merkava MK 2 using a “Shawaz” explosive device in the Al-Qasasib neighborhood of Jabalia Camp.<ref>{{Cite web |date=24 May 2024 |title=Al-Qassam Brigades operations on the 231st day of the "Al-Aqsa Flood" |url=https://safa.ps/p/370093|author=Gaza-Safa |work=Palestinian Press Agency |access-date=2024-05-24 |language= en-US}}</ref>
+
+In October 2024, [[Ynet]] reported that the IDF planned to outsource repair of its armored vehicles including tanks for the first time due to damage sustained during the Israel-Hamas War.<ref>{{Cite news |last=Zomer |first=Navit |date=2024-10-20 |title=IDF to outsource maintenance of tanks, APCs amid increased load |url=https://www.ynetnews.com/article/b15mfiflje |access-date=2024-12-01 |work=Ynetnews |language=en}}</ref> The following month, the IDF reported shortages of tanks and tank shells.<ref>{{Cite news |last=Zitun |first=Yoav |date=2024-11-30 |title=From deals with third-world countries to dubious middlemen: Inside the IDF's covert arms race |url=https://www.ynetnews.com/article/h1tefly71g |access-date=2024-12-01 |work=Ynetnews |language=en}}</ref>
+
+=== 2024 Israel–Hezbollah war ===
+[[IDF]] said soldiers from the 36th armored division had also entered operations in Lebanon joining forces from the 98th division already operating in the border area.{{cn|date=April 2025}}
+
+On 2 October 2024, [[Hezbollah]] said it had destroyed three Israeli Merkava tanks with rockets.<ref>{{Cite news |last1=Beaumont |first1=Peter |last2=Roth |first2=Andrew |date=2024-10-02 |title=Eight Israeli soldiers killed in clashes with Hezbollah in Lebanon |url=https://www.theguardian.com/world/2024/oct/02/israeli-soldiers-killed-hezbollah-lebanon |access-date=2024-10-04 |work=The Guardian |language=en-GB |issn=0261-3077}}</ref>
+
+On 3 May 2026, Hezbollah claimed to have destroyed a Mk 4 Merkava tank with a fpv drone.<ref>{{Cite news |author= Roman Pryhodko |date=2024-10-02 |title= Hezbollah Likely Destroys First Merkava Mk4 Tank with FPV Drone in Lebanon |url= https://militarnyi.com/en/news/hezbollah-likely-destroys-first-merkava-mk4-tank-with-fpv-drone-in-lebanon/ |access-date=2026-05-03|work= militarnyi |language=en-GB}}</ref>
+
+==Derivatives==
+Following the [[Second Intifada]] the Israel Defense Forces modified some of their Merkavas to satisfy the needs of [[urban warfare]].
+
+===Merkava LIC===
+[[File:Merkeva Mk 3D - Israeli Tanks 2019-04-21 IZE-36.jpg|thumb|Merkava Mk 3D Baz with LIC upgrades]]
+These are Merkava Mark 3 BAZ or Mark 4 tanks, converted for urban warfare. The LIC designation stands for "[[low intensity conflict]]", underlining its emphasis on counter-insurgency, street-to-street inner-city asymmetrical type warfare of the 21st century.<ref name="defense1">{{cite web |url=http://www.defense-update.com/products/m/merkava-lic.htm |title=LIC Modeled Merkava Mk-3 Baz |access-date=2008-07-04 |work=Defense Update |archive-url=https://web.archive.org/web/20070627140305/http://www.defense-update.com/products/m/merkava-lic.htm |archive-date=June 27, 2007}}</ref>
+
+The Merkava is equipped with a turret 12.7&nbsp;mm caliber coaxial machine gun, which enables the crew to lay down fairly heavy cover fire without using the main gun (which is relatively ineffective against individual enemy combatants). Like the new remote-operated weapon station, the coaxial machine-gun is fired from inside the tank without exposing the crew to small-arms fire and snipers.
+
+The most sensitive areas of a tank, its optics, exhaust ports and ventilators, are all protected by a newly developed high-strength metal mesh to prevent explosive charges being planted there.<ref name="defense1"/>
+
+Rubber whip pole-markers with LED tips and a driver's rear-facing camera have been installed to improve navigation and maneuverability in an urban environment by day or by night.
+
+===Merkava ''Tankbulance''===
+{{unreferenced section|date=May 2024}}
+Some Merkava tanks are fitted with full medical and ambulance abilities while retaining their armament (but carrying less ammunition than the standard tank, having both ammunition racks in the rear removed). The cabin area is converted for carrying injured personnel and includes two [[stretcher]]s and [[life support]] medical station systems supplemented by a full medical team complement to operate under combat conditions with a Merkava battalion. The vehicle retains its rear door to facilitate evacuation under fire, and can provide cover-fire/fire-support to infantry.
+
+The "tankbulance" is not an unarmed ambulance and consequently is not protected by the [[Geneva Convention]]'s provisions regarding ambulances, but it is far less vulnerable to accidental or deliberate fire than an ambulance or [[armored personnel carrier]].
+
+===Merkava IFV ''Namer''===
+{{unreferenced section|date=October 2023}}
+{{Main|Namer}}
+[[File:IDF-Namer003.jpg|thumb|Namer in [[Yad La-Shiryon]] 62nd [[Independence Day (Israel)|Independence Day]] exhibition]]
+[[File:IDF-Nammer-CEV-01-Zachi-Evenor.jpg|thumb|Namer CEV in [[Yad La-Shiryon]] 68th Independence Day exhibition]]
+
+Namer (Hebrew: [[leopard]], which is also an abbreviation of Nagmash (APC) Merkava"), is an [[infantry fighting vehicle]] based on the Merkava Mark 4 chassis. In service since 2008, the vehicle was initially called ''Nemmera'' (Hebrew: leopardess), but later renamed to ''Namer''.{{Citation needed|date=October 2015}}
+
+Namer is equipped with a [[Samson Remote Controlled Weapon Station]] (RCWS) armed with either a .50 M2 Browning Heavy Machinegun or a [[Mk 19 grenade launcher|Mk 19 Automatic Grenade Launcher]]. It also has a 7.62&nbsp;mm [[FN MAG|MAG]] machine gun, 60&nbsp;mm mortar and smoke grenades. Like the Merkava Mark 4, it is optimized for high level of crew survival on the battlefield. The ''Namer'' has a three-man crew (commander, driver, and RCWS gunner) and may carry up to nine infantrymen and a stretcher. An ambulance variant can carry two casualties on stretchers and medical equipment.{{Citation needed|date=October 2015}}
+
+The [[Golani Brigade]] used two ''Namer'' IFVs during [[Operation Cast Lead]]. During [[Operation Protective Edge]] more than 20 vehicles were operated with great success and post operation analysis recommended procuring more of them.{{Citation needed|date=October 2015}}
+
+===Merkava ARV ''Nemmera''===
+{{unreferenced section|date=May 2024}}
+The Merkava armored recovery vehicle initially called ''Namer'' (Hebrew: leopard), but subsequently renamed ''Nemmera'' (Hebrew: leopardess) is an [[armored recovery vehicle]] based on a Merkava Mark 3 or 4 chassis. It can tow disabled tanks and carries a complete Merkava back-up power pack that can be changed in the field in under 90 minutes.
+
+===Merkava Howitzer ''Sholef''===
+{{More citations needed section |date=April 2019}}
+[[File:Sholef-beyt-hatotchan-2.jpg|thumb|Sholef in Beit ha-Totchan, [[Zikhron Ya'akov]], Israel.]]
+Two prototypes of ''Sholef'' ("Slammer", Hebrew slang for "Gunslinger") 155&nbsp;mm self-propelled howitzer with an automatic loading system were built by [[Soltam]] in 1984–86. The 45-tonne vehicle had a long [[155 mm]] gun barrel giving a range of 45+ km. Using [[GPS]], [[inertial navigation]], and an internal [[fire-control system|fire control]] computer, it was also capable of direct fire while on the move. It never entered production.<ref>{{cite web |url=http://www.israeli-weapons.com/weapons/vehicles/self_propelled_artillery/slammer/Slammer.html |title=Slammer |access-date=2008-07-04 |publisher=Israeli Weapons |archive-url=https://web.archive.org/web/20080617225521/http://www.israeli-weapons.com/weapons/vehicles/self_propelled_artillery/slammer/Slammer.html |archive-date=June 17, 2008}}</ref>
+
+The Slammer is a heavily armored [[artillery|artillery gun]] mounted on a modified Merkava Mk 1 chassis. Many of these vehicles are Merkava Mk 1 that were retired after the Merkava Mk 2 and Merkava Mk 3 came into service. The Slammer has a long 52-caliber gun barrel that allows +10% range. Reload speed may be decreased to 1 for one minute every 10 minutes through use of an automatic loader. Ammunition racks are large. The Slammer is ready for autonomous operation (without an [[Fire Direction Center|FDC]]) if the target's location is known within 15 seconds of a halt, using GPS, inertial navigation, and an internal fire control computer.
+
+The Slammer 155&nbsp;mm self-propelled howitzer is based on a modified Merkava MBT chassis fitted with a new welded steel turret, designed by Soltam Systems.
+
+Development commenced in the 1970s. The project was considered of high national priority and incorporated the newest technological developments. Instead the Israeli Defense Forces selected an upgraded version of American [[M109 howitzer]].
+
+The Sholef's chassis, aside from a few minor modifications, is identical to that of the Merkava Mk 3. The [[glacis plate]] is unchanged, except for the addition of a support bracket for the [[gun turret]], which is folded down when not in use. As such, the Sholef and Merkava series share a large percentage of common components. The front-left side of the chassis has a prominent exhaust [[louver]], along with a much smaller port just in front of it; the exact function of this port is uncertain, though the soot seen around it in photos of the Sholef suggests it may be a new or additional exhaust port, or perhaps an outlet for a [[smoke screen|smoke generator]].
+
+The Sholef can be ready to fire only 15 seconds after coming to a complete stop, and fire three projectiles in only 15 seconds. It is compatible with standard NATO 155&nbsp;mm ammunition, and a total of 75 projectiles can be stowed in one Sholef, 60 of which are ready for combat.
+
+The Sholef's 155&nbsp;mm/52 gun is an original design created by Soltam, though it bears a resemblance to South Africa's [[G5 howitzer]]. It has a [[fume extractor]] and [[muzzle brake]], and is kept stationary by a travel lock while the vehicle is on the move. This gun has a maximum rate of fire of 9 rounds/min, and a range in excess of 40,000 m when firing an ERFB-BB round. Though loaded automatically, the gun may be cycled and fire manually if the need arises. While the gun is normally carried by a travel lock as with most other self-propelled howitzers while the Sholef is on the move, the weapon is stabilized and can actually be used for direct-fire while the vehicle is moving, giving it much greater self-defense ability than most other vehicles of its type.
+
+A crew of four is required to fully operate the Sholef. Air conditioning and heating for the crew are provided, as is a [[ration heater]].{{dubious|date=April 2024|Ration heater}}
+
+The hull has the same ballistic protection as the Merkava Mk.III. The armor on the turret is sufficient to defeat [[small arms]] fire, [[shell (projectile)|shell]] splinters, [[blast overpressure]], and most [[heavy machine gun]] rounds. The armor is augmented by [[spall liners]], and the same overpressure [[CBRN defense|NBC system]] as the Merkava Mk.III is fitted. There is also a back-up collective NBC system.
+
+The running gear consists of six unevenly spaced rubber-tired roadwheels on each side, and five [[return roller]]s, the second from the rear of which is noticeably larger than the others. The [[drive sprocket]] is forward, and the conspicuously spoked [[idler wheel|idler]] is rear. These may be partially obscured by track skirts, of which the Merkava Mk.III has ten panels, with a wavering underside, and little coverage of the sprocket or idler.
+
+The ordnance is fitted with a fume extractor and a double-baffle [[muzzle brake]]. When travelling, the ordnance is held in position by a travel lock that is mounted on the forward part of the glacis plate and this is remotely operated from the crew compartment.
+
+Firing an ERFB-BB projectile, the 155&nbsp;mm 52 calibre ordnance has a maximum range of 40,000+ m.
+
+The 155&nbsp;mm 52 calibre ordnance and recoil system is of the companies well-proven type already used in its towed weapons. The [[breech block]] assembly is of the semi-automatic wedge type that contains an automatic primer feeding system that enables manual reloading of the primer without opening the breech. Turret traverse and weapon elevation is [[hydraulic]], with manual controls for emergency use.
+
+A maximum rate of fire of 9 rounds/min can be achieved due to the automatic computerised loading system, and a burst rate of fire of three rounds in 15 seconds.
+
+The high rate of fire can be achieved using the onboard ammunition supply or from ground-piled ammunition. The loading cycle is operated by two turret crewmen only, with the commander operating the computer and charge loader.
+
+The automatic loader has five main subsystems: projectile storage system; projectile transfer system; loading tray with flick rammer; charge loading tray and elevator for external charge supply; and projectile elevator for reloading the external storage or directly loading the gun.
+
+The internal projectile storage contains 60 projectiles ready for automatic loading with the remaining 15 stored in other locations. The system enables the handling of all kinds of projectiles in use without any adaptation.
+
+Charge loading is accomplished manually using a loading tray with the ignition primer being inserted automatically. All systems have a manual back-up so that, in the case of failure, the loading system may be operated partly or completely manually by only three crewmen, so allowing a continuous firing rate of 4 rounds/min.
+
+The computer also controls the functioning of the gun. The Loader Control System (LCS) consists of five main units:
+# The commander's panel provides the means for the commander to control the automatic loader and has a dedicated keyboard and supporting electronic circuits
+# The Central Control Unit (CCU) is based on the [[Intel 80286]] and produces all of the system's logic equations. The unit transfers commands through the serial communications ([[RS-422]]) to the computerised units and controls the display on the commander's panel
+# The Terminal Units (TUs) are based on the 8031 controller for purposes of independent control of the drive elements according to a functionally determined division. With the assistance of the terminal unit, a local mode can also be used in working with selected elements
+# For guiding operators and making round identification and fusing, the Operator's Panel (OP) includes a [[liquid-crystal display]] with fixed instructions and one [[dot matrix]] line.
+# The Loader Keyboard Panel (LKP) includes breech block closing switch, fire and local activation of the trays.
+
+The main operational roles are: firing from internal storage; firing for elevator – ground-piled ammunition; loading from elevator – external pile; synthesising fire programs; unloading; manual firing; identification; and fusing and checks.
+
+Standard equipment includes an NBC system of the overpressure type and an inertial navigation and aiming system designed for autonomous operations.
+
+According to Soltam Systems, the 155&nbsp;mm/52 caliber ordnance and automatic loader, or parts of the system, could be installed in other self-propelled artillery systems and used to upgrade other self-propelled systems such as the US-designed and built 155&nbsp;mm [[M109 howitzer|M109]] and [[M44 self propelled howitzer|M44]].
+
+== Successor (Carmel) ==
+On July 14, 2011, ''[[The Jerusalem Post]]'' reported that the IDF had begun developing a successor for the Merkava series of tanks. The development was begun in part by the arrival of the Trophy active protection system. With the system's ability to intercept threats at a stand-off distance, there was a review of the need for vehicles like the Merkava to have thick, heavy layers of armor.<ref>{{Cite news |url=https://www.jpost.com/Defense/Article.aspx?id=229295 |title=IDF considering replacements for heavy Merkava tank |work=The Jerusalem Post |date=July 14, 2011 |url-status=live |archive-url = https://web.archive.org/web/20130109041208/http://www.jpost.com/Defense/Article.aspx?id=229295 |archive-date=January 9, 2013}}</ref>
+
+The Merkava Tank Planning Directorate set up a team to study principles for a future tank and present ideas for an armored fighting vehicle to provide mobile firepower on a future battlefield. The team reviewed basic design principles including lessening its weight, armor thickness compared to an APS to intercept anti-tank threats, reducing the crew size, and the type of main gun. Horsepower abilities and heavy and light track systems compared to a wheeled chassis were also considered. With future battlefield condition developments affecting design features, the vehicle may not be considered a "tank" in the traditional sense.<ref>{{Cite news |date=August 14, 2011 |url=http://www.israeldefense.com/?CategoryID=411&ArticleID=549 |title= After the Merkava: The Next Generation Tank |work=Israel defense |archive-url=https://web.archive.org/web/20131016045917/http://israeldefense.com/?CategoryID=411&ArticleID=549 |archive-date= October 16, 2013}}</ref>
+
+By July 2012, details began to emerge of considerations for developing technologies for the new design. One possibility is the replacement of the traditional main gun with a [[directed-energy weapon|laser cannon]] or an [[railgun|electromagnetic cannon]]. Other improvements could include a [[hybrid electric vehicle|hybrid-electric engine]] and a reduced crew of two. The goals of the new tank are to make it faster, better protected, more interoperable and lethal than the prior Merkava.<ref>{{Cite news |last=Katz |first=Yaakov |date=July 12, 2012 |url=https://www.jpost.com/Defense/Article.aspx?id=277178 |title=The IDF's future tank: Electromagnetic cannon |work=The Jerusalem Post |url-status=live |archive-url=https://web.archive.org/web/20130103040434/http://www.jpost.com/Defense/Article.aspx?id=277178 |archive-date=January 3, 2013}}</ref>
+
+The 65-tonne Merkava is not regarded as useful for missions other than conventional warfare. The Israeli Army Armored Corps wants a lighter and highly mobile vehicle for rapid-response and urban warfare situations that can fill multiple roles. In 2012, the [[Ministry of Defense (Israel)|Defense Ministry]] drafted a program for development of a new family of light armored vehicles called ''Rakiya'' (Heavens), a Hebrew acronym for "future manned combat vehicle" (FMCV). The FMCV is planned to weigh 35 tonnes and have sufficient armor and weapons for both urban and conventional military operations. Instead of one multi-mission chassis, separate vehicles in distinct variants will perform different roles with all vehicles using common components. Vehicles are likely to be wheeled to maneuver in urban environments and move troops and equipment around in built-up areas.
+
+While the FMCV will be a fifth-generation vehicle as a follow-on to the Merkava IV, it will not be a replacement for the tank. The Merkava and Namer heavy tracked vehicles will remain in service for decades, while FMCV vehicles are to address entirely different operational requirements.
+
+Although the program seems similar to the American [[Future Combat Systems]] effort, which failed to produce a family of rapidly deployable lightweight ground vehicles, program officials say they learned from the American experience and that the FMCV was more focused and driven by simpler and more reasonable requirements based on cost considerations.
+
+Officials expect requirements for a range of configurations for FMCV light armored vehicles to be approved in 2014 and solicited to Israeli and American companies. The IDF hoped the FMCV family of vehicles would be operational by 2020.<ref>{{Cite news |last=Opall-Rome |first=Barbara |date=December 16, 2012 |url= http://www.defensenews.com/article/20121216/DEFREG04/312160001/Israel-Develop-Family-New-Armored-Vehicles |title=Israel to Develop Family of New Armored Vehicles |work=Defense news |archive-url=https://archive.today/20140206025922/http://www.defensenews.com/article/20121216/DEFREG04/312160001/Israel-Develop-Family-New-Armored-Vehicles |archive-date=February 6, 2014}}</ref><ref>{{Cite news |url=http://www.worldtribune.com/2013/01/16/israel-lightens-up-will-replace-heavy-tanks-with-versatile-light-armored-vehicles/ |title=Israel lightens up: Will replace heavy tanks with versatile light armored vehicles |work= The World tribune |date=January 16, 2013 |archive-url=https://web.archive.org/web/20140202200940/http://www.worldtribune.com/2013/01/16/israel-lightens-up-will-replace-heavy-tanks-with-versatile-light-armored-vehicles/ |archive-date=February 2, 2014}}</ref> The program was named Carmel around 2016, and three contractors, [[Elbit Systems|Elbit]], [[Rafael Advanced Defense Systems|Rafael]] and [[Israel Aerospace Industries|Israel Aerospace Industries (IAI)]], were to produce three prototypes by 2019.<ref name=gross/>
+
+On August 4, 2019, all three prototypes were tested. IAI's model was based on the company's existing unmanned, autonomous drone platforms, operated by a [[Xbox Wireless Controller|controller]] from the [[Xbox]] video game system; the tank had a large panoramic display, was able to assist the crew members in identifying targets and selecting weapons, and could drive itself in some terrains.
+
+Elbit's model used its Iron Vision helmets, which works with cameras and sensors on the outside of the tank to give the soldiers inside a 360-degree field of vision. It is a variation on a similar helmet that the company created for the [[F 35|F-35 fighter jet]]. A number of other autonomous and AI systems also assist the soldiers inside in identifying targets and general decision-making.
+
+Rafael's prototype used a transparent cockpit design that also gave the two soldiers inside a 360-degree field of view. Its augmented reality systems allowed the crew members to quickly see targets, friendly forces and important locations. The Rafael tank also had "an autonomous mission support system, for autonomous mission planning, driving, and simultaneous operation of all vehicle weapon systems, all based on combat artificial intelligence capabilities".<ref name=gross>{{cite news |last=Gross |first=Judah Ari |title=Defense Ministry unveils 3 prototypes for Israel's tanks of the future |url=https://www.timesofisrael.com/defense-ministry-unveils-3-prototypes-for-israels-tanks-of-the-future/ |date=4 August 2019|newspaper=[[The Times of Israel]] |language=en-US |issn=0040-7909}}</ref>
+
+In 2021, Israel Aerospace Industries (IAI) was selected to lead the next phase of Carmel's development.<ref>{{cite news |last=Saballa |first=Joe |date=12 October 2021 |title=IAI to Lead Development of Israel's Future Carmel Tank |website=The Defense Post |url=https://www.thedefensepost.com/2021/10/12/iai-israel-carmel-tank/}}</ref>
+
+==Export==
+In May 2012, Israel offered procurement of Merkava IV tanks to the [[Colombian Army]]. The sale would include 25–40 tanks at an approximate cost of $4.5 million each,<ref name="CalcalistMay24-2016">{{Cite news |last=Etzion |first=Udi |date=June 8, 2014 |url=http://www.calcalist.co.il/articles/0,7340,L-3632951,00.html |title=For the first time: the chariot tank will be sold to a foreign army |work=Calcalist |language=he |url-status=live |archive-url=https://web.archive.org/web/20160524041417/http://www.calcalist.co.il/articles/0,7340,L-3632951,00.html |archive-date=May 24, 2016}}</ref> and several [[Namer]] APCs. With the threat of the expanding [[National Armed Forces of the Bolivarian Republic of Venezuela|Venezuelan military]], it would strengthen Colombian armored forces against Venezuelan [[T-72]] tanks.<ref>{{Cite news |last=Egozi |first=Arie |date=May 17, 2012 |url=http://www.israeldefense.com/?CategoryID=483&ArticleID=1260 |title=Israel Offers Merkava IV Tanks to Colombia |work=Israel defense |archive-url=https://web.archive.org/web/20131111222428/http://www.israeldefense.com/?CategoryID=483&ArticleID=1260 |archive-date=November 11, 2013}}</ref>
+
+In 2014, Israel reported that exports of the Mk 4 had begun; the purchasing country's name was not disclosed for security reasons.<ref>{{cite web |url=http://english.sina.com/world/2014/0608/707464.html |title=Israel sells Merkava tank to foreign military for budget reasons: report - World News - SINA English |website=english.sina.com |access-date=March 14, 2018 |url-status=live |archive-url=https://web.archive.org/web/20160304000452/http://english.sina.com/world/2014/0608/707464.html |archive-date=March 4, 2016}}</ref>
+
+In July 2022, the [[armoured vehicle-launched bridge]] (AVLB) variant of the Merkava 4 called the Tagash was delivered to the Philippine Army as part of a government-to-government deal with Israel.<ref name="Shephard AVLB Phils">{{cite web |last1=Arthur |first1=Gordon |title=Merkava-based AVLBs reach the Philippines |url=https://www.shephardmedia.com/news/landwarfareintl/merkava-based-avlbs-reach-the-philippines/ |website=Shephard Media |access-date=15 July 2022 |date=15 July 2022}}</ref>
+
+==Operators==
+[[File:Merkava operators.svg|thumb|400px|A map of operators of the Merkava or its variants]]
+<!--READ FIRST: This section is for cited entries only. Please do not add entries into this list without a citation from a reliable source. All entries without a citation will be removed. Thank you.-->
+
+===Current operators===
+;{{flag|Israel}}
+* [[Israeli Ground Forces]]<ref>{{Cite web |last=Fabian |first=Emanuel |title=In first, Israel plans to sell vaunted Merkava tank to 2 countries, one in Europe |url=https://www.timesofisrael.com/in-first-israel-plans-to-sell-vaunted-merkava-tank-to-2-countries-one-in-europe/ |access-date=2023-08-04 |website= Times of Israel |date=June 15, 2023 |language=en-US}}</ref>
+
+;{{flag|Philippines}}
+* [[Philippine Army]]: Merkava AVLB armoured vehicle-launcher bridge.<ref name="PNA AVLB">{{cite news |last1=Nepomuceno |first1=Priam |title=Army's Israeli-made AVLBs now for inspection |url=https://www.pna.gov.ph/articles/1178919 |access-date=15 July 2022 |work=Philippine News Agency |date=14 July 2022}}</ref>
+
+===Potential operators===
+* {{flag|Cyprus}}: Discussing the purchase of second-hand Merkava Mark 3s in 2023.<ref>{{cite web |last1=Tibon |first1=Amir |last2=Yaron |first2=Oded |title=Israel Plans to Sell Its Merkava Tanks to Cyprus |url=https://www.haaretz.com/israel-news/security-aviation/2023-06-22/ty-article/israel-cyprus-plans-to-sell-its-merkava-tanks/00000188-e278-d7f8-abbb-e6ff5f2c0000 |website=Haaretz |access-date=25 June 2023 |archive-url=https://web.archive.org/web/20230625115828/https://www.haaretz.com/israel-news/security-aviation/2023-06-22/ty-article/israel-cyprus-plans-to-sell-its-merkava-tanks/00000188-e278-d7f8-abbb-e6ff5f2c0000 |archive-date= 25 June 2023 |date=22 June 2023 |url-status=live}}</ref> Cyprus was later able to buy US weapons, and it was speculated in 2025 that US [[M1 Abrams]] might be preferred.<ref>{{cite magazine|last=Iddon|first=Paul|title=Cyprus Can Now Buy U.S. Arms, Here's What Its Shopping List Might Be|magazine=Forbes|date=24 January 2025|url=https://www.forbes.com/sites/pauliddon/2025/01/24/cyprus-can-now-buy-us-arms-heres-what-its-shopping-list-might-be/}}</ref> Also, due to the [[Gaza war|conflict between Israel and Hamas]], Israeli arms exports were halted, causing concerns in Nicosia about future spare parts availability.<ref>{{cite news|publisher=Knews (Cyprus)|title=Cyprus reconsiders defense strategy amidst global conflicts|date=1 July 2024|url=https://knews.kathimerini.com.cy/en/news/cyprus-reconsiders-defense-strategy-amidst-global-conflicts}}</ref>
+
+==References==
+{{Reflist}}
+
+==Bibliography==
+* {{Cite book |last1=Cordesman |first1=Anthony H |last2=Sullivan |first2=William D |year=2007 |title=Lessons of the 2006 Israeli-Hezbollah War |publisher=CSIS}}
+* {{Cite book |last=Gelbart |first=Marsh |year=2005 |title=Merkava: A History of Israel's Main Battle Tank Der Kampfpanzer der Israelischen Armee |publisher=Tankograd Publishing}}
+
+==Further reading==
+* {{Cite book |last=Chasnoff |first=Joel |author-link=Joel Chasnoff |title=The 188th Crybaby Brigade: A Skinny Jewish Kid from Chicago Fights Hezbollah—A Memoir |isbn=978-1416549321 |year=2010 |publisher=Free Press |url-access=registration |url=https://archive.org/details/188thcrybabybrig0000chas}}
+
+== External links ==
+* {{Commons-inline}}
+
+{{Israeli AFVs}}
+{{Cold War tanks|style=wide}}
+{{Post–Cold War tanks|style=wide}}
+
+[[Category:Articles containing video clips]]
+[[Category:Israeli inventions]]
+[[Category:Main battle tanks of Israel]]
+[[Category:Main battle tanks of the Cold War|Merkava Mark 1 2]]
+[[Category:Main battle tanks of the post–Cold War period]]
+[[Category:Military vehicles introduced in the 1970s]]

@@ -1,0 +1,105 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Held tier-5 English Wikipedia compilation for the Merkava main battle tank. The registry marks primary_held false. It publishes the mass, the length with and without the gun barrel, the width excluding skirts, the height to the turret roof, the ground clearance, the engine rating, the transmission, the road and cross-country speeds and the range. The infobox figures are those of the current Mark, so the entry names the Mk 4.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "merkava_mk4",
+      "canonical_name": "Merkava Mk 4",
+      "maker": "Israel Military Industries",
+      "model": "Merkava",
+      "variant": "Mk 4",
+      "variant_id": "merkava_mk4",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Israel",
+      "era": "modern",
+      "aliases": [
+        "merkava",
+        "merkava mk 4",
+        "merkava mk4"
+      ],
+      "keywords": [
+        "mbt",
+        "main battle tank",
+        "tracked",
+        "merkava"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 65000,
+          "unit": "kg",
+          "source": "wikipedia_merkava",
+          "locator": "Infobox, weight row",
+          "state": "mass published as 65 t; the tonne taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 9040,
+          "unit": "mm",
+          "source": "wikipedia_merkava",
+          "locator": "Infobox, length row, with gun barrel entry",
+          "state": "length published as 9.04 m including the gun barrel; the same row publishes 7.60 m excluding the gun barrel",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3720,
+          "unit": "mm",
+          "source": "wikipedia_merkava",
+          "locator": "Infobox, width row",
+          "state": "width published as 3.72 m excluding the skirts",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2660,
+          "unit": "mm",
+          "source": "wikipedia_merkava",
+          "locator": "Infobox, height row",
+          "state": "height published as 2.66 m to the turret roof",
+          "grade": "claimed"
+        },
+        "ground_clearance_mm": {
+          "value": 450,
+          "unit": "mm",
+          "source": "wikipedia_merkava",
+          "locator": "Infobox, clearance row",
+          "state": "ground clearance published as 0.45 m; the metre figure converted to mm",
+          "grade": "claimed"
+        },
+        "net_power_kw": {
+          "value": 1119,
+          "unit": "kW",
+          "source": "wikipedia_merkava",
+          "locator": "Infobox, engine row",
+          "state": "engine published as an MTU 12V883 turbocharged diesel of 1,119 kW, with no net basis stated",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "MTU 12V883",
+          "unit": "text",
+          "source": "wikipedia_merkava",
+          "locator": "Infobox, engine row",
+          "state": "engine published as an MTU 12V883 turbocharged diesel",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 64,
+          "unit": "km/h",
+          "source": "wikipedia_merkava",
+          "locator": "Infobox, speed row, on road entry",
+          "state": "maximum road speed published as 64 km/h; the off-road speed is published as 55 km/h",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 500,
+          "unit": "km",
+          "source": "wikipedia_merkava",
+          "locator": "Infobox, vehicle range row",
+          "state": "range published as 500 km",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

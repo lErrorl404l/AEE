@@ -1,0 +1,88 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-5 English Wikipedia article 'FV510 Warrior'. The article is a secondary compilation, so every value is grade claimed and the registry marks primary_held false. It holds the FV510 Warrior infantry fighting vehicle as a tracked entry. It publishes identity, the mass, the overall length, width and height, the engine model, the engine rating of 550 hp with no net basis, the maximum road speed and the operational range. It publishes no ground clearance, no track shoe width, no track pitch, no transmission class and no grouser statement, so the entry is not runtime-ready. No stronger source is held: no UK AESP or maker datasheet for the Warrior is on the two manual mirrors that served the other captures.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "fv510_warrior",
+      "canonical_name": "FV510 Warrior",
+      "maker": "GKN Sankey / BAE Systems",
+      "model": "Warrior",
+      "variant": "FV510 infantry fighting vehicle",
+      "variant_id": "fv510_warrior",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "United Kingdom",
+      "era": "modern",
+      "aliases": ["warrior", "fv510", "fv510 warrior", "warrior tracked armoured vehicle"],
+      "keywords": ["ifv", "tracked", "warrior", "infantry fighting vehicle"],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 25400,
+          "unit": "kg",
+          "source": "wikipedia_fv510_warrior",
+          "locator": "Infobox, Specifications section, Mass row",
+          "state": "mass published as 25.4 tonnes (25.0 long tons; 28.0 short tons); recorded as 25,400 kg with the tonne taken as 1,000 kg; the article states no kerb or gross weight",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6300,
+          "unit": "mm",
+          "source": "wikipedia_fv510_warrior",
+          "locator": "Infobox, Specifications section, Length row",
+          "state": "overall length, published as 6.3 m (20 ft 8 in); the published metre figure used directly",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3030,
+          "unit": "mm",
+          "source": "wikipedia_fv510_warrior",
+          "locator": "Infobox, Specifications section, Width row",
+          "state": "overall width, published as 3.03 m (9 ft 11 in); the published metre figure used directly",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2800,
+          "unit": "mm",
+          "source": "wikipedia_fv510_warrior",
+          "locator": "Infobox, Specifications section, Height row",
+          "state": "overall height, published as 2.8 m (9 ft 2 in); the published metre figure used directly",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Perkins V-8 Condor Diesel",
+          "unit": "text",
+          "source": "wikipedia_fv510_warrior",
+          "locator": "Infobox, Specifications section, Engine row",
+          "state": "engine published as a Perkins V-8 Condor Diesel",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 550,
+          "unit": "hp",
+          "source": "wikipedia_fv510_warrior",
+          "locator": "Infobox, Specifications section, Engine row",
+          "state": "engine published as a Perkins V-8 Condor Diesel, 550 hp (410 kW), with no net basis",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 75,
+          "unit": "km/h",
+          "source": "wikipedia_fv510_warrior",
+          "locator": "Infobox, Specifications section, Maximum speed row",
+          "state": "maximum road speed, published as 46 mph (75 km/h) on road; the same row publishes 31 mph (50 km/h) off road as a separate state",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 660,
+          "unit": "km",
+          "source": "wikipedia_fv510_warrior",
+          "locator": "Infobox, Specifications section, Operational range row",
+          "state": "operational range, published as 410 mi (660 km); the article states no fuel load or road state",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

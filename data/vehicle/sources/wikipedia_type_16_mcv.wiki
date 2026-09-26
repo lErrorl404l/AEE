@@ -1,0 +1,218 @@
+{{Short description|Japanese wheeled armoured fighting vehicle}}
+{{more citations needed|date=January 2013}}
+{{AI-generated|date=October 2025}}
+{{Use American English|date=March 2021}}
+{{Use dmy dates|date=May 2021}}
+{{Infobox weapon
+| is_vehicle         = yes
+| name               = Type 16 MCV
+| image              = File:JGSDF Type 16 Maneuver Combat Vehicle (26-7978) left front view at JASDF Hamamatsu Air Base October 23, 2022 01.jpg
+| image_size         = 300
+| caption            = The Type 16 on display at Hamamatsu Air Base
+| type               = [[Armored car (military)|armored car]]<br />[[assault gun]]<br />[[tank destroyer]]
+| origin             = Japan
+| designer           = TRDI (Technical Research & Development Institute){{efn|Became the [[Acquisition, Technology & Logistics Agency]] in 2015.}}
+| design_date        = 2007 onwards
+| manufacturer       = [[Mitsubishi Heavy Industries]]
+| developed_into     = [[Common tactical wheeled vehicle]]
+| unit_cost          = 700 million yen (5.1 million USD)<ref>{{Cite web| url=http://www.mof.go.jp/budget/budger_workflow/budget/fy2016/seifuan28/12-1.pdf | title=平成２８年度防衛関係予算のポイント | language=ja | trans-title=Key Points of the FY2016 Defense-Related Budget | access-date=23 January 2016 | archive-date=17 April 2016 | archive-url=https://web.archive.org/web/20160417104122/http://www.mof.go.jp/budget/budger_workflow/budget/fy2016/seifuan28/12-1.pdf | url-status=dead}}</ref>
+| production_date    = planned start in 2015
+| number             = 142 (as of FY2020)<ref>{{Cite web|url=https://www.mod.go.jp/e/d_act/d_budget/index.html|title=Defense Budget |publisher=Ministry of Defense|website=www.mod.go.jp |archive-url=https://web.archive.org/web/20200511102839/https://www.mod.go.jp/e/d_act/d_budget/index.html |archive-date=11 May 2020}}</ref>
+| variants           = [[Mitsubishi Armored Vehicle]] <!-- A derived wheeled 'heavy' [[Armoured personnel carrier|APC]] intended to be the baseline for a new family of vehicles including a armored field ambulance and a command & communications vehicle. Still at the concept stage, with a model displayed at the 2014 [[Eurosatory]] show.<ref name=ArmRecMav>{{cite web |url=http://www.armyrecognition.com/eurosatory_2014_show_daily_news_coverage_report/japanese_defense_company_mitsubishi_presents_new_concept_of_8x8_armoured_vehicle_at_eurosatory_27071.html |title=Japanese Defense Company Mitsubishi presents new concept of 8x8 armoured vehicle at Eurosatory |date=27 July 2014 |website=armyrecognition.com |publisher=Army Recognition  |access-date=2 September 2015 }}</ref> -->
+| crew               = 4 {{efn|some prototypes equipped with an [[autoloader]] had a crew of three}}
+| length             = {{convert|8.45|m|ftin|abbr=on}}
+| width              = {{convert|2.98|m|ftin|abbr=on}}
+| height             = {{convert|2.87|m|ftin|abbr=on}}
+| weight             = 26 tonnes
+| primary_armament   = 105 mm L/52 gun (developed by [[Japan Steel Works]])<ref>{{Cite web|url=http://combat1.sakura.ne.jp/KIDOU.htm|title=16式機動戦闘車|website=combat1.sakura.ne.jp}}</ref>
+| secondary_armament = [[.50 BMG|12.7 mm (0.5 in)]] [[M2 Browning machine gun]], [[7.62×51mm NATO|7.62 mm NATO]] coaxial [[Sumitomo Type 62#Type 74|Sumitomo Type 74]] machine gun (replacing M2 Browning)
+[[Howa Type 96|Type 96 40 mm Automatic grenade launcher]] or [[FN Minimi]] [[5.56×45mm NATO|5.56 mm NATO]] light machine gun<ref name="auto">{{Cite web|url=https://drive.google.com/file/d/1gvznC97Tt_lUyY49x_Pae3FslIV1nUHa/view?usp=sharing&usp=embed_facebook|title=16式機動戦闘車 仕様書 GV-Y120003C.pdf|website=Google Docs}}</ref>
+| engine             = 4-cylinder water-cooled<br />turbocharged  [[Diesel engine|diesel]] 11.3 litre
+| engine_power       = {{convert|570| hp|abbr=on}}
+| pw_ratio           = 21.9 hp/tonne
+| suspension         = Wheeled [[Eight-wheel drive|8 x 8]]
+| speed              = {{convert|100|km/h|mph|abbr=on}}
+| vehicle_range      = {{convert|400| km|abbr=on}}
+}}
+
+The {{nihongo|'''Type 16 MCV'''|16式機動戦闘車|ichirokushiki kidousentousha|Type 16 Maneuver Combat Vehicle}} is a wheeled armored fighting vehicle of the [[Japan Ground Self-Defense Force]] (JGSDF).
+
+The Type 16 MCV equips designated combat units.  Due to its light weight and small size, it is designed for easy deployment (by aircraft if needed) allowing rapid movement on narrow roads and in built-up areas in response to various contingencies. Despite its small size and light armor, it can successfully attack much larger [[Armoured fighting vehicle|armored fighting vehicles]] as well as personnel, using its large caliber gun.<ref>{{Cite web|url=https://www.mod.go.jp/trdi/data/pdf/kouhou/yourann2011.pdf|archiveurl=https://web.archive.org/web/20120420150904/http://www.mod.go.jp/trdi/data/pdf/kouhou/yourann2011.pdf|url-status=dead|title=防衛省・自衛隊：防衛省ウェブサイトのＨＴＴＰＳへの切り替えのお知らせ|archivedate=20 April 2012|website=www.mod.go.jp}}</ref>
+
+==History==
+[[File:Kidousentousha.jpg|thumb|PR image from the TRDI / MOD illustrating MCV and possible use.]]
+
+The first concept for a Japanese wheeled chassis mounting a 105&nbsp;mm cannon appeared with the {{ill|将来装輪戦闘車両|lt="Future Combat Vehicle"|ja}} (将来装輪戦闘車両) program in 2003. The program was centered around a universal wheeled chassis mounting a variety of weaponry including a 40&nbsp;mm CTA cannon, 120&nbsp;mm mortar system, 155&nbsp;mm howitzer, and a 105&nbsp;mm cannon. The Future Combat Vehicle program was cancelled due to development expenses, but the concept for a 105&nbsp;mm cannon would be expanded upon in the Light Combat Vehicle Program.
+
+The LCV program was a technology demonstration to explore the viability of multiple concepts that would possibly be integrated into the maneuver combat vehicle development.<ref name=":0">{{Cite web|title=軽量戦闘車両システムの研究（その１）－フィージビリティスタディ－|url=https://www.mod.go.jp/atla/research/ats2015/image/pdf/o1-9.pdf|url-status=live|archive-url=https://web.archive.org/web/20170322114024/http://www.mod.go.jp/atla/research/ats2015/image/pdf/o1-9.pdf|archive-date=22 March 2017}}</ref> These include IED and mine resistance, individual motors inside of the wheels, air transportability inside of a C-2 and [[Lockheed C-130 Hercules]], passive hydro-pneumatic suspension to reduce recoil and a double action low recoil cannon<ref>{{Cite web|title=TRDI News|url=https://www.mod.go.jp/trdi/news/1412_1.html|url-status=dead|archive-url=https://web.archive.org/web/20150225040703/http://www.mod.go.jp/trdi/news/1412_1.html|archive-date=25 February 2015|website=Technical Research & Development Institute}}</ref> that could provide indirect and direct fire. Initial designs for the LCV called for a 6x6 design,<ref name=":0" /> but that concept was scrapped in favor of an 8x8 design for the MCV. Other concepts that would be omitted from the Type 16 include the in-wheel engines, transport inside of the C-130, and indirect fire capability of the main cannon. The IED/ anti-tank mine resistance became an optional plate for the undercarriage that Type 16 crews can special order for their vehicle.<ref name="auto"/> After the concept was confirmed to be viable, work began on creating a new vehicle that would incorporate what was learned from the LCV project.
+
+The Technical Research & Development Institute of [[Ministry of Defense (Japan)|Japan's Ministry of Defense]] had made several prototype vehicles since 2008.  They unveiled their fourth of what were initially called "mobile combat vehicle" prototypes on 9 October 2013. JGSDF service [[Acceptance testing|Acceptance tests]] were scheduled to begin in 2014 or 2015, with initial operational deployment by the JGSDF planned for 2016.<ref>[http://www.armedforces-int.com/news/japanese-mcv-combat-vehicle-design-unveiled.html Japanese MCV Combat Vehicle Design Unveiled] – Armedforces-Int.com, 11 October 2013</ref> 99 MCVs were originally planned to be introduced by the end of FY 2018.<ref name="defensenews12oct14" /> The name of the vehicle was changed to ''maneuver combat vehicle'' during the second half of 2011.
+
+For [[Fiscal year|FY]]2016, the MOD has requested funding for 36 examples of the MCV, to enter service with elements of the [[8th Division (Japan)|8th Division]] at [[Kumamoto]], and the [[14th Brigade (Japan)|14th Brigade]] at [[Zentsūji, Kagawa|Zentsūji]]. Both formations are currently planned for conversion to [[rapid reaction force]]s<ref name=AJW>{{cite news |title=Record defense budget request shifts focus to islands closest to China |url=http://ajw.asahi.com/article/behind_news/politics/AJ201509010032 |date=1 September 2015 |newspaper=[[The Asahi Shimbun]] |access-date=1 September 2015 |url-status=dead |archive-url=https://web.archive.org/web/20150904052940/http://ajw.asahi.com/article/behind_news/politics/AJ201509010032 |archive-date=4 September 2015 }}</ref> (though these plans, as with the original plans for the MCV, were as of mid-2015 under review and subject to possible major revision. The intention is for the MCV to act as both as a rapid reaction asset against [[Conventional warfare|conventional incursions]] on the outer islands and as a [[counter-insurgency]] vehicle against [[Unconventional warfare|asymmetrical attacks]] in urban areas of Japan by enemy special forces, intelligence operatives, or their [[State-sponsored terrorism|proxies]].
+
+The MCV was part of a new armored vehicle strategy that prioritized light [[Airlift|air-transportable]] firepower. Originally the number of [[main battle tank]]s was to be reduced from 760 to 390, with most remaining tanks to be concentrated on the main Japanese islands of [[Hokkaido]] and [[Kyushu]]. Some 200–300 MCVs were to be procured and these would be airlifted to islands when and where they were needed.  The idea was that the smaller, lighter, and faster MCV could be redeployed quicker than tanks to better defend the outlying islands.<ref>[http://asia.nikkei.com/Politics-Economy/Policy-Politics/Japan-going-light-on-tanks-in-new-defense-plan Japan going light on tanks in new defense plan] {{Webarchive|url=https://web.archive.org/web/20131128185805/http://asia.nikkei.com/Politics-Economy/Policy-Politics/Japan-going-light-on-tanks-in-new-defense-plan |date=28 November 2013 }}, Asia.nikkei.com, 22 November 2013</ref> This represented a shift in Japanese armored vehicle structure from one designed to repel a [[Soviet Union|Soviet]] invasion from the north to a more mobile force aimed at possibly defending against a Chinese invasion of the southern island chain.<ref name="defensenews12oct14">{{Deprecated archive|url=https://archive.today/20141018172436/http://www.defensenews.com/article/20141012/SHOWSCOUT04/310120023/Japan-Emphasize-Military-Mobility-MCV|title=Japan To Emphasize Military Mobility With MCV}}, Defensenews.com, 12 October 2014</ref>
+
+The MCV was intended to help re-equip existing divisions and brigades reorganised into mobile (rapid reaction) divisions/brigades, as well as equip new dedicated rapid reaction regiments alongside (eventually) the [[light-weight combat vehicle]] (LCV) which was also designed with defense of the outer islands in mind.
+
+On March 15, 2023, ATLA announced that 250 MCVs will be brought into JGSDF service.<ref>{{cite web | url=https://www.janes.com/defence-news/land-forces/latest/dsei-japan-2023-japan-plans-induction-of-250-type-16-mcvs | title=DSEI Japan 2023: Japan plans induction of 250 Type 16 MCVS | date=16 March 2023 }}</ref>
+
+In April 2026, the Type 16 was deployed overseas during the Balikatan 2026 multinational exercises.<ref>{{Cite web | title=80年ぶり！ 日本の「戦闘車両」が精鋭部隊とともにフィリピン上陸 いったい何が？ {{!}} 乗りものニュース | url=https://trafficnews.jp/post/653647 | access-date=2026-09-05 | website=trafficnews.jp | date=10 April 2026 }}</ref>
+
+In May 2026, the Philippines is evaluating the Type 16 for a potential purchase in using fire support vehicles suitable for archipelagic defence.<ref>{{cite web | title=Philippines tests Type 16 wheeled armour | date=14 May 2026 | url=https://indefencemag.com/philippines-tests-type-16-wheeled-armour/ }}</ref>
+
+==Design==
+MCVs are expected to be highly functional, but can also be loaded on [[Kawasaki C-2]] transport aircraft.<ref>[空輸試験性能 http://oretumariore.blog121.fc2.com/blog-entry-780.html]</ref> JMSDF is dedicated to securing transport vessels for maritime transport independently, and will be carried on these vessels and transported to the [[Okinawa Islands]].
+
+The main gun is manually loaded as a cost-saving measure.  Some critics have expressed doubts about its effectiveness due to this strain on the crew in hot conditions, as the vehicle does not have [[HVAC|air conditioning]].<ref name="defensenews12oct14"/>
+
+In 2009, resistance testing of the shielding against HEAT rounds was conducted using the [[Carl Gustav recoilless rifle|Carl Gustav M2]]; and against regular kinetic ammunition the frontal shield was developed to resist shots from 20&nbsp;mm to 30&nbsp;mm autocannons while the side armor was deemed sufficient to resist 14.5&nbsp;mm heavy machine gun fire.
+
+== Variants ==
+{{main|Common tactical wheeled vehicle}}
+In June 2014, Mitsubishi Heavy Industries unveiled the MAV (Mitsubishi Armored Vehicle), an eight-wheeled armoured vehicle, at the Eurosatory defence and security trade show in France. The MAV incorporates technology from the Type 16 Maneuver Combat Vehicle and was developed independently by Mitsubishi, rather than under the direction of Japan's Ministry of Defence. A prototype has already been built and undergone internal testing. The Armoured Personnel Carrier (APC) variant of the MAV measures 8 metres in length, 2.98 metres in width, and 2.2 metres in height, with an unladen weight of 18 tonnes. These dimensions do not include additional protection such as slat armour or reactive armour. Its maximum combat weight is 28 tonnes. The model displayed at Eurosatory featured slat armour. For protection against landmines and improvised explosive devices (IEDs), the vehicle includes floating seats inside and can be fitted with V-shaped add-on armour underneath. It is designed to carry a crew of 11, including the commander and driver.
+
+Various MAV variants are under consideration, including an armoured field ambulance and command and communications vehicle, both featuring a higher cabin roof than the APC version. A broader development programme known as the “Common Tactical Wheeled Vehicle” is also underway, aiming to standardise platforms based on the Type 16. A prototype of an infantry fighting vehicle fitted with a 30mm autocannon and a self-propelled 120mm mortar variant was sighted in September 2022. By spring 2023, a reconnaissance combat vehicle variant had also been seen, featuring the same 30mm cannon as the infantry fighting vehicle, along with a retractable surveillance sensor and a satellite communications dome.<ref>{{Cite web |url=http://www.tokyo-dar.com/news/143/ |title=三菱重工、ユーロサトリで新型装輪装甲車を発表(東京防衛航空宇宙時評) |publisher= |accessdate=2014-10-23 |archiveurl=https://web.archive.org/web/20140623175131/http://www.tokyo-dar.com/news/143/ |archivedate=2014-06-23 |url-status=dead}}</ref><ref>{{Cite news|title=「砲塔付き!?」御殿場で発見！ 陸上自衛隊の新型戦闘車両 採用はもうすぐ？|newspaper=乗りものニュース |date=2022-10-02|url=https://trafficnews.jp/post/122190|accessdate=2022-11-19}}</ref><ref>{{Cite web |url=https://trafficnews.jp/post/127394 |title=「新型!?」テスト中の自衛隊NEW戦闘車両を激写！ 車体後部には見慣れない装備も |access-date=2023-09-02 |publisher=乗りものニュース |date=2023-08-08}}</ref>
+
+On 31 August 2023, Japan's Ministry of Defence included budget allocations in its FY2024 request for the procurement of 24 infantry fighting vehicles and eight self-propelled mortar vehicles. As a result, three MAV-based variants are planned for procurement: the “{{ill|Type 24 Wheeled Armored Fighting Vehicle|ja|24式装輪装甲戦闘車}}” (infantry fighting vehicle), the “{{ill|Type 24 Wheeled 120mm Mobile Mortar|ja|24式機動120mm迫撃砲}}” (self-propelled mortar), and a reconnaissance combat variant of the Common Tactical Wheeled Vehicle, which, although unnamed as of now, is expected to follow a year behind the other two in deployment. Both vehicles debuted at the 2025 Fuji Firepower exercises with the Type 24 Reconnaissance and Surveillance Vehicle.<ref>{{Cite web | title=一挙に新型装備4種を公開！ 陸上自衛隊による大規模実弾射撃演習「富士総合火力演習」レポート {{!}} Motor-Fan[モーターファン] 自動車関連記事を中心に配信するメディアプラットフォーム | url=https://motor-fan.jp/mf/article/335268/ | access-date=2025-08-18 | website=motor-fan.jp}}</ref>
+
+Following the cancellation of the “{{ill|Improved Wheeled Armoured Vehicle|ja|装輪装甲車 (改)}}” programme intended to replace the Type 96 Wheeled Armoured Personnel Carrier, the FY2019 budget allocated 2.1 billion yen for the acquisition and testing of candidate vehicles for Japan's next-generation wheeled armoured vehicle. On 10 September 2019, it was announced that trials would be conducted with three candidates: a prototype developed by Mitsubishi based on the Type 16, the Patria AMV from Finland, and the LAV 6.0 from General Dynamics Land Systems. Ultimately, on 9 December 2022, the Ministry of Defence selected the Patria AMV for adoption, and Mitsubishi's MAV-based proposal was not chosen.<ref>{{Cite web|url=https://www.mod.go.jp/j/yosan/yosan_gaiyo/2019/yosan.pdf |title=我が国の防衛と予算－平成31年度予算の概要－ |publisher=防衛省 |accessdate=2020-04-05}}</ref><ref>{{Cite web|url=https://www.mod.go.jp/atla/pinup/pinup310910_02.pdf|title=次期装輪装甲車の試験用車種の選定について|date=2019-09-10|publisher=[[:ja:防衛装備庁]]|accessdate=2020-04-05}}</ref><ref>{{Cite web |url=https://www.jwing.net/news/59734 |title=【速報】陸自、次期装輪装甲車はパトリア「AMV」に|date=2022-12-09 |access-date=2022-12-09}}</ref><ref>[https://www.mod.go.jp/atla/pinup/pinup041209.pdf 次期装輪装甲車（人員輸送型）の車種決定について] 2022年12月9日、防衛装備庁。2022年12月9日閲覧</ref>
+
+== Operators ==
+{{more citations needed|date=May 2024}}
+
+{{Flag|Japan}}
+
+* [[Japan Ground Self-Defense Force]]
+** [[File:JGSDF_Northern_Army.svg|27x27px]] [[Northern Army (Japan)|Northern Army]]
+*** [[File:JGSDF_11th_Brigade.svg|27x27px]] [[11th Brigade (Japan)|11th Brigade]]<ref>{{cite web | url=https://www.sankei.com/article/20180603-T2WR3QP2IRK2VIBS5JK6XNW3LM/ | title=北海道・陸上自衛隊第１１旅団 機動旅団への改編を前に１６式機動戦闘車も公開（1/2ページ） | date=6 June 2018 }}</ref>
+**** 10th Rapid Deployment Regiment
+***[[File:JGSDF_5th_Brigade.svg|link=https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:JGSDF_5th_Brigade.svg|23x23px]][[5th Brigade (Japan)]]
+****6th Rapid Deployment Regiment
+*** [[File:JGSDF_2nd_Division.svg|27x27px]] [[2nd Division (Japan)|2nd Division]]<ref name="Mono">{{cite web | url=https://www.monomagazine.com/61079 | title=菊池雅之のミリタリーレポート続々と新編される即応機動連隊とは？第2師団第3即応機動連隊 }}</ref>
+**** 3rd Rapid Deployment Regiment<ref name="Mono"/>
+** [[File:JGSDF_North_Eastern_Army_(2020).svg|link=https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:JGSDF_North_Eastern_Army_(2020).svg|23x23px]][[North Eastern Army (Japan)|North Eastern Army]]
+*** [[File:JGSDF_6th_Division.svg|27x27px]] [[6th Division (Japan)|6th Division]]
+**** 22nd Rapid Deployment Regiment
+***[[File:JGSDF_9th_Division.svg|link=https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:JGSDF_9th_Division.svg|23x23px]] [[9th Division (Japan)|9th Division]]
+****9th Reconnaissance Combat Battalion
+** [[File:陸上自衛隊_東部方面隊_部隊章.jpg|27x27px]] [[Eastern Army (Japan)|Eastern Army]]
+*** [[File:JGSDF_1st_Division.svg|27x27px]] [[1st Division (Japan)|1st Division]]<ref name="ZZ">{{cite web | url=https://www.zakzak.co.jp/article/20220422-7WHRUCX3SNPU7IAFOLWZ5SDTUU/2/ | title=【最新国防ファイル】陸自第１師団大改編 「移動に時間のかかる戦車、本州エリアに必要なし」の大胆な戦術 機動戦闘車を切り札に首都圏防衛特化（2/2ページ） | date=22 April 2022 }}</ref>
+**** 1st Reconnaissance Combat Battalion<ref name="ZZ"/>
+***[[File:JGSDF_12th_Brigade.svg|link=https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:JGSDF_12th_Brigade.svg|frameless|23x23px]] [[12th Brigade (Japan)|12th Brigade]]
+****12nd Reconnaissance Combat Battalion
+** [[File:JGSDF_Middle_Army.svg|27x27px]] [[Central Army (Japan)|Central Army]]
+*** [[File:JGSDF_3rd_Division.svg|link=https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:JGSDF_3rd_Division.svg|23x23px]] [[3rd Division (Japan)|3rd Division]]
+**** 3rd Reconnaissance Combat Battalion
+*** [[File:JGSDF_10th_Division.svg|link=https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:JGSDF_10th_Division.svg|frameless|23x23px]] [[10th Division (Japan)|10th Division]]
+**** 10th Reconnaissance Combat Battalion
+*** [[File:JGSDF_13th_Brigade.svg|link=https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:JGSDF_13th_Brigade.svg|23x23px]][[13th Brigade (Japan)|13th Brigade]]
+**** 13th Reconnaissance Combat Battalion
+*** [[File:JGSDF_14th_Brigade.svg|27x27px]] [[14th Brigade (Japan)|14th Brigade]]
+**** 15th Rapid Deployment Regiment
+** [[File:JGSDF_Western_Army.svg|27x27px]] [[Western Army (Japan)|Western Army]]
+*** [[File:JGSDF_4th_Division.svg|27x27px]] [[4th Division (Japan)|4th Division]]
+**** 4th Reconnaissance Combat Battalion
+*** [[File:JGSDF_8th_Division.svg|27x27px]] [[8th Division (Japan)|8th Division]]
+**** 42nd Rapid Deployment Regiment
+** [[File:JGSDF Director Directly Controled Unit.svg|27x27px]] [[JGSDF Camp Takigahara|JGSDF Fuji School]]<ref>{{Cite web | title=地域交流 {{!}} 陸上自衛隊　滝ヶ原駐屯地 | url=https://www.mod.go.jp/gsdf/takigahara/souritukinenn.html | access-date=2026-09-05 | website=www.mod.go.jp}}</ref>
+*** JGSDF Fuji School (Combined Training) Brigade
+**** Armored (Advanced) School Regiment
+
+== Orders ==
+
+This is the list of orders with each fiscal year: 
+{| class="wikitable"
+|- style="vertical-align:top"
+| style="width:8em; background:#EAECF0;border-left:solid 2px black;border-top:solid 2px black;border-bottom:solid 2px black" |'''Fiscal year'''
+| style="width:5em;text-align: left; background:#EAECF0;border-top:solid 2px black;border-bottom:solid 2px black" |'''Budget'''
+([[Yen sign|¥]] billion)
+| style="width:10em;text-align: left; background:#EAECF0;border-left:solid 2px grey;border-top:solid 2px black;border-right:solid 2px grey ;border-bottom:solid 2px black" |'''Type 10'''
+| style="width:12em;text-align: left; background:#EAECF0;border-left:solid 2px black;border-top:solid 2px black;border-bottom:solid 2px black;border-right:solid 2px black" |'''Notes'''
+|- style="vertical-align:top"
+| style="background:#FFE18B;border-left:solid 2px black; border-bottom:dashed 2px black" |2027
+| style="background:#FFE18B;border-right:solid 2px grey;text-align: right; border-bottom:dashed 2px black" |[[Yen sign|¥]] 0.00
+| style="background:#FFE18B;text-align: center; border-bottom:dashed 2px black" |–
+| style="background:#FFE18B;border-left:solid 2px grey;border-right:solid 2px black; border-bottom:dashed 2px black" |
+|- style="vertical-align:top"
+| style="background:#EAECF0;border-left:solid 2px black" |2026
+| style="background:#EAECF0;border-right:solid 2px grey;text-align: right;" |[[Yen sign|¥]] 0.00
+| style="text-align: center;" |–
+| style="border-left:solid 2px grey;border-right:solid 2px black;" |<ref>{{Cite web |title=Defence budget Japan 2026|url=https://www.mod.go.jp/en/d_act/d_budget/pdf/fy2026_20251226a.pdf|archive-url=https://web.archive.org/web/20260104172652/https://www.mod.go.jp/en/d_act/d_budget/pdf/fy2026_20251226a.pdf|archive-date=4 January 2026}}</ref>
+|- style="vertical-align:top"
+| style="background:#EAECF0;border-left:solid 2px black" |2025
+| style="background:#EAECF0;border-right:solid 2px grey;text-align: right;" |[[Yen sign|¥]] 15.6
+| style="text-align: center;" |15
+| style="border-left:solid 2px grey;border-right:solid 2px black;" |<ref>{{Cite web |title=Page 26 - Defence budget Japan 2025 |url=https://www.mod.go.jp/en/d_act/d_budget/pdf/fy2025_20250411a.pdf |archive-url=https://web.archive.org/web/20250521212119/https://www.mod.go.jp/en/d_act/d_budget/pdf/fy2025_20250411a.pdf |archive-date=21 May 2025}}</ref>
+|- style="vertical-align:top"
+| style="background:#EAECF0;border-left:solid 2px black" |2024
+| style="background:#EAECF0;border-right:solid 2px grey;text-align: right;" |[[Yen sign|¥]] 17.1
+| style="text-align: center;" |19
+| style="border-left:solid 2px grey;border-right:solid 2px black;" |<ref name=":12">{{Cite web |title=Overview of the FY2024 Budget (Page 23) |url=https://www.mod.go.jp/en/d_act/d_budget/pdf/20240607a.pdf}}</ref>
+|- style="vertical-align:top"
+| style="background:#EAECF0;border-left:solid 2px black" |2023
+| style="background:#EAECF0;border-right:solid 2px grey;text-align: right;" |[[Yen sign|¥]] 21.3
+| style="text-align: center;" |24
+| style="border-left:solid 2px grey;border-right:solid 2px black;" |<ref>{{Cite web |title=Overview of the FY2023 Budget (Page 24) |url=https://www.mod.go.jp/en/d_act/d_budget/pdf/230330a.pdf}}</ref>
+|- style="vertical-align:top"
+| style="background:#EAECF0;border-left:solid 2px black" |2022
+| style="background:#EAECF0;border-right:solid 2px grey;text-align: right;" |[[Yen sign|¥]] 23.7
+| style="text-align: center;" |33
+| style="border-left:solid 2px grey;border-right:solid 2px black;" |<ref>{{Cite web |title=Overview of FY2022 Budget (Page 49) |url=https://www.mod.go.jp/en/d_act/d_budget/pdf/20220420.pdf}}</ref><ref name=":22">{{Cite web |date=16 March 2023 |title=DSEI Japan 2023: Japan plans induction of 250 Type 16 MCVs |url=https://www.janes.com/defence-news/news-detail/dsei-japan-2023-japan-plans-induction-of-250-type-16-mcvs |access-date=2024-03-29 |website=Janes.com |language=en}}</ref>
+|- style="vertical-align:top"
+| style="background:#EAECF0;border-left:solid 2px black" |2021
+| style="background:#EAECF0;border-right:solid 2px grey;text-align: right;" |[[Yen sign|¥]] 15.8
+| style="text-align: center;" |22
+| style="border-left:solid 2px grey;border-right:solid 2px black;" |<ref>{{Cite web |title=Overview of the FY2021 Budget (Page 21) |url=https://www.mod.go.jp/en/d_act/d_budget/pdf/210331a.pdf}}</ref><ref name=":22" /><ref>{{Cite web |date=5 April 2022 |title=Japan to induct 230 Type 16 manoeuvre combat vehicles |url=https://www.janes.com/defence-news/news-detail/japan-to-induct-230-type-16-manoeuvre-combat-vehicles |access-date=2024-03-29 |website=Janes.com |language=en}}</ref>
+|- style="vertical-align:top"
+| style="background:#EAECF0;border-left:solid 2px black" |2020
+| style="background:#EAECF0;border-right:solid 2px grey;text-align: right;" |[[Yen sign|¥]] 23.7
+| style="text-align: center;" |33
+| style="border-left:solid 2px grey;border-right:solid 2px black;" |<ref>{{Cite web |title=Overview of FY2020 Budget (Page 49) |url=https://www.mod.go.jp/en/d_act/d_budget/pdf/200330a.pdf}}</ref><ref>{{Cite web |last=admin |date=2023-03-17 |title=Japan Ground Self-Defense Force To Purchase Of 250 Type 16 Maneuver Combat Vehicles - MilitaryLeak.COM |url=https://militaryleak.com/2023/03/17/japan-ground-self-defense-force-to-purchase-of-250-type-16-maneuver-combat-vehicles/ |access-date=2024-03-29 |website=militaryleak.com |language=en-US}}</ref>
+|- style="vertical-align:top"
+| style="background:#EAECF0;border-left:solid 2px black" |2019
+| style="background:#EAECF0;border-right:solid 2px grey;text-align: right;" |[[Yen sign|¥]] 16.1
+| style="text-align: center;" |22
+| style="border-left:solid 2px grey;border-right:solid 2px black;" |<ref>{{Cite web |title=Overview of FY2019 Budget (Page 51) |url=https://www.mod.go.jp/en/d_act/d_budget/pdf/190510b.pdf}}</ref>
+|- style="vertical-align:top"
+| style="background:#EAECF0;border-left:solid 2px black" |2018
+| style="background:#EAECF0;border-right:solid 2px grey;text-align: right;" |[[Yen sign|¥]] 13.7
+| style="text-align: center;" |18
+| style="border-left:solid 2px grey;border-right:solid 2px black;" |<ref>{{Cite web |title=Overview of FY2018 Budget (Page 45) |url=https://www.mod.go.jp/en/d_act/d_budget/pdf/300329.pdf}}</ref>
+|- style="vertical-align:top"
+| style="background:#EAECF0;border-left:solid 2px black" |2017
+| style="background:#EAECF0;border-right:solid 2px grey;text-align: right;" |[[Yen sign|¥]] 23.3
+| style="text-align: center;" |33
+| style="border-left:solid 2px grey;border-right:solid 2px black;" |<ref>{{Cite web |title=Overview of FY2017 Budget (Page 45) |url=https://www.mod.go.jp/en/d_act/d_budget/pdf/290328.pdf}}</ref>
+|- style="vertical-align:top"
+| style="background:#EAECF0;border-left:solid 2px black;border-bottom:double black" |2016
+| style="background:#EAECF0;border-right:solid 2px grey;border-bottom:double black;text-align: right;" |[[Yen sign|¥]] 25.2
+| style="text-align: center; border-bottom:double black" |36
+| style="border-left:solid 2px grey;border-right:solid 2px black; border-bottom:double black" |<ref>{{Cite web |title=Overview of FY2016 Budget (Page 39) |url=https://www.mod.go.jp/en/d_act/d_budget/pdf/280330.pdf}}</ref>
+|- style="vertical-align:top"
+| style="background:#EAECF0;border-left:solid 2px black;border-bottom:solid 2px black" |'''Total'''
+| style="background:#EAECF0;border-right:solid 2px grey;border-bottom:solid 2px black;text-align: right;" |'''[[Yen sign|¥]] 195.5'''
+| style="border-bottom:solid 2px black; border-right:solid 2px grey; background:#EAECF0; text-align: center;" |'''255'''
+| style="border-bottom:solid 2px black; border-right:solid 2px black;" |<small>–</small>
+|}
+{{legend|#FFE18B|Budget request}}
+
+
+==Notes==
+{{notelist}}
+
+==References==
+{{Reflist}}
+
+{{commons category|Type 16 Maneuver Combat Vehicle (JGSDF)}}
+
+{{ModernJapaneseAFVs}}
+{{Armoured combat vehicles}}
+
+[[Category:Armoured cars of Japan]]
+[[Category:Tank destroyers]]
+[[Category:Counterinsurgency]]
+[[Category:Fire support vehicles]]
+[[Category:Post–Cold War military equipment of Japan]]
+[[Category:Mitsubishi Heavy Industries armored vehicles]]
+[[Category:Eight-wheeled vehicles]]
+[[Category:Military vehicles introduced in the 2000s]]

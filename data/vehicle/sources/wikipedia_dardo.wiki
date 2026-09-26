@@ -1,0 +1,93 @@
+{{Short description|Italian infantry fighting vehicle}}
+{{For|the [[CIWS|CIWS system]]|DARDO}}
+{{no footnotes|date=April 2014}}
+{{Infobox weapon
+| name = Dardo
+| image = Italian Army - 1st Bersaglieri Regiment Exercise Steadfast Defender 21.jpg
+| image_size = 300
+| caption = Dardo IFV
+| origin = [[Italy]]
+| type = [[Infantry fighting vehicle]]
+| is_vehicle = yes
+| service = 1998–present
+| design_date = 1980s
+| production_date = 1998–present
+| number = 200
+| wars = [[Iraq War]], [[War in Afghanistan (2001–14)|War in Afghanistan]]
+| length = 6.7 m (22 ft)
+| width = 3.0 m (9.8 ft)
+| height = 2.64 m (8.66 ft)
+| weight = 23.4 tonnes (25.8 tons)
+| suspension = [[hydropneumatic]] torsion bar
+| speed = 70 km/h (43.5 mi/h)
+| vehicle_range = 600 km (372.8 mi)
+| primary_armament = [[25 mm caliber|25&nbsp;mm]] [[Oerlikon KBA]] [[automatic cannon]]; 2x TOW ATGM (optional)
+| secondary_armament = 7.62 mm [[Weapon_mount#Coaxial|coaxial]] [[machine gun]]; Smoke-grenade launchers
+| armour = modular Front armour against 25mm APDS
+| engine = [[Iveco]] – [[Fiat]] 6V MTCA turbodiesel
+| crew = 3 (commander, gunner, driver) + 6 troops
+| engine_power = 512 hp (382.2 kW)
+| pw_ratio = 24.5 hp/tonne
+}}
+
+The '''Dardo''' is an [[infantry fighting vehicle]] designed for the [[Italian Army]] as a replacement for the [[M113 armored personnel carrier|M113]] APC. It is designed and built by the Iveco Fiat Oto Melara Syndicated Company based in [[Rome]]. [[Iveco]] is responsible for the hull and propulsion systems, while [[Oto Melara]] is responsible for the weapons and fire control systems.
+
+==Description==
+===Armament===
+The Dardo is primarily armed with the 25mm [[Oerlikon KBA]] automatic cannon firing 600 rounds per minute, with 200 rounds of ready to fire ammunition stored in the turret. Two [[7.62mm NATO]] machine guns are also installed in the turret, one coaxially mounted with the main gun. Five rifle ports, two on each side of the hull and one in the rear are provided to allow troops inside to use their personal weapons, if needed.
+
+Fire control is provided by the Galileo Avionica [[Hitfist]] integrated fire control system, which is capable of measuring target speed and range. The commander is provided with six episcope sights, which provide 360° field of view. The cupola can be further fitted with a panoramic stabilised sight. Additionally, a laser range finder and a thermal imager are provided for the gunner. The commander is equipped with a monitor that displays the view from the gunner night vision system.
+
+For dealing with heavy armoured threats, two [[BGM-71 TOW]] anti tank missiles can be installed, one on each side of the turret. These missiles have a maximum range of approximately 4&nbsp;km.
+
+===Self protection===
+The Dardo hull is built from welded aluminum alloy with add on steel armour plates for increased protection. Over the frontal arc, the vehicle is protected against 25mm APDS projectiles. The side armour protects against 14.5mm API projectiles. Four 80mm smoke grenade launchers are installed on each side of the turret.
+
+===Propulsion===
+[[File:Dardo 2.jpg|thumb|left|250px|Dardo in action]]
+[[File:Patrol in Afghanistan with IFV Dardo.jpg|thumb|right|305px|Dardo in Afghanistan]]
+
+The Dardo is powered by an Iveco V6 [[turbo charger|turbo-charged]] after-cooled diesel engine delivering 512&nbsp;hp (382.2&nbsp;kW). This drives a [[ZF Friedrichshafen|ZF]]-designed automatic [[transmission system]], which is manufactured under license by Iveco Fiat. The transmission system has four forward and two reverse gears, and incorporates the steering system and the hydraulic retarder.
+
+The running gear consists of six dual rubber-lined road wheels, with three return rollers on each side and connector type tracks. The suspension consists of a torsion bar, bumper and a hydraulic shock absorber on each suspension arm. Disc brakes on each of the final drives controlled by a transmission retarder provide the braking.
+
+Together, this allows the Dardo to achieve speeds in excess of 70&nbsp;km/h, maneuver on gradients of more than 60% and ford waters up to a depth of 1.5&nbsp;m.
+
+==Future variants==
+The Dardo IFVs currently in service with the Italian Army are fitted with the "[[Hitfist]]" IFV turret. The chassis is intended to be the basic model of a family of vehicles, which may include a 120&nbsp;mm mortar carrier, command (C3I) vehicle, and ambulance.
+
+==Combat history==
+Dardo IFVs were deployed with the Italian Army as part of the Italian contribution to [[Operation Iraqi Freedom]] in 2004. 10 were also deployed in Afghanistan to reinforce the Italian Battlegroups there. Also, some are in use with the Italian [[UNIFIL]] contingent.
+
+==Operators==
+[[file:Italian troops train in Romania for NATO exercise Steadfast Defender 2021.webm|thumb|Video of 1st Bersaglieri training in 2021]]
+* {{ITA}} – 200 vehicles
+** [[1st Bersaglieri Regiment]], [[Bersaglieri Brigade "Garibaldi"]]
+** [[8th Bersaglieri Regiment]], Bersaglieri Brigade "Garibaldi"
+** [[11th Bersaglieri Regiment]], [[Armored Brigade "Ariete"]]
+
+==See also==
+{{Div col|colwidth=25em}}
+* {{lwc|ASCOD}}
+* {{lwc|Bionix AFV|Bionix}}
+* {{lwc|BMP-3}}
+* {{lwc|Combat Vehicle 90|CV90}}
+* {{lwc|K21}}
+* {{lwc|M2 Bradley}}
+* {{lwc|Puma (IFV)|Puma IFV}}
+* {{lwc|Mitsubishi Type 89 IFV}}
+* {{lwc|Tulpar (IFV)|Tulpar IFV}}
+* {{lwc|Abhay IFV}}
+* {{lwc|Makran IFV}}
+{{div col end}}
+
+==External links==
+* [http://www.iveco-otomelara.com/tracked/DardoAifv.php Official Website] {{Webarchive|url=https://web.archive.org/web/20210609134303/http://www.iveco-otomelara.com/tracked/DardoAifv.php |date=2021-06-09 }}
+* [https://www.globalsecurity.org/military/world/europe/dardo.htm Globalsecurity.org]
+{{OTO Melara|state=collapsed}}
+[[Category:Infantry fighting vehicles of Italy]]
+[[Category:Tracked infantry fighting vehicles]]
+[[Category:Iveco vehicles]]
+[[Category:OTO Melara]]
+[[Category:Military vehicles introduced in the 1990s]]
+[[Category:Infantry fighting vehicles of the post–Cold War period]]

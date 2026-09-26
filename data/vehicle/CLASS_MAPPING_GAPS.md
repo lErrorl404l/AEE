@@ -9,9 +9,9 @@ is a `claimed` binding, not a real-world mapping. This file lists the
 bindings held and every ground token with no binding.
 
 - Ground tokens: 7
-- Ground tokens with a binding: 4
-- Ground tokens without a binding: 3
-- Class map records: 4
+- Ground tokens with a binding: 6
+- Ground tokens without a binding: 1
+- Class map records: 6
 
 ## Class map records
 
@@ -21,11 +21,11 @@ bindings held and every ground token with no binding.
 | `Truck` | `Truck` | `m923a2` | `aee_class_table` | claimed | AEE class token Truck; M923A2 5-ton 6x6 dropside cargo truck, class table kind Truck |
 | `Tracked_APC` | `Tracked_APC` | `m113a2` | `aee_class_table` | claimed | AEE class token Tracked_APC; M113A2 full tracked armoured personnel carrier, class table kind Tracked_APC |
 | `MRAP` | `MRAP` | `m_atv_m1240` | `aee_class_table` | claimed | AEE class token MRAP; Oshkosh M-ATV M1240 mine resistant ambush protected vehicle, class table kind MRAP |
+| `Tank` | `Tank` | `m1_abrams` | `aee_class_table` | claimed | AEE class token Tank; M1 Abrams 105-mm gun full-tracked main battle tank, class table kind Tank |
+| `Wheeled_APC` | `Wheeled_APC` | `btr_80` | `aee_class_table` | claimed | AEE class token Wheeled_APC; BTR-80 8x8 amphibious armoured personnel carrier, class table kind Wheeled_APC |
 
 ## Ground tokens without a binding
 
 | Token | Next source class |
 |---|---|
-| `Tank` | a real-world source that names the vehicle, corroborated by the engine displayName |
-| `Wheeled_APC` | a real-world source that names the vehicle, corroborated by the engine displayName |
 | `Wheeled_APC_F` | a real-world source that names the vehicle, corroborated by the engine displayName |

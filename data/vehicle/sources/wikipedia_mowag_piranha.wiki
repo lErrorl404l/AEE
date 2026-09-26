@@ -1,0 +1,553 @@
+{{Short description|Swiss armoured fighting vehicle}}
+{{Infobox weapon
+| name               = Mowag Piranha
+| image              = MOWAG (4120180412).jpg
+| image_size         = 300
+| caption            = [[Irish Army]] Piranha IIIH MRV armed with a 30&nbsp;mm autocannon
+| origin             = [[Switzerland]]
+| type               = [[Armoured fighting vehicle]]
+| is_vehicle         = yes
+<!-- Service history -->| service            = 
+| used_by            = see ''[[#Operators|Operators]]''
+| wars               = <!-- Production history -->
+| designer           = [[MOWAG]] Motor Car Factory, [[Kreuzlingen]], [[Switzerland]]
+| design_date        = 
+| manufacturer       = MOWAG
+| unit_cost          = 
+| production_date    = 1972–present
+| number             = 12,000+<ref>{{Cite web |title=PIRANHA Wheeled Armored Vehicle  |url=https://www.gdels.com/en/products/wheeled-vehicles/piranha |url-status=live |archive-url=https://web.archive.org/web/20250820131413/https://www.gdels.com/en/products/wheeled-vehicles/piranha |archive-date=2025-08-20 |access-date=2025-11-12 |website=www.gdels.com |language=en}}</ref> (incl. [[LAV (armoured vehicle)|LAV]] and [[Stryker]])<ref>{{Cite web |date=2024-10-31 |title=PIRANHA: Trendsetter auf drei, vier und fünf Achsen |url=https://www.hartpunkt.de/piranha-trendsetter-auf-drei-vier-und-fuenf-achsen/ |access-date=2025-11-22 |language=de}}</ref>
+| variants           = [[Tank destroyer]], C3 Command Vehicle, Medevac, APC, police vehicle, pioneer & construction vehicle
+<!-- General specifications -->| weight             = From {{convert|9300|kg|lb|abbr=on}}
+| length             = {{convert|6.25| to| 7.45| m|ftin|abbr=on}}
+| width              = {{convert|2.5| to| 2.66| m|ftin|abbr=on}}
+| height             = {{convert|1.8 |to |1.98| m|ftin|abbr=on}}
+| diameter           = 
+| crew               = 3+5; driver, commander, gunner + 5 passengers<ref>{{cite book|url=https://books.google.com/books?id=zUu4AwAAQBAJ&pg=PA55|title=Compendium of Armaments and Military Hardware|first=Christopher|last=Chant|date=3 June 2014|publisher=Routledge |isbn=9781134646685}}</ref>
+<!-- Vehicle/missile specifications -->| armour             = quick-mount selection, including defense against [[Rocket-propelled grenade|RPG]], [[Improvised explosive device|IED]], [[CBRN defense|NBC]]
+| primary_armament   = 1 × 12.7 mm MG turret, or MOWAG apex mount, grenade launcher, or TOW anti-tank missile.
+| secondary_armament = 
+| engine             = diesel engine
+| engine_power       = 202 kW 275hp
+| transmission       = [[Allison Transmission|Allison]] MT-653 [[Automatic transmission|automatic]] 6-speed [[Epicyclic gearing|planetary gearbox]]
+| payload_capacity   = 
+| fuel_capacity      = {{convert|300|L|abbr=on}}
+| pw_ratio           = 
+| suspension         = hydropneumatic 6×6, [[Eight-wheel drive|8×8]], or 10×10 wheeled
+| clearance          = 
+| vehicle_range      = {{convert|780|km|mi|0|abbr=on}}
+| speed              = {{convert|100|km/h|mi/h|0|abbr=on}} road<br /> {{convert|10|km/h|mi/h|0|abbr=on}} water
+| guidance           = 
+| steering           = 
+}}
+
+The '''Mowag Piranha''' is a family of [[armoured fighting vehicle]]s designed by the [[Switzerland|Swiss]] company [[Mowag]] (since 2010 [[General Dynamics European Land Systems]] – Mowag GmbH).
+
+Five generations of vehicles have been produced, manufactured by Mowag or under licence by other companies such as the [[LAV (armoured vehicle)|LAV]], and variants are in service with military forces throughout the world.
+
+==Variants==
+Piranhas are available in 4×4, 6×6, 8×8, and 10×10 wheel versions. There are several variants within these versions, giving different degrees of armour protection and several kinds of turret, for use in a variety of roles. Piranha derivatives have been assigned roles as troop transports, command vehicles, [[fire support]] vehicles, tank trainers, and police vehicles.
+
+Piranhas are used by the [[Military of Switzerland|Swiss Army]]. Swiss-built Piranha derivatives have been exported to Ireland, Romania, Spain, and Belgium. The [[Romanian Army|Romanian]] and [[Belgian Army|Belgian armies]] have selected the Piranha IIIC 8×8. Belgium converted to an all-wheeled force, and replaced all their [[M113]] armoured personnel carriers, [[AIFV]]s and [[Leopard 1]] tanks with 268 Piranha IIIC in 7 variants.<ref name="milbe">{{cite web|url=http://www.mil.be/nl/material-type/voertuigen|title=Voertuigen|website=mil.be|access-date=2015-12-19|archive-url=https://web.archive.org/web/20160628013235/http://www.mil.be/nl/material-type/voertuigen|archive-date=2016-06-28|url-status=live}}</ref><ref name="belgiumselectspiranha3">{{cite web|url=http://www.defenseindustrydaily.com/belgium-selects-piranha-iiis-for-850m-apc-contract-controversies-ensue-01872/|archive-url=https://web.archive.org/web/20150910162101/http://www.defenseindustrydaily.com/belgium-selects-piranha-iiis-for-850m-apc-contract-controversies-ensue-01872/|url-status=dead|archive-date=10 September 2015|title=Belgium Selects Piranha IIIs $850M APC Contract, Controversies Ensue|date=10 September 2015}}</ref>
+
+Piranha derivatives have been manufactured under license by General Dynamics (Canada), [[BAE Systems Land Systems]] (UK), [[Carlos Cardoen|Cardoen]] and [[FAMAE]] (Chile), and in the USA.
+
+A new [[Piranha V]] version, weighing between 25 and 30 tons, was announced as the provisional winner of the [[British Army]]'s [[Future Rapid Effect System]] (FRES) program in May 2008,<ref>{{cite web|publisher= [[Ministry of Defence (United Kingdom)|Ministry of Defence]] |url=http://www.mod.uk/DefenceInternet/DefenceNews/EquipmentAndLogistics/DraysonNewVehiclesWillHavevitalPartToPlayInTheArmyOfTheFuture.htm|title=Drayson: New vehicles will have "vital part to play in the Army of the future"|date=June 8, 2007|access-date=July 4, 2007|archive-url=https://web.archive.org/web/20070711050356/http://www.mod.uk/DefenceInternet/DefenceNews/EquipmentAndLogistics/DraysonNewVehiclesWillHavevitalPartToPlayInTheArmyOfTheFuture.htm|archive-date=July 11, 2007|url-status=live}}</ref> but this selection was reversed seven months later and bidding started again.{{Citation needed|date=October 2011}}
+
+General Dynamics European Land Systems launched their new Piranha Class 5 at [[Eurosatory]] 2010 on 15 June and it was reported that the British MoD were showing renewed interest, but struggling with budget constraints.<ref>{{cite web|url=http://defensenews.com/blogs/eurosatory/2010/06/15/gd-rolls-out-piranha-5-once-slated-for-britain/|title=GD Rolls Out Piranha 5 Once Slated for Britain – Eurosatory 2010 – Defense News Show Scout|website=defensenews.com}}{{dead link|date=August 2021|fix-attempted=yes}}{{cbignore|bot=medic}}</ref>
+
+{{Clear}}
+
+===Piranha 4×4 IB===
+{{Infobox weapon
+| name               = MOWAG Piranha IB 4×4
+| image              = File:MOWAG Piranha 4x4.JPG
+| image_size         = 300
+| caption            = MOWAG Piranha IB 4×4
+| origin             = [[Switzerland]]
+| type               = [[Armoured personnel carrier]]
+| is_vehicle         = yes
+<!-- Service history -->| service            = 
+| used_by            = 
+| wars               = <!-- Production history -->
+| designer           = [[MOWAG]] Motor Car Factory, [[Kreuzlingen]], [[Switzerland]]
+| design_date        = 
+| manufacturer       = MOWAG
+| unit_cost          = 
+| production_date    = 1974–present
+| number             = 
+| variants           = Armt, recon
+<!-- General specifications -->| weight             = {{convert|6300|kg|lb|abbr=on}}
+| length             = {{convert|5.40|m|ftin|abbr=on}}
+| width              = {{convert|2.5|m|ftin|abbr=on}}
+| height             = {{convert|1.85|m|ftin|abbr=on}}
+| crew               = 7: driver, commander, gunner + 4 more people
+<!-- Vehicle/missile specifications -->| armour             = 
+| primary_armament   = 1× 12.7 mm MG in the turret or Wildcat AAA with 2×30mm gun, or TSE 5000 Crotale, or ADATS, or Rheinmetall 105&nbsp;mm Cannon
+| secondary_armament = 
+| engine             = Chrysler V8 6.78 L gasoline engine
+| engine_power       = 125 kW
+| transmission       = NP 540 Chrysler mechanics transmission, 5 forward gears, 1 reverse gear
+| payload_capacity   = 
+| fuel_capacity      = 200 l
+| pw_ratio           = 
+| suspension         = 4×4 wheeled
+| clearance          = 
+| vehicle_range      = 700 km (41l/100km)
+| speed              = {{convert|100|km/h|mi/h|0|abbr=on}} road<br /> {{convert|10|km/h|mi/h|0|abbr=on}} water
+| guidance           = 
+| steering           = 
+}}
+
+The MOWAG Piranha 4×4 IB was an armored personnel carrier.
+
+To complete the Piranha I Family of 1974, the Piranha 4×4 IB was designed as a light rapid reconnaissance and attack vehicle. It could take part in amphibious operations thanks to twin [[propeller]]s and could operate in NBC-contaminated areas. The Piranha 4×4 was also designed to meet [[police]] needs. The MOWAG Grenadier and [[Mowag Spy]] sub-versions were also developed. The prototype of the Piranha 4×4 IB went through numerous tests and received different equipment and different engines. Due to rapid technological development and adjustments to requirements for military vehicles, no Piranha with [[gasoline engine]] was sold. The prototype is now in the [[Schweizerisches Militärmuseum Full]].
+
+{{Clear}}
+
+===Piranha IB 6×6===
+{{Infobox weapon
+| name               = MOWAG Piranha IB 6×6
+| image              = San Piranha.jpg
+| image_size         = 300
+| caption            = MOWAG Piranha IB 6×6 Swiss Army
+| origin             = [[Switzerland]]
+| type               = [[Armoured fighting vehicle]]
+| is_vehicle         = yes
+<!-- Service history -->| service            = 
+| used_by            = Switzerland, Canada, United Nations
+| wars               = <!-- Production history -->
+| designer           = [[MOWAG]] Motor Car Factory
+| design_date        = 
+| manufacturer       = MOWAG
+| unit_cost          = 
+| production_date    = 1972–present
+| number             = 
+| variants           = [[Tank Destroyer]], C3 Command Vehicle Medevac, APC, Police vehicle
+<!-- General specifications -->| weight             = {{convert|9300|kg|lb|abbr=on}}
+| length             = 6.25m
+| width              = 2.66m
+| height             = 1.985m / 2.17m
+| diameter           = 
+| crew               = 7: driver, commander, gunner + 4 more people
+<!-- Vehicle/missile specifications -->| armour             = 
+| primary_armament   = 1× 12.7 mm MG turret or MOWAG apex mount, or grenade launcher, TOW anti-tank missile, or Mephisto ATM.
+| secondary_armament = 
+| engine             = Chrysler V8 petrol engine HT 413 Displacement 6,780 cm<sup>3</sup>
+| engine_power       = 147 kW
+| transmission       = Allison MT-40 Automatic 6-speed planetary gearbox
+| payload_capacity   = 
+| fuel_capacity      = 200 l
+| pw_ratio           = 
+| suspension         = 6×6 wheeled
+| clearance          = 
+| vehicle_range      = 500 km (41l/100km)
+| speed              = {{convert|100|km/h|mi/h|0|abbr=on}}<br />  {{convert|10|km/h|mi/h|0|abbr=on}} water
+| guidance           = 
+| steering           = 
+}}
+
+The first Piranha prototype ever built was the 6×6 IB in 1972. It can be seen as a milestone for the Piranha series due to various technical innovation like (at the time) modern designed drive with independent suspension, compact power unit in the right front and (as an [[amphibious vehicle|amphibian drive]]) being powered by two [[propeller]]s. This prototype was demonstrated with different engines and features for potential customers such as the [[Canadian Army]] who locally produced them as the [[AVGP]]. Switzerland sold a license to manufacture this machine to Chile in 1983. In the [[Swiss Army]], the Piranha 6×6 is used as an ambulance, C3 command vehicle and, together with the [[BGM-71 TOW]] anti-tank missile, as a "[[tank destroyer]]". The prototype is along with an ambulance Piranha 6×6 on display in the [[Schweizerisches Militärmuseum Full]].
+
+{{Clear}}
+
+===MOWAG Piranha IIIC 10×10===
+{{Infobox weapon
+| name               = Piranha IIIC 10×10
+| image              = File:MOWAG PIRANHA 10x10 front.JPG
+| image_size         = 300
+| caption            = MOWAG Piranha IIIC 10×10 at Military Museum Full
+| origin             = [[Switzerland]]
+| type               = [[Armored car (military)|Armoured car]]
+| is_vehicle         = yes
+<!-- Service history -->| service            = 
+| used_by            = Sweden
+| wars               = <!-- Production history -->
+| designer           = [[MOWAG]] Motor Car Factory
+| design_date        = 
+| manufacturer       = MOWAG
+| unit_cost          = 
+| production_date    = 1994
+| number             = 
+| variants           = Tank, C3 Command Vehicle.
+<!-- General specifications -->| weight             = {{convert|18000|kg|lb|abbr=on}}
+| length             = 7.45m
+| width              = 2.66m
+| height             = 1.98m / 2.17m
+| diameter           = 
+| crew               = 3: driver, commander, gunner
+<!-- Vehicle/missile specifications -->| armour             = 
+| primary_armament   = turret Oerlikon GDD BOE with 35&nbsp;mm automatic cannon KDE
+| secondary_armament = 7.62 mm coaxial MG FN MAG and 6 × Nebelwurfbecher 76mm
+| engine             = Detroit Diesel V6, V6 53TA
+| engine_power       = 350 hp
+| transmission       = Allison MD 3560 P-automatic transmission, 6 forward gears, 1 reverse
+| payload_capacity   = 
+| fuel_capacity      = 
+| pw_ratio           = 
+| suspension         = 10×10 wheeled
+| clearance          = 
+| vehicle_range      = 
+| speed              = {{convert|100|km/h|mi/h|0|abbr=on}}
+| guidance           = 
+| steering           = 
+}}
+
+With the continuous evolution of the Piranha family due to increasing demands, and the projected development of the [[Mowag Shark]] as a heavy weapons carrier, the Piranha design reached the limit of its payload capacity. The Piranha 10×10 (built in 1994), was an attempt to expand the payload, using a 5th axle of the same type as used in the smaller Piranha models. The Piranha 10×10 was designed as a heavy weapons carrier, but only a small number were built for Sweden as the LIRKA command tank and Kapris radar carrier. The Piranha IIIC 10×10 marked an important development from the Piranha IIIC 8×8. The Piranha IIIC 10×10 prototype was used in various tests, including in Sweden, and now stands in the ''[[Schweizerisches Militärmuseum Full]]''.
+
+{{Clear}}
+
+==Family tree==
+{{tree list}}
+*
+** '''Piranha I'''
+*** {{lwc|AVGP}}
+** '''Piranha II'''
+*** {{lwc|LAV II}}
+**** {{lwc|LAV-25}}
+****{{lwc|Coyote Reconnaissance Vehicle|Bison and Coyote}}
+**** {{lwc|ASLAV}}
+*** Desert Piranha
+** '''Piranha III'''
+*** Piranha IIIH
+**** {{lwc|LAV III}}
+***** {{lwc|Stryker}}
+***** {{lwc|NZLAV}}
+***** {{lwc|LAV 6}}
+****** LAV-700
+*** Piranha IIIC
+** {{lwc|Piranha IV|'''Piranha IV'''}}
+** {{lwc|Piranha V|'''Piranha V'''}}
+*** {{ill|Dragón|es|Dragón (vehículo blindado)}}
+{{tree list end}}
+
+==Operators==
+<!--READ FIRST: This section is for cited entries only. Please do not add entries into this list without a citation from a reliable source. All entries without a citation will be removed. Thank you.-->
+
+===Piranha I===
+{{flagicon|Chile}} [[Chilean army]] – '''225''' Piraña I 6×6 and 30 Piraña I 8×8 <ref name=":1">{{Cite web |title=Trade Registers |url=https://armstrade.sipri.org/armstrade/page/trade_register.php |access-date=2023-06-06 |website=armstrade.sipri.org}}</ref>
+* including 50 120&nbsp;mm mortar carriers
+* 20 FSV 90&nbsp;mm version
+{{flagicon|Ghana}} [[Ghana Army]] – '''10''' Piranha I 4×4, 44 Piranha I 6×6 and 3 Piranha I 8×8 <ref name=":1" /><ref name="disarmament.un.org" /><ref>{{Cite web|url=http://www.gaf.mil.gh/index.php?CatId=78&CategoryId=57&page=1|archive-url=https://web.archive.org/web/20080402064616/http://www.gaf.mil.gh/index.php?CatId=78&CategoryId=57&page=1|url-status=dead|title=Ghana Armed Forces<!-- Bot generated title -->|archive-date=April 2, 2008}}</ref>
+
+{{flagicon|Nigeria}} [[Nigerian Army]] – '''110''' delivered in the 1980s<ref name="Nigeria">{{cite news|title=Terroristen erbeuten in Nigeria Schweizer Panzer|url=https://www.blick.ch/news/ausland/in-nigeria-aufgetaucht-islamistische-terroristen-erbeuten-schweizer-panzer-id15133957.html|language=de|newspaper=[[Blick]]|date=24 January 2019|first=Fabian |last=Eberhard}}</ref>
+
+{{flagicon|ISIS}} [[Boko Haram]] - at least two, captured from the Nigerian army<ref name="Nigeria" /><ref>{{cite news|title=Schweizer Panzer in den Händen von Terroristen|url=https://www.20min.ch/story/schweizer-panzer-in-den-haenden-von-terroristen-298530547622|language=de|newspaper=[[20 Minuten]]|first=J.|last=Büchi|date=20 September 2016}}</ref>
+
+{{flagicon|Switzerland}} [[Swiss Army]] – '''314''' Piranha IB 6×6
+* 4 driving school ''"Pzj TOW Fahrschule"''  <ref>{{Cite web |title=Mowag Piranha Pzj TOW 6×6 Fahrschule - Radschützenpanzer - Radfahrzeuge  |url=https://militaerfahrzeuge.ch/unterkategorie_11_26_513.html |access-date=2023-06-16 |website=militaerfahrzeuge.ch}}</ref> 
+* 310 tank hunter ''"Pzj [[BGM-71 TOW|TOW]]"'', fitted with [[NM142|NM142 turret]]<ref name="sipri.org">{{Cite web |title=SIPRI Arms Transfers Database |url=https://www.sipri.org/databases/armstransfers |access-date=2023-06-15 |website=www.sipri.org |language=en}}</ref> and a Detroit Diesel 6V-53T (265-300&nbsp;hp) diesel engine.<ref name="sipri.org" />
+** 40 were transformed into ambulance (Armament Program 2005, delivered in 2006–2007), ''"San Fz"'' <ref>{{cite web |language=fr |url=https://www.admin.ch/opc/fr/federal-gazette/2005/3371.pdf |title=Véhicule sanitaire Piranha I, 6×6 (transformation du chasseur de chars)|archive-url=https://web.archive.org/web/20190213183608/https://www.admin.ch/opc/fr/federal-gazette/2005/3371.pdf |archive-date=2019-02-13 |page=26 |date=2005}} <!-- Message concernant l’acquisition de matériel d’armement – Programme d’armement 2005 --></ref><ref>{{Cite web |title=Mowag Piranha, San Pz 6×6 gl - Sanitätsfahrzeuge - Radfahrzeuge  |url=https://militaerfahrzeuge.ch/unterkategorie_11_38_181.html |access-date=2023-06-16 |website=militaerfahrzeuge.ch}}</ref> 
+** 160 converted in command vehicle ''"Kdo Pz"'' with [[Protector (RWS)|M153 Protector]] (Armament Program 2006, delivered in 2008–2010) <ref>{{citation |language=fr |url=http://www.vtg.admin.ch/internet/vtg/fr/tools/webarchiv/archiv_2006/programme.parsys.0003.downloadList.00031.DownloadFile.tmp/20053492120014.fr.pdf |title=Véhicule de commandement/transformation de chasseurs de chars auxquels il est renoncé |archive-url=https://web.archive.org/web/20160305031621/http://www.vtg.admin.ch/internet/vtg/fr/tools/webarchiv/archiv_2006/programme.parsys.0003.downloadList.00031.DownloadFile.tmp/20053492120014.fr.pdf |archive-date=2016-03-05 |page=21 |date=2006}}  <!-- Message concernant l’acquisition de matériel d’armement – Programme d’armement 2006 --></ref><ref>{{Cite web |title=Mowag Piranha Kdo Pz 6×6 gl - Radschützenpanzer - Radfahrzeuge  |url=https://militaerfahrzeuge.ch/unterkategorie_11_26_434.html |access-date=2023-06-16 |website=militaerfahrzeuge.ch}}</ref> 
+** 110 remained as a [[Tank destroyer|tank hunter]] TOW variant
+
+===Piranha II===
+{{flagicon|Oman}} [[Royal Army of Oman]] – '''174''' Piranha II in seven versions.<ref name="disarmament.un.org" />{{dead link|date=February 2025}}
+
+{{flagicon|Qatar}} [[Qatar Armed Forces]] – '''40''' Piranha II 8×8 built under licence by former British firm Alvis PLC. (36 CCTS-90 tank hunter with a Belgian Cockerill 90&nbsp;mm gun<ref name="tanksency">{{cite encyclopedia |url=http://www.tanks-encyclopedia.com/coldwar/Switzerland/Mowag_Piranha.php |title=Mowag Piranha |date=October 1, 2015 |archive-url=https://web.archive.org/web/20160307040538/http://www.tanks-encyclopedia.com/coldwar/Switzerland/Mowag_Piranha.php |archive-date=2016-03-07 |encyclopedia=tanks-encyclopedia.com}}</ref> and 4 ARVs-recovery).{{citation needed|date=October 2020}} Used during the [[Saudi Arabian-led intervention in Yemen]].<ref>{{cite book|title=The Military Balance 2016|date=February 2016|volume=116|isbn=9781857438352 |publisher=Routlegde|ref={{harvid|Military Balance 2016}}|author=International Institute for Strategic Studies|author-link=International Institute for Strategic Studies|page=315}}</ref>
+
+{{flagicon|Saudi Arabia}} [[Saudi Arabian National Guard]] – '''1,117''' LAV/Piranha II in 10 versions; another '''132''' ordered.<ref name="disarmament.un.org" />
+* 120 Piranha II <ref name="Trade Registers">{{Cite web |title=Trade Registers |url=https://armstrade.sipri.org/armstrade/page/trade_register.php |access-date=2023-06-16 |website=armstrade.sipri.org}}</ref>
+{{flagicon|Sweden}} [[Swedish Army]] – '''54''' Piranha II
+* 27 10×10 Armoured Sensor Vehicle (protection against 14.5mm)
+* 17 10×10 Armoured Command Vehicle (protection against 7.62mm)
+* 10 8×8 Armoured Escort Vehicle ordered in 1997
+{{flagicon|Switzerland}} [[Swiss Army]] – '''528''' Piranha IIC (APC93 8×8):
+* 8 military police ''"Spz Pz 93 Militärpolizei"'' <ref>{{Cite web |title=Mowag Piranha Spz Pz 93 8×8 Militärpolizei - Radschützenpanzer - Radfahrzeuge  |url=https://militaerfahrzeuge.ch/unterkategorie_11_26_510.html |access-date=2023-06-16 |website=militaerfahrzeuge.ch}}</ref>
+* 5 driving school ''"Spz 93 Fahrschule"'' <ref>{{Cite web |title=Mowag Piranha Spz 93 8×8 Fahrschule - Radschützenpanzer - Radfahrzeuge  |url=https://militaerfahrzeuge.ch/unterkategorie_11_26_543.html |access-date=2023-06-16 |website=militaerfahrzeuge.ch}}</ref>
+* 515 ''"Char de grenadiers à roues 93"'' equipped with turrets KUKA Wehrtechnik Type 606 A1 (which became Rheinmetall),<ref>{{Cite web |title=Les premiers chars de grenadiers à roues remis à la troupe |url=https://www.admin.ch/cp/f/1995Jul12.084125.4336@idz.bfi.admin.ch.html |access-date=2023-06-16 |website=www.admin.ch}}</ref><ref name="sipri.org" /> made of the subvariants:
+** 282 Infantry APC variant ''"Spz 93"'' <ref>{{Cite web |title=Mowag Piranha Spz 93 8×8 - Radschützenpanzer - Radfahrzeuge  |url=https://militaerfahrzeuge.ch/unterkategorie_11_26_236.html |access-date=2023-06-16 |website=militaerfahrzeuge.ch}}</ref>
+*** tranche 1, 117 ordered in 1993
+*** tranche 2, 117 ordered in 1996
+*** tranche 3, 48 ordered in 1999
+** 92 command variant ''"Kdo Pz 93"'' <ref>{{Cite web |title=Mowag Piranha Kdo Pz 93 8×8 - Radschützenpanzer - Radfahrzeuge  |url=https://militaerfahrzeuge.ch/unterkategorie_11_26_544.html |access-date=2023-06-16 |website=militaerfahrzeuge.ch}}</ref>
+*** tranche 1, 28 ordered in 1993
+*** tranche 2, 29 ordered in 1996
+*** tranche 3, 35 ordered in 1999
+** 141 anti-tank variant ''"PAL Pz 93"'', (2 crew + 8 passengers, 8 [[M47 Dragon|Dragon anti-tank missiles]] embarked) <ref>{{Cite web |title=Mowag Piranha Pal Pz 93 8×8 - Radschützenpanzer - Radfahrzeuge  |url=https://militaerfahrzeuge.ch/unterkategorie_11_26_546.html |access-date=2023-06-16 |website=militaerfahrzeuge.ch}}</ref>
+*** tranche 1, 60 ordered in 1993
+*** tranche 2, 59 ordered in 1996
+*** tranche 3, 22 ordered in 1999
+{{flagicon|Switzerland}} [[Geneva]] [[Cantonal police]] – '''1''' Piranha IIC used by the tactical unit, BI (''Brigade d'Intervention'')<ref>{{Cite news|url=https://www.tdg.ch/geneve/actu-genevoise/geneve-police-extreme/story/13962803|title=Genève a sa police de l'extrême|newspaper=Tribune de Genève|via=www.tdg.ch}}</ref>
+
+=== Piranha III ===
+[[File:Botswana Army - Piranha IIIC APC (first batch) (5).webp|thumb|Mowag Piranha IIIC - Botswana (first batch)]]
+[[File:MOWAG Piranha IIIC ambulancia.JPG|thumb|MOWAG Piranha IIIC ambulance of the Spanish Marines]]
+[[File:Romanian Piranha IIIC APCs during the Romanian National Day military parade.jpg|thumb|Romanian Piranha IIIC APCs during the Romanian National Day military parade in 2009]]
+{{flagicon|Belgium}} [[Belgian Army]] – '''242''' Piranha IIIC 8×8, selected in 2006, ordered in 2 batches, delivery 2008 - 2015. Variants purchased:
+* 99 ''FUSELIER'' (APC)<ref>{{cite web |title=PIRANHA FUS |url=https://www.mil.be/nl/materiaal/piranha-fus |url-status=live |archive-url=https://web.archive.org/web/20180612141818/https://www.mil.be/nl/materiaal/piranha-fus |archive-date=2018-06-12 |access-date=2018-09-08 |website=www.mil.be}}</ref>
+* 32 DF30 (30mm Elbit turret)<ref>{{cite web |title=PIRANHA DF30 |url=https://www.mil.be/nl/materiaal/piranha-df30 |url-status=live |archive-url=https://web.archive.org/web/20180612142140/https://www.mil.be/nl/materiaal/piranha-df30 |archive-date=2018-06-12 |access-date=2018-09-08 |website=www.mil.be}}</ref>
+* 18 DF90<ref>{{cite web|title=Tientallen miljoenen gekost, maar Belgische pantservoertuigen kunnen niet vuren|url=https://www.demorgen.be/nieuws/tientallen-miljoenen-gekost-maar-belgische-pantservoertuigen-kunnen-niet-vuren~b64c7613/|last=Struys|first=Bruno|date=1 January 2020|access-date=1 October 2023}}</ref>
+* 24 command vehicle<ref>{{cite web |title=PIRANHA CP |url=https://www.mil.be/nl/materiaal/piranha-cp |url-status=live |archive-url=https://web.archive.org/web/20190327090128/https://www.mil.be/nl/materiaal/piranha-cp |archive-date=2019-03-27 |access-date=2018-09-08 |website=www.mil.be}}</ref>
+* 12 Ambulance<ref>{{cite web |title=PIRANHA Ambulance |url=https://www.mil.be/nl/materiaal/piranha-ambulance |url-status=live |archive-url=https://web.archive.org/web/20180909001711/https://www.mil.be/nl/materiaal/piranha-ambulance |archive-date=2018-09-09 |access-date=2018-09-08 |website=www.mil.be}}</ref>
+* 17 ARV<ref>{{cite web |title=PIRANHA Recovery |url=https://www.mil.be/nl/materiaal/piranha-recovery |url-status=live |archive-url=https://web.archive.org/web/20180612143648/https://www.mil.be/nl/materiaal/piranha-recovery |archive-date=2018-06-12 |access-date=2018-09-08 |website=www.mil.be}}</ref>
+* 18 Engineering<ref>{{cite web |title=PIRANHA GENIE |url=https://www.mil.be/nl/materiaal/piranha-genie |url-status=live |archive-url=https://web.archive.org/web/20180612145153/https://www.mil.be/nl/materiaal/piranha-genie |archive-date=2018-06-12 |access-date=2018-09-08 |website=www.mil.be}}</ref>
+{{flagicon|Botswana}} [[Botswana Defence Force]] – '''90''' Piranha III
+* 45 Piranha IIIC ordered in 2002, delivered from 2003 to 2004 (APC and ambulance variants).<ref name="disarmament.un.org">{{cite web|url=http://disarmament.un.org/UN_REGISTER.nsf|title=UN Register of Conventional Arms – UNODA|website=disarmament.un.org|access-date=2009-01-07|archive-url=https://web.archive.org/web/20081214211015/http://disarmament.un.org/UN_REGISTER.NSF|archive-date=2008-12-14|url-status=live}}</ref>
+* 45 Piranha ordered in 2016, delivered from 2019 to 2022 (IFV variant, equipped with [[Hitfist|HITFIST]] turret).<ref name=":1" />
+{{flagicon|Brazil}} [[Brazilian Marine Corps]] – '''30''' Piranha IIIC <ref name=":1" /><ref>[http://www.gdels.com/descargas/Press%20Release%20PIRANHA%20IIIC%20Brazil%20Nov%2019%202008.pdf General Dynamics awarded Order for 18 PIRANHA IIIC 8×8 Vehicles from Brazilian Marines] {{webarchive|url=https://web.archive.org/web/20110925112820/http://www.gdels.com/descargas/Press%20Release%20PIRANHA%20IIIC%20Brazil%20Nov%2019%202008.pdf|date=2011-09-25}}</ref>
+* 25 [[Armoured personnel carrier|APC]]
+* 2 [[Armoured recovery vehicle|ARV]]
+* 2 command post
+* 1 ambulance
+{{flagicon|Denmark}} [[Danish Army]] – '''113''' Piranha III <ref name=":1" /><ref>{{Cite web |title=Mowag Piranha IIIH - Danish Army Vehicles Homepage |url=https://www.armyvehicles.dk/mowagpiranha.htm |access-date=2023-06-16 |website=www.armyvehicles.dk}}</ref>
+* 22 Piranha IIIH (MTU 6V183TE22 (400&nbsp;hp) diesel engine)<ref name="sipri.org" /> (delivery 1999–2000, $30million <ref>{{Cite web |title=News on Army vehicle procurements - Danish Army Vehicles Homepage |url=http://www.armyvehicles.dk/procure.htm#APV |access-date=2023-07-07 |website=www.armyvehicles.dk}}</ref>)
+** 18 [[Armoured personnel carrier|APC]]
+** 2 [[Armoured recovery vehicle|ARV]]
+** 2 command post
+* 91 Piranha IIIC
+** 60 command post, reconnaissance + APC <ref>{{Cite web |title=Mowag Piranha IIIC - Danish Army Vehicles Homepage |url=https://www.armyvehicles.dk/mowagpiranhainf.htm |access-date=2023-06-16 |website=www.armyvehicles.dk}}</ref>
+** C2 [[Command and Control]] variant <ref>{{Cite web |title=Mowag Piranha IIIC - Danish Army Vehicles Homepage |url=https://www.armyvehicles.dk/mowagpiranhac2.htm |access-date=2023-06-16 |website=www.armyvehicles.dk}}</ref>
+** Tactical Air Control Party TACP <ref>{{Cite web |title=Mowag Piranha IIIC - Danish Army Vehicles Homepage |url=https://www.armyvehicles.dk/mowagpiranhatacp.htm |access-date=2023-06-16 |website=www.armyvehicles.dk}}</ref>
+** Danish Communications and Informations Systems (CIS) Piranha <ref>{{Cite web |title=Mowag Piranha IIIC - Danish Army Vehicles Homepage |url=https://www.armyvehicles.dk/mowagpiranhacis.htm |access-date=2023-06-16 |website=www.armyvehicles.dk}}</ref>
+** 11 Ambulance <ref>{{Cite web |title=Mowag Piranha IIIC - Danish Army Vehicles Homepage |url=https://www.armyvehicles.dk/mowagpiranhaambu.htm |access-date=2023-06-16 |website=www.armyvehicles.dk}}</ref>
+{{flagicon|Moldova}} [[Moldovan Ground Forces]] – '''19''' Piranha IIIH, supplied by Germany (Due to Swiss veto Danish request to re-export Piranha 3 armoured vehicles to Ukraine) as overhauled former Danish Army vehicles, first 3 vehicles delivered on 11.01.2023<ref name="disarmament.un.org" />
+
+{{flagicon|Ireland}} [[Irish Army]] – '''80''' Piranha IIIH <ref name=":1" /> (40 ordered in 1999, 25 in 2003, 15 ordered in 2005) (in 2019–2020, 62 Protector RWS turret were ordered for all the vehicles not initially equipped with it)<ref name="Trade Registers" />
+* 45 [[Armoured personnel carrier|APC]]
+* 18 Cavalry Reconnaissance Vehicle equipped with [[Protector (RWS)|Protector RWS]] (12.7&nbsp;mm or 40&nbsp;mm grenade launcher)
+* 8 command post
+* 6 Medium Reconnaissance Vehicle equipped with HITFIST 30 turrets <ref>{{Cite web |title=WarWheels.Net-Irish Piranha 3H MRV Index |url=https://warwheels.net/Piranha3H_8x8MRVINDEX.html |access-date=2023-06-16 |website=warwheels.net}}</ref>
+* 2 ambulance
+* 1 [[Armoured recovery vehicle|ARV]]
+{{flagicon|Romania}} [[Romanian Land Forces]] – '''43''' Piranha IIIC (amphibious).<ref>{{cite web|url=http://www.janes.com/extracts/extract/jaa/jaa_a052.html|title=ROMARM Zimbru 2006 Saur Armoured Infantry Vehicle (Romania)|date=28 January 2008|website=janes.com|archive-url=https://web.archive.org/web/20080929205151/http://www.janes.com/extracts/extract/jaa/jaa_a052.html|archive-date=29 September 2008}}</ref>
+* 31 APC (12.7mm RWS turret Elbit) ordered in 2006 (€37 million)
+* 12 ordered in 2017 ($45 million), specialised variants (command post, ambulance, [[CBRN defense|NBC reconnaissance]], [[Armoured recovery vehicle|ARV]], [[mortar carrier]])<ref>{{cite web|url=http://armstrade.sipri.org/armstrade/page/trade_register.php|title=Trade Registers|work=[[SIPRI]]|access-date=23 September 2023|archive-date=22 April 2019|archive-url=https://web.archive.org/web/20190422051706/http://armstrade.sipri.org/armstrade/page/trade_register.php|url-status=dead}}</ref>
+{{flagicon|Spain}} [[Infantería de Marina|Spanish Navy Marines]] – '''39''' Piranha IIIC (18 ordered in 2001, 21 ordered in 2008)<ref name="disarmament.un.org" />
+* 26 Armoured fighting vehicles (12.7&nbsp;mm KMW RWS or 40&nbsp;mm grenade launcher with AN/TVS-5 night vision)
+* 4 [[Infantry fighting vehicle|IFV]] / Reconnaissance vehicles (Lance turret with 30mm Mauser canon)
+* 4 sapper / engineering vehicles
+* 2 command post
+* 1 electronic warfare
+* 1 ambulance
+* 1 [[Armoured recovery vehicle|ARV]]<ref name="Trade Registers" />
+{{flagicon|Sweden}} [[Swedish Amphibious Corps]] –'''13''' Piranha IIIC
+* 7 ''"LIRKA"'' Armoured Command Vehicle (ACV) 10×10 <ref name=":1" /><ref name=":2">{{Cite web |title=Piranha 10×10 Küstenartillerie (SE) |url=https://www.panzerbaer.de/types/s_radpz_piranha_iiic-a.htm |access-date=2023-06-16 |website=www.panzerbaer.de}}</ref> 
+* 6 ''"KAPRIS"'' coastal artillery Armoured Sensor Vehicle (ASV) 10×10 with [[Giraffe radar]]<ref name=":1" /><ref name=":2" />
+* 1 8×8 AEV prototype (armoured escort vehicle) supplied in 2002, 18 were initially planned, later cancelled.
+* 1 Piranha III 8×8 Armoured Sensor Vehicle Swedish navy (artillery fire sensor)
+{{flagicon|Switzerland}} [[Swiss Army]] – '''88''' Piranha IIIC <ref>{{Cite web|url=http://www.militaerfahrzeuge.ch/suche.html|title=Suche nach «» |website=www.militaerfahrzeuge.ch|access-date=2019-06-14}}</ref>
+* 36 Piranha IIIC ''"Radio Access Point Pz",'' ordered in 2002, in service since 2005 ([[12.7mm]] [[M2 Browning]])<ref>{{Cite web |title=Mowag PIRANHA IIIC 8×8 RAP Pz - Gepanzerte Fahrzeuge - Radfahrzeuge  |url=https://militaerfahrzeuge.ch/unterkategorie_11_27_496.html |access-date=2023-06-16 |website=militaerfahrzeuge.ch}}</ref> 
+* 6 Piranha IIIC command vehicle ''"FHR Pz FIS/HE INTAFF",'' ordered in 2007, in service since 2011 ([[M2 Browning]]) <ref>{{Cite web |title=Mowag PIRANHA IIIC 8×8 FHR Pz FIS/HE INTAFF 18,5t - Gepanzerte Fahrzeuge - Radfahrzeuge  |url=https://militaerfahrzeuge.ch/unterkategorie_11_27_493.html |access-date=2023-06-16 |website=militaerfahrzeuge.ch}}</ref> 
+* 6 Piranha IIIC command vehicles ''"FHR Pz"'', ordered in 2002, in service since 2005 ([[12.7mm]] [[M2 Browning]])<ref>{{Cite web |title=Mowag PIRANHA IIIC 8×8 FHR Pz - Gepanzerte Fahrzeuge - Radfahrzeuge  |url=https://militaerfahrzeuge.ch/unterkategorie_11_27_494.html |access-date=2023-06-16 |website=militaerfahrzeuge.ch}}</ref> 
+* 8 Piranha IIIC ''"Mzs Pz SE-630"'' (IFASS multi-use emitter), ordered in 2007, in service since 2012 ([[M2 Browning]]) <ref>{{Cite web |title=Mowag PIRANHA IIIC 8×8 Mehrzwecksender Mzs Pz SE-630 - Gepanzerte Fahrzeuge - Radfahrzeuge  |url=https://militaerfahrzeuge.ch/unterkategorie_11_27_506.html |access-date=2023-06-16 |website=militaerfahrzeuge.ch}}</ref> 
+* 12 Piranha IIIC electronic warfare ''"KOMPAK Pz"'', ordered in 2007, in service since 2014 <ref>{{Cite web |title=Mowag PIRANHA IIIC 8×8 KOMPAK Pz - Gepanzerte Fahrzeuge - Radfahrzeuge  |url=https://militaerfahrzeuge.ch/unterkategorie_11_27_505.html |access-date=2023-06-16 |website=militaerfahrzeuge.ch}}</ref> 
+* 8 Piranha IIIC ''"KOMM Pz"'' command vehicles, ordered in 2007, in service since 2010 ([[M2 Browning]]) <ref>{{Cite web |title=Mowag PIRANHA IIIC 8×8 KOMM Pz - Gepanzerte Fahrzeuge - Radfahrzeuge  |url=https://militaerfahrzeuge.ch/unterkategorie_11_27_499.html |access-date=2023-06-16 |website=militaerfahrzeuge.ch}}</ref> 
+* 12 Piranha IIIC [[CBRN defense|CBRN]] ''"ABC Aufkl FZ"'' exploration in service since 2015 ([[Protector RWS|Kongsberg Protector]] with M2 Browning) <ref name="sipri.org" /><ref>{{Cite web |title=Mowag PIRANHA IIIC 8×8 ABC Aufkl Fz - Gepanzerte Fahrzeuge - Radfahrzeuge  |url=https://militaerfahrzeuge.ch/unterkategorie_11_27_530.html |access-date=2023-06-16 |website=militaerfahrzeuge.ch}}</ref>
+
+===Piranha IV===
+{{main|Mowag Piranha IV}}
+{{flagicon|Switzerland}} [[Swiss Army]] – '''164''' Piranha IV on order
+* 84 engineering / sapper vehicles (''PI PZ 21'' - "''Pionier Panzerfahrzeug 21"''),<ref>{{Cite web |title=Le message sur l'armée 2023 du DDPS |url=https://www.vbs.admin.ch/fr/securite/armee/messages-armee/message-armee-2023.html |access-date=2023-05-28 |website=Département fédéral de la défense, de la protection de la population et des sports |language=fr}}</ref> to be delivered from 2025 <ref>{{cite web |date=7 May 2022 |title=Swiss Army orders Piranha IV engineering vehicles to replace 60-year-old M113s |url=https://defbrief.com/2022/05/07/swiss-army-orders-piranha-iv-engineering-vehicles-to-replace-60-year-old-m113s/ |url-status=dead |archive-url=https://web.archive.org/web/20220507130255/https://defbrief.com/2022/05/07/swiss-army-orders-piranha-iv-engineering-vehicles-to-replace-60-year-old-m113s/ |archive-date=2022-05-07 |website=defbrief.com}}</ref>
+* 48 mortar carriers (''"12 cm Mörser 16")'', 32 to be delivered between 2024 and 2025, 16 after 2026 <ref>{{cite web|url=https://www.shephardmedia.com/news/landwarfareintl/switzerland-expands-120mm-mortar-buy-to-48-with-follow-on-order/|title=Switzerland expands 120mm mortar buy to 48 with follow-on order|website=shephardmedia.com|date=12 April 2023}}</ref>
+* 32 self-propelled howitzers (''AGM Artillery Gun Module on Piranha IV 10×10''). The first systems are expected to be delivered in 2030.<ref>{{cite web |title=Programme d’armement 2025 |url=https://www.vtg.admin.ch/fr/programme-darmement-2025#Appui-de-feu-indirect-%C3%A0-moyenne-distance |website=The Swiss Armed Forces |access-date=30 October 2025 |language=French |date=26 February 2025}}</ref>
+
+===Piranha V===
+{{main|Mowag Piranha V}}
+
+[[File:Danish Piranha V Exercise Dynamic Front 23.jpg|thumb|Danish Piranha V during an exercise in [[Oksbøl]] in 2023]]
+{{flagicon|Denmark}} [[Danish Army]] – '''309''' Piranha V <br />The first were produced in Switzerland and delivered in May 2017, and all were delivered by end 2023 <ref>{{cite web |title=309 New Armored Vehicles |url=http://www2.forsvaret.dk/nyheder/overige_nyheder/Pages/309nyepansredemandskabsvogne.aspx |url-status=live |archive-url=https://web.archive.org/web/20151214210216/http://www2.forsvaret.dk/nyheder/overige_nyheder/Pages/309nyepansredemandskabsvogne.aspx |archive-date=14 December 2015 |access-date=11 December 2015 |website=[[Forsvaret.dk]] |language=da}}</ref><ref>{{cite web |last1=Tomkins |first1=Richard |date=19 May 2017 |title=First Piranhas delivered to Danish military |url=http://www.upi.com/Defense-News/2017/05/19/First-Piranhas-delivered-to-Danish-military/6061495190787/ |archive-url=https://archive.today/20170521210024/http://www.upi.com/Defense-News/2017/05/19/First-Piranhas-delivered-to-Danish-military/6061495190787/ |archive-date=21 May 2017 |access-date=21 May 2017 |work=United Press International}}</ref>
+* APC
+* Command
+* Ambulance
+* Engineer
+* Mortar Carriers
+* Repair
+* ''Additional order possible for a'' ''[[SHORAD]] system with the [[Skyranger 30]]<ref>{{Cite web |last=ESD |date=2023-05-17 |title=Royal Danish Army Selects Skyranger 30 |url=https://euro-sd.com/2023/05/news/31568/royal-danish-army-selects-skyranger-30/ |access-date=2023-07-14 |website=euro-sd.com |language=en-US}}</ref>''
+{{flagicon|Monaco}} [[Compagnie des Carabiniers du Prince|Monégasque Carabiniers]] – '''2''' Piranha V
+* 2 Security vehicles <ref>{{cite book |last=Giletta|first=Jacques|title=Les Gardes Personnelles des Princes de Monaco |year=2005 |edition=1st |publisher=Taurus Editions |isbn=2 912976-04-9}}</ref><ref>{{Cite web|url=http://www.military-today.com/apc/mowag_piranha_v.htm|title=MOWAG Piranha V - Armored personnel carrier|access-date=26 May 2023|archive-date=26 May 2023|archive-url=https://web.archive.org/web/20230526125318if_/http://www.military-today.com/apc/mowag_piranha_v.htm|url-status=usurped}}</ref>
+
+{{flagicon|Germany}} [[German Army]] - '''58''' Piranha V ordered, 256 in total planned<ref>{{cite web |last1=Felstead |first1=Peter |title=GDELS to supply Piranha 5 vehicles for German Army's TaWAN project |url=https://euro-sd.com/2025/02/major-news/42797/piranha-5s-for-tawan-project/ |website=European Security & Defence |access-date=30 October 2025 |date=25 February 2025}}</ref>
+
+{{flagicon|Romania}} [[Romanian Land Forces]] – '''227''' Piranha V in production.
+
+The first batch of 36 vehicles produced in Switzerland, arrived in October 2020. Another 58 vehicles assembled in Romania were received by the end of 2022. All other units will be produced in Romania, at the [[ROMARM|Bucharest Mechanical Factory]].<ref>{{Cite web |date=15 March 2022 |title=Blindatele Piranha 5 vor fi produse complet la Uzina Mecanică București, inclusiv pentru export |url=https://www.hotnews.ro/stiri-defense-25435434-blindatele-piranha-5-vor-produse-complet-uzina-mecanica-bucuresti-inclusiv-pentru-export-cate-transportoare-vor-mai-livrate-armatei.htm |website=[[HotNews]] |language=ro}}</ref> A further '''150''' Piranhas are to be acquired.<ref>{{cite web|url=https://www.digi24.ro/stiri/romania-va-cumpara-alte-150-de-blindate-piranha-pentru-armata-romana-2247757|title=România va cumpăra alte 150 de blindate Piranha pentru armata română|language=ro|work=[[Digi24]]|date=10 February 2023}}</ref>
+
+*IFV 
+* Command
+* Ambulance
+* CBRN
+* Mortar 
+* Recovery
+
+{{flagicon|Spain}} [[Spanish Army]] – '''348''' ordered, total expected 998 <ref>{{cite web |date=2 January 2023 |title=First Dragón 8×8 Delivered to Spanish Army |url=https://euro-sd.com/2023/01/news/28879/first-dragon-8x8-delivered-to-spanish-army/ |work=European Security & Defence}}</ref><ref>{{cite web |date=25 August 2020 |title=General Dynamics European Land Systems awarded €733 million (USD $870 million) of a €1.74 billion contract for 348 Spanish 8×8 combat vehicles |url=https://www.prnewswire.com/news-releases/general-dynamics-european-land-systems-awarded-733-million-usd-870-million-of-a-1-74-billion-contract-for-348-spanish-8x8-combat-vehicles-301117983.html |website=prnewswire.com}}</ref>
+
+*Phase 1, 348, delivery 2023–2027
+** 219 ''VCR'' (an IFV variant)
+** 58 ''VEC'' (reconnaissance)
+** 14 ''VCR-PC'' (company command post)
+** 8 ''VCOAV"'' (artillery advanced observant)
+** 39 ''"VCR-ZAP"'' (sapper / engineering, delivery started in 2022)
+* Phase 2, 365 (2027–2030)
+* Phase 3, 285 (2031–2035)
+* 348 units on order, to be delivered by 2027. Five units were delivered in 2018 as prototypes for the VBMR program. Another seven vehicles were received in 2022. The Spanish variant is called the ''Dragón'', and is produced by TESS Defence, an association between [[Santa Bárbara Sistemas]], and three other companies.
+
+=== Former operators of the Piranha family ===
+{{flagicon|Liberia}} [[Armed Forces of Liberia]] – '''10''' Piranha I 4×4.<ref name="trade">{{cite web |url=http://armstrade.sipri.org/armstrade/page/trade_register.php |title=Trade Registers |publisher=Armstrade.sipri.org |access-date=2013-06-20 |archive-url=https://web.archive.org/web/20100414022558/http://armstrade.sipri.org/armstrade/page/trade_register.php |archive-date=2010-04-14 |url-status=live }}</ref> Saw service during the [[Second Liberian Civil War]].<ref>{{cite news|url=https://news.bbc.co.uk/2/hi/europe/1205372.stm|title=Fighting in northern Liberia|date=6 March 2001|via=news.bbc.co.uk|access-date=3 February 2014|archive-url=https://web.archive.org/web/20140220084222/http://news.bbc.co.uk/2/hi/europe/1205372.stm|archive-date=20 February 2014|url-status=live}}</ref>
+
+{{flagicon|Sierra Leone}} [[Republic of Sierra Leone Armed Forces|Sierra Leone Army]] – about '''10''' Piranha I 6×6{{citation needed|date=October 2020}} (Non operational)
+
+== Derivatives of the Piranha ==
+
+=== ASLAV (Australian Light Armoured Vehicle) ===
+{{main|ASLAV}}
+
+{{flagicon|AUS}} [[Australian Army]]
+
+The [[ASLAV]] is an eight-wheeled [[Amphibious vehicle|amphibious]] armoured [[reconnaissance vehicle]] of the [[LAV II]] family used by the [[Australian Army]], built by [[General Dynamics Land Systems|GDLS Canada]] and [[General Dynamics Land Systems–Australia|GDLS Australia]].<ref name="Hart">{{cite book |last1=Hart |first1=Russel |title=Modern Tanks and AFVs 1991-Present |last2=Hart |first2=Stephen |date=2019 |publisher=Amber Books Ltd |isbn=978-1-78274-725-3 |pages=195–198}}</ref> Land 112 Phase 1, 15 LAV-25 leased from the USMC; Land 112 Phase 2, 113 ASLAV ordered, delivery from 1995 to 1997; Land 112 Phase 3, 144 ASLAV ordered, all delivered by 2004.<ref>{{Cite web |title=Land Warfare: Heavily tasked ASLAV soldiers on |url=https://www.australiandefence.com.au/news/land-warfare-heavily-tasked-aslav-soldiers-on-adm-nov-2010 |access-date=2023-11-11 |website=www.australiandefence.com.au |language=en}}</ref>
+
+* [[ASLAV]] – '''257 <ref name=":0">{{Cite web |title=ASLAV-25 Armored Reconnaissance Vehicle |url=https://www.militarytoday.com/apc/aslav_25.htm |access-date=2023-11-11 |website=www.militarytoday.com |archive-date=2023-11-12 |archive-url=https://web.archive.org/web/20231112004256/https://www.militarytoday.com/apc/aslav_25.htm |url-status=dead }}</ref>'''
+** ASLAV Type I, derivative of the [[United States Marine Corps|USMC]] [[LAV-25]]
+*** ASLAV-25 <ref name=":0" />
+** ASLAV Type II, derivative of the [[Canadian Army]] [[Bison and Coyote armoured vehicles|Bison]]
+*** ASLAV-PC ([[Armoured personnel carrier|APC]]) <ref>{{Cite web |title=ASLAV-PC Armored Personnel Carrier { |url=https://www.militarytoday.com/apc/aslav_pc.htm |access-date=2023-11-11 |website=www.militarytoday.com |archive-date=2023-11-12 |archive-url=https://web.archive.org/web/20231112004251/https://www.militarytoday.com/apc/aslav_pc.htm |url-status=dead }}</ref>
+*** ASLAV-C (Command Post)
+*** ASLAV-S (Surveillance)
+*** ASLAV-A (Ambulance)
+** ASLAV Type III
+*** 11 ASLAV-F (Fitter, a maintenance support vehicle)
+*** 11 ASLAV-R (Recovery, an [[Armoured recovery vehicle|ARV]])
+
+=== LAV (Light Armoured Vehicles, made in Canada) ===
+{{main|General Motors LAV}}
+
+{{flagicon|Canada}} [[Canadian Army]]
+*[[LAV III]], derived from Piranha III – '''651'''
+** 494 Infantry Fighting Vehicle - Standard model with turret and 25&nbsp;mm gun
+** 71 TOW Under Armour - Anti-tank variant equipped with two TOW missile launchers on a specialized turret
+** 39 armoured engineering vehicles
+** 47 artillery fire control
+* Modernisation of 616 [[LAV III]] to standard [[LAV 6|LAV 6.0]]<ref>{{Cite web |title=LAV 6.0 Armored Personnel Carrier  |url=https://www.militarytoday.com/apc/lav_6_0.htm |access-date=2023-09-09 |website=www.militarytoday.com |archive-date=2023-09-28 |archive-url=https://web.archive.org/web/20230928230020/https://www.militarytoday.com/apc/lav_6_0.htm |url-status=dead }}</ref><ref>{{Cite web | title=Archived copy | url=https://rcemecorpsgemrc.ca/wp-content/uploads/2020/11/LEMSJournal_Issue5_EN-Accessible.pdf | archive-url=https://web.archive.org/web/20211202215815/https://rcemecorpsgemrc.ca/wp-content/uploads/2020/11/LEMSJournal_Issue5_EN-Accessible.pdf | archive-date=2021-12-02}}</ref><ref>{{Cite web| title=Tactical competency and the medium-weight force | url=https://www.cfc.forces.gc.ca/259/290/23/192/Rock.pdf | archive-url=https://web.archive.org/web/20220915072837/https://www.cfc.forces.gc.ca/259/290/23/192/Rock.pdf | archive-date=2022-09-15}}</ref>
+** 278 ISC (Infantry Section Carrier)
+** 181 CPV (Command Post)
+** 47 OPV (Observation Post Vehicle for artillery) <ref>{{Cite web |last=Government of Canada |first=National Defence |date=2018-05-30 |title=LAV Specialist Variant Enhancements (LAV SVE) - Defence Capabilities Blueprint |url=http://dgpaapp.forces.gc.ca/en/defence-capabilities-blueprint/project-details.asp?id=1682 |access-date=2023-09-09 |website=dgpaapp.forces.gc.ca}}</ref>
+** 44 ELAV (Engineer)
+** 66 RECCE (long range reconnaissance) <ref name="Government of Canada">{{Cite web |last=Government of Canada |first=National Defence |date=2018-05-30 |title=LAV Recce Surveillance System - Defence Capabilities Blueprint |url=http://dgpaapp.forces.gc.ca/en/defence-capabilities-blueprint/project-details.asp?id=1748 |access-date=2023-09-09 |website=dgpaapp.forces.gc.ca}}</ref>
+*[[LAV 6|LAV 6.0]] ACSV – '''360''' <ref name="Defence">{{Cite web |last=Defence |first=National |date=2021-08-04 |title=Armoured Combat Support Vehicle |url=https://www.canada.ca/en/department-national-defence/services/procurement/armoured-combat-support-vehicle.html |access-date=2023-09-09 |website=www.canada.ca}}</ref>
+**Type 2 variants (high roof) <ref name="canadianarmytoday.com">{{Cite web |title=The Agile Eight: Leveraging the LAV 6.0 for armoured combat support  |url=https://canadianarmytoday.com/the-agile-eight-leveraging-the-lav-6-0-for-armoured-combat-support/ |access-date=2023-09-09 |language=en-US}}</ref>
+*** 41 Troop/Cargo Vehicle (TCV)
+*** 49 Ambulance
+*** 97 Command Post
+*** 18 Electronic Warfare
+*** 18 Engineer
+**Type 3 (low roof) <ref name="canadianarmytoday.com"/>
+***13 Fitter / Cargo Vehicle (FCV)
+***54 Maintenance and Recovery
+***70 Mobile Repair Team
+**(note, among the 360, 39 were donated to Ukraine, and compensated by a complementary order) <ref name="en.defence-ua.com">{{Cite web |title=Canadian LAV ACSV Armored Personnel Carriers was Spotted in Ukraine  |url=https://en.defence-ua.com/weapon_and_tech/canadian_lav_acsv_armored_personnel_carriers_was_spotted_in_ukraine-5303.html |access-date=2023-09-09 |website=en.defence-ua.com |language=en}}</ref>
+{{flagicon|Chile}} [[Chilean Navy]]
+
+Purchased second hand from New Zealand <ref name=":3">{{Cite web |title=Twenty two Light Armoured Vehicles sold to Chilean Navy |url=https://www.nzdf.mil.nz/media-centre/news/twenty-two-light-armoured-vehicles-sold-to-chilean-navy/ |access-date=2023-11-12 |website=www.nzdf.mil.nz |language=en-NZ}}</ref>
+
+* [[LAV III]], known as the NZLAV '''–''' '''22'''
+** 22 IMV (Infantry Mobility Vehicles)
+
+{{flagicon|COL}} [[National Army of Colombia|Colombian Army]]
+
+* [[LAV III]] '''–''' '''87'''
+** 24 [[Armoured personnel carrier|APC]] ordered in 2012 <ref>{{Cite web |date=2015-09-05 |title=Press Release Detail |url=http://www.generaldynamics.com/news/press-releases/detail.cfm?customel_dataPageID_1811=18240 |access-date=2023-11-12 |archive-url=https://web.archive.org/web/20150905235656/http://www.generaldynamics.com/news/press-releases/detail.cfm?customel_dataPageID_1811=18240 |archive-date=2015-09-05 }}</ref>
+** 8 [[Armoured personnel carrier|APC]] ordered in 2014 <ref>{{Cite web |date=2015-05-09 |title=Colombia; Armored vehicles procurement programs summary |url=http://dmilt.com/index.php?option=com_content&view=article&id=8901:colombia-armored-vehicles-procurement-programs-summary&catid=35:latin-america&Itemid=58 |access-date=2023-11-12 |archive-url=https://web.archive.org/web/20150509070752/http://dmilt.com/index.php?option=com_content&view=article&id=8901:colombia-armored-vehicles-procurement-programs-summary&catid=35:latin-america&Itemid=58 |archive-date=2015-05-09 }}</ref>
+** 55 IFV ordered in 2023 <ref>{{Cite web |last=Patterson |first=Brent |date=2023-07-25 |title=Canada secures $418 million sale of 55 light armoured vehicles to the Colombian army - Peace Brigades International-Canada |url=https://pbicanada.org/2023/07/25/canada-secures-418-million-sale-of-55-light-armoured-vehicles-to-the-colombian-army/ |access-date=2023-11-12 |language=en-US}}</ref> ([[Samson Remote Controlled Weapon Station|Samson Dual RWS]] with a [[Mk44 Bushmaster II|30mm Orbital ATK Stretch]])
+
+{{flagicon|NZ}} [[New Zealand Army]]
+
+105 LAV III purchased, with 73 remaining in service. Among the 32 not in service, 22 were sold to the Chilean Navy, 1 lost after damage in Afghanistan, 1 used in Canada as test vehicle, and 8 available for sale.<ref name=":3" />
+
+* [[LAV III]], known as the NZLAV '''–''' '''105'''
+** 95 IMV (Infantry Mobility Vehicles)
+** 7 LOB (standard IMV with Light Obstacle Blade)
+** 3 LAV-R (Recovery)
+
+{{flagicon|Saudi Arabia}} [[Saudi Arabian Army]]
+
+* LAV 700 '''–''' '''742''' <ref>{{Cite web |title=1312-General Dynamics Land Systems - Saudi Arabia|url=https://exitarms.org/delivery/1312-general-dynamics-land-systems-saudi-arabia |access-date=2023-09-09 |website=exitarms.org}}</ref><ref>{{Cite web |title=Trade Registers |url=https://armstrade.sipri.org/armstrade/page/trade_register.php |access-date=2023-09-09 |website=armstrade.sipri.org}}</ref>
+** 385 LAV -700 ([[Armoured personnel carrier|APC]])
+** 119 LAV-700 AT (Anti Tank Missiles)
+** 119 LAV-700 FSV (Fire Support Vehicle), Cockerill-3105 105mm
+** 119 LAV-700 IFV (Infantry Fighting Vehicles), Cockerill Medium Caliber Turret (CMCT)
+
+{{flagicon|Ukraine}} [[Ukrainian Ground Forces]]
+
+* [[LAV 6|LAV 6.0]]  '''–''' '''39'''
+** 39 ACSV donated by the Canadian Army <ref name="en.defence-ua.com"/>
+** 50 ACSV ordered by Canada, to be delivered to Ukraine, the first batch of 10 to be delivered in summer 2024, after training in Germany.<ref>{{Cite news |last=Brewster |first=Murray |author-link=Murray Brewster |date=26 April 2024 |title=First ten armoured vehicles promised to Ukraine to be delivered by summer, Blair says |url=https://www.cbc.ca/news/politics/ukraine-russia-armoured-vehicles-blair-1.7186785 }}</ref>
+{{flagicon|Uruguay}} [[National Army (Uruguay)|Uruguayan Army]]
+
+* [[General Motors LAV|LAV I]], also known as [[AVGP|Armoured Vehicle General Purpose]], derived from Piranha I, purchased second hand – '''147''' 
+** 44 Cougar, [[Reconnaissance vehicle|reconnaissance]] and [[fire support]] vehicle 
+** 98 Grizzly, an [[Armoured personnel carrier|APC]] 
+** 5 Husky, an [[Armoured recovery vehicle|ARV]]
+
+=== Stryker ===
+{{main|Stryker}}
+
+== Retired derivatives of the Piranha family ==
+{{flagicon|Canada}} [[Canadian Army]] 
+* [[General Motors LAV|LAV I]], known as the [[AVGP]], derived from Piranha I  – '''344''' retired of '''492''' acquired, 147 transferred to Uruguay. 
+** 195 Cougar acquired, all retired, ([[Reconnaissance vehicle|reconnaissance]] and [[fire support]] role)<ref name="CasrCougar2009-09">{{cite news |date=September 2009 |title=Background – Armoured Vehicle, General Purpose – Cougar DFSV |publisher=[[Canadian American Strategic Review]] |url=http://www.casr.ca/bg-army-armour-avgp-cougar.htm |url-status=dead |archive-url=https://web.archive.org/web/20091007205153/http://www.casr.ca/bg-army-armour-avgp-cougar.htm |archive-date=2009-10-07}}</ref>
+** 265 Grizzly acquired, all retired, ([[Armoured personnel carrier|APC]] role)<ref name="CasrGrizzly2009-09">{{cite news |date=September 2009 |title=Background – Armoured Vehicle, General Purpose – the Grizzly ISC |publisher=[[Canadian American Strategic Review]] |url=http://www.casr.ca/bg-army-armour-avgp-grizzly.htm |url-status=dead |archive-url=https://web.archive.org/web/20091007102833/http://www.casr.ca/bg-army-armour-avgp-grizzly.htm |archive-date=2009-10-07}}</ref> 
+** 26 Husky retired of 31 acquired, an [[Armoured recovery vehicle|ARV]]<ref name="CasrHusky2009-09">{{cite news |date=September 2009 |title=Background – Armoured Vehicle, General Purpose – the Husky ARV |publisher=[[Canadian American Strategic Review]] |url=http://www.casr.ca/bg-army-armour-avgp-husky.htm |url-status=dead |archive-url=https://web.archive.org/web/20091007205208/http://www.casr.ca/bg-army-armour-avgp-husky.htm |archive-date=2009-10-07}}</ref> 
+** 44 Cougar, 98 Grizzly, 5 Husky given to Uruguayan Army <ref name="casr.ca">{{cite web |title=AVGPs and the Wheeled LAV Life Extension Project |url=http://www.casr.ca/bg-army-armour-avgp-wlav-le.htm |url-status=dead |archive-url=https://web.archive.org/web/20091031044213/http://www.casr.ca/bg-army-armour-avgp-wlav-le.htm |archive-date=2009-10-31 |publisher=[[Canadian American Strategic Review]]}}</ref> 
+*[[LAV II]], derived from Piranha II – '''402''' retired / soon to be retired (2023)
+** 199 [[Bison and Coyote armoured vehicles|Bison]] (or MILAV) (18 command posts, 16 mortar carriers, 16 [[Armoured recovery vehicle|ARV]], the rest [[Armoured personnel carrier|APC]]) <ref name="Defence"/> 
+** 203 [[Bison and Coyote armoured vehicles|Coyote reconnaissance vehicles]]<ref name="Government of Canada"/>
+
+== See also ==
+
+===Comparable vehicles===
+
+{{Div col|colwidth=25em}}
+* {{lwc|Stryker}}
+* [[LAV III]]/[[LAV (armoured vehicle)|LAV AFV]]/[[LAV-25]]/{{lwc|ASLAV}}
+* {{lwc|K808 White Tiger}}
+* {{lwc|Boxer (armoured fighting vehicle)|Boxer}}
+* {{lwc|Freccia IFV}}
+* {{lwc|BTR-90}}
+* {{lwc|CM-32 armoured vehicle}}
+* {{lwc|Type 96 armored personnel carrier}}
+* {{lwc|Type 16 maneuver combat vehicle}}
+* {{lwc|Patria AMV}}
+* {{lwc|BTR-4}}
+* {{lwc|Saur 1}}
+* {{lwc|VBCI}}
+* {{lwc|KTO Rosomak}}
+* {{lwc|FNSS Pars}}
+{{Div col end}}
+
+==Notes==
+{{notelist}}
+{{cnote2 begin}}
+{{cnote2|A|Chilean built 4×4, 6×6 and 8×8 in different configurations for the Chilean Army.}}
+{{cnote2 end}}
+
+==References==
+{{Reflist}}
+
+==Bibliography==
+* Foss, Christopher F. ''Jane's Armour and Artillery 1987–88''. London: Jane's Yearbooks, 1987. {{ISBN|0-7106-0849-7}}.
+* Marcus Bauer, ''Nutzfahrzeuge der MOWAG Motorwagenfabrik AG'', Fachpresse Goldach, Hudson & Company, 1996 {{ISBN|9783857380563}}
+* Military Museum Full
+* Ruedi Baumann: [http://swissmotor.com/20_artikel/500_549/0500.htm ''"Alles" was MOWAG schon bewegt hat – Auf Umwegen zum Welterfolg.''] {{Webarchive|url=https://archive.today/20131230233413/http://swissmotor.com/20_artikel/500_549/0500.htm |date=2013-12-30 }} SwissMoto. Bildpress Zuerich BPZ
+
+==External links==
+{{Commons category|MOWAG Piranha}}
+* [https://web.archive.org/web/20150402104224/http://www.gdels.com/products/wheeled_4.asp?id=1 General Dynamics European Land Systems product page for Piranha 3]
+* [https://web.archive.org/web/20150402104924/http://www.gdels.com/products/wheeled_4.asp?id=4 General Dynamics European Land Systems product page for Piranha 5]
+* [http://www.swissmotor.ch/artikel/051_099/0091.htm Swissmotor.ch – Neue Radpanzergeneration bei MOWAG – Der PIRANHA III]
+* [https://web.archive.org/web/20151222173831/http://www.soldf.com/piranhaiii_asv.html Soldf.com – Piranha III 10×Armoured Sensor Vehicle]
+* [https://web.archive.org/web/20080403092847/http://danskpanser.dk/Hjulkoretojer/PiranhaIIIC.htm DanskPanser.dk – Danish Piranha IIIC]
+* [https://web.archive.org/web/20080403092859/http://danskpanser.dk/Hjulkoretojer/PiranhaIIIH.htm DanskPanser.dk – Danish Piranha IIIH]
+* [http://www.warwheels.net/LAVbisonAPCindex.html War Wheels – Canadian Bison]
+* {{usurped|1=[https://web.archive.org/web/20161025133850/http://www.military-today.com/apc/bison.htm Military Today – Canadian Bison]}}
+
+{{Modern AFV}}
+{{Modern IFV and APC}}
+
+[[Category:Wheeled armoured fighting vehicles]]
+[[Category:Military vehicles introduced in the 1970s]]
+[[Category:Armoured fighting vehicles of Switzerland]]
+[[Category:Mowag Piranha]]
+[[Category:Wheeled amphibious armoured fighting vehicles]]
+[[Category:Armoured personnel carriers of the Cold War]]
+[[Category:Infantry fighting vehicles of the post–Cold War period]]
+[[Category:Armoured fighting vehicles of the post–Cold War period]]
+[[Category:Infantry fighting vehicles of the Cold War]]

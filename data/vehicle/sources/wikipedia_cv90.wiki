@@ -1,0 +1,833 @@
+{{Short description|Swedish Infantry fighting vehicle}}
+{{protection padlock|small=yes}}
+{{Use dmy dates|date=January 2025}}
+<!-- Note, the Swedish designation "stridsfordon" and abbreviation "strf" are not names canonically and should not be capitalized within a sentence. -->
+{{Infobox weapon
+| name               = Combat Vehicle 90
+| image              = Stridsfordon 90 Revinge 2012-2.jpg
+| image_size         = 300
+| caption            = A strf 9040C in Swedish service
+| origin             = [[Sweden]]
+| type               = [[Infantry fighting vehicle]]
+| is_vehicle         = yes
+| is_UK              = 
+| service            = 1994–present
+| used_by            = See ''[[#Operators|Operators]]''
+| wars               = {{plainlist|
+*[[War in Afghanistan (2001–present)|War in Afghanistan]]
+*[[United Nations Mission in Liberia]]
+*[[Russo-Ukrainian war]]}}
+| designer           = Hägglunds/Bofors
+| design_date        = late 1980s
+| manufacturer       = [[BAE Systems AB]]
+| unit_cost          = 
+| production_date    = 1993–present
+| number             = 1,400<ref>{{cite web |url=https://www.baesystems.com/en/article/czech-republic-awards-bae-systems-contract-to-acquire-246-cv90s |title=Czech Republic awards BAE Systems $2.2 billion contract to acquire 246 CV90s | publisher = BAe systems |access-date=16 June 2023 |archive-date=16 June 2023 |archive-url=https://web.archive.org/web/20230616122827/https://www.baesystems.com/en/article/czech-republic-awards-bae-systems-contract-to-acquire-246-cv90s |url-status=live}}</ref>
+| variants           = 
+| crew               = {{plainlist|
+*3 (commander, gunner, driver)
+*7–8 troopers}}
+| length             = {{convert|6.8|m|abbr=on}}<ref>{{cite web |url=https://cv90.cz/specifikace |title=Official CV90 MkIV specs | work = CV90 | place = CZ |access-date=15 June 2023 |archive-date=21 August 2023 |archive-url= https://web.archive.org/web/20230821191959/https://cv90.cz/specifikace |url-status=live}}</ref>
+| width              = {{convert|3.2|m|abbr=on}}
+| height             = {{convert|2.8|m|ftin|abbr=on}}
+| weight             = 23–38 tonnes (Mk 0 to Mk IV)
+| armour             = front against 30&nbsp;mm APFSDS, all-round protection against 14.5 mm AP rounds, integration of [[Iron Fist (countermeasure)|Iron Fist]] [[Active protection system|APS]]
+| primary_armament   = {{Plain list|
+* [[Bofors 40 mm Automatic Gun L/70|40 mm Bofors L/70 autocannon]]
+* or
+* [[Bushmaster III|35 mm/50 Bushmaster autocannon]] (export models Mk III and Mk IV)
+* or
+* [[Bushmaster II|30 mm/40 Bushmaster autocannon]] (export model Mk I & Mk II)
+* or
+* Cockerill XC-8 turret with 105 mm/120 mm cannon
+* or
+* 120 mm mortar
+}}
+| secondary_armament = {{Plain list|
+* 7.62 mm [[Ksp m/39 machine gun]]
+* or
+* 7.62 [[FN MAG]] machine gun
+* and
+* 6 × 76 mm grenade launchers
+* [[Spike (missile)|Spike LR]] anti-tank guided missile
+}}
+| engine             = 
+| engine_power       = 
+| transmission       = CV90 MkI - MkIII: Automatic Perkins X300 (4 forward, 2 reverse)<ref>{{cite web |url=https://militaerfahrzeuge.ch/unterkategorie_13_25_238.html |title=Spz 2000 Rpe }}</ref><br>
+CV90 MkIV: Allison 4040 MX<ref>{{cite web |url=https://defence-industry.eu/allison-transmission-to-supply-4040-mx-for-bae-systems-cv90-mkiv-vehicles/ |title=Allison Transmission signs $250 million deal to supply 4040 MX transmissions for BAE Systems Hägglunds CV90 MkIV vehicles|date= 22 June 2026}}</ref>
+| fuel_capacity      = 
+| suspension         = [[torsion bar]] or [[active suspension]]
+| speed              = {{convert|70|km/h|abbr=on}}
+| pw_ratio           = 
+| vehicle_range      = offroad {{convert|320|km|abbr=on}}, onroad {{convert|900|km|abbr=on}}
+}}
+
+The '''Combat Vehicle 90''' ('''CV90''') ({{langx|sv|stridsfordon 90{{Audio|Sv-Stridsfordon 90.ogg| |help=no}}}}, '''strf 90''' or Stridsfordon 90) is a family of Swedish [[Continuous track|tracked]] armoured [[combat vehicle]]s designed by the [[Swedish Defence Materiel Administration]] (FMV), [[Hägglund & Söner]] and [[Bofors]] during the mid-1980s to early 1990s, before entering service in Sweden in the mid-1990s. The CV90 platform design has continuously evolved from the Mk 0 to the current Mk IV with technological advances and changing battlefield requirements.<ref name="urlCV90 Armoured Combat Vehicle - Army Technology">{{cite web |title= CV90 Armoured Combat Vehicle |url=https://www.army-technology.com/projects/cv90/ |url-status=live |archive-url=https://web.archive.org/web/20181031052355/https://www.army-technology.com/projects/cv90/ |archive-date=31 October 2018 |website=Army Technology}}</ref>
+
+The Swedish version of the main [[infantry fighting vehicle]] (IFV) is fitted with a turret from Bofors equipped with a [[Bofors 40 mm Automatic Gun L/70|40 mm Bofors]] [[autocannon]]. Export versions are fitted with Hägglunds E-series turrets, armed with either a [[Mk44 Bushmaster II|30&nbsp;mm Mk44]] or a [[Bushmaster III|35&nbsp;mm Bushmaster]] autocannon. Over time, the involvement of Hägglund & Söner has been superseded by [[Alvis Hägglunds]] (from 1997) and [[BAE Systems Hägglunds]] (from 2004).<ref name="urlCV90 Armoured Combat Vehicle - Army Technology"/>
+
+Developed specifically for the Nordic [[subarctic climate]], the vehicle has very good mobility in snow and wetlands while carrying and supporting eight, and in later versions six, fully equipped soldiers. Other variants include [[Artillery observer|forward artillery observation]], [[command and control]], anti-aircraft, [[armoured recovery vehicle]], [[electronic warfare]] versions and so forth. Currently, 1,400 vehicles in 17 variants are (or will be) in service with ten user states, seven of which are part of the [[NATO]] alliance.<ref name="BAE 2023-05-24">{{cite web |date=24 May 2023 |title=Czech Republic awards BAE Systems $2.2 billion contract to acquire 246 CV90s |url=https://www.baesystems.com/en-us/article/czech-republic-awards-bae-systems-contract-to-acquire-246-cv90s |url-status=live |archive-url=https://archive.today/20230524142858/https://www.baesystems.com/en-us/article/czech-republic-awards-bae-systems-contract-to-acquire-246-cv90s |archive-date=24 May 2023}}</ref>
+
+== History ==
+During the [[Cold War]], in 1983, the [[Swedish Army]] required vehicles with high mobility, air defence and anti-tank capability, high survivability and protection. In 1985, the "stridsfordon 90" project group, made up of representatives from the [[Swedish Armed Forces]] (''Försvarsmakten''), the FMV and Swedish industry (including Hägglunds and Bofors), finalized the design for a "unity vehicle" that originated from an [[Royal Swedish Air Force|air force]] concept. In 1986, the prototypes for strf 9040 and strf 9025 were ordered. Five prototypes were constructed but, before delivery in 1988, the 9025 version was discontinued. The prototypes were tested during extensive trials between 1988 and 1991, during which prototypes for specialized variants (forward observation, command and control, and armoured recovery vehicles) were ordered.<ref>{{cite web |url=http://fmv.se/sv/Projekt/Stridsfordon-90/Milstolpar/ | publisher =FMV | work = Projekt Stridsfordon 90 | language = sv | place = SE | title = Milstolpar |access-date=13 October 2013 |archive-url=https://web.archive.org/web/20131016061332/http://www.fmv.se/sv/Projekt/Stridsfordon-90/Milstolpar/ |archive-date=16 October 2013 |url-status=live}}</ref> The first deliveries started in 1994.
+
+The CV90 has undergone four [[Mark (designation)|mark shifts]] to meet different customer requirements, focusing on capability enhancements.
+
+===CV90 Mk 0===
+The first CV90 delivered (retroactively named mark 0) was for Sweden, and was armed with a Bofors 40/70B cannon (a dedicated [[Armoured fighting vehicle|armored fighting vehicle]] variant of the Bofors 40&nbsp;mm Automatic Gun L/70) in a two-man turret, which had beaten out the 25&nbsp;mm [[M242 Bushmaster]] chain gun during initial prototype trials. The Mk 0 has a conventional electrical system and was [[For but not with|fitted for but not with]] [[appliqué armour]] systems. The Swedish Army ordered five variants of the CV90. The requirements expressed by the Swedish FMV on signature management were extremely challenging and led to a lot of new design features inherited by all subsequent generations (Mks 0 to III). FMV also prioritized the requirements to provide the best possible design to fulfil user needs. Furthermore, the CV90 was also built for high reliability and ease of maintenance using only standard onboard tools and for conscripts to maintain and operate.
+
+===CV90 Mk I===
+The next variant of CV90, known as the Mk I, was delivered to Norway after winning the country's competition for a new IFV against contemporaries such as the American [[M2 Bradley]], British [[Warrior tracked armoured vehicle|FV510 Warrior]], and Austro-Spanish [[ASCOD]] (Pizarro/ULAN). The Mk I variant of the CV90 had a newly designed two-man 30&nbsp;mm turret, evolved from the 25&nbsp;mm turret. CV90 Mk I was the first IFV with high-hit probability performance during suppression fire modes, both while the vehicle is on the move and against air targets. The CV90 Mk I incorporated several improvements over the original Swedish CV90. Evaluations of mobility, reliability, lethality, fightability, [[ergonomics]], durability and survivability were performed during the CV90 Mk I trial phase for these vehicles, with good results.
+
+===CV90 Mk II===
+The CV90 Mk I was the base for the next development, the CV90 Mk II. The Mk II was produced in three variants: the CV9030 CH (Switzerland) IFV and COM, and the CV9030 FIN (Finland) IFV. Both contracts were won in competition against other IFVs. One significant difference between the two variants was hull size: the Swiss variant is 100&nbsp;mm higher over the front, with an additional 70&nbsp;mm over the combat compartment at the rear. Another difference is the Mk II's partial digitization and built-in Health & Unit Monitoring System (HUMS), along with interactive manuals and instructions. The CV90 Mk II's standard armament is the Mk44 Bushmaster II autocannon.
+
+===CV90 Mk III===
+{{Unreferenced section|date=July 2022}}
+The Mk III variant of the CV90 is a further development of the CV90 Mk II. The areas that underwent the most development were lethality, fightability, electronic architecture, survivability and mobility. The weapon system was upgraded to a 35/50&nbsp;mm Bushmaster III cannon with an integrated muzzle ammunition programmer and a number of different firing scenarios depending on target setup. The crew station design provides the gunner and commander with a continuous eye-on-target engagement feature (crew members do not need to remove their head from the [[eyepiece]] to see and operate equipment).
+
+Further electronic architecture upgrades made the Mk III completely digitized. Mobility improvements consisted of upgraded suspension and enhanced [[power-to-weight ratio]] to handle the increased gross vehicle weight. Improved survivability mainly came in the areas of mine protection and [[Plunging fire|top attack]]. Horizontal protection was designed in similar ways to other CV90 variants, i.e. appliqué systems. The first variant of the Mk III, the Mk IIIa, was delivered to the Netherlands and Denmark, and the second, more modern Mk IIIb variant was delivered to Norway.
+
+===CV90 Mk IV===
+[[File:CV 90 Mk IV SIAF-2022.jpg|thumb|CV90 Mk IV variant]]
+The CV90 Mk IV is equipped with a new [[Scania AB|Scania]] engine, which develops up to {{convert|1000|hp|kW}}, and the latest upgraded X300 heavy-duty transmission. Its maximum weight was increased from 35 to 37 tonnes, with space for two tonnes of additional [[payload]], without a decrease in vehicle agility. It features a new [[augmented reality]] system named {{Proper name |iFighting}}. The {{Proper name|iFighting}} concept fuses data from different systems within the vehicle to filter and prioritize the most critical information, allowing quicker crew decision-making and improved battlefield performance. The Mk IV generation is also the first Western IFV with a qualified Active Protection System. It is equipped with fourth generation electronic architecture supporting future technology adoption and growth.<ref>{{cite web|title=BAE Systems CV90 Mk IV preferred candidate for new tracked armored IFV for Slovak army.|url=https://armyrecognition.com/news/army-news/army-news-2022/bae-systems-cv90-mk-iv-preferred-candidate-for-new-tracked-armored-ifv-for-slovak-army |date=27 May 2022|access-date=4 August 2024}}</ref>
+
+=== CV90 Mk V ===
+The Swedish army is supporting the development of an improved variant from between 2023 and 2027. No agreement has yet been concluded between the FMV and the industry on that development. The development goals focus on:
+* A hybrid electric propulsion system will be proposed and potentially integrated to this version
+* The C4ISR system is to be fully digitalized
+* Improvement of the heat, radar and visual signature management of the vehicle
+* Integrate Beyond Line Of Sight (BLOS) [[anti-tank guided missile]]s. [[Akeron MP]] is a next generation medium-range, man-portable, anti-tank missile, which has a BLOS capability.
+* Integration of [[Unmanned aerial vehicle|UAV]]. 
+Initial tests involving the use of the Akeron MP and of a UAV were performed in January 2023.<ref>{{Cite web |last=Miller |first=Stephen W. |date=10 February 2023 |title= CV90 Mk IV IFV Integrates Akeron 5th Gen Missile |url=https://www.armadainternational.com/2023/02/cv90-mk-iv-ifv-integrates-akeron-5th-gen-missile/ |access-date=18 March 2023 |website= Armada International |language=en-US |archive-date=21 August 2023 |archive-url=https://web.archive.org/web/20230821202105/https://www.armadainternational.com/2023/02/cv90-mk-iv-ifv-integrates-akeron-5th-gen-missile/ |url-status=live }}</ref>
+
+This variant might be ordered, and it would extend the lifetime of the CV90 in the Swedish Army beyond 2034. An upgrade of the IFV variant (strf 90) including some of these elements is very likely.<ref>{{Cite web |last=Ferran |first=Lee |date=31 January 2023 |title=Sweden eyes next-gen, hybrid CV-90 infantry fighting vehicle |url = https://breakingdefense.sites.breakingmedia.com/2023/01/sweden-eyes-next-gen-hybrid-cv-90-infantry-fighting-vehicle/ |access-date=18 March 2023 |website=Breaking Defense |language=en-US |archive-date=21 August 2023 |archive-url=https://web.archive.org/web/20230821191957/https://breakingdefense.com/2023/01/sweden-eyes-next-gen-hybrid-cv-90-infantry-fighting-vehicle/ |url-status= live }}</ref>
+
+== Design ==
+Varying customer requirements have led to multiple CV90 variants with major differences in survivability and electronic architecture. Increased protection has led to higher curb weight; the vehicle's combat weight has risen from 23 to 35 tonnes. With increasingly powerful diesel engines, the power-to-weight ratio has remained approximately the same. The track suspension system has seen several successive upgrades.
+
+The Mk III version has a digital electronic architecture with several different [[CAN bus|CAN-buses]] and digital networks, and is the first IFV incorporating an automatic [[Defensive aids system|defensive aide suite]] which classifies threats and, in automatic mode, can fire smoke and/or the main gun to eliminate or evade targets, as well as instruct the driver on potential threats. At the [[Eurosatory]] 2010 exhibition, a version called Armadillo<ref name="armadillo2010">{{cite web|url=http://www.defensenews.com/story.php?i=4654809|archive-url=https://archive.today/20130121170341/http://www.defensenews.com/story.php?i=4654809|url-status=dead|archive-date=21 January 2013|last=Mahon|first=Tim|title=BAE To Unveil CV90 Armadillo at Eurosatory |newspaper=Defense News|date=3 June 2010}}</ref> was presented. The Armadillo shown was an [[armoured personnel carrier]] (APC) version. The basic chassis can be readily converted to ambulance, control vehicle or other turreted versions.
+
+=== Protection ===
+The CV9040's basic armour provides all-round protection against 14.5&nbsp;mm armour-piercing rounds. Armour protection over the frontal arc is classified, but all models from CV9040B onwards are said to be protected against 30&nbsp;mm [[Armour-piercing fin-stabilized discarding sabot|APFSDS]] rounds. Some variants, including the CV9030N, can be fitted with [[MEXAS]], a ceramic appliqué armor that provides protection against 30&nbsp;mm APFSDS. This armour kit is intended to provide increased protection against [[improvised explosive device]]s, [[explosively formed penetrator]]s, and [[30 mm caliber]] armour-piercing rounds.<ref>{{cite web |url=http://www.mindef.gov.sg/imindef/publications/cyberpioneer/weapon/2007/nov07_weapon.html |title=Swedish versatility |access-date=17 November 2008 |archive-url=https://archive.today/20120805082938/http://www.mindef.gov.sg/imindef/publications/cyberpioneer/weapon/2007/nov07_weapon.html |archive-date=5 August 2012 |url-status=live}}</ref> All CV90s are fitted with a [[spall]] liner, which covers the interior spaces and provides protection for the troops inside against shrapnel and anti-personnel artillery munitions.
+
+The CV90 can also be fitted with [[cage armour]], which provides protection against [[tandem-charge]] and [[shaped charge]] warheads. The CV90 is fitted with a nuclear, biological, and chemical (NBC) filtration system accompanied by a chemical detector and radiation detector systems. The CV90 also uses heat-absorbing filters to provide temporary protection against [[thermal imaging]], [[image intensifier]]s and [[infrared camera]]s. The CV90 was designed with a very low and compact structure to minimize radar and IR signatures.
+
+With every generation of CV90 there has been an increase in payload and corresponding protection levels. The inherent mine protection levels have risen substantially to presently defeat the heaviest (10&nbsp;kg TNT) anti-tank mines.<ref name="armadillo2010" />
+
+In December 2016, BAE Systems received a contract from the Netherlands to test the [[Israel Military Industries]] [[Iron Fist (countermeasure)|Iron Fist]] [[active protection system]] on their CV9035 vehicles. Iron Fist employs a multi-sensor early warning system using both infrared and radar sensors to deploy soft- and hard-kill countermeasures against anti-tank rockets and missiles. A decision for integration was to be made by early 2018.
+
+In 2011, Hägglunds (now BAE Systems AB) demonstrated a version with an [[active camouflage|infrared camouflage]] called [[Adaptiv]], consisting of [[thermoelectric]] plates capable of posing as many different objects, such as ordinary cars, stones, trees etc. to an enemy IR-viewfinder. It takes 1,500 plates to cover a CV90, at a cost of $100 per plate.<ref>[http://ing.dk/artikel/121798-termoelektriske-plader-tryller-en-kampvogn-om-til-en-bil Thermo-electric plates turn a tank into a car] {{Webarchive|url=https://web.archive.org/web/20110927005142/http://ing.dk/artikel/121798-termoelektriske-plader-tryller-en-kampvogn-om-til-en-bil |date=27 September 2011}} [http://ing.dk/artikel/121839-svensk-kamaeleon-kampvogn-aendrer-form Pictures] {{Webarchive | url=https://web.archive.org/web/20110923194536/http://ing.dk/artikel/121839-svensk-kamaeleon-kampvogn-aendrer-form |date=23 September 2011}}, [[Ing.dk]] 13 September 2011. Accessed: 13 September 2011.</ref>
+
+=== Mobility ===
+The CV90 Mk 0 is powered by a DSI14 engine developed by Scania, which provides 550 horsepower and can reach speeds of {{convert|70|km|mi}} per hour. The basic CV90 has a maximum road range of {{convert|320|km|mi}}, but the latest generation can reach up to {{convert|600|km|mi}}.<ref>{{cite web |url=http://www.deagel.com/Self-Propelled-Howitzers/CV90-AMOS_a000589009.aspx |title= Ancile | publisher = Daegel |access-date=15 January 2014 |archive-url=https://web.archive.org/web/20130801054104/http://www.deagel.com/Self-Propelled-Howitzers/CV90-AMOS_a000589009.aspx |archive-date= 1 August 2013 |url-status=live}}</ref><ref>{{cite web |url=http://www.casr.ca/bg-army-ccv-cv90.htm | work =CF Armoured Vehicles | title = CV90 Series | publisher = CASR |access-date= 3 April 2010 |archive-url=https://web.archive.org/web/20100410100536/http://www.casr.ca/bg-army-ccv-cv90.htm |archive-date=10 April 2010 |url-status=live}}</ref> The CV90 offers quiet movement for improved stealth, high speed over good terrain, and high ground clearance for protection against mines and improvised explosive devices.
+
+BAE Systems is considering upgrading the CV90 with a [[hybrid vehicle drivetrain|hybrid-electric]] propulsion system as armies look to cut fuel expenses to respond to environmental issues and fuel economy. A hybrid-electric drive could cut fuel consumption by 10 to 30 percent. The new system would also provide a power boost to move the vehicle. The hybrid-electric combines a standard [[diesel engine]] with a battery pack to provide extra power to propel the vehicle or provide additional electricity.<ref>[http://www.armyrecognition.com/august_2013_defense_industry_military_army_news_uk/bae_systems_may_upgrade_cv90_armoured_infantry_fighting_vehicle_with_hybrid-electric_propulsion_1008.html BAE Systems may upgrade CV90 armoured infantry fighting vehicle with hybrid-electric propulsion] {{Webarchive|url=https://web.archive.org/web/20150923174255/http://www.armyrecognition.com/august_2013_defense_industry_military_army_news_uk/bae_systems_may_upgrade_cv90_armoured_infantry_fighting_vehicle_with_hybrid-electric_propulsion_1008.html |date=23 September 2015}} – Army recognition, 10 August 2013</ref> BAE Systems Hägglunds uses the knowledge acquired through many years of hybrid-electric drive development for the military SEP vehicles and the ongoing civilian hybrid-electric projects for forest machines, airplane howlers and loaders.
+
+In April 2015, BAE Systems fitted a CV90 with an [[Active suspension|active damping suspension system]] derived from [[Formula One]] racing cars. This technology calculates the vehicle's speed and anticipates the terrain ahead, then pressurizes the suspension at independent points to lift the chassis and keep the vehicle level. The suspension, which had been modified to suit a 38-ton armored vehicle rather than a {{convert|700|kg|lb|abbr=on}} racing car, reportedly increases speed by 30-40 percent on rough terrain, outrunning main battle tanks, decreases vehicle pitch acceleration by 40 percent, gives greater maneuverability and stability for on-the-move gunnery, and reduces crew fatigue and life-cycle costs.<ref>[http://www.gizmag.com/bae-cv90-active-damping/37198/ "BAE System's CV90 armor vehicle uses F1 racing suspension technology."] {{Webarchive|url=https://web.archive.org/web/20150716063330/http://www.gizmag.com/bae-cv90-active-damping/37198/ |date=16 July 2015}} ''Gizmag'', 27 April 2015.</ref>
+
+=== Armament ===
+{{Unreferenced section|date=July 2022}}
+The basic Swedish CV90 (strf 9040) is fitted with a two-man turret armed with a Bofors 40/70B autocannon and a coaxial 7.62&nbsp;mm machine gun. The CV90 also carries six 76&nbsp;mm grenade launchers, which are arranged in two clusters of three launchers; the clusters are positioned on each side of the turret. The grenade launchers are intended for smoke grenades, but can also be loaded with a variety of combat grenades.
+
+The CV90 export variants are fitted with a Hägglunds E-series turret, with more than 600 ''E30'' (30&nbsp;mm Bushmaster II) and ''E35'' (35&nbsp;mm Bushmaster III) turrets delivered. [[BAE Systems Australia]] presented an offer for LAND 400 Phase 3 is the CV9035 with an E35 turret. It provides high commonality with BAE Systems’ LAND 400 Phase 2 CRV offer – the AMV35 – through its use of the same E35 turret system.
+
+=== Sight ===
+The CV90 is equipped with the Universal Tank and Anti-Aircraft Sight from Saab which has daytime optical, thermal imaging system and Generation III image intensification. The Norwegian IFV, C2, Recce, Mortar and Combat Engineer variants are delivered with the [[Protector RWS|Kongsberg Protector remote weapon station]] with 360 degrees day and night sights as well as hunter-killer capability.
+
+== Production ==
+Production of the CV90 began in 1993, and as of 2014 over 1,200 vehicles had been ordered.<ref name=tu>{{cite news |last=Dalløkken |first=Per Erlien |date=3 September 2014 |title=Her er norske stormingeniørers nye framkomstmiddel |url=https://www.tu.no/artikler/her-er-norske-stormingeniorers-nye-framkomstmiddel/222990 |work=[[Teknisk Ukeblad]] |access-date=2 June 2017 |language= no |archive-url=https://web.archive.org/web/20160617183123/http://www.tu.no/artikler/her-er-norske-stormingeniorers-nye-framkomstmiddel/222990 |archive-date=17 June 2016 |url-status= live}}</ref> In November 2000, Finland ordered 57 CV9030 vehicles.<ref>{{cite web|url=http://www.baesystems.se/Hagglunds/ReadMore.asp?Pid=2&id=87 |title=Finland goes for CV9030 from Patria Hägglunds Oy |date=2 November 2000 |publisher=BAE Systems Sweden |access-date=7 November 2009 |url-status=dead |archive-url=https://web.archive.org/web/20070928031524/http://www.baesystems.se/Hagglunds/ReadMore.asp?Pid=2&id=87 |archive-date= 28 September 2007}}</ref> Total cost was €250 million (2008 value), or €4.42 million per vehicle.<ref>{{cite web |trans-title=The readiness modern fighting vehicle |language=fi |url=http://www.defmin.fi/index.phtml?714_m=772ˊ_o=10&s=274 |title=Valmiusyhtymille nykyaikainen taisteluajoneuvo |date=2 November 2000 |publisher= The Finnish Ministry of Defence |access-date=7 November 2009 |archive-url=https://web.archive.org/web/20160304030233/http://www.defmin.fi/index.phtml?714_m=772%CB%8A_o=10&s=274 |archive-date= 4 March 2016 |url-status=live}}</ref> In June 2004, Finland made another purchase, bringing the overall quantity ordered to 102.<ref name="fin2">{{cite web |url=http://www.baesystems.se/Hagglunds/ReadMore.asp?Pid=2&id=183 |title=A New Order for CV90 from the Finnish Defence Forces |date=30 June 2004 |publisher=BAE Systems Sweden |access-date= 7 November 2009 |url-status=dead |archive-url= https://web.archive.org/web/20070928031616/http://www.baesystems.se/Hagglunds/ReadMore.asp?Pid=2&id=183 |archive-date=28 September 2007}}</ref> This time, the cost was €2.92 million (2008 value) per vehicle.<ref name="fin2"/> In December 2005, Denmark ordered 45 CV9035 vehicles for a cost of €188 million or €4.18 million per vehicle.<ref>{{cite web |title= Indland |publisher=DR |date=16 December 2005 |url=http://www.dr.dk/Nyheder/Indland/2005/12/16/201734 |language=da |access-date=16 December 2005 |archive-url=https://web.archive.org/web/20141224074314/http://www.dr.dk/Nyheder/Indland/2005/12/16/201734 |archive-date=24 December 2014 |url-status=live}}.</ref>
+
+The Netherlands ordered 184 combat plus 8 instruction CV9035 vehicles for a cost of €749 million, or €3.9 million per vehicle.{{citation needed|date=June 2017}} Norway initially bought 104 CV90s in the 1990s, buying new vehicles and upgrading the old ones in the 2010s. The Norwegian Army fields 164 CV90s, of which 74 are combat vehicles, 28 combat-engineering vehicles, 24 multi-purpose vehicles, 21 reconnaissance vehicles, 15 command vehicles, and two instruction vehicles. The upgrade of the Norwegian CV90s was estimated to cost around {{NOK|10 billion |link= yes}}.<ref name=tu/>
+
+In August 2023, following a visit by Ukrainian president [[Volodymyr Zelenskyy]] to Stockholm, he announced an agreement with Sweden to start production of the CV90 in Ukraine.<ref name= "Tangalakis-Lippert 2023 q653">{{cite web | last=Tangalakis-Lippert | first=Katherine | title=Zelenskyy says Ukraine is working with Sweden to produce 'cool vehicles' like CV90s: 'Just what is needed at the front' | website=Business Insider | date=19 August 2023 | url=https://www.businessinsider.com/zelenskyy-ukraine-partner-sweden-produce-more-cv90-combat-vehicle-2023-8 | access-date= 21 August 2023}}</ref>
+
+In June 2024, it was reported that the Netherlands will manufacture 180 CV90s.<ref>{{cite web |url=https://nos.nl/artikel/2523530-nederland-gaat-met-andere-eu-landen-gevechtsvoertuigen-en-patriots-bouwen |title= Nederland gaat met andere EU-landen gevechtsvoertuigen en Patriots bouwen |author=<!--Not stated--> |date=7 June 2024 |website=NOS |language=Dutch}}</ref><ref>{{cite web |url=https://www.nu.nl/binnenland/6315929/nederland-gaat-180-pantserwagens-bouwen-voor-oekraine.html |title= Nederland gaat 180 pantserwagens bouwen voor Oekraïne |author=<!--Not stated--> |date=7 June 2024 |website=NU.nl |language=Dutch}}</ref><ref>{{cite web |url=https://www.reuters.com/world/europe/dutch-invest-production-combat-vehicles-ukraine-2024-06-07/ |title= Dutch invest in production of combat vehicles for Ukraine |author=<!--Not stated--> |date=7 June 2024 |website=Reuters}}</ref>
+
+== Domestic variants of the CV90 ==
+
+=== Domestic variants in service ===
+The following versions were developed by Hägglund/Bofors in cooperation with FOA and FMV for Försvarsmakten as part of the ''stridsfordon&nbsp;90'' (strf&nbsp;90)-family.<ref name="fmv.se2">{{cite web |title=FMV - Stridsfordon 90 |url=http://www.fmv.se/sv/Projekt/Stridsfordon-90/ |url-status=dead |archive-url=https://web.archive.org/web/20131014214201/http://fmv.se/sv/Projekt/Stridsfordon-90/ |archive-date=14 October 2013 |access-date=13 October 2013}}</ref><ref name="PansarTrupperna2">{{cite book |last=Ulfhielm |first=Hans |title=Pansartrupperna: 1942–1992 |publisher=Arméns Pansarcentrum, Skövde |year=1992 |isbn=91-630-1253-7 |editor=Bo Kjellander |location=[[Sweden|SE]] |pages=213–15 |language=sv |chapter=Svensk stridsfordonsanskaffning 1920–1990}}<!--|access-date=2008-10-25 --></ref>
+
+==== ''Stridsfordon 9040'' (Strf 9040) ====
+: The original model carries eight soldiers and is equipped with a 40&nbsp;mm Bofors autocannon. Versions are referred to by the letters A, B or C depending on upgrades. They all are based on the CV90 Mk I. All from A onwards remain in service.
+:* Strf 9040: Original production version with no gun stabilization and [[Lyran flare mortar|Lyran mortar]]. Incremental improvements were made during production; all have been upgraded to strf 9040A standard.
+:* Strf 9040A: Strf 9040 upgraded with extensive chassis modifications and external gun stabilisation on turret front. It has more storage and better emergency exits, and the seats in the troop compartment were reduced to seven. From November 1997, the gun was gyro-stabilized.<ref name="fmv.se2" />
+:* Strf 9040B: Strf 9040A updated with improvements to armament (new fire control software, electric firing pin, fully stabilised gun with internal stabilisation and reserve sight with video camera for the gunner), improved suspension for better accuracy and crew comfort while moving, new instrumentation and new seat belts.
+:* Strf 9040B1: Strf 9040B modified for international peacekeeping missions. It has a 3P ammunition programmer, climate control and anti-spall liner.<ref>Cv90 Photo guide page 20 by the Swedish Armoured Historical Association {{ISBN|978-91-633-7880-5}}</ref>
+:* Strf 9040C: Upgraded version for crew training and international operations. As per 9040B1 with additional all-round armour, laser filtering in all periscopes and tropical grade air conditioning. Due to the bulk and weight of the modifications, only six soldiers can be carried.<ref name="fmv.se2" />
+
+==== ''Stridsledningspansarbandvagn 90'' (Stripbv 90) ====
+: Forward command vehicle variant, used by battalion and brigade commanders. Equipped with communication systems and command and control systems. This variant is only armed with a machine gun and 6 smoke grenade launchers.
+:* Stripbv&nbsp;90A: Base variant of the Stripbv 90 series.
+:* Stripbv&nbsp;90C: Two were upgraded to C-standard, but have been decommissioned as of 2011.<ref name="ReferenceB2">{{cite web |title=Stridsfordon 9040C - Strf 9040C |url=http://www.fmv.se/Global/Dokument/Projekt/Strf%2090/Stridsfordon%209040C.pdf |url-status=dead |archive-url=https://web.archive.org/web/20131016060414/http://www.fmv.se/Global/Dokument/Projekt/Strf%2090/Stridsfordon%209040C.pdf |archive-date=16 October 2013 |access-date=13 October 2013}}</ref>
+
+==== ''Eldledningspansarbandvagn 90'' (Epbv 90) ====
+: [[Artillery observer|Forward artillery observation]] variant, used to direct artillery and mortar fire.
+:* Epbv 90A: 34 initially ordered.<ref name=":16">FÖRSVARETS MATERIELVERK, Teknisk Order, ALLMÄN, AF, STRF 90, 03, 026800, 19 December 2014</ref>
+:* Epbv 90C: 8 upgraded for international service, includes air conditioning, additional protection, and more advanced IR sensor.<ref name="ReferenceB2" /><ref name="ReferenceB22">{{cite web|access-date=13 October 2013 |archive-date=16 October 2013 |archive-url=https://web.archive.org/web/20131016060414/http://www.fmv.se/Global/Dokument/Projekt/Strf%2090/Stridsfordon%209040C.pdf |title=Arkiverade kopian |url=http://www.fmv.se/Global/Dokument/Projekt/Strf%2090/Stridsfordon%209040C.pdf}}<!-- auto-translated from Swedish by Module:CS1 translator --></ref><ref>{{cite web|access-date=1 October 2017 |archive-date=1 October 2017 |archive-url=https://web.archive.org/web/20171001064049/http://www.ointres.se/e-stripbv_90.htm |title=E- och Stripbv 90 |url=http://www.ointres.se/e-stripbv_90.htm |work=www.ointres.se}}<!-- auto-translated from Swedish by Module:CS1 translator --></ref>
+
+==== ''Luftvärnskanonvagn 9040'' (Lvkv 9040) ====
+: [[Self-propelled anti-aircraft gun]] vehicle:
+:* Lvkv 90A: fitted with PS-95 radar from Thomson CSF Harfang (now [[Thales Group]]) and a high elevation 40&nbsp;mm autocannon capable of using programmable ammunition. It is connected to the national air defence net LuLIS.
+:* Lvkv 90C: Three have been upgraded to C-standard.<ref name="ReferenceB2" />
+:* Lvkv 90 TD: There is also a demonstrator, designated Lvkv 90-TD, fitted with infrared video targeting and a fully stabilised gun for firing on the move.<ref>{{cite web |title=Luftvärnskanonvagn 90 |url=http://www.forsvarsmakten.se/sv/information-och-fakta/materiel-och-teknik/mark/luftvarnskanonvagn-90/ |url-status=live |archive-url=https://web.archive.org/web/20131015052535/http://www.forsvarsmakten.se/sv/information-och-fakta/materiel-och-teknik/mark/luftvarnskanonvagn-90/ |archive-date=15 October 2013 |access-date=13 October 2013}}</ref>
+
+==== ''Granatkastarpansarbandvagn 90'' (Grkpbv 90) ====
+: [[Mortar carrier|Tracked mortar carrier]], known as '''"Mjölner"''', a CV90 fitted with two 120&nbsp;mm mortars. The mortar tubes are supplied by the Slovak defence manufacturer Konstrukta.<ref>{{Cite web |title=BAE – KONŠTRUKTA – Defence |url=https://kotadef.sk/projekty/bae/?lang=en |access-date=9 January 2025}}</ref>
+:* First order: The 40 CV90 hulls for this project had already been purchased by 2003 and were originally intended to be equipped with the [[Patria (company)|Patria]] [[Advanced Mortar System]]. For economic reasons, [[Genomförandegruppen]] recommended against it and the AMOS order was cancelled with the vehicles put in storage until [[BAE Systems AB]] received a contract in December 2016 to install Mjölner 120&nbsp;mm mortars on the 40 CV90s to increase the indirect fire capability of mechanized battalions.<ref>[http://armyrecognition.com/december_2016_global_defense_security_news_industry/bae_systems_to_deliver_cv90_ifv_fitted_with_mjolner_120mm_mortar_system_to_swedish_army_12612162.html BAE Systems to deliver CV90 IFV fitted with Mjölner 120mm mortar system to Swedish army] {{Webarchive|url=https://web.archive.org/web/20161228034730/http://armyrecognition.com/december_2016_global_defense_security_news_industry/bae_systems_to_deliver_cv90_ifv_fitted_with_mjolner_120mm_mortar_system_to_swedish_army_12612162.html|date=28 December 2016}} - Armyrecognition.com, 26 December 2016</ref> The first units were delivered in January 2019 and all 40 vehicles had been delivered by 2020. The first 40 CV90 Mjölner will later be upgraded to this standard with the C4I LSS Mark artillery command and control system.<ref name=":5">{{Cite web |title=BAE Systems receives contract for 20 additional CV90 Mjölner mortar systems for Swedish Army |url=https://www.baesystems.com/en/article/bae-systems-receives-contract-for-20-additional-cv90-mjolner-mortar-systems-for-swedish-army |url-status=live |archive-url=https://web.archive.org/web/20230318225443/https://www.baesystems.com/en/article/bae-systems-receives-contract-for-20-additional-cv90-mjolner-mortar-systems-for-swedish-army |archive-date=18 March 2023 |access-date=18 March 2023 |website=www.baesystems.com}}</ref><ref name=":6">{{Cite web |last=Giovanni |date=30 January 2023 |title=Sweden Orders 20 Additional CV90 Mortar Vehicles from BAE Systems |url=https://www.defense-aerospace.com/sweden-orders-20-additional-cv90-mortar-vehicles-from-bae-systems/ |url-status=live |archive-url=https://web.archive.org/web/20230821192001/https://www.defense-aerospace.com/sweden-orders-20-additional-cv90-mortar-vehicles-from-bae-systems/ |archive-date=21 August 2023 |access-date=18 March 2023 |website=Defense aerospace |language=en-US}}</ref>
+:* Second order: In 2022 an additional 20 vehicles were ordered with deliveries scheduled for between 2023 and 2025.<ref name="fmv.se2" /><ref>{{Cite web |title=FMV beställer ytterligare Grkpbv 90 |url=https://www.fmv.se/aktuellt--press/aktuella-handelser/fmv-bestaller-ytterligare-grkpbv-90/ |access-date=30 July 2022 |publisher=FMV |place=SE |language=sv}}</ref>
+:* Third order: In January 2023, a new order of 20 systems was concluded, and the deliveries will be completed by 2025. These systems will get the new C4I LSS Mark artillery command and control system.<ref name=":5" /><ref name=":6" />
+
+==== ''Bärgningsbandvagn 90'' (Bgbv 90) ====
+: [[Armoured recovery vehicle]], equipped with two 9-tonnes winches, and provide a total of 72 tonnes pulling capacity through 4-way pulleys.
+:* Bgbv 90A: The chassis is based on the Epbv 90A.
+:* Bgbv 90C: Three have been upgraded to C-standard for foreign operations with A/C and more protection. At least one has been used in Afghanistan.<ref name="ReferenceB2" />
+
+=== Domestic variants in development ===
+
+==== ''Stridsfordon 9035 MkIIIC (Strf 9035 MkIIIC)'' ====
+: Infantry fighting vehicle ordered in December 2024 by the Swedish Army, in collaboration with Denmark, and additional ordered for Ukraine.<ref>{{Cite web |last=Martin |first=Tim |date=6 December 2024 |title=Denmark and Sweden sign $2.5 billion CV90 IFV joint procurement for over 200 vehicles |url=https://breakingdefense.com/2024/12/denmark-and-sweden-sign-2-5-billion-cv90-ifv-joint-procurement-for-over-200-vehicles/ |access-date=9 January 2025 |website=Breaking Defense |language=en-US}}</ref><ref name=":31">{{Cite web |last=Judson |first=Jen |date=6 December 2024 |title=BAE wins $2.5B deal to supply more CV90 vehicles to Denmark, Sweden |url=https://www.defensenews.com/global/europe/2024/12/06/bae-wins-25b-deal-to-supply-more-cv90-vehicles-to-denmark-sweden/#:~:text=BAE%20Systems%20has%20won%20a,more%20vehicles%20bound%20for%20Ukraine. |access-date=6 January 2025 |website=Defense News |language=en}}</ref>
+: This variant is to be equipped with the D-Series turret of [[BAE Systems AB]], to be manufactured by Van Halteren Defence:
+:* [[Bushmaster III]] (35 × 228&nbsp;mm)
+:* [[FN MAG|MAG 58C]] ([[7.62×51mm NATO]]) in a pod
+:* 2 × [[Akeron MP|RBS 58]] (Akeron MP)<ref>{{Cite web |date=18 April 2023 |title=Sweden and France Sign Agreement on New RBS-58 Anti-Tank Guided Missile System - MilitaryLeak.COM |url=https://militaryleak.com/2023/04/18/sweden-and-france-sign-agreement-on-new-rbs-58-anti-tank-guided-missile-system/ |access-date=6 January 2025 |website=militaryleak.com |language=en-us}}</ref>
+:* 1 × 5 smoke grenade dispensers
+
+==== ''Driftstödspansarbandvagn 90'' (DSpbv 90D) ====
+: Armoured repair vehicle. This vehicle is designed to carry out repairs at a battalion level.
+: Its development was ordered in November 2022 to BAE Systems and to the Norwegian Rytek A/S, who already developed engineering variants for the Norwegian Army.<ref name=":7">{{Cite web |date=16 November 2022 |title=New variants of combat vehicles 90 for the army |url=https://www.forsvarsmakten.se/sv/aktuellt/2022/11/nya-versioner-av-stridsfordon-90-till-armen/}}</ref><ref name=":8">{{Cite web |date=20 April 2023 |title=BAE Systems, Ritek AS to produce two new CV90 variants for Swedish Armed Forces |url=https://www.baesystems.com/en/article/bae-systems-ritek-as-to-produce-two-new-cv90-variants-for-swedish-armed-forces |access-date=9 January 2025 |website=www.baesystems.com}}</ref>
+
+==== ''Pionjärpansarbandvagn 90'' (Pipbv 90D) ====
+: Pioneer armoured vehicle designed to carry pioneer works on the front line. The variant is based on the Combat Vehicle 9040A where the turret has been removed and replaced with a fixed superstructure, new interior and a larger cargo space. The vehicle has been equipped with a weapons station, dozer blade, surface mine plow and mine drill. The door at the rear has been replaced with a hydraulic ramp for easier entry and exit. Its development was ordered in November 2022 to BAE Systems and to the Norwegian Rytek A/S, who already developed engineering variants for the Norwegian Army.<ref name=":7" /><ref name=":8" /> 30 vehicles have been ordered.
+
+=== Prototypes ===
+These prototypes were planned for the [[Swedish Army]].
+[[File:CV90120,_MSPO_2007,_photo_2.JPG|right|thumb|CV90120-T prototype, from which [[PL-01]] mockup was developed]]
+
+; ''Störpansarbandvagn 90 (störpbv 90):''
+: ''An electronic warfare vehicle based on a CV9040A that had its turret replaced with a fixed housing containing a retractable mast and a LEMUR weapons station. Planned in 2002, a single unit was produced before serial production was cancelled for economic reasons and as of 2013 the project is still on hold.<ref name="fmv.se2" />''
+; ''Stridsfordon 9040BILL (strf 9040BILL):''
+: ''Prototype version of the CV9040 equipped with the Bofors [[BILL 2 Anti-tank guided weapon|RB56 anti-tank missile]]. Issues with the sight alignment were unsolved and no units were ordered.<ref name="9040BILL2">{{cite web |title=IRMA: nummer 1 2000 |url=https://www.aef.se/Resmat/IRMA/IRMA_2000-1.pdf |url-status=live |archive-url=https://web.archive.org/web/20230710095037/https://www.aef.se/Resmat/IRMA/IRMA_2000-1.pdf |archive-date=10 July 2023 |access-date=10 July 2023 |website=aef.se |publisher=FMV}}</ref><ref name="fmv.se2" />''
+; ''Stridsfordon 90120''<nowiki> (strf 90120 / CV90120-T):</nowiki>''{{anchor|CV90120}}''
+: A Light tank demonstrator armed with CTG 120/L50 (Compact Tank Gun) developed by [[RUAG]]. The gun is a 120&nbsp;mm smoothbore, calibre length 50, with a rate of fire of 12–14 rounds per minute. Twelve rounds are kept ready in the turret bustle, with a further 33 stowed in the hull rear.<ref>{{cite web |date=5 January 2017 |title=CV90120-T |url=http://fighting-vehicles.com/cv90120-t/ |url-status=live |archive-url=https://web.archive.org/web/20211212120712/http://fighting-vehicles.com/cv90120-t/ |archive-date=12 December 2021 |access-date=12 December 2021 |work=Fighting Vehicles}}</ref>
+
+== Export variants of the CV90 ==
+The export versions of CV90 is delivered with the BAE Systems Hägglunds E-series turrets with armament ranging from 30 to 120&nbsp;mm. The vast majority of the 600 turrets delivered are fitted with 30&nbsp;mm or 35&nbsp;mm guns.
+[[File:CV9030 finnish.png|thumb|right|Finnish CV9030FIN]]
+[[File:CV90120,_MSPO_2007,_photo_2.JPG|thumb|right|CV90120-T prototype, from which [[PL-01]] mockup was developed]]
+[[File:Norske_CV90-stormpanservogner.jpg|thumb|right|Estonia has purchased 79 CV90s from Norway and the Netherlands]]
+
+=== CV9030 ===
+: Export version with a 30&nbsp;mm Bushmaster II autocannon. Adopted by Norway, Switzerland and Finland. Within BAE Systems Hägglunds, the original version of the Norwegian CV9030N is known as the CV90 Mk I. The Finnish CV9030FIN and Swiss CV9030CH vehicles are known as the CV90 Mk II.<ref name="ReferenceA">Army Guide web site: BAE Systems Hägglunds CV 90 site (direct link blocked)</ref> The CV90 Mk II is also available as CV9030 COM – Command & Control Vehicle. The recently upgraded CV9030N infantry fighting, command and control and reconnaissance vehicles for Norway are known as CV90 Mk IIIb, and this is the most advanced variant currently in service.<ref>{{cite web |url=http://defense-update.com/20180124_cv90mk4.html |title=BAE Systems Introduces Future-Proofed CV90 |date=24 January 2018 |access-date=9 May 2018 |archive-url=https://web.archive.org/web/20180510051027/http://defense-update.com/20180124_cv90mk4.html |archive-date =10 May 2018 |url-status=live}}</ref>
+
+=== CV9035 ===
+: Armed with a [[Bushmaster III]] 35/50 cannon. Adopted by the Netherlands as CV9035NL and Denmark as CV9035DK. Within BAE Systems Hägglunds, CV9035 is known as the CV90 Mk III.<ref name="ReferenceA"/>
+: The armour of the Dutch variant consists of a roof protection supplied by RUAG, the RoofPRO-P. It protects against sub-munitions, and all 186 vehicles ordered were equipped with it.<ref>{{Cite web |title=BALLISTIC PROTECTION - RoofPRO |url=https://ruag-ch.picturepark.com/v/4gIPfPsJ/}}</ref> 100 vehicles received a RUAG SidePRO armour.<ref>{{Cite web |title=CV9035 MkIII Armoured Infantry Fighting Vehicle |url=http://www.baesystems.com/BAEProd/groups/public/documents/bae_publication/bae_pdf_landa_cv9035mkiiibroch.pdf |archive-url=https://web.archive.org/web/20110312020628/http://www.baesystems.com/BAEProd/groups/public/documents/bae_publication/bae_pdf_landa_cv9035mkiiibroch.pdf |archive-date=2011-03-12 |access-date=2025-07-07 |website=www.baesystems.com}}</ref>
+
+===<span class="anchor" id="CV90105"></span>CV90105===
+:Turreted [[assault gun]] equipped with a [[105×617mmR|105 mm]] rifled tank gun/turret. Initially a 1990s design between Hägglunds (BAE Systems) and GIAT (Nexter), using a TML turret. A newer version from 2014, designated a medium tank,<ref name="CV90105 MT">{{cite web |title=Eurosatory: CMI Defence and BAE Systems Hägglunds present the CV90105 |url= https://johncockerill.com/en/press-and-news/news/eurosatory-cmi-defence-and-bae-systems-hagglunds-present-the-cv90105/ |website=johncockerill.com |access-date=27 July 2023 |archive-date= 27 July 2023 |archive-url=https://web.archive.org/web/20230727174441/https://johncockerill.com/en/press-and-news/news/eurosatory-cmi-defence-and-bae-systems-hagglunds-present-the-cv90105/ |url-status= live }}</ref> features the [[Cockerill Maintenance & Ingénierie|Cockerill]] XC-8 turret.<ref>{{cite web|title=Eurosatory: CMI Defence and BAE Systems Hägglunds present the CV90105 |url=http://www.cmigroupe.com/en/news-view/502/eurosatory%3A-cmi-defence-and-bae-systems-hagglunds-present-the-cv90105|publisher=Cockerill Maintenance & Ingénierie|access-date=31 July 2015|archive-url=https://web.archive.org/web/20160714231930/http://www.cmigroupe.com/en/news-view/502/eurosatory:-cmi-defence-and-bae-systems-hagglunds-present-the-cv90105|archive-date= 14 July 2016|url-status=dead}}</ref>
+
+===<span class="anchor" id="CV90120"></span>CV90120-T===
+:Anti-tank/fire-support vehicle (light/medium tank) fitted with a tank turret equipped with a smoothbore [[120×570mm NATO|120&nbsp;mm]] gun. (RUAG 120&nbsp;mm Compact Tank Gun)
+
+=== CV90 CZ ===
+: Export variant designed in collaboration with VOP CZ marketed to the Czech Republic, manned turret variant.<ref name="CV90CZ">{{cite news|url=http://www.armyrecognition.com/idet_2017_news_official_online_show_daily_report_coverage/bae_systems_exhibits_two_cv90_fighting_vehicles_83105173.html|title=BAE systems exhibits two cv90 fighting vehicles|publisher=Army Recognition |date=31 May 2017|access-date=1 June 2017|archive-url=https://web.archive.org/web/20170603014459/http://www.armyrecognition.com/idet_2017_news_official_online_show_daily_report_coverage/bae_systems_exhibits_two_cv90_fighting_vehicles_83105173.html|archive-date=3 June 2017|url-status=live}}</ref>
+
+=== CV90 CZr ===
+: Export variant designed in collaboration with VOP CZ marketed to the Czech Republic featuring a Kongsberg MCT-30 unmanned, remote controlled turret, a slightly raised hull and periscope system.<ref name="CV90CZ"/><ref name="CV90CZJanes">{{cite web|last1=Connors|first1=Shaun|title=BAE Systems takes aim at Czech Army requirement with CV90|url=http://www.janes.com/article/71375/ |website=IHS Jane's 360|access-date=14 June 2017|archive-url=https://archive.today/20170614002153/http://www.janes.com/article/71375/bae-systems-takes-aim-at-czech-army-requirement-with-cv90 |archive-date=14 June 2017|date=13 June 2017|url-status=dead}}</ref>
+
+=== Armadillo ===
+: Armoured personnel carrier version built on a modular CV90 Mk III chassis. The CV90 Armadillo can be modified to become a personnel carrier, an ambulance, a command and control centre, a recovery vehicle and many other non-turreted variants at low cost due up to 80% commonality among variants.<ref>{{cite web |url=http://www.baesystems.com/product/BAES_021119/cv90--armadillo |title= CV90 Armadillo |website=BAE Systems |access-date=13 October 2013 |archive-url=https://web.archive.org/web/20131014171554/http://www.baesystems.com/product/BAES_021119/cv90--armadillo |archive-date=14 October 2013 |url-status= live}}</ref> Currently, only the APC version has been built, with five delivered to Denmark for trials.<ref>{{cite web |author=<!--not stated--> |url=http://www.baesystems.com/enhancedarticle/BAES_157696/cv90-armadillo-delivered-for-danish-army-trials |title=CV90 Armadillo delivered for Danish Army trials |access-date=13 October 2013 |website=BAE Systems |archive-url=https://web.archive.org/web/20131014173525/http://www.baesystems.com/enhancedarticle/BAES_157696/cv90-armadillo-delivered-for-danish-army-trials |archive-date=14 October 2013 |url-status=live}}</ref>
+
+=== CV90RWS STING ===
+: [[Military engineering vehicle|Combat engineering]] variant built on CV90 Mk I chassis. This vehicle can be outfitted with either a mine plow or a mine roller, and it also has a robotic arm. 28 have been ordered by the Norwegian Army.<ref name="BAE 2021-02-18">{{Cite press release |author=<!--not stated--> |date=18 February 2021 |title=Norwegian Army adding 20 CV90s to its fleet |url=https://www.baesystems.com/en/article/norwegian-army-adding-20-cv90s-to-its-fleet |publisher=BAE Systems |url-status=live |archive-url=https://web.archive.org/web/20210219013616/https://www.baesystems.com/en/article/norwegian-army-adding-20-cv90s-to-its-fleet |archive-date=19 February 2021 |access-date=21 February 2021}}</ref><ref>{{cite news |last=Dalløkken |first=Per Erlien |date=3 September 2014 |url=https://www.tu.no/artikler/her-er-norske-stormingeniorers-nye-framkomstmiddel/222990 |title= Her er norske stormingeniørers nye framkomstmiddel |language=no |work=[[Teknisk Ukeblad]] |trans-title=Here is Norwegian combat engineers' new ride |access-date=2 June 2017 |archive-url=https://web.archive.org/web/20160617183123/http://www.tu.no/artikler/her-er-norske-stormingeniorers-nye-framkomstmiddel/222990 |archive-date=17 June 2016 |url-status=live}}</ref>
+
+=== CV90RWS Multi BK ===
+: [[Mortar carrier]] variant built on a CV90 Mk I chassis. This vehicle is armed with a VingPos Mortar Weapon System outfitted with an 81 mm [[L16 81mm mortar|L16A2 mortar]]. 24 have been ordered by the Norwegian Army.<ref name="BAE 2021-02-18" /><ref>{{cite press release |author=<!--not stated--> |date=31 October 2017 |url=https://forsvaret.no/aktuelt/digitaliserte-kampvogner-paa-plass |title=Digitale kampvogner på plass |language=no |publisher=[[Norwegian Armed Forces]] |trans-title=Digital combat vehicles in place |access-date= 9 May 2018 |archive-url=https://web.archive.org/web/20180510050745/https://forsvaret.no/aktuelt/digitaliserte-kampvogner-paa-plass |archive-date=10 May 2018 |url-status=dead}}</ref>
+
+=== CV90 STRILED ===
+: Command variant of the Norwegian Army built on the CV90 Mk III chassis. It is equipped with a standard turret, and the combat compartment received 3 workstations to conduct command tasks for brigade to company level.<ref>{{Cite news |last=Dalløkken |first=Per Erlien |date=10 June 2015 |title=6 meter høy mast gir CV90-styrken full oversikt over kampbildet |url=https://www.tu.no/artikler/6-meter-hoy-mast-gir-cv90-styrken-full-oversikt-over-kampbildet/223877 |work=[[Teknisk Ukeblad]] |language=no |trans-title=6-meter-high mast gives CV90 force full situational awareness of the battlefield |access-date=14 July 2024}}</ref>
+
+=== CV90 Mk IV ===
+: BAE-developed upgraded variant revealed in January 2018, marketed to the Czech Republic as well as existing customers as an upgrade package. Features include a Scania engine with up to 1,000 horsepower, Perkins X300 transmission, and an increased payload of 2 tonnes. The system also includes BAE's iFighting computer system, which claims to enhance situational awareness, aid decision making, improve ergonomics, and enable autonomous support and remote operation.<ref>{{cite web|last1=Thorén|first1=Ola|title=BAE Systems introduces next evolution of Infantry Fighting Vehicle with new CV90 MkIV|url=https://www.baesystems.com/en/article/bae-systems-introduces-next-evolution-of-infantry-fighting-vehicle-with-new-cv90-mkiv|website=BAE Systems Hägglunds |access-date=25 January 2018|archive-url=https://archive.today/20180125140143/https://www.baesystems.com/en/article/bae-systems-introduces-next-evolution-of-infantry-fighting-vehicle-with-new-cv90-mkiv|archive-date=25 January 2018|location=London|date=24 January 2018|url-status=live}}</ref><ref>{{cite web|last1=Allison|first1=George|title=BAE Systems detail new CV90 MkIV variant|url=https://ukdefencejournal.org.uk/bae-systems-detail-new-cv90-mkiv-variant/|website=UK Defence Journal|access-date=25 January 2018|archive-url= https://archive.today/20180125140151/https://ukdefencejournal.org.uk/bae-systems-detail-new-cv90-mkiv-variant/|archive-date=25 January 2018|date=24 January 2018|url-status=live}}</ref>
+
+=== CV9035NL MLU ===
+: On 13 January 2021, the Defence Materiel Organisation of the [[Netherlands Armed Forces]] signed a contract with BAE Systems Hägglunds for a mid-life update of 128 CV90s of the [[Royal Netherlands Army]], with an option for 19 further vehicles.<ref>{{cite web |author=Jack Richardson |date=14 January 2021 |title=Netherlands CV90 Turret Upgrade |url=https://euro-sd.com/2021/01/articles/exclusive/20571/bae-systems-netherlands-cv90-upgrade/ |website=European Security & Defence}}</ref> The MLU project features a wide range of modernisations and improvements. The turret has been completely redesigned and will feature a new main gun installation, a mast-mounted 500 mm extendable [[electro-optical sensor]], [[Elbit Systems]]’ Iron Fist LD (Light Decoupled) active protection system, [[FN MAG]] [[general-purpose machine gun]] in an external pod and a twin missile launcher for [[Spike (missile)#Spike-L|Spike LRII]] anti-tank guided missiles. Furthermore, the CV90s will be equipped with [[Continuous track#Rubber track pads|rubber tracks]],<ref>{{cite web |author=Gerhard Heiming |date=2 November 2020 |title=Netherlands CV90 Modernisation |url=https://euro-sd.com/2020/11/news/land/19658/netherlands-cv90-mid-life-upgrade/ |website=European Security & Defence}}</ref> upgraded cooling, various cybersecurity improvements and updated [[command and control]] infrastructure.<ref>{{cite web |author=Arthur van Beveren |date=15 August 2023 |title=Vernieuwde CV90 maakt Nederlandse tour |url=https://magazines.defensie.nl/materieelgezien/2023/06/input-van-militair-centraal-bij-midlife-update-pantsergevechtsvoertuig |website=Materieelgezien |publisher=Defensie.nl |language=Dutch}}</ref> Construction of the new turrets will be conducted by Dutch firm Van Halteren Defence.<ref name=":1">{{cite web |last1=Valpolini |first1=Paolo |title=BAE Systems Hägglunds details the Royal Netherlands Army CV90 MLU |url= https://www.edrmagazine.eu/bae-systems-hagglunds-details-the-royal-netherlands-army-cv90-mlu |website=edrmagazine.eu |publisher=EDR Magazine |access-date=4 April 2021 |date=29 January 2021 |archive-date=13 May 2021 |archive-url=https://web.archive.org/web/20210513054828/https://www.edrmagazine.eu/bae-systems-hagglunds-details-the-royal-netherlands-army-cv90-mlu |url-status= live }}</ref>
+
+== Combat service ==
+=== 2004: Strf 9040C in Liberia ===
+First use was by the Swedish UN forces in Liberia 2004, where 13 strf 9040C were deployed.<ref name="fmv.se2"/>
+
+=== 2007: CV9030N in Afghanistan ===
+[[File:Damaged CV9030 in Afghanistan.jpg|thumb|Norwegian CV90 damaged by an IED in Afghanistan]]
+[[File:Cv90afghanistan.jpg|thumb|A Norwegian CV9030 during a patrol in Afghanistan.]]
+
+Since production began in 1993, the CV90 had remained untested in combat until November 2007, when [[Norwegian Army]] CV90s from the [[Norwegian Army 2nd Battalion|2nd Battalion]] saw heavy combat during [[Operation Harekate Yolo]] in Afghanistan. During the first week of November, Norwegian [[International Security Assistance Force|ISAF]] forces from the 2nd Battalion and ''[[Kystjegerkommandoen]]'' based in [[Mazar-e-Sharif]], responded to a [[Taliban]] attack on [[Afghan National Army]] forces in the [[Ghowrmach]] district. Having been heavily outnumbered by the Taliban forces, the Norwegians used mortars and, in particular, CV90s, to suppress the attack. The operation left an unknown number of Taliban casualties, but Norwegian news sources say as many as 45 to 65 Taliban fighters may have been killed, and many more wounded.<ref name="nor-mod">{{cite web |url=http://www.mil.no/start/article.jhtml?articleID=147513 |title=Vi har trent for dette lenge |access-date=10 November 2007 |date=8 November 2007 |publisher=Norwegian Armed Forces |language=no |url-status=dead |archive-url=https://web.archive.org/web/20071109120007/http://www.mil.no/start/article.jhtml?articleID=147513 |archive-date=9 November 2007}}</ref>
+
+The CV90 was later used extensively by ISAF forces of the Norwegian Army's [[Telemark Battalion]] in May 2008, when the battalion came under heavy machine gun and RPG fire from Taliban fighters during [[Operation Karez]] in [[Badghis]] Province. The attack left 13 Taliban fighters dead and an unknown number wounded. No allied casualties were reported.<ref>{{cite web |url= http://www.aftenposten.no/nyheter/uriks/article2447971.ece |title=Norske ISAF-soldater: "Plutselig smalt det. De traff overalt" | work = Aftenposten | place = NO |access-date= 11 May 2008 |archive-url= https://web.archive.org/web/20080530064048/http://www.aftenposten.no/nyheter/uriks/article2447971.ece |archive-date=30 May 2008 |url-status=dead}}</ref> In January 2010, a Norwegian soldier was killed when a CV9030 hit a large improvised explosive device in Ghowrmach, Afghanistan.<ref>http://www.mil.no/start/aktuelt/pressemeldinger/article.jhtml?articleID=193028 {{dead link|date=August 2017 |bot=InternetArchiveBot |fix-attempted=yes}}</ref>
+
+=== 2010: CV9035DK in Afghanistan ===
+In February 2010, Denmark sent ten CV9035DKs to Afghanistan in order to bolster their contingent in Helmand Province. The Danish contingent had suffered numerous casualties since they began operations in the province in the autumn of 2006. The vehicles are from the Danish Royal Lifeguard Regiment, based in the Northern part of Seeland. They are working alongside [[Mowag Piranha|MOWAG Piranha]] IIIC, [[Mowag Eagle|MOWAG Eagle]] IV, [[M113 armored personnel carrier|M113 G3DK]] and [[Leopard 2]]A5DK vehicles, all contributed by Denmark, in the Helmand Province. By April 2010, two of the ten vehicles had been hit with IEDs, in both cases protecting the crew and passengers from personal injury.<ref>http://www.berlingske.dk/krigen/nye-koeretoejer-staar-stille-i-helmand {{Webarchive|url=https://web.archive.org/web/20100412030112/http://www.berlingske.dk/krigen/nye-koeretoejer-staar-stille-i-helmand |date=12 April 2010}} Nye køretøjer står stille i Helmand</ref> The vehicles lost two wheels and tracks, and were sent back to the manufacturer in Sweden for further investigation. On 7 August 2010, a CV9035DK hit an IED in Afghanistan, killing two soldiers and wounding another three. The explosion was so powerful that the vehicle was turned over.<ref>{{cite web |url=http://forsvaret.dk/HOK/Nyt%20og%20Presse/ISAF/Pages/Todr%C3%A6btedanskesoldaterogtres%C3%A5rede.aspx |title=To dræbte danske soldater og tre sårede |access-date=2 March 2012 |archive-url= https://web.archive.org/web/20120302075549/http://forsvaret.dk/HOK/Nyt%20og%20Presse/ISAF/Pages/Todr%C3%A6btedanskesoldaterogtres%C3%A5rede.aspx |archive-date=2 March 2012 |url-status=dead}}</ref>
+
+=== 2023–present: CV9040C in Ukraine ===
+[[File:UA 21st Mechanized Brigade CV-90.jpg|thumb|A CV90 in service with the Ukrainian [[21st Mechanized Brigade (Ukraine)|21st Mechanized Brigade]]]]
+On 19 January 2023, the [[Prime Minister of Sweden|Swedish Prime Minister]] had announced the transfer of up to 50 CV9040Cs to Ukraine to aid against the [[Russian invasion of Ukraine|Russian invasion]] of the country.<ref name="SVT 2023-01-19">{{Cite news |last1=Martorell |first1=Jenny |date=19 January 2023 |title=Klart: Artillerisystemet Archer levereras till Ukraina |language=sv |work=SVT Nyheter |url=https://www.svt.se/nyheter/inrikes/nytt-stodpaket-till-ukraina-presenteras |access-date=19 January 2023 |archive-date=19 January 2023 |archive-url= https://web.archive.org/web/20230119110438/https://www.svt.se/nyheter/inrikes/nytt-stodpaket-till-ukraina-presenteras |url-status=live }}</ref>
+
+It was reported in late June 2023 that CV90s had arrived at the front line, reportedly somewhere around [[Bakhmut]] in the eastern [[Donbas]] region. The arrival of the vehicles was reported as a "significant boost" to the Ukrainian firepower.<ref name="Axe 2023 g917">{{cite web | last=Axe | first=David | title=Ukraine's CV90 Fighting Vehicles Have Guns Like Chainsaws. And They Just Reached the Woods Of Eastern Ukraine. | website=Forbes | date=29 June 2023 | url=https://www.forbes.com/sites/davidaxe/2023/06/29/ukraines-cv90-fighting-vehicles-have-guns-like-chainsaws-and-they-just-reached-the-woods-of-eastern-ukraine/ | access-date=23 August 2023}}</ref> In July, [[Forbes]] reported that the Russian Army had knocked out the first CV90, hitting the side of the vehicle with a rocket-propelled grenade.<ref>{{Citation |title=Шойгу показали трофейную БМП CV 90 | date=3 August 2023 |url=https://www.youtube.com/watch?v=vYbHw0AHpC8 |access-date= 22 September 2023}}</ref> The people on board apparently bailed out of the damaged vehicle. Both videos and photos of the event circulated online.<ref name=":0">{{cite news |last1=Axe |first1=David |title= Ukraine Has Lost Its First Swedish-Made CV90 Fighting Vehicle |url=https://www.forbes.com/sites/davidaxe/2023/07/29/ukraine-has-lost-its-first-swedish-made-cv90-fighting-vehicle/?sh=73dc41e2157e |access-date=4 August 2023 |work=Forbes |date=29 July 2023 |archive-date=4 August 2023 |archive-url=https://web.archive.org/web/20230804154754/https://www.forbes.com/sites/davidaxe/2023/07/29/ukraine-has-lost-its-first-swedish-made-cv90-fighting-vehicle/?sh=73dc41e2157e |url-status=live }}</ref> By mid-September, three CV90s had suffered battle damage and one was damaged and captured<ref>{{Cite web |url=https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-ukrainian.html |website=oryxspioenkop.com |title=Documenting Ukrainian Equipment Losses During The Russian Invasion Of Ukraine |access-date=2 September 2023}}</ref> but no Ukrainian crew members or embarked infantry had been killed.<ref>{{Cite web |date=12 September 2023|title=DSEI 2023: CV90 IFVs see combat in Ukraine|url=https://www.janes.com/defence-news/news-detail/dsei-2023-cv90-ifvs-see-combat-in-ukraine|website=[[Janes Information Services]]|archive-url=https://web.archive.org/web/20230917141503/https://www.janes.com/defence-news/news-detail/dsei-2023-cv90-ifvs-see-combat-in-ukraine|archive-date=17 September 2023|url-status=live}}</ref> As of 14 April 2025, 25 CV9040C have been visually lost, 11 destroyed, 10 damaged or abandoned and 4 captured.<ref name="oryx1">{{Cite web |last=Oryx |title=Attack On Europe: Documenting Ukrainian Equipment Losses During The Russian Invasion Of Ukraine |url=https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-ukrainian.html |access-date=2025-07-28<!-- update this to match the accessed date --> |website=Oryx}}</ref>
+
+CV90s were reported to have been deployed by the Ukrainian [[93rd Mechanized Brigade (Ukraine)|93rd Mechanized Brigade]] in the city of [[Vovchansk]] in anticipation of a Russian assault as part of the [[2024 Kharkiv offensive]].<ref>{{Cite web |last=Axe |first=David |title=Ukraine's CV90 Fighting Vehicles Are Rolling Into Vovchansk, Their Crews Expecting A Russian Invasion From The North |url=https://www.forbes.com/sites/davidaxe/2024/05/12/ukraines-cv90-fighting-vehicles-are-rolling-into-vovchansk-their-crews-expecting-a-russian-invasion-from-the-north/ |access-date=30 June 2024 |website=Forbes |language=en}}</ref>
+
+== Operators ==
+<!--READ FIRST: This section is for cited entries only. Please do not add entries into this list without a citation from a reliable source. All entries without a citation will be removed. Thank you.-->
+[[File:CV90 Operators.svg|thumb|upright=1.35|Operators: {{legend-inline|#0B60D4|Current}}{{spaces|em}}{{legend-inline|#FF6600|Future}}]]
+
+=== Current operators ===
+; {{flag|Denmark}}
+: 45 CV9035DKs purchased.<ref name="bae-dk">{{cite press release |author=<!--not stated--> |date=16 December 2005 |title=New export success – Denmark buys CV9035 |url=http://www.baesystems.se/Hagglunds/ReadMore.asp?Pid=2&id=205 |archive-url=https://web.archive.org/web/20061009211555/http://www.baesystems.se/Hagglunds/ReadMore.asp?Pid=2&id=205 |archive-date=9 October 2006 |access-date=20 March 2007 |publisher=BAE Systems}}</ref> 
+: 10 have been upgraded to international operations. In March 2024, a contract for a MLU (mid-life upgrade) was signed by the Defence Acquisition and Logistics Organisation of the Army.<ref>{{Cite web |last=Manuel |first=Rojoef |date=26 March 2024 |title=BAE to Provide Mid-Life Upgrade for Danish CV90 Fighting Vehicles |url=https://www.thedefensepost.com/2024/03/26/denmark-cv90-mid-life-upgrade/ |website=The Defense Post |access-date=13 April 2024}}</ref>
+
+; {{flag|Estonia}}
+: 44 CV9035NLs purchased from the Netherlands in December 2014, and now referred to as CV9035EE. The first delivery took place in 2016.<ref name="janes-estonia1">{{cite web |date=22 February 2015 |title=Estonian Army familiarises with Dutch CV90s |url=http://www.janes.com/article/49122/estonian-army-familiarises-with-dutch-cv90s |publisher=[[Janes Information Services]] |access-date=5 March 2015 |archive-url=https://web.archive.org/web/20150220143311/http://www.janes.com/article/49122/estonian-army-familiarises-with-dutch-cv90s |archive-date=20 February 2015 |url-status=dead}}</ref><ref>{{cite web |last1=de Larrinaga |first1=Nicholas |date=10 October 2016 |title=Estonia receives first CV90 IFVs |url=http://www.janes.com/article/64491/estonia-receives-first-cv90-ifvs |access-date=16 July 2024 |publisher=[[Janes Information Services]] |url-status=dead |archive-url=https://web.archive.org/web/20161011143014/http://www.janes.com/article/64491/estonia-receives-first-cv90-ifvs |archive-date=11 October 2016}}</ref> That same year, Estonia struck a deal with Norway to purchase an additional 37 surplus Mk I hulls to be rebuilt as support vehicles by the end of 2023.<ref name="ERR 2021-04-16">{{Cite news |author=<!--not stated--> |editor-last=Whyte |editor-first=Andrew |date=16 April 2021 |title=Estonian firms break record for domestic defense tender deal value |url=https://news.err.ee/1608180724/estonian-firms-break-record-for-domestic-defense-tender-deal-value |agency=[[Baltic News Service]] |via=[[Eesti Rahvusringhääling]] |url-status=live |archive-url=https://web.archive.org/web/20230610022308/https://news.err.ee/1608180724/estonian-firms-break-record-for-domestic-defense-tender-deal-value |archive-date=10 June 2023 |access-date=15 June 2023}}</ref> These will be equipped with the [[Protector RWS#Versions|Protector RS4 RWS]] able to fire Javelin missiles.<ref>{{cite news |last=Tomkins |first=Richard |title=Norway selling CV90 vehicle hulls to Estonia |url=http://www.upi.com/Business_News/Security-Industry/2016/01/08/Norway-selling-CV90-vehicle-hulls-to-Estonia/2871452274856/ |work=[[United Press International]] |access-date=13 January 2016 |url-status=live |archive-url=https://web.archive.org/web/20160113110707/http://www.upi.com/Business_News/Security-Industry/2016/01/08/Norway-selling-CV90-vehicle-hulls-to-Estonia/2871452274856/ |archive-date=13 January 2016}}</ref><ref>{{Cite press release |author=<!--not stated--> |date=17 December 2021 |title=Estonia, the 28th Protector Remote Weapon Systems User Nation |url=https://www.kongsberg.com/kda/news/news-archive/2021/estonia-the-28th-protector-remote-weapon-station-user-nation/ |publisher=[[Kongsberg Gruppen]] |access-date=15 June 2023 |url-status=live |archive-url=https://web.archive.org/web/20230603045250/https://www.kongsberg.com/kda/news/news-archive/2021/estonia-the-28th-protector-remote-weapon-station-user-nation/ |archive-date=3 June 2023}}</ref> Deliveries from the Netherlands were completed on 1 April 2019.{{citation needed|date=February 2021}}
+; {{flag|Finland}}
+: 102 CV9030FINs (57 first batch, 45 second batch), which are unique in that they are equipped with a coaxial [[PK machine gun#PKMT|PKMT]] machine gun.<ref name="bae-fi">{{cite press release |author=<!--not stated--> |date=2 November 2000 |title=Finland goes for CV9030 from Patria Hägglunds Oy |url=http://www.baesystems.se/Hagglunds/ReadMore.asp?Pid=2&id=87 |publisher=[[BAE Systems AB#BAE Systems Hägglunds|Hägglunds Vehicle AB]] |archive-url=https://web.archive.org/web/20070928031524/http://www.baesystems.se/Hagglunds/ReadMore.asp?Pid=2&id=87 <!-- Bot retrieved archive --> |archive-date=28 September 2007 |access-date=20 March 2007}}</ref><ref name="bae-fi2">{{cite press release |author=<!--not stated--> |date=30 June 2004 |title=A new order for CV90 from the Finnish Defence Forces |url=http://www.baesystems.se/Hagglunds/ReadMore.asp?Pid=2&id=183 |publisher=[[BAE Systems AB#BAE Systems Hägglunds|Alvis Hägglunds AB]] |archive-url=https://web.archive.org/web/20070928031616/http://www.baesystems.se/Hagglunds/ReadMore.asp?Pid=2&id=183 |archive-date=28 September 2007 |url-status=dead |access-date=20 March 2007}}</ref>
+; {{flag|Netherlands}}
+[[File:Dutch CV9035NL Manoeuvring to Shooting Range at Pabrade Lithuania 2018.jpg|thumb|right|Dutch CV9035NL]]
+: 128 CV9035NLs (initial order of 184 vehicles<ref name="bae-nl">{{cite press release |author=<!--not stated--> |date=10 December 2004 |title=Major order for Land Systems Hägglunds |url=http://www.baesystems.se/Hagglunds/ReadMore.asp?Pid=2&id=187 |archive-url=https://web.archive.org/web/20070928031602/http://www.baesystems.se/Hagglunds/ReadMore.asp?Pid=2&id=187 <!-- Bot retrieved archive --> |archive-date=28 September 2007 |access-date=20 March 2007 |publisher=[[BAE Systems AB#BAE Systems Hägglunds|BAE Systems]]}}</ref> raised to 193).<ref>{{cite web |date=7 May 2008 |title=Inventarisatie van bestaand defensiematerieel |trans-title=Inventory of existing defense material |url=http://www.mindef.nl/binaries/Inventarisatie_Defensie_materieel_6-5-08_tcm15-82252.xls |publisher=Ministry of Defense |language=nl}} {{dead link|date=August 2018|bot=InternetArchiveBot|fix-attempted=yes}}.</ref> Deliveries were completed in 2011. In December 2014, 44 CV9035NL were sold to Estonia.<ref name="janes-estonia1" /> During 2021 an order for a Mid Life Upgrade of 128 CV9035NL was placed where among other the [[Spike (missile)#Spike-L|Spike LRII]] anti-tank guided missile where integrated.<ref name=":1" /> On 11 June 2024, an order was placed for 15 Mjolner self-propelled mortar systems based on CV90, scheduled to be delivered by 2028.<ref name="NLmjolner2">{{cite web |last1=L |first1=Wojciech |title=Netherlands Invest in Air Defense and Artillery |url=https://www.overtdefense.com/2024/06/18/netherlands-invest-in-air-defense-and-artillery/ |website=Overt Defense |access-date=22 June 2024 |archive-url=https://web.archive.org/web/20240622032900/https://www.overtdefense.com/2024/06/18/netherlands-invest-in-air-defense-and-artillery/ |archive-date=22 June 2024 |date=18 June 2024}}</ref><ref name="NLmjolner1">{{cite press release |author=<!--not stated--> |date=11 June 2024 |title=Landmacht krijgt 120mm mortier-systemen op basis van CV90 |url=https://www.defensie.nl/actueel/nieuws/2024/06/11/landmacht-krijgt-120mm-mortier-systemen-voor-cv90-infanteriegevechtsvoertuigen |language=nl |publisher=[[Ministry of Defence (Netherlands)|Ministerie van Defensie]] |trans-title=Army receives 120mm mortar systems based on CV90 |access-date=22 June 2024 |archive-url=https://web.archive.org/web/20240612020915/https://www.defensie.nl/actueel/nieuws/2024/06/11/landmacht-krijgt-120mm-mortier-systemen-voor-cv90-infanteriegevechtsvoertuigen |archive-date=12 June 2024}}</ref>
+; {{flag|Norway}}
+: 104 CV9030N were purchased in 1994, based on the CV90 MkI chassis.<ref>{{Cite web |last=Hjønnevåg |first=Steffen |date=21 March 2020 |title=Stormpanservogn CV9030N (CV90 in Norwegian Service) |url=https://tanks-encyclopedia.com/modern/norway/stormpanservogn-cv9030n-cv90-in-norwegian-service/ |access-date=14 July 2024 |website=Tank Encyclopedia}}</ref> Among these, 17 were upgraded for international missions with air conditioning, additional mine protection, rubber tracks and rear-view cameras, and were designated CV9030NF1, one of which was damaged in Afghanistan and not repaired.<ref>{{cite web |title=Fakta om Forsvaret |trans-title=Facts about defense |url=http://www.mil.no/multimedia/archive/00110/Fakta_om_Forsvaret__110361a.pdf |publisher=Norwegian military |language=no}} {{dead link|date=August 2018|bot=InternetArchiveBot|fix-attempted=yes}}.</ref><ref name="armytech">{{cite web |title=CV 90 |url=http://www.army-technology.com/projects/cv90/ |url-status=live |archive-url=https://web.archive.org/web/20070313203158/http://www.army-technology.com/projects/cv90/ |archive-date=13 March 2007 |access-date=20 March 2007 |work=Army Technology}}</ref>
+: In April 2012, the Norwegian Government decided to modernise and expand the fleet to 144 CV90.<ref>{{Cite web |last=Dalløkken |first=Per Erlien |date=10 June 2015 |title=6 meter høy mast gir CV90-styrken full oversikt over kampbildet |url=https://www.tu.no/artikler/6-meter-hoy-mast-gir-cv90-styrken-full-oversikt-over-kampbildet/223877 |access-date=14 July 2024 |website=Tu.no |language=no}}</ref><ref>{{Cite press release |author=<!--not stated--> |date=19 February 2021 |title=Norwegian Army adding 20 CV90s to its fleet |url=https://www.baesystems.com/en/article/norwegian-army-adding-20-cv90s-to-its-fleet |publisher=[[BAE Systems]] |access-date=14 July 2024 |url-status=live |archive-url=https://web.archive.org/web/20210219013616/https://www.baesystems.com/en/article/norwegian-army-adding-20-cv90s-to-its-fleet |archive-date=19 February 2021}}</ref>
+:* 110 new Mk III hulls were manufactured for 3 variants, all equipped with a turret: 74 IFV, 21 reconnaissance and 15 command (CV90 STRILED)
+:** 103 turrets were reused and modernised to the MkIII standard
+:** 7 additional turrets were manufactured to the MkIII standard
+:* 34 MkI hulls were reused and modernised, and became 3 variants: 16 combat engineering vehicles (CV90RWS STING), 16 multi-role / mortar (CV90RWS Multi BK), and 2 driver training vehicles.
+:* 69 MkI hulls were mothballed
+:In 2014, Estonia struck a deal with Norway to purchase 37 surplus Mk I hulls.<ref name="ERR 2021-04-16" />
+:On 18 February 2021, it was announced that Norway had ordered another 12 combat engineering vehicles (CV90RWS STING) and 8 multi-role vehicles (CV90RWS Multi BK), all based on the MkI hulls that remained in reserve.<ref name="BAE 2021-02-18" /><ref>{{Cite web |title=Insight: Why the CV90 infantry fighting vehicle is making a clean sweep of Nordic markets {{!}} Shephard |url=https://www.shephardmedia.com/news/landwarfareintl/insight-why-the-cv90-ifv-is-making-a-clean-sweep-of-the-northern-european-market/ |access-date=14 July 2024 |website=www.shephardmedia.com |language=en}}</ref>
+; {{flag|Slovakia}}
+: The Slovak military and BAE Systems Hägglunds signed a contract worth €1.3 billion for the acquisition of 152 CV90 Mk IV on 12 December 2022. The contract includes 122 IFV variants armed with a 35&nbsp;mm autocannon and [[Spike (missile)|SPIKE-LR]] anti-tank guided missiles, as well as the Iron Fist active protection system. Other variants ordered by the Slovak army include command and control, engineering and recovery vehicles based on the CV90<ref>{{cite web |date=28 June 2022 |title=Key to future of Slovak Armed Forces and Slovakia's defences, SVK Government signs off on decision to procure CV90s |url=https://www.mosr.sk/51680-en/vlada-prijala-zasadne-rozhodnutie-pre-buducnost-ozbrojenych-sil-sr-a-posilnenie-obrany-slovenska/ |url-status=live |archive-url=https://web.archive.org/web/20230821192602/https://www.mosr.sk/51680-en/vlada-prijala-zasadne-rozhodnutie-pre-buducnost-ozbrojenych-sil-sr-a-posilnenie-obrany-slovenska/ |archive-date=21 August 2023 |access-date=2 July 2022 |website=mosr.sk (Slovak Government)}}</ref><ref>{{Cite web |title=Slovakiska regeringen väljer BAE Systems Hägglunds CV90MkIV |trans-title=Slovak government chooses BAE Systems Hägglunds CV90MkIV |url=https://www.fmv.se/aktuellt--press/aktuella-handelser/slovakiska-regeringen-valjer-bae-systems-hagglunds-cv90mkiv/ |url-status=live |archive-url=https://web.archive.org/web/20220629151451/https://www.fmv.se/aktuellt--press/aktuella-handelser/slovakiska-regeringen-valjer-bae-systems-hagglunds-cv90mkiv/ |archive-date=29 June 2022 |access-date=29 June 2022 |work=[[Swedish Defence Materiel Administration]] |language=sv}}</ref><ref>{{Cite web |title=Slovakia signs $1.37 billion deal for 152 CV90s under government-to-government agreement |url=https://www.baesystems.com/en-us/article/slovakia-signs-deal-for-152-cv90s-under-government-to-government-agreement |url-status=live |archive-url=https://web.archive.org/web/20221212150628/https://www.baesystems.com/en-us/article/slovakia-signs-deal-for-152-cv90s-under-government-to-government-agreement |archive-date=12 December 2022 |access-date=12 December 2022 |website=BAE Systems |place=[[United States|US]]}}</ref>
+: The first delivery took place in 2026.<ref>{{Cite web |date=2026-02-24 |title=Slovakien får sin första CV9035 MkIV |url=https://nordicdefencesector.com/sv/article/slovakia-receives-its-first-cv9035-mkiv |access-date=2026-03-04 |website=Nordic Defence Sector |language=en}}</ref>
+; {{flag|Sweden}}
+: 499 vehicles, of different variants - a total of 549 was ordered but around 50 were donated to Ukraine. In 2016, a contract was signed for a MLU of 288 CV9040s of the A and B version.<ref>{{Cite press release |author=<!--not stated--> |date=27 August 2020 |title=Milstolpe i uppgraderingen av Stridsfordon 90 |url=https://www.fmv.se/aktuellt--press/aktuella-handelser/milstolpe-i-uppgraderingen-av-stridsfordon-90/ |publisher=[[Swedish Defence Materiel Administration]] |language=sv |access-date=12 January 2024}}</ref> New designation will be D1 and D2. In February 2022 and in January 2023, the Swedish Army ordered a batch of additional 20+20 CV90 ''Mjölner'' mortar systems.<ref>{{cite press release |author=<!--not stated--> |date=27 January 2023 |title=BAE Systems receives contract for 20 additional CV90 Mjölner mortar systems for Swedish Army |url=https://www.baesystems.com/en-us/article/bae-systems-receives-contract-for-20-additional-cv90-mjolner-mortar-systems-for-swedish-army |publisher=[[BAE Systems]] |access-date=16 July 2024}}</ref> In December 2024, Sweden ordered another 50 CV90s as replacements for the ones sent to Ukraine.<ref>{{cite web | url=https://www.svt.se/nyheter/inrikes/danmark-koper-svenska-stridsfordon-for-miljarder | title=Sverige och Danmark köper stridsfordon i gemensam jätteorder | date=6 December 2024 }}</ref> In April 2025, the [[Nordic countries]] announced that several hundred CV90s would be ordered from BAE Hägglunds.<ref>{{cite web | url=https://www.sverigesradio.se/artikel/sverige-koper-hundratals-stridsfordon-ihop-med-andra-lander | title=Sverige köper hundratals stridsfordon ihop med andra länder - Nyheter (Ekot) | date=22 April 2025 }}</ref>
+; {{flag|Switzerland}}
+: 186 CV9030CH, 154 IFV and 32 command posts.<ref name="armytech" /> The order had an option for 124 additional CV9030CH that wasn't confirmed.<ref>{{Cite web |title=Trade Registers |url=https://armstrade.sipri.org/armstrade/page/trade_register.php |url-status=live |archive-url=https://web.archive.org/web/20100414022558/http://armstrade.sipri.org/armstrade/page/trade_register.php |archive-date=14 April 2010 |access-date=31 July 2023 |website=armstrade.sipri.org}}</ref> Delivery: 1 in 2001,<ref>{{Cite web |title=UNROCA (United Nations Register of Conventional Arms) |url=https://www.unroca.org/switzerland/report/2001/ |access-date=29 October 2023 |website=www.unroca.org}}</ref> 9 in 2002,<ref>{{Cite web |title=UNROCA (United Nations Register of Conventional Arms) |url=https://www.unroca.org/switzerland/report/2002/ |access-date=29 October 2023 |website=www.unroca.org}}</ref> 65 in 2003,<ref>{{Cite web |title=UNROCA (United Nations Register of Conventional Arms) |url=https://www.unroca.org/switzerland/report/2003/ |access-date=29 October 2023 |website=www.unroca.org}}</ref> 68 in 2004,<ref>{{Cite web |title=UNROCA (United Nations Register of Conventional Arms) |url=https://www.unroca.org/switzerland/report/2004/ |access-date=29 October 2023 |website=www.unroca.org}}</ref> 43 in 2005.<ref>{{Cite web |title=UNROCA (United Nations Register of Conventional Arms) |url=https://www.unroca.org/switzerland/report/2005/ |access-date=29 October 2023 |website=www.unroca.org}}</ref> In 2020, a life extension was initiated for all 186 CV90's in Swiss service. With the life extension program completed, the CV90 will be able to be in service to at least 2040<ref>{{Cite press release |author=<!--not stated--> |date=18 November 2020 |title=BAE Systems awarded life-extension contract for Swiss CV90 combat vehicle |url=https://www.baesystems.com/en/article/bae-systems-awarded-life-extension-contract-for-swiss-cv90-combat-vehicles |publisher=[[BAE Systems]] |access-date=12 January 2024}}</ref>
+; {{flag|Ukraine}}
+: Sweden has donated 50<ref>{{Cite news |title=Sweden says its weapons are 'significant' boost for Ukraine |url=https://www.washingtonpost.com/world/sweden-says-its-weapons-are-significant-boost-for-ukraine/2023/02/15/f9c08378-ad48-11ed-b0ba-9f4244c6e5da_story.html |url-status=live |archive-url=https://web.archive.org/web/20230821192011/https://www.washingtonpost.com/ |archive-date=21 August 2023 |access-date=16 February 2023 |newspaper=Washington Post |language=en-US |issn=0190-8286}}</ref> CV9040C to Ukraine as part of its support to counter the [[Russian invasion of Ukraine|Russian invasion]].<ref name="SVT 2023-01-19" /> They were delivered in June 2023.<ref>{{Cite news |author=<!--not stated--> |date=9 June 2023 |title=Sweden Says Ukraine Soldiers it Trained 'Ready for Front' |url=https://www.thedefensepost.com/2023/06/09/sweden-ukraine-soldiers-ready/ |url-status=live |archive-url=https://web.archive.org/web/20230615195445/https://www.thedefensepost.com/2023/06/09/sweden-ukraine-soldiers-ready/ |archive-date=15 June 2023 |access-date=15 June 2023 |agency=[[Agence France-Presse]] |via=The Defense Post |language=en-US}}</ref>
+
+=== Future operators and orders ===
+;{{flag|Czech Republic}}
+: On 24 May 2023, BAE Systems Hägglunds and the Czech military signed a contract worth $2.2 billion for the acquisition of 246 CV90 Mk IV infantry fighting vehicles in seven different variants. Negotiations for the new infantry fighting vehicles had been coordinated with Slovakia, which had also recently selected the CV90 Mk IV.<ref>{{Cite web |title=Defence Minister authorised to negotiate procurement of CV90 vehicles, F-35 fighters {{!}} Ministry of Defence & Armed Forces of the Czech Republic |url=https://www.army.cz/en/ministry-of-defence/newsroom/news/the-government-of-the-czech-republic-authorised-the-defence-minister-to-negotiate-the-acquisition-of-swedish-cv90-infantry-fighting-vehicles-and-the-a-237515/ |url-status=live |archive-url=https://web.archive.org/web/20220720101147/https://www.army.cz/en/ministry-of-defence/newsroom/news/the-government-of-the-czech-republic-authorised-the-defence-minister-to-negotiate-the-acquisition-of-swedish-cv90-infantry-fighting-vehicles-and-the-a-237515/ |archive-date=20 July 2022 |access-date=20 July 2022 |publisher=Army |place=CZ}}</ref><ref name="BAE 2023-05-24" />
+; {{flag|Denmark}}
+: In August 2024, Denmark agreed to purchase 115 additional CV90 vehicles, the model is the same as Sweden ordered in 2024, the CV9035 Mk IIIC. The deal is valued at €1.35 billion (DKK 9.975 billion).<ref>{{Cite web |date=24 August 2024 |title=Denmark purchases 115 CV90 combat vehicles from BAE Systems Hägglunds |url=https://defence-industry.eu/denmark-purchases-115-cv90-combat-vehicles-from-bae-systems-hagglunds/ |access-date=24 August 2024 |language=en}}</ref><ref name=":4">{{Cite web |date=6 December 2024 |title=Die schwedische Rüstungsbeschaffungsbehörde FMV und ihr dänisches Pendant FMI haben heute mit BAE Systems Hägglunds einen Vertrag über die koordinierte Beschaffung von 205 Systemen des Schützenpanzers CV9035 MKIIIC unterzeichnet. |url=https://www.hartpunkt.de/daenemark-und-schweden-kaufen-205-cv90-schuetzenpanzer/ |access-date=6 December 2024 |language=de}}</ref>
+: In November 2025, 44 additional CV90 of the CV9035 Mk IIIC variant were ordered.<ref>{{Cite web |date=2025-11-21 |title=Denmark expands CV90 fleet with order for 44 more vehicles under new BAE Systems contract |url=https://defence-industry.eu/denmark-expands-cv90-fleet-with-order-for-44-more-vehicles-under-new-bae-systems-contract/ |access-date=2025-11-21 |language=en}}</ref><ref>{{Cite web |title=Danmark utökar beställning av stridsfordon inom nordiskt samarbete |url=https://www.fmv.se/aktuellt--press/aktuella-handelser/danmark-utokar-bestallning-av-stridsfordon-inom-nordiskt-samarbete/ |access-date=2025-11-21 |website=www.fmv.se |language=sv}}</ref>
+; Nordic Initiative
+: Multilateral agreement signed in November 2025 for a common purchase of the CV90. The confirmed orders through this initiative are:<ref name=":9">{{Cite web |date=2025-11-14 |title=Multilateral CV90 Agreement Signed |url=https://nordicdefencesector.com/en/article/multilateral-cv90-agreement-signed |access-date=2026-01-14 |website=Nordic Defence Sector |language=en}}</ref>
+; {{flag|Lithuania}}
+: In October 2024, based on the military advice, the State Defence Council decided to begin the CV90 acquisition process.<ref>{{Cite web |last=BNS |date=2024-07-02 |title=Lithuania plans to buy tracked combat vehicles |url=https://www.lrt.lt/en/news-in-english/19/2309683/lithuania-plans-to-buy-tracked-combat-vehicles |access-date=2025-12-17 |website=lrt.lt |language=en}}</ref>
+: The order was confirmed in December 2025, with 100 CV90 Mk IV to start being delivered in 2028.<ref>{{Cite web |date=2025-12-15 |title=Lithuania is purchasing 100 Swedish CV90 MkIV infantry fighting vehicle, according to the State Defence Council |url=https://kam.lt/en/lithuania-is-purchasing-100-swedish-cv90-mkiv-infantry-fighting-vehicle-according-to-the-state-defence-council/ |access-date=2025-12-17 |website=LR Krašto apsaugos ministerija |language=en-US}}</ref><ref>{{Cite web |date=2025-12-17 |title=Lithuania decides to acquire 100 CV90 MkIV vehicles produced by Sweden's BAE Systems Hägglunds |url=https://defence-industry.eu/lithuania-decides-to-acquire-100-cv90-mkiv-vehicles-produced-by-swedens-bae-systems-hagglunds/,%20https://defence-industry.eu/lithuania-decides-to-acquire-100-cv90-mkiv-vehicles-produced-by-swedens-bae-systems-hagglunds/ |access-date=2025-12-17 |language=en}}</ref>
+; {{flag|Sweden}}
+: Replacement order for the 50 CV9040C donated to Ukraine. A preliminary design order for procurement of the CV9035 Mk IIIC has been placed, to be able to place a series order in early 2024.<ref name=":2">{{Cite web |title=Förprojektering för ersättningsanskaffning av stridsfordon |url=https://www.fmv.se/aktuellt--press/aktuella-handelser/forprojektering-for-ersattningsanskaffning-av-stridsfordon/ |access-date=12 January 2024 |website=www.fmv.se |language=sv}}</ref> The CV9035 Mk IIIC is to be ordered to use the assembly line already in place for the upgrade of the CV9035NL, and therefore speed up the procurement process. A future order of a variant of the CV90 Mk IV will be placed on a later date to expand the Swedish numbers of CV90's in use.<ref name=":2" /> The details of the contract were made public in December 2024, the order is made with Denmark (115) and with Ukraine (40) financed by Norway, Sweden and the Netherlands, all of it for €2.2 billion.<ref name=":4" />
+;{{flag|Ukraine}}
+: In 2024, several countries decided to collaborate to supply new CV90's to Ukraine. The initiative was launched by Denmark and Sweden, later joined by the Netherlands. Netherlands Ministry of Defence spokesman Kaj Leers said the Dutch government expects to partly produce at least 180 of the vehicles.<ref name=":3">{{Cite web |last=Ruitenberg |first=Rudy |date=12 June 2024 |title=Netherlands to supply first Dutch-built CV90 IFVs to Ukraine in 2026 |url=https://www.defensenews.com/global/europe/2024/06/12/netherlands-to-supply-first-dutch-built-cv90-ifvs-to-ukraine-in-2026/ |access-date=20 July 2024 |website=Defense News |language=en}}</ref> 
+: The investments in this initiative are the following:
+:* €400 million from the Netherlands (June 2024)<ref name=":3" />
+:* DKK 1.8 billion (USD $264 million) by Denmark (December 2023)<ref>{{Cite web |last=Murashko |first=Anna |date=20 July 2024 |title=Denmark allocates up to $264 million for Sweden's initiative to supply Ukraine with CV90 infantry fighting vehicles |url=https://unn.ua/en/news/denmark-allocates-up-to-dollar264-million-for-swedens-initiative-to-supply-ukraine-with-cv90-infantry-fighting-vehicles |access-date=20 July 2024 |website=Українські національні новини |trans-website=Ukrainian National News |language=en}}</ref>
+:40 CV90 MkIIIC were ordered in December 2024.<ref name=":4" />
+
+=== Potential operators and orders ===
+; {{flag|Brazil}}
+: During the summer of 2023, BAE Systems showcased the CV90 to the Brazilian army. As part of its VBC Fuz programme the Brazilian army is looking at procuring 78 tracked infantry fighting vehicles.<ref>{{Cite web |last=Padilha |first=Luiz |date=18 July 2023 |title=BAE Systems destaca liderança mundial da plataforma CV90 em demonstração para o Exército Brasileiro |url=https://www.defesaaereanaval.com.br/defesa/bae-systems-destaca-lideranca-mundial-da-plataforma-cv90-em-demonstracao-para-o-exercito-brasileiro |url-status=live |archive-url=https://web.archive.org/web/20230724162924/https://www.defesaaereanaval.com.br/defesa/bae-systems-destaca-lideranca-mundial-da-plataforma-cv90-em-demonstracao-para-o-exercito-brasileiro |archive-date=24 July 2023 |access-date=24 July 2023 |website=Defesa Aérea & Naval |language=pt-BR}}</ref><ref>{{Cite web |last=Roldán |first=Juan José |date=19 July 2023 |title=Como parte de su Programa Estratégico de Fuerzas Blindadas, el Ejército Brasileño evalúa las capacidades del CV90 de BAE Systems |url=https://www.zona-militar.com/2023/07/19/bae-systems-demuestra-las-capacidades-de-su-cv90-al-ejercito-brasileno/ |url-status=live |archive-url=https://web.archive.org/web/20230724162924/https://www.zona-militar.com/2023/07/19/bae-systems-demuestra-las-capacidades-de-su-cv90-al-ejercito-brasileno/ |archive-date=24 July 2023 |access-date=24 July 2023 |website=Zona Militar |language=es}}</ref>
+;Nordic Initiative
+: Multilateral agreement signed in November 2025 for a common purchase of hundreds of CV90. The signatories that haven't confirmed yet their order are:<ref name=":9" />
+:; {{flag|Finland}}
+:: Finland joined the agreement in November. It would succeed to the 110 BMP-2MD.<ref>{{Cite web |date=14 November 2025 |title=Minister of Defence Antti Häkkänen: The joint procurement of armoured infantry combat vehicles is progressing |url=https://valtioneuvosto.fi/en/-/236553176/minister-of-defence-antti-hakkanen-the-joint-procurement-of-armoured-infantry-combat-vehicles-is-progressing}}</ref>
+:; {{flag|Netherlands}}
+:: The Netherlands announced in December 2025 that a new batch of CV90 would be acquired with other allies.<ref>{{Cite web |last=Defensie |first=Ministerie van |date=2025-12-19 |title=Defensie koopt CV90 gevechtsvoertuigen - Nieuwsbericht - Defensie.nl |url=https://www.defensie.nl/actueel/nieuws/2025/12/19/defensie-koopt-cv90-gevechtsvoertuigen |access-date=2025-12-20 |website=www.defensie.nl |language=nl-NL}}</ref>
+:; {{flag|Norway}} (~80)
+:: The Norwegian Army plans to order additional IFV, command vehicles and reconnaissance vehicles for the 4th mechanised brigade ''(Finnmark Brigade)''. It aims at protecting the Norwegian border with Russia, and it should be fully equipped by 2032.<ref>{{Cite web |date=5 April 2024 |title=Norway steps up high north defense with fully equipped brigade in Finnmark |url=https://thebarentsobserver.com/en/security/2024/04/norwegian-army-build-fully-equipped-brigade-finnmark |access-date=18 July 2024 |website=The Independent Barents Observer |language=en}}</ref> The budget estimate is of 2.0 to 3.5 billion Kroner.
+:: As per the new investment plan, it is defined as the Project Number 1116.<ref>{{Cite web |date=May 2023 |title=Future Acquisitions For the Norwegian Defence Sector 2023–2030 - Page 11 |url=https://www.regjeringen.no/contentassets/595f6354301a4d7b9d63ef1c8e486482/faf-2023-2030-engelsk-versjon.pdf}}</ref>
+:: As of 2025, the quantity estimated to be purchased is 80 vehicles.<ref>{{Cite web |date=2025-06-05 |title=Norway Purchases 80 CV90s |url=https://nordicdefencesector.com/en/article/norway-purchases-80-cv90s |access-date=2026-01-14 |website=Nordic Defence Sector |language=en}}</ref>
+:; {{flag|Sweden}}
+:: Sweden plans to purchase additional CV90.
+; {{flag|Slovakia}}
+: Slovakia started considering the purchase of CV90120-T in January 2025, due to the cost of new main battle tanks.<ref>{{Cite web |date=2025-01-13 |title=Slovakia considers CV90120-T light tanks over Leopards due to cost constraints |url=https://defence-industry.eu/slovakia-considers-cv90120-t-light-tanks-over-leopards-due-to-cost-constraints/ |access-date=2025-01-14 |language=en}}</ref>
+; {{flag|Ukraine}}
+: Ukraine to buy up to 1,000 CV90. On 16 June 2023, Ukraine signed a joint declaration with Slovakia and the Czech Republic to collaborate for the acquisition and the operational aspect of the CV90 Mk IV.<ref>{{Cite web |last=Bisht |first=Inder Singh |date=19 June 2023 |title=Ukraine, Czech Republic, Slovakia Sign CV90 Infantry Vehicle Joint Procurement |url=https://www.thedefensepost.com/2023/06/19/ukraine-czech-slovakia-cv90/ |url-status=live |archive-url=https://web.archive.org/web/20230621211705/https://www.thedefensepost.com/2023/06/19/ukraine-czech-slovakia-cv90/ |archive-date=21 June 2023 |access-date=21 June 2023 |website=The Defense Post |language=en-US}}</ref><ref>{{Cite web |last=RIÑON |first=IAN |date=20 June 2023 |title=Ukraine, Czechia, Slovakia Plan to Buy 1,000 Swedish-Made CV90 IFVs |url=https://www.hngn.com/articles/249666/20230620/ukraine-czechia-slovakia-plans-buy-1-000-swedish-made-cv90.htm |url-status=live |archive-url=https://web.archive.org/web/20230620205849/https://www.hngn.com/articles/249666/20230620/ukraine-czechia-slovakia-plans-buy-1-000-swedish-made-cv90.htm |archive-date=20 June 2023 |access-date=21 June 2023 |website=HNGN}}</ref> On 10 September 2023, Ukrainian Deputy Defence Minister [[Hanna Maliar]] said Ukraine and Sweden had agreed on a joint production, mentioning 1,000 vehicles as a goal, without providing any further details.<ref>{{cite news |date=10 September 2023 |title=Maliar: Ukraine, Sweden aim to jointly produce 1,000 combat vehicles |url=https://kyivindependent.com/maliar-ukraine-and-sweden-aim-jointly-produce-1-000-combat-vehicles/ |access-date=23 September 2023 |work=[[The Kyiv Independent]]}}</ref>
+
+=== Evaluation-only users ===
+; {{flag|Canada}}
+: 1 CV9035 Mark III.<ref>{{cite web |date=17 November 2008 |title=Canadian forces look at CV90 for new close combat vehicle |url=http://communities.canada.com/ottawacitizen/blogs/defencewatch/archive/2008/11/17/canadian-forces-looks-at-cv90-for-new-close-combat-vehicle.aspx |url-status=dead |archive-url=https://web.archive.org/web/20090711202210/http://communities.canada.com/ottawacitizen/blogs/defencewatch/archive/2008/11/17/canadian-forces-looks-at-cv90-for-new-close-combat-vehicle.aspx |archive-date=11 July 2009 |access-date=17 November 2008 |work=[[Ottawa Citizen]] |publisher=Canada communities}}</ref> A combination of budget cuts and upgrades to the existing fleet of [[LAV III]]s led the [[Canadian Army]] to cancel the procurement of light combat vehicles, in which BAE Systems Hägglunds was offering its CV90.<ref>{{cite news |last1=Brewster |first1=Murray |author-link1=Murray Brewster |last2=Rennie |first2=Steve |date=20 December 2013 |title=Military scraps plans for new light-armoured combat vehicles |url=https://www.theglobeandmail.com/news/politics/military-scraps-plans-for-new-light-armoured-combat-vehicles/article16074826/?click=dlvr.it |url-status=live |archive-url=https://web.archive.org/web/20180503180233/https://www.theglobeandmail.com/news/politics/military-scraps-plans-for-new-light-armoured-combat-vehicles/article16074826/?click=dlvr.it |archive-date=3 May 2018 |access-date=21 December 2013 |newspaper=The Globe & Mail}}</ref>
+; {{flag|Estonia}}
+: As part of the ''Nordic initiative'', Estonia was planning to order CV90 Mk IV IFV,<ref name=":9" /><ref>{{Cite web |last=ERR |first=ERR {{!}} |date=2025-11-15 |title=Estonia joins group developing next-gen infantry fighting vehicles |url=https://news.err.ee/1609858863/estonia-joins-group-developing-next-gen-infantry-fighting-vehicles |access-date=2026-01-14 |website=ERR |language=en}}</ref> but decided in April 2026 to focus on other capabilities.<ref>{{Cite web |last=Adamowski |first=Jaroslaw |date=2026-04-15 |title=Estonia raids combat-vehicle funds to buy more drones, air defenses |url=https://www.defensenews.com/global/europe/2026/04/15/estonia-raids-combat-vehicle-funds-to-buy-more-drones-air-defenses/ |access-date=2026-04-16 |website=Defense News |language=en}}</ref>
+; {{flag|Poland}}
+: The CV90120T was on trials in 2007 and later rebuilt into the [[PL-01]].
+; {{flag|United Kingdom}}
+: The CV90 competed with the [[Scout SV]] as part of [[Future Rapid Effect System]].
+; {{flag|United States}}
+: The CV90 was a contender for the [[US Army]]'s cancelled [[Next Generation Combat Vehicle|Next-Generation Combat Vehicle]] program for the replacement of the [[M2 Bradley|M2]] and [[M3 Bradley]].<ref>{{cite web |last1=Freedberg Junior |first1=Sydney |last2=Clark |first2=Colin |date=9 October 2018 |title=Can BAE's CV90 Roll From European Success To US Army NGCV? |url=https://breakingdefense.com/2018/10/can-baes-cv90-roll-from-european-success-to-us-army-ngcv/ |url-status=live |archive-url=https://web.archive.org/web/20181009070418/https://breakingdefense.com/2018/10/can-baes-cv90-roll-from-european-success-to-us-army-ngcv/ |archive-date=9 October 2018 |access-date=9 October 2018 |website=Breaking Defense |location=AUSA, Washington}}</ref>
+
+=== Summary ===
+{| class="wikitable" style="font-size: 95%;"
+| rowspan="2" style="background:#EAECF0;width: 110px;border-left:solid 2px black;border-top:solid 2px black;border-bottom:solid 2px black" |'''Operators'''
+February 2026)
+! rowspan="2" style="width: 37px;border-right:solid 2px black;border-top:solid 2px black;border-bottom:solid 2px black" |Base variant
+! rowspan="2" style="width: 37px;border-right:solid 2px black;border-top:solid 2px black;border-bottom:solid 2px black" |Orders
+! colspan="8" style="border-right:solid 2px black;border-top:solid 2px black" |Delivery of produced CV90
+'''<small>(primary user)</small>''' <br /><small>{{font color||#ADE2B8|num}}: to be produced and delivered</small>
+
+<small>{{font color||#FFE18B|num}}: modified in other variant</small>
+! rowspan="2" style="width: 65px;border-right:dashed 2px black;border-top:solid 2px black;border-bottom:solid 2px black" |<small>Bought 2nd hand</small> 
+<small>[ + ]</small>
+
+<small>Sold 2nd hand</small>
+
+<small>[ − ]</small>
+! rowspan="2" style="width: 40px; border-right:dashed 2px black;border-top:solid 2px black;border-bottom:solid 2px black" |Donation 
+[ + / − ]
+! rowspan="2" style="width: 40px; border-right:solid 2px black;border-top:solid 2px black;border-bottom:solid 2px black" |Losses and reserve
+! rowspan="2" style="width: 40px; border-right:solid 2px black;border-top:solid 2px black;border-bottom:solid 2px black; background: lavender" |In service
+|-
+| style="width: 50px; background:#EAECF0;border-bottom:solid 2px black" align="center" |[[Infantry fighting vehicle|'''<small>IFV</small>''']]
+| style="width: 37px; background:#EAECF0;border-bottom:solid 2px black" align="center" |[[Mortar carrier|'''<small>Mortar</small>''']]
+| style="width: 37px; background:#EAECF0;border-bottom:solid 2px black" align="center" |[[Artillery observer|'''<small>Artillery Obs.</small>''']]
+| style="width: 37px; background:#EAECF0;border-bottom:solid 2px black" align="center" |[[Self-propelled anti-aircraft gun|'''<small>SPAAG</small>''']]
+| style="width: 37px; background:#EAECF0;border-bottom:solid 2px black" align="center" |[[Command and control|'''<small>Command</small>''' '''<small>variant</small>''']]
+| style="width: 37px; background:#EAECF0;border-bottom:solid 2px black" align="center" |'''<small>[[Armoured recovery vehicle|Recovery]] / [[Military engineering vehicle|Engineering]]</small>'''
+| style="width: 37px; background:#EAECF0;border-bottom:solid 2px black" align="center" |[[Reconnaissance|'''RECCE''']]
+| style="width: 40px; border-right:solid 2px black; background:#EAECF0;border-bottom:solid 2px black" align="center" |'''Other'''
+|-
+| rowspan="2" style="background:#EAECF0;border-left:solid 2px black" |{{flagicon|SWE}} [[Swedish Army|Sweden]]
+| style="background:#EAECF0;border-right:solid 2px black" |'''<small>Strf 9040</small>'''
+| style="background:#EAECF0;border-right:solid 2px black" align="center" |<small>589</small>
+| align="center" |<small>354</small>
+| align="center" |<small>40&nbsp;</small>
+<small>{{font color||#ADE2B8|(+40)}}</small>
+| align="center" |<small>42</small>
+| align="center" |<small>30</small>
+| align="center" |<small>56</small>
+| align="center" |<small>26</small>
+| align="center" |<small>0</small>
+| align="center" |<small>1</small>
+| align="center" style="border-left: solid 2px black;border-right: dashed 2px black" |<small>0</small>
+| align="center" |<small>−50</small>
+| style="border-left: dashed 2px black;border-right: solid 2px black" align="center" |<small>0</small>
+! style="border-right:solid 2px black; background: lavender" | 499
+|-
+| style="background:#EAECF0;border-right:solid 2px black" |'''<small>CV9035</small>'''
+'''<small>Mk IIIC</small>'''
+| style="background:#EAECF0;border-right:solid 2px black" align="center" |<small>50</small>
+| align="center" |<small>0&nbsp;</small>
+<small>{{font color||#ADE2B8|(+50)}}</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" style="border-left: solid 2px black;border-right: dashed 2px black" |<small>0</small>
+| align="center" |<small>0</small>
+| style="border-left: dashed 2px black;border-right: solid 2px black" align="center" |<small>0</small>
+! style="border-right:solid 2px black; background: lavender" | 0
+|-
+| rowspan="2" style="background:#EAECF0;border-left:solid 2px black" |{{flagicon|Kingdom of Denmark}} [[Royal Danish Army|Denmark]]
+| style="background:#EAECF0;border-right:solid 2px black" |'''<small>CV9035DK</small>'''
+'''<small>Mk III</small>'''
+| style="background:#EAECF0;border-right:solid 2px black" align="center" |<small>45</small>
+| align="center" |<small>45</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" style="border-left: solid 2px black;border-right: dashed 2px black" |<small>0</small>
+| align="center" |<small>0</small>
+| style="border-left: dashed 2px black;border-right: solid 2px black" align="center" |<small>−1</small>
+! style="border-right:solid 2px black; background: lavender" | 44
+|-
+| style="background:#EAECF0;border-right:solid 2px black" |'''<small>CV9035DK</small>'''
+'''<small>Mk IIIC</small>'''
+| style="background:#EAECF0;border-right:solid 2px black" align="center" |<small>159</small>
+| align="center" |<small>0&nbsp;</small>
+<small>{{font color||#ADE2B8|(+159)}}</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" style="border-left: solid 2px black;border-right: dashed 2px black" |<small>0</small>
+| align="center" |<small>0</small>
+| style="border-left: dashed 2px black;border-right: solid 2px black" align="center" |<small>0</small>
+! style="border-right:solid 2px black; background: lavender" | 0
+|-
+| style="background:#EAECF0;border-left:solid 2px black" |{{flagicon|EST}}[[Estonian Land Forces|Estonia]]
+| style="background:#EAECF0;border-right:solid 2px black" |'''<small>CV9035NL</small> <small>Mk III + CV9030N Mk I</small>'''
+| style="background:#EAECF0;border-right:solid 2px black" align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" style="border-left: solid 2px black;border-right: dashed 2px black" |<small>+44</small> <small>+37</small>
+| align="center" |<small>0</small>
+| style="border-left: dashed 2px black;border-right: solid 2px black" align="center" |<small>0</small>
+! style="border-right:solid 2px black; background: lavender" | 81
+|-
+| style="background:#EAECF0;border-left:solid 2px black" |{{flagicon|Finland}} [[Finnish Army|Finland]]
+| style="background:#EAECF0;border-right:solid 2px black" |'''<small>CV9030FIN</small>'''
+'''<small>Mk II</small>'''
+| style="background:#EAECF0;border-right:solid 2px black" align="center" |<small>102</small>
+| align="center" |<small>102</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" style="border-left: solid 2px black;border-right: dashed 2px black" |<small>0</small>
+| align="center" |<small>0</small>
+| style="border-left: dashed 2px black;border-right: solid 2px black" align="center" |<small>0</small>
+! style="border-right:solid 2px black; background: lavender" | 102
+|-
+| style="background:#EAECF0;border-left:solid 2px black" |{{flagicon|Lithuania}} [[Lithuanian Armed Forces|Lithuania]]
+| style="background:#EAECF0;border-right:solid 2px black" |'''<small>CV90 Mk IV</small>'''
+| style="background:#EAECF0;border-right:solid 2px black" align="center" |<small>100</small>
+| align="center" |<small>0</small>
+<small>{{font color||#ADE2B8|(+100)}}</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" style="border-left: solid 2px black;border-right: dashed 2px black" |<small>0</small>
+| align="center" |<small>0</small>
+| style="border-left: dashed 2px black;border-right: solid 2px black" align="center" |<small>0</small>
+! style="border-right:solid 2px black; background: lavender" | 0
+|-
+| style="background:#EAECF0;border-left:solid 2px black" |{{flagicon|Netherlands}} [[Royal Netherlands Army|Netherlands]]
+| style="background:#EAECF0;border-right:solid 2px black" |'''<small>CV9035NL</small>'''
+'''<small>Mk III</small>'''
+| style="background:#EAECF0;border-right:solid 2px black" align="center" |<small>193</small>
+| align="center" |<small>187</small>
+<small>{{font color||#FFE18B|(-15)}}</small>
+| align="center" |<small>0</small>
+<small>{{font color||#FFE18B|(+15)}}</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>6</small>
+| align="center" style="border-left: solid 2px black;border-right: dashed 2px black" |<small>−44</small>
+| align="center" |<small>0</small>
+| style="border-left: dashed 2px black;border-right: solid 2px black" align="center" | <small>−6 (reserve)</small>
+! style="border-right:solid 2px black; background: lavender" | 143
+|-
+| rowspan="2" style="background:#EAECF0;border-left:solid 2px black" |{{flagicon|NOR}} [[Norwegian Army|Norway]]
+| style="background:#EAECF0;border-right:solid 2px black" |'''<small>CV9030N</small>'''
+'''<small>Mk I</small>'''
+| style="background:#EAECF0;border-right:solid 2px black" align="center" |<small>104</small>
+| align="center" |<small>104</small>
+<small>{{font color||#FFE18B|(-54)}}</small>
+| align="center" |<small>0</small>
+<small>{{font color||#FFE18B|(+24)}}</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+<small>{{font color||#FFE18B|(+24)}}</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+<small>{{font color||#FFE18B|(+2)}}</small>
+| align="center" style="border-left: solid 2px black;border-right: dashed 2px black" |<small>−37</small>
+| align="center" |<small>0</small>
+| style="border-left: dashed 2px black;border-right: solid 2px black" align="center" |<small>−13</small> <small>(1 loss / 12 reserve)</small>
+! style="border-right:solid 2px black; background: lavender" | 54
+|-
+| style="background:#EAECF0;border-right:solid 2px black" |'''<small>CV9030N</small>'''
+'''<small>Mk IIIb</small>'''
+| style="background:#EAECF0;border-right:solid 2px black" align="center" |<small>110</small>
+| align="center" |<small>74</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>15</small>
+| align="center" |<small>0</small>
+| align="center" |<small>21</small>
+| align="center" |<small>0</small>
+| align="center" style="border-left: solid 2px black;border-right: dashed 2px black" |<small>0</small>
+| align="center" |<small>0</small>
+| style="border-left: dashed 2px black;border-right: solid 2px black" align="center" |<small>0</small>
+! style="border-right:solid 2px black; background: lavender" | 110
+|-
+| style="background:#EAECF0;border-left:solid 2px black" |{{flagicon|CH}} [[Swiss Army|Switzerland]]
+| style="background:#EAECF0;border-right:solid 2px black" |'''<small>CV9030CH</small>'''
+'''<small>Mk II</small>'''
+| style="background:#EAECF0;border-right:solid 2px black" align="center" |<small>186</small>
+| align="center" |<small>154</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>32</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" style="border-left: solid 2px black;border-right: dashed 2px black" |<small>0</small>
+| align="center" |<small>0</small>
+| style="border-left: dashed 2px black;border-right: solid 2px black" align="center" |<small>0</small>
+! style="border-right:solid 2px black; background: lavender" | 186
+|-
+| rowspan="2" style="background:#EAECF0;border-left:solid 2px black" |{{flagicon|Ukraine}} [[Ukrainian Ground Forces|Ukraine]]
+| style="background:#EAECF0;border-right:solid 2px black" |'''<small>CV9030N</small>'''
+'''<small>Mk I</small>'''
+| style="background:#EAECF0;border-right:solid 2px black" align="center" |0
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" style="border-left: solid 2px black;border-right: dashed 2px black" |<small>0</small>
+| align="center" |<small>+50</small>
+| style="border-left: dashed 2px black;border-right: solid 2px black" align="center" |<small>−25</small><ref name="oryx1" />
+! style="border-right:solid 2px black; background: lavender" | 25
+|-
+| style="background:#EAECF0;border-right:solid 2px black" |'''<small>CV9035</small>'''
+'''<small>Mk IIIC</small>'''
+| style="background:#EAECF0;border-right:solid 2px black" align="center" |40
+| align="center" |<small>0</small>
+<small>{{font color||#ADE2B8|(+40)}}</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" style="border-left: solid 2px black;border-right: dashed 2px black" |<small>0</small>
+| align="center" |<small>0</small>
+| style="border-left: dashed 2px black;border-right: solid 2px black" align="center" |<small>0</small>
+! style="border-right:solid 2px black; background: lavender" | 0
+|-
+| style="background:#EAECF0;border-left:solid 2px black" |{{flagicon|Czech Republic}} [[Army of the Czech Republic|Czechia]]
+| style="background:#EAECF0;border-right:solid 2px black" |'''<small>CV9030CZ</small>'''
+'''<small>Mk IV</small>'''
+| style="background:#EAECF0;border-right:solid 2px black" align="center" |<small>246</small>
+| align="center" |<small>0</small>
+<small>{{font color||#ADE2B8|(+141)}}</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+<small>{{font color||#ADE2B8|(+12)}}</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+<small>{{font color||#ADE2B8|(+31)}}</small>
+| align="center" |<small>0</small>
+<small>{{font color||#ADE2B8|(+28)}}</small>
+| align="center" |<small>0</small>
+<small>{{font color||#ADE2B8|(+18)}}</small>
+| align="center" |<small>0</small>
+<small>{{font color||#ADE2B8|(+16)}}</small>
+| align="center" style="border-left: solid 2px black;border-right: dashed 2px black" |<small>0</small>
+| align="center" |<small>0</small>
+| style="border-left: dashed 2px black;border-right: solid 2px black" align="center" |<small>0</small>
+! style="border-right:solid 2px black; background: lavender" | 0
+|-
+| style="background:#EAECF0;border-left:solid 2px black" |{{flagicon|Slovakia}} [[Ground Forces of the Slovak Republic|Slovakia]]
+| style="background:#EAECF0;border-right:solid 2px black" |'''<small>CV9035SK</small>'''
+'''<small>Mk IV</small>'''
+| style="background:#EAECF0;border-right:solid 2px black" align="center" |<small>152</small>
+| align="center" |<small>1</small>
+<small>{{font color||#ADE2B8|(+121)}}</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+| align="center" |<small>0</small>
+<small>{{font color||#ADE2B8|(+15)}}</small>
+| align="center" |<small>0</small>
+<small>{{font color||#ADE2B8|(+3)}}</small>
+| align="center" |<small>0</small>
+<small>{{font color||#ADE2B8|(+9)}}</small>
+| align="center" |<small>0</small>
+<small>{{font color||#ADE2B8|(+3)}}</small>
+| align="center" style="border-left: solid 2px black;border-right: dashed 2px black" |<small>0</small>
+| align="center" |<small>0</small>
+| style="border-left: dashed 2px black;border-right: solid 2px black" align="center" |<small>0</small>
+! style="border-right:solid 2px black; background: lavender" | 1
+|-
+| colspan="2" rowspan="2" style="background:#EAECF0;border-right:solid 2px black;border-left:solid 2px black;border-top:solid 2px black;border-bottom:solid 2px black" |'''Total'''
+| rowspan="2" style="background:#EAECF0;border-right:solid 2px black;border-top:solid 2px black;border-bottom:solid 2px black" align="center" |'''2,076'''
+| style="background:#EAECF0;border-top:solid 2px black" align="center" |<small>1,021<br></small><small>{{font color||#ADE2B8|(+611)}}</small>
+| style="background:#EAECF0;border-top:solid 2px black" align="center" |<small>40<br></small><small>{{font color||#ADE2B8|(+40)}}</small>
+| style="background:#EAECF0;border-top:solid 2px black" align="center" |<small>42<br></small><small>{{font color||#ADE2B8|(+12)}}</small>
+| style="background:#EAECF0;border-top:solid 2px black" align="center" |<small>30<br>–</small>
+| style="background:#EAECF0;border-top:solid 2px black" align="center" |<small>103<br>{{font color||#ADE2B8|(+46)}}</small>
+| style="background:#EAECF0;border-top:solid 2px black" align="center" |<small>26<br></small><small>{{font color||#ADE2B8|(+31)}}</small>
+| style="background:#EAECF0;border-top:solid 2px black" align="center" |<small>21<br></small><small>{{font color||#ADE2B8|(+27)}}</small>
+| style="background:#EAECF0;border-top:solid 2px black" align="center" |<small>7<br></small><small>{{font color||#ADE2B8|(+19)}}</small>
+! rowspan="2" style="border-left:solid 2px black; border-right:dashed 2px black;border-top:solid 2px black;border-bottom:solid 2px black" |0
+! rowspan="2" style="border-top:solid 2px black;border-bottom:solid 2px black" |0
+! rowspan="2" style="border-left:dashed 2px black; border-right:solid 2px black;border-top:solid 2px black;border-bottom:solid 2px black" |−45
+! rowspan="2" style="border-right:solid 2px black;border-top:solid 2px black;border-bottom:solid 2px black; background: lavender" | 1,245
+|-
+! colspan="8" style="border-bottom:solid 2px black" |1,290<br><small>{{font color||#ADE2B8|(+787)}}</small>
+|}
+
+== Specifications of variants (domestic) ==
+{|class="wikitable" style="text-align:center;"
+|+Comparison of specifications<ref>{{ISBN|978-91-633-7880-5}} p. 82, ''Cv 90 Photo Guide'' – Svensk Pansarhistorisk Förening</ref>
+|-
+!
+! Strf 9040
+! Strf 9040A
+! Strf 9040B
+! Strf 9040C
+! E/Stri90
+! Lvkv90
+! Bgbv90
+|-
+! Total weight (tons)
+| 22.8
+| colspan="2" | 23.1
+| 27.6
+| 22.4
+| 24
+| 23.2
+|-
+! Length
+| {{convert|6.47|m|ftin|abbr=on|disp=br()}}
+| colspan="2" | {{convert|6.55|m|ftin|abbr=on|disp=br()}}
+| {{convert| 7.00|m|ftin|abbr=on|disp=br()}}
+| {{convert|6.55|m|ftin|abbr=on|disp=br()}}
+| {{convert|6.55|m|ftin|abbr=on|disp=br()}}
+| {{convert|7.9|m|ftin|abbr=on|disp=br()}}
+|-
+! Width
+| {{convert|3.10|m|ftin|abbr=on|disp=br()}}
+| colspan="2" | {{convert|3.17|m|ftin|abbr=on|disp=br()}}
+| {{convert|3.42|m|ftin|abbr=on|disp=br()}}
+| {{convert|3.17|m|ftin|abbr=on|disp=br()}}
+| {{convert|3.17|m|ftin|abbr=on|disp=br()}}
+| {{convert|3.17|m|ftin|abbr=on|disp=br()}}
+|-
+! Height
+| {{convert|2.5|m|ftin|abbr=on|disp=br()}}
+| colspan="2" | {{convert|2.71|m|ftin|abbr=on|disp=br()}}
+| {{convert|2.75|m|ftin|abbr=on|disp=br()}}
+| {{convert|2.71|m|ftin|abbr=on|disp=br()}}
+| {{convert|3.45|m|ftin|abbr=on|disp=br()}}
+| {{convert|2.65|m|ftin|abbr=on|disp=br()}}
+|-
+! Ground clearance (m)
+| 0.45
+| colspan="2" | 0.45
+| 0.36
+| 0.45
+| 0.45
+| 0.45
+|-
+! Crew
+| 3
+| colspan="2" | 3
+| 3
+| 3
+| 7
+| 4
+|-
+! Soldier/seats
+| 8
+| colspan="2" | 6–7
+| 6–7
+| 6
+| 
+| 
+|-
+! Main armament
+| Bofors 40&nbsp;mm L/70B
+with 234 rounds
+| colspan="2" | Bofors 40&nbsp;mm L/70Bc
+with 234 rounds
+| Bofors 40&nbsp;mm L/70Bc
+with 120 rounds
+| 
+| Bofors 40&nbsp;mm L/70Bb
+with 234 rounds
+| 
+|-
+! Secondary armament
+| 7.62&nbsp;mm [[Ksp m/39 machine gun|Ksp m/39B <br /> machine gun]]
+| colspan="2" | Ksp m/39C
+| 7.62&nbsp;mm [[Ksp 58 machine gun]]
+| Ksp m/39C
+| Ksp m/39C
+| Ksp m/39C
+|-
+! Defensive equipment
+| colspan=7 align=center |Smoke dischargers 6× Galix
+|-
+! Additional equipment
+| [[Lyran illuminating mortar]] 2×
+|colspan=7 | 
+|-
+! Gun elevation (degrees)
+| 
+| −8 +35
+| −8 +27
+| −8 +27
+| 
+| −8 +50
+| 
+|-
+! Engine
+| colspan=7 align=center | Scania DSI 14 turbodiesel V8
+|-
+! Gearbox
+| colspan=7 align=center | Allison/Perkins X-300-5 Automatic
+|}
+
+== See also ==
+{{Div col|colwidth=20em}}
+* {{lwc|Lynx (Rheinmetall armoured fighting vehicle)|Lynx}}
+* {{lwc|ASCOD}}
+* {{lwc|Bionix AFV|Bionix}}
+* {{lwc|BMP-3}}
+* {{lwc|BTR-4}}
+* {{lwc|Dardo IFV|Dardo}}
+* {{lwc|ZBD-04}}
+* {{lwc|K21}}
+* {{lwc|M2 Bradley}}
+* {{lwc|Puma (IFV)|Puma}}
+* {{lwc|Mitsubishi Type 89 IFV|Type 89}}
+* {{lwc|Ajax (Scout SV)|Ajax}}
+* {{lwc|Makran IFV|Makran}}
+* {{lwc|Tulpar (IFV)}}
+{{Div col end}}
+
+== References ==
+{{Reflist}}
+
+== External links ==
+{{Commons category|Hägglunds Combat Vehicle 90}}
+* [http://www.army-technology.com/projects/cv90/ Combat Vehicle 90 profile at Army Technology]
+* [https://www.baesystems.com/en/product/cv90 BAE Systems CV90 Family]
+* [https://web.archive.org/web/20050328051902/http://www.soldf.com/strf9040.html SoldF.com – CV9040] {{in lang|sv}}
+* [https://web.archive.org/web/20090309232501/http://www.armada.ch/97-6/page6-97_52.htm Armada International 6/97-52 Information on the Norwegian IFV trials and changes found in the Norwegian CV9030] {{in lang|no}}
+* [https://web.archive.org/web/20080311125803/http://www.danskpanser.dk/Baeltekoretojer/CV9035MkIII.htm Danish CV9035 Mk III] {{in lang|da}}
+
+{{Authority control}}
+
+[[Category:Armoured personnel carriers of Sweden]]
+[[Category:Infantry fighting vehicles of the post–Cold War period]]
+[[Category:Tracked infantry fighting vehicles]]
+[[Category:Military vehicles introduced in the 1990s]]

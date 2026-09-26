@@ -1,0 +1,132 @@
+{{About|the tank|other uses|Ariete (disambiguation)}}
+{{More citations needed|date=July 2020}}
+{{Infobox weapon
+| name               = C1 Ariete
+| image              = Italian Army - 4th Tank Regiment - Ariete tanks during an exercise at Capo Teulada October 2022.jpg
+| image_size         = 300
+| caption            = 
+| origin             = Italy
+| type               = [[Main battle tank]]
+| is_vehicle         = yes
+| service            = 1995–present
+| crew               = 4
+| manufacturer       = Consorzio Iveco Oto Melara (CIO), a consortium formed by [[Iveco]] and [[OTO Melara]]
+| production_date    = 1995–2002
+| number             = 200
+| length             = {{convert|9.52|m|ft|abbr=on}}<!--9.67&nbsp;m (31.73&nbsp;ft) (without gun: 7.59&nbsp;m (24.9&nbsp;ft))-->
+| width              = {{convert|3.61|m|ft|abbr=on}}<!--3.42&nbsp;m (11.22&nbsp;ft)-->
+| height             = {{convert|2.45|m|ft|abbr=on}}
+| weight             = {{convert|54|t|abbr=on}}
+| armour             = steel and composite
+| primary_armament   = 120&nbsp;mm OTO Breda L/44 smoothbore [[tank gun|gun]]<br /> 42 rounds (15 ready-rounds in the turret basket with additional 27 rounds in the hull rack)
+| secondary_armament = 7.62&nbsp;mm MG 42/59 coaxial machine-gun, 7.62 mm MG 42/59 AA machine-gun<br /> 2,500 rounds
+| engine             = Fiat MTCA 12V [[Diesel engine|diesel]] 25.8 litre
+| transmission       = [[ZF Friedrichshafen]] LSG 3000 (4 gears forward, 2 backwards)
+| engine_power       = {{convert|1270|hp|disp=flip|abbr=on}}
+| suspension         = [[torsion bar]]
+| clearance          = {{convert|0.44|m|ft|abbr=on}}
+| vehicle_range      = {{convert|600|km|mi|abbr=on}}
+| speed              = {{convert|65|km/h|abbr=on}}
+| pw_ratio           = {{convert|23.5|hp/t|kW/t|disp=flip|abbr=on}}
+}}
+
+The '''C1 Ariete''' ({{langx|en|[[battering ram]], [[Ramming|ram]]}}) is a [[List of main battle tanks by generation|3rd generation]] [[main battle tank]] of the [[Italian Army]], developed by Consorzio Iveco Oto Melara (CIO), a consortium formed by [[Iveco]] and [[Oto Melara|OTO Melara]]. The chassis and engine were produced by Iveco, while the turret and [[fire-control]] system were supplied by OTO Melara. The vehicle carries the latest optical and digital-imaging and fire-control systems, enabling it to fight day and night and to fire on the move. Six prototypes were developed by 1988, which were subject to intensive testing. The following year the vehicles travelled a combined 16,000&nbsp;km. Deliveries were first planned for 1993, and took place in 1994 due to delays. The final tank was delivered seven years later, in August 2002.
+
+==Design==
+The tank has a conventional layout similar to other Western [[main battle tank|MBT]]s: a driver located at the front of the hull, the fighting compartment towards the middle, and the engine compartment in the rear of the hull.
+
+===Armament===
+The Ariete's main armament is 120&nbsp;mm smoothbore gun, designed by [[OTO Melara|OTO Breda]],<ref>{{Cite book|title=Tank: 100 Years of the World's Most Important Armored Military Vehicle|last= Haskew |first=Michael|publisher=Zenith Press|year=2015|isbn= 978-0-76034963-2}}</ref> similar to the [[Rheinmetall Rh-120|Rheinmetall L/44]]. The gun fires most NATO-standard rounds of the same calibre. It carries 42 rounds; 15 ready rounds are stored vertically on the left side of the main gun breech. The other 27 rounds are stowed in a hull rack to the left of the driver's station. The gun barrel has a thermal insulating sleeve and a [[Bore evacuator|fume extractor]]; it is fully [[Gun stabilizer|stabilized]] in both azimuth and elevation by an electro-hydraulic drive system.
+
+Secondary armament consists of a [[7.62×51mm NATO|7.62 mm]] [[MG 3 machine gun|MG 42/59]] [[coaxial gun|coaxial]] [[machine gun]] operated by the tank gunner or commander and an additional 7.62&nbsp;mm MG 42/59 configured as an [[Anti-aircraft warfare|anti-aircraft]] weapon operated by the main-gun loader from his hatch.
+
+===Fire control and target acquisition===
+The tank's advanced fire-control system, manufactured by Galileo Avionica, is designated OG14L3 TURMS, and includes day and night panoramic capability for the commander's SP-T-694 primary sight (developed collaboratively by SFIM/Galileo), a stabilized platform including a [[Thermography|thermal]] gunner's sight and a [[laser rangefinder]] to increase accuracy and expedite target detection and targeting, and a digital fire-control computer, which is capable of measuring [[wind speed]], [[humidity]], and exterior weather conditions, combining them with the turret's [[Elevation (ballistics)|angle of elevation]], attitude, and the barrel's physical wear to increase accuracy. 
+
+This computer is also a component of the tank's navigation system and allows for the exchange of tactical information between vehicles in a network. The Ariete has a "hunter-killer" capability in which the commander spots and designates targets for the gunner in a 360° field of vision around the vehicle without changing his position or having to open the turret hatch for visual identification of targets. The commander's sight also has a vertical traverse from –10° to +60° from the horizontal, which allows the tank to engage low-flying airborne threats—primarily helicopters. During night fighting, the commander and gunner both share the thermal sight which is able to resolve a 2.3×x2.3 m target from a distance of 1,500 m.
+
+===Crew and tank protection===
+The Ariete's armour is a [[steel]] and [[Composite armour|composite]] blend, the turret front shape is similar to the British [[Challenger 1]] and the American [[M1 Abrams]].
+
+The Ariete features two side-mounted, electronically fired GALIX 80mm grenade launchers.<ref name=":0">{{Cite web|url= https://www.militarypedia.it/c1-ariete-mbt/|title=C1 Ariete MBT|date=15 October 2015|website= Militarypedia}}</ref> Each launcher consists of four 80&nbsp;mm barrels which can be intermixed with either smoke or [[Chaff (radar countermeasure)|chaff]] grenades.  The smoke grenades are capable of shrouding the tank from visual or thermal detection, while the chaff grenades disperse the tank's [[radar cross section]]. The tank is fully [[NBC protection system|NBC protected]].<ref>[http://www.aerosekur.com/  Aero Sekur] {{Webarchive |url= https://web.archive.org/web/20111209232403/http://www.aerosekur.com/ |date=2011-12-09 }}</ref>
+
+===Powerplant and drivetrain===
+The Ariete is powered by a 25.8-litre Fiat-Iveco MTCA [[turbo-diesel]] V12 rated at {{cvt|937|kW|hp}} at 2,300&nbsp;rpm, with a maximum torque of {{cvt|4615|Nm}} at 1,600&nbsp;rpm<ref>{{Cite web |url= http://www.ferreamole.it/images/mbt_ariete/mbtariete01.htm |title= MBT Ariete | page = 1<!-- Bot generated title --> |access-date= 2007-11-03 | publisher = Ferreamole |archive-url= https://web.archive.org/web/20071106070729/http://www.ferreamole.it/images/mbt_ariete/mbtariete01.htm |archive-date=2007-11-06 |url-status= live}}</ref> driving through a ZF LSG3000 [[automatic transmission]], with four forward gears and two reverse, allowing for a top cruising speed of 65&nbsp;km/h and a 0–32&nbsp;km/h acceleration in 6 seconds. The computer-controlled transmission allows it to climb grades rated up to 60%, and can ford waterways of up to 1.25&nbsp;m on-the-fly. The entire engine and transmission assembly can be replaced in under 1 hour.
+
+The Ariete's independent suspension system consists of 14 torsion bars with suspension arms, 10 hydraulic shock absorbers (installed on roadwheels numbers 1, 2, 3, 6 and 7), and 14 friction dampers.
+
+The tracks were supplied by KNDS Tracks.<ref>{{Cite web | title=System Tracks {{!}} KNDS Tracks | url=https://www.knds-tracks.de/en/home/system-tracks.html | archive-url=https://web.archive.org/web/20240526095343/https://www.knds-tracks.de/en/home/system-tracks.html | access-date=2026-09-08 | archive-date=2024-05-26}}</ref>
+
+==History==
+===Further development===
+[[File:Italian Army - 4th Tank Regiment Ariete main battle tanks - January 2023.jpg|thumb|right|A 4th Tank Regiment Ariete]]
+
+During the first years of adoption, the Ariete MBT showed some deficiencies regarding the powerplant. While the original V12 1,250&nbsp;hp FIAT-Iveco MTCA (Modular Turbo-Charged Aftercooler) was a coupling of two of the V6 engines used by several Italian Army vehicles such as the [[B1 Centauro]] [[tank destroyer]] and the [[Dardo IFV]], it produced less power than the most advanced contemporary western designs. The Ariete's engine had to run at a high RPM to perform well, thus reducing the operating time between failures.{{citation needed|date=July 2016}}
+
+Moreover, to retain a good [[power-to-weight ratio]], the total weight of the tank had to be kept below 60&nbsp;tonnes. The relatively light weight of the Ariete helped lower consumption and facilitated the transport and mobility of the MBT (especially over bridges). This was obtained partially at the expense of the thickness of the armour that, only partially compensated by the good ballistic shape of the vehicle, raised some doubt about its ability to survive in the harshest environments.
+
+As an improvement, Iveco developed a new version of the MTCA engine. The stroke was lengthened, increasing displacement to 30&nbsp;litres, with a new [[common rail]] direct fuel injection system along a new double turbocharger, increasing power output to {{convert|1600|hp|abbr=on|disp=flip}} at 1,800&nbsp;rpm (with an electronically reduced torque of 5,500&nbsp;N·m, maintained from 1,100 to 1,800&nbsp;rpm to reduce damage to the transmission) and further reducing fuel consumption. The new engine had to be adopted during the first general revision of the existing vehicles, but seems to have been blocked by technical and financial problems. As for the armour, Oto Melara developed two different sets (with different thickness levels, depending upon mission nature) of adjunctive armour, shown for the first time at [[Eurosatory]] 2002.
+
+=== Ariete C2 ===
+[[File:Italian Army - Cavalry School Ariete C2 main battle tank during a crew training exercise 2024.jpg|thumb|right|Italian Army Cavalry School Ariete C2 main battle tank during an exercise]]
+[[File:Italian Army - Ariete C2 main battle tank during acceptance trials 03.jpg|thumb|Italian Army - Ariete C2 main battle tank during acceptance trials]]
+[[File:Italian Army - Ariete C2 main battle tank during acceptance trials 01.jpg|thumb|Italian Army - Ariete C2 main battle tank during acceptance trials]]
+
+In the early 2000s, the Italian Army was interested in developing a new version of Ariete (C2 Ariete or Ariete Mk. 2 designations were considered) which would enter service over the following years with the planned acquisition of 300 units.<ref>{{Cite web |url= http://www.ferreamole.it/images/mbt_ariete/mbtariete02.htm |title=MBT Ariete | page = 2|website=Ferreamole}}</ref> Budget limitations drastically reduced the number of improved Ariete (order reduced to 200) and eventually caused the cancellation of the program. The planned improvements were therefore to be applied to the C1 Ariete during the future major revisions.
+
+In 2023, a contract was signed to modernise the Ariete to the C2 standard for a value of €848.8 million. The modernisation will take place on 90 tanks, with an option for 35 additional ones. It includes the following modifications:<ref>{{Cite web |date=2023-08-04 |title=Italy modernizes Ariete main battle tanks under EUR 850 million deal |url=https://defence-industry.eu/italy-modernizes-ariete-main-battle-tank-under-eur-850-million-deal/ |access-date=2025-02-16 |language=en}}</ref><ref>{{Cite web |title=Ariete C2 |url=https://www.iveco-otomelara.com/ariete-c2/ |access-date=2025-02-16 |website=iveco-otomelara.com |language=it-IT}}</ref>
+
+* Mobility:
+** New engine: 30.1-litre Iveco Vector 12 with a power of {{convert|1500|hp|kW|abbr=on}} and a torque of {{convert|5800|Nm|ftlb|abbr=on}} This engine shares parts with the Iveco Vector 8V engine of the [[Centauro 2]], which will improve the logistics of the Italian Army.
+** Transmission LSG-3000 updated to take the added power<ref>{{Cite web |title=RID Rivista Italiana Difesa - Firmato il contratto per gli ARIETE C-2 di serie |url=https://www.rid.it/shownews/5929/firmato-il-contratto-per-gli-ariete-c-2-di-serie |access-date=2025-02-16 |website=www.rid.it |language=it}}</ref>
+** Widened tracks for higher mobility
+
+* Turret modifications (using most of the elements of the Centauro 2): 
+** The hydraulic drives are replaced by electric drives. This will reduce the fire risks, and improve the accuracy of the fire control system when in movement.
+** Ballistic computer replaced
+** Sights: 
+*** Commander: Leonardo ATTILA-D, a multi-spectral panoramic observation device
+*** Gunner: Leonardo LOTHAR-SD sight
+* Protection:<ref>{{Cite web |last=Valpolini |first=Paolo |date=2022-10-03 |title=Italian Army: towards heavy forces modernisation |url=https://www.edrmagazine.eu/italian-army-towards-heavy-forces-modernisation |access-date=2025-02-16 |website=EDR Magazine |language=en-GB}}</ref>
+** An improved mine protection kit (MPK)
+** Two armour packages:
+*** PSO light which improves the side protection against RPG.
+*** PSO plus
+** Improved fire-fighting system<ref name=":1">{{Cite web |title=RID Rivista Italiana Difesa - Firmato il contratto per gli ARIETE C-2 di serie |url=https://www.rid.it/shownews/5929/firmato-il-contratto-per-gli-ariete-c-2-di-serie |access-date=2025-02-16 |website=www.rid.it |language=it}}</ref>
+* Other changes:
+** Communication systems replaced by systems from Leonardo, a VQ-1 SDR radio, a Larimart intercom, and the C2 C2N Evo command system.
+** Pintle mount for a M2 Browning for self-defence against drones
+** minor improvements on the fuel tanks, bilge pumps, heating and NBC systems<ref name=":1" />
+
+==Export==
+=== Brazil === 
+CIO-Oto Melara planned to offer the opening of a production line in Brazil at its [[Sete Lagoas]] plant, where the [[Iveco LMV|LMV]] is already produced and the [[Centauro (Tank destroyer)|Centauro 2]] will be produced for the Brazilian Army. However, the [[Future of the Brazilian Armed Forces#Army|''Army Strategic Program Armored Forces'']], which would provide 65 MBTs for the Brazilian Army, limits contenders to a maximum weight of 50 tonnes, which rules out the Ariete unless changes were made to Brazilian technical requirements.<ref>{{cite web |title=Exército lança cotação internacional para comprar 143 tanques de guerra e blindados|url=https://oglobo.globo.com/brasil/noticia/2024/08/13/exercito-lanca-cotacao-internacional-para-comprar-143-tanques-de-guerra-e-blindados.ghtml|language=pt|website=O Globo|date=13 August 2024}}</ref><ref>{{cite web |title=O desafio futuro dos carros de combate do Exército Brasileiro|url=https://tecnodefesa.com.br/o-desafio-futuro-dos-carros-de-combate-do-exercito-brasileiro/|website=Tecnodefesa|date=30 August 2024|language=pt}}</ref>
+
+==Operators==
+[[File:SETC Italy (26711386690).jpg|thumb|An Ariete training during the [[Strong Europe Tank Challenge|Strong Europe Tank Challenge (SETC)]] in 2016]]
+[[File:Italian Army - C1 Ariete main battle tanks during an exercise 2019.jpg|thumb|An Ariete during an exercise]]
+
+Each tank battalion fields three tank companies with thirteen Ariete each and two Ariete for the battalion commander and the deputy commander.
+
+* [[Italian Army]] – 200<ref>{{cite web|title=Programmi e Prospettive Future|url=http://www.esercito.difesa.it/Rapporto-Esercito/Trasformare-lo-strumento/Pagine/Ammodernamento-e-rinnovamento.aspx|website=Esercito Italiano|publisher=Italian Army|access-date=17 November 2017}}</ref>
+** [[Bersaglieri Brigade "Garibaldi"]]
+*** [[4th Tank Regiment (Italy)|4th Tank Regiment]] (31st Tank Battalion "M.O. Andreani"), in [[Persano]]
+** [[Armored Brigade "Ariete"]]
+*** [[32nd Tank Regiment (Italy)|32nd Tank Regiment]] (3rd Tank Battalion "M.O. Galas"), in [[Spilimbergo|Tauriano]]
+*** [[132nd Tank Regiment (Italy)|132nd Tank Regiment]] (8th Tank Battalion "M.O. Secchiaroli"), in [[Cordenons]]
+** Italian Army Cavalry School
+** Italian Army Transport and Materiel School
+
+==References==
+{{Reflist}}
+
+==External links==
+{{commons category|C-1 Ariete tanks}}
+* [http://www.iveco-otomelara.com/tracked/ArieteMBT.php Official website]
+{{OTO Melara|state=collapsed}}
+{{Post-Cold War tanks|style=wide}}
+
+[[Category:Main battle tanks of the post–Cold War period]]
+[[Category:Main battle tanks of Italy]]
+[[Category:OTO Melara]]
+[[Category:Military vehicles introduced in the 1990s]]

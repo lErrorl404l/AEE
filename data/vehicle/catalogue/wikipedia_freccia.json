@@ -1,0 +1,90 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Held tier-5 English Wikipedia compilation for the VBM Freccia. The registry marks primary_held false because the article is a secondary compilation. The infobox carries identity only, and the first-phase table carries the IFV column figures. It publishes the empty mass, the payload, the maximum gross vehicle weight, the overall length and width and the height with the turret, and describes an 8x8 vehicle. It publishes no ground clearance, no engine rating, no tyre size, no transmission, no torque and no grouser statement, so the entry is not runtime-ready.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "freccia",
+      "canonical_name": "Freccia IFV",
+      "maker": "Iveco Defence Vehicles and OTO Melara",
+      "model": "VBM Freccia",
+      "variant": "Infantry Fighting Vehicle (first phase)",
+      "variant_id": "freccia",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Italy",
+      "era": "modern",
+      "aliases": [
+        "freccia",
+        "vbm freccia",
+        "freccia ifv"
+      ],
+      "keywords": [
+        "ifv",
+        "infantry fighting vehicle",
+        "wheeled",
+        "8x8",
+        "freccia"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "curb_weight_kg": {
+          "value": 22000,
+          "unit": "kg",
+          "source": "wikipedia_freccia",
+          "locator": "Freccia (first phase) table, IFV column, Empty mass row",
+          "state": "empty mass published as 22.0 t; recorded as 22,000 kg with the tonne taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "payload_kg": {
+          "value": 8000,
+          "unit": "kg",
+          "source": "wikipedia_freccia",
+          "locator": "Freccia (first phase) table, IFV column, Payload row",
+          "state": "payload published as 8.0 t for the IFV column",
+          "grade": "claimed"
+        },
+        "gross_weight_kg": {
+          "value": 31500,
+          "unit": "kg",
+          "source": "wikipedia_freccia",
+          "locator": "Freccia (first phase) table, GVW (max) row",
+          "state": "maximum gross vehicle weight published as 31.5 t for every first-phase variant",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 8560,
+          "unit": "mm",
+          "source": "wikipedia_freccia",
+          "locator": "Freccia (first phase) table, IFV column, Length row",
+          "state": "overall length for the IFV column published as 8.56 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2990,
+          "unit": "mm",
+          "source": "wikipedia_freccia",
+          "locator": "Freccia (first phase) table, Width row",
+          "state": "overall width published as 2.99 m for every first-phase variant",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 3180,
+          "unit": "mm",
+          "source": "wikipedia_freccia",
+          "locator": "Freccia (first phase) table, IFV column, Height (with turret) row",
+          "state": "height with the Hitfist turret published as 3.18 m for the IFV column; the same table publishes the hull height of 2.04 m as a separate state",
+          "grade": "claimed"
+        },
+        "wheel_count": {
+          "value": 8,
+          "unit": "count",
+          "source": "wikipedia_freccia",
+          "locator": "Infobox, Specifications section, Type row",
+          "state": "the infobox describes the Freccia as an 8x8 armoured fighting vehicle",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

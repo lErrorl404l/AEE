@@ -1,0 +1,74 @@
+{{Infobox weapon
+| is_vehicle         = yes
+| name               = T-72M4CZ
+| image              = T-72M4CZ_065.jpg
+| image_size         = 300
+| caption            = T-72M4 CZ
+| origin             = [[Czech Republic]]
+| type               = [[Main battle tank]]
+| used_by            = [[Czech Republic]]
+| designer           = Nimda group
+| service            = 2004-2025
+| number             = 27 T-72M4 CZ<br />3 T-72M4 CZ-W<br />3 VT-72M4 CZ
+| production_date    = 2003-2006
+| weight             = 48 tonnes
+| length             = 7.9 m
+| width              = 3.6 m
+| height             = 2.2 m
+| crew               = 3 (commander, driver and gunner)
+| suspension         = torsion bar
+| primary_armament   = 125 mm 2A46M smoothbore tank gun
+| secondary_armament = 7.62 mm [[PKMT]] coaxial machine gun,<br /> 12.7 mm [[NSV machine gun|NSVT]] AA machine gun on commander's ring-mount
+| armour             = Composite armour 570 mm (22.4 in) front of the turret
+| engine             = diesel Perkins Condor CV 12 1000 TCA<ref name="t72cz-73tp" />
+| engine_power       = 1006 hp (746 kW)
+| pw_ratio           = 21 hp/tonne (15,5 kW/tonne)
+| speed              = 64 km/h
+}}
+
+The '''T-72M4 CZ''' is an upgraded [[Czech Republic|Czech]] version of the Soviet-designed, Czechoslovakia made main battle tank [[T-72|T-72M]].<ref name="t72cz-73tp">{{cite web |title=T-72 M4CZ |url=https://73tankovyprapor.army.cz/fotogalerie/tankt-72-m4cz |website=73tankovyprapor.army.cz |access-date=24 February 2023}}</ref> The only user of this tank is the [[Military of the Czech Republic|Czech Army]]. Between 2003 and 2006, 30 tanks were produced. The main armament is a 125&nbsp;mm gun [[2A46 125 mm gun|2A46M]]. The crew comprises a gunner, driver and commander. Maximum speed on the road is 64&nbsp;km/h, and in terrain 44&nbsp;km/h. This tank is comparable with third [[List of main battle tanks by generation|generation MBT.]]<ref name="t72cz">{{cite web |title=Tank T-72M4 CZ |url=https://www.army.cz/en/armed-forces/equipment/ground-forces/tanks-armoured-vehicles/tank-t-72m4-cz-38022/ |website=acr.army.cz |publisher=Army of Czech republic |access-date=26 February 2023}}</ref> All tanks are still in active service.
+[[File:T-72M4CZ.JPG|thumb|T-72M4CZ during Tank Day in Lešany, Benešov district, 2013]]
+
+In October 2025, the Czech Army published its plan to hand over all of the tanks, which just finished a three-year long deep refurbishment, to Ukraine.<ref>https://www.idnes.cz/zpravy/domaci/cesko-ukrajina-rusko-tanky-pomoc-rbk-ukrajina-ministerstvo-obrany.A251008_060937_domaci_tmps</ref>
+
+==Upgrade==
+[[File:Akce Cihelna 2014 H08. T-72 M4 CZ.jpg|thumb|T-72M4CZ]]
+[[File:T-72M4CZ-vystrel.gif|thumb|T-72M4CZ firing.]]
+The main goal of modernization was to achieve combat parameters and utility properties of 3rd - 4th generation tanks. The upgrade increased the firepower by conducting effective fire from place or while moving and increased the effects of under-caliber projectiles with a completely new ammunition for the tank cannon and the possibility of observation by day and night. The new powerplant and the modification of the chassis significantly contributed to increasing the mobility and maneuverability of the tank. Passive and active tank protection in combat was also increased by attaching dynamic body protection and turret protection, reinforcing the armor and body modification, laser detection and indication system, new protective smoke grenade and protective masking system (against visual, infra and radiolocation survey).
+
+The upgrade was a joint venture between Nimda, Finmeccanica - Selex Galileo of Italy and VOP CZ (VOP025). The upgrade consists of a new powerpack in the form of Perkins Condor CV 12, Allison XTG-411-6N automatic transmission and Selex Galileo  TURMS/T Fire Control System. The navigation system was upgraded with NBV-97, which was developed by Letecké Přístroje Praha SRO and a new communications suite has been added.<ref name="t72cz-73tp" />
+
+For protection, a new ERA called DYNA (DYNamic Armour) developed in the Czech Republic was added along with full NBC protection and a fire detection and suppression system by German company Kidde Deugra.
+
+==Deep Refurbishment Failure==
+A deep refurbishment for the T-72M4CZ was underway from 2022 to 2025. Refurbishment of all 30 tanks was expected to be finished by 31 December 2025.<ref>{{cite web | url=https://www.czdefence.cz/clanek/co-dal-s-tanky-t-72m4-cz | title=Co dál s našimi tanky T-72M4 CZ }}</ref><ref name="allt-72m1givenaway">{{cite web | url=https://archiv.hn.cz/c1-67691960-na-ukrajinu-zamirily-posledni-ceskoslovenske-tanky-u-utvaru-uz-je-jen-nekolik-leopardu-na-desitky-dalsich-se-ceka | title=Na Ukrajinu zamířily poslední československé tanky. U útvarů už je jen několik Leopardů, na desítky dalších se čeká |author= Jan Beránek | date= 8 April 2025 |publisher= Hospodářské noviny }}</ref>
+In December 2025 the modernisation was cancelled, due to technical problems identified during testing. In a statement the Czech Ministry of Defense said: "The problems arose due to the error coefficient of individual electronic components of the fire control system. Repair of these elements is impossible".<ref>{{cite web | url=https://oboronka.mezha.ua/en/t-72m4cz-will-not-be-transferred-to-ukraine-the-czech-republic-refused-to-modernize-306738/ | title=The Czech Republic will not transfer tanks to Ukraine: the T-72M4CZ upgrade project has been canceled |author= Irina Levicka| date= 3 December 2025 |publisher= MezhaMedia}}</ref>
+Due to the technicals problems, the high cost for a complete replacement of the fire control systems the Ministry of Defence decided to withdraw these tanks from service and started negotiating a compensation from VOP CZ.
+
+==Variants==
+
+* '''T-72M4 CZ-W''' - command version of T-72M4 CZ.<ref>{{cite web |last1=Smíšek |first1=Martin |title=CZE - T-72M4 CZ-W (velitelský tank - modernizace) |url=https://www.valka.cz/CZE-T-72M4-CZ-W-velitelsky-tank-modernizace-t34746 |website=valka.cz |access-date=26 February 2023}}</ref>
+* '''VT-72M4 CZ''' - recovery tank variant based on T-72M4 CZ  for Czech Army.<ref>{{cite web |title=Vyprošťovací tank VT M4CZ |url=https://73tankovyprapor.army.cz/fotogalerie/vyprostovaci-tank-vt-m4cz |website=73tankovyprapor.army.cz |access-date=26 February 2023}}</ref>
+
+== Operators ==
+* {{CZE}}: All 30<ref>{{Cite web |last=David.B |date=2014-11-23 |title=T-72 |url=https://tanks-encyclopedia.com/coldwar/ussr/soviet_t-72.php |access-date=2023-07-26 |website=Tank Encyclopedia |language=en-US}}</ref> tanks operated by 73rd tank battalion of the [[7th Mechanized Brigade (Czech Republic)|7th Mechanized Brigade]]
+
+==See also==
+* [[T-72 operators and variants]]
+
+==References==
+{{Reflist}}
+
+==External links==
+* [http://www.vop.cz/images/file/T-72M4%20CZ%20-eng_2012.pdf T-72M4 CZ main battle tank] {{Webarchive|url=https://web.archive.org/web/20160204130642/http://www.vop.cz/images/file/T-72M4%20CZ%20-eng_2012.pdf |date=2016-02-04 }}
+* [http://mainbattletanks.czweb.org/Tanks/et72m4cz.htm T-72M3/4 CZ] {{Webarchive|url=https://web.archive.org/web/20160204225213/http://mainbattletanks.czweb.org/Tanks/et72m4cz.htm |date=2016-02-04 }}
+* [http://tanknutdave.com/t72m4-cz-tank/  Tanknut Dave T-72M4CZ]
+* [http://www.nimda.co.il/image/users/199098/ftp/my_files/Nimda_Catalog.pdf?id=13331537 NIMDA Catalogue]
+
+{{Post-Cold War tanks}}
+{{T-64_navigation|style=wide}}
+
+[[Category:Tanks of the Czech Republic]]
+[[Category:Main battle tanks of the post–Cold War period]]
+[[Category:T-72]]
+[[Category:Tanks with autoloaders]]

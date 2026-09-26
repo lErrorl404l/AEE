@@ -1,0 +1,208 @@
+{{Short description|Polish 8×8 multi-role military vehicle}}
+{{redirect|Rosomak|the company, Rosomak S.A.|Polish Armaments Group}}
+{{more citations needed|date=January 2013}}
+{{Infobox weapon
+| name               = KTO Rosomak
+| image              = [[File:KTO Rosomak IFV with ZSSW-30 RCWS.jpg|346px]]
+| caption            = KTO Rosomak in an IFV variant with a [[ZSSW-30]] turret system
+| origin             = [[Finland]] / [[Poland]] <!-- Do not use flag icons here, per MOS:INFOBOXFLAG -->
+| type               = [[armored personnel carrier]]
+| is_vehicle         = yes
+| crew               = 3 (commander, driver, gunner)<br/>6–8 dismounts
+| length             = {{convert|7.7|m|abbr=on}}
+| width              = {{convert|2.8|m|abbr=on}}
+| height             = {{convert|2.3|m|abbr=on}}
+| weight             = {{convert|22000|kg|abbr=on}}
+| armour             = 
+| primary            = 
+| secondary          = 
+| engine             = [[Scania AB|Scania]] DI 12 [[diesel engine|diesel]] or <br/>Scania DC 13 diesel
+| engine_power       = {{convert|405|kW|hp|abbr=on}} (DI 12) or <br/>{{convert|450|kW|hp|abbr=on}} (DC 13)
+| suspension         = [[eight-wheel drive|8×8 wheeled]]
+| speed              = over {{convert|100|km/h|mph|-1|abbr=on}} on land<br/>up to {{convert|10|km/h|mph|abbr=on}} in water
+| pw_ratio           = {{convert|15.6|kW/t|abbr=on}} (max weight)
+| vehicle_range      = {{convert|800|km|mi|abbr=on}}
+| used_by            = See ''[[KTO Rosomak#Operators|Operators]]''
+| wars               = [[War in Afghanistan (2001–2021)]]<br/>[[Russo-Ukrainian War]]
+| primary_armament   = 1 × [[30 mm caliber|30×173 mm]] ATK [[Mk44 Bushmaster II]] gun <br/>
+                       2 x ATGM [[Spike (missile)|Spike]]-LR or [[FGM-148 Javelin|Javelin]] (only on ZSSW-30 variant)
+| secondary_armament = 1 × [[7.62×51mm NATO]] [[UKM-2000]]C coaxial general purpose machine gun
+}}
+
+The '''KTO Rosomak''' ({{Langx|pl|'''Kołowy Transporter Opancerzony Rosomak'''|lit=wheeled [[armored personnel carrier]] Wolverine}}) is a family of [[eight-wheel drive|eight-wheel]]<nowiki/>ed [[armored fighting vehicles]] derived from the Finnish [[Patria AMV]]. It is produced by Rosomak S.A., a [[Polish Armaments Group]] company, in [[Siemianowice Śląskie]].<ref>{{Cite web |title=Rosomak 8x8 IFV APC |url=https://www.armyrecognition.com/military-products/army/infantry-fighting-vehicles/wheeled-vehicles/rosomak-8x8-wheeled-armored-vehicle-ifv-apc-technical-data?highlight |access-date=2026-09-23 |website=www.armyrecognition.com}}</ref>
+
+== History ==
+{{underlinked|section|date=June 2026}}
+The XC-360 transporter was developed as a successor to the [[Sisu XA-180]] transporter, which had been in production since the early 1980s, and its subsequent versions. The first [[military tactics|tactical]] and technical [[requirement]]s for the new transporter were formulated in the mid-1990s, with the final version approved in 1999. A distinguishing feature of the vehicle was its [[modular construction]] and the reduction of physical signatures by limiting [[infrared signature|heat]] and [[acoustic signature|noise]] emissions and specially shaping the hull to reduce [[radar reflector|radar reflection]]. [[Computer-aided design]] (CAD) techniques were extensively used in its development. The first [[mock-up]] of the vehicle (equipped with a twin-barrel [[AMOS]] 120mm mortar turret) was created in 2000 and showcased at the [[Eurosatory]] exhibition in [[Paris]] that same year. The first [[Prototype]] was completed in November 2001, initially intended only for [[traction (mechanics)|traction]] tests, but these plans were changed. At the same time, the [[Ministry of National Defence (Poland)]] announced a [[invitation to tender|tender]] for wheeled [[armored personnel carriers]] for the [[Polish Land Forces|Polish Army]].{{citation needed|date=July 2025}}
+
+Plans to introduce new wheeled armored personnel carriers in [[Poland]] date back to the mid-1990s, when the mass withdrawal of [[OT-64 SKOT|SKOT carriers]] began (only specialist equipment carriers were retained in service). It should also be noted that the initial plans called for the purchase of a much smaller number of vehicles, intended only for use in foreign missions (in 1998, the purchase of 180 vehicles was discussed). During this period, the [[Polish military]] was involved in operations in the [[Balkans]], among other places. There were also no plans for such heavy [[armament]] on the vehicles, which were initially to be equipped only with [[machine gun]]s. By the time of the tender, these assumptions had changed to the currently known form.{{citation needed|date=July 2025}}
+
+On 20 May 2002, the transporter arrived in Poland to be equipped with an American [[Delco Electronics|Delco]] turret (its main armament being the 25mm [[M242 Bushmaster]] automatic cannon). The integration took place at the WZM plant in [[Siemianowice Śląskie]], which had been a partner of [[Patria (company)|Patria]] in the APC program from the beginning. On 22 May 2002, the vehicle was presented to military and [[news media|press]] representatives in [[Sulejówek]]. From 24 May, it underwent firing tests with OTO Melara [[Hitfist]]-25 and Delco-25 turrets at the [[Wędrzyn training ground]]. During tests in Poland, the vehicle covered nearly 2700&nbsp;km without any issues. The vehicle was then transported to Finland for the installation of [[propeller]]s and a wave breaker. In September, the vehicle was back in Poland and was showcased at [[MSPO]] 2002 (equipped with the [[Patria PML 127 OWS|PML 127 OWS]] unmanned station with a 12.7mm [[NSV machine gun|NSW machine gun]]). From 9–14 September, [[buoyancy]] tests were conducted in Sulejówek with various load configurations simulating future armament. The buoyancy reserve at the maximum tested weight of 22,800&nbsp;kg was 14.2%. At the end of 2002, the second AMV prototype was completed at Patria's facilities. On 20 December 2002, the [[Polish Ministry of National Defense]]'s tender committee decided to select Patria as the supplier of wheeled armored personnel carriers for the Polish Army. The contract for the delivery of 690 vehicles between 2004 and 2013 was signed on 15 April 2003.{{citation needed|date=July 2025}}
+
+The vehicle in the Polish configuration, designated XC-360P, did not yet exist at the time of the contract signing. The most significant changes to the Polish version of the transporter included reducing the vehicle's weight from 26 tons (in the Finnish configuration) to approximately 21 tons to enable transport by [[Lockheed C-130 Hercules|C-130 Hercules]] aircraft and ensure [[amphibious vehicle|amphibious]] capability. Other changes included reducing the vehicle's width (the external armor of the Polish configuration features a characteristic bend not present on Finnish vehicles) and equipping the vehicle with double doors instead of a [[hydraulically]] lowered [[ramp]].
+
+In 2004, the pre-series PS-0 transporter was completed and presented, featuring most of the solutions required for the Polish version, such as a narrowed hull and enlarged propellers (compared to prototypes). On 31 May 2004, the first two [[serial number|serial]] vehicles for the Polish Army (PL-1 and PL-2) arrived in [[Gdynia]]. They were then transported to the [[Siemianowice Śląskie]] plant, where the single [[Hitfist]]-30P turret delivered from Italy was mounted on the PL-1 hull, and both transporters were generally equipped and inspected. According to the schedule, on 30 June 2004, a [[ceremonial]] handover of both vehicles to military representatives took place in Sulejówek, and the official name "Rosomak" was given.
+
+== Construction ==
+
+The AMV transporter features a frame construction with a longitudinal steel beam. The suspension and drive system are mounted on this structure, providing greater rigidity and easier maintenance of certain components. The vehicle is powered by a 6-cylinder, inline, turbocharged diesel engine, the Scania DI 12 56A03PE, with a maximum power output of 360&nbsp;kW (490 HP) at 2100 rpm and a continuous power output of 294&nbsp;kW (400 HP). The 11.7-liter engine is liquid-cooled and works with a ZF 7HP 902S Ecomat automatic transmission with 7 forward gears and 1 reverse gear, allowing a maximum speed of over 100&nbsp;km/h. Water propulsion is provided by two propellers, enabling a speed of 10&nbsp;km/h. The exhaust system is equipped with an exhaust gas cooling system. The fuel capacity is 325 liters.
+
+The vehicle has eight wheels with 14.00R20 tires, equipped with a central tire pressure regulation system. All wheels have independent suspension based on arms mounted to the support beam, and are cushioned by a [[Hydropneumatic suspension|hydropneumatic]] actuator system that allows ground clearance adjustment from +200mm to -250mm. The suspension travel is 450mm. The vehicle's turning radius is 12 meters. Terrain obstacle capabilities include: climbing slopes up to 60%; maximum side tilt up to 35 degrees; overcoming vertical walls of 0.5m; fording depths of 1.5m; and crossing trenches of 2.1m.
+
+The Polish variant received a range of domestic solutions, such as the Stopfire fire suppression system, the Fonet internal communication system, the PNK-72 Radomka driver's observation device, and Polish [[VHF radio contest|VHF radios]] from Radmor.
+
+The Rosomak hulls are welded from ARMSTAL 500 plates (except for the floor, which is made from ARMSTAL 450 plates), and the external armor elements (in the amphibious version) are also made from ARMSTAL 500 steel. Since 2010, the steel has been supplied by Huta Stali Jakościowych from Stalowa Wola (the first series of vehicles were made from imported steel).
+
+== Hitfist-30P Turret ==
+
+Designed by the Italian company [[Oto Melara]], the [[Hitfist]]-30P turret is a two-man turret armed with a 30mm ATK Mk 44 Bushmaster II automatic cannon (equipped with a dual-feed ammunition system) and a 7.62mm UKM-2000C machine gun. The design is an evolution of the Hitfist-25 turret used on the Italian Dardo IFV. However, the turret was significantly modified to meet Polish requirements. The most significant change is the substantial reduction in height to lower the vehicle's profile, making it possible to transport it in a C-130 Hercules aircraft. Interestingly, a turret design very similar to the Polish one was used on the Italian [[Freccia IFV|Centauro VBM Freccia]].
+
+The turret is made of armored aluminum and equipped with additional ceramic armor. The armament is controlled by a fire control system featuring a Kolsman DNRS-288 day-night sight, a Galileo Avionica (now parto of [[Leonardo (company)|Leonardo]]_ TILDE FC second-generation thermal camera, and a laser rangefinder. Additional equipment includes the SSP-1 Obra-3 sensor system and a smoke grenade launcher (which holds six 81mm grenades).
+
+The gunner sits on the right side of the vehicle and has access to the fire control system console with controllers and a ten-inch screen, a backup (optical) sight, and cranks for rotating the turret in case of electrical system failure (the right crank controls azimuth, while the left crank controls elevation). There is also a single forward-facing periscope. In front of the gunner is the shell ejection system for the main armament and the machine gun, which the gunner operates (reloading and clearing jams).
+
+The commander sits on the left side of the turret. The commander has access to the fire control system console and a set of eight periscopes that allow the commander to observe the situation around the vehicle. The periscopes can be lowered (retracted) so that they do not protrude beyond the turret's outline (this design was required for air transport). The commander can take full control of the vehicle's armament.
+
+The turret's empty weight is 2350&nbsp;kg, and its combat weight is 2850&nbsp;kg. Its height (with retracted periscopes) is 595&nbsp;mm. The turret can rotate 360 degrees, and the elevation angles of the armament range from -10 to +60 degrees. The ready-to-use 30mm ammunition supply is 220 rounds, with an additional 250 rounds stored in two magazines under the turret.
+
+The assembly line, and later the production of the turrets, was transferred to the Bumar-Łabędy plant in Gliwice (although it remains the property of the Rosomak plant in Siemianowice Śląskie). A total of 359 Hitfist-30P turrets were produced. Currently, new Rosomaks in the combat version are delivered with the [[ZSSW-30]] turret from Huta Stalowa Wola.
+
+== Variants ==
+
+=== Combat variants ===
+
+* ''Rosomak'' Hitfist-30P – infantry fighting vehicle with an [[Oto Melara]] [[Hitfist]]-30P [[gun turret]] armed with a 30&nbsp;mm ATK Mk 44 [[chain gun]] and [[cartridge (firearms)|7.62mm NATO]] [[UKM-2000]]C [[machine gun]]. The turret has advanced [[fire control system]]s with [[thermal sight]]s and an Obra [[laser warning system]] connected to six 81&nbsp;mm 902A ZM Dezamet smoke [[grenade launcher]]s. (313 vehicles initial order, final number of 359 delivered, 60 transferred to Ukraine, 8 permanently lost in Afghanistan) <ref>{{cite web | title=Twardy pancerz. Afgańskie Rosomaki | url=https://www.magnum-x.pl/artykul/twardy-pancerz-afganskie-rosomaki }}</ref>
+* ''Rosomak ZSSW-30'' – infantry fighting vehicle with Polish designed [[Huta Stalowa Wola|HSW]] [[ZSSW-30]] unmanned turret armed with a 30&nbsp;mm gun Mk 44S, 7.62&nbsp;mm UKM-2000C machine gun and two [[Spike (missile)|Spike-LR]] ATGM. 128 were ordered by 2024, and first were delivered in December 2023.<ref name="ntw24-7">{{cite magazine |title = Dodatkowy batalion Rosomaków z ZSSW-30 |magazine = Nowa Technika Wojskowa |issue = 7/2024 |date=July 2024|lang=pl|pages=9}}</ref> Standard Rosomak with ZSSW-30 turret, non-amphibious, old platform (70+58 vehicles ordered in two batches)<ref>{{Cite web|title=Poland Could Acquire Upgraded Rosomak-L Armored Personnel Carriers|url=https://armyrecognition.com/news/army-news/2023/poland-could-acquire-upgraded-rosomak-l-armored-personnel-carriers|access-date=2024-07-12|website=armyrecognition.com|date = 19 July 2023}}</ref><ref>{{Cite web|title=Poland to sign major contracts for Rosomak APC fitted with new ZSSW-30 turret|url=https://armyrecognition.com/news/army-news/army-news-2024/poland-to-sign-major-contracts-for-rosomak-apc-fitted-with-new-zssw-30-turret|access-date=2024-07-12|website=armyrecognition.com|date = 4 July 2024}}</ref><ref>{{cite web | title=Косиняк-Камыш: Польша закупит 80 БТР Rosomak стоимостью более миллиарда долларов | website=ВПК.name | date=2024-12-18 | url=https://vpk.name/news/954792_kosinyak-kamysh_polsha_zakupit_80_btr_rosomak_stoimostyu_bolee_milliarda_dollarov.html | language=ru | ref={{sfnref|ВПК.name|2024}} | access-date=2024-12-18}}</ref> Deliveries are ongoing; for instance, 14 additional vehicles equipped with the ZSSW-30 turret were delivered to the 21st Podhale Rifles Brigade in 2025 as part of the wider multi-year framework.<ref>{{cite web
+|url=https://www.armyrecognition.com/news/army-news/2025/poland-sharpens-eastern-flank-as-14-rosomak-infantry-fighting-vehicles-with-zssw-30-turrets
+|title=Poland sharpens eastern flank as 14 Rosomak infantry fighting vehicles with ZSSW-30 turrets |website=Army Recognition
+|date=25 November 2025 |access-date=27 November 2025 |language=en }}</ref>
+* ''Rosomak-L ZSSW-30'' – new platform Rosomak with ZSSW-30 turret, amphibious, new engine, larger gross weight, a variant with an extended hull (increasing overall length by 0.6 m from 7.8 m to 8.4 m), while also featuring other improvements such as new Scania DC13 engine, larger fuel tanks, new water-jet propulsion propellers, an upgraded hatch for the driver-mechanic, improved rearview mirrors, and a water deflector shield. Primary design goal of this variant was to increase buoyancy to restore amphibious capabilities compromised by the added weight of the new ZSSW-30 turret. (80 vehicles ordered so far)
+
+=== Support variants ===
+
+* ''Rosomak-WEM'' – (WEM for ''Wóz Ewakuacji Medycznej'' – lit. "medical evacuation vehicle") – armored ambulance vehicle with crew of 3, capable of transporting 3 injured soldiers on stretchers and an additional four in a sitting position. May by deployed one per regular Rosomak company, amphibious (108 vehicles,<ref>{{Cite web |title=Wojsko odbiera medyczne Rosomaki |url=https://defence24.pl/sily-zbrojne/wojsko-odbiera-medyczne-rosomaki |language=pl}}</ref> tree batches 37+29+12+30 <ref>{{Cite web |title=Specjalistyczne Rosomaki dla wojska. Wkrótce umowa |url=https://defence24.pl/sily-zbrojne/specjalistyczne-rosomaki-dla-wojska-wkrotce-umowa-news-defence24 |language=pl}}</ref>)
+* ''Rosomak-WRT'' – (WRT for ''Wóz Rozpoznania Technicznego'' – lit. "technical reconnaissance vehicle") – light technical support vehicle for every Rosomak company, amphibious  (44 vehicles delivered<ref name="mity">{{Cite web |title=Rosomaka historia niezamknięta. Mity i fakty |url=https://defence24.pl/sily-zbrojne/rosomaka-historia-niezamknieta-fakty-i-mity-raport |language=pl}}</ref>) 
+* ''Rosomak-S'' – Armoured personnel carrier variant for two anti-tank teams armed with [[Spike (missile)|Spike]] [[anti-tank guided missile]], amphibious, ATGM team as battalion level support asset or by 14. Antitank Regiment (27+60 vehicles delivered<ref name="mity"/>). Colloquially referred to as skateboard ("deskorolka") because of no turret
+* ''Rosomak-NJ'' – (NJ for ''Nauka Jazdy'' – lit. "driving school"), amphibious (4 vehicles delivered<ref name="mity"/>) 
+* ''Rosomak WPT'' – (WPT for ''Wóz Pomocy Technicznej'' – lit. "technical help/assistance vehicle") – heavy recovery vehicle on mixed platform (short hull, new engine and larger gross weight), non-amphibious, brigade level technical support asset  (18 vehicles on order<ref name="mity"/>) 
+* ''Rosomak RSK'' – (RSK for ''Rozpoznania Skażeń'') – dedicated NBC reconnaissance vehicle (replacement for BRDM-2 RS, 11 on order)
+* ''WD Kroton'' – (WD for ''Wóz Dowodzenia'' – lit. "command vehicle") – command vehicles for 18th Mechanized Division, Berberys multispectral camo as standard. Uses same command systems and radios as Polish M1 Abrams tanks (29 vehicles delivered - 17 + 12 updated Kroton-bis)
+* ''WD Zawilec'' – (WD for ''Wóz Dowodzenia'' – lit. "command vehicle") – command vehicles for 16th Mechanized Division, Berberys multispectral camo as standard. Uses same command systems and radios as Polish K2GF tanks and other equipment using standard command systems (42 vehicles delivered, 6+18+18).
+
+=== Rak Mortar system ===
+*''[[M120 Rak|M120K Rak]]'' – 120&nbsp;mm mortar artillery vehicle, first delivered in July 2017<ref>{{cite web|last1=Wilk|first1=Remigiusz|title=Poland receives first Rak 120 mm mortar vehicles|url=http://www.janes.com/article/71984/|website=IHS Jane's 360|access-date=17 July 2017|archive-url=https://archive.today/20170717233743/http://www.janes.com/article/71984/poland-receives-first-rak-120-mm-mortar-vehicles|archive-date=17 July 2017|location=Warsaw|date=3 July 2017|url-status=dead|df=dmy-all}}</ref>  (123 vehicles <ref name="mity"/>) 
+* ''Rosomak-AWD'' – (AWD for ''Artyleryjski Wóz Dowodzenia'' – lit. "artillery command vehicle") – Command vehicle for Rak mortar company fire module<ref>{{Cite web|title=Wóz Dowodzenia kompanijnego modułu ogniowego 120 MM — Rosomak Spółka Akcyjna w 8Siemianowicach Śląskich|url=https://www.rosomaksa.pl/woz-dowodzenia-kompanijnego-modulu-ogniowego-120-mm.html|access-date=2020-07-04|website=www.rosomaksa.pl|archive-date=10 June 2020|archive-url=https://web.archive.org/web/20200610055348/https://www.rosomaksa.pl/woz-dowodzenia-kompanijnego-modulu-ogniowego-120-mm.html|url-status=dead}}</ref> (61 vehicles <ref name="mity"/>) 
+* ''Rosomak-AWR'' – (AWD for ''Artyleryjski Wóz Rozpoznania'' – lit. "artillery recon vehicle") – Reconnaissance vehicle for Rak mortar company fire module (31 vehicles <ref name="mity"/>)
+Rak mortar company fire module is used as battalion level support asset. Every company module has 8 gun vehicles, 4 command vehicles and 2 reconnaissance/fire control vehicles. 3 full company modules were transferred to Ukraine (with total of 24-gun vehicles).
+
+=== ISAF related variants ===
+[[File:KTO Rosomak in Afghanistan 2010.jpg|thumb|right|A Rosomak-M1M (late ISAF variant) patrols the Afghan city of [[Ghazni]] in 2010.]]
+* ''Rosomak''-''M1'' and ''M1M'' –  A variant of standard combat vehicle with Hitfist-30P turret system modified for [[War in Afghanistan (2001–2021)|war in Afghanistan]] was called "Rosomak"-M1, equipped with additional steel-composite [[armour]], upgraded communications (two radios as standard), wire cutters in front of driver and commander hatch, video cameras showing the back and sides of vehicle on two LCD screens in troop compartment, and a Pilar system that detects the direction of fire. Because of additional armor, this variant is no longer amphibious and has no water propellers. The variant was further upgraded to a standard known as M1M. The most noticeable change was the addition of QinetiQ RPGNet anti-RPG net and new "sand" camouflage. Other changes included installation of Duke anti-IED system and [[Blue force tracking|Blue Force Tracking]] BMS system (systems on loan from the US Army). All older ("green") M1 standard Rosomaks also received RPGNet. All vehicles were reverted to standard configuration. 
+* ''Rosomak''-''M2'' and ''M3'' – APC variant equipped with gun turret with 40&nbsp;mm [[Mk 19 grenade launcher|Mk-19]] grenade launcher or 12.7&nbsp;mm [[NSV (machine gun)|NSW]]/[[NSV (machine gun)#Variants|WKM-B]] [[heavy machine gun]]. The M2 variant was amphibious, with the base armor protection as on amphibious Hitfist-30P variant, equipped with light OSS-M turret, and intended to be used by European Union mission in Chad. The M3 variant was non-amphibious and had heavier armor equivalent to ISAF Rosomak-M1 variant. It was equipped with heavier OSS-D gun turret. Often was field modified to carry both the 12,7 NSV HMG and 7,62 UKM-2000 GPMG. Usually, the M3 variant was carrying the jamming equipment as it was easier to have electronic compatibility on simpler vehicle than on M1 variant with big 30&nbsp;mm turret. (currently 39 M3 variant vehicles in the inventory<ref name="mity"/>) 
+* ''Rosomak''-''WEM'' and ''WEM-M'' – Vehicles deployed to Afghanistan ISAF mission were up armored to the same level as M1 variant. The WEM-M variant for Afghanistan was equipped with additional RPGNet, as with the M1M variant. ISAF variants were no longer amphibious. All vehicles were reverted to standard configuration.
+* ''Rosomak-WSRiD'' – (WSRiD for ''Wielosensorowy System Rozpoznania i Dozoru'' – lit. "multisensory reconnaissance and surveillance system") – advanced vehicle with electronic equipment used to protect forward fire bases. Equipped with UAVs, optical and seismic sensors. (4 vehicles <ref name="mity"/>)
+
+=== Notable prototype vehicles not adopted into service ===
+* ''Rosomak''-''1'' - the infantry APC variant with remote weapon station and 12,7&nbsp;mm machinegun, Polish Ministry of Defence decided instead to acquire vehicles armed with unmanned turrets with 30&nbsp;mm gun and ATGM eventually resulting in ZSSW-30 turret.
+* ''Wilk'' (pol. "Wolf") - Fire support variant equipped with Cockerill CT-CV turret with 105&nbsp;mm high-pressure gun capable of firing different variants of modern 105&nbsp;mm ammunition like the M1060CV AP round and Falarick 105 barrel-launched ATGM. Some motorized infantry brigades are planned to have a single tank battalion instead.
+* ''Rosomak-XP'' - an updated version of the armoured personnel carrier was presented by Rosomak S.A. in September 2015 at the MSPO defence exhibition in [[Kielce]].<ref>{{Cite web |url=https://www.defence24.pl/15-lat-rosomaka-polowiczny-sukces-opinia |title=15 lat Rosomaka - połowiczny sukces |publisher=Defence24 |archive-url=https://web.archive.org/web/20180418033032/http://www.defence24.pl/15-lat-rosomaka-polowiczny-sukces-opinia |archive-date=18 April 2018 |url-status=dead }}</ref> As part of the modernization, the gross vehicle weight rating ([[GVWR]]) was increased to 32 tonnes. In addition, a new 450 kW engine was installed, along with a new drivetrain, new wheels with 16.00R20 tyres, new rear troop ramp, and the level of ballistic and mine protection increased. Correspondingly, the licence holder Patria also presented a new version called the AMV2 Havoc intended for the [[United States Marine Corps|US Marine Corps]].<ref>{{Cite web |url=https://www.janes.com/article/54040/mspo-2015-poland-s-rosomak-range-extended |title=MSPO 2015: Poland's Rosomak range extended |publisher=Janes |archive-url=https://web.archive.org/web/20160221003918/https://www.janes.com/article/54040/mspo-2015-poland-s-rosomak-range-extended |archive-date=21 February 2016 |url-status=dead }}</ref>
+
+== Gallery ==
+<gallery mode="packed" heights="150">
+File:KTO Rosomak IFV with ZSSW-30 RCWS.jpg|Rosomak ZSSW-30
+File:Artyleryjski Wóz Dowodzenia (AWD) na podzwoziu KTO Rosomak modułu batalionowego "Rak" podczas testów odbiorczych. Poligon Nowa Dęba 2019.jpg|Rosomak-AWD
+File:KTO Rosomak in Afghanistan.jpg|Rosomak-M1 (early ISAF variant)
+File:EUFOR, 2009-02-17, współdziałanie kawalerii, KTO Rosomak, Mi-17, 01.jpg|Rosomak-M2 (European Union mission in Chad)
+File:KTO Rosomak-WEM.jpg|Rosomak-WEM
+File:Tag der polnischen Streikräfte (48616742787).jpg|WD ''Kroton''
+File:SMK 120mm RAK, testy, poligon Nowa Dęba 2019 01.jpg|[[M120 Rak|M120K Rak]]
+File:Rosomak WRT IMGP3235.JPG|Rosomak-WRT
+File:Przekazanie pierwszych KTO Rosomak 03.jpg|Basic KTO Rosomak
+File:Polish Rosomak wheeled infantry fighting vehicles cross river.jpg
+</gallery>
+
+== Combat history ==
+
+;War in Afghanistan (2001–2021):
+The Polish Land Forces contingent, part of the [[International Security Assistance Force]], operated over 100 KTO Rosomak vehicles, including five medevac versions, during the [[War in Afghanistan (2001–2021)|Afghanistan War]]. The APCs were equipped with additional steel-composite [[Vehicle armour|armor]]. In early 2008, a Polish Rosomak serving in Afghanistan, the version with upgraded armor, was attacked by the [[Taliban]]. The vehicle was hit by [[RPG-7]] rockets, but managed to fire back and returned to base without requiring assistance.<ref>{{cite web|url=http://wyborcza.pl/1,86669,4295479.html|title=Afghanistan: 14 lipca dotrą dodatkowe pancerze dla Rosomaków.|access-date=4 November 2014}}</ref>
+
+In June 2008, the Taliban attacked a Rosomak with an RPG, hitting it in its frontal armor without penetrating it. In 2009, the first soldier was reported killed while traveling in a Rosomak after an [[improvised explosive device]] exploded under the vehicle, which rolled over and crushed the gunner who had been standing in the open turret. Similar attacks had occurred before but had failed to inflict casualties.<ref>{{Cite news |last=Peltier |first=Elian |date=2026-08-15 |title=Entrenched, Embattled and Defiant, the Taliban Celebrate 5 Years in Power |url=https://www.nytimes.com/2026/08/15/world/asia/entrenched-embattled-and-defiant-the-taliban-celebrate-5-years-in-power.html |access-date=2026-09-23 |work=The New York Times |language=en-US |issn=0362-4331}}</ref>
+
+;European Union mission in Chad (2007–2008)
+:[[EUFOR Tchad/RCA|European Union Force Chad/CAR]]
+
+;[[Russian Invasion of Ukraine]] (2022–present)
+* The Polish government announced in April 2023 it would provide the Ukrainian government with 200 KTO Rosomak. It was reported that the Ukrainian army's 21st Mechanized Brigade began receiving the first batch of these 25-ton, eight-wheel APCs in July 2023.<ref>{{Cite web |last=Axe |first=David |title=Polish-Made Fighting Vehicles Have Arrived In Ukraine |url=https://www.forbes.com/sites/davidaxe/2023/07/31/polish-made-fighting-vehicles-have-arrived-in-ukraine/ |access-date=2023-08-03 |website=Forbes |language=en}}</ref>
+* According to Oryx blog, at least 6 such units were destroyed and 1 was damaged during the ongoing Ukraine War.<ref>{{cite web | url=https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-ukrainian.html | title=Attack on Europe: Documenting Ukrainian Equipment Losses During the Russian Invasion of Ukraine }}</ref>
+
+== Operators ==
+
+<!--READ FIRST: This section is for cited entries only. Please do not add entries into this list without a citation from a reliable source. All entries without a citation will be removed. Thank you.-->
+[[File:KTO Rosomak Operators Map 25.08.2024.png|thumb|400x400px|Map with KTO Rosomak operators in blue]]
+
+=== Current operators ===
+
+* {{flag|Poland}}: 1090 vehicles delivered or on order in 16 different configurations. ~100 transferred to Ukraine, unknown number of permanent loses in Afghanistan. Main users include:
+** 12. Mechanized Brigade – combat variant with Hitfist-30P, Rak mortar system and support vehicles
+** 17. Mechanized Brigade – combat variant with Hitfist-30P, Rak mortar system and support vehicles
+** 21. Mountain Brigade – combat variant with ZSSW-30, Rak mortar system and support vehicles
+** 14. Anti-Tank Regiment – Spike missile team transporter and support vehicles
+** 1. Armored Brigade and 19. Mechanized Brigade received the ''Kroton'' command variant and medical variant 
+** 9. Armored Cavalry Brigade and 20. Mechanized Brigade received the ''Zawilec'' command variant and medical variant 
+** New motorised brigades are organized: the 2nd, 16th and 18th Motorized Brigades. Received limited number of Rosomaks for training. 
+* {{flag|Ukraine}}: Ukraine received two battalions of combat variant with Hitfist-30P turret (30–31 vehicles each) and three companies with Rak mortar system (usually 8 gun vehicles, 4 command vehicles and 2 fire control vehicles each)
+* {{flag|United Arab Emirates}}: 40 Patria AMV fully equipped hulls manufactured in Siemianowice Śląskie, Poland <ref>{{Cite web |date=21 June 2016 |title=Rosomaki z Polski dla Zjednoczonych Emiratów Arabskich. Zakończono dostawę 40 wozów |url=http://forsal.pl/artykuly/953729,rosomaki-z-polski-dla-zjednoczonych-emiratow-arabskich-zakonczono-dostawe-40-wozow.html}}</ref>
+
+=== Failed bids ===
+
+* {{SLO}}: competition for up to 106 [[Armoured personnel carrier|APC]] with a budget of €700 million after rejecting the contract for the [[Boxer (armoured fighting vehicle)|Boxer]]. The finalists of the competition are the [[Mowag Piranha V|Piranha V]], the [[Freccia IFV|Freccia]], the Rosomak L and the [[Patria AMV|Patria AMV<sup>XP</sup>]].<ref>{{Cite web |title=The Slovenia Times |url=https://sloveniatimes.com/39785/potential-suppliers-of-armoured-vehicles-winnowed-down-to-four |access-date=2023-11-24 |website=sloveniatimes.com}}</ref> Initially the Rosomak was considered, but issues were experienced with getting the certification for the vehicles' undercarriage. In the end Patria AMVxp was chosen.<ref>{{Cite web |title=The Slovenia Times |url=https://sloveniatimes.com/40665/slovenia-to-buy-armoured-personnel-carriers-from-patria |access-date=2024-08-14 |website=sloveniatimes.com}}</ref><ref>{{Cite web |title=(Pre)dragi boxerji in vrnitev k Patrii {{!}} 24ur.com |url=https://www.24ur.com/novice/slovenija/ironija-zgodovine-predragi-boxerji-in-vrnitev-k-patrii.html |access-date=2024-08-14 |website=www.24ur.com |language=sl}}</ref>
+* {{MYS}} In 2006, the KTO Rosomak was tested in [[Malaysia]].<ref>{{Cite web |title=Po epoce Rosomaka czas na Borsuka? |url=http://dziennikzbrojny.pl/artykuly/art,2,4,11298,armie-swiata,wojsko-polskie,po-epoce-rosomaka-czas-na-borsuka |access-date=2020-07-07 |website=DziennikZbrojny.pl |language=pl}}</ref> but decided on cooperating with Turkish FNSS, a producer of Pars 8x8, to develop local development under the name [[DefTech AV8|DefTech AV8 Gempita]].
+
+== See also ==
+
+=== Comparable vehicles ===
+
+{{Div col|colwidth=22em}}
+* {{lwc|Stryker}}
+* [[LAV III]]/[[LAV (armoured vehicle)|LAV AFV]]/[[LAV-25]]/{{lwc|ASLAV}}
+* {{lwc|K808 White Tiger}}
+* {{lwc|Boxer (armoured fighting vehicle)|Boxer}}
+* {{lwc|Freccia IFV}}
+* {{lwc|BTR-90}}
+* {{lwc|CM-32 armoured vehicle}}
+* {{lwc|Type 96 armored personnel carrier}}
+* {{lwc|Type 16 maneuver combat vehicle}}
+* {{lwc|Patria AMV}}
+* {{lwc|BTR-4}}
+* {{lwc|Saur 1|Saur 2}}
+* {{lwc|Type 25 Reconnaissance and Combat Vehicle|Type 25 RCV}}
+* {{lwc|VBCI}}
+* {{lwc|FNSS Pars}}
+* {{lwc|Mowag Piranha}}
+* {{lwc|TATA Kestrel}}
+{{Div col end}}
+
+== References ==
+
+{{reflist}}
+
+== External links ==
+
+{{Commons category|KTO Rosomak}}
+* [http://www.rosomaksa.pl/en/armoured-modular-vehicles.html Armoured Modular Vehicles (include KTO Rosomak) on Rosomak official webpage] {{Webarchive|url=https://web.archive.org/web/20170909025431/http://www.rosomaksa.pl/en/armoured-modular-vehicles.html |date=9 September 2017 }}
+
+{{Modern IFV and APC}}
+{{ModernPOLAFVsNav |style=wide}}
+{{Use dmy dates|date=June 2017}}
+
+[[Category:Wheeled infantry fighting vehicles]]
+[[Category:Wheeled armoured personnel carriers]]
+[[Category:Amphibious armoured personnel carriers]]
+[[Category:Eight-wheeled vehicles]]
+[[Category:Military vehicles introduced in the 2000s]]
+[[Category:Wheeled amphibious armoured fighting vehicles]]
+[[Category:Armoured personnel carriers of Poland]]
+[[Category:Infantry fighting vehicles of Poland]]
+[[Category:Amphibious infantry fighting vehicles]]
+[[Category:Infantry fighting vehicles of the post–Cold War period]]
+[[Category:Armoured fighting vehicles of the post–Cold War period]]

@@ -1,0 +1,230 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Held tier-5 English Wikipedia compilation for the Combat Vehicle 90 family. The registry marks primary_held false because the article is a secondary compilation. The infobox carries family figures. It holds the Swedish family entry and the Norwegian CV9030N and Danish CV9035DK national entries. It publishes the mass as a range of 23 to 38 tonnes, the overall length, width and height, the maximum road speed and the on-road and off-road ranges. It publishes no single-mark mass, no engine rating, no ground clearance, no track shoe width, no track pitch and no grouser statement, so the entries are not runtime-ready.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "cv90",
+      "canonical_name": "Combat Vehicle 90",
+      "maker": "unknown",
+      "model": "CV90",
+      "variant": "CV90 family (Mk 0 to Mk IV)",
+      "variant_id": "cv90",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Sweden",
+      "era": "modern",
+      "aliases": [
+        "cv90",
+        "combat vehicle 90",
+        "cv 90",
+        "stridsfordon 90"
+      ],
+      "keywords": [
+        "ifv",
+        "infantry fighting vehicle",
+        "tracked",
+        "cv90"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 23000,
+          "unit": "kg",
+          "source": "wikipedia_cv90",
+          "locator": "Infobox, Specifications section, Weight row",
+          "state": "the family mass is published as a range, 23 to 38 tonnes for Mk 0 to Mk IV; the lower bound of the range is recorded, not an average, and no single-mark mass is stated",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6800,
+          "unit": "mm",
+          "source": "wikipedia_cv90",
+          "locator": "Infobox, Specifications section, Length row",
+          "state": "overall length published as 6.8 m, cited to the CV90 Mk IV specification",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3200,
+          "unit": "mm",
+          "source": "wikipedia_cv90",
+          "locator": "Infobox, Specifications section, Width row",
+          "state": "overall width published as 3.2 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2800,
+          "unit": "mm",
+          "source": "wikipedia_cv90",
+          "locator": "Infobox, Specifications section, Height row",
+          "state": "overall height published as 2.8 m",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 70,
+          "unit": "km/h",
+          "source": "wikipedia_cv90",
+          "locator": "Infobox, Specifications section, Maximum speed row",
+          "state": "maximum road speed published as 70 km/h",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 320,
+          "unit": "km",
+          "source": "wikipedia_cv90",
+          "locator": "Infobox, Specifications section, Operational range row",
+          "state": "off-road range published as 320 km; the same row publishes 900 km on road as a separate state",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "catalogue_id": "cv90_norway",
+      "canonical_name": "Combat Vehicle 90 (Norway)",
+      "maker": "BAE Systems",
+      "model": "CV90",
+      "variant": "CV9030N, Norwegian service",
+      "variant_id": "cv90_norway",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Norway",
+      "era": "modern",
+      "aliases": [
+        "cv9030n",
+        "cv90 norway",
+        "combat vehicle 90 norway"
+      ],
+      "keywords": [
+        "ifv",
+        "infantry fighting vehicle",
+        "tracked",
+        "cv90"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 23000,
+          "unit": "kg",
+          "source": "wikipedia_cv90",
+          "locator": "Infobox, Specifications section, Weight row",
+          "state": "the family mass is published as a range, 23 to 38 tonnes for Mk 0 to Mk IV; the lower bound of the range is recorded, not an average, and no single-mark mass is stated",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6800,
+          "unit": "mm",
+          "source": "wikipedia_cv90",
+          "locator": "Infobox, Specifications section, Length row",
+          "state": "overall length published as 6.8 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3200,
+          "unit": "mm",
+          "source": "wikipedia_cv90",
+          "locator": "Infobox, Specifications section, Width row",
+          "state": "overall width published as 3.2 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2800,
+          "unit": "mm",
+          "source": "wikipedia_cv90",
+          "locator": "Infobox, Specifications section, Height row",
+          "state": "overall height published as 2.8 m",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 70,
+          "unit": "km/h",
+          "source": "wikipedia_cv90",
+          "locator": "Infobox, Specifications section, Maximum speed row",
+          "state": "maximum road speed published as 70 km/h",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 320,
+          "unit": "km",
+          "source": "wikipedia_cv90",
+          "locator": "Infobox, Specifications section, Operational range row",
+          "state": "off-road range published as 320 km",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "catalogue_id": "cv90_denmark",
+      "canonical_name": "Combat Vehicle 90 (Denmark)",
+      "maker": "BAE Systems",
+      "model": "CV90",
+      "variant": "CV9035DK, Danish service",
+      "variant_id": "cv90_denmark",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Denmark",
+      "era": "modern",
+      "aliases": [
+        "cv9035dk",
+        "cv90 denmark",
+        "combat vehicle 90 denmark"
+      ],
+      "keywords": [
+        "ifv",
+        "infantry fighting vehicle",
+        "tracked",
+        "cv90"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 23000,
+          "unit": "kg",
+          "source": "wikipedia_cv90",
+          "locator": "Infobox, Specifications section, Weight row",
+          "state": "the family mass is published as a range, 23 to 38 tonnes for Mk 0 to Mk IV; the lower bound of the range is recorded, not an average, and no single-mark mass is stated",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6800,
+          "unit": "mm",
+          "source": "wikipedia_cv90",
+          "locator": "Infobox, Specifications section, Length row",
+          "state": "overall length published as 6.8 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3200,
+          "unit": "mm",
+          "source": "wikipedia_cv90",
+          "locator": "Infobox, Specifications section, Width row",
+          "state": "overall width published as 3.2 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2800,
+          "unit": "mm",
+          "source": "wikipedia_cv90",
+          "locator": "Infobox, Specifications section, Height row",
+          "state": "overall height published as 2.8 m",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 70,
+          "unit": "km/h",
+          "source": "wikipedia_cv90",
+          "locator": "Infobox, Specifications section, Maximum speed row",
+          "state": "maximum road speed published as 70 km/h",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 320,
+          "unit": "km",
+          "source": "wikipedia_cv90",
+          "locator": "Infobox, Specifications section, Operational range row",
+          "state": "off-road range published as 320 km",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

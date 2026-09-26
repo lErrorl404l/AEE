@@ -1,0 +1,112 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-5 English Wikipedia article 'Challenger 2'. The article is a secondary compilation, so every value is grade claimed and the registry marks primary_held false. It holds the FV4034 Challenger 2 main battle tank as a tracked entry. It publishes identity, the base mass, the gun-forward length, the width, the height, the ground clearance, the engine model and swept volume, the engine rating as a published range, the transmission gear count, the maximum road speed and the road range. The held tier-2 AESP 230-P-100-201 (1983) covers the Challenger 1 only, so it cannot support this entry; the name Challenger 2 is not applied to that manual. It publishes no tyre field, no track shoe width, no track pitch and no grouser statement, so the entry is not runtime-ready.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "challenger_2",
+      "canonical_name": "Challenger 2",
+      "maker": "Vickers Defence Systems / BAE Systems Land & Armaments",
+      "model": "Challenger 2",
+      "variant": "FV4034 main battle tank",
+      "variant_id": "challenger_2",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "United Kingdom",
+      "era": "modern",
+      "aliases": ["challenger 2", "challenger ii", "fv4034"],
+      "keywords": ["mbt", "main battle tank", "challenger", "tracked"],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 64000,
+          "unit": "kg",
+          "source": "wikipedia_challenger_2",
+          "locator": "Infobox, Specifications section, Mass row",
+          "state": "mass published as 64 t (63 long tons; 71 short tons); recorded as 64,000 kg with the tonne taken as 1,000 kg; the same row publishes 75 t with combat armour modules as a separate configuration, and the article states no kerb or gross weight",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 13500,
+          "unit": "mm",
+          "source": "wikipedia_challenger_2",
+          "locator": "Infobox, Specifications section, Length row",
+          "state": "overall length gun forward, published as 13.5 m (44 ft 3 in); the same row publishes 8.3 m (27 ft 3 in) without the gun as a separate configuration",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3500,
+          "unit": "mm",
+          "source": "wikipedia_challenger_2",
+          "locator": "Infobox, Specifications section, Width row",
+          "state": "overall width, published as 3.5 m (11 ft 6 in); the same row publishes 4.2 m (13 ft 9 in) with applique armour as a separate configuration",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2490,
+          "unit": "mm",
+          "source": "wikipedia_challenger_2",
+          "locator": "Infobox, Specifications section, Height row",
+          "state": "overall height, published as 2.49 m (8 ft 2 in); the published metre figure used directly",
+          "grade": "claimed"
+        },
+        "ground_clearance_mm": {
+          "value": 500,
+          "unit": "mm",
+          "source": "wikipedia_challenger_2",
+          "locator": "Infobox, Specifications section, Ground clearance row",
+          "state": "ground clearance, published as 0.5 m (1 ft 8 in); the published metre figure used directly",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Perkins CV12-6A V12 diesel",
+          "unit": "text",
+          "source": "wikipedia_challenger_2",
+          "locator": "Infobox, Specifications section, Engine row",
+          "state": "engine published as a Perkins CV12-6A V12 diesel of 26.1 L",
+          "grade": "claimed"
+        },
+        "engine_displacement_l": {
+          "value": 26.1,
+          "unit": "L",
+          "source": "wikipedia_challenger_2",
+          "locator": "Infobox, Specifications section, Engine row",
+          "state": "engine swept volume, published as 26.1 L (1,590 cu in); the published litre figure used directly",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 1200,
+          "unit": "hp",
+          "source": "wikipedia_challenger_2",
+          "locator": "Infobox, Specifications section, Engine row",
+          "state": "engine rating published as a range, 1,200 to 1,500 bhp (890 to 1,120 kW), with no net basis; recorded as the lower bound of the published range, not an average",
+          "grade": "claimed"
+        },
+        "gears": {
+          "value": 6,
+          "unit": "count",
+          "source": "wikipedia_challenger_2",
+          "locator": "Infobox, Specifications section, Transmission row",
+          "state": "six forward and two reverse ratios, published as (6 fwd., 2 rev.); the article names the transmission type as epicyclic and does not state an automatic or manual class",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 59,
+          "unit": "km/h",
+          "source": "wikipedia_challenger_2",
+          "locator": "Infobox, Specifications section, Maximum speed row",
+          "state": "maximum road speed, published as 37 mph (59 km/h) on-road; the same row publishes 25 mph (40 km/h) off-road as a separate state",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 550,
+          "unit": "km",
+          "source": "wikipedia_challenger_2",
+          "locator": "Infobox, Specifications section, Operational range row",
+          "state": "operational range on-road on internal fuel, published as 550 km (340 mi); the same row publishes 250 km (160 mi) off-road as a separate state",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

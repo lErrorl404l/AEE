@@ -1,0 +1,87 @@
+{{Short description|Israeli 8 wheel drive armoured fighting vehicle}}
+{{pp-extended|small=yes}}
+{{Infobox weapon
+| name               = Eitan
+| image              = [[File:Eytan -- Our-IDF-2018-IZE-200 (43053775600) (cropped).jpg|300px]]
+| caption            = 
+| type               = [[Armoured fighting vehicle]]
+| is_vehicle         = yes
+| service            = Since May 2023<ref>{{cite web | url=https://militaryleak.com/2023/05/30/israel-defense-forces-takes-delivery-of-eitan-armored-fighting-vehicles/ | title=Israel Defense Forces Takes Delivery of Eitan Armored Fighting Vehicles | website=militaryleak}}</ref>
+| wars               = [[Gaza war]]
+| designer           = Ministry’s Tank Development Program Directorate (Mantak)
+| number             = 
+| variants           = [[Armoured personnel carrier]];<br>[[Infantry fighting vehicle]]
+| length             = {{convert|8.0|m|ft|abbr=on}}
+| width              = {{convert|3.0|m|ft|abbr=on}}
+| height             = {{convert|3.0|m|ft|abbr=on}}
+| origin             = [[Israel]] / [[United States]]<ref>{{cite web | url=https://www.timesofisrael.com/israel-announces-serial-production-of-new-advanced-eitan-apc/ | title=Israel announces serial production of new advanced 'Eitan' APC  | website=The Times of Israel}}</ref>
+| used_by            = [[Israel Defense Forces]] <!-- Do not use flag icons here, per MOS:INFOBOXFLAG -->
+| manufacturer       = 60 % [[Oshkosh Corporation|Oshkosh]]<br />[[Allison Transmission|Allison]]
+[[Elbit Systems|Elbit]] [[Rafael Advanced Defense Systems|Rafael]] [[MTU Friedrichshafen|MTU]]
+| unit_cost          = US$5 million<ref>{{cite web | url=https://www.militarytoday.com/apc/eitan.htm | title=Eitan | website=militarytoday}}</ref>
+| design_date        = 2016
+| production_date    = Since 2020 (serial production)<ref>{{cite web | url=https://www.jpost.com/israel-news/defense-ministry-begins-serial-production-of-the-idfs-eitan-apc-617011 | title=Defense Ministry begins serial production of the IDF's Eitan APC | website=The Jerusalem Post | date=9 February 2020 }}</ref>
+| clearance          = 
+| weight             = up to 50 tonnes
+| transmission       = Allison 4800 SP
+| suspension         = 8×8
+| speed              = {{convert|90|km/h|mph|abbr=on}}
+| vehicle_range      = {{convert|1000|km|mi|abbr=on}}
+| primary_armament   = [[Samson Remote Controlled Weapon Station|Samson RCWS (Katlanit)]] with a [[M2 Browning|M2]] machine gun ([[Armoured personnel carrier|APC]] variant)
+| payload_capacity   = 
+| secondary_armament = Pintle-mounted [[7.62×51mm NATO|7.62mm NATO]] machine gun ([[Armoured personnel carrier|APC]] variant)
+| armour             = [[Iron Fist (countermeasure)|Iron Fist Light Decoupled]] [[Active protection system|APS]]
+| crew               =  (commander, driver, RCWS operator)<ref>{{cite web |last=BECKHUSEN |first=Robert |url=https://warisboring.com/israels-next-troop-taxi-is-a-giant-armored-carapace-22827b53e262#.19lbce55d |title= Israel's Next Troop Taxi Is a Giant, Armored Carapace | work = War Is Boring |date=6 August 2016 |access-date=6 August 2016 |archive-url=https://web.archive.org/web/20160825181751/https://warisboring.com/israels-next-troop-taxi-is-a-giant-armored-carapace-22827b53e262#.19lbce55d |archive-date=25 August 2016 |url-status=dead}}</ref>
+| passengers         = 9 troops
+| engine             = [[MTU Friedrichshafen|MTU]] 6V890 diesel engine<ref>{{cite web | url=https://defense-update.com/20221228_eitan-4.html | title=Oshkosh Defense to Produce Hundreds of Eitan Armored Vehicles for Israel | website=Defense Update | date=28 December 2022 }}</ref> 6.67-litre
+| fuel_capacity      = 
+| engine_power       = {{convert |750|PS|0|lk=on|abbr=on}}
+| pw_ratio           = 
+}}
+'''Eitan''' ([[Hebrew]] for "steadfast", "firm" or "strong") is an [[armored fighting vehicle|armoured fighting vehicle]] (AFV) developed by the [[Merkava]] and Armoured Vehicles Directorate in the [[Ministry of Defense (Israel)|IMOD]] to replace the ageing [[M113 armored personnel carrier|M113 armoured personnel carrier]] in use by the [[Israel Defense Forces]].<ref>{{cite news |last=Fabian |first=Emanuel |title=Defense Ministry to deliver first new advanced 'Eitan' APC to IDF |url=https://www.timesofisrael.com/defense-ministry-to-deliver-first-new-advanced-eitan-apc-to-idf/ |access-date=2023-03-29 |website=[[The Times of Israel]] |language=en-US |issn=0040-7909}}</ref>
+Its [[armored personnel carrier]] (APC) variant lacks the [[Iron Fist (countermeasure)|Iron Fist]] [[Active protection system|APS]], due to the fact those are not the serial production Eitan vehicles yet. The [[infantry fighting vehicle]] (IFV) variant is still not in service.
+
+==Overview==
+[[File:Nahal Brigade, 2020. XIII.jpg|thumb|left|An Eitan of the [[Nahal Brigade]] in 2020]]
+
+The Eitan is an 8-wheeled vehicle much lighter than any other 8- wheeled AFV Israel has produced [[Namer]], weighing less than 35 tons,<ref>{{cite web|last=Opall |first=Barbara |url=http://www.defensenews.com/story/defense/land/2016/08/01/israel-unveils-wheeled-actively-protected-armored-carrier/87907090/ |title=Israel Unveils Wheeled, Actively Protected Armored Carrier |publisher=Defense News |date=4 August 2016 |access-date=4 August 2016}}{{dead link|date=August 2021|bot=medic}}{{cbignore|bot=medic}}</ref> fitted with the [[Iron Fist (countermeasure)|Iron Fist Light Decoupled]] [[active protection system]].<ref>[https://www.prnewswire.com/il/news-releases/israeli-ministry-of-defense-selects-elbit-systems-iron-fist-light-decoupled-active-protection-system-for-the-eitan-afv-895792789.html Israeli Ministry of Defense Selects Elbit Systems' Iron Fist Light Decoupled Active Protection System for the Eitan AFV]. ''PRNewswire''. 20 August 2019.</ref> The AFV has a top speed of 90&nbsp;km/h and can carry up to 12 soldiers including 3 crew. The Eitan can be equipped with a 30–40&nbsp;mm gun and a missile firing position with 2 [[Spike (missile)|Spike]] missiles.<ref>{{Cite news | url=http://www.globes.co.il/en/article-the-idfs-first-wheeled-armored-personnel-carrier-unveiled-1001143339 | title=Israel unveils its first wheeled APC | newspaper=Globes | date=8 January 2016 }}</ref> The armour is rated to the standard [[STANAG 4569#Level 4|STANAG 4569 level 4]].
+
+The Eitan will replace hundreds of M113 APC currently in service.<ref name="auto">{{cite web|last=Eshel |first=Tamir |url=http://defense-update.com/20160801_eitan.html |title=Israel Develops a Highly Protected APC to Replace Thousands of M-113 'Tin Cans' |publisher=Defense Update |date=1 August 2016 |access-date=18 August 2016}}</ref> According to Brigadier General Baruch Matzliah, the vehicle will complement, not replace, the Namer tracked APC;<ref>{{cite web |last=Lappin |first=Yaakov |url=http://www.janes.com/article/62755/israel-unveils-first-wheeled-apc |title=Israel unveils first wheeled APC |publisher=IHS Janes |date=4 August 2016 |access-date=4 August 2016 |archive-url=https://web.archive.org/web/20160804191742/http://www.janes.com/article/62755/israel-unveils-first-wheeled-apc |archive-date=2016-08-04 |url-status=dead }}</ref> as a wheeled vehicle, it will cost half as much as the Namer ($3 million) and, unlike tracked vehicles, can transport infantry squads on roads without relying on [[tank transporter]]s.
+
+The Eitan has the capability to use [[run-flat tires]] and is designed with a [[Non-explosive reactive armor|NERA composite armour]] and high floor to protect from landmine and [[improvised explosive device|IED]] blast effects.<ref name="auto"/> The first Eitan AFV was unveiled on August 1, 2016.<ref>{{cite web|last=Lapin |first=Yaakov |url=https://www.jpost.com/Israel-News/WATCH-Defense-Ministry-unveils-IDFs-first-wheeled-armored-personnel-carrier-462936 |title=The Eitan APC will come with an active protection system, and its high speed will enable rapid deployment of forces between North and South. armor STANAG 4569 level 4 |publisher=The Jerusalem Post |date=1 August 2016 |access-date=18 August 2016}}</ref>
+
+Serial production started in 2022, and the [[Nahal Brigade]] became the first Israeli infantry unit to receive the Eitan in May 2023.<ref>[https://breakingdefense.com/2023/05/first-eitan-wheeled-apcs-delivered-to-israels-idf/ First Eitan wheeled APCs delivered to Israel’s IDF]. ''Breaking Defense''. 31 May 2023.</ref> The brigade first used the Eitan during the [[Battle of Zikim]] on 7 October 2023, and there were plans to use the vehicle in the subsequent [[Israeli invasion of the Gaza Strip (2023–present)|invasion of the Gaza Strip]].<ref>{{Cite web | url=https://news.walla.co.il/item/3617021 | date= October 18, 2023 | publisher = [[Walla! News]] | title=טבילת האש הראשונה: נגמ"ש "האיתן" חיסל מחבלים בחוף זיקים | language=he}}</ref>
+
+==See also==
+{{Div col|colwidth=18em}}
+* {{lwc|KTO Rosomak|KTO Rosomak}}
+* {{lwc|BTR-4|BTR 4}}
+* {{lwc|Boxer (armoured fighting vehicle)|Boxer}}
+* {{lwc|CM-32 armoured vehicle|CM-32}}
+* {{lwc|FNSS Pars|FNSS PARS III}}
+* {{lwc|Freccia IFV|Freccia}}
+* {{lwc|Iveco SuperAV}}
+* {{lwc|K808 White Tiger}}
+* {{lwc|LAV 6}}
+* {{lwc|Mowag Piranha IV}}
+* {{lwc|Mowag Piranha V}}
+* {{lwc|Otokar Arma}}
+* {{lwc|Pandur II}}
+* {{lwc|Patria AMV}}
+* {{lwc|Stryker}}
+* {{lwc|TATA Kestrel}}
+* {{lwc|Terrex ICV}}
+* {{lwc|VBCI}}
+* {{lwc|VPK-7829 Bumerang}}
+{{Div col end}}
+
+==References==
+{{Reflist}}
+
+{{Modern IFV and APC}}
+
+{{DEFAULTSORT:Eitan AFV (Vehicle)}}
+[[Category:Armoured personnel carriers of Israel]]
+[[Category:Wheeled armoured personnel carriers]]
+[[Category:Eight-wheeled vehicles]]
+[[Category:Armoured personnel carriers of the post–Cold War period]]

@@ -1,0 +1,105 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Held tier-5 English Wikipedia compilation for the Pandur II armoured vehicle. The registry marks primary_held false. It publishes the minimum, additional and amphibious weight states, the length, the width, the height, the engine model and rating, the transmission, the road and water speeds, the range and the payload. It publishes no ground clearance, so that field is absent.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "pandur_ii",
+      "canonical_name": "Pandur II",
+      "maker": "Steyr-Daimler-Puch Spezialfahrzeug",
+      "model": "Pandur",
+      "variant": "II 8x8",
+      "variant_id": "pandur_ii",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Czechia",
+      "era": "modern",
+      "aliases": [
+        "pandur ii",
+        "pandur 2",
+        "pandur"
+      ],
+      "keywords": [
+        "apc",
+        "armoured personnel carrier",
+        "wheeled",
+        "pandur"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 17300,
+          "unit": "kg",
+          "source": "wikipedia_pandur_ii",
+          "locator": "Infobox, weight row, minimal protection entry",
+          "state": "weight published as 17.3 t with minimal protection; the same row publishes 22 t with additional protection and 20.1 t as the amphibious limit; the tonne taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 7350,
+          "unit": "mm",
+          "source": "wikipedia_pandur_ii",
+          "locator": "Infobox, length row",
+          "state": "length published as 7,350 mm",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2670,
+          "unit": "mm",
+          "source": "wikipedia_pandur_ii",
+          "locator": "Infobox, width row",
+          "state": "width published as 2,670 mm",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2080,
+          "unit": "mm",
+          "source": "wikipedia_pandur_ii",
+          "locator": "Infobox, height row",
+          "state": "height published as 2,080 mm",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Cummins ISLe 450 HPCR",
+          "unit": "text",
+          "source": "wikipedia_pandur_ii",
+          "locator": "Infobox, engine row",
+          "state": "engine published as a Cummins ISLe 450 HPCR 8.9 litre in-line 6 turbo-diesel",
+          "grade": "claimed"
+        },
+        "net_power_kw": {
+          "value": 335,
+          "unit": "kW",
+          "source": "wikipedia_pandur_ii",
+          "locator": "Infobox, engine power row",
+          "state": "engine published as 335 kW, with no net basis stated",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 105,
+          "unit": "km/h",
+          "source": "wikipedia_pandur_ii",
+          "locator": "Infobox, speed row, road entry",
+          "state": "maximum road speed published as 105 km/h; the water speed is published as up to 11 km/h",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 700,
+          "unit": "km",
+          "source": "wikipedia_pandur_ii",
+          "locator": "Infobox, vehicle range row",
+          "state": "range published as approximately 700 km",
+          "grade": "claimed"
+        },
+        "payload_kg": {
+          "value": 8500,
+          "unit": "kg",
+          "source": "wikipedia_pandur_ii",
+          "locator": "Infobox, payload capacity row",
+          "state": "payload published as 8.5 t; the tonne taken as 1,000 kg",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

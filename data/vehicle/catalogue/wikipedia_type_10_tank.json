@@ -1,0 +1,97 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Held tier-5 English Wikipedia compilation for the Type 10 main battle tank. The registry marks primary_held false. It publishes the full, standard and basic loadout weights, the length, the width, the height, the engine model and rating, the transmission type, the maximum road speed and the range. It publishes no ground clearance, so that field is absent.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "type_10",
+      "canonical_name": "Type 10",
+      "maker": "Mitsubishi Heavy Industries",
+      "model": "Type 10",
+      "variant": "Main battle tank",
+      "variant_id": "type_10",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Japan",
+      "era": "modern",
+      "aliases": [
+        "type 10",
+        "type10",
+        "hitomaru"
+      ],
+      "keywords": [
+        "mbt",
+        "main battle tank",
+        "tracked",
+        "type 10"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 48000,
+          "unit": "kg",
+          "source": "wikipedia_type_10_tank",
+          "locator": "Infobox, weight row, full loadout entry",
+          "state": "full loadout weight published as 48 tonnes; the same row publishes 44 tonnes standard loadout and 40 tonnes basic loadout as separate states",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 9485,
+          "unit": "mm",
+          "source": "wikipedia_type_10_tank",
+          "locator": "Infobox, length row",
+          "state": "length published as 9.485 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3240,
+          "unit": "mm",
+          "source": "wikipedia_type_10_tank",
+          "locator": "Infobox, width row",
+          "state": "width published as 3.24 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2300,
+          "unit": "mm",
+          "source": "wikipedia_type_10_tank",
+          "locator": "Infobox, height row",
+          "state": "height published as 2.30 m",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Mitsubishi Heavy Industries 8VA34WTK",
+          "unit": "text",
+          "source": "wikipedia_type_10_tank",
+          "locator": "Infobox, engine row",
+          "state": "engine published as a 4-stroke 22.6-litre V8 diesel MHI 8VA34WTK",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 1200,
+          "unit": "hp",
+          "source": "wikipedia_type_10_tank",
+          "locator": "Infobox, engine power row",
+          "state": "engine published as 1,200 hp at 2,300 rpm, with no net basis",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 70,
+          "unit": "km/h",
+          "source": "wikipedia_type_10_tank",
+          "locator": "Infobox, speed row, Forward entry",
+          "state": "maximum forward speed published as 70 km/h; the backward speed is published as 70 km/h",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 500,
+          "unit": "km",
+          "source": "wikipedia_type_10_tank",
+          "locator": "Infobox, vehicle range row",
+          "state": "range published as 500 km",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

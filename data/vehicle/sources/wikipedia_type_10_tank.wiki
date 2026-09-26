@@ -1,0 +1,272 @@
+{{Short description|Japanese main battle tank}}
+{{other uses}}
+{{Infobox weapon
+| name               = Type 10
+| image              = Type10MBT.jpg
+| image_size         = 300
+| caption            = A JGSDF Type 10 Tank in 2010
+| type               = [[Main battle tank]]
+| origin             = [[Japan]]
+| is_vehicle         = yes
+| crew               = 3 (commander, gunner and driver)
+| length             = 9.485&nbsp;m
+| width              = 3.24&nbsp;m
+| height             = 2.30&nbsp;m
+| weight             = {{ubl|48 tonnes (full loadout),|44 tonnes (standard loadout),|40 tonnes (basic loadout)}}
+| armour             = modular [[ceramic armor|ceramic]] [[composite armor]], steel, light-weight upper armor.
+| primary_armament   = [[Japan Steel Works]] 120&nbsp;mm [[:ja:10式戦車砲|L/44&nbsp;calibers-long smoothbore cannon]] with automatic loader (22 rounds)
+| secondary_armament = {{ubli
+ | [[M2HB|Type 90 12.7 mm machine gun]]|
+ | [[Sumitomo Type 62#Type 74|Type 74 7.62&nbsp;mm machine gun]]
+ }}
+| engine             = [[Four-stroke engine|4-stroke]] 22.6-litre [[diesel engine|diesel]] [[V8 engine|V8]] MHI 8VA34WTK
+| engine_power       = 1,200&nbsp;hp/2,300&nbsp;rpm
+| transmission       = [[Continuously variable transmission]] (hydraulic-mechanical transmission)
+| suspension         = [[Hydropneumatic suspension]]
+| speed              = Forward: 70&nbsp;km/h<br />Backward: 70&nbsp;km/h<ref>{{cite AV media|url=https://www.youtube.com/watch?v=1s-yLXhRxxA#t=1m45s|title=10式戦車 走行展示 Type10 Tank, Japan's new MBT|date=11 July 2010|work=YouTube|access-date=3 April 2015|archive-url=https://web.archive.org/web/20160409143925/https://www.youtube.com/watch?v=1s-yLXhRxxA#t=1m45s|archive-date=9 April 2016|url-status=live|df=dmy-all}}</ref>
+| pw_ratio           = 27&nbsp;hp/tonne
+| vehicle_range      = 500&nbsp;km
+<!-- Production -->| manufacturer       = [[Mitsubishi Heavy Industries]]
+| production_date    = 2010 (in production)
+| service            = 2012 – present
+| unit_cost          = $11.3&nbsp;million (2022)<ref name="auto">{{cite web |trans-title=Japan's Defense and Budget - Acceleration Package for Strengthening Defense Capabilities - - Overview of the FY2022 Budget (including FY2021 Amendment) - FY2022 Budget Overview |title=我が国の防衛と予算～防衛力強化加速パッケージ～ -令和４年度予算（令和３年度補正を含む）の概要|url=https://www.mod.go.jp/j/budget/yosan_gaiyo/2022/yosan_20220324.pdf |publisher=防衛装備庁 |access-date=2023-03-22 |language=ja |archive-date=2023-03-06 |archive-url=https://web.archive.org/web/20230306195912/https://www.mod.go.jp/j/budget/yosan_gaiyo/2022/yosan_20220324.pdf |url-status=dead }}</ref>{{rp|5}}
+| number             = 117 (FY&nbsp;2010–2022)<ref name="auto"/>{{rp|5}}
+}}
+
+The {{nihongo|'''Type 10'''|10式戦車|Hitomaru-shiki sensha}} is a Japanese [[List of main battle tanks by generation|fourth generation]] [[main battle tank]] produced by [[Mitsubishi Heavy Industries]] for the [[Japan Ground Self Defense Force|Japanese Ground Self Defense Force]]. It entered service in 2012. Compared with other [[List of modern equipment of the Japan Ground Self-Defense Force#Vehicles|currently-serving main battle tanks]] in the JGSDF, the Type 10 is better equipped to deal with [[anti-tank warfare|anti-tank weapons]].<ref name="type1003">{{Cite web|title=Introduction of the aircraft Type 10 tank -Japanese Ministry of Defense, Japan Defense Focus No.33 Column|date=Oct 2012|url=https://www.mod.go.jp/e/jdf/no33/column.html|archive-url=https://web.archive.org/web/20130127153619/http://www.mod.go.jp/e/jdf/no33/column.html |archive-date=January 27, 2013}}</ref>
+
+==History==
+The Type 10 started as the TK-X (MBT-X) project, intended to complement and eventually replace the [[Type 74 tank|Type 74]] and [[Type 90 Kyū-maru|Type 90]] tanks in service with the JGSDF.{{Sfn|Ichinohe|2011}} Development began in the 1990s, and production started in 2010–2011. A prototype was revealed on February 13, 2008 at the Technology Research and Development Institute (TRDI) in [[Sagamihara|Sagamihara, Japan]].{{Sfn|Ichinohe|2011}} Emphasis was placed on the design's command and control capabilities.<ref name="type10tkx01">{{cite web|author=Japanese Ministry of Defense Technology Research and Development Institute (TRDI) |url=https://www.mod.go.jp/trdi/en/programs/ground/ground.html |title=Department of Ground Systems Development |access-date=May 10, 2010|url-status=dead |archive-url=https://web.archive.org/web/20100901053859/http://www.mod.go.jp/trdi/en/programs/ground/ground.html |archive-date=September 1, 2010}}</ref>
+
+On 4 January 2014, sources revealed that [[Turkey]] was interested in signing a joint development deal of tank engines based on the Type 10's engine. The Type 10 tank boasts high mobility, including a backward movement speed of {{convert|70|km/h|mph|abbr=on}}.<ref>{{Cite web|editor=Armyrecognition.com|date=January 7, 2014|url=http://www.armyrecognition.com/january_2014_global_defense_security_news_industry/japan_is_looking_to_develop_an_engine_for_main_battle_tank_in_collaboration_with_turkey_0701143.html|title=Japan is looking to develop an engine for main battle tank in collaboration with Turkey|archive-url=https://web.archive.org/web/20140107233848/http://www.armyrecognition.com/january_2014_global_defense_security_news_industry/japan_is_looking_to_develop_an_engine_for_main_battle_tank_in_collaboration_with_turkey_0701143.html |archive-date=January 7, 2014}}</ref> The engine was to power the Turkish [[Altay (main battle tank)|Altay]] tank. However, negotiations broke down, and the deal was "off the agenda" by March 2014. Provided reasons included Japan's stringent arms export ban laws, Turkey's intention to export the Altay themselves, and Japan's reluctance to license the engine.<ref>{{Cite news|url=http://www.defensenews.com/article/20140305/DEFREG03/303050035/Japan-Deal-Scrapped-Turkey-Looking-Tank-Engine|archive-url=http://webarchive.loc.gov/all/20140307024446/http://www.defensenews.com/article/20140305/DEFREG03/303050035/Japan%2DDeal%2DScrapped%2DTurkey%2DLooking%2DTank%2DEngine|url-status=dead|archive-date=7 March 2014|title=Japan Deal Scrapped, Turkey Looking for Tank Engine|newspaper=Defensenews.com|date=5 March 2014|access-date=8 March 2014}}</ref>
+
+In May 2026, the Philippines has reportedly looked into the Type 10 due to delays with delivering the [[Sabrah light tank|Sabrah]].<ref name="dsa">{{Cite web|url=https://defencesecurityasia.com/en/philippines-japan-type-10-tank-israeli-sabrah-delays-indo-pacific-military-shift/|title=Philippines Turns to Japan’s Type 10 Tank as Israeli Sabrah Light Tank Delays Trigger Major Indo-Pacific Military Strategy Shift|date=May 14, 2026}}</ref> Potentially, it can be used to either complement or replace the Sabrahs.<ref name="dsa"/>
+
+===Accident===
+{{Main|:ja:自衛隊10式戦車暴発事故}}
+
+On April 21, 2026, a Type 10 shell exploded during a live-fire exercise at the Hijudai Training Area in Oita Prefecture, leaving three JGSDF tank crew members dead and another injured.<ref>{{Cite news|url=https://www.asahi.com/ajw/articles/16513586 |title=Shell explodes in GSDF tank, 3 SDF members killed, 1 injured |newspaper=The Asahi Shimbun |date=21 April 2026|access-date=28 April 2026}}</ref><ref>{{Cite news|url=https://www.asahi.com/ajw/articles/16517298 |title=Defense officials at loss over cause of fatal explosion on Type 10 tank |newspaper=The Asahi Shimbun |date=22 April 2026|access-date=28 April 2026}}</ref> Authorities have launched an investigation into the cause of the accident.
+
+==Design==
+===Development history===
+In the early 2000s, the JGSDF recognized a need to field a fourth generation tank in order to compete on a modern battlefield. [[C4I]] (Command, Control, Communication, Computing and Intelligence) capability was considered a high priority in designing the Type 10.{{Sfn|Ichinohe|2011}}
+
+A Ministry of Defense assessment found that C4I upgrades to existing Type 74 and Type 90 tanks were not feasible, primarily due to a lack of internal space. Thus, development of a completely novel main battle tank was deemed necessary.{{Sfn|Ichinohe|2011}}
+
+===Armor===
+The use of [[Modular design|modular]] components significantly improves the side armor compared to the Type 90. The [[Tank commander|commander's]] panoramic sight was moved to the right, and is mounted higher compared to the Type 90, giving the commander a wider [[field of view]].
+
+The vehicle's armor consists of removable sections, allowing operators to balance weight and protection depending on the mission profile. The Type 10 weighs {{Convert|40|t|ST|abbr=off}} in its base configuration, {{Convert|44|t|ST|abbr=off}} in standard configuration, and {{Convert|48|t|ST|abbr=off}} fully loaded. The prototype featured in 2008 at TRDI weighed 44 tonnes.<ref name="type1001">{{Cite web|title=Type 10 MBT-X Prototype (TK-X)|author=GlobalSecurity.org|url=http://www.globalsecurity.org/military/world/japan/mbt-x.htm|archive-url=https://web.archive.org/web/20181212010343/https://www.globalsecurity.org/military/world/japan/mbt-x.htm |archive-date=December 12, 2018}}</ref>
+
+The Type 10 weighs less than its predecessor, the Type 90. The composite armor weight was increased, however, from {{Convert|1380|to|1940|kg|lbs|abbr=on}} for the turret, and from {{Convert|1249|to|2680|kg|lbs|abbr=on}} for the hull.
+
+In a penetration resistance test, [[Armour-piercing fin-stabilized discarding sabot|APFSDS]] rounds were fired at the hull from a distance of {{Convert|250|m|yd|abbr=on}}.<ref>{{Cite web|archive-date=February 21, 2012|archive-url=https://web.archive.org/web/20120221150623/http://www.mod.go.jp/trdi/data/info/ny_kenkyu_riku/pdf_ichiran/18-ekimu-zuikei-r-10.pdf|url=http://www.mod.go.jp/trdi/data/info/ny_kenkyu_riku/pdf_ichiran/18-ekimu-zuikei-r-10.pdf |title= 正面要部耐弾性試験のための労務借上|trans-title=Borrowing labor for bulletproof test of main part of front|page=13|access-date=June 28, 2021|url-status=live }}</ref><ref>{{Cite web |url=https://www.mod.go.jp/atla/nds/Z/Z0012B.pdf |title= Resilience test method for armored kinetic energy bullets NDS Z 0012B|access-date=June 25, 2021}}</ref> Each armor module and [[Gun mantlet|mantlet]] achieved the required performance specified in "Type 10 tank GV-Y120001E".
+
+Protection against 120mm [[Kinetic energy penetrator|kinetic energy penetrators]] is limited to the front of the hull, turret, and gun mantlet, with the exception of the lower [[glacis]].
+
+The top armor can effectively counter [[explosively formed penetrator]]s and related threats.<ref>{{Cite web|url=https://dl.ndl.go.jp/info:ndljp/pid/1283286|title=国立国会図書館デジタルコレクション|website=dl.ndl.go.jp}}</ref>
+
+===Electronics and mechanics===
+The Type 10 tank is equipped with a [[C4I]] system (command, control, communication, computer & intelligence) known as "10NW". This system integrates into the JGSDF network and enables real-time data sharing between tanks. It works alongside the Field Communication System (FiCS){{Sfn|Ichinohe|2011}} and the Regiment Command Control System (ReCS).<ref name="type1003" />
+
+According to design documentation, the C4I system enables the following capabilities:{{Sfn|Defense Industrial Production Committee|2014}}
+* [[Platoon]]-level [[automatic target recognition]] and target synchronization
+* Real-time commands from a [[platoon leader]]
+* Real-time vehicle [[telemetry]]
+* [[Fire-control system|Fire control system]] integration
+* Daytime and [[Night-vision device|night vision cameras]] mounted around the turret, providing 360° coverage<ref name="type1001" />
+
+The Type 10 also includes:
+* A [[continuously variable transmission]] (CVT)<ref name="type1002">{{cite journal |date=June 2008 |title=Accelerating Defence Acquisition: What Defence Can Learn From the World of Motorsport |url=http://www.rusi.org/downloads/assets/Ireland_RDS_Summer08.pdf |url-status=dead |journal=RUSI Defence Systems |publisher=[[Royal United Services Institute]] |pages=81–82 |archive-url=https://web.archive.org/web/20081120083808/http://www.rusi.org/downloads/assets/Ireland_RDS_Summer08.pdf |archive-date=November 20, 2008 |access-date=February 5, 2009}}</ref> allowing the tank to reach {{Convert|70|km/h|mph|abbr=on}} in both forward and reverse
+* A faster [[autoloader]] allowing the main gun to fire every 3.5 seconds<ref>{{Cite web |title=１０式戦車による戦車射撃訓練 |url=https://twitter.com/i/status/1289757818166185985 |access-date=January 22, 2021}}</ref>
+* A [[hydropneumatic suspension]] system<ref name="type1002" /> that provides improved recoil performance and [[Height adjustable suspension|chassis height adjustment]]
+[[File:10TK 005 R 10式戦車 11.jpg|alt=A Type 10 fires its main gun|thumb|204x204px|The Type 10 is equipped with a 120mm [[smoothbore]] gun]]
+
+===Armament===
+Whereas the Type 90 was equipped with the [[Rheinmetall Rh-120]] smoothbore main gun (as on the [[Germany|German]] [[Leopard 2]]), the Type 10 uses a novel 120mm gun developed by [[Japan Steel Works]].{{Sfn|Ichinohe|2011}} The gun can fire the newly developed Type 10 [[armour-piercing fin-stabilized discarding-sabot|APFSDS]] round.<ref>{{Cite web |url=http://www.mof.go.jp/budget/topics/budget_execution_audit/fy2011/2404_11b.pdf |title=Japanese MOF report |access-date=March 6, 2015|archive-url=https://web.archive.org/web/20130203235856/https://www.mof.go.jp/budget/topics/budget_execution_audit/fy2011/2404_11b.pdf |archive-date=February 3, 2013 |url-status=live }}</ref> It can also fire the JM33 APFSDS (a variant of the German [[120×570mm NATO#Armour-Piercing Fin-Stabilized Discarding Sabot (APFSDS)|DM33]] shell, produced domestically under license) as well as [[120×570mm NATO|120mm NATO]] ammunition. The Type 10 holds 14 rounds in the autoloader, 2 behind the gunner, 6 rounds in the ready ammunition storage, and 14 in reserve, with a total of 36 rounds carried on board.<ref>{{Cite web |url=https://www.weaponsystems.net/system/269-Type%2010 |title=Type 10, 10式戦車 |access-date=March 15, 2022|website=WeaponSystems.net}}</ref>
+
+The gunner has access to a [[Sumitomo Type 62#Type 74|Type 74]] [[coaxial machine gun]] chambered in [[7.62×51mm NATO]]. The Type 74 is a heavier, vehicle-mounted variant of the [[Sumitomo Type 62]] machine gun.
+
+A [[M2 Browning|M2 Browning .50 caliber]] machine gun chambered in [[12.7x99mm NATO]] is affixed to a [[pintle-mount]] on the roof, and can be crewed by the commander.
+
+===Strategic transportation===
+The predecessor of the Type 10, the Type 90, was deployed only in [[Hokkaido]] due to road and bridge weight limitations in mainland Japan. For this reason, weight was a priority in design, as the Type 10 needed to be capable of deploying anywhere in Japan. Size and weight reductions made the Type 10 six tonnes lighter than the Type 90. Approximately 84% of bridges in Japan can accommodate the Type 10, compared to only 65% for the Type 90, and ~40% for other NATO tanks.<ref>{{Cite web |url=http://www.kantei.go.jp/jp/singi/shin-ampobouei2010/dai5/siryou1.pdf |trans-title=Handout for the Fifth Meeting of The Council on Security and Defense Capabilities in the New Era - Defense Production and Technology Base|title=新たな時代の安全保障と防衛力に関する懇談会 - 第5回配布資料 「防衛生産・技術基盤」|date=April 2010|author=Ministry of Defence|access-date=January 15, 2017|archive-url=https://web.archive.org/web/20160304063832/http://www.kantei.go.jp/jp/singi/shin-ampobouei2010/dai5/siryou1.pdf |archive-date=March 4, 2016|url-status=live|lang=ja}}</ref>
+
+===Development===
+The development costs as of 2008 are approximately {{JPYConvert|48400000000|lk=off|year=2008|r=1|force=|showdate=no}}. The projected cost per unit was approximately {{JPYConvert|700000000|year=2008|r=1|force=|showdate=no}}.<ref name="type1001" />
+
+The [[Ministry of Defense (Japan)|Japanese Ministry of Defense]] formally acknowledged the Type 10 in December 2009.
+
+In 2010, the Japanese Ministry of Defense placed a {{JPYConvert|12400000000|r=1|exact=|showdate=no}} order for thirteen Type 10 tanks.<ref>{{Cite web |url=https://www.mod.go.jp/j/yosan/2010/yosan.pdf |title=Based on the production of thirteen Type 10 tanks during FY2010 |access-date=June 5, 2010|archive-url=https://web.archive.org/web/20110323213737/http://www.mod.go.jp/j/yosan/2010/yosan.pdf |archive-date=March 23, 2011|url-status=live }}</ref>
+
+The Type 10 entered service in January 2012,<ref>{{cite news|url=http://www.jiji.com/jc/movie?p=top416-movie02&s=436|trans-title=Ceremony to mark the unit on the first mass-produced vehicle|title=時事ドットコム：動画特集 陸上自衛隊「１０式戦車」入魂式＝量産型１号車に機甲の魂を注入|work=時事ドットコム|access-date=3 April 2015|archive-url=https://web.archive.org/web/20150403024518/http://www.jiji.com/jc/movie?p=top416-movie02&s=436|archive-date=3 April 2015|url-status=live|df=dmy-all|lang=ja}}</ref> with production continuing at a steady rate. As of 2020, there were 76 units in service, with plans to order 12 more that year.<ref>{{Cite web|editor=Armyrecognition.com|date=March 16, 2020|title=Army of Japan to acquire more local-made Type 10 Main Battle Tanks MBTs|url=https://www.armyrecognition.com/may_2020_news_defense_global_security_army_industry/army_of_japan_to_acquire_more_local-made_type_10_main_battle_tanks_mbts.html|access-date=March 18, 2021|website=www.armyrecognition.com}}</ref>
+
+==Operators==
+* {{flag|Japan}} '''[[Japan Ground Self-Defense Force]]'''
+** [[File:JGSDF_Northern_Army.svg|27x27px]] '''[[Northern Army (Japan)|Northern Army]]'''
+*** [[File:JGSDF_2nd_Division.svg|27x27px]] '''[[2nd Division (Japan)|2nd Division]]'''<ref>{{Cite web | url=https://www.mod.go.jp/gsdf/nae/2d/unit/butai/kamifu_station/shokai/shoukai.html | title=部隊紹介 | language=ja | trans-title=Troop introduction | website=www.mod.go.jp}}</ref>
+**** 2nd Tank Regiment
+*** [[File:JGSDF_7th_Division.svg|27x27px]] '''[[7th Division (Japan)|7th Division]]'''
+**** 71st Tank Regiment
+** [[File:JGSDF Western Army.svg|27x27px]] '''[[Western Army (Japan)|Western Army]]'''
+*** Western Army Tank Battalion
+
+{| class="wikitable" font-size: 92%;"
+|- style="vertical-align:top"
+| style="background:#EAECF0;border-left:solid 2px black;border-top:solid 2px black;border-bottom:solid 2px black" |'''Fiscal year'''
+| style="text-align: left; background:#EAECF0;border-top:solid 2px black;border-bottom:solid 2px black" |'''Budget'''
+([[Yen sign|¥]] billion)
+| style="text-align: left; background:#EAECF0;border-left:solid 2px grey;border-top:solid 2px black;border-right:solid 2px grey ;border-bottom:solid 2px black" |'''Type 10'''
+| style="text-align: left; background:#EAECF0;border-left:solid 2px black;border-top:solid 2px black;border-bottom:solid 2px black;border-right:solid 2px black" |'''Notes'''
+|- style="vertical-align:top"
+| style="background:#FFE18B;border-left:solid 2px black; border-bottom:dashed 2px black" |'''2027'''
+| style="background:#FFE18B;border-right:solid 2px grey;text-align: right; border-bottom:dashed 2px black" |–
+| style="background:#FFE18B;text-align: center; border-bottom:dashed 2px black" |–
+| style="background:#FFE18B;border-left:solid 2px grey;border-right:solid 2px black; border-bottom:dashed 2px black" |
+|- style="vertical-align:top"
+| style="background:#EAECF0;border-left:solid 2px black" |'''2026'''
+| style="background:#EAECF0;border-right:solid 2px grey;text-align: right;" |[[Yen sign|¥]] 15.8
+| style="text-align: center;" |8
+| style="border-left:solid 2px grey;border-right:solid 2px black;" |<ref>{{Cite web |date=29 August 2025 |title=FY2026 budget defence Japan |url=https://www.mod.go.jp/en/d_act/d_budget/pdf/fy2026_20260302a.pdf |archive-url=https://web.archive.org/web/20260521191245/https://www.mod.go.jp/en/d_act/d_budget/pdf/fy2026_20260302a.pdf |archive-date=21 May 2026}}</ref>
+|- style="vertical-align:top"
+| style="background:#EAECF0;border-left:solid 2px black" |'''2025'''
+| style="background:#EAECF0;border-right:solid 2px grey;text-align: right;" |[[Yen sign|¥]] 23.1
+| style="text-align: center;" |12
+| style="border-left:solid 2px grey;border-right:solid 2px black;" |<ref>{{Cite web |title=Page 26 - Defence budget Japan 2025 |url=https://www.mod.go.jp/en/d_act/d_budget/pdf/fy2025_20250411a.pdf |archive-url=https://web.archive.org/web/20250521212119/https://www.mod.go.jp/en/d_act/d_budget/pdf/fy2025_20250411a.pdf |archive-date=21 May 2025}}</ref>
+|- style="vertical-align:top"
+| style="background:#EAECF0;border-left:solid 2px black" |'''2024'''
+| style="background:#EAECF0;border-right:solid 2px grey;text-align: right;" |[[Yen sign|¥]] 16.6
+| style="text-align: center;" |10
+| style="border-left:solid 2px grey;border-right:solid 2px black;" |<ref>{{Cite web |title=Overview of the FY2024 Budget (Page 23) |url=https://www.mod.go.jp/en/d_act/d_budget/pdf/20240607a.pdf}}</ref>
+|- style="vertical-align:top"
+| style="background:#EAECF0;border-left:solid 2px black" |'''2023'''
+| style="background:#EAECF0;border-right:solid 2px grey;text-align: right;" |–
+| style="text-align: center;" |–
+| style="border-left:solid 2px grey;border-right:solid 2px black;" |–
+|- style="vertical-align:top"
+| style="background:#EAECF0;border-left:solid 2px black" |'''2022'''
+| style="background:#EAECF0;border-right:solid 2px grey;text-align: right;" |[[Yen sign|¥]] 8.3
+| style="text-align: center;" |6
+| style="border-left:solid 2px grey;border-right:solid 2px black;" |<ref>{{Cite web |title=Overview of FY2022 Budget (Page 49) |url=https://www.mod.go.jp/en/d_act/d_budget/pdf/20220420.pdf}}</ref>
+|- style="vertical-align:top"
+| style="background:#EAECF0;border-left:solid 2px black" |'''2021'''
+| style="background:#EAECF0;border-right:solid 2px grey;text-align: right;" |–
+| style="text-align: center;" |–
+| style="border-left:solid 2px grey;border-right:solid 2px black;" |–
+|- style="vertical-align:top"
+| style="background:#EAECF0;border-left:solid 2px black" |'''2020'''
+| style="background:#EAECF0;border-right:solid 2px grey;text-align: right;" |[[Yen sign|¥]] 15.6
+| style="text-align: center;" |12
+| style="border-left:solid 2px grey;border-right:solid 2px black;" |<ref>{{Cite web |title=Overview of FY2020 Budget (Page 49) |url=https://www.mod.go.jp/en/d_act/d_budget/pdf/200330a.pdf}}</ref>
+|- style="vertical-align:top"
+| style="background:#EAECF0;border-left:solid 2px black" |'''2019'''
+| style="background:#EAECF0;border-right:solid 2px grey;text-align: right;" |[[Yen sign|¥]] 8.1
+| style="text-align: center;" |6
+| style="border-left:solid 2px grey;border-right:solid 2px black;" |<ref>{{Cite web |title=Overview of FY2019 Budget (Page 51) |url=https://www.mod.go.jp/en/d_act/d_budget/pdf/190510b.pdf}}</ref>
+|- style="vertical-align:top"
+| style="background:#EAECF0;border-left:solid 2px black" |'''2018'''
+| style="background:#EAECF0;border-right:solid 2px grey;text-align: right;" |[[Yen sign|¥]] 7.3
+| style="text-align: center;" |5
+| style="border-left:solid 2px grey;border-right:solid 2px black;" |<ref>{{Cite web |title=Overview of FY2018 Budget (Page 45) |url=https://www.mod.go.jp/en/d_act/d_budget/pdf/300329.pdf}}</ref>
+|- style="vertical-align:top"
+| style="background:#EAECF0;border-left:solid 2px black" |'''2017'''
+| style="background:#EAECF0;border-right:solid 2px grey;text-align: right;" |[[Yen sign|¥]] 7.5
+| style="text-align: center;" |6
+| style="border-left:solid 2px grey;border-right:solid 2px black;" |<ref>{{Cite web |title=Overview of FY2017 Budget (Page 45) |url=https://www.mod.go.jp/en/d_act/d_budget/pdf/290328.pdf}}</ref>
+|- style="vertical-align:top"
+| style="background:#EAECF0;border-left:solid 2px black" |'''2016'''
+| style="background:#EAECF0;border-right:solid 2px grey;text-align: right;" |[[Yen sign|¥]] 6.1
+| style="text-align: center;" |6
+| style="border-left:solid 2px grey;border-right:solid 2px black;" |<ref>{{Cite web |title=Overview of FY2016 Budget (Page 39) |url=https://www.mod.go.jp/en/d_act/d_budget/pdf/280330.pdf}}</ref>
+|- style="vertical-align:top"
+| style="background:#EAECF0;border-left:solid 2px black" |'''2015'''
+| style="background:#EAECF0;border-right:solid 2px grey;text-align: right;" |[[Yen sign|¥]] 10.2
+| style="text-align: center;" |10
+| style="border-left:solid 2px grey;border-right:solid 2px black;" |<ref>{{Cite web |title=Overview of FY2015 Budget (Page 43) |url=https://www.mod.go.jp/en/d_act/d_budget/pdf/270414.pdf}}</ref>
+|- style="vertical-align:top"
+| style="background:#EAECF0;border-left:solid 2px black" |'''2014'''
+| style="background:#EAECF0;border-right:solid 2px grey;text-align: right;" |[[Yen sign|¥]] 13.4
+| style="text-align: center;" |13
+| style="border-left:solid 2px grey;border-right:solid 2px black;" |<ref>{{Cite web |title=Overview of FY2014 Budget (Page 41) |url=https://www.mod.go.jp/en/d_act/d_budget/pdf/260130.pdf}}</ref>
+|- style="vertical-align:top"
+| style="background:#EAECF0;border-left:solid 2px black" |'''2013'''
+| style="background:#EAECF0;border-right:solid 2px grey;text-align: right;" |[[Yen sign|¥]] 13.9
+| style="text-align: center;" |14
+| style="border-left:solid 2px grey;border-right:solid 2px black;" |<ref>{{Cite web |title=Overview of FY2013 Budget (Page 13) |url=https://www.mod.go.jp/en/d_act/d_budget/pdf/250516.pdf}}</ref>
+|- style="vertical-align:top"
+| style="background:#EAECF0;border-left:solid 2px black" |'''2012'''
+| style="background:#EAECF0;border-right:solid 2px grey;text-align: right;" |[[Yen sign|¥]] 13.2
+| style="text-align: center;" |13
+| style="border-left:solid 2px grey;border-right:solid 2px black;" |<ref>{{Cite web |title=Overview of FY2012 Budget (Page 11) |url=https://www.mod.go.jp/en/d_act/d_budget/pdf/240301.pdf}}</ref>
+|- style="vertical-align:top"
+| style="background:#EAECF0;border-left:solid 2px black" |'''2011'''
+| style="background:#EAECF0;border-right:solid 2px grey;text-align: right;" |[[Yen sign|¥]] 13.2
+| style="text-align: center;" |13
+| style="border-left:solid 2px grey;border-right:solid 2px black;" |<ref>{{Cite web |title=Overview of FY2011 Budget (Page 27) |url=https://www.mod.go.jp/en/d_act/d_budget/pdf/230401.pdf}}</ref>
+|- style="vertical-align:top"
+| style="background:#EAECF0;border-left:solid 2px black;border-bottom:double black" |'''2010'''
+| style="background:#EAECF0;border-right:solid 2px grey;border-bottom:double black;text-align: right;" |[[Yen sign|¥]] 12.4
+| style="text-align: center; border-bottom:double black" |13
+| style="border-left:solid 2px grey;border-right:solid 2px black; border-bottom:double black" |<ref>{{Cite web |title=Overview of FY2010 Budget (Page 29) |url=https://www.mod.go.jp/en/d_act/d_budget/pdf/220416.pdf}}</ref>
+|- style="vertical-align:top"
+| style="background:#EAECF0;border-left:solid 2px black;border-bottom:solid 2px black" |'''Total'''
+| style="background:#EAECF0;border-right:solid 2px grey;border-bottom:solid 2px black;text-align: right;" |'''[[Yen sign|¥]] 184.7'''
+<small>{{font color||#FFE18B|(+ ¥ 0.0)}}</small>
+| style="border-bottom:solid 2px black; border-right:solid 2px grey; background:#EAECF0; text-align: center;" |'''147'''
+<small>{{font color||#FFE18B|(–)}}</small>
+| style="border-bottom:solid 2px black; border-right:solid 2px black;" |–
+|}{{legend|#FFE18B|Budget request}}
+
+
+==Gallery==
+<gallery mode="packed">
+File:Type 10 tank displayed on a practice day of Fuji Firepower Review 2010, -26 Aug. 2010 b.jpg|2010 prototype model
+File:Type 10 engine compartment.JPG|Rear view of the prototype
+File:JGSDF Type10 tank 20120527-11.JPG|Production model
+File:Type 10 tank .50 cal.jpg|Side closeup of turret showing M2 Browning .50 caliber and smoke launchers
+File:JGSDF Type10 tank 20120527-12.JPG|Front closeup of turret showing sensor package and M2 Browning .50 caliber
+File:JGSDF Type10 tank 20120527-17.JPG|A tanker in the commander's hatch
+File:23 03 095 富士総合火力演習・そうかえん 34.jpg|alt=A Type 10 leans forward on its suspension as it decelerates|Braking demonstration
+File:JGSDF Type10 tank 20120527-02.JPG|Type 90 (left) and Type 10 (right)
+File:Japanese Type10 and Type74 Tanks.JPG|Type 74 (left) and Type 10 (right)
+File:JGSDF Type 10 tank breaks.jpg|alt=A Type 10 leans forward on its suspension as it decelerates|Braking demonstration during exercise
+File:JGSDF Type 10 tank front view.jpg|Front view
+File:Prototype Type 10 (JGSDF Public Information Center).jpg|Prototype on display
+</gallery>
+
+==See also==
+* [[M10 Booker]], US light tank/assault gun comparable in weight and price to Type 10
+* {{lwc|Type 15 tank}}
+* {{lwc|2S25 Sprut-SD}}
+
+==References==
+{{Reflist|2}}
+
+=== Bibliography ===
+* {{Cite journal|editor=Defense Industrial Production Committee|date=February 2014|title=10式戦車と今後の戦車製造の態勢|trans-title=Type 10 tanks and the future of tank manufacturing|journal=Special Journal of Defense Industrial Production Committee (防衛生産委員会特報)|issue=285|publisher=[[Japan Business Federation]]|lang=ja|id={{NAID|40019994077}}}}
+* {{Cite journal|first1=Shinichi|last1=Kiyotani|author-link1=:ja:清谷信一|title=Japan unveils TK-X main battle tank prototype|journal=[[Jane's Defence Weekly]]|volume=45|issue=9|date=27 February 2008|page=13}}
+* {{Cite book|last=Ichinohe|first=Takao|date=June 2011|chapter=Type 10 Tanks of the Japan Ground Self-Defense Force|title=10式戦車と次世代大型戦闘車|trans-title=Type 10 Tanks and Next-generation Heavy Fighting Vehicles|series=Supplement to [[:ja:軍事研究 (雑誌)|Japan Military Review]]|lang=ja|id={{NCID|AN00067836}}}}
+* {{Cite book|editor=Technical Research and Development Institute|year=2012|title=防衛省技術研究本部六十年史|trans-title=Sixty Years of the Technical Research Headquarters of the Ministry of Defense|publisher=[[Ministry of Defense (Japan)|Ministry of Defense]]|lang=ja|id={{NCID|BB10936527}}}}
+
+==External links==
+{{Commons category|Type 10 tanks (JGSDF)}}
+* [https://www.mod.go.jp/j/approach/hyouka/seisaku/results/21/jigo/youshi/13.pdf Development report of JSDF New tank (Japanese) 1] – Japanese Ministry of Defense.
+* [https://www.mod.go.jp/j/approach/hyouka/seisaku/results/21/jigo/honbun/13.pdf Development report of JSDF New tank (Japanese) 2] – Japanese Ministry of Defense.
+* [https://www.mod.go.jp/j/approach/hyouka/seisaku/results/21/jigo/sankou/13.pdf Development report of JSDF New tank (Japanese) 3] – Japanese Ministry of Defense.
+* [https://web.archive.org/web/20100901053859/http://www.mod.go.jp/trdi/en/programs/ground/ground.html New Tank] – Japanese Ministry of Defense TRDI.
+* [https://web.archive.org/web/20110323195435/http://www.mod.go.jp/trdi/research/images/shinsensha.jpg TRDI Official Photos of Type 10 tank #1]
+* [https://web.archive.org/web/20121001031214/http://www.mod.go.jp/trdi/research/gaibuhyouka/movie/TK-X.wmv TRDI Official Video of TK-X tank]
+* {{YouTube|AMyunYidyKg|Slalom shooting of Type 10 Tank}} ([[:ja:Impress Watch|Car Watch]])
+* {{YouTube|TLnjfYKhcU4|Japan New 44ton MBT (Main Battle Tank) Type10 Tank Prototype (TK-X) Test}}
+
+{{Mitsubishi Heavy Industries}}
+{{Post-Cold War tanks|style=wide}}
+{{ModernJapaneseAFVs}}
+
+[[Category:Main battle tanks of Japan]]
+[[Category:Main battle tanks of the post–Cold War period]]
+[[Category:Mitsubishi Heavy Industries armored vehicles]]
+[[Category:Post–Cold War military equipment of Japan]]
+[[Category:Tanks with autoloaders]]
+[[Category:Military vehicles introduced in the 2010s]]
+[[Category:Fourth-generation main battle tanks]]

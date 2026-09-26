@@ -1,0 +1,90 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Held tier-5 English Wikipedia compilation for the ASCOD. The registry marks primary_held false because the article is a secondary compilation. The entry is the Spanish Pizarro variant. It publishes the Pizarro weight, the overall length, width and height, the engine named only as a diesel, the engine rating of 600 hp for Pizarro phase 1 and the road speed. It publishes no ground clearance, no operational range, no track shoe width, no track pitch and no grouser statement, so the entry is not runtime-ready.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "pizarro",
+      "canonical_name": "Pizarro",
+      "maker": "unknown",
+      "model": "ASCOD",
+      "variant": "Pizarro infantry fighting vehicle",
+      "variant_id": "pizarro",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Spain",
+      "era": "modern",
+      "aliases": [
+        "pizarro",
+        "ascod",
+        "ascod pizarro"
+      ],
+      "keywords": [
+        "ifv",
+        "infantry fighting vehicle",
+        "tracked",
+        "pizarro",
+        "ascod"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 26300,
+          "unit": "kg",
+          "source": "wikipedia_ascod",
+          "locator": "Infobox, Specifications section, Weight row",
+          "state": "ASCOD Pizarro weight published as 26.3 t; recorded as 26,300 kg with the tonne taken as 1,000 kg; the same row publishes the ASCOD Ulan mass of 28 t as a separate variant",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6830,
+          "unit": "mm",
+          "source": "wikipedia_ascod",
+          "locator": "Infobox, Specifications section, Length row",
+          "state": "overall length published as 6.83 m for the Pizarro and Ulan",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3640,
+          "unit": "mm",
+          "source": "wikipedia_ascod",
+          "locator": "Infobox, Specifications section, Width row",
+          "state": "overall width published as 3.64 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2430,
+          "unit": "mm",
+          "source": "wikipedia_ascod",
+          "locator": "Infobox, Specifications section, Height row",
+          "state": "overall height published as 2.43 m",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Diesel",
+          "unit": "text",
+          "source": "wikipedia_ascod",
+          "locator": "Infobox, Specifications section, Engine row",
+          "state": "the article names the engine only as a diesel",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 600,
+          "unit": "hp",
+          "source": "wikipedia_ascod",
+          "locator": "Infobox, Specifications section, Engine power row",
+          "state": "engine power published as 600 hp for the Pizarro phase 1; the same row publishes 720 hp for the Pizarro phase 2 and the Ulan as separate variants",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 72,
+          "unit": "km/h",
+          "source": "wikipedia_ascod",
+          "locator": "Infobox, Specifications section, Maximum speed row",
+          "state": "road speed published as 72 km/h",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

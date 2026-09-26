@@ -1,0 +1,367 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-5 English Wikipedia article 'Leopard 2'. The article is a secondary compilation, so every value is grade claimed and the registry marks primary_held false. It holds the German Leopard 2A6 and the Finnish 2A6, Greek 2A6 HEL and Hungarian 2A7 national variants as tracked entries. The article publishes the 2A6 mass, length, width and height, the ground clearance, the engine model and rating, the maximum road speed and the road range, and the 2A7V mass. The national entries reuse the published 2A6 family figures and say so in each state.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "leopard_2a6",
+      "canonical_name": "Leopard 2A6",
+      "maker": "Krauss-Maffei Wegmann",
+      "model": "Leopard 2",
+      "variant": "2A6 main battle tank",
+      "variant_id": "leopard_2a6",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Germany",
+      "era": "modern",
+      "aliases": [
+        "leopard 2",
+        "leopard 2a6",
+        "2a6",
+        "leopard"
+      ],
+      "keywords": [
+        "mbt",
+        "main battle tank",
+        "leopard",
+        "tracked"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 62300,
+          "unit": "kg",
+          "source": "wikipedia_leopard_2",
+          "locator": "Infobox, Specifications section, Mass row, 2A6 entry",
+          "state": "mass published for the 2A6 as 62.3 tonnes (68.7 short tons); recorded as 62,300 kg with the tonne taken as 1,000 kg; the same row publishes 2A4, 2A5 and 2A7V masses as separate configurations, and the article states no kerb or gross weight",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 10970,
+          "unit": "mm",
+          "source": "wikipedia_leopard_2",
+          "locator": "Infobox, Specifications section, Length row, 2A6 entry",
+          "state": "length published for the 2A6 as 10.97 m (36.0 ft); the same row publishes 9.97 m (32.7 ft) for the 2A4 with the label gun forward, and the 2A6 figure carries no hull or gun label of its own",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3750,
+          "unit": "mm",
+          "source": "wikipedia_leopard_2",
+          "locator": "Infobox, Specifications section, Width row, 2A6 entry",
+          "state": "width published for the 2A6 as 3.75 m (12.3 ft); the same row publishes 3.7 m (12 ft) for the 2A4 as a separate configuration",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 3000,
+          "unit": "mm",
+          "source": "wikipedia_leopard_2",
+          "locator": "Infobox, Specifications section, Height row, 2A6 entry",
+          "state": "height published for the 2A6 as 3 m (9.8 ft); the same row publishes 2.8 m (9.2 ft) for the 2A4 as a separate configuration",
+          "grade": "claimed"
+        },
+        "ground_clearance_mm": {
+          "value": 540,
+          "unit": "mm",
+          "source": "wikipedia_leopard_2",
+          "locator": "Technical data table, Ground clearance row",
+          "state": "ground clearance published as 0.54 m (1 ft 9 in); the table carries one figure for the row and does not name a mark",
+          "grade": "claimed"
+        },
+        "fording_depth_mm": {
+          "value": 1200,
+          "unit": "mm",
+          "source": "wikipedia_leopard_2",
+          "locator": "Technical data table, Wading depth without preparation row",
+          "state": "fording depth without preparation, published as a wading depth of 1.2 m (3 ft 11 in); the published metre figure used directly",
+          "grade": "claimed"
+        },
+        "wading_depth_mm": {
+          "value": 4000,
+          "unit": "mm",
+          "source": "wikipedia_leopard_2",
+          "locator": "Technical data table, Wading depth with snorkel row",
+          "state": "wading depth with snorkel, published as 4 m (13 ft); the published metre figure used directly",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "MTU MB 873 Ka-501",
+          "unit": "text",
+          "source": "wikipedia_leopard_2",
+          "locator": "Infobox, Specifications section, Engine row",
+          "state": "engine published as an MTU MB 873 Ka-501 liquid-cooled V12 twin-turbo diesel",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 1500,
+          "unit": "hp",
+          "source": "wikipedia_leopard_2",
+          "locator": "Infobox, Specifications section, Engine row",
+          "state": "engine published as 1,100 kW (1,500 hp) at 2,600 rpm, with no net basis",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 70,
+          "unit": "km/h",
+          "source": "wikipedia_leopard_2",
+          "locator": "Infobox, Specifications section, Maximum speed row",
+          "state": "maximum road speed, published as 70 km/h (43 mph)",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 340,
+          "unit": "km",
+          "source": "wikipedia_leopard_2",
+          "locator": "Infobox, Specifications section, Operational range row",
+          "state": "road range, published as 340 km (210 mi); the same row publishes 220 km cross country and 280 km average as separate states",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "catalogue_id": "leopard_2a6_finland",
+      "canonical_name": "Leopard 2A6 (Finland)",
+      "maker": "Krauss-Maffei Wegmann",
+      "model": "Leopard 2",
+      "variant": "2A6, Finnish service",
+      "variant_id": "leopard_2a6_finland",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Finland",
+      "era": "modern",
+      "aliases": [
+        "leopard 2a6 finland",
+        "leopard 2 finland"
+      ],
+      "keywords": [
+        "mbt",
+        "main battle tank",
+        "tracked",
+        "leopard"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 62300,
+          "unit": "kg",
+          "source": "wikipedia_leopard_2",
+          "locator": "Infobox, mass row, 2A6 entry",
+          "state": "mass published for the 2A6 as 62.3 tonnes; recorded as 62,300 kg with the tonne taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 10970,
+          "unit": "mm",
+          "source": "wikipedia_leopard_2",
+          "locator": "Infobox, length row, 2A6 entry",
+          "state": "length published for the 2A6 as 10.97 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3750,
+          "unit": "mm",
+          "source": "wikipedia_leopard_2",
+          "locator": "Infobox, width row, 2A6 entry",
+          "state": "width published for the 2A6 as 3.75 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 3000,
+          "unit": "mm",
+          "source": "wikipedia_leopard_2",
+          "locator": "Infobox, height row, 2A6 entry",
+          "state": "height published for the 2A6 as 3 m",
+          "grade": "claimed"
+        },
+        "ground_clearance_mm": {
+          "value": 540,
+          "unit": "mm",
+          "source": "wikipedia_leopard_2",
+          "locator": "Technical data table, Ground clearance row",
+          "state": "ground clearance published as 0.54 m; the table carries one figure for the row and names no mark",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 1500,
+          "unit": "hp",
+          "source": "wikipedia_leopard_2",
+          "locator": "Infobox, engine row",
+          "state": "engine published as 1,100 kW (1,500 hp) at 2,600 rpm, with no net basis",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 70,
+          "unit": "km/h",
+          "source": "wikipedia_leopard_2",
+          "locator": "Infobox, maximum speed row",
+          "state": "maximum road speed published as 70 km/h",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 340,
+          "unit": "km",
+          "source": "wikipedia_leopard_2",
+          "locator": "Infobox, operational range row",
+          "state": "road range published as 340 km",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "catalogue_id": "leopard_2a6_hel",
+      "canonical_name": "Leopard 2A6 HEL",
+      "maker": "Krauss-Maffei Wegmann",
+      "model": "Leopard 2",
+      "variant": "2A6 HEL, Hellenic service",
+      "variant_id": "leopard_2a6_hel",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Greece",
+      "era": "modern",
+      "aliases": [
+        "leopard 2a6 hel",
+        "leopard 2hel",
+        "leopard 2 greece"
+      ],
+      "keywords": [
+        "mbt",
+        "main battle tank",
+        "tracked",
+        "leopard"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 62300,
+          "unit": "kg",
+          "source": "wikipedia_leopard_2",
+          "locator": "Infobox, mass row, 2A6 entry",
+          "state": "mass published for the 2A6 as 62.3 tonnes; recorded as 62,300 kg with the tonne taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 10970,
+          "unit": "mm",
+          "source": "wikipedia_leopard_2",
+          "locator": "Infobox, length row, 2A6 entry",
+          "state": "length published for the 2A6 as 10.97 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3750,
+          "unit": "mm",
+          "source": "wikipedia_leopard_2",
+          "locator": "Infobox, width row, 2A6 entry",
+          "state": "width published for the 2A6 as 3.75 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 3000,
+          "unit": "mm",
+          "source": "wikipedia_leopard_2",
+          "locator": "Infobox, height row, 2A6 entry",
+          "state": "height published for the 2A6 as 3 m",
+          "grade": "claimed"
+        },
+        "ground_clearance_mm": {
+          "value": 540,
+          "unit": "mm",
+          "source": "wikipedia_leopard_2",
+          "locator": "Technical data table, Ground clearance row",
+          "state": "ground clearance published as 0.54 m; the table carries one figure for the row and names no mark",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 1500,
+          "unit": "hp",
+          "source": "wikipedia_leopard_2",
+          "locator": "Infobox, engine row",
+          "state": "engine published as 1,100 kW (1,500 hp) at 2,600 rpm, with no net basis",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 70,
+          "unit": "km/h",
+          "source": "wikipedia_leopard_2",
+          "locator": "Infobox, maximum speed row",
+          "state": "maximum road speed published as 70 km/h",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 340,
+          "unit": "km",
+          "source": "wikipedia_leopard_2",
+          "locator": "Infobox, operational range row",
+          "state": "road range published as 340 km",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "catalogue_id": "leopard_2a7_hungary",
+      "canonical_name": "Leopard 2A7 (Hungary)",
+      "maker": "Krauss-Maffei Wegmann",
+      "model": "Leopard 2",
+      "variant": "2A7, Hungarian order",
+      "variant_id": "leopard_2a7_hungary",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Hungary",
+      "era": "modern",
+      "aliases": [
+        "leopard 2a7 hungary",
+        "leopard 2a7",
+        "leopard 2 hungary"
+      ],
+      "keywords": [
+        "mbt",
+        "main battle tank",
+        "tracked",
+        "leopard"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 66500,
+          "unit": "kg",
+          "source": "wikipedia_leopard_2",
+          "locator": "Infobox, mass row, 2A7V entry",
+          "state": "mass published for the 2A7V as 66.5 tonnes; the article names the Hungarian order as the 2A7 and publishes the A7 mass under the 2A7V label; the tonne taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "ground_clearance_mm": {
+          "value": 540,
+          "unit": "mm",
+          "source": "wikipedia_leopard_2",
+          "locator": "Technical data table, Ground clearance row",
+          "state": "ground clearance published as 0.54 m; the table carries one figure for the row and names no mark",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 1500,
+          "unit": "hp",
+          "source": "wikipedia_leopard_2",
+          "locator": "Infobox, engine row",
+          "state": "engine published as 1,100 kW (1,500 hp) at 2,600 rpm, with no net basis",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 70,
+          "unit": "km/h",
+          "source": "wikipedia_leopard_2",
+          "locator": "Infobox, maximum speed row",
+          "state": "maximum road speed published as 70 km/h",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 340,
+          "unit": "km",
+          "source": "wikipedia_leopard_2",
+          "locator": "Infobox, operational range row",
+          "state": "road range published as 340 km",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

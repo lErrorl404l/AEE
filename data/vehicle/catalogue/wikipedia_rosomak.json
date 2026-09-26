@@ -1,0 +1,105 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Held tier-5 English Wikipedia compilation for the KTO Rosomak. The registry marks primary_held false because the article is a secondary compilation. It publishes the weight, the overall length, width and height, the engine family, the engine rating of 405 kW (543 hp) with the DC 13 option as a separate row, the 8x8 arrangement, the maximum road speed and the road range. It publishes no ground clearance, no tyre size, no transmission, no torque and no grouser statement, so the entry is not runtime-ready.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "rosomak",
+      "canonical_name": "Rosomak",
+      "maker": "unknown",
+      "model": "KTO Rosomak",
+      "variant": "KTO Rosomak wheeled armoured personnel carrier",
+      "variant_id": "rosomak",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Poland",
+      "era": "modern",
+      "aliases": [
+        "rosomak",
+        "kto rosomak"
+      ],
+      "keywords": [
+        "apc",
+        "wheeled",
+        "8x8",
+        "rosomak",
+        "patria amv"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 22000,
+          "unit": "kg",
+          "source": "wikipedia_rosomak",
+          "locator": "Infobox, Specifications section, Weight row",
+          "state": "weight published as 22,000 kg; the article does not label it curb or gross",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 7700,
+          "unit": "mm",
+          "source": "wikipedia_rosomak",
+          "locator": "Infobox, Specifications section, Length row",
+          "state": "overall length published as 7.7 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2800,
+          "unit": "mm",
+          "source": "wikipedia_rosomak",
+          "locator": "Infobox, Specifications section, Width row",
+          "state": "overall width published as 2.8 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2300,
+          "unit": "mm",
+          "source": "wikipedia_rosomak",
+          "locator": "Infobox, Specifications section, Height row",
+          "state": "overall height published as 2.3 m",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Scania DI 12 or Scania DC 13 diesel",
+          "unit": "text",
+          "source": "wikipedia_rosomak",
+          "locator": "Infobox, Specifications section, Engine row",
+          "state": "engine published as a Scania DI 12 diesel, with the Scania DC 13 as a separate option",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 543,
+          "unit": "hp",
+          "source": "wikipedia_rosomak",
+          "locator": "Infobox, Specifications section, Engine power row",
+          "state": "engine power published as 405 kW (543 hp) for the Scania DI 12; the same row publishes 450 kW (604 hp) for the DC 13 as a separate option",
+          "grade": "claimed"
+        },
+        "wheel_count": {
+          "value": 8,
+          "unit": "count",
+          "source": "wikipedia_rosomak",
+          "locator": "Infobox, Specifications section, Suspension row",
+          "state": "the suspension row publishes 8x8 wheels",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 100,
+          "unit": "km/h",
+          "source": "wikipedia_rosomak",
+          "locator": "Infobox, Specifications section, Maximum speed row",
+          "state": "speed published as over 100 km/h on land; the stated bound of 100 km/h is recorded, not an average",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 800,
+          "unit": "km",
+          "source": "wikipedia_rosomak",
+          "locator": "Infobox, Specifications section, Operational range row",
+          "state": "operational range published as 800 km",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

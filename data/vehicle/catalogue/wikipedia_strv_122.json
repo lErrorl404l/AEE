@@ -1,0 +1,105 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Held tier-5 English Wikipedia compilation for the Stridsvagn 122. The registry marks primary_held false because the article is a secondary compilation. It publishes the mass, the gun-forward length, the width, the height, the ground clearance, the engine model, the engine rating as 1,500 PS (1,479 hp) with no net basis, the transmission model, the maximum road speed and the internal-fuel range. It publishes no track shoe width, no track pitch and no grouser statement, so the entry is not runtime-ready.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "strv_122",
+      "canonical_name": "Stridsvagn 122",
+      "maker": "unknown",
+      "model": "Stridsvagn 122",
+      "variant": "Strv 122 main battle tank",
+      "variant_id": "strv_122",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Sweden",
+      "era": "modern",
+      "aliases": [
+        "stridsvagn 122",
+        "strv 122",
+        "strv122"
+      ],
+      "keywords": [
+        "mbt",
+        "main battle tank",
+        "tracked",
+        "leopard 2"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 62500,
+          "unit": "kg",
+          "source": "wikipedia_strv_122",
+          "locator": "Infobox, Specifications section, Mass row",
+          "state": "mass published as 62.5 t; recorded as 62,500 kg with the tonne taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 9970,
+          "unit": "mm",
+          "source": "wikipedia_strv_122",
+          "locator": "Infobox, Specifications section, Length row",
+          "state": "overall length gun forward published as 9.97 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3750,
+          "unit": "mm",
+          "source": "wikipedia_strv_122",
+          "locator": "Infobox, Specifications section, Width row",
+          "state": "overall width published as 3.75 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 3000,
+          "unit": "mm",
+          "source": "wikipedia_strv_122",
+          "locator": "Infobox, Specifications section, Height row",
+          "state": "overall height published as 3.0 m",
+          "grade": "claimed"
+        },
+        "ground_clearance_mm": {
+          "value": 540,
+          "unit": "mm",
+          "source": "wikipedia_strv_122",
+          "locator": "Infobox, Specifications section, Ground clearance row",
+          "state": "ground clearance published as 540 mm; the published millimetre figure used directly",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "MTU MB 873 Ka-501 liquid-cooled V12 twin-turbo diesel",
+          "unit": "text",
+          "source": "wikipedia_strv_122",
+          "locator": "Infobox, Specifications section, Engine row",
+          "state": "engine published as an MTU MB 873 Ka-501 liquid-cooled V12 twin-turbo diesel",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 1479,
+          "unit": "hp",
+          "source": "wikipedia_strv_122",
+          "locator": "Infobox, Specifications section, Engine power row",
+          "state": "engine rating published as 1,500 PS (1,479 hp, 1,103 kW) at 2,600 rpm; the explicit horsepower figure is recorded and PS is metric horsepower",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 68,
+          "unit": "km/h",
+          "source": "wikipedia_strv_122",
+          "locator": "Infobox, Specifications section, Maximum speed row",
+          "state": "maximum road speed published as 68 km/h",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 550,
+          "unit": "km",
+          "source": "wikipedia_strv_122",
+          "locator": "Infobox, Specifications section, Operational range row",
+          "state": "range on internal fuel published as 550 km",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

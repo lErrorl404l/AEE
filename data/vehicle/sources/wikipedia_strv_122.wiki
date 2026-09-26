@@ -1,0 +1,136 @@
+{{Short description|Swedish main battle tank}}
+{{Use dmy dates|date=January 2025}}
+{{Use British English|date=March 2025}}
+{{Infobox weapon
+| name               = Stridsvagn 122
+| image              = Strv122 3 cropped.jpg
+| image_size         = 
+|caption=A Swedish Stridsvagn 122 in June 2010
+| origin             = Sweden and Germany<ref name="ointres">{{Cite web |last=Lindström |first=Rickard O. |title=Strv 121 & Strv 122 |url=http://www.ointres.se/strv_121_och_strv_122.htm |url-status=live |archive-url=https://web.archive.org/web/20210225091959/http://ointres.se/strv_121_och_strv_122.htm |archive-date=25 February 2021 |access-date=9 May 2021 |website=Ointres |place=SE}}</ref>
+| type               = [[Main battle tank]]
+| is_vehicle         = yes
+| is_UK              = no
+| service            = 1997–present<ref name="sv-pansar">{{cite book |first1=Rickard O. |last1=Lindström |first2=Carl-Gustaf |last2=Svantesson |name-list-style=amp |date=2009 |title=Svenskt Pansar: 90 år av svensk stridsfordonsutveckling |trans-title=Swedish Armor: 90 years of Swedish combat vehicle development |language=sv |location=Finland |publisher=Bookwell Oy |page=112 |isbn=978-91-85789-375}}</ref>
+| used_by            ={{Tree list}}
+* [[Swedish Army]]
+*[[Ukrainian Ground Forces]]
+{{Tree list/end}}
+| wars               ={{Tree list}}
+*[[Russo-Ukrainian War]]
+**[[Russian invasion of Ukraine]]
+{{Tree list/end}}
+| designer           = 
+| design_date        = 
+| manufacturer       = [[Krauss-Maffei Wegmann]]: 29 chassis<ref name="ointres" /><br/>[[BAE Systems AB|Land Systems Hägglunds AB]]: 91 chassis<ref name="ointres" />
+| unit_cost          = [[US$]]5.74 million (FY 1994)<br>(~$11.9 million FY 2023)
+| production_date    = 1994–2002
+| number             = 120
+| variants           = ''Strv 122A'' (110 chassis)<br />''Strv 122B'' (10 chassis)
+| weight             = {{convert|62.5|t}}<ref name="sv-pansar" /><ref name="fmv-strv122-fakta">{{cite web |url=http://fmv.se/sv/Projekt/Stridsvagn-121-och-122-Leopard-2-/Fakta/ |title=Leopard 2 – Stridsvagn 122 Facts |website=Swedish Defence Materiel Administration |access-date=3 November 2018 |archive-url=https://web.archive.org/web/20161027030616/http://www.fmv.se/sv/Projekt/Stridsvagn-121-och-122-Leopard-2-/Fakta/ |archive-date=27 October 2016 |url-status=dead}}</ref>
+| length             = {{convert|9.97|m|ftin|abbr=on}} (gun forward)
+| width              = {{convert|3.75|m|ftin|abbr=on}}
+| height             = {{convert|3.0|m|ftin|abbr=on}}
+| crew               = 4
+| armour             = 3rd generation composite; including high-hardness steel, tungsten and plastic filler with ceramic component.
+| primary_armament   = 1 x 12 cm kan strv 122 ([[Rheinmetall 120&nbsp;mm Gun|120&nbsp;mm Rheinmetall L44]] smoothbore [[tank gun]])<br /> 42 rounds
+| secondary_armament = 2 x [[7.62×51mm NATO]] [[Rheinmetall MG 3|Ksp m/94]] machine gun<br /> 4,750 rounds<br /> 4 x 2 GALIX [[Grenade launcher#Description|smoke grenade launchers]]<ref name="fmv-strv122-fakta" />
+| engine             = [[MTU Friedrichshafen|MTU]] MB 873 Ka-501 [[Radiator (engine cooling)|liquid-cooled]] [[V12 engine|V-12]] [[Twin-turbo]] [[diesel engine]]
+| engine_power       = 1,500 PS (1,479&nbsp;hp, 1,103&nbsp;kW) at 2,600&nbsp;rpm
+| transmission       = Renk HSWL 354
+| fuel_capacity      = 1,200 [[liters]] (317 US [[gallon]]s; 264 imp. gal)
+| pw_ratio           = {{convert|24.19|PS/t|abbr=on}}
+| suspension         = [[Torsion-bar suspension]]
+| clearance          = 540 mm
+| vehicle_range      = {{convert|550|km|mi|abbr=on}} (internal fuel)<ref name="sv-pansar" /><ref name="fmv-strv122-fakta" />
+| speed              = {{convert|68|km/h|mph|abbr=on}}<ref name="sv-pansar" /><ref name="fmv-strv122-fakta" />
+}}
+[[File:20260622 mss robkru01 strv123-a rollout 149-webb.jpg|thumb|342x342px|Front view of Strv 123A; Noticeable exterior differences include a longer barrel and add-on driver electronic systems]]
+[[File:Swedish Leopard 2 Tank.jpg|thumb|Stridsvagn 122 during an urban warfare exercise, 2006]]
+
+'''Stridsvagn 122''' ('''strv 122''', {{IPA|sv|ˈstrɪ̂tːsvaŋn|IPA|Sv-Stridsvagn.ogg}}){{efn|"Strv" is the Swedish military abbreviation of ''stridsvagn'', Swedish for [[chariot]] and [[tank]] (literally ''combat wagon''), while the number "122" comes from the Swedish designation system for tanks, where the two initial numbers, 12, indicates the calibre of the tank’s main gun, 12 cm, and the last number indicates that it is the second tank model with said calibre to enter service with the Swedish military. Note, the Swedish designation "stridsvagn 122" and abbreviation "strv 122" are not "names" canonically and should not be capitalized within a sentence.}} is a Swedish [[main battle tank]] that, like the German [[Leopard 2#Leopard 2A5|Leopard 2A5]], is based on the German [[Leopard 2#Leopard 2 Imp|Leopard 2 Improved]] variant using such newer technology as command, control, and fire-control systems, reinforced armour, and long-term combat capacity. Externally, the vehicle is distinguished from the Leopard 2A5 by the French GALIX smoke dispensers, different storage bins, and the thicker crew hatches.<ref name="strv122-fmv">{{cite web |url=http://www.fmv.se/WmTemplates/Page.aspx?id=1106 |archive-url=https://web.archive.org/web/20050210213646/http://www.fmv.se/WmTemplates/Page.aspx?id=1106 |url-status=dead |archive-date=10 February 2005 |title=Stridsvagn 122|date=10 February 2005 |website=Försvarets materielverk |access-date=3 November 2018}}</ref>
+
+== Development ==
+After the strv 2000 project for a new Swedish main battle tank was cancelled,<ref>{{Cite web |title=Projekt "Stridsvagn 2000" |url=http://www.ointres.se/strv_2000.htm |url-status=live |archive-url=https://web.archive.org/web/20230923154354/http://www.ointres.se/strv_2000.htm |archive-date=23 September 2023 |access-date=16 April 2023 |website=www.ointres.se}}</ref> the Swedish government decided in 1991 that a foreign main battle tank was to be procured to replace the [[Centurion (tank)#Sweden 2|Strv 101, 102]], [[Stridsvagn 103|103]] and [[Centurion (tank)#Sweden 2|104]] in service at the time. During the project "Strv Ny", three tank models were sent to Sweden to participate in trials: the American [[M1 Abrams|M1A2 Abrams]], the German [[Leopard 2#Leopard 2 Imp|Leopard 2 Improved]], and a prototype variant of the French [[Leclerc tank|Leclerc]].
+
+[[File:Stridsvagn 121 (Swedish Leopard 2A4).jpg|thumb|Strv 121 with applied Barracuda IR-dampening camo net]]
+The trials concluded with the Leopard 2 approved as the winner and the M1A2 in second place. The shortcomings of the Leclerc were partly attributed to it still being in the development phase and not yet mature for service. In 1994 the Swedish government decided to acquire 120 new production tanks and 160 older [[Leopard 2A4]]s as a stopgap before the newer tanks were finished. The Leopard 2A4 in Swedish service became designated strv 121 while the new production became the strv 122. Of the 120 strv 122, 29 were manufactured by [[Krauss-Maffei Wegmann]] and the other 91 were manufactured by [[Bofors]] and Hägglunds.<ref>{{Cite web |title=Projekt "Stridsvagn Ny" |url=http://www.ointres.se/projekt_stridsvagn_ny.htm |access-date=13 May 2022 |website=Ointres |place=SE |archive-date=18 July 2023 |archive-url=https://web.archive.org/web/20230718171654/http://www.ointres.se/projekt_stridsvagn_ny.htm |url-status=live }}</ref>
+
+== Features ==
+The Leopard 2A5's width of 3.75&nbsp;meters<ref name="fmv-strv122-fakta" /> was maintained and the weight increased by {{convert|350|kg}}.<ref name="MBT122B">{{cite web |url=http://www.ibd-deisenroth-engineering.de/news/items/MBT122B_with_new_Protection.html?file=tl_files/resources/content-pdfs/2010-12%20New%20MBT122B%20Evolution%20with%20Unprecedented%20Protection.pdf |title=New MBT122B Evolution with Unprecedented Protection |access-date=28 December 2010 |website=IBD Deisenroth Engineering |url-status=dead |archive-url=https://web.archive.org/web/20111008032615/http://www.ibd-deisenroth-engineering.de/news/items/MBT122B_with_new_Protection.html?file=tl_files%2Fresources%2Fcontent-pdfs%2F2010-12%20New%20MBT122B%20Evolution%20with%20Unprecedented%20Protection.pdf |archive-date=8 October 2011 }}</ref>
+
+The strv 122 was designed to fight in Swedish conditions including heavily forested areas as well as urban terrain. The designation derives from the 12&nbsp;cm gun; it was the second tank in Swedish service featuring this calibre (the first being the strv 121 — a Leopard 2A4 fitted with Swedish lights and radios and painted in Swedish camouflage). The Swedish strv 122 features:<ref name="strv122-f">{{cite web |url=https://www.forsvarsmakten.se/sv/information-och-fakta/materiel-och-teknik/mark/stridsvagn-122/ |title=Stridsvagn 122 |access-date=26 January 2018 |website=Försvarsmakten |language=sv |archive-url=https://web.archive.org/web/20171121005751/http://www.forsvarsmakten.se/sv/information-och-fakta/materiel-och-teknik/mark/stridsvagn-122/ |archive-date=21 November 2017 |url-status=live }}</ref>
+* Heavily reinforced armour to protect against man-portable anti-tank weapons.
+* An advanced [[CBRN]] defence system for protection against chemical, biological, and radioactive weapons.
+* Wading capability to pass through water up to 1.4&nbsp;meters deep.
+* Quick ability to discover, identify, and lock-on a target with the assistance of a [[laser rangefinder]], [[thermographic camera]], and a speed/distance/accuracy calculator for maximum accuracy.
+* Ability to lock-on to numerous targets at once, enabling the tank to fight numerous enemy vehicles without having to manually re-aim the gun after every shot.
+* Active communication for improved cooperation between units.
+* Tank Command & Control System (TCCS) by Celsius Tech Systems AB.<ref name="fmv-strv122-fakta"/>
+
+== Production and service ==
+Only 42 strv 122 tanks were in active service as of 2013,<ref>{{cite web |url=http://fighting-vehicles.com/strv-122-tank/ |title=Strv 122 Tank |website=Fighting vehicles |date=3 December 2016 |access-date=25 November 2017 |quote=42 Strv 122 remain in active service. |archive-url=https://web.archive.org/web/20171127213438/http://fighting-vehicles.com/strv-122-tank/ |archive-date=27 November 2017 |url-status=live}}</ref> with each tank being rotated with those kept in storage to minimise wear. They were divided between three companies, two at the [[Skaraborgs regemente (armoured)|Skaraborg Regiment]], P 4 at Skövde and one at [[Norrbottens regemente|Norrbottens Regiment]], I 19 at Boden.<ref>{{cite web |url=http://www.militaryfactory.com/armor/detail.asp?armor_id=457 |title=Stridsvagn 122 (Strv 122) Main Battle Tank (1998) |work=Military factory |date=2011 |access-date=23 May 2015 |archive-url=https://web.archive.org/web/20150316171905/http://militaryfactory.com/armor/detail.asp?armor_id=457 |archive-date=16 March 2015 |url-status=live }}</ref> That August the Swedish government announced that it would be upgrading its strv 122 tanks to extend their operational lifespan to 2030. Initial reports stated that 56 tanks were set to be upgraded but this figure was later revised to 42.<ref>{{Cite web |date=21 August 2013 |title=Hälften får stå i förråd |url=http://www.nyteknik.se/nyheter/fordon_motor/article3746549.ece |archive-url=https://web.archive.org/web/20130823190423/http://www.nyteknik.se/nyheter/fordon_motor/article3746549.ece |archive-date=23 August 2013 |access-date=1 September 2024 |website=nyteknik.se}}</ref><ref>{{Cite web |last1=Dahlin |first1=Niklas |last2=Kleja |first2=Monica \ |date=21 August 2013 |title=Nu rustas Leopardstridsvagnen |url=https://www.nyteknik.se/nyheter/fordon_motor/article3746554.ece |archive-url=https://web.archive.org/web/20130824153056/https://www.nyteknik.se/nyheter/fordon_motor/article3746554.ece |archive-date=24 August 2013 |access-date=2 September 2024 |website=nyteknik.se}}</ref> In 2016, upgrades for 88 tanks were ordered. The tanks would receive a tactical battalion command system ({{lang|sv|Stridsledningssystem Bataljon}}) from [[Saab AB|SAAB]], a new observation/gun sight (TIM) for the commander, and new communication systems for international missions. A modular 360° ballistic protection system had been planned but not implemented.
+
+Krauss-Maffei Wegmann was contracted to do the upgrades for 46 tanks, while the remainder were handled by the Swedish Defence Materiel Administration ([[Försvarets materielverk|FMV]]) with upgrade kits procured from Krauss-Maffei Wegmann. Planned delivery between 2018 and 2023.<ref>{{cite web |url=http://fmv.se/sv/Projekt/Stridsvagnssystem/ |title=Stridsvagnssystem |first=Magnus |last=Hellgren |website=FMV |place=SE |access-date=3 November 2018 |archive-url=https://web.archive.org/web/20181104085530/http://fmv.se/sv/Projekt/Stridsvagnssystem/ |archive-date=4 November 2018 |url-status=live}}</ref><ref>{{cite web |url=https://www.nyteknik.se/fordon/nu-rustas-leopardstridsvagnen-6402804#conversion-122831618 |title=Nu rustas Leopardstridsvagnen |website=Nyteknik |access-date=3 November 2018 |archive-url =https://web.archive.org/web/20181104050239/https://www.nyteknik.se/fordon/nu-rustas-leopardstridsvagnen-6402804#conversion-122831618 |archive-date=4 November 2018 |url-status=live}}</ref><ref name=":0" /><ref>{{Cite web |date=20 February 2019 |title=Uppföljning av pågående större anskaffningar |url=https://www.fmv.se/globalassets/dokument/om-fmv/fmv-ar18-bilaga-1-faststalld-slutversion.pdf |access-date=2 September 2024 |website=fmv.se}}</ref>
+
+In 2015, the Swedish government decided that an additional tank company should be established on the island of [[Gotland]]. This company was to be trained at P 4 and transferred to the re-established [[Gotland Regiment]], P 18 in 2019.<ref>{{Cite web |last=Leino |first=Per |date=13 December 2017 |title=Klartecken för Gotlands regemente |url=https://helagotland.se/samhalle/klartecken-for-gotlands-regemente-14995163.aspx |access-date=3 October 2022 |website=Helagotland |place=SE |language=sv |archive-date=6 October 2022 |archive-url=https://web.archive.org/web/20221006062634/https://helagotland.se/samhalle/klartecken-for-gotlands-regemente-14995163.aspx |url-status=live }}</ref><ref>{{Cite web |title=Verksamhet på Gotland |url=https://www.forsvarsmakten.se/sv/organisation/gotlands-regemente-p-18/var-verksamhet-pa-gotland/ |access-date=3 October 2022 |website=Försvarsmakten |language=sv |archive-date=10 June 2023 |archive-url=https://web.archive.org/web/20230610035041/https://www.forsvarsmakten.se/sv/organisation/gotlands-regemente-p-18/var-verksamhet-pa-gotland/ |url-status=live }}</ref>
+
+On 24 February 2023 the Swedish government announced that it would send 10 Strv 122A to the [[Armed Forces of Ukraine]].<ref name="SWGOB">{{Cite web |author=Regeringen och Regeringskansliet |date=24 February 2023 |title=Heavy advanced weapons to Ukraine in new support package |url=https://www.government.se/press-releases/2023/02/heavy-advanced-weapons-to-ukraine-in-new-support-package/ |access-date=2 March 2023 |website=Regeringskansliet |language=en |archive-date=16 June 2023 |archive-url=https://web.archive.org/web/20230616100528/https://government.se/press-releases/2023/02/heavy-advanced-weapons-to-ukraine-in-new-support-package/ |url-status=live }}</ref>
+
+=== Stridsvagn 123A ===
+In October 2023 the Swedish Defence Materiel Administration ([[Försvarets materielverk|FMV]]) announced that a total of 44 Strv 122 would be upgraded to the Strv 123A standard. Modifications include the more powerful [[Rheinmetall Rh-120#Rh-120 L/55 A1 120mm|L/55 A1 gun]], new tracks, an Auxiliary Power Unit ([[Auxiliary power unit|APU]]), improved optics for the commander and gunner, and a night sight for the driver. Most of the electronics will be replaced along with Swedish subsystems to increase interoperability with NATO Tanks<ref name=":1">{{Cite web |title=FMV tar emot uppgraderad Stridsvagn 122 |url=https://www.fmv.se/aktuellt--press/aktuella-handelser/fmv-tar-emot-uppgraderad-stridsvagn-122/ |access-date=2026-06-23 |website=www.fmv.se |language=sv}}</ref>. With the new systems, more types of ammunition can be used. Protection for the crew has also been increased, with the driver sitting in a suspended harness instead of being fixed to the floor; increasing mine protection.<ref name=":1" />  The tanks will be upgraded by [[KNDS Deutschland|KNDS]]. The first Strv 123A tank is to be delivered in 2026.<ref>{{Cite web |title=FMV tecknar kontrakt om omfattande uppgradering av stridsvagn 122 |url=https://www.fmv.se/aktuellt--press/aktuella-handelser/fmv-tecknar-kontrakt-om-omfattande-uppgradering-av-stridsvagn-122/ |access-date=13 April 2024 |website=www.fmv.se |language=sv}}</ref><ref name="Strv 123A">{{cite web |title=Stridsvagn 122 blir stridsvagn 123A |url=https://www.forsvarsmakten.se/sv/aktuellt/2023/10/stridsvagn-122-blir-stridsvagn-123a/ |url-status=live |archive-url=https://web.archive.org/web/20231011100858/https://www.forsvarsmakten.se/sv/aktuellt/2023/10/stridsvagn-122-blir-stridsvagn-123a/ |archive-date=11 October 2023 |access-date=11 October 2023 |website=Försvarsmakten}}</ref>
+
+In January 2025, alongside the purchase of Strv 123B, the order included all Strv 122s to be upgraded to 123A Standard.<ref>{{Cite web |title=KNDS is modernising Sweden's fleet of main battle tanks – KNDS |url=https://www.knds.de/en/news-media/press-releases/detail/knds-is-modernising-swedens-fleet-of-main-battle-tanks/ |access-date=13 April 2024 |website=www.knds.de}}</ref><ref name=":2" />
+
+On June 22, 2026 [[KNDS Deutschland|KNDS]] announced the first of 110 Strv 123A Tanks have arrived in Sweden, The modernisations will be fully complete by 2030 and deliveries to the armed forces will be complete by 2031 with 22 tanks per year.<ref>{{Cite web |title=An important milestone: KNDS delivers the first of 110 Swedish Stridsvagn 123 A vehicles. {{!}} KNDS Deutschland |url=https://de.linkedin.com/posts/knds-deutschland_an-important-milestone-knds-delivers-the-activity-7474854362612310016-FtyD |access-date=2026-06-22 |website=LinkedIn |language=de}}</ref><ref name=":1" />
+
+=== Stridsvagn 123B ===
+In January 2025, the Swedish government announced the purchase of 44 Leopard 2A8 tanks in an order worth approximately €2 billion. The order also includes upgrading the rest of Sweden's stridsvagn 122 fleet to stridsvagn 123A standard.<ref name=":2">{{cite web|title=Sweden to purchase 44 German Leopard tanks|url=https://www.dw.com/en/sweden-to-purchase-44-german-leopard-tanks/a-71254958|access-date=11 January 2025|website=Deutsche Welle}}</ref><ref>{{cite web|title=FMV uppgraderar och nyanskaffar stridsvagnar|url= https://www.fmv.se/aktuellt--press/aktuella-handelser/fmv-uppgraderar-och-nyanskaffar-stridsvagnar/|access-date=11 January 2025|website=Försvarets materielverk}}</ref> The new tanks are to be delivered in 2028 to 2031 and will be designated stridsvagn 123B.
+
+== Variants ==
+
+* '''Stridsvagn 122A''' – Baseline variant. Entered service in 1997.<ref name=":0">{{Cite web |title=Strv 121 / Strv 122 |url=http://www.ointres.se/strv_121_och_strv_122.htm |access-date=12 May 2022 |website=Ointres.se |archive-date=25 February 2021 |archive-url=https://web.archive.org/web/20210225091959/http://ointres.se/strv_121_och_strv_122.htm |url-status=live }}</ref>
+* '''Stridsvagn 122B''' – Variant with improved mine protection; 10 were upgraded from existing strv 122A models in 2002.<ref name=":0"/>
+* '''Stridsvagn 122B Int.''' – Variant for international deployments in warmer climates with NATO-compatible command and control systems as well as infrared signature damping Barracuda camouflage nets; four were converted from strv 122A models in 2011<ref name=":0" /><ref>{{Cite web |title=Stridsvagn |website=SPHF |url=https://www.sphf.se/svenskt-pansar/fordon/stridsvagn-2/ |access-date=12 May 2022 |language=sv-SE |archive-date=28 July 2023 |archive-url=https://web.archive.org/web/20230728234920/https://www.sphf.se/svenskt-pansar/fordon/stridsvagn-2/ |url-status=live }}</ref>
+* '''Stridsvagn 122C''' – Renovated strv 122A with updated command and control systems by FMV's FSV Mv division and Krauss-Maffei Wegmann.<ref name=":0" />
+* '''Stridsvagn 122D''' – Renovated strv 122B with updated command and control systems by FMV's FSV Mv division and Krauss-Maffei Wegmann.<ref name=":0" /> 
+* '''Stridsvagn 122B+ Evolution''' – Prototype made by IBD and Åkers Krutbruk Protection AB in 2010. Increased protection levels using more advanced composite materials.<ref>{{Cite web |last=Lindström |first=Richard |date=2011 |title=Stridsvagn 122B+ Evolution |url=http://www.ointres.se/2011-03-18_pansar_strv122b.pdf |url-status=live |archive-url=https://web.archive.org/web/20220331080538/http://www.ointres.se/2011-03-18_pansar_strv122b.pdf |archive-date=31 March 2022 |access-date=12 May 2022 |website=Ointes.se}}</ref>
+* '''Stridsvagn 123A''' – Upgraded variant with L/55 gun, programmable ammunition, new driver's night sight and improved optics. First delivery in 2026.<ref name="Strv 123A" />
+* '''Stridsvagn 123B''' – Leopard 2A8 ordered in January 2025. First delivery expected in 2028.
+
+== Operational history ==
+
+=== Ukraine war ===
+On 24 September 2023, during the [[2023 Ukrainian counteroffensive|Zaporizhzhia counteroffensive]] in the [[Russian invasion of Ukraine]], two Ukrainian Strv 122 tanks were lost in combat.<ref>{{cite web|url=https://www.forbes.com/sites/davidaxe/2023/09/23/the-russians-just-knocked-out-a-fifth-of-the-ukrainians-best-strv-122-tanks/|title=The Russians Just Knocked Out A Fifth Of The Ukrainians' Best Strv 122 Tanks|work=Forbes|first=David|last=Axe|access-date=24 September 2023|archive-date=9 January 2024|archive-url=https://web.archive.org/web/20240109115735/https://www.forbes.com/sites/davidaxe/2023/09/23/the-russians-just-knocked-out-a-fifth-of-the-ukrainians-best-strv-122-tanks/|url-status=live}}</ref> One of them was recovered shortly after, repaired, and later inspected by Ukrainian President [[Volodymyr Zelenskyy]].<ref>{{cite web|url=https://www.forbes.com/sites/davidaxe/2023/10/04/ukrainian-troops-recovered-one-of-their-damaged-strv-122-tanks-in-time-for-the-tank-to-meet-the-president/?sh=24dc1da97b4b/|title=Ukrainian troops recovered one of their damaged Strv 122 tanks in time for the tank to meet the president|work=Forbes|first=David|last=Axe|access-date=6 October 2023|archive-date=8 October 2023|archive-url=https://web.archive.org/web/20231008182953/https://www.forbes.com/sites/davidaxe/2023/10/04/ukrainian-troops-recovered-one-of-their-damaged-strv-122-tanks-in-time-for-the-tank-to-meet-the-president/?sh=24dc1da97b4b/|url-status=live}}</ref>
+
+On 30 October 2023, a strv 122 tank was knocked out by a Russian heavy anti-tank missile. The four crew of the tank were reported to have been seen escaping.<ref>{{Cite web |last=Axe |first=David |title=Another Leopard 2 Down! Russia Is Destroying Ukraine's Best Tanks At An Accelerating Rate. |url=https://www.forbes.com/sites/davidaxe/2023/10/30/another-leopard-2-down-russia-is-destroying-ukraines-best-tanks-at-an-accelerating-rate/ |access-date=16 November 2023 |website=Forbes |language=en |archive-date=3 November 2023 |archive-url=https://web.archive.org/web/20231103204637/https://www.forbes.com/sites/davidaxe/2023/10/30/another-leopard-2-down-russia-is-destroying-ukraines-best-tanks-at-an-accelerating-rate/ |url-status=live }}</ref>
+
+According to the Oryx blog as of 1 July 2025, nine out of ten strv 122, had been destroyed, damaged, or abandoned during the Russian invasion of Ukraine.<ref name="oryxspioenkop.com">{{cite web |url=https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-ukrainian.html |date=1 July 2025 |title=Attack on Europe: Documenting Ukrainian Equipment Losses During the Russian Invasion of Ukraine |access-date=1 July 2025 |archive-date=10 May 2022 |archive-url=https://web.archive.org/web/20220510152646/https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-ukrainian.html |url-status=live }}</ref><ref>{{Cite web|url=https://defence24.pl/wojna-na-ukrainie-raport-specjalny-defence24/leopardy-i-jastrzebie-ze-szwecji-dla-ukrainy|title=Leopardy i Jastrzębie ze Szwecji dla Ukrainy|trans-title=Leopards and Hawks from Sweden for Ukraine|first=Adam|last=Świerkowski|date=24 February 2023|website=Defence24.pl|language=pl|access-date=25 February 2023|archive-date=27 March 2023|archive-url=https://web.archive.org/web/20230327145158/https://defence24.pl/wojna-na-ukrainie-raport-specjalny-defence24/leopardy-i-jastrzebie-ze-szwecji-dla-ukrainy|url-status=live}}</ref>
+
+
+== Operators ==
+
+=== Current operators ===
+
+; {{flag|Sweden}}
+: 120 units of Strv 122 ordered and built in Germany and Sweden, 10 of which were donated to Ukraine in 2023.<ref name="SWGOB2">{{Cite web |author=Regeringen och Regeringskansliet|date=24 February 2023|title=Heavy advanced weapons to Ukraine in new support package|url=https://www.government.se/press-releases/2023/02/heavy-advanced-weapons-to-ukraine-in-new-support-package/|access-date=2 March 2023|website=Regeringskansliet|language=en|archive-date=16 June 2023|archive-url=https://web.archive.org/web/20230616100528/https://government.se/press-releases/2023/02/heavy-advanced-weapons-to-ukraine-in-new-support-package/|url-status=live}}</ref>
+: The 110 remaining Strv 122 were modernised by Sweden to the Strv 123A standard, first delivered in 2026.<ref>{{Cite web |date=22 June 2026 |title=https://www.hartpunkt.de/knds-uebergibt-ersten-von-110-schwedischen-stridsvagn-123-a/ |url=https://www.hartpunkt.de/knds-uebergibt-ersten-von-110-schwedischen-stridsvagn-123-a/}}</ref>
+; {{flag|Ukraine}}
+: 10 units donated by Sweden in 2023<ref name="SWGOB2" />, 9 were destroyed, damaged or captured as of 2025.<ref name="oryxspioenkop.com2">{{cite web |url=https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-ukrainian.html|date=1 July 2025|title=Attack on Europe: Documenting Ukrainian Equipment Losses During the Russian Invasion of Ukraine|access-date=1 July 2025|archive-date=10 May 2022|archive-url=https://web.archive.org/web/20220510152646/https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-ukrainian.html|url-status=live}}</ref>
+
+== Notes ==
+{{notelist}}
+
+==References==
+{{Reflist}}
+
+===Bibliography===
+* {{cite book |title=Jane's Armour and Artillery |publisher=Jane's Publishing Company |last=Foss |first=Christopher F. |year=2002 |isbn=978-0-7106-0964-9}}
+
+== External links ==
+{{Commons category|Stridsvagn 122}}
+* [http://www.soldf.com/strv122.html Stridsvagn 122 – Strv122]
+
+{{Post-Cold War tanks|style=wide}}
+
+[[Category:Main battle tanks of Sweden]]
+[[Category:Military vehicles introduced in the 1990s]]

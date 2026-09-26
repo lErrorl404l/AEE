@@ -1,0 +1,64 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Held tier-5 English Wikipedia compilation for the Namer armoured personnel carrier. The registry marks primary_held false. It publishes the weight, the engine rating, the maximum road speed and the range. It publishes no overall dimensions and no ground clearance, so those fields are absent.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "namer",
+      "canonical_name": "Namer",
+      "maker": "Israel Military Industries",
+      "model": "Namer",
+      "variant": "Armoured personnel carrier",
+      "variant_id": "namer",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Israel",
+      "era": "modern",
+      "aliases": [
+        "namer",
+        "namer apc"
+      ],
+      "keywords": [
+        "apc",
+        "armoured personnel carrier",
+        "tracked",
+        "namer"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 60000,
+          "unit": "kg",
+          "source": "wikipedia_namer",
+          "locator": "Infobox, weight row",
+          "state": "weight published as 60+ tonnes; the lower bound of the published figure recorded, not an average; the tonne taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 1200,
+          "unit": "hp",
+          "source": "wikipedia_namer",
+          "locator": "Infobox, engine row",
+          "state": "engine published as 1,200 hp turbocharged diesel, with no net basis",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 85.2,
+          "unit": "km/h",
+          "source": "wikipedia_namer",
+          "locator": "Infobox, speed row",
+          "state": "maximum road speed published as 85.2 km/h",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 500,
+          "unit": "km",
+          "source": "wikipedia_namer",
+          "locator": "Infobox, vehicle range row",
+          "state": "range published as 500 km",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

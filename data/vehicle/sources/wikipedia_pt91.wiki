@@ -1,0 +1,317 @@
+{{Short description|Polish main battle tank}}
+{{redirect|Twardy|the conductor|Roman Twardy}}
+{{multiple issues|
+{{More footnotes needed|date=June 2024}}
+{{more citations needed|date=July 2022}}
+}}
+{{stack begin}}
+{{Infobox weapon
+| is_vehicle         = yes
+| name               = PT-91 Twardy
+| image              = PT91 MSPO15 DSC02773.JPG
+| image_size         = 300
+| origin             = [[Poland]]
+| caption            = PT-91 Twardy
+| type               = [[Main battle tank]]
+| crew               = 3
+| manufacturer       = [[Bumar-Labedy|Bumar-Łabędy]]<ref name="auto">{{Cite web|url=https://tanks-encyclopedia.com/modern/Poland/PT-91_Twardy.php|title=PT-91 Twardy MBT (1993)|website=tanks-encyclopedia.com}}</ref>
+| number             = Around 285<ref name="auto"/>
+| used_by            = See [[#Operators|Users]]
+| wars               = {{Tree list}}
+*[[Russo-Ukrainian War]]
+**[[Russian invasion of Ukraine]]
+{{Tree list/end}}
+| length             = 6.95 m (9.67 with barrel in forward position)<ref name="Modern Tanks">{{Cite web |url=http://mainbattletanks.czweb.org/Tanky/pt91.htm |title="PT-91 on Modern Tanks" |access-date=2007-11-25 |archive-url=https://web.archive.org/web/20071224214518/http://www.mainbattletanks.czweb.org/Tanky/pt91.htm |archive-date=2007-12-24 |url-status=live }}</ref>
+| width              = 3.59 m<ref name="Modern Tanks" />
+| height             = 2.19 m<ref name="Modern Tanks" />
+| weight             = {{Convert|45.9|t|lb}}
+| clearance          = 395 mm<ref name="Modern Tanks" />
+| armour             = Composite armour; front and side armour laminated; front, side and top armour behind Erawa-1/Erawa-2 ERA, steel side anti-cumulative screens
+| primary_armament   = 1 × 125&nbsp;mm 2A46 (D-81TM) gun (42 rounds)<ref name="AR">{{Cite web |url=http://www.armyrecognition.com/poland_polish_tanks_heavy_armoured_vehicles_uk/pt-91_twardy_main_battle_tank_technical_data_sheet_specifications_description_information_pictures.html |title=PT-91 Twardy MBT Main Battle Tank technical data pictures video &#124; Poland Polish tanks heavy armoured vehicles UK &#124; Poland Polish army military equipment UK |access-date=2017-04-02 |archive-url=https://web.archive.org/web/20170402173507/http://www.armyrecognition.com/poland_polish_tanks_heavy_armoured_vehicles_uk/pt-91_twardy_main_battle_tank_technical_data_sheet_specifications_description_information_pictures.html |archive-date=2017-04-02 |url-status=live }}</ref>
+| secondary_armament = 1 × 7.62mm [[PKT machine gun|PKT]] coaxial general-purpose machine gun (2,000 rounds) <br /> 1 × 12.7&nbsp;mm [[NSV (machine gun)|NSV]]T heavy machine gun (300 rounds)<ref name="Modern Tanks" />
+| engine             = [[PZL-Wola]] S-12U diesel
+| engine_power       = {{convert|850|hp|kW|abbr=on}}
+| transmission       = Manual
+| fuel_capacity      = 1,000 L<ref name="Modern Tanks" />
+| suspension         = [[torsion-bar]]
+| speed              = 60 km/h<ref name="Modern Tanks" />
+| pw_ratio           = 18.5 hp/tonne (13.8 kW/tonne)
+| vehicle_range      = 650 km (700&nbsp;km with extra fuel tanks)<ref name="Modern Tanks2">{{Cite web |url=http://mainbattletanks.czweb.org/Tanky/pt91a.htm |title="PT-91A on Modern Tanks" |access-date=2007-11-25 |archive-url=https://web.archive.org/web/20071224215817/http://www.mainbattletanks.czweb.org/Tanky/pt91a.htm |archive-date=2007-12-24 |url-status=live }}</ref>
+}}
+{{Infobox weapon
+| is_vehicle         = yes
+| name               = PT-91M Pendekar
+| image              = File:PT-91M Pendekar.jpg
+| image_size         = 300
+| type               = [[Main battle tank]]
+| origin             = [[Poland]] <!-- Do not use flag icons here, per MOS:INFOBOXFLAG -->
+| caption            = PT-91M Pendekar of Malaysian Army on display
+| crew               = 3<ref name="NTW 11/07" />
+| used_by            = [[Malaysia]] <!-- Do not use flag icons here, per MOS:INFOBOXFLAG -->
+| length             = 6.86 m<ref name="NTW 11/07" /><br />(10.03 m with barrel in forward position)<ref name="NTW 11/07" />
+| width              = 3.70 m <ref name="NTW 11/07" />
+| height             = 2.60 m <ref name="NTW 11/07" />
+| weight             = 48.5 tonnes <ref name="NTW 11/07" />
+| clearance          = 395 mm<ref name="NTW 11/07" />
+| armour             = Composite armour; front and side armour laminated; front, side and top armour behind Erawa-1/Erawa-2 ERA, steel side anti-cumulative screens
+| primary_armament   = 1 × ZTS 2A46MS 125 mm gun (42 rounds)
+| secondary_armament = 1 × 7.62mm [[FN MAG]] coaxial general-purpose machine gun (2,000 rounds), <br />1 x 12.7&nbsp;mm [[M2 Browning machine gun|FN M2 HB]] anti-aircraft heavy machine gun (250 rounds)<ref name="NTW 11/07" />
+| engine             = [[PZL-Wola]] S-1000R diesel
+| engine_power       = {{convert|1,000|hp|kW|abbr=on}}<ref name="NTW 11/07" />
+| transmission       = Automatic RENK-SESM/ESM-350M<ref name="NTW 11/07" />
+| suspension         = [[torsion-bar]]
+| speed              = 70 km/h <ref name="NTW 11/07" />
+| pw_ratio           = 20.6 hp/t (16 kW/t)
+}}
+{{stack end}}
+
+The '''PT-91 Twardy''' ({{IPA|pl|ˈtfar.dɨ}}, English: Hard) is a Polish [[main battle tank]]. A development of the [[T-72#Models|T-72M1]], it entered service in 1995. The PT-91 was designed at the [[:pl:Ośrodek Badawczo-Rozwojowy Urządzeń Mechanicznych „OBRUM”|OBRUM]] (''Ośrodek Badawczo-Rozwojowy Urządzeń Mechanicznych'', or ''Research and Development Centre for Mechanical Appliances'') and is produced by the [[Bumar-Labedy|Bumar Łabędy]] company,<ref>{{cite web |url=http://www.bumar.gliwice.pl/eng/index.php |title=Zak?ady Mechaniczne Bumar ?ab?dy S.A. |website=www.bumar.gliwice.pl |access-date=11 January 2022 |archive-url=https://web.archive.org/web/20070205074712/http://www.bumar.gliwice.pl/eng/index.php |archive-date=5 February 2007 |url-status=dead}}</ref> part of the Bumar Group,<ref>{{cite web |url=http://www.bumar.com/en |title=Bumar sp. Z o.o. |website=www.bumar.com |access-date=11 January 2022 |archive-url=https://web.archive.org/web/20080907063643/http://www.bumar.com/en |archive-date=7 September 2008 |url-status=dead}}</ref> a Polish technical military consortium. Changes from the T-72M include a new dual-axis stabilized [[fire-control system]], [[reactive armour]], a more powerful engine, [[Propulsion transmission|transmission]] and new [[autoloader|automatic loader]].
+
+Unlike many other T-72 upgrades, Polish Army PT-91s feature elements created almost exclusively by domestic companies, including the new engine, fire control system, and all communication system elements. Many of the elements were used to upgrade existing fleets of T-72 tanks in countries including the [[Czech Republic]] ([[T-72M4 CZ]]), Georgia (T-72SIM-1), and India (T-72 Ajeya Mk. 2). A total of 232 PT-91 tanks were delivered to the Polish Land Forces: 92 newly built vehicles and 140 from refurbished T-72M and T-72M1 tanks, designated '''PT-91MA''' and '''PT-91MA1''', respectively.{{citation needed|date=June 2024}}
+
+==History==
+In the late 1980s, the [[Polish Land Forces|Polish Army]] modernized all of its obsolete [[T-55]] tanks to the T-55AM ''Mérida'' standard. The successful conversion convinced the General Staff that similar modernization programs could be applied to other Soviet-designed tanks made in Poland and used by the Polish Armed Forces. In late 1988, the decision was made to prepare the modernization of the T-72M1, using experience gained from the production of licensed T-72M (obiekt 172M-E3 – Polish army designation T-72), T-72M1 (obiekt 172M-E5) and T-72M1K (Polish army designation T-72M1D).{{citation needed|date=June 2024}}
+[[File:PT-91 Twardy NTW 5 93 5.jpg|left|thumb|POD-72 commander's sight]]
+The [[Gliwice]]-based [[:pl:Ośrodek Badawczo-Rozwojowy Urządzeń Mechanicznych „OBRUM”|OBRUM]] was chosen as the main design bureau. However, initially, the work progressed at a very slow pace, mainly because the Polish General Staff was also considering the purchase of a newer version of the T-72 ([[T-72]]S) or the modern [[T-80]].{{citation needed|date=June 2024}}
+
+After the political upheaval of 1989 and dissolution of the [[Soviet bloc]], Polish-Soviet talks on purchase of modern tanks came to a halt and support for designing a new Polish tank gained momentum. The first design proposed by the bureau was code-named ''Wilk'' (Polish for ''wolf''), but the project was cancelled. Instead, priority was shifted to a different project named ''Twardy''.{{citation needed|date=June 2024}}
+
+The basic aim of the T-72 conversion was to adapt it to the reality of modern warfare and fix its most visible deficiencies. Among those were low mobility, insufficient armour, lack of a fire control system and poor stabilisation of the main gun, which resulted in poor firing accuracy. An additional problem was the lack of passive [[night vision]] aiming systems.{{citation needed|date=June 2024}}
+
+==Development==
+Starting in July 1991, [[T-72]] modernization programs were implemented by the [[Bumar-Labedy]] factory, which had been producing [[T-72]]s under Soviet license. The modernized main battle tank was designated the PT-91 ''Twardy''. Bumar-Labedy enhanced the tank's armour protection, fire control system and the engine. In 1993, the Polish Defense Ministry ordered 20 PT-91 tanks, to be used for field trials and armed forces tests.{{citation needed|date=June 2024}}
+[[File:PT-91 Twardy NTW 5 93 7.jpg|left|thumb|The driver's control panel, US-DK-1]]
+The new ''{{interlanguage link|ERAWA|pl}}'' dynamic armour, developed by the Poland Military-Technical Institute, increased the main battle tank's protection from [[high-explosive anti-tank]] (HEAT) projectiles and missiles. The protection consisted of 394 tiles with explosives, which would detonate in case of a direct hit. The tiles cover 9&nbsp;m<sup>2</sup> of the tank: 108 are placed on the turret, 118 on the hull and 84 on each side's anti-HEAT screens. The ''Twardy'' uses steel anti-HEAT screens instead of the rubber one used on the T-72.{{citation needed|date=June 2024}}
+
+The ERAWA tiles fit together almost without gaps, unlike the gaps on the modernized Soviet T-72 which measure up to 15&nbsp;mm, noticeably decreasing their defensive effectiveness. There are two ERAWA modifications: ''ERAWA''-1 and -2, differing in weight of the explosives. Experiments showed that the ERAWA dynamic defense decreases the high-explosive jet impact depth by 50–70% and that of penetrator (APFSDS) projectiles by 30–40%. Furthermore, ERAWA's explosive containers do not detonate when hit by a shot of up to 30&nbsp;mm calibre or by shell or mine fragments, or when covered in burning napalm or petrol.{{citation needed|date=June 2024}}
+
+The ''Twardy'' is armed with the same [[2A46]] 125&nbsp;mm [[smoothbore]] gun used in the T-72, fitted with an automatic reloading mechanism which reduces the tank crew by one, as it replaces the gun loader, and gives a rate of fire of 8 to 10 rounds per minute. Additional armament comprises the 7.62&nbsp;mm PKT coaxial general-purpose machine gun and 12.7&nbsp;mm NSVT anti-aircraft heavy machine gun. The PT-91 has a thermosmoke device that generates smoke screens from fuel, and has 24 grenade launchers fitted with smoke, anti-personnel fragmentation, or tear gas grenades developed specifically to provide a non-lethal protection.{{citation needed|date=June 2024}}
+
+The modernization of the fire control system began with replacing the older Soviet 2Є28M two-plane stabilizer with a new stabilizer developed in Slovakia. The system has an electronic information block showing the tank's technical condition. Furthermore, it informs the commander when the sighted fire becomes ineffective from excessively high cross-country speed or other reasons.{{citation needed|date=June 2024}}
+[[File:Drawa NTW 10 93.jpg|thumb|The drawa fire control system]]
+The {{interlanguage link|Drawa (uzbrojenie)|pl}} [[fire control system]], developed by Polish [[engineer]]s, contains the PCD gunner's day sight and the TES thermovision night sight developed by the Israeli company [[El-Op]], the [[POD-72]] commander's combined day-night passive observation and aiming sight, a ballistic computer, a laser rangefinder, and a data system processing information for the ballistic computer. The sighting of the ballistic computer depends on the target's speed, weather conditions, projectile temperature, and projectile type.{{citation needed|date=June 2024}}
+
+The driver uses the US-DK-1 control and diagnostic complex to control the tank's main systems, displaying information on a monitor. The driver's night sight was replaced by the ''Radomka'' passive night sight.{{citation needed|date=June 2024}}
+
+The modernized tank's increased weight led the developers to add a more powerful engine: a 12-cylinder S-12U diesel engine (a modernized version of the Soviet V-46-6) produced in Warsaw by [[PZL-Wola]], generating 850&nbsp;hp instead of 780. The main improvement is the modernized fuel and air injection system. This caused, however, a noticeable decrease in the tank's road endurance. The latest ''Twardy'' variants have the 1,000&nbsp;hp S-1000 engine with a turbocharger.{{citation needed|date=June 2024}}
+
+==Variants==
+===PT-91 ''Twardy''===
+Production variant for the Polish Army, an extensively modernized development of the T-72M1. Most are equipped with an SKO-1M Drawa-1T dual-axis stabilized fire control system (with TES – Thermal Elbow Sight; the total number of delivered thermal sights is 202<ref name="NTW 05/09">Andrzej Kliński, Nowa Technika Wojskowa – May 2008 page 22 – Odmłodzona Drawa.</ref>) though some early production vehicles have a SKO-1 Drawa (with NV sight), ''Erawa'' reactive armour, a PCO SSC-1 Obra-1 laser-warning system and 850&nbsp;hp PZL-Wola S-12U engine.<ref name="NTW 09/07">Andrzej Kliński, Nowa Technika Wojskowa – September 2007 page 14 – Jak można zmodernizować Twardego?</ref> The first 20 initial production vehicles were delivered to [[Polish Land Forces]] in 1993–1994. Another 78 full-scale production vehicles were delivered 1995–1997, 135 modernized T-72M1 tanks (made in the late 80s) were delivered between 1998 and 2002. Both new and modernized tanks have the same combat capabilities.<ref name="NTW 09/07" /> The Polish Army uses PT-91s in 3 variants– PT-91, PT-91MA and the PT-91MA1.<ref>Norbert Bączyk, Nowa Technika Wojskowa – September 2008 page 40 – Polskie wojska pancerne i zmechanizowane – meandry rozwoju.</ref>
+
+===PT-91A ''Twardy''===
+Development variant with a PZL-Wola S-1000 1,000&nbsp;hp engine with mechanic transmission and a number of other minor changes. Used for trials and as a demonstrator on military exhibitions.
+
+===PT-91Z ''Hardy''===
+(''Z'' for ''Zmodernizowany'' – literally ''Modernized'') Further development with a SAGEM Savan-15 fire control system. In live-fire tests the Savan-15 has a minor advantage in accuracy over the Drawa.<ref name= "NTW 11/99">Nowa Technika Wojskowa – November 1999 page 18 – Polskie T-72 – Co dalej? - by Tomasz Begier and Dariusz Użycki</ref> The biggest advantage is a new gun stabilization system that provides a significant increase in accuracy when the tank is on the move. Later it was used as a base to develop the PT-91M. This variant has won a number of stress tests in Malaysia over the [[T-90]], [[T-84]] and [[K1 Type 88|K1]] tanks, and has won the competition for a new Malaysian MBT. Only one prototype was made.
+
+===PT-91M ''Pendekar''===
+(''M'' for ''[[Malaysia]]'') Production export variant for Malaysia with a Sagem Savan-15 fire control system, a new 1,000&nbsp;hp powerpack, and a Renk automatic transmission, bringing its top speed to 70&nbsp;km/h. Its main gun has been changed to a ZTS [[2A46 125 mm gun#Slovakia|2A46MS]] 125&nbsp;mm gun, along with a 7.62&nbsp;mm [[FN MAG]] coaxial machine gun and a 12.7&nbsp;mm [[M2 Browning machine gun|FN Browning M2 HB]] AA machine gun. This variant is equipped with a Sagem panoramic sight, a Sagem laser gyro inertial navigation system, turret stabilisation system, Obra-3 [[Laser warning receiver|laser-warning system]], and is integrated with 81&nbsp;mm smoke grenade launchers, [[CBRN]] warning and protection system, and [[Thales Group|Thales]] communication system. It also features ERAWA 2 [[Explosive Reactive Armour]], and German-made tank tracks ([[Diehl Defence]]). Two prototypes were made (renamed PT-91E and PT-91Ex), then 48 serial PT-91M Pendekar [[vehicle]]s were produced from 2007 to 2009.<ref name="NTW 11/07" /><ref name="NTW 10/05">Nowa Technika Wojskowa – October 2005 page 9 – Pierwsza prezentacja "Malaja" - by Andrzej Kliński</ref>
+
+===PT-91E/Ex===
+[[File:PT-91 Ex.JPG|right|thumb|A PT-91E on company display]]
+(''E'' for ''Export'') Renamed prototypes of the PT-91M used as demonstrators of the export variant shown at military exhibitions. The PT-91E is an initial prototype, initially named SP1 (it is the same vehicle that was shown on military parade in Kuala Lumpur in 2005). PT-91Ex is the second prototype, named SP2.<ref name="NTW 11/07">Nowa Technika Wojskowa – November 2007 page 15 – Pokaz "Malaja" i CV90120-T na Drawsku – by Andrzej Kliński</ref> Both vehicles faced a number of tests in Malaysia. SP1 was used for traction tests and was driven 7000&nbsp;km offroad in Malaysia. SP2 achieved 2000&nbsp;km with 500 firings of the main cannon.<ref name="NTW 09/07" /> The PT-91Ex is very similar to PT-91M, and is offered for export to other countries.
+
+===PT-91P===
+(''P'' for ''[[Peru]]'') A demonstrator for the SITDEF Peru 2009 military exhibition, the PT-91P is a cheaper alternative to the PT-91Ex. This variant is equipped with the latest PCO Drawa-TG fire control system, a thermal sight, and a modern communication system ([[Radmor]] RRC9310 radio, WB Electronics Fonet-IP communication system and [[TELDAT|Teldat]] battlefield management system). The vehicle was shown at a number of South American events including the SITDEF Peru 2009 Expo.<ref name="NTW 04/09">Nowa Technika Wojskowa – April 2009 page 16 – Twardy na wystawie w Peru – by Andrzej Kliński</ref><ref name="Altair Peru">{{Cite web|url=https://www.altair.com.pl/|archive-url=https://web.archive.org/web/20090413185215/http://altair.com.pl/start-2778|url-status=dead|title=PT-91P popłynął na SITDEF Peru 2009|archive-date=April 13, 2009|website=www.altair.com.pl}}</ref><ref name="ap">{{cite news|url=https://news.yahoo.com/s/ap/20091209/ap_on_re_la_am_ca/lt_peru_china_military |title=Peru army plans arms purchase, tests Chinese tanks |date=2009-12-09 |agency=Associated Press |url-status=dead |archive-url=https://web.archive.org/web/20091214032908/http://news.yahoo.com/s/ap/20091209/ap_on_re_la_am_ca/lt_peru_china_military |archive-date=2009-12-14 }}</ref>
+
+===PT-72U / PT-91U / PT-91EU===
+(''U'' for ''Urbanizowany'' – Tank to fight in urbanized terrain) A demonstrator for the MSPO 2011 military exhibition. This is an offer for the Polish Army which involves certain modifications of the T-72 and PT-91 tanks. The modification includes installation of such additional equipment as a remote-controlled cannon with an optical system, an omnidirectional observation system, add-on armour, and further engineering equipment. The PT-72U is equipped with a remote-controlled weapon station armed with a 12.7&nbsp;mm machine gun mounted to the crew commander hatch. The system had a fire rotation of 360° and an elevation angle for the gun from -5° to 55°.<ref name="auto1">{{cite news|url=http://www.armyrecognition.com/mspo_2011_online_show_daily_news_pictures_video/the_new_pt-72u_main_battle_tank_for_urban_operations_at_mspo_2011.html|title=The new PT-72U main battle tank for urban operations at MSPO 2011|publisher=Army Recognition|access-date=2013-12-06|archive-url=https://web.archive.org/web/20131211193504/http://www.armyrecognition.com/mspo_2011_online_show_daily_news_pictures_video/the_new_pt-72u_main_battle_tank_for_urban_operations_at_mspo_2011.html|archive-date=2013-12-11|url-status=live}}</ref>
+
+The observation system is equipped with 8 day–night cameras with the observation angle 55° and a rotary passive camera FLIR which has up to 26 times optical zoom. The armour package has chassis and turret bar armour. The bottom of the chassis is equipped with reactive armour and add-on armour. The PT-72U is equipped with a full range of new modern internal and external communication tools, allowing communication also via the internet.<ref name="auto1"/> There were plans to modernize 84 Armenian T-72s to the PT-72U standard.<ref>{{Cite web |url=http://dziennikzbrojny.pl/aktualnosci/news,3,4148,aktualnosci-ze-swiata,polacy-zmodernizuja-czolgi-t-72-armenii |title=Polacy zmodernizują czołgi T-72 Armenii? |access-date=2013-12-06 |archive-url=https://web.archive.org/web/20131213061011/http://dziennikzbrojny.pl/aktualnosci/news,3,4148,aktualnosci-ze-swiata,polacy-zmodernizuja-czolgi-t-72-armenii |archive-date=2013-12-13 |url-status=live }}</ref>
+
+===PT-16===
+A further development introduced in 2016. Upgrades include improved armour, armament, and mobility. The hull armour and cast turret have been upgraded with add-on composite armour equivalent to up to 1000&nbsp;mm RHA (rolled homogeneous armour), supplied by [[Germany]]. The protection can be improved with Polish ERAWA explosive reactive armour. The 125&nbsp;mm smoothbore cannon has been replaced with a 120&nbsp;mm smoothbore cannon compatible with NATO ammunition and uses a carousel-type autoloader. This autoloader is separate from the crew compartment, where the T-72 autoloader was located. The manned 12.7&nbsp;mm machine gun has been upgraded to be remotely operated.<ref name=mtc>{{Cite web |url=http://www.military-today.com/tanks/pt_16.htm |title=PT-16 - Main battle tank |access-date=2016-10-29 |archive-url=https://web.archive.org/web/20161019182734if_/http://www.military-today.com/tanks/pt_16.htm |archive-date=2016-10-19 |url-status=usurped }}</ref>
+
+Other improvements include an upgraded fire control system. The tank is proposed to be fitted with a new engine, options for which include an unspecified Serbian turbocharged diesel, a German 1088&nbsp;hp, Serbian V46-TK, and potentially yet-to-be-developed 1200&nbsp;hp engines. Other improvements include rubber skirts covering the lower hull and the tracks, and new tracks based on those found on German Leopard 2s, which can be fitted with deep wading kits to allow it to ford water obstacles up to {{convert|13|ft|m|abbr=off|sp=us}} deep. The upgrade can be applied to both PT-91s and T-72M1s, of which Poland has a total of 823 (233 PT-91s, 120 active T-72M1s, and 470 reserve T-72M1s). The vehicle did not enter [[mass production]].<ref name=mtc/>
+
+===PT-17===
+The main goals of the PT-17 tank were to increase firepower and fire maneuverability, increase mobility and survivability on the battlefield, improve crew comfort, and increase mission duration. The demonstrator was developed in cooperation with Ukrainian companies that supplied the tank turret.
+The PT-17's power range includes a S1000R ESM-350M engine and a reinforced suspension. Diehl rubber tracks are used. The chassis equipment includes an auxiliary power generator (APU), air conditioning, a new steering system with shuttlecock and a PCO KDN-1 Nyks day/night reversing camera.{{citation needed|date=June 2024}}
+
+The tank turret is a Ukrainian construction, featuring the Ukrainian KBM-2 smoothbore 120&nbsp;mm cannon, with a barrel length of L50, and a 22&nbsp;mm ammunition-charge unit mounted in the niche of the turret. The total ammunition capacity is 50 shells. The PT-17 was created with the experience of Ukrainian designers from UkrObronProm - the Oplot tank. Based on the Doublet reactive armor, the ERAWA-II reactive armor was created. He also took over the booking from him. According to statements by representatives from "Bumar-Łabędy", the armor of the tank is estimated at 1000mm of homogeneous armor. However, the turret's armor, as well as information about the latest reactive armor, have not been disclosed. The armament is supplemented by a 7.62&nbsp;mm caliber machine gun and a remotely mounted ZSMU-1276 armament module manufactured by Zakłady Mechaniczne "Tarnów" S.A. The turret was equipped with stabilized sight-and-sight optics, GOC-1 Nike and GOD-1 Iris from PCO S.A. and BMS. Optionally, the manufacturer advises on the use of Safran's VIGY-15 panoramic day-observation device.{{citation needed|date=June 2024}}
+
+The additional composite armour of both the hull and the turret is expected to increase survival of the tank on the battlefield, as is the installed PCO SSP-1 OBRA-3 universal self-propelled vehicle system and two 6-tube intermittent grenade launchers.{{citation needed|date=June 2024}}<ref name="dziennikzbrojny.pl">{{Cite web |url= http://dziennikzbrojny.pl/aktualnosci/news,1,10643,aktualnosci-z-polski,mspo-2017-czolgi-pt-17-i-pt-91m2 |title=MSPO 2017: Czołgi PT-17 i PT-91M2 |access-date=2017-09-13 |archive-url= https://web.archive.org/web/20170913184123/http://dziennikzbrojny.pl/aktualnosci/news,1,10643,aktualnosci-z-polski,mspo-2017-czolgi-pt-17-i-pt-91m2 |archive-date=2017-09-13 |url-status=live }}</ref>
+
+===PT-91M2===
+Although the PT-91M2's modernization objectives are the same as the PT-17's, the range of the PT-91M2 differs considerably. The S-12U engine is powered by an 850-horsepower engine with enhanced mechanical transmission (Cx version). Tracks come with rubber overlays developed by Obrum / Bumar. Like the PT-17, reinforced suspension (torsion shafts, shock absorbers, and elastomer bumpers) are used. Among the chassis, equipment included the auxiliary power generator (APU), the modernized rotary car charger, the PNK-72 "Radomka" night-vision, and PCO KDN-1 Nyks night-time reversing camera. Hull protection is provided by the ERAWA III reactive armour and rod armour at the rear of the chassis.{{citation needed|date=June 2024}}
+
+Increased firepower is planned to be achieved by installing a 125&nbsp;mm 2M46MS caliber Slovak cannon with a barrel length of 48 calibres. Inside the turret, there is also a change to the location of the second round of ammunition. Significantly, the PT-91M2 demonstrated a SAVAN-15 French fire control system (SAVAN-15) from Safran, previously used in PT-91M tanks in Malaysia. A TKN-3z night vision mount is available for the commander. The PT-91M2 has a SOD Observation System, a universal PCO SSP-1 OBRA-3 vehicle self-propelled system (both PCO S.A.), and two modules each of 12 902A smoke grenades. Additional protection for the turret includes ERAWA reactive armour modules.<ref name= "dziennikzbrojny.pl"/>
+
+==Related vehicles==
+===[[WZT#WZT-3|WZT-3]]===
+[[File:POL Warsaw WZT-3.jpg|right|thumb|Polish Army WZT-3M]]
+[[WZT]] is the acronym of for ''Wóz Zabezpieczenia Technicznego'' literally ''Technical Support Vehicle'': it indicates a family of [[armoured recovery vehicle]]s based on the PT-91/T-72 tank hull, with over 400 vehicles delivered to the clients. It is armed with a 12.7&nbsp;mm ({{frac|1|2}} in) machine-gun fitted to the commander's hatch. Standard equipment includes: crane with telescopic jib that can lift a maximum load of fifteen tonnes, front-mounted stabilizing dozer blade, main and secondary winches.{{citation needed|date=June 2024}}
+* '''WZT-3''' – A T-72 based variant for Polish Army – 20 vehicles.
+* '''WZT-3M''' – A PT-91 based variant for Polish Army – 9 new vehicles and 20 WZT-3 upgraded to this standard.
+* '''M-84AI''' – A M-84A based variant, made on licence in Yugoslavia – 15 vehicles for Kuwait
+* '''ARV-3''' – A T-72 based variant for Indian Army – 352 vehicles made
+* '''WZT-4'''<ref>Nowa Technika Wojskowa – September 2008 page 16 - "Wuzetka" dla Malzezji – by Andrzej Kliński</ref> – A PT-91M based variant for Malaysian Army (technically this vehicle is closely related to MID-M) – 6 vehicles
+[[File:MID Polish.jpg|right|thumb|Polish Army MID]]
+
+===MID ''Bizon''-S===
+(''MID'' for ''Maszyna Inżynieryjno-Drogowa'' – lit. ''Engineering-Roading Machine''; ''Bizon'' is [[Polish language|Polish]] for ''[[Bison]]'') – Polish engineering tank based on the PT-91 tank hull.{{citation needed|date=June 2024}}
+* '''MID''' – A PT-91 based variant for Polish Army – 8 vehicles
+* '''MID-M''' – A PT-91M based variant for Malaysian Army – 3 vehicles
+
+===PMC===
+(''PMC'' for ''Pomocniczy Most Czołgowy'' – lit. ''Auxiliary Tank Bridge'') – Polish Armoured Vehicle Launched Bridge is a close-support [[bridgelayer]]. The PMC-90, developed on the basis of [[PT-91]], is able to carry out missions required to operations of combat forces.{{citation needed|date=June 2024}}
+* '''PMC-90''' – PT-91 based prototype vehicle with MLC-60 bridge. Not adopted.
+* '''PMC-''Leguan''''' – PT-91M based variant for Malaysia equipped with the 26&nbsp;m (87&nbsp;ft) long MLC 60 [[Leguan bridge system]]. 5 vehicles for Malaysia.
+* '''MG-20 Daglezja-G'''<ref>Nowa Technika Wojskowa – September 2008 page 26 – Most samochodowy MS-20 ''Daglezja'' – by Michał Sitarski</ref> (''MG'' for ''Most Gąsienicowy'' – lit. ''Tracked Bridge'') – a tracked bridge system, based on a lengthened T-72 chassis with one additional road wheel, equipped with a MLC-70 bridge system. Closely related to a truck based [[MS-20 Daglezja]]. Currently in development phase, it is expected to replace a T-55 based BLG-67M bridges in Polish Army.
+
+===PZA ''Loara''===
+{{Main|PZA Loara}}
+[[File:Loara Kielce.png|thumb|PZA Loara]]
+The ''PZA'' (''Przeciwlotniczy Zestaw Artyleryjski'', meaning "AA Artillery System"; “Loara” means “[[Loire (river)|Loire]]” in Polish) is an armoured self-propelled [[anti-aircraft]] artillery system developed in the late 1990s. Based around the ''Twardy'' chassis, this system mounts an armoured turret holding two [[Oerlikon Contraves|Oerlikon]] [[Oerlikon 35&nbsp;mm twin cannon|KDA 35&nbsp;mm cannons]] linked to a [[radar]] fire control system. It was planned that it would work closely together with PZR “Loara” (anti-aircraft rocket system) vehicles built on the basis of the PZA Loara but that project is currently on hold. The Loara is an autonomous fire unit capable of performing its tasks independently or acting as a component of a wider air defense system.{{citation needed|date=June 2024}}
+
+The system has two radars, 3D search radar and engagement radar. The search radar has a range of {{convert|26|km|mi|abbr=on}} and is capable of tracking and identifying up to 64 targets at once. The radar system can be operated on the move, refreshing its data every second. The system has a laser range-finder, TV and [[FLIR]] cameras giving the system both all-weather day/night capabilities and the ability to operate entirely passively in a heavy [[Electronic countermeasures|ECM]] environment. The system has a reaction time less than 10 seconds. The system can engage aircraft flying at altitudes from very low altitudes up to {{convert|5,000|m|ft|abbr=on}}, and flying at speeds up to 500&nbsp;m/s (1,125&nbsp;mph). It is effective against infantry, lightly armoured ground and naval targets.{{citation needed|date=June 2024}}
+
+===SJ-09===
+'''SJ-09''' is one of the elements of the T-72 and PT-91 crew training system. The system is composed of both trainers teaching crew trainees how to operate different systems of the tank and simulators allowing training more advanced situations.<ref>{{Cite web |url=http://www.obrum.gliwice.pl/art/103_1.jpg |title=SJ-09 |website=www.obrum.gliwice.pl |access-date=15 January 2022 |archive-url=https://web.archive.org/web/20131103044958if_/http://www.obrum.gliwice.pl/art/103_1.jpg |archive-date=3 November 2013 |url-status=dead}}</ref> For example, the SJ-02 is used to teach how to load the main gun. The SJ-09 is the driver training vehicle used to train drivers in operating of the vehicle as big and heavy as main battle tank. The vehicle is a tank chassis that has the turret replaced with an instructor station. All unnecessary equipment (like side skirts) were removed. The vehicle has a dummy main gun that obstructs the driver's view, like in the real tank. Vehicles used by the Polish Army were rebuilt from the few original T-72 Ural in Polish inventory delivered from Soviet Union. Another vehicle was built new for the Malaysian Army as a part of the PT-91M order.{{citation needed|date=June 2024}}
+
+===PT-94 ''Goryl''===
+(''Goryl'' is [[Polish language|Polish]] for ''[[Gorilla]]'') – project of a Polish main battle tank designed using experience gained on PT-91 project. The tank would be similar in its design to [[Merkava]] (engine at front), and it would feature redesigned engine, transmission and fire control system. Armour: composite + ERA, main armament: 120/125&nbsp;mm gun, 60&nbsp;mm mortar, secondary armament: 7.62&nbsp;mm PKT coaxial machine gun, 12.7&nbsp;mm NSWT AA machine gun, crew: 3. This program was also known under the name [[WPB Anders|Anders]]. The program was cancelled at an early stage.{{citation needed|date=June 2024}}
+
+===PT-97 ''Gepard''===
+The Gepard ([[Polish language|Polish]] for ''[[Cheetah]]''), sometimes known as PT-2001, is another modification project of a Polish main battle tank prepared as a future modernisation programme for the T-72 family. The programme was called for, after the first PT-91 proposition fell below requirements. Two propositions were submitted, one by [[Bumar]] which provided a project with modified frontal armour, different mortar and sporting a [[AMX Leclerc|Leclerc]]–like a turret with the [[2A46]] main gun. [[OBRUM]]'s competing project had new front and sides reactive armour and a [[Rheinmetall L44#L44|L-44]] main gun.{{citation needed|date=June 2024}}
+
+Despite considerable improvements, neither was approved for financial reasons, and no prototypes were built. However, design experience helped with new PT-91 versions.{{citation needed|date=June 2024}}
+
+===Krab===
+{{Main|AHS Krab}}
+[[File:Warszawa – defilada „Silni w sojuszach” (5).JPG|thumb|AHS Krab during a parade in Poland]]
+The ''Krab'' ([[Polish language|Polish]] for ''[[Crab]]'') is a 155&nbsp;mm self-propelled howitzer designed by [[Huta Stalowa Wola|HSW S.A.]] with an OBRUM's UPG-NG chassis (a heavily modified variant of the [[SPG Kalina|SPG-1M]] vehicle) which utilizes only a handful of components from the PT-91 program such as the road wheels, suspension and S-12U power plant. It combines these with a licensed [[AS-90]]M ''Braveheart'' turret armed with a 52-calibre gun and [[WB Electronics]] Artillery Fire Control System [https://web.archive.org/web/20081023074240/http://www.wb.com.pl/en/systemy/zzko_topaz/ Topaz].<ref name="defence24.pl">{{Cite web |url=http://www.defence24.pl/analiza_podwozia-dla-kraba-z-korei-decyzja-pgz-konczy-kryzys-pancernego-programu |title=Podwozia dla Kraba z Korei. Decyzja PGZ kończy kryzys pancernego programu &#124; DEFENCE24 |access-date=2017-08-29 |archive-url=https://web.archive.org/web/20161112035042/http://www.defence24.pl/analiza_podwozia-dla-kraba-z-korei-decyzja-pgz-konczy-kryzys-pancernego-programu |archive-date=2016-11-12 |url-status=dead }}</ref>
+
+In 2014, this configuration was abandoned due to manufacturing flaws (microfractures detected in the vehicle's welded steel plates), numerous reliability concerns related to the automotive performance of the chassis and the loss of the Polish manufacturing line for the S-12U engine, and was replaced by the Korean-made [[K9 Thunder|K9]] tracked chassis.<ref name="defence24.pl"/>
+
+==Operational history==
+===Poland===
+233 PT-91''s'' were delivered between 1995 and 2002. 232 vehicles remain in service. An early prototype is preserved in the Land Forces Training Center museum in [[Poznań]]. 38 support vehicles were based on the T-72/PT-91 hull (29 [[WZT-3M]] armoured recovery vehicles, 8 MID engineering tanks, and one prototype PZA Loara self-propelled anti-aircraft weapon).
+
+{|class="wikitable"
+! colspan="7"|Number of PT-91''s'' delivered to Polish Land Forces each year<ref name="NTW 11/04">Nowa Technika Wojskowa – November 2004 page 20 – Polska w rejestrze uzbrojenia konwencjonalnego ONZ – by Jarosław Ciślak</ref>
+|- valign="top"
+! style="width:16%;"|1995–1996
+! style="width:14%;"|1997
+! style="width:14%;"|1998
+! style="width:14%;"|1999
+! style="width:14%;"|2000
+! style="width:14%;"|2001
+! style="width:14%;"|2002
+|- style="vertical-align:top; text-align:center;"
+|58
+|58
+|7
+|33
+|50
+|20
+|7
+|}
+[[File:PICT89 - PT91 Twardy.JPG|right|thumb|A PT-91 Twardy from the 1st Armoured Brigade on military parade in Warsaw]]
+Units equipped with the PT-91 Twardy:
+
+* [[9th Armoured Cavalry Brigade (Poland)|9 Brygada Kawalerii Pancernej]] (9th Armoured Cavalry Brigade) – two battalions, [[Braniewo]] - probably lost some tanks in 2022, relocated to units using T-72 that were transferred to Ukraine, it is expected that eventually 9th Brigade will receive [[K2 Black Panther]] like whole 16th Mechanized Division. 
+* [[15 Brygada Zmechanizowana]] - operating one battalion of PT-91, same situation as with 9th Brigade.
+* [[19 Brygada Zmechanizowana]] - in 2022 received some PT-91s for training in place of T-72s transferred to Ukraine, eventually like whole 18th Mechanized Division it is expected to be equipped with [[M1 Abrams]] (expected since 2025).
+* Centrum Szkolenia Wojsk Lądowych (Land Forces Training Center) – [[Poznań]]<ref name="NTW 05/09" />
+
+[[File:Polish PT-91 Twardy tank Saber Strike 18.jpg|thumb|right|Polish PT-91 with ERAWA-2 ERA armour package during Saber Strike 18 training exercise held jointly with the [[United States Army]].]]
+Former units equipped with PT-91 Twardy:
+* [[1st Armoured Brigade (Poland)|1 Warszawska Brygada Pancerna]] (1st Armoured Brigade) [[Wesoła]] - one battalion, 2015 replaced with [[Leopard 2]], since 2023 equipped with [[M1 Abrams]] like the rest of 18th Division
+* [[2 Brygada Zmechanizowana Legionów]] (2nd Mechanised Brigade) [[Złocieniec]]<ref name="afera czołgowa">{{cite web |author=Rp.pl |url=http://www.rp.pl/artykul/441346_Afera_czolgowa_w_polskiej_armii.html |title=Afera czołgowa w polskiej armii |publisher=rp.pl |access-date=2011-11-14 |archive-url=https://web.archive.org/web/20120331174808/http://www.rp.pl/artykul/441346_Afera_czolgowa_w_polskiej_armii.html |archive-date=2012-03-31 |url-status=live }}</ref> – In 2022 unit lost all its tanks, because most T-72s in service were transferred to Ukraine, as of 2023 tank battalion of 2nd Mechanized has no tanks. 
+* [[10th Armoured Cavalry Brigade (Poland)|10 Brygada Kawalerii Pancernej]] (10th Armoured Cavalry Brigade) – [[Świętoszów]] (replaced with [[Leopard 2A4]] in 2002–03)
+* 15 Wielkopolska Brygada Kawalerii Pancernej (15th Armoured Cavalry Brigade) – [[Wędrzyn]] (unit disbanded in June 2007)
+* 17 Wielkopolska Brygada Zmechanizowana (17th Mechanized Brigade) – [[Międzyrzecz]] (replaced with [[KTO Rosomak]])
+* [[34th Armoured Cavalry Brigade (Poland)|34 Brygada Kawalerii Pancernej]] (34th Armoured Cavalry Brigade) – [[Żagań]] (replaced with [[Leopard 2#Leopard 2A5|Leopard 2A5]] in 2014–15)
+
+At the introduction of PT-91, the intention of Polish General Staff was to equip all brigades of the 11th Armoured Cavalry Division with the PT-91. At the time, the division had four brigades: the 10th Armoured Cavalry, 15th Armoured Cavalry, 17th Mechanised, and 34th Armoured Cavalry.{{citation needed|date=June 2024}}
+
+In 2002, the 10th Armoured Cavalry brigade received Leopard 2A4 tanks donated to Poland by Germany. In 2007, the 15th Armoured Cavalry brigade was disbanded and the 17th Mechanised received the first KTO Rosomak. All these changes allowed the reallocation of PT-91s to other divisions, replacing the oldest T-72s. In early 2014, the 34th Brigade from Żagań received the first Leopard 2A5 tanks, shifting its PT-91s to the 9th Brigade in Braniewo, which previously used the T-72M1.{{citation needed|date=June 2024}}
+
+A typical Polish PT-91 tank battalion is equipped with 58 tanks, composed of four frontline companies with 14 vehicles each, and 2 tanks for the battalion commander and the battalion second in command. Every company of 14 tanks is composed of three platoons, with 4 tanks in each and 2 tanks for the company commander and company's second in command.{{citation needed|date=June 2024}}
+
+Before the start of the war in Ukraine, Polish Land Forces operated 4 battalions of PT-91 tanks. 3 battalions in 16th Mechanized Division (2 in 9th Armored Cav brigade, 1 in 15th Mechanized Brigade) and one battalion in 12th Mechanized Division (2nd Mechanized Brigade). Since the start of the war in Ukraine, Poland transferred most combat ready T-72s and at least one battalion of PT-91 to Ukraine. 2nd Mechanized Brigade lost its PT-91 tanks in one tank battalion completely, 34th Armored Cavalry lost all (combat ready) T-72s from its two battalions with no replacement. 19th Mechanized Brigade also lost all T-72s from two battalions but received some PT-91s from 9th Armored Cavalry and 15th Mechanized (making all 3 units understrength). 20th Mechanized Brigade is another unit that lost all its T-72s from its one tank battalion, but already received first K2 Black Panther tanks (two companies as of late 2023), it will have two battalions of K2, including one newly formed.{{citation needed|date=June 2024}}
+
+It is planned that 16th Mechanized Division (with 9th Armored Cavalry, 15th and 20th Mechanized Brigades) will be equipped with K2 tanks (during transition a mix of K2 and PT-91). 18th Mechanized Division (with 1st Armored, 19th and 21st Mechanized Brigades) is receiving M1 Abrams tanks that will replace Leopard 2 and remains of T-72. It is expected 11th Armored Cavalry Division (with 10th and 34 Armored Cavalry and 17th Mechanized Brigades) will continue to operate Leopard 2 tanks that undergo upgrade to Leopard 2 PL variant (in 10th Brigade) and will receive more Leopard 2 tanks from 18th Division that will be replaced by M1 Abrams (for 34th Brigade).{{citation needed|date=June 2024}}
+
+===Malaysia===
+[[File:PT 91 M Pendekar MBT of Malaysian Army in display in AKM Pahang 2022.jpg|thumb|A PT-91M Pendekar of the Malaysian Army on display]]
+In 2007–2009, Bumar Łabędy delivered to Malaysia 48 PT-91M and 15 support [[vehicle]]s (6 WZT-4 {WZT-91M} [[armoured recovery vehicle]], 3 MID-M {MID-91M} [[combat engineering vehicle|engineering tank]], 5 PMC Leguan {PMC-91M} - [[armoured vehicle-launched bridge]] and one SJ-09 driver training tank), [[ammo]], spares and support for US$370 million.<ref name="NTW 11/07" /><ref name="NTW 10/05"/> [[Initial operating capability|Operating capability]] was reached 1 September 2010.<ref>{{cite web |url=http://www.altair.com.pl/start-5025 |title=Gotowość operacyjna PT-91M |publisher=Altair |access-date=2011-11-14 |url-status=dead |archive-url=https://web.archive.org/web/20110929022746/http://www.altair.com.pl/start-5025 |archive-date=2011-09-29 }}</ref><ref>{{cite web |url=https://www.youtube.com/watch?v=jbdR2EaNTYc&nofeather=True |title=Ulang Tahun Kor Armour Diraja ke 58 |publisher=YouTube |date=2010-09-03 |access-date=2011-11-14 |archive-url=https://web.archive.org/web/20160310200748/https://www.youtube.com/watch?v=jbdR2EaNTYc&nofeather=True |archive-date=2016-03-10 |url-status=live }}</ref>
+
+Units equipped with PT-91M:
+* '''Rejimen ke-11 [[Malaysian Royal Armoured Corps#Main Battle Tank|Kor Armour DiRaja]]''' – (''11th Regiment of Royal Armoured Corps'') – [[Gemas]]
+
+Rejimen ke-11 KAD is the sole user of PT-91M in the Malaysian Army.
+
+{|class="wikitable"
+! colspan="7"|Number of PT-91M delivered to Malaysian Land Forces each year<ref name="NTW 02/09">Nowa Technika Wojskowa – February 2009 page 10 – Malaj na finiszu – by Andrzej Kliński</ref>
+|- valign="top"
+! style="width:20%;"|2005
+! style="width:20%;"|2006
+! style="width:20%;"|2007
+! style="width:20%;"|2008
+! style="width:20%;"|2009
+|- style="vertical-align:top; text-align:center;"
+|SP1 prototype for trials
+|SP2 prototype for trials
+|6
+|24
+|18 + 15 support vehicles
+|}
+
+===Georgia===
+Upgraded Georgian army T-72SIM-1 tanks use the Drawa-T fire control system, a development of the fire control system on the PT-91. The FCS is equipped with laser range finder and thermal imaging sensor. The system is slightly different from the one used on Polish PT-91s: the commander uses an LCD screen instead of an eyepiece. The Thermal Elbow Sight thermal imaging sensor used in Georgian tanks is of the same (Israeli) origin as the one used on the PT-91, though the external housing is different.<ref>{{cite web |url=http://vadimvswar.narod.ru/ALL_OUT/TiVOut0809/GruzPz08/GruzPz08001.htm |title=Бронетехника в грузино-осетинском конфликте август 2008 – 0001.htm |publisher=Vadimvswar.narod.ru |access-date=2011-11-14 |url-status=dead |archive-url=https://web.archive.org/web/20110930014732/http://vadimvswar.narod.ru/ALL_OUT/TiVOut0809/GruzPz08/GruzPz08001.htm |archive-date=2011-09-30 }}</ref>
+
+===India===
+In April 1999, [[India]] ordered 44 [[WZT-3]] armoured recovery vehicles, followed by orders in April 2002 (80 vehicles) and July 2005 (228 vehicles) for a total of 352 WZT-3s. These vehicles are used to support the [[T-72]] and [[T-90]] main battle tanks.<ref name="NTW 02/09" /> Deliveries began in 2001, and India was planning to upgrade its [[T-72 operators and variants#India|Ajeya Mk1]] tanks (local name for [[T-72]]M1) to Ajeya Mk2 standard, with some elements from PT-91, such as the Drawa-TE1 fire control system and the PZL-Wola S-1000 engine.{{Citation needed|date=May 2009}}
+
+In October 2011, the Indian Defense Ministry announced that the state-owned BEML would produce an additional 204 [[WZT-3]] armoured recovery vehicles – taking the total to 556 vehicles.<ref>{{cite web |date=2011-10-17 |title=More Armoured Recovery Vehicles for Indian Army |url=http://www.defensenews.com/story.php?i=7978427&&s=TOP |url-status=dead |archive-url=https://archive.today/20130121091446/http://www.defensenews.com/story.php?i=7978427&&s=TOP |archive-date=January 21, 2013 |access-date=2011-11-14 |publisher=Defense News}}</ref> The Ministry also clarified that no global tender was floated because it was a repeat order.
+
+===Ukraine===
+In April 2023, at least 30 PT-91s were sent to Ukraine by Poland for support in the [[2023 Ukrainian counteroffensive]].<ref>{{cite web | url=https://defence24.com/armed-forces/land-forces/ex-polish-pt-91-twardy-tanks-in-ukraine | title=Ex-Polish PT-91 Twardy tanks in Ukraine | date=19 April 2023 }}</ref> The tanks are used by 22nd Mechanized Brigade, new brigade of Ukrainian Land Forces trained and equipped by Poland.<ref>{{cite web | url=https://defence24.pl/wojna-na-ukrainie-raport-specjalny-defence24/ukraina-nowa-brygada-na-czolgach-z-polski | title=Ukraina: nowa brygada na czołgach z Polski | date=28 June 2023 }}</ref>
+
+As of the 6th of March 2026, the [[Oryx (website)|Oryx]] blog recorded the loss of 12 PT-91 tanks during the Russian invasion of Ukraine.<ref>{{Cite web|url=https://www.oryxspioenkop.com/2022/02/attack-on-europe-documenting-ukrainian.html|title=Attack On Europe: Documenting Ukrainian Equipment Losses During The Russian Invasion Of Ukraine|date=21 January 2024}}</ref>
+
+They were used by Ukraine during the [[August 2024 Kursk Oblast incursion]].<ref>{{Cite web|url=https://www.reuters.com/world/europe/zelenskiy-signs-law-ukraine-ratifying-rome-statute-2024-08-24/|title=Zelenskiy touts new 'drone missile', calls Putin 'sick old man'|date=24 August 2024|publisher=Reuters|quote=Polish president Andrzej Duda confirmed that Polish PT-91 Twardy tanks given to Kyiv by Warsaw were taking part in the fighting in Kursk region.}}</ref>
+
+==Operators==
+<!-- READ FIRST: This section is for cited entries only. Please do not add entries into this list without a citation from a reliable source. All entries without a citation will be removed. Thank you.-->
+[[File:Operators of PT-91.png|thumb|350px|A map of PT-91 operators]]
+
+===Current operators===
+;{{flag|Poland}}<ref name="AR"/>
+
+: 30 PT-91
+: 24 PT-91MA
+: 113 PT-91MA1
+
+;{{flag|Malaysia}}
+: 48 PT-91M ''Pendekar''<ref>{{cite web | url=https://defencereviewasia.com/heavy-armour-remains-popular/ | title=Heavy armour remains popular | date=February 2011 }}</ref>
+
+;{{flag|Ukraine}}
+: 60 PT-91U<ref>{{Cite web |last=Oryx |title=The Kielbasa Connection: Polish Military Aid To Ukraine |url=https://www.oryxspioenkop.com/2022/08/the-kielbasa-connection-polish-military.html |access-date=2023-11-12 |website=Oryx}}</ref>
+
+===Failed bids===
+;{{flag|Peru}}: The PT-91 was proposed to the [[Peruvian Army]] to replace its [[T-55]]s, but was not selected.<ref name="AR"/>
+
+==References==
+{{reflist}}
+
+==External links==
+{{Commons}}
+* [https://web.archive.org/web/20090825183245/http://www.bumar.gliwice.pl/eng/index.php?3,23 PT-91 on Bumar-Łabędy Web Site]
+* [https://web.archive.org/web/20090825232158/http://www.bumar.gliwice.pl/eng/index.php?3,27 PT-91Ex on Bumar-Łabędy Web Site]
+* [http://www.globalsecurity.org/military/world/europe/pt-91.htm PT-91 Twardy Main Battle Tank] at globalsecurity.org
+* [https://web.archive.org/web/20131107212614/http://www.armyrecognition.com/poland_polish_tanks_heavy_armoured_vehicles_uk/pt-91_twardy_main_battle_tank_technical_data_sheet_specifications_description_information_pictures_.html PT-91 Twardy main battle tank Polish Defense industry] at armyrecognition.com
+
+{{Post-Cold War tanks|style=wide}}
+{{ModernPOLAFVsNav | style= wide }}
+{{T-64_navigation|style=wide}}
+
+[[Category:Main battle tanks of the post–Cold War period]]
+[[Category:Main battle tanks of Poland]]
+[[Category:Science and technology in Poland]]
+[[Category:Tanks with autoloaders]]
+[[Category:Military vehicles introduced in the 1990s]]
+[[Category:T-72]]

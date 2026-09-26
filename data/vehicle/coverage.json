@@ -221,9 +221,9 @@
       "token": "Tank",
       "kind": "engine_base",
       "is_ground": true,
-      "state": "no_source",
-      "variant": null,
-      "reason": "no emitted runtime row and no class-map binding held"
+      "state": "recorded",
+      "variant": "m1_abrams",
+      "reason": "runtime row emitted and class-map binding held"
     },
     {
       "token": "Tracked_APC",
@@ -253,9 +253,9 @@
       "token": "Wheeled_APC",
       "kind": "mod_token",
       "is_ground": true,
-      "state": "lead",
-      "variant": null,
-      "reason": "partial tier-2 lead LAV-25; candidate manual not held and class mapping not source-backed"
+      "state": "recorded",
+      "variant": "btr_80",
+      "reason": "runtime row emitted and class-map binding held"
     },
     {
       "token": "Wheeled_APC_F",

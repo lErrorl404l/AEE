@@ -1,0 +1,128 @@
+{
+  "retrieved": "2026-09-24",
+  "note": "Catalogue capture for the held tier-2 technical description and service manual of the BTR-80 (Bronetransporter BTR-80, Tekhnicheskoe opisanie i instruktsiya po ekspluatatsii, second edition, Voennoe izdatelstvo, Moscow 2001, part 1). It holds the BTR-80 as a wheeled entry. The manual publishes the identity (four-axle eight-wheel all-wheel-drive enclosed amphibious armoured personnel carrier), the full (combat) mass, the overall and chassis dimensions, the ground clearance, the maximum road speed and the highway range, the guaranteed engine power as horse power with no net basis, the engine swept volume and model number, and the manual gearbox and transfer case in the controls description. It publishes no tyre size code, no tyre pressure and no transmission-ratio table in part 1, so the tyre width and tyre diameter resolve absent and the entry is not runtime-ready. Every dimension is a published millimetre figure; no conversion is applied. The manual names no vehicle manufacturer, so the maker is unknown. No real source maps an AEE game class to the BTR-80, so class_token is empty and no mapping is created.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "btr_80",
+      "canonical_name": "BTR-80",
+      "maker": "unknown",
+      "model": "BTR-80",
+      "variant": "BTR-80",
+      "variant_id": "btr_80",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "cold war",
+      "aliases": ["btr-80", "btr80", "btr 80"],
+      "keywords": ["apc", "amphibious", "8x8", "armored personnel carrier", "btr"],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 13600,
+          "unit": "kg",
+          "source": "btr_80_technical_description_2001",
+          "locator": "Section 3 Combat and technical characteristics, General data, printed page 9, row Polnaya massa mashiny, kg (full mass of the machine)",
+          "state": "full (combat) mass as published 13,600 kg with a plus 3 percent tolerance; the manual publishes no separate kerb weight",
+          "grade": "documented"
+        },
+        "length_mm": {
+          "value": 7650,
+          "unit": "mm",
+          "source": "btr_80_technical_description_2001",
+          "locator": "Section 3, Main dimensions, printed page 9, row Dlina, mm (length)",
+          "state": "overall length, as published",
+          "grade": "documented"
+        },
+        "width_mm": {
+          "value": 2900,
+          "unit": "mm",
+          "source": "btr_80_technical_description_2001",
+          "locator": "Section 3, Main dimensions, printed page 9, row Shirina, mm (width)",
+          "state": "overall width, as published",
+          "grade": "documented"
+        },
+        "height_mm": {
+          "value": 2350,
+          "unit": "mm",
+          "source": "btr_80_technical_description_2001",
+          "locator": "Section 3, Main dimensions, printed page 9, row Vysota, mm: pri polnoy masse i dorozhnom prosvete 475 mm",
+          "state": "overall height at full mass and 475 mm ground clearance, as published; without the combat crew the manual gives 2,460 mm",
+          "grade": "documented"
+        },
+        "wheelbase_mm": {
+          "value": 4400,
+          "unit": "mm",
+          "source": "btr_80_technical_description_2001",
+          "locator": "Section 3, Main dimensions, printed page 9, row Baza, mm (base)",
+          "state": "axle base between the first and fourth axles, as published",
+          "grade": "documented"
+        },
+        "track_mm": {
+          "value": 2410,
+          "unit": "mm",
+          "source": "btr_80_technical_description_2001",
+          "locator": "Section 3, Main dimensions, printed page 9, row Koleya, mm (track)",
+          "state": "track, wheel centre to wheel centre, as published",
+          "grade": "documented"
+        },
+        "ground_clearance_mm": {
+          "value": 475,
+          "unit": "mm",
+          "source": "btr_80_technical_description_2001",
+          "locator": "Section 3, Main dimensions, printed page 9, row Dorozhnyy prosvet (bez ucheta vyshtampovok na dnishche), mm",
+          "state": "ground clearance under the hull, excluding the floor stiffening stampings, as published",
+          "grade": "documented"
+        },
+        "max_speed_kmh": {
+          "value": 80,
+          "unit": "km/h",
+          "source": "btr_80_technical_description_2001",
+          "locator": "Section 3, Skorosti dvizheniya, printed pages 9 and 10, row Maksimalnaya po shosse, km/h",
+          "state": "maximum road speed on the highway, as published",
+          "grade": "documented"
+        },
+        "range_km": {
+          "value": 600,
+          "unit": "km",
+          "source": "btr_80_technical_description_2001",
+          "locator": "Section 3, Raskhod topliva i zapas khoda, printed page 10, row Zapas khoda po toplivu, km: po shosse",
+          "state": "operating range on the highway, as published",
+          "grade": "documented"
+        },
+        "published_power_hp": {
+          "value": 260,
+          "unit": "hp",
+          "source": "btr_80_technical_description_2001",
+          "locator": "Section 3, Silovaya ustanovka, printed page 12, row Garantirovannaya moshchnost, l.s. (guaranteed power)",
+          "state": "guaranteed (rated) power 260 horse power at 2,600 rpm, compression-ignition diesel; no net basis is stated",
+          "grade": "documented"
+        },
+        "engine_model": {
+          "value": "7403",
+          "unit": "text",
+          "source": "btr_80_technical_description_2001",
+          "locator": "Section 3, Silovaya ustanovka, printed page 12, engine description: chetyrekh taktnyy s vosplameneniem ot szhatiya, zhidkostnogo okhlazhdeniya, 7403 vosmoy komplektatsii",
+          "state": "the manual names the engine model 7403, eighth configuration, four-stroke compression-ignition liquid-cooled V8; it names no engine manufacturer",
+          "grade": "documented"
+        },
+        "engine_displacement_l": {
+          "value": 10.85,
+          "unit": "L",
+          "source": "btr_80_technical_description_2001",
+          "locator": "Section 3, Silovaya ustanovka, printed page 12, row Rabochiy obem, l",
+          "state": "swept volume, as published",
+          "grade": "documented"
+        },
+        "transmission_type": {
+          "value": "manual",
+          "unit": "enum",
+          "source": "btr_80_technical_description_2001",
+          "locator": "Section 2 General description, organy upravleniya, printed page 8, item 5 rychag pereklyucheniya peredach KP (gearbox gear-change lever) and item 7 rychag pereklyucheniya peredach RK (transfer-case gear-change lever)",
+          "state": "manual gearbox (KP) with a transfer case (RK); section 3 publishes no transmission-type row, so the type is graded from the gear-change controls the general description shows",
+          "grade": "documented"
+        }
+      }
+    }
+  ]
+}

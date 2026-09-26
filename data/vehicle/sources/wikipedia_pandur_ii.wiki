@@ -1,0 +1,264 @@
+{{Use dmy dates|date=September 2020}}
+{{Infobox weapon
+| name               = Pandur 8×8 APC
+| image              = KBV-PZLOK.JPG
+| image_size         = 300
+| caption            = Pandur II 8×8 of the [[Czech Army]]
+| origin             = [[Austria]]
+| type               = [[Armoured personnel carrier]]
+| wars               = See ''[[Pandur II#Variants by country|Variants]]''
+| is_vehicle         = Yes
+| service            = 2001–present
+| used_by            = See ''[[Pandur II#Operators|Operators]]''
+| manufacturer       = [[Steyr-Daimler-Puch]] and
+[[Czechoslovak Group]] (licensed production for Central and Eastern Europe + Asia)
+| developed_from     = [[Pandur I (6×6)]]
+| production_date    = 2001–present
+| variants           = <!-- General specifications -->
+| weight             = {{convert|17.3|t|lb|abbr=on}} (with minimal protection) '''or''' <br>{{convert|22|t|lb|abbr=on}} (with additional protection) *turret not included <br>
+{{convert|20.1|t|lb|abbr=on}} (amphibious limit)<ref name=":specs">{{Cite web|title=Pandur II 8x8 wheeled armored personnel carrier |url=https://acr.mo.gov.cz/technika-a-vyzbroj/poz/vbv/-kolovy-obrneny-transporter-pandur-ii-8x8-89949/ |archive-url=https://web.archive.org/web/20250711131102/https://acr.mo.gov.cz/technika-a-vyzbroj/poz/vbv/-kolovy-obrneny-transporter-pandur-ii-8x8-89949/ |archive-date= 11 July 2025 |language=cs}}</ref>
+| length             = {{convert|7350|mm|in|abbr=on}}
+| width              = {{convert|2670|mm|in|abbr=on}}
+| height             = {{convert|2080|mm|in|abbr=on}}
+| crew               = 3 (APC version)
+| passengers         = 11 (APC version)
+| engine             = Cummins ISLe 450 HPCR, 8.9l <br> 
+[[Straight-six engine|in-line 6]] [[Turbo-diesel|turbo-diesel engine]]<ref name=":specs" />
+| engine_power       = {{convert|335|kW|hp|abbr=on}} <br>{{convert|1628|Nm|ftlb|abbr=on}}<ref name=":specs" />
+| transmission       = ZF 6HP602 S PLUS (6 forward, 1 reverse gears) <br>Steyr VG 1400 [[transfer case]]<ref name=":specs" />
+| payload_capacity   = {{convert|8.5|t|lb|abbr=on}}
+| vehicle_range      = Approx. 700&nbsp;km
+| speed              = {{ubl|{{convert|105|km/h|mph|abbr=on}} (road)|≤{{convert|11|km/h|mph|abbr=on}} (water)}}
+| primary_armament   = {{Plain list|
+* 30 mm [[Mk44 Bushmaster II]] gun
+* '''or'''
+*[[BGM-71 TOW|TOW]] anti-tank guided missile
+* '''or'''
+* 105 mm [[Cockerill high-pressure gun]]
+*'''or'''
+* 7.62 mm [[FN MAG]] machine gun
+* '''or'''
+* 0.50 in (12.7 mm) [[M2 Browning]] heavy machine gun
+}}
+| secondary_armament = {{Plain list|
+* 7.62 mm [[FN MAG]] machine gun
+* '''or'''
+* 0.50 in (12.7 mm) [[M2 Browning]] heavy machine gun
+*'''or'''
+*[[Spike (missile)|Spike LR]] anti-tank guided missile
+}}
+}}
+
+The '''Pandur II''' is an improved modular all-wheel-drive version of the [[Pandur I|Pandur 6×6 APC]] wheeled armoured vehicle. It was developed as a private venture by the Austrian company Steyr-Daimler-Puch Spezialfahrzeuge. Steyr-Daimler-Puch Spezialfahrzeuge is part of [[General Dynamics European Land Systems]] (GDELS), which is also the parent company of [[MOWAG]] of Switzerland and [[General Dynamics Santa Bárbara Sistemas|Santa Bárbara Sistemas]] of Spain.
+
+==Military aspects==
+
+The Pandur II has an all-welded steel body with optional armour upgrades. The basic armour package is designed to protect against {{convert|7.62|to|14.5|mm|in|abbr=on}} armour-piercing rounds (customers may choose the armour thickness). The vehicle is designed to be transportable in a [[Lockheed Martin]] [[C-130 Hercules]] transport aircraft. The driver is seated on the left at the front and the engine is to the right. The driver is provided with a single piece hatch cover as well as three-way periscopes, one of which can be replaced by a passive periscope for night missions. The vehicle is designed to take a number of turret systems (such as the SP 30 turret also mounted on the [[ASCOD AFV]] of the Spanish and Austrian Armies), or it can be used as a standard APC with a mounted machine gun. The vehicle can carry 6 infantry with the turret and 12 without the turret.
+
+==Technical description==
+
+The Pandur II is an armoured off-road vehicle (APC) intended for military use. It is available in two versions, a 6×6 and an 8×8 version; both versions are designed to be as offroad capable as possible whilst providing sophisticated protection, including protection against mines, for their occupants. The Pandur II can be used in cold (arctic) and hot (desert) climates, in urban regions, impassable terrain, as well as in waters such as rivers, lakes, and coast waters. In order to reduce the unit cost, many industrial-grade off-the-shelf components (e.&nbsp;g. an industrial diesel engine) were used for the Pandur II. The following description primarily describes the 8×8 variant.
+[[File:Pandur II, Dny NATO 2013 (5).JPG|thumb|Pandur II at NATO Days 2013 in Ostrava.]]
+
+===Running gear===
+
+The body is made of highest-tenacity steel plates that are welded together. Thus, the body is rigid and does not allow torsion.<ref name="Skoff_57" /> The wheels are coil-sprung and have hydraulic shock absorbers, the suspension is similar to the [[MacPherson strut]] system. Each wheel has two control arms, a lower transverse control arm, and an upper longitudinal control arm.<ref name="Skoff_56" /> The coil springs are designed to have progressive characteristics, which is achieved with additional rubber springs. The control arms (as well as other suspension parts that do not warm up) are made of a chemically pure steel that does neither contain phosphorus nor sulphur (30CMo6). Therefore, the steel retains its mechanical properties at temperatures as low as -45&nbsp;°C (228&nbsp;K) — regular steel typically embrittles at temperatures below -20&nbsp;°C (253&nbsp;K).<ref name="Skoff_57" />
+
+The Pandur II's first two pairs of wheels are steered, the last two pairs of wheels are not. The front pair of wheels' steering trapezes are mechanically connected and use the Ackermann steering principle; the normals' point of intersection lies in between the rear axles. The steering system itself is a hydraulically assisted dual-circuit power steering system that is located within the Pandur II's protective body.<ref name="Skoff_58" /> The Pandur II is also fitted with a steering brake system that reduces its turning radius. In order to improve the Pandur II's off-road capabilities, it has a tyre-pressure regulation-system that allows manipulating the tyre pressure for each pair of wheels individually or for all wheels at once. All tyres are also fitted with stiff-rubber running-elements that allow them to maintain their basic tyre characteristics even when they are completely deflated. This includes fixing the tyre on the rim.<ref name="Skoff_59" />
+
+===Engine and gearbox===
+
+The Pandur II is powered by a Cummins ISLe HPCR industrial diesel engine. This engine is a straight-six, common-rail injected turbodiesel with a variable turbine geometry turbocharger, intercooler, and heavy-duty water cooler; the water cooler is designed for outside air temperatures of up to 52&nbsp;°C (325&nbsp;K). The engine displaces 8.9 litres and is rated 335&nbsp;kW at 2100/min, with a maximum torque of 1621&nbsp;N·m at 1200...1800/min. For tactical reasons, the engine is not fitted with an exhaust gas treatment system (such as a lean NO<sub>x</sub> trap or SCR catalyst). Therefore, only the combustion itself combined with exhaust gas recirculation are used for emissions control — the Pandur II complies with the Euro III emissions standard.<ref name="Skoff_52" />
+
+The main gearbox is an automatic ZF 6HP602c six-speed gearbox that has a hydrodynamic torque converter, planetary gears, and a hydrodynamic retarder.<ref name="Skoff_53" /> The gearbox as well as the diesel engine, radiator, generator, hydraulic system, and the compressed air system are all put into a quick-coupling module, the so-called Powerpack.<ref name="Skoff_51" /> The Powerpack can be uninstalled from the Pandur II within 20 minutes. The engine can run when the Powerpack is not installed in the Pandur II (for maintenance purposes). Reinstalling the Powerpack takes another 20 minutes.<ref name="Skoff_52" />
+
+===Drivetrain===
+
+The automatic gearbox is connected to the drivetrain with a system of spiral bevel gears that allows quick coupling. The torque is sent from the gearbox through a two-speed transfer gearbox, four differentials with reduction gearboxes, and the drive shafts to the wheels. In the on-road drive mode, 30% of the torque is sent to the first pair of wheels, 21% to the second pair of wheels, and 49% to the fourth pair of wheels; the third pair of wheels does not receive any torque (8×6). The wheel slip is measured by a system called the "Automatic Drivetrain Management" (ADM). Depending upon the position of the gear selector, the ADM automatically splits the fourth pair of wheels' torque evenly between the fourth and third pair of wheels (i.&nbsp;e. it engages or disengages all-wheel drive), it also engages or disengages the transfer case's reduction gear, and it engages the pair of wheels' differentials in an escalating fashion.<ref name="Skoff_53" /> The differentials are jaw clutches with a 100% locking rate; thus, they do not allow wheel slip. A few seconds after differential lock engagement, the ADM already turns off the differential lock. A coil spring then disengages the differential lock, which is mechanically prevented if there is still differential torque (this means that, the differential lock remains engaged even though it is "turned off", if one wheel would otherwise spin rather freely; only if both wheels have "grip", the differential lock mechanically disengages).<ref name="Skoff_54" /> This allows the Pandur II to keep its differentials unlocked most of the time, which drastically reduces the reactive torque within the drivetrain — with all differential locks engaged, one wheel can receive all the torque. The Pandur II's drivetrain can transmit up to 20&nbsp;kN·m of torque to a single wheel; irreversible deformation occurs at torques of around 30&nbsp;kN·m.<ref name="Skoff_55" />
+
+===Water jet propulsion and winch===
+
+The Pandur II has an 80&nbsp;kN hydraulic winch.<ref name="Skoff_56" /> The APC had a fording depth of up to 1500&nbsp;mm — through deeper waters, the Pandur II can swim. For this purpose, the Pandur II has a trim vane, an additional water-water-cooler (without a radiator), a snorkel, and a bilge pump. The two water jet propulsion units are installed in the Pandur II's back; they are mechanically driven through the drivetrain. When the water jet propulsion system is active, the wheels are not driven — this is because they would induce too much drag without providing sufficient propulsion. Compared against a conventional propeller, the water jet propulsion system is less efficient, but more durable and offers better manoeuvrability. The top speed when swimming in calm waters is ≤11&nbsp;km/h; the Pandur II has a [[sea state]] rating of 1–2.<ref name="Skoff_56" />
+
+==Production==
+
+The Pandur 8×8 APC is manufactured in [[Austria]] while export versions are also built in the [[Czech Republic]]. Between 2007 and 2012, licensed versions were built by Fabrequipa in [[Portugal]].<ref>{{Cite web |last=OuinetAdmin |date=2007-01-23 |title=Portugal Begins Production of Pandur 8×8 |url=https://www.defense-aerospace.com/portugal-begins-production-of-pandur-8x8/ |access-date=2024-05-11 |website=Defense aerospace |language=en-US}}</ref><ref>{{Cite web |title=Pandur: decisão do ministro vai despedir 200 trabalhadores |url=https://tvi.iol.pt/noticias/sociedade/iol-push/pandur-decisao-do-ministro-vai-despedir-200-trabalhadores |access-date=2024-05-11 |website=TVI Notícias |language=pt}}</ref>
+
+==Variants by country==
+
+===Portuguese variants===
+[[File:Pandur 8x8 Wheeled Armoured Personnel Carrier, Trident Juncture 15 (22525568331).jpg|thumb|300x300px|A Portuguese Army Pandur II with an SP30 turret with 30 mm gun.]]
+In 2005, the Portuguese government signed a deal worth 364 million euros to acquire 260 [[Pandur 8×8 APC|Pandur II]] armoured vehicles, with an option for further 33 worth 140 million [[euro]]s, to equip the [[Portuguese Intervention Brigade]] of the [[Portuguese Army]] and the marines of the [[Portuguese Navy]]. Portugal was the first country to buy the Pandur II.<ref>¨Portugal was the first country to select the Pandur II 8×8, awarding Steyr-Daimler-Puch a EUR344.3 million (US$455.1 million) contract (plus a spares contract worth another EUR20.7 million) for the supply of 260 vehicles in February 2005 ... Second in line was the Czech Army, which it was announced in June 2006 had placed an EUR821 million order for 199 vehicles (plus 35 options) in 18 versions, all of which will be amphibious, including 63 infantry combat vehicles (ICVs)¨ ''Pandur II in profile: Steyr's 8×8 digitized warfare platform is gathering speed'' by Rupert Pengelley, in ''Jane´s Defence Industry'', 17 January 2007.</ref> The sale of Pandur II to Portugal includes an associated [[offset agreement]] for a value of 516 million euro.<ref>''Procurement Decision Support for the Portuguese MoD: The MACBETH Approach and the Acquisition of 8×8 AWV'', by Carlos A. Bana e Costa Mário Simões Marquest, Paper presented at the SAS-080 Specialists Meeting on ''Decision Support Methodologies for Acquisition of Military Equipment'', Brussels, Belgium, October 22–23, 2009, [http://ftp.rta.nato.int/public//PubFullText/RTO/MP\RTO-MP-SAS-080///MP-SAS-080-01.doc] {{Webarchive|url=https://web.archive.org/web/20130225071443/http://ftp.rta.nato.int/public//PubFullText/RTO/MP/RTO-MP-SAS-080///MP-SAS-080-01.doc|date=2013-02-25}}</ref> The Pandur II (''Viatura Blindada de Rodas'') for the Portuguese Army is fitted with Steyr add-on armour that provides Level 4 protection according to [[STANAG 4569]]. The vehicles for the marines are equipped with Level 3 armour and have a cargo ramp instead of the original doors.
+
+====Legal dispute====
+
+In 2002, the Portuguese Ministry of Defence decided that they would need new 8×8 APCs. After they had requested for tender on 14 August 2003, three companies — ([[Finland|Finnish]] arms maker [[Patria (company)|Patria Oyj]], Steyr-Daimler-Puch Spezialfahrzeuge (now part of [[General Dynamics]]), and MOWAG (also part of General Dynamics)) — made their offers. In December 2004, Steyr-Daimler-Puch Spezialfahrzeuge's Pandur II was chosen; the Portuguese Ministry of Defence signed a 365 million Euro contract about the purchase of 260 units of the Pandur II with General Dynamics on 15 February 2005.<ref>''Pandur II in profile: Steyr's 8×8 digitized warfare platform is gathering speed'' by Rupert Pengelley, in ''Jane´s Defence Industry'', 17 January 2007.</ref><ref>The contract is sealed by Santana Lopes administration 5 days before the general election:¨O TC terá depois um mês para transmitir a sua decisão final, que é determinante para a homologação do contrato assinado no passado dia 15 de Fevereiro pelo ex-ministro da Defesa Paulo Portas, cinco dias antes das eleições legislativas antecipadas¨ [http://www.publico.pt/Pol%C3%ADtica/tribunal-de-contas-pede-esclarecimentos-sobre-contrato-para-viaturas-blindadas_1221836] {{Webarchive|url=https://web.archive.org/web/20111001232853/http://www.publico.pt/Pol%C3%ADtica/tribunal-de-contas-pede-esclarecimentos-sobre-contrato-para-viaturas-blindadas_1221836|date=2011-10-01}}</ref> The contract also included an option of additional 33 units. The first 260 units of the Pandur II were supposed to be built by General Dynamics European Land Combat Systems in Austria (41 units) and by Fabrequipa in Portugal (219 units),<ref>{{Deprecated archive|url=https://archive.today/20120709060236/http://dn.sapo.pt/Inicio/interior.aspx?content_id=639976|title=Steyr reactiva fábrica no Barreiro para produzir carros blindados}} ''Diário de Notícias''</ref> from 2006 to 2009; on 27 January 2007, production at Fabrequipa commenced.<ref>{{cite web|url=https://www.defencetalk.com/fabrequipa-begins-production-of-pandur-ii-8x8-in-portugal-10146/|title=Fabrequipa Begins Production of Pandur II 8×8 in Portugal}}</ref> In March 2009 General Dynamics announced that they intended to move the production from Portugal to Czechia.<ref>{{cite web|url=https://www.publico.pt/Política/empresa-austriaca-quer-transferir-fabrico-de-blindados-pandur-de-portugal-para-a-republica-checa_1369147|title=Empresa austríaca quer transferir fabrico de blindados Pandur de Portugal para a República Checa|language=pt|website=[[Público (Portugal)|Público]]|date=March 14, 2009|archive-url=https://web.archive.org/web/20111001232832/https://www.publico.pt/Pol%C3%ADtica/empresa-austriaca-quer-transferir-fabrico-de-blindados-pandur-de-portugal-para-a-republica-checa_1369147|archive-date=October 1, 2011}}</ref> On 8 May 2010, the Portuguese Minister of Defence announced that the Ministry of Defence would charge General Dynamics with breach of contract, because they had failed to deliver all 260 units.<ref>O Ministério da Defesa informou há dias o fabricante das viaturas blindadas Pandur que os atrasos no cumprimento do programa "obrigam à adopção de medidas urgentes e eficazes" para "debelar todos os prejuízos sofridos."{{cite web |url=https://dn.sapo.pt/inicio/portugal/interior.aspx?content_id=1564084 |title=Archived copy |access-date=2010-08-26 |url-status=dead |archive-url=https://arquivo.pt/wayback/20100804160729/http%3A//dn.sapo.pt/inicio/portugal/interior.aspx?content_id%3D1564084 |archive-date=2010-08-04 }}</ref> The contract with General Dynamics was terminated by the Ministry of Defence in October 2012 — until that date, 166 units had been built. Then began a process of negotiation leading to an agreement in September 2014 — General Dynamics agreed upon delivering 22 more units of the Pandur II until August 2015. The additional 33 units option was never used.
+
+In January 2005, General Defence's competitor Patria Oyj accused General Dynamics of "misconducts during the tender and contract formation procedures". Thus, Patria Oyj called for the legal suspension of the contract awarding to General Dynamics at the Public Attorney's Office of the Administrative Court in Lisbon.<ref>[http://www.defenseindustrydaily.com/patria-alleges-misconduct-in-portuguese-pandur-ii-deal-01658/ Patria Alleges Misconduct in Portuguese Pandur II Deal] ''Defence Industry Daily''</ref> Patria Oyj's appeal was rejected by Lisbon's Court in February 2005.<ref>¨A suspensão da assinatura do contrato acabaria por ser levantada pelo Tribunal Administrativo e Fiscal de Lisboa, que considerou que a assinatura do contrato não constituía "lesão iminente e irreversível" dos interesses da empresa numa providência cautelar, apresentada em simultâneo, e cujo processo ainda decorre.¨ {{cite web |url=https://dn.sapo.pt/inicio/portugal/interior.aspx?content_id=1645380 |title=PGR revê dados do Tribunal de Contas sobre Pandur - Portugal - DN |access-date=2010-08-26 |url-status=dead |archive-url=https://web.archive.org/web/20100821083316/http://dn.sapo.pt/inicio/portugal/interior.aspx?content_id=1645380 |archive-date=2010-08-21 }}</ref> After General Dynamics had failed to deliver all units of the Pandur II, the Portuguese Public Prosecutor announced on 20 August 2010 that he would investigate corruption charges regarding the Pandur II contract awarding to General Dynamics.<ref>[http://www.ionline.pt/conteudo/72714-ministerio-publico-investiga-compra-blindados-militares]. ¨O Governo afirmou-se hoje "totalmente disponível para cooperar" com a Justiça relativamente a uma eventual investigação ao processo de compra de 260 viaturas blindadas de rodas Pandur II para as Forças Armadas nacionais.¨{{cite web |title=PGR revê dados do Tribunal de Contas sobre Pandur - Portugal - DN |url=https://dn.sapo.pt/inicio/portugal/interior.aspx?content_id=1645380 |url-status=dead |archive-url=https://web.archive.org/web/20100821083316/http://dn.sapo.pt/inicio/portugal/interior.aspx?content_id=1645380 |archive-date=2010-08-21 |access-date=2010-08-26}}. ¨Um responsável político admitiu também ao DN que o Governo pode seguir uma via semelhante à do Executivo checo - denunciou o contrato com a Steyr e depois aceitou comprar apenas metade das viaturas inicialmente contratualizadas - libertando-se assimdos custos das Pandur por entregar.¨ {{cite web |title='Pandur' compradas uma a uma - Portugal - DN |url=https://dn.sapo.pt/inicio/portugal/interior.aspx?content_id=1648463 |url-status=dead |archive-url=https://web.archive.org/web/20100828231235/http://dn.sapo.pt/inicio/portugal/interior.aspx?content_id=1648463 |archive-date=2010-08-28 |access-date=2010-08-26}}</ref> However, a case was never mounted against General Dynamics, and no further action was taken.
+
+====List of all Portuguese Pandur II====
+
+* 105 Infantry Carrier Vehicles with a 12.7&nbsp;mm machine gun
+* 7 Infantry Carrier Vehicles with a 12.7&nbsp;mm machine gun installed in a [[Protector RWS|Protector M151 RWS]]
+* 16 Command Vehicles
+* 7 Recovery Vehicles
+* 8 Medical Evacuation Vehicles
+* 5 Anti-tank Guided Missile Launchers – variant with [[BGM-71 TOW|TOW]] ITAS (Tube-launched, Optically tracked, Wire-guided Improved Target Acquisition System) missile launcher
+* 30 Infantry Fighting Vehicles – variant with SP30 turret with 30&nbsp;mm gun.
+* 6 Signalling Vehicles
+* 4 Surveillance Vehicles
+
+===Czech variants===
+[[File:Pandur II (2).jpg|thumb|Pandur II being tested by the [[Czech Army]]]]
+[[File:KOT-Zdr.JPG|thumb|right|KOT-Zdr]]
+
+The [[Czech Army]] use the Pandur II. In total, they have purchased 127 units.<ref name="ceskenovinyii">{{cite web|url=http://www.ceskenoviny.cz/zpravy/czech-military-takes-over-first-17-pandur-ii-apcs/400267&id_seznam=2054|title = &#124;}}</ref>
+
+* '''KBVP:''' Wheeled infantry fighting vehicle, equipped with the [[Samson Remote Controlled Weapon Station|Elbit Samson RCWS-30]] turret (ATK MK44 30mm, 7.62&nbsp;mm machine gun, Spike missile, smoke grenades) <ref>{{Cite web |title=Armoured Personnel Carrier Pandur II 8×8 {{!}} Ministry of Defence & Armed Forces of the Czech Republic |url=https://www.army.cz/scripts/detail.php?id=15806 |access-date=2024-06-06 |website=www.army.cz}}</ref>
+:(72 units purchased 2009-2013)
+
+*'''KBVP M1 RVS''': A modified variant for service in Afghanistan, with additional multilayer and bar armour, improved electronics, and without water jet propulsion.
+: (4 units purchased in August 2010)<ref>''4 czeskie Pandury do Afganistanu'', "RAPORT Wojsko Technika Obronność" No. 10/2010, p.68 (in Polish)</ref>
+
+* '''KBV-VR:''' Wheeled infantry fighting vehicle (company command post)
+: (11 units purchased)
+
+* '''KBV-Pz''' — ''průzkumné kolové bojové vozidlo'' (''Wheeled reconnaissance fighting vehicle'') fitted without a battlefield surveillance radar.
+: (8 units purchased<ref name="ceskenovinyii"/>)
+
+* '''KBV-PZLOK''' — ''kolové bojové vozidlo průzkumné s radiolokátorem'' (''Wheeled reconnaissance fighting with radar'') fitted with a battlefield surveillance radar.
+: (8 units purchased)
+
+* '''KOT-Zdr''' — ''kolový obrněný transportér zdravotnický'' (''Wheeled armoured personnel carrier for paramedics'')
+: (4 units purchased<ref name="ceskenovinyii"/>)
+
+* '''KOT-Ž''' — ''kolový obrněný transportér ženijní'' (''Wheeled armoured personnel carrier for engineers'')
+: (4 units purchased<ref name="ceskenovinyii"/>)
+
+* '''KOV-S''' — ''kolové obrněné vozidlo spojovací'' (''Wheeled armoured radio vehicle'')
+: (14 units purchased)
+
+* '''KOV-VŠ''' — ''kolové obrněné vozidlo velitelsko-štábní'' (''Wheeled armoured vehicle for command and staff'')
+: (6 units purchased)
+
+===Indonesian variant===
+====Pindad Cobra 8×8====
+On 24 November 2016 Indonesian government ordered an undisclosed number of Pandur II 8×8 APCs (including [[Tatra (company)|Tatra trucks]] and [[M3 Amphibious Rig]]s) for US$39 million from the [[Czechoslovak Group]] which has an agreement with [[General Dynamics]] to produce, maintain, and market these vehicles in Asia and Central and Eastern Europe.<ref name="IHS Jane's Defence Weekly">{{cite web |last1=Komínek |first1=Jiří |title=Czechoslovak Group signs US$39 million deal with Indonesia |url=http://www.janes.com/article/65745/czechoslovak-group-signs-usd39-million-deal-with-indonesia |access-date=18 January 2017 |website=IHS Jane's 360 |publisher=IHS Jane's Defence Weekly}}</ref> In September 2017, Indonesia reportedly received four Pandur II 8×8s. The four Pandur IIs made their first public appearance at the 72nd [[Indonesian National Armed Forces Day]] celebration on 5 October 2017.<ref>{{Cite web |last=admin |date=2019-04-15 |title=Kobra 8×8, Panser IFV Pertama Garapan Pindad untuk Batalyon Infanteri Mekanis TNI AD |url=https://www.airspace-review.com/2019/04/15/kobra-8x8-panser-ifv-pertama-garapan-pindad-untuk-batalyon-infanteri-mekanis-tni-ad/ |access-date=2025-06-14 |website=Airspace Review |language=Indonesian}}</ref>
+
+On 12 April 2019, the Indonesian Minister of Defense and [[Pindad]] signed a contract worth US$80 million for another 22 units of Pandur II 8×8 that supposed to be manufactured locally as the Pindad Cobra 8×8 Infantry Fighting Vehicle (IFV).<ref>{{Cite web |last=office_zzam |date=2019-04-16 |title=Indonesian army to receive Pandur II Cobra IFVs |url=https://armyrecognition.com/archives/archives-land-defense/land-defense-2019/indonesian-army-to-receive-pandur-ii-cobra-ifvs |access-date=2025-06-15 |website=armyrecognition.com |language=en-gb}}</ref><ref>{{Cite web |last=indomiliter |date=2019-04-15 |title=Kemhan Order Pindad Cobra 8×8, Varian dari Panser Tempur Pandur II 8×8 IFV |url=https://www.indomiliter.com/kemhan-order-pindad-cobra-8x8-varian-dari-panser-tempur-pandur-ii-8x8-ifv/ |access-date=2025-06-14 |website=Indomiliter.com |language=Indonesian}}</ref>
+
+On 25 March 2020, the [[Czechoslovak Group]] announced that the Czech companies in coordination with local producers will deliver 23 units of Pandur II 8×8 to Indonesia, in following the contract was signed in December 2019.<ref>{{Cite web |last=CZDEFENCE |date=2020-03-25 |title=CSG companies will sell wheeled armoured vehicles Pandur II to Indonesia |url=https://www.czdefence.cz/clanek/ceske-firmy-dodaji-obrnena-bojova-vozidla-pandur-ii-do-indonesie |access-date=2025-06-15 |website=www.czdefence.cz |language=en}}</ref><ref>{{Cite web |last=office_zzam |date=2020-03-30 |title=Czech defense industry will deliver 23 Pandur II armored vehicles to I |url=https://armyrecognition.com/archives/archives-land-defense/land-defense-2020/czech-defense-industry-will-deliver-23-pandur-ii-armored-vehicles-to-indonesia |access-date=2025-06-15 |website=armyrecognition.com |language=en-gb}}</ref>
+
+On 22 February 2022, Indonesian Minister of Defense Prabowo Subianto witnessed the signing of the cooperation contract between the [[Ministry of Defense (Indonesia)|Ministry of Defense of Republic of Indonesia]] and Excalibur International, a subsidiary of the Czechoslovak Group (CSG), at Ministry of Defense office, in [[Jakarta]]. The cooperation contract includes a license agreement for the Pandur II 8×8 armored vehicle, carried out by the President Director of PT. Pindad Abraham Mose with Michal Stranad, CEO of the CSG group, where PT Pindad receives a Transfer of Technology (ToT) to assemble special specifications according to the needs of the [[Indonesian Army]].<ref>{{Cite web |last=nst |date=2022-02-22 |title=Pindad Lakukan License Agreement Dengan CSG Group |url=https://indonesiadefense.com/pindad-lakukan-license-agreement-dengan-csg-group/ |access-date=2025-06-15 |website=Indonesiadefense.com |language=id}}</ref>
+
+On 13 August 2023, Indonesia reportedly started to received another 11 units of Pandur II 8×8s.<ref>{{Cite web |last=Sawiyya |first=Rangga Baswara |date=2023-08-13 |title=Panser Kobra 8×8 pesanan Kemhan RI dari Ceko telah tiba di Indonesia |url=https://www.airspace-review.com/2023/08/13/panser-kobra-8x8-pesanan-kemhan-ri-dari-ceko-telah-tiba-di-indonesia/ |access-date=2025-06-14 |website=Airspace Review |language=Indonesian}}</ref>
+
+On 28 February 2024, Pindad hand overed 10 units Pandur II 8×8 infantry fighting vehicles to the Indonesian Army.<ref>{{Cite web |title=PT. Pindad (Persero) - Presiden Menyaksikan Penyerahan 52 Unit Ranpur Pindad di Rapim TNI Polri 2024 |url=https://pindad.com/presiden-menyaksikan-penyerahan-52-unit-ranpur-pindad-di-rapim-tni-polri-2024 |access-date=2024-03-18 |website=pindad.com}}</ref><ref>{{Cite web |last=admin |date=2024-02-29 |title=Indonesia's President Witnesses Handover of 52 Pindad Armored Vehicles to Armed Forces - MilitaryLeak.COM |url=https://militaryleak.com/2024/02/29/indonesias-president-witnesses-handover-of-52-pindad-armored-vehicles-to-armed-forces/ |access-date=2025-06-15 |language=en-US}}</ref> Furthermore, on 2 October 2024, 23 units of Pandur II 8×8 ordered by the Indonesian Ministry of Defense were delivered by Pindad to the Indonesian Army.<ref>{{Cite web |last=Biro Humas Setjen Kemhan |date=2024-10-02 |title=Wamenhan M. Herindra Serahkan Alpalhankam kepada Panglima TNI di Monas |url=https://www.kemhan.go.id/2024/10/02/wamenhan-m-herindra-serahkan-alpalhankam-kepada-panglima-tni-di-monas.html |access-date=2025-06-15 |website=www.kemhan.go.id |language=Indonesian}}</ref><ref>{{Cite web |date=2024-10-03 |title=Defense Ministry hands over security, defense equipment to TNI - Politics |url=https://www.thejakartapost.com/indonesia/2024/10/03/defense-ministry-hands-over-security-defense-equipment-to-tni.html |access-date=2025-06-15 |website=The Jakarta Post |language=en}}</ref><ref>{{Cite web |last=admin |date=2024-10-03 |title=Indonesian Army Strengthens Regional Security with New Medium Tanks and Armored Vehicles - MilitaryLeak.COM |url=https://militaryleak.com/2024/10/03/indonesian-army-strengthens-regional-security-with-new-medium-tanks-and-armored-vehicles/ |access-date=2025-06-15 |language=en-US}}</ref>
+
+18 units of the Indonesian Army's Pandur II 8×8, along with 12 [[Anoa (armoured personnel carrier)|Pindad Anoa]] 6×6, will be sent to Lebanon to be operated by the Indonesian 2025 Task Force to UNIFIL (United Nations Interim Force In Lebanon) for peacekeeping mission.<ref>{{Cite web |last=PMPP TNI |first=Pentak |date=2025-03-19 |title=Peacekeeper Satgas UNIFIL siap operasikan Ranpur Pandur 8×8 di daerah misi Lebanon |url=https://pmpp-tni.mil.id/2025/03/19/peacekeeper-satgas-unifil-siap-operasikan-ranpur-pandur-8x8-di-daerah-misi-lebanon/ |access-date=2025-06-16 |website=pmpp-tni.mil.id |language=Indonesian}}</ref><ref>{{Cite web |last=Sawiyya |first=Rangga Baswara |date=2025-03-20 |title=PMPP TNI latihan mengoperasikan Pandur ll 8×8 di Pindad, 18 panser siap dikirim ke Libanon |url=https://www.airspace-review.com/2025/03/20/pmpp-tni-latihan-mengoperasikan-pandur-ll-8x8-di-pindad-18-panser-siap-dikirim-ke-libanon/ |access-date=2025-06-15 |website=Airspace Review |language=Indonesian}}</ref>
+
+Pindad Cobra 8×8 specifications: 
+* Turret system: Unmanned turret Elbit System, Ares UT30 MK II.<ref>{{Cite web |last=indomiliter |date=2024-02-29 |title=Ares UT30MK2 - Turret RCWS 30mm di Panser Pandur II 8×8 IFV TNI AD |url=https://www.indomiliter.com/ares-ut30mk2-turret-rcws-30mm-di-panser-pandur-ii-8x8-ifv-tni-ad/ |access-date=2025-06-14 |website=Indomiliter.com |language=Indonesian}}</ref>
+* Main armament: Northrop Grumman [[Mk44 Bushmaster II]], cal. 30&nbsp;mm.
+* Secondary armament: Pindad [[FN MAG#Indonesian versions|SM2 V2]], cal. 7.62&nbsp;mm.
+* Capacity: Three mechanic personnels (commander, driver and gunner).
+* Payload: The rear cabin can accommodate up to eight fully armed troops (up to 8.5 tons). 
+* Dimensions: Length of 7.5 m; width of 2.67 m; height of 2.1 m.
+* Weight: 17.6 tons (standard); 22 tons (with add-on armor).
+* Additional protection:
+** Exterior add-on passive armor made by Rafael.
+** Bottom hull coated with SSAB ARMOX 500 (mine/IED resistant).
+** Front Wave Breaker shield. 
+* Engine: Cummins EURO III diesel engine (455&nbsp;hp).
+* Speed: Maximum 105&nbsp;km/hour (road); 10&nbsp;km/hour (water).
+* Operational range: Maximum cruise-range 700&nbsp;km.
+* Night Vision System: CDND-1 (Combined Day/Night Day-1) night vision system consists of two prisms cut from special optical glass for an extra wide field of view equipped with anti-laser filters for wavelengths 800, 900, 1064, 1540&nbsp;nm.<ref>{{Cite web |last=KKIP |date=2021-02-01 |title=Berkenalan Dengan PINDAD COBRA (2) {{!}} KKIP Komite Kebijakan Industri Pertahanan |url=https://www.kkip.go.id/2021/02/01/berkenalan-dengan-pindad-cobra-2/ |access-date=2025-06-14 |language=Indonesian}}</ref>
+
+===Philippine variant===
+{{main|Sabrah light tank}}
+
+The '''Sabrah light tank''' wheeled version is a new variant developed and offered by [[Elbit Systems]] for the [[Philippine Army]]'s Light Tank Acquisition Project.<ref>{{Cite web |date=28 February 2022 |title=Sabrah Light Tank, Israel |url=https://www.army-technology.com/projects/sabrah-light-tank-israel/ |url-status=live |archive-url=https://archive.today/20220624020007/https://www.army-technology.com/projects/sabrah-light-tank-israel/ |archive-date=24 June 2022 |access-date=9 July 2023 |website=Army Technology}}</ref> It uses the Pandur II 8×8 platform fitted with a new turret armed with a 105&nbsp;mm gun developed by Elbit in partnership with [[Denel Land Systems]].<ref>{{Cite web |date=17 July 2022 |title=Detailing Elbit's Sabrah Light Tank Offer |url=https://www.pitzdefanalysis.net/2022/07/detailing-elbits-sabrah-light-tank-offer.html |access-date=9 July 2023 |website=Pitz Defense Analysis}}</ref> The Notice of Award (NOA) for the project was issued to Elbit Systems Land by the Department of National Defense in September 2020.<ref>{{cite web |url=https://www.phdefresource.com/2019/11/light-tank-acquisition-project-of.html?m=1 |title=Light Tank Acquisition Project of the Philippine Army |website=Philippine Defense Resource |access-date=June 24, 2019}}</ref>
+
+===Prototypes===
+
+====Slovenian KOV "Krpan"====
+The '''KOV "Krpan"''' (''Kolesno Oklepno Vozilo'', "Wheeled Armoured Vehicle") from Sistemska Tehnika Armas is the Slovenian license version of the Pandur II with a number of improvements and with 55% of its components and subsystems produced locally. This APC was proposed to the [[Slovenian Army]] but was not bought, because the Army decided to buy the [[Patria AMV]] instead.<ref>{{cite web |title=Krpan 8×8 |url=http://www.armas.si/en/defence-equipment/krpan-8x8.aspx |url-status=dead |archive-url=https://web.archive.org/web/20110904085856/http://www.armas.si/en/defence-equipment/krpan-8x8.aspx |archive-date=4 September 2011 |access-date=2 December 2011 |publisher=Armas.si}}</ref><ref>{{Cite web |author=ARG |title=Krpan - Armored personnel carrier |url=http://www.military-today.com/apc/krpan.htm |archive-url=https://web.archive.org/web/20080823203353if_/http://www.military-today.com/apc/krpan.htm |url-status=usurped |archive-date=23 August 2008 |access-date=2 December 2011}}</ref>
+
+==Operators==
+[[File:Pandur 2 operators-updated.png|thumb|300x300px|World map – Pandur II operators are marked in blue]]
+
+===Current operators===
+; {{flag|Czech Republic}} (127)
+: [[Czech Army]]: 9 variants are in operation<ref>{{Cite web |last=admin |date=2023-12-25 |title=Detailed analysis of the Pandur II 8×8 EVO armored vehicle {{!}} My Blog |url=https://militaryview.com/analysis-of-the-pandur-ii-8x8-evo-armored-vehicle/ |access-date=2024-06-06 |language=en-US}}</ref>
+:* 107 produced between 2009 and 2013<ref>{{Cite web |last=admin |date=2023-12-22 |title=Tatra Defence Vehicle Develops New Pandur II 8×8 EVO Infantry Fighting Vehicle - MilitaryLeak.COM |url=https://militaryleak.com/2023/12/22/tatra-defence-vehicle-develops-new-pandur-ii-8x8-evo-infantry-fighting-vehicle/ |access-date=2024-06-06 |website=militaryleak.com |language=en-us}}</ref>
+:* 20 ordered in January 2017 (6 KOVVŠ and 14 KOVS) <ref>{{Cite web |last=CZDEFENCE |title=The Czech army is testing new special Pandur II armoured vehicles |url=https://www.czdefence.cz/clanek/nove-specialni-pandury-ii-pro-acr-ve-vojskovych-zkouskach |access-date=2024-06-06 |website=www.czdefence.cz |language=en}}</ref>
+: The Czech Army plans to modernise the existing fleet of Pandur II between 2027 and 2029.<ref>{{Cite web |last=ESD |date=2024-05-24 |title=Central European armoured vehicle programmes |url=https://euro-sd.com/2024/05/articles/38176/central-european-armoured-vehicle-programmes/ |access-date=2024-06-06 |website=euro-sd.com |language=en-US}}</ref>
+
+; {{IDN}} 
+: On 24 November 2016 Indonesian government ordered an undisclosed number of Pandur II 8×8 APCs (including [[Tatra (company)|Tatra trucks]] and [[M3 Amphibious Rig]]s) for US$39 million from the [[Czechoslovak Group]] which has an agreement with [[General Dynamics]] to produce, maintain, and market these vehicles in Asia and Central and Eastern Europe.<ref name="IHS Jane's Defence Weekly"/> On 12 April 2019 a contract about the manufacture of another 22 units was signed. These units were supposed to be manufactured locally as the ''Pindad Cobra 8×8''.<ref>{{cite web |title=Elshinta.com :: Berita dan Informasi Online |url=https://elshinta.com/news/172721/2019/04/12/kemhan-saksikan-penandatanganan-kontrak-pembelian-alutsista-bernilai-triliunan-rupiah}}</ref> On 28 February 2024 the [[Indonesian Army]] received 10 Pandur II 8×8 fire support vehicles.<ref>{{Cite news |title=Indonesian National Armed Forces receives armoured vehicles |url=https://www.janes.com/defence-news/news-detail/indonesian-national-armed-forces-receives-armoured-vehicles |access-date=2024-03-18 |website=Janes.com |language=en}}</ref><ref>{{Cite web |title=PT. Pindad (Persero) - Presiden Menyaksikan Penyerahan 52 Unit Ranpur Pindad di Rapim TNI Polri 2024 |url=https://pindad.com/presiden-menyaksikan-penyerahan-52-unit-ranpur-pindad-di-rapim-tni-polri-2024 |access-date=2024-03-18 |website=pindad.com}}</ref>
+
+; {{PHI}} (10)
+: The [[Philippine Army]] ordered a light tank in its Light Tank Acquisition Project won by [[Elbit Systems]].<ref>{{cite web |date=February 2021 |title=Elbit's Sabrah "Light Tank" for Un-named Asian Army |url=https://www.asianmilitaryreview.com/2021/02/elbits-sabrah-light-tank-for-un-named-asian-army/ |url-status=live |archive-url=https://archive.today/20230709144000/https://www.asianmilitaryreview.com/2021/02/elbits-sabrah-light-tank-for-un-named-asian-army/ |archive-date=9 July 2023 |access-date=2022-04-14 |publisher=Asian Military Review}}</ref> 10 wheeled light tanks that uses the Pandur II 8×8 platform manufactured in Czech Republic are being supplied to the Philippines.<ref>{{cite web |date=October 25, 2020 |title=Philippines awards contract for light tanks and wheeled APCs to Elbit Systems of Israel |url=https://www.armyrecognition.com/defense_news_october_2020_global_security_army_industry/philippines_awards_contract_for_light_tanks_and_wheeled_apcs_to_elbit_systems_of_israel.html |url-status=live |archive-url=https://archive.today/20230709143933/https://www.armyrecognition.com/defense_news_october_2020_global_security_army_industry/philippines_awards_contract_for_light_tanks_and_wheeled_apcs_to_elbit_systems_of_israel.html |archive-date=9 July 2023 |access-date=October 26, 2020 |website=Army Recognition}}</ref>
+
+; {{POR}} (188)
+: The [[Portuguese Army]] purchased 188 units in 9 variants and are operated by [[Intervention Brigade (Portugal)|Intervention Brigade]].<ref>{{cite web |last1=Tecnologia |first1=Redação |last2=Defesa |date=15 May 2020 |title=Emprego operacional das Viaturas PANDUR II 8×8 portuguesas na República Centro-Africana |url=https://tecnodefesa.com.br/emprego-operacional-das-viaturas-pandur-ii-8x8-portuguesas-na-republica-centro-africana/ |access-date=2022-04-10 |website=Tecnodefesa |language=pt-BR}}</ref>
+
+===Potential operators===
+
+;{{flag|Argentina}} 
+: Israel is offering a variant of the Pandur II EVO to Argentina with the project VBCR 8×8.<ref>{{Cite web |last=Redacción |date=2024-11-21 |title=Fusiles ARAD, nuevos UAV y VCBR 8×8 Pandur II para las Fuerzas Armadas Argentinas: claves de la próxima visita del Ministro de Defensa a Israel |url=https://www.zona-militar.com/2024/11/21/fusiles-arad-nuevos-uav-y-vehiculos-blindados-8×8-pandur-ii-para-las-fuerzas-armadas-argentina-claves-de-la-proxima-visita-del-ministro-de-defensa-a-israel/ |access-date=2024-12-20 |website=Zona Militar |language=es-AR}}</ref> The variant is based on the Czech Tatra Pandur II chassis, and would be armed by Elbit equipments.
+
+; {{flag|Czech Republic}} 
+: In its build-up concept for 2030, the Czech Army plans to modernise the Pandur II and to purchase additional vehicles, the Pandur II EVO.<ref>{{Cite web |last=CZDEFENCE |title=Modernization of Pandur II 8×8 CZ – the main attention will be paid to the weapon station or combat turret |url=https://www.czdefence.cz/clanek/modernizace-panduru-ii-8x8-cz-hlavni-pozornost-bude-venovana-zbranove-stanici-ci-bojove-vezi |access-date=2024-06-06 |website=www.czdefence.cz |language=en}}</ref>
+
+===Lost bids===
+
+;{{CRO}}
+: In competition against Mowag with the Piranha and the Patria AMV with which it was selected as a finalist, but the Patria AMV ended up winning.<ref>{{Cite web |title=Croatia's New APCs: AMVs, RWS and Export Opportunities - Defense Industry Daily |url=https://www.defenseindustrydaily.com/croatias-2007-wheeled-apc-competition-03050/ |access-date=2024-06-26 |website=www.defenseindustrydaily.com |language=en}}</ref>
+
+;{{flag|Poland}}
+: In 2002, Poland selected the future multi-role vehicle intended to replace the [[OT-64 SKOT]], the [[BMP-1]], some command vehicles, mortar carriers and some armoured engineering vehicles. The competitor for this contract were the Piranha IV, the Pandur 2 (8×8) and the [[Patria AMV]]. This last one won the competition, and has been manufactured in Poland under the name [[KTO Rosomak]].<ref>{{Cite web |title=Poland Orders Additional 200 Rosomak Armored Vehicles |url=https://www.defensemirror.com/news/11886/Poland_Orders_Additional_200_Rosomak_Armored_Vehicles |access-date=2023-10-01 |website=www.defensemirror.com}}</ref>
+
+===Tender===
+
+: {{flag|Chile}} (> 200)
+: The Chilean Army was looking for a successor to its 160 Piraña I 6×6 and 30 Piraña I 8×8. On a long term perspective, more than 200 vehicles are expected to be purchased, but in the meantime, a first phase of the replacement includes a tender for 82 8×8 armoured vehicles. The requirement mentions a maximum weight of 38 tons. The deadline for the selection is dated April 8, 2025. Among the known competitors were.:<ref>{{cite web |date=25 October 2023 |title=Chile opens bidding for new wheeled armored vehicles |url=https://www.defensenews.com/land/2023/10/25/chile-opens-bidding-for-new-wheeled-armored-vehicles/}}</ref><ref>{{Cite web |last=InfoDefensa |first=Revista Defensa |title=El Ejército de Chile modifica el proyecto Cromo y analiza comprar 82 carros 4×4, 6×6 y 8×8 |url=https://www.infodefensa.com/texto-diario/mostrar/5084638/ejercito-chile-modifica-proyecto-cromo-analiza-comprar-82-carros-4x4-6x6-8x8 |access-date=2025-02-01 |website=Infodefensa - Noticias de defensa, industria, seguridad, armamento, ejércitos y tecnología de la defensa |language=es}}</ref>
+:* Altuğ by the Turkish [[BMC Otomotiv|BMC]]
+:* [[Patria AMV]] by the Finnish [[Patria Group]]
+:* [[Otokar Arma|Arma]] by the Turkish [[Otokar]]
+:* [[Freccia IFV|Freccia]] by the Italian [[Iveco]]
+:* [[K808 White Tiger]] by the South Korean [[Hyundai Rotem]]
+:* [[Pandur II]] 8×8 by the Czech [[Excalibur Army]]
+:* [[Stryker]] 8×8 by the United States [[United States Army|US army]] (the only offer for already used units) <ref>{{Cite web |last=InfoDefensa |first=Revista Defensa |title=El Ejército de Chile evalúa la compra de carros Stryker 8×8 de Estados Unidos |url=https://www.infodefensa.com/texto-diario/mostrar/3419837/ejercito-chile-evalua-compra-carros-stryker-8x8-estados-unidos |access-date=2025-02-01 |website=Infodefensa - Noticias de defensa, industria, seguridad, armamento, ejércitos y tecnología de la defensa |language=es}}</ref>
+:* [[Terrex ICV]] by the Singapore [[ST Engineering]]<ref>{{Cite web |last=InfoDefensa |first=Revista Defensa |title=ST Engineering ofrece el Terrex para el programa de blindados de Chile |url=https://www.infodefensa.com/texto-diario/mostrar/3057405/st-engineering-ofrece-terrex-programa-blindados-chile |access-date=2025-02-01 |website=Infodefensa - Noticias de defensa, industria, seguridad, armamento, ejércitos y tecnología de la defensa |language=es}}</ref>
+
+==References==
+{{reflist|colwidth=30em|
+refs=
+<ref name="Skoff_51">Gerhard Skoff: ''[https://link.springer.com/article/10.1007%2FBF03223639#citeas Das Mobilitätssystem des Pandur II 8×8]''. ATZ Offhighway, June 2008, p. 51</ref>
+<ref name="Skoff_52">Gerhard Skoff: ''[https://link.springer.com/article/10.1007%2FBF03223639#citeas Das Mobilitätssystem des Pandur II 8×8]''. ATZ Offhighway, June 2008, p. 52</ref>
+<ref name="Skoff_53">Gerhard Skoff: ''[https://link.springer.com/article/10.1007%2FBF03223639#citeas Das Mobilitätssystem des Pandur II 8×8]''. ATZ Offhighway, June 2008, p. 53</ref>
+<ref name="Skoff_54">Gerhard Skoff: ''[https://link.springer.com/article/10.1007%2FBF03223639#citeas Das Mobilitätssystem des Pandur II 8×8]''. ATZ Offhighway, June 2008, p. 54</ref>
+<ref name="Skoff_55">Gerhard Skoff: ''[https://link.springer.com/article/10.1007%2FBF03223639#citeas Das Mobilitätssystem des Pandur II 8×8]''. ATZ Offhighway, June 2008, p. 55</ref>
+<ref name="Skoff_56">Gerhard Skoff: ''[https://link.springer.com/article/10.1007%2FBF03223639#citeas Das Mobilitätssystem des Pandur II 8×8]''. ATZ Offhighway, June 2008, p. 56</ref>
+<ref name="Skoff_57">Gerhard Skoff: ''[https://link.springer.com/article/10.1007%2FBF03223639#citeas Das Mobilitätssystem des Pandur II 8×8]''. ATZ Offhighway, June 2008, p. 57</ref>
+<ref name="Skoff_58">Gerhard Skoff: ''[https://link.springer.com/article/10.1007%2FBF03223639#citeas Das Mobilitätssystem des Pandur II 8×8]''. ATZ Offhighway, June 2008, p. 58</ref>
+<ref name="Skoff_59">Gerhard Skoff: ''[https://link.springer.com/article/10.1007%2FBF03223639#citeas Das Mobilitätssystem des Pandur II 8×8]''. ATZ Offhighway, June 2008, p. 59</ref>
+}}
+
+==External links==
+{{Commons category|Pandur II}}
+*[https://web.archive.org/web/20060623073509/http://www.steyr-ssf.com/ Steyr-Daimler-Puch Spezialfahrzeuge]
+
+{{Modern IFV and APC}}
+{{Armoured combat vehicles}}
+
+[[Category:Wheeled armoured personnel carriers]]
+[[Category:Armoured personnel carriers of Austria]]
+[[Category:Eight-wheeled vehicles]]
+[[Category:Amphibious armoured personnel carriers]]
+[[Category:Wheeled amphibious armoured fighting vehicles]]
+[[Category:Armoured personnel carriers of the post–Cold War period]]
+[[Category:Wheeled infantry fighting vehicles]]
+[[Category:Infantry fighting vehicles of the post–Cold War period]]
+[[Category:Armoured fighting vehicles of the post–Cold War period]]
