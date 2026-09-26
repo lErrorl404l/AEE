@@ -192,6 +192,13 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_mobility_muSurface` | mobility | Combined wet/ice/brake surface friction 0..1 |
 | `aee_mobility_brakeTempC` | mobility | Brake rotor temperature in C |
 | `aee_mobility_brakeMu` | mobility | Brake friction coefficient (fade) 0..1 |
+| `aee_mobility_vehicleMassLowKg` | mobility | Vehicle mass estimate lower bound in kg, 0 when unavailable |
+| `aee_mobility_vehicleMassHighKg` | mobility | Vehicle mass estimate upper bound in kg, 0 when unavailable |
+| `aee_mobility_vehicleMassMethod` | mobility | Mass estimate method: `catalogue_row`, `geometry_material`, `geometry_material_power`, or `none` |
+| `aee_mobility_vehicleMassAssumptions` | mobility | Mass estimate assumption bitmask set by the model |
+| `aee_mobility_vehicleMassConfidence` | mobility | Mass estimate confidence: `documented`, `low`, `medium`, `high`, or `none` |
+| `aee_mobility_vehicleMassStatus` | mobility | Mass estimate status: `sourced`, `estimated`, or `unavailable` |
+| `aee_mobility_vehicleMassSource` | mobility | Source record id behind a sourced mass estimate |
 
 The soil-strength model is fail-closed (#117). It publishes no numeric VCI or
 Mobility Index value while the vehicle records and the VCI50 source are

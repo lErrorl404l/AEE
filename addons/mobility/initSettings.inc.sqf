@@ -297,3 +297,17 @@
     true,
     {}
 ] call CBA_fnc_addSetting;
+
+// ── Vehicle Mass Estimate ──────────────────────────────────────────────────
+// The estimate is modelled, not documented. A sourced catalogue weight always
+// takes precedence. The switch stays off until the model passes calibration
+// and a human approves mass_model.json.
+[
+    QGVAR(estimateVehicleMassEnabled),
+    "CHECKBOX",
+    [LLSTRING(estimateVehicleMassEnabled_Name), LLSTRING(estimateVehicleMassEnabled_Description)],
+    ["AEE Mobility", "Vehicle"],
+    false,  // default: disabled until calibration and approval pass
+    true,   // global, so the estimate is the same on every machine
+    {}
+] call CBA_fnc_addSetting;
