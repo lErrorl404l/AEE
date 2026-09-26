@@ -1754,5 +1754,33 @@
     "primary_held": true,
     "sha256": "f622d18869bfbebe8b45768a350c75b727b99dff668f4e4b9650bf9ff8b381ee",
     "note": "Held tier-2 Toyota factory repair manual covering the 70 series. The frame-dimension drawings publish the 70 series wheelbase, and the front-axle tyre table publishes the 70 series tyre size code and the normal-road tyre pressure. The manual is a chassis and body repair manual and does not publish the overall length, width or height, the vehicle weight or the engine rating. The held bytes on disk are the Internet Archive scan and their digest matches this entry."
+  },
+  {
+    "source_id": "bmc_kirpi_technical_specifications",
+    "tier": 4,
+    "type": "manufacturer",
+    "title": "KIRPI 4X4 General Technical Specifications",
+    "identifier": "BMC Otomotiv Sanayi ve Ticaret A.S. product page, defence industry, KIRPI technical specifications",
+    "locator": "https://www.bmc.com.tr/en/defense-industry/kirpi/technical-specifications, KIRPI 4X4 tab, Engine, Transmission, Performance, Dimensions and Weights sections",
+    "retrieved": "2026-09-26",
+    "url": "https://www.bmc.com.tr/en/defense-industry/kirpi/technical-specifications",
+    "licence": "BMC public product page, held for research; the page is the maker publication",
+    "primary_held": true,
+    "sha256": "3157b1b818a9eab55c064952309f6156c9715666a945468582f754f71428aa8a",
+    "note": "Held tier-4 BMC maker technical specifications page for the KIRPI 4X4. It publishes the engine brand and type, the cylinder count, the swept volume, the maximum power and torque, the Allison automatic transmission and its gear count, the ZF two-speed transfer case, the tyre size code, the axle brand, the performance figures, the dimensions and the gross vehicle weight. The document holds one tab per KIRPI variant; the KIRPI 4X4 tab supplies the values. The held bytes are on disk under data/vehicle/sources/ and their digest matches this entry."
+  },
+  {
+    "source_id": "knds_leopard_2_a6",
+    "tier": 4,
+    "type": "manufacturer",
+    "title": "LEOPARD 2 A6",
+    "identifier": "KNDS product page, LEOPARD 2 A6",
+    "locator": "https://knds.com/en/products/systems/leopard/leopard-2-a6, Specifications table",
+    "retrieved": "2026-09-26",
+    "url": "https://knds.com/en/products/systems/leopard/leopard-2-a6",
+    "licence": "KNDS public product page, held for research; the page is the maker publication",
+    "primary_held": true,
+    "sha256": "0342109a2b5d443ad7400e989f13c0ae6185e04e96b8470042a681642ef06047",
+    "note": "Held tier-4 KNDS maker product page for the LEOPARD 2 A6. Its specifications table publishes the length with the turret at 12 o'clock, the width, the height to the turret roof, the weight, the engine performance, the maximum speed and the range. The page body names the A6M configuration, so the weight, width, height and range describe the A6M and not the base A6. The held bytes are on disk under data/vehicle/sources/ and their digest matches this entry."
   }
 ]

@@ -90,7 +90,7 @@ private _table = [
     ["aslav", "aslav", "wheeled", "", "", "aslav", "reconnaissance|wheeled|aslav", "wikipedia_aslav", [13200, 0, 0, 0, 205, "", ""]],
     ["astros_ii", "astros_ii", "wheeled", "", "", "astrosii|astros2|astros", "mlrs|rocketartillery|wheeled|6x6|brazil", "wikipedia_astros_ii", [10000, 0, 0, 0, 208.795964, "", ""]],
     ["bionix", "bionix", "tracked", "", "", "bionix|bionixafv", "ifv|tracked|infantryfightingvehicle|singapore", "wikipedia_bionix", [23000, 0, 0, 0, 354.207439, "", ""]],
-    ["bmc_kirpi", "bmc_kirpi", "wheeled", "", "", "kirpi|bmckirpi", "mrap|mineresistant|wheeled|kirpi", "wikipedia_bmc_kirpi", [20000, 0, 0, 345, 257, "", ""]],
+    ["bmc_kirpi", "bmc_kirpi", "wheeled", "", "", "kirpi|bmckirpi", "mrap|mineresistant|wheeled|kirpi", "wikipedia_bmc_kirpi", [20000, 355.6, 1219.2, 400, 275, "automatic", ""]],
     ["bmp_2", "bmp_2", "tracked", "", "", "bmp2", "ifv|tracked|infantryfightingvehicle|sovietunion", "wikipedia_bmp_2", [14300, 0, 0, 0, 0, "", ""]],
     ["bmw_r75", "bmw_r75", "wheeled", "", "", "bmwr75", "bmwr75|sidecarmotorcycle|germanmotorcycle", "bmw_r75", [420, 0, 0, 0, 19.388197, "", ""]],
     ["boragh", "boragh", "tracked", "", "", "boragh", "boragh|iranianapc|boraghapc", "boragh", [13000, 0, 0, 0, 246.080958, "", ""]],
