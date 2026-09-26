@@ -148,10 +148,33 @@ class SupersonicTraceKernel(unittest.TestCase):
                     msg=f"M={mach} beta={beta_deg}",
                 )
 
-    def test_header_states_the_bound(self) -> None:
-        self.assertIn("UPPER BOUND", SOURCE)
-        self.assertIn("oblique", SOURCE.lower())
+    def test_header_states_the_value_is_the_maximum(self) -> None:
+        # The value is not a loose ceiling. NACA 1135 p. 621 gives the
+        # reduction rule that makes it the exact maximum, so the header must
+        # claim the maximum and cite it.
+        self.assertIn("EXACT MAXIMUM", SOURCE.upper())
+        self.assertIn("1135", SOURCE)
         self.assertIn("stagnation streamline", SOURCE.lower())
+
+    def test_header_records_the_refused_floor_and_why(self) -> None:
+        # A floor would need theta-beta-M, which is an ATTACHED-shock
+        # relation. A meplat forces detachment, so the floor is refused. The
+        # header must say so and carry the detachment numbers.
+        self.assertIn("NO FLOOR IS RETURNED", SOURCE)
+        self.assertIn("DETACHED", SOURCE.upper())
+        for mach, theta in (("2.0", "22.97"), ("2.6", "30.81"), ("3.0", "34.07")):
+            self.assertIn(theta, SOURCE, msg=f"theta_max at Mach {mach} missing")
+        # A meplat demands a far larger turn than any of those, which is the
+        # reason the relation does not apply.
+        self.assertIn("90 degrees", SOURCE)
+
+    def test_header_does_not_claim_a_conical_result(self) -> None:
+        # A bullet is a body of revolution, so the exact attached solution is
+        # Taylor-Maccoll, not the wedge relation. The header must not use the
+        # wedge form to produce a number, and must record the difference as
+        # undetermined rather than assume it.
+        self.assertIn("Taylor-Maccoll", SOURCE)
+        self.assertIn("not determined", SOURCE)
 
     def test_header_keeps_the_radio_constant_separate(self) -> None:
         # fnc_calculateRefraction holds the ITU-R P.453 RADIO refractivity.

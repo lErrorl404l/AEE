@@ -20,13 +20,30 @@ equations.  The repository holds a second refractive constant, in
 fnc_calculateRefraction, but that is the ITU-R P.453 RADIO refractivity.  Its
 wavelength is not the visible one, so its constant must not be read as K.
 
-THE RETURNED VALUE IS AN UPPER BOUND, NOT A PREDICTION.  The relation above
-is a normal shock.  A real bullet has a blunted nose, so its bow shock
-stands off the nose and is oblique over the forward face, and an oblique
-shock gives a smaller density rise than a normal shock at the same Mach.
-The normal shock value is reached only on the stagnation streamline, where
-the shock is locally normal.  Every other point on the body refracts less.
-Treat the output as the ceiling of the effect.
+THE RETURNED VALUE IS THE MAXIMUM, NOT AN ESTIMATE.  The relation above is a
+normal shock.  NACA Report 1135, "Equations, Tables, and Charts for
+Compressible Flow", Ames Research Staff 1953, p. 621, states that an oblique
+shock acts as a normal shock to the flow perpendicular to it.  The density
+ratio therefore rises with the normal Mach number M1 sin(beta), and that
+number is largest at beta = 90 degrees.  The stagnation streamline meets the
+bow shock normally, so the value here is the exact maximum for ANY nose
+shape.  The ceiling is tight and it cannot be lowered.
+
+NO FLOOR IS RETURNED, AND THAT IS DELIBERATE.  A lower bound would come from
+the oblique shock at the nose shoulder, using the theta-beta-M relation of
+NACA Report 1135 Eq (139a) p. 622.  That relation holds only for an ATTACHED
+shock.  A real bullet has a meplat, a flat tip that demands a local flow turn
+of about 90 degrees, while the largest turn an attached shock accepts is
+22.97 degrees at Mach 2.0, 30.81 degrees at Mach 2.6 and 34.07 degrees at
+Mach 3.0.  The bow shock therefore detaches, and theta-beta-M does not
+describe a detached shock.  A floor computed that way would be false, so
+this function refuses rather than returns one.  Standoff for a detached shock
+is set by the Solomon and Billig correlations, not by this relation.
+
+A bullet is a body of revolution, so the exact attached-shock solution is
+conical Taylor-Maccoll rather than the wedge relation above.  The size of the
+difference is not determined, so the wedge form is not used to produce a
+number.
 
 The freestream Mach uses the LOCAL speed of sound, the same convention as
 fnc_calculateBallisticDrag, so the trace follows the round down through the
@@ -64,7 +81,9 @@ private _mach = _velocity / _sound;
 if (_mach <= 1) exitWith { 0 };
 
 // Rankine-Hugoniot density ratio across a normal shock, gamma = 1.4.
-// At M = 1 this returns exactly 1, so the contrast vanishes there.
+// At M = 1 this returns exactly 1, so the contrast vanishes there.  This is
+// the exact maximum over the body, not a loose ceiling, because the bow shock
+// is locally normal on the stagnation streamline whatever the nose shape.
 private _gamma = 1.4;
 private _m2 = _mach * _mach;
 private _densityRatio = ((_gamma + 1) * _m2) / ((_gamma - 1) * _m2 + 2);
