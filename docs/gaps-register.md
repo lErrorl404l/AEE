@@ -442,3 +442,52 @@ test asserts that a write through a symlinked child is refused.
 
 **Lesson.** A symlink is not a copy. Read through one, but copy the file
 before you write it, or refuse to follow the link.
+
+## GAP-029: a subsonic formula filed for a supersonic problem
+
+Status: Open
+
+**What happened.** Issue 217 for the supersonic bullet refraction effect was
+created with the mechanism written as `rho_flow / rho_ambient =
+1 / sqrt(1 - M^2)`, and labelled the Prandtl-Glauert relation. That relation
+is a linearised transform for weak compressibility. It has no real value for
+any Mach above 1, so it cannot describe the flow it was filed to describe.
+Before the issue was filed, the same session stated that 5.56x45mm and
+7.62x39mm are subsonic, and built a user question on that premise. Both
+cartridges are supersonic: 5.56x45mm at 890 m/s is Mach 2.61 at ISA sea
+level, and 7.62x39mm at 715 m/s is Mach 2.10. The same session also carried a
+small-Mach expansion coefficient of one third, where the correct value is
+2/(3(gamma+1)), which is 0.2778 for gamma 1.4.
+
+**What went wrong.** Three claims about compressible flow were written from
+recall and none was evaluated at the Mach number in question. Nothing
+evaluated `1/sqrt(1-M^2)` at M = 2.6 before it became a filed issue. Nothing
+compared a rifle muzzle velocity against the speed of sound before a scoping
+question was put to the user, so the user answered a false premise. The
+correct mechanism is a Prandtl-Meyer expansion, where the flow accelerates
+and pressure and temperature fall, sourced to NACA TR-1135 (NTRS
+19930091059) and verified by recomputation.
+
+**Why.** The rule was unloaded, not absent. Rule 3 of the global operating
+rules requires verification before stating a fact, and rule 3 of the
+development rules requires that every change link to a requirement or defect.
+Neither was applied. Research was delegated and the returned brief was
+summarised into an issue without recomputing the expressions it contained. A
+formula that returns an imaginary number in the target regime is the cheapest
+possible check, and it was skipped three times in one session.
+
+**What prevents recurrence.** Before any expression enters a filed artefact,
+evaluate it at the boundary of the regime the artefact describes. A square
+root of a negative quantity is a hard failure and needs no specialist. For
+ballistics and compressible flow, the repo already has a mirror-test pattern
+in `tools/tests/`, where a Python model asserts against the SQF; any new
+physical relation should be pinned by a test vector before it is written into
+a tracker. The source ladder is the second guard: issue 217 asserted a
+constant with no source, and `data/ballistics/sources.json` held no ISA,
+psychrometry, or compressible-flow source, so nothing could catch it. The
+correction, including the recomputed lock table and the corrected
+coefficient, is recorded on the issue at
+<https://github.com/lErrorl404l/AEE/issues/217#issuecomment-5848871179>.
+
+**Lesson.** Evaluate a formula at the edge of the regime before you file it.
+A subsonic relation does not survive contact with a supersonic bullet.
