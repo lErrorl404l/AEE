@@ -1,0 +1,136 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-2 Army Equipment Support Publication AESP 2350-P-100-201, Challenger Tank Automotive System (June 1983, held copy at Amendment 8 of October 1988). It holds the Challenger 1 as a tracked entry. The document page header reads 2350-P-100-201 while the mirror file name reads 230-P-100-201; both are recorded. The scan has no text layer, so the figures were read from a rendered image and are quoted from the OCR of printed pages xii to xiv. It publishes the combat loaded weight, the gun-forward overall length, the overall width, the height to the commander's sight hood, the nominal ground clearance, the shallow fording depth, the nominal maximum road speed, the maximum gradient, the track width, the number of links per track, the engine model with its gross rating, the automatic gearbox class and the four forward gear count. It publishes no track pitch, no net power with a stated basis and no explicit grouser statement, so the entry is not runtime-ready. The document names the vehicle Challenger; the catalogue records the Challenger 1 because the publication is the June 1983 Challenger automotive manual and it is not the Challenger 2.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "challenger_1",
+      "canonical_name": "Challenger 1",
+      "maker": "unknown",
+      "model": "Challenger",
+      "variant": "Challenger 1 main battle tank",
+      "variant_id": "challenger_1",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "United Kingdom",
+      "era": "modern",
+      "aliases": ["challenger", "challenger 1", "fv4030"],
+      "keywords": ["mbt", "main battle tank", "challenger", "tracked"],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 62000,
+          "unit": "kg",
+          "source": "challenger_1_aesp_230_p_100_201",
+          "locator": "Vehicle introduction and data, printed page xiii, section 17 Weights, Combat loaded row",
+          "state": "combat loaded weight including ammunition, fuel and CES items and crew stowage but not crew, published as 62 tonne (61 ton); recorded as 62,000 kg with the tonne taken as 1,000 kg; the manual publishes the training weight as 60.9 tonne (59.9 ton) on the same page as a separate configuration",
+          "grade": "documented"
+        },
+        "length_mm": {
+          "value": 11560,
+          "unit": "mm",
+          "source": "challenger_1_aesp_230_p_100_201",
+          "locator": "Vehicle introduction and data, printed page xiii, section 19 Dimensions, Length overall, gun forward row",
+          "state": "overall length gun forward, published as 11,560 mm (37 ft 10 in); the manual publishes 9,800 mm (32 ft 2 in) for gun in crutch as a separate configuration",
+          "grade": "documented"
+        },
+        "width_mm": {
+          "value": 3510,
+          "unit": "mm",
+          "source": "challenger_1_aesp_230_p_100_201",
+          "locator": "Vehicle introduction and data, printed page xiii, section 19 Dimensions, Width overall row",
+          "state": "overall width, published as 3,510 mm (11 ft 6 in); the published millimetre figure used directly",
+          "grade": "documented"
+        },
+        "height_mm": {
+          "value": 2950,
+          "unit": "mm",
+          "source": "challenger_1_aesp_230_p_100_201",
+          "locator": "Vehicle introduction and data, printed page xiii, section 19 Dimensions, Height to top of commander's sight hood row",
+          "state": "height to the top of the commander's sight hood, published as 2,950 mm (9 ft 8 in); the manual publishes no height to the turret roof",
+          "grade": "documented"
+        },
+        "ground_clearance_mm": {
+          "value": 500,
+          "unit": "mm",
+          "source": "challenger_1_aesp_230_p_100_201",
+          "locator": "Vehicle introduction and data, printed page xiii, section 19 Dimensions, Ground clearance (nominal) row",
+          "state": "nominal ground clearance, published as 500 mm (1 ft 8 in); the manual labels the figure nominal",
+          "grade": "documented"
+        },
+        "fording_depth_mm": {
+          "value": 1070,
+          "unit": "mm",
+          "source": "challenger_1_aesp_230_p_100_201",
+          "locator": "Vehicle introduction and data, printed page xiii, section 20 Performance, Shallow fording row",
+          "state": "shallow fording, published as 1.07 m (3 ft 6 in); the manual publishes no deep-fording figure",
+          "grade": "documented"
+        },
+        "max_speed_kmh": {
+          "value": 56,
+          "unit": "km/h",
+          "source": "challenger_1_aesp_230_p_100_201",
+          "locator": "Vehicle introduction and data, printed page xiii, section 20 Performance, Maximum road speed row",
+          "state": "nominal maximum road speed, published as 56 km/h (35 mile/h); the manual labels the figure nominal",
+          "grade": "documented"
+        },
+        "max_gradient_deg": {
+          "value": 30,
+          "unit": "deg",
+          "source": "challenger_1_aesp_230_p_100_201",
+          "locator": "Vehicle introduction and data, printed page xiii, section 20 Performance, Maximum gradient row",
+          "state": "maximum gradient, published as 58 percent (30 degrees), vehicle moving; the manual publishes both figures and the degree figure is recorded",
+          "grade": "documented"
+        },
+        "track_shoe_width_mm": {
+          "value": 650,
+          "unit": "mm",
+          "source": "challenger_1_aesp_230_p_100_201",
+          "locator": "Vehicle introduction and data, printed page xiii, section 22 Tracks, Track width row",
+          "state": "track width, published as 650 mm (25.6 in); the published millimetre figure used directly",
+          "grade": "documented"
+        },
+        "track_shoe_count": {
+          "value": 92,
+          "unit": "count",
+          "source": "challenger_1_aesp_230_p_100_201",
+          "locator": "Vehicle introduction and data, printed page xiii, section 22 Tracks, Number of links row",
+          "state": "number of links, published as 92 per track; the published count used directly",
+          "grade": "documented"
+        },
+        "engine_model": {
+          "value": "Rolls Royce CV 12 TCA 1200, No 3, Mk 4A",
+          "unit": "text",
+          "source": "challenger_1_aesp_230_p_100_201",
+          "locator": "Vehicle introduction and data, printed page xiv, section 23 Power pack, Main engine row",
+          "state": "twelve-cylinder 60-degree Vee four-stroke compression ignition engine, published as CV12 TCA 1200 No 3 Mk 4A with two turbochargers, charge air coolers and an inlet manifold heater",
+          "grade": "documented"
+        },
+        "published_power_hp": {
+          "value": 1200,
+          "unit": "hp",
+          "source": "challenger_1_aesp_230_p_100_201",
+          "locator": "Vehicle introduction and data, printed page xiv, section 23 Power pack, Rating (gross) row",
+          "state": "rating (gross) published as 1,200 BHP (895 kW) at 2,300 rev/min; the manual labels the rating gross, not net",
+          "grade": "documented"
+        },
+        "transmission_type": {
+          "value": "automatic",
+          "unit": "enum",
+          "source": "challenger_1_aesp_230_p_100_201",
+          "locator": "Vehicle introduction and data, printed page xii, paragraph 14; printed page xiv, section 25 Gearbox",
+          "state": "automatic gearbox, published as an automatic gearbox with four forward and three reverse speeds; the page xiv data names the gearbox TN 37 No 1 Mk 3 epicyclic",
+          "grade": "documented"
+        },
+        "gears": {
+          "value": 4,
+          "unit": "count",
+          "source": "challenger_1_aesp_230_p_100_201",
+          "locator": "Vehicle introduction and data, printed page xiv, section 25 Gearbox",
+          "state": "four forward gears and three reverse gears, published for the TN 37 No 1 Mk 3 epicyclic gearbox",
+          "grade": "documented"
+        }
+      }
+    }
+  ]
+}

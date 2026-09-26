@@ -1,0 +1,121 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Held tier-5 English Wikipedia compilation for the B1 Centauro. The registry marks primary_held false because the article is a secondary compilation. It publishes the Centauro 1 mass, length, width and height, the engine model and rating of 520 hp with no net basis, the hydropneumatic automatic transmission gear counts, the wheel arrangement, the maximum road speed and the road range. It publishes no ground clearance, no tyre size, no torque and no grouser statement, so the entry is not runtime-ready.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "centauro",
+      "canonical_name": "Centauro",
+      "maker": "Consorzio Iveco Fiat - OTO Melara",
+      "model": "Centauro",
+      "variant": "Centauro 1 tank destroyer",
+      "variant_id": "centauro",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Italy",
+      "era": "modern",
+      "aliases": [
+        "centauro",
+        "b1 centauro",
+        "centauro 1"
+      ],
+      "keywords": [
+        "tank destroyer",
+        "wheeled",
+        "8x8",
+        "centauro"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 24000,
+          "unit": "kg",
+          "source": "wikipedia_centauro",
+          "locator": "Infobox, Specifications section, Mass row",
+          "state": "Centauro 1 mass published as 24 t; recorded as 24,000 kg with the tonne taken as 1,000 kg; the same row publishes the Centauro 2 mass of 30 t as a separate variant",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 7850,
+          "unit": "mm",
+          "source": "wikipedia_centauro",
+          "locator": "Infobox, Specifications section, Length row",
+          "state": "Centauro 1 overall length published as 7.85 m; the Centauro 2 figure of 8.26 m is a separate variant",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2940,
+          "unit": "mm",
+          "source": "wikipedia_centauro",
+          "locator": "Infobox, Specifications section, Width row",
+          "state": "Centauro 1 overall width published as 2.94 m; the Centauro 2 figure is a separate variant",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2730,
+          "unit": "mm",
+          "source": "wikipedia_centauro",
+          "locator": "Infobox, Specifications section, Height row",
+          "state": "Centauro 1 overall height published as 2.73 m; the Centauro 2 figure is a separate variant",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Iveco VTCA V6 turbo-diesel",
+          "unit": "text",
+          "source": "wikipedia_centauro",
+          "locator": "Infobox, Specifications section, Engine row",
+          "state": "Centauro 1 engine published as an Iveco VTCA V6 turbo-diesel",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 520,
+          "unit": "hp",
+          "source": "wikipedia_centauro",
+          "locator": "Infobox, Specifications section, Engine row",
+          "state": "Centauro 1 engine rating published as 520 hp; the article states no net basis",
+          "grade": "claimed"
+        },
+        "transmission_type": {
+          "value": "automatic",
+          "unit": "enum",
+          "source": "wikipedia_centauro",
+          "locator": "Infobox, Specifications section, Transmission row",
+          "state": "hydropneumatic automatic transmission published for the Centauro 1",
+          "grade": "claimed"
+        },
+        "gears": {
+          "value": 5,
+          "unit": "count",
+          "source": "wikipedia_centauro",
+          "locator": "Infobox, Specifications section, Transmission row",
+          "state": "five forward and two reverse gears, published for the hydropneumatic automatic transmission",
+          "grade": "claimed"
+        },
+        "wheel_count": {
+          "value": 8,
+          "unit": "count",
+          "source": "wikipedia_centauro",
+          "locator": "Infobox, Specifications section, Suspension row",
+          "state": "the suspension row publishes 8x8 wheels",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 108,
+          "unit": "km/h",
+          "source": "wikipedia_centauro",
+          "locator": "Infobox, Specifications section, Maximum speed row",
+          "state": "maximum road speed published as 108 km/h",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 800,
+          "unit": "km",
+          "source": "wikipedia_centauro",
+          "locator": "Infobox, Specifications section, Operational range row",
+          "state": "operational range published as 800 km",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

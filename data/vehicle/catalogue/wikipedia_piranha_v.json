@@ -1,0 +1,89 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Held tier-5 English Wikipedia compilation for the Mowag Piranha V armoured fighting vehicle. The registry marks primary_held false. It publishes the length, the width, the height, the engine models, the engine power options, the transmission options, the maximum road speed and the range. It publishes no mass and no ground clearance, so those fields are absent.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "piranha_v",
+      "canonical_name": "Piranha V",
+      "maker": "Mowag",
+      "model": "Piranha",
+      "variant": "V",
+      "variant_id": "piranha_v",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Romania",
+      "era": "modern",
+      "aliases": [
+        "piranha v",
+        "piranha 5",
+        "piranha"
+      ],
+      "keywords": [
+        "apc",
+        "armoured personnel carrier",
+        "wheeled",
+        "piranha"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "length_mm": {
+          "value": 8000,
+          "unit": "mm",
+          "source": "wikipedia_piranha_v",
+          "locator": "Infobox, length row",
+          "state": "length published as 8 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2990,
+          "unit": "mm",
+          "source": "wikipedia_piranha_v",
+          "locator": "Infobox, width row",
+          "state": "width published as 2.99 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2340,
+          "unit": "mm",
+          "source": "wikipedia_piranha_v",
+          "locator": "Infobox, height row",
+          "state": "height published as 2.34 m",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "MTU 6V199 TE21 or Scania DC13",
+          "unit": "text",
+          "source": "wikipedia_piranha_v",
+          "locator": "Infobox, engine row",
+          "state": "engine published as an MTU 6V199 TE21 or a Scania DC13",
+          "grade": "claimed"
+        },
+        "net_power_kw": {
+          "value": 437,
+          "unit": "kW",
+          "source": "wikipedia_piranha_v",
+          "locator": "Infobox, engine power row",
+          "state": "engine power published as 437 kW or 480 kW; the lower option recorded, not an average, with no net basis stated",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 100,
+          "unit": "km/h",
+          "source": "wikipedia_piranha_v",
+          "locator": "Infobox, speed row",
+          "state": "maximum road speed published as 100 km/h",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 550,
+          "unit": "km",
+          "source": "wikipedia_piranha_v",
+          "locator": "Infobox, vehicle range row",
+          "state": "range published as 550 km",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

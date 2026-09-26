@@ -1,0 +1,96 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Held tier-5 English Wikipedia compilation for the Mowag Piranha armoured fighting vehicle. The registry marks primary_held false. It publishes the length range, the width range, the height range, the engine, the engine rating, the automatic transmission, the road and water speeds and the range. It publishes no mass and no ground clearance, so those fields are absent.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "mowag_piranha",
+      "canonical_name": "Mowag Piranha",
+      "maker": "Mowag",
+      "model": "Piranha",
+      "variant": "Armoured fighting vehicle",
+      "variant_id": "mowag_piranha",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Switzerland",
+      "era": "modern",
+      "aliases": [
+        "piranha",
+        "mowag piranha"
+      ],
+      "keywords": [
+        "afv",
+        "armoured fighting vehicle",
+        "wheeled",
+        "piranha"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "length_mm": {
+          "value": 6250,
+          "unit": "mm",
+          "source": "wikipedia_mowag_piranha",
+          "locator": "Infobox, length row",
+          "state": "length published as a range of 6.25 to 7.45 m; the lower bound of the range recorded, not an average",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2500,
+          "unit": "mm",
+          "source": "wikipedia_mowag_piranha",
+          "locator": "Infobox, width row",
+          "state": "width published as a range of 2.5 to 2.66 m; the lower bound of the range recorded, not an average",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 1800,
+          "unit": "mm",
+          "source": "wikipedia_mowag_piranha",
+          "locator": "Infobox, height row",
+          "state": "height published as a range of 1.8 to 1.98 m; the lower bound of the range recorded, not an average",
+          "grade": "claimed"
+        },
+        "net_power_kw": {
+          "value": 202,
+          "unit": "kW",
+          "source": "wikipedia_mowag_piranha",
+          "locator": "Infobox, engine power row",
+          "state": "engine published as 202 kW (275 hp), with no net basis stated",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 275,
+          "unit": "hp",
+          "source": "wikipedia_mowag_piranha",
+          "locator": "Infobox, engine power row",
+          "state": "engine published as 275 hp alongside 202 kW, with no net basis",
+          "grade": "claimed"
+        },
+        "transmission_type": {
+          "value": "automatic",
+          "unit": "enum",
+          "source": "wikipedia_mowag_piranha",
+          "locator": "Infobox, transmission row",
+          "state": "transmission published as an Allison MT-653 automatic 6-speed planetary gearbox",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 100,
+          "unit": "km/h",
+          "source": "wikipedia_mowag_piranha",
+          "locator": "Infobox, speed row, road entry",
+          "state": "maximum road speed published as 100 km/h; the water speed is published as 10 km/h",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 780,
+          "unit": "km",
+          "source": "wikipedia_mowag_piranha",
+          "locator": "Infobox, vehicle range row",
+          "state": "range published as 780 km",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

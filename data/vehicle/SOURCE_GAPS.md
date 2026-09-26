@@ -9,11 +9,272 @@ labelled absent zero. This file lists the resolved provenance of each
 row and the next source class for each absent field. A missing field
 is a labelled zero, not a refusal.
 
-- Catalogue entries: 47
-- Emitted runtime rows: 47
-- Runtime-ready entries: 0
-- Entries with an absent runtime field: 47
-- Absent fields: 79
+- Catalogue entries: 91
+- Emitted runtime rows: 91
+- Runtime-ready entries: 1
+- Entries with an absent runtime field: 90
+- Absent fields: 272
+
+## altay - Altay (tracked)
+
+- Capture: `data/vehicle/catalogue/wikipedia_altay.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 65000 | `wikipedia_altay` | Infobox, weight row | weight published as 65 t; the tonne taken as 1,000 kg |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | derived | 1118.549808 | `wikipedia_altay` | Infobox, engine row, T1 rating | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## aslav - ASLAV (wheeled)
+
+- Capture: `data/vehicle/catalogue/wikipedia_aslav.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 13200 | `wikipedia_aslav` | Infobox, weight row | weight published as 13.2 t; the tonne taken as 1,000 kg |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | claimed | 205 | `wikipedia_aslav` | Infobox, engine power row | engine published as 205 kW, with no net basis stated |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## bmc_kirpi - BMC Kirpi (wheeled)
+
+- Capture: `data/vehicle/catalogue/wikipedia_bmc_kirpi.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 20000 | `wikipedia_bmc_kirpi` | Infobox, mass row | mass published as 20,000 kg; the same infobox publishes a weight of 16 tons as a separate state |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | claimed | 345 | `wikipedia_bmc_kirpi` | Infobox, clearance row | ground clearance published as 345 mm |
+| `net_power_kw` | claimed | 257 | `wikipedia_bmc_kirpi` | Infobox, engine power row | engine published as 400 hp, 350 ps, 257 kW at 2100 rpm turbo diesel; the published kW figure used directly, with no net basis stated |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## boxer_apc - Boxer APC (wheeled)
+
+- Capture: `data/vehicle/catalogue/artec_boxer_apc_datasheet.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 38500 | `artec_boxer_apc_datasheet` | Product data panel, Key figures, Max. gross vehicle weight row | derived operating weight from the gross vehicle weight rating; no operating or curb weight is published, so the rating is the basis and it is a maximum, not a kerb weight |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | claimed | 500 | `artec_boxer_apc_datasheet` | Product data panel, Key figures, Ground clearance row | ground clearance published as 0.50 m |
+| `net_power_kw` | derived | 608.491096 | `artec_boxer_apc_datasheet` | Product data panel, Key figures, Engine capacity (ISO) row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## brdm_2 - BRDM-2 (wheeled)
+
+- Capture: `data/vehicle/catalogue/brdm_2_technical_manual_en.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | documented | 7000 | `brdm_2_technical_manual_en` | Section 3 Technical Characteristics, printed page 9, row Total weight, kg - 7000 + 3% | combat (total) weight as published 7,000 kg with a plus 3 percent tolerance; the manual publishes no separate kerb weight |
+| `tyre_width_mm` | derived | 330.2 | `brdm_2_technical_manual_en` | Section 3, Chassis, printed page 12, row Tires - With adjustable pressure. The size of 13.00-18 | derived from the size code 13.00-18 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1117.6 | `brdm_2_technical_manual_en` | Section 3, Chassis, printed page 12, row Tires - With adjustable pressure. The size of 13.00-18 | derived from the size code 13.00-18 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 330 | `brdm_2_technical_manual_en` | Section 3, printed page 9, row Clearance (at pres. Tire 2.8 kg/cm2), mm - 330 | ground clearance at a tyre pressure of 2.8 kgf/cm2, as published |
+| `net_power_kw` | derived | 104.397982 | `brdm_2_technical_manual_en` | Section 3, Power plant, printed page 10, row Max. power at 3200-3400 r/min, HP - 140 | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | manual | `brdm_2_technical_manual_en` | Section 3, Transmissiya, printed page 11, row Transmission - Mechanical, speed, power takeoff on the water-jet propulsion device | mechanical transmission with a transfer case and power takeoff, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## btr_80 - BTR-80 (wheeled)
+
+- Capture: `data/vehicle/catalogue/btr_80_technical_description_2001.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | documented | 13600 | `btr_80_technical_description_2001` | Section 3 Combat and technical characteristics, General data, printed page 9, row Polnaya massa mashiny, kg (full mass of the machine) | full (combat) mass as published 13,600 kg with a plus 3 percent tolerance; the manual publishes no separate kerb weight |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | documented | 475 | `btr_80_technical_description_2001` | Section 3, Main dimensions, printed page 9, row Dorozhnyy prosvet (bez ucheta vyshtampovok na dnishche), mm | ground clearance under the hull, excluding the floor stiffening stampings, as published |
+| `net_power_kw` | derived | 193.881967 | `btr_80_technical_description_2001` | Section 3, Silovaya ustanovka, printed page 12, row Garantirovannaya moshchnost, l.s. (guaranteed power) | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | manual | `btr_80_technical_description_2001` | Section 2 General description, organy upravleniya, printed page 8, item 5 rychag pereklyucheniya peredach KP (gearbox gear-change lever) and item 7 rychag pereklyucheniya peredach RK (transfer-case gear-change lever) | manual gearbox (KP) with a transfer case (RK); section 3 publishes no transmission-type row, so the type is graded from the gear-change controls the general description shows |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## bushmaster_pmv - Bushmaster PMV (wheeled)
+
+- Capture: `data/vehicle/catalogue/wikipedia_bushmaster_pmv.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 11400 | `wikipedia_bushmaster_pmv` | Infobox, weight row, kerb entry | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | claimed | 224 | `wikipedia_bushmaster_pmv` | Infobox, engine power row | engine published as 224 kW at 2,200 rpm, with no net basis stated |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## c1_ariete - C1 Ariete (tracked)
+
+- Capture: `data/vehicle/catalogue/wikipedia_ariete.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 54000 | `wikipedia_ariete` | Infobox, Specifications section, Mass row | mass published as 54 t; recorded as 54,000 kg with the tonne taken as 1,000 kg; the article states no kerb or gross weight |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | claimed | 440 | `wikipedia_ariete` | Infobox, Specifications section, Ground clearance row | ground clearance published as 0.44 m; the metre figure converted at 1,000 mm per metre |
+| `net_power_kw` | derived | 947.038837 | `wikipedia_ariete` | Infobox, Specifications section, Engine power row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## centauro - Centauro (wheeled)
+
+- Capture: `data/vehicle/catalogue/wikipedia_centauro.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 24000 | `wikipedia_centauro` | Infobox, Specifications section, Mass row | Centauro 1 mass published as 24 t; recorded as 24,000 kg with the tonne taken as 1,000 kg; the same row publishes the Centauro 2 mass of 30 t as a separate variant |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | derived | 387.763933 | `wikipedia_centauro` | Infobox, Specifications section, Engine row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | claimed | automatic | `wikipedia_centauro` | Infobox, Specifications section, Transmission row | hydropneumatic automatic transmission published for the Centauro 1 |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## challenger_1 - Challenger 1 (tracked)
+
+- Capture: `data/vehicle/catalogue/challenger_1_aesp_230_p_100_201.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | documented | 62000 | `challenger_1_aesp_230_p_100_201` | Vehicle introduction and data, printed page xiii, section 17 Weights, Combat loaded row | combat loaded weight including ammunition, fuel and CES items and crew stowage but not crew, published as 62 tonne (61 ton); recorded as 62,000 kg with the tonne taken as 1,000 kg; the manual publishes the training weight as 60.9 tonne (59.9 ton) on the same page as a separate configuration |
+| `track_shoe_width_mm` | documented | 650 | `challenger_1_aesp_230_p_100_201` | Vehicle introduction and data, printed page xiii, section 22 Tracks, Track width row | track width, published as 650 mm (25.6 in); the published millimetre figure used directly |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | documented | 500 | `challenger_1_aesp_230_p_100_201` | Vehicle introduction and data, printed page xiii, section 19 Dimensions, Ground clearance (nominal) row | nominal ground clearance, published as 500 mm (1 ft 8 in); the manual labels the figure nominal |
+| `net_power_kw` | derived | 894.839846 | `challenger_1_aesp_230_p_100_201` | Vehicle introduction and data, printed page xiv, section 23 Power pack, Rating (gross) row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `challenger_1_aesp_230_p_100_201` | Vehicle introduction and data, printed page xii, paragraph 14; printed page xiv, section 25 Gearbox | automatic gearbox, published as an automatic gearbox with four forward and three reverse speeds; the page xiv data names the gearbox TN 37 No 1 Mk 3 epicyclic |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## challenger_2 - Challenger 2 (tracked)
+
+- Capture: `data/vehicle/catalogue/wikipedia_challenger_2.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 64000 | `wikipedia_challenger_2` | Infobox, Specifications section, Mass row | mass published as 64 t (63 long tons; 71 short tons); recorded as 64,000 kg with the tonne taken as 1,000 kg; the same row publishes 75 t with combat armour modules as a separate configuration, and the article states no kerb or gross weight |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | claimed | 500 | `wikipedia_challenger_2` | Infobox, Specifications section, Ground clearance row | ground clearance, published as 0.5 m (1 ft 8 in); the published metre figure used directly |
+| `net_power_kw` | derived | 894.839846 | `wikipedia_challenger_2` | Infobox, Specifications section, Engine row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
 ## cougar_4x4 - Cougar 4x4 (wheeled)
 
@@ -34,6 +295,185 @@ is a labelled zero, not a refusal.
 
 | Absent field | Next source class |
 |---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## cv90 - Combat Vehicle 90 (tracked)
+
+- Capture: `data/vehicle/catalogue/wikipedia_cv90.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 23000 | `wikipedia_cv90` | Infobox, Specifications section, Weight row | the family mass is published as a range, 23 to 38 tonnes for Mk 0 to Mk IV; the lower bound of the range is recorded, not an average, and no single-mark mass is stated |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## cv90_denmark - Combat Vehicle 90 (Denmark) (tracked)
+
+- Capture: `data/vehicle/catalogue/wikipedia_cv90.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 23000 | `wikipedia_cv90` | Infobox, Specifications section, Weight row | the family mass is published as a range, 23 to 38 tonnes for Mk 0 to Mk IV; the lower bound of the range is recorded, not an average, and no single-mark mass is stated |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## cv90_norway - Combat Vehicle 90 (Norway) (tracked)
+
+- Capture: `data/vehicle/catalogue/wikipedia_cv90.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 23000 | `wikipedia_cv90` | Infobox, Specifications section, Weight row | the family mass is published as a range, 23 to 38 tonnes for Mk 0 to Mk IV; the lower bound of the range is recorded, not an average, and no single-mark mass is stated |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## dardo - Dardo IFV (tracked)
+
+- Capture: `data/vehicle/catalogue/wikipedia_dardo.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 23400 | `wikipedia_dardo` | Infobox, Specifications section, Weight row | weight published as 23.4 tonnes; recorded as 23,400 kg with the tonne taken as 1,000 kg |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | derived | 381.798334 | `wikipedia_dardo` | Infobox, Specifications section, Engine power row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## eitan - Eitan (wheeled)
+
+- Capture: `data/vehicle/catalogue/wikipedia_eitan.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 50000 | `wikipedia_eitan` | Infobox, weight row | weight published as up to 50 tonnes; the upper bound of the published figure recorded, not an average; the tonne taken as 1,000 kg |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | derived | 559.274904 | `wikipedia_eitan` | Infobox, engine power row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## freccia - Freccia IFV (wheeled)
+
+- Capture: `data/vehicle/catalogue/wikipedia_freccia.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 22000 | `wikipedia_freccia` | Freccia (first phase) table, IFV column, Empty mass row | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## fv510_warrior - FV510 Warrior (tracked)
+
+- Capture: `data/vehicle/catalogue/wikipedia_fv510_warrior.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 25400 | `wikipedia_fv510_warrior` | Infobox, Specifications section, Mass row | mass published as 25.4 tonnes (25.0 long tons; 28.0 short tons); recorded as 25,400 kg with the tonne taken as 1,000 kg; the article states no kerb or gross weight |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | derived | 410.13493 | `wikipedia_fv510_warrior` | Infobox, Specifications section, Engine row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
 ## hmmwv_m998 - M998 HMMWV (wheeled)
@@ -133,27 +573,216 @@ is a labelled zero, not a refusal.
 | `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
+## k2_black_panther - K2 Black Panther (tracked)
+
+- Capture: `data/vehicle/catalogue/wikipedia_k2_black_panther.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 56000 | `wikipedia_k2_black_panther` | Infobox, weight row, Combat weight entry | combat weight published as 56 t; the tonne taken as 1,000 kg |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## k9_thunder - K9 Thunder (tracked)
+
+- Capture: `data/vehicle/catalogue/wikipedia_k9_thunder.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 47000 | `wikipedia_k9_thunder` | Infobox, mass row, K9 & K9A1 combat entry | combat mass published for the K9 and K9A1 as 47 t; the tonne taken as 1,000 kg |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | claimed | 410 | `wikipedia_k9_thunder` | Infobox, clearance row | ground clearance published as 410 mm |
+| `net_power_kw` | derived | 745.699872 | `wikipedia_k9_thunder` | Infobox, engine row, MT881Ka-500 rating | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
 ## kawasaki_ninja_250r_ex250f - Kawasaki Ninja 250R (EX250-F) (wheeled)
 
 - Capture: `data/vehicle/catalogue/kawasaki_ninja_250r_service_manual.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: yes
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 161 | `kawasaki_ninja_250r_service_manual` | General Specifications table, Dimensions, Curb weight Front 76 kg and Rear 85 kg, printed page 1-4 (scan PDF page 13) | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 130.0 | `kawasaki_ninja_250r_service_manual` | General Specifications table, Frame, Rear tire Size 130/80-16 64S, printed page 1-5 (scan PDF page 14) | derived from the size code 130/80-16 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 614.4 | `kawasaki_ninja_250r_service_manual` | General Specifications table, Frame, Rear tire Size 130/80-16 64S, printed page 1-5 (scan PDF page 14) | derived from the size code 130/80-16 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 155 | `kawasaki_ninja_250r_service_manual` | General Specifications table, Dimensions, Road clearance 155 mm, printed page 1-4 (scan PDF page 13) | road clearance as published; the manual names the field Road clearance |
+| `net_power_kw` | derived | 27.948831 | `kawasaki_ninja_250r_service_manual` | General Specifications table, Engine, Maximum horsepower 27.9 kW (38 PS) @ 11 000 r/min, printed page 1-4 (scan PDF page 13) | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | manual | `kawasaki_ninja_250r_service_manual` | General Specifications table, Drive Train, Transmission Type 6-speed, constant mesh, return shift, printed page 1-5 (scan PDF page 14) | six-speed constant-mesh return-shift gearbox, a manual transmission |
+| `grousers_state` | documented | none | `kawasaki_ninja_250r_service_manual` | General Specifications table, Frame, Front tire and Rear tire Type Tubeless and Final drive system Type Chain drive, printed pages 1-4 and 1-5 (scan PDF pages 13 and 14) | wheeled motorcycle on front and rear pneumatic tyres with a chain final drive; no track and no grouser is fitted |
+
+## lav_6 - LAV 6.0 (wheeled)
+
+- Capture: `data/vehicle/catalogue/wikipedia_lav6.json`
 - Required set: wheeled (7 fields)
 - Runtime row: yes
 - Runtime-ready: no
 
 | Runtime field | Grade | Value | Source | Locator | State |
 |---|---|---|---|---|---|
-| `operating_weight_kg` | derived | 161 | `kawasaki_ninja_250r_service_manual` | General Specifications table, Dimensions, Curb weight Front 76 kg and Rear 85 kg, printed page 1-4 (scan PDF page 13) | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `operating_weight_kg` | derived | 20638 | `wikipedia_lav6` | Infobox, Specifications section, Mass row | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
 | `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
 | `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
-| `ground_clearance_mm` | documented | 155 | `kawasaki_ninja_250r_service_manual` | General Specifications table, Dimensions, Road clearance 155 mm, printed page 1-4 (scan PDF page 13) | road clearance as published; the manual names the field Road clearance |
-| `net_power_kw` | derived | 27.948831 | `kawasaki_ninja_250r_service_manual` | General Specifications table, Engine, Maximum horsepower 27.9 kW (38 PS) @ 11 000 r/min, printed page 1-4 (scan PDF page 13) | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
-| `transmission_type` | documented | manual | `kawasaki_ninja_250r_service_manual` | General Specifications table, Drive Train, Transmission Type 6-speed, constant mesh, return shift, printed page 1-5 (scan PDF page 14) | six-speed constant-mesh return-shift gearbox, a manual transmission |
-| `grousers_state` | documented | none | `kawasaki_ninja_250r_service_manual` | General Specifications table, Frame, Front tire and Rear tire Type Tubeless and Final drive system Type Chain drive, printed pages 1-4 and 1-5 (scan PDF pages 13 and 14) | wheeled motorcycle on front and rear pneumatic tyres with a chain final drive; no track and no grouser is fitted |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | derived | 335.564942 | `wikipedia_lav6` | Infobox, Specifications section, Engine power row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
 
 | Absent field | Next source class |
 |---|---|
 | `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
 | `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## leclerc - Leclerc (tracked)
+
+- Capture: `data/vehicle/catalogue/wikipedia_leclerc.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 54500 | `wikipedia_leclerc` | Infobox, Specifications section, Mass row, Series 1 entry | mass published for Series 1 as 54.5 tonnes; recorded as 54,500 kg with the tonne taken as 1,000 kg; the same row publishes Series 2 at 56.3 tonnes and Series XXI at 57.4 tonnes as separate configurations, and the article states no kerb or gross weight |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | claimed | 500 | `wikipedia_leclerc` | Technical data table, Ground clearance row | ground clearance published as 500 mm; the published millimetre figure used directly |
+| `net_power_kw` | derived | 1118.549808 | `wikipedia_leclerc` | Infobox, Specifications section, Engine row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | claimed | automatic | `wikipedia_leclerc` | Infobox, Specifications section, Transmission row | transmission published as Automatic SESM |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## leopard_2a6 - Leopard 2A6 (tracked)
+
+- Capture: `data/vehicle/catalogue/wikipedia_leopard_2.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 62300 | `wikipedia_leopard_2` | Infobox, Specifications section, Mass row, 2A6 entry | mass published for the 2A6 as 62.3 tonnes (68.7 short tons); recorded as 62,300 kg with the tonne taken as 1,000 kg; the same row publishes 2A4, 2A5 and 2A7V masses as separate configurations, and the article states no kerb or gross weight |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | claimed | 540 | `wikipedia_leopard_2` | Technical data table, Ground clearance row | ground clearance published as 0.54 m (1 ft 9 in); the table carries one figure for the row and does not name a mark |
+| `net_power_kw` | derived | 1118.549808 | `wikipedia_leopard_2` | Infobox, Specifications section, Engine row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## leopard_2a6_finland - Leopard 2A6 (Finland) (tracked)
+
+- Capture: `data/vehicle/catalogue/wikipedia_leopard_2.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 62300 | `wikipedia_leopard_2` | Infobox, mass row, 2A6 entry | mass published for the 2A6 as 62.3 tonnes; recorded as 62,300 kg with the tonne taken as 1,000 kg |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | claimed | 540 | `wikipedia_leopard_2` | Technical data table, Ground clearance row | ground clearance published as 0.54 m; the table carries one figure for the row and names no mark |
+| `net_power_kw` | derived | 1118.549808 | `wikipedia_leopard_2` | Infobox, engine row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## leopard_2a6_hel - Leopard 2A6 HEL (tracked)
+
+- Capture: `data/vehicle/catalogue/wikipedia_leopard_2.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 62300 | `wikipedia_leopard_2` | Infobox, mass row, 2A6 entry | mass published for the 2A6 as 62.3 tonnes; recorded as 62,300 kg with the tonne taken as 1,000 kg |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | claimed | 540 | `wikipedia_leopard_2` | Technical data table, Ground clearance row | ground clearance published as 0.54 m; the table carries one figure for the row and names no mark |
+| `net_power_kw` | derived | 1118.549808 | `wikipedia_leopard_2` | Infobox, engine row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## leopard_2a7_hungary - Leopard 2A7 (Hungary) (tracked)
+
+- Capture: `data/vehicle/catalogue/wikipedia_leopard_2.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 66500 | `wikipedia_leopard_2` | Infobox, mass row, 2A7V entry | mass published for the 2A7V as 66.5 tonnes; the article names the Hungarian order as the 2A7 and publishes the A7 mass under the 2A7V label; the tonne taken as 1,000 kg |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | claimed | 540 | `wikipedia_leopard_2` | Technical data table, Ground clearance row | ground clearance published as 0.54 m; the table carries one figure for the row and names no mark |
+| `net_power_kw` | derived | 1118.549808 | `wikipedia_leopard_2` | Infobox, engine row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
 ## m1059 - M1059 (tracked)
 
@@ -940,6 +1569,27 @@ is a labelled zero, not a refusal.
 |---|---|
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
+## m977_hemtt - M977 HEMTT (wheeled)
+
+- Capture: `data/vehicle/catalogue/tm_9_2320_279_10_1.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 17600 | `tm_9_2320_279_10_1` | Table 1-2, Equipment Data, printed page 1-23, WEIGHT, row M977 w/ winch | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 406.4 | `tm_9_2320_279_10_1` | Table 1-2, Equipment Data, printed page 1-28, TIRES, row Size | derived from the size code 16:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1320.8 | `tm_9_2320_279_10_1` | Table 1-2, Equipment Data, printed page 1-28, TIRES, row Size | derived from the size code 16:00 x R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 609.6 | `tm_9_2320_279_10_1` | Table 1-2, Equipment Data, printed page 1-23, row ALL, column Ground Clearance | ground clearance, all M977 series models, published as 24 in. (609.6 mm); the published millimetre figure used directly |
+| `net_power_kw` | derived | 331.836443 | `tm_9_2320_279_10_1` | Table 1-2, Equipment Data, printed page 1-26, ENGINE, Maximum Brake Horsepower (at 2100 rpm), Model No. 8087-7899 | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2320_279_10_1` | Table 1-2, Equipment Data, printed page 1-19, transmission description, and paragraph (2) automatic transmission with one reverse speed and four forward speeds | automatic transmission, all M977 series models, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
 ## m_atv_m1240 - M-ATV M1240 (wheeled)
 
 - Capture: `data/vehicle/catalogue/tm_9_2355_335_10.json`
@@ -1008,6 +1658,327 @@ is a labelled zero, not a refusal.
 | `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
+## marder_1a3 - Marder 1A3 (tracked)
+
+- Capture: `data/vehicle/catalogue/thyssen_henschel_marder_1a3.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 28600 | `thyssen_henschel_marder_1a3` | MARDER Design Concept page, bullet combat weight 28.6 metric tons | combat weight, published as 28.6 metric tons; recorded as 28,600 kg with the tonne taken as 1,000 kg, and the brochure publishes no separate kerb or gross weight |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | derived | 439.962924 | `thyssen_henschel_marder_1a3` | Power Pack page, bullet six-cylinder exhaust turbocharged diesel engine developing 440 kW (590 hp) | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | claimed | automatic | `thyssen_henschel_marder_1a3` | Power Pack page, bullet hydro-mechanical shift, steering and reversing transmission Renk HSWL 194 with 4 forward and 2 reverse gears | Renk HSWL 194 hydro-mechanical shift, steering and reversing transmission, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## merkava_mk4 - Merkava Mk 4 (tracked)
+
+- Capture: `data/vehicle/catalogue/wikipedia_merkava.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 65000 | `wikipedia_merkava` | Infobox, weight row | mass published as 65 t; the tonne taken as 1,000 kg |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | claimed | 450 | `wikipedia_merkava` | Infobox, clearance row | ground clearance published as 0.45 m; the metre figure converted to mm |
+| `net_power_kw` | claimed | 1119 | `wikipedia_merkava` | Infobox, engine row | engine published as an MTU 12V883 turbocharged diesel of 1,119 kW, with no net basis stated |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## mowag_piranha - Mowag Piranha (wheeled)
+
+- Capture: `data/vehicle/catalogue/wikipedia_mowag_piranha.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | claimed | 202 | `wikipedia_mowag_piranha` | Infobox, engine power row | engine published as 202 kW (275 hp), with no net basis stated |
+| `transmission_type` | claimed | automatic | `wikipedia_mowag_piranha` | Infobox, transmission row | transmission published as an Allison MT-653 automatic 6-speed planetary gearbox |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `operating_weight_kg` | a standard characteristics manual, for example TM 55-46-1, or the vehicle sustainment manual |
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## namer - Namer (tracked)
+
+- Capture: `data/vehicle/catalogue/wikipedia_namer.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 60000 | `wikipedia_namer` | Infobox, weight row | weight published as 60+ tonnes; the lower bound of the published figure recorded, not an average; the tonne taken as 1,000 kg |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | derived | 894.839846 | `wikipedia_namer` | Infobox, engine row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## pandur_ii - Pandur II (wheeled)
+
+- Capture: `data/vehicle/catalogue/wikipedia_pandur_ii.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 17300 | `wikipedia_pandur_ii` | Infobox, weight row, minimal protection entry | weight published as 17.3 t with minimal protection; the same row publishes 22 t with additional protection and 20.1 t as the amphibious limit; the tonne taken as 1,000 kg |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | claimed | 335 | `wikipedia_pandur_ii` | Infobox, engine power row | engine published as 335 kW, with no net basis stated |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## patria_amv - Patria AMV (wheeled)
+
+- Capture: `data/vehicle/catalogue/wikipedia_patria_amv.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 16000 | `wikipedia_patria_amv` | Infobox, weight row | weight published as a range of 16,000 to 32,000 kg; the lower bound of the range recorded, not an average |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | claimed | 450 | `wikipedia_patria_amv` | Infobox, engine power row | engine power published as 450 kW, or 405 kW, or 360 kW; the highest option recorded, not an average, with no net basis stated |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## piranha_v - Piranha V (wheeled)
+
+- Capture: `data/vehicle/catalogue/wikipedia_piranha_v.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | claimed | 437 | `wikipedia_piranha_v` | Infobox, engine power row | engine power published as 437 kW or 480 kW; the lower option recorded, not an average, with no net basis stated |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `operating_weight_kg` | a standard characteristics manual, for example TM 55-46-1, or the vehicle sustainment manual |
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## pizarro - Pizarro (tracked)
+
+- Capture: `data/vehicle/catalogue/wikipedia_ascod.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 26300 | `wikipedia_ascod` | Infobox, Specifications section, Weight row | ASCOD Pizarro weight published as 26.3 t; recorded as 26,300 kg with the tonne taken as 1,000 kg; the same row publishes the ASCOD Ulan mass of 28 t as a separate variant |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | derived | 447.419923 | `wikipedia_ascod` | Infobox, Specifications section, Engine power row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## pt91_twardy - PT-91 Twardy (tracked)
+
+- Capture: `data/vehicle/catalogue/wikipedia_pt91.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 45900 | `wikipedia_pt91` | Infobox, Specifications section, Weight row | mass published as 45.9 t; recorded as 45,900 kg with the tonne taken as 1,000 kg |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | claimed | 395 | `wikipedia_pt91` | Infobox, Specifications section, Ground clearance row | ground clearance published as 395 mm; the published millimetre figure used directly |
+| `net_power_kw` | derived | 633.844891 | `wikipedia_pt91` | Infobox, Specifications section, Engine power row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | claimed | manual | `wikipedia_pt91` | Infobox, Specifications section, Transmission row | the transmission is published as manual |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## rosomak - Rosomak (wheeled)
+
+- Capture: `data/vehicle/catalogue/wikipedia_rosomak.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 22000 | `wikipedia_rosomak` | Infobox, Specifications section, Weight row | weight published as 22,000 kg; the article does not label it curb or gross |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | derived | 404.91503 | `wikipedia_rosomak` | Infobox, Specifications section, Engine power row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## strv_122 - Stridsvagn 122 (tracked)
+
+- Capture: `data/vehicle/catalogue/wikipedia_strv_122.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 62500 | `wikipedia_strv_122` | Infobox, Specifications section, Mass row | mass published as 62.5 t; recorded as 62,500 kg with the tonne taken as 1,000 kg |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | claimed | 540 | `wikipedia_strv_122` | Infobox, Specifications section, Ground clearance row | ground clearance published as 540 mm; the published millimetre figure used directly |
+| `net_power_kw` | derived | 1102.890111 | `wikipedia_strv_122` | Infobox, Specifications section, Engine power row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## stryker_m1126_icv - M1126 Stryker ICV (wheeled)
+
+- Capture: `data/vehicle/catalogue/wikipedia_stryker.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 16470 | `wikipedia_stryker` | Infobox, Specifications section, Mass row, ICV entry | mass published for the ICV variant as 18.16 short tons (16.47 t); recorded as 16,470 kg with the tonne taken as 1,000 kg; the same row publishes the MGS mass as a separate configuration and the article states no kerb, combat or gross state for either |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | derived | 260.994955 | `wikipedia_stryker` | Infobox, Specifications section, Engine row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## t_72m4cz - T-72M4CZ (tracked)
+
+- Capture: `data/vehicle/catalogue/wikipedia_t_72m4cz.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 48000 | `wikipedia_t_72m4cz` | Infobox, weight row | weight published as 48 tonnes; the tonne taken as 1,000 kg |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | claimed | 746 | `wikipedia_t_72m4cz` | Infobox, engine power row | engine published as 746 kW, with no net basis stated |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
 ## toyota_t100 - Toyota T100 (wheeled)
 
 - Capture: `data/vehicle/catalogue/toyota_t100_factory_service_manual_1996.json`
@@ -1032,4 +2003,103 @@ is a labelled zero, not a refusal.
 | `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
 | `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
 | `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## type_10 - Type 10 (tracked)
+
+- Capture: `data/vehicle/catalogue/wikipedia_type_10_tank.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 48000 | `wikipedia_type_10_tank` | Infobox, weight row, full loadout entry | full loadout weight published as 48 tonnes; the same row publishes 44 tonnes standard loadout and 40 tonnes basic loadout as separate states |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | derived | 894.839846 | `wikipedia_type_10_tank` | Infobox, engine power row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## type_16_mcv - Type 16 MCV (wheeled)
+
+- Capture: `data/vehicle/catalogue/wikipedia_type_16_mcv.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 26000 | `wikipedia_type_16_mcv` | Infobox, weight row | weight published as 26 tonnes; the tonne taken as 1,000 kg |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | derived | 425.048927 | `wikipedia_type_16_mcv` | Infobox, engine power row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## type_89_ifv - Type 89 IFV (tracked)
+
+- Capture: `data/vehicle/catalogue/wikipedia_type_89_ifv.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 26500 | `wikipedia_type_89_ifv` | Infobox, mass row | mass published as 26.5 t; the tonne taken as 1,000 kg |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | derived | 447.419923 | `wikipedia_type_89_ifv` | Infobox, engine power row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## vbci - VBCI (wheeled)
+
+- Capture: `data/vehicle/catalogue/nexter_vbci_sales_brochure.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 19000 | `nexter_vbci_sales_brochure` | Features and Specifications, Weight And Dimensions, Empty weight, page 4 | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | derived | 447.419923 | `nexter_vbci_sales_brochure` | Features and Specifications, Mobility, Engine, page 4 | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | claimed | automatic | `nexter_vbci_sales_brochure` | Features and Specifications, Mobility, Engine, page 4 | automatic gearbox, as published |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |

@@ -340,7 +340,7 @@ class RealCorpusCoverageTest(unittest.TestCase):
         self.assertEqual([], errors, "\n".join(errors))
 
     def test_the_recorded_tokens_are_the_mapped_entries(self) -> None:
-        # Four emitted rows and four class-map bindings -> four recorded
+        # Six emitted rows and six class-map bindings -> six recorded
         # tokens, each carrying its one variant.
         self.assertEqual(
             {
@@ -348,17 +348,22 @@ class RealCorpusCoverageTest(unittest.TestCase):
                 "Truck": {"m923a2"},
                 "Tracked_APC": {"m113a2"},
                 "MRAP": {"m_atv_m1240"},
+                "Tank": {"m1_abrams"},
+                "Wheeled_APC": {"btr_80"},
             },
             self.recorded,
         )
 
-    def test_the_researched_lead_is_lead_with_a_reason(self) -> None:
+    def test_the_researched_lead_candidates_are_now_recorded(self) -> None:
+        # The researched lead candidates (MRAP, Tracked_APC, Wheeled_APC) now
+        # hold an emitted row and a class-map binding, so the committed table
+        # records them and carries no bare lead. The lead render path stays
+        # covered by CoverageBuildTest.
         rows = {row.get("token"): row for row in _entries(self.coverage)}
-        for token in ("Wheeled_APC",):
-            row = rows[token]
-            self.assertEqual("lead", row["state"], token)
-            self.assertIsNone(row["variant"], token)
-            self.assertEqual(g.LEAD_CANDIDATES[token], row["reason"], token)
+        for token in g.LEAD_CANDIDATES:
+            self.assertEqual("recorded", rows[token]["state"], token)
+        leads = [token for token, row in rows.items() if row["state"] == "lead"]
+        self.assertEqual([], leads)
 
     def test_every_ground_token_is_recorded_lead_or_no_source(self) -> None:
         rows = {row.get("token"): row for row in _entries(self.coverage)}
@@ -402,9 +407,10 @@ class GeneratedArtefactTest(unittest.TestCase):
         for row in _entries(self.coverage):
             self.assertIn(f"`{row.get('token')}`", self.audit)
 
-    def test_the_audit_counts_the_four_recorded_rows(self) -> None:
-        self.assertIn("recorded: 4", self.audit)
-        self.assertIn("Runtime rows: 4", self.audit)
+    def test_the_audit_counts_the_recorded_rows(self) -> None:
+        # Six class-map bindings each have an emitted runtime row.
+        self.assertIn("recorded: 6", self.audit)
+        self.assertIn("Runtime rows: 6", self.audit)
 
     def test_source_gaps_lists_every_catalogue_entry(self) -> None:
         for entry in self.load.entries:

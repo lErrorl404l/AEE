@@ -324,14 +324,23 @@ class RealCorpusTest(unittest.TestCase):
         ):
             self.assertIn(sentinel, ids)
         self.assertGreaterEqual(len(ids), 47)
-        self.assertEqual(4, len(loaded.mappings))
+        # Six records in the committed class map, each an engine class-table
+        # binding at grade claimed.
+        self.assertEqual(6, len(loaded.mappings))
         for mapping in loaded.mappings:
             self.assertEqual("claimed", mapping.grade)
 
     def test_leads_are_loaded_but_not_runtime_ready(self) -> None:
         loaded = vc.load(DATA)
+        # The corpus holds one complete entry: the Kawasaki service manual
+        # motorcycle resolves every runtime field. Every other entry is a
+        # sourced lead, a partial record that is not runtime-ready.
+        ready = [entry.catalogue_id for entry in loaded.entries if entry.runtime_ready]
+        self.assertEqual(["kawasaki_ninja_250r_ex250f"], ready)
         for entry in loaded.entries:
             with self.subTest(entry=entry.catalogue_id):
+                if entry.runtime_ready:
+                    continue
                 self.assertIs(False, entry.runtime_ready)
                 self.assertEqual("", entry.class_token)
 
@@ -344,7 +353,8 @@ class RealCorpusTest(unittest.TestCase):
         records: object = json.loads(CLASS_MAP.read_text(encoding="utf-8"))
         self.assertIsInstance(records, list)
         assert isinstance(records, list)
-        self.assertEqual(4, len(records))
+        # Six ground tokens now carry one class-map binding each.
+        self.assertEqual(6, len(records))
         for record in records:
             self.assertIsInstance(record, dict)
             entry = cast("dict[str, object]", record)
@@ -361,6 +371,73 @@ class RealCorpusTest(unittest.TestCase):
         self.assertEqual("documented", curb["grade"])
         self.assertIn("gross_weight_kg", values)
         self.assertNotIn("operating_weight_kg", values)
+
+
+class TyreSizeParserTest(unittest.TestCase):
+    """The named size-code derivation. Geometry only, never a real-world claim."""
+
+    def test_metric_radial_width_is_the_first_figure(self) -> None:
+        width, diameter = vc.parse_tyre_size("395/85R20")
+        self.assertEqual(395.0, width)
+        self.assertAlmostEqual(20 * vc.INCH_TO_MM + 2 * 395 * 0.85, diameter)
+
+    def test_metric_cross_ply_width_is_the_first_figure(self) -> None:
+        width, diameter = vc.parse_tyre_size("130/80-16")
+        self.assertEqual(130.0, width)
+        self.assertAlmostEqual(16 * vc.INCH_TO_MM + 2 * 130 * 0.80, diameter)
+
+    def test_metric_dash_before_a_radial_mark_is_accepted(self) -> None:
+        width, diameter = vc.parse_tyre_size("110/80-R19")
+        self.assertEqual(110.0, width)
+        self.assertAlmostEqual(19 * vc.INCH_TO_MM + 2 * 110 * 0.80, diameter)
+
+    def test_metric_with_a_space_before_the_radial_mark(self) -> None:
+        width, diameter = vc.parse_tyre_size("395/85 R20")
+        self.assertEqual(395.0, width)
+        self.assertAlmostEqual(20 * vc.INCH_TO_MM + 2 * 395 * 0.85, diameter)
+
+    def test_inch_colon_form_keeps_the_aspect_100_conversion(self) -> None:
+        width, diameter = vc.parse_tyre_size("14:00 x R20")
+        self.assertAlmostEqual(14.0 * vc.INCH_TO_MM, width, places=4)
+        self.assertAlmostEqual((20 + 2 * 14.0) * vc.INCH_TO_MM, diameter)
+
+    def test_inch_dash_and_x_forms_keep_the_conversion(self) -> None:
+        for code in ("14.00-20", "14x20"):
+            with self.subTest(code=code):
+                width, diameter = vc.parse_tyre_size(code)
+                self.assertAlmostEqual(14.0 * vc.INCH_TO_MM, width, places=4)
+                self.assertAlmostEqual((20 + 2 * 14.0) * vc.INCH_TO_MM, diameter)
+
+    def test_malformed_and_empty_forms_are_rejected(self) -> None:
+        for code in (
+            "",
+            "   ",
+            "unknown",
+            "130/80",
+            "130/80-",
+            "/80-16",
+            "130//80-16",
+            "395/8520",
+        ):
+            with self.subTest(code=code):
+                self.assertIsNone(vc.parse_tyre_size(code))
+
+    def test_derivation_keeps_source_and_state_for_a_cross_ply_code(self) -> None:
+        values: JsonObject = {
+            "tyre_size_text": {
+                "value": "130/80-16",
+                "unit": "text",
+                "source": "fx_manual",
+                "locator": "section 2",
+                "state": "staged",
+                "grade": "documented",
+            }
+        }
+        field = vc.resolve_field(values, "tyre_width_mm")
+        self.assertEqual("derived", field.grade)
+        self.assertEqual("fx_manual", field.source)
+        self.assertEqual("section 2", field.locator)
+        self.assertIn("derived from the size code 130/80-16", field.state)
 
 
 if __name__ == "__main__":

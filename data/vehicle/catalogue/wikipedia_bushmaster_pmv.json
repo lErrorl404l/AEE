@@ -1,0 +1,112 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Held tier-5 English Wikipedia compilation for the Bushmaster protected mobility vehicle. The registry marks primary_held false. It publishes the kerb weight and the gross vehicle mass, the length, the width, the height, the engine model, the engine rating and torque, the transmission, the governed speed and the range. Its clearance row carries overhang and angles, not a ground clearance, so that field is absent.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "bushmaster_pmv",
+      "canonical_name": "Bushmaster PMV",
+      "maker": "Thales Australia",
+      "model": "Bushmaster",
+      "variant": "Protected mobility vehicle",
+      "variant_id": "bushmaster_pmv",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Australia",
+      "era": "modern",
+      "aliases": [
+        "bushmaster",
+        "bushmaster pmv"
+      ],
+      "keywords": [
+        "mrap",
+        "infantry mobility",
+        "wheeled",
+        "bushmaster"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "curb_weight_kg": {
+          "value": 11400,
+          "unit": "kg",
+          "source": "wikipedia_bushmaster_pmv",
+          "locator": "Infobox, weight row, kerb entry",
+          "state": "kerb weight published as 11,400 kg",
+          "grade": "claimed"
+        },
+        "gross_weight_kg": {
+          "value": 15400,
+          "unit": "kg",
+          "source": "wikipedia_bushmaster_pmv",
+          "locator": "Infobox, weight row, GVM entry",
+          "state": "gross vehicle mass published as 15,400 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 7180,
+          "unit": "mm",
+          "source": "wikipedia_bushmaster_pmv",
+          "locator": "Infobox, length row",
+          "state": "length published as 7,180 mm",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2480,
+          "unit": "mm",
+          "source": "wikipedia_bushmaster_pmv",
+          "locator": "Infobox, width row",
+          "state": "width published as 2,480 mm",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2650,
+          "unit": "mm",
+          "source": "wikipedia_bushmaster_pmv",
+          "locator": "Infobox, height row",
+          "state": "height published as 2,650 mm",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Caterpillar 3126E",
+          "unit": "text",
+          "source": "wikipedia_bushmaster_pmv",
+          "locator": "Infobox, engine row",
+          "state": "engine published as a Caterpillar 3126E 7.2 litre six-cylinder turbocharged diesel",
+          "grade": "claimed"
+        },
+        "net_power_kw": {
+          "value": 224,
+          "unit": "kW",
+          "source": "wikipedia_bushmaster_pmv",
+          "locator": "Infobox, engine power row",
+          "state": "engine published as 224 kW at 2,200 rpm, with no net basis stated",
+          "grade": "claimed"
+        },
+        "torque_nm": {
+          "value": 1166,
+          "unit": "N m",
+          "source": "wikipedia_bushmaster_pmv",
+          "locator": "Infobox, engine power row, torque entry",
+          "state": "peak torque published as 1,166 N m at 1,440 rpm",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 100,
+          "unit": "km/h",
+          "source": "wikipedia_bushmaster_pmv",
+          "locator": "Infobox, speed row",
+          "state": "governed maximum road speed published as 100 km/h",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 800,
+          "unit": "km",
+          "source": "wikipedia_bushmaster_pmv",
+          "locator": "Infobox, vehicle range row",
+          "state": "range published as 800 km",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

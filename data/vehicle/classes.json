@@ -69,7 +69,7 @@
         "addons/mobility/functions/fnc_applyFlightTurbulence.sqf:64",
         "addons/mobility/functions/fnc_applyRollover.sqf:40",
         "addons/mobility/functions/fnc_applyTerrainDrag.sqf:41",
-        "addons/mobility/functions/fnc_calculateSSF.sqf:83",
+        "addons/mobility/functions/fnc_calculateSSF.sqf:86",
         "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:273"
       ],
       "token": "Air"
@@ -122,8 +122,8 @@
       "provenance": [
         "addons/armour/functions/fnc_deriveProtection.sqf:60",
         "addons/mobility/functions/common/fnc_getNearbyVehicles.sqf:44",
-        "addons/mobility/functions/fnc_calculateSSF.sqf:112",
-        "addons/mobility/functions/fnc_calculateSSF.sqf:59",
+        "addons/mobility/functions/fnc_calculateSSF.sqf:116",
+        "addons/mobility/functions/fnc_calculateSSF.sqf:62",
         "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:78",
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:180",
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:189"
@@ -175,7 +175,7 @@
         "addons/atmos/functions/state/fnc_updateLocalWindParams.sqf:35",
         "addons/atmos/functions/state/fnc_updateLocalWindParams.sqf:36",
         "addons/fx/functions/weather/fnc_applyRotorWash.sqf:27",
-        "addons/mobility/functions/fnc_calculateSSF.sqf:58",
+        "addons/mobility/functions/fnc_calculateSSF.sqf:61",
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:180",
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:189"
       ],
@@ -210,8 +210,8 @@
       "is_ground": true,
       "kind": "mod_token",
       "provenance": [
-        "addons/mobility/functions/fnc_calculateSSF.sqf:109",
-        "addons/mobility/functions/fnc_calculateSSF.sqf:54",
+        "addons/mobility/functions/fnc_calculateSSF.sqf:113",
+        "addons/mobility/functions/fnc_calculateSSF.sqf:57",
         "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:74"
       ],
       "token": "MRAP"
@@ -301,11 +301,12 @@
       "provenance": [
         "addons/armour/functions/fnc_deriveProtection.sqf:51",
         "addons/mobility/functions/common/fnc_getNearbyVehicles.sqf:44",
-        "addons/mobility/functions/fnc_calculateSSF.sqf:110",
-        "addons/mobility/functions/fnc_calculateSSF.sqf:56",
+        "addons/mobility/functions/fnc_calculateSSF.sqf:114",
+        "addons/mobility/functions/fnc_calculateSSF.sqf:59",
         "addons/mobility/functions/fnc_calculateSoilStrength.sqf:70",
         "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:76",
         "addons/mobility/functions/fnc_calculateTraction.sqf:78",
+        "addons/mobility/functions/fnc_estimateVehicleMass.sqf:178",
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:180",
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:189",
         "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:57"
@@ -317,10 +318,11 @@
       "is_ground": true,
       "kind": "engine_base",
       "provenance": [
-        "addons/mobility/functions/fnc_calculateSSF.sqf:111",
-        "addons/mobility/functions/fnc_calculateSSF.sqf:57",
+        "addons/mobility/functions/fnc_calculateSSF.sqf:115",
+        "addons/mobility/functions/fnc_calculateSSF.sqf:60",
         "addons/mobility/functions/fnc_calculateSoilStrength.sqf:70",
-        "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:77"
+        "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:77",
+        "addons/mobility/functions/fnc_estimateVehicleMass.sqf:178"
       ],
       "token": "Tracked_APC"
     },
@@ -339,8 +341,8 @@
       "kind": "engine_base",
       "provenance": [
         "addons/armour/functions/fnc_deriveProtection.sqf:63",
-        "addons/mobility/functions/fnc_calculateSSF.sqf:113",
-        "addons/mobility/functions/fnc_calculateSSF.sqf:60",
+        "addons/mobility/functions/fnc_calculateSSF.sqf:117",
+        "addons/mobility/functions/fnc_calculateSSF.sqf:63",
         "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:79"
       ],
       "token": "Truck"
@@ -350,8 +352,8 @@
       "is_ground": true,
       "kind": "mod_token",
       "provenance": [
-        "addons/mobility/functions/fnc_calculateSSF.sqf:114",
-        "addons/mobility/functions/fnc_calculateSSF.sqf:55",
+        "addons/mobility/functions/fnc_calculateSSF.sqf:118",
+        "addons/mobility/functions/fnc_calculateSSF.sqf:58",
         "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:75"
       ],
       "token": "Wheeled_APC"
@@ -361,7 +363,7 @@
       "is_ground": true,
       "kind": "mod_token",
       "provenance": [
-        "addons/mobility/functions/fnc_calculateSSF.sqf:61"
+        "addons/mobility/functions/fnc_calculateSSF.sqf:64"
       ],
       "token": "Wheeled_APC_F"
     }

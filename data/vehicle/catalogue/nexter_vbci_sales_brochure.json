@@ -1,0 +1,128 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-4 Nexter-Group sales brochure for the VBCI 8x8 armoured vehicle family (reference NEX_141_2VOL_VBCI_EN_01A, edition 01/2022). It holds the VBCI infantry fighting vehicle as a wheeled entry. The brochure is a maker sales document, so every value is grade claimed. It publishes identity, the empty weight, the payload, the chassis length, width and height as upper bounds, the usable interior volume, the carrying capacity, the diesel engine rating of 600 HP, the automatic gearbox with seven forward and two reverse ratios, the 8-wheel drive running gear, the central tyre inflation system, the run-flat device, the road speed and range, the step, trench and fording figures, the protection levels and the armament options. It publishes no ground clearance, no tyre size code or tyre width or tyre diameter, no net power with a stated basis and no exact overall dimension, because the three chassis dimensions are stated only as upper bounds, so the entry is not runtime-ready. The three dimension values are recorded as the published upper bound and the state names the bound; they are not presented as exact measurements. The empty weight is published in tons. The maker is named in the brochure footer as Nexter Systems.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "vbci",
+      "canonical_name": "VBCI",
+      "maker": "Nexter Systems",
+      "model": "VBCI",
+      "variant": "VBCI 8x8 armoured infantry fighting vehicle, IFV with one-man 25 mm turret",
+      "variant_id": "vbci",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "France",
+      "era": "modern",
+      "aliases": ["vbci", "vehicule blinde de combat d'infanterie", "vbci 8x8"],
+      "keywords": ["ifv", "8x8", "armoured", "infantry fighting vehicle", "france"],
+      "runtime_ready": false,
+      "values": {
+        "length_mm": {
+          "value": 8000,
+          "unit": "mm",
+          "source": "nexter_vbci_sales_brochure",
+          "locator": "Features and Specifications, Weight And Dimensions, Dimensions (chassis), Length, page 4",
+          "state": "chassis overall length, published as less than 8 m; recorded as the stated upper bound, not an exact measurement",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3000,
+          "unit": "mm",
+          "source": "nexter_vbci_sales_brochure",
+          "locator": "Features and Specifications, Weight And Dimensions, Dimensions (chassis), Width, page 4",
+          "state": "chassis overall width, published as less than 3 m; recorded as the stated upper bound, not an exact measurement",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2500,
+          "unit": "mm",
+          "source": "nexter_vbci_sales_brochure",
+          "locator": "Features and Specifications, Weight And Dimensions, Dimensions (chassis), Height, page 4",
+          "state": "chassis overall height, published as less than 2.5 m; recorded as the stated upper bound, not an exact measurement",
+          "grade": "claimed"
+        },
+        "curb_weight_kg": {
+          "value": 19000,
+          "unit": "kg",
+          "source": "nexter_vbci_sales_brochure",
+          "locator": "Features and Specifications, Weight And Dimensions, Empty weight, page 4",
+          "state": "empty weight, published as 19 tons; recorded as 19,000 kg with the tonne taken as 1,000 kg, and the brochure does not state which ton is meant",
+          "grade": "claimed"
+        },
+        "payload_kg": {
+          "value": 13000,
+          "unit": "kg",
+          "source": "nexter_vbci_sales_brochure",
+          "locator": "Features and Specifications, Weight And Dimensions, Payload, page 4",
+          "state": "payload, published as up to 13 tons; recorded as 13,000 kg with the tonne taken as 1,000 kg, and the brochure does not state which ton is meant",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 600,
+          "unit": "hp",
+          "source": "nexter_vbci_sales_brochure",
+          "locator": "Features and Specifications, Mobility, Engine, page 4",
+          "state": "diesel engine published as 600 HP, no net basis; the brochure states a rating only",
+          "grade": "claimed"
+        },
+        "transmission_type": {
+          "value": "automatic",
+          "unit": "enum",
+          "source": "nexter_vbci_sales_brochure",
+          "locator": "Features and Specifications, Mobility, Engine, page 4",
+          "state": "automatic gearbox, as published",
+          "grade": "claimed"
+        },
+        "gears": {
+          "value": 7,
+          "unit": "count",
+          "source": "nexter_vbci_sales_brochure",
+          "locator": "Features and Specifications, Mobility, Engine, automatic gearbox (7+2), page 4",
+          "state": "seven forward gear ratios and two reverse, published as (7+2)",
+          "grade": "claimed"
+        },
+        "drivetrain": {
+          "value": "8-wheel drive",
+          "unit": "enum",
+          "source": "nexter_vbci_sales_brochure",
+          "locator": "Features and Specifications, Mobility, Running gear, page 4",
+          "state": "8-wheel drive with two front steering axles and one optional rear steering axle, as published",
+          "grade": "claimed"
+        },
+        "fording_depth_mm": {
+          "value": 1200,
+          "unit": "mm",
+          "source": "nexter_vbci_sales_brochure",
+          "locator": "Features and Specifications, Mobility, Fording, page 4",
+          "state": "fording depth without preparation, published as 1.20 m",
+          "grade": "claimed"
+        },
+        "wading_depth_mm": {
+          "value": 1500,
+          "unit": "mm",
+          "source": "nexter_vbci_sales_brochure",
+          "locator": "Features and Specifications, Mobility, Fording, page 4",
+          "state": "fording depth with preparation, published as 1.50 m",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 100,
+          "unit": "km/h",
+          "source": "nexter_vbci_sales_brochure",
+          "locator": "Features and Specifications, Mobility, Speed/range, page 4",
+          "state": "road speed under standard conditions, published as 100 km/h (60 mph)",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 750,
+          "unit": "km",
+          "source": "nexter_vbci_sales_brochure",
+          "locator": "Features and Specifications, Mobility, Speed/range, page 4",
+          "state": "operating range under standard conditions, published as 750 km (470 miles)",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

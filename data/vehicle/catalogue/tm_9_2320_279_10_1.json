@@ -1,0 +1,200 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-2 operator manual TM 9-2320-279-10-1 (M977 series, 8x8 HEMTT, November 1986 with Change 5 of December 1998). It holds the M977 cargo truck as a wheeled entry. The manual publishes identity, overall length, width and height, wheelbase, ground clearance, the M977 curb weight with and without winch, the gross vehicle weight rating, the gross combination weight rating, the engine make, model, type and swept volume, two brake-horsepower and two torque ratings, the automatic transmission with four forward ranges, the tyre size code, the front and rear tyre pressures, the maximum safe operating speeds, the cruising range at GCWR, the maximum ford depth and the approach and departure angles. The warranty paragraph names Oshkosh Truck Corporation as the maker, so the maker rests on that paragraph and not on an identity table. The manual publishes no net power with a stated basis, no named operating weight, no payload rating and no tyre width or tyre diameter as a figure, so the tyre width and diameter are left to the named size-code derivation and the entry is not runtime-ready. Every dimension comes from a table that prints both the inch and the millimetre figure. The entry records the published millimetre figure and the published kilogram figure.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "m977_hemtt",
+      "canonical_name": "M977 HEMTT",
+      "maker": "Oshkosh Truck Corporation",
+      "model": "M977",
+      "variant": "M977 cargo truck, 8x8 HEMTT, with and without winch",
+      "variant_id": "m977_hemtt",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": ["m977", "hemtt", "m977 hemtt", "heavy expanded mobility tactical truck"],
+      "keywords": ["truck", "cargo", "8x8", "hemtt", "heavy expanded mobility tactical truck"],
+      "runtime_ready": false,
+      "values": {
+        "length_mm": {
+          "value": 10170,
+          "unit": "mm",
+          "source": "tm_9_2320_279_10_1",
+          "locator": "Table 1-2, Equipment Data, printed page 1-23, row M977, column Length (overall)",
+          "state": "overall length, M977, published as 401 in. (10 170 mm); the published millimetre figure used directly",
+          "grade": "documented"
+        },
+        "width_mm": {
+          "value": 2440,
+          "unit": "mm",
+          "source": "tm_9_2320_279_10_1",
+          "locator": "Table 1-2, Equipment Data, printed page 1-23, row ALL, column Width (overall)",
+          "state": "overall width, all M977 series models, published as 96 in. (2 440 mm); the published millimetre figure used directly",
+          "grade": "documented"
+        },
+        "height_mm": {
+          "value": 2840,
+          "unit": "mm",
+          "source": "tm_9_2320_279_10_1",
+          "locator": "Table 1-2, Equipment Data, printed page 1-23, row ALL, column Height (overall)",
+          "state": "overall height, all M977 series models, published as 112 in. (2 840 mm); the published millimetre figure used directly",
+          "grade": "documented"
+        },
+        "wheelbase_mm": {
+          "value": 5330,
+          "unit": "mm",
+          "source": "tm_9_2320_279_10_1",
+          "locator": "Table 1-2, Equipment Data, printed page 1-23, row M977, column Wheelbase",
+          "state": "wheelbase, M977, published as 110 in. (5 330 mm); the printed inch figure is inconsistent with the millimetre figure, because 5 330 mm equals 210 in., so the millimetre figure is recorded and the discrepancy is stated",
+          "grade": "documented"
+        },
+        "ground_clearance_mm": {
+          "value": 609.6,
+          "unit": "mm",
+          "source": "tm_9_2320_279_10_1",
+          "locator": "Table 1-2, Equipment Data, printed page 1-23, row ALL, column Ground Clearance",
+          "state": "ground clearance, all M977 series models, published as 24 in. (609.6 mm); the published millimetre figure used directly",
+          "grade": "documented"
+        },
+        "curb_weight_kg": {
+          "value": 17600,
+          "unit": "kg",
+          "source": "tm_9_2320_279_10_1",
+          "locator": "Table 1-2, Equipment Data, printed page 1-23, WEIGHT, row M977 w/ winch",
+          "state": "curb weight, M977 with winch, published as 38,800 lb (17 600 kg); the without-winch variant is published as 37,900 lb (17 200 kg) on the same row group and is a separate configuration",
+          "grade": "documented"
+        },
+        "gross_weight_kg": {
+          "value": 27000,
+          "unit": "kg",
+          "source": "tm_9_2320_279_10_1",
+          "locator": "Table 1-2, Equipment Data, printed page 1-24, WEIGHT (CONT), Gross Vehicle Weight Rating, row M977",
+          "state": "gross vehicle weight rating, M977, published as 59,500 lb (27 000 kg); the rating is a maximum, not a kerb weight",
+          "grade": "documented"
+        },
+        "engine_model": {
+          "value": "Detroit Diesel 8V92TA",
+          "unit": "text",
+          "source": "tm_9_2320_279_10_1",
+          "locator": "Table 1-2, Equipment Data, printed page 1-26, ENGINE, rows Make and Model",
+          "state": "two-stroke V-type diesel, eight cylinders, all M977 series models, as published",
+          "grade": "documented"
+        },
+        "engine_displacement_l": {
+          "value": 12,
+          "unit": "L",
+          "source": "tm_9_2320_279_10_1",
+          "locator": "Table 1-2, Equipment Data, printed page 1-26, ENGINE, row Displacement",
+          "state": "engine swept volume, all M977 series models, published as 736 cid (12 L); the published litre figure used directly",
+          "grade": "documented"
+        },
+        "published_power_hp": {
+          "value": 445,
+          "unit": "hp",
+          "source": "tm_9_2320_279_10_1",
+          "locator": "Table 1-2, Equipment Data, printed page 1-26, ENGINE, Maximum Brake Horsepower (at 2100 rpm), Model No. 8087-7899",
+          "state": "maximum brake horsepower at 2100 rpm, engine model 8087-7899, published as 445 BHP (332 kW), no net basis; the alternate engine model 8083-7493 is published as 450 BHP (336 kW) and is a separate configuration",
+          "grade": "documented"
+        },
+        "torque_nm": {
+          "value": 1695,
+          "unit": "N m",
+          "source": "tm_9_2320_279_10_1",
+          "locator": "Table 1-2, Equipment Data, printed page 1-26, ENGINE, Torque (at 2100 rpm), Model No. 8087-7899",
+          "state": "peak torque, engine model 8087-7899, published as 1250 lb-ft (1695 N m) at 1300 rpm; the alternate engine model 8083-7493 is published as 1330 lb-ft (1803 N m) at 1200 rpm and is a separate configuration",
+          "grade": "documented"
+        },
+        "transmission_type": {
+          "value": "automatic",
+          "unit": "enum",
+          "source": "tm_9_2320_279_10_1",
+          "locator": "Table 1-2, Equipment Data, printed page 1-19, transmission description, and paragraph (2) automatic transmission with one reverse speed and four forward speeds",
+          "state": "automatic transmission, all M977 series models, as published",
+          "grade": "documented"
+        },
+        "gears": {
+          "value": 4,
+          "unit": "count",
+          "source": "tm_9_2320_279_10_1",
+          "locator": "Chapter 1 description, automatic transmission with one reverse speed and four forward speeds",
+          "state": "four forward driving ranges and one reverse, as published",
+          "grade": "documented"
+        },
+        "tyre_size_text": {
+          "value": "16:00 x R20",
+          "unit": "text",
+          "source": "tm_9_2320_279_10_1",
+          "locator": "Table 1-2, Equipment Data, printed page 1-28, TIRES, row Size",
+          "state": "tyre size code for all M977 series models, published in the operator manual as 16:00R x 20 in. with load range M; recorded in the inch size-code form 16:00 x R20 that the named size-code derivation reads",
+          "grade": "documented"
+        },
+        "tyre_pressure_kpa": {
+          "value": 414,
+          "unit": "kPa",
+          "source": "tm_9_2320_279_10_1",
+          "locator": "Table 1-2, Equipment Data, printed page 1-28, TIRE PRESSURES, Front (all models), Standard Tire, Highway",
+          "state": "front highway inflation, standard tyre, published as 60 psi (414 kPa); the rear highway pressure is 70 psi (483 kPa) and the cross-country pressures are lower, so this is one row of the pressure table",
+          "grade": "documented"
+        },
+        "wheel_count": {
+          "value": 8,
+          "unit": "count",
+          "source": "tm_9_2320_279_10_1",
+          "locator": "Table 1-2, Equipment Data, printed page 1-28, TIRES, row Quantity",
+          "state": "eight tyres on the 8x8 M977 series running gear, as published; the spare tyre is a separate item",
+          "grade": "documented"
+        },
+        "fording_depth_mm": {
+          "value": 1219,
+          "unit": "mm",
+          "source": "tm_9_2320_279_10_1",
+          "locator": "Table 1-2, Equipment Data, printed page 1-25, PERFORMANCE, row Maximum Ford Depth",
+          "state": "maximum ford depth, all M977 series models, published as 48 in. (1 219 mm); the manual publishes no separate fording-kit depth",
+          "grade": "documented"
+        },
+        "approach_angle_deg": {
+          "value": 41,
+          "unit": "deg",
+          "source": "tm_9_2320_279_10_1",
+          "locator": "Table 1-2, Equipment Data, printed page 1-25, PERFORMANCE, row Approach Angle",
+          "state": "approach angle, all M977 series models, as published",
+          "grade": "documented"
+        },
+        "departure_angle_deg": {
+          "value": 45,
+          "unit": "deg",
+          "source": "tm_9_2320_279_10_1",
+          "locator": "Table 1-2, Equipment Data, printed page 1-25, PERFORMANCE, row Departure Angle",
+          "state": "departure angle, all M977 series models, as published",
+          "grade": "documented"
+        },
+        "max_speed_kmh": {
+          "value": 88,
+          "unit": "km/h",
+          "source": "tm_9_2320_279_10_1",
+          "locator": "Table 1-2, Equipment Data, printed page 1-29, OPERATING SPEEDS, Maximum Speed (all models), Standard Tire, Highway",
+          "state": "maximum speed on highway, standard tyre, published as 55 mph (88 km/h); the maximum sustained forward speed at 2100 rpm in fourth gear is published separately as 57 mph (92 km/h) on page 1-25",
+          "grade": "documented"
+        },
+        "range_km": {
+          "value": 483,
+          "unit": "km",
+          "source": "tm_9_2320_279_10_1",
+          "locator": "Table 1-2, Equipment Data, printed page 1-25, PERFORMANCE, row Cruising Range at GCWR",
+          "state": "cruising range at the gross combination weight rating, all M977 series models, published as 300 mi (483 km)",
+          "grade": "documented"
+        },
+        "turning_radius_m": {
+          "value": 31,
+          "unit": "m",
+          "source": "tm_9_2320_279_10_1",
+          "locator": "Table 1-2, Equipment Data, printed page 1-23, Turn Circle (wall-to-wall), row M977",
+          "state": "wall-to-wall turning circle, M977, published as 100 ft (31 m); the manual prints a turning circle, not a radius",
+          "grade": "documented"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Held tier-5 English Wikipedia compilation for the Patria AMV armoured modular vehicle. The registry marks primary_held false. It publishes the weight range, the length, the width, the height, the engine models, the engine power options, the land and water speeds and the range. It publishes no ground clearance, so that field is absent.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "patria_amv",
+      "canonical_name": "Patria AMV",
+      "maker": "Patria",
+      "model": "AMV",
+      "variant": "Armoured modular vehicle",
+      "variant_id": "patria_amv",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Finland",
+      "era": "modern",
+      "aliases": [
+        "patria amv",
+        "amv",
+        "patria"
+      ],
+      "keywords": [
+        "apc",
+        "armoured personnel carrier",
+        "wheeled",
+        "patria"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 16000,
+          "unit": "kg",
+          "source": "wikipedia_patria_amv",
+          "locator": "Infobox, weight row",
+          "state": "weight published as a range of 16,000 to 32,000 kg; the lower bound of the range recorded, not an average",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 7700,
+          "unit": "mm",
+          "source": "wikipedia_patria_amv",
+          "locator": "Infobox, length row",
+          "state": "length published as 7.7 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2800,
+          "unit": "mm",
+          "source": "wikipedia_patria_amv",
+          "locator": "Infobox, width row",
+          "state": "width published as 2.8 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2300,
+          "unit": "mm",
+          "source": "wikipedia_patria_amv",
+          "locator": "Infobox, height row",
+          "state": "height published as 2.3 m",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Scania DI 12, DC 12 or DC 13",
+          "unit": "text",
+          "source": "wikipedia_patria_amv",
+          "locator": "Infobox, engine row",
+          "state": "engine published as a Scania DI 12, DC 12 or DC 13 diesel",
+          "grade": "claimed"
+        },
+        "net_power_kw": {
+          "value": 450,
+          "unit": "kW",
+          "source": "wikipedia_patria_amv",
+          "locator": "Infobox, engine power row",
+          "state": "engine power published as 450 kW, or 405 kW, or 360 kW; the highest option recorded, not an average, with no net basis stated",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 100,
+          "unit": "km/h",
+          "source": "wikipedia_patria_amv",
+          "locator": "Infobox, speed row, on land entry",
+          "state": "land speed published as over 100 km/h; the water speed is published as up to 10 km/h",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 600,
+          "unit": "km",
+          "source": "wikipedia_patria_amv",
+          "locator": "Infobox, vehicle range row",
+          "state": "range published as a range of 600 to 1,000 km; the lower bound of the range recorded, not an average",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

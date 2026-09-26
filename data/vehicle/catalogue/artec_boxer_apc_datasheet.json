@@ -1,0 +1,121 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Held tier-4 maker datasheet for the Boxer Armoured Personnel Carrier. It publishes the maximum gross vehicle weight, the engine type and capacity, the maximum road speed, the range, the turning radius and the overall length, width, height and ground clearance. It publishes no kerb or operating weight, no tyre size, no transmission class and no grouser statement, so the entry is not runtime-ready.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "boxer_apc",
+      "canonical_name": "Boxer APC",
+      "maker": "ARTEC GmbH (KNDS Deutschland and Rheinmetall Landsysteme)",
+      "model": "Boxer",
+      "variant": "Armoured Personnel Carrier (APC)",
+      "variant_id": "boxer_apc",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Germany / Netherlands",
+      "era": "modern",
+      "aliases": [
+        "boxer",
+        "boxer apc",
+        "gtk boxer"
+      ],
+      "keywords": [
+        "apc",
+        "wheeled",
+        "8x8",
+        "boxer"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "gross_weight_kg": {
+          "value": 38500,
+          "unit": "kg",
+          "source": "artec_boxer_apc_datasheet",
+          "locator": "Product data panel, Key figures, Max. gross vehicle weight row",
+          "state": "maximum gross vehicle weight published as up to 38.5 t; recorded as 38,500 kg with the tonne taken as 1,000 kg; the datasheet publishes no kerb or operating weight",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 7930,
+          "unit": "mm",
+          "source": "artec_boxer_apc_datasheet",
+          "locator": "Product data panel, Key figures, Length row",
+          "state": "overall length published as 7.93 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2990,
+          "unit": "mm",
+          "source": "artec_boxer_apc_datasheet",
+          "locator": "Product data panel, Key figures, Width row",
+          "state": "overall width published as 2.99 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2380,
+          "unit": "mm",
+          "source": "artec_boxer_apc_datasheet",
+          "locator": "Product data panel, Key figures, Height (hull roof) row",
+          "state": "height to the hull roof published as 2.38 m; the datasheet publishes no height over a mission module",
+          "grade": "claimed"
+        },
+        "ground_clearance_mm": {
+          "value": 500,
+          "unit": "mm",
+          "source": "artec_boxer_apc_datasheet",
+          "locator": "Product data panel, Key figures, Ground clearance row",
+          "state": "ground clearance published as 0.50 m",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "MTU V8 199TE20/21",
+          "unit": "text",
+          "source": "artec_boxer_apc_datasheet",
+          "locator": "Product data panel, Key figures, Engine type row",
+          "state": "engine type published as MTU V8 199TE20/21",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 816,
+          "unit": "hp",
+          "source": "artec_boxer_apc_datasheet",
+          "locator": "Product data panel, Key figures, Engine capacity (ISO) row",
+          "state": "engine capacity published as up to 600 kW (816 hp) with an ISO basis; the published horsepower figure is recorded",
+          "grade": "claimed"
+        },
+        "wheel_count": {
+          "value": 8,
+          "unit": "count",
+          "source": "artec_boxer_apc_datasheet",
+          "locator": "Characteristics panel and description",
+          "state": "the datasheet describes the Boxer as an armoured 8x8 combat vehicle",
+          "grade": "claimed"
+        },
+        "turning_radius_m": {
+          "value": 7.5,
+          "unit": "m",
+          "source": "artec_boxer_apc_datasheet",
+          "locator": "Product data panel, Key figures, Turning radius row",
+          "state": "turning radius published as 7.50 m (skid steering)",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 100,
+          "unit": "km/h",
+          "source": "artec_boxer_apc_datasheet",
+          "locator": "Product data panel, Key figures, Maximum speed row",
+          "state": "maximum speed published as greater than 100 km/h; the stated bound of 100 km/h is recorded, not an average",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 1000,
+          "unit": "km",
+          "source": "artec_boxer_apc_datasheet",
+          "locator": "Product data panel, Key figures, Range row",
+          "state": "range published as greater than 1,000 km; the stated bound of 1,000 km is recorded, not an average",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

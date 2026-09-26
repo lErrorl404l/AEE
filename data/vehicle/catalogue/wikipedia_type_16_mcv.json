@@ -1,0 +1,98 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Held tier-5 English Wikipedia compilation for the Type 16 manoeuvre combat vehicle. The registry marks primary_held false. It publishes the weight, the length, the width, the height, the engine model and rating, the wheel arrangement, the maximum road speed and the range. It publishes no ground clearance, so that field is absent.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "type_16_mcv",
+      "canonical_name": "Type 16 MCV",
+      "maker": "Mitsubishi Heavy Industries",
+      "model": "Type 16",
+      "variant": "Maneuver combat vehicle",
+      "variant_id": "type_16_mcv",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Japan",
+      "era": "modern",
+      "aliases": [
+        "type 16",
+        "type16",
+        "type 16 mcv",
+        "mcv"
+      ],
+      "keywords": [
+        "mcv",
+        "maneuver combat vehicle",
+        "wheeled",
+        "type 16"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 26000,
+          "unit": "kg",
+          "source": "wikipedia_type_16_mcv",
+          "locator": "Infobox, weight row",
+          "state": "weight published as 26 tonnes; the tonne taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 8450,
+          "unit": "mm",
+          "source": "wikipedia_type_16_mcv",
+          "locator": "Infobox, length row",
+          "state": "length published as 8.45 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2980,
+          "unit": "mm",
+          "source": "wikipedia_type_16_mcv",
+          "locator": "Infobox, width row",
+          "state": "width published as 2.98 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2870,
+          "unit": "mm",
+          "source": "wikipedia_type_16_mcv",
+          "locator": "Infobox, height row",
+          "state": "height published as 2.87 m",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "11.3 litre diesel",
+          "unit": "text",
+          "source": "wikipedia_type_16_mcv",
+          "locator": "Infobox, engine row",
+          "state": "engine published as a 4-cylinder water-cooled turbocharged diesel of 11.3 litre",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 570,
+          "unit": "hp",
+          "source": "wikipedia_type_16_mcv",
+          "locator": "Infobox, engine power row",
+          "state": "engine published as 570 hp, with no net basis",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 100,
+          "unit": "km/h",
+          "source": "wikipedia_type_16_mcv",
+          "locator": "Infobox, speed row",
+          "state": "maximum road speed published as 100 km/h",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 400,
+          "unit": "km",
+          "source": "wikipedia_type_16_mcv",
+          "locator": "Infobox, vehicle range row",
+          "state": "range published as 400 km",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

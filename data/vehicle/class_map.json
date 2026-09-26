@@ -34,5 +34,23 @@
     "identity_evidence": "AEE class token MRAP; Oshkosh M-ATV M1240 mine resistant ambush protected vehicle, class table kind MRAP",
     "grade": "claimed",
     "note": "Engine class-table binding, graded claimed. No real-world source names the AEE class."
+  },
+  {
+    "game_class": "Tank",
+    "class_token": "Tank",
+    "catalogue_id": "m1_abrams",
+    "identity_source": "aee_class_table",
+    "identity_evidence": "AEE class token Tank; M1 Abrams 105-mm gun full-tracked main battle tank, class table kind Tank",
+    "grade": "claimed",
+    "note": "Engine class-table binding, graded claimed. No real-world source names the AEE class."
+  },
+  {
+    "game_class": "Wheeled_APC",
+    "class_token": "Wheeled_APC",
+    "catalogue_id": "btr_80",
+    "identity_source": "aee_class_table",
+    "identity_evidence": "AEE class token Wheeled_APC; BTR-80 8x8 amphibious armoured personnel carrier, class table kind Wheeled_APC",
+    "grade": "claimed",
+    "note": "Engine class-table binding, graded claimed. No real-world source names the AEE class."
   }
 ]

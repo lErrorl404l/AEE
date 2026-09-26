@@ -1,0 +1,96 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Held tier-5 English Wikipedia compilation for the Eitan armoured fighting vehicle. The registry marks primary_held false. It publishes the weight, the length, the width, the height, the engine model and rating, the transmission, the maximum road speed and the range. It publishes no ground clearance, so that field is absent.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "eitan",
+      "canonical_name": "Eitan",
+      "maker": "Oshkosh Defense",
+      "model": "Eitan",
+      "variant": "Armoured fighting vehicle",
+      "variant_id": "eitan",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Israel",
+      "era": "modern",
+      "aliases": [
+        "eitan",
+        "eitan afv"
+      ],
+      "keywords": [
+        "afv",
+        "armoured fighting vehicle",
+        "wheeled",
+        "eitan"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 50000,
+          "unit": "kg",
+          "source": "wikipedia_eitan",
+          "locator": "Infobox, weight row",
+          "state": "weight published as up to 50 tonnes; the upper bound of the published figure recorded, not an average; the tonne taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 8000,
+          "unit": "mm",
+          "source": "wikipedia_eitan",
+          "locator": "Infobox, length row",
+          "state": "length published as 8.0 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3000,
+          "unit": "mm",
+          "source": "wikipedia_eitan",
+          "locator": "Infobox, width row",
+          "state": "width published as 3.0 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 3000,
+          "unit": "mm",
+          "source": "wikipedia_eitan",
+          "locator": "Infobox, height row",
+          "state": "height published as 3.0 m",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "MTU 6V890",
+          "unit": "text",
+          "source": "wikipedia_eitan",
+          "locator": "Infobox, engine row",
+          "state": "engine published as an MTU 6V890 diesel of 6.67 litre",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 750,
+          "unit": "hp",
+          "source": "wikipedia_eitan",
+          "locator": "Infobox, engine power row",
+          "state": "engine published as 750 PS; the PS metric horsepower figure recorded in the hp field with that basis stated, not converted",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 90,
+          "unit": "km/h",
+          "source": "wikipedia_eitan",
+          "locator": "Infobox, speed row",
+          "state": "maximum road speed published as 90 km/h",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 1000,
+          "unit": "km",
+          "source": "wikipedia_eitan",
+          "locator": "Infobox, vehicle range row",
+          "state": "range published as 1,000 km",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

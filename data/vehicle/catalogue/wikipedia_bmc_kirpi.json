@@ -1,0 +1,96 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Held tier-5 English Wikipedia compilation for the BMC Kirpi mine-resistant ambush protected vehicle. The registry marks primary_held false. It publishes the mass and a separate weight figure, the short and long lengths, the width, the height, the ground clearance, the engine model and rating, the transmission and the range. It publishes no maximum road speed, so that field is absent.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "bmc_kirpi",
+      "canonical_name": "BMC Kirpi",
+      "maker": "BMC",
+      "model": "Kirpi",
+      "variant": "Mine-resistant ambush protected vehicle",
+      "variant_id": "bmc_kirpi",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Turkey",
+      "era": "modern",
+      "aliases": [
+        "kirpi",
+        "bmc kirpi"
+      ],
+      "keywords": [
+        "mrap",
+        "mine resistant",
+        "wheeled",
+        "kirpi"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 20000,
+          "unit": "kg",
+          "source": "wikipedia_bmc_kirpi",
+          "locator": "Infobox, mass row",
+          "state": "mass published as 20,000 kg; the same infobox publishes a weight of 16 tons as a separate state",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6000,
+          "unit": "mm",
+          "source": "wikipedia_bmc_kirpi",
+          "locator": "Infobox, length row, short version entry",
+          "state": "length published as 6.0 m for the short 4x4 version; the same row publishes 7.075 m for the long 4x4 version",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2510,
+          "unit": "mm",
+          "source": "wikipedia_bmc_kirpi",
+          "locator": "Infobox, width row, 4x4 entry",
+          "state": "width published as 2.51 m for the 4x4",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 3200,
+          "unit": "mm",
+          "source": "wikipedia_bmc_kirpi",
+          "locator": "Infobox, height row",
+          "state": "height published as 3.2 m",
+          "grade": "claimed"
+        },
+        "ground_clearance_mm": {
+          "value": 345,
+          "unit": "mm",
+          "source": "wikipedia_bmc_kirpi",
+          "locator": "Infobox, clearance row",
+          "state": "ground clearance published as 345 mm",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "BMC TUNA",
+          "unit": "text",
+          "source": "wikipedia_bmc_kirpi",
+          "locator": "Infobox, engine row",
+          "state": "engine published as BMC TUNA",
+          "grade": "claimed"
+        },
+        "net_power_kw": {
+          "value": 257,
+          "unit": "kW",
+          "source": "wikipedia_bmc_kirpi",
+          "locator": "Infobox, engine power row",
+          "state": "engine published as 400 hp, 350 ps, 257 kW at 2100 rpm turbo diesel; the published kW figure used directly, with no net basis stated",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 1000,
+          "unit": "km",
+          "source": "wikipedia_bmc_kirpi",
+          "locator": "Infobox, vehicle range row",
+          "state": "range published as 1,000 km at 60 km/h",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Held tier-5 English Wikipedia compilation for the T-72M4CZ main battle tank, the Czech upgrade of the T-72. The registry marks primary_held false. It publishes the weight, the length, the width, the height, the engine model and rating and the maximum road speed. It publishes no range and no ground clearance, so those fields are absent.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "t_72m4cz",
+      "canonical_name": "T-72M4CZ",
+      "maker": "VOP CZ",
+      "model": "T-72",
+      "variant": "M4CZ",
+      "variant_id": "t_72m4cz",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Czechia",
+      "era": "modern",
+      "aliases": [
+        "t-72m4cz",
+        "t72m4cz",
+        "t-72",
+        "t72"
+      ],
+      "keywords": [
+        "mbt",
+        "main battle tank",
+        "tracked",
+        "t-72"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 48000,
+          "unit": "kg",
+          "source": "wikipedia_t_72m4cz",
+          "locator": "Infobox, weight row",
+          "state": "weight published as 48 tonnes; the tonne taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 7900,
+          "unit": "mm",
+          "source": "wikipedia_t_72m4cz",
+          "locator": "Infobox, length row",
+          "state": "length published as 7.9 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3600,
+          "unit": "mm",
+          "source": "wikipedia_t_72m4cz",
+          "locator": "Infobox, width row",
+          "state": "width published as 3.6 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2200,
+          "unit": "mm",
+          "source": "wikipedia_t_72m4cz",
+          "locator": "Infobox, height row",
+          "state": "height published as 2.2 m",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Perkins Condor CV 12 1000 TCA",
+          "unit": "text",
+          "source": "wikipedia_t_72m4cz",
+          "locator": "Infobox, engine row",
+          "state": "engine published as a Perkins Condor CV 12 1000 TCA diesel",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 1006,
+          "unit": "hp",
+          "source": "wikipedia_t_72m4cz",
+          "locator": "Infobox, engine power row",
+          "state": "engine published as 1,006 hp (746 kW), with no net basis",
+          "grade": "claimed"
+        },
+        "net_power_kw": {
+          "value": 746,
+          "unit": "kW",
+          "source": "wikipedia_t_72m4cz",
+          "locator": "Infobox, engine power row",
+          "state": "engine published as 746 kW, with no net basis stated",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 64,
+          "unit": "km/h",
+          "source": "wikipedia_t_72m4cz",
+          "locator": "Infobox, speed row",
+          "state": "maximum road speed published as 64 km/h",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

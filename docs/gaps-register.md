@@ -411,3 +411,34 @@ rather than trusting the tool result.
 **Lesson.** A write that reports success and does not appear in the
 working tree is a sign that something else owns the tree. Find the owner
 before blaming the writer.
+
+## GAP-028: a shadow probe wrote through a symlink
+
+Status: Open
+
+**What happened.** A calibration-review shadow probe opened the symlinked
+copy of `data/vehicle/catalogue/brdm_2_technical_manual_en.json` with mode
+`w`. The open followed the link to the real file and briefly changed it.
+The verifier restored the file, and the SHA-256 matched the pre-probe value
+`c046d7e16725cdd27080e346efdc6ccd824140af67fd7372e3a639c6f7d6207d`. The
+file returned byte-for-byte to the committed state.
+
+**What went wrong.** The probe built its scratch corpus from symlinks to the
+held corpus. A symlink is a path to the real file, so a write through it
+edits the real file. The probe trusted the scratch path as a copy. It was
+not a copy.
+
+**Why.** The rule was absent. The shadow corpus used symlinks to avoid
+copying about 103 MB of held sources. That technique is safe for reads
+alone. Nothing said a write target must be a real file, and no open used
+`O_NOFOLLOW` or replaced the link first.
+
+**What prevents recurrence.** A shadow probe that writes must give the
+target a real copy before the write, or open it with `O_NOFOLLOW`. The
+committed helper `_shadow_data_dir` in
+`tools/tests/test_vehicle_mass_model.py` removes the symlink for the one
+file it writes. The rule is not yet enforced for every probe, because no
+test asserts that a write through a symlinked child is refused.
+
+**Lesson.** A symlink is not a copy. Read through one, but copy the file
+before you write it, or refuse to follow the link.
