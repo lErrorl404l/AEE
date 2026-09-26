@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-09-26",
-  "note": "Held tier-5 English Wikipedia compilation for the BMC Kirpi mine-resistant ambush protected vehicle. The registry marks primary_held false. It publishes the mass and a separate weight figure, the short and long lengths, the width, the height, the ground clearance, the engine model and rating, the transmission and the range. It publishes no maximum road speed, so that field is absent.",
+  "note": "Held tier-5 English Wikipedia compilation for the BMC Kirpi mine-resistant ambush protected vehicle, uplifted by a held tier-4 BMC maker technical specifications page. The held BMC page supplies the length, width, height, ground clearance, gross vehicle weight, engine model and displacement, peak torque, net power, automatic transmission and gear count, tyre size code, maximum road speed, fording depth and range for the KIRPI 4X4. The compilation figure for the operating weight stays at grade claimed, because the maker publishes a gross vehicle weight and not an operating weight. The held bytes are on disk under data/vehicle/sources/ and their digest matches the registry entry.",
   "sources": [],
   "entries": [
     {
@@ -35,59 +35,131 @@
           "grade": "claimed"
         },
         "length_mm": {
-          "value": 6000,
+          "value": 7350,
           "unit": "mm",
-          "source": "wikipedia_bmc_kirpi",
-          "locator": "Infobox, length row, short version entry",
-          "state": "length published as 6.0 m for the short 4x4 version; the same row publishes 7.075 m for the long 4x4 version",
+          "source": "bmc_kirpi_technical_specifications",
+          "locator": "Dimensions section, LENGHT row, KIRPI 4X4 tab",
+          "state": "overall length published as 7,350 mm for the KIRPI 4X4 on the maker page",
           "grade": "claimed"
         },
         "width_mm": {
-          "value": 2510,
+          "value": 2640,
           "unit": "mm",
-          "source": "wikipedia_bmc_kirpi",
-          "locator": "Infobox, width row, 4x4 entry",
-          "state": "width published as 2.51 m for the 4x4",
+          "source": "bmc_kirpi_technical_specifications",
+          "locator": "Dimensions section, WIDTH row, KIRPI 4X4 tab",
+          "state": "overall width published as 2,640 mm for the KIRPI 4X4 on the maker page",
           "grade": "claimed"
         },
         "height_mm": {
-          "value": 3200,
+          "value": 3210,
           "unit": "mm",
-          "source": "wikipedia_bmc_kirpi",
-          "locator": "Infobox, height row",
-          "state": "height published as 3.2 m",
+          "source": "bmc_kirpi_technical_specifications",
+          "locator": "Dimensions section, HEIGHT row, KIRPI 4X4 tab",
+          "state": "overall height published as 3,210 mm for the KIRPI 4X4 on the maker page",
           "grade": "claimed"
         },
         "ground_clearance_mm": {
-          "value": 345,
+          "value": 400,
           "unit": "mm",
-          "source": "wikipedia_bmc_kirpi",
-          "locator": "Infobox, clearance row",
-          "state": "ground clearance published as 345 mm",
+          "source": "bmc_kirpi_technical_specifications",
+          "locator": "Performance section, GROUND CLEARANCE row, KIRPI 4X4 tab",
+          "state": "ground clearance published as 400 mm for the KIRPI 4X4 on the maker page",
           "grade": "claimed"
         },
         "engine_model": {
-          "value": "BMC TUNA",
+          "value": "Cummins ISL9E3 375",
           "unit": "text",
-          "source": "wikipedia_bmc_kirpi",
-          "locator": "Infobox, engine row",
-          "state": "engine published as BMC TUNA",
+          "source": "bmc_kirpi_technical_specifications",
+          "locator": "Engine section, BRAND row, KIRPI 4X4 tab",
+          "state": "engine published as a Cummins ISL9E3 375 six-cylinder turbocharged intercooled diesel",
           "grade": "claimed"
         },
         "net_power_kw": {
-          "value": 257,
+          "value": 275,
           "unit": "kW",
-          "source": "wikipedia_bmc_kirpi",
-          "locator": "Infobox, engine power row",
-          "state": "engine published as 400 hp, 350 ps, 257 kW at 2100 rpm turbo diesel; the published kW figure used directly, with no net basis stated",
+          "source": "bmc_kirpi_technical_specifications",
+          "locator": "Engine section, MAX. POWER row, KIRPI 4X4 tab",
+          "state": "engine published as 375 PS (275 kW) at 2,100 rpm; the published kW figure used directly, with no net basis stated",
           "grade": "claimed"
         },
         "range_km": {
-          "value": 1000,
+          "value": 800,
           "unit": "km",
-          "source": "wikipedia_bmc_kirpi",
-          "locator": "Infobox, vehicle range row",
-          "state": "range published as 1,000 km at 60 km/h",
+          "source": "bmc_kirpi_technical_specifications",
+          "locator": "Performance section, RANGE row, KIRPI 4X4 tab",
+          "state": "range published as 800 km for the KIRPI 4X4 on the maker page",
+          "grade": "claimed"
+        },
+        "gross_weight_kg": {
+          "value": 19710,
+          "unit": "kg",
+          "source": "bmc_kirpi_technical_specifications",
+          "locator": "Weights section, GROSS VEHICLE WEIGHT row, KIRPI 4X4 tab",
+          "state": "gross vehicle weight published as 19,710 kg for the KIRPI 4X4 on the maker page",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 105,
+          "unit": "km/h",
+          "source": "bmc_kirpi_technical_specifications",
+          "locator": "Performance section, MAX. SPEED row, KIRPI 4X4 tab",
+          "state": "maximum road speed published as 105 km/h for the KIRPI 4X4 on the maker page",
+          "grade": "claimed"
+        },
+        "fording_depth_mm": {
+          "value": 1200,
+          "unit": "mm",
+          "source": "bmc_kirpi_technical_specifications",
+          "locator": "Performance section, FORDING DEPTH row, KIRPI 4X4 tab",
+          "state": "fording depth published as 1,200 mm for the KIRPI 4X4 on the maker page",
+          "grade": "claimed"
+        },
+        "engine_displacement_l": {
+          "value": 8.9,
+          "unit": "L",
+          "source": "bmc_kirpi_technical_specifications",
+          "locator": "Engine section, DISPLACEMENT row, KIRPI 4X4 tab",
+          "state": "engine swept volume published as 8.9 litres for the KIRPI 4X4 on the maker page",
+          "grade": "claimed"
+        },
+        "torque_nm": {
+          "value": 1550,
+          "unit": "N m",
+          "source": "bmc_kirpi_technical_specifications",
+          "locator": "Engine section, MAX. TORQUE row, KIRPI 4X4 tab",
+          "state": "peak torque published as 1,550 N m at 1,100 to 1,400 rpm for the KIRPI 4X4 on the maker page",
+          "grade": "claimed"
+        },
+        "transmission_type": {
+          "value": "automatic",
+          "unit": "enum",
+          "source": "bmc_kirpi_technical_specifications",
+          "locator": "Transmission section, TYPE row, KIRPI 4X4 tab",
+          "state": "transmission published as an Allison 3000 Series fully automatic with a torque converter",
+          "grade": "claimed"
+        },
+        "gears": {
+          "value": 6,
+          "unit": "count",
+          "source": "bmc_kirpi_technical_specifications",
+          "locator": "Transmission section, NUMBER OF GEARS row, KIRPI 4X4 tab",
+          "state": "six forward gears and one reverse gear published for the KIRPI 4X4 on the maker page",
+          "grade": "claimed"
+        },
+        "tyre_size_text": {
+          "value": "14.00 R 20",
+          "unit": "text",
+          "source": "bmc_kirpi_technical_specifications",
+          "locator": "Tyres & Rims section, SIZE / NUMBER row, KIRPI 4X4 tab",
+          "state": "tyre size code published as 14.00 R 20 with a 10x20 rim for the KIRPI 4X4 on the maker page",
+          "grade": "claimed"
+        },
+        "drivetrain": {
+          "value": "4x4",
+          "unit": "enum",
+          "source": "bmc_kirpi_technical_specifications",
+          "locator": "Driveline And Suspension section, TYPE row, KIRPI 4X4 tab",
+          "state": "drive arrangement published as a rigid 4x4 with AxleTech 4000 Series axles",
           "grade": "claimed"
         }
       }

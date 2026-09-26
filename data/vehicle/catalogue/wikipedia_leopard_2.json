@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-09-26",
-  "note": "Catalogue capture for the held tier-5 English Wikipedia article 'Leopard 2'. The article is a secondary compilation, so every value is grade claimed and the registry marks primary_held false. It holds the German Leopard 2A6 and the Finnish 2A6, Greek 2A6 HEL and Hungarian 2A7 national variants as tracked entries. The article publishes the 2A6 mass, length, width and height, the ground clearance, the engine model and rating, the maximum road speed and the road range, and the 2A7V mass. The national entries reuse the published 2A6 family figures and say so in each state.",
+  "note": "Catalogue capture for the held tier-5 English Wikipedia article 'Leopard 2'. The article is a secondary compilation, so every value is grade claimed and the registry marks primary_held false. It holds the German Leopard 2A6 and the Finnish 2A6, Greek 2A6 HEL and Hungarian 2A7 national variants as tracked entries. The article publishes the 2A6 mass, length, width and height, the ground clearance, the engine model and rating, the maximum road speed and the road range, and the 2A7V mass. The national entries reuse the published 2A6 family figures and say so in each state. The held tier-4 KNDS product page for the LEOPARD 2 A6 corroborates the overall length, the published power and the maximum road speed; those three values now carry the maker source. The maker table describes the A6M configuration, whose weight, width, height and range differ, so the compilation values for the operating weight, width, height, ground clearance, fording depth, wading depth, engine model and range stay at grade claimed.",
   "sources": [],
   "entries": [
     {
@@ -39,9 +39,9 @@
         "length_mm": {
           "value": 10970,
           "unit": "mm",
-          "source": "wikipedia_leopard_2",
-          "locator": "Infobox, Specifications section, Length row, 2A6 entry",
-          "state": "length published for the 2A6 as 10.97 m (36.0 ft); the same row publishes 9.97 m (32.7 ft) for the 2A4 with the label gun forward, and the 2A6 figure carries no hull or gun label of its own",
+          "source": "knds_leopard_2_a6",
+          "locator": "Specifications table, Length (turret at 12 o'clock) row",
+          "state": "length published as up to 10.97 m with the turret at 12 o'clock; the maker figure agrees with the compilation figure",
           "grade": "claimed"
         },
         "width_mm": {
@@ -95,17 +95,17 @@
         "published_power_hp": {
           "value": 1500,
           "unit": "hp",
-          "source": "wikipedia_leopard_2",
-          "locator": "Infobox, Specifications section, Engine row",
-          "state": "engine published as 1,100 kW (1,500 hp) at 2,600 rpm, with no net basis",
+          "source": "knds_leopard_2_a6",
+          "locator": "Specifications table, Engine performance row",
+          "state": "engine performance published as 1,500 HP (1,100 kW), with no net basis stated; the maker figure agrees with the compilation figure",
           "grade": "claimed"
         },
         "max_speed_kmh": {
           "value": 70,
           "unit": "km/h",
-          "source": "wikipedia_leopard_2",
-          "locator": "Infobox, Specifications section, Maximum speed row",
-          "state": "maximum road speed, published as 70 km/h (43 mph)",
+          "source": "knds_leopard_2_a6",
+          "locator": "Specifications table, Speed row",
+          "state": "maximum road speed published as up to 70 km/h; the maker figure agrees with the compilation figure",
           "grade": "claimed"
         },
         "range_km": {

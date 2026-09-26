@@ -13,7 +13,7 @@ is a labelled zero, not a refusal.
 - Emitted runtime rows: 133
 - Runtime-ready entries: 1
 - Entries with an absent runtime field: 132
-- Absent fields: 440
+- Absent fields: 437
 
 ## achzarit - Achzarit (tracked)
 
@@ -268,18 +268,15 @@ is a labelled zero, not a refusal.
 | Runtime field | Grade | Value | Source | Locator | State |
 |---|---|---|---|---|---|
 | `operating_weight_kg` | claimed | 20000 | `wikipedia_bmc_kirpi` | Infobox, mass row | mass published as 20,000 kg; the same infobox publishes a weight of 16 tons as a separate state |
-| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
-| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
-| `ground_clearance_mm` | claimed | 345 | `wikipedia_bmc_kirpi` | Infobox, clearance row | ground clearance published as 345 mm |
-| `net_power_kw` | claimed | 257 | `wikipedia_bmc_kirpi` | Infobox, engine power row | engine published as 400 hp, 350 ps, 257 kW at 2100 rpm turbo diesel; the published kW figure used directly, with no net basis stated |
-| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `tyre_width_mm` | derived | 355.6 | `bmc_kirpi_technical_specifications` | Tyres & Rims section, SIZE / NUMBER row, KIRPI 4X4 tab | derived from the size code 14.00 R 20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1219.2 | `bmc_kirpi_technical_specifications` | Tyres & Rims section, SIZE / NUMBER row, KIRPI 4X4 tab | derived from the size code 14.00 R 20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | claimed | 400 | `bmc_kirpi_technical_specifications` | Performance section, GROUND CLEARANCE row, KIRPI 4X4 tab | ground clearance published as 400 mm for the KIRPI 4X4 on the maker page |
+| `net_power_kw` | claimed | 275 | `bmc_kirpi_technical_specifications` | Engine section, MAX. POWER row, KIRPI 4X4 tab | engine published as 375 PS (275 kW) at 2,100 rpm; the published kW figure used directly, with no net basis stated |
+| `transmission_type` | claimed | automatic | `bmc_kirpi_technical_specifications` | Transmission section, TYPE row, KIRPI 4X4 tab | transmission published as an Allison 3000 Series fully automatic with a torque converter |
 | `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
 
 | Absent field | Next source class |
 |---|---|
-| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
-| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
-| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
 ## bmp_2 - BMP-2 (tracked)
@@ -1261,7 +1258,7 @@ is a labelled zero, not a refusal.
 | `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
 | `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
 | `ground_clearance_mm` | claimed | 540 | `wikipedia_leopard_2` | Technical data table, Ground clearance row | ground clearance published as 0.54 m (1 ft 9 in); the table carries one figure for the row and does not name a mark |
-| `net_power_kw` | derived | 1118.549808 | `wikipedia_leopard_2` | Infobox, Specifications section, Engine row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `net_power_kw` | derived | 1118.549808 | `knds_leopard_2_a6` | Specifications table, Engine performance row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
 | `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
 | `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
 
