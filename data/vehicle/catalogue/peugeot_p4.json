@@ -1,0 +1,80 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the Peugeot P4. Every value rests on the held tier-5 English Wikipedia article. The article is a secondary compilation and every value is grade claimed.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "peugeot_p4",
+      "canonical_name": "Peugeot P4",
+      "maker": "Peugeot",
+      "model": "P4",
+      "variant": "Light utility vehicle (VLTT)",
+      "variant_id": "peugeot_p4",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "France",
+      "era": "cold war",
+      "aliases": [
+        "peugeot p4"
+      ],
+      "keywords": [
+        "light utility",
+        "vltt",
+        "xn8",
+        "legere",
+        "french army"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "curb_weight_kg": {
+          "value": 1750,
+          "unit": "kg",
+          "source": "peugeot_p4",
+          "locator": "Infobox automobile, weight row, 1,750 kg",
+          "state": "weight published as 1,750 kg; no crew and no payload stated",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 4200,
+          "unit": "mm",
+          "source": "peugeot_p4",
+          "locator": "Infobox automobile, length row, 4,200 mm",
+          "state": "overall length published as 4,200 mm; the same row publishes 4,650 mm for the long version",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 1700,
+          "unit": "mm",
+          "source": "peugeot_p4",
+          "locator": "Infobox automobile, width row, 1,700 mm",
+          "state": "overall width published as 1,700 mm, as published",
+          "grade": "claimed"
+        },
+        "engine_displacement_l": {
+          "value": 2.0,
+          "unit": "L",
+          "source": "peugeot_p4",
+          "locator": "Infobox automobile, engine row, 2.0 L XN8 inline-four",
+          "state": "engine published as a 2.0 L XN8 inline-four; the same row publishes a 2.5 L XD3 diesel",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 78,
+          "unit": "hp",
+          "source": "peugeot_p4",
+          "locator": "Infobox automobile, engine_power row, 79 PS (58 kW; 78 hp)",
+          "state": "power published as 79 PS (58 kW; 78 hp); the published horsepower figure used; the same row publishes 70.5 PS for the diesel",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 108,
+          "unit": "km/h",
+          "source": "peugeot_p4",
+          "locator": "Infobox automobile, speed row, 108 to 118 km/h",
+          "state": "road speed published as 108 to 118 km/h; the lower bound taken",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

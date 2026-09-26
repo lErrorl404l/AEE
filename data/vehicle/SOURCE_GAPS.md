@@ -9,11 +9,11 @@ labelled absent zero. This file lists the resolved provenance of each
 row and the next source class for each absent field. A missing field
 is a labelled zero, not a refusal.
 
-- Catalogue entries: 131
-- Emitted runtime rows: 131
+- Catalogue entries: 133
+- Emitted runtime rows: 133
 - Runtime-ready entries: 1
-- Entries with an absent runtime field: 130
-- Absent fields: 448
+- Entries with an absent runtime field: 132
+- Absent fields: 451
 
 ## achzarit - Achzarit (tracked)
 
@@ -402,6 +402,30 @@ is a labelled zero, not a refusal.
 
 | Absent field | Next source class |
 |---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## bsa_m20 - BSA M20 (wheeled)
+
+- Capture: `data/vehicle/catalogue/bsa_m20.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 167 | `bsa_m20` | Infobox Motorcycle, dry_weight row, 369 lb | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | derived | 9.694098 | `bsa_m20` | Infobox Motorcycle, power row, 13 bhp @ 4,200 rpm | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | claimed | manual | `bsa_m20` | Infobox Motorcycle, transmission row, 4 Speed / chain | transmission published as a four-speed gearbox with chain final drive, a manual |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
 ## btr_4 - BTR-4 (wheeled)
@@ -2229,18 +2253,16 @@ is a labelled zero, not a refusal.
 
 | Runtime field | Grade | Value | Source | Locator | State |
 |---|---|---|---|---|---|
-| `operating_weight_kg` | claimed | 21000 | `wikipedia_maxxpro` | Infobox, weight row, MaxxPro entry | weight published as 21 t, and the tonne taken as 1,000 kg |
-| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
-| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
-| `ground_clearance_mm` | claimed | 350 | `wikipedia_maxxpro` | Infobox, clearance row | ground clearance published as 14 in (0.35 m) |
-| `net_power_kw` | derived | 246.080958 | `wikipedia_maxxpro` | Infobox, engine power row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
-| `transmission_type` | claimed | automatic | `wikipedia_maxxpro` | Infobox, transmission row | transmission published as an Allison 3000 5-speed automatic |
+| `operating_weight_kg` | derived | 17168 | `tm_9_2355_106_10` | Table 1, Vehicle Weight, page 0002-30, row M1224 (without MEAP kit), Curb Weight 37,850 lbs | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 395.0 | `tm_9_2355_106_10` | Table 16, Tires, page 0002-33, row Size 395/85R20 | derived from the size code 395/85R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1179.5 | `tm_9_2355_106_10` | Table 16, Tires, page 0002-33, row Size 395/85R20 | derived from the size code 395/85R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 260 | `tm_9_2355_106_10` | Table 2, Dimensions, page 0002-30, rows Front Axle Housing 13.0 in, Belly Pan Armor 15.0 in, Rear Axle Housing 10.25 in | the lowest point, the rear axle housing, published as 10.25 in and converted with 1 in = 25.4 mm; the same table publishes 13.0 in (330 mm) at the front axle housing and 15.0 in (381 mm) at the belly pan armour |
+| `net_power_kw` | derived | 246.080958 | `tm_9_2355_106_10` | Table 6, Engine Configuration, page 0002-32, row Maximum Brake Horsepower (at 2,000 rpm) 330 hp | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | documented | automatic | `tm_9_2355_106_10` | Table 10, Transmission, page 0002-32, Make Allison, Model 3000SP five-speed, Type Electronic Control System | transmission published as an Allison 3000SP five-speed with an electronic control system, an automatic |
 | `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
 
 | Absent field | Next source class |
 |---|---|
-| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
-| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
 ## merkava_mk4 - Merkava Mk 4 (tracked)
@@ -2390,6 +2412,31 @@ is a labelled zero, not a refusal.
 | `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
+## peugeot_p4 - Peugeot P4 (wheeled)
+
+- Capture: `data/vehicle/catalogue/peugeot_p4.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 1750 | `peugeot_p4` | Infobox automobile, weight row, 1,750 kg | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | derived | 58.16459 | `peugeot_p4` | Infobox automobile, engine_power row, 79 PS (58 kW; 78 hp) | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
 ## piranha_v - Piranha V (wheeled)
 
 - Capture: `data/vehicle/catalogue/wikipedia_piranha_v.json`
@@ -2522,20 +2569,16 @@ is a labelled zero, not a refusal.
 
 | Runtime field | Grade | Value | Source | Locator | State |
 |---|---|---|---|---|---|
-| `operating_weight_kg` | claimed | 7280 | `wikipedia_rg_31` | Infobox, weight row | weight published as 7.28 t; the tonne taken as 1,000 kg |
-| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
-| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
-| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
-| `net_power_kw` | derived | 91.721084 | `wikipedia_rg_31` | Infobox, engine row, option 1 entry | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
-| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `operating_weight_kg` | claimed | 14000 | `gdls_rg31_mk5_datasheet` | specification block, page 1, row Unburdened Mass - 14t | unburdened mass published as 14 t; the tonne taken as 1,000 kg; no payload; the same block publishes a gross vehicle weight of up to 20 t |
+| `tyre_width_mm` | derived | 395.0 | `gdls_rg31_mk5_datasheet` | specification block, page 1, row Tires - Michelin 395/85R20 XZL with RFIs | derived from the size code 395/85R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 1179.5 | `gdls_rg31_mk5_datasheet` | specification block, page 1, row Tires - Michelin 395/85R20 XZL with RFIs | derived from the size code 395/85R20 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | claimed | 492 | `gdls_rg31_mk5_datasheet` | specification block, page 1, row Ground Clearance - 492mm | ground clearance published as 492 mm, as published |
+| `net_power_kw` | derived | 223.709962 | `gdls_rg31_mk5_datasheet` | specification block, page 1, row Engine - Cummins QSB - 300 hp @ 2500 rpm | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
+| `transmission_type` | claimed | automatic | `gdls_rg31_mk5_datasheet` | specification block, page 1, row Transmission - Allison 3000 SP | transmission published as an Allison 3000 SP, an automatic |
 | `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
 
 | Absent field | Next source class |
 |---|---|
-| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
-| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
-| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
-| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
 ## rooikat - Rooikat (wheeled)

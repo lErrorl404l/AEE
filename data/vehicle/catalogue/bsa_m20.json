@@ -1,0 +1,66 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the BSA M20. Every value rests on the held tier-5 English Wikipedia article. The article is a secondary compilation and every value is grade claimed.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "bsa_m20",
+      "canonical_name": "BSA M20",
+      "maker": "Birmingham Small Arms Company",
+      "model": "M20",
+      "variant": "British military motorcycle (500 cc side-valve)",
+      "variant_id": "bsa_m20",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United Kingdom",
+      "era": "world war ii",
+      "aliases": [
+        "bsa m20",
+        "bsa m21"
+      ],
+      "keywords": [
+        "british",
+        "wwii",
+        "500cc",
+        "side valve",
+        "wm20",
+        "despatch rider"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "curb_weight_kg": {
+          "value": 167,
+          "unit": "kg",
+          "source": "bsa_m20",
+          "locator": "Infobox Motorcycle, dry_weight row, 369 lb",
+          "state": "dry weight published as 369 lb; converted with 1 lb = 0.45359237 kg and rounded to the nearest kilogram; dry state, no fuel and no oil",
+          "grade": "claimed"
+        },
+        "engine_displacement_l": {
+          "value": 0.496,
+          "unit": "L",
+          "source": "bsa_m20",
+          "locator": "Infobox Motorcycle, engine row, 496 cc single cylinder side valve four stroke",
+          "state": "engine displacement published as 496 cc; converted with 1 L = 1,000 cc",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 13,
+          "unit": "hp",
+          "source": "bsa_m20",
+          "locator": "Infobox Motorcycle, power row, 13 bhp @ 4,200 rpm",
+          "state": "power published as 13 bhp at 4,200 rpm, with no net basis",
+          "grade": "claimed"
+        },
+        "transmission_type": {
+          "value": "manual",
+          "unit": "enum",
+          "source": "bsa_m20",
+          "locator": "Infobox Motorcycle, transmission row, 4 Speed / chain",
+          "state": "transmission published as a four-speed gearbox with chain final drive, a manual",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}
