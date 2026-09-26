@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-09-26",
-  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the Ural-4320. Every value is grade claimed and the registry marks primary_held false. The article publishes the gross vehicle weight rating, the dimensions, the engine, the manual transmission and the top speed. It publishes no kerb or operating weight and no ground clearance.",
+  "note": "Catalogue capture uplifted to the held tier-2 Ural-4320-02 service manual, seventh edition, 1992. The manual publishes the payload, the curb and gross mass, the road speed, the turning radius, the fording depth, the maximum gradient, the range, the engine and its ratings, the manual gearbox and its gear count, the final-drive ratio, the tyre size code and the tyre pressure at grade documented. It publishes no overall length, width or height in the held text pages, so those three fields are retained from the tier-5 English Wikipedia article at grade claimed. The manual covers the -02 family; the figures recorded name that variant.",
   "sources": [],
   "entries": [
     {
@@ -28,13 +28,141 @@
       ],
       "runtime_ready": false,
       "values": {
-        "gross_weight_kg": {
-          "value": 15300,
+        "payload_kg": {
+          "value": 5000,
           "unit": "kg",
-          "source": "wikipedia_ural_4320",
-          "locator": "Specifications table, GVWR row, Ural-4320 column",
-          "state": "gross vehicle weight rating published as 15,300 kg; the same row publishes 14,975 kg for the Ural-43202",
-          "grade": "claimed"
+          "source": "ural_4320_02_service_manual",
+          "locator": "SPECIFICATIONS, General table, Payload row, Ural-4320-02 column, printed page 8",
+          "state": "payload published as 5,000 kg for the Ural-4320-02",
+          "grade": "documented"
+        },
+        "curb_weight_kg": {
+          "value": 8445,
+          "unit": "kg",
+          "source": "ural_4320_02_service_manual",
+          "locator": "SPECIFICATIONS, General table, Mass of fully equipped truck row, Ural-4320-02 column, printed page 8",
+          "state": "mass of the fully equipped truck published as 8,445 kg for the Ural-4320-02 with winch",
+          "grade": "documented"
+        },
+        "gross_weight_kg": {
+          "value": 13745,
+          "unit": "kg",
+          "source": "ural_4320_02_service_manual",
+          "locator": "SPECIFICATIONS, General table, Truck total mass row, Ural-4320-02 column, printed page 8",
+          "state": "truck total mass published as 13,745 kg for the Ural-4320-02 with winch",
+          "grade": "documented"
+        },
+        "max_speed_kmh": {
+          "value": 85,
+          "unit": "km/h",
+          "source": "ural_4320_02_service_manual",
+          "locator": "SPECIFICATIONS, General table, Maximum travelling speed in upshift row, truck total mass, printed page 8",
+          "state": "maximum travelling speed published as 85 km/h at the truck total mass",
+          "grade": "documented"
+        },
+        "turning_radius_m": {
+          "value": 10.8,
+          "unit": "m",
+          "source": "ural_4320_02_service_manual",
+          "locator": "SPECIFICATIONS, General table, Minimum turning radius row, printed page 8",
+          "state": "minimum turning radius published as 10.8 m",
+          "grade": "documented"
+        },
+        "fording_depth_mm": {
+          "value": 1700,
+          "unit": "mm",
+          "source": "ural_4320_02_service_manual",
+          "locator": "SPECIFICATIONS, General table, Obstacles cleared, hard-bottom ford row, Ural-4320-02 column, printed page 8",
+          "state": "hard-bottom ford published as 1.7 m for the Ural-4320-02",
+          "grade": "documented"
+        },
+        "max_gradient_deg": {
+          "value": 31,
+          "unit": "deg",
+          "source": "ural_4320_02_service_manual",
+          "locator": "SPECIFICATIONS, General table, Maximum upgrade angle row, truck total mass, Ural-4320-02 column, printed page 8",
+          "state": "maximum upgrade angle published as 60 percent (31 deg) at the truck total mass",
+          "grade": "documented"
+        },
+        "range_km": {
+          "value": 893,
+          "unit": "km",
+          "source": "ural_4320_02_service_manual",
+          "locator": "SPECIFICATIONS, General table, Fuel distance row (fuel-consumption basis), single truck, printed page 8",
+          "state": "fuel distance published as 893 km for the single truck on the manual's fuel-consumption basis",
+          "grade": "documented"
+        },
+        "engine_model": {
+          "value": "KamAZ-740.10 V8 diesel",
+          "unit": "text",
+          "source": "ural_4320_02_service_manual",
+          "locator": "SPECIFICATIONS, Engine table, Model and type row, printed page 8",
+          "state": "engine published as a KamAZ-740.10 third-outfit four-stroke V8 diesel, as published",
+          "grade": "documented"
+        },
+        "engine_displacement_l": {
+          "value": 10.85,
+          "unit": "L",
+          "source": "ural_4320_02_service_manual",
+          "locator": "SPECIFICATIONS, Engine table, Cylinder displacement row, printed page 8",
+          "state": "engine swept volume published as 10.85 litres",
+          "grade": "documented"
+        },
+        "published_power_hp": {
+          "value": 210,
+          "unit": "hp",
+          "source": "ural_4320_02_service_manual",
+          "locator": "SPECIFICATIONS, Engine table, Rated output, gross row, printed page 8",
+          "state": "rated output published as 154 kW (210 hp), gross; maximum rating, no net basis",
+          "grade": "documented"
+        },
+        "torque_nm": {
+          "value": 667,
+          "unit": "N m",
+          "source": "ural_4320_02_service_manual",
+          "locator": "SPECIFICATIONS, Engine table, Maximum torque, gross row, printed page 8",
+          "state": "maximum torque published as 667 N m (68 kgf m), gross",
+          "grade": "documented"
+        },
+        "transmission_type": {
+          "value": "manual",
+          "unit": "enum",
+          "source": "ural_4320_02_service_manual",
+          "locator": "SPECIFICATIONS, Transmission table, Gearbox row, printed page 9",
+          "state": "gearbox published as a mechanical KamAZ-141 five-speed with synchroniser units, a manual",
+          "grade": "documented"
+        },
+        "gears": {
+          "value": 5,
+          "unit": "count",
+          "source": "ural_4320_02_service_manual",
+          "locator": "SPECIFICATIONS, Transmission table, Gearbox row, printed page 9",
+          "state": "gearbox published as a five-speed with a reverse ratio",
+          "grade": "documented"
+        },
+        "final_drive": {
+          "value": 7.32,
+          "unit": "ratio",
+          "source": "ural_4320_02_service_manual",
+          "locator": "SPECIFICATIONS, Transmission table, Final drive transmission ratios row, Ural-4320-02 column, printed page 9",
+          "state": "final-drive ratio published as 7.32 for the Ural-4320-02",
+          "grade": "documented"
+        },
+        "tyre_size_text": {
+          "value": "14.00-20",
+          "unit": "text",
+          "source": "ural_4320_02_service_manual",
+          "locator": "SPECIFICATIONS, Wheels and Tyres table, Tyres row, Ural-4320-02 column, printed page 9",
+          "state": "tyre size published as 370-508 (14.00-20) with controllable pressure",
+          "grade": "documented"
+        },
+        "tyre_pressure_kpa": {
+          "value": 320,
+          "unit": "kPa",
+          "source": "ural_4320_02_service_manual",
+          "locator": "SPECIFICATIONS, Wheels and Tyres table, Air pressure in tyres row, Ural-4320-02 column, printed page 9",
+          "state": "tyre air pressure published as 320-50 kPa (32-0.5 kgf/cm2) depending on operating conditions; nominal 320 kPa",
+          "grade": "documented"
         },
         "length_mm": {
           "value": 7366,
@@ -58,38 +186,6 @@
           "source": "wikipedia_ural_4320",
           "locator": "Infobox, height row",
           "state": "height published as 2,715 mm; the same row publishes 3,005 mm with the tent",
-          "grade": "claimed"
-        },
-        "engine_model": {
-          "value": "YaMZ-236M2 V6 turbo diesel or YaMZ-238M2 V8 diesel",
-          "unit": "text",
-          "source": "wikipedia_ural_4320",
-          "locator": "Infobox, engine row",
-          "state": "engine published as an 11.2 L YaMZ-236M2 V6 turbo diesel or a 14.9 L YaMZ-238M2 V8 diesel, as published",
-          "grade": "claimed"
-        },
-        "transmission_type": {
-          "value": "manual",
-          "unit": "enum",
-          "source": "wikipedia_ural_4320",
-          "locator": "Infobox, transmission row",
-          "state": "transmission published as a 5-speed manual",
-          "grade": "claimed"
-        },
-        "gears": {
-          "value": 5,
-          "unit": "count",
-          "source": "wikipedia_ural_4320",
-          "locator": "Infobox, transmission row",
-          "state": "5-speed manual published with five forward gears",
-          "grade": "claimed"
-        },
-        "max_speed_kmh": {
-          "value": 82,
-          "unit": "km/h",
-          "source": "wikipedia_ural_4320",
-          "locator": "Specifications table, top speed row, Ural-4320 column",
-          "state": "top speed published as 82 km/h; the same row publishes 75 km/h for the Ural-43202",
           "grade": "claimed"
         }
       }

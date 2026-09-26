@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-09-26",
-  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the Anoa. Every value is grade claimed and the registry marks primary_held false. The article publishes the weight, the dimensions, the ground clearance, the engine, the automatic transmission, the road speed and the range.",
+  "note": "Catalogue capture uplifted to the held tier-4 PT Pindad Anoa 6x6 product page for the combat weight, the dimensions, the power, the torque, the automatic transmission, the road speed and the range, all grade claimed from the maker page. The page publishes no engine model, no ground clearance and no gear count, so those three fields are retained from the tier-5 English Wikipedia article at grade claimed.",
   "sources": [],
   "entries": [
     {
@@ -27,35 +27,75 @@
       "runtime_ready": false,
       "values": {
         "operating_weight_kg": {
-          "value": 12500,
+          "value": 14500,
           "unit": "kg",
-          "source": "wikipedia_anoa",
-          "locator": "Infobox, weight row",
-          "state": "weight published as 12.5 tonnes with 14.5 tons combat; recorded at 12.5 tonnes and the tonne taken as 1,000 kg",
+          "source": "pindad_anoa_6x6_product_page",
+          "locator": "Specification table, Combat Weight row",
+          "state": "combat weight published as 14.5 tonnes; the tonne taken as 1,000 kg",
           "grade": "claimed"
         },
         "length_mm": {
           "value": 6000,
           "unit": "mm",
-          "source": "wikipedia_anoa",
-          "locator": "Infobox, length row",
-          "state": "length published as 6 m",
+          "source": "pindad_anoa_6x6_product_page",
+          "locator": "Specification table, Dimension (LxWxH) row",
+          "state": "overall dimension published as 6 x 2.5 x 2.2 m; length 6 m",
           "grade": "claimed"
         },
         "width_mm": {
           "value": 2500,
           "unit": "mm",
-          "source": "wikipedia_anoa",
-          "locator": "Infobox, width row",
-          "state": "width published as 2.5 m",
+          "source": "pindad_anoa_6x6_product_page",
+          "locator": "Specification table, Dimension (LxWxH) row",
+          "state": "overall dimension published as 6 x 2.5 x 2.2 m; width 2.5 m",
           "grade": "claimed"
         },
         "height_mm": {
-          "value": 2170,
+          "value": 2200,
           "unit": "mm",
-          "source": "wikipedia_anoa",
-          "locator": "Infobox, height row",
-          "state": "height published as 2.17 m hull top",
+          "source": "pindad_anoa_6x6_product_page",
+          "locator": "Specification table, Dimension (LxWxH) row",
+          "state": "overall dimension published as 6 x 2.5 x 2.2 m; height 2.2 m",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 320,
+          "unit": "hp",
+          "source": "pindad_anoa_6x6_product_page",
+          "locator": "Specification table, Power row",
+          "state": "power published as 320 HP, maximum rating with no net basis",
+          "grade": "claimed"
+        },
+        "torque_nm": {
+          "value": 1200,
+          "unit": "N m",
+          "source": "pindad_anoa_6x6_product_page",
+          "locator": "Specification table, Torque row",
+          "state": "torque published as 1,200 Nm with no speed stated",
+          "grade": "claimed"
+        },
+        "transmission_type": {
+          "value": "automatic",
+          "unit": "enum",
+          "source": "pindad_anoa_6x6_product_page",
+          "locator": "Specification table, Transmission row",
+          "state": "transmission published as automatic",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 80,
+          "unit": "km/h",
+          "source": "pindad_anoa_6x6_product_page",
+          "locator": "Specification table, Max Speed row",
+          "state": "maximum speed published as 80 km/h in the specification table; the page introduction states 100 km/h",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 600,
+          "unit": "km",
+          "source": "pindad_anoa_6x6_product_page",
+          "locator": "Specification table, Cruising Range row",
+          "state": "cruising range published as 600 km",
           "grade": "claimed"
         },
         "ground_clearance_mm": {
@@ -74,36 +114,12 @@
           "state": "engine published as a Renault MIDR 062045 inline-6 turbo-charged diesel, as published",
           "grade": "claimed"
         },
-        "transmission_type": {
-          "value": "automatic",
-          "unit": "enum",
-          "source": "wikipedia_anoa",
-          "locator": "Infobox, transmission row",
-          "state": "transmission published as an automatic ZF S6HP502",
-          "grade": "claimed"
-        },
         "gears": {
           "value": 6,
           "unit": "count",
           "source": "wikipedia_anoa",
           "locator": "Infobox, transmission row",
           "state": "ZF S6HP502 published with 6 forward and 1 reverse gear",
-          "grade": "claimed"
-        },
-        "max_speed_kmh": {
-          "value": 80,
-          "unit": "km/h",
-          "source": "wikipedia_anoa",
-          "locator": "Infobox, speed row",
-          "state": "speed published as about 80 km/h, a safety speed recommendation",
-          "grade": "claimed"
-        },
-        "range_km": {
-          "value": 600,
-          "unit": "km",
-          "source": "wikipedia_anoa",
-          "locator": "Infobox, vehicle range row",
-          "state": "range published as 600 km",
           "grade": "claimed"
         }
       }

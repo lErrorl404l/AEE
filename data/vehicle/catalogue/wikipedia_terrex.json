@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-09-26",
-  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the Terrex ICV. Every value is grade claimed and the registry marks primary_held false. The article publishes the weight, the dimensions, the engine and its rating, the road speed and the range. It publishes no ground clearance.",
+  "note": "Catalogue capture uplifted to the held tier-4 ST Engineering TERREX family brochure. Every value for the TERREX 1 column is grade claimed from the maker brochure, which publishes the gross vehicle weight, the payload, the dimensions, the engine, the power, the gearbox, the gear count, the road speed, the range, the approach and departure angles and the fording depth. The tier-5 English Wikipedia operating weight is replaced by the maker gross vehicle weight, from which the runtime derives the operating weight. The brochure publishes no tyre size and no ground clearance.",
   "sources": [],
   "entries": [
     {
@@ -26,68 +26,116 @@
       ],
       "runtime_ready": false,
       "values": {
-        "operating_weight_kg": {
+        "gross_weight_kg": {
           "value": 24000,
           "unit": "kg",
-          "source": "wikipedia_terrex",
-          "locator": "Infobox, weight row",
-          "state": "weight published as 24 t; the tonne taken as 1,000 kg",
+          "source": "stengg_terrex_family_datasheet",
+          "locator": "TECHNICAL SPECIFICATIONS, Weight row, Gross Vehicle Weight, TERREX 1 column, page 2",
+          "state": "gross vehicle weight published as 24,000 kg for the TERREX 1 variant",
+          "grade": "claimed"
+        },
+        "payload_kg": {
+          "value": 8000,
+          "unit": "kg",
+          "source": "stengg_terrex_family_datasheet",
+          "locator": "TECHNICAL SPECIFICATIONS, Weight row, Payload, TERREX 1 column, page 2",
+          "state": "payload published as up to 8,000 kg for the TERREX 1 variant",
           "grade": "claimed"
         },
         "length_mm": {
           "value": 7800,
           "unit": "mm",
-          "source": "wikipedia_terrex",
-          "locator": "Infobox, length row",
+          "source": "stengg_terrex_family_datasheet",
+          "locator": "TECHNICAL SPECIFICATIONS, Dimensions row, Length, TERREX 1 column, page 2",
           "state": "length published as 7.8 m",
           "grade": "claimed"
         },
         "width_mm": {
           "value": 3000,
           "unit": "mm",
-          "source": "wikipedia_terrex",
-          "locator": "Infobox, width row",
+          "source": "stengg_terrex_family_datasheet",
+          "locator": "TECHNICAL SPECIFICATIONS, Dimensions row, Width, TERREX 1 column, page 2",
           "state": "width published as 3 m",
           "grade": "claimed"
         },
         "height_mm": {
           "value": 2500,
           "unit": "mm",
-          "source": "wikipedia_terrex",
-          "locator": "Infobox, height row",
-          "state": "height published as 2.5 m",
+          "source": "stengg_terrex_family_datasheet",
+          "locator": "TECHNICAL SPECIFICATIONS, Dimensions row, Height (Hull), TERREX 1 column, page 2",
+          "state": "height published as 2.5 m, hull",
           "grade": "claimed"
         },
         "engine_model": {
-          "value": "Caterpillar C9 inline-six diesel",
+          "value": "Caterpillar C9",
           "unit": "text",
-          "source": "wikipedia_terrex",
-          "locator": "Infobox, engine row",
-          "state": "engine published as a Caterpillar C9 inline-six diesel, as published",
+          "source": "stengg_terrex_family_datasheet",
+          "locator": "TECHNICAL SPECIFICATIONS, Mobility Systems row, Engine, TERREX 1 column, page 2",
+          "state": "engine published as a Caterpillar C9, as published",
           "grade": "claimed"
         },
         "published_power_hp": {
-          "value": 400,
+          "value": 450,
           "unit": "hp",
-          "source": "wikipedia_terrex",
-          "locator": "Infobox, engine power row",
-          "state": "engine power published as 400 hp, with no net basis",
+          "source": "stengg_terrex_family_datasheet",
+          "locator": "TECHNICAL SPECIFICATIONS, Mobility Systems row, Power Output, TERREX 1 column, page 2",
+          "state": "power output published as 450 HP, maximum rating with no net basis",
+          "grade": "claimed"
+        },
+        "transmission_type": {
+          "value": "automatic",
+          "unit": "enum",
+          "source": "stengg_terrex_family_datasheet",
+          "locator": "TECHNICAL SPECIFICATIONS, Mobility Systems row, Gearbox, TERREX 1 column, page 2",
+          "state": "gearbox published as an Allison 4500SP automatic",
+          "grade": "claimed"
+        },
+        "gears": {
+          "value": 6,
+          "unit": "count",
+          "source": "stengg_terrex_family_datasheet",
+          "locator": "TECHNICAL SPECIFICATIONS, Mobility Systems row, Gears, TERREX 1 column, page 2",
+          "state": "gears published as 6 forward and 1 reverse",
           "grade": "claimed"
         },
         "max_speed_kmh": {
-          "value": 110,
+          "value": 100,
           "unit": "km/h",
-          "source": "wikipedia_terrex",
-          "locator": "Infobox, speed row, on road entry",
-          "state": "road speed published as 110 km/h; the water speed is published as 10 km/h",
+          "source": "stengg_terrex_family_datasheet",
+          "locator": "TECHNICAL SPECIFICATIONS, Mobility Performance row, Maximum Speed, TERREX 1 column, page 2",
+          "state": "maximum speed published as greater than 100 km/h; recorded at the stated bound 100 km/h",
           "grade": "claimed"
         },
         "range_km": {
-          "value": 800,
+          "value": 600,
           "unit": "km",
-          "source": "wikipedia_terrex",
-          "locator": "Infobox, vehicle range row",
-          "state": "range published as 800 km",
+          "source": "stengg_terrex_family_datasheet",
+          "locator": "TECHNICAL SPECIFICATIONS, Mobility Performance row, Road Range, TERREX 1 column, page 2",
+          "state": "road range published as greater than 600 km; recorded at the stated bound 600 km",
+          "grade": "claimed"
+        },
+        "approach_angle_deg": {
+          "value": 40,
+          "unit": "deg",
+          "source": "stengg_terrex_family_datasheet",
+          "locator": "TECHNICAL SPECIFICATIONS, Mobility Performance row, Approach Angle, TERREX 1 column, page 2",
+          "state": "approach angle published as 40 deg, as published",
+          "grade": "claimed"
+        },
+        "departure_angle_deg": {
+          "value": 40,
+          "unit": "deg",
+          "source": "stengg_terrex_family_datasheet",
+          "locator": "TECHNICAL SPECIFICATIONS, Mobility Performance row, Departure Angle, TERREX 1 column, page 2",
+          "state": "departure angle published as 40 deg, as published",
+          "grade": "claimed"
+        },
+        "fording_depth_mm": {
+          "value": 1800,
+          "unit": "mm",
+          "source": "stengg_terrex_family_datasheet",
+          "locator": "TECHNICAL SPECIFICATIONS, Mobility Performance row, Fording Depth, TERREX 1 column, page 2",
+          "state": "fording depth published as 1.8 m, no kit stated",
           "grade": "claimed"
         }
       }
