@@ -30,6 +30,7 @@ def table():
     # arm-type twist scopes (issue: the pistol and rifle test barrels), so
     # the pattern names every field rather than a fixed six.
     m = re.search(r"private _TABLE = \[(.*?)\n\];", SQF, re.S)
+    assert m is not None
     rows = re.findall(
         r'\["([^"]+)", "([^"]*)", '
         r"([0-9.]+), ([0-9.]+), ([0-9.]+), ([0-9.]+), ([0-9.]+), ([0-9.]+)\]",
@@ -64,7 +65,7 @@ class TestRuntimeResolver(unittest.TestCase):
             ("B_762x51_Ball", "762x51_nato"),
             ("MSS_300NM_225ELDM", "300_norma_mag"),
             ("CUP_10Rnd_9x19", "9x19"),
-            ("B_127x108_Ball", "12_7_x_108"),
+            ("B_127x108_Ball", "127x108"),
         ]:
             self.assertEqual(resolve(query), resolve(query))  # determinism
             hit = resolve(query)

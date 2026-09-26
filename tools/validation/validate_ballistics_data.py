@@ -10,9 +10,12 @@ Run:  python3 tools/validation/validate_ballistics_data.py
 Exit: 0 when the database obeys the contract, 1 when it does not.
 """
 
+import hashlib
 import json
+import re
 import sys
 from pathlib import Path
+from urllib.parse import urlparse
 
 DATA = Path(__file__).parents[2] / "data" / "ballistics"
 
@@ -100,6 +103,89 @@ def check_sources(sources, errors):
             if not s.get(field):
                 errors.append(f"source {sid}: {field} is required")
     return {s["source_id"]: s for s in sources}
+
+
+def entry_source_ids(records):
+    """Return every source id a value entry cites.
+
+    The entry source is the source field of a value, its corroborating
+    sources, and the classification source of a record.
+    """
+    ids = set()
+    for record in records:
+        for entry in (record.get("values") or {}).values():
+            if not isinstance(entry, dict):
+                continue
+            if entry.get("source"):
+                ids.add(entry["source"])
+            for c in entry.get("corroborated_by") or []:
+                ids.add(c)
+        cls = record.get("classification")
+        if isinstance(cls, dict) and cls.get("classification_source"):
+            ids.add(cls["classification_source"])
+    return ids
+
+
+def held_filename(source):
+    """Return the held file name for a source, or None when none is named.
+
+    A source names its held file with `held_file`. Without that field the
+    file is the source id plus the url suffix, the rule the vehicle register
+    uses. The held file name need not equal the source id.
+    """
+    explicit = source.get("held_file")
+    if isinstance(explicit, str) and explicit:
+        return explicit
+    suffix = Path(urlparse(str(source.get("url") or "")).path).suffix.lower()
+    if not re.fullmatch(r"\.[A-Za-z0-9]{1,8}", suffix):
+        return None
+    return f"{source['source_id']}{suffix}"
+
+
+def sha256_file(path):
+    """Return the SHA-256 digest of the held bytes."""
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for block in iter(lambda: handle.read(1 << 20), b""):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def check_held_sources(sources, entry_ids, sources_dir, errors):
+    """Every held tier 1 to 4 entry source must record a held sha256.
+
+    A source is held only when its bytes are locatable and their digest is
+    recorded as `archive_hash` or `held_pdf_sha256`. Bytes that are not
+    vendored are tolerated, the same rule as the vehicle gate, so a fresh
+    clone passes. The recorded digest is verified against the bytes whenever
+    the bytes are present.
+    """
+    for source in sources:
+        sid = source.get("source_id", "<none>")
+        if source.get("tier") not in ENTRY_TIERS:
+            continue
+        if source.get("primary_held") is not True:
+            continue
+        if sid not in entry_ids:
+            continue
+        name = held_filename(source)
+        if name is None:
+            continue
+        path = sources_dir / name
+        if not path.exists():
+            continue
+        recorded = source.get("archive_hash") or source.get("held_pdf_sha256")
+        if not recorded:
+            errors.append(f"source {sid}: primary_held is true but no held sha256")
+            continue
+        actual = sha256_file(path)
+        if actual != source.get("archive_hash") and actual != source.get(
+            "held_pdf_sha256"
+        ):
+            errors.append(
+                f"source {sid}: held file {name} digest {actual} does not match "
+                f"the recorded digest"
+            )
 
 
 def check_value(kind, record_id, field, entry, by_id, errors):
@@ -252,8 +338,12 @@ def main():
     errors = []
     sources = load("sources.json")
     by_id = check_sources(sources, errors)
+    entry_ids = set()
     for kind in ("cartridges", "projectiles", "loads", "weapons"):
-        check_records(kind, load(f"{kind}.json"), by_id, errors)
+        records = load(f"{kind}.json")
+        check_records(kind, records, by_id, errors)
+        entry_ids |= entry_source_ids(records)
+    check_held_sources(sources, entry_ids, DATA / "sources", errors)
     load("conflicts.json")
     check_drag_models(errors)
     gaps_path = DATA / "sources" / "chambering_gaps.json"

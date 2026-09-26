@@ -264,8 +264,14 @@ private _TABLE = [
     ["lapua_S405", "762mm123grfmj", 7.9703, 7.8994, "G1:0.257:claimed", 0],
     ["lapua_S496", "65mm100grfmjcuttingedge", 6.4799, 6.7056, "G1:0.25:claimed", 0],
     ["lapua_S569", "569mm55grfmj", 3.5639, 5.6896, "G1:0.255:claimed", 0],
+    ["m55a2_tp", "20mmtp|m55a2", 254.98, 20.0, "", 0],
+    ["m56a3_hei", "20mmhei|m56a3|m56a4", 256.93, 20.0, "", 0],
+    ["m792_hei", "25mmheit|m792", 503.49, 25.0, "", 0],
     ["m829_apfsds", "120mmapfsds|m829|m829apfsdst", 0, 0, "", 0],
     ["m830_heat", "120mmheat|m830|m830heatmpt", 13607.77, 120.0, "", 0],
+    ["m919_apfsds", "25mmapfsdst|m919", 0, 0, "", 0],
+    ["mk239_tp_t", "30x173tpt|mk239", 365.0, 30.0, "", 0],
+    ["mk258_apfsds", "30x173apfsdst|mk258", 230.0, 0, "", 0],
     ["nosler_16314", "6mm85grspitzerpartition", 5.5079, 6.1722, "G1:0.315:claimed", 24.13],
     ["nosler_16315", "6mm95grspitzerpartition", 6.1559, 6.1722, "G1:0.365:claimed|G7:0.177:corroborated", 28.448],
     ["nosler_16316", "22cal60grspitzerpartition", 3.8879, 5.6896, "G1:0.228:claimed", 21.717],
@@ -720,7 +726,8 @@ private _TABLE = [
     ["sierra_9924", "9mm124grjhpsigvcrown", 8.0351, 9.017, "G1:0.12:claimed", 0],
     ["sierra_9925", "9mm125grjhpsigvcrown", 8.0999, 9.017, "G1:0.122:claimed", 0],
     ["sierra_9947", "9mm147grjhpsigvcrown", 9.5254, 9.017, "G1:0.162:claimed", 0],
-    ["sierra_9990", "9mm90grjhpsigvcrown", 5.8319, 9.017, "G1:0.094:claimed", 0]
+    ["sierra_9990", "9mm90grjhpsigvcrown", 5.8319, 9.017, "G1:0.094:claimed", 0],
+    ["yugo_127x108_ap", "127x108mmap|m93ap", 48.2, 12.7, "", 64.5]
 ];
 
 private _index = missionNamespace getVariable [QGVAR(projectileIndex), nil];
