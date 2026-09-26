@@ -19,6 +19,7 @@ Verifies fnc_calculateBallisticDrag.sqf two ways:
 Run: python3 -m unittest tools/tests/test_ballistic_drag.py
 """
 
+import json
 import math
 import re
 import unittest
@@ -449,9 +450,6 @@ class TestDragTablesMatchSource(unittest.TestCase):
     """
 
     def test_every_table_matches_the_source(self):
-        import json
-        import re
-
         sqf = (REPO / "addons/ballistics/functions/fnc_getDragTables.sqf").read_text(
             encoding="utf-8"
         )
@@ -483,6 +481,90 @@ class TestDragTablesMatchSource(unittest.TestCase):
                 )
                 checked += 1
         self.assertGreater(checked, 400)
+
+
+STABILITY_SQF = (
+    REPO / "addons/ballistics/functions/fnc_calculateStability.sqf"
+).read_text(encoding="utf-8")
+DRAG_SQF = (
+    REPO / "addons/ballistics/functions/fnc_calculateBallisticDrag.sqf"
+).read_text(encoding="utf-8")
+
+
+def stability_factor(
+    length_m, mass_g, diameter_m, twist_m, velocity=853.0, altitude_ft=0.0
+):
+    """Mirror of fnc_calculateStability.sqf (the Miller twist rule)."""
+    if length_m <= 0 or mass_g <= 0 or diameter_m <= 0:
+        return 0.0
+    if twist_m <= 0:
+        return -1.0
+    mass_gr = mass_g / 0.06479891
+    diameter_in = diameter_m / 0.0254
+    length_in = length_m / 0.0254
+    twist_in = twist_m / 0.0254
+    calibers = length_in / diameter_in
+    factor = (30 * mass_gr) / (twist_in**2 * length_in * (1 + calibers**2))
+    factor *= (velocity / 853.0) ** (1 / 3)
+    factor *= math.exp(3.158e-5 * altitude_ft)
+    return factor
+
+
+def drag_model_name(model):
+    """Mirror of the numeric-to-name mapping in fnc_calculateBallisticDrag."""
+    if isinstance(model, str):
+        return model.upper()
+    code = round(model)
+    return "APFSDS" if code == 14 else f"G{code}"
+
+
+class TestFinStabilisedPath(unittest.TestCase):
+    """The twist-0 sentinel branch and the APFSDS table lookup.
+
+    The fin-stabilised path is exercised here directly. The held 120 mm
+    rounds carry no projectile geometry, so resolveShot does not reach
+    the branch for them, and this test is what keeps the branch alive.
+    """
+
+    def test_twist_zero_returns_sentinel(self):
+        # Twist 0 is a smoothbore: the Miller rule cannot apply and the
+        # function returns the documented FIN_STABILISED sentinel, -1.
+        self.assertEqual(stability_factor(0.5, 4.0, 0.00556, 0.0), -1.0)
+        self.assertIn("if (_twistM <= 0) exitWith { -1 };", STABILITY_SQF)
+
+    def test_missing_geometry_returns_zero(self):
+        # A round with no length, mass or diameter is not assessed at all.
+        self.assertEqual(stability_factor(0.0, 4.0, 0.00556, 0.0), 0.0)
+        self.assertEqual(stability_factor(0.5, 0.0, 0.00556, 0.0), 0.0)
+        self.assertEqual(stability_factor(0.5, 4.0, 0.0, 0.0), 0.0)
+
+    def test_rifled_round_assessed(self):
+        # A rifled round returns a finite positive factor, never the
+        # sentinel, because its twist is greater than zero.
+        factor = stability_factor(0.031, 4.0, 0.00556, 0.178, 948.0)
+        self.assertGreater(factor, 0.0)
+        self.assertLess(factor, 100.0)
+
+    def test_numeric_code_14_is_apfsds(self):
+        self.assertEqual(drag_model_name(14), "APFSDS")
+        self.assertEqual(drag_model_name("apfsds"), "APFSDS")
+        self.assertEqual(drag_model_name(7), "G7")
+        self.assertIn("_code == 14", DRAG_SQF)
+        self.assertIn('if (_code == 14) then { "APFSDS" }', DRAG_SQF)
+
+    def test_apfsds_table_present_as_placeholder(self):
+        # The APFSDS table is generated, so the model-code lookup resolves.
+        self.assertIn('["APFSDS", [', DRAG_TABLES)
+        data = json.loads(
+            (REPO / "data/ballistics/sources/drag_functions.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        # It is not presented as sourced: no source url, and it reuses a
+        # held curve that does have one.
+        self.assertNotIn("APFSDS", data["sources"])
+        self.assertEqual(data["placeholder_models"]["APFSDS"]["reuses"], "SCHAPIRO")
+        self.assertEqual(data["models"]["APFSDS"], data["models"]["SCHAPIRO"])
 
 
 if __name__ == "__main__":

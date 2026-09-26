@@ -5170,14 +5170,14 @@
   "date": "2026-09-22"
  },
  {
-  "entity": "mp7",
-  "field": "twist_m",
-  "value_a": 0.16,
-  "source_a": "hk_catalog_2009",
-  "value_b": 0.15,
-  "source_b": "batch_batch_final_02.json",
-  "resolution": "Kept the record from the earlier file.",
-  "rule_applied": "A disagreement is recorded, never averaged.",
-  "date": "2026-09-22"
+  "entity": "m830_heat",
+  "field": "mass_g",
+  "value_a": 13607.77,
+  "source_a": "tm43_0001_28",
+  "value_b": 13100,
+  "source_b": "tm43_0001_28",
+  "resolution": "Kept the pound value, 30 lb = 13607.77 g. The held source prints both '30 pounds' and '(13.1 kg)' for the same projectile on page 2-115. The two statements differ by 3.8 percent, which is outside the ADR-003 projectile-mass tolerance of 0.5 percent. The database keeps the pound figure and records the conflict. It never averages.",
+  "rule_applied": "ADR-003 rule 6: the database records conflicts, it never averages them.",
+  "date": "2026-09-26"
  }
 ]

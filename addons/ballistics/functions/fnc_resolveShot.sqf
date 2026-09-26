@@ -118,8 +118,12 @@ if (_mv <= 0 && _calibreMm > 0 && _massG > 0) then {
 };
 
 // ─── Stability and the drag at the muzzle ────────────────────────────────
+// The stability path follows the projectile. A rifled round uses the Miller
+// spin rule. A fin-stabilised round (a smoothbore sets the twist to 0) uses
+// the FIN_STABILISED sentinel from the same function, so neither path breaks
+// when the twist is 0.
 private _stability = 0;
-if (_lengthMm > 0 && _massG > 0 && _calibreMm > 0 && _twist > 0) then {
+if (_lengthMm > 0 && _massG > 0 && _calibreMm > 0) then {
     _stability = [_lengthMm / 1000, _massG, _calibreMm / 1000, _twist, _mv, 0]
         call FUNC(calculateStability);
 };

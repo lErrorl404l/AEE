@@ -26953,5 +26953,58 @@
     "grade": "claimed"
    }
   }
+ },
+ {
+  "projectile_id": "m829_apfsds",
+  "names": [
+   "M829",
+   "M829 APFSDS-T",
+   "120mm APFSDS"
+  ],
+  "manufacturer": "US Army",
+  "note": "Sub-calibre fin-stabilised long rod (depleted uranium penetrator, aluminium sabot). The held source states the complete round mass and the charge mass, not the subprojectile mass or the rod diameter, so those values are not entered. Because the subprojectile mass, diameter and length are absent, resolveShot does not reach the stability path for this round. Fin-stabilised, so the drag model label is APFSDS. No measured APFSDS curve is held: the APFSDS table reuses the SCHAPIRO curve as a placeholder, not G1 or G7.",
+  "values": {
+   "drag_model": {
+    "value": "APFSDS",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   }
+  }
+ },
+ {
+  "projectile_id": "m830_heat",
+  "names": [
+   "M830",
+   "M830 HEAT-MP-T",
+   "120mm HEAT"
+  ],
+  "manufacturer": "US Army",
+  "note": "Full-bore fin-stabilised high explosive antitank multipurpose projectile with tracer. The held source states the projectile mass and the complete round length. The round length is not the projectile length, so length_mm is not entered and resolveShot does not reach the stability path for this round. The source states the projectile mass as both 30 pounds and 13.1 kg; the 3.8 percent difference is recorded in conflicts.json.",
+  "values": {
+   "mass_g": {
+    "value": 13607.77,
+    "unit": "g",
+    "source": "tm43_0001_28",
+    "grade": "documented",
+    "formula": "30 lb x 453.59237 g/lb; source prints 13.1 kg"
+   },
+   "diameter_mm": {
+    "value": 120.0,
+    "unit": "mm",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "drag_model": {
+    "value": "G1",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "sectional_density": {
+    "value": 1.344,
+    "formula": "SD = (mass_gr / 7000) / (diameter_in ^ 2)",
+    "source": "tm43_0001_28",
+    "grade": "derived"
+   }
+  }
  }
 ]

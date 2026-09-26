@@ -30,30 +30,43 @@ SOURCE_TYPES = {"standard", "manual", "measurement", "manufacturer", "compilatio
 ENTRY_TIERS = {1, 2, 3, 4}
 
 # Field name to (minimum, maximum), exclusive of both ends where given.
+# The upper bounds cover the cannon class (105 mm to 125 mm tank guns and
+# 20 to 40 mm autocannon). A 120 mm round exceeds every small-arms bound, so
+# a cannon value must pass this widen before it can enter the database.
 RANGES = {
     "max_pressure_mpa": (0.1, 1000.0),
     "proof_pressure_mpa": (0.1, 1500.0),
     "standard_twist_m": (0.0, 2.0),  # 0 is a smoothbore
     "standard_twist_pistol_m": (0.0, 2.0),
     "standard_twist_rifle_m": (0.0, 2.0),
-    "calibre_mm": (0.1, 50.0),
-    "bore_mm": (0.1, 50.0),
-    "case_length_mm": (1.0, 200.0),
-    "reference_barrel_mm": (10.0, 2000.0),
+    "calibre_mm": (0.1, 200.0),  # cannon class
+    "bore_mm": (0.1, 200.0),  # cannon class
+    "case_length_mm": (1.0, 1500.0),  # cannon class
+    "reference_barrel_mm": (10.0, 8000.0),  # cannon class
     "grooves": (1, 24),
-    "mass_g": (0.1, 2000.0),
-    "length_mm": (0.1, 300.0),
-    "diameter_mm": (0.1, 50.0),
+    "mass_g": (0.1, 50000.0),  # cannon class
+    "length_mm": (0.1, 2000.0),  # cannon class
+    "diameter_mm": (0.1, 200.0),  # cannon class
     "bc_g1": (0.001, 2.0),
     "bc_g7": (0.001, 2.0),
     "sectional_density": (0.01, 2.0),
     "min_twist_m": (0.0, 2.0),
     "twist_m": (0.0, 2.0),
     "required_twist_m": (0.0, 2.0),
-    "service_velocity_ms": (1.0, 2000.0),
+    "service_velocity_ms": (1.0, 2500.0),  # cannon class
     "service_pressure_mpa": (0.1, 1000.0),
     "twist_in": (0.0, 100.0),
+    # Cannon schema fields (phase 1). The propellant or charge mass and the
+    # armour penetration reference, each with a source and a unit.
+    "charge_mass_g": (0.1, 50000.0),
+    "penetration_mm_rha": (0.1, 2000.0),
 }
+
+# Fields that carry a dimension, so a unit is required. The ballistic
+# coefficients and the sectional density are ratios and carry no unit.
+UNIT_REQUIRED = set(RANGES) - {"bc_g1", "bc_g7", "sectional_density"}
+
+DRAG_FUNCTIONS = DATA / "sources" / "drag_functions.json"
 
 ID_FIELD = {
     "cartridges": "cartridge_id",
@@ -145,6 +158,8 @@ def check_value(kind, record_id, field, entry, by_id, errors):
             errors.append(f"{where}: {value} outside the sane band {low} to {high}")
     if field in RANGES and not isinstance(value, (int, float)):
         errors.append(f"{where}: must be a number")
+    if field in UNIT_REQUIRED and not entry.get("unit"):
+        errors.append(f"{where}: unit is required")
 
 
 def check_records(kind, records, by_id, errors):
@@ -188,7 +203,6 @@ def check_references(weapons, cartridges, gaps, errors):
         return
     reported = set()
     for row in gaps.get("gaps", []):
-        raw = row["chambering"]
         for wid in row["weapons"]:
             reported.add(wid)
     for weapon in weapons:
@@ -199,6 +213,41 @@ def check_references(weapons, cartridges, gaps, errors):
         )
 
 
+def check_drag_models(errors):
+    """Every drag model name must map to a source that holds it.
+
+    A model maps directly through the sources table, or through a
+    placeholder that names the held model it reuses. An unsourced curve
+    is never presented as sourced.
+    """
+    data = json.loads(DRAG_FUNCTIONS.read_text(encoding="utf-8"))
+    models = data.get("models", {})
+    sources = data.get("sources", {})
+    placeholders = data.get("placeholder_models", {})
+    for model in models:
+        if model in sources:
+            if not sources[model]:
+                errors.append(f"drag model {model}: source url is empty")
+            continue
+        if model in placeholders:
+            entry = placeholders[model]
+            reuse = entry.get("reuses", "")
+            if reuse not in sources:
+                errors.append(
+                    f"drag model {model}: placeholder reuses unknown model {reuse}"
+                )
+            if not entry.get("note"):
+                errors.append(f"drag model {model}: placeholder needs a note")
+            continue
+        errors.append(f"drag model {model}: no source and no placeholder entry")
+    for model in placeholders:
+        if model not in models:
+            errors.append(f"placeholder {model}: no matching drag model")
+    for model in sources:
+        if model not in models:
+            errors.append(f"source {model}: no matching drag model")
+
+
 def main():
     errors = []
     sources = load("sources.json")
@@ -206,6 +255,7 @@ def main():
     for kind in ("cartridges", "projectiles", "loads", "weapons"):
         check_records(kind, load(f"{kind}.json"), by_id, errors)
     load("conflicts.json")
+    check_drag_models(errors)
     gaps_path = DATA / "sources" / "chambering_gaps.json"
     gaps = (
         json.loads(gaps_path.read_text(encoding="utf-8"))
