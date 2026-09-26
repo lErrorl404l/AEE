@@ -47,6 +47,18 @@ if (_ammo == "") exitWith { 1.0 };
 private _override = getNumber (configFile >> "CfgAmmo" >> _ammo >> "AEE_Propellant" >> "sensitivity");
 if (_override > 0) exitWith { _override };
 
+// ─── Cannon deferral (no sourced coefficient held) ────────────────────────
+// No tier 1 to 4 source held here states a cannon propellant temperature
+// coefficient.  The missing coefficient is the change in cannon muzzle
+// velocity per degree of charge temperature (fps/degF, or m/s per degC).
+// The small-arms cascade below is fitted to cartridge powders and does not
+// transfer to a cannon charge.  A cannon ammo returns 0 fps/degF, which makes
+// fnc_calculateMuzzleVelocityCorrection a no-op, and the sourced
+// service_velocity_ms is used unchanged.  A mission override in step 1 still
+// wins, so a sourced cannon coefficient can be supplied by an ammo author.
+private _isCannon = (_ammo find "105mm" >= 0) || (_ammo find "120mm" >= 0) || (_ammo find "125mm" >= 0) || (_ammo find "cannon" >= 0) || (_ammo find "howitzer" >= 0) || (_ammo find "mortar" >= 0);
+if (_isCannon) exitWith { 0 };
+
 // ─── 2. Built-in ammunition table (known cartridges) ──────────────────────
 // Keyed by the CfgAmmo class.  Coefficient in fps/degF.
 // VERIFIED anchors: military ball (WC844-type) 1.5 and double-base 1.2 sit

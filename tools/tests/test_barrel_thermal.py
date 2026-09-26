@@ -22,16 +22,19 @@ def barrel_step(
     dt_s=0.0,
     heat_per_round=None,
     tau=None,
+    is_cannon=False,
 ):
     """Mirror of the SQF barrel state step.
 
     is_mg: machine-gun class (higher heat per round, slower cooling,
     larger POI coefficient).
+    is_cannon: cannon class. No tier 1 to 4 source holds a cannon per-round
+    heat or erosion rate, so the cannon path adds no unsourced heat.
     shot: True adds heat and increments the round count.
     dt_s: cooling duration in seconds (0 for a pure shot tick).
     """
     if heat_per_round is None:
-        heat_per_round = 3.0 if is_mg else 1.0
+        heat_per_round = 0.0 if is_cannon else (3.0 if is_mg else 1.0)
     if tau is None:
         tau = 250 if is_mg else 150
 
@@ -43,13 +46,17 @@ def barrel_step(
     return temp_c, rounds
 
 
-def poi_shift(temp_c, ambient_c, is_mg, rounds, cold_bore_threshold=15.0):
+def poi_shift(
+    temp_c, ambient_c, is_mg, rounds, cold_bore_threshold=15.0, is_cannon=False
+):
     """Mirror of the SQF POI shift (elevation only, mrad, positive = up).
 
+    is_cannon: cannon class. No tier 1 to 4 source holds a cannon thermal
+    point-of-impact coefficient, so the cannon path applies no shift.
     Cold-bore bias applies to shots 1-5 of a cold barrel; an unfired
     barrel (rounds == 0) has no first-shot bias.
     """
-    k = 0.02 if is_mg else 0.008
+    k = 0.0 if is_cannon else (0.02 if is_mg else 0.008)
     poi = k * (temp_c - ambient_c)
     if temp_c - ambient_c < cold_bore_threshold and rounds >= 1 and rounds <= 5:
         poi += max(0.25 * (1 - (rounds - 1) / 4), 0.0)
@@ -145,6 +152,41 @@ class TestPOIShift(unittest.TestCase):
         # A hot barrel (>15 C above ambient) has no cold-bore bias.
         shift = poi_shift(41.0, 21.0, False, 1)
         self.assertEqual(shift, 0.008 * 20)  # expansion only, no bias
+
+
+class TestCannonWearDeferral(unittest.TestCase):
+    """The cannon barrel wear and heat coefficient is not held.
+
+    No tier 1 to 4 source states a cannon per-round heating rate (degC per
+    round at the service charge) or an erosion rate (mm of bore enlargement
+    per round). The cannon path therefore adds no unsourced heat and applies
+    no unsourced point-of-impact shift. The SQF guard and the mirror agree,
+    and the gap is recorded rather than filled with an invented number.
+    """
+
+    def test_cannon_fires_without_adding_unsourced_heat(self):
+        t, r = barrel_step(21.0, 0, 21.0, is_mg=False, shot=True, is_cannon=True)
+        self.assertAlmostEqual(t, 21.0, places=6)
+        self.assertEqual(r, 1)
+
+    def test_cannon_has_no_sourced_poi_shift(self):
+        self.assertEqual(poi_shift(221.0, 21.0, False, 10, is_cannon=True), 0.0)
+
+    def test_mirror_rifle_still_heats(self):
+        # The cannon guard must not change the small-arms path.
+        t, _ = barrel_step(21.0, 0, 21.0, is_mg=False, shot=True)
+        self.assertAlmostEqual(t, 22.0, places=6)
+
+    def test_sqf_documents_the_cannon_gap(self):
+        from pathlib import Path
+
+        text = Path(
+            "addons/ballistics/functions/fnc_calculateBarrelState.sqf"
+        ).read_text(encoding="utf-8")
+        self.assertIn("_isCannon", text)
+        self.assertIn("if (_isCannon) then { 0 }", text)
+        self.assertIn("barrelWearModelled", text)
+        self.assertIn("cannon", text.lower())
 
 
 if __name__ == "__main__":

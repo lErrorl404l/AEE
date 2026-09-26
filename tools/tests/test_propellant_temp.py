@@ -47,9 +47,21 @@ MILITARY_BALL = 1.5  # WC844-type ball (5.56/7.62 NATO)
 
 REF_TEMP_C = 21.0
 
+# Cannon identity tokens. No tier 1 to 4 source holds a cannon propellant
+# temperature coefficient, so a cannon ammo has no coefficient and its
+# muzzle-velocity correction is a no-op.
+CANNON_TOKENS = ("105mm", "120mm", "125mm", "cannon", "howitzer", "mortar")
+
 
 def propellant_sensitivity(ammo):
-    """Mirror of fnc_calculatePropellantSensitivity.sqf cascade."""
+    """Mirror of fnc_calculatePropellantSensitivity.sqf cascade.
+
+    A cannon ammo returns 0.0: no tier 1 to 4 source held here states a
+    cannon propellant temperature coefficient, so the small-arms cascade is
+    not applied to a cannon charge.
+    """
+    if any(t in ammo.lower() for t in CANNON_TOKENS):
+        return 0.0
     table = {
         "B_556x45_Ball": MILITARY_BALL,
         "B_556x45_Ball_Tracer_Red": MILITARY_BALL,
@@ -278,6 +290,43 @@ class TestSQFSyncPropellant(unittest.TestCase):
             ],
             "unit conversion, reference temp, clamps, ACE3 guard",
         )
+
+
+class TestCannonPropellantDeferral(unittest.TestCase):
+    """The cannon charge-temperature coefficient is not held.
+
+    No tier 1 to 4 source states the cannon muzzle-velocity change per degree
+    of charge temperature. The small-arms cascade is fitted to cartridge
+    powders and does not transfer, so a cannon ammo returns 0 and the
+    muzzle-velocity correction is a no-op. A mission override still wins.
+    """
+
+    def test_cannon_ammo_has_no_sourced_coefficient(self):
+        for ammo in (
+            "Sh_120mm_APFSDS",
+            "Sh_125mm_APFSDS",
+            "Sh_105mm_HE",
+            "cannon_120mm",
+        ):
+            self.assertEqual(propellant_sensitivity(ammo), 0.0, ammo)
+
+    def test_cannon_temperature_correction_is_noop(self):
+        for temp in (-40.0, 0.0, 21.0, 50.0):
+            corr, coeff = muzzle_velocity_correction("Sh_120mm_APFSDS", 1670.0, temp)
+            self.assertEqual(corr, 1.0)
+            self.assertEqual(coeff, 0.0)
+
+    def test_small_arms_path_unaffected(self):
+        self.assertAlmostEqual(propellant_sensitivity("B_556x45_Ball"), 1.5, places=4)
+        self.assertAlmostEqual(propellant_sensitivity("B_999x999_Ball"), 1.0, places=4)
+
+    def test_sqf_documents_the_cannon_gap(self):
+        text = (_BALLISTICS / "fnc_calculatePropellantSensitivity.sqf").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("_isCannon", text)
+        self.assertIn("if (_isCannon) exitWith { 0 }", text)
+        self.assertIn("cannon", text.lower())
 
 
 # ── Drift-lock constants (issue #62) ───────────────────────────────────────

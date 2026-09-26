@@ -269,6 +269,7 @@ private _TABLE = [
     ["m792_hei", "25mmheit|m792", 503.49, 25.0, "", 0],
     ["m829_apfsds", "120mmapfsds|m829|m829apfsdst", 0, 0, "", 0],
     ["m830_heat", "120mmheat|m830|m830heatmpt", 13607.77, 120.0, "", 0],
+    ["m88_apfsds", "125mmapfsds|m88|m88apfsdst", 5670.0, 0, "", 0],
     ["m919_apfsds", "25mmapfsdst|m919", 0, 0, "", 0],
     ["mk239_tp_t", "30x173tpt|mk239", 365.0, 30.0, "", 0],
     ["mk258_apfsds", "30x173apfsdst|mk258", 230.0, 0, "", 0],

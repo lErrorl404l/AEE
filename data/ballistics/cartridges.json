@@ -36549,5 +36549,82 @@
    "year_created": "",
    "classification_source": "dockery_ptrd41"
   }
+ },
+ {
+  "cartridge_id": "105mm_m68",
+  "names": [
+   "105mm M68",
+   "105 mm M68",
+   "105mm L7",
+   "105 mm tank rifled"
+  ],
+  "case_family": "105 mm tank",
+  "note": "105 mm rifled tank cartridge family fired from the M68 gun and its L7 parent. The held TM 43-0001-28 states the M735, M774 and M833 APFSDS-T data sheets and the M456 HEAT-T series. The case length and the standard rifling twist are not stated on the held sheets, so they are not entered.",
+  "values": {
+   "calibre_mm": {
+    "value": 105.0,
+    "unit": "mm",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "bore_mm": {
+    "value": 105.0,
+    "unit": "mm",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "max_pressure_mpa": {
+    "value": 413.69,
+    "unit": "MPa",
+    "source": "tm43_0001_28",
+    "grade": "documented",
+    "formula": "60,000 psi x 0.00689476 MPa per psi; M735 APFSDS-T chamber pressure at 70 F (TM 43-0001-28 page 2-101)"
+   },
+   "pressure_standard": {
+    "value": "US Army data sheet, chamber pressure at 70 F (TM 43-0001-28 page 2-101, M735 APFSDS-T)",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   }
+  },
+  "classification": {
+   "cip_tab": "",
+   "case_type": "other",
+   "cartridge_type": "cannon",
+   "origin_country": "United states",
+   "year_created": "",
+   "classification_source": "tm43_0001_28"
+  }
+ },
+ {
+  "cartridge_id": "125mm_2a46",
+  "names": [
+   "125 mm 2A46",
+   "125mm M88",
+   "125 mm tank smoothbore"
+  ],
+  "case_family": "125 mm tank",
+  "note": "125 mm smoothbore tank cartridge family fired from the 2A46 gun family (T-72, M84). The held Yugoimport sheet states the M88 APFSDS-T round as separately loaded: a 140 mm stub case and a combustible propelling charge are loaded behind the projectile. The sheet states no chamber pressure and no rifling twist, so neither is entered.",
+  "values": {
+   "calibre_mm": {
+    "value": 125.0,
+    "unit": "mm",
+    "source": "yugoimport_125x570_m88",
+    "grade": "claimed"
+   },
+   "bore_mm": {
+    "value": 125.0,
+    "unit": "mm",
+    "source": "yugoimport_125x570_m88",
+    "grade": "claimed"
+   }
+  },
+  "classification": {
+   "cip_tab": "",
+   "case_type": "other",
+   "cartridge_type": "cannon",
+   "origin_country": "",
+   "year_created": "",
+   "classification_source": "yugoimport_125x570_m88"
+  }
  }
 ]
