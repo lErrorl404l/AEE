@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-09-26",
-  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the Willys MB. Every value is grade claimed and the registry marks primary_held false. The article is a secondary compilation and is not a primary source.",
+  "note": "Catalogue capture for the held tier-2 Technical Manual TM 9-803, War Department, 1944, with the tier-5 English Wikipedia article retained for the fields the manual's degraded dimension rows do not give. The manual publishes the weight with fuel and water, the gross loaded weight, the ground clearance, the tyre size code and the approach and departure angles, all at grade documented. The Wikipedia article supplies the overall dimensions, the engine and the road speed at grade claimed.",
   "sources": [],
   "entries": [
     {
@@ -29,17 +29,25 @@
         "curb_weight_kg": {
           "value": 1113,
           "unit": "kg",
-          "source": "willys_mb",
-          "locator": "Infobox, weight row, curb weight entry",
-          "state": "curb weight published as 2,453 lb with engine fluids and full fuel; pounds converted to kilograms, 1 lb = 0.45359237 kg; the infobox also publishes a 2,337 lb dry weight",
-          "grade": "claimed"
+          "source": "tm_9_803_willys_mb",
+          "locator": "Section II Description and Tabulated Data, section 3 Data, Vehicle Specifications, Weights, Road, including gas and water, printed page 3",
+          "state": "weight on the road including gas and water, published as 2,453 lb; pounds converted to kilograms, 1 lb = 0.45359237 kg",
+          "grade": "documented"
+        },
+        "gross_weight_kg": {
+          "value": 1476,
+          "unit": "kg",
+          "source": "tm_9_803_willys_mb",
+          "locator": "Section II Description and Tabulated Data, section 3 Data, Vehicle Specifications, Weights, Gross (loaded), printed page 3",
+          "state": "gross weight loaded, published as 3,253 lb; pounds converted to kilograms, 1 lb = 0.45359237 kg",
+          "grade": "documented"
         },
         "length_mm": {
           "value": 3353,
           "unit": "mm",
           "source": "willys_mb",
           "locator": "Infobox, length row",
-          "state": "length published as 132 in; inches converted to millimetres",
+          "state": "length published as 132 in; inches converted to millimetres; the tier-2 manual publishes the dimension in a row that is degraded in the held copy, so this weaker compilation value is retained and marked claimed",
           "grade": "claimed"
         },
         "width_mm": {
@@ -47,7 +55,7 @@
           "unit": "mm",
           "source": "willys_mb",
           "locator": "Infobox, width row",
-          "state": "width published as 62 in; inches converted to millimetres",
+          "state": "width published as 62 in; inches converted to millimetres; the tier-2 manual dimension row is degraded in the held copy, so this weaker compilation value is retained and marked claimed",
           "grade": "claimed"
         },
         "height_mm": {
@@ -55,23 +63,47 @@
           "unit": "mm",
           "source": "willys_mb",
           "locator": "Infobox, height row, top up entry",
-          "state": "height published as 69 3/4 in with the top up, reducible to 52 in; inches converted to millimetres",
+          "state": "height published as 69 3/4 in with the top up, reducible to 52 in; inches converted to millimetres; the tier-2 manual dimension row is degraded in the held copy, so this weaker compilation value is retained and marked claimed",
           "grade": "claimed"
         },
         "ground_clearance_mm": {
           "value": 222,
           "unit": "mm",
-          "source": "willys_mb",
-          "locator": "Infobox, clearance row",
+          "source": "tm_9_803_willys_mb",
+          "locator": "Section II Description and Tabulated Data, section 3 Data, Vehicle Specifications, Ground clearance, printed page 3",
           "state": "ground clearance published as 8 3/4 in; inches converted to millimetres",
-          "grade": "claimed"
+          "grade": "documented"
+        },
+        "tyre_size_text": {
+          "value": "16 x 6.00",
+          "unit": "text",
+          "source": "tm_9_803_willys_mb",
+          "locator": "Section II Description and Tabulated Data, section 3 Data, Vehicle Specifications, Tire size, printed page 3",
+          "state": "tyre size published as 16 x 6.00 in; the table also lists a 16 x 4.50 combat tyre",
+          "grade": "documented"
+        },
+        "approach_angle_deg": {
+          "value": 45,
+          "unit": "deg",
+          "source": "tm_9_803_willys_mb",
+          "locator": "Section II Description and Tabulated Data, section 3 Data, Vehicle Specifications, Approach angle, printed page 3",
+          "state": "approach angle published as 45 deg, as published",
+          "grade": "documented"
+        },
+        "departure_angle_deg": {
+          "value": 35,
+          "unit": "deg",
+          "source": "tm_9_803_willys_mb",
+          "locator": "Section II Description and Tabulated Data, section 3 Data, Vehicle Specifications, Departure angle, printed page 3",
+          "state": "departure angle published as 35 deg, as published",
+          "grade": "documented"
         },
         "engine_model": {
           "value": "Willys L134 Go Devil inline-four",
           "unit": "text",
           "source": "willys_mb",
           "locator": "Infobox, engine row",
-          "state": "engine published as a 134 cu in inline 4 Willys L134 Go Devil, as published",
+          "state": "engine published as a 134 cu in inline 4 Willys L134 Go Devil, as published; the tier-2 manual is held for the vehicle data only",
           "grade": "claimed"
         },
         "engine_displacement_l": {
@@ -79,7 +111,7 @@
           "unit": "L",
           "source": "willys_mb",
           "locator": "Infobox, engine row",
-          "state": "engine displacement published as 134 cu in; cubic inches converted to litres and rounded to the published precision 2.2 L",
+          "state": "engine displacement published as 134 cu in; cubic inches converted to litres and rounded to the published precision 2.2 L; the tier-2 manual is held for the vehicle data only",
           "grade": "claimed"
         },
         "published_power_hp": {
@@ -87,7 +119,7 @@
           "unit": "hp",
           "source": "willys_mb",
           "locator": "Infobox, engine_power row, gross entry",
-          "state": "gross engine power published as 60 hp, with a 54 hp net rating; the gross figure recorded and the basis stated; maximum rating, no net basis",
+          "state": "gross engine power published as 60 hp, with a 54 hp net rating; the gross figure recorded and the basis stated; maximum rating, no net basis; the tier-2 manual is held for the vehicle data only",
           "grade": "claimed"
         },
         "transmission_type": {
@@ -95,7 +127,7 @@
           "unit": "enum",
           "source": "willys_mb",
           "locator": "Infobox, transmission row",
-          "state": "transmission published as a 3-speed with a 2-range transfer case, a manual",
+          "state": "transmission published as a 3-speed with a 2-range transfer case, a manual; the tier-2 manual is held for the vehicle data only",
           "grade": "claimed"
         },
         "max_speed_kmh": {
@@ -103,7 +135,7 @@
           "unit": "km/h",
           "source": "willys_mb",
           "locator": "Infobox, speed row",
-          "state": "speed published as 65 mph; miles per hour converted to km/h, 1 mph = 1.609344 km/h",
+          "state": "speed published as 65 mph; miles per hour converted to km/h, 1 mph = 1.609344 km/h; the tier-2 manual is held for the vehicle data only",
           "grade": "claimed"
         }
       }

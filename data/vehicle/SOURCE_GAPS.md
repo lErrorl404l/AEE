@@ -9,11 +9,11 @@ labelled absent zero. This file lists the resolved provenance of each
 row and the next source class for each absent field. A missing field
 is a labelled zero, not a refusal.
 
-- Catalogue entries: 130
-- Emitted runtime rows: 130
+- Catalogue entries: 131
+- Emitted runtime rows: 131
 - Runtime-ready entries: 1
-- Entries with an absent runtime field: 129
-- Absent fields: 449
+- Entries with an absent runtime field: 130
+- Absent fields: 448
 
 ## achzarit - Achzarit (tracked)
 
@@ -854,17 +854,16 @@ is a labelled zero, not a refusal.
 
 | Runtime field | Grade | Value | Source | Locator | State |
 |---|---|---|---|---|---|
-| `operating_weight_kg` | derived | 245 | `harley_wla` | Infobox, dry_weight row | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
-| `tyre_width_mm` | derived | 101.6 | `harley_wla` | Infobox, tires row | derived from the size code 4.00 x 18 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
-| `tyre_diameter_mm` | derived | 660.4 | `harley_wla` | Infobox, tires row | derived from the size code 4.00 x 18 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
-| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `operating_weight_kg` | derived | 245 | `harley_wla_tm_9_879` | Section II Description and Tabulated Data, section 4 Data, Vehicle Specifications, Weight of vehicle (without rider or armament), printed page 3-4 | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 101.6 | `harley_wla_tm_9_879` | Section II Description and Tabulated Data, section 4 Data, Vehicle Specifications, Tire size, printed page 3-4 | derived from the size code 4.00 x 18 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 660.4 | `harley_wla_tm_9_879` | Section II Description and Tabulated Data, section 4 Data, Vehicle Specifications, Tire size, printed page 3-4 | derived from the size code 4.00 x 18 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 102 | `harley_wla_tm_9_879` | Section II Description and Tabulated Data, section 4 Data, Vehicle Specifications, Ground clearance (skid plate), printed page 3-4 | ground clearance at the skid plate published as 4 in; converted to millimetres |
 | `net_power_kw` | derived | 18.642497 | `harley_wla` | Infobox, power row | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
-| `transmission_type` | claimed | manual | `harley_wla` | Infobox, transmission row | transmission published as a 3-speed hand shift, a manual |
+| `transmission_type` | claimed | manual | `harley_wla` | Infobox, transmission row | transmission published as a 3-speed hand shift, a manual; the tier-2 manual publishes the gear ratios only, so this weaker compilation value is retained and marked claimed |
 | `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
 
 | Absent field | Next source class |
 |---|---|
-| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
 ## hmmwv_m998 - M998 HMMWV (wheeled)
@@ -3013,6 +3012,28 @@ is a labelled zero, not a refusal.
 | `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
+## willys_m38 - Willys M38 (wheeled)
+
+- Capture: `data/vehicle/catalogue/willys_m38.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | derived | 1247 | `willys_m38_tm_9_8012` | Description and Data, tabulated data, Weight, Net, printed page | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 177.8 | `willys_m38_tm_9_8012` | Description and Data, tabulated data, Tires, Size and type, printed page | derived from the size code 7.00 x 16 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 762.0 | `willys_m38_tm_9_8012` | Description and Data, tabulated data, Tires, Size and type, printed page | derived from the size code 7.00 x 16 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 235 | `willys_m38_tm_9_8012` | Description and Data, tabulated data, Ground clearance (min) (rear axle), printed page | minimum ground clearance at the rear axle published as 9 1/4 in; inches converted to millimetres |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | documented | manual | `willys_m38_tm_9_8012` | Description and Data, tabulated data, Performance, Allowable speed table | three forward speeds and a reverse with a transfer case in high and low range, as published in the allowable speed table; recorded as a manual |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
 ## willys_mb - Willys MB (wheeled)
 
 - Capture: `data/vehicle/catalogue/willys_mb.json`
@@ -3022,18 +3043,16 @@ is a labelled zero, not a refusal.
 
 | Runtime field | Grade | Value | Source | Locator | State |
 |---|---|---|---|---|---|
-| `operating_weight_kg` | derived | 1113 | `willys_mb` | Infobox, weight row, curb weight entry | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
-| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
-| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
-| `ground_clearance_mm` | claimed | 222 | `willys_mb` | Infobox, clearance row | ground clearance published as 8 3/4 in; inches converted to millimetres |
+| `operating_weight_kg` | derived | 1113 | `tm_9_803_willys_mb` | Section II Description and Tabulated Data, section 3 Data, Vehicle Specifications, Weights, Road, including gas and water, printed page 3 | derived operating weight from the published curb weight; no operating weight is published, so the curb weight is the basis |
+| `tyre_width_mm` | derived | 406.4 | `tm_9_803_willys_mb` | Section II Description and Tabulated Data, section 3 Data, Vehicle Specifications, Tire size, printed page 3 | derived from the size code 16 x 6.00 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `tyre_diameter_mm` | derived | 965.2 | `tm_9_803_willys_mb` | Section II Description and Tabulated Data, section 3 Data, Vehicle Specifications, Tire size, printed page 3 | derived from the size code 16 x 6.00 by W mm, section = W*A/100, diameter = rim*25.4 + 2*section (inch codes assume aspect 100) |
+| `ground_clearance_mm` | documented | 222 | `tm_9_803_willys_mb` | Section II Description and Tabulated Data, section 3 Data, Vehicle Specifications, Ground clearance, printed page 3 | ground clearance published as 8 3/4 in; inches converted to millimetres |
 | `net_power_kw` | derived | 44.741992 | `willys_mb` | Infobox, engine_power row, gross entry | brake horsepower converted by 1 hp = 745.699872 W (ISO 80000-4, mechanical horsepower); the source states brake, not net, power |
-| `transmission_type` | claimed | manual | `willys_mb` | Infobox, transmission row | transmission published as a 3-speed with a 2-range transfer case, a manual |
+| `transmission_type` | claimed | manual | `willys_mb` | Infobox, transmission row | transmission published as a 3-speed with a 2-range transfer case, a manual; the tier-2 manual is held for the vehicle data only |
 | `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
 
 | Absent field | Next source class |
 |---|---|
-| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
-| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
 ## zbd_04 - ZBD-04 (tracked)

@@ -222,7 +222,7 @@
       "kind": "engine_base",
       "provenance": [
         "addons/armour/functions/fnc_penetrationGate.sqf:47",
-        "addons/armour/functions/fnc_penetrationGate.sqf:65",
+        "addons/armour/functions/fnc_penetrationGate.sqf:76",
         "addons/thermal/functions/display/fnc_applyBuildingThermal.sqf:111",
         "addons/thermal/functions/display/fnc_applyClothingThermal.sqf:100",
         "addons/thermal/functions/display/fnc_applyExhaustHeat.sqf:60",

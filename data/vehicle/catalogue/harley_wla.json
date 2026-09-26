@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-09-26",
-  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the Harley-Davidson WLA. Every value is grade claimed and the registry marks primary_held false. The article is a secondary compilation and is not a primary source.",
+  "note": "Catalogue capture for the held tier-2 Technical Manual TM 9-879, War Department, 18 October 1943, with the tier-5 English Wikipedia article retained for the fields the manual does not publish. The manual publishes identity, the overall length and width, the wheelbase, the weight without rider or armament, the ground clearance at the skid plate, the tyre size code and the maximum allowable speed, all at grade documented. The Wikipedia article supplies the engine displacement, the power rating and the transmission type at grade claimed. The manual publishes no overall height.",
   "sources": [],
   "entries": [
     {
@@ -28,33 +28,65 @@
         "curb_weight_kg": {
           "value": 245,
           "unit": "kg",
-          "source": "harley_wla",
-          "locator": "Infobox, dry_weight row",
-          "state": "dry weight published as 540 lb; pounds converted to kilograms, 1 lb = 0.45359237 kg; the infobox publishes no wet or curb weight",
-          "grade": "claimed"
+          "source": "harley_wla_tm_9_879",
+          "locator": "Section II Description and Tabulated Data, section 4 Data, Vehicle Specifications, Weight of vehicle (without rider or armament), printed page 3-4",
+          "state": "weight of the vehicle without rider or armament, published as 540 lb; pounds converted to kilograms, 1 lb = 0.45359237 kg",
+          "grade": "documented"
         },
         "length_mm": {
           "value": 2235,
           "unit": "mm",
-          "source": "harley_wla",
-          "locator": "Infobox, length row",
-          "state": "length published as 88 in; inches converted to millimetres",
-          "grade": "claimed"
+          "source": "harley_wla_tm_9_879",
+          "locator": "Section II Description and Tabulated Data, section 4 Data, Vehicle Specifications, Length over-all, printed page 3-4",
+          "state": "length over-all published as 7 ft 4 in; converted to millimetres",
+          "grade": "documented"
         },
         "width_mm": {
           "value": 1041,
           "unit": "mm",
-          "source": "harley_wla",
-          "locator": "Infobox, width row",
-          "state": "width published as 41 in; inches converted to millimetres",
-          "grade": "claimed"
+          "source": "harley_wla_tm_9_879",
+          "locator": "Section II Description and Tabulated Data, section 4 Data, Vehicle Specifications, Width over-all (handle bars), printed page 3-4",
+          "state": "width over-all at the handle bars published as 3 ft 5 in; converted to millimetres",
+          "grade": "documented"
+        },
+        "wheelbase_mm": {
+          "value": 1505,
+          "unit": "mm",
+          "source": "harley_wla_tm_9_879",
+          "locator": "Section II Description and Tabulated Data, section 4 Data, Vehicle Specifications, Wheelbase, printed page 3-4",
+          "state": "wheelbase published as 4 ft 11 1/4 in; converted to millimetres",
+          "grade": "documented"
+        },
+        "ground_clearance_mm": {
+          "value": 102,
+          "unit": "mm",
+          "source": "harley_wla_tm_9_879",
+          "locator": "Section II Description and Tabulated Data, section 4 Data, Vehicle Specifications, Ground clearance (skid plate), printed page 3-4",
+          "state": "ground clearance at the skid plate published as 4 in; converted to millimetres",
+          "grade": "documented"
+        },
+        "tyre_size_text": {
+          "value": "4.00 x 18",
+          "unit": "text",
+          "source": "harley_wla_tm_9_879",
+          "locator": "Section II Description and Tabulated Data, section 4 Data, Vehicle Specifications, Tire size, printed page 3-4",
+          "state": "tyre size published as 4.00 x 18 in",
+          "grade": "documented"
+        },
+        "max_speed_kmh": {
+          "value": 105,
+          "unit": "km/h",
+          "source": "harley_wla_tm_9_879",
+          "locator": "Section II Description and Tabulated Data, section 4 Data, Performance, Maximum allowable speed, printed page 3-4",
+          "state": "maximum allowable speed published as 65 mph; the English Wikipedia infobox publishes 75 mph, a disagreement recorded here and not averaged; miles per hour converted to km/h, 1 mph = 1.609344 km/h",
+          "grade": "documented"
         },
         "engine_displacement_l": {
           "value": 0.739,
           "unit": "L",
           "source": "harley_wla",
           "locator": "Infobox, engine row",
-          "state": "engine displacement published as 45.12 cu in; cubic inches converted to litres 739.4 cc",
+          "state": "engine displacement published as 45.12 cu in; cubic inches converted to litres 739.4 cc; the tier-2 manual publishes the bore and stroke only, so this weaker compilation value is retained and marked claimed",
           "grade": "claimed"
         },
         "published_power_hp": {
@@ -62,7 +94,7 @@
           "unit": "hp",
           "source": "harley_wla",
           "locator": "Infobox, power row",
-          "state": "power published as 25 hp at 4,500 rpm; maximum rating, no net basis",
+          "state": "power published as 25 hp at 4,500 rpm; maximum rating, no net basis; the tier-2 manual publishes no power rating, so this weaker compilation value is retained and marked claimed",
           "grade": "claimed"
         },
         "transmission_type": {
@@ -70,23 +102,7 @@
           "unit": "enum",
           "source": "harley_wla",
           "locator": "Infobox, transmission row",
-          "state": "transmission published as a 3-speed hand shift, a manual",
-          "grade": "claimed"
-        },
-        "tyre_size_text": {
-          "value": "4.00 x 18",
-          "unit": "text",
-          "source": "harley_wla",
-          "locator": "Infobox, tires row",
-          "state": "tyre size published as 4.00 x 18",
-          "grade": "claimed"
-        },
-        "max_speed_kmh": {
-          "value": 121,
-          "unit": "km/h",
-          "source": "harley_wla",
-          "locator": "Infobox, speed row",
-          "state": "speed published as 75 mph; miles per hour converted to km/h, 1 mph = 1.609344 km/h",
+          "state": "transmission published as a 3-speed hand shift, a manual; the tier-2 manual publishes the gear ratios only, so this weaker compilation value is retained and marked claimed",
           "grade": "claimed"
         }
       }

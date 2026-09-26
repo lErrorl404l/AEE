@@ -1,0 +1,152 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-2 Technical Manual TM 9-8012 for the Willys M38. Every value is grade documented and rests on the held manual. The manual publishes identity, the overall length, width and height, the wheelbase, the ground clearance, the net weight and the gross highway weight, the payload, the tyre size code, the engine model, the maximum allowable speed and the loaded cruising range.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "willys_m38",
+      "canonical_name": "Willys M38",
+      "maker": "Willys-Overland",
+      "model": "M38",
+      "variant": "Light utility truck (MC)",
+      "variant_id": "willys_m38",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "m38",
+        "willys m38",
+        "m38 jeep"
+      ],
+      "keywords": [
+        "willys m38",
+        "m38 jeep",
+        "light utility truck"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "curb_weight_kg": {
+          "value": 1247,
+          "unit": "kg",
+          "source": "willys_m38_tm_9_8012",
+          "locator": "Description and Data, tabulated data, Weight, Net, printed page",
+          "state": "net weight published as 2,750 lb; pounds converted to kilograms, 1 lb = 0.45359237 kg",
+          "grade": "documented"
+        },
+        "gross_weight_kg": {
+          "value": 1792,
+          "unit": "kg",
+          "source": "willys_m38_tm_9_8012",
+          "locator": "Description and Data, tabulated data, Weight, Gross, On highway, printed page",
+          "state": "gross weight on the highway published as 3,950 lb; the manual also publishes 3,550 lb off highway; pounds converted to kilograms, 1 lb = 0.45359237 kg",
+          "grade": "documented"
+        },
+        "payload_kg": {
+          "value": 544,
+          "unit": "kg",
+          "source": "willys_m38_tm_9_8012",
+          "locator": "Description and Data, tabulated data, Pay load, On highway, printed page",
+          "state": "payload on the highway published as 1,200 lb; the manual also publishes 800 lb off highway; pounds converted to kilograms, 1 lb = 0.45359237 kg",
+          "grade": "documented"
+        },
+        "length_mm": {
+          "value": 3378,
+          "unit": "mm",
+          "source": "willys_m38_tm_9_8012",
+          "locator": "Description and Data, tabulated data, Dimensions, Length, printed page",
+          "state": "overall length published as 133 in; inches converted to millimetres",
+          "grade": "documented"
+        },
+        "width_mm": {
+          "value": 1575,
+          "unit": "mm",
+          "source": "willys_m38_tm_9_8012",
+          "locator": "Description and Data, tabulated data, Dimensions, Width, printed page",
+          "state": "overall width published as 62 in; inches converted to millimetres",
+          "grade": "documented"
+        },
+        "height_mm": {
+          "value": 1880,
+          "unit": "mm",
+          "source": "willys_m38_tm_9_8012",
+          "locator": "Description and Data, tabulated data, Dimensions, Height (top up), printed page",
+          "state": "overall height with the top up published as 74 in, with 68 in with the top down; inches converted to millimetres",
+          "grade": "documented"
+        },
+        "wheelbase_mm": {
+          "value": 2032,
+          "unit": "mm",
+          "source": "willys_m38_tm_9_8012",
+          "locator": "Description and Data, tabulated data, Wheelbase, printed page",
+          "state": "wheelbase published as 80 in; inches converted to millimetres",
+          "grade": "documented"
+        },
+        "ground_clearance_mm": {
+          "value": 235,
+          "unit": "mm",
+          "source": "willys_m38_tm_9_8012",
+          "locator": "Description and Data, tabulated data, Ground clearance (min) (rear axle), printed page",
+          "state": "minimum ground clearance at the rear axle published as 9 1/4 in; inches converted to millimetres",
+          "grade": "documented"
+        },
+        "tyre_size_text": {
+          "value": "7.00 x 16",
+          "unit": "text",
+          "source": "willys_m38_tm_9_8012",
+          "locator": "Description and Data, tabulated data, Tires, Size and type, printed page",
+          "state": "tyre size published as a 6 ply military nondirectional mud and snow 7.00 x 16",
+          "grade": "documented"
+        },
+        "engine_model": {
+          "value": "Willys Model MC",
+          "unit": "text",
+          "source": "willys_m38_tm_9_8012",
+          "locator": "Description and Data, tabulated data, Engine Model, printed page",
+          "state": "engine published as a 4 cylinder in-line Willys Model MC, as published",
+          "grade": "documented"
+        },
+        "transmission_type": {
+          "value": "manual",
+          "unit": "enum",
+          "source": "willys_m38_tm_9_8012",
+          "locator": "Description and Data, tabulated data, Performance, Allowable speed table",
+          "state": "three forward speeds and a reverse with a transfer case in high and low range, as published in the allowable speed table; recorded as a manual",
+          "grade": "documented"
+        },
+        "max_speed_kmh": {
+          "value": 97,
+          "unit": "km/h",
+          "source": "willys_m38_tm_9_8012",
+          "locator": "Description and Data, tabulated data, Performance, Allowable speed, transfer case in high range, third gear",
+          "state": "maximum allowable speed published as 60 mph in third gear with the transfer case in high range; miles per hour converted to km/h, 1 mph = 1.609344 km/h",
+          "grade": "documented"
+        },
+        "range_km": {
+          "value": 362,
+          "unit": "km",
+          "source": "willys_m38_tm_9_8012",
+          "locator": "Description and Data, tabulated data, Performance, Cruising range (loaded)",
+          "state": "cruising range loaded published as 225 mi at 35 mph; miles converted to kilometres, 1 mi = 1.609344 km",
+          "grade": "documented"
+        },
+        "approach_angle_deg": {
+          "value": 55,
+          "unit": "deg",
+          "source": "willys_m38_tm_9_8012",
+          "locator": "Description and Data, tabulated data, Performance, Angle, Approach",
+          "state": "approach angle published as 55 deg, as published",
+          "grade": "documented"
+        },
+        "departure_angle_deg": {
+          "value": 35,
+          "unit": "deg",
+          "source": "willys_m38_tm_9_8012",
+          "locator": "Description and Data, tabulated data, Performance, Angle, Departure",
+          "state": "departure angle published as 35 deg, as published",
+          "grade": "documented"
+        }
+      }
+    }
+  ]
+}

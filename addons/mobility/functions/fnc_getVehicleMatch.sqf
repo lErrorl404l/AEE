@@ -114,7 +114,7 @@ private _table = [
     ["fv510_warrior", "fv510_warrior", "tracked", "", "", "warrior|fv510|fv510warrior|warriortrackedarmouredvehicle", "ifv|tracked|warrior|infantryfightingvehicle", "wikipedia_fv510_warrior", [25400, 0, 0, 0, 410.13493, "", ""]],
     ["gaz_66", "gaz_66", "wheeled", "", "", "gaz66", "gaz66|soviettruck", "gaz_66", [3440, 0, 0, 315, 0, "manual", ""]],
     ["guarani", "guarani", "wheeled", "", "", "guarani|vbtpmrguarani|vbtpmr", "apc|wheeled|6x6|amphibious|brazil", "wikipedia_guarani", [16700, 0, 0, 0, 0, "", ""]],
-    ["harley_wla", "harley_wla", "wheeled", "", "", "wla|harleywla", "harleywla|militarymotorcycle|vtwin", "harley_wla", [245, 101.6, 660.4, 0, 18.642497, "manual", ""]],
+    ["harley_wla", "harley_wla", "wheeled", "", "", "wla|harleywla", "harleywla|militarymotorcycle|vtwin", "harley_wla_tm_9_879", [245, 101.6, 660.4, 102, 18.642497, "manual", ""]],
     ["hmmwv_m998", "hmmwv_m998", "wheeled", "", "", "m998|m998a1|hmmwv|humvee|m1038", "truck|utility|cargo|4x4|troopcarrier", "tm_9_2320_280_10", [2361, 0, 0, 410, 111.854981, "automatic", ""]],
     ["honda_cb750", "honda_cb750", "wheeled", "", "", "cb750|hondacb750|cb750four", "superbike|aircooledfour|classicmotorcycle", "honda_cb750", [232.7, 0, 0, 0, 50.707591, "manual", ""]],
     ["honda_cg125", "honda_cg125", "wheeled", "", "", "cg125|hondacg125", "motorbike|commuter|125|japan", "wikipedia_honda_cg125", [105, 0, 0, 0, 7.829849, "manual", ""]],
@@ -208,7 +208,8 @@ private _table = [
     ["uaz_469", "uaz_469", "wheeled", "", "", "uaz469", "uaz469|sovietlightutility", "uaz_469", [1700, 0, 0, 220, 0, "manual", ""]],
     ["ural_4320", "ural_4320", "wheeled", "", "", "ural4320", "truck|wheeled|6x6|russia|cargo", "wikipedia_ural_4320", [15300, 0, 0, 0, 0, "manual", ""]],
     ["vbci", "vbci", "wheeled", "", "", "vbci|vehiculeblindedecombatdinfanterie|vbci8x8", "ifv|8x8|armoured|infantryfightingvehicle|france", "nexter_vbci_sales_brochure", [19000, 0, 0, 0, 447.419923, "automatic", ""]],
-    ["willys_mb", "willys_mb", "wheeled", "", "", "willysmb|willys|jeep", "willysmb|willysjeep|godevil", "willys_mb", [1113, 0, 0, 222, 44.741992, "manual", ""]],
+    ["willys_m38", "willys_m38", "wheeled", "", "", "m38|willysm38|m38jeep", "willysm38|m38jeep|lightutilitytruck", "willys_m38_tm_9_8012", [1247, 177.8, 762.0, 235, 0, "manual", ""]],
+    ["willys_mb", "willys_mb", "wheeled", "", "", "willysmb|willys|jeep", "willysmb|willysjeep|godevil", "tm_9_803_willys_mb", [1113, 406.4, 965.2, 222, 44.741992, "manual", ""]],
     ["zbd_04", "zbd_04", "tracked", "", "", "zbd04", "zbd04|chineseifv|type04ifv", "zbd_04", [20000, 0, 0, 0, 440, "", ""]]
 ];
 
