@@ -1,0 +1,96 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the AHS Krab. Every value is grade claimed and the registry marks primary_held false. The article is a secondary compilation and is not a primary source.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "ahs_krab",
+      "canonical_name": "AHS Krab",
+      "maker": "Huta Stalowa Wola",
+      "model": "AHS Krab",
+      "variant": "155 mm self-propelled howitzer",
+      "variant_id": "ahs_krab",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Poland",
+      "era": "modern",
+      "aliases": [
+        "krab",
+        "ahs krab",
+        "ahs-krab"
+      ],
+      "keywords": [
+        "krab",
+        "polish howitzer",
+        "155mm spg"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 48000,
+          "unit": "kg",
+          "source": "ahs_krab",
+          "locator": "Infobox, mass row",
+          "state": "mass published as 48 t; the tonne taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 12100,
+          "unit": "mm",
+          "source": "ahs_krab",
+          "locator": "Infobox, length row",
+          "state": "length published as 12.1 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3630,
+          "unit": "mm",
+          "source": "ahs_krab",
+          "locator": "Infobox, width row",
+          "state": "width published as 3.63 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 3000,
+          "unit": "mm",
+          "source": "ahs_krab",
+          "locator": "Infobox, height row",
+          "state": "height published as 3 m to turret roof",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "STX Engine/MTU MT881Ka-500 V8 water-cooled diesel",
+          "unit": "text",
+          "source": "ahs_krab",
+          "locator": "Infobox, engine row",
+          "state": "engine published as an STX Engine/MTU MT881Ka-500 8-cylinder water-cooled diesel, as published",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 1000,
+          "unit": "hp",
+          "source": "ahs_krab",
+          "locator": "Infobox, engine_power row",
+          "state": "engine power published as 1,000 hp; maximum rating, no net basis",
+          "grade": "claimed"
+        },
+        "transmission_type": {
+          "value": "automatic",
+          "unit": "enum",
+          "source": "ahs_krab",
+          "locator": "Infobox, transmission row",
+          "state": "transmission published as an Allison X1100-5A3 with 4 forward and 2 reverse gears, an automatic",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 60,
+          "unit": "km/h",
+          "source": "ahs_krab",
+          "locator": "Infobox, speed row, road entry",
+          "state": "road speed published as 60 km/h; the off-road speed is published as 30 km/h",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

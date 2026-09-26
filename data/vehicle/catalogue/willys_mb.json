@@ -1,0 +1,112 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the Willys MB. Every value is grade claimed and the registry marks primary_held false. The article is a secondary compilation and is not a primary source.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "willys_mb",
+      "canonical_name": "Willys MB",
+      "maker": "Willys-Overland",
+      "model": "Willys MB",
+      "variant": "Light utility vehicle",
+      "variant_id": "willys_mb",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "willys mb",
+        "willys",
+        "jeep"
+      ],
+      "keywords": [
+        "willys mb",
+        "willys jeep",
+        "go devil"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "curb_weight_kg": {
+          "value": 1113,
+          "unit": "kg",
+          "source": "willys_mb",
+          "locator": "Infobox, weight row, curb weight entry",
+          "state": "curb weight published as 2,453 lb with engine fluids and full fuel; pounds converted to kilograms, 1 lb = 0.45359237 kg; the infobox also publishes a 2,337 lb dry weight",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 3353,
+          "unit": "mm",
+          "source": "willys_mb",
+          "locator": "Infobox, length row",
+          "state": "length published as 132 in; inches converted to millimetres",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 1575,
+          "unit": "mm",
+          "source": "willys_mb",
+          "locator": "Infobox, width row",
+          "state": "width published as 62 in; inches converted to millimetres",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 1772,
+          "unit": "mm",
+          "source": "willys_mb",
+          "locator": "Infobox, height row, top up entry",
+          "state": "height published as 69 3/4 in with the top up, reducible to 52 in; inches converted to millimetres",
+          "grade": "claimed"
+        },
+        "ground_clearance_mm": {
+          "value": 222,
+          "unit": "mm",
+          "source": "willys_mb",
+          "locator": "Infobox, clearance row",
+          "state": "ground clearance published as 8 3/4 in; inches converted to millimetres",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Willys L134 Go Devil inline-four",
+          "unit": "text",
+          "source": "willys_mb",
+          "locator": "Infobox, engine row",
+          "state": "engine published as a 134 cu in inline 4 Willys L134 Go Devil, as published",
+          "grade": "claimed"
+        },
+        "engine_displacement_l": {
+          "value": 2.2,
+          "unit": "L",
+          "source": "willys_mb",
+          "locator": "Infobox, engine row",
+          "state": "engine displacement published as 134 cu in; cubic inches converted to litres and rounded to the published precision 2.2 L",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 60,
+          "unit": "hp",
+          "source": "willys_mb",
+          "locator": "Infobox, engine_power row, gross entry",
+          "state": "gross engine power published as 60 hp, with a 54 hp net rating; the gross figure recorded and the basis stated; maximum rating, no net basis",
+          "grade": "claimed"
+        },
+        "transmission_type": {
+          "value": "manual",
+          "unit": "enum",
+          "source": "willys_mb",
+          "locator": "Infobox, transmission row",
+          "state": "transmission published as a 3-speed with a 2-range transfer case, a manual",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 105,
+          "unit": "km/h",
+          "source": "willys_mb",
+          "locator": "Infobox, speed row",
+          "state": "speed published as 65 mph; miles per hour converted to km/h, 1 mph = 1.609344 km/h",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the BMW R75. Every value is grade claimed and the registry marks primary_held false. The article is a secondary compilation and is not a primary source.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "bmw_r75",
+      "canonical_name": "BMW R75",
+      "maker": "BMW",
+      "model": "R75",
+      "variant": "Military motorcycle",
+      "variant_id": "bmw_r75",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Germany",
+      "era": "modern",
+      "aliases": [
+        "bmw r75"
+      ],
+      "keywords": [
+        "bmw r75",
+        "sidecar motorcycle",
+        "german motorcycle"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "curb_weight_kg": {
+          "value": 420,
+          "unit": "kg",
+          "source": "bmw_r75",
+          "locator": "Infobox, dry_weight row",
+          "state": "dry weight published as 420 kg; the infobox publishes no wet or curb weight",
+          "grade": "claimed"
+        },
+        "engine_displacement_l": {
+          "value": 0.745,
+          "unit": "L",
+          "source": "bmw_r75",
+          "locator": "Infobox, engine row",
+          "state": "engine displacement published as 745.4 cc",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 26,
+          "unit": "hp",
+          "source": "bmw_r75",
+          "locator": "Infobox, power row",
+          "state": "power published as 26 hp; maximum rating, no net basis",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

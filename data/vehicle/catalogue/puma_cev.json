@@ -1,0 +1,87 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the Puma armored engineering vehicle. Every value is grade claimed and the registry marks primary_held false. The article is a secondary compilation and is not a primary source.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "puma_cev",
+      "canonical_name": "Puma",
+      "maker": "Israel Military Industries / IDF Ordnance",
+      "model": "Puma",
+      "variant": "Armoured engineering vehicle",
+      "variant_id": "puma_cev",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Israel",
+      "era": "modern",
+      "aliases": [
+        "puma cev",
+        "idf puma"
+      ],
+      "keywords": [
+        "idf puma",
+        "puma cev",
+        "israeli engineering vehicle"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 50000,
+          "unit": "kg",
+          "source": "puma_cev",
+          "locator": "Infobox, weight row",
+          "state": "weight published as 50 t; the tonne taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 7550,
+          "unit": "mm",
+          "source": "puma_cev",
+          "locator": "Infobox, length row",
+          "state": "length published as 7.55 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3380,
+          "unit": "mm",
+          "source": "puma_cev",
+          "locator": "Infobox, width row",
+          "state": "width published as 3.38 m without side skirts",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2750,
+          "unit": "mm",
+          "source": "puma_cev",
+          "locator": "Infobox, height row",
+          "state": "height published as 2.75 m",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Continental AVDS-1790-6A",
+          "unit": "text",
+          "source": "puma_cev",
+          "locator": "Infobox, engine row",
+          "state": "engine published as a Continental AVDS-1790-6A, as published",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 900,
+          "unit": "hp",
+          "source": "puma_cev",
+          "locator": "Infobox, engine_power row",
+          "state": "engine power published as 900 hp at 2,400 rpm; maximum rating, no net basis",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 43,
+          "unit": "km/h",
+          "source": "puma_cev",
+          "locator": "Infobox, speed row",
+          "state": "cross-country speed published as 43 km/h; no road speed is published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the K808 White Tiger. Every value is grade claimed and the registry marks primary_held false. The article is a secondary compilation and is not a primary source.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "k808_white_tiger",
+      "canonical_name": "K808 White Tiger",
+      "maker": "Hyundai Rotem",
+      "model": "K808",
+      "variant": "Wheeled armoured personnel carrier",
+      "variant_id": "k808_white_tiger",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "South Korea",
+      "era": "modern",
+      "aliases": [
+        "k808",
+        "white tiger",
+        "k806"
+      ],
+      "keywords": [
+        "k808",
+        "white tiger",
+        "korean apc"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 20000,
+          "unit": "kg",
+          "source": "k808_white_tiger",
+          "locator": "Infobox, weight row, K808 entry",
+          "state": "K808 weight published as 20 t; the same row publishes 16 t for the K806, and the tonne is taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 7200,
+          "unit": "mm",
+          "source": "k808_white_tiger",
+          "locator": "Infobox, length row, K808 entry",
+          "state": "K808 length published as 7.2 m; the K806 length is published as 6.6 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2100,
+          "unit": "mm",
+          "source": "k808_white_tiger",
+          "locator": "Infobox, width row",
+          "state": "width published as 2.1 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2700,
+          "unit": "mm",
+          "source": "k808_white_tiger",
+          "locator": "Infobox, height row",
+          "state": "height published as 2.7 m",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Hyundai Motors D6HA 10 L V6 diesel",
+          "unit": "text",
+          "source": "k808_white_tiger",
+          "locator": "Infobox, engine row",
+          "state": "engine published as a Hyundai Motors D6HA 10 L V6 diesel, as published",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 420,
+          "unit": "hp",
+          "source": "k808_white_tiger",
+          "locator": "Infobox, engine_power row, K808 entry",
+          "state": "K808 engine power published as 420 hp; the K806 is published as 400 hp; maximum rating, no net basis",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 100,
+          "unit": "km/h",
+          "source": "k808_white_tiger",
+          "locator": "Infobox, speed row, road entry",
+          "state": "road speed published as 100 km/h; the water speed is published as 8 km/h",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

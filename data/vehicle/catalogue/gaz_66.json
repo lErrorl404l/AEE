@@ -1,0 +1,96 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the GAZ-66. Every value is grade claimed and the registry marks primary_held false. The article is a secondary compilation and is not a primary source.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "gaz_66",
+      "canonical_name": "GAZ-66",
+      "maker": "GAZ",
+      "model": "GAZ-66",
+      "variant": "Truck",
+      "variant_id": "gaz_66",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "modern",
+      "aliases": [
+        "gaz-66",
+        "gaz 66",
+        "gaz66"
+      ],
+      "keywords": [
+        "gaz 66",
+        "gaz66",
+        "soviet truck"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "curb_weight_kg": {
+          "value": 3440,
+          "unit": "kg",
+          "source": "gaz_66",
+          "locator": "Infobox, weight row",
+          "state": "weight published as 3,440 kg; the article does not name the load state",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 5805,
+          "unit": "mm",
+          "source": "gaz_66",
+          "locator": "Infobox, length row",
+          "state": "length published as 5,805 mm",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2322,
+          "unit": "mm",
+          "source": "gaz_66",
+          "locator": "Infobox, width row",
+          "state": "width published as 2,322 mm",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2520,
+          "unit": "mm",
+          "source": "gaz_66",
+          "locator": "Infobox, height row",
+          "state": "height published as 2,520 mm",
+          "grade": "claimed"
+        },
+        "ground_clearance_mm": {
+          "value": 315,
+          "unit": "mm",
+          "source": "gaz_66",
+          "locator": "Specifications section, ground clearance entry",
+          "state": "ground clearance published as 315 mm",
+          "grade": "claimed"
+        },
+        "fording_depth_mm": {
+          "value": 1000,
+          "unit": "mm",
+          "source": "gaz_66",
+          "locator": "Specifications section, fording depth entry",
+          "state": "fording depth published as 1 m",
+          "grade": "claimed"
+        },
+        "transmission_type": {
+          "value": "manual",
+          "unit": "enum",
+          "source": "gaz_66",
+          "locator": "Infobox, transmission row",
+          "state": "transmission published as a 4-speed manual",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 90,
+          "unit": "km/h",
+          "source": "gaz_66",
+          "locator": "Specifications section, speed entry",
+          "state": "speed published as 90 km/h, governed",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

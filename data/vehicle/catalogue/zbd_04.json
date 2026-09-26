@@ -1,0 +1,87 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the ZBD-04. Every value is grade claimed and the registry marks primary_held false. The article is a secondary compilation and is not a primary source.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "zbd_04",
+      "canonical_name": "ZBD-04",
+      "maker": "unknown",
+      "model": "ZBD-04",
+      "variant": "Infantry fighting vehicle",
+      "variant_id": "zbd_04",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "China",
+      "era": "modern",
+      "aliases": [
+        "zbd-04",
+        "zbd04"
+      ],
+      "keywords": [
+        "zbd04",
+        "chinese ifv",
+        "type 04 ifv"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 20000,
+          "unit": "kg",
+          "source": "zbd_04",
+          "locator": "Infobox, weight row, ZBD-04 entry",
+          "state": "ZBD-04 weight published as 20 t; the same row publishes 24 t for the ZBD-04A, and the tonne is taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 7200,
+          "unit": "mm",
+          "source": "zbd_04",
+          "locator": "Infobox, length row",
+          "state": "length published as 7.2 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3200,
+          "unit": "mm",
+          "source": "zbd_04",
+          "locator": "Infobox, width row",
+          "state": "width published as 3.2 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2500,
+          "unit": "mm",
+          "source": "zbd_04",
+          "locator": "Infobox, height row",
+          "state": "height published as 2.5 m",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Type 6V150 diesel",
+          "unit": "text",
+          "source": "zbd_04",
+          "locator": "Infobox, engine row, ZBD-04 entry",
+          "state": "engine published as a Type 6V150 diesel, as published",
+          "grade": "claimed"
+        },
+        "net_power_kw": {
+          "value": 440,
+          "unit": "kW",
+          "source": "zbd_04",
+          "locator": "Infobox, engine row, ZBD-04 entry",
+          "state": "engine power published as 440 kW for the ZBD-04; no net basis stated",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 65,
+          "unit": "km/h",
+          "source": "zbd_04",
+          "locator": "Infobox, speed row, road entry",
+          "state": "road speed published as 65 km/h; the water speed is published as 20 km/h",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

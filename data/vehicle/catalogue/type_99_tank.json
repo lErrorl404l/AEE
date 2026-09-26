@@ -1,0 +1,96 @@
+{
+  "retrieved": "2026-09-26",
+  "note": "Catalogue capture for the held tier-5 English Wikipedia article on the Type 99 tank. Every value is grade claimed and the registry marks primary_held false. The article is a secondary compilation and is not a primary source.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "type_99_tank",
+      "canonical_name": "Type 99",
+      "maker": "Baotou Tank Plant",
+      "model": "ZTZ-99",
+      "variant": "Type 99A main battle tank",
+      "variant_id": "type_99_tank",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "China",
+      "era": "modern",
+      "aliases": [
+        "type 99",
+        "ztz-99",
+        "ztz99"
+      ],
+      "keywords": [
+        "ztz99",
+        "type 99 tank",
+        "chinese mbt"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 55000,
+          "unit": "kg",
+          "source": "type_99_tank",
+          "locator": "Infobox, weight row, Type 99A entry",
+          "state": "Type 99A weight published as 55 tonnes; the same row publishes 51 tonnes for the Type 98, and the tonne is taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 7600,
+          "unit": "mm",
+          "source": "type_99_tank",
+          "locator": "Infobox, length row, hull entry",
+          "state": "hull length published as 7.6 m; the length with the gun forward is published as 11 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3700,
+          "unit": "mm",
+          "source": "type_99_tank",
+          "locator": "Infobox, width row, hull entry",
+          "state": "hull width published as 3.7 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2350,
+          "unit": "mm",
+          "source": "type_99_tank",
+          "locator": "Infobox, height row, hull entry",
+          "state": "hull height published as 2.35 m",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "150HB liquid-cooled V12 twin-turbo diesel",
+          "unit": "text",
+          "source": "type_99_tank",
+          "locator": "Infobox, engine row",
+          "state": "engine published as a 150HB liquid-cooled V12 twin-turbo diesel of 33.9 litres, as published",
+          "grade": "claimed"
+        },
+        "engine_displacement_l": {
+          "value": 33.9,
+          "unit": "L",
+          "source": "type_99_tank",
+          "locator": "Infobox, engine row",
+          "state": "engine displacement published as 33.9 litre",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 1500,
+          "unit": "hp",
+          "source": "type_99_tank",
+          "locator": "Infobox, engine_power row",
+          "state": "engine power published as 1,500 hp (1,119 kW); maximum rating, no net basis",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 76,
+          "unit": "km/h",
+          "source": "type_99_tank",
+          "locator": "Infobox, speed row, road entry",
+          "state": "road speed published as 76 km/h",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}
