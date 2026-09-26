@@ -14,9 +14,12 @@ So this function builds SSF from what the engine does expose:
   h  from getCenterOfMass (v1.12+), which returns the CG offset in model
      space.  Its z component is the CG height above the model centre; the
      model centre sits at boundingCenter, so the CG height above the
-     wheel-contact plane needs the bounding box.  The modest error of
-     measuring from the model centre is absorbed by the dynamic factor,
-     and the value is clamped to a sane band.
+     wheel-contact plane needs the bounding box.  The engine returns a
+     two- or three-element box, [[min],[max]] or
+     [[min],[max],boundingSphereDiameter], and only the first two elements
+     are corners.  The modest error of measuring from the model centre is
+     absorbed by the dynamic factor, and the value is clamped to a sane
+     band.
 
   T  from the class table below.  A hand table is used deliberately: the
      wheel memory points carry positions but their naming is not uniform
@@ -93,7 +96,8 @@ if (_com isEqualType [] && {count _com == 3}) then {
     // offset.  The underside is the wheel-contact plane for a ground
     // vehicle to within suspension travel.
     private _bb = boundingBoxReal _vehicle;
-    if (_bb isEqualType [] && {count _bb == 2}) then {
+    // Accept a two- or three-element box and read only the two corners.
+    if (_bb isEqualType [] && {(count _bb == 2) || {count _bb == 3}}) then {
         private _bbMin = _bb select 0;
         private _bbMax = _bb select 1;
         private _halfHeight = ((_bbMax select 2) - (_bbMin select 2)) * 0.5;

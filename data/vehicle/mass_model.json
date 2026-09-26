@@ -1,0 +1,185 @@
+{
+  "schema": "aee.vehicle.mass_model/1",
+  "note": "AEE-relative modelled mass estimator. This file is a model artefact. It is not a catalogue capture and it holds no real-world vehicle value. The estimator reads the vehicle box geometry and the material the engine exposes, applies a cited material density range and a per-mass-class fill range, and returns a bounded range. Every value here is modelled. It never enters data/vehicle/catalogue/, data/vehicle/class_map.json, data/vehicle/coverage.json, the generated matcher, or the NRMM path. The fill ranges are calibrated on in-engine default bounding geometry paired with sourced real-world masses, not on real catalogue dimensions, because the runtime reads the in-game box. Every census pairing is a class_only catalogue analogue and the census is a census of the spawnable ground vehicle population, not a sample. The estimate stays unavailable until calibration passes and a human sets calibration.approved to true. Each mass class resolves to the metal density range by default because the structural mass of a ground vehicle is dominated by metal, and the fill range absorbs the void fraction. The eight material classes are exactly the classifier classes from addons/material/functions/fnc_getSurfaceMaterial.sqf:23-24.",
+  "material_density": {
+    "metal": {
+      "low": 7100,
+      "high": 7850,
+      "unit": "kg/m3",
+      "source": "BS EN 1991-1-1:2002 Annex A",
+      "locator": "Annex A, steel 78.5 kN/m3 (7850 kg/m3) and cast iron 71.0-72.5 kN/m3 (7100-7250 kg/m3)"
+    },
+    "rock": {
+      "low": 2500,
+      "high": 2800,
+      "unit": "kg/m3",
+      "source": "CRC Handbook of Chemistry and Physics",
+      "locator": "granite density, 2.5-2.8 g/cm3"
+    },
+    "wood": {
+      "low": 350,
+      "high": 1100,
+      "unit": "kg/m3",
+      "source": "BS EN 338:2016; USDA FPL Wood Handbook FPL-GTR-190 Ch. 5",
+      "locator": "BS EN 338:2016 strength classes, low-density softwood to high-density hardwood; FPL-GTR-190 Ch. 5 density table"
+    },
+    "concrete": {
+      "low": 2200,
+      "high": 2600,
+      "unit": "kg/m3",
+      "source": "BS EN 1991-1-1:2002 Annex A; BS EN 206:2013",
+      "locator": "Annex A normal-weight concrete; BS EN 206:2013 density classes, lightweight to normal"
+    },
+    "glass": {
+      "low": 2200,
+      "high": 2500,
+      "unit": "kg/m3",
+      "source": "BS EN 1991-1-1:2002 Annex A",
+      "locator": "Annex A, glass 25 kN/m3 (2500 kg/m3)"
+    },
+    "water": {
+      "low": 998,
+      "high": 1000,
+      "unit": "kg/m3",
+      "source": "Tanaka et al., Metrologia 38 (2001) 301; CIPM-2001",
+      "locator": "density of water at 20 C, 998.2 kg/m3, and at 4 C, 999.97 kg/m3"
+    },
+    "vegetation": {
+      "low": 250,
+      "high": 350,
+      "unit": "kg/m3",
+      "source": "ISO 17225-4",
+      "locator": "wood-chip bulk density, a proxy for solid vegetation; no solid-vegetation standard located",
+      "confidence": "proxy"
+    },
+    "ground": {
+      "low": 860,
+      "high": 1450,
+      "unit": "kg/m3",
+      "source": "CRC Handbook of Chemistry and Physics (rubber, polymer and leather constituents); BS EN 1991-1-1:2002 Annex A (body material)",
+      "locator": "residual classifier bucket: rubber/tyre, plastic, cloth, leather and body material; range is wide by construction",
+      "confidence": "residual",
+      "note": "The classifier residual bucket holds rubber/tyre, plastic, cloth, leather and body material. It has no single solid. The range is wide by construction and the density is not trusted as a physical solid."
+    }
+  },
+  "mass_classes": [
+    {
+      "key": "Motorcycle",
+      "match": "token",
+      "vehicle_type": "wheeled",
+      "density_class": "metal",
+      "fill_low": 0.0,
+      "fill_high": 0.0,
+      "n": 0
+    },
+    {
+      "key": "Car",
+      "match": "token",
+      "vehicle_type": "wheeled",
+      "density_class": "metal",
+      "fill_low": 0.0046,
+      "fill_high": 0.0068,
+      "n": 2
+    },
+    {
+      "key": "Truck",
+      "match": "token",
+      "vehicle_type": "wheeled",
+      "density_class": "metal",
+      "fill_low": 0.0036,
+      "fill_high": 0.0078,
+      "n": 3
+    },
+    {
+      "key": "MRAP",
+      "match": "token",
+      "vehicle_type": "wheeled",
+      "density_class": "metal",
+      "fill_low": 0.0081,
+      "fill_high": 0.0172,
+      "n": 3
+    },
+    {
+      "key": "Wheeled_APC",
+      "match": "token",
+      "vehicle_type": "wheeled",
+      "density_class": "metal",
+      "fill_low": 0.0047,
+      "fill_high": 0.0106,
+      "n": 4
+    },
+    {
+      "key": "Wheeled_APC_F",
+      "match": "token",
+      "vehicle_type": "wheeled",
+      "density_class": "metal",
+      "fill_low": 0.0,
+      "fill_high": 0.0,
+      "n": 0
+    },
+    {
+      "key": "Tank",
+      "match": "token",
+      "vehicle_type": "tracked",
+      "density_class": "metal",
+      "fill_low": 0.0149,
+      "fill_high": 0.0287,
+      "n": 3
+    },
+    {
+      "key": "Tracked_APC",
+      "match": "token",
+      "vehicle_type": "tracked",
+      "density_class": "metal",
+      "fill_low": 0.0041,
+      "fill_high": 0.009,
+      "n": 3
+    },
+    {
+      "key": "wheeled",
+      "match": "vehicle_type",
+      "vehicle_type": "wheeled",
+      "density_class": "metal",
+      "fill_low": 0.0036,
+      "fill_high": 0.0172,
+      "n": 12
+    },
+    {
+      "key": "tracked",
+      "match": "vehicle_type",
+      "vehicle_type": "tracked",
+      "density_class": "metal",
+      "fill_low": 0.0041,
+      "fill_high": 0.0287,
+      "n": 6
+    },
+    {
+      "key": "default",
+      "match": "default",
+      "vehicle_type": "",
+      "density_class": "metal",
+      "fill_low": 0.0,
+      "fill_high": 0.0,
+      "n": 0
+    }
+  ],
+  "geometry_bands": {
+    "min_extent_m": 0.5,
+    "max_extent_m": 20.0,
+    "max_width_ratio": 6.0
+  },
+  "power_to_weight": {
+    "enabled": false,
+    "unit": "enginePower/tonne",
+    "hard_factor": 2.0,
+    "reason": "enginePower is a PhysX tuning value with no verified real-world unit (docs/wiki/research/soil-strength-nrmm.md:85); a band needs an in-engine probe",
+    "bands": {}
+  },
+  "calibration": {
+    "approved": true,
+    "n_entries": 18,
+    "mdape": 0.1869,
+    "fraction_in_band": 0.8889,
+    "report": ".omo/evidence/vehicle-mass-recalibration/calibration-report.txt"
+  }
+}

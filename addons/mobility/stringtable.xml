@@ -49,6 +49,14 @@
             <Original>Catchment Area</Original>
             <English>Catchment Area</English>
         </Key>
+        <Key ID="STR_AEE_Mobility_estimateVehicleMassEnabled_Description">
+            <Original>Show a bounded mass estimate for a ground vehicle that the sourced catalogue does not cover. The estimate is modelled, not documented. It uses the vehicle box size, a cited material density, and a calibrated fill factor. The switch is off until calibration passes and a human approves the model. A sourced catalogue weight always takes precedence. The estimate never replaces a documented weight.</Original>
+            <English>Show a bounded mass estimate for a ground vehicle that the sourced catalogue does not cover. The estimate is modelled, not documented. It uses the vehicle box size, a cited material density, and a calibrated fill factor. The switch is off until calibration passes and a human approves the model. A sourced catalogue weight always takes precedence. The estimate never replaces a documented weight.</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_estimateVehicleMassEnabled_Name">
+            <Original>Vehicle Mass Estimate</Original>
+            <English>Vehicle Mass Estimate</English>
+        </Key>
         <Key ID="STR_AEE_Mobility_flightTurbulence_Description">
             <Original>Apply atmospheric turbulence, gusts, and wind-shear forces to aircraft</Original>
             <English>Apply atmospheric turbulence, gusts, and wind-shear forces to aircraft</English>
