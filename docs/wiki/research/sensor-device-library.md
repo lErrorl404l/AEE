@@ -16,12 +16,13 @@ Key corrections that matter for the tube model:
 
 | Name | Country | Gen | Photocathode | Resolution | FOV | Weight_kg | Source |
 |---|---|---|---|---|---|---|---|
-| AN/PVS-5 | US | Gen 2 | S-25 (MX-9916) | 28 | 40 | 0.85 | nv-intl.com |
-| AN/PVS-7D | US | Gen 3 | GaAs (F5001) | 64 typ | 40 | 0.68 | Exelis datasheet |
+| AN/PVS-5 | US | Gen 2 | S-25 (MX-9916) | 28 | 40 unverified | 0.85 | nv-intl.com (distributor) |
+| AN/PVS-7D | US | Gen 3 | GaAs (F5001) | 64 typ | 40 unverified | 0.68 | Exelis, but the sheet found is for the PVS-7 not the 7D |
 | AN/PVS-14 | US | Gen 3 | GaAs (MX-11769) | 64-72 | 40 | 0.355 max | Elbit; MIL-PRF-49324D |
-| AN/PVS-15 | US | Gen 3 | GaAs (thin-film) | 45-64 | 40 | 0.726 | nitevis.com |
+| AN/PVS-15 | US | Gen 3 | GaAs (thin-film) | 45-64 | 40 unverified | 0.726 | nitevis.com (distributor) |
 | AN/PVS-31A BNVD | US | Gen 3 | GaAs WP | 64-72 (FOM 1600-2376) | 40 | <0.45 | L3Harris |
-| AN/PVS-31C | US | Gen 3+ unfilmed | GaAs P-45 | 72 min (FOM 2376) | 40 | <0.45 | L3Harris (SNR 33) |
+| BNVD-FUSED (F-BINO) | US | Gen 3 + LWIR | GaAs WP (PVS-31A tubes) | 64-72 | 40 I2 / 34 diag thermal | n/s | TNVC (distributor, no manufacturer corroboration) |
+| AN/PVS-31C | US | Gen 3+ unfilmed | GaAs P-45 | 72 min (FOM 2376) | 40 unverified | <0.45 | L3Harris (SNR 33, which is not a field-of-view spec) |
 | GPNVG-18 | US | Gen 3+ | 4x MX-10160 | 64-72 | 97H x 40V | 0.77-0.80 | L3Harris |
 | ENVG-B (AN/PSQ-42) | US | Gen 3 + LWIR | GaAs WP | 72 (FOM 2304) | 40 | <1.133 w/batt | L3Harris F6025 |
 | ENVG-III | US | Gen 3 + thermal | GaAs | n/s | 40 | n/s | army.mil |
@@ -34,6 +35,55 @@ Key corrections that matter for the tube model:
 | 1PN93-1..4 | RU | Gen 2+/3 | S-25/GaAs | n/s | 6-10 | 1.0-1.5 | ru.wiki |
 | 1PN138 | RU | Gen 2+/3 | n/s | n/s | 40 | 0.35 | Ratnik (27.5mm f/1.2) |
 | NVT-7/14 clones | CN | Gen 2+ | S-25 | 64-68 | 40 | 0.28-0.35 | NNVT tubes |
+
+Field of view: the axis is not published.  Elbit's AN/PVS-14 spec block
+reads "Field of View - 40 nominal" with "Objective Lens EFL 27 mm" and no
+axis, and L3Harris reads "Flexible 40 Field-Of-View" with no axis, so no
+manufacturer in this family pins the 40 to horizontal, vertical or diagonal.
+The one sheet that does name an axis is the L-3 Warrior Systems AN/PVS-31A
+sell sheet, which prints "40 +/- 2 deg. (horizontal & vertical)" and, on
+the same sheet, "This document consists of basic marketing information that
+is not defined as technical data".  A document that calls itself
+non-technical is not the citation that pins the axis, and 40 on both axes
+is not credible at Elbit's own 27 mm EFL, because it needs about a 27.8 mm
+image circle diagonal, which is larger than a 30 mm tube's usable area.
+40 diagonal at 27 mm EFL needs about 19.7 mm, which fits.  That is a
+consistency check on published inputs, not a source figure.  No horizontal
+or vertical figure is published separately anywhere in the family, so the
+aspect cannot be computed from real numbers.  Rows marked "unverified"
+carry a 40 for which no primary source was obtained; the row is kept
+because an absent row hides the gap and a marked row records it.
+
+- AN/PVS-5: the figure reaches AEE through a distributor listing, so no
+  manufacturer sheet was read for it.
+- AN/PVS-7D: the datasheet found is for the PVS-7, not the PVS-7D, and it
+  is a distributor sheet.  Exelis is inside Elbit and exelisinc.com does
+  not resolve, so the original sheet could not be obtained.
+- AN/PVS-15: the figure reaches AEE through a distributor listing, so no
+  manufacturer sheet was read for it.
+- AN/PVS-31C: the L3Harris material read gives the SNR 33 tube data, which
+  is not a field-of-view specification, so the 40 is not sourced.
+
+Standards coverage is not established.  MIL-PRF-49324D and STANAG 4347
+could not be read: the QuickSearch host fails and NATO STANAGs are not
+freely published.  The Elbit datasheet does cite MIL-PRF-49324D as the
+PVS-14 build spec, so that specification exists and is the right place to
+look, but its field-of-view clause is unread.  No claim is made here about
+whether a standard covers a fused channel's relative field of view.
+
+Fused devices: the documentation's word is OVERLAY, not a bounded window.
+L3Harris names "white-hot, black-hot and outline modes"; TNVC names "I2
+Only, Fused + NAV, I2 + NAV, and I2 Standby".  Both say the thermal is
+overlayed onto the I2 image, and no source describes a bounded window.
+The 34-diagonal thermal field against the PVS-31A's 40 makes the thermal
+channel geometrically NARROWER than the intensified side, 34/40 = 0.85 of
+it, which supports a bounded model on the numbers and not on the prose.  The
+BNVD-FUSED row is distributor-strength: no L3Harris or Army corroboration
+was found.  For the ENVG-B (AN/PSQ-42) there is NO published
+thermal-channel figure at all, because L3Harris publishes one fused 40
+covering both channels.  That figure is not split here, and the
+BNVD-FUSED's 34 is not borrowed for it, because the two are different
+device families.
 
 Tube generation physics (for fnc_applyNVGTubeModel):
 
