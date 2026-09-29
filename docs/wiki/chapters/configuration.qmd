@@ -193,6 +193,7 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_optics_solarGlareIntensity` | SLIDER | `1.0` | optics | Scale on god-ray brightness from solar glare |
 | `aee_optics_glareBlurMax` | SLIDER | `0.2` | optics | Veiling blur at peak solar glare |
 | `aee_optics_heatShimmerIntensity` | SLIDER | `0.04` | optics | Chromatic aberration from engine heat shimmer |
+| `aee_optics_exhaustShimmerAlpha` | SLIDER | `0.15` | optics | Peak alpha of the exhaust heat-shimmer billboard. Alpha is the only free lever, because fill rate is sprite count times sprite area |
 | `aee_optics_dewBlurMax` | SLIDER | `0.4` | optics | Lens-fog blur ceiling from condensation on optics |
 | `aee_optics_snowBlindnessIntensity` | SLIDER | `1.0` | optics | Scale on the snow blindness dazzle overlay |
 | `aee_optics_rainBlurScale` | SLIDER | `0.3` | optics | Rain-on-lens blur multiplier |

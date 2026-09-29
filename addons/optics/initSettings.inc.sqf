@@ -23,6 +23,8 @@ AEE_SETTING_SLIDER(glareBlurMax,"AEE Optics","Intensity",0,1,0.2,0);
 
 AEE_SETTING_SLIDER(heatShimmerIntensity,"AEE Optics","Intensity",0,0.2,0.04,0);
 
+AEE_SETTING_SLIDER(exhaustShimmerAlpha,"AEE Optics","Intensity",0,0.5,0.15,0);
+
 AEE_SETTING_SLIDER(dewBlurMax,"AEE Optics","Intensity",0,1,0.4,0);
 
 AEE_SETTING_SLIDER(snowBlindnessIntensity,"AEE Optics","Intensity",0,2,1.0,0);

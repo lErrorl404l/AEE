@@ -179,7 +179,7 @@
     },
     {
       "token": "Plane",
-      "kind": "mod_token",
+      "kind": "engine_base",
       "is_ground": false,
       "state": "excluded_non_ground",
       "variant": null,
