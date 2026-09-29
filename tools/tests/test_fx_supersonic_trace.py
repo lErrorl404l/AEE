@@ -349,5 +349,11 @@ class TestPostInitRegistrationIdempotence(unittest.TestCase):
         self.assertIn("AEE_LOG_INFO", body)
 
 
+# The Fired handler's round selection is asserted in
+# tools/tests/test_supersonic_trace.py::FiredHandlerScans, which owns that
+# contract.  It is not duplicated here, because two tests for one contract is
+# how they come to disagree.
+
+
 if __name__ == "__main__":
     unittest.main()
