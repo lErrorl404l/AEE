@@ -146,11 +146,23 @@ def scan_declarations() -> dict[str, set[str]]:
             name = m.group(1) or m.group(2) or m.group(3) or m.group(4)
             if name:
                 add(name, mod)
-    # 5. initSettings declarations (QGVAR(name) as setting key)
+    # 5. initSettings declarations.  Two forms declare a setting:
+    #      the hand-written [QGVAR(name), ...] call CBA_fnc_addSetting;
+    #      and the AEE_SETTING_* macros, which take the bare name and expand
+    #      QGVAR themselves.  Matching only the literal QGVAR(name) made the
+    #      macro form invisible, so ownership fell through to whichever module
+    #      CROSS-WROTE the name and the owning module's own read was reported
+    #      as a cross-module bug.  That is a false positive in the validator,
+    #      not a defect in the setting: fx owns aee_fx_severeWeatherBlur and
+    #      publishes a derived value into optics by design.
     for inc in ADDONS.glob("*/initSettings.inc.sqf"):
         text = strip_comments(inc.read_text(encoding="utf-8"))
         mod = inc.parent.name
         for m in re.finditer(r"QGVAR\((\w+)\)", text):
+            add(m.group(1), mod)
+        for m in re.finditer(
+            r"\bAEE_SETTING_(?:CHECKBOX|SLIDER)(?:_LOCAL)?\((\w+)\s*,", text
+        ):
             add(m.group(1), mod)
     # 6. Cross-module writes: setVariable [QEGVAR(M, name), ...] from any
     #    module declares (M, name).  Without this rule the fx module

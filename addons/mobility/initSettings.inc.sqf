@@ -15,203 +15,51 @@
     {}
 ] call CBA_fnc_addSetting;
 
-[
-    QGVAR(turbulenceScale),
-    "SLIDER",
-    [LLSTRING(turbulenceScale_Name), LLSTRING(turbulenceScale_Description)],
-    ["AEE Mobility", "Turbulence"],
-    [0, 3, 1, 1],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(turbulenceScale,"AEE Mobility","Turbulence",0,3,1,1);
 
-[
-    QGVAR(turbulenceRadius),
-    "SLIDER",
-    [LLSTRING(turbulenceRadius_Name), LLSTRING(turbulenceRadius_Description)],
-    ["AEE Mobility", "Turbulence"],
-    [500, 5000, 2000, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(turbulenceRadius,"AEE Mobility","Turbulence",500,5000,2000,0);
 
 // ── Traction ────────────────────────────────────────────────────────────────
-[
-    QGVAR(mudAccretionRate),
-    "SLIDER",
-    [LLSTRING(mudAccretionRate_Name), LLSTRING(mudAccretionRate_Description)],
-    ["AEE Mobility", "Hydrology"],
-    [0, 0.02, 0.002, 3],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(mudAccretionRate,"AEE Mobility","Hydrology",0,0.02,0.002,3);
 
-[
-    QGVAR(mudDecayRate),
-    "SLIDER",
-    [LLSTRING(mudDecayRate_Name), LLSTRING(mudDecayRate_Description)],
-    ["AEE Mobility", "Hydrology"],
-    [0.9, 1, 0.99, 2],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(mudDecayRate,"AEE Mobility","Hydrology",0.9,1,0.99,2);
 
-[
-    QGVAR(tractionScale),
-    "SLIDER",
-    [LLSTRING(tractionScale_Name), LLSTRING(tractionScale_Description)],
-    ["AEE Mobility", "Traction"],
-    [0.5, 1.5, 1.0, 1],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(tractionScale,"AEE Mobility","Traction",0.5,1.5,1.0,1);
 
 // ── Vehicle Performance ─────────────────────────────────────────────────────
-[
-    QGVAR(minEnginePower),
-    "SLIDER",
-    [LLSTRING(minEnginePower_Name), LLSTRING(minEnginePower_Description)],
-    ["AEE Mobility", "Traction"],
-    [0.1, 0.8, 0.3, 1],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(minEnginePower,"AEE Mobility","Traction",0.1,0.8,0.3,1);
 
 // ── Environment ─────────────────────────────────────────────────────────────
-[
-    QGVAR(routeRecoveryRate),
-    "SLIDER",
-    [LLSTRING(routeRecoveryRate_Name), LLSTRING(routeRecoveryRate_Description)],
-    ["AEE Mobility", "Route"],
-    [1, 1.01, 1.001, 3],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(routeRecoveryRate,"AEE Mobility","Route",1,1.01,1.001,3);
 
-[
-    QGVAR(routeDamageRate),
-    "SLIDER",
-    [LLSTRING(routeDamageRate_Name), LLSTRING(routeDamageRate_Description)],
-    ["AEE Mobility", "Route"],
-    [0, 0.0001, 0.00002, 5],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(routeDamageRate,"AEE Mobility","Route",0,0.0001,0.00002,5);
 
-[
-    QGVAR(riverResponseRate),
-    "SLIDER",
-    [LLSTRING(riverResponseRate_Name), LLSTRING(riverResponseRate_Description)],
-    ["AEE Mobility", "Hydrology"],
-    [0.01, 0.5, 0.1, 2],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(riverResponseRate,"AEE Mobility","Hydrology",0.01,0.5,0.1,2);
 
-[
-    QGVAR(rainAccumDecay),
-    "SLIDER",
-    [LLSTRING(rainAccumDecay_Name), LLSTRING(rainAccumDecay_Description)],
-    ["AEE Mobility", "Hydrology"],
-    [0.9, 1, 0.97, 2],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(rainAccumDecay,"AEE Mobility","Hydrology",0.9,1,0.97,2);
 
 // ── Brake fade (issue #133) ────────────────────────────────────────────────
-[
-    QGVAR(brakeCoolingTau),
-    "SLIDER",
-    [LLSTRING(brakeCoolingTau_Name), LLSTRING(brakeCoolingTau_Description)],
-    ["AEE Mobility", "Traction"],
-    [100, 900, 450, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(brakeCoolingTau,"AEE Mobility","Traction",100,900,450,0);
 
-[
-    QGVAR(brakeRotorMassKg),
-    "SLIDER",
-    [LLSTRING(brakeRotorMassKg_Name), LLSTRING(brakeRotorMassKg_Description)],
-    ["AEE Mobility", "Traction"],
-    [4, 40, 16, 1],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(brakeRotorMassKg,"AEE Mobility","Traction",4,40,16,1);
 
-[
-    QGVAR(brakeHeatFraction),
-    "SLIDER",
-    [LLSTRING(brakeHeatFraction_Name), LLSTRING(brakeHeatFraction_Description)],
-    ["AEE Mobility", "Traction"],
-    [0.1, 1, 0.6, 2],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(brakeHeatFraction,"AEE Mobility","Traction",0.1,1,0.6,2);
 
 // ── Hydrology (issue #24) ─────────────────────────────────────────────────
 // These drive the rainfall-runoff chain in fnc_calculateRiverWaterLevel.
 // The defaults are the operational values the models were calibrated on,
 // so the settings change the model rather than decorating it.
-[
-    QGVAR(riverSectionWidth_m),
-    "SLIDER",
-    [LLSTRING(riverSectionWidth_m_Name), LLSTRING(riverSectionWidth_m_Description)],
-    ["AEE Mobility", "Hydrology"],
-    [0.5, 50, 4, 1],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(riverSectionWidth_m,"AEE Mobility","Hydrology",0.5,50,4,1);
 
-[
-    QGVAR(tidalReach_m),
-    "SLIDER",
-    [LLSTRING(tidalReach_m_Name), LLSTRING(tidalReach_m_Description)],
-    ["AEE Mobility", "Hydrology"],
-    [500, 20000, 5000, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(tidalReach_m,"AEE Mobility","Hydrology",500,20000,5000,0);
 
-[
-    QGVAR(baseflowRate_perDay),
-    "SLIDER",
-    [LLSTRING(baseflowRate_perDay_Name), LLSTRING(baseflowRate_perDay_Description)],
-    ["AEE Mobility", "Hydrology"],
-    [0.01, 1, 0.2, 2],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(baseflowRate_perDay,"AEE Mobility","Hydrology",0.01,1,0.2,2);
 
-[
-    QGVAR(catchmentArea_m2),
-    "SLIDER",
-    [LLSTRING(catchmentArea_m2_Name), LLSTRING(catchmentArea_m2_Description)],
-    ["AEE Mobility", "Hydrology"],
-    [10000, 5000000, 250000, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(catchmentArea_m2,"AEE Mobility","Hydrology",10000,5000000,250000,0);
 
-[
-    QGVAR(bedSlope),
-    "SLIDER",
-    [LLSTRING(bedSlope_Name), LLSTRING(bedSlope_Description)],
-    ["AEE Mobility", "Hydrology"],
-    [0.0001, 0.05, 0.001, 5],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(bedSlope,"AEE Mobility","Hydrology",0.0001,0.05,0.001,5);
 
-[
-    QGVAR(manningN),
-    "SLIDER",
-    [LLSTRING(manningN_Name), LLSTRING(manningN_Description)],
-    ["AEE Mobility", "Hydrology"],
-    [0.01, 0.1, 0.035, 3],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(manningN,"AEE Mobility","Hydrology",0.01,0.1,0.035,3);
 
 // ── Vehicle Rollover ───────────────────────────────────────────────────────
 // The threshold physics is the Static Stability Factor (NHTSA) with the
@@ -227,76 +75,20 @@
     {}
 ] call CBA_fnc_addSetting;
 
-[
-    QGVAR(rolloverDynamicFactor),
-    "SLIDER",
-    [LLSTRING(rolloverDynamicFactor_Name), LLSTRING(rolloverDynamicFactor_Description)],
-    ["AEE Mobility", "Rollover"],
-    [0.7, 0.9, 0.8, 2],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(rolloverDynamicFactor,"AEE Mobility","Rollover",0.7,0.9,0.8,2);
 
-[
-    QGVAR(rolloverHoldFrames),
-    "SLIDER",
-    [LLSTRING(rolloverHoldFrames_Name), LLSTRING(rolloverHoldFrames_Description)],
-    ["AEE Mobility", "Rollover"],
-    [1, 60, 10, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(rolloverHoldFrames,"AEE Mobility","Rollover",1,60,10,0);
 
-[
-    QGVAR(rolloverTorqueScale),
-    "SLIDER",
-    [LLSTRING(rolloverTorqueScale_Name), LLSTRING(rolloverTorqueScale_Description)],
-    ["AEE Mobility", "Rollover"],
-    [0.05, 1.0, 0.25, 2],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(rolloverTorqueScale,"AEE Mobility","Rollover",0.05,1.0,0.25,2);
 
-[
-    QGVAR(rolloverRadius),
-    "SLIDER",
-    [LLSTRING(rolloverRadius_Name), LLSTRING(rolloverRadius_Description)],
-    ["AEE Mobility", "Rollover"],
-    [10, 200, 50, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(rolloverRadius,"AEE Mobility","Rollover",10,200,50,0);
 
 // ── Off-road terrain drag ──────────────────────────────────────────────────
-[
-    QGVAR(terrainDragEnabled),
-    "CHECKBOX",
-    [LLSTRING(terrainDragEnabled_Name), LLSTRING(terrainDragEnabled_Description)],
-    ["AEE Mobility", "Terrain"],
-    true,
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_CHECKBOX(terrainDragEnabled,"AEE Mobility","Terrain",true);
 
-[
-    QGVAR(terrainDragScale),
-    "SLIDER",
-    [LLSTRING(terrainDragScale_Name), LLSTRING(terrainDragScale_Description)],
-    ["AEE Mobility", "Terrain"],
-    [0.05, 1.0, 0.3, 2],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(terrainDragScale,"AEE Mobility","Terrain",0.05,1.0,0.3,2);
 
-[
-    QGVAR(terrainRadius),
-    "SLIDER",
-    [LLSTRING(terrainRadius_Name), LLSTRING(terrainRadius_Description)],
-    ["AEE Mobility", "Terrain"],
-    [10, 200, 50, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(terrainRadius,"AEE Mobility","Terrain",10,200,50,0);
 
 // ── Vehicle Mass Estimate ──────────────────────────────────────────────────
 // The estimate is modelled, not documented. A sourced catalogue weight always

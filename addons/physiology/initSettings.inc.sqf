@@ -8,78 +8,22 @@
 // that only pays off at 50+ settings.
 
 // ── Heat Stress HUD ────────────────────────────────────────────────────────
-[
-    QGVAR(HUDWarningThreshold),
-    "SLIDER",
-    [LLSTRING(HUDWarningThreshold_Name), LLSTRING(HUDWarningThreshold_Description)],
-    ["AEE Physiology", "Thresholds"],
-    [0, 1, 0.3, 1],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(HUDWarningThreshold,"AEE Physiology","Thresholds",0,1,0.3,1);
 
 // ── Dehydration ────────────────────────────────────────────────────────────
-[
-    QGVAR(SweatRateScale),
-    "SLIDER",
-    [LLSTRING(SweatRateScale_Name), LLSTRING(SweatRateScale_Description)],
-    ["AEE Physiology", "Rates"],
-    [0, 3, 1.0, 1],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(SweatRateScale,"AEE Physiology","Rates",0,3,1.0,1);
 
-[
-    QGVAR(RehydrationRate),
-    "SLIDER",
-    [LLSTRING(RehydrationRate_Name), LLSTRING(RehydrationRate_Description)],
-    ["AEE Physiology", "Rates"],
-    [0, 0.5, 0.05, 2],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(RehydrationRate,"AEE Physiology","Rates",0,0.5,0.05,2);
 
-[
-    QGVAR(HeatStrokeSensitivity),
-    "SLIDER",
-    [LLSTRING(HeatStrokeSensitivity_Name), LLSTRING(HeatStrokeSensitivity_Description)],
-    ["AEE Physiology", "Thresholds"],
-    [0, 0.1, 0.03, 2],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(HeatStrokeSensitivity,"AEE Physiology","Thresholds",0,0.1,0.03,2);
 
 // ── Altitude ───────────────────────────────────────────────────────────────
-[
-    QGVAR(RapidAscentThreshold),
-    "SLIDER",
-    [LLSTRING(RapidAscentThreshold_Name), LLSTRING(RapidAscentThreshold_Description)],
-    ["AEE Physiology", "Thresholds"],
-    [50, 500, 150, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(RapidAscentThreshold,"AEE Physiology","Thresholds",50,500,150,0);
 
-[
-    QGVAR(AMSOffsetAltitude),
-    "SLIDER",
-    [LLSTRING(AMSOffsetAltitude_Name), LLSTRING(AMSOffsetAltitude_Description)],
-    ["AEE Physiology", "Thresholds"],
-    [1500, 4000, 2500, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(AMSOffsetAltitude,"AEE Physiology","Thresholds",1500,4000,2500,0);
 
 // ── Hypoxia ────────────────────────────────────────────────────────────────
-[
-    QGVAR(HypoxiaRecovery),
-    "SLIDER",
-    [LLSTRING(HypoxiaRecovery_Name), LLSTRING(HypoxiaRecovery_Description)],
-    ["AEE Physiology", "Rates"],
-    [0, 1, 0.1, 1],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(HypoxiaRecovery,"AEE Physiology","Rates",0,1,0.1,1);
 
 // ── Cross-sensitivity (dehydration <-> hypoxia) ───────────────────────────
 [
@@ -103,15 +47,7 @@
 ] call CBA_fnc_addSetting;
 
 // ── Scent ──────────────────────────────────────────────────────────────────
-[
-    QGVAR(ScentIntensity),
-    "SLIDER",
-    [LLSTRING(ScentIntensity_Name), LLSTRING(ScentIntensity_Description)],
-    ["AEE Physiology", "Scent"],
-    [0, 2, 1.0, 1],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(ScentIntensity,"AEE Physiology","Scent",0,2,1.0,1);
 
 // ── Fatigue / sleep ────────────────────────────────────────────────────────
 [
@@ -237,12 +173,4 @@
 // built from the component: aee_<component>_logDebug.  Declaring it here,
 // in its own addon, is what makes that name correct.  QGVAR(logDebug)
 // resolves to aee_physiology_logDebug.
-[
-    QGVAR(logDebug),
-    "CHECKBOX",
-    [LLSTRING(logDebug_Name), LLSTRING(logDebug_Description)],
-    ["AEE Physiology", "Diagnostics"],
-    false,
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_CHECKBOX(logDebug,"AEE Physiology","Diagnostics",false);
