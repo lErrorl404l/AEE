@@ -148,19 +148,22 @@ def emissivity_radiant_correction(emissivity):
 # ─── Thermal contrast mirrors ───────────────────────────────────────────────
 
 
-def thermal_contrast(delta_t, rain=0.0, fog=0.0, humidity=0.0, air_temp=15.0):
+def thermal_contrast(rain=0.0, fog=0.0, humidity=0.0, air_temp=15.0):
     """Mirror of fnc_calculateThermalContrast.
 
-    contrast = (deltaT / 8) min 1.0
+    DEGRADATION ONLY, base 1.0.  The engine already renders the native
+    thermal image with its own gain, so this stage adds no base gain: the
+    clear-air value is exactly 1.0, which is also the consumer's declared
+    default (fnc_applyThermalVision.sqf:79).  An earlier revision derived a
+    base from the vehicle-minus-ground gap over an arbitrary 8 C span; that
+    was an undocumented second gain stage and it is removed.
+
+    contrast = 1.0
     × (1 - rain × 0.4) × (1 - fog × 0.6) × (1 - humidity × 0.3)
     heat >35: contrast -= ((T - 35) / 10) × 0.7
     cold <5:  contrast *= 1.2, min 1.0
-
-    8 °C span (was 5): the engine already renders the native thermal
-    image with its own gain; this stage only adds environmental
-    degradation.  A 5 °C span double-amplified the frame to pure white.
     """
-    c = min(delta_t / 8.0, 1.0)
+    c = 1.0
     c *= 1 - rain * 0.4
     c *= 1 - fog * 0.6
     c *= 1 - humidity * 0.3
@@ -1068,60 +1071,63 @@ class TestEmissivityRadiant(unittest.TestCase):
 
 
 class TestThermalContrast(unittest.TestCase):
-    """Thermal contrast from object-background delta-T."""
+    """Thermal contrast is a DEGRADATION factor with base 1.0.
 
-    def test_full_contrast_at_8C_gap(self):
-        # 8°C difference → contrast = 1.0.
-        self.assertAlmostEqual(thermal_contrast(8), 1.0, places=6)
+    The engine renders the native thermal image with its own gain, so this
+    stage adds none: clear conditions publish exactly 1.0.  The old base
+    (delta-T / 8) was an undocumented second gain stage and is removed.
+    """
 
-    def test_half_contrast_at_4C_gap(self):
-        # 4°C difference → contrast = 0.5.
-        self.assertAlmostEqual(thermal_contrast(4), 0.5, places=6)
+    def test_clear_conditions_publish_unity(self):
+        # No weather, no extreme heat, no cold: the factor is exactly 1.0,
+        # which is also the consumer's declared default.
+        self.assertAlmostEqual(thermal_contrast(), 1.0, places=6)
 
-    def test_zero_gap(self):
-        # No temperature difference → zero contrast.
-        self.assertAlmostEqual(thermal_contrast(0), 0.0, places=6)
-
-    def test_large_gap_saturates(self):
-        # 20°C gap still caps at 1.0.
-        self.assertAlmostEqual(thermal_contrast(20), 1.0, places=6)
+    def test_the_source_has_no_base_gain(self):
+        code = _code_only(
+            _read_sqf("fnc_calculateThermalContrast.sqf", addon="thermal")
+        )
+        self.assertIn("private _contrast = 1.0", code)
+        self.assertNotIn("_deltaT", code)
+        self.assertNotIn("_avgVehicleTemp", code)
+        self.assertNotIn("objectTemperatures", code)
 
     def test_rain_reduces_contrast(self):
-        # Heavy rain (0.8): contrast × (1 - 0.8 × 0.4) = × 0.68.
-        c_clear = thermal_contrast(8, rain=0)
-        c_rain = thermal_contrast(8, rain=0.8)
+        # Heavy rain (0.8): factor × (1 - 0.8 × 0.4) = × 0.68.
+        c_clear = thermal_contrast(rain=0)
+        c_rain = thermal_contrast(rain=0.8)
         self.assertLess(c_rain, c_clear)
         self.assertAlmostEqual(c_rain, 0.68, places=2)
 
     def test_fog_reduces_contrast(self):
-        # Dense fog (0.8): contrast × (1 - 0.8 × 0.6) = × 0.52.
-        c_fog = thermal_contrast(8, fog=0.8)
-        self.assertAlmostEqual(c_fog, 0.52, places=2)
+        # Dense fog (0.8): factor × (1 - 0.8 × 0.6) = × 0.52.
+        self.assertAlmostEqual(thermal_contrast(fog=0.8), 0.52, places=2)
 
     def test_humidity_reduces_contrast(self):
-        # 80% RH: contrast × (1 - 0.8 × 0.3) = × 0.76.
-        c_humid = thermal_contrast(8, humidity=0.8)
-        self.assertAlmostEqual(c_humid, 0.76, places=2)
+        # 80% RH: factor × (1 - 0.8 × 0.3) = × 0.76.
+        self.assertAlmostEqual(thermal_contrast(humidity=0.8), 0.76, places=2)
 
     def test_heat_flattens_contrast(self):
-        # Hot air (40°C): contrast reduced.
-        c_hot = thermal_contrast(8, air_temp=40)
-        c_mild = thermal_contrast(8, air_temp=20)
+        # Hot air (40°C): the gradient flattens, so the factor drops.
+        c_hot = thermal_contrast(air_temp=40)
+        c_mild = thermal_contrast(air_temp=20)
         self.assertLess(c_hot, c_mild)
 
-    def test_cold_boosts_contrast(self):
-        # Cold air (0°C): contrast boosted by ×1.2, capped at 1.0.
-        c_cold = thermal_contrast(4, air_temp=0)
-        c_mild = thermal_contrast(4, air_temp=15)
-        self.assertGreater(c_cold, c_mild)
+    def test_cold_partly_restores_weather_contrast(self):
+        # Cold widens the gap, so it can restore part of a factor that rain
+        # lowered.  At air 0 C with rain 0.8: 0.68 × 1.2 = 0.816.
+        c_cold = thermal_contrast(rain=0.8, air_temp=0)
+        c_rain = thermal_contrast(rain=0.8, air_temp=15)
+        self.assertGreater(c_cold, c_rain)
+        self.assertAlmostEqual(c_cold, 0.816, places=3)
 
     def test_never_negative(self):
         # Worst case: extreme heat, rain, fog.
-        c = thermal_contrast(0, rain=1, fog=1, humidity=1, air_temp=45)
+        c = thermal_contrast(rain=1, fog=1, humidity=1, air_temp=45)
         self.assertGreaterEqual(c, 0)
 
     def test_never_exceeds_one(self):
-        c = thermal_contrast(10, air_temp=0)
+        c = thermal_contrast(air_temp=0)
         self.assertLessEqual(c, 1.0)
 
 
@@ -2711,10 +2717,14 @@ class TestSQFSync(unittest.TestCase):
         )
 
     # ── Thermal contrast (fnc_calculateThermalContrast.sqf) ──
-    def test_contrast_span_is_8(self):
-        self._assert_in_sqf(
-            "fnc_calculateThermalContrast.sqf", ["/ 8"], "delta-T span", addon="thermal"
-        )
+    def test_contrast_has_no_base_gain(self):
+        # The scene-gain stage must not amplify: the engine renders the
+        # native image with its own gain, so the base is exactly 1.0 and
+        # there is no delta-T span.
+        code = _code_only(_read_sqf("fnc_calculateThermalContrast.sqf", "thermal"))
+        self.assertIn("private _contrast = 1.0", code)
+        self.assertNotIn("/ 8", code)
+        self.assertNotIn("_deltaT", code)
 
     def test_contrast_attenuation_constants(self):
         self._assert_in_sqf(
@@ -2732,13 +2742,14 @@ class TestSQFSync(unittest.TestCase):
             addon="thermal",
         )
 
-    def test_contrast_vehicle_only_average(self):
-        self._assert_in_sqf(
-            "fnc_calculateThermalContrast.sqf",
-            ['isKindOf "Man"', "isEqualType objNull", "avgVehicleTemp"],
-            "vehicle-only scene average",
-            addon="thermal",
-        )
+    def test_contrast_base_is_degradation_only(self):
+        # The vehicle-only scene average that fed the old base gain is gone;
+        # the base is 1.0 and only the environmental terms move it.
+        code = _code_only(_read_sqf("fnc_calculateThermalContrast.sqf", "thermal"))
+        self.assertNotIn('isKindOf "Man"', code)
+        self.assertNotIn("_avgVehicleTemp", code)
+        self.assertNotIn("avgGroundTemp", code)
+        self.assertIn("private _contrast = 1.0", code)
 
     def test_netd_constants(self):
         self._assert_in_sqf(
@@ -4035,44 +4046,32 @@ class TestFusionPipeline(unittest.TestCase):
     display.  Locked against the SQF source and the shipped rvmats."""
 
     def test_fusion_emissive_bands_shipped(self):
-        # 16 pre-baked fusion emissive bands, grey * 500 (band_100 =
-        # the A3TI full-white emissive 500), matching the thermal band
-        # names so the quantisation is shared.
+        # 256 GENERATED fusion emissive bands, grey * 500 (band_255 = the
+        # A3TI full-white emissive 500).  The ladder is produced by
+        # tools/gen_fusion_emissive_materials.py, so the count is auditable
+        # and the set is reproducible.  The old 16 hand-written bands named
+        # by grey percent were a texture-count convenience about fourteen
+        # times coarser than the sensor resolves; 256 is the 8-bit grey of a
+        # real thermal display.
         import re
         from pathlib import Path
 
         data_dir = Path(__file__).resolve().parents[2] / "addons" / "thermal" / "data"
-        bands = {
-            "00": 0,
-            "07": 0.066667,
-            "13": 0.133333,
-            "20": 0.2,
-            "27": 0.266667,
-            "33": 0.333333,
-            "40": 0.4,
-            "47": 0.466667,
-            "53": 0.533333,
-            "60": 0.6,
-            "67": 0.666667,
-            "73": 0.733333,
-            "80": 0.8,
-            "87": 0.866667,
-            "93": 0.933333,
-            "100": 1.0,
-        }
-        for pct, grey in bands.items():
-            f = data_dir / f"fusion_emissive_{pct}.rvmat"
+        emissives = []
+        for band in range(256):
+            f = data_dir / f"fusion_emissive_{band:03d}.rvmat"
             self.assertTrue(f.exists(), f"missing {f.name}")
             text = f.read_text(encoding="utf-8")
-            expected = grey * 500.0
+            expected = band / 255.0 * 500.0
             m = re.search(r"emmisive\[\]\s*=\s*\{([\d.]+)", text)
             if m is None:
                 self.fail(f"emissive missing in {f.name}")
+            got = float(m.group(1))
             self.assertAlmostEqual(
-                float(m.group(1)),
+                got,
                 expected,
                 places=3,
-                msg=f"{f.name} emissive must be grey*500 ({expected})",
+                msg=f"{f.name} emissive must be band/255*500 ({expected})",
             )
             # Pink guard (issue #204): the Stage1 texture must be pure
             # white (1,1,1,1), never grey.  A grey Stage1 composited over
@@ -4084,6 +4083,25 @@ class TestFusionPipeline(unittest.TestCase):
                 text,
                 f"{f.name} Stage1 must be pure white (pink fix, #204)",
             )
+            emissives.append(got)
+
+        # White-hot polarity: the ladder is MONOTONIC from black to the A3TI
+        # full white.  This is the property the quantiser depends on, so it
+        # is asserted rather than assumed.
+        self.assertEqual(emissives[0], 0.0)
+        self.assertAlmostEqual(emissives[-1], 500.0, places=6)
+        for a, b in zip(emissives, emissives[1:]):
+            self.assertLessEqual(a, b, "the emissive ladder is not monotonic")
+
+        # The 16 old hand-written percent names are gone, not left as dead
+        # weight in the PBO.
+        prefix = "fusion_emissive_"
+        stale = sorted(
+            p.name
+            for p in data_dir.glob(f"{prefix}*.rvmat")
+            if len(p.stem) - len(prefix) != 3
+        )
+        self.assertEqual(stale, [], f"stale old band files remain: {stale}")
 
     def test_fusion_uses_same_physics_state(self):
         # The overlay reads the SAME selTemperature + AGC window as the
@@ -4496,7 +4514,10 @@ class TestThermalEdgeKernel(unittest.TestCase):
         contrast = min(1.0, max(0.0, (signal - background) / background))
         if not math.isfinite(contrast):
             return False, -1
-        threshold = min(1.0, max(1.0 / 16.0, threshold))
+        # The threshold is clamped to the 0..1 contrast scale, NOT floored at
+        # the 1/16 display band.  The band floor was the DISPLAY quantity the
+        # sensor decision must not use.
+        threshold = min(1.0, max(0.0, threshold))
         return contrast >= threshold, contrast
 
     def test_source_guards_present(self):
@@ -4507,14 +4528,27 @@ class TestThermalEdgeKernel(unittest.TestCase):
         self.assertIn("if (_background <= 0) exitWith { [false, -1] };", code)
         # The non-finite signal guard.
         self.assertIn("if !(finite _signal) exitWith { [false, -1] };", code)
-        # The threshold is clamped into one band to one, not extrapolated.
-        self.assertIn("_threshold max _bandStep min 1", code)
+        # The threshold is clamped to the 0..1 scale, NOT floored at the
+        # 1/16 display band.  The band floor was the conflated quantity this
+        # sensor decision must not use.
+        self.assertIn("_threshold max 0 min 1", code)
+        self.assertNotIn("_bandStep", code)
         # The refusal is not a contrast in 0..1.
         self.assertIn("[false, -1]", code)
         # The value form of the type test, never the quoted type name.
         self.assertIn("isEqualType 0", code)
         # The decision and the contrast are returned together.
         self.assertIn("[_edge, _contrast]", code)
+
+    def test_default_threshold_is_sensor_scale_not_a_display_band(self):
+        # The physical finding, frozen.  The declared default is the uncooled
+        # 0.05 C reference at a multiple of 5 and a 15 C background, which is
+        # far finer than one display band.  A future "fix" that raised the
+        # default to 0.0625 would fail here.
+        default = self._default_threshold()
+        self.assertGreater(default, 0.0)
+        self.assertLess(default, 1.0 / 16.0)
+        self.assertAlmostEqual(default, 0.004349, places=5)
 
     def test_the_kernel_does_not_read_the_scene_window(self):
         # The specific error being corrected: a scene statistic must never be
@@ -4550,14 +4584,19 @@ class TestThermalEdgeKernel(unittest.TestCase):
             self.assertFalse(detected, f"{bad!r} must not detect")
             self.assertEqual(contrast, -1, f"{bad!r} must refuse")
 
-    def test_threshold_of_zero_and_above_one_is_clamped(self):
+    def test_threshold_on_the_scale_is_clamped_but_not_band_floored(self):
         signal, background = 60.0, 40.0
-        # Zero is handled: it clamps up to the one-band minimum.
+        # The contrast here is (60 - 40) / 40 = 0.5.  The raw sensor
+        # reference (about 0.004349) and a zero threshold must give the SAME
+        # decision.  They cannot if 0.004349 were floored up to 0.0625, which
+        # is what the old display-band floor did.
+        sensor_reference = self._default_threshold()
         self.assertEqual(
+            self._edge(signal, background, sensor_reference),
             self._edge(signal, background, 0.0),
-            self._edge(signal, background, 1.0 / 16.0),
         )
-        # Above one clamps down to one.
+        # Above one clamps down to one, so nothing detects a 0.5 contrast.
+        self.assertFalse(self._edge(signal, background, 5.0)[0])
         self.assertEqual(
             self._edge(signal, background, 5.0),
             self._edge(signal, background, 1.0),
@@ -4577,6 +4616,258 @@ class TestThermalEdgeKernel(unittest.TestCase):
         old_a = min(1.0, max(0.0, (signal - scene_a[0]) / (scene_a[1] - scene_a[0])))
         old_b = min(1.0, max(0.0, (signal - scene_b[0]) / (scene_b[1] - scene_b[0])))
         self.assertNotAlmostEqual(old_a, old_b, places=3)
+
+
+class TestSensorThresholdKernel(unittest.TestCase):
+    """The sensor detection threshold kernel (fnc_calculateSensorThreshold.sqf).
+
+    The threshold is closed arithmetic on the band-radiance fit in
+    fnc_calculateBandRadiance: differentiating L = A * T^n gives
+    dL/dT = n * L / T, so the relative contrast from a temperature
+    difference dT is n * dT / T_bg.  With dT = snrMultiple * NETD the
+    threshold is snrMultiple * netdC * n / tBgK.
+
+    The multiple is an ENGINEERING CHOICE.  NETD is DEFINED as the
+    signal-to-noise 1 point (Geminoptics, "NETD"), and reliable detection
+    sits at 3 to 10 times it, a margin the record does not standardise.
+
+    The kernel is pure arithmetic over scalars, so the docker probe
+    aee_p69_netd_probe.sqf measures it headless on the dedicated server.
+    """
+
+    _KERNEL = (
+        _REPO_ROOT
+        / "addons"
+        / "thermal"
+        / "functions"
+        / "solver"
+        / "fnc_calculateSensorThreshold.sqf"
+    )
+    _RADIANCE = (
+        _REPO_ROOT
+        / "addons"
+        / "thermal"
+        / "functions"
+        / "solver"
+        / "fnc_calculateBandRadiance.sqf"
+    )
+
+    @classmethod
+    def setUpClass(cls):
+        cls.code = _code_only(cls._KERNEL.read_text(encoding="utf-8"))
+        cls.radiance_code = _code_only(cls._RADIANCE.read_text(encoding="utf-8"))
+
+    @staticmethod
+    def _n(t_bg_k):
+        # The segment selection, mirrored from the fit.  The fit clamps its
+        # temperature to 240..460 K before selecting, which cannot change the
+        # selected segment for a real background.
+        n = 5.0121  # night: 250-290 K
+        if t_bg_k > 290:
+            n = 4.4580  # day: 290-330 K
+        if t_bg_k > 330:
+            n = 3.7101  # hot: 330-450 K
+        return n
+
+    def threshold(self, netd_c, snr, t_bg_c):
+        # Mirror of the kernel body, pinned by test_source_guards_present.
+        if not (math.isfinite(netd_c) and math.isfinite(snr) and math.isfinite(t_bg_c)):
+            return -1
+        if netd_c <= 0 or snr <= 0:
+            return -1
+        t_bg_k = t_bg_c + 273.15
+        if t_bg_k <= 0:
+            return -1
+        return snr * netd_c * self._n(t_bg_k) / t_bg_k
+
+    def test_matches_the_closed_form_on_a_hand_computed_case(self):
+        # 5 * 0.05 * 5.0121 / 288.15 = 0.0043489...
+        got = self.threshold(0.05, 5, 15)
+        self.assertAlmostEqual(got, 5 * 0.05 * 5.0121 / 288.15, places=12)
+        self.assertAlmostEqual(got, 0.004349, places=6)
+
+    def test_a_cooler_device_gives_a_lower_threshold(self):
+        # A cooled InSb/MCT device (0.02 C) is MORE sensitive than the
+        # uncooled microbolometer (0.05 C), so its threshold is LOWER.
+        # This is the property that makes the edge decision per-device.
+        uncooled = self.threshold(0.05, 5, 15)
+        cooled = self.threshold(0.02, 5, 15)
+        self.assertLess(cooled, uncooled)
+        self.assertAlmostEqual(cooled, 0.001739, places=6)
+
+    def test_a_higher_multiple_gives_a_higher_threshold(self):
+        self.assertLess(self.threshold(0.05, 5, 15), self.threshold(0.05, 10, 15))
+        self.assertAlmostEqual(self.threshold(0.05, 10, 15), 0.008697, places=6)
+
+    def test_the_threshold_falls_below_one_display_band(self):
+        # THE physical finding, frozen so it cannot be "corrected" later.
+        # One band is 1/16 = 0.0625.  The sensor reference is about fourteen
+        # times finer, so the sensor and the display are different quantities
+        # and the edge decision must use the sensor value.
+        band = 1.0 / 16.0
+        for snr in (5, 10):
+            got = self.threshold(0.05, snr, 15)
+            self.assertLess(got, band)
+            self.assertGreater(band / got, 7.0)
+
+    def test_the_exponent_follows_the_background_segment(self):
+        # 5 C sits in the night segment, 35 C in the day segment and 60 C in
+        # the hot segment.  The exponent must change with the background.
+        night = self.threshold(0.05, 5, 5)
+        day = self.threshold(0.05, 5, 35)
+        hot = self.threshold(0.05, 5, 60)
+        self.assertAlmostEqual(night, 5 * 0.05 * 5.0121 / 278.15, places=12)
+        self.assertAlmostEqual(day, 5 * 0.05 * 4.4580 / 308.15, places=12)
+        self.assertAlmostEqual(hot, 5 * 0.05 * 3.7101 / 333.15, places=12)
+
+    def test_a_non_positive_netd_is_refused(self):
+        for bad in (0.0, -0.05):
+            self.assertEqual(self.threshold(bad, 5, 15), -1)
+
+    def test_a_non_positive_multiple_is_refused(self):
+        for bad in (0.0, -3.0):
+            self.assertEqual(self.threshold(0.05, bad, 15), -1)
+
+    def test_a_non_finite_input_is_refused(self):
+        for bad in (float("nan"), float("inf"), float("-inf")):
+            self.assertEqual(self.threshold(bad, 5, 15), -1)
+            self.assertEqual(self.threshold(0.05, bad, 15), -1)
+            self.assertEqual(self.threshold(0.05, 5, bad), -1)
+
+    def test_a_background_at_absolute_zero_or_below_is_refused(self):
+        for bad in (-273.15, -300.0):
+            self.assertEqual(self.threshold(0.05, 5, bad), -1)
+
+    def test_source_guards_and_exponents_present(self):
+        code = self.code
+        # The closed form, verbatim.
+        self.assertIn("_snrMultiple * _netdC * _n / _tBgK", code)
+        # Every refusal is -1.
+        self.assertIn("exitWith { -1 }", code)
+        # The value form of the type test, never the quoted type name.
+        self.assertIn("isEqualType 0", code)
+        # `finite` guards every input: SQF NaN compares false against all.
+        self.assertIn("if !(finite _netdC) exitWith { -1 };", code)
+        self.assertIn("if !(finite _snrMultiple) exitWith { -1 };", code)
+        self.assertIn("if !(finite _tBgC) exitWith { -1 };", code)
+        # The exponents are pinned to the radiance fit, not re-derived.
+        for exponent in ("5.0121", "4.4580", "3.7101"):
+            self.assertIn(exponent, code)
+            self.assertIn(exponent, self.radiance_code)
+        # The segment boundaries match the fit.
+        self.assertIn("if (_tBgK > 290) then", code)
+        self.assertIn("if (_tBgK > 330) then", code)
+
+
+class TestSpatialResolutionKernel(unittest.TestCase):
+    """The Johnson-criteria spatial resolver (fnc_resolveThermalTarget.sqf).
+
+    The edge decision is CONTRAST ONLY, and its own header says a strong
+    contrast edge can still be too small to resolve.  This kernel is that
+    missing half.  It derives the instantaneous field of view from the
+    published relation FOV = 24/mag degrees (sensor-device-library.md),
+    converts the target's angular size to pixels, and reports the Johnson
+    task level (STANAG 4347 Ed. 1) at about 50 percent probability:
+    detection 1.0 line pair (2 pixels), recognition 4.0 (8 pixels),
+    identification 6.4 (12.8 pixels).  It invents no range and no MRTD
+    curve.  The docker probe aee_p71_johnson_probe.sqf measures the real
+    kernel headless; this mirror pins the arithmetic.
+    """
+
+    _KERNEL = (
+        _REPO_ROOT
+        / "addons"
+        / "thermal"
+        / "functions"
+        / "solver"
+        / "fnc_resolveThermalTarget.sqf"
+    )
+
+    @classmethod
+    def setUpClass(cls):
+        cls.code = _code_only(cls._KERNEL.read_text(encoding="utf-8"))
+
+    def _resolve(self, angle_rad, res_x, mag):
+        if not (
+            math.isfinite(angle_rad) and math.isfinite(res_x) and math.isfinite(mag)
+        ):
+            return False, 0, 0.0
+        if angle_rad < 0 or res_x <= 0 or mag < 1:
+            return False, 0, 0.0
+        ifov = (24.0 / mag) / res_x
+        pixels = math.degrees(angle_rad) / ifov
+        lp = pixels / 2.0
+        level = 0
+        if lp >= 1.0:
+            level = 1
+        if lp >= 4.0:
+            level = 2
+        if lp >= 6.4:
+            level = 3
+        return level >= 1, level, lp
+
+    def test_source_guards_and_constants_present(self):
+        code = self.code
+        self.assertIn("_fovDeg = 24 / _mag", code)
+        self.assertIn("_linePairs = _pixels / 2", code)
+        self.assertIn("if (_linePairs >= 1.0) then", code)
+        self.assertIn("if (_linePairs >= 4.0) then", code)
+        self.assertIn("if (_linePairs >= 6.4) then", code)
+        self.assertIn("isEqualType 0", code)
+        self.assertIn("if !(finite _targetAngleRad) exitWith { [false, 0, 0] };", code)
+        self.assertIn("if (_mag < 1) exitWith { [false, 0, 0] };", code)
+        # It must not invent an MRTD value.
+        self.assertNotIn("mrtd", code.lower())
+
+    def test_person_at_300m_through_4x_is_recognition(self):
+        # 0.5 m critical dimension through a 4x optic on a 640x480 detector:
+        # FOV = 6 deg, IFOV = 0.009375 deg/px, angle = 0.5/300 rad.
+        got = self._resolve(0.5 / 300.0, 640, 4)
+        self.assertTrue(got[0])
+        self.assertEqual(got[1], 2)
+        self.assertAlmostEqual(got[2], 5.092958, places=4)
+
+    def test_person_at_200m_through_4x_is_identification(self):
+        got = self._resolve(0.5 / 200.0, 640, 4)
+        self.assertEqual(got[1], 3)
+        self.assertAlmostEqual(got[2], 7.639437, places=4)
+
+    def test_person_beyond_detection_range_is_unresolved(self):
+        # At 1600 m the person spans under one line pair, so contrast alone
+        # would not be enough.
+        got = self._resolve(0.5 / 1600.0, 640, 4)
+        self.assertFalse(got[0])
+        self.assertEqual(got[1], 0)
+        self.assertLess(got[2], 1.0)
+
+    def test_the_detection_boundary_is_two_pixels(self):
+        self.assertTrue(self._resolve(0.5 / 1527.0, 640, 4)[0])
+        self.assertFalse(self._resolve(0.5 / 1529.0, 640, 4)[0])
+
+    def test_a_unity_goggle_is_coarser_than_a_4x_optic(self):
+        angle = 0.5 / 200.0
+        self.assertLess(
+            self._resolve(angle, 640, 1)[2], self._resolve(angle, 640, 4)[2]
+        )
+
+    def test_a_lower_resolution_detector_is_coarser(self):
+        angle = 0.5 / 200.0
+        self.assertLess(
+            self._resolve(angle, 320, 4)[2], self._resolve(angle, 640, 4)[2]
+        )
+
+    def test_refusals(self):
+        for angle, res_x, mag in (
+            (-0.001, 640, 4),
+            (0.001, 0, 4),
+            (0.001, -640, 4),
+            (0.001, 640, 0.5),
+            (float("nan"), 640, 4),
+            (0.001, float("inf"), 4),
+        ):
+            got = self._resolve(angle, res_x, mag)
+            self.assertFalse(got[0], f"{angle},{res_x},{mag} must refuse")
+            self.assertEqual(got[1], 0)
 
 
 class TestThermalEdgeWiring(unittest.TestCase):
@@ -4613,11 +4904,20 @@ class TestThermalEdgeWiring(unittest.TestCase):
             / "fnc_applyFusionOverlay.sqf"
         ).read_text(encoding="utf-8")
         code = _code_only(overlay)
-        # The kernel is called with the selection radiance and a local
-        # background radiance.
+        # The kernel is called with the selection radiance, a local
+        # background radiance, AND the sensor-derived threshold, so the
+        # decision is per-device rather than a fixed constant.
         self.assertIn(
             "call FUNC(evaluateThermalEdge)", code, "the edge kernel is not wired"
         )
+        self.assertIn(
+            "[_entryRad, _localBg, _sensorThreshold] call FUNC(evaluateThermalEdge)",
+            code,
+            "the edge call must pass the sensor threshold as a third argument",
+        )
+        # The device and its threshold are resolved in the overlay.
+        self.assertIn("calculateSensorThreshold", code)
+        self.assertIn("getThermalDeviceProperties", code)
         # The brightness ladder still owns the material slot...
         material_lines = [l for l in code.split("\n") if "setObjectMaterial" in l]
         self.assertTrue(material_lines, "the material swap is gone")
@@ -4626,11 +4926,61 @@ class TestThermalEdgeWiring(unittest.TestCase):
                 "_edge", line, "the edge state overwrote the brightness ladder"
             )
         self.assertIn("fusion_emissive_%1.rvmat", code)
-        self.assertIn("_bandPct", code)
+        self.assertIn("_mats select _band", code)
         # ...and the edge is published as SEPARATE state, keyed like the
         # selection temperature.
         self.assertIn("QGVAR(selThermalEdge)", code)
         self.assertIn("_edgeMap set [_entryKey", code)
+
+    def test_device_is_resolved_once_per_tick_not_per_object(self):
+        overlay = (
+            _REPO_ROOT
+            / "addons"
+            / "thermal"
+            / "functions"
+            / "fusion"
+            / "fnc_applyFusionOverlay.sqf"
+        ).read_text(encoding="utf-8")
+        code = _code_only(overlay)
+        # The resolver and the threshold derivation must sit ABOVE the
+        # `nearObjects` object loop, so they run once per tick.  If either
+        # moved inside the loop it would resolve the same device once per
+        # object.
+        self.assertLess(
+            code.index("getThermalDeviceProperties"), code.index("nearObjects")
+        )
+        self.assertLess(
+            code.index("calculateSensorThreshold"), code.index("nearObjects")
+        )
+
+    def test_spatial_resolution_is_wired_into_the_edge(self):
+        # A contrast edge is necessary and NOT sufficient.  The overlay must
+        # call the Johnson-criteria kernel and publish the verdict together
+        # with the contrast decision.
+        overlay = (
+            _REPO_ROOT
+            / "addons"
+            / "thermal"
+            / "functions"
+            / "fusion"
+            / "fnc_applyFusionOverlay.sqf"
+        ).read_text(encoding="utf-8")
+        code = _code_only(overlay)
+        self.assertIn(
+            "[_targetAngleRad, _deviceResX, _mag] call FUNC(resolveThermalTarget)",
+            code,
+            "the spatial-resolution kernel is not wired into the edge path",
+        )
+        self.assertIn("boundingBoxReal", code)
+        self.assertIn("_deviceResX = _dev param [1, 640]", code)
+        # The published edge is the contrast decision AND the resolvability.
+        self.assertIn("(_edgeResult select 0) && _resolvable", code)
+        # ...and the material slot is still written ONLY from the brightness
+        # band, never from the edge or the spatial verdict.
+        material_lines = [l for l in code.split("\n") if "setObjectMaterial" in l]
+        for line in material_lines:
+            self.assertNotIn("_edge", line)
+            self.assertNotIn("_resolvable", line)
 
 
 class TestFusionCapabilityAcceptance(unittest.TestCase):
@@ -4700,6 +5050,238 @@ class TestFusionCapabilityAcceptance(unittest.TestCase):
 
     def test_empty_config_is_refused(self):
         self.assertFalse(self._accepts([], []))
+
+
+# ─── Atmospheric transmission and the radiance common-mode ─────────────────
+# Roberts, Biberman & Selby 1976 (IDA P-1184, DTIC ADA025377, Applied Optics
+# 15(9) 2085) give the clean-air extinction; J. Geophys. Res. 2010JD015505
+# gives the two-term water-vapour continuum; Minkina & Klecha 2016, J. Sens.
+# Sens. Syst. 5, 17-23, Eq. (1) gives the square-root long-wave model whose
+# three published anchors the kernel must reproduce.  The mirrors below are
+# pinned to the SQF by test_source_constants_and_three_term_form.
+
+
+def _atmos_es_hpa(t_c):
+    """Magnus saturation vapour pressure (Bolton 1980), hPa."""
+    return 6.112 * math.exp(17.67 * t_c / (t_c + 243.5))
+
+
+def atmospheric_transmission(
+    range_m, rh_pct=50.0, t_c=15.0, fog=0.0, rain=0.0, rho=1.225
+):
+    """Mirror of fnc_calculateAtmosphericTransmission.sqf.
+
+    Returns -1 for an unusable input, matching the SQF refusal.  The
+    square-root form is deliberate: one constant extinction cannot meet all
+    three published anchors, because the implied extinction falls with range.
+    """
+    for value in (range_m, rh_pct, t_c, fog, rain, rho):
+        if not isinstance(value, (int, float)) or not math.isfinite(value):
+            return -1
+    if range_m < 0:
+        return -1
+    if rho <= 0:
+        return -1
+    if range_m == 0:
+        return 1.0
+    rh = min(max(rh_pct, 0.0), 100.0)
+    fog = min(max(fog, 0.0), 1.0)
+    rain = min(max(rain, 0.0), 1.0)
+
+    alpha_ref = 0.008  # per sqrt(m), Minkina & Klecha LW declared default
+    d_cal = 1.0  # m, the paper's 1 m calibration distance
+    co2_km = 0.02  # km^-1, Roberts 1976 CO2 over 8-12 um
+    a_foreign = 0.023571  # km^-1/torr, from the Roberts 4..14 torr endpoints
+    b_self = 3.5714e-4  # km^-1/torr^2, from the same two endpoints
+    rho0 = 1.225  # kg/m^3
+    fog_km = 5.0  # km^-1 per unit fog density, DECLARED DEFAULT
+    rain_km = 0.5  # km^-1 per unit rain scalar, DECLARED DEFAULT
+    hpa_to_torr = 0.750062
+
+    e_torr = _atmos_es_hpa(t_c) * (rh / 100.0) * hpa_to_torr
+    e_ref = _atmos_es_hpa(15.0) * 0.5 * hpa_to_torr
+    rho_rel = rho / rho0
+    beta_clean = co2_km + a_foreign * e_torr * rho_rel + b_self * e_torr * e_torr
+    beta_ref = co2_km + a_foreign * e_ref + b_self * e_ref * e_ref
+    alpha_eff = alpha_ref * (beta_clean / beta_ref)
+    beta_extra_km = fog_km * fog + rain_km * rain
+    sqrt_part = max(math.sqrt(range_m) - math.sqrt(d_cal), 0.0)
+    linear_part = max((range_m - d_cal) / 1000.0, 0.0)
+    optical_depth = alpha_eff * sqrt_part + beta_extra_km * linear_part
+    return min(max(math.exp(-optical_depth), 0.0), 1.0)
+
+
+def band_radiance_fit(t_k):
+    """Mirror of the three-segment Planck fit in fnc_calculateBandRadiance."""
+    t_k = max(t_k, 240.0)
+    if t_k <= 290.0:
+        return 2.152412e-11 * t_k**5.0121
+    if t_k <= 330.0:
+        return 4.971094e-10 * t_k**4.4580
+    return 3.885869e-08 * t_k**3.7101
+
+
+def band_radiance_atm(
+    t_surf_c, eps, t_air_c, f_ground=0.5, t_ground_c=None, tau=1.0, t_path_c=15.0
+):
+    """Mirror of the completed three-term fnc_calculateBandRadiance.sqf.
+
+    W = eps*tau*W_obj + (1-eps)*tau*W_refl + (1-tau)*W_atm.  The path radiance
+    W_atm is the Planck band radiance at the path temperature, the isothermal
+    homogeneous-layer solution of the Schwarzschild transfer equation.
+    """
+    eps = max(0.05, min(1.0, eps))
+    if t_ground_c is None:
+        t_ground_c = t_air_c
+    tau = max(0.0, min(1.0, tau))
+    t_surf_k = t_surf_c + 273.15
+    t_air_k = max(200.0, min(350.0, t_air_c + 273.15))
+    t_ground_k = t_ground_c + 273.15
+    sky_k = t_air_k - 35.0  # clear-sky 8-14 um band (Tebo 1965)
+    t_refl_k = f_ground * t_ground_k + (1 - f_ground) * sky_k
+    w_obj = band_radiance_fit(t_surf_k)
+    w_refl = band_radiance_fit(t_refl_k)
+    t_path_k = max(200.0, min(350.0, t_path_c + 273.15))
+    w_atm = band_radiance_fit(t_path_k)
+    return tau * (eps * w_obj + (1 - eps) * w_refl) + (1 - tau) * w_atm
+
+
+class TestAtmosphericTransmissionKernel(unittest.TestCase):
+    """The atmospheric transmission kernel and the radiance common-mode.
+
+    fnc_calculateAtmosphericTransmission implements the Minkina and Klecha
+    2016 square-root long-wave model, with the water-vapour and carbon
+    dioxide extinction of Roberts et al. 1976 and the two-term continuum of
+    J. Geophys. Res. 2010JD015505.  Temperature enters through the Magnus
+    saturation curve, because the water vapour partial pressure at a fixed
+    relative humidity rises steeply with temperature.
+
+    The three published anchors are 0.9306, 0.7828 and 0.5724 at 100 m, 1000 m
+    and 5000 m at 15 C and 50 percent relative humidity.  The radiance kernel
+    then multiplies its emitted and reflected terms by tau and adds the path
+    radiance, so a target and its local background at the same range keep
+    their DIFFERENCE scaled by exactly tau (the path term cancels).
+    """
+
+    _KERNEL = _THERMAL / "solver" / "fnc_calculateAtmosphericTransmission.sqf"
+    _RADIANCE = _THERMAL / "solver" / "fnc_calculateBandRadiance.sqf"
+
+    @classmethod
+    def setUpClass(cls):
+        cls.code = _code_only(cls._KERNEL.read_text(encoding="utf-8"))
+        cls.radiance_code = _code_only(cls._RADIANCE.read_text(encoding="utf-8"))
+
+    # ── The published anchors ──
+    def test_all_three_published_anchors(self):
+        # Minkina & Klecha 2016, long-wave, 15 C and 50 percent relative
+        # humidity.  Tolerance 1e-3: the published values are rounded to four
+        # decimals and the exact form differs from them by at most 7e-5.
+        for d, want in ((100, 0.9306), (1000, 0.7828), (5000, 0.5724)):
+            got = atmospheric_transmission(d, 50, 15)
+            self.assertAlmostEqual(got, want, delta=1e-3, msg=f"{d} m")
+
+    def test_zero_length_path_is_transparent(self):
+        self.assertEqual(atmospheric_transmission(0), 1.0)
+
+    def test_falls_monotonically_with_range(self):
+        values = [atmospheric_transmission(d) for d in range(0, 6000, 100)]
+        for a, b in zip(values, values[1:]):
+            self.assertLessEqual(b, a)
+
+    def test_falls_as_humidity_rises(self):
+        dry = atmospheric_transmission(1000, 10, 15)
+        wet = atmospheric_transmission(1000, 90, 15)
+        self.assertLess(wet, dry)
+
+    def test_falls_as_temperature_rises_at_fixed_humidity(self):
+        # The water-vapour mechanism: at fixed RH, e_s rises steeply with T,
+        # so beta_H2O rises and transmission falls.  This is why a model that
+        # holds beta constant is wrong.
+        cold = atmospheric_transmission(1000, 50, 5)
+        warm = atmospheric_transmission(1000, 50, 35)
+        self.assertLess(warm, cold)
+
+    def test_refusals(self):
+        self.assertEqual(atmospheric_transmission(-1), -1)
+        self.assertEqual(atmospheric_transmission(1000, 50, 15, 0, 0, 0), -1)
+        for bad in (float("nan"), float("inf"), float("-inf")):
+            self.assertEqual(atmospheric_transmission(bad), -1)
+            self.assertEqual(atmospheric_transmission(1000, bad), -1)
+            self.assertEqual(atmospheric_transmission(1000, 50, bad), -1)
+
+    def test_source_constants_and_guards(self):
+        code = self.code
+        for token in (
+            "0.008",
+            "0.02",
+            "0.023571",
+            "3.5714e-4",
+            "_fogKm",
+            "_rainKm",
+            "6.112",
+            "17.67",
+            "243.5",
+            "_alphaRef * (_betaClean / _betaRef)",
+        ):
+            self.assertIn(token, code, f"transmission kernel lost {token}")
+        self.assertIn("exitWith { -1 }", code)
+        self.assertIn("if !(finite _rangeM) exitWith { -1 };", code)
+
+    # ── The radiance kernel: old behaviour and the new dimming ──
+    def test_transmission_one_reproduces_the_old_result(self):
+        old = band_radiance_atm(37.0, 0.92, 15.0, 0.5, 15.0, 1.0, 15.0)
+        inert = band_radiance_atm(37.0, 0.92, 15.0, 0.5, 15.0)
+        self.assertAlmostEqual(old, inert, places=12)
+
+    def test_a_transmission_below_one_dims_the_emitted_terms_by_that_factor(self):
+        old = band_radiance_atm(37.0, 0.92, 15.0, 0.5, 15.0, 1.0, 15.0)
+        tau = 0.6
+        new = band_radiance_atm(37.0, 0.92, 15.0, 0.5, 15.0, tau, 15.0)
+        w_atm = band_radiance_fit(15.0 + 273.15)
+        # The emitted and reflected terms are dimmed by exactly tau; the path
+        # radiance is added on top.
+        self.assertAlmostEqual(new, tau * old + (1 - tau) * w_atm, places=12)
+
+    # ── The common-mode property (CRITICAL) ──
+    def test_same_range_difference_scales_by_exactly_tau(self):
+        tau, t_path = 0.7, 15.0
+        t0 = band_radiance_atm(40.0, 0.92, 15.0, 0.5, 15.0, 1.0, t_path)
+        b0 = band_radiance_atm(0.0, 0.92, 15.0, 0.5, 15.0, 1.0, t_path)
+        ta = band_radiance_atm(40.0, 0.92, 15.0, 0.5, 15.0, tau, t_path)
+        ba = band_radiance_atm(0.0, 0.92, 15.0, 0.5, 15.0, tau, t_path)
+        self.assertAlmostEqual(ta - ba, tau * (t0 - b0), places=12)
+        # The path term is added to the target AND the background identically.
+        self.assertAlmostEqual(ta - tau * t0, ba - tau * b0, places=12)
+
+    def test_applying_tau_to_the_target_alone_would_fail_the_common_mode(self):
+        tau, t_path = 0.7, 15.0
+        t0 = band_radiance_atm(40.0, 0.92, 15.0, 0.5, 15.0, 1.0, t_path)
+        b0 = band_radiance_atm(0.0, 0.92, 15.0, 0.5, 15.0, 1.0, t_path)
+        t_full = band_radiance_atm(40.0, 0.92, 15.0, 0.5, 15.0, tau, t_path)
+        # The WRONG model: tau on the target only, the background untouched.
+        # The test above would catch this, so this asserts the wrong model is
+        # detectably different rather than silently acceptable.
+        wrong = t_full - b0
+        self.assertNotAlmostEqual(wrong, tau * (t0 - b0), places=6)
+
+    def test_source_three_term_form(self):
+        rc = self.radiance_code
+        self.assertIn("_tau * (_eps * _wObj + (1 - _eps) * _wRefl)", rc)
+        self.assertIn("(1 - _tau) * _wAtm", rc)
+        self.assertIn("_tPathK call _fnRad", rc)
+
+    def test_overlay_links_transmission_into_the_edge(self):
+        overlay = (_THERMAL / "fusion" / "fnc_applyFusionOverlay.sqf").read_text(
+            encoding="utf-8"
+        )
+        code = _code_only(overlay)
+        self.assertIn("calculateAtmosphericTransmission", code)
+        self.assertIn("_tau, _tAir] call FUNC(calculateBandRadiance)", code)
+        # The edge signal is the ATMOSPHERE-INCLUDED radiance (item 3), and
+        # the display ladder keeps the unattenuated one (item 2), so the
+        # material slot does not move with range.
+        self.assertIn("private _entryRad = (_solved select _i) select 3;", code)
+        self.assertIn("private _entryBright = (_solved select _i) select 2;", code)
 
 
 if __name__ == "__main__":
