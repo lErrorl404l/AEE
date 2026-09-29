@@ -2967,6 +2967,10 @@ private _p29Pass = 0;
     // vapour trace renderer exits silently at hasInterface on a server, so the
     // decision leg is measured on the headless-callable kernel instead.
     execVM "aee_p65_trace_probe.sqf";
+    // PHASE 66 lives in aee_p66_airload_probe.sqf for the same reason: the
+    // exhaust shimmer renderer exits at hasInterface on a server, so the air
+    // power resolution is measured on the headless-callable kernel instead.
+    execVM "aee_p66_airload_probe.sqf";
     [{diag_log text "[AEE-TEST] DONE";}, [], 8] call CBA_fnc_waitAndExecute;
         }, [_t1], 5] call CBA_fnc_waitAndExecute;
     }, [], 7] call CBA_fnc_waitAndExecute;

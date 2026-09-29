@@ -34,6 +34,7 @@ REPO = Path(__file__).resolve().parents[2]
 KERNEL = REPO / "addons/mobility/functions/fnc_calculateThermalRefraction.sqf"
 PLUME = REPO / "addons/mobility/functions/fnc_calculateExhaustPlume.sqf"
 LOAD = REPO / "addons/mobility/functions/fnc_calculateEngineLoad.sqf"
+AIRLOAD = REPO / "addons/mobility/functions/fnc_calculateAirEngineLoad.sqf"
 MIRAGE = REPO / "addons/optics/functions/fx/fnc_applyMirageFX.sqf"
 GLARE = REPO / "addons/optics/functions/fx/fnc_applySolarGlareFX.sqf"
 SHIMMER = REPO / "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf"
@@ -41,6 +42,7 @@ SHIMMER = REPO / "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf"
 KERNEL_SRC = KERNEL.read_text(encoding="utf-8")
 PLUME_SRC = PLUME.read_text(encoding="utf-8")
 LOAD_SRC = LOAD.read_text(encoding="utf-8")
+AIRLOAD_SRC = AIRLOAD.read_text(encoding="utf-8")
 SHIMMER_SRC = SHIMMER.read_text(encoding="utf-8")
 
 
@@ -77,6 +79,30 @@ def _tier_rows():
     for key, nums in re.findall(r'\["(\w+)",\s*\[([^\]]+)\]\]', block.group(1)):
         rows[key] = [float(x) for x in nums.split(",")]
     return rows
+
+
+def _brace_block_end(text, token):
+    """Return the index just past the } that closes the block after `token`.
+
+    Counting braces proves the air branch sits AFTER the difficultyEnabledRTD
+    block CLOSES, not merely after the token appears.  A positional find()
+    cannot tell an inner statement from a sibling one.
+    """
+    start = text.find(token)
+    if start < 0:
+        raise AssertionError(f"token not found: {token}")
+    open_idx = text.find("{", start)
+    if open_idx < 0:
+        raise AssertionError(f"no block follows {token}")
+    depth = 0
+    for j in range(open_idx, len(text)):
+        if text[j] == "{":
+            depth += 1
+        elif text[j] == "}":
+            depth -= 1
+            if depth == 0:
+                return j
+    raise AssertionError(f"unbalanced block follows {token}")
 
 
 class ThermalRefractionKernel(unittest.TestCase):
@@ -886,6 +912,220 @@ class EngineLoadWiring(unittest.TestCase):
         for line in alpha_lines:
             self.assertNotIn("load", line.lower())
             self.assertNotIn("power", line.lower())
+
+
+class AirEngineLoadKernel(unittest.TestCase):
+    """The derived air-engine-load kernel.
+
+    An aircraft in the simple flight model has no RTD reader, so the load is
+    DERIVED from a real power balance: the drag power for a wing and the ideal
+    induced hover power for a rotor.  The kernel is pure arithmetic over
+    scalars plus one class test, so this suite reads its constants from the
+    real SQF, re-derives both balances from first principles, and pins the
+    reference airframes, the clamp and the guards.
+    """
+
+    def setUp(self):
+        self.code = _code_only(AIRLOAD_SRC)
+
+    def _default(self, name):
+        return float(re.search(rf'\["{name}",\s*([0-9.]+)', self.code).group(1))
+
+    # ── the declared defaults ──────────────────────────────────────────
+    def test_defaults_are_the_declared_ones(self):
+        self.assertEqual(self._default("_ratedPowerW"), 150000.0)
+        self.assertEqual(self._default("_dragAreaM2"), 0.7)
+        self.assertEqual(self._default("_rotorDiscAreaM2"), 50.0)
+        self.assertEqual(self._default("_idleFraction"), 0.05)
+        self.assertEqual(self._default("_airDensity"), 1.225)
+
+    # ── the two balances ───────────────────────────────────────────────
+    def test_wing_is_the_drag_power_cube(self):
+        self.assertIn(
+            "_dragW = 0.5 * _rho * _dragAreaM2 * _speed * _speed * _speed",
+            self.code,
+        )
+        self.assertIn("_load = _dragW / _ratedPowerW", self.code)
+
+    def test_rotor_is_the_momentum_theory_hover_power(self):
+        self.assertIn("_weightN = _massKg * 9.80665", self.code)
+        self.assertIn(
+            "_hoverW = (_weightN ^ 1.5) / sqrt (2 * _rho * _rotorDiscAreaM2)",
+            self.code,
+        )
+        self.assertIn("_load = _hoverW / _ratedPowerW", self.code)
+
+    def test_class_selects_the_balance_inside_the_kernel(self):
+        # The branch is inside the kernel, so the kernel stays object-free.
+        self.assertIn('_rotor = _class isKindOf "Helicopter"', self.code)
+
+    # ── the PA-28 wing reference ───────────────────────────────────────
+    def test_pa28_reference_at_134kw(self):
+        # 0.5 * 1.225 * 0.688 * 58^3 = 82226 W; / 134000 = 0.61.
+        drag = 0.5 * 1.225 * 0.688 * 58**3
+        self.assertAlmostEqual(drag / 134000.0, 0.61, places=2)
+
+    def test_pa28_reference_at_the_repo_default(self):
+        # Same arithmetic against the kernel's own 150000 W default.  The
+        # exact figure is 82226 / 150000 = 0.548, which is 0.55 to two places.
+        drag = 0.5 * 1.225 * 0.688 * 58**3
+        self.assertAlmostEqual(drag / 150000.0, 0.55, places=2)
+
+    def test_pa28_at_30ms_is_under_its_cruise(self):
+        slow = 0.5 * 1.225 * 0.688 * 30**3
+        fast = 0.5 * 1.225 * 0.688 * 58**3
+        self.assertLess(slow, fast)
+
+    # ── the R44 rotor reference ────────────────────────────────────────
+    def test_r44_reference_is_the_ideal_hover_fraction(self):
+        # 5688^1.5 / sqrt (2 * 1.225 * 81) = 30.5 kW; / 131000 = 0.23.
+        hover = (580 * 9.80665) ** 1.5 / math.sqrt(2 * 1.225 * 81)
+        self.assertAlmostEqual(hover / 131000.0, 0.23, places=2)
+
+    def test_rotor_is_a_stated_lower_bound(self):
+        upper = AIRLOAD_SRC.upper()
+        self.assertIn("LOWER BOUND", upper)
+        self.assertIn("IDEAL", upper)
+
+    # ── the guards and the clamp ───────────────────────────────────────
+    def test_non_positive_rated_power_is_refused(self):
+        self.assertIn("if (_ratedPowerW <= 0) exitWith { -1 };", self.code)
+
+    def test_non_positive_mass_is_refused(self):
+        self.assertIn("if (_massKg <= 0) exitWith { -1 };", self.code)
+
+    def test_non_positive_disc_area_is_refused(self):
+        self.assertIn("if (_rotorDiscAreaM2 <= 0) exitWith { -1 };", self.code)
+
+    def test_fraction_is_clamped_and_floored(self):
+        self.assertIn("private _idle = _idleFraction max 0 min 1", self.code)
+        self.assertIn("_load = (_load max _idle) min 1", self.code)
+
+    # ── the honesty claims ─────────────────────────────────────────────
+    def test_header_states_the_derivation_and_the_defaults(self):
+        upper = AIRLOAD_SRC.upper()
+        self.assertIn("DERIVED", upper)
+        self.assertIn("NOT A MEASUREMENT", upper)
+        self.assertIn("DECLARED DEFAULT", upper)
+
+    def test_header_states_the_drag_area_coincidence(self):
+        upper = AIRLOAD_SRC.upper()
+        self.assertIn("COINCIDENCE", upper)
+        self.assertIn("0.7 m^2", AIRLOAD_SRC)
+
+    def test_header_states_why_the_function_exists(self):
+        upper = AIRLOAD_SRC.upper()
+        self.assertIn("SIMPLE FLIGHT MODEL", upper)
+        self.assertIn("DIFFICULTYENABLEDRTD", upper)
+
+    def test_header_labels_the_object_work_as_the_callers(self):
+        upper = AIRLOAD_SRC.upper()
+        self.assertIn("PURE ARITHMETIC", upper)
+        self.assertIn("OBJECT-SIDE WORK IS THE CALLER'S", upper)
+
+    def test_arguments_and_example_are_declared(self):
+        self.assertIn("Arguments:", AIRLOAD_SRC)
+        self.assertIn("Example:", AIRLOAD_SRC)
+        self.assertIn("aee_mobility_fnc_calculateAirEngineLoad", AIRLOAD_SRC)
+
+
+class AirEngineLoadWiring(unittest.TestCase):
+    """The renderer's derived air branch, the order, and the diagnostic."""
+
+    def setUp(self):
+        self.code = _code_only(SHIMMER_SRC)
+
+    def _resolver_body(self):
+        block = re.search(r"private _resolvePower = \{(.*?)\n\};", self.code, re.S)
+        self.assertIsNotNone(block, "the power resolver is missing")
+        return block.group(1)
+
+    def test_kernel_is_registered_in_mobility(self):
+        prep = (REPO / "addons/mobility/XEH_PREP.hpp").read_text(encoding="utf-8")
+        self.assertIn("PREP(calculateAirEngineLoad);", prep)
+
+    def test_renderer_calls_the_air_kernel(self):
+        self.assertIn("EFUNC(mobility,calculateAirEngineLoad)", self.code)
+        self.assertIn("_deriveAirPower", self.code)
+
+    def test_air_branch_is_gated_on_the_air_root(self):
+        body = self._resolver_body()
+        air = body.find('isKindOf "Air"')
+        self.assertGreater(air, -1, "the Air branch is missing")
+        self.assertIn("_deriveAirPower", body[air:])
+
+    def test_air_branch_is_outside_the_rtd_guard_by_position(self):
+        # The air branch must appear AFTER the difficultyEnabledRTD block
+        # CLOSES, not inside it.  Reaching it with the flight model OFF is
+        # the entire point, so a positional find() is not enough.
+        body = self._resolver_body()
+        guard_end = _brace_block_end(body, "if (difficultyEnabledRTD) then")
+        air = body.find('isKindOf "Air"')
+        self.assertGreater(
+            air,
+            guard_end,
+            "the air branch must sit after the difficultyEnabledRTD block closes",
+        )
+
+    def test_resolution_order_is_published_rtd_ground_air_idle(self):
+        body = self._resolver_body()
+        published = body.find("aee_enginePowerFraction")
+        guard = body.find("difficultyEnabledRTD")
+        collective = body.find("collectiveRTD")
+        throttle = body.find("throttleRTD")
+        land = body.find('isKindOf "LandVehicle"')
+        air = body.find('isKindOf "Air"')
+        idle = body.find("_power = _idlePower")
+        self.assertTrue(
+            -1 < published < guard < collective < throttle < land < air < idle,
+            "power order is published, RTD, ground, air, idle",
+        )
+
+    def test_renderer_reads_the_existing_rated_power_name(self):
+        self.assertIn('getVariable ["aee_engineRatedPowerW", 150000]', self.code)
+        names = set(re.findall(r"aee_engine\w*[Rr]ated\w*", self.code))
+        self.assertEqual(
+            names,
+            {"aee_engineRatedPowerW"},
+            f"a second rated-power name was introduced: {names}",
+        )
+
+    def test_air_overrides_are_read_with_declared_defaults(self):
+        self.assertIn('getVariable ["aee_engineDragAreaM2", 0.7]', self.code)
+        self.assertIn('getVariable ["aee_engineRotorDiscAreaM2", 50]', self.code)
+
+    # ── the diagnostic ─────────────────────────────────────────────────
+    def test_diagnostic_exists_and_names_the_fields(self):
+        self.assertIn("AEE_LOG_DEBUG(_logMsg)", self.code)
+        self.assertIn("exhaust plume:", self.code)
+        for field in (
+            "class=",
+            "tier=",
+            "power=",
+            "gasC=",
+            "depth=",
+            "contrast=",
+            "alpha=",
+        ):
+            self.assertIn(field, self.code, f"the diagnostic is missing {field}")
+
+    def test_diagnostic_is_throttled_on_tick_time(self):
+        self.assertIn("_LOG_INTERVAL", self.code)
+        self.assertIn("diag_tickTime >= _logAt", self.code)
+        self.assertIn("exhaustLogAt", self.code)
+
+    def test_diagnostic_reports_the_alpha_the_renderer_draws(self):
+        # The logged alpha is the same expression the renderer applies.
+        self.assertIn("_logAlpha = _alphaMax * ((_mag / 2.5) min 1)", self.code)
+
+    # ── the alpha expression is unchanged ──────────────────────────────
+    def test_alpha_expression_is_unchanged(self):
+        expr = '_alphaMax * (((_entry getOrDefault ["mag", 0]) / 2.5) min 1)'
+        self.assertEqual(
+            self.code.count(expr),
+            2,
+            "the render alpha expression changed or lost a site",
+        )
 
 
 if __name__ == "__main__":
