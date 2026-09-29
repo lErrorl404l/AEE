@@ -65,9 +65,30 @@ if (isNil "_fnBlastOverpressure" || isNil "_fnBlastInjury") exitWith {};
 // re-reads the ballistics kernel each tick with the round's CURRENT
 // velocity, so the trace fades as the round slows out of the supersonic
 // regime instead of holding the muzzle value.
+//
+// THE ROUND AND ITS AMMUNITION ARE FOUND BY SCANNING, NOT BY POSITION.
+// A raw BIS "Fired" event carries the BIS order natively, but CBA's
+// backwards-compatibility path swaps two of its string slots, so an
+// argument index is not a contract.  The ammunition is the first STRING
+// that names a CfgAmmo class.  The round is the first OBJECT that is not
+// the shooter, NOT the first object, because the first object in a Fired
+// event IS the shooter.  A miss leaves the class empty, and the renderer
+// refuses rather than draws an invented calibre.
 ["Fired", {
-    params ["_unit", "", "", "", "", "", "_projectile"];
+    params ["_unit"];
     if (_unit isNotEqualTo (call CBA_fnc_currentUnit)) exitWith {};
+
+    private _projectile = objNull;
+    private _ammo = "";
+    {
+        if ((_ammo isEqualTo "") && (_x isEqualType "")) then {
+            if (isClass (configFile >> "CfgAmmo" >> _x)) then { _ammo = _x };
+        };
+        if ((_projectile isEqualTo objNull) && (_x isEqualType "OBJECT") && (_x isNotEqualTo _unit)) then {
+            _projectile = _x;
+        };
+    } forEach _this;
+
     if (isNull _projectile) exitWith {};
-    [_projectile] call FUNC(renderSupersonicTrace);
+    [_projectile, _ammo] call FUNC(renderSupersonicTrace);
 }, QGVAR(supersonicTrace)] call EFUNC(core,installPlayerEngineHandler);

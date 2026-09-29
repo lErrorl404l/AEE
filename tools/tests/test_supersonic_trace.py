@@ -343,5 +343,205 @@ class SupersonicTraceWiring(unittest.TestCase):
             self.assertNotIn(bad, args)
 
 
+# ─── Mach cone geometry and the renderer contract (#217 follow-on) ─────────
+CONE = REPO / "addons/ballistics/functions/fnc_calculateMachCone.sqf"
+RENDERER = REPO / "addons/fx/functions/particle/fnc_renderSupersonicTrace.sqf"
+FX_POST = REPO / "addons/fx/XEH_postInit.sqf"
+BALLISTICS_PREP = REPO / "addons/ballistics/XEH_PREP.hpp"
+PROBE = REPO / "tests/docker/missions/aee_test.Stratis/aee_p65_trace_probe.sqf"
+
+
+def _code_only(text: str) -> str:
+    """Blank out SQF comments so a token that appears only in the prose that
+    explains it cannot satisfy an absence assertion.  The renderer header
+    names the superseded expression, so a raw search finds the explanation
+    before the code it is meant to compare against."""
+    text = re.sub(r"/\*.*?\*/", "", text, flags=re.DOTALL)
+    return re.sub(r"//[^\n]*", "", text)
+
+
+class MachConeKernel(unittest.TestCase):
+    """fnc_calculateMachCone is exact cone geometry for a slender body."""
+
+    def setUp(self) -> None:
+        self.cone = CONE.read_text(encoding="utf-8")
+        self.code = _code_only(self.cone)
+
+    def test_registered_in_prep(self) -> None:
+        self.assertIn(
+            "PREP(calculateMachCone);",
+            BALLISTICS_PREP.read_text(encoding="utf-8"),
+        )
+
+    def test_half_angle_is_asin_of_the_reciprocal_mach(self) -> None:
+        self.assertIn("asin (1 / _mach)", self.code)
+
+    def test_values_match_the_exact_geometry(self) -> None:
+        # The same table the P65 probe asserts.
+        table = {
+            1.1: 65.38,
+            1.2: 56.44,
+            1.5: 41.81,
+            2.0: 30.00,
+            2.7: 21.74,
+            3.5: 16.60,
+            4.0: 14.48,
+        }
+        for mach, want in table.items():
+            got = math.degrees(math.asin(1.0 / mach))
+            self.assertAlmostEqual(got, want, places=1, msg=f"M={mach}")
+
+    def test_tangent_is_the_algebraic_form(self) -> None:
+        # tan(asin(1/M)) = 1 / sqrt(M^2 - 1), so no degree round trip.
+        self.assertIn("1 / sqrt ((_mach * _mach) - 1)", self.code)
+
+    def test_returns_half_angle_and_half_and_full_width(self) -> None:
+        self.assertRegex(self.code, r"\[_muDeg, 0\.5 \* _fullWidth, _fullWidth\]")
+
+    def test_the_cone_narrows_as_the_round_accelerates(self) -> None:
+        # width = 8 * calibre * tan(mu), and tan(mu) falls with Mach.
+        widths = [8 * 0.00556 / math.sqrt(m * m - 1) for m in (1.5, 2.0, 2.7, 3.5, 4.0)]
+        for i in range(len(widths) - 1):
+            self.assertGreater(widths[i], widths[i + 1])
+
+    def test_width_scales_with_calibre(self) -> None:
+        def width(calibre_mm: float) -> float:
+            return 8 * (calibre_mm / 1000) / math.sqrt(2.7**2 - 1)
+
+        self.assertAlmostEqual(width(12.7) / width(5.56), 12.7 / 5.56, places=6)
+        self.assertGreater(width(12.7), width(5.56))
+
+    def test_subsonic_returns_zeros(self) -> None:
+        self.assertIn("if (_mach <= 1) exitWith { [0, 0, 0] };", self.code)
+
+    def test_geometry_constant_names_the_two_ell(self) -> None:
+        self.assertIn("_APERTURE = 2 * _BODY_CALIBRES;", self.code)
+
+    def test_header_states_the_slender_body_standoff(self) -> None:
+        # Header prose wraps, so collapse the whitespace before matching a
+        # phrase that may be split across two lines.
+        prose = re.sub(r"\s+", " ", self.cone).upper()
+        for phrase in ("SLENDER", "NOSE RADIUS", "SPHERE", "NOT APPLICABLE"):
+            self.assertIn(phrase, prose, msg=f"missing header phrase: {phrase}")
+
+    def test_header_states_the_sign_error_it_corrects(self) -> None:
+        prose = self.cone.upper()
+        self.assertIn("SIGN ERROR", prose)
+        self.assertIn("NARROWS", prose)
+
+
+class RendererConeContract(unittest.TestCase):
+    """The renderer sizes the sprite from the cone, not from legibility."""
+
+    def setUp(self) -> None:
+        self.renderer = RENDERER.read_text(encoding="utf-8")
+        self.code = _code_only(self.renderer)
+
+    def test_calls_the_cone_kernel(self) -> None:
+        self.assertRegex(self.code, r"call EFUNC\(ballistics,calculateMachCone\)")
+
+    def test_old_legibility_size_expression_is_gone(self) -> None:
+        # The old size came from contrast.  It must not survive in code, only
+        # in the header that explains its removal.
+        self.assertNotRegex(self.code, r"0\.2\s*\+\s*1\.4\s*\*\s*_legibility")
+        self.assertNotIn("_size = 0.2", self.code)
+
+    def test_hardcoded_sprite_width_is_gone(self) -> None:
+        # The superseded size array began with a fixed 0.05, so a 5.56 and a
+        # 12.7 mm round drew the identical width.
+        self.assertNotIn("[0.05,", self.code)
+
+    def test_both_size_array_entries_carry_the_cone_width(self) -> None:
+        self.assertIn("[_size, _size],", self.code)
+
+    def test_visibility_constant_is_declared_once_and_labelled(self) -> None:
+        self.assertRegex(self.code, r"_VISIBILITY\s*=\s*[0-9.]+;")
+        prose = self.renderer.upper()
+        self.assertIn("RENDERING DECISION", prose)
+        self.assertIn("NOT PHYSICS", prose)
+
+    def test_cap_and_floor_have_reasons(self) -> None:
+        self.assertRegex(self.code, r"_MAX_SIZE\s*=\s*[0-9.]+;")
+        self.assertRegex(self.code, r"_MIN_SIZE\s*=\s*[0-9.]+;")
+        prose = self.renderer.upper()
+        self.assertIn("DIVERGES", prose)
+        self.assertIn("SUB-PIXEL", prose)
+
+    def test_lifetime_sits_in_the_lifetime_slot(self) -> None:
+        # Index 4 of setParticleParams is the lifetime.  The superseded
+        # version left a fixed 0.4 there and mis-filed the derived value in
+        # the rotation-velocity and weight slots.
+        self.assertIn("1, _ttl,", self.code)
+        self.assertNotIn("1, 0.4,", self.code)
+
+    def test_live_count_and_rate_are_bounded(self) -> None:
+        self.assertRegex(self.code, r"_TRAIL_WIDTHS\s*=\s*[0-9]+;")
+        self.assertRegex(self.code, r"_LIVE_SPRITES\s*=\s*2 \* _TRAIL_WIDTHS;")
+        self.assertRegex(self.code, r"_MIN_DROP\s*=\s*[0-9.]+;")
+        self.assertRegex(self.code, r"_ttl\s*=\s*_LIVE_SPRITES \* _dropPhysical;")
+
+    def test_alpha_floor_is_unchanged(self) -> None:
+        self.assertIn("0.20 + (0.55 * _legibility)", self.code)
+
+    def test_params_take_the_projectile_and_the_ammunition(self) -> None:
+        block = self.code.split("params [", 1)[1].split("];", 1)[0]
+        self.assertIn('["_projectile"', block)
+        self.assertIn('["_ammo"', block)
+
+    def test_calibre_is_not_the_engine_caliber_value(self) -> None:
+        # CfgAmmo "caliber" is a normalised penetration multiplier, not mm.
+        self.assertNotIn('"caliber"', self.code)
+        self.assertIn("getCartridgeData", self.code)
+        self.assertIn("parseCaliber", self.code)
+        self.assertRegex(self.code, r"_DEFAULT_CALIBRE_MM\s*=\s*7\.62;")
+
+
+class FiredHandlerScans(unittest.TestCase):
+    """The Fired handler never trusts an argument position."""
+
+    def setUp(self) -> None:
+        self.post = _code_only(FX_POST.read_text(encoding="utf-8"))
+
+    def test_ammo_is_found_as_a_cfgammo_class(self) -> None:
+        self.assertIn('isClass (configFile >> "CfgAmmo" >> _x)', self.post)
+
+    def test_no_positional_projectile_read_remains(self) -> None:
+        self.assertNotIn(
+            'params ["_unit", "", "", "", "", "", "_projectile"]', self.post
+        )
+
+    def test_the_shooter_is_excluded_from_the_round(self) -> None:
+        # The first OBJECT in a Fired event is the shooter, so the round is
+        # the first object that is NOT the shooter.
+        self.assertIn("_x isNotEqualTo _unit", self.post)
+
+    def test_renderer_receives_the_ammo_class(self) -> None:
+        self.assertRegex(
+            self.post, r"\[_projectile, _ammo\] call FUNC\(renderSupersonicTrace\);"
+        )
+
+
+class ProbeMirrorsTheRenderer(unittest.TestCase):
+    """The P65 probe recomputes the renderer geometry, so its mirrored
+    constants must equal the renderer's, or the headless check drifts."""
+
+    @staticmethod
+    def _constant(text: str, name: str) -> float:
+        m = re.search(rf"_{name}\s*=\s*([0-9.]+)\s*;", text)
+        if m is None:
+            raise AssertionError(f"constant _{name} not found")
+        return float(m.group(1))
+
+    def test_probe_constants_match_the_renderer(self) -> None:
+        renderer = _code_only(RENDERER.read_text(encoding="utf-8"))
+        probe = _code_only(PROBE.read_text(encoding="utf-8"))
+        for name in ("VISIBILITY", "MAX_SIZE", "MIN_SIZE", "MIN_DROP", "TRAIL_WIDTHS"):
+            self.assertEqual(
+                self._constant(renderer, name),
+                self._constant(probe, name),
+                f"the probe's _{name} mirror has drifted from the renderer",
+            )
+
+
 if __name__ == "__main__":
     unittest.main()
