@@ -38,34 +38,22 @@ private _effects = [
     // adjusted via the string-LHS form in fnc_applySolarGlareFX.
 ];
 
-// ppEffect handles persist across mission loads: preInit runs on every
-// mission, but a second ppEffectCreate at the same priority would bump
-// to a new priority and orphan the previous handle, which the engine then
-// kills at the mission boundary — leaving stale positive numbers in
-// missionNamespace that fail every call with "Invalid post effect handle".
-// If the stored handle is already valid, keep it and do not recreate.
+// Creation, priority bumping, idempotence, the priority-collision log and the
+// ownership record all live in the shared registry now (core
+// fnc_createPPEffect).  AEE_MODULE_PRE_INIT already refuses a repeat init, and the
+// registry refuses a second create for the same scope and key, so the stacking
+// that produced handles 17,18,19,20 then 29,30,31,32 in one session cannot
+// recur.  fnc_destroyBasePostProcess releases the whole "optics" scope.
+//
+// The legacy variable name is passed so the four existing readers in
+// fnc_managePostProcess and fnc_applyNightGrain keep working untouched.
 {
     _x params ["_name", "_priority"];
-    private _varName = format [QGVAR(ppHandle_%1), _name];
-    private _existing = missionNamespace getVariable [_varName, -1];
-    if (_existing >= 0) exitWith {
-        private _logMsg = format ["%1 kept existing handle=%2", _name, _existing];
-        AEE_LOG_DEBUG(_logMsg);
-    };
-    private _handle = ppEffectCreate [_name, _priority];
-    // ppEffectCreate returns -1 when the priority is taken; bump until it succeeds
-    private _guard = 0;
-    while {_handle < 0 && _guard < 100} do {
-        _priority = _priority + 1;
-        _handle = ppEffectCreate [_name, _priority];
-        _guard = _guard + 1;
-    };
-    if (_handle < 0) then {
-        private _logMsg = format ["%1 failed to create after 100 priority bumps", _name];
-        AEE_LOG_ERROR(_logMsg);
-    } else {
-        missionNamespace setVariable [_varName, _handle];
-        private _logMsg = format ["%1 created priority=%2 handle=%3", _name, _priority, _handle];
-        AEE_LOG_INFO(_logMsg);
-    };
+    [
+        "optics",
+        _name,
+        _name,
+        _priority,
+        format [QGVAR(ppHandle_%1), _name]
+    ] call EFUNC(core,createPPEffect);
 } forEach _effects;

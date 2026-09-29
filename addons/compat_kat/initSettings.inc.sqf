@@ -11,33 +11,9 @@
 // that only pays off at 50+ settings.
 
 // ── Circulation ────────────────────────────────────────────────────────────
-[
-    QGVAR(fluidDrainBase),
-    "SLIDER",
-    [LLSTRING(fluidDrainBase_Name), LLSTRING(fluidDrainBase_Description)],
-    ["AEE", "Compat - KAT"],
-    [0, 0.2, 0.05, 3],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(fluidDrainBase,"AEE","Compat - KAT",0,0.2,0.05,3);
 
 // ── Hypoxia ────────────────────────────────────────────────────────────────
-[
-    QGVAR(spo2RiskScale),
-    "SLIDER",
-    [LLSTRING(spo2RiskScale_Name), LLSTRING(spo2RiskScale_Description)],
-    ["AEE", "Compat - KAT"],
-    [10, 50, 32, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(spo2RiskScale,"AEE","Compat - KAT",10,50,32,0);
 
-[
-    QGVAR(spo2Floor),
-    "SLIDER",
-    [LLSTRING(spo2Floor_Name), LLSTRING(spo2Floor_Description)],
-    ["AEE", "Compat - KAT"],
-    [50, 90, 60, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(spo2Floor,"AEE","Compat - KAT",50,90,60,0);

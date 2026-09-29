@@ -335,6 +335,7 @@ if (GVAR(opticsEnabled)) then {
 [] call EFUNC(optics,applyHeatShimmerFX);
 [] call EFUNC(nightvision,applyNightGrain);
 [] call EFUNC(optics,applyMirageFX);
+[] call EFUNC(fx,applyExhaustShimmer);
 [] call EFUNC(optics,applySolarGlareFX);
 [] call EFUNC(optics,applySnowBlindnessFX);
 [] call EFUNC(optics,applyDewOnOpticsFX);

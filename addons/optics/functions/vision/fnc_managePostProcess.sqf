@@ -26,15 +26,47 @@ Anti-flicker:
 Gates on EGVAR(core,opticsEnabled).  Sets nothing except the effects.
 */
 
-if (!(missionNamespace getVariable [QEGVAR(core,opticsEnabled), true])) exitWith {};
+// The three handles are read BEFORE every guard.  A disabled module, a dead
+// player or a camera change must run the cleanup, and the cleanup needs the
+// handles; reading them below the guards leaves live effects on those paths.
+private _hChroma = missionNamespace getVariable [QGVAR(ppHandle_ChromAberration), -1];
+private _hBlur   = missionNamespace getVariable [QGVAR(ppHandle_DynamicBlur), -1];
+private _hCC     = missionNamespace getVariable [QGVAR(ppHandle_ColorCorrections), -1];
+
+// Every exit below leaves no live optics effect behind, and clears the active
+// flags so a re-enabled module starts from a known state instead of trusting
+// a flag an earlier pass set and never cleared.
+private _cleanup = {
+    params ["_hChroma", "_hBlur", "_hCC"];
+    if (_hChroma >= 0) then {
+        _hChroma ppEffectEnable false;
+    };
+    if (_hBlur >= 0) then {
+        _hBlur ppEffectEnable false;
+    };
+    if (_hCC >= 0) then {
+        _hCC ppEffectEnable false;
+    };
+    missionNamespace setVariable [QGVAR(chromaActive), false];
+    missionNamespace setVariable [QGVAR(blurActive), false];
+    missionNamespace setVariable [QGVAR(ccActive), false];
+};
+
+if (!(missionNamespace getVariable [QEGVAR(core,opticsEnabled), true])) exitWith {
+    [_hChroma, _hBlur, _hCC] call _cleanup;
+};
 
 private _player = call CBA_fnc_currentUnit;
 // Run in the player's own view: on foot (cameraOn == player) or in
 // the player's vehicle (pilot/passenger/gunner - cameraOn is the
 // vehicle).  Skip spectator/UAV-terminal/external cameras.
 private _veh = vehicle _player;
-if (isNil "_player" || !alive _player) exitWith {};
-if (cameraOn != _player && {cameraOn != _veh}) exitWith {};
+if (isNil "_player" || !alive _player) exitWith {
+    [_hChroma, _hBlur, _hCC] call _cleanup;
+};
+if (cameraOn != _player && {cameraOn != _veh}) exitWith {
+    [_hChroma, _hBlur, _hCC] call _cleanup;
+};
 
 // ─── Persistent handles (recreate if missing/stale) ──────────────────────
 // The engine kills ppEffects on alt-tab, resize, AT sights and at mission
@@ -42,34 +74,26 @@ if (cameraOn != _player && {cameraOn != _veh}) exitWith {};
 // and every ppEffectAdjust on it logs "Invalid post effect handle".
 // There is no engine query for "is this handle alive", so the robust
 // pattern is: if the stored value is -1 (or the effect was destroyed in a
-// sensor exit block), recreate here before use.  This mirrors the
-// create-once-recreate-when-missing pattern of the NVG/thermal models.
-private _hChroma = missionNamespace getVariable [QGVAR(ppHandle_ChromAberration), -1];
-private _hBlur   = missionNamespace getVariable [QGVAR(ppHandle_DynamicBlur), -1];
-private _hCC     = missionNamespace getVariable [QGVAR(ppHandle_ColorCorrections), -1];
-
+// sensor exit block), recreate here before use.  Recreation goes through the
+// shared registry, so a recreated handle stays owned and a whole-scope
+// release reaches it; the WARN names the scope and key that lost it.
 if (_hChroma < 0 || _hBlur < 0 || _hCC < 0) then {
-    private _effects = [
+    {
+        _x params ["_name", "_priority", "_legacy"];
+        if ((missionNamespace getVariable [_legacy, -1]) < 0) then {
+            private _owner = missionNamespace getVariable [format [QEGVAR(core,ppHandle_%1_%2), "optics", _name], -1];
+            private _logMsg = format ["optics|%1 handle lost (mirror=-1 registry=%2), recreating via registry", _name, _owner];
+            AEE_LOG_WARN(_logMsg);
+            private _handle = ["optics", _name, _name, _priority, _legacy] call EFUNC(core,createPPEffect);
+            if (_handle >= 0 && (missionNamespace getVariable [_legacy, -1]) < 0) then {
+                missionNamespace setVariable [_legacy, _handle];
+            };
+        };
+    } forEach [
         ["ChromAberration", 3000, QGVAR(ppHandle_ChromAberration)],
         ["DynamicBlur",     4000, QGVAR(ppHandle_DynamicBlur)],
         ["ColorCorrections", 5000, QGVAR(ppHandle_ColorCorrections)]
     ];
-    {
-        _x params ["_name", "_priority", "_store"];
-        private _existing = missionNamespace getVariable [_store, -1];
-        if (_existing < 0) then {
-            private _handle = ppEffectCreate [_name, _priority];
-            private _guard = 0;
-            while {_handle < 0 && _guard < 100} do {
-                _priority = _priority + 1;
-                _handle = ppEffectCreate [_name, _priority];
-                _guard = _guard + 1;
-            };
-            missionNamespace setVariable [_store, _handle];
-            private _logMsg = format ["recreated %1 handle=%2 (was missing/stale)", _name, _handle];
-            AEE_LOG_WARN(_logMsg);
-        };
-    } forEach _effects;
     _hChroma = missionNamespace getVariable [QGVAR(ppHandle_ChromAberration), -1];
     _hBlur   = missionNamespace getVariable [QGVAR(ppHandle_DynamicBlur), -1];
     _hCC     = missionNamespace getVariable [QGVAR(ppHandle_ColorCorrections), -1];
@@ -90,6 +114,12 @@ if (_hChroma < 0 || _hBlur < 0 || _hCC < 0) then {
 // effects already active, then skip the rest of the tick.
 // Vision modes verified in-game: 0 = normal, 1 = NVG, 2 = thermal.
 private _visionMode = currentVisionMode _player;
+
+// Diagnostics.  A leaked effect shows up here as a true active flag in
+// normal vision, and the resolved values below show what is committed.
+private _diagFlags = format ["PP mode=%1 chromaActive=%2 blurActive=%3 ccActive=%4", _visionMode, missionNamespace getVariable [QGVAR(chromaActive), false], missionNamespace getVariable [QGVAR(blurActive), false], missionNamespace getVariable [QGVAR(ccActive), false]];
+AEE_LOG_DEBUG(_diagFlags);
+
 if (_visionMode == 1 || _visionMode == 2) exitWith {
     // NVG tube model uses separate ppEffect handles (NVG_CC, NVG_Bloom, NVG_Vignette)
     // and separate state variables (nvgGrainActive). This block only fades the
@@ -99,9 +129,18 @@ if (_visionMode == 1 || _visionMode == 2) exitWith {
             _hChroma ppEffectAdjust [0, 0, false];
             _hChroma ppEffectCommit 1;
         };
+        private _gen = missionNamespace getVariable [QGVAR(chromaGen), 0];
         [{
-            (missionNamespace getVariable [QGVAR(ppHandle_ChromAberration), -1]) ppEffectEnable false;
-        }, [], 1.5] call CBA_fnc_waitAndExecute;
+            params ["_gen"];
+            if (missionNamespace getVariable [QGVAR(chromaGen), 0] == _gen) then {
+                private _h = missionNamespace getVariable [QGVAR(ppHandle_ChromAberration), -1];
+                if (_h >= 0) then {
+                    _h ppEffectEnable false;
+                } else {
+                    AEE_LOG_WARN("chroma fade: handle already -1, skip disable");
+                };
+            };
+        }, [_gen], 1.5] call CBA_fnc_waitAndExecute;
         missionNamespace setVariable [QGVAR(chromaActive), false];
     };
     if (missionNamespace getVariable [QGVAR(blurActive), false]) then {
@@ -109,9 +148,18 @@ if (_visionMode == 1 || _visionMode == 2) exitWith {
             _hBlur ppEffectAdjust [0];
             _hBlur ppEffectCommit 1;
         };
+        private _gen = missionNamespace getVariable [QGVAR(blurGen), 0];
         [{
-            (missionNamespace getVariable [QGVAR(ppHandle_DynamicBlur), -1]) ppEffectEnable false;
-        }, [], 1.5] call CBA_fnc_waitAndExecute;
+            params ["_gen"];
+            if (missionNamespace getVariable [QGVAR(blurGen), 0] == _gen) then {
+                private _h = missionNamespace getVariable [QGVAR(ppHandle_DynamicBlur), -1];
+                if (_h >= 0) then {
+                    _h ppEffectEnable false;
+                } else {
+                    AEE_LOG_WARN("blur fade: handle already -1, skip disable");
+                };
+            };
+        }, [_gen], 1.5] call CBA_fnc_waitAndExecute;
         missionNamespace setVariable [QGVAR(blurActive), false];
     };
     if (missionNamespace getVariable [QGVAR(ccActive), false]) then {
@@ -119,9 +167,18 @@ if (_visionMode == 1 || _visionMode == 2) exitWith {
             _hCC ppEffectAdjust [1, 1, 0, [0,0,0,0], [1,1,1,1], [0,0,0,0]];
             _hCC ppEffectCommit 1;
         };
+        private _gen = missionNamespace getVariable [QGVAR(ccGen), 0];
         [{
-            (missionNamespace getVariable [QGVAR(ppHandle_ColorCorrections), -1]) ppEffectEnable false;
-        }, [], 1.5] call CBA_fnc_waitAndExecute;
+            params ["_gen"];
+            if (missionNamespace getVariable [QGVAR(ccGen), 0] == _gen) then {
+                private _h = missionNamespace getVariable [QGVAR(ppHandle_ColorCorrections), -1];
+                if (_h >= 0) then {
+                    _h ppEffectEnable false;
+                } else {
+                    AEE_LOG_WARN("CC fade: handle already -1, skip disable");
+                };
+            };
+        }, [_gen], 1.5] call CBA_fnc_waitAndExecute;
         missionNamespace setVariable [QGVAR(ccActive), false];
     };
 };
@@ -157,6 +214,12 @@ private _ccParams = if (count _severeCC > 0) then {
 } else {
     if (count _snowCC > 0) then { _snowCC } else { [] };
 };
+
+// Diagnostics.  These are the values about to be committed.  A non-zero
+// chroma, a non-zero blur, or a colour offset in ccParams while the player
+// is in normal vision means a leaked sensor value.
+private _diagCommit = format ["PP commit mode=%1 chroma=%2 blur=%3 cc=%4 seeing=%5 shimmer=%6 dew=%7 rain=%8 glare=%9 severe=%10", _visionMode, _chroma, _blur, _ccParams, _seeingChroma, _shimmerChroma, _dewBlur, _rainBlur, _glareBlur, _severeBlur];
+AEE_LOG_DEBUG(_diagCommit);
 
 // ─── ChromAberration (hysteresis on > 0.01, off < 0.005) ───────────────────
 private _chromaOn  = _chroma > 0.01;

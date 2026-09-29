@@ -5,127 +5,31 @@
 // atmos stringtable.
 
 // ── Microburst ─────────────────────────────────────────────────────────────
-[
-    QGVAR(microburstTempThreshold),
-    "SLIDER",
-    [LLSTRING(microburstTempThreshold_Name), LLSTRING(microburstTempThreshold_Description)],
-    ["AEE Atmos", "Events"],
-    [20, 40, 28, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(microburstTempThreshold,"AEE Atmos","Events",20,40,28,0);
 
-[
-    QGVAR(microburstChance),
-    "SLIDER",
-    [LLSTRING(microburstChance_Name), LLSTRING(microburstChance_Description)],
-    ["AEE Atmos", "Events"],
-    [0, 0.1, 0.01, 2],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(microburstChance,"AEE Atmos","Events",0,0.1,0.01,2);
 
-[
-    QGVAR(microburstDuration),
-    "SLIDER",
-    [LLSTRING(microburstDuration_Name), LLSTRING(microburstDuration_Description)],
-    ["AEE Atmos", "Events"],
-    [5, 60, 12, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(microburstDuration,"AEE Atmos","Events",5,60,12,0);
 
-[
-    QGVAR(microburstGustMax),
-    "SLIDER",
-    [LLSTRING(microburstGustMax_Name), LLSTRING(microburstGustMax_Description)],
-    ["AEE Atmos", "Events"],
-    [20, 50, 36, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(microburstGustMax,"AEE Atmos","Events",20,50,36,0);
 
 // ── Lightning ──────────────────────────────────────────────────────────────
-[
-    QGVAR(lightningConvectionTemp),
-    "SLIDER",
-    [LLSTRING(lightningConvectionTemp_Name), LLSTRING(lightningConvectionTemp_Description)],
-    ["AEE Atmos", "Events"],
-    [20, 35, 25, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(lightningConvectionTemp,"AEE Atmos","Events",20,35,25,0);
 
-[
-    QGVAR(lightningStrikeChance),
-    "SLIDER",
-    [LLSTRING(lightningStrikeChance_Name), LLSTRING(lightningStrikeChance_Description)],
-    ["AEE Atmos", "Events"],
-    [0, 0.2, 0.05, 2],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(lightningStrikeChance,"AEE Atmos","Events",0,0.2,0.05,2);
 
 // ── Airframe icing ─────────────────────────────────────────────────────────
-[
-    QGVAR(icingShedRate),
-    "SLIDER",
-    [LLSTRING(icingShedRate_Name), LLSTRING(icingShedRate_Description)],
-    ["AEE Atmos", "Icing"],
-    [0.5, 1, 0.9, 2],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(icingShedRate,"AEE Atmos","Icing",0.5,1,0.9,2);
 
-[
-    QGVAR(maxIceMass),
-    "SLIDER",
-    [LLSTRING(maxIceMass_Name), LLSTRING(maxIceMass_Description)],
-    ["AEE Atmos", "Icing"],
-    [20, 200, 100, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(maxIceMass,"AEE Atmos","Icing",20,200,100,0);
 
 // ── Fog ────────────────────────────────────────────────────────────────────
-[
-    QGVAR(radFogRampRate),
-    "SLIDER",
-    [LLSTRING(radFogRampRate_Name), LLSTRING(radFogRampRate_Description)],
-    ["AEE Atmos", "Fog"],
-    [0, 0.5, 0.1, 2],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(radFogRampRate,"AEE Atmos","Fog",0,0.5,0.1,2);
 
-[
-    QGVAR(maxFogDensity),
-    "SLIDER",
-    [LLSTRING(maxFogDensity_Name), LLSTRING(maxFogDensity_Description)],
-    ["AEE Atmos", "Fog"],
-    [0.2, 1, 0.8, 2],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(maxFogDensity,"AEE Atmos","Fog",0.2,1,0.8,2);
 
 // ── Refraction ────────────────────────────────────────────────────────────
-[
-    QGVAR(refractionEnabled),
-    "CHECKBOX",
-    [LLSTRING(refractionEnabled_Name), LLSTRING(refractionEnabled_Description)],
-    ["AEE Atmos", "Refraction"],
-    true,
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_CHECKBOX(refractionEnabled,"AEE Atmos","Refraction",true);
 
 // ── Engine cloud quality ──────────────────────────────────────────────────
-[
-    QGVAR(simulWeatherLayers),
-    "SLIDER",
-    [LLSTRING(simulWeatherLayers_Name), LLSTRING(simulWeatherLayers_Description)],
-    ["AEE Atmos", "Clouds"],
-    [0, 5, 0, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(simulWeatherLayers,"AEE Atmos","Clouds",0,5,0,0);

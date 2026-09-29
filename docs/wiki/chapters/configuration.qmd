@@ -118,6 +118,7 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_fx_vehicleDustDensity` | SLIDER | `0.08` | fx |  |
 | `aee_fx_rainDropDensity` | SLIDER | `0.006` | fx |  |
 | `aee_fx_atmosphericDustIntensity` | SLIDER | `0.08` | fx |  |
+| `aee_fx_exhaustShimmerAlpha` | SLIDER | `0.15` | fx | Peak alpha of the exhaust heat-shimmer billboard. Alpha is the only free lever, because fill rate is sprite count times sprite area |
 
 ## AEE FX → Sound
 
@@ -206,6 +207,28 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_optics_dewDecayRate` | SLIDER | `0.02` | optics | Dew clearing speed per tick when conditions clear |
 | `aee_optics_rainAccumRate` | SLIDER | `0.01` | optics | Droplet build-up speed per tick during rain |
 | `aee_optics_rainDecayRate` | SLIDER | `0.02` | optics | Droplet clearing speed per tick when rain stops |
+
+## AEE FX → Exhaust plume
+
+Per-vehicle published values.  A mission or a mod sets these on a vehicle
+object.  They are not CBA settings.
+
+| Variable | Type | Default | Purpose |
+|---|---|---|---|
+| `aee_exhaustTier` | STRING | unset | Tier override, one of `land`, `heli`, `jet`, `ab`. Wins over the class selection |
+| `aee_exhaustAfterburner` | BOOL | unset | A truthy value selects the afterburner tier, because no verified config key distinguishes an afterburning jet from a dry one |
+| `aee_enginePowerFraction` | NUMBER | unset | Engine power fraction in 0..1. Overrides the real reader and the declared idle |
+| `aee_engineRatedPowerW` | NUMBER | `150000` | Rated engine power in watts for the derived ground load. Overrides the declared default |
+| `aee_exhaustGasTempC` | NUMBER | unset | Measured exhaust gas temperature in Celsius. Overrides the class row |
+| `aee_exhaustPlumeM` | NUMBER | unset | Measured plume depth in metres. Overrides the class row |
+
+The class row comes from the tier table in `fnc_applyExhaustShimmer.sqf`,
+and `fnc_calculateExhaustPlume.sqf` interpolates it from the engine power
+fraction.  The endpoints are declared defaults and not measurements.  When
+no published value is set, the power fraction comes from the real reader,
+`collectiveRTD` for a helicopter and `throttleRTD` for fixed wing, which is
+gated on the advanced helicopter flight model and is unavailable when it is
+off.  A land vehicle and a gated-off client use the declared idle fraction.
 
 ## AEE Optics → Thresholds
 

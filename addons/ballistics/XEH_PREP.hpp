@@ -21,4 +21,5 @@ PREP(parseCaliber);
 PREP(getBulletShape);
 PREP(calculateBallisticCoefficient);
 PREP(calculateInteriorBallistics);
+PREP(calculateMachCone);
 PREP(getEnvironmentState);

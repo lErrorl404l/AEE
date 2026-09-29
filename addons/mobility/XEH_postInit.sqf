@@ -1,5 +1,7 @@
 #include "script_component.hpp"
 
+AEE_MODULE_POST_INIT
+
 // The per-frame loops below are client-side effects. The dedicated server
 // has no local player and must not run them.
 if (!hasInterface) exitWith {};
@@ -28,18 +30,21 @@ if (GVAR(rolloverEnabled)) then {
             _ref = getPosATL _player;
         };
 
-        // Refresh the candidate list every 5 s, as the turbulence loop does.
-        if ((time - GVAR(rolloverRefresh)) > 5) then {
+        // The distance test belongs HERE, not in the per-frame loop.  A list
+        // built from `vehicles` with no radius holds every ground vehicle in
+        // the world, so testing distance per frame ran a world scan every
+        // frame.  Filtering at refresh leaves the loop below holding only
+        // what is in range, and the refresh drops to 1 s so a vehicle that
+        // arrives is picked up quickly.
+        if ((time - GVAR(rolloverRefresh)) > 1) then {
             GVAR(rolloverVehicles) = vehicles select {
-                (alive _x) && {!(_x isKindOf "Air")}
+                (alive _x) && {!(_x isKindOf "Air")} && {(_x distance _ref) < GVAR(rolloverRadius)}
             };
             GVAR(rolloverRefresh) = time;
         };
 
         {
-            if ((_x distance _ref) < GVAR(rolloverRadius)) then {
-                [_x] call FUNC(applyRollover);
-            };
+            [_x] call FUNC(applyRollover);
         } forEach GVAR(rolloverVehicles);
     }, 0] call CBA_fnc_addPerFrameHandler;
 
@@ -62,17 +67,17 @@ if (GVAR(terrainDragEnabled)) then {
             _ref = getPosATL _player;
         };
 
-        if ((time - GVAR(terrainRefresh)) > 5) then {
+        // Same fix as the rollover loop above: the radius belongs in the
+        // refresh, not in the per-frame test.
+        if ((time - GVAR(terrainRefresh)) > 1) then {
             GVAR(terrainVehicles) = vehicles select {
-                (alive _x) && {!(_x isKindOf "Air")}
+                (alive _x) && {!(_x isKindOf "Air")} && {(_x distance _ref) < GVAR(terrainRadius)}
             };
             GVAR(terrainRefresh) = time;
         };
 
         {
-            if ((_x distance _ref) < GVAR(terrainRadius)) then {
-                [_x] call FUNC(applyTerrainDrag);
-            };
+            [_x] call FUNC(applyTerrainDrag);
         } forEach GVAR(terrainVehicles);
     }, 0] call CBA_fnc_addPerFrameHandler;
 

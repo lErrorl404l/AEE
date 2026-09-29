@@ -3,6 +3,8 @@
 // Registered via CBA's PREP system.  Each entry corresponds to a
 // functions/fnc_<name>.sqf file that is compiled at mission start.
 
+PREP(createPPEffect);
+PREP(destroyPPEffect);
 PREP(calculateMagneticAnomaly);
 PREP(calculateSolarRadiation);
 PREP(calculateSeededWeatherProgression);
@@ -18,5 +20,8 @@ PREP(updateSoilMoisture);
 PREP(getEyeState);
 PREP(getSmoothedWeather);
 PREP(handleCollisionDamage);
+PREP(attachObjectEngineHandler);
+PREP(installObjectEngineHandler);
+PREP(installPlayerEngineHandler);
 PREP(readState);
 PREP(calculateIlluminance);

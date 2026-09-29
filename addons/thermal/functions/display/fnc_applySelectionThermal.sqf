@@ -80,6 +80,22 @@ if (_mode == "EXIT") then {
 } else {
     if (isNull _obj || {!hasInterface}) exitWith { 0 };
 
+    // The heat paint is a FLIR look, so it belongs to thermal vision alone.
+    // This function is the single choke point for the paint and it had no
+    // vision gate at all.  Two callers reach it in every vision mode: the
+    // fired handler runs applyWeaponBarrelHeat unconditionally, twelve lines
+    // before its own NVG gate, and that function paints the PLAYER, whose
+    // weapon selections are the operator's own uniform.  The hitPart handler
+    // stamps impacts with no gate either.  So firing a round in daylight
+    // repainted the shooter red, and no teardown ever ran to undo it because
+    // no sensor session had started.  Gate the VISUAL writes on the live
+    // mode and keep the solve below them unconditional: barrel heat still
+    // accumulates, so thermal vision opens on an already-hot weapon and the
+    // AGC still reads a real radiance window.
+    private _thermalOn = false;
+    private _viewer = call CBA_fnc_currentUnit;
+    if (!isNull _viewer && {currentVisionMode _viewer == 2}) then { _thermalOn = true };
+
     // ─── Solve and apply ──────────────────────────────────────────────────
     // The selection arg is a NAME (string), an INDEX (number from the
     // callers' hiddenSelections loop), or "" (all selections).  A
@@ -105,7 +121,12 @@ if (_mode == "EXIT") then {
     private _saved = missionNamespace getVariable [QGVAR(selThermalSaved), []];
     private _alreadySaved = _saved findIf { (_x select 0) == _obj };
     private _fpnEnabled = missionNamespace getVariable [QGVAR(thermalFPN), true];
-    if (_alreadySaved < 0) then {
+    // Saving and the FPN material swap are both visual state, so they are
+    // gated with the paint.  Saving in normal vision would also poison the
+    // swap: the swap sits below and is skipped once a save exists, so an
+    // ungated save here would leave the FPN rvmat unapplied when thermal
+    // vision finally came on.
+    if (_thermalOn && _alreadySaved < 0) then {
         private _oldTexs = getObjectTextures _obj;
         private _oldMats = getObjectMaterials _obj;
         _saved pushBack [_obj, _oldTexs, _oldMats, _selNames];
@@ -124,6 +145,7 @@ if (_mode == "EXIT") then {
                 };
             } forEach _oldMats;
         };
+
     };
 
     // Ambient + wind + solar from the core environment state.
@@ -306,10 +328,14 @@ if (_mode == "EXIT") then {
         // TRACE: log the full pipeline every call so a bad value is
         // visible even if `finite` does not flag it.  Throttled to the
         // first 20 calls per object to keep the RPT readable.
+        // Gated on aee_thermal_thermalDebug, like the sibling diagnostics in
+        // fnc_applyThermalVision and fnc_applyBuildingThermal.  This log was
+        // raw and ungated inside a 10 Hz path, so it wrote to the RPT from the
+        // render thread on every new object the sweep reached.
         private _traceKey = format ["%1_%2", _obj, _sel];
         private _traceN = missionNamespace getVariable [QGVAR(traceCount), createHashMap];
         private _n = _traceN getOrDefault [_traceKey, 0];
-        if (_n < 20) then {
+        if (_n < 20 && {missionNamespace getVariable [QGVAR(thermalDebug), false]}) then {
             _traceN set [_traceKey, _n + 1];
             missionNamespace setVariable [QGVAR(traceCount), _traceN];
             diag_log format [
@@ -372,7 +398,10 @@ if (_mode == "EXIT") then {
             _heatCol select 2
         ];
 
-        _obj setObjectTexture [_idx, _colour];
+        // Gated for the same reason as the save block above: in normal vision
+        // this selection can be the operator's own uniform, and no teardown
+        // runs to put the real texture back.
+        if (_thermalOn) then { _obj setObjectTexture [_idx, _colour] };
         // The material stays the object's own (or the FPN rvmat when the
         // thermalFPN setting is on - see the save block).  setObjectTexture
         // replaces the Stage1 texture of whatever material is current, so

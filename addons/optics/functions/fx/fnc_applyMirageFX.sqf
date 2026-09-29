@@ -30,6 +30,20 @@ private _veh = vehicle _player;
 if (isNil "_player" || !alive _player) exitWith {};
 if (cameraOn != _player && {cameraOn != _veh}) exitWith {};
 
+// Sensor mode gate.  A non-zero currentVisionMode means the engine draws its
+// own NVG or thermal image, and a refractive mirage has no place on top of
+// it.  The source must be DELETED, not faded, because a #particlesource
+// keeps emitting while it is hidden.  Teardown here also covers the stale
+// source left by an earlier tick, so leaving sensor mode restores the effect
+// on the next tick through the create path below.  The physics that drives
+// it (mirageIntensity) is set by a separate calculator and stays ungated.
+private _visionMode = currentVisionMode _player;
+if (_visionMode != 0) exitWith {
+    private _leak = missionNamespace getVariable [QGVAR(mirageSource), objNull];
+    if (!isNull _leak) then { deleteVehicle _leak; };
+    missionNamespace setVariable [QGVAR(mirageSource), objNull];
+};
+
 // Guard: skip if existing mirage source is alive (prevents stacking)
 private _existing = missionNamespace getVariable [QGVAR(mirageSource), objNull];
 if (!isNull _existing && alive _existing) exitWith {};

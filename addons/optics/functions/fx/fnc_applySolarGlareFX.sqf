@@ -28,6 +28,21 @@ private _veh = vehicle _player;
 if (isNil "_player" || !alive _player) exitWith {};
 if (cameraOn != _player && {cameraOn != _veh}) exitWith {};
 
+// Sensor mode gate.  A non-zero currentVisionMode means the engine draws its
+// own NVG or thermal image, and god-ray streaks from the visible sun have no
+// place on top of it.  The string-LHS form owns the engine effect, so it is
+// disabled on the way out rather than merely dimmed.  Leaving sensor mode
+// restores the effect on the next tick through the enable path below.
+private _visionMode = currentVisionMode _player;
+if (_visionMode != 0) exitWith {
+    if (missionNamespace getVariable [QGVAR(glareFXActive), false]) then {
+        "LightShafts" ppEffectAdjust [0.01, 0.6, 0, 0.89];
+        "LightShafts" ppEffectEnable false;
+        missionNamespace setVariable [QGVAR(glareFXActive), false];
+    };
+    missionNamespace setVariable [QGVAR(glareBlur), 0];
+};
+
 private _active = missionNamespace getVariable [QGVAR(glareFXActive), false];
 
 // DynamicBlur: subtle veiling wash at peak glare (arbiter applies it)

@@ -29,7 +29,31 @@
  *
  * Returns: nothing.
  */
-params [["_player", player, [objNull]]];
+params [["_player", player, [objNull]], ["_mode", ""]];
+
+// Restore the emissive materials.  This function swaps a material onto every
+// thermal selection of every object within 300 m, and the selection set
+// includes Man, so without a restore an operator who uses fusion and never
+// enters thermal mode leaves fusion_emissive materials on world objects and
+// on uniforms after returning to normal vision.  The sensor teardown calls
+// this with EXIT.
+if (_mode == "EXIT") exitWith {
+    private _restore = missionNamespace getVariable [QGVAR(fusionOverlaySaved), []];
+    {
+        _x params ["_o", "_oldMats"];
+        if (!isNull _o) then {
+            private _i = 0;
+            {
+                if (_i < count _oldMats && {(_oldMats select _i) isEqualType ""}) then {
+                    _o setObjectMaterial [_i, _oldMats select _i];
+                };
+                _i = _i + 1;
+            } forEach _oldMats;
+        };
+    } forEach _restore;
+    missionNamespace setVariable [QGVAR(fusionOverlaySaved), []];
+};
+
 if (isNull _player) exitWith {};
 
 // Reuse the exact band quantisation from the thermal display: the AGC
@@ -46,6 +70,18 @@ private _objects = _player nearObjects 300;
     // single source of truth so fusion and thermal agree on every part.
     private _selIdxs = [_obj] call FUNC(getThermalSelections);
     private _hs = getArray (configOf _obj >> "hiddenSelections");
+
+    // Save the object's own materials ONCE per session, before the first
+    // swap.  Saving every tick would capture the already-swapped emissive
+    // material, and the EXIT restore would then put the emissive material
+    // back instead of the object's own.
+    if (_selIdxs isNotEqualTo []) then {
+        private _restore = missionNamespace getVariable [QGVAR(fusionOverlaySaved), []];
+        if ((_restore findIf { (_x select 0) == _obj }) < 0) then {
+            _restore pushBack [_obj, getObjectMaterials _obj];
+            missionNamespace setVariable [QGVAR(fusionOverlaySaved), _restore];
+        };
+    };
 
     {
         private _idx = _x;

@@ -11,32 +11,8 @@
 // that only pays off at 50+ settings.
 
 // ── CBRN ───────────────────────────────────────────────────────────────────
-[
-    QGVAR(CBRNBasePersistence),
-    "SLIDER",
-    [LLSTRING(CBRNBasePersistence_Name), LLSTRING(CBRNBasePersistence_Description)],
-    ["AEE", "Compat - ACM"],
-    [6, 72, 24, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(CBRNBasePersistence,"AEE","Compat - ACM",6,72,24,0);
 
-[
-    QGVAR(CBRNContamThreshold),
-    "SLIDER",
-    [LLSTRING(CBRNContamThreshold_Name), LLSTRING(CBRNContamThreshold_Description)],
-    ["AEE", "Compat - ACM"],
-    [0, 0.1, 0.01, 3],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(CBRNContamThreshold,"AEE","Compat - ACM",0,0.1,0.01,3);
 
-[
-    QGVAR(CBRNMaxBuildup),
-    "SLIDER",
-    [LLSTRING(CBRNMaxBuildup_Name), LLSTRING(CBRNMaxBuildup_Description)],
-    ["AEE", "Compat - ACM"],
-    [50, 150, 100, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(CBRNMaxBuildup,"AEE","Compat - ACM",50,150,100,0);

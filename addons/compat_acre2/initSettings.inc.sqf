@@ -11,22 +11,6 @@
 // that only pays off at 50+ settings.
 
 // ── Signal ─────────────────────────────────────────────────────────────────
-[
-    QGVAR(signalDBShift),
-    "SLIDER",
-    [LLSTRING(signalDBShift_Name), LLSTRING(signalDBShift_Description)],
-    ["AEE", "Compat - ACRE2"],
-    [0, 20, 8, 1],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(signalDBShift,"AEE","Compat - ACRE2",0,20,8,1);
 
-[
-    QGVAR(signalSensitivityMin),
-    "SLIDER",
-    [LLSTRING(signalSensitivityMin_Name), LLSTRING(signalSensitivityMin_Description)],
-    ["AEE", "Compat - ACRE2"],
-    [-130, -90, -110, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(signalSensitivityMin,"AEE","Compat - ACRE2",-130,-90,-110,0);

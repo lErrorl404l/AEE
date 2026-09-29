@@ -25,9 +25,10 @@ params ["_mode"];
 if (!hasInterface) exitWith { 0 };
 
 // ─── EXIT: restore every saved texture ───────────────────────────────────
-if (_mode == "EXIT") then {
-    ["", "", "EXIT"] call FUNC(applySelectionThermal);   // restore all saved
-    0
+// Restore, then STOP.  Without exitWith the run falls through into the
+// apply path below and re-commits the selection textures it just undid.
+if (_mode == "EXIT") exitWith {
+    ["", "", "EXIT"] call FUNC(applySelectionThermal)
 };
 
 private _player = call CBA_fnc_currentUnit;
@@ -58,17 +59,25 @@ if (_ambientChanged) then {
 
 // Build the object list: vehicles ALWAYS (new spawns need the swap now),
 // buildings only when ambient changed (expensive near-player scan).
+// Hoisted out of the ambient block so the vehicle filter below can reach it.
+// A `private` declared inside that block is scoped to it and would be
+// undefined here, which the HEMTT undefined-variable lint caught.
+private _viewDist = (getObjectViewDistance select 0) max 300;
 private _objects = [];
 if (_ambientChanged) then {
     if (_mode == "ENTER") then {
         _objects = allMissionObjects "";
     } else {
-        private _viewDist = (getObjectViewDistance select 0) max 300;
         _objects = (_player nearObjects ["House", _viewDist])
             + (_player nearObjects ["Building", _viewDist]);
     };
 };
-_objects = _objects + (vehicles - [player]);
+// Bound the vehicle list the same way the unit list is bounded.  This line
+// ran on EVERY tick, and `vehicles` is world-wide with no radius, so it fed
+// a per-selection solve for every vehicle in the mission at 10 Hz.
+_objects = _objects + ((vehicles - [player]) select {
+    (_x distance (getPosATL _player)) < _viewDist
+});
 
 // ─── Apply: per-selection substrate solve per object (issue #204) ────────
 // Selection discovery is DYNAMIC (fnc_getThermalSelections: Man = all
