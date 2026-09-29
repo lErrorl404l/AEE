@@ -75,6 +75,62 @@
  * and the 4x case is exercised in the test and the P71 probe.  No range and
  * no MRTD curve is invented.
  *
+ * THE THERMAL CHANNEL HAS A FIELD, AND THE OVERLAY MUST RESPECT IT.  The
+ * overlay had no angular limit of any kind: every object inside 300 m was
+ * painted whatever direction it sat in.  The gate below refuses a target
+ * whose angle from the VIEW CENTRE exceeds the thermal channel's half-angle.
+ * THE BOUND IS DEFENSIBLE ON THE NUMBERS AND UNSUPPORTED BY THE PROSE: the
+ * 34 against the intensified 40 makes the thermal geometrically NARROWER,
+ * but both sources say OVERLAY and neither describes a bounded window, so
+ * the gate is an inference from the figures and is labelled as one.
+ *
+ * THE AXIS IS DECLARED, NOT SOURCED, AND THE HEADER SAYS WHICH PART IS
+ * WHICH.  No manufacturer datasheet in the image-intensifier family states
+ * an axis for a field of view.  The Elbit AN/PVS-14 spec block reads
+ * "Field of View - 40 nominal" beside "Objective Lens EFL 27 mm" with no
+ * axis, and the L3Harris ENVG-B sheet reads "Flexible 40 Field-Of-View"
+ * with no axis, so the family's 40 is pinned to no axis by any
+ * manufacturer.  The one axis-bearing sheet in the family disclaims itself
+ * on its own face: the L-3 Warrior Systems AN/PVS-31A sell sheet prints
+ * "40 +/- 2 deg. (horizontal & vertical)" AND, on the same sheet, "This
+ * document consists of basic marketing information that is not defined as
+ * technical data".  A document that calls itself non-technical cannot be
+ * the citation that pins an axis, so it is not used.  No horizontal or
+ * vertical figure is published separately anywhere in the family, so the
+ * aspect cannot be computed from real numbers either.  That is a clean
+ * negative, and it is why the axis in the code is a DECLARATION.
+ *
+ * THE ONE PUBLISHED THERMAL-CHANNEL FIELD BELONGS TO THE BNVD-FUSED (F-BINO)
+ * AND ITS INTENSIFIED SIDE IS THE SAME TUBE SET THIS CLASS RESOLVES TO.  TNVC
+ * states a 12 um LWIR channel, a 34 diagonal field of view for the HUD and
+ * AR display functions, overlayed onto the I2 image, in the right-side
+ * optical pod, with modes "I2 Only, Fused + NAV, I2 + NAV, and I2 Standby".
+ * Its intensified side is the PVS-31A tube set, and the in-game class
+ * NVGogglesB_grn_F resolves to the PVS-31 tier on that same tube set, so
+ * the figure is a FAIR source for this class and the DIAGONAL is the one
+ * axis any source states.  The sourcing strength is DISTRIBUTOR-GRADE: TNVC
+ * is a distributor and no manufacturer or Army corroboration was found, so
+ * the log names the source strength and not a manufacturer.
+ *
+ * THE ENVG-B (AN/PSQ-42) HAS NO PUBLISHED THERMAL-CHANNEL FIGURE AT ALL.
+ * L3Harris publishes ONE fused figure covering both channels.  That figure
+ * is NOT split here, and the BNVD-FUSED's diagonal is NOT borrowed for it,
+ * because they are different device families.  The ENVG-B therefore takes
+ * the DECLARED DEFAULT and the log reads "declared" for it, so the absence
+ * of published data is expressed in the code and visible in a log instead
+ * of being hidden behind another device's number.
+ *
+ * THE GATE IS OBJECT SCALE, NOT PIXEL SCALE, AND THAT IS A LIMIT OF THE
+ * RENDERER, NOT A CHOICE.  addons/ has no viewport, scissor, stencil or
+ * render-target primitive, so the overlay's only pixel primitive is a
+ * per-object setObjectMaterial, which is all-or-nothing per object.  A
+ * building straddling the thermal half-angle is ENTIRELY one treatment or
+ * the other and is never split, so the result is a soft, object-scale
+ * field rather than a crisp rectangle.  No frame, border, outline or mask
+ * is drawn to imply an optical edge the renderer cannot produce: a graphic
+ * is not optics.  If the geometry looks too subtle to notice, that is the
+ * honest reading and it is not compensated with art.
+ *
  * Params:
  *   0: _player (OBJECT, default player)
  *
@@ -199,11 +255,87 @@ private _logNow = diag_tickTime >= _logAt;
 if (_logNow) then {
     missionNamespace setVariable [QGVAR(fusionLogAt), diag_tickTime + _LOG_INTERVAL];
 };
+// ─── The thermal channel's field ──────────────────────────────────────────
+// The overlay is bounded by the DEVICE's thermal field, not by the screen.
+// The device is identified the way the phosphor is in fnc_applyNVGTubeModel:
+// from the hmd classname, which states its own properties, lowercased and
+// split on the underscore the classname itself uses as its token delimiter.
+// The gate and the phosphor therefore describe the same device, and no
+// second identification path is introduced.
+//
+// THE PUBLISHED THERMAL FIGURE BELONGS TO THE BNVD-FUSED (F-BINO), NOT TO
+// THE ENVG-B.  TNVC states a 12 um LWIR channel with a 34 diagonal field of
+// view for the HUD and AR display functions, overlayed onto the I2 image from
+// the right-side optical pod.  Its intensified side is the PVS-31A tube set,
+// and NVGogglesB_grn_F resolves to the PVS-31 tier, which is that same tube
+// set, so the figure is a FAIR source for this class on the intensified side
+// the tier is derived from.  TNVC is a DISTRIBUTOR and no manufacturer or
+// Army corroboration was found, so the sourcing strength is not upgraded
+// here.  The AXIS IS PINNED for this figure, because TNVC states the word
+// diagonal.
+//
+// FOR THE ENVG-B (AN/PSQ-42) THERE IS NO PUBLISHED THERMAL-CHANNEL FIGURE AT
+// ALL.  L3Harris publishes one fused 40 covering both channels, and that
+// figure is NOT split here and the BNVD-FUSED's 34 is NOT borrowed for it,
+// because they are different device families.  The ENVG-B therefore takes
+// the DECLARED DEFAULT below and the log reads "declared" for it, so the
+// absence of published data is expressed in the code instead of being hidden
+// behind another device's number.
+//
+// THE DECLARED DEFAULT.  The family's 40 is published by Elbit, L3Harris and
+// nvdevices with NO axis on any of them, so it is not yet a figure that can
+// be halved about an axis.  Reading it as a DIAGONAL is a DECLARATION, and
+// it is the only reading consistent with the hardware: at the Elbit 27 mm
+// effective focal length a 40 diagonal needs about a 19.7 mm image-circle
+// diagonal, which fits a tube, where 40 on both axes needs about 27.8 mm,
+// which does not.  That arithmetic is a consistency check on published
+// inputs, not a source figure.
+private _hmdLower = toLower (hmd _player);
+private _thermalDevice = "unknown";
+{
+    if (_x == "nvgogglesb") then { _thermalDevice = "BNVD-FUSED"; };
+} forEach (_hmdLower splitString "_");
+private _DECLARED_HALF_ANGLE_DEG = 20;
+private _thermalHalfAngleDeg = _DECLARED_HALF_ANGLE_DEG;
+private _fovSource = "declared";
+private _fovAxis = "declared";
+switch (_thermalDevice) do {
+    case "BNVD-FUSED": {
+        _thermalHalfAngleDeg = 17;
+        _fovSource = "derived";
+        _fovAxis = "diagonal";
+    };
+};
+
+// The view axis, sampled ONCE per tick rather than once per object.  The
+// per-frame handler already walks the whole object list, so a value that is
+// identical for every object in the tick belongs outside the loop: a
+// per-object camera read would grow the hot path for a value that cannot
+// differ between objects.  EFUNC(core,getEyeState) is the repository's
+// existing cached eye-state call, used by fnc_applyThermalVision and by
+// fnc_applyNVGTubeModel, and it returns the camera look vector in every
+// state including a turret and freelook, so the gate agrees with the tube
+// model on where the operator is looking.  getCameraViewDirection is
+// verified present in the dedicated-server binary and is the alternative,
+// but naming it here would add a second look path that no other AEE caller
+// uses.  The vector is guarded on shape and falls back to the unit's own
+// facing, which is the same fallback getEyeState applies.
+private _eyeState = [_player] call EFUNC(core,getEyeState);
+private _eye = _eyeState select 0;
+private _viewDir = _eyeState select 1;
+if !(_viewDir isEqualType [] && {count _viewDir == 3}) then { _viewDir = vectorDir _player; };
+
 private _visionMode = currentVisionMode _player;
 private _capable = [] call EFUNC(thermal,isFusionCapable);
 private _fusionMode = missionNamespace getVariable [QGVAR(fusionMode), 0];
 private _objects = _player nearObjects 300;
 private _objectCount = count _objects;
+// Gate tallies for the diagnostic.  A gate whose effect cannot be read in a
+// log is a gate nobody can check next session, and that has been the failure
+// mode in this area more than once, so the rejected and the painted counts
+// are accumulated here and reported below.
+private _gatedOut = 0;
+private _paintedCount = 0;
 {
     private _obj = _x;
     private _objMaxBand = 0;
@@ -235,6 +367,53 @@ private _objectCount = count _objects;
         min (((_bb select 1) select 1) - ((_bb select 0) select 1))
         min (((_bb select 1) select 2) - ((_bb select 0) select 2));
     private _targetAngleRad = (_dim max 0) / (_range max 0.1);
+
+    // ── The offset gate ────────────────────────────────────────────────────
+    // A target whose bearing from the view axis exceeds the thermal channel's
+    // half-angle is outside the fused image, so it receives no emissive
+    // material and keeps its own.  acos is the correct command here and NOT
+    // acosDeg: strings on the dedicated-server binary carry acos and do NOT
+    // carry acosDeg, and a bare absent token is a parse error that aborts
+    // the whole file at preInit because XEH_PREP compiles every function on
+    // every machine.  The dot product is clamped to [-1, 1] because a
+    // normalised pair can exceed 1 by rounding, and acos of a value above 1
+    // is NaN, which would make every comparison false and silently paint
+    // the whole screen again.  The vector commands used here
+    // (vectorDotProduct, vectorNormalized, vectorMagnitude) are all verified
+    // present in that same binary.
+    private _toObj = (getPosASLVisual _obj) vectorDiff _eye;
+    private _objRange = vectorMagnitude _toObj;
+    private _cosOffset = 1;
+    if (_objRange > 0.01) then {
+        _cosOffset = ((vectorNormalized _toObj) vectorDotProduct _viewDir) max -1 min 1;
+    };
+    private _offsetDeg = acos _cosOffset * 57.2957795;
+    if (_offsetDeg > _thermalHalfAngleDeg) then {
+        _gatedOut = _gatedOut + 1;
+        // A target that WAS inside the field and is now outside it still
+        // carries the emissive material it was given on an earlier tick,
+        // because the swap is per-object and nothing else clears it.  Its
+        // own materials are restored here and its entry is dropped, or the
+        // gate would freeze a heat map wherever the operator last looked,
+        // which is the same fault the gate replaces.  An object that was
+        // never painted has no entry, so this is a no-op for it.
+        private _saved = missionNamespace getVariable [QGVAR(fusionOverlaySaved), []];
+        private _slot = _saved findIf { (_x select 0) == _obj };
+        if (_slot >= 0) then {
+            private _oldMats = (_saved select _slot) select 1;
+            private _ri = 0;
+            {
+                if ((_ri < count _oldMats) && {(_oldMats select _ri) isEqualType ""}) then {
+                    _obj setObjectMaterial [_ri, _oldMats select _ri];
+                };
+                _ri = _ri + 1;
+            } forEach _oldMats;
+            _saved deleteAt _slot;
+            missionNamespace setVariable [QGVAR(fusionOverlaySaved), _saved];
+        };
+        continue;
+    };
+    _paintedCount = _paintedCount + 1;
 
     // Save the object's own materials ONCE per session, before the first
     // swap.  Saving every tick would capture the already-swapped emissive
@@ -346,6 +525,21 @@ private _objectCount = count _objects;
         AEE_LOG_DEBUG(_logMsg);
     };
 } forEach _objects;
+
+// The GATE line, emitted once per window after the loop, because the
+// rejected and painted counts are only final there.  It names the device the
+// field was taken from, the half-angle in use, whether that value is derived
+// from a source or declared here, and how many candidates the offset gate
+// turned away.  "fov=declared" in this line is the record that a device with
+// no published thermal field is running on a declared default, and a gate
+// that cannot be read in a log is a gate nobody can check next session.
+if (_logNow) then {
+    private _logGate = format [
+        "fusion gate: dev=%1 fov=%2 axis=%3 halfDeg=%4 objs=%5 gated=%6 painted=%7",
+        _thermalDevice, _fovSource, _fovAxis, _thermalHalfAngleDeg, _objectCount, _gatedOut, _paintedCount
+    ];
+    AEE_LOG_DEBUG(_logGate);
+};
 
 // Publish the edge state for the tick.  It is separate from the brightness
 // ladder, so an edge can never overwrite a selection's thermal shading.

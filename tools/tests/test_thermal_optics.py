@@ -4337,6 +4337,234 @@ class TestFusionPipeline(unittest.TestCase):
         for field in ("vm=%1", "capable=%2", "mode=%3", "maxBand="):
             self.assertIn(field, overlay, f"the overlay log must report {field}")
 
+    def test_fusion_gate_reads_device_field_and_reports_it(self):
+        # The overlay painted every object in 300 m whatever direction it sat
+        # in, so it had no angular limit at all.  The gate compares a
+        # target's angle from the VIEW AXIS against the thermal channel's
+        # half-angle.
+        #
+        # The half-angle and the comparison are READ OUT of the SQF, not
+        # hardcoded here, so a change to either fails this test instead of
+        # letting the test drift against the renderer.  Comments are
+        # stripped first, because this file's header quotes the figures it
+        # replaced and a raw search would find the prose.
+        fusion = _REPO_ROOT / "addons/thermal/functions/fusion"
+        code = _code_only(
+            (fusion / "fnc_applyFusionOverlay.sqf").read_text(encoding="utf-8")
+        )
+
+        # The device with no published thermal figure takes a DECLARED
+        # default, and the log must be able to say so.
+        m = re.search(r"_DECLARED_HALF_ANGLE_DEG\s*=\s*([0-9.]+)\s*;", code)
+        self.assertIsNotNone(
+            m, "the declared default half-angle must exist and be named"
+        )
+        declared = float(m.group(1))
+
+        # The device WITH a published thermal field takes its own figure.
+        d = re.search(
+            r'case\s+"BNVD-FUSED"\s*:\s*\{\s*'
+            r"_thermalHalfAngleDeg\s*=\s*([0-9.]+)\s*;\s*"
+            r'_fovSource\s*=\s*"([a-z]+)"\s*;\s*'
+            r'_fovAxis\s*=\s*"([a-z]+)"\s*;',
+            code,
+        )
+        self.assertIsNotNone(
+            d,
+            "the published device must set its own half-angle, source and axis",
+        )
+        derived = float(d.group(1))
+        self.assertEqual(d.group(2), "derived", "a sourced figure is not declared")
+        self.assertEqual(
+            d.group(3),
+            "diagonal",
+            "the only published thermal figure states a diagonal, so the "
+            "axis must not be invented or left unpinned",
+        )
+        self.assertNotEqual(
+            derived,
+            declared,
+            "a device with its own published figure must not silently fall "
+            "back to the declared default",
+        )
+
+        # The gate itself: an angle from the view axis, compared to the
+        # half-angle in use.  acos is used and NOT acosDeg, because the
+        # dedicated-server binary carries acos and not acosDeg, and a bare
+        # absent token is a parse error that aborts the whole file.
+        self.assertIn("acos _cosOffset", code, "the offset angle must be computed")
+        self.assertNotIn(
+            "acosDeg", code, "acosDeg is absent from the dedicated server binary"
+        )
+        self.assertRegex(
+            code,
+            r"if\s*\(\s*_offsetDeg\s*>\s*_thermalHalfAngleDeg\s*\)",
+            "the offset gate must compare the target angle to the half-angle",
+        )
+        # The dot product is clamped, or a normalised pair that rounds above
+        # 1 makes acos NaN and every comparison false, which repaints the
+        # whole screen and looks like a working gate.
+        self.assertIn(
+            "max -1 min 1",
+            code,
+            "the cos must be clamped to [-1, 1] or acos returns NaN",
+        )
+
+        # THE ENVG-B MUST NOT BE GIVEN THE BNVD-FUSED'S NUMBER.  It has no
+        # published thermal-channel figure of its own, and the two are
+        # different device families, so it falls to the declared default.
+        self.assertIn(
+            '_x == "nvgogglesb"',
+            code,
+            "the device must be identified from the hmd classname token, the "
+            "same path the phosphor fix uses",
+        )
+        for forbidden in ('_x == "envg"', '_x == "psq-42"'):
+            self.assertNotIn(
+                forbidden,
+                code,
+                "the ENVG-B must not be routed to another device's figure",
+            )
+
+        # The look direction is the repository's cached eye state, sampled
+        # ONCE per tick, not a per-object camera read.
+        self.assertIn(
+            "EFUNC(core,getEyeState)",
+            code,
+            "the gate must use the repository's cached eye state",
+        )
+        self.assertLess(
+            code.index("EFUNC(core,getEyeState)"),
+            code.index("forEach _objects"),
+            "the look direction must be sampled BEFORE the object loop, so "
+            "the hot path does not grow",
+        )
+
+        # A gate nobody can read in a log is a gate nobody can check next
+        # session, so the diagnostic must name the device, the half-angle,
+        # whether the value is derived or declared, and both counts.
+        for field in ("dev=%1", "fov=%2", "axis=%3", "halfDeg=%4", "gated=%6"):
+            self.assertIn(field, code, f"the gate log must report {field}")
+
+    def test_fusion_gate_half_angles_are_the_published_ones(self):
+        # The half-angles are read out of the SQF, and the relationships
+        # that make them defensible are checked here:
+        #   * the derived figure is exactly half a DIAGONAL field, so the
+        #     gate uses the axis the source states;
+        #   * the declared default is exactly half the family's 40, which
+        #     is the same unpinned-axis figure the device library records.
+        # Both are read from the source, so editing either number fails.
+        fusion = _REPO_ROOT / "addons/thermal/functions/fusion"
+        code = _code_only(
+            (fusion / "fnc_applyFusionOverlay.sqf").read_text(encoding="utf-8")
+        )
+        m = re.search(
+            r'case\s+"BNVD-FUSED"\s*:\s*\{\s*'
+            r"_thermalHalfAngleDeg\s*=\s*([0-9.]+)\s*;",
+            code,
+        )
+        self.assertIsNotNone(m)
+        derived = float(m.group(1))
+        m = re.search(r"_DECLARED_HALF_ANGLE_DEG\s*=\s*([0-9.]+)\s*;", code)
+        declared = float(m.group(1))
+
+        # The published thermal field is a DIAGONAL, so its half-angle about
+        # the view axis is the diagonal halved.  No separate horizontal or
+        # vertical figure is published anywhere in the family, so this is
+        # the only reading the numbers support.
+        self.assertAlmostEqual(
+            derived * 2,
+            34.0,
+            places=6,
+            msg="the derived half-angle must be half the published 34 "
+            "diagonal thermal field, and not a split of the fused figure",
+        )
+        self.assertAlmostEqual(
+            declared * 2,
+            40.0,
+            places=6,
+            msg="the declared default must be half the family's unpinned 40, "
+            "declared because no source states an axis for it",
+        )
+
+        # THE COVERAGE ARITHMETIC, computed here from the parsed half-angle
+        # so it cannot drift.  A cone of half-angle t covers
+        # (1 - cos t) / 2 of the sphere.  On a 16:9 display the published
+        # diagonal is the CORNER angle, so the rectangle's half-width and
+        # half-height are set by the aspect and the corner is the gate's
+        # boundary: the cone circumscribes the rectangle and therefore
+        # over-admits the corner sectors.  That over-admission is the honest
+        # cost of a diagonal-only figure and is stated in the header, so
+        # this test records it rather than hiding it.
+        for half_deg, label in ((derived, "derived"), (declared, "declared")):
+            half = math.radians(half_deg)
+            solid_fraction = (1.0 - math.cos(half)) / 2.0
+            self.assertGreater(
+                solid_fraction,
+                0.0,
+                f"the {label} gate must cover some solid angle",
+            )
+            self.assertLess(
+                solid_fraction,
+                0.5,
+                f"the {label} gate must be a bounded field, not the whole sphere",
+            )
+            # 16:9 with the half-diagonal equal to the half-angle.
+            aspect = 16.0 / 9.0
+            k = math.tan(half) / math.sqrt(aspect * aspect + 1.0)
+            half_w_deg = math.degrees(math.atan(aspect * k))
+            half_h_deg = math.degrees(math.atan(k))
+            self.assertAlmostEqual(
+                math.hypot(
+                    math.tan(math.radians(half_w_deg)),
+                    math.tan(math.radians(half_h_deg)),
+                ),
+                math.tan(half),
+                places=9,
+                msg="the rectangle's corner must land on the gate's boundary",
+            )
+            # The cone is strictly larger than the rectangle it circumscribes,
+            # which is the corner over-admission the header names.
+            self.assertGreater(
+                half_w_deg,
+                half_h_deg,
+                "a landscape display has the wider half-angle",
+            )
+            self.assertLess(
+                half_w_deg,
+                half_deg,
+                "the horizontal half-angle is less than the diagonal "
+                "half-angle, which is why the cone over-admits",
+            )
+
+    def test_fusion_gate_adds_no_rendering_surface(self):
+        # The boundary this gate produces lands at OBJECT scale, because the
+        # overlay's only pixel primitive is a per-object setObjectMaterial
+        # and addons/ has no viewport, scissor, stencil or render-target
+        # primitive.  A frame, border, outline or mask would imply an
+        # optical edge the renderer cannot produce, and a graphic is not
+        # optics, so none may be introduced to make the gate legible.
+        fusion = _REPO_ROOT / "addons/thermal/functions/fusion"
+        code = _code_only(
+            (fusion / "fnc_applyFusionOverlay.sqf").read_text(encoding="utf-8")
+        )
+        for banned in (
+            "drawLine3D",
+            "drawIcon3D",
+            "drawTriangle3D",
+            "cut3D",
+            "BIS_fnc_3DText",
+            '"Draw3D"',
+            "EachFrame",
+            "onEachFrame",
+            "particlesources",
+        ):
+            self.assertNotIn(
+                banned,
+                code,
+                f"the gate must not add a rendering surface ({banned})",
+            )
+
     def test_fusion_diet_sun(self):
         # A3TI creates a diet sun (brightness 0.8, dayLight false) to
         # light the EmissiveWhite objects over the dark NVG scene -
