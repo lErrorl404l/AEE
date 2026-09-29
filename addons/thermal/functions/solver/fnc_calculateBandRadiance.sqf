@@ -12,8 +12,18 @@ three components (FLIR T810442 thermography reference):
     W_refl  radiation from the surroundings reflected off the object
             ((1-eps) is reflectance by Kirchhoff's law)
     W_atm   radiation emitted by the atmosphere along the path
-    tau     atmospheric transmission (close range sim: ~1, so the
-            atmospheric term vanishes and W_obj/W_refl survive)
+    tau     atmospheric transmission from fnc_calculateAtmosphericTransmission
+
+tau and W_atm are now LIVE.  The kernel historically evaluated tau = 1, so
+the (1 - tau) * W_atm term vanished and range had no physical effect.  The
+caller passes tau and the path temperature; when it passes neither, tau
+defaults to 1 and the atmospheric term is exactly zero, so every old caller
+reproduces its old value bit for bit.  W_atm is the Planck band radiance at
+the path temperature, which is the solution of the Schwarzschild transfer
+equation for a HOMOGENEOUS ISOTHERMAL layer (near-horizontal boundary-layer
+path below about 1 km).  It breaks on a slant path, across a temperature
+inversion and over a multi-kilometre path; no slant-path integral is
+computed, because the repository holds no vertical temperature profile.
 
 The old `T * eps^0.25` scaling came from inverting Stefan-Boltzmann for
 TOTAL hemispherical power - it is not valid for band-limited LWIR with a
@@ -46,6 +56,12 @@ Arguments:
   3: ground view factor (NUMBER, 0..1) - ground weight in the reflection
      mix; the sky weight is 1 - ground
   4: ground temperature (NUMBER, C) - the reflected ground term
+  5: transmission (NUMBER, 0..1) - path transmission from
+     fnc_calculateAtmosphericTransmission; default 1 reproduces the old
+     close-range result exactly (the atmospheric term is then zero)
+  6: path temperature (NUMBER, C) - air temperature along the path, for
+     the isothermal path radiance W_atm; default 15, and inert while the
+     transmission default of 1 holds
 
 Return Value:
   NUMBER - apparent band radiance (W/m2/sr), the value a FLIR sensor
@@ -57,8 +73,17 @@ params [
     ["_eps", 0.95, [0]],
     ["_tAir", 15, [0]],
     ["_fGround", 0.5, [0]],
-    ["_tGround", 15, [0]]
+    ["_tGround", 15, [0]],
+    ["_tau", 1, [0]],
+    ["_tPath", 15, [0]]
 ];
+
+// Transmission is clamped to the physical 0..1 range; a non-finite value
+// falls back to 1, the old close-range behaviour, rather than poisoning the
+// result.  SQF NaN compares false against everything, so finite is the check.
+if !(_tau isEqualType 0) then { _tau = 1; };
+if !(finite _tau) then { _tau = 1; };
+_tau = (_tau max 0) min 1;
 
 // Clamp the physical inputs: emissivity 0..1, temps sane.
 _eps = (_eps max 0.05) min 1;
@@ -105,10 +130,15 @@ private _fnRad = {
 };
 
 // ─── FLIR 3-term radiance ─────────────────────────────────────────────────
-// Close range (the sim's objects): tau = 1, so the atmospheric term
-// vanishes.  The reflected term is (1-eps) * W(T_refl): a low-eps
-// surface reflects the environment (cold sky at night) more than it
-// emits - the physics behind "bare metal reads dark at night".
+// The object and reflection terms are multiplied by the transmission tau,
+// and the path term (1 - tau) * W_atm is added.  With the default tau = 1
+// the path term is exactly zero and the result is the old two-term value.
+// The reflected term is (1-eps) * W(T_refl): a low-eps surface reflects the
+// environment (cold sky at night) more than it emits - the physics behind
+// "bare metal reads dark at night".
 private _wObj = _tSurfK call _fnRad;
 private _wRefl = _tReflK call _fnRad;
-_eps * _wObj + (1 - _eps) * _wRefl
+private _tPathK = (_tPath + 273.15) max 200 min 350;
+private _wAtm = _tPathK call _fnRad;
+private _wTransmitted = _tau * (_eps * _wObj + (1 - _eps) * _wRefl);
+_wTransmitted + (1 - _tau) * _wAtm

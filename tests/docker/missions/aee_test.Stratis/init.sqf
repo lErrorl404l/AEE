@@ -2975,6 +2975,19 @@ private _p29Pass = 0;
     // thermal edge kernel is pure arithmetic, so the dedicated server
     // measures it directly.  It renders nothing.
     execVM "aee_p68_edge_probe.sqf";
+    // PHASE 69 lives in aee_p69_netd_probe.sqf for the same reason: the
+    // sensor detection threshold kernel is pure arithmetic, so the dedicated
+    // server measures it directly.  It renders nothing.
+    execVM "aee_p69_netd_probe.sqf";
+    // PHASE 70 lives in aee_p70_atmos_probe.sqf for the same reason: the
+    // atmospheric transmission kernel and the radiance common-mode property
+    // are pure arithmetic, so the dedicated server measures them directly.
+    // It renders nothing.
+    execVM "aee_p70_atmos_probe.sqf";
+    // PHASE 71 lives in aee_p71_johnson_probe.sqf for the same reason: the
+    // Johnson-criteria spatial-resolution kernel is pure arithmetic, so the
+    // dedicated server measures it directly.  It renders nothing.
+    execVM "aee_p71_johnson_probe.sqf";
     [{diag_log text "[AEE-TEST] DONE";}, [], 8] call CBA_fnc_waitAndExecute;
         }, [_t1], 5] call CBA_fnc_waitAndExecute;
     }, [], 7] call CBA_fnc_waitAndExecute;
