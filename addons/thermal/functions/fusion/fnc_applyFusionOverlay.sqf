@@ -160,10 +160,10 @@ private _mag = 1;
 // NETD is the signal-to-noise 1 point and reliable detection sits at 3 to
 // 10 times that, and the record publishes no standard value.
 private _snrMultiple = 5;
-// The SENSOR detection threshold, derived per device.  It is NOT the 1/16
-// display band step: the sensor resolves about fourteen times finer than
-// the display band, so the two must not be conflated.  The band step stays
-// a display concern in the brightness ladder below.
+// The SENSOR detection threshold, derived per device.  It is NOT a display
+// band step: the selection path steps 1/31 and this fusion ladder 1/255, so
+// the two must not be conflated.  On this path the step is FINER than the
+// sensor.  The band step stays a display concern in the ladder below.
 private _sensorThreshold = [_deviceNetd, _snrMultiple, _tAir] call FUNC(calculateSensorThreshold);
 if (_sensorThreshold <= 0) then { _sensorThreshold = 0.004349; };
 
