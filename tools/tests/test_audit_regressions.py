@@ -413,6 +413,89 @@ class TestPPEffectRegistry(unittest.TestCase):
         self.assertIn("ppEffectDestroy", code)
 
 
+class TestPPEffectCrossScopeOwnership(unittest.TestCase):
+    """Two scopes must never be handed the same engine handle.
+
+    A live log recorded the night grain and the optics base set both creating
+    a FilmGrain at priority 2000 and both being handed handle 32:
+
+      ppEffect created optics/FilmGrain      handle=32 priority=2000
+      ppEffect created nightvision/FilmGrain handle=32 priority=2000
+
+    Idempotence is keyed on scope and key, so neither request matched the
+    other's entry, and ppEffectCreate returned a POSITIVE handle for the
+    occupied priority, so a negative-only check never fired.  Two owners of
+    one effect means the first teardown destroys the other module's effect,
+    which is the damage the registry exists to prevent.
+    """
+
+    _CREATE = REPO / "addons/core/functions/fnc_createPPEffect.sqf"
+    _OPTS = REPO / "addons/optics/functions/vision/fnc_ppEffectCreate.sqf"
+    _MGMT = REPO / "addons/optics/functions/vision/fnc_managePostProcess.sqf"
+
+    def test_a_candidate_is_compared_against_every_owned_handle(self):
+        code = _code(self._CREATE)
+        self.assertIn("keys _registry", code)
+        self.assertIn("forEach _ownedIds", code)
+        self.assertIn("_heldHandle == _candidate", code)
+
+    def test_a_positive_but_owned_candidate_triggers_a_retry(self):
+        """The discriminator against the old code: a positive return value
+        does not mean the handle is ours."""
+        code = _code(self._CREATE)
+        self.assertIn("if (_candidate >= 0) then", code)
+        self.assertIn('if (_collidedWith == "") then { _handle = _candidate; }', code)
+        self.assertIn("_usedPriority = _usedPriority + 1", code)
+
+    def test_a_collision_is_reported_rather_than_swallowed(self):
+        code = _code(self._CREATE)
+        self.assertIn("already owned by", code)
+        self.assertIn("AEE_LOG_WARN", code)
+
+    def test_the_created_line_reports_the_priority_actually_used(self):
+        code = _code(self._CREATE)
+        self.assertIn("priority=%5", code)
+        self.assertIn("_handle, _usedPriority", code)
+
+    def test_the_optics_base_no_longer_creates_a_film_grain(self):
+        """Nobody read or destroyed it, so it is deleted rather than given a
+        different priority.  Night vision owns the eye noise."""
+        code = _code(self._OPTS)
+        self.assertNotIn("FilmGrain", code)
+
+    def test_the_deleted_handle_name_is_absent_from_the_addon(self):
+        for path in (self._OPTS, self._MGMT):
+            with self.subTest(path=path.name):
+                self.assertNotIn("ppHandle_FilmGrain", _code(path))
+
+    def test_the_false_lost_handle_warning_is_gone(self):
+        """It keyed on the legacy mirror, so it fired while the registry
+        still held the live handle and the very next line reported the
+        effect already owned at that same handle."""
+        code = _code(self._MGMT)
+        self.assertNotIn("handle lost", code)
+        self.assertNotIn("mirror=-1", code)
+
+    def test_the_registry_decides_and_the_mirror_follows(self):
+        code = _code(self._MGMT)
+        self.assertIn("QEGVAR(core,ppHandle_%1_%2)", code)
+        self.assertIn("missionNamespace setVariable [_legacy, _owner]", code)
+        self.assertIn("has no registry handle", code)
+
+    def test_the_undetectable_engine_kill_is_still_declared(self):
+        """There is no engine query for a live handle, so an effect the
+        engine killed cannot be seen here.  The gap must stay written down
+        rather than being covered by a proxy that misreports."""
+        text = self._MGMT.read_text(encoding="utf-8")
+        self.assertIn("no engine query", text)
+        self.assertIn("EPE manager release", text)
+
+    def test_the_header_records_the_measured_collision(self):
+        text = self._CREATE.read_text(encoding="utf-8")
+        self.assertIn("A HANDLE IS NEVER SHARED ACROSS SCOPES", text)
+        self.assertIn("handle=32", text)
+
+
 class TestSettingMacroStringtableContract(unittest.TestCase):
     """Shape 6. A settings macro must produce the stringtable keys that exist.
 

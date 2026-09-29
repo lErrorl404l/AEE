@@ -16,6 +16,24 @@
  * returns a NEW handle, orphaning the old one, so a repeat init used to log
  * "created" on every pass.
  *
+ * A HANDLE IS NEVER SHARED ACROSS SCOPES.  Idempotence is keyed on scope and
+ * key, so two different keys pass the check above even when they ask for the
+ * SAME effect at the SAME priority.  Measured in game: the night grain fix
+ * created a FilmGrain at priority 2000 while the optics base set already held
+ * FilmGrain at 2000, and the log shows both scopes handed handle 32:
+ *
+ *   ppEffect created optics/FilmGrain      handle=32 priority=2000
+ *   ppEffect created nightvision/FilmGrain handle=32 priority=2000
+ *
+ * Two owners of one engine effect means the first teardown destroys the second
+ * one's effect, which is the cross-module damage this registry exists to stop.
+ * ppEffectCreate returned a POSITIVE handle for the occupied priority, so the
+ * failure check below only ever sees a negative, and the bump loop below was
+ * dead code for this case.  So the registry compares every candidate handle
+ * against every handle it already owns and bumps the priority until it gets
+ * one of its own.  That closes the class, not the instance: any two keys
+ * anywhere in the mod are now safe.
+ *
  * The handle is written to three places so existing readers keep working:
  *   - the registry entry, which is what makes teardown possible
  *   - aee_core_ppHandle_<scope>_<key>, the owner record
@@ -55,15 +73,37 @@ if (_existing >= 0) exitWith {
     _existing
 };
 
-private _handle = ppEffectCreate [_effect, _priority];
+// The engine returns a POSITIVE handle for an occupied priority, so the return
+// value cannot detect a shared handle and a negative-only check is dead code for
+// that case.  Compare every candidate against every handle the registry already
+// owns, and bump the priority until the engine hands back one of our own.
+private _ownedIds = keys _registry;
+private _handle = -1;
 private _guard = 0;
-while {_handle < 0 && _guard < _maxBump} do {
-    _priority = _priority + 1;
-    _handle = ppEffectCreate [_effect, _priority];
-    _guard = _guard + 1;
+private _collidedWith = "";
+private _usedPriority = _priority;
+while {_handle < 0 && _guard <= _maxBump} do {
+    private _candidate = ppEffectCreate [_effect, _usedPriority];
+    _collidedWith = "";
+    if (_candidate >= 0) then {
+        {
+            private _otherEntry = _registry getOrDefault [_x, [-1, ""]];
+            private _heldHandle = _otherEntry select 0;
+            if (_heldHandle == _candidate) then { _collidedWith = _x; };
+        } forEach _ownedIds;
+        if (_collidedWith == "") then { _handle = _candidate; };
+    };
+    if (_handle < 0) then {
+        if (_collidedWith != "") then {
+            private _logMsg = format ["ppEffect %1/%2 asked for handle=%3, already owned by %4, so the priority is bumped", _scope, _key, _candidate, _collidedWith];
+            AEE_LOG_WARN(_logMsg);
+        };
+        _usedPriority = _usedPriority + 1;
+        _guard = _guard + 1;
+    };
 };
 if (_handle < 0) exitWith {
-    private _logMsg = format ["ppEffect %1/%2 (%3) failed to create after %4 priority bumps", _scope, _key, _effect, _guard];
+    private _logMsg = format ["ppEffect %1/%2 (%3) failed to create after %4 priority bumps, last shared with %5", _scope, _key, _effect, _guard, _collidedWith];
     AEE_LOG_ERROR(_logMsg);
     -1
 };
@@ -72,7 +112,7 @@ _registry set [_id, [_handle, _legacy]];
 missionNamespace setVariable [QEGVAR(core,ppRegistry), _registry];
 missionNamespace setVariable [format [QEGVAR(core,ppHandle_%1_%2), _scope, _key], _handle];
 if (_legacy != "") then { missionNamespace setVariable [_legacy, _handle] };
-private _logMsg = format ["ppEffect created %1/%2 %3 handle=%4 priority=%5", _scope, _key, _effect, _handle, _priority];
+private _logMsg = format ["ppEffect created %1/%2 %3 handle=%4 priority=%5", _scope, _key, _effect, _handle, _usedPriority];
 AEE_LOG_INFO(_logMsg);
 
 _handle
