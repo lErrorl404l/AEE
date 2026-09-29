@@ -468,6 +468,70 @@ if ((abs ((_idle select 1) - 0.3625) > 0.0001) || {abs ((_full select 1) - 0.60)
     diag_log text "[P65] reader: RTD not exercised headless, declared idle and full fallback asserted";
 };
 
+// ---- engine load, derived from tractive demand plus acceleration ----------
+// A road vehicle has no throttle reader, so the renderer derives its load.
+// The renderer exits at hasInterface on a dedicated server, so this measures
+// the pure kernel: it sweeps the PHYSICAL curve, taking the force and the
+// speed and asking the kernel for the fraction.  It does not assert over a
+// cartesian product of linked inputs, because that invents a bug the
+// renderer can never hit.
+private _LOAD = "aee_mobility_fnc_calculateEngineLoad";
+if (isNil _LOAD) then {
+    _fail = _fail + 1;
+    _notes pushBack "engine load kernel isNil: aee_mobility_fnc_calculateEngineLoad is not compiled";
+} else {
+    private _ratedW = 150000;
+    private _idleF = 0.05;
+    private _loadBad = [];
+    private _loadSweep = "";
+
+    // Zero force, zero acceleration, zero speed reaches the idle floor and
+    // not a hard zero.  The engine publishes no rpm for a road vehicle, so a
+    // stationary engine at high rpm cannot be distinguished from idle.
+    private _still = [0, 0, 1500, 0, _ratedW, _idleF] call aee_mobility_fnc_calculateEngineLoad;
+    if (abs (_still - _idleF) > 0.0001) then {
+        _loadBad pushBack format ["still load %1 want idle %2", _still, _idleF];
+    };
+
+    // Linear in force at fixed speed, and rising.  The drag term is a
+    // function of speed alone, so it is constant across a force sweep.
+    private _speedF = 20;
+    private _massF = 1500;
+    private _f1 = [1000, _speedF, _massF, 0, _ratedW, _idleF] call aee_mobility_fnc_calculateEngineLoad;
+    private _f2 = [2000, _speedF, _massF, 0, _ratedW, _idleF] call aee_mobility_fnc_calculateEngineLoad;
+    private _f3 = [3000, _speedF, _massF, 0, _ratedW, _idleF] call aee_mobility_fnc_calculateEngineLoad;
+    if ((_f2 - _f1) <= 0) then { _loadBad pushBack "force sweep did not rise"; };
+    if (abs ((_f3 - _f2) - (_f2 - _f1)) > 0.0001) then { _loadBad pushBack "load not linear in force"; };
+    _loadSweep = format ["force %1/%2/%3", _f1, _f2, _f3];
+
+    // Linear in acceleration at fixed force and speed, and rising.
+    private _a1 = [1000, _speedF, _massF, 0, _ratedW, _idleF] call aee_mobility_fnc_calculateEngineLoad;
+    private _a2 = [1000, _speedF, _massF, 1, _ratedW, _idleF] call aee_mobility_fnc_calculateEngineLoad;
+    private _a3 = [1000, _speedF, _massF, 2, _ratedW, _idleF] call aee_mobility_fnc_calculateEngineLoad;
+    if ((_a2 - _a1) <= 0) then { _loadBad pushBack "acceleration sweep did not rise"; };
+    if (abs ((_a3 - _a2) - (_a2 - _a1)) > 0.0001) then { _loadBad pushBack "load not linear in acceleration"; };
+
+    // The clamp holds at the top: a huge force cannot exceed 1.
+    private _hot = [1000000000, 60, _massF, 0, _ratedW, _idleF] call aee_mobility_fnc_calculateEngineLoad;
+    if (_hot > 1) then { _loadBad pushBack format ["load %1 above 1", _hot]; };
+
+    // A non-positive rated power is refused with the -1 sentinel.
+    private _noPwr = [1000, _speedF, _massF, 0, 0, _idleF] call aee_mobility_fnc_calculateEngineLoad;
+    if (_noPwr != -1) then { _loadBad pushBack format ["rated power 0 was not refused, got %1", _noPwr]; };
+    private _negPwr = [1000, _speedF, _massF, 0, -5000, _idleF] call aee_mobility_fnc_calculateEngineLoad;
+    if (_negPwr != -1) then { _loadBad pushBack format ["negative rated power was not refused, got %1", _negPwr]; };
+
+    if (_loadBad isEqualTo []) then {
+        _pass = _pass + 1;
+        diag_log text format ["[P65] [PASS] engine load derived: %1, idle floor %2, clamp and refusal hold", _loadSweep, _idleF];
+    } else {
+        _fail = _fail + 1;
+        {
+            _notes pushBack format ["engine load: %1", _x];
+        } forEach _loadBad;
+    };
+};
+
 if (_fail == 0) then {
     diag_log text format ["[P65] [PASS] shock trace decision leg: %1 checks, subsonic silent, cone narrowing, size from calibre, geometry bounded", _pass];
 } else {

@@ -101,9 +101,32 @@ resolves in this order:
   2. the real reader: collectiveRTD for a helicopter and throttleRTD for
      fixed wing, behind the difficultyEnabledRTD guard, with a type check
      on the return.  A helicopter uses collective and a plane uses throttle
-  3. otherwise the declared idle fraction, so a parked aircraft and a land
-     vehicle still show a small plume rather than nothing
+  3. the DERIVED ground-vehicle term for a LandVehicle, from the published
+     traction force and the acceleration between ticks.  See below
+  4. otherwise the declared idle fraction, so a parked aircraft and a land
+     vehicle at rest still show a small plume rather than nothing
 The reader is gated on the flight model and is unavailable when it is off.
+
+NO ROAD-THROTTLE READER EXISTS IN THE ENGINE, SO THE LAND TERM IS DERIVED
+AND NOT MEASURED.  collectiveRTD is rotary and throttleRTD is fixed wing, so
+a LandVehicle selects neither string and its load would otherwise stay at
+the declared idle for every speed.  getInfo is absent from the client
+binary, and the AEE mobility model carries no engine-load reader either.
+The load therefore comes from the physical power balance in
+fnc_calculateEngineLoad: the tractive demand plus the power to accelerate
+the inertia.  The object work stays here.  This function reads the
+published aee_mobility_tractionForce, reads the mass with getMass, and
+differences the vehicle velocity between ticks for the acceleration.  The
+acceleration is smoothed with the declared time constant _ACCEL_TAU,
+because a velocity difference is noisy.  A STATIONARY VEHICLE AT HIGH RPM
+CANNOT BE DISTINGUISHED FROM ONE AT IDLE, because the engine does not
+publish rpm for a road vehicle, so the kernel floors the result at the idle
+fraction.  That is a LIMIT OF THE ENGINE, not an approximation this
+function chose.  The published aee_mobility_tractionForce belongs to the
+local player's vehicle; a nearby candidate reuses it, which is a stated
+approximation.  The rated power is read from an optional per-vehicle
+aee_engineRatedPowerW, else it is the kernel default of 150000 W, a
+declared default and not a measurement.
 
 THE READER IS COMPILED AT RUN TIME, BECAUSE THE ENGINE COMMAND SET DIFFERS
 BETWEEN BUILDS.  The fixed-wing reader throttleRTD is present in the game
@@ -166,6 +189,7 @@ private _MIN_LIVE = 4;
 private _MIN_CONTRAST = 0.1;
 private _PLUME_RANGE = 250;
 private _IDLE_POWER = 0.05;
+private _ACCEL_TAU = 5.0;
 
 // ─── Class tier table ──────────────────────────────────────────────────────
 // One row per engine class: [idleTempC, fullTempC, idleDepthM, fullDepthM].
@@ -205,12 +229,48 @@ private _selectTier = {
     _tier
 };
 
+// ─── Derived ground-vehicle load ───────────────────────────────────────────
+// A road vehicle has no readable throttle, so the load is derived from the
+// published traction force and the acceleration between ticks.  The object
+// work lives here and the kernel is pure arithmetic.  The acceleration comes
+// from the vehicle's own velocity difference, held per vehicle, and it is
+// smoothed with _ACCEL_TAU because a difference is noisy.  A stationary
+// engine reaches only the idle floor, because the engine publishes no rpm.
+private _deriveGroundPower = {
+    params ["_veh", "_idlePower", "_accelTau"];
+    private _now = diag_tickTime;
+    private _speed = vectorMagnitude (velocity _veh);
+    private _prevSpeed = _veh getVariable ["aee_exhaustPrevSpeed", _speed];
+    private _prevTime = _veh getVariable ["aee_exhaustPrevTime", _now];
+    private _smooth = _veh getVariable ["aee_exhaustSmoothAccel", 0];
+    if !(_prevSpeed isEqualType 0) then { _prevSpeed = _speed; };
+    if !(_prevTime isEqualType 0) then { _prevTime = _now; };
+    if !(_smooth isEqualType 0) then { _smooth = 0; };
+    private _dt = _now - _prevTime;
+    if (_dt > 0) then {
+        private _raw = (_speed - _prevSpeed) / _dt;
+        _smooth = _smooth + ((_raw - _smooth) * (_dt / (_accelTau + _dt)));
+    };
+    _veh setVariable ["aee_exhaustPrevSpeed", _speed];
+    _veh setVariable ["aee_exhaustPrevTime", _now];
+    _veh setVariable ["aee_exhaustSmoothAccel", _smooth];
+
+    private _force = missionNamespace getVariable [QEGVAR(mobility,tractionForce), 0];
+    if !(_force isEqualType 0) then { _force = 0; };
+    private _rho = missionNamespace getVariable [QEGVAR(core,currentAirDensity), 1.225];
+    if !(_rho isEqualType 0) then { _rho = 1.225; };
+    private _rated = _veh getVariable ["aee_engineRatedPowerW", 150000];
+    if !(_rated isEqualType 0) then { _rated = 150000; };
+
+    [_force, _speed, getMass _veh, _smooth, _rated, _idlePower, 0, _rho] call EFUNC(mobility,calculateEngineLoad)
+};
+
 // ─── Power resolution ──────────────────────────────────────────────────────
 // A published value wins, then the real reader when the flight model is on,
-// then the declared idle.  A missing compile or a bad return shape falls
-// through.  See the header.
+// then the derived ground term, then the declared idle.  A missing compile
+// or a bad return shape falls through.  See the header.
 private _resolvePower = {
-    params ["_veh", "_idlePower"];
+    params ["_veh", "_idlePower", "_accelTau"];
     private _power = -1;
     private _published = _veh getVariable ["aee_enginePowerFraction", -1];
     if (_published isEqualType 0) then {
@@ -236,6 +296,14 @@ private _resolvePower = {
                     };
                 };
             };
+        };
+    };
+    if (_power < 0) then {
+        // A ground vehicle falls through the air reader, so the derived
+        // branch is gated explicitly on the land root.  See the header.
+        if (_veh isKindOf "LandVehicle") then {
+            private _derived = [_veh, _idlePower, _accelTau] call _deriveGroundPower;
+            if (_derived >= 0) then { _power = _derived; };
         };
     };
     if (_power < 0) then { _power = _idlePower; };
@@ -290,7 +358,7 @@ private _maxMag = _prevMag * 0.5;
     _row params ["_idleT", "_fullT", "_idleD", "_fullD"];
 
     // The power fraction drives the plume size, not the alpha.
-    private _power = [_cand, _IDLE_POWER] call _resolvePower;
+    private _power = [_cand, _IDLE_POWER, _ACCEL_TAU] call _resolvePower;
     private _profile = [_power, _idleT, _fullT, _idleD, _fullD] call EFUNC(mobility,calculateExhaustPlume);
     private _gasC = _profile select 0;
     private _depth = _profile select 1;
