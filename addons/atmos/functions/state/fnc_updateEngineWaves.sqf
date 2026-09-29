@@ -18,14 +18,14 @@ REQUIREMENT: the mission weather must be on Manual Override (editor, Intel
 > Manual Override).  The value changes without it, but the engine renders
 no wave change.
 
-Reads:  QEGVAR(maritime,waveHeight_m)
+Reads:  QEGVAR(core,waveHeight_m)
 Sets:   engine waves (time setWaves)
 */
 if (!hasInterface) exitWith {};
 
 private _fullScaleMetres = 15;   // fnc_calculateSeaState caps H_s at 15 m
 
-private _waveH = missionNamespace getVariable [QEGVAR(maritime,waveHeight_m), 0];
+private _waveH = missionNamespace getVariable [QEGVAR(core,waveHeight_m), 0];
 if !(_waveH isEqualType 0) then { _waveH = 0; };
 _waveH = (_waveH max 0) min _fullScaleMetres;
 
