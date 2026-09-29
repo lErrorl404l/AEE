@@ -26,6 +26,7 @@ PREPS(ground,applyGroundContactStamps);
 PREPS(environment,solarElevation);
 PREPS(solver,solveTwoNodeSelection);
 PREPS(solver,calculateBandRadiance);
+PREPS(solver,evaluateThermalEdge);
 PREPS(solver,updateThermalAGC);
 PREPS(display,applyThermalVision);
 PREPS(display,applyEngineThermal);

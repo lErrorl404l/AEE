@@ -2971,6 +2971,10 @@ private _p29Pass = 0;
     // exhaust shimmer renderer exits at hasInterface on a server, so the air
     // power resolution is measured on the headless-callable kernel instead.
     execVM "aee_p66_airload_probe.sqf";
+    // PHASE 68 lives in aee_p68_edge_probe.sqf for the same reason: the
+    // thermal edge kernel is pure arithmetic, so the dedicated server
+    // measures it directly.  It renders nothing.
+    execVM "aee_p68_edge_probe.sqf";
     [{diag_log text "[AEE-TEST] DONE";}, [], 8] call CBA_fnc_waitAndExecute;
         }, [_t1], 5] call CBA_fnc_waitAndExecute;
     }, [], 7] call CBA_fnc_waitAndExecute;
