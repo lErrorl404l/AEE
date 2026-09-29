@@ -65,7 +65,11 @@ class TestRuntimeResolver(unittest.TestCase):
             ("B_762x51_Ball", "762x51_nato"),
             ("MSS_300NM_225ELDM", "300_norma_mag"),
             ("CUP_10Rnd_9x19", "9x19"),
-            ("B_127x108_Ball", "127x108"),
+            # The canonical id. The database once held a second row for the
+            # same cartridge under the compact spelling 127x108, whose alias
+            # was a whole token of this classname and so shadowed the
+            # canonical record. The rows are merged.
+            ("B_127x108_Ball", "12_7_x_108"),
         ]:
             self.assertEqual(resolve(query), resolve(query))  # determinism
             hit = resolve(query)
