@@ -1,5 +1,7 @@
 #include "script_component.hpp"
 
+AEE_MODULE_POST_INIT
+
 // Standalone access to the AEE actions. The same actions are exposed to the
 // ACE3 interaction menu by compat_ace3; these keybinds work without ACE3.
 ["AEE", "WeatherReport", [LLSTRING(WeatherReport), "Show the AEE weather report"], {

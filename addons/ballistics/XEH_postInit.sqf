@@ -1,5 +1,7 @@
 #include "script_component.hpp"
 
+AEE_MODULE_POST_INIT
+
 ADDON = false;
 
 #include "XEH_PREP.hpp"
@@ -10,7 +12,7 @@ ADDON = false;
 // for the actual ammo just fired.  Local to the shooter; no remote side
 // effects.  Skips thrown items and the ACE3-advanced-ballistics
 // double-count guard inside the correction function.
-["fired", {
+["Fired", {
     params ["_unit", "_weapon", "", "", "_ammo", "_magazine", "_projectile"];
     if (_unit != call CBA_fnc_currentUnit) exitWith {};
     if (_weapon == "throw" || _weapon == "put") exitWith {};
@@ -88,7 +90,7 @@ ADDON = false;
         };
     };
     [_ammo, _ammoTemp] call FUNC(calculateMuzzleVelocityCorrection);
-}] call CBA_fnc_addEventHandler;
+}, QGVAR(shotTemp)] call EFUNC(core,installPlayerEngineHandler);
 
 AEE_LOG_INFO("ballistics module post-init complete");
 

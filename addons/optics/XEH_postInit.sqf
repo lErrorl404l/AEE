@@ -1,5 +1,7 @@
 #include "script_component.hpp"
 
+AEE_MODULE_POST_INIT
+
 // Apply post-process effects immediately when the player's vision mode
 // changes (putting on / removing NVGs or thermal).
 //
@@ -170,7 +172,7 @@
 // ammo's visibleFire from CfgAmmo, discount suppressed weapons, and stamp
 // a short window that fnc_applyNVGTubeModel reads as a blowout source.
 // The event is local — only the shooter's own view is affected.
-["fired", {
+["Fired", {
     params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile"];
     if (_unit != call CBA_fnc_currentUnit) exitWith {};
     if (_weapon == "throw" || _weapon == "put") exitWith {};
@@ -179,6 +181,17 @@
     // the barrel warms whether or not the shooter is watching through a
     // tube.  The thermal PFH swaps the weapon material while hot.
     [_weapon, _ammo] call EFUNC(thermal,applyWeaponBarrelHeat);
+
+    // HitPart fires on the PROJECTILE, not on a man, so no class event
+    // handler can carry it. The fired event is the only place that holds
+    // the projectile, so the per-projectile handler is attached from here.
+    // Attached before the NVG gate below, because impact heat is a physical
+    // effect and not an NVG effect.
+    if (!isNull _projectile) then {
+        _projectile addEventHandler ["HitPart", {
+            _this call EFUNC(thermal,handleImpactHeat);
+        }];
+    };
 
     // The emission POINT (issue #204): the projectile's position at
     // firing IS the muzzle - where the round and the hot gas come from.
@@ -209,7 +222,7 @@
     // Duration scales with flash intensity: brighter = longer window.
     private _duration = 0.15 + _visibleFire * 0.1;
     missionNamespace setVariable [QEGVAR(nightvision,nvgFlashUntil), CBA_missionTime + _duration];
-}, false] call CBA_fnc_addPlayerEventHandler;
+}, QGVAR(muzzleFlash)] call EFUNC(core,installPlayerEngineHandler);
 
 // ─── Map-wide thermal boot pass ───────────────────────────────────────────
 // Pull EVERYTHING at mission start: one scan of all objects with material
@@ -233,11 +246,4 @@
 // the round arrives hot (friction + the barrel it passed through) and
 // transfers that heat into the surface.  Listener is cheap: one event
 // per impact, stamps only.
-["hitPart", {
-    params ["_projectile", "_shooter", "_instigator", "_selection", "_ammo"];
-    if (isNil "_projectile" || {isNull _projectile}) exitWith {};
-    if (isNil "_ammo") then { _ammo = ""; };
-    // Only stamp impacts near the player (the thermal field is local).
-    if ((getPosASL _projectile) distance (getPosASL (call CBA_fnc_currentUnit)) > 150) exitWith {};
-    [_projectile, _ammo] call EFUNC(thermal,applyImpactHeat);
-}] call CBA_fnc_addEventHandler;
+
