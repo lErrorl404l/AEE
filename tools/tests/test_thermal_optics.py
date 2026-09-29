@@ -1633,7 +1633,6 @@ class TestEngineThermalDrive(unittest.TestCase):
         self.assertAlmostEqual(engine_heat_fraction(100, 17), 1.0, places=6)
         self.assertAlmostEqual(engine_heat_fraction(40, 35), 0.1, places=6)
 
-
     def test_agc_window_hot_scene(self):
         # Scene with a hot engine (max heat 0.8): width 0.9/0.8 = 1.125
         # capped at 1.0, start 0 -> full range.
@@ -4669,11 +4668,52 @@ class TestSensorThresholdKernel(unittest.TestCase):
         / "solver"
         / "fnc_calculateBandRadiance.sqf"
     )
+    _SELECTION_QUANTISER = (
+        _REPO_ROOT
+        / "addons"
+        / "thermal"
+        / "functions"
+        / "display"
+        / "fnc_applySelectionThermal.sqf"
+    )
+    _FUSION_QUANTISER = (
+        _REPO_ROOT
+        / "addons"
+        / "thermal"
+        / "functions"
+        / "fusion"
+        / "fnc_applyFusionOverlay.sqf"
+    )
 
     @classmethod
     def setUpClass(cls):
         cls.code = _code_only(cls._KERNEL.read_text(encoding="utf-8"))
         cls.radiance_code = _code_only(cls._RADIANCE.read_text(encoding="utf-8"))
+        # Both display quantisers are read from the SQF with the comments
+        # stripped, so the headers that quote the retired 16-band step cannot
+        # satisfy a depth check.
+        cls.selection_code = _code_only(
+            cls._SELECTION_QUANTISER.read_text(encoding="utf-8")
+        )
+        cls.fusion_code = _code_only(cls._FUSION_QUANTISER.read_text(encoding="utf-8"))
+
+    def _selection_band_step(self):
+        """The live selection display step, read from its quantiser."""
+        m = re.search(r"private _levels = (\d+);", self.selection_code)
+        self.assertIsNotNone(m, "the selection tint depth is not declared")
+        levels = int(m.group(1))
+        # The ladder spans 0..1 inclusive, so N levels are N - 1 steps.
+        self.assertIn("(_levels - 1)", self.selection_code)
+        return 1.0 / (levels - 1)
+
+    def _fusion_band_step(self):
+        """The live fusion display step, read from its band index."""
+        m = re.search(r"private _band = round \(_b \* (\d+)\)", self.fusion_code)
+        self.assertIsNotNone(m, "the fusion band index is not declared")
+        bands = int(m.group(1))
+        # The index spans 0..bands inclusive, so it is bands + 1 materials.
+        self.assertIn("_mats select _band", self.fusion_code)
+        return 1.0 / bands
 
     @staticmethod
     def _n(t_bg_k):
@@ -4717,16 +4757,64 @@ class TestSensorThresholdKernel(unittest.TestCase):
         self.assertLess(self.threshold(0.05, 5, 15), self.threshold(0.05, 10, 15))
         self.assertAlmostEqual(self.threshold(0.05, 10, 15), 0.008697, places=6)
 
-    def test_the_threshold_falls_below_one_display_band(self):
-        # THE physical finding, frozen so it cannot be "corrected" later.
-        # One band is 1/16 = 0.0625.  The sensor reference is about fourteen
-        # times finer, so the sensor and the display are different quantities
-        # and the edge decision must use the sensor value.
-        band = 1.0 / 16.0
+    def test_the_threshold_sits_below_the_selection_step_and_above_the_fusion_step(
+        self,
+    ):
+        """The sensor threshold is not a display band, and neither is a floor.
+
+        Two display quantisers are live, and the sensor threshold falls
+        BETWEEN them, so the two paths differ in direction:
+
+          - The selection path, fnc_applySelectionThermal, quantises the
+            heat tint to 32 levels over 0..1, so its step is 1 / 31.  The
+            0.004349 reference is 0.13 of that step, so the step is 7.4
+            times COARSER than the sensor.  A TRUE edge can be one the
+            operator does not see.
+          - The fusion path, fnc_applyFusionOverlay, indexes 256 emissive
+            materials, so its step is 1 / 255.  The 0.004349 reference spans
+            1.11 of those steps, so the display is FINER than the sensor
+            there and hides NOTHING the sensor resolves.
+
+        That reversal is why the retired 16-band claim is not merely stale
+        but inverted.  Both steps are read from the SQF with the comments
+        stripped, so a change to either quantiser fails this test instead of
+        drifting away from the prose.
+
+        Evidence for the retirement: the 16 ti_grey_*.rvmat materials were
+        deleted in de4c378 after the 'WHOT/BHOT no visual difference' report
+        (issue #204) showed the grey set never carried the heat colour.  A
+        real thermal display is 8-bit grey, which is the published reason the
+        fusion ladder carries 256 while the per-tick status tint carries 32.
+
+        The comparison is ILLUSTRATIVE of scale, not an identity: the
+        threshold is a normalised relative temperature difference and a
+        step is a fraction of the AGC window, so the two are not
+        commensurable.  The rule that survives the inversion is that NEITHER
+        band may be used as a floor on the threshold, because a band floor
+        would make every device equally blind and would undo the per-device
+        decision.
+        """
+        selection_step = self._selection_band_step()
+        fusion_step = self._fusion_band_step()
+        # The two live steps are far apart, so a test that pinned one of
+        # them could not describe the other.
+        self.assertGreater(selection_step, fusion_step * 8.0)
         for snr in (5, 10):
             got = self.threshold(0.05, snr, 15)
-            self.assertLess(got, band)
-            self.assertGreater(band / got, 7.0)
+            with self.subTest(snr=snr):
+                # The selection display is COARSER than the sensor.
+                self.assertLess(got, selection_step)
+                # The fusion display is FINER than the sensor.
+                self.assertGreater(got, fusion_step)
+                # Neither is a floor: the threshold is not either band, so
+                # the per-device decision survives at full sensitivity.
+                self.assertNotAlmostEqual(got, selection_step, places=6)
+                self.assertNotAlmostEqual(got, fusion_step, places=6)
+        # The reference magnitudes, so a quantiser change that keeps the
+        # ordering but distorts the scale is still caught.
+        reference = self.threshold(0.05, 5, 15)
+        self.assertAlmostEqual(selection_step / reference, 7.418177, places=5)
+        self.assertAlmostEqual(reference / fusion_step, 1.108872, places=5)
 
     def test_the_exponent_follows_the_background_segment(self):
         # 5 C sits in the night segment, 35 C in the day segment and 60 C in
