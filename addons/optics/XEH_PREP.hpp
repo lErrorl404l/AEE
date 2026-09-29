@@ -1,6 +1,7 @@
 PREPS(fx,applyAtmosphericSeeingFX);
 PREPS(fx,applyDewOnOpticsFX);
 PREPS(fx,applyHeatShimmerFX);
+PREPS(fx,applyExhaustShimmerFX);
 PREPS(fx,applyMirageFX);
 PREPS(fx,applyRainOnOpticsFX);
 PREPS(fx,applySnowBlindnessFX);

@@ -33,6 +33,14 @@
             <Original>Dew Decay Rate</Original>
             <English>Dew Decay Rate</English>
         </Key>
+        <Key ID="STR_AEE_Optics_exhaustShimmerAlpha_Description">
+            <Original>Peak alpha of the exhaust heat-shimmer billboard. Alpha is the only free lever, because fill rate is sprite count times sprite area</Original>
+            <English>Peak alpha of the exhaust heat-shimmer billboard. Alpha is the only free lever, because fill rate is sprite count times sprite area</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_exhaustShimmerAlpha_Name">
+            <Original>Exhaust Shimmer Alpha</Original>
+            <English>Exhaust Shimmer Alpha</English>
+        </Key>
         <Key ID="STR_AEE_Optics_glareBlurMax_Description">
             <Original>Veiling blur at peak solar glare</Original>
             <English>Veiling blur at peak solar glare</English>

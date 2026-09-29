@@ -249,8 +249,9 @@
     {
       "exclusion_reason": "no positive ground class-table row",
       "is_ground": false,
-      "kind": "mod_token",
+      "kind": "engine_base",
       "provenance": [
+        "addons/optics/functions/fx/fnc_applyExhaustShimmerFX.sqf:127",
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:180",
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:189"
       ],
