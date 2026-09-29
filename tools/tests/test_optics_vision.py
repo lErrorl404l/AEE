@@ -208,14 +208,12 @@ class TestSensorSessionLifecycle(unittest.TestCase):
     """
 
     def setUp(self):
-        self.post_init = (
-            Path("addons/optics/XEH_postInit.sqf").read_text(encoding="utf-8")
+        self.post_init = Path("addons/optics/XEH_postInit.sqf").read_text(
+            encoding="utf-8"
         )
-        self.teardown = (
-            Path("addons/optics/functions/vision/fnc_teardownSensors.sqf").read_text(
-                encoding="utf-8"
-            )
-        )
+        self.teardown = Path(
+            "addons/optics/functions/vision/fnc_teardownSensors.sqf"
+        ).read_text(encoding="utf-8")
 
     def test_death_tears_down_rather_than_exiting(self):
         """The !alive guard must call the teardown, not silently exit.
@@ -224,7 +222,9 @@ class TestSensorSessionLifecycle(unittest.TestCase):
         which skipped the tick and left the session running forever.
         """
         guard = re.search(
-            r'if \(isNil "_player"(.*?)\) exitWith \{(.*?)\n            \};', self.post_init, re.S
+            r'if \(isNil "_player"(.*?)\) exitWith \{(.*?)\n            \};',
+            self.post_init,
+            re.S,
         )
         self.assertIsNotNone(guard, "the PFH unit guard is missing")
         condition, handler = guard.group(1), guard.group(2)
@@ -244,6 +244,30 @@ class TestSensorSessionLifecycle(unittest.TestCase):
         """A second call must find no handler and return."""
         self.assertIn("if (isNil QGVAR(sensorPFH)) exitWith {}", self.teardown)
 
+    def test_teardown_restores_exposure_before_the_idempotency_exit(self):
+        """The setAperture reset must precede the isNil early exit.
+
+        The NVG and thermal modules set a FIXED setAperture 15, and this is
+        the only place that clears it.  Gated behind the idempotency exit,
+        the camera keeps the night exposure whenever the sensor session is
+        already gone, which is exactly when the reset matters.  The guard
+        must still be present for the rest of the teardown, so this asserts
+        the order rather than the absence.
+        """
+        reset = re.search(r"^\s*setAperture\s+-1\s*;", self.teardown, re.M)
+        self.assertIsNotNone(reset, "the teardown does not restore the exposure")
+
+        guard = re.search(
+            r"if\s*\(isNil QGVAR\(sensorPFH\)\)\s*exitWith", self.teardown
+        )
+        self.assertIsNotNone(guard, "the idempotency guard is missing")
+
+        self.assertLess(
+            reset.start(),
+            guard.start(),
+            "setAperture -1 sits after the exit that skips it",
+        )
+
     def test_teardown_clears_the_unit_key(self):
         """The unit key must not survive the session, or the next session
         compares against a stale unit and tears itself down at once."""
@@ -254,8 +278,12 @@ class TestSensorSessionLifecycle(unittest.TestCase):
         cannot drift apart."""
         self.assertIn("call FUNC(teardownSensors)", self.post_init)
         # No inline teardown left in the event.
-        self.assertNotIn('[GVAR(sensorPFH)] call CBA_fnc_removePerFrameHandler', self.post_init)
-        self.assertIn("[GVAR(sensorPFH)] call CBA_fnc_removePerFrameHandler", self.teardown)
+        self.assertNotIn(
+            "[GVAR(sensorPFH)] call CBA_fnc_removePerFrameHandler", self.post_init
+        )
+        self.assertIn(
+            "[GVAR(sensorPFH)] call CBA_fnc_removePerFrameHandler", self.teardown
+        )
 
 
 if __name__ == "__main__":

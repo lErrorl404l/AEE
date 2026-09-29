@@ -3617,8 +3617,10 @@ class TestSQFSync(unittest.TestCase):
             / "optics"
             / "XEH_postInit.sqf"
         ).read_text(encoding="utf-8")
-        self.assertIn('["hitPart"', post)
-        self.assertIn("applyImpactHeat", post)
+        # HitPart fires on the PROJECTILE, so it is attached per projectile
+        # from the shooter's own Fired handler, not as a class registration.
+        self.assertIn('_projectile addEventHandler ["HitPart"', post)
+        self.assertIn("handleImpactHeat", post)
 
     def test_thermal_shadow(self):
         # Issue #204: shadowed ground is cooler than sunlit ground (the
@@ -4176,6 +4178,260 @@ class TestFusionPipeline(unittest.TestCase):
             missing,
             f"{filename}: {context} changed/missing in SQF: {missing}.",
         )
+
+
+# ─── Post-process handle ownership (NVG/optics aliasing) ───────────────────
+# Client RPT 2026-09-26: ppEffect handle 29 was owned by BOTH the optics
+# ChromAberration (fnc_managePostProcess, priority 3000) and the NVG
+# ChromAberration (fnc_applyNVGTubeModel).  A shared handle lets
+# nightvision rewrite the normal-vision effect and blind the player.
+# These tests read the REAL SQF source and lock the ownership split.
+
+
+def _sqf_block(text, header):
+    """The text between the braces of the block that follows `header`."""
+    start = text.index(header)
+    start = text.index("{", start)
+    depth = 0
+    for pos in range(start, len(text)):
+        if text[pos] == "{":
+            depth += 1
+        elif text[pos] == "}":
+            depth -= 1
+            if depth == 0:
+                return text[start + 1 : pos]
+    raise AssertionError(f"unterminated block after: {header}")
+
+
+class TestPostProcessHandleOwnership(unittest.TestCase):
+    """Nightvision must own its ChromAberration. Optics owns its own."""
+
+    def test_no_nightvision_file_reads_the_optics_chroma_handle(self):
+        # (a) The optics ChromAberration variable must appear in NO file
+        # under addons/nightvision/.  One reference re-creates the defect.
+        addon = _REPO_ROOT / "addons" / "nightvision"
+        offenders = [
+            str(path.relative_to(_REPO_ROOT))
+            for path in sorted(addon.rglob("*.sqf"))
+            if "QEGVAR(optics,ppHandle_ChromAberration)"
+            in path.read_text(encoding="utf-8")
+        ]
+        self.assertEqual(offenders, [])
+
+    def test_nightvision_stores_and_reads_its_own_chroma_handle(self):
+        # (b) Nightvision reads and writes QGVAR(ppHandle_NVG_Chroma), and
+        # the handle joins the NVG destroy list.
+        text = _read_sqf("fnc_applyNVGTubeModel.sqf", "nightvision")
+        self.assertIn("getVariable [QGVAR(ppHandle_NVG_Chroma), -1]", text)
+        self.assertIn("setVariable [QGVAR(ppHandle_NVG_Chroma), _hChroma]", text)
+        self.assertIn("QGVAR(ppHandle_NVG_Chroma),", text)
+
+    def test_chroma_neutral_reset_is_not_gated_on_grain(self):
+        # (c) The neutral reset sits in the sensor-exit block, BEFORE and
+        # outside the `if (_active)` grain gate.  The gate may still skip
+        # the NVG-only teardown.
+        text = _read_sqf("fnc_applyNVGTubeModel.sqf", "nightvision")
+        exit_block = _sqf_block(text, "if (currentVisionMode _player != 1) exitWith")
+        self.assertLess(
+            exit_block.index("getVariable [QGVAR(ppHandle_NVG_Chroma), -1]"),
+            exit_block.index("if (_active) then {"),
+            "chroma reset must precede the grain gate",
+        )
+        gate_block = _sqf_block(exit_block, "if (_active) then")
+        self.assertNotIn(
+            "ppHandle_NVG_Chroma",
+            gate_block,
+            "chroma reset must not be nested in the grain gate",
+        )
+
+    def test_sensor_exit_deferred_disables_carry_a_generation_guard(self):
+        # (d) Each of the three sensor-exit deferred disables captures the
+        # effect generation and skips the disable when it changed.
+        text = _read_sqf("fnc_managePostProcess.sqf", "optics")
+        block = _sqf_block(text, "if (_visionMode == 1 || _visionMode == 2) exitWith")
+        pairs = (
+            ("chromaGen", "ppHandle_ChromAberration"),
+            ("blurGen", "ppHandle_DynamicBlur"),
+            ("ccGen", "ppHandle_ColorCorrections"),
+        )
+        for gen, handle in pairs:
+            self.assertIn(
+                f"private _gen = missionNamespace getVariable [QGVAR({gen}), 0];",
+                block,
+                f"{gen}: generation not captured",
+            )
+            self.assertIn(
+                f"getVariable [QGVAR({gen}), 0] == _gen",
+                block,
+                f"{gen}: generation not compared",
+            )
+            self.assertIn(handle, block, f"{handle}: disable missing")
+        self.assertEqual(block.count('params ["_gen"]'), 3)
+        self.assertEqual(block.count("CBA_fnc_waitAndExecute"), 3)
+
+
+class TestExitPathDiscipline(unittest.TestCase):
+    """An EXIT branch must leave the function, not fall through.
+
+    Four thermal functions restored their state and then carried straight on
+    into the code that applies it again, because the branch ended in a dead
+    `0` rather than in an exit.  The restore was undone on the same call, so
+    a worn uniform kept its flat thermal paint in normal vision.  This walks
+    every addon so the class cannot come back.
+    """
+
+    _MODES = ('"EXIT"', '"OFF"', '"DISABLE"', '"TEARDOWN"', '"STOP"')
+
+    @staticmethod
+    def _blank(src):
+        """Replace comment and string bodies with spaces, keeping newlines.
+
+        Brace counting must ignore braces inside comments and string
+        literals.  Newlines survive so line numbers still line up.
+        """
+        out, i, n = [], 0, len(src)
+        while i < n:
+            ch = src[i]
+            if ch == '"':
+                out.append(" ")
+                i += 1
+                while i < n:
+                    if src[i] == "\\":
+                        out.append("  ")
+                        i += 2
+                        continue
+                    if src[i] == '"':
+                        out.append(" ")
+                        i += 1
+                        break
+                    out.append("\n" if src[i] == "\n" else " ")
+                    i += 1
+            elif src.startswith("//", i):
+                j = src.find("\n", i)
+                j = n if j < 0 else j
+                out.append(" " * (j - i))
+                i = j
+            elif src.startswith("/*", i):
+                j = src.find("*/", i + 2)
+                j = n if j < 0 else j + 2
+                out.append("".join(c if c == "\n" else " " for c in src[i:j]))
+                i = j
+            else:
+                out.append(ch)
+                i += 1
+        return "".join(out)
+
+    def test_no_exit_branch_falls_through(self):
+        """Every top-level mode branch must exit or pair with an else.
+
+        The dead `0` in the old form evaluated to a value nobody read, and
+        the run continued into the apply path.  A restore that is undone on
+        the same call is not a restore.
+        """
+        root = _REPO_ROOT / "addons"
+        offenders = []
+        for path in sorted(root.rglob("*.sqf")):
+            src = path.read_text(encoding="utf-8", errors="replace")
+            raw = src.split("\n")
+            code = self._blank(src).split("\n")
+            depth = 0
+            for idx, line in enumerate(code):
+                stmt = raw[idx]
+                if (
+                    depth == 0
+                    and line.strip().startswith("if ")
+                    and any(mode in stmt for mode in self._MODES)
+                ):
+                    level, end, opened = 0, idx, False
+                    while end < len(code):
+                        level += code[end].count("{") - code[end].count("}")
+                        if "{" in code[end]:
+                            opened = True
+                        if opened and level == 0:
+                            break
+                        end += 1
+                    body = "\n".join(raw[idx : end + 1])
+                    closing = raw[end]
+                    tail = closing.rsplit("}", 1)[-1].strip() if "}" in closing else ""
+                    nxt = raw[end + 1].strip() if end + 1 < len(raw) else ""
+                    exits = "exitWith" in body
+                    pairs = (
+                        tail.startswith("else")
+                        or nxt.startswith("} else")
+                        or nxt == "else"
+                    )
+                    if not (exits or pairs):
+                        rel = path.relative_to(_REPO_ROOT)
+                        offenders.append(f"{rel}:{idx + 1}")
+                depth += line.count("{") - line.count("}")
+        self.assertEqual(
+            offenders,
+            [],
+            "these mode branches restore and then fall through: "
+            + ", ".join(offenders),
+        )
+
+
+class TestThermalPaintVisionGate(unittest.TestCase):
+    """The FLIR heat paint must be written only under thermal vision.
+
+    fnc_applySelectionThermal is the single choke point for the heat paint
+    and it carried no vision gate at all.  The fired handler runs
+    applyWeaponBarrelHeat in every vision mode and that function paints the
+    PLAYER, so firing a round in daylight repainted the operator red with no
+    teardown to undo it.  The physics store must stay ungated, because the
+    AGC reads it and barrel heat has to accumulate before thermal opens.
+    """
+
+    _F = (
+        _REPO_ROOT
+        / "addons"
+        / "thermal"
+        / "functions"
+        / "display"
+        / "fnc_applySelectionThermal.sqf"
+    )
+
+    def setUp(self):
+        self.lines = self._F.read_text(encoding="utf-8").split("\n")
+
+    def _line_of(self, needle):
+        for index, line in enumerate(self.lines):
+            if needle in line:
+                return index
+        self.fail(f"{needle!r} not found in {self._F.name}")
+
+    def test_flag_comes_from_the_live_vision_mode(self):
+        flag = self._line_of("private _thermalOn")
+        mode = self._line_of("currentVisionMode _viewer")
+        self.assertLess(flag, mode, "the flag must be set from the live mode")
+        self.assertIn("== 2", self.lines[mode], "the gate must key on thermal")
+
+    def test_save_and_material_swap_are_gated(self):
+        save = self._line_of("_alreadySaved < 0")
+        self.assertIn("_thermalOn", self.lines[save])
+        swap = self._line_of("setObjectMaterial [_forEachIndex")
+        self.assertGreater(swap, save, "the FPN swap must sit in the gated block")
+
+    def test_heat_texture_paint_is_gated(self):
+        paint = self._line_of("setObjectTexture [_idx, _colour]")
+        self.assertIn("_thermalOn", self.lines[paint], "the heat paint is ungated")
+
+    def test_physics_store_stays_ungated(self):
+        store = self._line_of("setVariable [QGVAR(selTemperature)")
+        self.assertNotIn(
+            "_thermalOn", self.lines[store], "the AGC input must not be gated"
+        )
+
+    def test_exit_restore_stays_ungated(self):
+        for needle in (
+            "setObjectTexture [_selIdx",
+            "setObjectMaterial [_selIdx",
+        ):
+            index = self._line_of(needle)
+            self.assertNotIn(
+                "_thermalOn", self.lines[index], "the restore must always run"
+            )
 
 
 if __name__ == "__main__":
