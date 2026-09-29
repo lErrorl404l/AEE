@@ -218,6 +218,7 @@ object.  They are not CBA settings.
 | `aee_exhaustTier` | STRING | unset | Tier override, one of `land`, `heli`, `jet`, `ab`. Wins over the class selection |
 | `aee_exhaustAfterburner` | BOOL | unset | A truthy value selects the afterburner tier, because no verified config key distinguishes an afterburning jet from a dry one |
 | `aee_enginePowerFraction` | NUMBER | unset | Engine power fraction in 0..1. Overrides the real reader and the declared idle |
+| `aee_engineRatedPowerW` | NUMBER | `150000` | Rated engine power in watts for the derived ground load. Overrides the declared default |
 | `aee_exhaustGasTempC` | NUMBER | unset | Measured exhaust gas temperature in Celsius. Overrides the class row |
 | `aee_exhaustPlumeM` | NUMBER | unset | Measured plume depth in metres. Overrides the class row |
 

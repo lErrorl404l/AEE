@@ -33,12 +33,14 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[2]
 KERNEL = REPO / "addons/mobility/functions/fnc_calculateThermalRefraction.sqf"
 PLUME = REPO / "addons/mobility/functions/fnc_calculateExhaustPlume.sqf"
+LOAD = REPO / "addons/mobility/functions/fnc_calculateEngineLoad.sqf"
 MIRAGE = REPO / "addons/optics/functions/fx/fnc_applyMirageFX.sqf"
 GLARE = REPO / "addons/optics/functions/fx/fnc_applySolarGlareFX.sqf"
 SHIMMER = REPO / "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf"
 
 KERNEL_SRC = KERNEL.read_text(encoding="utf-8")
 PLUME_SRC = PLUME.read_text(encoding="utf-8")
+LOAD_SRC = LOAD.read_text(encoding="utf-8")
 SHIMMER_SRC = SHIMMER.read_text(encoding="utf-8")
 
 
@@ -686,6 +688,204 @@ class ExhaustWiring(unittest.TestCase):
             "aee_exhaustPlumeM",
         ):
             self.assertIn(name, config, f"missing published value {name}")
+
+
+class EngineLoadKernel(unittest.TestCase):
+    """The derived engine-load kernel.
+
+    A road vehicle has no throttle reader, so the load is DERIVED from the
+    tractive power demand plus the acceleration, not measured.  The kernel is
+    pure arithmetic over scalars, so this suite reads its constants from the
+    real SQF, re-derives the balance from first principles, and pins the
+    linearity, the clamp and the guards.
+    """
+
+    def setUp(self):
+        self.code = _code_only(LOAD_SRC)
+
+    def _default(self, name):
+        return float(re.search(rf'\["{name}",\s*([0-9.]+)', self.code).group(1))
+
+    # ── the balance and its units ──────────────────────────────────────
+    def test_resistance_is_force_plus_grade_plus_drag(self):
+        self.assertIn("_dragN = 0.5 * _rho * _dragAreaM2 * _speed * _speed", self.code)
+        self.assertIn(
+            "_resistanceN = _tractionForceN + _gradeForceN + _dragN", self.code
+        )
+
+    def test_power_terms_are_force_times_speed(self):
+        # Force N times speed m/s is W; the inertial power is m a v in W.
+        self.assertIn("_tractiveW = _resistanceN * _speed", self.code)
+        self.assertIn("_inertialW = _massKg * _accelerationMS2 * _speed", self.code)
+        self.assertIn("_load = (_tractiveW + _inertialW) / _ratedPowerW", self.code)
+
+    def test_speed_is_a_magnitude(self):
+        self.assertIn("_speed = abs _speedMS", self.code)
+
+    def test_the_ratio_is_linear_in_force_and_acceleration(self):
+        # Re-derived: at fixed rated power the fraction is a linear sum, so a
+        # doubling of either term doubles its contribution.
+        rated = 150000.0
+
+        def fraction(
+            force, accel, speed=20.0, mass=1500.0, drag=0.7, rho=1.225, idle=0.0
+        ):
+            res = force + (0.5 * rho * drag * speed * speed)
+            return ((res * speed) + (mass * accel * speed)) / rated + idle
+
+        f1 = fraction(1000.0, 0.0)
+        f2 = fraction(2000.0, 0.0)
+        self.assertAlmostEqual(f2 - f1, (1000.0 * 20.0) / rated)
+        a1 = fraction(1000.0, 1.0)
+        a2 = fraction(1000.0, 2.0)
+        self.assertAlmostEqual(a2 - a1, (1500.0 * 1.0 * 20.0) / rated)
+
+    def test_larger_force_gives_a_larger_fraction(self):
+        rated = 150000.0
+
+        def fraction(force, speed=20.0, drag=0.7, rho=1.225):
+            res = force + (0.5 * rho * drag * speed * speed)
+            return (res * speed) / rated
+
+        self.assertGreater(fraction(5000.0), fraction(1000.0))
+
+    # ── the clamp and the idle floor ───────────────────────────────────
+    def test_fraction_is_clamped_to_zero_and_one(self):
+        self.assertIn("_load = (_load max _idle) min 1", self.code)
+        self.assertIn("private _idle = _idleFraction max 0 min 1", self.code)
+
+    def test_zero_force_and_acceleration_return_the_idle_floor(self):
+        # Re-derived from the balance: with no force, no acceleration and no
+        # speed, the demand is zero, so the floor is what remains.
+        idle = self._default("_idleFraction")
+        self.assertGreater(idle, 0.0)
+        self.assertIn('["_idleFraction", 0.05', self.code)
+
+    def test_idle_floor_is_why_a_stationary_engine_is_not_dark(self):
+        upper = LOAD_SRC.upper()
+        self.assertIn("STATIONARY VEHICLE AT HIGH RPM CANNOT BE DISTINGUISHED", upper)
+        self.assertIn("IDLE", upper)
+        self.assertIn("LIMIT OF THE ENGINE", upper)
+
+    # ── the guards ─────────────────────────────────────────────────────
+    def test_non_positive_rated_power_is_refused(self):
+        self.assertIn("if (_ratedPowerW <= 0) exitWith { -1 };", self.code)
+
+    def test_non_positive_mass_is_refused(self):
+        self.assertIn("if (_massKg <= 0) exitWith { -1 };", self.code)
+
+    # ── the honesty claims ─────────────────────────────────────────────
+    def test_header_states_the_load_is_derived_and_not_measured(self):
+        upper = LOAD_SRC.upper()
+        self.assertIn("DERIVED", upper)
+        self.assertIn("NOT A MEASUREMENT", upper)
+        self.assertIn("NO NUMERIC THROTTLE READER", upper)
+
+    def test_header_states_no_road_throttle_reader_exists(self):
+        self.assertIn("collectiveRTD", LOAD_SRC)
+        self.assertIn("throttleRTD", LOAD_SRC)
+        self.assertIn("LandVehicle", LOAD_SRC)
+
+    def test_header_labels_rated_power_and_drag_as_defaults(self):
+        self.assertIn("150000", LOAD_SRC)
+        self.assertIn("0.7 m^2", LOAD_SRC)
+        upper = LOAD_SRC.upper()
+        self.assertIn("DECLARED DEFAULT", upper)
+
+    def test_header_states_the_object_work_is_the_callers(self):
+        upper = LOAD_SRC.upper()
+        self.assertIn("PURE ARITHMETIC", upper)
+        self.assertIn("OBJECT-SIDE WORK IS THE CALLER'S", upper)
+        self.assertIn("_tractionForce", LOAD_SRC)
+        self.assertIn("fnc_calculateTraction", LOAD_SRC)
+
+
+class EngineLoadWiring(unittest.TestCase):
+    """The renderer's derived ground branch and the published-value precedence."""
+
+    def setUp(self):
+        self.code = _code_only(SHIMMER_SRC)
+
+    def test_kernel_is_registered_in_mobility(self):
+        prep = (REPO / "addons/mobility/XEH_PREP.hpp").read_text(encoding="utf-8")
+        self.assertIn("PREP(calculateEngineLoad);", prep)
+
+    def test_renderer_calls_the_derived_kernel(self):
+        self.assertIn("EFUNC(mobility,calculateEngineLoad)", self.code)
+        self.assertIn("_deriveGroundPower", self.code)
+
+    def test_land_vehicle_reaches_the_derived_branch(self):
+        # The land root is named directly, so the fall-through is explicit.
+        block = re.search(r"private _resolvePower = \{(.*?)\n\};", self.code, re.S)
+        self.assertIsNotNone(block, "the power resolver is missing")
+        body = block.group(1)
+        derived = body.find('isKindOf "LandVehicle"')
+        self.assertGreater(derived, -1, "the LandVehicle branch is missing")
+        self.assertIn("_deriveGroundPower", body[derived:])
+        # The helper is what calls the kernel.
+        helper = re.search(
+            r"private _deriveGroundPower = \{(.*?)\n\};", self.code, re.S
+        )
+        self.assertIsNotNone(helper, "the derived ground helper is missing")
+        self.assertIn("EFUNC(mobility,calculateEngineLoad)", helper.group(1))
+
+    def test_rtd_branch_is_still_compiled_from_a_string(self):
+        self.assertIn('"collectiveRTD _this"', self.code)
+        self.assertIn('"throttleRTD _this"', self.code)
+        self.assertIn("compile _reader", self.code)
+
+    def test_published_value_still_wins_over_the_derived_term(self):
+        block = re.search(r"private _resolvePower = \{(.*?)\n\};", self.code, re.S)
+        body = block.group(1)
+        published = body.find("aee_enginePowerFraction")
+        guard = body.find("difficultyEnabledRTD")
+        land = body.find('isKindOf "LandVehicle"')
+        idle = body.find("_power = _idlePower")
+        self.assertTrue(
+            -1 < published < guard < land < idle,
+            "the power order is published, RTD, derived, idle",
+        )
+
+    def test_derived_term_uses_the_published_traction_force(self):
+        # The code reads the mobility value by its cross-addon macro; the
+        # expanded name appears only in the prose, so this checks the code.
+        self.assertIn("QEGVAR(mobility,tractionForce)", self.code)
+        self.assertIn("aee_mobility_tractionForce", SHIMMER_SRC)
+
+    def test_derived_term_is_smoothed_with_a_declared_time_constant(self):
+        self.assertIn("_ACCEL_TAU", self.code)
+        self.assertIn("aee_exhaustPrevSpeed", self.code)
+
+    def test_derived_term_reads_rated_power_per_vehicle_or_the_default(self):
+        self.assertIn('getVariable ["aee_engineRatedPowerW", 150000]', self.code)
+
+    def test_overdraw_product_holds_across_the_land_size_range(self):
+        # The land row runs 0.35 m at idle to 0.60 m at full, a 71 percent
+        # size change, so the live count is checked across it.
+        budget = float(
+            re.search(r"_OVERDRAW_BUDGET\s*=\s*([0-9.]+)", self.code).group(1)
+        )
+        sources = float(re.search(r"_MAX_SOURCES\s*=\s*([0-9.]+)", self.code).group(1))
+        maxlive = float(re.search(r"_MAX_LIVE\s*=\s*([0-9.]+)", self.code).group(1))
+        minlive = float(re.search(r"_MIN_LIVE\s*=\s*([0-9.]+)", self.code).group(1))
+        worst = 0.0
+        d = 0.35
+        while d <= 0.6001:
+            allowed = budget / (sources * d * d)
+            live = max(min(math.floor(allowed), maxlive), minlive)
+            overdraw = sources * live * d * d
+            self.assertLessEqual(overdraw, budget + 1e-6)
+            worst = max(worst, overdraw)
+            d += 0.005
+        # 0.60 m is still under the 2.297 m step, so the count holds at 12 and
+        # the product is 3 * 12 * 0.36 = 12.96 m2.
+        self.assertAlmostEqual(worst, 12.96, places=2)
+
+    def test_alpha_does_not_ramp_with_the_derived_load(self):
+        alpha_lines = [line for line in self.code.splitlines() if "_alpha =" in line]
+        for line in alpha_lines:
+            self.assertNotIn("load", line.lower())
+            self.assertNotIn("power", line.lower())
 
 
 if __name__ == "__main__":

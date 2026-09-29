@@ -1,6 +1,7 @@
 PREP(applyFlightTurbulence);
 PREP(applyRollover);
 PREP(calculateEnginePower);
+PREP(calculateEngineLoad);
 PREP(calculateExhaustPlume);
 PREP(calculateThermalRefraction);
 PREP(calculateHelicopterLift);
