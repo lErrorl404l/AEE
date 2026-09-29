@@ -103,9 +103,15 @@ resolves in this order:
      on the return.  A helicopter uses collective and a plane uses throttle
   3. the DERIVED ground-vehicle term for a LandVehicle, from the published
      traction force and the acceleration between ticks.  See below
-  4. otherwise the declared idle fraction, so a parked aircraft and a land
+  4. the DERIVED air-vehicle term for an Air class, from the real air power
+     balance.  See below.  THIS BRANCH IS OUTSIDE THE difficultyEnabledRTD
+     GUARD ON PURPOSE: with the SIMPLE flight model the RTD reader is
+     unavailable, and reaching this branch then is the whole point
+  5. otherwise the declared idle fraction, so a parked aircraft and a land
      vehicle at rest still show a small plume rather than nothing
 The reader is gated on the flight model and is unavailable when it is off.
+The derived air term is NOT gated on the flight model, so an aircraft in the
+simple flight model still grows its plume with airspeed.
 
 NO ROAD-THROTTLE READER EXISTS IN THE ENGINE, SO THE LAND TERM IS DERIVED
 AND NOT MEASURED.  collectiveRTD is rotary and throttleRTD is fixed wing, so
@@ -127,6 +133,22 @@ local player's vehicle; a nearby candidate reuses it, which is a stated
 approximation.  The rated power is read from an optional per-vehicle
 aee_engineRatedPowerW, else it is the kernel default of 150000 W, a
 declared default and not a measurement.
+
+AN AIRCRAFT IN THE SIMPLE FLIGHT MODEL IS OTHERWISE PINNED TO THE DECLARED
+IDLE.  difficultyEnabledRTD is false in the simple flight model, so the RTD
+reader is skipped, and an aircraft is not a LandVehicle, so the ground term
+is skipped too.  Before this term existed an aircraft resolved to the idle
+0.05 for the whole flight, however hard it climbed.  The air term is DERIVED
+from the power balance in fnc_calculateAirEngineLoad, and the object work
+stays here: this function reads the class with typeOf, the mass with getMass,
+the speed with velocity, the published air density, and the per-vehicle
+overrides.  A wing uses the drag power 0.5 rho (Cd S) v^3, so the plume grows
+with the CUBE of airspeed; a rotor uses the ideal induced hover power
+W^1.5 / sqrt (2 rho A), which is a stated lower bound.  The rated power is
+read from the same optional aee_engineRatedPowerW the ground term uses, and
+the drag area and rotor disc area from optional aee_engineDragAreaM2 and
+aee_engineRotorDiscAreaM2, else the kernel defaults.  All three are DECLARED
+DEFAULTS, not measurements.
 
 THE READER IS COMPILED AT RUN TIME, BECAUSE THE ENGINE COMMAND SET DIFFERS
 BETWEEN BUILDS.  The fixed-wing reader throttleRTD is present in the game
@@ -162,6 +184,18 @@ emitting when it is only hidden.  The PHYSICS stays ungated: the contrast is
 computed and published on every tick, even in a sensor mode, because it is a
 property of the air and not of the display.  Only the render is gated.
 
+A THROTTLED DIAGNOSTIC MAKES THE PLUME OBSERVABLE.  This renderer emitted no
+log line at all, so a session could not tell whether the aircraft plume ran;
+the 49 shimmer matches in an RPT were all the unrelated optics ChromAberration
+term.  One debug line per candidate vehicle per window now names the vehicle,
+its class, the resolved tier, the power fraction, the gas temperature, the
+plume depth, the contrast magnitude and the alpha the renderer will draw.  It
+is gated on the aee_fx_logDebug setting through AEE_LOG_DEBUG, so it costs
+nothing until that box is ticked, and it is throttled on diag_tickTime to one
+batch per _LOG_INTERVAL, 30 s.  The caller drives this on the environment
+tick, which runs every aee_core_updateInterval seconds (5 s by default), so
+the window is honest: at most one batch per six ticks.
+
 CLIENT ONLY.  The function refuses without an interface, so a dedicated
 server creates nothing and renders nothing.
 
@@ -190,6 +224,12 @@ private _MIN_CONTRAST = 0.1;
 private _PLUME_RANGE = 250;
 private _IDLE_POWER = 0.05;
 private _ACCEL_TAU = 5.0;
+// The diagnostic window.  The caller drives this on the environment tick,
+// which runs every aee_core_updateInterval seconds (5 s by default), so a
+// 30 s window yields at most one diagnostic batch per six ticks.  That is
+// often enough to prove the plume path ran and rare enough not to flood the
+// RPT.  The window is timed on diag_tickTime, not on a tick counter.
+private _LOG_INTERVAL = 30;
 
 // ─── Class tier table ──────────────────────────────────────────────────────
 // One row per engine class: [idleTempC, fullTempC, idleDepthM, fullDepthM].
@@ -265,6 +305,26 @@ private _deriveGroundPower = {
     [_force, _speed, getMass _veh, _smooth, _rated, _idlePower, 0, _rho] call EFUNC(mobility,calculateEngineLoad)
 };
 
+// ─── Derived air-vehicle load ──────────────────────────────────────────────
+// An aircraft in the simple flight model has no RTD reader, so the load is
+// derived from a real power balance: the drag power for a wing and the ideal
+// induced hover power for a rotor.  The object work stays here and the kernel
+// is pure arithmetic.  See the header and fnc_calculateAirEngineLoad.
+private _deriveAirPower = {
+    params ["_veh", "_idlePower"];
+    private _speed = vectorMagnitude (velocity _veh);
+    private _rated = _veh getVariable ["aee_engineRatedPowerW", 150000];
+    if !(_rated isEqualType 0) then { _rated = 150000; };
+    private _dragArea = _veh getVariable ["aee_engineDragAreaM2", 0.7];
+    if !(_dragArea isEqualType 0) then { _dragArea = 0.7; };
+    private _discArea = _veh getVariable ["aee_engineRotorDiscAreaM2", 50];
+    if !(_discArea isEqualType 0) then { _discArea = 50; };
+    private _rho = missionNamespace getVariable [QEGVAR(core,currentAirDensity), 1.225];
+    if !(_rho isEqualType 0) then { _rho = 1.225; };
+
+    [getMass _veh, _speed, typeOf _veh, _rated, _dragArea, _discArea, _idlePower, _rho] call EFUNC(mobility,calculateAirEngineLoad)
+};
+
 // ─── Power resolution ──────────────────────────────────────────────────────
 // A published value wins, then the real reader when the flight model is on,
 // then the derived ground term, then the declared idle.  A missing compile
@@ -304,6 +364,18 @@ private _resolvePower = {
         if (_veh isKindOf "LandVehicle") then {
             private _derived = [_veh, _idlePower, _accelTau] call _deriveGroundPower;
             if (_derived >= 0) then { _power = _derived; };
+        };
+    };
+    if (_power < 0) then {
+        // An aircraft in the simple flight model reaches neither the RTD
+        // reader nor the land term, so its load is derived from the air
+        // power balance.  This branch MUST sit OUTSIDE the difficultyEnabledRTD
+        // guard: reaching it with the flight model OFF is the whole point.
+        // Gated on the air root, not on Helicopter or Plane, so a third air
+        // root cannot fall through to the idle.  See the header.
+        if (_veh isKindOf "Air") then {
+            private _derivedAir = [_veh, _idlePower] call _deriveAirPower;
+            if (_derivedAir >= 0) then { _power = _derivedAir; };
         };
     };
     if (_power < 0) then { _power = _idlePower; };
@@ -351,6 +423,22 @@ private _plan = [];
 private _prevMag = missionNamespace getVariable [QGVAR(exhaustRefraction), 0];
 if !(_prevMag isEqualType 0) then { _prevMag = 0; };
 private _maxMag = _prevMag * 0.5;
+
+// The render alpha is the declared ceiling scaled by the contrast.  It is read
+// here, before the plan, so the diagnostic can report the alpha the renderer
+// will draw.  It stays the ONLY free visibility lever.  See the header.
+private _alphaMax = missionNamespace getVariable [QGVAR(exhaustShimmerAlpha), 0.15];
+if !(_alphaMax isEqualType 0) then { _alphaMax = 0.15; };
+
+// The diagnostic throttle.  One batch per _LOG_INTERVAL, timed on diag_tickTime
+// because the caller drives this on the environment tick, not per frame.
+private _logAt = missionNamespace getVariable [QGVAR(exhaustLogAt), -1e9];
+if !(_logAt isEqualType 0) then { _logAt = -1e9; };
+private _logNow = diag_tickTime >= _logAt;
+if (_logNow) then {
+    missionNamespace setVariable [QGVAR(exhaustLogAt), diag_tickTime + _LOG_INTERVAL];
+};
+
 {
     private _cand = _x;
     private _tier = [_cand, _TIERS] call _selectTier;
@@ -372,6 +460,21 @@ private _maxMag = _prevMag * 0.5;
     private _contrast = [_gasC, _airC, _rhoRel] call EFUNC(mobility,calculateThermalRefraction);
     private _mag = abs _contrast;
     if (_mag > _maxMag) then { _maxMag = _mag; };
+
+    // The diagnostic.  A renderer that cannot be observed cannot be debugged,
+    // so one throttled line names the vehicle, its class, the resolved tier,
+    // the power fraction, the gas temperature, the plume depth, the contrast
+    // magnitude and the alpha the renderer will draw.  AEE_LOG_DEBUG is gated
+    // on the aee_fx_logDebug setting, so this costs nothing until that box is
+    // ticked, and _logNow throttles it to one batch per _LOG_INTERVAL.
+    if (_logNow) then {
+        private _logAlpha = _alphaMax * ((_mag / 2.5) min 1);
+        private _logMsg = format [
+            "exhaust plume: %1 class=%2 tier=%3 power=%4 gasC=%5 depth=%6 contrast=%7 alpha=%8",
+            netId _cand, typeOf _cand, _tier, _power, _gasC, _depth, _mag, _logAlpha
+        ];
+        AEE_LOG_DEBUG(_logMsg);
+    };
 
     if (_mag >= _MIN_CONTRAST) then {
         _plan pushBack createHashMapFromArray [
@@ -396,9 +499,6 @@ if (_visionMode != 0) exitWith {
     } forEach _records;
     missionNamespace setVariable [QGVAR(exhaustSources), []];
 };
-
-private _alphaMax = missionNamespace getVariable [QGVAR(exhaustShimmerAlpha), 0.15];
-if !(_alphaMax isEqualType 0) then { _alphaMax = 0.15; };
 
 // The one place the shared particle parameters live, so create and update
 // cannot drift apart.  Index 4 is the lifetime.
