@@ -176,6 +176,8 @@ read them. The variables below are grouped by subsystem.
 | `aee_fx_rainSurfaceDrops` | The rain surface drop effect |
 | `aee_fx_vehicleDust` | The vehicle dust effect |
 | `aee_fx_particleSources` | The registered particle sources |
+| `aee_fx_exhaustSources` | The tracked exhaust shimmer particle sources |
+| `aee_fx_exhaustRefraction` | The strongest exhaust refractive contrast this tick, in 1e-4 units, negative for hot gas |
 
 ## Soil and hydrology
 
@@ -218,8 +220,6 @@ read them. The variables below are grouped by subsystem.
 | `aee_optics_glareFXActive` | Whether the glare effect is active |
 | `aee_optics_isReady` | Whether the optics addon is ready |
 | `aee_optics_mirageSource` | The mirage particle source |
-| `aee_optics_exhaustSources` | The tracked exhaust shimmer particle sources |
-| `aee_optics_exhaustRefraction` | The strongest exhaust refractive contrast this tick, in 1e-4 units, negative for hot gas |
 | `aee_optics_nightGrainActive` | Whether the night grain effect is active |
 | `aee_optics_snowBlindnessCC` | The snow blindness colour correction parameters |
 | `aee_core_opticsEnabled` | Whether optics simulation is enabled |

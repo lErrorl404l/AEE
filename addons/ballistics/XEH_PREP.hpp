@@ -11,7 +11,6 @@ PREP(getWeaponData);
 PREP(getLoadData);
 PREP(calculateStability);
 PREP(calculateSupersonicTrace);
-PREP(calculateThermalRefraction);
 PREP(resolveShot);
 PREP(getDragTables);
 PREP(calculateBallisticDrag);

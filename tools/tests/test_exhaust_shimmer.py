@@ -1,14 +1,19 @@
 #!/usr/bin/env python3
-"""Exhaust heat-shimmer physics and vision-mode gate tests.
+"""Exhaust heat-shimmer physics, class selection and overdraw tests.
 
-Verifies fnc_calculateThermalRefraction.sqf (the physics kernel) and
-fnc_applyExhaustShimmerFX.sqf (the renderer), plus the vision-mode gate on
-the mirage emitter and the solar-glare LightShafts effect.
+Verifies fnc_calculateThermalRefraction.sqf (the optical kernel) and
+fnc_calculateExhaustPlume.sqf (the power ramp kernel), both in mobility, and
+fnc_applyExhaustShimmer.sqf (the renderer) in fx, plus the vision-mode gate
+on the mirage emitter and the solar-glare LightShafts effect.
 
-The kernel test PARSES the real SQF and reads its constants from the file it
-tests, then re-derives the physics from first principles, so a wrong constant
-in either place fails.  A hand-transcribed Python mirror is not acceptable: a
-mirror once replicated the SQF's own bugs and drifted without detection.
+The kernel tests PARSE the real SQF and read their constants from the file
+they test, then re-derive the physics from first principles, so a wrong
+constant in either place fails.  A hand-transcribed Python mirror is not
+acceptable: a mirror once replicated the SQF's own bugs and drifted without
+detection.
+
+Every test that reads SQF strips comments first, because the headers quote
+the broken constructs they explain and a raw search matches the prose.
 
 Sources held for the constants:
   K = 2.26e-4 m^3/kg  Stone and Zimmerman, "Index of Refraction of Air",
@@ -20,17 +25,20 @@ Sources held for the constants:
 Run: python3 -m unittest tools.tests.test_exhaust_shimmer -v
 """
 
+import math
 import re
 import unittest
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
-KERNEL = REPO / "addons/ballistics/functions/fnc_calculateThermalRefraction.sqf"
+KERNEL = REPO / "addons/mobility/functions/fnc_calculateThermalRefraction.sqf"
+PLUME = REPO / "addons/mobility/functions/fnc_calculateExhaustPlume.sqf"
 MIRAGE = REPO / "addons/optics/functions/fx/fnc_applyMirageFX.sqf"
 GLARE = REPO / "addons/optics/functions/fx/fnc_applySolarGlareFX.sqf"
-SHIMMER = REPO / "addons/optics/functions/fx/fnc_applyExhaustShimmerFX.sqf"
+SHIMMER = REPO / "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf"
 
 KERNEL_SRC = KERNEL.read_text(encoding="utf-8")
+PLUME_SRC = PLUME.read_text(encoding="utf-8")
 SHIMMER_SRC = SHIMMER.read_text(encoding="utf-8")
 
 
@@ -55,6 +63,18 @@ def _sqf_number(pattern):
     if not match:
         raise AssertionError(f"SQF no longer matches {pattern!r}")
     return float(match.group(1))
+
+
+def _tier_rows():
+    """Parse the renderer tier table into {key: [idleT, fullT, idleD, fullD]}."""
+    code = _code_only(SHIMMER_SRC)
+    block = re.search(r"_TIERS\s*=\s*createHashMapFromArray\s*\[(.*?)\n\];", code, re.S)
+    if not block:
+        raise AssertionError("the renderer no longer declares a _TIERS table")
+    rows = {}
+    for key, nums in re.findall(r'\["(\w+)",\s*\[([^\]]+)\]\]', block.group(1)):
+        rows[key] = [float(x) for x in nums.split(",")]
+    return rows
 
 
 class ThermalRefractionKernel(unittest.TestCase):
@@ -173,6 +193,88 @@ class ThermalRefractionKernel(unittest.TestCase):
         self.assertIn("_contrast / 0.0001", KERNEL_SRC)
 
 
+class ExhaustPlumeKernel(unittest.TestCase):
+    """The power ramp kernel: linear, clamped, and guarded against inversion."""
+
+    def setUp(self):
+        self.src = PLUME_SRC
+
+    def _default(self, name):
+        return float(re.search(rf'\["{name}",\s*([0-9.]+)', self.src).group(1))
+
+    def test_defaults_are_the_land_diesel_row(self):
+        self.assertEqual(self._default("_idleTempC"), 300.0)
+        self.assertEqual(self._default("_fullTempC"), 480.0)
+        self.assertEqual(self._default("_idleDepthM"), 0.35)
+        self.assertEqual(self._default("_fullDepthM"), 0.60)
+
+    def test_interpolation_is_linear_in_the_power_fraction(self):
+        # The expression form is the contract: idle at 0, full at 1.
+        self.assertIn("_idleTempC + ((_fullTempC - _idleTempC) * _fraction)", self.src)
+        self.assertIn(
+            "_idleDepthM + ((_fullDepthM - _idleDepthM) * _fraction)", self.src
+        )
+        self.assertIn("params [", self.src)
+
+    def test_returns_the_interpolated_pair(self):
+        self.assertIn("[_gasTempC, _depthM]", self.src)
+
+    def test_power_fraction_is_clamped(self):
+        self.assertIn("_power max 0 min 1", self.src)
+
+    def test_inverted_pairs_are_refused(self):
+        # A full value below its idle value interpolates backwards.
+        self.assertIn("if (_fullTempC < _idleTempC) exitWith { [0, 0] };", self.src)
+        self.assertIn("if (_fullDepthM < _idleDepthM) exitWith { [0, 0] };", self.src)
+
+    def test_non_positive_values_are_refused(self):
+        self.assertIn(
+            "if (_idleTempC <= 0 || _fullTempC <= 0) exitWith { [0, 0] };", self.src
+        )
+        self.assertIn(
+            "if (_idleDepthM <= 0 || _fullDepthM <= 0) exitWith { [0, 0] };", self.src
+        )
+
+    def test_a_caller_passing_outside_the_range_gets_an_endpoint(self):
+        # The clamp makes the endpoints the values at and beyond 0 and 1.
+        # Re-derive: the interpolation is linear, so at 0 the idle pair and
+        # at 1 the full pair, whatever a caller passes beyond the range.
+        idle_d = self._default("_idleDepthM")
+        full_d = self._default("_fullDepthM")
+        self.assertLess(idle_d, full_d)
+        self.assertAlmostEqual(
+            idle_d + ((full_d - idle_d) * min(max(2.0, 0.0), 1.0)), full_d
+        )
+        self.assertAlmostEqual(
+            idle_d + ((full_d - idle_d) * min(max(-1.0, 0.0), 1.0)), idle_d
+        )
+
+    # ── the header keeps the honesty claims ────────────────────────────
+    def test_header_states_the_contrast_versus_size_arithmetic(self):
+        for figure in ("1.58", "1.85", "2.09", "2.23"):
+            self.assertIn(figure, self.src, f"missing contrast figure {figure}")
+        self.assertIn("factor of 1.4", self.src)
+        self.assertIn("factor of 7", self.src)
+
+    def test_header_states_the_linear_curve_is_an_approximation(self):
+        upper = self.src.upper()
+        self.assertIn("LINEAR", upper)
+        self.assertIn("APPROXIMATION", upper)
+        self.assertIn("declared defaults", self.src)
+
+    def test_header_describes_the_gated_reader(self):
+        # The reader exists: collectiveRTD / throttleRTD, gated on the
+        # advanced flight model.  The old header claimed no reader existed.
+        upper = self.src.upper()
+        self.assertIn("DIFFICULTYENABLEDRTD", upper)
+        self.assertIn("collectiveRTD", self.src)
+        self.assertIn("throttleRTD", self.src)
+        self.assertNotIn("NO NUMERIC COLLECTIVE", upper)
+
+    def test_header_cites_the_refraction_kernel_for_the_figures(self):
+        self.assertIn("fnc_calculateThermalRefraction", self.src)
+
+
 class VisionModeGate(unittest.TestCase):
     """The three FX files must each gate on currentVisionMode.
 
@@ -203,6 +305,70 @@ class VisionModeGate(unittest.TestCase):
         self.assertIn("deleteVehicle _src", code)
 
 
+class ExhaustTierSelection(unittest.TestCase):
+    """The class tier table and the branch that selects each tier."""
+
+    def setUp(self):
+        self.code = _code_only(SHIMMER_SRC)
+
+    def test_table_declares_four_tiers(self):
+        rows = _tier_rows()
+        self.assertEqual(set(rows), {"land", "heli", "jet", "ab"})
+        for key, row in rows.items():
+            self.assertEqual(len(row), 4, f"{key} row is not four numbers")
+
+    def test_every_tier_is_reachable_by_its_own_branch(self):
+        # Reachability is asserted by finding the branch that selects the
+        # tier, not by asserting the row appears in a comment.
+        self.assertIn('getVariable ["aee_exhaustTier", ""]', self.code)
+        self.assertRegex(self.code, r"_tier = _override")
+        self.assertRegex(self.code, r'isKindOf "Helicopter"\) then \{\s*_tier = "heli"')
+        self.assertRegex(
+            self.code,
+            r'getVariable \["aee_exhaustAfterburner", false\]\) then \{\s*_tier = "ab"',
+        )
+        self.assertRegex(self.code, r'isKindOf "Plane"\) then \{\s*_tier = "jet"')
+        self.assertRegex(self.code, r'_tier = "land"')
+
+    def test_helicopter_branch_is_not_the_plane_branch(self):
+        # The bug being fixed: the old selector tested only isKindOf "Plane",
+        # so a helicopter silently took the fixed-wing row.  Vanilla Air has
+        # two roots, Helicopter: Air and Plane: Air.
+        self.assertIn('isKindOf "Helicopter"', self.code)
+        self.assertIn('isKindOf "Plane"', self.code)
+        self.assertRegex(self.code, r'isKindOf "Helicopter"\) then \{\s*_tier = "heli"')
+        self.assertRegex(self.code, r'isKindOf "Plane"\) then \{\s*_tier = "jet"')
+
+    def test_selection_order_is_override_then_heli_then_afterburner_then_plane(self):
+        order = [
+            self.code.find('getVariable ["aee_exhaustTier", ""]'),
+            self.code.find('isKindOf "Helicopter"'),
+            self.code.find('getVariable ["aee_exhaustAfterburner", false]'),
+            self.code.find('isKindOf "Plane"'),
+        ]
+        self.assertTrue(all(i >= 0 for i in order), "a selection branch is missing")
+        self.assertEqual(
+            order, sorted(order), "the selection branches are out of order"
+        )
+
+    def test_header_records_the_two_vanilla_air_roots(self):
+        self.assertIn("Helicopter: Air", SHIMMER_SRC)
+        self.assertIn("Plane: Air", SHIMMER_SRC)
+
+    def test_header_declares_the_four_profiles(self):
+        for token in (
+            "idle 300 C / 0.35 m",
+            "full 480 C / 0.60 m",
+            "idle 420 C / 0.35 m",
+            "full 600 C / 1.00 m",
+            "idle 480 C / 0.40 m",
+            "full 750 C / 1.50 m",
+            "idle 550 C / 0.50 m",
+            "full 1200 C / 2.50 m",
+        ):
+            self.assertIn(token, SHIMMER_SRC, f"missing profile {token}")
+
+
 class ExhaustShimmerRenderer(unittest.TestCase):
     def setUp(self):
         self.code = _code_only(SHIMMER_SRC)
@@ -217,8 +383,19 @@ class ExhaustShimmerRenderer(unittest.TestCase):
             publish, gate, "the physics store must sit outside the render gate"
         )
 
-    def test_kernel_is_called_from_the_renderer(self):
-        self.assertIn("EFUNC(ballistics,calculateThermalRefraction)", self.code)
+    def test_plume_kernel_is_called_from_the_renderer(self):
+        self.assertIn("EFUNC(mobility,calculateExhaustPlume)", self.code)
+
+    def test_contrast_kernel_is_called_from_the_renderer(self):
+        self.assertIn("EFUNC(mobility,calculateThermalRefraction)", self.code)
+
+    def test_power_reaches_the_plume_kernel(self):
+        self.assertIn("_power", self.code)
+        self.assertRegex(
+            self.code,
+            r"\[_power, _idleT, _fullT, _idleD, _fullD\] call "
+            r"EFUNC\(mobility,calculateExhaustPlume\)",
+        )
 
     # ── true physical scale, no visibility scale factor ────────────────
     def test_uses_the_vanilla_refractive_shape(self):
@@ -228,7 +405,17 @@ class ExhaustShimmerRenderer(unittest.TestCase):
 
     def test_header_records_the_pixel_arithmetic(self):
         self.assertIn("1662.8", SHIMMER_SRC)
-        for px in ("17 px", "8 px", "27 px", "13 px", "67 px", "33 px", "0.18 px"):
+        for px in (
+            "17 px",
+            "8 px",
+            "27 px",
+            "13 px",
+            "67 px",
+            "33 px",
+            "83 px",
+            "42 px",
+            "0.18 px",
+        ):
             self.assertIn(px, SHIMMER_SRC, f"missing pixel figure {px}")
 
     def test_header_states_no_visibility_scale_factor(self):
@@ -240,40 +427,162 @@ class ExhaustShimmerRenderer(unittest.TestCase):
         self.assertIn("[_depth, _depth]", self.code)
 
     # ── the overdraw budget ────────────────────────────────────────────
-    def test_overdraw_worst_case_is_below_the_measured_stutter(self):
-        self.assertIn("144", SHIMMER_SRC)
-        self.assertIn("190", SHIMMER_SRC)
-        # The worst case is sources times live sprites times depth squared.
-        sources = 3
-        live = 12
-        depth = 2.0
-        self.assertLess(sources * live * depth * depth, 190.0)
+    def test_live_count_falls_with_depth_and_holds_the_budget(self):
+        budget = float(
+            re.search(r"_OVERDRAW_BUDGET\s*=\s*([0-9.]+)", self.code).group(1)
+        )
+        sources = float(re.search(r"_MAX_SOURCES\s*=\s*([0-9.]+)", self.code).group(1))
+        maxlive = float(re.search(r"_MAX_LIVE\s*=\s*([0-9.]+)", self.code).group(1))
+        minlive = float(re.search(r"_MIN_LIVE\s*=\s*([0-9.]+)", self.code).group(1))
+        self.assertEqual(budget, 190.0)
+        self.assertEqual(sources, 3.0)
+        self.assertEqual(maxlive, 12.0)
+        self.assertGreater(minlive, 0.0)
 
-    def test_live_sprite_count_is_bounded_by_the_interval(self):
-        self.assertIn("_drop = _LIFETIME / _MAX_LIVE", self.code)
+        worst = 0.0
+        prev_live = None
+        d = 0.35
+        while d <= 2.5001:
+            allowed = budget / (sources * d * d)
+            live = max(min(math.floor(allowed), maxlive), minlive)
+            overdraw = sources * live * d * d
+            self.assertLessEqual(overdraw, budget + 1e-6)
+            if prev_live is not None:
+                self.assertLessEqual(live, prev_live, "the live count rose with depth")
+            prev_live = live
+            worst = max(worst, overdraw)
+            d += 0.01
+        # The bound is tight and reaches 190 at the depth where the count
+        # steps down: the sampled maximum is 188.8 m2 just below the 2.297 m
+        # step, and at the 2.5 m maximum the count is 10 and the product is
+        # 187.5.
+        self.assertGreater(worst, 187.0)
+        self.assertLessEqual(worst, budget)
+        # The fixed 12-count bound the user broke would have been 225.
+        self.assertLess(3 * 12 * 2.5 * 2.5, 225.0 + 0.1)
+
+    def test_header_states_the_overdraw_arithmetic(self):
+        self.assertIn("190", SHIMMER_SRC)
+        self.assertIn("642", SHIMMER_SRC)
+        self.assertIn("187.5", SHIMMER_SRC)
+        self.assertIn("225", SHIMMER_SRC)
+
+    def test_live_sprite_count_is_the_divisor_of_the_drop_interval(self):
+        self.assertIn("_drop = _LIFETIME / _liveN", self.code)
         self.assertIn("setDropInterval _dropInterval", self.code)
+        self.assertIn("floor _allowed", self.code)
+
+    def test_lifetime_sits_in_the_lifetime_slot(self):
+        # Index 4 is the lifetime, per docs/wiki/research/particle-array-spec.md
+        # line 32 and vanilla muzzle/rockettrail.sqf.  A previous defect put a
+        # fixed 0.4 there and the derived lifetime in slots 7 and 8.
+        self.assertRegex(self.code, r'"Billboard",\s*1,\s*_lifetime,')
 
     # ── declared defaults and the reachable gas temperature ────────────
-    def test_header_declares_the_three_class_defaults(self):
-        self.assertIn("500 C", SHIMMER_SRC)
-        self.assertIn("600 C", SHIMMER_SRC)
-        self.assertIn("1200 C", SHIMMER_SRC)
-        self.assertIn("0.5 m", SHIMMER_SRC)
-        self.assertIn("0.8 m", SHIMMER_SRC)
-        self.assertIn("2.0 m", SHIMMER_SRC)
-
     def test_header_states_no_reachable_exhaust_gas_temperature(self):
         self.assertIn("NOT REACHABLE FROM THE THERMAL SOLVER", SHIMMER_SRC.upper())
         self.assertIn("SURFACE", SHIMMER_SRC.upper())
 
-    def test_selector_uses_the_declared_class_defaults(self):
-        self.assertIn('isKindOf "Plane"', self.code)
-        self.assertIn("[500, 0.5]", self.code)
-        self.assertIn("[600, 0.8]", self.code)
-
     def test_measured_override_is_read_with_a_fallback(self):
         self.assertIn('getVariable ["aee_exhaustGasTempC", -1]', self.code)
         self.assertIn('getVariable ["aee_exhaustPlumeM", -1]', self.code)
+
+    def test_measured_override_wins_over_the_tier_row(self):
+        gas = self.code.find('getVariable ["aee_exhaustGasTempC", -1]')
+        profile = self.code.find("calculateExhaustPlume)")
+        self.assertGreater(gas, profile, "the override must follow the kernel call")
+
+    # ── power resolution, in the order the user chose ──────────────────
+    def test_power_resolution_order(self):
+        block = re.search(r"private _resolvePower = \{(.*?)\n\};", self.code, re.S)
+        self.assertIsNotNone(block, "the power resolver is missing")
+        body = block.group(1)
+        published = body.find("aee_enginePowerFraction")
+        guard = body.find("difficultyEnabledRTD")
+        collective = body.find("collectiveRTD")
+        throttle = body.find("throttleRTD")
+        idle = body.find("_power = _idlePower")
+        self.assertTrue(
+            -1 < published < guard < collective < throttle < idle,
+            "power order is wrong",
+        )
+
+    def test_rtd_reader_is_behind_the_flight_model_guard(self):
+        # The RTD group reports meaningful values only when the advanced
+        # helicopter flight model is on, so the guard must enclose the reads.
+        block = re.search(r"if \(_power < 0\) then \{(.*?)\n    \};", self.code, re.S)
+        self.assertIsNotNone(block, "the reader branch is missing")
+        reader = block.group(1)
+        guard = reader.find("difficultyEnabledRTD")
+        collective = reader.find("collectiveRTD _this")
+        throttle = reader.find("throttleRTD _this")
+        self.assertTrue(
+            -1 < guard < collective < throttle, "the guard does not enclose the reads"
+        )
+
+    def test_reader_is_compiled_at_run_time(self):
+        # The harness server binary lacks throttleRTD, so naming the token
+        # directly would fail the script parse there.  The reader strings are
+        # compiled only when the reader is reached, which is client-only.
+        block = re.search(r"private _resolvePower = \{(.*?)\n\};", self.code, re.S)
+        body = block.group(1)
+        self.assertIn('"collectiveRTD _this"', body)
+        self.assertIn('"throttleRTD _this"', body)
+        self.assertIn("compile _reader", body)
+
+    def test_helicopter_uses_collective_and_plane_uses_throttle(self):
+        block = re.search(r"private _resolvePower = \{(.*?)\n\};", self.code, re.S)
+        body = block.group(1)
+        heli = body.find('isKindOf "Helicopter"')
+        collective = body.find("collectiveRTD _this")
+        plane = body.find('isKindOf "Plane"')
+        throttle = body.find("throttleRTD _this")
+        self.assertTrue(
+            -1 < heli < collective < plane < throttle,
+            "the reader is paired with the wrong class",
+        )
+
+    def test_rotor_outwash_proxy_is_gone(self):
+        # The proxy existed only because the reader was believed absent.
+        for token in ("calculateDownwash", "_ROTOR_FULL_OUTWASH", "_rotorFull"):
+            self.assertNotIn(token, self.code, f"the outwash proxy {token} survives")
+
+    def test_mobility_modifier_is_not_used(self):
+        self.assertNotIn("aee_mobility_enginePowerModifier", self.code)
+
+    def test_published_power_name_is_declared(self):
+        self.assertIn('getVariable ["aee_enginePowerFraction", -1]', self.code)
+
+    # ── the contrast is not the power ramp ─────────────────────────────
+    def test_alpha_is_not_ramped_by_power(self):
+        alpha_lines = [line for line in self.code.splitlines() if "_alpha =" in line]
+        self.assertTrue(alpha_lines, "the alpha expression is missing")
+        for line in alpha_lines:
+            self.assertNotIn("power", line.lower(), "alpha must not ramp with power")
+        # It is on the contrast curve instead.
+        self.assertIn('["mag", 0]', self.code)
+        self.assertIn("_alphaMax", self.code)
+
+    def test_header_states_the_separation(self):
+        upper = SHIMMER_SRC.upper()
+        self.assertIn("POWER RAMP DRIVES THE PLUME SIZE, NOT ALPHA", upper)
+        self.assertIn("factor of 1.4", SHIMMER_SRC)
+        self.assertIn("factor of 7", SHIMMER_SRC)
+
+    def test_header_describes_the_gated_reader(self):
+        upper = SHIMMER_SRC.upper()
+        self.assertIn("DIFFICULTYENABLEDRTD", upper)
+        self.assertIn("collectiveRTD", SHIMMER_SRC)
+        self.assertIn("throttleRTD", SHIMMER_SRC)
+        self.assertNotIn("NO NUMERIC COLLECTIVE", upper)
+
+    def test_header_declares_the_per_vehicle_variables(self):
+        for name in (
+            "aee_exhaustTier",
+            "aee_exhaustAfterburner",
+            "aee_enginePowerFraction",
+        ):
+            self.assertIn(name, SHIMMER_SRC, f"missing variable {name}")
 
     # ── bounded scope and lifecycle ────────────────────────────────────
     def test_scope_is_player_vehicle_plus_nearest_capped(self):
@@ -297,47 +606,86 @@ class ExhaustShimmerRenderer(unittest.TestCase):
         self.assertIn("QGVAR(exhaustShimmerAlpha)", self.code)
         self.assertIn("_alphaMax", self.code)
 
+    def test_size_range_spans_the_canonical_bounds(self):
+        rows = _tier_rows()
+        idle = min(row[2] for row in rows.values())
+        full = max(row[3] for row in rows.values())
+        self.assertAlmostEqual(idle, 0.35)
+        self.assertAlmostEqual(full, 2.50)
+        for row in rows.values():
+            self.assertLess(row[2], row[3], "a tier does not grow with power")
+
 
 class ExhaustWiring(unittest.TestCase):
     """Registration, the environment tick, the settings, and the docs."""
 
-    def test_kernel_is_registered(self):
-        prep = (REPO / "addons/ballistics/XEH_PREP.hpp").read_text(encoding="utf-8")
+    def test_thermal_kernel_is_registered_in_mobility(self):
+        prep = (REPO / "addons/mobility/XEH_PREP.hpp").read_text(encoding="utf-8")
         self.assertIn("PREP(calculateThermalRefraction);", prep)
 
-    def test_renderer_is_registered(self):
+    def test_plume_kernel_is_registered_in_mobility(self):
+        prep = (REPO / "addons/mobility/XEH_PREP.hpp").read_text(encoding="utf-8")
+        self.assertIn("PREP(calculateExhaustPlume);", prep)
+
+    def test_neither_kernel_is_registered_in_ballistics(self):
+        prep = (REPO / "addons/ballistics/XEH_PREP.hpp").read_text(encoding="utf-8")
+        self.assertNotIn("PREP(calculateThermalRefraction);", prep)
+        self.assertNotIn("PREP(calculateExhaustPlume);", prep)
+
+    def test_renderer_is_registered_in_fx(self):
+        prep = (REPO / "addons/fx/XEH_PREP.hpp").read_text(encoding="utf-8")
+        self.assertIn("PREPS(weather,applyExhaustShimmer);", prep)
+
+    def test_renderer_is_not_registered_in_optics(self):
         prep = (REPO / "addons/optics/XEH_PREP.hpp").read_text(encoding="utf-8")
-        self.assertIn("PREPS(fx,applyExhaustShimmerFX);", prep)
+        self.assertNotIn("applyExhaustShimmer", prep)
 
     def test_renderer_is_wired_into_the_environment_tick(self):
         tick = (REPO / "addons/core/functions/fnc_updateEnvironment.sqf").read_text(
             encoding="utf-8"
         )
-        self.assertIn("EFUNC(optics,applyExhaustShimmerFX)", tick)
+        self.assertIn("EFUNC(fx,applyExhaustShimmer)", tick)
         # It runs with the other optics FX, after the mirage call.
         self.assertLess(
             tick.find("EFUNC(optics,applyMirageFX)"),
-            tick.find("EFUNC(optics,applyExhaustShimmerFX)"),
+            tick.find("EFUNC(fx,applyExhaustShimmer)"),
         )
 
-    def test_setting_is_registered(self):
+    def test_setting_is_registered_in_fx(self):
+        settings = (REPO / "addons/fx/initSettings.inc.sqf").read_text(encoding="utf-8")
+        self.assertIn("AEE_SETTING_SLIDER(exhaustShimmerAlpha", settings)
+
+    def test_setting_is_not_registered_in_optics(self):
         settings = (REPO / "addons/optics/initSettings.inc.sqf").read_text(
             encoding="utf-8"
         )
-        self.assertIn("AEE_SETTING_SLIDER(exhaustShimmerAlpha", settings)
+        self.assertNotIn("exhaustShimmerAlpha", settings)
 
     def test_settings_doc_records_the_setting(self):
         config = (REPO / "docs/wiki/chapters/configuration.qmd").read_text(
             encoding="utf-8"
         )
-        self.assertIn("aee_optics_exhaustShimmerAlpha", config)
+        self.assertIn("aee_fx_exhaustShimmerAlpha", config)
 
     def test_state_variables_doc_records_the_new_state(self):
         state = (REPO / "docs/wiki/chapters/state-variables.qmd").read_text(
             encoding="utf-8"
         )
-        self.assertIn("aee_optics_exhaustSources", state)
-        self.assertIn("aee_optics_exhaustRefraction", state)
+        self.assertIn("aee_fx_exhaustSources", state)
+        self.assertIn("aee_fx_exhaustRefraction", state)
+
+    def test_configuration_doc_records_the_per_vehicle_values(self):
+        config = (REPO / "docs/wiki/chapters/configuration.qmd").read_text(
+            encoding="utf-8"
+        )
+        for name in (
+            "aee_exhaustTier",
+            "aee_exhaustAfterburner",
+            "aee_enginePowerFraction",
+            "aee_exhaustGasTempC",
+            "aee_exhaustPlumeM",
+        ):
+            self.assertIn(name, config, f"missing published value {name}")
 
 
 if __name__ == "__main__":
