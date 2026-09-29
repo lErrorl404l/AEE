@@ -44,17 +44,18 @@ if (cameraOn != _player && {cameraOn != _guardVeh}) exitWith {};
 // The tube model runs only in NVG.  Leaving NVG fades every NVG effect
 // to a neutral state and disables it.
 if (currentVisionMode _player != 1) exitWith {
+    // ChromAberration is owned by nightvision (QGVAR(ppHandle_NVG_Chroma)).
+    // Reset it to neutral on EVERY sensor exit.  The sensor path may adjust
+    // the effect whether or not the grain flag is set, so a reset gated on
+    // nvgGrainActive can leave a non-neutral effect in normal vision.
+    private _hChroma = missionNamespace getVariable [QGVAR(ppHandle_NVG_Chroma), -1];
+    if (_hChroma >= 0) then {
+        _hChroma ppEffectAdjust [0, 0, false];
+        _hChroma ppEffectCommit 0;
+    };
+
     private _active = missionNamespace getVariable [QGVAR(nvgGrainActive), false];
     if (_active) then {
-        // ChromAberration is a shared handle (owned by managePostProcess in
-        // normal mode).  Fade it to neutral here so it does not linger into
-        // thermal; managePostProcess re-owns it in normal mode.
-        private _hChroma = missionNamespace getVariable [QEGVAR(optics,ppHandle_ChromAberration), -1];
-        if (_hChroma >= 0) then {
-            _hChroma ppEffectAdjust [0, 0, false];
-            _hChroma ppEffectCommit 0;
-        };
-
         // NVG effects: destroy handles on exit and reset to -1.  The engine
         // can kill ppEffects (alt-tab, resize) leaving stale positive handle
         // numbers; those then fail every subsequent call with "Invalid post
@@ -884,9 +885,13 @@ _grainIntensity = _grainIntensity * (1 + rain * 0.5);
 // ppEffectCreate returns -1 when a priority is taken (BIS wiki), so each
 // create bumps until it succeeds.
 //
-// ChromAberration is shared with fnc_managePostProcess (priority 3000):
-// reuse its handle instead of creating a second effect at that priority.
-private _hChroma = missionNamespace getVariable [QEGVAR(optics,ppHandle_ChromAberration), -1];
+// Nightvision owns its own ChromAberration handle at priority 3050.  It
+// must not share the optics handle (priority 3000): the optics module
+// adjusts that effect in normal vision, so a shared handle lets this
+// function destroy or rewrite it and blind the player.  3050 avoids the
+// optics ChromAberration (3000), the NVG DynamicBlur (4100) and the
+// thermal DynamicBlur (4200).
+private _hChroma = missionNamespace getVariable [QGVAR(ppHandle_NVG_Chroma), -1];
 private _hCC     = missionNamespace getVariable [QGVAR(ppHandle_NVG_CC), -1];
 private _hBloom  = missionNamespace getVariable [QGVAR(ppHandle_NVG_Bloom), -1];
 private _hVig    = missionNamespace getVariable [QGVAR(ppHandle_NVG_Vignette), -1];
@@ -899,7 +904,7 @@ private _hGrain  = missionNamespace getVariable [QGVAR(ppHandle_NVG_Grain), -1];
 // recreate CC/bloom/vignette/grain every 0.1 s tick, leaving the image
 // vanilla and flooding the RPT with "Invalid post effect handle".
 // DoF gets its own create-if-missing block further down.
-private _missing = (_hCC < 0 || _hBloom < 0 || _hVig < 0 || _hGrain < 0);
+private _missing = (_hChroma < 0 || _hCC < 0 || _hBloom < 0 || _hVig < 0 || _hGrain < 0);
 
 if (_missing) then {
     // Destroy any live handles first so the bump loop can reclaim the
@@ -916,18 +921,23 @@ if (_missing) then {
         QGVAR(ppHandle_NVG_CC),
         QGVAR(ppHandle_NVG_Bloom),
         QGVAR(ppHandle_NVG_Vignette),
-        QGVAR(ppHandle_NVG_Grain)
+        QGVAR(ppHandle_NVG_Grain),
+        QGVAR(ppHandle_NVG_Chroma)
     ];
 
+    // The destroy loop above may just have destroyed the chroma handle.
+    // Re-read it from missionNamespace before the recreate test, because
+    // the local copy still holds the stale positive value.
+    _hChroma = missionNamespace getVariable [QGVAR(ppHandle_NVG_Chroma), -1];
     if (_hChroma < 0) then {
-        private _prio = 3000;
+        private _prio = 3050;
         private _guard = 0;
         while {_hChroma < 0 && _guard < 100} do {
             _hChroma = ppEffectCreate ["ChromAberration", _prio];
             _prio = _prio + 1;
             _guard = _guard + 1;
         };
-        missionNamespace setVariable [QEGVAR(optics,ppHandle_ChromAberration), _hChroma];
+        missionNamespace setVariable [QGVAR(ppHandle_NVG_Chroma), _hChroma];
         private _logMsg = format ["recreated NVG ChromAberration handle=%1", _hChroma];
         AEE_LOG_DEBUG(_logMsg);
     };
@@ -967,6 +977,7 @@ if (_missing) then {
 // every fresh handle (4 handles x 4 calls = the 16 per entry seen in the
 // RPT).  missionNamespace is the single source of truth; always read it
 // after the create block.
+_hChroma = missionNamespace getVariable [QGVAR(ppHandle_NVG_Chroma), -1];
 _hVig   = missionNamespace getVariable [QGVAR(ppHandle_NVG_Vignette), -1];
 _hBloom = missionNamespace getVariable [QGVAR(ppHandle_NVG_Bloom), -1];
 _hCC    = missionNamespace getVariable [QGVAR(ppHandle_NVG_CC), -1];

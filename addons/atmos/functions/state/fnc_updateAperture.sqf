@@ -47,25 +47,39 @@ if (time < 0.5) exitWith {};
 private _player = call CBA_fnc_currentUnit;
 if (!isNull _player && {currentVisionMode _player != 0}) exitWith {};
 
-private _minLux = 0.001;         // starlight floor
-private _maxLux = 100000;        // full sun
-private _nightStandard = 8;      // wiki example at night
-private _dayStandard = 0.2;      // wiki example in daylight
-private _minFactor = 0.25;       // 2 / 8
-private _maxFactor = 1.75;       // 14 / 8
+// The lux model is a NIGHT model.  fnc_calculateIlluminance has no solar term
+// above the horizon, so in daylight it reports starlight-level lux and the
+// mapping below resolves to the night anchors.  Handing the camera those
+// values tells the engine it faces a dark scene, so it opens the aperture to
+// the night maximum and blows out a daylight frame.  Outside the domain the
+// model covers, the engine exposure is correct, so hand the camera back.
+// lightIsNight is the engine flag, published by the same tick: core calls
+// calculateIlluminance immediately before this function, so it cannot be
+// stale.  Default false, so a missing producer stands down rather than
+// pinning the night anchors.
+if (missionNamespace getVariable [QEGVAR(core,lightIsNight), false]) then {
+    private _minLux = 0.001;         // starlight floor
+    private _maxLux = 100000;        // full sun
+    private _nightStandard = 8;      // wiki example at night
+    private _dayStandard = 0.2;      // wiki example in daylight
+    private _minFactor = 0.25;       // 2 / 8
+    private _maxFactor = 1.75;       // 14 / 8
 
-private _lux = missionNamespace getVariable [QEGVAR(core,illuminanceLux), _minLux];
-if !(_lux isEqualType 0) then { _lux = _minLux; };
-_lux = (_lux max _minLux) min _maxLux;
+    private _lux = missionNamespace getVariable [QEGVAR(core,illuminanceLux), _minLux];
+    if !(_lux isEqualType 0) then { _lux = _minLux; };
+    _lux = (_lux max _minLux) min _maxLux;
 
-// Base-10 log of lux spans -3 (starlight) to 5 (full sun).
-private _ev = log _lux;
+    // Base-10 log of lux spans -3 (starlight) to 5 (full sun).
+    private _ev = log _lux;
 
-private _standard = linearConversion [-3, 5, _ev, _nightStandard, _dayStandard, true];
-private _minimum = _standard * _minFactor;
-private _maximum = _standard * _maxFactor;
+    private _standard = linearConversion [-3, 5, _ev, _nightStandard, _dayStandard, true];
+    private _minimum = _standard * _minFactor;
+    private _maximum = _standard * _maxFactor;
 
-// The fourth element is the reference scene luminance on the engine scale.
-private _luminance = linearConversion [-3, 5, _ev, 0.9, 1, true];
+    // The fourth element is the reference scene luminance on the engine scale.
+    private _luminance = linearConversion [-3, 5, _ev, 0.9, 1, true];
 
-setApertureNew [_minimum, _standard, _maximum, _luminance];
+    setApertureNew [_minimum, _standard, _maximum, _luminance];
+} else {
+    setAperture -1;
+};

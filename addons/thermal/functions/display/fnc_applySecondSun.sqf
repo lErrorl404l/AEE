@@ -34,19 +34,25 @@ params ["_mode"];   // "ENTER" | "TICK" | "EXIT"
 
 if (!hasInterface) exitWith { 0 };
 
-private _player = call CBA_fnc_currentUnit;
-if (isNil "_player" || !alive _player) exitWith { 0 };
-
+// The handle read and the EXIT branch sit ABOVE the player guard on purpose.
+// The sensor teardown calls this on death, and call CBA_fnc_currentUnit still
+// returns the dead unit then, so a guard here would skip the destroy and
+// leave the lightpoint alive.  Same shape as the setAperture restore in
+// fnc_teardownSensors.
 private _sun = missionNamespace getVariable [QGVAR(tiSecondSun), objNull];
 
 // ─── EXIT: destroy the lightpoint ────────────────────────────────────────
-if (_mode == "EXIT") then {
+// Destroy, then STOP.  Without exitWith the run falls through into the
+// ENTER and tick paths below and recreates the lightpoint it just deleted.
+if (_mode == "EXIT") exitWith {
     if !(isNull _sun) then {
         deleteVehicle _sun;
         missionNamespace setVariable [QGVAR(tiSecondSun), objNull];
-    };
-    0
+    }
 };
+
+private _player = call CBA_fnc_currentUnit;
+if (isNil "_player" || !alive _player) exitWith { 0 };
 
 // ─── ENTER: create the lightpoint once ────────────────────────────────────
 if (_mode == "ENTER") then {
