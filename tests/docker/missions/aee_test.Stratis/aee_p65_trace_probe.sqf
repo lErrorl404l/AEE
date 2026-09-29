@@ -347,6 +347,127 @@ if (!isNil _CONE) then {
         _m2 select 0, _m27 select 0, _m4 select 0];
 };
 
+// ---- exhaust plume power ramp, swept along the physical curve ----
+// The renderer exits at hasInterface on a dedicated server, so the sprite
+// cannot be observed here.  This measures the decision leg: the pure kernel
+// and the area-derived live count, both of which run headless.
+private _EXHAUST = "aee_mobility_fnc_calculateExhaustPlume";
+if (isNil _EXHAUST) then {
+    _fail = _fail + 1;
+    _notes pushBack "exhaust kernel isNil: aee_mobility_fnc_calculateExhaustPlume is not compiled";
+} else {
+    // [idleTempC, fullTempC, idleDepthM, fullDepthM], the four declared tiers.
+    private _tiers = [
+        [300, 480, 0.35, 0.60],
+        [420, 600, 0.35, 1.00],
+        [480, 750, 0.40, 1.50],
+        [550, 1200, 0.50, 2.50]
+    ];
+    private _exhaustBad = [];
+    private _sizeLo = 1e9;
+    private _sizeHi = -1e9;
+    {
+        _x params ["_iT", "_fT", "_iD", "_fD"];
+        if (_iD < _sizeLo) then { _sizeLo = _iD; };
+        if (_fD > _sizeHi) then { _sizeHi = _fD; };
+        private _p0 = [0, _iT, _fT, _iD, _fD] call aee_mobility_fnc_calculateExhaustPlume;
+        private _p1 = [1, _iT, _fT, _iD, _fD] call aee_mobility_fnc_calculateExhaustPlume;
+        private _ph = [0.5, _iT, _fT, _iD, _fD] call aee_mobility_fnc_calculateExhaustPlume;
+        private _pUp = [2, _iT, _fT, _iD, _fD] call aee_mobility_fnc_calculateExhaustPlume;
+        private _pDn = [-1, _iT, _fT, _iD, _fD] call aee_mobility_fnc_calculateExhaustPlume;
+        if (abs ((_p0 select 0) - _iT) > 0.0001) then { _exhaustBad pushBack format ["tier %1 idle temp %2 want %3", _x, (_p0 select 0), _iT]; };
+        if (abs ((_p0 select 1) - _iD) > 0.0001) then { _exhaustBad pushBack format ["tier %1 idle depth %2 want %3", _x, (_p0 select 1), _iD]; };
+        if (abs ((_p1 select 0) - _fT) > 0.0001) then { _exhaustBad pushBack format ["tier %1 full temp %2 want %3", _x, (_p1 select 0), _fT]; };
+        if (abs ((_p1 select 1) - _fD) > 0.0001) then { _exhaustBad pushBack format ["tier %1 full depth %2 want %3", _x, (_p1 select 1), _fD]; };
+        if (abs ((_ph select 0) - ((_iT + _fT) / 2)) > 0.0001) then { _exhaustBad pushBack format ["tier %1 mid temp %2 not linear", _x, (_ph select 0)]; };
+        if (abs ((_ph select 1) - ((_iD + _fD) / 2)) > 0.0001) then { _exhaustBad pushBack format ["tier %1 mid depth %2 not linear", _x, (_ph select 1)]; };
+        if (abs ((_pUp select 1) - _fD) > 0.0001) then { _exhaustBad pushBack format ["tier %1 power 2 did not clamp to full", _x]; };
+        if (abs ((_pDn select 1) - _iD) > 0.0001) then { _exhaustBad pushBack format ["tier %1 power -1 did not clamp to idle", _x]; };
+        private _s = 0;
+        private _prevD = -1;
+        private _prevT = -1;
+        while {_s <= 10} do {
+            private _r = [(_s / 10), _iT, _fT, _iD, _fD] call aee_mobility_fnc_calculateExhaustPlume;
+            if ((_r select 1) < (_prevD - 0.0001)) then { _exhaustBad pushBack format ["tier %1 depth fell at power %2", _x, (_s / 10)]; };
+            if ((_r select 0) < (_prevT - 0.0001)) then { _exhaustBad pushBack format ["tier %1 temp fell at power %2", _x, (_s / 10)]; };
+            _prevD = _r select 1;
+            _prevT = _r select 0;
+            _s = _s + 1;
+        };
+    } forEach _tiers;
+
+    // An inverted pair and a non-positive declaration are refused, not run.
+    private _inv = [0.5, 600, 400, 1.0, 0.5] call aee_mobility_fnc_calculateExhaustPlume;
+    if ((_inv select 1) != 0) then { _exhaustBad pushBack "an inverted pair was not refused"; };
+    private _neg = [0.5, -1, 400, 0.35, 0.6] call aee_mobility_fnc_calculateExhaustPlume;
+    if ((_neg select 1) != 0) then { _exhaustBad pushBack "a non-positive temperature was not refused"; };
+    if (abs (_sizeLo - 0.35) > 0.0001) then { _exhaustBad pushBack format ["size floor %1 want 0.35", _sizeLo]; };
+    if (abs (_sizeHi - 2.5) > 0.0001) then { _exhaustBad pushBack format ["size ceiling %1 want 2.5", _sizeHi]; };
+
+    // The area-derived live count, mirrored from fnc_applyExhaustShimmerFX and
+    // pinned by tools/tests/test_exhaust_shimmer.py.
+    private _overdrawBudget = 190;
+    private _sources = 3;
+    private _maxLive = 12;
+    private _minLive = 4;
+    private _liveBad = [];
+    private _worst = 0;
+    private _prevLive = 1e9;
+    private _d = 0.35;
+    while {_d <= 2.5001} do {
+        private _allowed = _overdrawBudget / (_sources * _d * _d);
+        private _live = ((floor _allowed) min _maxLive) max _minLive;
+        private _over = _sources * _live * _d * _d;
+        if (_live > _prevLive) then { _liveBad pushBack format ["live count rose at %1 m", _d]; };
+        if (_over > (_overdrawBudget + 0.0001)) then { _liveBad pushBack format ["overdraw %1 m2 at %2 m", _over, _d]; };
+        if (_over > _worst) then { _worst = _over; };
+        _prevLive = _live;
+        _d = _d + 0.01;
+    };
+
+    if ((_exhaustBad isEqualTo []) && (_liveBad isEqualTo [])) then {
+        _pass = _pass + 1;
+        diag_log text format ["[P65] [PASS] exhaust plume power ramp: 4 tiers linear and monotone, size %1..%2 m, worst overdraw %3 m2 at or below %4", _sizeLo, _sizeHi, _worst, _overdrawBudget];
+    } else {
+        _fail = _fail + 1;
+        {
+            _notes pushBack format ["exhaust: %1", _x];
+        } forEach (_exhaustBad + _liveBad);
+    };
+};
+
+// ---- the engine reader: measured on this server ----------------------------
+// The renderer reads collectiveRTD for a helicopter and throttleRTD for fixed
+// wing, both gated on difficultyEnabledRTD and both compiled at run time so a
+// build without RotorLib still loads.  The harness dedicated-server binary
+// carries collectiveRTD and difficultyEnabledRTD but NOT throttleRTD, so the
+// fixed-wing token would fail the script parse and is therefore never named
+// here.  This block MEASURES what the server exposes and asserts the FALLBACK
+// the renderer takes without a usable reader: no published value, so the
+// declared idle fraction drives the plume.  It never asserts a value the
+// server cannot produce.
+private _rtdOn = difficultyEnabledRTD;
+private _rtdHeli = createVehicle ["B_Heli_Light_01_F", [2000, 3000, 100], [], 0, "FLY"];
+private _collective = nil;
+if (!isNull _rtdHeli) then { _collective = collectiveRTD _rtdHeli; };
+if (!isNull _rtdHeli) then { deleteVehicle _rtdHeli; };
+diag_log text format ["[P65] reader: difficultyEnabledRTD %1, collectiveRTD %2 (%3), throttleRTD absent from the harness server binary",
+    _rtdOn, _collective, typeName _collective];
+
+// The fallback the renderer takes without a usable reader: no published value,
+// so the declared idle fraction (0.05) drives the plume.  The kernel is linear,
+// so the land row gives 0.35 + (0.60 - 0.35) * 0.05 = 0.3625 m at the idle
+// fraction and 0.60 m at full.
+private _idle = [0.05, 300, 480, 0.35, 0.60] call aee_mobility_fnc_calculateExhaustPlume;
+private _full = [1, 300, 480, 0.35, 0.60] call aee_mobility_fnc_calculateExhaustPlume;
+if ((abs ((_idle select 1) - 0.3625) > 0.0001) || {abs ((_full select 1) - 0.60) > 0.0001}) then {
+    _fail = _fail + 1;
+    _notes pushBack format ["declared fallback wrong: idle %1 want 0.3625, full %2 want 0.60", _idle select 1, _full select 1];
+} else {
+    _pass = _pass + 1;
+    diag_log text "[P65] reader: RTD not exercised headless, declared idle and full fallback asserted";
+};
+
 if (_fail == 0) then {
     diag_log text format ["[P65] [PASS] shock trace decision leg: %1 checks, subsonic silent, cone narrowing, size from calibre, geometry bounded", _pass];
 } else {

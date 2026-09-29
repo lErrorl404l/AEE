@@ -174,6 +174,8 @@
       "provenance": [
         "addons/atmos/functions/state/fnc_updateLocalWindParams.sqf:35",
         "addons/atmos/functions/state/fnc_updateLocalWindParams.sqf:36",
+        "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf:191",
+        "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf:222",
         "addons/fx/functions/weather/fnc_applyRotorWash.sqf:27",
         "addons/mobility/functions/fnc_calculateSSF.sqf:61",
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:180",
@@ -251,7 +253,8 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/optics/functions/fx/fnc_applyExhaustShimmerFX.sqf:127",
+        "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf:197",
+        "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf:225",
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:180",
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:189"
       ],

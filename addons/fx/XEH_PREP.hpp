@@ -23,6 +23,7 @@ PREPS(particle,surfaceSample);
 // ── weather ───────────────────────────────────────────────────────────────
 PREPS(weather,applyAtmosphericDust);
 PREPS(weather,applyBreathCondensation);
+PREPS(weather,applyExhaustShimmer);
 PREPS(weather,applyFootfallDust);
 PREPS(weather,applyRotorWash);
 PREPS(weather,applyRainSurfaceDrops);
