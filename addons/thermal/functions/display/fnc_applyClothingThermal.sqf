@@ -37,9 +37,11 @@ params ["_mode"];
 if (!hasInterface) exitWith { 0 };
 
 // ─── EXIT: restore every saved texture ───────────────────────────────────
-if (_mode == "EXIT") then {
-    ["", "", "EXIT"] call FUNC(applySelectionThermal);
-    0
+// Restore, then STOP.  Without exitWith the run falls through into the
+// apply path below and re-commits the selection textures it just undid, so
+// a worn uniform stayed flat-shaded in normal vision.
+if (_mode == "EXIT") exitWith {
+    ["", "", "EXIT"] call FUNC(applySelectionThermal)
 };
 
 private _player = call CBA_fnc_currentUnit;
@@ -57,10 +59,17 @@ if (cameraOn != _player && {cameraOn != _veh}) exitWith { 0 };
 private _airTemp = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 if !(_airTemp isEqualType 0) then { _airTemp = 15; };
 
-// ─── Apply to ALL units (no radius: one-shot texture is cheap) ────────────
+// Bound the unit sweep by the player's own view distance.  `allUnits` is
+// world-wide, and this path runs at 10 Hz from the sensor tick, so an
+// unbounded list meant a per-selection solve and texture write for every
+// unit in the mission ten times a second.  The substrate is local to the
+// eye, so a unit the player cannot see does not need painting.
+private _viewDist = (getObjectViewDistance select 0) max 50;
+private _refPos = getPosATL _player;
 private _applied = 0;
 {
-    if (isNull _x || !alive _x) then { continue; };
+    if (isNull _x || {!alive _x}) then { continue; };
+    if ((_x distance _refPos) > _viewDist) then { continue; };
     private _obj = _x;
 
     // Dynamic thermal-selection discovery (issue #204): Men = all

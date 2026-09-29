@@ -46,3 +46,4 @@ PREPS(fusion,applyFusionOverlay);
 PREPS(fusion,applyFusionPP);
 PREPS(fusion,applyFusionSun);
 PREPS(fusion,cycleFusionMode);
+PREP(handleImpactHeat);
