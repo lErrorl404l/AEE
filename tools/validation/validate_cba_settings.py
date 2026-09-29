@@ -49,6 +49,11 @@ _FORMAT_TEMPLATE = re.compile(r'format\s*\[\s*"(?P<lit>' + PREFIX + r'_\w*%1\w*)
 _MACRO = re.compile(r"\b(?:Q?GVAR|Q?EGVAR)\([^)]*\)")
 _MACRO_NAME = re.compile(r"\bQ?EGVAR\(([^,)]+),([^)]+)\)|\bQ?GVAR\(([^)]+)\)")
 _DECL = re.compile(r"\bQGVAR\((\w+)\)")
+# Settings are declared through a macro whose first argument is the bare
+# setting name, and the macro expands QGVAR(name).  _DECL alone matches none
+# of them, so no setting was ever registered as produced and every settings
+# read looked dead once the prefix catch-all was removed.
+_SETTING_DECL = re.compile(r"\bAEE_SETTING_\w+\(\s*(\w+)")
 _LINE_COMMENT = re.compile(r"//[^\n]*")
 _BLOCK_COMMENT = re.compile(r"/\*.*?\*/", re.DOTALL)
 
@@ -86,6 +91,23 @@ def leaf(name):
     return name.split("_", 2)[-1]
 
 
+def directive_line_starts(text: str) -> set[int]:
+    """Offsets of every line belonging to a preprocessor directive.
+
+    A continuation line does not start with #, so track the trailing
+    backslash as well.
+    """
+    starts: set[int] = set()
+    offset = 0
+    continued = False
+    for line in text.splitlines(keepends=True):
+        if continued or line.lstrip().startswith("#"):
+            starts.add(offset)
+        continued = line.rstrip("\r\n").rstrip().endswith("\\")
+        offset += len(line)
+    return starts
+
+
 def scan():
     declared = {}  # name -> declaring file
     reads = {}  # name -> [files]
@@ -97,9 +119,10 @@ def scan():
         addon = addon_of(sqf)
         text = strip_comments(sqf.read_text(encoding="utf-8", errors="replace"))
         rel = str(sqf.relative_to(REPO_ROOT))
+        directive_lines = directive_line_starts(text)
 
         if sqf.name == "initSettings.inc.sqf":
-            for name in _DECL.findall(text):
+            for name in _DECL.findall(text) + _SETTING_DECL.findall(text):
                 declared[f"{PREFIX}_{addon}_{name}"] = rel
 
         # Direct getVariable/setVariable calls.
@@ -124,6 +147,10 @@ def scan():
         is_decl_file = sqf.name == "initSettings.inc.sqf"
         for match in _MACRO.finditer(text):
             if is_decl_file:
+                continue
+            # A macro DEFINITION is not a variable use.  QGVAR(h) inside
+            # #define AEE_SETTING_SLIDER(h,...) is the parameter h.
+            if text.rfind("\n", 0, match.start()) + 1 in directive_lines:
                 continue
             before = text[max(0, match.start() - 32) : match.start()]
             if re.search(r"(?:get|set)Variable\s*\[\s*$", before):
@@ -179,17 +206,23 @@ def main():
     test_reads, test_writes = scan_tests()
     allowed = load_allowlist()
 
-    # A produced name containing %1 is a format template: the real variables
-    # are composed at run time (e.g. format [QGVAR(ppHandle_%1), _name]).
-    # Any read whose name matches a template prefix is satisfied by it.
-    templates = [n for n in set(reads) | set(writes) if "%1" in n]
-    dynamic = [t[: t.index("%1")] for t in templates]
+    # A produced name containing a placeholder is a format template, composed at
+    # run time.  Match the WHOLE shape, not the prefix: aee_%1_logDebug yields the
+    # bare prefix "aee_", and prefix matching made every aee_ name look produced,
+    # which blinded dead-read detection for the whole namespace.
+    templates = [n for n in set(reads) | set(writes) if re.search(r"%\d", n)]
+    dynamic = [
+        re.compile(
+            "^" + ".+".join(re.escape(part) for part in re.split(r"%\d", t)) + "$"
+        )
+        for t in templates
+    ]
 
     def is_produced(name):
         return (
             name in declared
             or name in writes
-            or any(name.startswith(d) for d in dynamic)
+            or any(pattern.fullmatch(name) for pattern in dynamic)
         )
 
     produced = set(declared) | set(writes)
