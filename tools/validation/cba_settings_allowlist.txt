@@ -35,3 +35,24 @@ aee_thermal_thermalSelectionsCache  dynamic cache key: written via format [QGVAR
 aee_thermal_hitPointMaterials  dynamic cache key: written via format [QGVAR(hitPointMaterials_%1), typeOf] in fnc_getHitPointMaterials
 aee_thermal_shadowCache  dynamic cache key: written via QGVAR(shadowCache) with per-cell keys in fnc_isPositionShadowed
 aee_thermal_groundTraceT  dynamic per-cell trace key: format [QGVAR(groundTraceT), x, y] built and read/written in fnc_calculateGroundTemperature (validator cannot trace format-built keys)
+
+# Handler ids: the name is passed as a VALUE (the _key argument), not read as a
+# variable.  fnc_installObjectEngineHandler stores the id under
+# format ["aee_core_ehId_%1", _key], so the bare name is never a variable.
+aee_armour_penetrationGateHandler  handler id passed as the _key value argument, not read as a variable
+aee_ballistics_shotTemp  handler id passed as the _key value argument, not read as a variable
+aee_core_collisionDamage  handler id passed as the _key value argument, not read as a variable
+aee_fx_blast  handler id passed as the _key value argument, not read as a variable
+aee_optics_muzzleFlash  handler id passed as the _key value argument, not read as a variable
+
+# Per-vehicle engine and exhaust contract: read with an inline default, and no
+# addon writes them, so a mission or a vehicle config publishes them.  The
+# defaults are the kernel values when nothing is published.
+aee_enginePowerFraction  per-vehicle contract, read with default -1 at fnc_applyExhaustShimmer.sqf:335, no addon writer
+aee_engineRatedPowerW  per-vehicle contract, read with default 150000 at fnc_applyExhaustShimmer.sqf:302 and 316, no addon writer
+aee_engineDragAreaM2  per-vehicle contract, read with default 0.7 at fnc_applyExhaustShimmer.sqf:318, no addon writer
+aee_engineRotorDiscAreaM2  per-vehicle contract, read with default 50 at fnc_applyExhaustShimmer.sqf:320, no addon writer
+aee_exhaustTier  per-vehicle contract, read with default empty string at fnc_applyExhaustShimmer.sqf:249, no addon writer
+aee_exhaustAfterburner  per-vehicle contract, read with default false at fnc_applyExhaustShimmer.sqf:258, no addon writer
+aee_exhaustGasTempC  per-vehicle contract, read with default -1 at fnc_applyExhaustShimmer.sqf:455, no addon writer
+aee_exhaustPlumeM  per-vehicle contract, read with default -1 at fnc_applyExhaustShimmer.sqf:457, no addon writer
