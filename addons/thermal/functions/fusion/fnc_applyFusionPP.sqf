@@ -29,12 +29,16 @@ if (_hGrain < 0 || _hCC < 0) then {
         _hGrain = ppEffectCreate ["FilmGrain", 2005];
         if (_hGrain >= 0) then {
             missionNamespace setVariable [QGVAR(ppHandle_Fusion_Grain), _hGrain];
+            private _logMsg = format ["fusion PP: created grain handle=%1", _hGrain];
+            AEE_LOG_DEBUG(_logMsg);
         };
     };
     if (_hCC < 0) then {
         _hCC = ppEffectCreate ["ColorCorrections", 2505];
         if (_hCC >= 0) then {
             missionNamespace setVariable [QGVAR(ppHandle_Fusion_CC), _hCC];
+            private _logMsg = format ["fusion PP: created CC handle=%1", _hCC];
+            AEE_LOG_DEBUG(_logMsg);
         };
     };
 };
