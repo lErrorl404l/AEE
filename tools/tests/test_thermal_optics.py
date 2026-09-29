@@ -10,6 +10,7 @@ Run: python3 -m unittest tools.tests.test_thermal_optics -v
 
 import math
 import os
+import re
 import unittest
 from pathlib import Path
 
@@ -417,26 +418,10 @@ def nvg_bloom(bloom_base, bloom_scale, moon_light, blowout, rain):
 # ─── Engine thermal drive mirrors (fnc_applyEngineThermal.sqf) ─────────────
 # The engine's TI pipeline is TWO-STAGE (issue #196, verified): the rvmat
 # StageTI provides the BASE image and the engine's dynamic temperature
-# model MULTIPLIES it.  AEE now paints the full per-selection radiance
-# into the StageTI via the band-material swap (fnc_applySelectionThermal),
-# so setVehicleTIPars is NEUTRALISED to [0,0,0] - any non-zero engine heat
-# state would double-modulate our colour (crush a cold selection to black,
-# over-brighten a hot one).  setTIParameter (display window) remains the
-# engine-side gain/level control, exactly like a real FLIR's controls.
-
-
-def ti_band_material(brightness):
-    """Mirror of the band-material lookup in fnc_applySelectionThermal.
-
-    The physics radiance maps to brightness b (0..1) through the scene
-    AGC, then to one of 16 pre-baked rvmats named by their grey percent:
-    ti_grey_00.rvmat (black, cold floor) .. ti_grey_100.rvmat (white,
-    hot ceiling).  The lookup must always resolve to a shipped file:
-        band = round(b * 15) clamped 0..15
-        pct  = round((band / 15) * 100) clamped 0..100
-    """
-    band = max(0, min(15, round(brightness * 15)))
-    return max(0, min(100, round((band / 15) * 100)))
+# model MULTIPLIES it.  AEE drives setVehicleTIPars from its own physics,
+# so the engine gain and AEE's physics gain do not compound.
+# setTIParameter (display window) remains the engine-side gain and level
+# control, exactly like a real FLIR's controls.
 
 
 def engine_scene_max(alive=True, surface_temp_c=17.8, air_temp_c=17.8):
@@ -1648,25 +1633,6 @@ class TestEngineThermalDrive(unittest.TestCase):
         self.assertAlmostEqual(engine_heat_fraction(100, 17), 1.0, places=6)
         self.assertAlmostEqual(engine_heat_fraction(40, 35), 0.1, places=6)
 
-    def test_band_material_endpoints(self):
-        # Brightness 0 (cold window floor) -> ti_grey_00 (black).
-        self.assertEqual(ti_band_material(0.0), 0)
-        # Brightness 1 (hot ceiling) -> ti_grey_100 (white).
-        self.assertEqual(ti_band_material(1.0), 100)
-
-    def test_band_material_quantises_to_16_levels(self):
-        # The 16 shipped rvmats: pct must be in the exact set produced by
-        # the file generator (round(b*100) for b = n/15).
-        shipped = {round(n / 15.0 * 100) for n in range(16)}
-        self.assertEqual(len(shipped), 16)
-        for b in [0.05, 0.1, 0.2, 0.333, 0.5, 0.7, 0.9, 0.95]:
-            self.assertIn(ti_band_material(b), shipped)
-
-    def test_band_material_bounds(self):
-        for b in [-1.0, 0.0, 0.5, 1.0, 2.0]:
-            p = ti_band_material(b)
-            self.assertGreaterEqual(p, 0)
-            self.assertLessEqual(p, 100)
 
     def test_agc_window_hot_scene(self):
         # Scene with a hot engine (max heat 0.8): width 0.9/0.8 = 1.125
@@ -1899,78 +1865,130 @@ class TestClothingThermal(unittest.TestCase):
         self.assertIn("0.10 * _qb", text)  # WHOT-red base G channel
         self.assertIn("0.20 * _qb", text)  # WHOT-red base B channel
         self.assertNotIn("setObjectMaterial [_idx,", text)
-        # The 16 band rvmats must exist with a procedural physics colour
-        # - the MKK-proven render path (issue #196).  Names are the
-        # white-hot grey percent.  The rvmats deliberately have NO
-        # StageTI: the engine falls back to the diffuse (Stage1) for the
-        # TI image, and setObjectTexture paints that diffuse with the
-        # physics colour.  A StageTI would multiply the flat band colour
-        # by the model's per-vertex thermaltop gain, reproducing the
-        # engine's baked gradient.
-        shipped = {round(n / 15.0 * 100) for n in range(16)}
-        for pct in shipped:
-            f = data_dir / f"ti_grey_{pct:02d}.rvmat"
-            self.assertTrue(f.exists(), f"missing {f.name}")
-            rv = f.read_text(encoding="utf-8")
-            self.assertNotIn("class StageTI", rv)
-            self.assertIn("class Stage1", rv)
-            self.assertIn("color(", rv)
-            # The TI image falls back to the DIFFUSE (no StageTI present).
-            # The diffuse must carry the band grey - a diffuse of
-            # {1,1,1,1} (white) made every swapped object render
-            # white-hot in TI regardless of the physics brightness
-            # (issue #204, in-game proven: everything white except the
-            # un-swapped terrain).  Extract both the diffuse and the
-            # Stage1 texture grey and require they match.
-            import re
-
-            def _first_grey(pattern: str) -> float:
-                m = re.search(pattern, rv)
-                if m is None:
-                    self.fail(f"pattern {pattern} not found in {f.name}")
-                return float(m.group(1))
-
-            expected = pct / 100.0
-            self.assertAlmostEqual(
-                _first_grey(r"diffuse\[\]\s*=\s*\{([\d.]+),"),
-                expected,
-                places=2,
-                msg=f"{f.name} diffuse must carry band grey {expected}",
-            )
-            self.assertAlmostEqual(
-                _first_grey(r"color\(([\d.]+),"),
-                expected,
-                places=2,
-                msg=f"{f.name} Stage1 grey must match band {expected}",
-            )
+        # The live path swaps exactly ONE material, the FPN substrate.
+        # A second rvmat path here would be a new material swap, and a
+        # material swap is the fragile mechanism issue #124 removed.
+        swapped = set(re.findall(r"[\w\\]*\.rvmat", _code_only(text)))
+        self.assertEqual(
+            swapped,
+            {"\\z\\aee\\addons\\thermal\\data\\ti_fpn.rvmat"},
+            msg="the selection pass must name exactly one rvmat",
+        )
 
 
-def test_ti_texture_polarity(self):
-    # The band rvmats encode the white-hot floor/ceiling in the diffuse
-    # Stage1 colour (the MKK-proven no-StageTI form - the engine renders
-    # the diffuse in TI mode).  In white-hot mode: ti_grey_00 is pure
-    # black (cold window floor), ti_grey_100 is pure white (hot ceiling).
-    # The 0..100 grey-percent naming IS the polarity: brightness rises
-    # monotonically with the band, equal RGB channels (no hue).
-    import re
+def _heat_coefficients(code):
+    """The heat colour's per-channel multipliers, read from the SQF.
 
-    data_dir = _REPO_ROOT / "addons" / "thermal" / "data"
+    Parsed rather than transcribed, so a change in the SQF fails the
+    contract tests instead of drifting from a second copy of the values.
+    """
+    m = re.search(r"private _heatCol = \[(.*?)\];", code, re.S)
+    if m is None:
+        raise AssertionError("the heat colour array is not declared")
+    return [float(x) for x in re.findall(r"([\d.]+)\s*\*\s*_qb", m.group(1))]
 
-    def _ti_brightness(name):
-        rv = (data_dir / name).read_text(encoding="utf-8")
-        m = re.search(r"color\(([0-9.]+),([0-9.]+),([0-9.]+),1\)", rv)
-        self.assertIsNotNone(m, f"{name} lacks the Stage1 colour")
-        r, g, b = (float(x) for x in m.groups())
-        self.assertEqual(r, g)  # white-hot: equal channels, no hue
-        self.assertEqual(g, b)
-        return r
 
-    cold = _ti_brightness("ti_grey_00.rvmat")
-    hot = _ti_brightness("ti_grey_100.rvmat")
-    # Cold floor: black (0).  Hot ceiling: white (1).  Hot > cold.
-    self.assertAlmostEqual(cold, 0.0, places=6)
-    self.assertAlmostEqual(hot, 1.0, places=6)
-    self.assertGreater(hot, cold)
+def _quantised(brightness, levels):
+    """The quantiser step: round to the nearest level, then normalise."""
+    clamped = min(1.0, max(0.0, brightness))
+    return math.floor(clamped * (levels - 1) + 0.5) / (levels - 1)
+
+
+def _selection_thermal_code():
+    return _code_only(_read_sqf("fnc_applySelectionThermal.sqf", addon="thermal"))
+
+
+class TestSelectionThermalTexture(unittest.TestCase):
+    """The live per-selection heat texture (issue #204).
+
+    A set of grey materials was shipped once and swapped onto the object
+    to carry heat.  It rendered flat and never carried the heat colour,
+    so the operator saw no difference between the two polarities.  The
+    set is retired and deleted.  The live path paints a procedural colour
+    into the material's Stage1 texture, and a ColorInversion ppEffect
+    owns the polarity.
+
+    Depth stays at 32 levels.  A material swap costs bytes only, and a real
+    display is 8-bit, which is why the fusion ladder carries 256.  This
+    path differs: it repaints per object per tick, and the quantity it
+    carries is a STATUS TINT, one scalar driving a fixed hue, not a
+    radiometric readout.  Its depth is bounded by discriminating one
+    intensity.  Raising it would assert radiometric authority for a
+    status indicator, the same error class as the scene-adaptive
+    detection threshold this project already deleted.
+
+    Every assertion reads the SQF with its comments stripped, because the
+    function header quotes the shape it replaced.
+    """
+
+    def test_retired_grey_material_set_is_not_shipped(self):
+        """Pin the deletion, so the retired set cannot return."""
+        data_dir = _REPO_ROOT / "addons" / "thermal" / "data"
+        shipped = sorted(p.name for p in data_dir.glob("ti_grey_*.rvmat"))
+        self.assertEqual(shipped, [], msg="retired material set: " + ", ".join(shipped))
+
+    def test_fpn_substrate_defers_to_the_diffuse(self):
+        """The one live material carries no StageTI.
+
+        The engine falls back to the diffuse, and the diffuse is the
+        channel the texture paint writes to.  A StageTI would multiply the
+        heat colour by the model's baked per-vertex thermaltop gain, which
+        reproduces the engine gradient the retired approach showed.
+        """
+        rv = _REPO_ROOT / "addons" / "thermal" / "data" / "ti_fpn.rvmat"
+        self.assertTrue(rv.exists(), "the FPN substrate is missing")
+        body = rv.read_text(encoding="utf-8")
+        self.assertNotIn("class StageTI", body)
+        self.assertIn("class Stage1", body)
+
+    def test_texture_quantiser_is_32_levels(self):
+        """The depth, and the 8-bit step it produces."""
+        code = _selection_thermal_code()
+        m = re.search(r"private _levels = (\d+);", code)
+        self.assertIsNotNone(m, "the quantiser depth is not declared")
+        levels = int(m.group(1))
+        self.assertEqual(levels, 32)
+        # The ladder spans the 8-bit display once, so one step is 255/31
+        # code values.
+        self.assertAlmostEqual(255.0 / (levels - 1), 8.225806, places=5)
+
+    def test_heat_colour_hue_is_fixed_across_levels(self):
+        """One hue for the whole ladder, so levels differ only in intensity."""
+        code = _selection_thermal_code()
+        levels = int(re.search(r"private _levels = (\d+);", code).group(1))
+        red, green, blue = _heat_coefficients(code)
+        self.assertGreater(red, green)
+        self.assertGreater(red, blue)
+        self.assertAlmostEqual(green / red, 0.10, places=6)
+        self.assertAlmostEqual(blue / red, 0.20, places=6)
+        # The floor is the zero vector, which carries no hue, so the ratio
+        # is taken over the lit levels and the ceiling alike.
+        for level in range(1, levels):
+            r, g, b = (c * level / (levels - 1) for c in (red, green, blue))
+            self.assertAlmostEqual(g / r, green / red, places=9)
+            self.assertAlmostEqual(b / r, blue / red, places=9)
+
+    def test_red_channel_rises_with_brightness(self):
+        """A brighter selection never paints a cooler red."""
+        code = _selection_thermal_code()
+        levels = int(re.search(r"private _levels = (\d+);", code).group(1))
+        red = _heat_coefficients(code)[0]
+        painted = [red * _quantised(i / 200.0, levels) for i in range(201)]
+        self.assertEqual(painted, sorted(painted))
+        self.assertGreater(painted[-1], painted[0])
+
+    def test_polarity_is_not_a_brightness_flip_here(self):
+        """The paint path owns no polarity; the vision pass owns it.
+
+        A flip in this file never reached the rendered image, which is why
+        the two polarities looked the same to the operator.
+        """
+        code = _selection_thermal_code()
+        self.assertIsNone(re.search(r"_\w+\s*=\s*1\s*-\s*_", code))
+        self.assertNotIn("1 - _b", code)
+        self.assertNotIn("ColorInversion", code)
+        vision = _code_only(_read_sqf("fnc_applyThermalVision.sqf", addon="thermal"))
+        self.assertIn('"ColorInversion"', vision)
 
 
 class TestBuildingThermal(unittest.TestCase):
