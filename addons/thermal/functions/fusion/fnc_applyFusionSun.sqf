@@ -22,6 +22,8 @@ if (_mode == "EXIT") exitWith {
     if (!isNull _sun) then {
         deleteVehicle _sun;
         missionNamespace setVariable [QGVAR(fusionSun), objNull];
+        private _logMsg = "fusion sun: deleted";
+        AEE_LOG_DEBUG(_logMsg);
     };
 };
 
@@ -30,6 +32,8 @@ if (isNull _sun) then {
     _sun hideObject true;
     _sun enableSimulation false;
     missionNamespace setVariable [QGVAR(fusionSun), _sun];
+    private _logMsg = "fusion sun: created";
+    AEE_LOG_DEBUG(_logMsg);
 };
 
 _sun setLightBrightness 0.8;
