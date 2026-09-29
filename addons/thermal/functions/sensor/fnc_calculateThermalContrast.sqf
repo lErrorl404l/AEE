@@ -7,35 +7,34 @@ plus a NETD-based sensor noise floor.
   1.0 = full display contrast
   0.0 = no usable contrast
 
-WHAT THIS COEFFICIENT IS AND IS NOT.  This is a DISPLAY GAIN, not a sensor
-figure of merit.  The engine ALREADY renders the native thermal image with
-its own gain; this stage only adds the environmental degradation the engine
-does not model.  The 8 °C span was chosen so the display looks right against
-the engine's own gain, and a smaller span double-amplifies to white.  A
-scene-derived span that moves with the scene cannot be a sensor property,
-because sensor sensitivity is fixed.  The system figure of merit is MRTD,
-which joins NETD to spatial frequency into one curve.  NETD (Noise
-Equivalent Temperature Difference) is the temperature difference that
-produces a signal equal to the sensor's own noise, that is a signal-to-noise
-ratio of 1.  This coefficient is NEITHER of these; it is the display gain.
+WHAT THIS COEFFICIENT IS AND IS NOT.  This is a DISPLAY DEGRADATION FACTOR,
+not a sensor figure of merit and not a gain.  The engine ALREADY renders the
+native thermal image with its own gain; this stage only adds the
+environmental degradation the engine does not model, so its clear-air value
+is exactly 1.0 and only weather and extreme heat can lower it.  A
+scene-derived term that moves with the scene cannot be a sensor property,
+because sensor sensitivity is fixed, so no vehicle-minus-ground gap enters
+here.  The system figure of merit is MRTD, which joins NETD to spatial
+frequency into one curve.  NETD (Noise Equivalent Temperature Difference) is
+the temperature difference that produces a signal equal to the sensor's own
+noise, that is a signal-to-noise ratio of 1.  This coefficient is NEITHER of
+these; it is the display degradation factor.
 
-Physics basis:
-  - Contrast comes from the object–background temperature gap (delta-T).
-    A vehicle-background gap of 8 °C gives full display contrast; smaller
-    gaps give proportionally less.
-  - The scene average uses VEHICLES only.  Infantry run at a near-constant
-    ~33 °C body temperature and would skew the average up, washing the
-    whole frame to full white-hot.  The engine renders infantry natively.
-    Object temperatures come from EGVAR(core,objectTemperatures), the
-    per-object surface temperatures computed by
-    aee_thermal_fnc_calculateObjectTemperature.  The background is
-    EGVAR(core,avgGroundTemp).
+Physics basis - DEGRADATION ONLY, NO BASE GAIN:
+  - The ENGINE renders the native thermal image with its own gain, so this
+    stage must not add a second one.  Its output is a dimensionless
+    degradation factor with a base of exactly 1.0: no weather, no extreme
+    heat and no cold means no change.  1.0 is also the consumer's declared
+    default (fnc_applyThermalVision.sqf:79), so the two agree.  An earlier
+    revision derived a base contrast from the vehicle-minus-ground
+    temperature gap over an arbitrary 8 °C span; that was an undocumented
+    second gain stage on top of the engine's own render and it is removed.
   - Rain absorbs LWIR, fog scatters it, and water vapour (humidity)
-    absorbs it.  Each multiplies contrast down.
+    absorbs it.  Each multiplies the factor down.
   - Heat (>35 °C) flattens the thermal gradient: everything approaches
-    air temperature, so the object–background gap narrows.
+    air temperature, so the object-background gap narrows.
   - Cold (<5 °C) widens the gap: objects stay warm while the background
-    cools, boosting contrast.
+    cools, so it can partly restore a factor that rain or fog lowered.
   - NETD (Noise Equivalent Temperature Difference) is the temperature
     change that produces a signal equal to the sensor's own noise.
     Modern uncooled microbolometers run ~0.05 °C.  Atmospheric path
@@ -59,51 +58,14 @@ private _RH = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
 if !(_RH isEqualType 0) then { _RH = 50; };
 private _humidity = (_RH / 100) max 0 min 1;
 
-// ─── Object temperatures ──────────────────────────────────────────────────
-// Average the VEHICLE surface temperatures only.  Infantry run at a near-
-// constant ~33 C body temperature and would skew the scene average up,
-// inflating delta-T and washing the whole frame to full white-hot.  The
-// engine renders per-object thermal natively; this contrast is the display
-// gain stage.  Vehicles dominate the scene's usable temperature spread.
-// An empty list (no vehicles, or a dedicated server) falls back to air
-// temperature so the scene still has a background to contrast against.
-private _objectTemps = missionNamespace getVariable [QEGVAR(core,objectTemperatures), []];
-private _avgVehicleTemp = _T;
-if (_objectTemps isEqualType [] && {count _objectTemps > 0}) then {
-    private _vehSum = 0;
-    private _vehCount = 0;
-    {
-        if (_x isEqualType [] && {count _x >= 2}) then {
-            private _obj = _x select 0;
-            // Type-guard before isKindOf: a nil or non-object entry would
-            // raise "Type Object, expected ..." every tick.  Deleted
-            // (null) objects are skipped too.
-            if (_obj isEqualType objNull && {!isNull _obj}
-                && {!(_obj isKindOf "Man")}) then {
-                private _temp = _x select 1;
-                if (_temp isEqualType 0) then {
-                    _vehSum = _vehSum + _temp;
-                    _vehCount = _vehCount + 1;
-                };
-            };
-        };
-    } forEach _objectTemps;
-    if (_vehCount > 0) then { _avgVehicleTemp = _vehSum / _vehCount; };
-};
-
-private _groundTemp = missionNamespace getVariable [QEGVAR(core,avgGroundTemp), _T];
-if !(_groundTemp isEqualType 0) then { _groundTemp = _T; };
-
-// ─── Base contrast from delta-T ───────────────────────────────────────────
-// 8 °C vehicle-background gap = full DISPLAY contrast.  This is a display
-// gain, not a sensor figure of merit.  The span was chosen so the display
-// looks right against the engine's own gain, which already renders the
-// native thermal image; this stage only adds the environmental degradation
-// the engine does not model.  A smaller span here would double-amp the
-// image to pure white.  The figure of merit is MRTD and the SNR=1 point is
-// NETD; this coefficient is neither.
-private _deltaT = abs (_avgVehicleTemp - _groundTemp);
-private _contrast = (_deltaT / 8) min 1.0;
+// ─── Base contrast ────────────────────────────────────────────────────────
+// No base gain is derived here.  The engine renders the native thermal
+// image with its own gain, and this stage adds only the environmental
+// degradation the engine does not model.  The base is therefore exactly 1.0
+// (full, undegraded display contrast), which is also the consumer's
+// declared default in fnc_applyThermalVision.sqf:79.  In clear conditions
+// the published value is 1.0 and no second amplifier exists.
+private _contrast = 1.0;
 
 // ─── Atmospheric attenuation ──────────────────────────────────────────────
 // Rain absorbs LWIR, fog scatters it, water vapour absorbs it.

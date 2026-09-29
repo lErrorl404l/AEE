@@ -1,7 +1,7 @@
 ambient[] = {20,20,20,1};
 diffuse[] = {0.005,0.005,0.005,0};
 forcedDiffuse[] = {0,0,0,0};
-emmisive[] = {500.0000,500.0000,500.0000,500.0000};
+emmisive[] = {196.0784,196.0784,196.0784,196.0784};
 specular[] = {0,0,0,0};
 specularPower = 1;
 renderFlags[] = {"AlwaysInShadow"};

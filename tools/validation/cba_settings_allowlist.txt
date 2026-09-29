@@ -22,15 +22,15 @@ aee_compat_acm_hypoxiaDutyFactor  external API name passed to ACE3 addSpO2DutyFa
 aee_nightvision_nvgTitle  RscTitles config class name, not a runtime variable
 aee_physiology_diveMix  external breathing-gas hook (issue #118); set by diving addons (e.g. ADE) to [fN2, fHe, fO2]
 aee_nightvision_ppHandle_FilmGrain  written by the core registry (core fnc_createPPEffect) through the legacy variable passed as its fifth argument; the validator cannot trace the opaque write
-aee_nightvision_ppHandle_NVG_Bloom  dynamic ppEffect handle: written via setVariable [_store, _handle] in the create loop
-aee_nightvision_ppHandle_NVG_CC  dynamic ppEffect handle: written via setVariable [_store, _handle] in the create loop
-aee_nightvision_ppHandle_NVG_Grain  dynamic ppEffect handle: written via setVariable [_store, _handle] in the create loop
-aee_nightvision_ppHandle_NVG_Vignette  dynamic ppEffect handle: written via setVariable [_store, _handle] in the create loop
-aee_thermal_ppHandle_Thermal_Blur  dynamic ppEffect handle: written via setVariable [_store, _handle] in the create loop
-aee_thermal_ppHandle_Thermal_CC  dynamic ppEffect handle: written via setVariable [_store, _handle] in the create loop
-aee_thermal_ppHandle_Thermal_Grain  dynamic ppEffect handle: written via setVariable [_store, _handle] in the create loop
-aee_thermal_ppHandle_Thermal_Vignette  dynamic ppEffect handle: written via setVariable [_store, _handle] in the create loop
-aee_thermal_ppHandle_Thermal_Inversion  dynamic ppEffect handle: written via setVariable [_store, _handle] in the create loop
+aee_nightvision_ppHandle_NVG_Bloom  verified: written by the tube-model create loop nightvision/functions/fnc_applyNVGTubeModel.sqf:955 setVariable [_store, _handle], where the macro is the _store field of the create table at line 961; the validator cannot trace the _store variable
+aee_nightvision_ppHandle_NVG_CC  verified: written by the tube-model create loop nightvision/functions/fnc_applyNVGTubeModel.sqf:955 setVariable [_store, _handle], where the macro is the _store field of the create table at line 962; the validator cannot trace the _store variable
+aee_nightvision_ppHandle_NVG_Grain  verified: written by the tube-model create loop nightvision/functions/fnc_applyNVGTubeModel.sqf:955 setVariable [_store, _handle], where the macro is the _store field of the create table at line 963; the validator cannot trace the _store variable
+aee_nightvision_ppHandle_NVG_Vignette  verified: written by the tube-model create loop nightvision/functions/fnc_applyNVGTubeModel.sqf:955 setVariable [_store, _handle], where the macro is the _store field of the create table at line 960; the validator cannot trace the _store variable
+aee_thermal_ppHandle_Thermal_Blur  verified: written by the thermal display create loop thermal/functions/display/fnc_applyThermalVision.sqf:163 setVariable [_store, _handle], where the macro is the _store field of the create table at line 169; the validator cannot trace the _store variable
+aee_thermal_ppHandle_Thermal_CC  verified: written by the thermal display create loop thermal/functions/display/fnc_applyThermalVision.sqf:163 setVariable [_store, _handle], where the macro is the _store field of the create table at line 171; the validator cannot trace the _store variable
+aee_thermal_ppHandle_Thermal_Grain  verified: written by the thermal display create loop thermal/functions/display/fnc_applyThermalVision.sqf:163 setVariable [_store, _handle], where the macro is the _store field of the create table at line 170; the validator cannot trace the _store variable
+aee_thermal_ppHandle_Thermal_Vignette  verified: written by the thermal display create loop thermal/functions/display/fnc_applyThermalVision.sqf:163 setVariable [_store, _handle], where the macro is the _store field of the create table at line 168; the validator cannot trace the _store variable
+aee_thermal_ppHandle_Thermal_Inversion  verified: written by the thermal display create loop thermal/functions/display/fnc_applyThermalVision.sqf:163 setVariable [_store, _handle], where the macro is the _store field of the create table at line 179; the validator cannot trace the _store variable
 aee_thermal_thermalSelectionsCache  dynamic cache key: written via format [QGVAR(thermalSelectionsCache_%1), typeOf] in fnc_getThermalSelections
 aee_thermal_hitPointMaterials  dynamic cache key: written via format [QGVAR(hitPointMaterials_%1), typeOf] in fnc_getHitPointMaterials
 aee_thermal_shadowCache  dynamic cache key: written via QGVAR(shadowCache) with per-cell keys in fnc_isPositionShadowed

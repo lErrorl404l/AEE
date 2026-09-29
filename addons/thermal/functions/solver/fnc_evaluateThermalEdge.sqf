@@ -24,20 +24,31 @@ A signal at its background reads contrast 0 and is not an edge.  A signal
 below its background clamps to 0 and is not an edge.  A signal well above
 its background reads toward 1 and is an edge.
 
-THE THRESHOLD IS SENSOR-DERIVED AND IS A DECLARED DEFAULT.  NETD (Noise
-Equivalent Temperature Difference) is DEFINED as the temperature difference
-that produces a signal equal to the sensor's own noise, that is a
-signal-to-noise ratio of 1 (Geminoptics, "NETD"; the AEE thermal and NVG
-research dossier states the same).  Reliable detection sits at a MULTIPLE of
-that, typically 3 to 10.  That multiple is an ENGINEERING CHOICE, not a
-standard, and the record publishes no standard value for it.  The threshold
-is therefore a PARAMETER, _threshold, with the declared default below.
+THE THRESHOLD IS SENSOR-DERIVED.  The threshold is the device's detection
+sensitivity, derived by fnc_calculateSensorThreshold from the mounted
+device's NETD, the signal-to-noise multiple and the background temperature.
+NETD (Noise Equivalent Temperature Difference) is DEFINED as the
+temperature difference that produces a signal equal to the sensor's own
+noise, that is a signal-to-noise ratio of 1 (Geminoptics, "NETD"; the AEE
+thermal and NVG research dossier states the same).  Reliable detection sits
+at a MULTIPLE of that, typically 3 to 10.  That multiple is an ENGINEERING
+CHOICE, not a standard, and the record publishes no standard value for it.
+The shipped caller passes the derived value.  The declared default below is
+the uncooled 0.05 C reference device at a multiple of 5 and a 15 C
+background, which is 5 * 0.05 * 5.0121 / 288.15 = 0.004349.
 
-NO PUBLISHED CONVERSION EXISTS from a temperature difference or a NETD to a
-normalised display-band fraction.  The contrast this kernel compares with
-the threshold is arithmetic on AEE's own 16-band quantiser, one band being
-1/16 = 0.0625.  It is a DECLARED MAPPING, not physics, and it must not be
-presented as a sensor property.
+THE SENSOR THRESHOLD AND THE DISPLAY BAND STEP ARE TWO DIFFERENT
+QUANTITIES, AND THEY MUST NOT BE CONFLATED.  One band is 1/16 = 0.0625.
+That is the DISPLAY quantiser step and it belongs to the display, which is
+the 16 emissive bands the overlay writes to the material slot.  The sensor
+threshold above is about fourteen times finer than one band.  A real sensor
+resolves differences far smaller than the display can show, so an edge can
+be TRUE, in that the sensor resolves the difference, while the operator
+sees NO difference, because the 16-step quantiser cannot show it.  This
+kernel therefore clamps the threshold to the 0..1 contrast scale ONLY.  It
+does NOT floor the threshold at one band, because a band floor would make
+every device equally blind and would undo the per-device decision.  A
+future maintainer must not "fix" this by raising the threshold to one band.
 
 SPATIAL RESOLUTION IS A SEPARATE AXIS, AND IT IS DELIBERATELY NOT
 IMPLEMENTED.  Johnson criteria give detection at about 1 line pair, often
@@ -61,17 +72,19 @@ Guards, each explicit:
     out; the refusal must come before the arithmetic.  This is a real trap
     in this repository.
   - A threshold that is not a Number is refused with [false, -1].  A Number
-    threshold outside the scale is clamped into one band to one, rather
-    than extrapolated.
+    threshold outside the scale is clamped to the 0..1 contrast scale,
+    never floored at one band and never extrapolated.
   - The returned contrast is clamped to 0..1, never extrapolated.
 
 Units on every line: _signal and _background are W/m2/sr.  _threshold is a
-normalised contrast on the 0..1 display scale.
+normalised contrast on the 0..1 scale.  It is a SENSOR quantity, not a
+display band step.
 
 Arguments:
   0: _signal     (NUMBER) selection band radiance, W/m2/sr
   1: _background (NUMBER) local background band radiance, W/m2/sr, > 0
-  2: _threshold  (NUMBER) minimum resolvable contrast, 0..1 (declared default)
+  2: _threshold  (NUMBER) sensor-derived minimum resolvable contrast, 0..1
+                 (default: the uncooled 0.05 C reference, 0.004349)
 
 Return Value: ARRAY [edge (BOOL), contrast (NUMBER)].  The contrast is 0..1.
 On an unusable input the kernel returns the refusal [false, -1].
@@ -82,7 +95,7 @@ Public: No
 params [
     ["_signal", 0, [0]],
     ["_background", 0, [0]],
-    ["_threshold", 0.0625, [0]]
+    ["_threshold", 0.004349, [0]]
 ];
 
 // A non-Number must not reach the arithmetic.  The typed params entries
@@ -107,11 +120,15 @@ if (_background <= 0) exitWith { [false, -1] };
 private _contrast = ((_signal - _background) / _background) max 0 min 1;
 if !(finite _contrast) exitWith { [false, -1] };
 
-// The threshold is a declared default on the same 0..1 scale.  One band is
-// 1/16, and a threshold finer than one band cannot be shown as a distinct
-// level, so the declared minimum is one band.  Clamp rather than extrapolate.
-private _bandStep = 1 / 16;
-private _thresholdClamped = _threshold max _bandStep min 1;
+// The threshold is a SENSOR quantity, derived per device by
+// fnc_calculateSensorThreshold.  Clamp it to the 0..1 contrast scale only.
+// One band is 1/16 = 0.0625, but that is the DISPLAY quantiser step and it
+// belongs to the display, which is the overlay's 16 emissive bands.  The
+// sensor resolves about fourteen times finer than one band, so flooring the
+// threshold at one band would hide the per-device sensitivity and make
+// every device equally blind.  The band floor is deliberately NOT applied
+// here.
+private _thresholdClamped = _threshold max 0 min 1;
 
 private _edge = _contrast >= _thresholdClamped;
 
