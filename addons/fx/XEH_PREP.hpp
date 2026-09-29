@@ -16,6 +16,7 @@ PREPS(particle,particlePipeline);
 PREPS(particle,particlePipelineEmit);
 PREPS(particle,particleState);
 PREPS(particle,registerParticleSource);
+PREPS(particle,renderSupersonicTrace);
 PREPS(particle,surfaceMaterial);
 PREPS(particle,surfaceSample);
 

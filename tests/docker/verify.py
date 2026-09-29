@@ -88,6 +88,26 @@ if _debug_missing:
     for m in _debug_missing:
         print(f"  missing: {m}")
 
+# The mission probes report with their own tag, not [PHASEn], because they
+# run on a separate thread loaded by execVM. The fails regex above matches
+# [PHASE\d+] only, so a probe failure or a probe that never ran was INVISIBLE
+# to this gate: init.sqf emits its own DONE, so the run still completed. Require
+# each probe's PASS line explicitly, and require the absence of its FAIL line.
+_probe_expected = (
+    "[P64] [PASS]",
+    "[P65] [PASS]",
+)
+_probe_missing = [m for m in _probe_expected if m not in text]
+if _probe_missing:
+    print(f"mission probes: {len(_probe_missing)} expected PASS line(s) absent")
+    for m in _probe_missing:
+        print(f"  missing: {m}")
+_probe_failed = sorted(set(re.findall(r"\[P(?:64|65)\] \[FAIL\][^\n]*", text)))
+if _probe_failed:
+    print(f"mission probes: {len(_probe_failed)} failed")
+    for p in _probe_failed:
+        print(f"  {p}")
+
 if not done:
     print("  mission did not reach DONE")
 if errors:
@@ -99,7 +119,15 @@ if warnings:
     for w in warnings[:10]:
         print(f"  {w}")
 
-if fails or not done or errors or warnings or _debug_missing:
+if (
+    fails
+    or not done
+    or errors
+    or warnings
+    or _debug_missing
+    or _probe_missing
+    or _probe_failed
+):
     print("RESULT: FAIL")
     sys.exit(1)
 print("RESULT: PASS")
