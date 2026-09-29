@@ -21,9 +21,16 @@ them.  The function is idempotent: a second call finds no handler and
 returns.
 */
 
+// Restore the engine exposure before the idempotency exit below.  The NVG
+// and thermal modules set a FIXED setAperture 15, and this is the only place
+// that clears it.  Gating the restore on a live sensor handler leaves the
+// camera pinned to the night exposure whenever the session is already gone,
+// which is exactly when it matters.  setAperture -1 is the engine default, so
+// it is safe to call when no sensor ever ran.
+setAperture -1;
+
 if (isNil QGVAR(sensorPFH)) exitWith {};
 
-setAperture -1;
 [] call EFUNC(nightvision,applyNVGTubeModel);
 [] call EFUNC(thermal,applyThermalVision);
 ["EXIT"] call EFUNC(thermal,applySecondSun);
@@ -34,6 +41,10 @@ setAperture -1;
 // overlay does not leak into normal vision.
 [0] call EFUNC(thermal,cycleFusionMode);
 ["EXIT"] call EFUNC(thermal,applyFusionSun);
+// Restore the fusion emissive materials.  cycleFusionMode destroys the two
+// fusion post-process handles only, so without this the swapped materials
+// survive into normal vision.
+["EXIT"] call EFUNC(thermal,applyFusionOverlay);
 [GVAR(sensorPFH)] call CBA_fnc_removePerFrameHandler;
 GVAR(sensorPFH) = nil;
 GVAR(sensorUnit) = nil;

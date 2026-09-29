@@ -24,3 +24,4 @@ PREPS(vision,managePostProcess);
 PREPS(vision,teardownSensors);
 PREPS(vision,calculateViewDistance);
 PREPS(vision,ppEffectCreate);
+PREPS(vision,destroyBasePostProcess);
