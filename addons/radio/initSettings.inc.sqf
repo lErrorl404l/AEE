@@ -14,35 +14,11 @@ if (_hasHost) then {
 // ── Battery derating (issue #36) ──────────────────────────────────────────
 // The txPower derating applies whenever physiology publishes a battery
 // temperature derating, independent of any host radio mod.
-[
-    QGVAR(batteryDeratingEnabled),
-    "CHECKBOX",
-    [LLSTRING(batteryDeratingEnabled_Name), LLSTRING(batteryDeratingEnabled_Description)],
-    ["AEE Radio", "Link"],
-    true,
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_CHECKBOX(batteryDeratingEnabled,"AEE Radio","Link",true);
 
 // ── Propagation ────────────────────────────────────────────────────────────
-[
-    QGVAR(txPower),
-    "SLIDER",
-    [LLSTRING(txPower_Name), LLSTRING(txPower_Description)],
-    ["AEE Radio", "Link"],
-    [20, 50, 37, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(txPower,"AEE Radio","Link",20,50,37,0);
 
-[
-    QGVAR(propagationRange),
-    "SLIDER",
-    [LLSTRING(propagationRange_Name), LLSTRING(propagationRange_Description)],
-    ["AEE Radio", "Link"],
-    [0.5, 3, 2.0, 1],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(propagationRange,"AEE Radio","Link",0.5,3,2.0,1);
 
 }; // _hasHost

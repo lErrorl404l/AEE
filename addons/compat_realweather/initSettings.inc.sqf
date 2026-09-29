@@ -6,12 +6,4 @@
 // The setting always registers.  The integration function gates on
 // weather.json presence at runtime.  Any loadFile check here would log
 // "Script weather.json not found" every launch — we do not do that.
-[
-    QGVAR(enabled),
-    "CHECKBOX",
-    [LLSTRING(enabled_Name), LLSTRING(enabled_Description)],
-    ["AEE", "Compat - Real Weather"],
-    false,
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_CHECKBOX(enabled,"AEE","Compat - Real Weather",false);

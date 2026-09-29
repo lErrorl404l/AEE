@@ -8,25 +8,9 @@
 // that only pays off at 50+ settings.
 
 // ── Frost ──────────────────────────────────────────────────────────────────
-[
-    QGVAR(FrostAccumRate),
-    "SLIDER",
-    [LLSTRING(FrostAccumRate_Name), LLSTRING(FrostAccumRate_Description)],
-    ["AEE Environmental", "Hydrology"],
-    [0, 0.01, 0.001, 3],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(FrostAccumRate,"AEE Environmental","Hydrology",0,0.01,0.001,3);
 
-[
-    QGVAR(FrostDecayRate),
-    "SLIDER",
-    [LLSTRING(FrostDecayRate_Name), LLSTRING(FrostDecayRate_Description)],
-    ["AEE Environmental", "Hydrology"],
-    [0, 0.05, 0.01, 2],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(FrostDecayRate,"AEE Environmental","Hydrology",0,0.05,0.01,2);
 
 [
     QGVAR(groundFrostEnabled),
@@ -39,160 +23,40 @@
 ] call CBA_fnc_addSetting;
 
 // ── Snow ───────────────────────────────────────────────────────────────────
-[
-    QGVAR(SnowAccretionRate),
-    "SLIDER",
-    [LLSTRING(SnowAccretionRate_Name), LLSTRING(SnowAccretionRate_Description)],
-    ["AEE Environmental", "Hydrology"],
-    [0, 0.1, 0.01, 2],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(SnowAccretionRate,"AEE Environmental","Hydrology",0,0.1,0.01,2);
 
-[
-    QGVAR(MaxSnowDepth),
-    "SLIDER",
-    [LLSTRING(MaxSnowDepth_Name), LLSTRING(MaxSnowDepth_Description)],
-    ["AEE Environmental", "Hydrology"],
-    [0.5, 10, 3.0, 1],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(MaxSnowDepth,"AEE Environmental","Hydrology",0.5,10,3.0,1);
 
 // ── Severe Weather ─────────────────────────────────────────────────────────
-[
-    QGVAR(SandstormWindThreshold),
-    "SLIDER",
-    [LLSTRING(SandstormWindThreshold_Name), LLSTRING(SandstormWindThreshold_Description)],
-    ["AEE Environmental", "Weather"],
-    [5, 25, 10, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(SandstormWindThreshold,"AEE Environmental","Weather",5,25,10,0);
 
-[
-    QGVAR(BlowingSnowWindThreshold),
-    "SLIDER",
-    [LLSTRING(BlowingSnowWindThreshold_Name), LLSTRING(BlowingSnowWindThreshold_Description)],
-    ["AEE Environmental", "Weather"],
-    [5, 20, 8, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(BlowingSnowWindThreshold,"AEE Environmental","Weather",5,20,8,0);
 
-[
-    QGVAR(DustDevilTempThreshold),
-    "SLIDER",
-    [LLSTRING(DustDevilTempThreshold_Name), LLSTRING(DustDevilTempThreshold_Description)],
-    ["AEE Environmental", "Weather"],
-    [25, 40, 30, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(DustDevilTempThreshold,"AEE Environmental","Weather",25,40,30,0);
 
 // ── Hydrology ──────────────────────────────────────────────────────────────
-[
-    QGVAR(FlashFloodThreshold),
-    "SLIDER",
-    [LLSTRING(FlashFloodThreshold_Name), LLSTRING(FlashFloodThreshold_Description)],
-    ["AEE Environmental", "Weather"],
-    [20, 100, 50, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(FlashFloodThreshold,"AEE Environmental","Weather",20,100,50,0);
 
-[
-    QGVAR(WettingRate),
-    "SLIDER",
-    [LLSTRING(WettingRate_Name), LLSTRING(WettingRate_Description)],
-    ["AEE Environmental", "Hydrology"],
-    [0, 0.2, 0.05, 2],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(WettingRate,"AEE Environmental","Hydrology",0,0.2,0.05,2);
 
-[
-    QGVAR(DewRate),
-    "SLIDER",
-    [LLSTRING(DewRate_Name), LLSTRING(DewRate_Description)],
-    ["AEE Environmental", "Hydrology"],
-    [0, 0.1, 0.02, 2],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(DewRate,"AEE Environmental","Hydrology",0,0.1,0.02,2);
 
 // ── Space Weather ──────────────────────────────────────────────────────────
-[
-    QGVAR(FlareChance),
-    "SLIDER",
-    [LLSTRING(FlareChance_Name), LLSTRING(FlareChance_Description)],
-    ["AEE Environmental", "Fire"],
-    [0, 0.2, 0.05, 2],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(FlareChance,"AEE Environmental","Fire",0,0.2,0.05,2);
 
-[
-    QGVAR(FlareDuration),
-    "SLIDER",
-    [LLSTRING(FlareDuration_Name), LLSTRING(FlareDuration_Description)],
-    ["AEE Environmental", "Fire"],
-    [600, 36000, 10800, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(FlareDuration,"AEE Environmental","Fire",600,36000,10800,0);
 
-[
-    QGVAR(FlareDecayRate),
-    "SLIDER",
-    [LLSTRING(FlareDecayRate_Name), LLSTRING(FlareDecayRate_Description)],
-    ["AEE Environmental", "Fire"],
-    [0, 0.2, 0.05, 2],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(FlareDecayRate,"AEE Environmental","Fire",0,0.2,0.05,2);
 
 // ── Sound Propagation ──────────────────────────────────────────────────────
-[
-    QGVAR(InversionBoost),
-    "SLIDER",
-    [LLSTRING(InversionBoost_Name), LLSTRING(InversionBoost_Description)],
-    ["AEE Environmental", "Weather"],
-    [0, 1.5, 0.6, 1],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(InversionBoost,"AEE Environmental","Weather",0,1.5,0.6,1);
 
-[
-    QGVAR(SoundPropagationScale),
-    "SLIDER",
-    [LLSTRING(SoundPropagationScale_Name), LLSTRING(SoundPropagationScale_Description)],
-    ["AEE Environmental", "Sound"],
-    [0.5, 2, 1.0, 1],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(SoundPropagationScale,"AEE Environmental","Sound",0.5,2,1.0,1);
 
 // ── Avalanche slab model (#134) ────────────────────────────────────────────
 // McClung & Schaerer shear-stress parameters.  Slab density and depth
 // define tau = rho·g·h·sin(psi); the weak-layer strength is scaled from
 // the snowpack quality.
-[
-    QGVAR(slabDensity),
-    "SLIDER",
-    [LLSTRING(slabDensity_Name), LLSTRING(slabDensity_Description)],
-    ["AEE Environmental", "Snow"],
-    [100, 400, 300, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(slabDensity,"AEE Environmental","Snow",100,400,300,0);
 
-[
-    QGVAR(slabDepth),
-    "SLIDER",
-    [LLSTRING(slabDepth_Name), LLSTRING(slabDepth_Description)],
-    ["AEE Environmental", "Snow"],
-    [0.1, 2, 1.0, 1],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(slabDepth,"AEE Environmental","Snow",0.1,2,1.0,1);

@@ -19,130 +19,34 @@
 ] call CBA_fnc_addSetting;
 
 // ── Simulation Update ──────────────────────────────────────────────────────
-[
-    QGVAR(updateInterval),
-    "SLIDER",
-    [LLSTRING(updateInterval_Name), LLSTRING(updateInterval_Description)],
-    ["AEE", "Core"],
-    [1, 60, 5, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(updateInterval,"AEE","Core",1,60,5,0);
 
 // ── Temperature ────────────────────────────────────────────────────────────
-[
-    QGVAR(tempLapseRateEnabled),
-    "CHECKBOX",
-    [LLSTRING(tempLapseRateEnabled_Name), LLSTRING(tempLapseRateEnabled_Description)],
-    ["AEE", "Thermal"],
-    true,
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_CHECKBOX(tempLapseRateEnabled,"AEE","Thermal",true);
 
-[
-    QGVAR(tempLapseRate),
-    "SLIDER",
-    [LLSTRING(tempLapseRate_Name), LLSTRING(tempLapseRate_Description)],
-    ["AEE", "Thermal"],
-    [0, 15, 6.5, 1],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(tempLapseRate,"AEE","Thermal",0,15,6.5,1);
 
-[
-    QGVAR(tempDiurnalEnabled),
-    "CHECKBOX",
-    [LLSTRING(tempDiurnalEnabled_Name), LLSTRING(tempDiurnalEnabled_Description)],
-    ["AEE", "Thermal"],
-    true,
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_CHECKBOX(tempDiurnalEnabled,"AEE","Thermal",true);
 
 // ── Wind ───────────────────────────────────────────────────────────────────
-[
-    QGVAR(windEnabled),
-    "CHECKBOX",
-    [LLSTRING(windEnabled_Name), LLSTRING(windEnabled_Description)],
-    ["AEE", "Atmosphere"],
-    true,
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_CHECKBOX(windEnabled,"AEE","Atmosphere",true);
 
-[
-    QGVAR(windTerrainInfluence),
-    "SLIDER",
-    [LLSTRING(windTerrainInfluence_Name), LLSTRING(windTerrainInfluence_Description)],
-    ["AEE", "Atmosphere"],
-    [0, 1, 0.6, 1],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(windTerrainInfluence,"AEE","Atmosphere",0,1,0.6,1);
 
-[
-    QGVAR(windGustFrequency),
-    "SLIDER",
-    [LLSTRING(windGustFrequency_Name), LLSTRING(windGustFrequency_Description)],
-    ["AEE", "Atmosphere"],
-    [0, 1, 0.3, 1],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(windGustFrequency,"AEE","Atmosphere",0,1,0.3,1);
 
 // ── Humidity / Precipitation ───────────────────────────────────────────────
-[
-    QGVAR(humidityEnabled),
-    "CHECKBOX",
-    [LLSTRING(humidityEnabled_Name), LLSTRING(humidityEnabled_Description)],
-    ["AEE", "Atmosphere"],
-    true,
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_CHECKBOX(humidityEnabled,"AEE","Atmosphere",true);
 
-[
-    QGVAR(precipOrographicEnabled),
-    "CHECKBOX",
-    [LLSTRING(precipOrographicEnabled_Name), LLSTRING(precipOrographicEnabled_Description)],
-    ["AEE", "Atmosphere"],
-    true,
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_CHECKBOX(precipOrographicEnabled,"AEE","Atmosphere",true);
 
 // ── Air Density ────────────────────────────────────────────────────────────
-[
-    QGVAR(airDensityEnabled),
-    "CHECKBOX",
-    [LLSTRING(airDensityEnabled_Name), LLSTRING(airDensityEnabled_Description)],
-    ["AEE", "Atmosphere"],
-    true,
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_CHECKBOX(airDensityEnabled,"AEE","Atmosphere",true);
 
-[
-    QGVAR(icaoReferenceAlt),
-    "SLIDER",
-    [LLSTRING(icaoReferenceAlt_Name), LLSTRING(icaoReferenceAlt_Description)],
-    ["AEE", "Atmosphere"],
-    [-500, 5000, 0, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(icaoReferenceAlt,"AEE","Atmosphere",-500,5000,0,0);
 
 // ── Biome / Köppen ─────────────────────────────────────────────────────────
-[
-    QGVAR(biomeEnabled),
-    "CHECKBOX",
-    [LLSTRING(biomeEnabled_Name), LLSTRING(biomeEnabled_Description)],
-    ["AEE", "Biome"],
-    true,
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_CHECKBOX(biomeEnabled,"AEE","Biome",true);
 
 [
     QGVAR(biomeOverride),
@@ -161,200 +65,56 @@
     {}
 ] call CBA_fnc_addSetting;
 
-[
-    QGVAR(biomeTransitionRadius),
-    "SLIDER",
-    [LLSTRING(biomeTransitionRadius_Name), LLSTRING(biomeTransitionRadius_Description)],
-    ["AEE", "Biome"],
-    [500, 50000, 5000, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(biomeTransitionRadius,"AEE","Biome",500,50000,5000,0);
 
 // ── Terrain Microclimate ───────────────────────────────────────────────────
-[
-    QGVAR(microclimateRadius),
-    "SLIDER",
-    [LLSTRING(microclimateRadius_Name), LLSTRING(microclimateRadius_Description)],
-    ["AEE", "Microclimate"],
-    [10, 2000, 200, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(microclimateRadius,"AEE","Microclimate",10,2000,200,0);
 
-[
-    QGVAR(urbanHeatIsland),
-    "SLIDER",
-    [LLSTRING(urbanHeatIsland_Name), LLSTRING(urbanHeatIsland_Description)],
-    ["AEE", "Microclimate"],
-    [0, 1, 0.5, 1],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(urbanHeatIsland,"AEE","Microclimate",0,1,0.5,1);
 
-[
-    QGVAR(waterInfluenceRadius),
-    "SLIDER",
-    [LLSTRING(waterInfluenceRadius_Name), LLSTRING(waterInfluenceRadius_Description)],
-    ["AEE", "Microclimate"],
-    [100, 10000, 1000, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(waterInfluenceRadius,"AEE","Microclimate",100,10000,1000,0);
 
 // ── Reference Altitude ─────────────────────────────────────────────────────
-[
-    QGVAR(referenceAltitude),
-    "SLIDER",
-    [LLSTRING(referenceAltitude_Name), LLSTRING(referenceAltitude_Description)],
-    ["AEE", "Core"],
-    [-500, 8000, 0, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(referenceAltitude,"AEE","Core",-500,8000,0,0);
 
 // ── Clothing Insulation ─────────────────────────────────────────────────────
-[
-    QGVAR(clothingInsulation),
-    "SLIDER",
-    [LLSTRING(clothingInsulation_Name), LLSTRING(clothingInsulation_Description)],
-    ["AEE", "Thermal"],
-    [0.5, 2.0, 1.0, 1],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(clothingInsulation,"AEE","Thermal",0.5,2.0,1.0,1);
 
 // ── Mud Accretion ──────────────────────────────────────────────────────────
-[
-    QGVAR(mudAccretionEnabled),
-    "CHECKBOX",
-    [LLSTRING(mudAccretionEnabled_Name), LLSTRING(mudAccretionEnabled_Description)],
-    ["AEE", "Mobility"],
-    true,
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_CHECKBOX(mudAccretionEnabled,"AEE","Mobility",true);
 
 // ── Diagnostic ─────────────────────────────────────────────────────────────
-[
-    QGVAR(diagnostic),
-    "CHECKBOX",
-    [LLSTRING(diagnostic_Name), LLSTRING(diagnostic_Description)],
-    ["AEE", "Core"],
-    false,
-    false,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_CHECKBOX_LOCAL(diagnostic,"AEE","Core",false);
 
 // ── Radio / Comms ──────────────────────────────────────────────────────────
-[
-    QGVAR(radioPropagationEnabled),
-    "CHECKBOX",
-    [LLSTRING(radioPropagationEnabled_Name), LLSTRING(radioPropagationEnabled_Description)],
-    ["AEE", "Radio"],
-    true,
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_CHECKBOX(radioPropagationEnabled,"AEE","Radio",true);
 
 // ── Vehicle Performance ─────────────────────────────────────────────────────
-[
-    QGVAR(enginePowerDegradationEnabled),
-    "CHECKBOX",
-    [LLSTRING(enginePowerDegradationEnabled_Name), LLSTRING(enginePowerDegradationEnabled_Description)],
-    ["AEE", "Mobility"],
-    true,
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_CHECKBOX(enginePowerDegradationEnabled,"AEE","Mobility",true);
 
 // ── Optics / Visibility ─────────────────────────────────────────────────────
-[
-    QGVAR(opticsEnabled),
-    "CHECKBOX",
-    [LLSTRING(opticsEnabled_Name), LLSTRING(opticsEnabled_Description)],
-    ["AEE", "Optics"],
-    true,
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_CHECKBOX(opticsEnabled,"AEE","Optics",true);
 
 // ── Ground / Hydrology ──────────────────────────────────────────────────────
-[
-    QGVAR(hydrologyEnabled),
-    "CHECKBOX",
-    [LLSTRING(hydrologyEnabled_Name), LLSTRING(hydrologyEnabled_Description)],
-    ["AEE", "Environmental"],
-    true,
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_CHECKBOX(hydrologyEnabled,"AEE","Environmental",true);
 
 // ── Atmospheric Events ──────────────────────────────────────────────────────
-[
-    QGVAR(atmosphericEventsEnabled),
-    "CHECKBOX",
-    [LLSTRING(atmosphericEventsEnabled_Name), LLSTRING(atmosphericEventsEnabled_Description)],
-    ["AEE", "Atmosphere"],
-    true,
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_CHECKBOX(atmosphericEventsEnabled,"AEE","Atmosphere",true);
 
 // ── Environmental / Seasonal ────────────────────────────────────────────────
-[
-    QGVAR(environmentalEnabled),
-    "CHECKBOX",
-    [LLSTRING(environmentalEnabled_Name), LLSTRING(environmentalEnabled_Description)],
-    ["AEE", "Environmental"],
-    true,
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_CHECKBOX(environmentalEnabled,"AEE","Environmental",true);
 
 // ── Physiology / Heat Stress ────────────────────────────────────────────────
-[
-    QGVAR(physiologyEnabled),
-    "CHECKBOX",
-    [LLSTRING(physiologyEnabled_Name), LLSTRING(physiologyEnabled_Description)],
-    ["AEE", "Physiology"],
-    true,
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_CHECKBOX(physiologyEnabled,"AEE","Physiology",true);
 
 // ── Maritime / Sea State ────────────────────────────────────────────────────
-[
-    QGVAR(maritimeEnabled),
-    "CHECKBOX",
-    [LLSTRING(maritimeEnabled_Name), LLSTRING(maritimeEnabled_Description)],
-    ["AEE", "Maritime"],
-    true,
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_CHECKBOX(maritimeEnabled,"AEE","Maritime",true);
 
 // ── FX / Particles / Sounds ─────────────────────────────────────────────────
-[
-    QGVAR(fxEnabled),
-    "CHECKBOX",
-    [LLSTRING(fxEnabled_Name), LLSTRING(fxEnabled_Description)],
-    ["AEE", "FX"],
-    true,
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_CHECKBOX(fxEnabled,"AEE","FX",true);
 
 // ── Collision diagnostics (issue #172) ────────────────────────────────────
-[
-    QGVAR(collisionDebug),
-    "CHECKBOX",
-    [LLSTRING(collisionDebug_Name), LLSTRING(collisionDebug_Description)],
-    ["AEE", "FX"],
-    false,
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_CHECKBOX(collisionDebug,"AEE","FX",false);
 
 // ── Diagnostics ───────────────────────────────────────────────────────────
 // The switch behind AEE_LOG_DEBUG.  Without a declared setting the flag
@@ -388,15 +148,7 @@
 // The dynamic-light scan walks nearby objects to find lit lamps. It is
 // client-only and its result changes only when a lamp toggles or the
 // weather attenuates it. 0 scans every tick.
-[
-    QGVAR(lightScanInterval),
-    "SLIDER",
-    [LLSTRING(lightScanInterval_Name), LLSTRING(lightScanInterval_Description)],
-    ["AEE", "Core"],
-    [0, 120, 30, 0],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(lightScanInterval,"AEE","Core",0,120,30,0);
 
 // ── Work distribution ─────────────────────────────────────────────────────
 // Where the environment computation runs. AEE computes identical values on

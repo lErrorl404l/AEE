@@ -73,6 +73,85 @@
 #define AEE_LOG_DEBUG(msg) if (AEE_TRACE_ON) then { diag_log text format ["[AEE][%1][DEBUG] %2", QUOTE(COMPONENT), msg]; };
 #define AEE_LOG_TRACE(msg) if (AEE_TRACE_ON) then { diag_log text format ["[AEE][%1][TRACE] %2", QUOTE(COMPONENT), msg]; };
 
+// ── Settings declaration ────────────────────────────────────────────────────
+// CBA 3.19.0 has NO addSettingSimple and NO addMacroParentSettings, verified
+// against CBA master e457d6e, so the 6-element array is ours to wrap.  AEE
+// declares 188 settings across 19 files and the shape was hand-written every
+// time; 166 of them now go through the three macros below.
+//
+// HEMTT'S PREPROCESSOR IS NOT BRACKET AWARE.  A macro argument is split on
+// EVERY comma, including commas inside [], which the engine reported as
+// error[PE9] "function call with incorrect number of arguments" when handed
+// [0, 10, 5, 0.1] as one argument.  134 of the 188 settings are SLIDER with
+// exactly that valueInfo shape, so a macro can never receive it.  Every
+// argument below is therefore a SCALAR and the array is built in the BODY.
+// The category and the slider bounds are passed as separate scalars, never as
+// arrays.  warning[PW3] padding a macro argument also fires at the CALL SITE,
+// so every invocation is emitted with no space after any comma.
+//
+// DOUBLES is var1##_##var2, so the second argument carries NO leading
+// underscore: DOUBLES(h,_Name) pastes h__Name and matches no declared key,
+// which silently broke all 332 keys until HEMTT caught it.  The key pair is
+// checked in Python as well, see TestSettingMacroStringtableContract.
+//
+// AEE_SETTING_ADVANCED is deliberately ABSENT.  An escape hatch whose
+// parameters are bracketed cannot be called through this preprocessor, so it
+// would be dead code and a trap for exactly the settings that needed it.
+// The 22 settings that need a LIST type, a non-standard title key, or a real
+// _code block stay in the hand-written long form.  AEE_SETTING_SLIDER_LOCAL is
+// absent for the same reason: aee_core_biomeOverride is a LIST and
+// aee_core_diagnostic is the only non-global CHECKBOX, so no non-global slider
+// exists and the variant would have zero call sites.
+#define AEE_SETTING_TITLE(h) [LLSTRING(DOUBLES(h,Name)), LLSTRING(DOUBLES(h,Description))]
+#define AEE_SETTING_CHECKBOX(h,cat,subcat,def) [QGVAR(h), "CHECKBOX", AEE_SETTING_TITLE(h), [cat, subcat], def, true, {}] call CBA_fnc_addSetting
+#define AEE_SETTING_SLIDER(h,cat,subcat,mn,mx,def,stp) [QGVAR(h), "SLIDER", AEE_SETTING_TITLE(h), [cat, subcat], [mn, mx, def, stp], true, {}] call CBA_fnc_addSetting
+#define AEE_SETTING_CHECKBOX_LOCAL(h,cat,subcat,def) [QGVAR(h), "CHECKBOX", AEE_SETTING_TITLE(h), [cat, subcat], def, false, {}] call CBA_fnc_addSetting
+
+// ── Module init guard: the one line every XEH init file starts with ─────────
+// CBA provides NO re-entrancy guard for postInit (fnc_postInit.sqf:19 is an
+// isNil on a marker it never sets) and CBA_fnc_addEventHandler STACKS
+// (fnc_addEventHandler.sqf pushBack, no dedupe), so a repeat init triples the
+// per-event work unless the mod refuses it.  That refusal is this macro, and it
+// is the mod's job alone.
+//
+// WHY A MACRO AND NOT A HELPER FUNCTION: the guard must expand with the
+// CALLING addon's COMPONENT, so each addon gets its own flag.  A function
+// cannot see the caller's component; a macro in this shared header expands at
+// the use site, so QGVAR and AEE_LOG_INFO inside it resolve against the addon
+// that wrote the init file.
+//
+// ONE FLAG PER XEH EVENT, NOT ONE FLAG PER ADDON.  preInit and postInit are
+// different events that can both fire in the same session.  A single shared
+// flag makes whichever runs second believe the addon is already initialised.
+// That is not hypothetical: with one shared flag, optics preInit set it and
+// optics postInit then exited before registering the 0.1 s sensor PFH, both
+// player event handlers and the hitPart handler.  The whole module went dead
+// and the log called it a routine "skipping repeat init".  Two flags make that
+// structurally impossible, and the headless run caught it.
+//
+// The flag name IS the event name, so the RPT says which event repeated.  That
+// is what you need when hunting a multi-init fault on the client, where a
+// shared name would leave you guessing.
+//
+// The skip is LOGGED, not silent: a repeat init is a real fault and the RPT
+// must keep showing it rather than hiding it behind a clean return.
+//
+// tools/tests/test_audit_regressions.py::TestInitIsIdempotent FAILS THE BUILD
+// if an init file that registers anything omits its guard, or if the guard
+// names the wrong event for its file.  Adding a module without either is a gate
+// failure, not a latent triple-registration bug.
+#define AEE_MODULE_PRE_INIT \
+    if (missionNamespace getVariable [QGVAR(preInit), false]) exitWith { \
+        AEE_LOG_INFO("module already initialised: skipping repeat preInit") \
+    }; \
+    missionNamespace setVariable [QGVAR(preInit), true];
+
+#define AEE_MODULE_POST_INIT \
+    if (missionNamespace getVariable [QGVAR(postInit), false]) exitWith { \
+        AEE_LOG_INFO("module already initialised: skipping repeat postInit") \
+    }; \
+    missionNamespace setVariable [QGVAR(postInit), true];
+
 // ── Error helper — breaks on purpose in debug, logs in release ────────────
 #ifdef DEBUG_MODE_FULL
     #define AEE_ERROR(msg) ERROR(msg)

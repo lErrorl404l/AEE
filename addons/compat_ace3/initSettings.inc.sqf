@@ -11,52 +11,12 @@
 // that only pays off at 50+ settings.
 
 // ── Medical ────────────────────────────────────────────────────────────────
-[
-    QGVAR(medicalWBGTThreshold),
-    "SLIDER",
-    [LLSTRING(medicalWBGTThreshold_Name), LLSTRING(medicalWBGTThreshold_Description)],
-    ["AEE", "Compat - ACE3"],
-    [18, 35, 23, 1],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(medicalWBGTThreshold,"AEE","Compat - ACE3",18,35,23,1);
 
-[
-    QGVAR(medicalRiskThreshold),
-    "SLIDER",
-    [LLSTRING(medicalRiskThreshold_Name), LLSTRING(medicalRiskThreshold_Description)],
-    ["AEE", "Compat - ACE3"],
-    [0, 1, 0.3, 2],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(medicalRiskThreshold,"AEE","Compat - ACE3",0,1,0.3,2);
 
-[
-    QGVAR(medicalHeatStrokeWBGT),
-    "SLIDER",
-    [LLSTRING(medicalHeatStrokeWBGT_Name), LLSTRING(medicalHeatStrokeWBGT_Description)],
-    ["AEE", "Compat - ACE3"],
-    [25, 45, 32, 1],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(medicalHeatStrokeWBGT,"AEE","Compat - ACE3",25,45,32,1);
 
-[
-    QGVAR(medicalBurnTemp),
-    "SLIDER",
-    [LLSTRING(medicalBurnTemp_Name), LLSTRING(medicalBurnTemp_Description)],
-    ["AEE", "Compat - ACE3"],
-    [20, 45, 25, 1],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(medicalBurnTemp,"AEE","Compat - ACE3",20,45,25,1);
 
-[
-    QGVAR(medicalBurnDamageScale),
-    "SLIDER",
-    [LLSTRING(medicalBurnDamageScale_Name), LLSTRING(medicalBurnDamageScale_Description)],
-    ["AEE", "Compat - ACE3"],
-    [0, 0.01, 0.0005, 4],
-    true,
-    {}
-] call CBA_fnc_addSetting;
+AEE_SETTING_SLIDER(medicalBurnDamageScale,"AEE","Compat - ACE3",0,0.01,0.0005,4);
