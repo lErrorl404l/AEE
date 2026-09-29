@@ -138,6 +138,31 @@ HF uses ITU-R P.531 ionospheric absorption. The absorption scales with
 `1/f^2`, the solar zenith angle, and the sunspot number. A Dellinger flare
 term covers sudden ionospheric disturbances.
 
+## Refractive shock trace
+
+A supersonic round steps the air density across its bow shock. The index
+of refraction of air tracks density, so the step bends light. The kernel
+`fnc_calculateSupersonicTrace` returns that refractive index contrast in
+units of 1e-4. The kernel models the refractive component only. It does
+not model condensation, and it does not claim that a visible mist forms.
+
+The returned number is a CEILING. The bow shock meets the stagnation
+streamline normally, so the contrast there is an exact upper bound for
+every nose shape. A round with a finite tip radius attains it. A round
+with a meplat carries a detached bow shock, so its contrast at the
+surface is lower than the ceiling. The renderer therefore draws an upper
+bound, not an exact value.
+
+The client-side renderer `fnc_renderSupersonicTrace` attaches the
+engine's refractive billboard to the local player's own round. It calls
+the kernel each tick with the round's current velocity, which is argument
+0 of the kernel, so the trace fades as the round slows out of the
+supersonic regime rather than holding the muzzle value. The step from
+refractive units to a sprite size and an alpha is a visual mapping
+chosen for legibility, not a physical relation. The kernel never scales
+its own result. At most 4 traces draw at once, and a new shot is skipped
+at that cap so a running trace is never cut short.
+
 ## Events
 
 The event system covers lightning, microburst, dust devil, sandstorm,

@@ -20,34 +20,58 @@ equations.  The repository holds a second refractive constant, in
 fnc_calculateRefraction, but that is the ITU-R P.453 RADIO refractivity.  Its
 wavelength is not the visible one, so its constant must not be read as K.
 
-THE RETURNED VALUE IS THE MAXIMUM, NOT AN ESTIMATE.  The relation above is a
+THE RETURNED VALUE IS A CEILING, NOT AN ESTIMATE.  The relation above is a
 normal shock.  NACA Report 1135, "Equations, Tables, and Charts for
 Compressible Flow", Ames Research Staff 1953, p. 621, states that an oblique
-shock acts as a normal shock to the flow perpendicular to it.  The density
-ratio therefore rises with the normal Mach number M1 sin(beta), and that
-number is largest at beta = 90 degrees.  The stagnation streamline meets the
-bow shock normally, so the value here is the exact maximum for ANY nose
-shape.  The ceiling is tight and it cannot be lowered.
+shock acts as a normal shock to the flow perpendicular to it.  That reduction
+rule concerns the local jump, so it holds for a planar shock and for a
+conical shock alike.  The density ratio therefore rises with the normal Mach
+number M1 sin(beta) alone, and no shape term enters.  That number is largest
+at beta = 90 degrees, where the stagnation streamline meets the bow shock.  So
+the value here is the exact upper bound for ANY nose shape.  It is the
+attained maximum for any round with a finite tip radius, and every real
+bullet has one.  A hypothetical perfectly sharp body does not attain it.  The
+ceiling is tight and it cannot be lowered.
 
 NO FLOOR IS RETURNED, AND THAT IS DELIBERATE.  A lower bound would come from
 the oblique shock at the nose shoulder, using the theta-beta-M relation of
 NACA Report 1135 Eq (139a) p. 622.  That relation holds only for an ATTACHED
 shock.  A real bullet has a meplat, a flat tip that demands a local flow turn
-of about 90 degrees, while the largest turn an attached shock accepts is
-22.97 degrees at Mach 2.0, 30.81 degrees at Mach 2.6 and 34.07 degrees at
-Mach 3.0.  The bow shock therefore detaches, and theta-beta-M does not
-describe a detached shock.  A floor computed that way would be false, so
-this function refuses rather than returns one.  Standoff for a detached shock
-is set by the Solomon and Billig correlations, not by this relation.
+of about 90 degrees.  NACA Report 1135 p. 624 gives the largest turn an
+attached shock accepts.  For a wedge the limit is 45.6 degrees.  For a
+circular cone the limit is 57.5 degrees.  Both are limits at infinite Mach, so
+a finite Mach accepts less.  The meplat exceeds both limits, and the bow
+shock therefore detaches.  Theta-beta-M does not describe a detached shock.  A
+floor computed that way would be false.
+
+A STANDOFF WOULD NOT GIVE A FLOOR.  On the axis a detached shock is normal, so
+the contrast there is the ceiling this function returns.  The contrast falls as
+the shock turns away from the axis, because the normal Mach number falls with
+the shock angle.  A floor is therefore set where the shock meets the body, and
+that needs the shock shape rather than the standoff distance alone.  The
+published standoff correlations are defined for a sphere or a cylinder.  None
+defines an effective diameter for a meplat-tipped ogive, and the per-cartridge
+meplat and ogive radius are not held.  The floor therefore stays not
+computable, and this function refuses rather than returns one.
 
 A bullet is a body of revolution, so the exact attached-shock solution is
-conical Taylor-Maccoll rather than the wedge relation above.  The size of the
-difference is not determined, so the wedge form is not used to produce a
-number.
+conical Taylor-Maccoll rather than the wedge relation above.  That difference
+changes the shock angle at a given surface turn, so it would change a point
+value or a floor.  At a fixed shock angle, it does not change the density
+ratio.  The ceiling is the value at beta = 90 degrees, where the planar and
+the conical case coincide.  The difference is therefore irrelevant to the
+returned value.  The wedge form is not used to produce the number.
 
 The freestream Mach uses the LOCAL speed of sound, the same convention as
 fnc_calculateBallisticDrag, so the trace follows the round down through the
 transonic drag band instead of holding the muzzle value.
+
+THE PUBLISHED VALUE IS A SINGLE MUZZLE VALUE.  The Fired handler calls this
+function once, at the muzzle, and publishes the result.  Nothing in this
+repository reads that variable, so the kernel does not track it at range.  A
+per-frame tracker would cost every machine for a variable with no reader
+here.  A caller that wants the contrast at range calls this function again.
+The round's current velocity is argument 0.
 
 NO STRENGTH OVERRIDE.  The contrast is returned as measured.  A caller may
 scale it for rendering, but this function never does, because an override
@@ -81,9 +105,9 @@ private _mach = _velocity / _sound;
 if (_mach <= 1) exitWith { 0 };
 
 // Rankine-Hugoniot density ratio across a normal shock, gamma = 1.4.
-// At M = 1 this returns exactly 1, so the contrast vanishes there.  This is
-// the exact maximum over the body, not a loose ceiling, because the bow shock
-// is locally normal on the stagnation streamline whatever the nose shape.
+// At M = 1 this returns exactly 1, so the contrast vanishes there.  The bow
+// shock meets the stagnation streamline normally, so this is the ceiling over
+// the whole body, and a round with a finite tip radius attains it.
 private _gamma = 1.4;
 private _m2 = _mach * _mach;
 private _densityRatio = ((_gamma + 1) * _m2) / ((_gamma - 1) * _m2 + 2);

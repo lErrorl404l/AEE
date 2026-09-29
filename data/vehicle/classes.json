@@ -61,12 +61,13 @@
       "kind": "engine_base",
       "provenance": [
         "addons/armour/functions/fnc_deriveProtection.sqf:64",
-        "addons/core/XEH_postInit.sqf:19",
+        "addons/core/XEH_postInit.sqf:21",
         "addons/core/functions/fnc_handleCollisionDamage.sqf:45",
         "addons/core/functions/fnc_handleCollisionDamage.sqf:46",
-        "addons/mobility/XEH_postInit.sqf:34",
-        "addons/mobility/XEH_postInit.sqf:67",
-        "addons/mobility/functions/fnc_applyFlightTurbulence.sqf:64",
+        "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf:376",
+        "addons/mobility/XEH_postInit.sqf:41",
+        "addons/mobility/XEH_postInit.sqf:74",
+        "addons/mobility/functions/fnc_applyFlightTurbulence.sqf:68",
         "addons/mobility/functions/fnc_applyRollover.sqf:40",
         "addons/mobility/functions/fnc_applyTerrainDrag.sqf:41",
         "addons/mobility/functions/fnc_calculateSSF.sqf:86",
@@ -110,7 +111,7 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:160",
+        "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:182",
         "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:58"
       ],
       "token": "CAManBase"
@@ -154,7 +155,7 @@
       "kind": "engine_base",
       "provenance": [
         "addons/core/functions/fnc_calculateIlluminance.sqf:275",
-        "addons/nightvision/functions/fnc_applyNVGTubeModel.sqf:515"
+        "addons/nightvision/functions/fnc_applyNVGTubeModel.sqf:516"
       ],
       "token": "F_40_White"
     },
@@ -174,7 +175,10 @@
       "provenance": [
         "addons/atmos/functions/state/fnc_updateLocalWindParams.sqf:35",
         "addons/atmos/functions/state/fnc_updateLocalWindParams.sqf:36",
+        "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf:255",
+        "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf:342",
         "addons/fx/functions/weather/fnc_applyRotorWash.sqf:27",
+        "addons/mobility/functions/fnc_calculateAirEngineLoad.sqf:137",
         "addons/mobility/functions/fnc_calculateSSF.sqf:61",
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:180",
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:189"
@@ -195,11 +199,12 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/armour/XEH_postInit.sqf:16",
+        "addons/armour/XEH_postInit.sqf:18",
         "addons/armour/functions/fnc_penetrationGate.sqf:47",
-        "addons/core/XEH_postInit.sqf:19",
+        "addons/core/XEH_postInit.sqf:21",
         "addons/core/functions/fnc_handleCollisionDamage.sqf:45",
         "addons/core/functions/fnc_handleCollisionDamage.sqf:46",
+        "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf:364",
         "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:57",
         "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:273"
       ],
@@ -223,12 +228,12 @@
       "provenance": [
         "addons/armour/functions/fnc_penetrationGate.sqf:47",
         "addons/armour/functions/fnc_penetrationGate.sqf:76",
-        "addons/thermal/functions/display/fnc_applyBuildingThermal.sqf:111",
-        "addons/thermal/functions/display/fnc_applyClothingThermal.sqf:100",
+        "addons/thermal/functions/display/fnc_applyBuildingThermal.sqf:120",
+        "addons/thermal/functions/display/fnc_applyClothingThermal.sqf:109",
         "addons/thermal/functions/display/fnc_applyExhaustHeat.sqf:60",
         "addons/thermal/functions/display/fnc_applyImpactHeat.sqf:53",
         "addons/thermal/functions/display/fnc_getThermalSelections.sqf:31",
-        "addons/thermal/functions/fusion/fnc_applyFusionOverlay.sqf:52",
+        "addons/thermal/functions/fusion/fnc_applyFusionOverlay.sqf:88",
         "addons/thermal/functions/sensor/fnc_calculateThermalContrast.sqf:75",
         "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:196",
         "addons/thermal/functions/surface/fnc_getSelectionMaterials.sqf:149"
@@ -249,8 +254,10 @@
     {
       "exclusion_reason": "no positive ground class-table row",
       "is_ground": false,
-      "kind": "mod_token",
+      "kind": "engine_base",
       "provenance": [
+        "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf:261",
+        "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf:345",
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:180",
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:189"
       ],

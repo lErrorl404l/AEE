@@ -116,6 +116,7 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_nightvision_nvgGrainBoost` | nightvision | 1 while gate flicker active (noise floor raised), 0 otherwise |
 | `aee_nightvision_nvgTubeOnTime` | nightvision | Mission time the tube was first powered on - drives the warm-up dark-current curve (#153 gap 4) |
 | `aee_nightvision_nvgPerceived` | nightvision | Perceived NVG output 0.65..1.0: AGC brightness x cleanliness (MTF x SNR / erosion), per tier - consumed by ColorCorrections (#153 gap 6) |
+| `aee_nightvision_ppHandle_NVG_Chroma` | nightvision | NVG-owned ChromAberration ppEffect handle (priority 3050), never shared with the optics handle |
 | `aee_optics_viewDistanceTarget` | optics | Vision-driven view distance target in metres (issue #138) |
 | `aee_optics_viewDistanceSigma` | optics | Total atmospheric extinction sigma for the view-distance driver |
 
@@ -293,7 +294,7 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | `aee_ballistics_barrelPOIShiftMrad` | ballistics | Elevation POI shift from barrel heat (mrad, positive = up) |
 | `aee_ballistics_barrelColdBore` | ballistics | 1 when the cold-bore first-shot bias applies |
 | `aee_ballistics_barrelWearModelled` | ballistics | 1 when the barrel wear model applies to the weapon, 0 for a cannon |
-| `aee_ballistics_supersonicTrace` | ballistics | Refractive index contrast across the bow shock, in units of 1e-4, as an upper bound. 0 when the round is not supersonic. A renderer may scale it. The kernel never does |
+| `aee_ballistics_supersonicTrace` | ballistics | Refractive index contrast across the bow shock, in units of 1e-4. The exact upper bound for every nose shape. The attained maximum for a round with a finite tip radius. 0 when the round is not supersonic. The Fired handler publishes it once at the muzzle. A caller recomputes it at range with the round's current velocity, which is argument 0. A renderer may scale it. The kernel never does |
 
 ### Module overrides
 
@@ -311,6 +312,7 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | `aee_fx_blastOverpressureKpa` | fx | Last explosion incident overpressure in kPa (Kingery-Bulmash) |
 | `aee_fx_blastInjury` | fx | Last explosion injury vector [eardrum, lungThresh, lung1, lung50, lung99, throw] |
 | `aee_fx_particleSources` | fx | Live particle source records: [source, effect, priority, particles, expiry, key, params] |
+| `aee_fx_supersonicTrace` | fx | Live refractive shock traces drawn on the local player's rounds. One record per trace, holding the particle source, the projectile, and the last kernel contrast in units of 1e-4. The renderer caps the list at 4 and skips a new shot at the cap. The drawn distortion is an upper bound on the refractive contrast. It is not a vapour trail and not a condensation trail |
 | `aee_core_moduleUpdateInterval` | core | EDEN update interval |
 | `aee_core_weatherProgressionSeed` | core | Seeded weather progression |
 | `aee_core_qnh` | core | QNH pressure setting |

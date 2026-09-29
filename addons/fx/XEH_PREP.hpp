@@ -16,12 +16,14 @@ PREPS(particle,particlePipeline);
 PREPS(particle,particlePipelineEmit);
 PREPS(particle,particleState);
 PREPS(particle,registerParticleSource);
+PREPS(particle,renderSupersonicTrace);
 PREPS(particle,surfaceMaterial);
 PREPS(particle,surfaceSample);
 
 // ── weather ───────────────────────────────────────────────────────────────
 PREPS(weather,applyAtmosphericDust);
 PREPS(weather,applyBreathCondensation);
+PREPS(weather,applyExhaustShimmer);
 PREPS(weather,applyFootfallDust);
 PREPS(weather,applyRotorWash);
 PREPS(weather,applyRainSurfaceDrops);

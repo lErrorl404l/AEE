@@ -59,9 +59,11 @@ rm -rf "$ROOT/.hemttout/build" "$ROOT/.hemttout/bincache" "$ROOT/.hemttout/last_
 echo "==> assemble @aee"
 rm -rf "$MODS/@aee"
 mkdir -p "$MODS/@aee/addons"
-cp "$ROOT"/.hemttout/build/addons/*.pbo "$MODS/@aee/addons/"
-cp "$ROOT"/.hemttout/build/mod.cpp "$MODS/@aee/mod.cpp"
-cp "$ROOT"/.hemttout/build/meta.cpp "$MODS/@aee/meta.cpp"
+# The WHOLE build root, not three named files. Naming them dropped the logo,
+# LICENSE and README, and a dedicated server never renders the mod list so it
+# never asked for the logo and the harness could not report the omission.
+mkdir -p "$MODS/@aee"
+cp -a "$ROOT"/.hemttout/build/. "$MODS/@aee/"
 
 echo "==> ensure @cba_a3"
 # ── Host-mod compatibility mode ────────────────────────────────────────────

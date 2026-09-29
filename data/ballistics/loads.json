@@ -10500,12 +10500,12 @@
  },
  {
   "load_id": "127x108_ap_load",
-  "cartridge_id": "127x108",
+  "cartridge_id": "12_7_x_108",
   "projectile": "12.7 x 108 mm AP",
   "note": "12.7 x 108 mm armour piercing service round. The maker states the velocity as a band at 24 m; the lower bound is entered and the band is named in the reference.",
   "values": {
    "cartridge": {
-    "value": "127x108",
+    "value": "12_7_x_108",
     "source": "yugoimport_127x108_ap",
     "grade": "documented"
    },

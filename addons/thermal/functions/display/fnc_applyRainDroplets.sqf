@@ -27,12 +27,13 @@ if (!hasInterface) exitWith { 0 };
 private _src = missionNamespace getVariable [QGVAR(rainDropSource), objNull];
 
 // ─── EXIT: destroy source ─────────────────────────────────────────────────
-if (_mode == "EXIT") then {
+// Destroy, then STOP.  Without exitWith the run falls through into the
+// apply path below and recreates the source it just deleted.
+if (_mode == "EXIT") exitWith {
     if (!isNull _src) then {
         deleteVehicle _src;
         missionNamespace setVariable [QGVAR(rainDropSource), objNull];
-    };
-    0
+    }
 };
 
 private _player = call CBA_fnc_currentUnit;
@@ -46,7 +47,9 @@ if (cameraOn != _player && {cameraOn != _veh}) exitWith { 0 };
 // ─── Gate on rain ─────────────────────────────────────────────────────────
 private _rain = rain;
 if !(_rain isEqualType 0) then { _rain = 0; };
-if (_rain < 0.1) then {
+// Destroy, then STOP.  Falling through would recreate the emitter this
+// branch just deleted, so droplets stayed on the lens when rain stopped.
+if (_rain < 0.1) exitWith {
     if (!isNull _src) then {
         deleteVehicle _src;
         missionNamespace setVariable [QGVAR(rainDropSource), objNull];

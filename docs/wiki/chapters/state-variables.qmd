@@ -176,6 +176,8 @@ read them. The variables below are grouped by subsystem.
 | `aee_fx_rainSurfaceDrops` | The rain surface drop effect |
 | `aee_fx_vehicleDust` | The vehicle dust effect |
 | `aee_fx_particleSources` | The registered particle sources |
+| `aee_fx_exhaustSources` | The tracked exhaust shimmer particle sources |
+| `aee_fx_exhaustRefraction` | The strongest exhaust refractive contrast this tick, in 1e-4 units, negative for hot gas |
 
 ## Soil and hydrology
 

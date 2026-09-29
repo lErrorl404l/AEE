@@ -233,6 +233,50 @@ class TestAperture(unittest.TestCase):
         elements = [part for part in match.group(1).split(",") if part.strip()]
         self.assertEqual(len(elements), 4, f"expected 4 elements, got {len(elements)}")
 
+    def test_stands_down_in_daylight(self):
+        """AEE must not drive the camera from a night-only lux model.
+
+        fnc_calculateIlluminance computes the twilight term only while the
+        sun is at or below the horizon, so in daylight the model reports the
+        starlight floor.  The mapping above then resolves to the night
+        anchors and setApertureNew pins the camera to a night exposure under
+        a full sun.  Outside the domain the model covers the engine exposure
+        is correct, so stand down and hand the camera back.
+        """
+        text = APERTURE_SQF.read_text(encoding="utf-8")
+        code = text[text.index("*/") + 2 :] if "*/" in text else text
+
+        self.assertIn("lightIsNight", code, "daylight stand-down gate is missing")
+
+        gate = re.search(r"if\s*\(.*?lightIsNight.*?\)\s*then", code)
+        self.assertIsNotNone(gate, "no daylight gate statement found")
+
+        call = re.search(r"^\s*setApertureNew\s*\[", code, re.M)
+        self.assertIsNotNone(call, "no setApertureNew call found")
+        self.assertLess(
+            gate.start(), call.start(), "the gate is after the write it guards"
+        )
+
+        # The hand-back must clear the camera, not pin a value of our own.
+        self.assertIn("setAperture -1", code)
+
+    def test_daylight_gate_defaults_to_stand_down(self):
+        """A missing illuminance producer must not pin the night anchors.
+
+        lightIsNight defaults to false, so a missing producer selects the
+        stand-down branch.  Defaulting to true would publish the night
+        anchors with no model behind them, which is the fault this gate
+        exists to prevent.
+        """
+        text = APERTURE_SQF.read_text(encoding="utf-8")
+        code = text[text.index("*/") + 2 :] if "*/" in text else text
+
+        match = re.search(
+            r"QEGVAR\(\s*core\s*,\s*lightIsNight\s*\)\s*,\s*(\w+)\s*\]", code
+        )
+        self.assertIsNotNone(match, "lightIsNight read not found")
+        self.assertEqual(match.group(1), "false")
+
 
 class TestLocalWindParams(unittest.TestCase):
     """Rotor thrust to the visual downwash pair."""

@@ -60,8 +60,13 @@ if (!isNil "_player" && {!isNull _player}) then {
 // ─── Cached aircraft list (refresh every 5 s) ──────────────────────────
 private _aircraft = missionNamespace getVariable [QGVAR(turbulenceAircraft), []];
 private _lastRefresh = missionNamespace getVariable [QGVAR(turbulenceRefresh), -1];
-if ((_aircraft isEqualTo []) || ((time - _lastRefresh) > 5)) then {
-    _aircraft = vehicles select { (_x isKindOf "Air") && (alive _x) };
+// The radius test belongs in the cache, not in the per-frame candidate
+// select below.  The speed, height and liveness tests stay per frame,
+// because those are physics conditions that must react as they change.
+if ((_aircraft isEqualTo []) || ((time - _lastRefresh) > 1)) then {
+    _aircraft = vehicles select {
+        (_x isKindOf "Air") && (alive _x) && {(_x distance _refPos) < _radius}
+    };
     missionNamespace setVariable [QGVAR(turbulenceAircraft), _aircraft];
     missionNamespace setVariable [QGVAR(turbulenceRefresh), time];
 };
@@ -88,8 +93,7 @@ private _candidates = _aircraft select {
     (!isNull _x) &&
     (alive _x) &&
     (((getPosATL _x) select 2) > 3) &&
-    (speed _x > 10) &&
-    ((_x distance _refPos) < _radius)
+    (speed _x > 10)
 };
 
 {

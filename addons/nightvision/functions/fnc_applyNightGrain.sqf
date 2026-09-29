@@ -13,40 +13,70 @@ Sets:    FilmGrain ppEffect (client-side only)
 
 The grain simulates the eye's noise floor in low light and the
 visual degradation from precipitation obscuring the view.
+
+The handle lives in the shared core registry under the "nightvision" scope,
+key "FilmGrain".  It is created on the first normal-vision tick and released
+when a sensor view takes over or the optics module is disabled.  Before the
+registry the variable was read here and written nowhere, so the grain never
+showed.
 */
 
-if (!(missionNamespace getVariable [QEGVAR(core,opticsEnabled), true])) exitWith {};
+// Read the handle before every guard so each exit can release it.  A sensor
+// view, a death or a disabled module must not leave the grain live.
+private _hGrain = missionNamespace getVariable [QGVAR(ppHandle_FilmGrain), -1];
+
+if (!(missionNamespace getVariable [QEGVAR(core,opticsEnabled), true])) exitWith {
+    if (_hGrain >= 0) then {
+        ["nightvision", "FilmGrain"] call EFUNC(core,destroyPPEffect);
+    };
+};
 
 private _player = call CBA_fnc_currentUnit;
 // Run in the player's own view: on foot (cameraOn == player) or in
 // the player's vehicle (pilot/passenger/gunner - cameraOn is the
 // vehicle).  Skip spectator/UAV-terminal/external cameras.
 private _veh = vehicle _player;
-if (isNil "_player" || !alive _player) exitWith {};
-if (cameraOn != _player && {cameraOn != _veh}) exitWith {};
-
-private _hGrain = missionNamespace getVariable [QGVAR(ppHandle_FilmGrain), -1];
+private _offView = isNil "_player" || {!alive _player} || {cameraOn != _player && {cameraOn != _veh}};
+if (_offView) exitWith {
+    missionNamespace setVariable [QGVAR(nightGrainActive), false];
+    if (_hGrain >= 0) then {
+        _hGrain ppEffectEnable false;
+    };
+};
 
 // NVG (vision mode 1) and thermal (2) replace the eye with a sensor that
 // has its own noise floor.  Applying the eye-noise FilmGrain on top of a
 // clean NVG/thermal image destroys the view — the real devices do not have
-// this grain.  In a sensor view, fade and disable any grain that was
-// already active (it may have been applied before the sensor came up).
+// this grain.  Fade, then release the handle: the sensor path owns the
+// screen, so the eye grain must not survive into it.
 // Vision modes verified in-game: 0 = normal, 1 = NVG, 2 = thermal.
 private _visionMode = currentVisionMode _player;
 if (_visionMode == 1 || _visionMode == 2) exitWith {
-    private _active = missionNamespace getVariable [QGVAR(nightGrainActive), false];
-    if (_active) then {
-        if (_hGrain >= 0) then {
+    if (_hGrain >= 0) then {
+        if (missionNamespace getVariable [QGVAR(nightGrainActive), false]) then {
             _hGrain ppEffectAdjust [0.01, 0.1, 0.5, 0.1, 0.1, 1];
             _hGrain ppEffectCommit 1;
+            private _fadeHandle = _hGrain;
+            [{
+                params ["_fadeHandle"];
+                if ((missionNamespace getVariable [QGVAR(ppHandle_FilmGrain), -1]) == _fadeHandle) then {
+                    ["nightvision", "FilmGrain"] call EFUNC(core,destroyPPEffect);
+                };
+            }, [_fadeHandle], 1.5] call CBA_fnc_waitAndExecute;
+        } else {
+            ["nightvision", "FilmGrain"] call EFUNC(core,destroyPPEffect);
         };
-        [{
-            (missionNamespace getVariable [QGVAR(ppHandle_FilmGrain), -1]) ppEffectEnable false;
-        }, [], 1.5] call CBA_fnc_waitAndExecute;
-        missionNamespace setVariable [QGVAR(nightGrainActive), false];
     };
+    missionNamespace setVariable [QGVAR(nightGrainActive), false];
 };
+
+// Create the grain handle on first use.  The registry is idempotent, so a
+// later call returns the live handle instead of stacking a second FilmGrain
+// at the same priority.
+if (_hGrain < 0) then {
+    _hGrain = ["nightvision", "FilmGrain", "FilmGrain", 2000, QGVAR(ppHandle_FilmGrain)] call EFUNC(core,createPPEffect);
+};
+if (_hGrain < 0) exitWith {};
 
 private _sunOrMoon = sunOrMoon;  // 0 = full night, 1 = full day
 private _rain     = ([] call EFUNC(core,getSmoothedWeather)) select 0;
@@ -64,10 +94,16 @@ if (_active && _sunOrMoon > 0.6 && _rain <= 0.2 && _fog <= 0.1) exitWith {
     if (_hGrain >= 0) then {
         _hGrain ppEffectAdjust [0.01, 0.1, 0.5, 0.1, 0.1, 1];
         _hGrain ppEffectCommit 0.5;
+        private _offHandle = _hGrain;
+        [{
+            params ["_offHandle"];
+            if (_offHandle >= 0) then {
+                if ((missionNamespace getVariable [QGVAR(ppHandle_FilmGrain), -1]) == _offHandle) then {
+                    _offHandle ppEffectEnable false;
+                };
+            };
+        }, [_offHandle], 0.75] call CBA_fnc_waitAndExecute;
     };
-    [{
-        (missionNamespace getVariable [QGVAR(ppHandle_FilmGrain), -1]) ppEffectEnable false;
-    }, [], 0.75] call CBA_fnc_waitAndExecute;
     missionNamespace setVariable [QGVAR(nightGrainActive), false];
 };
 
@@ -121,11 +157,16 @@ if (_totalGrain > 0.01) then {
         if (_hGrain >= 0) then {
             _hGrain ppEffectAdjust [0.01, 0.1, 0.5, 0.1, 0.1, 1];
             _hGrain ppEffectCommit 1;
+            private _offHandle = _hGrain;
+            [{
+                params ["_offHandle"];
+                if (_offHandle >= 0) then {
+                    if ((missionNamespace getVariable [QGVAR(ppHandle_FilmGrain), -1]) == _offHandle) then {
+                        _offHandle ppEffectEnable false;
+                    };
+                };
+            }, [_offHandle], 1.5] call CBA_fnc_waitAndExecute;
         };
-
-        [{
-            (missionNamespace getVariable [QGVAR(ppHandle_FilmGrain), -1]) ppEffectEnable false;
-        }, [], 1.5] call CBA_fnc_waitAndExecute;
 
         missionNamespace setVariable [QGVAR(nightGrainActive), false];
     };

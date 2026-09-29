@@ -40,7 +40,7 @@ private _TABLE = [
     ["apfsds|m829", "120mm_m829_load", "120mm_m256_smoothbore", 1679.45, 510.0, 8141.98, "documented"],
     ["heat|m830", "120mm_m830_load", "120mm_m256_smoothbore", 1139.95, 479.87, 0.0, "documented"],
     ["125mm2a46|125mmm88|125mmtanksmoothbore|2a46|apfsds|m88", "125mm_m88_load", "125mm_2a46", 1785.0, 0.0, 2000.0, "claimed"],
-    ["127x108|127x108mm", "127x108_ap_load", "127x108", 810.0, 0.0, 0.0, "documented"],
+    ["127x108|127x108mm", "127x108_ap_load", "12_7_x_108", 810.0, 0.0, 0.0, "documented"],
     ["20mmautocannon|20x102|20x102mm|m55a2", "20x102_m55a2_load", "20x102", 1030.22, 417.13, 0.0, "documented"],
     ["hei|m792", "25x137_m792_load", "25x137", 1100.0, 0.0, 90.0, "documented"],
     ["apfsds|m919", "25x137_m919_load", "25x137", 1420.0, 386.11, 98.0, "documented"],
