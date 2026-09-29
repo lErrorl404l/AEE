@@ -1,21 +1,28 @@
 #include "..\..\script_component.hpp"
 
 /*
-Thermal contrast coefficient (0–1) for FLIR/thermal imaging effectiveness,
+Thermal contrast coefficient (0–1) for the FLIR/thermal display gain stage,
 plus a NETD-based sensor noise floor.
 
-  1.0 = perfect contrast (crisp thermal signature)
+  1.0 = full display contrast
   0.0 = no usable contrast
+
+WHAT THIS COEFFICIENT IS AND IS NOT.  This is a DISPLAY GAIN, not a sensor
+figure of merit.  The engine ALREADY renders the native thermal image with
+its own gain; this stage only adds the environmental degradation the engine
+does not model.  The 8 °C span was chosen so the display looks right against
+the engine's own gain, and a smaller span double-amplifies to white.  A
+scene-derived span that moves with the scene cannot be a sensor property,
+because sensor sensitivity is fixed.  The system figure of merit is MRTD,
+which joins NETD to spatial frequency into one curve.  NETD (Noise
+Equivalent Temperature Difference) is the temperature difference that
+produces a signal equal to the sensor's own noise, that is a signal-to-noise
+ratio of 1.  This coefficient is NEITHER of these; it is the display gain.
 
 Physics basis:
   - Contrast comes from the object–background temperature gap (delta-T).
-    An 8 °C vehicle-background gap gives full contrast; smaller gaps give
-    proportionally less.  This is the real FLIR figure of merit: a sensor
-    resolves a target when its temperature differs from the background by
-    more than the sensor's own noise floor.  The span is wider than the
-    old 5 °C because the engine ALREADY renders the native thermal image
-    with its own gain; this stage only adds the environmental degradation
-    the engine does not model.  A smaller span double-amplifies to white.
+    A vehicle-background gap of 8 °C gives full display contrast; smaller
+    gaps give proportionally less.
   - The scene average uses VEHICLES only.  Infantry run at a near-constant
     ~33 °C body temperature and would skew the average up, washing the
     whole frame to full white-hot.  The engine renders infantry natively.
@@ -88,12 +95,13 @@ private _groundTemp = missionNamespace getVariable [QEGVAR(core,avgGroundTemp), 
 if !(_groundTemp isEqualType 0) then { _groundTemp = _T; };
 
 // ─── Base contrast from delta-T ───────────────────────────────────────────
-// 8 °C vehicle-background gap = full contrast.  This is the FLIR figure
-// of merit: contrast is proportional to the resolved temperature gap.
-// Wider span than the old 5 °C because the engine ALREADY renders the
-// native thermal image with its own gain; this stage only adds the
-// environmental degradation the engine does not model.  A smaller span
-// here would double-amp the image to pure white.
+// 8 °C vehicle-background gap = full DISPLAY contrast.  This is a display
+// gain, not a sensor figure of merit.  The span was chosen so the display
+// looks right against the engine's own gain, which already renders the
+// native thermal image; this stage only adds the environmental degradation
+// the engine does not model.  A smaller span here would double-amp the
+// image to pure white.  The figure of merit is MRTD and the SNR=1 point is
+// NETD; this coefficient is neither.
 private _deltaT = abs (_avgVehicleTemp - _groundTemp);
 private _contrast = (_deltaT / 8) min 1.0;
 

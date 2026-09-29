@@ -233,8 +233,8 @@
         "addons/thermal/functions/display/fnc_applyExhaustHeat.sqf:60",
         "addons/thermal/functions/display/fnc_applyImpactHeat.sqf:53",
         "addons/thermal/functions/display/fnc_getThermalSelections.sqf:31",
-        "addons/thermal/functions/fusion/fnc_applyFusionOverlay.sqf:88",
-        "addons/thermal/functions/sensor/fnc_calculateThermalContrast.sqf:75",
+        "addons/thermal/functions/fusion/fnc_applyFusionOverlay.sqf:111",
+        "addons/thermal/functions/sensor/fnc_calculateThermalContrast.sqf:82",
         "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:196",
         "addons/thermal/functions/surface/fnc_getSelectionMaterials.sqf:149"
       ],
