@@ -4185,6 +4185,62 @@ class TestFusionPipeline(unittest.TestCase):
             addon="optics",
         )
 
+    def test_fusion_mode_does_not_latch_off_on_teardown(self):
+        # The teardown forces mode 0 for its SIDE EFFECT: it destroys the two
+        # fusion post-process handles.  The reader in optics/XEH_postInit.sqf
+        # is getVariable [QGVAR(fusionMode), 1] == 1, and that default applies
+        # only while the variable is unset.  cycleFusionMode was the only
+        # writer and no keybind called it with -1, so a teardown that left 0 in
+        # place turned fusion off for the rest of the session with no way
+        # back.  Pin the restore AND its order, since restoring before the
+        # forced 0 would simply be undone by it.
+        import re
+
+        raw = (
+            _REPO_ROOT / "addons/optics/functions/vision/fnc_teardownSensors.sqf"
+        ).read_text(encoding="utf-8")
+        code = re.sub(r"/\*.*?\*/", " ", raw, flags=re.S)
+        code = "\n".join(line.split("//")[0] for line in code.splitlines())
+
+        forced = code.find("[0] call EFUNC(thermal,cycleFusionMode)")
+        self.assertNotEqual(
+            forced, -1, "teardown must still force 0 to destroy the handles"
+        )
+        restore = code.find("setVariable [_fusionModeVar, 1]")
+        self.assertNotEqual(
+            restore, -1, "teardown must restore 1 or fusion latches off"
+        )
+        self.assertGreater(restore, forced, "the restore must come AFTER the forced 0")
+
+        # The restored value must be the reader's own default, read from the
+        # reader rather than restated here, so the two cannot drift apart.
+        post = (_REPO_ROOT / "addons/optics/XEH_postInit.sqf").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn(
+            "getVariable [QEGVAR(thermal,fusionMode), 1]",
+            post,
+            "the reader's default is the value the teardown must restore",
+        )
+
+        # A third writer would make the restore not the last word.
+        writers = sorted(
+            str(p.relative_to(_REPO_ROOT))
+            for p in (_REPO_ROOT / "addons").rglob("*.sqf")
+            if re.search(
+                r"setVariable\s*\[\s*(?:QGVAR\(fusionMode\)|_fusionModeVar)",
+                p.read_text(encoding="utf-8", errors="replace"),
+            )
+        )
+        self.assertEqual(
+            writers,
+            [
+                "addons/optics/functions/vision/fnc_teardownSensors.sqf",
+                "addons/thermal/functions/fusion/fnc_cycleFusionMode.sqf",
+            ],
+            "fusionMode must have exactly two writers: the cycle and the restore",
+        )
+
     def test_fusion_diet_sun(self):
         # A3TI creates a diet sun (brightness 0.8, dayLight false) to
         # light the EmissiveWhite objects over the dark NVG scene -
