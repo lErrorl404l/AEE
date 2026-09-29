@@ -38,7 +38,12 @@ degree horizontal field of view the focal length is 1662.8 pixels, so
 pixels = size_m * 1662.8 / range_m.  A 5.56 mm object is 0.37 px at 25 m,
 0.18 px at 50 m and 0.09 px at 100 m, and one pixel at 100 m spans about
 60 mm.  _VISIBILITY is the single factor that lifts that sub-pixel width
-to a drawn sprite.  The kernel never sees this number and never scales its
+to a drawn sprite.  It is DERIVED, not picked: it lifts the reference
+case, the 5.56 mm round at Mach 2.76, to a stated minimum of 15 pixels at
+a reference range of 100 m, so
+_VISIBILITY = 15 * 100 / (1662.8 * 0.0173) = 52.2.  The 1080p, 60 degree
+and 100 m figures are DECLARED references, not a measurement of the
+player's display.  The kernel never sees this number and never scales its
 own result.  The cap and the floor that bound the drawn size are stated at
 their definitions, each with its reason.
 
@@ -61,9 +66,14 @@ second per trace.  Above the Mach where it binds the spacing exceeds half
 a sprite and the trace is a sparse haze, not a continuous ribbon, which is
 the physically honest outcome, because a sub-pixel shock cannot be a
 continuous ribbon at any rate.  The overdraw is sprite count times sprite
-area.  Across four traces this geometry reaches 62.7 square metres at the
-Mach 1 cap, against the 190 square metres measured as acceptable and the
-642 that stuttered the client on 27 Sep.
+area.  THE CAP IS A RENDERING-BUDGET LIMIT, NOT A PHYSICAL ONE: four
+traces and eight live sprites each give 32 sprites, so the cap is
+sqrt (190 / 32) = 2.44 m and the worst-case overdraw is the 190 square
+metres measured as acceptable, well under the 642 that stuttered the
+client on 27 Sep.  Above the cap the geometry STOPS GOVERNING and the cap
+sets the size: a 13 mm round at Mach 1.36 wants 5.9 m and draws 2.4 m, so
+its physics is decorative there.  A binding cap is named in the throttled
+diagnostic, so a clamp can never be silent again.
 
 WHY THIS IS NOT A PARTICLE PIPELINE GATE.  The shared pipeline runs on the
 coarse environment interval aee_core_updateInterval, and its advect step
@@ -170,8 +180,8 @@ private _netId = netId _projectile;
 private _logMsg = format ["supersonic trace open: %1 %2, rhoRel %3, tempC %4, calibre %5 mm, shape %6", _netId, str _projectile, _rhoRel, _tempC, _calibreMm, _shape];
 AEE_LOG_DEBUG(_logMsg);
 
-[_projectile, _source, _record, _shape, _rhoRel, _tempC, _calibreMm, _netId] spawn {
-    params ["_projectile", "_source", "_record", "_spriteShape", "_rhoRel", "_tempC", "_calibreMm", "_netId"];
+[_projectile, _source, _record, _shape, _rhoRel, _tempC, _calibreMm, _netId, _MAX_TRACES] spawn {
+    params ["_projectile", "_source", "_record", "_spriteShape", "_rhoRel", "_tempC", "_calibreMm", "_netId", "_MAX_TRACES"];
 
     private _born = time;
     private _contrast = 1;
@@ -182,6 +192,42 @@ AEE_LOG_DEBUG(_logMsg);
     private _LOG_EVERY = 20;
     private _nextLog = _LOG_EVERY;
     private _logMsg = "";
+
+    // The rendering budget.  The worst case is _MAX_TRACES traces times
+    // _LIVE_SPRITES live sprites each, times the drawn area, so the cap is
+    // the square root of the measured budget over that product.  It is a
+    // RENDERING-BUDGET limit and NOT a physical one: above it the geometry
+    // stops governing and the cap sets the size.  190 square metres was
+    // measured as acceptable, and 642 stuttered the client on 27 Sep.  The
+    // cap also bounds tan(mu), which DIVERGES as Mach tends to 1, and the
+    // kernel contrast vanishes there, so the loop leaves the supersonic
+    // regime rather than let the cap dominate a visible sprite.
+    private _OVERDRAW_BUDGET_M2 = 190;
+    private _TRAIL_WIDTHS = 4;
+    private _LIVE_SPRITES = 2 * _TRAIL_WIDTHS;
+    private _MAX_SIZE = sqrt (_OVERDRAW_BUDGET_M2 / (_MAX_TRACES * _LIVE_SPRITES));
+
+    // The floor exists because the engine does not draw a sub-pixel
+    // billboard.  Below 0.35 m the sprite is under six pixels at 100 m, so
+    // the floor keeps a trace the kernel supports observable.  It is a
+    // rendering decision, not a physical one.
+    private _MIN_SIZE = 0.35;
+    private _MIN_DROP = 0.00025;
+
+    // _VISIBILITY lifts the sub-pixel cone to a drawn sprite.  It is DERIVED
+    // from a stated pixel target at a stated reference range, not picked.
+    // The reference is the 5.56 mm round at Mach 2.76, which must subtend at
+    // least 15 pixels at a reference range of 100 m.  The focal length is
+    // the declared 1080p, 60 degree horizontal FOV value; the range and the
+    // display are DECLARED references, not a measurement of the player's
+    // screen.  A RENDERING DECISION, not physics and not an optical relation.
+    private _FOCAL_LENGTH_PX = 1662.8;
+    private _TARGET_PX = 15;
+    private _REF_RANGE_M = 100;
+    private _REF_MACH = 2.76;
+    private _REF_CALIBRE_M = 0.00556;
+    private _REF_CONE_M = (8 * _REF_CALIBRE_M) / sqrt ((_REF_MACH * _REF_MACH) - 1);
+    private _VISIBILITY = (_TARGET_PX * _REF_RANGE_M) / (_FOCAL_LENGTH_PX * _REF_CONE_M);
 
     while {
         _contrast > 0
@@ -200,24 +246,14 @@ AEE_LOG_DEBUG(_logMsg);
         private _muDeg = _machCone select 0;
         private _coneWidth = _machCone select 2;
 
-        // A RENDERING DECISION, not physics and not an optical relation.
-        // The physical cone is sub-pixel: pixels = size_m * 1662.8 / range_m
-        // at the 1080p focal length, so a 5.56 mm cone at Mach 2.76 is
-        // 0.017 m and 0.29 px at 100 m.  At 50 the same cone is 0.86 m and
-        // 14 px at 100 m.  The kernel never sees this number.
-        private _VISIBILITY = 50;
-
-        // The cap exists because tan(mu) DIVERGES as Mach tends to 1.  It
-        // cannot hide a real feature: the kernel contrast vanishes at
-        // Mach 1, so the loop leaves the supersonic regime rather than let
-        // the cap dominate a visible sprite.
-        private _MAX_SIZE = 1.4;
-        // The floor exists because the engine does not draw a sub-pixel
-        // billboard.  Below 0.35 m the sprite is under six pixels at 100 m,
-        // so the floor keeps a trace the kernel supports observable.  It is
-        // a rendering decision, not a physical one.
-        private _MIN_SIZE = 0.35;
-        private _size = ((_coneWidth * _VISIBILITY) min _MAX_SIZE) max _MIN_SIZE;
+        // The drawn size.  When the cap binds the geometry stops governing,
+        // so keep the unclamped size and name the clamp on the log line.
+        private _rawSize = _coneWidth * _VISIBILITY;
+        private _size = (_rawSize min _MAX_SIZE) max _MIN_SIZE;
+        private _clampNote = "";
+        if (_rawSize > _MAX_SIZE) then {
+            _clampNote = format [", CAPPED: the geometry wanted %1 m, the rendering budget caps it at %2 m", (round (_rawSize * 100)) / 100, (round (_MAX_SIZE * 100)) / 100];
+        };
 
         // Alpha is the only free lever.  Fill rate is sprite count times
         // sprite area and never alpha.  This mapping is unchanged: the
@@ -244,9 +280,6 @@ AEE_LOG_DEBUG(_logMsg);
         // sprite widths at every speed.  _MIN_DROP bounds the spawn rate;
         // above the Mach where it binds the sprites stop overlapping and
         // the trace is a sparse haze rather than a ribbon.
-        private _TRAIL_WIDTHS = 4;
-        private _LIVE_SPRITES = 2 * _TRAIL_WIDTHS;
-        private _MIN_DROP = 0.00025;
         private _drop = _dropPhysical max _MIN_DROP;
         private _ttl = _LIVE_SPRITES * _dropPhysical;
 
@@ -263,11 +296,13 @@ AEE_LOG_DEBUG(_logMsg);
         ];
         _source setDropInterval _drop;
 
-        // A throttled trend line, so the fade reads as a series rather
-        // than a wall of lines.
+        // The first tick logs unconditionally, so a trace shorter than the
+        // throttle period still yields one line; the 1 Hz throttle resumes
+        // after it.  The clamp note rides on the same line, so a binding cap
+        // is never silent.
         _ticks = _ticks + 1;
-        if (_ticks >= _nextLog) then {
-            _logMsg = format ["supersonic trace %1: speed %2 m/s, cone %3 deg, size %4 m, contrast %5", _netId, round _speed, round _muDeg, (round (_size * 100)) / 100, round (_contrast * 100)];
+        if ((_ticks == 1) || (_ticks >= _nextLog)) then {
+            _logMsg = format ["supersonic trace %1: speed %2 m/s, cone %3 deg, size %4 m, contrast %5%6", _netId, round _speed, round _muDeg, (round (_size * 100)) / 100, round (_contrast * 100), _clampNote];
             AEE_LOG_DEBUG(_logMsg);
             _nextLog = _ticks + _LOG_EVERY;
         };
