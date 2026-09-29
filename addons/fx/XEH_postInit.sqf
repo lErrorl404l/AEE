@@ -1,5 +1,7 @@
 #include "script_component.hpp"
 
+AEE_MODULE_POST_INIT
+
 // ─── Blast injury channel (issue #132) ────────────────────────────────────
 // Hooks the engine "explosion" event, computes the Kingery-Bulmash
 // incident overpressure at the victim's position from the explosion
@@ -22,7 +24,7 @@ private _fnBlastOverpressure = missionNamespace getVariable [QGVAR(fnc_calculate
 private _fnBlastInjury = missionNamespace getVariable [QGVAR(fnc_calculateBlastInjury), nil];
 if (isNil "_fnBlastOverpressure" || isNil "_fnBlastInjury") exitWith {};
 
-["explosion", {
+["Explosion", {
     params ["_unit", "_explosion"];
     if (_unit isNotEqualTo (call CBA_fnc_currentUnit)) exitWith {};
     if !(missionNamespace getVariable [QGVAR(blastInjuryEnabled), true]) exitWith {};
@@ -54,4 +56,18 @@ if (isNil "_fnBlastOverpressure" || isNil "_fnBlastInjury") exitWith {};
     if (_eardrum > 0.5) then {
         [_unit, "AEE_blastEardrum", 60] call ace_medical_fnc_addToLog;  // no-op without ACE
     };
-}] call CBA_fnc_addEventHandler;
+}, QGVAR(blast)] call EFUNC(core,installPlayerEngineHandler);
+
+// ─── Refractive shock trace renderer (issue #217 follow-on) ──────────────
+// Draws the bow-shock refractive contrast on the local player's own
+// round.  Local-only, so the particle source the renderer attaches is
+// always local and a dedicated server creates nothing.  The renderer
+// re-reads the ballistics kernel each tick with the round's CURRENT
+// velocity, so the trace fades as the round slows out of the supersonic
+// regime instead of holding the muzzle value.
+["Fired", {
+    params ["_unit", "", "", "", "", "", "_projectile"];
+    if (_unit isNotEqualTo (call CBA_fnc_currentUnit)) exitWith {};
+    if (isNull _projectile) exitWith {};
+    [_projectile] call FUNC(renderSupersonicTrace);
+}, QGVAR(supersonicTrace)] call EFUNC(core,installPlayerEngineHandler);

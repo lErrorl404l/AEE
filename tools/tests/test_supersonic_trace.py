@@ -148,33 +148,83 @@ class SupersonicTraceKernel(unittest.TestCase):
                     msg=f"M={mach} beta={beta_deg}",
                 )
 
-    def test_header_states_the_value_is_the_maximum(self) -> None:
-        # The value is not a loose ceiling. NACA 1135 p. 621 gives the
-        # reduction rule that makes it the exact maximum, so the header must
-        # claim the maximum and cite it.
-        self.assertIn("EXACT MAXIMUM", SOURCE.upper())
+    def test_header_states_the_ceiling_and_its_attainment(self) -> None:
+        # The value is an upper bound over every shape. NACA 1135 p. 621
+        # gives the reduction rule that makes the density ratio a function
+        # of the normal Mach number alone, with no shape term. A round with
+        # a finite tip radius attains the bound. A perfectly sharp body
+        # does not, so a single unconditional "exact maximum" overreaches.
+        self.assertIn("EXACT UPPER BOUND", SOURCE.upper())
+        self.assertIn("ANY NOSE SHAPE", SOURCE.upper())
+        self.assertIn("ATTAINED MAXIMUM", SOURCE.upper())
+        self.assertIn("FINITE TIP RADIUS", SOURCE.upper())
+        self.assertIn("PERFECTLY SHARP", SOURCE.upper())
         self.assertIn("1135", SOURCE)
+        self.assertIn("p. 621", SOURCE)
         self.assertIn("stagnation streamline", SOURCE.lower())
+        self.assertNotIn("EXACT MAXIMUM", SOURCE.upper())
 
     def test_header_records_the_refused_floor_and_why(self) -> None:
         # A floor would need theta-beta-M, which is an ATTACHED-shock
-        # relation. A meplat forces detachment, so the floor is refused. The
-        # header must say so and carry the detachment numbers.
+        # relation. A meplat forces detachment, so the floor is refused.
+        # NACA 1135 p. 624 gives the attachment limit for the wedge and for
+        # the cone, both at infinite Mach, so a finite Mach accepts less.
+        # The meplat turn is far above either.
         self.assertIn("NO FLOOR IS RETURNED", SOURCE)
         self.assertIn("DETACHED", SOURCE.upper())
-        for mach, theta in (("2.0", "22.97"), ("2.6", "30.81"), ("3.0", "34.07")):
-            self.assertIn(theta, SOURCE, msg=f"theta_max at Mach {mach} missing")
-        # A meplat demands a far larger turn than any of those, which is the
-        # reason the relation does not apply.
+        self.assertIn("45.6", SOURCE)
+        self.assertIn("57.5", SOURCE)
+        self.assertIn("infinite Mach", SOURCE)
         self.assertIn("90 degrees", SOURCE)
+        # The finite-Mach wedge angles argued a wedge around a body of
+        # revolution. NACA 1135 p. 624 bounds both families instead.
+        for gone in ("22.97", "30.81", "34.07"):
+            self.assertNotIn(gone, SOURCE, msg=f"stale wedge angle {gone}")
 
-    def test_header_does_not_claim_a_conical_result(self) -> None:
-        # A bullet is a body of revolution, so the exact attached solution is
-        # Taylor-Maccoll, not the wedge relation. The header must not use the
-        # wedge form to produce a number, and must record the difference as
-        # undetermined rather than assume it.
+    def test_header_closes_the_wedge_versus_cone_question(self) -> None:
+        # The attached solution for a body of revolution is conical
+        # Taylor-Maccoll, not the wedge relation. That difference changes
+        # the shock angle at a fixed surface turn, so it would change a
+        # point value or a floor. It does not change the density ratio at a
+        # fixed shock angle. The ceiling sits at beta = 90 degrees, where
+        # the planar and the conical case coincide. The question is closed,
+        # so the header no longer records it as undetermined.
         self.assertIn("Taylor-Maccoll", SOURCE)
-        self.assertIn("not determined", SOURCE)
+        self.assertIn("fixed shock angle", SOURCE)
+        self.assertIn("coincide", SOURCE)
+        self.assertIn("irrelevant", SOURCE)
+        self.assertNotIn("not determined", SOURCE.lower())
+
+    def test_ceiling_is_invariant_to_nose_geometry(self) -> None:
+        # The reduction rule makes the local density ratio a function of
+        # M sin(beta) alone, so no nose geometry enters it. The scan below
+        # walks the shock angle: the ratio peaks at beta = 90 degrees, which
+        # is the single value the kernel returns. A nose shape only selects
+        # beta, so it cannot change the ceiling. That a blunt tip attains
+        # the ceiling is a geometry fact, not arithmetic, so this test does
+        # not assert it.
+        for mach in (1.2, 1.5, 2.0, 2.6, 3.0, 4.0):
+            bound = normal_shock_ratio(mach, self.gamma)
+            peak = 0.0
+            for b in range(1, 901):
+                beta = math.radians(b / 10.0)
+                ratio = normal_shock_ratio(mach * math.sin(beta), self.gamma)
+                peak = max(peak, ratio)
+            self.assertAlmostEqual(peak, bound, places=9, msg=f"M={mach}")
+        # A shape term would have to enter as an argument. None does, so the
+        # returned value cannot vary with the nose.
+        params_block = SOURCE.split("params [", 1)[1].split("];", 1)[0]
+        for shape_word in ("nose", "ogive", "meplat", "radius", "shape", "cone"):
+            self.assertNotIn(shape_word, params_block.lower())
+
+    def test_header_records_the_muzzle_only_publish(self) -> None:
+        # The handler publishes one value at the muzzle. Nothing in the
+        # repository reads it, so no per-frame tracker exists. A caller
+        # recomputes at range by passing the current velocity, argument 0.
+        self.assertIn("A SINGLE MUZZLE VALUE", SOURCE.upper())
+        self.assertIn("at the muzzle", SOURCE)
+        self.assertIn("no reader", SOURCE)
+        self.assertIn("argument 0", SOURCE)
 
     def test_header_keeps_the_radio_constant_separate(self) -> None:
         # fnc_calculateRefraction holds the ITU-R P.453 RADIO refractivity.
@@ -220,8 +270,15 @@ class SupersonicTraceWiring(unittest.TestCase):
     """
 
     def setUp(self) -> None:
-        self.post_init = (REPO / "addons/ballistics/XEH_postInit.sqf").read_text(
-            encoding="utf-8"
+        # Comments are stripped.  These tests assert that a construct is
+        # ABSENT from the init file, and the idempotency guard added to every
+        # init file explains itself in prose that names addPerFrameHandler.  A
+        # search that can see comments is a check a sentence can satisfy.
+        self.post_init = "\n".join(
+            (ln if ln.find("//") < 0 else ln[: ln.find("//")])
+            for ln in (REPO / "addons/ballistics/XEH_postInit.sqf")
+            .read_text(encoding="utf-8")
+            .split("\n")
         )
         self.annex = (
             REPO / "docs/wiki/annexes/annex-c-variable-reference.qmd"
@@ -233,9 +290,18 @@ class SupersonicTraceWiring(unittest.TestCase):
         prep = (REPO / "addons/ballistics/XEH_PREP.hpp").read_text(encoding="utf-8")
         self.assertIn("PREP(calculateSupersonicTrace);", prep)
 
+    def test_kernel_is_called_once_and_not_from_a_per_frame_tracker(self) -> None:
+        # The published value is the muzzle value. Nothing reads it, so a
+        # per-frame update would cost every machine for no consumer. The
+        # kernel is called exactly once, on the Fired path.
+        calls = re.findall(r"call FUNC\(calculateSupersonicTrace\)", self.post_init)
+        self.assertEqual(len(calls), 1)
+        for token in ("addPerFrameHandler", "EachFrame", "diag_tickTime"):
+            self.assertNotIn(token, self.post_init)
+
     def test_wired_from_the_fired_handler_not_a_test(self) -> None:
         # The only production shot path is the "fired" event handler.
-        self.assertIn('"fired"', self.post_init)
+        self.assertIn('"Fired"', self.post_init)
         self.assertIn("call FUNC(resolveShot)", self.post_init)
 
     def test_published_value_is_not_scaled_at_the_call_site(self) -> None:
@@ -250,6 +316,17 @@ class SupersonicTraceWiring(unittest.TestCase):
         # validate_cba_settings.py fails on an undocumented orphan write, so
         # the published name must carry an Annex C row.
         self.assertIn("aee_ballistics_supersonicTrace", self.annex)
+
+    def test_annex_c_row_states_the_corrected_ceiling(self) -> None:
+        # The row must document the corrected claim and the muzzle-only
+        # publish, because validate_cba_settings.py fails on an undocumented
+        # orphan write.
+        row = re.search(r"`aee_ballistics_supersonicTrace`[^\n]*", self.annex)
+        self.assertIsNotNone(row)
+        text = row.group(0)
+        self.assertIn("upper bound", text)
+        self.assertIn("finite tip radius", text)
+        self.assertIn("argument 0", text)
 
     def test_wiring_uses_resolved_inputs_not_constants(self) -> None:
         # The call must use the resolved muzzle velocity and live

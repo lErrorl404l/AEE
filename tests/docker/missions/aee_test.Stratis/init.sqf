@@ -2950,9 +2950,24 @@ private _p29Pass = 0;
         diag_log text format ["[PHASE63] [FAIL] debug switch: item %1, load %2", _itemMass, count _load];
     };
 
-diag_log text "[AEE-TEST] DONE";
-
-diag_log text "[AEE-TEST] DONE";
+    // -- PHASE 64 lives in aee_p64_probe.sqf, on its own thread -----------
+    // It was inline here and its FIRST parse error aborted init.sqf and
+    // deleted phases 11 to 63, because Arma parses a script as it
+    // executes it. exec moves the probe off the main thread, so a fault
+    // in it can no longer take the suite with it. The probe owns its own
+    // DONE at +3 s. This file emits one at +6 s so a dead probe FAILS the
+    // run instead of hanging it for the full 180 s.
+    // execVM, NOT exec. exec runs SQS, and the SQF preprocessor never
+    // runs, so every "//" line in the probe is tokenised as CODE. That
+    // produced exactly 40 comment errors for 40 comment lines, then a
+    // cascade that lost every private declaration and ran BOTH branches
+    // of the verdict if/else. execVM preprocesses and compiles SQF.
+    execVM "aee_p64_probe.sqf";
+    // PHASE 65 lives in aee_p65_trace_probe.sqf for the same reason: the
+    // vapour trace renderer exits silently at hasInterface on a server, so the
+    // decision leg is measured on the headless-callable kernel instead.
+    execVM "aee_p65_trace_probe.sqf";
+    [{diag_log text "[AEE-TEST] DONE";}, [], 8] call CBA_fnc_waitAndExecute;
         }, [_t1], 5] call CBA_fnc_waitAndExecute;
     }, [], 7] call CBA_fnc_waitAndExecute;
 }, [], 30] call CBA_fnc_waitAndExecute;
