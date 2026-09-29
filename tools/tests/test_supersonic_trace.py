@@ -497,7 +497,30 @@ class RendererConeContract(unittest.TestCase):
 
 
 class FiredHandlerScans(unittest.TestCase):
-    """The Fired handler never trusts an argument position."""
+    """The ammunition is found by content; the round comes from the proven slot.
+
+    A previous version took the round as the first OBJECT that was not the
+    shooter, guarded by
+
+        _x isEqualType "OBJECT"
+
+    and pinned that design with two tests in this class, one of which asserted
+    the corrected form was ABSENT.  The live RPT at 13:59:54 on 29 Sep proved
+    the design wrong: "isnull: Type String, expected Object" at
+    addons/fx/XEH_postInit.sqf line 92, four times in three seconds.
+    isEqualType compares the left value against the TYPE OF its right-hand
+    argument, so the string literal "OBJECT" is a String and the guard really
+    asked "is _x a String".  It accepted the WEAPON CLASS at slot 1, and isNull
+    then rejected it.  The guard was also the same predicate as the ammunition
+    scan below it, so the two branches could not tell a weapon class from an
+    ammunition class apart.
+
+    Slot 6 is the round, and the ballistics and optics fired handlers in this
+    build already read it from there and both work in game.  The ammunition is
+    still found by content, because that is where a content check adds real
+    robustness: a weapon class is a String too, and the config lookup is what
+    separates it from an ammunition class.
+    """
 
     def setUp(self) -> None:
         self.post = _code_only(FX_POST.read_text(encoding="utf-8"))
@@ -505,15 +528,18 @@ class FiredHandlerScans(unittest.TestCase):
     def test_ammo_is_found_as_a_cfgammo_class(self) -> None:
         self.assertIn('isClass (configFile >> "CfgAmmo" >> _x)', self.post)
 
-    def test_no_positional_projectile_read_remains(self) -> None:
-        self.assertNotIn(
-            'params ["_unit", "", "", "", "", "", "_projectile"]', self.post
-        )
+    def test_round_comes_from_the_slot_the_working_handlers_read(self) -> None:
+        # Same event, same build: ballistics and optics both read the round
+        # from slot 6 and both work in game.
+        self.assertIn('params ["_unit", "", "", "", "", "", "_projectile"]', self.post)
 
-    def test_the_shooter_is_excluded_from_the_round(self) -> None:
-        # The first OBJECT in a Fired event is the shooter, so the round is
-        # the first object that is NOT the shooter.
-        self.assertIn("_x isNotEqualTo _unit", self.post)
+    def test_the_quoted_type_name_guard_is_gone(self) -> None:
+        # A quoted type NAME is a String, not a request for the OBJECT type.
+        # If this comes back, the guard has returned to testing for a String.
+        self.assertNotIn('isEqualType "OBJECT"', self.post)
+
+    def test_round_is_guarded_before_use(self) -> None:
+        self.assertIn("if (isNull _projectile) exitWith {}", self.post)
 
     def test_renderer_receives_the_ammo_class(self) -> None:
         self.assertRegex(
