@@ -258,12 +258,15 @@ class Diagnostics(unittest.TestCase):
         settings = (REPO / "addons/fx/initSettings.inc.sqf").read_text(encoding="utf-8")
         self.assertIn("QGVAR(logDebug)", settings)
 
-    def test_diagnostics_carry_no_physics_claim(self) -> None:
-        # Logging must not smuggle a physical label back in.  "vapour" is
-        # deliberately NOT banned here, because the header must carry the
-        # negation "not a vapour trail"; HonestyLabels requires it.
-        self.assertNotIn("mach cone", SOURCE.lower())
-        self.assertNotIn("condensation cone", SOURCE.lower())
+    def test_diagnostics_name_the_cone_and_keep_the_labels(self) -> None:
+        # The renderer now carries real geometry, so it may name the Mach
+        # cone, and it must state the sign error it corrects.  It must not
+        # smuggle a condensation claim back in.  "vapour" is deliberately
+        # NOT banned, because the header must carry the negation "not a
+        # vapour trail"; HonestyLabels requires it.
+        self.assertIn("MACH CONE", SOURCE_PROSE)
+        self.assertIn("SIGN ERROR", SOURCE_PROSE)
+        self.assertNotIn("CONDENSATION CONE", SOURCE_PROSE)
 
 
 class TestPostInitRegistrationIdempotence(unittest.TestCase):
