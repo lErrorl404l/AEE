@@ -129,7 +129,7 @@ class TestSourcedConstants(unittest.TestCase):
         text = Path(
             "addons/thermal/functions/sensor/fnc_calculateThermalContrast.sqf"
         ).read_text(encoding="utf-8")
-        self.assertIn("8 °C", text)  # delta-T full-contrast figure of merit
+        self.assertIn("8 °C", text)  # delta-T display gain, not a figure of merit
         self.assertIn("0.05", text)  # microbolometer NETD
 
     def test_smoke_taylor_and_kohler(self):

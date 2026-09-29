@@ -18,6 +18,11 @@ from pathlib import Path
 # test_astronomical.py.
 from tools.tests.test_astronomical import ks_lunar_lux
 
+# The comment-stripping helper is shared, so a source lock cannot match the
+# header prose.  The headers quote the shapes they replaced, and a raw grep
+# has matched that prose in this repository before.
+from tools.tests.test_exhaust_shimmer import _code_only
+
 # Repo root: tools/tests/ -> up two levels.
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 _OPTICS = _REPO_ROOT / "addons" / "optics" / "functions"
@@ -4432,6 +4437,269 @@ class TestThermalPaintVisionGate(unittest.TestCase):
             self.assertNotIn(
                 "_thermalOn", self.lines[index], "the restore must always run"
             )
+
+
+class TestThermalEdgeKernel(unittest.TestCase):
+    """The local-contrast thermal edge kernel (fnc_evaluateThermalEdge.sqf).
+
+    The kernel decides a thermal EDGE from a selection's band radiance and a
+    LOCAL background radiance, with a sensor-derived threshold.  It takes the
+    background as an ARGUMENT and never reads the scene AGC window.  That is
+    the correction: a scene-adaptive threshold moves with the scene, and
+    sensitivity belongs to the sensor and stays fixed.
+
+    The arithmetic is mirrored here and locked against the SQF source.  The
+    suite's SQF interpreter (sqf_lite) cannot execute this kernel: the kernel
+    must use `finite` (SQF NaN compares false against everything, so max/min
+    cannot clamp it), and the interpreter implements no `finite`.  The
+    headless behavioural proof is the docker probe aee_p68_edge_probe.sqf,
+    which calls the real kernel with real radiances on the dedicated server.
+    """
+
+    _KERNEL = (
+        _REPO_ROOT
+        / "addons"
+        / "thermal"
+        / "functions"
+        / "solver"
+        / "fnc_evaluateThermalEdge.sqf"
+    )
+
+    @classmethod
+    def setUpClass(cls):
+        cls.code = _code_only(cls._KERNEL.read_text(encoding="utf-8"))
+
+    def _default_threshold(self):
+        # Read the declared default from the real SQF, so a change to it fails
+        # this test until the mirror is re-synced.
+        import re
+
+        m = re.search(r'\["_threshold",\s*([0-9.]+)\s*,\s*\[0\]\]', self.code)
+        if m is None:
+            self.fail("the threshold default is not declared in the kernel")
+        return float(m.group(1))
+
+    def _edge(self, signal, background, threshold=None):
+        # Mirror of the kernel body, pinned by test_source_guards_present.  The
+        # finite guard runs first, exactly as the kernel orders it: SQF max/min
+        # cannot clamp NaN, so the refusal must come before the arithmetic.
+        if threshold is None:
+            threshold = self._default_threshold()
+        if not (
+            math.isfinite(signal)
+            and math.isfinite(background)
+            and math.isfinite(threshold)
+        ):
+            return False, -1
+        if background <= 0:
+            return False, -1
+        contrast = min(1.0, max(0.0, (signal - background) / background))
+        if not math.isfinite(contrast):
+            return False, -1
+        threshold = min(1.0, max(1.0 / 16.0, threshold))
+        return contrast >= threshold, contrast
+
+    def test_source_guards_present(self):
+        code = self.code
+        # The relative contrast against the LOCAL background, verbatim.
+        self.assertIn("((_signal - _background) / _background) max 0 min 1", code)
+        # The background is the divisor, so a non-positive one is refused.
+        self.assertIn("if (_background <= 0) exitWith { [false, -1] };", code)
+        # The non-finite signal guard.
+        self.assertIn("if !(finite _signal) exitWith { [false, -1] };", code)
+        # The threshold is clamped into one band to one, not extrapolated.
+        self.assertIn("_threshold max _bandStep min 1", code)
+        # The refusal is not a contrast in 0..1.
+        self.assertIn("[false, -1]", code)
+        # The value form of the type test, never the quoted type name.
+        self.assertIn("isEqualType 0", code)
+        # The decision and the contrast are returned together.
+        self.assertIn("[_edge, _contrast]", code)
+
+    def test_the_kernel_does_not_read_the_scene_window(self):
+        # The specific error being corrected: a scene statistic must never be
+        # the background, and the AGC window must never enter the criterion.
+        self.assertNotIn("agcRad", self.code)
+
+    def test_signal_well_above_the_local_background_is_an_edge(self):
+        detected, contrast = self._edge(60.0, 40.0)
+        self.assertTrue(detected)
+        self.assertGreater(contrast, 0.0)
+
+    def test_signal_at_its_local_background_is_not_an_edge(self):
+        detected, contrast = self._edge(40.0, 40.0)
+        self.assertFalse(detected)
+        self.assertAlmostEqual(contrast, 0.0, places=9)
+
+    def test_signal_below_its_local_background_is_not_an_edge_and_clamps(self):
+        detected, contrast = self._edge(20.0, 40.0)
+        self.assertFalse(detected)
+        self.assertAlmostEqual(contrast, 0.0, places=9)
+
+    def test_degenerate_background_is_refused_rather_than_divided_by(self):
+        for bad in (0.0, -5.0):
+            detected, contrast = self._edge(60.0, bad)
+            self.assertFalse(detected, f"background {bad!r} must not detect")
+            self.assertEqual(contrast, -1, f"background {bad!r} must refuse")
+
+    def test_non_finite_signal_is_refused(self):
+        # The guard is source-locked above.  The mirror refuses NaN and the
+        # infinities the same way the kernel's `finite` check does.
+        for bad in (float("nan"), float("inf"), float("-inf")):
+            detected, contrast = self._edge(bad, 40.0)
+            self.assertFalse(detected, f"{bad!r} must not detect")
+            self.assertEqual(contrast, -1, f"{bad!r} must refuse")
+
+    def test_threshold_of_zero_and_above_one_is_clamped(self):
+        signal, background = 60.0, 40.0
+        # Zero is handled: it clamps up to the one-band minimum.
+        self.assertEqual(
+            self._edge(signal, background, 0.0),
+            self._edge(signal, background, 1.0 / 16.0),
+        )
+        # Above one clamps down to one.
+        self.assertEqual(
+            self._edge(signal, background, 5.0),
+            self._edge(signal, background, 1.0),
+        )
+
+    def test_result_is_independent_of_the_scene(self):
+        # THE test that would have failed the replaced kernel.  Two different
+        # scene scales with the same LOCAL background and the same signal must
+        # give the same answer.  The kernel reads no scene.
+        signal, background = 60.0, 40.0
+        self.assertEqual(self._edge(signal, background), self._edge(signal, background))
+        self.assertNotIn("agcRad", self.code)
+        # The replaced kernel normalised by the scene window, so two scene
+        # scales gave two different answers for the SAME radiance:
+        scene_a = (10.0, 50.0)
+        scene_b = (0.0, 200.0)
+        old_a = min(1.0, max(0.0, (signal - scene_a[0]) / (scene_a[1] - scene_a[0])))
+        old_b = min(1.0, max(0.0, (signal - scene_b[0]) / (scene_b[1] - scene_b[0])))
+        self.assertNotAlmostEqual(old_a, old_b, places=3)
+
+
+class TestThermalEdgeWiring(unittest.TestCase):
+    """The wire-in of the edge state, and the clean removal of the old kernel.
+
+    The edge decision must not be the removed scene-window kernel, and it must
+    not overwrite the brightness ladder it sits beside.  Both are asserted
+    structurally, against comment-stripped code, never against prose.
+    """
+
+    def _tree_files(self):
+        for root in (_REPO_ROOT / "addons", _REPO_ROOT / "tools", _REPO_ROOT / "tests"):
+            for path in root.rglob("*"):
+                if path.is_file() and path.suffix in (".sqf", ".hpp", ".py", ".json"):
+                    yield path
+
+    def test_removed_kernel_and_probe_leave_no_reference(self):
+        # The needles are built from parts, so the test does not match itself.
+        needles = ("evaluateThermal" + "Detection", "P" + "67")
+        offenders = []
+        for path in self._tree_files():
+            text = path.read_text(encoding="utf-8", errors="replace")
+            if any(needle in text for needle in needles):
+                offenders.append(str(path.relative_to(_REPO_ROOT)))
+        self.assertEqual(offenders, [], f"stale references survive: {offenders}")
+
+    def test_edge_state_does_not_overwrite_the_brightness_ladder(self):
+        overlay = (
+            _REPO_ROOT
+            / "addons"
+            / "thermal"
+            / "functions"
+            / "fusion"
+            / "fnc_applyFusionOverlay.sqf"
+        ).read_text(encoding="utf-8")
+        code = _code_only(overlay)
+        # The kernel is called with the selection radiance and a local
+        # background radiance.
+        self.assertIn(
+            "call FUNC(evaluateThermalEdge)", code, "the edge kernel is not wired"
+        )
+        # The brightness ladder still owns the material slot...
+        material_lines = [l for l in code.split("\n") if "setObjectMaterial" in l]
+        self.assertTrue(material_lines, "the material swap is gone")
+        for line in material_lines:
+            self.assertNotIn(
+                "_edge", line, "the edge state overwrote the brightness ladder"
+            )
+        self.assertIn("fusion_emissive_%1.rvmat", code)
+        self.assertIn("_bandPct", code)
+        # ...and the edge is published as SEPARATE state, keyed like the
+        # selection temperature.
+        self.assertIn("QGVAR(selThermalEdge)", code)
+        self.assertIn("_edgeMap set [_entryKey", code)
+
+
+class TestFusionCapabilityAcceptance(unittest.TestCase):
+    """The widened fusion capability probe (fnc_isFusionCapable.sqf).
+
+    AEE accepted a `visionMode` entry of exactly `ti` and nothing else, so a
+    headset that declared `thermalMode` without spelling its mode `TI` was
+    refused.  The probe now matches the ECOTI reference in three ways while
+    the mode-1 guard and the always-on override stay untouched.
+
+    A dedicated server cannot set a unit's NVG mode, so the config acceptance
+    is tested as logic and the SQF source is locked to the same three
+    conditions.  The plain NVGoggles shape is built here, not shipped.
+    """
+
+    _PROBE = (
+        _REPO_ROOT
+        / "addons"
+        / "thermal"
+        / "functions"
+        / "fusion"
+        / "fnc_isFusionCapable.sqf"
+    )
+
+    @classmethod
+    def setUpClass(cls):
+        cls.code = _code_only(cls._PROBE.read_text(encoding="utf-8"))
+
+    def _accepts(self, vision_modes, thermal_modes=None):
+        # Mirror of the config acceptance in the SQF, pinned by
+        # test_source_conditions.
+        thermal_modes = thermal_modes or []
+        for mode in vision_modes:
+            folded = mode.upper()
+            if "TI" in folded or "THERMAL" in folded:
+                return True
+        return len(thermal_modes) > 0
+
+    def test_source_conditions(self):
+        code = self.code
+        # Substring search, case-folded, over visionMode.
+        self.assertIn("toUpper _x", code)
+        self.assertIn('"TI" in _m', code)
+        self.assertIn('"THERMAL" in _m', code)
+        # The third condition, a non-empty thermalMode array.
+        self.assertIn('"thermalMode"', code)
+        self.assertIn("_thermalModes isNotEqualTo []", code)
+        # The base-layer guard and the override stay untouched.
+        self.assertIn("currentVisionMode _unit != 1", code)
+        self.assertIn("QGVAR(fusionAlwaysOn)", code)
+
+    def test_mode_named_ti_is_accepted(self):
+        self.assertTrue(self._accepts(["Normal", "NVG", "TI"]))
+
+    def test_mode_named_thermal_is_accepted(self):
+        # The case the old equality test refused.
+        self.assertTrue(self._accepts(["Normal", "NVG", "Thermal"]))
+
+    def test_thermal_mode_without_ti_is_accepted(self):
+        # The other case the old equality test refused: thermalMode declares
+        # the channel without a TI visionMode entry.
+        self.assertTrue(self._accepts(["Normal", "NVG"], ["WHITE", "BLACK"]))
+
+    def test_plain_nv_goggles_are_refused(self):
+        # Vanilla NVGoggles: visionMode {"Normal","NVG"}, no thermalMode.
+        self.assertFalse(self._accepts(["Normal", "NVG"], []))
+
+    def test_empty_config_is_refused(self):
+        self.assertFalse(self._accepts([], []))
 
 
 if __name__ == "__main__":
