@@ -1,5 +1,7 @@
 #include "script_component.hpp"
 
+AEE_MODULE_POST_INIT
+
 if (is3DEN) exitWith {};
 
 // ─── Penetration gate (issue #126) ────────────────────────────────────────
@@ -9,7 +11,7 @@ if (is3DEN) exitWith {};
 // original value for non-projectile/non-vehicle damage (no effect).
 // ACE3 rule: the gate returns _oldDamage when stopped (never re-inflates
 // _damage), so ACE3's delta stays at zero.
-["HandleDamage", {
+["LandVehicle", "HandleDamage", {
     params ["_unit", "_selection", "_damage", "_source", "_projectile",
             "_hitIndex", "_instigator", "_hitPoint"];
     // Only land vehicles; cheap gate for everything else.
@@ -20,5 +22,5 @@ if (is3DEN) exitWith {};
     if !(missionNamespace getVariable [QGVAR(penetrationGate), true]) exitWith { _damage };
     [_unit, _selection, _damage, _source, _projectile, _hitIndex,
      _instigator, _hitPoint] call FUNC(penetrationGate);
-}] call CBA_fnc_addEventHandler;
+}, QGVAR(penetrationGateHandler)] call EFUNC(core,installObjectEngineHandler);
 

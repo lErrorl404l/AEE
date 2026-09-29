@@ -1,5 +1,7 @@
 #include "script_component.hpp"
 
+AEE_MODULE_POST_INIT
+
 if (is3DEN) exitWith {};
 
 [] call FUNC(init);
@@ -12,11 +14,11 @@ if (is3DEN) exitWith {};
 // damage event; fnc_handleCollisionDamage returns the ORIGINAL value
 // for non-collision events (projectile impacts pass through to the
 // ballistic model untouched - no double-count).
-["HandleDamage", {
+["AllVehicles", "HandleDamage", {
     params ["_unit", "_selection", "_damage", "_source", "_projectile",
             "_hitIndex", "_instigator", "_hitPoint"];
     // Only vehicles; the handler is a cheap gate for everything else.
     if (!(_unit isKindOf "LandVehicle") && {!(_unit isKindOf "Air")}) exitWith { _damage };
     [_unit, _selection, _damage, _source, _projectile, _hitIndex,
      _instigator, _hitPoint] call FUNC(handleCollisionDamage);
-}] call CBA_fnc_addEventHandler;
+}, QGVAR(collisionDamage)] call EFUNC(core,installObjectEngineHandler);
