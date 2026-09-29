@@ -150,7 +150,9 @@ class TestFusionOverlayRestores(unittest.TestCase):
         # the restore branch unreachable. A guard that pins the broken spelling
         # is worse than no guard, so this asserts the SHAPE instead.
         code = _code(self._TEARDOWN)
-        self.assertIn("applyFusionOverlay", code, "the teardown never asks the overlay to restore")
+        self.assertIn(
+            "applyFusionOverlay", code, "the teardown never asks the overlay to restore"
+        )
         calls = [
             line
             for line in code.splitlines()
@@ -163,8 +165,12 @@ class TestFusionOverlayRestores(unittest.TestCase):
             f"the restore call must pass an argument array, got {args}",
         )
         parts = [a.strip() for a in args[1:-1].split(",")]
-        self.assertEqual(len(parts), 2, f"the overlay takes player then mode, got {parts}")
-        self.assertEqual(parts[1], '"EXIT"', f"the mode must be the second argument, got {args}")
+        self.assertEqual(
+            len(parts), 2, f"the overlay takes player then mode, got {parts}"
+        )
+        self.assertEqual(
+            parts[1], '"EXIT"', f"the mode must be the second argument, got {args}"
+        )
         self.assertNotEqual(
             parts[0], '"EXIT"', "the mode must never be bound to the player parameter"
         )
@@ -188,7 +194,9 @@ class TestFusionOverlayRestores(unittest.TestCase):
             first = re.search(r'\[[ \t]*"(\w+)"[ \t]*,.*?,[ \t]*\[([^\]]*)\]', head)
             if first and "objNull" in first.group(2) and "string" not in first.group(2):
                 sig[f.stem[4:]] = (f, first.group(1))
-        self.assertTrue(sig, "no object-typed first parameters found, the parse is wrong")
+        self.assertTrue(
+            sig, "no object-typed first parameters found, the parse is wrong"
+        )
 
         offenders = []
         for f in sorted((REPO / "addons").rglob("*.sqf")):
@@ -201,8 +209,10 @@ class TestFusionOverlayRestores(unittest.TestCase):
                     continue
                 target = m.group(1) or m.group(2)
                 if target in sig:
-                    offenders.append(f"{f.relative_to(REPO)}:{n} binds a mode string to {target}, "
-                                    f"whose first parameter {sig[target][1]} is object typed")
+                    offenders.append(
+                        f"{f.relative_to(REPO)}:{n} binds a mode string to {target}, "
+                        f"whose first parameter {sig[target][1]} is object typed"
+                    )
         self.assertEqual(offenders, [], "\n".join(offenders))
 
 
@@ -286,14 +296,14 @@ class TestInitIsIdempotent(unittest.TestCase):
                 if path.name == "XEH_postInit.sqf"
                 else "AEE_MODULE_PRE_INIT"
             )
-            guard = next(
-                (i for i, line in enumerate(lines) if want in line), None
-            )
+            guard = next((i for i, line in enumerate(lines) if want in line), None)
             name = f"{path.parent.name}/{path.name}"
             if guard is None:
                 offenders.append(f"{name} has no {want} for its own XEH event")
             elif guard > regs[0]:
-                offenders.append(f"{name} guards after registration at line {regs[0] + 1}")
+                offenders.append(
+                    f"{name} guards after registration at line {regs[0] + 1}"
+                )
         self.assertEqual(offenders, [], "; ".join(offenders))
 
     def test_the_guard_macros_use_one_distinct_flag_per_xeh_event(self):
@@ -459,10 +469,98 @@ class TestSettingMacroStringtableContract(unittest.TestCase):
         name, and the owning module's own read was reported as a scope bug.
         That is a false positive in the validator, not a defect in the setting.
         """
-        validator = (
-            REPO / "tools/validation/validate_cross_module.py"
-        ).read_text(encoding="utf-8")
+        validator = (REPO / "tools/validation/validate_cross_module.py").read_text(
+            encoding="utf-8"
+        )
         self.assertIn("AEE_SETTING_", validator, "validator cannot see the macro form")
+
+
+class TestPPEffectLifecycle(unittest.TestCase):
+    """Shape 7. A handle read below a guard cannot be cleaned up on that path.
+
+    fnc_managePostProcess returned at three early exits (optics disabled, the
+    player nil or dead, the camera not on the player) while the handles and
+    the cleanup sat below all three, so a live effect survived each of them.
+    The isolated NVG DoF handle was destroyed by optics rather than by the
+    addon that owns it, and the night grain read a handle that no code wrote.
+    """
+
+    _MANAGE = REPO / "addons/optics/functions/vision/fnc_managePostProcess.sqf"
+    _OPTICS_POST = REPO / "addons/optics/XEH_postInit.sqf"
+    _NIGHT_GRAIN = REPO / "addons/nightvision/functions/fnc_applyNightGrain.sqf"
+    _TEARDOWN = REPO / "addons/nightvision/functions/fnc_teardownNvgDoF.sqf"
+    _ALLOWLIST = REPO / "tools/validation/cba_settings_allowlist.txt"
+
+    def test_cleanup_reaches_every_early_exit(self):
+        """The handles must be read before the first guard.  A read below a
+        guard leaves that path's cleanup with nothing to disable."""
+        code = _code(self._MANAGE)
+        first_exit = code.index("exitWith")
+        for handle in ("_hChroma =", "_hBlur   =", "_hCC     ="):
+            self.assertLess(
+                code.index(handle),
+                first_exit,
+                f"{handle.strip(' =')} is read after the first exit",
+            )
+
+    def test_each_early_exit_runs_the_cleanup(self):
+        code = _code(self._MANAGE)
+        self.assertEqual(
+            code.count("call _cleanup"),
+            3,
+            "an early exit does not run the cleanup",
+        )
+
+    def test_recreation_goes_through_the_registry(self):
+        """A recreated handle must stay owned, so a whole-scope release
+        reaches it and the WARN can name the scope and key that lost it."""
+        code = _code(self._MANAGE)
+        self.assertIn("EFUNC(core,createPPEffect)", code)
+        self.assertNotIn(
+            "= ppEffectCreate", code, "the recreation bypasses the registry"
+        )
+        self.assertIn("optics|%1", code, "the lost-handle WARN does not name the scope")
+
+    def test_optics_does_not_destroy_another_modules_handle(self):
+        code = _code(self._OPTICS_POST)
+        self.assertIn("EFUNC(nightvision,teardownNvgDoF)", code)
+        self.assertNotIn(
+            "ppEffectDestroy", code, "optics destroys a nightvision handle directly"
+        )
+        self.assertTrue(
+            self._TEARDOWN.exists(), "the owning teardown function is missing"
+        )
+        self.assertIn("ppEffectDestroy", _code(self._TEARDOWN))
+
+    def test_night_grain_handle_is_created_and_destroyed(self):
+        code = _code(self._NIGHT_GRAIN)
+        self.assertIn(
+            "EFUNC(core,createPPEffect)",
+            code,
+            "the night grain handle is never created",
+        )
+        self.assertIn(
+            "EFUNC(core,destroyPPEffect)",
+            code,
+            "the night grain handle is never destroyed",
+        )
+        self.assertIn("ppHandle_FilmGrain", code)
+
+    def test_night_grain_allowlist_reason_is_true(self):
+        """The old reason claimed a create loop wrote the variable; no code
+        did.  The reason must name the producer that now exists."""
+        text = self._ALLOWLIST.read_text(encoding="utf-8")
+        line = next(
+            entry
+            for entry in text.splitlines()
+            if entry.startswith("aee_nightvision_ppHandle_FilmGrain")
+        )
+        self.assertNotIn(
+            "create loop",
+            line,
+            "the reason still claims a create loop that does not exist",
+        )
+        self.assertIn("fnc_createPPEffect", line)
 
 
 if __name__ == "__main__":

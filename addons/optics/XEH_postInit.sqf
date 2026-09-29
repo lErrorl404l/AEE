@@ -128,11 +128,11 @@ AEE_MODULE_POST_INIT
                 // Kill the NVG DoF effect so its last focus value (e.g.
                 // PVS-31's 20 m ring) does not leak into the thermal view
                 // as a fixed focus blur.
-                private _hDof = missionNamespace getVariable [QEGVAR(nightvision,ppHandle_NVG_DoF), -1];
-                if (_hDof >= 0) then {
-                    ppEffectDestroy _hDof;
-                    missionNamespace setVariable [QEGVAR(nightvision,ppHandle_NVG_DoF), -1];
-                };
+                // The NVG objective-focus handle belongs to nightvision.  Ask
+                // that addon to release it rather than destroying another
+                // module's handle from here, so ownership stays with the owner
+                // and a scope release can never strand it.
+                [] call EFUNC(nightvision,teardownNvgDoF);
                 // Scene-adaptive AGC (issue #196): compute the scene's
                 // radiance window from the physics state BEFORE the
                 // per-selection passes read it.  A real FLIR re-evaluates
