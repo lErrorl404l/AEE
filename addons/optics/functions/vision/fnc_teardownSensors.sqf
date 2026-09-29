@@ -39,14 +39,16 @@ if (isNil QGVAR(sensorPFH)) exitWith {};
 ["EXIT"] call EFUNC(thermal,applyRainDroplets);
 // Fusion teardown: destroy the fusion PP handles and the diet sun so the
 // overlay does not leak into normal vision.  The forced 0 is here for its
-// side effect, it destroys those handles.  It must not LATCH: the reader
-// defaults to 1 but only while the variable is unset, so writing 0 here
-// left the mode off for the rest of the session and nothing called
-// cycleFusionMode with -1 to bring it back.  Restore 1 to match the default
-// the reader at optics/XEH_postInit.sqf applies while the variable is unset.
+// side effect, it destroys those handles.  It must not LATCH, and the value
+// restored is the READER'S OWN DEFAULT, read from the reader rather than
+// restated here, so the two cannot drift apart.  The default is I2-only
+// (0): the operator switches fusion on, and a teardown puts the mode back
+// to the state the operator did not ask to change.  Restoring 1 here would
+// fight that default and turn fusion on with no opt-in, which is the fault
+// this replaces.
 private _fusionModeVar = QEGVAR(thermal,fusionMode);
 [0] call EFUNC(thermal,cycleFusionMode);
-missionNamespace setVariable [_fusionModeVar, 1];
+missionNamespace setVariable [_fusionModeVar, 0];
 ["EXIT"] call EFUNC(thermal,applyFusionSun);
 // Restore the fusion emissive materials.  cycleFusionMode destroys the two
 // fusion post-process handles only, so without this the swapped materials

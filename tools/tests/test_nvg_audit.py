@@ -16,6 +16,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 
+from tools.tests.test_exhaust_shimmer import _code_only  # noqa: E402
+
 FNC = (
     Path(__file__).parents[2] / "addons/nightvision/functions/fnc_applyNVGTubeModel.sqf"
 )
@@ -331,6 +333,142 @@ class TestPerceptualDifferentiation(unittest.TestCase):
             r"_perceived = 0\.65 \+ \(1 - 0\.65\) \* "
             r"\(_brightness \* _cleanliness\);",
         )
+
+
+class TestPhosphorFollowsTheDevice(unittest.TestCase):
+    """The phosphor is a DEVICE property, not a tier property.
+
+    Live RPT 2026-09-29: "NVG tier: hmd=NVGogglesB_grn_F -> PVS31" and the
+    operator reported a purple image, not green and not white.  The PVS-31
+    tier carried the shape this file's own header labels P45 white, with the
+    blue channel the heaviest, and green tube light under a blue-heavy tint
+    is purple.  A tier decides the noise floor, the MTF, the bloom and the
+    focus; which phosphor a tube uses comes from the device.
+
+    Every number here is READ OUT OF THE SQF: the two shapes from the
+    header definitions the resolver is bound to, and the token test from the
+    resolver itself.  Nothing is hardcoded, so changing a shape in the SQF
+    changes the expectation instead of failing it.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        cls.raw = FNC.read_text(encoding="utf-8")
+        cls.code = _code_only(cls.raw)
+
+    def _shape_from_header(self, name):
+        """The shape the header records for a phosphor, in comments."""
+        m = re.search(rf"{name} \([a-z-]+\)[^\n]*shape \[([0-9., ]+)\]", self.raw)
+        self.assertIsNotNone(m, f"the header no longer defines the {name} shape")
+        return _floats(m.group(1))
+
+    def _resolver(self):
+        """(fallback, token, tint, weight, delimiter) from the resolver."""
+        start = self.code.index("private _phosphor =")
+        end = self.code.index("QGVAR(nvgTubeTier), _tier]")
+        body = self.code[start:end]
+        fb = re.search(r'private _phosphor = "(\w+)"', body)
+        tok = re.search(r'if \(_x == "(\w+)"\) then', body)
+        tint = re.search(r"_phosphorTint = \[([0-9., ]+)\]", body)
+        weight = re.search(r"_nvgWeight = \[([0-9., ]+)\]", body)
+        delim = re.search(r'splitString "([^"]+)"', body)
+        for part, what in (
+            (fb, "fallback"),
+            (tok, "device token"),
+            (tint, "device tint"),
+            (weight, "device weight"),
+            (delim, "token delimiter"),
+        ):
+            self.assertIsNotNone(part, f"the resolver has no {what}")
+        self.assertIn(
+            'if (_phosphor == "%s") then' % tok.group(1),
+            body,
+            "the device token must be the one that selects the device shape",
+        )
+        return (
+            fb.group(1),
+            tok.group(1),
+            _floats(tint.group(1)),
+            _floats(weight.group(1)),
+            delim.group(1),
+        )
+
+    def _resolve(self, hmd):
+        """The tint the SQF applies for this hmd, resolved from the source."""
+        _, token, tint, _, delim = self._resolver()
+        if token in hmd.lower().split(delim):
+            return tint
+        return None  # the hmd states no phosphor, so the tier value stands
+
+    def test_green_hmd_resolves_to_the_green_shape(self):
+        self.assertIsNotNone(
+            self._resolve("NVGogglesB_grn_F"),
+            "the device named _grn_ must resolve to the green phosphor, not "
+            "fall through to the tier value",
+        )
+
+    def test_device_shape_is_the_shape_the_header_defines(self):
+        _, _, tint, _, _ = self._resolver()
+        self.assertEqual(
+            tint,
+            self._shape_from_header("P43"),
+            "the shape the resolver applies must be the P43 green shape the "
+            "header defines for it",
+        )
+
+    def test_green_shape_cannot_render_purple(self):
+        # The regression itself: a green tube under a tint whose blue channel
+        # is the heaviest renders purple.  The green shape kills blue.
+        _, _, tint, _, _ = self._resolver()
+        self.assertEqual(tint[2], 0.0, "the green phosphor must kill the blue channel")
+        self.assertGreater(tint[1], 0.0, "the green phosphor must carry green")
+
+    def test_hmd_without_a_phosphor_keeps_the_tier_value(self):
+        # No device in this repository states a white phosphor, so inventing
+        # a token for one would be guessing.  An hmd that states nothing must
+        # keep the tier value and the log must name the tier as the source.
+        for hmd in ("NVGoggles", "NVGoggles_OPFOR", "FirstPersonalKit"):
+            self.assertIsNone(
+                self._resolve(hmd),
+                f"{hmd} states no phosphor, so it must keep the tier value",
+            )
+        self.assertIn("phosphor=%3", self.code, "the tier log must name the source")
+        self.assertIn("_phosphor", self.code, "the resolved source must be logged")
+
+    def test_tier_table_shapes_read_from_the_source(self):
+        # Records which shape each tier CARRIED as its fallback.  PVS-31 is
+        # the white one, which is why a _grn_ device on that tier rendered
+        # purple before the device was consulted.  Nothing here changes a
+        # tier: the fallback stays, and the device now wins where it states
+        # a phosphor.
+        bodies = _tier_switch_bodies(self.code)
+        shapes = {}
+        for tier, label in _TIER_LABEL.items():
+            m = re.search(r"_phosphorTint = \[([0-9., ]+)\]", bodies[label])
+            self.assertIsNotNone(m, f"no phosphorTint in the {tier} tier body")
+            shapes[tier] = _floats(m.group(1))
+        green = self._shape_from_header("P43")
+        white = self._shape_from_header("P45")
+        self.assertEqual(
+            shapes["PVS31"], white, "the PVS-31 tier carries the white shape"
+        )
+        for tier in ("GEN3", "GEN2", "GEN1"):
+            self.assertEqual(
+                shapes[tier][2],
+                green[2],
+                f"{tier} kills blue like the green shape, so it is not the "
+                f"white one: {shapes[tier]} vs {white}",
+            )
+        # The bug was reachable only on a tier whose fallback is NOT green.
+        self.assertNotEqual(
+            shapes["PVS31"],
+            green,
+            "if PVS-31 now carried green there would be nothing to fix",
+        )
+
+
+def _floats(text):
+    return [float(x) for x in text.replace(" ", "").split(",") if x]
 
 
 if __name__ == "__main__":

@@ -155,7 +155,7 @@
       "kind": "engine_base",
       "provenance": [
         "addons/core/functions/fnc_calculateIlluminance.sqf:275",
-        "addons/nightvision/functions/fnc_applyNVGTubeModel.sqf:516"
+        "addons/nightvision/functions/fnc_applyNVGTubeModel.sqf:535"
       ],
       "token": "F_40_White"
     },
@@ -233,7 +233,7 @@
         "addons/thermal/functions/display/fnc_applyExhaustHeat.sqf:60",
         "addons/thermal/functions/display/fnc_applyImpactHeat.sqf:53",
         "addons/thermal/functions/display/fnc_getThermalSelections.sqf:31",
-        "addons/thermal/functions/fusion/fnc_applyFusionOverlay.sqf:235",
+        "addons/thermal/functions/fusion/fnc_applyFusionOverlay.sqf:256",
         "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:196",
         "addons/thermal/functions/surface/fnc_getSelectionMaterials.sqf:149"
       ],

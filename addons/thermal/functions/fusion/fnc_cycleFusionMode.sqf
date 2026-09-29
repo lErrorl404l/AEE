@@ -31,11 +31,22 @@ if (_force >= 0) then {
 missionNamespace setVariable [QGVAR(fusionMode), _mode];
 
 if (_mode == 0) then {
-    // I2 only: tear down the fusion effects so the NVG base is clean.
+    // I2 only: tear down the fusion effects so the NVG base is clean.  Each
+    // destroy is reported, so the full handle lifecycle appears in the log:
+    // created in fnc_applyFusionPP, destroyed here.  A handle that outlives
+    // its mode is a silent leak, and a silent leak cannot be found.
     private _hGrain = missionNamespace getVariable [QGVAR(ppHandle_Fusion_Grain), -1];
-    if (_hGrain >= 0) then { ppEffectDestroy _hGrain; };
+    if (_hGrain >= 0) then {
+        ppEffectDestroy _hGrain;
+        private _logMsg = format ["fusion PP: destroyed grain handle=%1", _hGrain];
+        AEE_LOG_DEBUG(_logMsg);
+    };
     private _hCC = missionNamespace getVariable [QGVAR(ppHandle_Fusion_CC), -1];
-    if (_hCC >= 0) then { ppEffectDestroy _hCC; };
+    if (_hCC >= 0) then {
+        ppEffectDestroy _hCC;
+        private _logMsg = format ["fusion PP: destroyed CC handle=%1", _hCC];
+        AEE_LOG_DEBUG(_logMsg);
+    };
     missionNamespace setVariable [QGVAR(ppHandle_Fusion_Grain), -1];
     missionNamespace setVariable [QGVAR(ppHandle_Fusion_CC), -1];
 };
