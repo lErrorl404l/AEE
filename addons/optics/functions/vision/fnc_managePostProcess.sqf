@@ -69,35 +69,42 @@ if (cameraOn != _player && {cameraOn != _veh}) exitWith {
 };
 
 // ─── Persistent handles (recreate if missing/stale) ──────────────────────
-// The engine kills ppEffects on alt-tab, resize, AT sights and at mission
-// load boundaries.  A stored positive handle then refers to a dead effect,
-// and every ppEffectAdjust on it logs "Invalid post effect handle".
-// There is no engine query for "is this handle alive", so the robust
-// pattern is: if the stored value is -1 (or the effect was destroyed in a
-// sensor exit block), recreate here before use.  Recreation goes through the
-// shared registry, so a recreated handle stays owned and a whole-scope
-// release reaches it; the WARN names the scope and key that lost it.
-if (_hChroma < 0 || _hBlur < 0 || _hCC < 0) then {
-    {
-        _x params ["_name", "_priority", "_legacy"];
-        if ((missionNamespace getVariable [_legacy, -1]) < 0) then {
-            private _owner = missionNamespace getVariable [format [QEGVAR(core,ppHandle_%1_%2), "optics", _name], -1];
-            private _logMsg = format ["optics|%1 handle lost (mirror=-1 registry=%2), recreating via registry", _name, _owner];
-            AEE_LOG_WARN(_logMsg);
-            private _handle = ["optics", _name, _name, _priority, _legacy] call EFUNC(core,createPPEffect);
-            if (_handle >= 0 && (missionNamespace getVariable [_legacy, -1]) < 0) then {
-                missionNamespace setVariable [_legacy, _handle];
-            };
+// THE REGISTRY IS THE AUTHORITATIVE RECORD and the legacy mirror is only a
+// cache of it, so the registry decides and the cache is refreshed from it.
+// The old gate read the cache and warned "handle lost" when it was -1, and a
+// live log proved that a FALSE ALARM: the registry still held the live handle
+// and the very next line reported the effect already owned at that same
+// handle.  A weaker record than the real one must not raise a warning, or the
+// warning teaches you to ignore it.  Every tick reconciles the cache against
+// the registry rather than only when a cache read looks wrong, which removes
+// the coupling that produced the false alarm.
+//
+// THE LIMIT STAYS: there is no engine query for "is this handle alive", so an
+// effect the ENGINE killed while the registry still lists it cannot be
+// detected here.  The engine did log "EPE manager release" in the same
+// session.  That gap is stated rather than papered over with the cache proxy
+// that misreported.
+{
+    _x params ["_name", "_priority", "_legacy"];
+    private _owner = missionNamespace getVariable [format [QEGVAR(core,ppHandle_%1_%2), "optics", _name], -1];
+    if (_owner < 0) then {
+        private _logMsg = format ["optics|%1 has no registry handle, creating it", _name];
+        AEE_LOG_WARN(_logMsg);
+        private _handle = ["optics", _name, _name, _priority, _legacy] call EFUNC(core,createPPEffect);
+        if (_handle >= 0) then { missionNamespace setVariable [_legacy, _handle]; };
+    } else {
+        if ((missionNamespace getVariable [_legacy, -1]) != _owner) then {
+            missionNamespace setVariable [_legacy, _owner];
         };
-    } forEach [
-        ["ChromAberration", 3000, QGVAR(ppHandle_ChromAberration)],
-        ["DynamicBlur",     4000, QGVAR(ppHandle_DynamicBlur)],
-        ["ColorCorrections", 5000, QGVAR(ppHandle_ColorCorrections)]
-    ];
-    _hChroma = missionNamespace getVariable [QGVAR(ppHandle_ChromAberration), -1];
-    _hBlur   = missionNamespace getVariable [QGVAR(ppHandle_DynamicBlur), -1];
-    _hCC     = missionNamespace getVariable [QGVAR(ppHandle_ColorCorrections), -1];
-};
+    };
+} forEach [
+    ["ChromAberration", 3000, QGVAR(ppHandle_ChromAberration)],
+    ["DynamicBlur",     4000, QGVAR(ppHandle_DynamicBlur)],
+    ["ColorCorrections", 5000, QGVAR(ppHandle_ColorCorrections)]
+];
+_hChroma = missionNamespace getVariable [QGVAR(ppHandle_ChromAberration), -1];
+_hBlur   = missionNamespace getVariable [QGVAR(ppHandle_DynamicBlur), -1];
+_hCC     = missionNamespace getVariable [QGVAR(ppHandle_ColorCorrections), -1];
 
 // ─── NVG tube model ──────────────────────────────────────────────────────
 // Sensor modes (NVG/thermal) are owned by the fast sensor PFH in
