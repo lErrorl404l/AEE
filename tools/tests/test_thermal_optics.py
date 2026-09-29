@@ -4187,13 +4187,15 @@ class TestFusionPipeline(unittest.TestCase):
 
     def test_fusion_mode_does_not_latch_off_on_teardown(self):
         # The teardown forces mode 0 for its SIDE EFFECT: it destroys the two
-        # fusion post-process handles.  The reader in optics/XEH_postInit.sqf
-        # is getVariable [QGVAR(fusionMode), 1] == 1, and that default applies
-        # only while the variable is unset.  cycleFusionMode was the only
-        # writer and no keybind called it with -1, so a teardown that left 0 in
-        # place turned fusion off for the rest of the session with no way
-        # back.  Pin the restore AND its order, since restoring before the
-        # forced 0 would simply be undone by it.
+        # fusion post-process handles.  It must not LATCH, so the value it
+        # restores is the READER'S OWN DEFAULT, read out of the reader rather
+        # than restated here, so the two cannot drift apart.
+        #
+        # This test previously pinned the default at 1, which IS the defect
+        # this replaces: an optic declaring TI rendered fused with no opt-in
+        # and no way to stop it.  The default is now 0 (I2 only) and the
+        # operator switches fusion on with the keybind, so the anti-latch
+        # property is asserted against the new default rather than dropped.
         import re
 
         raw = (
@@ -4206,21 +4208,30 @@ class TestFusionPipeline(unittest.TestCase):
         self.assertNotEqual(
             forced, -1, "teardown must still force 0 to destroy the handles"
         )
-        restore = code.find("setVariable [_fusionModeVar, 1]")
-        self.assertNotEqual(
-            restore, -1, "teardown must restore 1 or fusion latches off"
-        )
-        self.assertGreater(restore, forced, "the restore must come AFTER the forced 0")
 
-        # The restored value must be the reader's own default, read from the
-        # reader rather than restated here, so the two cannot drift apart.
-        post = (_REPO_ROOT / "addons/optics/XEH_postInit.sqf").read_text(
-            encoding="utf-8"
+        # Read the reader's own default out of the reader.
+        post = _code_only(
+            (_REPO_ROOT / "addons/optics/XEH_postInit.sqf").read_text(encoding="utf-8")
         )
-        self.assertIn(
-            "getVariable [QEGVAR(thermal,fusionMode), 1]",
-            post,
-            "the reader's default is the value the teardown must restore",
+        m = re.search(
+            r"getVariable \[\s*QEGVAR\(thermal,fusionMode\)\s*,\s*([01])\s*\]", post
+        )
+        self.assertIsNotNone(m, "the reader must declare the fusionMode default")
+        reader_default = m.group(1)
+        self.assertEqual(
+            reader_default,
+            "0",
+            "fusion must default to I2-only so nothing renders fused unasked",
+        )
+        restore = re.search(r"setVariable \[\s*_fusionModeVar\s*,\s*([01])\s*\]", code)
+        self.assertIsNotNone(restore, "teardown must restore the mode explicitly")
+        self.assertEqual(
+            restore.group(1),
+            reader_default,
+            "the restored value must be the reader's own default",
+        )
+        self.assertGreater(
+            restore.start(), forced, "the restore must come AFTER the forced 0"
         )
 
         # A third writer would make the restore not the last word.
@@ -4240,6 +4251,91 @@ class TestFusionPipeline(unittest.TestCase):
             ],
             "fusionMode must have exactly two writers: the cycle and the restore",
         )
+
+    def test_fusion_keybind_gives_the_operator_the_control(self):
+        # There is no automatic response: the operator switches fusion on.
+        # So a keybind must exist that cycles I2-only and fused.  It must
+        # reach the cycle function, because a bare variable write would leave
+        # the post-process handles alive and the tint on the NVG base.
+        actions = _code_only(
+            (_REPO_ROOT / "addons/actions/XEH_postInit.sqf").read_text(encoding="utf-8")
+        )
+        self.assertIn(
+            '"AEE", "FusionModeToggle"', actions, "the fusion keybind is missing"
+        )
+        self.assertIn(
+            "call EFUNC(thermal,cycleFusionMode)",
+            actions,
+            "the keybind must call the cycle so the handles are destroyed",
+        )
+        # Unbound by default: the player assigns it in Configure Addons.
+        keybind = actions[actions.index('"AEE", "FusionModeToggle"') :]
+        self.assertIn(
+            "[0, [false, false, false]]",
+            keybind,
+            "the fusion keybind must be unbound by default",
+        )
+        strings = (_REPO_ROOT / "addons/actions/stringtable.xml").read_text(
+            encoding="utf-8"
+        )
+        for key in ("FusionModeToggle", "FusionModeToggle_Description"):
+            self.assertIn(
+                f"STR_AEE_ACTIONS_{key}",
+                strings,
+                f"the keybind needs a localised string: {key}",
+            )
+
+    def test_fusion_always_on_setting_forces_the_mode(self):
+        # The setting is NAMED "force", so TRUE must actually put the mode to
+        # 1.  fnc_isFusionCapable already grants capability, and capability is
+        # not forcing, so the dispatcher is where the mode must be set.
+        import re
+
+        post = _code_only(
+            (_REPO_ROOT / "addons/optics/XEH_postInit.sqf").read_text(encoding="utf-8")
+        )
+        m = re.search(
+            r"getVariable \[\s*QEGVAR\(thermal,fusionAlwaysOn\)\s*,\s*false\s*\]"
+            r"\s*\)\s*then\s*\{\s*\[1\]\s*call\s*EFUNC\(thermal,cycleFusionMode\)",
+            post,
+        )
+        self.assertIsNotNone(
+            m,
+            "aee_thermal_fusionAlwaysOn must force the mode to 1, not only "
+            "grant capability",
+        )
+
+    def test_fusion_path_is_logged(self):
+        # The overlay the operator SAW had no line in the RPT, so the path
+        # could be neither proved nor refuted.  Every function on the path
+        # must emit a log call, read with the comments stripped so a header
+        # cannot satisfy the assertion.
+        fusion = _REPO_ROOT / "addons/thermal/functions/fusion"
+        for name in (
+            "fnc_applyFusionOverlay.sqf",
+            "fnc_applyFusionPP.sqf",
+            "fnc_applyFusionSun.sqf",
+        ):
+            code = _code_only((fusion / name).read_text(encoding="utf-8"))
+            self.assertIn(
+                "AEE_LOG_",
+                code,
+                f"{name} emits no diagnostic, so the fusion path is unobservable",
+            )
+        # The PP teardown lives in the cycle function, which owns the mode,
+        # so that is where the destroy is reported.
+        cycle = _code_only(
+            (fusion / "fnc_cycleFusionMode.sqf").read_text(encoding="utf-8")
+        )
+        self.assertIn("AEE_LOG_", cycle, "the fusion handle teardown is unlogged")
+        # The overlay log is throttled on diag_tickTime and names the fields
+        # the next session needs to confirm or refute the render.
+        overlay = _code_only(
+            (fusion / "fnc_applyFusionOverlay.sqf").read_text(encoding="utf-8")
+        )
+        self.assertIn("diag_tickTime", overlay, "the overlay log must be throttled")
+        for field in ("vm=%1", "capable=%2", "mode=%3", "maxBand="):
+            self.assertIn(field, overlay, f"the overlay log must report {field}")
 
     def test_fusion_diet_sun(self):
         # A3TI creates a diet sun (brightness 0.8, dayLight false) to

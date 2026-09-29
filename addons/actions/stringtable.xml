@@ -17,6 +17,14 @@
             <Original>Toggle NVG Focus Mode</Original>
             <English>Toggle NVG Focus Mode</English>
         </Key>
+        <Key ID="STR_AEE_ACTIONS_FusionModeToggle">
+            <Original>Toggle Fusion Mode</Original>
+            <English>Toggle Fusion Mode</English>
+        </Key>
+        <Key ID="STR_AEE_ACTIONS_FusionModeToggle_Description">
+            <Original>Switch a fused goggle between I2 only and fused</Original>
+            <English>Switch a fused goggle between I2 only and fused</English>
+        </Key>
         <Key ID="STR_AEE_ACTIONS_WeatherReport">
             <Original>Weather Report</Original>
             <English>Weather Report</English>

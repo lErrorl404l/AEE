@@ -107,14 +107,21 @@ AEE_MODULE_POST_INIT
             ["TICK"] call EFUNC(thermal,applyRainDroplets);
             if (_vm == 1) then {
                 [] call EFUNC(nightvision,applyNVGTubeModel);
-                // Fusion (Track B ENVG-B): when the headset is
-                // fusion-capable (TI in visionMode, or the CBA
-                // aee_thermal_fusionAlwaysOn override) and the operator
-                // has fusion mode on, overlay the physics-driven emissive
-                // thermal on the NVG base.  The overlay runs AFTER the
-                // tube model so it composites on top of the I2 image.
+                // Fusion (Track B ENVG-B): the OPERATOR decides, never an
+                // automatic response.  Two separate questions, and neither
+                // answers the other.  isFusionCapable asks whether this
+                // device MAY fuse.  The mode asks whether the operator HAS
+                // asked for it, and its default is I2-only, so nothing
+                // renders fused until the operator presses the keybind.
+                // The aee_thermal_fusionAlwaysOn setting is named "force",
+                // so when it is TRUE it forces the mode to 1; granting
+                // capability alone is not forcing.  The overlay runs AFTER
+                // the tube model so it composites on top of the I2 image.
                 if ([] call EFUNC(thermal,isFusionCapable)) then {
-                    if (missionNamespace getVariable [QEGVAR(thermal,fusionMode), 1] == 1) then {
+                    if (missionNamespace getVariable [QEGVAR(thermal,fusionAlwaysOn), false]) then {
+                        [1] call EFUNC(thermal,cycleFusionMode);
+                    };
+                    if (missionNamespace getVariable [QEGVAR(thermal,fusionMode), 0] == 1) then {
                         [] call EFUNC(thermal,applyFusionPP);
                         ["ON"] call EFUNC(thermal,applyFusionSun);
                         [] call EFUNC(thermal,applyFusionOverlay);

@@ -183,9 +183,30 @@ if (_mats isEqualTo []) then {
     missionNamespace setVariable [QGVAR(fusionEmissiveMats), _mats];
 };
 
+// ─── Diagnostic ───────────────────────────────────────────────────────────
+// An overlay nobody can see in a log cannot be proved or refuted, which is
+// the fault this replaces: the operator SAW the fusion overlay and the RPT
+// carried no fusion line at all.  One batch per _LOG_INTERVAL names the
+// decision this path made and the state it consumed.  Timed on diag_tickTime
+// rather than a tick counter, and the FIRST tick logs unconditionally because
+// -1e9 is already in the past.  The values are resolved once here and the
+// line is emitted inside the planning forEach below, where the band and the
+// selection count are in scope, so no hot path grows.
+private _LOG_INTERVAL = 30;
+private _logAt = missionNamespace getVariable [QGVAR(fusionLogAt), -1e9];
+if !(_logAt isEqualType 0) then { _logAt = -1e9; };
+private _logNow = diag_tickTime >= _logAt;
+if (_logNow) then {
+    missionNamespace setVariable [QGVAR(fusionLogAt), diag_tickTime + _LOG_INTERVAL];
+};
+private _visionMode = currentVisionMode _player;
+private _capable = [] call EFUNC(thermal,isFusionCapable);
+private _fusionMode = missionNamespace getVariable [QGVAR(fusionMode), 0];
 private _objects = _player nearObjects 300;
+private _objectCount = count _objects;
 {
     private _obj = _x;
+    private _objMaxBand = 0;
     // Shared dynamic discovery (issue #204): Man = all texture slots,
     // vehicle = config override > textureSources > all-but-MFD.  The
     // single source of truth so fusion and thermal agree on every part.
@@ -309,6 +330,20 @@ private _objects = _player nearObjects 300;
         private _band = round (_b * 255) min 255 max 0;
         private _matPath = _mats select _band;
         _obj setObjectMaterial [_entryIdx, _matPath];
+        _objMaxBand = _objMaxBand max _band;
+    };
+
+    // The diagnostic, emitted where the band and the selection count are
+    // already in scope so no hot path grows.  One line per object per
+    // window: the vision mode and the capability decision the dispatcher
+    // made, the mode that was actually applied, this object's selection
+    // count and the brightest band the renderer wrote for it.
+    if (_logNow) then {
+        private _logMsg = format [
+            "fusion overlay: vm=%1 capable=%2 mode=%3 objs=%4 obj=%5 sels=%6 maxBand=%7",
+            _visionMode, _capable, _fusionMode, _objectCount, typeOf _obj, _n, _objMaxBand
+        ];
+        AEE_LOG_DEBUG(_logMsg);
     };
 } forEach _objects;
 

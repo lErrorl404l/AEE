@@ -237,6 +237,22 @@ switch (_tier) do {
         _bloomScale = 0.05;
     };
 };
+// ─── Phosphor: a DEVICE property, not a tier property ─────────────────────
+// A tier decides the noise floor, the MTF, the bloom and the focus.  Which
+// phosphor a tube renders is a property of the tube, so the shape is read
+// from the hmd classname, where the device states it as an underscore
+// delimited token.  The shape is the P43 green one this header defines, the
+// ACE3 green preset shape.  An hmd that states no phosphor keeps the tier
+// value the switch above set, and the log below says so rather than
+// guessing one.
+private _phosphor = "tier";
+{
+    if (_x == "grn") then { _phosphor = "grn"; };
+} forEach ((toLower _hmd) splitString "_");
+if (_phosphor == "grn") then {
+    _phosphorTint = [1.3, 1.2, 0.0, 0.9];
+    _nvgWeight = [6, 1, 1, 0];
+};
 missionNamespace setVariable [QGVAR(nvgTubeTier), _tier];
 
 // The device's actual tube resolution scales the MTF: MTF at 15 lp/mm
@@ -275,10 +291,13 @@ _vigStrength set [3, _vigOffY];
 // classname and resolved tier tell us immediately whether the device was
 // recognised.  "AUTO" means the classname matched nothing — the effects
 // still run but with the default (GEN2-ish) constants.
-private _tierLogKey = format ["%1_%2", _hmd, _tier];
+private _tierLogKey = format ["%1_%2_%3", _hmd, _tier, _phosphor];
 if (missionNamespace getVariable [QGVAR(nvgTierLogged), ""] != _tierLogKey) then {
     missionNamespace setVariable [QGVAR(nvgTierLogged), _tierLogKey];
-    private _logMsg = format ["NVG tier: hmd=%1 -> %2", _hmd, _tier];
+    // "tier" in the phosphor field means the hmd stated no phosphor, so the
+    // tier value stands.  Naming it here stops that from reading as a
+    // resolution the device made.
+    private _logMsg = format ["NVG tier: hmd=%1 -> %2 phosphor=%3", _hmd, _tier, _phosphor];
     AEE_LOG_INFO(_logMsg);
 };
 
