@@ -51,14 +51,23 @@ if (isNil _KERNEL) then {
         _notes pushBack format ["multiple 10 gave %1, not above %2", _snr10, _ref];
     };
 
-    // 4. The threshold falls below one display band (1/16 = 0.0625).  This
-    // is the physical finding: the SENSOR is finer than the DISPLAY, so the
-    // two are different quantities and must not be conflated.
-    if ((_ref isEqualType 0) && (_ref < (1 / 16))) then {
+    // 4. The threshold sits BETWEEN the two live display steps.  The
+    // selection path steps 1 / 31 over 32 tint levels; the fusion path
+    // steps 1 / 255 over 256 emissive materials.  The sensor is FINER than
+    // the selection step and COARSER than the fusion step, so the two paths
+    // differ in direction and the old single-step claim no longer holds.
+    // Either way the two are different quantities and neither may floor the
+    // threshold, because a band floor would make every device equally blind.
+    private _selectionStep = 1 / 31;
+    private _fusionStep = 1 / 255;
+    if ((_ref isEqualType 0) && (_ref < _selectionStep) && (_ref > _fusionStep)) then {
         _pass = _pass + 1;
     } else {
         _fail = _fail + 1;
-        _notes pushBack format ["threshold %1 not below one band 0.0625", _ref];
+        _notes pushBack format [
+            "threshold %1 not between fusion %2 and selection %3",
+            _ref, _fusionStep, _selectionStep
+        ];
     };
 
     // 5. A non-positive NETD is refused with -1.
