@@ -44,7 +44,11 @@ if (isNil QGVAR(sensorPFH)) exitWith {};
 // Restore the fusion emissive materials.  cycleFusionMode destroys the two
 // fusion post-process handles only, so without this the swapped materials
 // survive into normal vision.
-["EXIT"] call EFUNC(thermal,applyFusionOverlay);
+// The mode is the SECOND parameter. Passing only ["EXIT"] bound the string to
+// _player, whose [objNull] spec rejected it, so the restore below never ran
+// and the fusion emissive materials leaked. fnc_applyFusionOverlay is the
+// only one of these that takes the player first.
+[call CBA_fnc_currentUnit, "EXIT"] call EFUNC(thermal,applyFusionOverlay);
 [GVAR(sensorPFH)] call CBA_fnc_removePerFrameHandler;
 GVAR(sensorPFH) = nil;
 GVAR(sensorUnit) = nil;
