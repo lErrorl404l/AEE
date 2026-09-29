@@ -43,7 +43,9 @@
 // direction of the mapping, and these assertions pin the correct direction.
 //
 // The renderer geometry, from fnc_renderSupersonicTrace.sqf:
-//   size  = clamp(fullWidth * 50, 0.35, 1.4)
+//   cap   = sqrt (190 / (4 * 8)) = 2.44 m   rendering-budget, not physical
+//   size  = clamp(fullWidth * _VISIBILITY, 0.35, cap)
+//   _VISIBILITY = 15 px at 100 m for the 5.56 mm round at Mach 2.76
 //   alpha = 0.20 + 0.55 * legibility, legibility from contrast on [0, 8]
 //   drop  = max(size / (2 * speed), 0.00025)
 //   ttl   = 8 * (size / (2 * speed))      2 * _TRAIL_WIDTHS
@@ -258,13 +260,25 @@ if (isNil _CONE) then {
 // assertion, because it can no longer pass on a fiction. These constants
 // mirror fnc_renderSupersonicTrace.sqf and tools/tests/test_supersonic_trace.py
 // checks them against it, so the mirror cannot drift.
-private _VISIBILITY = 50;
-private _MAX_SIZE = 1.4;
-private _MIN_SIZE = 0.35;
-private _MIN_DROP = 0.00025;
+private _MAX_TRACES = 4;
+// The cap is DERIVED from the measured overdraw budget, not chosen, so the
+// worst case is the budget exactly: 4 traces * 8 live sprites * cap^2.
+private _OVERDRAW_BUDGET_M2 = 190;
 private _TRAIL_WIDTHS = 4;
 private _LIVE_SPRITES = 2 * _TRAIL_WIDTHS;
-private _MAX_TRACES = 4;
+private _MAX_SIZE = sqrt (_OVERDRAW_BUDGET_M2 / (_MAX_TRACES * _LIVE_SPRITES));
+private _MIN_SIZE = 0.35;
+private _MIN_DROP = 0.00025;
+// _VISIBILITY is DERIVED from a stated pixel target at a stated reference
+// range: the reference 5.56 mm round at Mach 2.76 must subtend at least 15
+// pixels at 100 m.  1080p, 60 degree horizontal FOV gives the focal length.
+private _FOCAL_LENGTH_PX = 1662.8;
+private _TARGET_PX = 15;
+private _REF_RANGE_M = 100;
+private _REF_MACH = 2.76;
+private _REF_CALIBRE_M = 0.00556;
+private _REF_CONE_M = (8 * _REF_CALIBRE_M) / sqrt ((_REF_MACH * _REF_MACH) - 1);
+private _VISIBILITY = (_TARGET_PX * _REF_RANGE_M) / (_FOCAL_LENGTH_PX * _REF_CONE_M);
 
 private _map = [];
 {
@@ -284,7 +298,7 @@ private _map = [];
     if (_size > _MAX_SIZE) then { _map pushBack format ["size %1 over %2 m at %3 m/s", _size, _MAX_SIZE, _speed] };
     if (_size < _MIN_SIZE) then { _map pushBack format ["size %1 under %2 m at %3 m/s", _size, _MIN_SIZE, _speed] };
     if (_alpha > 0.75) then { _map pushBack format ["alpha %1 over 0.75 at %2 m/s", _alpha, _speed] };
-    if (_overdraw > 260) then { _map pushBack format ["overdraw %1 m2 at %2 m/s", _overdraw, _speed] };
+    if (_overdraw > (_OVERDRAW_BUDGET_M2 + 0.0001)) then { _map pushBack format ["overdraw %1 m2 over the budget at %2 m/s", _overdraw, _speed] };
     // The trail is a few sprite widths at EVERY speed, because the lifetime
     // derives from the physical drop, not from the floored one.
     if (abs (_trail - (_TRAIL_WIDTHS * _size)) > 0.001) then {
@@ -301,6 +315,18 @@ private _map = [];
         _map pushBack format ["spawn rate %1 over %2/s at %3 m/s", _rate, 1 / _MIN_DROP, _speed];
     };
 } forEach [408, 500, 680, 940, 1200, 1361];
+
+// The cap must be exactly the sqrt of the measured budget over the
+// worst-case sprite count, and the reference round must clear the 0.8 m
+// regression floor the user confirmed by eye.
+if (abs (_MAX_SIZE - sqrt (_OVERDRAW_BUDGET_M2 / (_MAX_TRACES * _LIVE_SPRITES))) > 0.0001) then {
+    _map pushBack format ["cap %1 is not the sqrt of the budget over %2 sprites", _MAX_SIZE, _MAX_TRACES * _LIVE_SPRITES];
+};
+private _refDrawn = (8 * 0.00556 / sqrt ((2.76 * 2.76) - 1)) * _VISIBILITY;
+if (_refDrawn < 0.8) then {
+    _map pushBack format ["the reference 5.56 mm round draws %1 m, under the 0.8 m regression floor", _refDrawn];
+};
+
 if (_map isEqualTo []) then {
     _pass = _pass + 1;
 } else {

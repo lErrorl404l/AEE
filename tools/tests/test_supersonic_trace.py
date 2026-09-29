@@ -360,6 +360,53 @@ def _code_only(text: str) -> str:
     return re.sub(r"//[^\n]*", "", text)
 
 
+def _literal(text: str, name: str) -> float:
+    """Read a literal numeric constant, and refuse an expression in its place."""
+    m = re.search(rf"_{name}\s*=\s*([0-9.]+)\s*;", text)
+    if m is None:
+        raise AssertionError(f"literal _{name} not found")
+    return float(m.group(1))
+
+
+def _expr(text: str, name: str) -> str:
+    """Read the right-hand side of a `_name = <expr>;` declaration."""
+    m = re.search(rf"_{name}\s*=\s*([^;]+);", text)
+    if m is None:
+        raise AssertionError(f"constant _{name} not found")
+    return m.group(1).strip()
+
+
+def _sqf_expr(expr: str, env: dict) -> float:
+    """Evaluate the small arithmetic subset the renderer derivations use.
+
+    The tests read the real expression out of the SQF and evaluate it over the
+    constants parsed from the same file, so a wrong operator fails without a
+    hand-copied mirror.
+    """
+    return eval(re.sub(r"\bsqrt\b", "math.sqrt", expr), {"math": math}, dict(env))
+
+
+def _renderer_geometry(text: str) -> dict:
+    """Parse the renderer's budget and visibility derivation into numbers."""
+    env = {
+        "_OVERDRAW_BUDGET_M2": _literal(text, "OVERDRAW_BUDGET_M2"),
+        "_MAX_TRACES": _literal(text, "MAX_TRACES"),
+        "_TRAIL_WIDTHS": _literal(text, "TRAIL_WIDTHS"),
+        "_MIN_SIZE": _literal(text, "MIN_SIZE"),
+        "_MIN_DROP": _literal(text, "MIN_DROP"),
+        "_FOCAL_LENGTH_PX": _literal(text, "FOCAL_LENGTH_PX"),
+        "_TARGET_PX": _literal(text, "TARGET_PX"),
+        "_REF_RANGE_M": _literal(text, "REF_RANGE_M"),
+        "_REF_MACH": _literal(text, "REF_MACH"),
+        "_REF_CALIBRE_M": _literal(text, "REF_CALIBRE_M"),
+    }
+    env["_LIVE_SPRITES"] = _sqf_expr(_expr(text, "LIVE_SPRITES"), env)
+    env["_REF_CONE_M"] = _sqf_expr(_expr(text, "REF_CONE_M"), env)
+    env["_MAX_SIZE"] = _sqf_expr(_expr(text, "MAX_SIZE"), env)
+    env["_VISIBILITY"] = _sqf_expr(_expr(text, "VISIBILITY"), env)
+    return env
+
+
 class MachConeKernel(unittest.TestCase):
     """fnc_calculateMachCone is exact cone geometry for a slender body."""
 
@@ -454,18 +501,53 @@ class RendererConeContract(unittest.TestCase):
     def test_both_size_array_entries_carry_the_cone_width(self) -> None:
         self.assertIn("[_size, _size],", self.code)
 
-    def test_visibility_constant_is_declared_once_and_labelled(self) -> None:
-        self.assertRegex(self.code, r"_VISIBILITY\s*=\s*[0-9.]+;")
+    def test_visibility_constant_is_derived_from_a_pixel_target(self) -> None:
+        # The factor is no longer a picked 50.  It is computed from a stated
+        # pixel target at a stated reference range, so the derivation is
+        # visible in code and the old literal is absent.
+        expr = re.search(r"_VISIBILITY\s*=\s*([^;]+);", self.code)
+        self.assertIsNotNone(expr, "_VISIBILITY not declared")
+        self.assertIn("_TARGET_PX", expr.group(1))
+        self.assertIn("_REF_RANGE_M", expr.group(1))
+        self.assertNotRegex(self.code, r"_VISIBILITY\s*=\s*50\s*;")
         prose = self.renderer.upper()
         self.assertIn("RENDERING DECISION", prose)
         self.assertIn("NOT PHYSICS", prose)
 
-    def test_cap_and_floor_have_reasons(self) -> None:
-        self.assertRegex(self.code, r"_MAX_SIZE\s*=\s*[0-9.]+;")
+    def test_cap_is_derived_from_the_overdraw_budget(self) -> None:
+        # The cap is a RENDERING-BUDGET limit computed from the measured
+        # overdraw budget and the worst-case sprite count, not the picked
+        # literal 1.4.
+        expr = re.search(r"_MAX_SIZE\s*=\s*([^;]+);", self.code)
+        self.assertIsNotNone(expr, "_MAX_SIZE not declared")
+        body = expr.group(1)
+        self.assertIn("_OVERDRAW_BUDGET_M2", body)
+        self.assertIn("_MAX_TRACES", body)
+        self.assertIn("_LIVE_SPRITES", body)
+        self.assertNotIn("1.4", body)
+        self.assertNotIn("1.4", self.code)
         self.assertRegex(self.code, r"_MIN_SIZE\s*=\s*[0-9.]+;")
-        prose = self.renderer.upper()
+        prose = re.sub(r"\s+", " ", self.renderer).upper()
         self.assertIn("DIVERGES", prose)
         self.assertIn("SUB-PIXEL", prose)
+        self.assertIn("RENDERING-BUDGET LIMIT", prose)
+        self.assertIn("NOT A PHYSICAL ONE", prose)
+
+    def test_derived_cap_is_the_sqrt_of_the_budget(self) -> None:
+        env = _renderer_geometry(self.code)
+        want = math.sqrt(
+            env["_OVERDRAW_BUDGET_M2"] / (env["_MAX_TRACES"] * env["_LIVE_SPRITES"])
+        )
+        self.assertAlmostEqual(env["_MAX_SIZE"], want, places=9)
+        # The value the expression evaluates to, so a wrong operator fails.
+        self.assertAlmostEqual(env["_MAX_SIZE"], 2.4369, places=3)
+
+    def test_five_five_six_round_clears_the_visual_floor(self) -> None:
+        # The user confirmed the 5.56 mm trace visible by eye, so the derived
+        # factor must not shrink it below the 0.8 m regression floor.
+        env = _renderer_geometry(self.code)
+        physical = 8 * 0.00556 / math.sqrt((2.76 * 2.76) - 1)
+        self.assertGreaterEqual(physical * env["_VISIBILITY"], 0.8)
 
     def test_lifetime_sits_in_the_lifetime_slot(self) -> None:
         # Index 4 of setParticleParams is the lifetime.  The superseded
@@ -549,23 +631,36 @@ class FiredHandlerScans(unittest.TestCase):
 
 class ProbeMirrorsTheRenderer(unittest.TestCase):
     """The P65 probe recomputes the renderer geometry, so its mirrored
-    constants must equal the renderer's, or the headless check drifts."""
+    constants and its derivation must equal the renderer's, or the headless
+    check drifts."""
 
-    @staticmethod
-    def _constant(text: str, name: str) -> float:
-        m = re.search(rf"_{name}\s*=\s*([0-9.]+)\s*;", text)
-        if m is None:
-            raise AssertionError(f"constant _{name} not found")
-        return float(m.group(1))
+    def test_probe_ingredients_match_the_renderer(self) -> None:
+        renderer = _renderer_geometry(_code_only(RENDERER.read_text(encoding="utf-8")))
+        probe = _renderer_geometry(_code_only(PROBE.read_text(encoding="utf-8")))
+        for name in (
+            "_OVERDRAW_BUDGET_M2",
+            "_MAX_TRACES",
+            "_TRAIL_WIDTHS",
+            "_LIVE_SPRITES",
+            "_MIN_SIZE",
+            "_MIN_DROP",
+            "_FOCAL_LENGTH_PX",
+            "_TARGET_PX",
+            "_REF_RANGE_M",
+            "_REF_MACH",
+            "_REF_CALIBRE_M",
+        ):
+            self.assertEqual(renderer[name], probe[name], f"_{name} mirror drifted")
 
-    def test_probe_constants_match_the_renderer(self) -> None:
-        renderer = _code_only(RENDERER.read_text(encoding="utf-8"))
-        probe = _code_only(PROBE.read_text(encoding="utf-8"))
-        for name in ("VISIBILITY", "MAX_SIZE", "MIN_SIZE", "MIN_DROP", "TRAIL_WIDTHS"):
-            self.assertEqual(
-                self._constant(renderer, name),
-                self._constant(probe, name),
-                f"the probe's _{name} mirror has drifted from the renderer",
+    def test_probe_derived_values_match_the_renderer(self) -> None:
+        renderer = _renderer_geometry(_code_only(RENDERER.read_text(encoding="utf-8")))
+        probe = _renderer_geometry(_code_only(PROBE.read_text(encoding="utf-8")))
+        for name in ("_REF_CONE_M", "_MAX_SIZE", "_VISIBILITY"):
+            self.assertAlmostEqual(
+                renderer[name],
+                probe[name],
+                places=9,
+                msg=f"the probe's {name} mirror has drifted from the renderer",
             )
 
 

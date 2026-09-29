@@ -30,8 +30,18 @@ KERNEL = REPO / "addons/ballistics/functions/fnc_calculateSupersonicTrace.sqf"
 ANNEX_C = REPO / "docs/wiki/annexes/annex-c-variable-reference.qmd"
 PHYSICS = REPO / "docs/wiki/chapters/physics.qmd"
 
-SOURCE = RENDERER.read_text(encoding="utf-8")
-POST = FX_POST.read_text(encoding="utf-8")
+
+def _code_only(text: str) -> str:
+    """Blank out SQF comments so a token that appears only in the prose that
+    explains it cannot satisfy an assertion.  The header quotes the
+    superseded size form and the broken type guard, so a raw search finds the
+    explanation before the code it is meant to compare against."""
+    text = re.sub(r"/\*.*?\*/", "", text, flags=re.DOTALL)
+    return re.sub(r"//[^\n]*", "", text)
+
+
+SOURCE = _code_only(RENDERER.read_text(encoding="utf-8"))
+POST = _code_only(FX_POST.read_text(encoding="utf-8"))
 CONFIG = FX_CONFIG.read_text(encoding="utf-8")
 
 
@@ -252,6 +262,22 @@ class Diagnostics(unittest.TestCase):
         self.assertRegex(SOURCE, r"_ticks\s*>=\s*_nextLog")
         self.assertRegex(SOURCE, r"_nextLog\s*=\s*_ticks\s*\+\s*_LOG_EVERY")
         self.assertNotRegex(SOURCE, r"_ticks\s*%")
+
+    def test_first_tick_logs_unconditionally(self) -> None:
+        # A 5.56 mm trace lives 4 to 9 ticks, under the 20-tick throttle, so
+        # without an unconditional first-tick line the common round emitted
+        # no physics evidence at all.
+        self.assertRegex(SOURCE, r"\(_ticks\s*==\s*1\)")
+        self.assertRegex(SOURCE, r"\(_ticks\s*==\s*1\).*_ticks\s*>=\s*_nextLog")
+
+    def test_a_binding_cap_is_reported_in_the_diagnostic(self) -> None:
+        # The clamp must name itself and state the unclamped size, or a cap
+        # that binds is invisible, which is exactly how it hid for a session.
+        self.assertRegex(SOURCE, r"if \(_rawSize > _MAX_SIZE\)")
+        self.assertIn("CAPPED", SOURCE)
+        self.assertIn("_rawSize", SOURCE)
+        # The clamp note rides on the throttled physics line.
+        self.assertRegex(SOURCE, r"size %4 m, contrast %5%6")
 
     def test_debug_setting_exists_to_gate_it(self) -> None:
         # The setting must actually be declared, or the log never turns on.
