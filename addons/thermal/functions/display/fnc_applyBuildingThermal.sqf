@@ -53,6 +53,20 @@ if !(_airTemp isEqualType 0) then { _airTemp = 15; };
 private _lastTemp = missionNamespace getVariable [QGVAR(tiBldgLastTemp), -999];
 if (!(_lastTemp isEqualType 0)) then { _lastTemp = -999; };
 private _ambientChanged = abs (_airTemp - _lastTemp) >= 2;
+// A structure's surface temperature changes on the order of hours, so the
+// ambient gate is physically right and keeps a per-tick rescan off the hot
+// path.  But it left a real hole: a building entering range AFTER the boot
+// pass was never collected at all, because a steady tick skips the
+// collection entirely and nothing ever revisits it.  A periodic rescan closes
+// that at one scan per period rather than one per tick, and loses no physics
+// because a building re-solved seconds after the last pass has not
+// measurably changed.
+private _lastScan = missionNamespace getVariable [QGVAR(tiBldgLastScan), -1e9];
+if (!(_lastScan isEqualType 0)) then { _lastScan = -1e9; };
+private _rescan = _ambientChanged || {(diag_tickTime - _lastScan) >= 30};
+if (_rescan) then {
+    missionNamespace setVariable [QGVAR(tiBldgLastScan), diag_tickTime];
+};
 if (_ambientChanged) then {
     missionNamespace setVariable [QGVAR(tiBldgLastTemp), _airTemp];
 };
@@ -64,7 +78,7 @@ if (_ambientChanged) then {
 // undefined here, which the HEMTT undefined-variable lint caught.
 private _viewDist = (getObjectViewDistance select 0) max 300;
 private _objects = [];
-if (_ambientChanged) then {
+if (_rescan) then {
     if (_mode == "ENTER") then {
         _objects = allMissionObjects "";
     } else {
@@ -78,6 +92,41 @@ if (_ambientChanged) then {
 _objects = _objects + ((vehicles - [player]) select {
     (_x distance (getPosATL _player)) < _viewDist
 });
+// Dropped weapons (issue #204 coverage).  A weapon on the ground is a
+// WeaponHolder, not a Man, so it is in neither the unit sweep nor the
+// vehicle list above, and fnc_applyWeaponBarrelHeat only ever resolves
+// the SHOOTER's current weapon.  Without this scan a weapon dropped
+// during play keeps the engine's baked default and renders as the I2
+// base in the fused view instead of its cold, low-emissivity signature.
+// The class is a legitimate engine class, and a holder whose model
+// exposes no selection is dropped by the getThermalSelections early-out
+// in the loop below, so a selectionless holder costs nothing here.
+_objects = _objects + (nearestObjects [
+    _player,
+    ["GroundWeaponHolder", "WeaponHolderSimulated"],
+    _viewDist
+]);
+
+// ROUND-ROBIN the structure list.  fnc_applySelectionThermal exits the moment
+// the per-tick budget runs out, so a small budget against a STABLE order solves
+// the head of the list forever and never reaches the tail.  The cursor advances
+// by the fraction of the list one tick's share covers, so a full cycle completes
+// inside one atmosphere interval and every structure is visited once per cycle.
+private _ticks = missionNamespace getVariable [QGVAR(selSolveTicks), 50];
+if !(_ticks isEqualType 0) then { _ticks = 50 };
+if (_ticks < 1) then { _ticks = 1 };
+private _objCount = count _objects;
+private _cursor = missionNamespace getVariable [QGVAR(tiSolveCursor), 0];
+if !(_cursor isEqualType 0) then { _cursor = 0 };
+if (_cursor >= _objCount) then { _cursor = 0 };
+if (_cursor > 0) then {
+    _objects = (_objects select [_cursor, _objCount - _cursor]) + (_objects select [0, _cursor]);
+};
+private _step = ceil (_objCount / _ticks);
+if (_step < 1) then { _step = 1 };
+if (_objCount > 0) then {
+    missionNamespace setVariable [QGVAR(tiSolveCursor), (_cursor + _step) % _objCount];
+};
 
 // ─── Apply: per-selection substrate solve per object (issue #204) ────────
 // Selection discovery is DYNAMIC (fnc_getThermalSelections: Man = all
@@ -110,19 +159,19 @@ if !(_solarRadiation isEqualType 0) then { _solarRadiation = 0; };
     private _isMoving = (abs (speed _obj)) > 1.5 || {vectorMagnitude (velocity _obj) > 0.5};
     private _heatTrend = _obj getVariable [QGVAR(vehicleHeatTrend), 0];
 
-    // Selection names resolved from the indices the discovery returns.
-    // getSelectionMaterials keys on NAMES - passing the raw index threw
-    // "Type Number, expected String" (issue #204, the RPT error).
-    private _hs = getArray (configOf _obj >> "hiddenSelections");
+    // Selection names resolved from the indices the discovery returns
+    // through the SAME authoritative list the discovery indexed
+    // (fnc_getThermalSelectionNames).  Resolving against the raw config
+    // array made every runtime-fallback index read past the end of an
+    // empty list and resolve to "", so the object was skipped while
+    // appearing to work.  getSelectionMaterials keys on NAMES - passing
+    // the raw index threw "Type Number, expected String" (issue #204,
+    // the RPT error).
+    private _names = [_obj] call FUNC(getThermalSelectionNames);
     private _selCount = count _selNames;
     {
         private _selIdx = _x;
-        private _selName = if (_obj isKindOf "Man") then {
-            private _names = selectionNames _obj;
-            if (_selIdx < count _names) then { _names select _selIdx } else { "" }
-        } else {
-            if (_selIdx < count _hs) then { _hs select _selIdx } else { "" }
-        };
+        private _selName = if (_selIdx < count _names) then { _names select _selIdx } else { "" };
         if (_selName == "") then { continue; };
         // Material physics: the conductivity k decides how the
         // vehicle heat reaches this part's skin.

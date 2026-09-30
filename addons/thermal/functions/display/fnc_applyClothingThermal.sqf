@@ -67,6 +67,29 @@ if !(_airTemp isEqualType 0) then { _airTemp = 15; };
 private _viewDist = (getObjectViewDistance select 0) max 50;
 private _refPos = getPosATL _player;
 private _applied = 0;
+
+// ROUND-ROBIN the unit list.  fnc_applySelectionThermal exits the moment the
+// per-tick budget runs out, so a small share against a STABLE order solves the
+// head of the list forever and never reaches the tail.  allUnits order is
+// stable within a session.
+private _ticks = missionNamespace getVariable [QGVAR(selSolveTicks), 50];
+if !(_ticks isEqualType 0) then { _ticks = 50 };
+if (_ticks < 1) then { _ticks = 1 };
+private _unitList = allUnits;
+private _unitCount = count _unitList;
+private _cursor = missionNamespace getVariable [QGVAR(clothSolveCursor), 0];
+if !(_cursor isEqualType 0) then { _cursor = 0 };
+if (_cursor >= _unitCount) then { _cursor = 0 };
+if (_cursor > 0) then {
+    if (_unitCount > 0) then {
+        _unitList = (_unitList select [_cursor, _unitCount - _cursor]) + (_unitList select [0, _cursor]);
+    };
+};
+private _step = ceil (_unitCount / _ticks);
+if (_step < 1) then { _step = 1 };
+if (_unitCount > 0) then {
+    missionNamespace setVariable [QGVAR(clothSolveCursor), (_cursor + _step) % _unitCount];
+};
 {
     if (isNull _x || {!alive _x}) then { continue; };
     if ((_x distance _refPos) > _viewDist) then { continue; };
@@ -102,17 +125,15 @@ private _applied = 0;
     // person); the ground view factor comes from the MATERIAL (metal on
     // the feet sees ground, glass/plastic on the head sees sky) - the
     // dynamic equivalent of the old name-based fGround.
+    // Authoritative index/name list, the SAME one the discovery indexed.
+    private _names = [_obj] call FUNC(getThermalSelectionNames);
     {
         private _selIdx = _x;
         private _fGround = 0.5;
-        // Selection NAME for the material detector (it keys on names).
-        private _selName = if (_obj isKindOf "Man") then {
-            private _names = selectionNames _obj;
-            if (_selIdx < count _names) then { _names select _selIdx } else { "" }
-        } else {
-            private _hs = getArray (configOf _obj >> "hiddenSelections");
-            if (_selIdx < count _hs) then { _hs select _selIdx } else { "" }
-        };
+        // Selection NAME for the material detector (it keys on names),
+        // resolved through fnc_getThermalSelectionNames so a
+        // runtime-fallback index cannot resolve to "".
+        private _selName = if (_selIdx < count _names) then { _names select _selIdx } else { "" };
         if (_selName == "") then { continue; };
         // Material-driven view factor: low-k (glass, plastic, goggles)
         // faces mostly sky; rubber/leather (boots) sees mostly ground.
@@ -132,6 +153,6 @@ private _applied = 0;
         [_obj, _selName, "", 0, _fGround, _loadoutFlux] call FUNC(applySelectionThermal);
         _applied = _applied + 1;
     } forEach _selections;
-} forEach (allUnits);
+} forEach allUnits;
 
 _applied

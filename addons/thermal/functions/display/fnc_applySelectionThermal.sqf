@@ -114,6 +114,22 @@ if (_mode == "EXIT") then {
         _selNames = selectionNames _obj;
     };
 
+    // ─── Per-tick solve budget (lag fix) ──────────────────────────────────
+    // The sensor tick re-arms QGVAR(selSolveBudget) each tick.  When the
+    // budget is present, this call spends one unit per selection and stops
+    // once it is exhausted, so a building rescan that would solve thousands
+    // of selections in one frame converges over a few ticks instead.  A
+    // skipped call keeps the selection's previous temperature, so no physics
+    // is lost: a structure re-solved 0.1 s late has not measurably changed.
+    // An ABSENT budget (the one-shot boot pass, before any tick) means no
+    // cap, so the boot pass is untouched.
+    private _budget = missionNamespace getVariable [QGVAR(selSolveBudget), -1];
+    if !(_budget isEqualType 0) then { _budget = -1; };
+    if (_budget >= 0) then {
+        if (_budget <= 0) exitWith { 0 };
+        missionNamespace setVariable [QGVAR(selSolveBudget), _budget - (count _selNames)];
+    };
+
     // Save originals once per object per pass (first apply).  Materials
     // are captured too: the FPN rvmat replaces them while thermal is
     // active (issue #204 - perlinNoise Stage2 FPN over the painted heat

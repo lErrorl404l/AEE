@@ -107,26 +107,74 @@ AEE_MODULE_POST_INIT
             ["TICK"] call EFUNC(thermal,applyRainDroplets);
             if (_vm == 1) then {
                 [] call EFUNC(nightvision,applyNVGTubeModel);
-                // Fusion (Track B ENVG-B): the OPERATOR decides, never an
-                // automatic response.  Two separate questions, and neither
-                // answers the other.  isFusionCapable asks whether this
-                // device MAY fuse.  The mode asks whether the operator HAS
-                // asked for it, and its default is I2-only, so nothing
-                // renders fused until the operator presses the keybind.
-                // The aee_thermal_fusionAlwaysOn setting is named "force",
-                // so when it is TRUE it forces the mode to 1; granting
-                // capability alone is not forcing.  The overlay runs AFTER
-                // the tube model so it composites on top of the I2 image.
-                if ([] call EFUNC(thermal,isFusionCapable)) then {
-                    if (missionNamespace getVariable [QEGVAR(thermal,fusionAlwaysOn), false]) then {
-                        [1] call EFUNC(thermal,cycleFusionMode);
-                    };
-                    if (missionNamespace getVariable [QEGVAR(thermal,fusionMode), 0] == 1) then {
-                        [] call EFUNC(thermal,applyFusionPP);
-                        ["ON"] call EFUNC(thermal,applyFusionSun);
-                        [] call EFUNC(thermal,applyFusionOverlay);
-                    };
-                };
+            };
+            // ─── The heat model runs whenever the THERMAL CHANNEL is live ──────
+            // The heat model is physics; the display is a consumer of it, and a
+            // consumer cannot be fed by a model that never runs.
+            //
+            // Ordering.  The AGC window is computed BEFORE the per-selection
+            // solves that read it.  The DISPLAY calls then run after the solve,
+            // so they read THIS tick's temperatures rather than the previous
+            // tick's, which removes a frame of latency instead of adding it.
+            if (_vm == 2) then {
+                // Per-tick selection budget (lag fix).  The runtime
+                // selectionNames fallback widened coverage, and the periodic
+                // building rescan then solved every nearby structure's every
+                // selection in ONE tick (the live RPT gate moved temps=15 to
+                // temps=2897 across one rescan), and each selection runs the
+                // Gagge two-node solve.  The budget is re-armed each tick and
+                // spent per solved selection in fnc_applySelectionThermal, so
+                // a wide scene converges over a few ticks instead of freezing
+                // one frame.  The one-shot boot pass runs before any tick, so
+                // it is not capped.
+                // Budget SIZED FROM THE INPUT CLOCK, not picked.  The solve reads
+                // air temperature, humidity, fog, rain and air density, and all
+                // of those move on the updateInterval cadence (default 5 s).  The
+                // solve is a relaxation toward that equilibrium, so its answer AT
+                // equilibrium does not depend on how often it runs: a budget that
+                // spreads ONE full pass across the ticks in one interval reaches
+                // the same equilibrium, never lags the inputs, and costs a fifteenth
+                // of the work.  The fixed 900 it replaces sat AT equilibrium 9000
+                // times a second for no change, in both modes.
+                //
+                // selSolveTicks is the round-robin step for the object list.  The
+                // consumer exits when the budget runs out, so a smaller budget
+                // against a STABLE order would starve every object past the cut
+                // permanently.  The step is sized so one cycle also completes
+                // inside one interval.
+                private _selCount = count (missionNamespace getVariable [QEGVAR(thermal,selTemperature), []]);
+                private _atmos = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
+                if !(_atmos isEqualType 0) then { _atmos = 5 };
+                if (_atmos <= 0) then { _atmos = 1 };
+                // 0.1 s is this handler's own period, so this is the tick count in
+                // one atmosphere interval.
+                private _ticks = ceil (_atmos / 0.1);
+                missionNamespace setVariable [QEGVAR(thermal,selSolveTicks), _ticks];
+                // A SINGLE shared budget is spent FIRST-COME, and clothing runs
+                // first over allUnits at every unit's every selection.  With the
+                // small clock-derived share that left buildings and vehicles
+                // permanently unsolved, which is a worse fault than the lag it
+                // fixed: thermal simply goes dark.  Each consumer therefore gets
+                // its own share, re-armed immediately before its own call, and
+                // the structure list is round-robin so a small share cannot
+                // starve its tail (see fnc_applyBuildingThermal).
+                private _clothingShare = 120 max 1;
+                missionNamespace setVariable [QEGVAR(thermal,selSolveBudget), _clothingShare];
+                [] call EFUNC(thermal,updateThermalAGC);
+                [] call EFUNC(thermal,applyWeaponBarrelHeat);
+                ["TICK"] call EFUNC(thermal,applyClothingThermal);
+                missionNamespace setVariable [QEGVAR(thermal,selSolveBudget), ceil (_selCount / _ticks) max 1];
+                ["TICK"] call EFUNC(thermal,applyBuildingThermal);
+                // Contact conduction: heat exchange between the operator and
+                // what they touch (vehicle interior, prone ground).  Runs after
+                // the object solves so both sides have temperatures.
+                [] call EFUNC(thermal,applyContactConduction);
+                // Radiative exchange (issue #204): a hot object heats the
+                // objects around it - Stefan-Boltzmann view-factor transfer.
+                [] call EFUNC(thermal,applyRadiativeExchange);
+                // Exhaust / emission heat (issue #204): a firing muzzle or a
+                // running engine expels hot gas that warms ground and air.
+                [] call EFUNC(thermal,applyExhaustHeat);
             };
             if (_vm == 2) then {
                 // Thermal optics are parfocal: LWIR wavelength is ~10x
@@ -140,32 +188,9 @@ AEE_MODULE_POST_INIT
                 // module's handle from here, so ownership stays with the owner
                 // and a scope release can never strand it.
                 [] call EFUNC(nightvision,teardownNvgDoF);
-                // Scene-adaptive AGC (issue #196): compute the scene's
-                // radiance window from the physics state BEFORE the
-                // per-selection passes read it.  A real FLIR re-evaluates
-                // its gain continuously from the scene histogram; this is
-                // the same per-frame evaluation.
-                [] call EFUNC(thermal,updateThermalAGC);
                 [] call EFUNC(thermal,applyThermalVision);
                 [] call EFUNC(thermal,applyEngineThermal);
-                [] call EFUNC(thermal,applyWeaponBarrelHeat);
                 ["TICK"] call EFUNC(thermal,applySecondSun);
-                ["TICK"] call EFUNC(thermal,applyClothingThermal);
-                ["TICK"] call EFUNC(thermal,applyBuildingThermal);
-                // Contact conduction: heat exchange between the operator
-                // and what they touch (vehicle interior, prone ground).
-                // Runs after the object solves so both sides have temps.
-                [] call EFUNC(thermal,applyContactConduction);
-                // Radiative exchange (issue #204): a hot object heats the
-                // objects around it (a hot barrel heats the weapon from
-                // inside out, a burning wreck heats everything nearby) -
-                // Stefan-Boltzmann view-factor transfer.
-                [] call EFUNC(thermal,applyRadiativeExchange);
-                // Exhaust / emission heat (issue #204): a firing muzzle
-                // or running engine expels hot gas that warms the ground
-                // and air around it (muzzle blast over a prone shooter's
-                // floor, jet afterburner heating the tarmac).
-                [] call EFUNC(thermal,applyExhaustHeat);
             };
         }, 0.1] call CBA_fnc_addPerFrameHandler;
         private _logMsg = format ["sensor PFH started (vision mode %1)", _visionMode];

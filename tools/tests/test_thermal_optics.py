@@ -2834,7 +2834,6 @@ class TestSQFSync(unittest.TestCase):
             "addons/optics/functions/vision/fnc_managePostProcess.sqf",
             "addons/nightvision/functions/fnc_applyNVGTubeModel.sqf",
             "addons/thermal/functions/display/fnc_applyThermalVision.sqf",
-            "addons/thermal/functions/fusion/fnc_applyFusionPP.sqf",
         ]
         seen = {}
         for rel in files:
@@ -3365,6 +3364,23 @@ class TestSQFSync(unittest.TestCase):
         self.assertNotIn('_sn find "wheel"', text)
         self.assertNotIn("engineRunTime", text)
 
+    def test_dropped_weapons_enter_the_object_solve(self):
+        # A weapon on the ground is a WeaponHolder, not a Man, so it is in
+        # neither the unit sweep nor the vehicle list, and the barrel-heat
+        # path only resolves the SHOOTER's current weapon (currentWeapon
+        # _player).  Without its own scan a dropped weapon keeps the
+        # engine's baked default and reads as the I2 base in the fused
+        # view instead of its cold, low-emissivity thermal signature.
+        self._assert_in_sqf(
+            "fnc_applyBuildingThermal.sqf",
+            [
+                "nearestObjects",
+                '"GroundWeaponHolder", "WeaponHolderSimulated"',
+            ],
+            "dropped weapon holders enter the per-object thermal solve",
+            addon="thermal",
+        )
+
     def test_dynamic_thermal_selection_discovery(self):
         # Issue #204: selections are discovered dynamically (MKK pattern)
         # - Man = all texture slots, vehicle = config override >
@@ -3516,6 +3532,73 @@ class TestSQFSync(unittest.TestCase):
         text = _read_sqf("fnc_getThermalSelections.sqf", "thermal")
         self.assertIn("if (_selections isEqualTo []) then", text)
         self.assertIn('["mfd", _x, false] call BIS_fnc_inString', text)
+
+    def test_runtime_selection_name_fallback_in_discovery(self):
+        # Issue #204: an object whose config omits hiddenSelections exposes
+        # its parts only at runtime (selectionNames).  Discovery must reach
+        # them through the authoritative helper, or the object returns []
+        # and is never painted.  fnc_getSelectionMaterials already did this;
+        # discovery did not.
+        helper = _code_only(_read_sqf("fnc_getThermalSelectionNames.sqf", "thermal"))
+        self.assertIn('>> "hiddenSelections")', helper)
+        self.assertIn("selectionNames", helper)
+        self.assertIn("isNotEqualTo []", helper)
+        # Config wins when it is declared, so a config-declaring object
+        # keeps its exact index map.
+        self.assertLess(
+            helper.index('>> "hiddenSelections")'),
+            helper.rindex("selectionNames"),
+            "config hiddenSelections must be tried before the runtime tree",
+        )
+        discovery = _code_only(_read_sqf("fnc_getThermalSelections.sqf", "thermal"))
+        self.assertIn("FUNC(getThermalSelectionNames)", discovery)
+
+    def test_empty_selection_result_is_cached(self):
+        # Issue #204: an empty discovery result is legitimate and must be
+        # cached, or the config is re-read every frame for exactly the
+        # objects that yield nothing.  `count _cached > 0` cannot tell
+        # "not computed" from "computed empty", so a separate marker guards
+        # the cache.
+        code = _code_only(_read_sqf("fnc_getThermalSelections.sqf", "thermal"))
+        self.assertNotIn("count _cached > 0", code)
+        self.assertIn("QGVAR(thermalSelectionsComputed)", code)
+        self.assertIn(
+            "if (missionNamespace getVariable [_doneKey, false]) exitWith", code
+        )
+        self.assertIn("missionNamespace setVariable [_doneKey, true]", code)
+
+    def test_index_callers_resolve_against_authoritative_names(self):
+        # Issue #204: discovery returns INDICES.  Every caller that turns an
+        # index into a name must use the SAME authoritative list, or a
+        # runtime-fallback index resolves to "" against an empty config
+        # array and the selection is skipped while appearing to work.
+        for caller in (
+            "fnc_applyBuildingThermal.sqf",
+            "fnc_applyClothingThermal.sqf",
+        ):
+            code = _code_only(_read_sqf(caller, "thermal"))
+            self.assertIn(
+                "FUNC(getThermalSelectionNames)",
+                code,
+                f"{caller} must resolve indices via the authoritative list",
+            )
+            self.assertNotIn(
+                "hiddenSelections",
+                code,
+                f"{caller} still resolves against the raw config name array",
+            )
+
+    def test_mfd_exclusion_survives_runtime_fallback(self):
+        # Issue #204: the all-but-MFD fallback now iterates the runtime part
+        # tree too.  The exclusion must apply on that path or MFD screens
+        # get painted.
+        code = _code_only(_read_sqf("fnc_getThermalSelections.sqf", "thermal"))
+        self.assertIn(
+            "private _selectionNames = [_object] call FUNC(getThermalSelectionNames)",
+            code,
+        )
+        self.assertIn('["mfd", _x, false] call BIS_fnc_inString', code)
+        self.assertIn("} forEach _selectionNames;", code)
 
     def test_selection_material_full_part_tree(self):
         # Issue #204: every object exposes its full part tree.  The
@@ -4057,546 +4140,35 @@ class TestNVGStackAuditSQFSync(unittest.TestCase):
         self.assertIn("nvgGrainBoost", text)
 
 
-class TestFusionPipeline(unittest.TestCase):
-    """Fusion (Track B ENVG-B, issue #204): the emissive overlay over
-    the NVG base, driven by the same physics + AGC state as the thermal
-    display.  Locked against the SQF source and the shipped rvmats."""
+class TestEngineThermalCompositeKey(unittest.TestCase):
+    """The engine thermal channel reads selTemperature by the composite
+    object|selection key, so a bare object key never matches."""
 
-    def test_fusion_emissive_bands_shipped(self):
-        # 256 GENERATED fusion emissive bands, grey * 500 (band_255 = the
-        # A3TI full-white emissive 500).  The ladder is produced by
-        # tools/gen_fusion_emissive_materials.py, so the count is auditable
-        # and the set is reproducible.  The old 16 hand-written bands named
-        # by grey percent were a texture-count convenience about fourteen
-        # times coarser than the sensor resolves; 256 is the 8-bit grey of a
-        # real thermal display.
-        import re
-        from pathlib import Path
-
-        data_dir = Path(__file__).resolve().parents[2] / "addons" / "thermal" / "data"
-        emissives = []
-        for band in range(256):
-            f = data_dir / f"fusion_emissive_{band:03d}.rvmat"
-            self.assertTrue(f.exists(), f"missing {f.name}")
-            text = f.read_text(encoding="utf-8")
-            expected = band / 255.0 * 500.0
-            m = re.search(r"emmisive\[\]\s*=\s*\{([\d.]+)", text)
-            if m is None:
-                self.fail(f"emissive missing in {f.name}")
-            got = float(m.group(1))
-            self.assertAlmostEqual(
-                got,
-                expected,
-                places=3,
-                msg=f"{f.name} emissive must be band/255*500 ({expected})",
-            )
-            # Pink guard (issue #204): the Stage1 texture must be pure
-            # white (1,1,1,1), never grey.  A grey Stage1 composited over
-            # the green NVG base tints the scene pink/magenta - the user
-            # reported "very very pink".  The emissive carries the heat;
-            # the texture stays white (A3TI TI_white.paa = 255,255,255).
-            self.assertIn(
-                "color(1,1,1,1)",
-                text,
-                f"{f.name} Stage1 must be pure white (pink fix, #204)",
-            )
-            emissives.append(got)
-
-        # White-hot polarity: the ladder is MONOTONIC from black to the A3TI
-        # full white.  This is the property the quantiser depends on, so it
-        # is asserted rather than assumed.
-        self.assertEqual(emissives[0], 0.0)
-        self.assertAlmostEqual(emissives[-1], 500.0, places=6)
-        for a, b in zip(emissives, emissives[1:]):
-            self.assertLessEqual(a, b, "the emissive ladder is not monotonic")
-
-        # The 16 old hand-written percent names are gone, not left as dead
-        # weight in the PBO.
-        prefix = "fusion_emissive_"
-        stale = sorted(
-            p.name
-            for p in data_dir.glob(f"{prefix}*.rvmat")
-            if len(p.stem) - len(prefix) != 3
-        )
-        self.assertEqual(stale, [], f"stale old band files remain: {stale}")
-
-    def test_fusion_uses_same_physics_state(self):
-        # The overlay reads the SAME selTemperature + AGC window as the
-        # thermal display, so fusion and thermal agree on what is hot.
-        self._assert_in_sqf(
-            "fnc_applyFusionOverlay.sqf",
-            [
-                "QGVAR(selTemperature)",
-                "QGVAR(agcRadMin)",
-                "QGVAR(agcRadMax)",
-                "fusion_emissive_%1",
-                "calculateBandRadiance",
-            ],
-            "fusion overlay shares the thermal physics state",
-            addon="thermal",
-        )
-
-    def test_fusion_pp_force_in_nvg(self):
-        # Every fusion effect must render ONLY over the NVG base frame.
-        self._assert_in_sqf(
-            "fnc_applyFusionPP.sqf",
-            [
-                "ppEffectForceInNVG true",
-                "FilmGrain",
-                "2005",
-                "ColorCorrections",
-                "2505",
-            ],
-            "fusion PP stack: grain 2005, CC 2505, ForceInNVG",
-            addon="thermal",
-        )
-
-    def test_fusion_dispatch_after_nvg_tube(self):
-        # The sensor tick runs the tube model first, then the fusion
-        # overlay on top (composited over the I2 image).
-        self._assert_in_sqf(
-            "XEH_postInit.sqf",
-            [
-                "applyNVGTubeModel",
-                "isFusionCapable",
-                "applyFusionPP",
-                "applyFusionOverlay",
-                "fusionMode",
-            ],
-            "fusion wired into the vision-mode-1 dispatch",
-            addon="optics",
-        )
-
-    def test_fusion_teardown_on_exit(self):
-        # Leaving NVG destroys the fusion PP handles and the diet sun.  The
-        # sequence moved into fnc_teardownSensors when the visionMode event
-        # stopped being its only owner (GAP-026): the handler now tears down
-        # on death and respawn too, so both paths must run one sequence.
-        self._assert_in_sqf(
-            "XEH_postInit.sqf",
-            ["teardownSensors"],
-            "fusion teardown on normal-vision exit",
-            addon="optics",
-        )
-        self._assert_in_sqf(
-            "functions/vision/fnc_teardownSensors.sqf",
-            ["cycleFusionMode", "applyFusionSun", "sensor PFH stopped"],
-            "fusion teardown sequence",
-            addon="optics",
-        )
-
-    def test_fusion_mode_does_not_latch_off_on_teardown(self):
-        # The teardown forces mode 0 for its SIDE EFFECT: it destroys the two
-        # fusion post-process handles.  It must not LATCH, so the value it
-        # restores is the READER'S OWN DEFAULT, read out of the reader rather
-        # than restated here, so the two cannot drift apart.
+    def test_engine_thermal_reads_selection_temps_by_object_not_bare_key(self):
+        # selTemperature is keyed "object|selection"; fnc_applySelectionThermal
+        # writes format ["%1|%2", str _obj, _sel].  Asking that map for a BARE
+        # object key can never match, so the engine/wheel/weapon loop never ran
+        # once and every channel stayed at its -1e10 sentinel.
         #
-        # This test previously pinned the default at 1, which IS the defect
-        # this replaces: an optic declaring TI rendered fused with no opt-in
-        # and no way to stop it.  The default is now 0 (I2 only) and the
-        # operator switches fusion on with the keybind, so the anti-latch
-        # property is asserted against the new default rather than dropped.
-        import re
-
-        raw = (
-            _REPO_ROOT / "addons/optics/functions/vision/fnc_teardownSensors.sqf"
-        ).read_text(encoding="utf-8")
-        code = re.sub(r"/\*.*?\*/", " ", raw, flags=re.S)
-        code = "\n".join(line.split("//")[0] for line in code.splitlines())
-
-        forced = code.find("[0] call EFUNC(thermal,cycleFusionMode)")
-        self.assertNotEqual(
-            forced, -1, "teardown must still force 0 to destroy the handles"
-        )
-
-        # Read the reader's own default out of the reader.
-        post = _code_only(
-            (_REPO_ROOT / "addons/optics/XEH_postInit.sqf").read_text(encoding="utf-8")
-        )
-        m = re.search(
-            r"getVariable \[\s*QEGVAR\(thermal,fusionMode\)\s*,\s*([01])\s*\]", post
-        )
-        self.assertIsNotNone(m, "the reader must declare the fusionMode default")
-        reader_default = m.group(1)
-        self.assertEqual(
-            reader_default,
-            "0",
-            "fusion must default to I2-only so nothing renders fused unasked",
-        )
-        restore = re.search(r"setVariable \[\s*_fusionModeVar\s*,\s*([01])\s*\]", code)
-        self.assertIsNotNone(restore, "teardown must restore the mode explicitly")
-        self.assertEqual(
-            restore.group(1),
-            reader_default,
-            "the restored value must be the reader's own default",
-        )
-        self.assertGreater(
-            restore.start(), forced, "the restore must come AFTER the forced 0"
-        )
-
-        # A third writer would make the restore not the last word.
-        writers = sorted(
-            str(p.relative_to(_REPO_ROOT))
-            for p in (_REPO_ROOT / "addons").rglob("*.sqf")
-            if re.search(
-                r"setVariable\s*\[\s*(?:QGVAR\(fusionMode\)|_fusionModeVar)",
-                p.read_text(encoding="utf-8", errors="replace"),
-            )
-        )
-        self.assertEqual(
-            writers,
-            [
-                "addons/optics/functions/vision/fnc_teardownSensors.sqf",
-                "addons/thermal/functions/fusion/fnc_cycleFusionMode.sqf",
-            ],
-            "fusionMode must have exactly two writers: the cycle and the restore",
-        )
-
-    def test_fusion_keybind_gives_the_operator_the_control(self):
-        # There is no automatic response: the operator switches fusion on.
-        # So a keybind must exist that cycles I2-only and fused.  It must
-        # reach the cycle function, because a bare variable write would leave
-        # the post-process handles alive and the tint on the NVG base.
-        actions = _code_only(
-            (_REPO_ROOT / "addons/actions/XEH_postInit.sqf").read_text(encoding="utf-8")
-        )
-        self.assertIn(
-            '"AEE", "FusionModeToggle"', actions, "the fusion keybind is missing"
-        )
-        self.assertIn(
-            "call EFUNC(thermal,cycleFusionMode)",
-            actions,
-            "the keybind must call the cycle so the handles are destroyed",
-        )
-        # Unbound by default: the player assigns it in Configure Addons.
-        keybind = actions[actions.index('"AEE", "FusionModeToggle"') :]
-        self.assertIn(
-            "[0, [false, false, false]]",
-            keybind,
-            "the fusion keybind must be unbound by default",
-        )
-        strings = (_REPO_ROOT / "addons/actions/stringtable.xml").read_text(
-            encoding="utf-8"
-        )
-        for key in ("FusionModeToggle", "FusionModeToggle_Description"):
-            self.assertIn(
-                f"STR_AEE_ACTIONS_{key}",
-                strings,
-                f"the keybind needs a localised string: {key}",
-            )
-
-    def test_fusion_always_on_setting_forces_the_mode(self):
-        # The setting is NAMED "force", so TRUE must actually put the mode to
-        # 1.  fnc_isFusionCapable already grants capability, and capability is
-        # not forcing, so the dispatcher is where the mode must be set.
-        import re
-
-        post = _code_only(
-            (_REPO_ROOT / "addons/optics/XEH_postInit.sqf").read_text(encoding="utf-8")
-        )
-        m = re.search(
-            r"getVariable \[\s*QEGVAR\(thermal,fusionAlwaysOn\)\s*,\s*false\s*\]"
-            r"\s*\)\s*then\s*\{\s*\[1\]\s*call\s*EFUNC\(thermal,cycleFusionMode\)",
-            post,
-        )
-        self.assertIsNotNone(
-            m,
-            "aee_thermal_fusionAlwaysOn must force the mode to 1, not only "
-            "grant capability",
-        )
-
-    def test_fusion_path_is_logged(self):
-        # The overlay the operator SAW had no line in the RPT, so the path
-        # could be neither proved nor refuted.  Every function on the path
-        # must emit a log call, read with the comments stripped so a header
-        # cannot satisfy the assertion.
-        fusion = _REPO_ROOT / "addons/thermal/functions/fusion"
-        for name in (
-            "fnc_applyFusionOverlay.sqf",
-            "fnc_applyFusionPP.sqf",
-            "fnc_applyFusionSun.sqf",
-        ):
-            code = _code_only((fusion / name).read_text(encoding="utf-8"))
-            self.assertIn(
-                "AEE_LOG_",
-                code,
-                f"{name} emits no diagnostic, so the fusion path is unobservable",
-            )
-        # The PP teardown lives in the cycle function, which owns the mode,
-        # so that is where the destroy is reported.
-        cycle = _code_only(
-            (fusion / "fnc_cycleFusionMode.sqf").read_text(encoding="utf-8")
-        )
-        self.assertIn("AEE_LOG_", cycle, "the fusion handle teardown is unlogged")
-        # The overlay log is throttled on diag_tickTime and names the fields
-        # the next session needs to confirm or refute the render.
-        overlay = _code_only(
-            (fusion / "fnc_applyFusionOverlay.sqf").read_text(encoding="utf-8")
-        )
-        self.assertIn("diag_tickTime", overlay, "the overlay log must be throttled")
-        for field in ("vm=%1", "capable=%2", "mode=%3", "maxBand="):
-            self.assertIn(field, overlay, f"the overlay log must report {field}")
-
-    def test_fusion_gate_reads_device_field_and_reports_it(self):
-        # The overlay painted every object in 300 m whatever direction it sat
-        # in, so it had no angular limit at all.  The gate compares a
-        # target's angle from the VIEW AXIS against the thermal channel's
-        # half-angle.
-        #
-        # The half-angle and the comparison are READ OUT of the SQF, not
-        # hardcoded here, so a change to either fails this test instead of
-        # letting the test drift against the renderer.  Comments are
-        # stripped first, because this file's header quotes the figures it
-        # replaced and a raw search would find the prose.
-        fusion = _REPO_ROOT / "addons/thermal/functions/fusion"
-        code = _code_only(
-            (fusion / "fnc_applyFusionOverlay.sqf").read_text(encoding="utf-8")
-        )
-
-        # The device with no published thermal figure takes a DECLARED
-        # default, and the log must be able to say so.
-        m = re.search(r"_DECLARED_HALF_ANGLE_DEG\s*=\s*([0-9.]+)\s*;", code)
-        self.assertIsNotNone(
-            m, "the declared default half-angle must exist and be named"
-        )
-        declared = float(m.group(1))
-
-        # The device WITH a published thermal field takes its own figure.
-        d = re.search(
-            r'case\s+"BNVD-FUSED"\s*:\s*\{\s*'
-            r"_thermalHalfAngleDeg\s*=\s*([0-9.]+)\s*;\s*"
-            r'_fovSource\s*=\s*"([a-z]+)"\s*;\s*'
-            r'_fovAxis\s*=\s*"([a-z]+)"\s*;',
+        # Read with comments stripped so the explanatory block above cannot
+        # satisfy the search, and so the assertion tests the code, not the prose.
+        code = _code_only(_read_sqf("fnc_applyEngineThermal.sqf", "thermal"))
+        self.assertNotRegex(
             code,
-        )
-        self.assertIsNotNone(
-            d,
-            "the published device must set its own half-angle, source and axis",
-        )
-        derived = float(d.group(1))
-        self.assertEqual(d.group(2), "derived", "a sourced figure is not declared")
-        self.assertEqual(
-            d.group(3),
-            "diagonal",
-            "the only published thermal figure states a diagonal, so the "
-            "axis must not be invented or left unpinned",
-        )
-        self.assertNotEqual(
-            derived,
-            declared,
-            "a device with its own published figure must not silently fall "
-            "back to the declared default",
-        )
-
-        # The gate itself: an angle from the view axis, compared to the
-        # half-angle in use.  acos is used and NOT acosDeg, because the
-        # dedicated-server binary carries acos and not acosDeg, and a bare
-        # absent token is a parse error that aborts the whole file.
-        self.assertIn("acos _cosOffset", code, "the offset angle must be computed")
-        self.assertNotIn(
-            "acosDeg", code, "acosDeg is absent from the dedicated server binary"
+            r"_selTemps\s+getOrDefault\s+\[_objKey",
+            "selTemperature is keyed object|selection, so a bare object key "
+            "never matches and the engine channel stays dead",
         )
         self.assertRegex(
             code,
-            r"if\s*\(\s*_offsetDeg\s*>\s*_thermalHalfAngleDeg\s*\)",
-            "the offset gate must compare the target angle to the half-angle",
+            r"_byObj\s+getOrDefault\s+\[_objKey",
+            "the engine channel must read the per-object index built from the "
+            "composite keys",
         )
-        # The dot product is clamped, or a normalised pair that rounds above
-        # 1 makes acos NaN and every comparison false, which repaints the
-        # whole screen and looks like a working gate.
-        self.assertIn(
-            "max -1 min 1",
+        self.assertRegex(
             code,
-            "the cos must be clamped to [-1, 1] or acos returns NaN",
-        )
-
-        # THE ENVG-B MUST NOT BE GIVEN THE BNVD-FUSED'S NUMBER.  It has no
-        # published thermal-channel figure of its own, and the two are
-        # different device families, so it falls to the declared default.
-        self.assertIn(
-            '_x == "nvgogglesb"',
-            code,
-            "the device must be identified from the hmd classname token, the "
-            "same path the phosphor fix uses",
-        )
-        for forbidden in ('_x == "envg"', '_x == "psq-42"'):
-            self.assertNotIn(
-                forbidden,
-                code,
-                "the ENVG-B must not be routed to another device's figure",
-            )
-
-        # The look direction is the repository's cached eye state, sampled
-        # ONCE per tick, not a per-object camera read.
-        self.assertIn(
-            "EFUNC(core,getEyeState)",
-            code,
-            "the gate must use the repository's cached eye state",
-        )
-        self.assertLess(
-            code.index("EFUNC(core,getEyeState)"),
-            code.index("forEach _objects"),
-            "the look direction must be sampled BEFORE the object loop, so "
-            "the hot path does not grow",
-        )
-
-        # A gate nobody can read in a log is a gate nobody can check next
-        # session, so the diagnostic must name the device, the half-angle,
-        # whether the value is derived or declared, and both counts.
-        for field in ("dev=%1", "fov=%2", "axis=%3", "halfDeg=%4", "gated=%6"):
-            self.assertIn(field, code, f"the gate log must report {field}")
-
-    def test_fusion_gate_half_angles_are_the_published_ones(self):
-        # The half-angles are read out of the SQF, and the relationships
-        # that make them defensible are checked here:
-        #   * the derived figure is exactly half a DIAGONAL field, so the
-        #     gate uses the axis the source states;
-        #   * the declared default is exactly half the family's 40, which
-        #     is the same unpinned-axis figure the device library records.
-        # Both are read from the source, so editing either number fails.
-        fusion = _REPO_ROOT / "addons/thermal/functions/fusion"
-        code = _code_only(
-            (fusion / "fnc_applyFusionOverlay.sqf").read_text(encoding="utf-8")
-        )
-        m = re.search(
-            r'case\s+"BNVD-FUSED"\s*:\s*\{\s*'
-            r"_thermalHalfAngleDeg\s*=\s*([0-9.]+)\s*;",
-            code,
-        )
-        self.assertIsNotNone(m)
-        derived = float(m.group(1))
-        m = re.search(r"_DECLARED_HALF_ANGLE_DEG\s*=\s*([0-9.]+)\s*;", code)
-        declared = float(m.group(1))
-
-        # The published thermal field is a DIAGONAL, so its half-angle about
-        # the view axis is the diagonal halved.  No separate horizontal or
-        # vertical figure is published anywhere in the family, so this is
-        # the only reading the numbers support.
-        self.assertAlmostEqual(
-            derived * 2,
-            34.0,
-            places=6,
-            msg="the derived half-angle must be half the published 34 "
-            "diagonal thermal field, and not a split of the fused figure",
-        )
-        self.assertAlmostEqual(
-            declared * 2,
-            40.0,
-            places=6,
-            msg="the declared default must be half the family's unpinned 40, "
-            "declared because no source states an axis for it",
-        )
-
-        # THE COVERAGE ARITHMETIC, computed here from the parsed half-angle
-        # so it cannot drift.  A cone of half-angle t covers
-        # (1 - cos t) / 2 of the sphere.  On a 16:9 display the published
-        # diagonal is the CORNER angle, so the rectangle's half-width and
-        # half-height are set by the aspect and the corner is the gate's
-        # boundary: the cone circumscribes the rectangle and therefore
-        # over-admits the corner sectors.  That over-admission is the honest
-        # cost of a diagonal-only figure and is stated in the header, so
-        # this test records it rather than hiding it.
-        for half_deg, label in ((derived, "derived"), (declared, "declared")):
-            half = math.radians(half_deg)
-            solid_fraction = (1.0 - math.cos(half)) / 2.0
-            self.assertGreater(
-                solid_fraction,
-                0.0,
-                f"the {label} gate must cover some solid angle",
-            )
-            self.assertLess(
-                solid_fraction,
-                0.5,
-                f"the {label} gate must be a bounded field, not the whole sphere",
-            )
-            # 16:9 with the half-diagonal equal to the half-angle.
-            aspect = 16.0 / 9.0
-            k = math.tan(half) / math.sqrt(aspect * aspect + 1.0)
-            half_w_deg = math.degrees(math.atan(aspect * k))
-            half_h_deg = math.degrees(math.atan(k))
-            self.assertAlmostEqual(
-                math.hypot(
-                    math.tan(math.radians(half_w_deg)),
-                    math.tan(math.radians(half_h_deg)),
-                ),
-                math.tan(half),
-                places=9,
-                msg="the rectangle's corner must land on the gate's boundary",
-            )
-            # The cone is strictly larger than the rectangle it circumscribes,
-            # which is the corner over-admission the header names.
-            self.assertGreater(
-                half_w_deg,
-                half_h_deg,
-                "a landscape display has the wider half-angle",
-            )
-            self.assertLess(
-                half_w_deg,
-                half_deg,
-                "the horizontal half-angle is less than the diagonal "
-                "half-angle, which is why the cone over-admits",
-            )
-
-    def test_fusion_gate_adds_no_rendering_surface(self):
-        # The boundary this gate produces lands at OBJECT scale, because the
-        # overlay's only pixel primitive is a per-object setObjectMaterial
-        # and addons/ has no viewport, scissor, stencil or render-target
-        # primitive.  A frame, border, outline or mask would imply an
-        # optical edge the renderer cannot produce, and a graphic is not
-        # optics, so none may be introduced to make the gate legible.
-        fusion = _REPO_ROOT / "addons/thermal/functions/fusion"
-        code = _code_only(
-            (fusion / "fnc_applyFusionOverlay.sqf").read_text(encoding="utf-8")
-        )
-        for banned in (
-            "drawLine3D",
-            "drawIcon3D",
-            "drawTriangle3D",
-            "cut3D",
-            "BIS_fnc_3DText",
-            '"Draw3D"',
-            "EachFrame",
-            "onEachFrame",
-            "particlesources",
-        ):
-            self.assertNotIn(
-                banned,
-                code,
-                f"the gate must not add a rendering surface ({banned})",
-            )
-
-    def test_fusion_diet_sun(self):
-        # A3TI creates a diet sun (brightness 0.8, dayLight false) to
-        # light the EmissiveWhite objects over the dark NVG scene -
-        # without it the emissive rvmat renders black (the I2 base is
-        # near-black at night).
-        self._assert_in_sqf(
-            "fnc_applyFusionSun.sqf",
-            [
-                "setLightBrightness 0.8",
-                "setLightDayLight false",
-                "setLightAttenuation",
-                "setLightAmbient",
-                "setPosASL",
-            ],
-            "fusion diet sun lights the emissive overlay",
-            addon="thermal",
-        )
-
-    def _assert_in_sqf(self, filename, fragments, context, addon="optics"):
-        from pathlib import Path
-
-        root = Path(__file__).resolve().parents[2]
-        # fusion functions live in functions/fusion/ (subfolder)
-        if "Fusion" in filename:
-            path = root / "addons" / addon / "functions" / "fusion" / filename
-        else:
-            path = root / "addons" / addon / filename
-        text = path.read_text(encoding="utf-8")
-        missing = [f for f in fragments if f not in text]
-        self.assertFalse(
-            missing,
-            f"{filename}: {context} changed/missing in SQF: {missing}.",
+            r"find\s+\"\|\"",
+            "the index must split the composite key on the separator",
         )
 
 
@@ -5056,14 +4628,6 @@ class TestSensorThresholdKernel(unittest.TestCase):
         / "display"
         / "fnc_applySelectionThermal.sqf"
     )
-    _FUSION_QUANTISER = (
-        _REPO_ROOT
-        / "addons"
-        / "thermal"
-        / "functions"
-        / "fusion"
-        / "fnc_applyFusionOverlay.sqf"
-    )
 
     @classmethod
     def setUpClass(cls):
@@ -5075,7 +4639,6 @@ class TestSensorThresholdKernel(unittest.TestCase):
         cls.selection_code = _code_only(
             cls._SELECTION_QUANTISER.read_text(encoding="utf-8")
         )
-        cls.fusion_code = _code_only(cls._FUSION_QUANTISER.read_text(encoding="utf-8"))
 
     def _selection_band_step(self):
         """The live selection display step, read from its quantiser."""
@@ -5085,15 +4648,6 @@ class TestSensorThresholdKernel(unittest.TestCase):
         # The ladder spans 0..1 inclusive, so N levels are N - 1 steps.
         self.assertIn("(_levels - 1)", self.selection_code)
         return 1.0 / (levels - 1)
-
-    def _fusion_band_step(self):
-        """The live fusion display step, read from its band index."""
-        m = re.search(r"private _band = round \(_b \* (\d+)\)", self.fusion_code)
-        self.assertIsNotNone(m, "the fusion band index is not declared")
-        bands = int(m.group(1))
-        # The index spans 0..bands inclusive, so it is bands + 1 materials.
-        self.assertIn("_mats select _band", self.fusion_code)
-        return 1.0 / bands
 
     @staticmethod
     def _n(t_bg_k):
@@ -5137,64 +4691,33 @@ class TestSensorThresholdKernel(unittest.TestCase):
         self.assertLess(self.threshold(0.05, 5, 15), self.threshold(0.05, 10, 15))
         self.assertAlmostEqual(self.threshold(0.05, 10, 15), 0.008697, places=6)
 
-    def test_the_threshold_sits_below_the_selection_step_and_above_the_fusion_step(
-        self,
-    ):
-        """The sensor threshold is not a display band, and neither is a floor.
+    def test_the_threshold_sits_below_the_selection_step_not_a_band_floor(self):
+        """The sensor threshold is not a display band, and it is not a floor.
 
-        Two display quantisers are live, and the sensor threshold falls
-        BETWEEN them, so the two paths differ in direction:
+        The selection path, fnc_applySelectionThermal, quantises the heat
+        tint to 32 levels over 0..1, so its step is 1 / 31.  The 0.004349
+        reference is 0.13 of that step, so the step is 7.4 times COARSER than
+        the sensor.  A TRUE edge can be one the operator does not see.
 
-          - The selection path, fnc_applySelectionThermal, quantises the
-            heat tint to 32 levels over 0..1, so its step is 1 / 31.  The
-            0.004349 reference is 0.13 of that step, so the step is 7.4
-            times COARSER than the sensor.  A TRUE edge can be one the
-            operator does not see.
-          - The fusion path, fnc_applyFusionOverlay, indexes 256 emissive
-            materials, so its step is 1 / 255.  The 0.004349 reference spans
-            1.11 of those steps, so the display is FINER than the sensor
-            there and hides NOTHING the sensor resolves.
-
-        That reversal is why the retired 16-band claim is not merely stale
-        but inverted.  Both steps are read from the SQF with the comments
-        stripped, so a change to either quantiser fails this test instead of
-        drifting away from the prose.
-
-        Evidence for the retirement: the 16 ti_grey_*.rvmat materials were
-        deleted in de4c378 after the 'WHOT/BHOT no visual difference' report
-        (issue #204) showed the grey set never carried the heat colour.  A
-        real thermal display is 8-bit grey, which is the published reason the
-        fusion ladder carries 256 while the per-tick status tint carries 32.
-
-        The comparison is ILLUSTRATIVE of scale, not an identity: the
-        threshold is a normalised relative temperature difference and a
-        step is a fraction of the AGC window, so the two are not
-        commensurable.  The rule that survives the inversion is that NEITHER
-        band may be used as a floor on the threshold, because a band floor
-        would make every device equally blind and would undo the per-device
-        decision.
+        The step is read from the SQF with the comments stripped, so a change
+        to the quantiser fails this test instead of drifting away from the
+        prose.  The rule it protects is that the band may not be used as a
+        floor on the threshold, because a band floor would make every device
+        equally blind and would undo the per-device decision.
         """
         selection_step = self._selection_band_step()
-        fusion_step = self._fusion_band_step()
-        # The two live steps are far apart, so a test that pinned one of
-        # them could not describe the other.
-        self.assertGreater(selection_step, fusion_step * 8.0)
         for snr in (5, 10):
             got = self.threshold(0.05, snr, 15)
             with self.subTest(snr=snr):
                 # The selection display is COARSER than the sensor.
                 self.assertLess(got, selection_step)
-                # The fusion display is FINER than the sensor.
-                self.assertGreater(got, fusion_step)
-                # Neither is a floor: the threshold is not either band, so
-                # the per-device decision survives at full sensitivity.
+                # Not a floor: the threshold is not the band, so the
+                # per-device decision survives at full sensitivity.
                 self.assertNotAlmostEqual(got, selection_step, places=6)
-                self.assertNotAlmostEqual(got, fusion_step, places=6)
-        # The reference magnitudes, so a quantiser change that keeps the
+        # The reference magnitude, so a quantiser change that keeps the
         # ordering but distorts the scale is still caught.
         reference = self.threshold(0.05, 5, 15)
         self.assertAlmostEqual(selection_step / reference, 7.418177, places=5)
-        self.assertAlmostEqual(reference / fusion_step, 1.108872, places=5)
 
     def test_the_exponent_follows_the_background_segment(self):
         # 5 C sits in the night segment, 35 C in the day segment and 60 C in
@@ -5354,197 +4877,6 @@ class TestSpatialResolutionKernel(unittest.TestCase):
             got = self._resolve(angle, res_x, mag)
             self.assertFalse(got[0], f"{angle},{res_x},{mag} must refuse")
             self.assertEqual(got[1], 0)
-
-
-class TestThermalEdgeWiring(unittest.TestCase):
-    """The wire-in of the edge state, and the clean removal of the old kernel.
-
-    The edge decision must not be the removed scene-window kernel, and it must
-    not overwrite the brightness ladder it sits beside.  Both are asserted
-    structurally, against comment-stripped code, never against prose.
-    """
-
-    def _tree_files(self):
-        for root in (_REPO_ROOT / "addons", _REPO_ROOT / "tools", _REPO_ROOT / "tests"):
-            for path in root.rglob("*"):
-                if path.is_file() and path.suffix in (".sqf", ".hpp", ".py", ".json"):
-                    yield path
-
-    def test_removed_kernel_and_probe_leave_no_reference(self):
-        # The needles are built from parts, so the test does not match itself.
-        needles = ("evaluateThermal" + "Detection", "P" + "67")
-        offenders = []
-        for path in self._tree_files():
-            text = path.read_text(encoding="utf-8", errors="replace")
-            if any(needle in text for needle in needles):
-                offenders.append(str(path.relative_to(_REPO_ROOT)))
-        self.assertEqual(offenders, [], f"stale references survive: {offenders}")
-
-    def test_edge_state_does_not_overwrite_the_brightness_ladder(self):
-        overlay = (
-            _REPO_ROOT
-            / "addons"
-            / "thermal"
-            / "functions"
-            / "fusion"
-            / "fnc_applyFusionOverlay.sqf"
-        ).read_text(encoding="utf-8")
-        code = _code_only(overlay)
-        # The kernel is called with the selection radiance, a local
-        # background radiance, AND the sensor-derived threshold, so the
-        # decision is per-device rather than a fixed constant.
-        self.assertIn(
-            "call FUNC(evaluateThermalEdge)", code, "the edge kernel is not wired"
-        )
-        self.assertIn(
-            "[_entryRad, _localBg, _sensorThreshold] call FUNC(evaluateThermalEdge)",
-            code,
-            "the edge call must pass the sensor threshold as a third argument",
-        )
-        # The device and its threshold are resolved in the overlay.
-        self.assertIn("calculateSensorThreshold", code)
-        self.assertIn("getThermalDeviceProperties", code)
-        # The brightness ladder still owns the material slot...
-        material_lines = [l for l in code.split("\n") if "setObjectMaterial" in l]
-        self.assertTrue(material_lines, "the material swap is gone")
-        for line in material_lines:
-            self.assertNotIn(
-                "_edge", line, "the edge state overwrote the brightness ladder"
-            )
-        self.assertIn("fusion_emissive_%1.rvmat", code)
-        self.assertIn("_mats select _band", code)
-        # ...and the edge is published as SEPARATE state, keyed like the
-        # selection temperature.
-        self.assertIn("QGVAR(selThermalEdge)", code)
-        self.assertIn("_edgeMap set [_entryKey", code)
-
-    def test_device_is_resolved_once_per_tick_not_per_object(self):
-        overlay = (
-            _REPO_ROOT
-            / "addons"
-            / "thermal"
-            / "functions"
-            / "fusion"
-            / "fnc_applyFusionOverlay.sqf"
-        ).read_text(encoding="utf-8")
-        code = _code_only(overlay)
-        # The resolver and the threshold derivation must sit ABOVE the
-        # `nearObjects` object loop, so they run once per tick.  If either
-        # moved inside the loop it would resolve the same device once per
-        # object.
-        self.assertLess(
-            code.index("getThermalDeviceProperties"), code.index("nearObjects")
-        )
-        self.assertLess(
-            code.index("calculateSensorThreshold"), code.index("nearObjects")
-        )
-
-    def test_spatial_resolution_is_wired_into_the_edge(self):
-        # A contrast edge is necessary and NOT sufficient.  The overlay must
-        # call the Johnson-criteria kernel and publish the verdict together
-        # with the contrast decision.
-        overlay = (
-            _REPO_ROOT
-            / "addons"
-            / "thermal"
-            / "functions"
-            / "fusion"
-            / "fnc_applyFusionOverlay.sqf"
-        ).read_text(encoding="utf-8")
-        code = _code_only(overlay)
-        self.assertIn(
-            "[_targetAngleRad, _deviceResX, _mag] call FUNC(resolveThermalTarget)",
-            code,
-            "the spatial-resolution kernel is not wired into the edge path",
-        )
-        self.assertIn("boundingBoxReal", code)
-        self.assertIn("_deviceResX = _dev param [1, 640]", code)
-        # The published edge is the contrast decision AND the resolvability.
-        self.assertIn("(_edgeResult select 0) && _resolvable", code)
-        # ...and the material slot is still written ONLY from the brightness
-        # band, never from the edge or the spatial verdict.
-        material_lines = [l for l in code.split("\n") if "setObjectMaterial" in l]
-        for line in material_lines:
-            self.assertNotIn("_edge", line)
-            self.assertNotIn("_resolvable", line)
-
-
-class TestFusionCapabilityAcceptance(unittest.TestCase):
-    """The widened fusion capability probe (fnc_isFusionCapable.sqf).
-
-    AEE accepted a `visionMode` entry of exactly `ti` and nothing else, so a
-    headset that declared `thermalMode` without spelling its mode `TI` was
-    refused.  The probe now matches the ECOTI reference in three ways while
-    the mode-1 guard and the always-on override stay untouched.
-
-    A dedicated server cannot set a unit's NVG mode, so the config acceptance
-    is tested as logic and the SQF source is locked to the same three
-    conditions.  The plain NVGoggles shape is built here, not shipped.
-    """
-
-    _PROBE = (
-        _REPO_ROOT
-        / "addons"
-        / "thermal"
-        / "functions"
-        / "fusion"
-        / "fnc_isFusionCapable.sqf"
-    )
-
-    @classmethod
-    def setUpClass(cls):
-        cls.code = _code_only(cls._PROBE.read_text(encoding="utf-8"))
-
-    def _accepts(self, vision_modes, thermal_modes=None):
-        # Mirror of the config acceptance in the SQF, pinned by
-        # test_source_conditions.
-        thermal_modes = thermal_modes or []
-        for mode in vision_modes:
-            folded = mode.upper()
-            if "TI" in folded or "THERMAL" in folded:
-                return True
-        return len(thermal_modes) > 0
-
-    def test_source_conditions(self):
-        code = self.code
-        # Substring search, case-folded, over visionMode.
-        self.assertIn("toUpper _x", code)
-        self.assertIn('"TI" in _m', code)
-        self.assertIn('"THERMAL" in _m', code)
-        # The third condition, a non-empty thermalMode array.
-        self.assertIn('"thermalMode"', code)
-        self.assertIn("_thermalModes isNotEqualTo []", code)
-        # The base-layer guard and the override stay untouched.
-        self.assertIn("currentVisionMode _unit != 1", code)
-        self.assertIn("QGVAR(fusionAlwaysOn)", code)
-
-    def test_mode_named_ti_is_accepted(self):
-        self.assertTrue(self._accepts(["Normal", "NVG", "TI"]))
-
-    def test_mode_named_thermal_is_accepted(self):
-        # The case the old equality test refused.
-        self.assertTrue(self._accepts(["Normal", "NVG", "Thermal"]))
-
-    def test_thermal_mode_without_ti_is_accepted(self):
-        # The other case the old equality test refused: thermalMode declares
-        # the channel without a TI visionMode entry.
-        self.assertTrue(self._accepts(["Normal", "NVG"], ["WHITE", "BLACK"]))
-
-    def test_plain_nv_goggles_are_refused(self):
-        # Vanilla NVGoggles: visionMode {"Normal","NVG"}, no thermalMode.
-        self.assertFalse(self._accepts(["Normal", "NVG"], []))
-
-    def test_empty_config_is_refused(self):
-        self.assertFalse(self._accepts([], []))
-
-
-# ─── Atmospheric transmission and the radiance common-mode ─────────────────
-# Roberts, Biberman & Selby 1976 (IDA P-1184, DTIC ADA025377, Applied Optics
-# 15(9) 2085) give the clean-air extinction; J. Geophys. Res. 2010JD015505
-# gives the two-term water-vapour continuum; Minkina & Klecha 2016, J. Sens.
-# Sens. Syst. 5, 17-23, Eq. (1) gives the square-root long-wave model whose
-# three published anchors the kernel must reproduce.  The mirrors below are
-# pinned to the SQF by test_source_constants_and_three_term_form.
 
 
 def _atmos_es_hpa(t_c):
@@ -5756,18 +5088,21 @@ class TestAtmosphericTransmissionKernel(unittest.TestCase):
         self.assertIn("(1 - _tau) * _wAtm", rc)
         self.assertIn("_tPathK call _fnRad", rc)
 
-    def test_overlay_links_transmission_into_the_edge(self):
-        overlay = (_THERMAL / "fusion" / "fnc_applyFusionOverlay.sqf").read_text(
-            encoding="utf-8"
+
+class TestThermalSolveBudget(unittest.TestCase):
+    """The clock-derived per-tick solve budget bounds the building rescan."""
+
+    def test_per_tick_solve_budget_bounds_the_rescan(self):
+        # The live gate moved temps=15 to temps=2897 across one rescan, and
+        # each selection runs the two-node solve.  The budget spreads a wide
+        # scene over a few ticks instead of freezing one frame.
+        opts = _code_only(
+            (_REPO_ROOT / "addons/optics/XEH_postInit.sqf").read_text(encoding="utf-8")
         )
-        code = _code_only(overlay)
-        self.assertIn("calculateAtmosphericTransmission", code)
-        self.assertIn("_tau, _tAir] call FUNC(calculateBandRadiance)", code)
-        # The edge signal is the ATMOSPHERE-INCLUDED radiance (item 3), and
-        # the display ladder keeps the unattenuated one (item 2), so the
-        # material slot does not move with range.
-        self.assertIn("private _entryRad = (_solved select _i) select 3;", code)
-        self.assertIn("private _entryBright = (_solved select _i) select 2;", code)
+        self.assertIn("QEGVAR(thermal,selSolveBudget)", opts)
+        apply = _code_only(_read_sqf("fnc_applySelectionThermal.sqf", "thermal"))
+        self.assertIn("QGVAR(selSolveBudget)", apply)
+        self.assertIn("_budget - (count _selNames)", apply)
 
 
 if __name__ == "__main__":

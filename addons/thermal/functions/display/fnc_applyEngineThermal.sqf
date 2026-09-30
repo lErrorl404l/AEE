@@ -142,6 +142,23 @@ if !(_airTemp isEqualType 0) then { _airTemp = 15; };
 // 0..1 scale (ambient = 0, ambient + 50 C = 1).  This makes the physics
 // reach the Ti image through the lever that actually works.
 private _selTemps = missionNamespace getVariable [QGVAR(selTemperature), createHashMap];
+
+// selTemperature is keyed "object|selection" (fnc_applySelectionThermal
+// writes format ["%1|%2", str _obj, _sel]).  Asking that map for a BARE
+// object key can never match, so the engine/wheel/weapon loop below never
+// ran once and every channel stayed at its -1e10 sentinel.  Index the map
+// by object ONCE here, then each vehicle reads its own selection list.
+private _byObj = createHashMap;
+{
+    private _key = _x;
+    private _sep = _key find "|";
+    if (_sep <= 0) then { continue; };
+    private _objPart = _key select [0, _sep];
+    private _parts = _byObj getOrDefault [_objPart, []];
+    _parts pushBack [_key select [_sep + 1, count _key - _sep - 1], _selTemps get _key];
+    _byObj set [_objPart, _parts];
+} forEach (keys _selTemps);
+
 private _vehRange = 150;
 {
     if (isNull _x || !alive _x) then { continue; };
@@ -163,7 +180,7 @@ private _vehRange = 150;
         if (_ls find "weapon" >= 0 || {_ls find "turret" >= 0} || {_ls find "barrel" >= 0}) then {
             if (_t > _weaponC) then { _weaponC = _t; };
         };
-    } forEach (_selTemps getOrDefault [_objKey, []]);
+    } forEach (_byObj getOrDefault [_objKey, []]);
 
     // Engine-scale fraction: (T - ambient) / 50, clamped 0..1.
     private _fEngine = ((_engineC - _airTemp) / 50) max 0 min 1;

@@ -15,12 +15,20 @@
  *     textures, then ALL hiddenSelections except MFD/display screens.
  *
  * The result is cached per vehicle class (missionNamespace), so the
- * config is read once per class per session, not every refresh.
+ * config is read once per class per session, not every refresh.  An EMPTY
+ * result is cached too, guarded by a separate "computed" marker because
+ * `count _cached > 0` cannot tell "not computed" from "computed empty".
+ *
+ * The names are read through fnc_getThermalSelectionNames, the single
+ * source of truth every caller resolves the returned indices against.
+ * That helper adds the runtime part-tree fallback (selectionNames) for a
+ * model whose config omits hiddenSelections, so such an object becomes
+ * solvable instead of returning [] and being dropped.
  *
  * Params:
  *   0: _object (OBJECT) - the unit/vehicle.
  *
- * Returns: ARRAY of selection INDICES.
+ * Returns: ARRAY of selection INDICES into fnc_getThermalSelectionNames.
  */
 params [["_object", objNull]];
 
@@ -36,14 +44,28 @@ if (_object isKindOf "Man") exitWith {
     _selections
 };
 
-// Vehicle: cache per class - the config does not change at runtime.
+// Vehicle: cache per class.  The authoritative name list is class-stable:
+// config hiddenSelections when declared, else the model's own part tree,
+// which every instance of a class shares.  A separate "computed" marker
+// records that the class has been solved, because an EMPTY list is a
+// legitimate result and `count _cached > 0` cannot tell it apart from
+// "not computed yet" (which re-read the config every call for exactly the
+// objects that yield nothing).
 private _className = typeOf _object;
 private _cacheKey = format ["%1_%2", QGVAR(thermalSelectionsCache), _className];
-private _cached = missionNamespace getVariable [_cacheKey, []];
-if (count _cached > 0) exitWith { _cached };
+private _doneKey = format ["%1_%2", QGVAR(thermalSelectionsComputed), _className];
+if (missionNamespace getVariable [_doneKey, false]) exitWith {
+    missionNamespace getVariable [_cacheKey, []]
+};
 
 private _vehicleConfig = configFile >> "CfgVehicles" >> _className;
-private _selectionNames = getArray (_vehicleConfig >> "hiddenSelections");
+// Single source of truth for the index/name contract (issue #204): the
+// SAME list the callers resolve the returned indices against.  It falls
+// back to the runtime part tree for a model whose config omits
+// hiddenSelections (scenery), which the sibling fnc_getSelectionMaterials
+// already did - discovery did not, so those objects returned [] and were
+// never painted.
+private _selectionNames = [_object] call FUNC(getThermalSelectionNames);
 private _custom = [];
 
 // 1. Explicit override: MKK_TI then legacy A3TI_ThermalSelections.
@@ -64,6 +86,7 @@ if (_custom isNotEqualTo []) then {
         if (_index >= 0) then { _converted pushBackUnique _index; };
     } forEach _custom;
     missionNamespace setVariable [_cacheKey, _converted];
+    missionNamespace setVariable [_doneKey, true];
     _converted
 } else {
     // 2. textureSources: non-empty texture slots are paintable.
@@ -94,5 +117,6 @@ if (_custom isNotEqualTo []) then {
         } forEach _selectionNames;
     };
     missionNamespace setVariable [_cacheKey, _selections];
+    missionNamespace setVariable [_doneKey, true];
     _selections
 };
