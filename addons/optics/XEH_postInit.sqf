@@ -123,7 +123,6 @@ AEE_MODULE_POST_INIT
                     };
                     if (missionNamespace getVariable [QEGVAR(thermal,fusionMode), 0] == 1) then {
                         [] call EFUNC(thermal,applyFusionPP);
-                        ["ON"] call EFUNC(thermal,applyFusionSun);
                         [] call EFUNC(thermal,applyFusionOverlay);
                     };
                 };

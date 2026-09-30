@@ -37,8 +37,8 @@ if (isNil QGVAR(sensorPFH)) exitWith {};
 ["EXIT"] call EFUNC(thermal,applyClothingThermal);
 ["EXIT"] call EFUNC(thermal,applyBuildingThermal);
 ["EXIT"] call EFUNC(thermal,applyRainDroplets);
-// Fusion teardown: destroy the fusion PP handles and the diet sun so the
-// overlay does not leak into normal vision.  The forced 0 is here for its
+// Fusion teardown: destroy the fusion PP handles so the overlay does not
+// leak into normal vision.  The forced 0 is here for its
 // side effect, it destroys those handles.  It must not LATCH, and the value
 // restored is the READER'S OWN DEFAULT, read from the reader rather than
 // restated here, so the two cannot drift apart.  The default is I2-only
@@ -49,7 +49,6 @@ if (isNil QGVAR(sensorPFH)) exitWith {};
 private _fusionModeVar = QEGVAR(thermal,fusionMode);
 [0] call EFUNC(thermal,cycleFusionMode);
 missionNamespace setVariable [_fusionModeVar, 0];
-["EXIT"] call EFUNC(thermal,applyFusionSun);
 // Restore the fusion emissive materials.  cycleFusionMode destroys the two
 // fusion post-process handles only, so without this the swapped materials
 // survive into normal vision.

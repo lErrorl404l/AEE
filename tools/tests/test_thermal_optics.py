@@ -4168,7 +4168,7 @@ class TestFusionPipeline(unittest.TestCase):
         )
 
     def test_fusion_teardown_on_exit(self):
-        # Leaving NVG destroys the fusion PP handles and the diet sun.  The
+        # Leaving NVG destroys the fusion PP handles.  The
         # sequence moved into fnc_teardownSensors when the visionMode event
         # stopped being its only owner (GAP-026): the handler now tears down
         # on death and respawn too, so both paths must run one sequence.
@@ -4180,7 +4180,7 @@ class TestFusionPipeline(unittest.TestCase):
         )
         self._assert_in_sqf(
             "functions/vision/fnc_teardownSensors.sqf",
-            ["cycleFusionMode", "applyFusionSun", "sensor PFH stopped"],
+            ["cycleFusionMode", "sensor PFH stopped"],
             "fusion teardown sequence",
             addon="optics",
         )
@@ -4314,7 +4314,6 @@ class TestFusionPipeline(unittest.TestCase):
         for name in (
             "fnc_applyFusionOverlay.sqf",
             "fnc_applyFusionPP.sqf",
-            "fnc_applyFusionSun.sqf",
         ):
             code = _code_only((fusion / name).read_text(encoding="utf-8"))
             self.assertIn(
@@ -4565,23 +4564,49 @@ class TestFusionPipeline(unittest.TestCase):
                 f"the gate must not add a rendering surface ({banned})",
             )
 
-    def test_fusion_diet_sun(self):
-        # A3TI creates a diet sun (brightness 0.8, dayLight false) to
-        # light the EmissiveWhite objects over the dark NVG scene -
-        # without it the emissive rvmat renders black (the I2 base is
-        # near-black at night).
-        self._assert_in_sqf(
-            "fnc_applyFusionSun.sqf",
-            [
-                "setLightBrightness 0.8",
-                "setLightDayLight false",
-                "setLightAttenuation",
-                "setLightAmbient",
-                "setPosASL",
-            ],
-            "fusion diet sun lights the emissive overlay",
-            addon="thermal",
+    def test_fusion_path_creates_no_light_and_no_full_frame_colour(self):
+        # The invariant is not that one file is absent.  It is that the
+        # fusion path creates no light and applies no full-frame colour:
+        # a light is the only element in the path that can tint a whole
+        # frame, and its hue would be an undeclared engine default.  Every
+        # fusion function and the fusion dispatch block are read with
+        # block and line comments stripped, because the headers quote the
+        # shapes they replaced and a raw search would match the prose.
+        banned = (
+            "createVehicleLocal",
+            "setLightColor",
+            "setLightBrightness",
+            "setLightAmbient",
+            "setLightAttenuation",
+            "drawLine3D",
+            "drawIcon3D",
+            "Draw3D",
+            "EachFrame",
+            "onEachFrame",
+            "cut3D",
+            "BIS_fnc_3DText",
         )
+
+        fusion = _REPO_ROOT / "addons/thermal/functions/fusion"
+        sources = {
+            p.name: _code_only(p.read_text(encoding="utf-8"))
+            for p in sorted(fusion.glob("fnc_*.sqf"))
+        }
+        self.assertTrue(sources, "the fusion path must have functions to read")
+
+        post = _code_only(
+            (_REPO_ROOT / "addons/optics/XEH_postInit.sqf").read_text(encoding="utf-8")
+        )
+        sources["XEH_postInit.sqf fusion block"] = _sqf_block(post, "isFusionCapable")
+
+        for name, code in sources.items():
+            for token in banned:
+                self.assertNotIn(
+                    token,
+                    code,
+                    f"{name}: the fusion path must create no light and "
+                    f"apply no full-frame colour ({token} found in code)",
+                )
 
     def _assert_in_sqf(self, filename, fragments, context, addon="optics"):
         from pathlib import Path
