@@ -142,22 +142,22 @@ def combined_h(wind, dT, L_char, orientation):
 
 
 def gagge_blood_flow(t_sk, t_cr, blood_frac=1.0):
-    """Gagge 1986 skin blood flow (L/(h·m2)):
+    """Gagge, Fobelets & Berglund 1986 skin blood flow (L/(h·m2)):
     m_bl = (6.3 + 200·W_sig)/(1 + 0.5·C_sig)
-    W_sig = max(0, T_sk - 33.7) (vasodilation)
-    C_sig = max(0, 33.7 - T_sk) (vasoconstriction)
-    Capped at 14.4 L/(h·m2) (240 ml/min/m2 max vasodilation, from the
-    segment research: skin blood flow 240 vasodilated at 35C, 105
-    neutral at 30C = 6.3 L/(h·m2)) and floored at 0.5.
-    Shock vasoconstriction (issue #196): blood loss scales skin
-    perfusion directly (before any temperature signal) - the classic
-    cold-extremities sign with a defended core.  blood_frac 0..1,
-    matching the SQF `_mBl * (0.3 + 0.7 * _bloodFrac)`."""
-    w_sig = max(0.0, t_sk - T_SK_NEUTRAL)
+    W_sig = max(0, T_cr - 36.8) (CORE vasodilation)
+    C_sig = max(0, 33.7 - T_sk) (skin vasoconstriction)
+    Clipped [0.5, 90] L/(h·m2).
+    Vasoconstriction axis (issue #196): blood loss scales skin perfusion
+    on the ATLS class III boundary (30% loss = 0.70 fraction).  This
+    mirrors aee_physiology_fnc_calculateOxygenDelivery.  Oxidative
+    metabolism is delivery-limited separately and is NOT this factor.
+    Clipped [0.5, 90] L/(h·m2)."""
+    warm_c = max(0.0, t_cr - T_CR_NEUTRAL)
     c_sig = max(0.0, T_SK_NEUTRAL - t_sk)
-    m_bl = (6.3 + 200.0 * w_sig) / (1.0 + 0.5 * c_sig)
-    m_bl = min(max(m_bl, 0.5), 14.4)
-    return m_bl * (0.3 + 0.7 * max(0.0, min(blood_frac, 1.0)))
+    m_bl = (6.3 + 200.0 * warm_c) / (1.0 + 0.5 * c_sig)
+    m_bl = min(max(m_bl, 0.5), 90.0)
+    perfusion = min(1.0, max(0.0, min(blood_frac, 1.0)) / 0.70)
+    return m_bl * perfusion
 
 
 def gagge_evaporative(t_sk, t_cr, t_air, rh, h_c, v_bl):
@@ -218,6 +218,7 @@ def solve_two_node(
     n_steps=1,
     blood_frac=1.0,
     overcast=0.0,
+    f_ground=0.5,
 ):
     """Core/skin coupled solve.
 
@@ -274,7 +275,13 @@ def solve_two_node(
     t_air_k = t_air + 273.15
     sky_k = 0.0552 * t_air_k**1.5
     sky_k = sky_k + (t_air_k - sky_k) * overcast
-    mrt_k = (0.5 * (t_ground + 273.15) ** 4 + 0.5 * sky_k**4) ** 0.25
+    # Mean radiant temperature by EMISSIVE POWER (mirror of fnc_calculateMRT):
+    # MRT^4 = F_g*Tg^4 + F_sky*Tsky^4.  A linear temperature average was ~5 K
+    # too cold on the clear-night case.
+    mrt_k = (f_ground * (t_ground + 273.15) ** 4 + (1 - f_ground) * sky_k**4) ** 0.25
+    # Projected-area factor A_eff/A_DuBois = 0.73 for a standing body
+    # (ASHRAE 55): raw DuBois over-predicts radiant exchange by ~37 percent.
+    f_eff = 0.73 if is_human else 1.0
 
     # Iterate the skin to its fixed point, solving the core ANALYTICALLY.
     # The core residual is linear in t_cr:
@@ -325,7 +332,7 @@ def solve_two_node(
         # Skin residual: q_solar + coupling*(Tc - Ts) - conv - rad - evap = 0
         ts_abs = t_sk + 273.15
         conv = h_c * (ts_abs - t_air_k)
-        rad = skin.eps * SIGMA * (ts_abs**4 - mrt_k**4)
+        rad = f_eff * skin.eps * SIGMA * (ts_abs**4 - mrt_k**4)
         if is_human and evap_on:
             _, w = gagge_evaporative(t_sk, t_cr, t_air, rh, h_c, m_bl)
         else:
@@ -337,7 +344,7 @@ def solve_two_node(
         r_sk = q_solar + k_coupling * (t_cr - t_sk) - conv - rad - evap
         dT_sk = r_sk / (
             h_c
-            + 4 * skin.eps * SIGMA * ts_abs**3
+            + 4 * f_eff * skin.eps * SIGMA * ts_abs**3
             + w * h_e_kpa * d_sat_pressure_dT_pa(t_sk) / 1000.0
             + 1e-6
         )
@@ -487,15 +494,32 @@ class TestSourcedConstants(unittest.TestCase):
         self.assertAlmostEqual(AIR_300K["Pr"], 0.707, places=3)
 
 
-def band_radiance_fit(t_k):
-    """Mirror of fnc_calculateBandRadiance: three-segment power-law fit
-    to the Planck integral over 8-14 um (issue #196)."""
-    t_k = max(t_k, 240.0)
-    if t_k <= 290.0:
-        return 2.152412e-11 * t_k**5.0121
-    if t_k <= 330.0:
-        return 4.971094e-10 * t_k**4.4580
-    return 3.885869e-08 * t_k**3.7101
+C2 = 1.438776877e-2  # h c / k, m K (CODATA 2022)
+C_PLANCK = 2.779416505e-9  # 2 k^4 / (h^3 c^2), W m^-2 sr^-1 K^-4
+
+
+def planck_band_radiance(t_k):
+    """Exact Planck integral over 8-14 um (CODATA 2022); mirror of the SQF
+    cumulative-blackbody series in fnc_calculateBandRadiance."""
+    t_k = max(100.0, min(2000.0, t_k))
+    z1 = C2 / (8e-6 * t_k)
+    z2 = C2 / (14e-6 * t_k)
+
+    def cumulative(z):
+        total = 0.0
+        step = math.exp(-z)
+        weight = step
+        z_sq = z * z
+        z_cu = z_sq * z
+        for n in range(1, 41):
+            n2 = n * n
+            n3 = n2 * n
+            n4 = n3 * n
+            total += weight * (z_cu / n + 3 * z_sq / n2 + 6 * z / n3 + 6 / n4)
+            weight *= step
+        return total
+
+    return C_PLANCK * t_k**4 * (cumulative(z2) - cumulative(z1))
 
 
 def flir_radiance(t_surf_c, eps, t_air_c, f_ground=0.5, t_ground_c=None):
@@ -520,29 +544,37 @@ def flir_radiance(t_surf_c, eps, t_air_c, f_ground=0.5, t_ground_c=None):
     sky_k = t_air_k - 35.0
     sky_k = sky_k + (t_air_k - sky_k) * overcast
     t_refl_k = f_ground * t_ground_k + (1 - f_ground) * sky_k
-    w_obj = band_radiance_fit(t_surf_k)
-    w_refl = band_radiance_fit(t_refl_k)
+    w_obj = planck_band_radiance(t_surf_k)
+    w_refl = planck_band_radiance(t_refl_k)
     return eps * w_obj + (1 - eps) * w_refl
 
 
 class TestFLIRRadiance(unittest.TestCase):
     """Band radiance + FLIR measurement equation (issue #196)."""
 
-    def test_planck_fit_night_error(self):
-        # The night-segment power-law fit must hold within 1% of the
-        # exact Planck integral over 250-290 K (the night scene range).
+    def test_planck_band_matches_analytic_integral(self):
+        # The SQF series must equal the analytic Planck integral over 8-14 um
+        # across the whole range, with no segment join (the removed fit
+        # stepped ~2.2 percent at 330 K).
         import numpy as np
 
         c1 = 1.191043e-16
         c2 = 1.438769e-2
-        lam = np.linspace(8e-6, 14e-6, 200)
+        lam = np.linspace(8e-6, 14e-6, 400)
 
         def exact(t_k):
             return np.trapezoid(c1 / lam**5 / (np.exp(c2 / (lam * t_k)) - 1.0), lam)
 
-        for t_k in np.linspace(250, 290, 9):
-            err = abs(band_radiance_fit(t_k) - exact(t_k)) / exact(t_k)
-            self.assertLess(err, 0.01)
+        for t_k in np.linspace(250, 460, 22):
+            err = abs(planck_band_radiance(t_k) - exact(t_k)) / exact(t_k)
+            self.assertLess(err, 1e-3, msg=f"{t_k} K")
+
+    def test_planck_band_has_no_segment_join(self):
+        # A 0.2 K step is ~0.26 percent by the smooth Planck slope; the old
+        # power-law fit stepped ~2.2 percent in zero width at its 330 K join.
+        lo = planck_band_radiance(329.9)
+        hi = planck_band_radiance(330.1)
+        self.assertLess(abs(hi - lo) / lo, 5e-3)
 
     def test_radiance_monotonic_in_temperature(self):
         # Radiance must increase with surface temperature (the AGC maps
@@ -720,7 +752,7 @@ class TestTwoNodeSolve(unittest.TestCase):
             n_steps=600,
             blood_frac=0.3,
         )
-        # Skin flow at blood_frac 0.3: scaled by (0.3 + 0.7*0.3) = 0.51.
+        # Skin flow at blood_frac 0.3: perfusion = min(1, 0.3/0.70) = 0.4286.
         self.assertLess(
             gagge_blood_flow(33.7, 36.8, 0.3), gagge_blood_flow(33.7, 36.8, 1.0)
         )

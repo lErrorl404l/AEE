@@ -40,7 +40,11 @@ private _cell = format [
     round ((_pos select 0) / 5),
     round ((_pos select 1) / 5)
 ];
-private _cache = missionNamespace getVariable [QGVAR(shadowCache), createHashMap];
+private _cache = missionNamespace getVariable [QGVAR(shadowCache), -1];
+if (_cache isEqualType 0) then {
+    _cache = createHashMap;
+    missionNamespace setVariable [QGVAR(shadowCache), _cache];
+};
 private _frame = diag_frameNo;
 private _entry = _cache getOrDefault [_cell, []];
 if (count _entry == 2 && {(_entry select 0) == _frame}) exitWith {

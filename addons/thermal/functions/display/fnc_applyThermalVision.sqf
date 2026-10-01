@@ -32,6 +32,7 @@ Reads:   GVAR(currentThermalContrast), EGVAR(core,thermalCrossoverActive)
 Sets:    QGVAR(thermalActive), three ppEffects (client-side only)
 */
 
+private _perfT0 = diag_tickTime;
 private _player = call CBA_fnc_currentUnit;
 // Run in the player's own view: on foot (cameraOn == player) or in
 // the player's vehicle (pilot/passenger/gunner - cameraOn is the
@@ -134,6 +135,12 @@ private _hBlur  = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Blur), -1
 private _hInv   = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Inversion), -1];
 
 if (_hVig < 0 || _hCC < 0 || _hGrain < 0 || _hBlur < 0 || _hInv < 0) then {
+    // A fresh effect must always receive its parameters, even when the engine
+    // hands back a handle NUMBER it used earlier.  Clearing here is the one
+    // choke point every new effect passes through, because each destroy path
+    // resets its handle to -1 and the test above then recreates it.
+    missionNamespace setVariable [QGVAR(ppLastParams), createHashMap];
+
     {
         private _h = missionNamespace getVariable [_x, -1];
         if (_h >= 0) then {
@@ -194,6 +201,55 @@ _hBlur  = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Blur), -1];
 _hGrain = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Grain), -1];
 _hCC    = missionNamespace getVariable [QGVAR(ppHandle_Thermal_CC), -1];
 _hInv   = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Inversion), -1];
+
+// ─── Post-process kill switch (operator bisect) ───────────────────────────
+// The five thermal effects are FULL-SCREEN passes (ColorCorrections,
+// ColorInversion, FilmGrain, DynamicBlur, RadialBlur).  They are the only
+// engine render work AEE adds in thermal beyond the engine's own thermal
+// image, so this switch isolates that cost in-game with no rebuild.  With the
+// setting off the handles are DISABLED (not destroyed) and the early exit
+// skips every adjust/commit below, while aperture and thermalActive are still
+// restored so the rest of the pipeline stays consistent.
+private _ppOn = missionNamespace getVariable [QGVAR(thermalPPEffects), true];
+if (!_ppOn) exitWith {
+    {
+        if (_x >= 0) then { _x ppEffectEnable false; };
+    } forEach [_hVig, _hCC, _hGrain, _hBlur, _hInv];
+    setAperture 15;
+    missionNamespace setVariable [QGVAR(thermalActive), true];
+    AEE_LOG_DEBUG("thermal ppEffect chain DISABLED by setting (thermalPPEffects=false)");
+};
+
+// ─── Post-process writes: change-gated ─────────────────────────────────────
+// Each ppEffectAdjust followed by ppEffectCommit is an engine call into the
+// render chain, and this function runs on every tick of the 0.1 s pass.  The
+// vignette vector is a constant, and the grain and blur arrays move only with
+// the weather.  So a write
+// is issued only when the parameter array differs from the one last committed
+// for that handle.  The handle is part of the cache key, so a recreated effect
+// writes even when the parameters are identical.
+private _ppApply = {
+    params ["_hHandle", "_effectParams", "_effectOn", "_forceNVG", "_effectKey"];
+    if (_hHandle < 0) exitWith {};
+    private _cache = missionNamespace getVariable [QGVAR(ppLastParams), -1];
+    if (_cache isEqualType 0) then {
+        _cache = createHashMap;
+        missionNamespace setVariable [QGVAR(ppLastParams), _cache];
+    };
+    private _last = _cache getOrDefault [_effectKey, []];
+    if (count _last == 3) then {
+        private _same = (_last select 0) isEqualTo _hHandle;
+        if (_same) then { _same = (_last select 1) isEqualTo _effectParams; };
+        if (_same) then { _same = (_last select 2) isEqualTo _effectOn; };
+        if (_same) exitWith {};
+    };
+    _hHandle ppEffectAdjust _effectParams;
+    _hHandle ppEffectCommit 0;
+    _hHandle ppEffectEnable _effectOn;
+    if (_forceNVG) then { _hHandle ppEffectForceInNVG true; };
+    _cache set [_effectKey, [_hHandle, _effectParams, _effectOn]];
+    missionNamespace setVariable [QGVAR(ppLastParams), _cache];
+};
 
 // ─── ColorCorrections (display gain/contrast) ────────────────────────────
 // Params: [brightness, contrast, offset, blend, colorize, weight]
@@ -270,22 +326,38 @@ if (_hInv >= 0) then {
     };
 };
 
-// ─── FilmGrain (sensor noise) ─────────────────────────────────────────────
+// ─── FilmGrain (sensor noise + FPN) ───────────────────────────────────────
 // Params: [intensity, sharpness, grainSize, grainIntensity2,
 //          grainIntensity3, inversion]
-// Noise scales inversely with contrast: poor conditions (rain, fog,
-// crossover) mean fewer usable IR photons and a noisier image.  Grain
-// is coarse and sharp at high noise, fine and soft at low noise.
-// Sharpness/grainSize stay near the proven A3TI values (0.75 / 1.5) and
-// drift only mildly with conditions; intensity carries the signal.
-private _noise     = linearConversion [1, 0, _effective, 0.05, 0.3, true];
+// ONE screen-space noise source.  The environmental term scales inversely
+// with contrast: poor conditions (rain, fog, crossover) mean fewer usable
+// IR photons and a noisier image.  On top of it sits the detector's
+// fixed-pattern noise (FPN), which is fixed to the detector ARRAY and not
+// to the scene, so it belongs in screen space.  FPN amplitude is the device
+// NETD over the AGC display window.  The window is carried in radiance, so
+// it is converted to its equivalent temperature span through the 190 K
+// full-span anchor the AGC publishes.  Row/column striping is not
+// expressible in this engine (recorded in ti_fpn.rvmat).
+private _envNoise = linearConversion [1, 0, _effective, 0.05, 0.3, true];
+private _agcMin = missionNamespace getVariable [QGVAR(agcRadMin), -1];
+private _agcMax = missionNamespace getVariable [QGVAR(agcRadMax), -1];
+private _agcWindowRad = if ((_agcMin isEqualType 0) && (_agcMax isEqualType 0)) then { _agcMax - _agcMin } else { 0 };
+private _agcFullSpan = missionNamespace getVariable [QGVAR(agcFullSpan), 0];
+if !(_agcFullSpan isEqualType 0) then { _agcFullSpan = 0; };
+private _device = [_player, vehicle _player] call EFUNC(thermal,getThermalDeviceProperties);
+private _netd = _device select 0;
+if !(_netd isEqualType 0) then { _netd = 0.05; };
+private _fpnOn = missionNamespace getVariable [QGVAR(thermalFPN), true];
+private _fpnAmp = 0;
+if ((_fpnOn) && (_agcWindowRad > 0) && (_agcFullSpan > 0)) then {
+    private _windowT = 190 * (_agcWindowRad / _agcFullSpan);
+    if (_windowT > 0) then { _fpnAmp = _netd / _windowT; };
+};
+private _noise = (_envNoise + _fpnAmp) max 0 min 1;
 private _sharpness = linearConversion [1, 0, _effective, 0.75, 1.5, true];
 private _grainSize = linearConversion [1, 0, _effective, 1.5, 2.0, true];
 if (_hGrain >= 0) then {
-        _hGrain ppEffectAdjust [_noise, _sharpness, _grainSize, 0.5, 1.0, 0];
-        _hGrain ppEffectCommit 0;
-        _hGrain ppEffectEnable true;
-        _hGrain ppEffectForceInNVG true;
+        [_hGrain, [_noise, _sharpness, _grainSize, 0.5, 1.0, 0], true, true, "grain"] call _ppApply;
     };
 
 // ─── DynamicBlur (IR scatter) ─────────────────────────────────────────────
@@ -297,10 +369,7 @@ if (_hGrain >= 0) then {
 private _blur = linearConversion [1, 0, _effective, 0.0, 0.15, true];
 _blur = (_blur + _panSmear + _windowBlur) min 0.25;
 if (_hBlur >= 0) then {
-        _hBlur ppEffectAdjust [_blur];
-        _hBlur ppEffectCommit 0;
-        _hBlur ppEffectEnable true;
-        _hBlur ppEffectForceInNVG true;
+        [_hBlur, [_blur], true, true, "blur"] call _ppApply;
     };
 
 // ─── RadialBlur (ocular vignette) ──────────────────────────────────────────
@@ -310,15 +379,13 @@ if (_hBlur >= 0) then {
 // Params: [blurX, blurY, offsetX, offsetY] - the NVG-model form.
 private _vigStrength = [0.0040, 0.0040, 0.06, 0.06];
 if (_hVig >= 0) then {
-        _hVig ppEffectAdjust _vigStrength;
-        _hVig ppEffectCommit 0;
-        _hVig ppEffectEnable true;
-        _hVig ppEffectForceInNVG true;
+        [_hVig, _vigStrength, true, true, "vig"] call _ppApply;
     };
 
 // Diagnostics: set aee_nightvision_nvgDebug = true in the debug console to log
 // every thermal tick's handles and params to the .rpt.
-if (missionNamespace getVariable [QGVAR(thermalDebug), false]) then {
+if (missionNamespace getVariable [QGVAR(thermalDebug), false]
+    && {currentVisionMode _player == 2}) then {
     diag_log text format [
         "[AEE] Thermal tick | visMode=%1 contrast=%2 crossover=%3 | handles CC=%4 grain=%5 blur=%6 | CC params %7 | grain=%8 blur=%9",
         currentVisionMode _player,
@@ -341,3 +408,9 @@ if (missionNamespace getVariable [QGVAR(thermalDebug), false]) then {
 setAperture 15;
 
 missionNamespace setVariable [QGVAR(thermalActive), true];
+if (AEE_TRACE_ON) then {
+    private _visMs = round ((diag_tickTime - _perfT0) * 1000);
+    private _visMsg = format ["applyThermalVision %1 us | contrast %2 | fpnAmp %3 | envNoise %4 | netd %5 mK | polarity %6 | agcSpan %7",
+        _visMs, _contrast, _fpnAmp, _envNoise, _netd, _polarity, _agcFullSpan];
+    AEE_LOG_DEBUG(_visMsg);
+};

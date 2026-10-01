@@ -141,8 +141,15 @@ if !(_airTemp isEqualType 0) then { _airTemp = 15; };
 // wheels channel, weapons the weapon channel - mapped to the engine's
 // 0..1 scale (ambient = 0, ambient + 50 C = 1).  This makes the physics
 // reach the Ti image through the lever that actually works.
-private _selTemps = missionNamespace getVariable [QGVAR(selTemperature), createHashMap];
+private _selTemps = missionNamespace getVariable [QGVAR(selTemperature), -1];
+if (_selTemps isEqualType 0) then {
+    _selTemps = createHashMap;
+    missionNamespace setVariable [QGVAR(selTemperature), _selTemps];
+};
 private _vehRange = 150;
+// The identical query was issued a SECOND time below (line ~189) for the
+// scene-max pass.  One engine spatial query per tick, not two.
+private _nearVehs = _player nearEntities [["Car", "Tank", "Motorcycle", "Helicopter", "Plane", "Ship"], _vehRange];
 {
     if (isNull _x || !alive _x) then { continue; };
     if !(_x isKindOf "AllVehicles") then { continue; };
@@ -173,11 +180,14 @@ private _vehRange = 150;
 
     // Apply only when the state changed materially (setVehicleTIPars is
     // cheap but pointless to spam on an idle vehicle).
-    private _lastPars = _x getVariable [QGVAR(tiLastPars), [-1, -1, -1]];
-    if (_lastPars isEqualTo [_fEngine, _fWheels, _fWeapon]) then { continue; };
+    private _lastPars = _x getVariable [QGVAR(tiLastPars), [-2, -2, -2]];
+    private _moved = ((abs (_fEngine - (_lastPars select 0))) > 0.02)
+        || ((abs (_fWheels - (_lastPars select 1))) > 0.02)
+        || ((abs (_fWeapon - (_lastPars select 2))) > 0.02);
+    if (!_moved) then { continue; };
     _x setVehicleTIPars [_fEngine, _fWheels, _fWeapon];
     _x setVariable [QGVAR(tiLastPars), [_fEngine, _fWheels, _fWeapon]];
-} forEach (_player nearEntities [["Car", "Tank", "Motorcycle", "Helicopter", "Plane", "Ship"], _vehRange]);
+} forEach _nearVehs;
 
 // ─── Scene max heat from the physics model ─────────────────────────────────
 // The per-selection substrate (applyBuildingThermal) paints vehicle and
@@ -185,8 +195,11 @@ private _vehRange = 150;
 // window needs the scene's hottest fraction to prevent blowout: read it
 // from the physics state (thermalState), the same model the substrate
 // solves from.  ambient = 0, ambient + 50 C = 1 on the engine's scale.
-private _thermalState = missionNamespace getVariable [QEGVAR(thermal,thermalState), createHashMap];
-private _vehicles = _player nearEntities [["Car", "Tank", "Motorcycle", "Helicopter", "Plane", "Ship"], 150];
+// Eager-default allocation removed: getVariable evaluates its default
+// argument, so this allocated a hashmap on EVERY 10 Hz tick.
+private _thermalState = missionNamespace getVariable [QEGVAR(thermal,thermalState), -1];
+if (_thermalState isEqualType 0) then { _thermalState = createHashMap; };
+private _vehicles = _nearVehs;
 private _sceneMax = 0.05;
 {
     if (isNull _x || !alive _x) then { continue; };

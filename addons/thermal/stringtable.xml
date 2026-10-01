@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="AEE">
     <Package name="Thermal">
-        <Key ID="STR_AEE_Thermal_fusionAlwaysOn_Description">
-            <Original>Render the thermal fusion overlay over any NVG, even without a thermal-capable headset.</Original>
-            <English>Render the thermal fusion overlay over any NVG, even without a thermal-capable headset.</English>
+        <Key ID="STR_AEE_Thermal_logDebug_Description">
+            <Original>Log thermal diagnostics to the RPT, including the wall-clock cost of each thermal function. Turn this on before reporting a performance fault.</Original>
+            <English>Log thermal diagnostics to the RPT, including the wall-clock cost of each thermal function. Turn this on before reporting a performance fault.</English>
         </Key>
-        <Key ID="STR_AEE_Thermal_fusionAlwaysOn_Name">
-            <Original>Fusion Always On</Original>
-            <English>Fusion Always On</English>
+        <Key ID="STR_AEE_Thermal_logDebug_Name">
+            <Original>Thermal Debug Log</Original>
+            <English>Thermal Debug Log</English>
         </Key>
         <Key ID="STR_AEE_Thermal_objectScanInterval_Description">
             <Original>Seconds between object-temperature scans. Surface temperatures change on time constants of 600 seconds and longer, so a scan every tick is wasted work. 0 scans every tick.</Original>
@@ -16,6 +16,14 @@
         <Key ID="STR_AEE_Thermal_objectScanInterval_Name">
             <Original>Object Scan Interval</Original>
             <English>Object Scan Interval</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_repaintHz_Description">
+            <Original>Thermal selections repainted per second. The engine re-uploads a procedural texture for each one, and that cost lands on the render thread where no script timer sees it. The physics still solves every pass, so the image gain and every thermal coupling are unaffected.</Original>
+            <English>Thermal selections repainted per second. The engine re-uploads a procedural texture for each one, and that cost lands on the render thread where no script timer sees it. The physics still solves every pass, so the image gain and every thermal coupling are unaffected.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_repaintHz_Name">
+            <Original>Thermal Repaint Rate</Original>
+            <English>Thermal Repaint Rate</English>
         </Key>
         <Key ID="STR_AEE_Thermal_thermalDebug_Description">
             <Original>Log thermal system diagnostics (second sun, building paint, AGC) to the RPT. Thermal's own debug flag - not nightvision's.</Original>
@@ -32,6 +40,12 @@
         <Key ID="STR_AEE_Thermal_thermalFPN_Name">
             <Original>Thermal Fixed-Pattern Noise</Original>
             <English>Thermal Fixed-Pattern Noise</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_thermalPPEffects_Description">
+            <English>Applies the five full-screen thermal effects: colour grade, black-hot inversion, sensor grain, IR-scatter blur and the ocular vignette. Turn OFF to isolate their render cost.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_thermalPPEffects_Name">
+            <English>Thermal Post-Process Effects</English>
         </Key>
         <Key ID="STR_AEE_Thermal_thermalPolarity_Description">
             <Original>White hot (hot = white) is the system default (AN/PAS-13 initialises white hot). Black hot (hot = black) is a user-selectable alternative - FM 3-22.9 states polarity is user preference</Original>

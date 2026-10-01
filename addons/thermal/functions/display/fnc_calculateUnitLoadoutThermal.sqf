@@ -101,7 +101,11 @@ private _refMass = 15;
     // much heat reaches the carried gear.  Read from the solved
     // selections (the two-node skin output); fall back to a warm-body
     // constant before the first solve.
-    private _selMap = missionNamespace getVariable [QGVAR(selTemperature), createHashMap];
+    private _selMap = missionNamespace getVariable [QGVAR(selTemperature), -1];
+    if (_selMap isEqualType 0) then {
+        _selMap = createHashMap;
+        missionNamespace setVariable [QGVAR(selTemperature), _selMap];
+    };
     private _bodyHeat = missionNamespace getVariable [QGVAR(bodyHeatEstimate), 0.5];
     private _bodySels = [_unit] call FUNC(getThermalSelections);
     if (count _bodySels > 0) then {
@@ -117,6 +121,13 @@ private _refMass = 15;
             };
         };
     };
+// HOISTED out of the gear loop.  getThermalSelections walks the selections,
+// selectionNames is an ENGINE call and getObjectMaterials an ENGINE call, and
+// all three depend ONLY on the unit - yet all three were recomputed for EVERY
+// gear item, and the materials for every (item x selection) pair.
+private _unitSels = [_unit] call FUNC(getThermalSelections);
+private _unitNames = selectionNames _unit;
+private _unitMats = getObjectMaterials _unit;
 {
     _x params ["_class", "_mass", "_mat"];
     if (_mass <= 0) then { _mass = 1; };
@@ -133,17 +144,19 @@ private _refMass = 15;
     private _flux = _bodyHeat * _inertia * _matFactor;
     // Map the item to its model selection: the item class appears in
     // the selection material path (the weapon detection pattern).
-    private _selMap = [_unit] call FUNC(getThermalSelections);
-    private _names = selectionNames _unit;
     {
         private _idx = _x;
-        if (_idx < count _names) then {
-            private _matPath = toLower ((getObjectMaterials _unit) param [_idx, ""]);
+        if (_idx < count _unitNames) then {
+            private _matPath = toLower (_unitMats param [_idx, ""]);
             if (_matPath find (toLower _class) >= 0) then {
-                _result set [format ["%1|%2", _unit, (_names select _idx)], _flux];
+                // Keyed by SELECTION NAME alone.  This map is already stored
+                // PER UNIT, so the old "unit|name" prefix carried no extra
+                // information and only forced the consumer to re-format an
+                // OBJECT into a string on every 10 Hz tick.
+                _result set [(_unitNames select _idx), _flux];
             };
         };
-    } forEach _selMap;
+    } forEach _unitSels;
 } forEach _gear;
 
 _result

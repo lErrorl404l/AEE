@@ -161,8 +161,10 @@ class TestTwoNodeSolver(unittest.TestCase):
         self.assertIn("4186", text)
         # Vasodilation/constriction signals at the neutral skin 33.7.
         self.assertIn("33.7", text)
-        # Blood flow capped at 14.4 (240 ml/min/m2 max vasodilation).
-        self.assertIn("14.4", text)
+        # Blood flow clipped [0.5, 90] L/(h.m2) and driven by the CORE warm
+        # signal (Gagge, Fobelets & Berglund 1986), not the skin signal.
+        self.assertIn("min 90", text)
+        self.assertIn("_tCr - 36.8", text)
         # Shivering gain 19.4 with core/skin cold signals.
         self.assertIn("19.4", text)
         self.assertIn("36.8", text)

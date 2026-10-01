@@ -1,4 +1,5 @@
 #include "script_component.hpp"
+#include "\z\aee\addons\main\script_debug.hpp"
 
 AEE_MODULE_POST_INIT
 
@@ -96,7 +97,6 @@ AEE_MODULE_POST_INIT
             // or in the player's vehicle (pilot/passenger/gunner).  Skip
             // spectator/UAV-terminal/external cameras.
             if (cameraOn != _player && {cameraOn != _veh}) exitWith {};
-            if (cameraOn != _player && {cameraOn != _veh}) exitWith {};
             private _vm = currentVisionMode _player;
             // Transient 0: skip, do not clean up or stop.  The visionMode
             // event handles real exits.
@@ -104,29 +104,13 @@ AEE_MODULE_POST_INIT
             // Rain droplets on the objective: mode-independent physics (rain
             // lands on the lens whether it is NVG or thermal).  Run before
             // the mode-specific branches so both get the source.
-            ["TICK"] call EFUNC(thermal,applyRainDroplets);
+            BEGIN_COUNTER(applyRainDroplets);
+["TICK"] call EFUNC(thermal,applyRainDroplets);
+END_COUNTER(applyRainDroplets);
             if (_vm == 1) then {
-                [] call EFUNC(nightvision,applyNVGTubeModel);
-                // Fusion (Track B ENVG-B): the OPERATOR decides, never an
-                // automatic response.  Two separate questions, and neither
-                // answers the other.  isFusionCapable asks whether this
-                // device MAY fuse.  The mode asks whether the operator HAS
-                // asked for it, and its default is I2-only, so nothing
-                // renders fused until the operator presses the keybind.
-                // The aee_thermal_fusionAlwaysOn setting is named "force",
-                // so when it is TRUE it forces the mode to 1; granting
-                // capability alone is not forcing.  The overlay runs AFTER
-                // the tube model so it composites on top of the I2 image.
-                if ([] call EFUNC(thermal,isFusionCapable)) then {
-                    if (missionNamespace getVariable [QEGVAR(thermal,fusionAlwaysOn), false]) then {
-                        [1] call EFUNC(thermal,cycleFusionMode);
-                    };
-                    if (missionNamespace getVariable [QEGVAR(thermal,fusionMode), 0] == 1) then {
-                        [] call EFUNC(thermal,applyFusionPP);
-                        ["ON"] call EFUNC(thermal,applyFusionSun);
-                        [] call EFUNC(thermal,applyFusionOverlay);
-                    };
-                };
+                BEGIN_COUNTER(applyNVGTubeModel);
+[] call EFUNC(nightvision,applyNVGTubeModel);
+END_COUNTER(applyNVGTubeModel);
             };
             if (_vm == 2) then {
                 // Thermal optics are parfocal: LWIR wavelength is ~10x
@@ -139,33 +123,55 @@ AEE_MODULE_POST_INIT
                 // that addon to release it rather than destroying another
                 // module's handle from here, so ownership stays with the owner
                 // and a scope release can never strand it.
-                [] call EFUNC(nightvision,teardownNvgDoF);
+                BEGIN_COUNTER(teardownNvgDoF);
+[] call EFUNC(nightvision,teardownNvgDoF);
+END_COUNTER(teardownNvgDoF);
                 // Scene-adaptive AGC (issue #196): compute the scene's
                 // radiance window from the physics state BEFORE the
                 // per-selection passes read it.  A real FLIR re-evaluates
                 // its gain continuously from the scene histogram; this is
                 // the same per-frame evaluation.
-                [] call EFUNC(thermal,updateThermalAGC);
-                [] call EFUNC(thermal,applyThermalVision);
-                [] call EFUNC(thermal,applyEngineThermal);
-                [] call EFUNC(thermal,applyWeaponBarrelHeat);
-                ["TICK"] call EFUNC(thermal,applySecondSun);
-                ["TICK"] call EFUNC(thermal,applyClothingThermal);
-                ["TICK"] call EFUNC(thermal,applyBuildingThermal);
+                BEGIN_COUNTER(updateThermalAGC);
+[] call EFUNC(thermal,updateThermalAGC);
+END_COUNTER(updateThermalAGC);
+                BEGIN_COUNTER(applyThermalVision);
+[] call EFUNC(thermal,applyThermalVision);
+END_COUNTER(applyThermalVision);
+                BEGIN_COUNTER(applyEngineThermal);
+[] call EFUNC(thermal,applyEngineThermal);
+END_COUNTER(applyEngineThermal);
+                BEGIN_COUNTER(applyWeaponBarrelHeat);
+[] call EFUNC(thermal,applyWeaponBarrelHeat);
+END_COUNTER(applyWeaponBarrelHeat);
+                BEGIN_COUNTER(applySecondSun);
+["TICK"] call EFUNC(thermal,applySecondSun);
+END_COUNTER(applySecondSun);
+                BEGIN_COUNTER(applyClothingThermal);
+["TICK"] call EFUNC(thermal,applyClothingThermal);
+END_COUNTER(applyClothingThermal);
+                BEGIN_COUNTER(applyBuildingThermal);
+["TICK"] call EFUNC(thermal,applyBuildingThermal);
+END_COUNTER(applyBuildingThermal);
                 // Contact conduction: heat exchange between the operator
                 // and what they touch (vehicle interior, prone ground).
                 // Runs after the object solves so both sides have temps.
-                [] call EFUNC(thermal,applyContactConduction);
+                BEGIN_COUNTER(applyContactConduction);
+[] call EFUNC(thermal,applyContactConduction);
+END_COUNTER(applyContactConduction);
                 // Radiative exchange (issue #204): a hot object heats the
                 // objects around it (a hot barrel heats the weapon from
                 // inside out, a burning wreck heats everything nearby) -
                 // Stefan-Boltzmann view-factor transfer.
-                [] call EFUNC(thermal,applyRadiativeExchange);
+                BEGIN_COUNTER(applyRadiativeExchange);
+[] call EFUNC(thermal,applyRadiativeExchange);
+END_COUNTER(applyRadiativeExchange);
                 // Exhaust / emission heat (issue #204): a firing muzzle
                 // or running engine expels hot gas that warms the ground
                 // and air around it (muzzle blast over a prone shooter's
                 // floor, jet afterburner heating the tarmac).
-                [] call EFUNC(thermal,applyExhaustHeat);
+                BEGIN_COUNTER(applyExhaustHeat);
+[] call EFUNC(thermal,applyExhaustHeat);
+END_COUNTER(applyExhaustHeat);
             };
         }, 0.1] call CBA_fnc_addPerFrameHandler;
         private _logMsg = format ["sensor PFH started (vision mode %1)", _visionMode];

@@ -48,9 +48,27 @@ The engine-window AGC (applyEngineThermal) handles the vehicle-native
 side separately; this is the per-selection side where AEE controls the
 full display range.
 */
+private _perfT0 = diag_tickTime;
 params [""];
 
-private _selTemps = missionNamespace getVariable [QGVAR(selTemperature), createHashMap];
+// ─── THROTTLE ────────────────────────────────────────────────────────────
+// This function walks EVERY solved selection and calls FUNC(calculateBandRadiance)
+// for each (line ~95) to build the scene histogram.  At 10 Hz with ~50 solved
+// selections that is ~500 bandRadiance calls per SECOND, which is where the
+// measured 490/s came from.  The AGC window is a scene statistic that moves on a
+// seconds timescale, and it is applied to the display as a gain, so recomputing
+// it at 4 Hz (the paint cadence) instead of 10 Hz is invisible and cuts the cost
+// by 60%.  A FORCE caller is unaffected because nothing forces the AGC.
+private _agcNow = diag_tickTime;
+private _agcLast = missionNamespace getVariable [QGVAR(agcLastT), -99];
+if ((_agcNow - _agcLast) < 0.25) exitWith { 0 };
+missionNamespace setVariable [QGVAR(agcLastT), _agcNow];
+
+private _selTemps = missionNamespace getVariable [QGVAR(selTemperature), -1];
+if (_selTemps isEqualType 0) then {
+    _selTemps = createHashMap;
+    missionNamespace setVariable [QGVAR(selTemperature), _selTemps];
+};
 private _airTemp = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 if !(_airTemp isEqualType 0) then { _airTemp = 15; };
 // The ground term in the AGC window: the position-based ground
@@ -63,21 +81,34 @@ if !(_groundTemp isEqualType 0) then {
 };
 if !(_groundTemp isEqualType 0) then { _groundTemp = _airTemp; };
 
-// Gather scene radiances: every selection's temperature through the
-// band-radiance model, plus the ground (the background every object
-// sits against).  The fixed-window fallback (used when the scene map is
-// empty, e.g. the first frame) is the radiance of -40..150 C - the
-// engine default window AEE previously hard-coded.
+// Gather scene radiances: every selection's temperature and ITS OWN
+// emissivity through the band-radiance model, plus the ground (the
+// background every object sits against).  One 0.92 for every selection
+// normalised low-emissivity metal (eps ~0.1) as if painted and shifted the
+// whole window.  The fixed-window fallback (used when the scene map is
+// empty, e.g. the first frame) is the radiance of -40..150 C.
+private _selEps = missionNamespace getVariable [QGVAR(selEmissivity), -1];
+if (_selEps isEqualType 0) then {
+    _selEps = createHashMap;
+    missionNamespace setVariable [QGVAR(selEmissivity), _selEps];
+};
+private _groundEps = (["ground"] call FUNC(getMaterialThermal)) select 0;
+// The AGC anchors are scene-level calibration references, not targets, so
+// they carry no path length: tau = 1 (unit range).  Each selection's own
+// range attenuation is applied in applySelectionThermal.  A uniformly
+// distant scene is therefore not range-compensated by the AGC - a stated
+// limit, pending a per-target radiance histogram.
+private _tauRef = 1;
 private _rads = [];
 {
-    private _t = _x;
+    private _t = _selTemps get _x;
     if !(_t isEqualType 0 && {finite _t}) then { continue; };
-    // Emissivity for the radiance: use the selection's material where
-    // possible; default 0.92 (painted surface) otherwise.
-    _rads pushBack ([_t, 0.92, _airTemp, 0.5, _groundTemp] call FUNC(calculateBandRadiance));
-} forEach (values _selTemps);
+    private _eps = _selEps getOrDefault [_x, _groundEps];
+    if !(_eps isEqualType 0) then { _eps = _groundEps; };
+    _rads pushBack ([_t, _eps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp] call FUNC(calculateBandRadiance));
+} forEach (keys _selTemps);
 if (_rads isNotEqualTo []) then {
-    _rads pushBack ([_groundTemp, 0.92, _airTemp, 0.5, _groundTemp] call FUNC(calculateBandRadiance));
+    _rads pushBack ([_groundTemp, _groundEps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp] call FUNC(calculateBandRadiance));
 };
 
 // ─── Tail rejection (FLIR: <1% so real content is not clipped) ────────────
@@ -107,9 +138,12 @@ if (_rads isNotEqualTo []) then {
 // stretch so a bland scene does not invent contrast.  The display spread
 // is the radiance of a 190 K window (the engine's -40..150 C span) so a
 // gain of 1 reproduces the old fixed window exactly.
-private _fullSpan = ([150, 0.92, _airTemp, 0.5, _groundTemp] call FUNC(calculateBandRadiance))
-    - ([(-40), 0.92, _airTemp, 0.5, _groundTemp] call FUNC(calculateBandRadiance));
+private _fullSpan = ([150, _groundEps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp] call FUNC(calculateBandRadiance))
+    - ([(-40), _groundEps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp] call FUNC(calculateBandRadiance));
 _fullSpan = _fullSpan max 1e-6;
+// Published so the display pass can convert the radiance window to its
+// equivalent temperature span for the FPN amplitude (fnc_applyThermalVision).
+missionNamespace setVariable [QGVAR(agcFullSpan), _fullSpan];
 if (_radMax - _radMin < _fullSpan / 8) then {
     // Scene spread is under the max-gain floor: expand the window to the
     // floor (gain exactly 8), centred on the scene mean.
@@ -141,5 +175,13 @@ if (_radMax <= _radMin) then { _radMax = _radMin + 1e-6; };
 
 missionNamespace setVariable [QGVAR(agcRadMin), _radMin];
 missionNamespace setVariable [QGVAR(agcRadMax), _radMax];
+if (AEE_TRACE_ON) then {
+    private _agcMs = round ((diag_tickTime - _perfT0) * 1000);
+    private _agcMsg = format ["thermalAGC %1 us | radMin %2 | radMax %3 | fullSpan %4 | air %5 C | ground %6 C | selections %7",
+        _agcMs, _radMin toFixed 6, _radMax toFixed 6,
+        _fullSpan toFixed 6, _airTemp, _groundTemp, count _selTemps];
+    AEE_LOG_DEBUG(_agcMsg);
+};
 
-[_radMin, _radMax]
+private _agcOut = [_radMin, _radMax];
+_agcOut

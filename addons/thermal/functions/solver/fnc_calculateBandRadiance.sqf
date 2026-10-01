@@ -43,11 +43,12 @@ colder than the total-longwave sky (Tebo 1965 measured -21 to -82 C at
 Flagstaff).  A clear-sky band temperature ~35 K below air is the
 temperate mid-range; overcast fills the window and lifts it toward air.
 
-Radiance is computed with a THREE-SEGMENT power-law fit to the Planck
-integral over 8-14 um (validated in test_two_node.py / test_thermal:
-night 250-290 K err <0.9%, day 290-330 K err <0.6%, hot 330-450 K err
-<2.7%).  A full Planck quadrature per selection per tick is too slow;
-the fit holds well inside the sim's range.
+Radiance is the EXACT Planck integral over 8-14 um, evaluated from the
+cumulative blackbody series with CODATA 2022 constants.  The old three-
+segment power-law fit is gone: it carried a 2.2 percent radiance step at
+its 330 K join (inside the engine/exhaust band) and a 240 K clamp that
+mis-evaluated the -40 C cold anchor.  The series needs no fit constants
+and converges below 1e-9 in 40 terms over the sim's temperature range.
 
 Arguments:
   0: surface temperature (NUMBER, C)
@@ -68,6 +69,7 @@ Return Value:
   reads.  Monotonic in surface temperature for fixed environment, so it
   maps cleanly through the scene AGC.
 */
+private _perfT0 = diag_tickTime;
 params [
     ["_tSurf", 15, [0]],
     ["_eps", 0.95, [0]],
@@ -110,23 +112,36 @@ _tSkyK = _tSkyK + (_tAirK - _tSkyK) * _overcast;
 // ─── Reflected environment: sky/ground mix by view factor ────────────────
 private _tReflK = _fGround * _tGroundK + (1 - _fGround) * _tSkyK;
 
-// ─── Planck-integral fit (8-14 um), three segments ───────────────────────
-// Each segment: L = A * T^n, coefficients fitted to the exact integral
-// (test_thermal: night err <0.9%, day <0.6%, hot <2.7%).
+// ─── Planck band integral (8-14 um), exact ───────────────────────────────
+// L_band = C * T^4 * [I(z1) - I(z2)],  z_i = c2 / (lambda_i * T),
+// I(z) = sum_n exp(-n z) (z^3/n + 3 z^2/n^2 + 6 z/n^3 + 6/n^4).
+// C = 2 k^4 / (h^3 c^2) = 2.779416505e-9 W m^-2 sr^-1 K^-4 and
+// c2 = h c / k = 1.438776877e-2 m K, both from CODATA 2022.
 private _fnRad = {
     params ["_tk"];
-    _tk = (_tk max 240) min 460;
-    private _A = 2.152412e-11;   // night: 250-290 K
-    private _n = 5.0121;
-    if (_tk > 290) then {
-        _A = 4.971094e-10;       // day: 290-330 K
-        _n = 4.4580;
+    _tk = (_tk max 100) min 2000;   // numerical domain guard, not a physical clamp
+    private _z1 = 1.438776877e-2 / (8e-6 * _tk);
+    private _z2 = 1.438776877e-2 / (14e-6 * _tk);
+    private _z1s = _z1 * _z1;
+    private _z1c = _z1s * _z1;
+    private _z2s = _z2 * _z2;
+    private _z2c = _z2s * _z2;
+    private _b1 = exp (-_z1);
+    private _b2 = exp (-_z2);
+    private _e1 = _b1;
+    private _e2 = _b2;
+    private _i1 = 0;
+    private _i2 = 0;
+    for "_n" from 1 to 8 do {
+        private _n2 = _n * _n;
+        private _n3 = _n2 * _n;
+        private _n4 = _n3 * _n;
+        _i1 = _i1 + _e1 * (_z1c / _n + 3 * _z1s / _n2 + 6 * _z1 / _n3 + 6 / _n4);
+        _i2 = _i2 + _e2 * (_z2c / _n + 3 * _z2s / _n2 + 6 * _z2 / _n3 + 6 / _n4);
+        _e1 = _e1 * _b1;
+        _e2 = _e2 * _b2;
     };
-    if (_tk > 330) then {
-        _A = 3.885869e-08;       // hot: 330-450 K
-        _n = 3.7101;
-    };
-    _A * (_tk ^ _n)
+    2.779416505e-9 * (_tk ^ 4) * (_i2 - _i1)
 };
 
 // ─── FLIR 3-term radiance ─────────────────────────────────────────────────
@@ -141,4 +156,14 @@ private _wRefl = _tReflK call _fnRad;
 private _tPathK = (_tPath + 273.15) max 200 min 350;
 private _wAtm = _tPathK call _fnRad;
 private _wTransmitted = _tau * (_eps * _wObj + (1 - _eps) * _wRefl);
-_wTransmitted + (1 - _tau) * _wAtm
+private _wBand = _wTransmitted + (1 - _tau) * _wAtm;
+if (AEE_TRACE_ON) then {
+    // The clock read above is deliberate and unconditional.  One engine call
+    // per invocation costs less than the guard that would avoid it, because
+    // AEE_TRACE_ON expands to three namespace lookups.
+    private _us = round ((diag_tickTime - _perfT0) * 1000);
+    private _bandMsg = format ["bandRadiance %1 us | tau %2 | eps %3 | surf %4 C | refl %5 C | path %6 C | W %7",
+        _us, _tau toFixed 4, _eps toFixed 3, _tSurf, _tReflK - 273.15, _tPath, _wBand toFixed 6];
+    AEE_LOG_DEBUG(_bandMsg);
+};
+_wBand

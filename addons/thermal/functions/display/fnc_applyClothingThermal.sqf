@@ -67,6 +67,13 @@ if !(_airTemp isEqualType 0) then { _airTemp = 15; };
 private _viewDist = (getObjectViewDistance select 0) max 50;
 private _refPos = getPosATL _player;
 private _applied = 0;
+// Fetched ONCE for the whole sweep.  This read was INSIDE the per-unit loop,
+// so it cost a missionNamespace lookup per unit per 10 Hz tick.
+private _loadout = missionNamespace getVariable [QGVAR(loadoutThermalCache), -1];
+if (_loadout isEqualType 0) then {
+    _loadout = createHashMap;
+    missionNamespace setVariable [QGVAR(loadoutThermalCache), _loadout];
+};
 {
     if (isNull _x || {!alive _x}) then { continue; };
     if ((_x distance _refPos) > _viewDist) then { continue; };
@@ -83,13 +90,16 @@ private _applied = 0;
     // body scales with the item's thermal inertia.  A FULL backpack
     // (more mass) warms and cools SLOWER than an empty one.  The map is
     // selection-name -> flux multiplier; cached per unit.
-    private _loadout = missionNamespace getVariable [QGVAR(loadoutThermalCache), createHashMap];
+    // The absent-key default is -1, NOT createHashMap: SQF evaluates an
+    // argument eagerly, so the old form allocated a throwaway hashmap for
+    // EVERY unit on EVERY 10 Hz tick.  -1 is a number, so it cannot be
+    // mistaken for a cached map, and it also stops an empty map from being
+    // recomputed every tick (the old `count == 0` test did that).
     private _loadoutKey = str _obj;
-    private _loadoutMap = _loadout getOrDefault [_loadoutKey, createHashMap];
-    if (count _loadoutMap == 0) then {
+    private _loadoutMap = _loadout getOrDefault [_loadoutKey, -1];
+    if (_loadoutMap isEqualType 0) then {
         _loadoutMap = [_obj] call FUNC(calculateUnitLoadoutThermal);
         _loadout set [_loadoutKey, _loadoutMap];
-        missionNamespace setVariable [QGVAR(loadoutThermalCache), _loadout];
     };
 
     // ─── Per-selection substrate solve + FLIR paint ────────────────────
@@ -102,31 +112,35 @@ private _applied = 0;
     // person); the ground view factor comes from the MATERIAL (metal on
     // the feet sees ground, glass/plastic on the head sees sky) - the
     // dynamic equivalent of the old name-based fGround.
+    // HOISTED out of the per-selection loop.  selectionNames is an ENGINE call
+    // and getArray a config read, and both were re-fetched for EVERY selection
+    // of EVERY unit on EVERY tick.  They depend only on the object, so they are
+    // read once per unit here.
+    private _names = if (_obj isKindOf "Man") then {
+        selectionNames _obj
+    } else {
+        getArray (configOf _obj >> "hiddenSelections")
+    };
     {
         private _selIdx = _x;
         private _fGround = 0.5;
-        // Selection NAME for the material detector (it keys on names).
-        private _selName = if (_obj isKindOf "Man") then {
-            private _names = selectionNames _obj;
-            if (_selIdx < count _names) then { _names select _selIdx } else { "" }
-        } else {
-            private _hs = getArray (configOf _obj >> "hiddenSelections");
-            if (_selIdx < count _hs) then { _hs select _selIdx } else { "" }
-        };
+        private _selName = if (_selIdx < count _names) then { _names select _selIdx } else { "" };
         if (_selName == "") then { continue; };
-        // Material-driven view factor: low-k (glass, plastic, goggles)
-        // faces mostly sky; rubber/leather (boots) sees mostly ground.
+        // View factor from the MATERIAL CLASS, not k.  The old conductivity
+        // bands overlapped: glass (k 1.1) passed `k <= 1.5` (sky) and was then
+        // overwritten by `0.2 <= k <= 2.0` (ground), and rubber 0.22 and
+        // plastic 0.17 share a k with opposite intent, so k could not separate
+        // goggles (sky) from boots (ground).  The class decides.
         private _matClass = [_obj, _selName] call FUNC(getSelectionMaterials);
-        private _matDef = _matClass call FUNC(getMaterialThermal);
-        private _k = _matDef select 4;
-        if !(_k isEqualType 0) then { _k = 0; };
-        if (_k <= 1.5) then { _fGround = 0.2; };
-        if (_k >= 0.2 && _k <= 2.0) then { _fGround = 0.7; };
+        if (_matClass == "glass" || _matClass == "plastic") then { _fGround = 0.2; };
+        if (_matClass == "leather" || _matClass == "rubber") then { _fGround = 0.7; };
 
         // Loadout flux: the carried item's thermal inertia scales the
         // body's heat reaching this selection.  A heavy backpack warms
         // slower (lower flux); metal gear (mags, radios) warms fast.
-        private _loadoutFlux = _loadoutMap getOrDefault [format ["%1|%2", _obj, _selName], 1];
+        // Key is the selection NAME alone; the map is already per unit, so the
+        // old "obj|name" format converted an OBJECT to a string every tick.
+        private _loadoutFlux = _loadoutMap getOrDefault [_selName, 1];
         if !(_loadoutFlux isEqualType 0) then { _loadoutFlux = 1; };
 
         [_obj, _selName, "", 0, _fGround, _loadoutFlux] call FUNC(applySelectionThermal);

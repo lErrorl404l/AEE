@@ -2,31 +2,62 @@
 /*
  * Vehicle heat state (issue #204).
  *
- * A single 0..1 heat value per vehicle, driven by the MKK heat model
- * (3753145363 fnc_setThermalMaterials _getVehicleHeat):
+ * A single 0..1 heat fraction per vehicle, solved from a physically formed
+ * lumped-capacitance engine body temperature, not from a reference mod's
+ * normalised accumulator:
  *
- *   - Engine RUNNING or the vehicle MOVING -> heat warms toward 1
- *     over TI_VEHICLE_HEAT_WARMUP_TIME (120 s)
- *   - Engine off AND stationary -> heat decays toward 0 over
- *     TI_VEHICLE_HEAT_COOLDOWN_TIME (320 s), after a
- *     TI_VEHICLE_HEAT_COOLDOWN_DELAY (120 s) grace
- *   - A vehicle spawned with the engine RUNNING starts at
- *     TI_VEHICLE_HEAT_INITIAL_RUNNING (0.65) - a warm block, not cold
- *     (this is why MKK vehicles glow immediately; the old code started
- *     every vehicle at 0 and warmed so slowly nothing ever showed)
+ *   C * dT/dt = Q_reject - h * A * (T - T_ambient)
  *
- * The heat is the PER-VEHICLE source; applyBuildingThermal distributes
- * it to each selection by the selection's MATERIAL physics (metal
- * conducts, rubber friction-heats, glass stays cold).  This replaces
- * the static selection-name matching (_sn find "engine"/"wheel") that
- * failed on every modded or differently-named vehicle.
+ * The coolant thermostat regulates the engine to its opening temperature
+ * T_op.  The rejection that holds that setpoint is exactly the surface loss
+ * at T_op, so Q_reject = h*A*(T_op - T_ambient) while the engine runs and 0
+ * while it is off.  The body relaxes toward T_op with the engine on and
+ * toward T_ambient with it off.  The ODE is integrated in closed form (the
+ * exact exponential), so the result does not depend on the tick interval:
  *
- * State: QGVAR(vehicleHeatState) = [_heat, _lastUpdate, _stationarySince, _lastPosASL]
+ *   T' = T_inf + (T - T_inf) * exp(-dt / tau),   tau = C / (h*A)
+ *
+ * PARAMETERS, EACH FROM A REAL RELATION
+ *   m   getMass (kg), the real PhysX mass of the vehicle.
+ *   c   460 J/(kg*K), specific heat of steel/cast iron (EN 1993-1-2 3.4.2).
+ *   C   m*c (J/K), the lumped thermal capacitance.
+ *   A   the bounding-box surface area (m^2) from boundingBoxReal.
+ *   h   5.6 + 3.9*v W/(m^2*K), the air flat-plate correlation (Holman,
+ *       Heat Transfer): the natural-convection value at zero airspeed, rising
+ *       with the forced flow as the vehicle moves.
+ *   T_op 90 C, the thermostat-open coolant temperature (Heywood, Internal
+ *       Combustion Engine Fundamentals); published thermostats open at
+ *       82-88 C and the coolant then runs near 90-100 C.
+ *
+ * LABELLED, NOT DERIVED HERE
+ *   - The engine's own mass and wetted area are not exposed by the engine.
+ *     The lump uses the VEHICLE mass and box, which over-estimates the
+ *     reservoir and so under-estimates the warm-up rate.  A stated modelling
+ *     assumption, not a measurement.
+ *   - Brake power in watts is not reachable.  The config enginePower is a
+ *     PhysX tuning value with no verified real unit (docs/wiki/research/
+ *     vehicle-mass-estimate.md; mobility fnc_calculateEngineLoad.sqf), so the
+ *     fuel chain Q_fuel = P_brake/eta, Q_reject = Q_fuel*(1-eta) cannot be
+ *     closed from a measured power output.  Diesel LHV 42.7 MJ/kg and the
+ *     J/3 rejected fraction (Heywood) are published, but they only set the
+ *     fuel flow that the thermostat balance implies.  No rated power is
+ *     invented to close the chain.
+ *   - Only the lumped body/coolant path is modelled here.  The exhaust plume
+ *     is a separate consumer (fnc_applyExhaustHeat) and is not split out of
+ *     this balance.
+ *
+ * The heat fraction maps the real body temperature through the thermostat
+ * span, (T - T_ambient)/(T_op - T_ambient), so 0 is cold and 1 is at the
+ * regulated engine temperature.
+ *
+ * State: QGVAR(vehicleHeatState) = [_heat, _lastUpdate, _stationarySince]
+ *        QGVAR(engineBodyTempC)  = the engine body temperature (C), persisted
+ *                                  so the ODE carries across ticks.
  *
  * Params:
  *   0: _vehicle (OBJECT)
  *
- * Returns: SCALAR - the 0..1 heat state.
+ * Returns: SCALAR - the 0..1 heat fraction.
  */
 params [["_vehicle", objNull]];
 
@@ -34,78 +65,117 @@ if (isNull _vehicle) exitWith { 0 };
 if (_vehicle isKindOf "StaticWeapon") exitWith { 0 };
 
 private _now = diag_tickTime;
-private _positionASL = getPosASL _vehicle;
-private _motionSpeed = (abs (speed _vehicle)) max ((vectorMagnitude (velocity _vehicle)) * 3.6);
 
-// Warm-up / cooldown time constants (MKK proven values).
-private _warmupTime = 120;
-private _cooldownDelay = 120;
-private _cooldownTime = 320;
-private _movementThreshold = 1.5;   // km/h
-private _movementGrace = 3;         // s
-private _initialRunning = 0.65;
-private _trendEpsilon = 0.000001;
+// Airspeed drives the forced-convection term.  speed is m/s.
+private _speedMS = abs (speed _vehicle);
 
-private _state = _vehicle getVariable [QGVAR(vehicleHeatState), []];
+private _airTemp = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
+if !(_airTemp isEqualType 0) then { _airTemp = 15; };
+
+// Thermostat-open coolant temperature: the engine's regulated setpoint.
+private _operatingTemp = 90;
+
+// Lumped capacitance (real mass x the published specific heat of steel) and the
+// surface area are FIXED FOR A VEHICLE TYPE: getMass and boundingBoxReal cannot
+// change at runtime, yet both engine calls and the area algebra ran for EVERY
+// object on EVERY 10 Hz tick.  Memoised by typeOf - the same pattern already
+// used for the mobility SSF and the solver geometry.
+private _capacitance = 0;
+private _area = 0;
+private _geoKey = typeOf _vehicle;
+private _geoCache = missionNamespace getVariable [QGVAR(vehThermalGeoCache), -1];
+if (_geoCache isEqualType 0) then {
+    _geoCache = createHashMap;
+    missionNamespace setVariable [QGVAR(vehThermalGeoCache), _geoCache];
+};
+private _geo = _geoCache getOrDefault [_geoKey, -1];
+if (_geo isEqualType 0) then {
+    private _massKg = getMass _vehicle;
+    _capacitance = _massKg * 460;
+    private _box = boundingBoxReal _vehicle;
+    if ((_box isEqualType []) && {(count _box == 2) || {count _box == 3}}
+        && {(_box select 0) isEqualType []} && {(_box select 1) isEqualType []}) then {
+        private _bMin = _box select 0;
+        private _bMax = _box select 1;
+        private _lx = abs ((_bMax select 0) - (_bMin select 0));
+        private _ly = abs ((_bMax select 1) - (_bMin select 1));
+        private _lz = abs ((_bMax select 2) - (_bMin select 2));
+        _area = 2 * ((_lx * _ly) + (_lx * _lz) + (_ly * _lz));
+    };
+    _geo = [_capacitance, _area];
+    _geoCache set [_geoKey, _geo];
+} else {
+    _capacitance = _geo select 0;
+    _area = _geo select 1;
+};
+if (_capacitance <= 0) exitWith { 0 };
+if (_area <= 0) exitWith { 0 };
+
+// Holman flat-plate correlation for air.  One expression covers natural
+// convection at rest and the forced flow under way.
+private _hA = (5.6 + (3.9 * _speedMS)) * _area;
+private _tau = _capacitance / _hA;
+
 private _engineRunning = isEngineOn _vehicle;
 
-if (count _state == 0) then {
-    // First evaluation: a stationary vehicle with the engine running is
-    // already warm (a hot block), a moving one starts cold and warms.
-    private _initialMoving = _motionSpeed > _movementThreshold;
-    private _initialHeat = _initialRunning * (parseNumber (_engineRunning && {!_initialMoving}));
-    _state = [_initialHeat, _now, _now, _positionASL];
-};
+private _state = _vehicle getVariable [QGVAR(vehicleHeatState), []];
+if !(_state isEqualType []) then { _state = []; };
 
-_state params ["_heat", "_lastUpdate", "_stationarySince", ["_lastPositionASL", _positionASL]];
-private _previousHeat = _heat;
+private _previousHeat = _state param [0, 0];
+if !(_previousHeat isEqualType 0) then { _previousHeat = 0; };
+private _lastUpdate = _state param [1, _now];
+if !(_lastUpdate isEqualType 0) then { _lastUpdate = _now; };
+private _stationarySince = _state param [2, _now];
+if !(_stationarySince isEqualType 0) then { _stationarySince = _now; };
+
+private _bodyTemp = _vehicle getVariable [QGVAR(engineBodyTempC), _airTemp];
+if !(_bodyTemp isEqualType 0) then { _bodyTemp = _airTemp; };
+
 private _elapsed = (_now - _lastUpdate) max 0;
 
-// Position-derived speed (velocity can be 0 while the vehicle moves on
-// slopes / over terrain in some states).
-private _positionSpeed = if (_elapsed > 0) then {
-    ((_positionASL vectorDistance _lastPositionASL) / _elapsed) * 3.6
-} else { 0 };
-
-private _isMoving = (_motionSpeed max _positionSpeed) > _movementThreshold;
-private _isHeating = _engineRunning || _isMoving;
-
-if (_isHeating) then {
-    // Engine or motion maintains/raises the heat.
-    _heat = (_heat + (_elapsed / _warmupTime)) min 1;
-    _stationarySince = _now;
-} else {
-    // Cooldown after the grace delay (lets a just-stopped engine keep
-    // its residual glow instead of vanishing instantly).
-    private _delay = _cooldownDelay max _movementGrace;
-    if ((_now - _stationarySince) >= _delay) then {
-        _heat = (_heat - (_elapsed / _cooldownTime)) max 0;
-    };
+// With the engine running the thermostat holds the body at T_op; with it off
+// the body falls to ambient.  The exact exponential solution of the balance.
+private _target = _airTemp;
+if (_engineRunning) then { _target = _operatingTemp; };
+if (_elapsed > 0) then {
+    _bodyTemp = _target + ((_bodyTemp - _target) * exp (-(_elapsed / _tau)));
 };
 
-_vehicle setVariable [QGVAR(vehicleHeatState), [_heat, _now, _stationarySince, _positionASL]];
+private _isMoving = _speedMS > 1.5;
+if (_engineRunning || _isMoving) then { _stationarySince = _now; };
+
+private _span = _operatingTemp - _airTemp;
+private _heat = if (_span > 0) then {
+    ((_bodyTemp - _airTemp) / _span) max 0 min 1
+} else {
+    0
+};
+
+// The 4th element was getPosASL _vehicle: written every call and read by
+// NOBODY (this file reads param [0..2]; applyExhaustHeat reads select 0), so it
+// was an engine call per object per 10 Hz tick for nothing.
+_vehicle setVariable [QGVAR(vehicleHeatState), [_heat, _now, _stationarySince]];
+_vehicle setVariable [QGVAR(engineBodyTempC), _bodyTemp];
 
 // Heat trend (rising/falling) for the material distribution - a rising
 // vehicle heats its metal fastest.
 private _heatDelta = _heat - _previousHeat;
 private _heatTrend = 0;
-if (abs _heatDelta >= _trendEpsilon) then {
+if (abs _heatDelta >= 0.000001) then {
     _heatTrend = [1, -1] select (_heatDelta < 0);
 };
 _vehicle setVariable [QGVAR(vehicleHeatTrend), _heatTrend];
 
-// Diagnostic trace: prove the heat pipeline. Behind the module debug
-// switch, like every other trace, and throttled to one line per vehicle
-// per 5 s. A diagnostic that writes unconditionally is a client cost:
-// diag_log is synchronous file I/O on the render thread.
-private _traceOn = AEE_TRACE_ON;
-if (_traceOn) then {
+// Diagnostic trace: prove the heat pipeline.  Behind the module debug
+// switch, like every other trace, and throttled to one line per vehicle per
+// 5 s.  diag_log is synchronous file I/O on the render thread.
+if (AEE_TRACE_ON) then {
     private _lastLog = _vehicle getVariable [QGVAR(vehicleHeatLogT), -999];
     if (_now - _lastLog >= 5) then {
         _vehicle setVariable [QGVAR(vehicleHeatLogT), _now];
         diag_log format [
-            "[AEE][HEAT] %1 heat=%2 engineOn=%3 moving=%4 speed=%5kph trend=%6",
-            typeOf _vehicle, _heat, _engineRunning, _isMoving, round _motionSpeed, _heatTrend
+            "[AEE][HEAT] %1 T=%2C heat=%3 tau=%4s engineOn=%5 speed=%6m/s",
+            typeOf _vehicle, round _bodyTemp, _heat, round _tau, _engineRunning, round _speedMS
         ];
     };
 };

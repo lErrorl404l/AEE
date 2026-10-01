@@ -42,12 +42,17 @@ params [
 if (isNull _obj || _selName == "") exitWith { "ground" };
 
 private _cacheKey = format ["%1|%2", typeOf _obj, _selName];
-private _cached = (missionNamespace getVariable [QGVAR(selMaterialCache), createHashMap]) getOrDefault [_cacheKey, ""];
-if (_cached != "") exitWith { _cached };
-
-if (isNil QGVAR(selMaterialCache)) then {
-    missionNamespace setVariable [QGVAR(selMaterialCache), createHashMap];
+// ALLOCATE ONCE.  getVariable's default argument is evaluated EAGERLY, so the
+// original allocated a throwaway hashmap on EVERY call, and this function runs
+// once per selection per unit per 10 Hz tick.  -1 is a number, so it cannot be
+// mistaken for a cached hashmap.
+private _selCache = missionNamespace getVariable [QGVAR(selMaterialCache), -1];
+if (_selCache isEqualType 0) then {
+    _selCache = createHashMap;
+    missionNamespace setVariable [QGVAR(selMaterialCache), _selCache];
 };
+private _cached = _selCache getOrDefault [_cacheKey, ""];
+if (_cached != "") exitWith { _cached };
 
 // ─── Signal gathering + weighted vote (issue #204) ───────────────────────
 // The user's requirement: pull EVERYTHING about the part, then sort
@@ -188,5 +193,5 @@ private _bestN = 0;
 if (_class == "") then { _class = _obj call EFUNC(material,getObjectMaterial); };
 if (_class == "") then { _class = "ground"; };
 
-(missionNamespace getVariable [QGVAR(selMaterialCache), createHashMap]) set [_cacheKey, _class];
+_selCache set [_cacheKey, _class];
 _class

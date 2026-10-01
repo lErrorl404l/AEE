@@ -126,54 +126,8 @@ class TestRestorePrecedesGuards(unittest.TestCase):
         )
 
 
-class TestFusionOverlayRestores(unittest.TestCase):
-    """Shape 3. A material swap needs a restore the teardown can reach."""
-
-    _OVERLAY = REPO / "addons/thermal/functions/fusion/fnc_applyFusionOverlay.sqf"
-    _TEARDOWN = REPO / "addons/optics/functions/vision/fnc_teardownSensors.sqf"
-
-    def test_overlay_has_an_exit_restore_for_the_materials_it_swaps(self):
-        code = _code(self._OVERLAY)
-        self.assertIn("setObjectMaterial", code, "the overlay no longer swaps")
-        self.assertIn('_mode == "EXIT"', code, "the overlay has no restore path")
-        self.assertIn("fusionOverlaySaved", code, "nothing records the originals")
-        # The originals must be captured before the first swap, not after.
-        save = code.index("getObjectMaterials _obj")
-        swap = code.index("setObjectMaterial [_idx,")
-        self.assertLess(save, swap, "the originals are captured after the swap")
-
-    def test_teardown_asks_the_overlay_to_restore(self):
-        # This used to assert the literal ["EXIT"] call, which is the call that
-        # BROKE the restore. fnc_applyFusionOverlay takes the player first and
-        # the mode second, so ["EXIT"] bound the string to _player, the
-        # [objNull] spec rejected it, and _mode kept its default, which made
-        # the restore branch unreachable. A guard that pins the broken spelling
-        # is worse than no guard, so this asserts the SHAPE instead.
-        code = _code(self._TEARDOWN)
-        self.assertIn(
-            "applyFusionOverlay", code, "the teardown never asks the overlay to restore"
-        )
-        calls = [
-            line
-            for line in code.splitlines()
-            if "applyFusionOverlay" in line and "call" in line
-        ]
-        self.assertEqual(len(calls), 1, f"expected one restore call, found {calls}")
-        args = calls[0].rsplit("call", 1)[0].strip()
-        self.assertTrue(
-            args.startswith("[") and args.endswith("]"),
-            f"the restore call must pass an argument array, got {args}",
-        )
-        parts = [a.strip() for a in args[1:-1].split(",")]
-        self.assertEqual(
-            len(parts), 2, f"the overlay takes player then mode, got {parts}"
-        )
-        self.assertEqual(
-            parts[1], '"EXIT"', f"the mode must be the second argument, got {args}"
-        )
-        self.assertNotEqual(
-            parts[0], '"EXIT"', "the mode must never be bound to the player parameter"
-        )
+class TestModeStringNotBoundToObjectParameter(unittest.TestCase):
+    """Shape 3. A mode string must never be bound to an object-typed argument."""
 
     def test_no_string_literal_is_bound_to_an_object_typed_first_parameter(self):
         """The class the fusion fault belongs to.
