@@ -1,0 +1,110 @@
+[
+  {
+    "game_class": "B_AFV_Wheeled_01_cannon_F",
+    "parent_class": "AFV_Wheeled_01_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "Tank/Addons/armor_f_tank.pbo > AFV_Wheeled_01/config.cpp:3269"
+  },
+  {
+    "game_class": "B_APC_Tracked_01_rcws_F",
+    "parent_class": "B_APC_Tracked_01_base_F",
+    "source_kind": "game_config",
+    "source_locator": "Addons/armor_f_beta/a3/armor_f_beta/APC_Tracked_01/config.cpp:1442"
+  },
+  {
+    "game_class": "B_APC_Wheeled_01_cannon_F",
+    "parent_class": "B_APC_Wheeled_01_base_F",
+    "source_kind": "game_config",
+    "source_locator": "Addons/armor_f_beta/a3/armor_f_beta/APC_Wheeled_01/config.cpp:2216"
+  },
+  {
+    "game_class": "B_MBT_01_cannon_F",
+    "parent_class": "B_MBT_01_base_F",
+    "source_kind": "game_config",
+    "source_locator": "Addons/armor_f_epc/a3/armor_f_epc/MBT_01/config.cpp:98"
+  },
+  {
+    "game_class": "B_MRAP_01_F",
+    "parent_class": "MRAP_01_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "Addons/soft_f.pbo > MRAP_01/config.cpp:878"
+  },
+  {
+    "game_class": "B_Truck_01_transport_F",
+    "parent_class": "Truck_01_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "Addons/soft_f_beta.pbo > Truck_01/config.cpp:496"
+  },
+  {
+    "game_class": "C_Hatchback_01_F",
+    "parent_class": "Hatchback_01_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "Addons/soft_f_gamma.pbo > Hatchback_01/config.cpp:590"
+  },
+  {
+    "game_class": "C_Hatchback_01_sport_F",
+    "parent_class": "Hatchback_01_sport_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "Addons/soft_f_gamma.pbo > Hatchback_01/config.cpp:868"
+  },
+  {
+    "game_class": "I_APC_Wheeled_03_cannon_F",
+    "parent_class": "I_APC_Wheeled_03_base_F",
+    "source_kind": "game_config",
+    "source_locator": "Addons/armor_f_gamma/a3/armor_f_gamma/APC_Wheeled_03/config.cpp:2238"
+  },
+  {
+    "game_class": "I_APC_tracked_03_cannon_F",
+    "parent_class": "I_APC_tracked_03_base_F",
+    "source_kind": "game_config",
+    "source_locator": "Addons/armor_f_epb/a3/armor_f_epb/APC_Tracked_03/config.cpp:2377"
+  },
+  {
+    "game_class": "I_MBT_03_cannon_F",
+    "parent_class": "I_MBT_03_base_F",
+    "source_kind": "game_config",
+    "source_locator": "Addons/armor_f_epb/a3/armor_f_epb/MBT_03/config.cpp:2597"
+  },
+  {
+    "game_class": "I_MRAP_03_F",
+    "parent_class": "MRAP_03_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "Addons/soft_f_beta.pbo > MRAP_03/config.cpp:1167"
+  },
+  {
+    "game_class": "I_Truck_02_transport_F",
+    "parent_class": "Truck_02_transport_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "Addons/soft_f_beta.pbo > Truck_02/config.cpp:1721"
+  },
+  {
+    "game_class": "O_APC_Tracked_02_cannon_F",
+    "parent_class": "O_APC_Tracked_02_base_F",
+    "source_kind": "game_config",
+    "source_locator": "Addons/armor_f_beta/a3/armor_f_beta/APC_Tracked_02/config.cpp:2383"
+  },
+  {
+    "game_class": "O_APC_Wheeled_02_rcws_v2_F",
+    "parent_class": "APC_Wheeled_02_base_v2_F",
+    "source_kind": "game_config",
+    "source_locator": "Addons/armor_f_beta/a3/armor_f_beta/APC_Wheeled_02/config.cpp:1907"
+  },
+  {
+    "game_class": "O_MBT_02_cannon_F",
+    "parent_class": "O_MBT_02_base_F",
+    "source_kind": "game_config",
+    "source_locator": "Addons/armor_f_gamma/a3/armor_f_gamma/MBT_02/config.cpp:4501"
+  },
+  {
+    "game_class": "O_MRAP_02_F",
+    "parent_class": "MRAP_02_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "Addons/soft_f.pbo > MRAP_02/config.cpp:1070"
+  },
+  {
+    "game_class": "O_Truck_02_transport_F",
+    "parent_class": "Truck_02_transport_base_F",
+    "source_kind": "pbo_config",
+    "source_locator": "Addons/soft_f_beta.pbo > Truck_02/config.cpp:1460"
+  }
+]
