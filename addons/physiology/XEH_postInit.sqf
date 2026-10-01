@@ -17,9 +17,10 @@ AEE_MODULE_POST_INIT
 // ─── Diving loop (ZH-L16C, issue #118) ────────────────────────────────────
 // 1 Hz integration for the local player while underwater (eyePos z < 0,
 // the ADE-verified detection).  Tissues off-gas toward surface equilibrium
-// when surfaced.  Gated by diveEnabled; only the local player integrates
-// (the state is per-UID and follows the unit).
-if (missionNamespace getVariable [QGVAR(diveEnabled), true]) then {
+// when surfaced.  Gated by diveEnabled and hasInterface; only the local
+// player integrates (the state is per-UID and follows the unit).  A
+// dedicated server has no local player and must not register the loop.
+if (hasInterface && (missionNamespace getVariable [QGVAR(diveEnabled), true])) then {
     [{
         params ["_unit"];
         if (_unit != call CBA_fnc_currentUnit) exitWith {};
@@ -67,9 +68,11 @@ END_COUNTER(updateDiveState);
 // ─── G-LOC + altitude DCS loop (issue #135) ────────────────────────────────
 // 1 Hz for the local player: measures G from velocity deltas (no engine
 // G command), integrates altitude DCS via the ZH-L16C solver at barometric
-// pressure, and stages the G-LOC response.  Gated by glocEnabled; the
-// hypoxia interaction comes from the shared core hypoxia risk.
-if (missionNamespace getVariable [QGVAR(glocEnabled), true]) then {
+// pressure, and stages the G-LOC response.  Gated by glocEnabled and
+// hasInterface; the hypoxia interaction comes from the shared core hypoxia
+// risk.  A dedicated server has no local player and must not register the
+// loop nor write the G-LOC variables to missionNamespace.
+if (hasInterface && (missionNamespace getVariable [QGVAR(glocEnabled), true])) then {
     [{
         params ["_unit"];
         if (_unit != call CBA_fnc_currentUnit) exitWith {};
