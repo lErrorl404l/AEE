@@ -43,9 +43,10 @@ PBO-distribution exception.
 
 ## Addon structure
 
-The project has 19 addons under `addons/`. The 13 core addons are `main`,
-`core`, `actions`, `atmos`, `ballistics`, `environmental`, `fx`, `maritime`,
-`mobility`, `optics`, `physiology`, `radio`, and `thermal`. The 6 compat
+The project has 23 addons under `addons/`. The 17 core addons are `main`,
+`core`, `actions`, `armour`, `atmos`, `ballistics`, `environmental`, `fx`,
+`maritime`, `material`, `mobility`, `nightvision`, `optics`, `physics`,
+`physiology`, `radio`, and `thermal`. The 6 compat
 addons are `compat_ace3`, `compat_acm`, `compat_acre2`, `compat_kat`,
 `compat_realweather`, and `compat_tfar`.
 
@@ -64,6 +65,10 @@ addons are `compat_ace3`, `compat_acm`, `compat_acre2`, `compat_kat`,
 | `radio` | Radio propagation |
 | `fx` | Visual and audio effects |
 | `actions` | Player actions and reports |
+| `armour` | Vehicle armour and penetration |
+| `material` | Shared material and soil properties |
+| `nightvision` | Night vision and image intensification |
+| `physics` | Engine physics config overrides |
 | `compat_ace3` | ACE3 integration |
 | `compat_acm` | ACM integration |
 | `compat_acre2` | ACRE2 integration |

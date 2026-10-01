@@ -4,7 +4,7 @@ title: "Modules"
 
 # Modules {#sec-modules}
 
-This page lists the 19 addons and their functions. Each function file is
+This page lists the addons that carry module functions. Each function file is
 `functions/fnc_<name>.sqf`. Functions use the name
 `aee_<component>_fnc_<name>`.
 

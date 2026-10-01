@@ -119,9 +119,9 @@ AEE develops in three phases. The [project board](https://github.com/orgs/lError
 
 ## Structure
 
-22 addons under `addons/`.
+23 addons under `addons/`.
 
-**Core addons (16):** `main`, `core`, `actions`, `armour`, `atmos`, `ballistics`, `environmental`, `fx`, `maritime`, `material`, `mobility`, `nightvision`, `optics`, `physiology`, `radio`, `thermal`.
+**Core addons (17):** `main`, `core`, `actions`, `armour`, `atmos`, `ballistics`, `environmental`, `fx`, `maritime`, `material`, `mobility`, `nightvision`, `optics`, `physics`, `physiology`, `radio`, `thermal`.
 
 **Compat addons (6):** `compat_ace3`, `compat_acm`, `compat_acre2`, `compat_kat`, `compat_realweather`, `compat_tfar`.
 
