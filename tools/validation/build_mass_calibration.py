@@ -131,10 +131,16 @@ def parse_log(path: Path) -> dict[str, tuple[float, float]]:
     except OSError as exc:
         raise CensusError(f"{path}: cannot read the census log: {exc}") from exc
     readings: dict[str, tuple[float, float]] = {}
-    for line in text.splitlines():
-        match = LINE_RE.match(line.strip())
-        if match is None:
+    for raw in text.splitlines():
+        line = raw.strip()
+        # The captured log prefixes every line with the container name and a
+        # timestamp; the raw RPT does not. Find the tag and match from there.
+        tag = line.find(PROBE_TAG)
+        if tag < 0:
             continue
+        match = LINE_RE.match(line[tag:])
+        if match is None:
+            raise CensusError(f"{path}: malformed mass line: {line!r}")
         name, raw_config, raw_live = match.groups()
         if name in readings:
             raise CensusError(f"{path}: class {name} appears more than once")

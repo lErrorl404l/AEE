@@ -1,0 +1,203 @@
+{
+  "schema": "aee.physics.mass_calibration/1",
+  "note": "Calibration of the engine's own mass for the bound vehicle classes. The engine mass and the config mass are engine tuning values, measured in engine by the mass-census probe; they are never a real-world value. The real mass is a held catalogue analogue. The fit is a calibration scale, not a copied engine value. The approved flag stays false because nothing consumes this artefact yet.",
+  "fit": {
+    "convention": "scale = real_analogue_mass_kg / engine_mass; engine_mass = real_analogue_mass_kg / scale",
+    "estimator": "median",
+    "scale": 0.87407,
+    "round": 6
+  },
+  "leave_one_out": {
+    "convention": "each class is scored with the fit refit from the other classes",
+    "n": 18,
+    "coverage": 0.3333,
+    "coverage_tolerance": 0.2,
+    "mdape": 0.3351
+  },
+  "counts": {
+    "paired": 18
+  },
+  "approved": false,
+  "rows": [
+    {
+      "game_class": "C_Hatchback_01_F",
+      "engine_mass_config": 0.0,
+      "engine_mass_live": 1190.0,
+      "real_analogue_mass_kg": 1495.0,
+      "mass_basis": "gross",
+      "scale": 1.256303,
+      "source": "data/vehicle/catalogue/honda_civic_6gen_hatchback.json",
+      "source_locator": "honda_civic_factory_service_manual_96_00 Design Specifications table, WEIGHT (CANADA), Gross Vehicle Weight Rating (GVWR), 2 door Hatchback, CX/CX-G ('96), scan PDF page 64, printed page 3-20"
+    },
+    {
+      "game_class": "C_Hatchback_01_sport_F",
+      "engine_mass_config": 0.0,
+      "engine_mass_live": 1190.0,
+      "real_analogue_mass_kg": 1495.0,
+      "mass_basis": "gross",
+      "scale": 1.256303,
+      "source": "data/vehicle/catalogue/honda_civic_6gen_hatchback.json",
+      "source_locator": "honda_civic_factory_service_manual_96_00 Design Specifications table, WEIGHT (CANADA), Gross Vehicle Weight Rating (GVWR), 2 door Hatchback, CX/CX-G ('96), scan PDF page 64, printed page 3-20"
+    },
+    {
+      "game_class": "B_MRAP_01_F",
+      "engine_mass_config": 0.0,
+      "engine_mass_live": 8306.63,
+      "real_analogue_mass_kg": 11123.0,
+      "mass_basis": "curb",
+      "scale": 1.339051,
+      "source": "data/vehicle/catalogue/tm_9_2355_335_10.json",
+      "source_locator": "tm_9_2355_335_10 Table 2, Weight, page 0002-10, row Vehicle Curb Weight (VCW) (M1240)"
+    },
+    {
+      "game_class": "I_MRAP_03_F",
+      "engine_mass_config": 0.0,
+      "engine_mass_live": 9700.0,
+      "real_analogue_mass_kg": 11123.0,
+      "mass_basis": "curb",
+      "scale": 1.146701,
+      "source": "data/vehicle/catalogue/tm_9_2355_335_10.json",
+      "source_locator": "tm_9_2355_335_10 Table 2, Weight, page 0002-10, row Vehicle Curb Weight (VCW) (M1240)"
+    },
+    {
+      "game_class": "O_MRAP_02_F",
+      "engine_mass_config": 0.0,
+      "engine_mass_live": 8392.04,
+      "real_analogue_mass_kg": 11123.0,
+      "mass_basis": "curb",
+      "scale": 1.325423,
+      "source": "data/vehicle/catalogue/tm_9_2355_335_10.json",
+      "source_locator": "tm_9_2355_335_10 Table 2, Weight, page 0002-10, row Vehicle Curb Weight (VCW) (M1240)"
+    },
+    {
+      "game_class": "B_MBT_01_cannon_F",
+      "engine_mass_config": 0.0,
+      "engine_mass_live": 65047.5,
+      "real_analogue_mass_kg": 54431.0,
+      "mass_basis": "operating",
+      "scale": 0.836789,
+      "source": "data/vehicle/catalogue/tm_9_2350_255_10.json",
+      "source_locator": "tm_9_2350_255_10 EQUIPMENT DESCRIPTION, PERFORMANCE DATA, printed page 1-16, Weight, Combat loaded (less kits)"
+    },
+    {
+      "game_class": "I_MBT_03_cannon_F",
+      "engine_mass_config": 0.0,
+      "engine_mass_live": 60099.9,
+      "real_analogue_mass_kg": 54431.0,
+      "mass_basis": "operating",
+      "scale": 0.905675,
+      "source": "data/vehicle/catalogue/tm_9_2350_255_10.json",
+      "source_locator": "tm_9_2350_255_10 EQUIPMENT DESCRIPTION, PERFORMANCE DATA, printed page 1-16, Weight, Combat loaded (less kits)"
+    },
+    {
+      "game_class": "O_MBT_02_cannon_F",
+      "engine_mass_config": 0.0,
+      "engine_mass_live": 47000.0,
+      "real_analogue_mass_kg": 54431.0,
+      "mass_basis": "operating",
+      "scale": 1.158106,
+      "source": "data/vehicle/catalogue/tm_9_2350_255_10.json",
+      "source_locator": "tm_9_2350_255_10 EQUIPMENT DESCRIPTION, PERFORMANCE DATA, printed page 1-16, Weight, Combat loaded (less kits)"
+    },
+    {
+      "game_class": "B_APC_Tracked_01_rcws_F",
+      "engine_mass_config": 0.0,
+      "engine_mass_live": 62385.0,
+      "real_analogue_mass_kg": 11353.0,
+      "mass_basis": "gross",
+      "scale": 0.181983,
+      "source": "data/vehicle/catalogue/tm_9_2350_261_10.json",
+      "source_locator": "tm_9_2350_261_10 WP 0002 00, TABULATED DATA, page 0002 00-43, WEIGHT, With full load (gross), M113A2"
+    },
+    {
+      "game_class": "I_APC_tracked_03_cannon_F",
+      "engine_mass_config": 0.0,
+      "engine_mass_live": 36199.8,
+      "real_analogue_mass_kg": 11353.0,
+      "mass_basis": "gross",
+      "scale": 0.313621,
+      "source": "data/vehicle/catalogue/tm_9_2350_261_10.json",
+      "source_locator": "tm_9_2350_261_10 WP 0002 00, TABULATED DATA, page 0002 00-43, WEIGHT, With full load (gross), M113A2"
+    },
+    {
+      "game_class": "O_APC_Tracked_02_cannon_F",
+      "engine_mass_config": 0.0,
+      "engine_mass_live": 30100.2,
+      "real_analogue_mass_kg": 11353.0,
+      "mass_basis": "gross",
+      "scale": 0.377174,
+      "source": "data/vehicle/catalogue/tm_9_2350_261_10.json",
+      "source_locator": "tm_9_2350_261_10 WP 0002 00, TABULATED DATA, page 0002 00-43, WEIGHT, With full load (gross), M113A2"
+    },
+    {
+      "game_class": "B_Truck_01_transport_F",
+      "engine_mass_config": 0.0,
+      "engine_mass_live": 10942.9,
+      "real_analogue_mass_kg": 9502.0,
+      "mass_basis": "curb",
+      "scale": 0.868326,
+      "source": "data/vehicle/catalogue/m923a2.json",
+      "source_locator": "tm_9_2320_272_10 Table 1-4, Weights, page 1-18, row M923A2, column Empty kg"
+    },
+    {
+      "game_class": "I_Truck_02_transport_F",
+      "engine_mass_config": 0.0,
+      "engine_mass_live": 10800.0,
+      "real_analogue_mass_kg": 9502.0,
+      "mass_basis": "curb",
+      "scale": 0.879815,
+      "source": "data/vehicle/catalogue/m923a2.json",
+      "source_locator": "tm_9_2320_272_10 Table 1-4, Weights, page 1-18, row M923A2, column Empty kg"
+    },
+    {
+      "game_class": "O_Truck_02_transport_F",
+      "engine_mass_config": 0.0,
+      "engine_mass_live": 10800.0,
+      "real_analogue_mass_kg": 9502.0,
+      "mass_basis": "curb",
+      "scale": 0.879815,
+      "source": "data/vehicle/catalogue/m923a2.json",
+      "source_locator": "tm_9_2320_272_10 Table 1-4, Weights, page 1-18, row M923A2, column Empty kg"
+    },
+    {
+      "game_class": "B_AFV_Wheeled_01_cannon_F",
+      "engine_mass_config": 0.0,
+      "engine_mass_live": 23900.1,
+      "real_analogue_mass_kg": 13600.0,
+      "mass_basis": "operating",
+      "scale": 0.569035,
+      "source": "data/vehicle/catalogue/btr_80_technical_description_2001.json",
+      "source_locator": "btr_80_technical_description_2001 Section 3 Combat and technical characteristics, General data, printed page 9, row Polnaya massa mashiny, kg (full mass of the machine)"
+    },
+    {
+      "game_class": "B_APC_Wheeled_01_cannon_F",
+      "engine_mass_config": 0.0,
+      "engine_mass_live": 23299.8,
+      "real_analogue_mass_kg": 13600.0,
+      "mass_basis": "operating",
+      "scale": 0.583696,
+      "source": "data/vehicle/catalogue/btr_80_technical_description_2001.json",
+      "source_locator": "btr_80_technical_description_2001 Section 3 Combat and technical characteristics, General data, printed page 9, row Polnaya massa mashiny, kg (full mass of the machine)"
+    },
+    {
+      "game_class": "I_APC_Wheeled_03_cannon_F",
+      "engine_mass_config": 0.0,
+      "engine_mass_live": 21700.0,
+      "real_analogue_mass_kg": 13600.0,
+      "mass_basis": "operating",
+      "scale": 0.626728,
+      "source": "data/vehicle/catalogue/btr_80_technical_description_2001.json",
+      "source_locator": "btr_80_technical_description_2001 Section 3 Combat and technical characteristics, General data, printed page 9, row Polnaya massa mashiny, kg (full mass of the machine)"
+    },
+    {
+      "game_class": "O_APC_Wheeled_02_rcws_v2_F",
+      "engine_mass_config": 0.0,
+      "engine_mass_live": 18650.0,
+      "real_analogue_mass_kg": 13600.0,
+      "mass_basis": "operating",
+      "scale": 0.729223,
+      "source": "data/vehicle/catalogue/btr_80_technical_description_2001.json",
+      "source_locator": "btr_80_technical_description_2001 Section 3 Combat and technical characteristics, General data, printed page 9, row Polnaya massa mashiny, kg (full mass of the machine)"
+    }
+  ]
+}
