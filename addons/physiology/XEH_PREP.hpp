@@ -17,6 +17,8 @@ PREPS(clothing,getCamouflageProperties);
 PREPS(clothing,getEquipmentProperties);
 PREPS(clothing,getInventoryLoad);
 PREPS(clothing,getItemMass);
+PREPS(clothing,selectBand);
+PREPS(clothing,getEquipmentBands);
 PREPS(clothing,getWeaponLoad);
 PREPS(clothing,getMagazineLoad);
 PREPS(clothing,getMagazineMass);

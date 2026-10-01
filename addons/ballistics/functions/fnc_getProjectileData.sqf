@@ -817,6 +817,27 @@ if (_match isEqualTo []) then {
     };
 };
 
+// ─── Band: the live bullet diameter ──────────────────────────────────────
+// A class whose identity text resolves to no catalogue record and whose
+// chambering names no service bullet is matched by the bullet diameter,
+// read from its cartridge. The diameter is an identity signal, never a
+// value source. A miss is an empty array, exactly as before.
+if (_match isEqualTo []) then {
+    private _cart = [_ammo] call FUNC(getCartridgeData);
+    private _diameter = if (_cart isEqualTo []) then { 0 } else { _cart select 1 };
+    if (_diameter <= 0) then {
+        _diameter = ([_ammo] call FUNC(parseCaliber)) select 0;
+    };
+    if (_diameter > 0) then {
+        private _band = [call FUNC(getProjectileBands), "", _diameter, 0]
+            call FUNC(selectBand);
+        if (_band isNotEqualTo []) then {
+            _match = [_band select 0, _band select 3, _band select 2,
+                      _band select 5, _band select 4];
+        };
+    };
+};
+
 private _result = if (_match isEqualTo []) then { [] } else {
     [
         _match select 0,

@@ -17,10 +17,14 @@ Run:  python3 tools/validation/gen_runtime_cartridges.py
 
 import json
 import re
+import sys
 from pathlib import Path
 
 DATA = Path(__file__).parents[2] / "data" / "ballistics"
 OUT = Path(__file__).parents[2] / "addons/ballistics/functions/fnc_getCartridgeData.sqf"
+BANDS_OUT = (
+    Path(__file__).parents[2] / "addons/ballistics/functions/fnc_getCartridgeBands.sqf"
+)
 
 MIN_ALIAS = 3
 # The substring fallback only trusts aliases of this length or more, so a
@@ -84,6 +88,85 @@ def row(rec):
         val("standard_twist_pistol_m"),
         val("standard_twist_rifle_m"),
     ]
+
+
+def band_row(rec):
+    """Return one property-band row, or None when the record has no identity.
+
+    The band is the fallback of the cartridge resolver. The cartridge type is
+    the discrete token, the calibre is the primary selector and the case
+    length is the secondary. Twist and the two pressures are the payload. A
+    missing number is a labelled zero.
+    """
+    cartridge_id = rec.get("cartridge_id")
+    if not cartridge_id:
+        return None
+    values = rec.get("values", {})
+    classification = rec.get("classification", {}) or {}
+
+    def val(field):
+        entry = values.get(field)
+        return entry["value"] if entry else 0
+
+    return [
+        cartridge_id,
+        str(classification.get("cartridge_type", "") or ""),
+        val("calibre_mm"),
+        val("case_length_mm"),
+        val("standard_twist_m"),
+        val("max_pressure_mpa"),
+        val("proof_pressure_mpa"),
+        val("standard_twist_pistol_m"),
+        val("standard_twist_rifle_m"),
+    ]
+
+
+def band_rows(db):
+    """Build every band row and sort it by cartridge id."""
+    rows = [r for r in (band_row(rec) for rec in db) if r]
+    rows.sort(key=lambda r: r[0])
+    return rows
+
+
+BAND_TEMPLATE = """#include "..\\script_component.hpp"
+/*
+Cartridge identity band table.
+
+This file is GENERATED. The generator tools/validation/gen_runtime_cartridges.py
+writes it from the verified database under data/ballistics/. Do not edit it
+by hand. The research database is the source of truth.
+
+The band table is the property fallback of the cartridge resolver. A
+cartridge whose identity text resolves to no catalogue alias is matched by
+its own calibre, read through the caliber parser. The type is the discrete
+token, the calibre is the primary selector and the case length is the
+secondary. The selector reads the table and the live properties only. The
+calibre is an identity signal, never a value source.
+
+A row has nine columns:
+
+  0 cartridge_id      string, the stable catalogue key
+  1 cartridge_type    string, the discrete token (rifle/pistol/shotgun)
+  2 calibre_mm        number, the bullet diameter in mm, 0 absent
+  3 case_length_mm    number, the case length in mm, 0 absent
+  4 twist_m           number, the standard twist in metres per turn, 0 absent
+  5 pressure_mpa      number, the maximum average pressure, 0 absent
+  6 proof_mpa         number, the proof pressure, 0 absent
+  7 twist_pistol_m    number, the pistol test-barrel twist, 0 absent
+  8 twist_rifle_m     number, the rifle test-barrel twist, 0 absent
+
+Returns the band table, one row per cartridge entry, sorted by id.
+
+Arguments: none.
+Public: No
+*/
+
+private _table = [
+__ROWS__
+];
+
+_table
+"""
 
 
 TEMPLATE = """#include "..\\script_component.hpp"
@@ -201,6 +284,25 @@ if (_match isEqualTo []) then {
     } forEach _TABLE;
 };
 
+// ─── Band: the live calibre ──────────────────────────────────────────────
+// A class whose identity text resolves to no catalogue alias is matched by
+// its own calibre, read through the caliber parser. The parser fills a
+// caliber the alias tables do not name from the numeric token. The caliber
+// is an identity signal, never a value source. A miss is an empty array,
+// exactly as before.
+if (_match isEqualTo []) then {
+    private _calibre = ([_ammo] call FUNC(parseCaliber)) select 0;
+    if (_calibre > 0) then {
+        private _band = [call FUNC(getCartridgeBands), "", _calibre, 0]
+            call FUNC(selectBand);
+        if (_band isNotEqualTo []) then {
+            _match = [_band select 0, _band select 2, _band select 4,
+                      _band select 5, _band select 6, _band select 7,
+                      _band select 8];
+        };
+    };
+};
+
 private _result = if (_match isEqualTo []) then { [] } else {
     [_match select 0, _match select 1, _match select 2, _match select 3,
      _match select 4, _match select 5, _match select 6]
@@ -210,8 +312,7 @@ _result
 """
 
 
-def main():
-    db = json.loads((DATA / "cartridges.json").read_text(encoding="utf-8"))
+def _build(db):
     rows = [r for r in (row(rec) for rec in db) if r]
 
     # An alias shared by two cartridges is not an identity signal, so it
@@ -225,18 +326,68 @@ def main():
         if kept:
             r[1] = "|".join(kept)
     ambiguous = sum(1 for c in counts.values() if c > 1)
-
     rows.sort(key=lambda r: r[0])
+    return rows, ambiguous
+
+
+def render_match(rows):
     body = ",\n".join(
         '    ["{}", "{}", {}, {}, {}, {}, {}, {}]'.format(*r) for r in rows
     )
-    text = TEMPLATE.replace("__ROWS__", body).replace("__SCAN__", str(SCAN_ALIAS))
-    OUT.write_text(text, encoding="utf-8")
-    print(
-        f"cartridge rows: {len(rows)}, ambiguous aliases dropped: {ambiguous}, "
-        f"wrote {OUT.name} ({OUT.stat().st_size} bytes)"
+    return TEMPLATE.replace("__ROWS__", body).replace("__SCAN__", str(SCAN_ALIAS))
+
+
+def render_bands(rows):
+    body = ",\n".join(
+        '    ["{}", "{}", {}, {}, {}, {}, {}, {}, {}]'.format(*r) for r in rows
     )
+    return BAND_TEMPLATE.replace("__ROWS__", body)
+
+
+def _render_all():
+    db = json.loads((DATA / "cartridges.json").read_text(encoding="utf-8"))
+    rows, ambiguous = _build(db)
+    return rows, band_rows(db), ambiguous
+
+
+def write_outputs():
+    rows, bands, ambiguous = _render_all()
+    OUT.write_text(render_match(rows), encoding="utf-8")
+    BANDS_OUT.write_text(render_bands(bands), encoding="utf-8")
+    return rows, bands, ambiguous
+
+
+def check_outputs():
+    """Return 0 when every generated file matches a fresh render."""
+    rows, bands, _ = _render_all()
+    stale = False
+    expected = ((OUT, render_match(rows)), (BANDS_OUT, render_bands(bands)))
+    for path, text in expected:
+        if not path.is_file():
+            print(f"cartridge projection: {path} is missing; run the generator")
+            stale = True
+            continue
+        if path.read_text(encoding="utf-8") != text:
+            print(f"cartridge projection: {path} is stale; run the generator")
+            stale = True
+    if stale:
+        return 1
+    print(f"cartridge projection: {len(rows)} rows and {len(bands)} band rows (fresh)")
+    return 0
+
+
+def main(argv=None):
+    argv = argv if argv is not None else sys.argv[1:]
+    if "--check" in argv:
+        return check_outputs()
+    rows, bands, ambiguous = write_outputs()
+    print(
+        f"cartridge rows: {len(rows)}, band rows: {len(bands)}, "
+        f"ambiguous aliases dropped: {ambiguous}, "
+        f"wrote {OUT.name} and {BANDS_OUT.name}"
+    )
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
