@@ -6,7 +6,7 @@
  * red channel encodes "how much an object heats up from the sun", and the
  * engine applies a SUN-LIGHT contribution to that channel during the
  * thermal pass.  A3TI controls this with a static "second sun" lightpoint
- * (brightness 200, always on) — which is why their buildings always glow
+ * (brightness 13, always on) — which is why their buildings always glow
  * white regardless of actual sunlight.
  *
  * We do the PHYSICS-CORRECT version: the fake sun's brightness follows
@@ -66,18 +66,18 @@ if (_mode == "ENTER") then {
 };
 
 // ─── TICK: brightness = physics radiation, scaled to engine range ─────────
-// A3TI (the reference for this mechanism) uses STATIC brightness 13 in all
-// TI modes, which SATURATES the scene to flat white - it masks per-object
-// heat (in-game proven: the whole image darkens when this drops, and
-// vehicles lose all contrast at 13).  A3TI wanted everything warm (its
-// fusion look); we want CONTRAST.  The engine's thermal sun term expects
-// lightpoint brightness in that order of magnitude; a value in 0..1 is
-// ~30x below the visible threshold, so the sun term does nothing and
-// buildings fall back to their baked alive-heat.  We keep the
-// PHYSICS-CORRECT day/night variation but scale into a NON-SATURATING
-// range: brightness = radiation * 6, so full sun = 6 (half A3TI - enough
-// to heat terrain/buildings, low enough that vehicles keep their
-// setVehicleTIPars contrast) and night = 0 (no sun term).
+// The brightness is a dimensionless Arma engine light-brightness unit.
+// setLightBrightness takes a plain number, and the engine's
+// setLightIntensity = Brightness^2 * 2500 shows the scale is internal,
+// not photometric and not radiometric.  A3TI (the reference for this
+// mechanism) uses STATIC brightness 13 in all TI modes.  We apply the
+// same peak 13, scaled by the real radiation, so the fake sun tracks day
+// and night.  The 13 is the community A3TI constant
+// DEFAULT_SECONDSUN_BRIGHTNESS, a display-tuning value with no published
+// source, so it is named and labelled here rather than presented as
+// physics.  The physical content is the radiation tracking.  A value in
+// 0..1 is ~30x below the visible threshold, so the sun term would do
+// nothing and buildings would fall back to their baked alive-heat.
 private _radiation = missionNamespace getVariable [QEGVAR(core,currentSolarRadiation), 0];
 if !(_radiation isEqualType 0) then { _radiation = 0; };
 _radiation = _radiation max 0 min 1;

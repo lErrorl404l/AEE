@@ -84,6 +84,41 @@ def lumped_tau(mass_kg, cp, h, area):
     return (mass_kg * cp) / max(h * area, 1e-3)
 
 
+def vehicle_brake_power(mass_kg, v_prev_ms, v_now_ms, dt_s):
+    """Mirror of the brake heat source in fnc_calculateVehicleHeat.
+
+    COMSOL ("Heat Generation in a Disc Brake", 2012): the energy per stop is
+    E = 0.5*m*(v0^2 - v1^2) over the interval, so the average power is E/t.
+    Deceleration only, and the whole change is assigned to the brakes (the
+    COMSOL idealisation, an upper bound).
+    """
+    if dt_s <= 0 or v_now_ms >= v_prev_ms:
+        return 0.0
+    energy_j = 0.5 * mass_kg * (v_prev_ms**2 - v_now_ms**2)
+    return energy_j / dt_s
+
+
+def vehicle_brake_power_instant(mass_kg, decel_ms2, speed_ms):
+    """Mirror of the instantaneous brake power P = m*a*v (COMSOL 2012)."""
+    return mass_kg * decel_ms2 * speed_ms
+
+
+def vehicle_body_temperature(body_temp, target, q_source_w, h_area, capacitance, dt_s):
+    """Mirror of the source-driven lumped-capacitance step.
+
+    SQF: _target = _target + (_qBrake / _hA)
+         _bodyTemp = _target + ((_bodyTemp - _target) * exp(-dt / tau))
+    A source term shifts the equilibrium target by Q/(h*A).
+    """
+    if h_area <= 0 or capacitance <= 0:
+        return target
+    t_inf = target + q_source_w / h_area
+    tau = capacitance / h_area
+    if dt_s <= 0:
+        return t_inf
+    return t_inf + (body_temp - t_inf) * math.exp(-dt_s / tau)
+
+
 def infantry_clothing_surface(acclimatisation, air_temp, insulation):
     """Mirror of the infantry clothing surface temperature.
 
@@ -929,6 +964,54 @@ class TestVehicleColdStart(unittest.TestCase):
         # tau = m*cp/(h*A): more mass is slower, more area is faster.
         self.assertGreater(lumped_tau(2000, 490, 10, 10), lumped_tau(1000, 490, 10, 10))
         self.assertGreater(lumped_tau(1000, 490, 10, 5), lumped_tau(1000, 490, 10, 10))
+
+
+class TestVehicleBrakeHeat(unittest.TestCase):
+    """Brake heat source: P = m*a*v (COMSOL 2012), whole kinetic drop assigned
+    to the brakes (the idealisation, an upper bound)."""
+
+    def test_instant_power_worked_case(self):
+        # COMSOL worked case: m=1800 kg, a=10 m/s2, v=25 m/s -> 450 kW.
+        self.assertAlmostEqual(
+            vehicle_brake_power_instant(1800.0, 10.0, 25.0), 450000.0, places=3
+        )
+
+    def test_average_power_matches_kinetic_drop(self):
+        # Same stop 25 -> 5 m/s over 2 s: E = 540 kJ, average 270 kW.
+        power = vehicle_brake_power(1800.0, 25.0, 5.0, 2.0)
+        self.assertAlmostEqual(power, 270000.0, places=3)
+        self.assertAlmostEqual(power * 2.0, 540000.0, places=3)
+
+    def test_zero_when_accelerating(self):
+        self.assertEqual(vehicle_brake_power(1800.0, 5.0, 25.0, 2.0), 0.0)
+
+    def test_zero_when_steady(self):
+        self.assertEqual(vehicle_brake_power(1800.0, 20.0, 20.0, 2.0), 0.0)
+
+    def test_zero_when_interval_is_zero(self):
+        self.assertEqual(vehicle_brake_power(1800.0, 25.0, 5.0, 0.0), 0.0)
+
+    def test_scales_with_mass(self):
+        light = vehicle_brake_power(900.0, 25.0, 5.0, 2.0)
+        heavy = vehicle_brake_power(1800.0, 25.0, 5.0, 2.0)
+        self.assertAlmostEqual(heavy, 2.0 * light, places=3)
+
+    def test_source_shifts_equilibrium_target(self):
+        # A source shifts the equilibrium to target + Q/(h*A).
+        target, q, h_area, cap = 90.0, 270000.0, 2000.0, 828000.0
+        dt = 20.0 * cap / h_area
+        body = vehicle_body_temperature(target, target, q, h_area, cap, dt)
+        self.assertAlmostEqual(body, target + q / h_area, places=3)
+
+    def test_no_source_matches_thermal_inertia(self):
+        got = vehicle_body_temperature(20.0, 90.0, 0.0, 2000.0, 828000.0, 30.0)
+        want = thermal_inertia(20.0, 90.0, 30.0, 828000.0 / 2000.0)
+        self.assertAlmostEqual(got, want, places=9)
+
+    def test_brake_heat_warms_body_above_target(self):
+        cold = vehicle_body_temperature(90.0, 90.0, 0.0, 2000.0, 828000.0, 60.0)
+        hot = vehicle_body_temperature(90.0, 90.0, 270000.0, 2000.0, 828000.0, 60.0)
+        self.assertGreater(hot, cold)
 
 
 class TestInfantryClothing(unittest.TestCase):
@@ -3400,6 +3483,15 @@ class TestSQFSync(unittest.TestCase):
                 "QGVAR(engineBodyTempC)",
                 "QGVAR(vehicleHeatTrend)",
                 "[AEE][HEAT]",
+                "COMSOL",
+                "Heat Generation in a Disc Brake",
+                "P = m*a*v",
+                "vectorMagnitude (velocity _vehicle)",
+                "0.5 * _massKg",
+                "_qBrake / _hA",
+                "_prevSpeed",
+                "300-800 C",
+                "115-143.5 W/cm2",
             ],
             "vehicle heat model (lumped-capacitance physics + diagnostic trace)",
             addon="thermal",
@@ -3841,6 +3933,30 @@ class TestSQFSync(unittest.TestCase):
             "thermostat-setpoint engine heat + real exhaust + derived tau",
             addon="thermal",
         )
+
+    def test_exhaust_fraction_is_a_labelled_lumped_calibration(self):
+        # No published source defines a body-area fraction at exhaust-port
+        # gas temperature, so 0.05 stays an AEE lumped calibration.  The
+        # 480 C value is inside-pipe gas, not the cooler pipe skin, and the
+        # comment must say so.  The SAE alternatives are named as a future
+        # option only; the behaviour is unchanged.
+        text = _read_sqf("fnc_calculateObjectTemperature.sqf", "thermal")
+        self.assertIn("private _exhFrac = 0.05", text)
+        self.assertIn("AEE lumped calibration", text)
+        self.assertIn("INSIDE the pipe", text)
+        self.assertIn("SAE 2016-01-0280", text)
+        self.assertIn("SAE 2008-01-1819", text)
+
+    def test_second_sun_brightness_unit_is_labelled(self):
+        # The engine scale is dimensionless.  The peak 13 stays, matching
+        # DEFAULT_SECONDSUN_BRIGHTNESS, and the stale "brightness 200" and
+        # "radiation * 6" comments are gone.
+        text = _read_sqf("fnc_applySecondSun.sqf", "thermal")
+        self.assertIn("private _lightBrightness = 13 * _radiation;", text)
+        self.assertIn("DEFAULT_SECONDSUN_BRIGHTNESS", text)
+        self.assertIn("setLightIntensity = Brightness^2 * 2500", text)
+        self.assertNotIn("brightness 200", text)
+        self.assertNotIn("radiation * 6", text)
 
     def test_ground_gains(self):
         # The per-class ground-gain table (5-15 C offsets per surface

@@ -34,14 +34,26 @@
  *     The lump uses the VEHICLE mass and box, which over-estimates the
  *     reservoir and so under-estimates the warm-up rate.  A stated modelling
  *     assumption, not a measurement.
- *   - Brake power in watts is not reachable.  The config enginePower is a
- *     PhysX tuning value with no verified real unit (docs/wiki/research/
- *     vehicle-mass-estimate.md; mobility fnc_calculateEngineLoad.sqf), so the
- *     fuel chain Q_fuel = P_brake/eta, Q_reject = Q_fuel*(1-eta) cannot be
- *     closed from a measured power output.  Diesel LHV 42.7 MJ/kg and the
+ *   - Brake heat is the kinetic energy the brakes absorb.  The published
+ *     model (COMSOL, "Heat Generation in a Disc Brake", 2012) gives the
+ *     instantaneous power P = m*a*v [W].  The energy per stop is
+ *     E = 0.5*m*(v0^2 - v1^2) [J] over the duration t = (v0 - v1)/a [s], so
+ *     the average power is P = E/t.  This term needs only getMass and the
+ *     ground speed.  The config enginePower is a PhysX tuning value with no
+ *     verified real unit (docs/wiki/research/vehicle-mass-estimate.md;
+ *     mobility fnc_calculateEngineLoad.sqf) and is NOT read.
+ *   - The COMSOL model neglects every loss outside the brakes, so assigning
+ *     100 percent of the kinetic-energy change to the brakes is an UPPER
+ *     BOUND.  No published value exists for the brakes-versus-road-load split
+ *     of that energy.  The split here is DERIVED, not measured.
+ *   - The fuel chain Q_fuel = P_brake/eta, Q_reject = Q_fuel*(1-eta) still
+ *     cannot be closed from a measured output.  Diesel LHV 42.7 MJ/kg and the
  *     J/3 rejected fraction (Heywood) are published, but they only set the
  *     fuel flow that the thermostat balance implies.  No rated power is
- *     invented to close the chain.
+ *     invented here.
+ *   - Reference data for the brake temperatures, for context only: hard
+ *     braking drives disc temperatures to 300-800 C, and fade starts above
+ *     600 K.  Measured disc surface flux is 115-143.5 W/cm2.
  *   - Only the lumped body/coolant path is modelled here.  The exhaust plume
  *     is a separate consumer (fnc_applyExhaustHeat) and is not split out of
  *     this balance.
@@ -50,7 +62,7 @@
  * span, (T - T_ambient)/(T_op - T_ambient), so 0 is cold and 1 is at the
  * regulated engine temperature.
  *
- * State: QGVAR(vehicleHeatState) = [_heat, _lastUpdate, _stationarySince]
+ * State: QGVAR(vehicleHeatState) = [_heat, _lastUpdate, _stationarySince, _vMS]
  *        QGVAR(engineBodyTempC)  = the engine body temperature (C), persisted
  *                                  so the ODE carries across ticks.
  *
@@ -68,6 +80,9 @@ private _now = diag_tickTime;
 
 // Airspeed drives the forced-convection term.  speed is m/s.
 private _speedMS = abs (speed _vehicle);
+// Ground speed in m/s for the brake term.  The engine `speed` above is
+// km/h, so the brake model reads `velocity`, which is m/s.
+private _vMS = vectorMagnitude (velocity _vehicle);
 
 private _airTemp = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 if !(_airTemp isEqualType 0) then { _airTemp = 15; };
@@ -80,6 +95,7 @@ private _operatingTemp = 90;
 // change at runtime, yet both engine calls and the area algebra ran for EVERY
 // object on EVERY 10 Hz tick.  Memoised by typeOf - the same pattern already
 // used for the mobility SSF and the solver geometry.
+private _massKg = 0;
 private _capacitance = 0;
 private _area = 0;
 private _geoKey = typeOf _vehicle;
@@ -90,7 +106,7 @@ if (_geoCache isEqualType 0) then {
 };
 private _geo = _geoCache getOrDefault [_geoKey, -1];
 if (_geo isEqualType 0) then {
-    private _massKg = getMass _vehicle;
+    _massKg = getMass _vehicle;
     _capacitance = _massKg * 460;
     private _box = boundingBoxReal _vehicle;
     if ((_box isEqualType []) && {(count _box == 2) || {count _box == 3}}
@@ -102,11 +118,12 @@ if (_geo isEqualType 0) then {
         private _lz = abs ((_bMax select 2) - (_bMin select 2));
         _area = 2 * ((_lx * _ly) + (_lx * _lz) + (_ly * _lz));
     };
-    _geo = [_capacitance, _area];
+    _geo = [_massKg, _capacitance, _area];
     _geoCache set [_geoKey, _geo];
 } else {
-    _capacitance = _geo select 0;
-    _area = _geo select 1;
+    _massKg = _geo select 0;
+    _capacitance = _geo select 1;
+    _area = _geo select 2;
 };
 if (_capacitance <= 0) exitWith { 0 };
 if (_area <= 0) exitWith { 0 };
@@ -127,6 +144,8 @@ private _lastUpdate = _state param [1, _now];
 if !(_lastUpdate isEqualType 0) then { _lastUpdate = _now; };
 private _stationarySince = _state param [2, _now];
 if !(_stationarySince isEqualType 0) then { _stationarySince = _now; };
+private _prevSpeed = _state param [3, _vMS];
+if !(_prevSpeed isEqualType 0) then { _prevSpeed = _vMS; };
 
 private _bodyTemp = _vehicle getVariable [QGVAR(engineBodyTempC), _airTemp];
 if !(_bodyTemp isEqualType 0) then { _bodyTemp = _airTemp; };
@@ -137,6 +156,15 @@ private _elapsed = (_now - _lastUpdate) max 0;
 // the body falls to ambient.  The exact exponential solution of the balance.
 private _target = _airTemp;
 if (_engineRunning) then { _target = _operatingTemp; };
+// Brake heat is the kinetic energy lost between ticks, assigned to the
+// brakes.  Deceleration only: acceleration is engine work.  The average
+// power over the interval comes from the tick-to-tick ground-speed change.
+private _qBrake = 0;
+if ((_elapsed > 0) && (_prevSpeed > _vMS)) then {
+    _qBrake = (0.5 * _massKg * ((_prevSpeed * _prevSpeed) - (_vMS * _vMS))) / _elapsed;
+};
+// A source term shifts the equilibrium target: T_inf = T_amb + Q/(h*A).
+_target = _target + (_qBrake / _hA);
 if (_elapsed > 0) then {
     _bodyTemp = _target + ((_bodyTemp - _target) * exp (-(_elapsed / _tau)));
 };
@@ -151,10 +179,9 @@ private _heat = if (_span > 0) then {
     0
 };
 
-// The 4th element was getPosASL _vehicle: written every call and read by
-// NOBODY (this file reads param [0..2]; applyExhaustHeat reads select 0), so it
-// was an engine call per object per 10 Hz tick for nothing.
-_vehicle setVariable [QGVAR(vehicleHeatState), [_heat, _now, _stationarySince]];
+// The 4th element is the ground speed from the previous call; the brake
+// term above reads it.  applyExhaustHeat reads select 0 only.
+_vehicle setVariable [QGVAR(vehicleHeatState), [_heat, _now, _stationarySince, _vMS]];
 _vehicle setVariable [QGVAR(engineBodyTempC), _bodyTemp];
 
 // Heat trend (rising/falling) for the material distribution - a rising
