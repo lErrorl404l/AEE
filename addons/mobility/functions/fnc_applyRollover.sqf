@@ -57,7 +57,11 @@ if (((getPosATL _vehicle) select 2) > 2) exitWith { false };
 // real acceleration, not a per-frame count.
 private _heading = getDir _vehicle;
 private _key = netId _vehicle;
-private _state = missionNamespace getVariable [QGVAR(rolloverState), createHashMap];
+private _state = missionNamespace getVariable [QGVAR(rolloverState), -1];
+if (_state isEqualType 0) then {
+    _state = createHashMap;
+    missionNamespace setVariable [QGVAR(rolloverState), _state];
+};
 private _prev = _state getOrDefault [_key, [-999, _heading, 0]];
 
 private _dt = diag_deltaTime;
@@ -73,7 +77,25 @@ private _aLat = _speed * (abs _omega);               // m/s^2
 private _aLatG = _aLat / 9.80665;                    // in g
 
 // ─── Threshold ──────────────────────────────────────────────────────────
-private _ssfArr = [_vehicle] call FUNC(calculateSSF);
+// calculateSSF reads the vehicle's CONFIG Wheels class and, through
+// getVehicleGeometry, getCenterOfMass and boundingBoxReal.  All of those are
+// FIXED for a given vehicle type.  This loop runs every frame, so recomputing
+// them per vehicle per frame was the heaviest thing in it.  Memoised by type.
+// NOTE: getVariable's default is evaluated on EVERY call, so a createHashMap
+// default allocates a hashmap per vehicle per frame.  The -1 sentinel keeps the
+// allocation to the first call.
+private _ssfCache = missionNamespace getVariable [QGVAR(ssfCache), -1];
+if (_ssfCache isEqualType 0) then {
+    _ssfCache = createHashMap;
+    missionNamespace setVariable [QGVAR(ssfCache), _ssfCache];
+};
+private _typeKey = typeOf _vehicle;
+private _ssfArr = _ssfCache getOrDefault [_typeKey, []];
+if (_ssfArr isEqualTo []) then {
+    _ssfArr = [_vehicle] call FUNC(calculateSSF);
+    _ssfCache set [_typeKey, _ssfArr];
+    missionNamespace setVariable [QGVAR(ssfCache), _ssfCache];
+};
 private _ssf = _ssfArr select 0;
 
 // Ground slope across the track: use the vehicle's roll (bank) angle.  A

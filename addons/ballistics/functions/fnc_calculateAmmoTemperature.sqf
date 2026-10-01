@@ -63,7 +63,11 @@ private _soakAmbient = _ambient + _solarSoak;
 // A fresh weapon (no stored state) starts AT the soak-adjusted ambient,
 // not the raw air temperature: a magazine first read in full sun is
 // already sun-warmed.
-private _state = _unit getVariable [QGVAR(ammoTemps), createHashMap];
+// Eager-default allocation removed: getVariable evaluates its default
+// argument, so this allocated a throwaway hashmap on every call.  The state is
+// written back at the end, so a locally-created map still persists.
+private _state = _unit getVariable [QGVAR(ammoTemps), -1];
+if (_state isEqualType 0) then { _state = createHashMap; };
 private _entry = _state getOrDefault [_weapon, [_soakAmbient, diag_tickTime]];
 _entry params ["_prevTemp", "_lastTick"];
 private _dt = (diag_tickTime - _lastTick) max 0;

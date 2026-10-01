@@ -59,8 +59,14 @@ private _liveByKey = createHashMap;
     private _req = _x;
     private _effect = _req getOrDefault ["effect", ""];
     private _key = _req getOrDefault ["key", ""];
-    private _row = _cfg getOrDefault [_effect, createHashMap];
-    private _live = _liveByKey getOrDefault [_key, createHashMap];
+    // Eager-default allocations removed: getOrDefault evaluates its default
+    // argument, so these allocated two throwaway hashmaps per request.  _row is
+    // read-only here and the only write to _live needs count > 0, which an
+    // absent key cannot satisfy.
+    private _row = _cfg getOrDefault [_effect, -1];
+    if (_row isEqualType 0) then { _row = createHashMap; };
+    private _live = _liveByKey getOrDefault [_key, -1];
+    if (_live isEqualType 0) then { _live = createHashMap; };
     if (count _live > 0) then {
         // The gate still passes: keep the live source, refresh its expiry so
         // it survives while the condition holds and dies when it stops.
@@ -86,7 +92,8 @@ private _liveByKey = createHashMap;
 _sources = missionNamespace getVariable [QGVAR(particleSources), []];
 {
     private _source = _x getOrDefault ["source", objNull];
-    private _row = _cfg getOrDefault [_x getOrDefault ["effect", ""], createHashMap];
+    private _row = _cfg getOrDefault [_x getOrDefault ["effect", ""], -1];
+    if (_row isEqualType 0) then { _row = createHashMap; };
     private _params = _x getOrDefault ["params", []];
     if (alive _source && {_params isNotEqualTo []} && {count _row > 0}) then {
         private _wind = [getPosASL _source] call EFUNC(atmos,getLocalWind);

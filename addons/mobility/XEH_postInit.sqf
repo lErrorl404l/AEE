@@ -1,4 +1,5 @@
 #include "script_component.hpp"
+#include "\z\aee\addons\main\script_debug.hpp"
 
 AEE_MODULE_POST_INIT
 
@@ -8,9 +9,16 @@ if (!hasInterface) exitWith {};
 
 // Per-frame flight turbulence: a client-side force loop on nearby aircraft.
 if (GVAR(flightTurbulence)) then {
+    // 20 Hz, not every frame.  These were interval 0, so they ran on every
+    // rendered frame (60+ Hz) doing engine calls (getPosATL, velocity,
+    // vectorUp, surfaceType) and missionNamespace writes per vehicle.  A force
+    // loop integrates fine at 20 Hz, and per-frame setVelocity is the jitter
+    // case the terrain-drag doc warns about.
     GVAR(turbulencePFH) = [{
-        call FUNC(applyFlightTurbulence);
-    }, 0] call CBA_fnc_addPerFrameHandler;
+        BEGIN_COUNTER(applyFlightTurbulence);
+call FUNC(applyFlightTurbulence);
+END_COUNTER(applyFlightTurbulence);
+    }, 0.05] call CBA_fnc_addPerFrameHandler;
 
     AEE_LOG_INFO("flight turbulence PFH started");
 };
@@ -44,9 +52,11 @@ if (GVAR(rolloverEnabled)) then {
         };
 
         {
-            [_x] call FUNC(applyRollover);
+            BEGIN_COUNTER(applyRollover);
+[_x] call FUNC(applyRollover);
+END_COUNTER(applyRollover);
         } forEach GVAR(rolloverVehicles);
-    }, 0] call CBA_fnc_addPerFrameHandler;
+    }, 0.05] call CBA_fnc_addPerFrameHandler;
 
     AEE_LOG_INFO("vehicle rollover PFH started");
 };
@@ -77,9 +87,11 @@ if (GVAR(terrainDragEnabled)) then {
         };
 
         {
-            [_x] call FUNC(applyTerrainDrag);
+            BEGIN_COUNTER(applyTerrainDrag);
+[_x] call FUNC(applyTerrainDrag);
+END_COUNTER(applyTerrainDrag);
         } forEach GVAR(terrainVehicles);
-    }, 0] call CBA_fnc_addPerFrameHandler;
+    }, 0.05] call CBA_fnc_addPerFrameHandler;
 
     AEE_LOG_INFO("terrain drag PFH started");
 };

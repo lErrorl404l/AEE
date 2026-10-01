@@ -52,7 +52,10 @@ private _depression = _temp - _dewPoint;
 // has not reached yet.
 private _surfaceTemp = _temp;
 private _unit = call CBA_fnc_currentUnit;
-private _surfState = missionNamespace getVariable [QEGVAR(core,groundSurfaceTemp), createHashMap];
+// Eager-default allocation removed; the guard below expects a hashmap, which
+// the lazy branch still guarantees.
+private _surfState = missionNamespace getVariable [QEGVAR(core,groundSurfaceTemp), -1];
+if (_surfState isEqualType 0) then { _surfState = createHashMap; };
 private _stackKey = "";
 if (!isNil "_unit" && {!isNull _unit} && {_surfState isEqualType createHashMap}) then {
     private _upos = getPos _unit;

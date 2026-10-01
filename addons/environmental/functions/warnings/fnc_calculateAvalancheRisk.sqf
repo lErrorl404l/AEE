@@ -84,7 +84,11 @@ private _S = _tauStrength / (_tau / 1000);                    // kPa / kPa
 // Rolling 24 h window: maintain a decaying snowfall accumulator (cm) in
 // the same grid pattern as the ice FDD.  Fresh loading is the classic
 // natural trigger (McClung & Schaerer: 30 cm in 24 h).
-private _grid = missionNamespace getVariable [QGVAR(fddGrid), createHashMap];
+private _grid = missionNamespace getVariable [QGVAR(fddGrid), -1];
+if (_grid isEqualType 0) then {
+    _grid = createHashMap;
+    missionNamespace setVariable [QGVAR(fddGrid), _grid];
+};
 private _key = format ["%1_%2", round ((_pos2D select 0) / 100), round ((_pos2D select 1) / 100)];
 private _entry = _grid getOrDefault [_key, [0, -1e10, 0, 0]];
 _entry params ["_fdd", "_lastTick", "_ice", "_snow24"];

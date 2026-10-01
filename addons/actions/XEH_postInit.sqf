@@ -48,19 +48,3 @@ AEE_MODULE_POST_INIT
     _d = (_d + 1) min 300;
     missionNamespace setVariable ["aee_optics_dofManualDist", _d];
 }, {}, [0, [false, false, false]]] call CBA_fnc_addKeybind;
-
-// ─── Fused goggle mode ────────────────────────────────────────────────────
-// A fused goggle has exactly this operator control: the tube and the
-// microbolometer are both lit, and the operator switches between I2-only
-// and fused.  There is no automatic response, so nothing renders fused
-// until this key is pressed.  The mode lives in aee_thermal_fusionMode,
-// which the sensor tick reads.  Unbound by default, so the player assigns it
-// in Configure Addons, exactly as the focus keybinds above.
-["AEE", "FusionModeToggle", [LLSTRING(FusionModeToggle), LLSTRING(FusionModeToggle_Description)], {
-    private _mode = [] call EFUNC(thermal,cycleFusionMode);
-    if (_mode == 1) then {
-        AEE_LOG_INFO("fusion mode: FUSED (I2 + thermal overlay)");
-    } else {
-        AEE_LOG_INFO("fusion mode: I2 ONLY");
-    };
-}, {}, [0, [false, false, false]]] call CBA_fnc_addKeybind;

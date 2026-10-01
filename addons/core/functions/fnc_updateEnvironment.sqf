@@ -91,14 +91,20 @@ if (!_realWeather) then {
 // humidity but must not freeze the wind field, so it is not gated by
 // realWeather, only by the wind switch itself.
 if (GVAR(windEnabled)) then {
+    BEGIN_COUNTER(windUpdate);
     [] call EFUNC(atmos,updateWind);
+    END_COUNTER(windUpdate);
 };
 if (GVAR(fxEnabled)) then {
+    BEGIN_COUNTER(windNoise);
     [] call EFUNC(fx,applyWindNoise);
+    END_COUNTER(windNoise);
 };
 
 // ─── Derived effects (ground, foliage, sound, fog) ─────────────────────────
+BEGIN_COUNTER(groundState);
 [_posASL] call EFUNC(mobility,updateGroundState);
+END_COUNTER(groundState);
 
 // Apply module precipitation bias — scale rain contribution to accumulation
 private _modulePrecip = missionNamespace getVariable [QGVAR(modulePrecipBias), 1];
@@ -110,21 +116,47 @@ if (_modulePrecip != 1) then {
     missionNamespace setVariable [QGVAR(rainAccum), _rainAccum];
 };
 
+BEGIN_COUNTER(foliage);
 [] call EFUNC(environmental,updateSeasonalFoliage);
-if (GVAR(hydrologyEnabled)) then { call EFUNC(environmental,calculateFreezeThawCycling); };
+END_COUNTER(foliage);
+if (GVAR(hydrologyEnabled)) then {
+    BEGIN_COUNTER(freezeThaw);
+    call EFUNC(environmental,calculateFreezeThawCycling);
+    END_COUNTER(freezeThaw);
+};
+BEGIN_COUNTER(soundPropagation);
 [] call EFUNC(environmental,updateSoundPropagation);
+END_COUNTER(soundPropagation);
+BEGIN_COUNTER(fogChain);
 [] call EFUNC(atmos,updateFog);
 [] call EFUNC(environmental,calculateFogBaseAltitude);
+END_COUNTER(fogChain);
 
 // ─── Thermal / Physiological ───────────────────────────────────────────────
+BEGIN_COUNTER(wbgt);
 [] call EFUNC(thermal,calculateWBGT);
+END_COUNTER(wbgt);
+BEGIN_COUNTER(heatIndex);
 [] call EFUNC(thermal,calculateHeatIndex);
+END_COUNTER(heatIndex);
+BEGIN_COUNTER(hypothermia);
 [] call EFUNC(thermal,calculateHypothermiaRisk);
+END_COUNTER(hypothermia);
+BEGIN_COUNTER(clothingInsulation);
 [] call EFUNC(thermal,calculateClothingInsulation);
+END_COUNTER(clothingInsulation);
+BEGIN_COUNTER(freezingRain);
 [] call EFUNC(thermal,calculateFreezingRain);
-    [] call EFUNC(thermal,calculateWaterTemperature);
-    [] call EFUNC(environmental,calculateFrostOnWindscreens);
+END_COUNTER(freezingRain);
+BEGIN_COUNTER(waterTemp);
+[] call EFUNC(thermal,calculateWaterTemperature);
+END_COUNTER(waterTemp);
+BEGIN_COUNTER(frostWindscreens);
+[] call EFUNC(environmental,calculateFrostOnWindscreens);
+END_COUNTER(frostWindscreens);
+BEGIN_COUNTER(objectScan);
 [] call EFUNC(thermal,calculateObjectTemperature);
+END_COUNTER(objectScan);
 if (GVAR(physiologyEnabled)) then {
     [] call EFUNC(physiology,calculateUVIndex);
     [] call EFUNC(physiology,calculateBatteryTemperatureDerating);
@@ -186,7 +218,9 @@ END_COUNTER(optics);
 // physics visibility state to the local view distance.  Runs at the tick
 // cadence with a 500 m deadband + ramp, so 5 s is smooth.
 if (missionNamespace getVariable [QEGVAR(optics,viewDistanceEnabled), true]) then {
+    BEGIN_COUNTER(viewDistance);
     [] call EFUNC(optics,calculateViewDistance);
+    END_COUNTER(viewDistance);
 };
 
 // ─── Mobility / Operations ─────────────────────────────────────────────────
@@ -362,3 +396,16 @@ if (GVAR(diagnostic)) then {
 ["AEE_WeatherUpdated"] call CBA_fnc_localEvent;
 
 END_COUNTER(updateEnvironment);
+
+    // AUTO-DUMP the performance counters every ~10 s (2 x the 5 s tick) when
+    // they are compiled in.  The guard fires only in a counter build, so a
+    // production PBO reaches neither the branch nor diag_log.  The dump prints
+    // ms/call per counter, heaviest first, plus the PFH registry.
+    if (!isNil "aee_perfCounters") then {
+        private _dumpN = (missionNamespace getVariable [QGVAR(counterDumpN), 0]) + 1;
+        missionNamespace setVariable [QGVAR(counterDumpN), _dumpN];
+        if ((_dumpN % 2) == 0) then {
+            [] call FUNC(dumpPerformanceCounters);
+        };
+    };
+
