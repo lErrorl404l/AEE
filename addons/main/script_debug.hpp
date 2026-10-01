@@ -24,10 +24,10 @@
  * Dump with: [] call aee_core_fnc_dumpPerformanceCounters
  */
 
-#define ENABLE_PERFORMANCE_COUNTERS
+//#define ENABLE_PERFORMANCE_COUNTERS
 
 #ifdef DEBUG_ENABLED_AEE_MAIN
-//#define ENABLE_PERFORMANCE_COUNTERS
+#define ENABLE_PERFORMANCE_COUNTERS
 #endif
 
 #ifdef ENABLE_PERFORMANCE_COUNTERS
