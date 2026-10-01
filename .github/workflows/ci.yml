@@ -45,6 +45,8 @@ jobs:
         run: python3 tools/validation/check_macro_quoting.py
       - name: Oracle validation (JSP 939 VV&A)
         run: python3 tools/validation/validate_oracles.py
+      - name: Physics config-binding validation
+        run: python3 tools/validation/validate_physics_config.py
       - name: Vehicle class inventory check
         run: python3 tools/validation/gen_vehicle_class_inventory.py --check
       - name: Vehicle projection freshness check

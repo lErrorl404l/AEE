@@ -37,6 +37,7 @@ lint:
 	python3 tools/validation/validate_cross_module.py
 	python3 tools/validation/validate_oracles.py
 	python3 tools/validation/check_macro_quoting.py
+	python3 tools/validation/validate_physics_config.py
 	python3 tools/validation/gen_vehicle_class_inventory.py --check
 	python3 tools/validation/gen_vehicle_data.py --check
 	python3 tools/validation/gen_vehicle_coverage.py --check
