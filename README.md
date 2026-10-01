@@ -107,6 +107,18 @@ Event FX (lightning, dust, sound) vary cosmetically per machine.
 
 ---
 
+## Limitations
+
+The environment model is a physical layer over the engine, not a replacement for it. Four limits follow from that.
+
+**Projectile trajectory.** The engine reads `CfgAmmo airFriction` and `CfgAmmo coefGravity` when it creates a projectile. No script command changes either value after firing. Therefore air density and wind do not change the engine's projectile path. AEE corrects the muzzle velocity from propellant temperature, computes a real drag kernel at the muzzle, and hands per-projectile drag to ACE3 advanced ballistics when that mod is present. A bullet that flies under air density alone needs a solver that owns the projectile, which AEE does not ship.
+
+**Engine power.** A ground vehicle's power band is PhysX configuration. The engine exposes no command to change it at run time, so a static configuration value cannot carry an environment-dependent derate.
+
+**Ground and sky.** The engine has no sub-surface terrain model and no radiative sky interface. AEE emulates both from surface classification and published sky models, and labels them as emulation.
+
+**Configuration overrides.** The `aee_physics` addon overrides engine configuration at load. A configuration value cannot change at run time, so the addon is the on-off switch: remove the PBO to disable every override.
+
 ## Roadmap
 
 AEE develops in three phases. The [project board](https://github.com/orgs/lErrorl404l/projects/2) tracks the 36 issues across them.
