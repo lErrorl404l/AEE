@@ -147,6 +147,17 @@
       ]
     },
     {
+      "game_class": "HMMWV_civil",
+      "display_name_key": "$STR_DN_HMMWV_CIVIL",
+      "display_name": "HMMWV (Civil)",
+      "display_name_source": "583496184/addons/cup_terrains_a1always_dummy.pbo > stringtable.xml",
+      "config_locator": "583496184/addons/cup_terrains_dbe1_models_dbe1_c.pbo > HMMWV_H1\\config.bin",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": [
+        "hmmwv"
+      ]
+    },
+    {
       "game_class": "Hatchback_01_base_F",
       "display_name_key": "$STR_A3_CfgVehicles_Car_Base0",
       "display_name": "Hatchback",
@@ -177,6 +188,1337 @@
       "catalogue_id": "toyota_land_cruiser_70",
       "matched_tokens": [
         "offroad"
+      ]
+    },
+    {
+      "game_class": "LOP_AA_BMP1",
+      "display_name_key": "$STR_BMP1_Name",
+      "display_name": "BMP-1",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_1",
+      "matched_tokens": [
+        "bmp1"
+      ]
+    },
+    {
+      "game_class": "LOP_AA_BMP2",
+      "display_name_key": "$STR_BMP2e_Name",
+      "display_name": "BMP-2 (obr. 1980g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_2",
+      "matched_tokens": [
+        "bmp2"
+      ]
+    },
+    {
+      "game_class": "LOP_AA_T72BA",
+      "display_name_key": "$STR_T72BA_Name",
+      "display_name": "T-72B (obr. 1984g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_AA_T72BB",
+      "display_name_key": "$STR_T72BB_Name",
+      "display_name": "T-72B (obr. 1985g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_AA_Ural_open",
+      "display_name_key": "$STR_RHS_URAL4320OPEN_NAME",
+      "display_name": "Ural-4320 (Open)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "ural_4320",
+      "matched_tokens": [
+        "ural4320"
+      ]
+    },
+    {
+      "game_class": "LOP_AFR_Civ_Ural_open",
+      "display_name_key": "$STR_RHS_URAL4320OPEN_NAME",
+      "display_name": "Ural-4320 (Open)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "ural_4320",
+      "matched_tokens": [
+        "ural4320"
+      ]
+    },
+    {
+      "game_class": "LOP_AFR_OPF_T72BA",
+      "display_name_key": "$STR_T72BA_Name",
+      "display_name": "T-72B (obr. 1984g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_AFR_OPF_T72BB",
+      "display_name_key": "$STR_T72BB_Name",
+      "display_name": "T-72B (obr. 1985g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_AFR_T72BA",
+      "display_name_key": "$STR_T72BA_Name",
+      "display_name": "T-72B (obr. 1984g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_AFR_T72BB",
+      "display_name_key": "$STR_T72BB_Name",
+      "display_name": "T-72B (obr. 1985g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_AM_OPF_T72BA",
+      "display_name_key": "$STR_T72BA_Name",
+      "display_name": "T-72B (obr. 1984g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_AM_T72BA",
+      "display_name_key": "$STR_T72BA_Name",
+      "display_name": "T-72B (obr. 1984g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_BMP1D_base",
+      "display_name_key": "$STR_BMP1D_Name",
+      "display_name": "BMP-1D",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_1d",
+      "matched_tokens": [
+        "bmp1d"
+      ]
+    },
+    {
+      "game_class": "LOP_BMP1_base",
+      "display_name_key": "$STR_BMP1_Name",
+      "display_name": "BMP-1",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_1",
+      "matched_tokens": [
+        "bmp1"
+      ]
+    },
+    {
+      "game_class": "LOP_BMP2D_base",
+      "display_name_key": "$STR_BMP2D_Name",
+      "display_name": "BMP-2D",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_2d",
+      "matched_tokens": [
+        "bmp2d"
+      ]
+    },
+    {
+      "game_class": "LOP_BMP2_base",
+      "display_name_key": "$STR_BMP2e_Name",
+      "display_name": "BMP-2 (obr. 1980g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_2",
+      "matched_tokens": [
+        "bmp2"
+      ]
+    },
+    {
+      "game_class": "LOP_BTR70_base",
+      "display_name_key": "$STR_RHS_BTR70_Name",
+      "display_name": "BTR-70",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "btr_70",
+      "matched_tokens": [
+        "btr70"
+      ]
+    },
+    {
+      "game_class": "LOP_BTR80_base",
+      "display_name_key": "$STR_RHS_BTR80_Name",
+      "display_name": "BTR-80",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "btr_80",
+      "matched_tokens": [
+        "btr80"
+      ]
+    },
+    {
+      "game_class": "LOP_CDF_BMP1",
+      "display_name_key": "$STR_BMP1_Name",
+      "display_name": "BMP-1",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_1",
+      "matched_tokens": [
+        "bmp1"
+      ]
+    },
+    {
+      "game_class": "LOP_CDF_BMP2",
+      "display_name_key": "$STR_BMP2e_Name",
+      "display_name": "BMP-2 (obr. 1980g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_2",
+      "matched_tokens": [
+        "bmp2"
+      ]
+    },
+    {
+      "game_class": "LOP_CDF_BMP2D",
+      "display_name_key": "$STR_BMP2D_Name",
+      "display_name": "BMP-2D",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_2d",
+      "matched_tokens": [
+        "bmp2d"
+      ]
+    },
+    {
+      "game_class": "LOP_CDF_BTR70",
+      "display_name_key": "$STR_RHS_BTR70_Name",
+      "display_name": "BTR-70",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "btr_70",
+      "matched_tokens": [
+        "btr70"
+      ]
+    },
+    {
+      "game_class": "LOP_CDF_T72BA",
+      "display_name_key": "$STR_T72BA_Name",
+      "display_name": "T-72B (obr. 1984g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_CDF_T72BB",
+      "display_name_key": "$STR_T72BB_Name",
+      "display_name": "T-72B (obr. 1985g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_CDF_T72BC",
+      "display_name_key": "$STR_T72BC_Name",
+      "display_name": "T-72B (obr. 1989g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_CDF_Ural_open",
+      "display_name_key": "$STR_RHS_URAL4320OPEN_NAME",
+      "display_name": "Ural-4320 (Open)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "ural_4320",
+      "matched_tokens": [
+        "ural4320"
+      ]
+    },
+    {
+      "game_class": "LOP_CHR_Civ_Ural_open",
+      "display_name_key": "$STR_RHS_URAL4320OPEN_NAME",
+      "display_name": "Ural-4320 (Open)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "ural_4320",
+      "matched_tokens": [
+        "ural4320"
+      ]
+    },
+    {
+      "game_class": "LOP_ChDKZ_BMP1",
+      "display_name_key": "$STR_BMP1_Name",
+      "display_name": "BMP-1",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_1",
+      "matched_tokens": [
+        "bmp1"
+      ]
+    },
+    {
+      "game_class": "LOP_ChDKZ_BMP1D",
+      "display_name_key": "$STR_BMP1D_Name",
+      "display_name": "BMP-1D",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_1d",
+      "matched_tokens": [
+        "bmp1d"
+      ]
+    },
+    {
+      "game_class": "LOP_ChDKZ_BMP2",
+      "display_name_key": "$STR_BMP2e_Name",
+      "display_name": "BMP-2 (obr. 1980g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_2",
+      "matched_tokens": [
+        "bmp2"
+      ]
+    },
+    {
+      "game_class": "LOP_ChDKZ_BMP2D",
+      "display_name_key": "$STR_BMP2D_Name",
+      "display_name": "BMP-2D",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_2d",
+      "matched_tokens": [
+        "bmp2d"
+      ]
+    },
+    {
+      "game_class": "LOP_ChDKZ_BTR70",
+      "display_name_key": "$STR_RHS_BTR70_Name",
+      "display_name": "BTR-70",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "btr_70",
+      "matched_tokens": [
+        "btr70"
+      ]
+    },
+    {
+      "game_class": "LOP_ChDKZ_T72BA",
+      "display_name_key": "$STR_T72BA_Name",
+      "display_name": "T-72B (obr. 1984g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_ChDKZ_T72BB",
+      "display_name_key": "$STR_T72BB_Name",
+      "display_name": "T-72B (obr. 1985g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_ChDKZ_T72BC",
+      "display_name_key": "$STR_T72BC_Name",
+      "display_name": "T-72B (obr. 1989g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_ChDKZ_Ural_open",
+      "display_name_key": "$STR_RHS_URAL4320OPEN_NAME",
+      "display_name": "Ural-4320 (Open)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "ural_4320",
+      "matched_tokens": [
+        "ural4320"
+      ]
+    },
+    {
+      "game_class": "LOP_IA_BMP1",
+      "display_name_key": "$STR_BMP1_Name",
+      "display_name": "BMP-1",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_1",
+      "matched_tokens": [
+        "bmp1"
+      ]
+    },
+    {
+      "game_class": "LOP_IA_BMP2",
+      "display_name_key": "$STR_BMP2e_Name",
+      "display_name": "BMP-2 (obr. 1980g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_2",
+      "matched_tokens": [
+        "bmp2"
+      ]
+    },
+    {
+      "game_class": "LOP_IA_BTR80",
+      "display_name_key": "$STR_RHS_BTR80_Name",
+      "display_name": "BTR-80",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "btr_80",
+      "matched_tokens": [
+        "btr80"
+      ]
+    },
+    {
+      "game_class": "LOP_IA_T72BA",
+      "display_name_key": "$STR_T72BA_Name",
+      "display_name": "T-72B (obr. 1984g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_IA_T72BB",
+      "display_name_key": "$STR_T72BB_Name",
+      "display_name": "T-72B (obr. 1985g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_IA_Ural_open",
+      "display_name_key": "$STR_RHS_URAL4320OPEN_NAME",
+      "display_name": "Ural-4320 (Open)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "ural_4320",
+      "matched_tokens": [
+        "ural4320"
+      ]
+    },
+    {
+      "game_class": "LOP_IRAN_BMP1",
+      "display_name_key": "$STR_BMP1_Name",
+      "display_name": "BMP-1",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_1",
+      "matched_tokens": [
+        "bmp1"
+      ]
+    },
+    {
+      "game_class": "LOP_IRAN_BMP2",
+      "display_name_key": "$STR_BMP2e_Name",
+      "display_name": "BMP-2 (obr. 1980g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_2",
+      "matched_tokens": [
+        "bmp2"
+      ]
+    },
+    {
+      "game_class": "LOP_IRAN_BTR70",
+      "display_name_key": "$STR_RHS_BTR70_Name",
+      "display_name": "BTR-70",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "btr_70",
+      "matched_tokens": [
+        "btr70"
+      ]
+    },
+    {
+      "game_class": "LOP_IRAN_BTR80",
+      "display_name_key": "$STR_RHS_BTR80_Name",
+      "display_name": "BTR-80",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "btr_80",
+      "matched_tokens": [
+        "btr80"
+      ]
+    },
+    {
+      "game_class": "LOP_IRAN_T72BA",
+      "display_name_key": "$STR_T72BA_Name",
+      "display_name": "T-72B (obr. 1984g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_IRAN_Ural_open",
+      "display_name_key": "$STR_RHS_URAL4320OPEN_NAME",
+      "display_name": "Ural-4320 (Open)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "ural_4320",
+      "matched_tokens": [
+        "ural4320"
+      ]
+    },
+    {
+      "game_class": "LOP_ISTS_BMP1",
+      "display_name_key": "$STR_BMP1_Name",
+      "display_name": "BMP-1",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_1",
+      "matched_tokens": [
+        "bmp1"
+      ]
+    },
+    {
+      "game_class": "LOP_ISTS_BMP2",
+      "display_name_key": "$STR_BMP2e_Name",
+      "display_name": "BMP-2 (obr. 1980g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_2",
+      "matched_tokens": [
+        "bmp2"
+      ]
+    },
+    {
+      "game_class": "LOP_ISTS_OPF_BMP1",
+      "display_name_key": "$STR_BMP1_Name",
+      "display_name": "BMP-1",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_1",
+      "matched_tokens": [
+        "bmp1"
+      ]
+    },
+    {
+      "game_class": "LOP_ISTS_OPF_BMP2",
+      "display_name_key": "$STR_BMP2e_Name",
+      "display_name": "BMP-2 (obr. 1980g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_2",
+      "matched_tokens": [
+        "bmp2"
+      ]
+    },
+    {
+      "game_class": "LOP_ISTS_OPF_T72BA",
+      "display_name_key": "$STR_T72BA_Name",
+      "display_name": "T-72B (obr. 1984g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_ISTS_T72BA",
+      "display_name_key": "$STR_T72BA_Name",
+      "display_name": "T-72B (obr. 1984g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_NK_BMP1",
+      "display_name_key": "$STR_BMP1_Name",
+      "display_name": "BMP-1",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_1",
+      "matched_tokens": [
+        "bmp1"
+      ]
+    },
+    {
+      "game_class": "LOP_NK_BTR80",
+      "display_name_key": "$STR_RHS_BTR80_Name",
+      "display_name": "BTR-80",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "btr_80",
+      "matched_tokens": [
+        "btr80"
+      ]
+    },
+    {
+      "game_class": "LOP_NK_T72BA",
+      "display_name_key": "$STR_T72BA_Name",
+      "display_name": "T-72B (obr. 1984g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_NK_T72BB",
+      "display_name_key": "$STR_T72BB_Name",
+      "display_name": "T-72B (obr. 1985g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_NK_Ural_open",
+      "display_name_key": "$STR_RHS_URAL4320OPEN_NAME",
+      "display_name": "Ural-4320 (Open)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "ural_4320",
+      "matched_tokens": [
+        "ural4320"
+      ]
+    },
+    {
+      "game_class": "LOP_RACS_T72BA",
+      "display_name_key": "$STR_T72BA_Name",
+      "display_name": "T-72B (obr. 1984g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_RACS_T72BB",
+      "display_name_key": "$STR_T72BB_Name",
+      "display_name": "T-72B (obr. 1985g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_SLA_BMP1",
+      "display_name_key": "$STR_BMP1_Name",
+      "display_name": "BMP-1",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_1",
+      "matched_tokens": [
+        "bmp1"
+      ]
+    },
+    {
+      "game_class": "LOP_SLA_BMP1D",
+      "display_name_key": "$STR_BMP1D_Name",
+      "display_name": "BMP-1D",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_1d",
+      "matched_tokens": [
+        "bmp1d"
+      ]
+    },
+    {
+      "game_class": "LOP_SLA_BMP2",
+      "display_name_key": "$STR_BMP2e_Name",
+      "display_name": "BMP-2 (obr. 1980g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_2",
+      "matched_tokens": [
+        "bmp2"
+      ]
+    },
+    {
+      "game_class": "LOP_SLA_BMP2D",
+      "display_name_key": "$STR_BMP2D_Name",
+      "display_name": "BMP-2D",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_2d",
+      "matched_tokens": [
+        "bmp2d"
+      ]
+    },
+    {
+      "game_class": "LOP_SLA_BTR70",
+      "display_name_key": "$STR_RHS_BTR70_Name",
+      "display_name": "BTR-70",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "btr_70",
+      "matched_tokens": [
+        "btr70"
+      ]
+    },
+    {
+      "game_class": "LOP_SLA_T72BA",
+      "display_name_key": "$STR_T72BA_Name",
+      "display_name": "T-72B (obr. 1984g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_SLA_T72BB",
+      "display_name_key": "$STR_T72BB_Name",
+      "display_name": "T-72B (obr. 1985g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_SLA_Ural_open",
+      "display_name_key": "$STR_RHS_URAL4320OPEN_NAME",
+      "display_name": "Ural-4320 (Open)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "ural_4320",
+      "matched_tokens": [
+        "ural4320"
+      ]
+    },
+    {
+      "game_class": "LOP_SYR_BMP1",
+      "display_name_key": "$STR_BMP1_Name",
+      "display_name": "BMP-1",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_1",
+      "matched_tokens": [
+        "bmp1"
+      ]
+    },
+    {
+      "game_class": "LOP_SYR_BMP2",
+      "display_name_key": "$STR_BMP2e_Name",
+      "display_name": "BMP-2 (obr. 1980g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_2",
+      "matched_tokens": [
+        "bmp2"
+      ]
+    },
+    {
+      "game_class": "LOP_SYR_BTR70",
+      "display_name_key": "$STR_RHS_BTR70_Name",
+      "display_name": "BTR-70",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "btr_70",
+      "matched_tokens": [
+        "btr70"
+      ]
+    },
+    {
+      "game_class": "LOP_SYR_BTR80",
+      "display_name_key": "$STR_RHS_BTR80_Name",
+      "display_name": "BTR-80",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "btr_80",
+      "matched_tokens": [
+        "btr80"
+      ]
+    },
+    {
+      "game_class": "LOP_SYR_T72BA",
+      "display_name_key": "$STR_T72BA_Name",
+      "display_name": "T-72B (obr. 1984g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_SYR_T72BB",
+      "display_name_key": "$STR_T72BB_Name",
+      "display_name": "T-72B (obr. 1985g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_SYR_Ural_open",
+      "display_name_key": "$STR_RHS_URAL4320OPEN_NAME",
+      "display_name": "Ural-4320 (Open)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "ural_4320",
+      "matched_tokens": [
+        "ural4320"
+      ]
+    },
+    {
+      "game_class": "LOP_T72BA_base",
+      "display_name_key": "$STR_T72BA_Name",
+      "display_name": "T-72B (obr. 1984g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_T72BB_base",
+      "display_name_key": "$STR_T72BB_Name",
+      "display_name": "T-72B (obr. 1985g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_T72BC_base",
+      "display_name_key": "$STR_T72BC_Name",
+      "display_name": "T-72B (obr. 1989g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_TAK_Civ_Ural_open",
+      "display_name_key": "$STR_RHS_URAL4320OPEN_NAME",
+      "display_name": "Ural-4320 (Open)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "ural_4320",
+      "matched_tokens": [
+        "ural4320"
+      ]
+    },
+    {
+      "game_class": "LOP_TKA_BMP1",
+      "display_name_key": "$STR_BMP1_Name",
+      "display_name": "BMP-1",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_1",
+      "matched_tokens": [
+        "bmp1"
+      ]
+    },
+    {
+      "game_class": "LOP_TKA_BMP1D",
+      "display_name_key": "$STR_BMP1D_Name",
+      "display_name": "BMP-1D",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_1d",
+      "matched_tokens": [
+        "bmp1d"
+      ]
+    },
+    {
+      "game_class": "LOP_TKA_BMP2",
+      "display_name_key": "$STR_BMP2e_Name",
+      "display_name": "BMP-2 (obr. 1980g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_2",
+      "matched_tokens": [
+        "bmp2"
+      ]
+    },
+    {
+      "game_class": "LOP_TKA_BMP2D",
+      "display_name_key": "$STR_BMP2D_Name",
+      "display_name": "BMP-2D",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_2d",
+      "matched_tokens": [
+        "bmp2d"
+      ]
+    },
+    {
+      "game_class": "LOP_TKA_BTR70",
+      "display_name_key": "$STR_RHS_BTR70_Name",
+      "display_name": "BTR-70",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "btr_70",
+      "matched_tokens": [
+        "btr70"
+      ]
+    },
+    {
+      "game_class": "LOP_TKA_T72BA",
+      "display_name_key": "$STR_T72BA_Name",
+      "display_name": "T-72B (obr. 1984g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_TKA_T72BB",
+      "display_name_key": "$STR_T72BB_Name",
+      "display_name": "T-72B (obr. 1985g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_TKA_Ural_open",
+      "display_name_key": "$STR_RHS_URAL4320OPEN_NAME",
+      "display_name": "Ural-4320 (Open)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "ural_4320",
+      "matched_tokens": [
+        "ural4320"
+      ]
+    },
+    {
+      "game_class": "LOP_TRK_BTR80",
+      "display_name_key": "$STR_RHS_BTR80_Name",
+      "display_name": "BTR-80",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "btr_80",
+      "matched_tokens": [
+        "btr80"
+      ]
+    },
+    {
+      "game_class": "LOP_UA_BMP1",
+      "display_name_key": "$STR_BMP1_Name",
+      "display_name": "BMP-1",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_1",
+      "matched_tokens": [
+        "bmp1"
+      ]
+    },
+    {
+      "game_class": "LOP_UA_BMP2",
+      "display_name_key": "$STR_BMP2e_Name",
+      "display_name": "BMP-2 (obr. 1980g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_2",
+      "matched_tokens": [
+        "bmp2"
+      ]
+    },
+    {
+      "game_class": "LOP_UA_T72BA",
+      "display_name_key": "$STR_T72BA_Name",
+      "display_name": "T-72B (obr. 1984g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_UA_T72BB",
+      "display_name_key": "$STR_T72BB_Name",
+      "display_name": "T-72B (obr. 1985g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_UA_Ural_fuel",
+      "display_name_key": "$STR_RHS_URAL4320FUEL_NAME",
+      "display_name": "Ural-4320 (Fuel)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "ural_4320",
+      "matched_tokens": [
+        "ural4320"
+      ]
+    },
+    {
+      "game_class": "LOP_UA_Ural_open",
+      "display_name_key": "$STR_RHS_URAL4320OPEN_NAME",
+      "display_name": "Ural-4320 (Open)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "ural_4320",
+      "matched_tokens": [
+        "ural4320"
+      ]
+    },
+    {
+      "game_class": "LOP_UKR_BMP1",
+      "display_name_key": "$STR_BMP1_Name",
+      "display_name": "BMP-1",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_1",
+      "matched_tokens": [
+        "bmp1"
+      ]
+    },
+    {
+      "game_class": "LOP_UKR_BMP2",
+      "display_name_key": "$STR_BMP2e_Name",
+      "display_name": "BMP-2 (obr. 1980g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_2",
+      "matched_tokens": [
+        "bmp2"
+      ]
+    },
+    {
+      "game_class": "LOP_UKR_BMP2D",
+      "display_name_key": "$STR_BMP2D_Name",
+      "display_name": "BMP-2D",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_2d",
+      "matched_tokens": [
+        "bmp2d"
+      ]
+    },
+    {
+      "game_class": "LOP_UKR_BTR70",
+      "display_name_key": "$STR_RHS_BTR70_Name",
+      "display_name": "BTR-70",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "btr_70",
+      "matched_tokens": [
+        "btr70"
+      ]
+    },
+    {
+      "game_class": "LOP_UKR_BTR80",
+      "display_name_key": "$STR_RHS_BTR80_Name",
+      "display_name": "BTR-80",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "btr_80",
+      "matched_tokens": [
+        "btr80"
+      ]
+    },
+    {
+      "game_class": "LOP_UKR_T72BA",
+      "display_name_key": "$STR_T72BA_Name",
+      "display_name": "T-72B (obr. 1984g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_UKR_T72BB",
+      "display_name_key": "$STR_T72BB_Name",
+      "display_name": "T-72B (obr. 1985g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_UKR_T72BC",
+      "display_name_key": "$STR_T72BC_Name",
+      "display_name": "T-72B (obr. 1989g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_UKR_Ural_open",
+      "display_name_key": "$STR_RHS_URAL4320OPEN_NAME",
+      "display_name": "Ural-4320 (Open)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "ural_4320",
+      "matched_tokens": [
+        "ural4320"
+      ]
+    },
+    {
+      "game_class": "LOP_UN_BMP1",
+      "display_name_key": "$STR_BMP1_Name",
+      "display_name": "BMP-1",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_1",
+      "matched_tokens": [
+        "bmp1"
+      ]
+    },
+    {
+      "game_class": "LOP_UN_BMP1D",
+      "display_name_key": "$STR_BMP1D_Name",
+      "display_name": "BMP-1D",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_1d",
+      "matched_tokens": [
+        "bmp1d"
+      ]
+    },
+    {
+      "game_class": "LOP_UN_BMP2",
+      "display_name_key": "$STR_BMP2e_Name",
+      "display_name": "BMP-2 (obr. 1980g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_2",
+      "matched_tokens": [
+        "bmp2"
+      ]
+    },
+    {
+      "game_class": "LOP_UN_BMP2D",
+      "display_name_key": "$STR_BMP2D_Name",
+      "display_name": "BMP-2D",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_2d",
+      "matched_tokens": [
+        "bmp2d"
+      ]
+    },
+    {
+      "game_class": "LOP_UN_BTR70",
+      "display_name_key": "$STR_RHS_BTR70_Name",
+      "display_name": "BTR-70",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "btr_70",
+      "matched_tokens": [
+        "btr70"
+      ]
+    },
+    {
+      "game_class": "LOP_UN_Ural_open",
+      "display_name_key": "$STR_RHS_URAL4320OPEN_NAME",
+      "display_name": "Ural-4320 (Open)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "ural_4320",
+      "matched_tokens": [
+        "ural4320"
+      ]
+    },
+    {
+      "game_class": "LOP_URAL_fuel_base",
+      "display_name_key": "$STR_RHS_URAL4320FUEL_NAME",
+      "display_name": "Ural-4320 (Fuel)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "ural_4320",
+      "matched_tokens": [
+        "ural4320"
+      ]
+    },
+    {
+      "game_class": "LOP_URAL_open_base",
+      "display_name_key": "$STR_RHS_URAL4320OPEN_NAME",
+      "display_name": "Ural-4320 (Open)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "ural_4320",
+      "matched_tokens": [
+        "ural4320"
+      ]
+    },
+    {
+      "game_class": "LOP_US_BMP1",
+      "display_name_key": "$STR_BMP1_Name",
+      "display_name": "BMP-1",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_1",
+      "matched_tokens": [
+        "bmp1"
+      ]
+    },
+    {
+      "game_class": "LOP_US_BMP1D",
+      "display_name_key": "$STR_BMP1D_Name",
+      "display_name": "BMP-1D",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_1d",
+      "matched_tokens": [
+        "bmp1d"
+      ]
+    },
+    {
+      "game_class": "LOP_US_BMP2",
+      "display_name_key": "$STR_BMP2e_Name",
+      "display_name": "BMP-2 (obr. 1980g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_2",
+      "matched_tokens": [
+        "bmp2"
+      ]
+    },
+    {
+      "game_class": "LOP_US_BMP2D",
+      "display_name_key": "$STR_BMP2D_Name",
+      "display_name": "BMP-2D",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "bmp_2d",
+      "matched_tokens": [
+        "bmp2d"
+      ]
+    },
+    {
+      "game_class": "LOP_US_BTR70",
+      "display_name_key": "$STR_RHS_BTR70_Name",
+      "display_name": "BTR-70",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "btr_70",
+      "matched_tokens": [
+        "btr70"
+      ]
+    },
+    {
+      "game_class": "LOP_US_T72BA",
+      "display_name_key": "$STR_T72BA_Name",
+      "display_name": "T-72B (obr. 1984g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_US_T72BB",
+      "display_name_key": "$STR_T72BB_Name",
+      "display_name": "T-72B (obr. 1985g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_US_T72BC",
+      "display_name_key": "$STR_T72BC_Name",
+      "display_name": "T-72B (obr. 1989g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "LOP_US_Ural_open",
+      "display_name_key": "$STR_RHS_URAL4320OPEN_NAME",
+      "display_name": "Ural-4320 (Open)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "735566597/addons/po_main.pbo > config.bin",
+      "catalogue_id": "ural_4320",
+      "matched_tokens": [
+        "ural4320"
       ]
     },
     {
