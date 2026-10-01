@@ -21,18 +21,27 @@ Relations, each sourced:
     CO, and venous return falls in proportion to circulating volume in
     haemorrhage, so CO is the immediate, dominant delivery loss.
   DO2crit = 330 * BSA                           mL O2/min
-    330 mL O2/min/m2 critical delivery (Shaddy, Schlichtig et al., Crit
-    Care Med 1983; the same paper gives 8.2 mL/kg/min).  The literature
-    range is roughly 330-600 mL/min/m2, so this is a mid-range value,
-    not a settled single number.  Below DO2crit VO2 is supply-dependent:
+    330 mL O2/min/m2 critical delivery (Shibutani et al., Crit Care Med
+    1983, PMID 6409505; the same paper gives 8.2 mL/kg/min in anaesthetised
+    man).  It is the threshold below which VO2 becomes supply-dependent
+    (definition: Schumacker & Cain 1987, PMID 3301969), and it is NOT
+    settled to one number: conscious healthy humans sit near 284 mL/min/m2
+    (Lieberman 2000, PMID 10691227) and the critically ill lower still
+    (Ronco 1993, PMID 8411504).  The often-quoted 600 mL/min/m2 is NORMAL
+    resting delivery, not a critical value, so the critical range is about
+    280-330 mL/min/m2 at rest and rises with metabolic demand.  Below
+    DO2crit VO2 is supply-dependent:
     VO2a = DO2 * ERcrit, ERcrit = VO2/DO2crit capped at the maximal
     extraction 0.75 (Guyton & Hall: mixed-venous saturation falls to
     about 25 percent at maximal extraction).
   metabolicFactor = VO2a / VO2 (oxidative fraction delivered)
-  anaerobicDeficit = VO2 - VO2a (mL O2/min).  OPEN ITEM: the lactate and
-    the non-oxidative heat this deficit produces are NOT quantified here
-    because no citable conversion is available; only the oxidative heat
-    reduction is modelled.
+  anaerobicDeficit = VO2 - VO2a (mL O2/min).  OPEN ITEM: the non-oxidative
+    heat this deficit produces is NOT quantified here.  It is derivable as
+    about 1.0 J per mL O2 from the published enthalpies of glycolysis
+    (Minakami & de Verdier 1976, PMID 7451: 71 kJ per mol lactate; and
+    123.6 kJ per mol glucose to 2 lactate over 6 mol O2).  That is about
+    5 percent of the 20.1 J/mL oxidative equivalent.  Only the oxidative
+    heat reduction is modelled here.
 
 [Hb] is a persistent state and is deliberately NOT [Hb]ref * bloodFrac.
 In acute haemorrhage red-cell mass and plasma are lost together, so the

@@ -8,8 +8,8 @@ The constants are published values and are drift-locked to their sources:
   0.003 mL O2/dL/mmHg solubility     (Guyton & Hall Ch. 40)
   CO_rest 5 L/min                    (Guyton & Hall Ch. 20)
   20.1 J/mL O2 oxycaloric equivalent (Guyton & Hall: 1 L O2 ~ 20.1 kJ)
-  DO2crit 330 mL O2/min/m2           (Shaddy, Schlichtig et al.,
-                                      Crit Care Med 1983)
+  DO2crit 330 mL O2/min/m2           (Shibutani et al., Crit Care Med
+                                      1983; PMID 6409505)
 
 The point of the model, and of these tests: in acute haemorrhage the two
 determinants of delivery fall on different clocks.  Cardiac output falls
