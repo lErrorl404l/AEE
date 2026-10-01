@@ -583,6 +583,17 @@ def build_class_mapping_report(
         mapping.class_token for mapping in load.mappings if mapping.class_token
     }
     gaps = [token for token in ground_tokens if token not in bound_tokens]
+    bound_entries = {
+        mapping.catalogue_id for mapping in load.mappings if mapping.catalogue_id
+    }
+    speed_held = 0
+    speed_unbound = 0
+    for entry in load.entries:
+        field = entry.values.get("max_speed_kmh")
+        if isinstance(field, dict) and isinstance(field.get("value"), (int, float)):
+            speed_held += 1
+            if entry.catalogue_id not in bound_entries:
+                speed_unbound += 1
 
     lines = [
         "# Vehicle class mapping gaps",
@@ -593,12 +604,15 @@ def build_class_mapping_report(
         "A class mapping links one game class to one catalogue entry with its",
         "own identity source and grade. An engine class-table or config source",
         "is a `claimed` binding, not a real-world mapping. This file lists the",
-        "bindings held and every ground token with no binding.",
+        "bindings held, every ground token with no binding, and the held max",
+        "speed values that no binding reaches.",
         "",
         f"- Ground tokens: {len(ground_tokens)}",
         f"- Ground tokens with a binding: {len(ground_tokens) - len(gaps)}",
         f"- Ground tokens without a binding: {len(gaps)}",
         f"- Class map records: {len(load.mappings)}",
+        f"- Catalogue entries holding max_speed_kmh: {speed_held}",
+        f"- Of those with no class binding: {speed_unbound}",
         "",
         "## Class map records",
         "",
