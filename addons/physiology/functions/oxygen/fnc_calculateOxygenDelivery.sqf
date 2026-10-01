@@ -35,13 +35,13 @@ Relations, each sourced:
     extraction 0.75 (Guyton & Hall: mixed-venous saturation falls to
     about 25 percent at maximal extraction).
   metabolicFactor = VO2a / VO2 (oxidative fraction delivered)
-  anaerobicDeficit = VO2 - VO2a (mL O2/min).  OPEN ITEM: the non-oxidative
-    heat this deficit produces is NOT quantified here.  It is derivable as
-    about 1.0 J per mL O2 from the published enthalpies of glycolysis
-    (Minakami & de Verdier 1976, PMID 7451: 71 kJ per mol lactate; and
-    123.6 kJ per mol glucose to 2 lactate over 6 mol O2).  That is about
-    5 percent of the 20.1 J/mL oxidative equivalent.  Only the oxidative
-    heat reduction is modelled here.
+  anaerobicDeficit = VO2 - VO2a (mL O2/min).  It closes the OPEN ITEM:
+    the thermal solver now adds the non-oxidative heat this deficit
+    produces.  The heat is DERIVED, not a published constant.  Take about
+    1.0 J per mL O2 (range 0.9-1.1): 123.6 kJ per mol glucose to 2 lactate
+    over 6 mol O2 = 134.4 L gives 0.92 kJ/L; Minakami & de Verdier 1976
+    (PMID 7451), 71 kJ per mol lactate, gives 1.06 kJ/L.  That is about
+    5 percent of the 20.1 J/mL oxidative equivalent, so it is small.
 
 [Hb] is a persistent state and is deliberately NOT [Hb]ref * bloodFrac.
 In acute haemorrhage red-cell mass and plasma are lost together, so the

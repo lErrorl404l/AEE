@@ -260,6 +260,16 @@ private _infantryCount = 0;
             _metabolicHeat = _metabolicHeat * (_ox select 6);
             private _shock = 1 - (_ox select 10);
             _target = _target + _metabolicHeat * 0.05;
+            // Non-oxidative heat (DERIVED): the anaerobic deficit still
+            // produces heat, which the oxidative fraction does not carry.
+            // Basis: glycolysis gives 123.6 kJ per mol glucose to 2 lactate
+            // over 6 mol O2 = 134.4 L, so 0.92 kJ/L; Minakami & de Verdier
+            // 1976 (PMID 7451), 71 kJ per mol lactate, gives 1.06 kJ/L.
+            // Use 1.0 J per mL O2 (range 0.9-1.1): the term is
+            // deficit[mL O2/min] * 1.0 / 60 in W.  That is about 5 percent
+            // of the 20.1 J/mL oxidative equivalent, so it is small.
+            private _extraHeat = (_ox select 7) * 1.0 / 60;
+            _target = _target + _extraHeat * 0.05;
 
             // The surface base erodes with shock: cold extremities as
             // blood moves centrally (ATLS shock physiology).
@@ -341,17 +351,29 @@ private _infantryCount = 0;
 
         // Internal generation as a surface flux.  A running engine's
         // thermostat holds the body near the coolant setpoint, so the flux it
-        // rejects is h*(T_op - Ta).  The exhaust is a local plume: its gas
-        // temperature is real (the repo's own exhaust tier table; Heywood
-        // 1988) but the wetted area fraction needs engine-bay geometry the
-        // engine does not expose, so that one factor is labelled
-        // unauthenticated rather than derived.
+        // rejects is h*(T_op - Ta).  The exhaust gas temperature is real
+        // (the repo's own exhaust tier table; Heywood 1988).
+        //
+        // No published source defines a body-area fraction at exhaust-port
+        // gas temperature.  _exhFrac is an AEE lumped calibration: the
+        // exhaust contributes about 5 percent of the rejected flux.  The
+        // 480 C value is the gas INSIDE the pipe at the port (Heywood 1988).
+        // The pipe skin downstream is cooler, so this fraction partly
+        // compensates for using a gas temperature as a surface temperature.
+        // A maintainer must read it as a calibration, not a measured area.
+        //
+        // Future option, not implemented here: model the exhaust as its own
+        // surface of area pi*D*L at a cooler skin temperature, exchanging
+        // with the body by radiation view factor and convection.  The
+        // SAE 2016-01-0280 method gives the transient exhaust-surface
+        // result; SAE 2008-01-1819 gives the conjugate plus radiation path
+        // to the underbody.  The behaviour below is unchanged.
         private _qInt = 0;
         if (_isVehicle && {isEngineOn _obj}) then {
             _engineRunTime = _engineRunTime + _dt;
             private _tOp = 90;               // thermostat-open coolant temp, C
             private _tExh = 480;             // exhaust gas temp at the port, C
-            private _exhFrac = 0.05;         // UNAUTHENTICATED area fraction
+            private _exhFrac = 0.05;         // AEE lumped calibration
             _qInt = ((1 - _exhFrac) * ((_tOp max _airTemp) - _airTemp) + _exhFrac * ((_tExh max _airTemp) - _airTemp)) * _hConv;
         } else {
             _engineRunTime = _engineRunTime * exp (-_dt / _tau);

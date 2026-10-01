@@ -10,6 +10,9 @@ The constants are published values and are drift-locked to their sources:
   20.1 J/mL O2 oxycaloric equivalent (Guyton & Hall: 1 L O2 ~ 20.1 kJ)
   DO2crit 330 mL O2/min/m2           (Shibutani et al., Crit Care Med
                                       1983; PMID 6409505)
+  non-oxidative heat ~1.0 J/mL O2    (DERIVED; Minakami & de Verdier 1976,
+                                      PMID 7451; consumed by the thermal
+                                      solver)
 
 The point of the model, and of these tests: in acute haemorrhage the two
 determinants of delivery fall on different clocks.  Cardiac output falls
@@ -82,6 +85,18 @@ def oxygen_delivery(
         "do2crit": do2crit,
         "skin_perfusion": skin_perfusion,
     }
+
+
+def non_oxidative_heat(deficit_ml_per_min):
+    """DERIVED heat from the anaerobic deficit at ~1.0 J per mL O2.
+
+    Mirrors the infantry branch of fnc_calculateObjectTemperature.sqf:
+        extraHeat_W = anaerobicDeficit[mL O2/min] * 1.0 / 60
+    No published constant is expressed per mL O2, so the value is derived
+    from the enthalpies of glycolysis (Minakami & de Verdier 1976,
+    PMID 7451) and labelled DERIVED.
+    """
+    return deficit_ml_per_min * 1.0 / 60.0
 
 
 def hb_step(hb, target, seconds, step=60.0):
@@ -274,6 +289,31 @@ class TestOneWayAndOpenItems(unittest.TestCase):
         low = oxygen_delivery(2.0, 106.0)["metabolic_factor"]
         high = oxygen_delivery(4.0, 106.0)["metabolic_factor"]
         self.assertLessEqual(low, high)
+
+
+class TestNonOxidativeHeat(unittest.TestCase):
+    """The anaerobic deficit still produces heat (DERIVED, not published)."""
+
+    def test_no_deficit_gives_no_extra_heat(self):
+        out = oxygen_delivery(BLOOD_VOL_REF, 106.0)
+        self.assertEqual(out["anaerobic_deficit"], 0.0)
+        self.assertEqual(non_oxidative_heat(out["anaerobic_deficit"]), 0.0)
+
+    def test_deficit_produces_heat(self):
+        out = oxygen_delivery(3.0, 106.0)
+        self.assertGreater(out["anaerobic_deficit"], 0.0)
+        self.assertGreater(non_oxidative_heat(out["anaerobic_deficit"]), 0.0)
+
+    def test_heat_is_about_five_percent_of_the_oxidative_equivalent(self):
+        # ~1.0 J/mL of deficit against the 20.1 J/mL oxidative equivalent.
+        self.assertAlmostEqual(1.0 / OXYCALORIC, 0.05, places=2)
+
+    def test_solver_consumes_the_anaerobic_deficit(self):
+        solver = source(
+            "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf"
+        )
+        self.assertIn("(_ox select 7) * 1.0 / 60", solver)
+        self.assertIn("DERIVED", solver)
 
 
 if __name__ == "__main__":
