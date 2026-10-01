@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import copy
 import json
+import re
 import sys
 import tempfile
 import unittest
@@ -22,11 +23,20 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO))
 
+from tools.validation import gen_physics_config as gen  # noqa: E402
 from tools.validation import validate_physics_config as v  # noqa: E402
 
 DATA = REPO / "data" / "physics"
 VEHICLE = REPO / "data" / "vehicle"
 BINDINGS = DATA / "config_bindings.json"
+GENERATED = REPO / "addons" / "physics" / "generated" / "CfgVehicles.hpp"
+
+# One emitted override block, tied to its class and value.
+BLOCK_RE = re.compile(r"class (\S+) \{\n        maxSpeed = ([0-9.]+);")
+
+# Keys thermal and optics already own. This addon loads last, so emitting any
+# of them would silently win. The generator must never write one.
+FORBIDDEN_KEYS = ("htMin", "htMax", "afMax", "mfMax", "mFact", "tBody")
 
 
 def _run_with(records: list[object]) -> int:
@@ -157,6 +167,64 @@ class PhysicsConfigTest(unittest.TestCase):
             path.write_text(json.dumps({"game_class": "x"}), encoding="utf-8")
             with self.assertRaises(ValueError):
                 v.load_bindings(path)
+
+
+class PhysicsConfigGeneratorTest(unittest.TestCase):
+    """The generator emits every corpus binding, and only those bindings."""
+
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.records = v.load_bindings(BINDINGS)
+        cls.rendered = gen.render(gen.build(BINDINGS))
+
+    def test_the_committed_header_is_fresh(self) -> None:
+        self.assertEqual(gen.check_config(BINDINGS, GENERATED), 0)
+
+    def test_the_committed_header_is_fresh_from_the_cli(self) -> None:
+        self.assertEqual(gen.main(["--check"]), 0)
+
+    def test_every_binding_appears_with_its_value(self) -> None:
+        found = dict(BLOCK_RE.findall(self.rendered))
+        expected = {
+            str(record["game_class"]): gen._render_value(record["value"])
+            for record in self.records
+        }
+        self.assertEqual(found, expected)
+
+    def test_only_maxspeed_is_emitted(self) -> None:
+        assignments = re.findall(r"^\s+(\w+) = ", self.rendered, re.M)
+        self.assertEqual(set(assignments), {"maxSpeed"})
+        self.assertEqual(set(assignments) & set(FORBIDDEN_KEYS), set())
+
+    def test_a_stale_header_fails_the_check(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            stale = Path(tmp) / "CfgVehicles.hpp"
+            stale.write_text("class CfgVehicles {};\n", encoding="utf-8")
+            self.assertEqual(gen.check_config(BINDINGS, stale), 1)
+
+    def test_a_missing_header_fails_the_check(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            self.assertEqual(
+                gen.check_config(BINDINGS, Path(tmp) / "CfgVehicles.hpp"), 1
+            )
+
+    def test_a_foreign_key_is_rejected(self) -> None:
+        records = copy.deepcopy(self.records)
+        records[0]["key"] = "mass"
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / v.BINDINGS_NAME
+            path.write_text(json.dumps(records), encoding="utf-8")
+            with self.assertRaises(ValueError):
+                gen.build(path)
+
+    def test_a_foreign_config_class_is_rejected(self) -> None:
+        records = copy.deepcopy(self.records)
+        records[0]["config_class"] = "CfgWeapons"
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / v.BINDINGS_NAME
+            path.write_text(json.dumps(records), encoding="utf-8")
+            with self.assertRaises(ValueError):
+                gen.build(path)
 
 
 if __name__ == "__main__":
