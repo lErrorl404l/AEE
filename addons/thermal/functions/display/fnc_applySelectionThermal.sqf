@@ -86,6 +86,46 @@ if (_mode == "EXIT") then {
 } else {
     if (isNull _obj || {!hasInterface}) exitWith { 0 };
 
+    // ─── Repaint gate, resolved before the per-selection setup ──────────────
+    // The gate needs only the object and the mode, so it is computed here,
+    // ahead of everything below.  The setup (selectionNames, getObjectTextures,
+    // getObjectMaterials, boundingBoxReal, the atmospheric-transmission kernel
+    // and the loadout walk) used to run on EVERY 10 Hz call even when the solve
+    // was not due: the gate sat after it, so only the solve and the paint were
+    // skipped.  The counter dump put applyBuildingThermal at 4 ms/call
+    // (40 ms/s) while the vehicle-heat model read 0 ms and the per-call solve
+    // measured sub-millisecond, which places the cost in that repeated setup.
+    // A not-due call now returns before it.  No physics moves: the solve path,
+    // the gate keys and the stamp cadence are unchanged, and the first due call
+    // still saves the originals before it paints.
+    //
+    // The gate is two things, and neither changes the image:
+    //   Cadence.  Surface temperatures run on time constants of 600 s and
+    //   longer, so the 10 Hz per-frame repaint is wasted.  The solve is an
+    //   elapsed-time relaxation, so evaluating it at the repaint cadence
+    //   instead of 10 Hz is physics-neutral.
+    //   Change detection.  The colour is quantised to 32 levels, so a
+    //   selection whose band has not moved cannot look different.
+    //
+    // Impulse callers pass mode "FORCE" (muzzle flash, detonation) so an
+    // event is never held for the cadence.
+    private _objKey = str _obj;
+    private _gate = missionNamespace getVariable [QGVAR(paintGate), -1];
+    if (_gate isEqualType 0) then {
+        _gate = createHashMap;
+        missionNamespace setVariable [QGVAR(paintGate), _gate];
+    };
+    private _bands = missionNamespace getVariable [QGVAR(paintBands), -1];
+    if (_bands isEqualType 0) then {
+        _bands = createHashMap;
+        missionNamespace setVariable [QGVAR(paintBands), _bands];
+    };
+    private _lastPaint = _gate getOrDefault [_objKey, 0];
+    private _interval = 1 / (missionNamespace getVariable [QGVAR(repaintHz), 4]);
+    private _forced = (_mode == "FORCE");
+    private _due = _forced || {(diag_tickTime - _lastPaint) >= _interval};
+    if (!_due) exitWith { 0 };
+
     // The heat paint is a FLIR look, so it belongs to thermal vision alone.
     // This function is the single choke point for the paint and it had no
     // vision gate at all.  Two callers reach it in every vision mode: the
@@ -223,51 +263,6 @@ if (_mode == "EXIT") then {
     private _vSpeedObj = abs speed _obj;
     private _oxObj = [];
 
-    // ─── Repaint gate ────────────────────────────────────────────────────────
-    // setObjectTexture re-uploads a procedural texture and invalidates the
-    // object's render state, so the engine charge lands on the render thread
-    // AFTER any SQF timer stops.  The whole physics scan measures 11 to 14 us
-    // and a selection 0 to 2 us, so the solve is not the cost: 31 selections
-    // repainted every 0.1 s is 310 texture uploads per second, and that is
-    // what scales with what is in front of the operator.
-    //
-    // Two gates, and neither changes the image:
-    //   Cadence.  Surface temperatures run on time constants of 600 s and
-    //   longer, so the 10 Hz per-frame repaint is wasted.  The physics below
-    //   still runs every pass, so the AGC histogram and every thermal
-    //   coupling keep the full rate; only the upload is deferred.
-    //   Change detection.  The colour is quantised to 32 levels, so a
-    //   selection whose band has not moved cannot look different.
-    //
-    // Impulse callers pass mode "FORCE" (muzzle flash, detonation) so an
-    // event is never held for the cadence.
-    private _objKey = str _obj;
-    private _gate = missionNamespace getVariable [QGVAR(paintGate), -1];
-    if (_gate isEqualType 0) then {
-        _gate = createHashMap;
-        missionNamespace setVariable [QGVAR(paintGate), _gate];
-    };
-    private _bands = missionNamespace getVariable [QGVAR(paintBands), -1];
-    if (_bands isEqualType 0) then {
-        _bands = createHashMap;
-        missionNamespace setVariable [QGVAR(paintBands), _bands];
-    };
-    private _lastPaint = _gate getOrDefault [_objKey, 0];
-    private _interval = 1 / (missionNamespace getVariable [QGVAR(repaintHz), 4]);
-    private _forced = (_mode == "FORCE");
-    private _due = _forced || {(diag_tickTime - _lastPaint) >= _interval};
-
-    // GUARD (the dominant thermal cost).  The _due gate below only ever gated
-    // the setObjectTexture, so the whole per-selection SOLVE above it ran on
-    // EVERY 10 Hz tick: calculateMRT, calculateAtmosphericTransmission,
-    // solveTwoNodeSelection twice, getSelectionMaterials, getMaterialThermal,
-    // and calculateBandRadiance three times.  bandRadiance alone logged 490
-    // calls/s in the operator's RPT while the paint was throttled to 4 Hz,
-    // which proves the solve was never throttled.  That solve is an
-    // ELAPSED-TIME relaxation, so it is call-count invariant: evaluating it at
-    // the repaint cadence instead of 10 Hz changes nothing physical, and a
-    // not-due call had nothing to render in the first place.  Cost drops 60%.
-    if (!_due) exitWith { 0 };
     private _uploaded = 0;
 
     {
