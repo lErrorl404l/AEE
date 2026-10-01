@@ -1,0 +1,76 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-3 capture. Every value is grade claimed: the validator admits a tier-5 compilation at grade claimed only, and the source note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "oshkosh_mtvr_mk23",
+      "canonical_name": "Oshkosh MTVR (Mk23)",
+      "maker": "Oshkosh",
+      "model": "Oshkosh MTVR",
+      "variant": "Mk23",
+      "variant_id": "oshkosh_mtvr_mk23",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "oshkosh mtvr (mk23)",
+        "oshkosh mtvr",
+        "mtvr"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 13200,
+          "unit": "kg",
+          "source": "wikipedia_mtvr",
+          "locator": "Infobox (MK23 standard cargo truck), Mass row: 13,200 kg (29,100 lbs) (curb w/fuel)",
+          "state": "curb weight with fuel; gross vehicle weight not published",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 8000,
+          "unit": "mm",
+          "source": "wikipedia_mtvr",
+          "locator": "Infobox, Length row: 8 m (314.9 in)",
+          "state": "value as published",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2490,
+          "unit": "mm",
+          "source": "wikipedia_mtvr",
+          "locator": "Infobox, Width row: 2.49 m (98 in)",
+          "state": "value as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 3185,
+          "unit": "mm",
+          "source": "wikipedia_mtvr",
+          "locator": "Infobox, Height row: 3.185 m (125.4 in) (cab; reducible for transport)",
+          "state": "cab height; the cab folds down to reduce height for transport",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 105,
+          "unit": "km/h",
+          "source": "wikipedia_mtvr",
+          "locator": "Infobox, Maximum speed row: 105 km/h (65 mph)",
+          "state": "value as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Caterpillar C-12 ADEM III, 11.9 L inline-6 water-cooled diesel, 425 hp at 1,800 rpm",
+          "unit": "text",
+          "source": "wikipedia_mtvr",
+          "locator": "Infobox, Engine row: Caterpillar C-12 ADEM III, 11.9-litre 6-cylinder inline water-cooled diesel, 425 hp @ 1800 rpm",
+          "state": "value as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

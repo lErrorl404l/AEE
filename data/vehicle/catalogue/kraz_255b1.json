@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-3 capture. Every value is grade claimed: the validator admits a tier-5 compilation at grade claimed only, and the source note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "kraz_255b1",
+      "canonical_name": "KrAZ-255B1",
+      "maker": "KrAZ",
+      "model": "KrAZ-255B1",
+      "variant": "base",
+      "variant_id": "kraz_255b1",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "modern",
+      "aliases": [
+        "kraz-255b1"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 11950,
+          "unit": "kg",
+          "source": "wikipedia_kraz_255",
+          "locator": "Infobox, Curb weight row: 11,950 kg (26,350 lb)",
+          "state": "curb weight as published (unladen); gross weight not published",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 8645,
+          "unit": "mm",
+          "source": "wikipedia_kraz_255",
+          "locator": "Infobox, Length row: 8,645 mm (28 ft 4.4 in)",
+          "state": "value as published",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2750,
+          "unit": "mm",
+          "source": "wikipedia_kraz_255",
+          "locator": "Infobox, Width row: 2,750 mm (9 ft 0 in)",
+          "state": "value as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2940,
+          "unit": "mm",
+          "source": "wikipedia_kraz_255",
+          "locator": "Infobox, Height row: 2,940 mm (9 ft 8 in)",
+          "state": "value as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 71,
+          "unit": "km/h",
+          "source": "wikipedia_kraz_255",
+          "locator": "Technical characteristics, Top speed: 71 km/h (44 mph)",
+          "state": "value as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "YaMZ-238 V8 diesel, 14.86 L, 240 PS (180 kW)",
+          "unit": "text",
+          "source": "wikipedia_kraz_255",
+          "locator": "Infobox, Engine row: 14.9L YaMZ-238 V8 diesel; Technical characteristics, Power: 240 PS /2100 rpm",
+          "state": "value as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

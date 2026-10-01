@@ -2515,6 +2515,286 @@
       "game_class": "rhsusf_rg33_wd",
       "catalogue_id": "bae_systems_rg_33_4x4",
       "real_name": "BAE Systems RG-33 (4x4)"
+    },
+    {
+      "game_class": "rhsgref_BRDM2",
+      "catalogue_id": "brdm_2",
+      "real_name": "BRDM-2"
+    },
+    {
+      "game_class": "rhsgref_BRDM2UM",
+      "catalogue_id": "brdm_2",
+      "real_name": "BRDM-2"
+    },
+    {
+      "game_class": "rhsgref_BRDM2UM_b",
+      "catalogue_id": "brdm_2",
+      "real_name": "BRDM-2"
+    },
+    {
+      "game_class": "rhsgref_BRDM2UM_ins",
+      "catalogue_id": "brdm_2",
+      "real_name": "BRDM-2"
+    },
+    {
+      "game_class": "rhsgref_BRDM2UM_ins_g",
+      "catalogue_id": "brdm_2",
+      "real_name": "BRDM-2"
+    },
+    {
+      "game_class": "rhsgref_BRDM2UM_msv",
+      "catalogue_id": "brdm_2",
+      "real_name": "BRDM-2"
+    },
+    {
+      "game_class": "rhsgref_BRDM2UM_vdv",
+      "catalogue_id": "brdm_2",
+      "real_name": "BRDM-2"
+    },
+    {
+      "game_class": "rhsgref_BRDM2UM_vmf",
+      "catalogue_id": "brdm_2",
+      "real_name": "BRDM-2"
+    },
+    {
+      "game_class": "rhsgref_BRDM2_ATGM",
+      "catalogue_id": "brdm_2",
+      "real_name": "BRDM-2"
+    },
+    {
+      "game_class": "rhsgref_BRDM2_ATGM_b",
+      "catalogue_id": "brdm_2",
+      "real_name": "BRDM-2"
+    },
+    {
+      "game_class": "rhsgref_BRDM2_ATGM_ins",
+      "catalogue_id": "brdm_2",
+      "real_name": "BRDM-2"
+    },
+    {
+      "game_class": "rhsgref_BRDM2_ATGM_ins_g",
+      "catalogue_id": "brdm_2",
+      "real_name": "BRDM-2"
+    },
+    {
+      "game_class": "rhsgref_BRDM2_ATGM_msv",
+      "catalogue_id": "brdm_2",
+      "real_name": "BRDM-2"
+    },
+    {
+      "game_class": "rhsgref_BRDM2_ATGM_vdv",
+      "catalogue_id": "brdm_2",
+      "real_name": "BRDM-2"
+    },
+    {
+      "game_class": "rhsgref_BRDM2_ATGM_vmf",
+      "catalogue_id": "brdm_2",
+      "real_name": "BRDM-2"
+    },
+    {
+      "game_class": "rhsgref_BRDM2_HQ",
+      "catalogue_id": "brdm_2",
+      "real_name": "BRDM-2"
+    },
+    {
+      "game_class": "rhsgref_BRDM2_HQ_b",
+      "catalogue_id": "brdm_2",
+      "real_name": "BRDM-2"
+    },
+    {
+      "game_class": "rhsgref_BRDM2_HQ_ins",
+      "catalogue_id": "brdm_2",
+      "real_name": "BRDM-2"
+    },
+    {
+      "game_class": "rhsgref_BRDM2_HQ_ins_g",
+      "catalogue_id": "brdm_2",
+      "real_name": "BRDM-2"
+    },
+    {
+      "game_class": "rhsgref_BRDM2_HQ_msv",
+      "catalogue_id": "brdm_2",
+      "real_name": "BRDM-2"
+    },
+    {
+      "game_class": "rhsgref_BRDM2_HQ_vdv",
+      "catalogue_id": "brdm_2",
+      "real_name": "BRDM-2"
+    },
+    {
+      "game_class": "rhsgref_BRDM2_HQ_vmf",
+      "catalogue_id": "brdm_2",
+      "real_name": "BRDM-2"
+    },
+    {
+      "game_class": "rhsgref_BRDM2_b",
+      "catalogue_id": "brdm_2",
+      "real_name": "BRDM-2"
+    },
+    {
+      "game_class": "rhsgref_BRDM2_ins",
+      "catalogue_id": "brdm_2",
+      "real_name": "BRDM-2"
+    },
+    {
+      "game_class": "rhsgref_BRDM2_ins_g",
+      "catalogue_id": "brdm_2",
+      "real_name": "BRDM-2"
+    },
+    {
+      "game_class": "rhsgref_BRDM2_msv",
+      "catalogue_id": "brdm_2",
+      "real_name": "BRDM-2"
+    },
+    {
+      "game_class": "rhsgref_BRDM2_vdv",
+      "catalogue_id": "brdm_2",
+      "real_name": "BRDM-2"
+    },
+    {
+      "game_class": "rhsgref_BRDM2_vmf",
+      "catalogue_id": "brdm_2",
+      "real_name": "BRDM-2"
+    },
+    {
+      "game_class": "rhsusf_stryker_m1127_base",
+      "catalogue_id": "stryker_m1126_icv",
+      "real_name": "M1126 Stryker ICV"
+    },
+    {
+      "game_class": "rhsusf_stryker_m1127_m2_base",
+      "catalogue_id": "stryker_m1126_icv",
+      "real_name": "M1126 Stryker ICV"
+    },
+    {
+      "game_class": "rhsusf_stryker_m1127_m2_d",
+      "catalogue_id": "stryker_m1126_icv",
+      "real_name": "M1126 Stryker ICV"
+    },
+    {
+      "game_class": "rhsusf_stryker_m1127_m2_wd",
+      "catalogue_id": "stryker_m1126_icv",
+      "real_name": "M1126 Stryker ICV"
+    },
+    {
+      "game_class": "rhsusf_stryker_m1132_m2_base",
+      "catalogue_id": "stryker_m1126_icv",
+      "real_name": "M1126 Stryker ICV"
+    },
+    {
+      "game_class": "rhsusf_stryker_m1132_m2_d",
+      "catalogue_id": "stryker_m1126_icv",
+      "real_name": "M1126 Stryker ICV"
+    },
+    {
+      "game_class": "rhsusf_stryker_m1132_m2_np_base",
+      "catalogue_id": "stryker_m1126_icv",
+      "real_name": "M1126 Stryker ICV"
+    },
+    {
+      "game_class": "rhsusf_stryker_m1132_m2_np_d",
+      "catalogue_id": "stryker_m1126_icv",
+      "real_name": "M1126 Stryker ICV"
+    },
+    {
+      "game_class": "rhsusf_stryker_m1132_m2_np_wd",
+      "catalogue_id": "stryker_m1126_icv",
+      "real_name": "M1126 Stryker ICV"
+    },
+    {
+      "game_class": "rhsusf_stryker_m1132_m2_wd",
+      "catalogue_id": "stryker_m1126_icv",
+      "real_name": "M1126 Stryker ICV"
+    },
+    {
+      "game_class": "rhsusf_stryker_m1134_base",
+      "catalogue_id": "stryker_m1126_icv",
+      "real_name": "M1126 Stryker ICV"
+    },
+    {
+      "game_class": "rhsusf_stryker_m1134_d",
+      "catalogue_id": "stryker_m1126_icv",
+      "real_name": "M1126 Stryker ICV"
+    },
+    {
+      "game_class": "rhsusf_stryker_m1134_wd",
+      "catalogue_id": "stryker_m1126_icv",
+      "real_name": "M1126 Stryker ICV"
+    },
+    {
+      "game_class": "rhs_Ob_681_2",
+      "catalogue_id": "bmp_2",
+      "real_name": "BMP-2"
+    },
+    {
+      "game_class": "rhs_t80uk",
+      "catalogue_id": "t_80u",
+      "real_name": "T-80U"
+    },
+    {
+      "game_class": "rhsgref_cdf_b_t80uk_tv",
+      "catalogue_id": "t_80u",
+      "real_name": "T-80U"
+    },
+    {
+      "game_class": "rhsgref_cdf_t80uk_tv",
+      "catalogue_id": "t_80u",
+      "real_name": "T-80U"
+    },
+    {
+      "game_class": "rhs_t90_tv",
+      "catalogue_id": "t_90",
+      "real_name": "T-90"
+    },
+    {
+      "game_class": "rhs_t90a_tv",
+      "catalogue_id": "t_90",
+      "real_name": "T-90"
+    },
+    {
+      "game_class": "RHS_M6",
+      "catalogue_id": "m2a2_bradley",
+      "real_name": "M2A2 Bradley"
+    },
+    {
+      "game_class": "RHS_M6_wd",
+      "catalogue_id": "m2a2_bradley",
+      "real_name": "M2A2 Bradley"
+    },
+    {
+      "game_class": "rhs_2s1_at_tv",
+      "catalogue_id": "2s1_gvozdika",
+      "real_name": "2S1 Gvozdika"
+    },
+    {
+      "game_class": "rhs_2s1_at_vmf",
+      "catalogue_id": "2s1_gvozdika",
+      "real_name": "2S1 Gvozdika"
+    },
+    {
+      "game_class": "rhs_2s3_at_tv",
+      "catalogue_id": "2s1_gvozdika",
+      "real_name": "2S1 Gvozdika"
+    },
+    {
+      "game_class": "rhsgref_cdf_2s1_at",
+      "catalogue_id": "2s1_gvozdika",
+      "real_name": "2S1 Gvozdika"
+    },
+    {
+      "game_class": "rhsgref_cdf_b_2s1_at",
+      "catalogue_id": "2s1_gvozdika",
+      "real_name": "2S1 Gvozdika"
+    },
+    {
+      "game_class": "rhsgref_ins_2s1_at",
+      "catalogue_id": "2s1_gvozdika",
+      "real_name": "2S1 Gvozdika"
+    },
+    {
+      "game_class": "rhsgref_ins_g_2s1_at",
+      "catalogue_id": "2s1_gvozdika",
+      "real_name": "2S1 Gvozdika"
     }
   ]
 }

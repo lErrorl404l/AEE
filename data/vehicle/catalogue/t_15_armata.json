@@ -1,0 +1,58 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-3 capture. Every value is grade claimed: the validator admits a tier-5 compilation at grade claimed only, and the source note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "t_15_armata",
+      "canonical_name": "T-15 Armata",
+      "maker": "Uralvagonzavod",
+      "model": "T-15 Armata",
+      "variant": "base",
+      "variant_id": "t_15_armata",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Russia",
+      "era": "modern",
+      "aliases": [
+        "t-15 armata"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 50000,
+          "unit": "kg",
+          "source": "wikipedia_t15_armata",
+          "locator": "Infobox, Mass row: 50 tons; conflict: body text states combat weight about 48 tons",
+          "state": "conflict: infobox 50 t vs body text about 48 t; infobox value used",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 9650,
+          "unit": "mm",
+          "source": "wikipedia_t15_armata",
+          "locator": "Infobox, Length row: 9.65 m (31.7 ft)",
+          "state": "value as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 70,
+          "unit": "km/h",
+          "source": "wikipedia_t15_armata",
+          "locator": "Infobox, Maximum speed row: 65-70 km/h (40-43 mph) (road); upper bound used",
+          "state": "source states a 65-70 km/h range; upper bound used",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "12N360 multifuel diesel, 1,500 hp",
+          "unit": "text",
+          "source": "wikipedia_t15_armata",
+          "locator": "Infobox, Engine row: 12N360 multifuel diesel 1,500 hp",
+          "state": "value as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

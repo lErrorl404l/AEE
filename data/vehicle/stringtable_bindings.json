@@ -399,6 +399,24 @@
       "matched_tokens": []
     },
     {
+      "game_class": "RHS_M6",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "m2a2_bradley",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "RHS_M6_wd",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "m2a2_bradley",
+      "matched_tokens": []
+    },
+    {
       "game_class": "RHS_UAZ_Base",
       "display_name_key": "$STR_RHS_UAZ469_NAME",
       "display_name": "UAZ-3151",
@@ -784,6 +802,33 @@
       ]
     },
     {
+      "game_class": "rhs_2s1_at_tv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "2s1_gvozdika",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_2s1_at_vmf",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "2s1_gvozdika",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_2s3_at_tv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "2s1_gvozdika",
+      "matched_tokens": []
+    },
+    {
       "game_class": "rhs_2s3_tv",
       "display_name_key": "",
       "display_name": "",
@@ -826,6 +871,15 @@
       "display_name_source": "data/vehicle/fleet/class_binding_map.json",
       "config_locator": "",
       "catalogue_id": "9k79_tochka_9p129_1m_tel",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_Ob_681_2",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "bmp_2",
       "matched_tokens": []
     },
     {
@@ -2588,6 +2642,15 @@
       ]
     },
     {
+      "game_class": "rhs_t80uk",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "t_80u",
+      "matched_tokens": []
+    },
+    {
       "game_class": "rhs_t80um",
       "display_name_key": "$STR_RHS_T80UM",
       "display_name": "T-80UM",
@@ -2597,6 +2660,15 @@
       "matched_tokens": [
         "t80um"
       ]
+    },
+    {
+      "game_class": "rhs_t90_tv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "t_90",
+      "matched_tokens": []
     },
     {
       "game_class": "rhs_t90a_tv",
@@ -3119,6 +3191,276 @@
       "matched_tokens": []
     },
     {
+      "game_class": "rhsgref_BRDM2",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "brdm_2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_BRDM2UM",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "brdm_2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_BRDM2UM_b",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "brdm_2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_BRDM2UM_ins",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "brdm_2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_BRDM2UM_ins_g",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "brdm_2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_BRDM2UM_msv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "brdm_2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_BRDM2UM_vdv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "brdm_2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_BRDM2UM_vmf",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "brdm_2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_BRDM2_ATGM",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "brdm_2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_BRDM2_ATGM_b",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "brdm_2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_BRDM2_ATGM_ins",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "brdm_2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_BRDM2_ATGM_ins_g",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "brdm_2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_BRDM2_ATGM_msv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "brdm_2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_BRDM2_ATGM_vdv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "brdm_2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_BRDM2_ATGM_vmf",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "brdm_2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_BRDM2_HQ",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "brdm_2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_BRDM2_HQ_b",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "brdm_2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_BRDM2_HQ_ins",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "brdm_2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_BRDM2_HQ_ins_g",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "brdm_2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_BRDM2_HQ_msv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "brdm_2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_BRDM2_HQ_vdv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "brdm_2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_BRDM2_HQ_vmf",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "brdm_2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_BRDM2_b",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "brdm_2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_BRDM2_ins",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "brdm_2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_BRDM2_ins_g",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "brdm_2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_BRDM2_msv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "brdm_2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_BRDM2_vdv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "brdm_2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_BRDM2_vmf",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "brdm_2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_cdf_2s1_at",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "2s1_gvozdika",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_cdf_b_2s1_at",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "2s1_gvozdika",
+      "matched_tokens": []
+    },
+    {
       "game_class": "rhsgref_cdf_b_bmd1",
       "display_name_key": "$STR_BMD1_Name",
       "display_name": "BMD-1",
@@ -3443,6 +3785,15 @@
       "matched_tokens": [
         "t80u"
       ]
+    },
+    {
+      "game_class": "rhsgref_cdf_b_t80uk_tv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "t_80u",
+      "matched_tokens": []
     },
     {
       "game_class": "rhsgref_cdf_b_ural",
@@ -3835,6 +4186,15 @@
       ]
     },
     {
+      "game_class": "rhsgref_cdf_t80uk_tv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "t_80u",
+      "matched_tokens": []
+    },
+    {
       "game_class": "rhsgref_cdf_ural",
       "display_name_key": "$STR_RHS_URAL4320_NAME",
       "display_name": "Ural-4320",
@@ -3975,6 +4335,15 @@
       "matched_tokens": []
     },
     {
+      "game_class": "rhsgref_ins_2s1_at",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "2s1_gvozdika",
+      "matched_tokens": []
+    },
+    {
       "game_class": "rhsgref_ins_BM21",
       "display_name_key": "",
       "display_name": "",
@@ -4103,6 +4472,15 @@
       "matched_tokens": [
         "btr70"
       ]
+    },
+    {
+      "game_class": "rhsgref_ins_g_2s1_at",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "2s1_gvozdika",
+      "matched_tokens": []
     },
     {
       "game_class": "rhsgref_ins_g_BM21",
@@ -8171,6 +8549,123 @@
       "display_name_source": "data/vehicle/fleet/class_binding_map.json",
       "config_locator": "",
       "catalogue_id": "bae_systems_rg_33_4x4",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_stryker_m1127_base",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "stryker_m1126_icv",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_stryker_m1127_m2_base",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "stryker_m1126_icv",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_stryker_m1127_m2_d",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "stryker_m1126_icv",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_stryker_m1127_m2_wd",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "stryker_m1126_icv",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_stryker_m1132_m2_base",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "stryker_m1126_icv",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_stryker_m1132_m2_d",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "stryker_m1126_icv",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_stryker_m1132_m2_np_base",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "stryker_m1126_icv",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_stryker_m1132_m2_np_d",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "stryker_m1126_icv",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_stryker_m1132_m2_np_wd",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "stryker_m1126_icv",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_stryker_m1132_m2_wd",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "stryker_m1126_icv",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_stryker_m1134_base",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "stryker_m1126_icv",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_stryker_m1134_d",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "stryker_m1126_icv",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_stryker_m1134_wd",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "stryker_m1126_icv",
       "matched_tokens": []
     }
   ]

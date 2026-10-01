@@ -1,0 +1,51 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-3 capture. Every value is grade claimed: the validator admits a tier-5 compilation at grade claimed only, and the source note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "polaris_mrzr_4",
+      "canonical_name": "Polaris MRZR 4",
+      "maker": "Polaris",
+      "model": "Polaris MRZR 4",
+      "variant": "base",
+      "variant_id": "polaris_mrzr_4",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "polaris mrzr 4",
+        "mrzr 4"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "height_mm": {
+          "value": 1524,
+          "unit": "mm",
+          "source": "army_guide_mrzr_4",
+          "locator": "Specifications bullet: 60 in / 152.4 cm vehicle height with tool-less collapsing roll-cage",
+          "state": "height with the roll-cage collapsed for air transport; the operating height is taller and is not published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Polaris ProStar 900, 875 cc twin-cylinder DOHC petrol, 88 hp",
+          "unit": "text",
+          "source": "utv_guide_mrzr_4",
+          "locator": "ProStar 900 Engine section: 875cc ProStar 900 engine rated at 88 horsepower; Army Guide: 88 hp 875 cc Polaris Prostar engine",
+          "state": "value as published",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 88,
+          "unit": "hp",
+          "source": "utv_guide_mrzr_4",
+          "locator": "ProStar 900 Engine section: 875cc ProStar 900 engine rated at 88 horsepower; Army Guide: 88 hp 875 cc Polaris Prostar engine",
+          "state": "maximum rating as published, no net basis; source tier-5 compilation",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}
