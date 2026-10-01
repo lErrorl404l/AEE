@@ -1,0 +1,148 @@
+{
+  "schema": "aee.vehicle.stringtable_bindings/1",
+  "bindings": [
+    {
+      "game_class": "B_G_Offroad_01_AT_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Offroad_01_AT_base_F0",
+      "display_name": "Offroad (AT)",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/soft_f.pbo > Offroad_01\\config.bin",
+      "catalogue_id": "toyota_land_cruiser_70",
+      "matched_tokens": [
+        "offroad"
+      ]
+    },
+    {
+      "game_class": "B_MBT_01_mlrs_base_F",
+      "display_name_key": "$STR_A3_CfgVehicles_B_MBT_01_MLRS0",
+      "display_name": "M5 Sandstorm MLRS",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/armor_f_gamma/a3/armor_f_gamma/MBT_01/config.cpp",
+      "catalogue_id": "astros_ii",
+      "matched_tokens": [
+        "mlrs"
+      ]
+    },
+    {
+      "game_class": "C_Hatchback_01_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Car_Base0",
+      "display_name": "Hatchback",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/soft_f_gamma.pbo > Hatchback_01\\config.bin",
+      "catalogue_id": "honda_civic_6gen_hatchback",
+      "matched_tokens": [
+        "hatchback"
+      ]
+    },
+    {
+      "game_class": "C_Hatchback_01_sport_F",
+      "display_name_key": "$STR_A3_CfgVehicles_C_car_sport0",
+      "display_name": "Hatchback (Sport)",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/soft_f_gamma.pbo > Hatchback_01\\config.bin",
+      "catalogue_id": "honda_civic_6gen_hatchback",
+      "matched_tokens": [
+        "hatchback"
+      ]
+    },
+    {
+      "game_class": "C_Offroad_01_repair_F",
+      "display_name_key": "$STR_A3_CfgVehicles_C_Offroad_01_repair_F0",
+      "display_name": "Offroad (Services)",
+      "display_name_source": "Addons/language_f_bootcamp/a3/language_f_bootcamp/stringtable.xml",
+      "config_locator": "Addons/soft_f.pbo > Offroad_01\\config.bin",
+      "catalogue_id": "toyota_land_cruiser_70",
+      "matched_tokens": [
+        "offroad"
+      ]
+    },
+    {
+      "game_class": "Hatchback_01_base_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Car_Base0",
+      "display_name": "Hatchback",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/soft_f_gamma.pbo > Hatchback_01\\config.bin",
+      "catalogue_id": "honda_civic_6gen_hatchback",
+      "matched_tokens": [
+        "hatchback"
+      ]
+    },
+    {
+      "game_class": "I_G_Offroad_01_AT_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Offroad_01_AT_base_F0",
+      "display_name": "Offroad (AT)",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/soft_f.pbo > Offroad_01\\config.bin",
+      "catalogue_id": "toyota_land_cruiser_70",
+      "matched_tokens": [
+        "offroad"
+      ]
+    },
+    {
+      "game_class": "MBT_01_mlrs_base_F",
+      "display_name_key": "$STR_A3_CfgVehicles_B_MBT_01_MLRS0",
+      "display_name": "M5 Sandstorm MLRS",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/armor_f_gamma/a3/armor_f_gamma/MBT_01/config.cpp",
+      "catalogue_id": "astros_ii",
+      "matched_tokens": [
+        "mlrs"
+      ]
+    },
+    {
+      "game_class": "O_G_Offroad_01_AT_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Offroad_01_AT_base_F0",
+      "display_name": "Offroad (AT)",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/soft_f.pbo > Offroad_01\\config.bin",
+      "catalogue_id": "toyota_land_cruiser_70",
+      "matched_tokens": [
+        "offroad"
+      ]
+    },
+    {
+      "game_class": "Offroad_01_AT_base_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Offroad_01_AT_base_F0",
+      "display_name": "Offroad (AT)",
+      "display_name_source": "Addons/language_f_gamma/a3/language_f_gamma/stringtable.xml",
+      "config_locator": "Addons/soft_f.pbo > Offroad_01\\config.bin",
+      "catalogue_id": "toyota_land_cruiser_70",
+      "matched_tokens": [
+        "offroad"
+      ]
+    },
+    {
+      "game_class": "Offroad_01_base_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Offroad_Base0",
+      "display_name": "Offroad",
+      "display_name_source": "Addons/language_f/a3/language_f/stringtable.xml",
+      "config_locator": "Addons/soft_f.pbo > Offroad_01\\config.bin",
+      "catalogue_id": "toyota_land_cruiser_70",
+      "matched_tokens": [
+        "offroad"
+      ]
+    },
+    {
+      "game_class": "Offroad_01_repair_base_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Offroad_01_repair_base_F0",
+      "display_name": "Offroad (Repair)",
+      "display_name_source": "Addons/language_f_bootcamp/a3/language_f_bootcamp/stringtable.xml",
+      "config_locator": "Addons/soft_f.pbo > Offroad_01\\config.bin",
+      "catalogue_id": "toyota_land_cruiser_70",
+      "matched_tokens": [
+        "offroad"
+      ]
+    },
+    {
+      "game_class": "Offroad_01_unarmed_base_F",
+      "display_name_key": "$STR_A3_CfgVehicles_Offroad_Base0",
+      "display_name": "Offroad",
+      "display_name_source": "Addons/language_f/a3/language_f/stringtable.xml",
+      "config_locator": "Addons/soft_f.pbo > Offroad_01\\config.bin",
+      "catalogue_id": "toyota_land_cruiser_70",
+      "matched_tokens": [
+        "offroad"
+      ]
+    }
+  ]
+}

@@ -63,9 +63,9 @@ NRMM_QUARANTINE_NOTE = (
 )
 
 # The mass model artefact, the committed in-game census, the concrete
-# class-binding layer and the resolved class-parent cache are the registered
-# files this tree adds at the data root. A new top-level JSON outside this
-# list breaks the separation guard.
+# class-binding layer, the resolved class-parent cache and the stringtable
+# binding artefact are the registered files this tree adds at the data root. A
+# new top-level JSON outside this list breaks the separation guard.
 TOP_LEVEL_JSON_BASELINE = frozenset(
     {"classes.json", "class_map.json", "coverage.json", "sources.json"}
 )
@@ -75,6 +75,7 @@ TOP_LEVEL_JSON_NEW = frozenset(
         "mass_model_calibration.json",
         "class_bindings.json",
         "class_parents.json",
+        "stringtable_bindings.json",
     }
 )
 
