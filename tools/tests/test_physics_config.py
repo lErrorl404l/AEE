@@ -7,6 +7,11 @@ is the gate. These tests prove a clean corpus passes, an invented value fails
 and an unknown conversion fails. The good records come from the committed
 corpus. The bad records are copies held in this test only.
 
+The generator turns the class-binding corpus and the catalogue into a
+CfgVehicles override and a validator projection. Each emitted class must
+state its immediate real parent, the parent must be forward-declared once,
+and no class may be reopened bare.
+
 Run: python3 -m unittest tools.tests.test_physics_config -v
 """
 
@@ -29,14 +34,30 @@ from tools.validation import validate_physics_config as v  # noqa: E402
 DATA = REPO / "data" / "physics"
 VEHICLE = REPO / "data" / "vehicle"
 BINDINGS = DATA / "config_bindings.json"
+CLASS_BINDINGS = VEHICLE / "class_bindings.json"
+PARENTS = VEHICLE / "class_parents.json"
 GENERATED = REPO / "addons" / "mobility" / "generated" / "CfgVehicles.hpp"
 
-# One emitted override block, tied to its class and value.
-BLOCK_RE = re.compile(r"class (\S+) \{\n        maxSpeed = ([0-9.]+);")
+# One emitted child body: `class X: Parent {` and its maxSpeed value.
+CHILD_RE = re.compile(
+    r"^[ \t]+class (\w+): (\w+) \{\n[ \t]+maxSpeed = ([0-9.]+);", re.M
+)
+
+# A forward declaration `class X;` at class level.
+FORWARD_RE = re.compile(r"^[ \t]+class (\w+);$", re.M)
+
+# A bare class body `class X {` with no parent. None is allowed.
+BARE_RE = re.compile(r"^[ \t]+class (\w+) \{\s*$", re.M)
 
 # Keys thermal and optics already own. This addon loads last, so emitting any
 # of them would silently win. The generator must never write one.
 FORBIDDEN_KEYS = ("htMin", "htMax", "afMax", "mfMax", "mFact", "tBody")
+
+
+def _corpus_set() -> dict[str, str]:
+    """Return the corpus-driven class set with its value literals."""
+    emissions = gen.build(CLASS_BINDINGS, VEHICLE, PARENTS)
+    return {e.game_class: gen._render_value(e.value) for e in emissions}
 
 
 def _run_with(records: list[object]) -> int:
@@ -170,61 +191,119 @@ class PhysicsConfigTest(unittest.TestCase):
 
 
 class PhysicsConfigGeneratorTest(unittest.TestCase):
-    """The generator emits every corpus binding, and only those bindings."""
+    """The generator emits the parent form, and only the corpus bindings."""
 
     @classmethod
     def setUpClass(cls) -> None:
-        cls.records = v.load_bindings(BINDINGS)
-        cls.rendered = gen.render(gen.build(BINDINGS))
+        cls.corpus = _corpus_set()
+        cls.emissions = gen.build(CLASS_BINDINGS, VEHICLE, PARENTS)
+        cls.rendered = GENERATED.read_text(encoding="utf-8")
+        cls.children = dict(
+            (name, value)
+            for name, _parent, value in CHILD_RE.findall(cls.rendered)
+        )
+        cls.parent_of = {
+            name: parent for name, parent, _value in CHILD_RE.findall(cls.rendered)
+        }
+        cls.forwards = FORWARD_RE.findall(cls.rendered)
 
     def test_the_committed_header_is_fresh(self) -> None:
-        self.assertEqual(gen.check_config(BINDINGS, GENERATED), 0)
+        self.assertEqual(
+            gen.check_config(CLASS_BINDINGS, VEHICLE, PARENTS, GENERATED, BINDINGS),
+            0,
+        )
 
     def test_the_committed_header_is_fresh_from_the_cli(self) -> None:
         self.assertEqual(gen.main(["--check"]), 0)
 
-    def test_every_binding_appears_with_its_value(self) -> None:
-        found = dict(BLOCK_RE.findall(self.rendered))
-        expected = {
-            str(record["game_class"]): gen._render_value(record["value"])
-            for record in self.records
-        }
-        self.assertEqual(found, expected)
+    def test_every_emitted_class_states_its_parent_and_value(self) -> None:
+        self.assertEqual(self.children, self.corpus)
+
+    def test_the_emitted_class_set_equals_the_corpus_set(self) -> None:
+        self.assertEqual(set(self.children), set(self.corpus))
+        self.assertEqual(
+            {e.game_class for e in self.emissions}, set(self.corpus)
+        )
+
+    def test_every_parent_is_forward_declared_once(self) -> None:
+        for name, parent in self.parent_of.items():
+            with self.subTest(game_class=name):
+                self.assertEqual(self.forwards.count(parent), 1)
+
+    def test_no_bare_class_exists(self) -> None:
+        # A body `class X { ... };` with no parent shadows the vanilla class
+        # at run time. Every emitted body must state its parent.
+        self.assertEqual(BARE_RE.findall(self.rendered), [])
 
     def test_only_maxspeed_is_emitted(self) -> None:
         assignments = re.findall(r"^\s+(\w+) = ", self.rendered, re.M)
         self.assertEqual(set(assignments), {"maxSpeed"})
         self.assertEqual(set(assignments) & set(FORBIDDEN_KEYS), set())
 
+    def test_the_projection_is_fresh(self) -> None:
+        committed = BINDINGS.read_text(encoding="utf-8")
+        self.assertEqual(committed, gen.render_projection(self.emissions))
+
+    def test_the_projection_matches_the_emitted_set(self) -> None:
+        records = json.loads(BINDINGS.read_text(encoding="utf-8"))
+        self.assertEqual(
+            {record["game_class"] for record in records}, set(self.corpus)
+        )
+        for record in records:
+            self.assertIn(record["game_class"], self.children)
+
+    def test_the_parents_cache_covers_every_bound_class(self) -> None:
+        parents = gen.load_parents(PARENTS)
+        self.assertEqual(set(parents), set(gen.bound_classes(CLASS_BINDINGS)))
+
+    def test_a_missing_parent_fails_closed(self) -> None:
+        # An emitted class with no resolved parent must stop the build rather
+        # than emit a bare class.
+        drop = self.emissions[0].game_class
+        records = [
+            record
+            for record in json.loads(PARENTS.read_text(encoding="utf-8"))
+            if record["game_class"] != drop
+        ]
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "class_parents.json"
+            path.write_text(json.dumps(records), encoding="utf-8")
+            with self.assertRaises(ValueError):
+                gen.build(CLASS_BINDINGS, VEHICLE, path)
+
     def test_a_stale_header_fails_the_check(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             stale = Path(tmp) / "CfgVehicles.hpp"
             stale.write_text("class CfgVehicles {};\n", encoding="utf-8")
-            self.assertEqual(gen.check_config(BINDINGS, stale), 1)
+            self.assertEqual(
+                gen.check_config(CLASS_BINDINGS, VEHICLE, PARENTS, stale, BINDINGS),
+                1,
+            )
 
     def test_a_missing_header_fails_the_check(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             self.assertEqual(
-                gen.check_config(BINDINGS, Path(tmp) / "CfgVehicles.hpp"), 1
+                gen.check_config(
+                    CLASS_BINDINGS, VEHICLE, PARENTS, Path(tmp) / "CfgVehicles.hpp", BINDINGS
+                ),
+                1,
             )
 
-    def test_a_foreign_key_is_rejected(self) -> None:
-        records = copy.deepcopy(self.records)
-        records[0]["key"] = "mass"
+    def test_a_stale_projection_fails_the_check(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
-            path = Path(tmp) / v.BINDINGS_NAME
-            path.write_text(json.dumps(records), encoding="utf-8")
-            with self.assertRaises(ValueError):
-                gen.build(path)
+            stale = Path(tmp) / "config_bindings.json"
+            stale.write_text("[]\n", encoding="utf-8")
+            self.assertEqual(
+                gen.check_config(CLASS_BINDINGS, VEHICLE, PARENTS, GENERATED, stale),
+                1,
+            )
 
-    def test_a_foreign_config_class_is_rejected(self) -> None:
-        records = copy.deepcopy(self.records)
-        records[0]["config_class"] = "CfgWeapons"
+    def test_a_non_array_class_binding_file_is_rejected(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
-            path = Path(tmp) / v.BINDINGS_NAME
-            path.write_text(json.dumps(records), encoding="utf-8")
+            path = Path(tmp) / "class_bindings.json"
+            path.write_text(json.dumps({"game_class": "x"}), encoding="utf-8")
             with self.assertRaises(ValueError):
-                gen.build(path)
+                gen.load_class_bindings(path)
 
 
 if __name__ == "__main__":
