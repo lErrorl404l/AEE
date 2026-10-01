@@ -34,15 +34,16 @@ if (isNull _unit) exitWith {
     [_e, _e, _e, _e, _e, [8.0, 0, 0.40, 0.75]]
 };
 
-// ─── CACHED (5 s) ────────────────────────────────────────────────────────
+// ─── CACHED (20 s, keyed on the loadout) ─────────────────────────────────
 // MEASURED: this function costs 32 ms per call (performance counters,
 // 2026-10-01).  It makes EIGHT loadout walks (five worn slots plus weapons,
 // magazines and container contents), each weighing every carried item through
 // the material library.  applyMovementSpeed calls it once per second in EVERY
 // vision mode, so it was a 32 ms frame stall every single second, and
 // applyClothingThermal calls it again at 10 Hz in thermal.  A soldier's kit
-// changes only when they pick something up, so a 5 s cache removes the cost
-// with no perceptible delay on a movement-speed coefficient.
+// changes only when they pick something up, so a 20 s cache removes the cost
+// with no perceptible delay on a movement-speed coefficient.  The cache is
+// ALSO keyed on the loadout, so a pickup is seen at once.
 private _nowT = diag_tickTime;
 private _cache = missionNamespace getVariable [QGVAR(equipCache), -1];
 if (_cache isEqualType 0) then {
@@ -50,8 +51,16 @@ if (_cache isEqualType 0) then {
     missionNamespace setVariable [QGVAR(equipCache), _cache];
 };
 private _cacheKey = netId _unit;
+// The cached signature is the unit's loadout. A time-to-live alone is not
+// enough: a soldier who picks something up keeps the same netId, so a
+// TTL-only hit would return the pre-pickup load and the movement coupling
+// would not see the change. getUnitLoadout is one engine call, far cheaper
+// than the eight walks the cache exists to avoid.
+private _signature = getUnitLoadout _unit;
 private _hit = _cache getOrDefault [_cacheKey, []];
-if ((_hit isNotEqualTo []) && {(_nowT - (_hit select 0)) < 20}) exitWith {
+if ((_hit isNotEqualTo [])
+    && {(_nowT - (_hit select 0)) < 20}
+    && {(_hit select 2) isEqualTo _signature}) exitWith {
     _hit select 1
 };
 
@@ -105,7 +114,7 @@ private _logMsg = format [
 AEE_LOG_DEBUG(_logMsg);
 
 private _result = [_uniform, _vest, _helmet, _goggle, _pack, _combined];
-_cache set [_cacheKey, [_nowT, _result]];
+_cache set [_cacheKey, [_nowT, _result, _signature]];
 missionNamespace setVariable [QGVAR(equipCache), _cache];
 
 _result
