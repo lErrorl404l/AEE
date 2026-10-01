@@ -24,7 +24,11 @@ Output: the unit's state array (read-only reference)
 params [["_unit", objNull, [objNull]]];
 if (isNull _unit) then { _unit = call CBA_fnc_currentUnit; };
 
-private _state = missionNamespace getVariable [QGVAR(diveStates), createHashMap];
+private _state = missionNamespace getVariable [QGVAR(diveStates), -1];
+if (_state isEqualType 0) then {
+    _state = createHashMap;
+    missionNamespace setVariable [QGVAR(diveStates), _state];
+};
 private _uid = _unit getVariable [QGVAR(diveUID), ""];
 if (_uid == "") then {
     _uid = getPlayerUID _unit;

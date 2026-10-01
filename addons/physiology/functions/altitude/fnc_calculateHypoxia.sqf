@@ -54,7 +54,11 @@ if (_eqAlt >= 6000) then {
 };
 
 // ─── Exposure accumulation (per-player) ──────────────────────────────────
-private _exposureMap = missionNamespace getVariable [QGVAR(hypoxiaExposure), createHashMap];
+private _exposureMap = missionNamespace getVariable [QGVAR(hypoxiaExposure), -1];
+if (_exposureMap isEqualType 0) then {
+    _exposureMap = createHashMap;
+    missionNamespace setVariable [QGVAR(hypoxiaExposure), _exposureMap];
+};
 private _exposure = _exposureMap getOrDefault [_uid, 0];
 private _tickSeconds = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];
 

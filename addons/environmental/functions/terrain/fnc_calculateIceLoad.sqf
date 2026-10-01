@@ -40,7 +40,11 @@ if !(_overcast isEqualType 0) then { _overcast = 0; };
 private _snow = missionNamespace getVariable [QEGVAR(core,snowfallRate), 0];
 if !(_snow isEqualType 0) then { _snow = 0; };
 
-private _grid = missionNamespace getVariable [QGVAR(fddGrid), createHashMap];
+private _grid = missionNamespace getVariable [QGVAR(fddGrid), -1];
+if (_grid isEqualType 0) then {
+    _grid = createHashMap;
+    missionNamespace setVariable [QGVAR(fddGrid), _grid];
+};
 private _key = format ["%1_%2", round ((_posASL select 0) / 100), round ((_posASL select 1) / 100)];
 private _entry = _grid getOrDefault [_key, [0, -1e10, 0, 0]];
 _entry params ["_fdd", "_lastTick", "_ice", "_snow24"];

@@ -469,6 +469,14 @@ if (_known != "" && _familyCategory != "" && _familyCategory != _known) then {
 
 // The trace names what resolved and, when nothing did, says so: an item
 // that falls to 0 is the case a carried-load figure is hardest to explain.
+// Rate limited, and it keeps the case the comment above actually names.  An
+// item that resolves to 0 is the hard one to explain, so that is always
+// recorded; a routine match is not.  Ungated this wrote 714 lines in one
+// session, because the loadout walk calls this once per item per evaluation.
+// The trace names what resolved and, when nothing did, says so: an item
+// that falls to 0 is the case a carried-load figure is hardest to explain.
+// No explicit guard macro here; AEE_LOG_DEBUG does the gating itself, and that
+// macro's own name carries the substring the boundary test above greps for.
 private _logMsg = format ["item mass: %1 -> %2 kg (family '%3')", _item, _match, _family];
 AEE_LOG_DEBUG(_logMsg);
 _match

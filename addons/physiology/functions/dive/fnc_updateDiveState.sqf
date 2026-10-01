@@ -135,7 +135,11 @@ if ((_entry select 36) > 0 && {_entry select 40 > 0.5}) then {
 };
 
 // ─── Store ───────────────────────────────────────────────────────────────
-private _state = missionNamespace getVariable [QGVAR(diveStates), createHashMap];
+private _state = missionNamespace getVariable [QGVAR(diveStates), -1];
+if (_state isEqualType 0) then {
+    _state = createHashMap;
+    missionNamespace setVariable [QGVAR(diveStates), _state];
+};
 private _uid = _unit getVariable [QGVAR(diveUID), ""];
 _state set [_uid, _entry];
 missionNamespace setVariable [QGVAR(diveStates), _state];

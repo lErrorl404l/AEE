@@ -26,7 +26,11 @@ if (!(missionNamespace getVariable [QEGVAR(core,mudAccretionEnabled), true])) ex
     0
 };
 
-private _accretion = missionNamespace getVariable [QGVAR(mudAccretion), createHashMap];
+private _accretion = missionNamespace getVariable [QGVAR(mudAccretion), -1];
+if (_accretion isEqualType 0) then {
+    _accretion = createHashMap;
+    missionNamespace setVariable [QGVAR(mudAccretion), _accretion];
+};
 private _accretionRate = missionNamespace getVariable [QGVAR(mudAccretionRate), 0.002];
 private _decayRate = missionNamespace getVariable [QGVAR(mudDecayRate), 0.99];
 private _interval = missionNamespace getVariable [QEGVAR(core,updateInterval), 5];

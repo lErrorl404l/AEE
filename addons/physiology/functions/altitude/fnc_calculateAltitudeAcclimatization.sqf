@@ -20,7 +20,11 @@ private _player = call CBA_fnc_currentUnit;
 if (isNil "_player" || !alive _player) exitWith { 0 };
 
 private _uid = getPlayerUID _player;
-private _altState = missionNamespace getVariable [QGVAR(altitudeState), createHashMap];
+private _altState = missionNamespace getVariable [QGVAR(altitudeState), -1];
+if (_altState isEqualType 0) then {
+    _altState = createHashMap;
+    missionNamespace setVariable [QGVAR(altitudeState), _altState];
+};
 private _myState = _altState getOrDefault [_uid, [0, 0, diag_tickTime, 0, 0]];
 _myState params ["_acclimTime", "_lastAlt", "_lastUpdate", "_lastAMS", "_timeAbove3000"];
 private _now = diag_tickTime;

@@ -34,6 +34,27 @@ if (isNull _unit) exitWith {
     [_e, _e, _e, _e, _e, [8.0, 0, 0.40, 0.75]]
 };
 
+// ─── CACHED (5 s) ────────────────────────────────────────────────────────
+// MEASURED: this function costs 32 ms per call (performance counters,
+// 2026-10-01).  It makes EIGHT loadout walks (five worn slots plus weapons,
+// magazines and container contents), each weighing every carried item through
+// the material library.  applyMovementSpeed calls it once per second in EVERY
+// vision mode, so it was a 32 ms frame stall every single second, and
+// applyClothingThermal calls it again at 10 Hz in thermal.  A soldier's kit
+// changes only when they pick something up, so a 5 s cache removes the cost
+// with no perceptible delay on a movement-speed coefficient.
+private _nowT = diag_tickTime;
+private _cache = missionNamespace getVariable [QGVAR(equipCache), -1];
+if (_cache isEqualType 0) then {
+    _cache = createHashMap;
+    missionNamespace setVariable [QGVAR(equipCache), _cache];
+};
+private _cacheKey = netId _unit;
+private _hit = _cache getOrDefault [_cacheKey, []];
+if ((_hit isNotEqualTo []) && {(_nowT - (_hit select 0)) < 20}) exitWith {
+    _hit select 1
+};
+
 private _uniform = [_unit] call FUNC(getUniformProperties);
 private _vest = [_unit] call FUNC(getVestProperties);
 private _helmet = [_unit] call FUNC(getHelmetProperties);
@@ -83,4 +104,8 @@ private _logMsg = format [
 ];
 AEE_LOG_DEBUG(_logMsg);
 
-[_uniform, _vest, _helmet, _goggle, _pack, _combined]
+private _result = [_uniform, _vest, _helmet, _goggle, _pack, _combined];
+_cache set [_cacheKey, [_nowT, _result]];
+missionNamespace setVariable [QGVAR(equipCache), _cache];
+
+_result

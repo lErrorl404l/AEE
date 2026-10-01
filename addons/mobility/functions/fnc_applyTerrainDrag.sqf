@@ -53,9 +53,21 @@ if (isNull (driver _vehicle)) exitWith { false };
 // ─── The surface factor and the target speed ────────────────────────────
 private _factor = [getPosATL _vehicle] call FUNC(getTerrainSpeedFactor);
 
-// The vehicle's own maximum, from config.  A vehicle with no maxSpeed key
-// gets no cap rather than a guessed one.
-private _maxKmh = getNumber (configOf _vehicle >> "maxSpeed");
+// The vehicle's own maximum, from config.  Static for a type, and this loop
+// runs every frame, so the config lookup is memoised.  A vehicle with no
+// maxSpeed key gets no cap rather than a guessed one.
+private _maxCache = missionNamespace getVariable [QGVAR(maxSpeedCache), -1];
+if (_maxCache isEqualType 0) then {
+    _maxCache = createHashMap;
+    missionNamespace setVariable [QGVAR(maxSpeedCache), _maxCache];
+};
+private _maxKey = typeOf _vehicle;
+private _maxKmh = _maxCache getOrDefault [_maxKey, -1];
+if (_maxKmh < 0) then {
+    _maxKmh = getNumber (configOf _vehicle >> "maxSpeed");
+    _maxCache set [_maxKey, _maxKmh];
+    missionNamespace setVariable [QGVAR(maxSpeedCache), _maxCache];
+};
 if (_maxKmh <= 0) exitWith { false };
 
 private _target = _maxKmh * _factor / 3.6;   // m/s

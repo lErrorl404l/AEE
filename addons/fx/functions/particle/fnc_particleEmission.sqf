@@ -31,7 +31,8 @@ params [
     ["_context", [], [[]]]
 ];
 
-private _cfg = (call FUNC(particleEffectConfig)) getOrDefault [_effect, createHashMap];
+private _cfg = (call FUNC(particleEffectConfig)) getOrDefault [_effect, -1];
+if (_cfg isEqualType 0) then { _cfg = createHashMap; };
 private _baseRate = _cfg getOrDefault ["baseRate", 5];
 
 // Shared state.  The moisture proxy is dust suppression (1 = dry, 0 = wet).

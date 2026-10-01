@@ -108,6 +108,19 @@ if (isNil _KERNEL) then {
         _notes pushBack "a magnification below 1 or a zero resolution was not refused";
     };
 
+    // 9. A sub-pixel target with sufficient contrast is detectable by the
+    // signal-to-noise term (ADA011212 Eq. 29); without a contrast the kernel
+    // stays geometry-only.  A 0.5 m person at 4000 m through 640/4 spans
+    // about 0.764 px at full 640x480; contrast 0.2 clears the 2.8 margin.
+    private _snrOk = [(0.5 / 4000), 640, 4, 0, 0.025, 0.2, 15] call aee_thermal_fnc_resolveThermalTarget;
+    private _snrNo = [(0.5 / 4000), 640, 4] call aee_thermal_fnc_resolveThermalTarget;
+    if ((_snrOk select 0) && ((_snrOk select 1) == 1) && (!(_snrNo select 0))) then {
+        _pass = _pass + 1;
+    } else {
+        _fail = _fail + 1;
+        _notes pushBack format ["sub-pixel SNR: contrast resolve=%1 level=%2, no-contrast resolve=%3", _snrOk select 0, _snrOk select 1, _snrNo select 0];
+    };
+
     _summary = format ["300m=%1lp 200m=%2lp 1600m=%3lp mag1@200m=%4lp", _r300 select 2, _r200 select 2, _r1600 select 2, _unity select 2];
 };
 

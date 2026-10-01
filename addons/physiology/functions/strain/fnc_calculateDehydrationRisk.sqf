@@ -35,7 +35,11 @@ private _player = call CBA_fnc_currentUnit;
 if (isNil "_player" || !alive _player) exitWith { 0 };
 
 private _uid = getPlayerUID _player;
-private _dehydAccum = missionNamespace getVariable [QGVAR(dehydrationAccum), createHashMap];
+private _dehydAccum = missionNamespace getVariable [QGVAR(dehydrationAccum), -1];
+if (_dehydAccum isEqualType 0) then {
+    _dehydAccum = createHashMap;
+    missionNamespace setVariable [QGVAR(dehydrationAccum), _dehydAccum];
+};
 private _myState = _dehydAccum getOrDefault [_uid, [0, 0, 0]];
 _myState params ["_deficit", "_lastTime", "_lastRisk"];
 private _now = diag_tickTime;

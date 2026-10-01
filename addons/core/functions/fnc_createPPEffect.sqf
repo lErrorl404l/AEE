@@ -63,7 +63,10 @@ if (_scope == "" || _key == "" || _effect == "") exitWith {
     -1
 };
 
-private _registry = missionNamespace getVariable [QEGVAR(core,ppRegistry), createHashMap];
+// Eager-default allocation removed; the registry is written back below, so a
+// locally-created map still persists.
+private _registry = missionNamespace getVariable [QEGVAR(core,ppRegistry), -1];
+if (_registry isEqualType 0) then { _registry = createHashMap; };
 private _id = format ["%1|%2", _scope, _key];
 private _entry = _registry getOrDefault [_id, [-1, ""]];
 _entry params ["_existing", "_legacy"];

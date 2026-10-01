@@ -30,7 +30,10 @@ if (_scope == "") exitWith {
     0
 };
 
-private _registry = missionNamespace getVariable [QEGVAR(core,ppRegistry), createHashMap];
+// Eager-default allocation removed; an absent registry yields an empty map,
+// which the next line already treats as nothing to do.
+private _registry = missionNamespace getVariable [QEGVAR(core,ppRegistry), -1];
+if (_registry isEqualType 0) then { _registry = createHashMap; };
 if (count _registry == 0) exitWith { 0 };
 
 // Collect ids first.  Deleting while iterating a HashMap invalidates the

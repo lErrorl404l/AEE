@@ -57,7 +57,11 @@ _ny = floor (_ny max 1);
 _step = _step max 1;
 
 private _gridKey = format ["%1_%2_%3_%4_%5", _origin#0, _origin#1, _nx, _ny, _step];
-private _cache = missionNamespace getVariable [QGVAR(d8AccumulationCache), createHashMap];
+private _cache = missionNamespace getVariable [QGVAR(d8AccumulationCache), -1];
+if (_cache isEqualType 0) then {
+    _cache = createHashMap;
+    missionNamespace setVariable [QGVAR(d8AccumulationCache), _cache];
+};
 if (_gridKey in _cache) exitWith { _cache get _gridKey };
 
 private _count = _nx * _ny;

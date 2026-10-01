@@ -53,7 +53,11 @@ private _py = _posASL select 1;
 private _pz = _posASL select 2;
 private _cellKey = format ["%1_%2_%3",
     floor (_px / 100), floor (_py / 100), round _radius];
-private _ringCache = missionNamespace getVariable [QGVAR(biomeRingCache), createHashMap];
+private _ringCache = missionNamespace getVariable [QGVAR(biomeRingCache), -1];
+if (_ringCache isEqualType 0) then {
+    _ringCache = createHashMap;
+    missionNamespace setVariable [QGVAR(biomeRingCache), _ringCache];
+};
 if (_cellKey in _ringCache) exitWith { _ringCache get _cellKey };
 
 private _votes = createHashMap;

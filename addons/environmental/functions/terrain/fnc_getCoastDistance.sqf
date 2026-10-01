@@ -38,7 +38,11 @@ private _cx = floor ((_pos select 0) / 100);
 private _cy = floor ((_pos select 1) / 100);
 private _key = format ["%1_%2", _cx, _cy];
 
-private _cache = missionNamespace getVariable [QGVAR(coastDistanceCache), createHashMap];
+private _cache = missionNamespace getVariable [QGVAR(coastDistanceCache), -1];
+if (_cache isEqualType 0) then {
+    _cache = createHashMap;
+    missionNamespace setVariable [QGVAR(coastDistanceCache), _cache];
+};
 if (_key in _cache) exitWith { _cache get _key };
 
 // Walk outward in 100 m rings. Eight bearings are enough at this scale:
