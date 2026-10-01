@@ -6,12 +6,15 @@ by hand.
 A class mapping links one game class to one catalogue entry with its
 own identity source and grade. An engine class-table or config source
 is a `claimed` binding, not a real-world mapping. This file lists the
-bindings held and every ground token with no binding.
+bindings held, every ground token with no binding, and the held max
+speed values that no binding reaches.
 
 - Ground tokens: 7
 - Ground tokens with a binding: 6
 - Ground tokens without a binding: 1
 - Class map records: 6
+- Catalogue entries holding max_speed_kmh: 115
+- Of those with no class binding: 112
 
 ## Class map records
 
