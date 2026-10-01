@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for T-80. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "t_80",
+      "canonical_name": "T-80",
+      "maker": "Leningrad Kirov Plant",
+      "model": "T-80",
+      "variant": "base",
+      "variant_id": "t_80",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "cold war",
+      "aliases": [
+        "t-80"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 42000,
+          "unit": "kg",
+          "source": "ru_wikipedia_d0_a2_80",
+          "locator": "Infobox, Масса, т = Т-80 — 42",
+          "state": "operating weight as published",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 9654,
+          "unit": "mm",
+          "source": "ru_wikipedia_d0_a2_80",
+          "locator": "Infobox, Длина с пушкой, мм = 9654 (gun-forward; hull 6882)",
+          "state": "length as published; conflict: length_mm: overall length gun-forward; hull 6882 mm",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3525,
+          "unit": "mm",
+          "source": "ru_wikipedia_d0_a2_80",
+          "locator": "Infobox, Ширина, мм = 3525",
+          "state": "width as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2193,
+          "unit": "mm",
+          "source": "ru_wikipedia_d0_a2_80",
+          "locator": "Infobox, Высота, мм = 2193",
+          "state": "height as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 65,
+          "unit": "km/h",
+          "source": "ru_wikipedia_d0_a2_80",
+          "locator": "Infobox, Скорость по шоссе, км/ч = Т-80: 65",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "GTD-1000T gas turbine (1000 hp)",
+          "unit": "text",
+          "source": "ru_wikipedia_d0_a2_80",
+          "locator": "Infobox, Двигатель ГТД-1000Т; Мощность двигателя Т-80: 1000 л.с.",
+          "state": "engine as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

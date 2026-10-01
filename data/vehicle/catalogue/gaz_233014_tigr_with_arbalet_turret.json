@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for GAZ-233014 (Tigr with Arbalet turret). Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "gaz_233014_tigr_with_arbalet_turret",
+      "canonical_name": "GAZ-233014 (Tigr with Arbalet turret)",
+      "maker": "GAZ",
+      "model": "GAZ-233014",
+      "variant": "Tigr with Arbalet turret",
+      "variant_id": "gaz_233014_tigr_with_arbalet_turret",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Russia",
+      "era": "modern",
+      "aliases": [
+        "gaz-233014 (tigr with arbalet turret)"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 5300,
+          "unit": "kg",
+          "source": "ru_wikipedia_",
+          "locator": "Infobox, Боевая масса, т: 5,3 (ГАЗ-233014)",
+          "state": "operating weight as published",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 5670,
+          "unit": "mm",
+          "source": "ru_wikipedia_",
+          "locator": "Infobox, Размеры, Длина корпуса: 5670 мм",
+          "state": "length as published",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2200,
+          "unit": "mm",
+          "source": "ru_wikipedia_",
+          "locator": "Infobox, Размеры, Ширина: 2200 мм",
+          "state": "width as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2000,
+          "unit": "mm",
+          "source": "ru_wikipedia_",
+          "locator": "Infobox, Размеры, Высота: 2000 мм",
+          "state": "height as published; conflict: height_mm: 2,000 mm is the base hull height; a fitted Arbalet turret adds height not covered by the source",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 140,
+          "unit": "km/h",
+          "source": "ru_wikipedia_",
+          "locator": "Infobox, Скорость по шоссе, км/ч: до 140 км/ч",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "GAZ-562 turbodiesel (licensed Steyr-Daimler-Puch); later production YaMZ-5347-10 or Cummins B205",
+          "unit": "text",
+          "source": "ru_wikipedia_",
+          "locator": "Infobox, Двигатель: ГАЗ-562; text: produced with ЯМЗ-5347-10 or Cummins B-205",
+          "state": "engine as published; conflict: engine_model: varies by build (GAZ-562, YaMZ-5347-10, Cummins B205); no single standard engine",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for M977A4. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "m977a4",
+      "canonical_name": "M977A4",
+      "maker": "Oshkosh",
+      "model": "M977A4",
+      "variant": "base",
+      "variant_id": "m977a4",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "m977a4"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 19278,
+          "unit": "kg",
+          "source": "wikipedia_heavy_expanded_mobility_tactical_truck",
+          "locator": "Infobox (spec_label M977A4), weight row: 42,500 lb unladen",
+          "state": "operating weight as published",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 10389,
+          "unit": "mm",
+          "source": "wikipedia_heavy_expanded_mobility_tactical_truck",
+          "locator": "Infobox (spec_label M977A4), length row: 409 in",
+          "state": "length as published",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2438,
+          "unit": "mm",
+          "source": "wikipedia_heavy_expanded_mobility_tactical_truck",
+          "locator": "Infobox (spec_label M977A4), width row: 96 in",
+          "state": "width as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2997,
+          "unit": "mm",
+          "source": "wikipedia_heavy_expanded_mobility_tactical_truck",
+          "locator": "Infobox (spec_label M977A4), height row: 118 in (over spare tire)",
+          "state": "height as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 100,
+          "unit": "km/h",
+          "source": "wikipedia_heavy_expanded_mobility_tactical_truck",
+          "locator": "Infobox (spec_label M977A4), speed row: 62 mph",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Caterpillar C15, 15.2-litre inline-6 water-cooled diesel, 515 hp (EPA 2004)",
+          "unit": "text",
+          "source": "wikipedia_heavy_expanded_mobility_tactical_truck",
+          "locator": "Infobox (spec_label M977A4), engine row: CAT C15 15.2-litre 6-cylinder inline water-cooled diesel, 515 hp",
+          "state": "engine as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

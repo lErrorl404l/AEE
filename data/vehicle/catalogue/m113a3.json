@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for M113A3. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "m113a3",
+      "canonical_name": "M113A3",
+      "maker": "BAE Systems",
+      "model": "M113A3",
+      "variant": "base",
+      "variant_id": "m113a3",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "m113a3"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 12250,
+          "unit": "kg",
+          "source": "inetres_m113",
+          "locator": "GENERAL DATA table, 'Combat Weight' row, M113A3 column: 13.5 tons (12.25 mt) (combat weight)",
+          "state": "operating weight as published",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 5320,
+          "unit": "mm",
+          "source": "inetres_m113",
+          "locator": "GENERAL DATA table, 'Length, Overall' row, M113A3 column: 17.45 ft (5.32 m)",
+          "state": "length as published",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2690,
+          "unit": "mm",
+          "source": "inetres_m113",
+          "locator": "GENERAL DATA table, 'Width, Overall' row: 8.82 ft (2.69 m)",
+          "state": "width as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2500,
+          "unit": "mm",
+          "source": "inetres_m113",
+          "locator": "GENERAL DATA table, 'Height, Overall' row: 8.19 ft (2.5 m)",
+          "state": "height as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 66,
+          "unit": "km/h",
+          "source": "inetres_m113",
+          "locator": "PERFORMANCE table, 'Road Speed' row, M113A3 column: 41 mph (66 km/h)",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Detroit Diesel 6V53T turbocharged diesel, 275 hp (205 kW)",
+          "unit": "text",
+          "source": "inetres_m113",
+          "locator": "PERFORMANCE table, 'Engine' row, M113A3 column: Detroit Diesel 6V53T 275 hp (205 kW) turbocharged diesel",
+          "state": "engine as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

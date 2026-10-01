@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for GAZ-66 ESB-8IM. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "gaz_66_esb_8im",
+      "canonical_name": "GAZ-66 ESB-8IM",
+      "maker": "GAZ",
+      "model": "GAZ-66 ESB-8IM",
+      "variant": "base",
+      "variant_id": "gaz_66_esb_8im",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "cold war",
+      "aliases": [
+        "gaz-66 esb-8im"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 3440,
+          "unit": "kg",
+          "source": "gaz_66",
+          "locator": "Base GAZ-66 infobox, Curb weight: 3,440 kg",
+          "state": "operating weight as published; conflict: weight_kg: no ESB-8IM-specific mass published; workshop body mass unknown, base chassis used",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 5805,
+          "unit": "mm",
+          "source": "gaz_66",
+          "locator": "Base GAZ-66 infobox, Length: 5,805 mm",
+          "state": "length as published",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2322,
+          "unit": "mm",
+          "source": "gaz_66",
+          "locator": "Base GAZ-66 infobox, Width: 2,322 mm",
+          "state": "width as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2520,
+          "unit": "mm",
+          "source": "gaz_66",
+          "locator": "Base GAZ-66 infobox, Height: 2,520 mm (tent)",
+          "state": "height as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 90,
+          "unit": "km/h",
+          "source": "gaz_66",
+          "locator": "Base GAZ-66-11 Specifications, Max. speed- 90 km/h",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "ZMZ-66-06 V8 petrol (carburettor) OHV, 120 hp (89 kW), 4,254 cc (base GAZ-66-11)",
+          "unit": "text",
+          "source": "gaz_66",
+          "locator": "Base GAZ-66-11 Specifications, Engine Type- ZMZ-66-06 V8 petrol",
+          "state": "engine as published; conflict: engine_model: base GAZ-66-11 engine quoted; the ESB-8IM body may carry a power take-off generator not covered by chassis data",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

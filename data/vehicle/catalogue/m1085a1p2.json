@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for M1085A1P2. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "m1085a1p2",
+      "canonical_name": "M1085A1P2",
+      "maker": "Oshkosh",
+      "model": "M1085A1P2",
+      "variant": "base",
+      "variant_id": "m1085a1p2",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "m1085a1p2"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 9451,
+          "unit": "kg",
+          "source": "globalsecurity_m1085",
+          "locator": "Dimensions table, Vehicle Curb Weight (no kits, crew, fuel): 20,836 lb (9,451 kg)",
+          "state": "operating weight as published; conflict: weight_kg: base M1085 (A0/A1) curb weight; no A1P2-specific published weight found",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 8863,
+          "unit": "mm",
+          "source": "globalsecurity_m1085",
+          "locator": "Dimensions table, Length: 349 in (8,863 mm)",
+          "state": "length as published",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2438,
+          "unit": "mm",
+          "source": "globalsecurity_m1085",
+          "locator": "Dimensions table, Width: 96 in (2,438 mm)",
+          "state": "width as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2845,
+          "unit": "mm",
+          "source": "globalsecurity_m1085",
+          "locator": "Dimensions table, Height Operational: 112 in (2,845 mm)",
+          "state": "height as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 94,
+          "unit": "km/h",
+          "source": "globalsecurity_m1085",
+          "locator": "Performance Characteristics table, Maximum Speed governed at gross weight: 58 mph (94 km/h)",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Caterpillar 6.6-litre inline-6 turbocharged and aftercooled diesel, 290 hp (216 kW) at 2600 rpm",
+          "unit": "text",
+          "source": "globalsecurity_m1085",
+          "locator": "Equipment Specifications, Engine: Caterpillar 6.6 L 6-cylinder turbocharged and aftercooled, 290 hp (216 kW) @ 2600 rpm",
+          "state": "engine as published; conflict: engine_model: base M1085 6.6 L 290 hp; the A1P2 generation is published elsewhere as CAT C7 330 hp, but no source pairs the M1085 A1P2 with it",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

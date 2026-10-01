@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for Ural-375D. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "ural_375d",
+      "canonical_name": "Ural-375D",
+      "maker": "Ural",
+      "model": "Ural-375D",
+      "variant": "base",
+      "variant_id": "ural_375d",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "cold war",
+      "aliases": [
+        "ural-375d"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 8400,
+          "unit": "kg",
+          "source": "wikipedia_ural_375",
+          "locator": "Infobox, Curb weight: 8,400 kg",
+          "state": "operating weight as published",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 7350,
+          "unit": "mm",
+          "source": "wikipedia_ural_375",
+          "locator": "Specifications bullet, Dimensions: L×W×H = 7350 × 2690 × 2980 mm",
+          "state": "length as published",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2690,
+          "unit": "mm",
+          "source": "wikipedia_ural_375",
+          "locator": "Specifications bullet, Dimensions: L×W×H = 7350 × 2690 × 2980 mm",
+          "state": "width as published; conflict: width_mm: infobox states 2,960 mm; specification list states 2,690 mm; specification list used",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2980,
+          "unit": "mm",
+          "source": "wikipedia_ural_375",
+          "locator": "Specifications bullet, Dimensions: L×W×H = 7350 × 2690 × 2980 mm (with tarpaulin)",
+          "state": "height as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 75,
+          "unit": "km/h",
+          "source": "wikipedia_ural_375",
+          "locator": "Specifications bullet, Max. speed: 75 km/h",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "ZIL-375Ya 7.0 L V8 petrol (carburettor), 180 PS (130 kW)",
+          "unit": "text",
+          "source": "wikipedia_ural_375",
+          "locator": "Specifications bullet, Engine: 130 kW (180 PS) (GOST) ZIL-375Ya 7.0-litre V8 petrol",
+          "state": "engine as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

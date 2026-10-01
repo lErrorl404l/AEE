@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for T-72B3 obr. 2012g.. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "t_72b3_obr_2012g",
+      "canonical_name": "T-72B3 obr. 2012g.",
+      "maker": "Uralvagonzavod",
+      "model": "T-72B3",
+      "variant": "obr. 2012g.",
+      "variant_id": "t_72b3_obr_2012g",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Russia",
+      "era": "modern",
+      "aliases": [
+        "t-72b3 obr. 2012g."
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 46500,
+          "unit": "kg",
+          "source": "ru_wikipedia_d0_a2_72_d0_913",
+          "locator": "Infobox, Масса, т = 46,5",
+          "state": "operating weight as published",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 9530,
+          "unit": "mm",
+          "source": "ru_wikipedia_d0_a2_72_d0_913",
+          "locator": "Infobox, Длина с пушкой, мм = 9530 (gun-forward)",
+          "state": "length as published; conflict: length_mm: overall length is gun-forward; ru infobox hull length is 6860 mm",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3400,
+          "unit": "mm",
+          "source": "wikipedia_t_72",
+          "locator": "Infobox, Width row: 3.40 to 3.59 m (T-72B hull; ru infobox blank for width)",
+          "state": "width as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2226,
+          "unit": "mm",
+          "source": "ru_wikipedia_d0_a2_72_d0_913",
+          "locator": "Infobox, Высота, мм = 2226",
+          "state": "height as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 65,
+          "unit": "km/h",
+          "source": "ru_wikipedia_d0_a2_72_d0_913",
+          "locator": "Infobox, Скорость по шоссе, км/ч = 65",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "V-92S2F V12 diesel (1130 hp)",
+          "unit": "text",
+          "source": "wikipedia_t_72",
+          "locator": "Infobox, Engine row: V-92S2F (T-72B3 and T-72B3M), 1,130 hp",
+          "state": "engine as published; conflict: engine_model: source conflict. English T-72 infobox gives V-92S2F 1130 hp for T-72B3; ru.wikipedia T-72B3 infobox gives 840 hp for 'Т-72Б3 обр. 2011'. Both retained here for the operator to choose.",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

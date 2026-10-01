@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for M1A2 SEP v1. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "m1a2_sep_v1",
+      "canonical_name": "M1A2 SEP v1",
+      "maker": "General Dynamics Land Systems",
+      "model": "M1A2 SEP v1",
+      "variant": "base",
+      "variant_id": "m1a2_sep_v1",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "m1a2 sep v1"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 63000,
+          "unit": "kg",
+          "source": "wikipedia_m1_abrams",
+          "locator": "Specifications table, 'Combat Weight' row, M1A2 SEP column: 'SEP v1: 69.5 short tons (63.0 t)' (combat weight)",
+          "state": "operating weight as published",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 9830,
+          "unit": "mm",
+          "source": "inetres_m1",
+          "locator": "GENERAL DATA table, 'Length, Overall' row, M1A2 column: 32.25 ft (9.83 m), overall with gun forward",
+          "state": "length as published",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3660,
+          "unit": "mm",
+          "source": "inetres_m1",
+          "locator": "GENERAL DATA table, 'Width, Overall' row, M1A2 column: 12.0 ft (3.66 m)",
+          "state": "width as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2890,
+          "unit": "mm",
+          "source": "inetres_m1",
+          "locator": "GENERAL DATA table, 'Height, Overall' row, M1A2 column: 9.47 ft (2.89 m)",
+          "state": "height as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 67,
+          "unit": "km/h",
+          "source": "inetres_m1",
+          "locator": "PERFORMANCE table, 'Road Speed' row, M1A2 column: 42 mph governed (67 km/h)",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Avco Lycoming AGT-1500 gas turbine, 1,500 hp (1,119 kW)",
+          "unit": "text",
+          "source": "inetres_m1",
+          "locator": "PERFORMANCE table, 'Engine' row: Avco Lycoming AGT-1500 1,500 hp (1,119 kW) gas turbine",
+          "state": "engine as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for Oshkosh M-ATV M1277. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "oshkosh_m_atv_m1277",
+      "canonical_name": "Oshkosh M-ATV M1277",
+      "maker": "Oshkosh",
+      "model": "Oshkosh M-ATV M1277",
+      "variant": "base",
+      "variant_id": "oshkosh_m_atv_m1277",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "oshkosh m-atv m1277"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 12500,
+          "unit": "kg",
+          "source": "wikipedia_oshkosh_m_atv",
+          "locator": "Specifications, Mass: Curb weight 27,500 lb (12,500 kg); base M-ATV figure, not M1277-specific",
+          "state": "operating weight as published",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6270,
+          "unit": "mm",
+          "source": "wikipedia_oshkosh_m_atv",
+          "locator": "Specifications, Length: 246.8 inches (6,270 mm); base M-ATV figure, not M1277-specific",
+          "state": "length as published",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2490,
+          "unit": "mm",
+          "source": "wikipedia_oshkosh_m_atv",
+          "locator": "Specifications, Width: 98.1 inches (2,490 mm); base M-ATV figure, not M1277-specific",
+          "state": "width as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2700,
+          "unit": "mm",
+          "source": "wikipedia_oshkosh_m_atv",
+          "locator": "Specifications, Height: 105 inches (2,700 mm); base M-ATV figure, not M1277-specific",
+          "state": "height as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 105,
+          "unit": "km/h",
+          "source": "wikipedia_oshkosh_m_atv",
+          "locator": "Specifications, Maximum speed: 65 miles per hour (105 km/h) (electronically limited); base M-ATV figure, not M1277-specific",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Caterpillar C7 I6, 370 hp (276 kW; 375 PS)",
+          "unit": "text",
+          "source": "wikipedia_oshkosh_m_atv",
+          "locator": "Specifications, Engine: 7.2 L Caterpillar C7 I6 370 hp; base M-ATV figure, not M1277-specific",
+          "state": "engine as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

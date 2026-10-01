@@ -1,0 +1,50 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for 9K79 Tochka (9P129-1M TEL). Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "9k79_tochka_9p129_1m_tel",
+      "canonical_name": "9K79 Tochka (9P129-1M TEL)",
+      "maker": "Votkinsk Plant",
+      "model": "9K79 Tochka",
+      "variant": "9P129-1M TEL",
+      "variant_id": "9k79_tochka_9p129_1m_tel",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "cold war",
+      "aliases": [
+        "9k79 tochka (9p129-1m tel)"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 18145,
+          "unit": "kg",
+          "source": "ru_wikipedia_d0_a2_d0_be_d1_87_d0_ba_d0_b0_d1_82_d0_b0_d0_ba_d1_82_d0_b8_d1_87_d0_b5_d1_81_d0_ba_d0_b8_d0_b9_d1_80_d0_b0_d0_ba_d0_b5_d1_82_d0_bd_d1_8b_d0_b9_d0_ba_d0_be_d0_bc_d0_bf_d0_bb_d0_b5_d0_ba_d1_81",
+          "locator": "Technical data list: 'Масса пусковой установки (с ракетой и расчётом): 18145 кг'",
+          "state": "operating weight as published; conflict: weight_kg: the figure is the launcher with missile and crew (18,145 kg), not an empty weight",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 60,
+          "unit": "km/h",
+          "source": "ru_wikipedia_d0_a2_d0_be_d1_87_d0_ba_d0_b0_d1_82_d0_b0_d0_ba_d1_82_d0_b8_d1_87_d0_b5_d1_81_d0_ba_d0_b8_d0_b9_d1_80_d0_b0_d0_ba_d0_b5_d1_82_d0_bd_d1_8b_d0_b9_d0_ba_d0_be_d0_bc_d0_bf_d0_bb_d0_b5_d0_ba_d1_81",
+          "locator": "Technical data list: 'по шоссе: 60 км/ч' (with missile)",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "BAZ-5921 chassis diesel (300 hp at 2,600 rpm)",
+          "unit": "text",
+          "source": "ru_wikipedia_d0_91_d0_90_d0_97_5921",
+          "locator": "BAZ-5921 article, specifications: diesel, 'мощность: 300 л.с. при 2600 об./мин.'",
+          "state": "engine as published; conflict: engine_model: the engine model designation is not named in the cited sources; the BAZ-5921 chassis diesel rating (300 hp) is given instead",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for KAMAZ-5350 Mustang. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "kamaz_5350_mustang",
+      "canonical_name": "KAMAZ-5350 Mustang",
+      "maker": "KamAZ",
+      "model": "KAMAZ-5350 Mustang",
+      "variant": "base",
+      "variant_id": "kamaz_5350_mustang",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Russia",
+      "era": "modern",
+      "aliases": [
+        "kamaz-5350 mustang"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 9600,
+          "unit": "kg",
+          "source": "de_wikipedia_kamaz_5350",
+          "locator": "Technische Daten, Abmessungen und Gewichte, Leergewicht: 9600 kg",
+          "state": "operating weight as published",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 7690,
+          "unit": "mm",
+          "source": "de_wikipedia_kamaz_5350",
+          "locator": "Technische Daten, Abmessungen und Gewichte, Länge: 7690 mm",
+          "state": "length as published; conflict: length_mm: ru-wiki states 7,960 mm; de-wiki states 7,690 mm",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2500,
+          "unit": "mm",
+          "source": "de_wikipedia_kamaz_5350",
+          "locator": "Technische Daten, Abmessungen und Gewichte, Breite: 2500 mm",
+          "state": "width as published; conflict: width_mm: ru-wiki states 2,550 mm; de-wiki states 2,500 mm",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 3080,
+          "unit": "mm",
+          "source": "de_wikipedia_kamaz_5350",
+          "locator": "Technische Daten, Abmessungen und Gewichte, Höhe: 3080 mm",
+          "state": "height as published; conflict: height_mm: ru-wiki states 3,290 mm; de-wiki states 3,080 mm",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 100,
+          "unit": "km/h",
+          "source": "de_wikipedia_kamaz_5350",
+          "locator": "Technische Daten, Höchstgeschwindigkeit: 100 km/h",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "KamAZ-740.622-280 V8 diesel, 280 PS (206 kW), 11.76 L",
+          "unit": "text",
+          "source": "de_wikipedia_kamaz_5350",
+          "locator": "Technische Daten, Motortyp: KamAZ-740.622-280, Leistung: 280 PS (206 kW)",
+          "state": "engine as published; conflict: engine_model: en-wiki states KamAZ-740.13.260 (250 hp); de-wiki manufacturer datasheet states KamAZ-740.622-280 (280 hp); datasheet value used",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for M109A6 Paladin. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "m109a6_paladin",
+      "canonical_name": "M109A6 Paladin",
+      "maker": "BAE Systems",
+      "model": "M109A6 Paladin",
+      "variant": "base",
+      "variant_id": "m109a6_paladin",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "m109a6 paladin"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 28849,
+          "unit": "kg",
+          "source": "inetres_m109",
+          "locator": "GENERAL DATA table, 'Combat Weight' row, M109A6 column: 31.8 tons (28.849 mt) (combat weight)",
+          "state": "operating weight as published",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 9750,
+          "unit": "mm",
+          "source": "wikipedia_m109_howitzer",
+          "locator": "Infobox, Length row: 'M109A1/A2/A3/A4/A5/A6/A7: hull length of 20.3 ft, length with gun forward of 32 ft' (9.75 m)",
+          "state": "length as published",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3150,
+          "unit": "mm",
+          "source": "wikipedia_m109_howitzer",
+          "locator": "Infobox, Width row: 10 ft 4 in (3.15 m)",
+          "state": "width as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 3250,
+          "unit": "mm",
+          "source": "wikipedia_m109_howitzer",
+          "locator": "Infobox, Height row: 10 ft 8 in (3.25 m)",
+          "state": "height as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 56,
+          "unit": "km/h",
+          "source": "wikipedia_m109_howitzer",
+          "locator": "Infobox, Maximum speed row: 35 mph (56 km/h) (M109A7: 38 mph)",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Detroit Diesel 8V71T water-cooled supercharged diesel, 440 hp",
+          "unit": "text",
+          "source": "wikipedia_m109_howitzer",
+          "locator": "Infobox, Engine row: 'M109A5-A6: Detroit Diesel 8V71T 8-cylinder water-cooled supercharged diesel engine 440 hp'",
+          "state": "engine as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

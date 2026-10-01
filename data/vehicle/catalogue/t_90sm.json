@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for T-90SM. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "t_90sm",
+      "canonical_name": "T-90SM",
+      "maker": "Uralvagonzavod",
+      "model": "T-90SM",
+      "variant": "base",
+      "variant_id": "t_90sm",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Russia",
+      "era": "modern",
+      "aliases": [
+        "t-90sm"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 48000,
+          "unit": "kg",
+          "source": "wikipedia_t_90",
+          "locator": "Infobox, Mass row: 48 tonnes (T-90SM)",
+          "state": "operating weight as published",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 9630,
+          "unit": "mm",
+          "source": "wikipedia_t_90",
+          "locator": "Infobox, Length row: 9.63 m (31 ft 7 in) 6.86 m (hull)",
+          "state": "length as published; conflict: length_mm: overall length 9.63 m; hull 6.86 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3780,
+          "unit": "mm",
+          "source": "wikipedia_t_90",
+          "locator": "Infobox, Width row: 3.78 m (12 ft 5 in)",
+          "state": "width as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2220,
+          "unit": "mm",
+          "source": "wikipedia_t_90",
+          "locator": "Infobox, Height row: 2.22 m (7 ft 3 in)",
+          "state": "height as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 60,
+          "unit": "km/h",
+          "source": "wikipedia_t_90",
+          "locator": "Infobox, Maximum speed row: 60 km/h (T-90A and T-90MS)",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "V-92S2F V12 diesel (1130 hp)",
+          "unit": "text",
+          "source": "wikipedia_t_90",
+          "locator": "Infobox, Engine row: V-92S2F (T-90M and T-90MS), 1130 hp",
+          "state": "engine as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

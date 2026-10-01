@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for ZSU-23-4 Shilka. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "zsu_23_4_shilka",
+      "canonical_name": "ZSU-23-4 Shilka",
+      "maker": "Ulyanovsk Mechanical Plant",
+      "model": "ZSU-23-4 Shilka",
+      "variant": "base",
+      "variant_id": "zsu_23_4_shilka",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "cold war",
+      "aliases": [
+        "zsu-23-4 shilka"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 19000,
+          "unit": "kg",
+          "source": "wikipedia_zsu_23_4_shilka",
+          "locator": "Infobox, weight = 19 tonnes",
+          "state": "operating weight as published; conflict: weight_kg: late modifications reach 21 t",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6535,
+          "unit": "mm",
+          "source": "wikipedia_zsu_23_4_shilka",
+          "locator": "Infobox, length = 6.535 m (21 ft 5 in)",
+          "state": "length as published",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3125,
+          "unit": "mm",
+          "source": "wikipedia_zsu_23_4_shilka",
+          "locator": "Infobox, width = 3.125 m (10 ft 3 in)",
+          "state": "width as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2576,
+          "unit": "mm",
+          "source": "wikipedia_zsu_23_4_shilka",
+          "locator": "Infobox, height = 2.576 m; 3.572 m with radar elevated",
+          "state": "height as published; conflict: height_mm: 2.576 m travelling; 3.572 m with the radar elevated",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 50,
+          "unit": "km/h",
+          "source": "wikipedia_zsu_23_4_shilka",
+          "locator": "Infobox, speed = 50 km/h road",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "V-6R 6-cylinder diesel (280 hp)",
+          "unit": "text",
+          "source": "wikipedia_zsu_23_4_shilka",
+          "locator": "Infobox, engine = V-6R 6-cylinder 4-stroke diesel; engine_power 280 hp at 2,000 rpm",
+          "state": "engine as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

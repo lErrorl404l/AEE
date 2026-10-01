@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for KAMAZ-63968 Typhoon-K. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "kamaz_63968_typhoon_k",
+      "canonical_name": "KAMAZ-63968 Typhoon-K",
+      "maker": "KamAZ",
+      "model": "KAMAZ-63968 Typhoon-K",
+      "variant": "base",
+      "variant_id": "kamaz_63968_typhoon_k",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Russia",
+      "era": "modern",
+      "aliases": [
+        "kamaz-63968 typhoon-k"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 21000,
+          "unit": "kg",
+          "source": "wikipedia_kamaz_typhoon",
+          "locator": "Infobox, Mass: 21 t; Technical specifications, Curb weight: 21 tons, gross 24 tons",
+          "state": "operating weight as published",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 8990,
+          "unit": "mm",
+          "source": "wikipedia_kamaz_typhoon",
+          "locator": "Infobox, Length: 8.99 m",
+          "state": "length as published",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2450,
+          "unit": "mm",
+          "source": "wikipedia_kamaz_typhoon",
+          "locator": "Infobox, Width: 2.45 m",
+          "state": "width as published; conflict: width_mm: the article's Technical specifications section states 255 cm; the infobox states 2.45 m; infobox value used",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 3320,
+          "unit": "mm",
+          "source": "wikipedia_kamaz_typhoon",
+          "locator": "Infobox, Height: 3.32 m",
+          "state": "height as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 105,
+          "unit": "km/h",
+          "source": "wikipedia_kamaz_typhoon",
+          "locator": "Infobox, Maximum speed: 105 km/h",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "YaMZ-5367 I6 turbodiesel, 450 hp",
+          "unit": "text",
+          "source": "wikipedia_kamaz_typhoon",
+          "locator": "Infobox, Engine: ЯМЗ-5367 I6 450 HP",
+          "state": "engine as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

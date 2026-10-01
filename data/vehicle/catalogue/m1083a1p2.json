@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for M1083A1P2. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "m1083a1p2",
+      "canonical_name": "M1083A1P2",
+      "maker": "Oshkosh",
+      "model": "M1083A1P2",
+      "variant": "base",
+      "variant_id": "m1083a1p2",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "m1083a1p2"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 11280,
+          "unit": "kg",
+          "source": "wikipedia_family_of_medium_tactical_vehicles",
+          "locator": "M1083A1P2 spec box, Mass row: 11,280 kg (24,870 lbs) (curb w/fuel)",
+          "state": "operating weight as published",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 7272,
+          "unit": "mm",
+          "source": "wikipedia_family_of_medium_tactical_vehicles",
+          "locator": "M1083A1P2 spec box, Length row: 7.272 m",
+          "state": "length as published",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2438,
+          "unit": "mm",
+          "source": "wikipedia_family_of_medium_tactical_vehicles",
+          "locator": "M1083A1P2 spec box, Width row: 2.438 m",
+          "state": "width as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2830,
+          "unit": "mm",
+          "source": "wikipedia_family_of_medium_tactical_vehicles",
+          "locator": "M1083A1P2 spec box, Height row: 2.83 m",
+          "state": "height as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 94,
+          "unit": "km/h",
+          "source": "wikipedia_family_of_medium_tactical_vehicles",
+          "locator": "M1083A1P2 spec box, Maximum speed row: 94 km/h",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Caterpillar C7, 7.2-litre inline-6 water-cooled turbocharged diesel, 330 hp (EPA 2007)",
+          "unit": "text",
+          "source": "wikipedia_family_of_medium_tactical_vehicles",
+          "locator": "M1083A1P2 spec box, Engine row: CAT C7 7.2-litre 6-cylinder inline water-cooled diesel, 330 hp (EPA 2007)",
+          "state": "engine as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

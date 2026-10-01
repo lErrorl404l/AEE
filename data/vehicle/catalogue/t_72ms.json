@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for T-72MS. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "t_72ms",
+      "canonical_name": "T-72MS",
+      "maker": "Uralvagonzavod",
+      "model": "T-72MS",
+      "variant": "base",
+      "variant_id": "t_72ms",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Serbia/Russia",
+      "era": "modern",
+      "aliases": [
+        "t-72ms"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 44500,
+          "unit": "kg",
+          "source": "wikipedia_t_72",
+          "locator": "Infobox 'Specifications (T-72A)', Mass row: 44.5 tonnes (T-72B); T-72B1 base",
+          "state": "operating weight as published; conflict: weight_kg: no published weight for the T-72B1MS itself; T-72B base used. Identity source: T-72 operators and variants, Russia section, T-72B1MS bullet (Serbia entry, 30 units)",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 9730,
+          "unit": "mm",
+          "source": "wikipedia_t_72",
+          "locator": "Infobox, Length row: 9.73 m gun forward",
+          "state": "length as published",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3400,
+          "unit": "mm",
+          "source": "wikipedia_t_72",
+          "locator": "Infobox, Width row: 3.40 to 3.59 m (lower bound used)",
+          "state": "width as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2230,
+          "unit": "mm",
+          "source": "wikipedia_t_72",
+          "locator": "Infobox, Height row: 2.23 m",
+          "state": "height as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 60,
+          "unit": "km/h",
+          "source": "wikipedia_t_72",
+          "locator": "Infobox, Maximum speed row: 60 km/h",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "V-84MS V12 diesel (840 hp)",
+          "unit": "text",
+          "source": "wikipedia_t_72_operators_and_variants",
+          "locator": "Variants section, 'T-72B1MS White Eagle' bullet: modernised V-84MS engine, output unchanged",
+          "state": "engine as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

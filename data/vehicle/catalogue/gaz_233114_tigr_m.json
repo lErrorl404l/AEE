@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for GAZ-233114 (Tigr-M). Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "gaz_233114_tigr_m",
+      "canonical_name": "GAZ-233114 (Tigr-M)",
+      "maker": "GAZ",
+      "model": "GAZ-233114",
+      "variant": "Tigr-M",
+      "variant_id": "gaz_233114_tigr_m",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Russia",
+      "era": "modern",
+      "aliases": [
+        "gaz-233114 (tigr-m)"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 8980,
+          "unit": "kg",
+          "source": "ru_wikipedia_",
+          "locator": "Infobox, Боевая масса, т: 8,98 («Тигр-М» с КДМ)",
+          "state": "operating weight as published; conflict: weight_kg: 8.98 t includes the combat module (KDM); hull-only mass not published",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 5670,
+          "unit": "mm",
+          "source": "ru_wikipedia_",
+          "locator": "Infobox, Размеры, Длина корпуса: 5670 мм",
+          "state": "length as published",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2200,
+          "unit": "mm",
+          "source": "ru_wikipedia_",
+          "locator": "Infobox, Размеры, Ширина: 2200 мм",
+          "state": "width as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2000,
+          "unit": "mm",
+          "source": "ru_wikipedia_",
+          "locator": "Infobox, Размеры, Высота: 2000 мм",
+          "state": "height as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 110,
+          "unit": "km/h",
+          "source": "ru_wikipedia_",
+          "locator": "АСН 233115 «Тигр-М» СПН, Максимальная скорость движения по шоссе при полной массе, км/ч, не менее: 110",
+          "state": "maximum road speed as published; conflict: max_speed_kmh: value from the ASN-233115 Tigr-M SPN datasheet, not an index-specific GAZ-233114 sheet",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "YaMZ-5347-10 I4 turbodiesel, 215 hp",
+          "unit": "text",
+          "source": "ru_wikipedia_",
+          "locator": "Текст: produced with ЯМЗ-5347-10; АСН 233115 spec: Двигатель, марка: ЯМЗ 5347-10 / 5347-11, 215 л.с.",
+          "state": "engine as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for BMP-3. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "bmp_3",
+      "canonical_name": "BMP-3",
+      "maker": "Kurganmashzavod",
+      "model": "BMP-3",
+      "variant": "base",
+      "variant_id": "bmp_3",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Russia",
+      "era": "modern",
+      "aliases": [
+        "bmp-3"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 18700,
+          "unit": "kg",
+          "source": "wikipedia_bmp_3",
+          "locator": "Infobox, weight row (18.7 t)",
+          "state": "operating weight as published",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 7140,
+          "unit": "mm",
+          "source": "wikipedia_bmp_3",
+          "locator": "Infobox, length row (7.14 m)",
+          "state": "length as published",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3200,
+          "unit": "mm",
+          "source": "wikipedia_bmp_3",
+          "locator": "Infobox, width row (3.2 m)",
+          "state": "width as published; conflict: width_mm: Army Recognition gives 3230 mm and height 2650 mm; en.wikipedia.org gives 3200/2400",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2400,
+          "unit": "mm",
+          "source": "wikipedia_bmp_3",
+          "locator": "Infobox, height row (2.4 m)",
+          "state": "height as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 72,
+          "unit": "km/h",
+          "source": "wikipedia_bmp_3",
+          "locator": "Infobox, speed row (72 km/h road)",
+          "state": "maximum road speed as published; conflict: max_speed_kmh: Army Recognition gives 70 km/h; en.wikipedia.org gives 72 km/h",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "UTD-29M diesel",
+          "unit": "text",
+          "source": "wikipedia_bmp_3",
+          "locator": "Infobox, engine row (UTD-29M diesel)",
+          "state": "engine as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

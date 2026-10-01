@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for M2A3 Bradley. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "m2a3_bradley",
+      "canonical_name": "M2A3 Bradley",
+      "maker": "BAE Systems",
+      "model": "M2A3 Bradley",
+      "variant": "base",
+      "variant_id": "m2a3_bradley",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "m2a3 bradley"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 30000,
+          "unit": "kg",
+          "source": "inetres_m2",
+          "locator": "GENERAL DATA table, 'Combat Weight' row, M2A3 column: 33 tons (30 mt) (combat weight)",
+          "state": "operating weight as published",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6550,
+          "unit": "mm",
+          "source": "inetres_m2",
+          "locator": "GENERAL DATA table, 'Length, Overall' row, M2A3 column: 21.5 ft (6.55 m)",
+          "state": "length as published",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3610,
+          "unit": "mm",
+          "source": "inetres_m2",
+          "locator": "GENERAL DATA table, 'Width, With Armor Tiles' row: 11.83 ft (3.61 m)",
+          "state": "width as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 3600,
+          "unit": "mm",
+          "source": "inetres_m2",
+          "locator": "GENERAL DATA table, 'Height, Overall' row, M2A3 column: 11.8 ft (3.6 m)",
+          "state": "height as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 61,
+          "unit": "km/h",
+          "source": "inetres_m2",
+          "locator": "PERFORMANCE table, 'Road Speed' row, M2A3 column: 38 mph (61 km/h)",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Cummins VTA-903T diesel, 600 hp (447 kW)",
+          "unit": "text",
+          "source": "inetres_m2",
+          "locator": "PERFORMANCE table, 'Engine' row, M2A3 column: 600 hp (447 kW) Cummins VTA-903T diesel",
+          "state": "engine as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}
