@@ -90,6 +90,11 @@ AEE_SETTING_SLIDER(terrainDragScale,"AEE Mobility","Terrain",0.05,1.0,0.3,2);
 
 AEE_SETTING_SLIDER(terrainRadius,"AEE Mobility","Terrain",10,200,50,0);
 
+// ── Runtime vehicle coupling (W2) ─────────────────────────────────────────
+// Applies the surface accretion load with setMass and the wet/ice grip loss
+// with a force. Both run on the machine that owns the vehicle.
+AEE_SETTING_CHECKBOX(vehicleCouplingEnabled,"AEE Mobility","Vehicle",true);
+
 // ── Vehicle Mass Estimate ──────────────────────────────────────────────────
 // The estimate is modelled, not documented. A sourced catalogue weight always
 // takes precedence. The switch stays off until the model passes calibration

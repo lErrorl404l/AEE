@@ -360,5 +360,47 @@ class TestCompassDeviation(unittest.TestCase):
         self.assertAlmostEqual(declination(20, 45), 3.5, places=3)
 
 
+def snow_load_mass(area_m2, depth_m, density_kgm3):
+    """Mirror of fnc_calculateAccretionMass.sqf (published surface layer).
+
+    The added mass is the vehicle's top area times the layer depth times the
+    bulk density.  A zero or negative depth or density adds no mass.
+    """
+    if depth_m <= 0 or density_kgm3 <= 0:
+        return 0.0
+    return area_m2 * depth_m * density_kgm3
+
+
+def grip_loss_force(delta_mu, mass_kg, g=9.80665):
+    """Mirror of fnc_applyGripLoss.sqf (Coulomb friction loss).
+
+    The lost tractive force is the friction loss times the normal force.
+    Normal force is mass times standard gravity.  A negative delta or a
+    non-positive mass gives no force.
+    """
+    if mass_kg <= 0:
+        return 0.0
+    return max(delta_mu, 0.0) * mass_kg * g
+
+
+class TestVehicleCoupling(unittest.TestCase):
+    def test_snow_layer_mass(self):
+        # 12.78 m2 top area, 0.3 m snow, 300 kg/m3 settled snow.
+        self.assertAlmostEqual(snow_load_mass(12.78, 0.3, 300.0), 1150.2, places=3)
+
+    def test_snow_layer_zero_cases(self):
+        self.assertEqual(snow_load_mass(10.0, 0.0, 300.0), 0.0)
+        self.assertEqual(snow_load_mass(10.0, 0.3, 0.0), 0.0)
+        self.assertEqual(snow_load_mass(10.0, -0.3, 300.0), 0.0)
+
+    def test_grip_loss_coulomb(self):
+        # A 0.25 friction loss on 1500 kg is 0.25 * 1500 * 9.80665 N.
+        self.assertAlmostEqual(grip_loss_force(0.25, 1500.0), 3677.49375, places=3)
+
+    def test_grip_loss_never_negative(self):
+        self.assertEqual(grip_loss_force(-0.2, 1500.0), 0.0)
+        self.assertEqual(grip_loss_force(0.25, 0.0), 0.0)
+
+
 if __name__ == "__main__":
     unittest.main()

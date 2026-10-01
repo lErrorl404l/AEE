@@ -191,6 +191,12 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_mobility_isReady` | mobility | Mobility module ready flag |
 | `aee_mobility_crankSuccess` | mobility | Cold-start crank probability 0..1 |
 | `aee_mobility_muSurface` | mobility | Combined wet/ice/brake surface friction 0..1 |
+| `aee_mobility_dryFrictionMu` | mobility | Dry reference friction coefficient from the wet/ice traction model (0.8) |
+| `aee_mobility_accretionMassKg` | mobility | Surface accretion mass applied to the bound vehicle with setMass (W2) |
+| `aee_mobility_accretionBaseMassKg` | mobility | Captured base mass for the accretion delta, before the first setMass (W2) |
+| `aee_mobility_gripDeltaMu` | mobility | Wet/ice friction loss: dry reference minus the current surface coefficient (W2) |
+| `aee_mobility_gripLossForceN` | mobility | Coulomb grip-loss force applied with addForce, in newtons (W2) |
+| `aee_mobility_couplingPFH` | mobility | Runtime vehicle coupling PFH handle (W2) |
 | `aee_mobility_brakeTempC` | mobility | Brake rotor temperature in C |
 | `aee_mobility_brakeMu` | mobility | Brake friction coefficient (fade) 0..1 |
 | `aee_mobility_vehicleMassLowKg` | mobility | Vehicle mass estimate lower bound in kg, 0 when unavailable |

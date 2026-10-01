@@ -2996,6 +2996,10 @@ private _p29Pass = 0;
     // probe enumerates every public ground vehicle class, spawns one instance,
     // reads its identity and deletes it. It measures only and applies nothing.
     execVM "aee_p73_fleet_probe.sqf";
+    // PHASE 74 lives in aee_p74_w2_probe.sqf for the same reason: it applies
+    // the W2 runtime coupling on one bound vehicle and reads it back through
+    // getMass and the published grip state. It changes no config.
+    execVM "aee_p74_w2_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.

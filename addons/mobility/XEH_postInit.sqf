@@ -95,3 +95,47 @@ END_COUNTER(applyTerrainDrag);
 
     AEE_LOG_INFO("terrain drag PFH started");
 };
+
+// Runtime vehicle coupling (W2): the computed surface physics drives the
+// engine. Snow load changes the mass through setMass. A wet or icy surface
+// removes grip through a force. Both run on the machine that owns the
+// vehicle. The accretion mass changes slowly, so it runs on a 1 s tick. The
+// grip force must be re-applied every frame, because addForce clears after
+// each simulation step. The candidate list is cached and refreshed every
+// second, like the loops above.
+if (GVAR(vehicleCouplingEnabled)) then {
+    GVAR(couplingVehicles) = [];
+    GVAR(couplingRefresh) = -1;
+    GVAR(couplingMassTick) = -1;
+
+    GVAR(couplingPFH) = [{
+        private _ref = [worldSize / 2, worldSize / 2, 0];
+        private _player = call CBA_fnc_currentUnit;
+        if (!isNil "_player" && {!isNull _player}) then {
+            _ref = getPosATL _player;
+        };
+
+        if ((time - GVAR(couplingRefresh)) > 1) then {
+            GVAR(couplingVehicles) = vehicles select {
+                (alive _x) && {!(_x isKindOf "Air")} && {(_x distance _ref) < GVAR(terrainRadius)}
+            };
+            GVAR(couplingRefresh) = time;
+        };
+
+        private _applyMass = (time - GVAR(couplingMassTick)) > 1;
+        if (_applyMass) then { GVAR(couplingMassTick) = time; };
+
+        {
+            if (_applyMass) then {
+                BEGIN_COUNTER(applyAccretionMass);
+                [_x] call FUNC(applyAccretionMass);
+                END_COUNTER(applyAccretionMass);
+            };
+            BEGIN_COUNTER(applyGripLoss);
+            [_x] call FUNC(applyGripLoss);
+            END_COUNTER(applyGripLoss);
+        } forEach GVAR(couplingVehicles);
+    }, 0.05] call CBA_fnc_addPerFrameHandler;
+
+    AEE_LOG_INFO("vehicle coupling PFH started");
+};
