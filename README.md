@@ -117,7 +117,7 @@ The environment model is a physical layer over the engine, not a replacement for
 
 **Ground and sky.** The engine has no sub-surface terrain model and no radiative sky interface. AEE emulates both from surface classification and published sky models, and labels them as emulation.
 
-**Configuration overrides.** The `aee_physics` addon overrides engine configuration at load. A configuration value cannot change at run time, so the addon is the on-off switch: remove the PBO to disable every override.
+**Configuration overrides.** The `aee_mobility` addon overrides engine configuration at load. A configuration value cannot change at run time, so the PBO is the on-off switch: remove it to disable every override.
 
 ## Roadmap
 
@@ -131,9 +131,9 @@ AEE develops in three phases. The [project board](https://github.com/orgs/lError
 
 ## Structure
 
-23 addons under `addons/`.
+22 addons under `addons/`.
 
-**Core addons (17):** `main`, `core`, `actions`, `armour`, `atmos`, `ballistics`, `environmental`, `fx`, `maritime`, `material`, `mobility`, `nightvision`, `optics`, `physics`, `physiology`, `radio`, `thermal`.
+**Core addons (16):** `main`, `core`, `actions`, `armour`, `atmos`, `ballistics`, `environmental`, `fx`, `maritime`, `material`, `mobility`, `nightvision`, `optics`, `physiology`, `radio`, `thermal`.
 
 **Compat addons (6):** `compat_ace3`, `compat_acm`, `compat_acre2`, `compat_kat`, `compat_realweather`, `compat_tfar`.
 
