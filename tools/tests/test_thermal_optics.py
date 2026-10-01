@@ -3130,7 +3130,7 @@ class TestSQFSync(unittest.TestCase):
             self.assertIn(param, cfg, f"{param} missing from CfgVehicles thermal model")
         # Humans have metabolism; vehicles have none (parked = ambient).
         self.assertIn("class Man: Land", cfg)
-        self.assertIn("tBody = 36.8", cfg)
+        self.assertIn("tBody = 32", cfg)
         self.assertIn("mFact = 0", cfg)
 
     def test_second_sun_constants(self):
@@ -3684,24 +3684,29 @@ class TestSQFSync(unittest.TestCase):
 
     def test_mapwide_thermal_caps(self):
         # map geometry with no selections) at load, zero runtime cost.
-        cfg = (_REPO_ROOT / "addons" / "optics" / "config.cpp").read_text(
+        # thermal is the single owner after the consolidation; optics keeps
+        # no engine-thermal key, so load order cannot change the caps.
+        cfg = (_REPO_ROOT / "addons" / "thermal" / "config.cpp").read_text(
             encoding="utf-8"
         )
         for frag in [
             "class All {",
             "afMax = 70",
-            "htMax = 300",
             "mfMax = 50",
             "class AllVehicles: All",
         ]:
             self.assertIn(frag, cfg, f"config.cpp missing {frag} - map-wide caps")
+        optics = (_REPO_ROOT / "addons" / "optics" / "config.cpp").read_text(
+            encoding="utf-8"
+        )
+        self.assertNotIn("CfgVehicles", optics)
 
     def test_infantry_thermal_config(self):
         # The static config: humans glow (mFact 1, tBody 32), vehicles get REAL
         # thermal caps (afMax 70, mfMax 50 - not 0, which the engine reads
         # as unset and falls back to vanilla 200).  AEE's physics drives
         # the per-part heat (engine/wheels) via setVehicleTIPars on top.
-        cfg = (_REPO_ROOT / "addons" / "optics" / "config.cpp").read_text(
+        cfg = (_REPO_ROOT / "addons" / "thermal" / "config.cpp").read_text(
             encoding="utf-8"
         )
         for frag in [
@@ -3710,7 +3715,7 @@ class TestSQFSync(unittest.TestCase):
             "afMax = 70",
             "mfMax = 50",
             "htMin = 60",
-            "htMax = 300",
+            "htMax = 1800",
         ]:
             self.assertIn(
                 frag,

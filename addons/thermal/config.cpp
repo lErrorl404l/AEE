@@ -23,35 +23,57 @@ class CfgPatches {
 #include "CfgEventHandlers.hpp"
 
 // ─── Engine thermal model (issue #196) ─────────────────────────────────────
-// The ENGINE renders TI mode from its own dynamic thermal model, whose
-// parameters live in CfgVehicles (the ACE-thermals lever).  The vanilla
-// values bake vehicles bright at midnight regardless of the physics; the
-// material swaps (ours, MKK's) modulate the engine output but cannot
-// change the model itself.  This config sets the model's inputs from AEE
-// physics so the engine's dynamic component is realistic:
+// The ENGINE renders TI mode from its own per-model dynamic thermal model,
+// whose parameters live in CfgVehicles.  This is the single owner of those
+// keys: optics/config.cpp no longer declares any of them, so load order can
+// no longer change the outcome.
 //
-//   mFact (0..1)  metabolism influence on temperature
-//   tBody (C)     the model's metabolism temperature (its resting heat)
+// These keys are NOT documented on the BI Community Wiki.  Their meanings
+// survive only in ACE3's config comments (addons/thermals/config.cpp), which
+// are themselves BIS-derived, and in a BIS forum post for the vanilla Tank.
+// No published physics defines afMax, mfMax, htMin, htMax or mFact: they are
+// engine tuning parameters, not measured quantities.  Only tBody has a
+// physical role.
+//
+//   mFact (0..1)  metabolism influence on temperature (0 = none)
+//   tBody (C)     the model's surface (metabolism) temperature
 //   htMin/htMax (s) half-cooling time range (engine state heat decay)
-//   afMax (C)     max temperature from being alive/engine on
-//   mfMax (C)     max temperature from moving (kinetic/friction)
+//   afMax (C)     capped max temperature when alive/engine on
+//   mfMax (C)     capped max temperature when moving (kinetic/friction)
 //
-// Humans: resting metabolism at core temperature (Gagge 36.8 C is the
-// two-node solver's neutral set point).  Vehicles: NO metabolism - they
-// read ambient when parked and cold-soaked, exactly the night behaviour
-// real FLIR shows (Muselli 2021 radiative cooling).  Animals: warm-blooded
-// like humans.
+// tBody is the surface temperature, NOT the core: the engine models one
+// node per model, so there is no core to read, and a thermal imager sees the
+// surface.  Human skin emissivity is 0.97-0.999, so the surface dominates
+// the signal; the resting skin temperature is about 32 C, not the 36.8 C
+// core set point.  Values follow ACE3's ace_thermals (same path above) so
+// both mods agree: with ACE3 loaded, neither declaration silently wins.
+//
+// Warm-blooded: full metabolism (mFact 1) at skin temperature (tBody 32).
+// Vehicles: no metabolism (mFact 0; parked reads ambient) with the ace
+// half-cooling range 60..1800 s, which brackets a thin steel panel (minutes)
+// and an engine block (tens of minutes), capped at 70 C alive and 50 C
+// moving.  Animals are warm-blooded like humans.
+//
+// The caps afMax/mfMax also sit on the class All ROOT so they reach
+// map-embedded buildings and statics.  Those have no selections, so
+// setObjectMaterial cannot touch them and the engine would otherwise bake
+// them hot.  htMin/htMax stay on vehicles only: the cooling-time keys have no
+// meaning at the root.
 class CfgVehicles {
+    class All {
+        afMax = 70;         // map-wide cap, alive/engine-on surface temp (C)
+        mfMax = 50;         // map-wide cap, moving surface temp (C)
+    };
+
     class Land;
     class Man: Land {
         mFact = 1;          // full metabolism influence
-        tBody = 36.8;       // resting core temp (Gagge neutral)
+        tBody = 32;         // skin surface temp (C), not the 36.8 C core
     };
 
-    class All;
     class AllVehicles: All {
-        htMin = 60;         // engine heat decay half-time, hot engine
-        htMax = 1800;       // decay half-time, cold-soaked (30 min)
+        htMin = 60;         // engine heat decay half-time, hot engine (s)
+        htMax = 1800;       // decay half-time, cold-soaked (s), ace value
         afMax = 70;         // alive/engine-on max surface temp (C)
         mfMax = 50;         // moving max surface temp (kinetic, C)
         mFact = 0;          // no metabolism - parked = ambient
@@ -61,6 +83,6 @@ class CfgVehicles {
     class Animal;
     class Animal_Base_F: Animal {
         mFact = 1;
-        tBody = 36.8;
+        tBody = 32;
     };
 };
