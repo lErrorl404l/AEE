@@ -1,0 +1,146 @@
+[
+  {
+    "game_class": "C_Hatchback_01_F",
+    "class_token": "Car",
+    "catalogue_id": "honda_civic_6gen_hatchback",
+    "identity_source": "aee_class_table",
+    "identity_evidence": "AEE class token Car; paired with the Honda Civic 6th generation hatchback. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "C_Hatchback_01_sport_F",
+    "class_token": "Car",
+    "catalogue_id": "honda_civic_6gen_hatchback",
+    "identity_source": "aee_class_table",
+    "identity_evidence": "AEE class token Car; same hatchback body as C_Hatchback_01_F. The sport trim has no separate catalogue entry, so the base hatchback is used and the link stays class_only.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_MRAP_01_F",
+    "class_token": "MRAP",
+    "catalogue_id": "m_atv_m1240",
+    "identity_source": "aee_class_table",
+    "identity_evidence": "AEE class token MRAP; class_map.json binds MRAP to the Oshkosh M-ATV M1240. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_MRAP_03_F",
+    "class_token": "MRAP",
+    "catalogue_id": "m_atv_m1240",
+    "identity_source": "aee_class_table",
+    "identity_evidence": "AEE class token MRAP; the same catalogue MRAP as B_MRAP_01_F. The held catalogue holds one MRAP only, so both factions share it.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_MRAP_02_F",
+    "class_token": "MRAP",
+    "catalogue_id": "m_atv_m1240",
+    "identity_source": "aee_class_table",
+    "identity_evidence": "AEE class token MRAP; the same catalogue MRAP as B_MRAP_01_F. The held catalogue holds one MRAP only, so both factions share it.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_MBT_01_cannon_F",
+    "class_token": "Tank",
+    "catalogue_id": "m1_abrams",
+    "identity_source": "aee_class_table",
+    "identity_evidence": "AEE class token Tank; class_map.json binds Tank to the M1 Abrams. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_MBT_03_cannon_F",
+    "class_token": "Tank",
+    "catalogue_id": "m1_abrams",
+    "identity_source": "aee_class_table",
+    "identity_evidence": "AEE class token Tank; the same catalogue vehicle as B_MBT_01_cannon_F. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_MBT_02_cannon_F",
+    "class_token": "Tank",
+    "catalogue_id": "m1_abrams",
+    "identity_source": "aee_class_table",
+    "identity_evidence": "AEE class token Tank; the same catalogue vehicle as B_MBT_01_cannon_F. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_APC_Tracked_01_rcws_F",
+    "class_token": "Tracked_APC",
+    "catalogue_id": "m113a2",
+    "identity_source": "aee_class_table",
+    "identity_evidence": "AEE class token Tracked_APC; class_map.json binds Tracked_APC to the M113A2. The plan example used the M577A2 gross of 11719 kg, a 3 percent difference inside the same M113 family. The link stays class_only.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_APC_tracked_03_cannon_F",
+    "class_token": "Tracked_APC",
+    "catalogue_id": "m113a2",
+    "identity_source": "aee_class_table",
+    "identity_evidence": "AEE class token Tracked_APC; the same catalogue vehicle as B_APC_Tracked_01_rcws_F. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_APC_Tracked_02_cannon_F",
+    "class_token": "Tracked_APC",
+    "catalogue_id": "m113a2",
+    "identity_source": "aee_class_table",
+    "identity_evidence": "AEE class token Tracked_APC; the same catalogue vehicle as B_APC_Tracked_01_rcws_F. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_Truck_01_transport_F",
+    "class_token": "Truck",
+    "catalogue_id": "m923a2",
+    "identity_source": "aee_class_table",
+    "identity_evidence": "AEE class token Truck; class_map.json binds Truck to the M923A2 5 ton 6x6 cargo truck. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_Truck_02_transport_F",
+    "class_token": "Truck",
+    "catalogue_id": "m923a2",
+    "identity_source": "aee_class_table",
+    "identity_evidence": "AEE class token Truck; the same catalogue truck as B_Truck_01_transport_F. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_Truck_02_transport_F",
+    "class_token": "Truck",
+    "catalogue_id": "m923a2",
+    "identity_source": "aee_class_table",
+    "identity_evidence": "AEE class token Truck; the same catalogue truck as B_Truck_01_transport_F. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_AFV_Wheeled_01_cannon_F",
+    "class_token": "Wheeled_APC",
+    "catalogue_id": "btr_80",
+    "identity_source": "aee_class_table",
+    "identity_evidence": "AEE class token Wheeled_APC; the same catalogue vehicle as B_APC_Wheeled_01_cannon_F. The gun-armed wheeled AFV is heavier than the BTR-80, so the pairing is weak and recorded as such.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "B_APC_Wheeled_01_cannon_F",
+    "class_token": "Wheeled_APC",
+    "catalogue_id": "btr_80",
+    "identity_source": "aee_class_table",
+    "identity_evidence": "AEE class token Wheeled_APC; class_map.json binds Wheeled_APC to the BTR-80. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "I_APC_Wheeled_03_cannon_F",
+    "class_token": "Wheeled_APC",
+    "catalogue_id": "btr_80",
+    "identity_source": "aee_class_table",
+    "identity_evidence": "AEE class token Wheeled_APC; the same catalogue vehicle as B_APC_Wheeled_01_cannon_F. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "grade": "claimed"
+  },
+  {
+    "game_class": "O_APC_Wheeled_02_rcws_v2_F",
+    "class_token": "Wheeled_APC",
+    "catalogue_id": "btr_80",
+    "identity_source": "aee_class_table",
+    "identity_evidence": "AEE class token Wheeled_APC; the same catalogue vehicle as B_APC_Wheeled_01_cannon_F. The class name does not name the catalogue vehicle, so the link stays class_only.",
+    "grade": "claimed"
+  }
+]

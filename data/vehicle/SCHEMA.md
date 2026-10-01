@@ -208,6 +208,36 @@ Rules:
 - One game class maps to at most one catalogue entry. An ambiguous
   mapping is an error.
 
+### The concrete class bindings
+
+The class map binds a class token. The concrete binding layer binds one
+concrete AEE game class to the same catalogue entry. Write it at
+`data/vehicle/class_bindings.json`. It is a top-level array. One record binds
+one concrete game class. The engine-physics override reads this layer, so an
+override never copies an engine value.
+
+| Field | Type | Meaning |
+|---|---|---|
+| `game_class` | string | The exact concrete AEE game class string. |
+| `class_token` | string | The supported token from `classes.json`. |
+| `catalogue_id` | string | The bound catalogue entry. |
+| `identity_source` | string | The `source_id` of the binding source. |
+| `identity_evidence` | string | The words or locator that link the class to the entry. |
+| `grade` | enum | `documented` or `claimed`. |
+
+Rules:
+
+- `game_class` is unique in the layer. One game class binds one catalogue
+  entry.
+- The layer is seeded from `mass_model_calibration.json`. Every `game_class`,
+  `class_token` and `catalogue_id` already exists in the repository. A
+  validator rejects an unknown class token and an unresolved catalogue id.
+- An engine `class_table` or `engine_config` source binds a concrete class
+  only at grade `claimed`. The `identity_evidence` must name the concrete
+  class token it binds. This rule matches the class-map rule above.
+- The layer is the prerequisite for a config override. The override traces to
+  the held catalogue entry this layer binds.
+
 ## 8. Grades
 
 A grade is one exact string. The grade must agree with the source tier

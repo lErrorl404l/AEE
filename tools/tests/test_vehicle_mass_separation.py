@@ -10,7 +10,7 @@ Cases:
   * the generated matcher and lookup equal a fresh render;
   * no catalogue file names the model or an estimated mass;
   * the class map holds no estimated-mass field;
-  * the model JSON is the only new top-level JSON under ``data/vehicle/``;
+  * every new top-level JSON under ``data/vehicle/`` is registered;
   * the estimator mutates no material, no cache and no NRMM result;
   * the generated table holds no sourced grade token.
 
@@ -62,13 +62,15 @@ NRMM_QUARANTINE_NOTE = (
     "the NRMM soil path is quarantined and fail-closed; this digest pins it"
 )
 
-# The mass model artefact and the committed in-game census are the two files
-# this work adds at the data root. A new top-level JSON outside this list
-# breaks the separation guard.
+# The mass model artefact, the committed in-game census and the concrete
+# class-binding layer are the registered files this tree adds at the data
+# root. A new top-level JSON outside this list breaks the separation guard.
 TOP_LEVEL_JSON_BASELINE = frozenset(
     {"classes.json", "class_map.json", "coverage.json", "sources.json"}
 )
-TOP_LEVEL_JSON_NEW = frozenset({"mass_model.json", "mass_model_calibration.json"})
+TOP_LEVEL_JSON_NEW = frozenset(
+    {"mass_model.json", "mass_model_calibration.json", "class_bindings.json"}
+)
 
 # The estimator reports a mass. It must not write the material cache, the class
 # cache, the object material, or the soil result.
