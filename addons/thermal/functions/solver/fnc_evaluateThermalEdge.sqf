@@ -38,23 +38,19 @@ the uncooled 0.05 C reference device at a multiple of 5 and a 15 C
 background, which is 5 * 0.05 * 5.0121 / 288.15 = 0.004349.
 
 THE SENSOR THRESHOLD AND THE DISPLAY BAND STEP ARE TWO DIFFERENT
-QUANTITIES, AND THEY MUST NOT BE CONFLATED.  Two display quantisers are
-live, and their steps differ by a factor of about 8.2.  The selection
-path, fnc_applySelectionThermal, quantises the heat tint to 32 levels, so
-its step is 1 / 31 = 0.03226.  The fusion path, fnc_applyFusionOverlay,
-writes one of 256 emissive materials to the material slot, so its step is
-1 / 255 = 0.003922.  The 16-band step these replaced is retired, so no
-shipped quantiser steps there.
+QUANTITIES, AND THEY MUST NOT BE CONFLATED.  One display quantiser is live:
+the selection path, fnc_applySelectionThermal, quantises the heat tint to
+32 levels, so its step is 1 / 31 = 0.03226.  (The 16-band step and the
+256-material fusion overlay that followed it are both removed, so no other
+quantiser steps in the shipped mod.)
 
 The sensor threshold above is 0.004349.  Against the selection step it is
 0.13 of a step, so an edge can be TRUE, in that the sensor resolves the
-difference, while the operator sees NO difference.  Against the fusion
-step the direction REVERSES: the threshold spans 1.11 steps, so the
-display resolves finer than the sensor and hides nothing the sensor can
-detect.  The comparison is ILLUSTRATIVE of scale, not an identity: the
-threshold is a normalised relative temperature difference, and a step is a
-fraction of the AGC window, so the two numbers are not commensurable and
-neither may be derived from the other.
+difference, while the operator sees NO difference.  The comparison is
+ILLUSTRATIVE of scale, not an identity: the threshold is a normalised
+relative temperature difference, and a step is a fraction of the AGC
+window, so the two numbers are not commensurable and neither may be derived
+from the other.
 
 This kernel therefore clamps the threshold to the 0..1 contrast scale ONLY.
 It does NOT floor the threshold at a display step, on either path, because
@@ -134,16 +130,13 @@ if !(finite _contrast) exitWith { [false, -1] };
 
 // The threshold is a SENSOR quantity, derived per device by
 // fnc_calculateSensorThreshold.  Clamp it to the 0..1 contrast scale only.
-// Two display steps are live, and they differ.  The selection path,
-// fnc_applySelectionThermal, steps 1 / 31 over 32 tint levels.  The fusion
-// path, fnc_applyFusionOverlay, steps 1 / 255 over 256 emissive materials.
-// Both are DISPLAY quantities.  The 0.004349 threshold is 0.13 of a
-// selection step but 1.11 fusion steps, so the direction against the sensor
-// differs by path.  The comparison is illustrative of scale, not an
-// identity, so neither number is derived from the other.  Neither step is
-// a floor, because a band floor would hide the per-device sensitivity and
-// make every device equally blind.  The band floor is deliberately NOT
-// applied here, on either path.
+// One display step is live: the selection path, fnc_applySelectionThermal,
+// steps 1 / 31 over 32 tint levels.  It is a DISPLAY quantity.  The 0.004349
+// threshold is 0.13 of that step.  The comparison is illustrative of scale,
+// not an identity, so neither number is derived from the other.  The step is
+// not a floor, because a band floor would hide the per-device sensitivity
+// and make every device equally blind.  The band floor is deliberately NOT
+// applied here.
 private _thresholdClamped = _threshold max 0 min 1;
 
 private _edge = _contrast >= _thresholdClamped;
