@@ -111,8 +111,8 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:185",
-        "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:307",
+        "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:225",
+        "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:302",
         "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:62"
       ],
       "token": "CAManBase"
