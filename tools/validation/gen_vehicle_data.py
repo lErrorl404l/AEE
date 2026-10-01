@@ -138,17 +138,18 @@ private _normalise = {
 private _key = [_className] call _normalise;
 if (_key == "") exitWith { [] };
 
-// Identity text only. The displayName broadens the query for the alias and
-// keyword layers. It never carries a figure. It is localised, because a
-// vanilla class stores a $STR key there and the real name is what the
-// catalogue names a vehicle.
-private _name = localize (getText (configFile >> "CfgVehicles" >> _className >> "displayName"));
-private _query = [_className + " " + _name] call _normalise;
+// Identity text only: the class name, the raw display name and its
+// localised stringtable text. A vanilla class stores a $STR key in
+// displayName, so all three are needed. None carries a figure.
+private _rawName = getText (configFile >> "CfgVehicles" >> _className >> "displayName");
+private _localName = if (_rawName == "") then { "" } else { localize _rawName };
+private _identity = _className + " " + _rawName + " " + _localName;
+private _query = [_identity] call _normalise;
 private _tokens = [];
 {
     private _token = _x call _normalise;
     if (_token != "") then { _tokens pushBack _token; };
-} forEach ((_className + " " + _name) splitString " _-.");
+} forEach (_identity splitString " _-.");
 
 private _table = [
 __ROWS__
