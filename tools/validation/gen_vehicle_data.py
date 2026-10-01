@@ -50,6 +50,7 @@ ROOT = _REPO
 DEFAULT_DATA = ROOT / "data" / "vehicle"
 MATCH_OUT = ROOT / "addons" / "mobility" / "functions" / "fnc_getVehicleMatch.sqf"
 DATA_OUT = ROOT / "addons" / "mobility" / "functions" / "fnc_getVehicleData.sqf"
+BANDS_OUT = ROOT / "addons" / "mobility" / "functions" / "fnc_getVehicleBands.sqf"
 BINDINGS_FILE = "stringtable_bindings.json"
 
 # The five keys a complete value object carries beside its value.
@@ -293,6 +294,50 @@ if ((_match select 1) != _variantKey) exitWith { [] };
 _match select 6
 """
 
+BAND_TEMPLATE = """#include "..\\script_component.hpp"
+/*
+Vehicle identity band table (issue #117).
+
+Function: aee_mobility_fnc_getVehicleBands.
+
+This file is GENERATED. The generator tools/validation/gen_vehicle_data.py
+writes it from the validated vehicle catalogue under data/vehicle/. Do not
+edit it by hand. Edit the corpus and regenerate it.
+
+The band table is the property fallback of the vehicle classifier
+aee_mobility_fnc_classifyVehicle. A class whose name routes resolve to no
+catalogue entry is matched by its live properties: the vehicle type first,
+then the nearest held mass, then the nearest held extent. A tie selects no
+row, so the classifier never guesses between two catalogue entries.
+
+A row has seven columns:
+
+  0 catalogue_id      string, the stable catalogue key
+  1 vehicle_type      string, "wheeled" or "tracked"
+  2 is_tracked        number, 1 for a tracked entry, else 0
+  3 mass_kg           number, the resolved operating weight in kg, 0 absent
+  4 length_mm         number, the held overall length in mm, 0 absent
+  5 width_mm          number, the held overall width in mm, 0 absent
+  6 height_mm         number, the held overall height in mm, 0 absent
+
+The mass is the catalogue resolution of operating_weight_kg: a held value or
+a named derivation. The three extents are held values only. A zero means the
+corpus holds no value. A corpus value only: the engine mass and the engine
+bounding box are never written here.
+
+Returns the band table, one row per catalogue entry, sorted by catalogue id.
+
+Arguments: none.
+Public: No
+*/
+
+private _table = [
+__ROWS__
+];
+
+_table
+"""
+
 
 def normalise(text: str) -> str:
     """Fold a class, alias or keyword to its lookup key."""
@@ -467,6 +512,74 @@ def load_rows(data_dir: Path = DEFAULT_DATA) -> list[list[object]]:
     return build_rows((entry.to_mapping() for entry in load.entries), index)
 
 
+def _number(value: object) -> int | float:
+    """Return a JSON number, or 0 for anything else. A bool is not a number."""
+    if isinstance(value, bool):
+        return 0
+    if isinstance(value, (int, float)):
+        return value
+    return 0
+
+
+def _held_number(values: dict[str, object], field: str) -> int | float:
+    """Return the held value of one field as a number, or 0 when absent."""
+    held = catalogue.held_value(values, field)
+    if held is None:
+        return 0
+    return _number(held.get("value"))
+
+
+def build_band_row(record: object) -> list[object] | None:
+    """Return one classification-band row, or None when the entry has no id.
+
+    The row is the property fallback of the classifier: the catalogue id, the
+    vehicle type, the tracked flag, the resolved operating weight and the three
+    held extents. The mass resolves through the shared catalogue ladder, so a
+    derived operating weight is carried. A missing extent is a labelled zero,
+    because the corpus holds no derivation for it.
+    """
+    entry = _mapping(record)
+    if entry is None:
+        return None
+    catalogue_id = _text(entry.get("catalogue_id"))
+    vehicle_type = entry.get("vehicle_type")
+    if catalogue_id is None or not isinstance(vehicle_type, str):
+        return None
+    values = _mapping(entry.get("values")) or {}
+    mass = _number(catalogue.resolve_field(values, "operating_weight_kg").value)
+    return [
+        catalogue_id,
+        vehicle_type,
+        1 if vehicle_type == "tracked" else 0,
+        mass,
+        _held_number(values, "length_mm"),
+        _held_number(values, "width_mm"),
+        _held_number(values, "height_mm"),
+    ]
+
+
+def build_band_rows(records: Iterable[object]) -> list[list[object]]:
+    """Build every band row and sort it by catalogue id."""
+    rows: list[list[object]] = []
+    for record in records:
+        row = build_band_row(record)
+        if row is not None:
+            rows.append(row)
+    rows.sort(key=lambda row: str(row[0]))
+    return rows
+
+
+def load_band_rows(data_dir: Path = DEFAULT_DATA) -> list[list[object]]:
+    """Read the catalogue layer and build every band row."""
+    load = catalogue.load(data_dir)
+    return build_band_rows(entry.to_mapping() for entry in load.entries)
+
+
+def format_band_row(row: Sequence[object]) -> str:
+    """Render one band row in the fixed seven-column shape."""
+    return "    [" + ", ".join(_sqf(item) for item in row) + "]"
+
+
 def _sqf(value: object) -> str:
     """Render one SQF literal. A string is quoted and escaped."""
     if isinstance(value, bool):
@@ -593,11 +706,18 @@ def render_data() -> str:
     return DATA_TEMPLATE
 
 
+def render_bands(rows: Sequence[Sequence[object]]) -> str:
+    """Render the classification-band file for the given rows."""
+    body = ",\n".join(format_band_row(row) for row in rows)
+    return BAND_TEMPLATE.replace("__ROWS__", body)
+
+
 def write_outputs(data_dir: Path = DEFAULT_DATA) -> list[list[object]]:
-    """Write both generated files and return the rows."""
+    """Write every generated file and return the matcher rows."""
     rows = load_rows(data_dir)
     MATCH_OUT.write_text(render_match(rows), encoding="utf-8")
     DATA_OUT.write_text(render_data(), encoding="utf-8")
+    BANDS_OUT.write_text(render_bands(load_band_rows(data_dir)), encoding="utf-8")
     return rows
 
 
@@ -605,14 +725,19 @@ def check_outputs(
     data_dir: Path,
     match_out: Path = MATCH_OUT,
     data_out: Path = DATA_OUT,
+    bands_out: Path = BANDS_OUT,
 ) -> int:
-    """Return 0 when both generated files match a fresh render.
+    """Return 0 when every generated file matches a fresh render.
 
     Check mode writes nothing. A missing or stale file returns 1, so a stale
-    generated matcher fails the gate.
+    generated matcher or band table fails the gate.
     """
     rows = load_rows(data_dir)
-    expected = {match_out: render_match(rows), data_out: render_data()}
+    expected = {
+        match_out: render_match(rows),
+        data_out: render_data(),
+        bands_out: render_bands(load_band_rows(data_dir)),
+    }
     stale = False
     for path, text in expected.items():
         if not path.is_file():
@@ -625,8 +750,8 @@ def check_outputs(
     if stale:
         return 1
     print(
-        f"vehicle projection: {len(rows)} rows -> {match_out.name} and "
-        f"{data_out.name} (fresh)"
+        f"vehicle projection: {len(rows)} rows -> {match_out.name}, "
+        f"{data_out.name} and {bands_out.name} (fresh)"
     )
     return 0
 
@@ -643,7 +768,7 @@ def main(argv: Sequence[str]) -> int:
     load = catalogue.load(data_dir)
     print(
         f"vehicle rows: {len(rows)} from {len(load.entries)} catalogue entries, "
-        f"wrote {MATCH_OUT.name} and {DATA_OUT.name}"
+        f"wrote {MATCH_OUT.name}, {DATA_OUT.name} and {BANDS_OUT.name}"
     )
     return 0
 

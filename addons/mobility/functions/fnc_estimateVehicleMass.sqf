@@ -175,7 +175,10 @@ if (_classCount == 1) then {
 // usable. A zero-fill or inverted row is skipped, so the search continues
 // and an empty token row cannot shadow a calibrated vehicle-type row.
 private _vehicleType = "wheeled";
-if (_vehicle isKindOf "Tank" || {_vehicle isKindOf "Tracked_APC"}) then {
+// The tracked flag comes from the shared classifier, which reads the same
+// live isKindOf chain the ad-hoc check used. A match already held by this
+// function is passed in, so the classifier reuses it.
+if (([_vehicle, _match] call FUNC(classifyVehicle)) select 2) then {
     _vehicleType = "tracked";
 };
 

@@ -50,7 +50,8 @@ LINE_RE = re.compile(
     r"(?P<class>\S+) type=(?P<type>wheeled|tracked) "
     r"match=(?P<match>\S+) conf=(?P<conf>\S+) by=(?P<by>\S+) "
     r"mass=(?P<mass>\S+) len=(?P<len>\S+) wid=(?P<wid>\S+) "
-    r"turret=(?P<turret>[01])(?: data=(?P<data>[01]))?\s*$"
+    r"turret=(?P<turret>[01])(?: data=(?P<data>[01]))?"
+    r"(?: cls=(?P<cls>\S+) cby=(?P<cby>\S+))?\s*$"
 )
 
 
@@ -72,6 +73,8 @@ class FleetRow:
     width: str
     turret: int
     value_row: int
+    cls: str = "-"
+    cby: str = "-"
 
     @property
     def matched(self) -> bool:
@@ -108,6 +111,8 @@ def parse_lines(lines: Iterable[str]) -> list[FleetRow]:
                 width=match.group("wid"),
                 turret=int(match.group("turret")),
                 value_row=int(match.group("data") or "0"),
+                cls=match.group("cls") or "-",
+                cby=match.group("cby") or "-",
             )
         )
     return rows
@@ -164,6 +169,20 @@ def report(rows: Sequence[FleetRow], bindings: set[str], emitted: set[str]) -> s
         f"bound but no held max_speed, so not emitted ({len(bound_waiting)}): "
         + (", ".join(bound_waiting) if bound_waiting else "none"),
     ]
+
+    # The classifier route is optional. It is present only when the probe
+    # records it, so an older log reports as before.
+    classified = [row for row in rows if row.cby != "-"]
+    if classified:
+        routes = Counter(row.cby for row in classified)
+        catalogue = routes.get("corpus", 0) + routes.get("band", 0)
+        token_only = routes.get("token", 0)
+        none = routes.get("none", 0)
+        lines.append(
+            f"classifier: {catalogue} catalogue entries "
+            f"({routes.get('corpus', 0)} corpus, {routes.get('band', 0)} band), "
+            f"{token_only} token only, {none} none"
+        )
     if unmatched:
         lines.append(f"unmatched classes ({len(unmatched)}):")
         for row in unmatched:

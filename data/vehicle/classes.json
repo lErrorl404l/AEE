@@ -308,7 +308,7 @@
         "addons/mobility/functions/fnc_calculateSoilStrength.sqf:70",
         "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:76",
         "addons/mobility/functions/fnc_calculateTraction.sqf:78",
-        "addons/mobility/functions/fnc_estimateVehicleMass.sqf:178",
+        "addons/mobility/functions/fnc_classifyVehicle.sqf:80",
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:152",
         "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:61"
       ],
@@ -323,7 +323,7 @@
         "addons/mobility/functions/fnc_calculateSSF.sqf:60",
         "addons/mobility/functions/fnc_calculateSoilStrength.sqf:70",
         "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:77",
-        "addons/mobility/functions/fnc_estimateVehicleMass.sqf:178"
+        "addons/mobility/functions/fnc_classifyVehicle.sqf:80"
       ],
       "token": "Tracked_APC"
     },
