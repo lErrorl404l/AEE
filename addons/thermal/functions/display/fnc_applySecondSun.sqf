@@ -87,11 +87,12 @@ _radiation = _radiation max 0 min 1;
 // terrain darkens at night: a constant brightness 13 at midnight made
 // the ground glow white-hot (the 'cold tyres on white ground' report -
 // the vehicles were correctly dark, the terrain was over-heated).
-// The peak is the A3TI-proven 13 (DEFAULT_SECONDSUN_BRIGHTNESS) scaled
-// by the radiation, with a floor so the scene never fully loses its
-// illumination at dawn/dusk.  The A3TI attenuation is
-// [10e10, 150, 4.3e-5, 4.3e-5].
-private _lightBrightness = 13 * _radiation max 0.15;
+// Peak 13 is an engine brightness-unit calibration (A3TI
+// DEFAULT_SECONDSUN_BRIGHTNESS); no published source exists for that unit,
+// so it is labelled unauthenticated rather than presented as physics. The
+// physical content is the radiation tracking below. No floor: at night
+// radiation is 0, so the fake sun is genuinely OFF. Attenuation is engine units.
+private _lightBrightness = 13 * _radiation;
 
 // The TI sun term is DIRECTIONAL (issue #204): a real scene heats the
 // faces of objects facing the sun - morning thermals warm the east
@@ -106,18 +107,36 @@ if (_radiation <= 0.02) then {
     private _moonAz = missionNamespace getVariable [QEGVAR(core,currentMoonAzimuth), _azimuth];
     if (_moonAz isEqualType 0) then { _azimuth = _moonAz; };
 };
-private _sunPos = (_player getRelPos [150, _azimuth]) vectorAdd [0, 0, 20];
-_sun setPosASL (AGLToASL _sunPos);
-
-_sun setLightBrightness _lightBrightness;
+// Engine work here is the expensive part, not the arithmetic.  Every
+// setPosASL and every setLight* on a live dynamic light makes the engine
+// re-evaluate scene lighting for every lit object, so this ran 4 engine calls
+// 10 times a second.  Two of the four are CONSTANTS and are now written once
+// at creation.  The other two are written only when the physics value has
+// actually moved, and the sun's bearing changes over hours, not per frame.
 _sun setLightAmbient [0.5, 0.5, 0.5];
 _sun setLightAttenuation [10e10, 150, 4.3e-5, 4.3e-5];
+
+private _sunPos = AGLToASL ((_player getRelPos [150, _azimuth]) vectorAdd [0, 0, 20]);
+private _lastPos = missionNamespace getVariable [QGVAR(tiSecondSunPos), [0, 0, 0]];
+if ((_sunPos distance _lastPos) > 1) then {
+    _sun setPosASL _sunPos;
+    missionNamespace setVariable [QGVAR(tiSecondSunPos), _sunPos];
+};
+
+private _lastBright = missionNamespace getVariable [QGVAR(tiSecondSunBright), -1];
+if (abs (_lightBrightness - _lastBright) > 0.001) then {
+    _sun setLightBrightness _lightBrightness;
+    missionNamespace setVariable [QGVAR(tiSecondSunBright), _lightBrightness];
+};
 
 // Trace the sun term every 5 s so day/night behaviour is verifiable in
 // the RPT without the nvgDebug flag (issue #204: 'second sun on at night'
 // report).  Throttled to one line per 5 s.
+// Gated on the module flag. This trace was ungated, so it wrote to the RPT on
+// every install whether or not any diagnostic was switched on.
 private _lastTrace = missionNamespace getVariable [QGVAR(sunTraceTime), -1];
-if (diag_tickTime - _lastTrace > 5) then {
+if (missionNamespace getVariable [QGVAR(thermalDebug), false]
+    && {diag_tickTime - _lastTrace > 5}) then {
     missionNamespace setVariable [QGVAR(sunTraceTime), diag_tickTime];
     diag_log format ["[AEE] SecondSun: rad=%1 bright=%2 dayTime=%3",
         _radiation, _lightBrightness, dayTime];

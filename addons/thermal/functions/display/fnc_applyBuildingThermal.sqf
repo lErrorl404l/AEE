@@ -1,4 +1,5 @@
 #include "..\..\script_component.hpp"
+#include "\z\aee\addons\main\script_debug.hpp"
 /*
  * Per-building thermal (issue #124 migration).
  *
@@ -65,19 +66,40 @@ if (_ambientChanged) then {
 private _viewDist = (getObjectViewDistance select 0) max 300;
 private _objects = [];
 if (_ambientChanged) then {
-    if (_mode == "ENTER") then {
-        _objects = allMissionObjects "";
-    } else {
-        _objects = (_player nearObjects ["House", _viewDist])
-            + (_player nearObjects ["Building", _viewDist]);
-    };
+    // allMissionObjects "" returned 1193 objects on the operator's Altis
+    // session (visible in the RPT as "Building thermal: 1193 found"), and the
+    // per-selection solve then ran over EVERY one of them on thermal entry.
+    // Distant objects are never painted at thermal range, so the bounded scan
+    // the tick path already uses is sufficient on ENTER too.  Entering thermal
+    // was a world scan; it is now a view-distance scan.
+    _objects = (_player nearObjects ["House", _viewDist])
+        + (_player nearObjects ["Building", _viewDist]);
+    private _bldMsg = format ["building thermal scan (ENTER/ambient): %1 objects in %2 m", count _objects, _viewDist];
+    AEE_LOG_DEBUG(_bldMsg);
 };
 // Bound the vehicle list the same way the unit list is bounded.  This line
 // ran on EVERY tick, and `vehicles` is world-wide with no radius, so it fed
 // a per-selection solve for every vehicle in the mission at 10 Hz.
-_objects = _objects + ((vehicles - [player]) select {
-    (_x distance (getPosATL _player)) < _viewDist
-});
+// GUARD + CACHE.  `vehicles` is world-wide, and this line ran on EVERY tick
+// at 10 Hz over every vehicle in the mission, re-evaluating getPosATL per
+// vehicle.  Cached and refreshed on a 1 s timer with the same shape as the
+// mobility loops, so a newly spawned vehicle is picked up within a second.
+// _viewDist is re-read on each refresh, so a view-distance change is honoured
+// on the next tick.
+private _vehNowT = diag_tickTime;
+private _vehList = missionNamespace getVariable [QGVAR(tiVehList), []];
+private _vehListT = missionNamespace getVariable [QGVAR(tiVehListT), -99];
+if ((_vehList isEqualTo []) || ((_vehNowT - _vehListT) > 1)) then {
+    private _playerPosATL = getPosATL _player;
+    _vehList = (vehicles - [player]) select {
+        (_x distance _playerPosATL) < _viewDist
+    };
+    missionNamespace setVariable [QGVAR(tiVehList), _vehList];
+    missionNamespace setVariable [QGVAR(tiVehListT), _vehNowT];
+    private _vehMsg = format ["buildingThermal vehicle cache refreshed: %1 in %2 m", count _vehList, _viewDist];
+    AEE_LOG_DEBUG(_vehMsg);
+};
+_objects = _objects + _vehList;
 
 // ─── Apply: per-selection substrate solve per object (issue #204) ────────
 // Selection discovery is DYNAMIC (fnc_getThermalSelections: Man = all
@@ -94,6 +116,13 @@ _objects = _objects + ((vehicles - [player]) select {
 // engine heat to the skin, rubber 0.22 friction-heats when moving,
 // glass 1.1 stays cold) - so every part heats correctly, no names.
 private _applied = 0;
+// hiddenSelections is FIXED per type.  The config read below ran for every
+// object on every 10 Hz tick; memoised by typeOf like the solver geometry.
+private _hsCache = missionNamespace getVariable [QGVAR(bldgHsCache), -1];
+if (_hsCache isEqualType 0) then {
+    _hsCache = createHashMap;
+    missionNamespace setVariable [QGVAR(bldgHsCache), _hsCache];
+};
 private _solarRadiation = missionNamespace getVariable [QEGVAR(core,currentSolarRadiation), 0];
 if !(_solarRadiation isEqualType 0) then { _solarRadiation = 0; };
 
@@ -106,19 +135,30 @@ if !(_solarRadiation isEqualType 0) then { _solarRadiation = 0; };
     if (count _selNames == 0) then { continue; };
 
     // Single per-vehicle heat value (MKK model) + motion state.
+    BEGIN_COUNTER(bldgVehHeat);
     private _vehicleHeat = [_obj] call FUNC(calculateVehicleHeat);
+    END_COUNTER(bldgVehHeat);
     private _isMoving = (abs (speed _obj)) > 1.5 || {vectorMagnitude (velocity _obj) > 0.5};
     private _heatTrend = _obj getVariable [QGVAR(vehicleHeatTrend), 0];
 
     // Selection names resolved from the indices the discovery returns.
     // getSelectionMaterials keys on NAMES - passing the raw index threw
     // "Type Number, expected String" (issue #204, the RPT error).
-    private _hs = getArray (configOf _obj >> "hiddenSelections");
+    private _hsKey = typeOf _obj;
+    private _hs = _hsCache getOrDefault [_hsKey, -1];
+    if (_hs isEqualType 0) then {
+        _hs = getArray (configOf _obj >> "hiddenSelections");
+        _hsCache set [_hsKey, _hs];
+    };
     private _selCount = count _selNames;
+    // HOISTED out of the per-selection loop.  selectionNames is an ENGINE call
+    // and it was re-fetched for EVERY selection of EVERY object on EVERY tick -
+    // the same defect applyClothingThermal had.  It depends only on the object,
+    // so it is read once per object here.
+    private _names = if (_obj isKindOf "Man") then { selectionNames _obj } else { [] };
     {
         private _selIdx = _x;
         private _selName = if (_obj isKindOf "Man") then {
-            private _names = selectionNames _obj;
             if (_selIdx < count _names) then { _names select _selIdx } else { "" }
         } else {
             if (_selIdx < count _hs) then { _hs select _selIdx } else { "" }

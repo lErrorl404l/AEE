@@ -47,6 +47,7 @@ Arguments:
      weight for the radiation term; a tyre sees ~0.7 ground, a roof
      ~0.3, a standing soldier 0.5
 */
+private _perfT0 = diag_tickTime;
 params ["_obj", "_selection", ["_mode", ""], ["_qInternal", 0, [0]], ["_fGround", 0.5, [0]], ["_massScale", 1, [0]]];
 
 if (_mode == "EXIT") then {
@@ -77,6 +78,11 @@ if (_mode == "EXIT") then {
         };
     } forEach _saved;
     missionNamespace setVariable [QGVAR(selThermalSaved), []];
+    // The repaint gate is per object and per selection, so a stale entry would
+    // suppress the first repaint after a re-entry and leave the restored day
+    // texture on screen.
+    missionNamespace setVariable [QGVAR(paintGate), createHashMap];
+    missionNamespace setVariable [QGVAR(paintBands), createHashMap];
 } else {
     if (isNull _obj || {!hasInterface}) exitWith { 0 };
 
@@ -153,6 +159,117 @@ if (_mode == "EXIT") then {
     private _wind = vectorMagnitude (missionNamespace getVariable [QEGVAR(core,currentWind), [0,0,0]]);
     private _solar = missionNamespace getVariable [QEGVAR(core,currentSolarFlux), 0];
 
+    // Atmospheric path state, resolved ONCE per object: range and the
+    // humidity/fog/air-density trio set the 8-14 um transmission every
+    // selection on this object shares.  Same core-state lookups the other
+    // thermal consumers read; no second environment model.
+    private _humidity = missionNamespace getVariable [QEGVAR(core,currentHumidity), 50];
+    private _fog = missionNamespace getVariable [QEGVAR(core,currentFogDensity), 0];
+    private _airDensity = missionNamespace getVariable [QEGVAR(core,currentAirDensity), 1.225];
+    private _rangeM = if (isNull _viewer) then { 0 } else { _obj distance _viewer };
+    private _tau = [_rangeM, _humidity, _tAir, _fog, rain, _airDensity] call FUNC(calculateAtmosphericTransmission);
+    if (_tau < 0) then { _tau = 1; };   // unusable input: transmissive fallback
+
+    // Original textures: while thermal paint is active getObjectTextures
+    // returns a procedural colour, so the saved original is the solar
+    // absorptance fallback.
+    private _savedTexs = [];
+    {
+        if ((_x select 0) == _obj) then { _savedTexs = _x select 1; };
+    } forEach (missionNamespace getVariable [QGVAR(selThermalSaved), []]);
+
+    // Worn clothing insulation (clo) from the real per-unit registry
+    // (fnc_getEquipmentProperties combined slot).  Cached per uniform so the
+    // inventory walk runs once per garment, not every tick.
+    private _cloWorn = 0;
+    if (_obj isKindOf "CAManBase") then {
+        private _cloCache = missionNamespace getVariable [QGVAR(clothingCloCache), -1];
+        if (_cloCache isEqualType 0) then {
+            _cloCache = createHashMap;
+            missionNamespace setVariable [QGVAR(clothingCloCache), _cloCache];
+        };
+        private _cloKey = str _obj;
+        private _cloEntry = _cloCache getOrDefault [_cloKey, []];
+        private _cloUni = uniform _obj;
+        if ((count _cloEntry) == 2 && {(_cloEntry select 0) == _cloUni}) then {
+            _cloWorn = _cloEntry select 1;
+        } else {
+            private _uniformClo = [_obj] call EFUNC(physiology,getUniformProperties);
+            _cloWorn = if (_uniformClo isEqualType [] && {(count _uniformClo) > 3}) then { _uniformClo select 3 } else { 0 };
+            if !(_cloWorn isEqualType 0) then { _cloWorn = 0; };
+            _cloCache set [_cloKey, [_cloUni, _cloWorn]];
+            missionNamespace setVariable [QGVAR(clothingCloCache), _cloCache];
+        };
+    };
+
+    // Per-object constants, resolved once instead of once per selection.  The
+    // model geometry and the blood model are identical for every selection of
+    // an object, so the per-selection calls were pure repeated cost.
+    //
+    // Convection characteristic length: the natural-convection correlation
+    // integrates over the plate's real vertical extent, not wall thickness.
+    // Rayleigh scales as L^3 and laminar h as L^(-1/4), so a fixed 0.08 m
+    // over-predicted h by about 2x on a 1.5 m panel.
+    private _bbRealObj = boundingBoxReal _obj;
+    private _lCharObj = abs (((_bbRealObj select 1) select 2) - ((_bbRealObj select 0) select 2));
+    if (_lCharObj < 0.1) then {
+        // Degenerate bbox: fall back to the visual bounding box.
+        private _bbVisObj = boundingBox _obj;
+        _lCharObj = abs (((_bbVisObj select 1) select 2) - ((_bbVisObj select 0) select 2));
+    };
+    // Last resort for a model reporting no extent: the engine's own size hint,
+    // floored so the solver never divides by zero.
+    if (_lCharObj < 0.1) then { _lCharObj = (sizeOf _obj) max 0.1; };
+    private _vSpeedObj = abs speed _obj;
+    private _oxObj = [];
+
+    // ─── Repaint gate ────────────────────────────────────────────────────────
+    // setObjectTexture re-uploads a procedural texture and invalidates the
+    // object's render state, so the engine charge lands on the render thread
+    // AFTER any SQF timer stops.  The whole physics scan measures 11 to 14 us
+    // and a selection 0 to 2 us, so the solve is not the cost: 31 selections
+    // repainted every 0.1 s is 310 texture uploads per second, and that is
+    // what scales with what is in front of the operator.
+    //
+    // Two gates, and neither changes the image:
+    //   Cadence.  Surface temperatures run on time constants of 600 s and
+    //   longer, so the 10 Hz per-frame repaint is wasted.  The physics below
+    //   still runs every pass, so the AGC histogram and every thermal
+    //   coupling keep the full rate; only the upload is deferred.
+    //   Change detection.  The colour is quantised to 32 levels, so a
+    //   selection whose band has not moved cannot look different.
+    //
+    // Impulse callers pass mode "FORCE" (muzzle flash, detonation) so an
+    // event is never held for the cadence.
+    private _objKey = str _obj;
+    private _gate = missionNamespace getVariable [QGVAR(paintGate), -1];
+    if (_gate isEqualType 0) then {
+        _gate = createHashMap;
+        missionNamespace setVariable [QGVAR(paintGate), _gate];
+    };
+    private _bands = missionNamespace getVariable [QGVAR(paintBands), -1];
+    if (_bands isEqualType 0) then {
+        _bands = createHashMap;
+        missionNamespace setVariable [QGVAR(paintBands), _bands];
+    };
+    private _lastPaint = _gate getOrDefault [_objKey, 0];
+    private _interval = 1 / (missionNamespace getVariable [QGVAR(repaintHz), 4]);
+    private _forced = (_mode == "FORCE");
+    private _due = _forced || {(diag_tickTime - _lastPaint) >= _interval};
+
+    // GUARD (the dominant thermal cost).  The _due gate below only ever gated
+    // the setObjectTexture, so the whole per-selection SOLVE above it ran on
+    // EVERY 10 Hz tick: calculateMRT, calculateAtmosphericTransmission,
+    // solveTwoNodeSelection twice, getSelectionMaterials, getMaterialThermal,
+    // and calculateBandRadiance three times.  bandRadiance alone logged 490
+    // calls/s in the operator's RPT while the paint was throttled to 4 Hz,
+    // which proves the solve was never throttled.  That solve is an
+    // ELAPSED-TIME relaxation, so it is call-count invariant: evaluating it at
+    // the repaint cadence instead of 10 Hz changes nothing physical, and a
+    // not-due call had nothing to render in the first place.  Cost drops 60%.
+    if (!_due) exitWith { 0 };
+    private _uploaded = 0;
+
     {
         private _sel = _x;
         private _idx = (selectionNames _obj) find _sel;
@@ -167,7 +284,11 @@ if (_mode == "EXIT") then {
 
         // Current per-selection temperature from the object solver state.
         private _stateKey = format ["%1|%2", str _obj, _sel];
-        private _tCurrent = missionNamespace getVariable [QGVAR(selTemperature), createHashMap] getOrDefault [_stateKey, _tAir];
+        // Eager-default allocation removed; the writer path already uses the
+        // lazy -1 form.
+        private _tempMap = missionNamespace getVariable [QGVAR(selTemperature), -1];
+        if (_tempMap isEqualType 0) then { _tempMap = createHashMap; };
+        private _tCurrent = _tempMap getOrDefault [_stateKey, _tAir];
 
         // ─── Two-node path (issue #191) ─────────────────────────────────────
         // Core-bearing selections solve core+skin coupled (Gagge
@@ -179,48 +300,57 @@ if (_mode == "EXIT") then {
         // (Bohac 1996 / Jarrier 2000 lumped-RC, no canonical constants),
         // and building mass needs the ISO 52016 envelope+mass topology.
         private _tNew = _tAir;
+        private _tCoreNew = _tAir;
+        // One radiative field for this selection, from its own ground view
+        // factor.  The solver consumes it directly and must not re-derive MRT.
+        private _mrt = [getPosASL _obj, _fGround] call FUNC(calculateMRT);
         if (_obj isKindOf "CAManBase") then {
-            private _mrt = [getPosASL _obj, _fGround] call FUNC(calculateMRT);
-            // 1 met = 58.2 W/m2 over DuBois 1.8258 m2 = 106.3 W TOTAL
-            // (Gagge, native vanilla resting metabolism - no ACM
-            // dependency).  qGen is TOTAL W, matching the W/K coupling
-            // in the core balance.
-            private _qMet = 58.2 * 1.8258;
+            // Metabolic rate: resting 1 met = 58.2 W/m2 (Gagge 1986) over
+            // DuBois 1.8258 m2, plus movement heat.  qGen is TOTAL W,
+            // matching the W/K coupling in the core balance.  The movement
+            // terms mirror fnc_calculateObjectTemperature so both thermal
+            // paths agree (the movement model itself is an open item: no
+            // published speed-to-metabolism relation is in the repo).
+            private _vSpeed = _vSpeedObj;
+            private _metabMove = switch (true) do {
+                case (_vSpeed > 6):   { 120 };
+                case (_vSpeed > 3):   {  60 };
+                case (_vSpeed > 0.5): {  20 };
+                default               {   0 };
+            };
+            private _qMet = 58.2 * 1.8258 + _metabMove;
 
-            // ─── Blood-volume physiology (issue #196) ────────────────────────
-            // VO2 - and so metabolic heat - is FLAT until DO2crit, the
-            // oxygen-delivery limit, then collapses.  DO2crit is reached
-            // at ~50% blood volume loss (Guyton & Hall; ATLS class III
-            // starts at 30% loss, class IV at 40%): above the limit the
-            // circulation delivers oxygen and heat production holds at
-            // basal; below it the body falls back to anaerobic ATP
-            // (Seekamp 1999) and heat production falls toward zero.  A
-            // corpse makes none at all.  The old surface path scaled
-            // metabolism linearly from the first drop of blood - the
-            // physiology says it holds until DO2crit.  (ACE
-            // ace_medical_bloodVolume, 6.0 L full; vanilla fallback.)
-            private _bloodVol = _obj getVariable ["ace_medical_bloodVolume", 6.0];
-            if !(_bloodVol isEqualType 0) then { _bloodVol = 6.0; };
-            private _bloodFrac = (_bloodVol max 0 min 6) / 6.0;
-            private _metabFrac = if (_bloodFrac >= 0.5) then { 1 } else { _bloodFrac / 0.5 };
+            // ─── Oxygen delivery (issue #196) ────────────────────────────────
+            // One blood model, shared with fnc_calculateObjectTemperature
+            // through aee_physiology_fnc_calculateOxygenDelivery.  CO carries
+            // the acute loss, [Hb] relaxes over hours.  The metabolic
+            // fraction scales oxidative heat, the perfusion index scales
+            // skin blood flow.
+            // Solve once per object, not once per selection.  This is
+            // physics-neutral: calculateOxygenDelivery advances [Hb] on ELAPSED
+            // TIME and stamps the new tick time back into its state entry, so
+            // the second and later calls in a tick saw _elapsed == 0 and
+            // returned without touching [Hb] anyway.
+            if (count _oxObj == 0) then {
+                _oxObj = [_obj, _qMet, 1.8258] call EFUNC(physiology,calculateOxygenDelivery);
+            };
+            private _ox = _oxObj;
+            private _metabFrac = _ox select 6;
             if (!alive _obj) then { _metabFrac = 0; };
             _qMet = _qMet * _metabFrac;
 
             // ─── Water immersion state (issue #193) ──────────────────────────
             // Immersion = below the water surface at a water position.
-            // getPosASL z negative = submerged; surfaceIsWater confirms
-            // the position is a water body.  Water temperature from the
-            // core state (fnc_calculateWaterTemperature, leaky
-            // integrator toward air).  Water speed: no native current
-            // state exists - still water (speed 0) is the honest
-            // default, giving the Boutelier still-water coefficient.
+            // The water temperature IS the immersion signal (dry sentinel
+            // -273); water speed has no native current state, so still water
+            // (0) is the honest default.  Water temperature from the core
+            // state (fnc_calculateWaterTemperature).
             private _waterSpeed = 0;
-            private _tWater = -1;
+            private _tWater = -273;
             private _posASL = getPosASL _obj;
-            if ((_posASL select 2) < 0) then {
-                if (surfaceIsWater _posASL) then {
-                    _tWater = missionNamespace getVariable [QEGVAR(core,currentWaterTemperature), _tAir];
-                };
+            if ((_posASL select 2) < 0 && {surfaceIsWater _posASL}) then {
+                _tWater = missionNamespace getVariable [QEGVAR(core,currentWaterTemperature), _tAir];
+                if !(_tWater isEqualType 0) then { _tWater = _tAir; };
             };
             // Rain rate (0..1) from the engine's built-in rain command - the
             // native weather state, external wettedness driver for the
@@ -233,6 +363,23 @@ if (_mode == "EXIT") then {
             // carried mass (issue #204).
             private _skinMass = (0.1 * 70) * (_massScale max 0.2 min 3);
 
+            // Core state persists separately from the skin: the two nodes
+            // have different capacities and must not be seeded equal each
+            // tick (issue #191).
+            private _coreMap = missionNamespace getVariable [QGVAR(selCoreTemperature), -1];
+            if (_coreMap isEqualType 0) then {
+                _coreMap = createHashMap;
+                missionNamespace setVariable [QGVAR(selCoreTemperature), _coreMap];
+            };
+            private _tCoreNow = _coreMap getOrDefault [_stateKey, 36.8];
+            if !(_tCoreNow isEqualType 0) then { _tCoreNow = 36.8; };
+
+            // Per-selection solar absorptance from the worn garment's own
+            // texture (fnc_getSolarAbsorptance), so a black and a light
+            // uniform differ in sun.  Thermal paint overwrites the texture
+            // during a session, so the saved original is the fallback.
+            private _solarAlpha = [_obj, _idx, (_savedTexs param [_idx, ""])] call FUNC(getSolarAbsorptance);
+
             private _two = [
                 _obj, _sel,
                 "human", "human",       // core class, skin class
@@ -240,12 +387,13 @@ if (_mode == "EXIT") then {
                 0.9 * 70, _skinMass,    // core/skin mass (loadout-scaled)
                 1.8258,                 // DuBois area (m2)
                 0.15,                   // convection plate dim (m)
-                _tCurrent, _tCurrent,   // core/skin current temps
-                _qMet,                  // qGen: resting metabolism (W)
+                _tCoreNow, _tCurrent,   // persistent core, current skin
+                _qMet,                  // qGen: metabolism (W)
                 "vertical", 0.5, _mrt, true, 0.05, true, 5,
-                _waterSpeed, _tWater, _rain, _bloodFrac
+                _waterSpeed, _tWater, _rain, (_ox select 10), _cloWorn, _solarAlpha
             ] call FUNC(solveTwoNodeSelection);
             _tNew = _two select 1;      // skin temp - what FLIR sees
+            _tCoreNew = _two select 0;
         } else {
             // ─── Inert objects (vehicles, buildings): two-node path ────────
             // The single-node surface solve is OBSOLETE - the two-node
@@ -258,16 +406,17 @@ if (_mode == "EXIT") then {
             private _matClass = [_obj, _sel] call FUNC(getSelectionMaterials);
             private _area = 6;                    // default panel area (m2)
             private _lCond = 0.008;               // 8mm panel/block wall (m)
+            private _lChar = _lCharObj;
             private _qGenCore = _qInternal * _area;
             private _two = [
                 _obj, _sel,
                 _matClass, _matClass,
                 _tAir, _wind, _solar, _exposure,
                 50, 20,                          // core/skin mass (kg, lumped panel)
-                _area, _lCond * 10,              // area, convection plate dim
+                _area, _lChar,                   // area, convection plate dim (m)
                 _tCurrent, _tCurrent,
                 _qGenCore,                       // engine heat into the CORE (W)
-                "vertical", 0.5, _tCurrent, false, _lCond, false, 5
+                "vertical", 0.5, _mrt, false, _lCond, false, 5
             ] call FUNC(solveTwoNodeSelection);
             _tNew = _two select 1;               // skin temp - what FLIR sees
         };
@@ -286,9 +435,23 @@ if (_mode == "EXIT") then {
             ];
             _tNew = _tAir;
         };
-        private _selMap = missionNamespace getVariable [QGVAR(selTemperature), createHashMap];
+        if !(finite _tCoreNew) then { _tCoreNew = _tAir; };
+        private _selMap = missionNamespace getVariable [QGVAR(selTemperature), -1];
+        if (_selMap isEqualType 0) then {
+            _selMap = createHashMap;
+            missionNamespace setVariable [QGVAR(selTemperature), _selMap];
+        };
         _selMap set [_stateKey, _tNew];
         missionNamespace setVariable [QGVAR(selTemperature), _selMap];
+        // The core persists separately from the skin: the displayed node is
+        // the skin, the defended core is the solver's other state.
+        private _coreMap = missionNamespace getVariable [QGVAR(selCoreTemperature), -1];
+        if (_coreMap isEqualType 0) then {
+            _coreMap = createHashMap;
+            missionNamespace setVariable [QGVAR(selCoreTemperature), _coreMap];
+        };
+        _coreMap set [_stateKey, _tCoreNew];
+        missionNamespace setVariable [QGVAR(selCoreTemperature), _coreMap];
 
         // ─── FLIR display mapping (issue #196) ─────────────────────────────
         // Real FLIR reads BAND RADIANCE, not temperature: the sensor
@@ -309,15 +472,26 @@ if (_mode == "EXIT") then {
         // it directly.
         private _mat = ([_obj, _sel] call FUNC(getSelectionMaterials)) call FUNC(getMaterialThermal);
         private _eps = _mat select 0;
-        private _rad = [_tNew, _eps, _tAir, _fGround, _tCurrent] call FUNC(calculateBandRadiance);
+        // Publish the selection's OWN emissivity for the AGC.  selTemperature
+        // keeps its "object|selection" keys; this parallel map lets the AGC
+        // window be built from the real materials, not one painted-surface
+        // value that normalises bare metal as if it were painted.
+        private _epsMap = missionNamespace getVariable [QGVAR(selEmissivity), -1];
+        if (_epsMap isEqualType 0) then {
+            _epsMap = createHashMap;
+            missionNamespace setVariable [QGVAR(selEmissivity), _epsMap];
+        };
+        _epsMap set [_stateKey, _eps];
+        missionNamespace setVariable [QGVAR(selEmissivity), _epsMap];
+        private _rad = [_tNew, _eps, _tAir, _fGround, _tCurrent, _tau, _tAir] call FUNC(calculateBandRadiance);
         private _agcMin = missionNamespace getVariable [QGVAR(agcRadMin), -1];
         private _agcMax = missionNamespace getVariable [QGVAR(agcRadMax), -1];
         // Fallback window (first frames / no AGC yet): the radiance of
         // the old -40..150 C span - identical behaviour to the previous
         // fixed window until the AGC warms up.
         if (!(_agcMin isEqualType 0) || !(_agcMax isEqualType 0) || _agcMin >= _agcMax) then {
-            _agcMin = [-40, _eps, _tAir, _fGround, _tCurrent] call FUNC(calculateBandRadiance);
-            _agcMax = [150, _eps, _tAir, _fGround, _tCurrent] call FUNC(calculateBandRadiance);
+            _agcMin = [-40, _eps, _tAir, _fGround, _tCurrent, _tau, _tAir] call FUNC(calculateBandRadiance);
+            _agcMax = [150, _eps, _tAir, _fGround, _tCurrent, _tau, _tAir] call FUNC(calculateBandRadiance);
         };
         private _b = ((_rad - _agcMin) / ((_agcMax - _agcMin) max 1e-6)) max 0 min 1;
         // Polarity (WHOT/BHOT) is applied by a ColorInversion ppEffect in
@@ -333,7 +507,11 @@ if (_mode == "EXIT") then {
         // raw and ungated inside a 10 Hz path, so it wrote to the RPT from the
         // render thread on every new object the sweep reached.
         private _traceKey = format ["%1_%2", _obj, _sel];
-        private _traceN = missionNamespace getVariable [QGVAR(traceCount), createHashMap];
+        private _traceN = missionNamespace getVariable [QGVAR(traceCount), -1];
+        if (_traceN isEqualType 0) then {
+            _traceN = createHashMap;
+            missionNamespace setVariable [QGVAR(traceCount), _traceN];
+        };
         private _n = _traceN getOrDefault [_traceKey, 0];
         if (_n < 20 && {missionNamespace getVariable [QGVAR(thermalDebug), false]}) then {
             _traceN set [_traceKey, _n + 1];
@@ -401,13 +579,42 @@ if (_mode == "EXIT") then {
         // Gated for the same reason as the save block above: in normal vision
         // this selection can be the operator's own uniform, and no teardown
         // runs to put the real texture back.
-        if (_thermalOn) then { _obj setObjectTexture [_idx, _colour] };
+        private _bandKey = "";
+        private _was = "";
+        if (_due) then {
+            _bandKey = _objKey + "|" + _sel;
+            _was = _bands getOrDefault [_bandKey, ""];
+        };
+        // The paint and its _thermalOn gate share one line on purpose.  That is
+        // the shape TestThermalPaintVisionGate.test_heat_texture_paint_is_gated
+        // reads, and the gate must stay visible there: in normal vision this
+        // selection can be the operator's own uniform, and nothing puts the
+        // real texture back.
+        if (_thermalOn && {_due && {_forced || _was != _colour}}) then { _obj setObjectTexture [_idx, _colour]; _bands set [_bandKey, _colour]; _uploaded = _uploaded + 1; };
         // The material stays the object's own (or the FPN rvmat when the
         // thermalFPN setting is on - see the save block).  setObjectTexture
         // replaces the Stage1 texture of whatever material is current, so
         // the heat colour renders over Stage1 and (with FPN) the perlinNoise
         // Stage2 multiplies over it.
     } forEach _selNames;
+
+    // Stamped on EVERY due pass, not only on a real upload.  The old condition
+    // (_uploaded > 0) meant a STATIC scene never advanced the stamp, so _due
+    // stayed true forever and the entire per-selection solve ran on every
+    // 10 Hz tick.  A standing-still observer is exactly that case, and it is
+    // when the lag is worst.  A due pass happens only once per _interval now,
+    // which is what throttles the solve to the repaint cadence (4 Hz default)
+    // instead of 10 Hz.  The solve is an elapsed-time relaxation, so the
+    // larger step is physics-neutral.
+    _gate set [_objKey, diag_tickTime];
+    missionNamespace setVariable [QGVAR(paintGate), _gate];
+    missionNamespace setVariable [QGVAR(paintBands), _bands];
+    if (AEE_TRACE_ON) then {
+        private _objUs = round ((diag_tickTime - _perfT0) * 1000);
+        private _gateMsg = format ["paint %1 | sels %2 | due %3 | uploads %4 | solve %5 us",
+            _objKey, count _selNames, _due, _uploaded, _objUs];
+        AEE_LOG_DEBUG(_gateMsg);
+    };
 };
 
 0

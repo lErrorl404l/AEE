@@ -133,7 +133,7 @@ private _applied = 0;
     // material-scan index), body heat on the grip.
     private _partFlux = [_qInternal, 0] select (_wName != _selName);
     private _flux = _partFlux + _gripHeat;
-    [_player, _wName, "", _flux, 0.3] call FUNC(applySelectionThermal);
+    [_player, _wName, "FORCE", _flux, 0.3] call FUNC(applySelectionThermal);
     _applied = _applied + 1;
 } forEach _weaponSels;
 

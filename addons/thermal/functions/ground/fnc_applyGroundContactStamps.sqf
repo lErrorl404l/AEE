@@ -47,7 +47,11 @@ if !(missionNamespace getVariable [QEGVAR(core,enabled), true]) exitWith {};
 private _pos = getPosATL _obj;
 if (count _pos < 2) exitWith {};
 
-private _selTemps = missionNamespace getVariable [QGVAR(selTemperature), createHashMap];
+private _selTemps = missionNamespace getVariable [QGVAR(selTemperature), -1];
+if (_selTemps isEqualType 0) then {
+    _selTemps = createHashMap;
+    missionNamespace setVariable [QGVAR(selTemperature), _selTemps];
+};
 if (isNil "_selTemps") then { _selTemps = createHashMap; };
 private _key = str _obj;
 

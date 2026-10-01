@@ -57,7 +57,7 @@ if (_near isNotEqualTo []) then {
             private _sel = _sels select 0;
             if (_sel < count _names) then {
                 private _flux = _offset * 120;
-                [_obj, (_names select _sel), "", _flux, 0.5] call FUNC(applySelectionThermal);
+                [_obj, (_names select _sel), "FORCE", _flux, 0.5] call FUNC(applySelectionThermal);
             };
         };
     };

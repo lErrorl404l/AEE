@@ -46,8 +46,11 @@ private _alpha = 0.70;
 private _tex = _fallbackTex;
 private _texs = getObjectTextures _obj;
 if (_selIdx >= 0 && {_selIdx < (count _texs)}) then {
-    if ((_texs select _selIdx) isNotEqualTo "") then {
-        _tex = _texs select _selIdx;
+    private _active = _texs select _selIdx;
+    // A procedural heat colour ("#(rgb,...)") carries no colour, so keep the
+    // caller's fallback (the saved original texture) instead.
+    if (_active isEqualType "" && _active isNotEqualTo "" && (_active select [0, 1]) isNotEqualTo "#") then {
+        _tex = _active;
     };
 };
 _tex = toLower _tex;

@@ -22,10 +22,9 @@ Physics (all sourced - issue #189 audit standards):
     c_p,bl = 4186 J/(kgK) blood specific heat
     m_bl   = skin blood flow, L/(h.m2):
              (6.3 + 200*W_sig)/(1 + 0.5*C_sig)
-             W_sig = max(0, T_sk - 33.7)  vasodilation signal
-             C_sig = max(0, 33.7 - T_sk)  vasoconstriction signal
-             capped 14.4 (= 240 ml/min/m2 max vasodilation) and
-             floored 0.5 (segment research)
+             W_sig = max(0, T_cr - 36.8)  CORE vasodilation signal
+             C_sig = max(0, 33.7 - T_sk)   skin vasoconstriction signal
+             clipped [0.5, 90] L/(h.m2) (Gagge, Fobelets & Berglund 1986)
   k_coupling (W/K), engine/building = k * A / L_cond (Fourier)
     L_cond = block wall thickness (conduction path), distinct from
              L_char (convection plate dimension) - the #124 audit
@@ -40,7 +39,8 @@ Physics (all sourced - issue #189 audit standards):
 
   Respiratory loss (Gagge 1986):
     C_res = 0.0014*M*(34 - T_db), E_res = 0.0023*M*(44 - p_a)
-    [W/m2, p_a in torr] - breathing carries heat before circulation.
+    [W/m2, p_a in torr] with M the ACTUAL metabolic rate, so movement and
+    the perfusion collapse reach ventilation.
 
   Convection (human): h_c = max(3.0 natural, 8.6*v^0.53 forced)
     per Gagge 1986 - NOT the McAdams inert-surface form (5.7+3.8w
@@ -52,32 +52,41 @@ Physics (all sourced - issue #189 audit standards):
     down 0.27 Ra^1/4).
 
   Evaporative (endothermic path): q_evap = w * h_e * (p_sk - p_a)
-    h_e = LR * h_c (Lewis relation, LR = 16.5 K/kPa = 2.2 C/torr)
+    h_e = 1/(r_ea + r_ecl), r_ea = 1/(LR*f_a_cl*h_c), r_ecl = r_clo/(LR*i_cl)
+    (Gagge 1986 / ASHRAE 55; LR = 16.5 K/kPa, i_cl = 0.45 clothed)
     p_sk  = saturation pressure at skin temp (Bolton 1980)
     p_a   = ambient vapour pressure (rh * p_sat(T_air))
     w     = skin wettedness (Gagge evaporative terms)
 
-  Radiation: q_rad = eps * sigma * (T_sk^4 - MRT^4) vs the mean
-    radiant temperature (ISO 7726), NOT air temp.
+  Clothing (Gagge 1986 / ASHRAE 55): the nude dry losses are attenuated by
+    F_cl = r_a/(r_a + r_clo), r_a = 1/(f_a_cl*h_t), r_clo = 0.155*clo,
+    f_a_cl = 1 + 0.15*clo.  A winter parka and a t-shirt no longer read alike.
+
+  Radiation: q_rad = f_eff * eps * sigma * (T_sk^4 - MRT^4) vs the mean
+    radiant temperature (ISO 7726), NOT air temp.  f_eff = A_eff/A_DuBois
+    = 0.73 for a standing body (ASHRAE 55).
 
   Water immersion (issue #193): an immersed surface exchanges with
     WATER, not air.  Boutelier, Bougues & Timbal 1977 (partitional
     calorimetry, 17 nude subjects): still water hc = 43 W/m2K
     thermoneutral / 54 cold+shivering; stirred water
-    hc = 272.9*v^0.5 neutral / 497.1*v^0.65 cold.  Flat-plate
-    correlations OVER-predict (body shape factor), so the measured
-    values are used.  The exchange target becomes the WATER
-    temperature, not air or the air-side MRT.
+    hc = 272.9*v^0.5 neutral / 497.1*v^0.65 cold.  The 1977 values are
+    cited but were NOT independently verified by the issue #189 audit and
+    stand as the best available measured set.  The flat-plate correlations
+    over-predict (body shape factor).  Immersion is signalled by a real
+    water temperature (dry sentinel below -100 C); _waterSpeed is the true
+    current (0 = still water).  The exchange target is the WATER temp.
   Rain wettedness (issue #193): rain is EXTERNAL water, not regulated
     sweat.  A rain-impacted surface is driven toward full wet
     (wettedness = rain/0.3 capped 1) regardless of the sweat rate,
     saturating the evaporative path.
 
-  Inertia (asymmetric transient): one exponential step toward the
-    joint equilibrium.  Heating tau = m*cp/(h*A + k_coupling).
-    Cooling tau lengthened x1.5 when the evaporative path is active
-    (endothermic removal - a wet surface cools slower than a dry one
-    because latent heat must be supplied).
+  Transient: TWO capacities C_sk = 0.97*alpha*m and C_cr = 0.97*(1-alpha)*m
+    (Gagge 1986) with the dynamic alpha = 0.0417737 + 0.7451833/(m_bl +
+    0.585417), giving separate skin and core time constants and the
+    core/skin phase lag.  Each node takes an exact exponential step to the
+    joint equilibrium.  Skin tau lengthened x1.5 when the evaporative path
+    is active (endothermic removal).
 
 Arguments:
   0: object (OBJECT)
@@ -99,18 +108,20 @@ Arguments:
       core balance (all W over the W/K coupling)
   15: orientation (STRING) - "vertical"/"up"/"down"
   16: relative humidity (NUMBER, 0..1)
-  17: ground temp (NUMBER, C) - for the MRT
+  17: mean radiant temperature (NUMBER, C) - the single radiative field
+      from fnc_calculateMRT, NOT a ground temperature
   18: is human (BOOL) - use Gagge physiology
   19: conduction length (NUMBER, m) - block wall thickness
-20: evaporative path on (BOOL)
-   21: time step (NUMBER, s)
-   22: water speed (NUMBER, m/s) - 0 = not immersed; >0 selects the
-       water convection branch (Boutelier 1977)
-   23: water temperature (NUMBER, C) - the exchange target when
-       immersed; -1 = no water
-   24: rain rate (NUMBER, 0..1) - external wettedness driver
-   25: blood fraction (NUMBER, 0..1) - scales skin blood flow for
-       shock vasoconstriction (issue #196); 1 = full blood volume
+  20: evaporative path on (BOOL)
+  21: time step (NUMBER, s)
+  22: water speed (NUMBER, m/s) - true current; 0 = still water
+  23: water temperature (NUMBER, C) - the exchange target when
+      immersed; below -100 = no water
+  24: rain rate (NUMBER, 0..1) - external wettedness driver
+  25: skin perfusion index (NUMBER, 0..1) - shock vasoconstriction,
+      computed by aee_physiology_fnc_calculateOxygenDelivery (issue #196)
+  26: clothing insulation (NUMBER, clo) - 0 = nude (no clothing term)
+  27: solar absorptance (NUMBER, 0..1) - -1 = derive from skin material
 
 Return:
   [coreTempC, skinTempC]
@@ -134,15 +145,17 @@ params [
     ["_qGen", 0, [0]],
     ["_orientation", "vertical", [""]],
     ["_rh", 0.5, [0]],
-    ["_tGround", 15, [0]],
+    ["_mrtC", 15, [0]],
     ["_isHuman", false, [true]],
     ["_lCond", 0.05, [0]],
     ["_evapOn", true, [true]],
     ["_dt", 5, [0]],
     ["_waterSpeed", 0, [0]],
-    ["_tWater", -1, [0]],
+    ["_tWater", -273, [0]],
     ["_rain", 0, [0]],
-    ["_bloodFrac", 1, [0]]
+    ["_skinPerfusion", 1, [0]],
+    ["_clo", 0, [0]],
+    ["_solarAlpha", 0, [0]]
 ];
 
 // ─── Saturation vapour pressure (Bolton 1980) ──────────────────────────────
@@ -155,24 +168,19 @@ private _psat = {
 };
 
 // ─── Convection coefficient ────────────────────────────────────────────────
-// WATER OVERRIDE (issue #193): an immersed surface exchanges with WATER,
-// not air.  Boutelier, Bougues & Timbal 1977 (partitional calorimetry,
-// 17 nude subjects): still water hc = 43 W/m2K thermoneutral, 54 cold+
-// shivering; stirred water hc = 272.9*v^0.5 neutral, 497.1*v^0.65 cold.
-// The flat-plate correlations OVER-predict (body shape factor), so the
-// MEASURED values are used.  Water speed > 0 selects the immersion
-// branch; the exchange target becomes the water temperature.
+// WATER (issue #193): an immersed surface exchanges with WATER, not air.
+// The 1977 measured coefficients are cited but were NOT independently
+// verified by the audit.  Immersion = a real water temperature; the dry
+// sentinel is below -100 C.  _waterSpeed is the true current (0 = still).
+private _immersed = _tWater > -100;
 private _h = 0;
-if (_waterSpeed > 0 && _tWater >= -50) then {
-    private _shivering = if (_isHuman) then { (_tCore0 < 35.5) } else { false };
-    if (_waterSpeed <= 0) then {
-        _h = [43.0, 54.0] select _shivering;
+if (_immersed) then {
+    // Shivering gate = the Gagge combined skin-cold AND core-cold signal.
+    private _shivering = _isHuman && (_tSkin0 < 33.7) && (_tCore0 < 36.8);
+    if (_waterSpeed > 0) then {
+        _h = if (_shivering) then { 497.1 * (_waterSpeed ^ 0.65) } else { 272.9 * (_waterSpeed ^ 0.5) };
     } else {
-        _h = if (_shivering) then {
-            497.1 * (_waterSpeed ^ 0.65)
-        } else {
-            272.9 * (_waterSpeed ^ 0.5)
-        };
+        _h = [43.0, 54.0] select _shivering;
     };
 } else {
     if (_isHuman) then {
@@ -225,31 +233,40 @@ private _kCoupling = if (_isHuman) then {
 };
 private _cond = _kCoupling;  // inert path constant conductance
 
-// ─── Radiation vs MRT (ISO 7726) ──────────────────────────────────────────
-// The mean radiant temperature is the ground hemisphere below and the
-// SKY hemisphere above (issue #196).  A clear night sky is a cold
-// radiative sink - the Swinbank (1963) clear-sky correlation
-// (T_sky = 0.0552 * T_air^1.5, K; R = 5.31e-13 * T^6 W/m2) puts it
-// ~3 K below air at 15 C air and ~35 K below at -5 C - so a
-// high-emissivity surface radiates to it and cools BELOW air
-// temperature (NASA: radiation to the sky dominates convection at
-// night).  This is TOTAL-longwave exchange (the heat-transfer MRT,
-// ISO 7726), which is what the surface energy balance needs.  The
-// sensor-side 8-14 um band sky is far colder still (-20 to -40 C,
-// Tebo 1965) - that belongs in fnc_calculateBandRadiance, not here.
-// Overcast lifts the sky temperature toward air.
+// ─── Radiative field (ISO 7726) ───────────────────────────────────────────
+// _mrtC arrives already combined by fnc_calculateMRT over emissive powers
+// (F_g*Tg^4 + F_sky*Tsky^4 + sum F_obj*T_obj^4) with the per-selection view
+// factors.  The solver must NOT re-derive a second MRT: the old code treated
+// the passed MRT as a ground temperature and blended it 50/50 against a
+// fresh sky, counting the sky twice (audit: ~1.5 C against ~6.4 C on the
+// clear-night case).  The ground view factor now reaches the sink through
+// the caller's MRT, not through a hardcoded 0.5.
 private _tAirK = _tAir + 273.15;
-private _skyK = 0.0552 * (_tAirK ^ 1.5);
-_skyK = _skyK + (_tAirK - _skyK) * (overcast max 0 min 1);
-private _mrtK = (0.5 * ((_tGround + 273.15) ^ 4) + 0.5 * (_skyK ^ 4)) ^ 0.25;
+private _mrtK = _mrtC + 273.15;
 // Immersion exchange target (issue #193): an immersed surface exchanges
 // against the WATER temperature directly, not air or the air-side MRT.
-private _exchK = if (_waterSpeed > 0 && _tWater >= -50) then { _tWater + 273.15 } else { _tAirK };
-private _exchMrtK = if (_waterSpeed > 0 && _tWater >= -50) then { _tWater + 273.15 } else { _mrtK };
+private _exchK = if (_immersed) then { _tWater + 273.15 } else { _tAirK };
+private _exchMrtK = if (_immersed) then { _tWater + 273.15 } else { _mrtK };
 private _sigma = 5.670374419e-8;
 private _skinEps = (_skinClass call FUNC(getMaterialThermal)) select 0;
-private _skinAlpha = (_skinClass call FUNC(getMaterialThermal)) select 1;
+// Solar absorptance: the caller may pass the worn garment's per-selection
+// value from fnc_getSolarAbsorptance (-1 derives it from the material).
+private _skinAlpha = if (_solarAlpha > 0) then { _solarAlpha } else { (_skinClass call FUNC(getMaterialThermal)) select 1 };
+// Projected-area factor A_eff/A_DuBois = 0.73 for a standing body (ASHRAE
+// 55; Gagge).  A body does not radiate over its full DuBois area, so the raw
+// DuBois area over-predicts radiant exchange by about 37 percent.  Inert
+// surfaces radiate over their own area, so the factor is 1.
+private _fRadArea = [1, 0.73] select _isHuman;
 private _qSolar = _skinAlpha * (_solar max 0) * (_exposure max 0 min 1);
+
+// Clothing resistances (Gagge 1986 / ASHRAE 55).
+private _rClo = 0.155 * _clo;
+private _fACl = 1 + 0.15 * _clo;
+private _rEcl = if (_clo > 0) then { _rClo / (16.5 * 0.45) } else { 0 };
+// Series vapour conductance: air layer r_ea = 1/(LR*f_a_cl*h_c) plus the
+// clothing layer r_ecl.  LR = 16.5 K/kPa (Lewis relation).
+private _hE = 1 / (1 / (16.5 * _fACl * (_h max 1e-6)) + _rEcl);
+private _pAK = (_tAir call _psat) * _rh / 1000;  // kPa
 
 // ─── Joint fixed point: analytic core + Newton skin ────────────────────────
 // The core residual is LINEAR in T_cr, so solve it directly and
@@ -258,42 +275,40 @@ private _qSolar = _skinAlpha * (_solar max 0) * (_exposure max 0 min 1);
 private _tCr = _tCore0;
 private _tSk = _tSkin0;
 private _w = 0;
+private _fCl = 1;
+private _alphaC = 0.1;
 for "_i" from 1 to 12 do {
     if (_isHuman) then {
-        // Blood flow (Gagge sigmoid), capped 14.4 L/(h.m2) = 240
-        // ml/min/m2 max vasodilation (segment research).
-        private _wSig = (_tSk - 33.7) max 0;
+        // Gagge, Fobelets & Berglund 1986: dilation driven by CORE warm,
+        // constriction by SKIN cold, clipped [0.5, 90] L/(h.m2).
+        private _warmC = (_tCr - 36.8) max 0;
         private _cSig = (33.7 - _tSk) max 0;
-        private _mBl = (6.3 + 200 * _wSig) / (1 + 0.5 * _cSig);
-        _mBl = (_mBl min 14.4) max 0.5;
-        // Shock vasoconstriction (issue #196): blood loss reduces skin
-        // perfusion DIRECTLY, before any temperature signal - the
-        // classic cold-extremities sign with a defended core.  The Gagge
-        // sigmoid above is pure temperature drive; scaling it by blood
-        // volume makes a haemorrhaging soldier's skin decouple from the
-        // core (cold limbs) while the core holds temperature.  At 40%
-        // blood left the skin flow is cut ~2/3 (ATLS shock physiology).
-        _mBl = _mBl * (0.3 + 0.7 * (_bloodFrac max 0 min 1));
+        private _mBl = (6.3 + 200 * _warmC) / (1 + 0.5 * _cSig);
+        _mBl = (_mBl min 90) max 0.5;
+        // Skin vasoconstriction is the volume/baroreflex axis and arrives
+        // already computed by calculateOxygenDelivery (ATLS class III).
+        // The solver carries no blood-loss threshold of its own.
+        _mBl = _mBl * ((_skinPerfusion max 0) min 1);
+        // Dynamic skin mass fraction (Gagge 1986).
+        _alphaC = 0.0417737 + 0.7451833 / (_mBl + 0.585417);
         _kCoupling = (5.28 + 4186 * _mBl / 3600) * _area;
     } else {
         _kCoupling = _cond;
     };
     // Respiratory loss (Gagge 1986), p_a in torr.
     private _pA = (_tAir call _psat) * _rh / 133.322;
-    // Respiratory loss (Gagge 1986) is HUMAN physiology - a vehicle
-    // panel does not breathe.  Applied to inert objects it drains heat
-    // from an object that has no metabolic source (wrong direction).
+    // Respiratory loss is HUMAN physiology and is driven by the ACTUAL
+    // metabolic rate (_qGen/area), not a fixed resting 58.2 W/m2.
     private _qResp = 0;
     if (_isHuman) then {
-        _qResp = 0.0014 * 58.2 * (34 - _tAir) + 0.0023 * 58.2 * (44 - _pA);
+        private _mRate = if (_area > 0) then { _qGen / _area } else { 0 };
+        _qResp = 0.0014 * _mRate * (34 - _tAir) + 0.0023 * _mRate * (44 - _pA);
     };
     // Shivering (Gagge): 19.4 * C_sig * C_core_sig, from the PERSISTENT
     // core (t_core0) - never the iterating equilibrium (feedback
     // explosion traced to 1363 C).  HUMAN ONLY: a cold parked vehicle
-    // at midnight was receiving q_shiv ~6400 W/m2 (c_sig 16.7 x c_core
-    // 19.8) - 38 kW into a 6 m2 panel, 360x a human's resting
-    // metabolism - and climbed chaotically to 36-40 C (the in-game
-    // 'everything white at midnight' report).  A vehicle cannot shiver.
+    // at midnight was receiving q_shiv ~6400 W/m2 and climbed chaotically
+    // to 36-40 C (the in-game 'everything white at midnight' report).
     private _qShiv = 0;
     if (_isHuman) then {
         private _cSig2 = (33.7 - _tSk) max 0;
@@ -302,22 +317,25 @@ for "_i" from 1 to 12 do {
     };
     // Analytic core solution (linear residual).
     _tCr = _tSk + (_qGen + _qShiv * _area - _qResp * _area) / (_kCoupling + 1e-6);
-    // Skin residual.
+    // Skin residual.  The dry losses pass through the clothing (Gagge 1986 /
+    // ASHRAE 55): F_cl = r_a/(r_a + r_clo) with r_a = 1/(f_a_cl*h_t), h_t
+    // the convective plus linearised radiative coefficient.
     private _tsAbs = _tSk + 273.15;
-    private _conv = _h * (_tsAbs - _exchK);
-    private _rad = _skinEps * _sigma * ((_tsAbs ^ 4) - (_exchMrtK ^ 4));
+    private _hR = 4 * _fRadArea * _skinEps * _sigma * ((((_tsAbs + _exchMrtK) * 0.5) ^ 3));
+    _fCl = 1 / (1 + _rClo * _fACl * (_h + _hR));
+    private _conv = _h * (_tsAbs - _exchK) * _fCl;
+    private _rad = _fRadArea * _skinEps * _sigma * ((_tsAbs ^ 4) - (_exchMrtK ^ 4)) * _fCl;
     // Evaporative (endothermic) path: wettedness x Lewis x vapour deficit.
     _w = 0;
     if (_isHuman && _evapOn) then {
         // Gagge wettedness: 0.06 insensible floor + regulatory sweat.
         // E_rsw = 0.68 * m_rsw; m_rsw = 170*max(0,Tb-36.49)*exp(max(0,Tsk-33.7)/10.7)
-        // E_max = (p_sk - p_a)/(r_ea), w = 0.06 + 0.94*(E_rsw/E_max)
+        // E_max = (p_sk - p_a)/(r_ea + r_ecl), w = 0.06 + 0.94*(E_rsw/E_max)
         private _tBody = 0.1 * _tSk + 0.9 * _tCr;
         private _mRsw = 170 * ((_tBody - 36.49) max 0) * exp (((_tSk - 33.7) max 0) / 10.7);
         private _eRsw = 0.68 * _mRsw;
-        private _pSkT = (_tSk call _psat) / 133.322;  // torr
-        private _pAT = _pA;
-        private _eMax = ((_pSkT - _pAT) max 0) / 0.68;  // r_ea nude ~0.68 torr m2/W
+        private _pSkK = (_tSk call _psat) / 1000;    // kPa
+        private _eMax = ((_pSkK - _pAK) max 0) * _hE;
         _w = if (_eMax > 0) then { 0.06 + 0.94 * ((_eRsw / _eMax) min 1) } else { 0.06 };
         _w = _w min 1;
     };
@@ -327,27 +345,31 @@ for "_i" from 1 to 12 do {
     if (_rain > 0) then {
         _w = (_w max ((_rain / 0.3) min 1)) min 1;
     };
-    private _hE = 16.5 * _h;  // Lewis relation (K/kPa)
     private _pSkK = (_tSk call _psat) / 1000;  // kPa
-    private _pAK = (_tAir call _psat) * _rh / 1000;  // kPa
     private _evap = _w * _hE * ((_pSkK - _pAK) max 0);
     private _rSk = _qSolar + _kCoupling * (_tCr - _tSk) - _conv - _rad - _evap;
     // Newton skin step with the exact evaporative derivative.
-    private _den = _h + 4 * _skinEps * _sigma * (_tsAbs ^ 3) + _w * _hE * ((_tSk call _psat) * 4302.645 / ((_tSk + 243.5) ^ 2)) / 1000 + 1e-6;
+    private _den = _fCl * (_h + 4 * _fRadArea * _skinEps * _sigma * (_tsAbs ^ 3)) + _w * _hE * ((_tSk call _psat) * 4302.645 / ((_tSk + 243.5) ^ 2)) / 1000 + 1e-6;
     _tSk = _tSk + _rSk / _den;
     _tSk = (_tSk max (_tAir - 60)) min (_tAir + 500);
 };
 private _tCoreEq = _tCr;
 private _tSkinEq = _tSk;
 
-// ─── Asymmetric transient (one exponential step) ───────────────────────────
-private _skinMat = _skinClass call FUNC(getMaterialThermal);
-private _cpSkin = _skinMat select 3;
-private _tau = _mSkin * _cpSkin / ((_h * _area) max 1e-6 + _kCoupling);
-_tau = (_tau max 30) min 3600;
-if (_w > 0.06) then { _tau = _tau * 1.5; };
-private _kExp = 1 - exp (-_dt / _tau);
-private _tSkinNew = _tSkin0 + (_tSkinEq - _tSkin0) * _kExp;
-private _tCoreNew = _tCore0 + (_tCoreEq - _tCore0) * _kExp;
+// ─── Two-node transient: two capacities, two time constants ────────────────
+// Gagge 1986 capacities C_sk = 0.97*alpha*m and C_cr = 0.97*(1-alpha)*m with
+// the dynamic alpha, so core and skin relax on separate clocks (the
+// core/skin phase lag).  The one-capacity model this replaces had no core
+// state and relaxed both nodes on the skin clock.
+private _mBody = _mCore + _mSkin;
+private _cSkin = 0.97 * _alphaC * _mBody * 1000;   // J/K
+private _cCore = 0.97 * (1 - _alphaC) * _mBody * 1000;
+private _tauSk = _cSkin / ((_h * _area * _fCl) max 1e-6 + _kCoupling);
+private _tauCr = _cCore / (_kCoupling max 1e-6);
+_tauSk = (_tauSk max 30) min 3600;
+_tauCr = (_tauCr max 30) min 3600;
+if (_w > 0.06) then { _tauSk = _tauSk * 1.5; };
+private _tSkinNew = _tSkin0 + (_tSkinEq - _tSkin0) * (1 - exp (-_dt / _tauSk));
+private _tCoreNew = _tCore0 + (_tCoreEq - _tCore0) * (1 - exp (-_dt / _tauCr));
 
 [_tCoreNew, _tSkinNew]

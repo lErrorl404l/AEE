@@ -31,7 +31,8 @@ from sqf_lite import run_sqf
 # Real material registry values from fnc_getMaterialThermal.sqf.
 _REGISTRY = {
     "metal": [0.90, 0.70, 7850, 490, 50],
-    "aluminium": [0.90, 0.30, 2700, 900, 205],
+    "aluminium": [0.05, 0.30, 2700, 900, 205],
+    "aluminium_painted": [0.90, 0.30, 2700, 900, 205],
     "glass": [0.90, 0.15, 2500, 840, 1.1],
     "rubber": [0.95, 0.90, 1314, 1898, 0.22],
     "plastic": [0.95, 0.50, 1040, 1506, 0.17],
@@ -86,10 +87,18 @@ def _solve(
     evap_on,
     dt,
     water_speed=0.0,
-    t_water=-1.0,
+    t_water=-273.0,
     rain=0.0,
-    blood_frac=1.0,
+    skin_perfusion=1.0,
+    clo=0.0,
+    solar_alpha=0.0,
 ):
+    # The solver now consumes a MEAN RADIANT TEMPERATURE, not a ground
+    # temperature; the caller forms it (fnc_calculateMRT).  Mirror that here
+    # so the sky sink is still exercised.
+    t_air_k = t_air + 273.15
+    sky_k = 0.0552 * t_air_k**1.5
+    mrt = (0.5 * (t_ground + 273.15) ** 4 + 0.5 * sky_k**4) ** 0.25 - 273.15
     return run_sqf(
         _SOLVER,
         [
@@ -110,7 +119,7 @@ def _solve(
             q_gen,
             orientation,
             rh,
-            t_ground,
+            mrt,
             is_human,
             l_cond,
             evap_on,
@@ -118,7 +127,9 @@ def _solve(
             water_speed,
             t_water,
             rain,
-            blood_frac,
+            skin_perfusion,
+            clo,
+            solar_alpha,
         ],
         _GLOBALS,
     )
@@ -241,6 +252,58 @@ class TestSqfTwoNode(unittest.TestCase):
         )
         self.assertGreater(core, 30)
         self.assertGreater(skin, 10)
+
+    def _cold_human(self, **over):
+        # A cold, still soldier; the caller supplies only the axis under
+        # test (clo or immersion).
+        base = dict(
+            core="human",
+            skin="human",
+            t_air=-5.0,
+            wind=3.0,
+            solar=0.0,
+            exposure=1.0,
+            m_core=63,
+            m_skin=7,
+            area=1.8258,
+            l_char=0.15,
+            t_core0=36.8,
+            t_skin0=33.7,
+            q_gen=58.2 * 1.8258,
+            orientation="vertical",
+            rh=0.5,
+            t_ground=-5.0,
+            is_human=True,
+            l_cond=0.05,
+            evap_on=True,
+            dt=5.0,
+        )
+        base.update(over)
+        return _solve(**base)
+
+    def test_clothing_insulation_reaches_the_solve(self):
+        # Issue #191 finding 4: clothing now enters the dry and vapour skin
+        # balance (r_clo = 0.155*clo).  A winter parka keeps the skin warmer
+        # than a light shirt.  Before the fix the two clo values were
+        # identical because none reached the solver.
+        _, skin_light = self._cold_human(clo=0.5)
+        _, skin_parka = self._cold_human(clo=2.5)
+        self.assertGreater(skin_parka, skin_light)
+
+    def test_immersion_exchanges_with_water(self):
+        # Issue #191 finding 7: a submerged soldier exchanges with WATER.
+        # Still water (speed 0) uses the measured 43 W/m2K branch, so the
+        # skin falls below the same soldier's temperature in air.
+        _, skin_air = self._cold_human()
+        _, skin_water = self._cold_human(
+            t_air=10.0, t_ground=10.0, t_water=10.0, water_speed=0.0
+        )
+        self.assertLess(skin_water, skin_air)
+        # Stirred (0.2 m/s) water removes more heat than still water.
+        _, skin_stirred = self._cold_human(
+            t_air=10.0, t_ground=10.0, t_water=10.0, water_speed=0.2
+        )
+        self.assertLess(skin_stirred, skin_water)
 
     def test_sqf_executes_not_mirror(self):
         # Guard against the evaluator being bypassed: the solver file

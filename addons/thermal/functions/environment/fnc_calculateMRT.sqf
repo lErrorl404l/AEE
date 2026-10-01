@@ -32,8 +32,13 @@ of sky (view factors 0.5 / 0.5 - ISO 7726 spherical/standing-person
 approximation), plus a contribution from nearby warm objects whose
 view factor falls with distance.
 
-  MRT = F_ground * T_ground + F_sky * T_sky + sum(F_obj_i * T_obj_i)
+  MRT^4 = F_ground * T_ground^4 + F_sky * T_sky^4 + sum(F_obj_i * T_obj_i^4)
   F_ground + F_sky + sum(F_obj) = 1
+
+The combination is over EMISSIVE POWERS (Stefan-Boltzmann), not a linear
+temperature average: two surfaces at 300 K and 270 K do not average to 285 K
+radiatively.  The linear form is about 5 K too cold on the audit's clear
+night case (air 15 C, ground 15 C, Swinbank sky -3.2 C).
 
 Per-selection view factors: a tyre/undercarriage selection sits ON the
 ground (F_ground ~0.7, sky ~0.1); a roof selection sees the sky
@@ -116,8 +121,7 @@ private _fSky = 1 - _fGround - _fObj;
 if (_fSky < 0) then { _fSky = 0; };
 if (_fObj > 0) then {
     private _meanObj = _objContrib / _objFactor;
-    private _mrt = (_fGround * _tGround) + (_fSky * _tSky) + (_fObj * _meanObj);
-    _mrt
+    ((_fGround * ((_tGround + 273.15) ^ 4)) + (_fSky * ((_tSky + 273.15) ^ 4)) + (_fObj * ((_meanObj + 273.15) ^ 4))) ^ 0.25 - 273.15
 } else {
-    (_fGround * _tGround) + (_fSky * _tSky)
+    ((_fGround * ((_tGround + 273.15) ^ 4)) + (_fSky * ((_tSky + 273.15) ^ 4))) ^ 0.25 - 273.15
 }

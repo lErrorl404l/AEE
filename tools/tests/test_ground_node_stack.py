@@ -50,15 +50,19 @@ def water_sat_pressure_pa(T_c):
     return 611.2 * math.exp(17.67 * T_c / (T_c + 243.5))
 
 
-def soil_conductivity(moisture, k_dry=0.27, k_sat=2.14, fine=False):
+def soil_conductivity(sr, k_dry=0.27, k_sat=2.14, fine=False):
     """Johansen 1975 Kersten interpolation (LOGARITHMIC unfrozen form).
 
-    Ke = 0.7*log10(Sr) + 1.0   coarse soils (Sr > 0.05)
-    Ke = log10(Sr) + 1.0       fine soils
-    frozen: Ke = Sr (linear)
+    sr is the DEGREE OF SATURATION theta/phi.  The SQF node stack computes
+    sr = theta / phi from the material porosity before this call; before
+    that fix the raw volumetric water content was passed in its place.
+
+    Ke = 0.7*log10(sr) + 1.0   coarse soils (sr > 0.05)
+    Ke = log10(sr) + 1.0       fine soils
+    frozen: Ke = sr (linear)
     k = k_dry + Ke*(k_sat - k_dry)
     """
-    sr = max(min(moisture, 1.0), 0.01)
+    sr = max(min(sr, 1.0), 0.01)
     if sr <= 0.05:
         ke = 0.0
     elif fine:
@@ -95,15 +99,16 @@ def surface_energy_flux(
 ):
     """Surface boundary flux (W/m2): net = solar + longwave - sens - latent.
 
-    q_net = alpha*G*0.7 + eps*sigma*(Tsky^4) - eps*sigma*Ts^4
+    q_net = alpha*G + eps*sigma*(Tsky^4) - eps*sigma*Ts^4
             - h*(Ts-Tair) - lambda*E_PM
-    Positive = into the soil (heating).
+    Positive = into the soil (heating).  alpha_s IS the solar absorptance,
+    so it already carries the surface reflectance (no second albedo factor).
     """
     h = 5.7 + 3.8 * wind  # McAdams, W/m2K
     ts_k = t_surf + 273.15
     tair_k = t_air + 273.15
     tsky_k = t_sky + 273.15
-    q_solar = alpha_s * solar * 0.7  # bare-soil albedo 0.3
+    q_solar = alpha_s * solar
     q_lw_in = eps_s * SIGMA * (tsky_k**4)
     q_lw_out = eps_s * SIGMA * (ts_k**4)
     q_sens = h * (ts_k - tair_k)
@@ -169,7 +174,7 @@ def crank_nicolson(t_nodes, dz, alpha_layer, dt, q_top, t_bot):
     # half-cell (finite-volume form).  The heat entering the top cell of
     # thickness dz/2 in time dt raises its temperature by
     #   dT = q_top * dt / (rho*cp * dz/2) = q_top * dt * 2 / (rho*cp*dz)
-    k0 = soil_conductivity(0.3)  # surface layer moisture ~0.3
+    k0 = soil_conductivity(0.3)  # surface-layer degree of saturation ~0.3
     rho_c0 = 1.68e6 + 0.3 * (2.72e6 - 1.68e6)
     d[0] += q_top * dt * 2.0 / (rho_c0 * dz[0])
     # Bottom boundary: fixed temperature

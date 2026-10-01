@@ -109,6 +109,8 @@ if (isNull _src) then {
     ];
 
     missionNamespace setVariable [QGVAR(rainDropSource), _src];
+    // Force the first post-create tick to re-apply the real eye velocity.
+    missionNamespace setVariable [QGVAR(rainDropEyeVel), [999, 999, 999]];
 };
 
 // ─── Reposition to the camera eye every tick ──────────────────────────────
@@ -133,33 +135,43 @@ _src setPosASL (_eye vectorAdd (_camDir vectorMultiply 0.1));
 // moveVelocity (no per-tick velocity command), so re-apply the params
 // each tick with moveVelocity = eyeVel.  Fresh drops spawn already glued
 // to the eye; old drops (max 0.3 s) age out naturally.
-_src setParticleParams [
-    ["\A3\data_f\ParticleEffects\Universal\Refract", 1, 0, 1],
-    "",                                       // animation
-    "Billboard",                              // type: faces camera
-    1,                                        // timer period (s)
-    0.3,                                      // lifetime (s)
-    [0, 0, 0],                                // pos: relative to emitter
-    _eyeVel,                                  // moveVelocity: co-move with eye
-    1,                                        // rotation velocity
-    1,                                        // weight
-    0,                                        // volume
-    0,                                        // rubbing: no wind (on lens)
-    [0.05, 0.08],                             // size: 5-8 cm
-    missionNamespace getVariable [QGVAR(rainDropColor),
-        if (missionNamespace getVariable [QGVAR(thermalDebug), false]) then {
-            [[1, 0, 1, 1], [1, 0, 1, 0.8]]
-        } else {
-            [[1, 1, 1, 1], [1, 1, 1, 0.8]]
-        }
-    ],
-    [0],                                      // anim phase
-    0,                                        // random dir
-    0,
-    "",                                       // onTimer
-    "",                                       // beforeDestroy
-    objNull                                   // object: none (world emitter)
-];
+// Guarded: setParticleParams reconfigures the WHOLE emitter (21 arguments)
+// and this runs on every tick of the 0.1 s optics pass for NVG and thermal
+// both.  The eye velocity is the only input that changes, so the re-apply is
+// gated on it.  A stationary or steadily-moving observer writes nothing.
+private _lastVel = missionNamespace getVariable [QGVAR(rainDropEyeVel), [999, 999, 999]];
+if ((_eyeVel distance _lastVel) > 0.01) then {
+    missionNamespace setVariable [QGVAR(rainDropEyeVel), _eyeVel];
+    _src setParticleParams [
+        ["\A3\data_f\ParticleEffects\Universal\Refract", 1, 0, 1],
+        "",                                       // animation
+        "Billboard",                              // type: faces camera
+        1,                                        // timer period (s)
+        0.3,                                      // lifetime (s)
+        [0, 0, 0],                                // pos: relative to emitter
+        _eyeVel,                                  // moveVelocity: co-move with eye
+        1,                                        // rotation velocity
+        1,                                        // weight
+        0,                                        // volume
+        0,                                        // rubbing: no wind (on lens)
+        [0.05, 0.08],                             // size: 5-8 cm
+        missionNamespace getVariable [QGVAR(rainDropColor),
+            if (missionNamespace getVariable [QGVAR(thermalDebug), false]) then {
+                [[1, 0, 1, 1], [1, 0, 1, 0.8]]
+            } else {
+                [[1, 1, 1, 1], [1, 1, 1, 0.8]]
+            }
+        ],
+        [0],                                      // anim phase
+        0,                                        // random dir
+        0,
+        "",                                       // onTimer
+        "",                                       // beforeDestroy
+        objNull                                   // object: none (world emitter)
+    ];
+    private _velMsg = format ["rainDroplets emitter re-applied, eyeVel %1", _eyeVel];
+    AEE_LOG_DEBUG(_velMsg);
+};
 
 // Drop interval scales with rain: heavy rain = ~0.1 s, light = ~0.5 s.
 private _interval = 0.5 / (_rain + 0.2);

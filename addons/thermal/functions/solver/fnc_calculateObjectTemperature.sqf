@@ -46,6 +46,7 @@ Stored in GVAR(objectTemperatures) as [object, temperature] pairs, plus
 GVAR(avgVehicleTemp), GVAR(avgInfantryTemp), and GVAR(avgGroundTemp).
 */
 
+private _perfT0 = diag_tickTime;
 params [
     ["_center", objNull, [objNull, []]],
     ["_radius", 100, [0]],
@@ -94,7 +95,11 @@ private _insulation = 0.3 + 0.5 * ((_insulationSetting - 0.5) / 1.5);
 _insulation = _insulation max 0.3 min 0.8;
 
 // ─── Persistent thermal state ─────────────────────────────────────────────
-private _thermalState = missionNamespace getVariable [QGVAR(thermalState), createHashMap];
+private _thermalState = missionNamespace getVariable [QGVAR(thermalState), -1];
+if (_thermalState isEqualType 0) then {
+    _thermalState = createHashMap;
+    missionNamespace setVariable [QGVAR(thermalState), _thermalState];
+};
 private _now = diag_tickTime;
 
 // ─── Scan interval gate ───────────────────────────────────────────────────
@@ -114,37 +119,42 @@ private _now = diag_tickTime;
 // behaviour for a calibration sweep.
 private _scanInterval = missionNamespace getVariable [QGVAR(objectScanInterval), 30];
 if !(_scanInterval isEqualType 0) then { _scanInterval = 30; };
-if (_scanInterval > 0) then {
-    private _lastScan = missionNamespace getVariable [QGVAR(objectScanLast), -1e9];
-    if ((_now - _lastScan) < _scanInterval) exitWith {
-        // Not due. Publish the cached summary so a consumer still reads a
-        // value rather than nothing.
-        missionNamespace getVariable [QGVAR(objectTemperatureSummary), []]
-    };
-    missionNamespace setVariable [QGVAR(objectScanLast), _now];
+// The early exit must be a SINGLE top-level if-exitWith, the same shape as the
+// isNull _center guard above.  MEASURED DEFECT: with the exitWith nested inside
+// the then-block of the interval test, the scan ran on EVERY 5 s environment
+// tick (RPT scan log at 9:28:03/:08/:13/:18 and every older run too), while a
+// working 30 s throttle averages ~2-3 ms.  It read 10-14 ms/call sustained.
+private _lastScan = missionNamespace getVariable [QGVAR(objectScanLast), -1e9];
+if ((_scanInterval > 0) && {(_now - _lastScan) < _scanInterval}) exitWith {
+    // Not due. Publish the cached summary so a consumer still reads a
+    // value rather than nothing.
+    missionNamespace getVariable [QGVAR(objectTemperatureSummary), []]
 };
+missionNamespace setVariable [QGVAR(objectScanLast), _now];
 
 // ─── Ground temperature ───────────────────────────────────────────────────
-// Per-position ground solve (issue #124).  The old per-class gain table
-// (a 5-15 C offset hack per surface type) and the manual wind/shade
-// re-application are gone: the real solver does the full energy balance
-// per material (asphalt absorbs far more than grass - alpha from the
-// material registry), handles cloud via the flux, and adds thermal
-// stamps.  The only thing kept here is the object's own inertia toward
-// the ground it stands on (a vehicle on hot asphalt warms through its
-// tyres - see _groundTau below).
+// The ground temperature comes from FUNC(calculateGroundTemperature), which
+// delegates to the per-position node stack and carries its own thermal
+// memory.  A second exponential filter here double-integrated it, and its
+// tau was a chosen 600 s; both are removed.
 private _centerASL = getPosASL _center;
 private _groundTarget = [_centerASL] call FUNC(calculateGroundTemperature);
-
-// Ground thermal inertia: exponential approach to the target.  The
-// step is the wall-clock delta since the last tick, clamped so a long
-// pause cannot teleport the temperature.
-private _groundTau = 600;  // generic ground: slow (rock/sand); vegetation is 300 in the solver
-private _groundState = _thermalState getOrDefault ["ground", [_airTemp, _now]];
-private _groundTemp = _groundState select 0;
-private _groundDt = ((_now - (_groundState select 1)) max diag_deltaTime) min 30;
-_groundTemp = _groundTemp + (_groundTarget - _groundTemp) * (1 - exp (-_groundDt / _groundTau));
+private _groundTemp = _groundTarget;
 _thermalState set ["ground", [_groundTemp, _now]];
+
+// ─── Loop-invariant evaporation terms ─────────────────────────────────────
+// These depend only on wind, air temperature, humidity and rain, none of
+// which change during one scan, yet they were recomputed for EVERY object.
+// _eAir carries an exp() and the humidity is a missionNamespace read.
+private _hConv = 5.7 + 3.8 * (_windSpeed max 0);   // McAdams 1954
+private _rhFrac = (missionNamespace getVariable [QEGVAR(core,currentHumidity), 50]) / 100;
+if !(_rhFrac isEqualType 0) then { _rhFrac = 0.5; };
+private _rv = 461.5;                  // water-vapour gas constant, J/kgK
+private _lv = 2.45e6;                 // latent heat of vaporisation, J/kg
+private _hM = _hConv / (1.2 * 1005);  // kg/(m2 s)
+private _eAir = 611.2 * exp (17.67 * _airTemp / (_airTemp + 243.5)) * (_rhFrac max 0 min 1);
+private _rhoVAir = _eAir / (_rv * (_airTemp + 273.15));
+private _wet = rain > 0.02;
 
 // ─── Object scan ──────────────────────────────────────────────────────────
 private _objects = nearestObjects [_center, ["LandVehicle", "Air", "Ship", "Man", "StaticWeapon"], _radius];
@@ -188,7 +198,6 @@ private _infantryCount = 0;
     };
 
     private _target = _airTemp;
-    private _emissivity = 0.95;
     private _tau = 120;
     private _isInfantry = false;
     private _isVehicle = false;
@@ -219,16 +228,10 @@ private _infantryCount = 0;
         // 2. DYING (alive, blood loss): hypovolaemic shock drives
         //    peripheral vasoconstriction - blood moves centrally, the
         //    skin/limb surface cools (classic cold-extremities sign).
-        //    Metabolic heat and the surface base both scale down with
-        //    blood volume (ACE ace_medical_bloodVolume, 6.0 L full).
+        //    Oxidative heat is delivery-limited and the surface base erodes;
+        //    both come from the shared oxygen model in the alive branch.
         // 3. HEALTHY: normal metabolic heat from movement (below).
         private _isDead = !alive _obj;
-        private _bloodVol = _obj getVariable ["ace_medical_bloodVolume", 6.0];
-        if !(_bloodVol isEqualType 0) then { _bloodVol = 6.0; };
-        private _bloodFrac = (_bloodVol max 0 min 6) / 6.0;  // 0..1
-        // Shock threshold: below ~40% blood volume the circulation
-        // fails (compensated -> decompensated shock, ATLS).
-        private _shock = linearConversion [0.4, 0.0, _bloodFrac, 0, 1, true];
 
         if (_isDead) then {
             // No metabolism.  The corpse surface relaxes toward ambient
@@ -240,9 +243,8 @@ private _infantryCount = 0;
             if (!_inShade) then { _target = _target + ((1 - _insulation) * (([0.6, _solarFlux, 0.95, _airTemp, _windSpeed] call FUNC(solarElevation)))); };
         } else {
             // Metabolic heat from movement: idle 0, walk 20, run 60,
-            // sprint 120 W - SCALED by blood fraction (a bleeding man
-            // cannot generate full sprint heat) and suppressed entirely
-            // by shock.
+            // sprint 120 W - SCALED by the fraction of oxidative metabolism
+            // the circulation can still supply.
             private _vSpeed = abs speed _obj;
             private _metabolicHeat = switch (true) do {
                 case (_vSpeed > 6):   { 120 };
@@ -250,7 +252,13 @@ private _infantryCount = 0;
                 case (_vSpeed > 0.5): {  20 };
                 default               {   0 };
             };
-            _metabolicHeat = _metabolicHeat * _bloodFrac * (1 - _shock * 0.8);
+            // Oxygen delivery (issue #196): one blood model shared with
+            // fnc_applySelectionThermal.  The metabolic fraction is
+            // delivery-limited; the perfusion index is the volume axis.
+            private _basalHeat = 58.2 * 1.8258;
+            private _ox = [_obj, _basalHeat + _metabolicHeat, 1.8258] call EFUNC(physiology,calculateOxygenDelivery);
+            _metabolicHeat = _metabolicHeat * (_ox select 6);
+            private _shock = 1 - (_ox select 10);
             _target = _target + _metabolicHeat * 0.05;
 
             // The surface base erodes with shock: cold extremities as
@@ -268,48 +276,126 @@ private _infantryCount = 0;
             _tau = 60 + _shock * 300;
         };
 
-        _emissivity = 0.95; // clothing surface (fabric)
+        // Clothing surface is fabric; the display reads the selection
+        // emissivity from the material registry, not from this branch.
     } else {
         _isVehicle = _obj isKindOf "LandVehicle" || _obj isKindOf "Air" || _obj isKindOf "Ship";
-        if (_isVehicle) then {
-            // Metal body: strong solar absorption, low thermal mass.
-            _emissivity = 0.9;
-            _tau = 120;
-            if (!_inShade) then { _target = _target + ([0.7, _solarFlux, 0.9, _airTemp, _windSpeed] call FUNC(solarElevation)); };
+        private _matClass = "concrete";                 // painted static weapon
+        if (_isVehicle) then { _matClass = "metal"; };
+        // CACHED.  The material registry is static, so this lookup is computed
+        // once per material class instead of once per object per tick.
+        private _matCache = missionNamespace getVariable [QGVAR(objMatCache), -1];
+        if (_matCache isEqualType 0) then {
+            _matCache = createHashMap;
+            missionNamespace setVariable [QGVAR(objMatCache), _matCache];
+        };
+        private _mat = _matCache getOrDefault [_matClass, []];
+        if (_mat isEqualTo []) then {
+            _mat = [_matClass] call FUNC(getMaterialThermal);
+            _matCache set [_matClass, _mat];
+            missionNamespace setVariable [QGVAR(objMatCache), _matCache];
+        };
+        _mat params ["_eps", "_alpha", "_rhoM", "_cpM", "_kM", "_phiM"];
 
-            if (isEngineOn _obj) then {
-                // Engine running: accumulate run time and warm the body.
-                _engineRunTime = _engineRunTime + _dt;
-                private _engineHeat = 40 * (1 - exp (-_engineRunTime / 300));
-                _target = _target + _engineHeat;
-
-                // Exhaust: hot within a minute; a small share of the
-                // exhaust heat raises the vehicle's average signature.
-                private _exhaustTemp = _airTemp + 200 * (1 - exp (-_engineRunTime / 60));
-                _target = _target + (_exhaustTemp - _airTemp) * 0.05;
-            } else {
-                // Engine off: the accumulated run time decays with
-                // tau = 300 s, so the body cools back toward ambient.
-                _engineRunTime = _engineRunTime * exp (-_dt / 300);
+        // Real dimensions: L_c = V/A sets the lumped-capacitance length and
+        // the surface area (Incropera Ch. 5).  boundingBoxReal is the true
+        // model size.  CACHED BY TYPE: it is an engine call and the model
+        // dimensions cannot change at runtime, so the derived area and lumped
+        // length are computed once per object type, not per object per tick.
+        private _geoCache = missionNamespace getVariable [QGVAR(objGeoCache), -1];
+        if (_geoCache isEqualType 0) then {
+            _geoCache = createHashMap;
+            missionNamespace setVariable [QGVAR(objGeoCache), _geoCache];
+        };
+        private _typeKey = typeOf _obj;
+        private _geo = _geoCache getOrDefault [_typeKey, []];
+        if (_geo isEqualTo []) then {
+            private _bb = boundingBoxReal _obj;
+            private _lx = 1; private _ly = 1; private _lz = 1;
+            if ((_bb isEqualType []) && {(count _bb) == 2}) then {
+                private _bMin = _bb select 0;
+                private _bMax = _bb select 1;
+                _lx = (abs ((_bMax select 0) - (_bMin select 0))) max 0.1;
+                _ly = (abs ((_bMax select 1) - (_bMin select 1))) max 0.1;
+                _lz = (abs ((_bMax select 2) - (_bMin select 2))) max 0.1;
             };
+            private _areaC = (2 * ((_lx * _ly) + (_lx * _lz) + (_ly * _lz))) max 0.1;
+            private _lCapC = (((_lx * _ly * _lz) max 0.01) / _areaC) max 1e-4;
+            _geo = [_areaC, _lCapC];
+            _geoCache set [_typeKey, _geo];
+            missionNamespace setVariable [QGVAR(objGeoCache), _geoCache];
+        };
+        private _areaObj = _geo select 0;
+        private _lCap = _geo select 1;
+
+        // Lumped-capacitance time constant (Incropera Ch. 5): tau = m*cp/(h*A).
+        private _massObj = (getMass _obj) max 1;
+        _tau = (_massObj * _cpM) / ((_hConv * _areaObj) max 1e-3);
+
+        // Longwave is exchanged against the MEAN RADIANT TEMPERATURE
+        // (ISO 7726: ground + Swinbank sky + neighbours), not the air, so a
+        // clear calm night cools below air - the effect the old air-5 floor
+        // deleted.
+        private _mrtK = ([getPosASL _obj, 0.5] call FUNC(calculateMRT)) + 273.15;
+        private _sigmaB = 5.670374419e-8;
+
+        // Internal generation as a surface flux.  A running engine's
+        // thermostat holds the body near the coolant setpoint, so the flux it
+        // rejects is h*(T_op - Ta).  The exhaust is a local plume: its gas
+        // temperature is real (the repo's own exhaust tier table; Heywood
+        // 1988) but the wetted area fraction needs engine-bay geometry the
+        // engine does not expose, so that one factor is labelled
+        // unauthenticated rather than derived.
+        private _qInt = 0;
+        if (_isVehicle && {isEngineOn _obj}) then {
+            _engineRunTime = _engineRunTime + _dt;
+            private _tOp = 90;               // thermostat-open coolant temp, C
+            private _tExh = 480;             // exhaust gas temp at the port, C
+            private _exhFrac = 0.05;         // UNAUTHENTICATED area fraction
+            _qInt = ((1 - _exhFrac) * ((_tOp max _airTemp) - _airTemp) + _exhFrac * ((_tExh max _airTemp) - _airTemp)) * _hConv;
         } else {
-            // Painted static weapon: paint lowers solar absorption.
-            _emissivity = 0.92;
-            _tau = 120;
-            if (!_inShade) then { _target = _target + ([0.6, _solarFlux, 0.92, _airTemp, _windSpeed] call FUNC(solarElevation)); };
+            _engineRunTime = _engineRunTime * exp (-_dt / _tau);
         };
 
-        // Convective cooling pulls the surface toward air temperature.
-        _target = _target - _windSpeed * 2;
-        // Radiative-equilibrium floor (air - 5 C, not air): the OLD
-        // `max _airTemp` erased the day-time solar gain whenever wind
-        // cooling exceeded it (a sunlit vehicle read exactly air temp in
-        // the 10-54 calibration sweep), and blocked real night cooling.
-        _target = _target max (_airTemp - 5);
-    };
+        // Conduction to the ground the object stands on (series path through
+        // its own material over L_c) - the old solve had no ground coupling.
+        // HOISTED: identical call and argument to the pre-loop _groundTarget.
+        // It was a full ground solve per object (surfaceType, the 4-layer node
+        // stack, frost, a shadow raycast) repeated for one value already in
+        // hand.
+        private _tGround = _groundTarget;
+        private _uGround = (_kM / _lCap) max 0;
 
-    // Radiant temperature: lower emissivity radiates less heat.
-    _target = _target - (1 - _emissivity) * 2;
+        private _qSolar = _alpha * (_solarFlux max 0);
+        if (_inShade) then { _qSolar = 0; };
+
+        // Evaporative loss only when the surface is wet (rain).  Mass-transfer
+        // coefficient from the heat-mass analogy (Incropera Ch. 6):
+        // h_m = h_c/(rho*cp*Le^(2/3)), Le = 1 for air-water vapour.
+        // (Terms hoisted before the scan: loop-invariant.)
+
+        // Steady surface balance, Newton-solved:
+        //   qSolar + qInt = h*(Ts-Ta) + eps*sigma*(Ts^4-MRT^4)
+        //                   + U_g*(Ts-Tg) + qEvap(Ts)
+        private _tsK = _airTemp + 273.16;
+        for "_iter" from 1 to 12 do {
+            private _tsC = _tsK - 273.15;
+            private _qEvap = 0;
+            if (_wet && (_tsC > 0)) then {
+                private _rhoVsat = (611.2 * exp (17.67 * _tsC / (_tsC + 243.5))) / (_rv * _tsK);
+                _qEvap = _hM * _lv * ((_rhoVsat - _rhoVAir) max 0);
+            };
+            private _res = _qSolar + _qInt
+                - _hConv * (_tsC - _airTemp)
+                - _eps * _sigmaB * ((_tsK ^ 4) - (_mrtK ^ 4))
+                - _uGround * (_tsC - _tGround)
+                - _qEvap;
+            private _deriv = -(_hConv + (4 * _eps * _sigmaB * (_tsK ^ 3)) + _uGround);
+            if (_deriv == 0) exitWith {};
+            _tsK = _tsK - (_res / _deriv);
+        };
+        _target = _tsK - 273.15;
+    };
 
     // Thermal inertia: exponential approach to the equilibrium target.
     _currentTemp = _currentTemp + (_target - _currentTemp) * (1 - exp (-_dt / _tau));
@@ -465,7 +551,13 @@ missionNamespace setVariable [QEGVAR(core,avgVehicleTemp), _avgVehicle];
 missionNamespace setVariable [QEGVAR(core,avgInfantryTemp), _avgInfantry];
 missionNamespace setVariable [QEGVAR(core,avgGroundTemp), _groundTemp];
 
-private _logMsg = format ["thermal: air %1, ground %2, vehicle %3, infantry %4, objects %5", _airTemp, _groundTemp, _avgVehicle, _avgInfantry, count _results];
+private _scanMs = round ((diag_tickTime - _perfT0) * 1000);
+// int %9 is the RESOLVED scan interval.  The 09:27:28 RPT proved the scan ran
+// every 5 s while the interval should be 30; logging the resolved value tells
+// the next run apart the two possible causes (gate semantics vs interval 0).
+private _logMsg = format ["thermal: air %1, ground %2, vehicle %3, infantry %4, objects %5 | scan %6 us | vehicles %7 | humans %8 | int %9",
+    _airTemp, _groundTemp, _avgVehicle, _avgInfantry, count _results, _scanMs, _vehicleCount, _infantryCount,
+    _scanInterval];
 AEE_LOG_DEBUG(_logMsg);
 
 // Cache the result so a tick inside the scan interval returns the last

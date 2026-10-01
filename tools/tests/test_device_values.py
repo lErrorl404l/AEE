@@ -25,7 +25,12 @@ OPTIC = (REPO / "addons/optics/functions/sensor/fnc_getOpticProperties.sqf").rea
 
 
 def extract_tiers(source):
-    """Return {keyword: tier_string} from the standalone switch."""
+    """Return {keyword: tier_string} from the standalone switch.
+
+    The PAS-13 variant cases gate their two-character variant token
+    ("v1"/"v2"/"v3") on the family flag `_isPas`, so the mirror restores
+    the family keywords for any condition that uses the flag.
+    """
     m = re.search(r"switch \(true\) do \{(.*?)\n\};", source, re.S)
     if not m:
         raise SystemExit("switch block not found")
@@ -34,6 +39,8 @@ def extract_tiers(source):
     for case in re.finditer(r"case\s*\((.*?)\):\s*\{(\s*\[[^\]]+\]\s*)\};", body, re.S):
         cond, tier = case.group(1), case.group(2)
         kws = re.findall(r'find "([^"]+)"', cond)
+        if "_isPas" in cond:
+            kws = ["pas-13", "pas13"] + kws
         tier = re.sub(r"\s+", " ", tier).strip()
         for kw in kws:
             tiers[kw] = tier
@@ -83,19 +90,46 @@ class TestThermalDeviceValues(unittest.TestCase):
     def assert_tier(self, kw, netd, resx, resy, w, refresh, cooled):
         self.assertIn(kw, THERMAL_TIERS, f"thermal keyword {kw} missing")
         parts = [float(x) for x in re.findall(r"[0-9.]+", THERMAL_TIERS[kw])]
+        self.assertEqual(len(parts), 6, f"{kw} tuple must be six fields")
         self.assertAlmostEqual(parts[0], netd, delta=0.001, msg=f"{kw} NETD")
         self.assertEqual(int(parts[1]), resx, msg=f"{kw} resX")
         self.assertEqual(int(parts[2]), resy, msg=f"{kw} resY")
+        self.assertAlmostEqual(parts[3], w, delta=0.01, msg=f"{kw} weight")
+        self.assertEqual(int(parts[4]), refresh, msg=f"{kw} refreshHz")
+        self.assertEqual(int(parts[5]), cooled, msg=f"{kw} cooled")
 
-    def test_uncooled(self):
-        # Uncooled microbolometer: NETD 0.05, 640x480, 30 Hz.
-        self.assert_tier("pas13", 0.05, 640, 480, 1.3, 30, 0)
+    def test_cooled_observation_class(self):
+        # doc L118-L123, one tuple per device (the old code folded four
+        # different cooled devices into a single 640x512 tuple).
+        self.assert_tier("catherine", 0.025, 1280, 1024, 7.9, 50, 1)
+        self.assert_tier("ultima", 0.025, 640, 512, 2.5, 50, 1)
+        self.assert_tier("recon", 0.025, 640, 480, 1.9, 50, 1)
+        self.assert_tier("jim", 0.025, 384, 288, 2.8, 50, 1)
+
+    def test_pas13_variants(self):
+        # doc L113-L115: the three PAS-13E(V) variants differ in
+        # resolution and weight; the old code gave V2/V3 one weight.
         self.assert_tier("v1", 0.05, 320, 240, 0.885, 30, 0)
+        self.assert_tier("v2", 0.05, 640, 480, 1.134, 30, 0)
+        self.assert_tier("v3", 0.05, 640, 480, 1.497, 30, 0)
+        # A PAS-13 with no variant token selects the 640x480 MWTS class.
+        self.assert_tier("pas13", 0.05, 640, 480, 1.134, 30, 0)
 
-    def test_cooled(self):
-        # Cooled InSb/MCT: NETD 0.025, 640x512, 50 Hz.
-        self.assert_tier("catherine", 0.025, 640, 512, 2.5, 50, 1)
-        self.assert_tier("jim", 0.025, 640, 512, 2.5, 50, 1)
+    def test_uncooled_families(self):
+        self.assert_tier("coti", 0.05, 320, 240, 0.15, 30, 0)
+        self.assert_tier("envg", 0.04, 640, 480, 1.133, 30, 0)
+        self.assert_tier("sophie", 0.05, 384, 288, 2.0, 50, 0)
+        self.assert_tier("shakhin", 0.05, 640, 480, 2.2, 50, 0)
+        self.assert_tier("mowgli", 0.05, 320, 240, 1.5, 50, 0)
+        self.assert_tier("thermion", 0.025, 640, 480, 0.9, 50, 0)
+        self.assert_tier("helion", 0.04, 384, 288, 0.5, 50, 0)
+        self.assert_tier("scout", 0.05, 640, 512, 0.34, 30, 0)
+
+    def test_bare_variant_tokens_are_family_gated(self):
+        # The variant tokens must not be free-standing: the source must
+        # gate each on the PAS-13 family flag, never match "v1" alone.
+        for variant in ("v1", "v2", "v3"):
+            self.assertIn(f'_isPas && (_t find "{variant}" >= 0)', THERMAL)
 
 
 class TestOpticValues(unittest.TestCase):

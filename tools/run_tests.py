@@ -64,6 +64,7 @@ def main():
         "tools/tests/test_gloc.py",
         "tools/tests/test_two_node.py",
         "tools/tests/test_sqf_two_node.py",
+        "tools/tests/test_oxygen_delivery.py",
         "tools/tests/test_ground_node_stack.py",
         "tools/tests/test_water_thermal.py",
         "tools/tests/test_wet_ground.py",

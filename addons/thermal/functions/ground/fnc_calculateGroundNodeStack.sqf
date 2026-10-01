@@ -79,7 +79,11 @@ if (_material == "") then {
 // node temperatures persist per position across ticks (and across
 // save/JIP via the missionNamespace state).  Keyed by position grid cell
 // + material, as the #194 moisture cache.
-private _state = missionNamespace getVariable [QGVAR(groundNodeStack), createHashMap];
+private _state = missionNamespace getVariable [QGVAR(groundNodeStack), -1];
+if (_state isEqualType 0) then {
+    _state = createHashMap;
+    missionNamespace setVariable [QGVAR(groundNodeStack), _state];
+};
 if (isNil "_state") then { _state = createHashMap; };
 private _cell = format ["%1_%2_%3", floor ((_pos select 0) / 5), floor ((_pos select 1) / 5), _material];
 private _last = _state getOrDefault [_cell, []];
@@ -117,7 +121,7 @@ private _dz = [0.10, 0.30, 0.60, 1.00];
 // layer gets its own conductivity so the stack carries the moisture
 // gradient the land-surface literature requires.
 private _props = [_material] call FUNC(getMaterialThermal);
-_props params ["_eps", "_alphaSurf", "_rho", "_cp", "_kDry"];
+_props params ["_eps", "_alphaSurf", "_rho", "_cp", "_kDry", "_phi"];
 private _kSat = 2.14;  // saturated soil k (de Vries / Wessolek 2022)
 private _moistTop = missionNamespace getVariable [QEGVAR(core,soilMoisture), 0.2];
 if !(_moistTop isEqualType 0) then { _moistTop = 0.2; };
@@ -131,7 +135,10 @@ private _moist = [_moistTop, 0.30, 0.32, 0.32];  // deep layers near FC (0.25-0.
 // (BIKI: 'Base-10 logarithm of x'), so log _sr is log10 directly.
 private _k = [];
 {
-    private _sr = (_moist select _forEachIndex) max 0.02;
+    // Johansen's Kersten number is a function of the DEGREE OF SATURATION
+    // Sr = theta / phi, not the volumetric water content theta (Farouki
+    // 1981 CRREL Monograph 81-1).  phi comes from the material registry.
+    private _sr = (((_moist select _forEachIndex) / (_phi max 0.01)) max 0.02) min 1;
     private _ke = (0.7 * (log _sr)) + 1.0;
     _ke = _ke max 0 min 1;
     _k pushBack (_kDry + (_ke * (_kSat - _kDry)));
@@ -231,8 +238,11 @@ private _ra = (_rho * 1007) / (_h max 1);      // aerodynamic resistance, s/m
 // The snow owner publishes the flux (fnc_calculateSnowAccumulation), so
 // the soil surface does not read warm through a thaw. One writer per
 // variable: the snow function owns the depth AND the melt.
-private _soilSolar = if (_snowCovered) then { 0 } else { _alphaSurf * (_solar max 0) * 0.7 };
-private _Rn = _soilSolar;  // bare-soil albedo 0.3
+// _alphaSurf IS the solar absorptance, so it already carries the surface
+// reflectance; the extra 0.7 was a second albedo term (asphalt real albedo
+// ~0.10, not 0.30) and made the absorbed solar 30% too low.
+private _soilSolar = if (_snowCovered) then { 0 } else { _alphaSurf * (_solar max 0) };
+private _Rn = _soilSolar;  // absorbed solar for the FAO-56 numerator
 private _meltSink = missionNamespace getVariable [QEGVAR(core,snowMeltFlux_Wm2), 0];
 if !(_meltSink isEqualType 0) then { _meltSink = 0; };
 private _qEvap = 0;
@@ -250,6 +260,9 @@ if (_moistTop > 0.02 && {!_snowCovered}) then {
 // forcing flux; the bottom node is the fixed TBOT anchor.
 // Crank-Nicolson: (I - r*D) * T_new = (I + r*D) * T_old + source
 // r = alpha*dt/(2*dz^2) for the CN half-step.
+// F_sky = 1: the surface is treated as a horizontal plate.  Arma exposes
+// no reliable ground slope, so the slope term is omitted - an engine limit,
+// not a physics choice.
 private _fluxSurf = (_alphaSurf * (_solar max 0)) + (_eps * _sigma * (((_T select 0) + 273.15) ^ 4) - (_eps * _sigma * (_tSkyK ^ 4))) - (_h * ((_T select 0) - _tAir)) - _qEvap - _meltSink;
 // Surface half-cell transient: dT = q*dt*2/(rho_cp*dz) (finite volume,
 // NOT the steady-state gradient - caught in the mirror as a 100x bug).

@@ -45,7 +45,11 @@ if (_veh != _player) then {
     // The vehicle's current temperature: the median of its solved
     // selections.  Fall back to the engine-heat state if no selections
     // have been solved yet (first frames).
-    private _selMap = missionNamespace getVariable [QGVAR(selTemperature), createHashMap];
+    private _selMap = missionNamespace getVariable [QGVAR(selTemperature), -1];
+    if (_selMap isEqualType 0) then {
+        _selMap = createHashMap;
+        missionNamespace setVariable [QGVAR(selTemperature), _selMap];
+    };
     private _temps = [];
     {
         private _key = format ["%1|%2", _veh, _x];
@@ -89,7 +93,11 @@ if (_contactTemp < -900 && {stance _player == "PRONE"}) then {
 private _applied = 0;
 if (_veh != _player) then {
     private _groundT = [getPosASL _veh] call FUNC(calculateGroundTemperature);
-    private _selMap = missionNamespace getVariable [QGVAR(selTemperature), createHashMap];
+    private _selMap = missionNamespace getVariable [QGVAR(selTemperature), -1];
+    if (_selMap isEqualType 0) then {
+        _selMap = createHashMap;
+        missionNamespace setVariable [QGVAR(selTemperature), _selMap];
+    };
     private _vehSels = [_veh] call FUNC(getThermalSelections);
     private _vehNames = selectionNames _veh;
     {
@@ -125,7 +133,11 @@ if (_contactTemp < -900) exitWith { _applied };
 // drive it through the two-node solve: pass q_internal = h * dT where
 // dT is the signed difference between the body's LAST skin temp and the
 // contact surface.  The solve then moves the skin toward the surface.
-private _selMap = missionNamespace getVariable [QGVAR(selTemperature), createHashMap];
+private _selMap = missionNamespace getVariable [QGVAR(selTemperature), -1];
+if (_selMap isEqualType 0) then {
+    _selMap = createHashMap;
+    missionNamespace setVariable [QGVAR(selTemperature), _selMap];
+};
 private _bodySels = [_player] call FUNC(getThermalSelections);
 private _names = selectionNames _player;
 {
@@ -168,32 +180,70 @@ private _near = _player nearObjects 40;
 private _n = count _near;
 if (_n < 2) exitWith { _applied };
 
-private _selMap2 = missionNamespace getVariable [QGVAR(selTemperature), createHashMap];
+private _selMap2 = missionNamespace getVariable [QGVAR(selTemperature), -1];
+if (_selMap2 isEqualType 0) then {
+    _selMap2 = createHashMap;
+    missionNamespace setVariable [QGVAR(selTemperature), _selMap2];
+};
+
+// ─── Hoist every PER-OBJECT value out of the pair loop ────────────────────
+// getThermalSelections (a selection/texture/material walk), selectionNames
+// and boundingBoxReal were all evaluated once PER PAIR, so this O(n^2) loop
+// carried O(n^2) engine work and stalled the frame once a second.  Each is
+// now computed once per object; the pair loop below reads arrays only.
+private _selArr = [];
+private _nameArr = [];
+private _tempArr = [];
+private _minArr = [];
+private _maxArr = [];
+{
+    private _obj = _x;
+    if (isNull _obj) then {
+        _selArr pushBack [];
+        _nameArr pushBack [];
+        _tempArr pushBack -999;
+        _minArr pushBack [0, 0, 0];
+        _maxArr pushBack [0, 0, 0];
+    } else {
+        private _sels = [_obj] call FUNC(getThermalSelections);
+        _selArr pushBack _sels;
+        _nameArr pushBack (selectionNames _obj);
+        private _ts = [];
+        {
+            private _t = _selMap2 getOrDefault [format ["%1|%2", _obj, _x], -999];
+            if (_t > -900) then { _ts pushBack _t; };
+        } forEach _sels;
+        if (_ts isEqualTo []) then {
+            _tempArr pushBack -999;
+        } else {
+            _ts sort true;
+            _tempArr pushBack (_ts select (floor (count _ts / 2)));
+        };
+        private _box = boundingBoxReal _obj;
+        _minArr pushBack (_obj modelToWorld (_box select 0));
+        _maxArr pushBack (_obj modelToWorld (_box select 1));
+    };
+} forEach _near;
+
 for "_i" from 0 to (_n - 2) do {
     private _a = _near select _i;
-    if (isNull _a) then { continue; };
-    private _aBox = boundingBoxReal _a;
-    private _aMin = _a modelToWorld (_aBox select 0);
-    private _aMax = _a modelToWorld (_aBox select 1);
-    private _aTemps = [];
-    {
-        private _t = _selMap2 getOrDefault [format ["%1|%2", _a, _x], -999];
-        if (_t > -900) then { _aTemps pushBack _t; };
-    } forEach ([_a] call FUNC(getThermalSelections));
-    if (_aTemps isEqualTo []) then { continue; };
-    _aTemps sort true;
-    private _aTemp = _aTemps select (floor (count _aTemps / 2));
-    if !(_aTemp isEqualType 0) then { continue; };
+    private _aTemp = _tempArr select _i;
+    if (isNull _a || _aTemp < -900 || !(_aTemp isEqualType 0)) then { continue; };
+    private _aMin = _minArr select _i;
+    private _aMax = _maxArr select _i;
+    private _aSel0 = (_selArr select _i) param [0, -1];
+    private _aName = (_nameArr select _i) param [_aSel0, ""];
 
     for "_j" from (_i + 1) to (_n - 1) do {
         private _b = _near select _j;
-        if (isNull _b || _b == _a) then { continue; };
+        private _bTemp = _tempArr select _j;
+        if (isNull _b || _b == _a || _bTemp < -900 || !(_bTemp isEqualType 0)) then { continue; };
         // Skip pairs the player is not between (only blend the local
         // scene - the nearObjects radius is already tight at 40 m).
-        private _bBox = boundingBoxReal _b;
-        private _bMin = _b modelToWorld (_bBox select 0);
-        private _bMax = _b modelToWorld (_bBox select 1);
-        // AABB overlap test (conservative; contact surfaces touch).
+        // AABB overlap test (conservative; contact surfaces touch).  The
+        // corners were hoisted above.
+        private _bMin = _minArr select _j;
+        private _bMax = _maxArr select _j;
         private _touch = (
             (_aMin select 0) <= (_bMax select 0)
             && {(_aMax select 0) >= (_bMin select 0)}
@@ -201,16 +251,6 @@ for "_i" from 0 to (_n - 2) do {
             && {(_aMax select 1) >= (_bMin select 1)}
         );
         if !(_touch) then { continue; };
-
-        private _bTemps = [];
-        {
-            private _t = _selMap2 getOrDefault [format ["%1|%2", _b, _x], -999];
-            if (_t > -900) then { _bTemps pushBack _t; };
-        } forEach ([_b] call FUNC(getThermalSelections));
-        if (_bTemps isEqualTo []) then { continue; };
-        _bTemps sort true;
-        private _bTemp = _bTemps select (floor (count _bTemps / 2));
-        if !(_bTemp isEqualType 0) then { continue; };
 
         private _dT = _aTemp - _bTemp;
         if (abs _dT < 0.5) then { continue; };   // negligible
@@ -221,11 +261,10 @@ for "_i" from 0 to (_n - 2) do {
         private _fluxAB = (-20 * _dT) max -1500 min 1500;   // heats a: -h*dT
         private _fluxBA = -_fluxAB;
         // Apply to the first selection of each (the contact face) - the
-        // solve redistributes through the object's own conduction.
-        private _aSel = ([_a] call FUNC(getThermalSelections)) select 0;
-        private _bSel = ([_b] call FUNC(getThermalSelections)) select 0;
-        private _aName = (selectionNames _a) param [_aSel, ""];
-        private _bName = (selectionNames _b) param [_bSel, ""];
+        // solve redistributes through the object's own conduction.  The
+        // selection and its name were hoisted above.
+        private _bSel0 = (_selArr select _j) param [0, -1];
+        private _bName = (_nameArr select _j) param [_bSel0, ""];
         if (_aName != "" && _bName != "") then {
             [_a, _aName, "", _fluxAB, 0.5] call FUNC(applySelectionThermal);
             [_b, _bName, "", _fluxBA, 0.5] call FUNC(applySelectionThermal);

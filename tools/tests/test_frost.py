@@ -27,7 +27,7 @@ L_SUB = 2835e3  # J/kg, sublimation latent heat
 SIGMA = 5.670374419e-8  # W/m2K4 CODATA 2022
 CP_AIR = 1007.0  # J/kgK, Incropera 300 K
 RHO_AIR = 1.1614  # kg/m3, Incropera 300 K
-LR = 16.5  # K/kPa Lewis relation
+LE = 1.0  # Lewis number, air-water vapour (Incropera ch. 6)
 FROST_EPS = 0.97  # frost LWIR emissivity (CESM snow 0.97)
 BARE_EPS = 0.92  # bare soil emissivity baseline
 
@@ -81,11 +81,13 @@ def frost_density_hayashi(t_fs):
 
 def frost_growth_rate(h_c, t_sk, t_air, rh):
     """Frost thickness growth rate (m/s) from mass deposition:
-    m''_dep = h_m·(rho_v,air - rho_v,sat_ice(T_sk)), h_m = h_e/(rho·cp),
-    h_e = LR·h_c (Lewis).  rho_v = e/(R_v·T).
+    m''_dep = h_m·(rho_v,air - rho_v,sat_ice(T_sk)),
+    h_m = h_c/(rho·cp·Le^(2/3)) (Incropera ch. 6 heat-mass analogy; Le ~ 1.0
+    for air-water vapour).  rho_v = e/(R_v·T).  There is no 16.5 K/kPa
+    vapour-pressure factor in this density-driven flux.
     The rate is capped to the measured frost-growth band 0.1-3 mm/h
     (Leoni et al 2016 494-point database; Neal & Tree 1973; O'Neal &
-    Tree 1984/85): the bare Lewis h_e over-predicts thin-film frost by
+    Tree 1984/85): the bare Lewis h_m over-predicts thin-film frost by
     10-40% (O'Neal 1982 PhD thesis), and growth saturates as the layer
     insulates itself."""
     e_air = water_sat_pressure_pa(t_air) * rh
@@ -93,8 +95,7 @@ def frost_growth_rate(h_c, t_sk, t_air, rh):
     r_v = 461.5  # J/kgK, water vapour gas constant
     rho_v_air = e_air / (r_v * (t_air + 273.15))
     rho_v_ice = e_ice / (r_v * (t_sk + 273.15))
-    h_e = LR * h_c
-    h_m = h_e / (RHO_AIR * CP_AIR)
+    h_m = h_c / (RHO_AIR * CP_AIR * LE ** (2 / 3))
     m_dep = max(h_m * (rho_v_air - rho_v_ice), 0.0)  # kg/m2s
     if m_dep <= 0:
         return 0.0  # no vapour drive = no deposition (surface warmer/drier)
@@ -162,8 +163,9 @@ class TestFrostPhysics(unittest.TestCase):
         # point at -5/-10/-20 C (ice saturates lower than water).
         for air, expected in [(-5, 0.58), (-10, 1.11), (-20, 2.07)]:
             fp = frost_point_from_rh(air, 1.0)
-            self.assertAlmostEqual(fp - air, expected, delta=0.05,
-                                   msg=f"offset at {air} C")
+            self.assertAlmostEqual(
+                fp - air, expected, delta=0.05, msg=f"offset at {air} C"
+            )
 
     def test_hayashi_density(self):
         # Hayashi 1977: 650*exp(0.277*T_fs), ~163/-40/3.8 at -5/-10/-18.6.

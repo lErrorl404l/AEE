@@ -131,7 +131,11 @@ if (_traceOn) then {
 // grid key matches the node stack's own cell.
 if (count _pos >= 2) then {
     private _cellKey = format ["%1_%2_%3", floor ((_pos select 0) / 5), floor ((_pos select 1) / 5), _material];
-    private _surfState = missionNamespace getVariable [QGVAR(groundSurfaceTemp), createHashMap];
+    private _surfState = missionNamespace getVariable [QGVAR(groundSurfaceTemp), -1];
+    if (_surfState isEqualType 0) then {
+        _surfState = createHashMap;
+        missionNamespace setVariable [QGVAR(groundSurfaceTemp), _surfState];
+    };
     _surfState set [_cellKey, _ts];
     missionNamespace setVariable [QGVAR(groundSurfaceTemp), _surfState];
     missionNamespace setVariable [QEGVAR(core,groundSurfaceTemp), _surfState];

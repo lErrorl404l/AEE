@@ -58,7 +58,11 @@ private _sigma = 5.670374419e-8;       // W/m2K4, Stefan-Boltzmann (CODATA 2022)
 // ─── Per-position frost state (persisted) ──────────────────────────────────
 // [_filmMass_kg_m2, _frostDepth_mm, _lastTick].  The 5m grid cell key
 // matches the node stack so both share one position identity.
-private _state = missionNamespace getVariable [QGVAR(frostState), createHashMap];
+private _state = missionNamespace getVariable [QGVAR(frostState), -1];
+if (_state isEqualType 0) then {
+    _state = createHashMap;
+    missionNamespace setVariable [QGVAR(frostState), _state];
+};
 if (isNil "_state") then { _state = createHashMap; };
 // The cell key indexes the position unconditionally, so a caller that
 // passes an empty array would raise a zero divisor. Guard rather than
@@ -92,6 +96,9 @@ private _esIceSurf = 611.2 * exp (22.46 * _tSurf / (272.62 + _tSurf));
 // Freezing is the endothermic mirror of melting.  If the surface would
 // sit below 0C AND a film exists, the surface pins at 0C until the
 // film is consumed: dm'' = -q_net * dt / L_f.
+// Freezing point: the film is pure water (rain/condensate), so 0 C is the
+// correct reference freezing point.  No colligative depression is applied
+// because the model carries no solute load; a salted film would freeze lower.
 private _tSurfAdjusted = _tSurf;
 if (_filmMass > 0 && _tSurf < 0) then {
     // Net cooling flux at the pinned 0C surface: convection + radiation
@@ -124,11 +131,19 @@ if (_tSurf <= 0 && _ea > _esIceSurf) then {
     // Vapour drive: excess air vapour over the ice-saturated surface.
     private _rhoVair = _ea / (461.5 * (_tAir + 273.15));        // kg/m3
     private _rhoVIce = _esIceSurf / (461.5 * (_tSurf + 273.15));
-    private _hE = 16.5 * (5.7 + (3.8 * _windSpd));              // Lewis
-    private _hM = _hE / (1.1614 * 1007);                        // m/s
+    // Mass-transfer coefficient from the heat-mass analogy (Incropera
+    // ch. 6): h_m = h_c / (rho*cp*Le^(2/3)).  Air-water-vapour Le ~ 1.0,
+    // so Le^(2/3) = 1.  The 16.5 K/kPa factor belongs to the Gagge human
+    // evaporative path (a vapour-PRESSURE drive), not to this density-driven
+    // deposition, and made h_m 16.5x too large.
+    private _hC = 5.7 + (3.8 * _windSpd);                       // McAdams
+    private _le = 1.0;                                          // Lewis number
+    private _hM = _hC / (1.1614 * 1007 * (_le ^ (2 / 3)));      // m/s
     private _growth = (_hM * (_rhoVair - _rhoVIce)) * _dt * 1000;  // mm
     if (_growth > 0) then {
-        _growth = _growth min (3.0 * _dt / 3600);               // mm/h cap
+        // Leoni 2016 measured frost-growth band tops at 3 mm/h; the bare
+        // Lewis relation over-predicts thin-film frost (O'Neal 1982).
+        _growth = _growth min (3.0 * _dt / 3600);               // mm
         _frostDepth = _frostDepth + _growth;
     };
 } else {

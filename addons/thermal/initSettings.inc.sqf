@@ -14,13 +14,6 @@
     {}
 ] call CBA_fnc_addSetting;
 
-// ── Fusion (issue #204, Track B ENVG-B) ───────────────────────────────────
-// Off: fusion only on TI-capable headsets (visionMode includes "TI").
-// On:  fusion renders over ANY NVG, thermal source or not (the A3TI
-// approach - its fusion modes are offered whenever an optic has thermal
-// and the current vanilla mode is NVG).
-AEE_SETTING_CHECKBOX(fusionAlwaysOn,"AEE Thermal","Fusion",false);
-
 // ── Fixed-pattern noise (issue #204, FPN) ────────────────────────────────
 // Real LWIR sensors show a static spatial mottle (fixed-pattern noise)
 // over the thermal image, independent of the temporal FilmGrain.  On:
@@ -28,14 +21,33 @@ AEE_SETTING_CHECKBOX(fusionAlwaysOn,"AEE Thermal","Fusion",false);
 // Stage2 multiplying the painted heat colour).  The material swap is
 // client-local and restored on thermal EXIT.
 AEE_SETTING_CHECKBOX(thermalFPN,"AEE Thermal","Display",true);
+// Runtime kill switch for the thermal post-process chain.  The five effects are
+// FULL-SCREEN render passes (two of them blurs), and they are the only engine
+// render work AEE adds in thermal beyond the engine's own thermal pass.  Turning
+// this off isolates that cost in-game, with no rebuild.  Default on.
+AEE_SETTING_CHECKBOX(thermalPPEffects,"AEE Thermal","Display",true);
 
 // ── Thermal diagnostics (issue #203, standalone decoupling) ─────────────
 // Thermal's own debug flag - previously borrowed nightvision's nvgDebug,
 // a cross-module coupling that blocked thermal as a standalone addon.
 AEE_SETTING_CHECKBOX(thermalDebug,"AEE Thermal","Diagnostics",false);
 
+// The per-module trace switch, same line every other diagnostics-capable
+// addon carries.  AEE_LOG_DEBUG reads the name built from the component,
+// aee_<component>_logDebug, so declaring it here is what makes
+// QGVAR(logDebug) resolve for thermal.  Without it thermal DEBUG output
+// could only be switched on through core's flag.
+AEE_SETTING_CHECKBOX(logDebug,"AEE Thermal","Diagnostics",false);
+
 // ── Solver cadence ────────────────────────────────────────────────────────
 // The object-temperature scan is the most expensive call in the environment
 // tick. Surface temperatures run on time constants of 600 s and up, so the
 // scan does not need the tick rate. 0 restores a scan every tick.
 AEE_SETTING_SLIDER(objectScanInterval,"AEE Thermal","Solver",0,120,30,0);
+
+// ── Repaint cadence ─────────────────────────────────────────────────────────
+// setObjectTexture re-uploads a procedural texture per selection, and the
+// engine charge lands on the render thread where no SQF timer can see it.
+// 1 repaints every frame, 30 repaints about twice a second. The physics still
+// solves every pass, so the AGC and every thermal coupling are unaffected.
+AEE_SETTING_SLIDER(repaintHz,"AEE Thermal","Display",1,30,4,1);

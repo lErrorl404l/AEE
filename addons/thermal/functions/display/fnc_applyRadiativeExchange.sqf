@@ -45,35 +45,56 @@ private _near = _player nearObjects 30;
 private _n = count _near;
 if (_n < 2) exitWith { 0 };
 
-private _selMap = missionNamespace getVariable [QGVAR(selTemperature), createHashMap];
+private _selMap = missionNamespace getVariable [QGVAR(selTemperature), -1];
+if (_selMap isEqualType 0) then {
+    _selMap = createHashMap;
+    missionNamespace setVariable [QGVAR(selTemperature), _selMap];
+};
 private _sigma = 5.670374419e-8;
+
+// ─── Hoist every PER-OBJECT value out of the pair loop ────────────────────
+// getThermalSelections walks the object's selections, textures and
+// materials, and selectionNames is an engine call.  Both were evaluated once
+// PER PAIR, so an O(n^2) loop carried O(n^2) engine-level selection walks and
+// stalled the frame once a second.  Each is now computed once per object, so
+// the pair loop below reads arrays and costs no engine work.
+private _selArr = [];
+private _nameArr = [];
+private _tempArr = [];
+{
+    private _obj = _x;
+    if (isNull _obj) then {
+        _selArr pushBack [];
+        _nameArr pushBack [];
+        _tempArr pushBack -999;
+    } else {
+        private _sels = [_obj] call FUNC(getThermalSelections);
+        _selArr pushBack _sels;
+        _nameArr pushBack (selectionNames _obj);
+        private _ts = [];
+        {
+            private _t = _selMap getOrDefault [format ["%1|%2", _obj, _x], -999];
+            if (_t > -900) then { _ts pushBack _t; };
+        } forEach _sels;
+        if (_ts isEqualTo []) then {
+            _tempArr pushBack -999;
+        } else {
+            _ts sort true;
+            _tempArr pushBack (_ts select (floor (count _ts / 2)));
+        };
+    };
+} forEach _near;
 
 private _applied = 0;
 for "_i" from 0 to (_n - 2) do {
     private _a = _near select _i;
-    if (isNull _a) then { continue; };
-    private _aTemps = [];
-    {
-        private _t = _selMap getOrDefault [format ["%1|%2", _a, _x], -999];
-        if (_t > -900) then { _aTemps pushBack _t; };
-    } forEach ([_a] call FUNC(getThermalSelections));
-    if (_aTemps isEqualTo []) then { continue; };
-    _aTemps sort true;
-    private _aTemp = _aTemps select (floor (count _aTemps / 2));
-    if !(_aTemp isEqualType 0) then { continue; };
+    private _aTemp = _tempArr select _i;
+    if (isNull _a || !(_aTemp isEqualType 0) || _aTemp < -900) then { continue; };
 
     for "_j" from (_i + 1) to (_n - 1) do {
         private _b = _near select _j;
-        if (isNull _b || _b == _a) then { continue; };
-        private _bTemps = [];
-        {
-            private _t = _selMap getOrDefault [format ["%1|%2", _b, _x], -999];
-            if (_t > -900) then { _bTemps pushBack _t; };
-        } forEach ([_b] call FUNC(getThermalSelections));
-        if (_bTemps isEqualTo []) then { continue; };
-        _bTemps sort true;
-        private _bTemp = _bTemps select (floor (count _bTemps / 2));
-        if !(_bTemp isEqualType 0) then { continue; };
+        private _bTemp = _tempArr select _j;
+        if (isNull _b || _b == _a || !(_bTemp isEqualType 0) || _bTemp < -900) then { continue; };
 
         // Radiative exchange: q = F * eps * sigma * (T_hot^4 - T_cold^4).
         private _tHot = (_aTemp max _bTemp);
@@ -98,10 +119,12 @@ for "_i" from 0 to (_n - 2) do {
         // heat sources).  Cap so a large dT cannot blow the solve.
         _q = _q max 0 min 3000;
 
-        // The colder object gains heat; the hotter loses it.
-        private _coldObj = [_a, _b] select (_aTemp >= _bTemp);
-        private _coldSel = ([_coldObj] call FUNC(getThermalSelections)) select 0;
-        private _coldName = (selectionNames _coldObj) param [_coldSel, ""];
+        // The colder object gains heat; the hotter loses it.  The selection
+        // and its name were hoisted above, so this is an array read.
+        private _coldIdx = [_j, _i] select (_aTemp >= _bTemp);
+        private _coldObj = _near select _coldIdx;
+        private _coldSel = (_selArr select _coldIdx) param [0, -1];
+        private _coldName = (_nameArr select _coldIdx) param [_coldSel, ""];
         if (_coldName != "") then {
             [_coldObj, _coldName, "", _q, 0.5] call FUNC(applySelectionThermal);
             _applied = _applied + 1;

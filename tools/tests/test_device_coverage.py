@@ -52,7 +52,12 @@ NOISE = re.compile(
 
 
 def extract_tiers(source):
-    """Return ordered [(keywords, tier_string)] from the standalone switch."""
+    """Return ordered [(keywords, tier_string)] from the standalone switch.
+
+    PAS-13 variant cases gate their two-character variant token on the
+    family flag `_isPas`; the mirror restores the family keywords so a
+    bare "v1" can never select a tier on its own.
+    """
     m = re.search(r"switch \(true\) do \{(.*?)\n\};", source, re.S)
     if not m:
         raise SystemExit("switch block not found")
@@ -61,6 +66,8 @@ def extract_tiers(source):
     for case in re.finditer(r"case\s*\((.*?)\):\s*\{(\s*\[[^\]]+\]\s*)\};", body, re.S):
         cond, tier = case.group(1), case.group(2)
         kws = re.findall(r'find "([^"]+)"', cond)
+        if "_isPas" in cond:
+            kws = ["pas-13", "pas13"] + kws
         tiers.append((kws, re.sub(r"\s+", " ", tier).strip()))
     return tiers
 
