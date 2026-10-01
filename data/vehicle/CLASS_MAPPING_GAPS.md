@@ -13,8 +13,8 @@ speed values that no binding reaches.
 - Ground tokens with a binding: 6
 - Ground tokens without a binding: 1
 - Class map records: 6
-- Catalogue entries holding max_speed_kmh: 115
-- Of those with no class binding: 112
+- Catalogue entries holding max_speed_kmh: 118
+- Of those with no class binding: 115
 
 ## Class map records
 

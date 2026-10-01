@@ -1,0 +1,98 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Catalogue capture for the tier-5 English Wikipedia article on the BTR-70. Every value is grade claimed and the registry marks primary_held false. The article is a secondary compilation and is not a primary source. The RHS class display name BTR-70 resolves to this entry.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "btr_70",
+      "canonical_name": "BTR-70",
+      "maker": "GAZ",
+      "model": "BTR-70",
+      "variant": "BTR-70",
+      "variant_id": "btr_70",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "cold war",
+      "aliases": [
+        "btr-70",
+        "btr70",
+        "btr 70"
+      ],
+      "keywords": [
+        "apc",
+        "amphibious",
+        "8x8",
+        "armored personnel carrier",
+        "btr"
+      ],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 11500,
+          "unit": "kg",
+          "source": "btr_70",
+          "locator": "Infobox, Specifications, Mass row",
+          "state": "mass published as 11.5 tonnes; the tonne taken as 1,000 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 7535,
+          "unit": "mm",
+          "source": "btr_70",
+          "locator": "Infobox, Specifications, Length row",
+          "state": "length published as 7.535 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2800,
+          "unit": "mm",
+          "source": "btr_70",
+          "locator": "Infobox, Specifications, Width row",
+          "state": "width published as 2.80 m",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2320,
+          "unit": "mm",
+          "source": "btr_70",
+          "locator": "Infobox, Specifications, Height row",
+          "state": "height published as 2.32 m",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 80,
+          "unit": "km/h",
+          "source": "btr_70",
+          "locator": "Infobox, Specifications, Maximum speed row",
+          "state": "maximum road speed published as 80 km/h; 9 km/h on water",
+          "grade": "claimed"
+        },
+        "range_km": {
+          "value": 600,
+          "unit": "km",
+          "source": "btr_70",
+          "locator": "Infobox, Specifications, Operational range row",
+          "state": "operational range published as 400 to 600 km; 600 is the top of the range",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "2 x ZMZ-4905 V8 petrol",
+          "unit": "text",
+          "source": "btr_70",
+          "locator": "Infobox, Specifications, Engine row",
+          "state": "engine published as two ZMZ-4905 petrol engines",
+          "grade": "claimed"
+        },
+        "published_power_hp": {
+          "value": 240,
+          "unit": "hp",
+          "source": "btr_70",
+          "locator": "Infobox, Specifications, Engine row",
+          "state": "two engines published as 120 hp (88.2 kW) each, 240 hp total; no net basis is stated",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

@@ -19,10 +19,15 @@ nothing.
 
 Enumeration reads the installed game config. The displayName key is read from
 the class, or from the nearest parent that states one. The class tree comes from
-the loose game config and from the packed config of each vehicle addon.
+the loose game config and from the packed config of each vehicle addon. A mod
+that carries ground vehicles is read the same way: pass it with ``--mod-root``.
+The display name of a mod vehicle is often the real vehicle designation, so it
+resolves to a catalogue entry without a class map.
 
 Run:
     python3 tools/validation/gen_vehicle_bindings.py --resolve --game-root PATH
+    python3 tools/validation/gen_vehicle_bindings.py --resolve --game-root PATH \\
+        --mod-root PATH [--mod-root PATH ...]
     python3 tools/validation/gen_vehicle_bindings.py --check
 Exit: 0 when fresh, 1 when stale or missing under --check.
 """
@@ -61,6 +66,11 @@ VEHICLE_ADDON = re.compile(r"(?:soft|armor|weapons)_f", re.IGNORECASE)
 # A class declaration, with an optional parent, and its opening brace.
 CLASS_DECL = re.compile(r"class\s+([A-Za-z_]\w*)\s*(?::\s*([A-Za-z_]\w*))?\s*\{")
 DISPLAY_NAME = re.compile(r'displayName\s*=\s*"([^"]*)"')
+# The engine mass of a class. It is an identity hint only, never a value source.
+MASS_VALUE = re.compile(r"\bmass\s*=\s*([0-9.]+)\s*;")
+# A trailing parenthetical qualifier in a display name: the production year, the
+# armament or the trim. It is not part of the vehicle designation.
+PARENTHETICAL = re.compile(r"\([^)]*\)")
 
 # The shortest token the matcher accepts, as the runtime matcher does.
 SCAN_MIN = 4
@@ -101,6 +111,7 @@ class ClassRecord:
     parent: str | None
     display_name: str | None
     locator: str
+    mass: float | None = None
 
 
 def _mapping(value: object) -> dict[str, object] | None:
@@ -140,11 +151,17 @@ def _stringtable_text(path: Path) -> dict[str, str]:
     return out
 
 
-def _loose_stringtables(game_root: Path) -> list[tuple[str, Path]]:
-    """Return the game and repository stringtables, in a fixed order."""
+def _loose_stringtables(
+    game_root: Path, mod_roots: Sequence[Path] = ()
+) -> list[tuple[str, Path]]:
+    """Return the game, mod and repository stringtables, in a fixed order."""
     found: list[tuple[str, Path]] = []
     for path in sorted(game_root.rglob("stringtable.xml")):
         found.append((path.relative_to(game_root).as_posix(), path))
+    for root in mod_roots:
+        base = root.name or root.as_posix()
+        for path in sorted(root.rglob("stringtable.xml")):
+            found.append((f"{base}/{path.relative_to(root).as_posix()}", path))
     for path in sorted((REPO / "addons").rglob("stringtable.xml")):
         found.append((path.relative_to(REPO).as_posix(), path))
     return found
@@ -184,8 +201,12 @@ def _pbo_files(pbo: Path) -> list[str]:
 
 
 def _extract(pbo: Path, name: str, dest: Path) -> Path | None:
-    """Extract one file from a packed file. Return its path, or None."""
-    target = dest / (name.replace("/", "__").replace("\\", "__"))
+    """Extract one file from a packed file. Return its path, or None.
+
+    The target name carries the packed file name so two addons that hold a
+    file at the same internal path do not collide in the scratch directory.
+    """
+    target = dest / (pbo.name + "__" + name.replace("/", "__").replace("\\", "__"))
     target.parent.mkdir(parents=True, exist_ok=True)
     if not _run_hemtt(["utils", "pbo", "extract", str(pbo), name, str(target)]):
         return None
@@ -203,7 +224,7 @@ def _derapify(binary: Path, dest: Path) -> Path | None:
 
 
 def build_stringtable_map(
-    game_root: Path, scratch: Path
+    game_root: Path, scratch: Path, mod_roots: Sequence[Path] = ()
 ) -> tuple[dict[str, str], dict[str, str]]:
     """Return the key to text map and the key to source-locator map.
 
@@ -220,33 +241,50 @@ def build_stringtable_map(
                 texts[key] = value
                 sources[key] = locator
 
-    for locator, path in _loose_stringtables(game_root):
+    for locator, path in _loose_stringtables(game_root, mod_roots):
         merge(locator, _stringtable_text(path))
 
-    for pbo in _vehicle_pbos(game_root):
+    for locator, pbo in _scan_pbos(game_root, mod_roots):
         names = _pbo_files(pbo)
         packed = [name for name in names if name.lower().endswith("stringtable.xml")]
         if not packed:
             continue
-        relative = pbo.relative_to(game_root).as_posix()
         for name in packed:
             extracted = _extract(pbo, name, scratch)
             if extracted is None:
                 continue
-            merge(f"{relative} > {name}", _stringtable_text(extracted))
+            merge(f"{locator} > {name}", _stringtable_text(extracted))
     return texts, sources
 
 
 # --- game config ----------------------------------------------------------
 
 
-def _vehicle_pbos(game_root: Path) -> list[Path]:
-    """Return the packed addons that can hold a ground vehicle config."""
-    found = [p for p in game_root.rglob("*.pbo") if VEHICLE_ADDON.search(p.name)]
-    return sorted(found, key=lambda path: path.as_posix())
+def _scan_pbos(
+    game_root: Path, mod_roots: Sequence[Path] = ()
+) -> list[tuple[str, Path]]:
+    """Return (locator, packed addon) for the game and each mod root.
+
+    The game root keeps the bounded addon pattern, so the pass stays cheap.
+    A mod root is scanned for every packed addon, because a mod names its own
+    addons and the vehicle config can live in any of them. The locator is
+    relative to the root that holds the addon, so provenance survives.
+    """
+    found: list[tuple[str, Path]] = []
+    for pbo in game_root.rglob("*.pbo"):
+        if VEHICLE_ADDON.search(pbo.name):
+            found.append((pbo.relative_to(game_root).as_posix(), pbo))
+    for root in mod_roots:
+        base = root.name or root.as_posix()
+        for pbo in root.rglob("*.pbo"):
+            found.append((f"{base}/{pbo.relative_to(root).as_posix()}", pbo))
+    found.sort(key=lambda item: item[1].as_posix())
+    return found
 
 
-def _config_texts(game_root: Path, scratch: Path) -> list[tuple[str, str]]:
+def _config_texts(
+    game_root: Path, scratch: Path, mod_roots: Sequence[Path] = ()
+) -> list[tuple[str, str]]:
     """Return the locator and text of every readable game config file.
 
     The loose files answer first. The packed config of a vehicle addon is
@@ -263,8 +301,19 @@ def _config_texts(game_root: Path, scratch: Path) -> list[tuple[str, str]]:
             )
         except OSError:
             continue
-    for pbo in _vehicle_pbos(game_root):
-        relative = pbo.relative_to(game_root).as_posix()
+    for root in mod_roots:
+        base = root.name or root.as_posix()
+        for path in sorted(root.rglob("config.cpp")):
+            try:
+                found.append(
+                    (
+                        f"{base}/{path.relative_to(root).as_posix()}",
+                        path.read_text(encoding="utf-8", errors="replace"),
+                    )
+                )
+            except OSError:
+                continue
+    for locator, pbo in _scan_pbos(game_root, mod_roots):
         for name in _pbo_files(pbo):
             if not name.endswith("config.bin"):
                 continue
@@ -277,7 +326,7 @@ def _config_texts(game_root: Path, scratch: Path) -> list[tuple[str, str]]:
             try:
                 found.append(
                     (
-                        f"{relative} > {name}",
+                        f"{locator} > {name}",
                         text.read_text(encoding="utf-8", errors="replace"),
                     )
                 )
@@ -313,10 +362,12 @@ def parse_class_tree(
                 index += 1
             block = text[match.end() : index]
             display = DISPLAY_NAME.search(block)
+            mass = MASS_VALUE.search(block)
             tree[name] = ClassRecord(
                 parent=match.group(2),
                 display_name=display.group(1) if display else None,
                 locator=locator,
+                mass=float(mass.group(1)) if mass else None,
             )
     return tree
 
@@ -389,9 +440,20 @@ def build_token_index(
 
 
 def display_tokens(text: str) -> list[str]:
-    """Split a resolved display name into normalised match tokens."""
+    """Split a resolved display name into normalised match tokens.
+
+    The words of the name are tokens, as the runtime matcher takes them. The
+    whole name is also a token: a mod display name is often the real vehicle
+    designation (``Ural-4320``), which names one entry as one string and must
+    not be split into a maker word and a number. A trailing parenthetical
+    qualifier is dropped first, so ``BMP-2 (obr. 1986g.)`` keeps ``BMP-2``.
+    """
     tokens = [catalogue.normalise(word) for word in TOKEN_SPLIT.split(text)]
-    return [token for token in tokens if len(token) >= SCAN_MIN]
+    keys = [token for token in tokens if len(token) >= SCAN_MIN]
+    whole = catalogue.normalise(PARENTHETICAL.sub(" ", text))
+    if len(whole) >= SCAN_MIN and whole not in keys:
+        keys.append(whole)
+    return keys
 
 
 def match_display_name(
@@ -427,10 +489,15 @@ def _lookup_key(texts: dict[str, str], raw: str) -> str | None:
 # --- artefact -------------------------------------------------------------
 
 
-def build_bindings(game_root: Path, vehicle_dir: Path, scratch: Path) -> list[Binding]:
+def build_bindings(
+    game_root: Path,
+    vehicle_dir: Path,
+    scratch: Path,
+    mod_roots: Sequence[Path] = (),
+) -> list[Binding]:
     """Return every ground class the stringtable names to one catalogue entry."""
-    texts, sources = build_stringtable_map(game_root, scratch)
-    tree = parse_class_tree(_config_texts(game_root, scratch))
+    texts, sources = build_stringtable_map(game_root, scratch, mod_roots)
+    tree = parse_class_tree(_config_texts(game_root, scratch, mod_roots))
     load = catalogue.load(vehicle_dir)
     index = build_token_index(load)
     bindings: list[Binding] = []
@@ -537,6 +604,88 @@ def check_bindings(path: Path, vehicle_dir: Path) -> int:
     return 0
 
 
+@dataclass(frozen=True)
+class FleetRecord:
+    """One ground class of a game or mod config, with provenance.
+
+    It is an inventory record. It carries identity evidence and an engine mass
+    hint only. The mass is an identity hint, never a real-world value source.
+    """
+
+    game_class: str
+    parent: str
+    vehicle_type: str
+    display_name_key: str
+    display_name: str
+    display_name_source: str
+    mass_hint: float | None
+    config_locator: str
+
+    def to_mapping(self) -> dict[str, object]:
+        return {
+            "game_class": self.game_class,
+            "parent": self.parent,
+            "vehicle_type": self.vehicle_type,
+            "display_name_key": self.display_name_key,
+            "display_name": self.display_name,
+            "display_name_source": self.display_name_source,
+            "mass_hint": self.mass_hint,
+            "config_locator": self.config_locator,
+        }
+
+
+FLEET_SCHEMA = "aee.vehicle.mod_fleet/1"
+
+
+def build_fleet(
+    game_root: Path,
+    scratch: Path,
+    mod_roots: Sequence[Path] = (),
+) -> list[FleetRecord]:
+    """Return one inventory record per ground class of the mod roots.
+
+    When a mod root is given the sweep is restricted to classes the mod roots
+    declare, so the artefact is the mod fleet. With no mod root it is the whole
+    game fleet.
+    """
+    texts, sources = build_stringtable_map(game_root, scratch, mod_roots)
+    tree = parse_class_tree(_config_texts(game_root, scratch, mod_roots))
+    prefixes = tuple(f"{root.name or root.as_posix()}/" for root in mod_roots)
+    records: list[FleetRecord] = []
+    for game_class in ground_classes(tree):
+        record = tree[game_class]
+        if prefixes and not record.locator.startswith(prefixes):
+            continue
+        resolved = resolve_display_name(tree, game_class)
+        raw = resolved[0] if resolved is not None else ""
+        locator = resolved[1] if resolved is not None else record.locator
+        text = _lookup_key(texts, raw) if raw else None
+        vehicle_type = "tracked" if is_kind_of(tree, game_class, "Tank") else "wheeled"
+        records.append(
+            FleetRecord(
+                game_class=game_class,
+                parent=record.parent or "",
+                vehicle_type=vehicle_type,
+                display_name_key=raw,
+                display_name=text or "",
+                display_name_source=sources.get(raw.lstrip("$").strip().lower(), ""),
+                mass_hint=record.mass,
+                config_locator=locator,
+            )
+        )
+    records.sort(key=lambda item: item.game_class)
+    return records
+
+
+def render_fleet(records: Sequence[FleetRecord]) -> str:
+    """Return the exact on-disk text of the fleet inventory artefact."""
+    payload = {
+        "schema": FLEET_SCHEMA,
+        "records": [record.to_mapping() for record in records],
+    }
+    return json.dumps(payload, indent=2) + "\n"
+
+
 def write_bindings(bindings: Sequence[Binding], path: Path) -> None:
     """Write the binding artefact."""
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -560,6 +709,18 @@ def main(argv: Sequence[str] | None = None) -> int:
         help="Path to the installed Arma 3 directory for --resolve.",
     )
     parser.add_argument(
+        "--mod-root",
+        type=Path,
+        action="append",
+        default=[],
+        help="Path to an installed mod root for --resolve. Repeatable.",
+    )
+    parser.add_argument(
+        "--fleet-out",
+        type=Path,
+        help="Write the ground class inventory of the resolved roots here.",
+    )
+    parser.add_argument(
         "--check",
         action="store_true",
         help="Verify the committed artefact is fresh. Write nothing.",
@@ -576,14 +737,32 @@ def main(argv: Sequence[str] | None = None) -> int:
         if not args.game_root.is_dir():
             print(f"stringtable bindings: {args.game_root} is not a directory")
             return 1
+        for mod_root in args.mod_root:
+            if not mod_root.is_dir():
+                print(f"stringtable bindings: {mod_root} is not a directory")
+                return 1
         try:
             with tempfile.TemporaryDirectory() as tmp:
-                bindings = build_bindings(args.game_root, args.vehicle_dir, Path(tmp))
+                scratch = Path(tmp)
+                bindings = build_bindings(
+                    args.game_root, args.vehicle_dir, scratch, args.mod_root
+                )
+                fleet = (
+                    build_fleet(args.game_root, scratch, args.mod_root)
+                    if args.fleet_out is not None
+                    else None
+                )
         except (OSError, ValueError, json.JSONDecodeError) as exc:
             print(f"stringtable bindings: cannot resolve: {exc}")
             return 1
         write_bindings(bindings, args.out)
         print(f"stringtable bindings: {len(bindings)} records -> {args.out}")
+        if fleet is not None and args.fleet_out is not None:
+            args.fleet_out.parent.mkdir(parents=True, exist_ok=True)
+            args.fleet_out.write_text(render_fleet(fleet), encoding="utf-8")
+            print(
+                f"stringtable bindings: {len(fleet)} fleet records -> {args.fleet_out}"
+            )
         return 0
 
     parser.print_help()

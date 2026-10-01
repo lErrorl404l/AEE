@@ -1850,5 +1850,53 @@
     "primary_held": true,
     "note": "Held tier-2 instruction manual that carries the VBTP-MR Guarani characteristics list. Section 2.5.1 publishes the vehicle weight of 17.5 t, the 600 km range and the protection levels. It publishes no overall dimensions, no engine rating, no transmission type and no ground clearance. The held copy is on disk under data/vehicle/sources/ and its digest matches the registry entry.",
     "sha256": "d5db88521157c14de1ae7a83eb0d851a166f91a354aa1b89614bd4c540755058"
+  },
+  {
+    "source_id": "bmp_1",
+    "tier": 5,
+    "type": "compilation",
+    "title": "BMP-1",
+    "edition": "English Wikipedia, article read 2026-10-01; the article is a secondary compilation",
+    "identifier": "English Wikipedia article 'BMP-1'",
+    "locator": "Infobox, Specifications (Ob'yekt 765Sp3): Mass, Length, Width, Height, Ground clearance, Engine, Operational range and Maximum speed rows",
+    "published": null,
+    "retrieved": "2026-10-01",
+    "url": "https://en.wikipedia.org/wiki/BMP-1",
+    "archive_ref": "English Wikipedia article BMP-1",
+    "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The bytes are not held; the values were read at the retrieved date.",
+    "primary_held": false,
+    "note": "Tier-5 compilation for the BMP-1. It publishes the mass, the overall dimensions, the ground clearance, the engine, the operational range and the maximum speed, with no net power basis. It is a secondary source and displaces nothing."
+  },
+  {
+    "source_id": "btr_70",
+    "tier": 5,
+    "type": "compilation",
+    "title": "BTR-70",
+    "edition": "English Wikipedia, article read 2026-10-01; the article is a secondary compilation",
+    "identifier": "English Wikipedia article 'BTR-70'",
+    "locator": "Infobox, Specifications: Mass, Length, Width, Height, Engine, Operational range and Maximum speed rows",
+    "published": null,
+    "retrieved": "2026-10-01",
+    "url": "https://en.wikipedia.org/wiki/BTR-70",
+    "archive_ref": "English Wikipedia article BTR-70",
+    "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The bytes are not held; the values were read at the retrieved date.",
+    "primary_held": false,
+    "note": "Tier-5 compilation for the BTR-70. It publishes the mass, the overall dimensions, the twin engine, the operational range and the maximum speed, with no net power basis. It is a secondary source and displaces nothing."
+  },
+  {
+    "source_id": "2s1_gvozdika",
+    "tier": 5,
+    "type": "compilation",
+    "title": "2S1 Gvozdika",
+    "edition": "English Wikipedia, article read 2026-10-01; the article is a secondary compilation",
+    "identifier": "English Wikipedia article '2S1 Gvozdika'",
+    "locator": "Infobox, Specifications: Mass, Length, Width, Height, Engine, Operational range and Maximum speed rows",
+    "published": null,
+    "retrieved": "2026-10-01",
+    "url": "https://en.wikipedia.org/wiki/2S1_Gvozdika",
+    "archive_ref": "English Wikipedia article 2S1 Gvozdika",
+    "licence": "Wikipedia text is available under the Creative Commons Attribution-ShareAlike licence. The article is a secondary compilation. The bytes are not held; the values were read at the retrieved date.",
+    "primary_held": false,
+    "note": "Tier-5 compilation for the 2S1 Gvozdika. It publishes the mass, the overall dimensions, the engine, the operational range and the maximum speed, with no net power basis. It is a secondary source and displaces nothing."
   }
 ]
