@@ -71,6 +71,32 @@ tools/docker_test.sh
 The script builds the mod, assembles `@aee`, downloads CBA if needed, runs
 the server, captures the RPT output, and verifies the phase results.
 
+## Engine mass census
+
+The engine config `mass` and `getMass` are engine tuning values, never a
+real-world mass (`data/vehicle/SCHEMA.md`). A `mass` override must therefore
+be a calibrated scale of a held real mass, so the engine's own mass is
+measured first. Phase 72, the probe `aee_p72_mass_probe.sqf`, spawns one
+instance of every class in `data/vehicle/class_bindings.json`, reads
+`getMass` and deletes the instance. It measures only and applies nothing.
+Each class emits one line:
+
+```
+[P72] MASS <class> config=<n> live=<n>
+```
+
+Run the census, then build the calibration:
+
+```bash
+tools/docker_test.sh                                  # writes tests/docker/run.log
+python3 tools/validation/build_mass_calibration.py --log tests/docker/run.log
+```
+
+The tool writes `data/physics/mass_calibration.json`. It fails closed when
+the log is absent or misses a bound class, and its `approved` flag stays
+false. The validator `tools/validation/validate_mass_calibration.py` gates
+the written artefact; an absent artefact is a legal state.
+
 ## Baseline comparison
 
 Run once without the mod to compare mission boot and engine weather:
