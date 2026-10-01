@@ -184,6 +184,17 @@ The unit tests mirror the core physics models in Python. They cover reference va
 
 The headless dedicated-server test in Docker runs the mod against real Arma 3 and verifies ten phases (see `docs/wiki/chapters/testing.qmd`).
 
+### Engine mass census
+
+The engine's config `mass` and `getMass` are engine tuning values, never a real-world mass, so a `mass` override must be a calibrated scale of a held real mass. The probe `aee_p72_mass_probe.sqf` measures the engine's own mass for every class in `data/vehicle/class_bindings.json`. It measures only and applies nothing. Run the census, then build the calibration:
+
+```bash
+tools/docker_test.sh                                  # writes tests/docker/run.log
+python3 tools/validation/build_mass_calibration.py    # reads that log
+```
+
+The tool writes `data/physics/mass_calibration.json`. It fails closed when the log is absent or misses a bound class, and its `approved` flag stays false. The validator `tools/validation/validate_mass_calibration.py` gates the artefact.
+
 ---
 
 ## CI

@@ -2988,6 +2988,10 @@ private _p29Pass = 0;
     // Johnson-criteria spatial-resolution kernel is pure arithmetic, so the
     // dedicated server measures it directly.  It renders nothing.
     execVM "aee_p71_johnson_probe.sqf";
+    // PHASE 72 lives in aee_p72_mass_probe.sqf for the same reason: the mass
+    // census spawns one instance per bound class, reads getMass and deletes
+    // it.  It measures the engine's own mass only and applies nothing.
+    execVM "aee_p72_mass_probe.sqf";
     [{diag_log text "[AEE-TEST] DONE";}, [], 8] call CBA_fnc_waitAndExecute;
         }, [_t1], 5] call CBA_fnc_waitAndExecute;
     }, [], 7] call CBA_fnc_waitAndExecute;
