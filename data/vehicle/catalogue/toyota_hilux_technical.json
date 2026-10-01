@@ -52,6 +52,14 @@
           "state": "overall height as published; source tier-5 compilation",
           "grade": "claimed"
         },
+        "max_speed_kmh": {
+          "value": 170,
+          "unit": "km/h",
+          "source": "autodata24_toyota_hilux",
+          "locator": "Hilux VIII 2.7 (164 hp) 4x4: Maximum speed 170 km/h",
+          "state": "maximum road speed as published; representative base-vehicle value, since a technical is a converted pickup",
+          "grade": "claimed"
+        },
         "engine_model": {
           "value": "2.4 L or 2.8 L turbo-diesel, 2.7 L petrol, 4.0 L V6 petrol (eighth generation)",
           "unit": "text",

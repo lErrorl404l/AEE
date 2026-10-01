@@ -28,6 +28,30 @@
           "state": "operating weight as published; source tier-5 compilation; caveat: operating_weight_kg: the 1.6 t figure is an unladen figure; no laden weight published.",
           "grade": "claimed"
         },
+        "length_mm": {
+          "value": 4550,
+          "unit": "mm",
+          "source": "army_technology_land_rover_wolf",
+          "locator": "Specification table: Length 4,550mm; Width 1,790mm; Height 2,030mm",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 1790,
+          "unit": "mm",
+          "source": "army_technology_land_rover_wolf",
+          "locator": "Specification table: Length 4,550mm; Width 1,790mm; Height 2,030mm",
+          "state": "overall width as published; the wider WMIK and raised-roof variants are not the standard TUM",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2030,
+          "unit": "mm",
+          "source": "army_technology_land_rover_wolf",
+          "locator": "Specification table: Length 4,550mm; Width 1,790mm; Height 2,030mm",
+          "state": "overall height as published; the taller WMIK and raised-roof variants are not the standard TUM",
+          "grade": "claimed"
+        },
         "max_speed_kmh": {
           "value": 160,
           "unit": "km/h",

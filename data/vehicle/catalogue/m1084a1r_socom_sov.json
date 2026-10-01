@@ -60,6 +60,14 @@
           "state": "overall width as published; source tier-4 manufacturer datasheet",
           "grade": "claimed"
         },
+        "height_mm": {
+          "value": 2845,
+          "unit": "mm",
+          "source": "fas_dod101_m1084",
+          "locator": "Dimensions, Height row: Operational 112\" (2,845 mm); For Air Transport 105.5\" (2,680 mm)",
+          "state": "base M1084 MTV operational height as published; the A1R datasheet is not retrievable and no A1R-specific or SOCOM SOV kit height is published",
+          "grade": "claimed"
+        },
         "max_speed_kmh": {
           "value": 94,
           "unit": "km/h",

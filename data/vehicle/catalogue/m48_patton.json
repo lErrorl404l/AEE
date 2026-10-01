@@ -52,6 +52,14 @@
           "state": "overall height as published; source tier-5 compilation",
           "grade": "claimed"
         },
+        "max_speed_kmh": {
+          "value": 48,
+          "unit": "km/h",
+          "source": "wikipedia_m48_patton",
+          "locator": "Infobox, Maximum speed row: M48A5: 30 mph (48 km/h)",
+          "state": "maximum road speed as published; the infobox row is variant-scoped to the M48A5, the diesel variant the entry otherwise documents",
+          "grade": "claimed"
+        },
         "engine_model": {
           "value": "M48A3-A5: Continental AVDS-1790 V12 air-cooled twin-turbo diesel; M48/M48A1: Continental AV1790 V12 air-cooled gasoline",
           "unit": "text",

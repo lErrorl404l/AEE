@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-3 capture. Every value is grade claimed: the validator admits a tier-5 compilation at grade claimed only, and the source note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "t_14_armata",
+      "canonical_name": "T-14 Armata",
+      "maker": "Uralvagonzavod",
+      "model": "T-14 Armata",
+      "variant": "base",
+      "variant_id": "t_14_armata",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Russia",
+      "era": "modern",
+      "aliases": [
+        "t-14 armata"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 55000,
+          "unit": "kg",
+          "source": "wikipedia_t14_armata",
+          "locator": "Infobox, Mass row: 55 tonnes",
+          "state": "value as published",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 10700,
+          "unit": "mm",
+          "source": "wikipedia_t14_armata",
+          "locator": "Infobox, Length row: 10.7 m (35 ft)",
+          "state": "length as published; gun-forward overall length",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3500,
+          "unit": "mm",
+          "source": "wikipedia_t14_armata",
+          "locator": "Infobox, Width row: 3.5 m (11 ft)",
+          "state": "value as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 3300,
+          "unit": "mm",
+          "source": "wikipedia_t14_armata",
+          "locator": "Infobox, Height row: 3.3 m (11 ft)",
+          "state": "value as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 80,
+          "unit": "km/h",
+          "source": "wikipedia_t14_armata",
+          "locator": "Infobox, Maximum speed row: 75-80 km/h (47-50 mph); upper bound used",
+          "state": "source states a 75-80 km/h range; upper bound used",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "12N360 twin-turbo diesel, 1,100 kW (1,500 hp)",
+          "unit": "text",
+          "source": "wikipedia_t14_armata",
+          "locator": "Infobox, Engine row: 12N360 Twin Turbo Diesel 1,100 kW (1,500 hp)",
+          "state": "value as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}
