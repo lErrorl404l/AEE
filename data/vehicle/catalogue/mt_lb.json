@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for MT-LB. Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "mt_lb",
+      "canonical_name": "MT-LB",
+      "maker": "Kharkiv Tractor Plant",
+      "model": "MT-LB",
+      "variant": "base",
+      "variant_id": "mt_lb",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "cold war",
+      "aliases": [
+        "mt-lb"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 11900,
+          "unit": "kg",
+          "source": "wikipedia_mt_lb",
+          "locator": "Infobox, weight: 11.9 t",
+          "state": "operating weight as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6450,
+          "unit": "mm",
+          "source": "wikipedia_mt_lb",
+          "locator": "Infobox, length: 6.45 m",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2860,
+          "unit": "mm",
+          "source": "wikipedia_mt_lb",
+          "locator": "Infobox, width: 2.86 m",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 1860,
+          "unit": "mm",
+          "source": "wikipedia_mt_lb",
+          "locator": "Infobox, height: 1.86 m",
+          "state": "overall height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 61,
+          "unit": "km/h",
+          "source": "wikipedia_mt_lb",
+          "locator": "Infobox, speed: 61 km/h road (30 km/h off-road, 5-6 km/h water)",
+          "state": "maximum road speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "YaMZ 238 V-8 diesel (SW 680 I6 diesel in Polish licence production)",
+          "unit": "text",
+          "source": "wikipedia_mt_lb",
+          "locator": "Infobox, engine list: YaMZ 238 V-8 diesel; SW 680 I6 diesel in Poland",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: YaMZ 238 V-8 diesel (SW 680 I6 diesel in Polish licence production); caveat: engine_model: no engine power given in the cited infobox.",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

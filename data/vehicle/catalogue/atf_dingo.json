@@ -1,0 +1,82 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for ATF Dingo. Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "atf_dingo",
+      "canonical_name": "ATF Dingo",
+      "maker": "Krauss-Maffei Wegmann",
+      "model": "ATF Dingo",
+      "variant": "base",
+      "variant_id": "atf_dingo",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Germany",
+      "era": "modern",
+      "aliases": [
+        "atf dingo"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 11900,
+          "unit": "kg",
+          "source": "wikipedia_atf_dingo",
+          "locator": "Infobox, weight: 8.8-11.9 t; maximum (combat) recorded",
+          "state": "operating weight as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "curb_weight_kg": {
+          "value": 8800,
+          "unit": "kg",
+          "source": "wikipedia_atf_dingo",
+          "locator": "Infobox, weight: 8.8 t (minimum)",
+          "state": "curb weight, no crew and no payload as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 5450,
+          "unit": "mm",
+          "source": "wikipedia_atf_dingo",
+          "locator": "Infobox, length: 5.45 m (short)",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2300,
+          "unit": "mm",
+          "source": "wikipedia_atf_dingo",
+          "locator": "Infobox, width: 2.3 m",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2500,
+          "unit": "mm",
+          "source": "wikipedia_atf_dingo",
+          "locator": "Infobox, height: 2.5 m",
+          "state": "overall height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 90,
+          "unit": "km/h",
+          "source": "wikipedia_atf_dingo",
+          "locator": "Infobox, speed: 90+ km/h",
+          "state": "maximum road speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Diesel, 160 kW",
+          "unit": "text",
+          "source": "wikipedia_atf_dingo",
+          "locator": "Infobox, engine: Diesel, 160 kW",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: Diesel, 160 kW; caveat: engine_model: the cited infobox names only 'Diesel'; no make or model published there.",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

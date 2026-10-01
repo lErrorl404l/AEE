@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for Snatch Land Rover. Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "snatch_land_rover",
+      "canonical_name": "Snatch Land Rover",
+      "maker": "Land Rover",
+      "model": "Snatch Land Rover",
+      "variant": "base",
+      "variant_id": "snatch_land_rover",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United Kingdom",
+      "era": "modern",
+      "aliases": [
+        "snatch land rover"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 4050,
+          "unit": "kg",
+          "source": "wikipedia_snatch_land_rover",
+          "locator": "Infobox, weight: 4,050 kg",
+          "state": "operating weight as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 4550,
+          "unit": "mm",
+          "source": "wikipedia_snatch_land_rover",
+          "locator": "Infobox, length: 4.55 m",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 1790,
+          "unit": "mm",
+          "source": "wikipedia_snatch_land_rover",
+          "locator": "Infobox, width: 1.79 m",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2030,
+          "unit": "mm",
+          "source": "wikipedia_snatch_land_rover",
+          "locator": "Infobox, height: 2.03 m",
+          "state": "overall height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 97,
+          "unit": "km/h",
+          "source": "wikipedia_snatch_land_rover",
+          "locator": "Infobox, speed: 60 mph (97 km/h)",
+          "state": "maximum road speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Land Rover 300 Tdi engine, 111 hp (83 kW)",
+          "unit": "text",
+          "source": "wikipedia_snatch_land_rover",
+          "locator": "Infobox, engine: Land Rover 300 Tdi engine, 111 hp",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: Land Rover 300 Tdi engine, 111 hp (83 kW)",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

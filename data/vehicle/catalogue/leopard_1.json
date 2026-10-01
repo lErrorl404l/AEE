@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for Leopard 1. Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "leopard_1",
+      "canonical_name": "Leopard 1",
+      "maker": "Krauss-Maffei",
+      "model": "Leopard 1",
+      "variant": "base",
+      "variant_id": "leopard_1",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "West Germany",
+      "era": "modern",
+      "aliases": [
+        "leopard 1"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 42200,
+          "unit": "kg",
+          "source": "wikipedia_leopard_1",
+          "locator": "Infobox, weight row: 42.2 tonnes (increased on later models from original 40 t)",
+          "state": "operating weight as published; source tier-5 compilation; caveat: operating_weight_kg: 42.2 t for later models (original 40 t).",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 9540,
+          "unit": "mm",
+          "source": "wikipedia_leopard_1",
+          "locator": "Infobox, length: 9.54 m gun forward / 8.29 m rearward",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3370,
+          "unit": "mm",
+          "source": "wikipedia_leopard_1",
+          "locator": "Infobox, width: 3.37 m",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2390,
+          "unit": "mm",
+          "source": "wikipedia_leopard_1",
+          "locator": "Infobox, height: 2.39 m turret roof / 2.7 m absolute",
+          "state": "overall height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 65,
+          "unit": "km/h",
+          "source": "wikipedia_leopard_1",
+          "locator": "Infobox, speed: 65 km/h",
+          "state": "maximum road speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "MTU MB 838 CaM 500, 10-cylinder 37.4 L multi-fuel, 830 PS (610 kW) at 2,200 rpm",
+          "unit": "text",
+          "source": "wikipedia_leopard_1",
+          "locator": "Infobox, engine: MTU MB 838 CaM 500, 10-cylinder, 37.4 litres, multi-fuel",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: MTU MB 838 CaM 500, 10-cylinder 37.4 L multi-fuel, 830 PS (610 kW) at 2,200 rpm",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

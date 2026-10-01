@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for Puma (German IFV). Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "puma_ifv",
+      "canonical_name": "Puma (German IFV)",
+      "maker": "Krauss-Maffei Wegmann",
+      "model": "Puma (German IFV)",
+      "variant": "IFV",
+      "variant_id": "puma_ifv",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Germany",
+      "era": "modern",
+      "aliases": [
+        "puma (german ifv)"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 31400,
+          "unit": "kg",
+          "source": "wikipedia_puma_ifv",
+          "locator": "Infobox, weight: 31.4 t (level A protection) / 43.0 t (level C); level A recorded",
+          "state": "operating weight as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 7400,
+          "unit": "mm",
+          "source": "wikipedia_puma_ifv",
+          "locator": "Infobox, length: 7.4 m",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3700,
+          "unit": "mm",
+          "source": "wikipedia_puma_ifv",
+          "locator": "Infobox, width: 3.7 m with base armour / 4.0 m up-armoured; base recorded",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 3100,
+          "unit": "mm",
+          "source": "wikipedia_puma_ifv",
+          "locator": "Infobox, height: 3.1 m for the turret roof / 3.6 m for the optics; turret roof recorded",
+          "state": "overall height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 70,
+          "unit": "km/h",
+          "source": "wikipedia_puma_ifv",
+          "locator": "Infobox, speed: 70 km/h on road",
+          "state": "maximum road speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "MTU MT 892 Ka-501 V10 11.1-litre diesel, 1,088 PS (800 kW) at 3,800 rpm",
+          "unit": "text",
+          "source": "wikipedia_puma_ifv",
+          "locator": "Infobox, engine: MTU MT 892 Ka-501 V10 11.1-litre, 1,088 PS at 3,800 rpm",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: MTU MT 892 Ka-501 V10 11.1-litre diesel, 1,088 PS (800 kW) at 3,800 rpm",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

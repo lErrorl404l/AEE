@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for FV4201 Chieftain. Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "fv4201_chieftain",
+      "canonical_name": "FV4201 Chieftain",
+      "maker": "Leyland Motors",
+      "model": "FV4201 Chieftain",
+      "variant": "base",
+      "variant_id": "fv4201_chieftain",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "United Kingdom",
+      "era": "modern",
+      "aliases": [
+        "fv4201 chieftain"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 56000,
+          "unit": "kg",
+          "source": "wikipedia_chieftain",
+          "locator": "Infobox, weight: 55 long tons = 56 tonnes (62 short tons)",
+          "state": "operating weight as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 10769,
+          "unit": "mm",
+          "source": "wikipedia_chieftain",
+          "locator": "Infobox, length: 35 ft 4 in (10,769 mm) gun forward; 7.5 m hull",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3658,
+          "unit": "mm",
+          "source": "wikipedia_chieftain",
+          "locator": "Infobox, width: 12 ft 0 in (3,658 mm)",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2900,
+          "unit": "mm",
+          "source": "wikipedia_chieftain",
+          "locator": "Infobox, height: 2.9 m",
+          "state": "overall height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 40,
+          "unit": "km/h",
+          "source": "wikipedia_chieftain",
+          "locator": "Infobox, speed: 40 km/h (Mk 1-3), 43 km/h (Mk 5). Mk 1-3 recorded.",
+          "state": "maximum road speed as published; source tier-5 compilation; caveat: max_speed_kmh: Mk 5 is 43 km/h; the Mk 1-3 40 km/h is recorded.",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Leyland L60 multi-fuel 2-stroke opposed-piston compression-ignition, 6-cylinder 19 L, 750 hp",
+          "unit": "text",
+          "source": "wikipedia_chieftain",
+          "locator": "Infobox, engine: Leyland L60 multifuel 2-stroke opposed-piston, 750 hp, 19 litres",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: Leyland L60 multi-fuel 2-stroke opposed-piston compression-ignition, 6-cylinder 19 L, 750 hp",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

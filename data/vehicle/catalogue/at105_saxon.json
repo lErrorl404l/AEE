@@ -1,0 +1,82 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for AT105 Saxon. Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "at105_saxon",
+      "canonical_name": "AT105 Saxon",
+      "maker": "GKN Sankey",
+      "model": "AT105 Saxon",
+      "variant": "base",
+      "variant_id": "at105_saxon",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United Kingdom",
+      "era": "modern",
+      "aliases": [
+        "at105 saxon"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 11660,
+          "unit": "kg",
+          "source": "wikipedia_saxon",
+          "locator": "Infobox, weight: 9,940 kg standard / 11,660 kg combat; combat recorded",
+          "state": "operating weight as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "curb_weight_kg": {
+          "value": 9940,
+          "unit": "kg",
+          "source": "wikipedia_saxon",
+          "locator": "Infobox, weight: 9,940 kg (standard)",
+          "state": "curb weight, no crew and no payload as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 5170,
+          "unit": "mm",
+          "source": "wikipedia_saxon",
+          "locator": "Infobox, length: 5.17 m",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2490,
+          "unit": "mm",
+          "source": "wikipedia_saxon",
+          "locator": "Infobox, width: 2.49 m",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2860,
+          "unit": "mm",
+          "source": "wikipedia_saxon",
+          "locator": "Infobox, height: 2.86 m",
+          "state": "overall height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 96,
+          "unit": "km/h",
+          "source": "wikipedia_saxon",
+          "locator": "Infobox, speed: 96 km/h",
+          "state": "maximum road speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Bedford 500 6-cylinder diesel, 164 hp (122 kW)",
+          "unit": "text",
+          "source": "wikipedia_saxon",
+          "locator": "Infobox, engine: Bedford 500 6-cyl diesel, 164 hp",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: Bedford 500 6-cylinder diesel, 164 hp (122 kW)",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

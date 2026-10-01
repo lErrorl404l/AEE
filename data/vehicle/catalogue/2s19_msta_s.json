@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for 2S19 Msta-S. Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "2s19_msta_s",
+      "canonical_name": "2S19 Msta-S",
+      "maker": "Uraltransmash",
+      "model": "2S19 Msta-S",
+      "variant": "base",
+      "variant_id": "2s19_msta_s",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "cold war",
+      "aliases": [
+        "2s19 msta-s"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 42000,
+          "unit": "kg",
+          "source": "wikipedia_2s19_msta_s",
+          "locator": "Infobox, mass: 42 t",
+          "state": "operating weight as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 7150,
+          "unit": "mm",
+          "source": "wikipedia_2s19_msta_s",
+          "locator": "Infobox, length: 7.15 m",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3380,
+          "unit": "mm",
+          "source": "wikipedia_2s19_msta_s",
+          "locator": "Infobox, width: 3.38 m",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2990,
+          "unit": "mm",
+          "source": "wikipedia_2s19_msta_s",
+          "locator": "Infobox, height: 2.99 m",
+          "state": "overall height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 60,
+          "unit": "km/h",
+          "source": "wikipedia_2s19_msta_s",
+          "locator": "Infobox, speed: 60 km/h",
+          "state": "maximum road speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "V-84A diesel, 840 hp (626 kW)",
+          "unit": "text",
+          "source": "wikipedia_2s19_msta_s",
+          "locator": "Infobox, engine: diesel V-84A, 840 hp",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: V-84A diesel, 840 hp (626 kW)",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

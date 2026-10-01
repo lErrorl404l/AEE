@@ -1,0 +1,82 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for BAE Systems RG-33L (6x6). Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "bae_systems_rg_33l_6x6",
+      "canonical_name": "BAE Systems RG-33L (6x6)",
+      "maker": "BAE Systems",
+      "model": "BAE Systems RG-33L",
+      "variant": "6x6",
+      "variant_id": "bae_systems_rg_33l_6x6",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "bae systems rg-33l (6x6)"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 24000,
+          "unit": "kg",
+          "source": "armyrecognition_rg33_4x4",
+          "locator": "Army Recognition: 'the extended RG-33L variant has six wheels ... and weighs 24 tons' (24,000 kg)",
+          "state": "operating weight as published; source tier-5 compilation; caveat: operating_weight_kg: 24 tons (Army Recognition) vs manufacturer GVW 26,308 kg. Recorded as stated.",
+          "grade": "claimed"
+        },
+        "gross_weight_kg": {
+          "value": 26308,
+          "unit": "kg",
+          "source": "bae_systems_rg33_product",
+          "locator": "Manufacturer spec table, 'Gross vehicle weight RG33 series 6x6: 58,000 lb' (26,308 kg)",
+          "state": "gross vehicle weight rating as published; source tier-4 manufacturer product page",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 8585,
+          "unit": "mm",
+          "source": "bae_systems_rg33_product",
+          "locator": "Manufacturer spec table, 'Length RG33 series 6x6: 338 in' (8,585 mm)",
+          "state": "overall length as published; source tier-4 manufacturer product page",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2438,
+          "unit": "mm",
+          "source": "bae_systems_rg33_product",
+          "locator": "Manufacturer spec table, 'Width 96 in' (2,438 mm)",
+          "state": "overall width as published; source tier-4 manufacturer product page",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 3454,
+          "unit": "mm",
+          "source": "bae_systems_rg33_product",
+          "locator": "Manufacturer spec table, 'Height 136 in' (3,454 mm)",
+          "state": "overall height as published; source tier-4 manufacturer product page",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 110,
+          "unit": "km/h",
+          "source": "armyrecognition_rg33l",
+          "locator": "Army Recognition RG-33L page, road speed (same family as the 4x4, 110 km/h)",
+          "state": "maximum road speed as published; source tier-5 compilation; caveat: max_speed_kmh: no RG-33L-specific speed published; the family 110 km/h is carried at grade claimed.",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Cummins 400 inline-6 diesel",
+          "unit": "text",
+          "source": "armyrecognition_rg33l",
+          "locator": "Army Recognition RG-33L page: 'motorised with a Cummins 400 I6 Diesel engine coupled to an Allison 3200 transmission'",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: Cummins 400 inline-6 diesel",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for T-54/T-55. Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "t_54_t_55",
+      "canonical_name": "T-54/T-55",
+      "maker": "Uralvagonzavod",
+      "model": "T-54/T-55",
+      "variant": "base",
+      "variant_id": "t_54_t_55",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "cold war",
+      "aliases": [
+        "t-54/t-55"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 36000,
+          "unit": "kg",
+          "source": "wikipedia_t_54_t_55",
+          "locator": "Infobox, weight: 36 tonnes",
+          "state": "operating weight as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 9000,
+          "unit": "mm",
+          "source": "wikipedia_t_54_t_55",
+          "locator": "Infobox, length: 9.00 m with gun forward",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3370,
+          "unit": "mm",
+          "source": "wikipedia_t_54_t_55",
+          "locator": "Infobox, width: 3.37 m",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2400,
+          "unit": "mm",
+          "source": "wikipedia_t_54_t_55",
+          "locator": "Infobox, height: 2.40 m",
+          "state": "overall height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 51,
+          "unit": "km/h",
+          "source": "wikipedia_t_54_t_55",
+          "locator": "Infobox, speed: 51 km/h",
+          "state": "maximum road speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Model V-55 (V-54) V-12 water-cooled 38.88 L diesel, 500 hp (up to 800 hp late)",
+          "unit": "text",
+          "source": "wikipedia_t_54_t_55",
+          "locator": "Infobox, engine: Model V-55 (V-54) V-12 water-cooled 38.88-litre diesel, 500 to 800 hp",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: Model V-55 (V-54) V-12 water-cooled 38.88 L diesel, 500 hp (up to 800 hp late)",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

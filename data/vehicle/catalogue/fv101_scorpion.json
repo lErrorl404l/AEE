@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for FV101 Scorpion. Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "fv101_scorpion",
+      "canonical_name": "FV101 Scorpion",
+      "maker": "Alvis",
+      "model": "FV101 Scorpion",
+      "variant": "base",
+      "variant_id": "fv101_scorpion",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "United Kingdom",
+      "era": "modern",
+      "aliases": [
+        "fv101 scorpion"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 8074,
+          "unit": "kg",
+          "source": "wikipedia_fv101_scorpion",
+          "locator": "Infobox, weight: 17,800 lb (8.074 tonnes)",
+          "state": "operating weight as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 5288,
+          "unit": "mm",
+          "source": "wikipedia_fv101_scorpion",
+          "locator": "Infobox, length: 5.288 m including the 90 mm gun (4.79 m hull)",
+          "state": "overall length as published; source tier-5 compilation; caveat: length_mm: 4.79 m hull vs 5.288 m gun-forward; gun-forward recorded.",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2134,
+          "unit": "mm",
+          "source": "wikipedia_fv101_scorpion",
+          "locator": "Infobox, width: 2.134 m",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2102,
+          "unit": "mm",
+          "source": "wikipedia_fv101_scorpion",
+          "locator": "Infobox, height: 2.102 m",
+          "state": "overall height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 72,
+          "unit": "km/h",
+          "source": "wikipedia_fv101_scorpion",
+          "locator": "Infobox, speed: 72.5 km/h",
+          "state": "maximum road speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Cummins BTA 5.9-litre diesel, 190 hp (142 kW)",
+          "unit": "text",
+          "source": "wikipedia_fv101_scorpion",
+          "locator": "Infobox, engine: Cummins BTA 5.9-litre (diesel), 190 hp",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: Cummins BTA 5.9-litre diesel, 190 hp (142 kW)",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

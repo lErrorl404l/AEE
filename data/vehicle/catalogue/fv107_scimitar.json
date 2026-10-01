@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for FV107 Scimitar. Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "fv107_scimitar",
+      "canonical_name": "FV107 Scimitar",
+      "maker": "Alvis",
+      "model": "FV107 Scimitar",
+      "variant": "base",
+      "variant_id": "fv107_scimitar",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "United Kingdom",
+      "era": "modern",
+      "aliases": [
+        "fv107 scimitar"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 7800,
+          "unit": "kg",
+          "source": "wikipedia_fv107_scimitar",
+          "locator": "Infobox, weight row: 7.8 tonnes",
+          "state": "operating weight as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 4900,
+          "unit": "mm",
+          "source": "wikipedia_fv107_scimitar",
+          "locator": "Infobox, length: 4.9 m",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2200,
+          "unit": "mm",
+          "source": "wikipedia_fv107_scimitar",
+          "locator": "Infobox, width: 2.2 m",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2100,
+          "unit": "mm",
+          "source": "wikipedia_fv107_scimitar",
+          "locator": "Infobox, height: 2.1 m",
+          "state": "overall height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 80,
+          "unit": "km/h",
+          "source": "wikipedia_fv107_scimitar",
+          "locator": "Infobox, speed: 50 mph (80.5 km/h)",
+          "state": "maximum road speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Cummins BTA 5.9 diesel, 190 hp (142 kW)",
+          "unit": "text",
+          "source": "wikipedia_fv107_scimitar",
+          "locator": "Infobox, engine: Cummins BTA 5.9 diesel, 190 hp (142 kW)",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: Cummins BTA 5.9 diesel, 190 hp (142 kW)",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

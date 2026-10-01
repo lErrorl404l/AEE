@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for Wiesel AWC. Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "wiesel_awc",
+      "canonical_name": "Wiesel AWC",
+      "maker": "Rheinmetall",
+      "model": "Wiesel AWC",
+      "variant": "base",
+      "variant_id": "wiesel_awc",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Germany",
+      "era": "modern",
+      "aliases": [
+        "wiesel awc"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 2750,
+          "unit": "kg",
+          "source": "wikipedia_wiesel_awc",
+          "locator": "Infobox, weight: 2.75 t (Wiesel 1) to 4.78 t (Wiesel 2); Wiesel 1 recorded",
+          "state": "operating weight as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 3550,
+          "unit": "mm",
+          "source": "wikipedia_wiesel_awc",
+          "locator": "Infobox, length: 3.55 m (Wiesel 1)",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 1820,
+          "unit": "mm",
+          "source": "wikipedia_wiesel_awc",
+          "locator": "Infobox, width: 1.82 m (Wiesel 1)",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 1820,
+          "unit": "mm",
+          "source": "wikipedia_wiesel_awc",
+          "locator": "Infobox, height: 1.82 m (Wiesel 1)",
+          "state": "overall height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 70,
+          "unit": "km/h",
+          "source": "wikipedia_wiesel_awc",
+          "locator": "Infobox, speed: 70 km/h",
+          "state": "maximum road speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Audi 2.0 L inline-5 turbo-diesel, 64 kW",
+          "unit": "text",
+          "source": "wikipedia_wiesel_awc",
+          "locator": "Infobox, engine: Audi 2.0 L 5-cylinder in-line turbo-diesel, 64 kW (Wiesel 1)",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: Audi 2.0 L inline-5 turbo-diesel, 64 kW",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

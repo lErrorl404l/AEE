@@ -1,0 +1,82 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for TPz Fuchs. Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "tpz_fuchs",
+      "canonical_name": "TPz Fuchs",
+      "maker": "Thyssen-Henschel",
+      "model": "TPz Fuchs",
+      "variant": "base",
+      "variant_id": "tpz_fuchs",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Germany",
+      "era": "modern",
+      "aliases": [
+        "tpz fuchs"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 23500,
+          "unit": "kg",
+          "source": "wikipedia_tpz_fuchs",
+          "locator": "Infobox, weight: 17,000 kg unladen / 23,500 kg combat; combat recorded",
+          "state": "operating weight as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "curb_weight_kg": {
+          "value": 17000,
+          "unit": "kg",
+          "source": "wikipedia_tpz_fuchs",
+          "locator": "Infobox, weight: 17,000 kg unladen",
+          "state": "curb weight, no crew and no payload as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6800,
+          "unit": "mm",
+          "source": "wikipedia_tpz_fuchs",
+          "locator": "Infobox, length: 6.8 m",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2980,
+          "unit": "mm",
+          "source": "wikipedia_tpz_fuchs",
+          "locator": "Infobox, width: 2.98 m",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2500,
+          "unit": "mm",
+          "source": "wikipedia_tpz_fuchs",
+          "locator": "Infobox, height: 2.5 m",
+          "state": "overall height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 105,
+          "unit": "km/h",
+          "source": "wikipedia_tpz_fuchs",
+          "locator": "Infobox, speed: 105 km/h road (10 km/h water)",
+          "state": "maximum road speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Mercedes-Benz OM 402A V-8 liquid-cooled diesel, 320 hp at 2,500 rpm",
+          "unit": "text",
+          "source": "wikipedia_tpz_fuchs",
+          "locator": "Infobox, engine: Mercedes-Benz OM 402A V-8 liquid-cooled diesel, 320 hp",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: Mercedes-Benz OM 402A V-8 liquid-cooled diesel, 320 hp at 2,500 rpm",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

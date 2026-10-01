@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for T-34. Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "t_34",
+      "canonical_name": "T-34",
+      "maker": "Kharkiv Tractor Plant",
+      "model": "T-34",
+      "variant": "base",
+      "variant_id": "t_34",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "world war 2",
+      "aliases": [
+        "t-34"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 32400,
+          "unit": "kg",
+          "source": "wikipedia_t_34",
+          "locator": "Infobox, weight: 26.5 t (T-34) / 32.4 t (T-34-85); T-34-85 recorded",
+          "state": "operating weight as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6680,
+          "unit": "mm",
+          "source": "wikipedia_t_34",
+          "locator": "Infobox, length: 6.68 m",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3000,
+          "unit": "mm",
+          "source": "wikipedia_t_34",
+          "locator": "Infobox, width: 3.00 m",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2460,
+          "unit": "mm",
+          "source": "wikipedia_t_34",
+          "locator": "Infobox, height: 2.46 m",
+          "state": "overall height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 53,
+          "unit": "km/h",
+          "source": "wikipedia_t_34",
+          "locator": "Infobox, speed: 53 km/h",
+          "state": "maximum road speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Model V-2-34 38.8 L V12 diesel, 500 hp (370 kW)",
+          "unit": "text",
+          "source": "wikipedia_t_34",
+          "locator": "Infobox, engine: Model V-2-34 38.8 L V12 diesel, 500 hp",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: Model V-2-34 38.8 L V12 diesel, 500 hp (370 kW)",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

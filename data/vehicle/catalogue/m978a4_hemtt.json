@@ -1,0 +1,90 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for M978A4 HEMTT. Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "m978a4_hemtt",
+      "canonical_name": "M978A4 HEMTT",
+      "maker": "Oshkosh",
+      "model": "M978A4 HEMTT",
+      "variant": "base",
+      "variant_id": "m978a4_hemtt",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "m978a4 hemtt"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 19119,
+          "unit": "kg",
+          "source": "oshkosh_hemtt_a4_fuel_servicing_datasheet",
+          "locator": "Datasheet spec table, 'Curb Weight: 42,150 lbs. (19119 kg)'. Entered as the operating basis: curb weight with fuel, no payload or crew.",
+          "state": "operating weight as published; source tier-4 manufacturer datasheet",
+          "grade": "claimed"
+        },
+        "curb_weight_kg": {
+          "value": 19119,
+          "unit": "kg",
+          "source": "oshkosh_hemtt_a4_fuel_servicing_datasheet",
+          "locator": "Datasheet spec table, 'Curb Weight: 42,150 lbs. (19119 kg)'",
+          "state": "curb weight, no crew and no payload as published; source tier-4 manufacturer datasheet",
+          "grade": "claimed"
+        },
+        "gross_weight_kg": {
+          "value": 29030,
+          "unit": "kg",
+          "source": "oshkosh_hemtt_a4_fuel_servicing_datasheet",
+          "locator": "Datasheet spec table, 'Gross Vehicle Weight Rating (GVWR): 64,000 lbs. (29030 kg)'",
+          "state": "gross vehicle weight rating as published; source tier-4 manufacturer datasheet",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 10389,
+          "unit": "mm",
+          "source": "oshkosh_hemtt_a4_fuel_servicing_datasheet",
+          "locator": "Datasheet spec table, 'Length: 409 in. (10389 mm)'",
+          "state": "overall length as published; source tier-4 manufacturer datasheet",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2438,
+          "unit": "mm",
+          "source": "oshkosh_hemtt_a4_fuel_servicing_datasheet",
+          "locator": "Datasheet spec table, 'Width: 96 in. (2438 mm)'",
+          "state": "overall width as published; source tier-4 manufacturer datasheet",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2997,
+          "unit": "mm",
+          "source": "oshkosh_hemtt_a4_fuel_servicing_datasheet",
+          "locator": "Datasheet spec table, 'Height (over spare tire): 118 in. (2997 mm)'",
+          "state": "overall height as published; source tier-4 manufacturer datasheet",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 100,
+          "unit": "km/h",
+          "source": "oshkosh_hemtt_a4_fuel_servicing_datasheet",
+          "locator": "Datasheet spec table, 'Maximum Speed: 62 mph (100 km/h)'",
+          "state": "maximum road speed as published; source tier-4 manufacturer datasheet",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Caterpillar C15, 15.2-litre inline-6 water-cooled diesel, 500 hp",
+          "unit": "text",
+          "source": "oshkosh_hemtt_a4_fuel_servicing_datasheet",
+          "locator": "Datasheet spec table, 'Engine: Caterpillar C15, 500 hp 15.2 L'",
+          "state": "engine make and model as published; source tier-4 manufacturer datasheet; dataset derivation: Caterpillar C15, 15.2-litre inline-6 water-cooled diesel, 500 hp",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

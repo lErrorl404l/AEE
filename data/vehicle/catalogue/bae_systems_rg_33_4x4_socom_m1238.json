@@ -1,0 +1,82 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for BAE Systems RG-33 4x4 SOCOM (M1238). Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "bae_systems_rg_33_4x4_socom_m1238",
+      "canonical_name": "BAE Systems RG-33 4x4 SOCOM (M1238)",
+      "maker": "BAE Systems",
+      "model": "BAE Systems RG-33 4x4 SOCOM",
+      "variant": "M1238",
+      "variant_id": "bae_systems_rg_33_4x4_socom_m1238",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "bae systems rg-33 4x4 socom (m1238)"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 14000,
+          "unit": "kg",
+          "source": "warwheels_rg33_4x4_socom",
+          "locator": "WarWheels M1238: Category 1 MRAP, 3+6 crew, CROWS II. No SOCOM-specific weight; base RG-33 4x4 value carried.",
+          "state": "operating weight as published; source tier-5 compilation; caveat: operating_weight_kg: no M1238-specific mass published; the base RG-33 4x4 14 t and manufacturer GVW 17,237 kg are carried at grade claimed.",
+          "grade": "claimed"
+        },
+        "gross_weight_kg": {
+          "value": 17237,
+          "unit": "kg",
+          "source": "bae_systems_rg33_product",
+          "locator": "Manufacturer spec table, RG33 series 4x4 GVW 38,000 lb (17,237 kg), carried to the SOCOM variant",
+          "state": "gross vehicle weight rating as published; source tier-4 manufacturer product page",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6731,
+          "unit": "mm",
+          "source": "bae_systems_rg33_product",
+          "locator": "Manufacturer spec table, RG33 series 4x4 length 265 in (6,731 mm), carried",
+          "state": "overall length as published; source tier-4 manufacturer product page",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2438,
+          "unit": "mm",
+          "source": "bae_systems_rg33_product",
+          "locator": "Manufacturer spec table, RG33 series 4x4 width 96 in (2,438 mm), carried",
+          "state": "overall width as published; source tier-4 manufacturer product page",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 3454,
+          "unit": "mm",
+          "source": "bae_systems_rg33_product",
+          "locator": "Manufacturer spec table, RG33 series 4x4 height 136 in (3,454 mm), carried",
+          "state": "overall height as published; source tier-4 manufacturer product page",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 110,
+          "unit": "km/h",
+          "source": "armyrecognition_rg33_socom",
+          "locator": "Army Recognition RG33 USSOCOM page, 110 km/h maximum road speed",
+          "state": "maximum road speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Cummins ISL E 8.9 L 6-cylinder turbo-diesel",
+          "unit": "text",
+          "source": "warwheels_rg33_4x4_socom",
+          "locator": "WarWheels M1238: 'Engine: 6 Cylinder Turbo Diesel (Cummins ISL E 8.9L)', an upgrade over the base RG-33 4x4",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: Cummins ISL E 8.9 L 6-cylinder turbo-diesel",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

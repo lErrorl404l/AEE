@@ -1,0 +1,90 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for M1078A1R SOCOM SOV. Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "m1078a1r_socom_sov",
+      "canonical_name": "M1078A1R SOCOM SOV",
+      "maker": "BAE Systems",
+      "model": "M1078A1R SOCOM SOV",
+      "variant": "base",
+      "variant_id": "m1078a1r_socom_sov",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "m1078a1r socom sov"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 7808,
+          "unit": "kg",
+          "source": "fmtv_a1r_m1078_cargo_datasheet",
+          "locator": "Datasheet, 'Vehicle Curb Weight with Fuel: 17,214 lb (7,808 kg)'. No SOCOM SOV-specific weight is published anywhere found; the base M1078A1R 2.5-ton cargo figure is used as the operating basis.",
+          "state": "operating weight as published; source tier-4 manufacturer datasheet; caveat: operating_weight_kg: NO SOCOM SOV-specific weight is published. The base M1078A1R cargo curb weight (7,808 kg) is carried at grade documented for the base vehicle but the SOCOM kit mass is unknown.",
+          "grade": "claimed"
+        },
+        "curb_weight_kg": {
+          "value": 7808,
+          "unit": "kg",
+          "source": "fmtv_a1r_m1078_cargo_datasheet",
+          "locator": "Datasheet, 'Vehicle Curb Weight with Fuel: 17,214 lb (7,808 kg)'",
+          "state": "curb weight, no crew and no payload as published; source tier-4 manufacturer datasheet",
+          "grade": "claimed"
+        },
+        "gross_weight_kg": {
+          "value": 10076,
+          "unit": "kg",
+          "source": "fmtv_a1r_m1078_cargo_datasheet",
+          "locator": "Datasheet, curb 17,214 lb plus payload 5,000 lb = 22,214 lb (10,076 kg); derived.",
+          "state": "gross vehicle weight rating as published; source tier-4 manufacturer datasheet; the research dataset marked this value derived; it is not directly published, and the validator admits a real-world derived value as claimed",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6420,
+          "unit": "mm",
+          "source": "fmtv_a1r_m1078_cargo_datasheet",
+          "locator": "Datasheet, 'Length: 235 in (6,420 mm)'. Note the printed inch figure (235 in = 5,969 mm) disagrees with the printed metric figure (6,420 mm); the metric figure is recorded.",
+          "state": "overall length as published; source tier-4 manufacturer datasheet; caveat: length_mm: the datasheet prints '235 in (6,420 mm)', an internal inconsistency (235 in = 5,969 mm). The metric figure is recorded; the imperial figure is suspect.",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2438,
+          "unit": "mm",
+          "source": "fmtv_a1r_m1078_cargo_datasheet",
+          "locator": "Datasheet, 'Width: 96 in (2,438 mm)'",
+          "state": "overall width as published; source tier-4 manufacturer datasheet",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2845,
+          "unit": "mm",
+          "source": "fmtv_a1r_m1078_cargo_datasheet",
+          "locator": "Datasheet, 'Height Operational: 112 in (2,845 mm)'",
+          "state": "overall height as published; source tier-4 manufacturer datasheet",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 94,
+          "unit": "km/h",
+          "source": "fmtv_a1r_m1078_cargo_datasheet",
+          "locator": "Datasheet, 'Maximum Speed: 58 mph (94 km/h)'",
+          "state": "maximum road speed as published; source tier-4 manufacturer datasheet",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Caterpillar 3126 heavy-duty 6-cylinder turbocharged and aftercooled diesel, 225 hp (168 kW)",
+          "unit": "text",
+          "source": "fmtv_a1r_m1078_cargo_datasheet",
+          "locator": "Datasheet, engine block: Caterpillar 3126, 225 hp (168 kW) at 2200 rpm",
+          "state": "engine make and model as published; source tier-4 manufacturer datasheet; dataset derivation: Caterpillar 3126 heavy-duty 6-cylinder turbocharged and aftercooled diesel, 225 hp (168 kW)",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

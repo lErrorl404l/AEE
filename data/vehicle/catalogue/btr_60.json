@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for BTR-60. Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "btr_60",
+      "canonical_name": "BTR-60",
+      "maker": "GAZ",
+      "model": "BTR-60",
+      "variant": "base",
+      "variant_id": "btr_60",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "cold war",
+      "aliases": [
+        "btr-60"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 10300,
+          "unit": "kg",
+          "source": "wikipedia_btr_60",
+          "locator": "Infobox, weight: 10.3 tonnes",
+          "state": "operating weight as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 7560,
+          "unit": "mm",
+          "source": "wikipedia_btr_60",
+          "locator": "Infobox, length: 7.56 m",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2825,
+          "unit": "mm",
+          "source": "wikipedia_btr_60",
+          "locator": "Infobox, width: 2.825 m",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2310,
+          "unit": "mm",
+          "source": "wikipedia_btr_60",
+          "locator": "Infobox, height: 2.31 m",
+          "state": "overall height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 80,
+          "unit": "km/h",
+          "source": "wikipedia_btr_60",
+          "locator": "Infobox, speed: 80 km/h on road (10 km/h water)",
+          "state": "maximum road speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "2 x GAZ-49B 6-cylinder water-cooled gasoline, 67 kW each (134 kW combined)",
+          "unit": "text",
+          "source": "wikipedia_btr_60",
+          "locator": "Infobox, engine: 2 x GAZ-49B 6-cylinder water-cooled gasoline, 67 kW each, 134 kW combined",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: 2 x GAZ-49B 6-cylinder water-cooled gasoline, 67 kW each (134 kW combined)",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

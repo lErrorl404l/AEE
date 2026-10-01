@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for T-80UE-1. Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "t_80ue_1",
+      "canonical_name": "T-80UE-1",
+      "maker": "Omsktransmash",
+      "model": "T-80UE-1",
+      "variant": "base",
+      "variant_id": "t_80ue_1",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Russia",
+      "era": "modern",
+      "aliases": [
+        "t-80ue-1"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 46500,
+          "unit": "kg",
+          "source": "wikipedia_t_80_models",
+          "locator": "T-80 models article, T-80UE-1 bullet (1999-2002 upgrade: T-80BV/T-80U hull with a T-80UD turret); weight carried from the T-80U. No T-80UE-1-specific weight published.",
+          "state": "operating weight as published; source tier-5 compilation; caveat: operating_weight_kg, length_mm, width_mm, height_mm, engine_model: no published figures specific to the T-80UE-1. The T-80U base dimensions/weight are carried at grade claimed, which supplies the runtime operating_weight_kg. This is a mixed hull/turret vehicle, so the carried values are an approximation.",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 9654,
+          "unit": "mm",
+          "source": "wikipedia_t_80_models",
+          "locator": "Carried from T-80U (9.654 m gun forward); no T-80UE-1-specific figure published",
+          "state": "overall length as published; source tier-5 compilation; caveat: operating_weight_kg, length_mm, width_mm, height_mm, engine_model: no published figures specific to the T-80UE-1. The T-80U base dimensions/weight are carried at grade claimed, which supplies the runtime operating_weight_kg. This is a mixed hull/turret vehicle, so the carried values are an approximation.",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3525,
+          "unit": "mm",
+          "source": "wikipedia_t_80_models",
+          "locator": "Carried from T-80U (3.525 m); no T-80UE-1-specific figure published",
+          "state": "overall width as published; source tier-5 compilation; caveat: operating_weight_kg, length_mm, width_mm, height_mm, engine_model: no published figures specific to the T-80UE-1. The T-80U base dimensions/weight are carried at grade claimed, which supplies the runtime operating_weight_kg. This is a mixed hull/turret vehicle, so the carried values are an approximation.",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2202,
+          "unit": "mm",
+          "source": "wikipedia_t_80_models",
+          "locator": "Carried from T-80U (2.202 m); no T-80UE-1-specific figure published",
+          "state": "overall height as published; source tier-5 compilation; caveat: operating_weight_kg, length_mm, width_mm, height_mm, engine_model: no published figures specific to the T-80UE-1. The T-80U base dimensions/weight are carried at grade claimed, which supplies the runtime operating_weight_kg. This is a mixed hull/turret vehicle, so the carried values are an approximation.",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 70,
+          "unit": "km/h",
+          "source": "wikipedia_t_80_models",
+          "locator": "T-80 models article; 70 km/h road (T-80U class)",
+          "state": "maximum road speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "GTD-1250 gas turbine (1,250 hp)",
+          "unit": "text",
+          "source": "wikipedia_t_80_models",
+          "locator": "Carried from T-80U (GTD-1250); the T-80UE-1 engine fitment is not stated in the cited source",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: GTD-1250 gas turbine (1,250 hp); caveat: operating_weight_kg, length_mm, width_mm, height_mm, engine_model: no published figures specific to the T-80UE-1. The T-80U base dimensions/weight are carried at grade claimed, which supplies the runtime operating_weight_kg. This is a mixed hull/turret vehicle, so the carried values are an approximation.",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

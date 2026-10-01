@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for M60 Patton. Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "m60_patton",
+      "canonical_name": "M60 Patton",
+      "maker": "Chrysler Defense",
+      "model": "M60 Patton",
+      "variant": "base",
+      "variant_id": "m60_patton",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "m60 patton"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 47718,
+          "unit": "kg",
+          "source": "wikipedia_m60_tank",
+          "locator": "Infobox, weight: 52.6 short tons (47,718 kg)",
+          "state": "operating weight as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 9309,
+          "unit": "mm",
+          "source": "wikipedia_m60_tank",
+          "locator": "Infobox, length: 9.309 m gun forward (6.946 m hull)",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3631,
+          "unit": "mm",
+          "source": "wikipedia_m60_tank",
+          "locator": "Infobox, width: 3.631 m",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 3270,
+          "unit": "mm",
+          "source": "wikipedia_m60_tank",
+          "locator": "Infobox, height: 3.27 m",
+          "state": "overall height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 48,
+          "unit": "km/h",
+          "source": "wikipedia_m60_tank",
+          "locator": "Infobox, speed: 30 mph (48 km/h) road",
+          "state": "maximum road speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Continental AVDS-1790-2 V12 air-cooled twin-turbo diesel, 750 hp",
+          "unit": "text",
+          "source": "wikipedia_m60_tank",
+          "locator": "Infobox, engine: Continental AVDS-1790-2 V12, air-cooled twin-turbo diesel, 750 hp",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: Continental AVDS-1790-2 V12 air-cooled twin-turbo diesel, 750 hp",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}
