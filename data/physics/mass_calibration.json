@@ -1,6 +1,6 @@
 {
   "schema": "aee.physics.mass_calibration/1",
-  "note": "Calibration of the engine's own mass for the bound vehicle classes. The engine mass and the config mass are engine tuning values, measured in engine by the mass-census probe; they are never a real-world value. The real mass is a held catalogue analogue. The fit is a calibration scale, not a copied engine value. The approved flag stays false because nothing consumes this artefact yet.",
+  "note": "Calibration of the engine's own mass for the bound vehicle classes. The engine mass and the config mass are engine tuning values, measured in engine by the mass-census probe; they are never a real-world value. The real mass is a held catalogue analogue. The fit is a calibration scale, not a copied engine value. The operator approved this calibration on 2026-10-01, so the calibrated mass override may consume it.",
   "fit": {
     "convention": "scale = real_analogue_mass_kg / engine_mass; engine_mass = real_analogue_mass_kg / scale",
     "estimator": "median",
@@ -17,7 +17,12 @@
   "counts": {
     "paired": 18
   },
-  "approved": false,
+  "approved": true,
+  "approval": {
+    "approved_by": "operator",
+    "approved_on": "2026-10-01",
+    "basis": "The operator approved the calibrated mass override (W1 increment 5). Each emitted mass is a held real mass divided by the fitted scale, never a copied engine mass."
+  },
   "rows": [
     {
       "game_class": "C_Hatchback_01_F",
