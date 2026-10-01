@@ -1,0 +1,66 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for M48 Patton. Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "m48_patton",
+      "canonical_name": "M48 Patton",
+      "maker": "Chrysler",
+      "model": "M48 Patton",
+      "variant": "base",
+      "variant_id": "m48_patton",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "m48 patton"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 44996,
+          "unit": "kg",
+          "source": "wikipedia_m48_patton",
+          "locator": "Infobox, weight: M48 49.6 short tons (44,996 kg)",
+          "state": "operating weight as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 9300,
+          "unit": "mm",
+          "source": "wikipedia_m48_patton",
+          "locator": "Infobox, length: 9.3 m",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3650,
+          "unit": "mm",
+          "source": "wikipedia_m48_patton",
+          "locator": "Infobox, width: 3.65 m",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 3100,
+          "unit": "mm",
+          "source": "wikipedia_m48_patton",
+          "locator": "Infobox, height: 3.1 m",
+          "state": "overall height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "M48A3-A5: Continental AVDS-1790 V12 air-cooled twin-turbo diesel; M48/M48A1: Continental AV1790 V12 air-cooled gasoline",
+          "unit": "text",
+          "source": "wikipedia_m48_patton",
+          "locator": "Infobox, engine: M48A3-M48A5 Continental AVDS-1790 V12 air-cooled twin-turbo diesel; M48/M48A1 Continental AV1790 V12 air-cooled gasoline",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: M48A3-A5: Continental AVDS-1790 V12 air-cooled twin-turbo diesel; M48/M48A1: Continental AV1790 V12 air-cooled gasoline",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

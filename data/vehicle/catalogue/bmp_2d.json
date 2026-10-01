@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for BMP-2D. Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "bmp_2d",
+      "canonical_name": "BMP-2D",
+      "maker": "Kurganmashzavod",
+      "model": "BMP-2D",
+      "variant": "base",
+      "variant_id": "bmp_2d",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "cold war",
+      "aliases": [
+        "bmp-2d"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 14300,
+          "unit": "kg",
+          "source": "wikipedia_bmp_2",
+          "locator": "Infobox, weight row (14.3 t), carried to the BMP-2D; appliqué armour mass not published",
+          "state": "operating weight as published; source tier-5 compilation; caveat: operating_weight_kg: no BMP-2D-specific mass published; BMP-2 base 14.3 t carried at grade claimed.",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6735,
+          "unit": "mm",
+          "source": "wikipedia_bmp_2",
+          "locator": "Infobox, length row (6.735 m)",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3150,
+          "unit": "mm",
+          "source": "wikipedia_bmp_2",
+          "locator": "Infobox, width row (3.15 m)",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2450,
+          "unit": "mm",
+          "source": "wikipedia_bmp_2",
+          "locator": "Infobox, height row (2.45 m)",
+          "state": "overall height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 65,
+          "unit": "km/h",
+          "source": "wikipedia_bmp_2",
+          "locator": "Infobox, speed row (65 km/h road)",
+          "state": "maximum road speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "UTD-20/3 diesel, 300 hp (225 kW)",
+          "unit": "text",
+          "source": "wikipedia_bmp_2",
+          "locator": "Infobox, engine row (UTD-20/3 diesel)",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: UTD-20/3 diesel, 300 hp (225 kW)",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

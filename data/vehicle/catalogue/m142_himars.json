@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for M142 HIMARS. Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "m142_himars",
+      "canonical_name": "M142 HIMARS",
+      "maker": "Lockheed Martin",
+      "model": "M142 HIMARS",
+      "variant": "base",
+      "variant_id": "m142_himars",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "m142 himars"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 13500,
+          "unit": "kg",
+          "source": "wikipedia_m142_himars",
+          "locator": "Infobox, weight: 13.5 t GVW",
+          "state": "operating weight as published; source tier-5 compilation; caveat: operating_weight_kg: published as gross vehicle weight (GVW), 13.5 t.",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6940,
+          "unit": "mm",
+          "source": "wikipedia_m142_himars",
+          "locator": "Infobox, length: 6.94 m",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2440,
+          "unit": "mm",
+          "source": "wikipedia_m142_himars",
+          "locator": "Infobox, width: 2.44 m",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 3180,
+          "unit": "mm",
+          "source": "wikipedia_m142_himars",
+          "locator": "Infobox, height: 3.18 m",
+          "state": "overall height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 94,
+          "unit": "km/h",
+          "source": "wikipedia_m142_himars",
+          "locator": "Infobox, speed: 94 km/h",
+          "state": "maximum road speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Caterpillar 3116 ATAAC 6.6-litre diesel, 330 hp",
+          "unit": "text",
+          "source": "wikipedia_m142_himars",
+          "locator": "Infobox, engine: Caterpillar 3116 ATAAC 6.6-litre diesel, 330 hp",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: Caterpillar 3116 ATAAC 6.6-litre diesel, 330 hp",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

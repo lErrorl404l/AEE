@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for M3 Bradley. Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "m3_bradley",
+      "canonical_name": "M3 Bradley",
+      "maker": "BAE Systems",
+      "model": "M3 Bradley",
+      "variant": "base",
+      "variant_id": "m3_bradley",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "m3 bradley"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 27669,
+          "unit": "kg",
+          "source": "wikipedia_m3_bradley",
+          "locator": "Infobox, weight: 25-30.5 short tons (22.7-27.7 t); maximum recorded",
+          "state": "operating weight as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6553,
+          "unit": "mm",
+          "source": "wikipedia_m3_bradley",
+          "locator": "Infobox, length: 21.2-21.5 ft (6,462-6,553 mm); maximum recorded",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3277,
+          "unit": "mm",
+          "source": "wikipedia_m3_bradley",
+          "locator": "Infobox, width: 126-129 in (3,200-3,277 mm); maximum recorded",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2972,
+          "unit": "mm",
+          "source": "wikipedia_m3_bradley",
+          "locator": "Infobox, height: 117 in (2,972 mm)",
+          "state": "overall height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 66,
+          "unit": "km/h",
+          "source": "wikipedia_m3_bradley",
+          "locator": "Infobox, speed: 35-41 mph (56-66 km/h) road; maximum recorded",
+          "state": "maximum road speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Cummins VTA-903 diesel",
+          "unit": "text",
+          "source": "wikipedia_m3_bradley",
+          "locator": "Infobox, engine: Cummins VTA-903",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: Cummins VTA-903 diesel; caveat: engine_model: no engine power given in the cited infobox.",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

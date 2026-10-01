@@ -1,0 +1,90 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for BAE Systems RG-33L SOCOM Armored Utility Vehicle (AUV). Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "bae_systems_rg_33l_socom_armored_utility_vehicle_auv",
+      "canonical_name": "BAE Systems RG-33L SOCOM Armored Utility Vehicle (AUV)",
+      "maker": "BAE Systems",
+      "model": "BAE Systems RG-33L SOCOM Armored Utility Vehicle",
+      "variant": "AUV",
+      "variant_id": "bae_systems_rg_33l_socom_armored_utility_vehicle_auv",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "bae systems rg-33l socom armored utility vehicle (auv)"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 26473,
+          "unit": "kg",
+          "source": "bae_rg33l_auv_brochure",
+          "locator": "Brochure: GVW 74,000 lb, payload (GVWR-CW) 15,637 lb; curb weight derived as GVWR minus payload = 58,363 lb (26,473 kg). Grade derived over the held brochure values.",
+          "state": "operating weight as published; source tier-4 manufacturer datasheet; dataset derivation: GVWR 74,000 lb minus payload 15,637 lb; the research dataset marked this value derived; it is not directly published, and the validator admits a real-world derived value as claimed",
+          "grade": "claimed"
+        },
+        "gross_weight_kg": {
+          "value": 33566,
+          "unit": "kg",
+          "source": "bae_rg33l_auv_brochure",
+          "locator": "Brochure spec table, 'Gross vehicle weight 74,000 lbs' (33,566 kg)",
+          "state": "gross vehicle weight rating as published; source tier-4 manufacturer datasheet",
+          "grade": "claimed"
+        },
+        "payload_kg": {
+          "value": 7093,
+          "unit": "kg",
+          "source": "bae_rg33l_auv_brochure",
+          "locator": "Brochure spec table, 'Payload (GVWR-CW) 15,637 lbs' (7,093 kg)",
+          "state": "payload capacity as published; source tier-4 manufacturer datasheet",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 8839,
+          "unit": "mm",
+          "source": "bae_rg33l_auv_brochure",
+          "locator": "Brochure spec table, 'Overall length 348 inches' (8,839 mm)",
+          "state": "overall length as published; source tier-4 manufacturer datasheet",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2769,
+          "unit": "mm",
+          "source": "bae_rg33l_auv_brochure",
+          "locator": "Brochure spec table, 'Width 109 inches' (2,769 mm)",
+          "state": "overall width as published; source tier-4 manufacturer datasheet",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2845,
+          "unit": "mm",
+          "source": "bae_rg33l_auv_brochure",
+          "locator": "Brochure spec table, 'Height 112 inches' (2,845 mm)",
+          "state": "overall height as published; source tier-4 manufacturer datasheet",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 103,
+          "unit": "km/h",
+          "source": "bae_rg33l_auv_brochure",
+          "locator": "Brochure spec table, 'Speed 64 mph' (103 km/h)",
+          "state": "maximum road speed as published; source tier-4 manufacturer datasheet",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "600 hp diesel (model not named in the brochure)",
+          "unit": "text",
+          "source": "bae_rg33l_auv_brochure",
+          "locator": "Brochure spec table, 'Engine 600 hp'. The brochure does not name the engine model.",
+          "state": "engine make and model as published; source tier-4 manufacturer datasheet; dataset derivation: 600 hp diesel (model not named in the brochure); caveat: engine_model: the manufacturer brochure publishes the rating (600 hp) but not the engine make or model.",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

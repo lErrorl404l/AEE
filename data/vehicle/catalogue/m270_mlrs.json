@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for M270 MLRS. Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "m270_mlrs",
+      "canonical_name": "M270 MLRS",
+      "maker": "Lockheed Martin",
+      "model": "M270 MLRS",
+      "variant": "base",
+      "variant_id": "m270_mlrs",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "m270 mlrs"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 24035,
+          "unit": "kg",
+          "source": "wikipedia_m270_mlrs",
+          "locator": "Infobox, weight: 52,990 lb (24,035 kg) combat loaded with 12 rockets",
+          "state": "operating weight as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6972,
+          "unit": "mm",
+          "source": "wikipedia_m270_mlrs",
+          "locator": "Infobox, length: 274.5 in (6,972 mm)",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2972,
+          "unit": "mm",
+          "source": "wikipedia_m270_mlrs",
+          "locator": "Infobox, width: 117 in (2,972 mm)",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2591,
+          "unit": "mm",
+          "source": "wikipedia_m270_mlrs",
+          "locator": "Infobox, height: 102 in (2,591 mm) with launcher stowed",
+          "state": "overall height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 64,
+          "unit": "km/h",
+          "source": "wikipedia_m270_mlrs",
+          "locator": "Infobox, speed: 40 mph (64 km/h)",
+          "state": "maximum road speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Cummins VTA-903 diesel, 500 hp (M270A1 600 hp)",
+          "unit": "text",
+          "source": "wikipedia_m270_mlrs",
+          "locator": "Infobox, engine: Cummins VTA-903 diesel, 500 hp (600 hp M270A1)",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: Cummins VTA-903 diesel, 500 hp (M270A1 600 hp)",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

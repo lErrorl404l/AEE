@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for BTR-90. Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "btr_90",
+      "canonical_name": "BTR-90",
+      "maker": "Arzamas Machine-Building Plant",
+      "model": "BTR-90",
+      "variant": "base",
+      "variant_id": "btr_90",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Russia",
+      "era": "modern",
+      "aliases": [
+        "btr-90"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 20900,
+          "unit": "kg",
+          "source": "wikipedia_btr_90",
+          "locator": "Infobox, weight: 20.9 t",
+          "state": "operating weight as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 7640,
+          "unit": "mm",
+          "source": "wikipedia_btr_90",
+          "locator": "Infobox, length: 7.64 m",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3200,
+          "unit": "mm",
+          "source": "wikipedia_btr_90",
+          "locator": "Infobox, width: 3.20 m",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2980,
+          "unit": "mm",
+          "source": "wikipedia_btr_90",
+          "locator": "Infobox, height: 2.98 m",
+          "state": "overall height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 100,
+          "unit": "km/h",
+          "source": "wikipedia_btr_90",
+          "locator": "Infobox, speed: 100 km/h road (9 km/h swimming)",
+          "state": "maximum road speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Turbocharged diesel, 510 hp",
+          "unit": "text",
+          "source": "wikipedia_btr_90",
+          "locator": "Infobox, engine: turbocharged diesel, 510 hp",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: Turbocharged diesel, 510 hp; caveat: engine_model: the cited infobox names only 'turbocharged diesel'; no make or model published there.",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

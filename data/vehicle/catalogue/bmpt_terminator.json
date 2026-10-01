@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for BMPT Terminator. Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "bmpt_terminator",
+      "canonical_name": "BMPT Terminator",
+      "maker": "Uralvagonzavod",
+      "model": "BMPT Terminator",
+      "variant": "base",
+      "variant_id": "bmpt_terminator",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Russia",
+      "era": "modern",
+      "aliases": [
+        "bmpt terminator"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 48000,
+          "unit": "kg",
+          "source": "wikipedia_bmpt_terminator",
+          "locator": "Infobox, weight: 48 t",
+          "state": "operating weight as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 7200,
+          "unit": "mm",
+          "source": "wikipedia_bmpt_terminator",
+          "locator": "Infobox, length: 7.2 m",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3370,
+          "unit": "mm",
+          "source": "wikipedia_bmpt_terminator",
+          "locator": "Infobox, width: 3.37 m across the tracks (3.8 m across the broad screens); tracks recorded",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 3440,
+          "unit": "mm",
+          "source": "wikipedia_bmpt_terminator",
+          "locator": "Infobox, height: 3.44 m overall (1.94 m hull); overall recorded",
+          "state": "overall height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 60,
+          "unit": "km/h",
+          "source": "wikipedia_bmpt_terminator",
+          "locator": "Infobox, speed: >=60 km/h",
+          "state": "maximum road speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "V-92S2 diesel, 1,000 hp (736 kW)",
+          "unit": "text",
+          "source": "wikipedia_bmpt_terminator",
+          "locator": "Infobox, engine: V-92S2 diesel, 1,000 hp",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: V-92S2 diesel, 1,000 hp (736 kW)",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

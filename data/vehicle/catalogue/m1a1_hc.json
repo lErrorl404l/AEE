@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for M1A1 HC. Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "m1a1_hc",
+      "canonical_name": "M1A1 HC",
+      "maker": "General Dynamics Land Systems",
+      "model": "M1A1 HC",
+      "variant": "base",
+      "variant_id": "m1a1_hc",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "m1a1 hc"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 57153,
+          "unit": "kg",
+          "source": "wikipedia_m1_abrams",
+          "locator": "Specifications table, 'Combat Weight', M1A1 column: 63 short tons; carried to the HC. No HC-specific mass published.",
+          "state": "operating weight as published; source tier-5 compilation; caveat: operating_weight_kg: no HC-specific mass published; the M1A1 63 short tons (57,153 kg) is carried at grade claimed. Second-generation DU armour mass not published.",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 9766,
+          "unit": "mm",
+          "source": "wikipedia_m1_abrams",
+          "locator": "Infobox, length, gun forward: 32.04 ft (9,766 mm)",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3658,
+          "unit": "mm",
+          "source": "wikipedia_m1_abrams",
+          "locator": "Infobox, width: 12 ft (3,658 mm)",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2438,
+          "unit": "mm",
+          "source": "wikipedia_m1_abrams",
+          "locator": "Infobox, height: 8 ft (2,438 mm)",
+          "state": "overall height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 72,
+          "unit": "km/h",
+          "source": "wikipedia_m1_abrams",
+          "locator": "Infobox, speed, M1A1 road: 45 mph (72 km/h) governed",
+          "state": "maximum road speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Honeywell AGT1500 multi-fuel gas turbine, 1,500 shp",
+          "unit": "text",
+          "source": "wikipedia_m1_abrams",
+          "locator": "Infobox, engine: Honeywell AGT1500 multi-fuel gas turbine",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: Honeywell AGT1500 multi-fuel gas turbine, 1,500 shp",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for Sd.Kfz. 251. Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "sd_kfz_251",
+      "canonical_name": "Sd.Kfz. 251",
+      "maker": "Hanomag",
+      "model": "Sd.Kfz. 251",
+      "variant": "base",
+      "variant_id": "sd_kfz_251",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Germany",
+      "era": "world war 2",
+      "aliases": [
+        "sd.kfz. 251"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 7810,
+          "unit": "kg",
+          "source": "wikipedia_sd_kfz_251",
+          "locator": "Infobox, weight: 7.81 t",
+          "state": "operating weight as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 5800,
+          "unit": "mm",
+          "source": "wikipedia_sd_kfz_251",
+          "locator": "Infobox, length: 5.80 m",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2100,
+          "unit": "mm",
+          "source": "wikipedia_sd_kfz_251",
+          "locator": "Infobox, width: 2.10 m",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 1750,
+          "unit": "mm",
+          "source": "wikipedia_sd_kfz_251",
+          "locator": "Infobox, height: 1.75 m",
+          "state": "overall height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 53,
+          "unit": "km/h",
+          "source": "wikipedia_sd_kfz_251",
+          "locator": "Infobox, speed: 52.5 km/h",
+          "state": "maximum road speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Maybach HL42 6-cylinder petrol, 100 PS",
+          "unit": "text",
+          "source": "wikipedia_sd_kfz_251",
+          "locator": "Infobox, engine: one Maybach HL42 6-cylinder petrol engine, 100 PS",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: Maybach HL42 6-cylinder petrol, 100 PS",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

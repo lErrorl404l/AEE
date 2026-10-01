@@ -1,0 +1,82 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for M1084A1R SOCOM SOV. Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "m1084a1r_socom_sov",
+      "canonical_name": "M1084A1R SOCOM SOV",
+      "maker": "BAE Systems",
+      "model": "M1084A1R SOCOM SOV",
+      "variant": "base",
+      "variant_id": "m1084a1r_socom_sov",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "m1084a1r socom sov"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 11184,
+          "unit": "kg",
+          "source": "fmtv_a1r_m1084_cargo_datasheet",
+          "locator": "Datasheet, 'Vehicle Curb Weight with Fuel: 24,656 lb (11,184 kg)'. No SOCOM SOV-specific weight is published; the base M1084A1R 5-ton cargo figure is used as the operating basis.",
+          "state": "operating weight as published; source tier-4 manufacturer datasheet; caveat: operating_weight_kg: NO SOCOM SOV-specific weight is published. The base M1084A1R cargo curb weight (11,184 kg) is carried.",
+          "grade": "claimed"
+        },
+        "curb_weight_kg": {
+          "value": 11184,
+          "unit": "kg",
+          "source": "fmtv_a1r_m1084_cargo_datasheet",
+          "locator": "Datasheet, 'Vehicle Curb Weight with Fuel: 24,656 lb (11,184 kg)'",
+          "state": "curb weight, no crew and no payload as published; source tier-4 manufacturer datasheet",
+          "grade": "claimed"
+        },
+        "gross_weight_kg": {
+          "value": 15720,
+          "unit": "kg",
+          "source": "fmtv_a1r_m1084_cargo_datasheet",
+          "locator": "Datasheet, curb 24,656 lb plus payload 10,000 lb = 34,656 lb (15,720 kg); derived.",
+          "state": "gross vehicle weight rating as published; source tier-4 manufacturer datasheet; the research dataset marked this value derived; it is not directly published, and the validator admits a real-world derived value as claimed",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 7933,
+          "unit": "mm",
+          "source": "fmtv_a1r_m1084_cargo_datasheet",
+          "locator": "Datasheet, 'Length: 312.3 in (7,933 mm)'",
+          "state": "overall length as published; source tier-4 manufacturer datasheet",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2438,
+          "unit": "mm",
+          "source": "fmtv_a1r_m1084_cargo_datasheet",
+          "locator": "Datasheet, 'Width: 96 in (2,438 mm)'",
+          "state": "overall width as published; source tier-4 manufacturer datasheet",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 94,
+          "unit": "km/h",
+          "source": "fmtv_a1r_m1084_cargo_datasheet",
+          "locator": "Datasheet, 'Maximum Speed: Governed, at Gross Weight 58 mph (94 km/h)'",
+          "state": "maximum road speed as published; source tier-4 manufacturer datasheet",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Caterpillar C7 heavy-duty 6-cylinder fuel-injected turbocharged diesel, 7.2 L",
+          "unit": "text",
+          "source": "fmtv_a1r_m1084_cargo_datasheet",
+          "locator": "Datasheet, engine block: Caterpillar C7 heavy-duty diesel, 6-cylinder, fuel-injected turbocharged, 7.2 L (441 cu in)",
+          "state": "engine make and model as published; source tier-4 manufacturer datasheet; dataset derivation: Caterpillar C7 heavy-duty 6-cylinder fuel-injected turbocharged diesel, 7.2 L",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

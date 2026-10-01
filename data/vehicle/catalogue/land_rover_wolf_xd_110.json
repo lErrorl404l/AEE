@@ -1,0 +1,50 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for Land Rover Wolf (XD 110). Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "land_rover_wolf_xd_110",
+      "canonical_name": "Land Rover Wolf (XD 110)",
+      "maker": "Land Rover",
+      "model": "Land Rover Wolf",
+      "variant": "XD 110",
+      "variant_id": "land_rover_wolf_xd_110",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United Kingdom",
+      "era": "modern",
+      "aliases": [
+        "land rover wolf (xd 110)"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 1600,
+          "unit": "kg",
+          "source": "elite_uk_forces_land_rover_wolf",
+          "locator": "Elite UK Forces Wolf (XD 110) specifications: 'Weight 1.6 tonnes'",
+          "state": "operating weight as published; source tier-5 compilation; caveat: operating_weight_kg: the 1.6 t figure is an unladen figure; no laden weight published.",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 160,
+          "unit": "km/h",
+          "source": "elite_uk_forces_land_rover_wolf",
+          "locator": "Elite UK Forces Wolf (XD 110) specifications: 'Maximum speed 160 kph on mettled road'",
+          "state": "maximum road speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Land Rover 300 TDi, 111 hp (83 kW)",
+          "unit": "text",
+          "source": "wikipedia_land_rover_wolf",
+          "locator": "Wikipedia infobox, engine: Land Rover 300 TDI engine, 83 kW (111 hp)",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: Land Rover 300 TDi, 111 hp (83 kW)",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

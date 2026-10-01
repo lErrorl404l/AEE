@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for BMD-2M. Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "bmd_2m",
+      "canonical_name": "BMD-2M",
+      "maker": "Volgograd Tractor Plant",
+      "model": "BMD-2M",
+      "variant": "base",
+      "variant_id": "bmd_2m",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Russia",
+      "era": "modern",
+      "aliases": [
+        "bmd-2m"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 11500,
+          "unit": "kg",
+          "source": "wikipedia_bmd_2",
+          "locator": "Infobox, weight row (11.5 t), carried to the BMD-2M; no BMD-2M-specific mass published (Bereg module fitment)",
+          "state": "operating weight as published; source tier-5 compilation; caveat: operating_weight_kg: no BMD-2M-specific mass published in any source checked (en.wikipedia names the variant without a weight; Army Recognition names it without a weight). The BMD-2 base 11.5 t is carried and marked claimed; the Bereg module mass is not published.",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 5410,
+          "unit": "mm",
+          "source": "wikipedia_bmd_2",
+          "locator": "Infobox, length 5.91 m gun forward; hull length 5.41 m (shared BMD-1/BMD-2 hull)",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2630,
+          "unit": "mm",
+          "source": "wikipedia_bmd_2",
+          "locator": "Infobox, width row (2.63 m)",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 1970,
+          "unit": "mm",
+          "source": "wikipedia_bmd_2",
+          "locator": "Infobox, height row (1.97 m with suspension raised)",
+          "state": "overall height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 80,
+          "unit": "km/h",
+          "source": "wikipedia_bmd_2",
+          "locator": "Infobox, speed row (80 km/h road)",
+          "state": "maximum road speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "5D-20 6-cylinder 4-stroke V-shaped liquid-cooled 15.9 L diesel",
+          "unit": "text",
+          "source": "wikipedia_bmd_2",
+          "locator": "Infobox, engine row (5D-20 15.9 L diesel)",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: 5D-20 6-cylinder 4-stroke V-shaped liquid-cooled 15.9 L diesel",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

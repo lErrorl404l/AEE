@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for M88 Recovery Vehicle. Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "m88_recovery_vehicle",
+      "canonical_name": "M88 Recovery Vehicle",
+      "maker": "BMY",
+      "model": "M88 Recovery Vehicle",
+      "variant": "base",
+      "variant_id": "m88_recovery_vehicle",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "m88 recovery vehicle"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 50800,
+          "unit": "kg",
+          "source": "wikipedia_m88_recovery_vehicle",
+          "locator": "Infobox, weight: M88/M88A1 50.8 t; M88A2 63.5 t; M88/M88A1 recorded",
+          "state": "operating weight as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 8269,
+          "unit": "mm",
+          "source": "wikipedia_m88_recovery_vehicle",
+          "locator": "Infobox, length: 27.13 ft (8,269 mm)",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3429,
+          "unit": "mm",
+          "source": "wikipedia_m88_recovery_vehicle",
+          "locator": "Infobox, width: 11.25 ft (3,429 mm)",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 3124,
+          "unit": "mm",
+          "source": "wikipedia_m88_recovery_vehicle",
+          "locator": "Infobox, height: 10.25 ft (3,124 mm)",
+          "state": "overall height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 42,
+          "unit": "km/h",
+          "source": "wikipedia_m88_recovery_vehicle",
+          "locator": "Infobox, speed: M88/M88A1 42 km/h; M88A2 48 km/h; M88/M88A1 recorded",
+          "state": "maximum road speed as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Continental AVDS-1790-2DR V12 air-cooled twin-turbo diesel, 750 hp (M88/M88A1); 1,050 hp (M88A2)",
+          "unit": "text",
+          "source": "wikipedia_m88_recovery_vehicle",
+          "locator": "Infobox, engine: Continental AVDS-1790-2DR V12 air-cooled twin-turbo diesel, 750 hp (M88/M88A1); 1,050 hp (M88A2)",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: Continental AVDS-1790-2DR V12 air-cooled twin-turbo diesel, 750 hp (M88/M88A1); 1,050 hp (M88A2)",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

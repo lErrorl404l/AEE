@@ -1,0 +1,66 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Tranche-2 capture for Toyota Hilux (technical). Every value is grade claimed: the validator admits a tier-4 manufacturer source and a tier-5 compilation at claimed only, and the dataset tier note is carried in each value state. The retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "toyota_hilux_technical",
+      "canonical_name": "Toyota Hilux (technical)",
+      "maker": "Toyota",
+      "model": "Toyota Hilux",
+      "variant": "technical",
+      "variant_id": "toyota_hilux_technical",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Japan",
+      "era": "modern",
+      "aliases": [
+        "toyota hilux (technical)"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 2286,
+          "unit": "kg",
+          "source": "wikipedia_toyota_hilux",
+          "locator": "Eighth-generation infobox, weight: 1,495-2,286 kg; the maximum (double-cab 4x4) recorded",
+          "state": "operating weight as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 5325,
+          "unit": "mm",
+          "source": "wikipedia_toyota_hilux",
+          "locator": "Eighth-generation infobox, length Crew Cab: 5,320-5,325 mm; maximum recorded",
+          "state": "overall length as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 1880,
+          "unit": "mm",
+          "source": "wikipedia_toyota_hilux",
+          "locator": "Eighth-generation infobox, width Crew Cab: 1,750-1,880 mm; maximum recorded",
+          "state": "overall width as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 1880,
+          "unit": "mm",
+          "source": "wikipedia_toyota_hilux",
+          "locator": "Eighth-generation infobox, height Crew Cab: 1,750-1,880 mm; maximum recorded",
+          "state": "overall height as published; source tier-5 compilation",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "2.4 L or 2.8 L turbo-diesel, 2.7 L petrol, 4.0 L V6 petrol (eighth generation)",
+          "unit": "text",
+          "source": "wikipedia_toyota_hilux",
+          "locator": "Eighth-generation article: four engine options - 2.4 L turbo-diesel, 2.8 L turbo-diesel, 2.7 L petrol, 4.0 L V6 petrol",
+          "state": "engine make and model as published; source tier-5 compilation; dataset derivation: 2.4 L or 2.8 L turbo-diesel, 2.7 L petrol, 4.0 L V6 petrol (eighth generation); caveat: engine_model: engine families are listed, but no engine code (e.g. 1GD-FTV) is given in the cited text.",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}
