@@ -1,0 +1,142 @@
+[
+  {
+    "game_class": "B_MBT_01_cannon_F",
+    "config_class": "CfgVehicles",
+    "key": "maxSpeed",
+    "value": 72,
+    "unit": "km/h",
+    "value_source": {
+      "source_id": "tm_9_2350_255_10",
+      "locator": "EQUIPMENT DESCRIPTION, PERFORMANCE DATA, printed page 1-16, Performance, Forward speed maximum (paved level surface)",
+      "field": "max_speed_kmh"
+    },
+    "conversion": "identity",
+    "grade": "documented"
+  },
+  {
+    "game_class": "I_MBT_03_cannon_F",
+    "config_class": "CfgVehicles",
+    "key": "maxSpeed",
+    "value": 72,
+    "unit": "km/h",
+    "value_source": {
+      "source_id": "tm_9_2350_255_10",
+      "locator": "EQUIPMENT DESCRIPTION, PERFORMANCE DATA, printed page 1-16, Performance, Forward speed maximum (paved level surface)",
+      "field": "max_speed_kmh"
+    },
+    "conversion": "identity",
+    "grade": "documented"
+  },
+  {
+    "game_class": "O_MBT_02_cannon_F",
+    "config_class": "CfgVehicles",
+    "key": "maxSpeed",
+    "value": 72,
+    "unit": "km/h",
+    "value_source": {
+      "source_id": "tm_9_2350_255_10",
+      "locator": "EQUIPMENT DESCRIPTION, PERFORMANCE DATA, printed page 1-16, Performance, Forward speed maximum (paved level surface)",
+      "field": "max_speed_kmh"
+    },
+    "conversion": "identity",
+    "grade": "documented"
+  },
+  {
+    "game_class": "B_Truck_01_transport_F",
+    "config_class": "CfgVehicles",
+    "key": "maxSpeed",
+    "value": 88,
+    "unit": "km/h",
+    "value_source": {
+      "source_id": "tm_9_2320_272_10",
+      "locator": "Table 1-9A, Maximum Safe Operating Speeds, page 1-23, Highway/secondary roads, column W/ABS",
+      "field": "max_speed_kmh"
+    },
+    "conversion": "identity",
+    "grade": "documented"
+  },
+  {
+    "game_class": "I_Truck_02_transport_F",
+    "config_class": "CfgVehicles",
+    "key": "maxSpeed",
+    "value": 88,
+    "unit": "km/h",
+    "value_source": {
+      "source_id": "tm_9_2320_272_10",
+      "locator": "Table 1-9A, Maximum Safe Operating Speeds, page 1-23, Highway/secondary roads, column W/ABS",
+      "field": "max_speed_kmh"
+    },
+    "conversion": "identity",
+    "grade": "documented"
+  },
+  {
+    "game_class": "O_Truck_02_transport_F",
+    "config_class": "CfgVehicles",
+    "key": "maxSpeed",
+    "value": 88,
+    "unit": "km/h",
+    "value_source": {
+      "source_id": "tm_9_2320_272_10",
+      "locator": "Table 1-9A, Maximum Safe Operating Speeds, page 1-23, Highway/secondary roads, column W/ABS",
+      "field": "max_speed_kmh"
+    },
+    "conversion": "identity",
+    "grade": "documented"
+  },
+  {
+    "game_class": "B_AFV_Wheeled_01_cannon_F",
+    "config_class": "CfgVehicles",
+    "key": "maxSpeed",
+    "value": 80,
+    "unit": "km/h",
+    "value_source": {
+      "source_id": "btr_80_technical_description_2001",
+      "locator": "Section 3, Skorosti dvizheniya, printed pages 9 and 10, row Maksimalnaya po shosse, km/h",
+      "field": "max_speed_kmh"
+    },
+    "conversion": "identity",
+    "grade": "documented"
+  },
+  {
+    "game_class": "B_APC_Wheeled_01_cannon_F",
+    "config_class": "CfgVehicles",
+    "key": "maxSpeed",
+    "value": 80,
+    "unit": "km/h",
+    "value_source": {
+      "source_id": "btr_80_technical_description_2001",
+      "locator": "Section 3, Skorosti dvizheniya, printed pages 9 and 10, row Maksimalnaya po shosse, km/h",
+      "field": "max_speed_kmh"
+    },
+    "conversion": "identity",
+    "grade": "documented"
+  },
+  {
+    "game_class": "I_APC_Wheeled_03_cannon_F",
+    "config_class": "CfgVehicles",
+    "key": "maxSpeed",
+    "value": 80,
+    "unit": "km/h",
+    "value_source": {
+      "source_id": "btr_80_technical_description_2001",
+      "locator": "Section 3, Skorosti dvizheniya, printed pages 9 and 10, row Maksimalnaya po shosse, km/h",
+      "field": "max_speed_kmh"
+    },
+    "conversion": "identity",
+    "grade": "documented"
+  },
+  {
+    "game_class": "O_APC_Wheeled_02_rcws_v2_F",
+    "config_class": "CfgVehicles",
+    "key": "maxSpeed",
+    "value": 80,
+    "unit": "km/h",
+    "value_source": {
+      "source_id": "btr_80_technical_description_2001",
+      "locator": "Section 3, Skorosti dvizheniya, printed pages 9 and 10, row Maksimalnaya po shosse, km/h",
+      "field": "max_speed_kmh"
+    },
+    "conversion": "identity",
+    "grade": "documented"
+  }
+]
