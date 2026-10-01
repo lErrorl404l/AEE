@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for PRP-3. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "prp_3",
+      "canonical_name": "PRP-3",
+      "maker": "Kurganmashzavod",
+      "model": "PRP-3",
+      "variant": "base",
+      "variant_id": "prp_3",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "cold war",
+      "aliases": [
+        "prp-3"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 13000,
+          "unit": "kg",
+          "source": "weaponsystems_623_prp_3_val",
+          "locator": "Facts, Dimensions, Weight 13 t combat load",
+          "state": "operating weight as published",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6740,
+          "unit": "mm",
+          "source": "weaponsystems_623_prp_3_val",
+          "locator": "Facts, Dimensions, Length 6.74 m",
+          "state": "length as published",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2940,
+          "unit": "mm",
+          "source": "weaponsystems_623_prp_3_val",
+          "locator": "Facts, Dimensions, Width 2.94 m",
+          "state": "width as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2095,
+          "unit": "mm",
+          "source": "weaponsystems_623_prp_3_val",
+          "locator": "Facts, Dimensions, Height 2.095 m",
+          "state": "height as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 65,
+          "unit": "km/h",
+          "source": "weaponsystems_623_prp_3_val",
+          "locator": "Facts, Mobility, Max speed 65 km/h on road",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "UTD-20 V6 diesel",
+          "unit": "text",
+          "source": "weaponsystems_623_prp_3_val",
+          "locator": "Facts, Automotive, Engine UTD-20 V6 diesel",
+          "state": "engine as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

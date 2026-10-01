@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for UAZ-3151. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "uaz_3151",
+      "canonical_name": "UAZ-3151",
+      "maker": "UAZ",
+      "model": "UAZ-3151",
+      "variant": "base",
+      "variant_id": "uaz_3151",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "cold war",
+      "aliases": [
+        "uaz-3151"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 1700,
+          "unit": "kg",
+          "source": "uaz_469",
+          "locator": "Infobox, Curb weight: 1,700 kg",
+          "state": "operating weight as published; conflict: weight_kg: ru-wiki gives mass 1,650 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 4025,
+          "unit": "mm",
+          "source": "uaz_469",
+          "locator": "Infobox, Length: 4,025 mm",
+          "state": "length as published",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 1785,
+          "unit": "mm",
+          "source": "uaz_469",
+          "locator": "Infobox, Width: 1,785 mm",
+          "state": "width as published; conflict: width_mm: ru-wiki gives 1,805 mm",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2050,
+          "unit": "mm",
+          "source": "uaz_469",
+          "locator": "Infobox, Height: 2,050 mm",
+          "state": "height as published; conflict: height_mm: ru-wiki gives 2,015 mm",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 110,
+          "unit": "km/h",
+          "source": "autodata_uaz_3151",
+          "locator": "UAZ 3151 2.45 (90 Hp) 1989-2003, Maximum speed: 110 km/h",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "UMZ-451MI 2,445 cc I4 petrol (UMZ 451 MI)",
+          "unit": "text",
+          "source": "uaz_469",
+          "locator": "Infobox, Engine: 2445 cc UMZ 451 MI I4 (also 2693 cc I4)",
+          "state": "engine as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

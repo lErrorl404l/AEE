@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for M1152A1. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "m1152a1",
+      "canonical_name": "M1152A1",
+      "maker": "AM General",
+      "model": "M1152A1",
+      "variant": "base",
+      "variant_id": "m1152a1",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "m1152a1"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 3221,
+          "unit": "kg",
+          "source": "globalsecurity_m1152",
+          "locator": "Curb Weight table, M1152A1: 7,100 lb (3,221 kg)",
+          "state": "operating weight as published",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 4930,
+          "unit": "mm",
+          "source": "globalsecurity_m1152",
+          "locator": "M1152A1 specifications, Shipping Dimensions: 194 in. (4.93 m) Length",
+          "state": "length as published; conflict: length_mm: shipping dimension, not an operational overall length",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2210,
+          "unit": "mm",
+          "source": "globalsecurity_m1152",
+          "locator": "M1152A1 specifications, Shipping Dimensions: 87 in. (2.21 m) Width",
+          "state": "width as published; conflict: width_mm: shipping dimension, not the operational width",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 1930,
+          "unit": "mm",
+          "source": "globalsecurity_m1152",
+          "locator": "M1152A1 specifications, Shipping Dimensions: 76 in. (1.93 m) Height",
+          "state": "height as published; conflict: height_mm: shipping dimension, not an operational overall height",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 113,
+          "unit": "km/h",
+          "source": "globalsecurity_m1152",
+          "locator": "M1152A1 specifications, Maximum Speed: 70 mph (113 kph)",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "General Engine Products (GEP) V8, 6.5-litre turbocharged diesel, 190 hp (142 kW) at 3400 rpm",
+          "unit": "text",
+          "source": "globalsecurity_m1152",
+          "locator": "M1152A1 specifications, Engine and Horsepower rows: GEP V8 6.5 L turbocharged diesel, 190 hp @ 3400 rpm",
+          "state": "engine as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

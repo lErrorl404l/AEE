@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for M1117 Guardian ASV. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "m1117_guardian_asv",
+      "canonical_name": "M1117 Guardian ASV",
+      "maker": "Textron Marine & Land Systems",
+      "model": "M1117 Guardian ASV",
+      "variant": "base",
+      "variant_id": "m1117_guardian_asv",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "m1117 guardian asv"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 13410,
+          "unit": "kg",
+          "source": "wikipedia_m1117_armored_security_vehicle",
+          "locator": "Infobox, Mass row: 29,560 lb (13,410 kg) (combat weight)",
+          "state": "operating weight as published",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6020,
+          "unit": "mm",
+          "source": "wikipedia_m1117_armored_security_vehicle",
+          "locator": "Infobox, Length row: 237 inches (6.0 m)",
+          "state": "length as published",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2565,
+          "unit": "mm",
+          "source": "wikipedia_m1117_armored_security_vehicle",
+          "locator": "Infobox, Width row: 101 inches (2.6 m)",
+          "state": "width as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2591,
+          "unit": "mm",
+          "source": "wikipedia_m1117_armored_security_vehicle",
+          "locator": "Infobox, Height row: 102 inches (2.6 m)",
+          "state": "height as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 101,
+          "unit": "km/h",
+          "source": "wikipedia_m1117_armored_security_vehicle",
+          "locator": "Infobox, Maximum speed row: 63 mph (101 km/h)",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Cummins 6CTA8.3 diesel, 260 hp",
+          "unit": "text",
+          "source": "wikipedia_m1117_armored_security_vehicle",
+          "locator": "Infobox, Engine row: Cummins 6CTA8.3 260 hp, 828 foot-pounds",
+          "state": "engine as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

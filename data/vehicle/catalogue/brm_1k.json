@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for BRM-1K. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "brm_1k",
+      "canonical_name": "BRM-1K",
+      "maker": "Kurganmashzavod",
+      "model": "BRM-1K",
+      "variant": "base",
+      "variant_id": "brm_1k",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "cold war",
+      "aliases": [
+        "brm-1k"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 13200,
+          "unit": "kg",
+          "source": "weaponsystems_346_brm_1k",
+          "locator": "Facts, Dimensions, Weight 13.2 t combat load",
+          "state": "operating weight as published; conflict: weight_kg: List of BMP-1 variants article gives 13.2 t; army-guide.com gives 13200 kg (agrees) but the modernised BRM-1K Model 2021 is quoted at 14200-14800 kg",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6760,
+          "unit": "mm",
+          "source": "weaponsystems_346_brm_1k",
+          "locator": "Facts, Dimensions, Length 6.76 m",
+          "state": "length as published",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2940,
+          "unit": "mm",
+          "source": "weaponsystems_346_brm_1k",
+          "locator": "Facts, Dimensions, Width 2.94 m",
+          "state": "width as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 1920,
+          "unit": "mm",
+          "source": "weaponsystems_346_brm_1k",
+          "locator": "Facts, Dimensions, Height 1.92 m",
+          "state": "height as published; conflict: height_mm: milweb.net advert gives 1.98 m; weaponsystems.net and army-guide.com give 1.92 m",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 65,
+          "unit": "km/h",
+          "source": "weaponsystems_346_brm_1k",
+          "locator": "Facts, Mobility, Max speed 65 km/h on road",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "UTD-20 15.8 litre 6-cylinder 4-stroke water-cooled diesel",
+          "unit": "text",
+          "source": "weaponsystems_346_brm_1k",
+          "locator": "Facts, Automotive, Engine model UTD-20",
+          "state": "engine as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

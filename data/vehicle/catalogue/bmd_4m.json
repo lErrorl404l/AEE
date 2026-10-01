@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for BMD-4M. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "bmd_4m",
+      "canonical_name": "BMD-4M",
+      "maker": "Kurganmashzavod",
+      "model": "BMD-4M",
+      "variant": "base",
+      "variant_id": "bmd_4m",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Russia",
+      "era": "modern",
+      "aliases": [
+        "bmd-4m"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 13500,
+          "unit": "kg",
+          "source": "armyrecognition_bmd_4m",
+          "locator": "Specifications, Weight (13,500 kg)",
+          "state": "operating weight as published",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6000,
+          "unit": "mm",
+          "source": "armyrecognition_bmd_4m",
+          "locator": "Specifications, Dimensions, Length (6.0 m)",
+          "state": "length as published; conflict: length_mm: Army Recognition gives 6.0 m; en.wikipedia.org BMD-4 gives 6.1 m hull",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3150,
+          "unit": "mm",
+          "source": "armyrecognition_bmd_4m",
+          "locator": "Specifications, Dimensions, Width (3.15 m)",
+          "state": "width as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2700,
+          "unit": "mm",
+          "source": "armyrecognition_bmd_4m",
+          "locator": "Specifications, Dimensions, Height (2.7 m)",
+          "state": "height as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 70,
+          "unit": "km/h",
+          "source": "armyrecognition_bmd_4m",
+          "locator": "Specifications, Speed (70 km/h on road)",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "UTD-29 multi-fuel diesel engine",
+          "unit": "text",
+          "source": "wikipedia_bmd_4",
+          "locator": "Infobox, engine row (BMD-4M: UTD-29 multi-fuel diesel)",
+          "state": "engine as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

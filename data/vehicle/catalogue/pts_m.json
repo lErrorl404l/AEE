@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for PTS-M. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "pts_m",
+      "canonical_name": "PTS-M",
+      "maker": "unknown",
+      "model": "PTS-M",
+      "variant": "base",
+      "variant_id": "pts_m",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "cold war",
+      "aliases": [
+        "pts-m"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 17800,
+          "unit": "kg",
+          "source": "ru_wikipedia_d0_9f_d0_a2_d0_a1_d0_9c",
+          "locator": "Infobox, Масса, т = 17,8",
+          "state": "operating weight as published; conflict: weight_kg: conflict. ru.wikipedia gives 17.8 t; English PTS variants bullet cites DTIC 'weighing 36 metric tons' (likely loaded/water displacement). 17.8 t used.",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 11425,
+          "unit": "mm",
+          "source": "ru_wikipedia_d0_9f_d0_a2_d0_a1_d0_9c",
+          "locator": "Infobox, Длина, мм = 11 425",
+          "state": "length as published",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3300,
+          "unit": "mm",
+          "source": "ru_wikipedia_d0_9f_d0_a2_d0_a1_d0_9c",
+          "locator": "Infobox, Ширина, мм = 3300",
+          "state": "width as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2650,
+          "unit": "mm",
+          "source": "ru_wikipedia_d0_9f_d0_a2_d0_a1_d0_9c",
+          "locator": "Infobox, Высота, мм = 2650",
+          "state": "height as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 42,
+          "unit": "km/h",
+          "source": "ru_wikipedia_d0_9f_d0_a2_d0_a1_d0_9c",
+          "locator": "Infobox, Скорость по шоссе, км/ч = 42",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "V-54P V12 diesel (350 hp)",
+          "unit": "text",
+          "source": "wikipedia_pts_vehicle",
+          "locator": "Specifications comparison table, PTS-M column: 350 hp V-54P diesel",
+          "state": "engine as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

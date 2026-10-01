@@ -191,6 +191,15 @@
       ]
     },
     {
+      "game_class": "OTR21_Base",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "9k79_tochka_9p129_1m_tel",
+      "matched_tokens": []
+    },
+    {
       "game_class": "O_G_Offroad_01_AT_F",
       "display_name_key": "$STR_A3_CfgVehicles_Offroad_01_AT_base_F0",
       "display_name": "Offroad (AT)",
@@ -243,6 +252,183 @@
       "catalogue_id": "toyota_land_cruiser_70",
       "matched_tokens": [
         "offroad"
+      ]
+    },
+    {
+      "game_class": "RHS_BM21_MSV_01",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "bm_21_grad",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "RHS_BM21_VDV_01",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "bm_21_grad",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "RHS_BM21_VMF_01",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "bm_21_grad",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "RHS_BM21_VV_01",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "bm_21_grad",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "RHS_M2A2",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "m2a2_bradley",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "RHS_M2A2_BUSKI",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "m2a2_bradley",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "RHS_M2A2_BUSKI_WD",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "m2a2_bradley",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "RHS_M2A2_Base",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "m2a2_bradley",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "RHS_M2A2_early",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "m2a2_bradley",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "RHS_M2A2_wd",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "m2a2_bradley",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "RHS_M2A3",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "m2a3_bradley",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "RHS_M2A3_BUSKI",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "m2a3_bradley",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "RHS_M2A3_BUSKIII",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "m2a3_bradley",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "RHS_M2A3_BUSKIII_wd",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "m2a3_bradley",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "RHS_M2A3_BUSKI_wd",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "m2a3_bradley",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "RHS_M2A3_wd",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "m2a3_bradley",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "RHS_UAZ_Base",
+      "display_name_key": "$STR_RHS_UAZ469_NAME",
+      "display_name": "UAZ-3151",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_a2port_car.pbo > config.bin",
+      "catalogue_id": "uaz_3151",
+      "matched_tokens": [
+        "uaz3151"
+      ]
+    },
+    {
+      "game_class": "RHS_UAZ_MSV_01",
+      "display_name_key": "$STR_RHS_UAZ469_NAME",
+      "display_name": "UAZ-3151",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_a2port_car.pbo > config.bin",
+      "catalogue_id": "uaz_3151",
+      "matched_tokens": [
+        "uaz3151"
+      ]
+    },
+    {
+      "game_class": "RHS_UAZ_MSV_Base",
+      "display_name_key": "$STR_RHS_UAZ469_NAME",
+      "display_name": "UAZ-3151",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_a2port_car.pbo > config.bin",
+      "catalogue_id": "uaz_3151",
+      "matched_tokens": [
+        "uaz3151"
       ]
     },
     {
@@ -598,6 +784,192 @@
       ]
     },
     {
+      "game_class": "rhs_2s3_tv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "2s3_akatsiya_2s3m1",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_2s3tank_base",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "2s3_akatsiya_2s3m1",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_9k79",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "9k79_tochka_9p129_1m_tel",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_9k79_B",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "9k79_tochka_9p129_1m_tel",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_9k79_K",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "9k79_tochka_9p129_1m_tel",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_a3spruttank_base",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "2s25_sprut_sd",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_a3t72tank_base",
+      "display_name_key": "$STR_T72BA_Name",
+      "display_name": "T-72B (obr. 1984g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "rhs_bmd1",
+      "display_name_key": "$STR_BMD1_Name",
+      "display_name": "BMD-1",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmd.pbo > config.bin",
+      "catalogue_id": "bmd_1",
+      "matched_tokens": [
+        "bmd1"
+      ]
+    },
+    {
+      "game_class": "rhs_bmd1_base",
+      "display_name_key": "$STR_BMD1_Name",
+      "display_name": "BMD-1",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmd.pbo > config.bin",
+      "catalogue_id": "bmd_1",
+      "matched_tokens": [
+        "bmd1"
+      ]
+    },
+    {
+      "game_class": "rhs_bmd1k",
+      "display_name_key": "$STR_BMD1K_Name",
+      "display_name": "BMD-1K",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmd.pbo > config.bin",
+      "catalogue_id": "bmd_1k",
+      "matched_tokens": [
+        "bmd1k"
+      ]
+    },
+    {
+      "game_class": "rhs_bmd1p",
+      "display_name_key": "$STR_BMD1P_Name",
+      "display_name": "BMD-1P",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmd.pbo > config.bin",
+      "catalogue_id": "bmd_1p",
+      "matched_tokens": [
+        "bmd1p"
+      ]
+    },
+    {
+      "game_class": "rhs_bmd1pk",
+      "display_name_key": "$STR_BMD1PK_Name",
+      "display_name": "BMD-1PK",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmd.pbo > config.bin",
+      "catalogue_id": "bmd_1pk",
+      "matched_tokens": [
+        "bmd1pk"
+      ]
+    },
+    {
+      "game_class": "rhs_bmd1r",
+      "display_name_key": "$STR_BMD1R_Name",
+      "display_name": "BMD-1R",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmd.pbo > config.bin",
+      "catalogue_id": "bmd_1r",
+      "matched_tokens": [
+        "bmd1r"
+      ]
+    },
+    {
+      "game_class": "rhs_bmd2k",
+      "display_name_key": "$STR_BMD2K_Name",
+      "display_name": "BMD-2K",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmd.pbo > config.bin",
+      "catalogue_id": "bmd_2k",
+      "matched_tokens": [
+        "bmd2k"
+      ]
+    },
+    {
+      "game_class": "rhs_bmd4_vdv",
+      "display_name_key": "$STR_BMD4_Name",
+      "display_name": "BMD-4",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_sprut.pbo > config.bin",
+      "catalogue_id": "bmd_4",
+      "matched_tokens": [
+        "bmd4"
+      ]
+    },
+    {
+      "game_class": "rhs_bmd4m_vdv",
+      "display_name_key": "$STR_BMD4M_Name",
+      "display_name": "BMD-4M",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_sprut.pbo > config.bin",
+      "catalogue_id": "bmd_4m",
+      "matched_tokens": [
+        "bmd4m"
+      ]
+    },
+    {
+      "game_class": "rhs_bmd4ma_vdv",
+      "display_name_key": "$STR_BMD4MA_Name",
+      "display_name": "BMD-4M (A)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_sprut.pbo > config.bin",
+      "catalogue_id": "bmd_4m",
+      "matched_tokens": [
+        "bmd4m"
+      ]
+    },
+    {
+      "game_class": "rhs_bmd_base",
+      "display_name_key": "$STR_BMD2_Name",
+      "display_name": "BMD-2",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmd.pbo > config.bin",
+      "catalogue_id": "bmd_2",
+      "matched_tokens": [
+        "bmd2"
+      ]
+    },
+    {
       "game_class": "rhs_bmp1_msv",
       "display_name_key": "$STR_BMP1_Name",
       "display_name": "BMP-1",
@@ -650,6 +1022,116 @@
       "catalogue_id": "bmp_1",
       "matched_tokens": [
         "bmp1"
+      ]
+    },
+    {
+      "game_class": "rhs_bmp1k_msv",
+      "display_name_key": "$STR_BMP1K_Name",
+      "display_name": "BMP-1K",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "bmp_1k",
+      "matched_tokens": [
+        "bmp1k"
+      ]
+    },
+    {
+      "game_class": "rhs_bmp1k_tv",
+      "display_name_key": "$STR_BMP1K_Name",
+      "display_name": "BMP-1K",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "bmp_1k",
+      "matched_tokens": [
+        "bmp1k"
+      ]
+    },
+    {
+      "game_class": "rhs_bmp1k_vdv",
+      "display_name_key": "$STR_BMP1K_Name",
+      "display_name": "BMP-1K",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "bmp_1k",
+      "matched_tokens": [
+        "bmp1k"
+      ]
+    },
+    {
+      "game_class": "rhs_bmp1k_vmf",
+      "display_name_key": "$STR_BMP1K_Name",
+      "display_name": "BMP-1K",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "bmp_1k",
+      "matched_tokens": [
+        "bmp1k"
+      ]
+    },
+    {
+      "game_class": "rhs_bmp1k_vv",
+      "display_name_key": "$STR_BMP1K_Name",
+      "display_name": "BMP-1K",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "bmp_1k",
+      "matched_tokens": [
+        "bmp1k"
+      ]
+    },
+    {
+      "game_class": "rhs_bmp1p_msv",
+      "display_name_key": "$STR_BMP1P_Name",
+      "display_name": "BMP-1P",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "bmp_1p",
+      "matched_tokens": [
+        "bmp1p"
+      ]
+    },
+    {
+      "game_class": "rhs_bmp1p_tv",
+      "display_name_key": "$STR_BMP1P_Name",
+      "display_name": "BMP-1P",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "bmp_1p",
+      "matched_tokens": [
+        "bmp1p"
+      ]
+    },
+    {
+      "game_class": "rhs_bmp1p_vdv",
+      "display_name_key": "$STR_BMP1P_Name",
+      "display_name": "BMP-1P",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "bmp_1p",
+      "matched_tokens": [
+        "bmp1p"
+      ]
+    },
+    {
+      "game_class": "rhs_bmp1p_vmf",
+      "display_name_key": "$STR_BMP1P_Name",
+      "display_name": "BMP-1P",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "bmp_1p",
+      "matched_tokens": [
+        "bmp1p"
+      ]
+    },
+    {
+      "game_class": "rhs_bmp1p_vv",
+      "display_name_key": "$STR_BMP1P_Name",
+      "display_name": "BMP-1P",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "bmp_1p",
+      "matched_tokens": [
+        "bmp1p"
       ]
     },
     {
@@ -774,6 +1256,116 @@
       ]
     },
     {
+      "game_class": "rhs_bmp2k_msv",
+      "display_name_key": "$STR_BMP2K_Name",
+      "display_name": "BMP-2K",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "bmp_2k",
+      "matched_tokens": [
+        "bmp2k"
+      ]
+    },
+    {
+      "game_class": "rhs_bmp2k_tv",
+      "display_name_key": "$STR_BMP2K_Name",
+      "display_name": "BMP-2K",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "bmp_2k",
+      "matched_tokens": [
+        "bmp2k"
+      ]
+    },
+    {
+      "game_class": "rhs_bmp2k_vdv",
+      "display_name_key": "$STR_BMP2K_Name",
+      "display_name": "BMP-2K",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "bmp_2k",
+      "matched_tokens": [
+        "bmp2k"
+      ]
+    },
+    {
+      "game_class": "rhs_bmp2k_vmf",
+      "display_name_key": "$STR_BMP2K_Name",
+      "display_name": "BMP-2K",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "bmp_2k",
+      "matched_tokens": [
+        "bmp2k"
+      ]
+    },
+    {
+      "game_class": "rhs_bmp2k_vv",
+      "display_name_key": "$STR_BMP2K_Name",
+      "display_name": "BMP-2K",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "bmp_2k",
+      "matched_tokens": [
+        "bmp2k"
+      ]
+    },
+    {
+      "game_class": "rhs_bmp3_late_msv",
+      "display_name_key": "$STR_BMP3_Late_Name",
+      "display_name": "BMP-3 (late)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp3.pbo > config.bin",
+      "catalogue_id": "bmp_3",
+      "matched_tokens": [
+        "bmp3"
+      ]
+    },
+    {
+      "game_class": "rhs_bmp3_msv",
+      "display_name_key": "$STR_BMP3_Name",
+      "display_name": "BMP-3 (early)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp3.pbo > config.bin",
+      "catalogue_id": "bmp_3",
+      "matched_tokens": [
+        "bmp3"
+      ]
+    },
+    {
+      "game_class": "rhs_bmp3m_msv",
+      "display_name_key": "$STR_BMP3M_Name",
+      "display_name": "BMP-3 (Vesna-K)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp3.pbo > config.bin",
+      "catalogue_id": "bmp_3",
+      "matched_tokens": [
+        "bmp3"
+      ]
+    },
+    {
+      "game_class": "rhs_bmp3mera_msv",
+      "display_name_key": "$STR_BMP3MERA_Name",
+      "display_name": "BMP-3 (Vesna-K/A)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp3.pbo > config.bin",
+      "catalogue_id": "bmp_3",
+      "matched_tokens": [
+        "bmp3"
+      ]
+    },
+    {
+      "game_class": "rhs_bmp3tank_base",
+      "display_name_key": "$STR_BMP3_Name",
+      "display_name": "BMP-3 (early)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp3.pbo > config.bin",
+      "catalogue_id": "bmp_3",
+      "matched_tokens": [
+        "bmp3"
+      ]
+    },
+    {
       "game_class": "rhs_bmp_base",
       "display_name_key": "$STR_BMP1_Name",
       "display_name": "BMP-1",
@@ -782,6 +1374,72 @@
       "catalogue_id": "bmp_1",
       "matched_tokens": [
         "bmp1"
+      ]
+    },
+    {
+      "game_class": "rhs_brm1k_base",
+      "display_name_key": "$STR_BRM1K_Name",
+      "display_name": "BRM-1K",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "brm_1k",
+      "matched_tokens": [
+        "brm1k"
+      ]
+    },
+    {
+      "game_class": "rhs_brm1k_msv",
+      "display_name_key": "$STR_BRM1K_Name",
+      "display_name": "BRM-1K",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "brm_1k",
+      "matched_tokens": [
+        "brm1k"
+      ]
+    },
+    {
+      "game_class": "rhs_brm1k_tv",
+      "display_name_key": "$STR_BRM1K_Name",
+      "display_name": "BRM-1K",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "brm_1k",
+      "matched_tokens": [
+        "brm1k"
+      ]
+    },
+    {
+      "game_class": "rhs_brm1k_vdv",
+      "display_name_key": "$STR_BRM1K_Name",
+      "display_name": "BRM-1K",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "brm_1k",
+      "matched_tokens": [
+        "brm1k"
+      ]
+    },
+    {
+      "game_class": "rhs_brm1k_vmf",
+      "display_name_key": "$STR_BRM1K_Name",
+      "display_name": "BRM-1K",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "brm_1k",
+      "matched_tokens": [
+        "brm1k"
+      ]
+    },
+    {
+      "game_class": "rhs_brm1k_vv",
+      "display_name_key": "$STR_BRM1K_Name",
+      "display_name": "BRM-1K",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "brm_1k",
+      "matched_tokens": [
+        "brm1k"
       ]
     },
     {
@@ -826,6 +1484,86 @@
       "catalogue_id": "btr_70",
       "matched_tokens": [
         "btr70"
+      ]
+    },
+    {
+      "game_class": "rhs_btr80_msv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "btr_80",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_btr80_vdv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "btr_80",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_btr80_vmf",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "btr_80",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_btr80_vv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "btr_80",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_btr80a_msv",
+      "display_name_key": "$STR_RHS_BTR80A_Name",
+      "display_name": "BTR-80A",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_btr.pbo > config.bin",
+      "catalogue_id": "btr_80a",
+      "matched_tokens": [
+        "btr80a"
+      ]
+    },
+    {
+      "game_class": "rhs_btr80a_vdv",
+      "display_name_key": "$STR_RHS_BTR80A_Name",
+      "display_name": "BTR-80A",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_btr.pbo > config.bin",
+      "catalogue_id": "btr_80a",
+      "matched_tokens": [
+        "btr80a"
+      ]
+    },
+    {
+      "game_class": "rhs_btr80a_vmf",
+      "display_name_key": "$STR_RHS_BTR80A_Name",
+      "display_name": "BTR-80A",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_btr.pbo > config.bin",
+      "catalogue_id": "btr_80a",
+      "matched_tokens": [
+        "btr80a"
+      ]
+    },
+    {
+      "game_class": "rhs_btr80a_vv",
+      "display_name_key": "$STR_RHS_BTR80A_Name",
+      "display_name": "BTR-80A",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_btr.pbo > config.bin",
+      "catalogue_id": "btr_80a",
+      "matched_tokens": [
+        "btr80a"
       ]
     },
     {
@@ -881,6 +1619,61 @@
       "catalogue_id": "gaz_66",
       "matched_tokens": [
         "gaz66"
+      ]
+    },
+    {
+      "game_class": "rhs_gaz66_ap2_base",
+      "display_name_key": "$STR_RHS_GAZ66AP2",
+      "display_name": "GAZ-66-AP-2",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_trucks.pbo > config.bin",
+      "catalogue_id": "gaz_66_ap_2",
+      "matched_tokens": [
+        "gaz66ap2"
+      ]
+    },
+    {
+      "game_class": "rhs_gaz66_ap2_msv",
+      "display_name_key": "$STR_RHS_GAZ66AP2",
+      "display_name": "GAZ-66-AP-2",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_trucks.pbo > config.bin",
+      "catalogue_id": "gaz_66_ap_2",
+      "matched_tokens": [
+        "gaz66ap2"
+      ]
+    },
+    {
+      "game_class": "rhs_gaz66_ap2_vdv",
+      "display_name_key": "$STR_RHS_GAZ66AP2",
+      "display_name": "GAZ-66-AP-2",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_trucks.pbo > config.bin",
+      "catalogue_id": "gaz_66_ap_2",
+      "matched_tokens": [
+        "gaz66ap2"
+      ]
+    },
+    {
+      "game_class": "rhs_gaz66_ap2_vmf",
+      "display_name_key": "$STR_RHS_GAZ66AP2",
+      "display_name": "GAZ-66-AP-2",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_trucks.pbo > config.bin",
+      "catalogue_id": "gaz_66_ap_2",
+      "matched_tokens": [
+        "gaz66ap2"
+      ]
+    },
+    {
+      "game_class": "rhs_gaz66_ap2_vv",
+      "display_name_key": "$STR_RHS_GAZ66AP2",
+      "display_name": "GAZ-66-AP-2",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_trucks.pbo > config.bin",
+      "catalogue_id": "gaz_66_ap_2",
+      "matched_tokens": [
+        "gaz66ap2"
       ]
     },
     {
@@ -991,6 +1784,61 @@
       "catalogue_id": "gaz_66",
       "matched_tokens": [
         "gaz66"
+      ]
+    },
+    {
+      "game_class": "rhs_gaz66_repair_base",
+      "display_name_key": "$STR_RHS_GAZ66REP",
+      "display_name": "GAZ-66-ESB-8IM",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_trucks.pbo > config.bin",
+      "catalogue_id": "gaz_66_esb_8im",
+      "matched_tokens": [
+        "gaz66esb8im"
+      ]
+    },
+    {
+      "game_class": "rhs_gaz66_repair_msv",
+      "display_name_key": "$STR_RHS_GAZ66REP",
+      "display_name": "GAZ-66-ESB-8IM",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_trucks.pbo > config.bin",
+      "catalogue_id": "gaz_66_esb_8im",
+      "matched_tokens": [
+        "gaz66esb8im"
+      ]
+    },
+    {
+      "game_class": "rhs_gaz66_repair_vdv",
+      "display_name_key": "$STR_RHS_GAZ66REP",
+      "display_name": "GAZ-66-ESB-8IM",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_trucks.pbo > config.bin",
+      "catalogue_id": "gaz_66_esb_8im",
+      "matched_tokens": [
+        "gaz66esb8im"
+      ]
+    },
+    {
+      "game_class": "rhs_gaz66_repair_vmf",
+      "display_name_key": "$STR_RHS_GAZ66REP",
+      "display_name": "GAZ-66-ESB-8IM",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_trucks.pbo > config.bin",
+      "catalogue_id": "gaz_66_esb_8im",
+      "matched_tokens": [
+        "gaz66esb8im"
+      ]
+    },
+    {
+      "game_class": "rhs_gaz66_repair_vv",
+      "display_name_key": "$STR_RHS_GAZ66REP",
+      "display_name": "GAZ-66-ESB-8IM",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_trucks.pbo > config.bin",
+      "catalogue_id": "gaz_66_esb_8im",
+      "matched_tokens": [
+        "gaz66esb8im"
       ]
     },
     {
@@ -1126,6 +1974,436 @@
       ]
     },
     {
+      "game_class": "rhs_kamaz5350",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "kamaz_5350_mustang",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_kamaz5350_ammo_base",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "kamaz_5350_mustang",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_kamaz5350_ammo_msv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "kamaz_5350_mustang",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_kamaz5350_ammo_vdv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "kamaz_5350_mustang",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_kamaz5350_ammo_vmf",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "kamaz_5350_mustang",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_kamaz5350_ammo_vv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "kamaz_5350_mustang",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_kamaz5350_flatbed",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "kamaz_5350_mustang",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_kamaz5350_flatbed_cover",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "kamaz_5350_mustang",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_kamaz5350_flatbed_cover_msv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "kamaz_5350_mustang",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_kamaz5350_flatbed_cover_vdv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "kamaz_5350_mustang",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_kamaz5350_flatbed_cover_vmf",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "kamaz_5350_mustang",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_kamaz5350_flatbed_cover_vv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "kamaz_5350_mustang",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_kamaz5350_flatbed_msv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "kamaz_5350_mustang",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_kamaz5350_flatbed_vdv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "kamaz_5350_mustang",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_kamaz5350_flatbed_vmf",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "kamaz_5350_mustang",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_kamaz5350_flatbed_vv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "kamaz_5350_mustang",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_kamaz5350_msv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "kamaz_5350_mustang",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_kamaz5350_open",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "kamaz_5350_mustang",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_kamaz5350_open_msv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "kamaz_5350_mustang",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_kamaz5350_open_vdv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "kamaz_5350_mustang",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_kamaz5350_open_vmf",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "kamaz_5350_mustang",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_kamaz5350_open_vv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "kamaz_5350_mustang",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_kamaz5350_vdv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "kamaz_5350_mustang",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_kamaz5350_vmf",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "kamaz_5350_mustang",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_kamaz5350_vv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "kamaz_5350_mustang",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_prp3_msv",
+      "display_name_key": "$STR_PRP3_Name",
+      "display_name": "PRP-3",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "prp_3",
+      "matched_tokens": [
+        "prp3"
+      ]
+    },
+    {
+      "game_class": "rhs_prp3_tv",
+      "display_name_key": "$STR_PRP3_Name",
+      "display_name": "PRP-3",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "prp_3",
+      "matched_tokens": [
+        "prp3"
+      ]
+    },
+    {
+      "game_class": "rhs_prp3_vdv",
+      "display_name_key": "$STR_PRP3_Name",
+      "display_name": "PRP-3",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "prp_3",
+      "matched_tokens": [
+        "prp3"
+      ]
+    },
+    {
+      "game_class": "rhs_prp3_vmf",
+      "display_name_key": "$STR_PRP3_Name",
+      "display_name": "PRP-3",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "prp_3",
+      "matched_tokens": [
+        "prp3"
+      ]
+    },
+    {
+      "game_class": "rhs_prp3_vv",
+      "display_name_key": "$STR_PRP3_Name",
+      "display_name": "PRP-3",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "prp_3",
+      "matched_tokens": [
+        "prp3"
+      ]
+    },
+    {
+      "game_class": "rhs_sprut_vdv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "2s25_sprut_sd",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_t72ba_tv",
+      "display_name_key": "$STR_T72BA_Name",
+      "display_name": "T-72B (obr. 1984g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "rhs_t72bb_tv",
+      "display_name_key": "$STR_T72BB_Name",
+      "display_name": "T-72B (obr. 1985g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "rhs_t72bc_tv",
+      "display_name_key": "$STR_T72BC_Name",
+      "display_name": "T-72B (obr. 1989g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "rhs_t72bd_tv",
+      "display_name_key": "$STR_T72BD_Name",
+      "display_name": "T-72B3 (obr. 2012g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b3_obr_2012g",
+      "matched_tokens": [
+        "t72b3"
+      ]
+    },
+    {
+      "game_class": "rhs_t72be_tv",
+      "display_name_key": "$STR_T72BE_Name",
+      "display_name": "T-72B3 (obr. 2016g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b3_obr_2012g",
+      "matched_tokens": [
+        "t72b3"
+      ]
+    },
+    {
+      "game_class": "rhs_t80",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "t_80",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_t80a",
+      "display_name_key": "$STR_RHS_T80A",
+      "display_name": "T-80A",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_tanks.pbo > config.bin",
+      "catalogue_id": "t_80a",
+      "matched_tokens": [
+        "t80a"
+      ]
+    },
+    {
+      "game_class": "rhs_t80bk",
+      "display_name_key": "$STR_RHS_T80BK",
+      "display_name": "T-80BK",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_tanks.pbo > config.bin",
+      "catalogue_id": "t_80bk",
+      "matched_tokens": [
+        "t80bk"
+      ]
+    },
+    {
+      "game_class": "rhs_t80bv",
+      "display_name_key": "$STR_RHS_T80BV",
+      "display_name": "T-80BV",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_tanks.pbo > config.bin",
+      "catalogue_id": "t_80bv",
+      "matched_tokens": [
+        "t80bv"
+      ]
+    },
+    {
+      "game_class": "rhs_t80bvk",
+      "display_name_key": "$STR_RHS_T80BVK",
+      "display_name": "T-80BVK",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_tanks.pbo > config.bin",
+      "catalogue_id": "t_80bvk",
+      "matched_tokens": [
+        "t80bvk"
+      ]
+    },
+    {
+      "game_class": "rhs_t80u",
+      "display_name_key": "$STR_RHS_T80U",
+      "display_name": "T-80U",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_tanks.pbo > config.bin",
+      "catalogue_id": "t_80u",
+      "matched_tokens": [
+        "t80u"
+      ]
+    },
+    {
+      "game_class": "rhs_t80u45m",
+      "display_name_key": "$STR_RHS_T80U45M",
+      "display_name": "T-80U (45M)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_tanks.pbo > config.bin",
+      "catalogue_id": "t_80u",
+      "matched_tokens": [
+        "t80u"
+      ]
+    },
+    {
+      "game_class": "rhs_t80um",
+      "display_name_key": "$STR_RHS_T80UM",
+      "display_name": "T-80UM",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_tanks.pbo > config.bin",
+      "catalogue_id": "t_80um",
+      "matched_tokens": [
+        "t80um"
+      ]
+    },
+    {
       "game_class": "rhs_t90a_tv",
       "display_name_key": "$STR_T90A_Name",
       "display_name": "T-90A (obr. 2006g.)",
@@ -1134,6 +2412,369 @@
       "catalogue_id": "t_90",
       "matched_tokens": [
         "t90a"
+      ]
+    },
+    {
+      "game_class": "rhs_t90am_tv",
+      "display_name_key": "$STR_T90AM_Name",
+      "display_name": "T-90AM (obyekt 188AM)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_90am",
+      "matched_tokens": [
+        "t90am"
+      ]
+    },
+    {
+      "game_class": "rhs_t90saa_tv",
+      "display_name_key": "$STR_T90SAA_Name",
+      "display_name": "T-90SA (obr. 2004g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_90sa",
+      "matched_tokens": [
+        "t90sa"
+      ]
+    },
+    {
+      "game_class": "rhs_t90sab_tv",
+      "display_name_key": "$STR_T90SAB_Name",
+      "display_name": "T-90SA (obr. 2016g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_90sa",
+      "matched_tokens": [
+        "t90sa"
+      ]
+    },
+    {
+      "game_class": "rhs_t90sm_tv",
+      "display_name_key": "$STR_T90SM_Name",
+      "display_name": "T-90SM (obyekt 188SM)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_90sm",
+      "matched_tokens": [
+        "t90sm"
+      ]
+    },
+    {
+      "game_class": "rhs_tank_base",
+      "display_name_key": "$STR_RHS_T80B",
+      "display_name": "T-80B",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_tanks.pbo > config.bin",
+      "catalogue_id": "t_80b",
+      "matched_tokens": [
+        "t80b"
+      ]
+    },
+    {
+      "game_class": "rhs_tigr_3camo_msv",
+      "display_name_key": "$STR_RHS_GAZ233011_3CAMO",
+      "display_name": "GAZ-233011 (Camo)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_cars.pbo > config.bin",
+      "catalogue_id": "gaz_233011_gaz_tigr",
+      "matched_tokens": [
+        "gaz233011"
+      ]
+    },
+    {
+      "game_class": "rhs_tigr_3camo_vdv",
+      "display_name_key": "$STR_RHS_GAZ233011_3CAMO",
+      "display_name": "GAZ-233011 (Camo)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_cars.pbo > config.bin",
+      "catalogue_id": "gaz_233011_gaz_tigr",
+      "matched_tokens": [
+        "gaz233011"
+      ]
+    },
+    {
+      "game_class": "rhs_tigr_3camo_vmf",
+      "display_name_key": "$STR_RHS_GAZ233011_3CAMO",
+      "display_name": "GAZ-233011 (Camo)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_cars.pbo > config.bin",
+      "catalogue_id": "gaz_233011_gaz_tigr",
+      "matched_tokens": [
+        "gaz233011"
+      ]
+    },
+    {
+      "game_class": "rhs_tigr_3camo_vv",
+      "display_name_key": "$STR_RHS_GAZ233011_3CAMO",
+      "display_name": "GAZ-233011 (Camo)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_cars.pbo > config.bin",
+      "catalogue_id": "gaz_233011_gaz_tigr",
+      "matched_tokens": [
+        "gaz233011"
+      ]
+    },
+    {
+      "game_class": "rhs_tigr_ffv_3camo_msv",
+      "display_name_key": "$STR_RHS_GAZ233011_HATCH_3CAMO",
+      "display_name": "GAZ-233011 (Camo/Hatch)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_cars.pbo > config.bin",
+      "catalogue_id": "gaz_233011_gaz_tigr",
+      "matched_tokens": [
+        "gaz233011"
+      ]
+    },
+    {
+      "game_class": "rhs_tigr_ffv_3camo_vdv",
+      "display_name_key": "$STR_RHS_GAZ233011_HATCH_3CAMO",
+      "display_name": "GAZ-233011 (Camo/Hatch)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_cars.pbo > config.bin",
+      "catalogue_id": "gaz_233011_gaz_tigr",
+      "matched_tokens": [
+        "gaz233011"
+      ]
+    },
+    {
+      "game_class": "rhs_tigr_ffv_3camo_vmf",
+      "display_name_key": "$STR_RHS_GAZ233011_HATCH_3CAMO",
+      "display_name": "GAZ-233011 (Camo/Hatch)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_cars.pbo > config.bin",
+      "catalogue_id": "gaz_233011_gaz_tigr",
+      "matched_tokens": [
+        "gaz233011"
+      ]
+    },
+    {
+      "game_class": "rhs_tigr_ffv_3camo_vv",
+      "display_name_key": "$STR_RHS_GAZ233011_HATCH_3CAMO",
+      "display_name": "GAZ-233011 (Camo/Hatch)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_cars.pbo > config.bin",
+      "catalogue_id": "gaz_233011_gaz_tigr",
+      "matched_tokens": [
+        "gaz233011"
+      ]
+    },
+    {
+      "game_class": "rhs_tigr_ffv_msv",
+      "display_name_key": "$STR_RHS_GAZ233011_HATCH",
+      "display_name": "GAZ-233011 (Hatch)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_cars.pbo > config.bin",
+      "catalogue_id": "gaz_233011_gaz_tigr",
+      "matched_tokens": [
+        "gaz233011"
+      ]
+    },
+    {
+      "game_class": "rhs_tigr_ffv_vdv",
+      "display_name_key": "$STR_RHS_GAZ233011_HATCH",
+      "display_name": "GAZ-233011 (Hatch)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_cars.pbo > config.bin",
+      "catalogue_id": "gaz_233011_gaz_tigr",
+      "matched_tokens": [
+        "gaz233011"
+      ]
+    },
+    {
+      "game_class": "rhs_tigr_ffv_vmf",
+      "display_name_key": "$STR_RHS_GAZ233011_HATCH",
+      "display_name": "GAZ-233011 (Hatch)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_cars.pbo > config.bin",
+      "catalogue_id": "gaz_233011_gaz_tigr",
+      "matched_tokens": [
+        "gaz233011"
+      ]
+    },
+    {
+      "game_class": "rhs_tigr_ffv_vv",
+      "display_name_key": "$STR_RHS_GAZ233011_HATCH",
+      "display_name": "GAZ-233011 (Hatch)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_cars.pbo > config.bin",
+      "catalogue_id": "gaz_233011_gaz_tigr",
+      "matched_tokens": [
+        "gaz233011"
+      ]
+    },
+    {
+      "game_class": "rhs_tigr_m_3camo_msv",
+      "display_name_key": "$STR_RHS_GAZ233114_3CAMO",
+      "display_name": "GAZ-233114 (Camo)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_cars.pbo > config.bin",
+      "catalogue_id": "gaz_233114_tigr_m",
+      "matched_tokens": [
+        "gaz233114"
+      ]
+    },
+    {
+      "game_class": "rhs_tigr_m_3camo_vdv",
+      "display_name_key": "$STR_RHS_GAZ233114_3CAMO",
+      "display_name": "GAZ-233114 (Camo)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_cars.pbo > config.bin",
+      "catalogue_id": "gaz_233114_tigr_m",
+      "matched_tokens": [
+        "gaz233114"
+      ]
+    },
+    {
+      "game_class": "rhs_tigr_m_3camo_vmf",
+      "display_name_key": "$STR_RHS_GAZ233114_3CAMO",
+      "display_name": "GAZ-233114 (Camo)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_cars.pbo > config.bin",
+      "catalogue_id": "gaz_233114_tigr_m",
+      "matched_tokens": [
+        "gaz233114"
+      ]
+    },
+    {
+      "game_class": "rhs_tigr_m_3camo_vv",
+      "display_name_key": "$STR_RHS_GAZ233114_3CAMO",
+      "display_name": "GAZ-233114 (Camo)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_cars.pbo > config.bin",
+      "catalogue_id": "gaz_233114_tigr_m",
+      "matched_tokens": [
+        "gaz233114"
+      ]
+    },
+    {
+      "game_class": "rhs_tigr_m_msv",
+      "display_name_key": "$STR_RHS_GAZ233114",
+      "display_name": "GAZ-233114",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_cars.pbo > config.bin",
+      "catalogue_id": "gaz_233114_tigr_m",
+      "matched_tokens": [
+        "gaz233114"
+      ]
+    },
+    {
+      "game_class": "rhs_tigr_m_vdv",
+      "display_name_key": "$STR_RHS_GAZ233114",
+      "display_name": "GAZ-233114",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_cars.pbo > config.bin",
+      "catalogue_id": "gaz_233114_tigr_m",
+      "matched_tokens": [
+        "gaz233114"
+      ]
+    },
+    {
+      "game_class": "rhs_tigr_m_vmf",
+      "display_name_key": "$STR_RHS_GAZ233114",
+      "display_name": "GAZ-233114",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_cars.pbo > config.bin",
+      "catalogue_id": "gaz_233114_tigr_m",
+      "matched_tokens": [
+        "gaz233114"
+      ]
+    },
+    {
+      "game_class": "rhs_tigr_m_vv",
+      "display_name_key": "$STR_RHS_GAZ233114",
+      "display_name": "GAZ-233114",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_cars.pbo > config.bin",
+      "catalogue_id": "gaz_233114_tigr_m",
+      "matched_tokens": [
+        "gaz233114"
+      ]
+    },
+    {
+      "game_class": "rhs_tigr_sts_3camo_msv",
+      "display_name_key": "$STR_RHS_GAZ233014_3CAMO",
+      "display_name": "GAZ-233014 (Camo)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_cars.pbo > config.bin",
+      "catalogue_id": "gaz_233014_tigr_with_arbalet_turret",
+      "matched_tokens": [
+        "gaz233014"
+      ]
+    },
+    {
+      "game_class": "rhs_tigr_sts_3camo_vdv",
+      "display_name_key": "$STR_RHS_GAZ233014_3CAMO",
+      "display_name": "GAZ-233014 (Camo)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_cars.pbo > config.bin",
+      "catalogue_id": "gaz_233014_tigr_with_arbalet_turret",
+      "matched_tokens": [
+        "gaz233014"
+      ]
+    },
+    {
+      "game_class": "rhs_tigr_sts_3camo_vmf",
+      "display_name_key": "$STR_RHS_GAZ233014_3CAMO",
+      "display_name": "GAZ-233014 (Camo)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_cars.pbo > config.bin",
+      "catalogue_id": "gaz_233014_tigr_with_arbalet_turret",
+      "matched_tokens": [
+        "gaz233014"
+      ]
+    },
+    {
+      "game_class": "rhs_tigr_sts_3camo_vv",
+      "display_name_key": "$STR_RHS_GAZ233014_3CAMO",
+      "display_name": "GAZ-233014 (Camo)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_cars.pbo > config.bin",
+      "catalogue_id": "gaz_233014_tigr_with_arbalet_turret",
+      "matched_tokens": [
+        "gaz233014"
+      ]
+    },
+    {
+      "game_class": "rhs_tigr_sts_msv",
+      "display_name_key": "$STR_RHS_GAZ233014",
+      "display_name": "GAZ-233014",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_cars.pbo > config.bin",
+      "catalogue_id": "gaz_233014_tigr_with_arbalet_turret",
+      "matched_tokens": [
+        "gaz233014"
+      ]
+    },
+    {
+      "game_class": "rhs_tigr_sts_vdv",
+      "display_name_key": "$STR_RHS_GAZ233014",
+      "display_name": "GAZ-233014",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_cars.pbo > config.bin",
+      "catalogue_id": "gaz_233014_tigr_with_arbalet_turret",
+      "matched_tokens": [
+        "gaz233014"
+      ]
+    },
+    {
+      "game_class": "rhs_tigr_sts_vmf",
+      "display_name_key": "$STR_RHS_GAZ233014",
+      "display_name": "GAZ-233014",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_cars.pbo > config.bin",
+      "catalogue_id": "gaz_233014_tigr_with_arbalet_turret",
+      "matched_tokens": [
+        "gaz233014"
+      ]
+    },
+    {
+      "game_class": "rhs_tigr_sts_vv",
+      "display_name_key": "$STR_RHS_GAZ233014",
+      "display_name": "GAZ-233014",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_cars.pbo > config.bin",
+      "catalogue_id": "gaz_233014_tigr_with_arbalet_turret",
+      "matched_tokens": [
+        "gaz233014"
       ]
     },
     {
@@ -1148,6 +2789,196 @@
       ]
     },
     {
+      "game_class": "rhs_typhoon_base",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "kamaz_63968_typhoon_k",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_typhoon_vdv",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "kamaz_63968_typhoon_k",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_uaz_open_Base",
+      "display_name_key": "$STR_RHS_UAZ469OPEN_NAME",
+      "display_name": "UAZ-3151 (Open)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_a2port_car.pbo > config.bin",
+      "catalogue_id": "uaz_3151",
+      "matched_tokens": [
+        "uaz3151"
+      ]
+    },
+    {
+      "game_class": "rhs_uaz_open_MSV_01",
+      "display_name_key": "$STR_RHS_UAZ469OPEN_NAME",
+      "display_name": "UAZ-3151 (Open)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_a2port_car.pbo > config.bin",
+      "catalogue_id": "uaz_3151",
+      "matched_tokens": [
+        "uaz3151"
+      ]
+    },
+    {
+      "game_class": "rhs_uaz_open_MSV_Base",
+      "display_name_key": "$STR_RHS_UAZ469OPEN_NAME",
+      "display_name": "UAZ-3151 (Open)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_a2port_car.pbo > config.bin",
+      "catalogue_id": "uaz_3151",
+      "matched_tokens": [
+        "uaz3151"
+      ]
+    },
+    {
+      "game_class": "rhs_uaz_open_vdv",
+      "display_name_key": "$STR_RHS_UAZ469OPEN_NAME",
+      "display_name": "UAZ-3151 (Open)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_a2port_car.pbo > config.bin",
+      "catalogue_id": "uaz_3151",
+      "matched_tokens": [
+        "uaz3151"
+      ]
+    },
+    {
+      "game_class": "rhs_uaz_open_vmf",
+      "display_name_key": "$STR_RHS_UAZ469OPEN_NAME",
+      "display_name": "UAZ-3151 (Open)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_a2port_car.pbo > config.bin",
+      "catalogue_id": "uaz_3151",
+      "matched_tokens": [
+        "uaz3151"
+      ]
+    },
+    {
+      "game_class": "rhs_uaz_open_vv",
+      "display_name_key": "$STR_RHS_UAZ469OPEN_NAME",
+      "display_name": "UAZ-3151 (Open)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_a2port_car.pbo > config.bin",
+      "catalogue_id": "uaz_3151",
+      "matched_tokens": [
+        "uaz3151"
+      ]
+    },
+    {
+      "game_class": "rhs_uaz_vdv",
+      "display_name_key": "$STR_RHS_UAZ469_NAME",
+      "display_name": "UAZ-3151",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_a2port_car.pbo > config.bin",
+      "catalogue_id": "uaz_3151",
+      "matched_tokens": [
+        "uaz3151"
+      ]
+    },
+    {
+      "game_class": "rhs_uaz_vmf",
+      "display_name_key": "$STR_RHS_UAZ469_NAME",
+      "display_name": "UAZ-3151",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_a2port_car.pbo > config.bin",
+      "catalogue_id": "uaz_3151",
+      "matched_tokens": [
+        "uaz3151"
+      ]
+    },
+    {
+      "game_class": "rhs_uaz_vv",
+      "display_name_key": "$STR_RHS_UAZ469_NAME",
+      "display_name": "UAZ-3151",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_a2port_car.pbo > config.bin",
+      "catalogue_id": "uaz_3151",
+      "matched_tokens": [
+        "uaz3151"
+      ]
+    },
+    {
+      "game_class": "rhs_zsu234_aa",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "zsu_23_4_shilka",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhs_zsutank_base",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "zsu_23_4_shilka",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_cdf_b_bmd1",
+      "display_name_key": "$STR_BMD1_Name",
+      "display_name": "BMD-1",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmd.pbo > config.bin",
+      "catalogue_id": "bmd_1",
+      "matched_tokens": [
+        "bmd1"
+      ]
+    },
+    {
+      "game_class": "rhsgref_cdf_b_bmd1k",
+      "display_name_key": "$STR_BMD1K_Name",
+      "display_name": "BMD-1K",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmd.pbo > config.bin",
+      "catalogue_id": "bmd_1k",
+      "matched_tokens": [
+        "bmd1k"
+      ]
+    },
+    {
+      "game_class": "rhsgref_cdf_b_bmd1p",
+      "display_name_key": "$STR_BMD1P_Name",
+      "display_name": "BMD-1P",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmd.pbo > config.bin",
+      "catalogue_id": "bmd_1p",
+      "matched_tokens": [
+        "bmd1p"
+      ]
+    },
+    {
+      "game_class": "rhsgref_cdf_b_bmd1pk",
+      "display_name_key": "$STR_BMD1PK_Name",
+      "display_name": "BMD-1PK",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmd.pbo > config.bin",
+      "catalogue_id": "bmd_1pk",
+      "matched_tokens": [
+        "bmd1pk"
+      ]
+    },
+    {
+      "game_class": "rhsgref_cdf_b_bmd2k",
+      "display_name_key": "$STR_BMD2K_Name",
+      "display_name": "BMD-2K",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmd.pbo > config.bin",
+      "catalogue_id": "bmd_2k",
+      "matched_tokens": [
+        "bmd2k"
+      ]
+    },
+    {
       "game_class": "rhsgref_cdf_b_bmp1",
       "display_name_key": "$STR_BMP1_Name",
       "display_name": "BMP-1",
@@ -1156,6 +2987,28 @@
       "catalogue_id": "bmp_1",
       "matched_tokens": [
         "bmp1"
+      ]
+    },
+    {
+      "game_class": "rhsgref_cdf_b_bmp1k",
+      "display_name_key": "$STR_BMP1K_Name",
+      "display_name": "BMP-1K",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "bmp_1k",
+      "matched_tokens": [
+        "bmp1k"
+      ]
+    },
+    {
+      "game_class": "rhsgref_cdf_b_bmp1p",
+      "display_name_key": "$STR_BMP1P_Name",
+      "display_name": "BMP-1P",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "bmp_1p",
+      "matched_tokens": [
+        "bmp1p"
       ]
     },
     {
@@ -1181,6 +3034,17 @@
       ]
     },
     {
+      "game_class": "rhsgref_cdf_b_bmp2k",
+      "display_name_key": "$STR_BMP2K_Name",
+      "display_name": "BMP-2K",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "bmp_2k",
+      "matched_tokens": [
+        "bmp2k"
+      ]
+    },
+    {
       "game_class": "rhsgref_cdf_b_btr70",
       "display_name_key": "$STR_RHS_BTR70_Name",
       "display_name": "BTR-70",
@@ -1190,6 +3054,15 @@
       "matched_tokens": [
         "btr70"
       ]
+    },
+    {
+      "game_class": "rhsgref_cdf_b_btr80",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "btr_80",
+      "matched_tokens": []
     },
     {
       "game_class": "rhsgref_cdf_b_gaz66",
@@ -1211,6 +3084,17 @@
       "catalogue_id": "gaz_66",
       "matched_tokens": [
         "gaz66"
+      ]
+    },
+    {
+      "game_class": "rhsgref_cdf_b_gaz66_ap2",
+      "display_name_key": "$STR_RHS_GAZ66AP2",
+      "display_name": "GAZ-66-AP-2",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_trucks.pbo > config.bin",
+      "catalogue_id": "gaz_66_ap_2",
+      "matched_tokens": [
+        "gaz66ap2"
       ]
     },
     {
@@ -1236,6 +3120,17 @@
       ]
     },
     {
+      "game_class": "rhsgref_cdf_b_gaz66_repair",
+      "display_name_key": "$STR_RHS_GAZ66REP",
+      "display_name": "GAZ-66-ESB-8IM",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_trucks.pbo > config.bin",
+      "catalogue_id": "gaz_66_esb_8im",
+      "matched_tokens": [
+        "gaz66esb8im"
+      ]
+    },
+    {
       "game_class": "rhsgref_cdf_b_gaz66_zu23",
       "display_name_key": "$STR_RHS_GAZ66_ZU23",
       "display_name": "GAZ-66 (ZU-23-2)",
@@ -1255,6 +3150,81 @@
       "catalogue_id": "gaz_66",
       "matched_tokens": [
         "gaz66"
+      ]
+    },
+    {
+      "game_class": "rhsgref_cdf_b_reg_BM21",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "bm_21_grad",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_cdf_b_reg_uaz",
+      "display_name_key": "$STR_RHS_UAZ469_NAME",
+      "display_name": "UAZ-3151",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_a2port_car.pbo > config.bin",
+      "catalogue_id": "uaz_3151",
+      "matched_tokens": [
+        "uaz3151"
+      ]
+    },
+    {
+      "game_class": "rhsgref_cdf_b_reg_uaz_open",
+      "display_name_key": "$STR_RHS_UAZ469OPEN_NAME",
+      "display_name": "UAZ-3151 (Open)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_a2port_car.pbo > config.bin",
+      "catalogue_id": "uaz_3151",
+      "matched_tokens": [
+        "uaz3151"
+      ]
+    },
+    {
+      "game_class": "rhsgref_cdf_b_t72ba_tv",
+      "display_name_key": "$STR_T72BA_Name",
+      "display_name": "T-72B (obr. 1984g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "rhsgref_cdf_b_t72bb_tv",
+      "display_name_key": "$STR_T72BB_Name",
+      "display_name": "T-72B (obr. 1985g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "rhsgref_cdf_b_t80bv_tv",
+      "display_name_key": "$STR_RHS_T80BV",
+      "display_name": "T-80BV",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_tanks.pbo > config.bin",
+      "catalogue_id": "t_80bv",
+      "matched_tokens": [
+        "t80bv"
+      ]
+    },
+    {
+      "game_class": "rhsgref_cdf_b_t80u_tv",
+      "display_name_key": "$STR_RHS_T80U",
+      "display_name": "T-80U",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_tanks.pbo > config.bin",
+      "catalogue_id": "t_80u",
+      "matched_tokens": [
+        "t80u"
       ]
     },
     {
@@ -1313,6 +3283,70 @@
       ]
     },
     {
+      "game_class": "rhsgref_cdf_b_zsu234",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "zsu_23_4_shilka",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_cdf_bmd1",
+      "display_name_key": "$STR_BMD1_Name",
+      "display_name": "BMD-1",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmd.pbo > config.bin",
+      "catalogue_id": "bmd_1",
+      "matched_tokens": [
+        "bmd1"
+      ]
+    },
+    {
+      "game_class": "rhsgref_cdf_bmd1k",
+      "display_name_key": "$STR_BMD1K_Name",
+      "display_name": "BMD-1K",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmd.pbo > config.bin",
+      "catalogue_id": "bmd_1k",
+      "matched_tokens": [
+        "bmd1k"
+      ]
+    },
+    {
+      "game_class": "rhsgref_cdf_bmd1p",
+      "display_name_key": "$STR_BMD1P_Name",
+      "display_name": "BMD-1P",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmd.pbo > config.bin",
+      "catalogue_id": "bmd_1p",
+      "matched_tokens": [
+        "bmd1p"
+      ]
+    },
+    {
+      "game_class": "rhsgref_cdf_bmd1pk",
+      "display_name_key": "$STR_BMD1PK_Name",
+      "display_name": "BMD-1PK",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmd.pbo > config.bin",
+      "catalogue_id": "bmd_1pk",
+      "matched_tokens": [
+        "bmd1pk"
+      ]
+    },
+    {
+      "game_class": "rhsgref_cdf_bmd2k",
+      "display_name_key": "$STR_BMD2K_Name",
+      "display_name": "BMD-2K",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmd.pbo > config.bin",
+      "catalogue_id": "bmd_2k",
+      "matched_tokens": [
+        "bmd2k"
+      ]
+    },
+    {
       "game_class": "rhsgref_cdf_bmp1",
       "display_name_key": "$STR_BMP1_Name",
       "display_name": "BMP-1",
@@ -1321,6 +3355,28 @@
       "catalogue_id": "bmp_1",
       "matched_tokens": [
         "bmp1"
+      ]
+    },
+    {
+      "game_class": "rhsgref_cdf_bmp1k",
+      "display_name_key": "$STR_BMP1K_Name",
+      "display_name": "BMP-1K",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "bmp_1k",
+      "matched_tokens": [
+        "bmp1k"
+      ]
+    },
+    {
+      "game_class": "rhsgref_cdf_bmp1p",
+      "display_name_key": "$STR_BMP1P_Name",
+      "display_name": "BMP-1P",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "bmp_1p",
+      "matched_tokens": [
+        "bmp1p"
       ]
     },
     {
@@ -1346,6 +3402,17 @@
       ]
     },
     {
+      "game_class": "rhsgref_cdf_bmp2k",
+      "display_name_key": "$STR_BMP2K_Name",
+      "display_name": "BMP-2K",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "bmp_2k",
+      "matched_tokens": [
+        "bmp2k"
+      ]
+    },
+    {
       "game_class": "rhsgref_cdf_btr70",
       "display_name_key": "$STR_RHS_BTR70_Name",
       "display_name": "BTR-70",
@@ -1355,6 +3422,15 @@
       "matched_tokens": [
         "btr70"
       ]
+    },
+    {
+      "game_class": "rhsgref_cdf_btr80",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "btr_80",
+      "matched_tokens": []
     },
     {
       "game_class": "rhsgref_cdf_gaz66",
@@ -1376,6 +3452,17 @@
       "catalogue_id": "gaz_66",
       "matched_tokens": [
         "gaz66"
+      ]
+    },
+    {
+      "game_class": "rhsgref_cdf_gaz66_ap2",
+      "display_name_key": "$STR_RHS_GAZ66AP2",
+      "display_name": "GAZ-66-AP-2",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_trucks.pbo > config.bin",
+      "catalogue_id": "gaz_66_ap_2",
+      "matched_tokens": [
+        "gaz66ap2"
       ]
     },
     {
@@ -1401,6 +3488,17 @@
       ]
     },
     {
+      "game_class": "rhsgref_cdf_gaz66_repair",
+      "display_name_key": "$STR_RHS_GAZ66REP",
+      "display_name": "GAZ-66-ESB-8IM",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_trucks.pbo > config.bin",
+      "catalogue_id": "gaz_66_esb_8im",
+      "matched_tokens": [
+        "gaz66esb8im"
+      ]
+    },
+    {
       "game_class": "rhsgref_cdf_gaz66_zu23",
       "display_name_key": "$STR_RHS_GAZ66_ZU23",
       "display_name": "GAZ-66 (ZU-23-2)",
@@ -1420,6 +3518,81 @@
       "catalogue_id": "gaz_66",
       "matched_tokens": [
         "gaz66"
+      ]
+    },
+    {
+      "game_class": "rhsgref_cdf_reg_BM21",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "bm_21_grad",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_cdf_reg_uaz",
+      "display_name_key": "$STR_RHS_UAZ469_NAME",
+      "display_name": "UAZ-3151",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_a2port_car.pbo > config.bin",
+      "catalogue_id": "uaz_3151",
+      "matched_tokens": [
+        "uaz3151"
+      ]
+    },
+    {
+      "game_class": "rhsgref_cdf_reg_uaz_open",
+      "display_name_key": "$STR_RHS_UAZ469OPEN_NAME",
+      "display_name": "UAZ-3151 (Open)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_a2port_car.pbo > config.bin",
+      "catalogue_id": "uaz_3151",
+      "matched_tokens": [
+        "uaz3151"
+      ]
+    },
+    {
+      "game_class": "rhsgref_cdf_t72ba_tv",
+      "display_name_key": "$STR_T72BA_Name",
+      "display_name": "T-72B (obr. 1984g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "rhsgref_cdf_t72bb_tv",
+      "display_name_key": "$STR_T72BB_Name",
+      "display_name": "T-72B (obr. 1985g.)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_t72.pbo > config.bin",
+      "catalogue_id": "t_72b_obr_1984g",
+      "matched_tokens": [
+        "t72b"
+      ]
+    },
+    {
+      "game_class": "rhsgref_cdf_t80bv_tv",
+      "display_name_key": "$STR_RHS_T80BV",
+      "display_name": "T-80BV",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_tanks.pbo > config.bin",
+      "catalogue_id": "t_80bv",
+      "matched_tokens": [
+        "t80bv"
+      ]
+    },
+    {
+      "game_class": "rhsgref_cdf_t80u_tv",
+      "display_name_key": "$STR_RHS_T80U",
+      "display_name": "T-80U",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_tanks.pbo > config.bin",
+      "catalogue_id": "t_80u",
+      "matched_tokens": [
+        "t80u"
       ]
     },
     {
@@ -1478,6 +3651,122 @@
       ]
     },
     {
+      "game_class": "rhsgref_cdf_zsu234",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "zsu_23_4_shilka",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_hidf_M998_2dr",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_hidf_M998_2dr_fulltop",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_hidf_M998_2dr_halftop",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_hidf_M998_4dr_fulltop",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_hidf_M998_4dr_halftop",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_hidf_m113a3_m2",
+      "display_name_key": "$STR_M113A3WD_Name",
+      "display_name": "M113A3 (M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843593391/addons/rhsgref_c_vehicles_ret.pbo > config.bin",
+      "catalogue_id": "m113a3",
+      "matched_tokens": [
+        "m113a3"
+      ]
+    },
+    {
+      "game_class": "rhsgref_hidf_m113a3_unarmed",
+      "display_name_key": "$STR_M113A3WD_Name",
+      "display_name": "M113A3 (M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m113.pbo > config.bin",
+      "catalogue_id": "m113a3",
+      "matched_tokens": [
+        "m113a3"
+      ]
+    },
+    {
+      "game_class": "rhsgref_hidf_m998_4dr",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_ins_BM21",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "bm_21_grad",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_ins_bmd1",
+      "display_name_key": "$STR_BMD1_Name",
+      "display_name": "BMD-1",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmd.pbo > config.bin",
+      "catalogue_id": "bmd_1",
+      "matched_tokens": [
+        "bmd1"
+      ]
+    },
+    {
+      "game_class": "rhsgref_ins_bmd1p",
+      "display_name_key": "$STR_BMD1P_Name",
+      "display_name": "BMD-1P",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmd.pbo > config.bin",
+      "catalogue_id": "bmd_1p",
+      "matched_tokens": [
+        "bmd1p"
+      ]
+    },
+    {
       "game_class": "rhsgref_ins_bmp1",
       "display_name_key": "$STR_BMP1_Name",
       "display_name": "BMP-1",
@@ -1486,6 +3775,28 @@
       "catalogue_id": "bmp_1",
       "matched_tokens": [
         "bmp1"
+      ]
+    },
+    {
+      "game_class": "rhsgref_ins_bmp1k",
+      "display_name_key": "$STR_BMP1K_Name",
+      "display_name": "BMP-1K",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "bmp_1k",
+      "matched_tokens": [
+        "bmp1k"
+      ]
+    },
+    {
+      "game_class": "rhsgref_ins_bmp1p",
+      "display_name_key": "$STR_BMP1P_Name",
+      "display_name": "BMP-1P",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "bmp_1p",
+      "matched_tokens": [
+        "bmp1p"
       ]
     },
     {
@@ -1511,6 +3822,17 @@
       ]
     },
     {
+      "game_class": "rhsgref_ins_bmp2k",
+      "display_name_key": "$STR_BMP2K_Name",
+      "display_name": "BMP-2K",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "bmp_2k",
+      "matched_tokens": [
+        "bmp2k"
+      ]
+    },
+    {
       "game_class": "rhsgref_ins_btr70",
       "display_name_key": "$STR_RHS_BTR70_Name",
       "display_name": "BTR-70",
@@ -1522,6 +3844,37 @@
       ]
     },
     {
+      "game_class": "rhsgref_ins_g_BM21",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "bm_21_grad",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsgref_ins_g_bmd1",
+      "display_name_key": "$STR_BMD1_Name",
+      "display_name": "BMD-1",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmd.pbo > config.bin",
+      "catalogue_id": "bmd_1",
+      "matched_tokens": [
+        "bmd1"
+      ]
+    },
+    {
+      "game_class": "rhsgref_ins_g_bmd1p",
+      "display_name_key": "$STR_BMD1P_Name",
+      "display_name": "BMD-1P",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmd.pbo > config.bin",
+      "catalogue_id": "bmd_1p",
+      "matched_tokens": [
+        "bmd1p"
+      ]
+    },
+    {
       "game_class": "rhsgref_ins_g_bmp1",
       "display_name_key": "$STR_BMP1_Name",
       "display_name": "BMP-1",
@@ -1530,6 +3883,28 @@
       "catalogue_id": "bmp_1",
       "matched_tokens": [
         "bmp1"
+      ]
+    },
+    {
+      "game_class": "rhsgref_ins_g_bmp1k",
+      "display_name_key": "$STR_BMP1K_Name",
+      "display_name": "BMP-1K",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "bmp_1k",
+      "matched_tokens": [
+        "bmp1k"
+      ]
+    },
+    {
+      "game_class": "rhsgref_ins_g_bmp1p",
+      "display_name_key": "$STR_BMP1P_Name",
+      "display_name": "BMP-1P",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "bmp_1p",
+      "matched_tokens": [
+        "bmp1p"
       ]
     },
     {
@@ -1552,6 +3927,17 @@
       "catalogue_id": "bmp_2",
       "matched_tokens": [
         "bmp2"
+      ]
+    },
+    {
+      "game_class": "rhsgref_ins_g_bmp2k",
+      "display_name_key": "$STR_BMP2K_Name",
+      "display_name": "BMP-2K",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_bmp.pbo > config.bin",
+      "catalogue_id": "bmp_2k",
+      "matched_tokens": [
+        "bmp2k"
       ]
     },
     {
@@ -1588,6 +3974,17 @@
       ]
     },
     {
+      "game_class": "rhsgref_ins_g_gaz66_ap2",
+      "display_name_key": "$STR_RHS_GAZ66AP2",
+      "display_name": "GAZ-66-AP-2",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_trucks.pbo > config.bin",
+      "catalogue_id": "gaz_66_ap_2",
+      "matched_tokens": [
+        "gaz66ap2"
+      ]
+    },
+    {
       "game_class": "rhsgref_ins_g_gaz66_flat",
       "display_name_key": "$STR_RHS_GAZ66FLAT",
       "display_name": "GAZ-66 (Flatbed)",
@@ -1607,6 +4004,17 @@
       "catalogue_id": "gaz_66",
       "matched_tokens": [
         "gaz66"
+      ]
+    },
+    {
+      "game_class": "rhsgref_ins_g_gaz66_repair",
+      "display_name_key": "$STR_RHS_GAZ66REP",
+      "display_name": "GAZ-66-ESB-8IM",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_trucks.pbo > config.bin",
+      "catalogue_id": "gaz_66_esb_8im",
+      "matched_tokens": [
+        "gaz66esb8im"
       ]
     },
     {
@@ -1687,6 +4095,15 @@
       ]
     },
     {
+      "game_class": "rhsgref_ins_g_zsu234",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "zsu_23_4_shilka",
+      "matched_tokens": []
+    },
+    {
       "game_class": "rhsgref_ins_gaz66",
       "display_name_key": "$STR_RHS_GAZ66",
       "display_name": "GAZ-66",
@@ -1709,6 +4126,17 @@
       ]
     },
     {
+      "game_class": "rhsgref_ins_gaz66_ap2",
+      "display_name_key": "$STR_RHS_GAZ66AP2",
+      "display_name": "GAZ-66-AP-2",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_trucks.pbo > config.bin",
+      "catalogue_id": "gaz_66_ap_2",
+      "matched_tokens": [
+        "gaz66ap2"
+      ]
+    },
+    {
       "game_class": "rhsgref_ins_gaz66_flat",
       "display_name_key": "$STR_RHS_GAZ66FLAT",
       "display_name": "GAZ-66 (Flatbed)",
@@ -1728,6 +4156,17 @@
       "catalogue_id": "gaz_66",
       "matched_tokens": [
         "gaz66"
+      ]
+    },
+    {
+      "game_class": "rhsgref_ins_gaz66_repair",
+      "display_name_key": "$STR_RHS_GAZ66REP",
+      "display_name": "GAZ-66-ESB-8IM",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_trucks.pbo > config.bin",
+      "catalogue_id": "gaz_66_esb_8im",
+      "matched_tokens": [
+        "gaz66esb8im"
       ]
     },
     {
@@ -1806,6 +4245,15 @@
       "matched_tokens": [
         "ural4320"
       ]
+    },
+    {
+      "game_class": "rhsgref_ins_zsu234",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "zsu_23_4_shilka",
+      "matched_tokens": []
     },
     {
       "game_class": "rhsgref_nat_btr70",
@@ -1907,6 +4355,17 @@
       ]
     },
     {
+      "game_class": "rhsgref_un_uaz",
+      "display_name_key": "$STR_RHS_UAZ469_NAME",
+      "display_name": "UAZ-3151",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_a2port_car.pbo > config.bin",
+      "catalogue_id": "uaz_3151",
+      "matched_tokens": [
+        "uaz3151"
+      ]
+    },
+    {
       "game_class": "rhsgref_un_ural",
       "display_name_key": "$STR_RHS_URAL4320_NAME",
       "display_name": "Ural-4320",
@@ -1915,6 +4374,2449 @@
       "catalogue_id": "ural_4320",
       "matched_tokens": [
         "ural4320"
+      ]
+    },
+    {
+      "game_class": "rhssaf_army_o_m1151_olive",
+      "display_name_key": "$STR_RHS_M1151_NAME",
+      "display_name": "M1151A1",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhssaf_army_o_m1151_olive_pkm",
+      "display_name_key": "$STR_RHS_M1151_PKM_V1_NAME",
+      "display_name": "M1151A1 (GPK/PKM)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhssaf_army_o_m1152_olive",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "m1152a1",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhssaf_army_o_m1152_rsv_olive",
+      "display_name_key": "$STR_RHS_M1152_RSV_NAME",
+      "display_name": "M1152A1 RSV",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843632231/addons/rhssaf_c_vehicles.pbo > config.bin",
+      "catalogue_id": "m1152a1",
+      "matched_tokens": [
+        "m1152a1"
+      ]
+    },
+    {
+      "game_class": "rhssaf_army_o_m998_olive_2dr_fulltop",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhssaf_army_o_m998_olive_2dr_halftop",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhssaf_army_o_pts",
+      "display_name_key": "$STR_RHSSAF_ARMY_PTS_DISPLAYNAME",
+      "display_name": "PTS-M",
+      "display_name_source": "843632231/addons/rhssaf_main.pbo > Stringtable.xml",
+      "config_locator": "843632231/addons/rhssaf_c_vehicles.pbo > config.bin",
+      "catalogue_id": "pts_m",
+      "matched_tokens": [
+        "ptsm"
+      ]
+    },
+    {
+      "game_class": "rhssaf_army_o_t72s",
+      "display_name_key": "$STR_RHSSAF_ARMY_T72S_DISPLAYNAME",
+      "display_name": "T-72MS",
+      "display_name_source": "843632231/addons/rhssaf_main.pbo > Stringtable.xml",
+      "config_locator": "843632231/addons/rhssaf_c_vehicles.pbo > config.bin",
+      "catalogue_id": "t_72ms",
+      "matched_tokens": [
+        "t72ms"
+      ]
+    },
+    {
+      "game_class": "rhssaf_army_o_ural",
+      "display_name_key": "$STR_RHSSAF_ARMY_URAL_DISPLAYNAME",
+      "display_name": "Ural\u00a0375D",
+      "display_name_source": "843632231/addons/rhssaf_main.pbo > Stringtable.xml",
+      "config_locator": "843632231/addons/rhssaf_c_vehicles.pbo > config.bin",
+      "catalogue_id": "ural_375d",
+      "matched_tokens": [
+        "ural375d"
+      ]
+    },
+    {
+      "game_class": "rhssaf_army_o_ural_fuel",
+      "display_name_key": "$STR_RHSSAF_ARMY_URAL_FUEL_DISPLAYNAME",
+      "display_name": "Ural\u00a0375D\u00a0(Fuel)",
+      "display_name_source": "843632231/addons/rhssaf_main.pbo > Stringtable.xml",
+      "config_locator": "843632231/addons/rhssaf_c_vehicles.pbo > config.bin",
+      "catalogue_id": "ural_375d",
+      "matched_tokens": [
+        "ural375d"
+      ]
+    },
+    {
+      "game_class": "rhssaf_army_o_ural_open",
+      "display_name_key": "$STR_RHSSAF_ARMY_URAL_OPEN_DISPLAYNAME",
+      "display_name": "Ural\u00a0375D\u00a0(Open)",
+      "display_name_source": "843632231/addons/rhssaf_main.pbo > Stringtable.xml",
+      "config_locator": "843632231/addons/rhssaf_c_vehicles.pbo > config.bin",
+      "catalogue_id": "ural_375d",
+      "matched_tokens": [
+        "ural375d"
+      ]
+    },
+    {
+      "game_class": "rhssaf_army_pts",
+      "display_name_key": "$STR_RHSSAF_ARMY_PTS_DISPLAYNAME",
+      "display_name": "PTS-M",
+      "display_name_source": "843632231/addons/rhssaf_main.pbo > Stringtable.xml",
+      "config_locator": "843632231/addons/rhssaf_c_vehicles.pbo > config.bin",
+      "catalogue_id": "pts_m",
+      "matched_tokens": [
+        "ptsm"
+      ]
+    },
+    {
+      "game_class": "rhssaf_army_t72s",
+      "display_name_key": "$STR_RHSSAF_ARMY_T72S_DISPLAYNAME",
+      "display_name": "T-72MS",
+      "display_name_source": "843632231/addons/rhssaf_main.pbo > Stringtable.xml",
+      "config_locator": "843632231/addons/rhssaf_c_vehicles.pbo > config.bin",
+      "catalogue_id": "t_72ms",
+      "matched_tokens": [
+        "t72ms"
+      ]
+    },
+    {
+      "game_class": "rhssaf_army_ural",
+      "display_name_key": "$STR_RHSSAF_ARMY_URAL_DISPLAYNAME",
+      "display_name": "Ural\u00a0375D",
+      "display_name_source": "843632231/addons/rhssaf_main.pbo > Stringtable.xml",
+      "config_locator": "843632231/addons/rhssaf_c_vehicles.pbo > config.bin",
+      "catalogue_id": "ural_375d",
+      "matched_tokens": [
+        "ural375d"
+      ]
+    },
+    {
+      "game_class": "rhssaf_army_ural_fuel",
+      "display_name_key": "$STR_RHSSAF_ARMY_URAL_FUEL_DISPLAYNAME",
+      "display_name": "Ural\u00a0375D\u00a0(Fuel)",
+      "display_name_source": "843632231/addons/rhssaf_main.pbo > Stringtable.xml",
+      "config_locator": "843632231/addons/rhssaf_c_vehicles.pbo > config.bin",
+      "catalogue_id": "ural_375d",
+      "matched_tokens": [
+        "ural375d"
+      ]
+    },
+    {
+      "game_class": "rhssaf_army_ural_open",
+      "display_name_key": "$STR_RHSSAF_ARMY_URAL_OPEN_DISPLAYNAME",
+      "display_name": "Ural\u00a0375D\u00a0(Open)",
+      "display_name_source": "843632231/addons/rhssaf_main.pbo > Stringtable.xml",
+      "config_locator": "843632231/addons/rhssaf_c_vehicles.pbo > config.bin",
+      "catalogue_id": "ural_375d",
+      "matched_tokens": [
+        "ural375d"
+      ]
+    },
+    {
+      "game_class": "rhssaf_m1151_olive",
+      "display_name_key": "$STR_RHS_M1151_NAME",
+      "display_name": "M1151A1",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhssaf_m1151_olive_pkm",
+      "display_name_key": "$STR_RHS_M1151_PKM_V1_NAME",
+      "display_name": "M1151A1 (GPK/PKM)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhssaf_m1152_olive",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "m1152a1",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhssaf_m1152_rsv_olive",
+      "display_name_key": "$STR_RHS_M1152_RSV_NAME",
+      "display_name": "M1152A1 RSV",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843632231/addons/rhssaf_c_vehicles.pbo > config.bin",
+      "catalogue_id": "m1152a1",
+      "matched_tokens": [
+        "m1152a1"
+      ]
+    },
+    {
+      "game_class": "rhssaf_m998_olive_2dr_fulltop",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhssaf_m998_olive_2dr_halftop",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhssaf_un_uaz",
+      "display_name_key": "$STR_RHS_UAZ469_NAME",
+      "display_name": "UAZ-3151",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_a2port_car.pbo > config.bin",
+      "catalogue_id": "uaz_3151",
+      "matched_tokens": [
+        "uaz3151"
+      ]
+    },
+    {
+      "game_class": "rhssaf_un_uaz_open",
+      "display_name_key": "$STR_RHS_UAZ469OPEN_NAME",
+      "display_name": "UAZ-3151 (Open)",
+      "display_name_source": "843425103/addons/rhs_main.pbo > Stringtable.xml",
+      "config_locator": "843425103/addons/rhs_c_a2port_car.pbo > config.bin",
+      "catalogue_id": "uaz_3151",
+      "matched_tokens": [
+        "uaz3151"
+      ]
+    },
+    {
+      "game_class": "rhssaf_un_ural",
+      "display_name_key": "$STR_RHSSAF_ARMY_URAL_DISPLAYNAME",
+      "display_name": "Ural\u00a0375D",
+      "display_name_source": "843632231/addons/rhssaf_main.pbo > Stringtable.xml",
+      "config_locator": "843632231/addons/rhssaf_c_vehicles.pbo > config.bin",
+      "catalogue_id": "ural_375d",
+      "matched_tokens": [
+        "ural375d"
+      ]
+    },
+    {
+      "game_class": "rhsusf_CGRCAT1A2_M2_usmc_d",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "cougar_4x4",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_CGRCAT1A2_M2_usmc_wd",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "cougar_4x4",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_CGRCAT1A2_Mk19_usmc_d",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "cougar_4x4",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_CGRCAT1A2_Mk19_usmc_wd",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "cougar_4x4",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_CGRCAT1A2_usmc_d",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "cougar_4x4",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_CGRCAT1A2_usmc_wd",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "cougar_4x4",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_B_CP_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2BCP_Name",
+      "display_name": "M1078A1P2-B CP Box",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_B_D_CP_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2BCP_Name",
+      "display_name": "M1078A1P2-B CP Box",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_B_D_flatbed_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2BFlat_Name",
+      "display_name": "M1078A1P2-B (Flatbed)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_B_D_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2B_Name",
+      "display_name": "M1078A1P2-B",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_B_D_open_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2BOpen_Name",
+      "display_name": "M1078A1P2-B (Open)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_B_M2_D_flatbed_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2BFlat_M2_Name",
+      "display_name": "M1078A1P2-B (O-GPK/M2/Flatbed)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_B_M2_D_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2B_M2_Name",
+      "display_name": "M1078A1P2-B (O-GPK/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_B_M2_D_open_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2BOPEN_M2_Name",
+      "display_name": "M1078A1P2-B (O-GPK/M2/Open)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_B_M2_WD_flatbed_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2BFlat_M2_Name",
+      "display_name": "M1078A1P2-B (O-GPK/M2/Flatbed)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_B_M2_WD_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2B_M2_Name",
+      "display_name": "M1078A1P2-B (O-GPK/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_B_M2_WD_open_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2BOPEN_M2_Name",
+      "display_name": "M1078A1P2-B (O-GPK/M2/Open)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_B_M2_flatbed_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2BFlat_M2_Name",
+      "display_name": "M1078A1P2-B (O-GPK/M2/Flatbed)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_B_M2_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2B_M2_Name",
+      "display_name": "M1078A1P2-B (O-GPK/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_B_M2_open_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2BOPEN_M2_Name",
+      "display_name": "M1078A1P2-B (O-GPK/M2/Open)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_B_WD_CP_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2BCP_Name",
+      "display_name": "M1078A1P2-B CP Box",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_B_WD_flatbed_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2BFlat_Name",
+      "display_name": "M1078A1P2-B (Flatbed)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_B_WD_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2B_Name",
+      "display_name": "M1078A1P2-B",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_B_WD_open_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2BOpen_Name",
+      "display_name": "M1078A1P2-B (Open)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_B_flatbed_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2BFlat_Name",
+      "display_name": "M1078A1P2-B (Flatbed)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_B_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2B_Name",
+      "display_name": "M1078A1P2-B",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_B_open_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2BOpen_Name",
+      "display_name": "M1078A1P2-B (Open)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_D_flatbed_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2Flat_Name",
+      "display_name": "M1078A1P2 (Flatbed)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_D_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2_Name",
+      "display_name": "M1078A1P2",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_D_open_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2Open_Name",
+      "display_name": "M1078A1P2 (Open)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_WD_flatbed_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2Flat_Name",
+      "display_name": "M1078A1P2 (Flatbed)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_WD_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2_Name",
+      "display_name": "M1078A1P2",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_WD_open_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2Open_Name",
+      "display_name": "M1078A1P2 (Open)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_flatbed_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2Flat_Name",
+      "display_name": "M1078A1P2 (Flatbed)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2_Name",
+      "display_name": "M1078A1P2",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_open_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2Open_Name",
+      "display_name": "M1078A1P2 (Open)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_B_D_flatbed_fmtv_usarmy",
+      "display_name_key": "$STR_M1083A1P2BFlat_Name",
+      "display_name": "M1083A1P2-B (Flatbed)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1083a1p2",
+      "matched_tokens": [
+        "m1083a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_B_D_fmtv_usarmy",
+      "display_name_key": "$STR_M1083A1P2B_Name",
+      "display_name": "M1083A1P2-B",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1083a1p2",
+      "matched_tokens": [
+        "m1083a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_B_D_open_fmtv_usarmy",
+      "display_name_key": "$STR_M1083A1P2BOpen_Name",
+      "display_name": "M1083A1P2-B (Open)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1083a1p2",
+      "matched_tokens": [
+        "m1083a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_B_M2_D_flatbed_fmtv_usarmy",
+      "display_name_key": "$STR_M1083A1P2BFlat_M2_Name",
+      "display_name": "M1083A1P2-B (O-GPK/M2/Flatbed)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1083a1p2",
+      "matched_tokens": [
+        "m1083a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_B_M2_D_fmtv_usarmy",
+      "display_name_key": "$STR_M1083A1P2B_M2_Name",
+      "display_name": "M1083A1P2-B (O-GPK/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1083a1p2",
+      "matched_tokens": [
+        "m1083a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_B_M2_D_open_fmtv_usarmy",
+      "display_name_key": "$STR_M1083A1P2BOpen_M2_Name",
+      "display_name": "M1083A1P2-B (O-GPK/M2/Open)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1083a1p2",
+      "matched_tokens": [
+        "m1083a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_B_M2_WD_flatbed_fmtv_usarmy",
+      "display_name_key": "$STR_M1083A1P2BFlat_M2_Name",
+      "display_name": "M1083A1P2-B (O-GPK/M2/Flatbed)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1083a1p2",
+      "matched_tokens": [
+        "m1083a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_B_M2_WD_fmtv_usarmy",
+      "display_name_key": "$STR_M1083A1P2B_M2_Name",
+      "display_name": "M1083A1P2-B (O-GPK/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1083a1p2",
+      "matched_tokens": [
+        "m1083a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_B_M2_WD_open_fmtv_usarmy",
+      "display_name_key": "$STR_M1083A1P2BOpen_M2_Name",
+      "display_name": "M1083A1P2-B (O-GPK/M2/Open)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1083a1p2",
+      "matched_tokens": [
+        "m1083a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_B_M2_d_MHQ_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2BCP_Name",
+      "display_name": "M1078A1P2-B CP Box",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_B_M2_d_Medical_fmtv_usarmy",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "m1085a1p2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_B_M2_flatbed_fmtv_usarmy",
+      "display_name_key": "$STR_M1083A1P2BFlat_M2_Name",
+      "display_name": "M1083A1P2-B (O-GPK/M2/Flatbed)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1083a1p2",
+      "matched_tokens": [
+        "m1083a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_B_M2_fmtv_usarmy",
+      "display_name_key": "$STR_M1083A1P2B_M2_Name",
+      "display_name": "M1083A1P2-B (O-GPK/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1083a1p2",
+      "matched_tokens": [
+        "m1083a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_B_M2_open_fmtv_usarmy",
+      "display_name_key": "$STR_M1083A1P2BOpen_M2_Name",
+      "display_name": "M1083A1P2-B (O-GPK/M2/Open)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1083a1p2",
+      "matched_tokens": [
+        "m1083a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_B_M2_wd_MHQ_fmtv_usarmy",
+      "display_name_key": "$STR_M1078A1P2BCP_Name",
+      "display_name": "M1078A1P2-B CP Box",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1078a1p2",
+      "matched_tokens": [
+        "m1078a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_B_M2_wd_Medical_fmtv_usarmy",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "m1085a1p2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_B_WD_flatbed_fmtv_usarmy",
+      "display_name_key": "$STR_M1083A1P2BFlat_Name",
+      "display_name": "M1083A1P2-B (Flatbed)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1083a1p2",
+      "matched_tokens": [
+        "m1083a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_B_WD_fmtv_usarmy",
+      "display_name_key": "$STR_M1083A1P2B_Name",
+      "display_name": "M1083A1P2-B",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1083a1p2",
+      "matched_tokens": [
+        "m1083a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_B_WD_open_fmtv_usarmy",
+      "display_name_key": "$STR_M1083A1P2BOpen_Name",
+      "display_name": "M1083A1P2-B (Open)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1083a1p2",
+      "matched_tokens": [
+        "m1083a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_B_flatbed_fmtv_usarmy",
+      "display_name_key": "$STR_M1083A1P2BFlat_Name",
+      "display_name": "M1083A1P2-B (Flatbed)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1083a1p2",
+      "matched_tokens": [
+        "m1083a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_B_fmtv_usarmy",
+      "display_name_key": "$STR_M1083A1P2B_Name",
+      "display_name": "M1083A1P2-B",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1083a1p2",
+      "matched_tokens": [
+        "m1083a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_B_open_fmtv_usarmy",
+      "display_name_key": "$STR_M1083A1P2BOpen_Name",
+      "display_name": "M1083A1P2-B (Open)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1083a1p2",
+      "matched_tokens": [
+        "m1083a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_D_flatbed_fmtv_usarmy",
+      "display_name_key": "$STR_M1083A1P2Flat_Name",
+      "display_name": "M1083A1P2 (Flatbed)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1083a1p2",
+      "matched_tokens": [
+        "m1083a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_D_fmtv_usarmy",
+      "display_name_key": "$STR_M1083A1P2_Name",
+      "display_name": "M1083A1P2",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1083a1p2",
+      "matched_tokens": [
+        "m1083a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_D_open_fmtv_usarmy",
+      "display_name_key": "$STR_M1083A1P2Open_Name",
+      "display_name": "M1083A1P2 (Open)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1083a1p2",
+      "matched_tokens": [
+        "m1083a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_WD_flatbed_fmtv_usarmy",
+      "display_name_key": "$STR_M1083A1P2Flat_Name",
+      "display_name": "M1083A1P2 (Flatbed)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1083a1p2",
+      "matched_tokens": [
+        "m1083a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_WD_fmtv_usarmy",
+      "display_name_key": "$STR_M1083A1P2_Name",
+      "display_name": "M1083A1P2",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1083a1p2",
+      "matched_tokens": [
+        "m1083a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_WD_open_fmtv_usarmy",
+      "display_name_key": "$STR_M1083A1P2Open_Name",
+      "display_name": "M1083A1P2 (Open)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1083a1p2",
+      "matched_tokens": [
+        "m1083a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_flatbed_fmtv_usarmy",
+      "display_name_key": "$STR_M1083A1P2Flat_Name",
+      "display_name": "M1083A1P2 (Flatbed)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1083a1p2",
+      "matched_tokens": [
+        "m1083a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_fmtv_usarmy",
+      "display_name_key": "$STR_M1083A1P2_Name",
+      "display_name": "M1083A1P2",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1083a1p2",
+      "matched_tokens": [
+        "m1083a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_open_fmtv_usarmy",
+      "display_name_key": "$STR_M1083A1P2Open_Name",
+      "display_name": "M1083A1P2 (Open)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1083a1p2",
+      "matched_tokens": [
+        "m1083a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1084A1P2_B_D_fmtv_usarmy",
+      "display_name_key": "$STR_M1084A1P2B_Name",
+      "display_name": "M1084A1P2-B",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1084a1p2",
+      "matched_tokens": [
+        "m1084a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1084A1P2_B_M2_D_fmtv_usarmy",
+      "display_name_key": "$STR_M1084A1P2B_M2_Name",
+      "display_name": "M1084A1P2-B (O-GPK/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1084a1p2",
+      "matched_tokens": [
+        "m1084a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1084A1P2_B_M2_WD_fmtv_usarmy",
+      "display_name_key": "$STR_M1084A1P2B_M2_Name",
+      "display_name": "M1084A1P2-B (O-GPK/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1084a1p2",
+      "matched_tokens": [
+        "m1084a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1084A1P2_B_M2_fmtv_usarmy",
+      "display_name_key": "$STR_M1084A1P2B_M2_Name",
+      "display_name": "M1084A1P2-B (O-GPK/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1084a1p2",
+      "matched_tokens": [
+        "m1084a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1084A1P2_B_WD_fmtv_usarmy",
+      "display_name_key": "$STR_M1084A1P2B_Name",
+      "display_name": "M1084A1P2-B",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1084a1p2",
+      "matched_tokens": [
+        "m1084a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1084A1P2_B_fmtv_usarmy",
+      "display_name_key": "$STR_M1084A1P2B_Name",
+      "display_name": "M1084A1P2-B",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1084a1p2",
+      "matched_tokens": [
+        "m1084a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1084A1P2_D_fmtv_usarmy",
+      "display_name_key": "$STR_M1084A1P2_Name",
+      "display_name": "M1084A1P2",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1084a1p2",
+      "matched_tokens": [
+        "m1084a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1084A1P2_WD_fmtv_usarmy",
+      "display_name_key": "$STR_M1084A1P2_Name",
+      "display_name": "M1084A1P2",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1084a1p2",
+      "matched_tokens": [
+        "m1084a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1084A1P2_fmtv_usarmy",
+      "display_name_key": "$STR_M1084A1P2_Name",
+      "display_name": "M1084A1P2",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_fmtv.pbo > config.bin",
+      "catalogue_id": "m1084a1p2",
+      "matched_tokens": [
+        "m1084a1p2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1085A1P2_B_D_Medical_fmtv_usarmy",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "m1085a1p2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_M1085A1P2_B_Medical_fmtv_usarmy",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "m1085a1p2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_M1085A1P2_B_WD_Medical_fmtv_usarmy",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "m1085a1p2",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_M1117_D",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "m1117_guardian_asv",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_M1117_O",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "m1117_guardian_asv",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_M1117_W",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "m1117_guardian_asv",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_M1117_base",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "m1117_guardian_asv",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_M1151_CROWS_M2_base",
+      "display_name_key": "$STR_RHS_M1151_M2_CROWS_NAME",
+      "display_name": "M1151A1 (CROWS/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1151_CROWS_Mk19_base",
+      "display_name_key": "$STR_RHS_M1151_MK19_CROWS_NAME",
+      "display_name": "M1151A1 (CROWS/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1151_GPK_M240_base",
+      "display_name_key": "$STR_RHS_M1151_M240_V1_NAME",
+      "display_name": "M1151A1 (GPK/M240)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1151_GPK_M2_base",
+      "display_name_key": "$STR_RHS_M1151_M2_V1_NAME",
+      "display_name": "M1151A1 (GPK/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1151_GPK_MK19_base",
+      "display_name_key": "$STR_RHS_M1151_MK19_V1_NAME",
+      "display_name": "M1151A1 (GPK/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1151_GPK_PKM_base",
+      "display_name_key": "$STR_RHS_M1151_PKM_V1_NAME",
+      "display_name": "M1151A1 (GPK/PKM)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1151_M2_LRAS3_base",
+      "display_name_key": "$STR_RHS_M1151_M2_LRAS3_V1_NAME",
+      "display_name": "M1151A1 (GPK/M2/LRAS3)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1151_MCTAGS_M240_base",
+      "display_name_key": "$STR_RHS_M1151_M240_V3_NAME",
+      "display_name": "M1151A1 (MCTAGS/M240)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1151_MCTAGS_M2_base",
+      "display_name_key": "$STR_RHS_M1151_M2_V3_NAME",
+      "display_name": "M1151A1 (MCTAGS/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1151_MCTAGS_Mk19_base",
+      "display_name_key": "$STR_RHS_M1151_MK19_V3_NAME",
+      "display_name": "M1151A1 (MCTAGS/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1151_OGPK_M240_base",
+      "display_name_key": "$STR_RHS_M1151_M240_V2_NAME",
+      "display_name": "M1151A1 (O-GPK/M240)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1151_OGPK_M2_base",
+      "display_name_key": "$STR_RHS_M1151_M2_V2_NAME",
+      "display_name": "M1151A1 (O-GPK/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1151_OGPK_MK19_base",
+      "display_name_key": "$STR_RHS_M1151_MK19_V2_NAME",
+      "display_name": "M1151A1 (O-GPK/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1165A1_GMV_SAG2_M134D_M240_base",
+      "display_name_key": "$STR_RHS_M1165A1_GMV_M134_M240_NAME",
+      "display_name": "M1165A1 GMV (SAG-2/M134D/M240)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1165a1",
+      "matched_tokens": [
+        "m1165a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1165A1_GMV_SAG2_M2_M240_base",
+      "display_name_key": "$STR_RHS_M1165A1_GMV_M2_M240_NAME",
+      "display_name": "M1165A1 GMV (SAG-2/M2/M240)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1165a1",
+      "matched_tokens": [
+        "m1165a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1165A1_GMV_SAG2_Mk19_M240_base",
+      "display_name_key": "$STR_RHS_M1165A1_GMV_MK19_M240_NAME",
+      "display_name": "M1165A1 GMV (SAG-2/Mk19/M240)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1165a1",
+      "matched_tokens": [
+        "m1165a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1165_ASV_OGPK_M240_base",
+      "display_name_key": "$STR_RHS_M1165_ASV_M240_NAME",
+      "display_name": "M1165A1 ASV (O-GPK/M240)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1165a1",
+      "matched_tokens": [
+        "m1165a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M1220_M153_M2_usarmy_d",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_M1220_M153_M2_usarmy_wd",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_M1220_M153_MK19_usarmy_d",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_M1220_M153_MK19_usarmy_wd",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_M1220_M2_usarmy_d",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_M1220_M2_usarmy_wd",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_M1220_MK19_usarmy_d",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_M1220_MK19_usarmy_wd",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_M1220_usarmy_d",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_M1220_usarmy_wd",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_M1230_M2_usarmy_d",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_M1230_M2_usarmy_wd",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_M1230_MK19_usarmy_d",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_M1230_MK19_usarmy_wd",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_M977A4_AMMO_BKIT_M2_usarmy_d",
+      "display_name_key": "$STR_RHS_HEMTTA4_AMMO_BKIT_M2_977A4_NAME",
+      "display_name": "M977A4-B (O-GPK/M2/Ammo)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_hemtt_a4.pbo > config.bin",
+      "catalogue_id": "m977a4",
+      "matched_tokens": [
+        "m977a4"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M977A4_AMMO_BKIT_M2_usarmy_wd",
+      "display_name_key": "$STR_RHS_HEMTTA4_AMMO_BKIT_M2_977A4_NAME",
+      "display_name": "M977A4-B (O-GPK/M2/Ammo)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_hemtt_a4.pbo > config.bin",
+      "catalogue_id": "m977a4",
+      "matched_tokens": [
+        "m977a4"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M977A4_AMMO_BKIT_usarmy_d",
+      "display_name_key": "$STR_RHS_HEMTTA4_AMMO_BKIT_977A4_NAME",
+      "display_name": "M977A4-B (Ammo)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_hemtt_a4.pbo > config.bin",
+      "catalogue_id": "m977a4",
+      "matched_tokens": [
+        "m977a4"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M977A4_AMMO_BKIT_usarmy_wd",
+      "display_name_key": "$STR_RHS_HEMTTA4_AMMO_BKIT_977A4_NAME",
+      "display_name": "M977A4-B (Ammo)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_hemtt_a4.pbo > config.bin",
+      "catalogue_id": "m977a4",
+      "matched_tokens": [
+        "m977a4"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M977A4_AMMO_usarmy_d",
+      "display_name_key": "$STR_RHS_HEMTTA4_AMMO_977A4_NAME",
+      "display_name": "M977A4 (Ammo)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_hemtt_a4.pbo > config.bin",
+      "catalogue_id": "m977a4",
+      "matched_tokens": [
+        "m977a4"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M977A4_AMMO_usarmy_wd",
+      "display_name_key": "$STR_RHS_HEMTTA4_AMMO_977A4_NAME",
+      "display_name": "M977A4 (Ammo)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_hemtt_a4.pbo > config.bin",
+      "catalogue_id": "m977a4",
+      "matched_tokens": [
+        "m977a4"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M977A4_BKIT_M2_usarmy_d",
+      "display_name_key": "$STR_RHS_HEMTTA4_977A4_BKIT_M2_NAME",
+      "display_name": "M977A4-B (O-GPK/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_hemtt_a4.pbo > config.bin",
+      "catalogue_id": "m977a4",
+      "matched_tokens": [
+        "m977a4"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M977A4_BKIT_M2_usarmy_wd",
+      "display_name_key": "$STR_RHS_HEMTTA4_977A4_BKIT_M2_NAME",
+      "display_name": "M977A4-B (O-GPK/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_hemtt_a4.pbo > config.bin",
+      "catalogue_id": "m977a4",
+      "matched_tokens": [
+        "m977a4"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M977A4_BKIT_usarmy_d",
+      "display_name_key": "$STR_RHS_HEMTTA4_977A4_BKIT_NAME",
+      "display_name": "M977A4-B",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_hemtt_a4.pbo > config.bin",
+      "catalogue_id": "m977a4",
+      "matched_tokens": [
+        "m977a4"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M977A4_BKIT_usarmy_wd",
+      "display_name_key": "$STR_RHS_HEMTTA4_977A4_BKIT_NAME",
+      "display_name": "M977A4-B",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_hemtt_a4.pbo > config.bin",
+      "catalogue_id": "m977a4",
+      "matched_tokens": [
+        "m977a4"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M977A4_REPAIR_BKIT_M2_usarmy_d",
+      "display_name_key": "$STR_RHS_HEMTTA4_REPAIR_BKIT_M2_977A4_NAME",
+      "display_name": "M977A4-B (O-GPK/M2/Repair)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_hemtt_a4.pbo > config.bin",
+      "catalogue_id": "m977a4",
+      "matched_tokens": [
+        "m977a4"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M977A4_REPAIR_BKIT_M2_usarmy_wd",
+      "display_name_key": "$STR_RHS_HEMTTA4_REPAIR_BKIT_M2_977A4_NAME",
+      "display_name": "M977A4-B (O-GPK/M2/Repair)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_hemtt_a4.pbo > config.bin",
+      "catalogue_id": "m977a4",
+      "matched_tokens": [
+        "m977a4"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M977A4_REPAIR_BKIT_usarmy_d",
+      "display_name_key": "$STR_RHS_HEMTTA4_REPAIR_BKIT_977A4_NAME",
+      "display_name": "M977A4-B (Repair)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_hemtt_a4.pbo > config.bin",
+      "catalogue_id": "m977a4",
+      "matched_tokens": [
+        "m977a4"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M977A4_REPAIR_BKIT_usarmy_wd",
+      "display_name_key": "$STR_RHS_HEMTTA4_REPAIR_BKIT_977A4_NAME",
+      "display_name": "M977A4-B (Repair)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_hemtt_a4.pbo > config.bin",
+      "catalogue_id": "m977a4",
+      "matched_tokens": [
+        "m977a4"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M977A4_REPAIR_usarmy_d",
+      "display_name_key": "$STR_RHS_HEMTTA4_REPAIR_977A4_NAME",
+      "display_name": "M977A4 (Repair)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_hemtt_a4.pbo > config.bin",
+      "catalogue_id": "m977a4",
+      "matched_tokens": [
+        "m977a4"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M977A4_REPAIR_usarmy_wd",
+      "display_name_key": "$STR_RHS_HEMTTA4_REPAIR_977A4_NAME",
+      "display_name": "M977A4 (Repair)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_hemtt_a4.pbo > config.bin",
+      "catalogue_id": "m977a4",
+      "matched_tokens": [
+        "m977a4"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M977A4_usarmy_d",
+      "display_name_key": "$STR_RHS_HEMTTA4_977A4_NAME",
+      "display_name": "M977A4",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_hemtt_a4.pbo > config.bin",
+      "catalogue_id": "m977a4",
+      "matched_tokens": [
+        "m977a4"
+      ]
+    },
+    {
+      "game_class": "rhsusf_M977A4_usarmy_wd",
+      "display_name_key": "$STR_RHS_HEMTTA4_977A4_NAME",
+      "display_name": "M977A4",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_hemtt_a4.pbo > config.bin",
+      "catalogue_id": "m977a4",
+      "matched_tokens": [
+        "m977a4"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m109_usarmy",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "m109a6_paladin",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m109d_usarmy",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "m109a6_paladin",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m109tank_base",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "m109a6_paladin",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m113_usarmy",
+      "display_name_key": "$STR_M113A3WD_Name",
+      "display_name": "M113A3 (M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m113.pbo > config.bin",
+      "catalogue_id": "m113a3",
+      "matched_tokens": [
+        "m113a3"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m113_usarmy_M240",
+      "display_name_key": "$STR_M113A3_M240",
+      "display_name": "M113A3 (M240)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m113.pbo > config.bin",
+      "catalogue_id": "m113a3",
+      "matched_tokens": [
+        "m113a3"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m113_usarmy_MK19",
+      "display_name_key": "$STR_M113A3_MK19",
+      "display_name": "M113A3 (Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m113.pbo > config.bin",
+      "catalogue_id": "m113a3",
+      "matched_tokens": [
+        "m113a3"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m113_usarmy_medical",
+      "display_name_key": "$STR_M113A3_MED",
+      "display_name": "M113A3 (MEV)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m113.pbo > config.bin",
+      "catalogue_id": "m113a3",
+      "matched_tokens": [
+        "m113a3"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m113_usarmy_supply",
+      "display_name_key": "$STR_M113A3_AMMO",
+      "display_name": "M113A3 (Ammo)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m113.pbo > config.bin",
+      "catalogue_id": "m113a3",
+      "matched_tokens": [
+        "m113a3"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m113_usarmy_unarmed",
+      "display_name_key": "$STR_M113A3WD_Name",
+      "display_name": "M113A3 (M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m113.pbo > config.bin",
+      "catalogue_id": "m113a3",
+      "matched_tokens": [
+        "m113a3"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m113d_usarmy",
+      "display_name_key": "$STR_M113A3WD_Name",
+      "display_name": "M113A3 (M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m113.pbo > config.bin",
+      "catalogue_id": "m113a3",
+      "matched_tokens": [
+        "m113a3"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m113d_usarmy_M240",
+      "display_name_key": "$STR_M113A3_M240",
+      "display_name": "M113A3 (M240)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m113.pbo > config.bin",
+      "catalogue_id": "m113a3",
+      "matched_tokens": [
+        "m113a3"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m113d_usarmy_MK19",
+      "display_name_key": "$STR_M113A3_MK19",
+      "display_name": "M113A3 (Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m113.pbo > config.bin",
+      "catalogue_id": "m113a3",
+      "matched_tokens": [
+        "m113a3"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m113d_usarmy_medical",
+      "display_name_key": "$STR_M113A3_MED",
+      "display_name": "M113A3 (MEV)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m113.pbo > config.bin",
+      "catalogue_id": "m113a3",
+      "matched_tokens": [
+        "m113a3"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m113d_usarmy_supply",
+      "display_name_key": "$STR_M113A3_AMMO",
+      "display_name": "M113A3 (Ammo)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m113.pbo > config.bin",
+      "catalogue_id": "m113a3",
+      "matched_tokens": [
+        "m113a3"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m113d_usarmy_unarmed",
+      "display_name_key": "$STR_M113A3WD_Name",
+      "display_name": "M113A3 (M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m113.pbo > config.bin",
+      "catalogue_id": "m113a3",
+      "matched_tokens": [
+        "m113a3"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m113tank_base",
+      "display_name_key": "$STR_M113A3WD_Name",
+      "display_name": "M113A3 (M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m113.pbo > config.bin",
+      "catalogue_id": "m113a3",
+      "matched_tokens": [
+        "m113a3"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_base",
+      "display_name_key": "$STR_RHS_M1151_NAME",
+      "display_name": "M1151A1",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_m240_v1_usarmy_d",
+      "display_name_key": "$STR_RHS_M1151_M240_V1_NAME",
+      "display_name": "M1151A1 (GPK/M240)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_m240_v1_usarmy_wd",
+      "display_name_key": "$STR_RHS_M1151_M240_V1_NAME",
+      "display_name": "M1151A1 (GPK/M240)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_m240_v2_usarmy_d",
+      "display_name_key": "$STR_RHS_M1151_M240_V2_NAME",
+      "display_name": "M1151A1 (O-GPK/M240)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_m240_v2_usarmy_wd",
+      "display_name_key": "$STR_RHS_M1151_M240_V2_NAME",
+      "display_name": "M1151A1 (O-GPK/M240)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_m240_v3_usmc_d",
+      "display_name_key": "$STR_RHS_M1151_M240_V3_NAME",
+      "display_name": "M1151A1 (MCTAGS/M240)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_m240_v3_usmc_wd",
+      "display_name_key": "$STR_RHS_M1151_M240_V3_NAME",
+      "display_name": "M1151A1 (MCTAGS/M240)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_m2_lras3_v1_usarmy_d",
+      "display_name_key": "$STR_RHS_M1151_M2_LRAS3_V1_NAME",
+      "display_name": "M1151A1 (GPK/M2/LRAS3)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_m2_lras3_v1_usarmy_wd",
+      "display_name_key": "$STR_RHS_M1151_M2_LRAS3_V1_NAME",
+      "display_name": "M1151A1 (GPK/M2/LRAS3)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_m2_v1_usarmy_d",
+      "display_name_key": "$STR_RHS_M1151_M2_V1_NAME",
+      "display_name": "M1151A1 (GPK/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_m2_v1_usarmy_wd",
+      "display_name_key": "$STR_RHS_M1151_M2_V1_NAME",
+      "display_name": "M1151A1 (GPK/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_m2_v2_usarmy_d",
+      "display_name_key": "$STR_RHS_M1151_M2_V2_NAME",
+      "display_name": "M1151A1 (O-GPK/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_m2_v2_usarmy_wd",
+      "display_name_key": "$STR_RHS_M1151_M2_V2_NAME",
+      "display_name": "M1151A1 (O-GPK/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_m2_v3_usmc_d",
+      "display_name_key": "$STR_RHS_M1151_M2_V3_NAME",
+      "display_name": "M1151A1 (MCTAGS/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_m2_v3_usmc_wd",
+      "display_name_key": "$STR_RHS_M1151_M2_V3_NAME",
+      "display_name": "M1151A1 (MCTAGS/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_m2crows_usarmy_d",
+      "display_name_key": "$STR_RHS_M1151_M2_CROWS_NAME",
+      "display_name": "M1151A1 (CROWS/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_m2crows_usarmy_wd",
+      "display_name_key": "$STR_RHS_M1151_M2_CROWS_NAME",
+      "display_name": "M1151A1 (CROWS/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_m2crows_usmc_d",
+      "display_name_key": "$STR_RHS_M1151_M2_CROWS_NAME",
+      "display_name": "M1151A1 (CROWS/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_m2crows_usmc_wd",
+      "display_name_key": "$STR_RHS_M1151_M2_CROWS_NAME",
+      "display_name": "M1151A1 (CROWS/M2)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_mk19_v1_usarmy_d",
+      "display_name_key": "$STR_RHS_M1151_MK19_V1_NAME",
+      "display_name": "M1151A1 (GPK/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_mk19_v1_usarmy_wd",
+      "display_name_key": "$STR_RHS_M1151_MK19_V1_NAME",
+      "display_name": "M1151A1 (GPK/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_mk19_v2_usarmy_d",
+      "display_name_key": "$STR_RHS_M1151_MK19_V2_NAME",
+      "display_name": "M1151A1 (O-GPK/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_mk19_v2_usarmy_wd",
+      "display_name_key": "$STR_RHS_M1151_MK19_V2_NAME",
+      "display_name": "M1151A1 (O-GPK/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_mk19_v3_usmc_d",
+      "display_name_key": "$STR_RHS_M1151_MK19_V3_NAME",
+      "display_name": "M1151A1 (MCTAGS/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_mk19_v3_usmc_wd",
+      "display_name_key": "$STR_RHS_M1151_MK19_V3_NAME",
+      "display_name": "M1151A1 (MCTAGS/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_mk19crows_usarmy_d",
+      "display_name_key": "$STR_RHS_M1151_MK19_CROWS_NAME",
+      "display_name": "M1151A1 (CROWS/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_mk19crows_usarmy_wd",
+      "display_name_key": "$STR_RHS_M1151_MK19_CROWS_NAME",
+      "display_name": "M1151A1 (CROWS/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_mk19crows_usmc_d",
+      "display_name_key": "$STR_RHS_M1151_MK19_CROWS_NAME",
+      "display_name": "M1151A1 (CROWS/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_mk19crows_usmc_wd",
+      "display_name_key": "$STR_RHS_M1151_MK19_CROWS_NAME",
+      "display_name": "M1151A1 (CROWS/Mk19)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_usarmy_d",
+      "display_name_key": "$STR_RHS_M1151_NAME",
+      "display_name": "M1151A1",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_usarmy_wd",
+      "display_name_key": "$STR_RHS_M1151_NAME",
+      "display_name": "M1151A1",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_usmc_d",
+      "display_name_key": "$STR_RHS_M1151_NAME",
+      "display_name": "M1151A1",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1151_usmc_wd",
+      "display_name_key": "$STR_RHS_M1151_NAME",
+      "display_name": "M1151A1",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1151a1",
+      "matched_tokens": [
+        "m1151a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1152_base",
+      "display_name_key": "$STR_RHS_M1152_NAME",
+      "display_name": "M1152A1",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1152a1",
+      "matched_tokens": [
+        "m1152a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1152_rsv_usarmy_d",
+      "display_name_key": "$STR_RHS_M1152_RSV_NAME",
+      "display_name": "M1152A1 RSV",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1152a1",
+      "matched_tokens": [
+        "m1152a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1152_rsv_usarmy_wd",
+      "display_name_key": "$STR_RHS_M1152_RSV_NAME",
+      "display_name": "M1152A1 RSV",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1152a1",
+      "matched_tokens": [
+        "m1152a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1152_rsv_usmc_d",
+      "display_name_key": "$STR_RHS_M1152_RSV_NAME",
+      "display_name": "M1152A1 RSV",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1152a1",
+      "matched_tokens": [
+        "m1152a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1152_rsv_usmc_wd",
+      "display_name_key": "$STR_RHS_M1152_RSV_NAME",
+      "display_name": "M1152A1 RSV",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1152a1",
+      "matched_tokens": [
+        "m1152a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1152_sicps_base",
+      "display_name_key": "$STR_RHS_M1152_SICPS_NAME",
+      "display_name": "M1152A1 SICPS",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1152a1",
+      "matched_tokens": [
+        "m1152a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1152_sicps_usarmy_d",
+      "display_name_key": "$STR_RHS_M1152_SICPS_NAME",
+      "display_name": "M1152A1 SICPS",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1152a1",
+      "matched_tokens": [
+        "m1152a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1152_sicps_usarmy_wd",
+      "display_name_key": "$STR_RHS_M1152_SICPS_NAME",
+      "display_name": "M1152A1 SICPS",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1152a1",
+      "matched_tokens": [
+        "m1152a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1152_tcv_base",
+      "display_name_key": "$STR_RHS_M1152_TCV_NAME",
+      "display_name": "M1152A1 (Transport)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1152a1",
+      "matched_tokens": [
+        "m1152a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1152_usarmy_d",
+      "display_name_key": "$STR_RHS_M1152_NAME",
+      "display_name": "M1152A1",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1152a1",
+      "matched_tokens": [
+        "m1152a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1152_usarmy_wd",
+      "display_name_key": "$STR_RHS_M1152_NAME",
+      "display_name": "M1152A1",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1152a1",
+      "matched_tokens": [
+        "m1152a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1152_usmc_d",
+      "display_name_key": "$STR_RHS_M1152_NAME",
+      "display_name": "M1152A1",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1152a1",
+      "matched_tokens": [
+        "m1152a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1152_usmc_wd",
+      "display_name_key": "$STR_RHS_M1152_NAME",
+      "display_name": "M1152A1",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1152a1",
+      "matched_tokens": [
+        "m1152a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1165_asv_m240_usaf_d",
+      "display_name_key": "$STR_RHS_M1165_ASV_M240_NAME",
+      "display_name": "M1165A1 ASV (O-GPK/M240)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1165a1",
+      "matched_tokens": [
+        "m1165a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1165_asv_m240_usaf_wd",
+      "display_name_key": "$STR_RHS_M1165_ASV_M240_NAME",
+      "display_name": "M1165A1 ASV (O-GPK/M240)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1165a1",
+      "matched_tokens": [
+        "m1165a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1165_base",
+      "display_name_key": "$STR_RHS_M1165_NAME",
+      "display_name": "M1165A1",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1165a1",
+      "matched_tokens": [
+        "m1165a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1165_usarmy_d",
+      "display_name_key": "$STR_RHS_M1165_NAME",
+      "display_name": "M1165A1",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1165a1",
+      "matched_tokens": [
+        "m1165a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1165_usarmy_wd",
+      "display_name_key": "$STR_RHS_M1165_NAME",
+      "display_name": "M1165A1",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1165a1",
+      "matched_tokens": [
+        "m1165a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1165_usmc_d",
+      "display_name_key": "$STR_RHS_M1165_NAME",
+      "display_name": "M1165A1",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1165a1",
+      "matched_tokens": [
+        "m1165a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1165_usmc_wd",
+      "display_name_key": "$STR_RHS_M1165_NAME",
+      "display_name": "M1165A1",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1165a1",
+      "matched_tokens": [
+        "m1165a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1165a1_gmv_m134d_m240_socom_d",
+      "display_name_key": "$STR_RHS_M1165A1_GMV_M134_M240_NAME",
+      "display_name": "M1165A1 GMV (SAG-2/M134D/M240)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1165a1",
+      "matched_tokens": [
+        "m1165a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1165a1_gmv_m2_m240_socom_d",
+      "display_name_key": "$STR_RHS_M1165A1_GMV_M2_M240_NAME",
+      "display_name": "M1165A1 GMV (SAG-2/M2/M240)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1165a1",
+      "matched_tokens": [
+        "m1165a1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1165a1_gmv_mk19_m240_socom_d",
+      "display_name_key": "$STR_RHS_M1165A1_GMV_MK19_M240_NAME",
+      "display_name": "M1165A1 GMV (SAG-2/Mk19/M240)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m11xx.pbo > config.bin",
+      "catalogue_id": "m1165a1",
+      "matched_tokens": [
+        "m1165a1"
       ]
     },
     {
@@ -2050,6 +6952,42 @@
       ]
     },
     {
+      "game_class": "rhsusf_m1240a1_m2crows_usarmy_d",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "oshkosh_m_atv_m1277",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m1240a1_m2crows_usarmy_wd",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "oshkosh_m_atv_m1277",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m1240a1_m2crows_usmc_d",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "oshkosh_m_atv_m1277",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m1240a1_m2crows_usmc_wd",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "oshkosh_m_atv_m1277",
+      "matched_tokens": []
+    },
+    {
       "game_class": "rhsusf_m1240a1_mk19_uik_usarmy_d",
       "display_name_key": "$STR_RHS_M1240A1_MK19_NAME",
       "display_name": "M1240A1 (O-GPK/Mk19)",
@@ -2114,6 +7052,42 @@
       "matched_tokens": [
         "m1240"
       ]
+    },
+    {
+      "game_class": "rhsusf_m1240a1_mk19crows_usarmy_d",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "oshkosh_m_atv_m1277",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m1240a1_mk19crows_usarmy_wd",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "oshkosh_m_atv_m1277",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m1240a1_mk19crows_usmc_d",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "oshkosh_m_atv_m1277",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m1240a1_mk19crows_usmc_wd",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "oshkosh_m_atv_m1277",
+      "matched_tokens": []
     },
     {
       "game_class": "rhsusf_m1240a1_usarmy_d",
@@ -2202,6 +7176,387 @@
       "matched_tokens": [
         "m1245"
       ]
+    },
+    {
+      "game_class": "rhsusf_m1a1aim_tuski_d",
+      "display_name_key": "$STR_M1A1AIMTUSKIwd_Name",
+      "display_name": "M1A1AIM (TUSK I)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m1a1.pbo > config.bin",
+      "catalogue_id": "m1a1_aim",
+      "matched_tokens": [
+        "m1a1aim"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1a1aim_tuski_wd",
+      "display_name_key": "$STR_M1A1AIMTUSKIwd_Name",
+      "display_name": "M1A1AIM (TUSK I)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m1a1.pbo > config.bin",
+      "catalogue_id": "m1a1_aim",
+      "matched_tokens": [
+        "m1a1aim"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1a1aimd_usarmy",
+      "display_name_key": "$STR_M1A1AIM_Name",
+      "display_name": "M1A1AIM",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m1a1.pbo > config.bin",
+      "catalogue_id": "m1a1_aim",
+      "matched_tokens": [
+        "m1a1aim"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1a1aimwd_usarmy",
+      "display_name_key": "$STR_M1A1AIM_Name",
+      "display_name": "M1A1AIM",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m1a1.pbo > config.bin",
+      "catalogue_id": "m1a1_aim",
+      "matched_tokens": [
+        "m1a1aim"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1a1tank_base",
+      "display_name_key": "$STR_M1A1AIM_Name",
+      "display_name": "M1A1AIM",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m1a1.pbo > config.bin",
+      "catalogue_id": "m1a1_aim",
+      "matched_tokens": [
+        "m1a1aim"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1a2sep1d_usarmy",
+      "display_name_key": "$STR_M1A2SEP_Name",
+      "display_name": "M1A2SEPv1",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m1a2.pbo > config.bin",
+      "catalogue_id": "m1a2_sep_v1",
+      "matched_tokens": [
+        "m1a2sepv1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1a2sep1tuskid_usarmy",
+      "display_name_key": "$STR_M1A2SEPTUSKI_Name",
+      "display_name": "M1A2SEPv1 (TUSK I)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m1a2.pbo > config.bin",
+      "catalogue_id": "m1a2_sep_v1",
+      "matched_tokens": [
+        "m1a2sepv1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1a2sep1tuskiid_usarmy",
+      "display_name_key": "$STR_M1A2SEPWDTUSKII_Name",
+      "display_name": "M1A2SEPv1 (TUSK II)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m1a2.pbo > config.bin",
+      "catalogue_id": "m1a2_sep_v1",
+      "matched_tokens": [
+        "m1a2sepv1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1a2sep1tuskiiwd_usarmy",
+      "display_name_key": "$STR_M1A2SEPWDTUSKII_Name",
+      "display_name": "M1A2SEPv1 (TUSK II)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m1a2.pbo > config.bin",
+      "catalogue_id": "m1a2_sep_v1",
+      "matched_tokens": [
+        "m1a2sepv1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1a2sep1tuskiwd_usarmy",
+      "display_name_key": "$STR_M1A2SEPTUSKI_Name",
+      "display_name": "M1A2SEPv1 (TUSK I)",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m1a2.pbo > config.bin",
+      "catalogue_id": "m1a2_sep_v1",
+      "matched_tokens": [
+        "m1a2sepv1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1a2sep1wd_usarmy",
+      "display_name_key": "$STR_M1A2SEPWD_Name",
+      "display_name": "M1A2SEPv1",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m1a2.pbo > config.bin",
+      "catalogue_id": "m1a2_sep_v1",
+      "matched_tokens": [
+        "m1a2sepv1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1a2sep2_base",
+      "display_name_key": "$STR_M1A2SEPV2_Name",
+      "display_name": "M1A2SEPv2",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m1a2.pbo > config.bin",
+      "catalogue_id": "m1a2_sep_v2",
+      "matched_tokens": [
+        "m1a2sepv2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1a2sep2d_usarmy",
+      "display_name_key": "$STR_M1A2SEPV2_Name",
+      "display_name": "M1A2SEPv2",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m1a2.pbo > config.bin",
+      "catalogue_id": "m1a2_sep_v2",
+      "matched_tokens": [
+        "m1a2sepv2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1a2sep2wd_usarmy",
+      "display_name_key": "$STR_M1A2SEPV2_Name",
+      "display_name": "M1A2SEPv2",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m1a2.pbo > config.bin",
+      "catalogue_id": "m1a2_sep_v2",
+      "matched_tokens": [
+        "m1a2sepv2"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m1a2tank_base",
+      "display_name_key": "$STR_M1A2SEP_Name",
+      "display_name": "M1A2SEPv1",
+      "display_name_source": "843577117/addons/rhsusf_main.pbo > Stringtable.xml",
+      "config_locator": "843577117/addons/rhsusf_c_m1a2.pbo > config.bin",
+      "catalogue_id": "m1a2_sep_v1",
+      "matched_tokens": [
+        "m1a2sepv1"
+      ]
+    },
+    {
+      "game_class": "rhsusf_m998_d_2dr",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m998_d_2dr_fulltop",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m998_d_2dr_halftop",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m998_d_4dr",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m998_d_4dr_fulltop",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m998_d_4dr_halftop",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m998_d_s_2dr",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m998_d_s_2dr_fulltop",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m998_d_s_2dr_halftop",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m998_d_s_4dr",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m998_d_s_4dr_fulltop",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m998_d_s_4dr_halftop",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m998_w_2dr",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m998_w_2dr_fulltop",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m998_w_2dr_halftop",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m998_w_4dr",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m998_w_4dr_fulltop",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m998_w_4dr_halftop",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m998_w_s_2dr",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m998_w_s_2dr_fulltop",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m998_w_s_2dr_halftop",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m998_w_s_4dr",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m998_w_s_4dr_fulltop",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
+    },
+    {
+      "game_class": "rhsusf_m998_w_s_4dr_halftop",
+      "display_name_key": "",
+      "display_name": "",
+      "display_name_source": "data/vehicle/fleet/class_binding_map.json",
+      "config_locator": "",
+      "catalogue_id": "hmmwv_m998",
+      "matched_tokens": []
     }
   ]
 }

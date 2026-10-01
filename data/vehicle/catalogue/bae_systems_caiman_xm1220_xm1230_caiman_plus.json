@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for BAE Systems Caiman (XM1220 / XM1230 Caiman Plus). Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
+      "canonical_name": "BAE Systems Caiman (XM1220 / XM1230 Caiman Plus)",
+      "maker": "BAE Systems",
+      "model": "BAE Systems Caiman",
+      "variant": "XM1220 / XM1230 Caiman Plus",
+      "variant_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "bae systems caiman (xm1220 / xm1230 caiman plus)"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 13835,
+          "unit": "kg",
+          "source": "globalsecurity_caiman_specs",
+          "locator": "XM1220 Caiman 4x4 table, 'Vehicle Curb Weight (with Fuel) 13,835 kg (30,500 lb)'",
+          "state": "operating weight as published",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6522,
+          "unit": "mm",
+          "source": "globalsecurity_caiman_specs",
+          "locator": "XM1220 Caiman 4x4 table, 'Length 6,522 mm (257 inches)'",
+          "state": "length as published",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2596,
+          "unit": "mm",
+          "source": "globalsecurity_caiman_specs",
+          "locator": "XM1220 Caiman 4x4 table, 'Width (Tire Option 1) 2,596 mm (102 inches)' (Tire Option 2 2,438 mm; XM1230 EFP kit width 3,302 mm)",
+          "state": "width as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 3099,
+          "unit": "mm",
+          "source": "globalsecurity_caiman_specs",
+          "locator": "XM1220 Caiman 4x4 table, 'Height (Operational) 3,099 mm (122 inches)'",
+          "state": "height as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 105,
+          "unit": "km/h",
+          "source": "globalsecurity_caiman_specs",
+          "locator": "XM1220 Caiman 4x4 table, 'Maximum Speed (Governed, at Gross Weight) 105 km/h (65 mph)'",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "Caterpillar C7 heavy-duty diesel, 6-cylinder, fuel-injected turbocharged and aftercooled, 276 kW (370 hp) @ 2400 rpm",
+          "unit": "text",
+          "source": "globalsecurity_caiman_specs",
+          "locator": "XM1220 Caiman 4x4 table, 'Engine Caterpillar C7 Heavy Duty Diesel, 6-Cylinder...' and 'Engine Rating 276 kW (370 hp) @ 2400 rpm'",
+          "state": "engine as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

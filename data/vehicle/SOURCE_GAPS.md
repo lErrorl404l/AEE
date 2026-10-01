@@ -9,11 +9,11 @@ labelled absent zero. This file lists the resolved provenance of each
 row and the next source class for each absent field. A missing field
 is a labelled zero, not a refusal.
 
-- Catalogue entries: 136
-- Emitted runtime rows: 136
+- Catalogue entries: 199
+- Emitted runtime rows: 199
 - Runtime-ready entries: 1
-- Entries with an absent runtime field: 135
-- Absent fields: 448
+- Entries with an absent runtime field: 198
+- Absent fields: 826
 
 ## 2s1_gvozdika - 2S1 Gvozdika (tracked)
 
@@ -37,6 +37,84 @@ is a labelled zero, not a refusal.
 | `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
 | `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
 | `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## 2s25_sprut_sd - 2S25 Sprut-SD (tracked)
+
+- Capture: `data/vehicle/catalogue/2s25_sprut_sd.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 18000 | `wikipedia_2s25_sprut_sd` | Infobox, weight row (18 t) | operating weight as published |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## 2s3_akatsiya_2s3m1 - 2S3 Akatsiya (2S3M1) (tracked)
+
+- Capture: `data/vehicle/catalogue/2s3_akatsiya_2s3m1.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 28000 | `wikipedia_2s3_akatsiya` | Infobox, Mass: Maximum: 28 metric tons | operating weight as published; conflict: weight_kg: ru.wikipedia 2S3 infobox gives 27.5 t; English gives 28 t maximum |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## 9k79_tochka_9p129_1m_tel - 9K79 Tochka (9P129-1M TEL) (wheeled)
+
+- Capture: `data/vehicle/catalogue/9k79_tochka_9p129_1m_tel.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 18145 | `ru_wikipedia_d0_a2_d0_be_d1_87_d0_ba_d0_b0_d1_82_d0_b0_d0_ba_d1_82_d0_b8_d1_87_d0_b5_d1_81_d0_ba_d0_b8_d0_b9_d1_80_d0_b0_d0_ba_d0_b5_d1_82_d0_bd_d1_8b_d0_b9_d0_ba_d0_be_d0_bc_d0_bf_d0_bb_d0_b5_d0_ba_d1_81` | Technical data list: 'Масса пусковой установки (с ракетой и расчётом): 18145 кг' | operating weight as published; conflict: weight_kg: the figure is the launcher with missile and crew (18,145 kg), not an empty weight |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
 | `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
@@ -258,6 +336,32 @@ is a labelled zero, not a refusal.
 | `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
+## bae_systems_caiman_xm1220_xm1230_caiman_plus - BAE Systems Caiman (XM1220 / XM1230 Caiman Plus) (wheeled)
+
+- Capture: `data/vehicle/catalogue/bae_systems_caiman_xm1220_xm1230_caiman_plus.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 13835 | `globalsecurity_caiman_specs` | XM1220 Caiman 4x4 table, 'Vehicle Curb Weight (with Fuel) 13,835 kg (30,500 lb)' | operating weight as published |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
 ## bionix - Bionix (tracked)
 
 - Capture: `data/vehicle/catalogue/wikipedia_bionix.json`
@@ -283,6 +387,32 @@ is a labelled zero, not a refusal.
 | `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
+## bm_21_grad - BM-21 Grad (wheeled)
+
+- Capture: `data/vehicle/catalogue/bm_21_grad.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 13710 | `wikipedia_bm_21_grad` | Infobox, weight = 13.71 tonnes (30,225 lb) | operating weight as published |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
 ## bmc_kirpi - BMC Kirpi (wheeled)
 
 - Capture: `data/vehicle/catalogue/wikipedia_bmc_kirpi.json`
@@ -302,6 +432,240 @@ is a labelled zero, not a refusal.
 
 | Absent field | Next source class |
 |---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## bmd_1 - BMD-1 (tracked)
+
+- Capture: `data/vehicle/catalogue/bmd_1.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 7500 | `wikipedia_bmd_1` | Infobox, weight row (7.5 t; 8.3 t combat weight) | operating weight as published; conflict: weight_kg: ru.wikipedia.org gives 7.2 t dry; en.wikipedia.org gives 7.5 t and 8.3 t combat |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## bmd_1k - BMD-1K (tracked)
+
+- Capture: `data/vehicle/catalogue/bmd_1k.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 7500 | `wikipedia_bmd_1` | Infobox, weight row (7.5 t) carried over; variant listed at Variants, BMD-1K bullet | operating weight as published; conflict: weight_kg: no separate figure published for the command conversion; base BMD-1 weight carried over |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## bmd_1p - BMD-1P (tracked)
+
+- Capture: `data/vehicle/catalogue/bmd_1p.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 7500 | `wikipedia_bmd_1` | Infobox, weight row (7.5 t) carried over; variant listed at Variants, BMD-1P bullet | operating weight as published; conflict: weight_kg: no separate figure published for the ATGM modernisation; base BMD-1 weight carried over |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## bmd_1pk - BMD-1PK (tracked)
+
+- Capture: `data/vehicle/catalogue/bmd_1pk.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 7500 | `wikipedia_bmd_1` | Infobox, weight row (7.5 t) carried over; variant listed at Variants, BMD-1PK bullet | operating weight as published; conflict: weight_kg: no separate figure published for the BMD-1PK conversion; base BMD-1 weight carried over |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## bmd_1r - BMD-1R (tracked)
+
+- Capture: `data/vehicle/catalogue/bmd_1r.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 7500 | `wikipedia_bmd_1` | Infobox, weight row (7.5 t); shared hull. Variant identified at https://en.wikipedia.org/wiki/BTR-D, Variants, BMD-1R 'Sinitsa' bullet | operating weight as published; conflict: weight_kg: no separate figure published; BMD-1 base weight carried over for the signals conversion |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## bmd_2 - BMD-2 (tracked)
+
+- Capture: `data/vehicle/catalogue/bmd_2.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 11500 | `wikipedia_bmd_2` | Infobox, weight row (11.5 tonnes) | operating weight as published; conflict: weight_kg: Army Recognition gives 8225 kg and 60 km/h; en.wikipedia.org gives 11.5 t and 80 km/h |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## bmd_2k - BMD-2K (tracked)
+
+- Capture: `data/vehicle/catalogue/bmd_2k.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 11500 | `wikipedia_bmd_2` | Infobox, weight row (11.5 t) carried over; variant listed at Variants, BMD-2K bullet | operating weight as published; conflict: weight_kg: no separate figure published; BMD-2 base weight carried over |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## bmd_4 - BMD-4 (tracked)
+
+- Capture: `data/vehicle/catalogue/bmd_4.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 13600 | `wikipedia_bmd_4` | Infobox, weight row (13.6 t) | operating weight as published |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## bmd_4m - BMD-4M (tracked)
+
+- Capture: `data/vehicle/catalogue/bmd_4m.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 13500 | `armyrecognition_bmd_4m` | Specifications, Weight (13,500 kg) | operating weight as published |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
 ## bmp_1 - BMP-1 (tracked)
@@ -328,6 +692,58 @@ is a labelled zero, not a refusal.
 | `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
+## bmp_1k - BMP-1K (tracked)
+
+- Capture: `data/vehicle/catalogue/bmp_1k.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 13200 | `bmp_1` | Infobox, weight row (13.2 t) carried over; variant listed at List of BMP-1 variants, BMP-1K bullet | operating weight as published; conflict: weight_kg: no separate figure published for the BMP-1K conversion; base BMP-1 weight carried over |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## bmp_1p - BMP-1P (tracked)
+
+- Capture: `data/vehicle/catalogue/bmp_1p.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 13400 | `wikipedia_list_of_bmp_1_variants` | BMP-1P (Ob'yekt 765Sp4) bullet: 'The BMP-1P weighs 13.4 tonnes' | operating weight as published |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
 ## bmp_2 - BMP-2 (tracked)
 
 - Capture: `data/vehicle/catalogue/wikipedia_bmp_2.json`
@@ -338,6 +754,58 @@ is a labelled zero, not a refusal.
 | Runtime field | Grade | Value | Source | Locator | State |
 |---|---|---|---|---|---|
 | `operating_weight_kg` | claimed | 14300 | `wikipedia_bmp_2` | Infobox, weight row | weight published as 14.3 t; the tonne taken as 1,000 kg |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## bmp_2k - BMP-2K (tracked)
+
+- Capture: `data/vehicle/catalogue/bmp_2k.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 14300 | `wikipedia_bmp_2` | Infobox, weight row (14.3 t) carried over; variant listed at Variants, BMP-2K bullet | operating weight as published; conflict: weight_kg: no separate figure published for the BMP-2K conversion; base BMP-2 weight carried over |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## bmp_3 - BMP-3 (tracked)
+
+- Capture: `data/vehicle/catalogue/bmp_3.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 18700 | `wikipedia_bmp_3` | Infobox, weight row (18.7 t) | operating weight as published |
 | `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
 | `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
 | `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
@@ -449,6 +917,32 @@ is a labelled zero, not a refusal.
 |---|---|
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
+## brm_1k - BRM-1K (tracked)
+
+- Capture: `data/vehicle/catalogue/brm_1k.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 13200 | `weaponsystems_346_brm_1k` | Facts, Dimensions, Weight 13.2 t combat load | operating weight as published; conflict: weight_kg: List of BMP-1 variants article gives 13.2 t; army-guide.com gives 13200 kg (agrees) but the modernised BRM-1K Model 2021 is quoted at 14200-14800 kg |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
 ## bsa_m20 - BSA M20 (wheeled)
 
 - Capture: `data/vehicle/catalogue/bsa_m20.json`
@@ -542,6 +1036,32 @@ is a labelled zero, not a refusal.
 |---|---|
 | `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
 | `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## btr_80a - BTR-80A (wheeled)
+
+- Capture: `data/vehicle/catalogue/btr_80a.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 14500 | `weaponsystems_122_btr_80a` | Details, Facts BTR-80A, Dimensions, Weight: 14.5 t combat load | operating weight as published |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
 ## bushmaster_pmv - Bushmaster PMV (wheeled)
@@ -886,6 +1406,84 @@ is a labelled zero, not a refusal.
 | `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
+## gaz_233011_gaz_tigr - GAZ-233011 (GAZ Tigr) (wheeled)
+
+- Capture: `data/vehicle/catalogue/gaz_233011_gaz_tigr.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 7200 | `wikipedia_tigr_military_vehicle` | Infobox, Mass: 7,200 kg | operating weight as published; conflict: weight_kg: en-wiki platform mass 7,200 kg conflicts with ru-wiki unarmoured curb weight 5,300 kg; no index-specific GAZ-233011 mass published |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## gaz_233014_tigr_with_arbalet_turret - GAZ-233014 (Tigr with Arbalet turret) (wheeled)
+
+- Capture: `data/vehicle/catalogue/gaz_233014_tigr_with_arbalet_turret.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 5300 | `ru_wikipedia_` | Infobox, Боевая масса, т: 5,3 (ГАЗ-233014) | operating weight as published |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## gaz_233114_tigr_m - GAZ-233114 (Tigr-M) (wheeled)
+
+- Capture: `data/vehicle/catalogue/gaz_233114_tigr_m.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 8980 | `ru_wikipedia_` | Infobox, Боевая масса, т: 8,98 («Тигр-М» с КДМ) | operating weight as published; conflict: weight_kg: 8.98 t includes the combat module (KDM); hull-only mass not published |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
 ## gaz_66 - GAZ-66 (wheeled)
 
 - Capture: `data/vehicle/catalogue/gaz_66.json`
@@ -908,6 +1506,58 @@ is a labelled zero, not a refusal.
 | `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
 | `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
 | `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## gaz_66_ap_2 - GAZ-66 AP-2 (wheeled)
+
+- Capture: `data/vehicle/catalogue/gaz_66_ap_2.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 3440 | `gaz_66` | Base GAZ-66 infobox, Curb weight: 3,440 kg | operating weight as published; conflict: weight_kg: no AP-2-specific mass published; medical body mass unknown, base chassis used |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## gaz_66_esb_8im - GAZ-66 ESB-8IM (wheeled)
+
+- Capture: `data/vehicle/catalogue/gaz_66_esb_8im.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 3440 | `gaz_66` | Base GAZ-66 infobox, Curb weight: 3,440 kg | operating weight as published; conflict: weight_kg: no ESB-8IM-specific mass published; workshop body mass unknown, base chassis used |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
 ## guarani - VBTP-MR Guarani (wheeled)
@@ -1202,6 +1852,58 @@ is a labelled zero, not a refusal.
 | `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
+## kamaz_5350_mustang - KAMAZ-5350 Mustang (wheeled)
+
+- Capture: `data/vehicle/catalogue/kamaz_5350_mustang.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 9600 | `de_wikipedia_kamaz_5350` | Technische Daten, Abmessungen und Gewichte, Leergewicht: 9600 kg | operating weight as published |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## kamaz_63968_typhoon_k - KAMAZ-63968 Typhoon-K (wheeled)
+
+- Capture: `data/vehicle/catalogue/kamaz_63968_typhoon_k.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 21000 | `wikipedia_kamaz_typhoon` | Infobox, Mass: 21 t; Technical specifications, Curb weight: 21 tons, gross 24 tons | operating weight as published |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
 ## karrar_tank - Karrar (tracked)
 
 - Capture: `data/vehicle/catalogue/karrar_tank.json`
@@ -1479,6 +2181,162 @@ is a labelled zero, not a refusal.
 | `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
 | `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
 
+## m1078a1p2 - M1078A1P2 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m1078a1p2.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 10390 | `wikipedia_family_of_medium_tactical_vehicles` | M1078A1P2 spec box, Mass row: 10,390 kg (22,904 lbs) (curb w/fuel) | operating weight as published |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m1083a1p2 - M1083A1P2 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m1083a1p2.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 11280 | `wikipedia_family_of_medium_tactical_vehicles` | M1083A1P2 spec box, Mass row: 11,280 kg (24,870 lbs) (curb w/fuel) | operating weight as published |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m1084a1p2 - M1084A1P2 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m1084a1p2.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 10740 | `globalsecurity_m1084` | Dimensions table, Vehicle Curb Weight (no kits, crew, fuel): 23,677 lb (10,740 kg) | operating weight as published; conflict: weight_kg: base M1084 (A0/A1) curb weight; no A1P2-specific published weight found |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m1085a1p2 - M1085A1P2 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m1085a1p2.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 9451 | `globalsecurity_m1085` | Dimensions table, Vehicle Curb Weight (no kits, crew, fuel): 20,836 lb (9,451 kg) | operating weight as published; conflict: weight_kg: base M1085 (A0/A1) curb weight; no A1P2-specific published weight found |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m109a6_paladin - M109A6 Paladin (tracked)
+
+- Capture: `data/vehicle/catalogue/m109a6_paladin.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 28849 | `inetres_m109` | GENERAL DATA table, 'Combat Weight' row, M109A6 column: 31.8 tons (28.849 mt) (combat weight) | operating weight as published |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m1117_guardian_asv - M1117 Guardian ASV (wheeled)
+
+- Capture: `data/vehicle/catalogue/m1117_guardian_asv.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 13410 | `wikipedia_m1117_armored_security_vehicle` | Infobox, Mass row: 29,560 lb (13,410 kg) (combat weight) | operating weight as published |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
 ## m113a2 - M113A2 (tracked)
 
 - Capture: `data/vehicle/catalogue/tm_9_2350_261_10.json`
@@ -1500,6 +2358,110 @@ is a labelled zero, not a refusal.
 |---|---|
 | `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
 | `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+
+## m113a3 - M113A3 (tracked)
+
+- Capture: `data/vehicle/catalogue/m113a3.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 12250 | `inetres_m113` | GENERAL DATA table, 'Combat Weight' row, M113A3 column: 13.5 tons (12.25 mt) (combat weight) | operating weight as published |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m1151a1 - M1151A1 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m1151a1.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 3697 | `globalsecurity_m1151_specs` | M1151A1 w/ AC specifications table, Curb Weight: 8,150 lb (3,697 kg) | operating weight as published |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m1152a1 - M1152A1 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m1152a1.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 3221 | `globalsecurity_m1152` | Curb Weight table, M1152A1: 7,100 lb (3,221 kg) | operating weight as published |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m1165a1 - M1165A1 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m1165a1.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 3279 | `globalsecurity_m1165_specs` | M1165A1 w/ AC specifications table, Curb Weight: 7,230 lb (3,279 kg) | operating weight as published |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
 ## m1_abrams - M1 Abrams (tracked)
 
@@ -1525,6 +2487,84 @@ is a labelled zero, not a refusal.
 | `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
+## m1a1_aim - M1A1 AIM (tracked)
+
+- Capture: `data/vehicle/catalogue/m1a1_aim.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 61300 | `wikipedia_m1_abrams` | Infobox, Mass row: 'M1A1 SA: 67.6 short tons (61.3 t)' (combat weight) | operating weight as published |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m1a2_sep_v1 - M1A2 SEP v1 (tracked)
+
+- Capture: `data/vehicle/catalogue/m1a2_sep_v1.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 63000 | `wikipedia_m1_abrams` | Specifications table, 'Combat Weight' row, M1A2 SEP column: 'SEP v1: 69.5 short tons (63.0 t)' (combat weight) | operating weight as published |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m1a2_sep_v2 - M1A2 SEP v2 (tracked)
+
+- Capture: `data/vehicle/catalogue/m1a2_sep_v2.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 64600 | `wikipedia_m1_abrams` | Specifications table, 'Combat Weight' row: 'SEP v2: 71.2 short tons (64.6 t)' (combat weight) | operating weight as published |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
 ## m2_m3_bradley - M2/M3 Bradley (tracked)
 
 - Capture: `data/vehicle/catalogue/tm_9_2350_252_10_1.json`
@@ -1545,6 +2585,58 @@ is a labelled zero, not a refusal.
 | Absent field | Next source class |
 |---|---|
 | `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+
+## m2a2_bradley - M2A2 Bradley (tracked)
+
+- Capture: `data/vehicle/catalogue/m2a2_bradley.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 29000 | `inetres_m2` | GENERAL DATA table, 'Combat Weight' row, M2A2 column: 32 tons (29 mt) (combat weight) | operating weight as published |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## m2a3_bradley - M2A3 Bradley (tracked)
+
+- Capture: `data/vehicle/catalogue/m2a3_bradley.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 30000 | `inetres_m2` | GENERAL DATA table, 'Combat Weight' row, M2A3 column: 33 tons (30 mt) (combat weight) | operating weight as published |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
 ## m577a2 - M577A2 (tracked)
 
@@ -2219,6 +3311,32 @@ is a labelled zero, not a refusal.
 |---|---|
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
+## m977a4 - M977A4 (wheeled)
+
+- Capture: `data/vehicle/catalogue/m977a4.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 19278 | `wikipedia_heavy_expanded_mobility_tactical_truck` | Infobox (spec_label M977A4), weight row: 42,500 lb unladen | operating weight as published |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
 ## m_atv_m1240 - M-ATV M1240 (wheeled)
 
 - Capture: `data/vehicle/catalogue/tm_9_2355_335_10.json`
@@ -2429,6 +3547,32 @@ is a labelled zero, not a refusal.
 | `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
+## oshkosh_m_atv_m1277 - Oshkosh M-ATV M1277 (wheeled)
+
+- Capture: `data/vehicle/catalogue/oshkosh_m_atv_m1277.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 12500 | `wikipedia_oshkosh_m_atv` | Specifications, Mass: Curb weight 27,500 lb (12,500 kg); base M-ATV figure, not M1277-specific | operating weight as published |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
 ## pandur_ii - Pandur II (wheeled)
 
 - Capture: `data/vehicle/catalogue/wikipedia_pandur_ii.json`
@@ -2553,6 +3697,32 @@ is a labelled zero, not a refusal.
 | `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
+## prp_3 - PRP-3 (tracked)
+
+- Capture: `data/vehicle/catalogue/prp_3.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 13000 | `weaponsystems_623_prp_3_val` | Facts, Dimensions, Weight 13 t combat load | operating weight as published |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
 ## pt91_twardy - PT-91 Twardy (tracked)
 
 - Capture: `data/vehicle/catalogue/wikipedia_pt91.json`
@@ -2574,6 +3744,32 @@ is a labelled zero, not a refusal.
 |---|---|
 | `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
 | `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## pts_m - PTS-M (tracked)
+
+- Capture: `data/vehicle/catalogue/pts_m.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 17800 | `ru_wikipedia_d0_9f_d0_a2_d0_a1_d0_9c` | Infobox, Масса, т = 17,8 | operating weight as published; conflict: weight_kg: conflict. ru.wikipedia gives 17.8 t; English PTS variants bullet cites DTIC 'weighing 36 metric tons' (likely loaded/water displacement). 17.8 t used. |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
 ## puma_cev - Puma (tracked)
@@ -2769,6 +3965,58 @@ is a labelled zero, not a refusal.
 | `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
+## t_72b3_obr_2012g - T-72B3 obr. 2012g. (tracked)
+
+- Capture: `data/vehicle/catalogue/t_72b3_obr_2012g.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 46500 | `ru_wikipedia_d0_a2_72_d0_913` | Infobox, Масса, т = 46,5 | operating weight as published |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## t_72b_obr_1984g - T-72B obr. 1984g. (tracked)
+
+- Capture: `data/vehicle/catalogue/t_72b_obr_1984g.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 44500 | `wikipedia_t_72` | Infobox 'Specifications (T-72A)', Mass row: 44.5 tonnes (T-72B) | operating weight as published |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
 ## t_72m4cz - T-72M4CZ (tracked)
 
 - Capture: `data/vehicle/catalogue/wikipedia_t_72m4cz.json`
@@ -2794,6 +4042,240 @@ is a labelled zero, not a refusal.
 | `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
+## t_72ms - T-72MS (tracked)
+
+- Capture: `data/vehicle/catalogue/t_72ms.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 44500 | `wikipedia_t_72` | Infobox 'Specifications (T-72A)', Mass row: 44.5 tonnes (T-72B); T-72B1 base | operating weight as published; conflict: weight_kg: no published weight for the T-72B1MS itself; T-72B base used. Identity source: T-72 operators and variants, Russia section, T-72B1MS bullet (Serbia entry, 30 units) |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## t_80 - T-80 (tracked)
+
+- Capture: `data/vehicle/catalogue/t_80.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 42000 | `ru_wikipedia_d0_a2_80` | Infobox, Масса, т = Т-80 — 42 | operating weight as published |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## t_80a - T-80A (tracked)
+
+- Capture: `data/vehicle/catalogue/t_80a.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 45200 | `ru_wikipedia_d0_a2_80_d0_90` | Infobox, Масса, т = 45,2 | operating weight as published |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## t_80b - T-80B (tracked)
+
+- Capture: `data/vehicle/catalogue/t_80b.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 42500 | `wikipedia_t_80` | Infobox 'Specifications (T-80B / T-80U)', Mass row: 42.5 tons (T-80B) | operating weight as published |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## t_80bk - T-80BK (tracked)
+
+- Capture: `data/vehicle/catalogue/t_80bk.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 42500 | `wikipedia_t_80` | Infobox 'Specifications (T-80B / T-80U)', Mass row: 42.5 tons (T-80B) - command variant shares hull | operating weight as published |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## t_80bv - T-80BV (tracked)
+
+- Capture: `data/vehicle/catalogue/t_80bv.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 42500 | `wikipedia_t_80` | Infobox 'Specifications (T-80B / T-80U)', Mass row: 42.5 tons (T-80B) - base, ERA mass excluded | operating weight as published; conflict: weight_kg: T-80BV mass not published separately; T-80B base used (Kontakt-1 mass excluded) |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## t_80bvk - T-80BVK (tracked)
+
+- Capture: `data/vehicle/catalogue/t_80bvk.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 42500 | `wikipedia_t_80` | Infobox 'Specifications (T-80B / T-80U)', Mass row: 42.5 tons (T-80B) - command variant shares hull | operating weight as published; conflict: weight_kg: ERA mass not published; T-80B base used |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## t_80u - T-80U (tracked)
+
+- Capture: `data/vehicle/catalogue/t_80u.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 46500 | `ru_wikipedia_d0_a2_80_d0_a3` | Infobox, Масса, т = 46,5 | operating weight as published; conflict: weight_kg: source conflict. ru.wikipedia T-80U infobox 46.5 t; English T-80 infobox 46 t. |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## t_80um - T-80UM (tracked)
+
+- Capture: `data/vehicle/catalogue/t_80um.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 46500 | `ru_wikipedia_d0_a2_80_d0_a3` | Infobox, Масса, т = 46,5 (T-80U base) | operating weight as published |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
 ## t_90 - T-90 (tracked)
 
 - Capture: `data/vehicle/catalogue/wikipedia_t_90.json`
@@ -2816,6 +4298,84 @@ is a labelled zero, not a refusal.
 | `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
 | `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
 | `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## t_90am - T-90AM (tracked)
+
+- Capture: `data/vehicle/catalogue/t_90am.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 48000 | `ru_wikipedia_d0_a2_90_d0_90_d0_9c` | Infobox, Масса, т = 48 | operating weight as published |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## t_90sa - T-90SA (tracked)
+
+- Capture: `data/vehicle/catalogue/t_90sa.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 46500 | `wikipedia_t_90` | Infobox, Mass row: 46.5 tonnes (T-90A) | operating weight as published |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## t_90sm - T-90SM (tracked)
+
+- Capture: `data/vehicle/catalogue/t_90sm.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 48000 | `wikipedia_t_90` | Infobox, Mass row: 48 tonnes (T-90SM) | operating weight as published |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
 | `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
@@ -3045,6 +4605,32 @@ is a labelled zero, not a refusal.
 | `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
+## uaz_3151 - UAZ-3151 (wheeled)
+
+- Capture: `data/vehicle/catalogue/uaz_3151.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 1700 | `uaz_469` | Infobox, Curb weight: 1,700 kg | operating weight as published; conflict: weight_kg: ru-wiki gives mass 1,650 kg |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
 ## uaz_469 - UAZ-469 (wheeled)
 
 - Capture: `data/vehicle/catalogue/uaz_469.json`
@@ -3064,6 +4650,32 @@ is a labelled zero, not a refusal.
 
 | Absent field | Next source class |
 |---|---|
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## ural_375d - Ural-375D (wheeled)
+
+- Capture: `data/vehicle/catalogue/ural_375d.json`
+- Required set: wheeled (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 8400 | `wikipedia_ural_375` | Infobox, Curb weight: 8,400 kg | operating weight as published |
+| `tyre_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `tyre_diameter_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `tyre_width_mm` | a tier 3 tyre databook or the tyre maker |
+| `tyre_diameter_mm` | a tier 3 tyre databook or the tyre maker |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |
 
 ## ural_4320 - Ural-4320 (wheeled)
@@ -3177,5 +4789,31 @@ is a labelled zero, not a refusal.
 | `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
 | `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
 | `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
+| `grousers_state` | the vehicle manual track section or a track OEM datasheet |
+
+## zsu_23_4_shilka - ZSU-23-4 Shilka (tracked)
+
+- Capture: `data/vehicle/catalogue/zsu_23_4_shilka.json`
+- Required set: tracked (7 fields)
+- Runtime row: yes
+- Runtime-ready: no
+
+| Runtime field | Grade | Value | Source | Locator | State |
+|---|---|---|---|---|---|
+| `operating_weight_kg` | claimed | 19000 | `wikipedia_zsu_23_4_shilka` | Infobox, weight = 19 tonnes | operating weight as published; conflict: weight_kg: late modifications reach 21 t |
+| `track_shoe_width_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `track_pitch_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `ground_clearance_mm` | absent | 0 | `` |  | no held value and no derivation applies |
+| `net_power_kw` | absent | 0 | `` |  | no held value and no derivation applies |
+| `transmission_type` | absent |  | `` |  | no held value and no derivation applies |
+| `grousers_state` | absent |  | `` |  | no held value and no derivation applies |
+
+| Absent field | Next source class |
+|---|---|
+| `track_shoe_width_mm` | a track OEM datasheet or a standard characteristics manual |
+| `track_pitch_mm` | a track OEM datasheet or a standard characteristics manual |
+| `ground_clearance_mm` | a tier 4 manufacturer datasheet or a maintenance manual |
+| `net_power_kw` | the engine maker net rating, for example Caterpillar C-7 or Detroit Diesel; a tier 4 manufacturer source |
 | `transmission_type` | the held vehicle manual or the transmission maker; a tier 2 or tier 4 source |
 | `grousers_state` | the vehicle manual track section or a track OEM datasheet |

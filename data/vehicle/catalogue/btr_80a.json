@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for BTR-80A. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "btr_80a",
+      "canonical_name": "BTR-80A",
+      "maker": "Arzamas Machine-Building Plant",
+      "model": "BTR-80A",
+      "variant": "base",
+      "variant_id": "btr_80a",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Russia",
+      "era": "modern",
+      "aliases": [
+        "btr-80a"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 14500,
+          "unit": "kg",
+          "source": "weaponsystems_122_btr_80a",
+          "locator": "Details, Facts BTR-80A, Dimensions, Weight: 14.5 t combat load",
+          "state": "operating weight as published",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 7700,
+          "unit": "mm",
+          "source": "weaponsystems_122_btr_80a",
+          "locator": "Details, Facts BTR-80A, Dimensions, Length: 7.7 m",
+          "state": "length as published",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2950,
+          "unit": "mm",
+          "source": "weaponsystems_122_btr_80a",
+          "locator": "Details, Facts BTR-80A, Dimensions, Width: 2.95 m",
+          "state": "width as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2800,
+          "unit": "mm",
+          "source": "weaponsystems_122_btr_80a",
+          "locator": "Details, Facts BTR-80A, Dimensions, Height: 2.80 m (overall)",
+          "state": "height as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 80,
+          "unit": "km/h",
+          "source": "weaponsystems_122_btr_80a",
+          "locator": "Details, Mobility, Speed: 80 km/h on road",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "YaMZ-238M2 V8 diesel, 240 hp",
+          "unit": "text",
+          "source": "weaponsystems_122_btr_80a",
+          "locator": "Details, Automotive, Engine: YaMZ-238M2 V8 diesel; Power output 240 hp",
+          "state": "engine as published; conflict: engine_model: Army Recognition lists either KamAZ-7403 260 hp or YaMZ-238M2 240 hp for the BTR-80 family; the BTR-80A-specific page gives YaMZ-238M2",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

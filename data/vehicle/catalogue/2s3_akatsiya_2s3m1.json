@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for 2S3 Akatsiya (2S3M1). Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "2s3_akatsiya_2s3m1",
+      "canonical_name": "2S3 Akatsiya (2S3M1)",
+      "maker": "Uraltransmash",
+      "model": "2S3 Akatsiya",
+      "variant": "2S3M1",
+      "variant_id": "2s3_akatsiya_2s3m1",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "cold war",
+      "aliases": [
+        "2s3 akatsiya (2s3m1)"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 28000,
+          "unit": "kg",
+          "source": "wikipedia_2s3_akatsiya",
+          "locator": "Infobox, Mass: Maximum: 28 metric tons",
+          "state": "operating weight as published; conflict: weight_kg: ru.wikipedia 2S3 infobox gives 27.5 t; English gives 28 t maximum",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 8400,
+          "unit": "mm",
+          "source": "wikipedia_2s3_akatsiya",
+          "locator": "Infobox, Length: Total: 8.4 m (27 ft 7 in) Hull: 7.765 m",
+          "state": "length as published; conflict: length_mm: 8.4 m total; hull 7.765 m",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3250,
+          "unit": "mm",
+          "source": "wikipedia_2s3_akatsiya",
+          "locator": "Infobox, Width: 3.25 m (10 ft 8 in)",
+          "state": "width as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 3050,
+          "unit": "mm",
+          "source": "wikipedia_2s3_akatsiya",
+          "locator": "Infobox, Height: 3.05 m (10 ft 0 in); 2.615 m with no machine gun",
+          "state": "height as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 63,
+          "unit": "km/h",
+          "source": "wikipedia_2s3_akatsiya",
+          "locator": "Infobox, Maximum speed: On-road 63 km/h (39 mph)",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "V-59 V12 diesel (520 hp)",
+          "unit": "text",
+          "source": "wikipedia_2s3_akatsiya",
+          "locator": "Infobox, Engine: V-59 (12-cylinder 4-stroke V-shaped water-cooled diesel), 520 hp at 2,000 rpm",
+          "state": "engine as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for T-90AM. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "t_90am",
+      "canonical_name": "T-90AM",
+      "maker": "Uralvagonzavod",
+      "model": "T-90AM",
+      "variant": "base",
+      "variant_id": "t_90am",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Russia",
+      "era": "modern",
+      "aliases": [
+        "t-90am"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 48000,
+          "unit": "kg",
+          "source": "ru_wikipedia_d0_a2_90_d0_90_d0_9c",
+          "locator": "Infobox, Масса, т = 48",
+          "state": "operating weight as published",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 9630,
+          "unit": "mm",
+          "source": "wikipedia_t_90",
+          "locator": "Infobox, Length row: 9.63 m (T-90 base; ru AM infobox blank)",
+          "state": "length as published",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3780,
+          "unit": "mm",
+          "source": "wikipedia_t_90",
+          "locator": "Infobox, Width row: 3.78 m (T-90 base; ru AM infobox blank)",
+          "state": "width as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2220,
+          "unit": "mm",
+          "source": "wikipedia_t_90",
+          "locator": "Infobox, Height row: 2.22 m (T-90 base; ru AM infobox blank)",
+          "state": "height as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 65,
+          "unit": "km/h",
+          "source": "ru_wikipedia_d0_a2_90_d0_90_d0_9c",
+          "locator": "Infobox, Скорость по шоссе, км/ч = 65-70 (lower bound used)",
+          "state": "maximum road speed as published; conflict: max_speed_kmh: source gives a 65-70 km/h range; lower bound used",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "V-92S2F V12 diesel (1130 hp)",
+          "unit": "text",
+          "source": "ru_wikipedia_d0_a2_90_d0_90_d0_9c",
+          "locator": "Infobox, Мощность двигателя, л.с. = 1130; model V-92S2F per English T-90 infobox",
+          "state": "engine as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

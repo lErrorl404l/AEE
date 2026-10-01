@@ -1,0 +1,58 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for M1165A1. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "m1165a1",
+      "canonical_name": "M1165A1",
+      "maker": "AM General",
+      "model": "M1165A1",
+      "variant": "base",
+      "variant_id": "m1165a1",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "United States",
+      "era": "modern",
+      "aliases": [
+        "m1165a1"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 3279,
+          "unit": "kg",
+          "source": "globalsecurity_m1165_specs",
+          "locator": "M1165A1 w/ AC specifications table, Curb Weight: 7,230 lb (3,279 kg)",
+          "state": "operating weight as published",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2310,
+          "unit": "mm",
+          "source": "globalsecurity_m1165_specs",
+          "locator": "M1165A1 w/ AC specifications table, Width (w/ mirrors folded): 91 in (2.31 m)",
+          "state": "width as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 113,
+          "unit": "km/h",
+          "source": "globalsecurity_m1165_specs",
+          "locator": "M1165A1 w/ AC specifications table, Speed (Maximum): 70 mph (113 kph)",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "General Engine Products (GEP) V8, 6.5-litre turbocharged diesel, 190 hp (142 kW) at 3400 rpm",
+          "unit": "text",
+          "source": "globalsecurity_m1165_specs",
+          "locator": "M1165A1 w/ AC specifications table, Engine and Horsepower rows: GEP V8 6.5 L turbocharged diesel, 190 hp @ 3400 rpm",
+          "state": "engine as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

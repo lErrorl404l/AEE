@@ -53,7 +53,12 @@ from tools.validation import vehicle_catalogue as catalogue  # noqa: E402
 
 DEFAULT_OUT = REPO / "data" / "vehicle" / "stringtable_bindings.json"
 DEFAULT_VEHICLE_DIR = REPO / "data" / "vehicle"
+DEFAULT_CLASS_BINDINGS = REPO / "data" / "vehicle" / "fleet" / "class_binding_map.json"
 SCHEMA = "aee.vehicle.stringtable_bindings/1"
+CLASS_BINDING_SCHEMA = "aee.vehicle.class_binding_map/1"
+
+# The provenance label of an explicit fleet class binding, taken from the map.
+CLASS_BINDING_SOURCE = "data/vehicle/fleet/class_binding_map.json"
 
 # The ground base class and the weapon family to exclude from a vehicle sweep.
 GROUND_BASE = "LandVehicle"
@@ -494,13 +499,20 @@ def build_bindings(
     vehicle_dir: Path,
     scratch: Path,
     mod_roots: Sequence[Path] = (),
+    class_bindings: Sequence[dict[str, object]] = (),
 ) -> list[Binding]:
-    """Return every ground class the stringtable names to one catalogue entry."""
+    """Return every ground class the stringtable names to one catalogue entry.
+
+    The explicit class-binding map is applied after the display-name pass. It
+    names a concrete game class the display name does not resolve, so a fleet
+    class with an empty or unhelpful display name still binds. An explicit
+    record overrides a display-name record for the same class.
+    """
     texts, sources = build_stringtable_map(game_root, scratch, mod_roots)
     tree = parse_class_tree(_config_texts(game_root, scratch, mod_roots))
     load = catalogue.load(vehicle_dir)
     index = build_token_index(load)
-    bindings: list[Binding] = []
+    by_class: dict[str, Binding] = {}
     for game_class in ground_classes(tree):
         resolved = resolve_display_name(tree, game_class)
         if resolved is None:
@@ -513,19 +525,35 @@ def build_bindings(
         if matched is None:
             continue
         catalogue_id, tokens = matched
-        bindings.append(
-            Binding(
-                game_class=game_class,
-                display_name_key=raw,
-                display_name=text,
-                display_name_source=sources.get(raw.lstrip("$").strip().lower(), ""),
-                config_locator=config_locator,
-                catalogue_id=catalogue_id,
-                matched_tokens=tokens,
-            )
+        by_class[game_class] = Binding(
+            game_class=game_class,
+            display_name_key=raw,
+            display_name=text,
+            display_name_source=sources.get(raw.lstrip("$").strip().lower(), ""),
+            config_locator=config_locator,
+            catalogue_id=catalogue_id,
+            matched_tokens=tokens,
         )
-    bindings.sort(key=lambda binding: binding.game_class)
-    return bindings
+    known = {entry.catalogue_id for entry in load.entries}
+    for record in class_bindings:
+        game_class = _text(record.get("game_class"))
+        catalogue_id = _text(record.get("catalogue_id"))
+        if game_class is None or catalogue_id is None or catalogue_id not in known:
+            continue
+        existing = by_class.get(game_class)
+        if existing is not None and existing.catalogue_id == catalogue_id:
+            # The display name already binds the class to the same entry.
+            continue
+        by_class[game_class] = Binding(
+            game_class=game_class,
+            display_name_key="",
+            display_name="",
+            display_name_source=CLASS_BINDING_SOURCE,
+            config_locator="",
+            catalogue_id=catalogue_id,
+            matched_tokens=(),
+        )
+    return sorted(by_class.values(), key=lambda binding: binding.game_class)
 
 
 def render_bindings(bindings: Sequence[Binding]) -> str:
@@ -555,12 +583,43 @@ def load_bindings(path: Path) -> list[dict[str, object]]:
     return out
 
 
-def check_bindings(path: Path, vehicle_dir: Path) -> int:
+def load_class_bindings(path: Path) -> list[dict[str, object]]:
+    """Read the explicit fleet class-binding map.
+
+    The map binds one concrete game class to one catalogue entry for a fleet
+    whose display name does not resolve offline. It is an input to the
+    resolver, so a class whose display name is empty or unhelpful still binds.
+    A missing map yields no explicit bindings, so the resolver still runs.
+    """
+    if not path.is_file():
+        return []
+    loaded: object = json.loads(path.read_text(encoding="utf-8"))
+    payload = _mapping(loaded)
+    if payload is None or payload.get("schema") != CLASS_BINDING_SCHEMA:
+        raise ValueError(f"{path}: not a {CLASS_BINDING_SCHEMA} artefact")
+    records = payload.get("bindings")
+    if not isinstance(records, list):
+        raise ValueError(f"{path}: bindings must be an array")
+    out: list[dict[str, object]] = []
+    for index, raw in enumerate(records):
+        record = _mapping(raw)
+        if record is None:
+            raise ValueError(f"{path}: class binding[{index}] must be an object")
+        out.append(record)
+    return out
+
+
+def check_bindings(
+    path: Path,
+    vehicle_dir: Path,
+    class_bindings: Sequence[dict[str, object]] = (),
+) -> int:
     """Return 0 when the artefact matches a fresh decision from its own data.
 
     The check is deterministic and reads no game install. It rebuilds each
-    binding from the committed display name and the catalogue, and compares the
-    catalogue entry and the matched tokens.
+    display-name binding from the committed display name and the catalogue,
+    and verifies each explicit binding against the class-binding map. It
+    compares the catalogue entry and the matched tokens.
     """
     try:
         records = load_bindings(path)
@@ -569,21 +628,40 @@ def check_bindings(path: Path, vehicle_dir: Path) -> int:
         return 1
     load = catalogue.load(vehicle_dir)
     index = build_token_index(load)
+    known = {entry.catalogue_id for entry in load.entries}
+    explicit: dict[str, str] = {}
+    for record in class_bindings:
+        explicit_class = _text(record.get("game_class"))
+        explicit_id = _text(record.get("catalogue_id"))
+        if explicit_class is not None and explicit_id is not None:
+            explicit[explicit_class] = explicit_id
     seen: set[str] = set()
     stale = False
     for index_number, record in enumerate(records):
         game_class = _text(record.get("game_class"))
         text = _text(record.get("display_name"))
-        if game_class is None or text is None:
-            print(
-                f"stringtable bindings: binding[{index_number}] lacks a class or name"
-            )
+        if game_class is None:
+            print(f"stringtable bindings: binding[{index_number}] lacks a class")
             stale = True
             continue
         if game_class in seen:
             print(f"stringtable bindings: {game_class} repeats")
             stale = True
         seen.add(game_class)
+        if text is None:
+            catalogue_id = record.get("catalogue_id")
+            if explicit.get(game_class) != catalogue_id or catalogue_id not in known:
+                print(f"stringtable bindings: {game_class} explicit binding is stale")
+                stale = True
+            continue
+        if game_class in explicit and explicit[game_class] != record.get(
+            "catalogue_id"
+        ):
+            print(
+                f"stringtable bindings: {game_class} class-binding map disagrees; stale"
+            )
+            stale = True
+            continue
         matched = match_display_name(text, index)
         if matched is None:
             print(
@@ -699,6 +777,12 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--out", type=Path, default=DEFAULT_OUT)
     parser.add_argument("--vehicle-dir", type=Path, default=DEFAULT_VEHICLE_DIR)
     parser.add_argument(
+        "--class-bindings",
+        type=Path,
+        default=DEFAULT_CLASS_BINDINGS,
+        help="The explicit fleet class-binding map. Default is the committed map.",
+    )
+    parser.add_argument(
         "--resolve",
         action="store_true",
         help="Read the game install and write the binding artefact.",
@@ -727,8 +811,14 @@ def main(argv: Sequence[str] | None = None) -> int:
     )
     args = parser.parse_args(argv)
 
+    try:
+        class_bindings = load_class_bindings(args.class_bindings)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        print(f"stringtable bindings: cannot read the class-binding map: {exc}")
+        return 1
+
     if args.check:
-        return check_bindings(args.out, args.vehicle_dir)
+        return check_bindings(args.out, args.vehicle_dir, class_bindings)
 
     if args.resolve:
         if args.game_root is None:
@@ -745,7 +835,11 @@ def main(argv: Sequence[str] | None = None) -> int:
             with tempfile.TemporaryDirectory() as tmp:
                 scratch = Path(tmp)
                 bindings = build_bindings(
-                    args.game_root, args.vehicle_dir, scratch, args.mod_root
+                    args.game_root,
+                    args.vehicle_dir,
+                    scratch,
+                    args.mod_root,
+                    class_bindings,
                 )
                 fleet = (
                     build_fleet(args.game_root, scratch, args.mod_root)

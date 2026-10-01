@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for BMD-2. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "bmd_2",
+      "canonical_name": "BMD-2",
+      "maker": "Volgograd Tractor Plant",
+      "model": "BMD-2",
+      "variant": "base",
+      "variant_id": "bmd_2",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "cold war",
+      "aliases": [
+        "bmd-2"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 11500,
+          "unit": "kg",
+          "source": "wikipedia_bmd_2",
+          "locator": "Infobox, weight row (11.5 tonnes)",
+          "state": "operating weight as published; conflict: weight_kg: Army Recognition gives 8225 kg and 60 km/h; en.wikipedia.org gives 11.5 t and 80 km/h",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 5410,
+          "unit": "mm",
+          "source": "wikipedia_bmd_1",
+          "locator": "Infobox, length row (5.41 m); BMD-2 uses the BMD-1 hull",
+          "state": "length as published; conflict: length_mm: published figures (5910 mm) are gun-forward; hull length taken as the shared BMD-1 hull (5410 mm). en.wikipedia.org infobox states '5.91 m (Gun forward)'",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2630,
+          "unit": "mm",
+          "source": "wikipedia_bmd_2",
+          "locator": "Infobox, width row (2.63 m)",
+          "state": "width as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 1970,
+          "unit": "mm",
+          "source": "wikipedia_bmd_2",
+          "locator": "Infobox, height row (1.97 m suspension raised)",
+          "state": "height as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 80,
+          "unit": "km/h",
+          "source": "wikipedia_bmd_2",
+          "locator": "Infobox, speed row (80 km/h road)",
+          "state": "maximum road speed as published; conflict: max_speed_kmh: Army Recognition gives 60 km/h on road",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "5D-20 6-cylinder 4-stroke V-shaped liquid cooled 15.9 litre diesel",
+          "unit": "text",
+          "source": "wikipedia_bmd_2",
+          "locator": "Infobox, engine row (5D-20 15.9 L diesel)",
+          "state": "engine as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

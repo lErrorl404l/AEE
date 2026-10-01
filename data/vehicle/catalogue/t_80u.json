@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for T-80U. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "t_80u",
+      "canonical_name": "T-80U",
+      "maker": "Omsktransmash",
+      "model": "T-80U",
+      "variant": "base",
+      "variant_id": "t_80u",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "cold war",
+      "aliases": [
+        "t-80u"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 46500,
+          "unit": "kg",
+          "source": "ru_wikipedia_d0_a2_80_d0_a3",
+          "locator": "Infobox, Масса, т = 46,5",
+          "state": "operating weight as published; conflict: weight_kg: source conflict. ru.wikipedia T-80U infobox 46.5 t; English T-80 infobox 46 t.",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 9654,
+          "unit": "mm",
+          "source": "ru_wikipedia_d0_a2_80_d0_a3",
+          "locator": "Infobox, Длина с пушкой, мм = 9654 (gun-forward; hull 6982)",
+          "state": "length as published; conflict: length_mm: overall length gun-forward; hull 6982 mm",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 3525,
+          "unit": "mm",
+          "source": "ru_wikipedia_d0_a2_80_d0_a3",
+          "locator": "Infobox, Ширина, мм = 3525",
+          "state": "width as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2193,
+          "unit": "mm",
+          "source": "ru_wikipedia_d0_a2_80_d0_a3",
+          "locator": "Infobox, Высота, мм = 2193",
+          "state": "height as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 70,
+          "unit": "km/h",
+          "source": "ru_wikipedia_d0_a2_80_d0_a3",
+          "locator": "Infobox, Скорость по шоссе, км/ч = 70",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "GTD-1250 gas turbine (1250 hp)",
+          "unit": "text",
+          "source": "ru_wikipedia_d0_a2_80_d0_a3",
+          "locator": "Infobox, наименование ГТД-1250; Мощность двигателя, л.с. = 1250",
+          "state": "engine as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

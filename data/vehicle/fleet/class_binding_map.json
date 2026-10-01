@@ -1,0 +1,2400 @@
+{
+  "schema": "aee.vehicle.class_binding_map/1",
+  "bindings": [
+    {
+      "game_class": "rhs_bmp3_late_msv",
+      "catalogue_id": "bmp_3",
+      "real_name": "BMP-3"
+    },
+    {
+      "game_class": "rhs_bmp3_msv",
+      "catalogue_id": "bmp_3",
+      "real_name": "BMP-3"
+    },
+    {
+      "game_class": "rhs_bmp3m_msv",
+      "catalogue_id": "bmp_3",
+      "real_name": "BMP-3"
+    },
+    {
+      "game_class": "rhs_bmp3mera_msv",
+      "catalogue_id": "bmp_3",
+      "real_name": "BMP-3"
+    },
+    {
+      "game_class": "rhs_bmp3tank_base",
+      "catalogue_id": "bmp_3",
+      "real_name": "BMP-3"
+    },
+    {
+      "game_class": "rhs_bmd1",
+      "catalogue_id": "bmd_1",
+      "real_name": "BMD-1"
+    },
+    {
+      "game_class": "rhs_bmd1_base",
+      "catalogue_id": "bmd_1",
+      "real_name": "BMD-1"
+    },
+    {
+      "game_class": "rhsgref_cdf_b_bmd1",
+      "catalogue_id": "bmd_1",
+      "real_name": "BMD-1"
+    },
+    {
+      "game_class": "rhsgref_cdf_bmd1",
+      "catalogue_id": "bmd_1",
+      "real_name": "BMD-1"
+    },
+    {
+      "game_class": "rhsgref_ins_bmd1",
+      "catalogue_id": "bmd_1",
+      "real_name": "BMD-1"
+    },
+    {
+      "game_class": "rhsgref_ins_g_bmd1",
+      "catalogue_id": "bmd_1",
+      "real_name": "BMD-1"
+    },
+    {
+      "game_class": "rhs_bmd1k",
+      "catalogue_id": "bmd_1k",
+      "real_name": "BMD-1K"
+    },
+    {
+      "game_class": "rhsgref_cdf_b_bmd1k",
+      "catalogue_id": "bmd_1k",
+      "real_name": "BMD-1K"
+    },
+    {
+      "game_class": "rhsgref_cdf_bmd1k",
+      "catalogue_id": "bmd_1k",
+      "real_name": "BMD-1K"
+    },
+    {
+      "game_class": "rhs_bmd1p",
+      "catalogue_id": "bmd_1p",
+      "real_name": "BMD-1P"
+    },
+    {
+      "game_class": "rhsgref_cdf_b_bmd1p",
+      "catalogue_id": "bmd_1p",
+      "real_name": "BMD-1P"
+    },
+    {
+      "game_class": "rhsgref_cdf_bmd1p",
+      "catalogue_id": "bmd_1p",
+      "real_name": "BMD-1P"
+    },
+    {
+      "game_class": "rhsgref_ins_bmd1p",
+      "catalogue_id": "bmd_1p",
+      "real_name": "BMD-1P"
+    },
+    {
+      "game_class": "rhsgref_ins_g_bmd1p",
+      "catalogue_id": "bmd_1p",
+      "real_name": "BMD-1P"
+    },
+    {
+      "game_class": "rhs_bmd1pk",
+      "catalogue_id": "bmd_1pk",
+      "real_name": "BMD-1PK"
+    },
+    {
+      "game_class": "rhsgref_cdf_b_bmd1pk",
+      "catalogue_id": "bmd_1pk",
+      "real_name": "BMD-1PK"
+    },
+    {
+      "game_class": "rhsgref_cdf_bmd1pk",
+      "catalogue_id": "bmd_1pk",
+      "real_name": "BMD-1PK"
+    },
+    {
+      "game_class": "rhs_bmd1r",
+      "catalogue_id": "bmd_1r",
+      "real_name": "BMD-1R"
+    },
+    {
+      "game_class": "rhs_bmd_base",
+      "catalogue_id": "bmd_2",
+      "real_name": "BMD-2"
+    },
+    {
+      "game_class": "rhs_bmd2k",
+      "catalogue_id": "bmd_2k",
+      "real_name": "BMD-2K"
+    },
+    {
+      "game_class": "rhsgref_cdf_b_bmd2k",
+      "catalogue_id": "bmd_2k",
+      "real_name": "BMD-2K"
+    },
+    {
+      "game_class": "rhsgref_cdf_bmd2k",
+      "catalogue_id": "bmd_2k",
+      "real_name": "BMD-2K"
+    },
+    {
+      "game_class": "rhs_bmd4_vdv",
+      "catalogue_id": "bmd_4",
+      "real_name": "BMD-4"
+    },
+    {
+      "game_class": "rhs_bmd4m_vdv",
+      "catalogue_id": "bmd_4m",
+      "real_name": "BMD-4M"
+    },
+    {
+      "game_class": "rhs_bmd4ma_vdv",
+      "catalogue_id": "bmd_4m",
+      "real_name": "BMD-4M"
+    },
+    {
+      "game_class": "rhs_brm1k_base",
+      "catalogue_id": "brm_1k",
+      "real_name": "BRM-1K"
+    },
+    {
+      "game_class": "rhs_brm1k_msv",
+      "catalogue_id": "brm_1k",
+      "real_name": "BRM-1K"
+    },
+    {
+      "game_class": "rhs_brm1k_tv",
+      "catalogue_id": "brm_1k",
+      "real_name": "BRM-1K"
+    },
+    {
+      "game_class": "rhs_brm1k_vdv",
+      "catalogue_id": "brm_1k",
+      "real_name": "BRM-1K"
+    },
+    {
+      "game_class": "rhs_brm1k_vmf",
+      "catalogue_id": "brm_1k",
+      "real_name": "BRM-1K"
+    },
+    {
+      "game_class": "rhs_brm1k_vv",
+      "catalogue_id": "brm_1k",
+      "real_name": "BRM-1K"
+    },
+    {
+      "game_class": "rhs_prp3_msv",
+      "catalogue_id": "prp_3",
+      "real_name": "PRP-3"
+    },
+    {
+      "game_class": "rhs_prp3_tv",
+      "catalogue_id": "prp_3",
+      "real_name": "PRP-3"
+    },
+    {
+      "game_class": "rhs_prp3_vdv",
+      "catalogue_id": "prp_3",
+      "real_name": "PRP-3"
+    },
+    {
+      "game_class": "rhs_prp3_vmf",
+      "catalogue_id": "prp_3",
+      "real_name": "PRP-3"
+    },
+    {
+      "game_class": "rhs_prp3_vv",
+      "catalogue_id": "prp_3",
+      "real_name": "PRP-3"
+    },
+    {
+      "game_class": "rhs_a3spruttank_base",
+      "catalogue_id": "2s25_sprut_sd",
+      "real_name": "2S25 Sprut-SD"
+    },
+    {
+      "game_class": "rhs_sprut_vdv",
+      "catalogue_id": "2s25_sprut_sd",
+      "real_name": "2S25 Sprut-SD"
+    },
+    {
+      "game_class": "rhs_bmp1k_msv",
+      "catalogue_id": "bmp_1k",
+      "real_name": "BMP-1K"
+    },
+    {
+      "game_class": "rhs_bmp1k_tv",
+      "catalogue_id": "bmp_1k",
+      "real_name": "BMP-1K"
+    },
+    {
+      "game_class": "rhs_bmp1k_vdv",
+      "catalogue_id": "bmp_1k",
+      "real_name": "BMP-1K"
+    },
+    {
+      "game_class": "rhs_bmp1k_vmf",
+      "catalogue_id": "bmp_1k",
+      "real_name": "BMP-1K"
+    },
+    {
+      "game_class": "rhs_bmp1k_vv",
+      "catalogue_id": "bmp_1k",
+      "real_name": "BMP-1K"
+    },
+    {
+      "game_class": "rhsgref_cdf_b_bmp1k",
+      "catalogue_id": "bmp_1k",
+      "real_name": "BMP-1K"
+    },
+    {
+      "game_class": "rhsgref_cdf_bmp1k",
+      "catalogue_id": "bmp_1k",
+      "real_name": "BMP-1K"
+    },
+    {
+      "game_class": "rhsgref_ins_bmp1k",
+      "catalogue_id": "bmp_1k",
+      "real_name": "BMP-1K"
+    },
+    {
+      "game_class": "rhsgref_ins_g_bmp1k",
+      "catalogue_id": "bmp_1k",
+      "real_name": "BMP-1K"
+    },
+    {
+      "game_class": "rhs_bmp1p_msv",
+      "catalogue_id": "bmp_1p",
+      "real_name": "BMP-1P"
+    },
+    {
+      "game_class": "rhs_bmp1p_tv",
+      "catalogue_id": "bmp_1p",
+      "real_name": "BMP-1P"
+    },
+    {
+      "game_class": "rhs_bmp1p_vdv",
+      "catalogue_id": "bmp_1p",
+      "real_name": "BMP-1P"
+    },
+    {
+      "game_class": "rhs_bmp1p_vmf",
+      "catalogue_id": "bmp_1p",
+      "real_name": "BMP-1P"
+    },
+    {
+      "game_class": "rhs_bmp1p_vv",
+      "catalogue_id": "bmp_1p",
+      "real_name": "BMP-1P"
+    },
+    {
+      "game_class": "rhsgref_cdf_b_bmp1p",
+      "catalogue_id": "bmp_1p",
+      "real_name": "BMP-1P"
+    },
+    {
+      "game_class": "rhsgref_cdf_bmp1p",
+      "catalogue_id": "bmp_1p",
+      "real_name": "BMP-1P"
+    },
+    {
+      "game_class": "rhsgref_ins_bmp1p",
+      "catalogue_id": "bmp_1p",
+      "real_name": "BMP-1P"
+    },
+    {
+      "game_class": "rhsgref_ins_g_bmp1p",
+      "catalogue_id": "bmp_1p",
+      "real_name": "BMP-1P"
+    },
+    {
+      "game_class": "rhs_bmp2k_msv",
+      "catalogue_id": "bmp_2k",
+      "real_name": "BMP-2K"
+    },
+    {
+      "game_class": "rhs_bmp2k_tv",
+      "catalogue_id": "bmp_2k",
+      "real_name": "BMP-2K"
+    },
+    {
+      "game_class": "rhs_bmp2k_vdv",
+      "catalogue_id": "bmp_2k",
+      "real_name": "BMP-2K"
+    },
+    {
+      "game_class": "rhs_bmp2k_vmf",
+      "catalogue_id": "bmp_2k",
+      "real_name": "BMP-2K"
+    },
+    {
+      "game_class": "rhs_bmp2k_vv",
+      "catalogue_id": "bmp_2k",
+      "real_name": "BMP-2K"
+    },
+    {
+      "game_class": "rhsgref_cdf_b_bmp2k",
+      "catalogue_id": "bmp_2k",
+      "real_name": "BMP-2K"
+    },
+    {
+      "game_class": "rhsgref_cdf_bmp2k",
+      "catalogue_id": "bmp_2k",
+      "real_name": "BMP-2K"
+    },
+    {
+      "game_class": "rhsgref_ins_bmp2k",
+      "catalogue_id": "bmp_2k",
+      "real_name": "BMP-2K"
+    },
+    {
+      "game_class": "rhsgref_ins_g_bmp2k",
+      "catalogue_id": "bmp_2k",
+      "real_name": "BMP-2K"
+    },
+    {
+      "game_class": "rhs_a3t72tank_base",
+      "catalogue_id": "t_72b_obr_1984g",
+      "real_name": "T-72B obr. 1984g."
+    },
+    {
+      "game_class": "rhs_t72ba_tv",
+      "catalogue_id": "t_72b_obr_1984g",
+      "real_name": "T-72B obr. 1984g."
+    },
+    {
+      "game_class": "rhs_t72bb_tv",
+      "catalogue_id": "t_72b_obr_1984g",
+      "real_name": "T-72B obr. 1984g."
+    },
+    {
+      "game_class": "rhs_t72bc_tv",
+      "catalogue_id": "t_72b_obr_1984g",
+      "real_name": "T-72B obr. 1984g."
+    },
+    {
+      "game_class": "rhsgref_cdf_b_t72ba_tv",
+      "catalogue_id": "t_72b_obr_1984g",
+      "real_name": "T-72B obr. 1984g."
+    },
+    {
+      "game_class": "rhsgref_cdf_b_t72bb_tv",
+      "catalogue_id": "t_72b_obr_1984g",
+      "real_name": "T-72B obr. 1984g."
+    },
+    {
+      "game_class": "rhsgref_cdf_t72ba_tv",
+      "catalogue_id": "t_72b_obr_1984g",
+      "real_name": "T-72B obr. 1984g."
+    },
+    {
+      "game_class": "rhsgref_cdf_t72bb_tv",
+      "catalogue_id": "t_72b_obr_1984g",
+      "real_name": "T-72B obr. 1984g."
+    },
+    {
+      "game_class": "rhs_a3t72tank_base",
+      "catalogue_id": "t_72b_obr_1984g",
+      "real_name": "T-72B obr. 1985g."
+    },
+    {
+      "game_class": "rhs_t72ba_tv",
+      "catalogue_id": "t_72b_obr_1984g",
+      "real_name": "T-72B obr. 1985g."
+    },
+    {
+      "game_class": "rhs_t72bb_tv",
+      "catalogue_id": "t_72b_obr_1984g",
+      "real_name": "T-72B obr. 1985g."
+    },
+    {
+      "game_class": "rhs_t72bc_tv",
+      "catalogue_id": "t_72b_obr_1984g",
+      "real_name": "T-72B obr. 1985g."
+    },
+    {
+      "game_class": "rhsgref_cdf_b_t72ba_tv",
+      "catalogue_id": "t_72b_obr_1984g",
+      "real_name": "T-72B obr. 1985g."
+    },
+    {
+      "game_class": "rhsgref_cdf_b_t72bb_tv",
+      "catalogue_id": "t_72b_obr_1984g",
+      "real_name": "T-72B obr. 1985g."
+    },
+    {
+      "game_class": "rhsgref_cdf_t72ba_tv",
+      "catalogue_id": "t_72b_obr_1984g",
+      "real_name": "T-72B obr. 1985g."
+    },
+    {
+      "game_class": "rhsgref_cdf_t72bb_tv",
+      "catalogue_id": "t_72b_obr_1984g",
+      "real_name": "T-72B obr. 1985g."
+    },
+    {
+      "game_class": "rhs_a3t72tank_base",
+      "catalogue_id": "t_72b_obr_1984g",
+      "real_name": "T-72B obr. 1989g."
+    },
+    {
+      "game_class": "rhs_t72ba_tv",
+      "catalogue_id": "t_72b_obr_1984g",
+      "real_name": "T-72B obr. 1989g."
+    },
+    {
+      "game_class": "rhs_t72bb_tv",
+      "catalogue_id": "t_72b_obr_1984g",
+      "real_name": "T-72B obr. 1989g."
+    },
+    {
+      "game_class": "rhs_t72bc_tv",
+      "catalogue_id": "t_72b_obr_1984g",
+      "real_name": "T-72B obr. 1989g."
+    },
+    {
+      "game_class": "rhsgref_cdf_b_t72ba_tv",
+      "catalogue_id": "t_72b_obr_1984g",
+      "real_name": "T-72B obr. 1989g."
+    },
+    {
+      "game_class": "rhsgref_cdf_b_t72bb_tv",
+      "catalogue_id": "t_72b_obr_1984g",
+      "real_name": "T-72B obr. 1989g."
+    },
+    {
+      "game_class": "rhsgref_cdf_t72ba_tv",
+      "catalogue_id": "t_72b_obr_1984g",
+      "real_name": "T-72B obr. 1989g."
+    },
+    {
+      "game_class": "rhsgref_cdf_t72bb_tv",
+      "catalogue_id": "t_72b_obr_1984g",
+      "real_name": "T-72B obr. 1989g."
+    },
+    {
+      "game_class": "rhs_t72bd_tv",
+      "catalogue_id": "t_72b3_obr_2012g",
+      "real_name": "T-72B3 obr. 2012g."
+    },
+    {
+      "game_class": "rhs_t72be_tv",
+      "catalogue_id": "t_72b3_obr_2012g",
+      "real_name": "T-72B3 obr. 2012g."
+    },
+    {
+      "game_class": "rhs_t72bd_tv",
+      "catalogue_id": "t_72b3_obr_2012g",
+      "real_name": "T-72B3 obr. 2016g."
+    },
+    {
+      "game_class": "rhs_t72be_tv",
+      "catalogue_id": "t_72b3_obr_2012g",
+      "real_name": "T-72B3 obr. 2016g."
+    },
+    {
+      "game_class": "rhssaf_army_o_t72s",
+      "catalogue_id": "t_72ms",
+      "real_name": "T-72MS"
+    },
+    {
+      "game_class": "rhssaf_army_t72s",
+      "catalogue_id": "t_72ms",
+      "real_name": "T-72MS"
+    },
+    {
+      "game_class": "rhs_t80",
+      "catalogue_id": "t_80",
+      "real_name": "T-80"
+    },
+    {
+      "game_class": "rhs_tank_base",
+      "catalogue_id": "t_80b",
+      "real_name": "T-80B"
+    },
+    {
+      "game_class": "rhs_t80bv",
+      "catalogue_id": "t_80bv",
+      "real_name": "T-80BV"
+    },
+    {
+      "game_class": "rhsgref_cdf_b_t80bv_tv",
+      "catalogue_id": "t_80bv",
+      "real_name": "T-80BV"
+    },
+    {
+      "game_class": "rhsgref_cdf_t80bv_tv",
+      "catalogue_id": "t_80bv",
+      "real_name": "T-80BV"
+    },
+    {
+      "game_class": "rhs_t80bk",
+      "catalogue_id": "t_80bk",
+      "real_name": "T-80BK"
+    },
+    {
+      "game_class": "rhs_t80bvk",
+      "catalogue_id": "t_80bvk",
+      "real_name": "T-80BVK"
+    },
+    {
+      "game_class": "rhs_t80a",
+      "catalogue_id": "t_80a",
+      "real_name": "T-80A"
+    },
+    {
+      "game_class": "rhs_t80u",
+      "catalogue_id": "t_80u",
+      "real_name": "T-80U"
+    },
+    {
+      "game_class": "rhs_t80u45m",
+      "catalogue_id": "t_80u",
+      "real_name": "T-80U"
+    },
+    {
+      "game_class": "rhsgref_cdf_b_t80u_tv",
+      "catalogue_id": "t_80u",
+      "real_name": "T-80U"
+    },
+    {
+      "game_class": "rhsgref_cdf_t80u_tv",
+      "catalogue_id": "t_80u",
+      "real_name": "T-80U"
+    },
+    {
+      "game_class": "rhs_t80um",
+      "catalogue_id": "t_80um",
+      "real_name": "T-80UM"
+    },
+    {
+      "game_class": "rhs_t90saa_tv",
+      "catalogue_id": "t_90sa",
+      "real_name": "T-90SA"
+    },
+    {
+      "game_class": "rhs_t90sab_tv",
+      "catalogue_id": "t_90sa",
+      "real_name": "T-90SA"
+    },
+    {
+      "game_class": "rhs_t90am_tv",
+      "catalogue_id": "t_90am",
+      "real_name": "T-90AM"
+    },
+    {
+      "game_class": "rhs_t90sm_tv",
+      "catalogue_id": "t_90sm",
+      "real_name": "T-90SM"
+    },
+    {
+      "game_class": "rhs_2s3_tv",
+      "catalogue_id": "2s3_akatsiya_2s3m1",
+      "real_name": "2S3 Akatsiya (2S3M1)"
+    },
+    {
+      "game_class": "rhs_2s3tank_base",
+      "catalogue_id": "2s3_akatsiya_2s3m1",
+      "real_name": "2S3 Akatsiya (2S3M1)"
+    },
+    {
+      "game_class": "RHS_BM21_MSV_01",
+      "catalogue_id": "bm_21_grad",
+      "real_name": "BM-21 Grad"
+    },
+    {
+      "game_class": "RHS_BM21_VDV_01",
+      "catalogue_id": "bm_21_grad",
+      "real_name": "BM-21 Grad"
+    },
+    {
+      "game_class": "RHS_BM21_VMF_01",
+      "catalogue_id": "bm_21_grad",
+      "real_name": "BM-21 Grad"
+    },
+    {
+      "game_class": "RHS_BM21_VV_01",
+      "catalogue_id": "bm_21_grad",
+      "real_name": "BM-21 Grad"
+    },
+    {
+      "game_class": "rhsgref_cdf_b_reg_BM21",
+      "catalogue_id": "bm_21_grad",
+      "real_name": "BM-21 Grad"
+    },
+    {
+      "game_class": "rhsgref_cdf_reg_BM21",
+      "catalogue_id": "bm_21_grad",
+      "real_name": "BM-21 Grad"
+    },
+    {
+      "game_class": "rhsgref_ins_BM21",
+      "catalogue_id": "bm_21_grad",
+      "real_name": "BM-21 Grad"
+    },
+    {
+      "game_class": "rhsgref_ins_g_BM21",
+      "catalogue_id": "bm_21_grad",
+      "real_name": "BM-21 Grad"
+    },
+    {
+      "game_class": "rhs_zsu234_aa",
+      "catalogue_id": "zsu_23_4_shilka",
+      "real_name": "ZSU-23-4 Shilka"
+    },
+    {
+      "game_class": "rhs_zsutank_base",
+      "catalogue_id": "zsu_23_4_shilka",
+      "real_name": "ZSU-23-4 Shilka"
+    },
+    {
+      "game_class": "rhsgref_cdf_b_zsu234",
+      "catalogue_id": "zsu_23_4_shilka",
+      "real_name": "ZSU-23-4 Shilka"
+    },
+    {
+      "game_class": "rhsgref_cdf_zsu234",
+      "catalogue_id": "zsu_23_4_shilka",
+      "real_name": "ZSU-23-4 Shilka"
+    },
+    {
+      "game_class": "rhsgref_ins_g_zsu234",
+      "catalogue_id": "zsu_23_4_shilka",
+      "real_name": "ZSU-23-4 Shilka"
+    },
+    {
+      "game_class": "rhsgref_ins_zsu234",
+      "catalogue_id": "zsu_23_4_shilka",
+      "real_name": "ZSU-23-4 Shilka"
+    },
+    {
+      "game_class": "OTR21_Base",
+      "catalogue_id": "9k79_tochka_9p129_1m_tel",
+      "real_name": "9K79 Tochka (9P129-1M TEL)"
+    },
+    {
+      "game_class": "rhs_9k79",
+      "catalogue_id": "9k79_tochka_9p129_1m_tel",
+      "real_name": "9K79 Tochka (9P129-1M TEL)"
+    },
+    {
+      "game_class": "rhs_9k79_B",
+      "catalogue_id": "9k79_tochka_9p129_1m_tel",
+      "real_name": "9K79 Tochka (9P129-1M TEL)"
+    },
+    {
+      "game_class": "rhs_9k79_K",
+      "catalogue_id": "9k79_tochka_9p129_1m_tel",
+      "real_name": "9K79 Tochka (9P129-1M TEL)"
+    },
+    {
+      "game_class": "rhssaf_army_o_pts",
+      "catalogue_id": "pts_m",
+      "real_name": "PTS-M"
+    },
+    {
+      "game_class": "rhssaf_army_pts",
+      "catalogue_id": "pts_m",
+      "real_name": "PTS-M"
+    },
+    {
+      "game_class": "rhs_btr80_msv",
+      "catalogue_id": "btr_80",
+      "real_name": "BTR-80"
+    },
+    {
+      "game_class": "rhs_btr80_vdv",
+      "catalogue_id": "btr_80",
+      "real_name": "BTR-80"
+    },
+    {
+      "game_class": "rhs_btr80_vmf",
+      "catalogue_id": "btr_80",
+      "real_name": "BTR-80"
+    },
+    {
+      "game_class": "rhs_btr80_vv",
+      "catalogue_id": "btr_80",
+      "real_name": "BTR-80"
+    },
+    {
+      "game_class": "rhsgref_cdf_b_btr80",
+      "catalogue_id": "btr_80",
+      "real_name": "BTR-80"
+    },
+    {
+      "game_class": "rhsgref_cdf_btr80",
+      "catalogue_id": "btr_80",
+      "real_name": "BTR-80"
+    },
+    {
+      "game_class": "rhs_btr80a_msv",
+      "catalogue_id": "btr_80a",
+      "real_name": "BTR-80A"
+    },
+    {
+      "game_class": "rhs_btr80a_vdv",
+      "catalogue_id": "btr_80a",
+      "real_name": "BTR-80A"
+    },
+    {
+      "game_class": "rhs_btr80a_vmf",
+      "catalogue_id": "btr_80a",
+      "real_name": "BTR-80A"
+    },
+    {
+      "game_class": "rhs_btr80a_vv",
+      "catalogue_id": "btr_80a",
+      "real_name": "BTR-80A"
+    },
+    {
+      "game_class": "RHS_UAZ_Base",
+      "catalogue_id": "uaz_3151",
+      "real_name": "UAZ-3151"
+    },
+    {
+      "game_class": "RHS_UAZ_MSV_01",
+      "catalogue_id": "uaz_3151",
+      "real_name": "UAZ-3151"
+    },
+    {
+      "game_class": "RHS_UAZ_MSV_Base",
+      "catalogue_id": "uaz_3151",
+      "real_name": "UAZ-3151"
+    },
+    {
+      "game_class": "rhs_uaz_open_Base",
+      "catalogue_id": "uaz_3151",
+      "real_name": "UAZ-3151"
+    },
+    {
+      "game_class": "rhs_uaz_open_MSV_01",
+      "catalogue_id": "uaz_3151",
+      "real_name": "UAZ-3151"
+    },
+    {
+      "game_class": "rhs_uaz_open_MSV_Base",
+      "catalogue_id": "uaz_3151",
+      "real_name": "UAZ-3151"
+    },
+    {
+      "game_class": "rhs_uaz_open_vdv",
+      "catalogue_id": "uaz_3151",
+      "real_name": "UAZ-3151"
+    },
+    {
+      "game_class": "rhs_uaz_open_vmf",
+      "catalogue_id": "uaz_3151",
+      "real_name": "UAZ-3151"
+    },
+    {
+      "game_class": "rhs_uaz_open_vv",
+      "catalogue_id": "uaz_3151",
+      "real_name": "UAZ-3151"
+    },
+    {
+      "game_class": "rhs_uaz_vdv",
+      "catalogue_id": "uaz_3151",
+      "real_name": "UAZ-3151"
+    },
+    {
+      "game_class": "rhs_uaz_vmf",
+      "catalogue_id": "uaz_3151",
+      "real_name": "UAZ-3151"
+    },
+    {
+      "game_class": "rhs_uaz_vv",
+      "catalogue_id": "uaz_3151",
+      "real_name": "UAZ-3151"
+    },
+    {
+      "game_class": "rhsgref_cdf_b_reg_uaz",
+      "catalogue_id": "uaz_3151",
+      "real_name": "UAZ-3151"
+    },
+    {
+      "game_class": "rhsgref_cdf_b_reg_uaz_open",
+      "catalogue_id": "uaz_3151",
+      "real_name": "UAZ-3151"
+    },
+    {
+      "game_class": "rhsgref_cdf_reg_uaz",
+      "catalogue_id": "uaz_3151",
+      "real_name": "UAZ-3151"
+    },
+    {
+      "game_class": "rhsgref_cdf_reg_uaz_open",
+      "catalogue_id": "uaz_3151",
+      "real_name": "UAZ-3151"
+    },
+    {
+      "game_class": "rhsgref_un_uaz",
+      "catalogue_id": "uaz_3151",
+      "real_name": "UAZ-3151"
+    },
+    {
+      "game_class": "rhssaf_un_uaz",
+      "catalogue_id": "uaz_3151",
+      "real_name": "UAZ-3151"
+    },
+    {
+      "game_class": "rhssaf_un_uaz_open",
+      "catalogue_id": "uaz_3151",
+      "real_name": "UAZ-3151"
+    },
+    {
+      "game_class": "rhs_gaz66_ap2_base",
+      "catalogue_id": "gaz_66_ap_2",
+      "real_name": "GAZ-66 AP-2"
+    },
+    {
+      "game_class": "rhs_gaz66_ap2_msv",
+      "catalogue_id": "gaz_66_ap_2",
+      "real_name": "GAZ-66 AP-2"
+    },
+    {
+      "game_class": "rhs_gaz66_ap2_vdv",
+      "catalogue_id": "gaz_66_ap_2",
+      "real_name": "GAZ-66 AP-2"
+    },
+    {
+      "game_class": "rhs_gaz66_ap2_vmf",
+      "catalogue_id": "gaz_66_ap_2",
+      "real_name": "GAZ-66 AP-2"
+    },
+    {
+      "game_class": "rhs_gaz66_ap2_vv",
+      "catalogue_id": "gaz_66_ap_2",
+      "real_name": "GAZ-66 AP-2"
+    },
+    {
+      "game_class": "rhsgref_cdf_b_gaz66_ap2",
+      "catalogue_id": "gaz_66_ap_2",
+      "real_name": "GAZ-66 AP-2"
+    },
+    {
+      "game_class": "rhsgref_cdf_gaz66_ap2",
+      "catalogue_id": "gaz_66_ap_2",
+      "real_name": "GAZ-66 AP-2"
+    },
+    {
+      "game_class": "rhsgref_ins_g_gaz66_ap2",
+      "catalogue_id": "gaz_66_ap_2",
+      "real_name": "GAZ-66 AP-2"
+    },
+    {
+      "game_class": "rhsgref_ins_gaz66_ap2",
+      "catalogue_id": "gaz_66_ap_2",
+      "real_name": "GAZ-66 AP-2"
+    },
+    {
+      "game_class": "rhs_gaz66_repair_base",
+      "catalogue_id": "gaz_66_esb_8im",
+      "real_name": "GAZ-66 ESB-8IM"
+    },
+    {
+      "game_class": "rhs_gaz66_repair_msv",
+      "catalogue_id": "gaz_66_esb_8im",
+      "real_name": "GAZ-66 ESB-8IM"
+    },
+    {
+      "game_class": "rhs_gaz66_repair_vdv",
+      "catalogue_id": "gaz_66_esb_8im",
+      "real_name": "GAZ-66 ESB-8IM"
+    },
+    {
+      "game_class": "rhs_gaz66_repair_vmf",
+      "catalogue_id": "gaz_66_esb_8im",
+      "real_name": "GAZ-66 ESB-8IM"
+    },
+    {
+      "game_class": "rhs_gaz66_repair_vv",
+      "catalogue_id": "gaz_66_esb_8im",
+      "real_name": "GAZ-66 ESB-8IM"
+    },
+    {
+      "game_class": "rhsgref_cdf_b_gaz66_repair",
+      "catalogue_id": "gaz_66_esb_8im",
+      "real_name": "GAZ-66 ESB-8IM"
+    },
+    {
+      "game_class": "rhsgref_cdf_gaz66_repair",
+      "catalogue_id": "gaz_66_esb_8im",
+      "real_name": "GAZ-66 ESB-8IM"
+    },
+    {
+      "game_class": "rhsgref_ins_g_gaz66_repair",
+      "catalogue_id": "gaz_66_esb_8im",
+      "real_name": "GAZ-66 ESB-8IM"
+    },
+    {
+      "game_class": "rhsgref_ins_gaz66_repair",
+      "catalogue_id": "gaz_66_esb_8im",
+      "real_name": "GAZ-66 ESB-8IM"
+    },
+    {
+      "game_class": "rhs_tigr_3camo_msv",
+      "catalogue_id": "gaz_233011_gaz_tigr",
+      "real_name": "GAZ-233011 (GAZ Tigr)"
+    },
+    {
+      "game_class": "rhs_tigr_3camo_vdv",
+      "catalogue_id": "gaz_233011_gaz_tigr",
+      "real_name": "GAZ-233011 (GAZ Tigr)"
+    },
+    {
+      "game_class": "rhs_tigr_3camo_vmf",
+      "catalogue_id": "gaz_233011_gaz_tigr",
+      "real_name": "GAZ-233011 (GAZ Tigr)"
+    },
+    {
+      "game_class": "rhs_tigr_3camo_vv",
+      "catalogue_id": "gaz_233011_gaz_tigr",
+      "real_name": "GAZ-233011 (GAZ Tigr)"
+    },
+    {
+      "game_class": "rhs_tigr_ffv_3camo_msv",
+      "catalogue_id": "gaz_233011_gaz_tigr",
+      "real_name": "GAZ-233011 (GAZ Tigr)"
+    },
+    {
+      "game_class": "rhs_tigr_ffv_3camo_vdv",
+      "catalogue_id": "gaz_233011_gaz_tigr",
+      "real_name": "GAZ-233011 (GAZ Tigr)"
+    },
+    {
+      "game_class": "rhs_tigr_ffv_3camo_vmf",
+      "catalogue_id": "gaz_233011_gaz_tigr",
+      "real_name": "GAZ-233011 (GAZ Tigr)"
+    },
+    {
+      "game_class": "rhs_tigr_ffv_3camo_vv",
+      "catalogue_id": "gaz_233011_gaz_tigr",
+      "real_name": "GAZ-233011 (GAZ Tigr)"
+    },
+    {
+      "game_class": "rhs_tigr_ffv_msv",
+      "catalogue_id": "gaz_233011_gaz_tigr",
+      "real_name": "GAZ-233011 (GAZ Tigr)"
+    },
+    {
+      "game_class": "rhs_tigr_ffv_vdv",
+      "catalogue_id": "gaz_233011_gaz_tigr",
+      "real_name": "GAZ-233011 (GAZ Tigr)"
+    },
+    {
+      "game_class": "rhs_tigr_ffv_vmf",
+      "catalogue_id": "gaz_233011_gaz_tigr",
+      "real_name": "GAZ-233011 (GAZ Tigr)"
+    },
+    {
+      "game_class": "rhs_tigr_ffv_vv",
+      "catalogue_id": "gaz_233011_gaz_tigr",
+      "real_name": "GAZ-233011 (GAZ Tigr)"
+    },
+    {
+      "game_class": "rhs_tigr_sts_3camo_msv",
+      "catalogue_id": "gaz_233014_tigr_with_arbalet_turret",
+      "real_name": "GAZ-233014 (Tigr with Arbalet turret)"
+    },
+    {
+      "game_class": "rhs_tigr_sts_3camo_vdv",
+      "catalogue_id": "gaz_233014_tigr_with_arbalet_turret",
+      "real_name": "GAZ-233014 (Tigr with Arbalet turret)"
+    },
+    {
+      "game_class": "rhs_tigr_sts_3camo_vmf",
+      "catalogue_id": "gaz_233014_tigr_with_arbalet_turret",
+      "real_name": "GAZ-233014 (Tigr with Arbalet turret)"
+    },
+    {
+      "game_class": "rhs_tigr_sts_3camo_vv",
+      "catalogue_id": "gaz_233014_tigr_with_arbalet_turret",
+      "real_name": "GAZ-233014 (Tigr with Arbalet turret)"
+    },
+    {
+      "game_class": "rhs_tigr_sts_msv",
+      "catalogue_id": "gaz_233014_tigr_with_arbalet_turret",
+      "real_name": "GAZ-233014 (Tigr with Arbalet turret)"
+    },
+    {
+      "game_class": "rhs_tigr_sts_vdv",
+      "catalogue_id": "gaz_233014_tigr_with_arbalet_turret",
+      "real_name": "GAZ-233014 (Tigr with Arbalet turret)"
+    },
+    {
+      "game_class": "rhs_tigr_sts_vmf",
+      "catalogue_id": "gaz_233014_tigr_with_arbalet_turret",
+      "real_name": "GAZ-233014 (Tigr with Arbalet turret)"
+    },
+    {
+      "game_class": "rhs_tigr_sts_vv",
+      "catalogue_id": "gaz_233014_tigr_with_arbalet_turret",
+      "real_name": "GAZ-233014 (Tigr with Arbalet turret)"
+    },
+    {
+      "game_class": "rhs_tigr_m_3camo_msv",
+      "catalogue_id": "gaz_233114_tigr_m",
+      "real_name": "GAZ-233114 (Tigr-M)"
+    },
+    {
+      "game_class": "rhs_tigr_m_3camo_vdv",
+      "catalogue_id": "gaz_233114_tigr_m",
+      "real_name": "GAZ-233114 (Tigr-M)"
+    },
+    {
+      "game_class": "rhs_tigr_m_3camo_vmf",
+      "catalogue_id": "gaz_233114_tigr_m",
+      "real_name": "GAZ-233114 (Tigr-M)"
+    },
+    {
+      "game_class": "rhs_tigr_m_3camo_vv",
+      "catalogue_id": "gaz_233114_tigr_m",
+      "real_name": "GAZ-233114 (Tigr-M)"
+    },
+    {
+      "game_class": "rhs_tigr_m_msv",
+      "catalogue_id": "gaz_233114_tigr_m",
+      "real_name": "GAZ-233114 (Tigr-M)"
+    },
+    {
+      "game_class": "rhs_tigr_m_vdv",
+      "catalogue_id": "gaz_233114_tigr_m",
+      "real_name": "GAZ-233114 (Tigr-M)"
+    },
+    {
+      "game_class": "rhs_tigr_m_vmf",
+      "catalogue_id": "gaz_233114_tigr_m",
+      "real_name": "GAZ-233114 (Tigr-M)"
+    },
+    {
+      "game_class": "rhs_tigr_m_vv",
+      "catalogue_id": "gaz_233114_tigr_m",
+      "real_name": "GAZ-233114 (Tigr-M)"
+    },
+    {
+      "game_class": "rhs_typhoon_base",
+      "catalogue_id": "kamaz_63968_typhoon_k",
+      "real_name": "KAMAZ-63968 Typhoon-K"
+    },
+    {
+      "game_class": "rhs_typhoon_vdv",
+      "catalogue_id": "kamaz_63968_typhoon_k",
+      "real_name": "KAMAZ-63968 Typhoon-K"
+    },
+    {
+      "game_class": "rhs_kamaz5350",
+      "catalogue_id": "kamaz_5350_mustang",
+      "real_name": "KAMAZ-5350 Mustang"
+    },
+    {
+      "game_class": "rhs_kamaz5350_ammo_base",
+      "catalogue_id": "kamaz_5350_mustang",
+      "real_name": "KAMAZ-5350 Mustang"
+    },
+    {
+      "game_class": "rhs_kamaz5350_ammo_msv",
+      "catalogue_id": "kamaz_5350_mustang",
+      "real_name": "KAMAZ-5350 Mustang"
+    },
+    {
+      "game_class": "rhs_kamaz5350_ammo_vdv",
+      "catalogue_id": "kamaz_5350_mustang",
+      "real_name": "KAMAZ-5350 Mustang"
+    },
+    {
+      "game_class": "rhs_kamaz5350_ammo_vmf",
+      "catalogue_id": "kamaz_5350_mustang",
+      "real_name": "KAMAZ-5350 Mustang"
+    },
+    {
+      "game_class": "rhs_kamaz5350_ammo_vv",
+      "catalogue_id": "kamaz_5350_mustang",
+      "real_name": "KAMAZ-5350 Mustang"
+    },
+    {
+      "game_class": "rhs_kamaz5350_flatbed",
+      "catalogue_id": "kamaz_5350_mustang",
+      "real_name": "KAMAZ-5350 Mustang"
+    },
+    {
+      "game_class": "rhs_kamaz5350_flatbed_cover",
+      "catalogue_id": "kamaz_5350_mustang",
+      "real_name": "KAMAZ-5350 Mustang"
+    },
+    {
+      "game_class": "rhs_kamaz5350_flatbed_cover_msv",
+      "catalogue_id": "kamaz_5350_mustang",
+      "real_name": "KAMAZ-5350 Mustang"
+    },
+    {
+      "game_class": "rhs_kamaz5350_flatbed_cover_vdv",
+      "catalogue_id": "kamaz_5350_mustang",
+      "real_name": "KAMAZ-5350 Mustang"
+    },
+    {
+      "game_class": "rhs_kamaz5350_flatbed_cover_vmf",
+      "catalogue_id": "kamaz_5350_mustang",
+      "real_name": "KAMAZ-5350 Mustang"
+    },
+    {
+      "game_class": "rhs_kamaz5350_flatbed_cover_vv",
+      "catalogue_id": "kamaz_5350_mustang",
+      "real_name": "KAMAZ-5350 Mustang"
+    },
+    {
+      "game_class": "rhs_kamaz5350_flatbed_msv",
+      "catalogue_id": "kamaz_5350_mustang",
+      "real_name": "KAMAZ-5350 Mustang"
+    },
+    {
+      "game_class": "rhs_kamaz5350_flatbed_vdv",
+      "catalogue_id": "kamaz_5350_mustang",
+      "real_name": "KAMAZ-5350 Mustang"
+    },
+    {
+      "game_class": "rhs_kamaz5350_flatbed_vmf",
+      "catalogue_id": "kamaz_5350_mustang",
+      "real_name": "KAMAZ-5350 Mustang"
+    },
+    {
+      "game_class": "rhs_kamaz5350_flatbed_vv",
+      "catalogue_id": "kamaz_5350_mustang",
+      "real_name": "KAMAZ-5350 Mustang"
+    },
+    {
+      "game_class": "rhs_kamaz5350_msv",
+      "catalogue_id": "kamaz_5350_mustang",
+      "real_name": "KAMAZ-5350 Mustang"
+    },
+    {
+      "game_class": "rhs_kamaz5350_open",
+      "catalogue_id": "kamaz_5350_mustang",
+      "real_name": "KAMAZ-5350 Mustang"
+    },
+    {
+      "game_class": "rhs_kamaz5350_open_msv",
+      "catalogue_id": "kamaz_5350_mustang",
+      "real_name": "KAMAZ-5350 Mustang"
+    },
+    {
+      "game_class": "rhs_kamaz5350_open_vdv",
+      "catalogue_id": "kamaz_5350_mustang",
+      "real_name": "KAMAZ-5350 Mustang"
+    },
+    {
+      "game_class": "rhs_kamaz5350_open_vmf",
+      "catalogue_id": "kamaz_5350_mustang",
+      "real_name": "KAMAZ-5350 Mustang"
+    },
+    {
+      "game_class": "rhs_kamaz5350_open_vv",
+      "catalogue_id": "kamaz_5350_mustang",
+      "real_name": "KAMAZ-5350 Mustang"
+    },
+    {
+      "game_class": "rhs_kamaz5350_vdv",
+      "catalogue_id": "kamaz_5350_mustang",
+      "real_name": "KAMAZ-5350 Mustang"
+    },
+    {
+      "game_class": "rhs_kamaz5350_vmf",
+      "catalogue_id": "kamaz_5350_mustang",
+      "real_name": "KAMAZ-5350 Mustang"
+    },
+    {
+      "game_class": "rhs_kamaz5350_vv",
+      "catalogue_id": "kamaz_5350_mustang",
+      "real_name": "KAMAZ-5350 Mustang"
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_D_flatbed_fmtv_usarmy",
+      "catalogue_id": "m1078a1p2",
+      "real_name": "M1078A1P2"
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_D_fmtv_usarmy",
+      "catalogue_id": "m1078a1p2",
+      "real_name": "M1078A1P2"
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_D_open_fmtv_usarmy",
+      "catalogue_id": "m1078a1p2",
+      "real_name": "M1078A1P2"
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_WD_flatbed_fmtv_usarmy",
+      "catalogue_id": "m1078a1p2",
+      "real_name": "M1078A1P2"
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_WD_fmtv_usarmy",
+      "catalogue_id": "m1078a1p2",
+      "real_name": "M1078A1P2"
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_WD_open_fmtv_usarmy",
+      "catalogue_id": "m1078a1p2",
+      "real_name": "M1078A1P2"
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_flatbed_fmtv_usarmy",
+      "catalogue_id": "m1078a1p2",
+      "real_name": "M1078A1P2"
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_fmtv_usarmy",
+      "catalogue_id": "m1078a1p2",
+      "real_name": "M1078A1P2"
+    },
+    {
+      "game_class": "rhsusf_M1078A1P2_open_fmtv_usarmy",
+      "catalogue_id": "m1078a1p2",
+      "real_name": "M1078A1P2"
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_D_flatbed_fmtv_usarmy",
+      "catalogue_id": "m1083a1p2",
+      "real_name": "M1083A1P2"
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_D_fmtv_usarmy",
+      "catalogue_id": "m1083a1p2",
+      "real_name": "M1083A1P2"
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_D_open_fmtv_usarmy",
+      "catalogue_id": "m1083a1p2",
+      "real_name": "M1083A1P2"
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_WD_flatbed_fmtv_usarmy",
+      "catalogue_id": "m1083a1p2",
+      "real_name": "M1083A1P2"
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_WD_fmtv_usarmy",
+      "catalogue_id": "m1083a1p2",
+      "real_name": "M1083A1P2"
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_WD_open_fmtv_usarmy",
+      "catalogue_id": "m1083a1p2",
+      "real_name": "M1083A1P2"
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_flatbed_fmtv_usarmy",
+      "catalogue_id": "m1083a1p2",
+      "real_name": "M1083A1P2"
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_fmtv_usarmy",
+      "catalogue_id": "m1083a1p2",
+      "real_name": "M1083A1P2"
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_open_fmtv_usarmy",
+      "catalogue_id": "m1083a1p2",
+      "real_name": "M1083A1P2"
+    },
+    {
+      "game_class": "rhsusf_M1084A1P2_D_fmtv_usarmy",
+      "catalogue_id": "m1084a1p2",
+      "real_name": "M1084A1P2"
+    },
+    {
+      "game_class": "rhsusf_M1084A1P2_WD_fmtv_usarmy",
+      "catalogue_id": "m1084a1p2",
+      "real_name": "M1084A1P2"
+    },
+    {
+      "game_class": "rhsusf_M1084A1P2_fmtv_usarmy",
+      "catalogue_id": "m1084a1p2",
+      "real_name": "M1084A1P2"
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_B_M2_d_Medical_fmtv_usarmy",
+      "catalogue_id": "m1085a1p2",
+      "real_name": "M1085A1P2"
+    },
+    {
+      "game_class": "rhsusf_M1083A1P2_B_M2_wd_Medical_fmtv_usarmy",
+      "catalogue_id": "m1085a1p2",
+      "real_name": "M1085A1P2"
+    },
+    {
+      "game_class": "rhsusf_M1085A1P2_B_D_Medical_fmtv_usarmy",
+      "catalogue_id": "m1085a1p2",
+      "real_name": "M1085A1P2"
+    },
+    {
+      "game_class": "rhsusf_M1085A1P2_B_Medical_fmtv_usarmy",
+      "catalogue_id": "m1085a1p2",
+      "real_name": "M1085A1P2"
+    },
+    {
+      "game_class": "rhsusf_M1085A1P2_B_WD_Medical_fmtv_usarmy",
+      "catalogue_id": "m1085a1p2",
+      "real_name": "M1085A1P2"
+    },
+    {
+      "game_class": "rhsusf_M977A4_AMMO_BKIT_M2_usarmy_d",
+      "catalogue_id": "m977a4",
+      "real_name": "M977A4"
+    },
+    {
+      "game_class": "rhsusf_M977A4_AMMO_BKIT_M2_usarmy_wd",
+      "catalogue_id": "m977a4",
+      "real_name": "M977A4"
+    },
+    {
+      "game_class": "rhsusf_M977A4_AMMO_BKIT_usarmy_d",
+      "catalogue_id": "m977a4",
+      "real_name": "M977A4"
+    },
+    {
+      "game_class": "rhsusf_M977A4_AMMO_BKIT_usarmy_wd",
+      "catalogue_id": "m977a4",
+      "real_name": "M977A4"
+    },
+    {
+      "game_class": "rhsusf_M977A4_AMMO_usarmy_d",
+      "catalogue_id": "m977a4",
+      "real_name": "M977A4"
+    },
+    {
+      "game_class": "rhsusf_M977A4_AMMO_usarmy_wd",
+      "catalogue_id": "m977a4",
+      "real_name": "M977A4"
+    },
+    {
+      "game_class": "rhsusf_M977A4_BKIT_M2_usarmy_d",
+      "catalogue_id": "m977a4",
+      "real_name": "M977A4"
+    },
+    {
+      "game_class": "rhsusf_M977A4_BKIT_M2_usarmy_wd",
+      "catalogue_id": "m977a4",
+      "real_name": "M977A4"
+    },
+    {
+      "game_class": "rhsusf_M977A4_BKIT_usarmy_d",
+      "catalogue_id": "m977a4",
+      "real_name": "M977A4"
+    },
+    {
+      "game_class": "rhsusf_M977A4_BKIT_usarmy_wd",
+      "catalogue_id": "m977a4",
+      "real_name": "M977A4"
+    },
+    {
+      "game_class": "rhsusf_M977A4_REPAIR_BKIT_M2_usarmy_d",
+      "catalogue_id": "m977a4",
+      "real_name": "M977A4"
+    },
+    {
+      "game_class": "rhsusf_M977A4_REPAIR_BKIT_M2_usarmy_wd",
+      "catalogue_id": "m977a4",
+      "real_name": "M977A4"
+    },
+    {
+      "game_class": "rhsusf_M977A4_REPAIR_BKIT_usarmy_d",
+      "catalogue_id": "m977a4",
+      "real_name": "M977A4"
+    },
+    {
+      "game_class": "rhsusf_M977A4_REPAIR_BKIT_usarmy_wd",
+      "catalogue_id": "m977a4",
+      "real_name": "M977A4"
+    },
+    {
+      "game_class": "rhsusf_M977A4_REPAIR_usarmy_d",
+      "catalogue_id": "m977a4",
+      "real_name": "M977A4"
+    },
+    {
+      "game_class": "rhsusf_M977A4_REPAIR_usarmy_wd",
+      "catalogue_id": "m977a4",
+      "real_name": "M977A4"
+    },
+    {
+      "game_class": "rhsusf_M977A4_usarmy_d",
+      "catalogue_id": "m977a4",
+      "real_name": "M977A4"
+    },
+    {
+      "game_class": "rhsusf_M977A4_usarmy_wd",
+      "catalogue_id": "m977a4",
+      "real_name": "M977A4"
+    },
+    {
+      "game_class": "rhssaf_army_o_m1151_olive",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhssaf_army_o_m1151_olive_pkm",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhssaf_m1151_olive",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhssaf_m1151_olive_pkm",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_M1151_CROWS_M2_base",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_M1151_CROWS_Mk19_base",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_M1151_GPK_M240_base",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_M1151_GPK_M2_base",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_M1151_GPK_MK19_base",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_M1151_GPK_PKM_base",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_M1151_M2_LRAS3_base",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_M1151_MCTAGS_M240_base",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_M1151_MCTAGS_M2_base",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_M1151_MCTAGS_Mk19_base",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_M1151_OGPK_M240_base",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_M1151_OGPK_M2_base",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_M1151_OGPK_MK19_base",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_base",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_m240_v1_usarmy_d",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_m240_v1_usarmy_wd",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_m240_v2_usarmy_d",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_m240_v2_usarmy_wd",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_m240_v3_usmc_d",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_m240_v3_usmc_wd",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_m2_lras3_v1_usarmy_d",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_m2_lras3_v1_usarmy_wd",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_m2_v1_usarmy_d",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_m2_v1_usarmy_wd",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_m2_v2_usarmy_d",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_m2_v2_usarmy_wd",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_m2_v3_usmc_d",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_m2_v3_usmc_wd",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_m2crows_usarmy_d",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_m2crows_usarmy_wd",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_m2crows_usmc_d",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_m2crows_usmc_wd",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_mk19_v1_usarmy_d",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_mk19_v1_usarmy_wd",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_mk19_v2_usarmy_d",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_mk19_v2_usarmy_wd",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_mk19_v3_usmc_d",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_mk19_v3_usmc_wd",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_mk19crows_usarmy_d",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_mk19crows_usarmy_wd",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_mk19crows_usmc_d",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_mk19crows_usmc_wd",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_usarmy_d",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_usarmy_wd",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_usmc_d",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhsusf_m1151_usmc_wd",
+      "catalogue_id": "m1151a1",
+      "real_name": "M1151A1"
+    },
+    {
+      "game_class": "rhssaf_army_o_m1152_olive",
+      "catalogue_id": "m1152a1",
+      "real_name": "M1152A1"
+    },
+    {
+      "game_class": "rhssaf_army_o_m1152_rsv_olive",
+      "catalogue_id": "m1152a1",
+      "real_name": "M1152A1"
+    },
+    {
+      "game_class": "rhssaf_m1152_olive",
+      "catalogue_id": "m1152a1",
+      "real_name": "M1152A1"
+    },
+    {
+      "game_class": "rhssaf_m1152_rsv_olive",
+      "catalogue_id": "m1152a1",
+      "real_name": "M1152A1"
+    },
+    {
+      "game_class": "rhsusf_m1152_base",
+      "catalogue_id": "m1152a1",
+      "real_name": "M1152A1"
+    },
+    {
+      "game_class": "rhsusf_m1152_rsv_usarmy_d",
+      "catalogue_id": "m1152a1",
+      "real_name": "M1152A1"
+    },
+    {
+      "game_class": "rhsusf_m1152_rsv_usarmy_wd",
+      "catalogue_id": "m1152a1",
+      "real_name": "M1152A1"
+    },
+    {
+      "game_class": "rhsusf_m1152_rsv_usmc_d",
+      "catalogue_id": "m1152a1",
+      "real_name": "M1152A1"
+    },
+    {
+      "game_class": "rhsusf_m1152_rsv_usmc_wd",
+      "catalogue_id": "m1152a1",
+      "real_name": "M1152A1"
+    },
+    {
+      "game_class": "rhsusf_m1152_sicps_base",
+      "catalogue_id": "m1152a1",
+      "real_name": "M1152A1"
+    },
+    {
+      "game_class": "rhsusf_m1152_sicps_usarmy_d",
+      "catalogue_id": "m1152a1",
+      "real_name": "M1152A1"
+    },
+    {
+      "game_class": "rhsusf_m1152_sicps_usarmy_wd",
+      "catalogue_id": "m1152a1",
+      "real_name": "M1152A1"
+    },
+    {
+      "game_class": "rhsusf_m1152_tcv_base",
+      "catalogue_id": "m1152a1",
+      "real_name": "M1152A1"
+    },
+    {
+      "game_class": "rhsusf_m1152_usarmy_d",
+      "catalogue_id": "m1152a1",
+      "real_name": "M1152A1"
+    },
+    {
+      "game_class": "rhsusf_m1152_usarmy_wd",
+      "catalogue_id": "m1152a1",
+      "real_name": "M1152A1"
+    },
+    {
+      "game_class": "rhsusf_m1152_usmc_d",
+      "catalogue_id": "m1152a1",
+      "real_name": "M1152A1"
+    },
+    {
+      "game_class": "rhsusf_m1152_usmc_wd",
+      "catalogue_id": "m1152a1",
+      "real_name": "M1152A1"
+    },
+    {
+      "game_class": "rhsusf_M1165A1_GMV_SAG2_M134D_M240_base",
+      "catalogue_id": "m1165a1",
+      "real_name": "M1165A1"
+    },
+    {
+      "game_class": "rhsusf_M1165A1_GMV_SAG2_M2_M240_base",
+      "catalogue_id": "m1165a1",
+      "real_name": "M1165A1"
+    },
+    {
+      "game_class": "rhsusf_M1165A1_GMV_SAG2_Mk19_M240_base",
+      "catalogue_id": "m1165a1",
+      "real_name": "M1165A1"
+    },
+    {
+      "game_class": "rhsusf_M1165_ASV_OGPK_M240_base",
+      "catalogue_id": "m1165a1",
+      "real_name": "M1165A1"
+    },
+    {
+      "game_class": "rhsusf_m1165_asv_m240_usaf_d",
+      "catalogue_id": "m1165a1",
+      "real_name": "M1165A1"
+    },
+    {
+      "game_class": "rhsusf_m1165_asv_m240_usaf_wd",
+      "catalogue_id": "m1165a1",
+      "real_name": "M1165A1"
+    },
+    {
+      "game_class": "rhsusf_m1165_base",
+      "catalogue_id": "m1165a1",
+      "real_name": "M1165A1"
+    },
+    {
+      "game_class": "rhsusf_m1165_usarmy_d",
+      "catalogue_id": "m1165a1",
+      "real_name": "M1165A1"
+    },
+    {
+      "game_class": "rhsusf_m1165_usarmy_wd",
+      "catalogue_id": "m1165a1",
+      "real_name": "M1165A1"
+    },
+    {
+      "game_class": "rhsusf_m1165_usmc_d",
+      "catalogue_id": "m1165a1",
+      "real_name": "M1165A1"
+    },
+    {
+      "game_class": "rhsusf_m1165_usmc_wd",
+      "catalogue_id": "m1165a1",
+      "real_name": "M1165A1"
+    },
+    {
+      "game_class": "rhsusf_m1165a1_gmv_m134d_m240_socom_d",
+      "catalogue_id": "m1165a1",
+      "real_name": "M1165A1"
+    },
+    {
+      "game_class": "rhsusf_m1165a1_gmv_m2_m240_socom_d",
+      "catalogue_id": "m1165a1",
+      "real_name": "M1165A1"
+    },
+    {
+      "game_class": "rhsusf_m1165a1_gmv_mk19_m240_socom_d",
+      "catalogue_id": "m1165a1",
+      "real_name": "M1165A1"
+    },
+    {
+      "game_class": "rhsgref_hidf_M998_2dr",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhsgref_hidf_M998_2dr_fulltop",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhsgref_hidf_M998_2dr_halftop",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhsgref_hidf_M998_4dr_fulltop",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhsgref_hidf_M998_4dr_halftop",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhsgref_hidf_m998_4dr",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhssaf_army_o_m998_olive_2dr_fulltop",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhssaf_army_o_m998_olive_2dr_halftop",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhssaf_m998_olive_2dr_fulltop",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhssaf_m998_olive_2dr_halftop",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhsusf_m998_d_2dr",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhsusf_m998_d_2dr_fulltop",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhsusf_m998_d_2dr_halftop",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhsusf_m998_d_4dr",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhsusf_m998_d_4dr_fulltop",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhsusf_m998_d_4dr_halftop",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhsusf_m998_d_s_2dr",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhsusf_m998_d_s_2dr_fulltop",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhsusf_m998_d_s_2dr_halftop",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhsusf_m998_d_s_4dr",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhsusf_m998_d_s_4dr_fulltop",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhsusf_m998_d_s_4dr_halftop",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhsusf_m998_w_2dr",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhsusf_m998_w_2dr_fulltop",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhsusf_m998_w_2dr_halftop",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhsusf_m998_w_4dr",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhsusf_m998_w_4dr_fulltop",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhsusf_m998_w_4dr_halftop",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhsusf_m998_w_s_2dr",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhsusf_m998_w_s_2dr_fulltop",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhsusf_m998_w_s_2dr_halftop",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhsusf_m998_w_s_4dr",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhsusf_m998_w_s_4dr_fulltop",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhsusf_m998_w_s_4dr_halftop",
+      "catalogue_id": "hmmwv_m998",
+      "real_name": "M998"
+    },
+    {
+      "game_class": "rhsusf_m1a1aim_tuski_d",
+      "catalogue_id": "m1a1_aim",
+      "real_name": "M1A1 AIM"
+    },
+    {
+      "game_class": "rhsusf_m1a1aim_tuski_wd",
+      "catalogue_id": "m1a1_aim",
+      "real_name": "M1A1 AIM"
+    },
+    {
+      "game_class": "rhsusf_m1a1aimd_usarmy",
+      "catalogue_id": "m1a1_aim",
+      "real_name": "M1A1 AIM"
+    },
+    {
+      "game_class": "rhsusf_m1a1aimwd_usarmy",
+      "catalogue_id": "m1a1_aim",
+      "real_name": "M1A1 AIM"
+    },
+    {
+      "game_class": "rhsusf_m1a1tank_base",
+      "catalogue_id": "m1a1_aim",
+      "real_name": "M1A1 AIM"
+    },
+    {
+      "game_class": "rhsusf_m1a2sep1d_usarmy",
+      "catalogue_id": "m1a2_sep_v1",
+      "real_name": "M1A2 SEP v1"
+    },
+    {
+      "game_class": "rhsusf_m1a2sep1tuskid_usarmy",
+      "catalogue_id": "m1a2_sep_v1",
+      "real_name": "M1A2 SEP v1"
+    },
+    {
+      "game_class": "rhsusf_m1a2sep1tuskiid_usarmy",
+      "catalogue_id": "m1a2_sep_v1",
+      "real_name": "M1A2 SEP v1"
+    },
+    {
+      "game_class": "rhsusf_m1a2sep1tuskiiwd_usarmy",
+      "catalogue_id": "m1a2_sep_v1",
+      "real_name": "M1A2 SEP v1"
+    },
+    {
+      "game_class": "rhsusf_m1a2sep1tuskiwd_usarmy",
+      "catalogue_id": "m1a2_sep_v1",
+      "real_name": "M1A2 SEP v1"
+    },
+    {
+      "game_class": "rhsusf_m1a2sep1wd_usarmy",
+      "catalogue_id": "m1a2_sep_v1",
+      "real_name": "M1A2 SEP v1"
+    },
+    {
+      "game_class": "rhsusf_m1a2tank_base",
+      "catalogue_id": "m1a2_sep_v1",
+      "real_name": "M1A2 SEP v1"
+    },
+    {
+      "game_class": "rhsusf_m1a2sep2_base",
+      "catalogue_id": "m1a2_sep_v2",
+      "real_name": "M1A2 SEP v2"
+    },
+    {
+      "game_class": "rhsusf_m1a2sep2d_usarmy",
+      "catalogue_id": "m1a2_sep_v2",
+      "real_name": "M1A2 SEP v2"
+    },
+    {
+      "game_class": "rhsusf_m1a2sep2wd_usarmy",
+      "catalogue_id": "m1a2_sep_v2",
+      "real_name": "M1A2 SEP v2"
+    },
+    {
+      "game_class": "RHS_M2A2",
+      "catalogue_id": "m2a2_bradley",
+      "real_name": "M2A2 Bradley"
+    },
+    {
+      "game_class": "RHS_M2A2_BUSKI",
+      "catalogue_id": "m2a2_bradley",
+      "real_name": "M2A2 Bradley"
+    },
+    {
+      "game_class": "RHS_M2A2_BUSKI_WD",
+      "catalogue_id": "m2a2_bradley",
+      "real_name": "M2A2 Bradley"
+    },
+    {
+      "game_class": "RHS_M2A2_Base",
+      "catalogue_id": "m2a2_bradley",
+      "real_name": "M2A2 Bradley"
+    },
+    {
+      "game_class": "RHS_M2A2_early",
+      "catalogue_id": "m2a2_bradley",
+      "real_name": "M2A2 Bradley"
+    },
+    {
+      "game_class": "RHS_M2A2_wd",
+      "catalogue_id": "m2a2_bradley",
+      "real_name": "M2A2 Bradley"
+    },
+    {
+      "game_class": "RHS_M2A3",
+      "catalogue_id": "m2a3_bradley",
+      "real_name": "M2A3 Bradley"
+    },
+    {
+      "game_class": "RHS_M2A3_BUSKI",
+      "catalogue_id": "m2a3_bradley",
+      "real_name": "M2A3 Bradley"
+    },
+    {
+      "game_class": "RHS_M2A3_BUSKIII",
+      "catalogue_id": "m2a3_bradley",
+      "real_name": "M2A3 Bradley"
+    },
+    {
+      "game_class": "RHS_M2A3_BUSKIII_wd",
+      "catalogue_id": "m2a3_bradley",
+      "real_name": "M2A3 Bradley"
+    },
+    {
+      "game_class": "RHS_M2A3_BUSKI_wd",
+      "catalogue_id": "m2a3_bradley",
+      "real_name": "M2A3 Bradley"
+    },
+    {
+      "game_class": "RHS_M2A3_wd",
+      "catalogue_id": "m2a3_bradley",
+      "real_name": "M2A3 Bradley"
+    },
+    {
+      "game_class": "rhsusf_m109_usarmy",
+      "catalogue_id": "m109a6_paladin",
+      "real_name": "M109A6 Paladin"
+    },
+    {
+      "game_class": "rhsusf_m109d_usarmy",
+      "catalogue_id": "m109a6_paladin",
+      "real_name": "M109A6 Paladin"
+    },
+    {
+      "game_class": "rhsusf_m109tank_base",
+      "catalogue_id": "m109a6_paladin",
+      "real_name": "M109A6 Paladin"
+    },
+    {
+      "game_class": "rhsusf_M1117_D",
+      "catalogue_id": "m1117_guardian_asv",
+      "real_name": "M1117 Guardian ASV"
+    },
+    {
+      "game_class": "rhsusf_M1117_O",
+      "catalogue_id": "m1117_guardian_asv",
+      "real_name": "M1117 Guardian ASV"
+    },
+    {
+      "game_class": "rhsusf_M1117_W",
+      "catalogue_id": "m1117_guardian_asv",
+      "real_name": "M1117 Guardian ASV"
+    },
+    {
+      "game_class": "rhsusf_M1117_base",
+      "catalogue_id": "m1117_guardian_asv",
+      "real_name": "M1117 Guardian ASV"
+    },
+    {
+      "game_class": "rhsgref_hidf_m113a3_m2",
+      "catalogue_id": "m113a3",
+      "real_name": "M113A3"
+    },
+    {
+      "game_class": "rhsgref_hidf_m113a3_unarmed",
+      "catalogue_id": "m113a3",
+      "real_name": "M113A3"
+    },
+    {
+      "game_class": "rhsusf_m113_usarmy",
+      "catalogue_id": "m113a3",
+      "real_name": "M113A3"
+    },
+    {
+      "game_class": "rhsusf_m113_usarmy_M240",
+      "catalogue_id": "m113a3",
+      "real_name": "M113A3"
+    },
+    {
+      "game_class": "rhsusf_m113_usarmy_MK19",
+      "catalogue_id": "m113a3",
+      "real_name": "M113A3"
+    },
+    {
+      "game_class": "rhsusf_m113_usarmy_medical",
+      "catalogue_id": "m113a3",
+      "real_name": "M113A3"
+    },
+    {
+      "game_class": "rhsusf_m113_usarmy_supply",
+      "catalogue_id": "m113a3",
+      "real_name": "M113A3"
+    },
+    {
+      "game_class": "rhsusf_m113_usarmy_unarmed",
+      "catalogue_id": "m113a3",
+      "real_name": "M113A3"
+    },
+    {
+      "game_class": "rhsusf_m113d_usarmy",
+      "catalogue_id": "m113a3",
+      "real_name": "M113A3"
+    },
+    {
+      "game_class": "rhsusf_m113d_usarmy_M240",
+      "catalogue_id": "m113a3",
+      "real_name": "M113A3"
+    },
+    {
+      "game_class": "rhsusf_m113d_usarmy_MK19",
+      "catalogue_id": "m113a3",
+      "real_name": "M113A3"
+    },
+    {
+      "game_class": "rhsusf_m113d_usarmy_medical",
+      "catalogue_id": "m113a3",
+      "real_name": "M113A3"
+    },
+    {
+      "game_class": "rhsusf_m113d_usarmy_supply",
+      "catalogue_id": "m113a3",
+      "real_name": "M113A3"
+    },
+    {
+      "game_class": "rhsusf_m113d_usarmy_unarmed",
+      "catalogue_id": "m113a3",
+      "real_name": "M113A3"
+    },
+    {
+      "game_class": "rhsusf_m113tank_base",
+      "catalogue_id": "m113a3",
+      "real_name": "M113A3"
+    },
+    {
+      "game_class": "rhsusf_M1220_M153_M2_usarmy_d",
+      "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
+      "real_name": "BAE Systems Caiman (XM1220 / XM1230 Caiman Plus)"
+    },
+    {
+      "game_class": "rhsusf_M1220_M153_M2_usarmy_wd",
+      "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
+      "real_name": "BAE Systems Caiman (XM1220 / XM1230 Caiman Plus)"
+    },
+    {
+      "game_class": "rhsusf_M1220_M153_MK19_usarmy_d",
+      "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
+      "real_name": "BAE Systems Caiman (XM1220 / XM1230 Caiman Plus)"
+    },
+    {
+      "game_class": "rhsusf_M1220_M153_MK19_usarmy_wd",
+      "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
+      "real_name": "BAE Systems Caiman (XM1220 / XM1230 Caiman Plus)"
+    },
+    {
+      "game_class": "rhsusf_M1220_M2_usarmy_d",
+      "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
+      "real_name": "BAE Systems Caiman (XM1220 / XM1230 Caiman Plus)"
+    },
+    {
+      "game_class": "rhsusf_M1220_M2_usarmy_wd",
+      "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
+      "real_name": "BAE Systems Caiman (XM1220 / XM1230 Caiman Plus)"
+    },
+    {
+      "game_class": "rhsusf_M1220_MK19_usarmy_d",
+      "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
+      "real_name": "BAE Systems Caiman (XM1220 / XM1230 Caiman Plus)"
+    },
+    {
+      "game_class": "rhsusf_M1220_MK19_usarmy_wd",
+      "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
+      "real_name": "BAE Systems Caiman (XM1220 / XM1230 Caiman Plus)"
+    },
+    {
+      "game_class": "rhsusf_M1220_usarmy_d",
+      "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
+      "real_name": "BAE Systems Caiman (XM1220 / XM1230 Caiman Plus)"
+    },
+    {
+      "game_class": "rhsusf_M1220_usarmy_wd",
+      "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
+      "real_name": "BAE Systems Caiman (XM1220 / XM1230 Caiman Plus)"
+    },
+    {
+      "game_class": "rhsusf_M1230_M2_usarmy_d",
+      "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
+      "real_name": "BAE Systems Caiman (XM1220 / XM1230 Caiman Plus)"
+    },
+    {
+      "game_class": "rhsusf_M1230_M2_usarmy_wd",
+      "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
+      "real_name": "BAE Systems Caiman (XM1220 / XM1230 Caiman Plus)"
+    },
+    {
+      "game_class": "rhsusf_M1230_MK19_usarmy_d",
+      "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
+      "real_name": "BAE Systems Caiman (XM1220 / XM1230 Caiman Plus)"
+    },
+    {
+      "game_class": "rhsusf_M1230_MK19_usarmy_wd",
+      "catalogue_id": "bae_systems_caiman_xm1220_xm1230_caiman_plus",
+      "real_name": "BAE Systems Caiman (XM1220 / XM1230 Caiman Plus)"
+    },
+    {
+      "game_class": "rhsusf_CGRCAT1A2_M2_usmc_d",
+      "catalogue_id": "cougar_4x4",
+      "real_name": "Force Protection Cougar CAT1 A2 (MCTAGS)"
+    },
+    {
+      "game_class": "rhsusf_CGRCAT1A2_M2_usmc_wd",
+      "catalogue_id": "cougar_4x4",
+      "real_name": "Force Protection Cougar CAT1 A2 (MCTAGS)"
+    },
+    {
+      "game_class": "rhsusf_CGRCAT1A2_Mk19_usmc_d",
+      "catalogue_id": "cougar_4x4",
+      "real_name": "Force Protection Cougar CAT1 A2 (MCTAGS)"
+    },
+    {
+      "game_class": "rhsusf_CGRCAT1A2_Mk19_usmc_wd",
+      "catalogue_id": "cougar_4x4",
+      "real_name": "Force Protection Cougar CAT1 A2 (MCTAGS)"
+    },
+    {
+      "game_class": "rhsusf_CGRCAT1A2_usmc_d",
+      "catalogue_id": "cougar_4x4",
+      "real_name": "Force Protection Cougar CAT1 A2 (MCTAGS)"
+    },
+    {
+      "game_class": "rhsusf_CGRCAT1A2_usmc_wd",
+      "catalogue_id": "cougar_4x4",
+      "real_name": "Force Protection Cougar CAT1 A2 (MCTAGS)"
+    },
+    {
+      "game_class": "rhsusf_m1245_m2crows_socom_deploy",
+      "catalogue_id": "m_atv_m1245",
+      "real_name": "Oshkosh M-ATV M1245"
+    },
+    {
+      "game_class": "rhsusf_m1245_mk19crows_socom_deploy",
+      "catalogue_id": "m_atv_m1245",
+      "real_name": "Oshkosh M-ATV M1245"
+    },
+    {
+      "game_class": "rhsusf_m1240a1_m2crows_usarmy_d",
+      "catalogue_id": "oshkosh_m_atv_m1277",
+      "real_name": "Oshkosh M-ATV M1277"
+    },
+    {
+      "game_class": "rhsusf_m1240a1_m2crows_usarmy_wd",
+      "catalogue_id": "oshkosh_m_atv_m1277",
+      "real_name": "Oshkosh M-ATV M1277"
+    },
+    {
+      "game_class": "rhsusf_m1240a1_m2crows_usmc_d",
+      "catalogue_id": "oshkosh_m_atv_m1277",
+      "real_name": "Oshkosh M-ATV M1277"
+    },
+    {
+      "game_class": "rhsusf_m1240a1_m2crows_usmc_wd",
+      "catalogue_id": "oshkosh_m_atv_m1277",
+      "real_name": "Oshkosh M-ATV M1277"
+    },
+    {
+      "game_class": "rhsusf_m1240a1_mk19crows_usarmy_d",
+      "catalogue_id": "oshkosh_m_atv_m1277",
+      "real_name": "Oshkosh M-ATV M1277"
+    },
+    {
+      "game_class": "rhsusf_m1240a1_mk19crows_usarmy_wd",
+      "catalogue_id": "oshkosh_m_atv_m1277",
+      "real_name": "Oshkosh M-ATV M1277"
+    },
+    {
+      "game_class": "rhsusf_m1240a1_mk19crows_usmc_d",
+      "catalogue_id": "oshkosh_m_atv_m1277",
+      "real_name": "Oshkosh M-ATV M1277"
+    },
+    {
+      "game_class": "rhsusf_m1240a1_mk19crows_usmc_wd",
+      "catalogue_id": "oshkosh_m_atv_m1277",
+      "real_name": "Oshkosh M-ATV M1277"
+    }
+  ]
+}

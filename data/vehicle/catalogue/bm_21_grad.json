@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for BM-21 Grad. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "bm_21_grad",
+      "canonical_name": "BM-21 Grad",
+      "maker": "ZiL",
+      "model": "BM-21 Grad",
+      "variant": "base",
+      "variant_id": "bm_21_grad",
+      "vehicle_type": "wheeled",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "cold war",
+      "aliases": [
+        "bm-21 grad"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 13710,
+          "unit": "kg",
+          "source": "wikipedia_bm_21_grad",
+          "locator": "Infobox, weight = 13.71 tonnes (30,225 lb)",
+          "state": "operating weight as published",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 7350,
+          "unit": "mm",
+          "source": "wikipedia_bm_21_grad",
+          "locator": "Infobox, length = 7350 mm",
+          "state": "length as published",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2400,
+          "unit": "mm",
+          "source": "wikipedia_bm_21_grad",
+          "locator": "Infobox, width = 2400 mm",
+          "state": "width as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 3090,
+          "unit": "mm",
+          "source": "wikipedia_bm_21_grad",
+          "locator": "Infobox, height = 3090 mm",
+          "state": "height as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 75,
+          "unit": "km/h",
+          "source": "wikipedia_bm_21_grad",
+          "locator": "Infobox, speed = 75 km/h (47 mph)",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "ZiL-375 V8 petrol (180 hp)",
+          "unit": "text",
+          "source": "wikipedia_bm_21_grad",
+          "locator": "Infobox, engine = V8 gasoline ZiL-375; engine_power 180 hp (130 kW)",
+          "state": "engine as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}

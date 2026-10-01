@@ -1,0 +1,74 @@
+{
+  "retrieved": "2026-10-01",
+  "note": "Gap-research capture for BMP-1K. Every value is grade claimed from a tier-5 compilation unless its source states otherwise. The capture holds one entry and the retired capture-level sources array stays empty.",
+  "sources": [],
+  "entries": [
+    {
+      "catalogue_id": "bmp_1k",
+      "canonical_name": "BMP-1K",
+      "maker": "Kurganmashzavod",
+      "model": "BMP-1K",
+      "variant": "base",
+      "variant_id": "bmp_1k",
+      "vehicle_type": "tracked",
+      "class_token": "",
+      "country": "Soviet Union",
+      "era": "cold war",
+      "aliases": [
+        "bmp-1k"
+      ],
+      "keywords": [],
+      "runtime_ready": false,
+      "values": {
+        "operating_weight_kg": {
+          "value": 13200,
+          "unit": "kg",
+          "source": "bmp_1",
+          "locator": "Infobox, weight row (13.2 t) carried over; variant listed at List of BMP-1 variants, BMP-1K bullet",
+          "state": "operating weight as published; conflict: weight_kg: no separate figure published for the BMP-1K conversion; base BMP-1 weight carried over",
+          "grade": "claimed"
+        },
+        "length_mm": {
+          "value": 6735,
+          "unit": "mm",
+          "source": "bmp_1",
+          "locator": "Infobox, length row (6.735 m); shared hull",
+          "state": "length as published",
+          "grade": "claimed"
+        },
+        "width_mm": {
+          "value": 2940,
+          "unit": "mm",
+          "source": "bmp_1",
+          "locator": "Infobox, width row (2.94 m); shared hull",
+          "state": "width as published",
+          "grade": "claimed"
+        },
+        "height_mm": {
+          "value": 2068,
+          "unit": "mm",
+          "source": "bmp_1",
+          "locator": "Infobox, height row (2.068 m); shared hull",
+          "state": "height as published",
+          "grade": "claimed"
+        },
+        "max_speed_kmh": {
+          "value": 65,
+          "unit": "km/h",
+          "source": "bmp_1",
+          "locator": "Infobox, speed row (65 km/h road); shared powertrain",
+          "state": "maximum road speed as published",
+          "grade": "claimed"
+        },
+        "engine_model": {
+          "value": "UTD-20 V6 diesel engine",
+          "unit": "text",
+          "source": "bmp_1",
+          "locator": "Infobox, engine row (UTD-20 V6 diesel); shared powertrain",
+          "state": "engine as published",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}
