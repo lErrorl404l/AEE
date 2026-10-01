@@ -42,30 +42,24 @@ n = 5.0121 and a threshold of
 
     5 * 0.05 * 5.0121 / 288.15 = 0.004349
 
-TWO DISPLAY QUANTISERS ARE LIVE, AND THEY DO NOT AGREE WITH EACH OTHER.
-fnc_applySelectionThermal quantises the heat tint to 32 levels, so its step
-is 1 / 31 = 0.03226.  fnc_applyFusionOverlay writes one of 256 emissive
-materials, so its step is 1 / 255 = 0.003922.  The 16-band material set
-those depths replaced is retired, so no shipped quantiser steps there.
+ONE DISPLAY QUANTISER IS LIVE.  fnc_applySelectionThermal quantises the
+heat tint to 32 levels, so its step is 1 / 31 = 0.03226.  (The 16-band
+material set and the 256-material fusion overlay it was followed by are
+both removed, so no other quantiser steps in the shipped mod.)
 
-Set each step against the 0.004349 threshold above:
+Set that step against the 0.004349 threshold above:
 
     selection step  0.03226   0.13 of a step, so the step is 7.4 times
                               COARSER than the threshold
-    fusion step     0.003922  1.11 steps wide, so the threshold is FINER
-                              than the step
 
-The consequence DIFFERS between the two.  On the selection path an edge can
-be TRUE, in that the sensor resolves the difference, while the operator
-sees NO difference, because the quantiser cannot show it.  On the fusion
-path the display resolves finer than the sensor, so there the display
-hides NOTHING the sensor can detect.  The comparison is ILLUSTRATIVE of
-scale, not an identity: the threshold is a normalised relative temperature
-difference, and a step is a fraction of the AGC window.  The caller must
-therefore use THIS value for the sensor decision and keep each quantiser
-for its own display.  A future maintainer who raises this threshold to a
-step would make every device equally blind, which is the exact error this
-kernel exists to remove.
+The consequence: an edge can be TRUE, in that the sensor resolves the
+difference, while the operator sees NO difference, because the quantiser
+cannot show it.  The comparison is ILLUSTRATIVE of scale, not an identity:
+the threshold is a normalised relative temperature difference, and a step is
+a fraction of the AGC window.  The caller must therefore use THIS value for
+the sensor decision and keep the quantiser for its own display.  A future
+maintainer who raises this threshold to a step would make every device
+equally blind, which is the exact error this kernel exists to remove.
 
 Guards, each explicit:
   - A NETD that is not a positive Number is refused with -1.  A zero or

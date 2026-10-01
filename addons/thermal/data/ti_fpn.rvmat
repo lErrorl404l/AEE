@@ -1,12 +1,24 @@
-// FPN thermal material (issue #204) - production variant.
+// Thermal substrate material (issue #204).
 //
-// The test (test_fpn_red.rvmat) proved the engine composites a
-// perlinNoise Stage2 over a painted Stage1 colour on objects, per
-// selection.  This is the production version: Stage1 is WHITE so the
-// physics heat colour painted via setObjectTexture shows through
-// unchanged, and Stage2 multiplies the static spatial mottle (FPN)
-// over it.  Real LWIR sensors show this fixed-pattern noise on top of
-// the temporal FilmGrain ppEffect.
+// WHY THIS FILE STILL EXISTS AFTER THE FPN REWORK.  Stage1 is WHITE so the
+// physics heat colour painted via setObjectTexture shows through unchanged,
+// and the material carries no StageTI, so the model's baked per-vertex
+// thermal gain cannot multiply the painted heat colour.  The engine falls
+// back to the diffuse, which is the channel the texture paint writes.
+//
+// FPN IS NOT HERE.  A material stage maps to the OBJECT's texture
+// coordinates, so a perlinNoise stage is fixed to the SURFACE - it stretches
+// per object and slides as the camera moves.  Real fixed-pattern noise is
+// fixed to the DETECTOR ARRAY: stationary in screen space and independent of
+// scene motion.  The one screen-space noise source is the FilmGrain ppEffect
+// in fnc_applyThermalVision, where the amplitude is derived from the device
+// NETD over the AGC display window.  Do not reintroduce a noise stage here.
+//
+// ENGINE LIMIT, RECORDED SO IT IS NOT HUNTED FOR AGAIN.  Detector row and
+// column striping, the most recognisable sign of synthetic FPN, is NOT
+// expressible in this engine.  Neither an object material pass nor a
+// ppEffect can produce screen-locked STRUCTURED noise.  Only unstructured,
+// amplitude-correct FPN is delivered.
 //
 // The material is swapped in only while thermal is active
 // (fnc_applySelectionThermal, FPN setting on) and restored on EXIT -
@@ -22,10 +34,5 @@ VertexShaderID="Basic";
 class Stage1
 {
     texture="#(rgb,8,8,3)color(1,1,1,1)";
-    uvSource="tex";
-};
-class Stage2
-{
-    texture="#(ai,512,512,9)perlinNoise(256,256,0.4,1)";
     uvSource="tex";
 };
