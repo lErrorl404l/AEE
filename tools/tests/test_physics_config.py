@@ -29,7 +29,7 @@ from tools.validation import validate_physics_config as v  # noqa: E402
 DATA = REPO / "data" / "physics"
 VEHICLE = REPO / "data" / "vehicle"
 BINDINGS = DATA / "config_bindings.json"
-GENERATED = REPO / "addons" / "physics" / "generated" / "CfgVehicles.hpp"
+GENERATED = REPO / "addons" / "mobility" / "generated" / "CfgVehicles.hpp"
 
 # One emitted override block, tied to its class and value.
 BLOCK_RE = re.compile(r"class (\S+) \{\n        maxSpeed = ([0-9.]+);")

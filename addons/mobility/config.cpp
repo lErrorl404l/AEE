@@ -21,3 +21,5 @@ class CfgPatches {
 };
 
 #include "CfgEventHandlers.hpp"
+
+#include "generated/CfgVehicles.hpp"

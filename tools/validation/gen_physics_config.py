@@ -2,15 +2,16 @@
 """Generate the engine CfgVehicles override from the config-binding corpus.
 
 ``data/physics/config_bindings.json`` is the only value source. This tool
-reads the corpus and emits ``addons/physics/generated/CfgVehicles.hpp``. It
+reads the corpus and emits ``addons/mobility/generated/CfgVehicles.hpp``. It
 never copies an engine value and it invents nothing. A class with no held
 source in the corpus yields no line here.
 
 This override is load-time only and global. The engine reads it when the
 config loads, so there is no runtime off switch: the PBO itself is the only
 way to disable it. The file declares ``maxSpeed`` and no other key, because
-``thermal`` and ``optics`` already override ``htMin``, ``htMax``, ``afMax``,
-``mfMax``, ``mFact`` and ``tBody``, and this addon loads last.
+``thermal`` and ``optics`` own ``htMin``, ``htMax``, ``afMax``, ``mfMax``,
+``mFact`` and ``tBody``; a second declaration would win and change the
+thermal model, so the generator refuses any other key.
 
 Run:
     python3 tools/validation/gen_physics_config.py
@@ -28,7 +29,7 @@ from typing import Sequence
 
 REPO = Path(__file__).parents[2]
 DEFAULT_DATA = REPO / "data" / "physics" / "config_bindings.json"
-DEFAULT_OUT = REPO / "addons" / "physics" / "generated" / "CfgVehicles.hpp"
+DEFAULT_OUT = REPO / "addons" / "mobility" / "generated" / "CfgVehicles.hpp"
 
 # This version emits one config class and one key. The schema admits no other
 # pair, so a corpus record outside this pair is an error rather than a silent
@@ -45,9 +46,9 @@ HEADER = (
     "// engine reads it when the config loads and config cannot be gated at\n"
     "// runtime, so the PBO is the only off switch.\n"
     "//\n"
-    "// It declares maxSpeed and no other key. thermal and optics already\n"
-    "// override htMin, htMax, afMax, mfMax, mFact and tBody, and this addon\n"
-    "// loads last, so redeclaring those keys here would silently win.\n"
+    "// It declares maxSpeed and no other key. thermal and optics own htMin,\n"
+    "// htMax, afMax, mfMax, mFact and tBody; a redeclaration here would win\n"
+    "// and change the thermal model, so only maxSpeed is admitted.\n"
 )
 
 

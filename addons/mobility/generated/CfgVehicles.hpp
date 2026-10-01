@@ -6,9 +6,9 @@
 // engine reads it when the config loads and config cannot be gated at
 // runtime, so the PBO is the only off switch.
 //
-// It declares maxSpeed and no other key. thermal and optics already
-// override htMin, htMax, afMax, mfMax, mFact and tBody, and this addon
-// loads last, so redeclaring those keys here would silently win.
+// It declares maxSpeed and no other key. thermal and optics own htMin,
+// htMax, afMax, mfMax, mFact and tBody; a redeclaration here would win
+// and change the thermal model, so only maxSpeed is admitted.
 
 class CfgVehicles {
     class B_AFV_Wheeled_01_cannon_F {
