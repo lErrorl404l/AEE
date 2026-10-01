@@ -233,9 +233,11 @@ def build_stringtable_map(
 ) -> tuple[dict[str, str], dict[str, str]]:
     """Return the key to text map and the key to source-locator map.
 
-    The loose files answer first. A key that only a packed file holds is
-    unpacked and read. The first readable source wins, so the result is
-    deterministic.
+    Game sources answer first, loose then packed, so a mod never shadows a
+    game key. Each mod follows in the order it is given, its loose table
+    before its packed table, so the caller controls mod precedence. A key that
+    only a packed file holds is unpacked and read. The first readable source
+    wins, so the result is deterministic.
     """
     texts: dict[str, str] = {}
     sources: dict[str, str] = {}
@@ -246,23 +248,46 @@ def build_stringtable_map(
                 texts[key] = value
                 sources[key] = locator
 
-    for locator, path in _loose_stringtables(game_root, mod_roots):
-        merge(locator, _stringtable_text(path))
+    def merge_packed(pbos: Sequence[tuple[str, Path]]) -> None:
+        for locator, pbo in pbos:
+            packed = [
+                name
+                for name in _pbo_files(pbo)
+                if name.lower().endswith("stringtable.xml")
+            ]
+            for name in packed:
+                extracted = _extract(pbo, name, scratch)
+                if extracted is not None:
+                    merge(f"{locator} > {name}", _stringtable_text(extracted))
 
-    for locator, pbo in _scan_pbos(game_root, mod_roots):
-        names = _pbo_files(pbo)
-        packed = [name for name in names if name.lower().endswith("stringtable.xml")]
-        if not packed:
-            continue
-        for name in packed:
-            extracted = _extract(pbo, name, scratch)
-            if extracted is None:
-                continue
-            merge(f"{locator} > {name}", _stringtable_text(extracted))
+    for locator, path in _loose_stringtables(game_root, ()):
+        merge(locator, _stringtable_text(path))
+    merge_packed(_scan_pbos(game_root, ()))
+    for root in mod_roots:
+        base = root.name or root.as_posix()
+        for path in sorted(root.rglob("stringtable.xml")):
+            merge(
+                f"{base}/{path.relative_to(root).as_posix()}",
+                _stringtable_text(path),
+            )
+        merge_packed(_mod_pbos(root))
     return texts, sources
 
 
 # --- game config ----------------------------------------------------------
+
+
+def _mod_pbos(root: Path) -> list[tuple[str, Path]]:
+    """Return (locator, packed addon) for one mod root, sorted within the root.
+
+    The locator is relative to the root, so provenance survives. The packs are
+    sorted within the root only, so the mod precedence is the CLI order.
+    """
+    base = root.name or root.as_posix()
+    found: list[tuple[str, Path]] = []
+    for pbo in sorted(root.rglob("*.pbo"), key=lambda item: item.as_posix()):
+        found.append((f"{base}/{pbo.relative_to(root).as_posix()}", pbo))
+    return found
 
 
 def _scan_pbos(
@@ -270,55 +295,31 @@ def _scan_pbos(
 ) -> list[tuple[str, Path]]:
     """Return (locator, packed addon) for the game and each mod root.
 
-    The game root keeps the bounded addon pattern, so the pass stays cheap.
-    A mod root is scanned for every packed addon, because a mod names its own
-    addons and the vehicle config can live in any of them. The locator is
-    relative to the root that holds the addon, so provenance survives.
+    The game addons come first, bounded by the vehicle addon pattern, so the
+    pass stays cheap. The mod roots follow in the order they are given, so the
+    caller controls precedence: a mod adds a class and never shadows a game
+    class. A mod that reopens a game class is read after the game declaration
+    only when the game root is scanned first, which this order guarantees.
+    Packs are sorted within each root, so the result is deterministic.
     """
     found: list[tuple[str, Path]] = []
-    for pbo in game_root.rglob("*.pbo"):
-        if VEHICLE_ADDON.search(pbo.name):
-            found.append((pbo.relative_to(game_root).as_posix(), pbo))
+    game = sorted(
+        (pbo for pbo in game_root.rglob("*.pbo") if VEHICLE_ADDON.search(pbo.name)),
+        key=lambda item: item.as_posix(),
+    )
+    for pbo in game:
+        found.append((pbo.relative_to(game_root).as_posix(), pbo))
     for root in mod_roots:
-        base = root.name or root.as_posix()
-        for pbo in root.rglob("*.pbo"):
-            found.append((f"{base}/{pbo.relative_to(root).as_posix()}", pbo))
-    found.sort(key=lambda item: item[1].as_posix())
+        found += _mod_pbos(root)
     return found
 
 
-def _config_texts(
-    game_root: Path, scratch: Path, mod_roots: Sequence[Path] = ()
+def _packed_config_texts(
+    pbos: Sequence[tuple[str, Path]], scratch: Path
 ) -> list[tuple[str, str]]:
-    """Return the locator and text of every readable game config file.
-
-    The loose files answer first. The packed config of a vehicle addon is
-    unpacked and derapified.
-    """
+    """Return the derapified text of the packed config of each packed addon."""
     found: list[tuple[str, str]] = []
-    for path in sorted(game_root.rglob("config.cpp")):
-        try:
-            found.append(
-                (
-                    path.relative_to(game_root).as_posix(),
-                    path.read_text(encoding="utf-8", errors="replace"),
-                )
-            )
-        except OSError:
-            continue
-    for root in mod_roots:
-        base = root.name or root.as_posix()
-        for path in sorted(root.rglob("config.cpp")):
-            try:
-                found.append(
-                    (
-                        f"{base}/{path.relative_to(root).as_posix()}",
-                        path.read_text(encoding="utf-8", errors="replace"),
-                    )
-                )
-            except OSError:
-                continue
-    for locator, pbo in _scan_pbos(game_root, mod_roots):
+    for locator, pbo in pbos:
         for name in _pbo_files(pbo):
             if not name.endswith("config.bin"):
                 continue
@@ -337,6 +338,45 @@ def _config_texts(
                 )
             except OSError:
                 continue
+    return found
+
+
+def _config_texts(
+    game_root: Path, scratch: Path, mod_roots: Sequence[Path] = ()
+) -> list[tuple[str, str]]:
+    """Return the locator and text of every readable config file.
+
+    The order is the precedence order. Every game source comes before every
+    mod source, so a mod adds a class and never shadows a game class. The game
+    loose files precede the game packed config. Each mod root follows in the
+    order it is given, its loose config before its packed config, so the
+    caller controls mod precedence. The first declaration of a class wins.
+    """
+    found: list[tuple[str, str]] = []
+    for path in sorted(game_root.rglob("config.cpp")):
+        try:
+            found.append(
+                (
+                    path.relative_to(game_root).as_posix(),
+                    path.read_text(encoding="utf-8", errors="replace"),
+                )
+            )
+        except OSError:
+            continue
+    found += _packed_config_texts(_scan_pbos(game_root, ()), scratch)
+    for root in mod_roots:
+        base = root.name or root.as_posix()
+        for path in sorted(root.rglob("config.cpp")):
+            try:
+                found.append(
+                    (
+                        f"{base}/{path.relative_to(root).as_posix()}",
+                        path.read_text(encoding="utf-8", errors="replace"),
+                    )
+                )
+            except OSError:
+                continue
+        found += _packed_config_texts(_mod_pbos(root), scratch)
     return found
 
 
