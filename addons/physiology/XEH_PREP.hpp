@@ -36,3 +36,4 @@ PREPS(altitude,calculateBarometricPressure);
 PREPS(altitude,calculateAltitudeDCS);
 PREPS(altitude,calculateGLOC);
 PREPS(strain,getGLoad);
+PREPS(oxygen,calculateOxygenDelivery);
