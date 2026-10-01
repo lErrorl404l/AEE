@@ -31,6 +31,12 @@ _ERROR_BENIGN = (
     ".wav",  # missing sound files (vanilla)
     "Cannot open object",  # engine asset noise
     "bison",  # PBO header noise
+    # The fleet probe creates every public ground vehicle. The engine emits
+    # these two notes on createVehicle for vanilla classes: a wheel that has
+    # not taken a simulation step, and a vanilla vehicle MFD whose condition
+    # reads undefined globals. No AEE change can remove either.
+    "Wheel reference not initialized",
+    "ammo1",
 )
 errors = [
     l
@@ -60,6 +66,10 @@ _WARNING_BENIGN = (
     ".wav",
     "Cannot open object",  # engine asset noise
     "bison",  # PBO header noise
+    # The fleet probe creates every public ground vehicle; the engine prints a
+    # model geometry note when a vanilla convex component is unnamed. It is a
+    # vanilla asset note, not AEE output.
+    "Convex component representing",
 )
 warnings = [
     l
@@ -102,6 +112,7 @@ _probe_expected = (
     "[P70] [PASS]",
     "[P71] [PASS]",
     "[P72] [PASS]",
+    "[P73] [PASS]",
 )
 _probe_missing = [m for m in _probe_expected if m not in text]
 if _probe_missing:
@@ -109,7 +120,7 @@ if _probe_missing:
     for m in _probe_missing:
         print(f"  missing: {m}")
 _probe_failed = sorted(
-    set(re.findall(r"\[P(?:64|65|66|68|69|70|71|72)\] \[FAIL\][^\n]*", text))
+    set(re.findall(r"\[P(?:64|65|66|68|69|70|71|72|73)\] \[FAIL\][^\n]*", text))
 )
 if _probe_failed:
     print(f"mission probes: {len(_probe_failed)} failed")
