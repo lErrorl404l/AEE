@@ -158,14 +158,18 @@ private _bestLen = 0;
 } forEach (toLower _ammo splitString "_- .");
 
 if (_match isEqualTo []) then {
-    private _name = "";
+    // Identity text only: the classname, the raw display name and its
+    // localised stringtable text. A vanilla class stores a $STR key in
+    // displayName, so all three are needed. None carries a figure.
+    private _rawName = "";
     {
         if (getText (configFile >> "CfgMagazines" >> configName _x >> "ammo") == _ammo) exitWith {
-            _name = getText (configFile >> "CfgMagazines" >> configName _x >> "displayName");
+            _rawName = getText (configFile >> "CfgMagazines" >> configName _x >> "displayName");
         };
     } forEach ((configFile >> "CfgMagazines") call BIS_fnc_returnChildren);
+    private _localName = if (_rawName == "") then { "" } else { localize _rawName };
 
-    private _query = [_ammo + " " + _name] call _normalise;
+    private _query = [_ammo + " " + _rawName + " " + _localName] call _normalise;
     {
         _x params ["_id", "_aliases", "_mass", "_diameter", "_coeffs", "_len"];
         private _list = _aliases splitString "|";
