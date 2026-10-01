@@ -2992,7 +2992,14 @@ private _p29Pass = 0;
     // census spawns one instance per bound class, reads getMass and deletes
     // it.  It measures the engine's own mass only and applies nothing.
     execVM "aee_p72_mass_probe.sqf";
-    [{diag_log text "[AEE-TEST] DONE";}, [], 8] call CBA_fnc_waitAndExecute;
+    // PHASE 73 lives in aee_p73_fleet_probe.sqf for the same reason: the fleet
+    // probe enumerates every public ground vehicle class, spawns one instance,
+    // reads its identity and deletes it. It measures only and applies nothing.
+    execVM "aee_p73_fleet_probe.sqf";
+    // The fleet probe spawns the whole fleet, so DONE waits longer than the
+    // bound-class probes need. The run gate reads every probe PASS line, and a
+    // capture before the fleet probe ends would miss it.
+    [{diag_log text "[AEE-TEST] DONE";}, [], 20] call CBA_fnc_waitAndExecute;
         }, [_t1], 5] call CBA_fnc_waitAndExecute;
     }, [], 7] call CBA_fnc_waitAndExecute;
 }, [], 30] call CBA_fnc_waitAndExecute;
