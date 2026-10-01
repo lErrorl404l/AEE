@@ -651,15 +651,15 @@ def weather_ema(prev, raw, dt, tau):
 def second_sun_brightness(radiation):
     """Mirror of fnc_applySecondSun: engine thermal SUN term brightness.
 
-    The engine's thermal sun term expects lightpoint brightness in the
-    A3TI order of magnitude.  A3TI used static 13, which SATURATES the
-    scene to flat white and masks per-vehicle heat (in-game proven) - so
-    we scale into a NON-SATURATING range: brightness = radiation * 6.
-    Night (0) -> no sun term; full day -> half A3TI, enough to heat
-    terrain/buildings while vehicles keep their setVehicleTIPars contrast.
+    The engine's thermal sun term expects lightpoint brightness in the A3TI
+    order of magnitude, and 13 is A3TI's DEFAULT_SECONDSUN_BRIGHTNESS.  A
+    radiation * 6 de-saturation was tried (32b2666) and then REVERTED (3655ad6,
+    "second sun restored to the proven constant 13"); the shipped peak is 13.
+    The physical content is the radiation tracking added in cc00cd7: night (0)
+    -> no sun term, full day -> 13, so the terrain darkens at night.
     """
     r = max(0.0, min(1.0, radiation))
-    return r * 6.0
+    return r * 13.0
 
 
 def clothing_ti_scale(insulation, air_temp_c):
@@ -1750,27 +1750,27 @@ class TestSecondSun(unittest.TestCase):
         self.assertAlmostEqual(second_sun_brightness(0), 0.0, places=6)
 
     def test_day_full_sun_term(self):
-        # Radiation 1 (clear midday): half A3TI's 13 (6) - enough to heat
-        # terrain/buildings without saturating vehicles to flat white.
-        self.assertAlmostEqual(second_sun_brightness(1), 6.0, places=6)
+        # Radiation 1 (clear midday): the full A3TI peak 13, the proven
+        # constant restored in 3655ad6 and tracked by radiation since cc00cd7.
+        self.assertAlmostEqual(second_sun_brightness(1), 13.0, places=6)
 
     def test_overcast_attenuates(self):
-        # Overcast mid-day: partial sun term (0.5 * 6 = 3.0).
-        self.assertAlmostEqual(second_sun_brightness(0.5), 3.0, places=6)
+        # Overcast mid-day: partial sun term (0.5 * 13 = 6.5).
+        self.assertAlmostEqual(second_sun_brightness(0.5), 6.5, places=6)
 
     def test_clamped_out_of_range(self):
         self.assertAlmostEqual(second_sun_brightness(-0.2), 0.0, places=6)
-        self.assertAlmostEqual(second_sun_brightness(1.5), 6.0, places=6)
+        self.assertAlmostEqual(second_sun_brightness(1.5), 13.0, places=6)
 
     def test_never_negative(self):
         self.assertGreaterEqual(second_sun_brightness(0), 0)
 
-    def test_scale_does_not_saturate(self):
-        # Full sun = 6 (half A3TI's 13).  A3TI's full-strength sun
-        # saturates the scene to flat white and masks per-vehicle heat
-        # (in-game proven); 6 keeps terrain/buildings warm without
-        # drowning the setVehicleTIPars contrast.
-        self.assertAlmostEqual(second_sun_brightness(1.0), 6.0, places=6)
+    def test_full_sun_is_the_a3ti_peak(self):
+        # Full sun = 13, A3TI's DEFAULT_SECONDSUN_BRIGHTNESS.  The 6
+        # de-saturation (32b2666) was reverted in 3655ad6 because it dimmed
+        # the sensor-illumination boost to nothing; per-vehicle contrast is
+        # held by setVehicleTIPars, not by dimming the scene.
+        self.assertAlmostEqual(second_sun_brightness(1.0), 13.0, places=6)
 
 
 class TestVehicleDamageThermal(unittest.TestCase):
