@@ -789,6 +789,25 @@ if (_match isEqualTo []) then {
     } forEach _TABLE;
 };
 
+// ─── Band: the live calibre ──────────────────────────────────────────────
+// A class whose identity text resolves to no catalogue alias is matched by
+// its own calibre, read through the caliber parser. The parser fills a
+// caliber the alias tables do not name from the numeric token. The caliber
+// is an identity signal, never a value source. A miss is an empty array,
+// exactly as before.
+if (_match isEqualTo []) then {
+    private _calibre = ([_ammo] call FUNC(parseCaliber)) select 0;
+    if (_calibre > 0) then {
+        private _band = [call FUNC(getCartridgeBands), "", _calibre, 0]
+            call FUNC(selectBand);
+        if (_band isNotEqualTo []) then {
+            _match = [_band select 0, _band select 2, _band select 4,
+                      _band select 5, _band select 6, _band select 7,
+                      _band select 8];
+        };
+    };
+};
+
 private _result = if (_match isEqualTo []) then { [] } else {
     [_match select 0, _match select 1, _match select 2, _match select 3,
      _match select 4, _match select 5, _match select 6]

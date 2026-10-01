@@ -467,16 +467,34 @@ if (_known != "" && _familyCategory != "" && _familyCategory != _known) then {
     _family = "";
 };
 
+// ─── Band: the live item mass ────────────────────────────────────────────
+// An item whose identity text carries no family keyword is matched by its
+// own config mass against the researched family masses of its category.
+// The config mass is the engine's identity signal, never a source value. A
+// miss stays 0, exactly as before.
+if ((_match == 0) && (_known != "")) then {
+    private _liveMass = 0;
+    {
+        private _bandCfg = configFile >> _x >> _item;
+        if (isClass _bandCfg) exitWith {
+            _liveMass = getNumber (_bandCfg >> "mass");
+            if (_liveMass <= 0) then {
+                _liveMass = getNumber (_bandCfg >> "ItemInfo" >> "mass");
+            };
+        };
+    } forEach ["CfgWeapons", "CfgVehicles", "CfgGlasses"];
+    if (_liveMass > 0) then {
+        private _band = [call FUNC(getEquipmentBands), _known, _liveMass, 0]
+            call FUNC(selectBand);
+        if (_band isNotEqualTo []) then {
+            _match = _band select 2;
+            _family = _band select 0;
+        };
+    };
+};
+
 // The trace names what resolved and, when nothing did, says so: an item
 // that falls to 0 is the case a carried-load figure is hardest to explain.
-// Rate limited, and it keeps the case the comment above actually names.  An
-// item that resolves to 0 is the hard one to explain, so that is always
-// recorded; a routine match is not.  Ungated this wrote 714 lines in one
-// session, because the loadout walk calls this once per item per evaluation.
-// The trace names what resolved and, when nothing did, says so: an item
-// that falls to 0 is the case a carried-load figure is hardest to explain.
-// No explicit guard macro here; AEE_LOG_DEBUG does the gating itself, and that
-// macro's own name carries the substring the boundary test above greps for.
 private _logMsg = format ["item mass: %1 -> %2 kg (family '%3')", _item, _match, _family];
 AEE_LOG_DEBUG(_logMsg);
 _match

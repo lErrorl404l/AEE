@@ -16,11 +16,15 @@ Run:  python3 tools/validation/gen_runtime_projectiles.py
 
 import json
 import re
+import sys
 from pathlib import Path
 
 DATA = Path(__file__).parents[2] / "data" / "ballistics"
 OUT = (
     Path(__file__).parents[2] / "addons/ballistics/functions/fnc_getProjectileData.sqf"
+)
+BANDS_OUT = (
+    Path(__file__).parents[2] / "addons/ballistics/functions/fnc_getProjectileBands.sqf"
 )
 
 MIN_ALIAS = 3
@@ -78,6 +82,77 @@ def row(rec):
         coefficients(values),
         val("length_mm"),
     ]
+
+
+def band_row(rec):
+    """Return one property-band row, or None when the record has no identity.
+
+    The band is the fallback of the projectile resolver. The bullet diameter
+    is the primary selector and the mass is the secondary. The length and the
+    held coefficients are the payload. A missing number is a labelled zero.
+    """
+    projectile_id = rec.get("projectile_id")
+    if not projectile_id:
+        return None
+    values = rec.get("values", {})
+
+    def val(field, default=0):
+        entry = values.get(field)
+        return entry["value"] if entry else default
+
+    return [
+        projectile_id,
+        "",
+        val("diameter_mm"),
+        val("mass_g"),
+        val("length_mm"),
+        coefficients(values),
+    ]
+
+
+def band_rows(db):
+    """Build every band row and sort it by projectile id."""
+    rows = [r for r in (band_row(rec) for rec in db) if r]
+    rows.sort(key=lambda r: r[0])
+    return rows
+
+
+BAND_TEMPLATE = """#include "..\\script_component.hpp"
+/*
+Projectile identity band table.
+
+This file is GENERATED. The generator tools/validation/gen_runtime_projectiles.py
+writes it from the verified database under data/ballistics/. Do not edit it
+by hand.
+
+The band table is the property fallback of the projectile resolver. A bullet
+whose identity text resolves to no catalogue record is matched by its own
+diameter, read from its cartridge. The diameter is the primary selector and
+the mass is the secondary. The length and the held coefficients are the
+payload. The selector reads the table and the live properties only. The
+diameter is an identity signal, never a value source.
+
+A row has six columns:
+
+  0 projectile_id   string, the stable catalogue key
+  1 token           string, empty: a bullet carries no discrete token
+  2 diameter_mm     number, the bullet diameter in mm, 0 absent
+  3 mass_g          number, the bullet mass in grams, 0 absent
+  4 length_mm       number, the bullet length in mm, 0 absent
+  5 coefficients    string, the held MODEL:value:grade triples, "" absent
+
+Returns the band table, one row per projectile entry, sorted by id.
+
+Arguments: none.
+Public: No
+*/
+
+private _table = [
+__ROWS__
+];
+
+_table
+"""
 
 
 TEMPLATE = """#include "..\\script_component.hpp"
@@ -216,6 +291,27 @@ if (_match isEqualTo []) then {
     };
 };
 
+// ─── Band: the live bullet diameter ──────────────────────────────────────
+// A class whose identity text resolves to no catalogue record and whose
+// chambering names no service bullet is matched by the bullet diameter,
+// read from its cartridge. The diameter is an identity signal, never a
+// value source. A miss is an empty array, exactly as before.
+if (_match isEqualTo []) then {
+    private _cart = [_ammo] call FUNC(getCartridgeData);
+    private _diameter = if (_cart isEqualTo []) then { 0 } else { _cart select 1 };
+    if (_diameter <= 0) then {
+        _diameter = ([_ammo] call FUNC(parseCaliber)) select 0;
+    };
+    if (_diameter > 0) then {
+        private _band = [call FUNC(getProjectileBands), "", _diameter, 0]
+            call FUNC(selectBand);
+        if (_band isNotEqualTo []) then {
+            _match = [_band select 0, _band select 3, _band select 2,
+                      _band select 5, _band select 4];
+        };
+    };
+};
+
 private _result = if (_match isEqualTo []) then { [] } else {
     [
         _match select 0,
@@ -233,25 +329,72 @@ _result
 """
 
 
-def main():
-    db = json.loads((DATA / "projectiles.json").read_text(encoding="utf-8"))
+def _build(db):
     rows = [r for r in (row(rec) for rec in db) if r]
     rows.sort(key=lambda r: r[0])
+    return rows
+
+
+def render_match(rows):
     body = ",\n".join('    ["{}", "{}", {}, {}, "{}", {}]'.format(*r) for r in rows)
     ids = {r[0] for r in rows}
     defaults = ",\n".join(
         '    ["{}", "{}"]'.format(c, p) for c, p in sorted(DEFAULTS.items()) if p in ids
     )
-    text = (
+    return (
         TEMPLATE.replace("__ROWS__", body)
         .replace("__DEFAULTS__", defaults)
         .replace("__SCAN__", str(SCAN_ALIAS))
     )
-    OUT.write_text(text, encoding="utf-8")
+
+
+def render_bands(rows):
+    body = ",\n".join('    ["{}", "{}", {}, {}, {}, "{}"]'.format(*r) for r in rows)
+    return BAND_TEMPLATE.replace("__ROWS__", body)
+
+
+def _render_all():
+    db = json.loads((DATA / "projectiles.json").read_text(encoding="utf-8"))
+    return _build(db), band_rows(db)
+
+
+def write_outputs():
+    rows, bands = _render_all()
+    OUT.write_text(render_match(rows), encoding="utf-8")
+    BANDS_OUT.write_text(render_bands(bands), encoding="utf-8")
+    return rows, bands
+
+
+def check_outputs():
+    """Return 0 when every generated file matches a fresh render."""
+    rows, bands = _render_all()
+    stale = False
+    expected = ((OUT, render_match(rows)), (BANDS_OUT, render_bands(bands)))
+    for path, text in expected:
+        if not path.is_file():
+            print(f"projectile projection: {path} is missing; run the generator")
+            stale = True
+            continue
+        if path.read_text(encoding="utf-8") != text:
+            print(f"projectile projection: {path} is stale; run the generator")
+            stale = True
+    if stale:
+        return 1
+    print(f"projectile projection: {len(rows)} rows and {len(bands)} band rows (fresh)")
+    return 0
+
+
+def main(argv=None):
+    argv = argv if argv is not None else sys.argv[1:]
+    if "--check" in argv:
+        return check_outputs()
+    rows, bands = write_outputs()
     print(
-        f"projectile rows: {len(rows)}, wrote {OUT.name} ({OUT.stat().st_size} bytes)"
+        f"projectile rows: {len(rows)}, band rows: {len(bands)}, "
+        f"wrote {OUT.name} and {BANDS_OUT.name}"
     )
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

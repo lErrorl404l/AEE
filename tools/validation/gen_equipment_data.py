@@ -21,11 +21,13 @@ Run:  python3 tools/validation/gen_equipment_data.py
 import json
 import re
 import statistics
+import sys
 from pathlib import Path
 
 REPO = Path(__file__).parents[2]
 SRC = REPO / "data" / "equipment" / "sources"
 OUT = REPO / "addons/physiology/functions/clothing/fnc_getItemMass.sqf"
+BANDS_OUT = REPO / "addons/physiology/functions/clothing/fnc_getEquipmentBands.sqf"
 
 # One spelling per category. The capture may use the plural.
 CATEGORY_ALIASES = {"binoculars": "binocular", "binocs": "binocular"}
@@ -273,6 +275,32 @@ if (_known != "" && _familyCategory != "" && _familyCategory != _known) then {
     _family = "";
 };
 
+// ─── Band: the live item mass ────────────────────────────────────────────
+// An item whose identity text carries no family keyword is matched by its
+// own config mass against the researched family masses of its category.
+// The config mass is the engine's identity signal, never a source value. A
+// miss stays 0, exactly as before.
+if ((_match == 0) && (_known != "")) then {
+    private _liveMass = 0;
+    {
+        private _bandCfg = configFile >> _x >> _item;
+        if (isClass _bandCfg) exitWith {
+            _liveMass = getNumber (_bandCfg >> "mass");
+            if (_liveMass <= 0) then {
+                _liveMass = getNumber (_bandCfg >> "ItemInfo" >> "mass");
+            };
+        };
+    } forEach ["CfgWeapons", "CfgVehicles", "CfgGlasses"];
+    if (_liveMass > 0) then {
+        private _band = [call FUNC(getEquipmentBands), _known, _liveMass, 0]
+            call FUNC(selectBand);
+        if (_band isNotEqualTo []) then {
+            _match = _band select 2;
+            _family = _band select 0;
+        };
+    };
+};
+
 // The trace names what resolved and, when nothing did, says so: an item
 // that falls to 0 is the case a carried-load figure is hardest to explain.
 private _logMsg = format ["item mass: %1 -> %2 kg (family '%3')", _item, _match, _family];
@@ -281,7 +309,48 @@ _match
 """
 
 
-def main():
+BAND_TEMPLATE = """#include "..\\..\\script_component.hpp"
+/*
+Equipment identity band table. GENERATED FILE.
+
+This is a runtime projection of the equipment research captures under
+data/equipment/sources/. It is written by
+tools/validation/gen_equipment_data.py and must not be edited by hand.
+
+The band table is the property fallback of the item-mass resolver
+aee_physiology_fnc_getItemMass. An item whose identity text carries no
+family keyword is matched by its own engine config mass against the
+researched family masses of its slot category. The category is the discrete
+token, the published family mass is the primary selector, and the number of
+published rows behind it is the payload. The selector reads the table and
+the live property only. The engine mass is an identity signal, never a
+source value.
+
+A row has five columns:
+
+  0 family       string, the family keyword, the stable key
+  1 category     string, the slot category, the discrete token
+  2 mass_kg      number, the published family mass in kg, 0 absent
+  3 (reserved)   number, 0: no secondary property
+  4 rows         number, the published rows behind the mass
+
+Returns the band table, one row per family and category, longest family
+first, as the matcher table is ordered.
+
+Arguments: none.
+Public: No
+*/
+
+private _table = [
+__ROWS__
+];
+
+_table
+"""
+
+
+def build_equipment_table():
+    """Return (table, claimed_rows, item_count, skipped) for the build."""
     rows, skipped = load_rows()
     # The captured research wins where it exists; the classifier tiers fill
     # the families the captures do not hold (the generic vanilla names).
@@ -289,8 +358,50 @@ def main():
     seeded = [r for r in classifier_rows() if (r[0], r[1]) not in captured]
     rows = rows + seeded
     table, claimed_rows = build_table(rows)
+    return table, claimed_rows, len(rows), skipped
+
+
+def render_match(table):
     body = ",\n".join('    ["{}", "{}", {}, {}]'.format(*row) for row in table)
-    OUT.write_text(TEMPLATE.replace("__ROWS__", body), encoding="utf-8")
+    return TEMPLATE.replace("__ROWS__", body)
+
+
+def render_bands(table):
+    body = ",\n".join('    ["{}", "{}", {}, 0, {}]'.format(*row) for row in table)
+    return BAND_TEMPLATE.replace("__ROWS__", body)
+
+
+def write_outputs():
+    table, claimed_rows, item_count, skipped = build_equipment_table()
+    OUT.write_text(render_match(table), encoding="utf-8")
+    BANDS_OUT.write_text(render_bands(table), encoding="utf-8")
+    return table, claimed_rows, item_count, skipped
+
+
+def check_outputs():
+    """Return 0 when every generated file matches a fresh render."""
+    table, _claimed, _items, _skipped = build_equipment_table()
+    stale = False
+    expected = ((OUT, render_match(table)), (BANDS_OUT, render_bands(table)))
+    for path, text in expected:
+        if not path.is_file():
+            print(f"equipment projection: {path} is missing; run the generator")
+            stale = True
+            continue
+        if path.read_text(encoding="utf-8") != text:
+            print(f"equipment projection: {path} is stale; run the generator")
+            stale = True
+    if stale:
+        return 1
+    print(f"equipment projection: {len(table)} family rows and band rows (fresh)")
+    return 0
+
+
+def main(argv=None):
+    argv = argv if argv is not None else sys.argv[1:]
+    if "--check" in argv:
+        return check_outputs()
+    table, claimed_rows, item_count, skipped = write_outputs()
     dropped = (
         skipped["no_source"]
         + skipped["no_mass"]
@@ -304,17 +415,18 @@ def main():
     print(
         "equipment families: {} rows from {} items; "
         "{} row(s) grade claimed (tier 5, no stronger source); "
-        "dropped {} {}; wrote {} ({} bytes)".format(
+        "dropped {} {}; wrote {} and {}".format(
             len(table),
-            len(rows),
+            item_count,
             claimed_rows,
             dropped,
             skipped,
             OUT.name,
-            OUT.stat().st_size,
+            BANDS_OUT.name,
         )
     )
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

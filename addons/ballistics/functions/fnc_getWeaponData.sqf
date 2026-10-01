@@ -1732,6 +1732,33 @@ if (_match isEqualTo []) then {
     } forEach _TABLE;
 };
 
+// ─── Band: the live chambering and engine mass ───────────────────────────
+// A class whose identity text resolves to no catalogue alias is matched by
+// its own properties. The chambering is the cartridge its first magazine
+// fires, read through the cartridge resolver; the mass is the engine's own
+// weapon mass. Both are identity signals, never a value source. A miss is
+// an empty array, and the caller then falls back to the cartridge standard,
+// exactly as before.
+if (_match isEqualTo []) then {
+    private _cartridgeKey = "";
+    {
+        private _ammo = getText (configFile >> "CfgMagazines" >> _x >> "ammo");
+        if (_ammo != "") exitWith {
+            private _cart = [_ammo] call FUNC(getCartridgeData);
+            if (_cart isNotEqualTo []) then { _cartridgeKey = _cart select 0; };
+        };
+    } forEach (getArray (configFile >> "CfgWeapons" >> _weapon >> "magazines"));
+    private _liveMass = getNumber (configFile >> "CfgWeapons" >> _weapon >> "WeaponSlotsInfo" >> "mass");
+    if ((_cartridgeKey != "") && (_liveMass > 0)) then {
+        private _band = [call FUNC(getWeaponBands), _cartridgeKey, _liveMass, 0]
+            call FUNC(selectBand);
+        if (_band isNotEqualTo []) then {
+            _match = [_band select 0, _band select 4, _band select 5,
+                      _band select 1, _band select 2];
+        };
+    };
+};
+
 private _result = if (_match isEqualTo []) then { [] } else {
     [_match select 0, _match select 1, _match select 2, _match select 3,
      _match select 4]
