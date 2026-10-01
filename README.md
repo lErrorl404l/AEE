@@ -193,7 +193,16 @@ tools/docker_test.sh                                  # writes tests/docker/run.
 python3 tools/validation/build_mass_calibration.py    # reads that log
 ```
 
-The tool writes `data/physics/mass_calibration.json`. It fails closed when the log is absent or misses a bound class, and its `approved` flag stays false. The validator `tools/validation/validate_mass_calibration.py` gates the artefact.
+The tool writes `data/physics/mass_calibration.json`. It fails closed when the
+log is absent or misses a bound class. The tool writes `approved: false`: the
+operator approves the calibration, and the approval records the approver and
+the date. The validator `tools/validation/validate_mass_calibration.py` gates
+the artefact.
+
+When the calibration is approved, `tools/validation/gen_physics_config.py`
+derives one mass per bound class as `real_analogue_mass_kg / fit.scale` and
+emits it into the same `CfgVehicles` block as `maxSpeed`. The generator refuses
+an unapproved calibration and a class with no held mass or no resolved parent.
 
 ---
 

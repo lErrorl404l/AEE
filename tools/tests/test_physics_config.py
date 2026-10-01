@@ -199,8 +199,7 @@ class PhysicsConfigGeneratorTest(unittest.TestCase):
         cls.emissions = gen.build(CLASS_BINDINGS, VEHICLE, PARENTS)
         cls.rendered = GENERATED.read_text(encoding="utf-8")
         cls.children = dict(
-            (name, value)
-            for name, _parent, value in CHILD_RE.findall(cls.rendered)
+            (name, value) for name, _parent, value in CHILD_RE.findall(cls.rendered)
         )
         cls.parent_of = {
             name: parent for name, parent, _value in CHILD_RE.findall(cls.rendered)
@@ -221,9 +220,7 @@ class PhysicsConfigGeneratorTest(unittest.TestCase):
 
     def test_the_emitted_class_set_equals_the_corpus_set(self) -> None:
         self.assertEqual(set(self.children), set(self.corpus))
-        self.assertEqual(
-            {e.game_class for e in self.emissions}, set(self.corpus)
-        )
+        self.assertEqual({e.game_class for e in self.emissions}, set(self.corpus))
 
     def test_every_parent_is_forward_declared_once(self) -> None:
         for name, parent in self.parent_of.items():
@@ -235,9 +232,12 @@ class PhysicsConfigGeneratorTest(unittest.TestCase):
         # at run time. Every emitted body must state its parent.
         self.assertEqual(BARE_RE.findall(self.rendered), [])
 
-    def test_only_maxspeed_is_emitted(self) -> None:
+    def test_only_admitted_keys_are_emitted(self) -> None:
+        # The generator owns maxSpeed and mass. It must never emit a key that
+        # thermal or optics own, because this addon loads last and a
+        # redeclaration here would silently win.
         assignments = re.findall(r"^\s+(\w+) = ", self.rendered, re.M)
-        self.assertEqual(set(assignments), {"maxSpeed"})
+        self.assertEqual(set(assignments), {"maxSpeed", "mass"})
         self.assertEqual(set(assignments) & set(FORBIDDEN_KEYS), set())
 
     def test_the_projection_is_fresh(self) -> None:
@@ -246,9 +246,7 @@ class PhysicsConfigGeneratorTest(unittest.TestCase):
 
     def test_the_projection_matches_the_emitted_set(self) -> None:
         records = json.loads(BINDINGS.read_text(encoding="utf-8"))
-        self.assertEqual(
-            {record["game_class"] for record in records}, set(self.corpus)
-        )
+        self.assertEqual({record["game_class"] for record in records}, set(self.corpus))
         for record in records:
             self.assertIn(record["game_class"], self.children)
 
@@ -284,7 +282,11 @@ class PhysicsConfigGeneratorTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             self.assertEqual(
                 gen.check_config(
-                    CLASS_BINDINGS, VEHICLE, PARENTS, Path(tmp) / "CfgVehicles.hpp", BINDINGS
+                    CLASS_BINDINGS,
+                    VEHICLE,
+                    PARENTS,
+                    Path(tmp) / "CfgVehicles.hpp",
+                    BINDINGS,
                 ),
                 1,
             )

@@ -1,10 +1,20 @@
 #!/usr/bin/env python3
-"""Generate the engine CfgVehicles maxSpeed override from the vehicle corpus.
+"""Generate the engine CfgVehicles override from the vehicle corpus.
 
-The class set and the values come from ``data/vehicle/class_bindings.json``
-and the catalogue ``max_speed_kmh`` field. A bound class yields a line only
-when its catalogue entry holds that field with a complete held value object.
-The generator invents no value and drops no binding it can represent.
+One CfgVehicles block carries two keys:
+
+  * ``maxSpeed`` from the held catalogue ``max_speed_kmh`` field;
+  * ``mass`` as a CALIBRATED scale of a held real mass.
+
+The class set is ``data/vehicle/class_bindings.json``. The maxSpeed value
+comes from the catalogue ``max_speed_kmh`` field. The mass value comes from
+the approved calibration ``data/physics/mass_calibration.json``:
+
+    mass = real_analogue_mass_kg / fit.scale
+
+The engine's own ``getMass`` and config ``mass`` are engine tuning values and
+are never a value source. The fit is a calibration scale over a held real
+mass.
 
 The generator reads the immediate real parent of each bound class from
 ``data/vehicle/class_parents.json``. That cache is a committed generated
@@ -15,7 +25,7 @@ install, so the gate stays deterministic in CI.
 The emitted shape states the parent:
 
     class <Parent>;
-    class <X>: <Parent> { maxSpeed = v; };
+    class <X>: <Parent> { maxSpeed = v; mass = w; };
 
 The parent is the immediate real parent and it is forward-declared once.
 A reopen that omits the parent invokes the engine Empty syntax and strips
@@ -24,13 +34,17 @@ does not carry the parent, so the child must restate it. The generator
 therefore states the parent and never emits a bare class. It fails closed
 when a bound class has no resolved parent.
 
-It declares maxSpeed and no other key. ``thermal`` and ``optics`` own
-``htMin``, ``htMax``, ``afMax``, ``mfMax``, ``mFact`` and ``tBody``; a
+One block carries both keys. The engine lint rejects a second CfgVehicles
+block in the same addon, so the two keys share one render.
+
+It declares maxSpeed and mass and no other key. ``thermal`` and ``optics``
+own ``htMin``, ``htMax``, ``afMax``, ``mfMax``, ``mFact`` and ``tBody``; a
 redeclaration here would win and change the thermal model, so the generator
 admits no other key.
 
 The generator also writes ``data/physics/config_bindings.json`` as a
-generated projection with the same shape the validator reads.
+generated projection of the maxSpeed bindings, with the shape the validator
+reads.
 
 Run:
     python3 tools/validation/gen_physics_config.py
@@ -60,17 +74,20 @@ from tools.validation import vehicle_catalogue as catalogue  # noqa: E402
 DEFAULT_CLASS_BINDINGS = REPO / "data" / "vehicle" / "class_bindings.json"
 DEFAULT_VEHICLE_DIR = REPO / "data" / "vehicle"
 DEFAULT_PARENTS = REPO / "data" / "vehicle" / "class_parents.json"
+DEFAULT_CALIBRATION = REPO / "data" / "physics" / "mass_calibration.json"
 DEFAULT_PROJECTION = REPO / "data" / "physics" / "config_bindings.json"
 DEFAULT_OUT = REPO / "addons" / "mobility" / "generated" / "CfgVehicles.hpp"
 
-# This version emits one config class and one key. The schema admits no other
+# This version emits one config class and two keys. The schema admits no other
 # pair, so a corpus record outside this pair is an error rather than a silent
 # drop: the generator must not lose a binding it cannot represent.
 CONFIG_CLASS = "CfgVehicles"
 KEY = "maxSpeed"
+MASS_KEY = "mass"
 VALUE_FIELD = "max_speed_kmh"
 KEY_UNIT = "km/h"
 CONVERSION = "identity"
+MASS_SCHEMA = "aee.physics.mass_calibration/1"
 
 HEADER = (
     "/* SPDX-License-Identifier: GPL-2.0-or-later */\n"
@@ -85,16 +102,21 @@ HEADER = (
     "// forward-declared once:\n"
     "//\n"
     "//     class <Parent>;\n"
-    "//     class <X>: <Parent> { maxSpeed = v; };\n"
+    "//     class <X>: <Parent> { maxSpeed = v; mass = w; };\n"
     "//\n"
     "// A reopen that omits the parent invokes the engine Empty syntax and\n"
     "// strips the vanilla class of every inherited property. A forward\n"
     "// declaration alone does not carry the parent, so the child restates\n"
     "// it. The generator never emits a bare class.\n"
     "//\n"
-    "// It declares maxSpeed and no other key. thermal and optics own htMin,\n"
-    "// htMax, afMax, mfMax, mFact and tBody; a redeclaration here would win\n"
-    "// and change the thermal model, so only maxSpeed is admitted.\n"
+    "// It declares maxSpeed and mass and no other key. thermal and optics\n"
+    "// own htMin, htMax, afMax, mfMax, mFact and tBody; a redeclaration here\n"
+    "// would win and change the thermal model, so no thermal key is admitted.\n"
+    "// Each mass is a calibrated scale of a held real mass, never a copied\n"
+    "// engine number, from data/physics/mass_calibration.json.\n"
+    "//\n"
+    "// One block carries both keys: the engine lint rejects a second\n"
+    "// CfgVehicles block in the same addon.\n"
 )
 
 
@@ -109,7 +131,7 @@ class ParentRecord:
 
 @dataclass(frozen=True)
 class Emission:
-    """One corpus binding that holds a value and can be emitted."""
+    """One corpus binding that holds a maxSpeed value and can be emitted."""
 
     game_class: str
     parent_class: str
@@ -118,6 +140,25 @@ class Emission:
     source_id: str
     locator: str
     grade: str
+
+
+@dataclass(frozen=True)
+class MassCalibration:
+    """The approved calibration: one fitted scale and the held mass per class."""
+
+    scale: float
+    round_to: int
+    held_kg: dict[str, float]
+
+
+@dataclass(frozen=True)
+class ClassBinding:
+    """One bare class body with the keys it holds."""
+
+    game_class: str
+    parent_class: str
+    max_speed: object | None
+    mass: float | None
 
 
 def _mapping(value: object) -> dict[str, object] | None:
@@ -131,6 +172,13 @@ def _text(value: object) -> str | None:
     if isinstance(value, str) and value.strip():
         return value
     return None
+
+
+def _number(value: object) -> float | None:
+    """Return a real number, rejecting a bool and a numeric string."""
+    if isinstance(value, bool) or not isinstance(value, (int, float)):
+        return None
+    return float(value)
 
 
 def load_class_bindings(path: Path) -> list[dict[str, object]]:
@@ -245,12 +293,61 @@ def load_parents(path: Path) -> dict[str, ParentRecord]:
     return parents
 
 
+def load_mass_calibration(path: Path) -> MassCalibration:
+    """Read the approved mass calibration. Raise ValueError when unusable.
+
+    An unapproved calibration is an error: the mass override waits on the
+    operator approval, so the generator must not consume the fit before it is
+    granted. A class with no held real mass is an error too, because the
+    generator must not invent a mass.
+    """
+    loaded: object = json.loads(path.read_text(encoding="utf-8"))
+    payload = _mapping(loaded)
+    if payload is None:
+        raise ValueError(f"{path}: the calibration must be a JSON object")
+    if payload.get("schema") != MASS_SCHEMA:
+        raise ValueError(f"{path}: schema must be {MASS_SCHEMA}")
+    if payload.get("approved") is not True:
+        raise ValueError(
+            f"{path}: the calibration is not approved; the mass override waits "
+            "on the operator approval"
+        )
+    fit = _mapping(payload.get("fit"))
+    if fit is None:
+        raise ValueError(f"{path}: fit must be an object")
+    scale = _number(fit.get("scale"))
+    if scale is None or scale <= 0:
+        raise ValueError(f"{path}: fit.scale must be positive")
+    round_value = _number(fit.get("round"))
+    round_to = int(round_value) if round_value is not None else 6
+    rows = payload.get("rows")
+    if not isinstance(rows, list) or not rows:
+        raise ValueError(f"{path}: rows must be a non-empty array")
+    held: dict[str, float] = {}
+    for index, raw in enumerate(rows):
+        row = _mapping(raw)
+        if row is None:
+            raise ValueError(f"{path}: rows[{index}] must be an object")
+        game_class = _text(row.get("game_class"))
+        if game_class is None:
+            raise ValueError(f"{path}: rows[{index}].game_class must be a string")
+        if game_class in held:
+            raise ValueError(f"{path}: rows[{index}] repeats {game_class}")
+        mass = _number(row.get("real_analogue_mass_kg"))
+        if mass is None or mass <= 0:
+            raise ValueError(
+                f"{path}: rows[{index}].real_analogue_mass_kg must be positive"
+            )
+        held[game_class] = mass
+    return MassCalibration(scale=scale, round_to=round_to, held_kg=held)
+
+
 def build(
     class_bindings_path: Path,
     vehicle_dir: Path,
     parents_path: Path,
 ) -> list[Emission]:
-    """Return the ordered emissions, one per bound class that holds a value.
+    """Return the ordered maxSpeed emissions, one per bound class with a value.
 
     A bound class with a held value and no resolved parent is an error. The
     generator emits no bare class, so it stops rather than guess a parent.
@@ -280,24 +377,75 @@ def build(
     return emissions
 
 
-def render(emissions: Sequence[Emission]) -> str:
-    """Return the exact on-disk text for the emitted bindings."""
-    parents = sorted({emission.parent_class for emission in emissions})
+def build_class_bindings(
+    class_bindings_path: Path,
+    vehicle_dir: Path,
+    parents_path: Path,
+    calibration_path: Path,
+) -> list[ClassBinding]:
+    """Return the ordered class bodies, one per bound class.
+
+    Every bound class carries a calibrated mass: the mass override covers the
+    whole class-binding corpus. A bound class with no held real mass in the
+    approved calibration is an error, because the generator emits no invented
+    mass. A bound class with no resolved parent is an error, because the
+    generator emits no bare class. A class that also holds a maxSpeed value
+    carries both keys in its one body.
+    """
+    max_speed = {
+        emission.game_class: emission
+        for emission in build(class_bindings_path, vehicle_dir, parents_path)
+    }
+    calibration = load_mass_calibration(calibration_path)
+    parents = load_parents(parents_path)
+    bindings: list[ClassBinding] = []
+    for game_class in bound_classes(class_bindings_path):
+        held_kg = calibration.held_kg.get(game_class)
+        if held_kg is None:
+            raise ValueError(
+                f"{game_class}: no held real mass in {calibration_path}; "
+                "the mass override cannot emit it"
+            )
+        parent = parents.get(game_class)
+        if parent is None:
+            raise ValueError(
+                f"{game_class}: no resolved parent in {parents_path}; "
+                "run --resolve-parents against the game install"
+            )
+        emission = max_speed.get(game_class)
+        value = round(held_kg / calibration.scale, calibration.round_to)
+        bindings.append(
+            ClassBinding(
+                game_class=game_class,
+                parent_class=parent.parent_class,
+                max_speed=emission.value if emission is not None else None,
+                mass=value,
+            )
+        )
+    return bindings
+
+
+def render_bindings(bindings: Sequence[ClassBinding]) -> str:
+    """Return the exact on-disk text for the emitted class bodies."""
+    parents = sorted({binding.parent_class for binding in bindings})
     lines = [HEADER, f"class {CONFIG_CLASS} {{"]
     for parent in parents:
         lines.append(f"    class {parent};")
-    if parents and emissions:
+    if parents and bindings:
         lines.append("")
-    for emission in emissions:
-        lines.append(f"    class {emission.game_class}: {emission.parent_class} {{")
-        lines.append(f"        {KEY} = {_render_value(emission.value)};")
+    for binding in bindings:
+        lines.append(f"    class {binding.game_class}: {binding.parent_class} {{")
+        if binding.max_speed is not None:
+            lines.append(f"        {KEY} = {_render_value(binding.max_speed)};")
+        if binding.mass is not None:
+            lines.append(f"        {MASS_KEY} = {_render_value(binding.mass)};")
         lines.append("    };")
     lines.append("};")
     return "\n".join(lines) + "\n"
 
 
 def projection_records(emissions: Sequence[Emission]) -> list[dict[str, object]]:
-    """Return the validator projection of the emissions."""
+    """Return the validator projection of the maxSpeed emissions."""
     return [
         {
             "game_class": emission.game_class,
@@ -333,12 +481,18 @@ def write_outputs(
     parents_path: Path,
     out: Path,
     projection: Path,
+    calibration_path: Path = DEFAULT_CALIBRATION,
 ) -> int:
-    """Write the header and the projection. Return the binding count."""
-    emissions = build(class_bindings_path, vehicle_dir, parents_path)
-    _write(out, render(emissions))
-    _write(projection, render_projection(emissions))
-    return len(emissions)
+    """Write the header and the projection. Return the class-body count."""
+    bindings = build_class_bindings(
+        class_bindings_path, vehicle_dir, parents_path, calibration_path
+    )
+    _write(out, render_bindings(bindings))
+    _write(
+        projection,
+        render_projection(build(class_bindings_path, vehicle_dir, parents_path)),
+    )
+    return len(bindings)
 
 
 def _fresh(path: Path, text: str, label: str) -> bool:
@@ -357,16 +511,21 @@ def check_config(
     parents_path: Path,
     out: Path,
     projection: Path,
+    calibration_path: Path = DEFAULT_CALIBRATION,
 ) -> int:
     """Return 0 when both committed artefacts match a fresh build.
 
-    Check mode writes nothing. A missing or stale file returns 1, so a
-    stale generated override fails the gate.
+    Check mode writes nothing. A missing or stale file returns 1, so a stale
+    generated override fails the gate.
     """
     try:
-        emissions = build(class_bindings_path, vehicle_dir, parents_path)
-        text = render(emissions)
-        expected = render_projection(emissions)
+        bindings = build_class_bindings(
+            class_bindings_path, vehicle_dir, parents_path, calibration_path
+        )
+        text = render_bindings(bindings)
+        expected = render_projection(
+            build(class_bindings_path, vehicle_dir, parents_path)
+        )
     except (OSError, ValueError, json.JSONDecodeError) as exc:
         print(f"physics config override: cannot build from the corpus: {exc}")
         return 1
@@ -375,7 +534,7 @@ def check_config(
     if not _fresh(projection, expected, "projection"):
         return 1
     print(
-        f"physics config override: {len(emissions)} bindings -> {out}, "
+        f"physics config override: {len(bindings)} class bodies -> {out}, "
         f"{projection} (fresh)"
     )
     return 0
@@ -555,6 +714,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--vehicle-dir", type=Path, default=DEFAULT_VEHICLE_DIR)
     parser.add_argument("--parents", type=Path, default=DEFAULT_PARENTS)
     parser.add_argument("--projection", type=Path, default=DEFAULT_PROJECTION)
+    parser.add_argument("--calibration", type=Path, default=DEFAULT_CALIBRATION)
     parser.add_argument("--out", type=Path, default=DEFAULT_OUT)
     parser.add_argument(
         "--check",
@@ -597,6 +757,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             args.parents,
             args.out,
             args.projection,
+            args.calibration,
         )
     try:
         count = write_outputs(
@@ -605,11 +766,12 @@ def main(argv: Sequence[str] | None = None) -> int:
             args.parents,
             args.out,
             args.projection,
+            args.calibration,
         )
     except (OSError, ValueError, json.JSONDecodeError) as exc:
         print(f"physics config override: cannot build from the corpus: {exc}")
         return 1
-    print(f"physics config override: {count} bindings -> {args.out}")
+    print(f"physics config override: {count} class bodies -> {args.out}")
     return 0
 
 
