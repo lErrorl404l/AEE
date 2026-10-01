@@ -36,10 +36,12 @@ FUNCTIONS = REPO / "addons" / "mobility" / "functions"
 BANDS_PATH = FUNCTIONS / "fnc_getVehicleBands.sqf"
 CLASSIFY_PATH = FUNCTIONS / "fnc_classifyVehicle.sqf"
 WRAPPER_PATH = FUNCTIONS / "fnc_estimateVehicleMass.sqf"
+TRACTION_PATH = FUNCTIONS / "fnc_calculateTraction.sqf"
 PREP_PATH = REPO / "addons" / "mobility" / "XEH_PREP.hpp"
 
 BANDS = BANDS_PATH.read_text(encoding="utf-8")
 CLASSIFY = CLASSIFY_PATH.read_text(encoding="utf-8")
+TRACTION = TRACTION_PATH.read_text(encoding="utf-8")
 
 # The seven band columns.
 BAND_COLUMNS = 7
@@ -190,6 +192,16 @@ def row(
         width,
         height,
     ]
+
+
+def classify_tracked(tokens: set[str]) -> bool:
+    """Mirror of the classifier's live tracked rule: Tank or Tracked_APC."""
+    return "Tank" in tokens or "Tracked_APC" in tokens
+
+
+def select_mu(is_tracked: bool, wheeled_mu: float, tracked_mu: float) -> float:
+    """Mirror of the traction selector: [wheeled, tracked] select isTracked."""
+    return tracked_mu if is_tracked else wheeled_mu
 
 
 class GeneratedBandTableTest(unittest.TestCase):
@@ -470,6 +482,34 @@ class ConsumerWiringTest(unittest.TestCase):
             'if (_vehicle isKindOf "Tank" || {_vehicle isKindOf "Tracked_APC"}) then {',
             wrapper,
         )
+
+
+class TractionConsumerTest(unittest.TestCase):
+    """The traction model sources its tracked flag from the classifier."""
+
+    def test_the_traction_selector_calls_the_classifier(self) -> None:
+        self.assertIn("([_veh] call FUNC(classifyVehicle)) select 2", TRACTION)
+
+    def test_the_traction_selector_drops_the_tank_only_test(self) -> None:
+        # The Tank-only test gave a tracked APC the wheeled coefficient.
+        self.assertNotIn('_veh isKindOf "Tank"', TRACTION)
+
+    def test_the_classifier_tracked_rule_covers_tracked_apc(self) -> None:
+        self.assertIn('_vehicle isKindOf "Tank"', CLASSIFY)
+        self.assertIn('_vehicle isKindOf "Tracked_APC"', CLASSIFY)
+
+    def test_the_tracked_flag_selects_the_tracked_coefficient(self) -> None:
+        self.assertEqual(select_mu(True, 0.85, 0.9), 0.9)
+        self.assertEqual(select_mu(False, 0.85, 0.9), 0.85)
+
+    def test_a_tank_and_a_tracked_apc_select_the_tracked_coefficient(self) -> None:
+        # A tracked APC is tracked. A wheeled vehicle is not.
+        for tokens in ({"Tank"}, {"Tracked_APC"}):
+            with self.subTest(tokens=tokens):
+                self.assertEqual(select_mu(classify_tracked(tokens), 0.85, 0.9), 0.9)
+        for tokens in ({"Car"}, {"Wheeled_APC"}, set()):
+            with self.subTest(tokens=tokens):
+                self.assertEqual(select_mu(classify_tracked(tokens), 0.85, 0.9), 0.85)
 
 
 class BandTableFunctionTest(unittest.TestCase):

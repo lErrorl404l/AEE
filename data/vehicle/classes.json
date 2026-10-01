@@ -308,7 +308,6 @@
         "addons/mobility/functions/fnc_calculateSSF.sqf:59",
         "addons/mobility/functions/fnc_calculateSoilStrength.sqf:70",
         "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:76",
-        "addons/mobility/functions/fnc_calculateTraction.sqf:78",
         "addons/mobility/functions/fnc_classifyVehicle.sqf:87",
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:152",
         "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:61"
