@@ -34,6 +34,10 @@ private _classes = [];
     private _name = configName _x;
     if (_name == "") then { continue; };
     if (!(_name isKindOf "LandVehicle")) then { continue; };
+    // A static weapon is not a vehicle. The base game declares class
+    // StaticWeapon: LandVehicle, so exclude the HMG, mortar, SAM and radar
+    // emplacements: this sweep is the ground vehicle fleet only.
+    if (_name isKindOf "StaticWeapon") then { continue; };
     if ((getText (_cfg >> _name >> "model")) == "") then { continue; };
     if ((getNumber (_cfg >> _name >> "scope")) != 2) then { continue; };
     _classes pushBack _name;

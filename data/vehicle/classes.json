@@ -292,6 +292,7 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
+        "addons/mobility/functions/fnc_classifyVehicle.sqf:95",
         "addons/thermal/functions/display/fnc_calculateVehicleHeat.sqf:77"
       ],
       "token": "StaticWeapon"
@@ -308,7 +309,7 @@
         "addons/mobility/functions/fnc_calculateSoilStrength.sqf:70",
         "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:76",
         "addons/mobility/functions/fnc_calculateTraction.sqf:78",
-        "addons/mobility/functions/fnc_classifyVehicle.sqf:80",
+        "addons/mobility/functions/fnc_classifyVehicle.sqf:87",
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:152",
         "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:61"
       ],
@@ -323,7 +324,7 @@
         "addons/mobility/functions/fnc_calculateSSF.sqf:60",
         "addons/mobility/functions/fnc_calculateSoilStrength.sqf:70",
         "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:77",
-        "addons/mobility/functions/fnc_classifyVehicle.sqf:80"
+        "addons/mobility/functions/fnc_classifyVehicle.sqf:87"
       ],
       "token": "Tracked_APC"
     },

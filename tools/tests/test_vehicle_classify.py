@@ -83,6 +83,33 @@ def parse_bands(text: str = BANDS) -> list[list[object]]:
     return parsed
 
 
+def mass_cap(rows: Sequence[Sequence[object]], vehicle_type: str) -> float | None:
+    """Mirror the SQF weight cap: the upper Tukey fence of the held gaps.
+
+    The catalogue's own resolution for a vehicle type is the relative gap
+    between consecutive held weights, capped at the standard 1.5
+    interquartile-range fence. ``None`` means fewer than two gaps, so no
+    bound applies. No threshold is chosen by hand.
+    """
+    masses = sorted(
+        float(row[COL_MASS])
+        for row in rows
+        if row[COL_TYPE] == vehicle_type and row[COL_MASS] > 0
+    )
+    gaps = [
+        (masses[index + 1] - masses[index]) / masses[index]
+        for index in range(len(masses) - 1)
+        if masses[index] > 0
+    ]
+    if len(gaps) < 2:
+        return None
+    gaps.sort()
+    last = len(gaps) - 1
+    q1 = gaps[int(last * 0.25)]
+    q3 = gaps[int(last * 0.75)]
+    return q3 + 1.5 * (q3 - q1)
+
+
 def select_band(
     rows: Sequence[Sequence[object]],
     vehicle_type: str,
@@ -90,22 +117,46 @@ def select_band(
     length_mm: float,
     width_mm: float,
     height_mm: float,
+    is_emplacement: bool = False,
 ) -> list[object] | None:
     """Mirror the SQF band selection: type, then nearest mass, then extent.
 
-    A zero mass selects nothing, because the engine mass is the selector and a
-    zero means it was not read. The nearest weight keeps the rows at the
-    smallest mass distance. The nearest extent keeps the rows at the smallest
-    extent distance. A tie at the extent selects no row, so the classifier
-    never guesses between two catalogue entries.
+    An emplacement selects nothing: a static weapon is not a vehicle. A zero
+    mass selects nothing, because the engine mass is the selector and a zero
+    means it was not read. The live tracked flag must agree with the row. The
+    nearest weight must stand out: two distinct held weights at the same
+    distance select nothing, and a weight outside the catalogue's own
+    resolution (``mass_cap``) selects nothing. The nearest extent breaks a
+    weight tie. A tie at the extent selects no row, so the classifier never
+    guesses between two catalogue entries.
     """
-    if mass_kg <= 0:
+    if is_emplacement or mass_kg <= 0:
         return None
     typed = [row for row in rows if row[COL_TYPE] == vehicle_type and row[COL_MASS] > 0]
     if not typed:
         return None
     min_mass = min(abs(float(row[COL_MASS]) - mass_kg) for row in typed)
-    near = [row for row in typed if abs(float(row[COL_MASS]) - mass_kg) == min_mass]
+    near_values = {
+        float(row[COL_MASS])
+        for row in typed
+        if abs(float(row[COL_MASS]) - mass_kg) == min_mass
+    }
+    if len(near_values) > 1:
+        return None
+    cap = mass_cap(rows, vehicle_type)
+    tracked = 1 if vehicle_type == "tracked" else 0
+    near = [
+        row
+        for row in typed
+        if abs(float(row[COL_MASS]) - mass_kg) == min_mass
+        and row[COL_TRACKED] == tracked
+        and (
+            cap is None
+            or abs(float(row[COL_MASS]) - mass_kg) <= cap * float(row[COL_MASS])
+        )
+    ]
+    if not near:
+        return None
     scored: list[tuple[float, list[object]]] = []
     for row in near:
         extent = 0.0
@@ -261,6 +312,44 @@ class BandSelectionTest(unittest.TestCase):
         rows = [row("any", mass=10000)]
         self.assertIsNone(select_band(rows, "tracked", 0, 6000, 3000, 2500))
 
+    def test_a_static_weapon_selects_no_row(self) -> None:
+        # B_AAA_System_01_F is a StaticWeapon at 15582 kg. Without the guard
+        # its nearest held weight is cougar_4x4. The guard refuses it.
+        rows = parse_bands()
+        self.assertIsNotNone(select_band(rows, "wheeled", 15582, 2590, 5180, 0))
+        self.assertIsNone(
+            select_band(rows, "wheeled", 15582, 2590, 5180, 0, is_emplacement=True)
+        )
+
+    def test_the_band_bound_rejects_an_implausible_weight(self) -> None:
+        # Three held weights give a measurable cap. A live weight far outside
+        # it is not plausibly any held vehicle, so no row is returned.
+        rows = [
+            row("a", mass=10000, length=6000, width=3000, height=2500),
+            row("b", mass=11000, length=6000, width=3000, height=2500),
+            row("c", mass=12000, length=6000, width=3000, height=2500),
+        ]
+        self.assertIsNone(select_band(rows, "tracked", 50000, 6000, 3000, 2500))
+        chosen = select_band(rows, "tracked", 12100, 6000, 3000, 2500)
+        self.assertIsNotNone(chosen)
+        assert chosen is not None
+        self.assertEqual(chosen[COL_ID], "c")
+
+    def test_the_band_bound_rejects_an_ambiguous_weight(self) -> None:
+        # 11500 kg sits equidistant between two distinct held weights, so the
+        # nearest is ambiguous and no row is returned.
+        rows = [
+            row("a", mass=10000, length=6000, width=3000, height=2500),
+            row("b", mass=11000, length=6000, width=3000, height=2500),
+            row("c", mass=12000, length=6000, width=3000, height=2500),
+        ]
+        self.assertIsNone(select_band(rows, "tracked", 11500, 6000, 3000, 2500))
+
+    def test_the_live_tracked_flag_must_agree_with_the_row(self) -> None:
+        # A row whose tracked flag contradicts its vehicle type is refused.
+        rows = [["odd", "wheeled", 1, 10000, 6000, 3000, 2500]]
+        self.assertIsNone(select_band(rows, "wheeled", 10000, 6000, 3000, 2500))
+
     def test_a_row_with_no_mass_is_skipped(self) -> None:
         rows = [row("absent", mass=0), row("held", mass=10000)]
         chosen = select_band(rows, "tracked", 10000, 6000, 3000, 2500)
@@ -321,6 +410,15 @@ class ClassifierSourceTest(unittest.TestCase):
 
     def test_the_band_route_selects_only_a_unique_row(self) -> None:
         self.assertIn("if ((_hits == 1) && (_best isNotEqualTo [])) then", CLASSIFY)
+
+    def test_the_classifier_excludes_a_static_weapon(self) -> None:
+        self.assertIn('_vehicle isKindOf "StaticWeapon"', CLASSIFY)
+        self.assertIn("_isEmplacement", CLASSIFY)
+
+    def test_the_band_route_bounds_the_weight(self) -> None:
+        # The bound is derived from the band table at run time, not a literal.
+        for token in ("_cap", "_gaps", "_nearCount", "_trackedFlag"):
+            self.assertIn(token, CLASSIFY)
 
     def test_the_token_order_is_most_specific_first(self) -> None:
         block = CLASSIFY.index("private _groundTokens = [")

@@ -14,15 +14,22 @@ It resolves in this order.
            The result is a catalogue identity.
   band     the live properties select a catalogue entry. The band table is
            filtered by the live vehicle type, then by the nearest held
-           operating weight, then by the nearest held extent. A tie at the
-           nearest extent selects no row, so the classifier never guesses
-           between two catalogue entries. This is the route for a class
-           whose display name is a fictional Arma designation.
+           operating weight, then by the nearest held extent. The nearest
+           weight must stand out: two distinct held weights at the same
+           distance, or a live weight outside the catalogue's own weight
+           resolution, select no row. A tie at the nearest extent selects no
+           row. This is the route for a class whose display name is a
+           fictional Arma designation.
   token    the class is the first ground token it isKindOf, most specific
            first. This is the coarse class identity and the type source.
            It is the same token order aee_mobility_fnc_calculateSSF uses.
   none     no route resolved. The class token is empty. The classifier
            never returns a wrong catalogue entry.
+
+A static weapon is not a vehicle. The base game declares class
+StaticWeapon: LandVehicle, so the HMG, mortar, SAM and radar emplacements
+would otherwise reach the band. The classifier returns no catalogue row for
+a class that isKindOf "StaticWeapon".
 
 The live properties are the engine mass (getMass), the bounding box
 (boundingBoxReal), the tracked flag (isKindOf Tank or Tracked_APC) and the
@@ -81,43 +88,107 @@ private _tracked = (_vehicle isKindOf "Tank") || {_vehicle isKindOf "Tracked_APC
 private _hasTurret = (count (allTurrets _vehicle)) > 0;
 private _vehicleType = ["wheeled", "tracked"] select _tracked;
 
+// The tracked flag as a band row stores it, and the emplacement guard. A
+// static weapon is not a vehicle, so the name routes, the band and the token
+// route are all skipped and the classifier returns no catalogue row for it.
+private _trackedFlag = [0, 1] select _tracked;
+private _isEmplacement = _vehicle isKindOf "StaticWeapon";
+
 private _classToken = "";
 private _matchedBy = "none";
 private _resolved = false;
 
 // ─── Corpus: the name routes ─────────────────────────────────────────────
-if (!(_match isEqualType []) || (count _match != 7)) then {
-    _match = [_type] call FUNC(getVehicleMatch);
-};
-if ((_match isEqualType []) && ((count _match) == 7)) then {
-    _classToken = _match select 0;
-    _vehicleType = _match select 2;
-    _matchedBy = "corpus";
-    _resolved = true;
+if (!_isEmplacement) then {
+    if (!(_match isEqualType []) || (count _match != 7)) then {
+        _match = [_type] call FUNC(getVehicleMatch);
+    };
+    if ((_match isEqualType []) && ((count _match) == 7)) then {
+        _classToken = _match select 0;
+        _vehicleType = _match select 2;
+        _matchedBy = "corpus";
+        _resolved = true;
+    };
 };
 
 // ─── Band: the live properties ───────────────────────────────────────────
 // Pass one finds the nearest held operating weight among the rows of the
 // live vehicle type. Pass two finds the nearest held extent among the rows
 // at that weight. A tie at the extent selects no row.
-if (!_resolved && (_massKg > 0)) then {
+//
+// The band is bounded. The live tracked flag must agree with the row. The
+// nearest held weight must stand out: two distinct held weights at the same
+// distance make it ambiguous and select no row. The live weight must also
+// fall inside the catalogue's own weight resolution for the type, derived
+// from the table: sort the held weights, take the relative gap between each
+// consecutive pair, then the upper Tukey fence of those gaps (the standard
+// 1.5 interquartile-range fence). No threshold is chosen by hand. A weight
+// outside the fence is not plausibly the held vehicle, so its row is
+// refused. The engine bounding box stays a tie-break only: the engine box
+// axes do not align with the held length and width axes, so a magnitude
+// test on the box would refuse valid rows.
+if (!_resolved && !_isEmplacement && (_massKg > 0)) then {
     private _rows = call FUNC(getVehicleBands);
-    private _minMass = -1;
+
+    private _heldMasses = [];
     {
         _x params ["_cid", "_rowType", "_rowTracked", "_rowMass"];
         if ((_rowType == _vehicleType) && (_rowMass > 0)) then {
-            private _distance = abs (_rowMass - _massKg);
-            if ((_minMass < 0) || (_distance < _minMass)) then { _minMass = _distance; };
+            _heldMasses pushBack _rowMass;
         };
     } forEach _rows;
-    if (_minMass >= 0) then {
+    _heldMasses sort true;
+
+    private _gaps = [];
+    for "_i" from 0 to ((count _heldMasses) - 2) do {
+        private _low = _heldMasses select _i;
+        if (_low > 0) then {
+            _gaps pushBack (((_heldMasses select (_i + 1)) - _low) / _low);
+        };
+    };
+
+    // A negative cap means too few gaps to measure a resolution, so no mass
+    // bound applies. The real table always yields a positive cap.
+    private _cap = -1;
+    if ((count _gaps) >= 2) then {
+        _gaps sort true;
+        private _last = (count _gaps) - 1;
+        private _q1 = _gaps select (floor (_last * 0.25));
+        private _q3 = _gaps select (floor (_last * 0.75));
+        _cap = _q3 + (1.5 * (_q3 - _q1));
+    };
+
+    // The nearest held weight, and whether two distinct held weights sit at
+    // that same distance. Such a pair is ambiguous.
+    private _minMass = -1;
+    {
+        private _distance = abs (_x - _massKg);
+        if ((_minMass < 0) || (_distance < _minMass)) then { _minMass = _distance; };
+    } forEach _heldMasses;
+
+    private _nearValue = -1;
+    private _nearCount = 0;
+    {
+        if (abs (_x - _massKg) == _minMass) then {
+            if (_nearCount == 0) then {
+                _nearValue = _x;
+                _nearCount = 1;
+            } else {
+                if (_x != _nearValue) then { _nearCount = 2; };
+            };
+        };
+    } forEach _heldMasses;
+
+    if ((_minMass >= 0) && (_nearCount <= 1)) then {
         private _minExtent = -1;
         private _hits = 0;
         private _best = [];
         {
             _x params ["_cid", "_rowType", "_rowTracked", "_rowMass", "_rowLen", "_rowWid", "_rowHgt"];
-            if ((_rowType == _vehicleType) && (_rowMass > 0)
-                && (abs (_rowMass - _massKg) == _minMass)) then {
+            private _massDistance = abs (_rowMass - _massKg);
+            if ((_rowType == _vehicleType) && (_rowTracked == _trackedFlag)
+                && (_rowMass > 0) && (_massDistance == _minMass)
+                && ((_cap < 0) || (_massDistance <= (_cap * _rowMass)))) then {
                 private _extent = 0;
                 if ((_rowLen > 0) && (_lengthM > 0)) then {
                     _extent = _extent + abs (_rowLen - _lengthM);
@@ -147,7 +218,7 @@ if (!_resolved && (_massKg > 0)) then {
 
 // ─── Token: the coarse class identity ────────────────────────────────────
 // Most specific first. The order follows the fnc_calculateSSF track table.
-if (!_resolved) then {
+if (!_resolved && !_isEmplacement) then {
     private _groundTokens = [
         "MRAP", "Wheeled_APC", "Tank", "Tracked_APC", "Car", "Truck", "Wheeled_APC_F"
     ];
