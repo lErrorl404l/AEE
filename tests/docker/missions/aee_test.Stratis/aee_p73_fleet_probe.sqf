@@ -65,6 +65,19 @@ private _notes = [];
         private _turret = if ((count (allTurrets _veh)) > 0) then { 1 } else { 0 };
         private _tracked = (_name isKindOf "Tank") || {_name isKindOf "Tracked_APC"};
         private _type = ["wheeled", "tracked"] select _tracked;
+
+        // The classifier reads the live object, so it runs before the delete.
+        // Its class token is the catalogue id for the corpus and band routes
+        // and the engine ground token for the coarse token route.
+        private _cls = "-";
+        private _cby = "-";
+        if (!isNil "aee_mobility_fnc_classifyVehicle") then {
+            private _classified = [_veh] call aee_mobility_fnc_classifyVehicle;
+            if ((_classified isEqualType []) && {count _classified == 9}) then {
+                _cby = _classified select 8;
+                if (_cby != "none") then { _cls = _classified select 0; };
+            };
+        };
         deleteVehicle _veh;
 
         private _cat = "-";
@@ -89,9 +102,10 @@ private _notes = [];
         if (_cat == "-") then { _unmatched = _unmatched + 1; } else { _matched = _matched + 1; };
         _spawned = _spawned + 1;
         diag_log text format [
-            "[P73] FLEET %1 type=%2 match=%3 conf=%4 by=%5 mass=%6 len=%7 wid=%8 turret=%9 data=%10",
+            "[P73] FLEET %1 type=%2 match=%3 conf=%4 by=%5 mass=%6 len=%7 wid=%8 turret=%9 data=%10 cls=%11 cby=%12",
             _name, _type, _cat, _conf, _by, _mass,
-            (round (_len * 100) / 100), (round (_wid * 100) / 100), _turret, _dataOk
+            (round (_len * 100) / 100), (round (_wid * 100) / 100), _turret, _dataOk,
+            _cls, _cby
         ];
     };
 } forEach _classes;
