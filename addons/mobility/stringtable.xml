@@ -233,5 +233,13 @@
             <Original>Turbulence Scale</Original>
             <English>Turbulence Scale</English>
         </Key>
+        <Key ID="STR_AEE_Mobility_vehicleCouplingEnabled_Description">
+            <Original>Couple the computed surface physics to the engine at run time. Snow load adds mass with setMass, and a wet or icy surface removes grip with a force. The load comes from the modelled snow depth and the sourced snow density. No published accretion mass exists for mud, so mud adds no mass. The force is applied on the machine that owns the vehicle.</Original>
+            <English>Couple the computed surface physics to the engine at run time. Snow load adds mass with setMass, and a wet or icy surface removes grip with a force. The load comes from the modelled snow depth and the sourced snow density. No published accretion mass exists for mud, so mud adds no mass. The force is applied on the machine that owns the vehicle.</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_vehicleCouplingEnabled_Name">
+            <Original>Runtime Vehicle Coupling</Original>
+            <English>Runtime Vehicle Coupling</English>
+        </Key>
     </Package>
 </Project>

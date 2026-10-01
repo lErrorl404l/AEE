@@ -61,6 +61,7 @@ private _vCrMps = 10.35 * sqrt (_tyrePsi max 20) * 0.44704;
 // Water film depth scales with surface wetness.  Below the wet threshold
 // friction is the dry/damp value; above it hydroplaning can engage.
 private _dryMu = 0.8;
+GVAR(dryFrictionMu) = _dryMu;
 private _wetMu = 0.55;
 private _muSurface = _dryMu - (_dryMu - _wetMu) * _surfaceWet;  // dry..wet by wetness
 
