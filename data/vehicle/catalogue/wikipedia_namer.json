@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-09-26",
-  "note": "Held tier-5 English Wikipedia compilation for the Namer armoured personnel carrier. The registry marks primary_held false. It publishes the weight, the engine rating, the maximum road speed and the range. It publishes no overall dimensions and no ground clearance, so those fields are absent.",
+  "note": "Held tier-5 English Wikipedia compilation for the Namer armoured personnel carrier. The registry marks primary_held false. It publishes the weight, the engine rating, the maximum road speed and the range. It publishes no overall dimensions and no ground clearance, so those fields are absent. The Arma 3 class display names IFV-6c Panther, IFV-6a Cheetah and CRV-6e Bobcat name the Bohemia Interactive IFV-6 family, which the Bohemia Interactive Field Manual - Vehicles Info describes as based on the Israeli armored personnel carrier chassis; the Israeli armoured personnel carrier behind the chassis is the Namer, so the fictional names are carried as aliases. The Cheetah and Bobcat are anti-aircraft and recovery role variants on the same chassis, not Namer itself. Source: Bohemia Interactive Community wiki, Field Manual - Vehicles Info, https://community.bistudio.com/wiki/Arma_3:_Field_Manual_-_Vehicles_Info.",
   "sources": [],
   "entries": [
     {
@@ -16,7 +16,10 @@
       "era": "modern",
       "aliases": [
         "namer",
-        "namer apc"
+        "namer apc",
+        "panther",
+        "cheetah",
+        "bobcat"
       ],
       "keywords": [
         "apc",

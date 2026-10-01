@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-09-26",
-  "note": "Held tier-5 English Wikipedia compilation for the Merkava main battle tank. The registry marks primary_held false. It publishes the mass, the length with and without the gun barrel, the width excluding skirts, the height to the turret roof, the ground clearance, the engine rating, the transmission, the road and cross-country speeds and the range. The infobox figures are those of the current Mark, so the entry names the Mk 4.",
+  "note": "Held tier-5 English Wikipedia compilation for the Merkava main battle tank. The registry marks primary_held false. It publishes the mass, the length with and without the gun barrel, the width excluding skirts, the height to the turret roof, the ground clearance, the engine rating, the transmission, the road and cross-country speeds and the range. The infobox figures are those of the current Mark, so the entry names the Mk 4. The Arma 3 class display names M2A1 Slammer and M2A4 Slammer UP name the Bohemia Interactive M2A1 Slammer, which the Bohemia Interactive Field Manual - Vehicles Info describes as a licensed copy of an Israeli tank built in Central Europe; the Israeli main battle tank behind it is the Merkava, so the fictional names are carried as aliases. Source: Bohemia Interactive Community wiki, Field Manual - Vehicles Info, https://community.bistudio.com/wiki/Arma_3:_Field_Manual_-_Vehicles_Info.",
   "sources": [],
   "entries": [
     {
@@ -17,7 +17,10 @@
       "aliases": [
         "merkava",
         "merkava mk 4",
-        "merkava mk4"
+        "merkava mk4",
+        "slammer",
+        "m2a1",
+        "m2a4"
       ],
       "keywords": [
         "mbt",

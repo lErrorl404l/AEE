@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-09-26",
-  "note": "Catalogue capture for the held tier-5 English Wikipedia article 'FV510 Warrior'. The article is a secondary compilation, so every value is grade claimed and the registry marks primary_held false. It holds the FV510 Warrior infantry fighting vehicle as a tracked entry. It publishes identity, the mass, the overall length, width and height, the engine model, the engine rating of 550 hp with no net basis, the maximum road speed and the operational range. It publishes no ground clearance, no track shoe width, no track pitch, no transmission class and no grouser statement, so the entry is not runtime-ready. No stronger source is held: no UK AESP or maker datasheet for the Warrior is on the two manual mirrors that served the other captures.",
+  "note": "Catalogue capture for the held tier-5 English Wikipedia article 'FV510 Warrior'. The article is a secondary compilation, so every value is grade claimed and the registry marks primary_held false. It holds the FV510 Warrior infantry fighting vehicle as a tracked entry. It publishes identity, the mass, the overall length, width and height, the engine model, the engine rating of 550 hp with no net basis, the maximum road speed and the operational range. It publishes no ground clearance, no track shoe width, no track pitch, no transmission class and no grouser statement, so the entry is not runtime-ready. No stronger source is held: no UK AESP or maker datasheet for the Warrior is on the two manual mirrors that served the other captures. The Arma 3 class display name FV-720 Mora names the Bohemia Interactive FV-720 Mora, which the Bohemia Interactive Field Manual - Vehicles Info describes as bought by the AAF from the British Armed Forces and reconditioned; the British Army tracked infantry fighting vehicle behind it is the Warrior, so the fictional name is carried as an alias. Source: Bohemia Interactive Community wiki, Field Manual - Vehicles Info, https://community.bistudio.com/wiki/Arma_3:_Field_Manual_-_Vehicles_Info.",
   "sources": [],
   "entries": [
     {
@@ -14,7 +14,7 @@
       "class_token": "",
       "country": "United Kingdom",
       "era": "modern",
-      "aliases": ["warrior", "fv510", "fv510 warrior", "warrior tracked armoured vehicle"],
+      "aliases": ["warrior", "fv510", "fv510 warrior", "warrior tracked armoured vehicle", "mora", "fv720"],
       "keywords": ["ifv", "tracked", "warrior", "infantry fighting vehicle"],
       "runtime_ready": false,
       "values": {

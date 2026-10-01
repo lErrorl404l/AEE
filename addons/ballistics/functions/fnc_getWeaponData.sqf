@@ -1696,9 +1696,13 @@ if (isNil "_index" || {(count _index) == 0}) then {
     missionNamespace setVariable [QGVAR(weaponIndex), _index];
 };
 
-// The query: the classname plus the readable name from CfgWeapons.
-private _name = getText (configFile >> "CfgWeapons" >> _weapon >> "displayName");
-private _query = [_weapon + " " + _name] call _normalise;
+// Identity text only: the classname, the raw display name and its localised
+// stringtable text. A vanilla class stores a $STR key in displayName, so all
+// three are needed. None carries a figure.
+private _rawName = getText (configFile >> "CfgWeapons" >> _weapon >> "displayName");
+private _localName = if (_rawName == "") then { "" } else { localize _rawName };
+private _identity = _weapon + " " + _rawName + " " + _localName;
+private _query = [_identity] call _normalise;
 
 private _match = [];
 private _bestLen = 0;
@@ -1708,7 +1712,7 @@ private _bestLen = 0;
         _match = _hit;
         _bestLen = _hit select 5;
     };
-} forEach (toLower (_weapon + " " + _name) splitString "_- .");
+} forEach (toLower _identity splitString "_- .");
 
 if (_match isEqualTo []) then {
     {
