@@ -6,207 +6,531 @@ title: "Configuration"
 
 All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings menu under the **AEE** categories. Values marked *global* must match across all clients.
 
-## AEE
+## AEE Armour → Armour
 
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_core_enabled` | CHECKBOX | `true` | core | Master switch for the AEE environment simulation module |
-| `aee_core_updateInterval` | SLIDER | `5` | core | Simulation update interval in seconds (lower = more frequent updates) |
-| `aee_core_referenceAltitude` | SLIDER | `0` | core | Override reference altitude (m MSL) for station pressure calculations. 0 = auto-detect from unit position |
-| `aee_core_clothingInsulation` | SLIDER | `1.0` | core | Multiplier for clothing insulation. Higher values keep the soldier warmer in cold conditions |
-| `aee_core_diagnostic` | CHECKBOX | `false` | core | Enable verbose diagnostic logging (diag_log) for environment state changes |
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_armour_armourEnabled` | CHECKBOX | `true` | yes | armour | Apply the STANAG 4569-aligned vehicle armour ladder (issue #126) |
 
-## AEE ACE3
+## AEE Armour → Penetration
 
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_compat_ace3_medicalWBGTThreshold` | SLIDER | `23` | compat_ace3 | WBGT above this engages heart-rate and flow adjustments |
-| `aee_compat_ace3_medicalRiskThreshold` | SLIDER | `0.3` | compat_ace3 | Dehydration risk above this affects vitals |
-| `aee_compat_ace3_medicalHeatStrokeWBGT` | SLIDER | `32` | compat_ace3 | WBGT that triggers cardiac arrest |
-| `aee_compat_ace3_medicalBurnTemp` | SLIDER | `25` | compat_ace3 | Air temperature that starts heat-burn damage |
-| `aee_compat_ace3_medicalBurnDamageScale` | SLIDER | `0.0005` | compat_ace3 | Damage per degree above the burn threshold |
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_armour_penetrationDebug` | CHECKBOX | `false` | yes | armour | Log penetration gate decisions (round mm RHA vs protection) to the RPT |
+| `aee_armour_penetrationGate` | CHECKBOX | `true` | yes | armour | Scale vehicle damage by the round's real RHA penetration vs the STANAG protection class - a rifle cannot shred an IFV |
 
-## AEE ACM
+## AEE Atmos → Clouds
 
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_compat_acm_CBRNBasePersistence` | SLIDER | `24` | compat_acm | Agent persistence in hours at 15 degrees Celsius |
-| `aee_compat_acm_CBRNContamThreshold` | SLIDER | `0.01` | compat_acm | Normalised contamination that marks a unit contaminated |
-| `aee_compat_acm_CBRNMaxBuildup` | SLIDER | `100` | compat_acm | Upper limit of the ACM exposure buildup |
-
-## AEE ACRE2
-
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_compat_acre2_signalDBShift` | SLIDER | `8` | compat_acre2 | Maximum dB shift from the propagation index |
-| `aee_compat_acre2_signalSensitivityMin` | SLIDER | `-110` | compat_acre2 | Receiver sensitivity floor in dBm |
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_atmos_simulWeatherLayers` | SLIDER | `0` | yes | atmos | Number of simul weather cloud layers; 0 leaves the engine default, more layers cost performance |
 
 ## AEE Atmos → Events
 
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_atmos_microburstTempThreshold` | SLIDER | `28` | atmos | Surface temperature above which microburst conditions can form |
-| `aee_atmos_microburstChance` | SLIDER | `0.01` | atmos | Probability of a microburst per tick when all trigger conditions hold |
-| `aee_atmos_microburstDuration` | SLIDER | `12` | atmos | Duration of a microburst in simulation ticks |
-| `aee_atmos_microburstGustMax` | SLIDER | `36` | atmos | Ceiling of the damaging-gust wind speed in metres per second |
-| `aee_atmos_lightningConvectionTemp` | SLIDER | `25` | atmos | Surface temperature above which convective potential is considered high |
-| `aee_atmos_lightningStrikeChance` | SLIDER | `0.05` | atmos | Probability of a lightning strike per tick at maximum risk |
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_atmos_lightningConvectionTemp` | SLIDER | `25` | yes | atmos | Surface temperature above which convective potential is considered high |
+| `aee_atmos_lightningStrikeChance` | SLIDER | `0.05` | yes | atmos | Probability of a lightning strike per tick at maximum risk |
+| `aee_atmos_microburstChance` | SLIDER | `0.01` | yes | atmos | Probability of a microburst per tick when all trigger conditions hold |
+| `aee_atmos_microburstDuration` | SLIDER | `12` | yes | atmos | Duration of a microburst in simulation ticks |
+| `aee_atmos_microburstGustMax` | SLIDER | `36` | yes | atmos | Ceiling of the damaging-gust wind speed in metres per second |
+| `aee_atmos_microburstTempThreshold` | SLIDER | `28` | yes | atmos | Surface temperature above which microburst conditions can form |
 
 ## AEE Atmos → Fog
 
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_atmos_radFogRampRate` | SLIDER | `0.1` | atmos | Radiational-fog density added per tick on clear calm moist nights |
-| `aee_atmos_maxFogDensity` | SLIDER | `0.8` | atmos | Ceiling for the fog density value applied to the engine |
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_atmos_maxFogDensity` | SLIDER | `0.8` | yes | atmos | Ceiling for the fog density value applied to the engine |
+| `aee_atmos_radFogRampRate` | SLIDER | `0.1` | yes | atmos | Radiational-fog density added per tick on clear calm moist nights |
 
 ## AEE Atmos → Icing
 
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_atmos_icingShedRate` | SLIDER | `0.9` | atmos | Fraction of accreted ice removed per tick while shedding conditions hold |
-| `aee_atmos_maxIceMass` | SLIDER | `100` | atmos | Ice mass in kilograms that equals full airframe icing severity |
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_atmos_icingShedRate` | SLIDER | `0.9` | yes | atmos | Fraction of accreted ice removed per tick while shedding conditions hold |
+| `aee_atmos_maxIceMass` | SLIDER | `100` | yes | atmos | Ice mass in kilograms that equals full airframe icing severity |
+
+## AEE Atmos → Refraction
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_atmos_refractionEnabled` | CHECKBOX | `true` | yes | atmos | Enable atmospheric refraction, ducting, and mirage classification |
+
+## AEE Ballistics → Ammo Temperature
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_ballistics_ammoHeatPerShotJ` | SLIDER | `0.0001` | yes | ballistics | Propellant heat added per joule of round energy (degC per shot) |
+| `aee_ballistics_ammoTempTimeConstant` | SLIDER | `600` | yes | ballistics | Time constant of the per-weapon ammo temperature relaxation toward ambient (seconds) |
+
+## AEE Ballistics → Diagnostics
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_ballistics_logDebug` | CHECKBOX | `false` | yes | ballistics | Log this module DEBUG and TRACE lines to the RPT. Off by default. |
 
 ## AEE Environmental → Fire
 
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_environmental_FlareChance` | SLIDER | `0.05` | environmental | Solar-flare trigger chance per tick |
-| `aee_environmental_FlareDuration` | SLIDER | `10800` | environmental | Solar-flare hold duration (s) |
-| `aee_environmental_FlareDecayRate` | SLIDER | `0.05` | environmental | Solar-flare decay speed per tick |
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_environmental_FlareChance` | SLIDER | `0.05` | yes | environmental | Solar-flare trigger chance per tick |
+| `aee_environmental_FlareDecayRate` | SLIDER | `0.05` | yes | environmental | Solar-flare decay speed per tick |
+| `aee_environmental_FlareDuration` | SLIDER | `10800` | yes | environmental | Solar-flare hold duration (s) |
 
 ## AEE Environmental → Hydrology
 
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_environmental_FrostAccumRate` | SLIDER | `0.001` | environmental | Frost build-up speed per tick |
-| `aee_environmental_FrostDecayRate` | SLIDER | `0.01` | environmental | Frost melt speed per tick |
-| `aee_environmental_SnowAccretionRate` | SLIDER | `0.01` | environmental | Snow depth gain per tick per unit rain |
-| `aee_environmental_MaxSnowDepth` | SLIDER | `3.0` | environmental | Maximum snow depth (m) |
-| `aee_environmental_WettingRate` | SLIDER | `0.05` | environmental | Surface wetting speed per tick per unit rain |
-| `aee_environmental_DewRate` | SLIDER | `0.02` | environmental | Dew contribution to surface wetness per tick |
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_environmental_DewRate` | SLIDER | `0.02` | yes | environmental | Dew contribution to surface wetness per tick |
+| `aee_environmental_FrostAccumRate` | SLIDER | `0.001` | yes | environmental | Frost build-up speed per tick |
+| `aee_environmental_FrostDecayRate` | SLIDER | `0.01` | yes | environmental | Frost melt speed per tick |
+| `aee_environmental_MaxSnowDepth` | SLIDER | `3.0` | yes | environmental | Maximum snow depth (m) |
+| `aee_environmental_SnowAccretionRate` | SLIDER | `0.01` | yes | environmental | Snow depth gain per tick per unit rain |
+| `aee_environmental_WettingRate` | SLIDER | `0.05` | yes | environmental | Surface wetting speed per tick per unit rain |
+| `aee_environmental_groundFrostEnabled` | CHECKBOX | `true` | yes | environmental | Enable ground frost detection on terrain surfaces |
+
+## AEE Environmental → Snow
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_environmental_slabDensity` | SLIDER | `300` | yes | environmental | Snow slab density in kg/m3 for the McClung shear-stress model |
+| `aee_environmental_slabDepth` | SLIDER | `1.0` | yes | environmental | Snow slab depth in metres for the McClung shear-stress model |
 
 ## AEE Environmental → Sound
 
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_environmental_SoundPropagationScale` | SLIDER | `1.0` | environmental | Global sound-range multiplier |
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_environmental_SoundPropagationScale` | SLIDER | `1.0` | yes | environmental | Global sound-range multiplier |
 
 ## AEE Environmental → Weather
 
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_environmental_SandstormWindThreshold` | SLIDER | `10` | environmental | Wind speed (m/s) that triggers sandstorms |
-| `aee_environmental_BlowingSnowWindThreshold` | SLIDER | `8` | environmental | Wind speed (m/s) that triggers blowing snow |
-| `aee_environmental_DustDevilTempThreshold` | SLIDER | `30` | environmental | Air temperature (°C) that allows dust devils |
-| `aee_environmental_FlashFloodThreshold` | SLIDER | `50` | environmental | Rain rate (mm/h) that counts as flash-flood producing |
-| `aee_environmental_InversionBoost` | SLIDER | `0.6` | environmental | Sound-range boost on clear calm nights |
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_environmental_BlowingSnowWindThreshold` | SLIDER | `8` | yes | environmental | Wind speed (m/s) that triggers blowing snow |
+| `aee_environmental_DustDevilTempThreshold` | SLIDER | `30` | yes | environmental | Air temperature (°C) that allows dust devils |
+| `aee_environmental_FlashFloodThreshold` | SLIDER | `50` | yes | environmental | Rain rate (mm/h) that counts as flash-flood producing |
+| `aee_environmental_InversionBoost` | SLIDER | `0.6` | yes | environmental | Sound-range boost on clear calm nights |
+| `aee_environmental_SandstormWindThreshold` | SLIDER | `10` | yes | environmental | Wind speed (m/s) that triggers sandstorms |
+
+## AEE FX → Diagnostics
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_fx_logDebug` | CHECKBOX | `false` | yes | fx | Log this module DEBUG and TRACE lines to the RPT. Off by default. |
 
 ## AEE FX → Events
 
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_fx_lightningFXChance` | SLIDER | `0.05` | fx |  |
-| `aee_fx_lightningBrightness` | SLIDER | `1000` | fx |  |
-| `aee_fx_lightningIgnitionChance` | SLIDER | `0.1` | fx |  |
-| `aee_fx_severeWeatherBlur` | SLIDER | `1.0` | fx |  |
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_fx_blastInjuryEnabled` | CHECKBOX | `true` | yes | fx | Apply Kingery-Bulmash overpressure and Bowen pressure-impulse injury on explosions (eardrum, lung, tertiary throw) |
+| `aee_fx_lightningBrightness` | SLIDER | `1000` | yes | fx | Brightness of the lightning flash lightpoint |
+| `aee_fx_lightningFXChance` | SLIDER | `0.05` | yes | fx | Chance of a visual lightning strike per 5 s tick at high risk |
+| `aee_fx_lightningIgnitionChance` | SLIDER | `0.1` | yes | fx | Chance that a lightning strike starts a fire |
+| `aee_fx_severeWeatherBlur` | SLIDER | `1.0` | yes | fx | Blur intensity scale during severe weather |
 
 ## AEE FX → Particles
 
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_fx_vehicleDustIntensity` | SLIDER | `1.0` | fx |  |
-| `aee_fx_vehicleDustDensity` | SLIDER | `0.08` | fx |  |
-| `aee_fx_rainDropDensity` | SLIDER | `0.006` | fx |  |
-| `aee_fx_atmosphericDustIntensity` | SLIDER | `0.08` | fx |  |
-| `aee_fx_exhaustShimmerAlpha` | SLIDER | `0.15` | fx | Peak alpha of the exhaust heat-shimmer billboard. Alpha is the only free lever, because fill rate is sprite count times sprite area |
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_fx_atmosphericDustIntensity` | SLIDER | `0.08` | yes | fx | Alpha of airborne dust particles |
+| `aee_fx_exhaustShimmerAlpha` | SLIDER | `0.15` | yes | fx | Peak alpha of the exhaust heat-shimmer billboard. Alpha is the only free lever, because fill rate is sprite count times sprite area |
+| `aee_fx_rainDropDensity` | SLIDER | `0.006` | yes | fx | Rain-splash particle density (drop interval at light rain) |
+| `aee_fx_vehicleDustDensity` | SLIDER | `0.08` | yes | fx | Vehicle dust particle density (drop interval at low speed) |
+| `aee_fx_vehicleDustIntensity` | SLIDER | `1.0` | yes | fx | Alpha scale on vehicle dust kickup |
 
 ## AEE FX → Sound
 
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_fx_rainVehicleSoundVolume` | SLIDER | `1.0` | fx |  |
-| `aee_fx_thunderVolume` | SLIDER | `3.5` | fx |  |
-| `aee_fx_windNoiseVolume` | SLIDER | `1.0` | fx |  |
-
-## AEE KAT
-
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_compat_kat_fluidDrainBase` | SLIDER | `0.05` | compat_kat | Base body-fluid drain per tick |
-| `aee_compat_kat_spo2RiskScale` | SLIDER | `32` | compat_kat | SpO2 drop per unit of hypoxia risk |
-| `aee_compat_kat_spo2Floor` | SLIDER | `60` | compat_kat | Minimum SpO2 that AEE applies |
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_fx_rainVehicleSoundVolume` | SLIDER | `1.0` | yes | fx | Volume of rain-on-vehicle-roof ambience |
+| `aee_fx_thunderVolume` | SLIDER | `3.5` | yes | fx | Thunder volume |
+| `aee_fx_windNoiseVolume` | SLIDER | `1.0` | yes | fx | Wind ambience volume scale |
 
 ## AEE Maritime → Sea
 
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_maritime_tideAmplitude` | SLIDER | `2.0` | maritime | Half-range of the predicted tide height in metres |
-| `aee_maritime_seaStateResponse` | SLIDER | `0.3` | maritime | Weight given to the current wind when smoothing the sea state; higher values build the sea faster |
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_maritime_seaCouplingWeight` | SLIDER | `0.5` | yes | maritime | Air-to-sea coupling weight for the sea-surface temperature; low = high thermal inertia, high = sea follows air quickly |
+| `aee_maritime_seaStateResponse` | SLIDER | `0.3` | yes | maritime | Weight given to the current wind when smoothing the sea state; higher values build the sea faster |
+| `aee_maritime_tideAmplitude` | SLIDER | `2.0` | yes | maritime | Half-range of the predicted tide height in metres |
 
 ## AEE Mobility → Hydrology
 
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_mobility_mudAccretionRate` | SLIDER | `0.002` | mobility | Mud build-up rate per 5 s tick while driving on muddy terrain |
-| `aee_mobility_mudDecayRate` | SLIDER | `0.99` | mobility | Mud shedding factor per 5 s tick on hard surfaces (1 = no decay) |
-| `aee_mobility_riverResponseRate` | SLIDER | `0.1` | mobility | Nash-cascade storage coefficient per 5 s tick; 1/k = reservoir time constant |
-| `aee_mobility_rainAccumDecay` | SLIDER | `0.97` | mobility | Rain-history decay factor per 5 s tick (lower = faster drying) |
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_mobility_baseflowRate_perDay` | SLIDER | `0.2` | yes | mobility | Linear-reservoir recession rate per day for groundwater baseflow. USGS SIR 2022-5114 gives 0.9 to 0.99 per day for a perennial stream, which is this value as a daily retention. |
+| `aee_mobility_bedSlope` | SLIDER | `0.001` | yes | mobility | Bed slope in metres per metre. Manning rating sets the stage from the discharge, and a steeper bed carries the same flow at a lower stage. |
+| `aee_mobility_catchmentArea_m2` | SLIDER | `250000` | yes | mobility | Area in square metres draining to the river point. A river stage responds to everything upstream, so this is the contributing area rather than the routing cell. 250000 is a small stream catchment. |
+| `aee_mobility_manningN` | SLIDER | `0.035` | yes | mobility | Manning roughness coefficient n for the channel. 0.030 to 0.050 is a natural stream (Chow 1959); 0.025 is smooth earth. |
+| `aee_mobility_mudAccretionRate` | SLIDER | `0.002` | yes | mobility | Mud build-up rate per 5 s tick while driving on muddy terrain |
+| `aee_mobility_mudDecayRate` | SLIDER | `0.99` | yes | mobility | Mud shedding factor per 5 s tick on hard surfaces (1 = no decay) |
+| `aee_mobility_rainAccumDecay` | SLIDER | `0.97` | yes | mobility | Rain-history decay factor per 5 s tick (lower = faster drying) |
+| `aee_mobility_riverResponseRate` | SLIDER | `0.1` | yes | mobility | Nash-cascade storage coefficient per 5 s tick; 1/k = reservoir time constant |
+| `aee_mobility_riverSectionWidth_m` | SLIDER | `4` | yes | mobility | Width in metres of the modelled river section. Rising runoff is spread over a 100 m catchment cell and divided by this width to give the water-level rise. |
+| `aee_mobility_tidalReach_m` | SLIDER | `5000` | yes | mobility | Distance in metres inland that the tide raises the river level. Full tidal amplitude at the coast, falling to zero at this distance. |
+
+## AEE Mobility → Rollover
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_mobility_rolloverDynamicFactor` | SLIDER | `0.8` | yes | mobility | Fraction of the static threshold a manoeuvre reaches before the inside wheels lift. Published range 0.7 to 0.9 because body roll, tyre deflection and load transfer reduce the limit. 0.8 is the default. |
+| `aee_mobility_rolloverEnabled` | CHECKBOX | `true` | yes | mobility | Tip a vehicle whose sustained lateral acceleration exceeds its Static Stability Factor threshold. The threshold is SSF = track width / (2 x centre-of-gravity height), corrected for ground slope (Gillespie). A single frame cannot roll a vehicle; the condition must hold. |
+| `aee_mobility_rolloverHoldFrames` | SLIDER | `10` | yes | mobility | Frames the lateral acceleration must stay above the threshold before the vehicle rolls. A transient spike from a kerb or a collision must not roll it. Lower values roll more readily. |
+| `aee_mobility_rolloverRadius` | SLIDER | `50` | yes | mobility | Distance in metres within which the rollover check runs. The candidate vehicle list is cached and refreshed every 5 seconds, so the loop does not scan the world every frame. |
+| `aee_mobility_rolloverTorqueScale` | SLIDER | `0.25` | yes | mobility | Rotational impulse applied per sustained roll event, scaled by vehicle mass. The engine has no tilt command, so the roll uses addTorque at the centre of mass; the impulse must be sustained to overcome the solver. |
 
 ## AEE Mobility → Route
 
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_mobility_routeRecoveryRate` | SLIDER | `1.001` | mobility | Soil recovery factor per 5 s tick toward nominal firm soil |
-| `aee_mobility_routeDamageRate` | SLIDER | `0.00002` | mobility | Soil cone-index damage per vehicle passage per 5 s tick |
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_mobility_routeDamageRate` | SLIDER | `0.00002` | yes | mobility | Soil cone-index damage per vehicle passage per 5 s tick |
+| `aee_mobility_routeRecoveryRate` | SLIDER | `1.001` | yes | mobility | Soil recovery factor per 5 s tick toward nominal firm soil |
+
+## AEE Mobility → Terrain
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_mobility_terrainDragEnabled` | CHECKBOX | `true` | yes | mobility | Slow a vehicle on rough or soft ground by applying a drag force opposing its motion. The force comes from a per-surface speed factor: road 1.00, field 0.40 to 0.55, woodland 0.25 to 0.40, sand 0.15 to 0.30, swamp 0.10 to 0.20. The engine has no command that caps a driven vehicle's speed, so a physical force is used, applied on the driver's machine. |
+| `aee_mobility_terrainDragScale` | SLIDER | `0.3` | yes | mobility | Strength of the terrain drag force, per unit of overspeed above the surface's target speed, scaled by vehicle mass. A higher value pulls the vehicle to the target speed faster. The force is applied only above the target, so a slow vehicle is never dragged to a stop. |
+| `aee_mobility_terrainRadius` | SLIDER | `50` | yes | mobility | Distance in metres within which the terrain drag check runs. The candidate vehicle list is cached and refreshed every 5 seconds, so the loop does not scan the world every frame. |
 
 ## AEE Mobility → Traction
 
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_mobility_tractionScale` | SLIDER | `1.0` | mobility | Multiplier on all surface traction coefficients |
-| `aee_mobility_minEnginePower` | SLIDER | `0.3` | mobility | Floor on engine power derating from altitude and temperature (0.3 = 30 % minimum power) |
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_mobility_brakeCoolingTau` | SLIDER | `450` | yes | mobility | Time constant of brake-rotor cooling toward ambient (seconds) |
+| `aee_mobility_brakeHeatFraction` | SLIDER | `0.6` | yes | mobility | Fraction of braking energy converted to rotor heat |
+| `aee_mobility_brakeRotorMassKg` | SLIDER | `16` | yes | mobility | Total brake rotor mass in kilograms |
+| `aee_mobility_minEnginePower` | SLIDER | `0.3` | yes | mobility | Floor on engine power derating from altitude and temperature (0.3 = 30 % minimum power) |
+| `aee_mobility_tractionScale` | SLIDER | `1.0` | yes | mobility | Multiplier on all surface traction coefficients |
 
 ## AEE Mobility → Turbulence
 
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_mobility_flightTurbulence` | CHECKBOX | `true` | mobility | Apply atmospheric turbulence, gusts, and wind-shear forces to aircraft |
-| `aee_mobility_turbulenceScale` | SLIDER | `1` | mobility | Multiplier for the strength of applied turbulence forces (0 = off, 1 = normal, 3 = severe) |
-| `aee_mobility_turbulenceRadius` | SLIDER | `2000` | mobility | Distance from the player or mission centre within which aircraft receive turbulence forces |
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_mobility_flightTurbulence` | CHECKBOX | `true` | yes | mobility | Apply atmospheric turbulence, gusts, and wind-shear forces to aircraft |
+| `aee_mobility_turbulenceRadius` | SLIDER | `2000` | yes | mobility | Distance from the player or mission centre within which aircraft receive turbulence forces |
+| `aee_mobility_turbulenceScale` | SLIDER | `1` | yes | mobility | Multiplier for the strength of applied turbulence forces (0 = off, 1 = normal, 3 = severe) |
+
+## AEE Mobility → Vehicle
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_mobility_estimateVehicleMassEnabled` | CHECKBOX | `false` | yes | mobility | Show a bounded mass estimate for a ground vehicle that the sourced catalogue does not cover. The estimate is modelled, not documented. It uses the vehicle box size, a cited material density, and a calibrated fill factor. The switch is off until calibration passes and a human approves the model. A sourced catalogue weight always takes precedence. The estimate never replaces a documented weight. |
+| `aee_mobility_vehicleCouplingEnabled` | CHECKBOX | `true` | yes | mobility | Couple the computed surface physics to the engine at run time. Snow load adds mass with setMass, and a wet or icy surface removes grip with a force. The load comes from the modelled snow depth and the sourced snow density. No published accretion mass exists for mud, so mud adds no mass. The force is applied on the machine that owns the vehicle. |
+
+## AEE Night Vision → Intensity
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_nightvision_fogGrainMax` | SLIDER | `0.15` | yes | nightvision | Fog haze grain added to the night grain effect |
+| `aee_nightvision_nightGrainMax` | SLIDER | `0.7` | yes | nightvision | Night noise floor, the perceived darkness of night vision |
+| `aee_nightvision_nvgBatteryEnabled` | CHECKBOX | `false` | yes | nightvision | Enable NVG battery drain; the drain rate scales with the physiology battery temperature derating (hardcore) |
+| `aee_nightvision_rainGrainMax` | SLIDER | `0.4` | yes | nightvision | Rain-on-eye noise at night |
 
 ## AEE Optics → Atmosphere
 
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_optics_smokePersistenceScale` | SLIDER | `1.0` | optics | Global smoke-duration multiplier |
-| `aee_optics_snowVisibilityPenalty` | SLIDER | `0.7` | optics | Visibility loss from snow cover |
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_optics_smokePersistenceScale` | SLIDER | `1.0` | yes | optics | Global smoke-duration multiplier |
+| `aee_optics_snowVisibilityPenalty` | SLIDER | `0.7` | yes | optics | Visibility loss from snow cover |
 
 ## AEE Optics → Intensity
 
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_optics_seeingFXIntensity` | SLIDER | `0.02` | optics | Long-range shimmer strength from atmospheric seeing |
-| `aee_optics_nightGrainMax` | SLIDER | `0.7` | optics | Night noise floor, the perceived darkness of night vision |
-| `aee_optics_rainGrainMax` | SLIDER | `0.4` | optics | Rain-on-eye noise at night |
-| `aee_optics_fogGrainMax` | SLIDER | `0.15` | optics | Fog haze grain added to the night grain effect |
-| `aee_optics_mirageIntensity` | SLIDER | `1.0` | optics | Scale on mirage particle alpha |
-| `aee_optics_mirageDensity` | SLIDER | `0.08` | optics | Particle density of the heat-haze field |
-| `aee_optics_solarGlareIntensity` | SLIDER | `1.0` | optics | Scale on god-ray brightness from solar glare |
-| `aee_optics_glareBlurMax` | SLIDER | `0.2` | optics | Veiling blur at peak solar glare |
-| `aee_optics_heatShimmerIntensity` | SLIDER | `0.04` | optics | Chromatic aberration from engine heat shimmer |
-| `aee_optics_dewBlurMax` | SLIDER | `0.4` | optics | Lens-fog blur ceiling from condensation on optics |
-| `aee_optics_snowBlindnessIntensity` | SLIDER | `1.0` | optics | Scale on the snow blindness dazzle overlay |
-| `aee_optics_rainBlurScale` | SLIDER | `0.3` | optics | Rain-on-lens blur multiplier |
-| `aee_optics_chromaCap` | SLIDER | `0.06` | optics | Ceiling on chromatic aberration from seeing and heat shimmer |
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_optics_chromaCap` | SLIDER | `0.06` | yes | optics | Ceiling on chromatic aberration from seeing and heat shimmer |
+| `aee_optics_dewBlurMax` | SLIDER | `0.4` | yes | optics | Lens-fog blur ceiling from condensation on optics |
+| `aee_optics_glareBlurMax` | SLIDER | `0.2` | yes | optics | Veiling blur at peak solar glare |
+| `aee_optics_heatShimmerIntensity` | SLIDER | `0.04` | yes | optics | Chromatic aberration from engine heat shimmer |
+| `aee_optics_mirageDensity` | SLIDER | `0.08` | yes | optics | Particle density of the heat-haze field |
+| `aee_optics_mirageIntensity` | SLIDER | `1.0` | yes | optics | Scale on mirage particle alpha |
+| `aee_optics_rainBlurScale` | SLIDER | `0.3` | yes | optics | Rain-on-lens blur multiplier |
+| `aee_optics_seeingFXIntensity` | SLIDER | `0.02` | yes | optics | Long-range shimmer strength from atmospheric seeing |
+| `aee_optics_snowBlindnessIntensity` | SLIDER | `1.0` | yes | optics | Scale on the snow blindness dazzle overlay |
+| `aee_optics_solarGlareIntensity` | SLIDER | `1.0` | yes | optics | Scale on god-ray brightness from solar glare |
 
 ## AEE Optics → Particles
 
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_optics_dewAccumRate` | SLIDER | `0.05` | optics | Dew build-up speed per tick while condensing |
-| `aee_optics_dewDecayRate` | SLIDER | `0.02` | optics | Dew clearing speed per tick when conditions clear |
-| `aee_optics_rainAccumRate` | SLIDER | `0.01` | optics | Droplet build-up speed per tick during rain |
-| `aee_optics_rainDecayRate` | SLIDER | `0.02` | optics | Droplet clearing speed per tick when rain stops |
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_optics_dewAccumRate` | SLIDER | `0.05` | yes | optics | Dew build-up speed per tick while condensing |
+| `aee_optics_dewDecayRate` | SLIDER | `0.02` | yes | optics | Dew clearing speed per tick when conditions clear |
+| `aee_optics_rainAccumRate` | SLIDER | `0.01` | yes | optics | Droplet build-up speed per tick during rain |
+| `aee_optics_rainDecayRate` | SLIDER | `0.02` | yes | optics | Droplet clearing speed per tick when rain stops |
+
+## AEE Optics → Thresholds
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_optics_mirageMinSunElev` | SLIDER | `15` | yes | optics | Sun angle gate for mirage, in degrees |
+| `aee_optics_mirageOnsetTemp` | SLIDER | `35` | yes | optics | Surface temperature at which mirage starts, in degrees Celsius |
+| `aee_optics_snowBlindnessBase` | SLIDER | `0.1` | yes | optics | Base dazzle from bright snow |
+| `aee_optics_vehicleShimmerBase` | SLIDER | `0.3` | yes | optics | Idle-engine shimmer floor |
+
+## AEE Optics → Visibility
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_optics_viewDistanceEnabled` | CHECKBOX | `true` | yes | optics | Drive the engine view distance from the physics visibility state (fog, haze, rain, night sensitivity, acuity). Mostly lowers view distance in weather - a performance gain |
+
+## AEE Physiology → Cold Weather
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_physiology_coldWeatherEnabled` | CHECKBOX | `true` | yes | physiology | Toggle the wind chill, dexterity and frostbite model (Osczevski-Bluestein, Heus/Daanen, Tikuisis-Osczevski) |
+
+## AEE Physiology → Coupling
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_physiology_crossSensitivityEnabled` | CHECKBOX | `true` | yes | physiology | Dehydration and hypoxia amplify each other. Dehydrated personnel lose useful consciousness faster at altitude; hypoxia accelerates fluid loss |
+| `aee_physiology_crossSensitivityScale` | SLIDER | `1.0` | yes | physiology | Coupling strength. 1 = full literature values (1.6x hypoxia at full dehydration, 1.4x dehydration at full hypoxia) |
+
+## AEE Physiology → Diagnostics
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_physiology_logDebug` | CHECKBOX | `false` | yes | physiology | Log this module DEBUG and TRACE lines to the RPT. Off by default. |
+
+## AEE Physiology → Diving
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_physiology_diveEnabled` | CHECKBOX | `true` | yes | physiology | Enable the Buhlmann ZH-L16C decompression model for diving |
+| `aee_physiology_diveGradientFactor` | SLIDER | `1.0` | yes | physiology | Buhlmann gradient factor for the ascent ceiling (0.5 conservative, 1.0 pure ZHL-16C) |
+
+## AEE Physiology → Fatigue
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_physiology_circadianAmplitude` | SLIDER | `0.12` | yes | physiology | Amplitude of the circadian wake drive (0.1-0.15 published range) |
+| `aee_physiology_fatigueEnabled` | CHECKBOX | `true` | yes | physiology | Toggle the Borbely two-process sleep/fatigue model |
+
+## AEE Physiology → G-LOC
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_physiology_agsmAvailable` | CHECKBOX | `true` | yes | physiology | The pilot performs the anti-G straining maneuver (adds 3.1 G tolerance) |
+| `aee_physiology_glocEnabled` | CHECKBOX | `true` | yes | physiology | Enable the G-LOC and altitude DCS physiology model |
+| `aee_physiology_gsuitEquipped` | CHECKBOX | `false` | yes | physiology | Pilot wears a G-suit (adds 1.5 G tolerance) |
+| `aee_physiology_seatReclined` | CHECKBOX | `false` | yes | physiology | Reclined seat (adds 0.5 G tolerance) |
+
+## AEE Physiology → Movement
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_physiology_movementSpeed` | CHECKBOX | `true` | yes | physiology | Couple fatigue, cold and carried load to movement speed via setAnimSpeedCoef - an exhausted, hypothermic or overloaded soldier moves slower (issue #212) |
+
+## AEE Physiology → Rates
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_physiology_HypoxiaRecovery` | SLIDER | `0.1` | yes | physiology | Residual-exposure recovery rate below 6000 m |
+| `aee_physiology_RehydrationRate` | SLIDER | `0.05` | yes | physiology | Natural rehydration speed (L per hour) |
+| `aee_physiology_SweatRateScale` | SLIDER | `1.0` | yes | physiology | Overall heat-stress severity multiplier on sweat rate |
+
+## AEE Physiology → Scent
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_physiology_ScentIntensity` | SLIDER | `1.0` | yes | physiology | Scale on scent detectability (0 = off, 1 = normal, 2 = strong) |
+
+## AEE Physiology → Stability
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_physiology_stabilityEnabled` | CHECKBOX | `true` | yes | physiology | Toggle the shooter stability index (cold/heat/fatigue) and ACE3 sway integration |
+
+## AEE Physiology → Thresholds
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_physiology_AMSOffsetAltitude` | SLIDER | `2500` | yes | physiology | Altitude (m) where acute mountain sickness risk starts |
+| `aee_physiology_HUDWarningThreshold` | SLIDER | `0.3` | yes | physiology | Dehydration risk that triggers the HUD warning |
+| `aee_physiology_HeatStrokeSensitivity` | SLIDER | `0.03` | yes | physiology | Heat-stroke overlay strength per °C above the danger threshold |
+| `aee_physiology_RapidAscentThreshold` | SLIDER | `150` | yes | physiology | Climb rate (m per tick) that triggers acute mountain sickness |
+
+## AEE Radio → Link
+
+This category registers only when ACRE2 or TFAR is loaded. The radio
+simulation feeds the ACRE2 and TFAR compat layers; without either host
+mod its settings and computed state have no consumer, so they are not
+registered.
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_radio_batteryDeratingEnabled` | CHECKBOX | `true` | yes | radio | Scale effective transmit power by the physiology battery temperature derating |
+| `aee_radio_propagationRange` | SLIDER | `2.0` | yes | radio | Ceiling of the radio propagation quality index |
+| `aee_radio_txPower` | SLIDER | `37` | yes | radio | Reference handheld transmit power in dBm used in the link budget |
+
+## AEE Thermal → Diagnostics
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_thermal_logDebug` | CHECKBOX | `false` | yes | thermal | Log thermal diagnostics to the RPT, including the wall-clock cost of each thermal function. Turn this on before reporting a performance fault. |
+| `aee_thermal_thermalDebug` | CHECKBOX | `false` | yes | thermal | Log thermal system diagnostics (second sun, building paint, AGC) to the RPT. Thermal's own debug flag - not nightvision's. |
+
+## AEE Thermal → Display
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_thermal_repaintHz` | SLIDER | `4` | yes | thermal | Thermal selections repainted per second. The engine re-uploads a procedural texture for each one, and that cost lands on the render thread where no script timer sees it. The physics still solves every pass, so the image gain and every thermal coupling are unaffected. |
+| `aee_thermal_thermalDisplayMode` | LIST | `0` | yes | thermal | Automatic follows the scene radiance histogram (AGC). Manual uses the fixed window below, like the level and span control on a real thermography or thermal weapon sight. |
+| `aee_thermal_thermalFPN` | CHECKBOX | `true` | yes | thermal | Add fixed-pattern noise (static spatial mottle) over painted thermal objects - the perlinNoise detail stage real LWIR sensors show on top of the temporal FilmGrain. |
+| `aee_thermal_thermalManualMaxC` | SLIDER | `120` | yes | thermal | Hot end of the manual display window, in degrees Celsius. Set it high to keep fires and exhaust on scale. The device library publishes no span, so this window is a user setting, not a device figure. |
+| `aee_thermal_thermalManualMinC` | SLIDER | `-40` | yes | thermal | Cold end of the manual display window, in degrees Celsius. Used in manual display mode and as the fallback before the scene AGC is ready. The device library publishes no span, so this window is a user setting, not a device figure. |
+| `aee_thermal_thermalPPEffects` | CHECKBOX | `true` | yes | thermal | Applies the five full-screen thermal effects: colour grade, black-hot inversion, sensor grain, IR-scatter blur and the ocular vignette. Turn OFF to isolate their render cost. |
+| `aee_thermal_thermalPalette` | LIST | `0` | yes | thermal | Ember interpolates the engine's own decoded thermal colours through a continuous ramp. White hot grey is the luminance form of the same ramp. |
+| `aee_thermal_thermalPolarity` | LIST | `0` | yes | thermal | White hot (hot = white) is the system default (AN/PAS-13 initialises white hot). Black hot (hot = black) is a user-selectable alternative - FM 3-22.9 states polarity is user preference |
+
+## AEE Thermal → Solver
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_thermal_objectScanInterval` | SLIDER | `30` | yes | thermal | Seconds between object-temperature scans. Surface temperatures change on time constants of 600 seconds and longer, so a scan every tick is wasted work. 0 scans every tick. |
+
+## AEE → Atmosphere
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_core_airDensityEnabled` | CHECKBOX | `true` | yes | core | Calculate density altitude and true air density using temperature, pressure, and humidity corrections |
+| `aee_core_atmosphericEventsEnabled` | CHECKBOX | `true` | yes | core | Enable lightning strike risk, severe weather (sandstorm, blizzard, dust devil), microburst downdrafts, low-level turbulence, and avalanche risk in mountain terrain |
+| `aee_core_humidityEnabled` | CHECKBOX | `true` | yes | core | Enable relative-humidity tracking and condensation/precipitation calculations |
+| `aee_core_icaoReferenceAlt` | SLIDER | `0` | yes | core | Reference altitude (m MSL) for the ICAO standard atmosphere baseline |
+| `aee_core_precipOrographicEnabled` | CHECKBOX | `true` | yes | core | Enable orographic-lifting precipitation enhancement on windward slopes |
+| `aee_core_windEnabled` | CHECKBOX | `true` | yes | core | Enable dynamic wind simulation with terrain and thermal influences |
+| `aee_core_windGustFrequency` | SLIDER | `0.3` | yes | core | Relative frequency of gust events (0 = calm, 1 = very gusty) |
+| `aee_core_windTerrainInfluence` | SLIDER | `0.6` | yes | core | Strength of terrain (ridge channelling, valley funnelling) on wind vectors (0..1) |
+
+## AEE → Biome
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_core_biomeEnabled` | CHECKBOX | `true` | yes | core | Use Köppen climate classification to differentiate biome types and their weather characteristics |
+| `aee_core_biomeOverride` | LIST | `["Auto-detect","Af — Tropical Rainforest","Am — Monsoon Tropical","Aw — Tropical Savanna", "BSh — Hot Semi-Arid","BSk — Cold Semi-Arid","BWk — Cold Desert","BWh — Hot Desert", "Csa — Hot Mediterranean","Csb — Warm Mediterranean","Cfa — Humid Subtropical", "Cfb — Oceanic","Cwa — Monsoon Subtropical","Dfa — Hot Continental", "Dfb — Humid Continental","Dfc — Subarctic","ET — Tundra","EF — Ice Cap"]` | no | core | Force a specific Koppen biome globally. Auto-detect uses surface type, latitude, and elevation. |
+| `aee_core_biomeTransitionRadius` | SLIDER | `5000` | yes | core | Smoothing radius (m) for biome boundary transitions to avoid hard climatic edges |
+
+## AEE → Compat - ACE3
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_compat_ace3_medicalBurnDamageScale` | SLIDER | `0.0005` | yes | compat_ace3 | Damage per degree above the burn threshold |
+| `aee_compat_ace3_medicalBurnTemp` | SLIDER | `25` | yes | compat_ace3 | Air temperature that starts heat-burn damage |
+| `aee_compat_ace3_medicalHeatStrokeWBGT` | SLIDER | `32` | yes | compat_ace3 | WBGT that triggers cardiac arrest |
+| `aee_compat_ace3_medicalRiskThreshold` | SLIDER | `0.3` | yes | compat_ace3 | Dehydration risk above this affects vitals |
+| `aee_compat_ace3_medicalWBGTThreshold` | SLIDER | `23` | yes | compat_ace3 | WBGT above this engages heart-rate and flow adjustments |
+
+## AEE → Compat - ACM
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_compat_acm_CBRNBasePersistence` | SLIDER | `24` | yes | compat_acm | Agent persistence in hours at 15 degrees Celsius |
+| `aee_compat_acm_CBRNContamThreshold` | SLIDER | `0.01` | yes | compat_acm | Normalised contamination that marks a unit contaminated |
+| `aee_compat_acm_CBRNMaxBuildup` | SLIDER | `100` | yes | compat_acm | Upper limit of the ACM exposure buildup |
+
+## AEE → Compat - ACRE2
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_compat_acre2_signalDBShift` | SLIDER | `8` | yes | compat_acre2 | Maximum dB shift from the propagation index |
+| `aee_compat_acre2_signalSensitivityMin` | SLIDER | `-110` | yes | compat_acre2 | Receiver sensitivity floor in dBm |
+
+## AEE → Compat - KAT
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_compat_kat_fluidDrainBase` | SLIDER | `0.05` | yes | compat_kat | Base body-fluid drain per tick |
+| `aee_compat_kat_spo2Floor` | SLIDER | `60` | yes | compat_kat | Minimum SpO2 that AEE applies |
+| `aee_compat_kat_spo2RiskScale` | SLIDER | `32` | yes | compat_kat | SpO2 drop per unit of hypoxia risk |
+
+## AEE → Compat - Real Weather
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_compat_realweather_enabled` | CHECKBOX | `false` | yes | compat_realweather | Enable real-weather mode. Reads weather.json from the mission folder and overrides AEE's simulated state. |
+
+## AEE → Compat - TFAR
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_compat_tfar_signalMultMax` | SLIDER | `1.5` | yes | compat_tfar | Upper limit of the signal multiplier |
+| `aee_compat_tfar_signalMultMin` | SLIDER | `0.3` | yes | compat_tfar | Lower limit of the signal multiplier |
+| `aee_compat_tfar_signalMultScale` | SLIDER | `0.6` | yes | compat_tfar | Sending multiplier scale from the propagation index |
+
+## AEE → Core
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_core_computeMode` | LIST | `0` | yes | core | Where the environment computation runs. Deterministic (default): every machine computes the same values with NO network traffic. Costs the same CPU on server and clients, and is the only mode that cannot desynchronise. Server authority: the server computes and broadcasts the shared state each tick. Lowers client CPU at the cost of roughly 0.6 MB per minute per client at an 80 player count, and it needs a full resync when a player joins mid mission. Server map facts only: the server computes the once-per-mission terrain facts and every machine keeps its own position work. A few hundred bytes once, and it removes the only startup hitch on a large map. |
+| `aee_core_diagnostic` | CHECKBOX | `false` | no | core | Enable verbose diagnostic logging (diag_log) for environment state changes |
+| `aee_core_enabled` | CHECKBOX | `true` | yes | core | Master switch for the AEE environment simulation module |
+| `aee_core_lightScanInterval` | SLIDER | `30` | yes | core | Seconds between dynamic light-source scans on the client. The contribution changes only when a lamp toggles or the weather attenuates it. 0 scans every tick. |
+| `aee_core_logDebug` | CHECKBOX | `false` | yes | core | Log DEBUG and TRACE lines to the RPT. Values, not narration: each line carries the real inputs the code used. Off by default. |
+| `aee_core_referenceAltitude` | SLIDER | `0` | yes | core | Override reference altitude (m MSL) for station pressure calculations. 0 = auto-detect from unit position |
+| `aee_core_updateInterval` | SLIDER | `5` | yes | core | Simulation update interval in seconds (lower = more frequent updates) |
+
+## AEE → Environmental
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_core_environmentalEnabled` | CHECKBOX | `true` | yes | core | Enable biological ambient sound intensity, scent dispersion vector, sea state (Beaufort/wave height), and magnetic compass deviation |
+| `aee_core_hydrologyEnabled` | CHECKBOX | `true` | yes | core | Enable snow accumulation/melt and drifting, flash flood risk in arid terrain after heavy rain, and freeze-thaw state cycling with hysteresis |
+
+## AEE → FX
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_core_collisionDebug` | CHECKBOX | `false` | yes | core | Log vehicle collision impact energy and damage scaling to the RPT (issue #172) |
+| `aee_core_fxEnabled` | CHECKBOX | `true` | yes | core | Enable environmental particles, wind noise, rain sounds, and severe weather visual effects |
+
+## AEE → Maritime
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_core_maritimeEnabled` | CHECKBOX | `true` | yes | core | Enable sea state, wave height, tidal prediction, and magnetic compass deviation |
+
+## AEE → Microclimate
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_core_microclimateRadius` | SLIDER | `200` | yes | core | Radius (m) for local terrain and vegetation microclimate effects (valley cool-air pooling, forest canopy) |
+| `aee_core_urbanHeatIsland` | SLIDER | `0.5` | yes | core | Magnitude of urban heat-island temperature boost in built-up areas (0 = none, 1 = full) |
+| `aee_core_waterInfluenceRadius` | SLIDER | `1000` | yes | core | Radius (m) over which large water bodies moderate local temperature and humidity |
+
+## AEE → Mobility
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_core_enginePowerDegradationEnabled` | CHECKBOX | `true` | yes | core | Reduce ground-vehicle engine power in hot+high conditions using density-altitude derating (piston + turbo models); sets QGVAR(enginePowerModifier) and QGVAR(engineTurboModifier) |
+| `aee_core_mudAccretionEnabled` | CHECKBOX | `true` | yes | core | Enable mud build-up on vehicle wheels/tracks when driving on muddy terrain |
+
+## AEE → Optics
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_core_opticsEnabled` | CHECKBOX | `true` | yes | core | Enable thermal contrast, mirage/heat haze, smoke dispersal persistence, precipitation visibility reduction, and solar glare from low-elevation sun |
+
+## AEE → Physiology
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_core_physiologyEnabled` | CHECKBOX | `true` | yes | core | Enable heat stress, WBGT, wind chill, dehydration, hypoxia, UV index, and scent dispersion |
+
+## AEE → Radio
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_core_radioPropagationEnabled` | CHECKBOX | `true` | yes | core | Compute radio link quality from the Friis path loss with atmospheric ducting and HF ionospheric absorption; sets QGVAR(radioPropagationIndex) |
+
+## AEE → Thermal
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_core_clothingInsulation` | SLIDER | `1.0` | yes | core | Multiplier for clothing insulation. Higher values keep the soldier warmer in cold conditions |
+| `aee_core_tempDiurnalEnabled` | CHECKBOX | `true` | yes | core | Enable diurnal temperature variation based on solar elevation angle |
+| `aee_core_tempLapseRate` | SLIDER | `6.5` | yes | core | Temperature lapse rate in °C per 1000 m (default: 6.5 °C/km, ICAO standard) |
+| `aee_core_tempLapseRateEnabled` | CHECKBOX | `true` | yes | core | Enable elevation-based temperature lapse rate (standard atmosphere ~6.5 °C/km) |
 
 ## AEE FX → Exhaust plume
 
@@ -230,149 +554,15 @@ no published value is set, the power fraction comes from the real reader,
 gated on the advanced helicopter flight model and is unavailable when it is
 off.  A land vehicle and a gated-off client use the declared idle fraction.
 
-## AEE Optics → Thresholds
+
+## AEE Optics → Intensity (historical)
+
+The night-vision grain ceilings moved to the Night Vision addon and now
+register as `aee_nightvision_nightGrainMax`, `aee_nightvision_rainGrainMax`
+and `aee_nightvision_fogGrainMax`. The older names are kept here.
 
 | Setting | Type | Default | Addon | Purpose |
 |---|---|---|---|---|
-| `aee_optics_mirageOnsetTemp` | SLIDER | `35` | optics | Surface temperature at which mirage starts, in degrees Celsius |
-| `aee_optics_mirageMinSunElev` | SLIDER | `15` | optics | Sun angle gate for mirage, in degrees |
-| `aee_optics_vehicleShimmerBase` | SLIDER | `0.3` | optics | Idle-engine shimmer floor |
-| `aee_optics_snowBlindnessBase` | SLIDER | `0.1` | optics | Base dazzle from bright snow |
-
-## AEE Physiology → Rates
-
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_physiology_SweatRateScale` | SLIDER | `1.0` | physiology | Overall heat-stress severity multiplier on sweat rate |
-| `aee_physiology_RehydrationRate` | SLIDER | `0.05` | physiology | Natural rehydration speed (L per hour) |
-| `aee_physiology_HypoxiaRecovery` | SLIDER | `0.1` | physiology | Residual-exposure recovery rate below 6000 m |
-
-## AEE Physiology → Scent
-
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_physiology_ScentIntensity` | SLIDER | `1.0` | physiology | Scale on scent detectability (0 = off, 1 = normal, 2 = strong) |
-
-## AEE Physiology → Thresholds
-
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_physiology_HUDWarningThreshold` | SLIDER | `0.3` | physiology | Dehydration risk that triggers the HUD warning |
-| `aee_physiology_HeatStrokeSensitivity` | SLIDER | `0.03` | physiology | Heat-stroke overlay strength per °C above the danger threshold |
-| `aee_physiology_RapidAscentThreshold` | SLIDER | `150` | physiology | Climb rate (m per tick) that triggers acute mountain sickness |
-| `aee_physiology_AMSOffsetAltitude` | SLIDER | `2500` | physiology | Altitude (m) where acute mountain sickness risk starts |
-
-## AEE Radio → Link
-
-This category registers only when ACRE2 or TFAR is loaded. The radio
-simulation feeds the ACRE2 and TFAR compat layers; without either host
-mod its settings and computed state have no consumer, so they are not
-registered.
-
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_radio_txPower` | SLIDER | `37` | radio | Reference handheld transmit power in dBm used in the link budget |
-| `aee_radio_propagationRange` | SLIDER | `2.0` | radio | Ceiling of the radio propagation quality index |
-
-## AEE Real Weather
-
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_compat_realweather_enabled` | CHECKBOX | `false` | compat_realweather | Enable real-weather mode. Reads weather.json from the mission folder and overrides AEE's simulated state. The file-not-found warning only appears when this is enabled without a weather.json present. |
-
-## AEE TFAR
-
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_compat_tfar_signalMultScale` | SLIDER | `0.6` | compat_tfar | Sending multiplier scale from the propagation index |
-| `aee_compat_tfar_signalMultMin` | SLIDER | `0.3` | compat_tfar | Lower limit of the signal multiplier |
-| `aee_compat_tfar_signalMultMax` | SLIDER | `1.5` | compat_tfar | Upper limit of the signal multiplier |
-
-## AEE → Atmos
-
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_core_atmosphericEventsEnabled` | CHECKBOX | `true` | core | Enable lightning strike risk, severe weather (sandstorm, blizzard, dust devil), microburst downdrafts, low-level turbulence, and avalanche risk in mountain terrain |
-
-## AEE → Atmosphere
-
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_core_windEnabled` | CHECKBOX | `true` | core | Enable dynamic wind simulation with terrain and thermal influences |
-| `aee_core_windTerrainInfluence` | SLIDER | `0.6` | core | Strength of terrain (ridge channelling, valley funnelling) on wind vectors (0..1) |
-| `aee_core_windGustFrequency` | SLIDER | `0.3` | core | Relative frequency of gust events (0 = calm, 1 = very gusty) |
-| `aee_core_humidityEnabled` | CHECKBOX | `true` | core | Enable relative-humidity tracking and condensation/precipitation calculations |
-| `aee_core_precipOrographicEnabled` | CHECKBOX | `true` | core | Enable orographic-lifting precipitation enhancement on windward slopes |
-| `aee_core_airDensityEnabled` | CHECKBOX | `true` | core | Calculate density altitude and true air density using temperature, pressure, and humidity corrections |
-| `aee_core_icaoReferenceAlt` | SLIDER | `0` | core | Reference altitude (m MSL) for the ICAO standard atmosphere baseline |
-
-## AEE → Biome
-
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_core_biomeEnabled` | CHECKBOX | `true` | core | Use Köppen climate classification to differentiate biome types and their weather characteristics |
-| `aee_core_biomeTransitionRadius` | SLIDER | `5000` | core | Smoothing radius (m) for biome boundary transitions to avoid hard climatic edges |
-
-## AEE → Environmental
-
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_core_hydrologyEnabled` | CHECKBOX | `true` | core | Enable snow accumulation/melt and drifting, flash flood risk in arid terrain after heavy rain, and freeze-thaw state cycling with hysteresis |
-| `aee_core_environmentalEnabled` | CHECKBOX | `true` | core | Enable biological ambient sound intensity, scent dispersion vector, sea state (Beaufort/wave height), and magnetic compass deviation |
-
-## AEE → FX
-
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_core_fxEnabled` | CHECKBOX | `true` | core | Enable environmental particles, wind noise, rain sounds, and severe weather visual effects |
-
-## AEE → Maritime
-
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_core_maritimeEnabled` | CHECKBOX | `true` | core | Enable sea state, wave height, tidal prediction, and magnetic compass deviation |
-
-## AEE → Microclimate
-
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_core_microclimateRadius` | SLIDER | `200` | core | Radius (m) for local terrain and vegetation microclimate effects (valley cool-air pooling, forest canopy) |
-| `aee_core_urbanHeatIsland` | SLIDER | `0.5` | core | Magnitude of urban heat-island temperature boost in built-up areas (0 = none, 1 = full) |
-| `aee_core_waterInfluenceRadius` | SLIDER | `1000` | core | Radius (m) over which large water bodies moderate local temperature and humidity |
-
-## AEE → Mobility
-
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_core_mudAccretionEnabled` | CHECKBOX | `true` | core | Enable mud build-up on vehicle wheels/tracks when driving on muddy terrain |
-| `aee_core_enginePowerDegradationEnabled` | CHECKBOX | `true` | core | Reduce ground-vehicle engine power in hot+high conditions using density-altitude derating (piston + turbo models); sets QGVAR(enginePowerModifier) and QGVAR(engineTurboModifier) |
-
-## AEE → Optics
-
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_core_opticsEnabled` | CHECKBOX | `true` | core | Enable thermal contrast, mirage/heat haze, smoke dispersal persistence, precipitation visibility reduction, and solar glare from low-elevation sun |
-
-## AEE → Physiology
-
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_core_physiologyEnabled` | CHECKBOX | `true` | core | Enable heat stress, WBGT, wind chill, dehydration, hypoxia, UV index, and scent dispersion |
-
-## AEE → Radio
-
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_core_radioPropagationEnabled` | CHECKBOX | `true` | core | Compute radio link quality from the Friis path loss with atmospheric ducting and HF ionospheric absorption; sets QGVAR(radioPropagationIndex) |
-
-## AEE → Thermal
-
-| Setting | Type | Default | Addon | Purpose |
-|---|---|---|---|---|
-| `aee_core_tempLapseRateEnabled` | CHECKBOX | `true` | core | Enable elevation-based temperature lapse rate (standard atmosphere ~6.5 °C/km) |
-| `aee_core_tempLapseRate` | SLIDER | `6.5` | core | Temperature lapse rate in °C per 1000 m (default: 6.5 °C/km, ICAO standard) |
-| `aee_core_tempDiurnalEnabled` | CHECKBOX | `true` | core | Enable diurnal temperature variation based on solar elevation angle |
-| `aee_thermal_thermalDisplayMode` | LIST | `0` | thermal | Thermal display window: `0` automatic scene AGC, `1` manual fixed window |
-| `aee_thermal_thermalPalette` | LIST | `0` | thermal | Thermal display palette: `0` ember, which interpolates the engine's own thermal colours, `1` white hot grey |
-| `aee_thermal_thermalManualMinC` | SLIDER | `-40` | thermal | Manual window lower bound in C. The device library publishes no span, so the span is a setting |
-| `aee_thermal_thermalManualMaxC` | SLIDER | `120` | thermal | Manual window upper bound in C. Wide by design so fires and exhaust stay on scale |
+| `aee_optics_nightGrainMax` | SLIDER | `0.7` | optics | Night noise floor, the perceived darkness of night vision |
+| `aee_optics_rainGrainMax` | SLIDER | `0.4` | optics | Rain-on-eye noise at night |
+| `aee_optics_fogGrainMax` | SLIDER | `0.15` | optics | Fog haze grain added to the night grain effect |
