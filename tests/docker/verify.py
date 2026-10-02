@@ -39,9 +39,9 @@ _ERROR_BENIGN = (
     "ammo1",
 )
 errors = [
-    l
-    for l in text.splitlines()
-    if re.search(r"\bError\b", l) and not any(b in l for b in _ERROR_BENIGN)
+    line
+    for line in text.splitlines()
+    if re.search(r"\bError\b", line) and not any(b in line for b in _ERROR_BENIGN)
 ]
 
 # Warnings are errors here.  A warning AEE emits fails the gate.  Only
@@ -72,9 +72,9 @@ _WARNING_BENIGN = (
     "Convex component representing",
 )
 warnings = [
-    l
-    for l in text.splitlines()
-    if re.search(r"\bWarning\b", l) and not any(b in l for b in _WARNING_BENIGN)
+    line
+    for line in text.splitlines()
+    if re.search(r"\bWarning\b", line) and not any(b in line for b in _WARNING_BENIGN)
 ]
 
 print(f"phases passed: {len(passes)}")
@@ -118,6 +118,7 @@ _probe_expected = (
     "[P76] [PASS]",
     "[P77] [PASS]",
     "[P78] [PASS]",
+    "[P79] [PASS]",
 )
 _probe_missing = [m for m in _probe_expected if m not in text]
 if _probe_missing:
@@ -127,7 +128,8 @@ if _probe_missing:
 _probe_failed = sorted(
     set(
         re.findall(
-            r"\[P(?:64|65|66|68|69|70|71|72|73|74|75|76|77|78)\] \[FAIL\][^\n]*", text
+            r"\[P(?:64|65|66|68|69|70|71|72|73|74|75|76|77|78|79)\] \[FAIL\][^\n]*",
+            text,
         )
     )
 )

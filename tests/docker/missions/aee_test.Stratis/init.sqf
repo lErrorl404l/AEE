@@ -3014,6 +3014,10 @@ private _p29Pass = 0;
     // parent material array (the array the FPN swap overwrites). The engine
     // calls carry no hasInterface gate, so a dedicated server can measure it.
     execVM "aee_p78_pylon_proxy_probe.sqf";
+    // PHASE 79 drives the real AGC solver and the real two-node solver
+    // through the thermal startup, because the paint path is client-gated
+    // and docker cannot render it. The kernels carry no hasInterface gate.
+    execVM "aee_p79_thermal_startup_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.
