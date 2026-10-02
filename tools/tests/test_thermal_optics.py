@@ -2899,7 +2899,7 @@ class TestSQFSync(unittest.TestCase):
         # FilmGrain (5100) collided - "PE with same priority(5100)
         # already exist" - breaking whichever module created second and
         # spamming "Invalid post effect handle".  Every ppEffect priority
-        # across optics (3000/4000/5000), NVG (1200/4100/5100/6000/868)
+        # across optics (200/400/1500), NVG (1200/4100/5100/6000/868)
         # and thermal (1300/4200/6500/5200) must be unique.
         import re
         from pathlib import Path
@@ -2929,6 +2929,51 @@ class TestSQFSync(unittest.TestCase):
         dof = int(dof_m.group(1))
         if dof in seen:
             self.fail(f"DoF {dof} collides with {seen[dof]}")
+
+    def test_optics_priorities_stay_under_the_engine_optic_band(self):
+        """The normal-vision optics blur must render under the cockpit HUD.
+
+        Regression: the three optics effects were created at 3000/4000/5000.
+        The base game keeps every entry of its own CfgOpticsEffect table at
+        or below 2550 (Addons/data_f/a3/data_f/config.cpp: OpticsInverted and
+        Default are colorInversion at 2550).  The vanilla fighters' own optic
+        blur OpticsBlur2 is dynamicblur at 450 and their cockpit HUD stays
+        visible.  A ppEffect above the engine's optic band composites over the
+        HUD, so the blur covered it.  The effects now use the documented base
+        priorities for their types (BIS wiki, "Post Process Effects"), below
+        that band.
+        """
+        import re
+        from pathlib import Path
+
+        root = Path(__file__).resolve().parents[2]
+        expected = {
+            "ChromAberration": 200,
+            "DynamicBlur": 400,
+            "ColorCorrections": 1500,
+        }
+        manage = (
+            root / "addons/optics/functions/vision/fnc_managePostProcess.sqf"
+        ).read_text(encoding="utf-8")
+        create = (
+            root / "addons/optics/functions/vision/fnc_ppEffectCreate.sqf"
+        ).read_text(encoding="utf-8")
+        applied = {
+            m.group(1): int(m.group(2))
+            for m in re.finditer(r'\["(\w+)",\s*(\d+),\s*QGVAR', manage)
+        }
+        created = {
+            m.group(1): int(m.group(2))
+            for m in re.finditer(r'\["(\w+)",\s*(\d+)\]', create)
+        }
+        self.assertEqual(applied, expected, "applied optics priorities")
+        self.assertEqual(created, expected, "created optics priorities")
+        for effect, priority in expected.items():
+            self.assertLess(
+                priority,
+                2550,
+                f"{effect} must sit under the engine optic band",
+            )
 
     def test_thermal_crossover_floor(self):
         self._assert_in_sqf(

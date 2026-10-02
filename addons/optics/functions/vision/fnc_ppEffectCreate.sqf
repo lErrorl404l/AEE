@@ -38,10 +38,26 @@ Called once from XEH_preInit.
 Sets: the three ppHandle_* variables.  Returns: nothing.
 */
 
+// PRIORITY IS THE RENDER ORDER.  The engine applies post-process effects in
+// ascending priority (BIS wiki, "Post Process Effects").  The higher the
+// priority, the later the effect is applied, on top of the others.  The base
+// game keeps every one of its own optic effects in CfgOpticsEffect at or
+// below 2550 (data_f config.cpp).  OpticsBlur1/2/3 and WeaponsOptics are
+// dynamicblur at 450.  OpticsCHAbera1/2/3 are chromaberration at 250.
+// TankGunnerOptics1/2 and BWTV are ColorCorrections at 1550.  OpticsInverted
+// and Default are colorInversion at 2550.  The vanilla fighters use
+// "OpticsCHAbera2" and "OpticsBlur2" through opticsPPEffects[].  Their
+// cockpit HUD stays visible, so the engine's optic band is the HUD-safe band.
+// These effects therefore use the documented BASE priorities for their types
+// (BIS wiki).  ChromAberration is 200, DynamicBlur is 400 and ColorCorrections
+// is 1500.  All three sit below the engine band.  The old 3000/4000/5000 put
+// them above every engine effect and above the cockpit HUD and dash overlays,
+// so the blur covered the HUD.  A priority must stay unique and below the
+// engine band.  The registry bumps the priority on a collision.
 private _effects = [
-    ["ChromAberration", 3000],
-    ["DynamicBlur", 4000],
-    ["ColorCorrections", 5000]
+    ["ChromAberration", 200],
+    ["DynamicBlur", 400],
+    ["ColorCorrections", 1500]
     // LightShafts is deliberately absent: it is an ADVANCED effect (BIS
     // wiki) that cannot be created by ppEffectCreate (returns -1) and is
     // adjusted via the string-LHS form in fnc_applySolarGlareFX.

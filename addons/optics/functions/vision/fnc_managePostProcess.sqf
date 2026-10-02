@@ -98,9 +98,13 @@ if (cameraOn != _player && {cameraOn != _veh}) exitWith {
         };
     };
 } forEach [
-    ["ChromAberration", 3000, QGVAR(ppHandle_ChromAberration)],
-    ["DynamicBlur",     4000, QGVAR(ppHandle_DynamicBlur)],
-    ["ColorCorrections", 5000, QGVAR(ppHandle_ColorCorrections)]
+    // The priorities must match fnc_ppEffectCreate.  They are the documented
+    // base priorities for these effect types.  All three sit below the
+    // engine's own optic band (CfgOpticsEffect tops out at 2550), so the
+    // cockpit HUD composites over the blur.  See fnc_ppEffectCreate.
+    ["ChromAberration", 200, QGVAR(ppHandle_ChromAberration)],
+    ["DynamicBlur",     400, QGVAR(ppHandle_DynamicBlur)],
+    ["ColorCorrections", 1500, QGVAR(ppHandle_ColorCorrections)]
 ];
 _hChroma = missionNamespace getVariable [QGVAR(ppHandle_ChromAberration), -1];
 _hBlur   = missionNamespace getVariable [QGVAR(ppHandle_DynamicBlur), -1];
