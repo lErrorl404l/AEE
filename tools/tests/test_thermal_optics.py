@@ -29,6 +29,11 @@ from tools.tests.test_astronomical import ks_lunar_lux
 # has matched that prose in this repository before.
 from tools.tests.test_exhaust_shimmer import _code_only
 
+# The two-node solver's own execution harness (sqf_lite + the real material
+# registry) is reused, not duplicated, so the warm-up test runs the shipped
+# SQF exactly as the solver suite does.
+from tools.tests.test_sqf_two_node import _solve as _solve_two_node  # noqa: E402
+
 # Repo root: tools/tests/ -> up two levels.
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 _OPTICS = _REPO_ROOT / "addons" / "optics" / "functions"
@@ -6096,3 +6101,160 @@ class TestThermalAgcWindowDeadband(unittest.TestCase):
             self.code.index("QGVAR(agcAcceptMin)"),
             self.code.index("QGVAR(agcRadMin)"),
         )
+
+
+class TestThermalAgcRegimeHysteresis(unittest.TestCase):
+    """The AGC max-gain floor regime must be sticky.
+
+    The scene window span is floor-bound at fullSpan/8.  The raw scene
+    range can sit ON that floor as objects heat, so a plain per-pass
+    `if (raw < floor)` flips the span between the raw range and the floor
+    and re-quantises every selection: `b` jumps between the two gains (the
+    live run stepped `b` by 59 display levels on the fallback-to-floor
+    transition).  fnc_updateThermalAGC now holds the regime until the raw
+    range leaves the floor by _AGC_FLOOR_MARGIN (25 percent).  The decision
+    is mirrored below so a drift in the SQF breaks the test.
+    """
+
+    _F = _THERMAL / "solver" / "fnc_updateThermalAGC.sqf"
+
+    @classmethod
+    def setUpClass(cls):
+        cls.code = _code_only(cls._F.read_text(encoding="utf-8"))
+
+    @staticmethod
+    def _regime(at_floor, raw_span, floor_span, margin=0.25):
+        if raw_span < floor_span:
+            return True
+        if raw_span > floor_span * (1 + margin):
+            return False
+        return at_floor
+
+    @staticmethod
+    def _window(at_floor, lo, hi, floor_span):
+        if at_floor:
+            mid = (lo + hi) / 2
+            return mid - floor_span / 2, mid + floor_span / 2
+        return lo, hi
+
+    @staticmethod
+    def _b(rad, lo, hi):
+        return max(0.0, min(1.0, (rad - lo) / max(1e-6, hi - lo)))
+
+    def test_a_span_collapse_holds_a_stable_b(self):
+        # The raw range hovers ON the floor, then collapses below it.  The
+        # floor regime is held, so the published span and `b` do not move.
+        floor = 17.3655
+        mid = 46.8
+        rad = mid + floor * 0.25  # off-centre: the span shows in b
+        hover_lo, hover_hi = mid - floor * 1.10 / 2, mid + floor * 1.10 / 2
+        collapse_lo, collapse_hi = mid - floor * 0.50 / 2, mid + floor * 0.50 / 2
+        at = True
+        at = self._regime(at, hover_hi - hover_lo, floor)
+        win_hover = self._window(at, hover_lo, hover_hi, floor)
+        at = self._regime(at, collapse_hi - collapse_lo, floor)
+        win_collapse = self._window(at, collapse_lo, collapse_hi, floor)
+        self.assertTrue(at)
+        self.assertAlmostEqual(win_hover[1] - win_hover[0], floor, places=6)
+        self.assertAlmostEqual(win_collapse[1] - win_collapse[0], floor, places=6)
+        self.assertAlmostEqual(
+            self._b(rad, *win_hover), self._b(rad, *win_collapse), places=9
+        )
+
+    def test_a_real_change_leaves_the_floor_and_moves_b(self):
+        floor = 17.3655
+        mid = 46.8
+        rad = mid + floor * 0.25  # off-centre: the span shows in b
+        at = self._regime(True, floor * 1.50, floor)  # 50 percent over: real
+        self.assertFalse(at)
+        lo, hi = self._window(at, mid - floor * 1.50 / 2, mid + floor * 1.50 / 2, floor)
+        self.assertGreater(hi - lo, floor)
+        held = self._b(
+            rad, *self._window(True, mid - floor / 2, mid + floor / 2, floor)
+        )
+        self.assertNotAlmostEqual(self._b(rad, lo, hi), held, places=3)
+
+    def test_entry_reclaims_the_floor_only_on_a_true_collapse(self):
+        floor = 17.3655
+        self.assertTrue(self._regime(False, floor * 0.90, floor))
+        self.assertFalse(self._regime(False, floor * 1.10, floor))
+        self.assertTrue(self._regime(True, floor * 1.10, floor))
+
+    def test_source_holds_the_floor_regime(self):
+        self.assertIn("private _AGC_FLOOR_MARGIN = 0.25;", self.code)
+        self.assertIn("getVariable [QGVAR(agcAtFloor), true];", self.code)
+        self.assertIn("if (_rawSpan < _floorSpan) then {", self.code)
+        self.assertIn("_rawSpan > _floorSpan * (1 + _AGC_FLOOR_MARGIN)", self.code)
+        self.assertIn("setVariable [QGVAR(agcAtFloor), _atFloor];", self.code)
+
+    def test_first_publication_seeds_the_iir_from_the_manual_window(self):
+        # The no-AGC fallback is the manual window _fullMin.._fullMax; on the
+        # first AGC pass the IIR starts there, so the gain change to the
+        # floor ramps over the filter constant instead of stepping.
+        self.assertIn("private _fullMin =", self.code)
+        self.assertIn("private _fullMax =", self.code)
+        self.assertIn("getVariable [QGVAR(agcRadMin), -1];", self.code)
+        self.assertIn("_prevMin = _fullMin;", self.code)
+        self.assertIn("_prevMax = _fullMax;", self.code)
+        self.assertLess(
+            self.code.index("_prevMin = _fullMin;"),
+            self.code.index("_prevMin + (_radMin - _prevMin)"),
+        )
+
+
+class TestThermalSolverWarmup(unittest.TestCase):
+    """The two-node solver must start at its equilibrium, not the _tAir seed.
+
+    An object that has been sitting in the scene is at steady state.  The
+    old first solve passed the _tAir-seeded skin with dt=5, so the band
+    marched for the first ~15 s and dragged `b` every pass (the live run
+    moved tNew 14.58 -> 21.1 C over 10 s).  fnc_applySelectionThermal now
+    passes a huge step on first sight, which lands the exact exponential
+    transient on the equilibrium (exp(-dt/tau) -> 0).  The REAL solver SQF
+    is executed below through the shared interpreter, so the behaviour is
+    proven from the shipped code, not a Python mirror.
+    """
+
+    _CALLER = _THERMAL / "display" / "fnc_applySelectionThermal.sqf"
+
+    @staticmethod
+    def _inert(t_skin0, dt):
+        return _solve_two_node(
+            "metal",
+            "metal",
+            20.0,
+            0.0,
+            0.0,
+            1.0,
+            50.0,
+            20.0,
+            6.0,
+            0.15,
+            t_skin0,
+            t_skin0,
+            0.0,
+            "vertical",
+            0.5,
+            15.0,
+            False,
+            0.008,
+            False,
+            dt,
+        )
+
+    def test_a_huge_step_lands_on_the_seed_independent_equilibrium(self):
+        cold = self._inert(0.0, 1e6)[1]
+        warm = self._inert(20.0, 1e6)[1]
+        self.assertAlmostEqual(cold, warm, places=3)
+
+    def test_the_real_step_is_a_transient_between_seed_and_equilibrium(self):
+        eq = self._inert(0.0, 1e6)[1]
+        first = self._inert(0.0, 5.0)[1]
+        self.assertGreater(first, 0.0)
+        self.assertLess(first, eq)
+
+    def test_source_seeds_the_first_solve_at_equilibrium(self):
+        code = _code_only(self._CALLER.read_text(encoding="utf-8"))
+        self.assertIn('private _firstSight = isNil "_storedTemp";', code)
+        self.assertIn("private _solveDt = [5, 1000000] select _firstSight;", code)
+        self.assertEqual(code.count("_solveDt"), 3)

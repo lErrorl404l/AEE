@@ -470,7 +470,19 @@ if (_mode == "EXIT") then {
         // lazy -1 form.
         private _tempMap = missionNamespace getVariable [QGVAR(selTemperature), -1];
         if (_tempMap isEqualType 0) then { _tempMap = createHashMap; };
+        // First sight: the state map holds no entry for this selection.  The
+        // two-node solve below must then start at its OWN equilibrium, not
+        // at the _tAir seed: an object that has been sitting in the scene
+        // is already at steady state, and starting it cold makes the band
+        // march for the first ~15 s (the operator's per-pass flicker).  A
+        // huge step lands the exact exponential transient on the
+        // equilibrium (exp(-dt/tau) -> 0).  The physics is untouched: every
+        // later pass uses the real 5 s step and the node still heats and
+        // cools for real when the conditions change.
+        private _storedTemp = _tempMap get _stateKey;
+        private _firstSight = isNil "_storedTemp";
         private _tCurrent = _tempMap getOrDefault [_stateKey, _tAir];
+        private _solveDt = [5, 1000000] select _firstSight;
 
         // ─── Two-node path (issue #191) ─────────────────────────────────────
         // Core-bearing selections solve core+skin coupled (Gagge
@@ -571,7 +583,7 @@ if (_mode == "EXIT") then {
                 0.15,                   // convection plate dim (m)
                 _tCoreNow, _tCurrent,   // persistent core, current skin
                 _qMet,                  // qGen: metabolism (W)
-                "vertical", 0.5, _mrt, true, 0.05, true, 5,
+                "vertical", 0.5, _mrt, true, 0.05, true, _solveDt,
                 _waterSpeed, _tWater, _rain, (_ox select 10), _cloWorn, _solarAlpha
             ] call FUNC(solveTwoNodeSelection);
             _tNew = _two select 1;      // skin temp - what FLIR sees
@@ -598,7 +610,7 @@ if (_mode == "EXIT") then {
                 _area, _lChar,                   // area, convection plate dim (m)
                 _tCurrent, _tCurrent,
                 _qGenCore,                       // engine heat into the CORE (W)
-                "vertical", 0.5, _mrt, false, _lCond, false, 5
+                "vertical", 0.5, _mrt, false, _lCond, false, _solveDt
             ] call FUNC(solveTwoNodeSelection);
             _tNew = _two select 1;               // skin temp - what FLIR sees
         };
