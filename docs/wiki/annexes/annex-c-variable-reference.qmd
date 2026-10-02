@@ -78,6 +78,7 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_ballistics_crosswind` | ballistics | Crosswind deflection |
 | `aee_ballistics_lastShot` | ballistics | The resolved shot of the last round: [init speed, BC, drag model, twist, stability, retard, cartridge id, projectile id, BC grade, spin rate] |
 | `aee_ballistics_lastCartridge` | ballistics | The last fired round's cartridge: [cartridge id, 0, twist, 0, 0] |
+| `aee_ballistics_lastRecoil` | ballistics | The last round's free-recoil vector from the SAAMI/Lagrange model: [impulse, ...] |
 
 ### Optics
 
@@ -270,6 +271,7 @@ variables `aee_mobility_currentVCI1`, `aee_mobility_currentVCI50`, and
 | `aee_core_currentTideDescription` | maritime | Tide description |
 | `aee_core_magneticDeclinationDeg` | maritime | Compass deviation in degrees |
 | `aee_maritime_compassDeviation` | maritime | Compass deviation (maritime namespace) |
+| `aee_maritime_compassAnomalyNT` | maritime | Local ferrous magnetic anomaly in nanotesla: a component of the compass deviation |
 
 ### Aviation and severe weather
 
