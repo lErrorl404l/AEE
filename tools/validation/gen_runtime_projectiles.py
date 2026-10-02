@@ -242,7 +242,7 @@ if (_match isEqualTo []) then {
             _rawName = getText (configFile >> "CfgMagazines" >> configName _x >> "displayName");
         };
     } forEach ((configFile >> "CfgMagazines") call BIS_fnc_returnChildren);
-    private _localName = if (_rawName == "") then { "" } else { localize _rawName };
+    private _localName = if ((_rawName select [0,1]) == "$") then { localize _rawName } else { _rawName };
 
     private _query = [_ammo + " " + _rawName + " " + _localName] call _normalise;
     {

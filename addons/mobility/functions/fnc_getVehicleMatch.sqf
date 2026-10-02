@@ -73,7 +73,7 @@ if (_key == "") exitWith { [] };
 // localised stringtable text. A vanilla class stores a $STR key in
 // displayName, so all three are needed. None carries a figure.
 private _rawName = getText (configFile >> "CfgVehicles" >> _className >> "displayName");
-private _localName = if (_rawName == "") then { "" } else { localize _rawName };
+private _localName = if ((_rawName select [0,1]) == "$") then { localize _rawName } else { _rawName };
 private _identity = _className + " " + _rawName + " " + _localName;
 private _query = [_identity] call _normalise;
 private _tokens = [];
