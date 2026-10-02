@@ -1,0 +1,1093 @@
+{
+  "retrieved": "2026-10-02",
+  "note": "Thermal device entries. Every value comes from the thermal device table of the AEE sensor device library, a tier-5 compilation, so every value is grade claimed.",
+  "sources": [],
+  "entries": [
+    {
+      "device_id": "catherine",
+      "canonical_name": "Catherine-MP LW",
+      "family": "thermal",
+      "maker": "",
+      "country": "",
+      "class_names": [
+        "Catherine-MP",
+        "Catherine"
+      ],
+      "aliases": [
+        "catherine"
+      ],
+      "keywords": [
+        "catherine"
+      ],
+      "values": {
+        "netd_c": {
+          "value": 0.025,
+          "unit": "C",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Catherine-MP row, NETD column",
+          "state": "datasheet limit or nominal figure as the compilation prints it",
+          "grade": "claimed"
+        },
+        "resolution_x": {
+          "value": 1280,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Catherine-MP row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "resolution_y": {
+          "value": 1024,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Catherine-MP row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "refresh_hz": {
+          "value": 50,
+          "unit": "Hz",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Catherine-MP row, refresh column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "cooled": {
+          "value": "cooled",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Catherine-MP row, detector column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "weight_kg": {
+          "value": 7.9,
+          "unit": "kg",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Catherine-MP row, weight column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "device_id": "sophie_ultima",
+      "canonical_name": "Sophie Ultima",
+      "family": "thermal",
+      "maker": "",
+      "country": "",
+      "class_names": [
+        "Sophie Ultima",
+        "Ultima"
+      ],
+      "aliases": [
+        "ultima"
+      ],
+      "keywords": [
+        "ultima"
+      ],
+      "values": {
+        "netd_c": {
+          "value": 0.025,
+          "unit": "C",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Sophie Ultima row, NETD column",
+          "state": "datasheet limit or nominal figure as the compilation prints it",
+          "grade": "claimed"
+        },
+        "resolution_x": {
+          "value": 640,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Sophie Ultima row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "resolution_y": {
+          "value": 512,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Sophie Ultima row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "refresh_hz": {
+          "value": 50,
+          "unit": "Hz",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Sophie Ultima row, refresh column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "cooled": {
+          "value": "cooled",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Sophie Ultima row, detector column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "weight_kg": {
+          "value": 2.5,
+          "unit": "kg",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Sophie Ultima row, weight column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "device_id": "flir_recon",
+      "canonical_name": "FLIR Recon V",
+      "family": "thermal",
+      "maker": "",
+      "country": "",
+      "class_names": [
+        "FLIR Recon V",
+        "Recon"
+      ],
+      "aliases": [
+        "recon"
+      ],
+      "keywords": [
+        "recon"
+      ],
+      "values": {
+        "netd_c": {
+          "value": 0.025,
+          "unit": "C",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Recon V row, NETD column",
+          "state": "datasheet limit or nominal figure as the compilation prints it",
+          "grade": "claimed"
+        },
+        "resolution_x": {
+          "value": 640,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Recon V row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "resolution_y": {
+          "value": 480,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Recon V row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "refresh_hz": {
+          "value": 50,
+          "unit": "Hz",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Recon V row, refresh column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "cooled": {
+          "value": "cooled",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Recon V row, detector column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "weight_kg": {
+          "value": 1.9,
+          "unit": "kg",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Recon V row, weight column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "device_id": "jim_lr",
+      "canonical_name": "Safran JIM LR",
+      "family": "thermal",
+      "maker": "",
+      "country": "",
+      "class_names": [
+        "JIM LR",
+        "JIM"
+      ],
+      "aliases": [
+        "jim"
+      ],
+      "keywords": [
+        "jimlr",
+        "safranjim"
+      ],
+      "values": {
+        "netd_c": {
+          "value": 0.025,
+          "unit": "C",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, JIM LR row, NETD column",
+          "state": "datasheet limit or nominal figure as the compilation prints it",
+          "grade": "claimed"
+        },
+        "resolution_x": {
+          "value": 384,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, JIM LR row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "resolution_y": {
+          "value": 288,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, JIM LR row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "refresh_hz": {
+          "value": 50,
+          "unit": "Hz",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, JIM LR row, refresh column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "cooled": {
+          "value": "cooled",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, JIM LR row, detector column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "weight_kg": {
+          "value": 2.8,
+          "unit": "kg",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, JIM LR row, weight column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "device_id": "pas13_v1",
+      "canonical_name": "AN/PAS-13E(V)1 LWTS",
+      "family": "thermal",
+      "maker": "",
+      "country": "",
+      "class_names": [
+        "AN/PAS-13E(V)1",
+        "PAS-13 V1"
+      ],
+      "aliases": [
+        "pas13v1"
+      ],
+      "keywords": [
+        "pas13v1",
+        "pas13gv1"
+      ],
+      "values": {
+        "netd_c": {
+          "value": 0.05,
+          "unit": "C",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, PAS-13E(V)1 row, NETD column",
+          "state": "datasheet limit or nominal figure as the compilation prints it",
+          "grade": "claimed"
+        },
+        "resolution_x": {
+          "value": 320,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, PAS-13E(V)1 row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "resolution_y": {
+          "value": 240,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, PAS-13E(V)1 row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "refresh_hz": {
+          "value": 30,
+          "unit": "Hz",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, PAS-13E(V)1 row, refresh column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "cooled": {
+          "value": "uncooled",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, PAS-13E(V)1 row, detector column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "weight_kg": {
+          "value": 0.885,
+          "unit": "kg",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, PAS-13E(V)1 row, weight column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "device_id": "pas13_v2",
+      "canonical_name": "AN/PAS-13E(V)2 MWTS",
+      "family": "thermal",
+      "maker": "",
+      "country": "",
+      "class_names": [
+        "AN/PAS-13E(V)2",
+        "PAS-13 V2"
+      ],
+      "aliases": [
+        "pas13v2"
+      ],
+      "keywords": [
+        "pas13v2",
+        "pas13gv2"
+      ],
+      "values": {
+        "netd_c": {
+          "value": 0.05,
+          "unit": "C",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, PAS-13E(V)2 row, NETD column",
+          "state": "datasheet limit or nominal figure as the compilation prints it",
+          "grade": "claimed"
+        },
+        "resolution_x": {
+          "value": 640,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, PAS-13E(V)2 row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "resolution_y": {
+          "value": 480,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, PAS-13E(V)2 row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "refresh_hz": {
+          "value": 30,
+          "unit": "Hz",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, PAS-13E(V)2 row, refresh column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "cooled": {
+          "value": "uncooled",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, PAS-13E(V)2 row, detector column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "weight_kg": {
+          "value": 1.134,
+          "unit": "kg",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, PAS-13E(V)2 row, weight column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "device_id": "pas13_v3",
+      "canonical_name": "AN/PAS-13E(V)3 HWTS",
+      "family": "thermal",
+      "maker": "",
+      "country": "",
+      "class_names": [
+        "AN/PAS-13E(V)3",
+        "PAS-13 V3"
+      ],
+      "aliases": [
+        "pas13v3"
+      ],
+      "keywords": [
+        "pas13v3",
+        "pas13gv3"
+      ],
+      "values": {
+        "netd_c": {
+          "value": 0.05,
+          "unit": "C",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, PAS-13E(V)3 row, NETD column",
+          "state": "datasheet limit or nominal figure as the compilation prints it",
+          "grade": "claimed"
+        },
+        "resolution_x": {
+          "value": 640,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, PAS-13E(V)3 row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "resolution_y": {
+          "value": 480,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, PAS-13E(V)3 row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "refresh_hz": {
+          "value": 30,
+          "unit": "Hz",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, PAS-13E(V)3 row, refresh column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "cooled": {
+          "value": "uncooled",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, PAS-13E(V)3 row, detector column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "weight_kg": {
+          "value": 1.497,
+          "unit": "kg",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, PAS-13E(V)3 row, weight column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "device_id": "pas13_base",
+      "canonical_name": "AN/PAS-13",
+      "family": "thermal",
+      "maker": "",
+      "country": "",
+      "class_names": [
+        "AN/PAS-13",
+        "PAS-13"
+      ],
+      "aliases": [
+        "pas13"
+      ],
+      "keywords": [],
+      "values": {
+        "netd_c": {
+          "value": 0.05,
+          "unit": "C",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, PAS-13E(V)2 row, NETD column",
+          "state": "datasheet limit or nominal figure as the compilation prints it",
+          "grade": "claimed"
+        },
+        "resolution_x": {
+          "value": 640,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, PAS-13E(V)2 row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "resolution_y": {
+          "value": 480,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, PAS-13E(V)2 row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "refresh_hz": {
+          "value": 30,
+          "unit": "Hz",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, PAS-13E(V)2 row, refresh column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "cooled": {
+          "value": "uncooled",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, PAS-13E(V)2 row, detector column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "weight_kg": {
+          "value": 1.134,
+          "unit": "kg",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, PAS-13E(V)2 row, weight column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "device_id": "coti",
+      "canonical_name": "AN/PAS-29 COTI",
+      "family": "thermal",
+      "maker": "",
+      "country": "",
+      "class_names": [
+        "AN/PAS-29 COTI",
+        "COTI",
+        "PAS-29"
+      ],
+      "aliases": [
+        "coti",
+        "pas29"
+      ],
+      "keywords": [
+        "coti",
+        "pas29"
+      ],
+      "values": {
+        "netd_c": {
+          "value": 0.05,
+          "unit": "C",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, COTI row, NETD column",
+          "state": "datasheet limit or nominal figure as the compilation prints it",
+          "grade": "claimed"
+        },
+        "resolution_x": {
+          "value": 320,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, COTI row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "resolution_y": {
+          "value": 240,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, COTI row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "refresh_hz": {
+          "value": 30,
+          "unit": "Hz",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, COTI row, refresh column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "cooled": {
+          "value": "uncooled",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, COTI row, detector column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "weight_kg": {
+          "value": 0.15,
+          "unit": "kg",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, COTI row, weight column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "device_id": "envg_thermal",
+      "canonical_name": "ENVG-B thermal channel",
+      "family": "thermal",
+      "maker": "",
+      "country": "",
+      "class_names": [
+        "ENVG-B",
+        "AN/PSQ-42"
+      ],
+      "aliases": [
+        "envg",
+        "envgb"
+      ],
+      "keywords": [
+        "envg",
+        "psq42"
+      ],
+      "values": {
+        "netd_c": {
+          "value": 0.04,
+          "unit": "C",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, ENVG-B row, NETD column",
+          "state": "datasheet limit or nominal figure as the compilation prints it",
+          "grade": "claimed"
+        },
+        "resolution_x": {
+          "value": 640,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, ENVG-B row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "resolution_y": {
+          "value": 480,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, ENVG-B row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "refresh_hz": {
+          "value": 30,
+          "unit": "Hz",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, ENVG-B row, refresh column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "cooled": {
+          "value": "uncooled",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, ENVG-B row, detector column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "weight_kg": {
+          "value": 1.133,
+          "unit": "kg",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, ENVG-B row, weight column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "device_id": "sophie",
+      "canonical_name": "Thales Sophie",
+      "family": "thermal",
+      "maker": "",
+      "country": "",
+      "class_names": [
+        "Thales Sophie",
+        "Sophie"
+      ],
+      "aliases": [
+        "sophie"
+      ],
+      "keywords": [
+        "sophie"
+      ],
+      "values": {
+        "netd_c": {
+          "value": 0.05,
+          "unit": "C",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Sophie row, NETD column",
+          "state": "datasheet limit or nominal figure as the compilation prints it",
+          "grade": "claimed"
+        },
+        "resolution_x": {
+          "value": 384,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Sophie row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "resolution_y": {
+          "value": 288,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Sophie row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "refresh_hz": {
+          "value": 50,
+          "unit": "Hz",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Sophie row, refresh column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "cooled": {
+          "value": "uncooled",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Sophie row, detector column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "weight_kg": {
+          "value": 2.0,
+          "unit": "kg",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Sophie row, weight column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "device_id": "shakhin",
+      "canonical_name": "1PN139 / 1PN140 Shakhin",
+      "family": "thermal",
+      "maker": "",
+      "country": "",
+      "class_names": [
+        "1PN139",
+        "1PN140",
+        "Shakhin"
+      ],
+      "aliases": [
+        "shakhin",
+        "1pn139",
+        "1pn140"
+      ],
+      "keywords": [
+        "shakhin",
+        "1pn139",
+        "1pn140"
+      ],
+      "values": {
+        "netd_c": {
+          "value": 0.05,
+          "unit": "C",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Shakhin row, NETD column",
+          "state": "datasheet limit or nominal figure as the compilation prints it",
+          "grade": "claimed"
+        },
+        "resolution_x": {
+          "value": 640,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Shakhin row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "resolution_y": {
+          "value": 480,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Shakhin row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "refresh_hz": {
+          "value": 50,
+          "unit": "Hz",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Shakhin row, refresh column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "cooled": {
+          "value": "uncooled",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Shakhin row, detector column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "weight_kg": {
+          "value": 2.2,
+          "unit": "kg",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Shakhin row, weight column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "device_id": "mowgli",
+      "canonical_name": "1PN97 Mowgli-2M",
+      "family": "thermal",
+      "maker": "",
+      "country": "",
+      "class_names": [
+        "1PN97",
+        "Mowgli"
+      ],
+      "aliases": [
+        "mowgli",
+        "1pn97"
+      ],
+      "keywords": [
+        "mowgli",
+        "1pn97"
+      ],
+      "values": {
+        "netd_c": {
+          "value": 0.05,
+          "unit": "C",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Mowgli-2M row, NETD column",
+          "state": "datasheet limit or nominal figure as the compilation prints it",
+          "grade": "claimed"
+        },
+        "resolution_x": {
+          "value": 320,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Mowgli-2M row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "resolution_y": {
+          "value": 240,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Mowgli-2M row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "refresh_hz": {
+          "value": 50,
+          "unit": "Hz",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Mowgli-2M row, refresh column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "cooled": {
+          "value": "uncooled",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Mowgli-2M row, detector column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "weight_kg": {
+          "value": 1.5,
+          "unit": "kg",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Mowgli-2M row, weight column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "device_id": "thermion",
+      "canonical_name": "Pulsar Thermion XP50",
+      "family": "thermal",
+      "maker": "",
+      "country": "",
+      "class_names": [
+        "Pulsar Thermion XP50",
+        "Thermion"
+      ],
+      "aliases": [
+        "thermion"
+      ],
+      "keywords": [
+        "thermion"
+      ],
+      "values": {
+        "netd_c": {
+          "value": 0.025,
+          "unit": "C",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Thermion XP50 row, NETD column",
+          "state": "datasheet limit or nominal figure as the compilation prints it",
+          "grade": "claimed"
+        },
+        "resolution_x": {
+          "value": 640,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Thermion XP50 row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "resolution_y": {
+          "value": 480,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Thermion XP50 row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "refresh_hz": {
+          "value": 50,
+          "unit": "Hz",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Thermion XP50 row, refresh column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "cooled": {
+          "value": "uncooled",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Thermion XP50 row, detector column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "weight_kg": {
+          "value": 0.9,
+          "unit": "kg",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Thermion XP50 row, weight column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "device_id": "helion",
+      "canonical_name": "Pulsar Helion",
+      "family": "thermal",
+      "maker": "",
+      "country": "",
+      "class_names": [
+        "Pulsar Helion",
+        "Helion"
+      ],
+      "aliases": [
+        "helion"
+      ],
+      "keywords": [
+        "helion"
+      ],
+      "values": {
+        "netd_c": {
+          "value": 0.04,
+          "unit": "C",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Helion row, NETD column",
+          "state": "datasheet limit or nominal figure as the compilation prints it",
+          "grade": "claimed"
+        },
+        "resolution_x": {
+          "value": 384,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Helion row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "resolution_y": {
+          "value": 288,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Helion row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "refresh_hz": {
+          "value": 50,
+          "unit": "Hz",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Helion row, refresh column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "cooled": {
+          "value": "uncooled",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Helion row, detector column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "weight_kg": {
+          "value": 0.5,
+          "unit": "kg",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Helion row, weight column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "device_id": "flir_scout",
+      "canonical_name": "FLIR Scout III 640",
+      "family": "thermal",
+      "maker": "",
+      "country": "",
+      "class_names": [
+        "FLIR Scout III 640",
+        "Scout"
+      ],
+      "aliases": [
+        "scout"
+      ],
+      "keywords": [
+        "scout"
+      ],
+      "values": {
+        "netd_c": {
+          "value": 0.05,
+          "unit": "C",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Scout III 640 row, NETD column",
+          "state": "datasheet limit or nominal figure as the compilation prints it",
+          "grade": "claimed"
+        },
+        "resolution_x": {
+          "value": 640,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Scout III 640 row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "resolution_y": {
+          "value": 512,
+          "unit": "count",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Scout III 640 row, resolution column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "refresh_hz": {
+          "value": 30,
+          "unit": "Hz",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Scout III 640 row, refresh column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "cooled": {
+          "value": "uncooled",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Scout III 640 row, detector column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "weight_kg": {
+          "value": 0.34,
+          "unit": "kg",
+          "source": "aee_sensor_device_library",
+          "locator": "thermal device table, Scout III 640 row, weight column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}
