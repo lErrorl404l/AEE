@@ -10106,5 +10106,535 @@
     "grade": "documented"
    }
   }
+ },
+ {
+  "load_id": "120mm_m829_load",
+  "cartridge_id": "120mm_m256_smoothbore",
+  "projectile": "M829 APFSDS-T",
+  "note": "M829 APFSDS-T service round for the M256 gun.",
+  "values": {
+   "cartridge": {
+    "value": "120mm M256 smoothbore",
+    "unit": "name",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "projectile": {
+    "value": "M829 APFSDS-T",
+    "unit": "designation",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "service_velocity_ms": {
+    "value": 1679.45,
+    "unit": "m/s",
+    "source": "tm43_0001_28",
+    "grade": "documented",
+    "formula": "5510 ft/s x 0.3048 m/s per ft/s"
+   },
+   "velocity_reference": {
+    "value": "nominal velocity, M256 120 mm smoothbore cannon (TM 43-0001-28 page 2-109)",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "service_pressure_mpa": {
+    "value": 510.0,
+    "unit": "MPa",
+    "source": "tm43_0001_28",
+    "grade": "documented",
+    "formula": "5100 bar x 0.1 MPa per bar"
+   },
+   "pressure_reference": {
+    "value": "peak chamber pressure at 21 C (TM 43-0001-28 page 2-109)",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "charge_mass_g": {
+    "value": 8141.98,
+    "unit": "g",
+    "source": "tm43_0001_28",
+    "grade": "documented",
+    "formula": "17.95 lb x 453.59237 g/lb; source labels it total explosive weight (solid-projectile round, so this is the propellant charge)"
+   },
+   "twist_in": {
+    "value": 0,
+    "unit": "inches per turn",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 5280.0,
+      "mv_ms": 1679.45
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "tm43_0001_28",
+    "grade": "derived",
+    "formula": "reference barrel = 44 x 120 mm (M256 L/44) = 5280 mm; velocity from TM 43-0001-28 page 2-109"
+   }
+  }
+ },
+ {
+  "load_id": "120mm_m830_load",
+  "cartridge_id": "120mm_m256_smoothbore",
+  "projectile": "M830 HEAT-MP-T",
+  "note": "M830 HEAT-MP-T service round for the M256 gun.",
+  "values": {
+   "cartridge": {
+    "value": "120mm M256 smoothbore",
+    "unit": "name",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "projectile": {
+    "value": "M830 HEAT-MP-T",
+    "unit": "designation",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "service_velocity_ms": {
+    "value": 1139.95,
+    "unit": "m/s",
+    "source": "tm43_0001_28",
+    "grade": "documented",
+    "formula": "3740 ft/s x 0.3048 m/s per ft/s"
+   },
+   "velocity_reference": {
+    "value": "nominal velocity, M256 120 mm smoothbore cannon (TM 43-0001-28 page 2-115)",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "service_pressure_mpa": {
+    "value": 479.87,
+    "unit": "MPa",
+    "source": "tm43_0001_28",
+    "grade": "documented",
+    "formula": "69600 psi x 0.00689476 MPa per psi"
+   },
+   "pressure_reference": {
+    "value": "peak chamber pressure (TM 43-0001-28 page 2-115)",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "twist_in": {
+    "value": 0,
+    "unit": "inches per turn",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "mv_anchors": {
+    "value": [
+     {
+      "barrel_mm": 5280.0,
+      "mv_ms": 1139.95
+     }
+    ],
+    "unit": "mm, m/s",
+    "source": "tm43_0001_28",
+    "grade": "derived",
+    "formula": "reference barrel = 44 x 120 mm (M256 L/44) = 5280 mm; velocity from TM 43-0001-28 page 2-115"
+   }
+  }
+ },
+ {
+  "load_id": "20x102_m55a2_load",
+  "cartridge_id": "20x102",
+  "projectile": "M55A2",
+  "note": "20 x 102 mm M55A2 target practice service round.",
+  "values": {
+   "cartridge": {
+    "value": "20x102",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   },
+   "projectile": {
+    "value": "M55A2",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   },
+   "service_velocity_ms": {
+    "value": 1030.22,
+    "unit": "m/s",
+    "source": "tm43_0001_27",
+    "grade": "documented",
+    "formula": "3,380 fps x 0.3048 m/s per fps; 78 ft from the muzzle"
+   },
+   "velocity_reference": {
+    "value": "nominal velocity 78 ft from the muzzle (TM 43-0001-27 p 14-11)",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   },
+   "service_pressure_mpa": {
+    "value": 417.13,
+    "unit": "MPa",
+    "source": "tm43_0001_27",
+    "grade": "documented",
+    "formula": "60,500 psi x 0.00689476 MPa per psi"
+   },
+   "pressure_reference": {
+    "value": "chamber pressure (TM 43-0001-27 p 14-11)",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   }
+  }
+ },
+ {
+  "load_id": "25x137_m792_load",
+  "cartridge_id": "25x137",
+  "projectile": "M792 HEI-T",
+  "note": "25 x 137 mm M792 high explosive incendiary tracer service round for the M242.",
+  "values": {
+   "cartridge": {
+    "value": "25x137",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   },
+   "projectile": {
+    "value": "M792 HEI-T",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   },
+   "service_velocity_ms": {
+    "value": 1100.0,
+    "unit": "m/s",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   },
+   "velocity_reference": {
+    "value": "muzzle velocity 1100 m/s (TM 43-0001-27 p 15-5)",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   },
+   "charge_mass_g": {
+    "value": 90.0,
+    "unit": "g",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   },
+   "powder_class": {
+    "value": "WC 890 ball propellant",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   }
+  }
+ },
+ {
+  "load_id": "25x137_m919_load",
+  "cartridge_id": "25x137",
+  "projectile": "M919 APFSDS-T",
+  "note": "25 x 137 mm M919 armour piercing fin stabilised discarding sabot tracer service round for the M242.",
+  "values": {
+   "cartridge": {
+    "value": "25x137",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   },
+   "projectile": {
+    "value": "M919 APFSDS-T",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   },
+   "service_velocity_ms": {
+    "value": 1420.0,
+    "unit": "m/s",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   },
+   "velocity_reference": {
+    "value": "muzzle velocity 1420 m/s (TM 43-0001-27 p 15-6)",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   },
+   "service_pressure_mpa": {
+    "value": 386.11,
+    "unit": "MPa",
+    "source": "tm43_0001_27",
+    "grade": "documented",
+    "formula": "56,000 psi x 0.00689476 MPa per psi"
+   },
+   "pressure_reference": {
+    "value": "maximum chamber pressure (TM 43-0001-27 p 15-6)",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   },
+   "charge_mass_g": {
+    "value": 98.0,
+    "unit": "g",
+    "source": "tm43_0001_27",
+    "grade": "documented",
+    "formula": "stated 98 +/- 3 g"
+   },
+   "powder_class": {
+    "value": "extruded propellant",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   },
+   "twist_in": {
+    "value": 0.0,
+    "unit": "inches per turn",
+    "source": "tm43_0001_27",
+    "grade": "documented",
+    "formula": "fin stabilised round; no spin is required"
+   }
+  }
+ },
+ {
+  "load_id": "30x113_m789_load",
+  "cartridge_id": "30x113",
+  "projectile": "M789 HEDP",
+  "note": "30 x 113 mm M789 high explosive dual purpose service round for the M230 chain gun. The held TM states the round weight and the explosive fill weight, not the projectile mass, so no projectile record is held.",
+  "values": {
+   "cartridge": {
+    "value": "30x113",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   },
+   "projectile": {
+    "value": "M789 HEDP",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   },
+   "service_velocity_ms": {
+    "value": 804.67,
+    "unit": "m/s",
+    "source": "tm43_0001_27",
+    "grade": "documented",
+    "formula": "2,640 fps x 0.3048 m/s per fps"
+   },
+   "velocity_reference": {
+    "value": "muzzle velocity 2640 fps (805 m/s) (TM 43-0001-27 p 16-5)",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   },
+   "service_pressure_mpa": {
+    "value": 309.92,
+    "unit": "MPa",
+    "source": "tm43_0001_27",
+    "grade": "documented",
+    "formula": "44,950 psi x 0.00689476 MPa per psi; upper bound of the stated 40,000 to 44,950 psi band"
+   },
+   "pressure_reference": {
+    "value": "average chamber pressure 40,000 to 44,950 psi (280 to 310 MPa) (TM 43-0001-27 p 16-5)",
+    "source": "tm43_0001_27",
+    "grade": "documented"
+   },
+   "twist_in": {
+    "value": 0.0,
+    "unit": "inches per turn",
+    "source": "tm43_0001_27",
+    "grade": "documented",
+    "formula": "the M230 barrel twist is not stated on the held sheet; the field records that the source gives none"
+   }
+  }
+ },
+ {
+  "load_id": "40x53_m430_load",
+  "cartridge_id": "40x53",
+  "projectile": "M430 HEDP",
+  "note": "40 x 53 mm M430 high explosive dual purpose grenade round for the Mk 19. The held TM states the muzzle velocity.",
+  "values": {
+   "cartridge": {
+    "value": "40x53",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "projectile": {
+    "value": "M430 HEDP",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "service_velocity_ms": {
+    "value": 241.0,
+    "unit": "m/s",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "velocity_reference": {
+    "value": "muzzle velocity 241 m/s (TM 43-0001-28, 40 mm HEDP M430 data sheet)",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   }
+  }
+ },
+ {
+  "load_id": "30x173_mk239_load",
+  "cartridge_id": "30x173",
+  "projectile": "MK239 TP-T",
+  "note": "30 x 173 mm MK239 target practice tracer round. Tier 4 maker data sheet, so the values are a claim.",
+  "values": {
+   "cartridge": {
+    "value": "30x173",
+    "source": "gdots_30x173",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "MK239 TP-T",
+    "source": "gdots_30x173",
+    "grade": "claimed"
+   },
+   "service_velocity_ms": {
+    "value": 1080.0,
+    "unit": "m/s",
+    "source": "gdots_30x173",
+    "grade": "claimed"
+   },
+   "velocity_reference": {
+    "value": "manufacturer data sheet, MK239 muzzle velocity",
+    "source": "gdots_30x173",
+    "grade": "claimed"
+   },
+   "service_pressure_mpa": {
+    "value": 345.0,
+    "unit": "MPa",
+    "source": "gdots_30x173",
+    "grade": "claimed"
+   },
+   "pressure_reference": {
+    "value": "manufacturer data sheet, MK239 chamber pressure",
+    "source": "gdots_30x173",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
+  "load_id": "127x108_ap_load",
+  "cartridge_id": "12_7_x_108",
+  "projectile": "12.7 x 108 mm AP",
+  "note": "12.7 x 108 mm armour piercing service round. The maker states the velocity as a band at 24 m; the lower bound is entered and the band is named in the reference.",
+  "values": {
+   "cartridge": {
+    "value": "12_7_x_108",
+    "source": "yugoimport_127x108_ap",
+    "grade": "documented"
+   },
+   "projectile": {
+    "value": "12.7 x 108 mm AP",
+    "source": "yugoimport_127x108_ap",
+    "grade": "documented"
+   },
+   "service_velocity_ms": {
+    "value": 810.0,
+    "unit": "m/s",
+    "source": "yugoimport_127x108_ap",
+    "grade": "documented"
+   },
+   "velocity_reference": {
+    "value": "average velocity at 24 m, manufacturer band 810 to 825 m/s, standard proof barrel 1008 mm, 21 +/- 2 C",
+    "source": "yugoimport_127x108_ap",
+    "grade": "documented"
+   }
+  }
+ },
+ {
+  "load_id": "105mm_m456_load",
+  "cartridge_id": "105mm_m68",
+  "projectile": "M456 HEAT-T",
+  "note": "M456 HEAT-T service round for the 105 mm M68 gun.",
+  "values": {
+   "cartridge": {
+    "value": "105mm M68",
+    "unit": "name",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "projectile": {
+    "value": "M456 HEAT-T",
+    "unit": "designation",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "service_velocity_ms": {
+    "value": 1173.0,
+    "unit": "m/s",
+    "source": "tm43_0001_28",
+    "grade": "documented",
+    "formula": "3850 ft/s x 0.3048 m/s per ft/s"
+   },
+   "velocity_reference": {
+    "value": "nominal muzzle velocity, M68 105 mm cannon (TM 43-0001-28 page 2-83, M456 HEAT-T series)",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   }
+  }
+ },
+ {
+  "load_id": "105mm_m735_load",
+  "cartridge_id": "105mm_m68",
+  "projectile": "M735 APFSDS-T",
+  "note": "M735 APFSDS-T service round for the 105 mm M68 gun. The held sheet states the chamber pressure and the propellant charge mass but no muzzle velocity, so no velocity is entered.",
+  "values": {
+   "cartridge": {
+    "value": "105mm M68",
+    "unit": "name",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "projectile": {
+    "value": "M735 APFSDS-T",
+    "unit": "designation",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "service_pressure_mpa": {
+    "value": 413.69,
+    "unit": "MPa",
+    "source": "tm43_0001_28",
+    "grade": "documented",
+    "formula": "60,000 psi x 0.00689476 MPa per psi; chamber pressure at 70 F (TM 43-0001-28 page 2-101)"
+   },
+   "pressure_reference": {
+    "value": "chamber pressure at 70 F (TM 43-0001-28 page 2-101, M735 APFSDS-T)",
+    "source": "tm43_0001_28",
+    "grade": "documented"
+   },
+   "charge_mass_g": {
+    "value": 5669.9,
+    "unit": "g",
+    "source": "tm43_0001_28",
+    "grade": "documented",
+    "formula": "12.5 lb x 453.59237 g/lb; approximately 12.5 lb of M30 propellant (TM 43-0001-28 page 2-101)"
+   }
+  }
+ },
+ {
+  "load_id": "125mm_m88_load",
+  "cartridge_id": "125mm_2a46",
+  "projectile": "M88 APFSDS-T",
+  "note": "M88 APFSDS-T service round for the 2A46 gun family. The held sheet states the muzzle velocity, the base propelling charge mass and a penetration depth whose printed unit is metres; the unit is not trusted, so the penetration value is not entered.",
+  "values": {
+   "cartridge": {
+    "value": "125 mm 2A46",
+    "unit": "name",
+    "source": "yugoimport_125x570_m88",
+    "grade": "claimed"
+   },
+   "projectile": {
+    "value": "M88 APFSDS-T",
+    "unit": "designation",
+    "source": "yugoimport_125x570_m88",
+    "grade": "claimed"
+   },
+   "service_velocity_ms": {
+    "value": 1785.0,
+    "unit": "m/s",
+    "source": "yugoimport_125x570_m88",
+    "grade": "claimed",
+    "formula": "source prints approximately 1785 m/s"
+   },
+   "velocity_reference": {
+    "value": "nominal muzzle velocity, T-72 and M84 125 mm gun (Yugoimport 125 mm APFSDS-T M88 data sheet)",
+    "source": "yugoimport_125x570_m88",
+    "grade": "claimed"
+   },
+   "charge_mass_g": {
+    "value": 2000.0,
+    "unit": "g",
+    "source": "yugoimport_125x570_m88",
+    "grade": "claimed",
+    "formula": "approximately 2 kg x 1000 g/kg (base propelling charge mass, NC-44 and NC-16)"
+   }
+  }
  }
 ]

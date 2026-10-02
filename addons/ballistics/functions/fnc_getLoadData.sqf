@@ -36,6 +36,17 @@ if (_cached isNotEqualTo []) exitWith { _cached };
 // [aliases (lower-case, pipe separated), load_id, cartridge_id, mv m/s,
 //  pressure MPa, charge g, velocity grade]
 private _TABLE = [
+    ["heat|m456", "105mm_m456_load", "105mm_m68", 1173.0, 0.0, 0.0, "documented"],
+    ["apfsds|m829", "120mm_m829_load", "120mm_m256_smoothbore", 1679.45, 510.0, 8141.98, "documented"],
+    ["heat|m830", "120mm_m830_load", "120mm_m256_smoothbore", 1139.95, 479.87, 0.0, "documented"],
+    ["125mm2a46|125mmm88|125mmtanksmoothbore|2a46|apfsds|m88", "125mm_m88_load", "125mm_2a46", 1785.0, 0.0, 2000.0, "claimed"],
+    ["127x108|127x108mm", "127x108_ap_load", "12_7_x_108", 810.0, 0.0, 0.0, "documented"],
+    ["20mmautocannon|20x102|20x102mm|m55a2", "20x102_m55a2_load", "20x102", 1030.22, 417.13, 0.0, "documented"],
+    ["hei|m792", "25x137_m792_load", "25x137", 1100.0, 0.0, 90.0, "documented"],
+    ["apfsds|m919", "25x137_m919_load", "25x137", 1420.0, 386.11, 98.0, "documented"],
+    ["30mmm230|30x113|30x113mm|hedp|m789", "30x113_m789_load", "30x113", 804.67, 309.92, 0.0, "documented"],
+    ["30mmbushmasteriimk44|30x173|30x173mm|mk239", "30x173_mk239_load", "30x173", 1080.0, 345.0, 0.0, "claimed"],
+    ["40mmmk19|40x53|40x53mm|hedp|m430", "40x53_m430_load", "40x53", 241.0, 0.0, 0.0, "documented"],
     ["m17", "50_bmg_m17", "50_bmg", 886.97, 379.2, 0.0, "documented"],
     ["m33", "50_bmg_m33", "50_bmg", 886.97, 379.2, 0.0, "documented"],
     ["api|m20", "50_bmg_m8_api_and_m20_api_t", "50_bmg", 886.97, 379.2, 0.0, "documented"]

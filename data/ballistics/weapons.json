@@ -57,6 +57,12 @@
     "unit": "m per turn",
     "source": "sako_100_explorer",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.8,
+    "unit": "kg",
+    "source": "sako-100-explorer",
+    "grade": "documented"
    }
   }
  },
@@ -270,6 +276,12 @@
    "twist_m": {
     "value": 0.254,
     "unit": "m per turn",
+    "source": "savage_110trailhunter",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.63,
+    "unit": "kg",
     "source": "savage_110trailhunter",
     "grade": "claimed"
    }
@@ -6150,6 +6162,12 @@
     "unit": "count",
     "source": "kalashnikov_ak105",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 3.2,
+    "unit": "kg",
+    "source": "kalashnikov_ak105",
+    "grade": "standard"
    }
   }
  },
@@ -6328,6 +6346,12 @@
     "unit": "count",
     "source": "kalashnikov_ak12",
     "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 3.7,
+    "unit": "kg",
+    "source": "wb_kalashnikov_ak12",
+    "grade": "documented"
    }
   }
  },
@@ -6815,6 +6839,26 @@
   }
  },
  {
+  "weapon_id": "ak47",
+  "names": [
+   "Kalashnikov AK-47 (7.62mm Avtomat Kalashnikova)"
+  ],
+  "aliases": [
+   "ak47"
+  ],
+  "manufacturer": "",
+  "cartridge_id": "762x39",
+  "note": "AK-47 (Soviet Union). Ak-info.ru hosts the 1949 '\u041a\u0440\u0430\u0442\u043a\u043e\u0435 \u0440\u0443\u043a\u043e\u0432\u043e\u0434\u0441\u0442\u0432\u043e \u0441\u043b\u0443\u0436\u0431\u044b' for the AK-47. No twist stated; the C.I.P. 7.62x39 standard of 240 mm applies.",
+  "values": {
+   "cartridge": {
+    "value": "7.62x39mm",
+    "unit": "name",
+    "source": "ak_info_ak47_1949",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "weapon_id": "ak47type1",
   "names": [
    "Kalashnikov AK-47 Type 1"
@@ -6995,6 +7039,12 @@
     "unit": "count",
     "source": "ak74_rpk74_manual_1982",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 3.07,
+    "unit": "kg",
+    "source": "wp_ak_74",
+    "grade": "documented"
    }
   }
  },
@@ -7027,6 +7077,12 @@
    "grooves": {
     "value": 4,
     "unit": "count",
+    "source": "kalashnikov_ak74m",
+    "grade": "standard"
+   },
+   "mass_kg": {
+    "value": 3.4,
+    "unit": "kg",
     "source": "kalashnikov_ak74m",
     "grade": "standard"
    }
@@ -7115,6 +7171,26 @@
     "unit": "name",
     "source": "ak_info_bg_article",
     "grade": "claimed"
+   }
+  }
+ },
+ {
+  "weapon_id": "akm",
+  "names": [
+   "Kalashnikov AKM (modernised AK-47)"
+  ],
+  "aliases": [
+   "akm"
+  ],
+  "manufacturer": "",
+  "cartridge_id": "762x39",
+  "note": "AKM (Soviet Union). Soviet 3rd-edition AKM/AKMS manual. No twist printed in the held edition; C.I.P. 7.62x39 standard 240 mm applies.",
+  "values": {
+   "cartridge": {
+    "value": "7.62x39mm",
+    "unit": "name",
+    "source": "ak_info_akm_manual",
+    "grade": "documented"
    }
   }
  },
@@ -7381,6 +7457,26 @@
     "value": 2.97,
     "unit": "kg",
     "source": "wp_ak_74",
+    "grade": "documented"
+   }
+  }
+ },
+ {
+  "weapon_id": "aks74u",
+  "names": [
+   "Kalashnikov AKS-74U (short carbine)"
+  ],
+  "aliases": [
+   "aks74u"
+  ],
+  "manufacturer": "",
+  "cartridge_id": "545x39",
+  "note": "AKS-74U (Soviet Union). Soviet AKS74U manual (Ak-info.ru). No twist stated; C.I.P. 5.45x39 standard 195 mm applies.",
+  "values": {
+   "cartridge": {
+    "value": "5.45x39mm",
+    "unit": "name",
+    "source": "ak_info_aks74u_manual",
     "grade": "documented"
    }
   }
@@ -7674,6 +7770,12 @@
     "unit": "m per turn",
     "source": "shootingillustrated_anaconda",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 1.3,
+    "unit": "kg",
+    "source": "wp_colt_anaconda",
+    "grade": "documented"
    }
   }
  },
@@ -8116,7 +8218,8 @@
   "aliases": [
    "ar10b",
    "ar10bsemiauto",
-   "ar10bsemiautorifle"
+   "ar10bsemiautorifle",
+   "armalitear10b"
   ],
   "manufacturer": "ArmaLite",
   "cartridge_id": "762x51_nato",
@@ -8428,6 +8531,12 @@
     "unit": "m per turn",
     "source": "armalite_ar180b_catalog",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.04,
+    "unit": "kg",
+    "source": "wp_armalite_ar_18",
+    "grade": "documented"
    }
   }
  },
@@ -8727,6 +8836,12 @@
     "unit": "m per turn",
     "source": "henry_ar7_spec",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 1.134,
+    "unit": "kg",
+    "source": "wp_armalite_ar_7",
+    "grade": "documented"
    }
   }
  },
@@ -9145,6 +9260,12 @@
     "unit": "count",
     "source": "steyr_aug_a3_manual",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.6,
+    "unit": "kg",
+    "source": "steyr_aug_a1_tech",
+    "grade": "documented"
    }
   }
  },
@@ -9277,6 +9398,12 @@
     "value": 0.2286,
     "unit": "m per turn",
     "source": "steyr_aug_sa",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 3.538,
+    "unit": "kg",
+    "source": "manual_steyr_aug_a3_sa",
     "grade": "documented"
    }
   }
@@ -9487,7 +9614,10 @@
   ],
   "aliases": [
    "awm",
-   "awmsniperrifle"
+   "awmsniperrifle",
+   "l115a1",
+   "l115a2",
+   "l115a3"
   ],
   "manufacturer": "Accuracy International",
   "cartridge_id": "338_lapua_mag",
@@ -11273,6 +11403,12 @@
     "unit": "m per turn",
     "source": "colt_cm901",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 4.26,
+    "unit": "kg",
+    "source": "wp_colt_cm901",
+    "grade": "documented"
    }
   }
  },
@@ -11453,6 +11589,12 @@
     "value": 6,
     "unit": "count",
     "source": "armscor_1911_manual",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.964,
+    "unit": "kg",
+    "source": "manual_kimber_compact",
     "grade": "documented"
    }
   }
@@ -12165,6 +12307,7 @@
    "CZ 512 semi-automatic rimfire, .22 LR"
   ],
   "aliases": [
+   "512",
    "cz512",
    "cz512semiautomaticrimfire22lr"
   ],
@@ -13833,6 +13976,12 @@
     "unit": "count",
     "source": "fn_fal_manual",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 4.2,
+    "unit": "kg",
+    "source": "fn_fal_manual",
+    "grade": "claimed"
    }
   }
  },
@@ -13893,6 +14042,12 @@
     "unit": "m per turn",
     "source": "lai_famas",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 3.61,
+    "unit": "kg",
+    "source": "famas_manual",
+    "grade": "claimed"
    }
   }
  },
@@ -14372,6 +14527,12 @@
     "unit": "count",
     "source": "fn_fnp45_tactical_manual",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.919,
+    "unit": "kg",
+    "source": "wp_fn_fnp",
+    "grade": "documented"
    }
   }
  },
@@ -14534,6 +14695,12 @@
     "unit": "m per turn",
     "source": "fn_fnx45_2025",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.941,
+    "unit": "kg",
+    "source": "wp_fn_fnx",
+    "grade": "documented"
    }
   }
  },
@@ -16418,7 +16585,8 @@
   ],
   "aliases": [
    "glock17",
-   "glock17pistol"
+   "glock17pistol",
+   "l131a1"
   ],
   "manufacturer": "Glock",
   "cartridge_id": "9x19",
@@ -16435,6 +16603,12 @@
     "unit": "m per turn",
     "source": "glock_armorer",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.708,
+    "unit": "kg",
+    "source": "glock_g17_gen5",
+    "grade": "documented"
    }
   }
  },
@@ -16803,6 +16977,12 @@
     "value": 6,
     "unit": "count",
     "source": "gsg5_manual",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 2.93,
+    "unit": "kg",
+    "source": "manual_germansportguns_gsg5",
     "grade": "documented"
    }
   }
@@ -17532,6 +17712,12 @@
     "unit": "count",
     "source": "hk416_technical_data",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.49,
+    "unit": "kg",
+    "source": "hk416_technical_data",
+    "grade": "claimed"
    }
   }
  },
@@ -17641,6 +17827,12 @@
    "grooves": {
     "value": 4,
     "unit": "count",
+    "source": "hk417_technical_data",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 4.45,
+    "unit": "kg",
     "source": "hk417_technical_data",
     "grade": "claimed"
    }
@@ -18269,6 +18461,12 @@
    "twist_m": {
     "value": 0.2032,
     "unit": "m per turn",
+    "source": "savage_impulse_chp",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.66,
+    "unit": "kg",
     "source": "savage_impulse_chp",
     "grade": "claimed"
    }
@@ -19155,6 +19353,12 @@
     "unit": "count",
     "source": "fn_fal_manual",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 4.536,
+    "unit": "kg",
+    "source": "manual_century_l1a1_rifle",
+    "grade": "documented"
    }
   }
  },
@@ -19930,6 +20134,12 @@
     "unit": "count",
     "source": "zastava_m07",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 5.4,
+    "unit": "kg",
+    "source": "zastava_m07",
+    "grade": "documented"
    }
   }
  },
@@ -20085,6 +20295,12 @@
     "unit": "count",
     "source": "m110_operator",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 4.74,
+    "unit": "kg",
+    "source": "m110_operator",
+    "grade": "documented"
    }
   }
  },
@@ -20186,6 +20402,12 @@
    "cartridge": {
     "value": "7.62x51mm NATO",
     "unit": "name",
+    "source": "tm_9_1005_223_10",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 4.128,
+    "unit": "kg",
     "source": "tm_9_1005_223_10",
     "grade": "documented"
    }
@@ -20411,6 +20633,12 @@
     "unit": "m per turn",
     "source": "tm_9_1005_319_10",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 3.987,
+    "unit": "kg",
+    "source": "tm_9_1005_319_10",
+    "grade": "documented"
    }
   }
  },
@@ -20462,6 +20690,12 @@
    "twist_m": {
     "value": 0.1778,
     "unit": "m per turn",
+    "source": "tm_9_1005_319_10",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 3.987,
+    "unit": "kg",
     "source": "tm_9_1005_319_10",
     "grade": "documented"
    }
@@ -20727,6 +20961,12 @@
     "value": 6,
     "unit": "count",
     "source": "m1911_tm",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 1.179,
+    "unit": "kg",
+    "source": "tm_9_1005_211_12",
     "grade": "documented"
    }
   }
@@ -21537,6 +21777,12 @@
     "unit": "count",
     "source": "tm_9_1005_306_10",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 5.488,
+    "unit": "kg",
+    "source": "tm_9_1005_306_10",
+    "grade": "documented"
    }
   }
  },
@@ -21563,6 +21809,26 @@
     "value": 11.8,
     "unit": "kg",
     "source": "fn_mag_technical_data",
+    "grade": "documented"
+   }
+  }
+ },
+ {
+  "weapon_id": "m240b",
+  "names": [
+   "FN M240B"
+  ],
+  "aliases": [
+   "m240b"
+  ],
+  "manufacturer": "",
+  "cartridge_id": "762x51_nato",
+  "note": "M240B (United States). TM 9-1005-313-10 covers M240, M240B, M240C, M240D, M240E1, M240G, M240H and M240N. No twist stated.",
+  "values": {
+   "cartridge": {
+    "value": "7.62x51mm NATO",
+    "unit": "name",
+    "source": "us_mod_tm31310",
     "grade": "documented"
    }
   }
@@ -21689,6 +21955,12 @@
    "twist_m": {
     "value": 0.1778,
     "unit": "m per turn",
+    "source": "tm_9_1005_201_10",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 7.718,
+    "unit": "kg",
     "source": "tm_9_1005_201_10",
     "grade": "documented"
    }
@@ -22357,6 +22629,12 @@
     "unit": "m per turn",
     "source": "tm_05539_in",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 7.28,
+    "unit": "kg",
+    "source": "tm_05539_in",
+    "grade": "documented"
    }
   }
  },
@@ -22534,6 +22812,12 @@
    "twist_m": {
     "value": 0.1778,
     "unit": "m per turn",
+    "source": "tm_9_1005_319_10",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 3.402,
+    "unit": "kg",
     "source": "tm_9_1005_319_10",
     "grade": "documented"
    }
@@ -24690,7 +24974,7 @@
    "mcxrattler55sbr"
   ],
   "manufacturer": "SIG Sauer Inc. (USA)",
-  "cartridge_id": "",
+  "cartridge_id": "556x45_nato",
   "note": "SIG Sauer factory specification for the 5.5 in .300 BLK Rattler, verbatim: \"Barrel Length: 5.5 in (140 mm) ... Twist Rate: 1:5\". 1 turn in 5 inches = 127.0 mm per turn. Corroborated by SIG Sauer's own MCX-RATTLER LT product page, which lists the .300 BLK Rattler twist as 1:5 (archived: https://web.archive.org/web/20231116221830id_/https://www.sigsauer.com/mcx-rattler-lt.html).",
   "values": {
    "cartridge": {
@@ -24988,6 +25272,26 @@
   }
  },
  {
+  "weapon_id": "mg3",
+  "names": [
+   "Rheinmetall MG3"
+  ],
+  "aliases": [
+   "mg3"
+  ],
+  "manufacturer": "",
+  "cartridge_id": "762x51_nato",
+  "note": "MG3 (Germany). MG3 Operator's Manual 1992, cal. 7.62 mm x 51: 'Type of twist constant, R/H'. The manual states right-hand twist only, with no length, so no twist value is recorded. The 7.62x51 standard is 304.8 mm.",
+  "values": {
+   "cartridge": {
+    "value": "7.62x51mm NATO",
+    "unit": "name",
+    "source": "hk_mg3_om",
+    "grade": "documented"
+   }
+  }
+ },
+ {
   "weapon_id": "mg34",
   "names": [
    "Maschinengewehr 34 (MG34)"
@@ -25051,6 +25355,12 @@
     "unit": "count",
     "source": "hk_mg4_technical_data",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 8.15,
+    "unit": "kg",
+    "source": "hk_mg4",
+    "grade": "documented"
    }
   }
  },
@@ -25445,6 +25755,12 @@
     "unit": "m per turn",
     "source": "q_fix_minifix_manual",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 2.132,
+    "unit": "kg",
+    "source": "q_fix_minifix_manual",
+    "grade": "documented"
    }
   }
  },
@@ -25582,6 +25898,12 @@
     "value": 5,
     "unit": "count",
     "source": "kac_sr25_m110_manual",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 4.9,
+    "unit": "kg",
+    "source": "m110_operator",
     "grade": "documented"
    }
   }
@@ -27833,6 +28155,33 @@
   }
  },
  {
+  "weapon_id": "mpx",
+  "names": [
+   "SIG MPX"
+  ],
+  "aliases": [
+   "mpx",
+   "sigsauermpx"
+  ],
+  "manufacturer": "SIG Sauer",
+  "cartridge_id": "9x19",
+  "note": "MPX (United States). SIG 2023 catalog MPX and MPX K rows: AVAILABLE CALIBERS 9MM, RIFLING 1:10 = 254.0 mm.",
+  "values": {
+   "cartridge": {
+    "value": "9x19mm Parabellum",
+    "unit": "name",
+    "source": "sig2023_usa",
+    "grade": "claimed"
+   },
+   "twist_m": {
+    "value": 0.254,
+    "unit": "m per turn",
+    "source": "sig2023_usa",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "weapon_id": "mpxk",
   "names": [
    "SIG MPX K"
@@ -29497,6 +29846,12 @@
     "unit": "m per turn",
     "source": "keltec_p17_manual",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.309,
+    "unit": "kg",
+    "source": "keltec_p17_manual",
+    "grade": "documented"
    }
   }
  },
@@ -29639,6 +29994,12 @@
     "unit": "m per turn",
     "source": "sig_classic_pistol_manual_8501154",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.8,
+    "unit": "kg",
+    "source": "manual_sig_p220",
+    "grade": "documented"
    }
   }
  },
@@ -29747,6 +30108,12 @@
     "unit": "m per turn",
     "source": "sig_p226_manual",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 0.79,
+    "unit": "kg",
+    "source": "manual_sig_p226",
+    "grade": "documented"
    }
   }
  },
@@ -29906,6 +30273,12 @@
     "value": 6,
     "unit": "count",
     "source": "sig_classic_pistol_manual_8501154",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 0.892,
+    "unit": "kg",
+    "source": "manual_sig_p229",
     "grade": "documented"
    }
   }
@@ -30857,6 +31230,33 @@
   }
  },
  {
+  "weapon_id": "p90",
+  "names": [
+   "FN P90"
+  ],
+  "aliases": [
+   "fnherstalp90",
+   "p90"
+  ],
+  "manufacturer": "FN Herstal",
+  "cartridge_id": "5_7_x_28",
+  "note": "P90 (Belgium). manual table not captured",
+  "values": {
+   "cartridge": {
+    "value": "5.7x28mm",
+    "unit": "name",
+    "source": "fn_herstal_products",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 2.8,
+    "unit": "kg",
+    "source": "fn_p90_technical_data",
+    "grade": "documented"
+   }
+  }
+ },
+ {
   "weapon_id": "p938",
   "names": [
    "SIG Sauer P938"
@@ -31320,6 +31720,26 @@
     "unit": "name",
     "source": "walther_pk380_manual",
     "grade": "documented"
+   }
+  }
+ },
+ {
+  "weapon_id": "pkm",
+  "names": [
+   "Kalashnikov PKM machine gun"
+  ],
+  "aliases": [
+   "pkm"
+  ],
+  "manufacturer": "",
+  "cartridge_id": "7_62_x_54_r",
+  "note": "PKM (Soviet Union). Modern Firearms 'Kalashnikov PK / PKM'. No twist stated; C.I.P. 7.62x54R standard 240 mm applies.",
+  "values": {
+   "cartridge": {
+    "value": "7.62x54mmR",
+    "unit": "name",
+    "source": "mf_pkm",
+    "grade": "standard"
    }
   }
  },
@@ -33036,6 +33456,32 @@
   }
  },
  {
+  "weapon_id": "qbu88",
+  "names": [
+   "Norinco QBU-88 (Type 88) sniper rifle"
+  ],
+  "aliases": [
+   "qbu88"
+  ],
+  "manufacturer": "",
+  "cartridge_id": "58x42",
+  "note": "QBU-88 (China). Mapping per \u67aa\u70ae\u4e16\u754c QBU88 page; twist per the Tencent article: 'QBU-88\u72d9\u51fb\u6b65\u67aa\u7684\u7f20\u8ddd\u4e3a1\uff1a7' (1:7 in = 177.8 mm). No C.I.P. standard exists for 5.8x42mm.",
+  "values": {
+   "cartridge": {
+    "value": "5.8x42mm",
+    "unit": "name",
+    "source": "qq_58mm_history",
+    "grade": "claimed"
+   },
+   "twist_m": {
+    "value": 0.1778,
+    "unit": "m per turn",
+    "source": "qq_58mm_history",
+    "grade": "claimed"
+   }
+  }
+ },
+ {
   "weapon_id": "qbz03",
   "names": [
    "QBZ-03"
@@ -33097,6 +33543,32 @@
     "value": 3.1,
     "unit": "kg",
     "source": "wp_qbz_191",
+    "grade": "documented"
+   }
+  }
+ },
+ {
+  "weapon_id": "qbz95",
+  "names": [
+   "Norinco QBZ-95 (Type 95) bullpup assault rifle"
+  ],
+  "aliases": [
+   "qbz95"
+  ],
+  "manufacturer": "",
+  "cartridge_id": "58x42",
+  "note": "QBZ-95 (China). \u67aa\u70ae\u4e16\u754c: '\u819b\u7ebf\u7f20\u8ddd\u4ece\u539f\u6765\u7684240mm\u6539\u4e3a210mm' (the original 240 mm rate is that of the QBZ-95). 4 grooves original. No C.I.P. standard exists for 5.8x42mm.",
+  "values": {
+   "cartridge": {
+    "value": "5.8x42mm",
+    "unit": "name",
+    "source": "firearmsworld_qbz951",
+    "grade": "documented"
+   },
+   "twist_m": {
+    "value": 0.24,
+    "unit": "m per turn",
+    "source": "firearmsworld_qbz951",
     "grade": "documented"
    }
   }
@@ -34269,6 +34741,26 @@
   }
  },
  {
+  "weapon_id": "rpk",
+  "names": [
+   "Kalashnikov RPK light machine gun"
+  ],
+  "aliases": [
+   "rpk"
+  ],
+  "manufacturer": "",
+  "cartridge_id": "762x39",
+  "note": "RPK (Soviet Union). Modern Firearms 'Kalashnikov RPK'. No twist stated; C.I.P. 7.62x39 standard 240 mm applies.",
+  "values": {
+   "cartridge": {
+    "value": "7.62x39mm",
+    "unit": "name",
+    "source": "mf_rpk",
+    "grade": "standard"
+   }
+  }
+ },
+ {
   "weapon_id": "rpk16",
   "names": [
    "Kalashnikov RPK-16"
@@ -34337,6 +34829,12 @@
     "value": 4,
     "unit": "count",
     "source": "ak74_rpk74_manual_1982",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 4.7,
+    "unit": "kg",
+    "source": "wp_rpk_74",
     "grade": "documented"
    }
   }
@@ -34604,6 +35102,12 @@
     "unit": "m per turn",
     "source": "sako_s20_hunter",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.6,
+    "unit": "kg",
+    "source": "sako-s20-hunter",
+    "grade": "documented"
    }
   }
  },
@@ -34631,6 +35135,12 @@
     "unit": "m per turn",
     "source": "sako_s20_precision",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.8,
+    "unit": "kg",
+    "source": "sako-s20-precision",
+    "grade": "documented"
    }
   }
  },
@@ -34847,6 +35357,12 @@
     "unit": "m per turn",
     "source": "springfield_saint_edge_556",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 4.309,
+    "unit": "kg",
+    "source": "springfield_saint_edge_atc_223_ar_15_rifle",
+    "grade": "documented"
    }
   }
  },
@@ -36615,6 +37131,12 @@
     "unit": "count",
     "source": "sig_sg550_manual",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 4.1,
+    "unit": "kg",
+    "source": "san_swiss_arms_sg550_552_techdata",
+    "grade": "documented"
    }
   }
  },
@@ -36648,6 +37170,12 @@
     "value": 6,
     "unit": "count",
     "source": "sig_sg551_manual_40425039",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 3.4,
+    "unit": "kg",
+    "source": "san_swiss_arms_sg550_552_techdata",
     "grade": "documented"
    }
   }
@@ -36747,6 +37275,12 @@
    "grooves": {
     "value": 6,
     "unit": "count",
+    "source": "san_swiss_arms_sg550_552_techdata",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 3.4,
+    "unit": "kg",
     "source": "san_swiss_arms_sg550_552_techdata",
     "grade": "documented"
    }
@@ -37685,6 +38219,12 @@
     "unit": "count",
     "source": "lwrci_smg45_specsheet",
     "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 2.676,
+    "unit": "kg",
+    "source": "lwrci_smg45_specsheet",
+    "grade": "claimed"
    }
   }
  },
@@ -38412,6 +38952,12 @@
     "unit": "count",
     "source": "sig_ssg3000_manual",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 5.1,
+    "unit": "kg",
+    "source": "sig_ssg3000_manual",
+    "grade": "documented"
    }
   }
  },
@@ -39037,6 +39583,12 @@
     "unit": "count",
     "source": "kalashnikov_sv98",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 5.8,
+    "unit": "kg",
+    "source": "kalashnikov_sv98",
+    "grade": "documented"
    }
   }
  },
@@ -39096,6 +39648,12 @@
    "grooves": {
     "value": 4,
     "unit": "count",
+    "source": "svd_ru_manual",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 4.3,
+    "unit": "kg",
     "source": "svd_ru_manual",
     "grade": "claimed"
    }
@@ -39859,6 +40417,12 @@
     "unit": "count",
     "source": "tikka_manual_v53",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 4.1,
+    "unit": "kg",
+    "source": "tikka-us-t3x-upr",
+    "grade": "claimed"
    }
   }
  },
@@ -40079,6 +40643,12 @@
     "value": 0.254,
     "unit": "m per turn",
     "source": "sako_t3x_upr",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.6,
+    "unit": "kg",
+    "source": "tikka-us-t3x-upr",
     "grade": "claimed"
    }
   }
@@ -40532,6 +41102,7 @@
    "Thompson M1A1 Submachine Gun"
   ],
   "aliases": [
+   "m1a1thompson",
    "thompsonm1a1",
    "thompsonm1a1sub",
    "thompsonm1a1submachinegun"
@@ -40555,6 +41126,12 @@
    "grooves": {
     "value": 6,
     "unit": "count",
+    "source": "dockery_m1a1_thompson",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 4.74,
+    "unit": "kg",
     "source": "dockery_m1a1_thompson",
     "grade": "claimed"
    }
@@ -40930,6 +41507,12 @@
     "value": 0.2794,
     "unit": "m per turn",
     "source": "sako_trg22_manual",
+    "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 5.3,
+    "unit": "kg",
+    "source": "sako-trg-2242",
     "grade": "documented"
    }
   }
@@ -41925,6 +42508,12 @@
     "unit": "count",
     "source": "hk_ump_manual",
     "grade": "documented"
+   },
+   "mass_kg": {
+    "value": 2.26,
+    "unit": "kg",
+    "source": "hk_ump_manual",
+    "grade": "documented"
    }
   }
  },
@@ -42316,6 +42905,12 @@
    "grooves": {
     "value": 4,
     "unit": "count",
+    "source": "uzi_manual",
+    "grade": "claimed"
+   },
+   "mass_kg": {
+    "value": 3.8,
+    "unit": "kg",
     "source": "uzi_manual",
     "grade": "claimed"
    }
