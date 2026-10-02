@@ -9,7 +9,6 @@ Run: python3 -m unittest tools.tests.test_thermal_optics -v
 """
 
 import math
-import os
 import re
 import unittest
 from pathlib import Path
@@ -1876,8 +1875,6 @@ class TestClothingThermal(unittest.TestCase):
         # thermal substrate paints procedural colours via setObjectTexture,
         # so the ti_cloth_cold/hot.rvmat override materials must NOT exist
         # (their deletion is the point - no third-party rvmat can break).
-        import os
-
         data_dir = _REPO_ROOT / "addons" / "thermal" / "data"
         self.assertFalse((data_dir / "ti_cloth_cold.rvmat").exists())
         self.assertFalse((data_dir / "ti_cloth_hot.rvmat").exists())
@@ -1912,11 +1909,12 @@ class TestClothingThermal(unittest.TestCase):
         # (the 'WHOT/BHOT no visual difference' report).
         self.assertIn("setObjectTexture", text)
         self.assertIn("#(rgb,8,8,3)color(", text)
-        # Per-material base hue (the engine's default TI textures), scaled by
-        # the AGC band _qb, not one flat hue for every part.
+        # Continuous palette paint (issue #204 rework): the display is a pure
+        # function of the band radiance; material enters only through the
+        # emissivity already inside _rad.  No material token selects a hue.
         self.assertIn("[_obj, _sel] call FUNC(getSelectionMaterials)", text)
-        self.assertIn("_baseHue select 0", text)
-        self.assertIn("(_baseHue select 1) * _qb", text)
+        self.assertIn("call FUNC(thermalPalette)", text)
+        self.assertNotIn("_baseHue", text)
         self.assertNotIn("setObjectMaterial [_idx,", text)
         # The live path swaps exactly ONE material, the FPN substrate.
         # A second rvmat path here would be a new material swap, and a
@@ -1929,27 +1927,25 @@ class TestClothingThermal(unittest.TestCase):
         )
 
 
-def _base_hues(code):
-    """The per-material base hues declared in the SQF, parsed not transcribed.
+def _palette_points():
+    """The ember control points in fnc_thermalPalette.sqf, parsed not transcribed.
 
-    Each hue is a source value: the engine's own default TI textures.  Parsed
-    rather than transcribed, so a change in the SQF fails the contract tests
-    instead of drifting from a second copy of the values.
+    Each point is [position, [r, g, b]].  The endpoints are the engine's own
+    decoded TI colours, so parsing (not transcribing) keeps a SQF change and
+    this mirror in step.
     """
-    hues = []
-    for m in re.finditer(r"_baseHue = \[([^\]]*)\];", code):
-        parts = [float(x) for x in re.findall(r"([\d.]+)", m.group(1))]
-        if len(parts) == 3:
-            hues.append(tuple(parts))
-    if not hues:
-        raise AssertionError("no per-material base hue is declared")
-    return hues
-
-
-def _quantised(brightness, levels):
-    """The quantiser step: round to the nearest level, then normalise."""
-    clamped = min(1.0, max(0.0, brightness))
-    return math.floor(clamped * (levels - 1) + 0.5) / (levels - 1)
+    code = _code_only(_read_sqf("fnc_thermalPalette.sqf", addon="thermal"))
+    block = re.search(r"private _points = \[(.*?)\];", code, re.DOTALL)
+    if block is None:
+        raise AssertionError("the ember palette control points are missing")
+    points = []
+    for m in re.finditer(r"\[([\d.]+),\s*\[([\d.,\s]+)\]\]", block.group(1)):
+        rgb = tuple(float(x) for x in m.group(2).split(","))
+        if len(rgb) == 3:
+            points.append((float(m.group(1)), rgb))
+    if len(points) < 5:
+        raise AssertionError("the ember palette control points are incomplete")
+    return points
 
 
 def _selection_thermal_code():
@@ -2023,45 +2019,67 @@ class TestSelectionThermalTexture(unittest.TestCase):
         code = _code_only(_read_sqf("fnc_updateThermalAGC.sqf", addon="thermal"))
         self.assertIn("QGVAR(agcFullSpan)", code)
 
-    def test_texture_quantiser_is_32_levels(self):
-        """The depth, and the 8-bit step it produces."""
+    def test_texture_quantiser_is_255_levels(self):
+        """The depth, and the one-code-value step it produces."""
         code = _selection_thermal_code()
         m = re.search(r"private _levels = (\d+);", code)
         self.assertIsNotNone(m, "the quantiser depth is not declared")
         levels = int(m.group(1))
-        self.assertEqual(levels, 32)
-        # The ladder spans the 8-bit display once, so one step is 255/31
-        # code values.
-        self.assertAlmostEqual(255.0 / (levels - 1), 8.225806, places=5)
+        self.assertEqual(levels, 255)
+        # The ladder spans the 8-bit display once, so one step is about one
+        # code value.  That is the continuous-palette requirement: the old
+        # 32-level ladder put about 8 code values on each step (visible band).
+        self.assertAlmostEqual(255.0 / (levels - 1), 1.003937, places=5)
 
-    def test_heat_colour_is_per_material(self):
-        """Each material gets its own base hue; _qb is the intensity.
+    def test_heat_colour_is_a_continuous_palette(self):
+        """The palette is continuous and monotone, not a material hue table.
 
-        Regression: one hue for every part made a whole vehicle or uniform
-        read as a single flat colour.  The hues are the engine's own default
-        TI textures (engine-thermal-mechanisms.md): default_ti (255,0,0),
-        default_vehicle_ti (145,46,0), default_glass_ti (0,0,0).
+        Regression: a three-entry material hue made glass permanently black
+        and a whole vehicle read as a flat colour.  The display is now a pure
+        function of the band radiance; the control points are the engine's own
+        decoded TI hues (default_vehicle_ti 145,46,0 and default_ti 255,0,0).
         """
-        code = _selection_thermal_code()
-        hues = _base_hues(code)
-        self.assertGreaterEqual(len(hues), 3, "need a hot, warm and cold hue")
+        points = _palette_points()
+        self.assertEqual(points[0][1], (0.0, 0.0, 0.0), "cold endpoint")
+        self.assertEqual(points[-1][1], (1.0, 1.0, 1.0), "hot endpoint")
+        hues = [c for _, c in points]
         self.assertIn((0.5686, 0.1804, 0.0), hues, "default_vehicle_ti")
         self.assertIn((1.0, 0.0, 0.0), hues, "default_ti")
-        self.assertIn((0.0, 0.0, 0.0), hues, "default_glass_ti")
-        # The material class picks the hue; the band still scales it.
-        self.assertIn('_selMatClass in ["engine", "human"]', code)
-        self.assertIn('_selMatClass in ["glass", "water"]', code)
-        self.assertIn("(_baseHue select 0) * _qb", code)
+
+        def sample(n):
+            lo = points[0]
+            hi = points[-1]
+            for p in points:
+                if n >= p[0]:
+                    lo = p
+            for p in points:
+                if n <= p[0]:
+                    hi = p
+                    break
+            span = hi[0] - lo[0]
+            f = 0.0 if span <= 0 else (n - lo[0]) / span
+            return tuple(lo[1][i] + (hi[1][i] - lo[1][i]) * f for i in range(3))
+
+        cols = [sample(i / 500.0) for i in range(501)]
+        lums = [0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2] for c in cols]
+        # Continuous: no step is a visible jump.
+        steps = [abs(lums[i + 1] - lums[i]) for i in range(len(lums) - 1)]
+        self.assertLess(max(steps), 0.01)
+        # Monotone in luminance: brighter band position is never darker.
+        self.assertEqual(lums, sorted(lums))
+        # Many distinct outputs, not a small table.
+        distinct = {tuple(round(x, 6) for x in c) for c in cols}
+        self.assertGreaterEqual(len(distinct), 400)
+        # No material token selects a hue in the paint step.
+        code = _selection_thermal_code()
+        self.assertNotIn("_baseHue", code)
+        self.assertNotIn('_selMatClass in ["engine", "human"]', code)
 
     def test_red_channel_rises_with_brightness(self):
         """A brighter selection never paints a cooler red."""
-        code = _selection_thermal_code()
-        levels = int(re.search(r"private _levels = (\d+);", code).group(1))
-        red = _base_hues(code)[0][0]
-        self.assertGreater(red, 0.0)
-        painted = [red * _quantised(i / 200.0, levels) for i in range(201)]
-        self.assertEqual(painted, sorted(painted))
-        self.assertGreater(painted[-1], painted[0])
+        reds = [c[0] for _, c in _palette_points()]
+        self.assertEqual(reds, sorted(reds))
+        self.assertGreater(reds[-1], 0.0)
 
     def test_polarity_is_not_a_brightness_flip_here(self):
         """The paint path owns no polarity; the vision pass owns it.
@@ -2342,8 +2360,6 @@ class TestRainDropletEyeVelocity(unittest.TestCase):
 
     def test_sqf_has_velocity_cancel(self):
         # Source drift-lock: the fix must be present in the SQF.
-        from pathlib import Path
-
         text = Path(
             "addons/thermal/functions/display/fnc_applyRainDroplets.sqf"
         ).read_text(encoding="utf-8")
@@ -2914,7 +2930,6 @@ class TestSQFSync(unittest.TestCase):
         # across optics (210/410/1510), NVG (1200/4100/5100/6000/868)
         # and thermal (1300/4200/6500/5200) must be unique.
         import re
-        from pathlib import Path
 
         root = Path(__file__).resolve().parents[2]
         files = [
@@ -2964,7 +2979,6 @@ class TestSQFSync(unittest.TestCase):
         documented base set and the engine's own CfgOpticsEffect table.
         """
         import re
-        from pathlib import Path
 
         root = Path(__file__).resolve().parents[2]
         expected = {
@@ -3043,13 +3057,12 @@ class TestSQFSync(unittest.TestCase):
             "fnc_applySelectionThermal.sqf",
             [
                 "#(rgb,8,8,3)color(",
-                "_baseHue select 0",
-                "(_baseHue select 1) * _qb",
-                "private _levels = 32",
+                "call FUNC(thermalPalette)",
+                "private _levels = 255",
                 "setObjectTexture [_idx, _colour]",
                 "ti_fpn.rvmat",
             ],
-            "per-material heat-colour paint (engine TI hues, 32 levels, FPN material)",
+            "continuous palette paint (255 levels, FPN material)",
             addon="thermal",
         )
 
@@ -3763,8 +3776,6 @@ class TestSQFSync(unittest.TestCase):
         # The metal-body check comes FIRST in the chain.
         body_pos = sqf.find('_tl find "_body"')
         glass_pos = sqf.find('_tl find "glass"')
-        track_pos = sqf.find('_tl find "track"')
-        int_pos = sqf.find('_tl find "int"')
         # metal body check must precede the glass/light check
         self.assertGreater(body_pos, 0)
         self.assertGreater(glass_pos, 0)
@@ -3952,8 +3963,6 @@ class TestSQFSync(unittest.TestCase):
         )
         # The old per-class gain table and the manual wind/shade clamp are
         # GONE - the solver does convection, radiation and cloud itself.
-        from pathlib import Path
-
         text = _read_sqf("fnc_calculateObjectTemperature.sqf", "thermal")
         self.assertNotIn("_groundTarget max (_airTemp - 5)", text)
         self.assertNotIn("_groundGain", text)
@@ -4065,8 +4074,6 @@ class TestSQFSync(unittest.TestCase):
             "ground delegated to the per-position solve",
             addon="thermal",
         )
-        from pathlib import Path
-
         text = _read_sqf("fnc_calculateObjectTemperature.sqf", "thermal")
         self.assertNotIn("#gdtdesert", text)
         self.assertNotIn("#gdtsnow", text)
@@ -4250,8 +4257,6 @@ class TestNVGStackAuditSQFSync(unittest.TestCase):
     """#153: source-level drift locks for the audit fixes."""
 
     def _read(self, name):
-        from pathlib import Path
-
         # NVG functions moved to the aee_nightvision addon (three-system split).
         base = (
             Path("addons/nightvision", "functions")

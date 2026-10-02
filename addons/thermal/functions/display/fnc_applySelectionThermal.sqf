@@ -19,13 +19,12 @@ FLIR mapping (real sensor physics):
                                           correction - the "cold shiny
                                           metal" effect FLIR manuals warn
                                           about]
-  - white-hot palette: brightness b = clamp((T_apparent - T_lo) /
-    (T_hi - T_lo), 0, 1), with the sensor gain window T_lo=-40 C,
-    T_hi=+150 C (typical ground-target auto-gain span).  Black = cold,
-    white = hot - the real white-hot mode.
-  - the colour is greyscale (b,b,b) because white-hot carries no hue;
-    colour variants (ironbow/rainbow) are a post-process tint, handled
-    by the sensor pipeline, not per-object.
+  - the display is continuous: the band radiance is normalised by the
+    scene AGC or the manual window, then interpolated through control
+    points (fnc_thermalPalette).  The control points are the engine's
+    own decoded TI colours, so a painted object matches an unpainted
+    one.  Material never selects a hue; emissivity is already in the
+    radiance.
 
 Multiplayer: setObjectTexture is LOCAL, correct here - each client
 renders its own thermal pass from identical physics (the existing
@@ -499,12 +498,25 @@ if (_mode == "EXIT") then {
         private _rad = [_tNew, _eps, _tAir, _fGround, _tCurrent, _tau, _tAir] call FUNC(calculateBandRadiance);
         private _agcMin = missionNamespace getVariable [QGVAR(agcRadMin), -1];
         private _agcMax = missionNamespace getVariable [QGVAR(agcRadMax), -1];
-        // Fallback window (first frames / no AGC yet): the radiance of
-        // the old -40..150 C span - identical behaviour to the previous
-        // fixed window until the AGC warms up.
-        if (!(_agcMin isEqualType 0) || !(_agcMax isEqualType 0) || _agcMin >= _agcMax) then {
-            _agcMin = [-40, _eps, _tAir, _fGround, _tCurrent, _tau, _tAir] call FUNC(calculateBandRadiance);
-            _agcMax = [150, _eps, _tAir, _fGround, _tCurrent, _tau, _tAir] call FUNC(calculateBandRadiance);
+        // Manual window and the no-AGC fallback.  The manual span is a
+        // setting: the device library carries NETD, resolution and refresh
+        // rate, but publishes no span.  The fallback uses this same window,
+        // so a cold start never maps through a hard-coded span that no
+        // device exposes.
+        private _manMinC = missionNamespace getVariable [QGVAR(thermalManualMinC), -40];
+        private _manMaxC = missionNamespace getVariable [QGVAR(thermalManualMaxC), 120];
+        if !(_manMinC isEqualType 0) then { _manMinC = -40; };
+        if !(_manMaxC isEqualType 0) then { _manMaxC = 120; };
+        if (_manMaxC <= _manMinC) then { _manMaxC = _manMinC + 1; };
+        private _displayMode = missionNamespace getVariable [QGVAR(thermalDisplayMode), 0];
+        if !(_displayMode isEqualType 0) then { _displayMode = 0; };
+        private _agcValid = false;
+        if ((_agcMin isEqualType 0) && (_agcMax isEqualType 0) && (_agcMin < _agcMax)) then {
+            _agcValid = true;
+        };
+        if ((_displayMode == 1) || !_agcValid) then {
+            _agcMin = [_manMinC, _eps, _tAir, _fGround, _tCurrent, _tau, _tAir] call FUNC(calculateBandRadiance);
+            _agcMax = [_manMaxC, _eps, _tAir, _fGround, _tCurrent, _tau, _tAir] call FUNC(calculateBandRadiance);
         };
         private _b = ((_rad - _agcMin) / ((_agcMax - _agcMin) max 1e-6)) max 0 min 1;
         // Polarity (WHOT/BHOT) is applied by a ColorInversion ppEffect in
@@ -566,44 +578,28 @@ if (_mode == "EXIT") then {
         // replaces it - the same quantisation, now with the correct colour
         // in the texture the TI pass actually reads.
         //
-        // WHOT (brightness): hot = red.  The base colour scales with the
-        // AGC-normalised radiance; polarity (BHOT) is applied by a
-        // ColorInversion ppEffect in fnc_applyThermalVision, NOT a
-        // brightness flip here - a flip of the band index never reached
-        // the rendered image for StageTI-baked objects.
-        // Quantise to 32 levels (MKK TI_VEHICLE_HEAT_TEXTURE_LEVELS) so a
-        // 0.066 heat step is invisible but the texture is not recreated
-        // on every tick (the engine re-paints the procedural texture
-        // each time the value changes).
-        private _levels = 32;
+        // Quantise the POSITION, not a hue.  The engine re-uploads the
+        // procedural texture whenever the value changes, so a 255-step
+        // ladder bounds the uploads.  255 is the 8-bit display depth and
+        // keeps the ramp continuous; 32 was a visible band.
+        private _levels = 255;
         private _qb = (round ((_b max 0 min 1) * (_levels - 1))) / (_levels - 1);
-        // ─── Per-material display colour (issue #204) ─────────────────────
-        // The band was applied as one hue for every part, so the material
-        // class the solve already carries (fnc_getSelectionMaterials: metal,
-        // glass, engine, rubber, ...) was discarded at the final step and a
-        // whole vehicle or uniform read as one flat colour.  The hue now
-        // comes from the engine's OWN thermal textures for the material,
-        // decoded in docs/wiki/research/engine-thermal-mechanisms.md:
-        //   default_ti_ca.paa          (255,0,0)  hot  - engine, human
-        //   default_vehicle_ti_ca.paa  (145,46,0) warm - panels, ground, rock
-        //   default_glass_ti_ca.paa    (0,0,0)    cold - glass, water
-        // The solver still sets the brightness: _qb is the AGC-normalised
-        // band radiance of THIS selection, already carrying its emissivity,
-        // so materials differ by hue and temperatures of one material differ
-        // by intensity.  No physics value is invented here.
-        private _baseHue = [0.5686, 0.1804, 0.0];   // default_vehicle_ti (145/255,46/255,0)
-        if (_selMatClass in ["engine", "human"]) then {
-            _baseHue = [1.0, 0.0, 0.0];              // default_ti (255,0,0)
-        } else {
-            if (_selMatClass in ["glass", "water"]) then {
-                _baseHue = [0.0, 0.0, 0.0];          // default_glass_ti (0,0,0)
-            };
-        };
-        private _heatCol = [
-            (_baseHue select 0) * _qb,
-            (_baseHue select 1) * _qb,
-            (_baseHue select 2) * _qb
-        ];
+        // ─── Continuous display palette (issue #204 rework) ──────────────
+        // The display carries ONE scalar per pixel.  The selection's
+        // material enters the image only through emissivity, which the
+        // band radiance above already holds, so the colour is a pure
+        // function of the normalised band position.  The old three-entry
+        // material hue table is gone: it painted glass permanently black
+        // and made a whole vehicle read as one flat colour.
+        private _palette = missionNamespace getVariable [QGVAR(thermalPalette), 0];
+        if (!(_palette isEqualType 0)) then { _palette = 0; };
+        private _polarity = missionNamespace getVariable [QGVAR(thermalPolarity), 0];
+        if (!(_polarity isEqualType 0)) then { _polarity = 0; };
+        // Polarity is baked into the palette here AND applied by the
+        // ColorInversion ppEffect in fnc_applyThermalVision.  The native
+        // TI renderer (vision mode 2) does not apply ppEffects, so the
+        // baked ramp is the polarity the operator sees there.
+        private _heatCol = [_qb, _palette, _polarity] call FUNC(thermalPalette);
         private _colour = format [
             "#(rgb,8,8,3)color(%1,%2,%3,1)",
             _heatCol select 0,

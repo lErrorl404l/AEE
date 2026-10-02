@@ -107,9 +107,12 @@ private _rads = [];
     if !(_eps isEqualType 0) then { _eps = _groundEps; };
     _rads pushBack ([_t, _eps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp] call FUNC(calculateBandRadiance));
 } forEach (keys _selTemps);
-if (_rads isNotEqualTo []) then {
-    _rads pushBack ([_groundTemp, _groundEps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp] call FUNC(calculateBandRadiance));
-};
+// The ground is the background every object sits against and the one sample
+// that is always present, even before the first selection solves.  Keeping it
+// in every pass anchors the window when the per-selection sample set changes.
+// The 1 percent tail cut is a no-op below about 50 samples, so this anchor is
+// what stops the window hunting.
+_rads pushBack ([_groundTemp, _groundEps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp] call FUNC(calculateBandRadiance));
 
 // ─── Tail rejection (FLIR: <1% so real content is not clipped) ────────────
 // Sort the radiances, cut the top and bottom 1%, and take the window.
@@ -136,10 +139,16 @@ if (_rads isNotEqualTo []) then {
 // ─── Max gain cap (FLIR default 8) ────────────────────────────────────────
 // The mapping gain is spread_display / spread_scene.  Cap the total
 // stretch so a bland scene does not invent contrast.  The display spread
-// is the radiance of a 190 K window (the engine's -40..150 C span) so a
-// gain of 1 reproduces the old fixed window exactly.
-private _fullSpan = ([150, _groundEps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp] call FUNC(calculateBandRadiance))
-    - ([(-40), _groundEps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp] call FUNC(calculateBandRadiance));
+// is the radiance of the manual/device window, so gain 1 reproduces that
+// window exactly.  The window is a setting: the device library publishes
+// no span.
+private _manMinC = missionNamespace getVariable [QGVAR(thermalManualMinC), -40];
+private _manMaxC = missionNamespace getVariable [QGVAR(thermalManualMaxC), 120];
+if !(_manMinC isEqualType 0) then { _manMinC = -40; };
+if !(_manMaxC isEqualType 0) then { _manMaxC = 120; };
+if (_manMaxC <= _manMinC) then { _manMaxC = _manMinC + 1; };
+private _fullSpan = ([_manMaxC, _groundEps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp] call FUNC(calculateBandRadiance))
+    - ([_manMinC, _groundEps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp] call FUNC(calculateBandRadiance));
 _fullSpan = _fullSpan max 1e-6;
 // Published so the display pass can convert the radiance window to its
 // equivalent temperature span for the FPN amplitude (fnc_applyThermalVision).

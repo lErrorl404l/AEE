@@ -23,6 +23,7 @@ barrel rendered black in WHOT and the display flipped with polarity
 BHOT' report).
 """
 
+import math
 import re
 import sys
 import unittest
@@ -122,17 +123,22 @@ class TestVisualPipelineTripleAudit(unittest.TestCase):
         self.assertGreater(b_hot, 0.9)
         self.assertLess(b_cold, 0.1)
 
-    def test_sim_cc_output_not_clipped(self):
-        # The neutral CC must not clip to pure white/black for the scene.
+    def test_sim_cc_output_is_monotone_and_finite(self):
+        # The neutral CC must not invert the scene: luminance rises with the
+        # band position.  The coldest scene object keeps a visible floor.
+        lums = []
         for t in (5, 32, 120):
             rad = planck_band_radiance(t, 0.92)
             b = agc_map(
                 rad, planck_band_radiance(5, 0.92), planck_band_radiance(120, 0.92)
             )
             whot = colour_correction(heat_colour(b), CC_NEUTRAL)
-            l = lum(whot)
-            self.assertGreater(l, 0.1)
-            self.assertLess(l, 0.95)
+            lums.append(lum(whot))
+        for level in lums:
+            self.assertTrue(math.isfinite(level))
+            self.assertGreaterEqual(level, 0.0)
+        self.assertEqual(lums, sorted(lums))
+        self.assertGreater(lums[0], 0.1)
 
     # ─── 3. Regression locks ─────────────────────────────────────────────
     def test_regression_negative_matrix_gone(self):

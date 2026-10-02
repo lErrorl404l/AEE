@@ -8,7 +8,7 @@ against the expected physics BEFORE testing in game.
 Pipeline modelled (matches fnc_applyThermalVision.sqf +
 fnc_applySelectionThermal.sqf):
   1. Per-selection heat brightness _b (0..1) from the physics solve.
-  2. Heat-colour texture: WHOT-red base [1, 0.10, 0.20] * _qb.
+  2. Continuous palette texture: the ember ramp at the AGC position.
   3. ColorCorrections (the ppEffectAdjust matrix): the rendered image
      is the heat-colour texture mapped through the CC.
   4. ColorInversion (BHOT): [1,1,1] inverts each channel when
@@ -25,7 +25,6 @@ report).  The corrected tint [0.33,0.33,0.33] is neutral.
 """
 
 import argparse
-import math
 import sys
 
 
@@ -54,10 +53,45 @@ CC_NEGATIVE = {
 
 
 # ─── The heat-colour paint (fnc_applySelectionThermal) ────────────────────
-def heat_colour(b: float) -> tuple:
-    """The WHOT-red procedural texture colour for brightness b."""
-    qb = round(b * 31) / 31.0  # 32-level quantisation
-    return (1.0 * qb, 0.10 * qb, 0.20 * qb)
+# Continuous ember ramp from fnc_thermalPalette.sqf.  The control points are
+# the engine's own decoded TI colours (engine-thermal-mechanisms.md):
+#   default_vehicle_ti (145,46,0) = (0.5686,0.1804,0), default_ti = (1,0,0).
+PALETTE_EMBER = [
+    (0.00, (0.0, 0.0, 0.0)),
+    (0.35, (0.3618, 0.1148, 0.0)),
+    (0.55, (0.5686, 0.1804, 0.0)),
+    (0.85, (1.0, 0.0, 0.0)),
+    (1.00, (1.0, 1.0, 1.0)),
+]
+PALETTE_GREY = [(0.0, (0.0, 0.0, 0.0)), (1.0, (1.0, 1.0, 1.0))]
+
+
+def _palette(n: float, points: list) -> tuple:
+    """Piecewise-linear interpolation between [position, [r, g, b]] points."""
+    n = min(1.0, max(0.0, n))
+    lo = points[0]
+    hi = points[-1]
+    for p in points:
+        if n >= p[0]:
+            lo = p
+    for p in points:
+        if n <= p[0]:
+            hi = p
+            break
+    span = max(hi[0] - lo[0], 1e-6)
+    f = min(1.0, max(0.0, (n - lo[0]) / span))
+    return tuple(lo[1][i] + (hi[1][i] - lo[1][i]) * f for i in range(3))
+
+
+def heat_colour(b: float, palette_index: int = 0, polarity: int = 0) -> tuple:
+    """The continuous thermal texture colour for band position b (0..1).
+
+    palette_index 0 = ember (default), 1 = grey.  polarity 1 reverses the ramp
+    (black hot), mirroring fnc_thermalPalette.
+    """
+    qb = round(b * 254) / 254.0  # 255-level quantisation
+    points = PALETTE_GREY if palette_index == 1 else PALETTE_EMBER
+    return _palette((1.0 - qb) if polarity == 1 else qb, points)
 
 
 # ─── The ColourCorrections ppEffectAdjust (documented BIKI math) ──────────
@@ -157,19 +191,22 @@ def main() -> int:
     # render bright in WHOT and dark in BHOT.
     print("\n=== assertion (current matrix, WHOT polarity) ===")
     ok = True
+    pairs = []
     for name, b in SCENE.items():
         tex = heat_colour(b)
         whot = colour_correction(tex, CC_NEUTRAL)
         lw = luminance(whot)
-        expected = b > 0.5  # hot = bright in WHOT
-        got = lw > 0.5
-        status = "OK" if got == expected else "FAIL"
-        if got != expected:
-            ok = False
-        print(
-            f"  {name:24} b={b:.2f} lum={lw:.2f} "
-            f"expected_bright={expected} got={got} {status}"
-        )
+        pairs.append((b, lw))
+        print(f"  {name:24} b={b:.2f} lum={lw:.2f}")
+    # The display must be monotone: a hotter object never renders darker in
+    # WHOT, and the hottest renders brighter than the coldest.
+    ordered = [lw for _, lw in sorted(pairs)]
+    if ordered != sorted(ordered):
+        ok = False
+        print("  FAIL: WHOT luminance is not monotone in b")
+    if ordered[-1] <= ordered[0]:
+        ok = False
+        print("  FAIL: the hot object is not brighter than the cold object")
     return 0 if ok else 1
 
 
