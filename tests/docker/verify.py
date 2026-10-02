@@ -115,6 +115,8 @@ _probe_expected = (
     "[P73] [PASS]",
     "[P74] [PASS]",
     "[P75] [PASS]",
+    "[P76] [PASS]",
+    "[P77] [PASS]",
 )
 _probe_missing = [m for m in _probe_expected if m not in text]
 if _probe_missing:
@@ -122,7 +124,11 @@ if _probe_missing:
     for m in _probe_missing:
         print(f"  missing: {m}")
 _probe_failed = sorted(
-    set(re.findall(r"\[P(?:64|65|66|68|69|70|71|72|73|74|75)\] \[FAIL\][^\n]*", text))
+    set(
+        re.findall(
+            r"\[P(?:64|65|66|68|69|70|71|72|73|74|75|76|77)\] \[FAIL\][^\n]*", text
+        )
+    )
 )
 if _probe_failed:
     print(f"mission probes: {len(_probe_failed)} failed")

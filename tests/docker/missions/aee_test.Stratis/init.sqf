@@ -3002,6 +3002,13 @@ private _p29Pass = 0;
     execVM "aee_p74_w2_probe.sqf";
     // PHASE 75 asserts the wet grip force decelerates a moving crewed vehicle.
     execVM "aee_p75_drive_probe.sqf";
+    // PHASE 76 reads the ungated thermal selection kernels (discovery, lag,
+    // palette) and the wheel geometry directly, because the paint path is
+    // client-gated and the kernels emit no log.
+    execVM "aee_p76_thermal_probe.sqf";
+    // PHASE 77 reads the classifier directly and asserts a spawned soldier
+    // resolves to the none sentinel, because the classifier emits no log.
+    execVM "aee_p77_soldier_not_vehicle_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.
