@@ -42,11 +42,15 @@ REAL_SOURCE_TYPES = frozenset(
 # The class-map grade set per schema section 7.
 CLASS_MAP_GRADES = frozenset({"documented", "claimed"})
 
-# The vehicle types the runtime projection supports.
-VEHICLE_TYPES = frozenset({"wheeled", "tracked"})
+# The vehicle families the runtime projection supports. ``wheeled`` and
+# ``tracked`` are the ground families and carry the NRMM inputs. ``air`` and
+# ``sea`` are the flight and maritime families and carry the identity
+# geometry only: the ground couplings are land-specific and are not forced
+# onto them.
+VEHICLE_TYPES = frozenset({"wheeled", "tracked", "air", "sea"})
 
 # The fixed unit of every runtime field. The wider field vocabulary lives in
-# the validator; these are the seven NRMM inputs only.
+# the validator; these are the projected runtime inputs.
 RUNTIME_FIELD_UNITS: dict[str, str] = {
     "operating_weight_kg": "kg",
     "tyre_width_mm": "mm",
@@ -57,10 +61,15 @@ RUNTIME_FIELD_UNITS: dict[str, str] = {
     "grousers_state": "enum",
     "track_shoe_width_mm": "mm",
     "track_pitch_mm": "mm",
+    "length_mm": "mm",
+    "width_mm": "mm",
+    "height_mm": "mm",
 }
 
-# The seven NRMM inputs per vehicle type, in projection order. A tracked set
-# carries the two track fields. It never requires a tyre field.
+# The runtime inputs per vehicle family, in projection order. A wheeled set
+# carries the two tyre fields. A tracked set carries the two track fields.
+# An air or sea set carries the identity geometry only. The ground couplings
+# are land-specific, so the NRMM inputs are not forced onto air or sea.
 REQUIRED_RUNTIME_BY_TYPE: dict[str, tuple[str, ...]] = {
     "wheeled": (
         "operating_weight_kg",
@@ -79,6 +88,18 @@ REQUIRED_RUNTIME_BY_TYPE: dict[str, tuple[str, ...]] = {
         "net_power_kw",
         "transmission_type",
         "grousers_state",
+    ),
+    "air": (
+        "operating_weight_kg",
+        "length_mm",
+        "width_mm",
+        "height_mm",
+    ),
+    "sea": (
+        "operating_weight_kg",
+        "length_mm",
+        "width_mm",
+        "height_mm",
     ),
 }
 

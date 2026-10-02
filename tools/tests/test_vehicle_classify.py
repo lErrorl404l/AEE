@@ -72,6 +72,11 @@ GROUND_TOKENS = (
     "Wheeled_APC_F",
 )
 
+# The engine air and sea family tokens. A class reaches one family only, so
+# these follow the ground tokens without reorder.
+AIR_TOKENS = ("Helicopter", "Plane")
+SEA_TOKENS = ("Ship",)
+
 
 def table_body(text: str = BANDS) -> str:
     """Return the rendered band rows between the assignment and the close."""
@@ -464,9 +469,12 @@ class ClassifierSourceTest(unittest.TestCase):
             self.assertIn(token, CLASSIFY)
 
     def test_the_token_order_is_most_specific_first(self) -> None:
-        block = CLASSIFY.index("private _groundTokens = [")
+        block = CLASSIFY.index("private _vehicleTokens = [")
         tail = CLASSIFY[block:]
-        positions = [tail.index(f'"{token}"') for token in GROUND_TOKENS]
+        positions = [
+            tail.index(f'"{token}"')
+            for token in GROUND_TOKENS + AIR_TOKENS + SEA_TOKENS
+        ]
         self.assertEqual(positions, sorted(positions))
 
     def test_the_classifier_reads_the_live_properties(self) -> None:
@@ -559,8 +567,22 @@ class BandTableFunctionTest(unittest.TestCase):
 class NonVehicleGuardTest(unittest.TestCase):
     """A non-vehicle resolves to none; the equipment path is not gated."""
 
-    def test_the_classifier_gates_on_the_ground_vehicle_root(self) -> None:
-        self.assertIn('if !(_vehicle isKindOf "LandVehicle") exitWith {', CLASSIFY)
+    def test_the_classifier_gates_on_the_three_vehicle_roots(self) -> None:
+        # Land, air and sea are the three engine vehicle families. A person,
+        # a building, an animal or a static weapon is none of the three.
+        for token in ("LandVehicle", "Air", "Ship"):
+            self.assertIn(f'_vehicle isKindOf "{token}"', CLASSIFY)
+        self.assertIn("if !(_isLand || _isAir || _isSea) exitWith {", CLASSIFY)
+
+    def test_the_classifier_never_admits_a_person(self) -> None:
+        # CAManBase is the root of a soldier and an animal. It is not one of
+        # the three vehicle roots, so the family gate resolves it to none.
+        self.assertNotIn('_vehicle isKindOf "CAManBase"', CLASSIFY)
+        self.assertNotIn('_vehicle isKindOf "Man"', CLASSIFY)
+
+    def test_the_air_and_sea_token_routes_are_present(self) -> None:
+        for token in AIR_TOKENS + SEA_TOKENS:
+            self.assertIn(f'"{token}"', CLASSIFY, f"{token} has no token route")
 
     def test_a_person_would_band_match_without_the_guard(self) -> None:
         # A light synthetic row stands in for the catalogue's lightest
