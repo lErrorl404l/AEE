@@ -51,3 +51,37 @@ AEE_SETTING_SLIDER(objectScanInterval,"AEE Thermal","Solver",0,120,30,0);
 // 1 repaints every frame, 30 repaints about twice a second. The physics still
 // solves every pass, so the AGC and every thermal coupling are unaffected.
 AEE_SETTING_SLIDER(repaintHz,"AEE Thermal","Display",1,30,4,1);
+
+// ── Display mapping (issue #204 rework) ───────────────────────────────────
+// The display carries one scalar per pixel.  Automatic mode uses the scene
+// AGC (fnc_updateThermalAGC).  Manual mode uses the fixed window below.
+// Real thermography and TWS devices expose manual level and span, so manual
+// is physical.  The device library publishes NETD, resolution and refresh
+// rate, but NO span, so the span is a user setting.
+[
+    QGVAR(thermalDisplayMode),
+    "LIST",
+    [LLSTRING(thermalDisplayMode_Name), LLSTRING(thermalDisplayMode_Description)],
+    ["AEE Thermal", "Display"],
+    [[0, 1], ["Automatic (AGC)", "Manual"], 0],
+    true,
+    {}
+] call CBA_fnc_addSetting;
+
+// The palette.  Ember is the default: it interpolates the engine's own
+// decoded TI colours (fnc_thermalPalette).  Grey is the luminance form.
+[
+    QGVAR(thermalPalette),
+    "LIST",
+    [LLSTRING(thermalPalette_Name), LLSTRING(thermalPalette_Description)],
+    ["AEE Thermal", "Display"],
+    [[0, 1], ["Ember", "White hot grey"], 0],
+    true,
+    {}
+] call CBA_fnc_addSetting;
+
+// Manual window, in apparent surface temperature (C).  Wide by design so
+// fires and exhaust stay on scale.  The code swaps the endpoints when the
+// maximum is not above the minimum.
+AEE_SETTING_SLIDER(thermalManualMinC,"AEE Thermal","Display",-80,200,-40,1);
+AEE_SETTING_SLIDER(thermalManualMaxC,"AEE Thermal","Display",-40,600,120,5);

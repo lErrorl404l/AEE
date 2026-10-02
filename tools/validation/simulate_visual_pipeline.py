@@ -32,6 +32,10 @@ from __future__ import annotations
 
 import math
 
+# The continuous palette lives in simulate_thermal_display so the two mirrors
+# cannot drift.  Re-exported here for this module's tests and audit.
+from simulate_thermal_display import heat_colour  # noqa: E402
+
 # ─── Physics constants ─────────────────────────────────────────────────────
 SIGMA = 5.670374419e-8  # Stefan-Boltzmann (W/m2K4)
 
@@ -93,10 +97,8 @@ def agc_map(
 
 
 # ─── Heat-colour texture (fnc_applySelectionThermal) ──────────────────────
-def heat_colour(b: float) -> tuple[float, float, float]:
-    """WHOT-red procedural texture colour for brightness b (0..1)."""
-    qb = round(b * 31) / 31.0  # 32-level quantisation
-    return (1.0 * qb, 0.10 * qb, 0.20 * qb)
+# heat_colour is imported from simulate_thermal_display (see the top of this
+# file): one continuous ember palette, mirrored from fnc_thermalPalette.sqf.
 
 
 # ─── ColorCorrections ─────────────────────────────────────────────────────

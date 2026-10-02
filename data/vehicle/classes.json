@@ -115,8 +115,8 @@
       "kind": "engine_base",
       "provenance": [
         "addons/mobility/functions/fnc_calculateTraction.sqf:54",
-        "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:242",
-        "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:319",
+        "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:241",
+        "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:318",
         "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:62"
       ],
       "token": "CAManBase"
