@@ -482,7 +482,8 @@ if (_mode == "EXIT") then {
         // per-selection temperature state this loop writes.  The window
         // is in RADIANCE units, so the selection's radiance maps through
         // it directly.
-        private _mat = ([_obj, _sel] call FUNC(getSelectionMaterials)) call FUNC(getMaterialThermal);
+        private _selMatClass = [_obj, _sel] call FUNC(getSelectionMaterials);
+        private _mat = _selMatClass call FUNC(getMaterialThermal);
         private _eps = _mat select 0;
         // Publish the selection's OWN emissivity for the AGC.  selTemperature
         // keeps its "object|selection" keys; this parallel map lets the AGC
@@ -576,10 +577,32 @@ if (_mode == "EXIT") then {
         // each time the value changes).
         private _levels = 32;
         private _qb = (round ((_b max 0 min 1) * (_levels - 1))) / (_levels - 1);
+        // ─── Per-material display colour (issue #204) ─────────────────────
+        // The band was applied as one hue for every part, so the material
+        // class the solve already carries (fnc_getSelectionMaterials: metal,
+        // glass, engine, rubber, ...) was discarded at the final step and a
+        // whole vehicle or uniform read as one flat colour.  The hue now
+        // comes from the engine's OWN thermal textures for the material,
+        // decoded in docs/wiki/research/engine-thermal-mechanisms.md:
+        //   default_ti_ca.paa          (255,0,0)  hot  - engine, human
+        //   default_vehicle_ti_ca.paa  (145,46,0) warm - panels, ground, rock
+        //   default_glass_ti_ca.paa    (0,0,0)    cold - glass, water
+        // The solver still sets the brightness: _qb is the AGC-normalised
+        // band radiance of THIS selection, already carrying its emissivity,
+        // so materials differ by hue and temperatures of one material differ
+        // by intensity.  No physics value is invented here.
+        private _baseHue = [0.5686, 0.1804, 0.0];   // default_vehicle_ti (145/255,46/255,0)
+        if (_selMatClass in ["engine", "human"]) then {
+            _baseHue = [1.0, 0.0, 0.0];              // default_ti (255,0,0)
+        } else {
+            if (_selMatClass in ["glass", "water"]) then {
+                _baseHue = [0.0, 0.0, 0.0];          // default_glass_ti (0,0,0)
+            };
+        };
         private _heatCol = [
-            1.0 * _qb,
-            0.10 * _qb,
-            0.20 * _qb
+            (_baseHue select 0) * _qb,
+            (_baseHue select 1) * _qb,
+            (_baseHue select 2) * _qb
         ];
         private _colour = format [
             "#(rgb,8,8,3)color(%1,%2,%3,1)",
