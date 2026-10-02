@@ -114,7 +114,7 @@ with evidence that names the concrete token. It exits 1 on an error.
 | `data/vehicle/COVERAGE_AUDIT.md` | coverage | Generated per-token coverage. |
 | `data/vehicle/SOURCE_GAPS.md` | coverage | Generated per-entry missing fields. |
 | `data/vehicle/CLASS_MAPPING_GAPS.md` | coverage | Generated unmapped classes and tokens. |
-| `data/vehicle/RESEARCH_GAPS.md` | entry | The hand-written lead register. |
+| `data/vehicle/RESEARCH_GAPS.md` | entry | The hand-written lead and data-gap register. |
 
 The `data/vehicle/fixtures/` layer holds a deliberate invalid pilot
 fixture. It is a negative-test and audit artefact. The validator must

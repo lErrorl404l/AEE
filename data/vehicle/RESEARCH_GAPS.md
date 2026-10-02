@@ -162,3 +162,39 @@ named. A maker page that already returned 403 or 404 is not retried.
   pitch in the held pages, so the two track fields stay absent.
 - `guarani`: the held manuals publish no overall dimensions, no engine
   and no ground clearance, so those four fields stay at grade claimed.
+
+## 8. Mud-accretion mass gap (W2)
+
+The W2 runtime coupling ships a snow-load mass and a wet and ice grip
+loss. It ships no mud-accretion mass. The omission is a documented
+answer, not an open question.
+
+- Finding. No published source gives the mud-accretion mass of an
+  armoured fighting vehicle. No published source gives a per-curb mass
+  fraction either.
+- Search. The search covered US technical and field manuals, UK MOD
+  publications and NATO publications. It covered terramechanics
+  journals, SAE Mobilus, the NRMM and NG-NRMM work, and the DTIC and
+  ERDC reports. It covered the agricultural tyre self-cleaning
+  literature. No source class gave a vehicle-level figure.
+- Nearest proxy. Fu, Li, Fu and Qiao (2023), "Development and
+  verification of adhesion models for track shoes operating on clay
+  soils", Biosystems Engineering 235:69-82, DOI
+  10.1016/j.biosystemseng.2023.09.009. The article is closed access.
+  The repository does not hold the paper, so the source registry does
+  not carry it. A secondary summary reports a normal adhesion force of
+  1.11 kPa. It reports an adhesive soil mass of 22.68 g per track shoe.
+  The test soils are clay loam, sandy loam and loamy clay. The figure
+  is not verified against the article body. It is a per-shoe laboratory
+  figure. It is not a vehicle mass and it is not a curb fraction.
+- Densities are not masses. Wet mud has a density of 1730 to 1840
+  kg/m3. The USDA bulk density is 1330 kg/m3. A density needs a volume
+  to give a mass. The repository holds no accreted-volume figure.
+- Grading. A future value from Fu et al. (2023) alone is a lead at
+  grade `claimed`. It reaches grade `documented` only when the held
+  article body is read. It never fills a curb weight or an operating
+  weight.
+- Next source class. A vehicle-level mud-accretion measurement is the
+  direct source. A terramechanics model that gives an accreted volume
+  for a tracked or a wheeled vehicle is the next best. A manufacturer
+  mud-pack mass or a cleaning specification is also a candidate.
