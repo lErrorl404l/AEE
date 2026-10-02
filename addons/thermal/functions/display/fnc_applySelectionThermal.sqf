@@ -281,17 +281,21 @@ if (_mode == "EXIT") then {
 
     private _uploaded = 0;
 
+    // Per-selection solar exposure for the whole object.  One shared resolver
+    // call, cached per class, so the model geometry is read once and not on
+    // this hot path.
+    private _exposureArr = [_obj, _selNames] call FUNC(getSelectionSunExposure);
+
     {
         private _sel = _x;
         private _idx = (selectionNames _obj) find _sel;
         if (_idx < 0) then { continue; };
 
-        // Shade exposure: roof/upper selections get full sun, lower panels
-        // less (self-shadow).  Refined by the object's existing shade ray.
-        private _exposure = 1;
-        if (_sel find "wheel" >= 0 || {_sel find "undercarriage" >= 0}) then {
-            _exposure = 0.15;   // tyres/undercarriage: mostly self-shadowed
-        };
+        // Solar exposure from the selection's surface orientation
+        // (fnc_getSelectionSunExposure): a part facing the sun gets more than
+        // a part in shade, and a roof gets more than a side.  The wheel and
+        // undercarriage floor is applied inside that resolver.
+        private _exposure = _exposureArr param [_forEachIndex, 1];
 
         // Current per-selection temperature from the object solver state.
         private _stateKey = format ["%1|%2", str _obj, _sel];
@@ -517,6 +521,27 @@ if (_mode == "EXIT") then {
         if ((_displayMode == 1) || !_agcValid) then {
             _agcMin = [_manMinC, _eps, _tAir, _fGround, _tCurrent, _tau, _tAir] call FUNC(calculateBandRadiance);
             _agcMax = [_manMaxC, _eps, _tAir, _fGround, _tCurrent, _tau, _tAir] call FUNC(calculateBandRadiance);
+        };
+        // Local display mode (2): replace the scene/manual window with this
+        // object's own selection window from fnc_updateThermalAGC.  It widens
+        // one object's internal contrast but breaks absolute ordering between
+        // objects, so it is opt-in and never the default.  The window already
+        // carries the 8x max-gain floor, so a flat object is not given
+        // invented contrast.  An absent window (cold start, or no solved
+        // selections yet) keeps the window resolved above.
+        if (_displayMode == 2) then {
+            private _objWindows = missionNamespace getVariable [QGVAR(objAgcRad), -1];
+            if !(_objWindows isEqualType 0) then {
+                private _oWin = _objWindows getOrDefault [_objKey, []];
+                if ((_oWin isEqualType []) && {(count _oWin) == 2}) then {
+                    private _oMin = _oWin select 0;
+                    private _oMax = _oWin select 1;
+                    if ((_oMin isEqualType 0) && (_oMax isEqualType 0) && (_oMin < _oMax)) then {
+                        _agcMin = _oMin;
+                        _agcMax = _oMax;
+                    };
+                };
+            };
         };
         private _b = ((_rad - _agcMin) / ((_agcMax - _agcMin) max 1e-6)) max 0 min 1;
         // Polarity (WHOT/BHOT) is applied by a ColorInversion ppEffect in

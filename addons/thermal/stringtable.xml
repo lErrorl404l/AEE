@@ -34,8 +34,8 @@
             <English>Thermal Diagnostics</English>
         </Key>
         <Key ID="STR_AEE_Thermal_thermalDisplayMode_Description">
-            <Original>Automatic follows the scene radiance histogram (AGC). Manual uses the fixed window below, like the level and span control on a real thermography or thermal weapon sight.</Original>
-            <English>Automatic follows the scene radiance histogram (AGC). Manual uses the fixed window below, like the level and span control on a real thermography or thermal weapon sight.</English>
+            <Original>Automatic follows the scene radiance histogram (AGC). Manual uses the fixed window below, like the level and span control on a real thermography or thermal weapon sight. Local normalises each object to its own selection range: it widens that object's internal contrast, but it breaks comparison between objects because a hot and a cold object can map to the same ramp. The local gain is capped at 8 times, so a flat object is not given invented contrast.</Original>
+            <English>Automatic follows the scene radiance histogram (AGC). Manual uses the fixed window below, like the level and span control on a real thermography or thermal weapon sight. Local normalises each object to its own selection range: it widens that object's internal contrast, but it breaks comparison between objects because a hot and a cold object can map to the same ramp. The local gain is capped at 8 times, so a flat object is not given invented contrast.</English>
         </Key>
         <Key ID="STR_AEE_Thermal_thermalDisplayMode_Name">
             <Original>Thermal Display Mode</Original>

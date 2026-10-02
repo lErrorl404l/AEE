@@ -585,6 +585,35 @@ def agc_ema(prev, target, dt, tau=1.5):
     return prev + (target - prev) * a
 
 
+LOCAL_MAX_GAIN = 8.0
+
+
+def window_with_gain_floor(rads, full_span, max_gain=LOCAL_MAX_GAIN):
+    """Scene and per-object window: min..max, floored to full_span/max_gain.
+
+    Mirror of the window in fnc_updateThermalAGC.  The real scene path
+    tail-cuts 1 percent before this, but the cut is below one sample for the
+    few dozen samples a scene or a vehicle carries, so the documented no-op
+    form is min..max.  Local mode applies the SAME floor per object, so an
+    object whose spread is under full_span/max_gain is stretched by at most
+    max_gain and a flat object is not invented into full contrast.
+    """
+    lo = min(rads)
+    hi = max(rads)
+    if hi <= lo:
+        lo, hi = lo * 0.999, hi * 1.001
+    if (hi - lo) < (full_span / max_gain):
+        mid = (lo + hi) / 2.0
+        half = (full_span / max_gain) / 2.0
+        lo, hi = mid - half, mid + half
+    return lo, hi
+
+
+def window_position(rad, lo, hi):
+    """Mirror of the display mapping _b = (rad - lo) / (hi - lo), clamped."""
+    return min(1.0, max(0.0, (rad - lo) / max(hi - lo, 1e-6)))
+
+
 def eye_state_position(eye, cam_dir, offset=0.1):
     """Mirror of the shared eye-state placement used by eye-space systems.
 
@@ -747,6 +776,42 @@ def selection_thermal_lag(positions, source):
     if peak <= 0:
         return [0.0 for _ in dists]
     return [max(0.0, min(1.0, d / peak)) for d in dists]
+
+
+def selection_sun_exposure(positions, centre, sun_az_deg, sun_elev_deg, names):
+    """Mirror of fnc_getSelectionSunExposure.
+
+    The outward direction is a PROXY: the unit vector from the object's
+    bounding centre to the selection's model-space point, not a true surface
+    normal.  The core flux is the horizontal-plane irradiance
+    G = G0 * sin(elevation), so the exposure is
+    cos(incidence) / sin(elevation), clamped 0..1.  A selection with no
+    resolved point keeps 1.0.  The wheel/undercarriage floor is 0.15.
+
+    The synthetic object is unrotated, so model axes equal world axes.
+    """
+    az = math.radians(sun_az_deg)
+    elev = math.radians(sun_elev_deg)
+    cos_e = math.cos(elev)
+    sin_e = math.sin(elev)
+    sun_world = (math.sin(az) * cos_e, math.cos(az) * cos_e, sin_e)
+    exposures = []
+    for pos, name in zip(positions, names):
+        off = (pos[0] - centre[0], pos[1] - centre[1], pos[2] - centre[2])
+        mag = math.sqrt(off[0] ** 2 + off[1] ** 2 + off[2] ** 2)
+        n = (
+            (off[0] / mag, off[1] / mag, off[2] / mag)
+            if mag > 1e-3
+            else (0.0, 0.0, 0.0)
+        )
+        exp = 1.0
+        if sin_e > 0 and n != (0.0, 0.0, 0.0):
+            dot = n[0] * sun_world[0] + n[1] * sun_world[1] + n[2] * sun_world[2]
+            exp = min(1.0, dot / sin_e) if dot > 0 else 0.0
+        if "wheel" in name or "undercarriage" in name:
+            exp = max(exp, 0.15)
+        exposures.append(exp)
+    return exposures
 
 
 # ─── Thermal crossover mirror (fnc_calculateThermalCrossover.sqf) ──────────
@@ -2107,6 +2172,105 @@ class TestSelectionThermalTexture(unittest.TestCase):
         self.assertNotIn("ColorInversion", code)
         vision = _code_only(_read_sqf("fnc_applyThermalVision.sqf", addon="thermal"))
         self.assertIn('"ColorInversion"', vision)
+
+
+class TestLocalDisplayMode(unittest.TestCase):
+    """Local display mode: per-object normalisation with a hard gain cap.
+
+    Local widens ONE object's internal contrast by mapping its own selection
+    radiances onto the palette.  That destroys absolute ordering between
+    objects, so it is opt-in and never the default.  The 8x max-gain floor
+    of the scene AGC still applies per object, so a flat object is not
+    invented into full contrast.
+    """
+
+    FULL_SPAN = 800.0  # display span, in radiance units
+    SCENE_WINDOW = (100.0, 500.0)  # a wide scene, spread 400 (> cap 100)
+
+    def test_local_widens_a_narrow_object(self):
+        # The object spans 60/400 of the scene -> 0.15 of the palette in
+        # Automatic.  Its own window is floored to 100 -> 0.60 in Local.
+        rads = [200.0, 220.0, 240.0, 260.0]
+        scene_lo, scene_hi = self.SCENE_WINDOW
+        auto = [window_position(r, scene_lo, scene_hi) for r in rads]
+        obj_lo, obj_hi = window_with_gain_floor(rads, self.FULL_SPAN)
+        local = [window_position(r, obj_lo, obj_hi) for r in rads]
+        self.assertLess(max(auto) - min(auto), max(local) - min(local))
+        self.assertAlmostEqual(max(local) - min(local), 60.0 / 100.0, places=6)
+
+    def test_gain_cap_holds_on_a_flat_object(self):
+        # A spread of 2 units is under full_span/8 = 100, so the window is
+        # expanded to exactly 100.  The gain relative to the full display
+        # span is exactly 8: the cap is not removed for Local.
+        rads = [300.0, 301.0, 302.0]
+        lo, hi = window_with_gain_floor(rads, self.FULL_SPAN)
+        self.assertAlmostEqual(hi - lo, self.FULL_SPAN / 8.0, places=6)
+        self.assertAlmostEqual(self.FULL_SPAN / (hi - lo), 8.0, places=6)
+        # The parts still occupy only a few percent of the DISPLAY span: a
+        # flat object is not invented into full contrast.
+        self.assertLess((max(rads) - min(rads)) / self.FULL_SPAN, 0.01)
+
+    def test_dead_flat_object_is_defined_and_capped(self):
+        rads = [250.0, 250.0, 250.0]
+        lo, hi = window_with_gain_floor(rads, self.FULL_SPAN)
+        self.assertGreater(hi, lo)
+        self.assertLessEqual(hi - lo, self.FULL_SPAN / 8.0 + 1e-6)
+
+    def test_automatic_mapping_is_unchanged(self):
+        # The scene window math: min..max with the same cap, no per-object
+        # grouping.  A wide scene is untouched by the cap.
+        rads = [120.0, 260.0, 480.0]
+        lo, hi = window_with_gain_floor(rads, self.FULL_SPAN)
+        self.assertEqual((lo, hi), (120.0, 480.0))
+
+    def test_manual_mode_is_unchanged(self):
+        # Manual maps through the configured endpoints, gated on mode 1,
+        # independently of any object window.
+        code = _selection_thermal_code()
+        self.assertIn("if ((_displayMode == 1) || !_agcValid) then", code)
+        self.assertIn("_manMinC", code)
+        self.assertIn("_manMaxC", code)
+
+    def test_default_is_still_automatic(self):
+        settings = (
+            _REPO_ROOT / "addons" / "thermal" / "initSettings.inc.sqf"
+        ).read_text(encoding="utf-8")
+        m = re.search(
+            r"QGVAR\(thermalDisplayMode\).*?\[\[([^\]]+)\],\s*"
+            r"\[([^\]]+)\],\s*(\d+)\]",
+            settings,
+            re.DOTALL,
+        )
+        self.assertIsNotNone(m, "thermalDisplayMode LIST is missing")
+        values = [v.strip().strip('"') for v in m.group(2).split(",")]
+        self.assertEqual(values[0], "Automatic (AGC)")
+        self.assertEqual(int(m.group(3)), 0, "default must stay Automatic")
+        self.assertTrue(any(v.startswith("Local") for v in values), values)
+
+    def test_sqf_publishes_and_reads_the_object_window(self):
+        agc = _code_only(_read_sqf("fnc_updateThermalAGC.sqf", addon="thermal"))
+        self.assertIn("QGVAR(objAgcRad)", agc)
+        self.assertIn("_fullSpan / 8", agc)
+        self.assertIn("splitString", agc)
+        sel = _selection_thermal_code()
+        self.assertIn("_displayMode == 2", sel)
+        self.assertIn("QGVAR(objAgcRad)", sel)
+
+    def test_description_states_the_trade_and_the_cap(self):
+        table = (_REPO_ROOT / "addons" / "thermal" / "stringtable.xml").read_text(
+            encoding="utf-8"
+        )
+        m = re.search(
+            r"STR_AEE_Thermal_thermalDisplayMode_Description.*?"
+            r"<English>(.*?)</English>",
+            table,
+            re.DOTALL,
+        )
+        self.assertIsNotNone(m, "display mode description is missing")
+        desc = m.group(1)
+        self.assertIn("Local", desc)
+        self.assertIn("comparison between objects", desc)
+        self.assertIn("8", desc)
 
 
 class TestBuildingThermal(unittest.TestCase):
@@ -5350,3 +5514,72 @@ def _sqf_block(text, header):
             if depth == 0:
                 return text[start + 1 : pos]
     raise AssertionError(f"unterminated block after: {header}")
+
+
+class TestSelectionSunExposure(unittest.TestCase):
+    """Per-selection solar exposure from the surface orientation.
+
+    The outward direction is a proxy (a memory point or selection centre
+    against the bounding centre), so the test proves only the ordering the
+    geometry can support: a roof above a side, a sun-facing side above a
+    shaded side, and the wheel floor.
+    """
+
+    def test_top_is_warmer_than_side_at_high_sun(self):
+        # Synthetic vehicle: roof above the centre, an east side, a west
+        # side, and a wheel below the centre.
+        centre = (0.0, 0.0, 1.0)
+        positions = [
+            (0.0, 0.0, 2.2),
+            (1.4, 0.0, 1.0),
+            (-1.4, 0.0, 1.0),
+            (0.8, 0.0, 0.2),
+        ]
+        names = ["camo_roof", "camo_side_r", "camo_side_l", "wheel_1_1"]
+        # Sun in the east (azimuth 90) and high (elevation 70).
+        roof, sun_side, shade_side, wheel = selection_sun_exposure(
+            positions, centre, 90.0, 70.0, names
+        )
+        self.assertGreater(roof, sun_side)
+        self.assertGreater(sun_side, shade_side)
+        self.assertAlmostEqual(roof, 1.0, places=6)
+        self.assertAlmostEqual(shade_side, 0.0, places=6)
+        self.assertAlmostEqual(wheel, 0.15, places=6)
+
+    def test_wheel_floor_still_applies(self):
+        # A wheel point below the centre faces down: the geometric exposure
+        # is zero, and the old low value stays as the floor.
+        centre = (0.0, 0.0, 1.0)
+        e = selection_sun_exposure(
+            [(0.0, 0.0, 0.0)], centre, 90.0, 70.0, ["undercarriage_1"]
+        )
+        self.assertAlmostEqual(e[0], 0.15, places=6)
+
+    def test_unresolved_point_keeps_neutral(self):
+        # No resolvable point -> neutral 1.0, the old value.  No spread is
+        # invented for geometry the model does not carry.
+        centre = (0.0, 0.0, 1.0)
+        e = selection_sun_exposure([(0.0, 0.0, 1.0)], centre, 90.0, 70.0, ["camo1"])
+        self.assertAlmostEqual(e[0], 1.0, places=6)
+
+    def test_sqf_wiring(self):
+        text = _read_sqf("fnc_getSelectionSunExposure.sqf", "thermal")
+        for frag in (
+            "boundingCenter",
+            "currentSunAzimuth",
+            "currentSunElevation",
+            "vectorDotProduct",
+            "vectorCrossProduct",
+            "_dot / _sinElev",
+            "_exp max 0.15",
+            "selSunDirCache",
+            "vectorDiff",
+        ):
+            self.assertIn(frag, text)
+        caller = _read_sqf("fnc_applySelectionThermal.sqf", "thermal")
+        self.assertIn("FUNC(getSelectionSunExposure)", caller)
+        self.assertIn("_exposureArr param [_forEachIndex, 1]", caller)
+        prep = (_REPO_ROOT / "addons" / "thermal" / "XEH_PREP.hpp").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("getSelectionSunExposure", prep)

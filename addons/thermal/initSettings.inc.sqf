@@ -58,12 +58,19 @@ AEE_SETTING_SLIDER(repaintHz,"AEE Thermal","Display",1,30,4,1);
 // Real thermography and TWS devices expose manual level and span, so manual
 // is physical.  The device library publishes NETD, resolution and refresh
 // rate, but NO span, so the span is a user setting.
+//
+// Local mode normalises ONE object to its own selection radiance range, so
+// that object's parts span the full palette.  It widens one object's
+// contrast but breaks comparison between objects (a hot and a cold object
+// can map to the same ramp), so it is opt-in and never the default.  A
+// per-object gain cap of 8 times still applies, so a flat object is not
+// inflated into invented contrast.
 [
     QGVAR(thermalDisplayMode),
     "LIST",
     [LLSTRING(thermalDisplayMode_Name), LLSTRING(thermalDisplayMode_Description)],
     ["AEE Thermal", "Display"],
-    [[0, 1], ["Automatic (AGC)", "Manual"], 0],
+    [[0, 1, 2], ["Automatic (AGC)", "Manual", "Local (per object)"], 0],
     true,
     {}
 ] call CBA_fnc_addSetting;

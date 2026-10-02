@@ -87,19 +87,18 @@ if (_source isEqualTo [0, 0, 0]) then {
 };
 
 // ─── Per-selection distance, normalised to the widest ────────────────────
+// The model points come from the shared per-class cache
+// (fnc_getThermalSelectionPoints), so the model is walked once per class
+// however many sources ask for a part position.
+private _points = [_veh, _selNames] call FUNC(getThermalSelectionPoints);
 private _distances = [];
 private _maxDistance = 0;
 {
-    private _pos = _veh selectionPosition [_x, "Memory"];
-    if (!(_pos isEqualType []) || {count _pos != 3}) then { _pos = [0, 0, 0]; };
-    if ((_pos isEqualTo [0, 0, 0]) && (_x != "")) then {
-        _pos = _veh selectionPosition _x;
-        if (!(_pos isEqualType []) || {count _pos != 3}) then { _pos = [0, 0, 0]; };
-    };
+    private _pos = _x;
     private _d = _pos distance _source;
     _distances pushBack _d;
     if (_d > _maxDistance) then { _maxDistance = _d; };
-} forEach _selNames;
+} forEach _points;
 
 // A source that never resolved leaves every distance equal, so every lag is
 // 0 - the parts stay uniform.  No spread is invented.
