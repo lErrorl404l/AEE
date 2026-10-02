@@ -372,3 +372,7 @@ registered.
 | `aee_core_tempLapseRateEnabled` | CHECKBOX | `true` | core | Enable elevation-based temperature lapse rate (standard atmosphere ~6.5 °C/km) |
 | `aee_core_tempLapseRate` | SLIDER | `6.5` | core | Temperature lapse rate in °C per 1000 m (default: 6.5 °C/km, ICAO standard) |
 | `aee_core_tempDiurnalEnabled` | CHECKBOX | `true` | core | Enable diurnal temperature variation based on solar elevation angle |
+| `aee_thermal_thermalDisplayMode` | LIST | `0` | thermal | Thermal display window: `0` automatic scene AGC, `1` manual fixed window |
+| `aee_thermal_thermalPalette` | LIST | `0` | thermal | Thermal display palette: `0` ember, which interpolates the engine's own thermal colours, `1` white hot grey |
+| `aee_thermal_thermalManualMinC` | SLIDER | `-40` | thermal | Manual window lower bound in C. The device library publishes no span, so the span is a setting |
+| `aee_thermal_thermalManualMaxC` | SLIDER | `120` | thermal | Manual window upper bound in C. Wide by design so fires and exhaust stay on scale |
