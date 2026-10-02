@@ -44,6 +44,7 @@ PREPS(display,getThermalNestedObjects);
 PREPS(display,getThermalSelectionLag);
 PREPS(display,getThermalSelectionPoints);
 PREPS(display,getThermalSelectionNames);
+PREPS(display,resolveSelectionPaintIndex);
 PREPS(display,getNearestSelection);
 PREPS(display,getSelectionSunExposure);
 PREPS(display,thermalPalette);

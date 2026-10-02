@@ -288,7 +288,7 @@ if (_mode == "EXIT") then {
 
     {
         private _sel = _x;
-        private _idx = (selectionNames _obj) find _sel;
+        private _idx = [_obj, _sel] call FUNC(resolveSelectionPaintIndex);
         if (_idx < 0) then { continue; };
 
         // Solar exposure from the selection's surface orientation
