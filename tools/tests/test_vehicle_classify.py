@@ -38,10 +38,14 @@ CLASSIFY_PATH = FUNCTIONS / "fnc_classifyVehicle.sqf"
 WRAPPER_PATH = FUNCTIONS / "fnc_estimateVehicleMass.sqf"
 TRACTION_PATH = FUNCTIONS / "fnc_calculateTraction.sqf"
 PREP_PATH = REPO / "addons" / "mobility" / "XEH_PREP.hpp"
+EQUIPMENT_PATH = (
+    REPO / "addons" / "physiology" / "functions" / "clothing" / "fnc_getItemMass.sqf"
+)
 
 BANDS = BANDS_PATH.read_text(encoding="utf-8")
 CLASSIFY = CLASSIFY_PATH.read_text(encoding="utf-8")
 TRACTION = TRACTION_PATH.read_text(encoding="utf-8")
+EQUIPMENT = EQUIPMENT_PATH.read_text(encoding="utf-8")
 
 # The seven band columns.
 BAND_COLUMNS = 7
@@ -120,10 +124,14 @@ def select_band(
     width_mm: float,
     height_mm: float,
     is_emplacement: bool = False,
+    is_non_vehicle: bool = False,
 ) -> list[object] | None:
     """Mirror the SQF band selection: type, then nearest mass, then extent.
 
-    An emplacement selects nothing: a static weapon is not a vehicle. A zero
+    A non-vehicle selects nothing. In the SQF the classifier exits before
+    every route when the class is not a LandVehicle, so a soldier, a
+    building, an animal, an aircraft or a ship never reaches the band. An
+    emplacement selects nothing: a static weapon is not a vehicle. A zero
     mass selects nothing, because the engine mass is the selector and a zero
     means it was not read. The live tracked flag must agree with the row. The
     nearest weight must stand out: two distinct held weights at the same
@@ -132,7 +140,7 @@ def select_band(
     weight tie. A tie at the extent selects no row, so the classifier never
     guesses between two catalogue entries.
     """
-    if is_emplacement or mass_kg <= 0:
+    if is_emplacement or is_non_vehicle or mass_kg <= 0:
         return None
     typed = [row for row in rows if row[COL_TYPE] == vehicle_type and row[COL_MASS] > 0]
     if not typed:
@@ -202,6 +210,29 @@ def classify_tracked(tokens: set[str]) -> bool:
 def select_mu(is_tracked: bool, wheeled_mu: float, tracked_mu: float) -> float:
     """Mirror of the traction selector: [wheeled, tracked] select isTracked."""
     return tracked_mu if is_tracked else wheeled_mu
+
+
+def equipment_rows(text: str = EQUIPMENT) -> list[list[object]]:
+    """Parse the committed equipment item-mass table. SQF arrays are literals."""
+    match = re.search(r"private _TABLE = \[(.*?)\n\];", text, re.S)
+    if match is None:
+        raise AssertionError("the equipment item-mass table is missing")
+    parsed = ast.literal_eval("[" + match.group(1) + "]")
+    assert isinstance(parsed, list)
+    return parsed
+
+
+def equipment_mass(item: str) -> float:
+    """Mirror of the keyword match in fnc_getItemMass.sqf.
+
+    The first family keyword found in the lower-cased classname wins. This is
+    the soldier's equipment path, separate from the vehicle classifier.
+    """
+    hay = item.lower()
+    for family, _category, mass, _rows in equipment_rows():
+        if str(family) in hay:
+            return float(mass)
+    return 0.0
 
 
 class GeneratedBandTableTest(unittest.TestCase):
@@ -523,6 +554,48 @@ class BandTableFunctionTest(unittest.TestCase):
         body = BANDS.split("*/", 1)[-1]
         for token in ("if (", "forEach", "call ", "params", "isKindOf"):
             self.assertNotIn(token, body, f"the band table holds {token}")
+
+
+class NonVehicleGuardTest(unittest.TestCase):
+    """A non-vehicle resolves to none; the equipment path is not gated."""
+
+    def test_the_classifier_gates_on_the_ground_vehicle_root(self) -> None:
+        self.assertIn('if !(_vehicle isKindOf "LandVehicle") exitWith {', CLASSIFY)
+
+    def test_a_person_would_band_match_without_the_guard(self) -> None:
+        # A light synthetic row stands in for the catalogue's lightest
+        # wheeled entry. A man's own engine mass reaches it; the guard stops
+        # the man before the band route.
+        rows = [
+            row(
+                "light",
+                vehicle_type="wheeled",
+                mass=80,
+                length=600,
+                width=500,
+                height=1800,
+            )
+        ]
+        self.assertIsNotNone(select_band(rows, "wheeled", 85, 600, 500, 1800))
+        self.assertIsNone(
+            select_band(rows, "wheeled", 85, 600, 500, 1800, is_non_vehicle=True)
+        )
+
+    def test_a_man_selects_no_real_band_row(self) -> None:
+        rows = parse_bands()
+        self.assertIsNone(
+            select_band(rows, "wheeled", 85, 600, 500, 1800, is_non_vehicle=True)
+        )
+
+    def test_the_equipment_matcher_still_resolves_an_item(self) -> None:
+        # The soldier's kit is a separate path. It resolves an item through
+        # the family keyword, unaffected by the vehicle guard.
+        self.assertEqual(equipment_mass("rhs_pvs14"), 0.35)
+        self.assertGreater(equipment_mass("H_HelmetB"), 0.0)
+
+    def test_the_vehicle_guard_is_not_in_the_equipment_path(self) -> None:
+        self.assertNotIn("LandVehicle", EQUIPMENT)
+        self.assertNotIn("classifyVehicle", EQUIPMENT)
 
 
 if __name__ == "__main__":

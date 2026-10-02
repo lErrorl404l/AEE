@@ -49,6 +49,9 @@ _tracked = _tracked max 0.05 min 1.0;
 private _unit = call CBA_fnc_currentUnit;
 private _veh = objNull;
 if (!isNil "_unit" && {!isNull _unit}) then { _veh = vehicle _unit; };
+// A man on foot is not a vehicle. `vehicle _unit` returns the man, so
+// without this the soldier's own engine mass would be read as a vehicle.
+if (_veh isKindOf "CAManBase") then { _veh = objNull; };
 private _groundSpeed = 0;
 private _wheelSpeed = 0;
 if (!isNull _veh) then {
