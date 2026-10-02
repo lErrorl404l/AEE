@@ -32,7 +32,10 @@ if !(GVAR(vehicleCouplingEnabled)) exitWith { false };
 if !(missionNamespace getVariable [QEGVAR(core,enabled), true]) exitWith { false };
 if (isNull _vehicle) exitWith { false };
 if (!alive _vehicle) exitWith { false };
-if (_vehicle isKindOf "Air") exitWith { false };
+// A ground vehicle only. This applies a force, so a person, a building or
+// any other non-vehicle must never reach it. LandVehicle excludes the men
+// (CAManBase), aircraft and ships the old Air test left partly open.
+if !(_vehicle isKindOf "LandVehicle") exitWith { false };
 if !(local _vehicle) exitWith { false };
 
 // A dry, firm surface loses no grip. This cheap gate keeps the per-frame

@@ -31,6 +31,12 @@ StaticWeapon: LandVehicle, so the HMG, mortar, SAM and radar emplacements
 would otherwise reach the band. The classifier returns no catalogue row for
 a class that isKindOf "StaticWeapon".
 
+A ground vehicle only. The classifier acts on LandVehicle and nothing else.
+A soldier (CAManBase), a building, an animal, an aircraft or a ship is not
+a ground vehicle, so it resolves to none before every route. A man on foot
+is the live case: the traction model reads `vehicle _unit`, and on foot that
+is the man.
+
 The live properties are the engine mass (getMass), the bounding box
 (boundingBoxReal), the tracked flag (isKindOf Tank or Tracked_APC) and the
 turret presence (allTurrets). The engine mass and the engine box are
@@ -66,6 +72,16 @@ if (isNull _vehicle) exitWith { ["", "wheeled", false, false, 0, 0, 0, 0, "none"
 
 private _type = typeOf _vehicle;
 if (_type == "") exitWith { ["", "wheeled", false, false, 0, 0, 0, 0, "none"] };
+
+// A ground vehicle only. LandVehicle is the base-game root of every class
+// the corpus, band and token routes describe. A soldier (CAManBase), a
+// building, an animal, an aircraft or a ship does not derive from it. A man
+// on foot is the live case: `vehicle _unit` returns the man, and without
+// this guard the band route would match the man's own engine mass to a
+// light vehicle.
+if !(_vehicle isKindOf "LandVehicle") exitWith {
+    ["", "wheeled", false, false, 0, 0, 0, 0, "none"]
+};
 
 // ─── Live observable properties ──────────────────────────────────────────
 // The engine mass and the bounding box are the band selectors. They carry
