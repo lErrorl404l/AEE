@@ -4757,36 +4757,44 @@ class TestThermalPaintVisionGate(unittest.TestCase):
         )
 
 
-def thermal_paint_uploads(samples, levels=255, deadband_steps=0.5, initial=-1.0):
-    """Mirror of the applySelectionThermal change gate with its dead-band.
+def thermal_paint_level(b, levels=255):
+    """The integer level the SQF quantiser paints for a band position `_b`.
 
-    The SQF stores the RAW band position of the last upload and re-uploads
-    only when the new position moves more than `deadband_steps` display steps
-    from it.  A bounded AGC wobble smaller than the dead-band therefore causes
-    zero uploads once the baseline is set, while a real change larger than the
-    dead-band causes exactly one upload.
+    SQF: round((_b max 0 min 1) * (_levels - 1)).  SQF round is half away from
+    zero, so the positive-domain mirror is floor(x + 0.5), NOT Python's
+    banker's round.
     """
-    deadband = deadband_steps / (levels - 1)
+    x = max(0.0, min(1.0, b)) * (levels - 1)
+    return math.floor(x + 0.5)
+
+
+def thermal_paint_uploads(samples, levels=255, initial=-1):
+    """Mirror of the applySelectionThermal change gate.
+
+    The SQF stores the PAINTED level of the last upload (`_qLevel`) and
+    re-uploads only when the new level differs by at least one step.  A wobble
+    that stays inside one level causes zero uploads, while a real one-level
+    change causes exactly one.
+    """
     last = initial
     uploads = 0
     for b in samples:
-        if abs(b - last) > deadband:
+        level = thermal_paint_level(b, levels)
+        if level != last:
             uploads += 1
-            last = b
+            last = level
     return uploads
 
 
-class TestThermalPaintDeadband(unittest.TestCase):
-    """The heat-paint change gate must ignore sub-step AGC drift.
+class TestThermalPaintLevelGate(unittest.TestCase):
+    """The heat-paint change gate must key on the PAINTED level, not `_b`.
 
-    Widening the display quantiser from 32 to 255 levels exposed the AGC
-    window's sub-step wobble: an exact colour compare re-uploaded the texture
-    whenever the quantised level toggled across a step boundary (the operator's
-    'uploads 0 x5 / uploads 1 x3').  The gate now measures the RAW band
-    position against the last UPLOAD and requires a move of more than half a
-    display step.  Half a step is larger than the measured per-tick wobble
-    (0.0197 radiance against a 0.0684 radiance step) and equals the display's
-    own quantisation half-step.
+    The first flicker fix compared the RAW band position against the last
+    upload with a half-step dead-band.  That is the wrong quantity: the colour
+    is built from the quantised level, and two raw positions inside one level
+    can sit up to a full step apart - more than the half-step dead-band - so
+    the raw gate still re-uploaded an IDENTICAL colour.  The gate now compares
+    the integer level that feeds the colour string.
     """
 
     _F = (
@@ -4798,26 +4806,51 @@ class TestThermalPaintDeadband(unittest.TestCase):
         / "fnc_applySelectionThermal.sqf"
     )
 
-    def test_drift_under_the_deadband_never_reuploads(self):
-        deadband = 0.5 / 254.0
-        # 60 passes whose TOTAL drift is 0.6 of the dead-band: the settled AGC
-        # wobble, not a real temperature change.
-        per_pass = (0.6 * deadband) / 59.0
-        samples = [0.5 + i * per_pass for i in range(60)]
-        self.assertLess(samples[-1] - samples[0], deadband)
-        self.assertEqual(thermal_paint_uploads(samples, initial=samples[0]), 0)
+    def test_residual_fixture_levels_are_equal(self):
+        # The live-run values that flickered both round to level 51, so the
+        # painted colour never changed between them.
+        self.assertEqual(thermal_paint_level(0.198885), 51)
+        self.assertEqual(thermal_paint_level(0.200011), 51)
 
-    def test_step_over_the_deadband_uploads_once(self):
-        deadband = 0.5 / 254.0
-        samples = [0.5, 0.5 + 5.0 * deadband]
-        self.assertEqual(thermal_paint_uploads(samples, initial=0.5), 1)
+    def test_alternating_fixture_never_reuploads(self):
+        # 60 alternating passes across the two live-run values: zero uploads.
+        samples = [0.198885 if i % 2 == 0 else 0.200011 for i in range(60)]
+        self.assertEqual(thermal_paint_uploads(samples, initial=51), 0)
 
-    def test_source_has_the_deadband_and_stores_the_raw_position(self):
+    def test_same_level_spanning_more_than_the_old_deadband(self):
+        # 0.1989 and 0.2027 are both level 51 but 0.0038 apart - MORE than the
+        # old half-step dead-band (0.001969).  The raw gate re-uploaded the
+        # same colour; the level gate must not.
+        self.assertEqual(thermal_paint_level(0.1989), 51)
+        self.assertEqual(thermal_paint_level(0.2027), 51)
+        self.assertGreater(abs(0.2027 - 0.1989), 0.5 / 254.0)
+        samples = [0.1989 if i % 2 == 0 else 0.2027 for i in range(60)]
+        self.assertEqual(thermal_paint_uploads(samples, initial=51), 0)
+
+    def test_real_one_level_change_uploads_once(self):
+        # 0.200011 (level 51) -> 0.203291 (level 52), both from the live run.
+        self.assertEqual(thermal_paint_level(0.200011), 51)
+        self.assertEqual(thermal_paint_level(0.203291), 52)
+        self.assertEqual(thermal_paint_uploads([0.200011, 0.203291], initial=51), 1)
+
+    def test_a_stay_at_the_new_level_adds_no_more_uploads(self):
+        samples = [0.200011] + [0.203291] * 59
+        self.assertEqual(thermal_paint_uploads(samples, initial=51), 1)
+
+    def test_a_real_ramp_uploads_once_per_level_crossed(self):
+        # A genuine warming ramp repaints once per level crossed, no more.
+        ramp = [0.20 + i * (1.0 / 254.0) for i in range(5)]
+        self.assertEqual(thermal_paint_uploads(ramp, initial=51), 4)
+
+    def test_source_gates_on_the_level_and_stores_it(self):
         text = self._F.read_text(encoding="utf-8")
-        self.assertIn("private _deadband = 0.5 / (_levels - 1);", text)
-        self.assertIn("(_b - _lastB) > _deadband", text)
-        self.assertIn("_bands set [_bandKey, [_b, _palette, _polarity]]", text)
-        self.assertNotIn("_was != _colour", text, "the exact compare must be gone")
+        self.assertIn(
+            "private _qLevel = round ((_b max 0 min 1) * (_levels - 1));", text
+        )
+        self.assertIn("private _moved = (_qLevel != _lastLevel);", text)
+        self.assertIn("_bands set [_bandKey, [_qLevel, _palette, _polarity]]", text)
+        self.assertNotIn("_deadband", text, "the raw-position dead-band must be gone")
+        self.assertNotIn("_was != _colour", text, "the exact compare must stay gone")
 
 
 class TestThermalSelectionPaintSet(unittest.TestCase):

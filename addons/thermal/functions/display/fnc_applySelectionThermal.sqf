@@ -632,43 +632,42 @@ if (_mode == "EXIT") then {
             _heatCol select 2
         ];
 
-        // ─── Change gate with a dead-band (the AGC-hunting regression) ─────
-        // The AGC window is a low-passed scene statistic, so it keeps moving by
-        // a fraction of a display step every pass.  An EXACT colour compare
-        // re-uploaded whenever the quantised level toggled across a step
-        // boundary - the 'uploads 0 x5 / uploads 1 x3' flicker.  The stored
-        // value is the RAW band position of the last UPLOAD, and a re-upload
-        // needs a move of more than half a display step from it.  Half a step
-        // is larger than the measured per-tick AGC wobble (0.0197 radiance
-        // against a 0.0684 radiance step = 0.29 step) and equals the display's
-        // own quantisation half-step, so it adds no visible coarsening and a
-        // real one-level temperature change still repaints.  Storing the raw
-        // position, not the level centre, is what stops boundary toggling.
-        // The palette and polarity are stored with it, so a display-mode change
-        // repaints even though _b is unchanged.
-        private _deadband = 0.5 / (_levels - 1);
+        // ─── Change gate on the PAINTED level (the residual AGC flicker) ───
+        // The AGC window is a low-passed scene statistic, so the raw band
+        // position still moves by a fraction of a display step every pass.
+        // The gate used to compare the RAW `_b` against the last upload with a
+        // half-step dead-band, but the thing painted is the quantised level
+        // `_qb`.  Two raw positions inside ONE level can sit up to a full step
+        // apart, which is MORE than the half-step dead-band, so the raw gate
+        // re-uploaded the SAME colour while the painted level never changed.
+        // That is the residual flicker.  The gate now compares the integer
+        // level that feeds the colour string: a repaint needs a change of at
+        // least one level, and a sub-level wobble produces NO repaint.  The
+        // palette and polarity are stored with the level, so a display-mode
+        // change repaints even though the level is unchanged.
+        private _qLevel = round ((_b max 0 min 1) * (_levels - 1));
         private _bandKey = "";
         private _last = -1;
         if (_due) then {
             _bandKey = _objKey + "|" + _sel;
             _last = _bands getOrDefault [_bandKey, -1];
         };
-        private _lastB = -1;
+        private _lastLevel = -1;
         private _lastPal = -1;
         private _lastPol = -1;
         if (_last isEqualType [] && {(count _last) == 3}) then {
-            _lastB = _last select 0;
+            _lastLevel = _last select 0;
             _lastPal = _last select 1;
             _lastPol = _last select 2;
         };
-        private _moved = ((_b - _lastB) > _deadband) || ((_lastB - _b) > _deadband);
+        private _moved = (_qLevel != _lastLevel);
         private _restyled = (_palette != _lastPal) || (_polarity != _lastPol);
         // The paint and its _thermalOn gate share one line on purpose.  That is
         // the shape TestThermalPaintVisionGate.test_heat_texture_paint_is_gated
         // reads, and the gate must stay visible there: in normal vision this
         // selection can be the operator's own uniform, and nothing puts the
         // real texture back.
-        if (_thermalOn && {_due && {_forced || _moved || _restyled}}) then { _obj setObjectTexture [_idx, _colour]; _bands set [_bandKey, [_b, _palette, _polarity]]; _uploaded = _uploaded + 1; };
+        if (_thermalOn && {_due && {_forced || _moved || _restyled}}) then { _obj setObjectTexture [_idx, _colour]; _bands set [_bandKey, [_qLevel, _palette, _polarity]]; _uploaded = _uploaded + 1; };
         // The material stays the object's own (or the ti_fpn rvmat when the
         // thermalFPN setting is on - see the save block).  setObjectTexture
         // replaces the Stage1 texture of whatever material is current, so the
