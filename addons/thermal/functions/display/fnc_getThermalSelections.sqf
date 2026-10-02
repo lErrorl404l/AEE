@@ -92,6 +92,20 @@ if (_custom isNotEqualTo []) then {
                 _selections pushBack _forEachIndex;
             };
         } forEach _selectionNames;
+    } else {
+        // textureSources declares the CAMO slots only.  A licence plate is a
+        // hiddenSelection that no textureSource declares, so the branch above
+        // SKIPPED it and the plate texture survived the flat heat paint - the
+        // operator's readable-plate report.  Add every remaining non-MFD
+        // hiddenSelection, exactly the set the fallback already paints, so a
+        // plate is handled like every other painted selection.  No plate name
+        // is matched: the set is the model's own declarations.  textureSources
+        // keeps its slots first, so the camo order is unchanged.
+        {
+            if !(["mfd", _x, false] call BIS_fnc_inString) then {
+                _selections pushBackUnique _forEachIndex;
+            };
+        } forEach _selectionNames;
     };
     missionNamespace setVariable [_cacheKey, _selections];
     _selections
