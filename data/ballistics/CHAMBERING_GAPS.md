@@ -5,11 +5,11 @@ record. Each needs either a decision or a new sourced record. The
 register is the source of the standard twist, so a weapon here
 falls back to its own twist alone.
 
-- Weapons joined to a cartridge record: 1583
-- Weapons unresolved: 60
-- Distinct unresolved chamberings: 35
+- Weapons joined to a cartridge record: 1571
+- Weapons unresolved: 61
+- Distinct unresolved chamberings: 36
 - Ambiguous: 6
-- Absent from the register: 29
+- Absent from the register: 30
 
 ## Ambiguous
 
@@ -58,6 +58,7 @@ with a held source.
 - `6x35mm` (1 weapons)
 - `7.62x37mm subsonic (676)` (1 weapons)
 - `7.62x38mmR` (1 weapons)
+- `7.62×35mm` (1 weapons)
 - `8x56mmR` (1 weapons)
 - `9x19mm` (1 weapons)
 - `9x21mm IMI` (1 weapons)
