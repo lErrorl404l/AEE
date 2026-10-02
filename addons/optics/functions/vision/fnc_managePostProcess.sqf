@@ -98,13 +98,17 @@ if (cameraOn != _player && {cameraOn != _veh}) exitWith {
         };
     };
 } forEach [
-    // The priorities must match fnc_ppEffectCreate.  They are the documented
-    // base priorities for these effect types.  All three sit below the
-    // engine's own optic band (CfgOpticsEffect tops out at 2550), so the
-    // cockpit HUD composites over the blur.  See fnc_ppEffectCreate.
-    ["ChromAberration", 200, QGVAR(ppHandle_ChromAberration)],
-    ["DynamicBlur",     400, QGVAR(ppHandle_DynamicBlur)],
-    ["ColorCorrections", 1500, QGVAR(ppHandle_ColorCorrections)]
+    // The priorities must match fnc_ppEffectCreate.  They are AEE-unique
+    // values, NOT the BIS-documented base priorities (200/400/1500): a base
+    // value is shared convention and is already taken by the engine's own
+    // CfgOpticsEffect table or another loaded config, so the engine logs
+    // "PE with same priority ... already exist" (live RPT: DynamicBlur 400).
+    // Each sits just below the engine's own same-type entry (250/450/1550),
+    // so the relative order is unchanged and the cockpit HUD still composites
+    // over the blur.  See fnc_ppEffectCreate.
+    ["ChromAberration", 210, QGVAR(ppHandle_ChromAberration)],
+    ["DynamicBlur",     410, QGVAR(ppHandle_DynamicBlur)],
+    ["ColorCorrections", 1510, QGVAR(ppHandle_ColorCorrections)]
 ];
 _hChroma = missionNamespace getVariable [QGVAR(ppHandle_ChromAberration), -1];
 _hBlur   = missionNamespace getVariable [QGVAR(ppHandle_DynamicBlur), -1];

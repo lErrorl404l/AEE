@@ -1912,8 +1912,11 @@ class TestClothingThermal(unittest.TestCase):
         # (the 'WHOT/BHOT no visual difference' report).
         self.assertIn("setObjectTexture", text)
         self.assertIn("#(rgb,8,8,3)color(", text)
-        self.assertIn("0.10 * _qb", text)  # WHOT-red base G channel
-        self.assertIn("0.20 * _qb", text)  # WHOT-red base B channel
+        # Per-material base hue (the engine's default TI textures), scaled by
+        # the AGC band _qb, not one flat hue for every part.
+        self.assertIn("[_obj, _sel] call FUNC(getSelectionMaterials)", text)
+        self.assertIn("_baseHue select 0", text)
+        self.assertIn("(_baseHue select 1) * _qb", text)
         self.assertNotIn("setObjectMaterial [_idx,", text)
         # The live path swaps exactly ONE material, the FPN substrate.
         # A second rvmat path here would be a new material swap, and a
@@ -1926,16 +1929,21 @@ class TestClothingThermal(unittest.TestCase):
         )
 
 
-def _heat_coefficients(code):
-    """The heat colour's per-channel multipliers, read from the SQF.
+def _base_hues(code):
+    """The per-material base hues declared in the SQF, parsed not transcribed.
 
-    Parsed rather than transcribed, so a change in the SQF fails the
-    contract tests instead of drifting from a second copy of the values.
+    Each hue is a source value: the engine's own default TI textures.  Parsed
+    rather than transcribed, so a change in the SQF fails the contract tests
+    instead of drifting from a second copy of the values.
     """
-    m = re.search(r"private _heatCol = \[(.*?)\];", code, re.S)
-    if m is None:
-        raise AssertionError("the heat colour array is not declared")
-    return [float(x) for x in re.findall(r"([\d.]+)\s*\*\s*_qb", m.group(1))]
+    hues = []
+    for m in re.finditer(r"_baseHue = \[([^\]]*)\];", code):
+        parts = [float(x) for x in re.findall(r"([\d.]+)", m.group(1))]
+        if len(parts) == 3:
+            hues.append(tuple(parts))
+    if not hues:
+        raise AssertionError("no per-material base hue is declared")
+    return hues
 
 
 def _quantised(brightness, levels):
@@ -2026,27 +2034,31 @@ class TestSelectionThermalTexture(unittest.TestCase):
         # code values.
         self.assertAlmostEqual(255.0 / (levels - 1), 8.225806, places=5)
 
-    def test_heat_colour_hue_is_fixed_across_levels(self):
-        """One hue for the whole ladder, so levels differ only in intensity."""
+    def test_heat_colour_is_per_material(self):
+        """Each material gets its own base hue; _qb is the intensity.
+
+        Regression: one hue for every part made a whole vehicle or uniform
+        read as a single flat colour.  The hues are the engine's own default
+        TI textures (engine-thermal-mechanisms.md): default_ti (255,0,0),
+        default_vehicle_ti (145,46,0), default_glass_ti (0,0,0).
+        """
         code = _selection_thermal_code()
-        levels = int(re.search(r"private _levels = (\d+);", code).group(1))
-        red, green, blue = _heat_coefficients(code)
-        self.assertGreater(red, green)
-        self.assertGreater(red, blue)
-        self.assertAlmostEqual(green / red, 0.10, places=6)
-        self.assertAlmostEqual(blue / red, 0.20, places=6)
-        # The floor is the zero vector, which carries no hue, so the ratio
-        # is taken over the lit levels and the ceiling alike.
-        for level in range(1, levels):
-            r, g, b = (c * level / (levels - 1) for c in (red, green, blue))
-            self.assertAlmostEqual(g / r, green / red, places=9)
-            self.assertAlmostEqual(b / r, blue / red, places=9)
+        hues = _base_hues(code)
+        self.assertGreaterEqual(len(hues), 3, "need a hot, warm and cold hue")
+        self.assertIn((0.5686, 0.1804, 0.0), hues, "default_vehicle_ti")
+        self.assertIn((1.0, 0.0, 0.0), hues, "default_ti")
+        self.assertIn((0.0, 0.0, 0.0), hues, "default_glass_ti")
+        # The material class picks the hue; the band still scales it.
+        self.assertIn('_selMatClass in ["engine", "human"]', code)
+        self.assertIn('_selMatClass in ["glass", "water"]', code)
+        self.assertIn("(_baseHue select 0) * _qb", code)
 
     def test_red_channel_rises_with_brightness(self):
         """A brighter selection never paints a cooler red."""
         code = _selection_thermal_code()
         levels = int(re.search(r"private _levels = (\d+);", code).group(1))
-        red = _heat_coefficients(code)[0]
+        red = _base_hues(code)[0][0]
+        self.assertGreater(red, 0.0)
         painted = [red * _quantised(i / 200.0, levels) for i in range(201)]
         self.assertEqual(painted, sorted(painted))
         self.assertGreater(painted[-1], painted[0])
@@ -2899,7 +2911,7 @@ class TestSQFSync(unittest.TestCase):
         # FilmGrain (5100) collided - "PE with same priority(5100)
         # already exist" - breaking whichever module created second and
         # spamming "Invalid post effect handle".  Every ppEffect priority
-        # across optics (200/400/1500), NVG (1200/4100/5100/6000/868)
+        # across optics (210/410/1510), NVG (1200/4100/5100/6000/868)
         # and thermal (1300/4200/6500/5200) must be unique.
         import re
         from pathlib import Path
@@ -2939,18 +2951,43 @@ class TestSQFSync(unittest.TestCase):
         Default are colorInversion at 2550).  The vanilla fighters' own optic
         blur OpticsBlur2 is dynamicblur at 450 and their cockpit HUD stays
         visible.  A ppEffect above the engine's optic band composites over the
-        HUD, so the blur covered it.  The effects now use the documented base
-        priorities for their types (BIS wiki, "Post Process Effects"), below
-        that band.
+        HUD, so the blur covered it.  The effects now sit just below the
+        engine's own same-type entries (chromaberration 250, dynamicblur 450,
+        ColorCorrections 1550) and therefore under that band.
+
+        Regression (operator RPT 2026-10-02 15-12-34): the effects used the
+        BIS-documented BASE priorities (200/400/1500).  Those are a shared
+        convention, not reserved slots, so the engine logged "Cannot create
+        custom post effect(type: 3), PE with same priority(400) already
+        exist" when another creator asked for DynamicBlur 400 that AEE
+        already held.  The values are now unique offsets that avoid both the
+        documented base set and the engine's own CfgOpticsEffect table.
         """
         import re
         from pathlib import Path
 
         root = Path(__file__).resolve().parents[2]
         expected = {
-            "ChromAberration": 200,
-            "DynamicBlur": 400,
-            "ColorCorrections": 1500,
+            "ChromAberration": 210,
+            "DynamicBlur": 410,
+            "ColorCorrections": 1510,
+        }
+        # The engine's own CfgOpticsEffect priorities and the BIS-documented
+        # base priorities.  AEE must equal none of them, or a second creator
+        # either fails or is blocked and the engine logs the collision.
+        engine_and_base = {
+            100,
+            200,
+            250,
+            300,
+            400,
+            450,
+            1500,
+            1550,
+            2000,
+            2050,
+            2500,
+            2550,
         }
         manage = (
             root / "addons/optics/functions/vision/fnc_managePostProcess.sqf"
@@ -2968,11 +3005,23 @@ class TestSQFSync(unittest.TestCase):
         }
         self.assertEqual(applied, expected, "applied optics priorities")
         self.assertEqual(created, expected, "created optics priorities")
+        # Every AEE optics priority is distinct (one effect type per slot).
+        self.assertEqual(
+            len(set(expected.values())),
+            len(expected),
+            "AEE optics priorities are not unique",
+        )
         for effect, priority in expected.items():
             self.assertLess(
                 priority,
                 2550,
                 f"{effect} must sit under the engine optic band",
+            )
+            self.assertNotIn(
+                priority,
+                engine_and_base,
+                f"{effect} at {priority} reuses a documented base/engine "
+                "priority, which a second creator also uses",
             )
 
     def test_thermal_crossover_floor(self):
@@ -2994,13 +3043,13 @@ class TestSQFSync(unittest.TestCase):
             "fnc_applySelectionThermal.sqf",
             [
                 "#(rgb,8,8,3)color(",
-                "0.10 * _qb",
-                "0.20 * _qb",
+                "_baseHue select 0",
+                "(_baseHue select 1) * _qb",
                 "private _levels = 32",
                 "setObjectTexture [_idx, _colour]",
                 "ti_fpn.rvmat",
             ],
-            "heat-colour texture paint (MKK WHOT-red, 32 levels, FPN material)",
+            "per-material heat-colour paint (engine TI hues, 32 levels, FPN material)",
             addon="thermal",
         )
 

@@ -48,16 +48,23 @@ Sets: the three ppHandle_* variables.  Returns: nothing.
 // and Default are colorInversion at 2550.  The vanilla fighters use
 // "OpticsCHAbera2" and "OpticsBlur2" through opticsPPEffects[].  Their
 // cockpit HUD stays visible, so the engine's optic band is the HUD-safe band.
-// These effects therefore use the documented BASE priorities for their types
-// (BIS wiki).  ChromAberration is 200, DynamicBlur is 400 and ColorCorrections
-// is 1500.  All three sit below the engine band.  The old 3000/4000/5000 put
-// them above every engine effect and above the cockpit HUD and dash overlays,
-// so the blur covered the HUD.  A priority must stay unique and below the
-// engine band.  The registry bumps the priority on a collision.
+// These effects therefore take an AEE-unique priority BELOW the engine band.
+// They must NOT use the BIS-documented BASE priorities (ChromAberration 200,
+// DynamicBlur 400, ColorCorrections 1500).  Those values are a shared
+// convention, not reserved slots: the engine's own CfgOpticsEffect table and
+// other loaded configs also create effects on that convention, so a base value
+// is already occupied when the engine or another module creates its own
+// effect and the engine logs "PE with same priority ... already exist".  The
+// live RPT shows exactly that for DynamicBlur at 400.  Each value here sits
+// just below the engine's own same-type entry (chromaberration 250,
+// dynamicblur 450, ColorCorrections 1550, data_f config.cpp), so the relative
+// render order is unchanged and the HUD still composites over the blur.  The
+// registry refuses to hand out a priority it already holds and bumps on a
+// collision, so AEE never shares one of these with itself.
 private _effects = [
-    ["ChromAberration", 200],
-    ["DynamicBlur", 400],
-    ["ColorCorrections", 1500]
+    ["ChromAberration", 210],
+    ["DynamicBlur", 410],
+    ["ColorCorrections", 1510]
     // LightShafts is deliberately absent: it is an ADVANCED effect (BIS
     // wiki) that cannot be created by ppEffectCreate (returns -1) and is
     // adjusted via the string-LHS form in fnc_applySolarGlareFX.
