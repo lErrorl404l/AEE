@@ -255,6 +255,49 @@ if (_phosphor == "grn") then {
 };
 missionNamespace setVariable [QGVAR(nvgTubeTier), _tier];
 
+// ─── Per-device tube corrections (operator request) ──────────────────────
+// The generation is the fallback; a device that publishes its own tube
+// data overrides it.  fnc_getNvgTubeModel returns the published output
+// colour, limiting resolution, SNR and halo for the device.  A field the
+// device does not publish arrives as -1, so the generation value stands
+// and the log names the tier as the source rather than copying a sibling.
+// Luminous gain and photocathode sensitivity are not published per device
+// in any source read, so they stay on the generation value.
+private _tubeDev = [_player] call FUNC(getNvgTubeModel);
+private _devKey = _tubeDev select 0;
+private _devColour = _tubeDev select 1;
+private _devRes = _tubeDev select 2;
+private _devSnr = _tubeDev select 3;
+private _devHalo = _tubeDev select 4;
+private _devSourced = _tubeDev select 5;
+if (_devSourced) then {
+    // Output colour: P43 green or P45 white (Exosens, Elbit PVS-14 sheet).
+    if (_devColour == "grn") then {
+        _phosphorTint = [1.3, 1.2, 0.0, 0.9];
+        _nvgWeight = [6, 1, 1, 0];
+        _phosphor = "grn";
+    };
+    if (_devColour == "wht") then {
+        _phosphorTint = [1.1, 0.8, 1.9, 0.9];
+        _nvgWeight = [1, 1, 6, 0];
+        _phosphor = "wht";
+    };
+    // Limiting resolution in lp/mm scales the MTF below.
+    if (_devRes > 0) then { _resLpmm = _devRes; };
+    // SNR is the published noise figure; the generation noise floor is
+    // 1/SNR at its core, so the device SNR sets it directly.
+    if (_devSnr > 0) then { _noiseFloor = 1 / _devSnr; };
+    // Halo is published at the tube face per generation (Cui et al. 2012,
+    // Chinese Optics Letters 10(6) 060401): Gen III 0.5533 mm, Gen II+
+    // 0.2388 mm.  The bright-source bloom scales with the measured ratio,
+    // so a Gen II tube haloes less than a Gen III tube.
+    if (_devHalo > 0) then {
+        private _haloScale = _devHalo / 0.5533;
+        _bloomBase = _bloomBase * _haloScale;
+        _bloomScale = _bloomScale * _haloScale;
+    };
+};
+
 // The device's actual tube resolution scales the MTF: MTF at 15 lp/mm
 // is the published contrast anchor for a 64 lp/mm Gen 3 tube.  A
 // lower-resolution tube (28 lp/mm PVS-7, 30 lp/mm Gen 1) resolves less
@@ -291,13 +334,14 @@ _vigStrength set [3, _vigOffY];
 // classname and resolved tier tell us immediately whether the device was
 // recognised.  "AUTO" means the classname matched nothing — the effects
 // still run but with the default (GEN2-ish) constants.
-private _tierLogKey = format ["%1_%2_%3", _hmd, _tier, _phosphor];
+private _tierLogKey = format ["%1_%2_%3_%4", _hmd, _tier, _phosphor, _devKey];
 if (missionNamespace getVariable [QGVAR(nvgTierLogged), ""] != _tierLogKey) then {
     missionNamespace setVariable [QGVAR(nvgTierLogged), _tierLogKey];
     // "tier" in the phosphor field means the hmd stated no phosphor, so the
     // tier value stands.  Naming it here stops that from reading as a
-    // resolution the device made.
-    private _logMsg = format ["NVG tier: hmd=%1 -> %2 phosphor=%3", _hmd, _tier, _phosphor];
+    // resolution the device made.  The device key names the per-device tube
+    // the corrections came from (or the family that fell back explicitly).
+    private _logMsg = format ["NVG tier: hmd=%1 -> %2 phosphor=%3 device=%4", _hmd, _tier, _phosphor, _devKey];
     AEE_LOG_INFO(_logMsg);
 };
 
@@ -758,6 +802,21 @@ _bloom = _bloom * (1 + rain * 2);
 // end of the published range, so it adds the physical floor without
 // washing the image out.
 _bloom = _bloom + 0.02;
+// ─── Intrinsic optical blur (natural, not pixelated) ─────────────────────
+// A real image-intensifier chain is ANALOGUE: photocathode, microchannel
+// plate and phosphor, with a continuous optical point-spread function.
+// Its output is measured as MTF in lp/mm, never as a pixel count, and the
+// only discrete structures (MCP pores 6-8 um, fibre-optic chicken wire)
+// are a fixed-pattern DEFECT class the eye integrates away, not a
+// sampling grid (Evident Scientific; Photek; Stanford Computer Optics).
+// So the correct look is a soft natural blur, not a blocky/pixelated one.
+// The tube MTF at 15 lp/mm is the published contrast anchor: a lower MTF
+// softens the image more.  DynamicBlur is the only uniform blur the
+// engine exposes (RadialBlur varies with radius), so it carries the
+// intrinsic PSF on top of the bright-source bloom.  The engine publishes
+// no mm-to-parameter mapping, so the absolute scale is calibration; the
+// ORDER is sourced from the MTF.
+_bloom = _bloom + (1 - _mtf15) * 0.04;
 _bloom = 0 max _bloom min 1;
 
 // ─── Brightness (AGC output, physics-driven) ──────────────────────────────
@@ -1392,12 +1451,15 @@ private _focusDist = if (_dofMode == 1) then {
     _curFocus max _dofNearLimit min _dofMaxDist
 };
 private _focusSettled = (_pending == 0);
-private _dofBlur = switch (_tier) do {
-    case "PVS31": { 3.0 };
-    case "GEN3":  { 4.0 };
-    case "GEN2":  { 6.0 };
-    default      { 8.0 };   // Gen 1: shallow, hard-to-focus objective
-};
+// Blur magnitude is the NATURAL optical figure, not an arbitrary per-tier
+// step.  Real image-intensifier output is a continuous optical PSF, not a
+// pixelated grid, so the focus plane is a soft natural defocus.  The tube
+// MTF at 15 lp/mm is the published contrast anchor, so a lower MTF blurs
+// more.  The engine publishes no mm-to-parameter mapping, so the absolute
+// scale is calibration; the ORDER is sourced (Elbit MDS-15, Newcon: Gen 2+
+// and Gen 3 both ~61% at 15 lp/mm).  The old 3.0-8.0 step was the coarse
+// blur the operator read as pixelated.
+private _dofBlur = 0.5 + (1 - _mtf15) * 2.0;
 if (_hDoF >= 0) then {
     // Blur is NEGATIVE, constant (TFN's far-focus default).  The sign
     // convention is unverified (research: the wiki marks DepthOfField
