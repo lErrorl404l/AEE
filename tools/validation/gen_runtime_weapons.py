@@ -185,7 +185,7 @@ if (isNil "_index" || {(count _index) == 0}) then {
 // stringtable text. A vanilla class stores a $STR key in displayName, so all
 // three are needed. None carries a figure.
 private _rawName = getText (configFile >> "CfgWeapons" >> _weapon >> "displayName");
-private _localName = if (_rawName == "") then { "" } else { localize _rawName };
+private _localName = if ((_rawName select [0,1]) == "$") then { localize _rawName } else { _rawName };
 private _identity = _weapon + " " + _rawName + " " + _localName;
 private _query = [_identity] call _normalise;
 
