@@ -61,7 +61,7 @@ private _propRange  = missionNamespace getVariable [QGVAR(propagationRange), 2.0
 // published ITU-R P.453 state so the radio budget and the refraction model
 // cannot disagree.
 [] call EFUNC(atmos,calculateRefraction);
-private _refractionK = missionNamespace getVariable [EGVAR(atmos,refractionK), 1];
+private _refractionK = missionNamespace getVariable [QEGVAR(atmos,refractionK), 1];
 if !(_refractionK isEqualType 0) then { _refractionK = 1; };
 _refractionK = _refractionK max 0.5 min 2.0;
 private _effectiveDistM = _distM / (sqrt _refractionK);
