@@ -3712,8 +3712,10 @@ class TestSQFSync(unittest.TestCase):
                 "applySelectionThermal",
                 'allMissionObjects ""',
                 "vehicles - [player]",
-                'nearObjects ["House", _viewDist]',
                 'nearObjects ["Building", _viewDist]',
+                'nearObjects ["ReammoBox", _viewDist]',
+                'nearObjects ["Animal", _viewDist]',
+                'nearObjects ["Thing", _viewDist]',
                 "abs (_airTemp - _lastTemp) >= 2",
                 "FUNC(getThermalSelections)",
                 "FUNC(calculateVehicleHeat)",
@@ -4721,8 +4723,8 @@ class TestThermalPaintVisionGate(unittest.TestCase):
 
     def test_exit_restore_stays_ungated(self):
         for needle in (
-            "setObjectTexture [_selIdx",
-            "setObjectMaterial [_selIdx",
+            "setObjectTexture [_i",
+            "setObjectMaterial [_i",
         ):
             index = self._line_of(needle)
             self.assertNotIn(
@@ -4747,20 +4749,21 @@ class TestThermalPaintVisionGate(unittest.TestCase):
         self.assertGreaterEqual(read, 0)
         self.assertGreater(stamp, read, "the stamp must follow the read")
 
-    def test_exit_save_captures_the_full_selection_list(self):
-        """EXIT must restore every slot a per-selection paint can write.
+    def test_exit_save_captures_every_texture_slot(self):
+        """EXIT must restore every slot it saved, by the saved index.
 
         The save runs once per object, on the first selection that paints.
-        Storing that call's single selection would leave the other painted
-        selections as flat colour after thermal vision is left, so the save
-        stores the model's full selection list.  Paint indices are positions
-        in `selectionNames _obj`, so the sequential EXIT restore is symmetric.
+        getObjectTextures and getObjectMaterials are indexed by the
+        hiddenSelections texture slot, the same index the paint writes, so
+        EXIT must restore those arrays by THEIR OWN index.  The old restore
+        walked the default-LOD `selectionNames _obj` list and used its
+        position as the texture index - a different index space - so it could
+        restore the wrong slots.  Save what the paint writes; restore what was
+        saved.
         """
         text = self._F.read_text(encoding="utf-8")
-        self.assertIn(
-            "_saved pushBack [_obj, _oldTexs, _oldMats, selectionNames _obj]",
-            text,
-        )
+        self.assertIn("_saved pushBack [_obj, _oldTexs, _oldMats]", text)
+        self.assertIn("private _n = (count _oldTexs) max (count _oldMats);", text)
 
 
 def thermal_paint_level(b, levels=255):
@@ -5922,7 +5925,9 @@ class TestThermalNumberPlatePaint(unittest.TestCase):
         self.assertEqual(got, ["camo1", "camo2"])
 
     def test_a_non_plate_name_is_kept(self):
-        self.assertEqual(self._drop_plates(["body", "engine", "glass"]), ["body", "engine", "glass"])
+        self.assertEqual(
+            self._drop_plates(["body", "engine", "glass"]), ["body", "engine", "glass"]
+        )
 
     def test_source_filters_the_paint_set(self):
         self.assertIn(

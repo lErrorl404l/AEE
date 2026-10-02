@@ -1,4 +1,5 @@
 #include "..\..\script_component.hpp"
+#include "\z\aee\addons\main\script_debug.hpp"
 /*
  * Thermal same-object selection breadth (issue #204, operator recursive-tree
  * directive).
@@ -43,8 +44,19 @@ params [
 
 if (isNull _object) exitWith { _selections };
 
-private _MAX_TARGETS = 256;
+private _MAX_TARGETS = 512;
+// selectionNames accepts exactly these six LOD type names.  Runtime measured
+// on the docker harness: "ViewPilot", "ViewGunner", "ViewCargo" and "Shadow"
+// are rejected with "Unknown enum value" and abort the call, so the walk
+// cannot reach the per-view or Shadow LODs and they are not listed.  A name
+// from any LOD is still admitted only when it is a config hiddenSelection
+// (the setObjectTexture index space), so an LOD-only name adds nothing.
 private _LODS = ["Memory", "Geometry", "FireGeometry", "LandContact", "HitPoints", "ViewGeometry"];
+// The parent object's own config hiddenSelections: the EXACT list
+// setObjectTexture indexes.  A LOD or turret candidate is accepted only when
+// its name appears here.  The turret's own hiddenSelections is a candidate
+// NAME source, never an index space, because setObjectTexture addresses the
+// vehicle's hiddenSelections alone.
 private _hidden = getArray (configOf _object >> "hiddenSelections");
 
 // Names level 0 already covers, in the config hiddenSelections space.
@@ -74,6 +86,18 @@ private _candidates = [];
     };
 } forEach (allTurrets _object);
 
+// animationSources: the names of the object's animation sources, read from the
+// array form and the AnimationSources config class.  An animation source is an
+// animation target, not a texture slot, so most yield nothing here.  A name
+// that is ALSO a config hiddenSelection is addressable and the same filter
+// below admits it; every other name is dropped, so no false selection is added.
+{
+    _candidates pushBack _x;
+} forEach (getArray (configOf _object >> "animationSources"));
+{
+    _candidates pushBack (configName _x);
+} forEach (configProperties [configOf _object >> "AnimationSources", "isClass _x", true]);
+
 {
     private _name = _x;
     // A proxy name is a placement marker, not a texture target: skip it.
@@ -87,9 +111,16 @@ private _candidates = [];
             ""
         };
         private _isConfigSlot = (_slotName != "") && {((toLower _slotName) == (toLower _name))};
-        if (_isConfigSlot && {!(_slotName in _covered)} && {(count _selections) < _MAX_TARGETS}) then {
-            _selections pushBackUnique _idx;
-            _covered pushBack _slotName;
+        if (_isConfigSlot && {!(_slotName in _covered)}) then {
+            if ((count _selections) >= _MAX_TARGETS) then {
+                if (AEE_TRACE_ON) then {
+                    private _capMsg = format ["selection walk: target cap %1 hit on %2, candidate %3 not added", _MAX_TARGETS, typeOf _object, _name];
+                    AEE_LOG_DEBUG(_capMsg);
+                };
+            } else {
+                _selections pushBackUnique _idx;
+                _covered pushBack _slotName;
+            };
         };
     };
 } forEach _candidates;

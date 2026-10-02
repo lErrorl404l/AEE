@@ -96,7 +96,8 @@
       "kind": "engine_base",
       "provenance": [
         "addons/environmental/functions/biome/fnc_scanTerrainSignals.sqf:162",
-        "addons/material/functions/fnc_getObjectMaterial.sqf:30"
+        "addons/material/functions/fnc_getObjectMaterial.sqf:30",
+        "addons/thermal/functions/display/fnc_applyBuildingThermal.sqf:84"
       ],
       "token": "Building"
     },
@@ -115,8 +116,8 @@
       "kind": "engine_base",
       "provenance": [
         "addons/mobility/functions/fnc_calculateTraction.sqf:54",
-        "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:262",
-        "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:481",
+        "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:264",
+        "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:483",
         "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:62"
       ],
       "token": "CAManBase"
@@ -236,8 +237,8 @@
       "provenance": [
         "addons/armour/functions/fnc_penetrationGate.sqf:47",
         "addons/armour/functions/fnc_penetrationGate.sqf:76",
-        "addons/thermal/functions/display/fnc_applyBuildingThermal.sqf:157",
-        "addons/thermal/functions/display/fnc_applyBuildingThermal.sqf:165",
+        "addons/thermal/functions/display/fnc_applyBuildingThermal.sqf:166",
+        "addons/thermal/functions/display/fnc_applyBuildingThermal.sqf:174",
         "addons/thermal/functions/display/fnc_applyClothingThermal.sqf:119",
         "addons/thermal/functions/display/fnc_applyExhaustHeat.sqf:68",
         "addons/thermal/functions/display/fnc_applyImpactHeat.sqf:55",
@@ -267,6 +268,15 @@
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:152"
       ],
       "token": "Plane"
+    },
+    {
+      "exclusion_reason": "no positive ground class-table row",
+      "is_ground": false,
+      "kind": "engine_base",
+      "provenance": [
+        "addons/thermal/functions/display/fnc_applyBuildingThermal.sqf:84"
+      ],
+      "token": "ReammoBox"
     },
     {
       "exclusion_reason": "no positive ground class-table row",

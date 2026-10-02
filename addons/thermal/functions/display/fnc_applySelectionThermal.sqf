@@ -62,18 +62,23 @@ if (_mode == "EXIT") then {
     // swap is CLIENT-LOCAL, so other players' views were never changed.
     private _saved = missionNamespace getVariable [QGVAR(selThermalSaved), []];
     {
-        _x params ["_o", "_oldTexs", "_oldMats", "_selNames"];
+        _x params ["_o", "_oldTexs", "_oldMats"];
         if (!isNull _o) then {
-            private _selIdx = 0;
-            {
-                if (_selIdx < count _oldTexs && {(_oldTexs select _selIdx) isEqualType ""}) then {
-                    _o setObjectTexture [_selIdx, _oldTexs select _selIdx];
+            // Restore by the SAVED array's own index.  getObjectTextures and
+            // getObjectMaterials are indexed by the hiddenSelections texture
+            // slot, the same index the paint writes.  The old restore walked
+            // the default-LOD selectionNames list and used ITS position as the
+            // texture index; that index space differs in order and length from
+            // the saved arrays, so it restored the wrong slots.
+            private _n = (count _oldTexs) max (count _oldMats);
+            for "_i" from 0 to (_n - 1) do {
+                if ((_i < count _oldTexs) && {(_oldTexs select _i) isEqualType ""}) then {
+                    _o setObjectTexture [_i, _oldTexs select _i];
                 };
-                if (_selIdx < count _oldMats && {(_oldMats select _selIdx) isEqualType ""}) then {
-                    _o setObjectMaterial [_selIdx, _oldMats select _selIdx];
+                if ((_i < count _oldMats) && {(_oldMats select _i) isEqualType ""}) then {
+                    _o setObjectMaterial [_i, _oldMats select _i];
                 };
-                _selIdx = _selIdx + 1;
-            } forEach _selNames;
+            };
         };
     } forEach _saved;
     missionNamespace setVariable [QGVAR(selThermalSaved), []];
@@ -201,13 +206,10 @@ if (_mode == "EXIT") then {
     if (_thermalOn && _alreadySaved < 0) then {
         private _oldTexs = getObjectTextures _obj;
         private _oldMats = getObjectMaterials _obj;
-        // Store the model's FULL selection list, not this call's slice: the
-        // per-selection gate lets each selection paint in its own call, so
-        // EXIT must restore every slot the paint can write.  Positions in
-        // selectionNames are the indices the paint writes (it resolves _idx
-        // with `selectionNames _obj find _sel`), so a sequential restore over
-        // the full list is symmetric.
-        _saved pushBack [_obj, _oldTexs, _oldMats, selectionNames _obj];
+        // Save what the paint writes: the FULL texture and material arrays.
+        // Both are indexed by the hiddenSelections texture slot, which is the
+        // index the paint resolves, so EXIT restores them by their own index.
+        _saved pushBack [_obj, _oldTexs, _oldMats];
         missionNamespace setVariable [QGVAR(selThermalSaved), _saved];
         // FPN material swap (client-local, once per object per pass):
         // the perlinNoise Stage2 multiplies over the painted heat colour.
