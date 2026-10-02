@@ -53,6 +53,11 @@ MATCHERS = (
         REPO / "addons/ballistics/functions/fnc_getProjectileData.sqf",
         '[_ammo + " " + _rawName + " " + _localName]',
     ),
+    (
+        REPO / "tools/validation/gen_device_data.py",
+        REPO / "addons/nightvision/functions/fnc_getDeviceMatch.sqf",
+        '_identity = _className + " " + _rawName + " " + _localName',
+    ),
 )
 
 # The unguarded call: localise anything. This is the defect shape.

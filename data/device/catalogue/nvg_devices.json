@@ -1,0 +1,479 @@
+{
+  "retrieved": "2026-10-02",
+  "note": "Night vision device entries. The tube figures come from manufacturer datasheets and from the AEE sensor device library. The halo comes from the Cui 2012 measurement.",
+  "sources": [],
+  "entries": [
+    {
+      "device_id": "gpnvg18",
+      "canonical_name": "GPNVG-18",
+      "family": "nvg",
+      "maker": "L3Harris",
+      "country": "US",
+      "class_names": [
+        "GPNVG-18",
+        "GPNVG18",
+        "PANOGoggles",
+        "nv_wide"
+      ],
+      "aliases": [
+        "gpnvg",
+        "pano",
+        "nv_wide"
+      ],
+      "keywords": [
+        "gpnvg",
+        "nvwide",
+        "panoramic"
+      ],
+      "values": {
+        "output_colour": {
+          "value": "white",
+          "unit": "enum",
+          "source": "l3harris_gpnvg18",
+          "locator": "spec sheet, tube line",
+          "state": "as published",
+          "grade": "claimed"
+        },
+        "resolution_lpmm": {
+          "value": 64,
+          "unit": "lp/mm",
+          "source": "l3harris_gpnvg18",
+          "locator": "spec sheet, resolution line",
+          "state": "lower bound of the published 64 to 72 lp/mm range",
+          "grade": "claimed"
+        },
+        "halo_mm": {
+          "value": 0.5533,
+          "unit": "mm",
+          "source": "cui_2012_halo",
+          "locator": "figure 4, Gen III halo diameter",
+          "state": "Gen III tube, measured at the tube face",
+          "grade": "documented"
+        }
+      }
+    },
+    {
+      "device_id": "envgb",
+      "canonical_name": "ENVG-B",
+      "family": "nvg",
+      "maker": "L3Harris",
+      "country": "US",
+      "class_names": [
+        "ENVG-B",
+        "ENVG",
+        "AN/PSQ-42",
+        "AN/PSQ-44",
+        "NVGogglesB"
+      ],
+      "aliases": [
+        "envg",
+        "envgb",
+        "psq-42",
+        "psq-44",
+        "nvgogglesb"
+      ],
+      "keywords": [
+        "envg",
+        "psq42",
+        "psq44",
+        "nvgogglesb"
+      ],
+      "values": {
+        "output_colour": {
+          "value": "white",
+          "unit": "enum",
+          "source": "l3harris_envgb",
+          "locator": "sell sheet, tube line",
+          "state": "as published",
+          "grade": "claimed"
+        },
+        "resolution_lpmm": {
+          "value": 72,
+          "unit": "lp/mm",
+          "source": "l3harris_envgb",
+          "locator": "sell sheet, resolution line",
+          "state": "as published",
+          "grade": "claimed"
+        },
+        "snr": {
+          "value": 32,
+          "unit": "ratio",
+          "source": "l3harris_envgb",
+          "locator": "sell sheet, signal-to-noise line",
+          "state": "as published",
+          "grade": "claimed"
+        },
+        "halo_mm": {
+          "value": 0.5533,
+          "unit": "mm",
+          "source": "cui_2012_halo",
+          "locator": "figure 4, Gen III halo diameter",
+          "state": "Gen III tube, measured at the tube face",
+          "grade": "documented"
+        }
+      }
+    },
+    {
+      "device_id": "pvs31",
+      "canonical_name": "AN/PVS-31",
+      "family": "nvg",
+      "maker": "L3Harris",
+      "country": "US",
+      "class_names": [
+        "AN/PVS-31",
+        "PVS-31",
+        "PVS-31A",
+        "PVS-31C",
+        "nvg_w"
+      ],
+      "aliases": [
+        "pvs31",
+        "nvg_w"
+      ],
+      "keywords": [
+        "pvs31",
+        "nvgw"
+      ],
+      "values": {
+        "output_colour": {
+          "value": "white",
+          "unit": "enum",
+          "source": "l3harris_pvs31c",
+          "locator": "datasheet, P-45 line",
+          "state": "as published",
+          "grade": "claimed"
+        },
+        "resolution_lpmm": {
+          "value": 72,
+          "unit": "lp/mm",
+          "source": "l3harris_pvs31c",
+          "locator": "datasheet, resolution line",
+          "state": "published minimum",
+          "grade": "claimed"
+        },
+        "snr": {
+          "value": 33,
+          "unit": "ratio",
+          "source": "l3harris_pvs31c",
+          "locator": "datasheet, signal-to-noise line",
+          "state": "published minimum",
+          "grade": "claimed"
+        },
+        "halo_mm": {
+          "value": 0.5533,
+          "unit": "mm",
+          "source": "cui_2012_halo",
+          "locator": "figure 4, Gen III halo diameter",
+          "state": "Gen III tube, measured at the tube face",
+          "grade": "documented"
+        }
+      }
+    },
+    {
+      "device_id": "anvis9",
+      "canonical_name": "AN/AVS-9",
+      "family": "nvg",
+      "maker": "Elbit Systems",
+      "country": "US",
+      "class_names": [
+        "AN/AVS-9",
+        "ANVIS",
+        "AVS-9"
+      ],
+      "aliases": [
+        "anvis",
+        "avs-9",
+        "avs9"
+      ],
+      "keywords": [
+        "anvis",
+        "avs9"
+      ],
+      "values": {
+        "resolution_lpmm": {
+          "value": 64,
+          "unit": "lp/mm",
+          "source": "elbit_anvis9",
+          "locator": "datasheet, resolution line",
+          "state": "as published",
+          "grade": "claimed"
+        },
+        "halo_mm": {
+          "value": 0.5533,
+          "unit": "mm",
+          "source": "cui_2012_halo",
+          "locator": "figure 4, Gen III halo diameter",
+          "state": "Gen III tube, measured at the tube face",
+          "grade": "documented"
+        }
+      }
+    },
+    {
+      "device_id": "pvs15",
+      "canonical_name": "AN/PVS-15",
+      "family": "nvg",
+      "maker": "L3Harris",
+      "country": "US",
+      "class_names": [
+        "AN/PVS-15",
+        "PVS-15"
+      ],
+      "aliases": [
+        "pvs15"
+      ],
+      "keywords": [
+        "pvs15"
+      ],
+      "values": {
+        "resolution_lpmm": {
+          "value": 64,
+          "unit": "lp/mm",
+          "source": "l3harris_pvs15",
+          "locator": "datasheet, resolution range",
+          "state": "upper bound of the published 45 to 64 lp/mm range",
+          "grade": "claimed"
+        },
+        "halo_mm": {
+          "value": 0.5533,
+          "unit": "mm",
+          "source": "cui_2012_halo",
+          "locator": "figure 4, Gen III halo diameter",
+          "state": "Gen III tube, measured at the tube face",
+          "grade": "documented"
+        }
+      }
+    },
+    {
+      "device_id": "pvs14",
+      "canonical_name": "AN/PVS-14",
+      "family": "nvg",
+      "maker": "Elbit Systems",
+      "country": "US",
+      "class_names": [
+        "AN/PVS-14",
+        "PVS-14"
+      ],
+      "aliases": [
+        "pvs14"
+      ],
+      "keywords": [
+        "pvs14"
+      ],
+      "values": {
+        "resolution_lpmm": {
+          "value": 64,
+          "unit": "lp/mm",
+          "source": "elbit_pvs14",
+          "locator": "datasheet, resolution line",
+          "state": "as published",
+          "grade": "claimed"
+        },
+        "snr": {
+          "value": 31,
+          "unit": "ratio",
+          "source": "elbit_pvs14",
+          "locator": "datasheet, signal-to-noise line",
+          "state": "published minimum",
+          "grade": "claimed"
+        },
+        "halo_mm": {
+          "value": 0.5533,
+          "unit": "mm",
+          "source": "cui_2012_halo",
+          "locator": "figure 4, Gen III halo diameter",
+          "state": "Gen III tube, measured at the tube face",
+          "grade": "documented"
+        }
+      }
+    },
+    {
+      "device_id": "pvs7",
+      "canonical_name": "AN/PVS-7",
+      "family": "nvg",
+      "maker": "Night Vision Devices",
+      "country": "US",
+      "class_names": [
+        "AN/PVS-7",
+        "PVS-7"
+      ],
+      "aliases": [
+        "pvs7"
+      ],
+      "keywords": [
+        "pvs7"
+      ],
+      "values": {
+        "snr": {
+          "value": 12,
+          "unit": "ratio",
+          "source": "anvs_pvs7",
+          "locator": "datasheet, signal-to-noise range",
+          "state": "lower bound of the published 12 to 20 range",
+          "grade": "claimed"
+        },
+        "halo_mm": {
+          "value": 0.2388,
+          "unit": "mm",
+          "source": "cui_2012_halo",
+          "locator": "figure 4, Gen II+ halo diameter",
+          "state": "Gen II+ tube, measured at the tube face",
+          "grade": "documented"
+        }
+      }
+    },
+    {
+      "device_id": "pvs5",
+      "canonical_name": "AN/PVS-5",
+      "family": "nvg",
+      "maker": "Night Vision Devices",
+      "country": "US",
+      "class_names": [
+        "AN/PVS-5",
+        "PVS-5"
+      ],
+      "aliases": [
+        "pvs5"
+      ],
+      "keywords": [
+        "pvs5"
+      ],
+      "values": {
+        "resolution_lpmm": {
+          "value": 28,
+          "unit": "lp/mm",
+          "source": "aee_sensor_device_library",
+          "locator": "NVG table, AN/PVS-5 row",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "halo_mm": {
+          "value": 0.2388,
+          "unit": "mm",
+          "source": "cui_2012_halo",
+          "locator": "figure 4, Gen II+ halo diameter",
+          "state": "Gen II+ tube, measured at the tube face",
+          "grade": "documented"
+        }
+      }
+    },
+    {
+      "device_id": "russian_1pn138",
+      "canonical_name": "1PN138 / 1PN97",
+      "family": "nvg",
+      "maker": "NPZ",
+      "country": "RU",
+      "class_names": [
+        "1PN138",
+        "1PN97"
+      ],
+      "aliases": [
+        "1pn138",
+        "1pn97"
+      ],
+      "keywords": [
+        "1pn138",
+        "1pn97"
+      ],
+      "values": {}
+    },
+    {
+      "device_id": "russian_1pn93",
+      "canonical_name": "1PN93",
+      "family": "nvg",
+      "maker": "NPZ",
+      "country": "RU",
+      "class_names": [
+        "1PN93"
+      ],
+      "aliases": [
+        "1pn93"
+      ],
+      "keywords": [
+        "1pn93"
+      ],
+      "values": {}
+    },
+    {
+      "device_id": "russian_1pn63",
+      "canonical_name": "1PN63 / 1PN58",
+      "family": "nvg",
+      "maker": "NPZ",
+      "country": "RU",
+      "class_names": [
+        "1PN63",
+        "1PN58"
+      ],
+      "aliases": [
+        "1pn63",
+        "1pn58"
+      ],
+      "keywords": [
+        "1pn63",
+        "1pn58"
+      ],
+      "values": {
+        "resolution_lpmm": {
+          "value": 30,
+          "unit": "lp/mm",
+          "source": "aee_sensor_device_library",
+          "locator": "NVG table, 1PN58 and 1PN63 rows",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "device_id": "vanilla_gen3",
+      "canonical_name": "NVGoggles (Gen 3)",
+      "family": "nvg",
+      "maker": "",
+      "country": "US",
+      "class_names": [
+        "NVGoggles",
+        "NVGoggles_INDEP",
+        "nvgen3"
+      ],
+      "aliases": [],
+      "keywords": [
+        "nvgen3",
+        "nvgoggles_indep"
+      ],
+      "values": {
+        "halo_mm": {
+          "value": 0.5533,
+          "unit": "mm",
+          "source": "cui_2012_halo",
+          "locator": "figure 4, Gen III halo diameter",
+          "state": "Gen III tube, measured at the tube face",
+          "grade": "documented"
+        }
+      }
+    },
+    {
+      "device_id": "vanilla_gen2",
+      "canonical_name": "NVGoggles_OPFOR (Gen 2)",
+      "family": "nvg",
+      "maker": "",
+      "country": "OPFOR",
+      "class_names": [
+        "NVGoggles_OPFOR",
+        "nvgen2"
+      ],
+      "aliases": [],
+      "keywords": [
+        "nvgen2",
+        "nvgoggles_opfor"
+      ],
+      "values": {
+        "halo_mm": {
+          "value": 0.2388,
+          "unit": "mm",
+          "source": "cui_2012_halo",
+          "locator": "figure 4, Gen II+ halo diameter",
+          "state": "Gen II+ tube, measured at the tube face",
+          "grade": "documented"
+        }
+      }
+    }
+  ]
+}

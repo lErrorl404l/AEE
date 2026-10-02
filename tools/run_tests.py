@@ -77,6 +77,7 @@ def main():
         "tools/tests/test_cbrn.py",
         "tools/tests/test_device_coverage.py",
         "tools/tests/test_device_wiring.py",
+        "tools/tests/test_device_runtime.py",
         "tools/tests/test_ammo_database.py",
         "tools/tests/test_ballistic_drag.py",
         "tools/tests/test_supersonic_trace.py",

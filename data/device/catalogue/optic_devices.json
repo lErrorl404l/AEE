@@ -1,0 +1,698 @@
+{
+  "retrieved": "2026-10-02",
+  "note": "Rifle optic entries. Every value comes from the rifle optic table of the AEE sensor device library, a tier-5 compilation, so every value is grade claimed.",
+  "sources": [],
+  "entries": [
+    {
+      "device_id": "active_nv",
+      "canonical_name": "Active NVG or thermal sight",
+      "family": "optic",
+      "maker": "",
+      "country": "",
+      "class_names": [
+        "1PN51",
+        "1PN93",
+        "1PN120",
+        "NVS"
+      ],
+      "aliases": [
+        "1pn51",
+        "1pn93",
+        "1pn120",
+        "nvs",
+        "nvg",
+        "thermal"
+      ],
+      "keywords": [
+        "1pn51",
+        "1pn93",
+        "1pn120",
+        "nvs",
+        "nvg",
+        "thermal"
+      ],
+      "values": {
+        "magnification": {
+          "value": 3.5,
+          "unit": "ratio",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, Active NVG sight row, magnification column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "objective_mm": {
+          "value": 50,
+          "unit": "mm",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, Active NVG sight row, objective column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "fov_deg": {
+          "value": 5,
+          "unit": "deg",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, Active NVG sight row, field-of-view column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "weight_kg": {
+          "value": 2.0,
+          "unit": "kg",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, Active NVG sight row, weight column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "exit_pupil_mm": {
+          "value": 14,
+          "unit": "mm",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optics physics paragraph, exit pupil = objective / magnification",
+          "state": "class value stated in the compilation",
+          "grade": "claimed"
+        },
+        "active": {
+          "value": "active",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optics physics paragraph, active optics add weight",
+          "state": "class value stated in the compilation",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "device_id": "variable_sniper",
+      "canonical_name": "Variable precision optic",
+      "family": "optic",
+      "maker": "",
+      "country": "",
+      "class_names": [
+        "ATACR",
+        "PM II",
+        "Mark 5",
+        "5-25x56"
+      ],
+      "aliases": [
+        "atacr",
+        "pmii",
+        "pm2",
+        "mark5",
+        "5-25"
+      ],
+      "keywords": [
+        "atacr",
+        "pmii",
+        "mark5",
+        "525"
+      ],
+      "values": {
+        "magnification": {
+          "value": 10,
+          "unit": "ratio",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, 5-25x class row, magnification column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "objective_mm": {
+          "value": 56,
+          "unit": "mm",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, 5-25x class row, objective column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "fov_deg": {
+          "value": 3,
+          "unit": "deg",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, 5-25x class row, field-of-view column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "weight_kg": {
+          "value": 1.05,
+          "unit": "kg",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, 5-25x class row, weight column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "exit_pupil_mm": {
+          "value": 5.6,
+          "unit": "mm",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optics physics paragraph, exit pupil = objective / magnification",
+          "state": "class value stated in the compilation",
+          "grade": "claimed"
+        },
+        "active": {
+          "value": "passive",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optics physics paragraph, active optics add weight",
+          "state": "class value stated in the compilation",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "device_id": "fixed_10x",
+      "canonical_name": "Fixed 10x sniper optic",
+      "family": "optic",
+      "maker": "",
+      "country": "",
+      "class_names": [
+        "Leupold Mark 4",
+        "Mark 4",
+        "10x"
+      ],
+      "aliases": [
+        "mark4",
+        "10x"
+      ],
+      "keywords": [
+        "mark4",
+        "10x"
+      ],
+      "values": {
+        "magnification": {
+          "value": 10,
+          "unit": "ratio",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, Leupold Mark 4 row, magnification column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "objective_mm": {
+          "value": 40,
+          "unit": "mm",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, Leupold Mark 4 row, objective column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "fov_deg": {
+          "value": 3.5,
+          "unit": "deg",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, Leupold Mark 4 row, field-of-view column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "weight_kg": {
+          "value": 0.68,
+          "unit": "kg",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, Leupold Mark 4 row, weight column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "exit_pupil_mm": {
+          "value": 4,
+          "unit": "mm",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optics physics paragraph, exit pupil = objective / magnification",
+          "state": "class value stated in the compilation",
+          "grade": "claimed"
+        },
+        "active": {
+          "value": "passive",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optics physics paragraph, active optics add weight",
+          "state": "class value stated in the compilation",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "device_id": "variable_1_4x",
+      "canonical_name": "Variable 1-4x combat optic",
+      "family": "optic",
+      "maker": "",
+      "country": "",
+      "class_names": [
+        "SpecterDR",
+        "Specter DR",
+        "1-4x",
+        "1-6x",
+        "LDS"
+      ],
+      "aliases": [
+        "specterdr",
+        "1-4",
+        "1-6",
+        "1x4",
+        "1x6",
+        "lds"
+      ],
+      "keywords": [
+        "specterdr",
+        "14x",
+        "16x",
+        "lds"
+      ],
+      "values": {
+        "magnification": {
+          "value": 4,
+          "unit": "ratio",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, SpecterDR row, magnification column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "objective_mm": {
+          "value": 30,
+          "unit": "mm",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, SpecterDR row, objective column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "fov_deg": {
+          "value": 8,
+          "unit": "deg",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, SpecterDR row, field-of-view column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "weight_kg": {
+          "value": 0.6,
+          "unit": "kg",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, SpecterDR row, weight column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "exit_pupil_mm": {
+          "value": 7.5,
+          "unit": "mm",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optics physics paragraph, exit pupil = objective / magnification",
+          "state": "class value stated in the compilation",
+          "grade": "claimed"
+        },
+        "active": {
+          "value": "passive",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optics physics paragraph, active optics add weight",
+          "state": "class value stated in the compilation",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "device_id": "pso_class",
+      "canonical_name": "PSO-1 and POSP class",
+      "family": "optic",
+      "maker": "",
+      "country": "",
+      "class_names": [
+        "PSO-1",
+        "POSP",
+        "1P78",
+        "Kashtan",
+        "1P69",
+        "Hyperon"
+      ],
+      "aliases": [
+        "pso",
+        "posp",
+        "1p78",
+        "kashtan",
+        "1p69",
+        "hyperon"
+      ],
+      "keywords": [
+        "pso",
+        "posp",
+        "1p78",
+        "kashtan",
+        "1p69",
+        "hyperon"
+      ],
+      "values": {
+        "magnification": {
+          "value": 4,
+          "unit": "ratio",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, PSO-1 row, magnification column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "objective_mm": {
+          "value": 24,
+          "unit": "mm",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, PSO-1 row, objective column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "fov_deg": {
+          "value": 6,
+          "unit": "deg",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, PSO-1 row, field-of-view column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "weight_kg": {
+          "value": 0.6,
+          "unit": "kg",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, PSO-1 row, weight column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "exit_pupil_mm": {
+          "value": 6,
+          "unit": "mm",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optics physics paragraph, exit pupil = objective / magnification",
+          "state": "class value stated in the compilation",
+          "grade": "claimed"
+        },
+        "active": {
+          "value": "passive",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optics physics paragraph, active optics add weight",
+          "state": "class value stated in the compilation",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "device_id": "prism_4x",
+      "canonical_name": "Fixed 4x prism sight",
+      "family": "optic",
+      "maker": "",
+      "country": "",
+      "class_names": [
+        "ACOG",
+        "TA31",
+        "TA11",
+        "M150 RCO",
+        "SUSAT",
+        "ZF",
+        "4x"
+      ],
+      "aliases": [
+        "acog",
+        "ta31",
+        "ta11",
+        "rco",
+        "susat",
+        "zf",
+        "4x"
+      ],
+      "keywords": [
+        "acog",
+        "ta31",
+        "ta11",
+        "rco",
+        "susat",
+        "4x"
+      ],
+      "values": {
+        "magnification": {
+          "value": 4,
+          "unit": "ratio",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, ACOG TA31 row, magnification column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "objective_mm": {
+          "value": 32,
+          "unit": "mm",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, ACOG TA31 row, objective column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "fov_deg": {
+          "value": 7,
+          "unit": "deg",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, ACOG TA31 row, field-of-view column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "weight_kg": {
+          "value": 0.42,
+          "unit": "kg",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, ACOG TA31 row, weight column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "exit_pupil_mm": {
+          "value": 8,
+          "unit": "mm",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optics physics paragraph, exit pupil = objective / magnification",
+          "state": "class value stated in the compilation",
+          "grade": "claimed"
+        },
+        "active": {
+          "value": "passive",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optics physics paragraph, active optics add weight",
+          "state": "class value stated in the compilation",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "device_id": "red_dot",
+      "canonical_name": "Red dot sight",
+      "family": "optic",
+      "maker": "",
+      "country": "",
+      "class_names": [
+        "CompM4",
+        "M68",
+        "T-2",
+        "1P87",
+        "Red Dot",
+        "Reflex"
+      ],
+      "aliases": [
+        "compm",
+        "t2",
+        "m68",
+        "1p87",
+        "reddot",
+        "reflex"
+      ],
+      "keywords": [
+        "compm",
+        "m68",
+        "1p87",
+        "reddot",
+        "reflex"
+      ],
+      "values": {
+        "magnification": {
+          "value": 1,
+          "unit": "ratio",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, CompM4 row, magnification column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "objective_mm": {
+          "value": 23,
+          "unit": "mm",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, CompM4 row, objective column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "fov_deg": {
+          "value": 0,
+          "unit": "deg",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, CompM4 row, field-of-view column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "weight_kg": {
+          "value": 0.27,
+          "unit": "kg",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, CompM4 row, weight column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "exit_pupil_mm": {
+          "value": 0,
+          "unit": "mm",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optics physics paragraph, exit pupil = objective / magnification",
+          "state": "class value stated in the compilation",
+          "grade": "claimed"
+        },
+        "active": {
+          "value": "passive",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optics physics paragraph, active optics add weight",
+          "state": "class value stated in the compilation",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "device_id": "holographic",
+      "canonical_name": "Holographic sight",
+      "family": "optic",
+      "maker": "",
+      "country": "",
+      "class_names": [
+        "EOTech EXPS3",
+        "EXPS",
+        "553"
+      ],
+      "aliases": [
+        "eotech",
+        "exps",
+        "553"
+      ],
+      "keywords": [
+        "eotech",
+        "exps",
+        "553"
+      ],
+      "values": {
+        "magnification": {
+          "value": 1,
+          "unit": "ratio",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, EOTech EXPS3 row, magnification column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "objective_mm": {
+          "value": 0,
+          "unit": "mm",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, EOTech EXPS3 row, objective column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "fov_deg": {
+          "value": 0,
+          "unit": "deg",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, EOTech EXPS3 row, field-of-view column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "weight_kg": {
+          "value": 0.32,
+          "unit": "kg",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, EOTech EXPS3 row, weight column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "exit_pupil_mm": {
+          "value": 0,
+          "unit": "mm",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optics physics paragraph, exit pupil = objective / magnification",
+          "state": "class value stated in the compilation",
+          "grade": "claimed"
+        },
+        "active": {
+          "value": "passive",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optics physics paragraph, active optics add weight",
+          "state": "class value stated in the compilation",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "device_id": "m145_class",
+      "canonical_name": "M145 MGO and C79",
+      "family": "optic",
+      "maker": "",
+      "country": "",
+      "class_names": [
+        "M145 MGO",
+        "C79",
+        "MGO"
+      ],
+      "aliases": [
+        "m145",
+        "c79",
+        "mgo"
+      ],
+      "keywords": [
+        "m145",
+        "c79",
+        "mgo"
+      ],
+      "values": {
+        "magnification": {
+          "value": 3.4,
+          "unit": "ratio",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, M145 MGO row, magnification column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "objective_mm": {
+          "value": 28,
+          "unit": "mm",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, M145 MGO row, objective column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "fov_deg": {
+          "value": 8.5,
+          "unit": "deg",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, M145 MGO row, field-of-view column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "weight_kg": {
+          "value": 0.68,
+          "unit": "kg",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optic table, M145 MGO row, weight column",
+          "state": "as published in the compilation",
+          "grade": "claimed"
+        },
+        "exit_pupil_mm": {
+          "value": 8.2,
+          "unit": "mm",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optics physics paragraph, exit pupil = objective / magnification",
+          "state": "class value stated in the compilation",
+          "grade": "claimed"
+        },
+        "active": {
+          "value": "passive",
+          "unit": "enum",
+          "source": "aee_sensor_device_library",
+          "locator": "rifle optics physics paragraph, active optics add weight",
+          "state": "class value stated in the compilation",
+          "grade": "claimed"
+        }
+      }
+    }
+  ]
+}
