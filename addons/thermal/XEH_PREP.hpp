@@ -39,6 +39,7 @@ PREPS(display,applyClothingThermal);
 PREPS(display,applyWeaponBarrelHeat);
 PREPS(display,applyRainDroplets);
 PREPS(display,getThermalSelections);
+PREPS(display,getThermalSelectionLag);
 PREPS(display,thermalPalette);
 PREPS(display,calculateVehicleHeat);
 PREPS(display,applyContactConduction);
