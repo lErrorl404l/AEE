@@ -116,7 +116,7 @@
       "provenance": [
         "addons/mobility/functions/fnc_calculateTraction.sqf:54",
         "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:241",
-        "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:318",
+        "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:322",
         "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:62"
       ],
       "token": "CAManBase"
@@ -237,8 +237,8 @@
         "addons/thermal/functions/display/fnc_applyBuildingThermal.sqf:157",
         "addons/thermal/functions/display/fnc_applyBuildingThermal.sqf:165",
         "addons/thermal/functions/display/fnc_applyClothingThermal.sqf:119",
-        "addons/thermal/functions/display/fnc_applyExhaustHeat.sqf:60",
-        "addons/thermal/functions/display/fnc_applyImpactHeat.sqf:53",
+        "addons/thermal/functions/display/fnc_applyExhaustHeat.sqf:68",
+        "addons/thermal/functions/display/fnc_applyImpactHeat.sqf:55",
         "addons/thermal/functions/display/fnc_getThermalSelections.sqf:31",
         "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:205",
         "addons/thermal/functions/surface/fnc_getSelectionMaterials.sqf:154"
