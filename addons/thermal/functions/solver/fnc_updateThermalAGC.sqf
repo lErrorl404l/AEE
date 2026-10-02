@@ -163,17 +163,38 @@ private _manMaxC = missionNamespace getVariable [QGVAR(thermalManualMaxC), 120];
 if !(_manMinC isEqualType 0) then { _manMinC = -40; };
 if !(_manMaxC isEqualType 0) then { _manMaxC = 120; };
 if (_manMaxC <= _manMinC) then { _manMaxC = _manMinC + 1; };
-private _fullSpan = ([_manMaxC, _groundEps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp, _traceOn] call FUNC(calculateBandRadiance))
-    - ([_manMinC, _groundEps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp, _traceOn] call FUNC(calculateBandRadiance));
-_fullSpan = _fullSpan max 1e-6;
+private _fullMin = [_manMinC, _groundEps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp, _traceOn] call FUNC(calculateBandRadiance);
+private _fullMax = [_manMaxC, _groundEps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp, _traceOn] call FUNC(calculateBandRadiance);
+private _fullSpan = (_fullMax - _fullMin) max 1e-6;
 // Published so the display pass can convert the radiance window to its
 // equivalent temperature span for the FPN amplitude (fnc_applyThermalVision).
 missionNamespace setVariable [QGVAR(agcFullSpan), _fullSpan];
-if (_radMax - _radMin < _fullSpan / 8) then {
-    // Scene spread is under the max-gain floor: expand the window to the
-    // floor (gain exactly 8), centred on the scene mean.
+// ─── Max-gain floor regime (sticky) ──────────────────────────────────────
+// The window span is floor-bound at fullSpan/8 (FLIR max gain 8).  The raw
+// scene range can sit ON that floor as objects heat, so a plain per-pass
+// `if (raw < floor)` flips the span between the raw range and the floor and
+// re-quantises every selection.  Hold the regime instead: enter the floor
+// whenever the raw range falls below it, so the max-gain cap is never
+// violated, and leave it only when the raw range exceeds the floor by
+// _AGC_FLOOR_MARGIN (25 percent).  A range hovering at the boundary holds
+// the floor, so `b` cannot jump between the two gains.  The margin is
+// larger than the dead-band (1 percent) and the IIR step, so the regime
+// cannot change on two adjacent passes.
+private _AGC_FLOOR_MARGIN = 0.25;
+private _floorSpan = _fullSpan / 8;
+private _rawSpan = (_radMax - _radMin) max 0;
+private _atFloor = missionNamespace getVariable [QGVAR(agcAtFloor), true];
+if !(_atFloor isEqualType true) then { _atFloor = true; };
+if (_rawSpan < _floorSpan) then {
+    _atFloor = true;
+} else {
+    if (_rawSpan > _floorSpan * (1 + _AGC_FLOOR_MARGIN)) then { _atFloor = false; };
+};
+missionNamespace setVariable [QGVAR(agcAtFloor), _atFloor];
+if (_atFloor) then {
+    // Expand (or hold) the window to the floor, centred on the scene mean.
     private _mid = (_radMin + _radMax) / 2;
-    private _half = (_fullSpan / 8) / 2;
+    private _half = _floorSpan / 2;
     _radMin = _mid - _half;
     _radMax = _mid + _half;
 };
@@ -242,11 +263,17 @@ missionNamespace setVariable [QGVAR(objAgcRad), _objWindows];
 // ─── IIR temporal smoothing (FLIR AGC filter) ─────────────────────────────
 // n' = n * alpha + n'prev * (1 - alpha), alpha from the tick interval.
 // ~0.5 s time constant: the mapping tracks the scene without hunting.
-private _prevMin = missionNamespace getVariable [QGVAR(agcRadMin), _radMin];
-private _prevMax = missionNamespace getVariable [QGVAR(agcRadMax), _radMax];
+private _prevMin = missionNamespace getVariable [QGVAR(agcRadMin), -1];
+private _prevMax = missionNamespace getVariable [QGVAR(agcRadMax), -1];
 if (!(_prevMin isEqualType 0) || !(_prevMax isEqualType 0) || _prevMin >= _prevMax) then {
-    _prevMin = _radMin;
-    _prevMax = _radMax;
+    // First publication: until now the display mapped through the no-AGC
+    // fallback (the manual window _fullMin.._fullMax).  Seed the IIR from
+    // that same window so the gain change to the max-gain floor ramps over
+    // the filter time constant instead of stepping in one frame.  This is
+    // the window side of the regime stickiness: the regime can change at
+    // the IIR rate, never between two adjacent passes.
+    _prevMin = _fullMin;
+    _prevMax = _fullMax;
 };
 if (diag_deltaTime > 0) then {
     private _a = diag_deltaTime / (diag_deltaTime + 0.5);
