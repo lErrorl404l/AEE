@@ -40,6 +40,14 @@ if (!isNil "_player" && {!isNull _player}) then {
     private _vehicles = [200, _player] call FUNC(getNearbyVehicles);
     {
         if (abs speed _x < 1) then { continue; };   // parked vehicles do not pass
+        // Terrain and geometry limits: a vehicle that cannot cross the
+        // ground it is on does not traverse it, so it applies no passage
+        // damage. The slope is the ground tilt under the vehicle, read from
+        // its own orientation. Land vehicles only.
+        if !(_x isKindOf "LandVehicle") then { continue; };
+        private _up = vectorUp _x;
+        private _slopeDeg = acos ((_up select 2) max -1 min 1) * 57.2957795;
+        if !(([_x, _slopeDeg] call FUNC(calculateTerrainLimits)) select 3) then { continue; };
         private _groundPressure = (getMass _x) / 8;
         _coneIndex = _coneIndex - (_groundPressure * _damageRate * (_interval / 5));
     } forEach _vehicles;

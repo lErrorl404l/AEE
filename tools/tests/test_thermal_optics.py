@@ -10,8 +10,14 @@ Run: python3 -m unittest tools.tests.test_thermal_optics -v
 
 import math
 import re
+import sys
 import unittest
 from pathlib import Path
+
+# The pure sensor-resolvability kernel is executed from its real SQF, so the
+# shared mini-interpreter is imported the way the other SQF-driven suites do.
+sys.path.insert(0, str(Path(__file__).parent))
+from sqf_lite import run_sqf  # noqa: E402
 
 # Cross-model consistency: the optics moon term must stay consistent with
 # the verified lunar illuminance model (Krisciunas & Schaefer 1991) in
@@ -5705,3 +5711,102 @@ class TestSelectionSunExposure(unittest.TestCase):
             encoding="utf-8"
         )
         self.assertIn("getSelectionSunExposure", prep)
+
+
+class TestThermalResolvabilityWiring(unittest.TestCase):
+    """The sensor-resolution layer now drives the paint (issue #215 family).
+
+    Three pure kernels existed with no production caller:
+      - fnc_calculateSensorThreshold derives the minimum resolvable contrast
+        from the mounted device NETD;
+      - fnc_evaluateThermalEdge decides a LOCAL-contrast edge against the
+        object's other selections;
+      - fnc_resolveThermalTarget applies the Johnson spatial test.
+    fnc_applySelectionThermal now calls them in that order and blends a
+    selection the sensor cannot resolve toward its local background colour.
+    The blend is the pure fnc_resolveThermalVisibility, executed here from the
+    shipped SQF, not a Python mirror.
+    """
+
+    _VIS = _THERMAL / "solver" / "fnc_resolveThermalVisibility.sqf"
+
+    @classmethod
+    def setUpClass(cls):
+        cls.code = _read_sqf("fnc_resolveThermalVisibility.sqf", "thermal")
+        cls.paint = _code_only(_read_sqf("fnc_applySelectionThermal.sqf", "thermal"))
+
+    def _vis(self, contrast, threshold, resolvable, line_pairs):
+        return run_sqf(self._VIS, [contrast, threshold, resolvable, line_pairs])
+
+    def test_below_threshold_selection_is_pulled_toward_background(self):
+        # (i) A contrast below the sensor margin resolves to a fraction below
+        # one, so the paint pulls it toward the local background colour.
+        vis = self._vis(0.001, 0.004349, True, 5.0)
+        self.assertGreater(vis, 0.0)
+        self.assertLess(vis, 1.0)
+        self.assertAlmostEqual(vis, 0.001 / 0.004349, places=9)
+
+    def test_above_threshold_selection_keeps_full_contrast(self):
+        # (ii) At or above the margin the fraction is one: no blend.
+        self.assertEqual(self._vis(0.5, 0.004349, True, 5.0), 1.0)
+        self.assertEqual(self._vis(0.004349, 0.004349, True, 5.0), 1.0)
+
+    def test_unresolved_target_is_damped_even_at_high_contrast(self):
+        # (iii) A strong contrast edge the Johnson test cannot resolve is still
+        # damped by the spatial term: contrast detection is not sufficient.
+        vis = self._vis(0.9, 0.004349, False, 0.5)
+        self.assertAlmostEqual(vis, 0.5, places=9)
+        self.assertLess(vis, 1.0)
+
+    def test_zero_contrast_reads_as_background(self):
+        self.assertEqual(self._vis(0.0, 0.004349, True, 5.0), 0.0)
+
+    def test_a_non_positive_threshold_cannot_blank_the_scene(self):
+        # A bad threshold must not divide by zero.  The caller substitutes the
+        # documented reference; the kernel still returns full contrast.
+        self.assertEqual(self._vis(0.5, 0.0, True, 5.0), 1.0)
+
+    def test_unresolvable_device_falls_back_without_error(self):
+        # (iv) fnc_getThermalDeviceProperties documents the uncooled 0.05 C
+        # microbolometer fallback and the threshold kernel refuses a bad NETD
+        # with -1.  The paint path substitutes the reference value and keeps
+        # the model live.
+        self.assertIn("getThermalDeviceProperties", self.paint)
+        self.assertIn("FUNC(calculateSensorThreshold)", self.paint)
+        self.assertIn("_threshold = 0.004349;", self.paint)
+        device = _read_sqf("fnc_getThermalDeviceProperties.sqf", "thermal")
+        self.assertIn("[0.05, 640, 480, 1.5, 30, 0]", device)
+
+    def test_the_three_kernels_run_in_the_header_order(self):
+        # Threshold from the device, then the edge, then the Johnson test.
+        i_thr = self.paint.index("FUNC(calculateSensorThreshold)")
+        i_edge = self.paint.index("FUNC(evaluateThermalEdge)")
+        i_spatial = self.paint.index("FUNC(resolveThermalTarget)")
+        i_vis = self.paint.index("FUNC(resolveThermalVisibility)")
+        self.assertLess(i_thr, i_edge)
+        self.assertLess(i_edge, i_spatial)
+        self.assertLess(i_spatial, i_vis)
+
+    def test_the_background_is_one_scan_per_object_over_other_selections(self):
+        # The paint is driven one selection per call, so the object's selection
+        # names are accumulated and the mean is recomputed at most once per
+        # repaint interval: O(n) per object per interval, O(1) per call.
+        self.assertIn("QGVAR(selBandRad)", self.paint)
+        self.assertIn("QGVAR(selBandRadNames)", self.paint)
+        self.assertIn("QGVAR(selBandRadBg)", self.paint)
+        self.assertIn("_objNames pushBackUnique _x", self.paint)
+        self.assertIn(
+            '_radMap getOrDefault [format ["%1|%2", str _obj, _x], -1]', self.paint
+        )
+        self.assertIn("_bgSum - _ownPrev", self.paint)
+        self.assertIn("< _interval", self.paint)
+
+    def test_a_failed_target_is_blended_toward_its_background_colour(self):
+        self.assertIn("_bBg + ((_b - _bBg) * _vis)", self.paint)
+        self.assertIn("if (_vis < 1) then", self.paint)
+
+    def test_the_new_kernel_is_registered(self):
+        prep = (_REPO_ROOT / "addons" / "thermal" / "XEH_PREP.hpp").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("PREPS(solver,resolveThermalVisibility);", prep)

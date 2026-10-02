@@ -43,6 +43,17 @@ private _base = _vehicle getVariable [QGVAR(baseMassKg), -1];
 if !(_base isEqualType 0) then { _base = -1; };
 if (_base < 0) then {
     _base = getMass _vehicle;
+    // The engine exposes no mass for a class the config override does not
+    // cover. The sourced-first estimate supplies one then; the CBA setting
+    // gates only its modelled branch, so the estimate is reached and the
+    // switch is live. A positive engine mass always wins, so the runtime
+    // accretion coupling is never overwritten by a modelled value.
+    if (_base <= 0) then {
+        private _estimate = [_vehicle] call FUNC(estimateVehicleMass);
+        if ((_estimate select 5) != "unavailable" && {(_estimate select 0) > 0}) then {
+            _base = _estimate select 0;
+        };
+    };
     _vehicle setVariable [QGVAR(baseMassKg), _base];
 };
 

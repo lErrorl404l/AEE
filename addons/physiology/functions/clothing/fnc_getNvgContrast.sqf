@@ -12,13 +12,37 @@ hole against the NIR-bright background.
   P_detect   = 1 / (1 + (N50/N)^k)
 
 The uniform's NIR reflectance comes from fnc_getCamouflageProperties.
-The result feeds the NVG visibility (the optics module reads it to
-scale the soldier's brightness in the NVG tube).
+
+THIS IS A DETECTABILITY COEFFICIENT, NOT AN ALBEDO, AND IT HAS NO VALID
+BRIGHTNESS CONSUMER IN THIS REPOSITORY.  An earlier attempt to use it as
+one was reverted.  The engine limit is recorded here so it is not hunted
+again.
+
+  - The engine NVG view (vision mode 1) is a client-side screen-space
+    post-process.  It has no per-object NIR stage, so no engine path
+    reads a per-soldier NIR value.
+  - A brightness render is flat or absent.  setObjectTexture REPLACES
+    the object's texture with one solid colour and destroys the uniform
+    detail (rejected: the repository standard is "not flat").  There is
+    no per-instance multiply.  setObjectMaterial swaps to a static rvmat,
+    and the repository ships one rvmat (thermal/data/ti_fpn.rvmat, white,
+    no darkening).  A per-soldier dim needs a set of darkened rvmats,
+    which is an invented asset class.
+  - The coefficient is not a brightness even in principle.  It is the
+    MATCH to the vegetation background, so a white or snow uniform (a
+    poor match) scores 0 exactly as a black uniform does.  Only the NIR
+    albedo (fnc_getNirPerSelection, the signature the tube actually
+    sees) would order white bright, black dark, vegetation mid.
+
+The correct home for this coefficient is an AI-detection model (the
+P_detect relation above).  This repository ships no such model.  The
+function and fnc_getNirPerSelection are kept as the researched
+detectability data with no runtime consumer.
 
 Arguments:
   0: unit (OBJECT, default player)
 
-Returns the NVG contrast coefficient 0..1:
+Returns the detectability coefficient 0..1:
   1.0 = perfect blend (uniform NIR matches background)
   0.0 = maximum contrast (the black hole)
 */

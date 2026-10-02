@@ -93,28 +93,11 @@ private _protectionMM = if (_unit isKindOf "Man") then {
         default { 3 };    // no armour on that slot: soft tissue
     };
 } else {
-    // The real armour database (issue #168): the STANAG 4569 level and
-    // the RHA-equivalent thickness from the researched vehicle table.
-    // The database is authoritative when it resolves the class; the
-    // armour-pool ladder is the fallback for unresolved classes.
-    private _vehArmour = [_unit] call FUNC(getVehicleArmour);
-    private _rha = _vehArmour select 1;
-    if (_rha > 0) then {
-        // The researched RHA equivalent: L2 ~20 mm, L4 ~60 mm,
-        // L5 ~120 mm, L6 ~650 mm.  The gate compares the round's
-        // penetration against this.
-        _rha
-    } else {
-        private _armorPool = getNumber (configOf _unit >> "armor");
-        switch (true) do {
-            case (_armorPool >= 1000): { 100 };  // MBT: ~L6 (APFSDS-class)
-            case (_armorPool >= 500):  { 45 };   // IFV/APC tracked: ~L4/L5
-            case (_armorPool >= 300):  { 32 };   // IFV/APC wheeled: ~L4
-            case (_armorPool >= 130):  { 18 };   // MRAP: ~L3
-            case (_armorPool >= 70):   { 8 };    // light protected: ~L2
-            default                    { 4 };    // soft skin
-        };
-    };
+    // The dynamic protection derivation (issue #170): fnc_deriveProtection
+    // prefers the researched #168 table and falls back to the mass + class
+    // hierarchy band, so a modded vehicle with no table entry still gets a
+    // researched protection value instead of the static armour-pool ladder.
+    ([_unit] call FUNC(deriveProtection)) select 1
 };
 
 // The gate: does the round's RHA penetration defeat the protection?

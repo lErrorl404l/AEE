@@ -38,7 +38,7 @@ if (!isNull _weapon) then { _optic = primaryWeaponItems _weapon param [2, ""]; }
 if (_optic == "") exitWith { [4, 32, 7, 0.42, 8, 0] };
 
 private _o = toLower _optic;
-switch (true) do {
+private _fallback = switch (true) do {
     // ── Active NVG/thermal weapon sights (the fusion/night optics) ──
     case (_o find "1pn" >= 0 ||
           _o find "nvs" >= 0 ||
@@ -101,3 +101,30 @@ switch (true) do {
           _o find "mgo" >= 0):             { [3.4, 28, 8.5, 0.68, 8.2, 0] };
     default                                  { [4, 32, 7, 0.42, 8, 0] };
 };
+
+// ─── Corpus route: data/device/, family "optic" (issue #215) ─────────────
+// The device corpus is the authority.  fnc_getDeviceData returns the optic
+// value row [magnification, objective_mm, fov_deg, weight_kg,
+// exit_pupil_mm, active], the same contract this function returns, so a
+// corpus figure overrides the static fallback above per field.  A field the
+// corpus leaves absent arrives as 0 or "" and the fallback stands, and a
+// figure is never copied from a sibling device.
+private _row = [_optic, "optic"] call EFUNC(nightvision,getDeviceData);
+if (_row isEqualTo []) exitWith { _fallback };
+
+private _mag = _row select 0;
+if ((_mag isEqualType 0) && (_mag > 0)) then { _fallback set [0, _mag]; };
+private _objective = _row select 1;
+if ((_objective isEqualType 0) && (_objective > 0)) then { _fallback set [1, _objective]; };
+private _fov = _row select 2;
+if ((_fov isEqualType 0) && (_fov > 0)) then { _fallback set [2, _fov]; };
+private _weight = _row select 3;
+if ((_weight isEqualType 0) && (_weight > 0)) then { _fallback set [3, _weight]; };
+private _exitPupil = _row select 4;
+if ((_exitPupil isEqualType 0) && (_exitPupil > 0)) then { _fallback set [4, _exitPupil]; };
+// The corpus holds the word, the return contract holds 1 (active) or 0.
+private _active = _row select 5;
+if (_active == "active") then { _fallback set [5, 1]; };
+if (_active == "passive") then { _fallback set [5, 0]; };
+
+_fallback

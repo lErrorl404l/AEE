@@ -276,6 +276,13 @@ if (_mode == "EXIT") then {
     // Last resort for a model reporting no extent: the engine's own size hint,
     // floored so the solver never divides by zero.
     if (_lCharObj < 0.1) then { _lCharObj = (sizeOf _obj) max 0.1; };
+    // The largest bounding-box extent is the target's critical dimension for
+    // the Johnson angular-size test.  Read from the box already in hand, so no
+    // extra engine call.
+    private _sizeObj = abs (((_bbRealObj select 1) select 0) - ((_bbRealObj select 0) select 0));
+    _sizeObj = _sizeObj max (abs (((_bbRealObj select 1) select 1) - ((_bbRealObj select 0) select 1)));
+    _sizeObj = _sizeObj max (abs (((_bbRealObj select 1) select 2) - ((_bbRealObj select 0) select 2)));
+    if (_sizeObj <= 0) then { _sizeObj = (sizeOf _obj) max 0.1; };
     private _vSpeedObj = abs speed _obj;
     private _oxObj = [];
 
@@ -285,6 +292,128 @@ if (_mode == "EXIT") then {
     // call, cached per class, so the model geometry is read once and not on
     // this hot path.
     private _exposureArr = [_obj, _selNames] call FUNC(getSelectionSunExposure);
+
+    // ─── Sensor-resolution layer (issue #215): the three kernels' caller ──
+    // Order is the one the headers intend: derive the threshold from the
+    // mounted device, decide the local-contrast edge against the object's
+    // OTHER selections, then apply the Johnson spatial test.  The result is a
+    // resolved fraction the paint blends the band position by.
+    //
+    // The device is the viewer's, resolved once per object pass and cached by
+    // optic class.  The sensor belongs to the optic, so the cache key is the
+    // optic and not the object.
+    private _netdC = 0.05;
+    private _resX = 640;
+    // The day-optic magnification the spatial kernel's 24/mag FOV fallback
+    // consumes (fnc_getOpticProperties, issue #215).  Unity when the slot
+    // holds no recognised optic, which is the kernel's own declared fallback.
+    private _mag = 1;
+    if (_thermalOn && {!isNull _viewer}) then {
+        private _wp = vehicle _viewer;
+        private _optic = "";
+        if (!isNull _wp) then { _optic = primaryWeaponItems _wp param [2, ""]; };
+        if (_optic == "") then { _optic = hmd _viewer; };
+        // The researched sight physics.  The optic slot the device block reads
+        // is the same slot the day-optic classifier keys on, so the resolved
+        // magnification is the mounted sight's own.  Cached by optic class,
+        // like the thermal device above, so the corpus scan runs once per
+        // optic rather than once per object per tick.
+        private _opCache = missionNamespace getVariable [QGVAR(opticPropsCache), -1];
+        if (_opCache isEqualType 0) then {
+            _opCache = createHashMap;
+            missionNamespace setVariable [QGVAR(opticPropsCache), _opCache];
+        };
+        private _op = _opCache getOrDefault [_optic, []];
+        if ((count _op) < 6) then {
+            _op = [_viewer, _wp] call EFUNC(optics,getOpticProperties);
+            if ((_op isEqualType []) && {(count _op) >= 6}) then {
+                _opCache set [_optic, _op];
+            };
+        };
+        if ((_op isEqualType []) && {(count _op) >= 6}) then {
+            private _opMag = _op select 0;
+            if ((_opMag isEqualType 0) && (_opMag >= 1) && {finite _opMag}) then { _mag = _opMag; };
+        };
+        private _devCache = missionNamespace getVariable [QGVAR(devicePropsCache), -1];
+        if (_devCache isEqualType 0) then {
+            _devCache = createHashMap;
+            missionNamespace setVariable [QGVAR(devicePropsCache), _devCache];
+        };
+        private _device = _devCache getOrDefault [_optic, []];
+        if ((count _device) < 6) then {
+            _device = [_viewer, _wp] call EFUNC(thermal,getThermalDeviceProperties);
+            if ((_device isEqualType []) && {(count _device) >= 6}) then {
+                _devCache set [_optic, _device];
+            };
+        };
+        if ((_device isEqualType []) && {(count _device) >= 6}) then {
+            private _devNetd = _device select 0;
+            private _devRes = _device select 1;
+            if ((_devNetd isEqualType 0) && (_devNetd > 0) && {finite _devNetd}) then { _netdC = _devNetd; };
+            if ((_devRes isEqualType 0) && (_devRes > 0) && {finite _devRes}) then { _resX = _devRes; };
+        };
+    };
+
+    // The threshold.  A device the matcher cannot identify is the documented
+    // uncooled 0.05 C microbolometer fallback, NOT a disabled model.  If the
+    // background temperature is unusable as well, the edge kernel's declared
+    // reference value is used (0.004349, the network default at 15 C).
+    private _tBgC = _tAir;
+    if !((_tBgC isEqualType 0) && {finite _tBgC}) then { _tBgC = 15; };
+    private _threshold = [_netdC, 5, _tBgC] call FUNC(calculateSensorThreshold);
+    if !((_threshold isEqualType 0) && (_threshold > 0) && {finite _threshold}) then {
+        _threshold = 0.004349;
+    };
+
+    // The object's local background: the mean band radiance of its OTHER
+    // selections, from the previous pass.  The paint is driven one selection
+    // per call, so the object's selection NAMES are accumulated in a map and
+    // the mean is recomputed at most once per repaint interval per object.
+    // That bounds the scan to O(n) per object per interval, where n is the
+    // painted selection count (bounded by the per-class selection cache).
+    // Every other call in the interval is O(1), and the per-selection
+    // leave-one-out is O(1) from the cached sum.
+    private _radMap = missionNamespace getVariable [QGVAR(selBandRad), -1];
+    if (_radMap isEqualType 0) then {
+        _radMap = createHashMap;
+        missionNamespace setVariable [QGVAR(selBandRad), _radMap];
+    };
+    private _nameMap = missionNamespace getVariable [QGVAR(selBandRadNames), -1];
+    if (_nameMap isEqualType 0) then {
+        _nameMap = createHashMap;
+        missionNamespace setVariable [QGVAR(selBandRadNames), _nameMap];
+    };
+    private _objNames = _nameMap getOrDefault [_objKey, []];
+    {
+        _objNames pushBackUnique _x;
+    } forEach _selNames;
+    _nameMap set [_objKey, _objNames];
+
+    private _bgSum = 0;
+    private _bgCount = 0;
+    private _bgCache = missionNamespace getVariable [QGVAR(selBandRadBg), -1];
+    if (_bgCache isEqualType 0) then {
+        _bgCache = createHashMap;
+        missionNamespace setVariable [QGVAR(selBandRadBg), _bgCache];
+    };
+    private _bgEntry = _bgCache getOrDefault [_objKey, []];
+    private _bgFresh = false;
+    if ((_bgEntry isEqualType []) && {(count _bgEntry) == 3}) then {
+        if ((diag_tickTime - (_bgEntry select 2)) < _interval) then { _bgFresh = true; };
+    };
+    if (_bgFresh) then {
+        _bgSum = _bgEntry select 0;
+        _bgCount = _bgEntry select 1;
+    } else {
+        {
+            private _r = _radMap getOrDefault [format ["%1|%2", str _obj, _x], -1];
+            if ((_r isEqualType 0) && (_r > 0) && {finite _r}) then {
+                _bgSum = _bgSum + _r;
+                _bgCount = _bgCount + 1;
+            };
+        } forEach _objNames;
+        _bgCache set [_objKey, [_bgSum, _bgCount, diag_tickTime]];
+    };
 
     {
         private _sel = _x;
@@ -583,6 +712,59 @@ if (_mode == "EXIT") then {
                 _obj, _sel, _tNew, _eps, _rad
             ];
             _b = 0;
+        };
+
+        // ─── Sensor resolution: is this selection a resolvable target? ────
+        // Threshold from the device, edge against the local background of the
+        // object's OTHER selections, then the Johnson spatial test.  The three
+        // kernels are pure; this block is their caller.
+        //
+        // The background is the object mean WITHOUT this selection (its own
+        // radiance from the previous pass), so one selection does not bias the
+        // background it is compared against.  An object with no sibling
+        // selection has no local background, so the test is skipped and the
+        // selection keeps full contrast.
+        private _ownPrev = _radMap getOrDefault [_stateKey, -1];
+        private _bgRad = -1;
+        if (_bgCount >= 2) then {
+            if ((_ownPrev isEqualType 0) && (_ownPrev > 0)) then {
+                _bgRad = (_bgSum - _ownPrev) / (_bgCount - 1);
+            } else {
+                _bgRad = _bgSum / _bgCount;
+            };
+        };
+        // Keep the radiance fresh every pass so thermal vision opens on a
+        // measured background.  One hashmap write per selection.
+        _radMap set [_stateKey, _rad];
+
+        private _vis = 1;
+        if (_thermalOn && (_bgRad > 0) && (_rangeM > 0.001)) then {
+            private _edge = [_rad, _bgRad, _threshold] call FUNC(evaluateThermalEdge);
+            if ((_edge isEqualType []) && {(count _edge) >= 2}) then {
+                private _contrast = _edge select 1;
+                // Angular size: the object's largest bounding-box extent at
+                // this range.  The repository holds no per-selection extent
+                // and no per-lens thermal FOV, so the kernel's declared
+                // 24/mag day-optic fallback is used at unity magnification.
+                private _angle = _sizeObj / _rangeM;
+                private _spatial = [_angle, _resX, _mag, 0, _netdC, _contrast, _tBgC] call FUNC(resolveThermalTarget);
+                if ((_spatial isEqualType []) && {(count _spatial) >= 3}) then {
+                    _vis = [_contrast, _threshold, _spatial select 0, _spatial select 2] call FUNC(resolveThermalVisibility);
+                };
+            };
+        };
+        // A refusal from any kernel must not blank the scene: keep full
+        // contrast when the resolved fraction is unusable.
+        if !((_vis isEqualType 0) && (_vis >= 0) && {finite _vis}) then { _vis = 1; };
+
+        // Pull a target the sensor cannot resolve toward the local background
+        // colour, in the same band-position domain the palette consumes.  The
+        // blend is the area-weighted mean of target and background: a pixel the
+        // target only partly fills shows that fraction of the target.  A
+        // selection that passes keeps its full-contrast colour.
+        if (_vis < 1) then {
+            private _bBg = ((_bgRad - _agcMin) / ((_agcMax - _agcMin) max 1e-6)) max 0 min 1;
+            _b = ((_bBg + ((_b - _bBg) * _vis)) max 0 min 1);
         };
 
         // ─── Heat-colour texture paint (issue #204, MKK mechanism) ────────
