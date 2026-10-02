@@ -18,6 +18,8 @@ a TEST-HARNESS interpreter, not a general SQF engine:
                a < b  a > b  a <= b  a >= b  a == b  a != b
                a && b  a || b  !a
                (a max b)  (a min b)  (exp x)
+               toLower s  (string lower-case; the thermal paint
+                          resolver's case-insensitive slot pass)
                arr select i  [a, b] select C   (boolean select)
                args call FNC  (function value in a variable)
                FUNC(getMaterialThermal)  (resolved via the registry)
@@ -153,7 +155,7 @@ BINARY_COMMANDS = {"getVariable", "isEqualType"}
 # Unary commands applied to a following expression.  Without these the
 # parser reads the name as a variable and the operand as a new statement,
 # which is how `(count _v) == 0` raised "expected ), got _v".
-UNARY_COMMANDS = {"count", "abs"}
+UNARY_COMMANDS = {"count", "abs", "toLower"}
 
 
 @dataclass
@@ -605,39 +607,39 @@ class SqfRuntime:
                 return -self.eval(node.right)
             if node.op == "not":
                 return not self.eval(node.right)
-            l = self.eval(node.left)
-            r = self.eval(node.right)
+            left = self.eval(node.left)
+            right = self.eval(node.right)
             if node.op == "+":
-                return l + r
+                return left + right
             if node.op == "-":
-                return l - r
+                return left - right
             if node.op == "*":
-                return l * r
+                return left * right
             if node.op == "/":
-                return l / r
+                return left / right
             if node.op == "^":
-                return l**r
+                return left**right
             if node.op == "<":
-                return l < r
+                return left < right
             if node.op == ">":
-                return l > r
+                return left > right
             if node.op == "<=":
-                return l <= r
+                return left <= right
             if node.op == ">=":
-                return l >= r
+                return left >= right
             if node.op == "==":
-                return l == r
+                return left == right
             if node.op == "!=":
-                return l != r
+                return left != right
             if node.op == "&&":
-                return bool(l) and bool(r)
+                return bool(left) and bool(right)
             if node.op == "||":
-                return bool(l) or bool(r)
+                return bool(left) or bool(right)
             raise ValueError(f"unknown op {node.op}")
         if isinstance(node, MaxMin):
-            l = self.eval(node.left)
-            r = self.eval(node.right)
-            return max(l, r) if node.op == "max" else min(l, r)
+            left = self.eval(node.left)
+            right = self.eval(node.right)
+            return max(left, right) if node.op == "max" else min(left, right)
         if isinstance(node, Exp):
             return math.exp(self.eval(node.arg))
         if isinstance(node, UnaryCmd):
@@ -646,6 +648,8 @@ class SqfRuntime:
                 return len(value)
             if node.op == "abs":
                 return abs(value)
+            if node.op == "toLower":
+                return str(value).lower()
             raise ValueError(f"unknown unary command {node.op}")
         if isinstance(node, Select):
             arr = self.eval(node.arr)

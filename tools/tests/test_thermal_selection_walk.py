@@ -19,6 +19,7 @@ import unittest
 
 from tools.tests.test_thermal_optics import _read_sqf
 from tools.tests.test_exhaust_shimmer import _code_only
+from tools.tests.sqf_lite import run_sqf
 
 _REPO_ROOT = __import__("pathlib").Path(__file__).resolve().parents[2]
 _WALK = (
@@ -44,6 +45,14 @@ _SELECT_PAINT = (
     / "functions"
     / "display"
     / "fnc_resolveSelectionPaintIndex.sqf"
+)
+_SELECT_PAINT_CORE = (
+    _REPO_ROOT
+    / "addons"
+    / "thermal"
+    / "functions"
+    / "display"
+    / "fnc_resolvePaintIndexFromSelections.sqf"
 )
 
 
@@ -116,22 +125,14 @@ def _bounded_walk(root, children_of, max_depth, max_objects):
 
 
 def _resolve_paint_index(hidden, model, sel):
-    """Mirror of fnc_resolveSelectionPaintIndex.
+    """Run the REAL SQF decision, not a Python mirror.
 
-    setObjectTexture's numeric index is the class hiddenSelections position.
-    Resolve that first (exact, then case-insensitive), then fall back to the
-    default-LOD selectionNames position, else -1 (not paintable).
+    fnc_resolvePaintIndexFromSelections is the pure core that
+    fnc_resolveSelectionPaintIndex delegates to after it reads the two lists
+    from the engine.  Passing synthetic lists executes the shipped logic, so a
+    drift in the SQF fails these tests instead of passing a stale mirror.
     """
-    if sel == "":
-        return -1
-    if hidden:
-        if sel in hidden:
-            return hidden.index(sel)
-        want = sel.lower()
-        for i, name in enumerate(hidden):
-            if name.lower() == want:
-                return i
-    return model.index(sel) if sel in model else -1
+    return run_sqf(_SELECT_PAINT_CORE, [hidden, model, sel])
 
 
 class TestTurretConfigDiscovery(unittest.TestCase):
@@ -296,46 +297,69 @@ class TestLevelZeroUnchanged(unittest.TestCase):
 
 class TestPaintIndexResolution(unittest.TestCase):
     """The paint index must be the setObjectTexture position (config
-    hiddenSelections), not the default-LOD selectionNames position."""
+    hiddenSelections), not the default-LOD selectionNames position.
+
+    The four behaviour tests execute the REAL SQF core through sqf_lite on
+    synthetic lists.  The fifth is a source-lock: the engine reads in
+    fnc_resolveSelectionPaintIndex (getArray, selectionNames, isNull) cannot
+    run headlessly, so only their presence and order are asserted.
+    """
 
     def test_config_name_resolves_on_a_model_with_a_different_name_form(self):
         # The real MRAP shape: the config declares Camo1/Camo2/riotpolice
         # while the default-LOD selectionNames carry no camo name at all.
         hidden = ["Camo1", "Camo2", "riotpolice"]
         model = ["glass3", "wheel_1_1_hide", "damagehide"]
-        self.assertEqual(_resolve_paint_index(hidden, model, "Camo1"), 0)
-        self.assertEqual(_resolve_paint_index(hidden, model, "Camo2"), 1)
-        self.assertEqual(_resolve_paint_index(hidden, model, "riotpolice"), 2)
+        self.assertEqual(int(_resolve_paint_index(hidden, model, "Camo1")), 0)
+        self.assertEqual(int(_resolve_paint_index(hidden, model, "Camo2")), 1)
+        self.assertEqual(int(_resolve_paint_index(hidden, model, "riotpolice")), 2)
 
     def test_config_name_matches_case_insensitively(self):
         # The UAV shape: config Camo1 against a lower-case, reordered model.
         hidden = ["Camo1", "Camo2", "Camo_engine_fire"]
         model = ["camo1", "camo_engine_fire", "camo2"]
-        self.assertEqual(_resolve_paint_index(hidden, model, "camo1"), 0)
-        self.assertEqual(_resolve_paint_index(hidden, model, "CAMO2"), 1)
+        self.assertEqual(int(_resolve_paint_index(hidden, model, "camo1")), 0)
+        self.assertEqual(int(_resolve_paint_index(hidden, model, "CAMO2")), 1)
 
     def test_model_name_falls_back_when_no_hidden_selection_is_declared(self):
         # A man's uniform: no hiddenSelections, so the default-LOD slot is used.
-        self.assertEqual(_resolve_paint_index([], ["uniform", "face"], "face"), 1)
+        self.assertEqual(int(_resolve_paint_index([], ["uniform", "face"], "face")), 1)
 
     def test_unresolvable_name_is_skipped(self):
         self.assertEqual(
-            _resolve_paint_index(["Camo1"], ["glass3"], "not_on_the_object"), -1
+            int(_resolve_paint_index(["Camo1"], ["glass3"], "not_on_the_object")),
+            -1,
         )
-        self.assertEqual(_resolve_paint_index([], [], ""), -1)
+        self.assertEqual(int(_resolve_paint_index([], [], "")), -1)
 
-    def test_sqf_resolves_through_the_config_and_keeps_the_skip(self):
+    def test_engine_glue_reads_the_config_then_the_model_and_returns_the_index(self):
+        """Source-lock, not a behaviour test.
+
+        getArray, configOf, selectionNames and isNull need the engine and
+        cannot run headlessly.  The decision they feed is executed by the four
+        tests above.  This test locks the engine-bound wrapper only: it must
+        read the class hiddenSelections array, read the default-LOD
+        selectionNames, call the pure core, and return its index.
+        """
         code = _code_only(_SELECT_PAINT.read_text(encoding="utf-8"))
         for token in (
             'getArray (configOf _object >> "hiddenSelections")',
-            "toLower",
-            "isNotEqualTo []",
-            "find _sel",
             "selectionNames _object",
+            "FUNC(resolvePaintIndexFromSelections)",
             "private _idx = -1",
+            "isNull _object",
             "exitWith { _idx }",
         ):
             self.assertIn(token, code)
+        self.assertLess(
+            code.index('getArray (configOf _object >> "hiddenSelections")'),
+            code.index("selectionNames _object"),
+        )
+        self.assertLess(
+            code.index("selectionNames _object"),
+            code.index("FUNC(resolvePaintIndexFromSelections)"),
+        )
+        self.assertTrue(code.rstrip().endswith("_idx"))
         # The caller still skips a genuinely unresolvable name without error.
         paint = _read_sqf("fnc_applySelectionThermal.sqf", "thermal")
         self.assertIn("FUNC(resolveSelectionPaintIndex)", paint)
