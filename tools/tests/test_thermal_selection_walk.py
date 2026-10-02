@@ -501,5 +501,189 @@ class TestNestedObjectPaint(unittest.TestCase):
         )
 
 
+class TestSlingRopeDiscovery(unittest.TestCase):
+    """A sling load and a rope-towed object are separate objects too.
+
+    attachedObjects and getVehicleCargo do not return them, so a slung
+    vehicle previously got no heat colour.  Both commands are runtime state,
+    so they join the per-instance nested discovery.
+    """
+
+    def test_sling_and_rope_objects_are_read(self):
+        code = _code_only(_NESTED.read_text(encoding="utf-8"))
+        for token in ("getSlingLoad", "ropeAttachedObjects"):
+            self.assertIn(token, code)
+        # They join the same direct-nested list the paint loop walks.
+        self.assertIn("(ropeAttachedObjects _object)", code)
+        self.assertIn("getSlingLoad _object", code)
+        # A null sling load is guarded, not pushed as an object.
+        self.assertIn("if (!isNull _sling) then", code)
+
+    def test_collector_reaches_them_through_the_nested_reader(self):
+        collect = _code_only(_NESTED_COLLECT.read_text(encoding="utf-8"))
+        self.assertIn("FUNC(getThermalNestedObjects)", collect)
+
+    def test_a_slung_object_is_a_walk_child(self):
+        depth, objects, _ = _walk_constants()
+        children = {"heli": ["sling_cargo"], "sling_cargo": []}
+        order, _ = _bounded_walk("heli", lambda n: children.get(n, []), depth, objects)
+        self.assertIn("sling_cargo", order)
+
+
+class TestWalkedLods(unittest.TestCase):
+    """The walk visits exactly the six LODs selectionNames accepts.
+
+    Runtime evidence (docker harness): "ViewPilot", "ViewGunner", "ViewCargo"
+    and "Shadow" are rejected by selectionNames with "Unknown enum value" and
+    abort the call, so the walk cannot reach them and does not list them.  The
+    six original LODs are the complete accepted set.
+    """
+
+    def _lods(self):
+        text = _WALK.read_text(encoding="utf-8")
+        m = re.search(r"private\s+_LODS\s*=\s*\[([^\]]*)\];", text)
+        self.assertIsNotNone(m, "SQF no longer declares _LODS")
+        return [s.strip().strip('"') for s in m.group(1).split(",") if s.strip()]
+
+    def test_only_the_six_accepted_lods_are_walked(self):
+        lods = self._lods()
+        for name in (
+            "Memory",
+            "Geometry",
+            "FireGeometry",
+            "LandContact",
+            "HitPoints",
+            "ViewGeometry",
+        ):
+            self.assertIn(name, lods)
+        # Runtime-rejected enum values must not be passed to selectionNames.
+        for name in ("ViewPilot", "ViewGunner", "ViewCargo", "Shadow"):
+            self.assertNotIn(name, lods)
+        code = _code_only(_WALK.read_text(encoding="utf-8"))
+        self.assertIn("selectionNames _x", code)
+        # The exclusion is documented, not silent.
+        self.assertIn("Unknown enum value", _WALK.read_text(encoding="utf-8"))
+
+    def test_lod_only_name_is_not_a_target(self):
+        parent = ["camo1", "camo2"]
+        _, _, max_targets = _walk_constants()
+        out = _expand_selections(parent, [0, 1], ["shadow_point"], [], max_targets)
+        self.assertEqual(out, [0, 1])
+
+
+class TestAnimationSources(unittest.TestCase):
+    """animationSources names are mined; only config slots survive the filter."""
+
+    def test_animation_sources_are_mined(self):
+        code = _code_only(_WALK.read_text(encoding="utf-8"))
+        self.assertIn('"animationSources"', code)
+        self.assertIn("AnimationSources", code)
+        self.assertIn("configProperties", code)
+        # The same config-slot filter decides addressability, so an
+        # animation-only name cannot become a texture target.
+        self.assertIn("FUNC(resolveSelectionPaintIndex)", code)
+
+    def test_animation_only_name_is_not_a_target(self):
+        parent = ["camo1"]
+        _, _, max_targets = _walk_constants()
+        out = _expand_selections(parent, [0], ["hide_gun"], ["hide_gun"], max_targets)
+        self.assertEqual(out, [0])
+
+
+class TestConfigSlotResolution(unittest.TestCase):
+    """Gap 2 finding: candidates resolve against the PARENT config list.
+
+    setObjectTexture indexes the vehicle's own hiddenSelections.  The turret's
+    own hiddenSelections is a candidate NAME source only, so a turret name the
+    parent does not declare is correctly dropped; no addressable name is lost.
+    """
+
+    def test_resolution_is_the_parent_hidden_selections(self):
+        code = _code_only(_WALK.read_text(encoding="utf-8"))
+        self.assertIn(
+            'private _hidden = getArray (configOf _object >> "hiddenSelections");',
+            code,
+        )
+        self.assertIn('getArray (_turretCfg >> "hiddenSelections")', code)
+        self.assertIn("_hidden select _idx", code)
+        # The turret's own list is only a candidate source: the turret config
+        # is read for names, and the accepted slot is indexed in `_hidden`.
+        self.assertIn("_isConfigSlot", code)
+
+    def test_turret_name_absent_from_parent_is_dropped(self):
+        parent = ["camo1", "camo2"]
+        _, _, max_targets = _walk_constants()
+        out = _expand_selections(parent, [0, 1], [], ["turret_body"], max_targets)
+        self.assertEqual(out, [0, 1])
+
+    def test_turret_name_in_parent_is_added(self):
+        parent = ["camo1", "camo2", "turret_body"]
+        _, _, max_targets = _walk_constants()
+        out = _expand_selections(parent, [0, 1], [], ["turret_body"], max_targets)
+        self.assertEqual(out, [0, 1, 2])
+
+
+class TestTruncationLogged(unittest.TestCase):
+    """Every raised cap must log when it drops content."""
+
+    def test_caps_were_raised(self):
+        _, objects, targets = _walk_constants()
+        cap = _collect_cap()
+        self.assertGreaterEqual(targets, 512)
+        self.assertGreaterEqual(objects, 64)
+        self.assertGreaterEqual(cap, 64)
+
+    def test_every_cap_logs(self):
+        walk = _code_only(_WALK.read_text(encoding="utf-8"))
+        nested = _code_only(_NESTED.read_text(encoding="utf-8"))
+        collect = _code_only(_NESTED_COLLECT.read_text(encoding="utf-8"))
+        # One log per cap: the message text names the cap.
+        self.assertIn("target cap", walk)
+        self.assertIn("object cap", nested)
+        self.assertIn("depth cap", nested)
+        self.assertIn("store cap", nested)
+        self.assertIn("nested collect: cap", collect)
+        for text in (walk, nested, collect):
+            self.assertIn("AEE_LOG_DEBUG", text)
+            self.assertIn("AEE_TRACE_ON", text)
+
+    def test_object_cap_log_is_reachable(self):
+        """The object-cap branch is a real conditional, not dead prose."""
+        code = _code_only(_NESTED.read_text(encoding="utf-8"))
+        idx = code.index("object cap")
+        before = code[:idx]
+        self.assertIn("if ((count _visited) >= _MAX_OBJECTS) then", before)
+
+    def test_depth_cap_log_is_reachable(self):
+        code = _code_only(_NESTED.read_text(encoding="utf-8"))
+        idx = code.index("depth cap")
+        before = code[:idx]
+        self.assertIn("_MAX_DEPTH", before)
+
+
+class TestFeedClassGaps(unittest.TestCase):
+    """The building scan must reach the paintable non-building surfaces."""
+
+    def test_feed_classes(self):
+        code = _code_only(_APPLY_BUILDING.read_text(encoding="utf-8"))
+        for token in (
+            'nearObjects ["Building"',
+            'nearObjects ["ReammoBox"',
+            'nearObjects ["Animal"',
+            'nearObjects ["Thing"',
+        ):
+            self.assertIn(token, code)
+        # House is a Building subclass: the double count is gone.
+        self.assertNotIn('nearObjects ["House"', code)
+        # Men stay on the clothing path.
+        self.assertNotIn('nearObjects ["Man"', code)
+        self.assertNotIn('nearObjects ["CAManBase"', code)
+
+    def test_thing_query_excludes_the_crate_and_building_classes(self):
+        code = _code_only(_APPLY_BUILDING.read_text(encoding="utf-8"))
+        self.assertIn('!(_x isKindOf "Building")', code)
+        self.assertIn('!(_x isKindOf "ReammoBox")', code)
+
+
 if __name__ == "__main__":
     unittest.main()

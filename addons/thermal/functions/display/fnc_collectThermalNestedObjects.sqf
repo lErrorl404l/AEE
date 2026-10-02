@@ -1,4 +1,5 @@
 #include "..\..\script_component.hpp"
+#include "\z\aee\addons\main\script_debug.hpp"
 /*
  * Collect the separate objects in a thermal selection tree (issue #204).
  *
@@ -21,7 +22,7 @@
  */
 params [["_parents", [], [[]]]];
 
-private _MAX_NESTED = 32;
+private _MAX_NESTED = 64;
 
 private _seen = [];
 {
@@ -41,6 +42,15 @@ while {(_queue isNotEqualTo []) && ((count _extra) < _MAX_NESTED)} do {
             _queue pushBack _child;
         };
     } forEach ([_parent] call FUNC(getThermalNestedObjects));
+};
+
+// A cap that drops content LOGS (logging is never a cost here), so a
+// truncated tree is visible in the RPT instead of silent.
+if ((count _extra) >= _MAX_NESTED) then {
+    if (AEE_TRACE_ON) then {
+        private _capMsg = format ["nested collect: cap %1 hit, further nested objects not painted", _MAX_NESTED];
+        AEE_LOG_DEBUG(_capMsg);
+    };
 };
 
 _extra

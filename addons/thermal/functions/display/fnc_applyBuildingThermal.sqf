@@ -72,8 +72,17 @@ if (_ambientChanged) then {
     // Distant objects are never painted at thermal range, so the bounded scan
     // the tick path already uses is sufficient on ENTER too.  Entering thermal
     // was a world scan; it is now a view-distance scan.
-    _objects = (_player nearObjects ["House", _viewDist])
-        + (_player nearObjects ["Building", _viewDist]);
+    // Building is the root of every building (House included), so the old
+    // House + Building pair double-counted every house.  Add the paintable
+    // non-building surfaces the scan missed: ammo crates (ReammoBox), animals,
+    // and static props (Thing) that are neither a building nor a crate.  Men
+    // stay on their own clothing path (fnc_applyClothingThermal).
+    _objects = (_player nearObjects ["Building", _viewDist])
+        + (_player nearObjects ["ReammoBox", _viewDist])
+        + (_player nearObjects ["Animal", _viewDist])
+        + ((_player nearObjects ["Thing", _viewDist]) select {
+            !(_x isKindOf "Building") && {!(_x isKindOf "ReammoBox")}
+        });
     private _bldMsg = format ["building thermal scan (ENTER/ambient): %1 objects in %2 m", count _objects, _viewDist];
     AEE_LOG_DEBUG(_bldMsg);
 };
