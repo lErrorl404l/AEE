@@ -29,9 +29,18 @@ MATCH_PATH = REPO / "addons" / "nightvision" / "functions" / "fnc_getDeviceMatch
 DATA_PATH = REPO / "addons" / "nightvision" / "functions" / "fnc_getDeviceData.sqf"
 PREP_PATH = REPO / "addons" / "nightvision" / "XEH_PREP.hpp"
 TUBE_PATH = REPO / "addons" / "nightvision" / "functions" / "fnc_getNvgTubeModel.sqf"
+THERMAL_PATH = (
+    REPO
+    / "addons"
+    / "thermal"
+    / "functions"
+    / "sensor"
+    / "fnc_getThermalDeviceProperties.sqf"
+)
 MATCH = MATCH_PATH.read_text(encoding="utf-8")
 DATA = DATA_PATH.read_text(encoding="utf-8")
 TUBE = TUBE_PATH.read_text(encoding="utf-8")
+THERMAL = THERMAL_PATH.read_text(encoding="utf-8")
 
 # The seven columns the matcher row carries.
 COL_DEVICE = 0
@@ -428,6 +437,152 @@ class TestFreshness(unittest.TestCase):
             gen.check_outputs(gen.DEFAULT_DATA, match, data)
             self.assertEqual(match.read_text(encoding="utf-8"), "stale")
             self.assertEqual(data.read_text(encoding="utf-8"), "stale")
+
+
+class TestThermalFamilyIsolation(unittest.TestCase):
+    """A thermal class resolves in exactly one family (issue #215).
+
+    The matcher filters its table by family before the ladder, so the
+    ENVG-B, which is both a night vision device and a thermal device, can
+    never tie. A thermal class resolves only through the thermal filter.
+    """
+
+    def test_the_shared_class_resolves_per_family(self):
+        table = rows()
+        for class_name in ("ENVG-B", "AN/PSQ-42"):
+            with self.subTest(class_name=class_name):
+                thermal = gen.match_row(table, class_name, family="thermal")
+                nvg = gen.match_row(table, class_name, family="nvg")
+                self.assertIsNotNone(thermal)
+                self.assertIsNotNone(nvg)
+                assert thermal is not None and nvg is not None
+                self.assertEqual(thermal[COL_DEVICE], "envg_thermal")
+                self.assertEqual(thermal[COL_FAMILY], "thermal")
+                self.assertEqual(nvg[COL_DEVICE], "envgb")
+                self.assertEqual(nvg[COL_FAMILY], "nvg")
+
+    def test_every_thermal_class_resolves_in_the_thermal_family(self):
+        table = rows()
+        for row in table:
+            if row[COL_FAMILY] != "thermal":
+                continue
+            classes = [key for key in str(row[COL_CLASSES]).split("|") if key]
+            self.assertTrue(classes, f"{row[COL_DEVICE]} names no class")
+            for class_name in classes:
+                with self.subTest(device=row[COL_DEVICE], class_name=class_name):
+                    found = gen.match_row(table, class_name, family="thermal")
+                    self.assertIsNotNone(found)
+                    assert found is not None
+                    self.assertEqual(found[COL_DEVICE], row[COL_DEVICE])
+
+    def test_a_thermal_class_never_resolves_to_a_foreign_family(self):
+        # With no filter, a thermal class either resolves to its thermal row
+        # or to nothing (the shared class ties). It never resolves to a
+        # night vision or optic row.
+        table = rows()
+        for row in table:
+            if row[COL_FAMILY] != "thermal":
+                continue
+            classes = [key for key in str(row[COL_CLASSES]).split("|") if key]
+            for class_name in classes:
+                with self.subTest(class_name=class_name):
+                    found = gen.match_row(table, class_name)
+                    if found is not None:
+                        self.assertEqual(found[COL_FAMILY], "thermal")
+
+    def test_pas13_variants_do_not_resolve_to_the_base(self):
+        # The base device must not steal a variant through its old broad
+        # "pas13" alias. A variant token selects the variant row, and a
+        # separated variant token matches nothing here so the resolver's
+        # static fallback selects the variant.
+        table = rows()
+        for class_name in (
+            "AN/PAS-13E(V)1",
+            "PAS-13 V1",
+            "rhs_weap_pas13v1",
+            "ACE_PAS13_V1",
+            "CUP_optic_PAS13_V1",
+            "PAS13_V1",
+        ):
+            with self.subTest(class_name=class_name):
+                found = gen.match_row(table, class_name, family="thermal")
+                self.assertIsNotNone(found)
+                assert found is not None
+                self.assertEqual(found[COL_DEVICE], "pas13_v1")
+        self.assertIsNone(gen.match_row(table, "PAS-13E(V)1", family="thermal"))
+        for class_name in ("AN/PAS-13", "PAS-13"):
+            with self.subTest(class_name=class_name):
+                base = gen.match_row(table, class_name, family="thermal")
+                self.assertIsNotNone(base)
+                assert base is not None
+                self.assertEqual(base[COL_DEVICE], "pas13_base")
+
+
+class TestUnmatchedThermalFallback(unittest.TestCase):
+    """An unknown thermal class matches nothing, so the resolver falls back.
+
+    fnc_getThermalDeviceProperties keeps its static table as the named
+    fallback: a whole-row fallback when the matcher returns nothing, and a
+    per-field fallback when the corpus holds no figure for one field. A
+    figure is never copied from a sibling device.
+    """
+
+    def test_an_unknown_thermal_class_matches_nothing(self):
+        self.assertIsNone(
+            gen.match_row(rows(), "zzzznotathermaldevice", family="thermal")
+        )
+
+    def test_a_fallback_only_token_matches_nothing(self):
+        # "clipon" is a static-fallback token with no corpus row.
+        self.assertIsNone(gen.match_row(rows(), "clipon", family="thermal"))
+
+    def test_the_resolver_reads_the_generated_matcher(self):
+        self.assertIn("call EFUNC(nightvision,getDeviceMatch)", THERMAL)
+        self.assertIn('[_optic, "thermal"]', THERMAL)
+
+    def test_the_named_fallback_is_the_static_table(self):
+        self.assertIn("private _fallback = switch (true) do {", THERMAL)
+        self.assertIn("if (_match isEqualTo []) exitWith { _fallback };", THERMAL)
+
+    def test_a_missing_field_falls_back_per_field(self):
+        for field in ("_netd", "_resX", "_resY", "_refresh", "_weight"):
+            self.assertIn(f"{field} = _fallback select", THERMAL)
+
+    def test_the_cooled_enum_maps_to_the_numeric_contract(self):
+        self.assertIn('if (_cooledToken == "cooled") then { _cooled = 1; };', THERMAL)
+        self.assertIn('if (_cooledToken == "uncooled") then { _cooled = 0; };', THERMAL)
+
+
+class TestThermalCorpusParity(unittest.TestCase):
+    """The generated thermal values are the corpus values (issue #215)."""
+
+    def thermal_values(self, device_id: str) -> list[object]:
+        for row in rows():
+            if row[COL_DEVICE] == device_id and row[COL_FAMILY] == "thermal":
+                values = row[COL_VALUES]
+                assert isinstance(values, list)
+                return values
+        raise AssertionError(f"no thermal row for {device_id}")
+
+    def test_the_row_order_is_the_document_contract(self):
+        # [netd_c, resolution_x, resolution_y, refresh_hz, cooled, weight_kg]
+        self.assertEqual(
+            self.thermal_values("catherine"),
+            [0.025, 1280, 1024, 50, "cooled", 7.9],
+        )
+        self.assertEqual(
+            self.thermal_values("flir_scout"),
+            [0.05, 640, 512, 30, "uncooled", 0.34],
+        )
+
+    def test_every_thermal_value_this_release_holds_is_claimed(self):
+        load = catalogue.load(gen.DEFAULT_DATA)
+        for entry in load.entries:
+            if entry.family != "thermal":
+                continue
+            for name, field in entry.resolved_fields().items():
+                with self.subTest(device=entry.device_id, field=name):
+                    self.assertEqual(field.grade, "claimed")
 
 
 if __name__ == "__main__":
