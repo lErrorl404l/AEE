@@ -117,7 +117,10 @@ class CfgVehicles {
 // Custom cloudlet definitions used by AEE visual FX scripts for
 // sandstorm, dust devil, and snow particle emitters.
 class CfgCloudlets {
-    class Default {};
+    // Forward declaration only.  `class Default {};` reopens the vanilla
+    // CfgCloudlets/Default bare (the engine Empty syntax, which shadows), and
+    // every base-game smoke cloudlet inherits Default.
+    class Default;
     class AEE_SandCloud: Default {
         interval = 0.005;
         circleRadius = 30;

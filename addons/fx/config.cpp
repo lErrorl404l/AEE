@@ -29,7 +29,10 @@ class CfgPatches {
 // class, so the engine path has a single source.  The renderer sets every
 // other value per tick.
 class CfgCloudlets {
-    class Default {};
+    // Forward declaration only (same rule as aee_core/config.cpp).  A bare
+    // `class Default {};` shadows the vanilla CfgCloudlets/Default that every
+    // base-game smoke cloudlet inherits.
+    class Default;
     class AEE_SupersonicTrace: Default {
         particleShape = "\A3\data_f\ParticleEffects\Universal\refract";
         particleType = "Billboard";

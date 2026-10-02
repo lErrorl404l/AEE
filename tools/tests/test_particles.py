@@ -9,7 +9,17 @@ drag, ground state sets dust restitution, wind couples advection.
 Run: python3 -m unittest tools.tests.test_particles
 """
 
+import re
 import unittest
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parents[2]
+
+# A class body with no parent shadows the vanilla class at run time.  The
+# `class Default {};` form is the Empty syntax; `class X {` is a bare block.
+BARE_INLINE_RE = re.compile(r"^[ \t]+class (\w+) \{\s*\}\s*;", re.M)
+BARE_BLOCK_RE = re.compile(r"^[ \t]+class (\w+) \{\s*$", re.M)
+FORWARD_DEFAULT_RE = re.compile(r"^[ \t]+class Default;\s*$", re.M)
 
 # ─── Mirror of fnc_particleMaterial.sqf ──────────────────────────────────
 # Values track the ONE material table (issue #149 unification).  The
@@ -167,6 +177,43 @@ class TestWaterSurfaceCoupling(unittest.TestCase):
         keep, offset = coupled_params("dust", wave_height=2.5)[4:]
         self.assertFalse(keep)
         self.assertEqual(offset, 0.0)
+
+
+class TestCloudletOverrideShape(unittest.TestCase):
+    """AEE's CfgCloudlets blocks must forward-declare Default, not reopen it.
+
+    Regression: `class Default {};` inside CfgCloudlets reopens the vanilla
+    CfgCloudlets/Default bare.  The engine treats a reopen with no parent as
+    the Empty syntax and SHADOWS the class, and every base-game smoke cloudlet
+    inherits Default, so the smoke stops drawing.  The parent is
+    forward-declared once and the children restate it, so the engine merges.
+    """
+
+    CONFIGS = (
+        REPO / "addons" / "core" / "config.cpp",
+        REPO / "addons" / "fx" / "config.cpp",
+    )
+
+    @staticmethod
+    def _cloudlets_block(text):
+        start = text.index("class CfgCloudlets")
+        depth = 0
+        for i in range(text.index("{", start), len(text)):
+            if text[i] == "{":
+                depth += 1
+            elif text[i] == "}":
+                depth -= 1
+                if depth == 0:
+                    return text[start : i + 1]
+        raise AssertionError("unbalanced CfgCloudlets block")
+
+    def test_default_is_forward_declared_not_reopened(self):
+        for path in self.CONFIGS:
+            block = self._cloudlets_block(path.read_text(encoding="utf-8"))
+            with self.subTest(config=path.name):
+                self.assertEqual(BARE_INLINE_RE.findall(block), [])
+                self.assertEqual(BARE_BLOCK_RE.findall(block), [])
+                self.assertRegex(block, FORWARD_DEFAULT_RE)
 
 
 if __name__ == "__main__":
