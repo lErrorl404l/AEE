@@ -64,6 +64,12 @@ private _agcLast = missionNamespace getVariable [QGVAR(agcLastT), -99];
 if ((_agcNow - _agcLast) < 0.25) exitWith { 0 };
 missionNamespace setVariable [QGVAR(agcLastT), _agcNow];
 
+// The module trace switch, resolved ONCE for the whole pass.  AEE_TRACE_ON
+// expands to three namespace lookups, so the per-selection band-radiance
+// calls below receive the resolved flag as an argument instead of re-reading
+// it for every selection.
+private _traceOn = AEE_TRACE_ON;
+
 private _selTemps = missionNamespace getVariable [QGVAR(selTemperature), -1];
 if (_selTemps isEqualType 0) then {
     _selTemps = createHashMap;
@@ -110,7 +116,7 @@ private _objRads = createHashMap;
     if !(_t isEqualType 0 && {finite _t}) then { continue; };
     private _eps = _selEps getOrDefault [_x, _groundEps];
     if !(_eps isEqualType 0) then { _eps = _groundEps; };
-    private _rad = [_t, _eps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp] call FUNC(calculateBandRadiance);
+    private _rad = [_t, _eps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp, _traceOn] call FUNC(calculateBandRadiance);
     _rads pushBack _rad;
     private _oKey = (_x splitString "|") select 0;
     private _oList = _objRads getOrDefault [_oKey, []];
@@ -122,7 +128,7 @@ private _objRads = createHashMap;
 // in every pass anchors the window when the per-selection sample set changes.
 // The 1 percent tail cut is a no-op below about 50 samples, so this anchor is
 // what stops the window hunting.
-_rads pushBack ([_groundTemp, _groundEps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp] call FUNC(calculateBandRadiance));
+_rads pushBack ([_groundTemp, _groundEps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp, _traceOn] call FUNC(calculateBandRadiance));
 
 // ─── Tail rejection (FLIR: <1% so real content is not clipped) ────────────
 // Sort the radiances, cut the top and bottom 1%, and take the window.
@@ -157,8 +163,8 @@ private _manMaxC = missionNamespace getVariable [QGVAR(thermalManualMaxC), 120];
 if !(_manMinC isEqualType 0) then { _manMinC = -40; };
 if !(_manMaxC isEqualType 0) then { _manMaxC = 120; };
 if (_manMaxC <= _manMinC) then { _manMaxC = _manMinC + 1; };
-private _fullSpan = ([_manMaxC, _groundEps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp] call FUNC(calculateBandRadiance))
-    - ([_manMinC, _groundEps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp] call FUNC(calculateBandRadiance));
+private _fullSpan = ([_manMaxC, _groundEps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp, _traceOn] call FUNC(calculateBandRadiance))
+    - ([_manMinC, _groundEps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp, _traceOn] call FUNC(calculateBandRadiance));
 _fullSpan = _fullSpan max 1e-6;
 // Published so the display pass can convert the radiance window to its
 // equivalent temperature span for the FPN amplitude (fnc_applyThermalVision).
@@ -171,6 +177,33 @@ if (_radMax - _radMin < _fullSpan / 8) then {
     _radMin = _mid - _half;
     _radMax = _mid + _half;
 };
+
+// ─── Window dead-band (steady-scene hold) ─────────────────────────────────
+// The window is a scene statistic that translates with the scene mean.  A
+// client run (RPT 22:26:04) measured 0.69 display levels of movement per
+// update on average, with the span pinned at the 8x max-gain floor, so the
+// movement was pure translation.  Every move re-quantised every selection
+// and repainted the scene: that is the operator's shimmer.  Hold the
+// ACCEPTED raw window until it has moved by more than a set fraction of its
+// own span, then let the IIR below smooth the real move.  One percent is
+// used: the run measured 0.27 percent per update, so a sub-one-percent
+// change is held for several updates and a genuine scene move releases.
+private _AGC_DEADBAND = 0.01;
+private _acceptedMin = missionNamespace getVariable [QGVAR(agcAcceptMin), _radMin];
+private _acceptedMax = missionNamespace getVariable [QGVAR(agcAcceptMax), _radMax];
+if (!(_acceptedMin isEqualType 0) || !(_acceptedMax isEqualType 0) || _acceptedMin >= _acceptedMax) then {
+    _acceptedMin = _radMin;
+    _acceptedMax = _radMax;
+};
+private _agcBand = (_acceptedMax - _acceptedMin) * _AGC_DEADBAND;
+if ((abs (_radMin - _acceptedMin) > _agcBand) || {abs (_radMax - _acceptedMax) > _agcBand}) then {
+    _acceptedMin = _radMin;
+    _acceptedMax = _radMax;
+};
+_radMin = _acceptedMin;
+_radMax = _acceptedMax;
+missionNamespace setVariable [QGVAR(agcAcceptMin), _acceptedMin];
+missionNamespace setVariable [QGVAR(agcAcceptMax), _acceptedMax];
 
 // ─── Per-object windows for Local display mode ────────────────────────────
 // Local mode maps an object's own selections through that object's own
@@ -228,7 +261,7 @@ if (_radMax <= _radMin) then { _radMax = _radMin + 1e-6; };
 
 missionNamespace setVariable [QGVAR(agcRadMin), _radMin];
 missionNamespace setVariable [QGVAR(agcRadMax), _radMax];
-if (AEE_TRACE_ON) then {
+if (_traceOn) then {
     private _agcMs = round ((diag_tickTime - _perfT0) * 1000);
     private _agcMsg = format ["thermalAGC %1 us | radMin %2 | radMax %3 | fullSpan %4 | air %5 C | ground %6 C | selections %7",
         _agcMs, _radMin toFixed 6, _radMax toFixed 6,

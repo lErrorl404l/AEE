@@ -44,6 +44,10 @@ params [
 
 if (isNull _object) exitWith { _selections };
 
+// The module trace switch, resolved once for the walk rather than at every
+// cap site inside the candidate loop.
+private _traceOn = AEE_TRACE_ON;
+
 private _MAX_TARGETS = 512;
 // selectionNames accepts exactly these six LOD type names.  Runtime measured
 // on the docker harness: "ViewPilot", "ViewGunner", "ViewCargo" and "Shadow"
@@ -113,7 +117,7 @@ private _candidates = [];
         private _isConfigSlot = (_slotName != "") && {((toLower _slotName) == (toLower _name))};
         if (_isConfigSlot && {!(_slotName in _covered)}) then {
             if ((count _selections) >= _MAX_TARGETS) then {
-                if (AEE_TRACE_ON) then {
+                if (_traceOn) then {
                     private _capMsg = format ["selection walk: target cap %1 hit on %2, candidate %3 not added", _MAX_TARGETS, typeOf _object, _name];
                     AEE_LOG_DEBUG(_capMsg);
                 };

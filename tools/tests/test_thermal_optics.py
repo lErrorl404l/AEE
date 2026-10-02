@@ -5988,3 +5988,111 @@ class TestThermalBackgroundBound(unittest.TestCase):
             "_bgCache set [_objKey, [_bgSum, _bgCount, diag_tickTime, count _objNames]];",
             self.code,
         )
+
+
+class TestThermalTraceGateHoist(unittest.TestCase):
+    """The module trace switch must be resolved once, not at every log site.
+
+    AEE_TRACE_ON expands to three `missionNamespace getVariable` lookups.  It
+    was evaluated inside per-selection and per-object walks, so the gate cost
+    was paid per selection even when tracing is off.  Each function now holds
+    `private _traceOn = AEE_TRACE_ON;` and tests the local.  The band-radiance
+    kernel is called per selection, so its caller resolves the flag once and
+    passes it as the eighth argument.
+    """
+
+    _FUNCS = [
+        "fnc_updateThermalAGC.sqf",
+        "fnc_calculateVehicleHeat.sqf",
+        "fnc_applyThermalVision.sqf",
+        "fnc_applySelectionThermal.sqf",
+        "fnc_expandThermalSelectionTree.sqf",
+        "fnc_getThermalNestedObjects.sqf",
+        "fnc_collectThermalNestedObjects.sqf",
+    ]
+
+    def test_each_hot_function_resolves_the_flag_once(self):
+        for name in self._FUNCS:
+            code = _code_only(_read_sqf(name, addon="thermal"))
+            with self.subTest(function=name):
+                self.assertIn("private _traceOn = AEE_TRACE_ON;", code)
+                self.assertNotIn("if (AEE_TRACE_ON)", code)
+
+    def test_band_radiance_takes_the_hoisted_flag(self):
+        code = _code_only(_read_sqf("fnc_calculateBandRadiance.sqf", addon="thermal"))
+        self.assertIn('["_traceOn", true]', code)
+        self.assertIn("if (_traceOn) then {", code)
+        self.assertNotIn("if (AEE_TRACE_ON)", code)
+
+    def test_band_radiance_callers_pass_the_flag(self):
+        for name in (
+            "fnc_updateThermalAGC.sqf",
+            "fnc_applySelectionThermal.sqf",
+        ):
+            code = _code_only(_read_sqf(name, addon="thermal"))
+            with self.subTest(function=name):
+                self.assertIn("_traceOn] call FUNC(calculateBandRadiance)", code)
+
+
+class TestThermalAgcWindowDeadband(unittest.TestCase):
+    """The AGC window must hold on a steady scene.
+
+    A client run (RPT 22:26:04) measured the published window translating
+    0.69 display levels per update with the span pinned at the max-gain
+    floor, so a steady scene re-quantised every selection and repainted the
+    whole view.  fnc_updateThermalAGC now holds the accepted raw window
+    until it has moved by more than 1 percent of its own span, then lets the
+    IIR smooth the real move.  The decision is mirrored below.
+    """
+
+    _F = _THERMAL / "solver" / "fnc_updateThermalAGC.sqf"
+
+    @classmethod
+    def setUpClass(cls):
+        cls.code = _code_only(cls._F.read_text(encoding="utf-8"))
+
+    @staticmethod
+    def _accept(prev, raw, frac=0.01):
+        if prev is None:
+            return raw
+        band = (prev[1] - prev[0]) * frac
+        if abs(raw[0] - prev[0]) > band or abs(raw[1] - prev[1]) > band:
+            return raw
+        return prev
+
+    def test_a_sub_band_drift_is_held(self):
+        # 0.27 percent of the 17.366 span is the measured per-update drift.
+        prev = (37.898, 55.264)
+        drift = 0.27 / 100 * (prev[1] - prev[0])
+        raw = (prev[0] + drift, prev[1] + drift)
+        self.assertEqual(self._accept(prev, raw), prev)
+
+    def test_a_real_move_beyond_the_band_is_accepted(self):
+        prev = (37.898, 55.264)
+        raw = (38.771, 56.137)  # the live 0.75 radiance jump
+        self.assertEqual(self._accept(prev, raw), raw)
+
+    def test_repeated_identical_updates_hold(self):
+        win = (37.9, 55.3)
+        for _ in range(20):
+            win = self._accept(win, (37.901, 55.301))
+        self.assertEqual(win, (37.9, 55.3))
+
+    def test_source_holds_then_releases(self):
+        self.assertIn("private _AGC_DEADBAND = 0.01;", self.code)
+        self.assertIn(
+            "private _agcBand = (_acceptedMax - _acceptedMin) * _AGC_DEADBAND;",
+            self.code,
+        )
+        self.assertIn("abs (_radMin - _acceptedMin) > _agcBand", self.code)
+        self.assertIn("_radMin = _acceptedMin;", self.code)
+        self.assertIn(
+            "missionNamespace setVariable [QGVAR(agcAcceptMin), _acceptedMin];",
+            self.code,
+        )
+
+    def test_the_deadband_runs_before_the_iir(self):
+        self.assertLess(
+            self.code.index("QGVAR(agcAcceptMin)"),
+            self.code.index("QGVAR(agcRadMin)"),
+        )

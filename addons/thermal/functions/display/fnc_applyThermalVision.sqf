@@ -408,7 +408,10 @@ if (missionNamespace getVariable [QGVAR(thermalDebug), false]
 setAperture 15;
 
 missionNamespace setVariable [QGVAR(thermalActive), true];
-if (AEE_TRACE_ON) then {
+// The module trace switch, resolved once for the pass rather than
+// re-expanded at the log site.
+private _traceOn = AEE_TRACE_ON;
+if (_traceOn) then {
     private _visMs = round ((diag_tickTime - _perfT0) * 1000);
     private _visMsg = format ["applyThermalVision %1 us | contrast %2 | fpnAmp %3 | envNoise %4 | netd %5 mK | polarity %6 | agcSpan %7",
         _visMs, _contrast, _fpnAmp, _envNoise, _netd, _polarity, _agcFullSpan];
