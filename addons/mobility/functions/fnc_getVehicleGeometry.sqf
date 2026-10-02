@@ -78,11 +78,33 @@ if (isClass _wheelsCfg) then {
         _x params ["_key"];
         private _wc = _wheelsCfg >> _key;
         if (isClass _wc) then {
-            if (isArray (_wc >> "center")) then {
-                _axisPos pushBack [_key, getArray (_wc >> "center")];
+            // The engine declares center and boundary as memory-point NAMES,
+            // not positions: center = "wheel_1_1_axis", boundary =
+            // "wheel_1_1_bound" (BI Cars Config Guidelines, Wheel PX
+            // parameters).  Read the name and resolve it in the Memory LOD.
+            // An array form is still accepted so a legacy or hand-written
+            // config keeps working.
+            private _centerName = getText (_wc >> "center");
+            if (_centerName != "") then {
+                private _cp = _vehicle selectionPosition [_centerName, "Memory"];
+                if ((_cp isEqualType []) && {count _cp == 3}) then {
+                    _axisPos pushBack [_key, _cp];
+                };
+            } else {
+                if (isArray (_wc >> "center")) then {
+                    _axisPos pushBack [_key, getArray (_wc >> "center")];
+                };
             };
-            if (isArray (_wc >> "boundary")) then {
-                _boundPos pushBack [_key, getArray (_wc >> "boundary")];
+            private _boundName = getText (_wc >> "boundary");
+            if (_boundName != "") then {
+                private _bp = _vehicle selectionPosition [_boundName, "Memory"];
+                if ((_bp isEqualType []) && {count _bp == 3}) then {
+                    _boundPos pushBack [_key, _bp];
+                };
+            } else {
+                if (isArray (_wc >> "boundary")) then {
+                    _boundPos pushBack [_key, getArray (_wc >> "boundary")];
+                };
             };
         };
     } forEach _stations;
@@ -90,11 +112,13 @@ if (isClass _wheelsCfg) then {
 };
 
 // ─── 2. Model fallback ───────────────────────────────────────────────────
-// The unary selectionNames form is the one the repo uses and the parser
-    // accepts; the wheel points are then read by selectionPosition, which
-    // searches the Memory LOD first.  The config route above is primary.
+// The default selectionNames form returns LOD 0 (the visual mesh) only, and
+    // the wheel points live in the Memory LOD (BI selectionNames: the LOD is
+    // selected by name).  The wheel axis is the config "center" and the bound
+    // is the config "boundary".  Select the Memory LOD explicitly.  The config
+    // route above is primary.
 if (_source == "none") then {
-    private _names = selectionNames _vehicle;
+    private _names = _vehicle selectionNames "Memory";
     if (_names isEqualType [] && {_names isNotEqualTo []}) then {
         {
             private _n = toLower _x;

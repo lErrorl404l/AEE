@@ -109,6 +109,22 @@ class TestGeometrySource(unittest.TestCase):
         # The repo uses no hashmap method calls and the parser rejects them.
         self.assertNotIn("containsKey", self.body)
 
+    def test_reads_the_config_memory_point_names(self):
+        # The config declares center and boundary as memory-point NAMES, not
+        # positions: center = "wheel_1_1_axis", boundary = "wheel_1_1_bound"
+        # (BI Cars Config Guidelines, Wheel PX parameters).  The position is
+        # resolved in the Memory LOD, so the config route yields real points.
+        self.assertIn('getText (_wc >> "center")', self.body)
+        self.assertIn('getText (_wc >> "boundary")', self.body)
+        self.assertIn('selectionPosition [_centerName, "Memory"]', self.body)
+        self.assertIn('selectionPosition [_boundName, "Memory"]', self.body)
+
+    def test_model_fallback_selects_the_memory_lod(self):
+        # The default selectionNames form returns LOD 0 only, and the wheel
+        # points live in the Memory LOD.  The LOD must be selected by name,
+        # or the fallback finds no wheel_*_axis/_bound names at all.
+        self.assertIn('selectionNames "Memory"', self.body)
+
 
 class TestCallSitesUseGeometry(unittest.TestCase):
     """The class tables become the fallback, not the source."""
