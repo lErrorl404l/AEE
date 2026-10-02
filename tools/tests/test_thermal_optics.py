@@ -4757,6 +4757,95 @@ class TestThermalPaintVisionGate(unittest.TestCase):
         )
 
 
+def thermal_paint_uploads(samples, levels=255, deadband_steps=0.5, initial=-1.0):
+    """Mirror of the applySelectionThermal change gate with its dead-band.
+
+    The SQF stores the RAW band position of the last upload and re-uploads
+    only when the new position moves more than `deadband_steps` display steps
+    from it.  A bounded AGC wobble smaller than the dead-band therefore causes
+    zero uploads once the baseline is set, while a real change larger than the
+    dead-band causes exactly one upload.
+    """
+    deadband = deadband_steps / (levels - 1)
+    last = initial
+    uploads = 0
+    for b in samples:
+        if abs(b - last) > deadband:
+            uploads += 1
+            last = b
+    return uploads
+
+
+class TestThermalPaintDeadband(unittest.TestCase):
+    """The heat-paint change gate must ignore sub-step AGC drift.
+
+    Widening the display quantiser from 32 to 255 levels exposed the AGC
+    window's sub-step wobble: an exact colour compare re-uploaded the texture
+    whenever the quantised level toggled across a step boundary (the operator's
+    'uploads 0 x5 / uploads 1 x3').  The gate now measures the RAW band
+    position against the last UPLOAD and requires a move of more than half a
+    display step.  Half a step is larger than the measured per-tick wobble
+    (0.0197 radiance against a 0.0684 radiance step) and equals the display's
+    own quantisation half-step.
+    """
+
+    _F = (
+        _REPO_ROOT
+        / "addons"
+        / "thermal"
+        / "functions"
+        / "display"
+        / "fnc_applySelectionThermal.sqf"
+    )
+
+    def test_drift_under_the_deadband_never_reuploads(self):
+        deadband = 0.5 / 254.0
+        # 60 passes whose TOTAL drift is 0.6 of the dead-band: the settled AGC
+        # wobble, not a real temperature change.
+        per_pass = (0.6 * deadband) / 59.0
+        samples = [0.5 + i * per_pass for i in range(60)]
+        self.assertLess(samples[-1] - samples[0], deadband)
+        self.assertEqual(thermal_paint_uploads(samples, initial=samples[0]), 0)
+
+    def test_step_over_the_deadband_uploads_once(self):
+        deadband = 0.5 / 254.0
+        samples = [0.5, 0.5 + 5.0 * deadband]
+        self.assertEqual(thermal_paint_uploads(samples, initial=0.5), 1)
+
+    def test_source_has_the_deadband_and_stores_the_raw_position(self):
+        text = self._F.read_text(encoding="utf-8")
+        self.assertIn("private _deadband = 0.5 / (_levels - 1);", text)
+        self.assertIn("(_b - _lastB) > _deadband", text)
+        self.assertIn("_bands set [_bandKey, [_b, _palette, _polarity]]", text)
+        self.assertNotIn("_was != _colour", text, "the exact compare must be gone")
+
+
+class TestThermalSelectionPaintSet(unittest.TestCase):
+    """A licence plate must be painted like every other selection.
+
+    fnc_getThermalSelections' textureSources branch selects the CAMO slots
+    only.  A licence plate is a hiddenSelection that no textureSource declares,
+    so the branch skipped it and the plate texture survived the flat heat paint
+    (the operator's readable-plate report).  The branch now adds every
+    remaining non-MFD hiddenSelection - the same set the fallback paints.
+    """
+
+    _F = (
+        _REPO_ROOT
+        / "addons"
+        / "thermal"
+        / "functions"
+        / "display"
+        / "fnc_getThermalSelections.sqf"
+    )
+
+    def test_texture_sources_do_not_skip_a_plate(self):
+        text = self._F.read_text(encoding="utf-8")
+        self.assertIn("_selections pushBackUnique _forEachIndex", text)
+        self.assertIn("if (_selections isEqualTo []) then", text)
+        self.assertIn('["mfd", _x, false] call BIS_fnc_inString', text)
+
+
 class TestThermalEdgeKernel(unittest.TestCase):
     """The local-contrast thermal edge kernel (fnc_evaluateThermalEdge.sqf).
 
