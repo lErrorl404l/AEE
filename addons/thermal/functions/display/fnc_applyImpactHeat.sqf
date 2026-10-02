@@ -46,18 +46,25 @@ private _offset = (2.0 + (_energy / 20)) min 8;   // +2..8 C
 [_pos, _offset, 45] call FUNC(addGroundStamp);
 
 // The impacted OBJECT (if the projectile stopped on it) gets a short
-// radiative kick on the surface nearest the impact.
+// radiative kick on the surface nearest the impact: the selection whose
+// memory point is closest to the bullet hole, not the first entry of the
+// selection list.
 private _near = _pos nearObjects 2;
 if (_near isNotEqualTo []) then {
     private _obj = _near select 0;
     if !(_obj isKindOf "Man") then {
-        private _sels = [_obj] call FUNC(getThermalSelections);
-        if (count _sels > 0) then {
-            private _names = selectionNames _obj;
-            private _sel = _sels select 0;
-            if (_sel < count _names) then {
+        private _selNames = [_obj] call FUNC(getThermalSelectionNames);
+        if (_selNames isNotEqualTo []) then {
+            private _points = [_obj, _selNames] call FUNC(getThermalSelectionPoints);
+            // _pos is ASL; the model frame is ATL.
+            private _sel = [
+                _selNames,
+                _points,
+                (_obj worldToModel (ASLToATL _pos))
+            ] call FUNC(getNearestSelection);
+            if (_sel != "") then {
                 private _flux = _offset * 120;
-                [_obj, (_names select _sel), "FORCE", _flux, 0.5] call FUNC(applySelectionThermal);
+                [_obj, _sel, "FORCE", _flux, 0.5] call FUNC(applySelectionThermal);
             };
         };
     };

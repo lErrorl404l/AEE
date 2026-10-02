@@ -48,27 +48,51 @@ if (_weaponHeat > 0.1) then {
     private _muzzlePos = missionNamespace getVariable [QEGVAR(thermal,muzzlePos), []];
     private _muzzleT = missionNamespace getVariable [QEGVAR(thermal,muzzleTime), -999];
     private _nowT = diag_tickTime;
-    if (count _muzzlePos < 3 || {_nowT - _muzzleT > 10}) then {
-        _muzzlePos = _player modelToWorld [0, 1.2, 0.6];   // fallback
+    // The captured muzzle point is ASL (the projectile's position); the
+    // fallback is ATL.  Track which, so the model-space query below converts
+    // from the right frame once.
+    private _muzzleIsASL = (count _muzzlePos >= 3) && {_nowT - _muzzleT <= 10};
+    if (!_muzzleIsASL) then {
+        _muzzlePos = _player modelToWorld [0, 1.2, 0.6];   // fallback, ATL
     };
     // Ground stamp: hot gas warms the ground exactly at the barrel end.
     private _stampOffset = _weaponHeat * 6;   // ~+6 C at full heat
     [_muzzlePos, _stampOffset, 15] call FUNC(addGroundStamp);
-    // Nearby objects within the blast cone get a short radiative kick.
+    private _muzzleATL = if (_muzzleIsASL) then { ASLToATL _muzzlePos } else { _muzzlePos };
+    // Nearby objects within the blast cone get a short radiative kick on the
+    // part the plume physically washes over: the engine/exhaust area the
+    // damage model labels, or the selection nearest the muzzle when the
+    // object carries no engine part (a wall, a crate).
     {
         private _obj = _x;
         if (_obj isKindOf "Man") then { continue; };
         private _dist = _obj distance _muzzlePos;
         if (_dist < 3) then {
-            private _sels = [_obj] call FUNC(getThermalSelections);
-            if (count _sels > 0) then {
-                private _names = selectionNames _obj;
-                private _sel = _sels select 0;
-                if (_sel < count _names) then {
-                    private _flux = _weaponHeat * 800 * (1 - (_dist / 3));
-                    [_obj, (_names select _sel), "", _flux, 0.5] call FUNC(applySelectionThermal);
-                    _applied = _applied + 1;
+            private _selNames = [_obj] call FUNC(getThermalSelectionNames);
+            if (_selNames isNotEqualTo []) then {
+                private _hpMap = [_obj] call FUNC(getHitPointMaterials);
+                private _targets = [];
+                {
+                    if ((_hpMap getOrDefault [_x, ""]) == "engine") then { _targets pushBack _x; };
+                } forEach _selNames;
+                // Bound the engine-area set to 2: a hit-point map names one
+                // engine part in practice, and a hand-written model cannot
+                // flood the per-frame loop with engine labels.
+                if (count _targets > 2) then { _targets resize 2; };
+                if (_targets isEqualTo []) then {
+                    private _points = [_obj, _selNames] call FUNC(getThermalSelectionPoints);
+                    private _nearest = [
+                        _selNames,
+                        _points,
+                        (_obj worldToModel _muzzleATL)
+                    ] call FUNC(getNearestSelection);
+                    if (_nearest != "") then { _targets = [_nearest]; };
                 };
+                private _flux = _weaponHeat * 800 * (1 - (_dist / 3));
+                {
+                    [_obj, _x, "", _flux, 0.5] call FUNC(applySelectionThermal);
+                    _applied = _applied + 1;
+                } forEach _targets;
             };
         };
     } forEach (_player nearObjects 3);

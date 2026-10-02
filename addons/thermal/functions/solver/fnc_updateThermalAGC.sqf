@@ -100,12 +100,22 @@ private _groundEps = (["ground"] call FUNC(getMaterialThermal)) select 0;
 // limit, pending a per-target radiance histogram.
 private _tauRef = 1;
 private _rads = [];
+// Per-object radiance lists for Local display mode.  Grouped from the same
+// key walk the scene window uses, so Local costs no extra band-radiance
+// calls.  The key is "<str object>|<selection>", and a selection name never
+// contains "|", so the split is unambiguous.
+private _objRads = createHashMap;
 {
     private _t = _selTemps get _x;
     if !(_t isEqualType 0 && {finite _t}) then { continue; };
     private _eps = _selEps getOrDefault [_x, _groundEps];
     if !(_eps isEqualType 0) then { _eps = _groundEps; };
-    _rads pushBack ([_t, _eps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp] call FUNC(calculateBandRadiance));
+    private _rad = [_t, _eps, _airTemp, 0.5, _groundTemp, _tauRef, _airTemp] call FUNC(calculateBandRadiance);
+    _rads pushBack _rad;
+    private _oKey = (_x splitString "|") select 0;
+    private _oList = _objRads getOrDefault [_oKey, []];
+    _oList pushBack _rad;
+    _objRads set [_oKey, _oList];
 } forEach (keys _selTemps);
 // The ground is the background every object sits against and the one sample
 // that is always present, even before the first selection solves.  Keeping it
@@ -161,6 +171,40 @@ if (_radMax - _radMin < _fullSpan / 8) then {
     _radMin = _mid - _half;
     _radMax = _mid + _half;
 };
+
+// ─── Per-object windows for Local display mode ────────────────────────────
+// Local mode maps an object's own selections through that object's own
+// radiance range, not the scene window.  The scene window is ground-anchored
+// and scene-wide, so one vehicle's internal spread maps to a few percent of
+// the display.  Local widens that object's contrast but DESTROYS absolute
+// ordering between objects: a hot and a cold object can map to the same
+// ramp.  It is therefore an opt-in mode, never the default.  The SAME
+// max-gain floor as the scene window applies per object: an object whose
+// spread is under _fullSpan / 8 is stretched by at most 8 times, so a
+// genuinely flat object is not invented into full contrast.
+private _objWindows = createHashMap;
+{
+    private _oList = _objRads get _x;
+    if ((_oList isEqualType []) && (_oList isNotEqualTo [])) then {
+        _oList sort true;
+        private _oLo = _oList select 0;
+        private _oHi = _oList select -1;
+        // A dead-flat object has no spread: nudge the window so the mapping
+        // is defined, then the cap below sets the real floor.
+        if (_oHi <= _oLo) then {
+            _oLo = _oLo * 0.999;
+            _oHi = _oHi * 1.001;
+        };
+        if ((_oHi - _oLo) < (_fullSpan / 8)) then {
+            private _oMid = (_oLo + _oHi) / 2;
+            private _oHalf = (_fullSpan / 8) / 2;
+            _oLo = _oMid - _oHalf;
+            _oHi = _oMid + _oHalf;
+        };
+        _objWindows set [_x, [_oLo, _oHi]];
+    };
+} forEach (keys _objRads);
+missionNamespace setVariable [QGVAR(objAgcRad), _objWindows];
 
 // ─── IIR temporal smoothing (FLIR AGC filter) ─────────────────────────────
 // n' = n * alpha + n'prev * (1 - alpha), alpha from the tick interval.

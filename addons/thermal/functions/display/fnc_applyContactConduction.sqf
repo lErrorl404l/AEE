@@ -191,23 +191,37 @@ if (_selMap2 isEqualType 0) then {
 // and boundingBoxReal were all evaluated once PER PAIR, so this O(n^2) loop
 // carried O(n^2) engine work and stalled the frame once a second.  Each is
 // now computed once per object; the pair loop below reads arrays only.
-private _selArr = [];
-private _nameArr = [];
 private _tempArr = [];
 private _minArr = [];
 private _maxArr = [];
+private _selNameArr = [];
+private _selWorldArr = [];
+private _centreArr = [];
 {
     private _obj = _x;
     if (isNull _obj) then {
-        _selArr pushBack [];
-        _nameArr pushBack [];
         _tempArr pushBack -999;
         _minArr pushBack [0, 0, 0];
         _maxArr pushBack [0, 0, 0];
+        _selNameArr pushBack [];
+        _selWorldArr pushBack [];
+        _centreArr pushBack [0, 0, 0];
     } else {
         private _sels = [_obj] call FUNC(getThermalSelections);
-        _selArr pushBack _sels;
-        _nameArr pushBack (selectionNames _obj);
+        private _allNames = selectionNames _obj;
+        // The thermal selection NAMES and their WORLD points, resolved once
+        // per object.  The pair loop then picks the touching face with
+        // array maths only - no engine call returns to the O(n^2) loop.
+        private _thermalNames = [];
+        {
+            if (_x < count _allNames) then { _thermalNames pushBack (_allNames select _x); };
+        } forEach _sels;
+        _selNameArr pushBack _thermalNames;
+        private _pts = [_obj, _thermalNames] call FUNC(getThermalSelectionPoints);
+        private _world = [];
+        { _world pushBack (_obj modelToWorld _x); } forEach _pts;
+        _selWorldArr pushBack _world;
+        _centreArr pushBack (_obj modelToWorld [0, 0, 0]);
         private _ts = [];
         {
             private _t = _selMap2 getOrDefault [format ["%1|%2", _obj, _x], -999];
@@ -231,8 +245,6 @@ for "_i" from 0 to (_n - 2) do {
     if (isNull _a || _aTemp < -900 || !(_aTemp isEqualType 0)) then { continue; };
     private _aMin = _minArr select _i;
     private _aMax = _maxArr select _i;
-    private _aSel0 = (_selArr select _i) param [0, -1];
-    private _aName = (_nameArr select _i) param [_aSel0, ""];
 
     for "_j" from (_i + 1) to (_n - 1) do {
         private _b = _near select _j;
@@ -260,11 +272,20 @@ for "_i" from 0 to (_n - 2) do {
         // a is warmer when _dT > 0: a gets the negative flux.
         private _fluxAB = (-20 * _dT) max -1500 min 1500;   // heats a: -h*dT
         private _fluxBA = -_fluxAB;
-        // Apply to the first selection of each (the contact face) - the
-        // solve redistributes through the object's own conduction.  The
-        // selection and its name were hoisted above.
-        private _bSel0 = (_selArr select _j) param [0, -1];
-        private _bName = (_nameArr select _j) param [_bSel0, ""];
+        // The touching faces: for each object, the part whose model point
+        // is nearest the OTHER object.  Not the first selection of the
+        // list, and never position 0 by rule.  Both sides were resolved to
+        // world points in the hoist, so this is array maths.
+        private _aName = [
+            (_selNameArr select _i),
+            (_selWorldArr select _i),
+            (_centreArr select _j)
+        ] call FUNC(getNearestSelection);
+        private _bName = [
+            (_selNameArr select _j),
+            (_selWorldArr select _j),
+            (_centreArr select _i)
+        ] call FUNC(getNearestSelection);
         if (_aName != "" && _bName != "") then {
             [_a, _aName, "", _fluxAB, 0.5] call FUNC(applySelectionThermal);
             [_b, _bName, "", _fluxBA, 0.5] call FUNC(applySelectionThermal);

@@ -58,19 +58,34 @@ private _sigma = 5.670374419e-8;
 // PER PAIR, so an O(n^2) loop carried O(n^2) engine-level selection walks and
 // stalled the frame once a second.  Each is now computed once per object, so
 // the pair loop below reads arrays and costs no engine work.
-private _selArr = [];
-private _nameArr = [];
 private _tempArr = [];
+private _selNameArr = [];
+private _selWorldArr = [];
+private _centreArr = [];
 {
     private _obj = _x;
     if (isNull _obj) then {
-        _selArr pushBack [];
-        _nameArr pushBack [];
         _tempArr pushBack -999;
+        _selNameArr pushBack [];
+        _selWorldArr pushBack [];
+        _centreArr pushBack [0, 0, 0];
     } else {
         private _sels = [_obj] call FUNC(getThermalSelections);
-        _selArr pushBack _sels;
-        _nameArr pushBack (selectionNames _obj);
+        private _allNames = selectionNames _obj;
+        // The thermal selection NAMES and their WORLD points, resolved once
+        // per object.  The pair loop below then distributes the flux by a
+        // view factor with array maths only - no engine call returns to the
+        // O(n^2) loop, which was the whole point of the hoist.
+        private _thermalNames = [];
+        {
+            if (_x < count _allNames) then { _thermalNames pushBack (_allNames select _x); };
+        } forEach _sels;
+        _selNameArr pushBack _thermalNames;
+        private _pts = [_obj, _thermalNames] call FUNC(getThermalSelectionPoints);
+        private _world = [];
+        { _world pushBack (_obj modelToWorld _x); } forEach _pts;
+        _selWorldArr pushBack _world;
+        _centreArr pushBack (_obj modelToWorld [0, 0, 0]);
         private _ts = [];
         {
             private _t = _selMap getOrDefault [format ["%1|%2", _obj, _x], -999];
@@ -119,15 +134,42 @@ for "_i" from 0 to (_n - 2) do {
         // heat sources).  Cap so a large dT cannot blow the solve.
         _q = _q max 0 min 3000;
 
-        // The colder object gains heat; the hotter loses it.  The selection
-        // and its name were hoisted above, so this is an array read.
+        // The colder object gains heat; the hotter loses it.  The pair's
+        // total flux is DISTRIBUTED across the cold object's parts by a
+        // view factor, not dumped on its first entry: a part nearer the hot
+        // object sees more of it and takes more of the flux.  The weights
+        // are normalised, so the pair's energy is unchanged and only where
+        // it lands moves.
         private _coldIdx = [_j, _i] select (_aTemp >= _bTemp);
         private _coldObj = _near select _coldIdx;
-        private _coldSel = (_selArr select _coldIdx) param [0, -1];
-        private _coldName = (_nameArr select _coldIdx) param [_coldSel, ""];
-        if (_coldName != "") then {
-            [_coldObj, _coldName, "", _q, 0.5] call FUNC(applySelectionThermal);
-            _applied = _applied + 1;
+        private _coldNames = _selNameArr select _coldIdx;
+        private _coldWorld = _selWorldArr select _coldIdx;
+        if (_coldNames isNotEqualTo []) then {
+            // The other object of the pair is the hot one.
+            private _hotIdx = [_j, _i] select (_coldIdx == _j);
+            private _hotCentre = _centreArr select _hotIdx;
+            // View factor kernel, the same 1/(1 + d^2/A) the object pair
+            // uses, evaluated per part in world space.  Bound: N is the
+            // cold object's thermal selection count, read from the hoist;
+            // the exponent makes a part at 3x the nearest distance carry
+            // about a tenth of its flux, so distant parts are negligible.
+            private _weights = [];
+            private _wsum = 0;
+            {
+                private _dx = (_x select 0) - (_hotCentre select 0);
+                private _dy = (_x select 1) - (_hotCentre select 1);
+                private _dz = (_x select 2) - (_hotCentre select 2);
+                private _w = 1 / (1 + ((_dx * _dx) + (_dy * _dy) + (_dz * _dz)));
+                _weights pushBack _w;
+                _wsum = _wsum + _w;
+            } forEach _coldWorld;
+            if (_wsum > 0) then {
+                {
+                    private _share = _q * ((_weights select _forEachIndex) / _wsum);
+                    [_coldObj, _x, "", _share, 0.5] call FUNC(applySelectionThermal);
+                    _applied = _applied + 1;
+                } forEach _coldNames;
+            };
         };
     };
 };
