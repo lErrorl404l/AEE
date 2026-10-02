@@ -79,6 +79,21 @@ private _spec = [0.40, 3.20, 0.76, 30];   // default: a light 4x4 / HMMWV
     ["Truck",       [0.40, 4.00, 0.90, 25]]
 ];
 
+// A sourced catalogue clearance beats the class-table estimate. The value
+// row of fnc_getVehicleData holds the operating weight, the tyre or track
+// fields and the ground clearance; only the land types carry a clearance and
+// the class table stands for a row the corpus does not hold.
+private _clearanceM = 0;
+if (_vehicle isKindOf "LandVehicle") then {
+    private _valueRow = [typeOf _vehicle] call FUNC(getVehicleData);
+    if ((_valueRow isEqualType []) && {count _valueRow >= 4}) then {
+        private _clearanceMm = _valueRow select 3;
+        if ((_clearanceMm isEqualType 0) && (_clearanceMm > 0)) then {
+            _clearanceM = _clearanceMm / 1000;
+        };
+    };
+};
+
 _spec params ["_clearance", "_wheelbase", "_fordDepth", "_sideLimit"];
 
 // The vehicle's own geometry overrides the class estimate where it is
@@ -87,6 +102,9 @@ _spec params ["_clearance", "_wheelbase", "_fordDepth", "_sideLimit"];
 // source, so it stays on the class table.
 private _geo = [_vehicle] call FUNC(getVehicleGeometry);
 if ((_geo select 1) > 0) then { _wheelbase = _geo select 1; };
+
+// A sourced catalogue clearance overrides the class-table estimate.
+if (_clearanceM > 0) then { _clearance = _clearanceM; };
 
 // ─── Breakover ───────────────────────────────────────────────────────────
 private _breakover = 2 * (atan ((2 * _clearance) / _wheelbase)) * 57.2957795;

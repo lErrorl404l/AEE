@@ -56,6 +56,15 @@ if (_pos2D isNotEqualTo []) then {
     };
 };
 
+// ─── Ground frost (surface state, environmental) ─────────────────────────
+// fnc_detectGroundFrost solves the Magnus dew point and the surface energy
+// balance, and publishes whether frost is present. Produce it here and fold
+// its presence into the frozen classification below. A frost-covered
+// surface is a frozen surface for the traction model.
+[] call EFUNC(environmental,detectGroundFrost);
+private _groundFrost = missionNamespace getVariable [EGVAR(environmental,groundFrostPresent), false];
+if !(_groundFrost isEqualType false) then { _groundFrost = false; };
+
 // ─── Frost depth (the Stefan solution, environmental) ────────────────────
 // fnc_calculateFreezeThawCycling solves the Stefan freeze/thaw depth and
 // publishes it, but nothing consumed it, so a dry cold snap never
@@ -65,7 +74,7 @@ if (_pos2D isNotEqualTo []) then {
 // chatter at 0 C.
 private _frozenDepth = missionNamespace getVariable [QEGVAR(core,frozenDepth_m), 0];
 if !(_frozenDepth isEqualType 0) then { _frozenDepth = 0; };
-private _groundFrozen = (_frozenDepth > 0.01);
+private _groundFrozen = (_frozenDepth > 0.01) || _groundFrost;
 
 // ─── Classification (most specific → least) ──────────────────────────
 private _state = "Normal";
@@ -73,7 +82,7 @@ private _state = "Normal";
 if (_surface in ["snow","ice","glacier","tundra"]) then {
     _state = "Snow";
 } else {
-    if (!isNil "_T" && (_T < -2) && ((_rainAccum > 0.05) || _groundFrozen)) then {
+    if (!isNil "_T" && ((_T < -2) || _groundFrost) && ((_rainAccum > 0.05) || _groundFrozen)) then {
         _state = "Frozen";
     } else {
         if (_rainAccum > 0.2 && (!isNil "_T") && (_T > 2)) then {

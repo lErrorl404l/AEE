@@ -116,7 +116,7 @@
       "provenance": [
         "addons/mobility/functions/fnc_calculateTraction.sqf:54",
         "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:241",
-        "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:322",
+        "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:451",
         "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:62"
       ],
       "token": "CAManBase"
@@ -210,6 +210,8 @@
         "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf:364",
         "addons/mobility/functions/fnc_applyAccretionMass.sqf:33",
         "addons/mobility/functions/fnc_applyGripLoss.sqf:38",
+        "addons/mobility/functions/fnc_calculateRouteDegradation.sqf:47",
+        "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:87",
         "addons/mobility/functions/fnc_classifyVehicle.sqf:86",
         "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:61",
         "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:292"

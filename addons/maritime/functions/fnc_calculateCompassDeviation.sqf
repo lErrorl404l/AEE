@@ -91,6 +91,25 @@ private _latDeg = _loc select 1;   // magnitude from the shared source
 if (_latDeg == 0) then { _latDeg = 40; };  // temperate default
 _declination = _declination + ((_latDeg - 45) * 0.05);
 
+// ─── Local ferrous anomaly (aee_core dipole model) ─────────────────────────
+// A nearby engine block or steel structure distorts the local field. The
+// core dipole model returns the deviation in nanotesla. Earth's field is of
+// the order 50000 nT, so the heading error is the anomaly over that
+// background, in radians. The unit's own vehicle is the platform, not a
+// local source, so it is excluded. The contribution is capped because a
+// compass pressed against steel is unreadable, not merely deviated.
+private _unitVehicle = vehicle _unit;
+private _anomalyNT = 0;
+{
+    if (_x != _unitVehicle) then {
+        _anomalyNT = _anomalyNT + [getPosASL _unit, getPosASL _x] call EFUNC(core,calculateMagneticAnomaly);
+    };
+} forEach (nearestObjects [_unit, ["LandVehicle"], 50]);
+private _backgroundNT = 50000;
+private _anomalyDeg = ((_anomalyNT / _backgroundNT) * 57.2957795) max -10 min 10;
+_declination = _declination + _anomalyDeg;
+missionNamespace setVariable [QGVAR(compassAnomalyNT), _anomalyNT];
+
 _declination = _declination max -30 min 30;
 
 missionNamespace setVariable [QEGVAR(core,magneticDeclinationDeg), _declination];

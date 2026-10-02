@@ -44,6 +44,33 @@ ADDON = false;
     if (_initSpeed <= 0) then { _initSpeed = 905; };
     private _energyJ = 0.5 * _mass * (_initSpeed ^ 2);
 
+    // ─── Free recoil on the platform (ADR-004) ─────────────────────────────
+    // A mounted weapon transfers its recoiling momentum to the platform.
+    // The engine models no recoil for a scripted round, so the momentum from
+    // fnc_calculateRecoil is applied to the owning platform as an impulse
+    // over one physics step. The service charge comes from fnc_getLoadData;
+    // a round with no load record still recoils on its ejecta momentum. The
+    // impulse opposes the shot, so the force is along the negated muzzle
+    // direction.
+    private _platform = vehicle _unit;
+    if ((_platform != _unit) && {local _platform}) then {
+        private _load = [_ammo] call FUNC(getLoadData);
+        private _chargeKg = 0;
+        if (_load isNotEqualTo []) then { _chargeKg = (_load select 4) / 1000; };
+        // A 20 mm cannon projectile is of the order 100 g. Below it the
+        // SAAMI small-arms factors apply, at and above it the Lagrange
+        // cannon term does.
+        private _arm = "rifle";
+        if (_mass >= 0.1) then { _arm = "cannon"; };
+        private _recoil = [_mass, _initSpeed, _chargeKg, getMass _platform, _arm] call FUNC(calculateRecoil);
+        private _impulse = _recoil select 0;
+        private _dir = vectorNormalized (velocity _projectile);
+        if ((_impulse > 0) && ((vectorMagnitude _dir) > 0)) then {
+            _platform addForce [(_dir vectorMultiply (-_impulse / 0.02)), [0, 0, 0]];
+        };
+        missionNamespace setVariable [QGVAR(lastRecoil), _recoil];
+    };
+
     // Apply the real muzzle velocity to the projectile. Vanilla fires the
     // round with the magazine initSpeed, which is a game value; the
     // solved velocity is the real one. ACE3 advanced ballistics applies

@@ -52,6 +52,20 @@ private _distM  = missionNamespace getVariable [QGVAR(radioLinkRangeM), 5000];
 private _txPowerDBm = missionNamespace getVariable [QGVAR(txPower), 37];
 private _propRange  = missionNamespace getVariable [QGVAR(propagationRange), 2.0];
 
+// ─── Tropospheric refraction (ITU-R P.453) ─────────────────────────────────
+// Produce the published refractivity state (aee_atmos_refractivityN,
+// aee_atmos_refractionK, aee_atmos_refractionCondition) and read the
+// k-factor. The k-factor is the ratio of the effective to the true earth
+// radius, so it scales the geometric path length by 1 / sqrt(k). This is the
+// standard effective-earth-radius correction, and it is read from the
+// published ITU-R P.453 state so the radio budget and the refraction model
+// cannot disagree.
+[] call EFUNC(atmos,calculateRefraction);
+private _refractionK = missionNamespace getVariable [EGVAR(atmos,refractionK), 1];
+if !(_refractionK isEqualType 0) then { _refractionK = 1; };
+_refractionK = _refractionK max 0.5 min 2.0;
+private _effectiveDistM = _distM / (sqrt _refractionK);
+
 // ─── Battery temperature derating (issue #36) ──────────────────────────────
 // Cold Li-ion cells deliver less power: the physiology model publishes a
 // capacity multiplier 0.3-1.0 (aee_physiology_batteryTemperatureDerating).
@@ -72,7 +86,7 @@ if (_batteryDerate < 1.0 && (missionNamespace getVariable [QGVAR(batteryDerating
 // conversion.  (A previous version divided by 2.302585 assuming natural
 // log, which double-converted and produced FSPL -46 dB — caught by the
 // in-game RPT, invisible to the range-checked index.)
-private _fspl = (20 * log _distM) + (20 * log _freqHz) - 147.55;
+private _fspl = (20 * log _effectiveDistM) + (20 * log _freqHz) - 147.55;
 
 // ─── Evaporation duct (issue #37) ─────────────────────────────────────────
 // The evaporation duct is an SHF phenomenon (1-40 GHz, best 10-18 GHz):
