@@ -82,6 +82,9 @@ if (_mode == "EXIT") then {
     // texture on screen.
     missionNamespace setVariable [QGVAR(paintGate), createHashMap];
     missionNamespace setVariable [QGVAR(paintBands), createHashMap];
+    // The visibility hysteresis cache is display state, like the paint gate:
+    // clear it so a re-entry recomputes from the current scene.
+    missionNamespace setVariable [QGVAR(selVis), createHashMap];
 } else {
     if (isNull _obj || {!hasInterface}) exitWith { 0 };
 
@@ -170,6 +173,19 @@ if (_mode == "EXIT") then {
         _selNames = selectionNames _obj;
     };
 
+    // ─── A number plate keeps its own texture and material ─────────────────
+    // A plate is an identification marking, not a thermal-radiating surface.
+    // The flat heat paint replaces the plate's texture with one solid colour
+    // and the FPN rvmat (Stage1 white, no digit glyphs) replaces its material,
+    // so the engine-rendered plate text reads BLACK against the paint - the
+    // operator's "numberplates still show black text in thermals".  Drop every
+    // number_* selection from the paint set and from the material swap below;
+    // the model's own plate texture then renders its digits legibly.  The
+    // engine names the plate selections number_01/02/03 (confirmed at runtime:
+    // RPT sel=number_01/02/03 on B_Plane_Fighter_01_F), and this is the same
+    // engine-provided declaration the discovery walk already reads.
+    _selNames = _selNames select { !(["number", _x, false] call BIS_fnc_inString) };
+
     // Save originals once per object per pass (first apply).  Materials
     // are captured too: the FPN rvmat replaces them while thermal is
     // active (issue #204 - perlinNoise Stage2 FPN over the painted heat
@@ -201,8 +217,13 @@ if (_mode == "EXIT") then {
         // (matches the EXIT restore guard below).
         if (_fpnEnabled && _oldMats isNotEqualTo []) then {
             private _fpnMat = "\z\aee\addons\thermal\data\ti_fpn.rvmat";
+            // The FPN rvmat is Stage1 white with no digit glyphs, so swapping
+            // it onto a number plate erases the plate text.  Skip the plate
+            // material slots; they keep the model's own material.
+            private _matSels = selectionNames _obj;
             {
-                if (_x isEqualType "") then {
+                private _slotSel = _matSels param [_forEachIndex, ""];
+                if ((_x isEqualType "") && {!(["number", _slotSel, false] call BIS_fnc_inString)}) then {
                     _obj setObjectMaterial [_forEachIndex, _fpnMat];
                 };
             } forEach _oldMats;
@@ -396,10 +417,19 @@ if (_mode == "EXIT") then {
         _bgCache = createHashMap;
         missionNamespace setVariable [QGVAR(selBandRadBg), _bgCache];
     };
+    // ─── Background refresh period (the added per-object scan) ─────────────
+    // The scan averages the object's OTHER selections.  Those radiances move
+    // on the surface time constants (600 s and longer), so recomputing the
+    // mean at the paint cadence was the repeated cost the sensor layer added.
+    // Hold it for a full second (four paint intervals at the default 4 Hz);
+    // the size check recomputes early when a newly discovered selection joins
+    // the set.  That bounds the scan to O(n) once per second per object.
+    private _bgInterval = _interval * 4;
     private _bgEntry = _bgCache getOrDefault [_objKey, []];
     private _bgFresh = false;
-    if ((_bgEntry isEqualType []) && {(count _bgEntry) == 3}) then {
-        if ((diag_tickTime - (_bgEntry select 2)) < _interval) then { _bgFresh = true; };
+    if ((_bgEntry isEqualType []) && {(count _bgEntry) == 4}) then {
+        private _bgAge = diag_tickTime - (_bgEntry select 2);
+        if ((_bgAge < _bgInterval) && {(_bgEntry select 3) == (count _objNames)}) then { _bgFresh = true; };
     };
     if (_bgFresh) then {
         _bgSum = _bgEntry select 0;
@@ -412,7 +442,7 @@ if (_mode == "EXIT") then {
                 _bgCount = _bgCount + 1;
             };
         } forEach _objNames;
-        _bgCache set [_objKey, [_bgSum, _bgCount, diag_tickTime]];
+        _bgCache set [_objKey, [_bgSum, _bgCount, diag_tickTime, count _objNames]];
     };
 
     {
@@ -756,6 +786,31 @@ if (_mode == "EXIT") then {
         // A refusal from any kernel must not blank the scene: keep full
         // contrast when the resolved fraction is unusable.
         if !((_vis isEqualType 0) && (_vis >= 0) && {finite _vis}) then { _vis = 1; };
+
+        // ─── Visibility hysteresis (the in/out flicker) ────────────────────
+        // The three kernels run every due pass and their verdict is continuous
+        // in the inputs, but two joins are STEPS: the sub-pixel SNR detection
+        // at 2.8 and the one-line-pair Johnson boundary in
+        // fnc_resolveThermalTarget.  At a fixed range those sit on a knife
+        // edge, so range and scene noise flip _vis every pass and the
+        // selection repaints between full contrast and its local background -
+        // the operator's "flickering in and out".  Keep the previous fraction
+        // until the new one differs by more than the dead-band: the step joins
+        // become a Schmitt trigger, and a steady scene holds the cached
+        // fraction and never repaints.  A full-contrast (1.0) verdict always
+        // snaps to 1 so a resolved target is never held below it.
+        private _visMap = missionNamespace getVariable [QGVAR(selVis), -1];
+        if (_visMap isEqualType 0) then {
+            _visMap = createHashMap;
+            missionNamespace setVariable [QGVAR(selVis), _visMap];
+        };
+        private _visPrev = _visMap getOrDefault [_stateKey, -1];
+        private _visBand = 0.1;
+        if ((_vis < 1) && {(_visPrev isEqualType 0) && (_visPrev >= 0) && {abs (_vis - _visPrev) <= _visBand}}) then {
+            _vis = _visPrev;
+        };
+        _visMap set [_stateKey, _vis];
+        missionNamespace setVariable [QGVAR(selVis), _visMap];
 
         // Pull a target the sensor cannot resolve toward the local background
         // colour, in the same band-position domain the palette consumes.  The

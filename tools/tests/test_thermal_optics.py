@@ -5799,7 +5799,11 @@ class TestThermalResolvabilityWiring(unittest.TestCase):
             '_radMap getOrDefault [format ["%1|%2", str _obj, _x], -1]', self.paint
         )
         self.assertIn("_bgSum - _ownPrev", self.paint)
-        self.assertIn("< _interval", self.paint)
+        # The scan is bounded by a longer background interval than the paint
+        # cadence, and invalidated early only when the selection set changes.
+        self.assertIn("_bgInterval = _interval * 4", self.paint)
+        self.assertIn("_bgAge < _bgInterval", self.paint)
+        self.assertIn("(_bgEntry select 3) == (count _objNames)", self.paint)
 
     def test_a_failed_target_is_blended_toward_its_background_colour(self):
         self.assertIn("_bBg + ((_b - _bBg) * _vis)", self.paint)
@@ -5810,3 +5814,172 @@ class TestThermalResolvabilityWiring(unittest.TestCase):
             encoding="utf-8"
         )
         self.assertIn("PREPS(solver,resolveThermalVisibility);", prep)
+
+
+class TestThermalVisibilityHysteresis(unittest.TestCase):
+    """The visibility fraction must not flip on a knife edge every pass.
+
+    fnc_resolveThermalTarget has two STEP joins: the sub-pixel SNR detection
+    at 2.8 and the one-line-pair Johnson boundary.  At a fixed range those sit
+    on an edge, so scene and range noise flip the resolved fraction between
+    passes and the selection repaints between full contrast and its local
+    background.  The paint now holds the previous fraction until the new one
+    differs by more than a dead-band, and a full-contrast verdict always snaps
+    to 1.  The mirror below is the exact rule the SQF block implements.
+    """
+
+    _F = (
+        _REPO_ROOT
+        / "addons"
+        / "thermal"
+        / "functions"
+        / "display"
+        / "fnc_applySelectionThermal.sqf"
+    )
+
+    @classmethod
+    def setUpClass(cls):
+        cls.code = _code_only(cls._F.read_text(encoding="utf-8"))
+
+    @staticmethod
+    def _hysteresis(samples, band=0.1):
+        vis = None
+        out = []
+        for raw in samples:
+            if raw >= 1:
+                vis = 1.0
+            elif vis is not None and abs(raw - vis) <= band:
+                pass
+            else:
+                vis = raw
+            out.append(vis)
+        return out
+
+    def test_a_steady_alternation_is_held(self):
+        # Two raw fractions one hundredth apart straddle no output change.
+        held = self._hysteresis([0.80, 0.82] * 30)
+        self.assertEqual(set(held), {0.80})
+
+    def test_a_real_step_beyond_the_band_moves(self):
+        # A genuine move of more than the band is followed.
+        self.assertEqual(self._hysteresis([0.80, 0.95])[-1], 0.95)
+
+    def test_full_contrast_always_snaps_to_one(self):
+        # A resolved verdict must never be held below full contrast.
+        self.assertEqual(self._hysteresis([0.95, 1.0])[-1], 1.0)
+        self.assertEqual(self._hysteresis([0.80, 1.0])[-1], 1.0)
+
+    def test_a_sub_band_wobble_never_repaints(self):
+        # The painted band position is constant while the fraction is held, so
+        # the level gate sees no move and uploads nothing.
+        held = self._hysteresis([0.80, 0.81, 0.79, 0.82, 0.80] * 10)
+        self.assertEqual(len(set(round(v, 6) for v in held)), 1)
+
+    def test_source_holds_the_previous_fraction_within_the_band(self):
+        self.assertIn("QGVAR(selVis)", self.code)
+        self.assertIn("private _visBand = 0.1;", self.code)
+        self.assertIn("abs (_vis - _visPrev) <= _visBand", self.code)
+        self.assertIn("_vis = _visPrev;", self.code)
+        self.assertIn("if ((_vis < 1) &&", self.code)
+
+    def test_source_clears_the_cache_on_exit(self):
+        self.assertIn(
+            "missionNamespace setVariable [QGVAR(selVis), createHashMap];", self.code
+        )
+
+
+class TestThermalNumberPlatePaint(unittest.TestCase):
+    """A number plate must keep its own texture and material.
+
+    A plate is an identification marking.  The flat heat paint replaces its
+    texture with one solid colour and the FPN rvmat has no digit glyphs, so
+    the engine plate text reads black against the paint.  The paint path now
+    drops every number_* selection from both the texture paint and the FPN
+    material swap, so the model plate renders its digits legibly.
+    """
+
+    _F = (
+        _REPO_ROOT
+        / "addons"
+        / "thermal"
+        / "functions"
+        / "display"
+        / "fnc_applySelectionThermal.sqf"
+    )
+
+    @classmethod
+    def setUpClass(cls):
+        cls.code = _code_only(cls._F.read_text(encoding="utf-8"))
+
+    @staticmethod
+    def _drop_plates(names):
+        return [n for n in names if "number" not in n.lower()]
+
+    def test_plate_selections_are_dropped_from_the_paint_set(self):
+        got = self._drop_plates(
+            ["camo1", "number_01", "camo2", "number_02", "number_03"]
+        )
+        self.assertEqual(got, ["camo1", "camo2"])
+
+    def test_a_non_plate_name_is_kept(self):
+        self.assertEqual(self._drop_plates(["body", "engine", "glass"]), ["body", "engine", "glass"])
+
+    def test_source_filters_the_paint_set(self):
+        self.assertIn(
+            '_selNames = _selNames select { !(["number", _x, false] call BIS_fnc_inString) };',
+            self.code,
+        )
+
+    def test_source_skips_the_plate_material_swap(self):
+        self.assertIn('["number", _slotSel, false] call BIS_fnc_inString', self.code)
+        self.assertIn("private _matSels = selectionNames _obj;", self.code)
+
+
+class TestThermalBackgroundBound(unittest.TestCase):
+    """The object background scan must not run on every paint pass.
+
+    The scan averages the object's other selections.  Those radiances move on
+    the surface time constants, so the mean is held for four paint intervals
+    and recomputed early only when the selection set size changes.
+    """
+
+    _F = (
+        _REPO_ROOT
+        / "addons"
+        / "thermal"
+        / "functions"
+        / "display"
+        / "fnc_applySelectionThermal.sqf"
+    )
+
+    @classmethod
+    def setUpClass(cls):
+        cls.code = _code_only(cls._F.read_text(encoding="utf-8"))
+
+    @staticmethod
+    def _recomputes(pass_times, bg_interval):
+        last = None
+        count = 0
+        for t in pass_times:
+            if last is None or (t - last) >= bg_interval:
+                count += 1
+                last = t
+        return count
+
+    def test_the_scan_is_at_most_once_per_background_interval(self):
+        interval = 0.25
+        passes = [i * interval for i in range(40)]  # 10 s at the 4 Hz cadence
+        self.assertEqual(self._recomputes(passes, interval), 40)
+        bound = int(10 / (interval * 4)) + 1
+        self.assertLessEqual(self._recomputes(passes, interval * 4), bound)
+
+    def test_source_holds_the_background_longer_than_the_paint_cadence(self):
+        self.assertIn("private _bgInterval = _interval * 4;", self.code)
+        self.assertIn("_bgAge < _bgInterval", self.code)
+
+    def test_source_invalidates_when_the_selection_set_changes(self):
+        self.assertIn("(_bgEntry select 3) == (count _objNames)", self.code)
+        self.assertIn(
+            "_bgCache set [_objKey, [_bgSum, _bgCount, diag_tickTime, count _objNames]];",
+            self.code,
+        )
