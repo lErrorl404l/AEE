@@ -486,9 +486,7 @@
         "AN/PAS-13",
         "PAS-13"
       ],
-      "aliases": [
-        "pas13"
-      ],
+      "aliases": [],
       "keywords": [],
       "values": {
         "netd_c": {

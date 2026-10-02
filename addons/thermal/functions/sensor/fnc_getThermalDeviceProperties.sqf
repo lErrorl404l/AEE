@@ -2,11 +2,20 @@
 /*
 Thermal device properties (issue #215).
 
-Classifies the thermal device (the player's thermal sight, binocular or
-clip-on) by its classname family keywords and returns the researched
-sensor physics from sensor-device-library.md:
+Resolves the thermal device (the player's thermal sight, binocular or
+clip-on) and returns its researched sensor physics.
 
-  [netdDegC, resolutionX, resolutionY, weightKg, refreshHz, cooled]
+SOURCE OF TRUTH. The device corpus under data/device/ is the only home for a
+device value. The generator tools/validation/gen_device_data.py writes the
+thermal family rows into the generated matcher
+addons/nightvision/functions/fnc_getDeviceMatch.sqf. This function reads the
+corpus through that matcher with the "thermal" family filter. A corpus figure
+is the authority and it carries its unit, source and grade in the corpus.
+
+STATIC FALLBACK. The switch below is the named fallback. It runs only when
+the corpus holds no row for the device, or when a matched row holds no figure
+for one field. It is this device's own researched row from
+sensor-device-library.md, never a sibling's. A corpus figure always wins.
 
 Groups (sortable by country -> company -> detector):
   USA military 1990s+  | PAS-13E(V)1/2/3 (uncooled VOx 320/640) ->
@@ -30,11 +39,9 @@ THRESHOLD the correct input is the LIMIT, because the threshold is a
 worst-case detection floor and a nominal figure would claim sensitivity the
 qualified unit may not have (a datasheet NETD is a test-condition figure;
 FLIR normalises it to 300 K and f/1.0).  The "<" devices therefore use the
-bound: Catherine, JIM LR, Recon V and Thermion use 0.025 from "<25"; Helion
-uses 0.04 from "<40"; the PAS-13 family uses 0.05 from "<50".  The "~"
-devices use the nominal figure as printed.  Manufacturer datasheets were
-opened for the resolution and, where noted, the weight; NETD was not on
-every sheet, so those stay as the library prints them.
+bound in the corpus.  The "~" devices use the nominal figure as printed.
+Manufacturer datasheets were opened for the resolution and, where noted, the
+weight; NETD was not on every sheet, so those stay as the library prints them.
 
 Arguments:
   0: unit (OBJECT, default player)
@@ -64,11 +71,14 @@ private _t = toLower _optic;
 // family token so only a real PAS-13 can select a variant tuple.
 private _isPas = (_t find "pas-13" >= 0) || (_t find "pas13" >= 0);
 
-// Every tuple is reconciled against sensor-device-library.md L111-127.
-// NETD: "~" values are typical, "<" values are the datasheet limit, used
-// here as a conservative stand-in because the doc publishes no typical
-// figure for those devices (see the header note).
-switch (true) do {
+// ─── Static fallback: sensor-device-library.md ────────────────────────────
+// Return order [netd, resX, resY, weight, refresh, cooled].  Every tuple is
+// reconciled against sensor-device-library.md L111-127.  NETD: "~" values
+// are typical, "<" values are the datasheet limit, used here as a
+// conservative stand-in because the doc publishes no typical figure for
+// those devices (see the header note).  Used only when the corpus has no
+// row for the device or no figure for one field.
+private _fallback = switch (true) do {
     // ── Cooled high-res (InSb/MCT): the observation class ──
     // Catherine-MP LW: cooled MCT 1280x1024, <25 mK, 7.9 kg (doc L123).
     case (_t find "catherine" >= 0):          { [0.025, 1280, 1024, 7.9, 50, 1] };
@@ -115,3 +125,37 @@ switch (true) do {
     //    source and is UNVERIFIED.
     default                                   { [0.05, 640, 480, 1.5, 30, 0] };
 };
+
+// ─── Corpus route: data/device/, family "thermal" ─────────────────────────
+// The generated matcher filters its table by family before the identity
+// ladder, so a class two families name (the ENVG-B) cannot tie here.  A
+// unique match returns [device_id, family, confidence, matched_by, source,
+// value_row]; no match returns [].
+private _match = [_optic, "thermal"] call EFUNC(nightvision,getDeviceMatch);
+if (_match isEqualTo []) exitWith { _fallback };
+
+// Generated thermal value row, in corpus projection order:
+//   [netd_c, resolution_x, resolution_y, refresh_hz, cooled, weight_kg]
+private _row = _match select 5;
+
+// Per field: a corpus figure wins.  A field the row leaves absent arrives
+// as 0 (number) or "" (word) at grade absent, so fall back to this device's
+// own static row.  A sibling's figure is never borrowed.
+private _netd = _row select 0;
+if (_netd <= 0) then { _netd = _fallback select 0; };
+private _resX = _row select 1;
+if (_resX <= 0) then { _resX = _fallback select 1; };
+private _resY = _row select 2;
+if (_resY <= 0) then { _resY = _fallback select 2; };
+private _refresh = _row select 3;
+if (_refresh <= 0) then { _refresh = _fallback select 4; };
+private _weight = _row select 5;
+if (_weight <= 0) then { _weight = _fallback select 3; };
+
+// The corpus holds the word, the return contract holds 1 (cooled) or 0.
+private _cooledToken = _row select 4;
+private _cooled = _fallback select 5;
+if (_cooledToken == "cooled") then { _cooled = 1; };
+if (_cooledToken == "uncooled") then { _cooled = 0; };
+
+[_netd, _resX, _resY, _weight, _refresh, _cooled]

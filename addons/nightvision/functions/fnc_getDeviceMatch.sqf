@@ -108,7 +108,7 @@ private _tableAll = [
     ["jim_lr", "thermal", "jimlr|jim", "jim", "jimlr|safranjim", "aee_sensor_device_library", [0.025, 384, 288, 50, "cooled", 2.8]],
     ["m145_class", "optic", "m145mgo|c79|mgo", "m145|c79|mgo", "m145|c79|mgo", "aee_sensor_device_library", [3.4, 28, 8.5, 0.68, 8.2, "passive"]],
     ["mowgli", "thermal", "1pn97|mowgli", "mowgli|1pn97", "mowgli|1pn97", "aee_sensor_device_library", [0.05, 320, 240, 50, "uncooled", 1.5]],
-    ["pas13_base", "thermal", "anpas13|pas13", "pas13", "", "aee_sensor_device_library", [0.05, 640, 480, 30, "uncooled", 1.134]],
+    ["pas13_base", "thermal", "anpas13|pas13", "", "", "aee_sensor_device_library", [0.05, 640, 480, 30, "uncooled", 1.134]],
     ["pas13_v1", "thermal", "anpas13ev1|pas13v1", "pas13v1", "pas13v1|pas13gv1", "aee_sensor_device_library", [0.05, 320, 240, 30, "uncooled", 0.885]],
     ["pas13_v2", "thermal", "anpas13ev2|pas13v2", "pas13v2", "pas13v2|pas13gv2", "aee_sensor_device_library", [0.05, 640, 480, 30, "uncooled", 1.134]],
     ["pas13_v3", "thermal", "anpas13ev3|pas13v3", "pas13v3", "pas13v3|pas13gv3", "aee_sensor_device_library", [0.05, 640, 480, 30, "uncooled", 1.497]],
