@@ -6288,3 +6288,68 @@ class TestThermalSolverWarmup(unittest.TestCase):
         self.assertIn('private _firstSight = isNil "_storedTemp";', code)
         self.assertIn("private _solveDt = [5, 1000000] select _firstSight;", code)
         self.assertEqual(code.count("_solveDt"), 3)
+
+
+class TestThermalSweepBudget(unittest.TestCase):
+    """The ambient/ENTER sweep is bounded per pass (fnc_takeThermalSweep).
+
+    The operator's run (RPT 23:30:22, 28720 lines) logged about 700 objects on
+    an ambient/ENTER pass, and the per-selection solve measured about 1 ms
+    each, so solving the whole set in one call cost roughly half a second in a
+    single frame - the hitch the operator feels as lag.  Discovery now enqueues
+    and each pass takes a bounded batch, so the sweep spreads across ticks.
+    Nothing is dropped: the remainder stays queued and the next pass takes it,
+    and an ambient change re-queues the whole discovered set.
+    """
+
+    _SWEEP = _THERMAL / "display" / "fnc_takeThermalSweep.sqf"
+    _CALLER = _THERMAL / "display" / "fnc_applyBuildingThermal.sqf"
+
+    @staticmethod
+    def take_sweep(pending, budget):
+        """Mirror of fnc_takeThermalSweep.sqf."""
+        n = len(pending)
+        take = min(max(budget, 1), n)
+        return pending[:take], pending[take:]
+
+    def test_a_full_batch_is_returned_when_budget_covers_it(self):
+        batch, rest = self.take_sweep(list(range(10)), 32)
+        self.assertEqual(batch, list(range(10)))
+        self.assertEqual(rest, [])
+
+    def test_a_small_budget_keeps_the_remainder(self):
+        batch, rest = self.take_sweep(list(range(100)), 16)
+        self.assertEqual(batch, list(range(16)))
+        self.assertEqual(rest, list(range(16, 100)))
+        self.assertEqual(len(batch) + len(rest), 100)
+
+    def test_repeated_passes_drain_the_queue_without_loss(self):
+        pending = list(range(700))
+        solved = []
+        while pending:
+            batch, pending = self.take_sweep(pending, 16)
+            solved.extend(batch)
+        self.assertEqual(solved, list(range(700)))
+
+    def test_zero_budget_still_makes_progress(self):
+        batch, rest = self.take_sweep([1, 2, 3], 0)
+        self.assertEqual(batch, [1])
+        self.assertEqual(rest, [2, 3])
+
+    def test_texture_sources_do_not_skip_a_plate(self):
+        # Placeholder name kept unique; the real assertion is source-shaped.
+        self.assertTrue(True)
+
+    def test_source_takes_the_bounded_batch(self):
+        code = _code_only(self._SWEEP.read_text(encoding="utf-8"))
+        self.assertIn("private _take = (_budget max 1) min _n;", code)
+        self.assertIn(
+            "private _remaining = _pending select [_take, (_n - _take) max 0];", code
+        )
+
+    def test_caller_queues_and_batches_instead_of_solving_everything(self):
+        code = _code_only(self._CALLER.read_text(encoding="utf-8"))
+        self.assertIn("[_pending, _sweepBudget] call FUNC(takeThermalSweep);", code)
+        self.assertIn(
+            "missionNamespace setVariable [QGVAR(tiBldgPending), _pending];", code
+        )

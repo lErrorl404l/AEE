@@ -97,7 +97,7 @@
       "provenance": [
         "addons/environmental/functions/biome/fnc_scanTerrainSignals.sqf:162",
         "addons/material/functions/fnc_getObjectMaterial.sqf:30",
-        "addons/thermal/functions/display/fnc_applyBuildingThermal.sqf:84"
+        "addons/thermal/functions/display/fnc_applyBuildingThermal.sqf:90"
       ],
       "token": "Building"
     },
@@ -237,8 +237,8 @@
       "provenance": [
         "addons/armour/functions/fnc_penetrationGate.sqf:47",
         "addons/armour/functions/fnc_penetrationGate.sqf:76",
-        "addons/thermal/functions/display/fnc_applyBuildingThermal.sqf:166",
-        "addons/thermal/functions/display/fnc_applyBuildingThermal.sqf:174",
+        "addons/thermal/functions/display/fnc_applyBuildingThermal.sqf:199",
+        "addons/thermal/functions/display/fnc_applyBuildingThermal.sqf:207",
         "addons/thermal/functions/display/fnc_applyClothingThermal.sqf:119",
         "addons/thermal/functions/display/fnc_applyExhaustHeat.sqf:68",
         "addons/thermal/functions/display/fnc_applyImpactHeat.sqf:55",
@@ -274,7 +274,7 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/thermal/functions/display/fnc_applyBuildingThermal.sqf:84"
+        "addons/thermal/functions/display/fnc_applyBuildingThermal.sqf:90"
       ],
       "token": "ReammoBox"
     },

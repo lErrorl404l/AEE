@@ -46,9 +46,10 @@ private _fnSolve = missionNamespace getVariable ["aee_thermal_fnc_solveTwoNodeSe
 private _fnBand = missionNamespace getVariable ["aee_thermal_fnc_calculateBandRadiance", nil];
 private _fnGround = missionNamespace getVariable ["aee_thermal_fnc_calculateGroundTemperature", nil];
 private _fnMat = missionNamespace getVariable ["aee_thermal_fnc_getMaterialThermal", nil];
+private _fnSweep = missionNamespace getVariable ["aee_thermal_fnc_takeThermalSweep", nil];
 
-if (isNil "_fnAGC" || {isNil "_fnSolve"} || {isNil "_fnBand"} || {isNil "_fnGround"} || {isNil "_fnMat"}) exitWith {
-    diag_log text "[P79] [FAIL] kernel functions not compiled (AGC/solver/band/ground/material)";
+if (isNil "_fnAGC" || {isNil "_fnSolve"} || {isNil "_fnBand"} || {isNil "_fnGround"} || {isNil "_fnMat"} || {isNil "_fnSweep"}) exitWith {
+    diag_log text "[P79] [FAIL] kernel functions not compiled (AGC/solver/band/ground/material/sweep)";
 };
 
 private _fail = 0;
@@ -306,6 +307,34 @@ if ((_seedDelta < 0.05) && {_transSkin < _eqCold} && {_transSkin > 0}) then {
 } else {
     diag_log text format ["[P79] [FAIL] (3) solver first sight: cold %1 warm %2 delta %3 transient %4",
         _eqCold toFixed 4, _eqWarm toFixed 4, _seedDelta toFixed 4, _transSkin toFixed 4];
+    _fail = _fail + 1;
+};
+
+// ── (4) bounded sweep batch ───────────────────────────────────────────────
+// The ambient/ENTER discovery can return several hundred objects, and solving
+// them all in one call was a single-frame hitch (about 700 objects at about
+// 1 ms each).  The sweep must hand back at most the budget per pass and keep
+// the remainder, draining the queue across passes without losing an object.
+// This runs the REAL function; it needs no engine object.
+private _swTotal = 100;
+private _swBudget = 16;
+private _swPending = [];
+for "_i" from 1 to _swTotal do { _swPending pushBack _i; };
+private _swSolved = [];
+private _swPasses = 0;
+while { (_swPending isNotEqualTo []) && {_swPasses < 1000} } do {
+    private _swTaken = [_swPending, _swBudget] call _fnSweep;
+    private _swBatch = _swTaken select 0;
+    _swPending = _swTaken select 1;
+    // A batch over the budget is a contract violation: stop, then fail below.
+    if ((count _swBatch) > _swBudget) then { _swPending = []; };
+    { _swSolved pushBack _x; } forEach _swBatch;
+    _swPasses = _swPasses + 1;
+};
+if (((count _swSolved) == _swTotal) && {_swPasses == 7}) then {
+    diag_log text format ["[P79] [PASS] (4) bounded sweep: %1 objects drained in %2 passes at budget %3, none lost", _swTotal, _swPasses, _swBudget];
+} else {
+    diag_log text format ["[P79] [FAIL] (4) bounded sweep: drained %1 of %2 in %3 passes (budget %4)", count _swSolved, _swTotal, _swPasses, _swBudget];
     _fail = _fail + 1;
 };
 

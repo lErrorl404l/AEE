@@ -43,6 +43,7 @@ PREPS(display,getThermalSelections);
 PREPS(display,expandThermalSelectionTree);
 PREPS(display,getThermalNestedObjects);
 PREPS(display,collectThermalNestedObjects);
+PREPS(display,takeThermalSweep);
 PREPS(display,getThermalSelectionLag);
 PREPS(display,getThermalSelectionPoints);
 PREPS(display,getThermalSelectionNames);
