@@ -201,15 +201,17 @@ if (_atFloor) then {
 
 // ─── Window dead-band (steady-scene hold) ─────────────────────────────────
 // The window is a scene statistic that translates with the scene mean.  A
-// client run (RPT 22:26:04) measured 0.69 display levels of movement per
-// update on average, with the span pinned at the 8x max-gain floor, so the
-// movement was pure translation.  Every move re-quantised every selection
-// and repainted the scene: that is the operator's shimmer.  Hold the
-// ACCEPTED raw window until it has moved by more than a set fraction of its
-// own span, then let the IIR below smooth the real move.  One percent is
-// used: the run measured 0.27 percent per update, so a sub-one-percent
-// change is held for several updates and a genuine scene move releases.
-private _AGC_DEADBAND = 0.01;
+// client run (RPT 23:30:22) measured the SETTLED floor window's min/max
+// breathing over 0.87 radiance, which is 5.0 percent of the 17.37 span at
+// the 8x max-gain floor.  The raw window can swing a further 1 percent (the
+// accepted lags the raw by the dead-band), so the raw swing is up to about 6
+// percent.  Every move re-quantised every selection and repainted the scene:
+// that is the operator's shimmer.  Hold the ACCEPTED raw window until it has
+// moved by more than a set fraction of its own span, then let the IIR below
+// smooth the real move.  Eight percent is used, above the measured 6 percent
+// swing, so the breathing is held, while a genuine scene move, which is far
+// larger, still releases.  The old 1 percent band released on this swing.
+private _AGC_DEADBAND = 0.08;
 private _acceptedMin = missionNamespace getVariable [QGVAR(agcAcceptMin), _radMin];
 private _acceptedMax = missionNamespace getVariable [QGVAR(agcAcceptMax), _radMax];
 if (!(_acceptedMin isEqualType 0) || !(_acceptedMax isEqualType 0) || _acceptedMin >= _acceptedMax) then {

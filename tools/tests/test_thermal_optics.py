@@ -6042,13 +6042,21 @@ class TestThermalTraceGateHoist(unittest.TestCase):
 class TestThermalAgcWindowDeadband(unittest.TestCase):
     """The AGC window must hold on a steady scene.
 
-    A client run (RPT 22:26:04) measured the published window translating
-    0.69 display levels per update with the span pinned at the max-gain
-    floor, so a steady scene re-quantised every selection and repainted the
-    whole view.  fnc_updateThermalAGC now holds the accepted raw window
-    until it has moved by more than 1 percent of its own span, then lets the
-    IIR smooth the real move.  The decision is mirrored below.
+    A client run (RPT 23:30:22) measured the SETTLED max-gain floor window
+    breathing: its min ranged 44.129..44.965 and its max 61.499..62.365 over
+    the 17.37 span, a 0.87 radiance swing, 5.0 percent of span.  A steady
+    scene re-quantised every selection and repainted the whole view.  The old
+    1 percent band released on that swing.  fnc_updateThermalAGC now holds
+    the accepted raw window until it has moved by more than 8 percent of its
+    own span, then lets the IIR smooth the real move.  The band is derived
+    from the measured swing (5 percent) plus the 1 percent the accepted lags
+    the raw.  The decision is mirrored below.
     """
+
+    # The measured floor-window swing in RPT 23:30:22 (radiance) over the
+    # 17.37 span, and the 1 percent the accepted lags the raw window.
+    _MEASURED_SWING = 0.866
+    _FLOOR_SPAN = 17.37
 
     _F = _THERMAL / "solver" / "fnc_updateThermalAGC.sqf"
 
@@ -6057,7 +6065,7 @@ class TestThermalAgcWindowDeadband(unittest.TestCase):
         cls.code = _code_only(cls._F.read_text(encoding="utf-8"))
 
     @staticmethod
-    def _accept(prev, raw, frac=0.01):
+    def _accept(prev, raw, frac=0.08):
         if prev is None:
             return raw
         band = (prev[1] - prev[0]) * frac
@@ -6072,9 +6080,31 @@ class TestThermalAgcWindowDeadband(unittest.TestCase):
         raw = (prev[0] + drift, prev[1] + drift)
         self.assertEqual(self._accept(prev, raw), prev)
 
-    def test_a_real_move_beyond_the_band_is_accepted(self):
+    def test_the_measured_floor_swing_is_held(self):
+        # The settled floor window breathing IS the case the old 1 percent
+        # band failed and the 8 percent band must hold.
         prev = (37.898, 55.264)
-        raw = (38.771, 56.137)  # the live 0.75 radiance jump
+        swing_frac = self._MEASURED_SWING / self._FLOOR_SPAN
+        swing = swing_frac * (prev[1] - prev[0])
+        raw = (prev[0] + swing, prev[1] + swing)
+        self.assertEqual(self._accept(prev, raw), prev)
+
+    def test_the_old_one_percent_band_released_on_the_swing(self):
+        prev = (37.898, 55.264)
+        swing_frac = self._MEASURED_SWING / self._FLOOR_SPAN
+        swing = swing_frac * (prev[1] - prev[0])
+        raw = (prev[0] + swing, prev[1] + swing)
+        self.assertEqual(self._accept(prev, raw, frac=0.01), raw)
+
+    def test_the_band_exceeds_the_measured_swing_plus_the_lag(self):
+        swing_frac = self._MEASURED_SWING / self._FLOOR_SPAN
+        self.assertGreater(0.08, swing_frac + 0.01)
+
+    def test_a_real_move_beyond_the_band_is_accepted(self):
+        # A move larger than the 8 percent band still releases: a genuine
+        # scene change must not be frozen out.
+        prev = (37.898, 55.264)
+        raw = (39.500, 56.866)  # 1.602 radiance = 9.2 percent of the span
         self.assertEqual(self._accept(prev, raw), raw)
 
     def test_repeated_identical_updates_hold(self):
@@ -6084,7 +6114,7 @@ class TestThermalAgcWindowDeadband(unittest.TestCase):
         self.assertEqual(win, (37.9, 55.3))
 
     def test_source_holds_then_releases(self):
-        self.assertIn("private _AGC_DEADBAND = 0.01;", self.code)
+        self.assertIn("private _AGC_DEADBAND = 0.08;", self.code)
         self.assertIn(
             "private _agcBand = (_acceptedMax - _acceptedMin) * _AGC_DEADBAND;",
             self.code,

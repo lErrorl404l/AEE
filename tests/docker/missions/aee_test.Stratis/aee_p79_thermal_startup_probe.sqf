@@ -23,6 +23,14 @@
 //       and less than half of that snap.
 //   (2) STABLE WHEN STABLE. With the scene held constant, the settled band
 //       must not move across repeated passes. The probe counts level moves.
+//   (2b) STABLE UNDER JITTER. The settled floor window breathed over 5
+//       percent of its span in the client run, and the old 1 percent band
+//       chased it. The scene is translated by that measured 5 percent on
+//       alternate passes; the band must not move and the accepted window
+//       must hold. This is the dead-band's contract.
+//   (2c) STILL MOVES FOR A NEW SCENE. A sustained scene change far larger
+//       than the dead-band must release: the window holds jitter, it never
+//       freezes the display.
 //   (3) SOLVER FIRST SIGHT. The real two-node solver, given the first-sight
 //       step (1000000 s), must land on the seed-independent equilibrium. A
 //       normal 5 s step must be a transient between the seed and that point.
@@ -174,6 +182,91 @@ if (_moves == 0) then {
     diag_log text "[P79] [PASS] (2) stable when stable: 0 band moves over 20 passes on a constant scene";
 } else {
     diag_log text format ["[P79] [FAIL] (2) the settled band moved on %1 of 20 constant passes", _moves];
+    _fail = _fail + 1;
+};
+
+// ── (2b) stable under a sub-band window swing ─────────────────────────────
+// A client run (RPT 23:30:22) measured the SETTLED floor window breathing
+// over 5 percent of its span (min 44.129..44.965, max 61.499..62.365 over the
+// 17.37 span).  The old 1 percent band released on that swing and
+// re-quantised every selection.  Translate the probe scene by the same 5
+// percent of span and prove the band holds: the swing must not move b by
+// more than _STATED_JITTER_LEVELS, and the accepted window itself must not
+// move.  The translation is sized by the real band function, not guessed.
+private _JITTER_FRAC = 0.05;
+private _STATED_JITTER_LEVELS = 1;
+private _jitterRads = _floorSpan * _JITTER_FRAC;
+private _jitLo = 0;
+private _jitHi = 50;
+for "_i" from 1 to 50 do {
+    private _tMid = (_jitLo + _jitHi) / 2;
+    private _r = [_coldC + _tMid, _groundEps, _airTemp, 0.5, _groundTemp, 1, _airTemp, false] call _fnBand;
+    if ((_r - _radCold) < _jitterRads) then { _jitLo = _tMid; } else { _jitHi = _tMid; };
+};
+private _jitterDT = (_jitLo + _jitHi) / 2;
+
+private _accMin0 = missionNamespace getVariable ["aee_thermal_agcAcceptMin", 0];
+private _accMax0 = missionNamespace getVariable ["aee_thermal_agcAcceptMax", 0];
+private _jitterMoves = 0;
+private _jitterPrevB = [_probeRad,
+    (missionNamespace getVariable ["aee_thermal_agcRadMin", 0]),
+    (missionNamespace getVariable ["aee_thermal_agcRadMax", 1])] call _band;
+for "_i" from 1 to 20 do {
+    private _shift = [0, _jitterDT] select ((_i mod 2) == 1);
+    private _jMap = createHashMap;
+    _jMap set ["probe_obj|cold", _coldC + _shift];
+    _jMap set ["probe_obj|hot", _hotC + _shift];
+    missionNamespace setVariable ["aee_thermal_selTemperature", _jMap];
+    missionNamespace setVariable ["aee_thermal_agcLastT", diag_tickTime - 1];
+    [] call _fnAGC;
+    private _lo = missionNamespace getVariable ["aee_thermal_agcRadMin", 0];
+    private _hi = missionNamespace getVariable ["aee_thermal_agcRadMax", 1];
+    private _b = [_probeRad, _lo, _hi] call _band;
+    if ((abs (_b - _jitterPrevB)) * 255 >= 1) then { _jitterMoves = _jitterMoves + 1; };
+    _jitterPrevB = _b;
+};
+private _accMin1 = missionNamespace getVariable ["aee_thermal_agcAcceptMin", 0];
+private _accMax1 = missionNamespace getVariable ["aee_thermal_agcAcceptMax", 0];
+private _accHeld = (abs (_accMin1 - _accMin0) + abs (_accMax1 - _accMax0)) < (_floorSpan * 0.01);
+diag_log text format ["[P79] DIAG jitter frac=%1 rads=%2 dT=%3 bandMoves=%4 acceptedHeld=%5",
+    _JITTER_FRAC toFixed 3, _jitterRads toFixed 6, _jitterDT toFixed 6, _jitterMoves, _accHeld];
+if ((_jitterMoves <= _STATED_JITTER_LEVELS) && _accHeld) then {
+    diag_log text format ["[P79] [PASS] (2b) a %1 percent window swing moved b %2 level(s) (bound %3) and the accepted window held",
+        (_JITTER_FRAC * 100) toFixed 0, _jitterMoves, _STATED_JITTER_LEVELS];
+} else {
+    diag_log text format ["[P79] [FAIL] (2b) a %1 percent window swing moved b %2 level(s) (bound %3), acceptedHeld=%4",
+        (_JITTER_FRAC * 100) toFixed 0, _jitterMoves, _STATED_JITTER_LEVELS, _accHeld];
+    _fail = _fail + 1;
+};
+
+// ── (2c) a genuine new scene still moves the band ─────────────────────────
+// A sustained scene change far larger than the dead-band must release.  The
+// window may hold jitter, never freeze the display.
+private _REAL_FRAC = 0.40;
+private _realDT = _jitterDT * (_REAL_FRAC / _JITTER_FRAC);
+private _realMin0 = _accMin1;
+private _bBefore = _jitterPrevB;
+for "_i" from 1 to 100 do {
+    private _rMap = createHashMap;
+    _rMap set ["probe_obj|cold", _coldC + _realDT];
+    _rMap set ["probe_obj|hot", _hotC + _realDT];
+    missionNamespace setVariable ["aee_thermal_selTemperature", _rMap];
+    missionNamespace setVariable ["aee_thermal_agcLastT", diag_tickTime - 1];
+    [] call _fnAGC;
+};
+private _realMin1 = missionNamespace getVariable ["aee_thermal_agcAcceptMin", 0];
+private _bAfter = [_probeRad,
+    (missionNamespace getVariable ["aee_thermal_agcRadMin", 0]),
+    (missionNamespace getVariable ["aee_thermal_agcRadMax", 1])] call _band;
+private _realMoved = (abs (_bAfter - _bBefore)) * 255;
+private _realDelta = abs (_realMin1 - _realMin0);
+diag_log text format ["[P79] DIAG new scene frac=%1 dT=%2 acceptedDelta=%3 bMoved=%4 levels",
+    _REAL_FRAC toFixed 3, _realDT toFixed 6, _realDelta toFixed 6, _realMoved toFixed 2];
+if ((_realMoved > 5) && {_realDelta > (_floorSpan * _REAL_FRAC * 0.5)}) then {
+    diag_log text format ["[P79] [PASS] (2c) a genuine new scene moved b %1 levels and released the window", _realMoved toFixed 1];
+} else {
+    diag_log text format ["[P79] [FAIL] (2c) a genuine new scene moved b %1 levels (acceptedDelta %2)",
+        _realMoved toFixed 2, _realDelta toFixed 6];
     _fail = _fail + 1;
 };
 
