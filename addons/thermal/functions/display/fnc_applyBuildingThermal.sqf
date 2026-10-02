@@ -58,13 +58,19 @@ if (_ambientChanged) then {
     missionNamespace setVariable [QGVAR(tiBldgLastTemp), _airTemp];
 };
 
-// Build the object list: vehicles ALWAYS (new spawns need the swap now),
-// buildings only when ambient changed (expensive near-player scan).
+// Build the SOLVE set for this pass.  DISCOVERY (which objects exist) is now
+// separate from the SOLVE (which get painted this pass): discovery ENQUEUES
+// into a persistent pending list and the pass takes a bounded batch from it
+// (fnc_takeThermalSweep).  Solving the whole discovered set in one call was a
+// single-frame hitch: the operator's run logged about 700 objects and the
+// per-selection solve measured about 1 ms each, so a full pass cost roughly
+// half a second in one frame.  A full sweep now spreads across ticks.
 // Hoisted out of the ambient block so the vehicle filter below can reach it.
 // A `private` declared inside that block is scoped to it and would be
 // undefined here, which the HEMTT undefined-variable lint caught.
 private _viewDist = (getObjectViewDistance select 0) max 300;
-private _objects = [];
+private _pending = missionNamespace getVariable [QGVAR(tiBldgPending), []];
+if !(_pending isEqualType []) then { _pending = []; };
 if (_ambientChanged) then {
     // allMissionObjects "" returned 1193 objects on the operator's Altis
     // session (visible in the RPT as "Building thermal: 1193 found"), and the
@@ -77,13 +83,25 @@ if (_ambientChanged) then {
     // non-building surfaces the scan missed: ammo crates (ReammoBox), animals,
     // and static props (Thing) that are neither a building nor a crate.  Men
     // stay on their own clothing path (fnc_applyClothingThermal).
-    _objects = (_player nearObjects ["Building", _viewDist])
+    private _discovered = (_player nearObjects ["Building", _viewDist])
         + (_player nearObjects ["ReammoBox", _viewDist])
         + (_player nearObjects ["Animal", _viewDist])
         + ((_player nearObjects ["Thing", _viewDist]) select {
             !(_x isKindOf "Building") && {!(_x isKindOf "ReammoBox")}
         });
-    private _bldMsg = format ["building thermal scan (ENTER/ambient): %1 objects in %2 m", count _objects, _viewDist];
+    // Every object is dirty when the ambient changes, so the whole discovery
+    // is re-queued.  Any object the previous sweep had not reached is already
+    // in _pending and stays FIRST, so a change that lands mid-sweep can never
+    // starve the tail; only newly seen objects are appended.
+    private _queued = createHashMap;
+    { _queued set [str _x, true]; } forEach _pending;
+    {
+        if ((!isNull _x) && {!(_queued getOrDefault [str _x, false])}) then {
+            _queued set [str _x, true];
+            _pending pushBack _x;
+        };
+    } forEach _discovered;
+    private _bldMsg = format ["building thermal scan (ENTER/ambient): %1 objects in %2 m", count _discovered, _viewDist];
     AEE_LOG_DEBUG(_bldMsg);
 };
 // Bound the vehicle list the same way the unit list is bounded.  This line
@@ -108,7 +126,22 @@ if ((_vehList isEqualTo []) || ((_vehNowT - _vehListT) > 1)) then {
     private _vehMsg = format ["buildingThermal vehicle cache refreshed: %1 in %2 m", count _vehList, _viewDist];
     AEE_LOG_DEBUG(_vehMsg);
 };
-_objects = _objects + _vehList;
+// Take the bounded batch for this pass; the remainder stays queued.  The
+// vehicle list rides every pass (it is small and its heat changes with motion
+// and engine state); buildings ride the queue.  The budget is bounded (a
+// variable with a floor, never unbounded) so a sweep can never stall one
+// frame.  A newly spawned vehicle is already in _vehList within a second of
+// the refresh above, so it is painted promptly without a separate hook.
+private _sweepBudget = missionNamespace getVariable [QGVAR(sweepBudget), 16];
+if !(_sweepBudget isEqualType 0) then { _sweepBudget = 16; };
+private _taken = [_pending, _sweepBudget] call FUNC(takeThermalSweep);
+private _objects = (_taken select 0) + _vehList;
+_pending = _taken select 1;
+missionNamespace setVariable [QGVAR(tiBldgPending), _pending];
+if ((count (_taken select 0)) > 0) then {
+    private _sweepMsg = format ["building thermal sweep batch: %1 solved, %2 pending (budget %3)", count (_taken select 0), count _pending, _sweepBudget];
+    AEE_LOG_DEBUG(_sweepMsg);
+};
 
 // ─── Apply: per-selection substrate solve per object (issue #204) ────────
 // Selection discovery is DYNAMIC (fnc_getThermalSelections: Man = all
