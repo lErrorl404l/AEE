@@ -109,7 +109,18 @@ if (_mode == "EXIT") then {
     //
     // Impulse callers pass mode "FORCE" (muzzle flash, detonation) so an
     // event is never held for the cadence.
+    //
+    // THE GATE IS PER OBJECT AND PER SELECTION, matching the per-selection
+    // band map below.  The building and clothing callers walk their selection
+    // list and call this function once per entry, so an object-keyed gate let
+    // only the first entry of each pass through and every later part kept the
+    // FPN material with no heat colour - the flat vehicle and flat clothing
+    // report.  The selection argument is part of the key: a named or indexed
+    // call keys on that selection, and the "" all-selection form keeps one key
+    // for the whole object.  A FORCE call still bypasses the cadence.
     private _objKey = str _obj;
+    private _gateSel = if (_selection isEqualType 0) then { str _selection } else { _selection };
+    private _gateKey = _objKey + "|" + _gateSel;
     private _gate = missionNamespace getVariable [QGVAR(paintGate), -1];
     if (_gate isEqualType 0) then {
         _gate = createHashMap;
@@ -120,7 +131,7 @@ if (_mode == "EXIT") then {
         _bands = createHashMap;
         missionNamespace setVariable [QGVAR(paintBands), _bands];
     };
-    private _lastPaint = _gate getOrDefault [_objKey, 0];
+    private _lastPaint = _gate getOrDefault [_gateKey, 0];
     private _interval = 1 / (missionNamespace getVariable [QGVAR(repaintHz), 4]);
     private _forced = (_mode == "FORCE");
     private _due = _forced || {(diag_tickTime - _lastPaint) >= _interval};
@@ -175,7 +186,13 @@ if (_mode == "EXIT") then {
     if (_thermalOn && _alreadySaved < 0) then {
         private _oldTexs = getObjectTextures _obj;
         private _oldMats = getObjectMaterials _obj;
-        _saved pushBack [_obj, _oldTexs, _oldMats, _selNames];
+        // Store the model's FULL selection list, not this call's slice: the
+        // per-selection gate lets each selection paint in its own call, so
+        // EXIT must restore every slot the paint can write.  Positions in
+        // selectionNames are the indices the paint writes (it resolves _idx
+        // with `selectionNames _obj find _sel`), so a sequential restore over
+        // the full list is symmetric.
+        _saved pushBack [_obj, _oldTexs, _oldMats, selectionNames _obj];
         missionNamespace setVariable [QGVAR(selThermalSaved), _saved];
         // FPN material swap (client-local, once per object per pass):
         // the perlinNoise Stage2 multiplies over the painted heat colour.
@@ -601,7 +618,7 @@ if (_mode == "EXIT") then {
     // which is what throttles the solve to the repaint cadence (4 Hz default)
     // instead of 10 Hz.  The solve is an elapsed-time relaxation, so the
     // larger step is physics-neutral.
-    _gate set [_objKey, diag_tickTime];
+    _gate set [_gateKey, diag_tickTime];
     missionNamespace setVariable [QGVAR(paintGate), _gate];
     missionNamespace setVariable [QGVAR(paintBands), _bands];
     if (AEE_TRACE_ON) then {
