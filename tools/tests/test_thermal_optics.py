@@ -4465,6 +4465,39 @@ class TestThermalPaintVisionGate(unittest.TestCase):
                 "_thermalOn", self.lines[index], "the restore must always run"
             )
 
+    def test_gate_is_keyed_per_object_and_per_selection(self):
+        """The repaint gate must key on the selection, not the object alone.
+
+        Regression: the gate was keyed on the object only, while the building
+        and clothing callers paint one selection per call.  The first entry of
+        each pass stamped the object, so every later part of that object was
+        held for the whole pass and painted the next pass onward in the same
+        order - only the first selection ever reached the paint.  The parts
+        kept the FPN material with no heat colour, which is the flat vehicle
+        and flat clothing report.  The selection must be part of both the read
+        and the stamp.
+        """
+        self.assertIn("_gateSel", self._F.read_text(encoding="utf-8"))
+        read = self._line_of("_gate getOrDefault [_gateKey")
+        stamp = self._line_of("_gate set [_gateKey")
+        self.assertGreaterEqual(read, 0)
+        self.assertGreater(stamp, read, "the stamp must follow the read")
+
+    def test_exit_save_captures_the_full_selection_list(self):
+        """EXIT must restore every slot a per-selection paint can write.
+
+        The save runs once per object, on the first selection that paints.
+        Storing that call's single selection would leave the other painted
+        selections as flat colour after thermal vision is left, so the save
+        stores the model's full selection list.  Paint indices are positions
+        in `selectionNames _obj`, so the sequential EXIT restore is symmetric.
+        """
+        text = self._F.read_text(encoding="utf-8")
+        self.assertIn(
+            "_saved pushBack [_obj, _oldTexs, _oldMats, selectionNames _obj]",
+            text,
+        )
+
 
 class TestThermalEdgeKernel(unittest.TestCase):
     """The local-contrast thermal edge kernel (fnc_evaluateThermalEdge.sqf).
