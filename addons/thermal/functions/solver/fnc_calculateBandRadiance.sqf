@@ -77,7 +77,12 @@ params [
     ["_fGround", 0.5, [0]],
     ["_tGround", 15, [0]],
     ["_tau", 1, [0]],
-    ["_tPath", 15, [0]]
+    ["_tPath", 15, [0]],
+    // The module trace switch, hoisted by the caller.  AEE_TRACE_ON expands
+    // to three namespace lookups, so this kernel is called per selection and
+    // must not evaluate it per selection.  A caller that omits it keeps the
+    // old behaviour (trace on).
+    ["_traceOn", true]
 ];
 
 // Transmission is clamped to the physical 0..1 range; a non-finite value
@@ -157,10 +162,11 @@ private _tPathK = (_tPath + 273.15) max 200 min 350;
 private _wAtm = _tPathK call _fnRad;
 private _wTransmitted = _tau * (_eps * _wObj + (1 - _eps) * _wRefl);
 private _wBand = _wTransmitted + (1 - _tau) * _wAtm;
-if (AEE_TRACE_ON) then {
+if (_traceOn) then {
     // The clock read above is deliberate and unconditional.  One engine call
-    // per invocation costs less than the guard that would avoid it, because
-    // AEE_TRACE_ON expands to three namespace lookups.
+    // per invocation costs less than a second guard, and the flag arrives as
+    // an argument now: the caller resolves AEE_TRACE_ON once per pass, so the
+    // three namespace lookups behind it are not repeated per selection.
     private _us = round ((diag_tickTime - _perfT0) * 1000);
     private _bandMsg = format ["bandRadiance %1 us | tau %2 | eps %3 | surf %4 C | refl %5 C | path %6 C | W %7",
         _us, _tau toFixed 4, _eps toFixed 3, _tSurf, _tReflK - 273.15, _tPath, _wBand toFixed 6];

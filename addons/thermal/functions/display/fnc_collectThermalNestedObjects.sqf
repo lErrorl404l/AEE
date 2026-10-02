@@ -23,6 +23,9 @@
 params [["_parents", [], [[]]]];
 
 private _MAX_NESTED = 64;
+// The module trace switch, resolved once for the collect rather than at the
+// cap site inside the loop.
+private _traceOn = AEE_TRACE_ON;
 
 private _seen = [];
 {
@@ -47,7 +50,7 @@ while {(_queue isNotEqualTo []) && ((count _extra) < _MAX_NESTED)} do {
 // A cap that drops content LOGS (logging is never a cost here), so a
 // truncated tree is visible in the RPT instead of silent.
 if ((count _extra) >= _MAX_NESTED) then {
-    if (AEE_TRACE_ON) then {
+    if (_traceOn) then {
         private _capMsg = format ["nested collect: cap %1 hit, further nested objects not painted", _MAX_NESTED];
         AEE_LOG_DEBUG(_capMsg);
     };

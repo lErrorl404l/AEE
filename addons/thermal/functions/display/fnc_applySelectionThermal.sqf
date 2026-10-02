@@ -144,6 +144,12 @@ if (_mode == "EXIT") then {
     private _due = _forced || {(diag_tickTime - _lastPaint) >= _interval};
     if (!_due) exitWith { 0 };
 
+    // The module trace switch, resolved ONCE for the pass.  AEE_TRACE_ON
+    // expands to three namespace lookups, and this function walks the
+    // object's whole selection set, so the flag is read here and then passed
+    // to the per-selection band-radiance calls.
+    private _traceOn = AEE_TRACE_ON;
+
     // The heat paint is a FLIR look, so it belongs to thermal vision alone.
     // This function is the single choke point for the paint and it had no
     // vision gate at all.  Two callers reach it in every vision mode: the
@@ -660,7 +666,7 @@ if (_mode == "EXIT") then {
         };
         _epsMap set [_stateKey, _eps];
         missionNamespace setVariable [QGVAR(selEmissivity), _epsMap];
-        private _rad = [_tNew, _eps, _tAir, _fGround, _tCurrent, _tau, _tAir] call FUNC(calculateBandRadiance);
+        private _rad = [_tNew, _eps, _tAir, _fGround, _tCurrent, _tau, _tAir, _traceOn] call FUNC(calculateBandRadiance);
         private _agcMin = missionNamespace getVariable [QGVAR(agcRadMin), -1];
         private _agcMax = missionNamespace getVariable [QGVAR(agcRadMax), -1];
         // Manual window and the no-AGC fallback.  The manual span is a
@@ -680,8 +686,8 @@ if (_mode == "EXIT") then {
             _agcValid = true;
         };
         if ((_displayMode == 1) || !_agcValid) then {
-            _agcMin = [_manMinC, _eps, _tAir, _fGround, _tCurrent, _tau, _tAir] call FUNC(calculateBandRadiance);
-            _agcMax = [_manMaxC, _eps, _tAir, _fGround, _tCurrent, _tau, _tAir] call FUNC(calculateBandRadiance);
+            _agcMin = [_manMinC, _eps, _tAir, _fGround, _tCurrent, _tau, _tAir, _traceOn] call FUNC(calculateBandRadiance);
+            _agcMax = [_manMaxC, _eps, _tAir, _fGround, _tCurrent, _tau, _tAir, _traceOn] call FUNC(calculateBandRadiance);
         };
         // Local display mode (2): replace the scene/manual window with this
         // object's own selection window from fnc_updateThermalAGC.  It widens
@@ -926,7 +932,7 @@ if (_mode == "EXIT") then {
     _gate set [_gateKey, diag_tickTime];
     missionNamespace setVariable [QGVAR(paintGate), _gate];
     missionNamespace setVariable [QGVAR(paintBands), _bands];
-    if (AEE_TRACE_ON) then {
+    if (_traceOn) then {
         private _objUs = round ((diag_tickTime - _perfT0) * 1000);
         private _gateMsg = format ["paint %1 | sels %2 | due %3 | uploads %4 | solve %5 us",
             _objKey, count _selNames, _due, _uploaded, _objUs];

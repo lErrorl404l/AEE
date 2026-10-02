@@ -196,7 +196,8 @@ _vehicle setVariable [QGVAR(vehicleHeatTrend), _heatTrend];
 // Diagnostic trace: prove the heat pipeline.  Behind the module debug
 // switch, like every other trace, and throttled to one line per vehicle per
 // 5 s.  diag_log is synchronous file I/O on the render thread.
-if (AEE_TRACE_ON) then {
+private _traceOn = AEE_TRACE_ON;
+if (_traceOn) then {
     private _lastLog = _vehicle getVariable [QGVAR(vehicleHeatLogT), -999];
     if (_now - _lastLog >= 5) then {
         _vehicle setVariable [QGVAR(vehicleHeatLogT), _now];

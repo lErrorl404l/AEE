@@ -43,6 +43,10 @@ params [
 
 if (isNull _object) exitWith { [] };
 
+// The module trace switch, resolved once for the walk rather than at every
+// cap site in the recursive discovery.
+private _traceOn = AEE_TRACE_ON;
+
 private _MAX_DEPTH = 3;
 private _MAX_OBJECTS = 64;
 private _MAX_STORE = 4096;
@@ -57,7 +61,7 @@ if (_store isEqualType 0) then {
 // objects would grow it without limit.  Clear it at the cap; a cleared entry
 // is discovered again on the next call.
 if ((count _store) > _MAX_STORE) then {
-    if (AEE_TRACE_ON) then {
+    if (_traceOn) then {
         private _storeMsg = format ["nested walk: store cap %1 hit, %2 entries cleared", _MAX_STORE, count _store];
         AEE_LOG_DEBUG(_storeMsg);
     };
@@ -90,7 +94,7 @@ if ((_depth < _MAX_DEPTH) && {((count _visited) < _MAX_OBJECTS)}) then {
         private _child = _x;
         if ((!isNull _child) && {!((str _child) in _visited)}) then {
             if ((count _visited) >= _MAX_OBJECTS) then {
-                if (AEE_TRACE_ON) then {
+                if (_traceOn) then {
                     private _capMsg = format ["nested walk: object cap %1 hit at %2, further children not walked", _MAX_OBJECTS, _key];
                     AEE_LOG_DEBUG(_capMsg);
                 };
@@ -102,7 +106,7 @@ if ((_depth < _MAX_DEPTH) && {((count _visited) < _MAX_OBJECTS)}) then {
         };
     } forEach _nested;
 } else {
-    if (((_nested isNotEqualTo []) && AEE_TRACE_ON)) then {
+    if (((_nested isNotEqualTo []) && _traceOn)) then {
         private _depthMsg = format ["nested walk: depth cap %1 hit at %2, %3 child objects not walked", _MAX_DEPTH, _key, count _nested];
         AEE_LOG_DEBUG(_depthMsg);
     };
