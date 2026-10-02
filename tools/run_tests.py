@@ -98,6 +98,7 @@ def main():
         "tools/tests/test_mass_calibration.py",
         "tools/tests/test_mass_config.py",
         "tools/tests/test_vehicle_classify.py",
+        "tools/tests/test_identity_bands.py",
     ]
     # Only run suites that exist (module suites are added incrementally).
     existing = [s for s in suites if os.path.exists(os.path.join(ROOT, s))]
