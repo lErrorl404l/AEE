@@ -39,6 +39,8 @@ PREPS(display,applyClothingThermal);
 PREPS(display,applyWeaponBarrelHeat);
 PREPS(display,applyRainDroplets);
 PREPS(display,getThermalSelections);
+PREPS(display,expandThermalSelectionTree);
+PREPS(display,getThermalNestedObjects);
 PREPS(display,getThermalSelectionLag);
 PREPS(display,getThermalSelectionPoints);
 PREPS(display,getThermalSelectionNames);

@@ -2,11 +2,10 @@
 /*
  * Dynamic thermal-selection discovery (issue #204).
  *
- * The old code matched selection NAMES ("engine", "wheel", "tyre",
- * "camo") to decide what got heat - static, fragile, and wrong on any
- * modded or differently-named vehicle.  The proven thermal mods (MKK
- * 3753145363 fnc_getThermalSelections) discover the thermal
- * selections dynamically and NEVER match names:
+ * Old code matched selection NAMES ("engine", "wheel", "camo") - static,
+ * fragile, wrong on any modded or differently-named vehicle.  The proven
+ * thermal mods (MKK 3753145363 fnc_getThermalSelections) discover the
+ * thermal selections dynamically and NEVER match names:
  *
  *   - Man: every texture slot (uniforms have no hiddenSelections)
  *   - Vehicle: explicit config override first (MKK_TI >>
@@ -14,13 +13,14 @@
  *     A3TI_ThermalSelections), then textureSources with non-empty
  *     textures, then ALL hiddenSelections except MFD/display screens.
  *
- * The result is cached per vehicle class (missionNamespace), so the
- * config is read once per class per session, not every refresh.
+ * Level 0 is those branches, UNCHANGED.  The result is then walked
+ * recursively (fnc_expandThermalSelectionTree): same-object LOD and
+ * turret selections are added, and separate attached/cargo objects are
+ * recorded (fnc_getThermalNestedObjects) and bounded by named caps.
  *
- * Params:
- *   0: _object (OBJECT) - the unit/vehicle.
+ * The result is cached per vehicle class (missionNamespace).
  *
- * Returns: ARRAY of selection INDICES.
+ * Params: 0: _object (OBJECT).  Returns: ARRAY of selection INDICES.
  */
 params [["_object", objNull]];
 
@@ -57,7 +57,8 @@ if (isArray (_profile >> "mkk_ti_thermal_improvement_thermalSelections")) then {
 };
 
 if (_custom isNotEqualTo []) then {
-    // The custom list may contain indices or names.
+    // The custom list may contain indices or names.  An explicit override is
+    // the operator's whitelist, so the walk below is NOT applied to it.
     private _converted = [];
     {
         private _index = if (_x isEqualType 0) then { _x } else { _selectionNames find _x };
@@ -107,6 +108,9 @@ if (_custom isNotEqualTo []) then {
             };
         } forEach _selectionNames;
     };
+    // Level 1+: the recursive walk.  Level 0 above is unchanged; the walk
+    // only ADDS breadth on this object and records separate nested objects.
+    _selections = [_object, _selections] call FUNC(expandThermalSelectionTree);
     missionNamespace setVariable [_cacheKey, _selections];
     _selections
 };

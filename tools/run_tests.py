@@ -40,6 +40,7 @@ def main():
         "tools/tests/test_maritime.py",
         "tools/tests/test_thermal_optics.py",
         "tools/tests/test_thermal_heat_sources.py",
+        "tools/tests/test_thermal_selection_walk.py",
         "tools/tests/test_visual_pipeline_audit.py",
         "tools/tests/test_astronomical.py",
         "tools/tests/test_biome.py",
