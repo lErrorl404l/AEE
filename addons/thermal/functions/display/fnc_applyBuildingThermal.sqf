@@ -219,7 +219,7 @@ if !(_solarRadiation isEqualType 0) then { _solarRadiation = 0; };
         [_obj, _selName, "", _qInternal * _waveHeat, _fGround] call FUNC(applySelectionThermal);
         _applied = _applied + 1;
     } forEach _selNamesResolved;
-} forEach _objects;
+} forEach (_objects + ([_objects] call FUNC(collectThermalNestedObjects)));
 
 // Diagnostic: confirms the physics baseline applies in-game.
 if (missionNamespace getVariable [QGVAR(thermalDebug), false]) then {

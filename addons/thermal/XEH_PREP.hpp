@@ -41,6 +41,7 @@ PREPS(display,applyRainDroplets);
 PREPS(display,getThermalSelections);
 PREPS(display,expandThermalSelectionTree);
 PREPS(display,getThermalNestedObjects);
+PREPS(display,collectThermalNestedObjects);
 PREPS(display,getThermalSelectionLag);
 PREPS(display,getThermalSelectionPoints);
 PREPS(display,getThermalSelectionNames);

@@ -54,19 +54,70 @@ _SELECT_PAINT_CORE = (
     / "display"
     / "fnc_resolvePaintIndexFromSelections.sqf"
 )
+_NESTED_COLLECT = (
+    _REPO_ROOT
+    / "addons"
+    / "thermal"
+    / "functions"
+    / "display"
+    / "fnc_collectThermalNestedObjects.sqf"
+)
+_APPLY_BUILDING = (
+    _REPO_ROOT
+    / "addons"
+    / "thermal"
+    / "functions"
+    / "display"
+    / "fnc_applyBuildingThermal.sqf"
+)
 
 
 def _walk_constants():
-    """Read the bound constants out of the real SQF, so the mirror cannot drift."""
-    text = _WALK.read_text(encoding="utf-8")
+    """Read the bound constants out of the real SQF, so the mirror cannot drift.
 
-    def _one(name):
+    The same-object breadth cap lives in the walk; the per-instance nested
+    discovery (depth + object cap) lives in fnc_getThermalNestedObjects.
+    """
+    walk = _WALK.read_text(encoding="utf-8")
+    nested = _NESTED.read_text(encoding="utf-8")
+
+    def _one(text, name):
         m = re.search(rf"private\s+{name}\s*=\s*(\d+)\s*;", text)
         if not m:
             raise AssertionError(f"SQF no longer declares {name}")
         return int(m.group(1))
 
-    return _one("_MAX_DEPTH"), _one("_MAX_OBJECTS"), _one("_MAX_TARGETS")
+    return (
+        _one(nested, "_MAX_DEPTH"),
+        _one(nested, "_MAX_OBJECTS"),
+        _one(walk, "_MAX_TARGETS"),
+    )
+
+
+def _collect_cap():
+    """The collector's _MAX_NESTED, read from the real SQF."""
+    text = _NESTED_COLLECT.read_text(encoding="utf-8")
+    m = re.search(r"private\s+_MAX_NESTED\s*=\s*(\d+)\s*;", text)
+    if not m:
+        raise AssertionError("SQF no longer declares _MAX_NESTED")
+    return int(m.group(1))
+
+
+def _collect(parents, children_of, max_nested):
+    """Mirror of fnc_collectThermalNestedObjects: bounded BFS, parents excluded."""
+    seen = list(parents)
+    extra = []
+    queue = list(parents)
+    while queue and len(extra) < max_nested:
+        parent = queue.pop(0)
+        for child in children_of(parent):
+            if len(extra) >= max_nested:
+                break
+            if child not in seen:
+                seen.append(child)
+                extra.append(child)
+                queue.append(child)
+    return extra
 
 
 def _is_proxy(name):
@@ -166,10 +217,35 @@ class TestTurretConfigDiscovery(unittest.TestCase):
         out = _expand_selections(parent, base, ["wheel_1_1_axis"], [], max_targets)
         self.assertEqual(out, [0, 1])
 
+    def test_walk_resolves_through_the_config_paint_index(self):
+        """The turret name must resolve to the setObjectTexture index space.
+
+        setObjectTexture takes the position in the class hiddenSelections list,
+        so a turret candidate is resolved through fnc_resolveSelectionPaintIndex
+        and accepted only when the resolved slot IS the declared hiddenSelection.
+        The resolver's model fallback is rejected: it is a no-op on the texture
+        channel for a vehicle.
+        """
+        code = _code_only(_WALK.read_text(encoding="utf-8"))
+        self.assertIn("FUNC(resolveSelectionPaintIndex)", code)
+        self.assertIn('(configOf _object >> "hiddenSelections")', code)
+        self.assertIn("toLower", code)
+
+        # A config name resolves to its declared slot; a model-only name (the
+        # resolver falls back to the model list) is not a config slot and is
+        # rejected because the slot name does not match.
+        hidden = ["camo1", "camo2", "turret_body"]
+        self.assertEqual(int(_resolve_paint_index(hidden, [], "turret_body")), 2)
+        # The walk's acceptance check: the slot at that index carries the name.
+        self.assertEqual(hidden[2], "turret_body")
+        # A model-only candidate is absent from the config list, so the walk's
+        # slot-name guard drops it rather than aliasing a different slot.
+        self.assertNotIn("glass", hidden)
+
 
 class TestAttachedObjectDiscovery(unittest.TestCase):
     def test_attached_object_selections_are_discovered(self):
-        code = _code_only(_WALK.read_text(encoding="utf-8"))
+        code = _code_only(_NESTED.read_text(encoding="utf-8"))
         for token in (
             "attachedObjects",
             "getVehicleCargo",
@@ -285,9 +361,17 @@ class TestLevelZeroUnchanged(unittest.TestCase):
         )
 
     def test_walk_is_bounded_and_cached(self):
-        code = _code_only(_WALK.read_text(encoding="utf-8"))
-        for token in ("_MAX_DEPTH", "_MAX_OBJECTS", "_MAX_TARGETS", "_visited"):
-            self.assertIn(token, code)
+        walk = _code_only(_WALK.read_text(encoding="utf-8"))
+        nested = _code_only(_NESTED.read_text(encoding="utf-8"))
+        collect = _code_only(_NESTED_COLLECT.read_text(encoding="utf-8"))
+        # The same-object breadth cap is in the walk; the per-instance nested
+        # discovery (depth + object cap + visited set) is in the nested reader;
+        # the consumer's breadth cap is in the collector.
+        self.assertIn("_MAX_TARGETS", walk)
+        for token in ("_MAX_DEPTH", "_MAX_OBJECTS", "_MAX_STORE", "_visited"):
+            self.assertIn(token, nested)
+        for token in ("_MAX_NESTED", "_seen"):
+            self.assertIn(token, collect)
         # The per-class cache is still the one in fnc_getThermalSelections.
         self.assertIn(
             "QGVAR(thermalSelectionsCache)",
@@ -364,6 +448,57 @@ class TestPaintIndexResolution(unittest.TestCase):
         paint = _read_sqf("fnc_applySelectionThermal.sqf", "thermal")
         self.assertIn("FUNC(resolveSelectionPaintIndex)", paint)
         self.assertIn("if (_idx < 0) then { continue; };", paint)
+
+
+class TestNestedObjectPaint(unittest.TestCase):
+    """The paint loop must process the separate nested objects the walk records.
+
+    attachedObjects and getVehicleCargo return SEPARATE objects.  A part on a
+    nested object cannot be painted from the parent, because setObjectTexture
+    writes only the target object's slots.  fnc_applyBuildingThermal must run
+    the same discovery + paint on each nested object as its own object, bounded
+    and cached so a repeat tick is a lookup, not a re-walk.
+    """
+
+    def test_paint_loop_processes_nested_objects(self):
+        code = _code_only(_APPLY_BUILDING.read_text(encoding="utf-8"))
+        self.assertIn("FUNC(collectThermalNestedObjects)", code)
+        # The nested objects join the SAME per-object loop, so they get the
+        # same discovery + paint as a parent.
+        self.assertIn("([_objects] call FUNC(collectThermalNestedObjects))", code)
+        self.assertIn("} forEach (_objects +", code)
+        # The parent path is unchanged: level-0 discovery and the per-selection
+        # paint are still the calls the loop already made.
+        self.assertIn("FUNC(getThermalSelections)", code)
+        self.assertIn("FUNC(applySelectionThermal)", code)
+
+    def test_collector_is_bounded_and_cycle_safe(self):
+        code = _code_only(_NESTED_COLLECT.read_text(encoding="utf-8"))
+        for token in ("getThermalNestedObjects", "_MAX_NESTED", "_seen", "while"):
+            self.assertIn(token, code)
+
+        cap = _collect_cap()
+        self.assertGreaterEqual(cap, 1)
+        # A cycle must terminate and must not return a parent.
+        cycle = _collect(["A"], lambda n: {"A": ["B"], "B": ["A"]}.get(n, []), cap)
+        self.assertEqual(cycle, ["B"])
+        # A wide fan-out must stop at the cap.
+        wide = {"root": [f"c{i}" for i in range(cap + 20)]}
+        wide_out = _collect(["root"], lambda n: wide.get(n, []), cap)
+        self.assertLessEqual(len(wide_out), cap)
+
+    def test_per_instance_discovery_is_cached(self):
+        code = _code_only(_NESTED.read_text(encoding="utf-8"))
+        # Discovery records once per object; every later call is a lookup.
+        self.assertIn("getOrDefault [_key, -1]", code)
+        self.assertIn("_recorded isEqualType []", code)
+        self.assertIn("attachedObjects", code)
+        self.assertIn("getVehicleCargo", code)
+        # The per-class cache still owns the class-static selection list.
+        self.assertIn(
+            "QGVAR(thermalSelectionsCache)",
+            _read_sqf("fnc_getThermalSelections.sqf", "thermal"),
+        )
 
 
 if __name__ == "__main__":
