@@ -150,19 +150,27 @@ if !(_solarRadiation isEqualType 0) then { _solarRadiation = 0; };
         _hs = getArray (configOf _obj >> "hiddenSelections");
         _hsCache set [_hsKey, _hs];
     };
-    private _selCount = count _selNames;
     // HOISTED out of the per-selection loop.  selectionNames is an ENGINE call
     // and it was re-fetched for EVERY selection of EVERY object on EVERY tick -
     // the same defect applyClothingThermal had.  It depends only on the object,
     // so it is read once per object here.
     private _names = if (_obj isKindOf "Man") then { selectionNames _obj } else { [] };
+    // Resolve the selection NAMES once, then map each name to its lag from the
+    // heat source (fnc_getThermalSelectionLag).  The lag replaces the old
+    // list-position phase: the engine bay heats first, a part further from the
+    // block lags.
+    private _selNamesResolved = [];
     {
         private _selIdx = _x;
-        private _selName = if (_obj isKindOf "Man") then {
+        _selNamesResolved pushBack (if (_obj isKindOf "Man") then {
             if (_selIdx < count _names) then { _names select _selIdx } else { "" }
         } else {
             if (_selIdx < count _hs) then { _hs select _selIdx } else { "" }
-        };
+        });
+    } forEach _selNames;
+    private _selLags = [_obj, _selNamesResolved] call FUNC(getThermalSelectionLag);
+    {
+        private _selName = _x;
         if (_selName == "") then { continue; };
         // Material physics: the conductivity k decides how the
         // vehicle heat reaches this part's skin.
@@ -191,12 +199,12 @@ if !(_solarRadiation isEqualType 0) then { _solarRadiation = 0; };
         // Heat GRADIENT across the parts (MKK wave-spread, issue #204):
         // the block heats first, the heat spreads gradually through the
         // hull as the vehicle warms - NOT a uniform glow.  The selection
-        // phase (position across the part list) delays parts further
-        // from the source until the heat builds; the smootherstep
+        // phase is the DISTANCE from the heat source now (the engine point,
+        // fnc_getThermalSelectionLag), so a part further from the block
+        // lags until the heat builds; the smootherstep
         // (_heat^2 * (3 - 2*heat)) softens the edge like real diffusion.
-        private _selectionPhase = if (_selCount > 1) then {
-            _forEachIndex / (_selCount - 1)
-        } else { 0 };
+        private _selectionPhase = _selLags param [_forEachIndex, 0];
+        if !(_selectionPhase isEqualType 0) then { _selectionPhase = 0; };
         private _waveDelay = ((_selectionPhase max 0 min 1) * 0.8) min 0.95;
         private _waveHeat = if (_heatTrend < 0) then {
             (_vehicleHeat / (1 - _waveDelay)) min 1
@@ -210,7 +218,7 @@ if !(_solarRadiation isEqualType 0) then { _solarRadiation = 0; };
 
         [_obj, _selName, "", _qInternal * _waveHeat, _fGround] call FUNC(applySelectionThermal);
         _applied = _applied + 1;
-    } forEach _selNames;
+    } forEach _selNamesResolved;
 } forEach _objects;
 
 // Diagnostic: confirms the physics baseline applies in-game.

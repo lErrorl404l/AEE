@@ -735,6 +735,20 @@ def clothing_material_kind(material_path):
     return "other"
 
 
+def selection_thermal_lag(positions, source):
+    """Mirror of the heat-source distance lag in fnc_getThermalSelectionLag.
+
+    SQF: _d = _pos distance _source; lag = _d / max(_d), clamped 0..1.
+    The source is the engine point (hit-point map) or the front axle; the
+    normalisation divides by the widest distance, so no constant is added.
+    """
+    dists = [math.dist(p, source) for p in positions]
+    peak = max(dists) if dists else 0.0
+    if peak <= 0:
+        return [0.0 for _ in dists]
+    return [max(0.0, min(1.0, d / peak)) for d in dists]
+
+
 # ─── Thermal crossover mirror (fnc_calculateThermalCrossover.sqf) ──────────
 
 
@@ -3632,13 +3646,39 @@ class TestSQFSync(unittest.TestCase):
     def test_vehicle_heat_gradient_wave(self):
         # Issue #204: heat spreads gradually across the vehicle's parts
         # (MKK wave-spread) - the block heats first, the hull follows,
-        # NOT a uniform glow.  Each selection's flux is scaled by its
-        # phase across the part list.
+        # NOT a uniform glow.  Each selection's flux is scaled by its phase,
+        # and that phase is the DISTANCE from the heat source
+        # (fnc_getThermalSelectionLag), not its position in the list.
         text = _read_sqf("fnc_applyBuildingThermal.sqf", "thermal")
         self.assertIn("_selectionPhase", text)
         self.assertIn("_waveHeat", text)
         self.assertIn("_qInternal * _waveHeat", text)
         self.assertIn("(3 - (2 * _waveHeat))", text)
+        self.assertIn("FUNC(getThermalSelectionLag)", text)
+        self.assertIn("_selLags", text)
+
+    def test_selection_lag_is_distance_from_the_heat_source(self):
+        # Issue #204: the phase comes from the model-space distance to the
+        # heat source, so the engine bay leads and a rear wheel and rear
+        # glass panel lag.  The three lag fractions must differ.
+        source = [0.0, 2.4, 0.0]  # engine point, front of the model
+        engine = [0.0, 2.4, 0.0]
+        wheel = [1.5, -1.4, 0.0]
+        glass = [0.0, -2.6, 1.1]
+        lags = selection_thermal_lag([engine, wheel, glass], source)
+        self.assertEqual(len(lags), 3)
+        self.assertEqual(len({round(v, 6) for v in lags}), 3)
+        self.assertLess(lags[0], lags[1])  # engine bay heats before the wheel
+        self.assertLess(lags[1], lags[2])  # rear glass lags the rear wheel
+        self.assertAlmostEqual(lags[0], 0.0, places=6)
+
+        # The SQF must map position -> distance, never _forEachIndex.
+        text = _read_sqf("fnc_getThermalSelectionLag.sqf", "thermal")
+        self.assertIn("_pos distance _source", text)
+        self.assertIn("/ _maxDistance", text)
+        self.assertIn("FUNC(getHitPointMaterials)", text)
+        self.assertIn('"wheel_1_1_axis"', text)
+        self.assertIn("wheel_2_1_axis", text)
 
     def test_loadout_thermal_inertia(self):
         # Issue #204: every carried item (uniform, vest, backpack,

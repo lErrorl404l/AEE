@@ -622,11 +622,12 @@ if (_mode == "EXIT") then {
         // selection can be the operator's own uniform, and nothing puts the
         // real texture back.
         if (_thermalOn && {_due && {_forced || _was != _colour}}) then { _obj setObjectTexture [_idx, _colour]; _bands set [_bandKey, _colour]; _uploaded = _uploaded + 1; };
-        // The material stays the object's own (or the FPN rvmat when the
+        // The material stays the object's own (or the ti_fpn rvmat when the
         // thermalFPN setting is on - see the save block).  setObjectTexture
-        // replaces the Stage1 texture of whatever material is current, so
-        // the heat colour renders over Stage1 and (with FPN) the perlinNoise
-        // Stage2 multiplies over it.
+        // replaces the Stage1 texture of whatever material is current, so the
+        // heat colour renders over Stage1.  ti_fpn.rvmat is Stage1 only: it
+        // carries no Stage2 and no perlinNoise, so nothing multiplies over
+        // the paint.
     } forEach _selNames;
 
     // Stamped on EVERY due pass, not only on a real upload.  The old condition
