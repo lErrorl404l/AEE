@@ -3000,10 +3000,12 @@ private _p29Pass = 0;
     // the W2 runtime coupling on one bound vehicle and reads it back through
     // getMass and the published grip state. It changes no config.
     execVM "aee_p74_w2_probe.sqf";
+    // PHASE 75 asserts the wet grip force decelerates a moving crewed vehicle.
+    execVM "aee_p75_drive_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.
-    [{diag_log text "[AEE-TEST] DONE";}, [], 20] call CBA_fnc_waitAndExecute;
+    [{diag_log text "[AEE-TEST] DONE";}, [], 35] call CBA_fnc_waitAndExecute;
         }, [_t1], 5] call CBA_fnc_waitAndExecute;
     }, [], 7] call CBA_fnc_waitAndExecute;
 }, [], 30] call CBA_fnc_waitAndExecute;
