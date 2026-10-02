@@ -3009,6 +3009,11 @@ private _p29Pass = 0;
     // PHASE 77 reads the classifier directly and asserts a spawned soldier
     // resolves to the none sentinel, because the classifier emits no log.
     execVM "aee_p77_soldier_not_vehicle_probe.sqf";
+    // PHASE 78 reads getObjectMaterials/getObjectTextures around a pylon
+    // loadout, to measure whether a proxy launcher's material joins the
+    // parent material array (the array the FPN swap overwrites). The engine
+    // calls carry no hasInterface gate, so a dedicated server can measure it.
+    execVM "aee_p78_pylon_proxy_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.
