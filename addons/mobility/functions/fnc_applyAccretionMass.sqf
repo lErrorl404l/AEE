@@ -28,7 +28,9 @@ if !(GVAR(vehicleCouplingEnabled)) exitWith { false };
 if !(missionNamespace getVariable [QEGVAR(core,enabled), true]) exitWith { false };
 if (isNull _vehicle) exitWith { false };
 if (!alive _vehicle) exitWith { false };
-if (_vehicle isKindOf "Air") exitWith { false };
+// A land coupling only. Air and sea are not coupled, so the ground physics
+// never reaches them. The accretion load is a land surface effect.
+if !(_vehicle isKindOf "LandVehicle") exitWith { false };
 if !(local _vehicle) exitWith { false };
 
 // A bound vehicle only. The classifier resolves the class identity.

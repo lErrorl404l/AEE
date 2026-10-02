@@ -17,7 +17,7 @@ row, so the classifier never guesses between two catalogue entries.
 A row has seven columns:
 
   0 catalogue_id      string, the stable catalogue key
-  1 vehicle_type      string, "wheeled" or "tracked"
+  1 vehicle_type      string, "wheeled", "tracked", "air" or "sea"
   2 is_tracked        number, 1 for a tracked entry, else 0
   3 mass_kg           number, the resolved operating weight in kg, 0 absent
   4 length_mm         number, the held overall length in mm, 0 absent

@@ -165,7 +165,7 @@ CATALOGUE_IDENTITY_FIELDS = (
 # The class-map grade set per schema section 7.
 CLASS_MAP_GRADES = frozenset({"documented", "claimed"})
 
-VEHICLE_TYPES = frozenset({"wheeled", "tracked"})
+VEHICLE_TYPES = frozenset({"wheeled", "tracked", "air", "sea"})
 
 # The closed vocabularies the runtime projection depends on.
 ENUM_VALUES: dict[str, frozenset[str]] = {

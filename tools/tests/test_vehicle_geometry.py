@@ -15,7 +15,6 @@ B_MRAP_01_F Memory LOD dump, the Cars Config Guidelines):
     real point at the origin, so membership must be checked first.
 """
 
-import re
 import unittest
 from pathlib import Path
 
@@ -27,7 +26,9 @@ LIMITS = ROOT / "addons" / "mobility" / "functions" / "fnc_calculateTerrainLimit
 
 def code(src):
     """The SQF with the header block and // comments removed."""
-    return "\n".join(l.split("//", 1)[0] for l in src.split("*/", 1)[-1].splitlines())
+    return "\n".join(
+        line.split("//", 1)[0] for line in src.split("*/", 1)[-1].splitlines()
+    )
 
 
 class TestGeometrySource(unittest.TestCase):
@@ -124,6 +125,16 @@ class TestGeometrySource(unittest.TestCase):
         # points live in the Memory LOD.  The LOD must be selected by name,
         # or the fallback finds no wheel_*_axis/_bound names at all.
         self.assertIn('selectionNames "Memory"', self.body)
+
+    def test_air_and_sea_are_not_wheel_modelled(self):
+        # This function is the land wheel shape.  An air or sea vehicle has
+        # no wheel stations, and the engine exposes no uniform, source
+        # verified rotor, hull or rudder name.  The limit is stated, and the
+        # function returns the zero geometry rather than a guessed part.
+        self.assertIn('_vehicle isKindOf "Air"', self.body)
+        self.assertIn('_vehicle isKindOf "Ship"', self.body)
+        self.assertIn("no wheel stations", self.src)
+        self.assertIn("bounding box", self.src)
 
 
 class TestCallSitesUseGeometry(unittest.TestCase):

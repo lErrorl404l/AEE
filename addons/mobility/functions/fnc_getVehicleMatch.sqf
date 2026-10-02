@@ -26,7 +26,7 @@ A row has nine columns:
 
   0 catalogue_id      string, the stable catalogue key
   1 variant_id        string, the variant key
-  2 vehicle_type      string, "wheeled" or "tracked"
+  2 vehicle_type      string, "wheeled", "tracked", "air" or "sea"
   3 class_token       string, the supported token or empty
   4 mapped_classes    string, "|" separated normalised game classes
   5 aliases           string, "|" separated normalised catalogue aliases
@@ -40,6 +40,11 @@ value_row, wheeled  [operating_weight_kg, tyre_width_mm, tyre_diameter_mm,
 value_row, tracked  [operating_weight_kg, track_shoe_width_mm,
                      track_pitch_mm, ground_clearance_mm, net_power_kw,
                      transmission_type, grousers_state]
+value_row, air      [operating_weight_kg, length_mm, width_mm, height_mm]
+value_row, sea      [operating_weight_kg, length_mm, width_mm, height_mm]
+
+The ground row carries the NRMM inputs. The air and sea row carries the
+identity geometry only, because the ground couplings are land-specific.
 
 Column units: operating weight kg, widths and pitches mm, clearance mm,
 net power kW, transmission_type enum (manual or automatic), grousers_state

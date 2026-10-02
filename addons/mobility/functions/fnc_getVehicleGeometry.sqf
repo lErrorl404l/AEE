@@ -36,6 +36,15 @@ band means the points were not what the name suggests, so it is discarded
 and the caller's default is used rather than a wrong number.  This is the
 same guard fnc_measureBarrel uses for a weapon barrel.
 
+AIR AND SEA.  This function models the land wheel shape only.  Air and sea
+vehicles have no wheel stations, and the engine does not expose a uniform,
+source-verified part-name contract for a rotor, a hull or a rudder that
+AEE can read the way it reads wheel_<side>_<station>.  So an air or sea
+vehicle returns the zero geometry with source "none".  The identity
+geometry for those families is the engine bounding box that
+aee_mobility_fnc_classifyVehicle already reads.  This limit is stated, not
+guessed.
+
 Arguments:
   0: vehicle (OBJECT)
 
@@ -57,6 +66,14 @@ if (isNull _vehicle) exitWith { [_track, _base, _tyre, _count, _source] };
 
 private _type = typeOf _vehicle;
 if (_type == "") exitWith { [_track, _base, _tyre, _count, _source] };
+
+// The land wheel shape only. An air or sea vehicle has no wheel stations
+// and no uniform, source-verified rotor, hull or rudder name to read, so it
+// carries the zero geometry and source "none". The identity geometry for
+// those families is the bounding box the classifier reads.
+if ((_vehicle isKindOf "Air") || {_vehicle isKindOf "Ship"}) exitWith {
+    [_track, _base, _tyre, _count, _source]
+};
 
 // The four standard stations, in the order [station, side] that the config
 // and the model both use.  Only these four, so an extra wheel on a 6x6 does

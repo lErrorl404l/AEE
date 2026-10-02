@@ -4,9 +4,9 @@ Vehicle identity classifier (issue #117).
 
 Function: aee_mobility_fnc_classifyVehicle.
 
-The classifier is the single identity surface for a ground vehicle. It
-composes the name matcher aee_mobility_fnc_getVehicleMatch with the
-generated property band table aee_mobility_fnc_getVehicleBands.
+The classifier is the single identity surface for a vehicle. It composes
+the name matcher aee_mobility_fnc_getVehicleMatch with the generated
+property band table aee_mobility_fnc_getVehicleBands.
 
 It resolves in this order.
 
@@ -20,9 +20,10 @@ It resolves in this order.
            resolution, select no row. A tie at the nearest extent selects no
            row. This is the route for a class whose display name is a
            fictional Arma designation.
-  token    the class is the first ground token it isKindOf, most specific
-           first. This is the coarse class identity and the type source.
-           It is the same token order aee_mobility_fnc_calculateSSF uses.
+  token    the class is the first engine family token it isKindOf, most
+           specific first. This is the coarse class identity and the type
+           source. The ground order is the one aee_mobility_fnc_calculateSSF
+           uses.
   none     no route resolved. The class token is empty. The classifier
            never returns a wrong catalogue entry.
 
@@ -31,11 +32,14 @@ StaticWeapon: LandVehicle, so the HMG, mortar, SAM and radar emplacements
 would otherwise reach the band. The classifier returns no catalogue row for
 a class that isKindOf "StaticWeapon".
 
-A ground vehicle only. The classifier acts on LandVehicle and nothing else.
-A soldier (CAManBase), a building, an animal, an aircraft or a ship is not
-a ground vehicle, so it resolves to none before every route. A man on foot
-is the live case: the traction model reads `vehicle _unit`, and on foot that
-is the man.
+Three vehicle families. The classifier acts on the engine roots LandVehicle,
+Air and Ship. The catalogued route resolves a land, air or sea class alike.
+The token route names the family: the ground tokens, then Helicopter and
+Plane for air, then Ship for sea. The air and sea families carry the identity
+geometry only. A soldier (CAManBase), a building, an animal and every other
+non-vehicle is none of the three, so it resolves to none before every route.
+A man on foot is the live case: the traction model reads `vehicle _unit`, and
+on foot that is the man.
 
 The live properties are the engine mass (getMass), the bounding box
 (boundingBoxReal), the tracked flag (isKindOf Tank or Tracked_APC) and the
@@ -73,13 +77,16 @@ if (isNull _vehicle) exitWith { ["", "wheeled", false, false, 0, 0, 0, 0, "none"
 private _type = typeOf _vehicle;
 if (_type == "") exitWith { ["", "wheeled", false, false, 0, 0, 0, 0, "none"] };
 
-// A ground vehicle only. LandVehicle is the base-game root of every class
-// the corpus, band and token routes describe. A soldier (CAManBase), a
-// building, an animal, an aircraft or a ship does not derive from it. A man
-// on foot is the live case: `vehicle _unit` returns the man, and without
-// this guard the band route would match the man's own engine mass to a
-// light vehicle.
-if !(_vehicle isKindOf "LandVehicle") exitWith {
+// A vehicle only. The classifier covers the three engine vehicle families:
+// LandVehicle, Air and Ship. A soldier (CAManBase), a building, an animal
+// and every other non-vehicle derives from none of the three, so it
+// resolves to none before every route. A man on foot is the live case:
+// `vehicle _unit` returns the man, and without this guard the band route
+// would match the man's own engine mass to a light vehicle.
+private _isLand = _vehicle isKindOf "LandVehicle";
+private _isAir = _vehicle isKindOf "Air";
+private _isSea = _vehicle isKindOf "Ship";
+if !(_isLand || _isAir || _isSea) exitWith {
     ["", "wheeled", false, false, 0, 0, 0, 0, "none"]
 };
 
@@ -102,7 +109,18 @@ if ((_box isEqualType []) && {(count _box == 2) || {count _box == 3}}
 
 private _tracked = (_vehicle isKindOf "Tank") || {_vehicle isKindOf "Tracked_APC"};
 private _hasTurret = (count (allTurrets _vehicle)) > 0;
-private _vehicleType = ["wheeled", "tracked"] select _tracked;
+// The live family is the band selector. A land class is wheeled or tracked
+// by its live tracked flag. An air class is air and a sea class is sea.
+private _vehicleType = "wheeled";
+if (_isSea) then {
+    _vehicleType = "sea";
+} else {
+    if (_isAir) then {
+        _vehicleType = "air";
+    } else {
+        _vehicleType = ["wheeled", "tracked"] select _tracked;
+    };
+};
 
 // The tracked flag as a band row stores it, and the emplacement guard. A
 // static weapon is not a vehicle, so the name routes, the band and the token
@@ -235,12 +253,18 @@ if (!_resolved && !_isEmplacement && (_massKg > 0)) then {
 // ─── Token: the coarse class identity ────────────────────────────────────
 // Most specific first. The order follows the fnc_calculateSSF track table.
 if (!_resolved && !_isEmplacement) then {
-    private _groundTokens = [
-        "MRAP", "Wheeled_APC", "Tank", "Tracked_APC", "Car", "Truck", "Wheeled_APC_F"
+    // Most specific first, within each family. The ground order follows the
+    // aee_mobility_fnc_calculateSSF track table. A class reaches one engine
+    // family only, so the family order does not change a land match.
+    private _vehicleTokens = [
+        "MRAP", "Wheeled_APC", "Tank", "Tracked_APC", "Car", "Truck",
+        "Wheeled_APC_F",
+        "Helicopter", "Plane",
+        "Ship"
     ];
     {
         if (_vehicle isKindOf _x) exitWith { _classToken = _x; };
-    } forEach _groundTokens;
+    } forEach _vehicleTokens;
     if (_classToken != "") then { _matchedBy = "token"; };
 };
 
