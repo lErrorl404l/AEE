@@ -24,9 +24,13 @@ if (_on) then {
     if (_wasOn) exitWith {};
     _layer cutRsc [QGVAR(fusionOutline), "PLAIN", 0, false];
     missionNamespace setVariable [QGVAR(outlineOn), true];
+    private _logMsg = "fusion outline: display raised";
+    AEE_LOG_INFO(_logMsg);
 } else {
     if (!_wasOn) exitWith {};
     ["clear"] call FUNC(outlineCanvas);
     _layer cutText ["", "PLAIN"];
     missionNamespace setVariable [QGVAR(outlineOn), false];
+    private _logMsg = "fusion outline: display cleared";
+    AEE_LOG_INFO(_logMsg);
 };
