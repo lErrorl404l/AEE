@@ -169,6 +169,8 @@ class RscTitles {
                 idc = -1;
                 style = 0;
                 shadow = 0;
+                font = "PuristaMedium";
+                sizeEx = "0.02 * safezoneH";
                 text = "";
                 colorText[] = {0, 0, 0, 0};
                 colorShadow[] = {0, 0, 0, 0};
