@@ -261,5 +261,17 @@ class TestHudWiring(unittest.TestCase):
         self.assertIn("hasInterface", POSTINIT_SRC)
 
 
+class TestHudLogging(unittest.TestCase):
+    """The HUD is visible in a log (the no-logging defect)."""
+
+    def test_the_build_logs_raise_and_clear(self):
+        self.assertIn('"environment HUD: display raised"', BUILD_SRC)
+        self.assertIn('"environment HUD: display cleared"', BUILD_SRC)
+
+    def test_the_update_has_a_windowed_log(self):
+        self.assertIn("environment HUD update:", UPDATE_SRC)
+        self.assertIn("AEE_LOG_DEBUG", UPDATE_SRC)
+
+
 if __name__ == "__main__":
     unittest.main()
