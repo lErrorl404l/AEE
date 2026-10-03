@@ -3018,6 +3018,11 @@ private _p29Pass = 0;
     // through the thermal startup, because the paint path is client-gated
     // and docker cannot render it. The kernels carry no hasInterface gate.
     execVM "aee_p79_thermal_startup_probe.sqf";
+    // PHASE 80 drives the real fusion kernels headlessly: the 256-level
+    // ladder, the thermal-channel field gate, the EXIT material restore, the
+    // mode cycle and the ungated AGC/solver freshness. The final render is
+    // client-only and is the operator's in-game gate, not this probe.
+    execVM "aee_p80_fusion_probe.sqf";
     // The fleet probe spawns the whole fleet, so DONE waits longer than the
     // bound-class probes need. The run gate reads every probe PASS line, and a
     // capture before the fleet probe ends would miss it.
