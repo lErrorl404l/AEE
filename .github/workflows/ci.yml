@@ -49,6 +49,8 @@ jobs:
         run: python3 tools/validation/validate_physics_config.py
       - name: Physics config override freshness check
         run: python3 tools/validation/gen_physics_config.py --check
+      - name: Star catalogue freshness check
+        run: python3 tools/validation/gen_star_catalog.py --check
       - name: Vehicle class inventory check
         run: python3 tools/validation/gen_vehicle_class_inventory.py --check
       - name: Vehicle projection freshness check

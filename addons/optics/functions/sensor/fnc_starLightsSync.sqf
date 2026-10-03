@@ -56,9 +56,13 @@ private _brightnessBase = 0.35;
 private _flareSizeBase = 0.8;
 
 // Desired light per visible star: [name, dir, sizeScale, alpha].
+// The light-emitter path renders only the bright stars: the engine caps
+// concurrent dynamic lights, so the faint bulk is left to a Draw3D
+// primitive (not yet shipped).  STAR_LIGHT_MAX_MAG is that ceiling.
 private _desired = [];
 {
     _x params ["_name", "_altDeg", "_azDeg", "_vmag"];
+    if (_vmag > STAR_LIGHT_MAX_MAG) then { continue; };
     private _dir = [_altDeg, _azDeg] call FUNC(starDirection);
     private _mag = [_vmag] call FUNC(starMagnitude);
     _desired pushBack [_name, _dir, _mag select 0, _mag select 1];

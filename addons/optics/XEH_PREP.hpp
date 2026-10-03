@@ -21,6 +21,7 @@ PREPS(sensor,classifyNight);
 PREPS(sensor,getStarCatalog);
 PREPS(sensor,getOpticProperties);
 PREPS(sensor,renderDynamicStars);
+PREPS(sensor,starCatalogData);
 PREPS(sensor,starDirection);
 PREPS(sensor,starLightsSync);
 PREPS(sensor,starMagnitude);
