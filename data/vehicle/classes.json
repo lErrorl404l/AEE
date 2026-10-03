@@ -129,7 +129,8 @@
         "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:270",
         "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:501",
         "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:62",
-        "addons/thermal/functions/outline/fnc_outlineCollect.sqf:43"
+        "addons/thermal/functions/outline/fnc_outlineCollect.sqf:43",
+        "addons/thermal/functions/outline/fnc_outlineDraw.sqf:235"
       ],
       "token": "CAManBase"
     },

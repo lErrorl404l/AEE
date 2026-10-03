@@ -158,6 +158,15 @@ BINARY_COMMANDS = {
     "pushBack",
     "deleteAt",
     "sort",
+    # Vector and modulo commands used by fnc_outlineTopo (binary form).
+    "vectorDiff",
+    "vectorAdd",
+    "vectorMultiply",
+    "vectorDotProduct",
+    "vectorDistance",
+    "vectorDistanceSqr",
+    "vectorCrossProduct",
+    "mod",
 }
 
 
@@ -172,7 +181,19 @@ def _sqf_isNotEqualTo(a: Any, b: Any) -> bool:
 # Unary commands applied to a following expression.  Without these the
 # parser reads the name as a variable and the operand as a new statement,
 # which is how `(count _v) == 0` raised "expected ), got _v".
-UNARY_COMMANDS = {"count", "abs", "toLower", "finite", "round", "tan"}
+UNARY_COMMANDS = {
+    "count",
+    "abs",
+    "toLower",
+    "finite",
+    "round",
+    "tan",
+    "ceil",
+    "cos",
+    "sin",
+    "vectorMagnitude",
+    "vectorNormalized",
+}
 
 
 # Mutating array builtins.  The interpreter holds Python lists by reference,
@@ -191,12 +212,55 @@ def _sqf_sort(arr: list, ascending: Any = True) -> None:
     return None
 
 
+# Vector and modulo builtins.  These are command-style in SQF
+# (_a vectorDiff _b) and are reached through the BINARY_COMMANDS path,
+# which resolves the command name to a callable in BUILTINS.
+def _sqf_vectorDiff(a: list, b: list) -> list:
+    return [a[0] - b[0], a[1] - b[1], a[2] - b[2]]
+
+
+def _sqf_vectorAdd(a: list, b: list) -> list:
+    return [a[0] + b[0], a[1] + b[1], a[2] + b[2]]
+
+
+def _sqf_vectorMultiply(v: list, s: float) -> list:
+    return [v[0] * s, v[1] * s, v[2] * s]
+
+
+def _sqf_vectorDotProduct(a: list, b: list) -> float:
+    return a[0] * b[0] + a[1] * b[1] + a[2] * b[2]
+
+
+def _sqf_vectorDistance(a: list, b: list) -> float:
+    return math.dist(a, b)
+
+
+def _sqf_vectorDistanceSqr(a: list, b: list) -> float:
+    return (a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2 + (a[2] - b[2]) ** 2
+
+
+def _sqf_vectorCrossProduct(a: list, b: list) -> list:
+    return [
+        a[1] * b[2] - a[2] * b[1],
+        a[2] * b[0] - a[0] * b[2],
+        a[0] * b[1] - a[1] * b[0],
+    ]
+
+
 BUILTINS: dict[str, Any] = {
     "pushBack": _sqf_pushBack,
     "deleteAt": _sqf_deleteAt,
     "sort": _sqf_sort,
     "isEqualTo": _sqf_isEqualTo,
     "isNotEqualTo": _sqf_isNotEqualTo,
+    "vectorDiff": _sqf_vectorDiff,
+    "vectorAdd": _sqf_vectorAdd,
+    "vectorMultiply": _sqf_vectorMultiply,
+    "vectorDotProduct": _sqf_vectorDotProduct,
+    "vectorDistance": _sqf_vectorDistance,
+    "vectorDistanceSqr": _sqf_vectorDistanceSqr,
+    "vectorCrossProduct": _sqf_vectorCrossProduct,
+    "mod": lambda a, b: math.fmod(a, b),
     "true": True,
     "false": False,
     "nil": None,
@@ -259,6 +323,23 @@ class Each:
 class While:
     cond: list
     body: list
+
+
+@dataclass
+class FindIf:
+    """findIf: return the index of the first element whose block is truthy."""
+
+    arr: Any
+    code: Any
+
+
+@dataclass
+class Continue:
+    """SQF `continue` - skip to the next loop iteration."""
+
+
+class ContinueSignal(Exception):
+    """Raised by `continue` and caught by the enclosing for/while loop."""
 
 
 # ─── Parser (recursive descent) ─────────────────────────────────────────────
@@ -372,6 +453,10 @@ class SqfParser:
             body = self.parse_block()
             self.optional_semi()
             return While(cond, body)
+        if t.value == "continue":
+            self.next()
+            self.optional_semi()
+            return Continue()
         if t.value == "{":
             # bare lambda in expression position handled by parse_expr;
             # here treat as a statement lambda (unlikely in solver).  Consume
@@ -403,11 +488,9 @@ class SqfParser:
                 raise SyntaxError(f"param name must be a string, got {name}")
             self.expect(",")
             default = self.parse_expr()
-            # optional [type] tag
-            if self.peekv() == ",":
-                # could be type tag array or more; consume the type tag
-                # array "[0]" / "[true]" / '[""]' if present
-                save = self.i
+            # Optional trailing components: [type] and/or a dimension count,
+            # e.g. ["_eye", [0,0,0], [[]], 3] or ["_hSens", 0, [0]].
+            while self.peekv() == ",":
                 self.next()  # comma
                 if self.peekv() == "[":
                     self.next()
@@ -418,12 +501,9 @@ class SqfParser:
                             depth += 1
                         elif v == "]":
                             depth -= 1
-                    self.expect("]")  # close param entry
                 else:
-                    self.i = save  # no type tag; comma belongs to next entry
-                    self.expect(",")
-            else:
-                self.expect("]")
+                    self.parse_expr()
+            self.expect("]")
             specs.append((name_value, default))
             if self.peekv() == ",":
                 self.next()
@@ -560,6 +640,10 @@ class SqfParser:
                     left = Each(code=left, arr=right, keep=False)
                 else:
                     left = Each(code=right, arr=left, keep=False)
+            elif t.value == "findIf":
+                self.next()
+                right = self.parse_unary()
+                left = FindIf(arr=left, code=right)
             elif t.value in BINARY_COMMANDS:
                 # binary command form: NS getVariable [k, d] - the
                 # left operand is the namespace, the command's arg is
@@ -667,6 +751,20 @@ class SqfRuntime:
     def pop(self):
         self.scopes.pop()
 
+    def _run_block(self, lam: Lambda) -> Any:
+        """Run a `{ ... }` block in a fresh scope with its closure bound.
+
+        SQF `a && { b }` / `a || { b }` evaluate the block lazily; the parser
+        represents that block as a Lambda, so the boolean operators call it.
+        """
+        self.push()
+        for k, v in lam.closure.items():
+            if k not in self.scopes[-1]:
+                self.scopes[-1].setdefault(k, v)
+        r = self.run(lam.body)
+        self.pop()
+        return r
+
     def eval(self, node: Any) -> Any:
         if isinstance(node, Num):
             return node.v
@@ -697,8 +795,15 @@ class SqfRuntime:
                 return -self.eval(node.right)
             if node.op == "not":
                 return not self.eval(node.right)
+            # A `{ ... }` block operand is SQF code and is run, not truthy by
+            # itself.  Evaluation stays eager (the harness's established
+            # behaviour) so guard-boundary tests keep seeing both operands.
             left = self.eval(node.left)
             right = self.eval(node.right)
+            if isinstance(left, Lambda):
+                left = self._run_block(left)
+            if isinstance(right, Lambda):
+                right = self._run_block(right)
             if node.op == "+":
                 return left + right
             if node.op == "-":
@@ -750,6 +855,20 @@ class SqfRuntime:
                 if value >= 0:
                     return float(math.floor(value + 0.5))
                 return float(math.ceil(value - 0.5))
+            if node.op == "ceil":
+                return float(math.ceil(value))
+            if node.op == "cos":
+                # SQF trig takes degrees.
+                return math.cos(math.radians(value))
+            if node.op == "sin":
+                return math.sin(math.radians(value))
+            if node.op == "vectorMagnitude":
+                return math.sqrt(value[0] ** 2 + value[1] ** 2 + value[2] ** 2)
+            if node.op == "vectorNormalized":
+                mag = math.sqrt(value[0] ** 2 + value[1] ** 2 + value[2] ** 2)
+                if mag == 0:
+                    return [0.0, 0.0, 0.0]
+                return [value[0] / mag, value[1] / mag, value[2] / mag]
             raise ValueError(f"unknown unary command {node.op}")
         if isinstance(node, Each):
             arr = self.eval(node.arr)
@@ -770,6 +889,24 @@ class SqfRuntime:
                 if not node.keep:
                     out.append(r)
             return out if not node.keep else None
+        if isinstance(node, FindIf):
+            arr = self.eval(node.arr)
+            code = self.eval(node.code)
+            for i, el in enumerate(arr):
+                self.push()
+                self.set("_x", el)
+                self.set("_forEachIndex", float(i))
+                if isinstance(code, Lambda):
+                    for k, v in code.closure.items():
+                        if k not in self.scopes[-1]:
+                            self.scopes[-1].setdefault(k, v)
+                    r = self.run(code.body)
+                else:
+                    r = None
+                self.pop()
+                if r:
+                    return float(i)
+            return -1.0
         if isinstance(node, Select):
             arr = self.eval(node.arr)
             idx = self.eval(node.idx)
@@ -821,26 +958,36 @@ class SqfRuntime:
             # SQF if/else blocks share the ENCLOSING scope - a variable
             # assigned inside a block is visible after it.  Do NOT push
             # a scope here (pushing discards the assignment on pop).
+            # SQF `if` is an expression: return the executed branch's value,
+            # so a lambda whose last statement is an if returns its result.
             if self.eval(s.cond):
-                self.run(s.then)
+                return self.run(s.then)
             elif s.els:
-                self.run(s.els)
+                return self.run(s.els)
             return None
         if isinstance(s, For):
             lo = int(self.eval(s.lo))
             hi = int(self.eval(s.hi))
             for i in range(lo, hi + 1):
                 self.set(s.var, float(i))
-                self.run(s.body)
+                try:
+                    self.run(s.body)
+                except ContinueSignal:
+                    continue
             return None
         if isinstance(s, While):
             guard = 0
             while bool(self.run(s.cond)):
-                self.run(s.body)
+                try:
+                    self.run(s.body)
+                except ContinueSignal:
+                    pass
                 guard += 1
                 if guard > 1000000:
                     raise RuntimeError("while loop guard exceeded")
             return None
+        if isinstance(s, Continue):
+            raise ContinueSignal()
         if isinstance(s, Params):
             # The harness pre-binds params from the call args.  Re-binding
             # here would overwrite the float args with the AST defaults

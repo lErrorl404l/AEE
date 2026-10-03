@@ -72,7 +72,7 @@ PREPS(fusion,fusionThermalField);
 PREPS(fusion,resolveFusionDevice);
 PREPS(fusion,fusionFrameGeometry);
 PREPS(fusion,updateFusionFrame);
-PREPS(outline,outlineHull);
+PREPS(outline,outlineTopo);
 PREPS(outline,outlineSkeleton);
 PREPS(outline,outlineSensorLod);
 PREPS(outline,outlineCanvas);
