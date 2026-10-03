@@ -119,9 +119,12 @@ class RscTitles {
     };
 
     // ── The drawn fusion display (issue #204) ───────────────────────────────
-    // The compass tape and the glass tint, ported from workshop 3810296503
-    // whale_ecoti_llll config.cpp RscTitles \ whale_ecoti_llll_overlay.  The
-    // source declares style, font and sizeEx here because Arma has no
+    // The compass tape, ported from workshop 3810296503 whale_ecoti_llll
+    // config.cpp RscTitles \ whale_ecoti_llll_overlay.  The source's
+    // translucent red-orange "glass" panel is DELIBERATELY NOT ported: it
+    // tinted the whole NVG image instead of the correct green phosphor, and a
+    // HUD aid must not recolour the sensor image (operator report 2026-10-03).
+    // The source declares style, font and sizeEx here because Arma has no
     // ctrlSetStyle command: a control created in script cannot be told to
     // centre its text, so the tape geometry only works when style = 2 is set
     // in config.  The per-frame drivers find the controls by idc and set only
@@ -154,17 +157,6 @@ class RscTitles {
                 y = 0;
                 w = 0;
                 h = 0.025;
-            };
-
-            // The glass tint: a translucent red-orange panel over the centre
-            // of the NVG image.  onLoad repositions it and sets its colour.
-            class AEEFusionHudGlass: AEEFusionHudText {
-                idc = 910001;
-                x = 0.40;
-                y = 0.35;
-                w = 0.20;
-                h = 0.30;
-                colorBackground[] = {0.55, 0.08, 0.05, 0.30};
             };
 
             // Left corner: grid and altitude.  Right corner: time.  Both are

@@ -45,8 +45,8 @@ if (!isNull _player) then {
 private _colBase = FUSION_HUD_RULER_COLOR;
 private _colOff = [0, 0, 0, 0];
 
-private _prof = missionNamespace getVariable [QGVAR(hudTapeBootProfile), [1, 1, 1, 0]];
-if !(_prof isEqualType []) then { _prof = [1, 1, 1, 0]; };
+private _prof = missionNamespace getVariable [QGVAR(hudTapeBootProfile), [1, 1]];
+if !(_prof isEqualType []) then { _prof = [1, 1]; };
 private _bootK = if ((count _prof) > 0) then { _prof select 0 } else { 1 };
 if !(_bootK isEqualType 0) then { _bootK = 1; };
 
