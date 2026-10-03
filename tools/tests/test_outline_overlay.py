@@ -337,5 +337,38 @@ class TestOutlineWorkerWiring(unittest.TestCase):
         self.assertIn('"fusion outline: display cleared"', TOGGLE_SRC)
 
 
+class TestOutlineCollectorCacheKey(unittest.TestCase):
+    """The collector's per-object cache key must be one Arma 3 can hash.
+
+    BIKI HashMap, "Unsupported Key Types": a HashMap rejects Object keys.  The
+    supported key types are Array, Boolean, Code, Config, Namespace, NaN,
+    Number, Side and String only.  An Object key raised "Error Type Object" on
+    getOrDefault and on set at every object, every frame - 85,921 errors in a
+    2.5 minute run, split 42,961 at the read and 42,960 at the write.  The
+    collector now derives a String key with str _obj and drives both the read
+    and the write with it, so a written entry is a cache hit on the next pass.
+    """
+
+    def test_the_cache_no_longer_keys_by_object(self):
+        # The raw-object key is the fault.  It must be gone from both sinks.
+        self.assertNotIn("_cache getOrDefault [_obj,", COLLECT_SRC)
+        self.assertNotIn("_cache set [_obj,", COLLECT_SRC)
+
+    def test_the_cache_round_trip_uses_one_object_derived_key(self):
+        # One key variable, derived from the object with str, feeds the read
+        # and the write.  The round-trip is therefore a hit, not a miss.
+        self.assertIn("private _objKey = str _obj;", COLLECT_SRC)
+        self.assertIn("_cache getOrDefault [_objKey, []", COLLECT_SRC)
+        self.assertIn("_cache set [_objKey, [_now, _isHot]]", COLLECT_SRC)
+
+    def test_the_selection_temperature_map_keeps_a_string_key(self):
+        # The neighbouring QGVAR(selTemperature) read already builds a String
+        # key from the object.  It must stay a String and never the raw object.
+        self.assertIn(
+            '_selMap getOrDefault [format ["%1|%2", _obj, _selName], -999]',
+            COLLECT_SRC,
+        )
+
+
 if __name__ == "__main__":
     unittest.main()
