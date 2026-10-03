@@ -163,6 +163,11 @@ if (_mode == "EXIT") exitWith {
 
 if (isNull _player) exitWith {};
 
+// Wall-clock timer for this pass.  The overlay carried no timer, so the
+// 17:58:27 RPT could not rank its cost against the other AEE work.  It is
+// emitted once per pass at the end, through AEE_LOG_DEBUG.
+private _perfT0 = diag_tickTime;
+
 // Reuse the exact band quantisation from the thermal display: the AGC
 // window and selection state are per-frame.
 private _selMap = missionNamespace getVariable [QGVAR(selTemperature), createHashMap];
@@ -281,8 +286,32 @@ if !(_viewDir isEqualType [] && {count _viewDir == 3}) then { _viewDir = vectorD
 private _visionMode = currentVisionMode _player;
 private _capable = [] call EFUNC(thermal,isFusionCapable);
 private _fusionMode = missionNamespace getVariable [QGVAR(fusionMode), 0];
-private _objects = _player nearObjects 300;
-private _objectCount = count _objects;
+// ─── Bounded candidate sweep ──────────────────────────────────────────────
+// The previous line ran `_player nearObjects 300` on EVERY fusion tick at
+// 10 Hz and then planned every returned object, so a 232-object candidate set
+// cost a full per-selection solve on every pass.  Discovery is now CACHED and
+// the plan is BOUNDED, the same shape fnc_applyBuildingThermal uses: the
+// candidate list refreshes on a 1 s timer and each pass takes at most
+// `sweepBudget` objects from a persistent pending queue.  A newly seen object
+// enters within about one second, and the queue drains at 16 objects per
+// pass.  `_objectCount` stays the whole candidate set, not the batch, so the
+// `objs=` gate field keeps its meaning.
+private _sweepBudget = missionNamespace getVariable [QGVAR(sweepBudget), 16];
+if !(_sweepBudget isEqualType 0) then { _sweepBudget = 16; };
+private _pending = missionNamespace getVariable [QGVAR(fusionPending), []];
+if !(_pending isEqualType []) then { _pending = []; };
+private _candT = missionNamespace getVariable [QGVAR(fusionCandidatesT), -99];
+if !(_candT isEqualType 0) then { _candT = -99; };
+if ((_pending isEqualTo []) || ((diag_tickTime - _candT) > 1)) then {
+    _pending = _player nearObjects 300;
+    missionNamespace setVariable [QGVAR(fusionCandidatesT), diag_tickTime];
+    missionNamespace setVariable [QGVAR(fusionCandidatesCount), count _pending];
+};
+private _objectCount = missionNamespace getVariable [QGVAR(fusionCandidatesCount), count _pending];
+if !(_objectCount isEqualType 0) then { _objectCount = count _pending; };
+private _taken = [_pending, _sweepBudget] call FUNC(takeThermalSweep);
+private _objects = _taken select 0;
+missionNamespace setVariable [QGVAR(fusionPending), _taken select 1];
 // Gate tallies for the diagnostic.  A gate whose effect cannot be read in a
 // log is a gate nobody can check next session, and that has been the failure
 // mode in this area more than once, so the rejected and the painted counts
@@ -291,6 +320,9 @@ private _gatedOut = 0;
 private _paintedCount = 0;
 {
     private _obj = _x;
+    // A cached queue can outlive an object; a fresh nearObjects list could
+    // not.  Skip a deleted object before any engine call touches it.
+    if (isNull _obj) then { continue; };
     private _objMaxBand = 0;
     // Shared dynamic discovery (issue #204): Man = all texture slots,
     // vehicle = config override > textureSources > all-but-MFD.  The
@@ -483,9 +515,10 @@ private _paintedCount = 0;
 if (_logNow) then {
     private _corpusState = ["live", "data-only"] select (_thermalDeviceId == "");
     private _logGate = format [
-        "fusion gate: dev=%1 tid=%2 corpus=%3 fov=%4 axis=%5 halfDeg=%6 objs=%7 gated=%8 painted=%9",
+        "fusion gate: dev=%1 tid=%2 corpus=%3 fov=%4 axis=%5 halfDeg=%6 objs=%7 gated=%8 painted=%9 batch=%10 pending=%11",
         _thermalDevice, _thermalDeviceId, _corpusState, _fovSource, _fovAxis,
-        _thermalHalfAngleDeg, _objectCount, _gatedOut, _paintedCount
+        _thermalHalfAngleDeg, _objectCount, _gatedOut, _paintedCount,
+        count _objects, count (_taken select 1)
     ];
     AEE_LOG_DEBUG(_logGate);
 };
@@ -493,3 +526,14 @@ if (_logNow) then {
 // Publish the edge state for the tick.  It is separate from the brightness
 // ladder, so an edge can never overwrite a selection's thermal shading.
 missionNamespace setVariable [QGVAR(selThermalEdge), _edgeMap];
+
+// Per-pass wall clock, emitted unconditionally through AEE_LOG_DEBUG (the
+// macro applies the debug setting).  This is the line the overlay lacked, and
+// it names the batch and the pending remainder so the bounded sweep can be
+// read straight from a performance run.
+private _perfMsg = format [
+    "fusion overlay %1 ms (batch %2, pending %3, candidates %4)",
+    round ((diag_tickTime - _perfT0) * 1000),
+    count _objects, count (_taken select 1), _objectCount
+];
+AEE_LOG_DEBUG(_perfMsg);
