@@ -17,6 +17,14 @@
             <Original>Fusion Field-of-View Frame</Original>
             <English>Fusion Field-of-View Frame</English>
         </Key>
+        <Key ID="STR_AEE_Thermal_fusionHud_Description">
+            <Original>The drawn fusion display: a tinted glass panel over the night-vision image and a scrolling compass tape with the grid, height, time and the environment state. Ported from workshop 3810296503 whale_ecoti_llll. This is the primary fusion readout; the AEE Optics environment HUD is the auxiliary panel, so enable one or the other to avoid a duplicated readout.</Original>
+            <English>The drawn fusion display: a tinted glass panel over the night-vision image and a scrolling compass tape with the grid, height, time and the environment state. Ported from workshop 3810296503 whale_ecoti_llll. This is the primary fusion readout; the AEE Optics environment HUD is the auxiliary panel, so enable one or the other to avoid a duplicated readout.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_fusionHud_Name">
+            <Original>Fusion Compass Tape</Original>
+            <English>Fusion Compass Tape</English>
+        </Key>
         <Key ID="STR_AEE_Thermal_fusionOutline_Description">
             <Original>Draw the outline of each hot target the thermal state already tracks, on a transparent overlay that the NVG does not filter. It draws nothing when fusion is off or the fitted headset is not fusion capable.</Original>
             <English>Draw the outline of each hot target the thermal state already tracks, on a transparent overlay that the NVG does not filter. It draws nothing when fusion is off or the fitted headset is not fusion capable.</English>
