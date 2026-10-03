@@ -20,6 +20,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 LIMITS = ROOT / "addons" / "mobility" / "functions" / "fnc_calculateTerrainLimits.sqf"
+ROUTE = ROOT / "addons" / "mobility" / "functions" / "fnc_calculateRouteDegradation.sqf"
 
 
 def breakover_deg(clearance_m, wheelbase_m):
@@ -151,6 +152,37 @@ class TestSqfForms(unittest.TestCase):
     def test_no_unsourced_values(self):
         # The issue's SSF 1.19 must not appear as a constant.
         self.assertNotIn("1.19", self.src)
+
+
+class TestAngleUnits(unittest.TestCase):
+    """Arma's inverse trig returns DEGREES (acemod/arma3-wiki: acos 0.5 = 60).
+
+    Scaling a returned angle by the radians-to-degrees constant 57.2957795
+    inflates it 57 times.  The Python mirrors above use math.degrees and are
+    correct; these tests pin the SQF to the same degrees.
+    """
+
+    def test_terrain_limits_do_not_scale_inverse_trig(self):
+        src = LIMITS.read_text(encoding="utf-8")
+        # The scaling multiplication is gone (the header may name it in
+        # prose as the anti-pattern, so match the operator form).
+        self.assertNotIn("* 57.2957795", src)
+        # The intermediate was named for radians while it held degrees.
+        self.assertNotIn("_gradeRad", src)
+        self.assertIn("private _gradeDeg = asin", src)
+
+    def test_route_slope_is_degrees(self):
+        # fnc_calculateRouteDegradation feeds the slope into the limits,
+        # which now speak degrees, so the acos result must not be scaled.
+        src = ROUTE.read_text(encoding="utf-8")
+        self.assertIn("acos ((_up select 2) max -1 min 1)", src)
+        self.assertNotIn("* 57.2957795", src)
+
+    def test_returned_angles_are_the_formula_degrees(self):
+        # A point check that the numbers in and out are real degrees.
+        self.assertAlmostEqual(breakover_deg(0.44, 4.0), 24.9, delta=0.15)
+        self.assertAlmostEqual(friction_limit_deg(0.85), 40.0, delta=0.5)
+        self.assertAlmostEqual(math.degrees(math.atan(0.97)), 44.1, delta=0.2)
 
 
 if __name__ == "__main__":
