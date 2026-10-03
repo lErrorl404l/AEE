@@ -35,6 +35,15 @@ AEE_SETTING_CHECKBOX(fusionFovFrame,"AEE Thermal","Fusion",true);
 // NVG dispatch calls the toggle only on the fusion path.
 AEE_SETTING_CHECKBOX(fusionOutline,"AEE Thermal","Fusion",true);
 
+// The fusion solid fill (issue #204).  Ported from workshop 3810296503
+// whale_ecoti_llll functions/fn_thermalFill.sqf.  On: a hot body inside the
+// thermal channel has every texture slot painted one solid bright colour, so
+// the engine renders it as the flat block a real thermal display shows.  It
+// REPLACES the 256-band emissive ladder while it is on, so one body is never
+// painted by both primitives.  Default OFF: the graded ladder stays the
+// default look.
+AEE_SETTING_CHECKBOX(fusionSolidFill,"AEE Thermal","Fusion",false);
+
 // ── Fixed-pattern noise (issue #204, FPN) ────────────────────────────────
 // Real LWIR sensors show a static spatial mottle (fixed-pattern noise)
 // over the thermal image, independent of the temporal FilmGrain.  On:
