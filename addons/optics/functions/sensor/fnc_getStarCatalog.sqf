@@ -1,7 +1,8 @@
 #include "..\..\script_component.hpp"
 
 /*
-Brightest 49 stars with apparent magnitudes and equatorial coordinates.
+Full star catalogue (V <= 7.0) with apparent magnitudes and equatorial
+coordinates, loaded from the generated FUNC(starCatalogData).
 
 Catalog data: Yale Bright Star Catalogue (BSC5), Fifth Edition.
 Positions are J2000.0 epoch.  Precession to current date is handled
@@ -23,59 +24,10 @@ params [
 ];
 
 // ─── Star catalog: [name, RA_deg, Dec_deg, Vmag] ─────────────────────────
-// RA and Dec in degrees (J2000.0).  Top 49 by apparent V magnitude.
-// Source: Yale Bright Star Catalogue, Fifth Edition (BSC5).
-private _catalog = [
-    ["Sirius",          101.2872,  -16.7161, -1.46],
-    ["Canopus",         95.9880,  -52.6957, -0.74],
-    ["Arcturus",       213.9152,   19.1820, -0.05],
-    ["Alpha Centauri",  219.9020,  -60.8340, -0.27],
-    ["Vega",           279.2347,   38.7837,  0.03],
-    ["Capella",         79.1723,   45.9980,  0.08],
-    ["Rigel",           78.6345,   -8.2016,  0.13],
-    ["Procyon",        114.8255,    5.2250,  0.34],
-    ["Achernar",        24.4289,  -57.2368,  0.46],
-    ["Betelgeuse",      88.7930,    7.4071,  0.42],
-    ["Hadar",          210.9558,  -60.3730,  0.61],
-    ["Altair",         297.6958,    8.8683,  0.76],
-    ["Acrux",          186.6497,  -63.0991,  0.76],
-    ["Aldebaran",       68.9802,   16.5093,  0.85],
-    ["Antares",        247.3519,  -26.4320,  0.96],
-    ["Spica",          201.2983,  -11.1613,  0.97],
-    ["Pollux",         116.3289,   28.0262,  1.14],
-    ["Fomalhaut",      344.4126,  -29.6222,  1.16],
-    ["Deneb",          310.3580,   45.2803,  1.25],
-    ["Mimosa",         191.9303,  -59.6887,  1.25],
-    ["Regulus",        152.0930,   11.9672,  1.35],
-    ["Adhara",         104.6562,  -28.9717,  1.50],
-    ["Castor",         113.6489,   31.8883,  1.58],
-    ["Shaula",         263.4022,  -37.1038,  1.62],
-    ["Bellatrix",       81.2828,    6.3497,  1.64],
-    ["Elnath",          81.5730,   28.6083,  1.65],
-    ["Miaplacidus",    138.2998,  -69.7172,  1.68],
-    ["Alnilam",         84.0531,   -1.2019,  1.69],
-    ["Alnair",         332.0583,  -46.9611,  1.74],
-    ["Alioth",         193.5072,   55.9597,  1.77],
-    ["Dubhe",          165.9319,   61.7511,  1.79],
-    ["Mirfak",         51.0806,   49.8612,  1.80],
-    ["Wezen",         107.0977,  -26.3933,  1.84],
-    ["Sargas",         264.3300,  -43.0000,  1.87],
-    ["Kaus Australis", 276.0431,  -34.3839,  1.85],
-    ["Avior",          125.6287,  -59.5097,  1.86],
-    ["Alkaid",         206.8852,   49.3133,  1.86],
-    ["Menkalinan",      89.8760,   44.9475,  1.90],
-    ["Atria",          252.1663,  -69.0278,  1.92],
-    ["Alhena",         99.4280,   16.3992,  1.93],
-    ["Peacock",        306.4119,  -56.7351,  1.94],
-    ["Mirzam",         95.6750,  -17.9559,  1.98],
-    ["Alphard",       141.8968,   -8.6597,  1.98],
-    ["Hamal",          32.7936,    23.4624,  2.00],
-    ["Polaris",        37.9547,   89.2641,  2.02],
-    ["Diphda",         10.9211,  -17.9867,  2.02],
-    ["Nunki",           283.8157,  -26.2967,  2.05],
-    ["Mizar",          200.9814,   54.9254,  2.27],
-    ["Saiph",          86.9390,   -9.6699,  2.09]
-];
+// Full Yale Bright Star Catalogue (V <= 7.0), generated from
+// data/astronomy/sources/catalog.dat by tools/validation/gen_star_catalog.py.
+// RA and Dec are J2000.0 degrees; entries are sorted by magnitude.
+private _catalog = [] call FUNC(starCatalogData);
 
 // ─── Precession correction (J2000 to current date) ────────────────────────
 // Simple precession in RA/Dec.  Good to ~1 arcmin over a century.
