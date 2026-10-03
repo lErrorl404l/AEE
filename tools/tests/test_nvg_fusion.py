@@ -20,6 +20,7 @@ Run: python3 -m unittest tools.tests.test_nvg_fusion -v
 from __future__ import annotations
 
 import json
+import math
 import sys
 import unittest
 from pathlib import Path
@@ -36,10 +37,19 @@ FUSION = REPO / "addons" / "thermal" / "functions" / "fusion"
 GATE_KERNEL = FUSION / "fnc_fusionGateDecision.sqf"
 FIELD_KERNEL = FUSION / "fnc_fusionThermalField.sqf"
 BAND_KERNEL = FUSION / "fnc_fusionBandIndex.sqf"
+FRAME_KERNEL = FUSION / "fnc_fusionFrameGeometry.sqf"
 CAPABLE_SRC = (FUSION / "fnc_isFusionCapable.sqf").read_text(encoding="utf-8")
 RESOLVER_SRC = (FUSION / "fnc_resolveFusionDevice.sqf").read_text(encoding="utf-8")
 OVERLAY_SRC = (FUSION / "fnc_applyFusionOverlay.sqf").read_text(encoding="utf-8")
+UPDATE_SRC = (FUSION / "fnc_updateFusionFrame.sqf").read_text(encoding="utf-8")
 PREP_SRC = (REPO / "addons" / "thermal" / "XEH_PREP.hpp").read_text(encoding="utf-8")
+SETTINGS_SRC = (REPO / "addons" / "thermal" / "initSettings.inc.sqf").read_text(
+    encoding="utf-8"
+)
+RSC_SRC = (REPO / "addons" / "thermal" / "RscTitles.hpp").read_text(encoding="utf-8")
+STRINGTABLE_SRC = (REPO / "addons" / "thermal" / "stringtable.xml").read_text(
+    encoding="utf-8"
+)
 CATALOGUE = json.loads(
     (REPO / "data" / "device" / "catalogue" / "thermal_devices.json").read_text(
         encoding="utf-8"
@@ -58,6 +68,10 @@ def _field(device_label: str) -> list[object]:
 
 def _band(brightness: float) -> float:
     return run_sqf(BAND_KERNEL, [brightness], {})
+
+
+def _frame(half_angle_deg: float, nvg_field_deg: float) -> float:
+    return run_sqf(FRAME_KERNEL, [half_angle_deg, nvg_field_deg], {})
 
 
 class TestFusionGateDecision(unittest.TestCase):
@@ -234,6 +248,81 @@ class TestEcotiCorpusRow(unittest.TestCase):
 
     def test_the_corpus_loads_with_no_error(self):
         self.assertEqual(catalogue.load(DATA_DIR).errors, [])
+
+
+class TestFusionFrameGeometry(unittest.TestCase):
+    """fnc_fusionFrameGeometry, executed: the frame is derived, not fixed."""
+
+    def test_envgb_sits_at_the_field_edge(self):
+        # ENVG-B: 20-degree channel, declared 40-degree device field.
+        self.assertAlmostEqual(_frame(20, 40), 1.0, places=6)
+
+    def test_bnvd_fused_uses_its_derived_half_angle(self):
+        self.assertAlmostEqual(
+            _frame(17, 40),
+            math.tan(math.radians(17)) / math.tan(math.radians(20)),
+            places=6,
+        )
+
+    def test_ecoti_uses_its_published_half_angle(self):
+        self.assertAlmostEqual(
+            _frame(15, 40),
+            math.tan(math.radians(15)) / math.tan(math.radians(20)),
+            places=6,
+        )
+
+    def test_the_frame_shrinks_with_the_half_angle(self):
+        self.assertLess(_frame(15, 40), _frame(17, 40))
+        self.assertLess(_frame(17, 40), _frame(20, 40))
+
+    def test_the_angle_is_not_hardcoded_to_20(self):
+        self.assertNotAlmostEqual(_frame(15, 40), _frame(20, 40))
+        self.assertAlmostEqual(
+            _frame(20, 80),
+            math.tan(math.radians(20)) / math.tan(math.radians(40)),
+            places=6,
+        )
+
+    def test_a_zero_angle_is_an_empty_frame(self):
+        self.assertAlmostEqual(_frame(0, 40), 0.0, places=6)
+
+    def test_a_field_wider_than_the_tube_is_clamped(self):
+        self.assertAlmostEqual(_frame(45, 40), 1.0, places=6)
+
+
+class TestFusionFrameWiring(unittest.TestCase):
+    """The setting, the config class and the overlay caller are present."""
+
+    def test_the_setting_is_registered_default_on(self):
+        self.assertIn(
+            'AEE_SETTING_CHECKBOX(fusionFovFrame,"AEE Thermal","Fusion",true)',
+            SETTINGS_SRC,
+        )
+
+    def test_the_stringtable_keys_exist(self):
+        for key in ("fusionFovFrame_Name", "fusionFovFrame_Description"):
+            self.assertIn(f"STR_AEE_Thermal_{key}", STRINGTABLE_SRC)
+
+    def test_the_overlay_drives_the_frame_from_the_resolved_angle(self):
+        self.assertIn(
+            "[_frameOn && _fusionDevice, _thermalHalfAngleDeg, _nvgFieldDeg] call FUNC(updateFusionFrame)",
+            OVERLAY_SRC,
+        )
+        self.assertIn("QGVAR(fusionFovFrame)", OVERLAY_SRC)
+
+    def test_the_frame_is_torn_down_on_exit(self):
+        self.assertIn("[false] call FUNC(updateFusionFrame);", OVERLAY_SRC)
+
+    def test_the_display_class_is_owned_by_thermal(self):
+        self.assertIn("class GVAR(fusionFrame)", RSC_SRC)
+        self.assertIn("GVAR(fusionFrameDisplay)", RSC_SRC)
+
+    def test_the_driver_reads_the_geometry_kernel(self):
+        self.assertIn("call FUNC(fusionFrameGeometry)", UPDATE_SRC)
+
+    def test_prep_registers_the_frame_functions(self):
+        for name in ("fusionFrameGeometry", "updateFusionFrame"):
+            self.assertIn(f"PREPS(fusion,{name});", PREP_SRC)
 
 
 if __name__ == "__main__":

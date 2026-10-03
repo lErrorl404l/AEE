@@ -145,6 +145,9 @@ params [["_player", player, [objNull]], ["_mode", ""]];
 // on uniforms after returning to normal vision.  The sensor teardown calls
 // this with EXIT.
 if (_mode == "EXIT") exitWith {
+    // Tear the field-of-view frame down first: the overlay is leaving NVG,
+    // so the operator must not be left with a border over normal vision.
+    [false] call FUNC(updateFusionFrame);
     private _restore = missionNamespace getVariable [QGVAR(fusionOverlaySaved), []];
     {
         _x params ["_o", "_oldMats"];
@@ -217,6 +220,22 @@ if !(_deviceNetd isEqualType 0) then { _deviceNetd = 0.05; };
 if (_deviceNetd <= 0) then { _deviceNetd = 0.05; };
 if !(_deviceResX isEqualType 0) then { _deviceResX = 640; };
 if (_deviceResX <= 0) then { _deviceResX = 640; };
+// ─── The fusion field-of-view frame ────────────────────────────────────────
+// A thin rectangular border at the thermal channel's half-angle, so the
+// operator can see where the fused image is actually bounded.  It is a HUD
+// aid, not optics.  The angle is the SAME _thermalHalfAngleDeg the gate uses,
+// resolved by FUNC(resolveFusionDevice); the NVG device's own published field
+// is the on-screen scale.  Nothing is drawn for a non-fusion device or with
+// the setting off, and FUNC(updateFusionFrame) tears the display down when
+// this call passes false.
+private _nvgRow = _devicePair select 0;
+private _nvgFieldDeg = _nvgRow param [5, 40];
+if !(_nvgFieldDeg isEqualType 0) then { _nvgFieldDeg = 40; };
+if (_nvgFieldDeg <= 0) then { _nvgFieldDeg = 40; };
+private _frameOn = missionNamespace getVariable [QGVAR(fusionFovFrame), true];
+if !(_frameOn isEqualType true) then { _frameOn = true; };
+private _fusionDevice = (_thermalDevice == "ENVG-B") || (_thermalDevice == "BNVD-FUSED") || (_thermalDevice == "ECOTI");
+[_frameOn && _fusionDevice, _thermalHalfAngleDeg, _nvgFieldDeg] call FUNC(updateFusionFrame);
 // The fused headset is a UNITY-magnification goggle, so the optic
 // magnification for THIS path is 1.  A magnified rifle-sight path would pass
 // its optic magnification instead, but optics DEPENDS ON thermal (its
