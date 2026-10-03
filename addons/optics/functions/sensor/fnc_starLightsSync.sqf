@@ -91,3 +91,14 @@ private _kept = _desired apply { _x select 0 };
     if (!((_x select 0) in _kept)) then { deleteVehicle (_x select 1); };
 } forEach _lights;
 missionNamespace setVariable [QGVAR(starLights), (_lights select { (_x select 0) in _kept })];
+
+// One summary line per 5 s window through AEE_LOG_DEBUG (the module trace
+// switch), so the field can be read in an .rpt without a per-tick cost.
+private _logAt = missionNamespace getVariable [QGVAR(starLogAt), -1e9];
+if !(_logAt isEqualType 0) then { _logAt = -1e9; };
+if (diag_tickTime >= _logAt) then {
+    missionNamespace setVariable [QGVAR(starLogAt), diag_tickTime + 5];
+    private _lightCount = count (missionNamespace getVariable [QGVAR(starLights), []]);
+    private _logMsg = format ["starfield: %1 stars visible, %2 light emitters", count _stars, _lightCount];
+    AEE_LOG_DEBUG(_logMsg);
+};

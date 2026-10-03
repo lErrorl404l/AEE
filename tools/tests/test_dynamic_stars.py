@@ -158,5 +158,22 @@ class TestStarRendererUsesLightEmitters(unittest.TestCase):
         self.assertNotIn("limitingMagnitude", self.sync)
 
 
+class TestStarLogging(unittest.TestCase):
+    """The starfield is visible in a log (the no-logging defect)."""
+
+    def setUp(self):
+        self.reg = (SENSOR / "fnc_renderDynamicStars.sqf").read_text(encoding="utf-8")
+        self.sync = (SENSOR / "fnc_starLightsSync.sqf").read_text(encoding="utf-8")
+
+    def test_registrar_logs_once(self):
+        self.assertIn("AEE_LOG_INFO", self.reg)
+        self.assertIn('"starfield: light-emitter PFH registered"', self.reg)
+
+    def test_sync_has_a_windowed_log(self):
+        self.assertIn("AEE_LOG_DEBUG", self.sync)
+        self.assertIn("starLogAt", self.sync)
+        self.assertIn("starfield: %1 stars visible", self.sync)
+
+
 if __name__ == "__main__":
     unittest.main()
