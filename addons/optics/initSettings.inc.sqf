@@ -57,6 +57,13 @@ AEE_SETTING_SLIDER(chromaCap,"AEE Optics","Intensity",0,0.2,0.06,0);
 // player's own view distance setting.
 AEE_SETTING_CHECKBOX(viewDistanceEnabled,"AEE Optics","Visibility",true);
 
+// ── ECOTI environment HUD ──────────────────────────────────────────────────
+// A night-vision operator aid: heading, grid, altitude, time and the aee
+// environment state over the NVG view.  Default OFF (a HUD is an operator
+// choice); the HUD workers gate on this setting each tick, so it toggles
+// live.
+AEE_SETTING_CHECKBOX(hudEnabled,"AEE Optics","Display",false);
+
 // ── Thermal polarity (issue #196) ─────────────────────────────────────────
 // Moved to aee_thermal/initSettings.inc.sqf with the rest of the thermal
 // pipeline (white-hot default, black-hot user-selectable per FM 3-22.9).
