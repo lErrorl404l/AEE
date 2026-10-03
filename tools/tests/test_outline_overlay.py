@@ -308,5 +308,34 @@ class TestOutlineWiring(unittest.TestCase):
         self.assertIn("[false] call EFUNC(thermal,outlineToggle);", POSTINIT_SRC)
 
 
+class TestOutlineWorkerWiring(unittest.TestCase):
+    """The outline has a per-frame caller.
+
+    The silent-outline defect: FUNC(outlineDraw) computed the segments but no
+    event ever called it, so the canvas stayed empty and the RPT held no
+    "fusion outline" line.  The source runs its draw worker on the mission
+    Draw3D event; these contracts pin that registration.
+    """
+
+    def test_the_thermal_postinit_registers_a_draw3d_worker(self):
+        src = (REPO / "addons" / "thermal" / "XEH_postInit.sqf").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn('addMissionEventHandler ["Draw3D"', src)
+        self.assertIn("FUNC(outlineDraw)", src)
+        self.assertIn("hasInterface", src)
+
+    def test_the_postinit_event_handler_is_declared(self):
+        src = (REPO / "addons" / "thermal" / "CfgEventHandlers.hpp").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("Extended_PostInit_EventHandlers", src)
+        self.assertIn("COMPILE_SCRIPT(XEH_postInit)", src)
+
+    def test_the_toggle_logs_the_state_change(self):
+        self.assertIn('"fusion outline: display raised"', TOGGLE_SRC)
+        self.assertIn('"fusion outline: display cleared"', TOGGLE_SRC)
+
+
 if __name__ == "__main__":
     unittest.main()
