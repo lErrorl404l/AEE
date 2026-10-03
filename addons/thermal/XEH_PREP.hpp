@@ -64,6 +64,7 @@ PREPS(display,calculateUnitLoadoutThermal);
 PREPS(fusion,isFusionCapable);
 PREPS(fusion,fusionGateDecision);
 PREPS(fusion,applyFusionOverlay);
+PREPS(fusion,applyFusionFill);
 PREPS(fusion,applyFusionPP);
 PREPS(fusion,applyFusionSun);
 PREPS(fusion,cycleFusionMode);

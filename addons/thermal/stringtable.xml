@@ -25,6 +25,14 @@
             <Original>Fusion Thermal Outline</Original>
             <English>Fusion Thermal Outline</English>
         </Key>
+        <Key ID="STR_AEE_Thermal_fusionSolidFill_Description">
+            <Original>Paint each hot body inside the thermal channel one solid bright colour, the flat block a real thermal display shows. This mode replaces the graded emissive ladder while it is on, so a body is never painted by both. Turn it off for the graded look.</Original>
+            <English>Paint each hot body inside the thermal channel one solid bright colour, the flat block a real thermal display shows. This mode replaces the graded emissive ladder while it is on, so a body is never painted by both. Turn it off for the graded look.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_fusionSolidFill_Name">
+            <Original>Fusion Solid Fill</Original>
+            <English>Fusion Solid Fill</English>
+        </Key>
         <Key ID="STR_AEE_Thermal_logDebug_Description">
             <Original>Log thermal diagnostics to the RPT, including the wall-clock cost of each thermal function. Turn this on before reporting a performance fault.</Original>
             <English>Log thermal diagnostics to the RPT, including the wall-clock cost of each thermal function. Turn this on before reporting a performance fault.</English>

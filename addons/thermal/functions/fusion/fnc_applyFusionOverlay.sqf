@@ -151,6 +151,10 @@ if (_mode == "EXIT") exitWith {
     // The outline overlay belongs to the same exit: clear it and lower its
     // display, or a stale outline survives into normal vision.
     [false] call FUNC(outlineToggle);
+    // The solid fill owns a separate registry of textures.  Restore it here,
+    // or a body stays a flat bright block after the operator leaves fusion.
+    // The mode "EXIT" call does not need a live player.
+    [_player, "EXIT"] call FUNC(applyFusionFill);
     private _restore = missionNamespace getVariable [QGVAR(fusionOverlaySaved), []];
     {
         _x params ["_o", "_oldMats"];
@@ -279,6 +283,54 @@ if !(_logAt isEqualType 0) then { _logAt = -1e9; };
 private _logNow = diag_tickTime >= _logAt;
 if (_logNow) then {
     missionNamespace setVariable [QGVAR(fusionLogAt), diag_tickTime + _LOG_INTERVAL];
+};
+
+// ─── Solid-fill display mode ──────────────────────────────────────────────
+// QGVAR(fusionSolidFill) selects the solid texture fill from workshop
+// 3810296503 fn_thermalFill IN PLACE OF the emissive ladder below, so one
+// body is never painted by both primitives.  The display keeps one owner:
+// this function drives the fill on its own tick, and the EXIT block above
+// restores it.  The frame above is already driven, so it still tracks the
+// channel.  A live switch from the ladder to the fill restores the ladder
+// materials already on the world before handing over, or the body would
+// carry both.
+private _fillOn = missionNamespace getVariable [QGVAR(fusionSolidFill), false];
+if !(_fillOn isEqualType true) then { _fillOn = false; };
+if (_fillOn) exitWith {
+    private _ladder = missionNamespace getVariable [QGVAR(fusionOverlaySaved), []];
+    {
+        _x params ["_o", "_oldMats"];
+        if (!isNull _o) then {
+            private _i = 0;
+            {
+                if ((_i < count _oldMats) && {(_oldMats select _i) isEqualType ""}) then {
+                    _o setObjectMaterial [_i, _oldMats select _i];
+                };
+                _i = _i + 1;
+            } forEach _oldMats;
+        };
+    } forEach _ladder;
+    missionNamespace setVariable [QGVAR(fusionOverlaySaved), []];
+    // The edge state is the ladder's companion.  With no ladder there is no
+    // edge to publish, so clear it rather than leave a stale map for a
+    // consumer to read.
+    missionNamespace setVariable [QGVAR(selThermalEdge), createHashMap];
+    [_player] call FUNC(applyFusionFill);
+    if (_logNow) then {
+        private _logFill = format [
+            "fusion overlay: solid fill mode (dev=%1 tid=%2 halfDeg=%3)",
+            _thermalDevice, _thermalDeviceId, _thermalHalfAngleDeg
+        ];
+        AEE_LOG_DEBUG(_logFill);
+    };
+};
+
+// The setting can be turned off while the fill has bodies painted.  Restore
+// them before the ladder takes the display back, or the solid texture and the
+// emissive material would stack on the same body.  The registry is empty in
+// the normal case, so this is one getVariable read on the ladder path.
+if ((missionNamespace getVariable [QGVAR(fusionFillReg), []]) isNotEqualTo []) then {
+    [_player, "EXIT"] call FUNC(applyFusionFill);
 };
 // ─── The thermal channel's field ──────────────────────────────────────────
 // The half-angle and its provenance are resolved with the device pair at the

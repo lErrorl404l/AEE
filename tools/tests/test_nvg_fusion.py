@@ -41,6 +41,7 @@ FRAME_KERNEL = FUSION / "fnc_fusionFrameGeometry.sqf"
 CAPABLE_SRC = (FUSION / "fnc_isFusionCapable.sqf").read_text(encoding="utf-8")
 RESOLVER_SRC = (FUSION / "fnc_resolveFusionDevice.sqf").read_text(encoding="utf-8")
 OVERLAY_SRC = (FUSION / "fnc_applyFusionOverlay.sqf").read_text(encoding="utf-8")
+FILL_SRC = (FUSION / "fnc_applyFusionFill.sqf").read_text(encoding="utf-8")
 UPDATE_SRC = (FUSION / "fnc_updateFusionFrame.sqf").read_text(encoding="utf-8")
 PREP_SRC = (REPO / "addons" / "thermal" / "XEH_PREP.hpp").read_text(encoding="utf-8")
 SETTINGS_SRC = (REPO / "addons" / "thermal" / "initSettings.inc.sqf").read_text(
@@ -323,6 +324,72 @@ class TestFusionFrameWiring(unittest.TestCase):
     def test_prep_registers_the_frame_functions(self):
         for name in ("fusionFrameGeometry", "updateFusionFrame"):
             self.assertIn(f"PREPS(fusion,{name});", PREP_SRC)
+
+
+class TestFusionSolidFill(unittest.TestCase):
+    """The solid fill: aee data in, source save/restore discipline kept."""
+
+    def test_the_setting_is_registered_default_off(self):
+        self.assertIn(
+            'AEE_SETTING_CHECKBOX(fusionSolidFill,"AEE Thermal","Fusion",false)',
+            SETTINGS_SRC,
+        )
+
+    def test_the_stringtable_keys_exist(self):
+        for key in ("fusionSolidFill_Name", "fusionSolidFill_Description"):
+            self.assertIn(f"STR_AEE_Thermal_{key}", STRINGTABLE_SRC)
+
+    def test_prep_registers_the_fill(self):
+        self.assertIn("PREPS(fusion,applyFusionFill);", PREP_SRC)
+
+    def test_the_fill_reads_our_heat_list_and_field_gate(self):
+        for token in (
+            "call FUNC(outlineCollect)",
+            "call FUNC(fusionFovGate)",
+            "call FUNC(resolveFusionDevice)",
+            "getEyeState",
+        ):
+            self.assertIn(token, FILL_SRC, token)
+
+    def test_the_fill_keeps_the_source_save_and_restore(self):
+        for token in (
+            "getObjectTextures",
+            "hiddenSelectionsTextures",
+            "setObjectTexture",
+            "QGVAR(fusionFillReg)",
+            "QGVAR(fusionFillSig)",
+            "fusionFillTexApplied",
+        ):
+            self.assertIn(token, FILL_SRC, token)
+
+    def test_the_fill_has_the_exit_restore(self):
+        self.assertIn('if (_mode == "EXIT") exitWith {', FILL_SRC)
+        self.assertIn("restored %1 bodies on exit", FILL_SRC)
+
+    def test_the_fill_carries_no_source_state_namespace(self):
+        # The source mod is cited in the header.  What must not survive is the
+        # source's own runtime state (missionNamespace variables and mode keys).
+        for token in (
+            "whale_ecoti_llll_mode",
+            "whale_ecoti_llll_on",
+            "whale_ecoti_llll_fillReg",
+            "whale_ecoti_llll_fillSig",
+            'missionNamespace setVariable ["whale',
+        ):
+            self.assertNotIn(token, FILL_SRC)
+
+    def test_the_overlay_hands_over_and_restores_the_fill(self):
+        self.assertIn("QGVAR(fusionSolidFill)", OVERLAY_SRC)
+        self.assertIn("if (_fillOn) exitWith {", OVERLAY_SRC)
+        self.assertIn("[_player] call FUNC(applyFusionFill)", OVERLAY_SRC)
+        self.assertIn('[_player, "EXIT"] call FUNC(applyFusionFill)', OVERLAY_SRC)
+
+    def test_the_fill_replaces_the_ladder_rather_than_stacking(self):
+        # The fill branch must exit before the emissive sweep, so one body is
+        # never painted by both the ladder and the solid texture.
+        fill_at = OVERLAY_SRC.index("if (_fillOn) exitWith {")
+        sweep_at = OVERLAY_SRC.index("call FUNC(takeThermalSweep)")
+        self.assertLess(fill_at, sweep_at)
 
 
 if __name__ == "__main__":
