@@ -119,11 +119,12 @@ class RscTitles {
     };
 
     // ── The drawn fusion display (issue #204) ───────────────────────────────
-    // The compass tape, ported from workshop 3810296503 whale_ecoti_llll
-    // config.cpp RscTitles \ whale_ecoti_llll_overlay.  The source's
-    // translucent red-orange "glass" panel is DELIBERATELY NOT ported: it
-    // tinted the whole NVG image instead of the correct green phosphor, and a
-    // HUD aid must not recolour the sensor image (operator report 2026-10-03).
+    // The compass tape and the source's ECOTI box, ported from workshop
+    // 3810296503 whale_ecoti_llll config.cpp \ RscTitles \
+    // whale_ecoti_llll_overlay.  The source's box (ecoti_tint, idc 910001) is
+    // restored as its four EDGES: a full panel fill tinted the sensor image
+    // instead of showing the correct green phosphor, and a HUD aid must not
+    // recolour the sensor image (operator report 2026-10-03).
     // The source declares style, font and sizeEx here because Arma has no
     // ctrlSetStyle command: a control created in script cannot be told to
     // centre its text, so the tape geometry only works when style = 2 is set
@@ -158,6 +159,29 @@ class RscTitles {
                 w = 0;
                 h = 0.025;
             };
+
+            // The source's ECOTI viewfinder box (whale_ecoti_llll config.cpp
+            // ecoti_tint, idc 910001), drawn as its four EDGES so a full panel
+            // fill cannot warm the green NVG (script_component.hpp
+            // FUSION_BOX_COLOR).  FUNC(hudBoxDraw) sets each bar's position.
+            class AEEFusionHudBox {
+                type = 0;
+                idc = -1;
+                style = 0;
+                shadow = 0;
+                text = "";
+                colorText[] = {0, 0, 0, 0};
+                colorShadow[] = {0, 0, 0, 0};
+                colorBackground[] = {0.55, 0.08, 0.05, 0.30};
+                x = 0;
+                y = 0;
+                w = 0;
+                h = 0;
+            };
+            class AEEFusionHudBoxTop: AEEFusionHudBox { idc = 910001; };
+            class AEEFusionHudBoxBottom: AEEFusionHudBox { idc = 910002; };
+            class AEEFusionHudBoxLeft: AEEFusionHudBox { idc = 910003; };
+            class AEEFusionHudBoxRight: AEEFusionHudBox { idc = 910004; };
 
             // Left corner: grid and altitude.  Right corner: time.  Both are
             // repositioned inside the box by FUNC(hudTapeInfo).

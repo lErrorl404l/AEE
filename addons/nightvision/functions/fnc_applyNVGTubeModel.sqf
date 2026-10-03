@@ -126,16 +126,22 @@ private _hmd = hmd _player;
 // mtf15 = MTF at 15 lp/mm (modulation transfer, 0..1).  Published for
 //   GEN3 (Elbit); estimated for others from resolution and era.
 // phosphorTint = [R, G, B, A] colour of the phosphor screen.  This is the
-//   ColorCorrections colorize array.  The engine's own NVG is already a
-//   dim green; the colorize AMPLIFIES it (values above 1.0) rather than
-//   replacing it.  Killing a channel (0.0) darkens the image into black.
-//   P43 (green): peak 545nm (ACE3 green preset shape [1.3, 1.2, 0, 0.9]).
-//   P45 (white): ~545nm broadband (ACE3 white preset shape [1.1, 0.8, 1.9, 0.9]).
-//   P20 (yellow-green): older phosphor, peak ~550nm, warmer than P43.
+//   ColorCorrections colorize array: BIKI Post Process Effects gives param 5 as
+//   [r, g, b, a] where a is the SATURATION (0 = original colour, 1 = black and
+//   white multiplied by the colorize colour).  The engine's own NVG is already
+//   green; the colorize sets the tube's phosphor hue on top of it.
+//   P43 (green): Gd2O2S:Tb, dominant emission 545 nm, shape [0.1, 1.3, 0.0, 0.9]
+//     (Exosens PR-0056E-03; MaxMax P43).  Green-dominant.  The ACE3 "green"
+//     preset [1.3, 1.2, 0.0, 0.9] is RED-dominant (r > g, b = 0) and renders
+//     amber, not green (operator report 2026-10-03), so it is not used here.
+//   P45 (white): broadband, shape [1.1, 0.8, 1.9, 0.9] (ACE3 white preset).
+//   P20 (yellow-green): (Zn,Cd)S:Ag, older phosphor, peak ~550 nm, shape
+//     [0.4, 1.3, 0.0, 0.9]: warmer than P43 but still green-dominant.
 // nvgWeight = [R, G, B, 0] colour weights for desaturation (ColorCorrections
-//   param 6, default [0.299, 0.587, 0.114, 0]).  ACE3 uses [6, 1, 1, 0] for
-//   green phosphor and [1, 1, 6, 0] for white.  Do NOT use [0, 0, 0, 0] —
-//   a zero desaturation weighting breaks the effect.
+//   param 6, BIKI default [0.299, 0.587, 0.114, 0]).  The default is
+//   green-dominant, correct for a green tube; ACE3's [6, 1, 1, 0] weights RED
+//   and dims a green image.  White keeps ACE3's [1, 1, 6, 0].  Do NOT use
+//   [0, 0, 0, 0] — a zero desaturation weighting breaks the effect.
 // chromaStrength = ChromAberration per-channel sample spacing (BIS wiki).
 //   Wiki default 0.005; >= ~0.02 causes visible "drunk doubling".
 //   NVG objectives are achromatic multi-element designs corrected for
@@ -150,8 +156,8 @@ private _hmd = hmd _player;
 #define AEE_PHOTON_SCALE 500
 private _noiseFloor = 0.15;
 private _mtf15 = 0.45;
-private _phosphorTint = [1.3, 1.2, 0.0, 0.9];
-private _nvgWeight = [6, 1, 1, 0];
+private _phosphorTint = [0.4, 1.3, 0.0, 0.9];
+private _nvgWeight = [0.299, 0.587, 0.114, 0];
 private _vigStrength = [0.0040, 0.0040, 0.06, 0.06];
 private _bloomBase = 0.04;
 private _bloomScale = 0.04;
@@ -209,8 +215,8 @@ switch (_tier) do {
     case "GEN3": {
         _noiseFloor = 0.04;
         _mtf15 = 0.61;
-        _phosphorTint = [1.3, 1.2, 0.0, 0.9];
-        _nvgWeight = [6, 1, 1, 0];
+        _phosphorTint = [0.1, 1.3, 0.0, 0.9];
+        _nvgWeight = [0.299, 0.587, 0.114, 0];
         _vigStrength = [0.0030, 0.0030, 0.06, 0.06];
         _bloomBase = 0.03;
         _bloomScale = 0.03;
@@ -221,8 +227,8 @@ switch (_tier) do {
     case "GEN2": {
         _noiseFloor = 0.08;
         _mtf15 = 0.45;
-        _phosphorTint = [1.3, 1.2, 0.0, 0.9];
-        _nvgWeight = [6, 1, 1, 0];
+        _phosphorTint = [0.1, 1.3, 0.0, 0.9];
+        _nvgWeight = [0.299, 0.587, 0.114, 0];
         _vigStrength = [0.0040, 0.0040, 0.06, 0.06];
         _bloomBase = 0.04;
         _bloomScale = 0.04;
@@ -230,8 +236,8 @@ switch (_tier) do {
     default {   // GEN1 and the AUTO fallback
         _noiseFloor = 0.15;
         _mtf15 = 0.30;
-        _phosphorTint = [1.4, 1.3, 0.0, 0.9];
-        _nvgWeight = [6, 1, 1, 0];
+        _phosphorTint = [0.4, 1.3, 0.0, 0.9];
+        _nvgWeight = [0.299, 0.587, 0.114, 0];
         _vigStrength = [0.0050, 0.0050, 0.06, 0.06];
         _bloomBase = 0.05;
         _bloomScale = 0.05;
@@ -250,8 +256,8 @@ private _phosphor = "tier";
     if (_x == "grn") then { _phosphor = "grn"; };
 } forEach ((toLower _hmd) splitString "_");
 if (_phosphor == "grn") then {
-    _phosphorTint = [1.3, 1.2, 0.0, 0.9];
-    _nvgWeight = [6, 1, 1, 0];
+    _phosphorTint = [0.1, 1.3, 0.0, 0.9];
+    _nvgWeight = [0.299, 0.587, 0.114, 0];
 };
 missionNamespace setVariable [QGVAR(nvgTubeTier), _tier];
 
@@ -271,10 +277,10 @@ private _devSnr = _tubeDev select 3;
 private _devHalo = _tubeDev select 4;
 private _devSourced = _tubeDev select 5;
 if (_devSourced) then {
-    // Output colour: P43 green or P45 white (Exosens, Elbit PVS-14 sheet).
+    // Output colour: P43 green (Exosens PR-0056E-03) or P45 white.
     if (_devColour == "grn") then {
-        _phosphorTint = [1.3, 1.2, 0.0, 0.9];
-        _nvgWeight = [6, 1, 1, 0];
+        _phosphorTint = [0.1, 1.3, 0.0, 0.9];
+        _nvgWeight = [0.299, 0.587, 0.114, 0];
         _phosphor = "grn";
     };
     if (_devColour == "wht") then {
@@ -1534,13 +1540,14 @@ if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
 //   PVS-31A: ~65% (estimated from 64-81 lp/mm resolution).
 //   GEN2: ~45% (estimated from 47-54 lp/mm).
 //   GEN1: ~30% (estimated from 30-40 lp/mm).
-// colorize: phosphor screen tint, AMPLIFIED above 1.0 against the
-//   engine's already-green NVG image.  P43 peak 545nm (green):
-//   [1.3, 1.2, 0.0, 0.9] = ACE3 green preset.  P45 broadband ~545nm
-//   (white): [1.1, 0.8, 1.9, 0.9] = ACE3 white preset.
-//   P20 peak ~550nm (yellow-green): warmer green.
-// weight: desaturation RGB weights, non-zero.  [6, 1, 1, 0] = ACE3 green,
-//   [1, 1, 6, 0] = ACE3 white.  [0,0,0,0] disables the effect.
+// colorize: phosphor screen tint (BIKI param 5, a = saturation).  P43
+//   green is green-dominant: [0.1, 1.3, 0.0, 0.9] (Exosens P43, 545 nm).
+//   ACE3's "green" [1.3, 1.2, 0.0, 0.9] is red-dominant and renders amber,
+//   so it is not used.  P45 white: [1.1, 0.8, 1.9, 0.9] = ACE3 white preset.
+//   P20 yellow-green: [0.4, 1.3, 0.0, 0.9].
+// weight: desaturation RGB weights, non-zero.  [0.299, 0.587, 0.114, 0] =
+//   BIKI default (green-dominant, correct for a green tube); [1, 1, 6, 0] =
+//   ACE3 white.  [0,0,0,0] disables the effect.
 if (_hCC >= 0) then {
     // The render consumes the PUBLISHED perceived output, re-read from
     // missionNamespace (the file's single-source-of-truth pattern).  A

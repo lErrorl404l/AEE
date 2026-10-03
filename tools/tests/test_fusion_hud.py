@@ -79,10 +79,12 @@ class TestDisplayClass(unittest.TestCase):
         self.assertIn("idc = 920001", RSC_SRC)
         self.assertIn("idc = 920002", RSC_SRC)
 
-    def test_the_glass_tint_is_removed(self) -> None:
-        # The source's translucent panel tinted the whole NVG image.
+    def test_the_source_box_is_restored_as_edges(self) -> None:
+        # The source box (idc 910001) is restored as its four EDGES; the old
+        # single full-panel fill stays gone.
         self.assertNotIn("AEEFusionHudGlass", RSC_SRC)
-        self.assertNotIn("idc = 910001", RSC_SRC)
+        for idc in (910001, 910002, 910003, 910004):
+            self.assertIn(f"idc = {idc}", RSC_SRC)
 
     def test_all_tape_control_idc(self) -> None:
         for base, count in ((920011, 13), (920031, 25), (920061, 8)):
