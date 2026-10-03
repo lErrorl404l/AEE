@@ -180,6 +180,25 @@ def _sqf_isNotEqualTo(a: Any, b: Any) -> bool:
     return a != b
 
 
+def _sqf_type_tag(value: Any) -> str:
+    """SQF type category, so int and float both read as NUMBER."""
+    if isinstance(value, bool):
+        return "BOOL"
+    if isinstance(value, (int, float)):
+        return "NUMBER"
+    if isinstance(value, str):
+        return "STRING"
+    if isinstance(value, list):
+        return "ARRAY"
+    if value is None:
+        return "NIL"
+    return "OBJECT"
+
+
+def _sqf_isEqualType(a: Any, b: Any) -> bool:
+    return _sqf_type_tag(a) == _sqf_type_tag(b)
+
+
 # Unary commands applied to a following expression.  Without these the
 # parser reads the name as a variable and the operand as a new statement,
 # which is how `(count _v) == 0` raised "expected ), got _v".
@@ -279,6 +298,7 @@ BUILTINS: dict[str, Any] = {
     "deleteAt": _sqf_deleteAt,
     "sort": _sqf_sort,
     "isEqualTo": _sqf_isEqualTo,
+    "isEqualType": _sqf_isEqualType,
     "isNotEqualTo": _sqf_isNotEqualTo,
     "vectorDiff": _sqf_vectorDiff,
     "vectorAdd": _sqf_vectorAdd,
@@ -1060,6 +1080,9 @@ def run_sqf(
     for s in stmts:
         if isinstance(s, Params):
             for i, (name, default) in enumerate(s.specs):
-                rt.set(name, args[i] if i < len(args) else default)
+                # A missing arg must bind the EVALUATED default, not the raw
+                # AST node parse_params stored (a Num/Str/Arr object), or a
+                # later `max`/arithmetic on it raises.
+                rt.set(name, args[i] if i < len(args) else rt.eval(default))
             break
     return rt.run(stmts)

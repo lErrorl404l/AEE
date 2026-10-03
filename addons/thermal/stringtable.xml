@@ -98,18 +98,26 @@
             <English>Manual Window Minimum</English>
         </Key>
         <Key ID="STR_AEE_Thermal_thermalPPEffects_Description">
-            <English>Applies the five full-screen thermal effects: colour grade, black-hot inversion, sensor grain, IR-scatter blur and the ocular vignette. Turn OFF to isolate their render cost.</English>
+            <English>Applies the full-screen thermal effects: colour grade, black-hot inversion, sensor grain, IR-scatter blur, the ocular vignette, the rain lens film and the sensor pixelation. Turn OFF to isolate their render cost.</English>
         </Key>
         <Key ID="STR_AEE_Thermal_thermalPPEffects_Name">
             <English>Thermal Post-Process Effects</English>
         </Key>
         <Key ID="STR_AEE_Thermal_thermalPalette_Description">
-            <Original>Ember interpolates the engine's own decoded thermal colours through a continuous ramp. White hot grey is the luminance form of the same ramp.</Original>
-            <English>Ember interpolates the engine's own decoded thermal colours through a continuous ramp. White hot grey is the luminance form of the same ramp.</English>
+            <Original>Ember interpolates the engine's own decoded thermal colours through a continuous ramp. White hot grey is the luminance form of the same ramp. The isotherm modes are the MKK thermal highlight colours as procedural two-tone ramps: a body below the display window midpoint stays cold, a body at or above it takes the mode hue (red, green, yellow, magenta or sepia).</Original>
+            <English>Ember interpolates the engine's own decoded thermal colours through a continuous ramp. White hot grey is the luminance form of the same ramp. The isotherm modes are the MKK thermal highlight colours as procedural two-tone ramps: a body below the display window midpoint stays cold, a body at or above it takes the mode hue (red, green, yellow, magenta or sepia).</English>
         </Key>
         <Key ID="STR_AEE_Thermal_thermalPalette_Name">
             <Original>Thermal Palette</Original>
             <English>Thermal Palette</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_thermalPixelation_Description">
+            <Original>Quantise the thermal display to the fitted device's vertical detector resolution, so a low-resolution sensor shows the blocks its detector actually resolves. A sensor finer than the render shows none. The figure is the device's own; the engine clamps it.</Original>
+            <English>Quantise the thermal display to the fitted device's vertical detector resolution, so a low-resolution sensor shows the blocks its detector actually resolves. A sensor finer than the render shows none. The figure is the device's own; the engine clamps it.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_thermalPixelation_Name">
+            <Original>Thermal Sensor Pixelation</Original>
+            <English>Thermal Sensor Pixelation</English>
         </Key>
         <Key ID="STR_AEE_Thermal_thermalPolarity_Description">
             <Original>White hot (hot = white) is the system default (AN/PAS-13 initialises white hot). Black hot (hot = black) is a user-selectable alternative - FM 3-22.9 states polarity is user preference</Original>
@@ -118,6 +126,14 @@
         <Key ID="STR_AEE_Thermal_thermalPolarity_Name">
             <Original>Thermal Polarity</Original>
             <English>Thermal Polarity</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_thermalWetDistortion_Description">
+            <Original>Maximum lens blurriness from the rain film on the objective. The display scales it from zero by the rain and fog it already models, so a dry scene shows nothing.</Original>
+            <English>Maximum lens blurriness from the rain film on the objective. The display scales it from zero by the rain and fog it already models, so a dry scene shows nothing.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_thermalWetDistortion_Name">
+            <Original>Thermal Wet Distortion</Original>
+            <English>Thermal Wet Distortion</English>
         </Key>
     </Package>
 </Project>

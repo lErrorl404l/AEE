@@ -70,7 +70,9 @@ if !([_player] call FUNC(isThermalHostActive)) exitWith {
             QGVAR(ppHandle_Thermal_CC),
             QGVAR(ppHandle_Thermal_Grain),
             QGVAR(ppHandle_Thermal_Blur),
-            QGVAR(ppHandle_Thermal_Inversion)
+            QGVAR(ppHandle_Thermal_Inversion),
+            QGVAR(ppHandle_Thermal_WetDistortion),
+            QGVAR(ppHandle_Thermal_Resolution)
         ];
         AEE_LOG_INFO("thermal effects torn down (vision mode left)");
 
@@ -139,8 +141,10 @@ private _hCC    = missionNamespace getVariable [QGVAR(ppHandle_Thermal_CC), -1];
 private _hGrain = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Grain), -1];
 private _hBlur  = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Blur), -1];
 private _hInv   = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Inversion), -1];
+private _hWet   = missionNamespace getVariable [QGVAR(ppHandle_Thermal_WetDistortion), -1];
+private _hReso  = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Resolution), -1];
 
-if (_hVig < 0 || _hChroma < 0 || _hCC < 0 || _hGrain < 0 || _hBlur < 0 || _hInv < 0) then {
+if (_hVig < 0 || _hChroma < 0 || _hCC < 0 || _hGrain < 0 || _hBlur < 0 || _hInv < 0 || _hWet < 0 || _hReso < 0) then {
     // A fresh effect must always receive its parameters, even when the engine
     // hands back a handle NUMBER it used earlier.  Clearing here is the one
     // choke point every new effect passes through, because each destroy path
@@ -161,7 +165,9 @@ if (_hVig < 0 || _hChroma < 0 || _hCC < 0 || _hGrain < 0 || _hBlur < 0 || _hInv 
         QGVAR(ppHandle_Thermal_CC),
         QGVAR(ppHandle_Thermal_Grain),
         QGVAR(ppHandle_Thermal_Blur),
-        QGVAR(ppHandle_Thermal_Inversion)
+        QGVAR(ppHandle_Thermal_Inversion),
+        QGVAR(ppHandle_Thermal_WetDistortion),
+        QGVAR(ppHandle_Thermal_Resolution)
     ];
 
     private _handles = [];
@@ -196,10 +202,23 @@ if (_hVig < 0 || _hChroma < 0 || _hCC < 0 || _hGrain < 0 || _hBlur < 0 || _hInv 
         // Created unconditionally; enabled only when thermalPolarity == 1
         // (see the adjust section).  Priority 6600, above the thermal CC
         // (5200) so it inverts the graded image, below nothing else uses.
-        ["ColorInversion", 6600, QGVAR(ppHandle_Thermal_Inversion)]
+        ["ColorInversion", 6600, QGVAR(ppHandle_Thermal_Inversion)],
+        // WetDistortion: rain on the objective lens (MKK thermal_improvement
+        // workshop 3753145363 fnc_applyVisionEffects.sqf:158-166, priority
+        // 305 there).  It sits at 1150, below every other AEE thermal effect,
+        // so the lens film distorts the frame before the grade.  Enabled
+        // only when AEE's rain/fog makes the lens wet.
+        ["WetDistortion",   1150, QGVAR(ppHandle_Thermal_WetDistortion)],
+        // Resolution: sensor pixelation (MKK fnc_applyVisionEffects.sqf:124,
+        // priority 3000 there).  It sits at 6700, above the ColorInversion,
+        // so the detector grid quantises the finished frame.  Enabled only
+        // when the operator turns on thermalPixelation.  AEE does NOT drive
+        // the engine-global setTIParameter MaxResolution (see
+        // fnc_thermalResolutionParams).
+        ["Resolution",      6700, QGVAR(ppHandle_Thermal_Resolution)]
     ];
-    _handles params ["_hChroma", "_hVig", "_hBlur", "_hGrain", "_hCC", "_hInv"];
-    private _logMsg = format ["thermal ppEffects created: chroma=%1 vig=%2 blur=%3 grain=%4 CC=%5 inv=%6", _hChroma, _hVig, _hBlur, _hGrain, _hCC, _hInv];
+    _handles params ["_hChroma", "_hVig", "_hBlur", "_hGrain", "_hCC", "_hInv", "_hWet", "_hReso"];
+    private _logMsg = format ["thermal ppEffects created: chroma=%1 vig=%2 blur=%3 grain=%4 CC=%5 inv=%6 wet=%7 reso=%8", _hChroma, _hVig, _hBlur, _hGrain, _hCC, _hInv, _hWet, _hReso];
     AEE_LOG_INFO(_logMsg);
 };
 
@@ -215,6 +234,8 @@ _hBlur  = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Blur), -1];
 _hGrain = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Grain), -1];
 _hCC    = missionNamespace getVariable [QGVAR(ppHandle_Thermal_CC), -1];
 _hInv   = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Inversion), -1];
+_hWet   = missionNamespace getVariable [QGVAR(ppHandle_Thermal_WetDistortion), -1];
+_hReso  = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Resolution), -1];
 
 // ─── Post-process kill switch (operator bisect) ───────────────────────────
 // The five thermal effects are FULL-SCREEN passes (ColorCorrections,
@@ -228,7 +249,7 @@ private _ppOn = missionNamespace getVariable [QGVAR(thermalPPEffects), true];
 if (!_ppOn) exitWith {
     {
         if (_x >= 0) then { _x ppEffectEnable false; };
-    } forEach [_hVig, _hChroma, _hCC, _hGrain, _hBlur, _hInv];
+    } forEach [_hVig, _hChroma, _hCC, _hGrain, _hBlur, _hInv, _hWet, _hReso];
     setAperture 15;
     missionNamespace setVariable [QGVAR(thermalActive), true];
     AEE_LOG_DEBUG("thermal ppEffect chain DISABLED by setting (thermalPPEffects=false)");
@@ -412,12 +433,48 @@ if (_hVig >= 0) then {
         [_hVig, _vigStrength, true, _forceNVG, "vig"] call _ppApply;
     };
 
+// ─── WetDistortion (rain on the objective lens) ────────────────────────────
+// MKK thermal_improvement (workshop 3753145363)
+// fnc_applyVisionEffects.sqf:158-166 creates a WetDistortion lens-film effect
+// when the preset value is above zero.  AEE drives the lens blurriness from
+// its own weather instead of a preset: the smoothed rain and the fog density
+// this function already reads above.  Dry gives a zero amplitude, and the
+// handle is enabled only when the amplitude is positive.
+private _wet = (_rainS max (_fogDensity * 0.5)) min 1;
+private _wetMax = missionNamespace getVariable [QGVAR(thermalWetDistortion), 0.08];
+if !(_wetMax isEqualType 0) then { _wetMax = 0.08; };
+private _wetVec = [_wet, _wetMax] call FUNC(thermalWetDistortionParams);
+if (_hWet >= 0) then {
+        [_hWet, _wetVec, ((_wetVec select 0) > 0), _forceNVG, "wet"] call _ppApply;
+    };
+
+// ─── Resolution (thermal sensor pixelation) ────────────────────────────────
+// MKK thermal_improvement (workshop 3753145363)
+// fnc_applyVisionEffects.sqf:118-129.  The pixelation figure is the fitted
+// device's own vertical resolution from the AEE thermal device resolver
+// (EFUNC(thermal,getThermalDeviceProperties) - the standalone thermal path);
+// it is never invented.  The engine clamps a figure above the render height
+// and treats -1 as normal, so -1 is the disabled state.
+private _pixelOn = missionNamespace getVariable [QGVAR(thermalPixelation), false];
+private _resParams = [-1];
+private _resOn = false;
+if (_pixelOn) then {
+    private _resBuilt = [_device select 1, _device select 2] call FUNC(thermalResolutionParams);
+    if (_resBuilt isNotEqualTo []) then {
+        _resParams = _resBuilt;
+        _resOn = true;
+    };
+};
+if (_hReso >= 0) then {
+        [_hReso, _resParams, _resOn, _forceNVG, "resolution"] call _ppApply;
+    };
+
 // Diagnostics: set aee_nightvision_nvgDebug = true in the debug console to log
 // every thermal tick's handles and params to the .rpt.
 if (missionNamespace getVariable [QGVAR(thermalDebug), false]
     && {[_player] call FUNC(isThermalHostActive)}) then {
     diag_log text format [
-        "[AEE] Thermal tick | visMode=%1 contrast=%2 crossover=%3 | handles CC=%4 grain=%5 blur=%6 | CC params %7 | grain=%8 blur=%9",
+        "[AEE] Thermal tick | visMode=%1 contrast=%2 crossover=%3 | handles CC=%4 grain=%5 blur=%6 wet=%10 reso=%11 | CC params %7 | grain=%8 blur=%9",
         currentVisionMode _player,
         _contrast,
         _crossover,
@@ -426,7 +483,9 @@ if (missionNamespace getVariable [QGVAR(thermalDebug), false]
         _hBlur,
         [_brightness, _ccContrast, 0, [0,0,0,0], [1,1,1,0], [0.33,0.33,0.33,0], [0,0,0,0,0,0,4]],
         [_noise, _sharpness, _grainSize, 0.5, 1.0, 0],
-        _blur
+        _blur,
+        _hWet,
+        _hReso
     ];
 };
 

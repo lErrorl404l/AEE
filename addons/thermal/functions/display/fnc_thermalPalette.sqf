@@ -59,6 +59,30 @@ if (_palette == 1) then {
     ];
 };
 
+// ─── Isotherm/highlight palette modes (MKK thermal_improvement,
+// workshop 3753145363, functions/fnc_setThermalMaterials.sqf:112-119) ───────
+// MKK offers fixed thermal highlight modes - ISOTHERM_RED/GREEN/YELLOW/
+// MAGENTA and PALETTE_SEPIA - that paint hot bodies in one hue.  MKK renders
+// them with raster faces (.paa) that AEE cannot ship, so each mode is a
+// procedural two-tone isotherm in the MKK base colour: below the AGC window
+// midpoint the body stays cold (black), at or above it the body takes the
+// base hue.  The threshold IS the AGC window: _n is already normalised over
+// the window by the caller, so 0.5 is the window midpoint.  The hue values
+// are MKK's own _getHighlightBaseColor table, numbers only, no asset.
+if (_palette >= 2) exitWith {
+    private _base = ([
+        [0, 0, 0],
+        [0, 0, 0],
+        [1, 0.10, 0.08],   // ISOTHERM_RED
+        [0.10, 1, 0.12],   // ISOTHERM_GREEN
+        [1, 0.82, 0.10],   // ISOTHERM_YELLOW
+        [1, 0.10, 1],      // ISOTHERM_MAGENTA
+        [1, 0.52, 0.20]    // PALETTE_SEPIA
+    ] select (_palette min 6));
+    if (_n < 0.5) then { _base = [0, 0, 0]; };
+    _base
+};
+
 private _lo = _points select 0;
 private _hi = _points select -1;
 {
