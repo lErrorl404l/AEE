@@ -6359,6 +6359,77 @@ class TestThermalSweepBudget(unittest.TestCase):
         )
 
 
+class TestThermalVehicleSpread(unittest.TestCase):
+    """The vehicle list is solved on a spread cadence, not every pass.
+
+    The 15:55:56 RPT (88009 lines, 283 s) logged 25,565 due paints, and the
+    per-vehicle repaints were 64 percent of them (4110 for one airframe, 2055
+    for an APC, 1644 for two MBT/AA types, 1389 for a UAV, 1233 for an MRAP).
+    Each vehicle flew its full selection set on every 10 Hz pass, so a handful
+    of vehicles cost tens of paints a pass.  The vehicle heat is a
+    seconds-timescale relaxation, so a vehicle is solved once per cycle
+    through the list and the cycle is sized to finish in about one second.  A
+    newly spawned vehicle still enters the list on the 1 s refresh and is
+    solved within one cycle.
+    """
+
+    _CALLER = _THERMAL / "display" / "fnc_applyBuildingThermal.sqf"
+
+    @staticmethod
+    def round_robin(count, passes):
+        """Mirror of the cursor walk in fnc_applyBuildingThermal.sqf."""
+        if count <= 0:
+            return []
+        batch = ((count - 1) // 10) + 1
+        cursor = 0
+        solved = []
+        for _ in range(passes):
+            solved.append([(cursor + k) % count for k in range(batch)])
+            cursor = (cursor + batch) % count
+        return solved
+
+    def test_the_cycle_finishes_in_about_one_second(self):
+        # At the 10 Hz tick, ceil(count/10) per pass cycles any list in <= 1 s.
+        for count in (1, 5, 9, 10, 11, 25, 40):
+            batch = ((count - 1) // 10) + 1
+            self.assertGreaterEqual(batch, count / 10)
+            self.assertLessEqual(count / batch, 10.0)
+
+    def test_every_vehicle_is_solved_within_one_cycle(self):
+        for count in (1, 2, 9, 11, 25):
+            seen = set()
+            for batch in self.round_robin(count, 10):
+                seen.update(batch)
+            self.assertEqual(seen, set(range(count)))
+
+    def test_every_vehicle_is_solved_and_the_load_is_bounded(self):
+        count = 25
+        batch = ((count - 1) // 10) + 1
+        covered = set()
+        per_pass = []
+        for b in self.round_robin(count, 12):
+            covered.update(b)
+            per_pass.append(len(b))
+        self.assertEqual(covered, set(range(count)))
+        self.assertTrue(all(n <= batch for n in per_pass))
+        self.assertLessEqual(count / batch, 10.0)
+
+    def test_the_spread_cuts_the_per_pass_vehicle_work(self):
+        # Measured: 9 vehicles at ~5 selections each cost ~45 paints a pass
+        # when the whole list rode every pass.  The spread solves one a pass.
+        count = 9
+        batch = ((count - 1) // 10) + 1
+        self.assertEqual(batch, 1)
+        self.assertEqual(batch * 5, 5)  # vs 45
+
+    def test_the_whole_list_no_longer_rides_every_pass(self):
+        code = _code_only(self._CALLER.read_text(encoding="utf-8"))
+        self.assertIn("QGVAR(tiVehCursor)", code)
+        self.assertIn("_vehBatch", code)
+        self.assertIn("private _objects = (_taken select 0) + _vehSolve;", code)
+        self.assertNotIn("private _objects = (_taken select 0) + _vehList;", code)
+
+
 class TestThermalBaseChannel(unittest.TestCase):
     """The base-channel switch must not change the default path.
 

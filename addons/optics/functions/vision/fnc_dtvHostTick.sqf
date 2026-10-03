@@ -16,5 +16,8 @@ if (isNil "_player" || {!alive _player}) exitWith {
 
 private _active = [_player] call FUNC(updateThermalHost);
 if (_active) then {
+    private _perfT0 = diag_tickTime;
     [] call FUNC(runThermalPass);
+    private _perfMsg = format ["dtvHostTick runThermalPass %1 ms", round ((diag_tickTime - _perfT0) * 1000)];
+    AEE_LOG_DEBUG(_perfMsg);
 };

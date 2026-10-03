@@ -168,7 +168,7 @@ if (_traceOn) then {
     // an argument now: the caller resolves AEE_TRACE_ON once per pass, so the
     // three namespace lookups behind it are not repeated per selection.
     private _us = round ((diag_tickTime - _perfT0) * 1000);
-    private _bandMsg = format ["bandRadiance %1 us | tau %2 | eps %3 | surf %4 C | refl %5 C | path %6 C | W %7",
+    private _bandMsg = format ["bandRadiance %1 ms | tau %2 | eps %3 | surf %4 C | refl %5 C | path %6 C | W %7",
         _us, _tau toFixed 4, _eps toFixed 3, _tSurf, _tReflK - 273.15, _tPath, _wBand toFixed 6];
     AEE_LOG_DEBUG(_bandMsg);
 };

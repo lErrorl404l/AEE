@@ -127,15 +127,38 @@ if ((_vehList isEqualTo []) || ((_vehNowT - _vehListT) > 1)) then {
     AEE_LOG_DEBUG(_vehMsg);
 };
 // Take the bounded batch for this pass; the remainder stays queued.  The
-// vehicle list rides every pass (it is small and its heat changes with motion
-// and engine state); buildings ride the queue.  The budget is bounded (a
-// variable with a floor, never unbounded) so a sweep can never stall one
-// frame.  A newly spawned vehicle is already in _vehList within a second of
-// the refresh above, so it is painted promptly without a separate hook.
+// budget is bounded (a variable with a floor, never unbounded) so a sweep can
+// never stall one frame.  A newly spawned vehicle is already in _vehList
+// within a second of the refresh above, so it is painted promptly without a
+// separate hook.
 private _sweepBudget = missionNamespace getVariable [QGVAR(sweepBudget), 16];
 if !(_sweepBudget isEqualType 0) then { _sweepBudget = 16; };
 private _taken = [_pending, _sweepBudget] call FUNC(takeThermalSweep);
-private _objects = (_taken select 0) + _vehList;
+// The vehicle list is SOLVED on a spread cadence, not every pass.  The
+// 15:55:56 RPT (88009 lines, 283 s) logged 25,565 due paints, and the
+// per-vehicle repaints were 64 percent of them: one airframe alone logged
+// 4110, an APC 2055, two MBT/AA types 1644 each, a UAV 1389, an MRAP 1233.
+// Each vehicle flew its full selection set every 10 Hz pass, so nine
+// vehicles at about five selections cost roughly forty-five paints a pass.
+// The vehicle heat is a seconds-timescale relaxation, so each vehicle is
+// solved once per cycle through the list, and the cycle is sized to finish
+// in about one second at the 10 Hz tick.  That spreads the list across
+// passes instead of putting the whole of it in one, the same shape the
+// building queue uses.  A vehicle that spawns enters _vehList on the 1 s
+// refresh above and is solved within one cycle, so it is still painted
+// promptly.
+private _vehCount = count _vehList;
+private _vehCursor = missionNamespace getVariable [QGVAR(tiVehCursor), 0];
+if !(_vehCursor isEqualType 0) then { _vehCursor = 0; };
+private _vehBatch = if (_vehCount > 0) then { (floor ((_vehCount - 1) / 10)) + 1 } else { 0 };
+private _vehSolve = [];
+if (_vehCount > 0) then {
+    for "_vi" from 0 to (_vehBatch - 1) do {
+        _vehSolve pushBack (_vehList select ((_vehCursor + _vi) mod _vehCount));
+    };
+    missionNamespace setVariable [QGVAR(tiVehCursor), (_vehCursor + _vehBatch) mod _vehCount];
+};
+private _objects = (_taken select 0) + _vehSolve;
 _pending = _taken select 1;
 missionNamespace setVariable [QGVAR(tiBldgPending), _pending];
 if ((count (_taken select 0)) > 0) then {

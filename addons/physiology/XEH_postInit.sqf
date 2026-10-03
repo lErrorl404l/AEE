@@ -22,6 +22,7 @@ AEE_MODULE_POST_INIT
 // dedicated server has no local player and must not register the loop.
 if (hasInterface && (missionNamespace getVariable [QGVAR(diveEnabled), true])) then {
     [{
+        private _perfT0 = diag_tickTime;
         params ["_unit"];
         if (_unit != call CBA_fnc_currentUnit) exitWith {};
         if (eyePos _unit select 2 < 0) then {
@@ -62,6 +63,8 @@ END_COUNTER(updateDiveState);
                 missionNamespace setVariable [QGVAR(diveStates), _state];
             };
         };
+        private _perfMsg = format ["diveState %1 ms", round ((diag_tickTime - _perfT0) * 1000)];
+        AEE_LOG_DEBUG(_perfMsg);
     }, 1, player] call CBA_fnc_addPerFrameHandler;
 };
 
@@ -74,6 +77,7 @@ END_COUNTER(updateDiveState);
 // loop nor write the G-LOC variables to missionNamespace.
 if (hasInterface && (missionNamespace getVariable [QGVAR(glocEnabled), true])) then {
     [{
+        private _perfT0 = diag_tickTime;
         params ["_unit"];
         if (_unit != call CBA_fnc_currentUnit) exitWith {};
 
@@ -122,6 +126,8 @@ END_COUNTER(calculateGLOC);
         missionNamespace setVariable [QGVAR(gLocStage), _stage];
         missionNamespace setVariable [QGVAR(altitudeDCSRisk), _dcsRisk];
         missionNamespace setVariable [QGVAR(gLocTolerance), _glocRes select 2];
+        private _perfMsg = format ["gloc %1 ms", round ((diag_tickTime - _perfT0) * 1000)];
+        AEE_LOG_DEBUG(_perfMsg);
     }, 1, player] call CBA_fnc_addPerFrameHandler;
 };
 
@@ -130,9 +136,12 @@ END_COUNTER(calculateGLOC);
 // ACE3 advanced fatigue is guarded inside fnc_applyMovementSpeed.
 if (hasInterface) then {
     [{
+        private _perfT0 = diag_tickTime;
         BEGIN_COUNTER(applyMovementSpeed);
 [player] call FUNC(applyMovementSpeed);
 END_COUNTER(applyMovementSpeed);
+        private _perfMsg = format ["movementSpeed %1 ms", round ((diag_tickTime - _perfT0) * 1000)];
+        AEE_LOG_DEBUG(_perfMsg);
     }, 1] call CBA_fnc_addPerFrameHandler;
 };
 

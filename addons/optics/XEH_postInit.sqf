@@ -68,6 +68,7 @@ AEE_MODULE_POST_INIT
         // changes or dies, it tears the session down itself (GAP-026).
         GVAR(sensorUnit) = _unit;
         GVAR(sensorPFH) = [{
+            private _perfT0 = diag_tickTime;
             private _player = call CBA_fnc_currentUnit;
             // Death, respawn or a remote-control switch is NOT a vision
             // mode change, so the event never fires for it.  Without this
@@ -102,6 +103,8 @@ END_COUNTER(applyNVGTubeModel);
             if (_vm == 2) then {
                 [] call FUNC(runThermalPass);
             };
+            private _perfMsg = format ["sensorPFH %1 ms", round ((diag_tickTime - _perfT0) * 1000)];
+            AEE_LOG_DEBUG(_perfMsg);
         }, 0.1] call CBA_fnc_addPerFrameHandler;
         private _logMsg = format ["sensor PFH started (vision mode %1)", _visionMode];
         AEE_LOG_INFO(_logMsg);

@@ -46,12 +46,18 @@ if (isClass (configFile >> "CfgPatches" >> "ace_weather")) then {
 // each machine computes identical values.  Medical integration needs a
 // local unit, so it stays gated on hasInterface.
 [{
+    private _perfT0 = diag_tickTime;
     [] call FUNC(integrateKestrel);
+    private _perfMsg = format ["integrateKestrel %1 ms", round ((diag_tickTime - _perfT0) * 1000)];
+    AEE_LOG_DEBUG(_perfMsg);
 }, 5] call CBA_fnc_addPerFrameHandler;
 
 if (hasInterface) then {
     [{
+        private _perfT0 = diag_tickTime;
         [] call FUNC(integrateMedical);
+        private _perfMsg = format ["integrateMedical %1 ms", round ((diag_tickTime - _perfT0) * 1000)];
+        AEE_LOG_DEBUG(_perfMsg);
     }, 5] call CBA_fnc_addPerFrameHandler;
 };
 

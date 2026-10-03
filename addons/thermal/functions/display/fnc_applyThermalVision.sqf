@@ -421,7 +421,7 @@ missionNamespace setVariable [QGVAR(thermalActive), true];
 private _traceOn = AEE_TRACE_ON;
 if (_traceOn) then {
     private _visMs = round ((diag_tickTime - _perfT0) * 1000);
-    private _visMsg = format ["applyThermalVision %1 us | contrast %2 | fpnAmp %3 | envNoise %4 | netd %5 mK | polarity %6 | agcSpan %7",
+    private _visMsg = format ["applyThermalVision %1 ms | contrast %2 | fpnAmp %3 | envNoise %4 | netd %5 mK | polarity %6 | agcSpan %7",
         _visMs, _contrast, _fpnAmp, _envNoise, _netd, _polarity, _agcFullSpan];
     AEE_LOG_DEBUG(_visMsg);
 };
