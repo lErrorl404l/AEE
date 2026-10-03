@@ -14,6 +14,11 @@
  * The angle is NEVER hardcoded; the caller passes the value
  * FUNC(resolveFusionDevice) resolved for the mounted headset.
  *
+ * The frame is discarded unless the thermal channel is genuinely narrower
+ * than the NVG field (FUNC(fusionFrameVisible)).  When the two halves are
+ * near equal the bars sit on the safe-zone edge and read as a border around
+ * the whole view instead of an inset, so the display is torn down.
+ *
  * Headless: a dedicated server has no display, so the function returns after
  * the hasInterface guard.  The operator sees the frame; the P80 probe
  * asserts the geometry kernel and the source contract instead.
@@ -35,12 +40,13 @@ if (!hasInterface) exitWith {};
 
 private _layer = ["aee_thermal_fusion_frame"] call BIS_fnc_rscLayer;
 
-if (!_active) exitWith {
+private _ratio = [_halfAngleDeg, _nvgFieldDeg] call FUNC(fusionFrameGeometry);
+private _visible = _active && {[_ratio, FUSION_FRAME_MIN_INSET] call FUNC(fusionFrameVisible)};
+
+if (!_visible) exitWith {
     _layer cutText ["", "PLAIN"];
     missionNamespace setVariable [QGVAR(fusionFrameDisplayUp), false];
 };
-
-private _ratio = [_halfAngleDeg, _nvgFieldDeg] call FUNC(fusionFrameGeometry);
 
 if (!(missionNamespace getVariable [QGVAR(fusionFrameDisplayUp), false])) then {
     _layer cutRsc [QGVAR(fusionFrame), "PLAIN", 1, false];

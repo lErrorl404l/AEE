@@ -29,10 +29,9 @@ if (_on) then {
     if (_wasOn) exitWith {};
     _layer cutRsc [QGVAR(fusionHud), "PLAIN", -1, false];
     missionNamespace setVariable [QGVAR(hudTapeOn), true];
-    // The display has just been rebuilt, so the glass must be repositioned and
-    // the tape's change cache cleared, or the source's "nothing moved" skip
-    // leaves the rebuilt controls blank for a frame.
-    missionNamespace setVariable [QGVAR(hudTapeGlassReady), false];
+    // The display has just been rebuilt, so the tape's change cache must be
+    // cleared, or the source's "nothing moved" skip leaves the rebuilt
+    // controls blank for a frame.
     missionNamespace setVariable [QGVAR(hudTapeCache), []];
     private _logMsg = "fusion HUD: display raised";
     AEE_LOG_INFO(_logMsg);
@@ -51,7 +50,6 @@ if (_on) then {
     };
     _layer cutText ["", "PLAIN"];
     missionNamespace setVariable [QGVAR(hudTapeOn), false];
-    missionNamespace setVariable [QGVAR(hudTapeGlassReady), false];
     missionNamespace setVariable [QGVAR(hudTapeCache), []];
     private _logMsg = "fusion HUD: display cleared";
     AEE_LOG_INFO(_logMsg);

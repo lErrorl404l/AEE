@@ -9,12 +9,12 @@
  * owns both, so the display lifetime has one owner.
  *
  * The animation only changes brightness, never size.  The envelope flashes the
- * glass and the tape twice (t about 0.10 s and 0.40 s) and, on power-on, fades
- * the glass in over the first 35 percent, the ruler in over 5 to 80 percent and
- * the corner readouts in over 25 to 95 percent.  Power-off reverses all three.
- * The profile is published as
- *   QGVAR(hudTapeBootProfile) = [hudK, glassA, infoK, glassBoost]
- * and read by FUNC(hudTapeDraw) (index 0) and FUNC(hudTapeInfo) (index 2).
+ * tape twice (t about 0.10 s and 0.40 s) and, on power-on, fades the tape in
+ * over 5 to 80 percent and the corner readouts in over 25 to 95 percent.
+ * Power-off reverses both.  The profile is published as
+ *   QGVAR(hudTapeBootProfile) = [hudK, infoK]
+ * and read by FUNC(hudTapeDraw) (index 0) and FUNC(hudTapeInfo) (index 1).
+ * The source's glass-tint envelope is NOT ported: the glass is gone.
  *
  * State: QGVAR(hudTapeAnim) 0 none / 1 powering on / 2 powering off,
  *        QGVAR(hudTapeAnimStart) animation start time.
@@ -44,8 +44,6 @@ if (!_active && _raised && (_anim == 0)) then {
     missionNamespace setVariable [QGVAR(hudTapeAnimStart), time];
 };
 
-private _glassA = 1;
-private _glassBoost = 0;
 private _hudK = 1;
 private _infoK = 1;
 private _done = false;
@@ -74,11 +72,9 @@ if (_t0 >= 0) then {
             missionNamespace setVariable [QGVAR(hudTapeAnimStart), -1];
         } else {
             private _p = _el / _dur;
-            _glassA = (_p / 0.35) min 1;
             private _h = (((_p - 0.05) / 0.75) max 0) min 1;
             _hudK = 1 - (1 - _h) * (1 - _h);
             _infoK = (((_p - 0.25) / 0.70) max 0) min 1;
-            _glassBoost = _flick;
             _hudK = (_hudK max _flick);
             _infoK = (_infoK max _flick);
         };
@@ -89,11 +85,9 @@ if (_t0 >= 0) then {
                 _done = true;
             } else {
                 private _q = _el / _dur;
-                _glassA = ((1 - _q) ^ 1.4);
                 _hudK = ((1 - _q) ^ 1.2);
                 _infoK = (((1 - _q * 1.5) max 0) min 1);
                 private _fk = _flick * (1 - _q);
-                _glassBoost = _fk;
                 _hudK = (_hudK max _fk);
                 _infoK = (_infoK max _fk);
             };
@@ -101,7 +95,7 @@ if (_t0 >= 0) then {
     };
 };
 
-missionNamespace setVariable [QGVAR(hudTapeBootProfile), [_hudK, _glassA, _infoK, _glassBoost]];
+missionNamespace setVariable [QGVAR(hudTapeBootProfile), [_hudK, _infoK]];
 
 // Power-off finished: lower the display and reset the profile.
 if (_done) then {
@@ -109,29 +103,5 @@ if (_done) then {
     _raised = false;
     missionNamespace setVariable [QGVAR(hudTapeAnim), 0];
     missionNamespace setVariable [QGVAR(hudTapeAnimStart), -1];
-    missionNamespace setVariable [QGVAR(hudTapeBootProfile), [1, 1, 1, 0]];
-};
-
-// Drive the glass.  The display is created on the cut frame, so place it the
-// first frame the handle is live rather than assuming the config onLoad ran
-// before this worker.
-private _disp = uiNamespace getVariable [QGVAR(fusionHudDisplay), displayNull];
-if (!isNull _disp && _raised) then {
-    private _ready = missionNamespace getVariable [QGVAR(hudTapeGlassReady), false];
-    if !(_ready isEqualType true) then { _ready = false; };
-    if (!_ready) then {
-        [_disp] call FUNC(hudTapeOnLoad);
-    };
-    private _g = _disp displayCtrl 910001;
-    if (!isNull _g) then {
-        private _c = FUSION_HUD_GLASS_COLOR;
-        private _b = 1 + 1.2 * _glassBoost;
-        _g ctrlSetBackgroundColor [
-            (((_c select 0) * _b) min 1),
-            (((_c select 1) * _b) min 1),
-            (((_c select 2) * _b) min 1),
-            ((((_c select 3) * _glassA) + 0.22 * _glassBoost) min 0.75)
-        ];
-        _g ctrlCommit 0;
-    };
+    missionNamespace setVariable [QGVAR(hudTapeBootProfile), [1, 1]];
 };

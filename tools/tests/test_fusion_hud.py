@@ -6,9 +6,9 @@ writes control positions, so it cannot run headless.  Its source contract is
 locked here instead:
 
   * addons/thermal/RscTitles.hpp declares GVAR(fusionHud) with the source idc
-    layout (glass 910001, heading 920001, mark 920002, 13 labels 920011-23,
-    25 ticks 920031-55, 8 cardinal letters 920061-68, corners 920101-103).
-  * addons/thermal/functions/hud/ holds the five ported drivers.
+    layout (heading 920001, mark 920002, 13 labels 920011-23, 25 ticks
+    920031-55, 8 cardinal letters 920061-68, corners 920101-103).
+  * addons/thermal/functions/hud/ holds the ported tape drivers.
   * The drivers read aee data (getEyeState bearing, mapGridPosition, getPosASL,
     dayTime, the aee environment state) and not the source's invented values.
   * The setting, stringtable keys, PREP entries and postInit wiring exist.
@@ -41,7 +41,6 @@ POSTINIT_SRC = (THERMAL / "XEH_postInit.sqf").read_text(encoding="utf-8")
 
 ACTIVE_SRC = (HUD / "fnc_hudTapeActive.sqf").read_text(encoding="utf-8")
 BUILD_SRC = (HUD / "fnc_hudTapeBuild.sqf").read_text(encoding="utf-8")
-ONLOAD_SRC = (HUD / "fnc_hudTapeOnLoad.sqf").read_text(encoding="utf-8")
 BOOT_SRC = (HUD / "fnc_hudTapeBoot.sqf").read_text(encoding="utf-8")
 DRAW_SRC = (HUD / "fnc_hudTapeDraw.sqf").read_text(encoding="utf-8")
 INFO_SRC = (HUD / "fnc_hudTapeInfo.sqf").read_text(encoding="utf-8")
@@ -51,7 +50,6 @@ ALL_SRC = "\n".join(
         RSC_SRC,
         ACTIVE_SRC,
         BUILD_SRC,
-        ONLOAD_SRC,
         BOOT_SRC,
         DRAW_SRC,
         INFO_SRC,
@@ -77,10 +75,14 @@ class TestDisplayClass(unittest.TestCase):
         self.assertIn("GVAR(fusionHudDisplay) = _this select 0", RSC_SRC)
         self.assertIn("GVAR(fusionHudDisplay) = displayNull", RSC_SRC)
 
-    def test_glass_and_centre_mark_idc(self) -> None:
-        self.assertIn("idc = 910001", RSC_SRC)
+    def test_centre_mark_idc(self) -> None:
         self.assertIn("idc = 920001", RSC_SRC)
         self.assertIn("idc = 920002", RSC_SRC)
+
+    def test_the_glass_tint_is_removed(self) -> None:
+        # The source's translucent panel tinted the whole NVG image.
+        self.assertNotIn("AEEFusionHudGlass", RSC_SRC)
+        self.assertNotIn("idc = 910001", RSC_SRC)
 
     def test_all_tape_control_idc(self) -> None:
         for base, count in ((920011, 13), (920031, 25), (920061, 8)):
@@ -105,7 +107,6 @@ class TestDrivers(unittest.TestCase):
         for name in (
             "fnc_hudTapeActive.sqf",
             "fnc_hudTapeBuild.sqf",
-            "fnc_hudTapeOnLoad.sqf",
             "fnc_hudTapeBoot.sqf",
             "fnc_hudTapeDraw.sqf",
             "fnc_hudTapeInfo.sqf",
@@ -116,7 +117,6 @@ class TestDrivers(unittest.TestCase):
         for leaf in (
             "hudTapeActive",
             "hudTapeBuild",
-            "hudTapeOnLoad",
             "hudTapeBoot",
             "hudTapeDraw",
             "hudTapeInfo",
@@ -164,7 +164,7 @@ class TestDrivers(unittest.TestCase):
         self.assertIn("[[0.10, 0.14], [0.40, 0.14]]", BOOT_SRC)
 
     def test_every_function_has_header_and_include(self) -> None:
-        for src in (ACTIVE_SRC, BUILD_SRC, ONLOAD_SRC, BOOT_SRC, DRAW_SRC, INFO_SRC):
+        for src in (ACTIVE_SRC, BUILD_SRC, BOOT_SRC, DRAW_SRC, INFO_SRC):
             self.assertIn('#include "..\\..\\script_component.hpp"', src)
 
 

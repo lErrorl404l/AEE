@@ -27,9 +27,9 @@ if (isNull _disp) exitWith {};
 private _player = call CBA_fnc_currentUnit;
 if (isNull _player) exitWith {};
 
-private _prof = missionNamespace getVariable [QGVAR(hudTapeBootProfile), [1, 1, 1, 0]];
-if !(_prof isEqualType []) then { _prof = [1, 1, 1, 0]; };
-private _infoK = if ((count _prof) > 2) then { _prof select 2 } else { 1 };
+private _prof = missionNamespace getVariable [QGVAR(hudTapeBootProfile), [1, 1]];
+if !(_prof isEqualType []) then { _prof = [1, 1]; };
+private _infoK = if ((count _prof) > 1) then { _prof select 1 } else { 1 };
 if !(_infoK isEqualType 0) then { _infoK = 1; };
 
 private _base = FUSION_HUD_INFO_COLOR;
