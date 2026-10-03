@@ -49,7 +49,15 @@ private _hot = [];
     if (!alive _obj) then { continue };
     if (_obj isEqualTo player) then { continue };
 
-    private _entry = _cache getOrDefault [_obj, []];
+    // Arma 3 HashMaps reject Object keys.  The supported key types are Array,
+    // Boolean, Code, Config, Namespace, NaN, Number, Side and String (BIKI
+    // HashMap, "Unsupported Key Types"), so an Object key raises "Error Type
+    // Object" on every call.  Key on the object's string form instead, the
+    // same per-object key convention as fnc_calculateObjectTemperature and
+    // fnc_applySelectionThermal.
+    private _objKey = str _obj;
+
+    private _entry = _cache getOrDefault [_objKey, []];
     if ((_entry isNotEqualTo []) && ((_now - (_entry select 0)) < _ttl)) then {
         if (_entry select 1) then { _hot pushBack _obj; };
         continue;
@@ -71,7 +79,7 @@ private _hot = [];
     } forEach _selIdxs;
 
     private _isHot = _maxT > (_ambient + _margin);
-    _cache set [_obj, [_now, _isHot]];
+    _cache set [_objKey, [_now, _isHot]];
     if (_isHot) then { _hot pushBack _obj; };
 } forEach _candidates;
 
