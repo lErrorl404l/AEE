@@ -70,6 +70,21 @@ if (_enabled) then {
     [_display, 9012, (str _temperature) + " C"] call _setText;
     [_display, 9013, "RH " + (str (round _humidity))] call _setText;
     [_display, 9014, "WIND " + (str (round _windStr)) + " m/s " + (str (round _windDir))] call _setText;
+
+    // One update line per window, through AEE_LOG_DEBUG (the module trace
+    // switch), so the HUD can be read in an .rpt without a per-frame cost.
+    // It names the gate state and a few of the values it just published.
+    private _logAt = missionNamespace getVariable [QGVAR(hudLogAt), -1e9];
+    if !(_logAt isEqualType 0) then { _logAt = -1e9; };
+    if (diag_tickTime >= _logAt) then {
+        missionNamespace setVariable [QGVAR(hudLogAt), diag_tickTime + 5];
+        private _logMsg = format [
+            "environment HUD update: enabled=%1 show=%2 bearing=%3 grid=%4 alt=%5 temp=%6 hum=%7 wind=%8",
+            _enabled, _show, round _bearing, _grid, _altitude, _temperature,
+            round _humidity, round _windStr
+        ];
+        AEE_LOG_DEBUG(_logMsg);
+    };
 } else {
     if (missionNamespace getVariable [QGVAR(hudOn), false]) then {
         [false] call FUNC(hudBuild);

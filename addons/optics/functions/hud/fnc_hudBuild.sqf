@@ -27,8 +27,12 @@ if (_on) then {
     if (_wasOn) exitWith {};
     _layer cutRsc [QGVAR(hud), "PLAIN", -1, false];
     missionNamespace setVariable [QGVAR(hudOn), true];
+    private _logMsg = "environment HUD: display raised";
+    AEE_LOG_INFO(_logMsg);
 } else {
     if (!_wasOn) exitWith {};
     _layer cutText ["", "PLAIN"];
     missionNamespace setVariable [QGVAR(hudOn), false];
+    private _logMsg = "environment HUD: display cleared";
+    AEE_LOG_INFO(_logMsg);
 };
