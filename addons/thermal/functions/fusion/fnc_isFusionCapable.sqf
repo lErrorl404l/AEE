@@ -27,12 +27,7 @@
  */
 params [["_unit", player, [objNull]]];
 
-// Fusion needs an active NVG (mode 1) - the base layer.
-if (currentVisionMode _unit != 1) exitWith { false };
 if (isNull _unit) exitWith { false };
-
-// Setting override: fusion on any NVG.
-if (missionNamespace getVariable [QGVAR(fusionAlwaysOn), false]) exitWith { true };
 
 // Headset thermal-capable: the HMD config exposes a thermal channel.  Three
 // conditions, matching the ECOTI reference (functions/fn_isThermalNVG.sqf):
@@ -42,17 +37,25 @@ if (missionNamespace getVariable [QGVAR(fusionAlwaysOn), false]) exitWith { true
 // "TI_WHITE" or "Thermal" and equality would refuse a headset that works.
 // The search folds case first.
 private _hmd = hmd _unit;
-if (_hmd isEqualTo "") exitWith { false };
-private _cfg = configFile >> "CfgWeapons" >> _hmd;
-if !(isClass _cfg) exitWith { false };
-private _modes = getArray (_cfg >> "visionMode");
-private _thermalModes = getArray (_cfg >> "thermalMode");
 private _hasThermal = false;
-{
-    private _m = toUpper _x;
-    if (("TI" in _m) || ("THERMAL" in _m)) exitWith { _hasThermal = true; };
-} forEach _modes;
-if (!_hasThermal && _thermalModes isNotEqualTo []) then {
-    _hasThermal = true;
+if (_hmd != "") then {
+    private _cfg = configFile >> "CfgWeapons" >> _hmd;
+    if (isClass _cfg) then {
+        {
+            private _m = toUpper _x;
+            if (("TI" in _m) || ("THERMAL" in _m)) exitWith { _hasThermal = true; };
+        } forEach (getArray (_cfg >> "visionMode"));
+        if (!_hasThermal) then {
+            if ((getArray (_cfg >> "thermalMode")) isNotEqualTo []) then {
+                _hasThermal = true;
+            };
+        };
+    };
 };
-_hasThermal
+
+// The rule itself: an active NVG base AND either a thermal channel or the
+// fusionAlwaysOn setting.  fnc_fusionGateDecision holds it, so the unit suite
+// and the P80 probe execute the real decision and not a mirror.
+private _visionMode = currentVisionMode _unit;
+private _alwaysOn = missionNamespace getVariable [QGVAR(fusionAlwaysOn), false];
+[_visionMode, _hasThermal, _alwaysOn] call FUNC(fusionGateDecision)

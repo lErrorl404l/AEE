@@ -194,13 +194,20 @@ private _rain = rain;
 if !(_rain isEqualType 0) then { _rain = 0; };
 private _airDensity = missionNamespace getVariable [QEGVAR(core,currentAirDensity), 1.225];
 if !(_airDensity isEqualType 0) then { _airDensity = 1.225; };
-private _deviceNetd = 0.05;
-private _deviceResX = 640;
-if (!isNull _player) then {
-    private _dev = [_player, (vehicle _player)] call EFUNC(thermal,getThermalDeviceProperties);
-    _deviceNetd = _dev param [0, 0.05];
-    _deviceResX = _dev param [1, 640];
-};
+// The device pair is resolved ONCE per tick, before the object walk.  It
+// carries the NVG tube row, the thermal channel row, the channel's
+// half-angle and the provenance of that figure (declared, derived or
+// published).  The thermal row's NETD and resolution drive the sensor
+// threshold and the Johnson resolvability test below.
+private _devicePair = [_player] call FUNC(resolveFusionDevice);
+private _deviceRow = _devicePair select 1;
+private _deviceNetd = _deviceRow param [0, 0.05];
+private _deviceResX = _deviceRow param [1, 640];
+private _thermalHalfAngleDeg = _devicePair select 2;
+private _fovSource = _devicePair select 3;
+private _fovAxis = _devicePair select 4;
+private _thermalDevice = _devicePair select 5;
+private _thermalDeviceId = _devicePair select 6;
 if !(_deviceNetd isEqualType 0) then { _deviceNetd = 0.05; };
 if (_deviceNetd <= 0) then { _deviceNetd = 0.05; };
 if !(_deviceResX isEqualType 0) then { _deviceResX = 640; };
@@ -247,56 +254,11 @@ if (_logNow) then {
     missionNamespace setVariable [QGVAR(fusionLogAt), diag_tickTime + _LOG_INTERVAL];
 };
 // ─── The thermal channel's field ──────────────────────────────────────────
-// The overlay is bounded by the DEVICE's thermal field, not by the screen.
-// The device is identified the way the phosphor is in fnc_applyNVGTubeModel:
-// from the hmd classname, which states its own properties, lowercased and
-// split on the underscore the classname itself uses as its token delimiter.
-// The gate and the phosphor therefore describe the same device, and no
-// second identification path is introduced.
-//
-// THE PUBLISHED THERMAL FIGURE BELONGS TO THE BNVD-FUSED (F-BINO), NOT TO
-// THE ENVG-B.  TNVC states a 12 um LWIR channel with a 34 diagonal field of
-// view for the HUD and AR display functions, overlayed onto the I2 image from
-// the right-side optical pod.  Its intensified side is the PVS-31A tube set,
-// and NVGogglesB_grn_F resolves to the PVS-31 tier, which is that same tube
-// set, so the figure is a FAIR source for this class on the intensified side
-// the tier is derived from.  TNVC is a DISTRIBUTOR and no manufacturer or
-// Army corroboration was found, so the sourcing strength is not upgraded
-// here.  The AXIS IS PINNED for this figure, because TNVC states the word
-// diagonal.
-//
-// FOR THE ENVG-B (AN/PSQ-42) THERE IS NO PUBLISHED THERMAL-CHANNEL FIGURE AT
-// ALL.  L3Harris publishes one fused 40 covering both channels, and that
-// figure is NOT split here and the BNVD-FUSED's 34 is NOT borrowed for it,
-// because they are different device families.  The ENVG-B therefore takes
-// the DECLARED DEFAULT below and the log reads "declared" for it, so the
-// absence of published data is expressed in the code instead of being hidden
-// behind another device's number.
-//
-// THE DECLARED DEFAULT.  The family's 40 is published by Elbit, L3Harris and
-// nvdevices with NO axis on any of them, so it is not yet a figure that can
-// be halved about an axis.  Reading it as a DIAGONAL is a DECLARATION, and
-// it is the only reading consistent with the hardware: at the Elbit 27 mm
-// effective focal length a 40 diagonal needs about a 19.7 mm image-circle
-// diagonal, which fits a tube, where 40 on both axes needs about 27.8 mm,
-// which does not.  That arithmetic is a consistency check on published
-// inputs, not a source figure.
-private _hmdLower = toLower (hmd _player);
-private _thermalDevice = "unknown";
-{
-    if (_x == "nvgogglesb") then { _thermalDevice = "BNVD-FUSED"; };
-} forEach (_hmdLower splitString "_");
-private _DECLARED_HALF_ANGLE_DEG = 20;
-private _thermalHalfAngleDeg = _DECLARED_HALF_ANGLE_DEG;
-private _fovSource = "declared";
-private _fovAxis = "declared";
-switch (_thermalDevice) do {
-    case "BNVD-FUSED": {
-        _thermalHalfAngleDeg = 17;
-        _fovSource = "derived";
-        _fovAxis = "diagonal";
-    };
-};
+// The half-angle and its provenance are resolved with the device pair at the
+// top of this function.  FUNC(resolveFusionDevice) reads the corpus thermal
+// row through the generated matcher and labels the figure.  The long
+// sourcing note for each device lives in fnc_resolveFusionDevice.sqf and
+// fnc_fusionThermalField.sqf.
 
 // The view axis, sampled ONCE per tick rather than once per object.  The
 // per-frame handler already walks the whole object list, so a value that is
@@ -519,9 +481,11 @@ private _paintedCount = 0;
 // no published thermal field is running on a declared default, and a gate
 // that cannot be read in a log is a gate nobody can check next session.
 if (_logNow) then {
+    private _corpusState = ["live", "data-only"] select (_thermalDeviceId == "");
     private _logGate = format [
-        "fusion gate: dev=%1 fov=%2 axis=%3 halfDeg=%4 objs=%5 gated=%6 painted=%7",
-        _thermalDevice, _fovSource, _fovAxis, _thermalHalfAngleDeg, _objectCount, _gatedOut, _paintedCount
+        "fusion gate: dev=%1 tid=%2 corpus=%3 fov=%4 axis=%5 halfDeg=%6 objs=%7 gated=%8 painted=%9",
+        _thermalDevice, _thermalDeviceId, _corpusState, _fovSource, _fovAxis,
+        _thermalHalfAngleDeg, _objectCount, _gatedOut, _paintedCount
     ];
     AEE_LOG_DEBUG(_logGate);
 };
