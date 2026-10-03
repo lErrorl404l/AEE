@@ -89,6 +89,23 @@ AEE_MODULE_POST_INIT
             // Transient 0: skip, do not clean up or stop.  The visionMode
             // event handles real exits.
             if (_vm == 0) exitWith {};
+            // ── Fusion gate-off restore ───────────────────────────────────
+            // The source restores its painted bodies on EVERY Draw3D frame:
+            // fn_postInit.sqf:19 calls fn_thermalFill, whose pass 1 restores
+            // every registered body once _want is false (fn_thermalFill.sqf:76-96).
+            // aee drives the overlay from this PFH instead, so this PFH must
+            // run the same restore whenever the gate is off: a switch to
+            // thermal (vision mode 2), a device that stops being
+            // fusion-capable, or the operator switching fusion off.  A genuine
+            // return to normal vision is handled by teardownSensors, and death
+            // or a unit change by the guard above.  Two namespace reads when
+            // nothing is painted; EXIT is idempotent.
+            private _fusionDirty =
+                (missionNamespace getVariable [QEGVAR(thermal,fusionFillReg), []]) isNotEqualTo []
+                || {(missionNamespace getVariable [QEGVAR(thermal,fusionOverlaySaved), []]) isNotEqualTo []};
+            if ((_vm != 1) && _fusionDirty) then {
+                [_player, "EXIT"] call EFUNC(thermal,applyFusionOverlay);
+            };
             // Rain droplets on the objective: mode-independent physics (rain
             // lands on the lens whether it is NVG or thermal).  Run before
             // the mode-specific branches so both get the source.
@@ -117,8 +134,20 @@ END_COUNTER(applyNVGTubeModel);
                         [true] call EFUNC(thermal,outlineToggle);
                     } else {
                         // Capable but the operator has not asked for fusion:
+                        // restore anything a previous fused tick painted, then
                         // tear the outline down rather than leave it stale.
-                        [false] call EFUNC(thermal,outlineToggle);
+                        if (_fusionDirty) then {
+                            [_player, "EXIT"] call EFUNC(thermal,applyFusionOverlay);
+                        } else {
+                            [false] call EFUNC(thermal,outlineToggle);
+                        };
+                    };
+                } else {
+                    // The device stopped being fusion-capable while the mode
+                    // stayed 1.  Restore the painted bodies and lower the
+                    // outline, or both survive into the next device.
+                    if (_fusionDirty) then {
+                        [_player, "EXIT"] call EFUNC(thermal,applyFusionOverlay);
                     };
                 };
             };

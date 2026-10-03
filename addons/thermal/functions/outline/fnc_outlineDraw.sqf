@@ -20,11 +20,17 @@
  *   - the window test below is the source's HUD BOX (the pre-warm zone feeds
  *     the topology before a target enters the box; segments are clipped to it).
  *
- * Deliberate omissions from the source: the per-soldier gear radius
- * adjustments (headgear / vest / backpack) and the backpack inflation are not
- * ported, so the capsule radii are the unequipped table in
- * FUNC(outlineSkeleton).  The organic silhouette and the occlusion raycasts are
- * ported.
+ * The per-soldier gear inflation is ported from the same source.  The source
+ * sizes the head, torso and backpack capsules to what the soldier wears, which
+ * is why its silhouette reads as a clothed body and not a bare skeleton:
+ *   - head gear 1/2: both radii += [0, 0.005, 0.012] select _gH and
+ *     _ext += [0, 0.02, 0.045] select _gH          (fn_drawOutlines.sqf:436-443);
+ *   - torso 1/2: both radii += [0, 0.012, 0.03] select _gV    (:444-448);
+ *   - no backpack: both radii forced to 0.02                  (:449-451);
+ *   - every radius += the sensor blur _infl = (_mpp * 0.5) min 0.12 (:298, :466).
+ * FUNC(outlineGearRadius) owns the source's tables; this file detects the gear
+ * and caches the config reads for 3 s per object, exactly as the source does
+ * (:344-371).  The organic silhouette and the occlusion raycasts are ported.
  *
  * Params:
  *   0: _player (OBJECT, default player).
@@ -154,6 +160,9 @@ private _drawn = 0;
     // Simulated thermal sensor: target height on the detector, then the LOD.
     private _mpp = ((_dist max 0.5) * 2 * _tanHalf) / _sensRes;
     private _hSens = 1.8 / (_mpp max 1e-6);
+    // Sensor blur: a point, not a pixel, is the source's resolution floor.  It
+    // is added to every capsule radius below (fn_drawOutlines.sqf:298,466).
+    private _infl = (_mpp * 0.5) min 0.12;
     private _lv = [_hSens] call FUNC(outlineSensorLod);
     private _level = _levels select _lv;
     private _boneList = _level select 0;
@@ -168,9 +177,50 @@ private _drawn = 0;
         private _sp = _obj selectionPosition _x;
         if (_sp isEqualTo [0, 0, 0]) then { [] } else { _sp }
     };
-    // Virtual backpack points.  The gear pass is not ported, so these are the
-    // source's two body points (the source inflates them when a backpack is
-    // worn); the capsule then stays hidden in the torso.
+
+    // ---- Gear-aware inflation (source fn_drawOutlines.sqf:344-371) ----
+    // The source sizes the head, torso and backpack capsules to what the
+    // soldier wears, so the outline reads as a clothed body and not a bare
+    // skeleton.  Headgear: 0 none, 1 soft cover, 2 helmet (Head armor > 0).
+    // Vest: 0 none, 1 light rig, 2 plate (Chest or Body armor >= 10).  The
+    // config reads are cached in a HashMap and refreshed every 3 s, because a
+    // loadout changes rarely.  A non-man carries no gear.
+    private _gH = 0;
+    private _gV = 0;
+    private _gP = false;
+    if (_obj isKindOf "CAManBase") then {
+        private _gr = _obj getVariable [QGVAR(outlineGear), []];
+        if ((_gr isEqualTo []) || {((diag_tickTime) - (_gr select 0)) > 3}) then {
+            private _gMap = missionNamespace getVariable [QGVAR(outlineGearMap), createHashMap];
+            private _armor = {
+                params ["_cls", "_hp"];
+                private _key = toLower (_cls + "|" + _hp);
+                private _v = _gMap getOrDefault [_key, -1];
+                if (_v < 0) then {
+                    _v = getNumber (configFile >> "CfgWeapons" >> _cls
+                        >> "ItemInfo" >> "HitpointsProtectionInfo" >> _hp >> "armor");
+                    _gMap set [_key, _v];
+                };
+                _v
+            };
+            private _hg = headgear _obj;
+            private _vs = vest _obj;
+            _gH = if (_hg == "") then { 0 } else {
+                [1, 2] select (([_hg, "Head"] call _armor) > 0)
+            };
+            _gV = if (_vs == "") then { 0 } else {
+                [1, 2] select (((([_vs, "Chest"] call _armor) max ([_vs, "Body"] call _armor)) >= 10))
+            };
+            missionNamespace setVariable [QGVAR(outlineGearMap), _gMap];
+            _gr = [diag_tickTime, _gH, _gV, (backpack _obj) != ""];
+            _obj setVariable [QGVAR(outlineGear), _gr];
+        };
+        _gr params ["", "_gH", "_gV", "_gP"];
+    };
+
+    // Virtual backpack points (model frame: +y is forward).  With a backpack
+    // the source pushes them behind the shoulder blades and the kidneys so the
+    // pack capsule sits outside the torso (fn_drawOutlines.sqf:381-387).
     if (_spIdx isNotEqualTo []) then {
         private _bpA = _sps select (_spIdx select 0);
         private _bpB = _sps select (_spIdx select 1);
@@ -178,8 +228,13 @@ private _drawn = 0;
             _sps pushBack [];
             _sps pushBack [];
         } else {
-            _sps pushBack _bpA;
-            _sps pushBack _bpB;
+            if (_gP) then {
+                _sps pushBack (_bpA vectorAdd [0, -0.22, 0]);
+                _sps pushBack (_bpB vectorAdd [0, -0.20, 0.15]);
+            } else {
+                _sps pushBack _bpA;
+                _sps pushBack _bpB;
+            };
         };
     };
 
@@ -198,6 +253,14 @@ private _drawn = 0;
         private _ext = _cap select 3;
         private _rBCap = if ((count _cap) > 4) then { _cap select 4 } else { -1 };
         if (_rBCap < 0) then { _rBCap = _rCap; };
+        private _role = if ((count _cap) > 5) then { _cap select 5 } else { 0 };
+        // Gear inflation and the sensor blur, applied before the capsule axis
+        // is built (fn_drawOutlines.sqf:434-452, then :466).  The source's
+        // radius and extension tables live in FUNC(outlineGearRadius).
+        private _adj = [_rCap, _rBCap, _ext, _role, _gH, _gV, _gP, _infl] call FUNC(outlineGearRadius);
+        _ext = _adj select 0;
+        _rCap = _adj select 1;
+        _rBCap = _adj select 2;
         private _pA = _pts select _ia;
         private _pB = _pts select _ib;
         if ((_pA isEqualTo []) || (_pB isEqualTo [])) then { [] } else {

@@ -39,6 +39,7 @@ OUTLINE = REPO / "addons" / "thermal" / "functions" / "outline"
 TOPO_KERNEL = OUTLINE / "fnc_outlineTopo.sqf"
 SKELETON_KERNEL = OUTLINE / "fnc_outlineSkeleton.sqf"
 SENSOR_LOD_KERNEL = OUTLINE / "fnc_outlineSensorLod.sqf"
+GEAR_KERNEL = OUTLINE / "fnc_outlineGearRadius.sqf"
 CANVAS_SRC = (OUTLINE / "fnc_outlineCanvas.sqf").read_text(encoding="utf-8")
 COLLECT_SRC = (OUTLINE / "fnc_outlineCollect.sqf").read_text(encoding="utf-8")
 DRAW_SRC = (OUTLINE / "fnc_outlineDraw.sqf").read_text(encoding="utf-8")
@@ -81,6 +82,13 @@ def _lod(height_px: float) -> float:
 
 def _skeleton() -> list:
     return run_sqf(SKELETON_KERNEL, [], {})
+
+
+def _gear(
+    r: float, rb: float, ext: float, role: int, gh: int, gv: int, gp: bool, infl: float
+) -> list:
+    """fnc_outlineGearRadius: gear-adjusted [ext, rA, rB]."""
+    return run_sqf(GEAR_KERNEL, [r, rb, ext, role, gh, gv, gp, infl], {})
 
 
 def _run_source(source: str):
@@ -218,6 +226,116 @@ class TestOutlineSkeleton(unittest.TestCase):
                 self.assertLess(idx, bone_count)
 
 
+class TestOutlineGearRadius(unittest.TestCase):
+    """fnc_outlineGearRadius, executed: the source's gear tables and blur.
+
+    Copied from fn_drawOutlines.sqf:434-452 (role cases) and :466 (the _infl
+    add).  The kernels values are the source's own; the tests fix them.
+    """
+
+    def test_no_gear_only_adds_the_sensor_blur(self):
+        out = _gear(0.16, 0.19, 0.0, 0, 0, 0, False, 0.05)
+        self.assertAlmostEqual(out[0], 0.0)
+        self.assertAlmostEqual(out[1], 0.21)
+        self.assertAlmostEqual(out[2], 0.24)
+
+    def test_a_helmet_inflates_the_head_and_extends_it(self):
+        # role 1, _gH 2: radii +0.012, ext +0.045.
+        out = _gear(0.105, 0.095, 0.11, 1, 2, 0, False, 0.05)
+        self.assertAlmostEqual(out[0], 0.155)
+        self.assertAlmostEqual(out[1], 0.167)
+        self.assertAlmostEqual(out[2], 0.157)
+
+    def test_a_soft_cover_uses_the_smaller_head_table(self):
+        # role 1, _gH 1: radii +0.005, ext +0.02.
+        out = _gear(0.105, 0.095, 0.11, 1, 1, 0, False, 0.05)
+        self.assertAlmostEqual(out[0], 0.13)
+        self.assertAlmostEqual(out[1], 0.16)
+        self.assertAlmostEqual(out[2], 0.15)
+
+    def test_a_plate_carrier_inflates_the_torso(self):
+        # role 2, _gV 2: both radii +0.03, no extension change.
+        out = _gear(0.16, 0.19, 0.0, 2, 0, 2, False, 0.05)
+        self.assertAlmostEqual(out[0], 0.0)
+        self.assertAlmostEqual(out[1], 0.24)
+        self.assertAlmostEqual(out[2], 0.27)
+
+    def test_a_light_rig_uses_the_smaller_torso_table(self):
+        out = _gear(0.16, 0.19, 0.0, 2, 0, 1, False, 0.05)
+        self.assertAlmostEqual(out[1], 0.222)
+        self.assertAlmostEqual(out[2], 0.252)
+
+    def test_a_pack_capsule_without_a_backpack_collapses(self):
+        # role 3, _gP false: radii forced to 0.02, then + blur.
+        out = _gear(0.15, 0.13, 0.0, 3, 0, 0, False, 0.05)
+        self.assertAlmostEqual(out[1], 0.07)
+        self.assertAlmostEqual(out[2], 0.07)
+
+    def test_a_pack_capsule_with_a_backpack_keeps_its_radii(self):
+        out = _gear(0.15, 0.13, 0.0, 3, 0, 0, True, 0.05)
+        self.assertAlmostEqual(out[1], 0.20)
+        self.assertAlmostEqual(out[2], 0.18)
+
+    def test_the_blur_is_added_after_the_gear_delta(self):
+        without = _gear(0.16, 0.19, 0.0, 0, 0, 0, False, 0.0)
+        with_blur = _gear(0.16, 0.19, 0.0, 0, 0, 0, False, 0.12)
+        self.assertAlmostEqual(with_blur[1] - without[1], 0.12)
+        self.assertAlmostEqual(with_blur[2] - without[2], 0.12)
+
+    def test_the_blur_is_capped_at_the_source_value(self):
+        # The cap lives in fnc_outlineDraw as (_mpp * 0.5) min 0.12; the kernel
+        # itself takes whatever it is given.
+        out = _gear(0.16, 0.19, 0.0, 0, 0, 0, False, 0.12)
+        self.assertAlmostEqual(out[1], 0.28)
+
+
+class TestOutlineGearPort(unittest.TestCase):
+    """The engine-bound draw path reads the gear the source reads.
+
+    fnc_outlineDraw cannot run headless, so the source contract is locked: it
+    must detect headgear / vest / backpack, read the armor protection the same
+    way, cache for 3 s, inflate the backpack points, add the _infl sensor blur,
+    and delegate the tables to FUNC(outlineGearRadius).  The old header line
+    that excused the omission must be gone.
+    """
+
+    def test_the_draw_path_detects_the_gear(self):
+        for token in (
+            "headgear _obj",
+            "vest _obj",
+            "backpack _obj",
+            'isKindOf "CAManBase"',
+            "HitpointsProtectionInfo",
+            '"Head"',
+            '"Chest"',
+            '"Body"',
+            "outlineGearMap",
+        ):
+            self.assertIn(token, DRAW_SRC, token)
+
+    def test_the_gear_reads_are_cached_for_three_seconds(self):
+        self.assertIn("QGVAR(outlineGear)", DRAW_SRC)
+        self.assertIn("((diag_tickTime) - (_gr select 0)) > 3", DRAW_SRC)
+
+    def test_the_draw_path_inflates_the_backpack_points(self):
+        self.assertIn("[0, -0.22, 0]", DRAW_SRC)
+        self.assertIn("[0, -0.20, 0.15]", DRAW_SRC)
+        self.assertIn("if (_gP) then {", DRAW_SRC)
+
+    def test_the_draw_path_applies_the_sensor_blur(self):
+        self.assertIn("_infl = (_mpp * 0.5) min 0.12", DRAW_SRC)
+        self.assertIn(
+            "[_rCap, _rBCap, _ext, _role, _gH, _gV, _gP, _infl] call FUNC(outlineGearRadius)",
+            DRAW_SRC,
+        )
+        self.assertIn("_ext = _adj select 0;", DRAW_SRC)
+
+    def test_the_omission_excuse_is_gone(self):
+        self.assertNotIn("Deliberate omissions", DRAW_SRC)
+        self.assertNotIn("gear pass is not ported", DRAW_SRC)
+        self.assertIn("is ported from the same source", DRAW_SRC)
+
+
 class TestOutlineConfigContract(unittest.TestCase):
     """The canvas, the setting and the stringtable are declared."""
 
@@ -261,6 +379,7 @@ class TestOutlineWiring(unittest.TestCase):
             "outlineTopo",
             "outlineSkeleton",
             "outlineSensorLod",
+            "outlineGearRadius",
             "outlineCanvas",
             "outlineCollect",
             "outlineDraw",

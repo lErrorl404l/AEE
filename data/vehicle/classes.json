@@ -131,7 +131,8 @@
         "addons/thermal/functions/fusion/fnc_applyFusionFill.sqf:173",
         "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:62",
         "addons/thermal/functions/outline/fnc_outlineCollect.sqf:43",
-        "addons/thermal/functions/outline/fnc_outlineDraw.sqf:235"
+        "addons/thermal/functions/outline/fnc_outlineDraw.sqf:191",
+        "addons/thermal/functions/outline/fnc_outlineDraw.sqf:298"
       ],
       "token": "CAManBase"
     },
