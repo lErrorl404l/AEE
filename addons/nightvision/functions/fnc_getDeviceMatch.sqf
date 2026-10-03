@@ -97,6 +97,7 @@ private _tableAll = [
     ["anvis9", "nvg", "anavs9|anvis|avs9", "anvis|avs9", "anvis|avs9", "elbit_anvis9", ["", 64, 0, 0.5533]],
     ["catherine", "thermal", "catherinemp|catherine", "catherine", "catherine", "aee_sensor_device_library", [0.025, 1280, 1024, 50, "cooled", 7.9]],
     ["coti", "thermal", "anpas29coti|coti|pas29", "coti|pas29", "coti|pas29", "aee_sensor_device_library", [0.05, 320, 240, 30, "uncooled", 0.15]],
+    ["ecoti", "thermal", "ecoti", "ecoti", "ecoti", "safran_ecoti_datasheet", [0, 640, 480, 0, "uncooled", 0.125]],
     ["envg_thermal", "thermal", "envgb|anpsq42", "envg|envgb", "envg|psq42", "aee_sensor_device_library", [0.04, 640, 480, 30, "uncooled", 1.133]],
     ["envgb", "nvg", "envgb|envg|anpsq42|anpsq44|nvgogglesb", "envg|envgb|psq42|psq44|nvgogglesb", "envg|psq42|psq44|nvgogglesb", "l3harris_envgb", ["white", 72, 32, 0.5533]],
     ["fixed_10x", "optic", "leupoldmark4|mark4|10x", "mark4|10x", "mark4|10x", "aee_sensor_device_library", [10, 40, 3.5, 0.68, 4, "passive"]],
