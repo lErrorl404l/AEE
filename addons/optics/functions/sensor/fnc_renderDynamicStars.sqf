@@ -25,3 +25,4 @@ if (!isNil QGVAR(dynamicStarsPFH)) exitWith {};
 missionNamespace setVariable [QGVAR(starLights), []];
 
 GVAR(dynamicStarsPFH) = [FUNC(starLightsSync), 0.25] call CBA_fnc_addPerFrameHandler;
+AEE_LOG_INFO("starfield: light-emitter PFH registered");
