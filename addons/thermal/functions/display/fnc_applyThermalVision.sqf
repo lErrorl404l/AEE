@@ -20,6 +20,8 @@ the environmental degradation the engine does not model:
   ColorCorrections - brightness, contrast, display tint
   FilmGrain        - sensor noise (scales with poor conditions)
   DynamicBlur      - IR scatter in rain/fog, mushy crossover image
+  ChromAberration  - lens colour fringing (the A3TI WHOT branch, workshop
+                     3725008325 fn_ppEffects.sqf case 0, [0.001,0.001,true])
 
 Contrast input: GVAR(currentThermalContrast) (0-1) from
 fnc_calculateThermalContrast.  Heat (>35 °C), rain and fog degrade it;
@@ -64,6 +66,7 @@ if !([_player] call FUNC(isThermalHostActive)) exitWith {
             };
         } forEach [
             QGVAR(ppHandle_Thermal_Vignette),
+            QGVAR(ppHandle_Thermal_Chroma),
             QGVAR(ppHandle_Thermal_CC),
             QGVAR(ppHandle_Thermal_Grain),
             QGVAR(ppHandle_Thermal_Blur),
@@ -131,12 +134,13 @@ if (_rainS > 0.1) then {
 // Priorities sit above the NVG handles so the two never collide.
 // A -1 handle (priority taken) bumps until it succeeds.
 private _hVig   = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Vignette), -1];
+private _hChroma = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Chroma), -1];
 private _hCC    = missionNamespace getVariable [QGVAR(ppHandle_Thermal_CC), -1];
 private _hGrain = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Grain), -1];
 private _hBlur  = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Blur), -1];
 private _hInv   = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Inversion), -1];
 
-if (_hVig < 0 || _hCC < 0 || _hGrain < 0 || _hBlur < 0 || _hInv < 0) then {
+if (_hVig < 0 || _hChroma < 0 || _hCC < 0 || _hGrain < 0 || _hBlur < 0 || _hInv < 0) then {
     // A fresh effect must always receive its parameters, even when the engine
     // hands back a handle NUMBER it used earlier.  Clearing here is the one
     // choke point every new effect passes through, because each destroy path
@@ -153,6 +157,7 @@ if (_hVig < 0 || _hCC < 0 || _hGrain < 0 || _hBlur < 0 || _hInv < 0) then {
         };
     } forEach [
         QGVAR(ppHandle_Thermal_Vignette),
+        QGVAR(ppHandle_Thermal_Chroma),
         QGVAR(ppHandle_Thermal_CC),
         QGVAR(ppHandle_Thermal_Grain),
         QGVAR(ppHandle_Thermal_Blur),
@@ -174,6 +179,12 @@ if (_hVig < 0 || _hCC < 0 || _hGrain < 0 || _hBlur < 0 || _hInv < 0) then {
         private _logMsg = format ["created thermal %1 priority=%2 handle=%3", _name, _priority, _handle];
         AEE_LOG_DEBUG(_logMsg);
     } forEach [
+        // ChromAberration: the A3TI WHOT branch applies it at
+        // [0.001,0.001,true] BEFORE its ColorCorrections (workshop
+        // 3725008325 fn_ppEffects.sqf case 0), so it sits below the thermal
+        // CC here.  It is the lens colour fringing of the thermal objective,
+        // the one WHOT effect this stack did not already carry.
+        ["ChromAberration", 1400, QGVAR(ppHandle_Thermal_Chroma)],
         ["RadialBlur",      1300, QGVAR(ppHandle_Thermal_Vignette)],
         ["DynamicBlur",     4200, QGVAR(ppHandle_Thermal_Blur)],
         ["FilmGrain",       6500, QGVAR(ppHandle_Thermal_Grain)],
@@ -187,8 +198,8 @@ if (_hVig < 0 || _hCC < 0 || _hGrain < 0 || _hBlur < 0 || _hInv < 0) then {
         // (5200) so it inverts the graded image, below nothing else uses.
         ["ColorInversion", 6600, QGVAR(ppHandle_Thermal_Inversion)]
     ];
-    _handles params ["_hVig", "_hBlur", "_hGrain", "_hCC", "_hInv"];
-    private _logMsg = format ["thermal ppEffects created: vig=%1 blur=%2 grain=%3 CC=%4 inv=%5", _hVig, _hBlur, _hGrain, _hCC, _hInv];
+    _handles params ["_hChroma", "_hVig", "_hBlur", "_hGrain", "_hCC", "_hInv"];
+    private _logMsg = format ["thermal ppEffects created: chroma=%1 vig=%2 blur=%3 grain=%4 CC=%5 inv=%6", _hChroma, _hVig, _hBlur, _hGrain, _hCC, _hInv];
     AEE_LOG_INFO(_logMsg);
 };
 
@@ -199,6 +210,7 @@ if (_hVig < 0 || _hCC < 0 || _hGrain < 0 || _hBlur < 0 || _hInv < 0) then {
 // the NVG model's pattern (missionNamespace is the single source of
 // truth after the create block).
 _hVig   = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Vignette), -1];
+_hChroma = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Chroma), -1];
 _hBlur  = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Blur), -1];
 _hGrain = missionNamespace getVariable [QGVAR(ppHandle_Thermal_Grain), -1];
 _hCC    = missionNamespace getVariable [QGVAR(ppHandle_Thermal_CC), -1];
@@ -216,7 +228,7 @@ private _ppOn = missionNamespace getVariable [QGVAR(thermalPPEffects), true];
 if (!_ppOn) exitWith {
     {
         if (_x >= 0) then { _x ppEffectEnable false; };
-    } forEach [_hVig, _hCC, _hGrain, _hBlur, _hInv];
+    } forEach [_hVig, _hChroma, _hCC, _hGrain, _hBlur, _hInv];
     setAperture 15;
     missionNamespace setVariable [QGVAR(thermalActive), true];
     AEE_LOG_DEBUG("thermal ppEffect chain DISABLED by setting (thermalPPEffects=false)");
@@ -257,6 +269,16 @@ private _ppApply = {
     if (_forceNVG) then { _hHandle ppEffectForceInNVG true; };
     _cache set [_effectKey, [_hHandle, _effectParams, _effectOn]];
     missionNamespace setVariable [QGVAR(ppLastParams), _cache];
+};
+
+// ─── ChromAberration (lens colour fringing) ──────────────────────────────
+// The thermal objective's axial chromatic aberration, the A3TI WHOT branch
+// value (workshop 3725008325 fn_ppEffects.sqf case 0): [0.001,0.001,true].
+// It is a fixed lens property, so it does not move with the weather or the
+// scene.  Change-gated like the rest of the chain.
+private _chroma = 0.001;
+if (_hChroma >= 0) then {
+    [_hChroma, [_chroma, _chroma, true], true, _forceNVG, "chroma"] call _ppApply;
 };
 
 // ─── ColorCorrections (display gain/contrast) ────────────────────────────
