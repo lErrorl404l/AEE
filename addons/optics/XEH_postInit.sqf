@@ -52,20 +52,7 @@ AEE_MODULE_POST_INIT
             QEGVAR(thermal,ppHandle_Thermal_Grain),
             QEGVAR(thermal,ppHandle_Thermal_Blur)
         ];
-        // Rain droplets on the objective: particle source, engine assets.
-        // Mode-INDEPENDENT: rain lands on the lens whether NVG or thermal,
-        // so the source is created on ANY vision-mode entry (not just
-        // thermal).  The TICK below drives the drop interval for both.
-        ["ENTER"] call EFUNC(thermal,applyRainDroplets);
-        // Second sun: create the physics-driven fake sun for the engine's
-        // thermal sun term (buildings/terrain can only be sun-heated, not
-        // driven per-object).  Cleaned up on mode 0 below.
-        ["ENTER"] call EFUNC(thermal,applySecondSun);
-        // Clothing thermal: apply per-item TI overrides to nearby units.
-        ["ENTER"] call EFUNC(thermal,applyClothingThermal);
-        // Building thermal: swap building materials to a cold TI rvmat so
-        // buildings read cold at night (they bake red=128 in vanilla).
-        ["ENTER"] call EFUNC(thermal,applyBuildingThermal);
+        [] call FUNC(enterThermalSensors);
     };
     // Start the fast sensor PFH when entering NVG/thermal.  The visionMode
     // event below is the SOLE owner of its lifecycle: it starts on mode > 0
@@ -113,71 +100,19 @@ END_COUNTER(applyRainDroplets);
 END_COUNTER(applyNVGTubeModel);
             };
             if (_vm == 2) then {
-                // Thermal optics are parfocal: LWIR wavelength is ~10x
-                // visible, so the depth of field is so deep that real FLIR
-                // sights need NO focus mechanism (fixed at the factory).
-                // Kill the NVG DoF effect so its last focus value (e.g.
-                // PVS-31's 20 m ring) does not leak into the thermal view
-                // as a fixed focus blur.
-                // The NVG objective-focus handle belongs to nightvision.  Ask
-                // that addon to release it rather than destroying another
-                // module's handle from here, so ownership stays with the owner
-                // and a scope release can never strand it.
-                BEGIN_COUNTER(teardownNvgDoF);
-[] call EFUNC(nightvision,teardownNvgDoF);
-END_COUNTER(teardownNvgDoF);
-                // Scene-adaptive AGC (issue #196): compute the scene's
-                // radiance window from the physics state BEFORE the
-                // per-selection passes read it.  A real FLIR re-evaluates
-                // its gain continuously from the scene histogram; this is
-                // the same per-frame evaluation.
-                BEGIN_COUNTER(updateThermalAGC);
-[] call EFUNC(thermal,updateThermalAGC);
-END_COUNTER(updateThermalAGC);
-                BEGIN_COUNTER(applyThermalVision);
-[] call EFUNC(thermal,applyThermalVision);
-END_COUNTER(applyThermalVision);
-                BEGIN_COUNTER(applyEngineThermal);
-[] call EFUNC(thermal,applyEngineThermal);
-END_COUNTER(applyEngineThermal);
-                BEGIN_COUNTER(applyWeaponBarrelHeat);
-[] call EFUNC(thermal,applyWeaponBarrelHeat);
-END_COUNTER(applyWeaponBarrelHeat);
-                BEGIN_COUNTER(applySecondSun);
-["TICK"] call EFUNC(thermal,applySecondSun);
-END_COUNTER(applySecondSun);
-                BEGIN_COUNTER(applyClothingThermal);
-["TICK"] call EFUNC(thermal,applyClothingThermal);
-END_COUNTER(applyClothingThermal);
-                BEGIN_COUNTER(applyBuildingThermal);
-["TICK"] call EFUNC(thermal,applyBuildingThermal);
-END_COUNTER(applyBuildingThermal);
-                // Contact conduction: heat exchange between the operator
-                // and what they touch (vehicle interior, prone ground).
-                // Runs after the object solves so both sides have temps.
-                BEGIN_COUNTER(applyContactConduction);
-[] call EFUNC(thermal,applyContactConduction);
-END_COUNTER(applyContactConduction);
-                // Radiative exchange (issue #204): a hot object heats the
-                // objects around it (a hot barrel heats the weapon from
-                // inside out, a burning wreck heats everything nearby) -
-                // Stefan-Boltzmann view-factor transfer.
-                BEGIN_COUNTER(applyRadiativeExchange);
-[] call EFUNC(thermal,applyRadiativeExchange);
-END_COUNTER(applyRadiativeExchange);
-                // Exhaust / emission heat (issue #204): a firing muzzle
-                // or running engine expels hot gas that warms the ground
-                // and air around it (muzzle blast over a prone shooter's
-                // floor, jet afterburner heating the tarmac).
-                BEGIN_COUNTER(applyExhaustHeat);
-[] call EFUNC(thermal,applyExhaustHeat);
-END_COUNTER(applyExhaustHeat);
+                [] call FUNC(runThermalPass);
             };
         }, 0.1] call CBA_fnc_addPerFrameHandler;
         private _logMsg = format ["sensor PFH started (vision mode %1)", _visionMode];
         AEE_LOG_INFO(_logMsg);
     };
 }, false] call CBA_fnc_addPlayerEventHandler;
+
+// DTV base channel (prototype): start the host driver when the
+// AEE Thermal > Display > base channel setting is DTV.  With the default
+// (Vanilla TI) this is a no-op.  The setting's change callback reconciles it
+// on a later change without a mission restart.
+[] call FUNC(updateThermalHostSetting);
 
 // Muzzle flash / explosive flash response for NVG.
 // A fired round with a high visibleFire value blooms or gates the tube.

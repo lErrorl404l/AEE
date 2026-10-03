@@ -113,7 +113,10 @@ missionNamespace setVariable [QGVAR(tiOutWidth), _outWidth];
 // histogram update; no need to spam it).
 private _lastW = missionNamespace getVariable [QGVAR(tiAppliedWidth), -1];
 private _lastS = missionNamespace getVariable [QGVAR(tiAppliedStart), -1];
-if (abs (_outWidth - _lastW) > 0.01 || abs (_outStart - _lastS) > 0.01) then {
+// Exposure pin test: a pinned window is owned by the debug console, so the
+// engine-window writer must not overwrite it.
+private _pinned = missionNamespace getVariable [QGVAR(agcPinned), false];
+if (!_pinned && {abs (_outWidth - _lastW) > 0.01 || abs (_outStart - _lastS) > 0.01}) then {
     setTIParameter ["OutputRangeStart", _outStart];
     setTIParameter ["OutputRangeWidth", _outWidth];
     missionNamespace setVariable [QGVAR(tiAppliedWidth), _outWidth];

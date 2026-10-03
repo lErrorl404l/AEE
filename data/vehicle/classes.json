@@ -83,7 +83,7 @@
       "is_ground": false,
       "kind": "engine_base",
       "provenance": [
-        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:155",
+        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:158",
         "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:434",
         "addons/thermal/functions/surface/fnc_getHitPointMaterials.sqf:31",
         "addons/thermal/functions/surface/fnc_getSelectionMaterials.sqf:161"
@@ -132,7 +132,7 @@
         "addons/mobility/functions/fnc_calculateSSF.sqf:116",
         "addons/mobility/functions/fnc_calculateSSF.sqf:62",
         "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:78",
-        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:152"
+        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:155"
       ],
       "token": "Car"
     },
@@ -185,7 +185,7 @@
         "addons/fx/functions/weather/fnc_applyRotorWash.sqf:27",
         "addons/mobility/functions/fnc_calculateAirEngineLoad.sqf:137",
         "addons/mobility/functions/fnc_calculateSSF.sqf:61",
-        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:152"
+        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:155"
       ],
       "token": "Helicopter"
     },
@@ -254,7 +254,7 @@
       "kind": "mod_token",
       "provenance": [
         "addons/mobility/functions/common/fnc_getNearbyVehicles.sqf:44",
-        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:152"
+        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:155"
       ],
       "token": "Motorcycle"
     },
@@ -265,7 +265,7 @@
       "provenance": [
         "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf:261",
         "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf:345",
-        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:152"
+        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:155"
       ],
       "token": "Plane"
     },
@@ -294,7 +294,7 @@
       "provenance": [
         "addons/mobility/functions/fnc_classifyVehicle.sqf:88",
         "addons/mobility/functions/fnc_getVehicleGeometry.sqf:74",
-        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:152",
+        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:155",
         "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:292"
       ],
       "token": "Ship"
@@ -330,7 +330,7 @@
         "addons/mobility/functions/fnc_calculateSoilStrength.sqf:70",
         "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:76",
         "addons/mobility/functions/fnc_classifyVehicle.sqf:110",
-        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:152",
+        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:155",
         "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:61"
       ],
       "token": "Tank"

@@ -51,6 +51,11 @@ full display range.
 private _perfT0 = diag_tickTime;
 params [""];
 
+// Exposure pin test: the operator pins the engine window from the debug
+// console and suspends the AGC here, so only the engine's own response is
+// seen (see docs/wiki/annexes/annex-c-variable-reference.qmd).
+if (missionNamespace getVariable [QGVAR(agcPinned), false]) exitWith { 0 };
+
 // ─── THROTTLE ────────────────────────────────────────────────────────────
 // This function walks EVERY solved selection and calls FUNC(calculateBandRadiance)
 // for each (line ~95) to build the scene histogram.  At 10 Hz with ~50 solved

@@ -4704,11 +4704,15 @@ class TestThermalPaintVisionGate(unittest.TestCase):
                 return index
         self.fail(f"{needle!r} not found in {self._F.name}")
 
-    def test_flag_comes_from_the_live_vision_mode(self):
+    def test_flag_comes_from_the_live_host_channel(self):
         flag = self._line_of("private _thermalOn")
-        mode = self._line_of("currentVisionMode _viewer")
-        self.assertLess(flag, mode, "the flag must be set from the live mode")
-        self.assertIn("== 2", self.lines[mode], "the gate must key on thermal")
+        mode = self._line_of("isThermalHostActive")
+        self.assertLess(flag, mode, "the flag must be set from the live host channel")
+        self.assertIn(
+            "[_viewer] call FUNC(isThermalHostActive)",
+            self.lines[mode],
+            "the gate must key on the thermal host channel",
+        )
 
     def test_save_and_material_swap_are_gated(self):
         save = self._line_of("_alreadySaved < 0")
@@ -6353,3 +6357,56 @@ class TestThermalSweepBudget(unittest.TestCase):
         self.assertIn(
             "missionNamespace setVariable [QGVAR(tiBldgPending), _pending];", code
         )
+
+
+class TestThermalBaseChannel(unittest.TestCase):
+    """The base-channel switch must not change the default path.
+
+    Issue #196 prototype.  AEE Thermal > Display > base channel selects the
+    host channel for the thermal display.  Vanilla TI (default) runs on the
+    engine thermal channel, currentVisionMode 2.  DTV disables the vehicle's
+    native TI and runs on the day channel, currentVisionMode 0, and sets no
+    ppEffectForceInNVG because the day frame is not an NVG frame.  The AGC,
+    the solver and the paint are identical on both hosts.
+    """
+
+    _SETTINGS = _REPO_ROOT / "addons" / "thermal" / "initSettings.inc.sqf"
+    _HOST = _THERMAL / "display" / "fnc_isThermalHostActive.sqf"
+    _VISION = _THERMAL / "display" / "fnc_applyThermalVision.sqf"
+    _HOSTMGR = _OPTICS / "vision" / "fnc_updateThermalHost.sqf"
+    _POSTINIT = _REPO_ROOT / "addons" / "optics" / "XEH_postInit.sqf"
+
+    def test_setting_defaults_to_vanilla_ti(self):
+        text = self._SETTINGS.read_text(encoding="utf-8")
+        self.assertIn("QGVAR(thermalBaseChannel)", text)
+        self.assertIn('[[0, 1], ["Vanilla TI", "DTV"], 0]', text)
+        self.assertIn("updateThermalHostSetting", text)
+
+    def test_default_predicate_is_the_engine_thermal_channel(self):
+        text = self._HOST.read_text(encoding="utf-8")
+        self.assertIn("currentVisionMode _unit == 2", text)
+        self.assertIn('cameraView == "GUNNER"', text)
+
+    def test_apply_thermal_vision_gates_on_the_host_not_raw_mode_2(self):
+        text = self._VISION.read_text(encoding="utf-8")
+        self.assertIn("call FUNC(isThermalHostActive)", text)
+        self.assertNotIn("currentVisionMode _player != 2", text)
+
+    def test_force_in_nvg_is_absent_on_the_dtv_host(self):
+        text = self._VISION.read_text(encoding="utf-8")
+        self.assertIn(
+            "private _forceNVG = (missionNamespace getVariable "
+            "[QGVAR(thermalBaseChannel), 0]) == 0;",
+            text,
+        )
+        # Every adjust call passes the resolved flag, never a literal true.
+        self.assertNotIn("], true, true,", text)
+
+    def test_dtv_host_disables_and_restores_ti(self):
+        text = self._HOSTMGR.read_text(encoding="utf-8")
+        self.assertIn("disableTIEquipment true", text)
+        self.assertIn("disableTIEquipment false", text)
+
+    def test_optics_wires_the_host_setting(self):
+        text = self._POSTINIT.read_text(encoding="utf-8")
+        self.assertIn("call FUNC(updateThermalHostSetting)", text)

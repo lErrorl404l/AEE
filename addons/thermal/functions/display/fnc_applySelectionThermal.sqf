@@ -164,7 +164,7 @@ if (_mode == "EXIT") then {
     // AGC still reads a real radiance window.
     private _thermalOn = false;
     private _viewer = call CBA_fnc_currentUnit;
-    if (!isNull _viewer && {currentVisionMode _viewer == 2}) then { _thermalOn = true };
+    if (!isNull _viewer && {[_viewer] call FUNC(isThermalHostActive)}) then { _thermalOn = true };
 
     // ─── Solve and apply ──────────────────────────────────────────────────
     // The selection arg is a NAME (string), an INDEX (number from the

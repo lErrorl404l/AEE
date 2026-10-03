@@ -41,10 +41,12 @@ private _veh = vehicle _player;
 if (isNil "_player" || !alive _player) exitWith {};
 if (cameraOn != _player && {cameraOn != _veh}) exitWith {};
 
-// Vision modes verified in-game: 0 = normal, 1 = NVG, 2 = thermal.
-// The thermal model runs only in thermal.  Leaving thermal fades every
-// thermal effect to a neutral state and disables it.
-if (currentVisionMode _player != 2) exitWith {
+// Vision modes verified in-game: 0 = normal/DTV, 1 = NVG, 2 = thermal.
+// The host channel is resolved by fnc_isThermalHostActive: the engine
+// thermal channel (mode 2) under the default Vanilla TI setting, or the day
+// (DTV) channel under the DTV setting.  Leaving the host fades every thermal
+// effect to a neutral state and disables it.
+if !([_player] call FUNC(isThermalHostActive)) exitWith {
     private _active = missionNamespace getVariable [QGVAR(thermalActive), false];
     if (_active) then {
         // Destroy handles on exit and reset to -1.  The engine can kill
@@ -220,6 +222,12 @@ if (!_ppOn) exitWith {
     AEE_LOG_DEBUG("thermal ppEffect chain DISABLED by setting (thermalPPEffects=false)");
 };
 
+// The DTV host runs on the day channel, which is not an NVG frame, so the
+// ppEffectForceInNVG flag is not set there.  It is kept on the engine
+// thermal channel, the pre-existing behaviour.  This is the only host
+// difference in the pass.
+private _forceNVG = (missionNamespace getVariable [QGVAR(thermalBaseChannel), 0]) == 0;
+
 // ─── Post-process writes: change-gated ─────────────────────────────────────
 // Each ppEffectAdjust followed by ppEffectCommit is an engine call into the
 // render chain, and this function runs on every tick of the 0.1 s pass.  The
@@ -357,7 +365,7 @@ private _noise = (_envNoise + _fpnAmp) max 0 min 1;
 private _sharpness = linearConversion [1, 0, _effective, 0.75, 1.5, true];
 private _grainSize = linearConversion [1, 0, _effective, 1.5, 2.0, true];
 if (_hGrain >= 0) then {
-        [_hGrain, [_noise, _sharpness, _grainSize, 0.5, 1.0, 0], true, true, "grain"] call _ppApply;
+        [_hGrain, [_noise, _sharpness, _grainSize, 0.5, 1.0, 0], true, _forceNVG, "grain"] call _ppApply;
     };
 
 // ─── DynamicBlur (IR scatter) ─────────────────────────────────────────────
@@ -369,7 +377,7 @@ if (_hGrain >= 0) then {
 private _blur = linearConversion [1, 0, _effective, 0.0, 0.15, true];
 _blur = (_blur + _panSmear + _windowBlur) min 0.25;
 if (_hBlur >= 0) then {
-        [_hBlur, [_blur], true, true, "blur"] call _ppApply;
+        [_hBlur, [_blur], true, _forceNVG, "blur"] call _ppApply;
     };
 
 // ─── RadialBlur (ocular vignette) ──────────────────────────────────────────
@@ -379,13 +387,13 @@ if (_hBlur >= 0) then {
 // Params: [blurX, blurY, offsetX, offsetY] - the NVG-model form.
 private _vigStrength = [0.0040, 0.0040, 0.06, 0.06];
 if (_hVig >= 0) then {
-        [_hVig, _vigStrength, true, true, "vig"] call _ppApply;
+        [_hVig, _vigStrength, true, _forceNVG, "vig"] call _ppApply;
     };
 
 // Diagnostics: set aee_nightvision_nvgDebug = true in the debug console to log
 // every thermal tick's handles and params to the .rpt.
 if (missionNamespace getVariable [QGVAR(thermalDebug), false]
-    && {currentVisionMode _player == 2}) then {
+    && {[_player] call FUNC(isThermalHostActive)}) then {
     diag_log text format [
         "[AEE] Thermal tick | visMode=%1 contrast=%2 crossover=%3 | handles CC=%4 grain=%5 blur=%6 | CC params %7 | grain=%8 blur=%9",
         currentVisionMode _player,
