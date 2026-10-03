@@ -99,6 +99,23 @@ END_COUNTER(applyRainDroplets);
                 BEGIN_COUNTER(applyNVGTubeModel);
 [] call EFUNC(nightvision,applyNVGTubeModel);
 END_COUNTER(applyNVGTubeModel);
+                // Fusion (Track B ENVG-B): the OPERATOR decides, never an
+                // automatic response.  isFusionCapable asks whether this
+                // device MAY fuse.  The mode asks whether the operator HAS
+                // asked for it, and its default is I2-only, so nothing
+                // renders fused until the operator presses the keybind or
+                // the fusionAlwaysOn setting forces it.  The overlay runs
+                // AFTER the tube model so it composites on top.
+                if ([] call EFUNC(thermal,isFusionCapable)) then {
+                    if (missionNamespace getVariable [QEGVAR(thermal,fusionAlwaysOn), false]) then {
+                        [1] call EFUNC(thermal,cycleFusionMode);
+                    };
+                    if (missionNamespace getVariable [QEGVAR(thermal,fusionMode), 0] == 1) then {
+                        [] call EFUNC(thermal,applyFusionPP);
+                        ["ON"] call EFUNC(thermal,applyFusionSun);
+                        [] call EFUNC(thermal,applyFusionOverlay);
+                    };
+                };
             };
             if (_vm == 2) then {
                 [] call FUNC(runThermalPass);

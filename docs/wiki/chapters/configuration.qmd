@@ -385,6 +385,12 @@ registered.
 | `aee_thermal_thermalPalette` | LIST | `0` | yes | thermal | Ember interpolates the engine's own decoded thermal colours through a continuous ramp. White hot grey is the luminance form of the same ramp. |
 | `aee_thermal_thermalPolarity` | LIST | `0` | yes | thermal | White hot (hot = white) is the system default (AN/PAS-13 initialises white hot). Black hot (hot = black) is a user-selectable alternative - FM 3-22.9 states polarity is user preference |
 
+## AEE Thermal → Fusion
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_thermal_fusionAlwaysOn` | CHECKBOX | `false` | yes | thermal | Render the thermal fusion overlay over any NVG, even without a thermal-capable headset. |
+
 ## AEE Thermal → Solver
 
 | Setting | Type | Default | Global | Addon | Purpose |
