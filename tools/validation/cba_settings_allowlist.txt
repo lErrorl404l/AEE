@@ -56,3 +56,4 @@ aee_exhaustTier  per-vehicle contract, read with default empty string at fnc_app
 aee_exhaustAfterburner  per-vehicle contract, read with default false at fnc_applyExhaustShimmer.sqf:258, no addon writer
 aee_exhaustGasTempC  per-vehicle contract, read with default -1 at fnc_applyExhaustShimmer.sqf:455, no addon writer
 aee_exhaustPlumeM  per-vehicle contract, read with default -1 at fnc_applyExhaustShimmer.sqf:457, no addon writer
+aee_thermal_sweepBudget  runtime sweep-budget knob, read with default 16 at fnc_applyBuildingThermal.sqf:135, no addon writer

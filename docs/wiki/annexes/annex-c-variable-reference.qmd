@@ -120,6 +120,8 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_nightvision_ppHandle_NVG_Chroma` | nightvision | NVG-owned ChromAberration ppEffect handle (priority 3050), never shared with the optics handle |
 | `aee_optics_viewDistanceTarget` | optics | Vision-driven view distance target in metres (issue #138) |
 | `aee_optics_viewDistanceSigma` | optics | Total atmospheric extinction sigma for the view-distance driver |
+| `aee_optics_dtvHostVehicle` | optics | Vehicle whose native TI the DTV base channel disabled; restored on exit or switch |
+| `aee_optics_dtvHostEntered` | optics | True while the DTV base channel has run its thermal sensor ENTER |
 
 ### Physiology
 
@@ -345,6 +347,29 @@ console may set any of them directly.
 | `aee_ballistics_logDebug` | Trace shot resolution alone |
 | `aee_physiology_logDebug` | Trace the carried load and the item masses |
 | `aee_fx_logDebug` | Trace the effect emitters |
+| `aee_thermal_agcPinned` | Debug only: suspend the AGC and the engine-window writer so the operator can pin the engine TI window by hand (exposure pin test) |
+
+### Exposure pin test (thermal)
+
+`aee_thermal_agcPinned` is a debug-console switch, not a registered
+setting.  The AEE Thermal > Display > base channel setting selects how the
+thermal display is drawn.  Vanilla TI (the default) draws it on the engine's
+own thermal channel; DTV disables the vehicle's native TI and draws it on
+the day channel, the route the A3TI and MKK thermal mods use.
+
+The pin test settles whether the engine itself auto-exposes in vanilla TI
+mode.  In the debug console type:
+
+```
+aee_thermal_agcPinned = true; setTIParameter ["OutputRangeStart", 0]; setTIParameter ["OutputRangeWidth", 1];
+```
+
+The switch suspends the AGC and the engine-window writer, so the engine
+window stays pinned at the full 0..1 range.  Pan across a cold wall and a
+hot engine.  If the image brightness holds, the engine does not auto-expose;
+if it brightens and darkens as the hot source fills the view, the engine is
+auto-exposing.  `aee_thermal_agcPinned = false` restores the automatic
+window.
 
 129 settings register in the CBA settings interface, one category per
 module plus the per-topic subs: AEE (core), AEE Optics (Intensity,

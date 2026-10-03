@@ -32,11 +32,7 @@ setAperture -1;
 if (isNil QGVAR(sensorPFH)) exitWith {};
 
 [] call EFUNC(nightvision,applyNVGTubeModel);
-[] call EFUNC(thermal,applyThermalVision);
-["EXIT"] call EFUNC(thermal,applySecondSun);
-["EXIT"] call EFUNC(thermal,applyClothingThermal);
-["EXIT"] call EFUNC(thermal,applyBuildingThermal);
-["EXIT"] call EFUNC(thermal,applyRainDroplets);
+[] call FUNC(exitThermalSensors);
 [GVAR(sensorPFH)] call CBA_fnc_removePerFrameHandler;
 GVAR(sensorPFH) = nil;
 GVAR(sensorUnit) = nil;

@@ -34,6 +34,7 @@ PREPS(solver,resolveThermalVisibility);
 PREPS(solver,updateThermalAGC);
 PREPS(display,applyThermalVision);
 PREPS(display,applyEngineThermal);
+PREPS(display,isThermalHostActive);
 PREPS(display,applySecondSun);
 PREPS(display,applyBuildingThermal);
 PREPS(display,applyClothingThermal);

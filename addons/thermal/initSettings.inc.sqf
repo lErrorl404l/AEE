@@ -27,6 +27,25 @@ AEE_SETTING_CHECKBOX(thermalFPN,"AEE Thermal","Display",true);
 // this off isolates that cost in-game, with no rebuild.  Default on.
 AEE_SETTING_CHECKBOX(thermalPPEffects,"AEE Thermal","Display",true);
 
+// ── Base channel (issue #196 prototype) ───────────────────────────────────
+// The engine renders thermal on its own TI channel (vision mode 2).  The
+// proven A3TI/MKK route instead disables the vehicle's native TI and draws
+// the thermal display over the day (DTV) channel, so the engine's TI pass
+// cannot fight the mod's.  This setting selects the host channel.  Vanilla
+// TI is the default: nothing changes until DTV is chosen.  DTV is
+// vehicle-only (the player must be in an optic).
+[
+    QGVAR(thermalBaseChannel),
+    "LIST",
+    [LLSTRING(thermalBaseChannel_Name), LLSTRING(thermalBaseChannel_Description)],
+    ["AEE Thermal", "Display"],
+    [[0, 1], ["Vanilla TI", "DTV"], 0],
+    true,
+    {
+        [] call EFUNC(optics,updateThermalHostSetting);
+    }
+] call CBA_fnc_addSetting;
+
 // ── Thermal diagnostics (issue #203, standalone decoupling) ─────────────
 // Thermal's own debug flag - previously borrowed nightvision's nvgDebug,
 // a cross-module coupling that blocked thermal as a standalone addon.
