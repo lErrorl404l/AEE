@@ -241,6 +241,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_optics_smokePersistenceScale` | SLIDER | `1.0` | yes | optics | Global smoke-duration multiplier |
 | `aee_optics_snowVisibilityPenalty` | SLIDER | `0.7` | yes | optics | Visibility loss from snow cover |
 
+## AEE Optics → Display
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_optics_hudEnabled` | CHECKBOX | `false` | yes | optics | Show the environment HUD over the night-vision view: heading, grid, altitude, time and the aee temperature, humidity and wind |
+
 ## AEE Optics → Intensity
 
 | Setting | Type | Default | Global | Addon | Purpose |

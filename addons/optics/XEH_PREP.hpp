@@ -33,3 +33,11 @@ PREPS(vision,dtvHostStop);
 PREPS(vision,calculateViewDistance);
 PREPS(vision,ppEffectCreate);
 PREPS(vision,destroyBasePostProcess);
+
+PREPS(hud,hudBuild);
+PREPS(hud,hudFormatGrid);
+PREPS(hud,hudFormatHeading);
+PREPS(hud,hudFormatRange);
+PREPS(hud,hudMarkers);
+PREPS(hud,hudRangefinder);
+PREPS(hud,hudUpdate);

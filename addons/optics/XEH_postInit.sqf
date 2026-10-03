@@ -139,6 +139,19 @@ END_COUNTER(applyNVGTubeModel);
 // on a later change without a mission restart.
 [] call FUNC(updateThermalHostSetting);
 
+// ── ECOTI environment HUD ─────────────────────────────────────────────────
+// Two Draw3D workers (rangefinder, map markers) and one update PFH.  Every
+// worker gates on the aee_optics_hudEnabled setting each tick, so the HUD
+// toggles live and an operator who leaves it OFF pays one getVariable read
+// per tick.  Ported from workshop 3759527903 FPANO_ECOTI.  hasInterface
+// only: the display and the raycasts are client-side.
+if (hasInterface) then {
+    [] call FUNC(hudRangefinder);
+    [] call FUNC(hudMarkers);
+    [FUNC(hudUpdate), 0.1] call CBA_fnc_addPerFrameHandler;
+};
+
+
 // Muzzle flash / explosive flash response for NVG.
 // A fired round with a high visibleFire value blooms or gates the tube.
 // Follows the ACE3 pattern (nightvision/fnc_onFiredPlayer): read the

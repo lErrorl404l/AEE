@@ -167,6 +167,8 @@ BINARY_COMMANDS = {
     "vectorDistanceSqr",
     "vectorCrossProduct",
     "mod",
+    # number toFixed decimals - binary form, returns a STRING (HUD range).
+    "toFixed",
 }
 
 
@@ -193,6 +195,8 @@ UNARY_COMMANDS = {
     "sin",
     "vectorMagnitude",
     "vectorNormalized",
+    # str X - SQF number/other to display string (HUD heading/grid).
+    "str",
 }
 
 
@@ -215,6 +219,29 @@ def _sqf_sort(arr: list, ascending: Any = True) -> None:
 # Vector and modulo builtins.  These are command-style in SQF
 # (_a vectorDiff _b) and are reached through the BINARY_COMMANDS path,
 # which resolves the command name to a callable in BUILTINS.
+def _sqf_str(value: Any) -> str:
+    """SQF str: whole floats print without a decimal point, others as-is."""
+    if isinstance(value, bool):
+        return "true" if value else "false"
+    if isinstance(value, float):
+        if value.is_integer():
+            return str(int(value))
+        return f"{value:g}"
+    return str(value)
+
+
+def _sqf_toFixed(value: Any, decimals: Any) -> str:
+    """SQF toFixed: round half away from zero, pad to the requested places."""
+    d = int(decimals)
+    factor = 10**d
+    scaled = value * factor
+    if scaled >= 0:
+        rounded = math.floor(scaled + 0.5)
+    else:
+        rounded = math.ceil(scaled - 0.5)
+    return f"{rounded / factor:.{d}f}"
+
+
 def _sqf_vectorDiff(a: list, b: list) -> list:
     return [a[0] - b[0], a[1] - b[1], a[2] - b[2]]
 
@@ -261,6 +288,7 @@ BUILTINS: dict[str, Any] = {
     "vectorDistanceSqr": _sqf_vectorDistanceSqr,
     "vectorCrossProduct": _sqf_vectorCrossProduct,
     "mod": lambda a, b: math.fmod(a, b),
+    "toFixed": _sqf_toFixed,
     "true": True,
     "false": False,
     "nil": None,
@@ -855,6 +883,8 @@ class SqfRuntime:
                 if value >= 0:
                     return float(math.floor(value + 0.5))
                 return float(math.ceil(value - 0.5))
+            if node.op == "str":
+                return _sqf_str(value)
             if node.op == "ceil":
                 return float(math.ceil(value))
             if node.op == "cos":
@@ -912,6 +942,13 @@ class SqfRuntime:
             idx = self.eval(node.idx)
             if isinstance(idx, bool):
                 return arr[1] if idx else arr[0]
+            if isinstance(idx, list):
+                # SQF range select: arr select [start, count].  Works on an
+                # array and on a string (HUD grid slice).
+                start = int(idx[0])
+                if len(idx) > 1:
+                    return arr[start : start + int(idx[1])]
+                return arr[start:]
             return arr[int(idx)]
         if isinstance(node, Call):
             fn = self.eval(node.fn)
