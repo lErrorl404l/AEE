@@ -33,6 +33,14 @@
             <Original>Dew Decay Rate</Original>
             <English>Dew Decay Rate</English>
         </Key>
+        <Key ID="STR_AEE_Optics_dynamicStars_Description">
+            <Original>Draw the physics-driven starfield (limiting magnitude, moon, twilight and cloud drive which stars appear and how bright)</Original>
+            <English>Draw the physics-driven starfield (limiting magnitude, moon, twilight and cloud drive which stars appear and how bright)</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_dynamicStars_Name">
+            <Original>Dynamic Starfield</Original>
+            <English>Dynamic Starfield</English>
+        </Key>
         <Key ID="STR_AEE_Optics_glareBlurMax_Description">
             <Original>Veiling blur at peak solar glare</Original>
             <English>Veiling blur at peak solar glare</English>
