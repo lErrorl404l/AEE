@@ -576,13 +576,25 @@ class TestThermalCorpusParity(unittest.TestCase):
         )
 
     def test_every_thermal_value_this_release_holds_is_claimed(self):
+        # Every thermal field this release holds is a claimed sourced figure.
+        # The ECOTI is the one documented exception: the Safran E-COTI Data
+        # Sheet prints no NETD and no refresh rate, so those two fields are
+        # labelled absent rather than borrowed from a sibling device.  Every
+        # other ECOTI field is claimed, and no other device has an absent
+        # field.
         load = catalogue.load(gen.DEFAULT_DATA)
         for entry in load.entries:
             if entry.family != "thermal":
                 continue
+            published_absent = (
+                {"netd_c", "refresh_hz"} if entry.device_id == "ecoti" else set()
+            )
             for name, field in entry.resolved_fields().items():
                 with self.subTest(device=entry.device_id, field=name):
-                    self.assertEqual(field.grade, "claimed")
+                    if name in published_absent:
+                        self.assertEqual(field.grade, "absent")
+                    else:
+                        self.assertEqual(field.grade, "claimed")
 
 
 if __name__ == "__main__":

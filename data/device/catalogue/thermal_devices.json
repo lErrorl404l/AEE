@@ -1,6 +1,6 @@
 {
   "retrieved": "2026-10-02",
-  "note": "Thermal device entries. Every value comes from the thermal device table of the AEE sensor device library, a tier-5 compilation, so every value is grade claimed.",
+  "note": "Thermal device entries. Most values come from the thermal device table of the AEE sensor device library, a tier-5 compilation, so those values are grade claimed. The ECOTI row is the exception: its values come from the Safran Optics 1 E-COTI Data Sheet, a manufacturer sheet hosted by a distributor, and every ECOTI value is grade claimed. The sheet publishes no ECOTI NETD, so the row holds no netd_c.",
   "sources": [],
   "entries": [
     {
@@ -605,6 +605,57 @@
           "source": "aee_sensor_device_library",
           "locator": "thermal device table, COTI row, weight column",
           "state": "as published in the compilation",
+          "grade": "claimed"
+        }
+      }
+    },
+    {
+      "device_id": "ecoti",
+      "canonical_name": "Safran Optics 1 ECOTI",
+      "family": "thermal",
+      "maker": "Safran Optics 1",
+      "country": "US",
+      "class_names": [
+        "ECOTI",
+        "E-COTI"
+      ],
+      "aliases": [
+        "ecoti"
+      ],
+      "keywords": [
+        "ecoti"
+      ],
+      "values": {
+        "resolution_x": {
+          "value": 640,
+          "unit": "count",
+          "source": "safran_ecoti_datasheet",
+          "locator": "detector and resolution line: uncooled LWIR microbolometer 640x480, 17 um pixel pitch",
+          "state": "as published on the E-COTI Data Sheet",
+          "grade": "claimed"
+        },
+        "resolution_y": {
+          "value": 480,
+          "unit": "count",
+          "source": "safran_ecoti_datasheet",
+          "locator": "detector and resolution line: uncooled LWIR microbolometer 640x480, 17 um pixel pitch",
+          "state": "as published on the E-COTI Data Sheet",
+          "grade": "claimed"
+        },
+        "cooled": {
+          "value": "uncooled",
+          "unit": "enum",
+          "source": "safran_ecoti_datasheet",
+          "locator": "detector line: uncooled LWIR microbolometer, 8-12 um band",
+          "state": "as published on the E-COTI Data Sheet",
+          "grade": "claimed"
+        },
+        "weight_kg": {
+          "value": 0.125,
+          "unit": "kg",
+          "source": "safran_ecoti_datasheet",
+          "locator": "weight line: 125 g",
+          "state": "as published on the E-COTI Data Sheet",
           "grade": "claimed"
         }
       }

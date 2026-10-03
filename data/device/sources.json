@@ -128,5 +128,31 @@
     "url": "",
     "primary_held": false,
     "note": "A compilation of manufacturer and manual figures held in the repository research note. It is a tier-5 source, so every value taken from it is grade claimed."
+  },
+  {
+    "source_id": "safran_ecoti_datasheet",
+    "tier": 4,
+    "type": "manufacturer",
+    "title": "E-COTI Enhanced Clip-On Thermal Imager Data Sheet",
+    "identifier": "Safran Optics 1 E-COTI Data Sheet, Rev March 2021",
+    "locator": "thermal field of view line (30 degrees circular); detector and resolution line (640x480, 17 um); weight line (125 g)",
+    "published": "2021-03",
+    "retrieved": "2026-10-03",
+    "url": "https://www.nvdevices.com/wp-content/uploads/2020/02/E-COTI-Data-Sheet.pdf",
+    "primary_held": false,
+    "note": "Manufacturer data sheet hosted by the nvdevices.com distributor. The document is Safran Optics 1 material and the host is a distributor, so every value taken from it is graded claimed and the sourcing strength is not upgraded above the sheet's own imprint. The sheet publishes no ECOTI NETD, so the ECOTI corpus row holds no netd_c."
+  },
+  {
+    "source_id": "safran_ecoti_product",
+    "tier": 4,
+    "type": "manufacturer",
+    "title": "ECOTI Enhanced Clip-On Thermal Imager product page",
+    "identifier": "Safran Electronics and Defense ECOTI product page",
+    "locator": "product description and feature list; identity only",
+    "published": "",
+    "retrieved": "2026-10-03",
+    "url": "https://www.safran-group.com/products-services/ecoti-enhanced-clip-thermal-imager-soldiers-night-vision-devices",
+    "primary_held": false,
+    "note": "Manufacturer product page. It corroborates the product identity only and is not claimed as the source of a device figure."
   }
 ]
