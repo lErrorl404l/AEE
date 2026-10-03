@@ -53,6 +53,8 @@ PREPS(display,resolvePaintIndexFromSelections);
 PREPS(display,getNearestSelection);
 PREPS(display,getSelectionSunExposure);
 PREPS(display,thermalPalette);
+PREPS(display,thermalWetDistortionParams);
+PREPS(display,thermalResolutionParams);
 PREPS(display,calculateVehicleHeat);
 PREPS(display,applyContactConduction);
 PREPS(display,applyRadiativeExchange);

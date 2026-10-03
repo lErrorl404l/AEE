@@ -122,10 +122,23 @@ AEE_SETTING_SLIDER(repaintHz,"AEE Thermal","Display",1,30,4,1);
     "LIST",
     [LLSTRING(thermalPalette_Name), LLSTRING(thermalPalette_Description)],
     ["AEE Thermal", "Display"],
-    [[0, 1], ["Ember", "White hot grey"], 0],
+    [[0, 1, 2, 3, 4, 5, 6], ["Ember", "White hot grey", "Isotherm red", "Isotherm green", "Isotherm yellow", "Isotherm magenta", "Sepia"], 0],
     true,
     {}
 ] call CBA_fnc_addSetting;
+
+// Rain on the objective lens (MKK thermal_improvement, workshop 3753145363).
+// The value is the maximum lens blurriness the WetDistortion effect reaches
+// at full wet; the display scales it from 0 by AEE's own rain and fog, so a
+// dry scene shows nothing.
+AEE_SETTING_SLIDER(thermalWetDistortion,"AEE Thermal","Display",0,1,0.08,2);
+
+// Thermal sensor pixelation (MKK thermal_improvement, workshop 3753145363).
+// Off by default, as in MKK's base preset.  On, the display quantises to the
+// fitted device's vertical resolution, so a low-resolution sensor shows the
+// blocks its detector actually resolves.  The device figure is never
+// invented; the engine clamps a figure finer than the render.
+AEE_SETTING_CHECKBOX(thermalPixelation,"AEE Thermal","Display",false);
 
 // Manual window, in apparent surface temperature (C).  Wide by design so
 // fires and exhaust stay on scale.  The code swaps the endpoints when the
