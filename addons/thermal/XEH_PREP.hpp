@@ -85,6 +85,7 @@ PREPS(hud,hudBoxDraw);
 PREPS(outline,outlineTopo);
 PREPS(outline,outlineSkeleton);
 PREPS(outline,outlineSensorLod);
+PREPS(outline,outlineGearRadius);
 PREPS(outline,outlineCanvas);
 PREPS(outline,outlineCollect);
 PREPS(outline,outlineDraw);

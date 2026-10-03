@@ -57,6 +57,9 @@ CATALOGUE = json.loads(
     )
 )
 DATA_DIR = REPO / "data" / "device"
+OPTICS_POSTINIT_SRC = (REPO / "addons" / "optics" / "XEH_postInit.sqf").read_text(
+    encoding="utf-8"
+)
 
 
 def _gate(vision_mode: float, has_thermal: bool, always_on: bool) -> bool:
@@ -390,6 +393,60 @@ class TestFusionSolidFill(unittest.TestCase):
         fill_at = OVERLAY_SRC.index("if (_fillOn) exitWith {")
         sweep_at = OVERLAY_SRC.index("call FUNC(takeThermalSweep)")
         self.assertLess(fill_at, sweep_at)
+
+
+class TestFusionRestoreOnGateOff(unittest.TestCase):
+    """Every gate-off transition restores what fusion painted.
+
+    ROOT CAUSE.  The source's fn_thermalFill runs on EVERY Draw3D frame
+    (fn_postInit.sqf:19) and pass 1 restores every registered body once _want
+    is false (fn_thermalFill.sqf:76-96), so a painted body can never outlive
+    the gate.  aee drives fnc_applyFusionOverlay from the sensor PFH, which
+    only runs while vision mode is 1.  The PFH's own gate can drop while it
+    stays alive - a switch to thermal (vision mode 2), a device that stops
+    being fusion-capable, or fusion switched off - and the PFH never called
+    the restore, so the painted setObjectTexture (solid fill) and
+    setObjectMaterial (emissive ladder) stayed on the world.  The PFH now
+    restores on every gate-off transition, and teardownSensors still owns the
+    genuine return to normal vision, death and respawn.
+    """
+
+    def test_the_dirty_test_reads_both_registries(self):
+        self.assertIn("QEGVAR(thermal,fusionFillReg)", OPTICS_POSTINIT_SRC)
+        self.assertIn("QEGVAR(thermal,fusionOverlaySaved)", OPTICS_POSTINIT_SRC)
+
+    def test_a_non_nvg_vision_mode_restores(self):
+        # vision mode 2 (thermal) and any other non-NVG mode.
+        self.assertIn("if ((_vm != 1) && _fusionDirty) then {", OPTICS_POSTINIT_SRC)
+
+    def test_every_gate_off_branch_calls_the_exit_restore(self):
+        # Three branches: not vision mode 1, capable but mode off, and the
+        # device no longer fusion-capable.
+        self.assertEqual(
+            OPTICS_POSTINIT_SRC.count(
+                '[_player, "EXIT"] call EFUNC(thermal,applyFusionOverlay);'
+            ),
+            3,
+        )
+
+    def test_the_restore_is_not_reached_when_fusion_is_active(self):
+        # The dirty restore must sit behind the active check, so a fused tick
+        # is never torn down.  The vm==1 && capable && mode==1 path paints.
+        self.assertIn("[] call EFUNC(thermal,applyFusionOverlay);", OPTICS_POSTINIT_SRC)
+        self.assertIn("[true] call EFUNC(thermal,outlineToggle);", OPTICS_POSTINIT_SRC)
+
+    def test_the_overlay_exit_is_the_single_restore_owner(self):
+        # Both registries are restored by the one EXIT block: the fill by its
+        # own EXIT call and the ladder by the saved-material loop.
+        self.assertIn('[_player, "EXIT"] call FUNC(applyFusionFill);', OVERLAY_SRC)
+        self.assertIn("QGVAR(fusionOverlaySaved)", OVERLAY_SRC)
+
+    def test_the_fill_exit_restore_does_not_need_a_live_player(self):
+        # The restore runs before the isNull guard, so a dead or changed unit
+        # still restores.  Order is the contract.
+        exit_at = FILL_SRC.index('if (_mode == "EXIT") exitWith {')
+        null_at = FILL_SRC.index("if (isNull _player) exitWith {};")
+        self.assertLess(exit_at, null_at)
 
 
 if __name__ == "__main__":
