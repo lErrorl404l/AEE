@@ -577,7 +577,7 @@ private _scanMs = round ((diag_tickTime - _perfT0) * 1000);
 // int %9 is the RESOLVED scan interval.  The 09:27:28 RPT proved the scan ran
 // every 5 s while the interval should be 30; logging the resolved value tells
 // the next run apart the two possible causes (gate semantics vs interval 0).
-private _logMsg = format ["thermal: air %1, ground %2, vehicle %3, infantry %4, objects %5 | scan %6 us | vehicles %7 | humans %8 | int %9",
+private _logMsg = format ["thermal: air %1, ground %2, vehicle %3, infantry %4, objects %5 | scan %6 ms | vehicles %7 | humans %8 | int %9",
     _airTemp, _groundTemp, _avgVehicle, _avgInfantry, count _results, _scanMs, _vehicleCount, _infantryCount,
     _scanInterval];
 AEE_LOG_DEBUG(_logMsg);

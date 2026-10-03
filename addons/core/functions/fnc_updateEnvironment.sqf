@@ -12,6 +12,7 @@ if ((count _posASL) == 1 && {(_posASL select 0) isEqualType []}) then {
 
 if (!GVAR(enabled)) exitWith {};
 
+private _perfT0 = diag_tickTime;
 BEGIN_COUNTER(updateEnvironment);
 
 // Multiplayer note: core atmospheric state (temperature, pressure, humidity,
@@ -396,6 +397,15 @@ if (GVAR(diagnostic)) then {
 ["AEE_WeatherUpdated"] call CBA_fnc_localEvent;
 
 END_COUNTER(updateEnvironment);
+
+// Whole-tick cost, the one number the reverted performance counters used to
+// carry.  The environment tick fans out to every subsystem (atmosphere,
+// thermal, optics, mobility, radio, maritime, physiology, fx), and each
+// section's counter is compiled out of a production build, so the entry has
+// no timer.  This is a real diag_tickTime read on the entry, logged at the
+// trace level so it costs nothing unless the operator turns the trace on.
+private _perfMsg = format ["updateEnvironment %1 ms", round ((diag_tickTime - _perfT0) * 1000)];
+AEE_LOG_DEBUG(_perfMsg);
 
     // AUTO-DUMP the performance counters every ~10 s (2 x the 5 s tick) when
     // they are compiled in.  The guard fires only in a counter build, so a

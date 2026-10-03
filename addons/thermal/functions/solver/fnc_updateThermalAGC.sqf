@@ -297,7 +297,7 @@ missionNamespace setVariable [QGVAR(agcRadMin), _radMin];
 missionNamespace setVariable [QGVAR(agcRadMax), _radMax];
 if (_traceOn) then {
     private _agcMs = round ((diag_tickTime - _perfT0) * 1000);
-    private _agcMsg = format ["thermalAGC %1 us | radMin %2 | radMax %3 | fullSpan %4 | air %5 C | ground %6 C | selections %7",
+    private _agcMsg = format ["thermalAGC %1 ms | radMin %2 | radMax %3 | fullSpan %4 | air %5 C | ground %6 C | selections %7",
         _agcMs, _radMin toFixed 6, _radMax toFixed 6,
         _fullSpan toFixed 6, _airTemp, _groundTemp, count _selTemps];
     AEE_LOG_DEBUG(_agcMsg);

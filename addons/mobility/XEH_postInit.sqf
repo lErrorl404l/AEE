@@ -15,9 +15,12 @@ if (GVAR(flightTurbulence)) then {
     // loop integrates fine at 20 Hz, and per-frame setVelocity is the jitter
     // case the terrain-drag doc warns about.
     GVAR(turbulencePFH) = [{
+        private _perfT0 = diag_tickTime;
         BEGIN_COUNTER(applyFlightTurbulence);
 call FUNC(applyFlightTurbulence);
 END_COUNTER(applyFlightTurbulence);
+        private _perfMsg = format ["flightTurbulence %1 ms", round ((diag_tickTime - _perfT0) * 1000)];
+        AEE_LOG_DEBUG(_perfMsg);
     }, 0.05] call CBA_fnc_addPerFrameHandler;
 
     AEE_LOG_INFO("flight turbulence PFH started");
@@ -32,6 +35,7 @@ if (GVAR(rolloverEnabled)) then {
     GVAR(rolloverRefresh) = -1;
 
     GVAR(rolloverPFH) = [{
+        private _perfT0 = diag_tickTime;
         private _ref = [worldSize / 2, worldSize / 2, 0];
         private _player = call CBA_fnc_currentUnit;
         if (!isNil "_player" && {!isNull _player}) then {
@@ -56,6 +60,8 @@ if (GVAR(rolloverEnabled)) then {
 [_x] call FUNC(applyRollover);
 END_COUNTER(applyRollover);
         } forEach GVAR(rolloverVehicles);
+        private _perfMsg = format ["rollover %1 ms | vehicles %2", round ((diag_tickTime - _perfT0) * 1000), count GVAR(rolloverVehicles)];
+        AEE_LOG_DEBUG(_perfMsg);
     }, 0.05] call CBA_fnc_addPerFrameHandler;
 
     AEE_LOG_INFO("vehicle rollover PFH started");
@@ -71,6 +77,7 @@ if (GVAR(terrainDragEnabled)) then {
     GVAR(terrainRefresh) = -1;
 
     GVAR(terrainDragPFH) = [{
+        private _perfT0 = diag_tickTime;
         private _ref = [worldSize / 2, worldSize / 2, 0];
         private _player = call CBA_fnc_currentUnit;
         if (!isNil "_player" && {!isNull _player}) then {
@@ -91,6 +98,8 @@ if (GVAR(terrainDragEnabled)) then {
 [_x] call FUNC(applyTerrainDrag);
 END_COUNTER(applyTerrainDrag);
         } forEach GVAR(terrainVehicles);
+        private _perfMsg = format ["terrainDrag %1 ms | vehicles %2", round ((diag_tickTime - _perfT0) * 1000), count GVAR(terrainVehicles)];
+        AEE_LOG_DEBUG(_perfMsg);
     }, 0.05] call CBA_fnc_addPerFrameHandler;
 
     AEE_LOG_INFO("terrain drag PFH started");
@@ -109,6 +118,7 @@ if (GVAR(vehicleCouplingEnabled)) then {
     GVAR(couplingMassTick) = -1;
 
     GVAR(couplingPFH) = [{
+        private _perfT0 = diag_tickTime;
         private _ref = [worldSize / 2, worldSize / 2, 0];
         private _player = call CBA_fnc_currentUnit;
         if (!isNil "_player" && {!isNull _player}) then {
@@ -135,6 +145,8 @@ if (GVAR(vehicleCouplingEnabled)) then {
             [_x] call FUNC(applyGripLoss);
             END_COUNTER(applyGripLoss);
         } forEach GVAR(couplingVehicles);
+        private _perfMsg = format ["vehicleCoupling %1 ms | vehicles %2", round ((diag_tickTime - _perfT0) * 1000), count GVAR(couplingVehicles)];
+        AEE_LOG_DEBUG(_perfMsg);
     }, 0.05] call CBA_fnc_addPerFrameHandler;
 
     AEE_LOG_INFO("vehicle coupling PFH started");

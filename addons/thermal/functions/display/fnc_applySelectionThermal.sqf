@@ -946,7 +946,7 @@ if (_mode == "EXIT") then {
     missionNamespace setVariable [QGVAR(paintBands), _bands];
     if (_traceOn) then {
         private _objUs = round ((diag_tickTime - _perfT0) * 1000);
-        private _gateMsg = format ["paint %1 | sels %2 | due %3 | uploads %4 | solve %5 us",
+        private _gateMsg = format ["paint %1 | sels %2 | due %3 | uploads %4 | solve %5 ms",
             _objKey, count _selNames, _due, _uploaded, _objUs];
         AEE_LOG_DEBUG(_gateMsg);
     };
