@@ -150,12 +150,57 @@ class Assign:
     expr: Any
 
 
-BINARY_COMMANDS = {"getVariable", "isEqualType"}
+BINARY_COMMANDS = {
+    "getVariable",
+    "isEqualType",
+    "isEqualTo",
+    "isNotEqualTo",
+    "pushBack",
+    "deleteAt",
+    "sort",
+}
+
+
+def _sqf_isEqualTo(a: Any, b: Any) -> bool:
+    return a == b
+
+
+def _sqf_isNotEqualTo(a: Any, b: Any) -> bool:
+    return a != b
+
 
 # Unary commands applied to a following expression.  Without these the
 # parser reads the name as a variable and the operand as a new statement,
 # which is how `(count _v) == 0` raised "expected ), got _v".
 UNARY_COMMANDS = {"count", "abs", "toLower", "finite", "round", "tan"}
+
+
+# Mutating array builtins.  The interpreter holds Python lists by reference,
+# so append/pop on the list mutate the variable's value, as SQF does.
+def _sqf_pushBack(arr: list, value: Any) -> None:
+    arr.append(value)
+    return None
+
+
+def _sqf_deleteAt(arr: list, index: Any) -> Any:
+    return arr.pop(int(index))
+
+
+def _sqf_sort(arr: list, ascending: Any = True) -> None:
+    arr.sort(reverse=not bool(ascending))
+    return None
+
+
+BUILTINS: dict[str, Any] = {
+    "pushBack": _sqf_pushBack,
+    "deleteAt": _sqf_deleteAt,
+    "sort": _sqf_sort,
+    "isEqualTo": _sqf_isEqualTo,
+    "isNotEqualTo": _sqf_isNotEqualTo,
+    "true": True,
+    "false": False,
+    "nil": None,
+}
 
 
 @dataclass
@@ -199,6 +244,21 @@ class Lambda:
     params: list
     body: list
     closure: dict
+
+
+@dataclass
+class Each:
+    """forEach (keep=True, returns None) / apply (keep=False, returns ARRAY)."""
+
+    code: Any
+    arr: Any
+    keep: bool
+
+
+@dataclass
+class While:
+    cond: list
+    body: list
 
 
 # ─── Parser (recursive descent) ─────────────────────────────────────────────
@@ -305,10 +365,21 @@ class SqfParser:
             body = self.parse_block()
             self.optional_semi()
             return For(loop_var, lo, hi, body)
+        if t.value == "while":
+            self.next()
+            cond = self.parse_block()
+            self.expect("do")
+            body = self.parse_block()
+            self.optional_semi()
+            return While(cond, body)
         if t.value == "{":
             # bare lambda in expression position handled by parse_expr;
-            # here treat as a statement lambda (unlikely in solver).
-            return ExprStmt(self.parse_expr())
+            # here treat as a statement lambda (unlikely in solver).  Consume
+            # the statement terminator like the generic path below, or the
+            # next parse_stmt reads the stray semicolon as a primary.
+            expr = self.parse_expr()
+            self.optional_semi()
+            return ExprStmt(expr)
         expr = self.parse_expr()
         self.optional_semi()
         return ExprStmt(expr)
@@ -475,6 +546,20 @@ class SqfParser:
                 self.next()
                 right = self.parse_unary()
                 left = MaxMin(t.value, left, right)
+            elif t.value == "forEach":
+                self.next()
+                right = self.parse_unary()
+                if isinstance(left, Lambda):
+                    left = Each(code=left, arr=right, keep=True)
+                else:
+                    left = Each(code=right, arr=left, keep=True)
+            elif t.value == "apply":
+                self.next()
+                right = self.parse_unary()
+                if isinstance(left, Lambda):
+                    left = Each(code=left, arr=right, keep=False)
+                else:
+                    left = Each(code=right, arr=left, keep=False)
             elif t.value in BINARY_COMMANDS:
                 # binary command form: NS getVariable [k, d] - the
                 # left operand is the namespace, the command's arg is
@@ -555,7 +640,12 @@ class SqfParser:
 # ─── Runtime ────────────────────────────────────────────────────────────────
 class SqfRuntime:
     def __init__(self, globals_: dict[str, Any] | None = None):
-        self.globals = globals_ or {}
+        # true/false/nil and the mutating array builtins are engine words, not
+        # variables; inject them before any call-supplied global so a caller
+        # can still override.
+        self.globals: dict[str, Any] = dict(BUILTINS)
+        if globals_:
+            self.globals.update(globals_)
         self.scopes: list[dict[str, Any]] = [{}]
 
     def get(self, name: str) -> Any:
@@ -661,6 +751,25 @@ class SqfRuntime:
                     return float(math.floor(value + 0.5))
                 return float(math.ceil(value - 0.5))
             raise ValueError(f"unknown unary command {node.op}")
+        if isinstance(node, Each):
+            arr = self.eval(node.arr)
+            code = self.eval(node.code)
+            out: list = []
+            for i, el in enumerate(arr):
+                self.push()
+                self.set("_x", el)
+                self.set("_forEachIndex", float(i))
+                if isinstance(code, Lambda):
+                    for k, v in code.closure.items():
+                        if k not in self.scopes[-1]:
+                            self.scopes[-1].setdefault(k, v)
+                    r = self.run(code.body)
+                else:
+                    r = None
+                self.pop()
+                if not node.keep:
+                    out.append(r)
+            return out if not node.keep else None
         if isinstance(node, Select):
             arr = self.eval(node.arr)
             idx = self.eval(node.idx)
@@ -723,6 +832,14 @@ class SqfRuntime:
             for i in range(lo, hi + 1):
                 self.set(s.var, float(i))
                 self.run(s.body)
+            return None
+        if isinstance(s, While):
+            guard = 0
+            while bool(self.run(s.cond)):
+                self.run(s.body)
+                guard += 1
+                if guard > 1000000:
+                    raise RuntimeError("while loop guard exceeded")
             return None
         if isinstance(s, Params):
             # The harness pre-binds params from the call args.  Re-binding

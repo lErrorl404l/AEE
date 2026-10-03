@@ -66,6 +66,14 @@
       "reason": "no positive ground class-table row"
     },
     {
+      "token": "Animal",
+      "kind": "mod_token",
+      "is_ground": false,
+      "state": "excluded_non_ground",
+      "variant": null,
+      "reason": "no positive ground class-table row"
+    },
+    {
       "token": "Building",
       "kind": "engine_base",
       "is_ground": false,

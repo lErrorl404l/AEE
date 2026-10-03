@@ -148,6 +148,9 @@ if (_mode == "EXIT") exitWith {
     // Tear the field-of-view frame down first: the overlay is leaving NVG,
     // so the operator must not be left with a border over normal vision.
     [false] call FUNC(updateFusionFrame);
+    // The outline overlay belongs to the same exit: clear it and lower its
+    // display, or a stale outline survives into normal vision.
+    [false] call FUNC(outlineToggle);
     private _restore = missionNamespace getVariable [QGVAR(fusionOverlaySaved), []];
     {
         _x params ["_o", "_oldMats"];
