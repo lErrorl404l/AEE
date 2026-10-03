@@ -37,10 +37,22 @@ if (_mode == 0) then {
     // destroy is reported, so the full handle lifecycle appears in the log:
     // created in fnc_applyFusionPP, destroyed here.  A handle that outlives
     // its mode is a silent leak, and a silent leak cannot be found.
+    private _hChroma = missionNamespace getVariable [QGVAR(ppHandle_Fusion_Chroma), -1];
+    if (_hChroma >= 0) then {
+        ppEffectDestroy _hChroma;
+        private _logMsg = format ["fusion PP: destroyed chroma handle=%1", _hChroma];
+        AEE_LOG_DEBUG(_logMsg);
+    };
     private _hGrain = missionNamespace getVariable [QGVAR(ppHandle_Fusion_Grain), -1];
     if (_hGrain >= 0) then {
         ppEffectDestroy _hGrain;
         private _logMsg = format ["fusion PP: destroyed grain handle=%1", _hGrain];
+        AEE_LOG_DEBUG(_logMsg);
+    };
+    private _hDynBlur = missionNamespace getVariable [QGVAR(ppHandle_Fusion_DynBlur), -1];
+    if (_hDynBlur >= 0) then {
+        ppEffectDestroy _hDynBlur;
+        private _logMsg = format ["fusion PP: destroyed dynBlur handle=%1", _hDynBlur];
         AEE_LOG_DEBUG(_logMsg);
     };
     private _hCC = missionNamespace getVariable [QGVAR(ppHandle_Fusion_CC), -1];
@@ -49,7 +61,9 @@ if (_mode == 0) then {
         private _logMsg = format ["fusion PP: destroyed CC handle=%1", _hCC];
         AEE_LOG_DEBUG(_logMsg);
     };
+    missionNamespace setVariable [QGVAR(ppHandle_Fusion_Chroma), -1];
     missionNamespace setVariable [QGVAR(ppHandle_Fusion_Grain), -1];
+    missionNamespace setVariable [QGVAR(ppHandle_Fusion_DynBlur), -1];
     missionNamespace setVariable [QGVAR(ppHandle_Fusion_CC), -1];
 };
 
