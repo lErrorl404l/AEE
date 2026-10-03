@@ -64,6 +64,13 @@ AEE_SETTING_CHECKBOX(viewDistanceEnabled,"AEE Optics","Visibility",true);
 // live.
 AEE_SETTING_CHECKBOX(hudEnabled,"AEE Optics","Display",false);
 
+// ── Dynamic starfield (issue #122) ────────────────────────────────────────
+// Replaces the static baked night sky with the physics-driven star catalog:
+// limiting magnitude, moon, twilight and cloud modulate which stars appear
+// and how bright.  Default ON; each star is a local light emitter with a
+// flare (no texture asset).
+AEE_SETTING_CHECKBOX(dynamicStars,"AEE Optics","Display",true);
+
 // ── Thermal polarity (issue #196) ─────────────────────────────────────────
 // Moved to aee_thermal/initSettings.inc.sqf with the rest of the thermal
 // pipeline (white-hot default, black-hot user-selectable per FM 3-22.9).
