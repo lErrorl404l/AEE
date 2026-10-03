@@ -3475,7 +3475,7 @@ class TestSQFSync(unittest.TestCase):
                 "tiSceneMaxHeat",
                 "private _outStart = 0.0",
                 "0.9 / _sceneMaxHeat",
-                "_angVel < 0.44",
+                "_angVelDeg < 25",
                 "tiAppliedWidth",
             ],
             "engine AGC display window (physics-driven scene max heat)",

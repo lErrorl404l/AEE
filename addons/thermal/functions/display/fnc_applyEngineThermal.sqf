@@ -80,12 +80,16 @@ private _fwd = _eyeState select 1;
 private _prevFwd = missionNamespace getVariable [QGVAR(agcPrevFwd), _fwd];
 if !(_prevFwd isEqualType [] && {count _prevFwd == 3}) then { _prevFwd = _fwd; };
 private _cosA = (_prevFwd vectorDotProduct _fwd) max -1 min 1;
-private _angVel = (acos _cosA) / (diag_deltaTime max 0.001);   // rad/s
+// acos returns DEGREES, so this rate is degrees per second.  The earlier
+// code labelled it rad/s and compared it to 0.44, which made the settle
+// threshold 57 times too strict: the window almost never settled, so the
+// AGC did not adapt when the view was nearly still.
+private _angVelDeg = (acos _cosA) / (diag_deltaTime max 0.001);   // deg/s
 missionNamespace setVariable [QGVAR(agcPrevFwd), _fwd];
 
-// Freeze threshold: ~25 deg/s (0.44 rad/s).  Below = settled, adapt.
+// Freeze threshold: 25 deg/s.  Below = settled, adapt.
 // Above = sweeping, hold the window steady.
-private _settled = _angVel < 0.44;
+private _settled = _angVelDeg < 25;
 
 // Blowout guard: narrow only when the scene's hottest object would clip.
 // _sceneMaxHeat is the max physics temperature fraction from the thermal

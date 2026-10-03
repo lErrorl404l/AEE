@@ -107,7 +107,10 @@ if ((_geo select 1) > 0) then { _wheelbase = _geo select 1; };
 if (_clearanceM > 0) then { _clearance = _clearanceM; };
 
 // ─── Breakover ───────────────────────────────────────────────────────────
-private _breakover = 2 * (atan ((2 * _clearance) / _wheelbase)) * 57.2957795;
+// Arma's atan/asin/acos return DEGREES and sin/cos/tan take degrees, so
+// every angle below is already in degrees.  Scaling inverse trig by the
+// radians-to-degrees constant 57.2957795 inflated each angle 57 times.
+private _breakover = 2 * (atan ((2 * _clearance) / _wheelbase));
 
 // ─── Gradeability ────────────────────────────────────────────────────────
 // Tractive force over weight, from the traction model's coefficient (the
@@ -121,11 +124,11 @@ private _fr = 0.015;
 // fr * W.  In the (F/W) term the weight cancels, leaving mu.
 private _fw = _mu;
 private _tanTerm = _fw / (sqrt (1 + _fr * _fr));
-private _gradeRad = asin ((_tanTerm min 1) max -1) - atan _fr;
-private _grade = _gradeRad * 57.2957795;
+private _gradeDeg = asin ((_tanTerm min 1) max -1) - atan _fr;
+private _grade = _gradeDeg;
 
 // Friction limit: below this the tyres slip first.
-private _frictionLimit = (atan (_mu - _fr)) * 57.2957795;
+private _frictionLimit = atan (_mu - _fr);
 
 // The usable grade is the lower of the two.
 private _gradeUsable = _grade min _frictionLimit;
@@ -135,7 +138,7 @@ if (_gradeUsable < 0) then { _gradeUsable = 0; };
 private _ssfArr = [_vehicle] call FUNC(calculateSSF);
 private _ssf = _ssfArr select 0;
 private _tipDeg = if (_ssf > 0) then {
-    (atan _ssf) * 57.2957795
+    (atan _ssf)
 } else {
     0
 };

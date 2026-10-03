@@ -68,6 +68,18 @@ class TestLeverImplementation(unittest.TestCase):
         self.assertIn("Terrain surface texture", src)
         self.assertIn("baked", src)
 
+    def test_agc_settle_rate_is_degrees_per_second(self):
+        # acos returns degrees, so the gaze rate is deg/s.  The old code
+        # divided by the radian threshold 0.44, which was 57 times too
+        # strict and stopped the window settling.
+        src = read("addons/thermal/functions/display/fnc_applyEngineThermal.sqf")
+        self.assertIn("_angVelDeg", src)
+        self.assertIn("_angVelDeg < 25", src)
+        # The old radian-named variable and its 0.44 rad/s threshold are gone
+        # (the comment may still cite 0.44 as the wrong value, so match the
+        # operator form).
+        self.assertNotIn("_angVel <", src)
+
 
 if __name__ == "__main__":
     unittest.main()

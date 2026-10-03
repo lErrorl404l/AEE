@@ -46,7 +46,10 @@ if (!isNil "_player" && {!isNull _player}) then {
         // its own orientation. Land vehicles only.
         if !(_x isKindOf "LandVehicle") then { continue; };
         private _up = vectorUp _x;
-        private _slopeDeg = acos ((_up select 2) max -1 min 1) * 57.2957795;
+        // acos returns DEGREES, so this is the slope directly.  Scaling it
+        // by 57.2957795 inflated it and, once the terrain limits returned
+        // real degrees, forced every slope past the side-slope limit.
+        private _slopeDeg = acos ((_up select 2) max -1 min 1);
         if !(([_x, _slopeDeg] call FUNC(calculateTerrainLimits)) select 3) then { continue; };
         private _groundPressure = (getMass _x) / 8;
         _coneIndex = _coneIndex - (_groundPressure * _damageRate * (_interval / 5));
