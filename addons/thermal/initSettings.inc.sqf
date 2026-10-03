@@ -29,6 +29,12 @@ AEE_SETTING_CHECKBOX(fusionAlwaysOn,"AEE Thermal","Fusion",false);
 // non-fusion device.
 AEE_SETTING_CHECKBOX(fusionFovFrame,"AEE Thermal","Fusion",true);
 
+// The fusion thermal-outline overlay (issue #204).  Outlines the hot targets
+// the thermal state already tracks, so the operator sees which bodies the
+// fused channel resolves.  It draws nothing when fusion is off, because the
+// NVG dispatch calls the toggle only on the fusion path.
+AEE_SETTING_CHECKBOX(fusionOutline,"AEE Thermal","Fusion",true);
+
 // ── Fixed-pattern noise (issue #204, FPN) ────────────────────────────────
 // Real LWIR sensors show a static spatial mottle (fixed-pattern noise)
 // over the thermal image, independent of the temporal FilmGrain.  On:

@@ -17,6 +17,14 @@
             <Original>Fusion Field-of-View Frame</Original>
             <English>Fusion Field-of-View Frame</English>
         </Key>
+        <Key ID="STR_AEE_Thermal_fusionOutline_Description">
+            <Original>Draw the outline of each hot target the thermal state already tracks, on a transparent overlay that the NVG does not filter. It draws nothing when fusion is off or the fitted headset is not fusion capable.</Original>
+            <English>Draw the outline of each hot target the thermal state already tracks, on a transparent overlay that the NVG does not filter. It draws nothing when fusion is off or the fitted headset is not fusion capable.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_fusionOutline_Name">
+            <Original>Fusion Thermal Outline</Original>
+            <English>Fusion Thermal Outline</English>
+        </Key>
         <Key ID="STR_AEE_Thermal_logDebug_Description">
             <Original>Log thermal diagnostics to the RPT, including the wall-clock cost of each thermal function. Turn this on before reporting a performance fault.</Original>
             <English>Log thermal diagnostics to the RPT, including the wall-clock cost of each thermal function. Turn this on before reporting a performance fault.</English>

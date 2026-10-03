@@ -74,6 +74,7 @@
         "addons/mobility/functions/fnc_calculateSSF.sqf:86",
         "addons/mobility/functions/fnc_classifyVehicle.sqf:87",
         "addons/mobility/functions/fnc_getVehicleGeometry.sqf:74",
+        "addons/thermal/functions/outline/fnc_outlineCollect.sqf:43",
         "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:292"
       ],
       "token": "Air"
@@ -89,6 +90,15 @@
         "addons/thermal/functions/surface/fnc_getSelectionMaterials.sqf:161"
       ],
       "token": "AllVehicles"
+    },
+    {
+      "exclusion_reason": "no positive ground class-table row",
+      "is_ground": false,
+      "kind": "mod_token",
+      "provenance": [
+        "addons/thermal/functions/outline/fnc_outlineCollect.sqf:43"
+      ],
+      "token": "Animal"
     },
     {
       "exclusion_reason": "no positive ground class-table row",
@@ -118,7 +128,8 @@
         "addons/mobility/functions/fnc_calculateTraction.sqf:54",
         "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:270",
         "addons/thermal/functions/display/fnc_applySelectionThermal.sqf:501",
-        "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:62"
+        "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:62",
+        "addons/thermal/functions/outline/fnc_outlineCollect.sqf:43"
       ],
       "token": "CAManBase"
     },
@@ -132,7 +143,8 @@
         "addons/mobility/functions/fnc_calculateSSF.sqf:116",
         "addons/mobility/functions/fnc_calculateSSF.sqf:62",
         "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:78",
-        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:159"
+        "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:159",
+        "addons/thermal/functions/outline/fnc_outlineCollect.sqf:43"
       ],
       "token": "Car"
     },
@@ -243,7 +255,8 @@
         "addons/thermal/functions/display/fnc_applyExhaustHeat.sqf:68",
         "addons/thermal/functions/display/fnc_applyImpactHeat.sqf:55",
         "addons/thermal/functions/display/fnc_getThermalSelections.sqf:31",
-        "addons/thermal/functions/fusion/fnc_applyFusionOverlay.sqf:433",
+        "addons/thermal/functions/fusion/fnc_applyFusionOverlay.sqf:436",
+        "addons/thermal/functions/outline/fnc_outlineCollect.sqf:59",
         "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:205",
         "addons/thermal/functions/surface/fnc_getSelectionMaterials.sqf:154"
       ],
@@ -315,7 +328,8 @@
       "kind": "engine_base",
       "provenance": [
         "addons/mobility/functions/fnc_classifyVehicle.sqf:129",
-        "addons/thermal/functions/display/fnc_calculateVehicleHeat.sqf:77"
+        "addons/thermal/functions/display/fnc_calculateVehicleHeat.sqf:77",
+        "addons/thermal/functions/outline/fnc_outlineCollect.sqf:43"
       ],
       "token": "StaticWeapon"
     },
@@ -332,7 +346,8 @@
         "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:76",
         "addons/mobility/functions/fnc_classifyVehicle.sqf:110",
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:159",
-        "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:61"
+        "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:61",
+        "addons/thermal/functions/outline/fnc_outlineCollect.sqf:43"
       ],
       "token": "Tank"
     },

@@ -114,6 +114,11 @@ END_COUNTER(applyNVGTubeModel);
                         [] call EFUNC(thermal,applyFusionPP);
                         ["ON"] call EFUNC(thermal,applyFusionSun);
                         [] call EFUNC(thermal,applyFusionOverlay);
+                        [true] call EFUNC(thermal,outlineToggle);
+                    } else {
+                        // Capable but the operator has not asked for fusion:
+                        // tear the outline down rather than leave it stale.
+                        [false] call EFUNC(thermal,outlineToggle);
                     };
                 };
             };
