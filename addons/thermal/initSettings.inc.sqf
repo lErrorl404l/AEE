@@ -14,6 +14,14 @@
     {}
 ] call CBA_fnc_addSetting;
 
+// ── Fusion (issue #204, Track B ENVG-B) ───────────────────────────────────
+// Off: fusion only on TI-capable headsets (visionMode includes "TI").
+// On:  fusion renders over ANY NVG, thermal source or not (the A3TI
+// approach - its fusion modes are offered whenever an optic has thermal
+// and the current vanilla mode is NVG).  Capability is not consent: this
+// setting only grants the option, the operator still presses the keybind.
+AEE_SETTING_CHECKBOX(fusionAlwaysOn,"AEE Thermal","Fusion",false);
+
 // ── Fixed-pattern noise (issue #204, FPN) ────────────────────────────────
 // Real LWIR sensors show a static spatial mottle (fixed-pattern noise)
 // over the thermal image, independent of the temporal FilmGrain.  On:

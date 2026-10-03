@@ -29,6 +29,17 @@ returns.
 // it is safe to call when no sensor ever ran.
 setAperture -1;
 
+// Fusion teardown, BEFORE the idempotency exit below, so an exit with the
+// sensor handler already gone still restores.  The forced 0 destroys the
+// fusion PP handles and must not LATCH; the value restored is the reader's
+// own default (0, I2-only).  The materials are restored by the mode "EXIT"
+// call, and the player is the FIRST parameter: a bare ["EXIT"] binds the
+// string to _player and is rejected, which is the documented restore leak.
+[0] call EFUNC(thermal,cycleFusionMode);
+missionNamespace setVariable [QEGVAR(thermal,fusionMode), 0];
+["EXIT"] call EFUNC(thermal,applyFusionSun);
+[call CBA_fnc_currentUnit, "EXIT"] call EFUNC(thermal,applyFusionOverlay);
+
 if (isNil QGVAR(sensorPFH)) exitWith {};
 
 [] call EFUNC(nightvision,applyNVGTubeModel);
