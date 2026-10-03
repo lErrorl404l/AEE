@@ -219,6 +219,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_mobility_estimateVehicleMassEnabled` | CHECKBOX | `false` | yes | mobility | Show a bounded mass estimate for a ground vehicle that the sourced catalogue does not cover. The estimate is modelled, not documented. It uses the vehicle box size, a cited material density, and a calibrated fill factor. The switch is off until calibration passes and a human approves the model. A sourced catalogue weight always takes precedence. The estimate never replaces a documented weight. |
 | `aee_mobility_vehicleCouplingEnabled` | CHECKBOX | `true` | yes | mobility | Couple the computed surface physics to the engine at run time. Snow load adds mass with setMass, and a wet or icy surface removes grip with a force. The load comes from the modelled snow depth and the sourced snow density. No published accretion mass exists for mud, so mud adds no mass. The force is applied on the machine that owns the vehicle. |
 
+## AEE Night Vision → Display
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_nightvision_ltmEnabled` | CHECKBOX | `false` | yes | nightvision | Show the laser target marker beam through night vision (aircraft only) |
+
 ## AEE Night Vision → Intensity
 
 | Setting | Type | Default | Global | Addon | Purpose |

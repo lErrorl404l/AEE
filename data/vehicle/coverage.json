@@ -266,6 +266,14 @@
       "reason": "runtime row emitted and class-map binding held"
     },
     {
+      "token": "UAV",
+      "kind": "engine_base",
+      "is_ground": false,
+      "state": "excluded_non_ground",
+      "variant": null,
+      "reason": "no positive ground class-table row"
+    },
+    {
       "token": "Wheeled_APC",
       "kind": "mod_token",
       "is_ground": true,

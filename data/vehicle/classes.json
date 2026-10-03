@@ -198,6 +198,7 @@
         "addons/fx/functions/weather/fnc_applyRotorWash.sqf:27",
         "addons/mobility/functions/fnc_calculateAirEngineLoad.sqf:137",
         "addons/mobility/functions/fnc_calculateSSF.sqf:61",
+        "addons/nightvision/functions/ltm/fnc_ltmToggle.sqf:24",
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:159"
       ],
       "token": "Helicopter"
@@ -227,6 +228,7 @@
         "addons/mobility/functions/fnc_calculateRouteDegradation.sqf:47",
         "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:87",
         "addons/mobility/functions/fnc_classifyVehicle.sqf:86",
+        "addons/nightvision/functions/ltm/fnc_ltmToggle.sqf:24",
         "addons/thermal/functions/ground/fnc_applyGroundContactStamps.sqf:61",
         "addons/thermal/functions/solver/fnc_calculateObjectTemperature.sqf:292"
       ],
@@ -280,6 +282,7 @@
       "provenance": [
         "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf:261",
         "addons/fx/functions/weather/fnc_applyExhaustShimmer.sqf:345",
+        "addons/nightvision/functions/ltm/fnc_ltmToggle.sqf:24",
         "addons/thermal/functions/display/fnc_applyEngineThermal.sqf:159"
       ],
       "token": "Plane"
@@ -385,6 +388,15 @@
         "addons/mobility/functions/fnc_calculateTerrainLimits.sqf:79"
       ],
       "token": "Truck"
+    },
+    {
+      "exclusion_reason": "no positive ground class-table row",
+      "is_ground": false,
+      "kind": "engine_base",
+      "provenance": [
+        "addons/nightvision/functions/ltm/fnc_ltmToggle.sqf:24"
+      ],
+      "token": "UAV"
     },
     {
       "exclusion_reason": null,

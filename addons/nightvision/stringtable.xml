@@ -9,6 +9,22 @@
             <Original>Fog Grain Maximum</Original>
             <English>Fog Grain Maximum</English>
         </Key>
+        <Key ID="STR_AEE_NightVision_ltmEnabled_Description">
+            <Original>Show the laser target marker beam through night vision (aircraft only)</Original>
+            <English>Show the laser target marker beam through night vision (aircraft only)</English>
+        </Key>
+        <Key ID="STR_AEE_NightVision_ltmEnabled_Name">
+            <Original>Laser Target Marker</Original>
+            <English>Laser Target Marker</English>
+        </Key>
+        <Key ID="STR_AEE_NightVision_ltmToggle">
+            <Original>Laser Target Marker</Original>
+            <English>Laser Target Marker</English>
+        </Key>
+        <Key ID="STR_AEE_NightVision_ltmToggleMode">
+            <Original>Laser Target Marker Mode</Original>
+            <English>Laser Target Marker Mode</English>
+        </Key>
         <Key ID="STR_AEE_NightVision_nightGrainMax_Description">
             <Original>Night noise floor, the perceived darkness of night vision</Original>
             <English>Night noise floor, the perceived darkness of night vision</English>
