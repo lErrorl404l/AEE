@@ -35,11 +35,12 @@ private _fnCycle = missionNamespace getVariable ["aee_thermal_fnc_cycleFusionMod
 private _fnAGC = missionNamespace getVariable ["aee_thermal_fnc_updateThermalAGC", nil];
 private _fnSolve = missionNamespace getVariable ["aee_thermal_fnc_solveTwoNodeSelection", nil];
 private _fnBand = missionNamespace getVariable ["aee_thermal_fnc_calculateBandRadiance", nil];
+private _fnFrameGeo = missionNamespace getVariable ["aee_thermal_fnc_fusionFrameGeometry", nil];
 
 if (isNil "_fnBandIdx" || {isNil "_fnPaths"} || {isNil "_fnFov"}
     || {isNil "_fnOverlay"} || {isNil "_fnCycle"} || {isNil "_fnAGC"}
-    || {isNil "_fnSolve"} || {isNil "_fnBand"}) exitWith {
-    diag_log text "[P80] [FAIL] fusion kernel functions not compiled (band/paths/fov/overlay/cycle/agc/solve/radiance)";
+    || {isNil "_fnSolve"} || {isNil "_fnBand"} || {isNil "_fnFrameGeo"}) exitWith {
+    diag_log text "[P80] [FAIL] fusion kernel functions not compiled (band/paths/fov/overlay/cycle/agc/solve/radiance/frame)";
 };
 
 private _fail = 0;
@@ -230,9 +231,37 @@ if (_solverOk) then {
     _fail = _fail + 1;
 };
 
+// ── (6) the field-of-view frame geometry ──────────────────────────────────
+// The frame half-extent is tan(thermalHalfAngle) / tan(nvgFieldHalf), so it
+// is DERIVED from the resolved half-angle and is not a fixed 20. The ENVG-B
+// sits at the field edge (ratio 1), the narrower channels sit inside it, and
+// a thermal field wider than the tube is clamped.
+private _geoEcoti = [15, 40] call _fnFrameGeo;
+private _geoBnvd = [17, 40] call _fnFrameGeo;
+private _geoEnvg = [20, 40] call _fnFrameGeo;
+private _geoZero = [0, 40] call _fnFrameGeo;
+private _geoClamp = [45, 40] call _fnFrameGeo;
+private _geoWide = [20, 80] call _fnFrameGeo;
+private _geoOk = (_geoEcoti > 0)
+    && (_geoEcoti < _geoBnvd) && (_geoBnvd < _geoEnvg)
+    && (abs (_geoEnvg - 1) < 0.0001)
+    && (_geoZero < 0.0001)
+    && (abs (_geoClamp - 1) < 0.0001)
+    && (_geoWide < _geoEnvg)
+    && (abs (_geoEcoti - _geoEnvg) > 0.1);
+if (_geoOk) then {
+    diag_log text format ["[P80] [PASS] (6) frame geometry: ECOTI %1 < BNVD %2 < ENVG %3, clamped at the field edge",
+        _geoEcoti toFixed 4, _geoBnvd toFixed 4, _geoEnvg toFixed 4];
+} else {
+    diag_log text format ["[P80] [FAIL] (6) frame geometry: ecoti=%1 bnvd=%2 envg=%3 zero=%4 clamp=%5 wide=%6",
+        _geoEcoti toFixed 4, _geoBnvd toFixed 4, _geoEnvg toFixed 4,
+        _geoZero toFixed 4, _geoClamp toFixed 4, _geoWide toFixed 4];
+    _fail = _fail + 1;
+};
+
 // ── verdict ───────────────────────────────────────────────────────────────
 if (_fail == 0) then {
-    diag_log text "[P80] [PASS] fusion pipeline: ladder, FOV gate, EXIT restore, mode cycle, fresh kernels";
+    diag_log text "[P80] [PASS] fusion pipeline: ladder, FOV gate, EXIT restore, mode cycle, fresh kernels, frame geometry";
 } else {
     diag_log text format ["[P80] [FAIL] %1 fusion assertion(s) failed", _fail];
 };

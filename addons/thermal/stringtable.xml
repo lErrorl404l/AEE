@@ -9,6 +9,14 @@
             <Original>Fusion Always On</Original>
             <English>Fusion Always On</English>
         </Key>
+        <Key ID="STR_AEE_Thermal_fusionFovFrame_Description">
+            <Original>Draw a thin rectangular border at the thermal channel's half-angle, so the operator can see where the fused image is actually bounded. It is a HUD aid and not optics: no mask and no tube geometry, and it draws nothing for a non-fusion device.</Original>
+            <English>Draw a thin rectangular border at the thermal channel's half-angle, so the operator can see where the fused image is actually bounded. It is a HUD aid and not optics: no mask and no tube geometry, and it draws nothing for a non-fusion device.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_fusionFovFrame_Name">
+            <Original>Fusion Field-of-View Frame</Original>
+            <English>Fusion Field-of-View Frame</English>
+        </Key>
         <Key ID="STR_AEE_Thermal_logDebug_Description">
             <Original>Log thermal diagnostics to the RPT, including the wall-clock cost of each thermal function. Turn this on before reporting a performance fault.</Original>
             <English>Log thermal diagnostics to the RPT, including the wall-clock cost of each thermal function. Turn this on before reporting a performance fault.</English>

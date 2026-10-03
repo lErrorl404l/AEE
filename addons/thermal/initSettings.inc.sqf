@@ -22,6 +22,13 @@
 // setting only grants the option, the operator still presses the keybind.
 AEE_SETTING_CHECKBOX(fusionAlwaysOn,"AEE Thermal","Fusion",false);
 
+// The fusion FOV frame (issue #204).  A thin rectangular HUD border at the
+// thermal channel's resolved half-angle, so the operator can see where the
+// fused image is actually bounded.  Default ON.  It is an operator aid and
+// not optics: no mask and no tube geometry, and it draws nothing for a
+// non-fusion device.
+AEE_SETTING_CHECKBOX(fusionFovFrame,"AEE Thermal","Fusion",true);
+
 // ── Fixed-pattern noise (issue #204, FPN) ────────────────────────────────
 // Real LWIR sensors show a static spatial mottle (fixed-pattern noise)
 // over the thermal image, independent of the temporal FilmGrain.  On:

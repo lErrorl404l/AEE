@@ -155,7 +155,7 @@ BINARY_COMMANDS = {"getVariable", "isEqualType"}
 # Unary commands applied to a following expression.  Without these the
 # parser reads the name as a variable and the operand as a new statement,
 # which is how `(count _v) == 0` raised "expected ), got _v".
-UNARY_COMMANDS = {"count", "abs", "toLower", "finite", "round"}
+UNARY_COMMANDS = {"count", "abs", "toLower", "finite", "round", "tan"}
 
 
 @dataclass
@@ -652,6 +652,9 @@ class SqfRuntime:
                 return str(value).lower()
             if node.op == "finite":
                 return math.isfinite(value)
+            if node.op == "tan":
+                # SQF tan takes degrees; Python math.tan takes radians.
+                return math.tan(math.radians(value))
             if node.op == "round":
                 # SQF round is half away from zero; Python round is banker's.
                 if value >= 0:

@@ -31,6 +31,8 @@ if (_force >= 0) then {
 missionNamespace setVariable [QGVAR(fusionMode), _mode];
 
 if (_mode == 0) then {
+    // Tear the field-of-view frame down with the other fusion effects.
+    [false] call FUNC(updateFusionFrame);
     // I2 only: tear down the fusion effects so the NVG base is clean.  Each
     // destroy is reported, so the full handle lifecycle appears in the log:
     // created in fnc_applyFusionPP, destroyed here.  A handle that outlives

@@ -70,4 +70,6 @@ PREPS(fusion,fusionMaterialPaths);
 PREPS(fusion,fusionFovGate);
 PREPS(fusion,fusionThermalField);
 PREPS(fusion,resolveFusionDevice);
+PREPS(fusion,fusionFrameGeometry);
+PREPS(fusion,updateFusionFrame);
 PREP(handleImpactHeat);
