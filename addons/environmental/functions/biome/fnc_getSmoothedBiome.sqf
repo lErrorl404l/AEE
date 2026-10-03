@@ -64,10 +64,9 @@ private _votes = createHashMap;
 private _count = 0;
 for "_i" from 0 to 7 do {
     private _angle = _i * 45;
-    private _rad = _angle * (pi / 180);
     private _sample = [
-        _px + (_radius * sin _rad),
-        _py + (_radius * cos _rad),
+        _px + (_radius * sin _angle),
+        _py + (_radius * cos _angle),
         _pz
     ];
     private _code = [_sample] call EFUNC(environmental,getBiomeAtPosition);

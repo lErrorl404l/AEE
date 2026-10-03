@@ -65,8 +65,8 @@ if !(_rho isEqualType 0) then { _rho = 300; };
 private _slabH = missionNamespace getVariable [QGVAR(slabDepth), 1.0];
 if !(_slabH isEqualType 0) then { _slabH = 1.0; };
 
-private _psi = _slopeDeg * pi / 180;
-private _tau = _rho * 9.81 * _slabH * sin _psi;              // Pa
+// SQF sin takes degrees; _slopeDeg is already degrees.
+private _tau = _rho * 9.81 * _slabH * sin _slopeDeg;         // Pa
 
 // Weak-layer strength scales with snowpack quality: cold dry snow is
 // strong, warm/rain/wind-weakened snow is weak.

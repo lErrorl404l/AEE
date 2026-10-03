@@ -91,18 +91,18 @@ private _zetaA = 2.5976176 + 0.0003980 * _T;  // arcsec per century
 private _zA = 2.5976176 + 0.0000060 * _T;
 private _thetaA = 20.043109 - 0.0000851 * _T;
 
-// Convert to radians for calculation
-private _zRad = _zA * _T / 3600 * pi / 180;
-private _thetaRad = _thetaA * _T / 3600 * pi / 180;
+// Precession angles to degrees (arcsec / 3600, scaled by the century T).
+// SQF trig is degree-native, so no radian conversion is applied.
+private _zDeg = _zA * _T / 3600;
+private _thetaDeg = _thetaA * _T / 3600;
 
-// ─── Player latitude (radians) ────────────────────────────────────────────
+// ─── Player latitude (degrees) ────────────────────────────────────────────
 // World latitude magnitude from the shared geolocation source (issue
 // #179), not a direct CfgWorlds read or the position Y axis: map Y is
 // metres, not degrees.  The source normalises the BIS inverted sign and
 // returns the magnitude for consumers like this one.
 private _lat = ([] call EFUNC(core,getWorldLocation)) select 1;
 if (_lat == 0) then { _lat = 40; }; // fallback: temperate default
-private _latRad = _lat * pi / 180;
 
 // ─── Local sidereal time (degrees) ────────────────────────────────────────
 // GMST at 0h UT on the mission date, plus sidereal rate * UT hours.
@@ -132,29 +132,24 @@ private _visible = [];
     // Skip stars fainter than limiting magnitude
     if (_vmag > _mLim) then { continue; };
 
-    // Apply precession to RA/Dec
-    private _raRad = _raDeg * pi / 180;
-    private _decRad = _decDeg * pi / 180;
-
-    // Precession (simplified rotation)
-    private _decPrec = asin (sin _decRad * cos _thetaRad
-        + cos _decRad * sin _thetaRad * cos (_raRad - _zRad));
-    private _raPrec = _raRad + _zetaA / 3600 * pi / 180
-        + ((sin _thetaRad * sin (_raRad - _zRad)) atan2 (cos _decRad * cos _thetaRad - sin _decRad * sin _thetaRad * cos (_raRad - _zRad)));
+    // Apply precession to RA/Dec (both already degrees).
+    // Precession (simplified rotation, in degrees - SQF trig is degree-native).
+    private _decPrec = asin (sin _decDeg * cos _thetaDeg
+        + cos _decDeg * sin _thetaDeg * cos (_raDeg - _zDeg));
+    private _raPrec = _raDeg + _zetaA / 3600
+        + ((sin _thetaDeg * sin (_raDeg - _zDeg)) atan2 (cos _decDeg * cos _thetaDeg - sin _decDeg * sin _thetaDeg * cos (_raDeg - _zDeg)));
 
     // Hour angle (degrees)
-    private _haDeg = _LST - (_raPrec * 180 / pi);
+    private _haDeg = _LST - _raPrec;
     if (_haDeg > 180) then { _haDeg = _haDeg - 360; };
     if (_haDeg < -180) then { _haDeg = _haDeg + 360; };
-    private _haRad = _haDeg * pi / 180;
 
-    // Altitude above horizon
-    private _altRad = asin (sin _decPrec * sin _latRad
-        + cos _decPrec * cos _latRad * cos _haRad);
-    private _altDeg = _altRad * 180 / pi;
+    // Altitude above horizon (degrees)
+    private _altDeg = asin (sin _decPrec * sin _lat
+        + cos _decPrec * cos _lat * cos _haDeg);
 
     // Azimuth (degrees from north, clockwise)
-    private _azDeg = (sin _haRad) atan2 (cos _haRad * sin _latRad - tan _decPrec * cos _latRad);
+    private _azDeg = (sin _haDeg) atan2 (cos _haDeg * sin _lat - tan _decPrec * cos _lat);
     _azDeg = _azDeg mod 360;
     if (_azDeg < 0) then { _azDeg = _azDeg + 360; };
 

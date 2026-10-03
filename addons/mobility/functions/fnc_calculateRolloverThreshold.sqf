@@ -53,12 +53,12 @@ if (_ssf <= 0) exitWith { [0, 0, _dynamicFactor] };
 
 _dynamicFactor = _dynamicFactor max 0.1 min 1.0;
 
-private _theta = _slopeDeg * 0.0174532925;   // SQF atan works in degrees
+// SQF cos/sin take degrees; _slopeDeg is already degrees.
 
 // The slope term can exceed the SSF term on a steep bank, which makes the
 // threshold negative: the vehicle tips on the slope alone.  Clamp at zero
 // so the comparison stays a real number.
-private _staticG = (_ssf * cos _theta) - (sin _theta);
+private _staticG = (_ssf * cos _slopeDeg) - (sin _slopeDeg);
 if (_staticG < 0) then { _staticG = 0; };
 
 private _appliedG = _staticG * _dynamicFactor;
