@@ -29,6 +29,7 @@ def main():
         "tools/tests/test_terrain_drag.py",
         "tools/tests/test_vehicle_geometry.py",
         "tools/tests/test_rollover.py",
+        "tools/tests/test_trig_units.py",
         "tools/tests/test_physiology.py",
         "tools/tests/test_radio.py",
         "tools/tests/test_environmental.py",

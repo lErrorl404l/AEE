@@ -20,7 +20,6 @@ SQF returns both, and both are pinned below, so the ambiguity cannot hide.
 """
 
 import math
-import re
 import unittest
 from pathlib import Path
 
@@ -83,7 +82,9 @@ class TestSqfImplementsTheFormulas(unittest.TestCase):
         self.src = THRESHOLD.read_text(encoding="utf-8")
 
     def test_slope_form(self):
-        self.assertIn("(_ssf * cos _theta) - (sin _theta)", self.src)
+        # SQF cos/sin take degrees, so the slope enters them directly
+        # (a radians conversion of _slopeDeg was a bug, issue #108).
+        self.assertIn("(_ssf * cos _slopeDeg) - (sin _slopeDeg)", self.src)
 
     def test_dynamic_factor_applied_to_static(self):
         self.assertIn("_staticG * _dynamicFactor", self.src)

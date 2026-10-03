@@ -80,12 +80,10 @@ missionNamespace setVariable [QEGVAR(core,currentSunElevation), _sunElevation];
 // of objects, afternoon heats the west.  The standard solar azimuth:
 //   az = atan2(sin(HA), cos(HA)*sin(lat) - tan(decl)*cos(lat))
 // with the conventional sign (east-of-north, negative in the morning).
-private _haRad = _hourAngle * (pi / 180);
-private _latRad = _lat * (pi / 180);
-private _declRad = _decl * (pi / 180);
-// SQF atan2 is the binary operator: y atan2 x (returns degrees).
-private _azN = (sin _haRad) atan2 (
-    (cos _haRad * sin _latRad) - (tan _declRad * cos _latRad)
+// SQF sin/cos/tan take degrees and atan2 returns degrees, so the standard
+// azimuth formula is evaluated directly in degrees (no radian conversion).
+private _azN = (sin _hourAngle) atan2 (
+    (cos _hourAngle * sin _lat) - (tan _decl * cos _lat)
 );
 private _azimuth = _azN + 180;   // 0..360 east of north
 if (_azimuth >= 360) then { _azimuth = _azimuth - 360; };

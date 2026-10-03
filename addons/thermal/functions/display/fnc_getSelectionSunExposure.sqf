@@ -88,15 +88,13 @@ private _az = missionNamespace getVariable [QEGVAR(core,currentSunAzimuth), 0];
 if !(_az isEqualType 0) then { _az = 0; };
 private _elev = missionNamespace getVariable [QEGVAR(core,currentSunElevation), 0];
 if !(_elev isEqualType 0) then { _elev = 0; };
-private _azRad = _az * (pi / 180);
-private _elevRad = _elev * (pi / 180);
-private _cosElev = cos _elevRad;
-private _sinElev = sin _elevRad;
+private _cosElev = cos _elev;
+private _sinElev = sin _elev;
 // World sun vector: X is east, Y is north, Z is up.  The azimuth is the
 // bearing east of north, so the horizontal part is [sin az, cos az].
 private _sunWorld = [
-    (sin _azRad) * _cosElev,
-    (cos _azRad) * _cosElev,
+    (sin _az) * _cosElev,
+    (cos _az) * _cosElev,
     _sinElev
 ];
 // Model basis to world: vectorDir is model +Y, vectorUp is model +Z, and

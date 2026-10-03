@@ -59,12 +59,11 @@ if !(_elevation isEqualType 0) then { _elevation = 45; };
 _elevation = _elevation max 1 min 89;
 
 // Sun unit vector (azimuth east of north, elevation above horizon).
-private _azR = _azimuth * (pi / 180);
-private _elR = _elevation * (pi / 180);
+// SQF sin/cos take degrees; azimuth and elevation are already degrees.
 private _sunDir = [
-    (sin _azR) * (cos _elR),
-    (cos _azR) * (cos _elR),
-    sin _elR
+    (sin _azimuth) * (cos _elevation),
+    (cos _azimuth) * (cos _elevation),
+    sin _elevation
 ];
 
 // Ray from ~1 m above the position toward the sun, 200 m range (the

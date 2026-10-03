@@ -102,7 +102,7 @@ private _ssf = _ssfArr select 0;
 // banked surface lowers the threshold, which fnc_calculateRolloverThreshold
 // applies.
 private _up = vectorUp _vehicle;
-private _bankDeg = acos ((_up select 2) max -1 min 1) * 57.2957795;
+private _bankDeg = acos ((_up select 2) max -1 min 1);
 
 private _thr = [_ssf, _bankDeg, GVAR(rolloverDynamicFactor)]
     call FUNC(calculateRolloverThreshold);

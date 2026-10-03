@@ -169,6 +169,9 @@ BINARY_COMMANDS = {
     "mod",
     # number toFixed decimals - binary form, returns a STRING (HUD range).
     "toFixed",
+    # y atan2 x returns DEGREES; pos1 distance pos2 returns metres.
+    "atan2",
+    "distance",
 }
 
 
@@ -212,6 +215,12 @@ UNARY_COMMANDS = {
     "ceil",
     "cos",
     "sin",
+    "sqrt",
+    # Inverse trig returns DEGREES in SQF (asin/acos/atan), matching the
+    # degree-taking sin/cos/tan above.
+    "asin",
+    "acos",
+    "atan",
     "vectorMagnitude",
     "vectorNormalized",
     # str X - SQF number/other to display string (HUD heading/grid).
@@ -309,6 +318,9 @@ BUILTINS: dict[str, Any] = {
     "vectorCrossProduct": _sqf_vectorCrossProduct,
     "mod": lambda a, b: math.fmod(a, b),
     "toFixed": _sqf_toFixed,
+    "atan2": lambda a, b: math.degrees(math.atan2(a, b)),
+    "distance": lambda a, b: math.dist(a, b),
+    "pi": math.pi,
     "true": True,
     "false": False,
     "nil": None,
@@ -912,6 +924,14 @@ class SqfRuntime:
                 return math.cos(math.radians(value))
             if node.op == "sin":
                 return math.sin(math.radians(value))
+            if node.op == "sqrt":
+                return math.sqrt(value)
+            if node.op == "asin":
+                return math.degrees(math.asin(value))
+            if node.op == "acos":
+                return math.degrees(math.acos(value))
+            if node.op == "atan":
+                return math.degrees(math.atan(value))
             if node.op == "vectorMagnitude":
                 return math.sqrt(value[0] ** 2 + value[1] ** 2 + value[2] ** 2)
             if node.op == "vectorNormalized":

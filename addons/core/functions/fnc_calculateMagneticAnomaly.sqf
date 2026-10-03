@@ -58,9 +58,9 @@ private _dz = (_sensorPos select 2) - (_sourcePos select 2);
 
 // Dipole axis: vertical by default, tilted by _tiltDeg degrees.
 // Vertical component dominates in most military scenarios.
-private _tiltRad = _tiltDeg * pi / 180;
-private _axisX = sin _tiltRad;
-private _axisZ = cos _tiltRad;
+// SQF sin/cos take degrees; _tiltDeg is already degrees.
+private _axisX = sin _tiltDeg;
+private _axisZ = cos _tiltDeg;
 
 // cos(theta) = dot product of (unit sensor vector) and (dipole axis).
 private _cosTheta = (_dx * _axisX + _dz * _axisZ) / _r;
