@@ -23,6 +23,7 @@ if (hasInterface && {isNil QGVAR(outlineEH)}) then {
         // mission Draw3D handler (fn_postInit.sqf).
         [] call FUNC(hudTapeBoot);
         [] call FUNC(hudTapeDraw);
+        [] call FUNC(hudBoxDraw);
     }]];
     // The corner readouts refresh at 0.1 s; a clock and a grid square do not
     // need a per-frame redraw (source ran fn_drawInfo on its 0.10 s loop).

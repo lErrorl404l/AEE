@@ -38,8 +38,10 @@ Legend: ✅ verified against source · ⚠️ judgment call (documented)
 | ST_NVG_GRAIN_MIN/MAX | 2.25 / 2.7 | grainSize band ✅ |
 | ST_NVG_NOISESHARPNESS_MIN/MAX | 1.2 / 1.0 | sharpness band ✅ |
 | ST_NVG_NOISEINTENSITY_MIN/MAX | 0.4 / 0.55 | grain intensity reference |
-| green colorize | [1.3, 1.2, 0.0, 0.9] | GEN2/3 tint ✅ (exact match) |
-| green weight | [6, 1, 1, 0] | GEN2/3 weight ✅ (exact match) |
+| green colorize | [1.3, 1.2, 0.0, 0.9] | ACE3 green preset ⚠️ red-dominant (r > g, b = 0): renders amber, not green |
+| green weight | [6, 1, 1, 0] | ACE3 green weight ⚠️ red-weighted, dims a green image |
+| P43 green (used) | [0.1, 1.3, 0.0, 0.9] | P43 Gd2O2S:Tb, 545 nm (Exosens PR-0056E-03): green-dominant ✅ |
+| P43 weight (used) | [0.299, 0.587, 0.114, 0] | BIKI ColorCorrections default: green-dominant ✅ |
 | white colorize | [1.1, 0.8, 1.9, 0.9] | PVS-31 tint ✅ (exact match) |
 | white weight | [1, 1, 6, 0] | PVS-31 weight ✅ (exact match) |
 
@@ -63,8 +65,8 @@ Legend: ✅ verified against source · ⚠️ judgment call (documented)
 | sensitivity 1100 µA/lm | gain | DS: GaAs (Photonis ~700-1200) | ✅ datasheet |
 | noiseFloor 0.04 | noise | DS | ⚠️ judgment |
 | mtf15 0.61 | contrast | DS: Elbit MX-10160 61% | ✅ derived |
-| phosphorTint [1.3,1.2,0,0.9] | colorize | ACE3 green preset | ✅ exact |
-| nvgWeight [6,1,1,0] | weight | ACE3 green preset | ✅ exact |
+| phosphorTint [0.1,1.3,0,0.9] | colorize | P43 green, 545 nm (Exosens PR-0056E-03) | ✅ green-dominant |
+| nvgWeight [0.299,0.587,0.114,0] | weight | BIKI ColorCorrections default | ✅ green-dominant |
 | chromaStrength 0.004 | ChromAberration | WIKI: below 0.005 default | ✅ in range |
 | vigStrength [0.003,0.003,0.06,0.06] | RadialBlur | WIKI range | ✅ in range |
 | bloomBase/Scale 0.03 | DynamicBlur | ACE3 band | ⚠️ below floor |
@@ -75,8 +77,8 @@ Legend: ✅ verified against source · ⚠️ judgment call (documented)
 | sensitivity 550 µA/lm | gain | DS: multialkali Gen2 | ✅ datasheet |
 | noiseFloor 0.08 | noise | DS | ⚠️ judgment |
 | mtf15 0.45 | contrast | DS: 47-54 lp/mm → ~45% | ✅ derived |
-| phosphorTint [1.3,1.2,0,0.9] | colorize | ACE3 green preset | ✅ exact |
-| nvgWeight [6,1,1,0] | weight | ACE3 green preset | ✅ exact |
+| phosphorTint [0.1,1.3,0,0.9] | colorize | P43 green, 545 nm (Exosens PR-0056E-03) | ✅ green-dominant |
+| nvgWeight [0.299,0.587,0.114,0] | weight | BIKI ColorCorrections default | ✅ green-dominant |
 | chromaStrength 0.006 | ChromAberration | WIKI: slightly above default | ✅ in range |
 | vigStrength [0.004,0.004,0.06,0.06] | RadialBlur | WIKI range | ✅ in range |
 | bloomBase/Scale 0.04 | DynamicBlur | ACE3 band | ⚠️ below floor |
@@ -87,8 +89,8 @@ Legend: ✅ verified against source · ⚠️ judgment call (documented)
 | sensitivity 250 µA/lm | gain | DS: S-25 multialkali | ✅ datasheet |
 | noiseFloor 0.15 | noise | DS | ⚠️ judgment |
 | mtf15 0.30 | contrast | DS: 30-40 lp/mm → ~30% | ✅ derived |
-| phosphorTint [1.4,1.3,0,0.9] | colorize | ACE3 green, warmer (P20) | ⚠️ derived from ACE3 |
-| nvgWeight [6,1,1,0] | weight | ACE3 green preset | ✅ exact |
+| phosphorTint [0.4,1.3,0,0.9] | colorize | P20 yellow-green, ~550 nm (Exosens PR-0056E-03) | ✅ green-dominant |
+| nvgWeight [0.299,0.587,0.114,0] | weight | BIKI ColorCorrections default | ✅ green-dominant |
 | chromaStrength 0.008 | ChromAberration | WIKI: above default, below doubling | ✅ in range |
 | vigStrength [0.005,0.005,0.06,0.06] | RadialBlur | WIKI range | ✅ in range |
 | bloomBase/Scale 0.05 | DynamicBlur | ACE3 band | ✅ in band |

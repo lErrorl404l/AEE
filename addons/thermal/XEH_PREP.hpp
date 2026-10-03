@@ -81,6 +81,7 @@ PREPS(hud,hudTapeBuild);
 PREPS(hud,hudTapeBoot);
 PREPS(hud,hudTapeDraw);
 PREPS(hud,hudTapeInfo);
+PREPS(hud,hudBoxDraw);
 PREPS(outline,outlineTopo);
 PREPS(outline,outlineSkeleton);
 PREPS(outline,outlineSensorLod);

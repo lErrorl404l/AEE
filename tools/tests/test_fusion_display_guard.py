@@ -8,7 +8,8 @@ Two full-view artefacts shipped ON by default and dominated the fusion view:
      so the operator saw a border around the WHOLE view instead of an inset.
   2. The fusion HUD "glass" control painted a translucent red-orange panel over
      the NVG image, so the NVG looked washed brown instead of the correct green
-     phosphor.
+     phosphor.  The panel is restored as the source box's four EDGES, which
+     cannot wash the image.
 
 These tests would have caught both.  They scan the display config for a
 non-zero-alpha background over (nearly) the full safe zone, and they prove the
@@ -46,6 +47,7 @@ SCRIPT_COMPONENT_SRC = SCRIPT_COMPONENT.read_text(encoding="utf-8")
 PREP_SRC = PREP.read_text(encoding="utf-8")
 FRAME_DRIVER_SRC = FRAME_DRIVER.read_text(encoding="utf-8")
 BOOT_SRC = (HUD / "fnc_hudTapeBoot.sqf").read_text(encoding="utf-8")
+BOX_DRIVER_SRC = (HUD / "fnc_hudBoxDraw.sqf").read_text(encoding="utf-8")
 
 # A control at or above these bounds, with a non-zero background alpha, is a
 # full-view tint.  0.9 tolerates a one-pixel frame around a full-screen panel.
@@ -143,23 +145,62 @@ class TestNoFullViewTint(unittest.TestCase):
                 offenders.append(f"{name} {props} alpha={alpha}")
         self.assertEqual(offenders, [], f"full-view background tint: {offenders}")
 
-    def test_the_fusion_display_has_no_background_tint(self) -> None:
-        # The source's glass panel is banned: nothing in GVAR(fusionHud) may
-        # carry a non-zero background alpha at all.
+    def test_no_fusion_hud_control_washes_the_full_safe_zone(self) -> None:
+        # A HUD control may carry a background (the box edges do), but none may
+        # span the safe zone: that is the full-view wash the operator rejected.
         body = dict(class_bodies(RSC_SRC)).get("GVAR(fusionHud)")
         self.assertIsNotNone(body, "GVAR(fusionHud) display missing")
         assert body is not None
         for name, control in class_bodies(body):
             alpha = background_alpha(control)
-            if alpha is not None:
-                self.assertEqual(alpha, 0.0, f"{name} tints the NVG image")
+            if alpha is None or alpha <= 0:
+                continue
+            props = geometry(control)
+            if not all(k in props for k in ("x", "y", "w", "h")):
+                continue
+            self.assertFalse(
+                props["x"] <= FULL_X
+                and props["y"] <= FULL_Y
+                and props["w"] >= FULL_W
+                and props["h"] >= FULL_H,
+                f"{name} washes the full safe zone: {props} alpha={alpha}",
+            )
 
-    def test_the_glass_control_is_gone(self) -> None:
+    def test_the_source_box_edges_are_restored(self) -> None:
+        # The source's box is restored as the four EDGE controls at the source
+        # idcs, not as a full panel fill.
         code = code_only(RSC_SRC)
-        self.assertNotIn("AEEFusionHudGlass", code)
-        self.assertNotIn("idc = 910001", code)
-        self.assertNotIn("FUSION_HUD_GLASS_COLOR", code_only(SCRIPT_COMPONENT_SRC))
-        self.assertNotIn("910001", code_only(BOOT_SRC))
+        for idc in (910001, 910002, 910003, 910004):
+            self.assertIn(f"idc = {idc}", code, f"the box edge {idc} is missing")
+        for name in (
+            "AEEFusionHudBoxTop",
+            "AEEFusionHudBoxBottom",
+            "AEEFusionHudBoxLeft",
+            "AEEFusionHudBoxRight",
+        ):
+            self.assertIn(name, code)
+
+    def test_the_box_is_the_source_colour_and_size(self) -> None:
+        # config.cpp ecoti_tint colorBackground {0.55, 0.08, 0.05, 0.30} and the
+        # source's fn_preInit.sqf boxSize 0.40.
+        macro = re.search(
+            r"#define\s+FUSION_BOX_COLOR\s+\[([0-9., ]+)\]", SCRIPT_COMPONENT_SRC
+        )
+        self.assertIsNotNone(macro, "FUSION_BOX_COLOR is not defined")
+        assert macro is not None
+        parts = [float(x) for x in macro.group(1).split(",")]
+        self.assertEqual(parts, [0.55, 0.08, 0.05, 0.30])
+        frac = re.search(
+            r"#define\s+FUSION_HUD_BOX_FRACTION\s+([0-9.]+)", SCRIPT_COMPONENT_SRC
+        )
+        self.assertIsNotNone(frac, "FUSION_HUD_BOX_FRACTION is not defined")
+        assert frac is not None
+        self.assertEqual(float(frac.group(1)), 0.40)
+
+    def test_the_box_driver_sets_all_four_edges(self) -> None:
+        code = code_only(BOX_DRIVER_SRC)
+        for idc in (910001, 910002, 910003, 910004):
+            self.assertIn(f"displayCtrl {idc}", code)
 
     def test_the_boot_profile_has_no_glass_channel(self) -> None:
         self.assertIn("[_hudK, _infoK]", BOOT_SRC)
