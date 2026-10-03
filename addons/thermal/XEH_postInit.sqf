@@ -15,7 +15,18 @@ AEE_MODULE_POST_INIT
 if (hasInterface && {isNil QGVAR(outlineEH)}) then {
     missionNamespace setVariable [QGVAR(outlineEH), addMissionEventHandler ["Draw3D", {
         [] call FUNC(outlineDraw);
+        // The drawn fusion display (workshop 3810296503 whale_ecoti_llll).
+        // FUNC(hudTapeBoot) owns the display lifetime and its brightness
+        // envelope; FUNC(hudTapeDraw) draws the compass tape.  Both early-exit
+        // unless the display is up, so an operator without fusion pays two
+        // getVariable reads a frame.  The source ran the same pair from its
+        // mission Draw3D handler (fn_postInit.sqf).
+        [] call FUNC(hudTapeBoot);
+        [] call FUNC(hudTapeDraw);
     }]];
-    private _logMsg = "fusion outline: Draw3D worker registered";
+    // The corner readouts refresh at 0.1 s; a clock and a grid square do not
+    // need a per-frame redraw (source ran fn_drawInfo on its 0.10 s loop).
+    [FUNC(hudTapeInfo), 0.1] call CBA_fnc_addPerFrameHandler;
+    private _logMsg = "fusion display: Draw3D worker and HUD tape registered";
     AEE_LOG_INFO(_logMsg);
 };

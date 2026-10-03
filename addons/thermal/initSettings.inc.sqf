@@ -44,6 +44,16 @@ AEE_SETTING_CHECKBOX(fusionOutline,"AEE Thermal","Fusion",true);
 // default look.
 AEE_SETTING_CHECKBOX(fusionSolidFill,"AEE Thermal","Fusion",false);
 
+// The drawn fusion display (issue #204).  Ported from workshop 3810296503
+// whale_ecoti_llll RscTitles \ whale_ecoti_llll_overlay: a tinted glass panel
+// over the NVG image plus a scrolling compass tape with the grid, height, time
+// and the aee environment state.  This is the PRIMARY fusion readout.  The
+// aee_optics environment HUD (AEE Optics > Display > Environment HUD) is the
+// auxiliary panel; it is a separate display with separate controls, so no
+// control is drawn twice, but it repeats the environment state, so enable one
+// or the other to avoid a duplicated readout.  Default ON.
+AEE_SETTING_CHECKBOX(fusionHud,"AEE Thermal","Fusion",true);
+
 // ── Fixed-pattern noise (issue #204, FPN) ────────────────────────────────
 // Real LWIR sensors show a static spatial mottle (fixed-pattern noise)
 // over the thermal image, independent of the temporal FilmGrain.  On:

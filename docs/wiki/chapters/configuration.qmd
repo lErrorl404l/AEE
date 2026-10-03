@@ -405,6 +405,7 @@ registered.
 |---|---|---|---|---|---|
 | `aee_thermal_fusionAlwaysOn` | CHECKBOX | `false` | yes | thermal | Render the thermal fusion overlay over any NVG, even without a thermal-capable headset. |
 | `aee_thermal_fusionFovFrame` | CHECKBOX | `true` | yes | thermal | Draw a thin rectangular border at the thermal channel's half-angle, so the operator can see where the fused image is actually bounded. It is a HUD aid and not optics: no mask and no tube geometry, and it draws nothing for a non-fusion device. |
+| `aee_thermal_fusionHud` | CHECKBOX | `true` | yes | thermal | The drawn fusion display: a tinted glass panel over the night-vision image and a scrolling compass tape with the grid, height, time and the environment state. Ported from workshop 3810296503 whale_ecoti_llll. This is the primary fusion readout; the AEE Optics environment HUD is the auxiliary panel, so enable one or the other to avoid a duplicated readout. |
 | `aee_thermal_fusionOutline` | CHECKBOX | `true` | yes | thermal | Draw the outline of each hot target the thermal state already tracks, on a transparent overlay that the NVG does not filter. It draws nothing when fusion is off or the fitted headset is not fusion capable. |
 | `aee_thermal_fusionSolidFill` | CHECKBOX | `false` | yes | thermal | Paint each hot body inside the thermal channel one solid bright colour, the flat block a real thermal display shows. This mode replaces the graded emissive ladder while it is on, so a body is never painted by both. Turn it off for the graded look. |
 
