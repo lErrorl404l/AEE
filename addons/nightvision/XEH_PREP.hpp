@@ -7,6 +7,7 @@ PREP(getNvgTubeModel);
 PREP(teardownNvgDoF);
 PREP(nvgTierIndex);
 PREP(nvgBlemishField);
+PREP(nvgAgcBreathing);
 PREPS(ltm,ltmBeamSegments);
 PREPS(ltm,ltmCreate);
 PREPS(ltm,ltmDraw);
