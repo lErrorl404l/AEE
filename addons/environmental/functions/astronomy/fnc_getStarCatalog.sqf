@@ -27,7 +27,13 @@ params [
 // Full Yale Bright Star Catalogue (V <= 7.0), generated from
 // data/astronomy/sources/catalog.dat by tools/validation/gen_star_catalog.py.
 // RA and Dec are J2000.0 degrees; entries are sorted by magnitude.
-private _catalog = [] call FUNC(starCatalogData);
+// The catalogue is static. Build it once and keep it: the environment tick
+// calls this every 5 s and rebuilding the 9050 rows each time is wasted work.
+private _catalog = missionNamespace getVariable [QGVAR(starCatalogCache), nil];
+if (isNil "_catalog") then {
+    _catalog = [] call FUNC(starCatalogData);
+    missionNamespace setVariable [QGVAR(starCatalogCache), _catalog];
+};
 
 // ─── Precession correction (J2000 to current date) ────────────────────────
 // Simple precession in RA/Dec.  Good to ~1 arcmin over a century.
@@ -79,50 +85,63 @@ if (_starsForce isEqualType 0) then {
     if (_starsForce > 0) then { _mLim = _starsForce; };
 };
 
+// ─── Precession cache (J2000 to the mission date) ─────────────────────────
+// Precession depends on the date alone, so precess the whole catalogue once
+// per date and keep it. The per-tick loop then applies only the sidereal-time
+// and latitude rotation, which keeps the environment tick inside its budget.
+private _dateKey = _date select [0, 3];
+private _precCache = missionNamespace getVariable [QGVAR(starCatalogPrecessed), []];
+private _rows = if (_precCache isEqualTo [] || {(_precCache select 0) isNotEqualTo _dateKey}) then {
+    private _built = _catalog apply {
+        private _raDeg = _x select 1;
+        private _decDeg = _x select 2;
+        private _raZeta = _raDeg + _zetaDeg;
+        private _cosDec = cos _decDeg;
+        private _sinDec = sin _decDeg;
+        private _a = _cosDec * sin _raZeta;
+        private _b = cos _thetaDeg * _cosDec * cos _raZeta - sin _thetaDeg * _sinDec;
+        private _c = sin _thetaDeg * _cosDec * cos _raZeta + cos _thetaDeg * _sinDec;
+        private _raPrec = (_a atan2 _b) + _zDeg;
+        private _decPrec = asin _c;
+        [(_x select 0), sin _raPrec, cos _raPrec, sin _decPrec, cos _decPrec, (_x select 3)]
+    };
+    missionNamespace setVariable [QGVAR(starCatalogPrecessed), [_dateKey, _built]];
+    _built
+} else {
+    _precCache select 1
+};
+
 // ─── Compute visible stars ─────────────────────────────────────────────────
 private _visible = [];
+private _sinLST = sin _LST;
+private _cosLST = cos _LST;
+private _sinLat = sin _lat;
+private _cosLat = cos _lat;
 
 {
-    private _name = _x select 0;
-    private _raDeg = _x select 1;
-    private _decDeg = _x select 2;
-    private _vmag = _x select 3;
+    // The rows are sorted by magnitude, brightest first, so a star past the
+    // limit means every later star is past it too. Stop the scan before the
+    // rotation: the tick only pays for the stars it can use.
+    if ((_x select 5) > _mLim) exitWith {};
 
-    // Skip stars fainter than limiting magnitude
-    if (_vmag > _mLim) then { continue; };
-
-    // Apply precession to RA/Dec (both already degrees) with the standard
-    // equatorial rotation (Meeus Ch. 21, eq. 21.4).
-    private _raZeta = _raDeg + _zetaDeg;
-    private _cosDec = cos _decDeg;
-    private _sinDec = sin _decDeg;
-    private _a = _cosDec * sin _raZeta;
-    private _b = cos _thetaDeg * _cosDec * cos _raZeta - sin _thetaDeg * _sinDec;
-    private _c = sin _thetaDeg * _cosDec * cos _raZeta + cos _thetaDeg * _sinDec;
-    private _raPrec = (_a atan2 _b) + _zDeg;
-    private _decPrec = asin _c;
-
-    // Hour angle (degrees)
-    private _haDeg = _LST - _raPrec;
-    if (_haDeg > 180) then { _haDeg = _haDeg - 360; };
-    if (_haDeg < -180) then { _haDeg = _haDeg + 360; };
+    // Hour angle, from the precomputed right ascension: the sine and cosine
+    // of (LST - RA) need no per-star trig.
+    private _sinHa = _sinLST * (_x select 2) - _cosLST * (_x select 1);
+    private _cosHa = _cosLST * (_x select 2) + _sinLST * (_x select 1);
 
     // Altitude above horizon (degrees)
-    private _altDeg = asin (sin _decPrec * sin _lat
-        + cos _decPrec * cos _lat * cos _haDeg);
+    private _altDeg = asin ((_x select 3) * _sinLat + (_x select 4) * _cosLat * _cosHa);
 
     // Azimuth from north, clockwise.  The Meeus Ch. 13 atan2 form measures
     // from the south, westward; add 180 degrees for the north convention
     // fnc_starDirection documents and consumes.
-    private _azDeg = ((sin _haDeg) atan2 (cos _haDeg * sin _lat - tan _decPrec * cos _lat)) + 180;
-    _azDeg = _azDeg mod 360;
-    if (_azDeg < 0) then { _azDeg = _azDeg + 360; };
-
-    // Only include stars above the horizon
     if (_altDeg > 0) then {
-        _visible pushBack [_name, _altDeg, _azDeg, _vmag];
+        private _azDeg = (_sinHa atan2 (_cosHa * _sinLat - ((_x select 3) / (_x select 4)) * _cosLat)) + 180;
+        _azDeg = _azDeg mod 360;
+        if (_azDeg < 0) then { _azDeg = _azDeg + 360; };
+        _visible pushBack [(_x select 0), _altDeg, _azDeg, (_x select 5)];
     };
-} forEach _catalog;
+} forEach _rows;
 
 // Sort by altitude, highest first.  The boolean form of sort orders by
 // the first element of each item, so sort a keyed copy that carries the
