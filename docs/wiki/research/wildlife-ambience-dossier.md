@@ -117,6 +117,16 @@ list and the agent control facts.
 | Agent move commands | `moveTo`, `setDestination` | BIKI Animals, agents cannot use `doMove` | [P] |
 | Agent locality | Local | BIKI createAgent, BI feedback T155634 | [P] |
 
+## Two-client parity
+
+The layer is client-local cosmetic ecology. Each client spawns its own local
+animals, so the same cell, biome and time give the same species mix on both
+machines, but not the same individual objects. No publicVariable is needed and
+no server spawn happens. The engine ambient system behaves the same way. An
+operator confirms parity by joining two clients, standing at one grid, and
+checking that the species mix matches while the individual animals differ.
+This is the operator-only parity check.
+
 ## Sources
 
 - BIKI Arma 3 Sound Files, the confirmed `.wss` set.
