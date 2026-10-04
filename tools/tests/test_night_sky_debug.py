@@ -518,5 +518,102 @@ class TestMilkyWayWiring(unittest.TestCase):
         self.assertIn("milkyWayForce", sampler)
 
 
+class TestCelestialRegistration(unittest.TestCase):
+    """The four renderers register their Draw3D handlers and postInit calls."""
+
+    def test_faint_star_draw3d_handler_registered(self):
+        code = (SENSOR / "fnc_renderDynamicStars.sqf").read_text(encoding="utf-8")
+        self.assertIn(
+            'addMissionEventHandler ["Draw3D", { call FUNC(drawFaintStars) }]',
+            code,
+        )
+        self.assertIn("GVAR(faintStarsEH)", code)
+
+    def test_milkyway_draw3d_handler_registered(self):
+        code = (SENSOR / "fnc_renderMilkyWay.sqf").read_text(encoding="utf-8")
+        self.assertIn(
+            'addMissionEventHandler ["Draw3D", { call FUNC(drawMilkyWay) }]',
+            code,
+        )
+        self.assertIn("GVAR(milkyWayEH)", code)
+
+    def test_postinit_registers_all_four_renderers(self):
+        post = (ROOT / "addons" / "environmental" / "XEH_postInit.sqf").read_text(
+            encoding="utf-8"
+        )
+        start = post.index("if (hasInterface)")
+        block = post[start : post.index("};", start)]
+        for call in (
+            "[] call FUNC(renderDynamicStars);",
+            "[] call FUNC(renderMeteors);",
+            "[] call FUNC(renderAurora);",
+            "[] call FUNC(renderMilkyWay);",
+        ):
+            self.assertIn(call, block)
+
+
+class TestSkyGateConsistency(unittest.TestCase):
+    """The render workers share the kernel thresholds and read their forces."""
+
+    def test_log_reads_every_render_registry(self):
+        code = (SENSOR / "fnc_logSkyState.sqf").read_text(encoding="utf-8")
+        for token in (
+            "QGVAR(starLights)",
+            "QGVAR(visibleStars)",
+            "QGVAR(faintStarCount)",
+            "QGVAR(meteors)",
+            "QGVAR(auroraIntensity)",
+        ):
+            self.assertIn(token, code)
+
+    def test_worker_thresholds_match_the_kernel(self):
+        files = {
+            "kernel": SENSOR / "fnc_skyGateReason.sqf",
+            "stars": SENSOR / "fnc_starLightsSync.sqf",
+            "meteors": SENSOR / "fnc_updateMeteors.sqf",
+            "aurora": SENSOR / "fnc_updateAurora.sqf",
+            "milkyway": SENSOR / "fnc_updateMilkyWay.sqf",
+        }
+        text = {name: path.read_text(encoding="utf-8") for name, path in files.items()}
+        expectations = (
+            ("_overcast >= 0.8", ("kernel", "stars", "meteors")),
+            ("_overcast < 0.8", ("milkyway",)),
+            ("_overcast >= 0.3", ("kernel", "aurora")),
+            ("_sunElev >= 0", ("kernel", "stars", "meteors", "aurora")),
+            ("_sunElev < 0", ("milkyway",)),
+            ("_nelm < 5.0", ("kernel",)),
+            ("_nelm >= MILKY_WAY_NELM_MIN", ("milkyway",)),
+        )
+        for needle, names in expectations:
+            for name in names:
+                with self.subTest(needle=needle, file=name):
+                    self.assertIn(needle, text[name])
+        component = (
+            ROOT / "addons" / "environmental" / "script_component.hpp"
+        ).read_text(encoding="utf-8")
+        self.assertIn("#define MILKY_WAY_NELM_MIN 5.0", component)
+
+    def test_each_worker_reads_its_force_and_the_sky_force(self):
+        workers = {
+            "stars": (SENSOR / "fnc_starLightsSync.sqf", "starsForce"),
+            "meteors": (SENSOR / "fnc_updateMeteors.sqf", "meteorForce"),
+            "aurora": (SENSOR / "fnc_updateAurora.sqf", "auroraForce"),
+            "milkyway": (SENSOR / "fnc_updateMilkyWay.sqf", "milkyWayForce"),
+        }
+        for name, (path, hook) in workers.items():
+            text = path.read_text(encoding="utf-8")
+            with self.subTest(worker=name):
+                self.assertIn("aee_environmental_skyForce", text)
+                self.assertIn(hook, text)
+
+    def test_kernel_calls_only_from_the_logger(self):
+        callers = sorted(
+            path.name
+            for path in SENSOR.glob("*.sqf")
+            if "call FUNC(skyGateReason)" in path.read_text(encoding="utf-8")
+        )
+        self.assertEqual(callers, ["fnc_logSkyState.sqf"])
+
+
 if __name__ == "__main__":
     unittest.main()
