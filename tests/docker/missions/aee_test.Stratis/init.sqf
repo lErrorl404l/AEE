@@ -204,6 +204,56 @@ if (_p10Fail == 0) then {
     diag_log text format ["[PHASE10] [FAIL] performance: %1 passed, %2 exceeded budget", _p10Pass, _p10Fail];
 };
 
+// -- PHASE 11: wildlife simulation budget ----------------------------------
+// The wildlife client tick runs client-local at the tickInterval setting.
+// The probe calls it with no arguments on the dedicated server, where it
+// computes the state and then stops before any sound or object.  The
+// dry-run path is safe and machine-agnostic.  Budget 2 ms/call, warm-up
+// plus best of three, exactly like PHASE10.
+private _p11Pass = 0;
+private _p11Fail = 0;
+
+private _perfTests11 = [
+    ["aee_wildlife_fnc_wildlifeTick", [], 100, 0.002]
+];
+
+{
+    _x params ["_fnName", "_args", "_iters", "_budget"];
+    if (isNil "_budget") then { _budget = 0.002; };
+    private _fn = missionNamespace getVariable [_fnName, nil];
+    if (isNil "_fn") then {
+        diag_log text format ["[PHASE11] [FAIL] %1 not compiled", _fnName];
+        _p11Fail = _p11Fail + 1;
+    } else {
+        for "_w" from 1 to (round (_iters / 4)) do { _args call _fn; };
+        private _best = 1e9;
+        for "_s" from 1 to 3 do {
+            private _start = diag_tickTime;
+            for "_i" from 1 to (round (_iters / 3)) do {
+                _args call _fn;
+            };
+            private _elapsed = diag_tickTime - _start;
+            if (_elapsed < _best) then { _best = _elapsed; };
+        };
+        private _perCall = _best / (round (_iters / 3));
+        if (_perCall < _budget) then {
+            diag_log text format ["[PHASE11] [PASS] %1: %2 ms/call (budget %3 ms, best of 3)",
+                _fnName, round (_perCall * 1000), round (_budget * 1000)];
+            _p11Pass = _p11Pass + 1;
+        } else {
+            diag_log text format ["[PHASE11] [FAIL] %1: %2 ms/call (budget %3 ms, best of 3)",
+                _fnName, round (_perCall * 1000), round (_budget * 1000)];
+            _p11Fail = _p11Fail + 1;
+        };
+    };
+} forEach _perfTests11;
+
+if (_p11Fail == 0) then {
+    diag_log text format ["[PHASE11] [PASS] wildlife: %1 tick within budget", _p11Pass];
+} else {
+    diag_log text format ["[PHASE11] [FAIL] wildlife: %1 passed, %2 exceeded budget", _p11Pass, _p11Fail];
+};
+
 // -- PHASE 3+4+5: wait 30 s for simulation ticks, then sample ---------------
 [{
     private _t = missionNamespace getVariable ["aee_core_currentTemperature", nil];

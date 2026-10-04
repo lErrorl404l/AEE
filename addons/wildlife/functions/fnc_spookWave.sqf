@@ -22,7 +22,7 @@ params [
 
 if (!hasInterface) exitWith {};
 
-private _field = missionNamespace getVariable [EGVAR(ai,disturbance), []];
+private _field = missionNamespace getVariable [QEGVAR(ai,disturbance), []];
 if !(_field isEqualType []) then { _field = []; };
 
 private _now = CBA_missionTime;
@@ -42,4 +42,4 @@ for "_r" from 0 to ((count _rings) - 1) do {
     };
 };
 
-missionNamespace setVariable [EGVAR(ai,disturbance), _field];
+missionNamespace setVariable [QEGVAR(ai,disturbance), _field];

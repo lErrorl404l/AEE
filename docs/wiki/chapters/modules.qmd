@@ -208,6 +208,47 @@ Radio propagation.
 | `calculateIonosphericAbsorption` | Calculate HF ionospheric absorption |
 | `calculateRadioPropagation` | Calculate radio propagation |
 
+## ai
+
+The reusable stimulus-response substrate. It runs the four stages sense,
+decide, act and recover over a registry of agents, and it holds a decaying
+disturbance field that every machine computes deterministically.
+
+| Function | Purpose |
+|---|---|
+| `agentDecide` | Map the sense state and the thresholds to one action |
+| `agentRegister` | Register an agent with the substrate |
+| `agentSense` | Read the local stimuli into a state array |
+| `agentUnregister` | Remove an agent from the substrate |
+| `aiTick` | Run the four-stage model over the registry |
+| `disturbanceApply` | Raise a disturbance cell to a stronger stimulus |
+| `disturbanceKey` | Map a position to its disturbance cell |
+| `disturbanceSample` | Read the decayed disturbance at a cell |
+| `initAI` | Start the substrate client tick |
+| `receiveStimulus` | Apply a broadcast stimulus to the local field |
+| `reportStimulus` | Broadcast one rate-limited stimulus |
+| `stimulusDecay` | Decay a stimulus magnitude over its half-life |
+| `teardownAI` | Stop the substrate client tick |
+
+## wildlife
+
+The client-local ambient-sound ecology. It reads the biome, the time, the
+weather, the water and the disturbance field, and it plays a vanilla sound
+bed that reacts to quiet approach, flight spooks and gunfire. It reuses
+vanilla media only.
+
+| Function | Purpose |
+|---|---|
+| `disturbanceSilence` | Map the disturbance to an ambient gain multiplier |
+| `initWildlife` | Start the wildlife client tick |
+| `playAmbientBed` | Play the ambient bed for one context |
+| `playOneShot` | Play a local positional one-shot |
+| `soundBedForContext` | Select the ambient context key and the gain |
+| `spookRange` | Compute the flight-initiation distance |
+| `spookWave` | Raise a ring of disturbance cells around a position |
+| `teardownWildlife` | Stop the wildlife client tick |
+| `wildlifeTick` | The single wildlife client tick |
+
 ## fx
 
 Visual and audio effects.
