@@ -6,6 +6,7 @@ PREP(getNvgDeviceProperties);
 PREP(getNvgTubeModel);
 PREP(teardownNvgDoF);
 PREP(nvgTierIndex);
+PREP(nvgBlemishField);
 PREPS(ltm,ltmBeamSegments);
 PREPS(ltm,ltmCreate);
 PREPS(ltm,ltmDraw);
