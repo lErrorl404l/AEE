@@ -40,7 +40,11 @@ GitHub Actions runs these checks on every push:
 - An SBOM on release tags
 - Release-drafter
 
-The Docker test runs on demand.
+The Docker test runs nightly and on demand. The nightly run executes on a
+self-hosted runner that already holds an Arma 3 dedicated server, so no
+server download is needed. The operator registers that runner once, with
+the labels `self-hosted`, `linux` and `aee`, and sets the repository
+variable `ARMA3_SERVER_ROOT`.
 
 ## Conventions
 
