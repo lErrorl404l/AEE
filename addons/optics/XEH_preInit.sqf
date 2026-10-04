@@ -21,6 +21,7 @@ missionNamespace setVariable [QGVAR(isReady), true];
 // four and resets their mirrored legacy names to -1.
 addMissionEventHandler ["Ended", {
     call FUNC(destroyBasePostProcess);
+    call FUNC(teardownBaseGrade);
 }];
 
 AEE_LOG_INFO("optics module initialised");

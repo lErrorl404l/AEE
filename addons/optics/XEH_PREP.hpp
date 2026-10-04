@@ -48,6 +48,9 @@ PREPS(vision,destroyBasePostProcess);
 
 // Grade (image realism): the normal-vision base grade and acuity pass.
 PREPS(grade,baseGradeParams);
+PREPS(grade,applyBaseGrade);
+PREPS(grade,initBaseGrade);
+PREPS(grade,teardownBaseGrade);
 
 PREPS(hud,hudBuild);
 PREPS(hud,hudFormatGrid);
