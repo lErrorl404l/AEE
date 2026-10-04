@@ -253,7 +253,7 @@ if (hasInterface) then {
     if (_visibleFire <= 0) exitWith {};
 
     private _silencer = (_unit weaponAccessories _weapon) select 0;
-    private _flashLux = FUNC(eyeFlash) [_visibleFire, _silencer != ""];
+    private _flashLux = [_visibleFire, _silencer != ""] call FUNC(eyeFlash);
 
     missionNamespace setVariable [QGVAR(eyeFlashLux), _flashLux];
     missionNamespace setVariable [QGVAR(eyeFlashUntil), CBA_missionTime + (0.15 + _visibleFire * 0.1)];

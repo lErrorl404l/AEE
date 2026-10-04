@@ -31,7 +31,7 @@ params [
 
 private _ignoreA = objNull;
 private _ignoreB = objNull;
-if ((count _objects) > 0) then { _ignoreA = _objects select 0; };
+if (_objects isNotEqualTo []) then { _ignoreA = _objects select 0; };
 if ((count _objects) > 1) then { _ignoreB = _objects select 1; };
 
 private _clear = [];
