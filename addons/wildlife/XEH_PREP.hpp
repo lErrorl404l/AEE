@@ -2,6 +2,7 @@ PREP(speciesForBiome);
 PREP(spawnBudget);
 PREP(needsTick);
 PREP(resourceScore);
+PREP(pickResourceTarget);
 PREP(spawnFauna);
 PREP(cullFauna);
 PREP(applyAnimalBehaviour);

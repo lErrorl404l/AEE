@@ -27,6 +27,7 @@ SPECIES_FOR_BIOME = FUNCS / "fnc_speciesForBiome.sqf"
 SPAWN_BUDGET = FUNCS / "fnc_spawnBudget.sqf"
 NEEDS_TICK = FUNCS / "fnc_needsTick.sqf"
 RESOURCE_SCORE = FUNCS / "fnc_resourceScore.sqf"
+PICK_RESOURCE = FUNCS / "fnc_pickResourceTarget.sqf"
 SOUND_BED = FUNCS / "fnc_soundBedForContext.sqf"
 SPOOK_RANGE = FUNCS / "fnc_spookRange.sqf"
 DISTURBANCE_SILENCE = FUNCS / "fnc_disturbanceSilence.sqf"
@@ -176,8 +177,69 @@ class TestDisturbanceSilence(unittest.TestCase):
         self.assertLess(value, 1.0)
 
 
+def pick_target(pos, want_water, search_radius, step, water_fn, veg_fn):
+    """Run fnc_pickResourceTarget with stub water and vegetation providers."""
+    return run_sqf(
+        PICK_RESOURCE,
+        [pos, want_water, search_radius, step, water_fn, veg_fn],
+        globals_={
+            "__FUNC__resourceScore": lambda d, w, v, ww: run_sqf(
+                RESOURCE_SCORE, [d, w, v, ww]
+            )
+        },
+    )
+
+
+class TestPickResourceTarget(unittest.TestCase):
+    """fnc_pickResourceTarget runs from the real SQF with stub providers."""
+
+    @staticmethod
+    def zero(_point):
+        return 0.0
+
+    def test_want_water_picks_a_water_side_point(self):
+        result = pick_target(
+            [0, 0, 0],
+            True,
+            100,
+            25,
+            lambda point: 1.0 if point[0] > 0 else 0.0,
+            self.zero,
+        )
+        self.assertGreater(result[0], 0)
+
+    def test_food_picks_a_vegetation_side_point(self):
+        result = pick_target(
+            [0, 0, 0],
+            False,
+            100,
+            25,
+            self.zero,
+            lambda point: 1.0 if point[1] > 0 else 0.0,
+        )
+        self.assertGreater(result[1], 0)
+
+    def test_no_resource_returns_the_origin(self):
+        result = pick_target([0, 0, 0], True, 100, 25, self.zero, self.zero)
+        self.assertEqual(result, [0, 0, 0])
+
+
 class TestFaunaSourceContracts(unittest.TestCase):
     """The fauna engine wiring the harness cannot execute."""
+
+    def test_behaviour_uses_the_resource_target(self):
+        text = (FUNCS / "fnc_applyAnimalBehaviour.sqf").read_text(encoding="utf-8")
+        self.assertIn("pickResourceTarget", text)
+
+    def test_resource_providers_use_the_published_facts(self):
+        text = (FUNCS / "fnc_applyAnimalBehaviour.sqf").read_text(encoding="utf-8")
+        self.assertIn("EFUNC(environmental,getCoastDistance)", text)
+        self.assertIn("QEGVAR(environmental,terrainSignals)", text)
+
+    def test_herd_anchor_is_recorded_and_leashed(self):
+        text = (FUNCS / "fnc_applyAnimalBehaviour.sqf").read_text(encoding="utf-8")
+        self.assertIn("herdAnchor", text)
+        self.assertIn("herds", text)
 
     def test_spawn_uses_create_agent(self):
         text = (FUNCS / "fnc_spawnFauna.sqf").read_text(encoding="utf-8")
