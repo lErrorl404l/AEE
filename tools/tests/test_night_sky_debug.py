@@ -370,6 +370,16 @@ class TestForceHooks(unittest.TestCase):
                 hits.append(str(path))
         self.assertEqual(hits, [])
 
+    def test_hooks_are_not_cba_settings(self):
+        settings = (
+            ROOT / "addons" / "environmental" / "initSettings.inc.sqf"
+        ).read_text(encoding="utf-8")
+        self.assertNotRegex(
+            settings,
+            r"AEE_SETTING_\w+\(\s*"
+            r"(skyForce|auroraForce|milkyWayForce|starsForce|meteorForce)\s*,",
+        )
+
 
 class TestAuroraRenderer(unittest.TestCase):
     """The aurora worker is a local particle curtain, never a line or a light."""
