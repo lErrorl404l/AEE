@@ -209,3 +209,8 @@ Operator-only (only a game client proves it):
 - The base grade and the felt sharpening.
 - The eye adaptation.
 - The alt-tab recovery and the advanced-optic recovery.
+- The CBA settings menu. Open Addon Options: `AEE Experimental > Fusion`
+  shows the four thermal-fusion knobs, `AEE HUD > Displays` shows the four
+  on-screen display toggles, and `AEE Debug > <component>` shows the
+  diagnostic switches. Every per-module `logDebug` switch sits under
+  `AEE Debug`. Only the operator confirms the menu renders as intended.
