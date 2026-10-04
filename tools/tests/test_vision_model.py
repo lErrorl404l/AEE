@@ -40,6 +40,7 @@ TONE_KERNEL = PERCEPTION / "fnc_perceptionToneResponse.sqf"
 COMPOSE_KERNEL = PERCEPTION / "fnc_perceptionParams.sqf"
 ILLUMINANT_KERNEL = PERCEPTION / "fnc_perceptionIlluminant.sqf"
 CHROMA_KERNEL = PERCEPTION / "fnc_perceptionChromaticAdaptation.sqf"
+MESOPIC_KERNEL = PERCEPTION / "fnc_perceptionMesopicColor.sqf"
 
 OPTICS_PREP = OPTICS / "XEH_PREP.hpp"
 OPTICS_POSTINIT = OPTICS / "XEH_postInit.sqf"
@@ -317,6 +318,44 @@ class TestPerceptionChromaticAdaptation(unittest.TestCase):
     def test_malformed_illuminant_is_the_identity(self):
         self.assertEqual(run_sqf(CHROMA_KERNEL, ["x"]), [1, 1, 1, 0])
         self.assertEqual(run_sqf(CHROMA_KERNEL, [[1, 2]]), [1, 1, 1, 0])
+
+
+class TestPerceptionMesopicColor(unittest.TestCase):
+    """fnc_perceptionMesopicColor derives the ColorCorrections colorize slot.
+
+    Source register: photopic fraction m (CIE 191:2010); scotopic peak 507 nm
+    (CIE 1951 and CIE 018:2019).  The desaturation amplitude and the tint
+    amplitude are UNSOURCED.  The colorize alpha is the engine desaturation
+    amount (BIKI capture 20240220225631).
+    """
+
+    def test_photopic_is_the_identity(self):
+        self.assertEqual(run_sqf(MESOPIC_KERNEL, [1]), [1, 1, 1, 0])
+
+    def test_scotopic_raises_the_alpha_to_the_maximum(self):
+        _r, _g, _b, alpha = run_sqf(MESOPIC_KERNEL, [0, 0.3, 0.5])
+        self.assertAlmostEqual(alpha, 0.3, places=9)
+
+    def test_scotopic_blue_exceeds_red(self):
+        r, _g, b, _alpha = run_sqf(MESOPIC_KERNEL, [0, 0.3, 0.5])
+        self.assertGreater(b, r, "the Purkinje shift did not move toward blue")
+
+    def test_alpha_never_exceeds_half(self):
+        for desat in (0.0, 0.3, 0.5, 0.9):
+            alpha = run_sqf(MESOPIC_KERNEL, [0, desat, 0.5])[3]
+            self.assertGreaterEqual(alpha, 0)
+            self.assertLessEqual(alpha, 0.5)
+
+    def test_negative_mesopic_is_clamped_to_scotopic(self):
+        self.assertEqual(
+            run_sqf(MESOPIC_KERNEL, [-1, 0.3, 0.5]),
+            run_sqf(MESOPIC_KERNEL, [0, 0.3, 0.5]),
+        )
+
+    def test_out_of_range_inputs_are_clamped(self):
+        self.assertEqual(run_sqf(MESOPIC_KERNEL, [2]), [1, 1, 1, 0])
+        _r, _g, _b, alpha = run_sqf(MESOPIC_KERNEL, [0, 0.9, 2])
+        self.assertLessEqual(alpha, 0.5)
 
 
 def compose(args):
