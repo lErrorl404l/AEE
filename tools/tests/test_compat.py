@@ -16,7 +16,6 @@ pure functions here need no host.
 Run: python3 -m unittest tools.tests.test_compat
 """
 
-import math
 import unittest
 
 

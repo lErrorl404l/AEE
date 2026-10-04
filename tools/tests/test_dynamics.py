@@ -14,7 +14,6 @@ STANAG 4370 boundary-condition testing.
 Run: python3 -m unittest tools.tests.test_dynamics
 """
 
-import math
 import unittest
 
 import numpy as np
@@ -24,7 +23,6 @@ from tools.tests.test_sleep_model import (
     FLOOR,
     S_MAX,
     S_MIN,
-    WAKEFULNESS_THRESHOLD,
     fatigue_factor,
     sleep_pressure,
 )

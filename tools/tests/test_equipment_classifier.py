@@ -52,7 +52,7 @@ def extract_tiers(slot_var, source=None):
     if source is None:
         source = FNC_EQUIP
     m = re.search(
-        rf"switch \(true\) do \{{(.*?)\n\}};",
+        r"switch \(true\) do \{(.*?)\n\};",
         source,
         re.S,
     )

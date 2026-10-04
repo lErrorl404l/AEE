@@ -16,6 +16,7 @@ Everything traces to the sources; nothing invented.
 """
 
 import math
+import unittest
 
 # ─── Constants (sourced) ────────────────────────────────────────────────────
 SIGMA = 5.670374419e-8  # W/m2K4, Stefan-Boltzmann (CODATA 2022)
@@ -154,7 +155,6 @@ def crank_nicolson(t_nodes, dz, alpha_layer, dt, q_top, t_bot):
     for i in range(n):
         alpha_i = alpha_layer[i]
         fo_i = alpha_i * dt / (dz[i] ** 2)
-        fo_im = alpha_layer[i - 1] * dt / (dz[i] ** 2) if i > 0 else fo_i
         # Conservative form: flux between nodes i and i+1 uses interface k
         fo_u = fo_i
         fo_d = alpha_layer[i + 1] * dt / (dz[i] ** 2) if i < n - 1 else fo_i
@@ -174,7 +174,6 @@ def crank_nicolson(t_nodes, dz, alpha_layer, dt, q_top, t_bot):
     # half-cell (finite-volume form).  The heat entering the top cell of
     # thickness dz/2 in time dt raises its temperature by
     #   dT = q_top * dt / (rho*cp * dz/2) = q_top * dt * 2 / (rho*cp*dz)
-    k0 = soil_conductivity(0.3)  # surface-layer degree of saturation ~0.3
     rho_c0 = 1.68e6 + 0.3 * (2.72e6 - 1.68e6)
     d[0] += q_top * dt * 2.0 / (rho_c0 * dz[0])
     # Bottom boundary: fixed temperature
@@ -212,7 +211,6 @@ def run_node_stack(
     Returns the layer-node temperatures at the final step and the
     surface-node temperature series (for amplitude validation).
     """
-    n = len(NOAH_DZ)
     alpha_layer = [soil_alpha(m) for m in moisture_per_layer]
     if t_init is None:
         t_nodes = [t_air + 5.0, t_air + 2.0, t_air, t_bot]
@@ -234,9 +232,6 @@ def run_node_stack(
         t_nodes = crank_nicolson(t_nodes, NOAH_DZ, alpha_layer, dt, q_top, t_bot)
         surface_series.append(t_nodes[0])
     return t_nodes, surface_series
-
-
-import unittest
 
 
 class TestNodeStackConstants(unittest.TestCase):

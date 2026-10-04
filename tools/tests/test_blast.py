@@ -121,8 +121,7 @@ def blast_injury(p_so, td, indoor_mult=1.0):
     lung50 = 0.5 if P >= thr[2] else 0.0
     lung99 = 1.0 if P >= thr[3] else 0.0
 
-    # Tertiary throw: blast wind q_o; likely above ~15 kPa.
-    q0 = (2.5 * P * P) / (7 * 101.3 + P)
+    # Tertiary throw: likely above ~15 kPa.
     throw01 = min((P - 15) / 5, 1.0) if P > 15 else 0.0
 
     return [eardrum, lung_thresh, lung1, lung50, lung99, throw01]

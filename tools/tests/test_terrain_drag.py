@@ -21,7 +21,7 @@ DRAG = ROOT / "addons" / "mobility" / "functions" / "fnc_applyTerrainDrag.sqf"
 def sqf_code_only(src):
     """The SQF with the header block and // comments removed."""
     src = src.split("*/", 1)[-1]
-    return "\n".join(l.split("//", 1)[0] for l in src.splitlines())
+    return "\n".join(line.split("//", 1)[0] for line in src.splitlines())
 
 
 def published_factors(src):

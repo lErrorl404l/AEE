@@ -16,7 +16,6 @@ Run: python3 -m unittest tools/tests/test_inventory_load.py
 
 import json
 import re
-import statistics
 import unittest
 from pathlib import Path
 
@@ -230,8 +229,6 @@ class TestVanillaPlaceholders(unittest.TestCase):
     """
 
     def test_every_placeholder_is_labelled_an_analogue(self):
-        import json
-        from pathlib import Path
 
         doc = json.loads(
             (REPO / "data/equipment/sources/vanilla_placeholders.json").read_text(

@@ -11,7 +11,6 @@ get_world_location() negates it so consumers see the true geographic
 sign (positive = north), matching the SQF implementation.
 """
 
-import math
 import unittest
 
 # Known CfgWorlds anchors (verified from installed configs, 2026-09-19).

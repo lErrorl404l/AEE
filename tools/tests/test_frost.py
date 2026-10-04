@@ -21,6 +21,7 @@ Physics (all sourced, nothing invented):
 """
 
 import math
+import unittest
 
 L_FUS = 334e3  # J/kg (Incropera; #191 already uses this)
 L_SUB = 2835e3  # J/kg, sublimation latent heat
@@ -134,9 +135,6 @@ def frost_emissivity(frosted):
     """LWIR emissivity: 0.94-0.99 with frost (near-blackbody, MODIS/
     CESM), else the bare-surface baseline."""
     return FROST_EPS if frosted else BARE_EPS
-
-
-import unittest
 
 
 class TestFrostPhysics(unittest.TestCase):

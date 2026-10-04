@@ -17,7 +17,7 @@ Usage:
 
 import math
 import sys
-from typing import List, Tuple, Optional
+from typing import List, Tuple
 
 # ============================================================================
 # Constants

@@ -335,8 +335,7 @@ def solve_segment(
         v_bl_cr *= 0.2
     blood_sk = v_bl_sk / 3600.0 * 1.06 * C_P_BL  # W/K, skin->pool
     blood_cr = v_bl_cr / 3600.0 * 1.06 * C_P_BL  # W/K, core->pool
-    # Core heat capacity (90% of segment mass).
-    c_core = 0.9 * mass * C_P_BODY
+    # Skin heat capacity (10% of segment mass).
     c_skin = 0.1 * mass * C_P_BODY
     # Respiratory loss (Gagge 1986), scaled by segment area fraction.
     p_a = water_sat_pressure_pa(t_air) * rh / 133.322  # torr

@@ -244,7 +244,7 @@ def report() -> str:
     ws = resolve_workshop_path()
     lines.append(f"  Workshop:        {ws or 'N/A'}")
 
-    lines.append(f"  Libraries:")
+    lines.append("  Libraries:")
     for lib in find_library_folders():
         lines.append(f"    - {lib['path']}")
     return "\n".join(lines)

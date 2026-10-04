@@ -15,7 +15,6 @@ Run: python3 tools/tests/test_stability.py
 
 import json
 import math
-import re
 import unittest
 from pathlib import Path
 

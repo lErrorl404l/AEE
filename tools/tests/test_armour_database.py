@@ -13,7 +13,6 @@ STANAG 4569 Ed 2 ladder (the researched mapping):
 Run: python3 -m unittest tools/tests/test_armour_database.py
 """
 
-import re
 import unittest
 from pathlib import Path
 
