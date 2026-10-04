@@ -47,7 +47,7 @@
 //
 // DEBUG/TRACE are compiled IN (so intermediate variables are always used
 // and the lint stays clean) but gated by the runtime flag.  Set it in the
-// settings UI (AEE Core, Log Debug Output) or from the debug console:
+// settings UI (AEE, Log Debug Output) or from the debug console:
 //   aee_core_logDebug = true;
 // Per-module:  aee_<component>_logDebug = true;  (AEE Diagnostics settings)
 //
