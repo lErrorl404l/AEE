@@ -10,7 +10,7 @@ edge can take.
 
 | addon | depends on |
 |---|---|
-| `actions` | `core`, `environmental` |
+| `actions` | `core`, `environmental`, `nightvision` |
 | `armour` | `core`, `physiology` |
 | `atmos` | `core`, `environmental` |
 | `ballistics` | `atmos`, `core` |
