@@ -163,5 +163,93 @@ class TestGalacticToHorizontal(unittest.TestCase):
                 self.assertAlmostEqual(got[1], want[1], places=6)
 
 
+class TestSkyGateReason(unittest.TestCase):
+    """Every reason code is produced from the real SQF."""
+
+    def _gate(self, feature, **kw):
+        args = [
+            feature,
+            kw.get("settingOn", True),
+            kw.get("forceOn", False),
+            kw.get("sunElev", -30),
+            kw.get("overcast", 0.0),
+            kw.get("kpIndex", 7),
+            kw.get("daytime", 22),
+            kw.get("latDeg", 65),
+            kw.get("ovalLimit", 55),
+            kw.get("nelm", 6.5),
+            kw.get("meteorActive", True),
+        ]
+        return run_sqf(SKY_GATE_REASON, args)
+
+    def test_stars_night(self):
+        self.assertEqual(self._gate("stars", sunElev=0), [False, "NIGHT"])
+
+    def test_stars_overcast(self):
+        self.assertEqual(self._gate("stars", overcast=0.8), [False, "OVERCAST"])
+
+    def test_stars_on(self):
+        self.assertEqual(self._gate("stars"), [True, "ON"])
+
+    def test_meteors_night(self):
+        self.assertEqual(self._gate("meteors", sunElev=10), [False, "NIGHT"])
+
+    def test_meteors_overcast(self):
+        self.assertEqual(self._gate("meteors", overcast=0.9), [False, "OVERCAST"])
+
+    def test_meteors_no_shower(self):
+        self.assertEqual(
+            self._gate("meteors", meteorActive=False), [False, "NO_SHOWER"]
+        )
+
+    def test_meteors_on(self):
+        self.assertEqual(self._gate("meteors"), [True, "ON"])
+
+    def test_aurora_night(self):
+        self.assertEqual(self._gate("aurora", sunElev=0), [False, "NIGHT"])
+
+    def test_aurora_overcast(self):
+        self.assertEqual(self._gate("aurora", overcast=0.3), [False, "OVERCAST"])
+
+    def test_aurora_kp(self):
+        self.assertEqual(self._gate("aurora", kpIndex=4), [False, "KP"])
+
+    def test_aurora_daytime(self):
+        self.assertEqual(self._gate("aurora", daytime=12), [False, "DAYTIME"])
+
+    def test_aurora_latitude(self):
+        self.assertEqual(
+            self._gate("aurora", latDeg=55, ovalLimit=55), [False, "LATITUDE"]
+        )
+
+    def test_aurora_on(self):
+        self.assertEqual(self._gate("aurora"), [True, "ON"])
+
+    def test_milkyway_night(self):
+        self.assertEqual(self._gate("milkyway", sunElev=0), [False, "NIGHT"])
+
+    def test_milkyway_overcast(self):
+        self.assertEqual(self._gate("milkyway", overcast=0.8), [False, "OVERCAST"])
+
+    def test_milkyway_nelm(self):
+        self.assertEqual(self._gate("milkyway", nelm=4.9), [False, "NELM"])
+
+    def test_milkyway_on(self):
+        self.assertEqual(self._gate("milkyway"), [True, "ON"])
+
+    def test_forced_beats_physical_gates(self):
+        for feature in ("stars", "meteors", "aurora", "milkyway"):
+            with self.subTest(feature=feature):
+                self.assertEqual(
+                    self._gate(feature, forceOn=True, sunElev=10, overcast=1.0),
+                    [True, "FORCED"],
+                )
+
+    def test_setting_beats_force(self):
+        self.assertEqual(
+            self._gate("stars", settingOn=False, forceOn=True), [False, "SETTING"]
+        )
+
+
 if __name__ == "__main__":
     unittest.main()
