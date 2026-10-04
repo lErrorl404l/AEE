@@ -22,6 +22,13 @@ Debug hooks, set on missionNamespace:
   - aee_environmental_meteorForce  String, one-shot shower code (spawns one meteor)
 */
 
+// The environment tick runs every frame and must stay near 4 ms. The line
+// reads the hooks, the smoothed weather, the world location, the meteor
+// showers and four gate kernels. With tracing off, skip the whole build
+// after the first call. The first call still emits the INFO line. Tracing
+// on always rebuilds the line.
+if (!(AEE_TRACE_ON) && {missionNamespace getVariable [QGVAR(skyLogStarted), false]}) exitWith {};
+
 private _skyForce = missionNamespace getVariable ["aee_environmental_skyForce", false];
 private _auroraForce = missionNamespace getVariable ["aee_environmental_auroraForce", -1];
 private _milkyWayForce = missionNamespace getVariable ["aee_environmental_milkyWayForce", false];
