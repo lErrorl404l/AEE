@@ -67,3 +67,22 @@ AEE_SETTING_CHECKBOX(hudEnabled,"AEE Optics","Display",false);
 // ── Thermal polarity (issue #196) ─────────────────────────────────────────
 // Moved to aee_thermal/initSettings.inc.sqf with the rest of the thermal
 // pipeline (white-hot default, black-hot user-selectable per FM 3-22.9).
+
+// ── Eye adaptation (issue #141) ───────────────────────────────────────────
+// AEE pins the camera aperture and owns the eye adaptation rate.  Every
+// value here is traced to a published source or marked UNSOURCED in the
+// stringtable description and beside the constant in the kernel.
+AEE_SETTING_CHECKBOX(eyeAdaptationEnabled,"AEE Optics","Eye Adaptation",true);
+
+AEE_SETTING_SLIDER(eyeReflectance,"AEE Optics","Eye Adaptation",0.05,0.5,0.18,0);
+AEE_SETTING_SLIDER(eyeTauLight,"AEE Optics","Eye Adaptation",0.2,30,2.0,0);
+AEE_SETTING_SLIDER(eyeTauDarkCone,"AEE Optics","Eye Adaptation",10,600,120,0);
+AEE_SETTING_SLIDER(eyeTauDarkRod,"AEE Optics","Eye Adaptation",60,1800,400,0);
+AEE_SETTING_SLIDER(eyePupilTauConstrict,"AEE Optics","Eye Adaptation",0.05,1,0.25,0);
+AEE_SETTING_SLIDER(eyePupilTauDilate,"AEE Optics","Eye Adaptation",0.1,2,0.475,0);
+AEE_SETTING_SLIDER(eyeMesopicLow,"AEE Optics","Eye Adaptation",0.001,0.1,0.005,0);
+AEE_SETTING_SLIDER(eyeMesopicHigh,"AEE Optics","Eye Adaptation",0.5,20,5,0);
+AEE_SETTING_SLIDER(eyeFastBlend,"AEE Optics","Eye Adaptation",0,1,0.35,0);
+AEE_SETTING_SLIDER(eyeAmbientLuxScale,"AEE Optics","Eye Adaptation",0.001,10,1,0);
+AEE_SETTING_SLIDER(eyeLocalLuxScale,"AEE Optics","Eye Adaptation",0.001,10,1,0);
+AEE_SETTING_SLIDER(eyeBlindingLuxScale,"AEE Optics","Eye Adaptation",0,100000,0,0);

@@ -178,6 +178,8 @@ if (hasInterface) then {
     [] call FUNC(hudRangefinder);
     [] call FUNC(hudMarkers);
     [FUNC(hudUpdate), 0.1] call CBA_fnc_addPerFrameHandler;
+    // Eye adaptation: AEE owns the camera aperture and its rate (issue #141).
+    [] call FUNC(initEyeAdaptation);
 };
 
 
