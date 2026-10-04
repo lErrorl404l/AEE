@@ -17,6 +17,9 @@
 #define METEOR_TICK 0.25
 #define METEOR_SPAWN_RADIUS_MIN 6000
 #define METEOR_SPAWN_RADIUS_MAX 9000
+// The flare IS the visible point, so its range must exceed the spawn radius
+// or the meteor is never drawn (the starfield: flare 7500 > radius 5000).
+#define METEOR_FLARE_MAX_DIST 12000
 #define METEOR_LIGHT_BRIGHTNESS 3000
 #define METEOR_LIGHT_DECAY 200
 #define METEOR_LIFETIME 4

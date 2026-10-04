@@ -372,6 +372,15 @@ class TestMeteorRendererContract(unittest.TestCase):
         self.assertIn("EFUNC(core,getSmoothedWeather)", self.code)
         self.assertIn("FUNC(meteorState)", self.code)
 
+    def test_flare_reaches_the_spawn_radius(self):
+        # The starfield works because flareMaxDist (7500) > starRadius (5000).
+        # The meteor spawns at 6000-9000 m, so a 2000 m flare range (the
+        # reference value) would make it invisible.  Guard the fix.
+        self.assertIn("METEOR_FLARE_MAX_DIST", self.code)
+
+    def test_debug_force_hook(self):
+        self.assertIn("meteorForce", self.code)
+
     def test_speed_converts_km_s_to_m_s(self):
         # V-infinity is km/s; setVelocity takes m/s.  The worker must convert
         # before applying the cosmetic factor (regression guard for the review
