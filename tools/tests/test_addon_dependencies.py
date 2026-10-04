@@ -70,11 +70,19 @@ class TestNoCycle(unittest.TestCase):
 
     def test_the_coefficient_lives_in_material(self):
         self.assertTrue(
-            (ADDONS / "material" / "functions" / "fnc_calculateStefanCoefficient.sqf").exists(),
+            (
+                ADDONS / "material" / "functions" / "fnc_calculateStefanCoefficient.sqf"
+            ).exists(),
             "the Stefan coefficient is not in material",
         )
         self.assertFalse(
-            (ADDONS / "thermal" / "functions" / "ground" / "fnc_calculateStefanCoefficient.sqf").exists(),
+            (
+                ADDONS
+                / "thermal"
+                / "functions"
+                / "ground"
+                / "fnc_calculateStefanCoefficient.sqf"
+            ).exists(),
             "the Stefan coefficient is still in thermal",
         )
         prep = (ADDONS / "material" / "XEH_PREP.hpp").read_text(encoding="utf-8")
@@ -85,8 +93,24 @@ class TestNoCycle(unittest.TestCase):
     def test_callers_use_the_new_owner(self):
         """The call sites must name material, not thermal."""
         for name in ("fnc_calculateFreezeThawCycling.sqf", "fnc_calculateIceLoad.sqf"):
-            text = (ADDONS / "environmental" / "functions" / "terrain" / name).read_text(
-                encoding="utf-8"
-            )
+            text = (
+                ADDONS / "environmental" / "functions" / "terrain" / name
+            ).read_text(encoding="utf-8")
             self.assertIn("EFUNC(material,calculateStefanCoefficient)", text)
             self.assertNotIn("EFUNC(thermal,calculateStefanCoefficient)", text)
+
+
+class TestAiWildlifeDirection(unittest.TestCase):
+    """aee_wildlife consumes aee_ai, never the reverse."""
+
+    def test_wildlife_consumes_ai_and_environmental(self):
+        deps = dependencies("wildlife")
+        self.assertIn("ai", deps)
+        self.assertIn("environmental", deps)
+
+    def test_ai_does_not_reach_into_wildlife(self):
+        self.assertNotIn(
+            "wildlife",
+            dependencies("ai"),
+            "aee_ai reaches into aee_wildlife: the dependency cycle is back",
+        )
