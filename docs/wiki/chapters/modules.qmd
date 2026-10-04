@@ -97,6 +97,21 @@ Optics and visibility effects.
 | `calculateVehicleHeatShimmer` | Calculate vehicle heat shimmer |
 | `managePostProcess` | Manage the shared post-process effects |
 
+### Human-vision perception model
+
+The model derives the normal-vision tone, contrast, white balance and mesopic
+tint from published human-vision science. It subsumes the aesthetic base grade
+in place and reuses the registry keys `BaseGrade` and `BaseAcuity`. The design
+decision is in ADR-014.
+
+| Function | Purpose |
+|---|---|
+| `perceptionChromaticAdaptation` | Derive the partial von Kries blend toward the display white |
+| `perceptionIlluminant` | Normalise the scene illuminant to unit luma |
+| `perceptionMesopicColor` | Derive the mesopic desaturation and Purkinje colorize slot |
+| `perceptionParams` | Compose the tone and colour stages into the display arrays |
+| `perceptionToneResponse` | Derive display brightness, contrast and offset from the adapted luminance |
+
 ## mobility
 
 Vehicle and ground mobility.
