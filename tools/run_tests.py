@@ -56,6 +56,7 @@ def main():
         "tools/tests/test_dynamic_stars.py",
         "tools/tests/test_eye_adaptation.py",
         "tools/tests/test_image_realism.py",
+        "tools/tests/test_vision_model.py",
         "tools/tests/test_star_catalog.py",
         "tools/tests/test_meteors.py",
         "tools/tests/test_trajectories.py",
