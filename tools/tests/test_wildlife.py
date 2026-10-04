@@ -8,6 +8,7 @@ read the engine wiring, which the harness cannot execute.
 Run: python3 -m unittest tools.tests.test_wildlife -v
 """
 
+import re
 import sys
 import unittest
 from pathlib import Path
@@ -168,6 +169,50 @@ class TestDisturbanceSilence(unittest.TestCase):
         value = disturbance_silence(0.5, 0.05)
         self.assertGreater(value, 0.0)
         self.assertLess(value, 1.0)
+
+
+class TestWildlifeSourceContracts(unittest.TestCase):
+    """The engine wiring the harness cannot execute."""
+
+    def test_every_play_sound_3d_sets_the_local_argument_true(self):
+        calls = 0
+        for path in WILDLIFE.rglob("*.sqf"):
+            text = path.read_text(encoding="utf-8")
+            for match in re.findall(r"playSound3D\s*\[([^\]]*)\]", text):
+                calls += 1
+                arguments = [part.strip() for part in match.split(",")]
+                self.assertEqual(
+                    arguments[-1],
+                    "true",
+                    f"{path.name} does not set playSound3D local true",
+                )
+        self.assertGreaterEqual(calls, 1)
+
+    def test_init_wildlife_gates_on_has_interface(self):
+        text = (FUNCS / "fnc_initWildlife.sqf").read_text(encoding="utf-8")
+        self.assertIn("hasInterface", text)
+
+    def test_wildlife_tick_gates_on_has_interface_and_a_local_unit(self):
+        text = (FUNCS / "fnc_wildlifeTick.sqf").read_text(encoding="utf-8")
+        self.assertIn("hasInterface", text)
+        self.assertIn("CBA_fnc_currentUnit", text)
+
+    def test_dry_run_is_the_last_tick_parameter(self):
+        text = (FUNCS / "fnc_wildlifeTick.sqf").read_text(encoding="utf-8")
+        block = text[text.index("params [") : text.index("];", text.index("params ["))]
+        self.assertLess(block.index("_anchor"), block.index("_dryRun"))
+        self.assertIn("[false]", block)
+
+    def test_no_object_creation_and_no_do_move(self):
+        forbidden = ("createVehicle", "createVehicleLocal", "doMove", "doStop")
+        for path in WILDLIFE.rglob("*.sqf"):
+            text = path.read_text(encoding="utf-8")
+            for token in forbidden:
+                self.assertNotIn(token, text, f"{path.name} contains {token}")
+
+    def test_sound_instance_cap_is_enforced(self):
+        text = (FUNCS / "fnc_playOneShot.sqf").read_text(encoding="utf-8")
+        self.assertIn("WILDLIFE_SOUND_INSTANCE_CAP", text)
 
 
 if __name__ == "__main__":
