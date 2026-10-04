@@ -244,14 +244,14 @@ read them. The variables below are grouped by subsystem.
 | `aee_physiology_acclimatizationPercent` | The altitude acclimatisation |
 | `aee_physiology_uvIndex` | The UV index |
 | `aee_physiology_batteryTemperatureDerating` | The battery temperature derating |
-| `aee_physiology_scentDispersionIntensity` | The scent dispersion intensity |
+| `aee_environmental_scentDispersionIntensity` | The scent dispersion intensity |
 | `aee_core_currentHypoxiaRisk` | The current hypoxia risk |
 | `aee_physiology_altitudeState` | The altitude state |
 | `aee_physiology_amsRisk` | The acute mountain sickness risk |
 | `aee_physiology_dehydrationAccum` | The accumulated dehydration |
 | `aee_physiology_hypoxiaExposure` | The accumulated hypoxia exposure |
 | `aee_physiology_ozoneDU` | The ozone column in Dobson units |
-| `aee_physiology_scentDispersionDir` | The scent dispersion direction |
+| `aee_environmental_scentDispersionDir` | The scent dispersion direction |
 | `aee_physiology_hudWarningActive` | Whether the HUD warning is active |
 
 ## Radio

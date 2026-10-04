@@ -995,7 +995,7 @@ if (_p10Fail == 0) then {
     // Verifies 1/r³ falloff and the dipole field pattern.
     private _p19Pass = 0;
     private _p19Fail = 0;
-    private _fnMag = missionNamespace getVariable ["aee_core_fnc_calculateMagneticAnomaly", nil];
+    private _fnMag = missionNamespace getVariable ["aee_maritime_fnc_calculateMagneticAnomaly", nil];
     if (isNil "_fnMag") then {
         diag_log text "[PHASE19] [FAIL] magnetic anomaly function not compiled";
         _p19Fail = _p19Fail + 1;

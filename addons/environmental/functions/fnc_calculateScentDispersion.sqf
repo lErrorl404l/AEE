@@ -1,4 +1,4 @@
-#include "..\..\script_component.hpp"
+#include "..\script_component.hpp"
 
 /*
 Scent/olfactory dispersion intensity and direction for wildlife, AI
@@ -77,7 +77,7 @@ if (_windSpeed < 1) then {
 };
 
 // ─── Final intensity ───────────────────────────────────────────────────────
-private _intensity = _tempFactor * _humFactor * _rainFactor * _groundFactor * _windFactor * GVAR(ScentIntensity);
+private _intensity = _tempFactor * _humFactor * _rainFactor * _groundFactor * _windFactor * EGVAR(physiology,ScentIntensity);
 _intensity = _intensity max 0 min 1;
 
 missionNamespace setVariable [QGVAR(scentDispersionIntensity), _intensity];

@@ -101,7 +101,7 @@ class TestCompassAnomalyWiring(unittest.TestCase):
         self.src = _sqf(_MAR, "fnc_calculateCompassDeviation.sqf")
 
     def test_consumer_calls_and_uses_anomaly(self):
-        self.assertIn("EFUNC(core,calculateMagneticAnomaly)", self.src)
+        self.assertIn("FUNC(calculateMagneticAnomaly)", self.src)
         self.assertIn("compassAnomalyNT", self.src)
         self.assertIn("_declination + _anomalyDeg", self.src)
 
