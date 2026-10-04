@@ -36,7 +36,7 @@ if (_disabled || _sunElev >= 0 || _overcast >= 0.8) exitWith {
     missionNamespace setVariable [QGVAR(meteors), []];
 };
 
-// ── Debug force: set aee_optics_meteorForce to a shower code (e.g. "GEM")
+// ── Debug force: set aee_environmental_meteorForce to a shower code (e.g. "GEM")
 // from the debug console to spawn one meteor from that radiant this tick,
 // ignoring the activity window and the rate roll.  The night, overcast and
 // setting gates above still apply, so run it at night.  The flag resets. ──

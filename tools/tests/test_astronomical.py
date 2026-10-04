@@ -23,6 +23,7 @@ _REPO_ROOT = Path(__file__).resolve().parents[2]
 _OPTICS = _REPO_ROOT / "addons" / "optics" / "functions"
 _ENV = _REPO_ROOT / "addons" / "environmental" / "functions"
 
+
 def _read_recursive(base, name):
     """Read an SQF function file, resolving categorised subfolders (issue
     #203).  The function NAME is flat (aee_<mod>_fnc_<name>)."""
@@ -31,7 +32,6 @@ def _read_recursive(base, name):
     for f in base.rglob(name):
         return f.read_text(encoding="utf-8")
     raise FileNotFoundError(f"{name} not found under {base}")
-
 
 
 def _read_sqf(name, addon="optics"):
@@ -138,6 +138,7 @@ class TestSQFSync(unittest.TestCase):
             "fnc_classifyNight.sqf",
             ["> -6", "> -12", "> -18", "< 0.10"],
             "DEF Stan twilight thresholds",
+            addon="environmental",
         )
 
     # ── Lunar illumination (fnc_calculateLunarIllumination.sqf) ──
@@ -171,12 +172,13 @@ class TestSQFSync(unittest.TestCase):
             "fnc_calculateLimitingMagnitude.sqf",
             ["6.5 - log (_ambientLux / 0.001", "0.2 + 1.3", "0.9"],
             "NELM baseline and seeing penalty",
+            addon="environmental",
         )
 
     # ── Star catalog sort order (fnc_getStarCatalog.sqf) ──
     def test_star_catalog_sorts_by_altitude(self):
         """The visible-star sort must key on altitude, not the name (#54)."""
-        text = _read_sqf("fnc_getStarCatalog.sqf")
+        text = _read_sqf("fnc_getStarCatalog.sqf", addon="environmental")
         self.assertNotIn(
             "_visible sort false",
             text,
@@ -186,11 +188,12 @@ class TestSQFSync(unittest.TestCase):
             "fnc_getStarCatalog.sqf",
             ["[(_x select 1), _x]", "_keyed sort true"],
             "altitude-keyed descending sort",
+            addon="environmental",
         )
 
     def test_star_catalog_has_no_fabricated_canopus_b(self):
         """Canopus_b is not a BSC5 entry and must not reappear (#55)."""
-        text = _read_sqf("fnc_getStarCatalog.sqf")
+        text = _read_sqf("fnc_getStarCatalog.sqf", addon="environmental")
         self.assertNotIn(
             "Canopus_b",
             text,

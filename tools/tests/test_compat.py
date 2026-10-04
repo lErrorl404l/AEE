@@ -475,9 +475,9 @@ class TestWorldLatitudePattern(unittest.TestCase):
         ).read_text(encoding="utf-8")
         self.assertIn("getWorldLocation", compass)
 
-        star = Path("addons/optics/functions/sensor/fnc_getStarCatalog.sqf").read_text(
-            encoding="utf-8"
-        )
+        star = Path(
+            "addons/environmental/functions/astronomy/fnc_getStarCatalog.sqf"
+        ).read_text(encoding="utf-8")
         self.assertIn("getWorldLocation", star)
         # No direct CfgWorlds latitude read may remain outside the source.
         self.assertNotIn('>> "latitude"', star)

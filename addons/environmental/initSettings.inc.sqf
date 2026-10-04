@@ -60,3 +60,12 @@ AEE_SETTING_SLIDER(SoundPropagationScale,"AEE Environmental","Sound",0.5,2,1.0,1
 AEE_SETTING_SLIDER(slabDensity,"AEE Environmental","Snow",100,400,300,0);
 
 AEE_SETTING_SLIDER(slabDepth,"AEE Environmental","Snow",0.1,2,1.0,1);
+
+// ── Celestial (issue #122) ─────────────────────────────────────────────────
+// The physics-driven night sky.  The starfield replaces the static baked
+// texture: limiting magnitude, moon, twilight and cloud modulate which stars
+// appear and how bright.  The meteor renderer draws the active IMO shower at
+// its radiant and rate, gated by the same limiting magnitude and cloud.
+AEE_SETTING_CHECKBOX(dynamicStars,"AEE Environmental","Display",true);
+
+AEE_SETTING_CHECKBOX(dynamicMeteors,"AEE Environmental","Display",true);

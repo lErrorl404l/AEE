@@ -33,22 +33,6 @@
             <Original>Dew Decay Rate</Original>
             <English>Dew Decay Rate</English>
         </Key>
-        <Key ID="STR_AEE_Optics_dynamicMeteors_Description">
-            <Original>Draw physics-driven meteor showers: the active IMO shower's radiant and rate drive cosmetic shooting stars at night (limiting magnitude and cloud gate the rate)</Original>
-            <English>Draw physics-driven meteor showers: the active IMO shower's radiant and rate drive cosmetic shooting stars at night (limiting magnitude and cloud gate the rate)</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_dynamicMeteors_Name">
-            <Original>Dynamic Meteors</Original>
-            <English>Dynamic Meteors</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_dynamicStars_Description">
-            <Original>Draw the physics-driven starfield (limiting magnitude, moon, twilight and cloud drive which stars appear and how bright)</Original>
-            <English>Draw the physics-driven starfield (limiting magnitude, moon, twilight and cloud drive which stars appear and how bright)</English>
-        </Key>
-        <Key ID="STR_AEE_Optics_dynamicStars_Name">
-            <Original>Dynamic Starfield</Original>
-            <English>Dynamic Starfield</English>
-        </Key>
         <Key ID="STR_AEE_Optics_glareBlurMax_Description">
             <Original>Veiling blur at peak solar glare</Original>
             <English>Veiling blur at peak solar glare</English>

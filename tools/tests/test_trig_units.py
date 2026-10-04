@@ -115,7 +115,7 @@ class TestNoRadianConversionRemains(unittest.TestCase):
         "addons/environmental/functions/warnings/fnc_calculateAvalancheRisk.sqf": [
             "_psi"
         ],
-        "addons/optics/functions/sensor/fnc_getStarCatalog.sqf": [
+        "addons/environmental/functions/astronomy/fnc_getStarCatalog.sqf": [
             "_latRad",
             "_raRad",
             "_decRad",

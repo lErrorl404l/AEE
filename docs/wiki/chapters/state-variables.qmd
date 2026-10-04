@@ -179,6 +179,16 @@ read them. The variables below are grouped by subsystem.
 | `aee_fx_exhaustSources` | The tracked exhaust shimmer particle sources |
 | `aee_fx_exhaustRefraction` | The strongest exhaust refractive contrast this tick, in 1e-4 units, negative for hot gas |
 
+## Celestial
+
+| Variable | Purpose |
+|---|---|
+| `aee_environmental_nightClassification` | The DEF Stan 61-027 night classification |
+| `aee_environmental_limitingMagnitude` | The naked-eye limiting magnitude |
+| `aee_environmental_visibleStars` | The visible star count |
+| `aee_environmental_starLights` | The star light-emitter registry |
+| `aee_environmental_meteors` | The active meteor registry |
+
 ## Soil and hydrology
 
 | Variable | Purpose |

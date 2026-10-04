@@ -129,6 +129,22 @@
             <Original>Surface Wetting Rate</Original>
             <English>Surface Wetting Rate</English>
         </Key>
+        <Key ID="STR_AEE_Environmental_dynamicMeteors_Description">
+            <Original>Draw physics-driven meteor showers: the active IMO shower's radiant and rate drive cosmetic shooting stars at night (limiting magnitude and cloud gate the rate)</Original>
+            <English>Draw physics-driven meteor showers: the active IMO shower's radiant and rate drive cosmetic shooting stars at night (limiting magnitude and cloud gate the rate)</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_dynamicMeteors_Name">
+            <Original>Dynamic Meteors</Original>
+            <English>Dynamic Meteors</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_dynamicStars_Description">
+            <Original>Draw the physics-driven starfield (limiting magnitude, moon, twilight and cloud drive which stars appear and how bright)</Original>
+            <English>Draw the physics-driven starfield (limiting magnitude, moon, twilight and cloud drive which stars appear and how bright)</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_dynamicStars_Name">
+            <Original>Dynamic Starfield</Original>
+            <English>Dynamic Starfield</English>
+        </Key>
         <Key ID="STR_AEE_Environmental_slabDensity_Description">
             <Original>Snow slab density in kg/m3 for the McClung shear-stress model</Original>
             <English>Snow slab density in kg/m3 for the McClung shear-stress model</English>

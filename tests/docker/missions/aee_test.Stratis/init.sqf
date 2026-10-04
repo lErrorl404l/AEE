@@ -584,7 +584,7 @@ if (_p10Fail == 0) then {
     ];
     {
         _x params ["_elev", "_phase", "_expected"];
-        private _got = [_elev, _phase] call aee_optics_fnc_classifyNight;
+        private _got = [_elev, _phase] call aee_environmental_fnc_classifyNight;
         if (_got == _expected) then {
             _p13Pass = _p13Pass + 1;
         } else {
@@ -594,8 +594,8 @@ if (_p10Fail == 0) then {
     } forEach _cases;
 
     // calculateLimitingMagnitude: known lux + seeing pairs
-    private _magStarlight = [0.001, 0.1] call aee_optics_fnc_calculateLimitingMagnitude;
-    private _magFullMoon = [0.3, 0.1] call aee_optics_fnc_calculateLimitingMagnitude;
+    private _magStarlight = [0.001, 0.1] call aee_environmental_fnc_calculateLimitingMagnitude;
+    private _magFullMoon = [0.3, 0.1] call aee_environmental_fnc_calculateLimitingMagnitude;
     if ((abs (_magStarlight - 6.3) < 0.2) && (abs (_magFullMoon - 3.8) < 0.2)) then {
         diag_log text format ["[PHASE13] [PASS] limiting magnitude: starlight=%1 fullMoon=%2", _magStarlight, _magFullMoon];
         _p13Pass = _p13Pass + 1;
@@ -605,7 +605,7 @@ if (_p10Fail == 0) then {
     };
 
     // getStarCatalog: Stratis position (lat 35 N) at night must return stars
-    private _catalog = [[7300, 7300, 0], [2024, 1, 11]] call aee_optics_fnc_getStarCatalog;
+    private _catalog = [[7300, 7300, 0], [2024, 1, 11]] call aee_environmental_fnc_getStarCatalog;
     if (count _catalog > 0) then {
         diag_log text format ["[PHASE13] [PASS] star catalog: %1 stars visible", count _catalog];
         _p13Pass = _p13Pass + 1;
@@ -615,8 +615,8 @@ if (_p10Fail == 0) then {
     };
 
     // end-to-end: updateEnvironment wired values (checked after env tick)
-    private _nightClass = missionNamespace getVariable ["aee_optics_nightClassification", -1];
-    private _limMag = missionNamespace getVariable ["aee_optics_limitingMagnitude", -1];
+    private _nightClass = missionNamespace getVariable ["aee_environmental_nightClassification", -1];
+    private _limMag = missionNamespace getVariable ["aee_environmental_limitingMagnitude", -1];
     if ((_nightClass >= 0) && (_limMag > 0)) then {
         diag_log text format ["[PHASE13] [PASS] env wiring: nightClass=%1 limMag=%2", _nightClass, _limMag];
         _p13Pass = _p13Pass + 1;

@@ -5,7 +5,7 @@
  *
  * Registers the client-side starfield worker once.  Arma's night sky is a
  * static baked texture; the worker draws the computed star catalog
- * (aee_optics_visibleStars: [name, altDeg, azDeg, vmag], altitude-sorted
+ * (aee_environmental_visibleStars: [name, altDeg, azDeg, vmag], altitude-sorted
  * and NELM-gated by fnc_getStarCatalog) so the field follows the same
  * physics as the rest of the optics chain.
  *

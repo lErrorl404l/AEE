@@ -178,8 +178,6 @@ if (hasInterface) then {
     [] call FUNC(hudRangefinder);
     [] call FUNC(hudMarkers);
     [FUNC(hudUpdate), 0.1] call CBA_fnc_addPerFrameHandler;
-    [] call FUNC(renderDynamicStars);
-    [] call FUNC(renderMeteors);
 };
 
 

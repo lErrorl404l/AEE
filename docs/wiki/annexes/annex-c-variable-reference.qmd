@@ -106,9 +106,9 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_core_irLightLux` | core | IR light lux |
 | `aee_core_lightDirection` | core | Light direction |
 | `aee_core_lightIsNight` | core | Night flag |
-| `aee_optics_nightClassification` | optics | Night class |
+| `aee_environmental_nightClassification` | environmental | Night class |
 | `aee_core_starsVisibility` | core | Star visibility |
-| `aee_optics_visibleStars` | optics | Visible star count |
+| `aee_environmental_visibleStars` | environmental | Visible star count |
 | `aee_nightvision_nvgNoise` | nightvision | NVG noise |
 | `aee_nightvision_nvgTubeTier` | nightvision | NVG tube tier |
 | `aee_nightvision_nvgWetness` | nightvision | NVG wetness |
