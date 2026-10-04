@@ -534,6 +534,62 @@ class TestPerceptionDriverContract(unittest.TestCase):
         self.assertLess(gate, code.index("ppEffectAdjust _ccParams"))
 
 
+class TestPerceptionColourContracts(unittest.TestCase):
+    """Source and behaviour contracts for the colour stage.
+
+    The composition kernel calls the three colour kernels and sets the blend
+    and colorize slots; the driver calls the composition kernel.  No new
+    post-process effect is created.  The stand-down neutral keeps the colorize
+    alpha 0.  A warm illuminant with white balance off is the identity; with
+    white balance on it raises the blend alpha.  The engine's unstated pipeline
+    order is not asserted.
+    """
+
+    def test_composition_calls_each_colour_kernel(self):
+        code = _code(COMPOSE_KERNEL)
+        for name in (
+            "perceptionIlluminant",
+            "perceptionChromaticAdaptation",
+            "perceptionMesopicColor",
+        ):
+            self.assertIn(f"FUNC({name})", code, f"the composition omits {name}")
+
+    def test_composition_sets_the_blend_and_colorize_slots(self):
+        code = _code(COMPOSE_KERNEL)
+        self.assertIn("_blend", code, "the blend slot is not set")
+        self.assertIn("_colorize", code, "the colorize slot is not set")
+
+    def test_driver_calls_the_composition_kernel(self):
+        self.assertIn("FUNC(perceptionParams)", _code(DRIVER))
+
+    def test_no_new_post_process_effect(self):
+        code = _code(DRIVER) + _code(COMPOSE_KERNEL)
+        self.assertNotIn("ppEffectCreate", code, "a new effect is created")
+
+    def test_stand_down_neutral_keeps_the_colorize_alpha_zero(self):
+        code = _code(DRIVER)
+        match = STAND_DOWN_RE.search(code)
+        self.assertIsNotNone(match, "the stand-down identity is missing")
+        cc = ast.literal_eval(match.group())
+        self.assertEqual(cc[4][3], 0, "the stand-down desaturates")
+
+    def test_warm_illuminant_with_white_balance_off_keeps_the_blend_alpha_zero(self):
+        cc, _ = compose([1, 1, [1.0, 0.9, 0.6], True, False, 1, 1])
+        self.assertEqual(cc[3][3], 0)
+
+    def test_warm_illuminant_with_white_balance_on_raises_the_blend_alpha(self):
+        cc, _ = compose([1, 1, [1.0, 0.9, 0.6], True, True, 1, 1])
+        self.assertGreater(cc[3][3], 0)
+
+    def test_neutral_illuminant_is_the_identity_image(self):
+        cc, _ = compose([1, 1, [1, 1, 1], True, True, 0, 1])
+        self.assertEqual(cc[3][3], 0, "a neutral illuminant blended the image")
+        self.assertEqual(cc[4][3], 0)
+        patch = [0.8, 0.2, 0.1]
+        for got, want in zip(cc_contract_pixel(patch, cc), patch):
+            self.assertAlmostEqual(got, want, places=9)
+
+
 class TestPerceptionDebugHooks(unittest.TestCase):
     """Each vision hook is read, and none is registered as a CBA setting."""
 
