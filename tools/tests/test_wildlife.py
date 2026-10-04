@@ -215,5 +215,41 @@ class TestWildlifeSourceContracts(unittest.TestCase):
         self.assertIn("WILDLIFE_SOUND_INSTANCE_CAP", text)
 
 
+class TestSoundBedDeterminism(unittest.TestCase):
+    """Two identical inputs give the same mix, and one change moves it."""
+
+    def test_same_inputs_give_the_same_result(self):
+        first = sound_bed("Cfb", False, 0.0, 2.0, 0.2)
+        second = sound_bed("Cfb", False, 0.0, 2.0, 0.2)
+        self.assertEqual(first, second)
+
+    def test_a_changed_input_changes_the_result(self):
+        base = sound_bed("Cfb", False, 0.0, 2.0, 0.2)
+        changed = sound_bed("Cfb", False, 0.0, 2.0, 0.9)
+        self.assertNotEqual(base, changed)
+
+
+class TestNewAddonsLogDebugContract(unittest.TestCase):
+    """The two new addons declare logDebug and both stringtable keys."""
+
+    ADDONS = ("ai", "wildlife")
+
+    def test_each_new_addon_declares_log_debug_and_both_keys(self):
+        for name in self.ADDONS:
+            with self.subTest(addon=name):
+                directory = ROOT / "addons" / name
+                settings = (directory / "initSettings.inc.sqf").read_text(
+                    encoding="utf-8"
+                )
+                self.assertTrue(
+                    "AEE_SETTING_CHECKBOX(logDebug," in settings
+                    or "QGVAR(logDebug)," in settings,
+                    f"{name} declares no logDebug switch",
+                )
+                strings = (directory / "stringtable.xml").read_text(encoding="utf-8")
+                self.assertIn("_logDebug_Name", strings)
+                self.assertIn("_logDebug_Description", strings)
+
+
 if __name__ == "__main__":
     unittest.main()

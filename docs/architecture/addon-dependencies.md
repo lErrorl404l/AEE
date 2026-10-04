@@ -11,6 +11,7 @@ edge can take.
 | addon | depends on |
 |---|---|
 | `actions` | `core`, `environmental`, `maritime`, `nightvision` |
+| `ai` | none |
 | `armour` | `core`, `physiology` |
 | `atmos` | `core`, `environmental` |
 | `ballistics` | `atmos`, `core` |
@@ -32,10 +33,11 @@ edge can take.
 | `physiology` | `core`, `thermal` |
 | `radio` | `atmos`, `core`, `environmental`, `maritime`, `thermal` |
 | `thermal` | `core`, `environmental`, `material`, `nightvision`, `optics`, `physiology` |
+| `wildlife` | `ai`, `environmental` |
 
 ## Reading it
 
-- Leaves (depend on nothing, safe for anything to depend on): `main`, `material`.
+- Leaves (depend on nothing, safe for anything to depend on): `ai`, `main`, `material`.
 - Hubs (depend on most others): `core` (11), `fx` (6), `thermal` (6).
 - Compat addons (`compat_*`) load only when their host mod is present. An
   optional read of a compat variable is not an edge in the core set.
