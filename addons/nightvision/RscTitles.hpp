@@ -13,6 +13,18 @@ class RscText {
     colorBackground[] = {0, 0, 0, 0};
 };
 
+// RscPicture needs a FULL base definition (same reason as RscText above):
+// an empty parent gives the control no type, so it never renders.  style 48
+// is ST_PICTURE.
+class RscPicture {
+    type = 0;
+    idc = -1;
+    style = 48;
+    colorBackground[] = {0, 0, 0, 0};
+    colorText[] = {1, 1, 1, 1};
+    texture = "";
+};
+
 class RscTitles {
     class GVAR(nvgTitle) {
         idd = 10778;
@@ -109,6 +121,45 @@ class RscTitles {
                 y = "0.82 * safezoneH + safezoneY";
                 w = "0.08 * safezoneH";
                 h = "0.018 * safezoneH";
+            };
+        };
+    };
+
+    // ─── NVG imperfection overlays ────────────────────────────────────────
+    // Two generated RGBA textures faded at run time with ctrlSetFade.  Fade 0
+    // is opaque and fade 1 is transparent, so the parent computes
+    // 1 - strength.  A baked circular alpha mask clips the blemishes and the
+    // honeycomb to the tube face, so nothing draws on the black surround.
+    // The control square is the tube face: a circle inscribed in safeZoneH,
+    // centred on the screen.  x and y come from that same safeZoneH geometry
+    // the RadialBlur vignette derives its offsets from.
+    class GVAR(nvgImperfections) {
+        idd = 10780;
+        movingEnable = 0;
+        enableSimulation = 1;
+        enableDisplay = 1;
+        onLoad = QUOTE(with uiNamespace do {GVAR(imperfectionDisplay) = _this select 0};);
+        duration = 999999;
+        fadein = 0;
+        fadeout = 0;
+        class controls {
+            class NVGBlemishes: RscPicture {
+                idc = 1010;
+                text = "z\aee\addons\nightvision\data\nvg_blemishes.paa";
+                x = "0.5 * safeZoneW + safeZoneX - (0.5 * safeZoneH)";
+                y = "0.5 * safeZoneH + safeZoneY - (0.5 * safeZoneH)";
+                w = "1.0 * safeZoneH";
+                h = "1.0 * safeZoneH";
+                colorText[] = {1, 1, 1, 1};
+            };
+            class NVGReticulation: RscPicture {
+                idc = 1011;
+                text = "z\aee\addons\nightvision\data\nvg_reticulation.paa";
+                x = "0.5 * safeZoneW + safeZoneX - (0.5 * safeZoneH)";
+                y = "0.5 * safeZoneH + safeZoneY - (0.5 * safeZoneH)";
+                w = "1.0 * safeZoneH";
+                h = "1.0 * safeZoneH";
+                colorText[] = {1, 1, 1, 1};
             };
         };
     };
