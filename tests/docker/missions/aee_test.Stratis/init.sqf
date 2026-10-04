@@ -254,6 +254,33 @@ if (_p11Fail == 0) then {
     diag_log text format ["[PHASE11] [FAIL] wildlife: %1 passed, %2 exceeded budget", _p11Pass, _p11Fail];
 };
 
+// -- PHASE 12: dedicated-server no-player probe ----------------------------
+// The fauna driver must be inert with no local player.  Call the tick with an
+// empty anchor and a live (not dry) run.  With hasInterface false and no local
+// unit the tick computes state and stops before any spawn or sound, so the
+// live fauna count and the sound-instance list must both stay empty.
+private _wildlifeTickFn = missionNamespace getVariable ["aee_wildlife_fnc_wildlifeTick", nil];
+if (isNil "_wildlifeTickFn") then {
+    diag_log text "[PHASE12] [FAIL] aee_wildlife_fnc_wildlifeTick not compiled";
+} else {
+    [[], false] call _wildlifeTickFn;
+    private _fauna = missionNamespace getVariable ["aee_wildlife_fauna", []];
+    private _live = 0;
+    if (_fauna isEqualType []) then {
+        {
+            if (!isNull (_x select 1)) then { _live = _live + 1; };
+        } forEach _fauna;
+    };
+    private _sounds = missionNamespace getVariable ["aee_wildlife_soundInstances", []];
+    private _soundCount = 0;
+    if (_sounds isEqualType []) then { _soundCount = count _sounds; };
+    if ((_live == 0) && (_soundCount == 0)) then {
+        diag_log text "[PHASE12] [PASS] dedicated server: no player, no animal, no sound";
+    } else {
+        diag_log text format ["[PHASE12] [FAIL] dedicated server: live %1 sound %2", _live, _soundCount];
+    };
+};
+
 // -- PHASE 3+4+5: wait 30 s for simulation ticks, then sample ---------------
 [{
     private _t = missionNamespace getVariable ["aee_core_currentTemperature", nil];
