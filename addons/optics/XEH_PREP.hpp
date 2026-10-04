@@ -28,6 +28,7 @@ PREPS(eye,eyeSkyFraction);
 PREPS(eye,eyeSkyCast);
 PREPS(eye,eyeAperture);
 PREPS(eye,eyeSampleScene);
+PREPS(eye,eyeFlash);
 PREPS(eye,updateEyeAdaptation);
 PREPS(eye,initEyeAdaptation);
 
