@@ -153,6 +153,14 @@
             <Original>Night-Sky State Trace</Original>
             <English>Night-Sky State Trace</English>
         </Key>
+        <Key ID="STR_AEE_Environmental_dynamicAurora_Description">
+            <Original>Draw the physics-driven aurora as a client-side particle curtain (Kp index, observer latitude, night and cloud gate it; forceable)</Original>
+            <English>Draw the physics-driven aurora as a client-side particle curtain (Kp index, observer latitude, night and cloud gate it; forceable)</English>
+        </Key>
+        <Key ID="STR_AEE_Environmental_dynamicAurora_Name">
+            <Original>Dynamic Aurora</Original>
+            <English>Dynamic Aurora</English>
+        </Key>
         <Key ID="STR_AEE_Environmental_slabDensity_Description">
             <Original>Snow slab density in kg/m3 for the McClung shear-stress model</Original>
             <English>Snow slab density in kg/m3 for the McClung shear-stress model</English>

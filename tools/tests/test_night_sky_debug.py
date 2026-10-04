@@ -410,5 +410,23 @@ class TestAuroraRenderer(unittest.TestCase):
         self.assertIn("[] call FUNC(renderAurora);", post)
 
 
+class TestAuroraWiring(unittest.TestCase):
+    """The aurora display setting and its stringtable keys."""
+
+    def test_setting_and_strings(self):
+        settings = (
+            ROOT / "addons" / "environmental" / "initSettings.inc.sqf"
+        ).read_text(encoding="utf-8")
+        self.assertIn(
+            'AEE_SETTING_CHECKBOX(dynamicAurora,"AEE Environmental","Display",true)',
+            settings,
+        )
+        st = (ROOT / "addons" / "environmental" / "stringtable.xml").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("STR_AEE_Environmental_dynamicAurora_Name", st)
+        self.assertIn("STR_AEE_Environmental_dynamicAurora_Description", st)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -79,6 +79,7 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
+| `aee_environmental_dynamicAurora` | CHECKBOX | `true` | yes | environmental | Draw the physics-driven aurora as a client-side particle curtain (Kp index, observer latitude, night and cloud gate it; forceable) |
 | `aee_environmental_dynamicMeteors` | CHECKBOX | `true` | yes | environmental | Draw physics-driven meteor showers: the active IMO shower's radiant and rate drive cosmetic shooting stars at night (limiting magnitude and cloud gate the rate) |
 | `aee_environmental_dynamicStars` | CHECKBOX | `true` | yes | environmental | Draw the physics-driven starfield (limiting magnitude, moon, twilight and cloud drive which stars appear and how bright) |
 
