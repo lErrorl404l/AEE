@@ -25,6 +25,8 @@ SPECIES_TABLE = DATA / "species_table.sqf"
 
 SPECIES_FOR_BIOME = FUNCS / "fnc_speciesForBiome.sqf"
 SPAWN_BUDGET = FUNCS / "fnc_spawnBudget.sqf"
+NEEDS_TICK = FUNCS / "fnc_needsTick.sqf"
+RESOURCE_SCORE = FUNCS / "fnc_resourceScore.sqf"
 SOUND_BED = FUNCS / "fnc_soundBedForContext.sqf"
 SPOOK_RANGE = FUNCS / "fnc_spookRange.sqf"
 DISTURBANCE_SILENCE = FUNCS / "fnc_disturbanceSilence.sqf"
@@ -394,6 +396,59 @@ class TestSpawnBudget(unittest.TestCase):
     def test_allowance_never_goes_negative(self):
         allowed, _should_spawn, _should_despawn = self.budget(100, 40)
         self.assertEqual(allowed, 0)
+
+
+class TestNeedsTick(unittest.TestCase):
+    """fnc_needsTick runs from the real SQF."""
+
+    @staticmethod
+    def needs(hunger, thirst, dt, hunger_rate=0.02, thirst_rate=0.03):
+        return run_sqf(NEEDS_TICK, [hunger, thirst, dt, hunger_rate, thirst_rate])
+
+    def test_thirst_above_its_threshold_wants_water(self):
+        _h, _t, goal = self.needs(0.1, 0.9, 0)
+        self.assertEqual(goal, 2)
+
+    def test_hunger_only_wants_food(self):
+        _h, _t, goal = self.needs(0.9, 0.1, 0)
+        self.assertEqual(goal, 1)
+
+    def test_both_low_want_nothing(self):
+        _h, _t, goal = self.needs(0.1, 0.1, 0)
+        self.assertEqual(goal, 0)
+
+    def test_both_needs_rise_with_dt(self):
+        hunger0, thirst0, _goal = self.needs(0.0, 0.0, 0)
+        hunger1, thirst1, _goal = self.needs(0.0, 0.0, 10)
+        self.assertGreater(hunger1, hunger0)
+        self.assertGreater(thirst1, thirst0)
+
+    def test_needs_clamp_at_one(self):
+        hunger, thirst, _goal = self.needs(0.99, 0.99, 100)
+        self.assertEqual(hunger, 1.0)
+        self.assertEqual(thirst, 1.0)
+
+
+class TestResourceScore(unittest.TestCase):
+    """fnc_resourceScore runs from the real SQF."""
+
+    @staticmethod
+    def score(distance, water, veg, want_water):
+        return run_sqf(RESOURCE_SCORE, [distance, water, veg, want_water])
+
+    def test_full_wanted_resource_at_zero_distance_is_one(self):
+        self.assertAlmostEqual(self.score(0, 1.0, 0.0, True), 1.0)
+
+    def test_long_distance_is_near_zero(self):
+        self.assertAlmostEqual(self.score(200, 1.0, 0.0, True), 0.0, places=6)
+
+    def test_food_uses_the_vegetation_score(self):
+        self.assertAlmostEqual(self.score(0, 0.0, 0.5, False), 0.5)
+
+    def test_the_wanted_resource_selects_the_strength(self):
+        water = self.score(0, 0.9, 0.1, True)
+        food = self.score(0, 0.9, 0.1, False)
+        self.assertNotEqual(water, food)
 
 
 if __name__ == "__main__":
