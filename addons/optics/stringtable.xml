@@ -378,8 +378,8 @@
             <English>Vision Mesopic Desaturation</English>
         </Key>
         <Key ID="STR_AEE_Optics_visionModelEnabled_Description">
-            <Original>Enable the physical human-vision model for normal vision. It subsumes the aesthetic base grade in place and reads the eye adaptation model. The switch is off until the colour stage lands, so the shipped image is unchanged.</Original>
-            <English>Enable the physical human-vision model for normal vision. It subsumes the aesthetic base grade in place and reads the eye adaptation model. The switch is off until the colour stage lands, so the shipped image is unchanged.</English>
+            <Original>Enable the physical human-vision model for normal vision. It subsumes the aesthetic base grade in place and reads the eye adaptation model. Default on. Disable it to fall back to the aesthetic base grade.</Original>
+            <English>Enable the physical human-vision model for normal vision. It subsumes the aesthetic base grade in place and reads the eye adaptation model. Default on. Disable it to fall back to the aesthetic base grade.</English>
         </Key>
         <Key ID="STR_AEE_Optics_visionModelEnabled_Name">
             <Original>Human-Vision Model</Original>
