@@ -9,6 +9,7 @@ PREP(nvgTierIndex);
 PREP(nvgBlemishField);
 PREP(nvgAgcBreathing);
 PREP(nvgBlindingEnvelope);
+PREP(nvgScintillation);
 PREPS(ltm,ltmBeamSegments);
 PREPS(ltm,ltmCreate);
 PREPS(ltm,ltmDraw);
