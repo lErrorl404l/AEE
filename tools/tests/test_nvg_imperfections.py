@@ -298,6 +298,33 @@ class TestImperfectionWiring(unittest.TestCase):
         ):
             self.assertIn(state, self.annex, f"{state} is not in Annex C")
 
+    def test_fades_derive_from_the_blemish_kernel(self):
+        self.assertIn(
+            "1 - ([_tierIdx, _noise, _ioStr * _blemishStr] call FUNC(nvgBlemishField))",
+            self.parent,
+        )
+        self.assertIn(
+            "1 - ([_tierIdx, _noise, _ioStr * _reticuleStr] call FUNC(nvgBlemishField))",
+            self.parent,
+        )
+
+    def test_alpha_published(self):
+        self.assertIn("setVariable [QGVAR(nvgImperfectionAlpha)", self.parent)
+        self.assertIn("1 - _blemishFade", self.parent)
+
+    def test_controls_faded_and_committed(self):
+        for needle in (
+            "displayCtrl 1010",
+            "ctrlSetFade _blemishFade",
+            "ctrlCommit 0",
+            "displayCtrl 1011",
+            "ctrlSetFade _reticuleFade",
+        ):
+            self.assertIn(needle, self.parent)
+
+    def test_force_override_read(self):
+        self.assertIn("_forceBlemish >= 0", self.parent)
+
 
 if __name__ == "__main__":
     unittest.main()
