@@ -4,7 +4,7 @@
 Horizontal coordinates to a world direction unit vector.
 
 A star's altitude and azimuth (the horizontal coordinates fnc_getStarCatalog
-already computes and stores as aee_optics_visibleStars) describe where the
+already computes and stores as aee_environmental_visibleStars) describe where the
 star sits on the observer's celestial sphere.  The renderer converts that
 pair to a world-space direction from the player each frame.
 

@@ -130,6 +130,7 @@ Environmental and seasonal effects.
 | `calculateFogBaseAltitude` | Calculate the fog base altitude from the dewpoint spread |
 | `calculateFreezeThawCycling` | Calculate freeze-thaw cycling |
 | `calculateFrostOnWindscreens` | Calculate frost on windscreens |
+| `calculateLimitingMagnitude` | Calculate the naked-eye limiting magnitude |
 | `calculateLunarIllumination` | Calculate lunar illumination |
 | `calculateQNH` | Calculate QNH and pressure altitude |
 | `calculateSevereWeather` | Calculate severe weather |
@@ -137,8 +138,23 @@ Environmental and seasonal effects.
 | `calculateSpaceWeather` | Calculate space weather |
 | `calculateSurfaceWetness` | Calculate surface wetness from wetting and drying |
 | `classifyBiome` | Classify the climate with the Koppen algorithm |
+| `classifyNight` | Classify the night into DEF Stan twilight zones |
 | `getBiome` | Get the current biome |
 | `getClimateNormals` | Get the climate normals |
+| `getStarCatalog` | Build the visible-star catalogue |
+| `meteorRate` | Calculate the expected meteor rate |
+| `meteorShowers` | Provide the IMO meteor shower data |
+| `meteorState` | Combine the meteor kernels into the current shower state |
+| `radiantHorizontal` | Convert a meteor radiant to horizontal coordinates |
+| `renderDynamicStars` | Register the client starfield renderer |
+| `renderMeteors` | Register the client meteor renderer |
+| `showerIsActive` | Test whether a meteor shower is active |
+| `siderealTime` | Calculate the local sidereal time |
+| `starCatalogData` | Provide the generated BSC5 star catalogue |
+| `starDirection` | Convert star altitude and azimuth to a direction vector |
+| `starLightsSync` | Reconcile the star light emitters |
+| `starMagnitude` | Convert a star magnitude to render size and brightness |
+| `updateMeteors` | Update the drawn meteors each tick |
 | `updateSeasonalFoliage` | Update seasonal foliage |
 | `updateSoundPropagation` | Update sound propagation |
 

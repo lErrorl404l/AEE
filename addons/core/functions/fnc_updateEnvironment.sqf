@@ -331,12 +331,12 @@ if (GVAR(fxEnabled)) then {
 // the solar model.  classifyNight must run after both are available.
 private _sunElev = missionNamespace getVariable [QEGVAR(core,currentSunElevation), -90];
 private _moonPhase = missionNamespace getVariable [QEGVAR(environmental,lunarPhase), 0];
-[_sunElev, _moonPhase] call EFUNC(optics,classifyNight);
+[_sunElev, _moonPhase] call EFUNC(environmental,classifyNight);
 private _ambientLux = missionNamespace getVariable [QEGVAR(core,ambientLux), 0.001];
 private _seeing = missionNamespace getVariable [QEGVAR(optics,atmosphericSeeing), 0.5];
-[_ambientLux, _seeing] call EFUNC(optics,calculateLimitingMagnitude);
+[_ambientLux, _seeing] call EFUNC(environmental,calculateLimitingMagnitude);
 private _posASL2D = if (count _posASL >= 3) then { [_posASL select 0, _posASL select 1, 0] } else { [0, 0, 0] };
-[_posASL2D, date] call EFUNC(optics,getStarCatalog);
+[_posASL2D, date] call EFUNC(environmental,getStarCatalog);
 [] call EFUNC(atmos,calculateCloudCeiling);
 [] call EFUNC(radio,calculateIonosphericAbsorption);
 if (GVAR(environmentalEnabled)) then {

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Generate addons/optics/functions/sensor/fnc_meteorShowers.sqf from IMO data.
+"""Generate addons/environmental/functions/astronomy/fnc_meteorShowers.sqf
+from IMO data.
 
 Source: data/astronomy/sources/imo_cal2025.txt, the pdftotext -layout
 extraction of the IMO 2025 Meteor Shower Calendar (document header
@@ -29,7 +30,14 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 SRC = ROOT / "data" / "astronomy" / "sources" / "imo_cal2025.txt"
-OUT = ROOT / "addons" / "optics" / "functions" / "sensor" / "fnc_meteorShowers.sqf"
+OUT = (
+    ROOT
+    / "addons"
+    / "environmental"
+    / "functions"
+    / "astronomy"
+    / "fnc_meteorShowers.sqf"
+)
 
 DEGREE_DOT = "\u25e6"
 EN_DASH = "\u2013"
