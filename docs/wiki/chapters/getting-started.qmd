@@ -47,7 +47,7 @@ The automated Docker test requires the Arma 3 Linux dedicated server.
 2. Open the **Editor** and place a unit on any map.
 3. Start the mission.
 4. Open the **ACE Arsenal** or **CBA Settings** menu.
-5. Find **AEE Core** under the CBA settings category.
+5. Find the **AEE** category under CBA settings. The module settings have their own **AEE <Component>** category.
 6. Enable AEE and set the update interval (default: 5 seconds).
 
 AEE computes environment data immediately. You can read the state

@@ -40,7 +40,7 @@ Compat addons load only when their host mod is present. AEE itself has no ACE3 d
 
 1. Subscribe to this item, or download the latest release from GitHub and unpack `@aee` into your Arma 3 directory.
 2. Launch with: `-mod=@cba_a3;@aee`
-3. Configure via CBA Settings, AEE Core and AEE Mobility categories.
+3. Configure via CBA Settings, the AEE category and the per-module AEE <Component> categories.
 
 ## Mission Authors
 

@@ -153,7 +153,7 @@ Each function file is `functions/fnc_<name>.sqf`. The files are registered in `X
 
 ### Settings
 
-AEE registers its settings at mission start with `CBA_fnc_addSetting`. The settings live in `addons/core/initSettings.inc.sqf`, which is included from `XEH_preInit.sqf`. All settings appear under the category "AEE Core" in the CBA settings UI.
+AEE registers its settings at mission start with `CBA_fnc_addSetting`. Each addon registers its own settings from `addons/<component>/initSettings.inc.sqf`, included from that addon's `XEH_preInit.sqf`. The framework settings appear under the **AEE** category. Each module registers under an **AEE <Component>** category, for example AEE Optics and AEE Thermal.
 
 ### Localisation
 
