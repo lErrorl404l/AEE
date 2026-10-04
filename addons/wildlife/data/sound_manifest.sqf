@@ -4,7 +4,7 @@ Vanilla ambient-sound manifest (reuse only, never fetch or generate).
 Each row is [contextKey, vanillaPathOrCfgSFXClass, maxDistance, baseGain].
 A row whose second value contains a dot is a raw vanilla .wss file, loaded
 with playSound3D and the local argument true.  A row without a dot is a
-vanilla CfgSFX class, loaded with createSoundSourceLocal as a looping
+vanilla CfgSFX class, loaded with createSoundSource as a looping
 positional bed.  contextKey is the key fnc_soundBedForContext returns.
 
 A context the plan requests but vanilla cannot supply is a recorded finding

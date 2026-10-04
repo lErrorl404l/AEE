@@ -14,11 +14,6 @@ if (!isNil QGVAR(ambientPFH)) then {
     GVAR(ambientPFH) = nil;
 };
 
-if (!isNil QGVAR(firedManEH)) then {
-    removeMissionEventHandler ["FiredMan", GVAR(firedManEH)];
-    GVAR(firedManEH) = nil;
-};
-
 private _source = missionNamespace getVariable [GVAR(ambientSource), objNull];
 if (!isNull _source) then {
     deleteVehicle _source;

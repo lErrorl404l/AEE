@@ -20,7 +20,7 @@ The engine sets the bounds. The engine ambient life is per-client local. Source,
 
 4. The disturbance field is per-machine and deterministic. Each machine applies the same broadcast stimulus at the same mission time. The stimulus broadcast is rate limited to four events per second, so the network cost is bounded. Two clients at the same cell and time see the same species mix, not the same individual objects. That is acceptable for cosmetic ecology, exactly as the engine ambient system behaves.
 
-5. The sound layer reuses vanilla media only. It never fetches, licenses or generates an audio asset. A raw vanilla `.wss` file is played with `playSound3D` and the local argument true. A vanilla `CfgSFX` class is played with `createSoundSourceLocal` as a looping positional bed. A context that vanilla cannot supply is a recorded finding in `docs/wiki/research/wildlife-ambience-dossier.md`, never a fetch.
+5. The sound layer reuses vanilla media only. It never fetches, licenses or generates an audio asset. A raw vanilla `.wss` file is played with `playSound3D` and the local argument true. A vanilla `CfgSFX` class is played with `createSoundSource` as a looping positional bed. A context that vanilla cannot supply is a recorded finding in `docs/wiki/research/wildlife-ambience-dossier.md`, never a fetch.
 
 6. The `playSound3D` local argument is always true. Without it the command broadcasts to every machine, which is wrong for a client-local cosmetic layer. A source contract asserts the final argument is true on every call under `addons/wildlife`.
 

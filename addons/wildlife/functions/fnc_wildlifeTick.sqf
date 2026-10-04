@@ -128,6 +128,13 @@ if (!_enabled) exitWith { _state };
 private _ambient = missionNamespace getVariable [QGVAR(ambientEnabled), true];
 if !(_ambient isEqualType true) then { _ambient = true; };
 
+// The fauna switches are read here so the slice-two runtime and the debug line
+// share one guarded read.
+private _animals = missionNamespace getVariable [QGVAR(animalsEnabled), false];
+if !(_animals isEqualType true) then { _animals = false; };
+private _density = missionNamespace getVariable [QGVAR(density), 1.0];
+if !(_density isEqualType 0) then { _density = 1.0; };
+
 if (_spook) then {
     [_spookPosition, 0.9] call FUNC(spookWave);
 };
@@ -147,7 +154,7 @@ if (_ambient) then {
     };
 };
 
-private _logMsg = format ["bed %1 gain %2 disturbance %3 spook %4", _bedKey, _gain, _disturbance, _spook];
+private _logMsg = format ["bed %1 gain %2 disturbance %3 spook %4 animals %5 density %6", _bedKey, _gain, _disturbance, _spook, _animals, _density];
 AEE_LOG_DEBUG(_logMsg);
 
 _state

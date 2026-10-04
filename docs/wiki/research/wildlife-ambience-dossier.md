@@ -10,7 +10,7 @@ The machine-readable table is
 `[contextKey, vanillaPathOrCfgSFXClass, maxDistance, baseGain]`. A row with a
 dot in the second value is a raw vanilla `.wss` file loaded with `playSound3D`
 and the `local` argument true. A row without a dot is a vanilla `CfgSFX` class
-loaded with `createSoundSourceLocal` as a looping positional bed.
+loaded with `createSoundSource` as a looping positional bed.
 
 Sourcing key: **[P]** primary document read. **[P-W]** primary via Wayback.
 **[PROJECT]** already in this repository with its own citation.
