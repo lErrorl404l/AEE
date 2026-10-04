@@ -19,34 +19,38 @@
 
 private _lights = missionNamespace getVariable [QGVAR(starLights), []];
 
-// Disabled: clear and idle.
-if (!(missionNamespace getVariable [QGVAR(dynamicStars), true])) exitWith {
-    { deleteVehicle (_x select 1); } forEach _lights;
-    missionNamespace setVariable [QGVAR(starLights), []];
-};
+// Debug hooks, set on missionNamespace:
+//   aee_environmental_skyForce    Boolean, force the whole night sky on
+//   aee_environmental_starsForce  Number, forced limiting magnitude; a value
+//     above 0 raises the visible set so the faint bulk is catalogued
+private _skyForce = missionNamespace getVariable ["aee_environmental_skyForce", false];
+if !(_skyForce isEqualType false) then { _skyForce = false; };
 
-// Night gate: the NELM chain clamps at 2.0, so Sirius and Canopus would
-// otherwise draw in daylight; stars appear only once the sun is down.
+// Disabled, daylight or solid overcast: clear and idle.  The whole-sky force
+// bypasses every gate.  The NELM chain clamps at 2.0, so Sirius and Canopus
+// would otherwise draw in daylight; the hard overcast gate handles the
+// point-occlusion case the integrated sky model cannot (issue #122).
+private _settingOn = missionNamespace getVariable [QGVAR(dynamicStars), true];
 private _sunElev = missionNamespace getVariable [QEGVAR(core,currentSunElevation), 0];
 if !(_sunElev isEqualType 0) then { _sunElev = 0; };
-if (_sunElev >= 0) exitWith {
-    { deleteVehicle (_x select 1); } forEach _lights;
-    missionNamespace setVariable [QGVAR(starLights), []];
-};
-
-// Solid overcast occludes every star regardless of integrated sky light.
-// The declared threshold is 8/10 cloud.  The NELM chain (fnc_calculate
-// LimitingMagnitude) already folds cloud into the limiting magnitude, so
-// the catalog drops most stars; this hard gate handles the point-occlusion
-// case the integrated sky model cannot (issue #122 cloud gate).
 private _overcast = ([] call EFUNC(core,getSmoothedWeather)) select 1;
-if (_overcast >= 0.8) exitWith {
+if !(_overcast isEqualType 0) then { _overcast = 0; };
+if ((!_skyForce) && (!_settingOn || (_sunElev >= 0) || (_overcast >= 0.8))) exitWith {
     { deleteVehicle (_x select 1); } forEach _lights;
     missionNamespace setVariable [QGVAR(starLights), []];
 };
 
 private _stars = missionNamespace getVariable [QGVAR(visibleStars), []];
 private _eyePos = ((call CBA_fnc_currentUnit) call EFUNC(core,getEyeState)) select 0;
+
+// Forced limiting magnitude: publish the effective value and, when forced,
+// the emitter count.  The emitter path still caps at STAR_LIGHT_MAX_MAG, so
+// the faint bulk is left to the immediate-mode layer (fnc_drawFaintStars).
+private _starsForce = missionNamespace getVariable [QGVAR(starsForce), 0];
+if !(_starsForce isEqualType 0) then { _starsForce = 0; };
+private _effectiveNelm = missionNamespace getVariable [QGVAR(limitingMagnitude), 6.5];
+if (_starsForce > 0) then { _effectiveNelm = _starsForce; };
+missionNamespace setVariable [QGVAR(effectiveNelm), _effectiveNelm];
 
 // A real star sits at optical infinity; any far radius reproduces its
 // direction.  These are render tunables for the operator's in-game eye.
@@ -67,6 +71,8 @@ private _desired = [];
     private _mag = [_vmag] call FUNC(starMagnitude);
     _desired pushBack [_name, _dir, _mag select 0, _mag select 1];
 } forEach _stars;
+
+missionNamespace setVariable [QGVAR(starEmitterCount), count _desired];
 
 {
     _x params ["_name", "_dir", "_size", "_alpha"];

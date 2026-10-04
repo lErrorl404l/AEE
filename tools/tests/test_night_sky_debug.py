@@ -335,5 +335,33 @@ class TestSkyStateLogContract(unittest.TestCase):
         self.assertNotIn("starLogAt", stars)
 
 
+class TestForceHooks(unittest.TestCase):
+    """The debug hooks are documented in their owning files."""
+
+    def test_stars_force_owned_by_star_sync(self):
+        text = (SENSOR / "fnc_starLightsSync.sqf").read_text(encoding="utf-8")
+        self.assertIn("aee_environmental_starsForce", text)
+        self.assertIn("effectiveNelm", text)
+        self.assertIn("starEmitterCount", text)
+
+    def test_sky_and_meteor_force_owned_by_meteor_worker(self):
+        text = (SENSOR / "fnc_updateMeteors.sqf").read_text(encoding="utf-8")
+        self.assertIn("aee_environmental_skyForce", text)
+        self.assertIn("aee_environmental_meteorForce", text)
+
+    def test_dead_hook_name_absent(self):
+        # Build the banned name from parts: the literal must not appear here, or
+        # the repository-wide grep that task 13 runs would match this test file.
+        dead = "aee_optics_" + "meteorForce"
+        hits = []
+        for path in (ROOT / "addons").rglob("*.sqf"):
+            if dead in path.read_text(encoding="utf-8"):
+                hits.append(str(path))
+        for path in (ROOT / "tools").rglob("*.py"):
+            if dead in path.read_text(encoding="utf-8"):
+                hits.append(str(path))
+        self.assertEqual(hits, [])
+
+
 if __name__ == "__main__":
     unittest.main()
