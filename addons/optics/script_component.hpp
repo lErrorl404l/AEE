@@ -11,12 +11,13 @@
 
 // ── Meteor shower render (issue #122) ────────────────────────────────────
 // Render tunables for the client #lightpoint + #particlesource worker.
-// METEOR_SPEED_FACTOR scales the published V-infinity for the eye and is
-// UNSOURCED.  METEOR_TICK must match the worker's PFH interval.
+// The worker converts V-infinity (km/s) to m/s, then scales by
+// METEOR_SPEED_FACTOR for a visible streak; that factor is UNSOURCED and
+// chosen for the eye.  METEOR_TICK must match the worker's PFH interval.
 #define METEOR_TICK 0.25
 #define METEOR_SPAWN_RADIUS_MIN 6000
 #define METEOR_SPAWN_RADIUS_MAX 9000
 #define METEOR_LIGHT_BRIGHTNESS 3000
 #define METEOR_LIGHT_DECAY 200
 #define METEOR_LIFETIME 4
-#define METEOR_SPEED_FACTOR 0.25
+#define METEOR_SPEED_FACTOR 0.01
