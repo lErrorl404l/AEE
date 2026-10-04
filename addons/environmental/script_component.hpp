@@ -25,3 +25,15 @@
 #define METEOR_LIGHT_DECAY 200
 #define METEOR_LIFETIME 4
 #define METEOR_SPEED_FACTOR 0.01
+
+// ── Aurora curtain render (night-sky debug) ───────────────────────────────
+// The two emission lines are sourced (NOAA SWPC Aurora Tutorial): 557.7 nm
+// oxygen green (O I 1S-1D) and 630.0 nm oxygen red (O I 1D-3P).  The altitude
+// band below is a render tunable, not the published 90-400 km physical range,
+// and every geometry and colour value here is UNSOURCED except the two lines.
+#define AURORA_TICK 0.5
+#define AURORA_RENDER_RADIUS 12000
+#define AURORA_BASE_ALT_M 2000
+#define AURORA_BAND_ALT_M 4000
+#define AURORA_GREEN [0.35,1.0,0.45]
+#define AURORA_RED [1.0,0.30,0.35]

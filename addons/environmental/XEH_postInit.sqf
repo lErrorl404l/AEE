@@ -10,4 +10,5 @@ AEE_MODULE_POST_INIT
 if (hasInterface) then {
     [] call FUNC(renderDynamicStars);
     [] call FUNC(renderMeteors);
+    [] call FUNC(renderAurora);
 };
