@@ -143,6 +143,10 @@ if (_visionForce isEqualType 0) then { _useModel = _useModel || (_visionForce > 
 private _adaptedLux = missionNamespace getVariable [QGVAR(eyeAdaptedLux), 1];
 private _mesopicW = missionNamespace getVariable [QGVAR(eyeMesopic), 1];
 private _params = [];
+// Performance: the model runs in the existing 1.0 s client PFH started by
+// fnc_initBaseGrade.  It adds one ambient engine read per tick and the pure
+// kernels are arithmetic over a few numbers.  It does not touch the 5 ms
+// aee_core_fnc_updateEnvironment gate, which is a server tick on another path.
 if (_useModel isEqualTo true) then {
     private _forceLux = missionNamespace getVariable [QGVAR(visionForceLux), -1];
     if (_forceLux isEqualType 0) then {
