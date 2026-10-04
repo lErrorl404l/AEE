@@ -1,4 +1,4 @@
-# ADR-006: AEE Owns the Human Eye Adaptation Rate
+# ADR-007: AEE Owns the Human Eye Adaptation Rate
 
 Status: Accepted
 Date: 2026-10-04

@@ -122,6 +122,20 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_optics_viewDistanceSigma` | optics | Total atmospheric extinction sigma for the view-distance driver |
 | `aee_optics_dtvHostVehicle` | optics | Vehicle whose native TI the DTV base channel disabled; restored on exit or switch |
 | `aee_optics_dtvHostEntered` | optics | True while the DTV base channel has run its thermal sensor ENTER |
+| `aee_optics_eyeSceneLux` | optics | Scene illuminance the eye model sampled, lx |
+| `aee_optics_eyeAdaptedLux` | optics | Adapted scene illuminance after the eye model, lx |
+| `aee_optics_eyeAperture` | optics | Aperture the eye model pinned, higher is wider |
+| `aee_optics_eyePupilMm` | optics | Pupil diameter the eye model carries, mm |
+| `aee_optics_eyeMesopic` | optics | CIE 191:2010 photopic fraction, 0 scotopic to 1 photopic |
+| `aee_optics_eyeSkyFraction` | optics | Open-sky fraction from the sky raycast, 0 to 1 |
+| `aee_optics_eyeRawAmbient` | optics | Raw ambient input to the eye model, lx |
+| `aee_optics_eyeRawLocal` | optics | Raw local-light input to the eye model, lx |
+| `aee_optics_eyeRawCoreLocal` | optics | Core dynamic-lux input to the eye model, lx |
+| `aee_optics_eyeRawEngineAmbient` | optics | Engine `getLightingAt` ambient element, no unit |
+| `aee_optics_eyeRawEngineLocal` | optics | Engine `getLightingAt` dynamic element, no unit |
+| `aee_optics_eyeRawEngineLum` | optics | Engine `apertureParams` estimated luminance, no unit |
+| `aee_optics_eyeRawBlinding` | optics | Engine `apertureParams` blinding term, no unit |
+| `aee_optics_eyeRawSky` | optics | Open-sky fraction before the scene combine, 0 to 1 |
 
 ### Physiology
 
@@ -140,6 +154,7 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_thermal_batteryTemperatureDerating` | thermal | Battery derating 0.3..1 |
 | `aee_environmental_scentDispersionIntensity` | environmental | Scent dispersion 0..1 |
 | `aee_physiology_scentDispersionDir` | physiology | Scent downwind direction |
+| `aee_environmental_scentDispersionDir` | environmental | Scent downwind direction (re-homed from physiology by the module-hygiene cleanup) |
 | `aee_physiology_amsRisk` | physiology | Acute mountain sickness risk |
 | `aee_physiology_sleepState` | physiology | Sleep state |
 | `aee_physiology_sleepiness` | physiology | Sleepiness 0..1 |

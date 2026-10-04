@@ -73,7 +73,7 @@ private _dirs = [
 private _ignore = [objNull, objNull];
 private _vehicle = vehicle _player;
 if (_vehicle != _player) then { _ignore = [_vehicle, objNull]; };
-private _sky = FUNC(eyeSkyFraction) [FUNC(eyeSkyCast) [getPosASL _player, _dirs, _ignore, _range]];
+private _sky = [[getPosASL _player, _dirs, _ignore, _range] call FUNC(eyeSkyCast)] call FUNC(eyeSkyFraction);
 
 // Publish every raw input for calibration.
 missionNamespace setVariable [QGVAR(eyeRawAmbient), _ambient];
@@ -85,4 +85,4 @@ missionNamespace setVariable [QGVAR(eyeRawEngineLum), _engineLum];
 missionNamespace setVariable [QGVAR(eyeRawBlinding), _blinding];
 missionNamespace setVariable [QGVAR(eyeRawSky), _sky];
 
-[FUNC(eyeSceneLux) [_ambient, _local, _sky], _local, _sky, _engineLum, _blinding]
+[[_ambient, _local, _sky] call FUNC(eyeSceneLux), _local, _sky, _engineLum, _blinding]

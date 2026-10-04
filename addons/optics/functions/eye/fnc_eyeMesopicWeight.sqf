@@ -20,10 +20,14 @@ Returns:
   1 means the cones carry it.
 */
 
-params [["_lum", 0, [0]]];
+params [
+    ["_lum", 0, [0]],
+    ["_lo", 0.005, [0]],
+    ["_hi", 5, [0]]
+];
 
-private _lo = 0.005;   // CIE 191:2010 scotopic end (TRACED)
-private _hi = 5;       // CIE 191:2010 photopic end (TRACED)
+// The endpoints default to the TRACED values and the driver passes the
+// AEE Optics > Eye Adaptation settings, so the band is operator-tunable.
 
 if (_lum <= _lo) exitWith { 0 };
 if (_lum >= _hi) exitWith { 1 };

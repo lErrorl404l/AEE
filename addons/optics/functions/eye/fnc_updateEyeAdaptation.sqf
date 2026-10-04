@@ -65,9 +65,9 @@ private _sceneLux = _sample select 0;
 private _sky = _sample select 2;
 
 private _forceLux = missionNamespace getVariable [QGVAR(eyeForceLux), 0];
-if ((_forceLux isEqualType 0) && {_forceLux > 0}) then { _sceneLux = _forceLux; };
+if ((_forceLux isEqualType 0) && _forceLux > 0) then { _sceneLux = _forceLux; };
 private _forceMode = missionNamespace getVariable [QGVAR(eyeForceMode), ""];
-if ((_forceMode isEqualType "") && {_forceMode != ""}) then {
+if ((_forceMode isEqualType "") && _forceMode != "") then {
     if (_forceMode == "NIGHT") then { _sceneLux = 0.001; };
     if (_forceMode == "DAY") then { _sceneLux = 100000; };
 };
@@ -76,10 +76,10 @@ if ((_forceMode isEqualType "") && {_forceMode != ""}) then {
 // is not folded into the engine dynamic term, so it cannot double-count.
 private _flashUntil = missionNamespace getVariable [QGVAR(eyeFlashUntil), 0];
 private _flashLux = missionNamespace getVariable [QGVAR(eyeFlashLux), 0];
-if ((_flashUntil isEqualType 0) && {CBA_missionTime < _flashUntil}) then {
+if ((_flashUntil isEqualType 0) && CBA_missionTime < _flashUntil) then {
     if (_flashLux isEqualType 0) then { _sceneLux = _sceneLux + _flashLux; };
 } else {
-    if ((_flashLux isEqualType 0) && {_flashLux != 0}) then {
+    if ((_flashLux isEqualType 0) && _flashLux != 0) then {
         missionNamespace setVariable [QGVAR(eyeFlashLux), 0];
     };
 };
@@ -93,10 +93,10 @@ private _xTarget = log (_lumScene max 1e-9);
 
 // Fast pupil branch. The pupil sets the retinal illuminance, so its current
 // diameter is the fast estimate of the scene light.
-private _dSteady = FUNC(eyePupilSteady) [_lumScene];
+private _dSteady = [_lumScene] call FUNC(eyePupilSteady);
 private _dPrev = missionNamespace getVariable [QGVAR(eyePupil), -1];
-if (!(_dPrev isEqualType 0) || {_dPrev <= 0}) then { _dPrev = _dSteady; };
-private _d = FUNC(eyePupilStep) [_dPrev, _dSteady, _dt, GVAR(eyePupilTauConstrict), GVAR(eyePupilTauDilate)];
+if (!(_dPrev isEqualType 0) || _dPrev <= 0) then { _dPrev = _dSteady; };
+private _d = [_dPrev, _dSteady, _dt, GVAR(eyePupilTauConstrict), GVAR(eyePupilTauDilate)] call FUNC(eyePupilStep);
 
 // Invert the steady fit to read the luminance the pupil's diameter implies.
 private _u = ((4.9 - _d) / 3.0) max (-0.999) min 0.999;
@@ -106,7 +106,7 @@ private _xFast = log (3.183 * (10 ^ _logB));
 // Slow pools.
 private _state = missionNamespace getVariable [QGVAR(eyeState), []];
 if (!(_state isEqualType []) || {(count _state) != 2}) then { _state = [_xTarget, _xTarget]; };
-private _step = FUNC(eyeAdaptStep) [_state, _xTarget, _dt, GVAR(eyeTauLight), GVAR(eyeTauDarkCone), GVAR(eyeTauDarkRod), 0];
+private _step = [_state, _xTarget, _dt, GVAR(eyeTauLight), GVAR(eyeTauDarkCone), GVAR(eyeTauDarkRod), 0] call FUNC(eyeAdaptStep);
 
 // The freeze hook holds the adapted state while the scene moves.
 private _freeze = missionNamespace getVariable [QGVAR(eyeFreeze), false];
@@ -121,13 +121,13 @@ private _xRod = _step select 1;
 
 // _w is the CIE 191:2010 photopic fraction: near 1 the cones carry vision,
 // near 0 the rods do, so _w weights the cone pool.
-private _w = FUNC(eyeMesopicWeight) _lumScene;
+private _w = [_lumScene, GVAR(eyeMesopicLow), GVAR(eyeMesopicHigh)] call FUNC(eyeMesopicWeight);
 private _xSlow = (_w * _xCone) + ((1 - _w) * _xRod);
 private _kp = GVAR(eyeFastBlend);
 private _x = ((1 - _kp) * _xSlow) + (_kp * _xFast);
 
 private _adaptedLux = (pi / _rho) * (10 ^ _x);
-private _v = FUNC(eyeAperture) [_adaptedLux];
+private _v = [_adaptedLux] call FUNC(eyeAperture);
 
 // Pin only on a meaningful change (the engine rounds the aperture anyway).
 private _lastV = missionNamespace getVariable [QGVAR(eyeLastV), -1];

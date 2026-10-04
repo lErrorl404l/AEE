@@ -6,7 +6,7 @@ class CfgPatches {
         name = COMPONENT_NAME;
         units[] = {};
         weapons[] = {};
-        requiredVersion = REQUIRED_VERSION;
+        requiredVersion = 2.04;
         requiredAddons[] = {
             "aee_main",
             "aee_core",
