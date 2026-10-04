@@ -74,7 +74,10 @@ private _spawns = 0;
             private _radius = METEOR_SPAWN_RADIUS_MIN + random (METEOR_SPAWN_RADIUS_MAX - METEOR_SPAWN_RADIUS_MIN);
             private _origin = _eyePos vectorAdd (_dir vectorMultiply _radius);
             private _jitter = 200;
-            private _carrier = "Land_Battery_F" createVehicleLocal (_origin vectorAdd [((random _jitter) - (_jitter / 2)), ((random _jitter) - (_jitter / 2)), ((random _jitter) - (_jitter / 2))]);
+            // createVehicleLocal takes ATL; the eye position is ASL, so create at
+            // the origin then setPosASL (same pattern as the star worker).
+            private _carrier = "Land_Battery_F" createVehicleLocal [0, 0, 0];
+            _carrier setPosASL (_origin vectorAdd [((random _jitter) - (_jitter / 2)), ((random _jitter) - (_jitter / 2)), ((random _jitter) - (_jitter / 2))]);
 
             private _trail = "#particlesource" createVehicleLocal (getPosATL _carrier);
             _trail setParticleCircle [0, [0, 0, 0]];
@@ -89,13 +92,14 @@ private _spawns = 0;
             _light setLightUseFlare true;
             _light setLightFlareSize 10;
             _light setLightFlareMaxDistance 2000;
-            _light setLightAmbient [1, 0.8, 0.7];
+            _light setLightAmbient [0, 0, 0];
             _light setLightColor [1, 1, 1];
 
-            // Move away from the radiant.  The visual speed scales the
-            // published V-infinity by a declared cosmetic factor (UNSOURCED:
-            // chosen for the eye, not a physical value).
-            private _speed = (_x select 11) * METEOR_SPEED_FACTOR;
+            // Move away from the radiant.  V-infinity is km/s and setVelocity
+            // takes m/s, so convert first, then apply a cosmetic factor for
+            // the eye (UNSOURCED: the factor is chosen for a visible streak,
+            // not a physical value).
+            private _speed = (_x select 11) * 1000 * METEOR_SPEED_FACTOR;
             _carrier setVelocity (_dir vectorMultiply (-_speed));
 
             private _despawnAt = diag_tickTime + METEOR_LIFETIME;

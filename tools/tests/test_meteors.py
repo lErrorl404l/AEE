@@ -372,6 +372,17 @@ class TestMeteorRendererContract(unittest.TestCase):
         self.assertIn("EFUNC(core,getSmoothedWeather)", self.code)
         self.assertIn("FUNC(meteorState)", self.code)
 
+    def test_speed_converts_km_s_to_m_s(self):
+        # V-infinity is km/s; setVelocity takes m/s.  The worker must convert
+        # before applying the cosmetic factor (regression guard for the review
+        # finding that otherwise reads as a slow dot, not a streak).
+        self.assertIn("* 1000 * METEOR_SPEED_FACTOR", self.code)
+
+    def test_no_ground_illumination(self):
+        # Match the starfield design: the flare is the point, the ambient
+        # stays black so the field does not light the ground.
+        self.assertIn("setLightAmbient [0, 0, 0]", self.code)
+
 
 class TestMeteorWiring(unittest.TestCase):
     """PREPS, setting, stringtable, postInit, runner and gate wiring."""

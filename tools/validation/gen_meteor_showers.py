@@ -99,7 +99,7 @@ def parse_showers(text):
             raise ValueError(f"{code}: no peak date")
         pm, pd = peak.groups()
 
-        lam_int = re.search(r"(\d+)\s*$", p_lam[peak.end() :])
+        lam_int = re.search(r"(\d+)\s*$", p_lam[activity.end() + peak.end() :])
         if lam_int is None:
             raise ValueError(f"{code}: no solar longitude")
 
