@@ -32,11 +32,18 @@ CREATE = re.compile(r"(\w+)\s*=\s*ppEffectCreate")
 
 def is_guarded(text: str, var: str, pos: int) -> bool:
     """Check the code before `pos` guards `var` with an if (_var >= 0)
-    block or an exitWith on negative.  Scans back to the start of the
-    current enclosing block (40 lines) so nested if-guards are found."""
-    line_no = text[:pos].count("\n")
-    window_lines = text.split("\n")[max(0, line_no - 40) : line_no]
-    window = "\n".join(window_lines)
+    block or an exitWith on negative.  Scans back 40 lines so nested
+    if-guards are found, and includes the text before `pos` on its own
+    line, so a one-line guard such as
+    `if (_x >= 0) then { _x ppEffectEnable false }` is found too."""
+    start = pos
+    for _ in range(40):
+        newline = text.rfind("\n", 0, start)
+        if newline == -1:
+            start = 0
+            break
+        start = newline
+    window = text[start:pos]
     return (
         re.search(rf"if\s*\([^)]*{var}\s*>=\s*0\)\s*then", window) is not None
         or re.search(rf"if\s*\({var}\s*<\s*0\)\s*exitWith", window) is not None
