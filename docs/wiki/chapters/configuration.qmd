@@ -139,6 +139,15 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_environmental_InversionBoost` | SLIDER | `0.6` | yes | environmental | Sound-range boost on clear calm nights |
 | `aee_environmental_SandstormWindThreshold` | SLIDER | `10` | yes | environmental | Wind speed (m/s) that triggers sandstorms |
 
+## AEE Experimental → Fusion
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_thermal_fusionAlwaysOn` | CHECKBOX | `false` | yes | thermal | Render the thermal fusion overlay over any NVG, even without a thermal-capable headset. |
+| `aee_thermal_fusionFovFrame` | CHECKBOX | `true` | yes | thermal | Draw a thin rectangular border at the thermal channel's half-angle, so the operator can see where the fused image is actually bounded. It is a HUD aid and not optics: no mask and no tube geometry, and it draws nothing for a non-fusion device. |
+| `aee_thermal_fusionOutline` | CHECKBOX | `true` | yes | thermal | Draw the outline of each hot target the thermal state already tracks, on a transparent overlay that the NVG does not filter. It draws nothing when fusion is off or the fitted headset is not fusion capable. |
+| `aee_thermal_fusionSolidFill` | CHECKBOX | `false` | yes | thermal | Paint each hot body inside the thermal channel one solid bright colour, the flat block a real thermal display shows. This mode replaces the graded emissive ladder while it is on, so a body is never painted by both. Turn it off for the graded look. |
+
 ## AEE FX → Diagnostics
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -496,15 +505,6 @@ registered.
 | `aee_thermal_thermalPixelation` | CHECKBOX | `false` | yes | thermal | Quantise the thermal display to the fitted device's vertical detector resolution, so a low-resolution sensor shows the blocks its detector actually resolves. A sensor finer than the render shows none. The figure is the device's own; the engine clamps it. |
 | `aee_thermal_thermalPolarity` | LIST | `0` | yes | thermal | White hot (hot = white) is the system default (AN/PAS-13 initialises white hot). Black hot (hot = black) is a user-selectable alternative - FM 3-22.9 states polarity is user preference |
 | `aee_thermal_thermalWetDistortion` | SLIDER | `0.08` | yes | thermal | Maximum lens blurriness from the rain film on the objective. The display scales it from zero by the rain and fog it already models, so a dry scene shows nothing. |
-
-## AEE Thermal → Fusion
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_thermal_fusionAlwaysOn` | CHECKBOX | `false` | yes | thermal | Render the thermal fusion overlay over any NVG, even without a thermal-capable headset. |
-| `aee_thermal_fusionFovFrame` | CHECKBOX | `true` | yes | thermal | Draw a thin rectangular border at the thermal channel's half-angle, so the operator can see where the fused image is actually bounded. It is a HUD aid and not optics: no mask and no tube geometry, and it draws nothing for a non-fusion device. |
-| `aee_thermal_fusionOutline` | CHECKBOX | `true` | yes | thermal | Draw the outline of each hot target the thermal state already tracks, on a transparent overlay that the NVG does not filter. It draws nothing when fusion is off or the fitted headset is not fusion capable. |
-| `aee_thermal_fusionSolidFill` | CHECKBOX | `false` | yes | thermal | Paint each hot body inside the thermal channel one solid bright colour, the flat block a real thermal display shows. This mode replaces the graded emissive ladder while it is on, so a body is never painted by both. Turn it off for the graded look. |
 
 ## AEE Thermal → Sensor
 

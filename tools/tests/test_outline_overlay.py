@@ -358,7 +358,7 @@ class TestOutlineConfigContract(unittest.TestCase):
 
     def test_the_setting_is_registered_default_on(self):
         self.assertIn(
-            'AEE_SETTING_CHECKBOX(fusionOutline,"AEE Thermal","Fusion",true)',
+            'AEE_SETTING_CHECKBOX(fusionOutline,"AEE Experimental","Fusion",true)',
             SETTINGS_SRC,
         )
 

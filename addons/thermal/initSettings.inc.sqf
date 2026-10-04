@@ -20,20 +20,20 @@
 // approach - its fusion modes are offered whenever an optic has thermal
 // and the current vanilla mode is NVG).  Capability is not consent: this
 // setting only grants the option, the operator still presses the keybind.
-AEE_SETTING_CHECKBOX(fusionAlwaysOn,"AEE Thermal","Fusion",false);
+AEE_SETTING_CHECKBOX(fusionAlwaysOn,"AEE Experimental","Fusion",false);
 
 // The fusion FOV frame (issue #204).  A thin rectangular HUD border at the
 // thermal channel's resolved half-angle, so the operator can see where the
 // fused image is actually bounded.  Default ON.  It is an operator aid and
 // not optics: no mask and no tube geometry, and it draws nothing for a
 // non-fusion device.
-AEE_SETTING_CHECKBOX(fusionFovFrame,"AEE Thermal","Fusion",true);
+AEE_SETTING_CHECKBOX(fusionFovFrame,"AEE Experimental","Fusion",true);
 
 // The fusion thermal-outline overlay (issue #204).  Outlines the hot targets
 // the thermal state already tracks, so the operator sees which bodies the
 // fused channel resolves.  It draws nothing when fusion is off, because the
 // NVG dispatch calls the toggle only on the fusion path.
-AEE_SETTING_CHECKBOX(fusionOutline,"AEE Thermal","Fusion",true);
+AEE_SETTING_CHECKBOX(fusionOutline,"AEE Experimental","Fusion",true);
 
 // The fusion solid fill (issue #204).  Ported from workshop 3810296503
 // whale_ecoti_llll functions/fn_thermalFill.sqf.  On: a hot body inside the
@@ -42,7 +42,7 @@ AEE_SETTING_CHECKBOX(fusionOutline,"AEE Thermal","Fusion",true);
 // REPLACES the 256-band emissive ladder while it is on, so one body is never
 // painted by both primitives.  Default OFF: the graded ladder stays the
 // default look.
-AEE_SETTING_CHECKBOX(fusionSolidFill,"AEE Thermal","Fusion",false);
+AEE_SETTING_CHECKBOX(fusionSolidFill,"AEE Experimental","Fusion",false);
 
 // The drawn fusion display (issue #204).  Ported from workshop 3810296503
 // whale_ecoti_llll RscTitles \ whale_ecoti_llll_overlay: a tinted glass panel

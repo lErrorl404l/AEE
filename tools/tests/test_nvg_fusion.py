@@ -299,7 +299,7 @@ class TestFusionFrameWiring(unittest.TestCase):
 
     def test_the_setting_is_registered_default_on(self):
         self.assertIn(
-            'AEE_SETTING_CHECKBOX(fusionFovFrame,"AEE Thermal","Fusion",true)',
+            'AEE_SETTING_CHECKBOX(fusionFovFrame,"AEE Experimental","Fusion",true)',
             SETTINGS_SRC,
         )
 
@@ -334,7 +334,7 @@ class TestFusionSolidFill(unittest.TestCase):
 
     def test_the_setting_is_registered_default_off(self):
         self.assertIn(
-            'AEE_SETTING_CHECKBOX(fusionSolidFill,"AEE Thermal","Fusion",false)',
+            'AEE_SETTING_CHECKBOX(fusionSolidFill,"AEE Experimental","Fusion",false)',
             SETTINGS_SRC,
         )
 
