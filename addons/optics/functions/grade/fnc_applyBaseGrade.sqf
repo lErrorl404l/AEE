@@ -30,8 +30,13 @@ capture 20240220225631): alpha 1 is black and white, which is what drained
 normal vision to grey.
   [1, 1, 0, [0,0,0,0], [1,1,1,0], [0.2126,0.7152,0.0722,0], [-1,-1,0,0,0,0,0]]
 
-Handles are read before every guard.  A missing handle is destroyed and
-recreated with the night-vision pattern
+Handles are read before every guard.  The source is the core registry owner
+record aee_core_ppHandle_optics_BaseGrade / ..._BaseAcuity, which
+fnc_createPPEffect writes on create and fnc_destroyPPEffect resets to -1.
+The addon's own QGVAR(ppHandle_BaseGrade) mirror is not written by the
+registry, so reading it pinned the handle at -1 and recreated a live effect
+on every tick.  A genuinely missing handle is destroyed and recreated with
+the night-vision pattern
 (addons/nightvision/functions/fnc_applyNVGTubeModel.sqf:958-1027), so the
 effects survive alt-tab, a resize and an advanced optic.
 
@@ -58,8 +63,8 @@ Returns:
 // camera change must neutralise and disable the effects, and that path needs
 // the handles; reading them below the guards leaves a live grade on those
 // paths.
-private _hCC = missionNamespace getVariable [QGVAR(ppHandle_BaseGrade), -1];
-private _hAcuity = missionNamespace getVariable [QGVAR(ppHandle_BaseAcuity), -1];
+private _hCC = missionNamespace getVariable [QEGVAR(core,ppHandle_optics_BaseGrade), -1];
+private _hAcuity = missionNamespace getVariable [QEGVAR(core,ppHandle_optics_BaseAcuity), -1];
 
 // Neutralise, then disable, then clear the active flag.  Every adjust, enable
 // and destroy sits behind a >= 0 guard.
