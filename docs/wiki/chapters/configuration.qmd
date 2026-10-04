@@ -607,8 +607,11 @@ registered.
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
+| `aee_wildlife_herdSize` | SLIDER | `4` | yes | wildlife | Target number of animals of one species in a herd |
+| `aee_wildlife_hungerRate` | SLIDER | `0.02` | yes | wildlife | How fast an animal becomes hungry, per second |
 | `aee_wildlife_silenceDecay` | SLIDER | `0.05` | yes | wildlife | How strongly recent disturbance silences the ambient bed |
 | `aee_wildlife_spookSensitivity` | SLIDER | `1.0` | yes | wildlife | Multiplier on the flight-initiation distance of a spooked animal |
+| `aee_wildlife_thirstRate` | SLIDER | `0.03` | yes | wildlife | How fast an animal becomes thirsty, per second |
 
 ## AEE Wildlife → Fauna
 

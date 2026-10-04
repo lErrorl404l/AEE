@@ -80,6 +80,12 @@ Place the **AEE Environment Config** module in the editor to customise settings.
 - Friis free-space path loss with atmospheric ducting.
 - ITU-R P.531 ionospheric absorption for VHF/UHF/HF.
 
+### Wildlife
+
+- Biome, time and weather aware ambient soundscape from vanilla media only.
+- Client-local animals by biome, terrain and water, with hunger and thirst.
+- Reactive spooks and a decaying disturbance field from movement and gunfire.
+
 ---
 
 ## Compatibility

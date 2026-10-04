@@ -232,18 +232,28 @@ disturbance field that every machine computes deterministically.
 
 ## wildlife
 
-The client-local ambient-sound ecology. It reads the biome, the time, the
-weather, the water and the disturbance field, and it plays a vanilla sound
-bed that reacts to quiet approach, flight spooks and gunfire. It reuses
-vanilla media only.
+The client-local ecology. It reads the biome, the time, the weather, the
+water, the terrain and the disturbance field. It plays a vanilla sound bed
+that reacts to quiet approach, flight spooks and gunfire, and it spawns
+client-local animals by biome and terrain. Hunger and thirst move them
+between water and grazing ground. It reuses vanilla classes and vanilla
+media only.
 
 | Function | Purpose |
 |---|---|
+| `applyAnimalBehaviour` | Register one animal and steer it through the substrate |
+| `cullFauna` | Delete animals beyond the despawn radius or above the cap |
 | `disturbanceSilence` | Map the disturbance to an ambient gain multiplier |
 | `initWildlife` | Start the wildlife client tick |
+| `needsTick` | Raise hunger and thirst and pick the animal goal |
+| `pickResourceTarget` | Find the best nearby water or grazing point |
 | `playAmbientBed` | Play the ambient bed for one context |
 | `playOneShot` | Play a local positional one-shot |
+| `resourceScore` | Score a point for one animal and one resource |
 | `soundBedForContext` | Select the ambient context key and the gain |
+| `spawnBudget` | Decide spawn and despawn from distance and the cap |
+| `spawnFauna` | Spawn client-local animals from the biome species mix |
+| `speciesForBiome` | Select the deterministic species mix for a cell |
 | `spookRange` | Compute the flight-initiation distance |
 | `spookWave` | Raise a ring of disturbance cells around a position |
 | `teardownWildlife` | Stop the wildlife client tick |
