@@ -92,8 +92,10 @@ private _visible = [];
     private _altDeg = asin (sin _decPrec * sin _lat
         + cos _decPrec * cos _lat * cos _haDeg);
 
-    // Azimuth (degrees from north, clockwise)
-    private _azDeg = (sin _haDeg) atan2 (cos _haDeg * sin _lat - tan _decPrec * cos _lat);
+    // Azimuth from north, clockwise.  The Meeus Ch. 13 atan2 form measures
+    // from the south, westward; add 180 degrees for the north convention
+    // fnc_starDirection documents and consumes.
+    private _azDeg = ((sin _haDeg) atan2 (cos _haDeg * sin _lat - tan _decPrec * cos _lat)) + 180;
     _azDeg = _azDeg mod 360;
     if (_azDeg < 0) then { _azDeg = _azDeg + 360; };
 

@@ -407,14 +407,19 @@ class TestStarCatalogVisibility(unittest.TestCase):
         return math.degrees(alt)
 
     def _azimuth(self, dec_deg, lat_deg, ha_deg):
-        """Star azimuth from declination, latitude, hour angle."""
+        """Star azimuth from north, clockwise, in degrees."""
         dec = math.radians(dec_deg)
         lat = math.radians(lat_deg)
         ha = math.radians(ha_deg)
-        az = math.atan2(
-            math.sin(ha), math.cos(ha) * math.sin(lat) - math.tan(dec) * math.cos(lat)
+        az = math.degrees(
+            math.atan2(
+                math.sin(ha),
+                math.cos(ha) * math.sin(lat) - math.tan(dec) * math.cos(lat),
+            )
         )
-        return math.degrees(az) % 360
+        # Meeus Ch. 13 measures azimuth from the south, westward; shift to
+        # the north-clockwise convention fnc_starDirection consumes.
+        return (az + 180.0) % 360.0
 
     def test_sirius_visible_southern_hemisphere(self):
         """Sirius (Dec -16.7) visible from southern hemisphere at midnight."""
@@ -446,10 +451,15 @@ class TestStarCatalogVisibility(unittest.TestCase):
         self.assertGreater(alt_transit, alt_rising)
         self.assertGreater(alt_transit, alt_setting)
 
-    def test_azimuth_north_at_meridian(self):
-        """Star on the meridian (ha=0) has azimuth 0 or 180."""
+    def test_azimuth_south_at_meridian(self):
+        """A star south of the zenith (ha=0) is due south: azimuth 180."""
         az = self._azimuth(30.0, 50.0, 0)
-        self.assertTrue(abs(az) < 1 or abs(az - 180) < 1 or abs(az - 360) < 1)
+        self.assertAlmostEqual(az, 180.0, places=6)
+
+    def test_azimuth_east_at_minus_90(self):
+        """A star at hour angle -90 (rising) is due east: azimuth 90."""
+        az = self._azimuth(0.0, 45.0, -90.0)
+        self.assertAlmostEqual(az, 90.0, places=6)
 
 
 class TestStarCatalogSortOrder(unittest.TestCase):
