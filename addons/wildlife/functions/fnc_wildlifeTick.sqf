@@ -38,7 +38,7 @@ if ((count _position) < 2) then {
 };
 
 // Guarded reads: a nil read that falls through to a default is the #154 bug.
-private _biome = missionNamespace getVariable [EGVAR(environmental,localBiome), ""];
+private _biome = missionNamespace getVariable [QEGVAR(environmental,localBiome), ""];
 if !(_biome isEqualType "") then { _biome = ""; };
 
 private _forceBiome = missionNamespace getVariable ["aee_wildlife_forceBiome", ""];
@@ -60,7 +60,7 @@ if (_hasUnit) then {
 private _windVector = wind;
 private _wind = (((_windVector select 0) ^ 2) + ((_windVector select 1) ^ 2)) ^ 0.5;
 
-private _field = missionNamespace getVariable [EGVAR(ai,disturbance), []];
+private _field = missionNamespace getVariable [QEGVAR(ai,disturbance), []];
 if !(_field isEqualType []) then { _field = []; };
 
 private _now = CBA_missionTime;
@@ -75,7 +75,7 @@ if (_hasUnit) then {
         if (_speed > 1.5) then {
             private _magnitude = ((_speed / 8) max 0) min 1;
             _field = [_field, _key, _magnitude, _now] call EFUNC(ai,disturbanceApply);
-            missionNamespace setVariable [EGVAR(ai,disturbance), _field];
+            missionNamespace setVariable [QEGVAR(ai,disturbance), _field];
         };
     };
 };
