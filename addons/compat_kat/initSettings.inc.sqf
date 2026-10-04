@@ -23,4 +23,4 @@ AEE_SETTING_SLIDER(spo2Floor,"AEE","Compat - KAT",50,90,60,0);
 // built from the component: aee_<component>_logDebug.  Declaring it here,
 // in its own addon, is what makes that name correct.  QGVAR(logDebug)
 // resolves to aee_compat_kat_logDebug.
-AEE_SETTING_CHECKBOX(logDebug,"AEE","Compat - KAT Diagnostics",false);
+AEE_SETTING_CHECKBOX(logDebug,"AEE Debug","Compat - KAT",false);

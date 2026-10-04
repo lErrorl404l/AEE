@@ -13,4 +13,4 @@ AEE_SETTING_CHECKBOX(enabled,"AEE","Compat - Real Weather",false);
 // built from the component: aee_<component>_logDebug.  Declaring it here,
 // in its own addon, is what makes that name correct.  QGVAR(logDebug)
 // resolves to aee_compat_realweather_logDebug.
-AEE_SETTING_CHECKBOX(logDebug,"AEE","Compat - Real Weather Diagnostics",false);
+AEE_SETTING_CHECKBOX(logDebug,"AEE Debug","Compat - Real Weather",false);

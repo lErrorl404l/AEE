@@ -21,7 +21,7 @@ AEE_SETTING_CHECKBOX(batteryDeratingEnabled,"AEE Radio","Link",true);
 // built from the component: aee_<component>_logDebug.  Declaring it here,
 // in its own addon, is what makes that name correct.  QGVAR(logDebug)
 // resolves to aee_radio_logDebug.
-AEE_SETTING_CHECKBOX(logDebug,"AEE Radio","Diagnostics",false);
+AEE_SETTING_CHECKBOX(logDebug,"AEE Debug","Radio",false);
 
 // ── Propagation ────────────────────────────────────────────────────────────
 AEE_SETTING_SLIDER(txPower,"AEE Radio","Link",20,50,37,0);

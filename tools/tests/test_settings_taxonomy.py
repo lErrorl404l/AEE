@@ -77,5 +77,42 @@ class TestExperimentalTaxonomy(unittest.TestCase):
                 self.assertIn(setting.name, EXPECTED_EXPERIMENTAL)
 
 
+EXPECTED_DEBUG = {
+    ("AEE Debug", "Core"): {"aee_core_diagnostic", "aee_core_logDebug"},
+    ("AEE Debug", "FX"): {"aee_core_collisionDebug", "aee_fx_logDebug"},
+    ("AEE Debug", "Environmental"): {"aee_environmental_logDebug"},
+    ("AEE Debug", "Thermal"): {"aee_thermal_thermalDebug", "aee_thermal_logDebug"},
+    ("AEE Debug", "Physiology"): {"aee_physiology_logDebug"},
+    ("AEE Debug", "Ballistics"): {"aee_ballistics_logDebug"},
+    ("AEE Debug", "Armour"): {"aee_armour_penetrationDebug", "aee_armour_logDebug"},
+    ("AEE Debug", "Optics"): {"aee_optics_logDebug"},
+    ("AEE Debug", "Night Vision"): {"aee_nightvision_logDebug"},
+    ("AEE Debug", "Mobility"): {"aee_mobility_logDebug"},
+    ("AEE Debug", "Maritime"): {"aee_maritime_logDebug"},
+    ("AEE Debug", "Radio"): {"aee_radio_logDebug"},
+    ("AEE Debug", "Atmos"): {"aee_atmos_logDebug"},
+    ("AEE Debug", "Compat - ACE3"): {"aee_compat_ace3_logDebug"},
+    ("AEE Debug", "Compat - ACM"): {"aee_compat_acm_logDebug"},
+    ("AEE Debug", "Compat - ACRE2"): {"aee_compat_acre2_logDebug"},
+    ("AEE Debug", "Compat - KAT"): {"aee_compat_kat_logDebug"},
+    ("AEE Debug", "Compat - Real Weather"): {"aee_compat_realweather_logDebug"},
+    ("AEE Debug", "Compat - TFAR"): {"aee_compat_tfar_logDebug"},
+}
+
+
+class TestDebugTaxonomy(unittest.TestCase):
+    """AEE Debug holds exactly the 23 diagnostic switches, by component."""
+
+    def test_debug_groups_are_exact(self):
+        groups = taxonomy_groups({"AEE Debug"})
+        self.assertEqual(groups, EXPECTED_DEBUG)
+
+    def test_no_unknown_setting_uses_a_taxonomy_category(self):
+        known = {name for names in EXPECTED_DEBUG.values() for name in names}
+        for setting in gen.collect_settings():
+            if setting.category == "AEE Debug":
+                self.assertIn(setting.name, known)
+
+
 if __name__ == "__main__":
     unittest.main()

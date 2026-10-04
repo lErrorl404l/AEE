@@ -22,4 +22,4 @@ AEE_SETTING_SLIDER(CBRNMaxBuildup,"AEE","Compat - ACM",50,150,100,0);
 // built from the component: aee_<component>_logDebug.  Declaring it here,
 // in its own addon, is what makes that name correct.  QGVAR(logDebug)
 // resolves to aee_compat_acm_logDebug.
-AEE_SETTING_CHECKBOX(logDebug,"AEE","Compat - ACM Diagnostics",false);
+AEE_SETTING_CHECKBOX(logDebug,"AEE Debug","Compat - ACM",false);

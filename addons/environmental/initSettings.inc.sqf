@@ -76,4 +76,4 @@ AEE_SETTING_CHECKBOX(dynamicMilkyWay,"AEE Environmental","Display",true);
 
 // Diagnostics: the consolidated sky-state line logs at DEBUG after the first
 // INFO line when this switch is on.
-AEE_SETTING_CHECKBOX(logDebug,"AEE Environmental","Diagnostics",false);
+AEE_SETTING_CHECKBOX(logDebug,"AEE Debug","Environmental",false);

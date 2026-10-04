@@ -12,17 +12,10 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 |---|---|---|---|---|---|
 | `aee_armour_armourEnabled` | CHECKBOX | `true` | yes | armour | Apply the STANAG 4569-aligned vehicle armour ladder (issue #126) |
 
-## AEE Armour → Diagnostics
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_armour_logDebug` | CHECKBOX | `false` | yes | armour | Log armour diagnostics to the RPT. Turn this on before reporting a fault. |
-
 ## AEE Armour → Penetration
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
-| `aee_armour_penetrationDebug` | CHECKBOX | `false` | yes | armour | Log penetration gate decisions (round mm RHA vs protection) to the RPT |
 | `aee_armour_penetrationGate` | CHECKBOX | `true` | yes | armour | Scale vehicle damage by the round's real RHA penetration vs the STANAG protection class - a rifle cannot shred an IFV |
 
 ## AEE Atmos → Clouds
@@ -30,12 +23,6 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_atmos_simulWeatherLayers` | SLIDER | `0` | yes | atmos | Number of simul weather cloud layers; 0 leaves the engine default, more layers cost performance |
-
-## AEE Atmos → Diagnostics
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_atmos_logDebug` | CHECKBOX | `false` | yes | atmos | Log atmos diagnostics to the RPT. Turn this on before reporting a fault. |
 
 ## AEE Atmos → Events
 
@@ -75,17 +62,123 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_ballistics_ammoHeatPerShotJ` | SLIDER | `0.0001` | yes | ballistics | Propellant heat added per joule of round energy (degC per shot) |
 | `aee_ballistics_ammoTempTimeConstant` | SLIDER | `600` | yes | ballistics | Time constant of the per-weapon ammo temperature relaxation toward ambient (seconds) |
 
-## AEE Ballistics → Diagnostics
+## AEE Debug → Armour
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_armour_logDebug` | CHECKBOX | `false` | yes | armour | Log armour diagnostics to the RPT. Turn this on before reporting a fault. |
+| `aee_armour_penetrationDebug` | CHECKBOX | `false` | yes | armour | Log penetration gate decisions (round mm RHA vs protection) to the RPT |
+
+## AEE Debug → Atmos
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_atmos_logDebug` | CHECKBOX | `false` | yes | atmos | Log atmos diagnostics to the RPT. Turn this on before reporting a fault. |
+
+## AEE Debug → Ballistics
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_ballistics_logDebug` | CHECKBOX | `false` | yes | ballistics | Log this module DEBUG and TRACE lines to the RPT. Off by default. |
 
-## AEE Environmental → Diagnostics
+## AEE Debug → Compat - ACE3
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_compat_ace3_logDebug` | CHECKBOX | `false` | yes | compat_ace3 | Log ACE3 compatibility diagnostics to the RPT. Turn this on before reporting a fault. |
+
+## AEE Debug → Compat - ACM
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_compat_acm_logDebug` | CHECKBOX | `false` | yes | compat_acm | Log ACM compatibility diagnostics to the RPT. Turn this on before reporting a fault. |
+
+## AEE Debug → Compat - ACRE2
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_compat_acre2_logDebug` | CHECKBOX | `false` | yes | compat_acre2 | Log ACRE2 compatibility diagnostics to the RPT. Turn this on before reporting a fault. |
+
+## AEE Debug → Compat - KAT
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_compat_kat_logDebug` | CHECKBOX | `false` | yes | compat_kat | Log KAT compatibility diagnostics to the RPT. Turn this on before reporting a fault. |
+
+## AEE Debug → Compat - Real Weather
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_compat_realweather_logDebug` | CHECKBOX | `false` | yes | compat_realweather | Log Real Weather compatibility diagnostics to the RPT. Turn this on before reporting a fault. |
+
+## AEE Debug → Compat - TFAR
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_compat_tfar_logDebug` | CHECKBOX | `false` | yes | compat_tfar | Log TFAR compatibility diagnostics to the RPT. Turn this on before reporting a fault. |
+
+## AEE Debug → Core
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_core_diagnostic` | CHECKBOX | `false` | no | core | Enable verbose diagnostic logging (diag_log) for environment state changes |
+| `aee_core_logDebug` | CHECKBOX | `false` | yes | core | Log DEBUG and TRACE lines to the RPT. Values, not narration: each line carries the real inputs the code used. Off by default. |
+
+## AEE Debug → Environmental
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_environmental_logDebug` | CHECKBOX | `false` | yes | environmental | Log the consolidated night-sky state line every environment tick after the one startup line (AEE Environmental > Diagnostics) |
+
+## AEE Debug → FX
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_core_collisionDebug` | CHECKBOX | `false` | yes | core | Log vehicle collision impact energy and damage scaling to the RPT (issue #172) |
+| `aee_fx_logDebug` | CHECKBOX | `false` | yes | fx | Log this module DEBUG and TRACE lines to the RPT. Off by default. |
+
+## AEE Debug → Maritime
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_maritime_logDebug` | CHECKBOX | `false` | yes | maritime | Log maritime diagnostics to the RPT. Turn this on before reporting a fault. |
+
+## AEE Debug → Mobility
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_mobility_logDebug` | CHECKBOX | `false` | yes | mobility | Log mobility diagnostics to the RPT. Turn this on before reporting a fault. |
+
+## AEE Debug → Night Vision
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_nightvision_logDebug` | CHECKBOX | `false` | yes | nightvision | Log night vision diagnostics to the RPT. Turn this on before reporting a fault. |
+
+## AEE Debug → Optics
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_optics_logDebug` | CHECKBOX | `false` | yes | optics | Log optics diagnostics to the RPT. Turn this on before reporting a fault. |
+
+## AEE Debug → Physiology
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_physiology_logDebug` | CHECKBOX | `false` | yes | physiology | Log this module DEBUG and TRACE lines to the RPT. Off by default. |
+
+## AEE Debug → Radio
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_radio_logDebug` | CHECKBOX | `false` | yes | radio | Log radio diagnostics to the RPT. Turn this on before reporting a fault. |
+
+## AEE Debug → Thermal
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_thermal_logDebug` | CHECKBOX | `false` | yes | thermal | Log thermal diagnostics to the RPT, including the wall-clock cost of each thermal function. Turn this on before reporting a performance fault. |
+| `aee_thermal_thermalDebug` | CHECKBOX | `false` | yes | thermal | Log thermal system diagnostics (second sun, building paint, AGC) to the RPT. Thermal's own debug flag - not nightvision's. |
 
 ## AEE Environmental → Display
 
@@ -148,12 +241,6 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_thermal_fusionOutline` | CHECKBOX | `true` | yes | thermal | Draw the outline of each hot target the thermal state already tracks, on a transparent overlay that the NVG does not filter. It draws nothing when fusion is off or the fitted headset is not fusion capable. |
 | `aee_thermal_fusionSolidFill` | CHECKBOX | `false` | yes | thermal | Paint each hot body inside the thermal channel one solid bright colour, the flat block a real thermal display shows. This mode replaces the graded emissive ladder while it is on, so a body is never painted by both. Turn it off for the graded look. |
 
-## AEE FX → Diagnostics
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_fx_logDebug` | CHECKBOX | `false` | yes | fx | Log this module DEBUG and TRACE lines to the RPT. Off by default. |
-
 ## AEE FX → Events
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -191,12 +278,6 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_physiology_HUDWarningThreshold` | SLIDER | `0.3` | yes | physiology | Dehydration risk that triggers the HUD warning |
 | `aee_thermal_fusionHud` | CHECKBOX | `true` | yes | thermal | The drawn fusion display: a tinted glass panel over the night-vision image and a scrolling compass tape with the grid, height, time and the environment state. Ported from workshop 3810296503 whale_ecoti_llll. This is the primary fusion readout; the AEE Optics environment HUD is the auxiliary panel, so enable one or the other to avoid a duplicated readout. |
 
-## AEE Maritime → Diagnostics
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_maritime_logDebug` | CHECKBOX | `false` | yes | maritime | Log maritime diagnostics to the RPT. Turn this on before reporting a fault. |
-
 ## AEE Maritime → Sea
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -204,12 +285,6 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_maritime_seaCouplingWeight` | SLIDER | `0.5` | yes | maritime | Air-to-sea coupling weight for the sea-surface temperature; low = high thermal inertia, high = sea follows air quickly |
 | `aee_maritime_seaStateResponse` | SLIDER | `0.3` | yes | maritime | Weight given to the current wind when smoothing the sea state; higher values build the sea faster |
 | `aee_maritime_tideAmplitude` | SLIDER | `2.0` | yes | maritime | Half-range of the predicted tide height in metres |
-
-## AEE Mobility → Diagnostics
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_mobility_logDebug` | CHECKBOX | `false` | yes | mobility | Log mobility diagnostics to the RPT. Turn this on before reporting a fault. |
 
 ## AEE Mobility → Hydrology
 
@@ -276,12 +351,6 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_mobility_estimateVehicleMassEnabled` | CHECKBOX | `false` | yes | mobility | Show a bounded mass estimate for a ground vehicle that the sourced catalogue does not cover. The estimate is modelled, not documented. It uses the vehicle box size, a cited material density, and a calibrated fill factor. The switch is off until calibration passes and a human approves the model. A sourced catalogue weight always takes precedence. The estimate never replaces a documented weight. |
 | `aee_mobility_vehicleCouplingEnabled` | CHECKBOX | `true` | yes | mobility | Couple the computed surface physics to the engine at run time. Snow load adds mass with setMass, and a wet or icy surface removes grip with a force. The load comes from the modelled snow depth and the sourced snow density. No published accretion mass exists for mud, so mud adds no mass. The force is applied on the machine that owns the vehicle. |
 
-## AEE Night Vision → Diagnostics
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_nightvision_logDebug` | CHECKBOX | `false` | yes | nightvision | Log night vision diagnostics to the RPT. Turn this on before reporting a fault. |
-
 ## AEE Night Vision → Imperfections
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -311,12 +380,6 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 |---|---|---|---|---|---|
 | `aee_optics_smokePersistenceScale` | SLIDER | `1.0` | yes | optics | Global smoke-duration multiplier |
 | `aee_optics_snowVisibilityPenalty` | SLIDER | `0.7` | yes | optics | Visibility loss from snow cover |
-
-## AEE Optics → Diagnostics
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_optics_logDebug` | CHECKBOX | `false` | yes | optics | Log optics diagnostics to the RPT. Turn this on before reporting a fault. |
 
 ## AEE Optics → Eye Adaptation
 
@@ -401,12 +464,6 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_physiology_crossSensitivityEnabled` | CHECKBOX | `true` | yes | physiology | Dehydration and hypoxia amplify each other. Dehydrated personnel lose useful consciousness faster at altitude; hypoxia accelerates fluid loss |
 | `aee_physiology_crossSensitivityScale` | SLIDER | `1.0` | yes | physiology | Coupling strength. 1 = full literature values (1.6x hypoxia at full dehydration, 1.4x dehydration at full hypoxia) |
 
-## AEE Physiology → Diagnostics
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_physiology_logDebug` | CHECKBOX | `false` | yes | physiology | Log this module DEBUG and TRACE lines to the RPT. Off by default. |
-
 ## AEE Physiology → Diving
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -464,12 +521,6 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_physiology_HeatStrokeSensitivity` | SLIDER | `0.03` | yes | physiology | Heat-stroke overlay strength per °C above the danger threshold |
 | `aee_physiology_RapidAscentThreshold` | SLIDER | `150` | yes | physiology | Climb rate (m per tick) that triggers acute mountain sickness |
 
-## AEE Radio → Diagnostics
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_radio_logDebug` | CHECKBOX | `false` | yes | radio | Log radio diagnostics to the RPT. Turn this on before reporting a fault. |
-
 ## AEE Radio → Link
 
 This category registers only when ACRE2 or TFAR is loaded. The radio
@@ -482,13 +533,6 @@ registered.
 | `aee_radio_batteryDeratingEnabled` | CHECKBOX | `true` | yes | radio | Scale effective transmit power by the physiology battery temperature derating |
 | `aee_radio_propagationRange` | SLIDER | `2.0` | yes | radio | Ceiling of the radio propagation quality index |
 | `aee_radio_txPower` | SLIDER | `37` | yes | radio | Reference handheld transmit power in dBm used in the link budget |
-
-## AEE Thermal → Diagnostics
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_thermal_logDebug` | CHECKBOX | `false` | yes | thermal | Log thermal diagnostics to the RPT, including the wall-clock cost of each thermal function. Turn this on before reporting a performance fault. |
-| `aee_thermal_thermalDebug` | CHECKBOX | `false` | yes | thermal | Log thermal system diagnostics (second sun, building paint, AGC) to the RPT. Thermal's own debug flag - not nightvision's. |
 
 ## AEE Thermal → Display
 
@@ -554,12 +598,6 @@ registered.
 | `aee_compat_ace3_medicalRiskThreshold` | SLIDER | `0.3` | yes | compat_ace3 | Dehydration risk above this affects vitals |
 | `aee_compat_ace3_medicalWBGTThreshold` | SLIDER | `23` | yes | compat_ace3 | WBGT above this engages heart-rate and flow adjustments |
 
-## AEE → Compat - ACE3 Diagnostics
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_compat_ace3_logDebug` | CHECKBOX | `false` | yes | compat_ace3 | Log ACE3 compatibility diagnostics to the RPT. Turn this on before reporting a fault. |
-
 ## AEE → Compat - ACM
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -568,24 +606,12 @@ registered.
 | `aee_compat_acm_CBRNContamThreshold` | SLIDER | `0.01` | yes | compat_acm | Normalised contamination that marks a unit contaminated |
 | `aee_compat_acm_CBRNMaxBuildup` | SLIDER | `100` | yes | compat_acm | Upper limit of the ACM exposure buildup |
 
-## AEE → Compat - ACM Diagnostics
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_compat_acm_logDebug` | CHECKBOX | `false` | yes | compat_acm | Log ACM compatibility diagnostics to the RPT. Turn this on before reporting a fault. |
-
 ## AEE → Compat - ACRE2
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_compat_acre2_signalDBShift` | SLIDER | `8` | yes | compat_acre2 | Maximum dB shift from the propagation index |
 | `aee_compat_acre2_signalSensitivityMin` | SLIDER | `-110` | yes | compat_acre2 | Receiver sensitivity floor in dBm |
-
-## AEE → Compat - ACRE2 Diagnostics
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_compat_acre2_logDebug` | CHECKBOX | `false` | yes | compat_acre2 | Log ACRE2 compatibility diagnostics to the RPT. Turn this on before reporting a fault. |
 
 ## AEE → Compat - KAT
 
@@ -595,23 +621,11 @@ registered.
 | `aee_compat_kat_spo2Floor` | SLIDER | `60` | yes | compat_kat | Minimum SpO2 that AEE applies |
 | `aee_compat_kat_spo2RiskScale` | SLIDER | `32` | yes | compat_kat | SpO2 drop per unit of hypoxia risk |
 
-## AEE → Compat - KAT Diagnostics
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_compat_kat_logDebug` | CHECKBOX | `false` | yes | compat_kat | Log KAT compatibility diagnostics to the RPT. Turn this on before reporting a fault. |
-
 ## AEE → Compat - Real Weather
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_compat_realweather_enabled` | CHECKBOX | `false` | yes | compat_realweather | Enable real-weather mode. Reads weather.json from the mission folder and overrides AEE's simulated state. |
-
-## AEE → Compat - Real Weather Diagnostics
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_compat_realweather_logDebug` | CHECKBOX | `false` | yes | compat_realweather | Log Real Weather compatibility diagnostics to the RPT. Turn this on before reporting a fault. |
 
 ## AEE → Compat - TFAR
 
@@ -621,21 +635,13 @@ registered.
 | `aee_compat_tfar_signalMultMin` | SLIDER | `0.3` | yes | compat_tfar | Lower limit of the signal multiplier |
 | `aee_compat_tfar_signalMultScale` | SLIDER | `0.6` | yes | compat_tfar | Sending multiplier scale from the propagation index |
 
-## AEE → Compat - TFAR Diagnostics
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_compat_tfar_logDebug` | CHECKBOX | `false` | yes | compat_tfar | Log TFAR compatibility diagnostics to the RPT. Turn this on before reporting a fault. |
-
 ## AEE → Core
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_core_computeMode` | LIST | `0` | yes | core | Where the environment computation runs. Deterministic (default): every machine computes the same values with NO network traffic. Costs the same CPU on server and clients, and is the only mode that cannot desynchronise. Server authority: the server computes and broadcasts the shared state each tick. Lowers client CPU at the cost of roughly 0.6 MB per minute per client at an 80 player count, and it needs a full resync when a player joins mid mission. Server map facts only: the server computes the once-per-mission terrain facts and every machine keeps its own position work. A few hundred bytes once, and it removes the only startup hitch on a large map. |
-| `aee_core_diagnostic` | CHECKBOX | `false` | no | core | Enable verbose diagnostic logging (diag_log) for environment state changes |
 | `aee_core_enabled` | CHECKBOX | `true` | yes | core | Master switch for the AEE environment simulation module |
 | `aee_core_lightScanInterval` | SLIDER | `30` | yes | core | Seconds between dynamic light-source scans on the client. The contribution changes only when a lamp toggles or the weather attenuates it. 0 scans every tick. |
-| `aee_core_logDebug` | CHECKBOX | `false` | yes | core | Log DEBUG and TRACE lines to the RPT. Values, not narration: each line carries the real inputs the code used. Off by default. |
 | `aee_core_referenceAltitude` | SLIDER | `0` | yes | core | Override reference altitude (m MSL) for station pressure calculations. 0 = auto-detect from unit position |
 | `aee_core_updateInterval` | SLIDER | `5` | yes | core | Simulation update interval in seconds (lower = more frequent updates) |
 
@@ -650,7 +656,6 @@ registered.
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
-| `aee_core_collisionDebug` | CHECKBOX | `false` | yes | core | Log vehicle collision impact energy and damage scaling to the RPT (issue #172) |
 | `aee_core_fxEnabled` | CHECKBOX | `true` | yes | core | Enable environmental particles, wind noise, rain sounds, and severe weather visual effects |
 
 ## AEE → Maritime

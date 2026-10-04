@@ -89,14 +89,14 @@ AEE_SETTING_CHECKBOX(thermalPPEffects,"AEE Thermal","Display",true);
 // ── Thermal diagnostics (issue #203, standalone decoupling) ─────────────
 // Thermal's own debug flag - previously borrowed nightvision's nvgDebug,
 // a cross-module coupling that blocked thermal as a standalone addon.
-AEE_SETTING_CHECKBOX(thermalDebug,"AEE Thermal","Diagnostics",false);
+AEE_SETTING_CHECKBOX(thermalDebug,"AEE Debug","Thermal",false);
 
 // The per-module trace switch, same line every other diagnostics-capable
 // addon carries.  AEE_LOG_DEBUG reads the name built from the component,
 // aee_<component>_logDebug, so declaring it here is what makes
 // QGVAR(logDebug) resolve for thermal.  Without it thermal DEBUG output
 // could only be switched on through core's flag.
-AEE_SETTING_CHECKBOX(logDebug,"AEE Thermal","Diagnostics",false);
+AEE_SETTING_CHECKBOX(logDebug,"AEE Debug","Thermal",false);
 
 // ── Solver cadence ────────────────────────────────────────────────────────
 // The object-temperature scan is the most expensive call in the environment

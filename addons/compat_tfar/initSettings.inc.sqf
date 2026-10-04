@@ -22,4 +22,4 @@ AEE_SETTING_SLIDER(signalMultMax,"AEE","Compat - TFAR",1,3,1.5,2);
 // built from the component: aee_<component>_logDebug.  Declaring it here,
 // in its own addon, is what makes that name correct.  QGVAR(logDebug)
 // resolves to aee_compat_tfar_logDebug.
-AEE_SETTING_CHECKBOX(logDebug,"AEE","Compat - TFAR Diagnostics",false);
+AEE_SETTING_CHECKBOX(logDebug,"AEE Debug","Compat - TFAR",false);

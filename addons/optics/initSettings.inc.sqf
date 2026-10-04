@@ -107,4 +107,4 @@ AEE_SETTING_CHECKBOX(baseGradeAcuityEnabled,"AEE Optics","Image",true);
 // built from the component: aee_<component>_logDebug.  Declaring it here,
 // in its own addon, is what makes that name correct.  QGVAR(logDebug)
 // resolves to aee_optics_logDebug.
-AEE_SETTING_CHECKBOX(logDebug,"AEE Optics","Diagnostics",false);
+AEE_SETTING_CHECKBOX(logDebug,"AEE Debug","Optics",false);
