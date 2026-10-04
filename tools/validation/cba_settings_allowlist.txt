@@ -82,3 +82,11 @@ aee_thermal_bloomForce  debug console knob (documented in fnc_applyThermalVision
 aee_thermal_agcHuntForce  debug console knob (documented in fnc_applyThermalVision.sqf)
 aee_thermal_nucForce  debug console knob (documented in fnc_applyThermalVision.sqf)
 aee_thermal_temporalNoiseForce  debug console knob (documented in fnc_applyThermalVision.sqf)
+# NVG imperfection debug knobs (issue #215).
+aee_nightvision_nvgForceImperfections  debug console knob (documented in fnc_applyNVGTubeModel.sqf)
+aee_nightvision_nvgForceBlemishes  debug console knob (documented in fnc_applyNVGTubeModel.sqf)
+aee_nightvision_nvgForceBreathing  debug console knob (documented in fnc_applyNVGTubeModel.sqf)
+aee_nightvision_nvgForceBlowout  debug console knob (documented in fnc_applyNVGTubeModel.sqf)
+aee_nightvision_nvgImperfectionDebug  debug console knob (documented in fnc_applyNVGTubeModel.sqf)
+aee_nightvision_imperfectionDisplay  display handle set by the RscTitles onLoad, read from uiNamespace
+aee_nightvision_nvgImperfections  RscTitles config class name used by cutRsc, not a runtime variable
