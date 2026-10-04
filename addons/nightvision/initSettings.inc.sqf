@@ -34,3 +34,10 @@ AEE_SETTING_SLIDER(nvgBlindingStrength,"AEE Night Vision","Imperfections",0,2,1.
 AEE_SETTING_SLIDER(nvgScintillationStrength,"AEE Night Vision","Imperfections",0,2,1.0,0.05);
 AEE_SETTING_SLIDER(nvgEdgeDistortion,"AEE Night Vision","Imperfections",0,1,0.5,0.05);
 AEE_SETTING_SLIDER(nvgVeilingGlare,"AEE Night Vision","Imperfections",0,0.05,0.0213,0.001);
+
+// ── Diagnostics ───────────────────────────────────────────────────────────
+// The per-module trace switch.  The AEE_LOG_DEBUG macro reads the name
+// built from the component: aee_<component>_logDebug.  Declaring it here,
+// in its own addon, is what makes that name correct.  QGVAR(logDebug)
+// resolves to aee_nightvision_logDebug.
+AEE_SETTING_CHECKBOX(logDebug,"AEE Night Vision","Diagnostics",false);

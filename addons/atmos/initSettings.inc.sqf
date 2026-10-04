@@ -33,3 +33,10 @@ AEE_SETTING_CHECKBOX(refractionEnabled,"AEE Atmos","Refraction",true);
 
 // ── Engine cloud quality ──────────────────────────────────────────────────
 AEE_SETTING_SLIDER(simulWeatherLayers,"AEE Atmos","Clouds",0,5,0,0);
+
+// ── Diagnostics ───────────────────────────────────────────────────────────
+// The per-module trace switch.  The AEE_LOG_DEBUG macro reads the name
+// built from the component: aee_<component>_logDebug.  Declaring it here,
+// in its own addon, is what makes that name correct.  QGVAR(logDebug)
+// resolves to aee_atmos_logDebug.
+AEE_SETTING_CHECKBOX(logDebug,"AEE Atmos","Diagnostics",false);

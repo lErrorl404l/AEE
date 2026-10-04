@@ -101,3 +101,10 @@ AEE_SETTING_SLIDER(baseGradeSaturation,"AEE Optics","Image",0,0.5,0,0.05);
 AEE_SETTING_SLIDER(baseGradeSharpness,"AEE Optics","Image",1,20,4,1);
 AEE_SETTING_SLIDER(baseGradeGrain,"AEE Optics","Image",0,0.05,0.006,0.001);
 AEE_SETTING_CHECKBOX(baseGradeAcuityEnabled,"AEE Optics","Image",true);
+
+// ── Diagnostics ───────────────────────────────────────────────────────────
+// The per-module trace switch.  The AEE_LOG_DEBUG macro reads the name
+// built from the component: aee_<component>_logDebug.  Declaring it here,
+// in its own addon, is what makes that name correct.  QGVAR(logDebug)
+// resolves to aee_optics_logDebug.
+AEE_SETTING_CHECKBOX(logDebug,"AEE Optics","Diagnostics",false);

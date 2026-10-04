@@ -9,6 +9,14 @@
             <Original>Fog Grain Maximum</Original>
             <English>Fog Grain Maximum</English>
         </Key>
+        <Key ID="STR_AEE_NightVision_logDebug_Description">
+            <Original>Log night vision diagnostics to the RPT. Turn this on before reporting a fault.</Original>
+            <English>Log night vision diagnostics to the RPT. Turn this on before reporting a fault.</English>
+        </Key>
+        <Key ID="STR_AEE_NightVision_logDebug_Name">
+            <Original>Night Vision Debug Log</Original>
+            <English>Night Vision Debug Log</English>
+        </Key>
         <Key ID="STR_AEE_NightVision_ltmEnabled_Description">
             <Original>Show the laser target marker beam through night vision (aircraft only)</Original>
             <English>Show the laser target marker beam through night vision (aircraft only)</English>

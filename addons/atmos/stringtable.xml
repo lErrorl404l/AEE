@@ -25,6 +25,14 @@
             <Original>Lightning Strike Chance</Original>
             <English>Lightning Strike Chance</English>
         </Key>
+        <Key ID="STR_AEE_Atmos_logDebug_Description">
+            <Original>Log atmos diagnostics to the RPT. Turn this on before reporting a fault.</Original>
+            <English>Log atmos diagnostics to the RPT. Turn this on before reporting a fault.</English>
+        </Key>
+        <Key ID="STR_AEE_Atmos_logDebug_Name">
+            <Original>Atmos Debug Log</Original>
+            <English>Atmos Debug Log</English>
+        </Key>
         <Key ID="STR_AEE_Atmos_maxFogDensity_Description">
             <Original>Ceiling for the fog density value applied to the engine</Original>
             <English>Ceiling for the fog density value applied to the engine</English>
