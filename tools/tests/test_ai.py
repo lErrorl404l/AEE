@@ -117,5 +117,27 @@ class TestAgentDecide(unittest.TestCase):
         self.assertEqual(decide([0.0, 1, 0.1], self.THRESHOLDS), 0)
 
 
+AI_DIR = ROOT / "addons" / "ai"
+
+
+class TestAiSourceContracts(unittest.TestCase):
+    """The engine wiring the harness cannot execute."""
+
+    def test_init_ai_gates_on_has_interface(self):
+        text = (AI / "fnc_initAI.sqf").read_text(encoding="utf-8")
+        self.assertIn("hasInterface", text)
+
+    def test_no_object_creation_or_do_move(self):
+        forbidden = ("createVehicle", "createVehicleLocal", "doMove", "doStop")
+        for path in AI_DIR.rglob("*.sqf"):
+            text = path.read_text(encoding="utf-8")
+            for token in forbidden:
+                self.assertNotIn(token, text, f"{path.name} contains {token}")
+
+    def test_force_decide_hook_is_read(self):
+        text = (AI / "fnc_aiTick.sqf").read_text(encoding="utf-8")
+        self.assertGreaterEqual(text.count("aee_ai_forceDecide"), 1)
+
+
 if __name__ == "__main__":
     unittest.main()
