@@ -21,7 +21,9 @@ WILDLIFE = ROOT / "addons" / "wildlife"
 FUNCS = WILDLIFE / "functions"
 DATA = WILDLIFE / "data"
 MANIFEST = DATA / "sound_manifest.sqf"
+SPECIES_TABLE = DATA / "species_table.sqf"
 
+SPECIES_FOR_BIOME = FUNCS / "fnc_speciesForBiome.sqf"
 SOUND_BED = FUNCS / "fnc_soundBedForContext.sqf"
 SPOOK_RANGE = FUNCS / "fnc_spookRange.sqf"
 DISTURBANCE_SILENCE = FUNCS / "fnc_disturbanceSilence.sqf"
@@ -249,6 +251,113 @@ class TestNewAddonsLogDebugContract(unittest.TestCase):
                 strings = (directory / "stringtable.xml").read_text(encoding="utf-8")
                 self.assertIn("_logDebug_Name", strings)
                 self.assertIn("_logDebug_Description", strings)
+
+
+# The confirmed vanilla CfgVehicles Animals classes the species table may name
+# (BIKI CfgVehicles Animals, Wayback 2025-01-16).  A new class here needs a
+# dossier citation.  There is no cow, no owl unit and no dolphin in vanilla.
+VANILLA_ANIMAL_CLASSES = {
+    "Sheep_random_F",
+    "Goat_random_F",
+    "Hen_random_F",
+    "Cock_random_F",
+    "Cock_white_F",
+    "Rabbit_F",
+    "Snake_random_F",
+    "Snake_vipera_random_F",
+    "Turtle_F",
+    "Fin_sand_F",
+    "Fin_blackwhite_F",
+    "Fin_ocherwhite_F",
+    "Fin_tricolour_F",
+    "Fin_random_F",
+    "Alsatian_Sand_F",
+    "Alsatian_Black_F",
+    "Alsatian_Sandblack_F",
+    "Alsatian_Random_F",
+    "Salema_F",
+    "Ornate_random_F",
+    "Mackerel_F",
+    "Tuna_F",
+    "Mullet_F",
+    "CatShark_F",
+}
+WATER_ANIMAL_CLASSES = {
+    "Turtle_F",
+    "Salema_F",
+    "Ornate_random_F",
+    "Mackerel_F",
+    "Tuna_F",
+    "Mullet_F",
+    "CatShark_F",
+}
+
+
+def load_species_table():
+    """The species rows from the real data file."""
+    return run_sqf(SPECIES_TABLE, [])
+
+
+def species_for_biome(biome, is_night, water_frac, veg_score, seed, table):
+    return run_sqf(
+        SPECIES_FOR_BIOME, [biome, is_night, water_frac, veg_score, seed, table]
+    )
+
+
+class TestSpeciesForBiome(unittest.TestCase):
+    """fnc_speciesForBiome runs from the real SQF against the real table."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.TABLE = load_species_table()
+
+    def test_table_has_the_four_families_and_two_overlays(self):
+        keys = {row[0] for row in self.TABLE}
+        self.assertEqual(
+            keys, {"cold", "temperate", "arid", "tropical", "water", "settlement"}
+        )
+
+    def test_every_table_class_is_a_confirmed_vanilla_animal(self):
+        for _family, classes in self.TABLE:
+            for cls in classes:
+                self.assertIn(cls, VANILLA_ANIMAL_CLASSES)
+
+    def test_each_family_returns_only_confirmed_classes(self):
+        for biome in ("Cfb", "BWh", "Af", "Dfb"):
+            result = species_for_biome(biome, False, 0.0, 0.8, 7, self.TABLE)
+            for cls, count in result:
+                self.assertIn(cls, VANILLA_ANIMAL_CLASSES)
+                self.assertGreaterEqual(count, 1)
+
+    def test_high_water_fraction_includes_a_water_class(self):
+        result = species_for_biome("Cfb", False, 0.9, 0.8, 7, self.TABLE)
+        classes = {cls for cls, _count in result}
+        self.assertTrue(classes & WATER_ANIMAL_CLASSES, classes)
+
+    def test_zero_vegetation_returns_nothing(self):
+        self.assertEqual(species_for_biome("Cfb", False, 0.0, 0.0, 7, self.TABLE), [])
+
+    def test_same_seed_is_deterministic(self):
+        first = species_for_biome("Cfb", False, 0.0, 0.8, 7, self.TABLE)
+        second = species_for_biome("Cfb", False, 0.0, 0.8, 7, self.TABLE)
+        self.assertEqual(first, second)
+
+    def test_a_seed_step_change_moves_the_mix(self):
+        base = species_for_biome("Cfb", False, 0.0, 0.8, 7, self.TABLE)
+        changed = species_for_biome("Cfb", False, 0.0, 0.8, 8, self.TABLE)
+        self.assertNotEqual(base, changed)
+
+    def test_night_drops_the_farm_birds(self):
+        day = {
+            cls
+            for cls, _count in species_for_biome("Cfb", False, 0.0, 0.8, 7, self.TABLE)
+        }
+        night = {
+            cls
+            for cls, _count in species_for_biome("Cfb", True, 0.0, 0.8, 7, self.TABLE)
+        }
+        self.assertIn("Hen_random_F", day)
+        self.assertNotIn("Hen_random_F", night)
 
 
 if __name__ == "__main__":
