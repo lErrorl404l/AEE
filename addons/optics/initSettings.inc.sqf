@@ -86,3 +86,18 @@ AEE_SETTING_SLIDER(eyeFastBlend,"AEE Optics","Eye Adaptation",0,1,0.35,0);
 AEE_SETTING_SLIDER(eyeAmbientLuxScale,"AEE Optics","Eye Adaptation",0.001,10,1,0);
 AEE_SETTING_SLIDER(eyeLocalLuxScale,"AEE Optics","Eye Adaptation",0.001,10,1,0);
 AEE_SETTING_SLIDER(eyeBlindingLuxScale,"AEE Optics","Eye Adaptation",0,100000,0,0);
+
+// ── Base grade and acuity (image realism) ─────────────────────────────────
+// A normal-vision grade that deepens tone separation and the black point,
+// plus a FilmGrain acuity candidate.  The engine has no Sharpen effect, so
+// scene sharpening stays the operator's video option; the grade applies on
+// normal vision only and owns its own effects, so it never fights the
+// single-slot weather ColorCorrections.
+AEE_SETTING_CHECKBOX(baseGradeEnabled,"AEE Optics","Image",true);
+AEE_SETTING_SLIDER(baseGradeContrast,"AEE Optics","Image",0.8,1.6,1.15,0.05);
+AEE_SETTING_SLIDER(baseGradeBrightness,"AEE Optics","Image",0.7,1.3,1.0,0.05);
+AEE_SETTING_SLIDER(baseGradeBlackPoint,"AEE Optics","Image",-0.1,0.1,-0.02,0.005);
+AEE_SETTING_SLIDER(baseGradeSaturation,"AEE Optics","Image",0,0.5,0,0.05);
+AEE_SETTING_SLIDER(baseGradeSharpness,"AEE Optics","Image",1,20,4,1);
+AEE_SETTING_SLIDER(baseGradeGrain,"AEE Optics","Image",0,0.05,0.006,0.001);
+AEE_SETTING_CHECKBOX(baseGradeAcuityEnabled,"AEE Optics","Image",true);

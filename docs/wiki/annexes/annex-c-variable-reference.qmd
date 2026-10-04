@@ -411,3 +411,18 @@ The module AEE Environment Config exposes these fields:
 | `precipBias` | NUMBER | 1 | Rain accumulation multiplier |
 | `windMultiplier` | NUMBER | 1 | Wind multiplier |
 | `updateInterval` | NUMBER | 5 | Update interval in seconds |
+
+## Image realism state
+
+The normal-vision base grade and the thermal imperfections publish their live
+state for the operator and for the debug console.
+
+| Variable | Subsystem | Purpose |
+|---|---|---|
+| `aee_optics_baseGradeActive` | optics | Normal-vision base grade currently applied |
+| `aee_optics_baseGradeCC` | optics | Base-grade ColorCorrections handle |
+| `aee_optics_baseGradeGrain` | optics | Base-grade acuity FilmGrain handle |
+| `aee_thermal_bloom` | thermal | Hot-source bloom amplitude this tick |
+| `aee_thermal_agcHunt` | thermal | AGC hunt gain offset this tick |
+| `aee_thermal_nucDrift` | thermal | Non-uniformity (NUC) drift this tick |
+| `aee_thermal_temporalNoise` | thermal | Temporal-noise jitter this tick |

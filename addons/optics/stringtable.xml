@@ -1,6 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="AEE">
     <Package name="Optics">
+        <Key ID="STR_AEE_Optics_baseGradeAcuityEnabled_Description">
+            <Original>Enable the normal-vision acuity pass, a FilmGrain effect at high sharpness and low intensity. The engine has no Sharpen effect, so this is the scriptable candidate; real scene sharpening is the video option Sharpen Filter, which a mod cannot set. No unit. UNSOURCED that FilmGrain sharpness sharpens the scene.</Original>
+            <English>Enable the normal-vision acuity pass, a FilmGrain effect at high sharpness and low intensity. The engine has no Sharpen effect, so this is the scriptable candidate; real scene sharpening is the video option Sharpen Filter, which a mod cannot set. No unit. UNSOURCED that FilmGrain sharpness sharpens the scene.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_baseGradeAcuityEnabled_Name">
+            <Original>Acuity Pass</Original>
+            <English>Acuity Pass</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_baseGradeBlackPoint_Description">
+            <Original>Black-point offset of the normal-vision grade, no unit, range -0.1 to 0.1. Negative deepens the black. Community code uses -0.01 (AsYetUntitled) and -0.35 (Liberation-RX); the exact default -0.02 is UNSOURCED.</Original>
+            <English>Black-point offset of the normal-vision grade, no unit, range -0.1 to 0.1. Negative deepens the black. Community code uses -0.01 (AsYetUntitled) and -0.35 (Liberation-RX); the exact default -0.02 is UNSOURCED.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_baseGradeBlackPoint_Name">
+            <Original>Base Grade Black Point</Original>
+            <English>Base Grade Black Point</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_baseGradeBrightness_Description">
+            <Original>Display brightness of the normal-vision grade, range 0.7 to 1.3. BIKI Post Process Effects: ColorCorrections brightness, 0 black, 1 unchanged, 2 white.</Original>
+            <English>Display brightness of the normal-vision grade, range 0.7 to 1.3. BIKI Post Process Effects: ColorCorrections brightness, 0 black, 1 unchanged, 2 white.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_baseGradeBrightness_Name">
+            <Original>Base Grade Brightness</Original>
+            <English>Base Grade Brightness</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_baseGradeContrast_Description">
+            <Original>Display contrast of the normal-vision grade, range 0.8 to 1.6. The ACES tone scale is an S-shaped curve with a mid-grey log-log gamma below 1.55; the engine contrast is linear, so this is a stand-in. The exact default 1.15 is UNSOURCED.</Original>
+            <English>Display contrast of the normal-vision grade, range 0.8 to 1.6. The ACES tone scale is an S-shaped curve with a mid-grey log-log gamma below 1.55; the engine contrast is linear, so this is a stand-in. The exact default 1.15 is UNSOURCED.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_baseGradeContrast_Name">
+            <Original>Base Grade Contrast</Original>
+            <English>Base Grade Contrast</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_baseGradeEnabled_Description">
+            <Original>Enable the normal-vision base grade (contrast, brightness, black point and colour weights). It applies on normal vision only and never in a sensor mode, and it owns its own ColorCorrections, so it never fights the weather grade. No unit.</Original>
+            <English>Enable the normal-vision base grade (contrast, brightness, black point and colour weights). It applies on normal vision only and never in a sensor mode, and it owns its own ColorCorrections, so it never fights the weather grade. No unit.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_baseGradeEnabled_Name">
+            <Original>Base Grade</Original>
+            <English>Base Grade</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_baseGradeGrain_Description">
+            <Original>FilmGrain intensity for the acuity pass, range 0 to 0.05. BIKI FilmGrain default 0.005. The engine couples grain and sharpness, so a small amount of grain is unavoidable with the sharpening.</Original>
+            <English>FilmGrain intensity for the acuity pass, range 0 to 0.05. BIKI FilmGrain default 0.005. The engine couples grain and sharpness, so a small amount of grain is unavoidable with the sharpening.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_baseGradeGrain_Name">
+            <Original>Acuity Grain Intensity</Original>
+            <English>Acuity Grain Intensity</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_baseGradeSaturation_Description">
+            <Original>Desaturation weight of the normal-vision grade, range 0 to 0.5. BIKI ColorCorrections colorize alpha: 0 keeps the original colour, 1 is black and white. The engine can only desaturate; it cannot oversaturate.</Original>
+            <English>Desaturation weight of the normal-vision grade, range 0 to 0.5. BIKI ColorCorrections colorize alpha: 0 keeps the original colour, 1 is black and white. The engine can only desaturate; it cannot oversaturate.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_baseGradeSaturation_Name">
+            <Original>Base Grade Saturation</Original>
+            <English>Base Grade Saturation</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_baseGradeSharpness_Description">
+            <Original>FilmGrain sharpness for the acuity pass, range 1 to 20. BIKI FilmGrain default 1.25. The wiki does not state what it sharpens, so that it sharpens the scene is UNSOURCED; it is a display-aesthetic compromise, not added human acuity.</Original>
+            <English>FilmGrain sharpness for the acuity pass, range 1 to 20. BIKI FilmGrain default 1.25. The wiki does not state what it sharpens, so that it sharpens the scene is UNSOURCED; it is a display-aesthetic compromise, not added human acuity.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_baseGradeSharpness_Name">
+            <Original>Acuity Sharpness</Original>
+            <English>Acuity Sharpness</English>
+        </Key>
         <Key ID="STR_AEE_Optics_chromaCap_Description">
             <Original>Ceiling on chromatic aberration from seeing and heat shimmer</Original>
             <English>Ceiling on chromatic aberration from seeing and heat shimmer</English>
