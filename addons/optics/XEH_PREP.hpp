@@ -54,6 +54,9 @@ PREPS(grade,teardownBaseGrade);
 
 // Perception (human-vision model): the pure tone and composition kernels.
 PREPS(perception,perceptionToneResponse);
+PREPS(perception,perceptionIlluminant);
+PREPS(perception,perceptionChromaticAdaptation);
+PREPS(perception,perceptionMesopicColor);
 PREPS(perception,perceptionParams);
 
 PREPS(hud,hudBuild);

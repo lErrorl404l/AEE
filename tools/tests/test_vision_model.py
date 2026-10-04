@@ -73,6 +73,9 @@ GRADE_FUNCTIONS = [
 
 PERCEPTION_FUNCTIONS = [
     "perceptionToneResponse",
+    "perceptionIlluminant",
+    "perceptionChromaticAdaptation",
+    "perceptionMesopicColor",
     "perceptionParams",
 ]
 
@@ -359,9 +362,14 @@ class TestPerceptionMesopicColor(unittest.TestCase):
 
 
 def compose(args):
-    """Run fnc_perceptionParams with fnc_perceptionToneResponse bound."""
+    """Run fnc_perceptionParams with its sub-kernels bound."""
     globals_ = {
         "__FUNC__perceptionToneResponse": lambda *a: run_sqf(TONE_KERNEL, list(a)),
+        "__FUNC__perceptionIlluminant": lambda *a: run_sqf(ILLUMINANT_KERNEL, list(a)),
+        "__FUNC__perceptionChromaticAdaptation": lambda *a: run_sqf(
+            CHROMA_KERNEL, list(a)
+        ),
+        "__FUNC__perceptionMesopicColor": lambda *a: run_sqf(MESOPIC_KERNEL, list(a)),
     }
     return run_sqf(COMPOSE_KERNEL, args, globals_)
 
@@ -397,6 +405,42 @@ class TestPerceptionComposition(unittest.TestCase):
     def test_filmgrain_has_six_elements(self):
         _, grain = compose([])
         self.assertEqual(len(grain), 6)
+
+    def test_colour_slots_stay_neutral_when_the_colour_path_is_off(self):
+        cc, _ = compose([1, 1, [1.0, 0.9, 0.6], True, False, 1, 1])
+        self.assertEqual(cc[3], [0, 0, 0, 0])
+        self.assertEqual(cc[4], [1, 1, 1, 0])
+
+
+class TestPerceptionColourComposition(unittest.TestCase):
+    """fnc_perceptionParams composes the colour stage from the real SQF.
+
+    The colour stage is off when white balance is off and the scene is
+    photopic, so the array is the identity.  A tinted illuminant with white
+    balance on raises the blend alpha; a mesopic scene raises the colorize
+    alpha (BIKI capture 20240220225631).
+    """
+
+    def test_colour_paths_off_is_the_identity_fixture(self):
+        cc, _ = compose([1, 1, [1.0, 0.9, 0.6], True, False, 0, 1])
+        self.assertEqual(cc, NEUTRAL_FIXTURE)
+
+    def test_scotopic_raises_the_colorize_alpha(self):
+        cc, _ = compose([1, 0, [1, 1, 1], True, False, 1, 1])
+        self.assertGreater(cc[4][3], 0)
+        self.assertLessEqual(cc[4][3], 0.5)
+
+    def test_warm_illuminant_with_white_balance_raises_the_blend_alpha(self):
+        cc, _ = compose([1, 1, [1.0, 0.9, 0.6], True, True, 1, 1])
+        self.assertGreater(cc[3][3], 0)
+
+    def test_blue_illuminant_warms_the_blend(self):
+        cc, _ = compose([1, 1, [0.6, 0.9, 1.0], True, True, 1, 1])
+        self.assertGreater(cc[3][0], cc[3][2])
+
+    def test_neutral_illuminant_keeps_the_blend_alpha_zero(self):
+        cc, _ = compose([1, 1, [1, 1, 1], True, True, 1, 1])
+        self.assertEqual(cc[3][3], 0)
 
 
 STAND_DOWN_RE = re.compile(
