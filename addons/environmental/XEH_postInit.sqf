@@ -11,4 +11,5 @@ if (hasInterface) then {
     [] call FUNC(renderDynamicStars);
     [] call FUNC(renderMeteors);
     [] call FUNC(renderAurora);
+    [] call FUNC(renderMilkyWay);
 };

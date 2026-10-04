@@ -353,6 +353,10 @@ class TestForceHooks(unittest.TestCase):
         text = (SENSOR / "fnc_updateAurora.sqf").read_text(encoding="utf-8")
         self.assertIn("aee_environmental_auroraForce", text)
 
+    def test_milkyway_force_owned_by_milkyway_worker(self):
+        text = (SENSOR / "fnc_updateMilkyWay.sqf").read_text(encoding="utf-8")
+        self.assertIn("aee_environmental_milkyWayForce", text)
+
     def test_dead_hook_name_absent(self):
         # Build the banned name from parts: the literal must not appear here, or
         # the repository-wide grep that task 13 runs would match this test file.
@@ -426,6 +430,42 @@ class TestAuroraWiring(unittest.TestCase):
         )
         self.assertIn("STR_AEE_Environmental_dynamicAurora_Name", st)
         self.assertIn("STR_AEE_Environmental_dynamicAurora_Description", st)
+
+
+class TestMilkyWayRenderer(unittest.TestCase):
+    """The Milky Way band follows the galactic plane as a Draw3D band."""
+
+    def setUp(self):
+        self.sampler = (SENSOR / "fnc_updateMilkyWay.sqf").read_text(encoding="utf-8")
+        self.draw = (SENSOR / "fnc_drawMilkyWay.sqf").read_text(encoding="utf-8")
+        self.registrar = (SENSOR / "fnc_renderMilkyWay.sqf").read_text(encoding="utf-8")
+
+    def test_sampler_uses_kernels_and_setting(self):
+        self.assertIn("FUNC(galacticToHorizontal)", self.sampler)
+        self.assertIn("FUNC(siderealTime)", self.sampler)
+        self.assertIn("dynamicMilkyWay", self.sampler)
+        self.assertIn("milkyWayForce", self.sampler)
+
+    def test_draw_uses_drawline3d_only(self):
+        self.assertIn("drawLine3D", self.draw)
+        self.assertNotIn("createVehicle", self.draw)
+        self.assertNotIn('"#lightpoint"', self.draw)
+
+    def test_registrar_client_and_draw3d(self):
+        self.assertIn("hasInterface", self.registrar)
+        self.assertIn("milkyWayPFH", self.registrar)
+        self.assertIn("Draw3D", self.registrar)
+
+    def test_wired(self):
+        prep = (ROOT / "addons" / "environmental" / "XEH_PREP.hpp").read_text(
+            encoding="utf-8"
+        )
+        for entry in ("renderMilkyWay", "updateMilkyWay", "drawMilkyWay"):
+            self.assertIn(f"PREPS(astronomy,{entry})", prep)
+        post = (ROOT / "addons" / "environmental" / "XEH_postInit.sqf").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("[] call FUNC(renderMilkyWay);", post)
 
 
 if __name__ == "__main__":
