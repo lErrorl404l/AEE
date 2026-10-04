@@ -63,7 +63,6 @@ def audit() -> int:
         if "functions" not in str(sqf):
             continue
         text = sqf.read_text(encoding="utf-8")
-        lines = text.split("\n")
 
         for m in ADJUST.finditer(text):
             var = m.group(1)

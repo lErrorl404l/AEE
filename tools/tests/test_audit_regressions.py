@@ -467,7 +467,9 @@ class TestSettingMacroStringtableContract(unittest.TestCase):
     def test_the_title_macro_does_not_double_the_separator(self):
         text = self._MACROS.read_text(encoding="utf-8")
         line = next(
-            l for l in text.split("\n") if l.startswith("#define AEE_SETTING_TITLE")
+            text_line
+            for text_line in text.split("\n")
+            if text_line.startswith("#define AEE_SETTING_TITLE")
         )
         self.assertNotIn(
             "DOUBLES(h,_",
