@@ -349,6 +349,10 @@ class TestForceHooks(unittest.TestCase):
         self.assertIn("aee_environmental_skyForce", text)
         self.assertIn("aee_environmental_meteorForce", text)
 
+    def test_aurora_force_owned_by_aurora_worker(self):
+        text = (SENSOR / "fnc_updateAurora.sqf").read_text(encoding="utf-8")
+        self.assertIn("aee_environmental_auroraForce", text)
+
     def test_dead_hook_name_absent(self):
         # Build the banned name from parts: the literal must not appear here, or
         # the repository-wide grep that task 13 runs would match this test file.
@@ -361,6 +365,49 @@ class TestForceHooks(unittest.TestCase):
             if dead in path.read_text(encoding="utf-8"):
                 hits.append(str(path))
         self.assertEqual(hits, [])
+
+
+class TestAuroraRenderer(unittest.TestCase):
+    """The aurora worker is a local particle curtain, never a line or a light."""
+
+    def setUp(self):
+        worker = (SENSOR / "fnc_updateAurora.sqf").read_text(encoding="utf-8")
+        code = re.sub(r"/\*.*?\*/", "", worker, flags=re.DOTALL)
+        self.code = re.sub(r"//[^\n]*", "", code)
+        self.registrar = (SENSOR / "fnc_renderAurora.sqf").read_text(encoding="utf-8")
+
+    def test_worker_emitter_shape(self):
+        for token in (
+            '"#particlesource"',
+            "setParticleParams",
+            "setParticleRandom",
+            "setDropInterval",
+            "cl_basic",
+            "QGVAR(auroraIntensity)",
+            "currentSunElevation",
+        ):
+            self.assertIn(token, self.code)
+
+    def test_worker_no_line_or_global_object(self):
+        self.assertNotIn("drawLine3D", self.code)
+        self.assertNotRegex(self.code, r"\bcreateVehicle\b(?!Local)")
+
+    def test_registrar_client_and_idempotent(self):
+        self.assertIn("hasInterface", self.registrar)
+        self.assertIn("auroraPFH", self.registrar)
+        self.assertIn("isNil", self.registrar)
+        self.assertIn("CBA_fnc_addPerFrameHandler", self.registrar)
+
+    def test_wired(self):
+        prep = (ROOT / "addons" / "environmental" / "XEH_PREP.hpp").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("PREPS(astronomy,renderAurora)", prep)
+        self.assertIn("PREPS(astronomy,updateAurora)", prep)
+        post = (ROOT / "addons" / "environmental" / "XEH_postInit.sqf").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("[] call FUNC(renderAurora);", post)
 
 
 if __name__ == "__main__":
