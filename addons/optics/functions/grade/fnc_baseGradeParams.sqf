@@ -15,6 +15,14 @@ is a display-aesthetic compromise, not added human acuity: contrast
 sensitivity is a band-pass function (Campbell and Robson 1968, J Physiol, DOI
 10.1113/jphysiol.1968.sp008574).
 
+ColorCorrections slot order (BIKI Post Process Effects, capture 20240220225631):
+  [brightness, contrast, offset, blend, colorize, weights, radial].  The
+  colorize alpha (slot 4) is the saturation: 0 is the identity, 1 is black and
+  white times the colorize colour.  Slot 5 holds the luma weights for the
+  desaturation, its fourth value fixed 0.  Slot 6 is the optional Arma 3
+  radial, default [-1,-1,0,0,0,0,0].  A wrong length or a colorize alpha of 1
+  is the black-and-white class that drained normal vision to grey.
+
 Per-constant source register (UNSOURCED values are marked beside the clamp):
   contrast    1.15, range 0.8 to 1.6.  ACES tone scale is an S-shaped curve
               with a mid-grey log-log gamma below 1.55 (docs.acescentral.com,
@@ -26,13 +34,15 @@ Per-constant source register (UNSOURCED values are marked beside the clamp):
               community code (AsYetUntitled/Framework fn_flashbang.sqf -0.01;
               Liberation-RX -0.35).  The BIKI range line says 0 and up.
               Exact default UNSOURCED.
-  colour      [0.2126, 0.7152, 0.0722, 0], fixed.  Rec.709 luma, the ASC CDL
-              luma.  Nonzero, so the engine desaturation is valid.  The repo
-              treats [0,0,0,0] as a broken effect; the wiki has no such
+  weights     [0.2126, 0.7152, 0.0722, 0], fixed.  The Rec.709 luma and the ASC
+              CDL luma, used as the engine "rgb weights for desaturation"
+              (slot 5).  Nonzero, so the engine desaturation is valid.  The
+              repo treats [0,0,0,0] as a broken effect; the wiki has no such
               warning, so the repo rule is the authority and the wiki basis is
               UNSOURCED.
-  saturation  0.0, range 0 to 0.5.  BIKI ColorCorrections colorize alpha: 0
-              original colour, 1 black and white.  The engine desaturates only.
+  saturation  0.0, range 0 to 0.5.  The colorize alpha (slot 4): BIKI gives 0
+              as the original colour and 1 as black and white.  So 0 is the
+              identity.  The engine desaturates only.
   blend       [0,0,0,0], fixed.  BIKI ColorCorrections blend, alpha 0 keeps
               the original colour.
   sharpness   4.0, range 1 to 20.  BIKI FilmGrain parameter named sharpness,
