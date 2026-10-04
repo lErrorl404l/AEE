@@ -240,6 +240,20 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 |---|---|---|---|---|---|
 | `aee_nightvision_ltmEnabled` | CHECKBOX | `false` | yes | nightvision | Show the laser target marker beam through night vision (aircraft only) |
 
+## AEE Night Vision → Imperfections
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_nightvision_nvgAgcBreathing` | SLIDER | `0.4` | yes | nightvision | Automatic gain control breathing, the slow brightness hunt of the tube |
+| `aee_nightvision_nvgBlemishStrength` | SLIDER | `0.5` | yes | nightvision | Blemish overlay strength, the dark spots and bright emission points |
+| `aee_nightvision_nvgBlindingStrength` | SLIDER | `1.0` | yes | nightvision | Bright-source washout strength, the temporary blinding of the tube |
+| `aee_nightvision_nvgEdgeDistortion` | SLIDER | `0.5` | yes | nightvision | Edge distortion strength, the pincushion read at the tube edge |
+| `aee_nightvision_nvgImperfectionStrength` | SLIDER | `1.0` | yes | nightvision | Master multiplier on every night vision imperfection |
+| `aee_nightvision_nvgImperfectionsEnabled` | CHECKBOX | `true` | yes | nightvision | Enable the night vision imperfection model: fixed-pattern noise, blemishes, breathing and washout |
+| `aee_nightvision_nvgReticulationStrength` | SLIDER | `0.4` | yes | nightvision | Fibre-optic honeycomb reticulation strength |
+| `aee_nightvision_nvgScintillationStrength` | SLIDER | `1.0` | yes | nightvision | Dark-scene scintillation strength, the speckle in low light |
+| `aee_nightvision_nvgVeilingGlare` | SLIDER | `0.0213` | yes | nightvision | Veiling glare floor, the contrast limit from internal light scatter |
+
 ## AEE Night Vision → Intensity
 
 | Setting | Type | Default | Global | Addon | Purpose |
