@@ -62,7 +62,7 @@ AEE_SETTING_CHECKBOX(viewDistanceEnabled,"AEE Optics","Visibility",true);
 // environment state over the NVG view.  Default OFF (a HUD is an operator
 // choice); the HUD workers gate on this setting each tick, so it toggles
 // live.
-AEE_SETTING_CHECKBOX(hudEnabled,"AEE Optics","Display",false);
+AEE_SETTING_CHECKBOX(hudEnabled,"AEE HUD","Displays",false);
 
 // ── Thermal polarity (issue #196) ─────────────────────────────────────────
 // Moved to aee_thermal/initSettings.inc.sqf with the rest of the thermal
