@@ -225,6 +225,14 @@
             <Original>Environment HUD</Original>
             <English>Environment HUD</English>
         </Key>
+        <Key ID="STR_AEE_Optics_logDebug_Description">
+            <Original>Log optics diagnostics to the RPT. Turn this on before reporting a fault.</Original>
+            <English>Log optics diagnostics to the RPT. Turn this on before reporting a fault.</English>
+        </Key>
+        <Key ID="STR_AEE_Optics_logDebug_Name">
+            <Original>Optics Debug Log</Original>
+            <English>Optics Debug Log</English>
+        </Key>
         <Key ID="STR_AEE_Optics_mirageDensity_Description">
             <Original>Particle density of the heat-haze field</Original>
             <English>Particle density of the heat-haze field</English>

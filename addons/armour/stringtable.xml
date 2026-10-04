@@ -9,6 +9,14 @@
             <Original>Armour Overhaul</Original>
             <English>Armour Overhaul</English>
         </Key>
+        <Key ID="STR_AEE_Armour_logDebug_Description">
+            <Original>Log armour diagnostics to the RPT. Turn this on before reporting a fault.</Original>
+            <English>Log armour diagnostics to the RPT. Turn this on before reporting a fault.</English>
+        </Key>
+        <Key ID="STR_AEE_Armour_logDebug_Name">
+            <Original>Armour Debug Log</Original>
+            <English>Armour Debug Log</English>
+        </Key>
         <Key ID="STR_AEE_Armour_penetrationDebug_Description">
             <Original>Log penetration gate decisions (round mm RHA vs protection) to the RPT</Original>
             <English>Log penetration gate decisions (round mm RHA vs protection) to the RPT</English>
