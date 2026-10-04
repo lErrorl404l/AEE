@@ -19,3 +19,18 @@ AEE_SETTING_SLIDER(fogGrainMax,"AEE Night Vision","Intensity",0,1,0.15,0);
 // way to raise it.  It stays inert outside an NVG aircraft, so OFF costs
 // nothing and no beam can appear without an explicit action.
 AEE_SETTING_CHECKBOX(ltmEnabled,"AEE Night Vision","Display",false);
+
+// ── Tube imperfections (issue #215) ────────────────────────────────────────
+// The BAD artefacts a real image intensifier shows.  Every magnitude is on
+// one slider so the operator can dial the whole flaw set, and each flaw has
+// its own strength.  nvgVeilingGlare default 0.0213 is the MIL-I-49428
+// section 3.6.15.2 value.
+AEE_SETTING_CHECKBOX(nvgImperfectionsEnabled,"AEE Night Vision","Imperfections",true);
+AEE_SETTING_SLIDER(nvgImperfectionStrength,"AEE Night Vision","Imperfections",0,2,1.0,0.05);
+AEE_SETTING_SLIDER(nvgBlemishStrength,"AEE Night Vision","Imperfections",0,1,0.5,0.05);
+AEE_SETTING_SLIDER(nvgReticulationStrength,"AEE Night Vision","Imperfections",0,1,0.4,0.05);
+AEE_SETTING_SLIDER(nvgAgcBreathing,"AEE Night Vision","Imperfections",0,1,0.4,0.05);
+AEE_SETTING_SLIDER(nvgBlindingStrength,"AEE Night Vision","Imperfections",0,2,1.0,0.05);
+AEE_SETTING_SLIDER(nvgScintillationStrength,"AEE Night Vision","Imperfections",0,2,1.0,0.05);
+AEE_SETTING_SLIDER(nvgEdgeDistortion,"AEE Night Vision","Imperfections",0,1,0.5,0.05);
+AEE_SETTING_SLIDER(nvgVeilingGlare,"AEE Night Vision","Imperfections",0,0.05,0.0213,0.001);

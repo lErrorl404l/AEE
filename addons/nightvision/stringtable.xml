@@ -33,6 +33,14 @@
             <Original>Night Grain Maximum</Original>
             <English>Night Grain Maximum</English>
         </Key>
+        <Key ID="STR_AEE_NightVision_nvgAgcBreathing_Description">
+            <Original>Automatic gain control breathing, the slow brightness hunt of the tube</Original>
+            <English>Automatic gain control breathing, the slow brightness hunt of the tube</English>
+        </Key>
+        <Key ID="STR_AEE_NightVision_nvgAgcBreathing_Name">
+            <Original>AGC Breathing</Original>
+            <English>AGC Breathing</English>
+        </Key>
         <Key ID="STR_AEE_NightVision_nvgBatteryEnabled_Description">
             <Original>Enable NVG battery drain; the drain rate scales with the physiology battery temperature derating (hardcore)</Original>
             <English>Enable NVG battery drain; the drain rate scales with the physiology battery temperature derating (hardcore)</English>
@@ -40,6 +48,70 @@
         <Key ID="STR_AEE_NightVision_nvgBatteryEnabled_Name">
             <Original>NVG Battery Drain</Original>
             <English>NVG Battery Drain</English>
+        </Key>
+        <Key ID="STR_AEE_NightVision_nvgBlemishStrength_Description">
+            <Original>Blemish overlay strength, the dark spots and bright emission points</Original>
+            <English>Blemish overlay strength, the dark spots and bright emission points</English>
+        </Key>
+        <Key ID="STR_AEE_NightVision_nvgBlemishStrength_Name">
+            <Original>Blemish Strength</Original>
+            <English>Blemish Strength</English>
+        </Key>
+        <Key ID="STR_AEE_NightVision_nvgBlindingStrength_Description">
+            <Original>Bright-source washout strength, the temporary blinding of the tube</Original>
+            <English>Bright-source washout strength, the temporary blinding of the tube</English>
+        </Key>
+        <Key ID="STR_AEE_NightVision_nvgBlindingStrength_Name">
+            <Original>Blinding Strength</Original>
+            <English>Blinding Strength</English>
+        </Key>
+        <Key ID="STR_AEE_NightVision_nvgEdgeDistortion_Description">
+            <Original>Edge distortion strength, the pincushion read at the tube edge</Original>
+            <English>Edge distortion strength, the pincushion read at the tube edge</English>
+        </Key>
+        <Key ID="STR_AEE_NightVision_nvgEdgeDistortion_Name">
+            <Original>Edge Distortion</Original>
+            <English>Edge Distortion</English>
+        </Key>
+        <Key ID="STR_AEE_NightVision_nvgImperfectionStrength_Description">
+            <Original>Master multiplier on every night vision imperfection</Original>
+            <English>Master multiplier on every night vision imperfection</English>
+        </Key>
+        <Key ID="STR_AEE_NightVision_nvgImperfectionStrength_Name">
+            <Original>Imperfection Strength</Original>
+            <English>Imperfection Strength</English>
+        </Key>
+        <Key ID="STR_AEE_NightVision_nvgImperfectionsEnabled_Description">
+            <Original>Enable the night vision imperfection model: fixed-pattern noise, blemishes, breathing and washout</Original>
+            <English>Enable the night vision imperfection model: fixed-pattern noise, blemishes, breathing and washout</English>
+        </Key>
+        <Key ID="STR_AEE_NightVision_nvgImperfectionsEnabled_Name">
+            <Original>Imperfections</Original>
+            <English>Imperfections</English>
+        </Key>
+        <Key ID="STR_AEE_NightVision_nvgReticulationStrength_Description">
+            <Original>Fibre-optic honeycomb reticulation strength</Original>
+            <English>Fibre-optic honeycomb reticulation strength</English>
+        </Key>
+        <Key ID="STR_AEE_NightVision_nvgReticulationStrength_Name">
+            <Original>Reticulation Strength</Original>
+            <English>Reticulation Strength</English>
+        </Key>
+        <Key ID="STR_AEE_NightVision_nvgScintillationStrength_Description">
+            <Original>Dark-scene scintillation strength, the speckle in low light</Original>
+            <English>Dark-scene scintillation strength, the speckle in low light</English>
+        </Key>
+        <Key ID="STR_AEE_NightVision_nvgScintillationStrength_Name">
+            <Original>Scintillation Strength</Original>
+            <English>Scintillation Strength</English>
+        </Key>
+        <Key ID="STR_AEE_NightVision_nvgVeilingGlare_Description">
+            <Original>Veiling glare floor, the contrast limit from internal light scatter</Original>
+            <English>Veiling glare floor, the contrast limit from internal light scatter</English>
+        </Key>
+        <Key ID="STR_AEE_NightVision_nvgVeilingGlare_Name">
+            <Original>Veiling Glare</Original>
+            <English>Veiling Glare</English>
         </Key>
         <Key ID="STR_AEE_NightVision_rainGrainMax_Description">
             <Original>Rain-on-eye noise at night</Original>
