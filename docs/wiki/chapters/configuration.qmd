@@ -12,6 +12,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 |---|---|---|---|---|---|
 | `aee_armour_armourEnabled` | CHECKBOX | `true` | yes | armour | Apply the STANAG 4569-aligned vehicle armour ladder (issue #126) |
 
+## AEE Armour → Diagnostics
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_armour_logDebug` | CHECKBOX | `false` | yes | armour | Log armour diagnostics to the RPT. Turn this on before reporting a fault. |
+
 ## AEE Armour → Penetration
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -24,6 +30,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_atmos_simulWeatherLayers` | SLIDER | `0` | yes | atmos | Number of simul weather cloud layers; 0 leaves the engine default, more layers cost performance |
+
+## AEE Atmos → Diagnostics
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_atmos_logDebug` | CHECKBOX | `false` | yes | atmos | Log atmos diagnostics to the RPT. Turn this on before reporting a fault. |
 
 ## AEE Atmos → Events
 
@@ -161,6 +173,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_fx_thunderVolume` | SLIDER | `3.5` | yes | fx | Thunder volume |
 | `aee_fx_windNoiseVolume` | SLIDER | `1.0` | yes | fx | Wind ambience volume scale |
 
+## AEE Maritime → Diagnostics
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_maritime_logDebug` | CHECKBOX | `false` | yes | maritime | Log maritime diagnostics to the RPT. Turn this on before reporting a fault. |
+
 ## AEE Maritime → Sea
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -168,6 +186,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_maritime_seaCouplingWeight` | SLIDER | `0.5` | yes | maritime | Air-to-sea coupling weight for the sea-surface temperature; low = high thermal inertia, high = sea follows air quickly |
 | `aee_maritime_seaStateResponse` | SLIDER | `0.3` | yes | maritime | Weight given to the current wind when smoothing the sea state; higher values build the sea faster |
 | `aee_maritime_tideAmplitude` | SLIDER | `2.0` | yes | maritime | Half-range of the predicted tide height in metres |
+
+## AEE Mobility → Diagnostics
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_mobility_logDebug` | CHECKBOX | `false` | yes | mobility | Log mobility diagnostics to the RPT. Turn this on before reporting a fault. |
 
 ## AEE Mobility → Hydrology
 
@@ -234,6 +258,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_mobility_estimateVehicleMassEnabled` | CHECKBOX | `false` | yes | mobility | Show a bounded mass estimate for a ground vehicle that the sourced catalogue does not cover. The estimate is modelled, not documented. It uses the vehicle box size, a cited material density, and a calibrated fill factor. The switch is off until calibration passes and a human approves the model. A sourced catalogue weight always takes precedence. The estimate never replaces a documented weight. |
 | `aee_mobility_vehicleCouplingEnabled` | CHECKBOX | `true` | yes | mobility | Couple the computed surface physics to the engine at run time. Snow load adds mass with setMass, and a wet or icy surface removes grip with a force. The load comes from the modelled snow depth and the sourced snow density. No published accretion mass exists for mud, so mud adds no mass. The force is applied on the machine that owns the vehicle. |
 
+## AEE Night Vision → Diagnostics
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_nightvision_logDebug` | CHECKBOX | `false` | yes | nightvision | Log night vision diagnostics to the RPT. Turn this on before reporting a fault. |
+
 ## AEE Night Vision → Display
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -269,6 +299,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 |---|---|---|---|---|---|
 | `aee_optics_smokePersistenceScale` | SLIDER | `1.0` | yes | optics | Global smoke-duration multiplier |
 | `aee_optics_snowVisibilityPenalty` | SLIDER | `0.7` | yes | optics | Visibility loss from snow cover |
+
+## AEE Optics → Diagnostics
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_optics_logDebug` | CHECKBOX | `false` | yes | optics | Log optics diagnostics to the RPT. Turn this on before reporting a fault. |
 
 ## AEE Optics → Display
 
@@ -423,6 +459,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_physiology_HeatStrokeSensitivity` | SLIDER | `0.03` | yes | physiology | Heat-stroke overlay strength per °C above the danger threshold |
 | `aee_physiology_RapidAscentThreshold` | SLIDER | `150` | yes | physiology | Climb rate (m per tick) that triggers acute mountain sickness |
 
+## AEE Radio → Diagnostics
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_radio_logDebug` | CHECKBOX | `false` | yes | radio | Log radio diagnostics to the RPT. Turn this on before reporting a fault. |
+
 ## AEE Radio → Link
 
 This category registers only when ACRE2 or TFAR is loaded. The radio
@@ -517,6 +559,12 @@ registered.
 | `aee_compat_ace3_medicalRiskThreshold` | SLIDER | `0.3` | yes | compat_ace3 | Dehydration risk above this affects vitals |
 | `aee_compat_ace3_medicalWBGTThreshold` | SLIDER | `23` | yes | compat_ace3 | WBGT above this engages heart-rate and flow adjustments |
 
+## AEE → Compat - ACE3 Diagnostics
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_compat_ace3_logDebug` | CHECKBOX | `false` | yes | compat_ace3 | Log ACE3 compatibility diagnostics to the RPT. Turn this on before reporting a fault. |
+
 ## AEE → Compat - ACM
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -525,12 +573,24 @@ registered.
 | `aee_compat_acm_CBRNContamThreshold` | SLIDER | `0.01` | yes | compat_acm | Normalised contamination that marks a unit contaminated |
 | `aee_compat_acm_CBRNMaxBuildup` | SLIDER | `100` | yes | compat_acm | Upper limit of the ACM exposure buildup |
 
+## AEE → Compat - ACM Diagnostics
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_compat_acm_logDebug` | CHECKBOX | `false` | yes | compat_acm | Log ACM compatibility diagnostics to the RPT. Turn this on before reporting a fault. |
+
 ## AEE → Compat - ACRE2
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_compat_acre2_signalDBShift` | SLIDER | `8` | yes | compat_acre2 | Maximum dB shift from the propagation index |
 | `aee_compat_acre2_signalSensitivityMin` | SLIDER | `-110` | yes | compat_acre2 | Receiver sensitivity floor in dBm |
+
+## AEE → Compat - ACRE2 Diagnostics
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_compat_acre2_logDebug` | CHECKBOX | `false` | yes | compat_acre2 | Log ACRE2 compatibility diagnostics to the RPT. Turn this on before reporting a fault. |
 
 ## AEE → Compat - KAT
 
@@ -540,11 +600,23 @@ registered.
 | `aee_compat_kat_spo2Floor` | SLIDER | `60` | yes | compat_kat | Minimum SpO2 that AEE applies |
 | `aee_compat_kat_spo2RiskScale` | SLIDER | `32` | yes | compat_kat | SpO2 drop per unit of hypoxia risk |
 
+## AEE → Compat - KAT Diagnostics
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_compat_kat_logDebug` | CHECKBOX | `false` | yes | compat_kat | Log KAT compatibility diagnostics to the RPT. Turn this on before reporting a fault. |
+
 ## AEE → Compat - Real Weather
 
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_compat_realweather_enabled` | CHECKBOX | `false` | yes | compat_realweather | Enable real-weather mode. Reads weather.json from the mission folder and overrides AEE's simulated state. |
+
+## AEE → Compat - Real Weather Diagnostics
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_compat_realweather_logDebug` | CHECKBOX | `false` | yes | compat_realweather | Log Real Weather compatibility diagnostics to the RPT. Turn this on before reporting a fault. |
 
 ## AEE → Compat - TFAR
 
@@ -553,6 +625,12 @@ registered.
 | `aee_compat_tfar_signalMultMax` | SLIDER | `1.5` | yes | compat_tfar | Upper limit of the signal multiplier |
 | `aee_compat_tfar_signalMultMin` | SLIDER | `0.3` | yes | compat_tfar | Lower limit of the signal multiplier |
 | `aee_compat_tfar_signalMultScale` | SLIDER | `0.6` | yes | compat_tfar | Sending multiplier scale from the propagation index |
+
+## AEE → Compat - TFAR Diagnostics
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_compat_tfar_logDebug` | CHECKBOX | `false` | yes | compat_tfar | Log TFAR compatibility diagnostics to the RPT. Turn this on before reporting a fault. |
 
 ## AEE → Core
 

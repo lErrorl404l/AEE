@@ -138,5 +138,37 @@ class ConfigDocsChapterTest(unittest.TestCase):
             self.assertEqual(doc.read_text(encoding="utf-8"), before)
 
 
+class TestLogDebugSwitches(unittest.TestCase):
+    """Every settings addon carries a logDebug switch and its two keys."""
+
+    def test_every_settings_addon_has_the_switch_and_keys(self) -> None:
+        files = sorted((REPO / "addons").glob("*/initSettings.inc.sqf"))
+        self.assertEqual(len(files), 19)
+        self.assertIn("core", {path.parent.name for path in files})
+        for path in files:
+            addon = path.parent
+            with self.subTest(addon=addon.name):
+                settings = path.read_text(encoding="utf-8")
+                declares = (
+                    "AEE_SETTING_CHECKBOX(logDebug," in settings
+                    or "QGVAR(logDebug)," in settings
+                )
+                self.assertTrue(
+                    declares,
+                    f"{addon.name} declares no logDebug switch",
+                )
+                strings = (addon / "stringtable.xml").read_text(encoding="utf-8")
+                self.assertIn(
+                    "_logDebug_Name",
+                    strings,
+                    f"{addon.name} lacks the logDebug name key",
+                )
+                self.assertIn(
+                    "_logDebug_Description",
+                    strings,
+                    f"{addon.name} lacks the logDebug description key",
+                )
+
+
 if __name__ == "__main__":
     unittest.main()
