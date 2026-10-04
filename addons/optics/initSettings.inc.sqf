@@ -71,6 +71,12 @@ AEE_SETTING_CHECKBOX(hudEnabled,"AEE Optics","Display",false);
 // flare (no texture asset).
 AEE_SETTING_CHECKBOX(dynamicStars,"AEE Optics","Display",true);
 
+// ── Dynamic meteor showers (issue #122) ───────────────────────────────────
+// Draws meteor showers at the active IMO shower's radiant and rate; the
+// limiting magnitude and cloud gate the rate.  Default ON; the worker gates
+// on the existing night and overcast state, so nothing is duplicated.
+AEE_SETTING_CHECKBOX(dynamicMeteors,"AEE Optics","Display",true);
+
 // ── Thermal polarity (issue #196) ─────────────────────────────────────────
 // Moved to aee_thermal/initSettings.inc.sqf with the rest of the thermal
 // pipeline (white-hot default, black-hot user-selectable per FM 3-22.9).

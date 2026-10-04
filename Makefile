@@ -40,6 +40,7 @@ lint:
 	python3 tools/validation/validate_physics_config.py
 	python3 tools/validation/gen_physics_config.py --check
 	python3 tools/validation/gen_star_catalog.py --check
+	python3 tools/validation/gen_meteor_showers.py --check
 	python3 tools/validation/gen_vehicle_class_inventory.py --check
 	python3 tools/validation/gen_vehicle_data.py --check
 	python3 tools/validation/gen_vehicle_coverage.py --check

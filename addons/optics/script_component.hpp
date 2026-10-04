@@ -8,3 +8,15 @@
 // for the bright stars; the faint bulk needs a Draw3D primitive (not yet
 // shipped).  This is the magnitude ceiling for the light-emitter path.
 #define STAR_LIGHT_MAX_MAG 2.0
+
+// ── Meteor shower render (issue #122) ────────────────────────────────────
+// Render tunables for the client #lightpoint + #particlesource worker.
+// METEOR_SPEED_FACTOR scales the published V-infinity for the eye and is
+// UNSOURCED.  METEOR_TICK must match the worker's PFH interval.
+#define METEOR_TICK 0.25
+#define METEOR_SPAWN_RADIUS_MIN 6000
+#define METEOR_SPAWN_RADIUS_MAX 9000
+#define METEOR_LIGHT_BRIGHTNESS 3000
+#define METEOR_LIGHT_DECAY 200
+#define METEOR_LIFETIME 4
+#define METEOR_SPEED_FACTOR 0.25

@@ -15,5 +15,22 @@
   "held_file": "catalog.dat",
   "archive_hash": "69797549cc1605aad7ff94e9325e29a1661f2a253917faaa056d9bf20b809afd",
   "note": "Primary star catalogue for the issue #122 dynamic night sky. Stars fainter than V = 7.0 are dropped because the naked-eye limiting-magnitude chain (fnc_calculateLimitingMagnitude) clamps at 7.0 and BSC5 is only complete to about 7.0. Positions are J2000.0; precession is applied at run time by fnc_getStarCatalog. The 10-character Name column truncates, so visual doubles that collapse to one string (e.g. 36 Oph A/B) are disambiguated with the HR number by tools/validation/gen_star_catalog.py."
+ },
+ {
+  "source_id": "imo-cal2025",
+  "tier": 1,
+  "type": "standard",
+  "title": "IMO 2025 Meteor Shower Calendar",
+  "edition": "IMO INFO 3.1-24",
+  "identifier": "Table 5",
+  "locator": "Table 5, Working List of Visual Meteor Showers (activity, peak, solar longitude, radiant, velocity, population index, ZHR)",
+  "published": "2024",
+  "retrieved": "2026-10-04",
+  "url": "https://nebo.today/cal2025.pdf",
+  "licence": "IMO published calendar; credit the International Meteor Organization",
+  "primary_held": true,
+  "held_file": "imo_cal2025.txt",
+  "archive_hash": "71e8a63eca901ac471041a3786a3bc19922d6986127ce50c2d99178efba3efee",
+  "note": "Primary source for the issue #122 meteor-shower layer. held_file is the pdftotext -layout extraction of the calendar PDF; the document header reads IMO INFO(3.1-24). tools/validation/gen_meteor_showers.py reads Table 5 only (the eight major annual showers) and transcribes activity window, peak date, solar longitude, radiant RA/Dec, pre-atmospheric velocity, population index r and ZHR. The ZHR definition (reference limiting magnitude +6.5, radiant overhead, meteors per hour) is in the calendar text; the rate-reduction equation implemented by fnc_meteorRate is NOT printed there and is marked UNSOURCED in that function."
  }
 ]

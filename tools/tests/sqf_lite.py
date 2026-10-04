@@ -216,6 +216,9 @@ UNARY_COMMANDS = {
     "cos",
     "sin",
     "sqrt",
+    # floor X and ceil X - the sidereal-time kernel (fnc_siderealTime) needs
+    # floor for the Julian-day-at-0h-UT reduction.
+    "floor",
     # Inverse trig returns DEGREES in SQF (asin/acos/atan), matching the
     # degree-taking sin/cos/tan above.
     "asin",
@@ -317,6 +320,7 @@ BUILTINS: dict[str, Any] = {
     "vectorDistanceSqr": _sqf_vectorDistanceSqr,
     "vectorCrossProduct": _sqf_vectorCrossProduct,
     "mod": lambda a, b: math.fmod(a, b),
+    "floor": math.floor,
     "toFixed": _sqf_toFixed,
     "atan2": lambda a, b: math.degrees(math.atan2(a, b)),
     "distance": lambda a, b: math.dist(a, b),
@@ -926,6 +930,8 @@ class SqfRuntime:
                 return math.sin(math.radians(value))
             if node.op == "sqrt":
                 return math.sqrt(value)
+            if node.op == "floor":
+                return float(math.floor(value))
             if node.op == "asin":
                 return math.degrees(math.asin(value))
             if node.op == "acos":

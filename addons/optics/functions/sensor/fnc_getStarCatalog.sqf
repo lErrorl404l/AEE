@@ -57,17 +57,9 @@ private _lat = ([] call EFUNC(core,getWorldLocation)) select 1;
 if (_lat == 0) then { _lat = 40; }; // fallback: temperate default
 
 // ─── Local sidereal time (degrees) ────────────────────────────────────────
-// GMST at 0h UT on the mission date, plus sidereal rate * UT hours.
-// Meeus Ch. 12.
-private _JD0 = floor(_JD - 0.5) + 0.5;
-private _S = _JD0 - 2451545.0;
-private _T2 = _S / 36525.0;
-// GMST at 0h UT (degrees)
-private _GMST0 = 280.46061837 + 360.98564736629 * _S + 0.000387933 * _T2 * _T2;
-// Add time of day (mission time)
-private _hours = time / 3600;
-private _LST = (_GMST0 + 360 * _hours / 24.03) mod 360;
-if (_LST < 0) then { _LST = _LST + 360; };
+// Shared kernel (Meeus Ch. 12), so the star field and the meteor radiants
+// read one sidereal-time source.
+private _LST = [_date] call FUNC(siderealTime);
 
 // ─── Get limiting magnitude ───────────────────────────────────────────────
 private _mLim = missionNamespace getVariable [QGVAR(limitingMagnitude), 6.5];
