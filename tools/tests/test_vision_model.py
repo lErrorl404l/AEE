@@ -18,6 +18,7 @@ value in the SQF header.  The per-constant register is in
 .omo/plans/aee-vision-model.md.
 """
 
+import ast
 import re
 import sys
 import unittest
@@ -275,6 +276,75 @@ class TestPerceptionComposition(unittest.TestCase):
     def test_filmgrain_has_six_elements(self):
         _, grain = compose([])
         self.assertEqual(len(grain), 6)
+
+
+STAND_DOWN_RE = re.compile(
+    r"\[1, 1, 0, \[0,0,0,0\], \[1,1,1,0\], \[0\.2126,0\.7152,0\.0722,0\], "
+    r"\[-1,-1,0,0,0,0,0\]\]"
+)
+
+
+class TestPerceptionDriverContract(unittest.TestCase):
+    """Source contract for the driver's perception branch.
+
+    The driver subsumes the base grade in place: it reads the published eye
+    state and the model switch, branches to the perception kernel, keeps the
+    registry keys, and stands down to the contract identity on normal vision
+    only.
+    """
+
+    def test_driver_calls_both_kernels(self):
+        code = _code(DRIVER)
+        self.assertIn("FUNC(perceptionParams)", code)
+        self.assertIn("FUNC(baseGradeParams)", code)
+        self.assertIn("visionModelEnabled", code)
+
+    def test_driver_reads_the_published_eye_state(self):
+        code = _code(DRIVER)
+        self.assertIn("eyeAdaptedLux", code, "adapted luminance is not read")
+        self.assertIn("eyeMesopic", code, "the mesopic fraction is not read")
+
+    def test_driver_publishes_the_state(self):
+        code = _code(DRIVER)
+        for name in (
+            "baseGradeActive",
+            "baseGradeCC",
+            "baseGradeGrain",
+            "visionModelActive",
+        ):
+            self.assertIn(f"QGVAR({name})", code, f"state {name} is not published")
+
+    def test_stand_down_neutral_is_the_contract_identity(self):
+        code = _code(DRIVER)
+        self.assertIn(
+            "[1, 1, 0, [0,0,0,0], [1,1,1,0], [0.2126,0.7152,0.0722,0], "
+            "[-1,-1,0,0,0,0,0]]",
+            code,
+            "the stand-down neutral is not the contract identity",
+        )
+        self.assertNotIn("[1,1,1,1]", code, "the stand-down still desaturates")
+
+    def test_stand_down_fixture_is_the_identity_image(self):
+        code = _code(DRIVER)
+        match = STAND_DOWN_RE.search(code)
+        self.assertIsNotNone(
+            match, "the stand-down identity is not the contract identity"
+        )
+        cc = ast.literal_eval(match.group())
+        self.assertEqual(cc, NEUTRAL_FIXTURE)
+        patch = [0.8, 0.2, 0.1]
+        for got, want in zip(cc_contract_pixel(patch, cc), patch):
+            self.assertAlmostEqual(got, want, places=9)
+
+    def test_driver_creates_no_new_effect(self):
+        code = _code(DRIVER)
+        self.assertIn("EFUNC(core,createPPEffect)", code)
+        self.assertNotIn("= ppEffectCreate", code, "the driver bypasses the registry")
+
+    def test_vision_mode_gate_precedes_the_first_adjust(self):
+        code = _code(DRIVER)
+        gate = code.index("currentVisionMode")
+        self.assertLess(gate, code.index("ppEffectAdjust _ccParams"))
 
 
 if __name__ == "__main__":

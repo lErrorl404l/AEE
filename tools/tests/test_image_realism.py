@@ -366,6 +366,12 @@ class TestBaseGradeDriverContract(unittest.TestCase):
         for name in ("baseGradeActive", "baseGradeCC", "baseGradeGrain"):
             self.assertIn(f"QGVAR({name})", code, f"state {name} is not published")
 
+    def test_branches_onto_the_perception_model(self):
+        code = _code(DRIVER)
+        self.assertIn("FUNC(perceptionParams)", code, "the perception branch is absent")
+        self.assertIn("FUNC(baseGradeParams)", code, "the legacy fallback is absent")
+        self.assertIn("visionModelEnabled", code, "the model switch is not read")
+
 
 class TestThermalIntegrationContract(unittest.TestCase):
     """The imperfection terms fold into the existing chain, no new effect."""
