@@ -9,6 +9,10 @@
 
 aee_core_coreBodyTemp  body-temp model not built yet; KAT falls back to default 37 (issue #64)
 aee_environmental_rainRateOverride  docker test override hook (written in tests/docker mission)
+aee_environmental_skyForce  debug console knob (documented in fnc_logSkyState.sqf)
+aee_environmental_auroraForce  debug console knob (documented in fnc_updateAurora.sqf)
+aee_environmental_milkyWayForce  debug console knob (documented in fnc_updateMilkyWay.sqf)
+aee_environmental_starsForce  debug console knob (documented in fnc_starLightsSync.sqf)
 aee_nightvision_nvgDebug  debug console knob (documented in fnc_applyNVGTubeModel.sqf)
 aee_thermal_rainDropColor  debug console knob (documented in fnc_applyRainDroplets.sqf)
 aee_core_starlightLux  tuning knob (documented in fnc_calculateIlluminance.sqf)
