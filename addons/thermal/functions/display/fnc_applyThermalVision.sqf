@@ -76,6 +76,7 @@ if !([_player] call FUNC(isThermalHostActive)) exitWith {
         ];
         AEE_LOG_INFO("thermal effects torn down (vision mode left)");
 
+        missionNamespace setVariable [QGVAR(imperfectionStart), -1];
         missionNamespace setVariable [QGVAR(thermalActive), false];
     };
 };
@@ -93,6 +94,60 @@ _contrast = 0 max _contrast min 1;
 // still sees a flat scene.  Floor at 0.05 keeps a faint image.
 private _crossover = missionNamespace getVariable [QEGVAR(core,thermalCrossoverActive), false];
 private _effective = [_contrast, 0.05] select _crossover;
+
+// ─── Sensor imperfections (image realism) ─────────────────────────────────
+// One pure kernel call builds the hot-source bloom, the AGC hunt, the NUC
+// drift and the temporal-noise term.  The detector FPN and NETD term below is
+// reused, not duplicated.  The three settling terms persist; the wake-up
+// burst is a decaying gain (UNSOURCED, 0.5 s) applied here.  The hunt and the
+// bloom change each tick, so the hunt goes into the ColorCorrections array,
+// which is written directly and never cached.
+private _impOn = missionNamespace getVariable [QGVAR(thermalImperfectionsEnabled), true];
+private _huntAmp = missionNamespace getVariable [QGVAR(thermalAgcHunt), 0.05];
+private _huntPeriod = missionNamespace getVariable [QGVAR(thermalAgcHuntPeriod), 4.0];
+private _nucAmp = missionNamespace getVariable [QGVAR(thermalNucDrift), 0.15];
+private _bloomBase = missionNamespace getVariable [QGVAR(thermalHotBloom), 0.08];
+private _temporalScale = missionNamespace getVariable [QGVAR(thermalTemporalNoise), 1.0];
+
+// Force hooks (debug console only; see the owning function header and Annex C).
+private _bloomForce = missionNamespace getVariable [QGVAR(bloomForce), -1];
+if ((_bloomForce isEqualType 0) && _bloomForce >= 0) then { _bloomBase = _bloomForce; };
+private _huntForce = missionNamespace getVariable [QGVAR(agcHuntForce), -1];
+if ((_huntForce isEqualType 0) && _huntForce >= 0) then { _huntAmp = _huntForce; };
+private _nucForce = missionNamespace getVariable [QGVAR(nucForce), -1];
+if ((_nucForce isEqualType 0) && _nucForce >= 0) then { _nucAmp = _nucForce; };
+private _noiseForce = missionNamespace getVariable [QGVAR(temporalNoiseForce), -1];
+if ((_noiseForce isEqualType 0) && _noiseForce >= 0) then { _temporalScale = _noiseForce; };
+
+// The wake-up burst needs an entry time.  It is set on the first active tick
+// and cleared when the thermal host is left, so the next entry bursts again.
+private _impStart = missionNamespace getVariable [QGVAR(imperfectionStart), -1];
+if (!(_impStart isEqualType 0) || _impStart < 0) then {
+    _impStart = diag_tickTime;
+    missionNamespace setVariable [QGVAR(imperfectionStart), _impStart];
+};
+private _burst = linearConversion [0.5, 0, diag_tickTime - _impStart, 1.0, 1.5, true];
+
+private _imperfections = [
+    _effective,
+    diag_tickTime,
+    _huntAmp,
+    _huntPeriod,
+    _nucAmp,
+    _bloomBase,
+    _effective,
+    1
+] call FUNC(thermalImperfectionParams);
+private _bloom = (_imperfections select 0) * _burst;
+private _agcHunt = (_imperfections select 1) * _burst;
+private _nucDrift = (_imperfections select 2) * _burst;
+private _temporalNoise = _imperfections select 3;
+if (!_impOn) then {
+    _bloom = 0;
+    _agcHunt = 0;
+    _nucDrift = 0;
+    _temporalNoise = 0.5;
+};
 
 // ─── Pan smear (detector readout artifact) ────────────────────────────────
 // Real uncooled microbolometers have a row-by-row readout cycle.  Fast
@@ -337,6 +392,8 @@ if (_hChroma >= 0) then {
 // vanilla TI image.
 private _brightness = 1.16;
 private _ccContrast = linearConversion [1, 0, _effective, 0.62, 0.35, true];
+// AGC hunt: the display gain breathes around the smoothed window.
+_ccContrast = _ccContrast + _agcHunt;
 if (_hCC >= 0) then {
         _hCC ppEffectAdjust [
             _brightness, _ccContrast, 0,
@@ -390,6 +447,9 @@ if (_hInv >= 0) then {
 // full-span anchor the AGC publishes.  Row/column striping is not
 // expressible in this engine (recorded in ti_fpn.rvmat).
 private _envNoise = linearConversion [1, 0, _effective, 0.05, 0.3, true];
+// The operator noise scale multiplies the environmental term; the kernel's
+// temporal term is a unit-scale jitter centred on 1.
+_envNoise = _envNoise * _temporalScale * (0.5 + _temporalNoise);
 private _agcMin = missionNamespace getVariable [QGVAR(agcRadMin), -1];
 private _agcMax = missionNamespace getVariable [QGVAR(agcRadMax), -1];
 private _agcWindowRad = if ((_agcMin isEqualType 0) && (_agcMax isEqualType 0)) then { _agcMax - _agcMin } else { 0 };
@@ -404,6 +464,8 @@ if ((_fpnOn) && (_agcWindowRad > 0) && (_agcFullSpan > 0)) then {
     private _windowT = 190 * (_agcWindowRad / _agcFullSpan);
     if (_windowT > 0) then { _fpnAmp = _netd / _windowT; };
 };
+// NUC drift: the fixed-pattern amplitude drifts until a NUC refresh.
+_fpnAmp = (_fpnAmp * (1 + _nucDrift)) max 0;
 private _noise = (_envNoise + _fpnAmp) max 0 min 1;
 private _sharpness = linearConversion [1, 0, _effective, 0.75, 1.5, true];
 private _grainSize = linearConversion [1, 0, _effective, 1.5, 2.0, true];
@@ -418,7 +480,7 @@ if (_hGrain >= 0) then {
 // the engine re-renders the native thermal frame underneath, and the
 // blur gate oscillates with mouse micro-movement.
 private _blur = linearConversion [1, 0, _effective, 0.0, 0.15, true];
-_blur = (_blur + _panSmear + _windowBlur) min 0.25;
+_blur = (_blur + _panSmear + _windowBlur + _bloom) min 0.25;
 if (_hBlur >= 0) then {
         [_hBlur, [_blur], true, _forceNVG, "blur"] call _ppApply;
     };
@@ -468,6 +530,16 @@ if (_pixelOn) then {
 if (_hReso >= 0) then {
         [_hReso, _resParams, _resOn, _forceNVG, "resolution"] call _ppApply;
     };
+
+// Publish the four imperfection values for the debug console and for a
+// reader that wants the live artefact amplitudes.
+missionNamespace setVariable [QGVAR(bloom), _bloom];
+missionNamespace setVariable [QGVAR(agcHunt), _agcHunt];
+missionNamespace setVariable [QGVAR(nucDrift), _nucDrift];
+missionNamespace setVariable [QGVAR(temporalNoise), _temporalNoise];
+if (missionNamespace getVariable [QGVAR(thermalDebug), false]) then {
+    diag_log text format ["[AEE] Thermal imperfections | bloom=%1 agcHunt=%2 nucDrift=%3 temporalNoise=%4 burst=%5", _bloom, _agcHunt, _nucDrift, _temporalNoise, _burst];
+};
 
 // Diagnostics: set aee_nightvision_nvgDebug = true in the debug console to log
 // every thermal tick's handles and params to the .rpt.
