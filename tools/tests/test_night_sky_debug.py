@@ -468,5 +468,35 @@ class TestMilkyWayRenderer(unittest.TestCase):
         self.assertIn("[] call FUNC(renderMilkyWay);", post)
 
 
+class TestFaintStarBulk(unittest.TestCase):
+    """The faint bulk is drawn with lines, not lights or icons."""
+
+    def setUp(self):
+        self.code = (SENSOR / "fnc_drawFaintStars.sqf").read_text(encoding="utf-8")
+        self.reg = (SENSOR / "fnc_renderDynamicStars.sqf").read_text(encoding="utf-8")
+
+    def test_shape(self):
+        for token in (
+            "FAINT_STAR_MAX",
+            "FUNC(starDirection)",
+            "FUNC(starMagnitude)",
+            "drawLine3D",
+            "STAR_LIGHT_MAX_MAG",
+        ):
+            self.assertIn(token, self.code)
+        self.assertNotIn("drawIcon3D", self.code)
+        self.assertNotIn("createVehicle", self.code)
+
+    def test_registrar_registers_draw3d(self):
+        self.assertIn("Draw3D", self.reg)
+        self.assertIn("drawFaintStars", self.reg)
+
+    def test_wired(self):
+        prep = (ROOT / "addons" / "environmental" / "XEH_PREP.hpp").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("PREPS(astronomy,drawFaintStars)", prep)
+
+
 if __name__ == "__main__":
     unittest.main()
