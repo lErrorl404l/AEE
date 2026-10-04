@@ -65,6 +65,22 @@
             <Original>Thermal Repaint Rate</Original>
             <English>Thermal Repaint Rate</English>
         </Key>
+        <Key ID="STR_AEE_Thermal_thermalAgcHunt_Description">
+            <Original>Amplitude of the thermal AGC hunting artefact, 0 to 0.1. AGC compresses dynamic range, which produces breathing and washout (Wikipedia Automatic gain control). The hunting timescale is UNSOURCED.</Original>
+            <English>Amplitude of the thermal AGC hunting artefact, 0 to 0.1. AGC compresses dynamic range, which produces breathing and washout (Wikipedia Automatic gain control). The hunting timescale is UNSOURCED.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_thermalAgcHunt_Name">
+            <Original>Thermal AGC Hunt</Original>
+            <English>Thermal AGC Hunt</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_thermalAgcHuntPeriod_Description">
+            <Original>Period of the thermal AGC hunt, 1 to 20 seconds. UNSOURCED. The AGC smooths at a 0.5 second time constant, so the hunt sits above it.</Original>
+            <English>Period of the thermal AGC hunt, 1 to 20 seconds. UNSOURCED. The AGC smooths at a 0.5 second time constant, so the hunt sits above it.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_thermalAgcHuntPeriod_Name">
+            <Original>Thermal AGC Hunt Period</Original>
+            <English>Thermal AGC Hunt Period</English>
+        </Key>
         <Key ID="STR_AEE_Thermal_thermalBaseChannel_Description">
             <Original>The host channel for the thermal display. Vanilla TI runs the display on the engine's own thermal channel overlaid on the vehicle's native TI. DTV disables the vehicle's native TI and draws the display over the day channel instead, the route the proven A3TI and MKK thermal mods use, so the engine's TI pass cannot fight the mod's. DTV is vehicle-only: the player must be in a vehicle optic. It is a prototype for comparison and is the only channel that does not set the ppEffectForceInNVG flag.</Original>
             <English>The host channel for the thermal display. Vanilla TI runs the display on the engine's own thermal channel overlaid on the vehicle's native TI. DTV disables the vehicle's native TI and draws the display over the day channel instead, the route the proven A3TI and MKK thermal mods use, so the engine's TI pass cannot fight the mod's. DTV is vehicle-only: the player must be in a vehicle optic. It is a prototype for comparison and is the only channel that does not set the ppEffectForceInNVG flag.</English>
@@ -97,6 +113,22 @@
             <Original>Thermal Fixed-Pattern Noise</Original>
             <English>Thermal Fixed-Pattern Noise</English>
         </Key>
+        <Key ID="STR_AEE_Thermal_thermalHotBloom_Description">
+            <Original>Hot-source bloom amplitude for the thermal view, 0 to 0.15. Thermal blooming and haloing have no authoritative source; UNSOURCED. Modelled as a DynamicBlur spike, the primitive the night-vision model uses for halo.</Original>
+            <English>Hot-source bloom amplitude for the thermal view, 0 to 0.15. Thermal blooming and haloing have no authoritative source; UNSOURCED. Modelled as a DynamicBlur spike, the primitive the night-vision model uses for halo.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_thermalHotBloom_Name">
+            <Original>Thermal Hot-Source Bloom</Original>
+            <English>Thermal Hot-Source Bloom</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_thermalImperfectionsEnabled_Description">
+            <Original>Enable the thermal sensor imperfections: non-uniformity drift, temporal noise, AGC hunt and hot-source bloom. No unit. The existing fixed-pattern noise and NETD term is reused, not duplicated.</Original>
+            <English>Enable the thermal sensor imperfections: non-uniformity drift, temporal noise, AGC hunt and hot-source bloom. No unit. The existing fixed-pattern noise and NETD term is reused, not duplicated.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_thermalImperfectionsEnabled_Name">
+            <Original>Thermal Imperfections</Original>
+            <English>Thermal Imperfections</English>
+        </Key>
         <Key ID="STR_AEE_Thermal_thermalManualMaxC_Description">
             <Original>Hot end of the manual display window, in degrees Celsius. Set it high to keep fires and exhaust on scale. The device library publishes no span, so this window is a user setting, not a device figure.</Original>
             <English>Hot end of the manual display window, in degrees Celsius. Set it high to keep fires and exhaust on scale. The device library publishes no span, so this window is a user setting, not a device figure.</English>
@@ -112,6 +144,14 @@
         <Key ID="STR_AEE_Thermal_thermalManualMinC_Name">
             <Original>Manual Window Minimum</Original>
             <English>Manual Window Minimum</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_thermalNucDrift_Description">
+            <Original>Amplitude of the thermal non-uniformity (NUC) drift, 0 to 0.3. Fixed-pattern noise drifts and NUC is refreshed (Wikipedia fixed-pattern noise; EMVA 1288). The refresh cadence is UNSOURCED.</Original>
+            <English>Amplitude of the thermal non-uniformity (NUC) drift, 0 to 0.3. Fixed-pattern noise drifts and NUC is refreshed (Wikipedia fixed-pattern noise; EMVA 1288). The refresh cadence is UNSOURCED.</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_thermalNucDrift_Name">
+            <Original>Thermal NUC Drift</Original>
+            <English>Thermal NUC Drift</English>
         </Key>
         <Key ID="STR_AEE_Thermal_thermalPPEffects_Description">
             <English>Applies the full-screen thermal effects: colour grade, black-hot inversion, sensor grain, IR-scatter blur, the ocular vignette, the rain lens film and the sensor pixelation. Turn OFF to isolate their render cost.</English>
@@ -142,6 +182,14 @@
         <Key ID="STR_AEE_Thermal_thermalPolarity_Name">
             <Original>Thermal Polarity</Original>
             <English>Thermal Polarity</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_thermalTemporalNoise_Description">
+            <Original>Scale on the thermal temporal sensor noise, 0 to 2. Fixed-pattern and temporal noise are real sensor noise; FPN is DSNU plus PRNU, corrected by flat-field or NUC and drifting with temperature, integration time and gain (Wikipedia fixed-pattern noise; EMVA Standard 1288).</Original>
+            <English>Scale on the thermal temporal sensor noise, 0 to 2. Fixed-pattern and temporal noise are real sensor noise; FPN is DSNU plus PRNU, corrected by flat-field or NUC and drifting with temperature, integration time and gain (Wikipedia fixed-pattern noise; EMVA Standard 1288).</English>
+        </Key>
+        <Key ID="STR_AEE_Thermal_thermalTemporalNoise_Name">
+            <Original>Thermal Temporal Noise</Original>
+            <English>Thermal Temporal Noise</English>
         </Key>
         <Key ID="STR_AEE_Thermal_thermalWetDistortion_Description">
             <Original>Maximum lens blurriness from the rain film on the objective. The display scales it from zero by the rain and fog it already models, so a dry scene shows nothing.</Original>
