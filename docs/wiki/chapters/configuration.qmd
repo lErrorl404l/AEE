@@ -254,6 +254,24 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 |---|---|---|---|---|---|
 | `aee_optics_hudEnabled` | CHECKBOX | `false` | yes | optics | Show the environment HUD over the night-vision view: heading, grid, altitude, time and the aee temperature, humidity and wind |
 
+## AEE Optics → Eye Adaptation
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_optics_eyeAdaptationEnabled` | CHECKBOX | `true` | yes | optics | AEE pins the camera aperture and owns the eye adaptation rate. Off hands the camera back to the engine. |
+| `aee_optics_eyeAmbientLuxScale` | SLIDER | `1` | yes | optics | Scale on the engine ambient term, no unit. UNSOURCED: getLightingAt has no documented unit. |
+| `aee_optics_eyeBlindingLuxScale` | SLIDER | `0` | yes | optics | Scale on the engine blinding term, no unit. UNSOURCED: apertureParams blinding has no documented unit. Default 0, off until tuned. |
+| `aee_optics_eyeFastBlend` | SLIDER | `0.35` | yes | optics | Weight of the fast pupil branch in the adapted luminance, 0 to 1. UNSOURCED: operator-tunable. |
+| `aee_optics_eyeLocalLuxScale` | SLIDER | `1` | yes | optics | Scale on the engine local term, no unit. UNSOURCED: getLightingAt has no documented unit. |
+| `aee_optics_eyeMesopicHigh` | SLIDER | `5` | yes | optics | Photopic end of the mesopic band, cd/m2. TRACED: CIE 191:2010, 5 cd/m2. |
+| `aee_optics_eyeMesopicLow` | SLIDER | `0.005` | yes | optics | Scotopic end of the mesopic band, cd/m2. TRACED: CIE 191:2010, 0.005 cd/m2. |
+| `aee_optics_eyePupilTauConstrict` | SLIDER | `0.25` | yes | optics | Pupil constriction time constant, seconds. TRACED: Meethal 2021 Sci Rep 11:21090, 0.25 s. |
+| `aee_optics_eyePupilTauDilate` | SLIDER | `0.475` | yes | optics | Pupil redilation time constant, seconds. TRACED: Meethal 2021 Sci Rep 11:21090, redilation 1.9 times the constriction. |
+| `aee_optics_eyeReflectance` | SLIDER | `0.18` | yes | optics | Assumed scene reflectance for the luminance step, 0 to 1. UNSOURCED: mid-grey assumption, 0.18. |
+| `aee_optics_eyeTauDarkCone` | SLIDER | `120` | yes | optics | Cone-pool dark adaptation time constant, seconds. UNSOURCED: derived to fit the cone-rod break at 5 to 8 min, Hecht, Haig and Chase 1937. |
+| `aee_optics_eyeTauDarkRod` | SLIDER | `400` | yes | optics | Rod-pool dark adaptation time constant, seconds. TRACED: Rushton 1961 J Physiol 156:166, 400 s. |
+| `aee_optics_eyeTauLight` | SLIDER | `2.0` | yes | optics | Light-adaptation time constant, seconds. UNSOURCED: no single published perceptual value, operator-tunable, 2.0 s. |
+
 ## AEE Optics → Intensity
 
 | Setting | Type | Default | Global | Addon | Purpose |
