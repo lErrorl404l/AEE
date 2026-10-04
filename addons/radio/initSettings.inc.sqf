@@ -16,6 +16,13 @@ if (_hasHost) then {
 // temperature derating, independent of any host radio mod.
 AEE_SETTING_CHECKBOX(batteryDeratingEnabled,"AEE Radio","Link",true);
 
+// ── Diagnostics ───────────────────────────────────────────────────────────
+// The per-module trace switch.  The AEE_LOG_DEBUG macro reads the name
+// built from the component: aee_<component>_logDebug.  Declaring it here,
+// in its own addon, is what makes that name correct.  QGVAR(logDebug)
+// resolves to aee_radio_logDebug.
+AEE_SETTING_CHECKBOX(logDebug,"AEE Radio","Diagnostics",false);
+
 // ── Propagation ────────────────────────────────────────────────────────────
 AEE_SETTING_SLIDER(txPower,"AEE Radio","Link",20,50,37,0);
 

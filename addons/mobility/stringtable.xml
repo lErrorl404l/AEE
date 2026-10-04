@@ -65,6 +65,14 @@
             <Original>Flight Turbulence</Original>
             <English>Flight Turbulence</English>
         </Key>
+        <Key ID="STR_AEE_Mobility_logDebug_Description">
+            <Original>Log mobility diagnostics to the RPT. Turn this on before reporting a fault.</Original>
+            <English>Log mobility diagnostics to the RPT. Turn this on before reporting a fault.</English>
+        </Key>
+        <Key ID="STR_AEE_Mobility_logDebug_Name">
+            <Original>Mobility Debug Log</Original>
+            <English>Mobility Debug Log</English>
+        </Key>
         <Key ID="STR_AEE_Mobility_manningN_Description">
             <Original>Manning roughness coefficient n for the channel. 0.030 to 0.050 is a natural stream (Chow 1959); 0.025 is smooth earth.</Original>
             <English>Manning roughness coefficient n for the channel. 0.030 to 0.050 is a natural stream (Chow 1959); 0.025 is smooth earth.</English>

@@ -108,3 +108,10 @@ AEE_SETTING_CHECKBOX(vehicleCouplingEnabled,"AEE Mobility","Vehicle",true);
     true,   // global, so the estimate is the same on every machine
     {}
 ] call CBA_fnc_addSetting;
+
+// ── Diagnostics ───────────────────────────────────────────────────────────
+// The per-module trace switch.  The AEE_LOG_DEBUG macro reads the name
+// built from the component: aee_<component>_logDebug.  Declaring it here,
+// in its own addon, is what makes that name correct.  QGVAR(logDebug)
+// resolves to aee_mobility_logDebug.
+AEE_SETTING_CHECKBOX(logDebug,"AEE Mobility","Diagnostics",false);
