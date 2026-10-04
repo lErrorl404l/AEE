@@ -71,6 +71,19 @@ if ((_forceMode isEqualType "") && {_forceMode != ""}) then {
     if (_forceMode == "NIGHT") then { _sceneLux = 0.001; };
     if (_forceMode == "DAY") then { _sceneLux = 100000; };
 };
+
+// Muzzle-flash term: a separate additive term while the window is open. It
+// is not folded into the engine dynamic term, so it cannot double-count.
+private _flashUntil = missionNamespace getVariable [QGVAR(eyeFlashUntil), 0];
+private _flashLux = missionNamespace getVariable [QGVAR(eyeFlashLux), 0];
+if ((_flashUntil isEqualType 0) && {CBA_missionTime < _flashUntil}) then {
+    if (_flashLux isEqualType 0) then { _sceneLux = _sceneLux + _flashLux; };
+} else {
+    if ((_flashLux isEqualType 0) && {_flashLux != 0}) then {
+        missionNamespace setVariable [QGVAR(eyeFlashLux), 0];
+    };
+};
+
 _sceneLux = _sceneLux max 1e-6;
 
 // Reflectance assumption rho: luminance = rho * E / pi (mid-grey, UNSOURCED).

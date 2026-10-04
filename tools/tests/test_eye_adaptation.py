@@ -39,6 +39,7 @@ APERTURE = EYE / "fnc_eyeAperture.sqf"
 SAMPLE = EYE / "fnc_eyeSampleScene.sqf"
 DRIVER = EYE / "fnc_updateEyeAdaptation.sqf"
 INIT = EYE / "fnc_initEyeAdaptation.sqf"
+FLASH = EYE / "fnc_eyeFlash.sqf"
 
 
 def mesopic_weight(lum):
@@ -326,6 +327,7 @@ class TestEyeWiring(unittest.TestCase):
         "eyeSkyCast",
         "eyeAperture",
         "eyeSampleScene",
+        "eyeFlash",
         "updateEyeAdaptation",
         "initEyeAdaptation",
     ]
@@ -372,6 +374,39 @@ class TestEyeWiring(unittest.TestCase):
         for name in self.EYE_SETTINGS:
             self.assertIn(f"STR_AEE_Optics_{name}_Name", text)
             self.assertIn(f"STR_AEE_Optics_{name}_Description", text)
+
+
+class TestEyeFlash(unittest.TestCase):
+    """fnc_eyeFlash runs from the real SQF; the handler stamps the window."""
+
+    def test_no_flash_is_dark(self):
+        self.assertEqual(run_sqf(FLASH, [0, False]), 0)
+
+    def test_a_flash_is_positive(self):
+        self.assertGreater(run_sqf(FLASH, [2, False]), 0)
+
+    def test_suppressed_is_dimmer(self):
+        loud = run_sqf(FLASH, [5, False])
+        quiet = run_sqf(FLASH, [5, True])
+        self.assertGreater(loud, quiet)
+        self.assertGreater(quiet, 0)
+
+    def test_handler_stamps_the_flash_window(self):
+        text = POSTINIT.read_text(encoding="utf-8")
+        self.assertIn("FUNC(eyeFlash)", text)
+        self.assertIn("eyeFlashLux", text)
+        self.assertIn("eyeFlashUntil", text)
+
+    def test_driver_reads_the_flash_window(self):
+        text = DRIVER.read_text(encoding="utf-8")
+        self.assertIn("eyeFlashLux", text)
+        self.assertIn("eyeFlashUntil", text)
+
+    def test_driver_does_not_double_count_with_the_engine_term(self):
+        # The flash is a separate additive term on the scene lux, not folded
+        # into the engine dynamic term.
+        text = DRIVER.read_text(encoding="utf-8")
+        self.assertIn("_sceneLux + _flashLux", text)
 
 
 if __name__ == "__main__":
