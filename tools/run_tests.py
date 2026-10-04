@@ -119,6 +119,7 @@ def main():
         "tools/tests/test_fusion_display_guard.py",
         "tools/tests/test_audit_regressions.py",
         "tools/tests/test_cross_module_validator.py",
+        "tools/tests/test_night_sky_debug.py",
     ]
     # Only run suites that exist (module suites are added incrementally).
     existing = [s for s in suites if os.path.exists(os.path.join(ROOT, s))]
