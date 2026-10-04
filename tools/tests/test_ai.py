@@ -82,5 +82,40 @@ class TestDisturbanceField(unittest.TestCase):
         self.assertAlmostEqual(sample([], key([5, 5, 0]), 0, 45), 0.0)
 
 
+def sense(disturbance, distance, need, senses):
+    return run_sqf(SENSE, [disturbance, distance, need, senses])
+
+
+def decide(state, thresholds):
+    return run_sqf(DECIDE, [state, thresholds])
+
+
+class TestAgentSense(unittest.TestCase):
+    def test_player_at_zero_distance_is_full_proximity(self):
+        self.assertEqual(sense(0, 0, 0, [100]), [0, 1, 0])
+
+    def test_player_beyond_the_range_is_zero_proximity(self):
+        self.assertEqual(sense(0, 1000, 0, [100]), [0, 0, 0])
+
+
+class TestAgentDecide(unittest.TestCase):
+    THRESHOLDS = [0.7, 0.3, 0.6, 0.2]
+
+    def test_high_disturbance_flees(self):
+        self.assertEqual(decide([0.9, 1, 0], self.THRESHOLDS), 3)
+
+    def test_mid_disturbance_freezes(self):
+        self.assertEqual(decide([0.5, 1, 0], self.THRESHOLDS), 4)
+
+    def test_high_need_with_low_disturbance_drinks(self):
+        self.assertEqual(decide([0.1, 1, 0.8], self.THRESHOLDS), 2)
+
+    def test_low_need_with_low_disturbance_forages(self):
+        self.assertEqual(decide([0.1, 1, 0.3], self.THRESHOLDS), 1)
+
+    def test_rest(self):
+        self.assertEqual(decide([0.0, 1, 0.1], self.THRESHOLDS), 0)
+
+
 if __name__ == "__main__":
     unittest.main()
