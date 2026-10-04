@@ -51,6 +51,7 @@ Debug hooks (set on missionNamespace; debug console only, no CBA setting):
   aee_optics_visionForce         Bool: force the human-vision model on.
   aee_optics_visionForceLux      Number: override the adapted luminance, cd/m2.
   aee_optics_visionForceMesopic  Number: override the mesopic photopic fraction.
+  aee_optics_visionForceIlluminant  Array: override the scene illuminant colour.
   aee_optics_logDebug            Bool: log one DEBUG line per tick.
 
 Arguments: none.
@@ -155,14 +156,43 @@ if (_useModel isEqualTo true) then {
     private _whiteBalance = missionNamespace getVariable [QGVAR(visionWhiteBalance), false];
     private _toneStrength = missionNamespace getVariable [QGVAR(visionToneStrength), 1];
     private _contrastScale = missionNamespace getVariable [QGVAR(visionContrastScale), 1];
+    private _adaptDegree = missionNamespace getVariable [QGVAR(visionAdaptationDegree), 0.9];
+    private _desatMax = missionNamespace getVariable [QGVAR(visionMesopicDesaturation), 0.3];
+    private _purkinje = missionNamespace getVariable [QGVAR(visionPurkinjeStrength), 0.5];
+
+    // The scene illuminant: the engine ambient colour, one engine read per
+    // tick.  Element 0 is the ambient light colour (BIKI capture
+    // 20250120023422).  Fall back to the display white D65.
+    private _illuminant = [1, 1, 1];
+    private _lighting = getLightingAt _player;
+    if ((_lighting isEqualType []) && ((count _lighting) >= 1)) then {
+        private _ambient = _lighting select 0;
+        if (_ambient isEqualType []) then {
+            if ((count _ambient) == 3) then {
+                _illuminant = _ambient;
+            };
+        };
+    };
+
+    // Debug hook: override the scene illuminant colour.
+    private _forceIlluminant = missionNamespace getVariable [QGVAR(visionForceIlluminant), []];
+    if (_forceIlluminant isEqualType []) then {
+        if ((count _forceIlluminant) == 3) then {
+            _illuminant = _forceIlluminant;
+        };
+    };
+
     _params = [
         _adaptedLux,
         _mesopicW,
-        [1, 1, 1],
+        _illuminant,
         _toneEnabled,
         _whiteBalance,
         _toneStrength,
-        _contrastScale
+        _contrastScale,
+        _adaptDegree,
+        _desatMax,
+        _purkinje
     ] call FUNC(perceptionParams);
 } else {
     _params = [

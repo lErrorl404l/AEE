@@ -469,6 +469,28 @@ class TestPerceptionDriverContract(unittest.TestCase):
         self.assertIn("eyeAdaptedLux", code, "adapted luminance is not read")
         self.assertIn("eyeMesopic", code, "the mesopic fraction is not read")
 
+    def test_driver_reads_the_ambient_colour_once(self):
+        code = _code(DRIVER)
+        self.assertEqual(
+            code.count("getLightingAt"), 1, "the ambient colour is read more than once"
+        )
+        self.assertIn("select 0", code, "the ambient light colour element is not used")
+
+    def test_driver_reads_the_force_illuminant_hook(self):
+        self.assertIn("visionForceIlluminant", _code(DRIVER))
+
+    def test_driver_passes_the_colour_calibration_settings(self):
+        code = _code(DRIVER)
+        for name in (
+            "visionAdaptationDegree",
+            "visionMesopicDesaturation",
+            "visionPurkinjeStrength",
+        ):
+            self.assertIn(name, code, f"setting {name} is not read")
+
+    def test_driver_does_not_write_the_aperture(self):
+        self.assertNotIn("setAperture", _code(DRIVER))
+
     def test_driver_publishes_the_state(self):
         code = _code(DRIVER)
         for name in (
@@ -515,7 +537,12 @@ class TestPerceptionDriverContract(unittest.TestCase):
 class TestPerceptionDebugHooks(unittest.TestCase):
     """Each vision hook is read, and none is registered as a CBA setting."""
 
-    HOOKS = ["visionForce", "visionForceLux", "visionForceMesopic"]
+    HOOKS = [
+        "visionForce",
+        "visionForceLux",
+        "visionForceMesopic",
+        "visionForceIlluminant",
+    ]
 
     def test_each_hook_is_read(self):
         code = _code(DRIVER)
