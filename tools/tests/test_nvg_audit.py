@@ -25,6 +25,12 @@ NVG_DEV = (
     Path(__file__).parents[2]
     / "addons/nightvision/functions/fnc_getNvgDeviceProperties.sqf"
 )
+# The per-tier edge factor moved out of the parent into the pincushion kernel
+# (issue #215); the lock below reads the kernel's edge array, not an inline
+# switch the parent no longer has.
+EROSION_KERNEL = (
+    Path(__file__).parents[2] / "addons/nightvision/functions/fnc_nvgPincushion.sqf"
+)
 PHOTON_SCALE = 500.0  # mirrors AEE_PHOTON_SCALE in fnc_applyNVGTubeModel.sqf
 
 # Tier name -> the switch label that carries its constants.  The tier
@@ -87,18 +93,15 @@ def _tier_constants(src):
     return out
 
 
-def _erosion_constants(src):
-    """Per-tier erosion factor, read from the REAL SQF erosion switch."""
-    body = _switch_body(src, "private _erosionFactor = switch (_tier) do")
-    out = {}
-    for label, key in (('case "GEN1"', "GEN1"), ('case "GEN2"', "GEN2")):
-        m = re.search(re.escape(label) + r": \{ ([0-9.]+) \}", body)
-        assert m, f"erosion missing for {label}"
-        out[key] = float(m.group(1))
-    m = re.search(r"default \{ ([0-9.]+) \}", body)
-    assert m, "erosion default missing"
-    out["GEN3"] = float(m.group(1))  # default covers GEN3 and PVS31
-    return out
+def _erosion_constants(_src=None):
+    """Per-tier erosion factor, read from the REAL pincushion kernel."""
+    body = EROSION_KERNEL.read_text(encoding="utf-8")
+    m = re.search(r"private _edge = \[([0-9., ]+)\] select", body)
+    assert m, "the pincushion kernel edge array is missing"
+    vals = [float(v) for v in m.group(1).split(",")]
+    # Index order is GEN1, GEN2, GEN3, PVS31.  GEN3 is the flat-field ceiling
+    # and PVS31 shares it, matching the old switch's default.
+    return {"GEN1": vals[0], "GEN2": vals[1], "GEN3": vals[2]}
 
 
 def _classifier_tier(dev_src, tier):
@@ -178,14 +181,17 @@ class TestAuditResolved(unittest.TestCase):
         self.assertIn("exp (-((CBA_missionTime", src)
 
     def test_gap5_gen1_erosion_present(self):
-        # Gap 5 (added here): Gen 1 edge-erosion vignette multiplier.
-        # The factor is local (fully consumed by the RadialBlur); no
-        # persisted state - add a producer/consumer pair when the
-        # perceptual layer (gap 6) lands.
+        # Gap 5 (added here): Gen 1 edge-erosion vignette multiplier.  Issue
+        # #215 moved the per-tier factor into fnc_nvgPincushion and applies it
+        # ONCE in the parent, so the lock now reads the kernel and proves the
+        # inline switch is gone.
         src = FNC.read_text(encoding="utf-8")
+        kernel = EROSION_KERNEL.read_text(encoding="utf-8")
         self.assertIn("_erosionFactor", src)
         self.assertNotIn("nvgErosionFactor", src)
-        self.assertIn('case "GEN1": { 2.5 }', src)
+        self.assertNotIn("private _erosionFactor = switch (_tier) do", src)
+        self.assertIn("call FUNC(nvgPincushion)", src)
+        self.assertIn("private _edge = [2.5, 1.3, 1.0, 1.0] select", kernel)
 
 
 class TestWarmupMath(unittest.TestCase):

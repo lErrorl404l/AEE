@@ -436,14 +436,15 @@ def nvg_bloom(bloom_base, bloom_scale, moon_light, blowout, rain):
 
     bloom = base + scale*moonLight + blowout*scale*2
     rain multiplies by (1 + rain*2) - drop scatter.
-    Clear-condition veiling glare floor: +0.02 (2 %), the low end of the
-    published 2-5 % veiling-glare ratio for real tubes.  A faint glow
-    over the whole image that caps maximum contrast, independent of rain.
+    Clear-condition veiling glare floor: +0.0213 (2.13 %), the sourced low
+    end of the published 2-5 % veiling-glare ratio for real tubes
+    (MIL-I-49428 section 3.6.15.2).  A faint glow over the whole image that
+    caps maximum contrast, independent of rain.
     """
     b = bloom_base + bloom_scale * moon_light
     b = b + blowout * bloom_scale * 2
     b = b * (1.0 + rain * 2.0)
-    b = b + 0.02
+    b = b + 0.0213
     return max(0.0, min(1.0, b))
 
 
@@ -1705,10 +1706,10 @@ class TestNVGBloom(unittest.TestCase):
     """NVG halo + clear-condition veiling glare floor."""
 
     def test_clear_condition_veiling_glare_floor(self):
-        # Even with no moon, no blowout, no rain, real tubes have a 2 %
+        # Even with no moon, no blowout, no rain, real tubes have a 2.13 %
         # veiling glare floor (phosphor light reflected to the photocathode).
         b = nvg_bloom(0.04, 0.04, moon_light=0.0, blowout=0.0, rain=0.0)
-        self.assertAlmostEqual(b, 0.04 + 0.02, places=6)
+        self.assertAlmostEqual(b, 0.04 + 0.0213, places=6)
 
     def test_veiling_glare_independent_of_rain(self):
         # The floor is present in clear AND rainy conditions (it adds on
@@ -1716,7 +1717,7 @@ class TestNVGBloom(unittest.TestCase):
         clear = nvg_bloom(0.04, 0.04, 0.0, 0.0, 0.0)
         rainy = nvg_bloom(0.04, 0.04, 0.0, 0.0, 1.0)
         self.assertGreater(rainy, clear)
-        self.assertGreaterEqual(clear, 0.02)  # floor present when clear
+        self.assertGreaterEqual(clear, 0.0213)  # floor present when clear
 
     def test_bloom_scales_with_blowout(self):
         low = nvg_bloom(0.04, 0.04, 0.0, blowout=0.0, rain=0.0)
@@ -3458,9 +3459,11 @@ class TestSQFSync(unittest.TestCase):
         )
 
     def test_nvg_veiling_glare_floor(self):
+        # Issue #215: the floor is the nvgVeilingGlare setting (default
+        # 0.0213, the MIL-I-49428 section 3.6.15.2 value), not a literal.
         self._assert_in_sqf(
             "fnc_applyNVGTubeModel.sqf",
-            ["_bloom = _bloom + 0.02"],
+            ["_bloom = _bloom + _glare", "nvgVeilingGlare"],
             "clear-condition veiling glare floor",
             addon="nightvision",
         )
