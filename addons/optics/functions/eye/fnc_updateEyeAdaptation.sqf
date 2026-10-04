@@ -104,7 +104,7 @@ private _logB = ((0.5 * (ln ((1 + _u) / (1 - _u)))) / 0.4) - 0.5;
 private _xFast = log (3.183 * (10 ^ _logB));
 
 // Slow pools.
-private _state = missionNamespace getVariable [QGVAR(eyeState), []];
+private _state = missionNamespace getVariable [QGVAR(eyeAdaptState), []];
 if (!(_state isEqualType []) || {(count _state) != 2}) then { _state = [_xTarget, _xTarget]; };
 private _step = [_state, _xTarget, _dt, GVAR(eyeTauLight), GVAR(eyeTauDarkCone), GVAR(eyeTauDarkRod), 0] call FUNC(eyeAdaptStep);
 
@@ -137,7 +137,7 @@ if ((isNil QGVAR(eyePinned)) || {abs(_v - _lastV) > 0.02}) then {
     GVAR(eyePinned) = true;
 };
 
-GVAR(eyeState) = _step;
+GVAR(eyeAdaptState) = _step;
 GVAR(eyePupil) = _d;
 GVAR(eyeFast) = _xFast;
 

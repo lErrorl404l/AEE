@@ -28,6 +28,7 @@ DECLARATION forms recognised per module:
     (missionNamespace setVariable [_store, _handle])
   - missionNamespace setVariable [QGVAR(name), ...]
   - uiNamespace setVariable [QGVAR(name), ...]
+  - direct assignment GVAR(name) = value (a missionNamespace write)
   - config.cpp: class GVAR(name)
   - RscTitles.hpp (or any .hpp): class GVAR(name)
 
@@ -125,6 +126,14 @@ def scan_declarations() -> dict[str, set[str]]:
             r"(?:missionNamespace|uiNamespace)\s+setVariable\s*\[QGVAR\((\w+)\)",
             text,
         ):
+            add(m.group(1), mod)
+        # 2b. direct assignment declarations: GVAR(name) = value writes
+        #     missionNamespace under the module's own scope.  A module that
+        #     declares its state this way owns the name, so it must not be
+        #     flagged when another module happens to use the same bare name.
+        #     (?!=) keeps `==` out; the leading \b and the absent E keep
+        #     EGVAR/QEGVAR out, because those name the OTHER module as owner.
+        for m in re.finditer(r"\bQ?GVAR\((\w+)\)\s*=(?!=)", text):
             add(m.group(1), mod)
     # 3. config.cpp class GVAR(name) / QGVAR(name)
     for cfg in ADDONS.glob("*/config.cpp"):
