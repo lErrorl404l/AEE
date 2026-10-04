@@ -186,6 +186,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_thermal_logDebug` | CHECKBOX | `false` | yes | thermal | Log thermal diagnostics to the RPT, including the wall-clock cost of each thermal function. Turn this on before reporting a performance fault. |
 | `aee_thermal_thermalDebug` | CHECKBOX | `false` | yes | thermal | Log thermal system diagnostics (second sun, building paint, AGC) to the RPT. Thermal's own debug flag - not nightvision's. |
 
+## AEE Debug → Wildlife
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_wildlife_logDebug` | CHECKBOX | `false` | yes | wildlife | Log wildlife diagnostics to the RPT. Turn this on before reporting a fault |
+
 ## AEE Environmental → Display
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -590,6 +596,33 @@ registered.
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_thermal_objectScanInterval` | SLIDER | `30` | yes | thermal | Seconds between object-temperature scans. Surface temperatures change on time constants of 600 seconds and longer, so a scan every tick is wasted work. 0 scans every tick. |
+
+## AEE Wildlife → Ambient Sound
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_wildlife_ambientEnabled` | CHECKBOX | `true` | yes | wildlife | Play the biome, time, weather and disturbance aware ambient soundscape |
+
+## AEE Wildlife → Behaviour
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_wildlife_silenceDecay` | SLIDER | `0.05` | yes | wildlife | How strongly recent disturbance silences the ambient bed |
+| `aee_wildlife_spookSensitivity` | SLIDER | `1.0` | yes | wildlife | Multiplier on the flight-initiation distance of a spooked animal |
+
+## AEE Wildlife → Fauna
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_wildlife_animalsEnabled` | CHECKBOX | `false` | yes | wildlife | Spawn client-local animals around the player. Off by default |
+| `aee_wildlife_density` | SLIDER | `1.0` | yes | wildlife | Multiplier on the animal density for the biome and terrain |
+
+## AEE Wildlife → General
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_wildlife_enabled` | CHECKBOX | `true` | yes | wildlife | Master switch for the wildlife ecology layer |
+| `aee_wildlife_tickInterval` | SLIDER | `1.0` | yes | wildlife | Wildlife simulation tick interval in seconds |
 
 ## AEE → Atmosphere
 

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="AEE">
+    <Package name="Wildlife">
+        <Key ID="STR_AEE_Wildlife_ambientEnabled_Description">
+            <Original>Play the biome, time, weather and disturbance aware ambient soundscape</Original>
+            <English>Play the biome, time, weather and disturbance aware ambient soundscape</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_ambientEnabled_Name">
+            <Original>Ambient Sound</Original>
+            <English>Ambient Sound</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_animalsEnabled_Description">
+            <Original>Spawn client-local animals around the player. Off by default</Original>
+            <English>Spawn client-local animals around the player. Off by default</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_animalsEnabled_Name">
+            <Original>Animals</Original>
+            <English>Animals</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_density_Description">
+            <Original>Multiplier on the animal density for the biome and terrain</Original>
+            <English>Multiplier on the animal density for the biome and terrain</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_density_Name">
+            <Original>Animal Density</Original>
+            <English>Animal Density</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_enabled_Description">
+            <Original>Master switch for the wildlife ecology layer</Original>
+            <English>Master switch for the wildlife ecology layer</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_enabled_Name">
+            <Original>Wildlife</Original>
+            <English>Wildlife</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_logDebug_Description">
+            <Original>Log wildlife diagnostics to the RPT. Turn this on before reporting a fault</Original>
+            <English>Log wildlife diagnostics to the RPT. Turn this on before reporting a fault</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_logDebug_Name">
+            <Original>Wildlife Debug Log</Original>
+            <English>Wildlife Debug Log</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_silenceDecay_Description">
+            <Original>How strongly recent disturbance silences the ambient bed</Original>
+            <English>How strongly recent disturbance silences the ambient bed</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_silenceDecay_Name">
+            <Original>Silence Decay</Original>
+            <English>Silence Decay</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_spookSensitivity_Description">
+            <Original>Multiplier on the flight-initiation distance of a spooked animal</Original>
+            <English>Multiplier on the flight-initiation distance of a spooked animal</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_spookSensitivity_Name">
+            <Original>Spook Sensitivity</Original>
+            <English>Spook Sensitivity</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_tickInterval_Description">
+            <Original>Wildlife simulation tick interval in seconds</Original>
+            <English>Wildlife simulation tick interval in seconds</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_tickInterval_Name">
+            <Original>Tick Interval</Original>
+            <English>Tick Interval</English>
+        </Key>
+    </Package>
+</Project>

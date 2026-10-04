@@ -108,7 +108,48 @@ class TestOpticsVisionTaxonomy(unittest.TestCase):
         self.assertEqual(groups.get(("AEE Optics", "Vision")), EXPECTED_OPTICS_VISION)
 
 
+EXPECTED_WILDLIFE_GENERAL = {
+    "aee_wildlife_enabled",
+    "aee_wildlife_tickInterval",
+}
+
+EXPECTED_WILDLIFE_FAUNA = {
+    "aee_wildlife_animalsEnabled",
+    "aee_wildlife_density",
+}
+
+EXPECTED_WILDLIFE = {
+    ("AEE Wildlife", "General"): EXPECTED_WILDLIFE_GENERAL,
+    ("AEE Wildlife", "Ambient Sound"): {"aee_wildlife_ambientEnabled"},
+    ("AEE Wildlife", "Fauna"): EXPECTED_WILDLIFE_FAUNA,
+    ("AEE Wildlife", "Behaviour"): {
+        "aee_wildlife_spookSensitivity",
+        "aee_wildlife_silenceDecay",
+    },
+}
+
+
+class TestWildlifeTaxonomy(unittest.TestCase):
+    """AEE Wildlife holds exactly the slice-one ecology settings."""
+
+    def test_wildlife_groups_are_exact(self):
+        groups = taxonomy_groups({"AEE Wildlife"})
+        self.assertEqual(groups, EXPECTED_WILDLIFE)
+
+    def test_fauna_group_is_exact(self):
+        groups = taxonomy_groups({"AEE Wildlife"})
+        self.assertEqual(groups.get(("AEE Wildlife", "Fauna")), EXPECTED_WILDLIFE_FAUNA)
+
+    def test_no_unknown_setting_uses_the_wildlife_category(self):
+        known = {name for names in EXPECTED_WILDLIFE.values() for name in names}
+        for setting in gen.collect_settings():
+            if setting.category == "AEE Wildlife":
+                self.assertIn(setting.name, known)
+
+
 EXPECTED_DEBUG = {
+    ("AEE Debug", "AI"): {"aee_ai_logDebug"},
+    ("AEE Debug", "Wildlife"): {"aee_wildlife_logDebug"},
     ("AEE Debug", "Core"): {"aee_core_diagnostic", "aee_core_logDebug"},
     ("AEE Debug", "FX"): {"aee_core_collisionDebug", "aee_fx_logDebug"},
     ("AEE Debug", "Environmental"): {"aee_environmental_logDebug"},
@@ -132,7 +173,7 @@ EXPECTED_DEBUG = {
 
 
 class TestDebugTaxonomy(unittest.TestCase):
-    """AEE Debug holds exactly the 23 diagnostic switches, by component."""
+    """AEE Debug holds exactly the 25 diagnostic switches, by component."""
 
     def test_debug_groups_are_exact(self):
         groups = taxonomy_groups({"AEE Debug"})
