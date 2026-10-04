@@ -62,6 +62,12 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_ballistics_ammoHeatPerShotJ` | SLIDER | `0.0001` | yes | ballistics | Propellant heat added per joule of round energy (degC per shot) |
 | `aee_ballistics_ammoTempTimeConstant` | SLIDER | `600` | yes | ballistics | Time constant of the per-weapon ammo temperature relaxation toward ambient (seconds) |
 
+## AEE Debug → AI
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_ai_logDebug` | CHECKBOX | `false` | yes | ai | Write the AI substrate diagnostics to the RPT |
+
 ## AEE Debug → Armour
 
 | Setting | Type | Default | Global | Addon | Purpose |
