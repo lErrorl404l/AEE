@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="AEE">
     <Package name="Maritime">
+        <Key ID="STR_AEE_Maritime_logDebug_Description">
+            <Original>Log maritime diagnostics to the RPT. Turn this on before reporting a fault.</Original>
+            <English>Log maritime diagnostics to the RPT. Turn this on before reporting a fault.</English>
+        </Key>
+        <Key ID="STR_AEE_Maritime_logDebug_Name">
+            <Original>Maritime Debug Log</Original>
+            <English>Maritime Debug Log</English>
+        </Key>
         <Key ID="STR_AEE_Maritime_seaCouplingWeight_Description">
             <Original>Air-to-sea coupling weight for the sea-surface temperature; low = high thermal inertia, high = sea follows air quickly</Original>
             <English>Air-to-sea coupling weight for the sea-surface temperature; low = high thermal inertia, high = sea follows air quickly</English>

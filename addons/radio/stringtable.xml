@@ -9,6 +9,14 @@
             <Original>Battery Temperature Derating</Original>
             <English>Battery Temperature Derating</English>
         </Key>
+        <Key ID="STR_AEE_Radio_logDebug_Description">
+            <Original>Log radio diagnostics to the RPT. Turn this on before reporting a fault.</Original>
+            <English>Log radio diagnostics to the RPT. Turn this on before reporting a fault.</English>
+        </Key>
+        <Key ID="STR_AEE_Radio_logDebug_Name">
+            <Original>Radio Debug Log</Original>
+            <English>Radio Debug Log</English>
+        </Key>
         <Key ID="STR_AEE_Radio_propagationRange_Description">
             <Original>Ceiling of the radio propagation quality index</Original>
             <English>Ceiling of the radio propagation quality index</English>
