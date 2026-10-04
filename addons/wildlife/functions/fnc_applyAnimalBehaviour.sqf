@@ -6,11 +6,13 @@ Register one spawned animal with the reusable substrate and steer it.
 Client-local.  The animal's engine FSM is disabled by the spawn path, so the
 substrate action callback owns the movement.  The callback runs the needs
 kernel each time it acts, publishes the need pressure on the anchor for
-fnc_aiTick, flees with a vanilla fear call, and otherwise travels toward the
-current goal.  Movement uses moveTo and setDestination only.
+fnc_aiTick, flees with a vanilla fear call, travels to the nearest wanted
+resource, resets the matching need on arrival, and leashes the animal to its
+herd anchor at rest.  Movement uses moveTo and setDestination only.
 
 The substrate calls the callback later, out of this function's scope, so the
-callback reads no local of this function.  SQF has no lexical closure.
+resource providers and the herd anchors live in missionNamespace and are read
+back inside the callback.  SQF has no lexical closure.
 
 Arguments:
   0: String - the agent id
@@ -30,6 +32,48 @@ params [
 if (!hasInterface) exitWith { false };
 if (isNull _agent) exitWith { false };
 if (_id == "") exitWith { false };
+
+// The resource providers read the published environmental facts.  They are
+// stored once so the out-of-scope callback can reach them.
+private _waterProvider = {
+    params ["_point"];
+    private _coast = [_point, 200] call EFUNC(environmental,getCoastDistance);
+    if !(_coast isEqualType 0) then { _coast = 200; };
+    1 - ((_coast / 200) min 1)
+};
+private _vegProvider = {
+    params ["_point"];
+    private _signals = missionNamespace getVariable [QEGVAR(environmental,terrainSignals), []];
+    private _veg = 0;
+    if (_signals isEqualType []) then {
+        if ((count _signals) >= 2) then {
+            private _votes = _signals select 1;
+            if (_votes isEqualType 0) then { _veg = ((_votes max 0) min 1); };
+        };
+    };
+    _veg
+};
+missionNamespace setVariable [QGVAR(waterProvider), _waterProvider];
+missionNamespace setVariable [QGVAR(vegProvider), _vegProvider];
+
+// The first animal of a species cluster sets the herd anchor.  Later animals
+// of the same species leash to it.
+private _herds = missionNamespace getVariable [GVAR(herds), []];
+if !(_herds isEqualType []) then { _herds = []; };
+private _herdAnchor = getPos _agent;
+private _found = false;
+for "_i" from 0 to ((count _herds) - 1) do {
+    private _row = _herds select _i;
+    if ((_row select 0) == _species) then {
+        if (!_found) then { _herdAnchor = _row select 1; };
+        _found = true;
+    };
+};
+if (!_found) then {
+    _herds pushBack [_species, _herdAnchor];
+    missionNamespace setVariable [GVAR(herds), _herds];
+};
+_agent setVariable [QGVAR(herdAnchor), _herdAnchor];
 
 private _callback = {
     params ["_agent", "_action", "_state"];
@@ -51,6 +95,11 @@ private _callback = {
     private _recovery = 1;
     private _position = getPos _agent;
 
+    private _waterProvider = missionNamespace getVariable [QGVAR(waterProvider), {}];
+    if !(_waterProvider isEqualType {}) then { _waterProvider = {}; };
+    private _vegProvider = missionNamespace getVariable [QGVAR(vegProvider), {}];
+    if !(_vegProvider isEqualType {}) then { _vegProvider = {}; };
+
     if (_action == 3) then {
         // Flee from the nearest player, with a vanilla fear call.
         private _unit = call CBA_fnc_currentUnit;
@@ -68,17 +117,39 @@ private _callback = {
         _recovery = 6;
     } else {
         if ((_goal > 0) || (_action == 2) || (_action == 1)) then {
-            // Travel toward the goal.  The resource search refines this in a
-            // later slice of the fauna work.
-            private _heading = ((_position getDir (getPos _agent)) + 90) mod 360;
+            private _wantWater = ((_goal == 2) || (_action == 2));
             private _target = [
-                (_position select 0) + (60 * (sin _heading)),
-                (_position select 1) + (60 * (cos _heading)),
-                0
-            ];
-            _agent moveTo _target;
-            _agent setDestination [_target, "LEADER PLANNED", false];
-            _recovery = 8;
+                _position, _wantWater, 100, 25, _waterProvider, _vegProvider
+            ] call FUNC(pickResourceTarget);
+
+            if (((_target select 0) != 0) || ((_target select 1) != 0)) then {
+                _agent moveTo _target;
+                _agent setDestination [_target, "LEADER PLANNED", false];
+                _recovery = 8;
+            };
+
+            // Arrival at the resource resets the matching need.
+            if (_wantWater) then {
+                private _coast = [_position, 200] call EFUNC(environmental,getCoastDistance);
+                if (_coast isEqualType 0) then {
+                    if (_coast < 25) then { _agent setVariable [QGVAR(thirst), 0]; };
+                };
+            } else {
+                private _vegHere = [_position] call _vegProvider;
+                if (_vegHere isEqualType 0) then {
+                    if (_vegHere > 0.5) then { _agent setVariable [QGVAR(hunger), 0]; };
+                };
+            };
+        } else {
+            // Rest: hold near the herd anchor.
+            private _herd = _agent getVariable [QGVAR(herdAnchor), _position];
+            if !(_herd isEqualType []) then { _herd = _position; };
+            if ((_agent distance _herd) > 60) then {
+                private _leash = [_herd select 0, _herd select 1, 0];
+                _agent moveTo _leash;
+                _agent setDestination [_leash, "LEADER PLANNED", false];
+                _recovery = 4;
+            };
         };
     };
 
