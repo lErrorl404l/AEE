@@ -35,6 +35,13 @@ effects survive alt-tab, a resize and an advanced optic.
 Engines values and the per-constant source register are in the kernel header
 fnc_baseGradeParams.sqf and .omo/plans/aee-image-realism.md.
 
+Debug hooks (set on missionNamespace; debug console only, no CBA setting):
+  aee_optics_baseGradeForce      Bool: force the grade on.
+  aee_optics_baseGradeContrast   Number: override the contrast setting.
+  aee_optics_baseGradeSharpness  Number: override the acuity sharpness setting.
+  aee_optics_baseGradeGrain      Number: override the acuity grain setting.
+  aee_optics_logDebug            Bool: log one DEBUG line per tick.
+
 Arguments: none.
 
 Returns:
@@ -61,6 +68,8 @@ private _standDown = {
         _hAcuity ppEffectEnable false;
     };
     missionNamespace setVariable [QGVAR(baseGradeActive), false];
+    private _logMsg = format ["base grade stand-down cc=%1 acuity=%2", _hCC, _hAcuity];
+    AEE_LOG_DEBUG(_logMsg);
 };
 
 if (!hasInterface) exitWith {

@@ -426,3 +426,20 @@ state for the operator and for the debug console.
 | `aee_thermal_agcHunt` | thermal | AGC hunt gain offset this tick |
 | `aee_thermal_nucDrift` | thermal | Non-uniformity (NUC) drift this tick |
 | `aee_thermal_temporalNoise` | thermal | Temporal-noise jitter this tick |
+
+## Image realism debug hooks
+
+These variables are read from missionNamespace and are not CBA settings. Set
+them in the debug console to force an effect. They are documented in the
+owning function headers.
+
+| Hook | Type | Purpose |
+|---|---|---|
+| `aee_optics_baseGradeForce` | BOOL | Force the normal-vision base grade on |
+| `aee_optics_baseGradeContrast` | NUMBER | Override the base-grade contrast setting |
+| `aee_optics_baseGradeSharpness` | NUMBER | Override the acuity sharpness setting |
+| `aee_optics_baseGradeGrain` | NUMBER | Override the acuity grain setting |
+| `aee_thermal_bloomForce` | NUMBER | Override the hot-source bloom base |
+| `aee_thermal_agcHuntForce` | NUMBER | Override the AGC hunt amplitude |
+| `aee_thermal_nucForce` | NUMBER | Override the NUC drift amplitude |
+| `aee_thermal_temporalNoiseForce` | NUMBER | Override the temporal-noise scale |
