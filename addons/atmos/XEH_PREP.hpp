@@ -1,4 +1,3 @@
-PREPS(state,updateAperture);
 PREPS(state,updateEngineLightnings);
 PREPS(state,updateFog);
 PREPS(state,updateHumidity);
