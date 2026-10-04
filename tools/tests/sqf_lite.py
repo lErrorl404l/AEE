@@ -220,6 +220,9 @@ UNARY_COMMANDS = {
     # (mesopic weight, pupil diameter) need both.
     "log",
     "ln",
+    # linearConversion [min, max, x, a, b, clamp] - the aperture map needs
+    # it; the operand is the six-element array.
+    "linearConversion",
     # floor X and ceil X - the sidereal-time kernel (fnc_siderealTime) needs
     # floor for the Julian-day-at-0h-UT reduction.
     "floor",
@@ -938,6 +941,16 @@ class SqfRuntime:
                 return math.log10(value)
             if node.op == "ln":
                 return math.log(value)
+            if node.op == "linearConversion":
+                # value is [min, max, x, a, b, clamp].
+                lo, hi, x, a, b = value[0], value[1], value[2], value[3], value[4]
+                clamp = value[5] if len(value) > 5 else True
+                if lo == hi:
+                    return a
+                t = (x - lo) / (hi - lo)
+                if clamp:
+                    t = max(0.0, min(1.0, t))
+                return a + t * (b - a)
             if node.op == "floor":
                 return float(math.floor(value))
             if node.op == "asin":
