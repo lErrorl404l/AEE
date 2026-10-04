@@ -1,4 +1,4 @@
-#include "..\..\script_component.hpp"
+#include "..\script_component.hpp"
 
 /*
 Engine wave rendering from AEE's sea state (issue #141).

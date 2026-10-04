@@ -105,7 +105,7 @@ private _anomalyNT = 0;
         // SQF `call` binds LOOSER than `+`, so the call must be parenthesised.
         // Without the parentheses this evaluated `(_anomalyNT + [array]) call F`,
         // which is `Error Generic error in expression` on every update tick.
-        _anomalyNT = _anomalyNT + ([getPosASL _unit, getPosASL _x] call EFUNC(core,calculateMagneticAnomaly));
+        _anomalyNT = _anomalyNT + ([getPosASL _unit, getPosASL _x] call FUNC(calculateMagneticAnomaly));
     };
 } forEach (nearestObjects [_unit, ["LandVehicle"], 50]);
 private _backgroundNT = 50000;

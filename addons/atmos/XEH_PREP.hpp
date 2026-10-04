@@ -1,6 +1,5 @@
 PREPS(state,updateAperture);
 PREPS(state,updateEngineLightnings);
-PREPS(state,updateEngineWaves);
 PREPS(state,updateFog);
 PREPS(state,updateHumidity);
 PREPS(state,updateLocalWindParams);

@@ -2,7 +2,6 @@ PREPS(altitude,calculateAltitudeAcclimatization);
 PREPS(strain,applyCrossSensitivity);
 PREPS(strain,calculateBatteryTemperatureDerating);
 PREPS(strain,calculateDehydrationRisk);
-PREPS(strain,calculateScentDispersion);
 PREPS(strain,calculateUVIndex);
 PREPS(altitude,calculateHypoxia);
 PREPS(hud,applyHeatStressHUD);

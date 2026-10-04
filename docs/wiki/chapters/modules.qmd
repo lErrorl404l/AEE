@@ -133,6 +133,7 @@ Environmental and seasonal effects.
 | `calculateLimitingMagnitude` | Calculate the naked-eye limiting magnitude |
 | `calculateLunarIllumination` | Calculate lunar illumination |
 | `calculateQNH` | Calculate QNH and pressure altitude |
+| `calculateScentDispersion` | Calculate scent dispersion |
 | `calculateSevereWeather` | Calculate severe weather |
 | `calculateSnowAccumulation` | Calculate snow accumulation |
 | `calculateSpaceWeather` | Calculate space weather |
@@ -165,8 +166,10 @@ Sea state and tides.
 | Function | Purpose |
 |---|---|
 | `calculateCompassDeviation` | Calculate compass deviation |
+| `calculateMagneticAnomaly` | Calculate magnetic field anomaly at a position |
 | `calculateSeaState` | Calculate the sea state |
 | `calculateTidalPrediction` | Calculate the tidal prediction |
+| `updateEngineWaves` | Render the sea state as engine waves |
 
 ## physiology
 
@@ -179,7 +182,6 @@ Physiological effects.
 | `calculateBatteryTemperatureDerating` | Calculate battery temperature derating |
 | `calculateDehydrationRisk` | Calculate dehydration risk |
 | `calculateHypoxia` | Calculate hypoxia risk from oxygen altitude |
-| `calculateScentDispersion` | Calculate scent dispersion |
 | `calculateUVIndex` | Calculate the UV index |
 
 ## radio

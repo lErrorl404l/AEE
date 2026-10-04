@@ -21,7 +21,7 @@ edge can take.
 | `compat_realweather` | `core` |
 | `compat_tfar` | none |
 | `core` | `atmos`, `ballistics`, `environmental`, `fx`, `maritime`, `mobility`, `nightvision`, `optics`, `physiology`, `radio`, `thermal` |
-| `environmental` | `compat_acm`, `core`, `material` |
+| `environmental` | `compat_acm`, `core`, `material`, `physiology` |
 | `fx` | `atmos`, `ballistics`, `core`, `mobility`, `optics` |
 | `main` | none |
 | `maritime` | `core` |

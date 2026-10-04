@@ -344,12 +344,12 @@ if (GVAR(environmentalEnabled)) then {
     [] call EFUNC(environmental,calculateCBRNPersistence);
 };
 if (GVAR(physiologyEnabled)) then {
-    [] call EFUNC(physiology,calculateScentDispersion);
+    [] call EFUNC(environmental,calculateScentDispersion);
 };
 if (GVAR(maritimeEnabled)) then {
     [] call EFUNC(maritime,calculateSeaState);
     // Engine wave rendering follows the sea state (issue #141).
-    [] call EFUNC(atmos,updateEngineWaves);
+    [] call EFUNC(maritime,updateEngineWaves);
     [] call EFUNC(maritime,calculateCompassDeviation);
 };
 

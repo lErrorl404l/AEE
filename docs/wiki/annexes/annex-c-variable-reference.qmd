@@ -138,7 +138,7 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_physiology_uvIndex` | physiology | UV index 0..13 |
 | `aee_core_currentUVIndex` | physiology | UV index (core alias) |
 | `aee_physiology_batteryTemperatureDerating` | physiology | Battery derating 0.3..1 |
-| `aee_physiology_scentDispersionIntensity` | physiology | Scent dispersion 0..1 |
+| `aee_environmental_scentDispersionIntensity` | environmental | Scent dispersion 0..1 |
 | `aee_physiology_scentDispersionDir` | physiology | Scent downwind direction |
 | `aee_physiology_amsRisk` | physiology | Acute mountain sickness risk |
 | `aee_physiology_sleepState` | physiology | Sleep state |

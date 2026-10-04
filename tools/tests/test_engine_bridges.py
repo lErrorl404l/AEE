@@ -21,7 +21,7 @@ REPO = Path(__file__).resolve().parents[2]
 STATE = REPO / "addons" / "atmos" / "functions" / "state"
 
 RAINBOW_SQF = STATE / "fnc_updateRainbow.sqf"
-WAVES_SQF = STATE / "fnc_updateEngineWaves.sqf"
+WAVES_SQF = REPO / "addons" / "maritime" / "functions" / "fnc_updateEngineWaves.sqf"
 LIGHTNINGS_SQF = STATE / "fnc_updateEngineLightnings.sqf"
 APERTURE_SQF = STATE / "fnc_updateAperture.sqf"
 LOCAL_WIND_SQF = STATE / "fnc_updateLocalWindParams.sqf"

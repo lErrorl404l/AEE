@@ -5,7 +5,6 @@
 
 PREP(createPPEffect);
 PREP(destroyPPEffect);
-PREP(calculateMagneticAnomaly);
 PREP(calculateSolarRadiation);
 PREP(calculateSeededWeatherProgression);
 PREP(deterministicRandom);
