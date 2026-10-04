@@ -25,6 +25,14 @@
             <Original>Animal Density</Original>
             <English>Animal Density</English>
         </Key>
+        <Key ID="STR_AEE_Wildlife_despawnRadius_Description">
+            <Original>Distance at which an animal is removed from the client</Original>
+            <English>Distance at which an animal is removed from the client</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_despawnRadius_Name">
+            <Original>Despawn Radius</Original>
+            <English>Despawn Radius</English>
+        </Key>
         <Key ID="STR_AEE_Wildlife_enabled_Description">
             <Original>Master switch for the wildlife ecology layer</Original>
             <English>Master switch for the wildlife ecology layer</English>
@@ -41,6 +49,14 @@
             <Original>Wildlife Debug Log</Original>
             <English>Wildlife Debug Log</English>
         </Key>
+        <Key ID="STR_AEE_Wildlife_maxAnimals_Description">
+            <Original>Maximum live animals on this client</Original>
+            <English>Maximum live animals on this client</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_maxAnimals_Name">
+            <Original>Maximum Animals</Original>
+            <English>Maximum Animals</English>
+        </Key>
         <Key ID="STR_AEE_Wildlife_silenceDecay_Description">
             <Original>How strongly recent disturbance silences the ambient bed</Original>
             <English>How strongly recent disturbance silences the ambient bed</English>
@@ -48,6 +64,14 @@
         <Key ID="STR_AEE_Wildlife_silenceDecay_Name">
             <Original>Silence Decay</Original>
             <English>Silence Decay</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_spawnRadius_Description">
+            <Original>Distance from the player where animals appear</Original>
+            <English>Distance from the player where animals appear</English>
+        </Key>
+        <Key ID="STR_AEE_Wildlife_spawnRadius_Name">
+            <Original>Spawn Radius</Original>
+            <English>Spawn Radius</English>
         </Key>
         <Key ID="STR_AEE_Wildlife_spookSensitivity_Description">
             <Original>Multiplier on the flight-initiation distance of a spooked animal</Original>

@@ -35,7 +35,7 @@ params [
     ["_table", [], [[]]]
 ];
 
-if ((count _table) == 0) exitWith { [] };
+if (_table isEqualTo []) exitWith { [] };
 if (_vegScore <= 0) exitWith { [] };
 
 private _family = "temperate";

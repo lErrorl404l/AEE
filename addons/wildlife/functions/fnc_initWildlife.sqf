@@ -23,6 +23,9 @@ if (_interval < 0.5) then { _interval = 0.5; };
 private _manifest = call (compile preprocessFileLineNumbers QPATHTOF(data\sound_manifest.sqf));
 missionNamespace setVariable [QGVAR(manifest), _manifest];
 
+private _speciesTable = call (compile preprocessFileLineNumbers QPATHTOF(data\species_table.sqf));
+missionNamespace setVariable [GVAR(speciesTable), _speciesTable];
+
 GVAR(ambientPFH) = [FUNC(wildlifeTick), _interval] call CBA_fnc_addPerFrameHandler;
 
 // The gunfire report rides the core player engine handler: a raw BIS "Fired"

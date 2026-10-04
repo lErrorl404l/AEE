@@ -176,6 +176,47 @@ class TestDisturbanceSilence(unittest.TestCase):
         self.assertLess(value, 1.0)
 
 
+class TestFaunaSourceContracts(unittest.TestCase):
+    """The fauna engine wiring the harness cannot execute."""
+
+    def test_spawn_uses_create_agent(self):
+        text = (FUNCS / "fnc_spawnFauna.sqf").read_text(encoding="utf-8")
+        self.assertIn("createAgent", text)
+
+    def test_spawn_sets_the_animal_behaviour_disable_flag(self):
+        text = (FUNCS / "fnc_spawnFauna.sqf").read_text(encoding="utf-8")
+        self.assertIn("BIS_fnc_animalBehaviour_disable", text)
+
+    def test_spawn_requires_has_interface_and_a_local_unit(self):
+        text = (FUNCS / "fnc_spawnFauna.sqf").read_text(encoding="utf-8")
+        self.assertIn("hasInterface", text)
+        self.assertIn("CBA_fnc_currentUnit", text)
+
+    def test_spawn_gates_on_the_fauna_switch(self):
+        text = (FUNCS / "fnc_spawnFauna.sqf").read_text(encoding="utf-8")
+        self.assertIn("animalsEnabled", text)
+
+    def test_behaviour_registers_with_the_substrate(self):
+        text = (FUNCS / "fnc_applyAnimalBehaviour.sqf").read_text(encoding="utf-8")
+        self.assertIn("agentRegister", text)
+        self.assertIn("moveTo", text)
+        self.assertIn("setDestination", text)
+
+    def test_cull_deletes_beyond_the_despawn_radius(self):
+        text = (FUNCS / "fnc_cullFauna.sqf").read_text(encoding="utf-8")
+        self.assertIn("deleteVehicle", text)
+        self.assertIn("despawnRadius", text)
+
+    def test_fauna_honours_the_force_species_hook(self):
+        text = (FUNCS / "fnc_spawnFauna.sqf").read_text(encoding="utf-8")
+        self.assertIn("aee_wildlife_forceSpecies", text)
+
+    def test_wildlife_tick_wires_the_fauna_driver(self):
+        text = (FUNCS / "fnc_wildlifeTick.sqf").read_text(encoding="utf-8")
+        self.assertIn("spawnFauna", text)
+        self.assertIn("cullFauna", text)
+
+
 class TestWildlifeSourceContracts(unittest.TestCase):
     """The engine wiring the harness cannot execute."""
 
