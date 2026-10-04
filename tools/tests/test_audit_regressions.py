@@ -523,7 +523,10 @@ class TestPPEffectLifecycle(unittest.TestCase):
     """
 
     _MANAGE = REPO / "addons/optics/functions/vision/fnc_managePostProcess.sqf"
-    _OPTICS_POST = REPO / "addons/optics/XEH_postInit.sqf"
+    # The nightvision DoF teardown call was extracted from optics/XEH_postInit.sqf
+    # into fnc_runThermalPass.sqf so the DTV host can reuse the pass; the
+    # teardown still goes through the owner, so this file carries the call.
+    _OPTICS_POST = REPO / "addons/optics/functions/vision/fnc_runThermalPass.sqf"
     _NIGHT_GRAIN = REPO / "addons/nightvision/functions/fnc_applyNightGrain.sqf"
     _TEARDOWN = REPO / "addons/nightvision/functions/fnc_teardownNvgDoF.sqf"
     _ALLOWLIST = REPO / "tools/validation/cba_settings_allowlist.txt"
