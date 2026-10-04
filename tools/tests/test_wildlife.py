@@ -24,6 +24,7 @@ MANIFEST = DATA / "sound_manifest.sqf"
 SPECIES_TABLE = DATA / "species_table.sqf"
 
 SPECIES_FOR_BIOME = FUNCS / "fnc_speciesForBiome.sqf"
+SPAWN_BUDGET = FUNCS / "fnc_spawnBudget.sqf"
 SOUND_BED = FUNCS / "fnc_soundBedForContext.sqf"
 SPOOK_RANGE = FUNCS / "fnc_spookRange.sqf"
 DISTURBANCE_SILENCE = FUNCS / "fnc_disturbanceSilence.sqf"
@@ -358,6 +359,41 @@ class TestSpeciesForBiome(unittest.TestCase):
         }
         self.assertIn("Hen_random_F", day)
         self.assertNotIn("Hen_random_F", night)
+
+
+class TestSpawnBudget(unittest.TestCase):
+    """fnc_spawnBudget runs from the real SQF."""
+
+    @staticmethod
+    def budget(distance, live_count, spawn_radius=350, despawn_radius=600, cap=16):
+        return run_sqf(
+            SPAWN_BUDGET,
+            [distance, spawn_radius, despawn_radius, live_count, cap],
+        )
+
+    def test_spawns_inside_the_radius_with_room(self):
+        allowed, should_spawn, should_despawn = self.budget(100, 0)
+        self.assertTrue(should_spawn)
+        self.assertFalse(should_despawn)
+        self.assertEqual(allowed, 16)
+
+    def test_no_spawn_beyond_the_spawn_radius(self):
+        _allowed, should_spawn, _should_despawn = self.budget(400, 0)
+        self.assertFalse(should_spawn)
+
+    def test_no_spawn_at_the_cap(self):
+        allowed, should_spawn, _should_despawn = self.budget(100, 16)
+        self.assertFalse(should_spawn)
+        self.assertEqual(allowed, 0)
+
+    def test_despawns_beyond_the_despawn_radius(self):
+        _allowed, should_spawn, should_despawn = self.budget(700, 4)
+        self.assertTrue(should_despawn)
+        self.assertFalse(should_spawn)
+
+    def test_allowance_never_goes_negative(self):
+        allowed, _should_spawn, _should_despawn = self.budget(100, 40)
+        self.assertEqual(allowed, 0)
 
 
 if __name__ == "__main__":

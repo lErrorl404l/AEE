@@ -1,4 +1,5 @@
 PREP(speciesForBiome);
+PREP(spawnBudget);
 PREP(soundBedForContext);
 PREP(spookRange);
 PREP(disturbanceSilence);
