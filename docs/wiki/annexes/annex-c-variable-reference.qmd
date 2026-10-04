@@ -474,16 +474,18 @@ if it brightens and darkens as the hot source fills the view, the engine is
 auto-exposing.  `aee_thermal_agcPinned = false` restores the automatic
 window.
 
-260 settings register in the CBA settings interface. Three categories carry
+277 settings register in the CBA settings interface. Three categories carry
 the diagnostics and the experimental work: **AEE Experimental > Fusion**
 (the four thermal-fusion knobs), **AEE HUD > Displays** (the four on-screen
 displays, including the NVG laser target marker), and **AEE Debug >
-component** (every diagnostic switch, grouped by the owning component). The
+component** (every diagnostic switch, grouped by the owning component,
+including the new AI and Wildlife subcategories). The
 remaining categories are one per module: AEE (core), AEE Optics, AEE
 Physiology, AEE Environmental, AEE Atmos, AEE Maritime, AEE Radio, AEE
 Mobility, AEE FX, AEE Thermal, AEE Armour, AEE Ballistics, AEE Night
-Vision, AEE ACE3, AEE ACM, AEE KAT, AEE ACRE2, AEE TFAR, and AEE Real
-Weather. The compat categories appear only when their host mod is loaded.
+Vision, AEE Wildlife, AEE ACE3, AEE ACM, AEE KAT, AEE ACRE2, AEE TFAR, and
+AEE Real Weather. The compat categories appear only when their host mod is
+loaded.
 All settings use `CBA_fnc_addSetting`; titles and descriptions come from
 the per-addon stringtables. See the Configuration chapter for the full
 table.
@@ -536,3 +538,44 @@ owning function headers.
 | `aee_thermal_agcHuntForce` | NUMBER | Override the AGC hunt amplitude |
 | `aee_thermal_nucForce` | NUMBER | Override the NUC drift amplitude |
 | `aee_thermal_temporalNoiseForce` | NUMBER | Override the temporal-noise scale |
+
+## AI substrate state
+
+The reusable sense, decide, act, recover substrate publishes its registry and
+its local disturbance field. The field is per-machine and decays
+deterministically.
+
+| Variable | Subsystem | Purpose |
+|---|---|---|
+| `aee_ai_agents` | ai | The agent registry, one entry per registered agent |
+| `aee_ai_disturbance` | ai | The local disturbance field, an array of `[[cx,cy], magnitude, time]` |
+| `aee_ai_lastReport` | ai | The last stimulus broadcast time, for the rate limit |
+| `aee_ai_aiPFH` | ai | The substrate client tick handle |
+
+## Wildlife ambience state
+
+The client-local ambient-sound ecology publishes its live state for the
+operator and the debug console.
+
+| Variable | Subsystem | Purpose |
+|---|---|---|
+| `aee_wildlife_soundInstances` | wildlife | The live one-shot expiry times, bounded by the instance cap |
+| `aee_wildlife_ambientSource` | wildlife | The current looping CfgSFX bed source |
+| `aee_wildlife_manifest` | wildlife | The loaded vanilla sound manifest |
+| `aee_wildlife_ambientPFH` | wildlife | The wildlife client tick handle |
+| `aee_wildlife_firedManEH` | wildlife | The FiredMan handler id |
+
+## Wildlife and AI debug hooks
+
+These variables are read from missionNamespace and are not CBA settings. Set
+them in the debug console to force an effect. They are documented in the
+owning function headers.
+
+| Hook | Type | Purpose |
+|---|---|---|
+| `aee_ai_forceDecide` | NUMBER | Override the decide output, `-1` is off, `0` to `4` is the action |
+| `aee_ai_need` | NUMBER | Need pressure 0..1 on an anchor object |
+| `aee_wildlife_forceBiome` | STRING | Override the listener biome |
+| `aee_wildlife_forceNight` | BOOL | Override the day and night choice |
+| `aee_wildlife_forceSpook` | ARRAY | Raise a spook wave at this position |
+| `aee_wildlife_forceSilence` | NUMBER | Override the silence gain multiplier |
