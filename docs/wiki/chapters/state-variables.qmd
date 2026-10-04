@@ -100,7 +100,7 @@ read them. The variables below are grouped by subsystem.
 | `aee_core_currentWaterLevel` | The current water level |
 | `aee_core_currentTideOffset_m` | The current tide offset in metres |
 | `aee_core_currentTideDescription` | The current tide description |
-| `aee_core_waveHeight_m` | The wave height in metres |
+| `aee_maritime_waveHeight_m` | The wave height in metres |
 | `aee_core_hydrologyEnabled` | Whether hydrology simulation is enabled |
 
 ## Sea state

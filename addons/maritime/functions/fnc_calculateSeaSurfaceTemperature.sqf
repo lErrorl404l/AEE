@@ -27,7 +27,7 @@ duct condition).
 
 Input:  none
 Output: sea-surface temperature in degC
-Sets:   QEGVAR(core,seaSurfaceTemperature)
+Sets:   QGVAR(seaSurfaceTemperature)
 */
 
 private _T = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
@@ -70,6 +70,6 @@ private _w = missionNamespace getVariable [QGVAR(seaCouplingWeight), 0.5];
 if !(_w isEqualType 0) then { _w = 0.5; };
 private _sst = (_w * _T) + ((1 - _w) * _clim);
 
-missionNamespace setVariable [QEGVAR(core,seaSurfaceTemperature), _sst];
+missionNamespace setVariable [QGVAR(seaSurfaceTemperature), _sst];
 
 _sst

@@ -113,7 +113,7 @@ private _fspl = (20 * log _effectiveDistM) + (20 * log _freqHz) - 147.55;
 // f_min = c / lambda_max.  Below f_min the duct is too small for the
 // wavelength: no trapping.  (Verified: H=13, dN=10 -> 3.27 GHz.)
 private _ductBonus = 0;
-private _sst = missionNamespace getVariable [QEGVAR(core,seaSurfaceTemperature), nil];
+private _sst = missionNamespace getVariable [QEGVAR(maritime,seaSurfaceTemperature), nil];
 if (!isNil "_sst" && _sst isEqualType 0) then {
     private _delta = 1.5 + ((_T - _sst) * 2.5);
     _delta = _delta max 3 min 25;

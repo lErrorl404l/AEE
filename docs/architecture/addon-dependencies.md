@@ -10,7 +10,7 @@ edge can take.
 
 | addon | depends on |
 |---|---|
-| `actions` | `core`, `environmental`, `nightvision` |
+| `actions` | `core`, `environmental`, `maritime`, `nightvision` |
 | `armour` | `core`, `physiology` |
 | `atmos` | `core`, `environmental` |
 | `ballistics` | `atmos`, `core` |
@@ -22,7 +22,7 @@ edge can take.
 | `compat_tfar` | none |
 | `core` | `atmos`, `ballistics`, `environmental`, `fx`, `maritime`, `mobility`, `nightvision`, `optics`, `physiology`, `radio`, `thermal` |
 | `environmental` | `compat_acm`, `core`, `material`, `physiology` |
-| `fx` | `atmos`, `ballistics`, `core`, `mobility`, `optics` |
+| `fx` | `atmos`, `ballistics`, `core`, `maritime`, `mobility`, `optics` |
 | `main` | none |
 | `maritime` | `core` |
 | `material` | none |
@@ -30,13 +30,13 @@ edge can take.
 | `nightvision` | `core`, `thermal` |
 | `optics` | `core`, `environmental`, `nightvision`, `thermal` |
 | `physiology` | `core`, `thermal` |
-| `radio` | `atmos`, `core`, `environmental`, `thermal` |
+| `radio` | `atmos`, `core`, `environmental`, `maritime`, `thermal` |
 | `thermal` | `core`, `environmental`, `material`, `nightvision`, `optics`, `physiology` |
 
 ## Reading it
 
 - Leaves (depend on nothing, safe for anything to depend on): `main`, `material`.
-- Hubs (depend on most others): `core` (11), `thermal` (6).
+- Hubs (depend on most others): `core` (11), `fx` (6), `thermal` (6).
 - Compat addons (`compat_*`) load only when their host mod is present. An
   optional read of a compat variable is not an edge in the core set.
 

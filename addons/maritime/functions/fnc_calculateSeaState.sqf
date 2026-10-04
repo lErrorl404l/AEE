@@ -57,7 +57,7 @@ private _desc = _descriptions select _beaufortInt;
 // ─── Store ─────────────────────────────────────────────────────────────────
 missionNamespace setVariable [QEGVAR(core,seaStateCurrent),     _smooth];
 missionNamespace setVariable [QEGVAR(core,seaStateBeaufort),    _beaufortInt];
-missionNamespace setVariable [QEGVAR(core,waveHeight_m),        _waveH];
+missionNamespace setVariable [QGVAR(waveHeight_m),        _waveH];
 missionNamespace setVariable [QEGVAR(core,seaStateDescription), _desc];
 
 _beaufortInt

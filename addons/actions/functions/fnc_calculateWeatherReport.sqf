@@ -56,7 +56,7 @@ private _icing      = missionNamespace getVariable [QEGVAR(core,currentIcingSeve
 
 // Sea state and tide
 private _beaufort   = missionNamespace getVariable [QEGVAR(core,seaStateBeaufort),       -1];
-private _waveH      = missionNamespace getVariable [QEGVAR(core,waveHeight_m),           0];
+private _waveH      = missionNamespace getVariable [QEGVAR(maritime,waveHeight_m),           0];
 private _tideDesc   = missionNamespace getVariable [QEGVAR(core,currentTideDescription), ""];
 private _tideOff    = missionNamespace getVariable [QEGVAR(core,currentTideOffset_m),    0];
 
