@@ -374,5 +374,70 @@ class TestPerceptionDebugHooks(unittest.TestCase):
             self.assertIn(value, code, f"the debug line omits {value}")
 
 
+class TestPerceptionWiring(unittest.TestCase):
+    """The slice-1 functions are prepped, started, registered and grouped."""
+
+    def test_every_perception_function_is_prepped(self):
+        text = OPTICS_PREP.read_text(encoding="utf-8")
+        for name in PERCEPTION_FUNCTIONS:
+            self.assertIn(f"PREPS(perception,{name});", text, f"{name} is not prepped")
+
+    def test_init_starts_the_one_second_pfh(self):
+        text = INIT.read_text(encoding="utf-8")
+        self.assertIn(
+            "[FUNC(applyBaseGrade), 1.0] call CBA_fnc_addPerFrameHandler",
+            text,
+            "the 1.0 s base-grade PFH is missing",
+        )
+
+    def test_vision_mode_event_applies_the_grade(self):
+        text = OPTICS_POSTINIT.read_text(encoding="utf-8")
+        self.assertIn("FUNC(applyBaseGrade)", text)
+
+    def test_settings_are_registered(self):
+        optics = OPTICS_SETTINGS.read_text(encoding="utf-8")
+        for name in (
+            "visionModelEnabled",
+            "visionToneEnabled",
+            "visionToneStrength",
+            "visionContrastScale",
+            "visionWhiteBalance",
+        ):
+            self.assertIn(name, optics, f"setting {name} is not registered")
+        self.assertIn('"AEE Optics","Vision"', optics)
+
+    def test_stringtable_keys_exist(self):
+        strings = OPTICS_STRINGS.read_text(encoding="utf-8")
+        for name in (
+            "visionModelEnabled",
+            "visionToneEnabled",
+            "visionToneStrength",
+            "visionContrastScale",
+            "visionWhiteBalance",
+        ):
+            self.assertIn(f"STR_AEE_Optics_{name}_Name", strings)
+            self.assertIn(f"STR_AEE_Optics_{name}_Description", strings)
+
+    def test_taxonomy_group_exists(self):
+        sys.path.insert(0, str(ROOT))
+        from tools.validation import gen_config_docs as gen
+
+        names = {
+            setting.name
+            for setting in gen.collect_settings()
+            if setting.category == "AEE Optics" and setting.subcategory == "Vision"
+        }
+        self.assertEqual(
+            names,
+            {
+                "aee_optics_visionModelEnabled",
+                "aee_optics_visionToneEnabled",
+                "aee_optics_visionToneStrength",
+                "aee_optics_visionContrastScale",
+                "aee_optics_visionWhiteBalance",
+            },
+        )
+
+
 if __name__ == "__main__":
     unittest.main()
