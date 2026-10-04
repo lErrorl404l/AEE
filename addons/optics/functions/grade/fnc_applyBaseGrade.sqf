@@ -24,8 +24,11 @@ ColorCorrections:
 Gate: normal vision only.  NVG (1) and thermal (2) produce their own image and
 own their own handles, so this stands down there.  Stand-down also covers
 death, respawn, a camera change and the module disable, and it neutralises the
-ColorCorrections to [1,1,0,[0,0,0,0],[1,1,1,1],[0,0,0,0]] before disabling,
-so no graded frame is left live.
+ColorCorrections to the contract identity before disabling, so no graded frame
+is left live.  The identity is colorize alpha 0 (BIKI Post Process Effects,
+capture 20240220225631): alpha 1 is black and white, which is what drained
+normal vision to grey.
+  [1, 1, 0, [0,0,0,0], [1,1,1,0], [0.2126,0.7152,0.0722,0], [-1,-1,0,0,0,0,0]]
 
 Handles are read before every guard.  A missing handle is destroyed and
 recreated with the night-vision pattern
@@ -60,7 +63,8 @@ private _hAcuity = missionNamespace getVariable [QGVAR(ppHandle_BaseAcuity), -1]
 private _standDown = {
     params ["_hCC", "_hAcuity"];
     if (_hCC >= 0) then {
-        _hCC ppEffectAdjust [1, 1, 0, [0,0,0,0], [1,1,1,1], [0,0,0,0]];
+        // Identity: colorize alpha 0 keeps the original colour; alpha 1 is B&W.
+        _hCC ppEffectAdjust [1, 1, 0, [0,0,0,0], [1,1,1,0], [0.2126,0.7152,0.0722,0], [-1,-1,0,0,0,0,0]];
         _hCC ppEffectCommit 0;
         _hCC ppEffectEnable false;
     };

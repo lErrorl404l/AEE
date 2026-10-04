@@ -21,7 +21,8 @@ if (!isNil QGVAR(baseGradePFH)) then {
 private _hCC = missionNamespace getVariable [QGVAR(ppHandle_BaseGrade), -1];
 private _hAcuity = missionNamespace getVariable [QGVAR(ppHandle_BaseAcuity), -1];
 if (_hCC >= 0) then {
-    _hCC ppEffectAdjust [1, 1, 0, [0,0,0,0], [1,1,1,1], [0,0,0,0]];
+    // Identity: colorize alpha 0 keeps the original colour; alpha 1 is B&W.
+    _hCC ppEffectAdjust [1, 1, 0, [0,0,0,0], [1,1,1,0], [0.2126,0.7152,0.0722,0], [-1,-1,0,0,0,0,0]];
     _hCC ppEffectCommit 0;
     _hCC ppEffectEnable false;
 };
