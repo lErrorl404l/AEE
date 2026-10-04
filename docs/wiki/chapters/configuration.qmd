@@ -616,6 +616,9 @@ registered.
 |---|---|---|---|---|---|
 | `aee_wildlife_animalsEnabled` | CHECKBOX | `false` | yes | wildlife | Spawn client-local animals around the player. Off by default |
 | `aee_wildlife_density` | SLIDER | `1.0` | yes | wildlife | Multiplier on the animal density for the biome and terrain |
+| `aee_wildlife_despawnRadius` | SLIDER | `600` | yes | wildlife | Distance at which an animal is removed from the client |
+| `aee_wildlife_maxAnimals` | SLIDER | `16` | yes | wildlife | Maximum live animals on this client |
+| `aee_wildlife_spawnRadius` | SLIDER | `350` | yes | wildlife | Distance from the player where animals appear |
 
 ## AEE Wildlife → General
 

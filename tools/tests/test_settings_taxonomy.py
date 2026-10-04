@@ -116,6 +116,9 @@ EXPECTED_WILDLIFE_GENERAL = {
 EXPECTED_WILDLIFE_FAUNA = {
     "aee_wildlife_animalsEnabled",
     "aee_wildlife_density",
+    "aee_wildlife_maxAnimals",
+    "aee_wildlife_spawnRadius",
+    "aee_wildlife_despawnRadius",
 }
 
 EXPECTED_WILDLIFE = {

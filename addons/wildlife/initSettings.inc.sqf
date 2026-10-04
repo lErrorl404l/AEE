@@ -17,6 +17,12 @@ AEE_SETTING_CHECKBOX(animalsEnabled,"AEE Wildlife","Fauna",false);
 
 AEE_SETTING_SLIDER(density,"AEE Wildlife","Fauna",0,2,1.0,0.05);
 
+AEE_SETTING_SLIDER(maxAnimals,"AEE Wildlife","Fauna",0,32,16,1);
+
+AEE_SETTING_SLIDER(spawnRadius,"AEE Wildlife","Fauna",100,800,350,10);
+
+AEE_SETTING_SLIDER(despawnRadius,"AEE Wildlife","Fauna",200,1200,600,10);
+
 AEE_SETTING_SLIDER(spookSensitivity,"AEE Wildlife","Behaviour",0,2,1.0,0.05);
 
 AEE_SETTING_SLIDER(silenceDecay,"AEE Wildlife","Behaviour",0.01,0.2,0.05,0.005);

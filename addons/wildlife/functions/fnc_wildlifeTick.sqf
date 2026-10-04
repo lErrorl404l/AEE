@@ -154,6 +154,34 @@ if (_ambient) then {
     };
 };
 
+// Fauna: spawn up to the remaining allowance, then cull what is out of range
+// or over the cap.  The spawn budget kernel owns the decision.
+if (_animals) then {
+    private _fauna = missionNamespace getVariable [GVAR(fauna), []];
+    if !(_fauna isEqualType []) then { _fauna = []; };
+
+    private _liveCount = 0;
+    for "_i" from 0 to ((count _fauna) - 1) do {
+        private _agent = (_fauna select _i) select 1;
+        if (!isNull _agent) then { _liveCount = _liveCount + 1; };
+    };
+
+    private _cap = missionNamespace getVariable [QGVAR(maxAnimals), 16];
+    if !(_cap isEqualType 0) then { _cap = 16; };
+    private _spawnRadius = missionNamespace getVariable [QGVAR(spawnRadius), 350];
+    if !(_spawnRadius isEqualType 0) then { _spawnRadius = 350; };
+    private _despawnRadius = missionNamespace getVariable [QGVAR(despawnRadius), 600];
+    if !(_despawnRadius isEqualType 0) then { _despawnRadius = 600; };
+
+    private _budget = [0, _spawnRadius, _despawnRadius, _liveCount, _cap] call FUNC(spawnBudget);
+    if (((_budget select 1)) && ((_budget select 0) > 0)) then {
+        private _created = [_position, _budget select 0] call FUNC(spawnFauna);
+        missionNamespace setVariable [GVAR(fauna), _fauna + _created];
+    };
+
+    [_position] call FUNC(cullFauna);
+};
+
 private _logMsg = format ["bed %1 gain %2 disturbance %3 spook %4 animals %5 density %6", _bedKey, _gain, _disturbance, _spook, _animals, _density];
 AEE_LOG_DEBUG(_logMsg);
 
