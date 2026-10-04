@@ -38,6 +38,7 @@ TEARDOWN = GRADE / "fnc_teardownBaseGrade.sqf"
 INIT = GRADE / "fnc_initBaseGrade.sqf"
 TONE_KERNEL = PERCEPTION / "fnc_perceptionToneResponse.sqf"
 COMPOSE_KERNEL = PERCEPTION / "fnc_perceptionParams.sqf"
+ILLUMINANT_KERNEL = PERCEPTION / "fnc_perceptionIlluminant.sqf"
 
 OPTICS_PREP = OPTICS / "XEH_PREP.hpp"
 OPTICS_POSTINIT = OPTICS / "XEH_postInit.sqf"
@@ -235,6 +236,44 @@ class TestPerceptionToneResponse(unittest.TestCase):
         self.assertLessEqual(offset, 0.05)
         self.assertGreaterEqual(brightness, 0.7)
         self.assertLessEqual(brightness, 1.3)
+
+
+class TestPerceptionIlluminant(unittest.TestCase):
+    """fnc_perceptionIlluminant normalises the ambient colour to unit luma.
+
+    Source register: Rec.709 luma weights (ITU-R BT.709-6).  The luma floor and
+    the 0.5 to 2 channel clamp are UNSOURCED.
+    """
+
+    def test_black_input_asks_for_no_adaptation(self):
+        self.assertEqual(run_sqf(ILLUMINANT_KERNEL, [[0, 0, 0]]), [1, 1, 1])
+
+    def test_grey_input_is_neutral(self):
+        self.assertEqual(run_sqf(ILLUMINANT_KERNEL, [[0.5, 0.5, 0.5]]), [1, 1, 1])
+
+    def test_warm_input_lifts_green_to_one_and_lowers_blue(self):
+        r, g, b = run_sqf(ILLUMINANT_KERNEL, [[1.0, 0.9, 0.6]])
+        self.assertAlmostEqual(g, 1.0, places=2)
+        self.assertLess(b, 1.0)
+        self.assertGreater(r, 1.0)
+
+    def test_blue_input_lowers_red_and_lifts_blue(self):
+        r, g, b = run_sqf(ILLUMINANT_KERNEL, [[0.6, 0.9, 1.0]])
+        self.assertLess(r, 1.0)
+        self.assertGreater(b, 1.0)
+
+    def test_every_channel_stays_in_range(self):
+        for color in ([1e6, 1e-6, 1e-6], [0.001, 5, 0.001], [2.0, 1.0, 0.5]):
+            for channel in run_sqf(ILLUMINANT_KERNEL, [color]):
+                self.assertGreaterEqual(channel, 0.5)
+                self.assertLessEqual(channel, 2)
+
+    def test_malformed_and_near_black_inputs_fall_back(self):
+        self.assertEqual(run_sqf(ILLUMINANT_KERNEL, ["not a colour"]), [1, 1, 1])
+        self.assertEqual(run_sqf(ILLUMINANT_KERNEL, [[1, 2]]), [1, 1, 1])
+        self.assertEqual(
+            run_sqf(ILLUMINANT_KERNEL, [[0.00001, 0.00001, 0.00001]]), [1, 1, 1]
+        )
 
 
 def compose(args):
