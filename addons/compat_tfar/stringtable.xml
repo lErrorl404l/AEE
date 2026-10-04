@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="AEE">
     <Package name="TFAR">
+        <Key ID="STR_AEE_COMPAT_TFAR_logDebug_Description">
+            <Original>Log TFAR compatibility diagnostics to the RPT. Turn this on before reporting a fault.</Original>
+            <English>Log TFAR compatibility diagnostics to the RPT. Turn this on before reporting a fault.</English>
+        </Key>
+        <Key ID="STR_AEE_COMPAT_TFAR_logDebug_Name">
+            <Original>TFAR Debug Log</Original>
+            <English>TFAR Debug Log</English>
+        </Key>
         <Key ID="STR_AEE_COMPAT_TFAR_signalMultMax_Description">
             <Original>Upper limit of the signal multiplier</Original>
             <English>Upper limit of the signal multiplier</English>

@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project name="AEE">
     <Package name="ACE3">
+        <Key ID="STR_AEE_COMPAT_ACE3_logDebug_Description">
+            <Original>Log ACE3 compatibility diagnostics to the RPT. Turn this on before reporting a fault.</Original>
+            <English>Log ACE3 compatibility diagnostics to the RPT. Turn this on before reporting a fault.</English>
+        </Key>
+        <Key ID="STR_AEE_COMPAT_ACE3_logDebug_Name">
+            <Original>ACE3 Debug Log</Original>
+            <English>ACE3 Debug Log</English>
+        </Key>
         <Key ID="STR_AEE_COMPAT_ACE3_medicalBurnDamageScale_Description">
             <Original>Damage per degree above the burn threshold</Original>
             <English>Damage per degree above the burn threshold</English>

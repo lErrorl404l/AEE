@@ -16,3 +16,10 @@ AEE_SETTING_SLIDER(signalMultScale,"AEE","Compat - TFAR",0,2,0.6,2);
 AEE_SETTING_SLIDER(signalMultMin,"AEE","Compat - TFAR",0.1,1,0.3,2);
 
 AEE_SETTING_SLIDER(signalMultMax,"AEE","Compat - TFAR",1,3,1.5,2);
+
+// ── Diagnostics ───────────────────────────────────────────────────────────
+// The per-module trace switch.  The AEE_LOG_DEBUG macro reads the name
+// built from the component: aee_<component>_logDebug.  Declaring it here,
+// in its own addon, is what makes that name correct.  QGVAR(logDebug)
+// resolves to aee_compat_tfar_logDebug.
+AEE_SETTING_CHECKBOX(logDebug,"AEE","Compat - TFAR Diagnostics",false);

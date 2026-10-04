@@ -20,3 +20,10 @@ AEE_SETTING_SLIDER(medicalHeatStrokeWBGT,"AEE","Compat - ACE3",25,45,32,1);
 AEE_SETTING_SLIDER(medicalBurnTemp,"AEE","Compat - ACE3",20,45,25,1);
 
 AEE_SETTING_SLIDER(medicalBurnDamageScale,"AEE","Compat - ACE3",0,0.01,0.0005,4);
+
+// ── Diagnostics ───────────────────────────────────────────────────────────
+// The per-module trace switch.  The AEE_LOG_DEBUG macro reads the name
+// built from the component: aee_<component>_logDebug.  Declaring it here,
+// in its own addon, is what makes that name correct.  QGVAR(logDebug)
+// resolves to aee_compat_ace3_logDebug.
+AEE_SETTING_CHECKBOX(logDebug,"AEE","Compat - ACE3 Diagnostics",false);

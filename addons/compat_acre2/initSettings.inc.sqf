@@ -14,3 +14,10 @@
 AEE_SETTING_SLIDER(signalDBShift,"AEE","Compat - ACRE2",0,20,8,1);
 
 AEE_SETTING_SLIDER(signalSensitivityMin,"AEE","Compat - ACRE2",-130,-90,-110,0);
+
+// ── Diagnostics ───────────────────────────────────────────────────────────
+// The per-module trace switch.  The AEE_LOG_DEBUG macro reads the name
+// built from the component: aee_<component>_logDebug.  Declaring it here,
+// in its own addon, is what makes that name correct.  QGVAR(logDebug)
+// resolves to aee_compat_acre2_logDebug.
+AEE_SETTING_CHECKBOX(logDebug,"AEE","Compat - ACRE2 Diagnostics",false);

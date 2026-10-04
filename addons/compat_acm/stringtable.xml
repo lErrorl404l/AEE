@@ -25,5 +25,13 @@
             <Original>CBRN Maximum Buildup</Original>
             <English>CBRN Maximum Buildup</English>
         </Key>
+        <Key ID="STR_AEE_COMPAT_ACM_logDebug_Description">
+            <Original>Log ACM compatibility diagnostics to the RPT. Turn this on before reporting a fault.</Original>
+            <English>Log ACM compatibility diagnostics to the RPT. Turn this on before reporting a fault.</English>
+        </Key>
+        <Key ID="STR_AEE_COMPAT_ACM_logDebug_Name">
+            <Original>ACM Debug Log</Original>
+            <English>ACM Debug Log</English>
+        </Key>
     </Package>
 </Project>
