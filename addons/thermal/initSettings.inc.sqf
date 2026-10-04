@@ -164,3 +164,14 @@ AEE_SETTING_CHECKBOX(thermalPixelation,"AEE Thermal","Display",false);
 // maximum is not above the minimum.
 AEE_SETTING_SLIDER(thermalManualMinC,"AEE Thermal","Display",-80,200,-40,1);
 AEE_SETTING_SLIDER(thermalManualMaxC,"AEE Thermal","Display",-40,600,120,5);
+
+// ── Sensor imperfections (image realism) ──────────────────────────────────
+// Real FLIR artefacts the engine does not model: a non-uniformity (NUC)
+// drift of the fixed-pattern noise, temporal sensor noise, an automatic-gain
+// hunt, and a bloom on hot sources.  The existing FPN and NETD term is reused.
+AEE_SETTING_SLIDER(thermalTemporalNoise,"AEE Thermal","Sensor",0,2,1,0.1);
+AEE_SETTING_SLIDER(thermalAgcHunt,"AEE Thermal","Sensor",0,0.1,0.05,0.005);
+AEE_SETTING_SLIDER(thermalAgcHuntPeriod,"AEE Thermal","Sensor",1,20,4,1);
+AEE_SETTING_SLIDER(thermalNucDrift,"AEE Thermal","Sensor",0,0.3,0.15,0.05);
+AEE_SETTING_SLIDER(thermalHotBloom,"AEE Thermal","Sensor",0,0.15,0.08,0.01);
+AEE_SETTING_CHECKBOX(thermalImperfectionsEnabled,"AEE Thermal","Sensor",true);
