@@ -13,7 +13,7 @@ behaves like the real physics:
                         snow fluffs
   rubbing (wind)     <- wind strength
   keepOnSurface      <- water surface: spray rides the wave (issue #150)
-  surfaceOffset      <- maritime wave height (aee_core_waveHeight_m), the
+  surfaceOffset      <- maritime wave height (aee_maritime_waveHeight_m), the
                         height the spray sits at above the flat sea plane
 
 The engine exposes keepOnSurface/surfaceOffset as particle properties; the
@@ -74,7 +74,7 @@ _rubbing = (_rubbing * (1 + ((_wind min 15) / 15) * 0.6)) min 0.9;
 private _keepOnSurface = (_material == "spray");
 private _surfaceOffset = 0;
 if (_keepOnSurface) then {
-    private _waveH = missionNamespace getVariable [QEGVAR(core,waveHeight_m), 0];
+    private _waveH = missionNamespace getVariable [QEGVAR(maritime,waveHeight_m), 0];
     if !(_waveH isEqualType 0) then { _waveH = 0; };
     _surfaceOffset = _waveH max 0;
 };

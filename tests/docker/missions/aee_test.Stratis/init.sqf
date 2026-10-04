@@ -310,7 +310,7 @@ if (_p10Fail == 0) then {
         ["aee_core_currentDustDevil",         0, 1,    "environmental/storm"],
         ["aee_core_currentBlowingSnow",       0, 1,    "environmental/snow"],
         ["aee_core_seaStateBeaufort",         0, 12,   "maritime/sea"],
-        ["aee_core_waveHeight_m",             0, 20,   "maritime/sea"],
+        ["aee_maritime_waveHeight_m",             0, 20,   "maritime/sea"],
         ["aee_core_currentTideOffset_m",      -10, 10, "maritime/tide"],
         ["aee_core_currentUVIndex",           0, 15,   "physiology/uv"],
         ["aee_physiology_acclimatizationPercent", 0, 100, "physiology/acclim", "gated: needs elapsed exposure above sea level"],
@@ -1368,7 +1368,7 @@ if (_p10Fail == 0) then {
 
         // Case 2: sea state + tide present -> report names them.
         missionNamespace setVariable ["aee_core_seaStateBeaufort", 5];
-        missionNamespace setVariable ["aee_core_waveHeight_m", 2.5];
+        missionNamespace setVariable ["aee_maritime_waveHeight_m", 2.5];
         missionNamespace setVariable ["aee_core_currentTideDescription", "Spring High"];
         missionNamespace setVariable ["aee_core_currentTideOffset_m", 1.2];
         private _r2 = [] call _fnReport;
