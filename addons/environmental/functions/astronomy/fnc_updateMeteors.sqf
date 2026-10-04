@@ -21,12 +21,18 @@
 private _meteors = missionNamespace getVariable [QGVAR(meteors), []];
 
 // ── Gates: setting, night, overcast.  Any gate-off clears the sky. ───────
+// Debug hooks, set on missionNamespace:
+//   aee_environmental_skyForce     Boolean, force the whole night sky on
+//   aee_environmental_meteorForce  String, one-shot shower code, self-resets
+private _skyForce = missionNamespace getVariable ["aee_environmental_skyForce", false];
+if !(_skyForce isEqualType false) then { _skyForce = false; };
 private _sunElev = missionNamespace getVariable [QEGVAR(core,currentSunElevation), 0];
 if !(_sunElev isEqualType 0) then { _sunElev = 0; };
 private _overcast = ([] call EFUNC(core,getSmoothedWeather)) select 1;
+if !(_overcast isEqualType 0) then { _overcast = 0; };
 private _disabled = !(missionNamespace getVariable [QGVAR(dynamicMeteors), true]);
 
-if (_disabled || _sunElev >= 0 || _overcast >= 0.8) exitWith {
+if ((!_skyForce) && (_disabled || _sunElev >= 0 || _overcast >= 0.8)) exitWith {
     {
         _x params ["_carrier", "_light", "_trail"];
         deleteVehicle _carrier;
@@ -38,8 +44,7 @@ if (_disabled || _sunElev >= 0 || _overcast >= 0.8) exitWith {
 
 // ── Debug force: set aee_environmental_meteorForce to a shower code (e.g. "GEM")
 // from the debug console to spawn one meteor from that radiant this tick,
-// ignoring the activity window and the rate roll.  The night, overcast and
-// setting gates above still apply, so run it at night.  The flag resets. ──
+// ignoring the activity window and the rate roll.  The flag resets. ──────
 private _forceCode = missionNamespace getVariable [QGVAR(meteorForce), ""];
 if (_forceCode != "") then { missionNamespace setVariable [QGVAR(meteorForce), ""]; };
 
@@ -69,10 +74,22 @@ private _mLim = missionNamespace getVariable [QGVAR(limitingMagnitude), 6.5];
 private _eyePos = ((call CBA_fnc_currentUnit) call EFUNC(core,getEyeState)) select 0;
 private _showers = [] call FUNC(meteorShowers);
 
+// The whole-sky force spawns one meteor from the active shower this tick,
+// falling back to the Geminids when no shower is active.
+private _skyMeteorCode = "";
+if (_skyForce && (_forceCode == "")) then {
+    {
+        if ([_date select 1, _date select 2, _x] call FUNC(showerIsActive)) exitWith {
+            _skyMeteorCode = _x select 0;
+        };
+    } forEach _showers;
+    if (_skyMeteorCode == "") then { _skyMeteorCode = "GEM"; };
+};
+
 {
     private _state = [_date, _lat, _mLim, _x] call FUNC(meteorState);
     _state params ["_active", "_altDeg", "_azDeg", "_rate"];
-    private _forced = _forceCode == (_x select 0);
+    private _forced = (_forceCode == (_x select 0)) || (_skyForce && (_skyMeteorCode == (_x select 0)));
     if (_forced || (_active && _rate > 0)) then {
         // The rate is meteors per hour; this tick lasts METEOR_TICK seconds.
         // A forced shower fires this tick regardless of the rate roll.

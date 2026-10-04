@@ -70,6 +70,14 @@ private _LST = [_date] call FUNC(siderealTime);
 
 // ─── Get limiting magnitude ───────────────────────────────────────────────
 private _mLim = missionNamespace getVariable [QGVAR(limitingMagnitude), 6.5];
+// Debug force, set on missionNamespace: aee_environmental_starsForce raises
+// the magnitude ceiling used for the visible set, so the immediate-mode faint
+// layer has catalogue rows to draw.  It changes the debug filter only, not the
+// NELM model.
+private _starsForce = missionNamespace getVariable [QGVAR(starsForce), 0];
+if (_starsForce isEqualType 0) then {
+    if (_starsForce > 0) then { _mLim = _starsForce; };
+};
 
 // ─── Compute visible stars ─────────────────────────────────────────────────
 private _visible = [];
