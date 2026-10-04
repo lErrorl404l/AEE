@@ -239,6 +239,16 @@ NVG_SQF = os.path.join(
     "fnc_applyNVGTubeModel.sqf",
 )
 
+# The FilmGrain sharpness and size bands live in the scintillation kernel
+# (issue #215); the parent calls it and applies the tuple.
+NVG_SCINT_SQF = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+    "addons",
+    "nightvision",
+    "functions",
+    "fnc_nvgScintillation.sqf",
+)
+
 # The per-tier sensitivity lives in the DEVICE CLASSIFIER (issue #215):
 # [generation, sensitivity, resolution, weightKg, tubeCount, fovDeg].
 NVG_DEV_SQF = os.path.join(
@@ -282,28 +292,35 @@ def _read_nvg_source():
         return fh.read()
 
 
+def _read_scintillation_source():
+    with open(NVG_SCINT_SQF, encoding="utf-8", errors="replace") as fh:
+        return fh.read()
+
+
 def check_values_in_range():
     """Parse the SQF and assert every tunable value is within its
     documented wiki/ACE3 band.  Catches out-of-range regressions."""
     src = _read_nvg_source()
     failures = []
 
-    # FilmGrain sharpness/grainSize (lines 391-392)
-    m = re.search(
-        r"_sharpness = linearConversion \[1, 0, _noise, ([0-9.]+), ([0-9.]+)", src
-    )
+    # FilmGrain sharpness/grainSize.  Issue #215 moved both into the
+    # scintillation kernel; the parent applies the returned tuple.  The
+    # kernel writes sharpness = base - span*noise and size = base + span*noise,
+    # so the band is [base-span, base] and [base, base+span].
+    scint = _read_scintillation_source()
+    m = re.search(r"_sharpness = ([0-9.]+) - ([0-9.]+) \*", scint)
     if m:
-        for v in (float(m.group(1)), float(m.group(2))):
+        base, span = float(m.group(1)), float(m.group(2))
+        for v in (base - span, base):
             if not (1.0 <= v <= 20.0):
                 failures.append(f"grain sharpness {v} outside 1..20")
     else:
         failures.append("grain sharpness not found")
 
-    m = re.search(
-        r"_grainSize = linearConversion \[1, 0, _noise, ([0-9.]+), ([0-9.]+)", src
-    )
+    m = re.search(r"_size = ([0-9.]+) \+ ([0-9.]+) \*", scint)
     if m:
-        for v in (float(m.group(1)), float(m.group(2))):
+        base, span = float(m.group(1)), float(m.group(2))
+        for v in (base, base + span):
             if not (1.0 <= v <= 8.0):
                 failures.append(f"grainSize {v} outside 1..8")
     else:
