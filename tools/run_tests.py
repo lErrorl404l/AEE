@@ -54,6 +54,7 @@ def main():
         "tools/tests/test_cold_weather.py",
         "tools/tests/test_dynamics.py",
         "tools/tests/test_dynamic_stars.py",
+        "tools/tests/test_eye_adaptation.py",
         "tools/tests/test_star_catalog.py",
         "tools/tests/test_meteors.py",
         "tools/tests/test_trajectories.py",

@@ -19,11 +19,14 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
 STATE = REPO / "addons" / "atmos" / "functions" / "state"
+EYE = REPO / "addons" / "optics" / "functions" / "eye"
 
 RAINBOW_SQF = STATE / "fnc_updateRainbow.sqf"
 WAVES_SQF = REPO / "addons" / "maritime" / "functions" / "fnc_updateEngineWaves.sqf"
 LIGHTNINGS_SQF = STATE / "fnc_updateEngineLightnings.sqf"
-APERTURE_SQF = STATE / "fnc_updateAperture.sqf"
+APERTURE_SQF = EYE / "fnc_eyeAperture.sqf"
+DRIVER_SQF = EYE / "fnc_updateEyeAdaptation.sqf"
+SAMPLE_SQF = EYE / "fnc_eyeSampleScene.sqf"
 LOCAL_WIND_SQF = STATE / "fnc_updateLocalWindParams.sqf"
 SIMUL_SQF = STATE / "fnc_updateSimulWeatherLayers.sqf"
 
@@ -45,6 +48,8 @@ _RAINBOW = _read(RAINBOW_SQF)
 _WAVES = _read(WAVES_SQF)
 _LIGHTNINGS = _read(LIGHTNINGS_SQF)
 _APERTURE = _read(APERTURE_SQF)
+_DRIVER = _read(DRIVER_SQF)
+_SAMPLE = _read(SAMPLE_SQF)
 _LOCAL_WIND = _read(LOCAL_WIND_SQF)
 _SIMUL = _read(SIMUL_SQF)
 
@@ -54,8 +59,6 @@ MIN_LUX = _const(_APERTURE, "minLux")
 MAX_LUX = _const(_APERTURE, "maxLux")
 NIGHT_STANDARD = _const(_APERTURE, "nightStandard")
 DAY_STANDARD = _const(_APERTURE, "dayStandard")
-MIN_FACTOR = _const(_APERTURE, "minFactor")
-MAX_FACTOR = _const(_APERTURE, "maxFactor")
 GRAVITY = _const(_LOCAL_WIND, "g")
 DISABLE_PARAM = _const(_LOCAL_WIND, "disableParam")
 
@@ -92,11 +95,15 @@ def lightning_value(risk):
 
 
 def aperture_params(lux):
-    """Mirror of fnc_updateAperture: returns (min, standard, max)."""
+    """Mirror of fnc_eyeAperture: returns (min, standard, max).
+
+    AEE pins the aperture with min = standard = maximum, so all three
+    elements are the same value and the engine cannot adapt inside a range.
+    """
     lux = max(MIN_LUX, min(MAX_LUX, lux))
     ev = math.log10(lux)
     standard = linear_conversion(-3, 5, ev, NIGHT_STANDARD, DAY_STANDARD, True)
-    return standard * MIN_FACTOR, standard, standard * MAX_FACTOR
+    return standard, standard, standard
 
 
 def local_wind_params(mass_kg, rho=1.225):
@@ -199,7 +206,7 @@ class TestAperture(unittest.TestCase):
         brightened.  This asserts the stand-down gate is present and keys on
         the LIVE engine vision mode.
         """
-        text = APERTURE_SQF.read_text(encoding="utf-8")
+        text = _DRIVER
         # Strip the doc comment: it explains the arbitration and names the
         # rejected flags, so a whole-file search would match the prose.
         code = text[text.index("*/") + 2 :] if "*/" in text else text
@@ -227,55 +234,41 @@ class TestAperture(unittest.TestCase):
         captures, and every example uses four.  The reset form is a single
         element, setApertureNew [-1].  A three-element call is invalid.
         """
-        text = APERTURE_SQF.read_text(encoding="utf-8")
+        text = _DRIVER
         match = re.search(r"setApertureNew\s*\[([^\]]+)\]", text)
         self.assertIsNotNone(match, "no setApertureNew call found")
         elements = [part for part in match.group(1).split(",") if part.strip()]
         self.assertEqual(len(elements), 4, f"expected 4 elements, got {len(elements)}")
 
-    def test_stands_down_in_daylight(self):
-        """AEE must not drive the camera from a night-only lux model.
+    def test_covers_daylight(self):
+        """AEE owns the camera in daylight too; it does not stand down at night.
 
-        fnc_calculateIlluminance computes the twilight term only while the
-        sun is at or below the horizon, so in daylight the model reports the
-        starlight floor.  The mapping above then resolves to the night
-        anchors and setApertureNew pins the camera to a night exposure under
-        a full sun.  Outside the domain the model covers the engine exposure
-        is correct, so stand down and hand the camera back.
+        The old bridge handed the camera back when the engine said it was not
+        night, because the illuminance model was night-only.  This model
+        covers day and night, so the driver must not read lightIsNight to
+        restore the camera, and the map must still produce the day anchor
+        under full sun.
         """
-        text = APERTURE_SQF.read_text(encoding="utf-8")
-        code = text[text.index("*/") + 2 :] if "*/" in text else text
+        code = _DRIVER[_DRIVER.index("*/") + 2 :] if "*/" in _DRIVER else _DRIVER
 
-        self.assertIn("lightIsNight", code, "daylight stand-down gate is missing")
-
-        gate = re.search(r"if\s*\(.*?lightIsNight.*?\)\s*then", code)
-        self.assertIsNotNone(gate, "no daylight gate statement found")
-
-        call = re.search(r"^\s*setApertureNew\s*\[", code, re.M)
-        self.assertIsNotNone(call, "no setApertureNew call found")
-        self.assertLess(
-            gate.start(), call.start(), "the gate is after the write it guards"
+        self.assertNotIn(
+            "lightIsNight", code, "the driver still stands down in daylight"
         )
+        self.assertIn("FUNC(eyeAperture)", _DRIVER)
 
-        # The hand-back must clear the camera, not pin a value of our own.
-        self.assertIn("setAperture -1", code)
+        _, std, _ = aperture_params(MAX_LUX)
+        self.assertAlmostEqual(std, DAY_STANDARD, places=6)
 
-    def test_daylight_gate_defaults_to_stand_down(self):
-        """A missing illuminance producer must not pin the night anchors.
+    def test_missing_producer_stands_down(self):
+        """A missing aee_core_ambientLux must not pin an extreme value.
 
-        lightIsNight defaults to false, so a missing producer selects the
-        stand-down branch.  Defaulting to true would publish the night
-        anchors with no model behind them, which is the fault this gate
-        exists to prevent.
+        The sampler reads the core ambient with a zero default, and the
+        driver documents a stand-down path that returns the camera to the
+        engine.  Neither path pins the night anchors with no model behind
+        them.
         """
-        text = APERTURE_SQF.read_text(encoding="utf-8")
-        code = text[text.index("*/") + 2 :] if "*/" in text else text
-
-        match = re.search(
-            r"QEGVAR\(\s*core\s*,\s*lightIsNight\s*\)\s*,\s*(\w+)\s*\]", code
-        )
-        self.assertIsNotNone(match, "lightIsNight read not found")
-        self.assertEqual(match.group(1), "false")
+        self.assertIn("QEGVAR(core,ambientLux), 0", _SAMPLE)
+        self.assertIn("setAperture -1", _DRIVER)
 
 
 class TestLocalWindParams(unittest.TestCase):
@@ -327,11 +320,10 @@ class TestSourceChecks(unittest.TestCase):
         self.assertIn("Manual Override", _LIGHTNINGS)
 
     def test_aperture_calls_setApertureNew(self):
-        self.assertIn("setApertureNew", _APERTURE)
-        self._assert_gated(_APERTURE)
-        self.assertIn("illuminanceLux", _APERTURE)
-        self.assertIn("HDR", _APERTURE)
-        self.assertIn("mission start", _APERTURE)
+        self.assertIn("setApertureNew", _DRIVER)
+        self._assert_gated(_DRIVER)
+        self.assertIn("HDR", _DRIVER)
+        self.assertIn("mission start", _DRIVER)
 
     def test_local_wind_calls_setLocalWindParams(self):
         self.assertIn("setLocalWindParams", _LOCAL_WIND)
