@@ -400,5 +400,34 @@ class TestImageRealismDebugHooks(unittest.TestCase):
             )
 
 
+class TestBaseGradeRegistryOwnership(unittest.TestCase):
+    """Only the grade driver names the registry keys; the teardown releases them."""
+
+    def test_only_the_grade_driver_names_the_keys(self):
+        stray = []
+        for path in (ROOT / "addons").rglob("*.sqf"):
+            text = path.read_text(encoding="utf-8")
+            if '"BaseGrade"' in text or '"BaseAcuity"' in text:
+                if GRADE not in path.parents:
+                    stray.append(str(path.relative_to(ROOT)))
+        self.assertEqual(stray, [])
+
+    def test_teardown_releases_both_keys(self):
+        code = (GRADE / "fnc_teardownBaseGrade.sqf").read_text(encoding="utf-8")
+        self.assertIn('["optics", "BaseGrade"] call EFUNC(core,destroyPPEffect)', code)
+        self.assertIn('["optics", "BaseAcuity"] call EFUNC(core,destroyPPEffect)', code)
+
+    def test_grade_priorities_are_at_their_declared_slots(self):
+        code = (GRADE / "fnc_applyBaseGrade.sqf").read_text(encoding="utf-8")
+        self.assertRegex(
+            code,
+            r'\[\s*"optics"\s*,\s*"BaseGrade"\s*,\s*"ColorCorrections"\s*,\s*1505\s*,',
+        )
+        self.assertRegex(
+            code,
+            r'\[\s*"optics"\s*,\s*"BaseAcuity"\s*,\s*"FilmGrain"\s*,\s*2505\s*,',
+        )
+
+
 if __name__ == "__main__":
     unittest.main()
