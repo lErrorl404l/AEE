@@ -115,6 +115,28 @@ def sort_visible_by_altitude(stars):
     return sorted(stars, key=lambda s: s[1], reverse=True)
 
 
+# ─── Precession epoch mirror ───────────────────────────────────────────────
+
+
+def precession_centuries(date):
+    """Mirror of the precession _T in fnc_getStarCatalog.sqf.
+
+    Day number to the Julian Day at 0h UT (Meeus, Astronomical Algorithms,
+    Ch. 7, base 1721013.5), then Julian centuries since J2000.0 as
+    (JD - 2451545.0) / 36525.  The old J2000 base returned about 20.25
+    centuries at 2025 instead of 0.25.
+    """
+    y, mo, d = date
+    jd = (
+        1721013.5
+        + 367 * y
+        - math.floor(7 * (y + math.floor((mo + 9) / 12)) / 4)
+        + math.floor(275 * mo / 9)
+        + d
+    )
+    return (jd - 2451545.0) / 36525.0
+
+
 # ═══════════════════════════════════════════════════════════════════════════
 # Test classes
 # ═══════════════════════════════════════════════════════════════════════════
@@ -460,6 +482,31 @@ class TestStarCatalogVisibility(unittest.TestCase):
         """A star at hour angle -90 (rising) is due east: azimuth 90."""
         az = self._azimuth(0.0, 45.0, -90.0)
         self.assertAlmostEqual(az, 90.0, places=6)
+
+
+class TestPrecessionCenturies(unittest.TestCase):
+    """The precession epoch _T is true centuries since J2000.0.
+
+    fnc_getStarCatalog.sqf derives T from a day-number Julian Day.  The
+    J2000 base (2451545.0 - 0.5) gave about 20.25 centuries at 2025 and
+    over-applied the precession angle by about 0.11 degrees.  The JD at
+    0h UT base (1721013.5) gives about 0.25.
+    """
+
+    def test_2025_is_a_quarter_century(self):
+        """The old J2000 base returned ~20.25, not ~0.25."""
+        self.assertAlmostEqual(precession_centuries((2025, 1, 1)), 0.25, places=2)
+
+    def test_one_decade_is_a_tenth_century(self):
+        a = precession_centuries((2025, 1, 1))
+        b = precession_centuries((2035, 1, 1))
+        self.assertAlmostEqual(b - a, 0.1, delta=0.002)
+
+    def test_source_uses_rational_julian_day_base(self):
+        """Drift-lock: the SQF precession base must be 1721013.5."""
+        text = _read_sqf("fnc_getStarCatalog.sqf", addon="environmental")
+        self.assertIn("1721013.5 + 367 * _year", text)
+        self.assertNotIn("2451545.0 + 367 * _year", text)
 
 
 class TestStarCatalogSortOrder(unittest.TestCase):

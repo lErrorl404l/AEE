@@ -35,7 +35,11 @@ private _catalog = [] call FUNC(starCatalogData);
 private _year = _date#0;
 private _month = _date#1;
 private _day = _date#2;
-private _JD = 2451545.0 + 367 * _year - floor(7 * (_year + floor((_month + 9) / 12)) / 4) + floor(275 * _month / 9) + _day - 0.5;
+// Day number to the Julian Day at 0h UT (Meeus, Astronomical Algorithms,
+// Ch. 7).  The base 1721013.5 is the JD at 0h UT.  The old J2000 base
+// (2451545.0) gave _T about 20.25 centuries at 2025, not 0.25, so the
+// precession angle was over-applied by about 0.11 degrees.
+private _JD = 1721013.5 + 367 * _year - floor(7 * (_year + floor((_month + 9) / 12)) / 4) + floor(275 * _month / 9) + _day;
 private _T = (_JD - 2451545.0) / 36525.0;
 
 // Precession angles (degrees per century, Capitaine et al. 2003)
