@@ -362,5 +362,43 @@ class TestImageRealismWiring(unittest.TestCase):
         self.assertEqual(thermal, sorted(thermal), "thermal keys are not sorted")
 
 
+class TestImageRealismDebugHooks(unittest.TestCase):
+    """Every force hook is read, and none is registered as a CBA setting."""
+
+    OPTICS_HOOKS = [
+        "baseGradeForce",
+        "baseGradeContrast",
+        "baseGradeSharpness",
+        "baseGradeGrain",
+    ]
+    THERMAL_HOOKS = [
+        "bloomForce",
+        "agcHuntForce",
+        "nucForce",
+        "temporalNoiseForce",
+    ]
+
+    def test_each_optics_hook_is_read(self):
+        code = _code(DRIVER)
+        for hook in self.OPTICS_HOOKS:
+            self.assertIn(hook, code, f"debug hook {hook} is not read")
+
+    def test_each_thermal_hook_is_read(self):
+        code = _code(THERMAL_DISPLAY)
+        for hook in self.THERMAL_HOOKS:
+            self.assertIn(hook, code, f"debug hook {hook} is not read")
+
+    def test_hooks_are_not_cba_settings(self):
+        declared = OPTICS_SETTINGS.read_text(
+            encoding="utf-8"
+        ) + THERMAL_SETTINGS.read_text(encoding="utf-8")
+        for name in ["baseGradeForce", *self.THERMAL_HOOKS]:
+            self.assertNotRegex(
+                declared,
+                rf"AEE_SETTING_\w+\(\s*{name}\s*,",
+                f"{name} is registered as a CBA setting",
+            )
+
+
 if __name__ == "__main__":
     unittest.main()

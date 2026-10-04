@@ -32,6 +32,13 @@ becomes a flat grey — AGC cannot create contrast that does not exist.
 Gate:    vision mode 2
 Reads:   GVAR(currentThermalContrast), EGVAR(core,thermalCrossoverActive)
 Sets:    QGVAR(thermalActive), three ppEffects (client-side only)
+
+Debug hooks (set on missionNamespace; debug console only, no CBA setting):
+  aee_thermal_bloomForce          Number: override the hot-source bloom base.
+  aee_thermal_agcHuntForce        Number: override the AGC hunt amplitude.
+  aee_thermal_nucForce            Number: override the NUC drift amplitude.
+  aee_thermal_temporalNoiseForce  Number: override the temporal-noise scale.
+  aee_thermal_thermalDebug        Bool: log the four artefact values each tick.
 */
 
 private _perfT0 = diag_tickTime;
@@ -538,7 +545,7 @@ missionNamespace setVariable [QGVAR(agcHunt), _agcHunt];
 missionNamespace setVariable [QGVAR(nucDrift), _nucDrift];
 missionNamespace setVariable [QGVAR(temporalNoise), _temporalNoise];
 if (missionNamespace getVariable [QGVAR(thermalDebug), false]) then {
-    diag_log text format ["[AEE] Thermal imperfections | bloom=%1 agcHunt=%2 nucDrift=%3 temporalNoise=%4 burst=%5", _bloom, _agcHunt, _nucDrift, _temporalNoise, _burst];
+    diag_log text format ["[AEE] Thermal imperfections | bloom=%1 agcHunt=%2 nucDrift=%3 temporalNoise=%4 burst=%5 | hooks bloom=%6 hunt=%7 nuc=%8 noise=%9", _bloom, _agcHunt, _nucDrift, _temporalNoise, _burst, _bloomForce, _huntForce, _nucForce, _noiseForce];
 };
 
 // Diagnostics: set aee_nightvision_nvgDebug = true in the debug console to log
