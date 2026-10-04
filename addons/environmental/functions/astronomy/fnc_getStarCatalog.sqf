@@ -42,15 +42,18 @@ private _day = _date#2;
 private _JD = 1721013.5 + 367 * _year - floor(7 * (_year + floor((_month + 9) / 12)) / 4) + floor(275 * _month / 9) + _day;
 private _T = (_JD - 2451545.0) / 36525.0;
 
-// Precession angles (degrees per century, Capitaine et al. 2003)
-private _zetaA = 2.5976176 + 0.0003980 * _T;  // arcsec per century
-private _zA = 2.5976176 + 0.0000060 * _T;
-private _thetaA = 20.043109 - 0.0000851 * _T;
+// Precession angles (IAU 1976, Lieske et al. 1977; Meeus, Astronomical
+// Algorithms, Ch. 21), arcseconds.  T is Julian centuries from J2000.0.
+// The previous constants were annual-arcsec values applied per century,
+// so every angle was about 100 times too small.
+private _zetaArc = 2306.2181 * _T + 0.30188 * _T * _T + 0.017998 * _T * _T * _T;
+private _zArc = 2306.2181 * _T + 1.09468 * _T * _T + 0.018203 * _T * _T * _T;
+private _thetaArc = 2004.3109 * _T - 0.42665 * _T * _T - 0.041833 * _T * _T * _T;
 
-// Precession angles to degrees (arcsec / 3600, scaled by the century T).
-// SQF trig is degree-native, so no radian conversion is applied.
-private _zDeg = _zA * _T / 3600;
-private _thetaDeg = _thetaA * _T / 3600;
+// Degrees.  SQF trig is degree-native, so no radian conversion is applied.
+private _zetaDeg = _zetaArc / 3600;
+private _zDeg = _zArc / 3600;
+private _thetaDeg = _thetaArc / 3600;
 
 // ─── Player latitude (degrees) ────────────────────────────────────────────
 // World latitude magnitude from the shared geolocation source (issue
@@ -80,12 +83,16 @@ private _visible = [];
     // Skip stars fainter than limiting magnitude
     if (_vmag > _mLim) then { continue; };
 
-    // Apply precession to RA/Dec (both already degrees).
-    // Precession (simplified rotation, in degrees - SQF trig is degree-native).
-    private _decPrec = asin (sin _decDeg * cos _thetaDeg
-        + cos _decDeg * sin _thetaDeg * cos (_raDeg - _zDeg));
-    private _raPrec = _raDeg + _zetaA / 3600
-        + ((sin _thetaDeg * sin (_raDeg - _zDeg)) atan2 (cos _decDeg * cos _thetaDeg - sin _decDeg * sin _thetaDeg * cos (_raDeg - _zDeg)));
+    // Apply precession to RA/Dec (both already degrees) with the standard
+    // equatorial rotation (Meeus Ch. 21, eq. 21.4).
+    private _raZeta = _raDeg + _zetaDeg;
+    private _cosDec = cos _decDeg;
+    private _sinDec = sin _decDeg;
+    private _a = _cosDec * sin _raZeta;
+    private _b = cos _thetaDeg * _cosDec * cos _raZeta - sin _thetaDeg * _sinDec;
+    private _c = sin _thetaDeg * _cosDec * cos _raZeta + cos _thetaDeg * _sinDec;
+    private _raPrec = (_a atan2 _b) + _zDeg;
+    private _decPrec = asin _c;
 
     // Hour angle (degrees)
     private _haDeg = _LST - _raPrec;

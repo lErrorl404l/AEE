@@ -137,6 +137,64 @@ def precession_centuries(date):
     return (jd - 2451545.0) / 36525.0
 
 
+def precession_angles(date):
+    """IAU 1976 precession angles in degrees (Meeus Ch. 21; Lieske et al. 1977).
+
+    Returns (zeta, z, theta) in degrees.  The constants are arcseconds per
+    Julian century from J2000.0.  The old SQF used annual-arcsec constants
+    applied per century, so every angle was about 100 times too small.
+    """
+    t = precession_centuries(date)
+    zeta = (2306.2181 * t + 0.30188 * t * t + 0.017998 * t**3) / 3600.0
+    z = (2306.2181 * t + 1.09468 * t * t + 0.018203 * t**3) / 3600.0
+    theta = (2004.3109 * t - 0.42665 * t * t - 0.041833 * t**3) / 3600.0
+    return zeta, z, theta
+
+
+def precess_j2000(ra_deg, dec_deg, date):
+    """Mirror of the per-star precession in fnc_getStarCatalog.sqf.
+
+    Standard equatorial rotation (Meeus Ch. 21, eq. 21.4).  SQF trig is
+    degree-native, so the angles feed sin/cos directly.
+    """
+    zeta, z, theta = precession_angles(date)
+    ra_z = math.radians(ra_deg + zeta)
+    dec = math.radians(dec_deg)
+    th = math.radians(theta)
+    a = math.cos(dec) * math.sin(ra_z)
+    b = math.cos(th) * math.cos(dec) * math.cos(ra_z) - math.sin(th) * math.sin(dec)
+    c = math.sin(th) * math.cos(dec) * math.cos(ra_z) + math.cos(th) * math.sin(dec)
+    return math.degrees(math.atan2(a, b)) + z, math.degrees(math.asin(c))
+
+
+def precess_j2000_matrix(ra_deg, dec_deg, date):
+    """Independent precession via the explicit rotation matrix (Meeus 21.5).
+
+    A different code path from eq. 21.4, so agreement validates the transform.
+    """
+    zeta, z, theta = (math.radians(x) for x in precession_angles(date))
+    cz, sz = math.cos(z), math.sin(z)
+    cZ, sZ = math.cos(zeta), math.sin(zeta)
+    ct, st = math.cos(theta), math.sin(theta)
+    p11 = cZ * ct * cz - sZ * sz
+    p12 = -cZ * ct * sz - sZ * cz
+    p13 = -cZ * st
+    p21 = sZ * ct * cz + cZ * sz
+    p22 = -sZ * ct * sz + cZ * cz
+    p23 = -sZ * st
+    p31 = st * cz
+    p32 = -st * sz
+    p33 = ct
+    ra, dec = math.radians(ra_deg), math.radians(dec_deg)
+    x = math.cos(dec) * math.cos(ra)
+    y = math.cos(dec) * math.sin(ra)
+    zz = math.sin(dec)
+    x2 = p11 * x + p12 * y + p13 * zz
+    y2 = p21 * x + p22 * y + p23 * zz
+    z2 = p31 * x + p32 * y + p33 * zz
+    return math.degrees(math.atan2(y2, x2)) % 360.0, math.degrees(math.asin(z2))
+
+
 # ═══════════════════════════════════════════════════════════════════════════
 # Test classes
 # ═══════════════════════════════════════════════════════════════════════════
@@ -507,6 +565,83 @@ class TestPrecessionCenturies(unittest.TestCase):
         text = _read_sqf("fnc_getStarCatalog.sqf", addon="environmental")
         self.assertIn("1721013.5 + 367 * _year", text)
         self.assertNotIn("2451545.0 + 367 * _year", text)
+
+
+class TestPrecessionModel(unittest.TestCase):
+    """IAU 1976 precession angles and the standard rotation (Meeus Ch. 21).
+
+    The old constants were annual arcseconds applied per century, so every
+    angle was about 100 times too small (theta 0.0014 deg instead of
+    0.139 deg at T = 0.25).
+    """
+
+    STARS = [
+        (0.0, 0.0),
+        (101.287, -16.716),  # Sirius
+        (279.235, 38.784),  # Vega
+        (41.054063, 49.228469),  # theta Persei (Meeus example 21.b)
+        (350.0, -80.0),
+    ]
+    DATE = (2025, 1, 1)
+
+    def test_theta_at_quarter_century(self):
+        """2004.3109 * 0.25 / 3600 = 0.139 deg, not the old 0.0014."""
+        _, _, theta = precession_angles(self.DATE)
+        self.assertAlmostEqual(theta, 2004.3109 * 0.25 / 3600.0, places=4)
+
+    def test_zeta_z_at_quarter_century(self):
+        zeta, z, _ = precession_angles(self.DATE)
+        self.assertAlmostEqual(zeta, 2306.2181 * 0.25 / 3600.0, places=4)
+        self.assertAlmostEqual(z, 2306.2181 * 0.25 / 3600.0, places=4)
+
+    def test_source_uses_iau_1976_angles(self):
+        """Drift-lock: the SQF must carry the IAU 1976 constants."""
+        text = _read_sqf("fnc_getStarCatalog.sqf", addon="environmental")
+        for const in (
+            "2306.2181",
+            "0.30188",
+            "0.017998",
+            "1.09468",
+            "0.018203",
+            "2004.3109",
+            "0.42665",
+            "0.041833",
+        ):
+            self.assertIn(const, text)
+        self.assertNotIn("20.043109", text)
+        self.assertNotIn("2.5976176", text)
+
+    def test_source_uses_standard_rotation(self):
+        """Drift-lock: the Meeus 21.4 rotation, not the old simplified form."""
+        text = _read_sqf("fnc_getStarCatalog.sqf", addon="environmental")
+        self.assertIn("cos _thetaDeg * _cosDec * cos _raZeta", text)
+        self.assertIn("sin _thetaDeg * _cosDec * cos _raZeta", text)
+        self.assertNotIn("cos (_raDeg - _zDeg)", text)
+
+    def test_atan2_form_matches_rotation_matrix(self):
+        for ra, dec in self.STARS:
+            with self.subTest(ra=ra, dec=dec):
+                a = precess_j2000(ra, dec, self.DATE)
+                b = precess_j2000_matrix(ra, dec, self.DATE)
+                self.assertAlmostEqual(
+                    math.remainder(a[0] - b[0], 360.0), 0.0, places=4
+                )
+                self.assertAlmostEqual(a[1], b[1], places=4)
+
+    def test_quarter_century_shift_is_physical(self):
+        """A J2000 star at (0, 0) moves ~0.32 deg in RA by 2025.
+
+        The old 100x-small constants gave ~0.0007 deg.
+        """
+        ra, dec = precess_j2000(0.0, 0.0, self.DATE)
+        self.assertAlmostEqual(ra, 0.320342, places=4)
+        self.assertAlmostEqual(dec, 0.139184, places=4)
+
+    def test_j2000_is_identity(self):
+        for ra, dec in self.STARS:
+            got = precess_j2000(ra, dec, (2000, 1, 1))
+            self.assertAlmostEqual(math.remainder(got[0] - ra, 360.0), 0.0, places=2)
+            self.assertAlmostEqual(got[1], dec, places=2)
 
 
 class TestStarCatalogSortOrder(unittest.TestCase):
