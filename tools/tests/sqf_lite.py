@@ -216,6 +216,10 @@ UNARY_COMMANDS = {
     "cos",
     "sin",
     "sqrt",
+    # log X (base 10) and ln X (natural) - the eye-adaptation kernels
+    # (mesopic weight, pupil diameter) need both.
+    "log",
+    "ln",
     # floor X and ceil X - the sidereal-time kernel (fnc_siderealTime) needs
     # floor for the Julian-day-at-0h-UT reduction.
     "floor",
@@ -930,6 +934,10 @@ class SqfRuntime:
                 return math.sin(math.radians(value))
             if node.op == "sqrt":
                 return math.sqrt(value)
+            if node.op == "log":
+                return math.log10(value)
+            if node.op == "ln":
+                return math.log(value)
             if node.op == "floor":
                 return float(math.floor(value))
             if node.op == "asin":
