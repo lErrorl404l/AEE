@@ -1,3 +1,9 @@
 PREP(soundBedForContext);
 PREP(spookRange);
 PREP(disturbanceSilence);
+PREP(playOneShot);
+PREP(playAmbientBed);
+PREP(spookWave);
+PREP(wildlifeTick);
+PREP(initWildlife);
+PREP(teardownWildlife);
