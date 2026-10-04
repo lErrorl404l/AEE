@@ -48,3 +48,9 @@
 #define MILKY_WAY_ALPHA 0.18
 #define MILKY_WAY_RADIUS 5000
 #define MILKY_WAY_COLOUR [0.70,0.72,0.85]
+
+// ── Faint star bulk (night-sky debug) ────────────────────────────────────
+// The light-emitter path caps at STAR_LIGHT_MAX_MAG; this layer draws the
+// rest with drawLine3D.  Both values are performance tunables, UNSOURCED.
+#define FAINT_STAR_MAX 256
+#define FAINT_STAR_RADIUS 5000

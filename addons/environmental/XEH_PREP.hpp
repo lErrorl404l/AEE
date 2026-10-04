@@ -40,6 +40,7 @@ PREPS(terrain,updateSoilMoisture);
 PREPS(astronomy,calculateLimitingMagnitude);
 PREPS(astronomy,calculateSolarRadiation);
 PREPS(astronomy,classifyNight);
+PREPS(astronomy,drawFaintStars);
 PREPS(astronomy,drawMilkyWay);
 PREPS(astronomy,galacticToEquatorial);
 PREPS(astronomy,galacticToHorizontal);

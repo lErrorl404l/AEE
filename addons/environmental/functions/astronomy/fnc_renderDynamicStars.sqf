@@ -23,6 +23,12 @@ if (!hasInterface) exitWith {};
 if (!isNil QGVAR(dynamicStarsPFH)) exitWith {};
 
 missionNamespace setVariable [QGVAR(starLights), []];
+missionNamespace setVariable [QGVAR(faintStarCount), 0];
 
 GVAR(dynamicStarsPFH) = [FUNC(starLightsSync), 0.25] call CBA_fnc_addPerFrameHandler;
+// The faint bulk (stars the light-emitter cap drops) is drawn by a separate
+// Draw3D handler, so the light budget is not consumed.
+if (isNil QGVAR(faintStarsEH)) then {
+    GVAR(faintStarsEH) = addMissionEventHandler ["Draw3D", { call FUNC(drawFaintStars) }];
+};
 AEE_LOG_INFO("starfield: light-emitter PFH registered");
