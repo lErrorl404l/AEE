@@ -102,6 +102,17 @@ AEE_SETTING_SLIDER(baseGradeSharpness,"AEE Optics","Image",1,20,4,1);
 AEE_SETTING_SLIDER(baseGradeGrain,"AEE Optics","Image",0,0.05,0.006,0.001);
 AEE_SETTING_CHECKBOX(baseGradeAcuityEnabled,"AEE Optics","Image",true);
 
+// ── Human-vision model (perception) ───────────────────────────────────────
+// The physical normal-vision model.  Slice 1 ships the light and tone stage;
+// the model switch stays OFF until the colour stage lands, so the shipped
+// image is unchanged.  Every constant is traced to a published source or
+// marked UNSOURCED in the stringtable description.
+AEE_SETTING_CHECKBOX(visionModelEnabled,"AEE Optics","Vision",false);
+AEE_SETTING_CHECKBOX(visionToneEnabled,"AEE Optics","Vision",true);
+AEE_SETTING_SLIDER(visionToneStrength,"AEE Optics","Vision",0,1,1.0,0.05);
+AEE_SETTING_SLIDER(visionContrastScale,"AEE Optics","Vision",0.5,1.5,1.0,0.05);
+AEE_SETTING_CHECKBOX(visionWhiteBalance,"AEE Optics","Vision",true);
+
 // ── Diagnostics ───────────────────────────────────────────────────────────
 // The per-module trace switch.  The AEE_LOG_DEBUG macro reads the name
 // built from the component: aee_<component>_logDebug.  Declaring it here,
