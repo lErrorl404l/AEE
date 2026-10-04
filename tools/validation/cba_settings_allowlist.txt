@@ -68,3 +68,10 @@ aee_optics_eyeFlash  handler id passed as the _key value argument, not read as a
 aee_optics_eyeForceLux  debug console knob (documented in fnc_updateEyeAdaptation.sqf)
 aee_optics_eyeForceMode  debug console knob (documented in fnc_updateEyeAdaptation.sqf)
 aee_optics_eyeFreeze  debug console knob (documented in fnc_updateEyeAdaptation.sqf)
+
+# Image realism debug hooks (documented in the owning function headers).
+aee_optics_baseGradeForce  debug console knob (documented in fnc_applyBaseGrade.sqf)
+aee_thermal_bloomForce  debug console knob (documented in fnc_applyThermalVision.sqf)
+aee_thermal_agcHuntForce  debug console knob (documented in fnc_applyThermalVision.sqf)
+aee_thermal_nucForce  debug console knob (documented in fnc_applyThermalVision.sqf)
+aee_thermal_temporalNoiseForce  debug console knob (documented in fnc_applyThermalVision.sqf)
