@@ -17,6 +17,7 @@ value in the SQF header.  The per-constant register is in
 """
 
 import math
+import re
 import sys
 import unittest
 from pathlib import Path
@@ -34,6 +35,10 @@ ADAPT_STEP = EYE / "fnc_eyeAdaptStep.sqf"
 SCENE_LUX = EYE / "fnc_eyeSceneLux.sqf"
 SKY_FRACTION = EYE / "fnc_eyeSkyFraction.sqf"
 SKY_CAST = EYE / "fnc_eyeSkyCast.sqf"
+APERTURE = EYE / "fnc_eyeAperture.sqf"
+SAMPLE = EYE / "fnc_eyeSampleScene.sqf"
+DRIVER = EYE / "fnc_updateEyeAdaptation.sqf"
+INIT = EYE / "fnc_initEyeAdaptation.sqf"
 
 
 def mesopic_weight(lum):
@@ -214,6 +219,91 @@ class TestEyeSkyFraction(unittest.TestCase):
 
     def test_all_blocked_is_zero(self):
         self.assertEqual(run_sqf(SKY_FRACTION, [[False, False]]), 0)
+
+
+def aperture(lux):
+    """Mirror of fnc_eyeAperture: log-lux -> aperture (higher is wider)."""
+    lux = max(0.001, min(100000.0, lux))
+    ev = math.log10(lux)
+    t = max(0.0, min(1.0, (ev - (-3)) / (5 - (-3))))
+    return 8 + t * (0.2 - 8)
+
+
+class TestEyeAperture(unittest.TestCase):
+    """fnc_eyeAperture runs from the real SQF and matches the wiki anchors."""
+
+    def test_night_anchor(self):
+        self.assertAlmostEqual(run_sqf(APERTURE, [0.001]), 8, places=6)
+
+    def test_day_anchor(self):
+        self.assertAlmostEqual(run_sqf(APERTURE, [100000]), 0.2, places=6)
+
+    def test_monotonic_decreasing(self):
+        prev = None
+        for lux in [0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000, 100000]:
+            got = run_sqf(APERTURE, [lux])
+            if prev is not None:
+                self.assertLessEqual(got, prev)
+            prev = got
+
+    def test_clamps_outside_the_domain(self):
+        self.assertAlmostEqual(run_sqf(APERTURE, [1e-9]), 8, places=6)
+        self.assertAlmostEqual(run_sqf(APERTURE, [1e9]), 0.2, places=6)
+
+    def test_matches_the_mirror(self):
+        for lux in [0.005, 0.5, 50, 5000]:
+            self.assertAlmostEqual(run_sqf(APERTURE, [lux]), aperture(lux), places=6)
+
+
+class TestEyeDriverContract(unittest.TestCase):
+    """Source contract for the engine-touching sampler, driver and starter."""
+
+    @staticmethod
+    def _code(path):
+        text = path.read_text(encoding="utf-8")
+        return text[text.index("*/") + 2 :] if "*/" in text else text
+
+    def test_driver_gates_on_vision_mode_before_the_write(self):
+        code = self._code(DRIVER)
+        gate = re.search(r"if\s*\([^)]*currentVisionMode[^)]*\)\s*exitWith", code)
+        self.assertIsNotNone(gate, "no live vision-mode gate found")
+        write = re.search(r"^\s*setApertureNew\s*\[", code, re.M)
+        self.assertIsNotNone(write, "no setApertureNew call found")
+        self.assertLess(gate.start(), write.start(), "the gate is after the write")
+
+    def test_pin_uses_the_four_element_form(self):
+        match = re.search(r"setApertureNew\s*\[([^\]]+)\]", self._code(DRIVER))
+        self.assertIsNotNone(match, "no setApertureNew call found")
+        elements = [part for part in match.group(1).split(",") if part.strip()]
+        self.assertEqual(len(elements), 4, f"expected 4 elements, got {len(elements)}")
+
+    def test_driver_hands_the_camera_back(self):
+        text = DRIVER.read_text(encoding="utf-8")
+        self.assertIn("setAperture -1", text)
+
+    def test_starter_is_client_gated_and_idempotent(self):
+        text = INIT.read_text(encoding="utf-8")
+        self.assertIn("hasInterface", text)
+        self.assertIn("eyePFH", text)
+        self.assertIn("addPerFrameHandler", text)
+
+    def test_sampler_reads_the_engine_lighting(self):
+        text = SAMPLE.read_text(encoding="utf-8")
+        self.assertIn("getLightingAt", text)
+        self.assertIn("hasInterface", text)
+
+    def test_engine_notes_carry_forward(self):
+        aperture_text = APERTURE.read_text(encoding="utf-8")
+        driver_text = DRIVER.read_text(encoding="utf-8")
+        self.assertIn("HDR", aperture_text)
+        self.assertIn("mission start", aperture_text)
+        self.assertIn("HDR", driver_text)
+        self.assertIn("mission start", driver_text)
+
+    def test_debug_hooks_are_read(self):
+        text = DRIVER.read_text(encoding="utf-8")
+        for hook in ["eyeForceLux", "eyeFreeze", "eyeForceMode"]:
+            self.assertIn(hook, text, f"debug hook {hook} not read")
 
 
 if __name__ == "__main__":
