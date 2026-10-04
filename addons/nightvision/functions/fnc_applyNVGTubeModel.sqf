@@ -26,8 +26,16 @@ unpopulated when the NVG tick fires.
 Gate:    vision mode 1
 Reads:   moonIntensity, overcast, rain, hmd _player
 Sets:    QGVAR(nvgGain), QGVAR(nvgNoise), QGVAR(nvgTubeTier),
-         QGVAR(nvgPerceived), QGVAR(nvgGrainActive),
+         QGVAR(nvgPerceived), QGVAR(nvgGrainActive), QGVAR(nvgBreathing),
+         QGVAR(nvgImperfectionAlpha),
          five ppEffects (client-side only)
+
+Force hooks (debug console, set on missionNamespace):
+  QGVAR(nvgForceImperfections) (Bool)   force every imperfection to maximum
+  QGVAR(nvgForceBlemishes)     (0..1)   override the blemish overlay fade
+  QGVAR(nvgForceBreathing)     (Number) override the breathing factor
+  QGVAR(nvgForceBlowout)       (0..1)   force the blowout before the envelope
+  QGVAR(nvgImperfectionDebug)  (Bool)   one INFO line on entry + per-tick fields
 */
 
 private _player = call CBA_fnc_currentUnit;
@@ -81,6 +89,10 @@ if (currentVisionMode _player != 1) exitWith {
         (["aee_nightvision_nvg_title"] call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
         missionNamespace setVariable [QGVAR(nvgDisplayUp), false];
 
+        // Tear down the imperfection overlay with the tube.
+        (["aee_nightvision_nvg_imperfections"] call BIS_fnc_rscLayer) cutText ["", "PLAIN"];
+        missionNamespace setVariable [QGVAR(nvgImperfectionUp), false];
+
         missionNamespace setVariable [QGVAR(nvgGrainActive), false];
     };
     // Clear stale tube state so diagnostics and scripts do not read
@@ -92,6 +104,8 @@ if (currentVisionMode _player != 1) exitWith {
     missionNamespace setVariable [QGVAR(nvgBlowoutHold), 0];
     missionNamespace setVariable [QGVAR(nvgWetness), 0];
     missionNamespace setVariable [QGVAR(nvgBattery), 1.0];
+    missionNamespace setVariable [QGVAR(nvgBreathing), 0];
+    missionNamespace setVariable [QGVAR(nvgImperfectionAlpha), 0];
 };
 
 // ─── Ambient light input ─────────────────────────────────────────────────
@@ -192,6 +206,54 @@ private _tier = _dev select 0;
 private _sensitivity = _dev select 1;
 private _tubeCount = _dev select 4;
 private _resLpmm = _dev select 2;
+
+// ─── Tube imperfections (issue #215) ─────────────────────────────────────
+// The BAD artefacts a real image intensifier shows: fixed-pattern noise,
+// blemishes, honeycomb reticulation, AGC breathing, bright-source washout,
+// dark-scene scintillation, edge distortion and veiling glare.  The nine
+// CBA settings under AEE Night Vision > Imperfections drive the model.  Each
+// kernel takes the master multiplier (_ioStr) times its own strength as its
+// strength argument.  The tier index is the testable shim the kernels key
+// off, because sqf_lite cannot run the parent's switch.
+private _tierIdx = [_tier] call FUNC(nvgTierIndex);
+private _ioOn = missionNamespace getVariable [QGVAR(nvgImperfectionsEnabled), true];
+private _ioStr = missionNamespace getVariable [QGVAR(nvgImperfectionStrength), 1.0];
+private _blemishStr = missionNamespace getVariable [QGVAR(nvgBlemishStrength), 0.5];
+private _reticuleStr = missionNamespace getVariable [QGVAR(nvgReticulationStrength), 0.4];
+private _breathStr = missionNamespace getVariable [QGVAR(nvgAgcBreathing), 0.4];
+private _blindStr = missionNamespace getVariable [QGVAR(nvgBlindingStrength), 1.0];
+private _scintStr = missionNamespace getVariable [QGVAR(nvgScintillationStrength), 1.0];
+private _edgeStr = missionNamespace getVariable [QGVAR(nvgEdgeDistortion), 0.5];
+private _glare = missionNamespace getVariable [QGVAR(nvgVeilingGlare), 0.0213];
+
+// Force hooks for the debug console (semantics in the function header).
+private _forceAll = missionNamespace getVariable [QGVAR(nvgForceImperfections), false];
+private _forceBlemish = missionNamespace getVariable [QGVAR(nvgForceBlemishes), -1];
+private _forceBreath = missionNamespace getVariable [QGVAR(nvgForceBreathing), -1];
+private _forceBlowout = missionNamespace getVariable [QGVAR(nvgForceBlowout), -1];
+if (_forceAll) then {
+    _ioOn = true;
+    _ioStr = 1;
+    _blemishStr = 1;
+    _reticuleStr = 1;
+    _breathStr = 1;
+    _blindStr = 1;
+    _scintStr = 1;
+    _edgeStr = 1;
+    _glare = 0.05;
+};
+// When the master gate is off every imperfection magnitude is zero, so each
+// kernel returns its neutral value.  Veiling glare is a physical floor, not
+// one of the master-multiplied magnitudes, so it tracks its own setting.
+if (!_ioOn) then {
+    _ioStr = 0;
+    _blemishStr = 0;
+    _reticuleStr = 0;
+    _breathStr = 0;
+    _blindStr = 0;
+    _scintStr = 0;
+    _edgeStr = 0;
+};
 
 // Per-tier constants keyed off the classifier's generation.  The
 // noise floor (tube SNR), MTF (resolution), phosphor tint, vignette
@@ -349,6 +411,10 @@ if (missionNamespace getVariable [QGVAR(nvgTierLogged), ""] != _tierLogKey) then
     // the corrections came from (or the family that fell back explicitly).
     private _logMsg = format ["NVG tier: hmd=%1 -> %2 phosphor=%3 device=%4", _hmd, _tier, _phosphor, _devKey];
     AEE_LOG_INFO(_logMsg);
+    if (missionNamespace getVariable [QGVAR(nvgImperfectionDebug), false]) then {
+        private _impMsg = format ["NVG imperfections: tier=%1 enabled=%2 overlay=%3 blemish=%4 reticule=%5 breathing=%6 blinding=%7 scint=%8 edge=%9 glare=%10 source=%11", _tier, _ioOn, _ioStr, _blemishStr, _reticuleStr, _breathStr, _blindStr, _scintStr, _edgeStr, _glare, ["settings", "force"] select _forceAll];
+        AEE_LOG_INFO(_impMsg);
+    };
 };
 
 // ─── Gen 1 image erosion (gap 5, #153) ───────────────────────────────────
@@ -357,11 +423,11 @@ if (missionNamespace getVariable [QGVAR(nvgTierLogged), ""] != _tierLogKey) then
 // models rim darkness; this adds the Gen 1 CHARACTER: a stronger edge
 // falloff (the electron-optics aberration) that reads as image erosion.
 // PVS-31/Gen 3 filmless tubes are essentially flat field - no erosion.
-private _erosionFactor = switch (_tier) do {
-    case "GEN1": { 2.5 };   // strong pincushion falloff
-    case "GEN2": { 1.3 };   // mild - second-gen electron optics improve
-    default { 1.0 };         // Gen 3 / PVS-31: flat field, no erosion
-};
+// The per-tier edge factor now lives in the kernel, applied ONCE here.  The
+// kernel also clamps the scale so the final RadialBlur power stays at or
+// below the 0.01 guard below.  Arma exposes no radial pincushion parameter,
+// so this is a blur approximation of the edge read.
+private _erosionFactor = [_tierIdx, _vigStrength select 0, _ioStr * _edgeStr] call FUNC(nvgPincushion);
 _vigStrength set [0, (_vigStrength select 0) * _erosionFactor];
 _vigStrength set [1, (_vigStrength select 1) * _erosionFactor];
 
@@ -804,10 +870,11 @@ _bloom = _bloom * (1 + rain * 2);
 // Clear-condition veiling glare floor: phosphor light reflects back to the
 // photocathode and re-amplifies, giving a real tube a 2-5 % veiling glare
 // ratio even in perfect weather.  This caps maximum contrast (a faint glow
-// over the whole image) and is independent of rain.  0.02 = 2 %, the low
-// end of the published range, so it adds the physical floor without
-// washing the image out.
-_bloom = _bloom + 0.02;
+// over the whole image) and is independent of rain.  The default 0.0213 is
+// the MIL-I-49428 section 3.6.15.2 value (the sourced low end).  It is the
+// nvgVeilingGlare setting, a physical floor, not one of the master-gated
+// imperfection magnitudes.
+_bloom = _bloom + _glare;
 // ─── Intrinsic optical blur (natural, not pixelated) ─────────────────────
 // A real image-intensifier chain is ANALOGUE: photocathode, microchannel
 // plate and phosphor, with a continuous optical point-spread function.
@@ -839,6 +906,14 @@ _bloom = 0 max _bloom min 1;
 // drives the output, not a fixed preset.
 private _brightness = linearConversion [0.001, 0.25, _lux, 0.65, 1.0, true];
 
+// AGC breathing: the slow gain hunt around the target gain, bounded by the
+// MIL-I-49428 section 3.6.6 fluctuation envelope.  The force hook overrides
+// the kernel output for a visual acceptance pass.
+private _breathing = [_gain, _gainTarget, CBA_missionTime, _ioStr * _breathStr] call FUNC(nvgAgcBreathing);
+if (_forceBreath >= 0) then { _breathing = _forceBreath; };
+_brightness = _brightness * (1 + _breathing);
+missionNamespace setVariable [QGVAR(nvgBreathing), _breathing];
+
 // ─── Bright-source response (bloom vs gate) ───────────────────────────────
 // Un-gated Gen 1/2 tubes BLOOM: the phosphor saturates and the whole image
 // whites out (brightness climbs toward 2.0 = white).  Recovery is slow
@@ -848,13 +923,15 @@ private _brightness = linearConversion [0.001, 0.25, _lux, 0.65, 1.0, true];
 // photocathode, so the image goes DARK (brightness collapses) for as long
 // as the source is in view.  This is the "flashbang" effect — a bright
 // light blinds a gated tube by blacking it out, not whiting it out.
-if (_blowout > 0) then {
-    if (_tier == "GEN1" || _tier == "GEN2") then {
-        _brightness = _brightness + _blowout * (1 - _brightness);
-    } else {
-        _brightness = _brightness * (1 - _blowout * 0.85);
-    };
-};
+// Blinding envelope: un-gated tubes white out, gated tubes black out, and
+// both lose contrast.  The attack, hold and release envelope above sets the
+// recovery TIMING; this maps the current blowout to the render scales.  The
+// contrast scale lands on _mtfEffective ONLY, never on _perceived a second
+// time.  The force hook overrides the detected blowout before the envelope.
+if (_forceBlowout >= 0) then { _blowout = _forceBlowout; };
+([_blowout, _tierIdx, _ioStr * _blindStr] call FUNC(nvgBlindingEnvelope)) params ["_bScale", "_cScale"];
+_brightness = _brightness * _bScale;
+_mtfEffective = _mtfEffective * _cScale;
 
 // ─── Phosphor persistence (residual image lag) ────────────────────────────
 // The phosphor screen does not emit instantly nor cut off instantly: it
@@ -944,16 +1021,19 @@ missionNamespace setVariable [QGVAR(nvgPerceived), _perceived];
 // variable already varies with ambient light (starlight → more noise
 // everywhere, full moon → less), which is the correct macro-level
 // behaviour.  Per-frame spatial variation is the honest wall.
-private _sharpness = linearConversion [1, 0, _noise, 1.2, 1.0, true];
-private _grainSize = linearConversion [1, 0, _noise, 2.7, 2.25, true];
+// Scintillation: the dark-scene speckle.  The kernel returns the FilmGrain
+// tuple [intensity, sharpness, size] and strengthens the grain at low
+// light.  The sharpness and size bands follow the ACE3 ranges above.
+([_lux, _noise, rain, _ioStr * _scintStr] call FUNC(nvgScintillation)) params ["_grainIntensity", "_sharpness", "_grainSize"];
 
-// Scintillation intensity scales with ambient lux: maximum in darkness
-// (few photons = strong shot noise), minimum in moonlight (many photons
-// = quiet image).  Rain adds forward-scattered photon noise (Mie), so
-// the grain rises with rain too.
-private _grainIntensity = 0.3 * (1 - _lux / 0.1);
-_grainIntensity = 0 max _grainIntensity;
-_grainIntensity = _grainIntensity * (1 + rain * 0.5);
+// Overlay fade values (ctrlSetFade: 0 opaque, 1 transparent).  Computed
+// here so the debug log can report them; the controls are faded at the
+// display block below.  The reticulation reuses the blemish kernel with its
+// own strength, so a noisy tube shows both fields more.
+private _blemishFade = 1 - ([_tierIdx, _noise, _ioStr * _blemishStr] call FUNC(nvgBlemishField));
+private _reticuleFade = 1 - ([_tierIdx, _noise, _ioStr * _reticuleStr] call FUNC(nvgBlemishField));
+if (_forceBlemish >= 0) then { _blemishFade = _forceBlemish; };
+missionNamespace setVariable [QGVAR(nvgImperfectionAlpha), 1 - _blemishFade];
 
 // ─── Recreate all NVG handles every tick ─────────────────────────────────
 // ACE3 pattern: recreate ppEffect handles so effects survive alt-tab,
@@ -1494,7 +1574,11 @@ if (_hDoF >= 0) then {
 // gain and lux are the AGC inputs: gain must fall as lux rises (the
 // inverse-lux auto-gating response) — the two numbers prove the gate works.
 if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
-    diag_log text format [
+    private _impPart = "";
+    if (missionNamespace getVariable [QGVAR(nvgImperfectionDebug), false]) then {
+        _impPart = format [" | imp on=%1 str=%2 blemFade=%3 retFade=%4 breath=%5 blind=%6 scint=%7 edge=%8 glare=%9 alpha=%10", _ioOn, _ioStr, _blemishFade, _reticuleFade, _breathing, _blindStr, _scintStr, _edgeStr, _glare, 1 - _blemishFade];
+    };
+    diag_log text (format [
         "[AEE] NVG tick | tier=%1 moon=%2 lux=%3 gain=%4 visMode=%5 hmd=%6 | handles CC=%7 chroma=%8 bloom=%9 vig=%10 grain=%11 dof=%12 | CC params %13 | bloom=%14 grain=%15 | blowout=%16 | dofBlur=%17 focus=%18 settled=%19 raw=%20 pending=%21",
         _tier,
         _moonLight,
@@ -1517,7 +1601,7 @@ if (missionNamespace getVariable [QGVAR(nvgDebug), false]) then {
         _focusSettled,
         _rawTarget,
         _pending
-    ];
+    ] + _impPart);
 };
 
 // ─── ChromAberration — disabled (NVGs are monochrome) ────────────────────
@@ -1592,13 +1676,32 @@ if (_hGrain >= 0) then {
 };
 
 // ─── RscTitles display (focus HUD) ────────────────────────────────────────
-// The engine handles the NVG cutout (circular tube view).  We overlay only
-// the focus readout HUD.  No mask, fibre, glow, or rain overlay — the
-// engine and other NVG mods handle tube geometry.
+// The engine handles the NVG cutout (circular tube view).  We overlay the
+// focus readout HUD plus the two imperfection textures (blemishes and
+// honeycomb).  The engine and other NVG mods handle tube geometry; each
+// texture carries its own circular alpha mask.
 private _disp = uiNamespace getVariable [QGVAR(titleDisplay), displayNull];
 if !(missionNamespace getVariable [QGVAR(nvgDisplayUp), false]) then {
     (["aee_nightvision_nvg_title"] call BIS_fnc_rscLayer) cutRsc [QGVAR(nvgTitle), "PLAIN", 1, false];
     missionNamespace setVariable [QGVAR(nvgDisplayUp), true];
+};
+
+// ─── Imperfection overlay (blemishes and honeycomb) ──────────────────────
+// Cut the layer once per NVG entry, then fade each control every tick.
+// ctrlSetFade 0 is opaque and 1 is transparent.  The fades were computed
+// above so the debug log can report them.
+if !(missionNamespace getVariable [QGVAR(nvgImperfectionUp), false]) then {
+    (["aee_nightvision_nvg_imperfections"] call BIS_fnc_rscLayer) cutRsc [QGVAR(nvgImperfections), "PLAIN", 1, false];
+    missionNamespace setVariable [QGVAR(nvgImperfectionUp), true];
+};
+private _impDisp = uiNamespace getVariable [QGVAR(imperfectionDisplay), displayNull];
+if (!isNull _impDisp) then {
+    private _blemCtl = _impDisp displayCtrl 1010;
+    _blemCtl ctrlSetFade _blemishFade;
+    _blemCtl ctrlCommit 0;
+    private _retCtl = _impDisp displayCtrl 1011;
+    _retCtl ctrlSetFade _reticuleFade;
+    _retCtl ctrlCommit 0;
 };
 if (!isNull _disp) then {
     // Focus readout (ECOTI HUD style): the ring position as metres plus a
