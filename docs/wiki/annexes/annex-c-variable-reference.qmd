@@ -563,7 +563,7 @@ operator and the debug console.
 | `aee_wildlife_ambientSource` | wildlife | The current looping CfgSFX bed source |
 | `aee_wildlife_manifest` | wildlife | The loaded vanilla sound manifest |
 | `aee_wildlife_ambientPFH` | wildlife | The wildlife client tick handle |
-| `aee_wildlife_firedManEH` | wildlife | The FiredMan handler id |
+| `aee_wildlife_firedManEH` | wildlife | The core player engine handler key for the gunfire report |
 
 ## Wildlife and AI debug hooks
 

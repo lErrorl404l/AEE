@@ -103,3 +103,4 @@ aee_wildlife_forceNight  debug console knob (documented in fnc_wildlifeTick.sqf)
 aee_wildlife_forceSpook  debug console knob (documented in fnc_wildlifeTick.sqf)
 aee_wildlife_forceSilence  debug console knob (documented in fnc_wildlifeTick.sqf)
 aee_wildlife_forceSpecies  debug console knob (documented in fnc_wildlifeTick.sqf)
+aee_wildlife_firedManEH  core player engine handler key passed to installPlayerEngineHandler; a string identifier, not a variable

@@ -4,7 +4,7 @@
 Start the wildlife client tick and the gunfire report handler.
 
 Client-only and idempotent: a second call does nothing while the PFH is live.
-The manifest is loaded once.  The FiredMan handler reports one bounded
+The manifest is loaded once.  The Fired handler reports one bounded
 stimulus through the reusable substrate.
 
 Arguments: none.
@@ -25,10 +25,13 @@ missionNamespace setVariable [QGVAR(manifest), _manifest];
 
 GVAR(ambientPFH) = [FUNC(wildlifeTick), _interval] call CBA_fnc_addPerFrameHandler;
 
-GVAR(firedManEH) = addMissionEventHandler ["FiredMan", {
+// The gunfire report rides the core player engine handler: a raw BIS "Fired"
+// event on the local unit, re-attached across respawn.  The key is the
+// caller's own name, so it cannot collide with another addon's Fired handler.
+["Fired", {
     params ["_unit"];
     if (isNull _unit) exitWith {};
     [getPos _unit, 1] call EFUNC(ai,reportStimulus);
-}];
+}, QGVAR(firedManEH)] call EFUNC(core,installPlayerEngineHandler);
 
 AEE_LOG_INFO("wildlife client tick started")

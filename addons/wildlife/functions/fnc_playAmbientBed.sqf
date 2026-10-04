@@ -32,6 +32,6 @@ if ((_source find ".") >= 0) then {
     if (!isNull _current) then {
         deleteVehicle _current;
     };
-    private _sourceObject = createSoundSourceLocal [_source, _position, []];
+    private _sourceObject = createSoundSource [_source, _position, [], 0];
     missionNamespace setVariable [QGVAR(ambientSource), _sourceObject];
 };
