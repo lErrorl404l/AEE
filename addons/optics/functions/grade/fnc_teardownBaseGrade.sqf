@@ -3,6 +3,11 @@
 /*
 Stop the base-grade PFH and release its two effects (image realism).
 
+The handles come from the core registry owner records
+aee_core_ppHandle_optics_BaseGrade / ..._BaseAcuity.  Those records are what
+fnc_createPPEffect writes and fnc_destroyPPEffect resets.  The addon's own
+legacy mirror is not written by the registry, so it must not be the source.
+
 Neutralise the ColorCorrections and disable both handles BEFORE the registry
 releases them, so a module disable leaves nothing live and no graded frame.
 Every adjust and enable sits behind a >= 0 guard.
@@ -18,8 +23,8 @@ if (!isNil QGVAR(baseGradePFH)) then {
     GVAR(baseGradePFH) = nil;
 };
 
-private _hCC = missionNamespace getVariable [QGVAR(ppHandle_BaseGrade), -1];
-private _hAcuity = missionNamespace getVariable [QGVAR(ppHandle_BaseAcuity), -1];
+private _hCC = missionNamespace getVariable [QEGVAR(core,ppHandle_optics_BaseGrade), -1];
+private _hAcuity = missionNamespace getVariable [QEGVAR(core,ppHandle_optics_BaseAcuity), -1];
 if (_hCC >= 0) then {
     // Identity: colorize alpha 0 keeps the original colour; alpha 1 is B&W.
     _hCC ppEffectAdjust [1, 1, 0, [0,0,0,0], [1,1,1,0], [0.2126,0.7152,0.0722,0], [-1,-1,0,0,0,0,0]];

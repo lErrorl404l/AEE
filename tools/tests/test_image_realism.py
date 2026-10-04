@@ -531,5 +531,76 @@ class TestBaseGradeRegistryOwnership(unittest.TestCase):
         )
 
 
+class TestBaseGradeHandleLifecycle(unittest.TestCase):
+    """The driver reads the core registry owner record, not the unused mirror.
+
+    The registry writes aee_core_ppHandle_optics_<key> on create and resets it
+    to -1 on destroy.  The addon's own QGVAR(ppHandle_BaseGrade) mirror is
+    never written, so reading it pinned the handle at -1 and recreated a live
+    effect every tick.  These assertions pin the owner-record read and the
+    missing-handle guard.
+    """
+
+    def setUp(self):
+        self.driver = _code(DRIVER)
+        self.teardown = _code(TEARDOWN)
+
+    def test_driver_reads_both_owner_records(self):
+        self.assertIn(
+            "missionNamespace getVariable [QEGVAR(core,ppHandle_optics_BaseGrade), -1]",
+            self.driver,
+        )
+        self.assertIn(
+            "missionNamespace getVariable [QEGVAR(core,ppHandle_optics_BaseAcuity), -1]",
+            self.driver,
+        )
+
+    def test_driver_does_not_read_the_legacy_mirror_as_the_handle(self):
+        self.assertNotIn("getVariable [QGVAR(ppHandle_BaseGrade)", self.driver)
+        self.assertNotIn("getVariable [QGVAR(ppHandle_BaseAcuity)", self.driver)
+
+    def test_teardown_reads_both_owner_records(self):
+        self.assertIn(
+            "missionNamespace getVariable [QEGVAR(core,ppHandle_optics_BaseGrade), -1]",
+            self.teardown,
+        )
+        self.assertIn(
+            "missionNamespace getVariable [QEGVAR(core,ppHandle_optics_BaseAcuity), -1]",
+            self.teardown,
+        )
+
+    def test_recreate_sits_inside_the_missing_handle_guard(self):
+        self.assertRegex(
+            self.driver,
+            r"if\s*\(_hCC\s*<\s*0\)\s*then\s*\{[^}]*"
+            r'\["optics",\s*"BaseGrade"\]\s*call\s*EFUNC\(core,destroyPPEffect\)'
+            r"[^}]*EFUNC\(core,createPPEffect\)[^}]*\}",
+        )
+        self.assertRegex(
+            self.driver,
+            r"if\s*\(_hAcuity\s*<\s*0\)\s*then\s*\{[^}]*"
+            r'\["optics",\s*"BaseAcuity"\]\s*call\s*EFUNC\(core,destroyPPEffect\)'
+            r"[^}]*EFUNC\(core,createPPEffect\)[^}]*\}",
+        )
+
+    def test_registry_lifecycle_feeds_the_owner_record(self):
+        create = (
+            ROOT / "addons" / "core" / "functions" / "fnc_createPPEffect.sqf"
+        ).read_text(encoding="utf-8")
+        destroy = (
+            ROOT / "addons" / "core" / "functions" / "fnc_destroyPPEffect.sqf"
+        ).read_text(encoding="utf-8")
+        self.assertIn(
+            "missionNamespace setVariable "
+            "[format [QEGVAR(core,ppHandle_%1_%2), _scope, _key], _handle]",
+            create,
+        )
+        self.assertIn(
+            "missionNamespace setVariable "
+            "[format [QEGVAR(core,ppHandle_%1_%2), _parts select 0, _parts select 1], -1]",
+            destroy,
+        )
+
+
 if __name__ == "__main__":
     unittest.main()
