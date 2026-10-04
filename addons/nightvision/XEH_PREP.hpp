@@ -5,6 +5,7 @@ PREP(getDeviceMatch);
 PREP(getNvgDeviceProperties);
 PREP(getNvgTubeModel);
 PREP(teardownNvgDoF);
+PREP(nvgTierIndex);
 PREPS(ltm,ltmBeamSegments);
 PREPS(ltm,ltmCreate);
 PREPS(ltm,ltmDraw);
