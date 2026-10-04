@@ -404,6 +404,21 @@ class TestMeteorRendererContract(unittest.TestCase):
     def test_debug_force_hook(self):
         self.assertIn("meteorForce", self.code)
 
+    def test_live_meteor_hook_documented(self):
+        # The live hook is aee_environmental_meteorForce; the retired
+        # optics-namespaced name is gone everywhere.
+        raw = WORKER.read_text(encoding="utf-8")
+        self.assertIn("aee_environmental_meteorForce", raw)
+        dead = "aee_optics_" + "meteorForce"
+        self.assertNotIn(dead, raw)
+
+    def test_consolidated_log_replaces_windowed_log(self):
+        # The per-feature windowed DEBUG line is replaced by the one
+        # consolidated sky-state line (fnc_logSkyState).
+        self.assertNotIn("meteorLogAt", self.code)
+        logger = (SENSOR / "fnc_logSkyState.sqf").read_text(encoding="utf-8")
+        self.assertIn('"sky state | sun=', logger)
+
     def test_speed_converts_km_s_to_m_s(self):
         # V-infinity is km/s; setVelocity takes m/s.  The worker must convert
         # before applying the cosmetic factor (regression guard for the review
