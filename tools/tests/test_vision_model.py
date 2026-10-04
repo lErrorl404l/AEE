@@ -192,5 +192,49 @@ class TestIdentityDetectsDesaturation(unittest.TestCase):
         self.assertAlmostEqual(out[1], out[2], places=9)
 
 
+class TestPerceptionToneResponse(unittest.TestCase):
+    """fnc_perceptionToneResponse runs from the real SQF and clamps.
+
+    Source register: Naka and Rushton 1966 (form), CIE 15:2004 and ISO
+    11664-4 (L*), Stevens 1957; the exact exponent, sigma and calibration
+    gain are UNSOURCED.
+    """
+
+    def test_strength_zero_is_the_identity(self):
+        self.assertEqual(run_sqf(TONE_KERNEL, [1, 100, 0, 1]), [1, 1, 0])
+
+    def test_negative_strength_is_the_identity(self):
+        self.assertEqual(run_sqf(TONE_KERNEL, [1, 100, -1, 1]), [1, 1, 0])
+
+    def test_reference_adaptation_is_the_identity(self):
+        self.assertEqual(run_sqf(TONE_KERNEL, [100, 100, 1, 1]), [1, 1, 0])
+
+    def test_contrast_and_offset_stay_in_range_across_the_sweep(self):
+        for lum in [1e-4, 1e-3, 1e-2, 1e-1, 1, 10, 100, 1000, 1e4, 1e5]:
+            brightness, contrast, offset = run_sqf(TONE_KERNEL, [lum, 100, 1, 1])
+            self.assertGreaterEqual(contrast, 0.8)
+            self.assertLessEqual(contrast, 1.6)
+            self.assertGreaterEqual(offset, -0.05)
+            self.assertLessEqual(offset, 0.05)
+            self.assertGreaterEqual(brightness, 0.7)
+            self.assertLessEqual(brightness, 1.3)
+
+    def test_contrast_rises_as_the_luminance_leaves_mid(self):
+        _, mid, _ = run_sqf(TONE_KERNEL, [100, 100, 1, 1])
+        _, dark, _ = run_sqf(TONE_KERNEL, [1e-4, 100, 1, 1])
+        _, bright, _ = run_sqf(TONE_KERNEL, [1e5, 100, 1, 1])
+        self.assertGreater(dark, mid, "dark adaptation did not raise contrast")
+        self.assertGreater(bright, mid, "bright adaptation did not raise contrast")
+
+    def test_out_of_range_inputs_are_clamped(self):
+        brightness, contrast, offset = run_sqf(TONE_KERNEL, [1e12, 1e-12, 99, 99])
+        self.assertGreaterEqual(contrast, 0.8)
+        self.assertLessEqual(contrast, 1.6)
+        self.assertGreaterEqual(offset, -0.05)
+        self.assertLessEqual(offset, 0.05)
+        self.assertGreaterEqual(brightness, 0.7)
+        self.assertLessEqual(brightness, 1.3)
+
+
 if __name__ == "__main__":
     unittest.main()
