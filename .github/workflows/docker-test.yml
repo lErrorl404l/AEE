@@ -1,21 +1,48 @@
 name: Docker Test
 
-# On-demand only: the harness mounts a provisioned Arma 3 server install
-# (see tools/docker_test.sh). Provisioning the server on a fresh runner is
-# a ~10 GB steamcmd download, so this runs manually or via API dispatch
-# rather than on every push.
+# Nightly regression run of the headless Docker harness on a self-hosted
+# runner that already holds an Arma 3 dedicated server install. There is no
+# server-provisioning step and no per-run download. The test triggers only on a
+# schedule or a manual dispatch, never on push or pull_request: a public
+# repository must not run untrusted code on a self-hosted runner.
 on:
+  schedule:
+    - cron: '0 3 * * *'
   workflow_dispatch:
 
 permissions:
   contents: read
 
+concurrency:
+  group: docker-test-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   headless:
-    runs-on: ubuntu-latest
+    # Register a runner with the labels self-hosted, linux and aee, and an
+    # Arma 3 dedicated server install at $ARMA3_SERVER_ROOT (or
+    # tests/docker/server_root, or tests/docker/server).
+    runs-on: [self-hosted, linux, aee]
     timeout-minutes: 45
+    env:
+      # The server path is a repository variable, not a committed file: both
+      # tests/docker/server_root and tests/docker/server are gitignored. Set
+      # it once in Settings > Variables; a service runner does not inherit a
+      # shell export.
+      ARMA3_SERVER_ROOT: ${{ vars.ARMA3_SERVER_ROOT }}
     steps:
       - uses: actions/checkout@v7
+      - name: Assert the Arma 3 server is installed on the runner
+        run: |
+          root="${ARMA3_SERVER_ROOT:-}"
+          if [ -z "$root" ] && [ -f "$GITHUB_WORKSPACE/tests/docker/server_root" ]; then
+            root="$(head -n1 "$GITHUB_WORKSPACE/tests/docker/server_root" | tr -d '[:space:]')"
+          fi
+          root="${root:-$GITHUB_WORKSPACE/tests/docker/server}"
+          if [ ! -x "$root/arma3server_x64" ]; then
+            echo "::error::no Arma 3 server on the runner at $root. Set ARMA3_SERVER_ROOT or write the path into tests/docker/server_root."
+            exit 1
+          fi
       - uses: arma-actions/hemtt@v1
       - name: Headless dedicated-server test
         run: tools/docker_test.sh
@@ -24,4 +51,7 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: aee-docker-log
-          path: tests/docker/run.log
+          path: |
+            tests/docker/run.log
+            tests/docker/run.*.log
+          if-no-files-found: ignore
