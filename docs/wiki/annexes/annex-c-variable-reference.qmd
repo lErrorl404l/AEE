@@ -118,6 +118,8 @@ client-only and derives from deterministic state, so none is broadcast.
 | `aee_nightvision_nvgTubeOnTime` | nightvision | Mission time the tube was first powered on - drives the warm-up dark-current curve (#153 gap 4) |
 | `aee_nightvision_nvgPerceived` | nightvision | Perceived NVG output 0.65..1.0: AGC brightness x cleanliness (MTF x SNR / erosion), per tier - consumed by ColorCorrections (#153 gap 6) |
 | `aee_nightvision_ppHandle_NVG_Chroma` | nightvision | NVG-owned ChromAberration ppEffect handle (priority 3050), never shared with the optics handle |
+| `aee_nightvision_nvgBreathing` | nightvision | AGC breathing brightness factor this tick, in [-0.15, 0.15] |
+| `aee_nightvision_nvgImperfectionAlpha` | nightvision | Blemish overlay opacity this tick (1 - the control fade), 0..1 |
 | `aee_optics_viewDistanceTarget` | optics | Vision-driven view distance target in metres (issue #138) |
 | `aee_optics_viewDistanceSigma` | optics | Total atmospheric extinction sigma for the view-distance driver |
 | `aee_optics_dtvHostVehicle` | optics | Vehicle whose native TI the DTV base channel disabled; restored on exit or switch |
