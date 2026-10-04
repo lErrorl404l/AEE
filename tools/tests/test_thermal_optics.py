@@ -3367,8 +3367,9 @@ class TestSQFSync(unittest.TestCase):
         cfg = (
             _REPO_ROOT
             / "addons"
-            / "core"
+            / "environmental"
             / "functions"
+            / "astronomy"
             / "fnc_calculateSolarRadiation.sqf"
         ).read_text(encoding="utf-8")
         self.assertIn("currentSunElevation", cfg)
@@ -3680,8 +3681,9 @@ class TestSQFSync(unittest.TestCase):
         cfg = (
             _REPO_ROOT
             / "addons"
-            / "core"
+            / "environmental"
             / "functions"
+            / "astronomy"
             / "fnc_calculateSolarRadiation.sqf"
         ).read_text(encoding="utf-8")
         self.assertIn("private _hour = dayTime", cfg)

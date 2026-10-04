@@ -24,7 +24,7 @@ private _tNight = _normals select 3;
 
 // Solar-elevation radiation model (replaces a fixed sinusoid): the sun's
 // height for the date, time and latitude drives the diurnal curve.
-private _diurnalWeight = [overcast] call EFUNC(core,calculateSolarRadiation);
+private _diurnalWeight = [overcast] call EFUNC(environmental,calculateSolarRadiation);
 private _monthIdx = (_month - 1) max 0 min 11;
 private _T_base = (_tNight select _monthIdx)
     + ((_tDay select _monthIdx) - (_tNight select _monthIdx)) * _diurnalWeight;

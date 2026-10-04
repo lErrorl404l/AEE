@@ -1,4 +1,4 @@
-#include "..\..\script_component.hpp"
+#include "..\script_component.hpp"
 
 /*
 Battery capacity derating factor (0.3–1.0) for temperature extremes.

@@ -68,12 +68,12 @@ private _effectiveDistM = _distM / (sqrt _refractionK);
 
 // ─── Battery temperature derating (issue #36) ──────────────────────────────
 // Cold Li-ion cells deliver less power: the physiology model publishes a
-// capacity multiplier 0.3-1.0 (aee_physiology_batteryTemperatureDerating).
+// capacity multiplier 0.3-1.0 (aee_thermal_batteryTemperatureDerating).
 // A derated battery cuts effective transmit power: in dBm the loss is
 // 10*log10(derating).  At 0.7 (about -20 C) that is -1.55 dB; at 0.3
 // (severe cold) -5.2 dB.  The signal fraction follows as sqrt of the
 // linear power ratio, so a 0.7 battery transmits at ~84% of nominal range.
-private _batteryDerate = missionNamespace getVariable [QEGVAR(physiology,batteryTemperatureDerating), 1.0];
+private _batteryDerate = missionNamespace getVariable [QEGVAR(thermal,batteryTemperatureDerating), 1.0];
 if !(_batteryDerate isEqualType 0) then { _batteryDerate = 1.0; };
 _batteryDerate = _batteryDerate max 0.3 min 1.0;
 if (_batteryDerate < 1.0 && (missionNamespace getVariable [QGVAR(batteryDeratingEnabled), true])) then {

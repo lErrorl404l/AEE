@@ -16,14 +16,12 @@ the environment, and reports diagnostics.
 | Function | Purpose |
 |---|---|
 | `calculateSeededWeatherProgression` | Compute a deterministic weather quality factor from a seeded LCG |
-| `calculateSolarRadiation` | Calculate the solar radiation factor from date, time and latitude |
 | `deterministicRandom` | Generate a deterministic pseudo-random value from two integer seeds |
 | `diagnostic` | Report diagnostic information |
 | `init` | Initialise the mod at mission start |
 | `moduleInit` | Initialise the EDEN module |
 | `moduleStormInit` | Initialise the storm control EDEN module |
 | `updateEnvironment` | Orchestrate the environment update |
-| `updateSoilMoisture` | Update soil moisture and evaporation |
 
 ## atmos
 
@@ -51,6 +49,7 @@ Temperature and thermal effects.
 
 | Function | Purpose |
 |---|---|
+| `calculateBatteryTemperatureDerating` | Calculate battery temperature derating |
 | `calculateClothingInsulation` | Publish the clothing insulation factor |
 | `calculateFreezingRain` | Calculate freezing rain |
 | `calculateHeatIndex` | Calculate the heat index (NWS Rothfusz) |
@@ -136,6 +135,7 @@ Environmental and seasonal effects.
 | `calculateScentDispersion` | Calculate scent dispersion |
 | `calculateSevereWeather` | Calculate severe weather |
 | `calculateSnowAccumulation` | Calculate snow accumulation |
+| `calculateSolarRadiation` | Calculate the solar radiation factor from date, time and latitude |
 | `calculateSpaceWeather` | Calculate space weather |
 | `calculateSurfaceWetness` | Calculate surface wetness from wetting and drying |
 | `classifyBiome` | Classify the climate with the Koppen algorithm |
@@ -157,6 +157,7 @@ Environmental and seasonal effects.
 | `starMagnitude` | Convert a star magnitude to render size and brightness |
 | `updateMeteors` | Update the drawn meteors each tick |
 | `updateSeasonalFoliage` | Update seasonal foliage |
+| `updateSoilMoisture` | Update soil moisture and evaporation |
 | `updateSoundPropagation` | Update sound propagation |
 
 ## maritime
@@ -179,7 +180,6 @@ Physiological effects.
 |---|---|
 | `applyHeatStressHUD` | Apply the heat stress HUD |
 | `calculateAltitudeAcclimatization` | Calculate altitude acclimatisation |
-| `calculateBatteryTemperatureDerating` | Calculate battery temperature derating |
 | `calculateDehydrationRisk` | Calculate dehydration risk |
 | `calculateHypoxia` | Calculate hypoxia risk from oxygen altitude |
 | `calculateUVIndex` | Calculate the UV index |

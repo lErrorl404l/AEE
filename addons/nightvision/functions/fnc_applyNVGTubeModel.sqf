@@ -522,7 +522,7 @@ private _gainRatio = _gain / _sensitivity max 0.01;
 // 0.3-1.0.  The drain needs a drain multiplier: less capacity = faster
 // drain, so invert.  At 0.3 derating (cold), drain is x3.3; at 1.0
 // (normal), drain x1.  The factor is clamped to 1.0-4.0.
-private _physDerating = missionNamespace getVariable [QEGVAR(physiology,batteryTemperatureDerating), 1.0];
+private _physDerating = missionNamespace getVariable [QEGVAR(thermal,batteryTemperatureDerating), 1.0];
 if !(_physDerating isEqualType 0) then { _physDerating = 1.0; };
 private _tempDrainFactor = if (_physDerating > 0.01) then { 1 / _physDerating } else { 3.0 };
 _tempDrainFactor = _tempDrainFactor max 1.0 min 4.0;

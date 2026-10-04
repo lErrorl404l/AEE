@@ -5,7 +5,6 @@
 
 PREP(createPPEffect);
 PREP(destroyPPEffect);
-PREP(calculateSolarRadiation);
 PREP(calculateSeededWeatherProgression);
 PREP(deterministicRandom);
 PREP(diagnostic);
@@ -15,7 +14,6 @@ PREP(init);
 PREP(moduleInit);
 PREP(moduleStormInit);
 PREP(updateEnvironment);
-PREP(updateSoilMoisture);
 PREP(getEyeState);
 PREP(getSmoothedWeather);
 PREP(handleCollisionDamage);

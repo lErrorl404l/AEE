@@ -80,7 +80,7 @@ _maxObjects = _maxObjects max 1 min 100;
 private _airTemp = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 if (isNil "_airTemp") then { _airTemp = 15; };
 private _windSpeed = vectorMagnitude wind;
-private _solar = [overcast] call EFUNC(core,calculateSolarRadiation);
+private _solar = [overcast] call EFUNC(environmental,calculateSolarRadiation);
 // Real solar FLUX in W/m2 (issue #124 audit): the factor is
 // sin(elevation) x cloud; the flux is that x 1000 W/m2 (ASTM G173).
 private _solarFlux = missionNamespace getVariable [QEGVAR(core,currentSolarFlux), _solar * 1000];

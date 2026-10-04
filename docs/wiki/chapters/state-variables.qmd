@@ -243,7 +243,7 @@ read them. The variables below are grouped by subsystem.
 | `aee_physiology_hypoxiaTUC` | The time of useful consciousness |
 | `aee_physiology_acclimatizationPercent` | The altitude acclimatisation |
 | `aee_physiology_uvIndex` | The UV index |
-| `aee_physiology_batteryTemperatureDerating` | The battery temperature derating |
+| `aee_thermal_batteryTemperatureDerating` | The battery temperature derating |
 | `aee_environmental_scentDispersionIntensity` | The scent dispersion intensity |
 | `aee_core_currentHypoxiaRisk` | The current hypoxia risk |
 | `aee_physiology_altitudeState` | The altitude state |

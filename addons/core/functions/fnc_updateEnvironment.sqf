@@ -73,7 +73,7 @@ if (!_realWeather) then {
     if (GVAR(humidityEnabled)) then {
         [_biome, _month, _posASL] call EFUNC(atmos,updateHumidity);
     };
-    [] call FUNC(updateSoilMoisture);
+    [] call EFUNC(environmental,updateSoilMoisture);
     [] call EFUNC(atmos,calculatePrecipitationPhase);
     [] call EFUNC(atmos,calculateHaze);
     [] call EFUNC(environmental,calculateSurfaceWetness);
@@ -160,7 +160,7 @@ BEGIN_COUNTER(objectScan);
 END_COUNTER(objectScan);
 if (GVAR(physiologyEnabled)) then {
     [] call EFUNC(physiology,calculateUVIndex);
-    [] call EFUNC(physiology,calculateBatteryTemperatureDerating);
+    [] call EFUNC(thermal,calculateBatteryTemperatureDerating);
     [] call EFUNC(physiology,calculateDehydrationRisk);
     [] call EFUNC(physiology,calculateAltitudeAcclimatization);
     // Cross-sensitivity runs after both accumulators have their current
