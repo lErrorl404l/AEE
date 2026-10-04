@@ -52,7 +52,7 @@ AEE_SETTING_CHECKBOX(fusionSolidFill,"AEE Thermal","Fusion",false);
 // auxiliary panel; it is a separate display with separate controls, so no
 // control is drawn twice, but it repeats the environment state, so enable one
 // or the other to avoid a duplicated readout.  Default ON.
-AEE_SETTING_CHECKBOX(fusionHud,"AEE Thermal","Fusion",true);
+AEE_SETTING_CHECKBOX(fusionHud,"AEE HUD","Displays",true);
 
 // ── Fixed-pattern noise (issue #204, FPN) ────────────────────────────────
 // Real LWIR sensors show a static spatial mottle (fixed-pattern noise)

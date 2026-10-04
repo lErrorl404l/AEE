@@ -173,6 +173,15 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_fx_thunderVolume` | SLIDER | `3.5` | yes | fx | Thunder volume |
 | `aee_fx_windNoiseVolume` | SLIDER | `1.0` | yes | fx | Wind ambience volume scale |
 
+## AEE HUD → Displays
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_nightvision_ltmEnabled` | CHECKBOX | `false` | yes | nightvision | Show the laser target marker beam through night vision (aircraft only) |
+| `aee_optics_hudEnabled` | CHECKBOX | `false` | yes | optics | Show the environment HUD over the night-vision view: heading, grid, altitude, time and the aee temperature, humidity and wind |
+| `aee_physiology_HUDWarningThreshold` | SLIDER | `0.3` | yes | physiology | Dehydration risk that triggers the HUD warning |
+| `aee_thermal_fusionHud` | CHECKBOX | `true` | yes | thermal | The drawn fusion display: a tinted glass panel over the night-vision image and a scrolling compass tape with the grid, height, time and the environment state. Ported from workshop 3810296503 whale_ecoti_llll. This is the primary fusion readout; the AEE Optics environment HUD is the auxiliary panel, so enable one or the other to avoid a duplicated readout. |
+
 ## AEE Maritime → Diagnostics
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -264,12 +273,6 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 |---|---|---|---|---|---|
 | `aee_nightvision_logDebug` | CHECKBOX | `false` | yes | nightvision | Log night vision diagnostics to the RPT. Turn this on before reporting a fault. |
 
-## AEE Night Vision → Display
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_nightvision_ltmEnabled` | CHECKBOX | `false` | yes | nightvision | Show the laser target marker beam through night vision (aircraft only) |
-
 ## AEE Night Vision → Imperfections
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -305,12 +308,6 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_optics_logDebug` | CHECKBOX | `false` | yes | optics | Log optics diagnostics to the RPT. Turn this on before reporting a fault. |
-
-## AEE Optics → Display
-
-| Setting | Type | Default | Global | Addon | Purpose |
-|---|---|---|---|---|---|
-| `aee_optics_hudEnabled` | CHECKBOX | `false` | yes | optics | Show the environment HUD over the night-vision view: heading, grid, altitude, time and the aee temperature, humidity and wind |
 
 ## AEE Optics → Eye Adaptation
 
@@ -455,7 +452,6 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | Setting | Type | Default | Global | Addon | Purpose |
 |---|---|---|---|---|---|
 | `aee_physiology_AMSOffsetAltitude` | SLIDER | `2500` | yes | physiology | Altitude (m) where acute mountain sickness risk starts |
-| `aee_physiology_HUDWarningThreshold` | SLIDER | `0.3` | yes | physiology | Dehydration risk that triggers the HUD warning |
 | `aee_physiology_HeatStrokeSensitivity` | SLIDER | `0.03` | yes | physiology | Heat-stroke overlay strength per °C above the danger threshold |
 | `aee_physiology_RapidAscentThreshold` | SLIDER | `150` | yes | physiology | Climb rate (m per tick) that triggers acute mountain sickness |
 
@@ -507,7 +503,6 @@ registered.
 |---|---|---|---|---|---|
 | `aee_thermal_fusionAlwaysOn` | CHECKBOX | `false` | yes | thermal | Render the thermal fusion overlay over any NVG, even without a thermal-capable headset. |
 | `aee_thermal_fusionFovFrame` | CHECKBOX | `true` | yes | thermal | Draw a thin rectangular border at the thermal channel's half-angle, so the operator can see where the fused image is actually bounded. It is a HUD aid and not optics: no mask and no tube geometry, and it draws nothing for a non-fusion device. |
-| `aee_thermal_fusionHud` | CHECKBOX | `true` | yes | thermal | The drawn fusion display: a tinted glass panel over the night-vision image and a scrolling compass tape with the grid, height, time and the environment state. Ported from workshop 3810296503 whale_ecoti_llll. This is the primary fusion readout; the AEE Optics environment HUD is the auxiliary panel, so enable one or the other to avoid a duplicated readout. |
 | `aee_thermal_fusionOutline` | CHECKBOX | `true` | yes | thermal | Draw the outline of each hot target the thermal state already tracks, on a transparent overlay that the NVG does not filter. It draws nothing when fusion is off or the fitted headset is not fusion capable. |
 | `aee_thermal_fusionSolidFill` | CHECKBOX | `false` | yes | thermal | Paint each hot body inside the thermal channel one solid bright colour, the flat block a real thermal display shows. This mode replaces the graded emissive ladder while it is on, so a body is never painted by both. Turn it off for the graded look. |
 

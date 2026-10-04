@@ -8,7 +8,7 @@
 // that only pays off at 50+ settings.
 
 // ── Heat Stress HUD ────────────────────────────────────────────────────────
-AEE_SETTING_SLIDER(HUDWarningThreshold,"AEE Physiology","Thresholds",0,1,0.3,1);
+AEE_SETTING_SLIDER(HUDWarningThreshold,"AEE HUD","Displays",0,1,0.3,1);
 
 // ── Dehydration ────────────────────────────────────────────────────────────
 AEE_SETTING_SLIDER(SweatRateScale,"AEE Physiology","Rates",0,3,1.0,1);

@@ -241,7 +241,7 @@ class TestHudWiring(unittest.TestCase):
 
     def test_the_setting_is_registered_default_off(self):
         self.assertIn(
-            'AEE_SETTING_CHECKBOX(hudEnabled,"AEE Optics","Display",false)',
+            'AEE_SETTING_CHECKBOX(hudEnabled,"AEE HUD","Displays",false)',
             SETTINGS_SRC,
         )
 

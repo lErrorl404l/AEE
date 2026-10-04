@@ -187,7 +187,7 @@ class TestLtmWiring(unittest.TestCase):
 
     def test_the_setting_is_registered_default_off(self):
         self.assertIn(
-            'AEE_SETTING_CHECKBOX(ltmEnabled,"AEE Night Vision","Display",false)',
+            'AEE_SETTING_CHECKBOX(ltmEnabled,"AEE HUD","Displays",false)',
             SETTINGS_SRC,
         )
 

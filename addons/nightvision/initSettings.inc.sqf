@@ -18,7 +18,7 @@ AEE_SETTING_SLIDER(fogGrainMax,"AEE Night Vision","Intensity",0,1,0.15,0);
 // Default OFF: the marker is an operator aid, and this switch is the only
 // way to raise it.  It stays inert outside an NVG aircraft, so OFF costs
 // nothing and no beam can appear without an explicit action.
-AEE_SETTING_CHECKBOX(ltmEnabled,"AEE Night Vision","Display",false);
+AEE_SETTING_CHECKBOX(ltmEnabled,"AEE HUD","Displays",false);
 
 // ── Tube imperfections (issue #215) ────────────────────────────────────────
 // The BAD artefacts a real image intensifier shows.  Every magnitude is on
