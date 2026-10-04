@@ -43,6 +43,9 @@ Debug hooks (set on missionNamespace; debug console only, no CBA setting):
   aee_optics_baseGradeContrast   Number: override the contrast setting.
   aee_optics_baseGradeSharpness  Number: override the acuity sharpness setting.
   aee_optics_baseGradeGrain      Number: override the acuity grain setting.
+  aee_optics_visionForce         Bool: force the human-vision model on.
+  aee_optics_visionForceLux      Number: override the adapted luminance, cd/m2.
+  aee_optics_visionForceMesopic  Number: override the mesopic photopic fraction.
   aee_optics_logDebug            Bool: log one DEBUG line per tick.
 
 Arguments: none.
@@ -124,10 +127,25 @@ if (_hAcuity < 0) then {
 // is on, the driver reads the eye model's published adapted luminance and
 // mesopic photopic fraction; it never writes the aperture.
 private _useModel = missionNamespace getVariable [QGVAR(visionModelEnabled), false];
+
+// Debug hooks: the force switch, the luminance override and the mesopic
+// override.  Each is a missionNamespace variable, not a CBA setting.
+private _visionForce = missionNamespace getVariable [QGVAR(visionForce), false];
+if (_visionForce isEqualType true) then { _useModel = _useModel || _visionForce; };
+if (_visionForce isEqualType 0) then { _useModel = _useModel || (_visionForce > 0); };
+
+private _adaptedLux = missionNamespace getVariable [QGVAR(eyeAdaptedLux), 1];
+private _mesopicW = missionNamespace getVariable [QGVAR(eyeMesopic), 1];
 private _params = [];
 if (_useModel isEqualTo true) then {
-    private _adaptedLux = missionNamespace getVariable [QGVAR(eyeAdaptedLux), 1];
-    private _mesopicW = missionNamespace getVariable [QGVAR(eyeMesopic), 1];
+    private _forceLux = missionNamespace getVariable [QGVAR(visionForceLux), -1];
+    if (_forceLux isEqualType 0) then {
+        if (_forceLux >= 0) then { _adaptedLux = _forceLux; };
+    };
+    private _forceMesopic = missionNamespace getVariable [QGVAR(visionForceMesopic), -1];
+    if (_forceMesopic isEqualType 0) then {
+        if (_forceMesopic >= 0) then { _mesopicW = _forceMesopic; };
+    };
     private _toneEnabled = missionNamespace getVariable [QGVAR(visionToneEnabled), true];
     private _whiteBalance = missionNamespace getVariable [QGVAR(visionWhiteBalance), false];
     private _toneStrength = missionNamespace getVariable [QGVAR(visionToneStrength), 1];
@@ -153,6 +171,9 @@ if (_useModel isEqualTo true) then {
 };
 private _ccParams = _params select 0;
 private _grainParams = _params select 1;
+
+private _visionLog = format ["vision model active=%1 adaptedLux=%2 mesopic=%3 contrast=%4", _useModel isEqualTo true, _adaptedLux, _mesopicW, (_ccParams select 1)];
+AEE_LOG_DEBUG(_visionLog);
 
 if (_hCC >= 0) then {
     _hCC ppEffectAdjust _ccParams;
