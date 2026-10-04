@@ -91,3 +91,4 @@ PREPS(outline,outlineCollect);
 PREPS(outline,outlineDraw);
 PREPS(outline,outlineToggle);
 PREP(handleImpactHeat);
+PREP(calculateBatteryTemperatureDerating);

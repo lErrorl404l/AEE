@@ -456,7 +456,7 @@ class TestWorldLatitudePattern(unittest.TestCase):
     def test_magnitude_consumers_use_shared_source(self):
         from pathlib import Path
 
-        solar = Path("addons/core/functions/fnc_calculateSolarRadiation.sqf").read_text(
+        solar = Path("addons/environmental/functions/astronomy/fnc_calculateSolarRadiation.sqf").read_text(
             encoding="utf-8"
         )
         self.assertIn("getWorldLocation", solar)

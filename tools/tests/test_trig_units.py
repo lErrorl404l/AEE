@@ -96,7 +96,7 @@ class TestNoRadianConversionRemains(unittest.TestCase):
     """Source-lock: the degree-based form must not regress to radians."""
 
     SITES = {
-        "addons/core/functions/fnc_calculateSolarRadiation.sqf": [
+        "addons/environmental/functions/astronomy/fnc_calculateSolarRadiation.sqf": [
             "_haRad",
             "_latRad",
             "_declRad",

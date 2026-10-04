@@ -26,11 +26,11 @@ edge can take.
 | `main` | none |
 | `maritime` | `core` |
 | `material` | none |
-| `mobility` | `core`, `environmental`, `material`, `physiology` |
-| `nightvision` | `core`, `physiology` |
+| `mobility` | `core`, `environmental`, `material`, `thermal` |
+| `nightvision` | `core`, `thermal` |
 | `optics` | `core`, `environmental`, `nightvision`, `thermal` |
 | `physiology` | `core`, `thermal` |
-| `radio` | `atmos`, `core`, `environmental`, `physiology` |
+| `radio` | `atmos`, `core`, `environmental`, `thermal` |
 | `thermal` | `core`, `environmental`, `material`, `nightvision`, `optics`, `physiology` |
 
 ## Reading it

@@ -1,4 +1,4 @@
-#include "..\script_component.hpp"
+#include "..\..\script_component.hpp"
 
 /*
 Soil moisture and evaporation.
@@ -15,7 +15,7 @@ dry, sunny air dries the ground faster.
 State: aee_core_soilMoisture (0..1).
 */
 
-private _moisture = missionNamespace getVariable [QGVAR(soilMoisture), 0.2];
+private _moisture = missionNamespace getVariable [QEGVAR(core,soilMoisture), 0.2];
 private _rainRate  = rain;
 private _temp      = missionNamespace getVariable [QEGVAR(core,currentTemperature), 15];
 private _wind      = vectorMagnitude wind;
@@ -36,7 +36,7 @@ private _evap  = ((0.408 * _slope * _Rn) + (_gamma * (37 / (_temp + 273.15)) * _
 _evap = (_evap max 0) * 0.0002;
 _moisture = (_moisture - _evap) max 0 min 1;
 
-missionNamespace setVariable [QGVAR(soilMoisture), _moisture];
+missionNamespace setVariable [QEGVAR(core,soilMoisture), _moisture];
 
 // moist soil contributes to the relative humidity
 _humidity = (_humidity + (_moisture * 10)) min 100;

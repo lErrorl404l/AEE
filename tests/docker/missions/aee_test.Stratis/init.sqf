@@ -1426,7 +1426,7 @@ if (_p10Fail == 0) then {
         diag_log text "[PHASE25] [FAIL] radio propagation function not compiled";
         _p25Fail = _p25Fail + 1;
     } else {
-        missionNamespace setVariable ["aee_physiology_batteryTemperatureDerating", 0.7];
+        missionNamespace setVariable ["aee_thermal_batteryTemperatureDerating", 0.7];
         missionNamespace setVariable ["aee_radio_batteryDeratingEnabled", true];
         [] call _fnRadio;
         private _idx = missionNamespace getVariable ["aee_radio_radioPropagationIndex", -1];
@@ -1446,10 +1446,10 @@ if (_p10Fail == 0) then {
         diag_log text "[PHASE25] [FAIL] engine power function not compiled";
         _p25Fail = _p25Fail + 1;
     } else {
-        missionNamespace setVariable ["aee_physiology_batteryTemperatureDerating", 0.4];
+        missionNamespace setVariable ["aee_thermal_batteryTemperatureDerating", 0.4];
         [] call _fnEngine;
         private _crankCold = missionNamespace getVariable ["aee_mobility_crankSuccess", -1];
-        missionNamespace setVariable ["aee_physiology_batteryTemperatureDerating", 1.0];
+        missionNamespace setVariable ["aee_thermal_batteryTemperatureDerating", 1.0];
         [] call _fnEngine;
         private _crankWarm = missionNamespace getVariable ["aee_mobility_crankSuccess", -1];
         if (_crankCold == 0 && _crankWarm == 1.0) then {
@@ -1470,7 +1470,7 @@ if (_p10Fail == 0) then {
     } else {
         missionNamespace setVariable ["aee_nightvision_nvgBatteryEnabled", false];
         missionNamespace setVariable ["aee_nightvision_nvgBattery", 1.0];
-        missionNamespace setVariable ["aee_physiology_batteryTemperatureDerating", 0.3];
+        missionNamespace setVariable ["aee_thermal_batteryTemperatureDerating", 0.3];
         [] call _fnNVG;
         private _batt = missionNamespace getVariable ["aee_nightvision_nvgBattery", -1];
         if (_batt == 1.0) then {

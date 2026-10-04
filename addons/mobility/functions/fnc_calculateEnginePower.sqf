@@ -39,7 +39,7 @@ if (isNil "_T") then { _T = 15 };
 // reliably; below 0.5 the engine fails to start (cold-soak).  The crank
 // probability scales 0.2-1.0 across 0.5-0.7, stored for vehicle-start
 // consumers and applied as a gate on the power modifier.
-private _batteryDerate = missionNamespace getVariable [QEGVAR(physiology,batteryTemperatureDerating), 1.0];
+private _batteryDerate = missionNamespace getVariable [QEGVAR(thermal,batteryTemperatureDerating), 1.0];
 if !(_batteryDerate isEqualType 0) then { _batteryDerate = 1.0; };
 _batteryDerate = _batteryDerate max 0.3 min 1.0;
 private _crankSuccess = if (_batteryDerate < 0.5) then {
