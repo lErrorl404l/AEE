@@ -97,20 +97,19 @@ class TestMeteorShowersData(unittest.TestCase):
 def sidereal_lst(date, time_s):
     """Independent Meeus Ch. 12 mirror of fnc_siderealTime (degrees)."""
     y, mo, d = date
+    # Day number to the Julian Day at 0h UT (Meeus Ch. 7, base 1721013.5).
     jd = (
-        2451545.0
+        1721013.5
         + 367 * y
         - math.floor(7 * (y + math.floor((mo + 9) / 12)) / 4)
         + math.floor(275 * mo / 9)
         + d
-        - 0.5
     )
-    jd0 = math.floor(jd - 0.5) + 0.5
-    s = jd0 - 2451545.0
+    s = jd - 2451545.0
     t2 = s / 36525.0
     gmst0 = 280.46061837 + 360.98564736629 * s + 0.000387933 * t2 * t2
     hours = time_s / 3600
-    lst = math.fmod(gmst0 + 360 * hours / 24.03, 360)
+    lst = math.fmod(gmst0 + 360.98564736629 * hours / 24, 360)
     if lst < 0:
         lst += 360
     return lst
@@ -135,6 +134,15 @@ class TestSiderealTime(unittest.TestCase):
                 got = run_sqf(SIDEREAL, [list(date)], globals_={"time": seconds})
                 self.assertAlmostEqual(got, sidereal_lst(date, seconds), places=6)
 
+    def test_meeus_ch12_worked_example(self):
+        """Meeus, Astronomical Algorithms, Ch. 12 worked example.
+
+        1987 April 10, 0h UT gives GMST = 13h10m46.3668s = 197.693195 deg.
+        The pre-fix J2000 base returned 243.802549 deg.
+        """
+        got = run_sqf(SIDEREAL, [[1987, 4, 10]], globals_={"time": 0.0})
+        self.assertAlmostEqual(got, 197.693195, places=4)
+
     def test_within_zero_360(self):
         for date, seconds in self.CASES:
             got = run_sqf(SIDEREAL, [list(date)], globals_={"time": seconds})
@@ -145,7 +153,7 @@ class TestSiderealTime(unittest.TestCase):
         a = run_sqf(SIDEREAL, [[2025, 9, 1]], globals_={"time": 0.0})
         b = run_sqf(SIDEREAL, [[2025, 9, 1]], globals_={"time": 3600.0})
         delta = math.fmod(b - a, 360.0)
-        self.assertAlmostEqual(delta, 360.0 / 24.03, places=4)
+        self.assertAlmostEqual(delta, 360.98564736629 / 24, places=4)
 
     def test_catalog_uses_kernel(self):
         text = (SENSOR / "fnc_getStarCatalog.sqf").read_text(encoding="utf-8")
@@ -157,7 +165,7 @@ class TestSiderealTime(unittest.TestCase):
 
 
 def radiant_horizontal(ra, dec, lat, lst):
-    """Python mirror of fnc_radiantHorizontal."""
+    """Python mirror of fnc_radiantHorizontal (azimuth from north)."""
     ha = lst - ra
     if ha > 180:
         ha -= 360
@@ -171,12 +179,15 @@ def radiant_horizontal(ra, dec, lat, lst):
             * math.cos(math.radians(ha))
         )
     )
-    az = math.degrees(
-        math.atan2(
-            math.sin(math.radians(ha)),
-            math.cos(math.radians(ha)) * math.sin(math.radians(lat))
-            - math.tan(math.radians(dec)) * math.cos(math.radians(lat)),
+    az = (
+        math.degrees(
+            math.atan2(
+                math.sin(math.radians(ha)),
+                math.cos(math.radians(ha)) * math.sin(math.radians(lat))
+                - math.tan(math.radians(dec)) * math.cos(math.radians(lat)),
+            )
         )
+        + 180.0
     )
     az = math.fmod(az, 360)
     if az < 0:
@@ -215,6 +226,18 @@ class TestRadiantHorizontal(unittest.TestCase):
                 want = radiant_horizontal(ra, dec, lat, lst)
                 self.assertAlmostEqual(got[0], want[0], places=6)
                 self.assertAlmostEqual(got[1], want[1], places=6)
+
+    def test_azimuth_measured_from_north(self):
+        """The azimuth is from north clockwise, not the Meeus south form.
+
+        A radiant on the meridian south of the zenith (H = 0) is due south
+        (180 deg); H = -90 is due east (90 deg).  The old south convention
+        returned 0 and 270 for the same two cases.
+        """
+        south = run_sqf(RADIANT, [100, 0, 45, 100])  # hour angle 0
+        self.assertAlmostEqual(south[1], 180.0, places=6)
+        east = run_sqf(RADIANT, [190, 0, 45, 100])  # hour angle -90
+        self.assertAlmostEqual(east[1], 90.0, places=6)
 
     def test_azimuth_range(self):
         for lst in range(0, 360, 30):

@@ -21,18 +21,22 @@ params [["_date", date, [[]]]];
 private _year = _date select 0;
 private _month = _date select 1;
 private _day = _date select 2;
-private _JD = 2451545.0 + 367 * _year - floor(7 * (_year + floor((_month + 9) / 12)) / 4) + floor(275 * _month / 9) + _day - 0.5;
+// Day number to the Julian Day at 0h UT of the mission date (Meeus,
+// Astronomical Algorithms, Ch. 7).  The base 1721013.5 is the JD at
+// 0h UT; the polynomial supplies the elapsed whole days.  The J2000 base
+// (2451545.0) did not give a Julian Day and GMST drifted by ~46 degrees.
+private _JD = 1721013.5 + 367 * _year - floor(7 * (_year + floor((_month + 9) / 12)) / 4) + floor(275 * _month / 9) + _day;
 
-// GMST at 0h UT on the mission date, plus sidereal rate * UT hours.
-// Meeus Ch. 12.
-private _JD0 = floor(_JD - 0.5) + 0.5;
-private _S = _JD0 - 2451545.0;
+// Days since J2000.0 at 0h UT, and the Julian centuries.
+private _S = _JD - 2451545.0;
 private _T2 = _S / 36525.0;
-// GMST at 0h UT (degrees)
+// GMST at 0h UT (degrees), Meeus Ch. 12.
 private _GMST0 = 280.46061837 + 360.98564736629 * _S + 0.000387933 * _T2 * _T2;
-// Add time of day (mission time)
+// Add the UT fraction of the day at the sidereal rate: 360.98564736629
+// degrees per solar day (15.0410686 degrees per solar hour).  The old
+// 360/24.03 gave 14.981 degrees per hour, below the solar rate.
 private _hours = time / 3600;
-private _LST = (_GMST0 + 360 * _hours / 24.03) mod 360;
+private _LST = (_GMST0 + 360.98564736629 * _hours / 24) mod 360;
 if (_LST < 0) then { _LST = _LST + 360; };
 
 _LST
