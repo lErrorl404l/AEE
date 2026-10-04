@@ -30,6 +30,10 @@ EYE = ROOT / "addons" / "optics" / "functions" / "eye"
 MESOPIC = EYE / "fnc_eyeMesopicWeight.sqf"
 PUPIL_STEADY = EYE / "fnc_eyePupilSteady.sqf"
 PUPIL_STEP = EYE / "fnc_eyePupilStep.sqf"
+ADAPT_STEP = EYE / "fnc_eyeAdaptStep.sqf"
+SCENE_LUX = EYE / "fnc_eyeSceneLux.sqf"
+SKY_FRACTION = EYE / "fnc_eyeSkyFraction.sqf"
+SKY_CAST = EYE / "fnc_eyeSkyCast.sqf"
 
 
 def mesopic_weight(lum):
@@ -145,6 +149,71 @@ class TestEyePupilStep(unittest.TestCase):
                 pupil_step(d, target, dt),
                 places=6,
             )
+
+
+class TestEyeAdaptStep(unittest.TestCase):
+    """fnc_eyeAdaptStep runs from the real SQF; the taus are asymmetric."""
+
+    def test_light_step_advances_faster_than_dark_step(self):
+        # Same dt, same |target - state|: the light branch (tau 2) moves more.
+        to_light = run_sqf(ADAPT_STEP, [[0.0, 0.0], 1.0, 1.0, 2.0, 120.0, 400.0, 0.5])
+        to_dark = run_sqf(ADAPT_STEP, [[0.0, 0.0], -1.0, 1.0, 2.0, 120.0, 400.0, 0.5])
+        self.assertGreater(to_light[1], abs(to_dark[1]))
+
+    def test_rod_pool_is_slower_than_cone_pool_in_the_dark(self):
+        got = run_sqf(ADAPT_STEP, [[0.0, 0.0], -1.0, 1.0, 2.0, 120.0, 400.0, 0.5])
+        cone, rod = got
+        self.assertLess(cone, rod)  # cone travelled further into the dark
+
+    def test_no_change_when_target_equals_state(self):
+        got = run_sqf(ADAPT_STEP, [[1.0, 1.0], 1.0, 1.0, 2.0, 120.0, 400.0, 0.5])
+        self.assertAlmostEqual(got[0], 1.0, places=9)
+        self.assertAlmostEqual(got[1], 1.0, places=9)
+
+    def test_matches_the_first_order_lag(self):
+        # Brightening: both pools use the light tau.
+        cone, rod = run_sqf(ADAPT_STEP, [[0.0, 0.0], 2.0, 0.5, 2.0, 120.0, 400.0, 0.5])
+        self.assertAlmostEqual(cone, 2.0 * (1 - math.exp(-0.25)), places=9)
+        self.assertAlmostEqual(rod, 2.0 * (1 - math.exp(-0.25)), places=9)
+        # Darkening: each pool uses its own dark tau.
+        cone, rod = run_sqf(ADAPT_STEP, [[0.0, 0.0], -2.0, 0.5, 2.0, 120.0, 400.0, 0.5])
+        self.assertAlmostEqual(cone, -2.0 * (1 - math.exp(-0.5 / 120)), places=9)
+        self.assertAlmostEqual(rod, -2.0 * (1 - math.exp(-0.5 / 400)), places=9)
+
+
+class TestEyeSceneLux(unittest.TestCase):
+    """fnc_eyeSceneLux runs from the real SQF; local light ignores sky."""
+
+    def test_sky_only_scales_with_the_fraction(self):
+        self.assertAlmostEqual(run_sqf(SCENE_LUX, [1.0, 0.0, 0.5]), 0.5, places=9)
+
+    def test_no_sky_and_no_local_is_dark(self):
+        self.assertEqual(run_sqf(SCENE_LUX, [1.0, 0.0, 0.0]), 0.0)
+
+    def test_local_light_is_not_scaled_by_the_sky(self):
+        # A torch works indoors, where the sky fraction is 0.
+        self.assertAlmostEqual(run_sqf(SCENE_LUX, [1.0, 0.5, 0.0]), 0.5, places=9)
+
+    def test_ambient_and_local_add(self):
+        self.assertAlmostEqual(run_sqf(SCENE_LUX, [1.0, 0.5, 0.5]), 1.0, places=9)
+
+
+class TestEyeSkyFraction(unittest.TestCase):
+    """fnc_eyeSkyFraction runs from the real SQF."""
+
+    def test_partial_sky(self):
+        self.assertAlmostEqual(
+            run_sqf(SKY_FRACTION, [[True, False, False]]), 1 / 3, places=6
+        )
+
+    def test_empty_sample_is_open_sky(self):
+        self.assertEqual(run_sqf(SKY_FRACTION, [[]]), 1)
+
+    def test_all_clear_is_one(self):
+        self.assertEqual(run_sqf(SKY_FRACTION, [[True, True, True, True]]), 1)
+
+    def test_all_blocked_is_zero(self):
+        self.assertEqual(run_sqf(SKY_FRACTION, [[False, False]]), 0)
 
 
 if __name__ == "__main__":
