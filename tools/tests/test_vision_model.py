@@ -687,5 +687,29 @@ class TestPerceptionWiring(unittest.TestCase):
         )
 
 
+class TestPerceptionCost(unittest.TestCase):
+    """The perception path adds at most one engine read per tick, no effect.
+
+    The model runs in the existing 1.0 s client PFH.  It makes one ambient
+    engine read for the white balance and does no engine filtering.  It must
+    not add a second read or create a post-process effect.
+    """
+
+    def test_one_engine_read_per_tick(self):
+        code = _code(DRIVER)
+        self.assertEqual(
+            code.count("getLightingAt"),
+            1,
+            "the driver adds more than one engine read per tick",
+        )
+
+    def test_no_post_process_effect_is_created(self):
+        self.assertNotIn(
+            "ppEffectCreate",
+            _code(DRIVER),
+            "the driver creates a post-process effect outside the registry",
+        )
+
+
 if __name__ == "__main__":
     unittest.main()

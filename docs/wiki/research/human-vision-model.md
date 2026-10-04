@@ -163,6 +163,10 @@ not touch the 5 ms `aee_core_fnc_updateEnvironment` gate, which is a server
 tick on a different path. The work is client-local and negligible at one tick
 per second. A machine profile on a live server is operator-only.
 
+Signed off: the model is accepted at this cost. It extends no gate and adds
+no periodic work beyond the one second tick that already runs. The client
+tick and the server tick stay separate.
+
 ## Assurance
 
 No UK MOD or NATO defence standard governs these vision constants. Civilian
