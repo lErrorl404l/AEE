@@ -153,9 +153,12 @@ class TestStarRendererUsesLightEmitters(unittest.TestCase):
         self.assertNotIn("drawLine3D", self.sync)
 
     def test_no_nelm_regate(self):
-        # The catalog already gates on the limiting magnitude; the sync
-        # worker must not re-check vmag against it (duplication).
-        self.assertNotIn("limitingMagnitude", self.sync)
+        # The catalog already gates the visible set on the limiting magnitude.
+        # The sync reads QGVAR(limitingMagnitude) only to publish
+        # QGVAR(effectiveNelm) for the forced-NELM path; it must not re-apply
+        # the NELM per star.
+        self.assertIn("effectiveNelm", self.sync)
+        self.assertNotIn("_mLim", self.sync)
 
 
 class TestStarLogging(unittest.TestCase):
@@ -169,10 +172,19 @@ class TestStarLogging(unittest.TestCase):
         self.assertIn("AEE_LOG_INFO", self.reg)
         self.assertIn('"starfield: light-emitter PFH registered"', self.reg)
 
-    def test_sync_has_a_windowed_log(self):
-        self.assertIn("AEE_LOG_DEBUG", self.sync)
-        self.assertIn("starLogAt", self.sync)
-        self.assertIn("starfield: %1 stars visible", self.sync)
+    def test_consolidated_logger_replaces_windowed_log(self):
+        self.assertNotIn("starLogAt", self.sync)
+        logger = (SENSOR / "fnc_logSkyState.sqf").read_text(encoding="utf-8")
+        self.assertIn('"sky state | sun=', logger)
+        self.assertIn("AEE_LOG_INFO", logger)
+        self.assertIn("AEE_LOG_DEBUG", logger)
+
+    def test_star_force_hook_read(self):
+        self.assertIn("starsForce", self.sync)
+
+    def test_faint_star_draw3d_registered(self):
+        self.assertIn("Draw3D", self.reg)
+        self.assertIn("drawFaintStars", self.reg)
 
 
 if __name__ == "__main__":
