@@ -39,6 +39,7 @@ INIT = GRADE / "fnc_initBaseGrade.sqf"
 TONE_KERNEL = PERCEPTION / "fnc_perceptionToneResponse.sqf"
 COMPOSE_KERNEL = PERCEPTION / "fnc_perceptionParams.sqf"
 ILLUMINANT_KERNEL = PERCEPTION / "fnc_perceptionIlluminant.sqf"
+CHROMA_KERNEL = PERCEPTION / "fnc_perceptionChromaticAdaptation.sqf"
 
 OPTICS_PREP = OPTICS / "XEH_PREP.hpp"
 OPTICS_POSTINIT = OPTICS / "XEH_postInit.sqf"
@@ -274,6 +275,48 @@ class TestPerceptionIlluminant(unittest.TestCase):
         self.assertEqual(
             run_sqf(ILLUMINANT_KERNEL, [[0.00001, 0.00001, 0.00001]]), [1, 1, 1]
         )
+
+
+class TestPerceptionChromaticAdaptation(unittest.TestCase):
+    """fnc_perceptionChromaticAdaptation derives the ColorCorrections blend slot.
+
+    Source register: von Kries 1902 and CAT16 (Li et al. 2017); the degree D is
+    CIECAM02 (CIE 159:2004); the display-RGB diagonal and the cap are
+    UNSOURCED.  The engine cannot express the cone matrix, so the blend slot
+    carries the complementary tint in the display domain.
+    """
+
+    def test_degree_zero_is_the_identity(self):
+        self.assertEqual(run_sqf(CHROMA_KERNEL, [[1.3, 1.0, 0.7], 0]), [1, 1, 1, 0])
+
+    def test_neutral_illuminant_is_the_identity(self):
+        self.assertEqual(run_sqf(CHROMA_KERNEL, [[1, 1, 1]]), [1, 1, 1, 0])
+
+    def test_a_warm_illuminant_cools_the_blend(self):
+        r, _g, _b, alpha = run_sqf(CHROMA_KERNEL, [[1.3, 1.0, 0.7]])
+        self.assertGreater(alpha, 0)
+        self.assertLess(r, 1.0, "a warm illuminant did not cool the blend")
+
+    def test_a_blue_illuminant_warms_the_blend(self):
+        r, _g, b, alpha = run_sqf(CHROMA_KERNEL, [[0.7, 1.0, 1.3]])
+        self.assertGreater(alpha, 0)
+        self.assertGreater(r, b, "a blue cast was not warmed")
+
+    def test_degree_is_clamped_to_one(self):
+        self.assertEqual(
+            run_sqf(CHROMA_KERNEL, [[1.3, 1.0, 0.7], 2]),
+            run_sqf(CHROMA_KERNEL, [[1.3, 1.0, 0.7], 1]),
+        )
+
+    def test_alpha_never_exceeds_the_cap(self):
+        for cap in (0.0, 0.05, 0.25, 0.9):
+            alpha = run_sqf(CHROMA_KERNEL, [[1.5, 1.0, 0.5], 1, cap])[3]
+            self.assertGreaterEqual(alpha, 0)
+            self.assertLessEqual(alpha, min(cap, 0.25))
+
+    def test_malformed_illuminant_is_the_identity(self):
+        self.assertEqual(run_sqf(CHROMA_KERNEL, ["x"]), [1, 1, 1, 0])
+        self.assertEqual(run_sqf(CHROMA_KERNEL, [[1, 2]]), [1, 1, 1, 0])
 
 
 def compose(args):
