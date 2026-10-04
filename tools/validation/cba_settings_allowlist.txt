@@ -94,3 +94,12 @@ aee_nightvision_nvgForceBlowout  debug console knob (documented in fnc_applyNVGT
 aee_nightvision_nvgImperfectionDebug  debug console knob (documented in fnc_applyNVGTubeModel.sqf)
 aee_nightvision_imperfectionDisplay  display handle set by the RscTitles onLoad, read from uiNamespace
 aee_nightvision_nvgImperfections  RscTitles config class name used by cutRsc, not a runtime variable
+
+# AI substrate and wildlife force hooks (documented in the owning headers).
+aee_ai_forceDecide  debug console knob (documented in fnc_aiTick.sqf)
+aee_ai_need  need pressure published by the slice-two fauna runtime, read by fnc_aiTick.sqf
+aee_wildlife_forceBiome  debug console knob (documented in fnc_wildlifeTick.sqf)
+aee_wildlife_forceNight  debug console knob (documented in fnc_wildlifeTick.sqf)
+aee_wildlife_forceSpook  debug console knob (documented in fnc_wildlifeTick.sqf)
+aee_wildlife_forceSilence  debug console knob (documented in fnc_wildlifeTick.sqf)
+aee_wildlife_forceSpecies  debug console knob (documented in fnc_wildlifeTick.sqf)
