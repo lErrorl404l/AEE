@@ -272,6 +272,19 @@ All settings register with `CBA_fnc_addSetting` and appear in the CBA Settings m
 | `aee_optics_eyeTauDarkRod` | SLIDER | `400` | yes | optics | Rod-pool dark adaptation time constant, seconds. TRACED: Rushton 1961 J Physiol 156:166, 400 s. |
 | `aee_optics_eyeTauLight` | SLIDER | `2.0` | yes | optics | Light-adaptation time constant, seconds. UNSOURCED: no single published perceptual value, operator-tunable, 2.0 s. |
 
+## AEE Optics → Image
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_optics_baseGradeAcuityEnabled` | CHECKBOX | `true` | yes | optics | Enable the normal-vision acuity pass, a FilmGrain effect at high sharpness and low intensity. The engine has no Sharpen effect, so this is the scriptable candidate; real scene sharpening is the video option Sharpen Filter, which a mod cannot set. No unit. UNSOURCED that FilmGrain sharpness sharpens the scene. |
+| `aee_optics_baseGradeBlackPoint` | SLIDER | `-0.02` | yes | optics | Black-point offset of the normal-vision grade, no unit, range -0.1 to 0.1. Negative deepens the black. Community code uses -0.01 (AsYetUntitled) and -0.35 (Liberation-RX); the exact default -0.02 is UNSOURCED. |
+| `aee_optics_baseGradeBrightness` | SLIDER | `1.0` | yes | optics | Display brightness of the normal-vision grade, range 0.7 to 1.3. BIKI Post Process Effects: ColorCorrections brightness, 0 black, 1 unchanged, 2 white. |
+| `aee_optics_baseGradeContrast` | SLIDER | `1.15` | yes | optics | Display contrast of the normal-vision grade, range 0.8 to 1.6. The ACES tone scale is an S-shaped curve with a mid-grey log-log gamma below 1.55; the engine contrast is linear, so this is a stand-in. The exact default 1.15 is UNSOURCED. |
+| `aee_optics_baseGradeEnabled` | CHECKBOX | `true` | yes | optics | Enable the normal-vision base grade (contrast, brightness, black point and colour weights). It applies on normal vision only and never in a sensor mode, and it owns its own ColorCorrections, so it never fights the weather grade. No unit. |
+| `aee_optics_baseGradeGrain` | SLIDER | `0.006` | yes | optics | FilmGrain intensity for the acuity pass, range 0 to 0.05. BIKI FilmGrain default 0.005. The engine couples grain and sharpness, so a small amount of grain is unavoidable with the sharpening. |
+| `aee_optics_baseGradeSaturation` | SLIDER | `0` | yes | optics | Desaturation weight of the normal-vision grade, range 0 to 0.5. BIKI ColorCorrections colorize alpha: 0 keeps the original colour, 1 is black and white. The engine can only desaturate; it cannot oversaturate. |
+| `aee_optics_baseGradeSharpness` | SLIDER | `4` | yes | optics | FilmGrain sharpness for the acuity pass, range 1 to 20. BIKI FilmGrain default 1.25. The wiki does not state what it sharpens, so that it sharpens the scene is UNSOURCED; it is a display-aesthetic compromise, not added human acuity. |
+
 ## AEE Optics → Intensity
 
 | Setting | Type | Default | Global | Addon | Purpose |
@@ -433,6 +446,17 @@ registered.
 | `aee_thermal_fusionHud` | CHECKBOX | `true` | yes | thermal | The drawn fusion display: a tinted glass panel over the night-vision image and a scrolling compass tape with the grid, height, time and the environment state. Ported from workshop 3810296503 whale_ecoti_llll. This is the primary fusion readout; the AEE Optics environment HUD is the auxiliary panel, so enable one or the other to avoid a duplicated readout. |
 | `aee_thermal_fusionOutline` | CHECKBOX | `true` | yes | thermal | Draw the outline of each hot target the thermal state already tracks, on a transparent overlay that the NVG does not filter. It draws nothing when fusion is off or the fitted headset is not fusion capable. |
 | `aee_thermal_fusionSolidFill` | CHECKBOX | `false` | yes | thermal | Paint each hot body inside the thermal channel one solid bright colour, the flat block a real thermal display shows. This mode replaces the graded emissive ladder while it is on, so a body is never painted by both. Turn it off for the graded look. |
+
+## AEE Thermal → Sensor
+
+| Setting | Type | Default | Global | Addon | Purpose |
+|---|---|---|---|---|---|
+| `aee_thermal_thermalAgcHunt` | SLIDER | `0.05` | yes | thermal | Amplitude of the thermal AGC hunting artefact, 0 to 0.1. AGC compresses dynamic range, which produces breathing and washout (Wikipedia Automatic gain control). The hunting timescale is UNSOURCED. |
+| `aee_thermal_thermalAgcHuntPeriod` | SLIDER | `4` | yes | thermal | Period of the thermal AGC hunt, 1 to 20 seconds. UNSOURCED. The AGC smooths at a 0.5 second time constant, so the hunt sits above it. |
+| `aee_thermal_thermalHotBloom` | SLIDER | `0.08` | yes | thermal | Hot-source bloom amplitude for the thermal view, 0 to 0.15. Thermal blooming and haloing have no authoritative source; UNSOURCED. Modelled as a DynamicBlur spike, the primitive the night-vision model uses for halo. |
+| `aee_thermal_thermalImperfectionsEnabled` | CHECKBOX | `true` | yes | thermal | Enable the thermal sensor imperfections: non-uniformity drift, temporal noise, AGC hunt and hot-source bloom. No unit. The existing fixed-pattern noise and NETD term is reused, not duplicated. |
+| `aee_thermal_thermalNucDrift` | SLIDER | `0.15` | yes | thermal | Amplitude of the thermal non-uniformity (NUC) drift, 0 to 0.3. Fixed-pattern noise drifts and NUC is refreshed (Wikipedia fixed-pattern noise; EMVA 1288). The refresh cadence is UNSOURCED. |
+| `aee_thermal_thermalTemporalNoise` | SLIDER | `1` | yes | thermal | Scale on the thermal temporal sensor noise, 0 to 2. Fixed-pattern and temporal noise are real sensor noise; FPN is DSNU plus PRNU, corrected by flat-field or NUC and drifting with temperature, integration time and gain (Wikipedia fixed-pattern noise; EMVA Standard 1288). |
 
 ## AEE Thermal → Solver
 
