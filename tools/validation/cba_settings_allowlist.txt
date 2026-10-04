@@ -81,6 +81,7 @@ aee_optics_baseGradeGrain  debug console knob (documented in fnc_applyBaseGrade.
 aee_optics_visionForce  debug console knob (documented in fnc_applyBaseGrade.sqf)
 aee_optics_visionForceLux  debug console knob (documented in fnc_applyBaseGrade.sqf)
 aee_optics_visionForceMesopic  debug console knob (documented in fnc_applyBaseGrade.sqf)
+aee_optics_visionForceIlluminant  debug console knob (documented in fnc_applyBaseGrade.sqf)
 aee_thermal_bloomForce  debug console knob (documented in fnc_applyThermalVision.sqf)
 aee_thermal_agcHuntForce  debug console knob (documented in fnc_applyThermalVision.sqf)
 aee_thermal_nucForce  debug console knob (documented in fnc_applyThermalVision.sqf)

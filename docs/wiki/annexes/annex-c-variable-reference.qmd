@@ -512,6 +512,7 @@ owning function headers.
 | `aee_optics_visionForce` | BOOL | Force the human-vision model on |
 | `aee_optics_visionForceLux` | NUMBER | Override the adapted luminance, cd/m2 |
 | `aee_optics_visionForceMesopic` | NUMBER | Override the mesopic photopic fraction |
+| `aee_optics_visionForceIlluminant` | ARRAY | Override the scene illuminant colour, three numbers |
 | `aee_thermal_bloomForce` | NUMBER | Override the hot-source bloom base |
 | `aee_thermal_agcHuntForce` | NUMBER | Override the AGC hunt amplitude |
 | `aee_thermal_nucForce` | NUMBER | Override the NUC drift amplitude |
