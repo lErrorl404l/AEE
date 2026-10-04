@@ -347,5 +347,32 @@ class TestPerceptionDriverContract(unittest.TestCase):
         self.assertLess(gate, code.index("ppEffectAdjust _ccParams"))
 
 
+class TestPerceptionDebugHooks(unittest.TestCase):
+    """Each vision hook is read, and none is registered as a CBA setting."""
+
+    HOOKS = ["visionForce", "visionForceLux", "visionForceMesopic"]
+
+    def test_each_hook_is_read(self):
+        code = _code(DRIVER)
+        for hook in self.HOOKS:
+            self.assertIn(hook, code, f"debug hook {hook} is not read")
+
+    def test_hooks_are_not_cba_settings(self):
+        declared = OPTICS_SETTINGS.read_text(encoding="utf-8")
+        for name in self.HOOKS:
+            self.assertNotRegex(
+                declared,
+                rf"AEE_SETTING_\w+\(\s*{name}\s*,",
+                f"{name} is registered as a CBA setting",
+            )
+
+    def test_logs_one_debug_line_per_tick(self):
+        code = _code(DRIVER)
+        self.assertIn("AEE_LOG_DEBUG(_visionLog)", code)
+        self.assertIn("vision model active=", code)
+        for value in ("_adaptedLux", "_mesopicW", "select 1"):
+            self.assertIn(value, code, f"the debug line omits {value}")
+
+
 if __name__ == "__main__":
     unittest.main()
