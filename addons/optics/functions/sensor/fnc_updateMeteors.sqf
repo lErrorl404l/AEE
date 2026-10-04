@@ -36,6 +36,13 @@ if (_disabled || _sunElev >= 0 || _overcast >= 0.8) exitWith {
     missionNamespace setVariable [QGVAR(meteors), []];
 };
 
+// ── Debug force: set aee_optics_meteorForce to a shower code (e.g. "GEM")
+// from the debug console to spawn one meteor from that radiant this tick,
+// ignoring the activity window and the rate roll.  The night, overcast and
+// setting gates above still apply, so run it at night.  The flag resets. ──
+private _forceCode = missionNamespace getVariable [QGVAR(meteorForce), ""];
+if (_forceCode != "") then { missionNamespace setVariable [QGVAR(meteorForce), ""]; };
+
 // ── Decay and despawn the active meteors. ────────────────────────────────
 private _now = diag_tickTime;
 private _alive = [];
@@ -66,9 +73,11 @@ private _spawns = 0;
 {
     private _state = [_date, _lat, _mLim, _x] call FUNC(meteorState);
     _state params ["_active", "_altDeg", "_azDeg", "_rate"];
-    if (_active && _rate > 0) then {
+    private _forced = _forceCode == (_x select 0);
+    if (_forced || (_active && _rate > 0)) then {
         // The rate is meteors per hour; this tick lasts METEOR_TICK seconds.
-        private _p = _rate * METEOR_TICK / 3600;
+        // A forced shower fires this tick regardless of the rate roll.
+        private _p = if (_forced) then { 1 } else { _rate * METEOR_TICK / 3600 };
         if (random 1 < _p) then {
             private _dir = [_altDeg, _azDeg] call FUNC(starDirection);
             private _radius = METEOR_SPAWN_RADIUS_MIN + random (METEOR_SPAWN_RADIUS_MAX - METEOR_SPAWN_RADIUS_MIN);
@@ -91,7 +100,7 @@ private _spawns = 0;
             _light setLightAttenuation [500, 300, 3000, 0, 5, 500];
             _light setLightUseFlare true;
             _light setLightFlareSize 10;
-            _light setLightFlareMaxDistance 2000;
+            _light setLightFlareMaxDistance METEOR_FLARE_MAX_DIST;
             _light setLightAmbient [0, 0, 0];
             _light setLightColor [1, 1, 1];
 
