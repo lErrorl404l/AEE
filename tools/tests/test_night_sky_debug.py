@@ -86,5 +86,82 @@ class TestGalacticToEquatorial(unittest.TestCase):
                 self.assertAlmostEqual(got[1], want[1], places=6)
 
 
+def galactic_to_horizontal(l_deg, b_deg, lst_deg, lat_deg):
+    """Python mirror of fnc_galacticToHorizontal."""
+    ra, dec = galactic_to_equatorial(l_deg, b_deg)
+    ha = lst_deg - ra
+    if ha > 180:
+        ha -= 360
+    if ha < -180:
+        ha += 360
+    alt = math.degrees(
+        math.asin(
+            math.sin(math.radians(dec)) * math.sin(math.radians(lat_deg))
+            + math.cos(math.radians(dec))
+            * math.cos(math.radians(lat_deg))
+            * math.cos(math.radians(ha))
+        )
+    )
+    az = (
+        math.degrees(
+            math.atan2(
+                math.sin(math.radians(ha)),
+                math.cos(math.radians(ha)) * math.sin(math.radians(lat_deg))
+                - math.tan(math.radians(dec)) * math.cos(math.radians(lat_deg)),
+            )
+        )
+        + 180.0
+    )
+    az = math.fmod(az, 360)
+    if az < 0:
+        az += 360
+    return [alt, az]
+
+
+def galactic_horizontal_injections():
+    """FUNC(galacticToEquatorial) injected from its real SQF."""
+    return {
+        "__FUNC__galacticToEquatorial": lambda l, b: run_sqf(
+            GALACTIC_EQUATORIAL, [l, b]
+        ),
+    }
+
+
+class TestGalacticToHorizontal(unittest.TestCase):
+    """fnc_galacticToHorizontal composes the equatorial kernel from real SQF."""
+
+    def test_zenith_case(self):
+        # LST equals the object's RA and latitude equals its Dec: zenith.
+        got = run_sqf(
+            GALACTIC_HORIZONTAL,
+            [0, 0, 266.405, -28.936],
+            globals_=galactic_horizontal_injections(),
+        )
+        self.assertAlmostEqual(got[0], 90, delta=0.05)
+
+    def test_ranges(self):
+        got = run_sqf(
+            GALACTIC_HORIZONTAL,
+            [0, 0, 0, 45],
+            globals_=galactic_horizontal_injections(),
+        )
+        self.assertGreaterEqual(got[0], -90)
+        self.assertLessEqual(got[0], 90)
+        self.assertGreaterEqual(got[1], 0)
+        self.assertLess(got[1], 360)
+
+    def test_matches_mirror(self):
+        for l_deg, b_deg in [(0, 0), (90, 30), (250, -45)]:
+            with self.subTest(l=l_deg, b=b_deg):
+                got = run_sqf(
+                    GALACTIC_HORIZONTAL,
+                    [l_deg, b_deg, 120.0, 45.0],
+                    globals_=galactic_horizontal_injections(),
+                )
+                want = galactic_to_horizontal(l_deg, b_deg, 120.0, 45.0)
+                self.assertAlmostEqual(got[0], want[0], places=6)
+                self.assertAlmostEqual(got[1], want[1], places=6)
+
+
 if __name__ == "__main__":
     unittest.main()
